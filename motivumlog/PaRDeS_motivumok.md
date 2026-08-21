@@ -1,6 +1,10 @@
 # PaRDeS motívum-napló (kulcsszavas)
 
+*v43 — 2026.08.21 frissítve ("pneuma/pszükhé megkülönböztetés" motívum lezárva, önálló tematikus tanulmányban (`Pneuma_pszukhe_megkulonboztetes_tematikus.md`, `4_PaRDeS_tematikus_sablon.md` szerint): 4. előfordulásként felvéve 1Kor 2:14-15 (*pszükhikosz*/*pneumatikosz* melléknévi szembeállítás — lexikailag rokon, nem azonos szófajú a főnévi *pszükhé*/*pneuma* előfordulásokkal, ezért külön jelölve), a Drash-réteg megkülönböztetés/discernment-tanításának közvetlen szövegi megerősítéseként, Gordon Fee-hivatkozáshoz kapcsolva. A motívum kikerül az aktív ⭐ ajánlások közül; named teachers lezárva: Kenneth Hagin, Derek Prince (✅ erős/közvetlen forrás mindkettőnél), Charles Capps (⚠️ beágyazott forrás, jelezve). Ez a fájl marad v43 néven — nem keletkezik új verziószámú fájl, csak a tartalom frissül helyben.)*
+
 *v43 — 2026.08.17 (szinkronizációs bejegyzés: ellenőrzés során kiderült, hogy a projektben a v42 volt a legfrissebb, miközben a korábban kiosztott munkapéldány [v40] erről nem tudott. Tartalmi változás nincs — a v43 a hiteles v40→v41→v42 lánc egyenes folytatása, a v41-ben rögzített "segítségül hívni az Úr nevét" tematikus lezárással (5 genezisi előfordulás, önálló tanulmány) és a v42-ben rögzített Melkizedek-mélyelemzés lezárásával együtt. A lánc innentől v43-ként folytatódik.)*
+
+
 
 *v42 — 2026.08.17 (a "Melkizedek — király-pap rendje, kenyér és bor" motívum nyitott mélyelemzési szála lezárva (`1Mozes_14_18-20_Zsolt110_4_Zsid5-7_melyelemzes.md`): a τάξις/rendje-fogalom LXX-eredetű technikai súlyával kiegészítve; Zsid 7:3 argumentum e silentio ("apa nélkül, anya nélkül") technikája nevesítve (Rooke, *Biblica* 90 [2009]); ⚠️ új vitatott pont rögzítve: a Gen 14↔Zsolt 110 kapcsolat *iránya* — Rowley/Nel (kritikai: Zsolt 110 korábbi, Gen 14 visszavetítés) vs. Kidner/Waltke/Hamilton (kanonikus: Zsolt 110 tudatosan idézi Gen 14-et) —, elkülönítve a korábban már rögzített ⚠️ Melkizedek-kilét vitától (krisztofánia — Derek Prince — vs. irodalmi-retorikai — Wenham/Mathews/Hamilton). A motívum "lezárt/önállóan feldolgozott mélyelemzési szálként" jelölve, kikerül a nyitott szálak és az Előrejelzett táblázat közül.)*
 
@@ -92,7 +96,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 **Antropológia**
 - teljes ember / holisztikusság (1)
-- pneuma/pszükhé megkülönböztetés (3 előfordulás — elérte az önálló küszöböt)
+- pneuma/pszükhé megkülönböztetés (4 előfordulás — ✅ LEZÁRVA, önálló tematikus tanulmányban: `Pneuma_pszukhe_megkulonboztetes_tematikus.md`)
 - Isten mindent lát / szív vizsgálata (2)
 - por/formáltatás (*jacar*-*afar*) — emberi esendőség (3 előfordulás — elérte a küszöböt)
 - nem jó egyedül / *ézer kenegdó* — társ mint ajándék (1)
@@ -189,7 +193,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 **"por/formáltatás (jacar-afar) — emberi esendőség"** — 3+ előfordulásnál (változatlan, lásd v10).
 
-**"pneuma/pszükhé megkülönböztetés" — ⭐ KÜSZÖBÖN TÚL, 3. előfordulás.** 1Thessz 5:23 (a kiinduló szövegbeli hármas felosztás: pneuma-pszükhé-szóma), majd Zsid 4:12 (az ige mint kard, amely "elválasztja" a pszükhét és a pneumát), majd 1Móz 2:7 ⇒ 1Kor 15:45 (az első Ádám "élő lélekké" — pszükhé — lett, szemben az utolsó Ádámmal, aki "megelevenítő szellemmé" — pneuma). A motívum önálló tematikus feldolgozásra alkalmassá vált (`4_PaRDeS_tematikus_sablon.md` szerint), felhasználói jóváhagyásra várva. Alkalmazásnál a tervezett named teachers: Kenneth Hagin (*Spirit, Soul and Body*), Derek Prince, Charles Capps; kizárva: James Dunn, Robert Gundry, J. Rodman Williams.
+**"pneuma/pszükhé megkülönböztetés" — ✅ LEZÁRVA, önálló tematikus tanulmányban.** 1Thessz 5:23 (a kiinduló szövegbeli hármas felosztás: pneuma-pszükhé-szóma), majd Zsid 4:12 (az ige mint kard, amely "elválasztja" a pszükhét és a pneumát), majd 1Móz 2:7 ⇒ 1Kor 15:45 (az első Ádám "élő lélekké" — pszükhé — lett, szemben az utolsó Ádámmal, aki "megelevenítő szellemmé" — pneuma), kiegészítve 1Kor 2:14-15-tel (a *pszükhikosz*/*pneumatikosz* melléknévi szembeállítás, a megkülönböztetés/discernment közvetlen szövegi alapja). A tematikus tanulmány elkészült `4_PaRDeS_tematikus_sablon.md` szerint, `Pneuma_pszukhe_megkulonboztetes_tematikus.md` fájlnéven, 2026.08.21-én lezárva. Named teachers: Kenneth Hagin (*Man on Three Dimensions*), Derek Prince (*Spirit, Soul and Body* sorozat), Charles Capps (*God's System for Your Success*, ⚠️ beágyazott forrás); kizárva: James Dunn, Robert Gundry, J. Rodman Williams.
 
 **"tesuká/másal visszhang — bűn mint uralkodni akaró vágy"** — **FIGYELEM, közel a küszöbhöz (2 előfordulás).** Az 1Móz 4:7 szó szerint, ugyanazzal a két ritka szóval (תְּשׁוּקָה *tesuká*, מָשַׁל *másal*) idézi vissza az 1Móz 3:16-ot — konkordancia-alapon megerősített, nem csupán tartalmi kapcsolat (a *tesuká* szó összesen csak háromszor fordul elő a Szentírásban: 1Móz 3:16, 1Móz 4:7, Én 7:11). Egy jövőbeli Énekek éneke-tanulmány elérné a 3+ küszöböt, és önálló tematikus feldolgozást tenne indokolttá ("Vágyakozás és uralom — egy visszatérő szópár teológiája").
 
@@ -263,7 +267,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 |---|---|---|---|---|
 | **teljes ember / holisztikusság** | Antropológia | ÓSZ→ÚSZ (↔) | 1 | 5Móz 6:5 ↔ 1Thessz 5:23 |
 | **lehelet / élet lehelete** | Pneumatológia | ÓSZ→ÚSZ (←) | 2 | 1Móz 2:7 ← 1Thessz 5:23; Jób 33:4 ↔ 1Móz 2:7 |
-| **pneuma/pszükhé megkülönböztetés** | Antropológia | ÚSZ↔ÚSZ / ÓSZ⇒ÚSZ | 3 | Zsid 4:12 ↔ 1Thessz 5:23; 1Móz 2:7 ⇒ 1Kor 15:45 |
+| **pneuma/pszükhé megkülönböztetés** ✅ *(lezárva)* | Antropológia | ÚSZ↔ÚSZ / ÓSZ⇒ÚSZ | 4 | Zsid 4:12 ↔ 1Thessz 5:23; 1Móz 2:7 ⇒ 1Kor 15:45; 1Kor 2:14-15 |
 | **megszentelődés mint Isten munkája** | Szoteriológia | ÚSZ↔ÚSZ | 1 | Fil 1:6; 2:13 ↔ 1Thessz 5:23 |
 | **test mint a megváltás tárgya** | Eszkatológia | ÚSZ↔ÚSZ | 2 | Róm 8:23; 1Kor 15:42-44 ⇒ 1Thessz 5:23; Róm 8:10-11 |
 | **Isten mindent lát / szív vizsgálata** | Antropológia | ÓSZ→ÚSZ (↔) | 2 | Zsolt 139:1-4 ↔ Zsid 4:12; Jer 17:9-10 ↔ Zsid 4:12 |
@@ -513,7 +517,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | **János evangéliuma** | 2 | Ján 1:1,14→Zsid 4:12; Ján 1:1-3→1Móz 1:1 |
 | **Kolossé** | 2 | Kol 1:16-17→1Móz 1:1; Kol 1:15→1Móz 1:2-2:3 |
 | **Róma** | **9 (frissítve)** | Róm 8:23→1Thessz 5:23; Róm 8:11→Róm 8:10 (belső); Róm 16:20→1Móz 3:15; Róm 5:12-14→1Móz 5 (halál refrén); Róm 10:13→1Móz 4:26 (Énós); Róm 9:27→1Móz 7:23 (maradék-elv); Róm 10:7→1Móz 1:2/7:11/8:2 (ábüsszosz, tematikus tanulmány); Róm 5:12-21→1Móz 2-3 (Ádám-Krisztus tipológia, mélyelemzésből); **Róm 4:3→1Móz 15:6 (hit mint betudott igazság, LXX szó szerinti idézet, új)** |
-| **1Korinthus** | 2 | 1Kor 15:42-44→1Thessz 5:23; 1Kor 15:45→1Móz 2:7 |
+| **1Korinthus** | 3 | 1Kor 15:42-44→1Thessz 5:23; 1Kor 15:45→1Móz 2:7; 1Kor 2:14-15→pneuma/pszükhé (tematikus lezárás) |
 | **4Mózes** | 1 | 4Móz 3:7-8→1Móz 2:15 |
 | **Malakiás** | 1 | Mal 2:14-15→1Móz 2:18-24 |
 | **Efézus** | 4 | Ef 5:31-32→1Móz 2:24; Ef 2:8→1Móz 6:8 (chen); Ef 5:2→1Móz 8:21 (kedves illat); Ef 2:13→1Móz 9:27 (Jáfet, tematikus) |
