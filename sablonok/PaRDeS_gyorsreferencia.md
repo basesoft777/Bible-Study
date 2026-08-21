@@ -69,7 +69,7 @@ Tömör, kulcsszavas áttekintés a memóriában rögzített szabályokról. A t
 - **Véglegesítés előtti belső önellenőrzés kiegészítve:** valahányszor a szöveg azt állítja/sugallja, hogy két igehely közös szótő/szócsalád (lexikai) kapcsolatban áll, ellenőrizni kell, hogy ténylegesen ugyanaz-e a görög/héber szó — ha csak tematikus/fogalmi a kapcsolat, ezt explicit jelezni kell ("tematikus, nem lexikai párhuzam")
 - Sorozatfeldolgozásnál: következő igeszakasz felajánlása
 - Új memória-szabálynál: jelzés, hogy a sablon-fájl is frissítendő
-- Fájlnév-konvenció: [Könyv]_[fejezet]_[vers]_[típus].md
+- Fájlnév-konvenció: `[Könyv]_[fejezet]v[vers]_[típus].md` (pl. `1Moz_1v1_bovitett.md`); tartománynál `[Könyv]_[fejezet]v[vers]-[fejezet]v[vers]_[típus].md` (pl. `1Moz_1v2-2v3_bovitett.md`); teljes fejezetnél vers-komponens nélkül (`1Moz_14_bovitett.md`)
 - Sablon-fájlokon verziószám/dátum feltüntetése
 
 ## Mélyelemzés (két igehely összevetése)
