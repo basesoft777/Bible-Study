@@ -2,7 +2,7 @@
 
 *Ez a fájl a PaRDeS-projekt minden ✅ LEZÁRVA státuszú, önálló tematikus tanulmányát listázza egy helyen, hogy chat-szálakon átívelően is könnyen visszakereshetők legyenek. Forrás: `PaRDeS_motivumok.md (GitHub-repóban verziószám nélkül; Claude Projects-en belül a mindenkori legfrissebb vXX fájl, jelenleg v43)` (a mindenkori legfrissebb motívumlog-verzió az egyetlen hiteles forrás — ez az index abból generálódik, és minden újabb lezáráskor frissítendő.)*
 
-*Utolsó frissítés: 2026.08.17, a v43 motívumlog alapján, 2026.08.21-i GitHub-szinkronizálással.*
+*Utolsó frissítés: 2026.08.21, a v43 motívumlog alapján, 2026.08.21-i GitHub-szinkronizálással.*
 
 ---
 
@@ -13,7 +13,7 @@
 | 3 | **Hádész (seól) — a halottak birodalma** | `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` | Zsolt 16:10 ⇒ ApCsel 2:27,31 → Luk 16:23 → Jel 1:18 → Jel 20:13-14 (4 előfordulás) | A #2 kibővített tanulmányon belül azonosított, de lexikailag önálló motívum. |
 | 4 | **Segítségül hívni az Úr nevét — Énós kora** | `Segitsegul_hivni_az_Urat_tematikus.md` | 1Móz 4:26 → 12:8 → 13:4 → 21:33 → 26:25 (5 előfordulás) | Kánoni kitekintés (nem külön számlálva): 1Kir 18:24-26, 2Kir 5:11, Zsolt 116, Sof 3:9, Zak 13:9, Jóel 3:5/2:32 ⇒ ApCsel 2:21 ⇒ Róm 10:13. |
 | 5 | **Rafeusok/óriás-népek — rokon-csoport a gibborim/nefilim motívummal** | `Rafaim_Gibborim_Nefilim_tematikus.md` | 1Móz 14:5 (1 előfordulás, lexikailag önálló szótő) | Kivételesen a ⭐ küszöb elérése ELŐTT feldolgozva, felhasználói explicit kérésre. Rokonságban a #3 (hádész/seól) tanulmánnyal. |
-| 6 | **Pneuma/pszükhé megkülönböztetés** | `Pneuma_pszukhe_megkulonboztetes_tematikus.md` | 1Thessz 5:23 ↔ Zsid 4:12 ↔ 1Móz 2:7 ⇒ 1Kor 15:45 (3 lexikailag/tematikusan kapcsolódó előfordulás) | Nevesített tanítói szemszög mindhárom jóváhagyott tanítótól (Hagin ✅, Prince ✅, Capps ⚠️ részleges). |
+| 6 | **Pneuma/pszükhé megkülönböztetés** | `Pneuma_pszukhe_megkulonboztetes_tematikus.md` | 1Thessz 5:23 ↔ Zsid 4:12; 1Móz 2:7 ⇒ 1Kor 15:45; 1Kor 2:14-15 (4 előfordulás) | Named teachers: Kenneth Hagin, Derek Prince (✅ erős forrás), Charles Capps (⚠️ beágyazott forrás). 2026.08.21-én lezárva, bővítve 1Kor 2:14-15-tel (Drash-réteg megerősítése). |
 
 ---
 
