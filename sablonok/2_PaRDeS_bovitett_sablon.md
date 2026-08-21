@@ -129,6 +129,7 @@ Zárja a tanulmányt 2-3 konkrét kérdés megválaszolásával:
 - Minden görög/héber szótári szó mellett feltüntetve a **kiejtés**
 - Igehely-rövidítések egységesen, szóköz nélkül (pl. „1Thessz 5:23")
 - A Szent Pál Akadémia-fordításból csak rövid idézetek; teljes versekhez a Károli-fordítás
+- **Fájlnév-konvenció:** `[Könyv]_[fejezet]v[vers]_[típus].md` (pl. `1Moz_1v1_bovitett.md`); tartománynál `[Könyv]_[fejezet]v[vers]-[fejezet]v[vers]_[típus].md` (pl. `1Moz_1v2-2v3_bovitett.md`); teljes fejezetnél vers-komponens nélkül (pl. `1Moz_14_bovitett.md`). A `v` betű egyértelműen elválasztja a fejezetet a verstől, a kötőjel kizárólag a tartomány határait jelöli.
 
 ## Konfliktuskezelés
 Ha két elmentett szabály ütközni látszik, explicit rákérdezés következik, nem önkényes döntés.
