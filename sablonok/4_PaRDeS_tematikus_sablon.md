@@ -1,39 +1,98 @@
-# [Téma megnevezése] — Tematikus tanulmány
+# 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
-**Téma:** [pl. Tehóm, Rafaim, Segítségül hívni az Urat]
-**Dátum:** [ÉÉÉÉ-HH-NN]
-**Státusz:** [folyamatban / lezárt]
+*v2 — 2026.07.31 (kiegészítve: az 5. pont teljes öt lépéses keresési módszertannal és forrás-megbízhatóság jelöléssel — a fájl így önmagában is teljes, nem támaszkodik a memóriára)*
 
-## 1. A téma bevezetése és lehatárolása
-- Mi a vizsgált fogalom/motívum, és miért releváns:
-- A vizsgálat terjedelme (mely szakaszok, könyvek):
+**Kimenet nyelve:** magyar
 
-## 2. Terminológia
-- Eredeti nyelvi kifejezés(ek), gyök:
-- Előfordulások listája (könyv fejezet:vers):
-- Jelentésmező / szemantikai árnyalatok:
+---
 
-## 3. Előfordulások elemzése
-### 3.1 [Első előfordulás/csoport]
-- Szövegkörnyezet:
-- Pshat:
-- Remez/Drash/Sod megjegyzések:
+## Mikor használandó
 
-### 3.2 [Következő előfordulás/csoport]
--
+Nem egy igeversre/szakaszra, hanem egy **motívumra** fókuszáló, önálló tanulmány — jellemzően akkor, amikor a `PaRDeS_motivumok.md` napló egy motívumot (vagy egymással rokon motívum-csoportot) az **⭐ Emlékeztető küszöbön** (3+ előfordulás) túl jelez, és a felhasználó explicit kéri az önálló feldolgozást. Nem automatikus — mindig felhasználói jóváhagyás után készül.
 
-## 4. Fejlődéstörténeti ív
-[Hogyan alakul/gazdagodik a motívum a kánonon belül időrendben]
+---
 
-## 5. Kapcsolódó motívumok
-- ld. [[motivumlog]]
--
+## 1. Előfordulások összegyűjtése
 
-## 6. Teológiai szintézis
--
+Táblázatos áttekintés minden eddigi előfordulásról, a `PaRDeS_motivumok.md` napló releváns bejegyzése alapján:
 
-## 7. Összegzés
--
+| Igehely | Kapcsolódás | PaRDeS-szint, ahol felmerült |
+|---|---|---|
+| *(igehely)* | *(a motívum konkrét megjelenési formája ott)* | *(Peshat/Remez/Drash/Sod, és melyik tanulmányból)* |
 
-## 8. Hivatkozások / kapcsolódó tanulmányok
-- ld. [Lezart_tematikus_tanulmanyok_index.md](../Lezart_tematikus_tanulmanyok_index.md)
+---
+
+## 2. Eredeti nyelvi összevetés
+
+A motívum kulcsszavának/kulcsszavainak egymás mellé állítása az összes érintett igehelyen: ugyanazt jelenti-e mindegyik kontextusban, vagy van árnyalatnyi/jelentős eltérés (pl. azonos szó eltérő szerzőnél, eltérő grammatikai szerepben, vagy egy ószövetségi fogalom újszövetségi átértelmezésben)? Kiejtés minden szónál kötelező.
+
+---
+
+## 3. A PaRDeS keretrendszer — magára a motívumra alkalmazva
+
+*(Nem egyetlen versre, hanem a motívum egészére — az egyes rétegek itt a motívum összes előfordulásának együttes értelmezését adják.)*
+
+**Peshat** *(részletesen kifejtve)* — mit állítanak a szövegek szó szerint, együttesen, a motívumról.
+
+**Remez** — hogyan kapcsolódnak egymáshoz ezek a szövegek egy nagyobb bibliai íven belül; milyen mintázat rajzolódik ki az előfordulások sorrendjéből/elhelyezkedéséből.
+
+**Drash** *(részletesen kifejtve)* — milyen egységes teológiai/erkölcsi tanítás vonható le a motívum egészéből; ha a szövegek között feszültség vagy fejlődés van, ez maga is a Drash része lehet (nem kell mesterséges egységet erőltetni).
+
+**Sod** *(tömör, fegyelmezett)* — csak a Peshat/Remez/Drash rétegekből ténylegesen levezethető mélyebb igazság.
+
+⚠️ **Vitatott pontok** — ha a motívum értelmezése (pl. egy adott fogalom teológiai tartalma, trichotomista/dichotomista kérdés stb.) tudományosan vitatott, nevesített képviselőkkel bemutatva.
+
+---
+
+## 4. Kapcsolódás a kutatási sablonhoz (opcionális)
+
+Ha a motívum érinti a pünkösdi/karizmatikus teológiai hangsúlyokat (pl. a research sablon A/B/C moduljainak valamelyik pontját), itt egy tömör, célzott szakirodalmi kitekintés illeszthető be — a research sablon forráskezelési szabályai szerint (nevesített szerzők, felekezeti hovatartozás zárójelben, alapmű vs. friss szakirodalom megkülönböztetve). Ha a motívumhoz nincs kifejezetten pünkösdi/karizmatikus szakirodalmi vonatkozás, ez a pont kihagyandó — nem kell erőltetni.
+
+---
+
+## 5. Alkalmazás és tanítványság
+
+A bővített sablon logikája szerint: alapértelmezésben a válaszok a tanulmány saját Peshat/Remez/Drash/Sod megállapításaiból vezetendők le. Ha egy adott motívumhoz kifejezetten elmentett szabály köti egy nevesített tanító/szerző szemszögének bevonását (lásd a memóriában rögzített, motívum-specifikus tanító-listákat), azt itt, forrásmegjelöléssel kell megjeleníteni — kizárólag az adott szerző(k) ellenőrizhető tanításaira támaszkodva. Ha nincs elég megbízható forrás, ezt explicit jelezni kell, nem szabad gyengébb anyaggal pótolni.
+
+### Nevesített tanítói egyezés-keresés módszere (mindig ez az öt lépés, ebben a sorrendben)
+
+1. **Motívum-kiemelés** — a tanulmány Peshat/Remez/Drash/Sod megállapításaiból a konkrét, teológiailag súlyos csomópontok kiszűrése.
+2. **Névsor a jóváhagyott listából** — csak az elmentett, jóváhagyott tanítói körből dolgozz, ne tetszőleges nevekből (lásd a memóriában rögzített, motívum-specifikus és általános tanítói listákat).
+3. **Célzott keresés motívumonként** — minden motívumhoz külön keresés: tanító neve + a konkrét vers/téma; nem elég az általános tematikus egyezés.
+4. **Forrás-ellenőrzés** — csak akkor vehető fel, ha elsődleges vagy megbízható másodlagos forrás (könyv/kiadói leírás, prédikáció-átirat, elemző cikk idézettel) ténylegesen az adott igehelyre/témára hivatkozik; puszta asszociatív/tematikus rokonság nem elég.
+5. **Hiány explicit jelzése** — ha egy motívumhoz nem található így megbízható, nevesíthető anyag, ezt nyíltan jelezni kell, nem szabad gyengébb vagy csak áttételes kapcsolattal pótolni.
+
+### Forrás-megbízhatóság jelölése
+
+Minden nevesített tanítói találatnál kötelezően jelölendő a forrás erőssége:
+
+- ✅ **erős/közvetlen** — a tanító önálló, kifejezetten a motívumra szánt művet/tanítás-sorozatot szentelt a témának (pl. dedikált könyv vagy prédikáció-sorozat, amely konkrétan az adott igehelyet/motívumot exegetálja)
+- ⚠️ **részleges/beágyazott** — van konkrét, idézhető forrás a tanítótól a témában, de az egy tágabb, más fókuszú tanítás/mű részeként jelenik meg, nem önálló, dedikált feldolgozásként
+
+A jelölést a tanító neve mellett, közvetlenül a forrásmegjelölésnél kell feltüntetni.
+
+---
+
+## 6. Napló-frissítés
+
+A tanulmány végén a `PaRDeS_motivumok.md` naplóban a feldolgozott motívumot **"lezárt/önállóan feldolgozott témaként"** kell megjelölni, hogy az ⭐ Emlékeztető küszöb szakasz ne ajánlja fel újra ugyanazt a motívumot önálló tanulmányra. A motívum további, jövőbeli előfordulásai (ha lesznek) ettől függetlenül továbbra is bekerülnek a kulcsszó-indexbe és a részletes bejegyzésbe, csak a "még feldolgozandó" jelleg szűnik meg.
+
+**Fájlnév-konvenció:** a lezárt tematikus tanulmány fájlneve egységesen `[Motívum]_tematikus.md` formátumot követi (pl. `Tehom_tematikus.md`), ékezet és kötőjel nélkül.
+
+**Index-frissítés:** a motívumlog frissítésével egy időben a `Lezart_tematikus_tanulmanyok_index.md` projektfájlt is frissíteni kell egy új sorral (motívum, fájlnév, érintett igehelyek, megjegyzés) — ez a fájl az összes lezárt tematikus tanulmány központi, strukturált listája, chat-szálakon átívelő visszakereshetőség céljából.
+
+---
+
+## Terminológiai és formai szabályok (megegyezik a többi sablonnal)
+
+- „Szentlélek" helyett mindig **„Szent Szellem"**
+- Minden görög/héber szótári szó mellett feltüntetve a **kiejtés**
+- Igehely-rövidítések egységesen, szóköz nélkül (pl. „1Thessz 5:23")
+- A Szent Pál Akadémia-fordításból csak rövid idézetek; teljes versekhez a Károli-fordítás
+
+## Konfliktuskezelés
+Ha két elmentett szabály ütközni látszik, explicit rákérdezés következik, nem önkényes döntés.
+
+---
+
+*A tanulmány véglegesítése előtt belső önellenőrzés fut le minden fenti szabályra.*
