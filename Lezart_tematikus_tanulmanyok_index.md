@@ -1,8 +1,8 @@
 # Lezárt tematikus tanulmányok — index
 
-*Ez a fájl a PaRDeS-projekt minden ✅ LEZÁRVA státuszú, önálló tematikus tanulmányát listázza egy helyen, hogy chat-szálakon átívelően is könnyen visszakereshetők legyenek. Forrás: `PaRDeS_motivumok.md (GitHub-repóban verziószám nélkül; Claude Projects-en belül a mindenkori legfrissebb vXX fájl, jelenleg v43)` (a mindenkori legfrissebb motívumlog-verzió az egyetlen hiteles forrás — ez az index abból generálódik, és minden újabb lezáráskor frissítendő.)*
+*Ez a fájl a PaRDeS-projekt minden ✅ LEZÁRVA státuszú, önálló tematikus tanulmányát listázza egy helyen, hogy chat-szálakon átívelően is könnyen visszakereshetők legyenek. Forrás: `PaRDeS_motivumok.md (GitHub-repóban verziószám nélkül; Claude Projects-en belül a mindenkori legfrissebb vXX fájl, jelenleg v45)` (a mindenkori legfrissebb motívumlog-verzió az egyetlen hiteles forrás — ez az index abból generálódik, és minden újabb lezáráskor frissítendő.)*
 
-*Utolsó frissítés: 2026.08.21, a v43 motívumlog alapján — hozzáadva #7 (Isten fiai/Nefilim/Gibborim), javítva #5 fájlnév-hivatkozása.*
+*Utolsó frissítés: 2026.08.22, a v45 motívumlog alapján — felvéve #8 (Melkizedek — teljes tematikus feldolgozás, `Melkizedek_tematikus.md`, kiegészítve a "Lezárt mélyelemzések" szekció meglévő #1 tételét).*
 
 ---
 
@@ -13,8 +13,19 @@
 | 3 | **Hádész (seól) — a halottak birodalma** | `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` | Zsolt 16:10 ⇒ ApCsel 2:27,31 → Luk 16:23 → Jel 1:18 → Jel 20:13-14 (4 előfordulás) | A #2 kibővített tanulmányon belül azonosított, de lexikailag önálló motívum. |
 | 4 | **Segítségül hívni az Úr nevét — Énós kora** | `Segitsegul_hivni_az_Urat_tematikus.md` | 1Móz 4:26 → 12:8 → 13:4 → 21:33 → 26:25 (5 előfordulás) | Kánoni kitekintés (nem külön számlálva): 1Kir 18:24-26, 2Kir 5:11, Zsolt 116, Sof 3:9, Zak 13:9, Jóel 3:5/2:32 ⇒ ApCsel 2:21 ⇒ Róm 10:13. |
 | 5 | **Rafeusok/óriás-népek** | `Rafaim_tematikus.md` | 1Móz 14:5 → 14:6 → 15:20 → 4Móz 13:33 → 5Móz 2:10-11,20-21, 3:11,13 → Józs 12:4/13:12 → 2Sám 21:15-22 → Jób 26:5 → Zsolt 88:11 → Péld 2:18/9:18/21:16 → Ézs 14:9, 26:14,19 (teljes lexikai ív) | Kivételesen a ⭐ küszöb elérése ELŐTT feldolgozva, felhasználói explicit kérésre. Rokonságban a #3 (hádész/seól) és #7 (Isten fiai/Nefilim/Gibborim) tanulmánnyal, de lexikailag mindkettőtől elkülönül. |
-| 6 | **Pneuma/pszükhé megkülönböztetés** | `Pneuma_pszukhe_megkulonboztetes_tematikus.md` | 1Thessz 5:23 ↔ Zsid 4:12; 1Móz 2:7 ⇒ 1Kor 15:45; 1Kor 2:14-15 (4 előfordulás) | Named teachers: Kenneth Hagin, Derek Prince (✅ erős forrás), Charles Capps (⚠️ beágyazott forrás). 2026.08.21-én lezárva, bővítve 1Kor 2:14-15-tel (Drash-réteg megerősítése). |
+| 6 | **Pneuma/pszükhé megkülönböztetés** | `Pneuma_pszukhe_megkulonboztetes_tematikus.md` | 1Thessz 5:23 ↔ Zsid 4:12; 1Móz 2:7 ⇒ 1Kor 15:45; Luk 1:46-47; 1Kor 2:14-15 (5 előfordulás) | Named teachers: Kenneth Hagin ✅, Derek Prince ✅, Charles Capps ⚠️ beágyazott. Luk 1:46-47: negyedik, valódi lexikai előfordulás (nominális alak). 1Kor 2:14-15: ötödik, melléknévi alakú (ψυχικός/πνευματικός), elsősorban Drash-szintű megerősítés — grammatikailag megkülönböztetve a másik négytől. 2026.08.22-én lezárva (v3). |
 | 7 | **Isten fiai — angyali/Séthita vita (Nefilim/Gibborim komplexum)** | `Isten_fiai_Nefilim_Gibborim_tematikus.md` | 1Móz 6:1-4 ↔ Jób 1:6, 2:1, 38:7; Júd 1:6, 1:14-15; 2Pét 2:4-5 (1 fő előfordulás, gazdag kereszthivatkozási hálóval) | **FONTOS ELHATÁROLÁS a #5-től**: tematikusan rokon a Rafeusok-motívummal, de lexikailag és fájl szerint is önálló. Named teacher: Derek Prince ("Because of the Angels", ✅ erős forrás). 2026.08.21-én lezárva. |
+| 8 | **Melkizedek — király-pap rendje, kenyér és bor** | `Melkizedek_tematikus.md` | 1Móz 14:18-20 ⇒ Zsolt 110:4 ⇒ Zsid 5-7 (1 fő genezisi előfordulás, gazdag ÓSZ⇒ÚSZ kánoni ívvel) | Kiegészíti a "Lezárt mélyelemzések" szekció #1 tételét (ugyanaz a motívum, más feldolgozási forma): motívum-szintű teljes Peshat/Remez/Drash/Sod bontás + nevesített tanítói keresés. Named teacher: Derek Prince ✅ erős forrás; Hagin/Copeland/Capps/Roberts/Osborn/Wigglesworth — gap. ⚠️ két elkülönített vita: Melkizedek kiléte (krisztofánia vs. irodalmi-retorikai) és Gen 14↔Zsolt 110 irány (Rowley/Nel vs. Kidner/Waltke/Hamilton). 2026.08.22-én lezárva. |
+
+---
+
+## Lezárt mélyelemzések
+
+*A `5_Melyelemzes_prompt_sablon.md` szerint készült, két/három igehely összevetésére fókuszáló elemzések — elkülönítve a fenti, `4_PaRDeS_tematikus_sablon.md` szerinti tematikus lezárásoktól, mivel nem követik a teljes motívum-szintű Peshat/Remez/Drash/Sod bontást, sem a nevesített tanítói keresést.*
+
+| Motívum/igehelyek | Fájlnév | Megjegyzés |
+|---|---|---|
+| Melkizedek — 1Móz 14:18-20 / Zsolt 110:4 / Zsid 5-7 | `1Mozes_14_18-20_Zsolt110_4_Zsid5-7_melyelemzes.md` | A τάξις/"rendje" fogalom LXX-technikai súlya, Zsid 7:3 *argumentum e silentio* (Rooke, *Biblica* 90 [2009]), ⚠️ Gen 14↔Zsolt 110 irány-vita (Rowley/Nel vs. Kidner/Waltke/Hamilton). 2026.08.17-én lezárva (napló v42). Lásd `Melkizedek_sablon_osszehasonlitas.md` a mélyelemzés/tematikus sablon szerkezeti eltéréséről, és a fenti táblázat #8 tételét a kiegészítő teljes tematikus feldolgozásért. |
 
 ---
 

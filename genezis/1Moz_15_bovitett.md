@@ -161,7 +161,7 @@ Ez a kapcsolat megmutatja, hogy Ábrám szövetségkötése egy jól ismert kora
 
 ## Motívum-napló frissítés
 
-Ez a tanulmány több új, illetve ismétlődő motívumot azonosított (hit mint betudott igazság — 15:6, első előfordulás; brit bén habetárim / a szövetség szertartása — 15:9-17, első és jellegzetes előfordulás; mély álom/tardémá — 2. előfordulás 2:21-hez kötve; 400 éves szolgaság próféciája — előremutató 2Móz 12:40-re; Emóri bűnének betelte — Isten ítéletének türelmes időzítése). A `PaRDeS_motivumok_v35.md` frissítése — mind a hét szerkezeti szakaszban — **külön kérésre** készül; szólj, ha kéred a „Motívum naplót".
+Ez a tanulmány több új, illetve ismétlődő motívumot azonosított (hit mint betudott igazság — 15:6, első előfordulás; brit bén habetárim / a szövetség szertartása — 15:9-17, első és jellegzetes előfordulás; mély álom/tardémá — 2. előfordulás 2:21-hez kötve; 400 éves szolgaság próféciája — előremutató 2Móz 12:40-re; Emóri bűnének betelte — Isten ítéletének türelmes időzítése). ✅ A `PaRDeS_motivumok.md` naplóban ez a frissítés — mind a hét szerkezeti szakaszban — azóta megtörtént (v36).
 
 ---
 
