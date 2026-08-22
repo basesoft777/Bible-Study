@@ -1,5 +1,7 @@
 # PaRDeS motívum-napló (kulcsszavas)
 
+*v44 — 2026.08.22 ("pneuma/pszükhé megkülönböztetés" motívum lezárva, önálló tematikus tanulmányban feldolgozva (`Pneuma_pszukhe_megkulonboztetes_tematikus.md`, v3): a motívum 3 eredeti előfordulása (1Thessz 5:23 → Zsid 4:12 → 1Móz 2:7 ⇒ 1Kor 15:45) két új előfordulással bővült — **Luk 1:46-47** (Mária éneke, ψυχή/πνεῦμα ugyanabban a grammatikai szerepben, közvetlen párhuzamos szerkezetben, valódi negyedik lexikai előfordulás) és **1Kor 2:14-15** (a "természet szerinti ember", ψυχικός, és a "szellemi ember", πνευματικός, páli megkülönböztetése — melléknévi alakban, ezért módszertanilag megkülönböztetve a másik négy nominális előfordulástól, elsősorban Drash-szintű megerősítésként számolva). Összesen 5 előfordulás. ⚠️ vitatott pont rögzítve: trichotomista olvasat (Franz Delitzsch, Watchman Nee) vs. dichotomista/retorikai olvasat (F.F. Bruce). Nevesített tanítói alkalmazás mindhárom jóváhagyott forrással: Kenneth Hagin ✅ (*Spirit, Soul and Body* sorozat), Derek Prince ✅ (*Spirit, Soul and Body* tanítás-sorozat), Charles Capps ⚠️ részleges/beágyazott (*God's System for Your Success*). **Korrekció:** a `Lezart_tematikus_tanulmanyok_index.md`-ben 2026.08.21-én egy korábbi frissítés (commit 6c6ba8a) már megelőlegezte az 1Kor 2:14-15 felvételét, de az akkor sem a tanulmányfájlba, sem a naplóba nem került be — ez a frissítés pótolja a hiányzó tartalmat. A motívum "lezárt/önállóan feldolgozott témaként" jelölve, kikerült az ⭐ Emlékeztető küszöb aktív ajánlásai közül.)*
+
 *v43 — 2026.08.21 frissítve (2. frissítés: "Isten fiai — angyali/Séthita vita" motívum lezárva, önálló tematikus tanulmányban (`Isten_fiai_Nefilim_Gibborim_tematikus.md`, `4_PaRDeS_tematikus_sablon.md` szerint) — Jób 1:6, 2:1, 38:7 (bené ha'Elohim mennyei udvar-kontextusa) felvéve kiegészítő kereszthivatkozásként; named teachers: Derek Prince (✅ erős/közvetlen forrás: "Because of the Angels" tanítás-sorozat); nevesített pünkösdi ószövetség-szakértőknél (Moore, Martin, Thomas) forráshiány jelezve, nem pótolva. FONTOS ELHATÁROLÁS: ez a lezárás NEM azonos a korábban (v35, 2026.08.16) lezárt "Rafeusok/óriás-népek" motívummal (1Móz 14:5) — a két motívum tematikusan rokon, de lexikailag és fájl szerint is elkülönül; a Rafeusok-motívum helyes fájlneve ezzel egy időben javítva `Rafaim_tematikus.md`-re (korábban tévesen `Rafaim_Gibborim_Nefilim_tematikus.md` néven szerepelt, összekeveredve a jelen motívummal). Nyitva maradt kérdés: a "shem — név szerzése mint lázadás" (6:4↔11:4 Bábel-előremutatás) motívum felvétele külön jóváhagyást igényel, ebben a frissítésben nem történt meg. Ez a fájl marad v43 néven — nem keletkezik új verziószámú fájl, csak a tartalom frissül helyben.)*
 
 *v43 — 2026.08.17 (szinkronizációs bejegyzés: ellenőrzés során kiderült, hogy a projektben a v42 volt a legfrissebb, miközben a korábban kiosztott munkapéldány [v40] erről nem tudott. Tartalmi változás nincs — a v43 a hiteles v40→v41→v42 lánc egyenes folytatása, a v41-ben rögzített "segítségül hívni az Úr nevét" tematikus lezárással (5 genezisi előfordulás, önálló tanulmány) és a v42-ben rögzített Melkizedek-mélyelemzés lezárásával együtt. A lánc innentől v43-ként folytatódik.)*
@@ -94,7 +96,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 **Antropológia**
 - teljes ember / holisztikusság (1)
-- pneuma/pszükhé megkülönböztetés (3 előfordulás — elérte az önálló küszöböt)
+- pneuma/pszükhé megkülönböztetés (5 előfordulás — ✅ LEZÁRVA, önálló tematikus tanulmányban feldolgozva: `Pneuma_pszukhe_megkulonboztetes_tematikus.md`)
 - Isten mindent lát / szív vizsgálata (2)
 - por/formáltatás (*jacar*-*afar*) — emberi esendőség (3 előfordulás — elérte a küszöböt)
 - nem jó egyedül / *ézer kenegdó* — társ mint ajándék (1)
@@ -187,11 +189,9 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 ## ⭐ Emlékeztető küszöb (3+ előfordulás)
 
-**"pneuma/pszükhé megkülönböztetés"** — 3+ előfordulásnál (változatlan).
-
 **"por/formáltatás (jacar-afar) — emberi esendőség"** — 3+ előfordulásnál (változatlan, lásd v10).
 
-**"pneuma/pszükhé megkülönböztetés" — ⭐ KÜSZÖBÖN TÚL, 3. előfordulás.** 1Thessz 5:23 (a kiinduló szövegbeli hármas felosztás: pneuma-pszükhé-szóma), majd Zsid 4:12 (az ige mint kard, amely "elválasztja" a pszükhét és a pneumát), majd 1Móz 2:7 ⇒ 1Kor 15:45 (az első Ádám "élő lélekké" — pszükhé — lett, szemben az utolsó Ádámmal, aki "megelevenítő szellemmé" — pneuma). A motívum önálló tematikus feldolgozásra alkalmassá vált (`4_PaRDeS_tematikus_sablon.md` szerint), felhasználói jóváhagyásra várva. Alkalmazásnál a tervezett named teachers: Kenneth Hagin (*Spirit, Soul and Body*), Derek Prince, Charles Capps; kizárva: James Dunn, Robert Gundry, J. Rodman Williams.
+**"pneuma/pszükhé megkülönböztetés" — ✅ LEZÁRVA, önálló tematikus tanulmányban feldolgozva (`Pneuma_pszukhe_megkulonboztetes_tematikus.md`).** 1Thessz 5:23 (a kiinduló szövegbeli hármas felosztás: pneuma-pszükhé-szóma), Zsid 4:12 (az ige mint kard, amely "elválasztja" a pszükhét és a pneumát), 1Móz 2:7 ⇒ 1Kor 15:45 (az első Ádám "élő lélekké" — pszükhé — lett, szemben az utolsó Ádámmal, aki "megelevenítő szellemmé" — pneuma, tematikus/ellentétező, NEM lexikai kapocs), negyedikként **Luk 1:46-47** (Mária éneke: "Magasztalja az én lelkem [ψυχή] az Urat, és örvendez az én szellemem [πνεῦμα] az én megtartó Istenemben" — ugyanabban a grammatikai szerepben, közvetlen párhuzamos szerkezetben, valódi lexikai kapocs), és ötödikként **1Kor 2:14-15** (a "természet szerinti ember", ψυχικός, és a "szellemi ember", πνευματικός, páli megkülönböztetése — melléknévi alakban, ezért a másik négy nominális előfordulástól grammatikailag megkülönböztetve, elsősorban Drash-szintű megerősítésként számolva). ⚠️ Vitatott: trichotomizmus (Delitzsch, Watchman Nee) vs. dichotomizmus/retorikai olvasat (F.F. Bruce). Nevesített tanítói alkalmazás: Kenneth Hagin ✅, Derek Prince ✅, Charles Capps ⚠️ részleges/beágyazott. A motívum a továbbiakban nem szerepel aktív ⭐ ajánlásként; jövőbeli előfordulásai továbbra is bekerülnek az indexbe.
 
 **"tesuká/másal visszhang — bűn mint uralkodni akaró vágy"** — **FIGYELEM, közel a küszöbhöz (2 előfordulás).** Az 1Móz 4:7 szó szerint, ugyanazzal a két ritka szóval (תְּשׁוּקָה *tesuká*, מָשַׁל *másal*) idézi vissza az 1Móz 3:16-ot — konkordancia-alapon megerősített, nem csupán tartalmi kapcsolat (a *tesuká* szó összesen csak háromszor fordul elő a Szentírásban: 1Móz 3:16, 1Móz 4:7, Én 7:11). Egy jövőbeli Énekek éneke-tanulmány elérné a 3+ küszöböt, és önálló tematikus feldolgozást tenne indokolttá ("Vágyakozás és uralom — egy visszatérő szópár teológiája").
 
@@ -265,7 +265,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 |---|---|---|---|---|
 | **teljes ember / holisztikusság** | Antropológia | ÓSZ→ÚSZ (↔) | 1 | 5Móz 6:5 ↔ 1Thessz 5:23 |
 | **lehelet / élet lehelete** | Pneumatológia | ÓSZ→ÚSZ (←) | 2 | 1Móz 2:7 ← 1Thessz 5:23; Jób 33:4 ↔ 1Móz 2:7 |
-| **pneuma/pszükhé megkülönböztetés** | Antropológia | ÚSZ↔ÚSZ / ÓSZ⇒ÚSZ | 3 | Zsid 4:12 ↔ 1Thessz 5:23; 1Móz 2:7 ⇒ 1Kor 15:45 |
+| **pneuma/pszükhé megkülönböztetés** ✅ *(lezárva)* | Antropológia | ÚSZ↔ÚSZ / ÓSZ⇒ÚSZ | 5 | Zsid 4:12 ↔ 1Thessz 5:23; 1Móz 2:7 ⇒ 1Kor 15:45; Luk 1:46-47; 1Kor 2:14-15 |
 | **megszentelődés mint Isten munkája** | Szoteriológia | ÚSZ↔ÚSZ | 1 | Fil 1:6; 2:13 ↔ 1Thessz 5:23 |
 | **test mint a megváltás tárgya** | Eszkatológia | ÚSZ↔ÚSZ | 2 | Róm 8:23; 1Kor 15:42-44 ⇒ 1Thessz 5:23; Róm 8:10-11 |
 | **Isten mindent lát / szív vizsgálata** | Antropológia | ÓSZ→ÚSZ (↔) | 2 | Zsolt 139:1-4 ↔ Zsid 4:12; Jer 17:9-10 ↔ Zsid 4:12 |
@@ -500,6 +500,16 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 ### Isten meghallja a nyomorultat — sáma-oni / Jismáél névadás *(Drash — Szoteriológia, tematikus)* — új
 - **1Móz 16:11** (שָׁמַע, *sáma*, "meghallani" + עֳנִי, *oni*, "nyomorúság") — Ismáel neve ("Isten meghallja") maga teológiai állítás: Isten figyel a társadalom peremén lévőkre is, még akkor is, ha emberi hiba vezetett a helyzetükhöz. **Előremutató, nyitott szál:** a mintázat megerősítésre kerül **2Móz 3:7**-nél ("meghallottam az ő sanyargatóik miatt való kiáltását") — ugyanaz a *sáma* gyök, rokon *oni*/*inná* szótővel.
 
+### pneuma/pszükhé megkülönböztetés *(Antropológia)* — ✅ LEZÁRVA, önálló tematikus tanulmányban feldolgozva (`Pneuma_pszukhe_megkulonboztetes_tematikus.md`)
+- **1Thessz 5:23** — Pál imája a *pneuma*, *pszükhé* és *szóma* hármas, egyenként névelővel ellátott felsorolásával.
+- **Zsid 4:12** — Isten Igéje "elhat a szellem és lélek... megoszlásáig" (μερισμός, *meriszmosz*) — a szerző explicit szétválasztásról beszél, ami feltételezi, hogy a kettő a hétköznapi tapasztalatban összemosódik.
+- **1Móz 2:7 ⇒ 1Kor 15:45** — az ember *nefes chajjá* ("élő lélekké") lett Isten leheletétől; Pál ezt szembeállítja az utolsó Ádámmal, aki *pneuma zóopoiun* ("megelevenítő szellemmé") lett. **Fontos elhatárolás:** a *pneuma* szó mindhárom nominális újszövetségi helyen (1Thessz 5:23, Zsid 4:12, 1Kor 15:45) ugyanaz a görög szó — valódi lexikai kapocs. Az 1Móz 2:7 ↔ 1Kor 15:45 viszony ezzel szemben **tematikus, ellentétező párhuzam** (a héber *nefes chajjá* és a görög *pneuma zóopoiun* nem azonos szótő) — Pál tudatosan szembeállítja, nem azonosítja őket.
+- **Luk 1:46-47** — Mária éneke (Magnificat): "Magasztalja az én lelkem [ψυχή, *pszükhé*] az Urat, és örvendez az én szellemem [πνεῦμα, *pneuma*] az én megtartó Istenemben" — a két szó ugyanabban a grammatikai szerepben (alany), közvetlen párhuzamos szerkezetben áll: negyedik, valódi lexikai előfordulás, a klasszikus trichotomista prooftext-listák (1Thessz 5:23, 1Kor 15:44-45, Luk 1:46-47, Zsid 4:12) szerinti negyedik tag.
+- **1Kor 2:14-15** — Pál a *pszükhé*/*pneuma* melléknévi alakjaiból (ψυχικός, πνευματικός) épít fel egy embertípus-megkülönböztetést: a "természet szerinti ember" nem fogadja be Isten Szellemének dolgait, a "szellemi ember" mindent megítél. **Módszertani megjegyzés:** ez ötödik előfordulásként grammatikailag eltér az előző négytől (melléknévi alak, és a *pneuma* itt elsődlegesen Isten Szellemére utal, nem az emberi alkotóelemre) — rokon, de nem azonos súlyú lexikai kapocs, elsősorban Drash-szintű megerősítésként számolva.
+- ⚠️ **Vitatott pont: trichotomizmus vs. dichotomizmus.** Trichotomista hang: Franz Delitzsch (*A System of Biblical Psychology*) és Watchman Nee (*The Spiritual Man*) szerint a *pneuma* és *pszükhé* ontológiailag is elkülönülő alkotóelemek. Dichotomista hang: F.F. Bruce (*Hebrews*, NICNT) a Zsid 4:12 "szétválasztást" elsősorban retorikai, nem metafizikai megkülönböztetésként olvassa.
+- **Nevesített tanítói alkalmazás:** Kenneth Hagin ✅ erős/közvetlen (*Man on Three Dimensions*, *The Human Spirit* — "A Study of the Spirit, Soul and Body" sorozat); Derek Prince ✅ erős/közvetlen (*Spirit, Soul and Body* tanítás-sorozat, "Triune Man At Creation" és "Functions Of Spirit, Soul And Body", közvetlenül 1Thessz 5:23 és 1Móz 2:7 alapján); Charles Capps ⚠️ részleges/beágyazott (*God's System for Your Success* — a szélesebb dominion/szavak ereje tanítás részeként, nem önálló dedikált mű).
+- A motívum a továbbiakban nem szerepel aktív ⭐ ajánlásként; jövőbeli előfordulásai (ha lesznek) továbbra is bekerülnek az indexbe.
+
 ---
 
 ## Könyv szerinti index
@@ -515,12 +525,12 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | **János evangéliuma** | 2 | Ján 1:1,14→Zsid 4:12; Ján 1:1-3→1Móz 1:1 |
 | **Kolossé** | 2 | Kol 1:16-17→1Móz 1:1; Kol 1:15→1Móz 1:2-2:3 |
 | **Róma** | **9 (frissítve)** | Róm 8:23→1Thessz 5:23; Róm 8:11→Róm 8:10 (belső); Róm 16:20→1Móz 3:15; Róm 5:12-14→1Móz 5 (halál refrén); Róm 10:13→1Móz 4:26 (Énós); Róm 9:27→1Móz 7:23 (maradék-elv); Róm 10:7→1Móz 1:2/7:11/8:2 (ábüsszosz, tematikus tanulmány); Róm 5:12-21→1Móz 2-3 (Ádám-Krisztus tipológia, mélyelemzésből); **Róm 4:3→1Móz 15:6 (hit mint betudott igazság, LXX szó szerinti idézet, új)** |
-| **1Korinthus** | 2 | 1Kor 15:42-44→1Thessz 5:23; 1Kor 15:45→1Móz 2:7 |
+| **1Korinthus** | **3 (frissítve)** | 1Kor 15:42-44→1Thessz 5:23; 1Kor 15:45→1Móz 2:7; **1Kor 2:14-15→1Thessz 5:23/Zsid 4:12/1Móz 2:7⇒1Kor 15:45/Luk 1:46-47 (pneuma/pszükhé, tematikus tanulmány, új, melléknévi alak)** |
 | **4Mózes** | 1 | 4Móz 3:7-8→1Móz 2:15 |
 | **Malakiás** | 1 | Mal 2:14-15→1Móz 2:18-24 |
 | **Efézus** | 4 | Ef 5:31-32→1Móz 2:24; Ef 2:8→1Móz 6:8 (chen); Ef 5:2→1Móz 8:21 (kedves illat); Ef 2:13→1Móz 9:27 (Jáfet, tematikus) |
 | **Jelenések** | 9 | Jel 1:16→Zsid 4:12; Jel 22:1-2→1Móz 2:8-9; Jel 12:9→1Móz 3:1-6; Jel 9:1-2,11; 11:7; 17:8; 20:1,3→1Móz 1:2/7:11/8:2 (ábüsszosz, tematikus tanulmány); Jel 1:18; 20:13-14→hádész-motívum (tematikus tanulmány) |
-| **Lukács evangéliuma** | 2 | Luk 8:31→1Móz 1:2/7:11/8:2 (ábüsszosz, tematikus tanulmány); Luk 16:23→hádész-motívum (tematikus tanulmány) |
+| **Lukács evangéliuma** | **3 (frissítve)** | Luk 8:31→1Móz 1:2/7:11/8:2 (ábüsszosz, tematikus tanulmány); Luk 16:23→hádész-motívum (tematikus tanulmány); **Luk 1:46-47→1Thessz 5:23/Zsid 4:12/1Móz 2:7⇒1Kor 15:45 (pneuma/pszükhé, tematikus tanulmány, új)** |
 | **2Péter levele** | 2 | 2Pét 2:4-5→1Móz 6:1-4 (Isten fiai, tematikus/szerkezeti); 2Pét 2:4 (ταρταρόω)→1Móz 6:1-4 (tartarosz, tematikus tanulmány) |
 | **Máté** | 2 | Máté 27:51→1Móz 3:24; Máté 3:16→1Móz 8:11 (galamb, tematikus) |
 | **Hoseás** | 1 (elfogadott projekt-olvasat, FRISSÍTVE) | Hós 6:7 (+8:1) ↔ 1Móz 2-3 (⚠️ tudományos vita dokumentálva, ld. Kulcsszavak részletesen) |
