@@ -1,6 +1,6 @@
 # GitHub kézi feltöltési workflow
 
-*v1 — 2026.08.17*
+*v2 — 2026.08.22 (Commit-üzenet konvenció hozzáadva a motívumlog-frissítésekhez, hogy a `git log` önmagában, a fájl megnyitása nélkül is kereshető legyen tartalmi kulcsszavakra)*
 
 Ez a dokumentum rögzíti, hogyan kerülnek fel az elkészült PaRDeS-tanulmányok és sablonfájlok GitHubra, a Claude Projects-en belüli meglévő munkafolyamat kiegészítéseként (nem helyette).
 
@@ -57,6 +57,25 @@ Ha egy korábbi verzió megtekintésére van szükség: a fájl GitHub-oldalán 
    - Görgess le, írj egy rövid commit-üzenetet (pl. `"1Móz 17 bővített tanulmány hozzáadva"`).
    - **Commit changes.**
 4. **Ha a fájl egy már meglévő fájl frissítése** (pl. motívumlog vagy index-fájl az A) opció esetén): nyisd meg a meglévő fájlt a repóban, kattints a ceruza ikonra (**Edit**), töröld a régi tartalmat, illeszd be az újat, majd **Commit changes**.
+
+---
+
+## Commit-üzenet konvenció motívumlog-frissítéseknél
+
+A `motivumlog/PaRDeS_motivumok.md` fájl felülírásakor a commit-üzenet ne generikus szöveg legyen (pl. "frissítés", "update"), hanem a napló tetején lévő aktuális changelog-bejegyzés lényege, 1 mondatban:
+
+```
+vXX — [dátum]: [changelog lényege, 1 mondatban]
+```
+
+Példa:
+```
+v43 — 2026.08.17: Melkizedek mélyelemzés lezárva, τάξις/rendje LXX-technikai súllyal kiegészítve, ⚠️ Gen14↔Zsolt110 irány-vita rögzítve
+```
+
+**Cél:** a `git log --oneline` önmagában, a fájl megnyitása nélkül is kereshető legyen tartalmi kulcsszavakra (pl. `git log --grep="LEZÁRVA"` az összes lezárási commit listázásához) — a naplón belüli `grep "✅.*LEZÁRVA"` keresés kiegészítéseként, nem helyette.
+
+Ugyanez a konvenció ajánlott a `Lezart_tematikus_tanulmanyok_index.md` frissítésekor is: a commit-üzenet nevezze meg a lezárt motívumot (pl. `"Index frissítve: Rafaim_tematikus.md lezárása felvéve"`).
 
 ---
 
