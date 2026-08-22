@@ -8,7 +8,7 @@
 
 | # | Motívum | Fájlnév | Érintett igehelyek | Megjegyzés |
 |---|---|---|---|---|
-| 1 | **Tehóm — a mélység motívuma** | `Tehom_tematikus.md` | 1Móz 1:2 ↔ 7:11 ↔ 8:2 ↔ 49:25 ↔ 2Móz 15:5,8 (5 előfordulás) | Mélyelemzéssel Tóra-szintű ívvé kiterjesztve (`Melyelemzes_1Moz7_11_2Moz15_5-8.md`). Teljes lexikai komplexum (tehóm/abüsszosz/hádész/tartarosz) tovább kibővítve — ld. #2. |
+| 1 | **Tehóm — a mélység motívuma** | `Tehom_tematikus.md` | 1Móz 1:2 ↔ 7:11 ↔ 8:2 ↔ 49:25 ↔ 2Móz 15:5,8 (5 előfordulás) | Tóra-szintű ívvé kiterjesztve (2Móz 15:5,8-cal); a tematikus tanulmány önmagában tartalmazza a teljes elemzést, külön mélyelemzés nem készült hozzá. Teljes lexikai komplexum (tehóm/abüsszosz/hádész/tartarosz) tovább kibővítve — ld. #2. |
 | 2 | **Tehóm-Abüsszosz-Hádész-Tartarosz (kibővített komplexum)** | `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` | LXX-közvetített ÚSZ-visszhang (ábüsszosz); ld. #1 és #3 | A #1 lezárt tanulmány lexikai kiterjesztése. **Átnevezve** (korábbi név: `Tehóm-Abüsszosz-Hádész-Tartarosz_tematikus.md`) — a fájlnév-konvenciónak megfelelően. |
 | 3 | **Hádész (seól) — a halottak birodalma** | `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` | Zsolt 16:10 ⇒ ApCsel 2:27,31 → Luk 16:23 → Jel 1:18 → Jel 20:13-14 (4 előfordulás) | A #2 kibővített tanulmányon belül azonosított, de lexikailag önálló motívum. |
 | 4 | **Segítségül hívni az Úr nevét — Énós kora** | `Segitsegul_hivni_az_Urat_tematikus.md` | 1Móz 4:26 → 12:8 → 13:4 → 21:33 → 26:25 (5 előfordulás) | Kánoni kitekintés (nem külön számlálva): 1Kir 18:24-26, 2Kir 5:11, Zsolt 116, Sof 3:9, Zak 13:9, Jóel 3:5/2:32 ⇒ ApCsel 2:21 ⇒ Róm 10:13. |
