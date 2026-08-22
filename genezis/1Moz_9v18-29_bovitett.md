@@ -187,4 +187,4 @@ Szólj, ha ezeket rögzítsem a `PaRDeS_motivumok.md`-ben (v19).
 
 ---
 
-**Lezárt kérdés:** a Derek Prince-integráció (6:1-8-hoz) megtörtént — lásd `1Moz_6_1-8_bovitett.md`, Alkalmazás 4. pont. A Noé-*toledot* ezzel a szakasszal lezárul (6:9-9:29) — a következő logikai egység az 1Móz 10 (népek táblázata) lenne.
+**Lezárt kérdés:** a Derek Prince-integráció (6:1-8-hoz) megtörtént — lásd `1Moz_6v1-8_bovitett.md`, Alkalmazás 4. pont. A Noé-*toledot* ezzel a szakasszal lezárul (6:9-9:29) — a következő logikai egység az 1Móz 10 (népek táblázata) lenne.

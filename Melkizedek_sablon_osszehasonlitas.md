@@ -2,7 +2,7 @@
 
 *v1 — 2026.08.17*
 
-*Háttér: a "Melkizedek — király-pap rendje, kenyér és bor" motívum (1Móz 14:18-20 ⇒ Zsolt 110:4 ⇒ Zsid 5-7) a v42 motívumlog-frissítésben mélyelemzésként (`Melyelemzes_prompt_sablon.md` szerint) zárult le, nem a tematikus sablon (`4_PaRDeS_tematikus_sablon.md`) szerint. Ez a dokumentum azt vizsgálja, mi lett volna másképp, ha a tematikus sablon szerint készül.*
+*Háttér: a "Melkizedek — király-pap rendje, kenyér és bor" motívum (1Móz 14:18-20 ⇒ Zsolt 110:4 ⇒ Zsid 5-7) a v42 motívumlog-frissítésben mélyelemzésként (`5_Melyelemzes_prompt_sablon.md` szerint) zárult le, nem a tematikus sablon (`4_PaRDeS_tematikus_sablon.md`) szerint. Ez a dokumentum azt vizsgálja, mi lett volna másképp, ha a tematikus sablon szerint készül.*
 
 ---
 

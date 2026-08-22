@@ -15,7 +15,7 @@ pardes-tanulmanyok/
 │   ├── 2_PaRDeS_bovitett_sablon.md
 │   ├── 3_PaRDeS_research_sablon.md
 │   ├── 4_PaRDeS_tematikus_sablon.md
-│   ├── Melyelemzes_prompt_sablon.md
+│   ├── 5_Melyelemzes_prompt_sablon.md
 │   └── PaRDeS_gyorsreferencia.md
 ├── motivumlog/
 │   └── PaRDeS_motivumok_vXX.md   (mindig csak a legfrissebb verzió felülírva, VAGY minden verzió megtartva — ld. lent)

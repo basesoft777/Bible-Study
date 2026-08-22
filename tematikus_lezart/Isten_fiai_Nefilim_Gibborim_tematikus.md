@@ -10,7 +10,7 @@
 
 ## Mikor és miért készült
 
-A motívum jelenleg **nem** éri el a napló ⭐ Emlékeztető küszöbét a szokásos 3+ előfordulásos számlálás szerint (a "bené ha'Elohim" kifejezés maga 1 alkalommal, a hozzá kapcsolódó "gibborim/nefilim" alpont 2 alkalommal fordul elő). A napló ugyanakkor kifejezetten **"kivételesen gazdag és vitatott kapcsolatként"** jelezte előre, önálló feldolgozásra alkalmasként, felhasználói jóváhagyásra várva — ez most megtörtént. A tematikus forma indoka: nem egyetlen igehely-pár összevetéséről van szó (ahhoz a `Melyelemzes_prompt_sablon.md` illene), hanem egy három, egymással szorosan összefonódó kifejezésből álló **motívum-komplexumról**, amely több könyvben, több irányból közelíthető meg.
+A motívum jelenleg **nem** éri el a napló ⭐ Emlékeztető küszöbét a szokásos 3+ előfordulásos számlálás szerint (a "bené ha'Elohim" kifejezés maga 1 alkalommal, a hozzá kapcsolódó "gibborim/nefilim" alpont 2 alkalommal fordul elő). A napló ugyanakkor kifejezetten **"kivételesen gazdag és vitatott kapcsolatként"** jelezte előre, önálló feldolgozásra alkalmasként, felhasználói jóváhagyásra várva — ez most megtörtént. A tematikus forma indoka: nem egyetlen igehely-pár összevetéséről van szó (ahhoz a `5_Melyelemzes_prompt_sablon.md` illene), hanem egy három, egymással szorosan összefonódó kifejezésből álló **motívum-komplexumról**, amely több könyvben, több irányból közelíthető meg.
 
 ---
 
