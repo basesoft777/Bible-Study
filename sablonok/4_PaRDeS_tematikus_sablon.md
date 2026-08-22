@@ -1,6 +1,6 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
-*v2 — 2026.07.31 (kiegészítve: az 5. pont teljes öt lépéses keresési módszertannal és forrás-megbízhatóság jelöléssel — a fájl így önmagában is teljes, nem támaszkodik a memóriára)*
+*v3 — 2026.08.22 (a 6. pont végére felvéve egy tételes "Lezárási checklist" alszakasz, amely a hét motívumlog-szekció és az index-fájl frissítését sorrendben, ellenőrizhető formában listázza — a lezárások számának növekedésével a manuális szinkronizálás korábban fejben tartott lépéseinek explicit rögzítése céljából)*
 
 **Kimenet nyelve:** magyar
 
@@ -80,6 +80,23 @@ A tanulmány végén a `PaRDeS_motivumok.md` naplóban a feldolgozott motívumot
 **Fájlnév-konvenció:** a lezárt tematikus tanulmány fájlneve egységesen `[Motívum]_tematikus.md` formátumot követi (pl. `Tehom_tematikus.md`), ékezet és kötőjel nélkül.
 
 **Index-frissítés:** a motívumlog frissítésével egy időben a `Lezart_tematikus_tanulmanyok_index.md` projektfájlt is frissíteni kell egy új sorral (motívum, fájlnév, érintett igehelyek, megjegyzés) — ez a fájl az összes lezárt tematikus tanulmány központi, strukturált listája, chat-szálakon átívelő visszakereshetőség céljából.
+
+### Lezárási checklist (sorrendben végigjárandó)
+
+Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szükséges, ugyanabban a munkamenetben:
+
+- [ ] **1. Tanulmányfájl elkészítve** — `[Motívum]_tematikus.md` néven (ékezet és kötőjel nélkül), `/mnt/user-data/outputs/`-ba kitéve
+- [ ] **2. Motívumlog 1. szekció** (Tematikus áttekintés) — a motívum melletti jelölés frissítve ✅ LEZÁRVA-ra, a tematikus fájl nevének feltüntetésével
+- [ ] **3. Motívumlog 2. szekció** (Kulcsszó-index) — az érintett sor Előfordulás-száma frissítve, ha a lezárás új előfordulást is hozott
+- [ ] **4. Motívumlog 3. szekció** (Részletes kulcsszó-magyarázatok) — a motívum bejegyzése kiegészítve a lezárás tényével, forrásfájllal, és "Lásd még" kereszthivatkozással a rokon motívumok felé (ha van)
+- [ ] **5. Motívumlog 4. szekció** (Könyv szerinti index) — ellenőrizve, hogy minden érintett könyv/fejezet szerepel-e
+- [ ] **6. Motívumlog 5. szekció** (⭐ Emlékeztető küszöb) — a motívum bejegyzése ÁTHELYEZVE az aktív ⭐ ajánlások közül a lezárt motívumok közé (✅ jelöléssel), hogy ne ajánlódjon fel újra
+- [ ] **7. Motívumlog 6. szekció** (Előrejelzett motívumok) — ha a motívum itt is szerepelt előrejelzésként, a bejegyzés törölve/áthelyezve a "Teljesült" listába
+- [ ] **8. `Lezart_tematikus_tanulmanyok_index.md` frissítve** — új sor: motívum, fájlnév, érintett igehelyek, megjegyzés
+- [ ] **9. Motívumlog fejléc-changelog frissítve** — a lezárás tényének és fő eredményeinek rögzítése (a szokásos, felhasználói jóváhagyással előzetesen egyeztetett szöveggel)
+- [ ] **10. GitHub-feltöltésre emlékeztetés** — jelezve a felhasználónak, hogy a frissített motívumlog és index GitHubra is felkerülhet (`GitHub_feltoltesi_workflow.md` szerint)
+
+**Ha bármelyik pont kimarad, a lezárás nem tekinthető véglegesnek** — a motívum inkonzisztens állapotba kerülhet (pl. ✅ jelölve az 1. szekcióban, de még aktív ⭐ ajánlásként az 5.-ben).
 
 ---
 
