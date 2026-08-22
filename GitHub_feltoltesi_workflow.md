@@ -30,8 +30,8 @@ pardes-tanulmanyok/
 ├── tematikus_lezart/
 │   ├── Tehom_tematikus.md
 │   ├── Segitsegul_hivni_az_Urat_tematikus.md
-│   ├── Rafaim_Gibborim_Nefilim_tematikus.md
-│   └── Tehóm-Abüsszosz-Hádész-Tartarosz_tematikus.md
+│   ├── Rafaim_tematikus.md
+│   └── Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md
 ├── melyelemzesek/
 │   └── 1Mozes_14_18-20_Zsolt110_4_Zsid5-7_melyelemzes.md
 └── Lezart_tematikus_tanulmanyok_index.md
