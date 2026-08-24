@@ -1,5 +1,6 @@
 # 2. Bővített PaRDeS sablon — teljes, részletes verzió
 
+*v9 — 2026.08.24 (a 2. pont 6. kiválasztási kritériuma finomítva: az objektív ritkaság szempontja mostantól explicit utal a `Strong_szotar.tsv` szófaj-mezőjére, mint kiegészítő, nem kötelező mérlegelési szempontra — az ige/melléknév-különbségtétel indoklásával; a kritériumlista 1-5. pontja és a lezáró mondat változatlan)*
 *v8 — 2026.08.24 (STEPBible-integráció beépítve: a 2. pontba felvéve a kulcsszó-kiválasztás 6 szempontos explicit kritériumlistája; a 3/b pont végére felvéve a STEPBible TAGNT/TAHOT-alapú kötelező ellenőrzés a közös görög/héber szó feltételezésénél — mindkettő a `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 7.1 pontjában és a sablon-módosítási tervben korábban rögzített, de a sablonfájlba eddig be nem épített döntés végrehajtása)*
 *v7 — 2026.08.15 (kiegészítve: nevesített tanítói egyezés-keresés öt lépéses módszere az Alkalmazás pontnál)*
 
@@ -53,7 +54,7 @@ Ha aktiválódik: az események kronológiai sorrendje és/vagy földrajzi helys
 3. **Motívum-kapcsolódás** — a szó egy, a `PaRDeS_motivumok.md`-ban már nyomon követett motívumhoz köthető
 4. **Kereszthivatkozási potenciál** — a szó ritka, és emiatt a 3/b pontban erős, lexikailag pontos kapcsolódást tehet lehetővé más igehelyekkel
 5. **Exegetikai vita forrása** — a szó jelentése önmagában ad okot egy ⚠️ vitatott pontra
-6. **Objektív ritkaság (STEPBible-adat alapján)** — ha a szó előfordulás-száma alacsony (tájékoztató küszöb: kevesebb mint 15-20 előfordulás a teljes ÓSZ/ÚSZ-ben), ez önmagában felveti a kiválasztás lehetőségét, még ha a végső döntés tartalmi marad
+6. **Objektív ritkaság (STEPBible-adat alapján), szófajjal súlyozva.** Ha a szó előfordulás-száma alacsony (tájékoztató küszöb: kevesebb mint 15-20 előfordulás a teljes ÓSZ/ÚSZ-ben), ez önmagában felveti a kiválasztás lehetőségét. A Strong_szotar.tsv szófaj-mezője (most már elérhető) finomíthatja ezt a mérlegelést: egy ritka IGE gyakran nagyobb teológiai súlyt hordoz, mint egy hasonlóan ritka, de leíró jellegű melléknév vagy határozószó — ez nem szigorú szabály, csak további szempont a tartalmi mérlegeléshez, nem helyettesíti azt.
 
 A 6. szempont nem helyettesíti, csak kiegészíti az 1-5. tartalmi mérlegelést.
 
