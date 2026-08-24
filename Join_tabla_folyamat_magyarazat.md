@@ -4,6 +4,17 @@
 
 ---
 
+## Oszlopszerkezet — `konkordancia/Karoli_Strong_kivonat.tsv` (2026.08.24-től, 8 oszlop)
+
+```
+Igehely | Strong-szám | Károli-szó | Azonosítás módja | Forrás-tanulmány |
+Megbízhatóság | Szófaj | Gyök/Származtatás
+```
+
+Az utolsó két oszlop (**Szófaj**, **Gyök/Származtatás**) nem a tanulmány-készítés melléktermeéke, hanem a `konkordancia/Strong_szotar.tsv`-ből (lásd `Strong_szotar_README.md`) származó, Strong-szám alapú, egyszerű összefésüléssel (nem manuálisan) feltöltött adat — az `eszkozok/merge_karoli_szofaj.py` script generálja. A script a Strong-szám nulla-kitöltési eltérését normalizálja (a join-tábla `H430` formája ↔ a szótár `H0430` formája), de **nem bontja szét** az összetett, `+`-jellel jelölt sorokat (pl. `H8414+H922`) — ezeknél a két új oszlop üresen marad, mert nincs egyértelmű egy-az-egyhez Strong-szám megfeleltetés. Új Károli-Strong sor felvételekor a két oszlopot **ugyanezzel a scripttel** (vagy azonos logikával) kell újragenerálni, nem kézzel kitölteni.
+
+---
+
 ## Alapelv: a join-tábla nem külön projekt, hanem a tanulmány-készítés melléktermeéke
 
 A korábban rögzített "tanulmányvezérelt, kumulatív" elv (7.1-7.2 pont) most, hogy csak a Károli-oldal aktív, a lehető legegyszerűbb formájában valósul meg: **Strong-szám + Károli-szó, semmi több**. Nincs előre, egyben legenerálandó teljes join-tábla — minden tanulmány csak annyit ad hozzá, amennyire ténylegesen szüksége van, és ez a "melléktermék" egy közös `Karoli_Strong_kivonat.tsv`-be visszaírva a következő tanulmány számára is azonnal elérhetővé válik (grep, nem újragenerálás).
