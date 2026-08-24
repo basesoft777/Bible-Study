@@ -1,5 +1,6 @@
 # 1 Mózes 1:2 – 2:3 — Bővített PaRDeS tanulmány
 
+*v3 — 2026.08.24 (2. pont táblázatai kiegészítve pontos vers-hozzárendeléssel [Vers oszlop], tartalmi változás nélkül — a TAHOT_kivonat.tsv alapján minden szó egyértelműen versre bontva, egyetlen kivétellel: צֶלֶם [celem, H6754] mindkét versben, 1:26-ban és 1:27-ben is előfordul a szakaszon belül, ez TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ jelöléssel dokumentálva, emberi döntésre várva)*
 *v2 — 2026.08.15 (kiegészítve: Nevesített tanítói szemszög az Alkalmazás pontban — Capps, Hagin, Copeland, Derek Prince, Wigglesworth)*
 
 ---
@@ -49,12 +50,12 @@ A szerkezet két hármas blokkra oszlik: az 1-3. nap a **terek kialakítása** (
 
 **Kulcsszavak:**
 
-| Héber szó | Kiejtés | Strong-szám | Jelentés |
-|---|---|---|---|
-| תֹהוּ וָבֹהוּ | *tohú vavohú* | H8414/H922 | kietlen és puszta, formátlan üresség |
-| תְהוֹם | *tehóm* | H8415 | mélység, őstenger |
-| רוּחַ אֱלֹהִים | *ruach elohím* | H7307/H430 | Isten Szelleme/Lehelete |
-| מְרַחֶפֶת | *merachefet* | H7363 | lebegett, ráborult (madár fészke fölött szárnyaló mozdulat) |
+| Vers | Héber szó | Kiejtés | Strong-szám | Jelentés |
+|---|---|---|---|---|
+| 1:2 | תֹהוּ וָבֹהוּ | *tohú vavohú* | H8414/H922 | kietlen és puszta, formátlan üresség |
+| 1:2 | תְהוֹם | *tehóm* | H8415 | mélység, őstenger |
+| 1:2 | רוּחַ אֱלֹהִים | *ruach elohím* | H7307/H430 | Isten Szelleme/Lehelete |
+| 1:2 | מְרַחֶפֶת | *merachefet* | H7363 | lebegett, ráborult (madár fészke fölött szárnyaló mozdulat) |
 
 **Szó szerinti tükörfordítás:** "A föld pedig volt kietlen és puszta (*tohú vavohú*), és sötétség a mélység (*tehóm*) színén, és Isten Szelleme (*ruach elohím*) lebegett (*merachefet*) a vizek színén."
 
@@ -69,11 +70,11 @@ A szerkezet két hármas blokkra oszlik: az 1-3. nap a **terek kialakítása** (
 
 **Kulcsszavak:**
 
-| Héber szó | Kiejtés | Strong-szám | Jelentés |
-|---|---|---|---|
-| וַיֹּאמֶר | *vajjómer* | H559 | és mondta |
-| יְהִי | *jehí* | H1961 | legyen (jussiv alak) |
-| אוֹר | *ór* | H216 | fény, világosság |
+| Vers | Héber szó | Kiejtés | Strong-szám | Jelentés |
+|---|---|---|---|---|
+| 1:3 | וַיֹּאמֶר | *vajjómer* | H559 | és mondta |
+| 1:3 | יְהִי | *jehí* | H1961 | legyen (jussiv alak) |
+| 1:3 | אוֹר | *ór* | H216 | fény, világosság |
 
 **Szó szerinti tükörfordítás:** "És mondta (*vajjómer*) Isten: legyen (*jehí*) fény (*ór*), és lett fény."
 
@@ -86,13 +87,15 @@ A szerkezet két hármas blokkra oszlik: az 1-3. nap a **terek kialakítása** (
 
 **Kulcsszavak:**
 
-| Héber szó | Kiejtés | Strong-szám | Jelentés |
-|---|---|---|---|
-| נַעֲשֶׂה | *na'aszé* | H6213 | alkossunk (többes szám, kohortatívusz) |
-| צֶלֶם | *celem* | H6754 | képmás, kép |
-| דְּמוּת | *demút* | H1823 | hasonlatosság |
-| בָּרָא | *bará* | H1254 | teremtett (kizárólag Istenre alkalmazott ige) |
-| זָכָר וּנְקֵבָה | *zachár u-nekévá* | H2145/H5347 | férfi és nő |
+| Vers | Héber szó | Kiejtés | Strong-szám | Jelentés |
+|---|---|---|---|---|
+| 1:26 | נַעֲשֶׂה | *na'aszé* | H6213 | alkossunk (többes szám, kohortatívusz) |
+| 1:26/1:27 ⚠️ | צֶלֶם | *celem* | H6754 | képmás, kép — **TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ** (lásd megjegyzés a táblázat után) |
+| 1:26 | דְּמוּת | *demút* | H1823 | hasonlatosság |
+| 1:27 | בָּרָא | *bará* | H1254 | teremtett (kizárólag Istenre alkalmazott ige) |
+| 1:27 | זָכָר וּנְקֵבָה | *zachár u-nekévá* | H2145/H5347 | férfi és nő |
+
+**⚠️ Megjegyzés a צֶלֶם (celem) vershez rendeléséről (TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ):** a szó a `TAHOT_kivonat.tsv` szerint mindkét versben előfordul ebben a szakaszban — Gen.1.26-ban egyszer (*"בְּצַלְמֵנוּ"*, "a mi képünkre"), Gen.1.27-ben kétszer (*"בְּצַלְמוֹ"*, "az ő képére"; *"בְּצֶלֶם אֱלֹהִים"*, "Isten képére"). A táblázat eredeti, egységes "צֶלֶם" alakja (szótári/idéző forma) nem választja külön, melyik konkrét előfordulásra utal elsődlegesen — mivel a tanulmány szövege mindkét verset tárgyalja együtt, ezt a pontosítást emberi döntésre bízzuk: a join-táblába való felvételkor mindhárom előfordulás (1:26 egyszer, 1:27 kétszer) külön sorként szerepelhetne, vagy a tanulmány szerzője megjelölheti, melyiket tartja elsődlegesnek.
 
 **Szó szerinti tükörfordítás:** "És mondta Isten: alkossunk (*na'aszé*) embert a mi képünkre (*celem*), a mi hasonlatosságunk (*demút*) szerint... És teremtette (*bará*) Isten az embert az ő képére, Isten képére teremtette őt, férfivá és nővé (*zachár u-nekévá*) teremtette őket."
 
@@ -107,11 +110,11 @@ A szerkezet két hármas blokkra oszlik: az 1-3. nap a **terek kialakítása** (
 
 **Kulcsszavak:**
 
-| Héber szó | Kiejtés | Strong-szám | Jelentés |
-|---|---|---|---|
-| פְּרוּ וּרְבוּ | *perú u-revú* | H6509/H7235 | szaporodjatok és sokasodjatok |
-| כִּבְשֻׁהָ | *kivsuha* | H3533 | hódítsátok meg, vessétek uralmatok alá |
-| רְדוּ | *redú* | H7287 | uralkodjatok |
+| Vers | Héber szó | Kiejtés | Strong-szám | Jelentés |
+|---|---|---|---|---|
+| 1:28 | פְּרוּ וּרְבוּ | *perú u-revú* | H6509/H7235 | szaporodjatok és sokasodjatok |
+| 1:28 | כִּבְשֻׁהָ | *kivsuha* | H3533 | hódítsátok meg, vessétek uralmatok alá |
+| 1:28 | רְדוּ | *redú* | H7287 | uralkodjatok |
 
 **Károli-fordítás:** "Szaporodjatok és sokasodjatok, és töltsétek be a földet és hajtsátok birodalmatok alá; és uralkodjatok a tenger halain..."
 
@@ -122,11 +125,11 @@ A szerkezet két hármas blokkra oszlik: az 1-3. nap a **terek kialakítása** (
 
 **Kulcsszavak:**
 
-| Héber szó | Kiejtés | Strong-szám | Jelentés |
-|---|---|---|---|
-| וַיִּשְׁבֹּת | *vajjisbot* | H7673 | és megpihent (ebből ered a *shabbat* szó) |
-| וַיְבָרֶךְ | *vajvárech* | H1288 | és megáldotta |
-| וַיְקַדֵּשׁ | *vajkaddés* | H6942 | és megszentelte |
+| Vers | Héber szó | Kiejtés | Strong-szám | Jelentés |
+|---|---|---|---|---|
+| 2:2 | וַיִּשְׁבֹּת | *vajjisbot* | H7673 | és megpihent (ebből ered a *shabbat* szó) |
+| 2:3 | וַיְבָרֶךְ | *vajvárech* | H1288 | és megáldotta |
+| 2:3 | וַיְקַדֵּשׁ | *vajkaddés* | H6942 | és megszentelte |
 
 **Szó szerinti tükörfordítás:** "És bevégezte (*vajchal*) Isten a hetedik napon a munkáját, amelyet alkotott, és megpihent (*vajjisbot*) a hetedik napon... És megáldotta (*vajvárech*) Isten a hetedik napot, és megszentelte (*vajkaddés*) azt."
 

@@ -1,5 +1,6 @@
 # 1 Mózes 2:4-7 — Bővített PaRDeS tanulmány
 
+*v2 — 2026.08.24 (2. pont táblázata kiegészítve pontos vers-hozzárendeléssel [Vers oszlop], tartalmi változás nélkül — minden szó egyértelműen 2:4-hez vagy 2:7-hez rendelhető a tanulmány saját, versre tagolt idézetei alapján)*
 *v1 — 2026.07.31*
 
 ---
@@ -35,15 +36,15 @@
 
 **Kulcsszavak (max. 8):**
 
-| Héber szó | Kiejtés | Strong-szám | Jelentés |
-|---|---|---|---|
-| תוֹלְדוֹת | *toldot* | H8435 | nemzetségek, eredettörténet |
-| יָצַר (וַיִּיצֶר) | *jacar* (*vajjícer*) | H3335 | formálni (mint fazekas az agyagot) |
-| עָפָר | *afar* | H6083 | por |
-| אֲדָמָה | *adamá* | H127 | termőföld |
-| נָפַח (וַיִּפַּח) | *nafach* (*vajjipach*) | H5301 | lehelni, befújni |
-| נִשְׁמַת חַיִּים | *nismat chajjim* | H5397/H2416 | élet lehelete |
-| נֶפֶשׁ חַיָּה | *nefes chajjá* | H5315/H2416 | élő lélek, élőlény |
+| Vers | Héber szó | Kiejtés | Strong-szám | Jelentés |
+|---|---|---|---|---|
+| 2:4 | תוֹלְדוֹת | *toldot* | H8435 | nemzetségek, eredettörténet |
+| 2:7 | יָצַר (וַיִּיצֶר) | *jacar* (*vajjícer*) | H3335 | formálni (mint fazekas az agyagot) |
+| 2:7 | עָפָר | *afar* | H6083 | por |
+| 2:7 | אֲדָמָה | *adamá* | H127 | termőföld |
+| 2:7 | נָפַח (וַיִּפַּח) | *nafach* (*vajjipach*) | H5301 | lehelni, befújni |
+| 2:7 | נִשְׁמַת חַיִּים | *nismat chajjim* | H5397/H2416 | élet lehelete |
+| 2:7 | נֶפֶשׁ חַיָּה | *nefes chajjá* | H5315/H2416 | élő lélek, élőlény |
 
 **Szó szerinti tükörfordítás (2:7):** "És formált (*vajjícer*) az Úr Isten az embert porból (*afar*) a termőföldből (*adamá*), és lehelt (*vajjipach*) az ő orrába élet leheletét (*nismat chajjim*), és lőn az ember élő lélekké (*nefes chajjá*)."
 

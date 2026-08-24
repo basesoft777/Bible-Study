@@ -1,5 +1,6 @@
 # 1 Mózes 2:8–25 — Bővített PaRDeS tanulmány
 
+*v3 — 2026.08.24 (2. pont táblázatai kiegészítve pontos vers-hozzárendeléssel [Vers oszlop], tartalmi változás nélkül — a TAHOT_kivonat.tsv alapján a legtöbb szó egyértelműen versre bontva, 4 kivétellel: גַּן [2:8/2:9], עֵזֶר כְּנֶגְדּוֹ [2:18/2:20], צֵלָע [2:21/2:22], אִשָּׁה [2:22/2:23] — mindegyik TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ jelöléssel dokumentálva, emberi döntésre várva)*
 *v2 — 2026.07.31 (javítva: a szó szerinti tükörfordítás pótolva minden kulcsszövegnél)*
 
 ---
@@ -42,12 +43,14 @@ Az előző tanulmány (1Mózes 2:4-7) az ember porból való megformálását (*
 
 ### A kert és a két fa (2:8-9)
 
-| Héber szó | Kiejtés | Strong-szám | Jelentés |
-|---|---|---|---|
-| גַּן | *gan* | H1588 | kert |
-| עֵדֶן | *éden* | H5731 | Éden (gyönyör, öröm) |
-| עֵץ הַחַיִּים | *ec ha-chajjím* | H6086/H2416 | élet fája |
-| עֵץ הַדַּעַת טוֹב וָרָע | *ec ha-daat tóv vará* | H6086/H1847 | jó és gonosz tudásának fája |
+| Vers | Héber szó | Kiejtés | Strong-szám | Jelentés |
+|---|---|---|---|---|
+| 2:8/2:9 ⚠️ | גַּן | *gan* | H1588 | kert — **TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ** (lásd megjegyzés a táblázat után) |
+| 2:8 | עֵדֶן | *éden* | H5731 | Éden (gyönyör, öröm) |
+| 2:9 | עֵץ הַחַיִּים | *ec ha-chajjím* | H6086/H2416 | élet fája |
+| 2:9 | עֵץ הַדַּעַת טוֹב וָרָע | *ec ha-daat tóv vará* | H6086/H1847 | jó és gonosz tudásának fája |
+
+**⚠️ Megjegyzés a גַּן (gan) vershez rendeléséről:** a szó a `TAHOT_kivonat.tsv` szerint mindkét versben előfordul — Gen.2.8-ban ("kertet ültetett Édenben"), és Gen.2.9-ben is ("a kert közepén"). A táblázat egységes "גַּן" alakja nem választja külön a két előfordulást — a join-táblába való felvételkor mindkét előfordulás külön sorként szerepelhetne, emberi döntésre bízva.
 
 **Szó szerinti tükörfordítás:** "És ültetett (*vajjita*) JHVH Isten kertet (*gan*) Édenben (*be-éden*), elölről/keletről (*mikkedem*), és helyezte (*vajjászem*) oda az embert (*et-ha-adám*), akit formált (*jacar*). És sarjasztott (*vajjacmach*) JHVH Isten a földből (*min-ha-adamá*) minden fát (*kol-ec*), kívánatosat látásra (*nechmad lemareh*) és jót eledelre (*vetov lemaachal*), és az élet fáját (*veec ha-chajjím*) a kert közepén (*betoch ha-gan*), és a jó és rossz tudásának fáját (*veec ha-daat tov vará*)."
 
@@ -55,10 +58,10 @@ Az előző tanulmány (1Mózes 2:4-7) az ember porból való megformálását (*
 
 ### Munka és őrzés (2:15)
 
-| Héber szó | Kiejtés | Strong-szám | Jelentés |
-|---|---|---|---|
-| עָבַד | *avad* | H5647 | munkálni, művelni, szolgálni |
-| שָׁמַר | *sámar* | H8104 | őrizni, megtartani, vigyázni |
+| Vers | Héber szó | Kiejtés | Strong-szám | Jelentés |
+|---|---|---|---|---|
+| 2:15 | עָבַד | *avad* | H5647 | munkálni, művelni, szolgálni |
+| 2:15 | שָׁמַר | *sámar* | H8104 | őrizni, megtartani, vigyázni |
 
 **Szó szerinti tükörfordítás:** "És vette (*vajjikkach*) JHVH Isten az embert (*et-ha-adám*), és nyugtatta/helyezte (*vajjannichéhu*) az Éden kertjében (*began-éden*), művelni azt (*leovdah*) és őrizni azt (*uleshomrah*)."
 
@@ -70,10 +73,12 @@ Az előző tanulmány (1Mózes 2:4-7) az ember porból való megformálását (*
 
 ### A társ hiánya és keresése (2:18-20)
 
-| Héber szó | Kiejtés | Strong-szám | Jelentés |
-|---|---|---|---|
-| לֹא־טוֹב | *ló tóv* | H3808/H2896 | nem jó |
-| עֵזֶר כְּנֶגְדּוֹ | *ézer kenegdó* | H5828/H5048 | hozzá illő segítő társ |
+| Vers | Héber szó | Kiejtés | Strong-szám | Jelentés |
+|---|---|---|---|---|
+| 2:18 | לֹא־טוֹב | *ló tóv* | H3808/H2896 | nem jó |
+| 2:18/2:20 ⚠️ | עֵזֶר כְּנֶגְדּוֹ | *ézer kenegdó* | H5828/H5048 | hozzá illő segítő társ — **TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ** (lásd megjegyzés a táblázat után) |
+
+**⚠️ Megjegyzés az עֵזֶר כְּנֶגְדּוֹ (ézer kenegdó) vershez rendeléséről:** ez a pontos kifejezés szó szerint megismétlődik Gen.2.20-ban is ("nem talált [az embernek] hozzá illő segítőt") — a `TAHOT_kivonat.tsv` mindkét versnél ugyanazokkal a Strong-számokkal (H5828, H5048) tartalmazza. A "לֹא־טוֹב" (nem jó) kifejezés ezzel szemben egyértelműen csak 2:18-hoz köthető (a H2896 "jó" Strong-szám ott szerepel, 2:20-ban nem — ott a "nem" a "talált" igéhez kapcsolódik, más jelentéssel).
 
 **Szó szerinti tükörfordítás:** "És mondta (*vajjómer*) JHVH Isten: nem jó (*ló-tov*) lenni az embernek (*hejot ha-adám*) egyedül (*levaddó*); teszek (*eeszeh*) neki (*ló*) segítséget mint hozzá illőt (*ézer kenegdó*)."
 
@@ -83,11 +88,13 @@ Az előző tanulmány (1Mózes 2:4-7) az ember porból való megformálását (*
 
 ### Az asszony teremtése (2:21-23)
 
-| Héber szó | Kiejtés | Strong-szám | Jelentés |
-|---|---|---|---|
-| צֵלָע | *cela* | H6763 | oldalborda / oldal |
-| אִשָּׁה | *issá* | H802 | asszony |
-| אִישׁ | *is* | H376 | férfi |
+| Vers | Héber szó | Kiejtés | Strong-szám | Jelentés |
+|---|---|---|---|---|
+| 2:21/2:22 ⚠️ | צֵלָע | *cela* | H6763 | oldalborda / oldal — **TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ** (lásd megjegyzés a táblázat után) |
+| 2:22/2:23 ⚠️ | אִשָּׁה | *issá* | H802 | asszony — **TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ** (lásd megjegyzés a táblázat után) |
+| 2:23 | אִישׁ | *is* | H376 | férfi |
+
+**⚠️ Megjegyzés a צֵלָע és az אִשָּׁה vershez rendeléséről:** mindkét szó két egymást követő versben is előfordul ebben a szakaszban — צֵלָע (H6763) Gen.2.21-ben (amikor JHVH kiveszi a bordát) és Gen.2.22-ben is (amikor "megépíti" belőle az asszonyt); אִשָּׁה (H802) Gen.2.22-ben (amikor asszonnyá formálja) és Gen.2.23-ban is (amikor az ember "asszonynak" nevezi). A táblázat egységes alakjai nem választják külön a konkrét előfordulást — emberi döntésre bízva, hogy a join-táblába melyik (vagy mindkét) előfordulás kerüljön be.
 
 **Szó szerinti tükörfordítás:** "És hullatott (*vajjapél*) JHVH Isten mély álmot (*tardémá*) az emberre (*al-ha-adám*), és elaludt (*vajjisan*); és vett (*vajjikkach*) egyet (*achat*) oldalbordái közül (*mictzalotáv*), és bezárta (*vajjiszgor*) hússal (*bászár*) a helyét (*tachténná*). És építette (*vajjíven*) JHVH Isten az oldalbordát (*et-ha-cela*), amit vett (*aser-lakach*) az emberből (*min-ha-adám*), asszonnyá (*le-issá*), és hozta (*vajviéhá*) az emberhez (*el-ha-adám*). És mondta (*vajjómer*) az ember (*ha-adám*): ez most (*zot happaam*) csont (*ecem*) csontjaimból (*meacamáj*) és hús (*uvászár*) húsomból (*mibszárí*); ennek neveztetik (*lezot jiqqaré*) asszony (*issá*), mert (*ki*) férfiból (*meis*) vétetett ez (*lukachá-zot*)."
 
@@ -97,11 +104,11 @@ Az előző tanulmány (1Mózes 2:4-7) az ember porból való megformálását (*
 
 ### Egy test (2:24-25)
 
-| Héber szó | Kiejtés | Strong-szám | Jelentés |
-|---|---|---|---|
-| דָּבַק | *dávak* | H1692 | ragaszkodni, hozzátapadni |
-| בָּשָׂר אֶחָד | *bászár echád* | H1320/H259 | egy test |
-| עֲרוּמִּים | *arummím* | H6174 | mezítelenek |
+| Vers | Héber szó | Kiejtés | Strong-szám | Jelentés |
+|---|---|---|---|---|
+| 2:24 | דָּבַק | *dávak* | H1692 | ragaszkodni, hozzátapadni |
+| 2:24 | בָּשָׂר אֶחָד | *bászár echád* | H1320/H259 | egy test |
+| 2:25 | עֲרוּמִּים | *arummím* | H6174 | mezítelenek |
 
 **Szó szerinti tükörfordítás:** "Ezért (*al-kén*) elhagyja (*jaazov*) a férfi (*is*) atyját (*et-avív*) és anyját (*veet-immó*), és ragaszkodik (*vedavaq*) feleségéhez (*beistó*), és lesznek (*vehajú*) egy testté (*levászár echád*). És voltak (*vajjihjú*) ketten meztelenek (*sneihem arummím*), az ember (*ha-adám*) és felesége (*veistó*), és nem szégyenkeztek (*velo jitboszászú*)."
 

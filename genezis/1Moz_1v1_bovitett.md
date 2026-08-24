@@ -1,5 +1,6 @@
 # 1 Mózes 1:1 — Bővített PaRDeS tanulmány
 
+*v4 — 2026.08.24 (2. pont táblázata kiegészítve pontos vers-hozzárendeléssel [Vers oszlop], tartalmi változás nélkül — a teljes tanulmány egyetlen versre, 1:1-re vonatkozik, ezért minden szó egyértelműen ehhez a vershez rendelhető)*
 *v3 — 2026.07.30 (nevesített tanítói szemszög részletesen kifejtve)*
 
 ---
@@ -31,14 +32,14 @@
 
 **Kulcsszavak (max. 8):**
 
-| Héber szó | Kiejtés | Strong-szám | Jelentés |
-|---|---|---|---|
-| בְּרֵאשִׁית | *bereshít* | H7225 | kezdetben, a kezdetkor |
-| בָּרָא | *bará* | H1254 | teremtett — kizárólag Istenre vonatkozó ige az Ószövetségben |
-| אֱלֹהִים | *elohím* | H430 | Isten — alaktanilag többes szám, egyes számú igével |
-| אֵת | *ét* | (nincs önálló Strong-szám) | jelöletlen tárgyeset-jelölő partikula |
-| הַשָּׁמַיִם | *hasamájim* | H8064 | az egek, az ég |
-| הָאָרֶץ | *haárec* | H776 | a föld |
+| Vers | Héber szó | Kiejtés | Strong-szám | Jelentés |
+|---|---|---|---|---|
+| 1:1 | בְּרֵאשִׁית | *bereshít* | H7225 | kezdetben, a kezdetkor |
+| 1:1 | בָּרָא | *bará* | H1254 | teremtett — kizárólag Istenre vonatkozó ige az Ószövetségben |
+| 1:1 | אֱלֹהִים | *elohím* | H430 | Isten — alaktanilag többes szám, egyes számú igével |
+| 1:1 | אֵת | *ét* | (nincs önálló Strong-szám) | jelöletlen tárgyeset-jelölő partikula |
+| 1:1 | הַשָּׁמַיִם | *hasamájim* | H8064 | az egek, az ég |
+| 1:1 | הָאָרֶץ | *haárec* | H776 | a föld |
 
 **Szó szerinti tükörfordítás:** "Kezdetben (*bereshít*) teremtett (*bará*) Isten (*elohím*) [tárgyjelölő] az egeket (*hasamájim*) és [tárgyjelölő] a földet (*haárec*)."
 

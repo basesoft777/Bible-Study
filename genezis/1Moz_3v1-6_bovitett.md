@@ -1,5 +1,6 @@
 # 1 Mózes 3:1-6 — Bővített PaRDeS tanulmány
 
+*v5 — 2026.08.24 (2. pont táblázata kiegészítve pontos vers-hozzárendeléssel [Vers oszlop], tartalmi változás nélkül — a TAHOT_kivonat.tsv alapján a legtöbb szó egyértelműen versre bontva, 1 kivétellel: נָחָשׁ [kígyó] háromszor is előfordul a szakaszon belül [3:1, 3:2, 3:4], TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ jelöléssel dokumentálva, emberi döntésre várva)*
 *v4 — 2026.08.21 (javítva: a "0. Sorozat-kontextus" pontban a kronológiailag helytelen hivatkozás — 1Móz 5 és 1Móz 10-11 mint "korábbi" előzmény — eltávolítva; ezek a szakaszok ténylegesen csak 2026.08.13-án és 2026.08.15-én, tehát e tanulmány után készültek el. Helyükre a tényleges, kronológiailag helyes előzménylista került: 1:1 → 1:2-2:3 → 2:4-7 → 2:8-25.)*
 
 ---
@@ -32,16 +33,18 @@ Ez már a negyedik önálló tanulmány az 1Mózes könyvéből: 1Móz 1:1 (a te
 
 **Kulcsszavak (a szakasz legjelentősebb kifejezései — a szokásos 6-8/vers helyett itt a teljes hatversnyi jelenet legfontosabb csomópontjaira koncentrálva):**
 
-| Héber szó | Kiejtés | Strong-szám | Jelentés |
-|---|---|---|---|
-| נָחָשׁ | *nachás* | H5175 | kígyó |
-| עָרוּם | *árúm* | H6175 | ravasz, agyafúrt (szójáték az előző vers *arummim*, „mezítelen" szavával) |
-| תִגְּעוּ | *tiggeú* | H5060 | érinteni |
-| פֶּן־תְּמֻתוּן | *pen-temutún* | H6435/H4191 | nehogy meghaljatok |
-| יֹדְעֵי טוֹב וָרָע | *jodeéj tov vára* | H3045/H2896/H7451 | jó és rossz tudói |
-| תַאֲוָה | *taavá* | H8378 | kívánság, vágy |
-| נֶחְמָד | *nechmád* | H2530 | kívánatos (a *chámad* gyökből — ua. gyök, mint a X. parancsolatban) |
-| וַתִּתֵּן | *vattittén* | H5414 | és adá |
+| Vers | Héber szó | Kiejtés | Strong-szám | Jelentés |
+|---|---|---|---|---|
+| 3:1/3:2/3:4 ⚠️ | נָחָשׁ | *nachás* | H5175 | kígyó — **TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ** (lásd megjegyzés a táblázat után) |
+| 3:1 | עָרוּם | *árúm* | H6175 | ravasz, agyafúrt (szójáték az előző vers *arummim*, „mezítelen" szavával) |
+| 3:3 | תִגְּעוּ | *tiggeú* | H5060 | érinteni |
+| 3:3 | פֶּן־תְּמֻתוּן | *pen-temutún* | H6435/H4191 | nehogy meghaljatok |
+| 3:5 | יֹדְעֵי טוֹב וָרָע | *jodeéj tov vára* | H3045/H2896/H7451 | jó és rossz tudói |
+| 3:6 | תַאֲוָה | *taavá* | H8378 | kívánság, vágy |
+| 3:6 | נֶחְמָד | *nechmád* | H2530 | kívánatos (a *chámad* gyökből — ua. gyök, mint a X. parancsolatban) |
+| 3:6 | וַתִּתֵּן | *vattittén* | H5414 | és adá |
+
+**⚠️ Megjegyzés a נָחָשׁ (nachás, "kígyó") vershez rendeléséről:** a szó a `TAHOT_kivonat.tsv` szerint háromszor fordul elő a szakaszban — Gen.3.1-ben ("a kígyó pedig ravasz vala"), Gen.3.2-ben (az asszony megszólítja) és Gen.3.4-ben (a kígyó válaszol). A táblázat egységes "נָחָשׁ" alakja nem választja külön ezeket — emberi döntésre bízva, hogy a join-táblába melyik (vagy mindhárom) előfordulás kerüljön be.
 
 **Szó szerinti tükörfordítás (kivonat, a kulcsmondatokra):** „A kígyó pedig volt ravasz (*árúm*) minden mezei vadnál, melyet készített az Örökkévaló Isten... Ne egyetek belőle és ne érintsétek (*tiggeú*) azt, nehogy meghaljatok (*pen-temutún*)... Nem halva haltok meg... és lesztek mint Isten, jó és rossz tudói (*jodeéj tov vára*)... és látá az asszony, hogy jó a fa eledelre, és hogy kívánság (*taavá*) az a szemeknek, és kívánatos (*nechmád*) a fa az értelemért, és vőn gyümölcséből, és evék, és adá (*vattittén*) férjének is vele, és evék."
 

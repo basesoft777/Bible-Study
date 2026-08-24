@@ -1,5 +1,6 @@
 # 1Mózes 12:1-20 — bővített PaRDeS tanulmány
 
+*v2 — 2026.08.24 (2. pont táblázata kiegészítve pontos vers-hozzárendeléssel [Vers oszlop], tartalmi változás nélkül — a TAHOT_kivonat.tsv alapján a legtöbb szó egyértelműen versre bontva, 1 kivétellel: מִזְבֵּחַ [oltár] két külön eseményre is vonatkozhat [12:7 és 12:8, Ábrám két külön oltára], TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ jelöléssel dokumentálva, emberi döntésre várva)*
 *v1 — 2026.08.15*
 
 ---
@@ -58,17 +59,19 @@ Elbeszélő próza, isteni beszéd-és-válasz szerkezettel. A fejezet az "őst�
 
 ### Kulcsszavak táblázata
 
-| Szó | Kiejtés | Strong | Jelentés |
-|---|---|---|---|
-| לֶךְ־לְךָ֛ | *lech-lechá* | H1980 | "menj/menj el magadért, magadnak" — a reflexív *lechá* nyomatékosítja a személyes érintettséget |
-| מוֹלֶדֶת | *moledet* | H4138 | rokonság, születési hely, nemzetség |
-| בְּרָכָה | *berachá* | H1293 | áldás |
-| גּוֹי גָּדוֹל | *gój gádól* | H1471+H1419 | nagy nemzet |
-| נִבְרְכוּ | *nivrechú* | H1288 (Niphal) | "megáldatnak" — nyelvtanilag vitatott alak, lásd ⚠️ pont |
-| מִזְבֵּחַ | *mizbéach* | H4196 | oltár |
-| קָרָא בְשֵׁם יְהוָה | *kará b'shém Adonáj* | H7121+H8034 | "segítségül hívta az Úr nevét" |
-| רָעָב | *ra'áv* | H7458 | éhínség |
-| נְגָעִים גְּדֹלִים | *nega'ím gedolím* | H5061+H1419 | nagy csapások/csapások |
+| Vers | Szó | Kiejtés | Strong | Jelentés |
+|---|---|---|---|---|
+| 12:1 | לֶךְ־לְךָ֛ | *lech-lechá* | H1980 | "menj/menj el magadért, magadnak" — a reflexív *lechá* nyomatékosítja a személyes érintettséget |
+| 12:1 | מוֹלֶדֶת | *moledet* | H4138 | rokonság, születési hely, nemzetség |
+| 12:2 | בְּרָכָה | *berachá* | H1293 | áldás |
+| 12:2 | גּוֹי גָּדוֹל | *gój gádól* | H1471+H1419 | nagy nemzet |
+| 12:3 | נִבְרְכוּ | *nivrechú* | H1288 (Niphal) | "megáldatnak" — nyelvtanilag vitatott alak, lásd ⚠️ pont |
+| 12:7/12:8 ⚠️ | מִזְבֵּחַ | *mizbéach* | H4196 | oltár — **TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ** (lásd megjegyzés a táblázat után) |
+| 12:8 | קָרָא בְשֵׁם יְהוָה | *kará b'shém Adonáj* | H7121+H8034 | "segítségül hívta az Úr nevét" |
+| 12:10 | רָעָב | *ra'áv* | H7458 | éhínség |
+| 12:17 | נְגָעִים גְּדֹלִים | *nega'ím gedolím* | H5061+H1419 | nagy csapások/csapások |
+
+**⚠️ Megjegyzés a מִזְבֵּחַ (mizbéach, "oltár") vershez rendeléséről:** Ábrám ebben a fejezetben **két külön** oltárt épít — Gen.12.7-nél (Sikemnél) és Gen.12.8-nál (Bétel és Ai között) —, mindkét helyen ugyanazzal a Strong-számmal (H4196). A táblázat egységes "מִזְבֵּחַ" alakja nem választja külön a két eseményt — emberi döntésre bízva, hogy a join-táblába melyik (vagy mindkét) előfordulás kerüljön be.
 
 ### 12:1-3 — eredeti nyelv, tükörfordítás, Károli
 

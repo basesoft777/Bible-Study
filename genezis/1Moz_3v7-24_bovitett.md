@@ -1,5 +1,6 @@
 # 1Mózes 3:7-24 — bővített PaRDeS-tanulmány
 
+*v2 — 2026.08.24 (2. pont táblázatai kiegészítve pontos vers-hozzárendeléssel [Vers oszlop], tartalmi változás nélkül — minden szó egyértelműen versre bontható, nincs többszörös előfordulás; a korábbi könnyű ellenőrzésnél talált ELTÉRÉS [v.7, עֵרֻמִּם, H6174 vs. tényleges H5903] pontosítva a fájl végén: kiderült, hogy H6174 valójában Gen.2.25 helyes Strong-száma, nem elgépelés — emberi döntésre vár, nem lett automatikusan javítva)*
 *v1 — 2026.07.31*
 
 ---
@@ -36,12 +37,12 @@ A szakaszban a történések sorrendje kulcsfontosságú — a szöveg tudatosan
 
 ### v.7 — a szemek megnyílása
 
-| Héber szó | Kiejtés | Strong-szám | Szó szerinti jelentés |
-|---|---|---|---|
-| וַתִּפָּקַחְנָה | vattippakachnah | H6491 (*pakach*) | és megnyilatkozának |
-| עֵינֵי | ejnei | H5869 (*ajin*) | szemei(k) |
-| עֵרֻמִּם | arummim | H6174 (*arom*) | mezítelenek |
-| חֲגֹרֹת | chagorot | H2290 (*chagorah*) | övek, körülkötők |
+| Vers | Héber szó | Kiejtés | Strong-szám | Szó szerinti jelentés |
+|---|---|---|---|---|
+| 3:7 | וַתִּפָּקַחְנָה | vattippakachnah | H6491 (*pakach*) | és megnyilatkozának |
+| 3:7 | עֵינֵי | ejnei | H5869 (*ajin*) | szemei(k) |
+| 3:7 | עֵרֻמִּם | arummim | H6174 (*arom*) ⚠️ | mezítelenek — **ELTÉRÉS, lásd megjegyzés a fájl végén** |
+| 3:7 | חֲגֹרֹת | chagorot | H2290 (*chagorah*) | övek, körülkötők |
 
 **Héber (v.7):** וַתִּפָּקַחְנָה עֵינֵי שְׁנֵיהֶם וַיֵּדְעוּ כִּי עֵירֻמִּם הֵם
 **Tükörfordítás:** "és-megnyílának szemei kettejöknek és-tudták hogy mezítelenek ők"
@@ -49,13 +50,13 @@ A szakaszban a történések sorrendje kulcsfontosságú — a szöveg tudatosan
 
 ### v.14-15 — a kígyó átka és a protoevangélium
 
-| Héber szó | Kiejtés | Strong-szám | Szó szerinti jelentés |
-|---|---|---|---|
-| אָרוּר | arur | H779 (*arar*) | átkozott |
-| אֵיבָה | ejvah | H342 (*ejvah*) | ellenségeskedés |
-| זֶרַע | zera | H2233 (*zera*) | mag, utód |
-| יְשׁוּפְךָ | jeshufcha | H7779 (*shuf*) | szétzúz/megsebez téged |
-| עָקֵב | aqev | H6119 (*aqev*) | sarok |
+| Vers | Héber szó | Kiejtés | Strong-szám | Szó szerinti jelentés |
+|---|---|---|---|---|
+| 3:14 | אָרוּר | arur | H779 (*arar*) | átkozott |
+| 3:15 | אֵיבָה | ejvah | H342 (*ejvah*) | ellenségeskedés |
+| 3:15 | זֶרַע | zera | H2233 (*zera*) | mag, utód |
+| 3:15 | יְשׁוּפְךָ | jeshufcha | H7779 (*shuf*) | szétzúz/megsebez téged |
+| 3:15 | עָקֵב | aqev | H6119 (*aqev*) | sarok |
 
 **Héber (v.15):** וְאֵיבָה אָשִׁית בֵּינְךָ וּבֵין הָאִשָּׁה וּבֵין זַרְעֲךָ וּבֵין זַרְעָהּ הוּא יְשׁוּפְךָ רֹאשׁ וְאַתָּה תְּשׁוּפֶנּוּ עָקֵב
 **Tükörfordítás:** "és-ellenségeskedést teszek közötted és-közte az-asszonynak és-közte magodnak és-közte magvának ő szétzúz-téged fejet és-te szétzúzod-őt sarkat"
@@ -63,20 +64,20 @@ A szakaszban a történések sorrendje kulcsfontosságú — a szöveg tudatosan
 
 ### v.16 — az asszony átka
 
-| Héber szó | Kiejtés | Strong-szám | Szó szerinti jelentés |
-|---|---|---|---|
-| עִצְּבוֹנֵךְ | itzevonekh | H6093 (*itzavon*) | fájdalmad, gyötrelmed |
-| תְּשׁוּקָתֵךְ | teshuqatekh | H8669 (*teshuqah*) | vágyad, sóvárgásod |
-| יִמְשָׁל | jimshol | H4910 (*mashal*) | uralkodni fog |
+| Vers | Héber szó | Kiejtés | Strong-szám | Szó szerinti jelentés |
+|---|---|---|---|---|
+| 3:16 | עִצְּבוֹנֵךְ | itzevonekh | H6093 (*itzavon*) | fájdalmad, gyötrelmed |
+| 3:16 | תְּשׁוּקָתֵךְ | teshuqatekh | H8669 (*teshuqah*) | vágyad, sóvárgásod |
+| 3:16 | יִמְשָׁל | jimshol | H4910 (*mashal*) | uralkodni fog |
 
 **Károli:** „Az asszonynak monda: Felette igen megsokasítom viselősséged fájdalmait, fájdalommal szűlsz magzatokat, és epekedel férjed után, ő pedig uralkodik te rajtad."
 
 ### v.19 — por és visszatérés
 
-| Héber szó | Kiejtés | Strong-szám | Szó szerinti jelentés |
-|---|---|---|---|
-| עָפָר | afar | H6083 (*afar*) | por |
-| שׁוּב | shuv | H7725 (*shuv*) | visszatérni |
+| Vers | Héber szó | Kiejtés | Strong-szám | Szó szerinti jelentés |
+|---|---|---|---|---|
+| 3:19 | עָפָר | afar | H6083 (*afar*) | por |
+| 3:19 | שׁוּב | shuv | H7725 (*shuv*) | visszatérni |
 
 **Héber (v.19b):** כִּי־עָפָר אַתָּה וְאֶל־עָפָר תָּשׁוּב
 **Tükörfordítás:** "mert-por vagy-te és-porhoz visszatérsz"
@@ -84,20 +85,20 @@ A szakaszban a történések sorrendje kulcsfontosságú — a szöveg tudatosan
 
 ### v.21 — a bőr ruhák
 
-| Héber szó | Kiejtés | Strong-szám | Szó szerinti jelentés |
-|---|---|---|---|
-| כָּתְנוֹת | kotnot | H3801 (*kutonet*) | köntösök, ruhák |
-| עוֹר | 'or | H5785 (*'or*) | bőr |
+| Vers | Héber szó | Kiejtés | Strong-szám | Szó szerinti jelentés |
+|---|---|---|---|---|
+| 3:21 | כָּתְנוֹת | kotnot | H3801 (*kutonet*) | köntösök, ruhák |
+| 3:21 | עוֹר | 'or | H5785 (*'or*) | bőr |
 
 **Károli:** „És csinála az Úr Isten Ádámnak és az ő feleségének bőr ruhákat, és felöltözteté őket."
 
 ### v.24 — a kérubok és a lángoló kard
 
-| Héber szó | Kiejtés | Strong-szám | Szó szerinti jelentés |
-|---|---|---|---|
-| כְּרֻבִים | keruvim | H3742 (*keruv*) | kérubok |
-| לַהַט | lahat | H3858 (*lahat*) | lángoló, villogó |
-| הַחֶרֶב | hacherev | H2719 (*cherev*) | a kard |
+| Vers | Héber szó | Kiejtés | Strong-szám | Szó szerinti jelentés |
+|---|---|---|---|---|
+| 3:24 | כְּרֻבִים | keruvim | H3742 (*keruv*) | kérubok |
+| 3:24 | לַהַט | lahat | H3858 (*lahat*) | lángoló, villogó |
+| 3:24 | הַחֶרֶב | hacherev | H2719 (*cherev*) | a kard |
 
 **Károli:** „És kiűzé az embert, és oda helyezteté az Éden kertjének keleti oldala felől a Kérubokat és a villogó pallos lángját, hogy őrizzék az élet fájának útját."
 
@@ -242,3 +243,17 @@ A Hós 6:7-tel kapcsolatos, "szövetség Ádámmal" vitatott kérdés — kiegé
 ## Következő lépés a sorozatban
 
 A logikus folytatás **1Mózes 4:1-16** (Kain és Ábel) lenne — ez közvetlenül folytatja a bűn "gyűrűzésének" ívét (az egyéni bűnből testvérgyilkosság lesz), és valószínűleg tovább bővíti a most megnyílt Hamartológia-kategóriát, illetve az áldozat-motívumot (Ábel áldozata vs. a 3:21 bőr-ruha implicit áldozati előképe).
+
+---
+
+## ⚠️ Megjegyzés — a v.7 עֵרֻמִּם (arummim) Strong-számának pontosítása (2026.08.24, emberi döntésre vár)
+
+A korábbi könnyű ellenőrzés (`genezis/Konnyu_ellenorzes_1-16_osszesito.md`) eltérést talált a 2. pont táblázatában szereplő H6174 Strong-szám és a `TAHOT_kivonat.tsv` Gen.3.7-es tényleges adata (H5903) között. A pontos vers-hozzárendelés során ez a kérdés **tisztázódott, de nem lett automatikusan javítva**:
+
+- **H6174** (עָרוֹם, *arom*) a tényleges Strong-szám **Gen.2.25**-nél — pontosan azt a szót jelöli, amit az 1Móz 2:8-25 tanulmány 2. pontja is helyesen H6174-ként azonosít ("Egy test" alszakasz, עֲרוּמִּים sor).
+- **H5903** (עֵירֹם, *erom*) a tényleges Strong-szám **Gen.3.7, 3.10 és 3.11**-nél — ez egy szorosan rokon, de a maszoréta szöveg szerint **külön disambiguated Strong-számmal jelölt** alak (más pontozás/írásmód).
+- **H6175** (עָרוּם, *arum*, "ravasz") a harmadik, hasonló hangzású, de jelentésben teljesen eltérő szó — ez a kígyó jelzője Gen.3.1-ben (lásd a 3:1-6 tanulmány 2. pontja).
+
+A jelen tanulmány v.7-es táblázata a **H6174**-et használja — ez pontosan megegyezik a **Gen.2.25**-nél helyes Strong-számmal, de **nem** a Gen.3.7 tényleges TAHOT-tagjével (H5903). Ez arra utal, hogy a táblázat valószínűleg a 2:25-ös "meztelenség" motívum folytatásaként, onnan átvéve rögzítette a Strong-számot, anélkül hogy ellenőrizte volna, hogy a 3:7-es vers maszoréta szövege egy másik, disambiguated Strong-taggel van ellátva. **Nem elgépelésről (H6174↔H6175 összekeverésről) van tehát szó, hanem egy másik vers (2:25) Strong-számának átvételéről.**
+
+**Emberi döntést igényel:** a `Karoli_Strong_kivonat.tsv`-be való felvételkor a Gen.3.7-es sor Strong-száma H5903 legyen-e (a TAHOT tényleges tagje szerint), vagy a tanulmány szerzője szándékosan akarja-e összekötni a két előfordulást (2:25 és 3:7) ugyanazzal a Strong-számmal, a motívum folytonosságát hangsúlyozva — ez utóbbi esetben a "bizonytalan" megbízhatósági jelölés (4.13 pont) lenne indokolt mindkét sorra.
