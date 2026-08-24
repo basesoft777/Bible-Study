@@ -1,5 +1,7 @@
 # PaRDeS-projekt: STEPBible/SzPA integráció és GitHub-architektúra — döntési összefoglaló
 
+*v16 — 2026.08.24 (KJV-Strongs és ASV-Strongs teljes Példabeszédek [31 fejezet] letöltve és a publikus repóba generálva — `konkordancia/KJV_Strongs_Proverbs.tsv` [5945 sor] és `konkordancia/ASV_Strongs_Proverbs.tsv` [5872 sor], összesen 11817 adatsor; validálva a 4.8-as pontban rögzített Péld 23:7-es kézi referenciával, hat szóra pontosan egyezik — a 0. szakasz dataset-leltárának 5. és 6. sora "Letöltve, validálva (Példabeszédek)" státuszra frissítve)*
+
 *v15 — 2026.08.23 (új 0. szakasz: összegző dataset-leltár táblázat a fájl elejére, hogy egy új munkamenet azonnal áttekintést kapjon mind a 11 azonosított/tervezett datasetről — hely, státusz, forrás, és a részletes indoklásra mutató hivatkozás — mielőtt a lenti szakaszok részletes tárgyalásába merülne)*
 
 *Ez a fájl híd a claude.ai memóriarendszerében felhalmozott kontextus és a Claude Code / bármely jövőbeli munkamenet között. Célja, hogy egy új munkamenet — akár claude.ai chatben, akár Claude Code-ban — enélkül a beszélgetés-történet nélkül is teljes képet kapjon a meghozott döntésekről és azok indoklásáról.*
@@ -16,8 +18,8 @@
 | 2 | **Karoli_1908.tsv** | Igehely + teljes Károli-vers | Publikus repó | Forrás azonosítva, még nem generálva | scrollmapper/HunKar (közkincs) | 4.1, 4.7 |
 | 3 | **SzPA versek + lábjegyzetek** | 2 tábla könyvenként (Példabeszédek, ApCsel) | Privát repó | Minta kész (1:1-9, 1:1-4), teljes könyv még nem | Saját feltöltés (jogosult tulajdon) | 3. szakasz |
 | 4 | **Összekapcsolt (join) táblák** | Strong + Károli + SzPA + azonosítás módja + megbízhatóság | Privát repó | Minta/demó szinten kész, generálás még nem indult | Az 1-3. összefésülése | 4.1-4.2 |
-| 5 | **KJV-Strongs** | Híd-forrás, élőben lekérdezve (nem tárolt dataset) | — | Validálva, működik | biblehub.com/kjvs, studybible.info/KJV_Strongs (közkincs) | 4.8 |
-| 6 | **ASV-Strongs** | Második híd-forrás, élőben lekérdezve, kereszt-ellenőrzésre | — | Validálva, működik | studybible.info/ASV_Strongs (közkincs) | 4.9 |
+| 5 | **KJV-Strongs** | Híd-forrás, teljes Példabeszédek (31 fejezet), szavankénti bontásban tárolva | Publikus repó | Letöltve, validálva (Példabeszédek) | biblehub.com/kjvs, studybible.info/KJV_Strongs (közkincs) | 4.8 |
+| 6 | **ASV-Strongs** | Második híd-forrás, teljes Példabeszédek (31 fejezet), kereszt-ellenőrzésre | Publikus repó | Letöltve, validálva (Példabeszédek) | studybible.info/ASV_Strongs (közkincs) | 4.9 |
 | 7 | **byztxt szövegkritikai variánsok** | Tényleges eltérő szövegváltozatok (nem csak "van/nincs") | Publikus repó | Azonosítva, beépítésre vár | byztxt/byzantine-majority-text (Unlicense) | 4.6 |
 | 8 | **Károli-specifikus kereszthivatkozások** | Versenkénti hivatkozás-lista, szentiras.hu eredetű | Publikus repó | Azonosítva, nem generálva | krisek/HunKar (SWORD OSIS) | 4.6 |
 | 9 | **openbible.info kereszthivatkozások** | Szavazat-súlyozott hivatkozás-jelöltek | Publikus repó | Azonosítva, kiegészítő szerepű | scrollmapper (MIT) | 4.6 |
