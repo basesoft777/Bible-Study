@@ -1,5 +1,7 @@
 # PaRDeS-projekt: STEPBible/SzPA integráció és GitHub-architektúra — döntési összefoglaló
 
+*v17 — 2026.08.24 (összefésülve a Claude Code által commitolt v16-tal [claude.ai chat munkamenet]: pótolva a hiányzó 4.10 alpont [getbible.net API — megvizsgálva és lezárva, nincs Strong-szám, elsőkézből is megerősítve]; a 4.8/4.9 pontokban a `studybible.info/[KJV_Strongs|ASV_Strongs]/[Könyv]` könyv-szintű forrás lett az elsődleges, felváltva a biblehub.com/kjvs-t mint első helyen említett forrást; rögzítve a repó kisbetűs átnevezése `basesoft777/Bible-Study`-ra. Minden más korábbi tartalom [4.1-4.9, 0. szakasz, 7.1-7.2] már a Claude Code-os v16-ban is jelen volt, nem igényelt módosítást.)*
+
 *v16 — 2026.08.24 (KJV-Strongs és ASV-Strongs teljes Példabeszédek [31 fejezet] letöltve és a publikus repóba generálva — `konkordancia/KJV_Strongs_Proverbs.tsv` [5945 sor] és `konkordancia/ASV_Strongs_Proverbs.tsv` [5872 sor], összesen 11817 adatsor; validálva a 4.8-as pontban rögzített Péld 23:7-es kézi referenciával, hat szóra pontosan egyezik — a 0. szakasz dataset-leltárának 5. és 6. sora "Letöltve, validálva (Példabeszédek)" státuszra frissítve)*
 
 *v15 — 2026.08.23 (új 0. szakasz: összegző dataset-leltár táblázat a fájl elejére, hogy egy új munkamenet azonnal áttekintést kapjon mind a 11 azonosított/tervezett datasetről — hely, státusz, forrás, és a részletes indoklásra mutató hivatkozás — mielőtt a lenti szakaszok részletes tárgyalásába merülne)*
@@ -35,7 +37,9 @@
 
 ## 1. Architekturális váltás: GitHub mint elsődleges forrás
 
-**Döntés:** a `project_knowledge_search` (Claude Projects szemantikus keresés) helyett a **GitHub-repó** (`Basesoft777/Bible-Study`) grep-alapú keresése lesz az elsődleges módszer, minden munkamenet elején repó-klónozással/pull-lal.
+**Döntés:** a `project_knowledge_search` (Claude Projects szemantikus keresés) helyett a **GitHub-repó** (`basesoft777/Bible-Study`) grep-alapú keresése lesz az elsődleges módszer, minden munkamenet elején repó-klónozással/pull-lal.
+
+**Fontos, gyakorlati megjegyzés:** a repó időközben átköltözött **kisbetűs** `basesoft777/Bible-Study` névre (korábban `Basesoft777/Bible-Study`) — a régi URL jelenleg még átirányít, de érdemes az új, kisbetűs formát használni jövőbeli klónozásnál/hivatkozásnál, nehogy az átirányítás egyszer megszűnjön.
 
 **Indoklás:**
 - A `project_knowledge_search` eddig is csak azokra a fájlokra terjedt ki, amiket ténylegesen visszatöltöttünk a Claude Projects-be — ez már eddig is következetlen volt (nem minden tanulmány került vissza)
@@ -250,8 +254,8 @@ Ez a join gyakorlatilag **egy egyedi, magyar nyelvű, Strong-számmal ellátott 
 **Demó-eredmény (Péld 23:1-4, vak teszt):** a csak STEPBible-glosszra épülő módszer 9/10 (90%) pontosságot ért el; a KJV-hidas módszer **10/10 (100%)** — a kritikus eset (23:2, "mértékletlen" — H1167 "master of" vs. H5315 "appetite") a KJV *"if thou be **a man given to** appetite"* mondatszerkezete alapján oldódott meg helyesen, mert az egyértelműsítette, melyik héber szó az állítmány.
 
 **Forrás — megtalálva és validálva** *(korábbi "még beszerzendő" jelölés lezárva)*: **valódi, ténylegesen beágyazott** Strong-taggelt KJV-szöveg, **öt egymástól független oldalon** megerősítve (nem egyetlen, bizonytalan forrás):
-- `biblehub.com/kjvs/` (pl. `biblehub.com/kjvs/proverbs/23.htm`)
-- `studybible.info/KJV_Strongs/` (pl. `studybible.info/KJV_Strongs/Proverbs 23:7`)
+- **`studybible.info/KJV_Strongs/[Könyv]`** — **elsődleges, ajánlott forrás**: könyv-szintű navigációval (mind a 31 fejezet egy oldalon), morfológiai kóddal kiegészítve — ezzel a formátummal készült el ténylegesen a teljes Példabeszédek-dataset (lásd 0. szakasz, 5-6. sor)
+- `biblehub.com/kjvs/` (pl. `biblehub.com/kjvs/proverbs/23.htm`) — másodlagos, ugyanúgy validált
 - `godrules.net/library/kjvstrongs/`
 - `sacrednamebible.com/kjvstrongs/`
 - `bibletruthpublishers.com`
@@ -278,7 +282,7 @@ Ez a join gyakorlatilag **egy egyedi, magyar nyelvű, Strong-számmal ellátott 
 
 ### 4.9 Második validáló forrás: ASV (American Standard Version, 1901) — kereszt-ellenőrzés
 
-**A forrás:** ASV, 1901, közkincs alapszöveg; a Strong-taggelés a "Cross Word Project" (Wade Maxfield) munkája — **független** a KJV-Strongs taggelésétől (Bible Foundation/CrossWire), tehát valódi, nem csak formális második forrás. Elérhető: `studybible.info/ASV_Strongs/`, `biblehub.com/asv/`.
+**A forrás:** ASV, 1901, közkincs alapszöveg; a Strong-taggelés a "Cross Word Project" (Wade Maxfield) munkája — **független** a KJV-Strongs taggelésétől (Bible Foundation/CrossWire), tehát valódi, nem csak formális második forrás. **Elsődleges, ajánlott elérés:** `studybible.info/ASV_Strongs/[Könyv]` — könyv-szintű belépési pont, mind a 31 fejezet linkjével egy oldalon, ugyanazzal a szerkezettel, mint a KJV-nél. *(Fontos: a `biblehub.com/asv/` **nem** Strong-taggelt — csak sima szöveg; a biblehub.com-on nincs külön "ASV+Strong's" útvonal, ellentétben a KJV-vel.)*
 
 **A módszer bővítése:** a join-tábla "Azonosítás módja" oszlopa (4.2) egy negyedik, finomított állapottal egészül ki, amikor KJV-híd alkalmazva van:
 
@@ -312,6 +316,23 @@ Ez a join gyakorlatilag **egy egyedi, magyar nyelvű, Strong-számmal ellátott 
 **Kulcsfelismerés:** a héber *ásér* egy **eredendően semleges vonatkozó névmás**, ami egyaránt vonatkozhat személyre és tárgyra (kb. "aki/ami") — a **STEPBible nyers gloss is ezt a semlegességet tükrözi**, nem dönt személy/tárgy között. A KJV és az ASV fordítói **egymástól függetlenül, külön-külön döntöttek** ebben a kérdésben — a kétértelműség tehát **nem fordítási hiba**, hanem **magának az eredeti héber szövegnek a tulajdonsága**.
 
 **Módszertani tanulság — pontosítja a KJV≠ASV jelzés értelmezését:** egy ilyen ⚠️ jelzésnél a kézi ellenőrzésnek **nem mindig az a kérdése, "melyik forrás téved"** — gyakran azt kell megállapítani, hogy **maga az eredeti szöveg enged-e több értelmezést**. Ez utóbbi eset **önmagában is értékes exegetikai megfigyelés**, ami akár egy jövőbeli tanulmány ⚠️ vitatott pontjának alapja is lehet (a saját kritérium 5. pontja szerint: "a szó jelentése önmagában ad okot egy vitatott pontra") — nem csupán technikai zajként kezelendő.
+
+### 4.10 getbible.net API — megvizsgálva, lezárva, nem használjuk
+
+**A kísérlet célja:** kideríteni, van-e egyetlen letöltéssel elérhető, teljes KJV/ASV Strong-taggelt bulk-forrás (a fejezetenkénti scraping helyett), a `getbible.net` API-n keresztül.
+
+**Eredmény:** a `getbible.net` (minden aldomainjével, így `api.getbible.net`-tel együtt) **szervezeti szintű hálózati tiltás alatt áll** a claude.ai munkakörnyezetben — Claude Code-ban végzett teszt sem tudta közvetlenül lekérdezni, a proxy explicit policy denial (403) választ adott.
+
+**Közvetett bizonyíték, GitHub-forrásokból (nem a tiltott API-ból):**
+- Az ASV fordítás kulcsa ebben az API-ban ténylegesen `asv` (megerősítve a `getbible/v2` repó gyökérszerkezetéből)
+- A `getbible/v2` repóban a `kjv/` mappák **csak metaadatot/SHA-ellenőrzőösszeget** tartalmaznak, a tényleges verstartalmat élőben szolgálja ki a szerver — statikus bulk-fájl **nincs** a repóban magában
+- A `getbible/getbiblesword` (az adatfeldolgozó motor) README-je explicit megkülönbözteti a *"rendered text"* (megjelenítésre szánt, feltehetően tag-mentes) és a *"decoded base64 bytes as authoritative"* (nyers, hiteles forrás) fogalmakat — ez arra utal, hogy a publikus JSON `"text"` mezője valószínűleg **tag-mentes**, a Strong-adat csak a mögöttes SWORD-modulban van jelen
+
+**Elsőkézből való megerősítés:** a felhasználó saját gépéről közvetlenül tesztelte a `getbible.net` API-t (a hálózati tiltás miatt itt nem volt lehetséges) — **megerősítve: nincs Strong-szám** a kimenetben. Ez a közvetett GitHub-bizonyítékot véglegesen igazolja.
+
+**Mintázat-felismerés:** ez már **második, egymástól független, ténylegesen ellenőrzött eset** (az első a scrollmapper-KJV volt), ahol egy kényelmes, felhasználóbarát API/JSON-forrás **ígéri** a Strong-taggelést a nevében/metaadatában, de a **tényleges kimenet nem tartalmazza** — a mögöttes, valódi taggelt adat mindkét esetben egy SWORD-modulban van, amit a kényelmi réteg "letisztít" emberi olvasásra. **Ez általános óvatossági elvvé emelhető**: bármely jövőbeli, hasonlóan kényelmes API/JSON-forrást eleve gyanakvással kell kezelni, amíg tételesen nem ellenőrizzük a tényleges kimenetet, a névre/metaadatra hagyatkozás helyett.
+
+**Végleges döntés: nem keresünk tovább bulk API-alternatívát.** A validált, ténylegesen ellenőrzött módszer (`studybible.info/[KJV_Strongs|ASV_Strongs]/[Könyv]`, könyv-szintű navigációval, fejezetenkénti lekérdezéssel) marad az egyetlen működő út — ezzel a módszerrel készült el ténylegesen a teljes Példabeszédek KJV+ASV dataset (lásd 0. szakasz).
 
 ---
 
