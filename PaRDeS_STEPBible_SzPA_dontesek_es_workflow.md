@@ -1,5 +1,7 @@
 # PaRDeS-projekt: STEPBible/SzPA integráció és GitHub-architektúra — döntési összefoglaló
 
+*v29 — 2026.08.24 (új 4.15 alpont: rögzítve, hogy a Strong-validáció [4.13-as "Megbízhatóság" oszlop] nem végleges, hanem időben újraértékelhető állapot — négy ok, ami miatt egy sor besorolása változhat [KJV/ASV lefedettség bővülése, új tanulmányok kontextusa, STEPBible-forrás frissülése, visszamenőleges ellenőrzések bővülése]; gyakorlati szabály, hogy minden újraértékelést — változással vagy anélkül — a `Validacios_naplo.md`-ben kell dokumentálni; és három konkrét mérföldkő, amikor érdemes újraértékelési kört indítani)*
+
 *v28 — 2026.08.24 (a Genezis-sorozat 7, korábban "range-wide" formátumú bővített tanulmányának [1Móz 1:1, 1:2-2:3, 2:4-7, 2:8-25, 3:1-6, 3:7-24, 12:1-20] 2. pontja átalakítva pontos, versre bontott formátumra — minden fájl fejléc-verziója és changelogja frissítve, tartalmi rész [Peshat/Remez/Drash/Sod, 3/b] változatlan; 7 szónál TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ jelölés került be [צֶלֶם, גַּן, עֵזֶר כְּנֶגְדּוֹ, צֵלָע, אִשָּׁה, נָחָשׁ, מִזְבֵּחַ — mindegyik emberi döntésre vár]; az 1Móz 3:7-24 korábbi ELTÉRÉSE [עֵרֻמִּם, H6174] tisztázva a tanulmány végén: kiderült, hogy H6174 valójában Gen.2.25 helyes Strong-száma, nem elgépelés — nem lett automatikusan javítva; a teljes 20 tanulmányra újra lefuttatva a könnyű ellenőrzés, most már 100%-ban per-vers alapon — új összesítő: `genezis/Konnyu_ellenorzes_1-16_osszesito_v2.md` [185/193 megerősítve, 2 eltérés, 81 új kereszthivatkozási jelölt]; a `Karoli_Strong_kivonat.tsv` feltöltése ezen a ponton még NEM történt meg, külön lépés marad)*
 
 *v26 — 2026.08.24 (önellenőrzési mechanizmus és egységes megbízhatósági jelölés bevezetve a Károli-Strong join-tábla építésébe: (1) `konkordancia/Karoli_Strong_kivonat.tsv` oszlopszerkezete bővítve egy 6. "Megbízhatóság" oszloppal ["magas"/"közepes"/"bizonytalan"/"—"]; (2) `konkordancia/Validacios_naplo.md` létrehozva, visszamenőleg rögzítve a három korábbi, chat-munkamenetben elvégzett kézi validáció [Pro.23.1-9, Act.1.1-4, Gen.1.2-4]; (3) új 4.13 alpont — miért a KJV/ASV a kereszt-ellenőrző forrás [nem a STEPBible, ami maga az elsődleges bemenet, körkörös lenne], az 5 lépéses megbízhatósági döntési logika, és a 10. soronkénti mintavételes validáció szabálya; (4) `Join_tabla_lekerdezo_promptok.md` felvéve a repó gyökerébe, újrafelhasználható lekérdező promptokkal a join-tábla állapotának bármikori ellenőrzéséhez)*
@@ -483,6 +485,25 @@ Ahogy a `Karoli_Strong_kivonat.tsv` lefedettsége nő (több könyv, több tanul
 4. **Fordított irányú keresés — magyar szó felől.** Elég nagy lefedettségnél ellenőrizhetővé válik, hogy a Károli egy adott magyar szava mindig ugyanazt a héber/görög Strong-számot fedi-e le, vagy több különböző fogalmat mos össze — ez pontosan az a fajta "elmosódás", amit a bővített sablon 2. kiválasztási kritériuma keres, de most objektív, adatalapú jelzést kapna, nem csak egyedi felismerést.
 
 5. **Statisztikai mintázat-felismerés — jövőbeli, nem jelenleg tervezett lehetőség.** Nagy lefedettségnél elméletileg kereshetővé válna, mely Strong-számok fordulnak elő szokatlanul gyakran ugyanazzal a Károli-szóval — objektív jelzést adhatna olyan motívum-jelöltekre, amiket eddig csak kézi, tartalmi munka tárt fel.
+
+### 4.15 A Strong-validáció nem végleges — mikor érdemes újraértékelni
+
+A `Karoli_Strong_kivonat.tsv` "Megbízhatóság" oszlopa (4.13 pont) egy ADOTT IDŐPONTBAN érvényes, dokumentált állapotot rögzít — nem végleges, megkérdőjelezhetetlen tényt. A validáció eredménye időben VÁLTOZHAT, négy fő okból:
+
+1. **KJV/ASV lefedettség bővülése.** Egy sor, ami jelenleg "közepes" megbízhatóságú (mert nincs KJV/ASV-adat arra a könyvre), automatikusan "magas"-ra frissülhet, amint a KJV/ASV-Strongs adat kiterjed az adott könyvre — anélkül, hogy bármi hibás lett volna korábban.
+
+2. **Új tanulmányok új kontextust adhatnak egy korábbi, "bizonytalan" esethez.** Ha egy jövőbeli tanulmány részletesebben foglalkozik ugyanazzal a szógyökkel (pl. a már dokumentált H2895/H2896 vagy H1892/H1893 kettős lehetőségeknél), kideríthet valamit, ami eldönti, melyik Strong-szám a helyesebb az adott kontextusban — ez nem az adat változása, hanem az értelmezés pontosodása.
+
+3. **A STEPBible-Data forrás maga is frissülhet.** Ha a TAHOT/TAGNT-et egy jövőbeli munkamenetben újra letöltjük, és eltér a jelenlegi `konkordancia/TAHOT_kivonat.tsv`-től, egy korábban "megerősített" sor "eltérés"-sé válhat — nem a mi hibánkból, hanem mert a forrás változott.
+
+4. **A visszamenőleges ellenőrzések bővülésével** (mint az 1Móz 1-16 könnyű ellenőrzése) egyre több kontextusból gyűlik össze adat ugyanarra a szóra.
+
+**Gyakorlati szabály:** minden újraértékelést — akár változás történt, akár nem — rögzíteni kell a `konkordancia/Validacios_naplo.md`-ben, dátummal. Egy "nincs változás" eredmény is dokumentálandó, mert ez maga is informatív (megerősíti, hogy az adott sor stabil maradt egy újabb ellenőrzési kör után is).
+
+**Mikor érdemes újraértékelési kört indítani** (nem minden apró változásnál, hanem ezeknél a mérföldköveknél):
+- Amikor a KJV/ASV lefedettség egy új könyvre bővül (akkor érdemes újranézni az adott könyv korábban "közepes" jelölésű sorait)
+- Amikor egy tematikus vagy mélyelemzés tanulmány érdemben érinti egy korábban "bizonytalan" jelölésű szó szógyökét
+- Nagyobb, tudatos STEPBible-forrás-frissítés esetén (nem minden alkalommal, csak ha ténylegesen újra letöltjük a nyers adatot)
 
 ---
 
