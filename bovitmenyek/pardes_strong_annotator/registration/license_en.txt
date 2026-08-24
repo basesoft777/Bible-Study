@@ -1,0 +1,2 @@
+License: [PLACEHOLDER — no license has been chosen for this project yet;
+fill this in before a final release].

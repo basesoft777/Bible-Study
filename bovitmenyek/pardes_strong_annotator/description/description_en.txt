@@ -1,0 +1,7 @@
+PaRDeS Strong Annotator
+
+Inserts Strong numbers from the konkordancia/Karoli_Strong_kivonat.tsv
+join table into the Hungarian Károli 1908 verse text, in square brackets
+directly after the matched word.
+
+Usage: Tools > PaRDeS Strong Annotation...

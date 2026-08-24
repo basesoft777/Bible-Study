@@ -1,0 +1,7 @@
+PaRDeS Strong-annotáció
+
+Beszúrja a kijelölt vagy megadott igehely Károli 1908-as fordítású szövegébe
+a konkordancia/Karoli_Strong_kivonat.tsv join-táblában már feldolgozott
+Strong-számokat, szögletes zárójelben, közvetlenül az érintett szó után.
+
+Használat: Eszközök > PaRDeS Strong-annotáció...

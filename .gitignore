@@ -1,0 +1,4 @@
+# A build_oxt.py generálja ezeket a konkordancia/ TSV-kből — nem verziózzuk
+# duplikáltan, csak build időben másolódnak be.
+bovitmenyek/pardes_strong_annotator/data/
+bovitmenyek/*.oxt
