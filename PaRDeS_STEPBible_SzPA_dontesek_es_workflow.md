@@ -1,5 +1,7 @@
 # PaRDeS-projekt: STEPBible/SzPA integráció és GitHub-architektúra — döntési összefoglaló
 
+*v25 — 2026.08.24 (nyomon követési mechanizmus bevezetve a Károli-Strong join-tábla építésére: (1) `Join_tabla_folyamat_magyarazat.md` felvéve a repó gyökerébe, a kétoszlopos [Strong+Károli] join gyakorlati folyamatát írja le bővített és tematikus sablonnál; (2) `konkordancia/Karoli_Strong_kivonat.tsv` létrehozva üres, fejléces váltként [Igehely | Strong-szám | Károli-szó | Azonosítás módja | Forrás-tanulmány]; (3) `motivumlog/PaRDeS_motivumok.md` "Feldolgozott igeszakaszok" táblázata kiegészítve egy "Károli-Strong sorok" oszloppal, minden meglévő sornál "—" [nincs visszamenőleges becslés]; (4) új 4.12 alpont — 66 könyves join-tábla lefedettségi táblázat, jelenleg minden könyvnél 0%; (5) a 8. szakasz "négy lezárt tematikus tanulmány" nyitott pontja részletes, pipálható checklistre cserélve, könyvenkénti bontásban)*
+
 *v24 — 2026.08.24 (Károli-specifikus kereszthivatkozás-adat legenerálva a teljes Bibliára a krisek/HunKar OSIS-forrásból — `konkordancia/Karoli_kereszthivatkozasok.tsv` [31 168 vers feldolgozva, 19 817 versnek van kereszthivatkozása, 32 407 sor összesen, ~1,1 MB, közkincs]; validálva: Gen.1.1-hez pontosan 8 kereszthivatkozás generálódott, számjegyre egyezve a korábban kézzel ellenőrzött referenciával; az OSIS-forrás saját könyv-kódjai [pl. `Exod`, `Acts`, `Ps`] STEPBible-natívra konvertálva [`Exo`, `Act`, `Psa`] egy 66 elemű, kánoni sorrendű megfeleltető táblával, 0 konverziós hibával; dokumentálva `konkordancia/Karoli_kereszthivatkozasok_README.md`-ben, explicit jelezve, hogy ez csak jelöltlista a 3/b ponthoz, a tartalmi értékelés kézi lépés marad — a 0. szakasz dataset-leltárának 8. sora "Letöltve, generálva (teljes Biblia)" státuszra frissítve)*
 
 *v23 — 2026.08.24 (SzPA-integráció felfüggesztve, bizonytalan időre, felhasználói döntés alapján — a privát repó és a két-táblás SzPA-terv változatlanul érvényes marad, csak az aktív bővítés szünetel; a meglévő minták [Péld 1:1-9, ApCsel 1:1-4] referenciaként megmaradnak; jövőbeli join-tábla-építés ezalatt "csak Károli" [kétoszlopos] formában, publikus repóban készül — a 0. szakasz 3. és 4. sora "(felfüggesztve)" jelzéssel kiegészítve, új nyitott pont felvéve a 8. szakaszba)*
@@ -365,6 +367,81 @@ Ez a join gyakorlatilag **egy egyedi, magyar nyelvű, Strong-számmal ellátott 
 
 **Mellékfelismerés:** a validáció során derült ki, hogy a felhasznált külső referencia egy **másik, szövegszerűen eltérő Károli-revízióból** származhat, más jogi státusszal — lásd 4.7 és 8. szakasz.
 
+### 4.12 Join-tábla lefedettség — gyors áttekintés
+
+Ez a táblázat minden alkalommal frissítendő, amikor egy tanulmány új sorokat ad a `konkordancia/Karoli_Strong_kivonat.tsv`-hez (lásd `Join_tabla_folyamat_magyarazat.md`). A "Feldolgozott versek száma" a benne szereplő **egyedi** igehelyek száma (nem a szósorok száma), az "Összes vers a könyvben" a `Konyv_normalizalo_tabla.tsv` és a `Karoli_1908.tsv` alapján számolható.
+
+**Jelenlegi állapot (2026.08.24):** a `Karoli_Strong_kivonat.tsv` most jött létre, üres fejléc-fájlként — a korábbi kézi kísérletek (1Móz 1:2-4) ebben a chat-munkamenetben készültek, nem a repóban, ezért egyelőre nem számítanak bele. A táblázat minden könyvnél 0-val indul.
+
+| Könyv | Feldolgozott versek száma | Összes vers a könyvben | Lefedettség |
+|---|---|---|---|
+| 1Móz | 0 | 1533 | 0% |
+| 2Móz | 0 | 1213 | 0% |
+| 3Móz | 0 | 859 | 0% |
+| 4Móz | 0 | 1288 | 0% |
+| 5Móz | 0 | 959 | 0% |
+| Józs | 0 | 658 | 0% |
+| Bír | 0 | 618 | 0% |
+| Ruth | 0 | 85 | 0% |
+| 1Sám | 0 | 811 | 0% |
+| 2Sám | 0 | 695 | 0% |
+| 1Kir | 0 | 817 | 0% |
+| 2Kir | 0 | 719 | 0% |
+| 1Krón | 0 | 942 | 0% |
+| 2Krón | 0 | 822 | 0% |
+| Ezsd | 0 | 280 | 0% |
+| Neh | 0 | 406 | 0% |
+| Eszt | 0 | 167 | 0% |
+| Jób | 0 | 1070 | 0% |
+| Zsolt | 0 | 2527 | 0% |
+| Péld | 0 | 915 | 0% |
+| Préd | 0 | 222 | 0% |
+| Én | 0 | 117 | 0% |
+| Ézs | 0 | 1292 | 0% |
+| Jer | 0 | 1364 | 0% |
+| Sir | 0 | 154 | 0% |
+| Ez | 0 | 1273 | 0% |
+| Dán | 0 | 357 | 0% |
+| Hós | 0 | 197 | 0% |
+| Jóel | 0 | 73 | 0% |
+| Ámós | 0 | 146 | 0% |
+| Abd | 0 | 21 | 0% |
+| Jón | 0 | 48 | 0% |
+| Mik | 0 | 105 | 0% |
+| Náh | 0 | 47 | 0% |
+| Hab | 0 | 56 | 0% |
+| Sof | 0 | 53 | 0% |
+| Hag | 0 | 38 | 0% |
+| Zak | 0 | 211 | 0% |
+| Mal | 0 | 55 | 0% |
+| Mt | 0 | 1071 | 0% |
+| Mk | 0 | 680 | 0% |
+| Luk | 0 | 1151 | 0% |
+| Ján | 0 | 879 | 0% |
+| ApCsel | 0 | 1007 | 0% |
+| Róm | 0 | 431 | 0% |
+| 1Kor | 0 | 436 | 0% |
+| 2Kor | 0 | 256 | 0% |
+| Gal | 0 | 149 | 0% |
+| Ef | 0 | 155 | 0% |
+| Fil | 0 | 104 | 0% |
+| Kol | 0 | 95 | 0% |
+| 1Thessz | 0 | 89 | 0% |
+| 2Thessz | 0 | 47 | 0% |
+| 1Tim | 0 | 113 | 0% |
+| 2Tim | 0 | 83 | 0% |
+| Tit | 0 | 46 | 0% |
+| Filem | 0 | 25 | 0% |
+| Zsid | 0 | 303 | 0% |
+| Jak | 0 | 108 | 0% |
+| 1Pét | 0 | 105 | 0% |
+| 2Pét | 0 | 61 | 0% |
+| 1Ján | 0 | 105 | 0% |
+| 2Ján | 0 | 13 | 0% |
+| 3Ján | 0 | 15 | 0% |
+| Júd | 0 | 25 | 0% |
+| Jel | 0 | 405 | 0% |
+
 ---
 
 ## 5. Hozzáférési korlátok — mit lehet elérni honnan
@@ -509,7 +586,11 @@ Mindkét esetben ugyanaz a **kumulatív alapelv** érvényesül: minden generál
 - [ ] **Károli-kiadás ellenőrzése:** a scrollmapper HunKar-adat az 1908-as revideált Károli-kiadás — ellenőrizendő, hogy a projekt korábbi tanulmányaiban idézett Károli-szövegek ugyanezzel a kiadással egyeznek-e, mielőtt a strukturált adatbázist visszamenőleg is hitelesítő/ellenőrző forrásként használnánk
 - [x] **Strong-taggelt Károli — lezárva, döntés megszületett (4.7).** Mélykutatással azonosítva: Biblia-Felfedező (Bible-Discovery, Zsidó Miklós) — valódi, teljes, szó-szintű Strong-párosítás, de zárt licenc, adatkiemelés csak egyedi engedéllyel. **A projekt saját Károli-datasete emiatt nem erre épül**, hanem a közkincs HunKar-szövegre és a már kidolgozott tartalom-alapú generálási módszerre; a Biblia-Felfedező legfeljebb ellenőrző referenciaként vonható be, ha valaha hozzáférhető lesz.
 - [x] **A tematikus/bővített/mélyelemzés sablonok tényleges szövegmódosítása a STEPBible-lépésekkel — lezárva (v22).** `2_PaRDeS_bovitett_sablon.md` (v7→v8): a 2. pontba felvéve a kulcsszó-kiválasztás 6 szempontos kritériumlistája (ez korábban csak a döntési fájl 7.1 pontjában, a sablonfájlban nem volt jelen); a 3/b pont végére felvéve a STEPBible TAGNT/TAHOT kötelező ellenőrzés. `4_PaRDeS_tematikus_sablon.md` (v3→v4): az 1. pont táblázata után felvéve a kötelező STEPBible-egyezés-ellenőrzés; a Lezárási checklist kiegészítve egy **új 11. ponttal** — **ellenőrizve, hogy a checklist a módosítás előtt ténylegesen csak 10 pontos volt** (nem duplikálva semmit). `5_Melyelemzes_prompt_sablon.md` (v2→v3): a 2. pont végére felvéve a STEPBible-lekérdezés. Mindhárom fájlban a pontos, előre egyeztetett szöveg került beillesztésre.
-- [ ] A négy már lezárt tematikus tanulmány visszamenőleges STEPBible-ellenőrzése
+- [ ] **A négy már lezárt tematikus tanulmány visszamenőleges STEPBible-ellenőrzése és Károli-Strong join-építése** (lásd 4.12-es lefedettségi táblázat és `Join_tabla_folyamat_magyarazat.md` — ez most kettős haszonnal jár: validál ÉS join-adatot generál):
+  - [ ] Tehóm/Abüsszosz tematikus tanulmány
+  - [ ] Segítségül hívni az Úr nevét tematikus tanulmány
+  - [ ] Rafeusok/óriás-népek tematikus tanulmány
+  - [ ] Hádész tematikus tanulmány
 - [x] **TIPNR-lekérdezés Ábrahám/Ábrám névalakjaira — lezárva (v19).** A teljes TIPNR legenerálva `konkordancia/TIPNR_kivonat.tsv`-be; Ábrahám (H0085) és Ábrám (H0087), ill. Sára (H8283) és Szárai (H8297) külön Strong-számmal, teljes előfordulási listával szerepel — az 1Móz 17-es tanulmány előkészítése kész.
 - [ ] Php 1:27 végleges döntés — bekerüljön-e ötödik (korporatív jellegű) előfordulásként a pneuma/pszükhé tanulmányba
 - [ ] A teljes Példabeszédek és ApCsel könyvek tényleges feldolgozása a két-táblás + join struktúrában (eddig csak minta készült, 1:1-9 ill. 1:1-8 terjedelemben)
