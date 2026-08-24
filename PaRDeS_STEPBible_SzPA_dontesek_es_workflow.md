@@ -1,5 +1,7 @@
 # PaRDeS-projekt: STEPBible/SzPA integráció és GitHub-architektúra — döntési összefoglaló
 
+*v18 — 2026.08.24 (TAHOT/TAGNT kivonat legenerálva a teljes ÓSZ+ÚSZ-re a STEPBible-Data nyersadatból, publikus repóba — `konkordancia/TAHOT_kivonat.tsv` [283 734 nyers sor → 435 723 sor, 39 könyv, 21 178 igehely] és `konkordancia/TAGNT_kivonat.tsv` [141 720 sor, 27 könyv, 7 948 igehely]; mezőazonosítás dokumentálva `konkordancia/TAHOT_TAGNT_README.md`-ben; validálva mindhárom feladat-referenciával [Gen.1.1 2. szó=H7225/first/beginning; Pro.1.1 1. szó=H4912/"[the] proverbs of"; Heb.4.12 ψυχῆς=G5590/"of soul"/NA28+NA27+Tyn+SBL+WH+Treg+TR+Byz] számjegyre pontos egyezéssel, valamint kereszt-ellenőrizve Pro.23.7-nél a KJV_Strongs_Proverbs.tsv hat Strong-számával — a 0. szakasz dataset-leltárának 1. sora "Letöltve, generálva (teljes ÓSZ+ÚSZ)" státuszra frissítve)*
+
 *v17 — 2026.08.24 (összefésülve a Claude Code által commitolt v16-tal [claude.ai chat munkamenet]: pótolva a hiányzó 4.10 alpont [getbible.net API — megvizsgálva és lezárva, nincs Strong-szám, elsőkézből is megerősítve]; a 4.8/4.9 pontokban a `studybible.info/[KJV_Strongs|ASV_Strongs]/[Könyv]` könyv-szintű forrás lett az elsődleges, felváltva a biblehub.com/kjvs-t mint első helyen említett forrást; rögzítve a repó kisbetűs átnevezése `basesoft777/Bible-Study`-ra. Minden más korábbi tartalom [4.1-4.9, 0. szakasz, 7.1-7.2] már a Claude Code-os v16-ban is jelen volt, nem igényelt módosítást.)*
 
 *v16 — 2026.08.24 (KJV-Strongs és ASV-Strongs teljes Példabeszédek [31 fejezet] letöltve és a publikus repóba generálva — `konkordancia/KJV_Strongs_Proverbs.tsv` [5945 sor] és `konkordancia/ASV_Strongs_Proverbs.tsv` [5872 sor], összesen 11817 adatsor; validálva a 4.8-as pontban rögzített Péld 23:7-es kézi referenciával, hat szóra pontosan egyezik — a 0. szakasz dataset-leltárának 5. és 6. sora "Letöltve, validálva (Példabeszédek)" státuszra frissítve)*
@@ -16,7 +18,7 @@
 
 | # | Dataset | Tartalom | Hely | Státusz | Forrás | Részletek |
 |---|---|---|---|---|---|---|
-| 1 | **TAGNT/TAHOT kivonat** | 8 oszlop: igehely, Strong, alak, kiejtés, szótő, szótári jelentés, angol gloss, kritikai kiadás | Publikus repó | Tervezett, még nem generálva | STEPBible-Data (CC BY) | 2. szakasz |
+| 1 | **TAGNT/TAHOT kivonat** | 8 oszlop: igehely, Strong, alak, kiejtés, szótő, szótári jelentés, angol gloss, kritikai kiadás | Publikus repó | Letöltve, generálva (teljes ÓSZ+ÚSZ) | STEPBible-Data (CC BY) | 2. szakasz |
 | 2 | **Karoli_1908.tsv** | Igehely + teljes Károli-vers | Publikus repó | Forrás azonosítva, még nem generálva | scrollmapper/HunKar (közkincs) | 4.1, 4.7 |
 | 3 | **SzPA versek + lábjegyzetek** | 2 tábla könyvenként (Példabeszédek, ApCsel) | Privát repó | Minta kész (1:1-9, 1:1-4), teljes könyv még nem | Saját feltöltés (jogosult tulajdon) | 3. szakasz |
 | 4 | **Összekapcsolt (join) táblák** | Strong + Károli + SzPA + azonosítás módja + megbízhatóság | Privát repó | Minta/demó szinten kész, generálás még nem indult | Az 1-3. összefésülése | 4.1-4.2 |
