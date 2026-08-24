@@ -1,5 +1,6 @@
 # 2. Bővített PaRDeS sablon — teljes, részletes verzió
 
+*v8 — 2026.08.24 (STEPBible-integráció beépítve: a 2. pontba felvéve a kulcsszó-kiválasztás 6 szempontos explicit kritériumlistája; a 3/b pont végére felvéve a STEPBible TAGNT/TAHOT-alapú kötelező ellenőrzés a közös görög/héber szó feltételezésénél — mindkettő a `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 7.1 pontjában és a sablon-módosítási tervben korábban rögzített, de a sablonfájlba eddig be nem épített döntés végrehajtása)*
 *v7 — 2026.08.15 (kiegészítve: nevesített tanítói egyezés-keresés öt lépéses módszere az Alkalmazás pontnál)*
 
 **Kimenet nyelve:** magyar
@@ -46,6 +47,16 @@ Ha aktiválódik: az események kronológiai sorrendje és/vagy földrajzi helys
 - A teljes vers eredeti nyelven, mellette egy **szó szerinti tükörfordítás** (szórendhelyes, nyelvtanilag hű a göröghöz/héberhez), és a **Károli-fordítás** egymás mellett, összehasonlításképp.
 - **Megjegyzés a πνεῦμα (*pneuma*, „szellem") és ψυχή (*pszükhé*, „lélek") megkülönböztetéséről**, valahányszor a szakaszban bármelyik szó előfordul — mivel a szokásos magyar fordítások (Károli, RÚF stb.) mindkettőt gyakran „lélek"-nek fordítják, elmosva a köztük lévő különbséget.
 
+**A kiválasztás szempontjai** (legalább egynek teljesülnie kell ahhoz, hogy egy szó bekerüljön a táblázatba):
+1. **Teológiai súly** — a szó jelentése önmagában állítást hordoz, ami a Peshat-értelmezést érdemben alakítja (pl. egy ige, ami kizárólag isteni alannyal fordul elő)
+2. **Elmosódás a Károli/SzPA fordításban** — két vagy több eredeti szó egyetlen magyar szóvá olvad össze, elrejtve egy különbségtételt (pl. pneuma/pszükhé mindkettő „lélek")
+3. **Motívum-kapcsolódás** — a szó egy, a `PaRDeS_motivumok.md`-ban már nyomon követett motívumhoz köthető
+4. **Kereszthivatkozási potenciál** — a szó ritka, és emiatt a 3/b pontban erős, lexikailag pontos kapcsolódást tehet lehetővé más igehelyekkel
+5. **Exegetikai vita forrása** — a szó jelentése önmagában ad okot egy ⚠️ vitatott pontra
+6. **Objektív ritkaság (STEPBible-adat alapján)** — ha a szó előfordulás-száma alacsony (tájékoztató küszöb: kevesebb mint 15-20 előfordulás a teljes ÓSZ/ÚSZ-ben), ez önmagában felveti a kiválasztás lehetőségét, még ha a végső döntés tartalmi marad
+
+A 6. szempont nem helyettesíti, csak kiegészíti az 1-5. tartalmi mérlegelést.
+
 ---
 
 ## 3. PaRDeS keretrendszer
@@ -86,6 +97,8 @@ Ha aktiválódik: az események kronológiai sorrendje és/vagy földrajzi helys
 3. Az irodalmi kapcsolat jellege (tudatos utalás vs. független fogalmi rokonság).
 4. Tudományos vélemények nevesített szerzőkkel, ha vitatott.
 5. Záró mondat, hogy érdemes-e frissíteni ennek fényében a fő tanulmány 3/b. pontját vagy a `PaRDeS_motivumok.md` naplót.
+
+**STEPBible-ellenőrzés:** ha közös görög/héber szó feltételezhető két igehely között, ellenőrizd a STEPBible TAGNT/TAHOT adatbázisban (`konkordancia/TAGNT_kivonat.tsv`, `konkordancia/TAHOT_kivonat.tsv`) mindkét igehely releváns szavának Strong-számát és szótövét, és a nyers eredményt (Strong-szám, szótő, morfológiai alak) építsd be az összevetésbe — ne csak háttér-ellenőrzésként használd. Ha a Strong-szám azonos, de a szótő eltér, vagy fordítva, ezt a tényt explicit rögzítsd a kapcsolódás leírásában.
 
 ---
 

@@ -1,5 +1,6 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
+*v4 — 2026.08.24 (STEPBible-integráció beépítve: az 1. pont táblázata után felvéve a kötelező STEPBible TAGNT/TAHOT egyezés-ellenőrzés; a Lezárási checklist kiegészítve egy 11. ponttal, ami a STEPBible-ellenőrzés dokumentálását írja elő — mindkettő a `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md`-ben korábban rögzített, de a sablonfájlba eddig be nem épített döntés végrehajtása; a v3-as 10 pontos checklist változatlanul megmaradt, csak kiegészült)*
 *v3 — 2026.08.22 (a 6. pont végére felvéve egy tételes "Lezárási checklist" alszakasz, amely a hét motívumlog-szekció és az index-fájl frissítését sorrendben, ellenőrizhető formában listázza — a lezárások számának növekedésével a manuális szinkronizálás korábban fejben tartott lépéseinek explicit rögzítése céljából)*
 
 **Kimenet nyelve:** magyar
@@ -19,6 +20,8 @@ Táblázatos áttekintés minden eddigi előfordulásról, a `PaRDeS_motivumok.m
 | Igehely | Kapcsolódás | PaRDeS-szint, ahol felmerült |
 |---|---|---|
 | *(igehely)* | *(a motívum konkrét megjelenési formája ott)* | *(Peshat/Remez/Drash/Sod, és melyik tanulmányból)* |
+
+**Kötelező STEPBible-ellenőrzés a táblázat lezárása előtt:** a motívum kulcsszavának/kulcsszavainak Strong-számára futtass le egy teljes körű STEPBible TAGNT/TAHOT egyezés-ellenőrzést (`konkordancia/TAGNT_kivonat.tsv`, `konkordancia/TAHOT_kivonat.tsv`) — azonos versen belüli és (ha releváns) szomszédos verseken belüli előfordulásra egyaránt. Minden talált jelöltet explicit értékelj: valódi lexikai egyezés-e (azonos szótő, releváns grammatikai szerep) vagy csak felszíni Strong-egyezés eltérő jelentéssel/referenssel — csak az előbbi kerül be a táblázatba, az utóbbit explicit ki kell zárni, indoklással.
 
 ---
 
@@ -95,6 +98,7 @@ Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szüks
 - [ ] **8. `Lezart_tematikus_tanulmanyok_index.md` frissítve** — új sor: motívum, fájlnév, érintett igehelyek, megjegyzés
 - [ ] **9. Motívumlog fejléc-changelog frissítve** — a lezárás tényének és fő eredményeinek rögzítése (a szokásos, felhasználói jóváhagyással előzetesen egyeztetett szöveggel)
 - [ ] **10. GitHub-feltöltésre emlékeztetés** — jelezve a felhasználónak, hogy a frissített motívumlog és index GitHubra is felkerülhet (`GitHub_feltoltesi_workflow.md` szerint)
+- [ ] **11. STEPBible-ellenőrzés dokumentálva** — a tanulmányban és a naplóban rögzítve, hogy a lezáráshoz milyen Strong-számokra, milyen keresési paraméterekkel (versen belüli / szomszédos vers, teljes ÚSZ/ÓSZ vagy csak egy könyv) futott le az ellenőrzés, és mikor. Formátum: 🔍 STEPBible-ellenőrizve: [Strong-számok] [keresési mód], [forrás: TAGNT/TAHOT], [dátum]
 
 **Ha bármelyik pont kimarad, a lezárás nem tekinthető véglegesnek** — a motívum inkonzisztens állapotba kerülhet (pl. ✅ jelölve az 1. szekcióban, de még aktív ⭐ ajánlásként az 5.-ben).
 
