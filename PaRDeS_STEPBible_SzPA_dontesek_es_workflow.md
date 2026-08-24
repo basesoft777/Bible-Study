@@ -464,6 +464,24 @@ Minden 10. újonnan generált sornál (mintavételesen) érdemes egy független 
 - **"bizonytalan"** — a szó jelentése/nyelvtani szerepe MAGA is vitatott a forrásokban (pl. mint a Gen.1.4-nél a H2895/H2896 kettős Strong-lehetőség "jó" szóra)
 - **"—"** — nincs önálló magyar megfelelés (funkciószó, mint névelő vagy tárgyeset-jel)
 
+### 4.14 A Károli-Strong lefedettség növelésének várható előnyei — nem lineáris haszon
+
+Ahogy a `Karoli_Strong_kivonat.tsv` lefedettsége nő (több könyv, több tanulmányból származó adat), a haszon NEM egyenletesen jelentkezik — érdemes megkülönböztetni a korai és a csak nagy léptéknél jelentkező előnyöket.
+
+**Korai haszon — már kis lefedettségnél is jelentkezik:**
+
+1. **Pontosabb lexikai vs. tematikus megkülönböztetés a 3/b pontnál.** A `Karoli_kereszthivatkozasok.tsv` jelenleg csak azt adja meg, mely versek kapcsolódnak — nem azt, hogy lexikailag vagy csak tematikusan. Ha egyre több kapcsolódó vershez van Károli-Strong adat is, gépileg ellenőrizhető, hogy két kapcsolódó vers ugyanazt a Strong-számot használja-e — ez a lexikai/tematikus elhatárolás egy részét gépi ellenőrzéssel is támogathatóvá teszi.
+
+2. **A tematikus tanulmányok találati listájának gyorsabb feldolgozása.** Egy motívum keresésekor a találati lista Strong-számokat ad; ha az adott könyvben már van Károli-Strong lefedettség, a Károli-szó azonosítása egyszerű grep-pé egyszerűsödik, nem igényel új tartalom-alapú mérlegelést minden egyes találatnál.
+
+3. **A kumulatív modell (7.1-7.2 pont) határköltsége csökken.** Minél több Károli-Strong sor van már meglévő tanulmányokból, annál kevesebb új generálás kell egy jövőbeli tanulmánynál.
+
+**Csak nagyobb lefedettségnél jelentkező haszon:**
+
+4. **Fordított irányú keresés — magyar szó felől.** Elég nagy lefedettségnél ellenőrizhetővé válik, hogy a Károli egy adott magyar szava mindig ugyanazt a héber/görög Strong-számot fedi-e le, vagy több különböző fogalmat mos össze — ez pontosan az a fajta "elmosódás", amit a bővített sablon 2. kiválasztási kritériuma keres, de most objektív, adatalapú jelzést kapna, nem csak egyedi felismerést.
+
+5. **Statisztikai mintázat-felismerés — jövőbeli, nem jelenleg tervezett lehetőség.** Nagy lefedettségnél elméletileg kereshetővé válna, mely Strong-számok fordulnak elő szokatlanul gyakran ugyanazzal a Károli-szóval — objektív jelzést adhatna olyan motívum-jelöltekre, amiket eddig csak kézi, tartalmi munka tárt fel.
+
 ---
 
 ## 5. Hozzáférési korlátok — mit lehet elérni honnan
