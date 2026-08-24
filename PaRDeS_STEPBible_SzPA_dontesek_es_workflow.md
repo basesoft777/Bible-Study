@@ -1,5 +1,7 @@
 # PaRDeS-projekt: STEPBible/SzPA integráció és GitHub-architektúra — döntési összefoglaló
 
+*v19 — 2026.08.24 (három hátralévő publikus dataset legenerálva — `konkordancia/Karoli_1908.tsv` [scrollmapper/HunKar, közkincs, 31 170 vers, validálva: 1Móz 1:1 = "Kezdetben teremté Isten az eget és a földet."]; `konkordancia/TIPNR_kivonat.tsv` [STEPBible-Data CC BY, 35 522 sor, validálva: Ábrahám/H0085 és Ábrám/H0087, ill. Sára/H8283 és Szárai/H8297 külön Strong-számmal és teljes előfordulási listával szerepel]; `konkordancia/Konyv_normalizalo_tabla.tsv` [STEPBible README alapján, mind a 66 könyv, Gen→1Móz és Pro→Péld ellenőrizve; két korpuszbeli ellentmondás — Máté/Mt és Ezék/Ez — felhasználói egyeztetéssel eldöntve: Mt, Ez]; dokumentálva `konkordancia/Karoli_TIPNR_Normalizalo_README.md`-ben — a 0. szakasz dataset-leltárának 2., 10. és 11. sora véglegesített státuszra frissítve)*
+
 *v18 — 2026.08.24 (TAHOT/TAGNT kivonat legenerálva a teljes ÓSZ+ÚSZ-re a STEPBible-Data nyersadatból, publikus repóba — `konkordancia/TAHOT_kivonat.tsv` [283 734 nyers sor → 435 723 sor, 39 könyv, 21 178 igehely] és `konkordancia/TAGNT_kivonat.tsv` [141 720 sor, 27 könyv, 7 948 igehely]; mezőazonosítás dokumentálva `konkordancia/TAHOT_TAGNT_README.md`-ben; validálva mindhárom feladat-referenciával [Gen.1.1 2. szó=H7225/first/beginning; Pro.1.1 1. szó=H4912/"[the] proverbs of"; Heb.4.12 ψυχῆς=G5590/"of soul"/NA28+NA27+Tyn+SBL+WH+Treg+TR+Byz] számjegyre pontos egyezéssel, valamint kereszt-ellenőrizve Pro.23.7-nél a KJV_Strongs_Proverbs.tsv hat Strong-számával — a 0. szakasz dataset-leltárának 1. sora "Letöltve, generálva (teljes ÓSZ+ÚSZ)" státuszra frissítve)*
 
 *v17 — 2026.08.24 (összefésülve a Claude Code által commitolt v16-tal [claude.ai chat munkamenet]: pótolva a hiányzó 4.10 alpont [getbible.net API — megvizsgálva és lezárva, nincs Strong-szám, elsőkézből is megerősítve]; a 4.8/4.9 pontokban a `studybible.info/[KJV_Strongs|ASV_Strongs]/[Könyv]` könyv-szintű forrás lett az elsődleges, felváltva a biblehub.com/kjvs-t mint első helyen említett forrást; rögzítve a repó kisbetűs átnevezése `basesoft777/Bible-Study`-ra. Minden más korábbi tartalom [4.1-4.9, 0. szakasz, 7.1-7.2] már a Claude Code-os v16-ban is jelen volt, nem igényelt módosítást.)*
@@ -19,7 +21,7 @@
 | # | Dataset | Tartalom | Hely | Státusz | Forrás | Részletek |
 |---|---|---|---|---|---|---|
 | 1 | **TAGNT/TAHOT kivonat** | 8 oszlop: igehely, Strong, alak, kiejtés, szótő, szótári jelentés, angol gloss, kritikai kiadás | Publikus repó | Letöltve, generálva (teljes ÓSZ+ÚSZ) | STEPBible-Data (CC BY) | 2. szakasz |
-| 2 | **Karoli_1908.tsv** | Igehely + teljes Károli-vers | Publikus repó | Forrás azonosítva, még nem generálva | scrollmapper/HunKar (közkincs) | 4.1, 4.7 |
+| 2 | **Karoli_1908.tsv** | Igehely + teljes Károli-vers | Publikus repó | Letöltve, generálva (teljes Biblia, 31 170 vers) | scrollmapper/HunKar (közkincs) | 4.1, 4.7 |
 | 3 | **SzPA versek + lábjegyzetek** | 2 tábla könyvenként (Példabeszédek, ApCsel) | Privát repó | Minta kész (1:1-9, 1:1-4), teljes könyv még nem | Saját feltöltés (jogosult tulajdon) | 3. szakasz |
 | 4 | **Összekapcsolt (join) táblák** | Strong + Károli + SzPA + azonosítás módja + megbízhatóság | Privát repó | Minta/demó szinten kész, generálás még nem indult | Az 1-3. összefésülése | 4.1-4.2 |
 | 5 | **KJV-Strongs** | Híd-forrás, teljes Példabeszédek (31 fejezet), szavankénti bontásban tárolva | Publikus repó | Letöltve, validálva (Példabeszédek) | biblehub.com/kjvs, studybible.info/KJV_Strongs (közkincs) | 4.8 |
@@ -27,8 +29,8 @@
 | 7 | **byztxt szövegkritikai variánsok** | Tényleges eltérő szövegváltozatok (nem csak "van/nincs") | Publikus repó | Azonosítva, beépítésre vár | byztxt/byzantine-majority-text (Unlicense) | 4.6 |
 | 8 | **Károli-specifikus kereszthivatkozások** | Versenkénti hivatkozás-lista, szentiras.hu eredetű | Publikus repó | Azonosítva, nem generálva | krisek/HunKar (SWORD OSIS) | 4.6 |
 | 9 | **openbible.info kereszthivatkozások** | Szavazat-súlyozott hivatkozás-jelöltek | Publikus repó | Azonosítva, kiegészítő szerepű | scrollmapper (MIT) | 4.6 |
-| 10 | **TIPNR névelőfordulások** | Tulajdonnév-alakváltozatok (pl. Ábrám/Ábrahám) | — | Tervezett, 1Móz 17-hez | STEPBible-Data | 8. szakasz |
-| 11 | **Könyv-rövidítés normalizáló tábla** | STEPBible angol ↔ magyar igehely-formátum | Publikus repó | Még nem elkészítve | STEPBible README | 8. szakasz |
+| 10 | **TIPNR névelőfordulások** | Tulajdonnév-alakváltozatok (pl. Ábrám/Ábrahám) | Publikus repó | Letöltve, generálva (teljes Biblia, 35 522 sor) | STEPBible-Data (CC BY) | 8. szakasz |
+| 11 | **Könyv-rövidítés normalizáló tábla** | STEPBible angol ↔ magyar igehely-formátum | Publikus repó | Elkészült (mind a 66 könyv) | STEPBible README | 8. szakasz |
 
 **Nem önálló dataset, csak referencia-eszköz** (nem kerül tárolásra nyers adatként):
 - TBESH/TBESG/TFLSJ lexikonok — csak átfogalmazva idézhetők
@@ -480,7 +482,7 @@ Mindkét esetben ugyanaz a **kumulatív alapelv** érvényesül: minden generál
 - [x] **Strong-taggelt Károli — lezárva, döntés megszületett (4.7).** Mélykutatással azonosítva: Biblia-Felfedező (Bible-Discovery, Zsidó Miklós) — valódi, teljes, szó-szintű Strong-párosítás, de zárt licenc, adatkiemelés csak egyedi engedéllyel. **A projekt saját Károli-datasete emiatt nem erre épül**, hanem a közkincs HunKar-szövegre és a már kidolgozott tartalom-alapú generálási módszerre; a Biblia-Felfedező legfeljebb ellenőrző referenciaként vonható be, ha valaha hozzáférhető lesz.
 - [ ] A tematikus/bővített/mélyelemzés sablonok tényleges szövegmódosítása a STEPBible-lépésekkel (döntés megvan, végrehajtás még nem történt meg)
 - [ ] A négy már lezárt tematikus tanulmány visszamenőleges STEPBible-ellenőrzése
-- [ ] TIPNR-lekérdezés Ábrahám/Ábrám névalakjaira, az 1Móz 17-es tanulmány előkészítéseként
+- [x] **TIPNR-lekérdezés Ábrahám/Ábrám névalakjaira — lezárva (v19).** A teljes TIPNR legenerálva `konkordancia/TIPNR_kivonat.tsv`-be; Ábrahám (H0085) és Ábrám (H0087), ill. Sára (H8283) és Szárai (H8297) külön Strong-számmal, teljes előfordulási listával szerepel — az 1Móz 17-es tanulmány előkészítése kész.
 - [ ] Php 1:27 végleges döntés — bekerüljön-e ötödik (korporatív jellegű) előfordulásként a pneuma/pszükhé tanulmányba
 - [ ] A teljes Példabeszédek és ApCsel könyvek tényleges feldolgozása a két-táblás + join struktúrában (eddig csak minta készült, 1:1-9 ill. 1:1-8 terjedelemben)
 - [ ] Döntés arról, hogy a claude.ai chat-felületen történő jövőbeli munkához készül-e szűk hatókörű PAT a privát repóhoz, vagy a munka véglegesen Claude Code-ra kerül át
@@ -489,4 +491,4 @@ Mindkét esetben ugyanaz a **kumulatív alapelv** érvényesül: minden generál
   - **TAGOT** (Translators Amalgamated Greek OT — Septuaginta, teljes taggelt szöveg) — ez pótolná a mélyelemzés-sablonnál azonosított hiányzó láncszemet (annak ellenőrzése, hogy egy ÚSZ-i idézet a LXX ugyanazon görög szavát használja-e, mint a héber eredeti fordítása — a "tudatos idézet vs. véletlen egybeesés" kérdés eldöntéséhez)
   - **TBCWG** (Translators Biblical Concept Word Groups — rokon jelentésű szócsoportok, szinonima-elhatárolással) — ez közvetlenül segítené a motívumlog "rokon motívum-csoport küszöbszámítás" elvét
   - Kisebb jelentőségű, szintén készülő: **TOTMM/TNTMM** (kéziratos tanú-adatok szövegkritikai variánsokhoz), **TFBDB** (teljes BDB héber lexikon)
-- [ ] **Apró, azonnal megvalósítható teendő:** a STEPBible README tartalmaz egy hivatalos könyv-rövidítés listát (Gen, Exo... Mat, Mrk...) — ezt érdemes lenne a repóba beépíteni kis segédfájlként, az igehely-normalizálási lépéshez (STEPBible angol rövidítés ↔ magyar "1Móz", "ApCsel" stb.), amit a join-mechanizmus 1. lépéseként korábban már azonosítottunk szükségesnek
+- [x] **Könyv-rövidítés normalizáló tábla — lezárva (v19).** Elkészült `konkordancia/Konyv_normalizalo_tabla.tsv` néven, mind a 66 könyvre (STEPBible angol rövidítés ↔ magyar rövidítés ↔ teljes magyar könyvnév). Két korpuszbeli ellentmondás (Máté/Mt, Ezékiel/Ez↔Ezék) felhasználói egyeztetéssel eldőlt: `Mt`, `Ez`.
