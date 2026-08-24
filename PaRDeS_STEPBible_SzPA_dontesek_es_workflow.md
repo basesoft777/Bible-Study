@@ -1,5 +1,7 @@
 # PaRDeS-projekt: STEPBible/SzPA integráció és GitHub-architektúra — döntési összefoglaló
 
+*v26 — 2026.08.24 (önellenőrzési mechanizmus és egységes megbízhatósági jelölés bevezetve a Károli-Strong join-tábla építésébe: (1) `konkordancia/Karoli_Strong_kivonat.tsv` oszlopszerkezete bővítve egy 6. "Megbízhatóság" oszloppal ["magas"/"közepes"/"bizonytalan"/"—"]; (2) `konkordancia/Validacios_naplo.md` létrehozva, visszamenőleg rögzítve a három korábbi, chat-munkamenetben elvégzett kézi validáció [Pro.23.1-9, Act.1.1-4, Gen.1.2-4]; (3) új 4.13 alpont — miért a KJV/ASV a kereszt-ellenőrző forrás [nem a STEPBible, ami maga az elsődleges bemenet, körkörös lenne], az 5 lépéses megbízhatósági döntési logika, és a 10. soronkénti mintavételes validáció szabálya; (4) `Join_tabla_lekerdezo_promptok.md` felvéve a repó gyökerébe, újrafelhasználható lekérdező promptokkal a join-tábla állapotának bármikori ellenőrzéséhez)*
+
 *v25 — 2026.08.24 (nyomon követési mechanizmus bevezetve a Károli-Strong join-tábla építésére: (1) `Join_tabla_folyamat_magyarazat.md` felvéve a repó gyökerébe, a kétoszlopos [Strong+Károli] join gyakorlati folyamatát írja le bővített és tematikus sablonnál; (2) `konkordancia/Karoli_Strong_kivonat.tsv` létrehozva üres, fejléces váltként [Igehely | Strong-szám | Károli-szó | Azonosítás módja | Forrás-tanulmány]; (3) `motivumlog/PaRDeS_motivumok.md` "Feldolgozott igeszakaszok" táblázata kiegészítve egy "Károli-Strong sorok" oszloppal, minden meglévő sornál "—" [nincs visszamenőleges becslés]; (4) új 4.12 alpont — 66 könyves join-tábla lefedettségi táblázat, jelenleg minden könyvnél 0%; (5) a 8. szakasz "négy lezárt tematikus tanulmány" nyitott pontja részletes, pipálható checklistre cserélve, könyvenkénti bontásban)*
 
 *v24 — 2026.08.24 (Károli-specifikus kereszthivatkozás-adat legenerálva a teljes Bibliára a krisek/HunKar OSIS-forrásból — `konkordancia/Karoli_kereszthivatkozasok.tsv` [31 168 vers feldolgozva, 19 817 versnek van kereszthivatkozása, 32 407 sor összesen, ~1,1 MB, közkincs]; validálva: Gen.1.1-hez pontosan 8 kereszthivatkozás generálódott, számjegyre egyezve a korábban kézzel ellenőrzött referenciával; az OSIS-forrás saját könyv-kódjai [pl. `Exod`, `Acts`, `Ps`] STEPBible-natívra konvertálva [`Exo`, `Act`, `Psa`] egy 66 elemű, kánoni sorrendű megfeleltető táblával, 0 konverziós hibával; dokumentálva `konkordancia/Karoli_kereszthivatkozasok_README.md`-ben, explicit jelezve, hogy ez csak jelöltlista a 3/b ponthoz, a tartalmi értékelés kézi lépés marad — a 0. szakasz dataset-leltárának 8. sora "Letöltve, generálva (teljes Biblia)" státuszra frissítve)*
@@ -441,6 +443,26 @@ Ez a táblázat minden alkalommal frissítendő, amikor egy tanulmány új sorok
 | 3Ján | 0 | 15 | 0% |
 | Júd | 0 | 25 | 0% |
 | Jel | 0 | 405 | 0% |
+
+### 4.13 Önellenőrzési mechanizmus — kereszt-ellenőrzés és megbízhatósági jelölés
+
+**Miért a KJV/ASV a kereszt-ellenőrző forrás, nem közvetlenül a STEPBible:** a Károli-Strong sor ELEVE a STEPBible (TAHOT/TAGNT) Strong-számából és angol glosszából születik, tartalom-alapú azonosítással (lásd 4.2 pont). A STEPBible tehát az ELSŐDLEGES BEMENET ehhez a lépéshez, nem egy második, független forrás — önmagával nem lehet kereszt-ellenőrizni, mert az körkörös lenne (saját magunk munkáját saját magunkkal igazolnánk vissza, új információ nélkül). A KJV és az ASV ezzel szemben VALÓDI, FÜGGETLEN források — nem a STEPBible-ből származnak, külön projektek, külön fordítói döntésekkel (Bible Foundation/CrossWire, illetve a Cross Word Project, lásd 4.8-4.9 pont). Amikor egy Károli-szóhoz generált Strong-számot összevetjük azzal, amit a KJV/ASV ugyanahhoz a Strong-számhoz, ugyanahhoz a vershez rendel, ez valódi, független megerősítés — pontosan úgy, ahogy a Pro.23.1 "ki"/"him"/"what" esetnél is működött (4.9 pont).
+
+Minden új Károli-Strong sor generálásakor, MIELŐTT a `Karoli_Strong_kivonat.tsv`-be kerülne:
+
+1. Ellenőrizd, van-e `KJV_Strongs_[Könyv].tsv` vagy `ASV_Strongs_[Könyv].tsv` adat ugyanarra az igehelyre és Strong-számra.
+2. HA VAN és egyezik → "magas" megbízhatóság.
+3. HA VAN, de ELTÉR → ÁLLJ MEG, ne generáld automatikusan — ez explicit kézi vizsgálatot igényel (lásd a Gen.1.1 "what"/"him" KJV≠ASV esetet a 4.9 pontban mintaként — lehet, hogy maga az eredeti szöveg enged több értelmezést).
+4. HA NINCS KJV/ASV-adat arra a könyvre → "közepes" megbízhatóság.
+5. Ha a szó Strong-száma vagy nyelvtani szerepe MAGA is vitatott (két szomszédos, rokon Strong-szám közül bármelyik védhető) → "bizonytalan", a vitát röviden dokumentálva a sor mellett vagy a `Validacios_naplo.md`-ben.
+
+Minden 10. újonnan generált sornál (mintavételesen) érdemes egy független forrással (pl. egy külső, kézzel ellenőrzött referenciával, ha rendelkezésre áll) össze is vetni, és az eredményt a `Validacios_naplo.md`-be rögzíteni — ez korai riasztást ad, ha a módszer valahol szisztematikusan félrecsúszna.
+
+**A `Karoli_Strong_kivonat.tsv` "Megbízhatóság" oszlopának lehetséges értékei, egységesen, csak ezek közül:**
+- **"magas"** — egyértelmű, és ha van KJV/ASV-adat arra a versre, az is megerősíti
+- **"közepes"** — tartalom-alapú azonosítás, de nincs KJV/ASV kereszt-ellenőrzés (mert arra a könyvre/versre nincs KJV/ASV-Strongs adat a `konkordancia/` mappában)
+- **"bizonytalan"** — a szó jelentése/nyelvtani szerepe MAGA is vitatott a forrásokban (pl. mint a Gen.1.4-nél a H2895/H2896 kettős Strong-lehetőség "jó" szóra)
+- **"—"** — nincs önálló magyar megfelelés (funkciószó, mint névelő vagy tárgyeset-jel)
 
 ---
 
