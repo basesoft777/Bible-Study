@@ -1,5 +1,7 @@
 # PaRDeS-projekt: STEPBible/SzPA integráció és GitHub-architektúra — döntési összefoglaló
 
+*v33 — 2026.08.25 (bevezetve a `Rendszerfejlesztesi_playbook.md` — a projekt saját, ismétlődően bevált fejlesztési módszerét kivonó, "meta" jellegű dokumentum, elhelyezve a repó gyökerében; felvéve a 0. szakasz dataset-leltárába, közvetlenül a táblázat után, mint kiegészítő, nem-dataset tétel; a fájl saját bevezető mondata kiegészítve egy rövid utalással, hogy a playbook a munkamódszert, ez a fájl pedig a tartalmi döntéseket dokumentálja — a kettő együtt adja a teljes képet)*
+
 *v32 — 2026.08.24 (két elem elkészült, most hogy a `Strong_szotar.tsv` szófaj+gyök oszlopokkal bővítve elérhető: (1) a bővített sablon kulcsszó-kiválasztási kritériumlistájának 6. pontja finomítva mind itt (7.1), mind a `2_PaRDeS_bovitett_sablon.md`-ben (v8→v9) — a szófaj-adat mostantól explicit, kiegészítő szempontként (ige vs. leíró szófaj) szerepel az objektív ritkaság mérlegelésénél, az 1-5. tartalmi szempontot nem helyettesítve; (2) a `konkordancia/Karoli_Strong_kivonat.tsv` oszlopszerkezete bővítve két új oszloppal — Szófaj, Gyök/Származtatás — Strong-szám alapú, egyszerű összefésüléssel a `Strong_szotar.tsv`-ből [`eszkozok/merge_karoli_szofaj.py`, a nulla-kitöltési eltérés normalizálva, pl. `H430`→`H0430`]; 138/178 sor kapott adatot, a fennmaradó 40 összetett (`+`-jellel jelölt, többszörös Strong-számú) sornál üresen maradt, hiba nélkül — dokumentálva `Join_tabla_folyamat_magyarazat.md`-ben; a 0. szakasz dataset-leltárának 4. sora frissítve)*
 
 *v31 — 2026.08.24 (a `Strong_szotar.tsv` végleges, 6 oszlopos formára bővítve — `Strong-szám | Szótő | Kiejtés | Szófaj | Gyök/Származtatás | Jelentés` — két külső, CC BY 4.0 licencű lexikai forrásból: héber oldalon az openscriptures/HebrewLexicon `HebrewStrong.xml` [8674 bejegyzés, validálva H7225-nél, szó szerint egyezik a mintával], görög oldalon az openscriptures/GreekResources `GreekWordList.js` [lemma-kulcsos index, 5629 egyedi Strong-számhoz sikerült bejegyzést találni]; a görög oldal két technikai döntése — a `src` mező feloldási szabálya [G26/G25 mintapélda] és a 19 Strong-szám-ütközés pontozásos feloldási szabálya [G32, G3156, G4405, G4481 mintapéldák] — dokumentálva `konkordancia/Strong_szotar_README.md`-ben; végleges sorszám 14 347 [8718 héber + 5629 görög, 671 új Strong-szám a korábbi 13 676-hoz képest, amik a lexikonokban szerepeltek, de a TAHOT/TAGNT-kivonatban nem]; szófaj-lefedettség H=8674/8718, G=4274/5629; gyök/származtatás-lefedettség H=8667/8718, G=4268/5629 — a 0. szakasz dataset-leltárának 12. sora frissítve)*
@@ -34,7 +36,7 @@
 
 *v15 — 2026.08.23 (új 0. szakasz: összegző dataset-leltár táblázat a fájl elejére, hogy egy új munkamenet azonnal áttekintést kapjon mind a 11 azonosított/tervezett datasetről — hely, státusz, forrás, és a részletes indoklásra mutató hivatkozás — mielőtt a lenti szakaszok részletes tárgyalásába merülne)*
 
-*Ez a fájl híd a claude.ai memóriarendszerében felhalmozott kontextus és a Claude Code / bármely jövőbeli munkamenet között. Célja, hogy egy új munkamenet — akár claude.ai chatben, akár Claude Code-ban — enélkül a beszélgetés-történet nélkül is teljes képet kapjon a meghozott döntésekről és azok indoklásáról.*
+*Ez a fájl híd a claude.ai memóriarendszerében felhalmozott kontextus és a Claude Code / bármely jövőbeli munkamenet között. Célja, hogy egy új munkamenet — akár claude.ai chatben, akár Claude Code-ban — enélkül a beszélgetés-történet nélkül is teljes képet kapjon a meghozott döntésekről és azok indoklásáról. A `Rendszerfejlesztesi_playbook.md` a projekt saját, ismétlődően bevált fejlesztési MUNKAMÓDSZERÉT dokumentálja, ez a fájl pedig a TARTALMI DÖNTÉSEKET — a kettő együtt adja a teljes képet.*
 
 ---
 
@@ -56,6 +58,9 @@
 | 10 | **TIPNR névelőfordulások** | Tulajdonnév-alakváltozatok (pl. Ábrám/Ábrahám) | Publikus repó | Letöltve, generálva (teljes Biblia, 35 522 sor) | STEPBible-Data (CC BY) | 8. szakasz |
 | 11 | **Könyv-rövidítés normalizáló tábla** | STEPBible angol ↔ magyar igehely-formátum | Publikus repó | Elkészült (mind a 66 könyv) | STEPBible README | 8. szakasz |
 | 12 | **Strong-szótár (deduplikált, 6 oszlopos)** | Strong-szám + szótő + kiejtés + szófaj + gyök/származtatás + jelentés, egyedi soronként | Publikus repó | Elkészült (teljes Biblia, 14 347 egyedi Strong-szám: 8718 héber + 5629 görög) | TAHOT/TAGNT-kivonat + openscriptures/HebrewLexicon + openscriptures/GreekResources összefésülése | ld. v31 changelog, `Strong_szotar_README.md` |
+
+**Kiegészítő, "meta" jellegű dokumentum (nem dataset):**
+`Rendszerfejlesztesi_playbook.md` — a projekt saját, ismétlődően bevált fejlesztési módszerének kivonata (kontextus-beolvasás → forrás/licenc-ellenőrzés → mintavalidáció → teljes feldolgozás explicit megállási szabállyal → naplózás → leltár-frissítés). Új rendszerfejlesztési kérés esetén EZT a fájlt is érdemes elolvasni a döntési fájl mellett — gyorsabb tájékozódást ad, mint a teljes verziótörténet végigolvasása.
 
 **Nem önálló dataset, csak referencia-eszköz** (nem kerül tárolásra nyers adatként):
 - TBESH/TBESG/TFLSJ lexikonok — csak átfogalmazva idézhetők
