@@ -29,6 +29,7 @@
 | **Péld 2:18; 9:18; 21:16** | רְפָאִים | Bölcsességi kontextus: aki eltéved, a "Refáim gyülekezetébe" jut |
 | **Ézs 14:9** | רְפָאִים... כָּל־עַתּוּדֵי אָרֶץ | Babilon királyát gúnyosan fogadja a Seól, "fölkelti ellene a Refáimot" |
 | **Ézs 26:14,19** | רְפָאִים | A halottak feltámadásáról szóló szakasz kontextusában |
+| **2Sám 5:18,22; 23:13 / 1Krón 11:15; 14:9; Ézs 17:5** *(felvéve `Konnyu_ellenorzes_4_lezart_tanulmany.md` alapján, 2026.08.25)* | עֵמֶק רְפָאִים (*émek Refáim*, "Refáim völgye") | Jeruzsálemtől délnyugatra fekvő, termékeny völgy, amely a nép után kapta nevét — hasonló emlékeztető funkció, mint az "Óg vaságya" vagy "Refáim földje" (Józs 12:4/13:12); a filiszteusok és Dávid csatáinak, ill. Ézsaiásnál egy aratási hasonlatnak a színtere |
 
 ---
 
@@ -51,6 +52,8 @@ A héber lexikográfia hagyományosan **két külön gyököt** feltételezett: 
 ### Peshat
 
 A Szentírás együttesen egy különös kettősséget rajzol ki. Egyfelől a Refáim (és rokon nevű népek: Zuzim, Émim, Zamzummim, részben az Anákim is) történelmi, prózai szinten valóságos, nagy termetű népcsoportként jelennek meg, akik Kánaán és a szomszédos területek (Básán, Moáb, Ammón) korai lakói voltak — 1Móz 14-ben már Ábrám idejében is létező, majd a honfoglalás korára jórészt kihalt/felszívódott nép, akiknek utolsó ismert királya Óg volt. Másfelől ugyanez a szó a bölcsességi és prófétai irodalomban a halottak birodalmának, a Seólnak lakóit jelöli — erőtlen árnyakat, akik nem dicsérik Istent, és akikhez a gonosz sorsa vezet.
+
+**Peshat-kiegészítés — Refáim mint helynév** *(felvéve 2026.08.25)*: a Refáim-völgy (Jeruzsálem közelében) a nép után kapott, továbbélő helynév — ez egy **harmadik nyoma** annak a mintázatnak, hogy az egykor félelmetes nép mára csak névemlékként, földrajzi jelölőként létezik, akárcsak Básán "Refáim földje" elnevezése (Józs 12:4/13:12). A völgy a filiszteusok és Dávid csatáinak (2Sám 5:18,22; 23:13 / 1Krón 11:15; 14:9), ill. Ézsaiásnál egy aratási hasonlatnak (17:5) a színtere — a nép fizikailag egyik esetben sincs jelen, csak a névben.
 
 ### Remez
 
