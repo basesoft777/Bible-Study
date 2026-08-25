@@ -27,10 +27,12 @@ kitalálni.
 Igehely | Strong-szám | Ragozott alak | Kiejtés | Szótő | Rövid jelentés | Angol tükörfordítás
 ```
 
-**`TAGNT_kivonat.tsv`** (görög ÚSZ, 8 oszlop):
+**`TAGNT_kivonat.tsv`** (görög ÚSZ, 9 oszlop):
 ```
-Igehely | Strong-szám | Ragozott alak | Kiejtés | Szótő | Rövid jelentés | Angol tükörfordítás | Kritikai kiadás
+Igehely | Strong-szám | Ragozott alak | Kiejtés | Szótő | Rövid jelentés | Angol tükörfordítás | Kritikai kiadás | Igehely_masodlagos
 ```
+- **Igehely_masodlagos:** csak akkor töltött, ha a nyers sor zárójeles kettős hivatkozást
+  tartalmazott (lásd "Zárójeles kettős hivatkozás" szakasz lent); egyébként üres.
 
 - **Igehely:** a STEPBible-natív hivatkozás VÁLTOZATLANUL (pl. `Gen.1.1`, `Pro.23.7`) —
   a magyar formátumra (`1Móz 1:1`) alakítás egy külön, még hátralévő lépés (lásd a döntési
@@ -116,6 +118,31 @@ editions | ... | sStrong+Instance | Alt Strongs`):
 - **Angol tükörfordítás**: az `English translation` oszlop változatlanul.
 - **Kritikai kiadás**: az `editions` oszlop változatlanul (pl. `NA28+NA27+Tyn+SBL+WH+Treg+TR+Byz`).
 
+**Zárójeles kettős hivatkozás — kritikai kiadások közötti versheletér-eltérés.**
+Négy helyen a nyers `Word & Type` mező `Könyv.Fejezet.Vers(Fejezet.Vers)` alakú
+(pl. `Rom.3.25(3.26)#24=NKO`): a zárójel előtti szám a fájl alap-versifikációja (NRSV
+szerinti), a zárójeles rész pedig azt jelzi, hogy a NA-kiadás (a legtöbb modern fordítás
+alapja) ezt a szórészt a másik vershez sorolja. **Ez a jelenség a kritikai kiadások közötti
+eltérés, nem a héber/görög nyelvek közötti versificaiós kérdés** — utóbbi kizárólag az
+ÓSZ-t (TAHOT) érinti. Az érintett négy hely (a nyers fájl fejlécének "FIELD DESCRIPTIONS"
+szakasza is megerősíti: "NA is rarely different (Mrk.12.15; Act.13.39; Rom.3.26)"):
+
+| Nyers Igehely | Szó-szegmens | Szavak száma |
+|---|---|---|
+| `Rom.3.25(3.26)` | #24–#28 | 5 |
+| `Act.13.39(13.38)` | #01–#11 | 11 |
+| `Mrk.12.15(12.14)` | #01–#04 | 4 |
+| `Act.19.41(19.40)` | #01–#06 | 6 |
+
+Mind a négy esetben a zárójeles szegmens a verset **részlegesen** fedi le — a nyers fájlban
+közvetlenül utána (paren nélkül) folytatódik a verse többi szava a fő (nem zárójeles)
+hivatkozással (pl. `Mrk.12.15#05=NKO` és utána), ami már a jelenlegi kivonatban is szerepelt.
+A kivonat-generáló regexe ezért `^([A-Za-z0-9]+)\.(\d+)\.(\d+)(\((\d+)\.(\d+)\))?#(\d+)=`
+alakú, és a zárójeles részt **nem dobja el**, hanem az `Igehely_masodlagos` oszlopba teszi
+(pl. `Rom.3.25` sor `Igehely_masodlagos` = `Rom.3.26`). Az elsődleges/másodlagos közül melyiket
+követi a Károli 1908 fordítás, helyenként eltér — lásd a
+`konkordancia/Verzifikacios_elteres_tabla.tsv` fájlt.
+
 **Ismert, dokumentált ritka eset (~0,2% a TAGNT-sorokban) — egybeolvadt (krázis) szavak.**
 Néhány görög szó két morfémát olvaszt egybe egyetlen írott alakba (pl. `κἂν` = `καί`
 "és" + `ἐάν` "ha"), amit a forrás a `sStrong+Instance` oszlopban vesszővel elválasztott
@@ -131,7 +158,7 @@ saját szótári alakja szerint.
 | Fájl | Nyers sorok (STEPBible) | Generált sorok | Fájlméret |
 |---|---|---|---|
 | TAHOT_kivonat.tsv | 283 734 | 435 723 | ~24 MB |
-| TAGNT_kivonat.tsv | 141 720 | 141 720 | ~13 MB |
+| TAGNT_kivonat.tsv | 141 746 | 141 746 | ~13 MB |
 
 Mindkét fájl jóval a GitHub 100 MB-os fájlméret-korlátja alatt van, könyvenkénti bontás
 nem volt szükséges.
