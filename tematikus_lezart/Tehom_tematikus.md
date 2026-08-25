@@ -44,6 +44,26 @@ A motívum egy konkrét, azonosítható kulcsszón alapul: **תְּהוֹם** (*
 
 ---
 
+## 2/b. Kiterjesztés — a tehóm teljes bibliai előfordulási mezője
+
+*(felvéve `Konnyu_ellenorzes_4_lezart_tanulmany.md` feltáró STEPBible-ellenőrzése alapján, 2026.08.25)*
+
+A négy genezisi (+ Exodus-Tóra-szintű) előforduláson túl a *tehóm* még kb. 24 helyen fordul elő az Ószövetségben, és ezek egytől egyig a fent azonosított négy regiszter valamelyikébe rendeződnek — megerősítve, hogy a Genezis-ív nem elszigetelt jelenség, hanem egy jól azonosítható, egész Ószövetségen átívelő teológiai szókincs genezisi nyitánya.
+
+**Kozmikus elem, Isten uralma alatt** (Gen 1:2 megerősítése): Jób 28:14; 38:16; Péld 3:20; 8:24; Zsolt 33:7; 104:6; 135:6; 148:7.
+
+**A mélység forrásai/bezárása** (Gen 7:11 / 8:2 szoros párhuzamai): Péld 8:27-28 (szinte szó szerinti — "a mélység színén" / "a mélység forrásai"); Jób 38:30; Ez 31:4,15.
+
+**Áldás/bőség** (Gen 49:25 megerősítése): **5Móz 33:13 — Mózes áldása Józsefen, csaknem szó szerint megegyezik Jákób 49:25-ös áldásával**; 5Móz 8:7; Zsolt 78:15.
+
+**Ítélet/dekreáció, ill. Exodus-visszhang** (Gen 7:11 és 2Móz 15:5,8 megerősítése): Ez 26:19; Ámós 7:4; Hab 3:10; **Ézs 51:10; 63:13; Zsolt 106:9 — mind explicit Vörös-tengeri visszaemlékezés**.
+
+**Szorongatásból kiemelés**: Zsolt 71:20; 107:26.
+
+⚠️ **Fordítási megjegyzés:** Zsolt 33:7 és 107:26 esetén a Károli 1908-as fordítás nem a "mélység" szót használja a תְּהוֹם-ra ("hullámokat", ill. "fenékig") — a héber szó azonossága a Strong-adatból egyértelmű, de a magyar szöveg ezt nem teszi láthatóvá.
+
+---
+
 ## 3. A PaRDeS keretrendszer — magára a motívumra alkalmazva
 
 **Peshat** *(részletesen kifejtve)*
