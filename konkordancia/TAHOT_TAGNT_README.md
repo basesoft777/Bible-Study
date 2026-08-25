@@ -27,16 +27,18 @@ kitalálni.
 Igehely | Strong-szám | Ragozott alak | Kiejtés | Szótő | Rövid jelentés | Angol tükörfordítás
 ```
 
-**`TAGNT_kivonat.tsv`** (görög ÚSZ, 9 oszlop):
+**`TAGNT_kivonat.tsv`** (görög ÚSZ, 8 oszlop):
 ```
-Igehely | Strong-szám | Ragozott alak | Kiejtés | Szótő | Rövid jelentés | Angol tükörfordítás | Kritikai kiadás | Igehely_masodlagos
+Igehely | Strong-szám | Ragozott alak | Kiejtés | Szótő | Rövid jelentés | Angol tükörfordítás | Kritikai kiadás
 ```
-- **Igehely_masodlagos:** csak akkor töltött, ha a nyers sor zárójeles kettős hivatkozást
-  tartalmazott (lásd "Zárójeles kettős hivatkozás" szakasz lent); egyébként üres.
 
 - **Igehely:** a STEPBible-natív hivatkozás VÁLTOZATLANUL (pl. `Gen.1.1`, `Pro.23.7`) —
   a magyar formátumra (`1Móz 1:1`) alakítás egy külön, még hátralévő lépés (lásd a döntési
-  fájl 8. szakaszának "könyv-rövidítés normalizáló tábla" pontja).
+  fájl 8. szakaszának "könyv-rövidítés normalizáló tábla" pontja). **Kivétel: a 4 zárójeles
+  kettős hivatkozású ÚSZ-eset** (lásd "Zárójeles kettős hivatkozás" szakasz lent) — ott az
+  `Igehely` mező rögtön Károli-natív, magyar formátumú (pl. `Róm 3:26`), mert a STEPBible
+  elsődleges/másodlagos hivatkozás közül a Károli 1908 verse-beosztás csak az egyiket
+  követi, és ez esetről esetre eltér — a natív STEPBible-kulcs önmagában félrevezető lenne.
 - **Strong-szám:** tiszta forma, homográf-jelölés és instance-toldalék nélkül (pl. `H7225`,
   nem `H7225G` vagy `H7225G_A`).
 
@@ -138,10 +140,25 @@ Mind a négy esetben a zárójeles szegmens a verset **részlegesen** fedi le �
 közvetlenül utána (paren nélkül) folytatódik a verse többi szava a fő (nem zárójeles)
 hivatkozással (pl. `Mrk.12.15#05=NKO` és utána), ami már a jelenlegi kivonatban is szerepelt.
 A kivonat-generáló regexe ezért `^([A-Za-z0-9]+)\.(\d+)\.(\d+)(\((\d+)\.(\d+)\))?#(\d+)=`
-alakú, és a zárójeles részt **nem dobja el**, hanem az `Igehely_masodlagos` oszlopba teszi
-(pl. `Rom.3.25` sor `Igehely_masodlagos` = `Rom.3.26`). Az elsődleges/másodlagos közül melyiket
-követi a Károli 1908 fordítás, helyenként eltér — lásd a
-`konkordancia/Verzifikacios_elteres_tabla.tsv` fájlt.
+alakú, és a zárójeles részt **nem dobja el**.
+
+**Károli-natív kulcs a 4 kivételre.** Mivel a Károli 1908 az elsődleges/másodlagos STEPBible-
+hivatkozás közül eseteként eltérően dönt (lásd `konkordancia/Verzifikacios_elteres_tabla.tsv`
+— ez a tábla rögzíti a Károli-szöveggel való tartalmi összevetés eredményét), a kivonat-
+generátor ennél a 4 esetnél nem a STEPBible-natív kulcsot írja az `Igehely` mezőbe, hanem
+egy hardcode-olt, előre igazolt táblázat (`KAROLI_DONTES`) alapján rögtön a Károli-natív,
+magyar formátumú hivatkozást:
+
+| Nyers Igehely | Károli-döntés | `Igehely` mező értéke |
+|---|---|---|
+| `Rom.3.25(3.26)` | másodlagos | `Róm 3:26` |
+| `Act.13.39(13.38)` | elsődleges | `ApCsel 13:39` |
+| `Mrk.12.15(12.14)` | másodlagos | `Mk 12:14` |
+| `Act.19.41(19.40)` | másodlagos | `ApCsel 19:40` |
+
+Minden más (paren nélküli) sor `Igehely` mezője változatlanul a STEPBible-natív formátumot
+kapja — ez a Károli-natív kulcs kizárólag erre a 4, egyedileg igazolt esetre vonatkozó
+kivétel, nem általános magyar-formátum-konverzió.
 
 **Ismert, dokumentált ritka eset (~0,2% a TAGNT-sorokban) — egybeolvadt (krázis) szavak.**
 Néhány görög szó két morfémát olvaszt egybe egyetlen írott alakba (pl. `κἂν` = `καί`
