@@ -1,5 +1,7 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
+*v6 — 2026.08.26 (redundáns Strong-ellenőrzés bekezdés összevonva az új négyforrásos
+kereséssel, a szomszédos-vers-vizsgálat megtartva)*
 *v5 — 2026.08.26 (az 1. pont elé felvéve egy új „Friss, teljes körű keresés" alszakasz
 — a táblázat mostantól nem csak a meglévő naplóból másol, hanem a
 `PaRDeS_gyorsreferencia.md` „Motívum-felismerés módszertana" szerinti négyforrásos,
@@ -24,17 +26,17 @@ Nem egy igeversre/szakaszra, hanem egy **motívumra** fókuszáló, önálló ta
 
 Mielőtt az alábbi táblázatot kitöltenéd a meglévő napló alapján, végezz friss
 keresést a "Motívum-felismerés módszertana" (PaRDeS_gyorsreferencia.md) szerint,
-mind a négy forrásból. A táblázatba MINDEN ✅ valódinak minősített, a naplóban még
-NEM szereplő találat bekerül — ne csak a legerősebb 1-2-t válaszd ki, mint a
-bővítettnél, hanem a teljes valódi találati halmazt.
+mind a négy forrásból — a [Strong] forrásnál explicit vizsgáld az azonos versen
+belüli ÉS a szomszédos verseken belüli előfordulást is. A táblázatba MINDEN ✅
+valódinak minősített, a naplóban még NEM szereplő találat bekerül — ne csak a
+legerősebb 1-2-t válaszd ki, mint a bővítettnél, hanem a teljes valódi találati
+halmazt.
 
 Táblázatos áttekintés minden eddigi előfordulásról, a `PaRDeS_motivumok.md` napló releváns bejegyzése alapján:
 
 | Igehely | Kapcsolódás | PaRDeS-szint, ahol felmerült |
 |---|---|---|
 | *(igehely)* | *(a motívum konkrét megjelenési formája ott)* | *(Peshat/Remez/Drash/Sod, és melyik tanulmányból)* |
-
-**Kötelező STEPBible-ellenőrzés a táblázat lezárása előtt:** a motívum kulcsszavának/kulcsszavainak Strong-számára futtass le egy teljes körű STEPBible TAGNT/TAHOT egyezés-ellenőrzést (`konkordancia/TAGNT_kivonat.tsv`, `konkordancia/TAHOT_kivonat.tsv`) — azonos versen belüli és (ha releváns) szomszédos verseken belüli előfordulásra egyaránt. Minden talált jelöltet explicit értékelj: valódi lexikai egyezés-e (azonos szótő, releváns grammatikai szerep) vagy csak felszíni Strong-egyezés eltérő jelentéssel/referenssel — csak az előbbi kerül be a táblázatba, az utóbbit explicit ki kell zárni, indoklással.
 
 ---
 
