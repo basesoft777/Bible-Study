@@ -285,3 +285,27 @@ Emellett minden sor Strong-száma ellenőrizve `^H\d{4}$` (TAHOT) ill. `^G\d{4,5
 **A Károli-natív kulcsra való átállás validációja:** `Gen.1.1` → `1Móz 1:1`, `Pro.1.1` →
 `Péld 1:1` — mindkettő pontosan egyezik. Lásd fentebb a "Károli-natív kulcs és a zárójeles
 kettős hivatkozás javítása" szakasz validált eset-táblázatát a teljes döntési naplóért.
+
+## LXX (Septuaginta) — jelenlegi lefedettség és jövőbeli bevonás (0. fázis, dokumentálás)
+
+Ez a szakasz **nem** új adatintegráció — csak annak rögzítése, hogy a jelenlegi
+TAHOT/TAGNT-infrastruktúra hol érintkezik már most az LXX-szel, és mi állna
+rendelkezésre egy jövőbeli, önálló feladatként megvalósítandó LXX-bevonáshoz. A
+fázisolt tervet lásd a `Validacios_naplo.md`-ben, a jelen validációs kör lezáró
+bejegyzésében.
+
+- **A TAHOT már most tartalmaz korlátozott LXX-apparátust.** A STEPBible saját
+  dokumentációja szerint az adatkészlet "LXX additions included as Hebrew from
+  BHS/BHK apparatus" — vagyis ahol a Septuaginta egy, a maszoréta szövegtől eltérő
+  olvasatot őriz, az esetenként már bekerült a héber apparátusba (BHS/BHK jegyzetek
+  útján), így a `TAHOT_kivonat.tsv` némely sora már közvetve LXX-eredetű adatot
+  hordoz, külön jelölés nélkül.
+- **A lexikai háttér már rendelkezésre áll.** A repóban meglévő `TFLSJ` (Translators
+  Formatted full LSJ) és `TBESG` (Translators Brief lexicon of Extended Strongs for
+  Greek) lexikonok eleve LXX-kompatibilisek: közös Strong-rendszerben fedik le az
+  újszövetségi görögöt, a Septuagintát és az apokrif iratokat. Egy jövőbeli
+  LXX-integrációhoz tehát a szótári/lexikai réteg nem igényelne új beszerzést.
+- **Ami hiányzik:** LXX-specifikus szövegforrás (pl. TAGOT vagy CATSS/LXXM) és
+  LXX-specifikus versifikációs feltérképezés (a görög könyv-/fejezetbeosztás helyenként
+  eltér a héber/magyar hagyománytól, pl. Zsoltárok 9-10, Jeremiás szerkezete). Ezek
+  bevonása jövőbeli, önálló feladat — lásd `Validacios_naplo.md`.
