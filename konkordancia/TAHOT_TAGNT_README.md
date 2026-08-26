@@ -32,13 +32,12 @@ Igehely | Strong-szám | Ragozott alak | Kiejtés | Szótő | Rövid jelentés |
 Igehely | Strong-szám | Ragozott alak | Kiejtés | Szótő | Rövid jelentés | Angol tükörfordítás | Kritikai kiadás
 ```
 
-- **Igehely:** a STEPBible-natív hivatkozás VÁLTOZATLANUL (pl. `Gen.1.1`, `Pro.23.7`) —
-  a magyar formátumra (`1Móz 1:1`) alakítás egy külön, még hátralévő lépés (lásd a döntési
-  fájl 8. szakaszának "könyv-rövidítés normalizáló tábla" pontja). **Kivétel: a 4 zárójeles
-  kettős hivatkozású ÚSZ-eset** (lásd "Zárójeles kettős hivatkozás" szakasz lent) — ott az
-  `Igehely` mező rögtön Károli-natív, magyar formátumú (pl. `Róm 3:26`), mert a STEPBible
-  elsődleges/másodlagos hivatkozás közül a Károli 1908 verse-beosztás csak az egyiket
-  követi, és ez esetről esetre eltér — a natív STEPBible-kulcs önmagában félrevezető lenne.
+- **Igehely — TAHOT_kivonat.tsv:** Károli-natív, magyar formátumú hivatkozás (pl.
+  `1Móz 1:1`, `Péld 23:7`) — lásd lent a "Károli-natív kulcs és a zárójeles kettős
+  hivatkozás javítása" szakaszt a pontos módszertanért.
+- **Igehely — TAGNT_kivonat.tsv:** a STEPBible-natív hivatkozás VÁLTOZATLANUL (pl.
+  `Gen.1.1`, `Pro.23.7`), **kivéve** a 4 zárójeles kettős hivatkozású ÚSZ-esetet (lásd
+  "Zárójeles kettős hivatkozás" szakasz lent) — ott az `Igehely` mező rögtön Károli-natív.
 - **Strong-szám:** tiszta forma, homográf-jelölés és instance-toldalék nélkül (pl. `H7225`,
   nem `H7225G` vagy `H7225G_A`).
 
@@ -170,18 +169,99 @@ kivonat **egy sort** ad a szóhoz, a Strong-számokat `+`-jellel összefűzve (p
 `Dictionary form = Gloss` mezője is szétbontva adja meg őket, egyébként az egybeolvadt szó
 saját szótári alakja szerint.
 
+## Károli-natív kulcs és a zárójeles kettős hivatkozás javítása (TAHOT)
+
+**A jelenség.** A nyers TAHOT-fájlokban ~21 918 sor (2094 egyedi igehely) hivatkozása
+zárójeles kettős alakú, pl. `Gen.31.55(32.1)#01=L` vagy `Psa.51.0(51.2)#01=L`. A `Ref` mező
+definíciója a nyersadat fejlécében: *"Bible reference in English Bibles, as defined by the
+NRSV (with Heb refs in brackets when they are different)"* — vagyis a zárójel **előtti**
+rész az angol/NRSV-stílusú (a kódban "elsődleges"), a zárójel**ben** lévő a héber maszoréta
+szöveg natív (a kódban "másodlagos") hivatkozása. A két rendszer néhány könyvben eltérő
+fejezet-/vershatárokat használ (pl. Gen 31/32, Mal 3/4, Jóel 2/3, zsoltárcímek, amikre a
+héber Biblia önálló versszámot ad, az angol/NRSV viszont nem).
+
+**A régi generátor ezeket a sorokat szó nélkül eldobta** — emiatt pl. teljes fejezetek
+(Gen 32, Zsolt 88/89/90/140/142 stb.) teljesen hiányoztak a kivonatból. A javítás két
+részből áll:
+
+1. **Eltolódási pontok azonosítása verspár-szinten** (`eszkozok/tahot_step1_shifts.py`
+   jellegű elemzés — lásd a scratchpad-ben elkészült `step1_shifts2.py`-t): a négy nyers
+   fájl összes egyedi (elsődleges, másodlagos) verspárja fejezetenként csoportosítva,
+   union-find-del összekötve azokat a fejezeteket, amik között a másodlagos hivatkozás
+   fejezethatárt lép át (pl. Gen 31↔32).
+2. **Döntés fejezethossz-egyezés alapján**: minden csoportra összevetve a Károli 1908
+   tényleges utolsó versszámát az adott fejezetben az elsődleges, ill. a másodlagos
+   hipotézis szerinti várható hosszal. Ahol csak az egyik egyezik, automatikus döntés
+   (**ELSŐDLEGES** vagy **MÁSODLAGOS**); ahol mindkettő egyezik (jellemzően zsoltárcímek,
+   amik az 1. verssel olvadnak egybe — pl. Zsolt 11, 13, 24 stb., 55 eset), az alapértelmezett
+   soronkénti szabály (lásd lent) magától helyesen működik; ahol egyik sem egyezik, tartalmi
+   (szöveg-összevetéses) ellenőrzés Károli_1908.tsv alapján.
+
+**Végső soronkénti szabály** (minden zárójeles nyers sorra):
+- Ha a fejezet **ELSŐDLEGES** csoportba tartozik → a zárójel előtti (angol/NRSV-stílusú)
+  hivatkozás lesz az `Igehely` mező alapja, a zárójel figyelmen kívül marad.
+- Ha **MÁSODLAGOS** → a zárójelben lévő (héber) hivatkozás lesz az alap.
+- Ha a fejezet **ADATMINŐSÉGI_GYANÚ** (lásd lent) → a sor **kimarad** a fő kivonatból,
+  helyette a `TAHOT_kivonat_nyitott_esetek.tsv`-be kerül.
+- Egyetlen egyedi kivétel (`1Sa.20.42(21.1)`): tartalmilag ellenőrizve, hogy Károli
+  1Sám 20:43-as, önálló verseként adja vissza ezt a szövegrészt (nem tolja át a 21.
+  fejezetbe) — ez a sor kézzel `1Sám 20:43`-ra van célozva.
+
+A kapott hivatkozás ezután a `Konyv_normalizalo_tabla.tsv` alapján egyszerű
+könyv-rövidítés-cserével válik Károli-formátumúvá (pl. `Gen` → `1Móz`). Ugyanez a
+könyv-rövidítés-csere történik a kivonat **összes** (nem csak a zárójeles) sorára is —
+ez a TAHOT-oldal érdemi különbsége a TAGNT-oldal (nem érintett) precedensétől: TAHOT-nál
+minden `Igehely` rögtön Károli-natív, TAGNT-nál csak a 4 kivételes eset.
+
+**Validált esetek** (a döntési logikát ezekkel a korábban ismert referenciapontokkal
+ellenőriztük, mindegyik pontosan egyezik a várttal):
+
+| Eset | Döntés | Ellenőrzés |
+|---|---|---|
+| Gen 31/32 | ELSŐDLEGES | Károli 1Móz 31:55 = "Reggel pedig felkele Lábán…", 1Móz 32:1 = "Jákób tovább méne…" (fejezethossz: 55/32) |
+| Jóel 2/3(/4) | ELSŐDLEGES | Károli Jóel 2 = 32 vers, Jóel 3 = 21 vers, nincs Jóel 4. |
+| Malakiás 3/4 | ELSŐDLEGES | Károli Malakiás 4 önálló, 6 verses fejezet. |
+| Zsolt 3 | MÁSODLAGOS | Károli Zsolt 3:1 = cím önállóan, 3:2 = "Uram! mennyire…" |
+| Zsolt 51 | MÁSODLAGOS | Károli Zsolt 51:1–2 = cím két önálló versben, 51:3 = "Könyörülj rajtam…" |
+| Zsolt 11 | (mindkettő egyezik → soronkénti szabály) | Károli Zsolt 11:1 = cím és tartalom egybeolvasztva — a cím-sor másodlagos (1), a tartalom elsődleges (1) hivatkozása véletlenül ugyanoda mutat. |
+| 1Sám 20/21 | ELSŐDLEGES + 1 egyedi kivétel | Károli 1Sám 20:43 önálló versként tartalmazza a héber 21:1 szövegét. |
+| 1Sám 23/24 | MÁSODLAGOS | Károli 1Sám 23 = 28 vers, 24 = 23 vers (a héber szerint). |
+| Ezékiel 20/21 | **ADATMINŐSÉGI_GYANÚ** | Károli Ez 20:44 összeolvadt/túlhosszú vers (a héber 21:1–5 "erdőtűz"-oráció szövege belefolyt a vers végébe), a numerikus fejezethossz-egyezés (MÁSODLAGOS: 44/37) félrevezető lenne — korábbi audit (Ez 20:44) által is dokumentált anomália. |
+| Jób 40/41 | **ADATMINŐSÉGI_GYANÚ** | Sem az elsődleges (24/34), sem a másodlagos (32/26) fejezethossz nem egyezik a Károli tényleges 28/25 hosszal — korábbi audit szerint Jób 41:25 is összeolvadt vers. |
+
+Az `ADATMINŐSÉGI_GYANÚ` alá eső sorok (Ez 20:45–49(21.1–5) és Jób 40:25–41.34(41.1–26)
+zárójeles tartománya, összesen 1068 szó-sor) a `TAHOT_kivonat_nyitott_esetek.tsv`-be
+kerültek, `Státusz`/`Indoklás` oszloppal, tényleges javítás nélkül — ez összhangban van
+azzal, hogy a Károli-adatminőségi audit (`Karoli_adatminosegi_anomaliak.tsv`) külön,
+nem e feladat része.
+
+**Kereszt-ellenőrzés.** A fő kivonatba bekerülő minden Károli-kulcsot (a régről megmaradt
+435 723 sort is) leellenőriztük a `Karoli_1908.tsv` tényleges igehely-készlete ellen. Az
+összes **új** (korábban eldobott, most bekerülő) sorra 0 eltérés. A **régről** megmaradt
+sorok közül 102 szó-sor (6 egyedi igehely: 4Móz 12:16; Jób 38:39–41; Préd 11:9–10) NEM
+található meg a `Karoli_1908.tsv`-ben — ez egy, a zárójeles-hivatkozás javítástól
+FÜGGETLEN, már korábban is fennálló Károli-oldali versszámozási/adatminőségi jelenség
+(a STEPBible nyers adatban ezekhez a sorokhoz nem tartozik zárójeles kettős hivatkozás,
+tehát nem e feladat hatóköre — lásd a Károli-adatminőségi audit kizárását a feladat
+korlátai közt). A sorok tartalma emiatt is változatlanul bekerült a kivonatba (STEPBible-
+könyv+fejezet+vers → Károli-könyv+fejezet+vers egyszerű csere), csak a Károli-oldali
+igehely maga nem létezik — érdemes egy külön, jövőbeli Károli-adatminőségi vizsgálat
+tárgyává tenni.
+
 ## Méret és sorszám
 
 | Fájl | Nyers sorok (STEPBible) | Generált sorok | Fájlméret |
 |---|---|---|---|
-| TAHOT_kivonat.tsv | 283 734 | 435 723 | ~24 MB |
+| TAHOT_kivonat.tsv | 283 734 (+ 21 918 korábban eldobott zárójeles sor) | 468 232 | ~26 MB |
+| TAHOT_kivonat_nyitott_esetek.tsv | — | 1 068 | ~0,1 MB |
 | TAGNT_kivonat.tsv | 141 746 | 141 746 | ~13 MB |
 
-Mindkét fájl jóval a GitHub 100 MB-os fájlméret-korlátja alatt van, könyvenkénti bontás
-nem volt szükséges.
+Mindkét fő fájl jóval a GitHub 100 MB-os fájlméret-korlátja alatt van, könyvenkénti
+bontás nem volt szükséges.
 
-Lefedettség: TAHOT — 39 ószövetségi könyv, 21 178 egyedi igehely; TAGNT — 27 újszövetségi
-könyv, 7 948 egyedi igehely.
+Lefedettség: TAHOT — 39 ószövetségi könyv, ~23 000 egyedi igehely (a korábbi 21 178 +
+az újonnan bekerült, korábban hiányzó igehelyek, pl. Gen 32, Zsolt 88/89/90/140/142,
+Jóel 3); TAGNT — 27 újszövetségi könyv, 7 948 egyedi igehely.
 
 ## Validáció
 
@@ -201,3 +281,7 @@ adat az angol fordítás oldaláról.
 
 Emellett minden sor Strong-száma ellenőrizve `^H\d{4}$` (TAHOT) ill. `^G\d{4,5}(\+G\d{4,5})*$`
 (TAGNT) mintára — mindkét fájlban 0 eltérés.
+
+**A Károli-natív kulcsra való átállás validációja:** `Gen.1.1` → `1Móz 1:1`, `Pro.1.1` →
+`Péld 1:1` — mindkettő pontosan egyezik. Lásd fentebb a "Károli-natív kulcs és a zárójeles
+kettős hivatkozás javítása" szakasz validált eset-táblázatát a teljes döntési naplóért.
