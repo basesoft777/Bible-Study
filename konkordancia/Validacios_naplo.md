@@ -90,3 +90,19 @@ feladatként** érdemes megvizsgálni a Septuaginta bevonását. Fázisolt terv:
 
 Csak a 0. fázis készült el ebben a körben; az 1-3. fázis csak jövőbeli, önálló
 feladatként jelölve, a jelen A+B+C lezárás után.
+
+---
+
+## 2026.08.26 (kiegészítés) — LXX-fázisolt terv frissítése: forrás azonosítva
+
+A korábban rögzített LXX-fázisolt terv "1. fázisa" (forrás-figyelés, STEPBible TAGOT-ra
+várva) elavulttá vált: a studybible.info (már használt forrás KJV_Strongs/ASV_Strongs
+lekérésére) közvetlenül kínál Strong-taggelt LXX-szöveget könyvenkénti oldalakon
+(`LXX_WH` és `ABP_GRK` verziók). Ellenőrizve, hogy a formátum megfelelő granularitású
+(szavankénti Strong-szám + morfológiai kód). A 3. fázis (tényleges LXX-integráció)
+ezért nem függ többé a TAGOT megjelenésétől — a 2. fázis (TVTMS-alapú versificaiós
+térképezés) lezárása után közvetlenül indítható ezzel a forrással.
+
+A fázisolt terv többi eleme (2. fázis: versificaiós térképezés a TVTMS alapján; 3.
+fázis: korlátozott hatókörű bekötés, elsősorban az ismert ÓSZ→ÚSZ idézetek helyén)
+változatlan.

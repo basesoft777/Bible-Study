@@ -309,3 +309,14 @@ bejegyzésében.
   LXX-specifikus versifikációs feltérképezés (a görög könyv-/fejezetbeosztás helyenként
   eltér a héber/magyar hagyománytól, pl. Zsoltárok 9-10, Jeremiás szerkezete). Ezek
   bevonása jövőbeli, önálló feladat — lásd `Validacios_naplo.md`.
+
+**Frissítés (2026.08.26): forrás azonosítva, nincs szükség várakozásra.** A
+studybible.info (amit a projekt már használ KJV_Strongs/ASV_Strongs lekérésére)
+könyvenkénti oldalakon kínál kész, Strong-taggelt LXX-szöveget:
+`studybible.info/LXX_WH/[Könyv]` (Westcott-Hort alapú) és
+`studybible.info/ABP_GRK/[Könyv]` (Apostolic Bible Polyglot alapú — ez utóbbi
+ugyanaz a forrás, amire a STEPBible tervezett TAGOT-jának LXXe rétege épülne).
+A TAGOT-ra várás tehát nem szükséges előfeltétel többé a 3. fázis
+(tényleges LXX-szó/Strong-adat bekötése) megkezdéséhez — az a 2. fázis
+(versificaiós térképezés) lezárása után közvetlenül indítható, ezzel a
+forrással.
