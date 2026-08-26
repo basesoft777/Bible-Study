@@ -1,5 +1,9 @@
 # PaRDeS gyorsreferencia
 
+*v6 — 2026.08.26 (új „Motívum-felismerés módszertana" szakasz beillesztve a 3/b után:
+négyforrásos jelölt-gyűjtés — 🔤 Strong / 📖 Károli-KH / 📚 TSK / 🧠 Claude-tudás —
+és háromkategóriás tartalmi minősítés — ✅/❌/🔶; sablon-verziók frissítve: bővített
+v10, tematikus v5, mélyelemzés v4)*
 *v5 — 2026.08.14 (frissítve: rokon motívum-csoport küszöbszámítás, tematikus sablon feltételes 2. pontja, napló új „Előrejelzett" alszakasza, belső önellenőrzés kiegészítve a lexikai vs. tematikus kapcsolat explicit ellenőrzésével; sablon-verziók frissítve: alap v2, bővített v6, tematikus v3)*
 
 Tömör, kulcsszavas áttekintés a memóriában rögzített szabályokról. A teljes szöveg a sablon-fájlokban és a memóriában érhető el.
@@ -41,6 +45,38 @@ Tömör, kulcsszavas áttekintés a memóriában rögzített szabályokról. A t
 - Ismétlődő motívum jelzése a PaRDeS_motivumok.md alapján
 - Gazdag/vitatott kapcsolatnál: felajánlás önálló mélyelemzésre
 - **Rokon motívum-csoport küszöbszámítás:** ha egy motívum tematikusan rokon, de lexikailag önálló egy másik naplózott motívummal, az egyéni számláló mellett jelöld a rokon-csoport összesített előfordulását is (figyelmeztetésként); mindig indoklással, nem automatikusan
+
+## Motívum-felismerés módszertana
+
+Mielőtt egy kulcsszóhoz/motívumhoz kereszthivatkozást vagy előfordulást választunk,
+NÉGY párhuzamos forrásból gyűjtünk jelöltet, mindegyiket forrás-cimkével megjelölve:
+
+- 🔤 [Strong] — teljes körű grep a releváns Strong-számra a TAHOT_kivonat.tsv /
+  TAGNT_kivonat.tsv teljes állományán (LEXIKAI jelölt: ugyanaz a szó)
+- 📖 [Károli-KH] — Karoli_kereszthivatkozasok.tsv lekérdezése (EDITORIÁLIS/TEMATIKUS
+  jelölt, szentiras.hu szerkesztői hálózat, nincs erősség-jelzés)
+- 📚 [TSK] — TSK_kereszthivatkozasok.tsv lekérdezése, Votes ≥ 15 szűréssel
+  (EDITORIÁLIS/TEMATIKUS jelölt, Treasury of Scripture Knowledge, erősség-jelzéssel)
+- 🧠 [Claude-tudás] — saját, adatforrás nélküli javaslat (a leggyengébb
+  megalapozottságú, mindig explicit jelölve marad)
+
+Minden jelöltet HÁROM kategóriába sorolunk, TARTALMI olvasással (nem mechanikus
+szűréssel):
+- ✅ valódi, releváns találat
+- ❌ hamis találat (felszíni/homonim egyezés)
+- 🔶 rokon, de eltérő szerkezetű/kategóriájú
+
+FONTOS: a [Strong]-jelölt "valódi" minősítése LEXIKAI állítást tesz (azonos szó). A
+[Károli-KH] és [TSK] jelöltek "valódi" minősítése CSAK tematikus/teológiai kapcsolatot
+igazol — ha lexikai rokonságot is állítunk, azt KÜLÖN, Strong-számmal kell
+megerősíteni (lásd: lexikai vs. tematikus fegyelem, Munkafolyamat szakasz).
+
+A [Claude-tudás] eredetű, végül ✅-nak minősített jelölt a végleges kimenetben is
+MEGTARTJA a forrás-cimkéjét — nem olvad bele észrevétlenül az adatvezérelt
+találatok közé.
+
+Csak a minősítés UTÁN történik a végleges kiválasztás (legerősebb 1-2 a bővítettnél,
+teljes lista a tematikusnál).
 
 ## Alkalmazás pont — nevesített külső tanítói forrás (opcionális)
 - Alapértelmezés: a 3 kérdésre adott válasz a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből épül
