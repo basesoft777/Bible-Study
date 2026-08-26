@@ -106,3 +106,72 @@ térképezés) lezárása után közvetlenül indítható ezzel a forrással.
 A fázisolt terv többi eleme (2. fázis: versificaiós térképezés a TVTMS alapján; 3.
 fázis: korlátozott hatókörű bekötés, elsősorban az ismert ÓSZ→ÚSZ idézetek helyén)
 változatlan.
+
+---
+
+## 2026.08.26 (kiegészítés) — LXX-fázis 2 lezárása: TVTMS-alapú versificaiós térkép
+
+Elvégezve a `Feladat D` (LXX-fázis 2), önálló `lxx-fazis2-versificacios-terkep`
+branch-en, main-ből ágazva (nincs merge-elve, nincs push-olva). Előfeltétel-ellenőrzés
+(A+B+C lezárva, `TAHOT_kivonat.tsv` Károli-natív kulcsú, 468 233 sor) sikeres volt.
+
+**Forrás:** a STEPBible-Data repo `Versification/TVTMS - Translators Versification
+Traditions...` fájlja (letöltve a munkakönyvtárba, `master` branch, ~5,6 MB — a nyers
+fájl **nem** került be a repóba, a projekt gyakorlatának megfelelően).
+
+**Módszertani pontosítás a validáció során (felhasználói döntéssel lezárva):** az
+eredeti terv a `SourceType` mezőre szűrt volna (Greek/Greek2/GreekUndivided). A
+validációs próba (Gen.32:1) kimutatta, hogy ez a szűrés hibás eredményt adna — a
+tényleges "Renumber verse" akció gyakran **Hebrew** `SourceType` alatt szerepel (a
+görög/latin nézőpontból ugyanez a jelenség "Keep verse", mert onnan nézve nincs
+változás). A végleges logika ehelyett az **Ancient Versions annotációra** szűr (van-e
+`Greek=` érték a sorban, függetlenül a `SourceType`-tól), a sorokat a Hebrew/Latin/Greek
+hármas (könyv + hármas) alapján csoportosítja, és csoportonként a legspecifikusabb
+Action-t veszi (Concatenation/MergedNext/MergedPrev > Renumber verse > egyéb — az
+utóbbi csoportok, pl. csak "Keep verse", kimaradnak a térképből, mert nem jeleznek
+valódi eltérést). Ezzel a logikával mindhárom validációs eset (Gen.32:1, Gen.3:1,
+Gen.6:1) pontosan a várt eredményt adta, beleértve a `Karoli_egyezik_hol` mező
+"Latin,Gorog" értékét Gen.32:1-re.
+
+**1-2. típus (Renumber, Concatenation/Merge) — `LXX_versificacios_terkep.tsv`:**
+5426 sor (a teljes 39 könyves TAHOT-hatókör vizsgálva; ebből 34 könyvben található
+tényleges eltérés — Ruth, Ezsdrás, Siralmak, Abdiás és Habakuk 0 sorral szerepel,
+mert nincs bennük TVTMS-dokumentált görög versificaiós eltérés). Ebből:
+- 5091 Renumber, 335 Concatenation/Merge.
+- `Karoli_egyezik_hol` eloszlás: 1503 Heber, 1211 Heber+Latin, 426 Latin+Gorog, 361
+  Latin, 216 Heber+Gorog, 165 Heber+Latin+Gorog, 7 Gorog — összesen **3889 sor**
+  automatikusan, validáltan Károli-illesztve (nem feltételezve — a `TAHOT_kivonat.tsv`
+  tényleges kulcsai ellen ellenőrizve).
+- **1233 sor `EGYIK_SEM`** — a Károli-vers egyik oszloppal sem egyezik pontosan (pl.
+  a legtöbb Zsoltár-eset, ahol Károli saját, negyedik számozási hagyományt követ a
+  felirat-versek miatt; és Dán 4 egyes versei). Ezek nem hibák, hanem Károli önálló
+  hagyományának dokumentált nyomai — jövőbeli vizsgálat tárgyai.
+- **304 sor `ELLENORZESRE_VAR`** — a becsült Károli-kulcs nem található meg a
+  `TAHOT_kivonat.tsv`-ben. Szúrópróba alapján ez nagyrészt egybevág a már ismert
+  esetekkel: Ez 20/21 (a korábban dokumentált `ADATMINOSEGI_GYANU` Károli-oldali
+  gyanú), 1Sám 23:29/24:1 (a korábban dokumentált vadász-gyök motívum kontextusa),
+  valamint apokrif/LXX-only betoldások (Eszt 13, Dán 3 "Három ifjú éneke"), amelyeknek
+  Károliban (protestáns kánon) nincs megfelelőjük.
+
+**3-4. típus (LongVerse, LongVerseDuplicated) — `LXX_tobblet_szakaszok.tsv`:**
+**Fontos eltérés a tervezetthez képest:** a LongVerse/LongVerseDuplicated jelenségek
+a TVTMS fájl **Condensed szakaszában** találhatók (`#DataStart(Condensed)` —
+`#DataEnd(Condensed)`), **nem** az Expanded szakaszban, ahol az Expanded szakasz 0
+ilyen sort tartalmaz. A Condensed szakasz eltérő oszlopszerkezetű ($Szakasz + English
+KJV/Hebrew/Latin/Greek/egyéb oszlopok, szakaszonkénti fejléccel), ezért külön
+feldolgozó logikát igényelt. Eredmény: **106 sor**, mind "kutatási jelölt" státusszal
+(`LongVerseDuplicated`: 36, `LongVerseElsewhere`: 32, `LongVerse/LVExtra`: 15,
+`LongVerseElsewhereJoin`: 13, `LongVerse/LVElsewhere`: 7, `LongVerse/LVDuplicated`: 3).
+Túlnyomó többségük (83/106) a 2Móz 25-40 (sátor/templom-berendezés, LXX-Vulgata eltérő
+sorrend) és 1Kir 2-7 (LXX duplikált betoldások) szakaszokból. Nem lettek lezárva —
+jövőbeli, önálló szövegkritikai/teológiai vizsgálat kiindulópontjai.
+
+**Ez a térkép még nem tartalmaz tényleges LXX-lexikai adatot** — csak
+versifikációs (verscím/verszám) megfeleltetést. A tényleges LXX-szó/Strong-adat
+bekötése (3. fázis) a `studybible.info/LXX_WH` vagy `.../ABP_GRK` forrás alapján
+lesz elvégezhető (lásd a 2026.08.26-i korábbi kiegészítést a forrás azonosításáról),
+és közvetlenül erre a versificaiós térképre épülhet.
+
+**Fájlok (a `lxx-fazis2-versificacios-terkep` branch-en, nincs commitolva még):**
+`konkordancia/LXX_versificacios_terkep.tsv` (5426 sor + fejléc),
+`konkordancia/LXX_tobblet_szakaszok.tsv` (106 sor + fejléc).
