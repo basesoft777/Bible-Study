@@ -1,5 +1,10 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
+*v5 — 2026.08.26 (az 1. pont elé felvéve egy új „Friss, teljes körű keresés" alszakasz
+— a táblázat mostantól nem csak a meglévő naplóból másol, hanem a
+`PaRDeS_gyorsreferencia.md` „Motívum-felismerés módszertana" szerinti négyforrásos,
+friss keresést kér a kitöltés előtt; a teljes ✅ találati halmaz kerül be, nem csak a
+legerősebb 1-2)*
 *v4 — 2026.08.24 (STEPBible-integráció beépítve: az 1. pont táblázata után felvéve a kötelező STEPBible TAGNT/TAHOT egyezés-ellenőrzés; a Lezárási checklist kiegészítve egy 11. ponttal, ami a STEPBible-ellenőrzés dokumentálását írja elő — mindkettő a `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md`-ben korábban rögzített, de a sablonfájlba eddig be nem épített döntés végrehajtása; a v3-as 10 pontos checklist változatlanul megmaradt, csak kiegészült)*
 *v3 — 2026.08.22 (a 6. pont végére felvéve egy tételes "Lezárási checklist" alszakasz, amely a hét motívumlog-szekció és az index-fájl frissítését sorrendben, ellenőrizhető formában listázza — a lezárások számának növekedésével a manuális szinkronizálás korábban fejben tartott lépéseinek explicit rögzítése céljából)*
 
@@ -14,6 +19,14 @@ Nem egy igeversre/szakaszra, hanem egy **motívumra** fókuszáló, önálló ta
 ---
 
 ## 1. Előfordulások összegyűjtése
+
+### Friss, teljes körű keresés (a táblázat összeállítása előtt)
+
+Mielőtt az alábbi táblázatot kitöltenéd a meglévő napló alapján, végezz friss
+keresést a "Motívum-felismerés módszertana" (PaRDeS_gyorsreferencia.md) szerint,
+mind a négy forrásból. A táblázatba MINDEN ✅ valódinak minősített, a naplóban még
+NEM szereplő találat bekerül — ne csak a legerősebb 1-2-t válaszd ki, mint a
+bővítettnél, hanem a teljes valódi találati halmazt.
 
 Táblázatos áttekintés minden eddigi előfordulásról, a `PaRDeS_motivumok.md` napló releváns bejegyzése alapján:
 

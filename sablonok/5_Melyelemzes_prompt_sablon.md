@@ -1,5 +1,8 @@
 # 5. Mélyelemzés prompt-sablon — két igehely összevetése
 
+*v4 — 2026.08.26 (a 2. pont elé felvéve a "Motívum-felismerés módszertana"
+[PaRDeS_gyorsreferencia.md] háromkategóriás verdiktje — a korábbi bináris "közös szó
+van-e" kérdés helyett ✅/❌/🔶 minősítés)*
 *v3 — 2026.08.24 (STEPBible-integráció beépítve: a 2. pont [Nyelvi/filológiai összevetés] végére felvéve a kötelező STEPBible TAGNT/TAHOT-lekérdezés — a `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md`-ben korábban rögzített, de a sablonfájlba eddig be nem épített döntés végrehajtása)*
 *v2 — 2026.08.20*
 
@@ -13,6 +16,13 @@ Vesd össze részletesen **[igehely A]** és **[igehely B]** kapcsolatát, az al
 2-3 mondatos kontextus mindkét oldalon — mit csinál ott a szó/fogalom, milyen érvelés/gondolatmenet része.
 
 **2. Nyelvi/filológiai összevetés**
+A két igehely kulcsszavának összevetése: NE csak igen/nem választ adj arra, hogy
+"közös szó van-e" — a "Motívum-felismerés módszertana" (PaRDeS_gyorsreferencia.md)
+három kategóriája szerint minősíts:
+- ✅ valódi lexikai egyezés (azonos Strong-szám)
+- ❌ nincs kapcsolat
+- 🔶 rokon, de eltérő gyök/szó (tematikusan kapcsolódik, nyelvtanilag/lexikailag más)
+
 Ha közös görög/héber szó van: pontosan ugyanazt jelenti-e mindkét kontextusban, vagy van árnyalatnyi eltérés? Ugyanaz a szerző használja mindkét helyen, vagy más szerző? A szó szórendje, alakja, mondatbeli szerepe eltér-e a két helyen?
 
 **STEPBible-ellenőrzés:** ha közös szó feltételezett, futtass le egy STEPBible TAGNT/TAHOT lekérdezést (`konkordancia/TAGNT_kivonat.tsv`, `konkordancia/TAHOT_kivonat.tsv`) mindkét igehely releváns szavára, és a nyers adatot (Strong-szám, szótő, morfológiai alak) építsd be közvetlenül az összevetésbe — ez adja meg a végleges választ arra, hogy a kapcsolat lexikai vagy csak tematikus.

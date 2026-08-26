@@ -1,5 +1,9 @@
 # 2. Bővített PaRDeS sablon — teljes, részletes verzió
 
+*v10 — 2026.08.26 (a 3/b pont „Kereséskor:" mondata lecserélve: a korábbi „célzott,
+konkordancia-jellegű előfordulás-ellenőrzés" helyett explicit hivatkozás a
+`PaRDeS_gyorsreferencia.md` új „Motívum-felismerés módszertana" szakaszára —
+négyforrásos jelölt-gyűjtés és forrás-cimke megőrzése [Claude-tudás] eredetnél)*
 *v9 — 2026.08.24 (a 2. pont 6. kiválasztási kritériuma finomítva: az objektív ritkaság szempontja mostantól explicit utal a `Strong_szotar.tsv` szófaj-mezőjére, mint kiegészítő, nem kötelező mérlegelési szempontra — az ige/melléknév-különbségtétel indoklásával; a kritériumlista 1-5. pontja és a lezáró mondat változatlan)*
 *v8 — 2026.08.24 (STEPBible-integráció beépítve: a 2. pontba felvéve a kulcsszó-kiválasztás 6 szempontos explicit kritériumlistája; a 3/b pont végére felvéve a STEPBible TAGNT/TAHOT-alapú kötelező ellenőrzés a közös görög/héber szó feltételezésénél — mindkettő a `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 7.1 pontjában és a sablon-módosítási tervben korábban rögzített, de a sablonfájlba eddig be nem épített döntés végrehajtása)*
 *v7 — 2026.08.15 (kiegészítve: nevesített tanítói egyezés-keresés öt lépéses módszere az Alkalmazás pontnál)*
@@ -78,7 +82,13 @@ A 6. szempont nem helyettesíti, csak kiegészíti az 1-5. tartalmi mérlegelés
 
 *Az alábbi kereszthivatkozások megmutatják, mely más igehelyek erősítik meg vagy világítják meg az egyes PaRDeS-rétegek meglátásait — irányjelöléssel: ← előkép, ↔ párhuzam, ⇒ beteljesedés.*
 
-**Kereséskor:** a 2. pontban táblázatba vett kulcsszavak közül a **ritkább/egyedibb** görög/héber szavakra (nem a gyakori köznyelvi szavakra) végezz **célzott, konkordancia-jellegű előfordulás-ellenőrzést** az egész Bibliában, mielőtt a legerősebb 1-2 kapcsolódást kiválasztod — ne csak ismert/asszociatív motívumokból dolgozz. (Egy ritka szó néhány előfordulása pontosabb és erősebb kapcsolódást adhat, mint egy tartalmilag hasonló, de lexikailag független párhuzam.)
+**Kereséskor:** A ritkább/egyedibb kulcsszavakra a „Motívum-felismerés módszertana"
+(`PaRDeS_gyorsreferencia.md`) szerint járj el: mind a négy forrásból gyűjts jelöltet,
+minősítsd tartalmilag, és csak ezután válaszd ki a legerősebb 1-2 kapcsolódást a 3/b
+blokkba. A forrás-cimkét (🔤/📖/📚/🧠) tartsd meg a végleges szövegben is, ha a
+kiválasztott kapcsolat [Claude-tudás] eredetű. (Egy ritka szó néhány előfordulása
+pontosabb és erősebb kapcsolódást adhat, mint egy tartalmilag hasonló, de lexikailag
+független párhuzam.)
 
 - A kapcsolódó igehelyeket **közvetlenül az adott PaRDeS-szint alatt**, kontextusban add meg — ne külön táblázatban hátrébb.
 - Szintenként **max. 1-2 legerősebb** igehely.
