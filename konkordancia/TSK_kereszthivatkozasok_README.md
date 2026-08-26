@@ -93,6 +93,17 @@ könyvvel, ami nincs az `Angol_konyvnev_STEPBible_tabla.tsv`-ben (pl. deuterokan
 könyv), a generáló szkriptet újra kell futtatni, és az akkor keletkező nem-illeszthető
 sorokat ebbe a fájlba kell gyűjteni, a nyers angol hivatkozással.
 
+## Votes oszlop — eloszlás és használati javaslat
+
+- Tartomány: -31 – 1268
+- Medián: 3
+- Negatív értékek is előfordulnak (pl. 1Móz 1:1 → 2Móz 31:18, votes=-31) — ez valódi
+  nyers adat a forrásból, nem feldolgozási hiba (ellenőrizve a nyers SQL-ben).
+- A 432 949 sor túlnyomó része alacsony megbízhatóságú (medián=3) — használatnál
+  szűrés javasolt: Votes ≥ 15 → 25 473 sor marad; Votes ≥ 20 → 16 874 sor marad.
+- A szűrés a FELHASZNÁLÁS (tanulmányírás) idején történjen, nem itt — ez a fájl a
+  teljes, szűretlen adatot tartalmazza, hogy semmi ne vesszen el.
+
 ## Méret és validáció
 
 | Mérőszám | Érték |
