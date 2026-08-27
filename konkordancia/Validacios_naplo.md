@@ -432,3 +432,27 @@ tétele. A teljes üres-helyőrző vizsgálat végállapota: **35 A (törölve),
 (pótolva), 1 C (most már lezárva — JAVITVA/POTOLVA)**. Nyitott, önálló
 vizsgálatot igénylő tétel maradt: a fent jelzett `TAHOT_kivonat.tsv` vs.
 `Karoli_1908.tsv` Ézs 3 eleji számozási eltérés.
+
+---
+
+## 2026.08.27 (folytatás) — Ézs 3:18-24 körüli eltolódás naplózása (NYITOTT, nincs kivizsgálva)
+
+*Kizárólag dokumentálás — ebben a feladatban szándékosan nem történt kivizsgálás
+vagy javítás.*
+
+Az Ézs 3:26 javítás melléktermékeként (Claude Code jelentése + a chat-felület
+ellenőrzése) egy új, a 3:26-os összeolvadástól **független** eltérés bukkant fel:
+a `TAHOT_kivonat.tsv` (héber-alapú) és a `Karoli_1908.tsv` verse-számozása
+eggyel eltér valahol a 3:18-24 tartományban (ékszerek/ruhadarabok felsorolása).
+
+**Konkrét bizonyíték:** `TAHOT_kivonat.tsv` "Ézs 3:24" szavai (H1314 בֹּשֶׂם
+bosem/balzsamillat, H4716 מַק mak/rothadás) tartalmilag a `Karoli_1908.tsv`
+jelenlegi **3:25**-ös sorával egyeznek ("És lesz a balzsamillat helyén
+büdösség..."), nem a 3:24-essel ("A tükröket, a gyolcsingeket..."). Az eltolódás
+pontos kezdőpontja (melyik konkrét vers az első eltérő) **nincs azonosítva** —
+ehhez a teljes 3:1-25 tartomány vers-soronkénti összevetése szükséges a
+TAHOT-tal és/vagy a MEK-forrással, ami **nem történt meg**.
+
+Új sorként felvéve a `Karoli_adatminosegi_anomaliak.tsv`-be (`Ézs 3:18-24`,
+`ELLENORZESRE_VAR`, `Karakterhossz` = "—", mivel nem karakterhossz-alapú gyanú).
+Önálló, jövőbeli feladatként vizsgálandó.
