@@ -104,6 +104,15 @@ sorokat ebbe a fájlba kell gyűjteni, a nyers angol hivatkozással.
 - A szűrés a FELHASZNÁLÁS (tanulmányírás) idején történjen, nem itt — ez a fájl a
   teljes, szűretlen adatot tartalmazza, hogy semmi ne vesszen el.
 
+## Irányfüggőség — fontos figyelmeztetés
+
+A TSK adat IRÁNYFÜGGŐ: ugyanahhoz a verspárhoz két külön sor tartozhat, eltérő
+Votes-értékkel (pl. `1Móz 1:1 → Ján 1:1` = 304, de `Ján 1:1 → 1Móz 1:1` = 276 —
+ellenőrizve, 2026.08.27). Ez NEM hiba, hanem a TSK saját adatszerkezetének
+sajátossága. Lekérdezéskor MINDIG a vizsgált igehely SAJÁT sorából induljunk
+(nem a célvers oldaláról) — ez konzisztens módszertant ad, még ha a két irány
+száma eltér is.
+
 ## Méret és validáció
 
 | Mérőszám | Érték |

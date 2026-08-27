@@ -1,5 +1,9 @@
 # PaRDeS gyorsreferencia
 
+*v8 — 2026.08.27 (Motívum-felismerés módszertana kiegészítve a 3/b-próba
+tapasztalataival: lexikai/tematikus tengely-függetlenség explicit rögzítve,
+kifejezés-szintű Strong-keresés bevezetve, önigazoló-hajlam figyelmeztetés
+hozzáadva)*
 *v7 — 2026.08.27 (3/b és 3/c önálló, főszintű ponttá alakítva: „Kereszthivatkozási
 réteg" mostantól „4. Kereszthivatkozási réteg", a Rabbinikus/patrisztikus hivatkozás
 5-re változott; a Mélyelemzés szakasz "3/b."-re mutató visszacsatolása "4. pont"-ra
@@ -56,7 +60,14 @@ Mielőtt egy kulcsszóhoz/motívumhoz kereszthivatkozást vagy előfordulást v�
 NÉGY párhuzamos forrásból gyűjtünk jelöltet, mindegyiket forrás-cimkével megjelölve:
 
 - 🔤 [Strong] — teljes körű grep a releváns Strong-számra a TAHOT_kivonat.tsv /
-  TAGNT_kivonat.tsv teljes állományán (LEXIKAI jelölt: ugyanaz a szó)
+  TAGNT_kivonat.tsv teljes állományán (LEXIKAI jelölt: ugyanaz a szó). HA egy
+  vizsgált versben 2+ olyan tartalmi szó van, ami egyedül-egyedül túl gyakori
+  ahhoz, hogy önmagában érdemi szó-szintű találatot adjon (ld. FIGYELEM fent),
+  futtass egy KOMBINÁLT keresést: melyik más versekben fordul elő UGYANAZ a 2+
+  Strong-szám EGYÜTT — ez a kombináció jellemzően sokkal ritkább, mint bármelyik
+  szó önmagában, és visszaadja a lexikai pontosságot a gyakori, de együttesen
+  jellegzetes szókombinációkra (pl. "Isten" + "teremt" együtt egy versben sokkal
+  szűkebb halmaz, mint bármelyik külön-külön).
 - 📖 [Károli-KH] — Karoli_kereszthivatkozasok.tsv lekérdezése (EDITORIÁLIS/TEMATIKUS
   jelölt, szentiras.hu szerkesztői hálózat, nincs erősség-jelzés)
 - 📚 [TSK] — TSK_kereszthivatkozasok.tsv lekérdezése, Votes ≥ 15 szűréssel
@@ -70,6 +81,16 @@ szűréssel):
 - ❌ hamis találat (felszíni/homonim egyezés)
 - 🔶 rokon, de eltérő szerkezetű/kategóriájú
 
+FIGYELEM — a két granularitás nem helyettesíti egymást: a [Strong] forrás
+ritkasági küszöbe (ld. lent) KIZÁRÓLAG a lexikai (szó-szintű) csatornát szűkíti.
+Egy szó kiesése a szó-szintű szűrőn NEM jelenti, hogy nincs erős kapcsolódása —
+csak azt, hogy új LEXIKAI találatot nem fogunk vele találni. A [Károli-KH]/[TSK]
+vers-szintű keresés mindig, minden igehelyre lefut, függetlenül attól, hogy a
+benne szereplő szavak ritkák-e. A leggyakoribb teológiai szavak (Isten, teremt,
+van, mond) jellemzően a LEGTÖBB és LEGERŐSEBB vers-szintű találatot vonzzák,
+éppen központi jelentőségük miatt — ne értelmezd egy szó szó-szintű kiesését úgy,
+mintha az adott fogalom kevésbé volna fontos.
+
 FONTOS: a [Strong]-jelölt "valódi" minősítése LEXIKAI állítást tesz (azonos szó). A
 [Károli-KH] és [TSK] jelöltek "valódi" minősítése CSAK tematikus/teológiai kapcsolatot
 igazol — ha lexikai rokonságot is állítunk, azt KÜLÖN, Strong-számmal kell
@@ -81,6 +102,13 @@ találatok közé.
 
 Csak a minősítés UTÁN történik a végleges kiválasztás (legerősebb 1-2 a bővítettnél,
 teljes lista a tematikusnál).
+
+Módszertani önellenőrzés: ha egy nagyobb mintán (pl. sok tanulmány
+újraellenőrzésekor) a módszer tartósan NULLA vagy közel nulla arányban minősít
+❌/🔶-nak korábban már bekerült idézeteket, ez önmagában is vizsgálandó jel —
+lehet, hogy a korábbi (memória-alapú) választások tényleg jók voltak, de az is
+lehet, hogy a minősítési lépés nem elég szigorú. Ne tekintsd automatikusan
+sikernek, ha a módszer mindig megerősíti a régi döntéseket.
 
 ## Alkalmazás pont — nevesített külső tanítói forrás (opcionális)
 - Alapértelmezés: a 3 kérdésre adott válasz a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből épül
