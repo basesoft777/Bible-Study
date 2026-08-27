@@ -70,7 +70,7 @@ Elbeszélés (narratíva), amely a bűnbeesés (3. fejezet) közvetlen folytatá
 
 **Károli:** „Hogyha jól cselekszel, emelt fővel járhatsz; ha pedig nem jól cselekszel, a bűn az ajtó előtt leselkedik, és reád van vágyódása; de te uralkodjál rajta."
 
-*Megjegyzés a fordítási nehézségről:* a mondat első fele (jó cselekvés esetén „felemelkedés") nyelvtanilag rendkívül tömör és többféleképp fordítható (pl. „nem emeled-e fel [az arcod]?"); a Károli itt már értelmező fordítást ad. A második fél viszont szó szerint egyértelmű, és — mint a 3/b. pontban látható lesz — szándékos visszhangja az 1Móz 3:16-nak.
+*Megjegyzés a fordítási nehézségről:* a mondat első fele (jó cselekvés esetén „felemelkedés") nyelvtanilag rendkívül tömör és többféleképp fordítható (pl. „nem emeled-e fel [az arcod]?"); a Károli itt már értelmező fordítást ad. A második fél viszont szó szerint egyértelmű, és — mint a 4. pontban látható lesz — szándékos visszhangja az 1Móz 3:16-nak.
 
 ---
 
@@ -87,7 +87,7 @@ Kain és Ábel Ádám és Éva első két, névvel megnevezett fia; Kain földm�
 - A „bűn az ajtó előtt leselkedik" (רֹבֵץ) kép egy ragadozó állat lapulására utaló szó — ugyanez a mintázat (a fenyegetés mint leselkedő vad) máshol is megjelenik a Szentírásban (pl. 1Pét 5:8, „ordító oroszlán... szerte jár, keresvén, kit elnyeljen") — pusztán azonosítás szintjén: a bűn és a Sátán mindkét helyen ragadozó-metaforával jelenik meg.
 - A „vágyakozása feléd van, de uralkodj rajta" mondat szó szerint megismétli az 1Móz 3:16 szerkezetét („a te vágyakozásod a férjed felé lesz, ő pedig uralkodik rajtad") — ugyanaz a két szó (תְּשׁוּקָה *tesuká* és מָשַׁל *másal*) tér vissza, most a bűn és Kain viszonyára alkalmazva.
 - Kain városépítése — miután kiűzetett az Éden közelségéből — mintázatilag egy „ember alkotta menedék" motívumot indít el, amely a Bábel tornyában (1Móz 11) tér majd vissza hasonló szerkezettel: az ember saját erejéből teremt biztonságot/nevet magának Isten közvetlen jelenlététől távol.
-- Lámek dala a Kain-epizód „hétszeres" védelmét önkényesen „hetvenhétszeresre" tágítja — ez a szám-eszkaláció maga is mintázat, amelyre a Szentírás később (Máté 18:21-22) tudatosan reflektál, fordított előjellel (lásd 3/b.).
+- Lámek dala a Kain-epizód „hétszeres" védelmét önkényesen „hetvenhétszeresre" tágítja — ez a szám-eszkaláció maga is mintázat, amelyre a Szentírás később (Máté 18:21-22) tudatosan reflektál, fordított előjellel (lásd 4.).
 
 ### Drash (Keresés)
 
@@ -109,7 +109,7 @@ A תְּשׁוּקָה (*tesuká*) szó tudatos megismétlése a 3:16 és a 4:7 
 
 ---
 
-## 3/b. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
+## 4. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
 
 *Az alábbi kereszthivatkozások megmutatják, mely más igehelyek erősítik meg vagy világítják meg az egyes PaRDeS-rétegek meglátásait — irányjelöléssel: ← előkép, ↔ párhuzam, ⇒ beteljesedés.*
 
@@ -149,7 +149,7 @@ A תְּשׁוּקָה (*tesuká*) szó tudatos megismétlése a 3:16 és a 4:7 
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hagyomány:** a Midrás (Bereshit Rabbá 22) és a Targumok (pl. Targum Pszeudo-Jonatán) kibővítik a szöveget egy Kain és Ábel közötti dialógussal a mezőn — ebben Kain vitatja Isten igazságosságát, a jutalom-büntetés rendjét, sőt egyes hagyományok (Targum Neofiti) szerint Kain kifejezetten tagadja az isteni gondviselést, mielőtt megölné testvérét. Ez a hagyomány a gyilkosságot tudatos, teológiai lázadásként, nem indulati tettként állítja be. A rabbinikus hagyomány a „hét nemzedéken át tartó bosszú" (4:15) kérdését is részletesen tárgyalja, összekötve azt a özönvíz előtti nemzedékek (Lámek koráig tartó) kronológiájával.
 
@@ -159,7 +159,7 @@ Mindkét hagyomány releváns forrást kínál, ezért mindkettő szerepel.
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika**
 A szöveg műfaja elbeszélés, amelybe egy rövid, költői betét (Lámek dala, 23-24. vers) ékelődik — ez utóbbi szó szerint, nem prózaian veendő, párhuzamos szerkezetű héber költészet. Irodalmi mintázat: a fejezet szerkesztése tudatos kontrasztban áll a genealógia két ága (Kain-vonal vs. később az 5. fejezet Séth-vonala) között — az „Úr nevének segítségül hívása" (4:26) záró megjegyzés ehhez a kontraszthoz nyújt kulcsot.
@@ -199,7 +199,7 @@ A pásztor (Ábel) és földműves (Kain) foglalkozási ellentét az ókori köz
 - „Szent Szellem"/„spirituális" terminológia: nem volt releváns előfordulás ebben a szakaszban (nincs πνεῦμα-hivatkozás), ezért nem alkalmazandó — jelezve.
 - Igehely-rövidítések szóköz nélkül: ✔
 - ⚠️ csak érdemi vitánál, nevesített képviselőkkel: ✔
-- 3/b formai szabályok (inline elhelyezés, irányjelölés, félkövér közös szó, 🔗 blokk, zárójeles kiejtés, max 1-2/szint, összegző mondat): ✔
+- 4 formai szabályok (inline elhelyezés, irányjelölés, félkövér közös szó, 🔗 blokk, zárójeles kiejtés, max 1-2/szint, összegző mondat): ✔
 - 0. és 1/b. pont aktiválási feltételeinek ellenőrzése: mindkettő indokoltan aktiválva: ✔
 - Konfliktus a szabályok között: nem merült fel.
 

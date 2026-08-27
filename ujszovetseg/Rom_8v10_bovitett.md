@@ -70,7 +70,7 @@ A test jelenlegi halandósága nem végleges állapot, hanem átmeneti feszülts
 
 ---
 
-## 3/b. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
+## 4. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
 
 *Az alábbi kereszthivatkozások megmutatják, mely más igehelyek erősítik meg vagy világítják meg az egyes PaRDeS-rétegek meglátásait — irányjelöléssel: ← előkép, ↔ párhuzam, ⇒ beteljesedés.*
 
@@ -106,7 +106,7 @@ A test jelenlegi halandósága nem végleges állapot, hanem átmeneti feszülts
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hang:**
 Ezékiel száraz csontokról szóló látomása (37. fejezet) körül a Talmudban (Szanhedrin 92b) valódi vita zajlik arról, hogy a látomás szó szerinti (a csontok ténylegesen életre keltek, majd újra meghaltak) vagy csupán jelképes (Izrael nemzeti feltámadásának képe) leírás-e — ez a vita távoli, de figyelemre méltó rokonságban áll azzal a kérdéssel, hogy Pál Róma 8:10-11-ben mennyire szó szerint (testi feltámadás) vagy elsősorban jelen idejű lelki valóságként (a Szellem életet adó jelenléte) érti a "megelevenítést".
@@ -117,7 +117,7 @@ Ezékiel száraz csontokról szóló látomása (37. fejezet) körül a Talmudba
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika** — A μὲν...δὲ ("egyfelől... másfelől") szerkezet retorikai ellentétpár, nem időbeli sorrend; a verset nem szabad úgy olvasni, mintha a test halála és a szellem élete egymást követő szakaszok volnának — egyidejű, feszültségben álló valóságok.
 

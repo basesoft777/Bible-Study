@@ -74,7 +74,7 @@ Az „olyanok lesztek, mint Isten" ígérete ironikus módon már részben igaz 
 
 ---
 
-## 3/b. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
+## 4. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
 
 *Az alábbi kereszthivatkozások megmutatják, mely más igehelyek erősítik meg vagy világítják meg az egyes PaRDeS-rétegek meglátásait — irányjelöléssel: ← előkép, ↔ párhuzam, ⇒ beteljesedés.*
 
@@ -108,7 +108,7 @@ Az „olyanok lesztek, mint Isten" ígérete ironikus módon már részben igaz 
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hang:**
 A Genesis Rabbah (18:6 és környéke) hagyománya szerint a kígyó indítéka féltékenység és vágy volt — a midrás szerint a kígyó megkívánta Évát, és ezért igyekezett Ádámot eltávolítani mellőle a tiltott gyümölccsel; a kígyó büntetése (végtagjainak elvesztése, 3:14) ebben az olvasatban közvetlenül összefügg feltételezett szándékával.
@@ -119,11 +119,11 @@ A Genesis Rabbah (18:6 és környéke) hagyománya szerint a kígyó indítéka 
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika** — A szakaszt elbeszélő (narratív) műfajként kell olvasni, nem elvont filozófiai tézisként; a szerző tudatos irodalmi eszközöket alkalmaz (az *árúm* „ravasz" és az előző vers *arummim* „mezítelen" szavai közti héber szójáték), amelyek fordításban elvesznek, de az értelmezésben számolni kell velük.
 
-**Bibliai nyelvek** — A Septuaginta a *nachás* szót következetesen *ofisz*-nak fordítja, ugyanazzal a görög szóval, amit Pál (2Kor 11:3) és János (Jel 12:9) is használ — ez a lexikai folytonosság erősíti a 3/b. pontban bemutatott kereszthivatkozásokat.
+**Bibliai nyelvek** — A Septuaginta a *nachás* szót következetesen *ofisz*-nak fordítja, ugyanazzal a görög szóval, amit Pál (2Kor 11:3) és János (Jel 12:9) is használ — ez a lexikai folytonosság erősíti a 4. pontban bemutatott kereszthivatkozásokat.
 
 **Történelmi és kulturális kontextus** *(konkrét, célzott)* — Az ókori közel-keleti mitológiában a kígyó gyakran a káosz vagy egy rivális istenség szimbóluma (pl. a mezopotámiai *Adapa*-mítoszban egy kígyó rabolja el az élet növényét). Az 1Mózes szövege tudatosan alárendeli a kígyót: „melyet az Úr Isten **teremtett** vala" — ez a kifejezés kifejezetten leszereli a kígyó bármiféle önálló, istenséggel vetekedő státuszát, és ez a teológiai különbségtétel alakítja alapvetően a vers jelentését.
 

@@ -76,7 +76,7 @@ A *nefes chajjá* — "élő lélek" — kifejezés, amelyet a Septuaginta ψυ�
 
 ---
 
-## 3/b. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
+## 4. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
 
 *Az alábbi kereszthivatkozások megmutatják, mely más igehelyek erősítik meg vagy világítják meg az egyes PaRDeS-rétegek meglátásait — irányjelöléssel: ← előkép, ↔ párhuzam, ⇒ beteljesedés.*
 
@@ -112,7 +112,7 @@ A *nefes chajjá* — "élő lélek" — kifejezés, amelyet a Septuaginta ψυ�
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hang:**
 A *Bereshit Rabbá* (14:8) és a Talmud (Szanhedrin 38a) hagyománya szerint Isten a por anyagát a föld négy sarkából gyűjtötte össze az ember megformálásához — azért, hogy bárhol haljon is meg valaki, "ott van az ő földje", és hogy senki ne mondhassa: "az én földem nemesebb, mint a tiéd." Ez a hagyomány az emberi egyenlőséget és alázatot köti a 2:7 por-motívumához.
@@ -122,7 +122,7 @@ A *Bereshit Rabbá* (14:8) és a Talmud (Szanhedrin 38a) hagyománya szerint Ist
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika** — A "toldot" (תוֹלְדוֹת) egy visszatérő szerkesztői formula a Genezisben (összesen tízszer fordul elő), amely nem egy versengő, ellentmondó teremtéstörténetet vezet be, hanem a már elmondottak közelebbi, antropocentrikus kibontását — a kamera, hogy úgy mondjuk, ráközelít az 1:26-27-ben még csak tömören említett eseményre.
 

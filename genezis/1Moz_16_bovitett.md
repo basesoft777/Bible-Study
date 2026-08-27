@@ -108,7 +108,7 @@ Az "Él Rói" — "a látás/engem-látás Istene" — névadás mélyebb réteg
 
 ---
 
-## 3/b. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
+## 4. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
 
 *Az alábbi kereszthivatkozások megmutatják, mely más igehelyek erősítik meg vagy világítják meg az egyes PaRDeS-rétegek meglátásait — irányjelöléssel: ← előkép, ↔ párhuzam, ⇒ beteljesedés.*
 
@@ -134,17 +134,17 @@ Pál apostol **névvel** nevezi meg Hágárt, és tudatos, allegorikus szembeál
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hagyomány:** a Midrás (Genezis Rabba 45) Hágárt fáraó lányaként azonosítja, akit állítólag maga fáraó adott Szárainak ajándékba, miután látta az egyiptomi udvarban tett csodát (12. fejezet) — ez nem a bibliai szöveg része, hanem kiegészítő hagyomány, amely Hágár társadalmi rangját kívánja hangsúlyozni. A rabbik vitatottan ítélik meg Hágár jellemét: némelyik hagyomány (pl. Rási) Hágárt később megtérőként, sőt magával Keturával (1Móz 25:1) azonosítja, mások szigorúbban ítélik meg gőgösségét úrnőjével szemben.
 
-**Patrisztikus hagyomány:** Órigenész és később Ágoston allegorikus olvasatot alkalmaznak — Ágoston (*De Civitate Dei*, XV. könyv) Hágárt és Izmaelt a "test szerint született" földi városra, Sárát és Izsákot pedig az "ígéret szerint született" mennyei városra vonatkoztatja, tudatosan Pál Galata-levélbeli allegóriájára építve. Ez az olvasat közvetlenül a 3/b pontban idézett Gal 4:24-25 nyomvonalán halad.
+**Patrisztikus hagyomány:** Órigenész és később Ágoston allegorikus olvasatot alkalmaznak — Ágoston (*De Civitate Dei*, XV. könyv) Hágárt és Izmaelt a "test szerint született" földi városra, Sárát és Izsákot pedig az "ígéret szerint született" mennyei városra vonatkoztatja, tudatosan Pál Galata-levélbeli allegóriájára építve. Ez az olvasat közvetlenül a 4 pontban idézett Gal 4:24-25 nyomvonalán halad.
 
 Mindkét hagyomány releváns anyagot kínál, ezért mindkettő szerepel.
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika**
 A szerzői szándék kettős: (1) etiológiai — megmagyarázza az izmaeliták eredetét és jellemzőit Izráel szomszédnépeként; (2) teológiai — bemutatja, hogy Isten hűsége nem függ az emberi cselekedetek tökéletességétől, és hogy Isten gondviselése átível a "hivatalos" szövetségi vonalon (Izsák) kívül eső szereplőkre is. Az irodalmi mintázat (elhívás-jelenet a pusztában) tudatos strukturális előkép a későbbi elhívás-narratívákhoz.

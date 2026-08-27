@@ -1,5 +1,7 @@
 # 5. Mélyelemzés prompt-sablon — két igehely összevetése
 
+*v6 — 2026.08.27 (a bővített sablon 3/b pontjára mutató hivatkozások frissítve a 4.
+pontra, a 3/b önálló, főszintű ponttá alakítása miatt)*
 *v5 — 2026.08.26 (a verdikt-lista és a Strong-ellenőrzés bekezdés összevonva, hogy ne
 kérje kétszer ugyanazt)*
 *v4 — 2026.08.26 (a 2. pont elé felvéve a "Motívum-felismerés módszertana"
@@ -42,10 +44,10 @@ Valódi idézet/tudatos utalás-e (a szerző ismerte és felhasználta a másik 
 **5. Záró mondat — visszacsatolás**
 Érdemes-e ennek fényében frissíteni valamit? Két lehetséges célpont van, más-más triggerfeltétellel:
 
-- **A) A fő tanulmány 3/b. pontja** — akkor frissítendő, ha a mélyelemzés *megváltoztatja vagy pontosítja* a 3/b.-ben már szereplő tömör megállapítást (pl. kiderül, hogy a kapcsolat nem tudatos szerzői utalás, csak fogalmi rokonság — ez pontosítaná az irányjelölést; vagy fordítva, kiderül, hogy a kapcsolat erősebb/konkrétabb, mint amit a tömör mondat sugallt).
+- **A) A fő tanulmány 4. pontja** — akkor frissítendő, ha a mélyelemzés *megváltoztatja vagy pontosítja* a 4. pontban már szereplő tömör megállapítást (pl. kiderül, hogy a kapcsolat nem tudatos szerzői utalás, csak fogalmi rokonság — ez pontosítaná az irányjelölést; vagy fordítva, kiderül, hogy a kapcsolat erősebb/konkrétabb, mint amit a tömör mondat sugallt).
 - **B) A `PaRDeS_motivumok.md` napló** — akkor frissítendő, ha a mélyelemzés *új, önálló motívumot* azonosít, ami eddig nem szerepelt a naplóban, vagy *finomítja* egy már rögzített motívum leírását.
 
-Ha a mélyelemzés csak *megerősíti* a már ismert kapcsolatot, nem hoz új felismerést — ezt is jelezd explicit módon (pl. "A fenti elemzés megerősíti a 3/b. pontban már szereplő megállapítást, nincs szükség módosításra"). Ez ugyanolyan legitim záró megállapítás, mint a frissítés — a lépés nem kényszeríti ki a változtatást, csak tudatosítja a döntést.
+Ha a mélyelemzés csak *megerősíti* a már ismert kapcsolatot, nem hoz új felismerést — ezt is jelezd explicit módon (pl. "A fenti elemzés megerősíti a 4. pontban már szereplő megállapítást, nincs szükség módosításra"). Ez ugyanolyan legitim záró megállapítás, mint a frissítés — a lépés nem kényszeríti ki a változtatást, csak tudatosítja a döntést.
 
 ---
 
@@ -54,4 +56,4 @@ Ha a mélyelemzés csak *megerősíti* a már ismert kapcsolatot, nem hoz új fe
 - Igehely-rövidítések egységesen, szóköz nélkül (pl. „1Thessz 5:23").
 - Idézetekhez a közkincs Károli-fordítás használandó.
 
-**Ha a mélyelemzés önálló, "lezárt" szálként rögzül a `PaRDeS_motivumok.md` naplóban** (nem csak a 3/b. pont pontosítása): a `Lezart_tematikus_tanulmanyok_index.md` fájlba is felveendő, a `4_PaRDeS_tematikus_sablon.md` szerinti tematikus lezárásoktól elkülönítve — más kategória, mivel a mélyelemzés nem a teljes tematikus sablon szerkezetét követi (nincs önálló, motívum-szintű Peshat/Remez/Drash/Sod bontás, sem nevesített tanítói keresés).
+**Ha a mélyelemzés önálló, "lezárt" szálként rögzül a `PaRDeS_motivumok.md` naplóban** (nem csak a 4. pont pontosítása): a `Lezart_tematikus_tanulmanyok_index.md` fájlba is felveendő, a `4_PaRDeS_tematikus_sablon.md` szerinti tematikus lezárásoktól elkülönítve — más kategória, mivel a mélyelemzés nem a teljes tematikus sablon szerkezetét követi (nincs önálló, motívum-szintű Peshat/Remez/Drash/Sod bontás, sem nevesített tanítói keresés).

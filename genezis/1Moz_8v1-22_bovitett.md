@@ -139,7 +139,7 @@ A szakasz két nagy tanítást hordoz. Egyfelől Noé példája — hogy annak e
 
 ### Sod (Titok) — *tömör, fegyelmezett*
 
-A galamb, amely a visszahúzódó vizek fölött repül, és amely — miután nem talál "nyugvóhelyet" (*manoach*, rokon Noé nevével, *Nóach*) — végül olajággal tér vissza, az új élet és a béke jelévé válik anélkül, hogy a szöveg ezt explicit módon kimondaná. Ez a kép a Peshat/Remez rétegekből ténylegesen levezethető: a galamb a vizek fölött, az új teremtés kezdetén jelenik meg — pontosan úgy, ahogyan az 1:2-ben Isten Szelleme a vizek fölött lebegett. Ez a párhuzam (nem szó szerinti, hanem képi) segít megérteni, miért vált a galamb a keresztény hagyományban is a Szentlélek jelévé (lásd 3/b lent).
+A galamb, amely a visszahúzódó vizek fölött repül, és amely — miután nem talál "nyugvóhelyet" (*manoach*, rokon Noé nevével, *Nóach*) — végül olajággal tér vissza, az új élet és a béke jelévé válik anélkül, hogy a szöveg ezt explicit módon kimondaná. Ez a kép a Peshat/Remez rétegekből ténylegesen levezethető: a galamb a vizek fölött, az új teremtés kezdetén jelenik meg — pontosan úgy, ahogyan az 1:2-ben Isten Szelleme a vizek fölött lebegett. Ez a párhuzam (nem szó szerinti, hanem képi) segít megérteni, miért vált a galamb a keresztény hagyományban is a Szentlélek jelévé (lásd 4 lent).
 
 ### ⚠️ Vitatott pontok
 
@@ -149,7 +149,7 @@ A galamb, amely a visszahúzódó vizek fölött repül, és amely — miután n
 
 ---
 
-## 3/b. Kapcsolódó igehelyek
+## 4. Kapcsolódó igehelyek
 
 **Peshat alatt — Isten "megemlékezése" mint szövetségi beavatkozás**
 
@@ -185,13 +185,13 @@ A galamb, amely a visszahúzódó vizek fölött repül, és amely — miután n
 
 > 🔗 **Máté 3:16** — „És Jézus megkeresztelkedvén, azonnal kijöve a vízből; és ímé az egek megnyilatkozának néki, és látá az Istennek Szellemét alájőni mintegy galambot és ő reá szállani."
 
-*Miért kapcsolódik:* **tematikus, nem lexikai kapocs** — mindkét esetben egy galamb jelenik meg a víz fölött/után, új kezdet jeleként; ezt a tipológiát a patrisztikus hagyomány (lásd 3/c) széles körben elfogadta, bár maga a szöveg nem állítja explicit módon a kapcsolatot.
+*Miért kapcsolódik:* **tematikus, nem lexikai kapocs** — mindkét esetben egy galamb jelenik meg a víz fölött/után, új kezdet jeleként; ezt a tipológiát a patrisztikus hagyomány (lásd 5) széles körben elfogadta, bár maga a szöveg nem állítja explicit módon a kapcsolatot.
 
 **Összegzés:** a szakasz kereszthivatkozásai egyetlen nagy ívet rajzolnak ki: Isten megemlékezése elindítja a helyreállítást, amely a teremtés áldásának megismétlésében, az átok módosításában és — a keresztény hagyomány olvasatában — a Szentlélek eljövendő munkájának előképében teljesedik ki.
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hang:** a Bereseit Rabbá (33) egy színes vitát örökít meg a hollóról: a midrás szerint a holló szemrehányást tett Noénak, amiért éppen őt küldte ki egy ilyen veszélyes küldetésre — a Talmud (Szanhedrin 108b) is megőrzi ezt a hagyományt, miszerint a holló később, mint "megvetett" faj, panaszkodott, hogy Noé a saját fajának fennmaradását kockáztatta vele. Ezzel szemben a galambot a rabbinikus hagyomány gyakran Izráel jelképeként (*Kneszet Jiszráél*) azonosítja, az Énekek éneke "én galambom" (2:14) kifejezéssel összefüggésben.
 
@@ -199,7 +199,7 @@ A galamb, amely a visszahúzódó vizek fölött repül, és amely — miután n
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika**
 A fejezet szoros strukturális tükörképe az 1. fejezet teremtés-elbeszélésének (vizek visszahúzódása → száraz föld → élőlények "kibocsátása" a szaporodás-áldással) — több kommentátor (Wenham, Waltke) ezt tudatos irodalmi eszköznek tartja, amely a özönvíz utáni világot explicit "új teremtésként" azonosítja.
@@ -224,7 +224,7 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent (Ararát azonosítása — H
 - ✅ Kiejtés minden görög/héber szónál feltüntetve
 - ✅ ⚠️ pontok nevesített képviselőkkel (Hamilton, Wenham, Kidner, Waltke)
 - ✅ Arányok: Peshat + Drash legrészletesebb, Sod tömör, Alapkérdések rövid
-- ✅ 3/b formátum: inline blokkok, irányjelölés, félkövér kulcsszó, Károli-idézet, kiejtés (a galamb/Mt 3:16 kapcsolat tematikusként jelölve)
+- ✅ 4 formátum: inline blokkok, irányjelölés, félkövér kulcsszó, Károli-idézet, kiejtés (a galamb/Mt 3:16 kapcsolat tematikusként jelölve)
 - ✅ Sod fegyelem: a galamb-értelmezés a Peshat/Remez rétegekből levezetett, nem önkényes allegorizálás
 - ✅ Fordítási szabály: Károli teljes idézetekhez (hosszabb szakaszoknál összevontan, terjedelmi okból)
 

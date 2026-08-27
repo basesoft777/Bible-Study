@@ -77,7 +77,7 @@ A második rész (17-24. vers) teológiailag a fejezet súlypontja. Visszatérő
 
 ### Remez (Utalás)
 
-A szöveg több irányba mutat előre. A חנך (*chanikáv*, "kiképzett emberei", 14:14) szótő ugyanaz, mint a Példabeszédek 22:6 "neveld a gyermeket" (*chanók*) igéjében, és mint a későbbi templomszentelés (*chanukká*) szava — Ábrám háza nemcsak vagyon, hanem **beavatott, felkészített közösség**, amelyet ő maga formált. A "Felséges Isten, ég és föld birtokosa" cím (14:19,22) egyedülálló módon köti össze a kánaáni istentiszteleti nyelvezetet (El Elyon ismert nem-izraeli istennévként is) az igazi, egyetlen Istennel — Ábrám maga azonosítja a kettőt, amikor a 22. versben a JHVH nevet társítja hozzá. Melkizedek király-pap kettős szerepe olyan mintázat, amely a Genezisben egyedülálló, és amelyre a Zsoltárok könyve (110:4) és a Zsidókhoz írt levél (5-7. fejezet) explicit módon visszautal — ez a kapcsolat annyira erős és jól dokumentált, hogy önálló alfejezetet érdemel a 3/b. pontban.
+A szöveg több irányba mutat előre. A חנך (*chanikáv*, "kiképzett emberei", 14:14) szótő ugyanaz, mint a Példabeszédek 22:6 "neveld a gyermeket" (*chanók*) igéjében, és mint a későbbi templomszentelés (*chanukká*) szava — Ábrám háza nemcsak vagyon, hanem **beavatott, felkészített közösség**, amelyet ő maga formált. A "Felséges Isten, ég és föld birtokosa" cím (14:19,22) egyedülálló módon köti össze a kánaáni istentiszteleti nyelvezetet (El Elyon ismert nem-izraeli istennévként is) az igazi, egyetlen Istennel — Ábrám maga azonosítja a kettőt, amikor a 22. versben a JHVH nevet társítja hozzá. Melkizedek király-pap kettős szerepe olyan mintázat, amely a Genezisben egyedülálló, és amelyre a Zsoltárok könyve (110:4) és a Zsidókhoz írt levél (5-7. fejezet) explicit módon visszautal — ez a kapcsolat annyira erős és jól dokumentált, hogy önálló alfejezetet érdemel a 4. pontban.
 
 ### Drash (Keresés)
 
@@ -93,7 +93,7 @@ Ha Melkizedek megjelenése valóban Krisztus-előkép (lásd a ⚠️ pontot len
 
 ---
 
-## 3/b. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
+## 4. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
 
 *Az alábbi kereszthivatkozások megmutatják, mely más igehelyek erősítik meg vagy világítják meg az egyes PaRDeS-rétegek meglátásait — irányjelöléssel: ← előkép, ↔ párhuzam, ⇒ beteljesedés.*
 
@@ -119,7 +119,7 @@ A Zsidókhoz írt levél szerzője pontosan azt a Drash-tanítást bontja ki, am
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hagyomány:** a klasszikus zsidó exegézis (pl. Rási, a Talmud nyomán, *Nedárim* 32b) Melkizedeket gyakran **Sémmel**, Noé fiával azonosítja — ezáltal elkerülve, hogy egy Ábrahám előtti, azonosítatlan igaz pogány pap teológiai problémát okozzon. Ez az azonosítás magyarázatot ad arra is, miért veszíti el (a rabbinikus olvasat szerint) Melkizedek/Sém a papságot: mert az áldás sorrendjében (14:19-20) előbb áldotta Ábrámot, mint Istent — ez tiszteletlenségnek számított, és a papság ezután átszáll Ábrahámra és utódaira.
 
@@ -129,7 +129,7 @@ Mindkét hagyomány releváns és jelen van; nem szükséges egyik hiányát jel
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika**
 A fejezet szerzői szándéka kettős: egyfelől történeti-politikai legitimációt ad Ábrámnak (ő volt az, aki katonai erővel is meg tudta védeni a régiót és a családját), másfelől előkészíti a 15. fejezet szövetségkötését azzal, hogy megmutatja: Ábrám hűsége és istentisztelete már most, a hivatalos szövetség előtt is működik.

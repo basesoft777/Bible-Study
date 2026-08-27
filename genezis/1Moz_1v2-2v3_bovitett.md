@@ -167,7 +167,7 @@ A hetedik napi nyugalom (2:2-3) — amelyet Isten maga tart, nem fáradtságból
 
 ---
 
-## 3/b. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
+## 4. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
 
 *Az alábbi kereszthivatkozások megmutatják, mely más igehelyek erősítik meg vagy világítják meg az egyes PaRDeS-rétegek meglátásait — irányjelöléssel: ← előkép, ↔ párhuzam, ⇒ beteljesedés.*
 
@@ -201,7 +201,7 @@ A hetedik napi nyugalom (2:2-3) — amelyet Isten maga tart, nem fáradtságból
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hangok:**
 - A **Bereshít Rabbá** (8:1-9) kiterjedt midrási hagyományt őriz az 1:26 többes számáról ("alkossunk embert") — a leggyakoribb magyarázat szerint Isten az angyalokkal "tanácskozik" (nem mert szüksége lenne rájuk, hanem alázatból, mintaadásként az emberi közösségi döntéshozatal számára); **Rási** (11. századi bibliakommentátor) ezt a felfogást követi, hangsúlyozva, hogy a többes szám nem politeizmust jelent.
@@ -214,7 +214,7 @@ A hetedik napi nyugalom (2:2-3) — amelyet Isten maga tart, nem fáradtságból
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika** — A szöveg műfaja himnikus-liturgikus elbeszélés, tudatos irodalmi szimmetriával (tér/betöltés párhuzam, refrén-ismétlődések) — ez a felismerés önmagában nem dönti el a "szó szerinti nap vs. irodalmi keret" vitát, de figyelmeztet, hogy a szöveget elsősorban teológiai kijelentésként, nem tudományos jegyzőkönyvként kell olvasni.
 
@@ -227,7 +227,7 @@ A hetedik napi nyugalom (2:2-3) — amelyet Isten maga tart, nem fáradtságból
 **Alkalmazás és tanítványság**
 1. *Mit jelent ez a mai hívő mindennapi életében?* Az emberi méltóság nem teljesítménytől vagy képességtől függ, hanem Isten képére teremtettségből fakad — ez a hívő önértékelésének és mások megbecsülésének alapja egyaránt.
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* A munka és pihenés tudatos, rendszeres ritmusának gyakorlása (a hetedik napi megszentelt nyugalom mintájára), valamint a teremtett világ felelős, gondoskodó "uralása" — nem kizsákmányolása.
-3. *Milyen érzelmi/lelki ellenállás vagy nehézség merülhet fel ezzel kapcsolatban, és hogyan szólítja meg ezt a szöveg?* A teljesítmény-központú kultúra ellenállást szülhet a pihenéssel szemben ("a nyugalom időpocsékolás"); a szöveg válasza, hogy maga Isten is megpihen a befejezett, "felette jó" munka után — a nyugalom nem gyengeség jele, hanem a teremtés rendjének szerves, megszentelt része, amit a Zsid 4:9-11 (3/b. pont) eszkatologikus reménységgé is tágít.
+3. *Milyen érzelmi/lelki ellenállás vagy nehézség merülhet fel ezzel kapcsolatban, és hogyan szólítja meg ezt a szöveg?* A teljesítmény-központú kultúra ellenállást szülhet a pihenéssel szemben ("a nyugalom időpocsékolás"); a szöveg válasza, hogy maga Isten is megpihen a befejezett, "felette jó" munka után — a nyugalom nem gyengeség jele, hanem a teremtés rendjének szerves, megszentelt része, amit a Zsid 4:9-11 (4. pont) eszkatologikus reménységgé is tágít.
 
 **Nevesített tanítói szemszög** *(explicit kérésre, a bővített sablon öt lépéses módszere szerint keresve és ellenőrizve — lásd `2_PaRDeS_bovitett_sablon.md` v7)*
 

@@ -1,5 +1,7 @@
 # 3. PaRDeS research sablon — teljes, részletes verzió
 
+*v2 — 2026.08.27 (a bővített sablon 3/c pontjára mutató hivatkozás frissítve az 5.
+pontra, a 3/c önálló, főszintű ponttá alakítása miatt)*
 *v1 — 2026.07.28*
 
 **Kimenet nyelve:** magyar
@@ -65,7 +67,7 @@ Keresd fel: Wonsuk Ma, Rickie Moore, Lee Roy Martin, John Christopher Thomas.
 - Fókuszált mélyfúrás kifejezetten a pünkösdi/karizmatikus tudományos nézőpontba (nem kiegyensúlyozott áttekintés minden nézetről), de maradjon szellemileg tisztességes ott, ahol a pünkösdi tudósok egymással is vitatkoznak.
 
 **Záró szakasz — „Hogyan építsd be"**
-A kutatás végén egy rövid szakasz jelöli meg, mely PaRDeS-tanulmány pontokhoz (pl. 3/c. Rabbinikus és patrisztikus hangok, ⚠️ vitatott pontok, `PaRDeS_motivumok.md` napló) melyik kutatási elem kapcsolódik közvetlenül.
+A kutatás végén egy rövid szakasz jelöli meg, mely PaRDeS-tanulmány pontokhoz (pl. 5. Rabbinikus és patrisztikus hangok, ⚠️ vitatott pontok, `PaRDeS_motivumok.md` napló) melyik kutatási elem kapcsolódik közvetlenül.
 
 ---
 

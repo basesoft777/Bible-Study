@@ -100,7 +100,7 @@ A torony és a "nevet szerezzünk" törekvés felidézi Kain városépítését 
 
 ### Drash (Keresés)
 
-A Bábel-elbeszélés a normatív tanítás szintjén az emberi egység két típusát állítja szembe: az Isten nélküli, önmagát dicsőítő egységet (amely félelemből — a szétszóródástól való félelemből — fakad, és amelyet Isten éppen ítéletként bont meg), illetve — előrevetítve — az Isten Szelleme által teremtett egységet, amely a nemzetek sokféleségét nem eltörli, hanem megszenteli (lásd 3/b, Pünkösd).
+A Bábel-elbeszélés a normatív tanítás szintjén az emberi egység két típusát állítja szembe: az Isten nélküli, önmagát dicsőítő egységet (amely félelemből — a szétszóródástól való félelemből — fakad, és amelyet Isten éppen ítéletként bont meg), illetve — előrevetítve — az Isten Szelleme által teremtett egységet, amely a nemzetek sokféleségét nem eltörli, hanem megszenteli (lásd 4, Pünkösd).
 
 A 10-11. fejezet együttes szerkezete teológiai ívet rajzol: az egyetemes emberiség (70 nép) önerős lázadása szétszóráshoz vezet, mire a narratíva radikálisan leszűkül egyetlen családra (Sém → Terach → Ábrám) — ez a mag, amelyből majd (12:3) "megáldatnak a föld minden nemzetségei". A partikuláris választás tehát nem az egyetemes ígéret ellentéte, hanem annak eszköze.
 
@@ -121,7 +121,7 @@ A "Bábel" név maga is tanítás: az építők **nevet** akartak maguknak szere
 
 ---
 
-## 3/b. Kapcsolódó igehelyek
+## 4. Kapcsolódó igehelyek
 
 **Remez alatt — Nimród (gibbor) és a vízözön előtti "hatalmasok" (gibborim):**
 
@@ -155,7 +155,7 @@ Ez tematikus, **nem lexikai** párhuzam (a héber *lashon* és a görög *glóss
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hagyomány:** a Talmud (Szanhedrin 109a) és a Midrás Rabbah (Beresit Rabbah 38) Nimródot egyértelműen zsarnokként, sőt az "Isten elleni lázadás" szimbólumaként mutatja be — a hagyomány szerint a torony építői három csoportra oszlottak: voltak, akik az égbe akartak felmenni és ott lakni, voltak, akik bálványimádást akartak folytatni odafent, és voltak, akik hadat akartak viselni Isten ellen. Ez a hagyomány a "hatalmas vadász az Úr előtt" kifejezést következetesen kihívó, nem semleges értelemben olvassa.
 
@@ -175,7 +175,7 @@ Amiben van valós mag: **a Tamuz-kultusz maga valós és bibliailag igazolt** �
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika**
 A szakasz két műfaja (genealógia + narratíva) tudatos szerzői elrendezésben szolgálja a teológiai célt: a 10. fejezet előbb mutatja az *eredményt* (szétszórt népek térképe), a 11:1-9 utólag adja meg az *okot* — ez az elbeszélői inverzió arra készteti az olvasót, hogy a jelenlegi nemzeti sokféleséget ne semleges tényként, hanem isteni ítélet és egyben gondviselés nyomaként lássa.
@@ -210,7 +210,7 @@ Az égetett tégla és szurok-habarcs (11:3) valódi mezopotámiai/sumér épít
 - ✅ Kiejtés minden héber szónál feltüntetve
 - ✅ ⚠️ pontok nevesített képviselőkkel (Wenham, Hamilton, Von Rad, Westermann, Sarna, Walton)
 - ✅ Arányok: Peshat és Drash a legrészletesebb, Sod tömör
-- ✅ 3/b fix cím, iránynyilak, max 1-2 hivatkozás rétegenként, Károli-idézet, 🔗 jelölés, kiemelt kulcsszó, összegző mondat
+- ✅ 4 fix cím, iránynyilak, max 1-2 hivatkozás rétegenként, Károli-idézet, 🔗 jelölés, kiemelt kulcsszó, összegző mondat
 - ✅ "Szent Szellem" és "spirituális" terminológia követve
 - ✅ Igehely-formátum szóköz nélkül
 - ✅ Lexikai vs. tematikus kapcsolatok explicit elhatárolva (gibbor=lexikai; Bábel↔Pünkösd=tematikus)

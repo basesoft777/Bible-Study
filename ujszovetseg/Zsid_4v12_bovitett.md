@@ -72,7 +72,7 @@ Isten élő igéje (*logosz*) nemcsak megítél, hanem — a *logosz* szó tová
 
 ---
 
-## 3/b. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
+## 4. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
 
 *Az alábbi kereszthivatkozások megmutatják, mely más igehelyek erősítik meg vagy világítják meg az egyes PaRDeS-rétegek meglátásait — irányjelöléssel: ← előkép, ↔ párhuzam, ⇒ beteljesedés.*
 
@@ -110,7 +110,7 @@ Isten élő igéje (*logosz*) nemcsak megítél, hanem — a *logosz* szó tová
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hang:**
 A Talmud (Sabbat 88b) egy hagyománya szerint Isten hangja a Sínai-hegyen kimondáskor hetven nyelvre "hasadt szét" — ez a "szétosztó/megosztó" isteni beszéd képzete távoli, de figyelemre méltó rokonságot mutat a Zsid 4:12 "megoszlásig" (μερισμός) kifejezésével, bár nem közvetlen forrás.
@@ -121,7 +121,7 @@ A Talmud (Sabbat 88b) egy hagyománya szerint Isten hangja a Sínai-hegyen kimon
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika** — A szakasz homiletikus figyelmeztetés (nem szisztematikus antropológiai tanítás), amely erőteljes metaforákkal (kard, ízület, velő) él; a képeket nem szabad szó szerinti anatómiai-lélektani rendszerré merevíteni.
 

@@ -100,11 +100,11 @@ Sém és Jáfet magatartása (aktív tisztelet, a szégyen elkerülése) élesen
 
 **A Kánaán-átok történelmi félreértelmezése és visszaélése** — ez az egyik legsúlyosabban félreértelmezett bibliai szakasz a történelemben. A 17-19. századi rabszolgatartó ideológia (különösen az amerikai és dél-afrikai kontextusban) ezt a szöveget használta fel a fekete-afrikai népek rabszolgasorba vetésének állítólagos "isteni igazolására", Khámot fajelméleti alapon a fekete-afrikai népek ősatyjaként azonosítva. **Ez az olvasat exegetikailag és történelmileg megalapozatlan**: a szöveg maga Kánaánt (nem Khámot) nevezi meg, és Kánaán leszármazottai a Szentírásban következetesen a Levante térségének népeivel azonosíthatók (10:15-19: hettiták, jebuzeusok, emoreusok stb.), nem szubszaharai-afrikai népekkel. David M. Goldenberg (*The Curse of Ham: Race and Slavery in Early Judaism, Christianity, and Islam*, 2003) részletesen dokumentálja, hogy ez az azonosítás jóval későbbi, ideológiailag motivált konstrukció, nem a szöveg tartalma vagy az ókori zsidó-keresztény értelmezési hagyomány eredeti olvasata.
 
-**Miért Kánaán kap átkot, és nem közvetlenül Khám?** — ezen belül is genuinely nyitott exegetikai kérdés, függetlenül a fenti félreértelmezéstől: (a) Gordon Wenham és Victor Hamilton szerint az ókori közel-keleti gondolkodásban egy fiú sorsa hordozhatja apja tettének következményét (családi-nemzetségi felelősség elve), és a szöveg funkciója elsősorban etiológiai — magyarázatot ad arra, miért van Izráelnek felhatalmazása Kánaán földjének elfoglalására a honfoglaláskor; ez tehát elsődlegesen földrajzi-politikai, nem faji kérdés; (b) a korai rabbinikus hagyomány (lásd 3/c) felveti, hogy maga Kánaán volt a tényleges elkövető vagy társtettes; (c) mások a naplóban már ⭐ küszöbön túli "bűn következményeinek gyűrűzése" motívum egy újabb, nemzedéken átívelő megnyilvánulásaként értik.
+**Miért Kánaán kap átkot, és nem közvetlenül Khám?** — ezen belül is genuinely nyitott exegetikai kérdés, függetlenül a fenti félreértelmezéstől: (a) Gordon Wenham és Victor Hamilton szerint az ókori közel-keleti gondolkodásban egy fiú sorsa hordozhatja apja tettének következményét (családi-nemzetségi felelősség elve), és a szöveg funkciója elsősorban etiológiai — magyarázatot ad arra, miért van Izráelnek felhatalmazása Kánaán földjének elfoglalására a honfoglaláskor; ez tehát elsődlegesen földrajzi-politikai, nem faji kérdés; (b) a korai rabbinikus hagyomány (lásd 5) felveti, hogy maga Kánaán volt a tényleges elkövető vagy társtettes; (c) mások a naplóban már ⭐ küszöbön túli "bűn következményeinek gyűrűzése" motívum egy újabb, nemzedéken átívelő megnyilvánulásaként értik.
 
 ---
 
-## 3/b. Kapcsolódó igehelyek
+## 4. Kapcsolódó igehelyek
 
 **Remez alatt — "a föld embere" mint Ádám-visszhang**
 
@@ -134,7 +134,7 @@ Sém és Jáfet magatartása (aktív tisztelet, a szégyen elkerülése) élesen
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hang:** a Bereseit Rabbá (36) két fő elképzelést őriz Khám vétkének pontos természetéről, amelyek jóval súlyosabbak, mint a puszta "nézés": egyes hagyományok szerint Khám kasztrálta apját (hogy megakadályozza egy negyedik fiú születését és ezzel saját örökségének csökkenését), mások szerint szexuálisan bántalmazta. Ez magyarázhatja az átok szokatlan súlyosságát egy látszólag enyhe cselekedethez képest. Rási megjegyzi, hogy a hagyomány szerint Kánaán társtettesként vagy elsődleges hírvivőként érintett volt, ami indokolhatja, hogy közvetlenül őt sújtja az átok.
 
@@ -142,7 +142,7 @@ Sém és Jáfet magatartása (aktív tisztelet, a szégyen elkerülése) élesen
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika**
 A szakasz lezárja a Noé-*toledot*-ot (6:9-9:29), és a Sém-Khám-Jáfet hármas bemutatásával közvetlenül előkészíti a 10. fejezet népek táblázatát — a családi epizód (20-27. v.) így nemcsak erkölcsi tanítás, hanem etnológiai-teológiai etiológia is: megalapozza, mely népek állnak majd Izráellel milyen viszonyban.
@@ -168,7 +168,7 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent — kiemelt figyelemmel a sz
 - ✅ Kiejtés minden görög/héber szónál feltüntetve
 - ✅ ⚠️ pontok nevesített képviselőkkel (Wenham, Hamilton, Goldenberg), a történelmi visszaélés explicit megnevezésével és elutasításával
 - ✅ Arányok: Peshat + Drash legrészletesebb, Sod tömör, Alapkérdések rövid
-- ✅ 3/b formátum: inline blokkok, irányjelölés, félkövér kulcsszó, Károli-idézet, kiejtés
+- ✅ 4 formátum: inline blokkok, irányjelölés, félkövér kulcsszó, Károli-idézet, kiejtés
 - ✅ Sod fegyelem: a Jáfet/pogányok kapcsolat tipológiaiként jelölve, nem a szöveg állításaként
 - ✅ Fordítási szabály: Károli teljes idézetekhez
 

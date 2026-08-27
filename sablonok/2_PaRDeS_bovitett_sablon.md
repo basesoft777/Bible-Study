@@ -1,5 +1,7 @@
 # 2. Bővített PaRDeS sablon — teljes, részletes verzió
 
+*v11 — 2026.08.27 (3/b és 3/c önálló, főszintű ponttá alakítva (4. és 5.), a
+Kiegészítő szempontok 6-ra tolódott)*
 *v10 — 2026.08.26 (a 3/b pont „Kereséskor:" mondata lecserélve: a korábbi „célzott,
 konkordancia-jellegű előfordulás-ellenőrzés" helyett explicit hivatkozás a
 `PaRDeS_gyorsreferencia.md` új „Motívum-felismerés módszertana" szakaszára —
@@ -56,7 +58,7 @@ Ha aktiválódik: az események kronológiai sorrendje és/vagy földrajzi helys
 1. **Teológiai súly** — a szó jelentése önmagában állítást hordoz, ami a Peshat-értelmezést érdemben alakítja (pl. egy ige, ami kizárólag isteni alannyal fordul elő)
 2. **Elmosódás a Károli/SzPA fordításban** — két vagy több eredeti szó egyetlen magyar szóvá olvad össze, elrejtve egy különbségtételt (pl. pneuma/pszükhé mindkettő „lélek")
 3. **Motívum-kapcsolódás** — a szó egy, a `PaRDeS_motivumok.md`-ban már nyomon követett motívumhoz köthető
-4. **Kereszthivatkozási potenciál** — a szó ritka, és emiatt a 3/b pontban erős, lexikailag pontos kapcsolódást tehet lehetővé más igehelyekkel
+4. **Kereszthivatkozási potenciál** — a szó ritka, és emiatt a 4. pontban erős, lexikailag pontos kapcsolódást tehet lehetővé más igehelyekkel
 5. **Exegetikai vita forrása** — a szó jelentése önmagában ad okot egy ⚠️ vitatott pontra
 6. **Objektív ritkaság (STEPBible-adat alapján), szófajjal súlyozva.** Ha a szó előfordulás-száma alacsony (tájékoztató küszöb: kevesebb mint 15-20 előfordulás a teljes ÓSZ/ÚSZ-ben), ez önmagában felveti a kiválasztás lehetőségét. A Strong_szotar.tsv szófaj-mezője (most már elérhető) finomíthatja ezt a mérlegelést: egy ritka IGE gyakran nagyobb teológiai súlyt hordoz, mint egy hasonlóan ritka, de leíró jellegű melléknév vagy határozószó — ez nem szigorú szabály, csak további szempont a tartalmi mérlegeléshez, nem helyettesíti azt.
 
@@ -72,19 +74,19 @@ A 6. szempont nem helyettesíti, csak kiegészíti az 1-5. tartalmi mérlegelés
 
 **Drash (Keresés)** *(részletesen kifejtve)* — *„Milyen erkölcsi/teológiai tanítás vagy alkalmazás vezethető le belőle?"* Normatív, tanító réteg.
 
-**Sod (Titok)** *(tömör, fegyelmezett)* — csak a Peshat/Remez/Drash rétegekből ténylegesen levezethető mélyebb igazság, önkényes allegorizálás vagy gematria nélkül. Releváns dokumentált misztikus forrás esetén → a 3/c. ponton keresztül, hivatkozva vonandó be, nem saját spekulációként.
+**Sod (Titok)** *(tömör, fegyelmezett)* — csak a Peshat/Remez/Drash rétegekből ténylegesen levezethető mélyebb igazság, önkényes allegorizálás vagy gematria nélkül. Releváns dokumentált misztikus forrás esetén → az 5. ponton keresztül, hivatkozva vonandó be, nem saját spekulációként.
 
 ⚠️ **Vitatott pontok** — csak ha ténylegesen van érdemi tudományos/teológiai vita, nevesített képviselőkkel bemutatva, nem homályos "egyesek szerint" megfogalmazással.
 
 ---
 
-## 3/b. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
+## 4. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
 
 *Az alábbi kereszthivatkozások megmutatják, mely más igehelyek erősítik meg vagy világítják meg az egyes PaRDeS-rétegek meglátásait — irányjelöléssel: ← előkép, ↔ párhuzam, ⇒ beteljesedés.*
 
 **Kereséskor:** A ritkább/egyedibb kulcsszavakra a „Motívum-felismerés módszertana"
 (`PaRDeS_gyorsreferencia.md`) szerint járj el: mind a négy forrásból gyűjts jelöltet,
-minősítsd tartalmilag, és csak ezután válaszd ki a legerősebb 1-2 kapcsolódást a 3/b
+minősítsd tartalmilag, és csak ezután válaszd ki a legerősebb 1-2 kapcsolódást a 4.
 blokkba. A forrás-cimkét (🔤/📖/📚/🧠) tartsd meg a végleges szövegben is, ha a
 kiválasztott kapcsolat [Claude-tudás] eredetű. (Egy ritka szó néhány előfordulása
 pontosabb és erősebb kapcsolódást adhat, mint egy tartalmilag hasonló, de lexikailag
@@ -107,19 +109,19 @@ független párhuzam.)
 2. Nyelvi/filológiai összevetés, ha közös görög/héber szó van.
 3. Az irodalmi kapcsolat jellege (tudatos utalás vs. független fogalmi rokonság).
 4. Tudományos vélemények nevesített szerzőkkel, ha vitatott.
-5. Záró mondat, hogy érdemes-e frissíteni ennek fényében a fő tanulmány 3/b. pontját vagy a `PaRDeS_motivumok.md` naplót.
+5. Záró mondat, hogy érdemes-e frissíteni ennek fényében a fő tanulmány 4. pontját vagy a `PaRDeS_motivumok.md` naplót.
 
 **STEPBible-ellenőrzés:** ha közös görög/héber szó feltételezhető két igehely között, ellenőrizd a STEPBible TAGNT/TAHOT adatbázisban (`konkordancia/TAGNT_kivonat.tsv`, `konkordancia/TAHOT_kivonat.tsv`) mindkét igehely releváns szavának Strong-számát és szótövét, és a nyers eredményt (Strong-szám, szótő, morfológiai alak) építsd be az összevetésbe — ne csak háttér-ellenőrzésként használd. Ha a Strong-szám azonos, de a szótő eltér, vagy fordítva, ezt a tényt explicit rögzítsd a kapcsolódás leírásában.
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 A Remez/Sod rétegekhez: korai zsidó (Midrás, Talmud) és korai egyházatyai értelmezések bemutatása a modern kommentárok mellett. Ha van releváns rabbinikus **és** patrisztikus anyag is, mindkettő szerepeljen; ha csak az egyik hagyományban van releváns forrás, jelezd ezt explicit módon (pl. „rabbinikus párhuzam nem azonosítható, mivel..."), hogy tudatos döntésnek tűnjön, ne hiányosságnak.
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika** — mint az alap sablonban: szerzői szándék, műfaj, irodalmi mintázatok, értelmezési elvek.
 

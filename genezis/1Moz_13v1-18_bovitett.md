@@ -77,7 +77,7 @@ Isten csak **ezután**, "minekutána elvált tőle Lót" (13:14) szól újra Áb
 
 ### Remez (Utalás)
 
-A fejezet két, egymással szembeállított **"szemek felemelése"**-jelenetet tartalmaz: Lóté (13:10) és Ábrámé (13:14) — ugyanaz a héber szókapcsolat (*nasá éná(j)... vajjár/ú-re'é*), de gyökeresen más irányultsággal: Lót saját érdeke szerint választ, Ábrám Isten szavára figyelve kap látást. Ez a kifejezés a Genezisben visszatérő elbeszélő minta — később ugyanez a szókapcsolat jelenik meg Ábrahámnál a Mórián (22:4, meglátja a helyet, ahova Isten küldte) és Rebekánál (24:64, meglátja a jövendő férjét). *(Ez a megfigyelés jelen tanulmányban csak felvetésként, következtetés nélkül szerepel — az igazi kidolgozás a Drash rétegben és a 3/b pontban történik.)*
+A fejezet két, egymással szembeállított **"szemek felemelése"**-jelenetet tartalmaz: Lóté (13:10) és Ábrámé (13:14) — ugyanaz a héber szókapcsolat (*nasá éná(j)... vajjár/ú-re'é*), de gyökeresen más irányultsággal: Lót saját érdeke szerint választ, Ábrám Isten szavára figyelve kap látást. Ez a kifejezés a Genezisben visszatérő elbeszélő minta — később ugyanez a szókapcsolat jelenik meg Ábrahámnál a Mórián (22:4, meglátja a helyet, ahova Isten küldte) és Rebekánál (24:64, meglátja a jövendő férjét). *(Ez a megfigyelés jelen tanulmányban csak felvetésként, következtetés nélkül szerepel — az igazi kidolgozás a Drash rétegben és a 4 pontban történik.)*
 
 A **"segítségül hívta az Úr nevét"** kifejezés (13:4) szó szerint megismétli a 4:26-ban és a 12:8-ban már látott formulát — harmadik előfordulás, ugyanazon a helyen, ahol Ábrám másodszor is (12:8-ban) végezte ugyanezt.
 
@@ -103,7 +103,7 @@ A "szemek felemelése" kettős iránya — Lót önmagára néző vágyakozása 
 
 ---
 
-## 3/b. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
+## 4. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
 
 **Segítségül hívta az Úr nevét (קָרָא בְשֵׁם יְהוָה)** — ⭐ **ez a harmadik előfordulás, elérte az emlékeztető küszöböt.**
 
@@ -121,7 +121,7 @@ Ugyanaz a szókapcsolat, amellyel Lót a Jordán-síkságot választotta (13:10)
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hang:** a Bereshit Rabbá (41-42. fejezet) élesen kritikus Lóttal szemben — a midrás szerint Lót választása nem véletlen, hanem tudatos erkölcsi döntés: azért választja a termékeny, de erkölcsileg romlott vidéket, mert maga is hajlamos volt a paráznaságra és bálványimádásra, és keresi a hozzá hasonlók társaságát. A hagyomány Ábrám nagylelkűségét ("Is nem az egész föld előtted van-é?") a *tzaddik* (igaz) jellemzőjeként emeli ki: nem ragaszkodik a jogához, mert bízik Isten gondviselésében.
 
@@ -129,7 +129,7 @@ Ugyanaz a szókapcsolat, amellyel Lót a Jordán-síkságot választotta (13:10)
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika** — a fejezet szerzői szándéka nem elsősorban erkölcsi példabeszéd (bár azzá is válik), hanem **etiológiai**: megmagyarázza, miért lakik Izrael Kánaánban és nem a Jordán-síkságon, és miért lett Sodoma népe Izrael történelmi ellenségének/elrettentő példájának szimbóluma.
 
@@ -160,7 +160,7 @@ Ugyanaz a szókapcsolat, amellyel Lót a Jordán-síkságot választotta (13:10)
 
 - Kiejtés minden héber szónál ✔
 - ⚠️ csak érdemi, nevesített vitáknál ✔ (Lót megítélése, ígéret hatóköre)
-- 3/b formátum és fejléc ✔, max 1-2 legerősebb kapcsolat szintenként ✔
+- 4 formátum és fejléc ✔, max 1-2 legerősebb kapcsolat szintenként ✔
 - Motívum-napló frissítése **még nem történt meg** — az alábbi javaslat vár jóváhagyásra
 - Sod-fegyelem: nincs önkényes allegorizálás, a mélyebb réteg a Peshat/Remez/Drash-ból vezethető le ✔
 - Fordítási szabály: Károli teljes versekhez, rövid idézetek máshonnan ✔

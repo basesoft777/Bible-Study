@@ -126,7 +126,7 @@ A szakasz alapvető tanítása, hogy **a bűn következménye nem elszigetelt, h
 
 ### Sod (Titok) *(tömör, fegyelmezett)*
 
-Két, kizárólag a szövegből levezethető mélyebb mozzanat érdemel említést. Először: a **bőr ruha készítéséhez állat halála szükséges** — a szöveg nem mondja ki explicit módon ("vér", "áldozat"), de logikailag ez az első eset a Szentírásban, ahol egy élőlény halála fedezi be egy másik szégyenét/mezítelenségét, ellentétben az ember saját, élettelen növényi eszközével (fügefalevél). Ez a mozzanat — fegyelmezetten, túlinterpretálás nélkül kezelve — **irányba mutat**, nem állítást tesz: később a Szentírás explicit módon kifejti a vér/áldozat általi fedezést (3Móz 17:11), de itt még csak a mintázat csírája van jelen. Másodszor: a v.15 "asszony magva" ígérete — amely egyetlen, konkrét utódra mutat egy kollektív fogalom (mag) helyett — a végső, teljes helyreállítás felé mutat, amit a szöveg maga még nem nevez meg, de amire a kánon egésze (lásd 3/b.) egyre világosabban rámutat.
+Két, kizárólag a szövegből levezethető mélyebb mozzanat érdemel említést. Először: a **bőr ruha készítéséhez állat halála szükséges** — a szöveg nem mondja ki explicit módon ("vér", "áldozat"), de logikailag ez az első eset a Szentírásban, ahol egy élőlény halála fedezi be egy másik szégyenét/mezítelenségét, ellentétben az ember saját, élettelen növényi eszközével (fügefalevél). Ez a mozzanat — fegyelmezetten, túlinterpretálás nélkül kezelve — **irányba mutat**, nem állítást tesz: később a Szentírás explicit módon kifejti a vér/áldozat általi fedezést (3Móz 17:11), de itt még csak a mintázat csírája van jelen. Másodszor: a v.15 "asszony magva" ígérete — amely egyetlen, konkrét utódra mutat egy kollektív fogalom (mag) helyett — a végső, teljes helyreállítás felé mutat, amit a szöveg maga még nem nevez meg, de amire a kánon egésze (lásd 4.) egyre világosabban rámutat.
 
 ### ⚠️ Vitatott pontok
 
@@ -134,11 +134,11 @@ Két, kizárólag a szövegből levezethető mélyebb mozzanat érdemel említé
 
 **2. Az 1Móz 2-3 mint "szövetségkötés" (Ádámmal) — Hós 6:7 kapcsán.** A Genezis 2-3 szövege sehol nem nevezi "szövetségnek" (*berít*) az Isten és Ádám közti parancs-engedelmesség-szankció viszonyt — ez a szó először csak 1Móz 6:18-ban, Noéval kapcsolatban jelenik meg. A református rendszeres teológia hagyománya (pl. **O. Palmer Robertson**, *The Christ of the Covenants*; **William Dumbrell**, *Covenant and Creation*; **Meredith G. Kline**) mégis "cselekedeti szövetségként" (*covenant of works*) írja le ezt a viszonyt, elsősorban **Hós 6:7** alapján ("mint Ádám/mint emberek, [úgy] szegték meg a szövetséget" — a héber כְּאָדָם, *ke-Ádám* kifejezés személynévi vagy köznévi/helynévi olvasata vitatott). A személynévi olvasat mellett szól a nyelvi következetesség **Jób 31:33**-mal (ugyanaz a ritka szerkezet, ahol a fordítás hagyományosan "mint Ádám"), valamint közvetve **Zsolt 82:7**-tel (a szerkezet harmadik, szintén vitatott előfordulása) és a Hóseás könyvön belüli **Hós 8:1** szövetségszegés-terminológiával. Az Ószövetség után **Róm 5:12-14** newszövetségi visszhangként szokott szerepelni ebben az érvelésben (Ádám mint *tipos*, reprezentatív fej, akinek engedetlensége mindenkire kihat). Az ellenkező oldalon **Francis I. Andersen és David Noel Freedman** (Anchor Bible, *Hosea*) és korábban **Hans Walter Wolff** komolyan mérlegelik a köznévi vagy helynévi (Ádám városa, Józs 3:16) olvasatot, és óvatosságra intenek: mivel a Genezis-szöveg maga sosem nevezi szövetségnek ezt a viszonyt, az "Ádámi szövetség" fogalma könnyen **utólagos rendszerteológiai visszavetítés** lehet. A kérdés tehát nyitott, és alapvetően a Hós 6:7 szövegkritikai olvasatán múlik.
 
-**3. A v.15 "protoevangélium" messiási olvasata.** A hagyományos keresztény olvasat (már **Iréneusz**-tól kezdve, *recapitulatio*-teológiájában) az "asszony magvát" egyénileg, messiási utalásként érti — Krisztus mint az, aki végérvényesen legyőzi a kígyót/Sátánt. A történeti-kritikai hagyomány (pl. **John Skinner**, korábbi ICC-kommentár) inkább etiológiai, kollektív olvasatot javasol: a szöveg elsődlegesen azt magyarázza, miért ellenségek a kígyók és az emberek általában, egyéni messiási utódra való konkrét utalás nélkül. **Walter Kaiser** és **U. Cassuto** középutas/védő pozíciót képviselnek: a *zera* (mag) egyes szám alakja és a kánon egészének visszatérő olvasata (lásd 3/b.) alátámasztja, hogy legalább **sensus plenior** (a szerző szándékánál mélyebb, később kibontakozó isteni értelem) szinten jogos a messiási olvasat, még ha az eredeti szerzői szándék elsődlegesen etiológiai volt is.
+**3. A v.15 "protoevangélium" messiási olvasata.** A hagyományos keresztény olvasat (már **Iréneusz**-tól kezdve, *recapitulatio*-teológiájában) az "asszony magvát" egyénileg, messiási utalásként érti — Krisztus mint az, aki végérvényesen legyőzi a kígyót/Sátánt. A történeti-kritikai hagyomány (pl. **John Skinner**, korábbi ICC-kommentár) inkább etiológiai, kollektív olvasatot javasol: a szöveg elsődlegesen azt magyarázza, miért ellenségek a kígyók és az emberek általában, egyéni messiási utódra való konkrét utalás nélkül. **Walter Kaiser** és **U. Cassuto** középutas/védő pozíciót képviselnek: a *zera* (mag) egyes szám alakja és a kánon egészének visszatérő olvasata (lásd 4.) alátámasztja, hogy legalább **sensus plenior** (a szerző szándékánál mélyebb, később kibontakozó isteni értelem) szinten jogos a messiási olvasat, még ha az eredeti szerzői szándék elsődlegesen etiológiai volt is.
 
 ---
 
-## 3/b. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
+## 4. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
 
 **Kereséskor** a fenti táblázatok ritkább szavai közül (*afar*, *ejvah*+*zera*+*shuf* protoevangélium-kombináció, *keruvim*+*lahat*+*cherev*) végeztem célzott előfordulás-ellenőrzést, nem csak az ismert asszociatív párhuzamokból dolgoztam.
 
@@ -176,7 +176,7 @@ Ez a kérub/kárpit-kapcsolat kivételesen gazdag, és a "munka mint szentélyi 
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hang:** a Bereskít Rabbá (klasszikus midrás-gyűjtemény) egy híres szójátékot őriz a v.21 "bőr ruhák" (*kotnot ohr*, כָּתְנוֹת עוֹר) kifejezéséhez: néhány rabbi olvasata szerint az eredeti, bűnbeesés előtti állapotban az emberek "fény-ruhákat" (*kotnot **or***, כָּתְנוֹת **אוֹר**, a két héber szó — bőr és fény — csak egyetlen néma betűben, az *ajin*/*álef* különbségében tér el) viseltek, és ez most bőr-ruhává "sűrűsödött" — vagyis a rabbinikus hagyomány is érzékelte az elveszített dicsőség és a most szükségessé vált fedezet közti kontrasztot, még ha ez a konkrét szójáték nyelvi véletlenen (homofónia) is alapul, nem etimológiai rokonságon.
 
@@ -184,7 +184,7 @@ Ez a kérub/kárpit-kapcsolat kivételesen gazdag, és a "munka mint szentélyi 
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika**
 Az elbeszélés műfaja történeti-teológiai etiológia: nemcsak megtörtént eseményt rögzít, hanem választ ad az emberi tapasztalat alapkérdéseire (miért fájdalmas a szülés, miért fáradságos a munka, miért halunk meg). Fontos hermeneutikai elv, hogy az átok-formulák (v.14, 16, 17) nem önkényes büntetések, hanem **a bűn természetes, logikus következményei** a teremtett rend felbomlásaként — a föld nem azért átkozott, mert Isten bosszút áll, hanem mert az ember és a föld kapcsolata (2:15, "művelni és őrizni") megtört.
@@ -230,7 +230,7 @@ Célzott keresés nem talált elsődleges Capps-forrást, amely kifejezetten a p
 - Károli-fordítás teljes versekhez — betartva.
 
 ## Önellenőrzés
-Kiejtés ✓ | ⚠️ nevesített képviselőkkel ✓ | Peshat+Drash legrészletesebb, Sod tömör ✓ | 3/b. formátum (fejléc, irányjelölés, 🔗-blokk, félkövér kulcsszó, összegző mondat, ismétlődő motívum jelzése) ✓ | 3/c. mindkét hagyomány ✓ | terminológia ✓ | motívum-napló frissítése → következik alább.
+Kiejtés ✓ | ⚠️ nevesített képviselőkkel ✓ | Peshat+Drash legrészletesebb, Sod tömör ✓ | 4. formátum (fejléc, irányjelölés, 🔗-blokk, félkövér kulcsszó, összegző mondat, ismétlődő motívum jelzése) ✓ | 5. mindkét hagyomány ✓ | terminológia ✓ | motívum-napló frissítése → következik alább.
 
 ---
 

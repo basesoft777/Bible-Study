@@ -153,7 +153,7 @@ A *tevá* szó egyedülálló, kettős előfordulása (Noé bárkája / Mózes k
 
 ---
 
-## 3/b. Kapcsolódó igehelyek
+## 4. Kapcsolódó igehelyek
 
 **Remez alatt — az "Istennel járás" (hithalech) folytatása Énokhtól**
 
@@ -183,7 +183,7 @@ A *tevá* szó egyedülálló, kettős előfordulása (Noé bárkája / Mózes k
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hang:** a תָּמִים... בְּדֹרֹתָיו ("feddhetetlen... nemzedékei között") kifejezés klasszikus vitát váltott ki: a Talmud (Szanhedrin 108a) szerint Rés Lákis dicséretnek értelmezi ("még romlott nemzedékben is igaz volt — mennyivel inkább az lett volna egy igaz nemzedékben!"), míg Rabbi Jóchánán relativizálja a dicséretet ("csak a saját nemzedékéhez képest volt igaz — egy Ábrahám korabeli nemzedékben nem tűnt volna ki"). Ez a vita jól mutatja, hogy már a klasszikus zsidó hagyomány is érzékelte a kifejezés kettős olvashatóságát.
 
@@ -191,7 +191,7 @@ A *tevá* szó egyedülálló, kettős előfordulása (Noé bárkája / Mózes k
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika**
 A *toledot*-formula (itt: „Noé nemzetségei") strukturális jelölő, amely az egész Genezis könyvet tíz nagy egységre tagolja (2:4; 5:1; 6:9; 10:1; 11:10; 11:27; 25:12; 25:19; 36:1; 37:2) — ennek felismerése segít elhelyezni a szakaszt a könyv nagyobb architektúrájában, nem csupán önmagában álló elbeszélésként.
@@ -216,7 +216,7 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent (gófer-fa azonosítása; El
 - ✅ Kiejtés minden görög/héber szónál feltüntetve
 - ✅ ⚠️ pontok nevesített képviselőkkel (Wenham, Hamilton, Cassuto, Wellhausen-hagyomány)
 - ✅ Arányok: Peshat + Drash legrészletesebb, Sod tömör, Alapkérdések rövid
-- ✅ 3/b formátum: inline blokkok, irányjelölés, félkövér kulcsszó, Károli-idézet, kiejtés
+- ✅ 4 formátum: inline blokkok, irányjelölés, félkövér kulcsszó, Károli-idézet, kiejtés
 - ✅ Sod fegyelem: a *tevá*-párhuzam és az 1Pét 3:20-21 kapcsolat a szövegből és az Újszövetség saját értelmezéséből levezetett, nem önkényes
 - ✅ Fordítási szabály: Károli teljes idézetekhez
 

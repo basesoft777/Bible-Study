@@ -167,7 +167,7 @@ A tiszta/tisztátalan állatok megkülönböztetése (2-3. v.) generációkkal a
 
 ---
 
-## 3/b. Kapcsolódó igehelyek
+## 4. Kapcsolódó igehelyek
 
 **Remez alatt — a *tehóm* (mélység) mint a teremtés visszafordítása**
 
@@ -197,7 +197,7 @@ A tiszta/tisztátalan állatok megkülönböztetése (2-3. v.) generációkkal a
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hang:** a Bereseit Rabbá (32-33) klasszikus hagyománya szerint a hét napos haladék (4, 10. v.) Metusélah gyászára utal, akinek halála a rabbinikus kronológia szerint közvetlenül az özönvíz előtt történt — Isten még egy hét gyászidőt engedett a világnak, mielőtt az ítélet lesújtott. Rási (Rashi) a 13. vers "ugyanezen a napon" (בְּעֶצֶם הַיּוֹם הַזֶּה) kifejezéséhez fűzött megjegyzésében kiemeli: Noé *nyílt nappal*, a kortársai gúnyolódása közepette szállt be a bárkába, nem titokban éjszaka — ez a részlet Noé bátor, nyilvános hitét hangsúlyozza.
 
@@ -205,7 +205,7 @@ A tiszta/tisztátalan állatok megkülönböztetése (2-3. v.) generációkkal a
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika**
 A 11. vers az első pontos, teljes naptári dátum (év-hónap-nap) a Szentírásban — ez stilisztikai váltást jelez: a szöveg innentől kezdve "történetírói" precizitással kezeli az eseményeket, szemben az 1-6. fejezetek inkább tematikus-teológiai időkezelésével.
@@ -230,7 +230,7 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent (az özönvíz kiterjedése 
 - ✅ Kiejtés minden görög/héber szónál feltüntetve
 - ✅ ⚠️ pontok nevesített képviselőkkel (Whitcomb & Morris, Walton, Wenham)
 - ✅ Arányok: Peshat + Drash legrészletesebb, Sod tömör, Alapkérdések rövid
-- ✅ 3/b formátum: inline blokkok, irányjelölés, félkövér kulcsszó, Károli-idézet, kiejtés (a tematikus, nem lexikai kapocs explicit jelölve)
+- ✅ 4 formátum: inline blokkok, irányjelölés, félkövér kulcsszó, Károli-idézet, kiejtés (a tematikus, nem lexikai kapocs explicit jelölve)
 - ✅ Sod fegyelem: a bezárt ajtó/Egyiptom párhuzam tematikusként jelölve, nem lexikai kényszerkapcsolatként
 - ✅ Fordítási szabály: Károli teljes idézetekhez (a hosszabb, ismétlődő szakaszoknál összevontan, terjedelmi okból, jelezve)
 

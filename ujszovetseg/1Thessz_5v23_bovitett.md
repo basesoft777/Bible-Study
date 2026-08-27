@@ -70,7 +70,7 @@ Isten megszentelő munkája átfogja az ember teljes valóját — a **test** (*
 
 ---
 
-## 3/b. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
+## 4. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
 
 *Az alábbi kereszthivatkozások megmutatják, mely más igehelyek erősítik meg vagy világítják meg az egyes PaRDeS-rétegek meglátásait — irányjelöléssel: ← előkép, ↔ párhuzam, ⇒ beteljesedés.*
 
@@ -108,7 +108,7 @@ Isten megszentelő munkája átfogja az ember teljes valóját — a **test** (*
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Patrisztikus hangok:**
 - **Órigenész**, **Nüsszai Gergely**, **Kaiszareiai Baszileiosz** — a hármas (trichotóm) emberi természet bizonyítékának tekintették e verset.
@@ -120,7 +120,7 @@ A középkori kabbalisztikus *nefes–ruach–nesamá* hármas lélek-felfogás 
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika** — Óvatosan kell bánni ezzel a verssel mint dogmatikai bizonyítékkal; Pál szándéka pásztori-doxológiai, nem antropológiai rendszeralkotás.
 

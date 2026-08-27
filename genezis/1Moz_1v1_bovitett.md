@@ -73,7 +73,7 @@ A "kezdetben" szó nemcsak időbeli kezdőpontot jelöl, hanem magának az időn
 
 ---
 
-## 3/b. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
+## 4. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
 
 *Az alábbi kereszthivatkozások megmutatják, mely más igehelyek erősítik meg vagy világítják meg az egyes PaRDeS-rétegek meglátásait — irányjelöléssel: ← előkép, ↔ párhuzam, ⇒ beteljesedés.*
 
@@ -107,7 +107,7 @@ A "kezdetben" szó nemcsak időbeli kezdőpontot jelöl, hanem magának az időn
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hangok:**
 - **Rási** (Rabbi Selomo Jicháki, 11. század) — a fent tárgyalt nyelvtani érvelés mellett a *Bereshit Rabbá* (1:1) híres midrását is idézi: Isten a Tórába "nézett", mint egy építész a tervrajzba, és aszerint teremtette a világot — a Tóra mint a teremtés előzetes "mintája".
@@ -119,7 +119,7 @@ A "kezdetben" szó nemcsak időbeli kezdőpontot jelöl, hanem magának az időn
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika** — A Genezis 1 műfaja elsősorban nem tudományos-történeti leírás, hanem teológiai hitvallás/polémia a korabeli politeista teremtésmítoszokkal szemben; a hét napos, ismétlődő szerkezet (liturgikus ritmus, refrén: "és látá Isten, hogy jó") irodalmi-teológiai keretezés, nem lineáris naplófeljegyzés.
 

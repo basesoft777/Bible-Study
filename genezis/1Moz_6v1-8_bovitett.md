@@ -129,7 +129,7 @@ A Peshat/Remez rétegekből ténylegesen levezethető mélység: Isten "bánkód
 
 ---
 
-## 3/b. Kapcsolódó igehelyek
+## 4. Kapcsolódó igehelyek
 
 **Remez alatt — a *jetzer* (formálás/hajlam) visszhangja**
 
@@ -159,7 +159,7 @@ A Peshat/Remez rétegekből ténylegesen levezethető mélység: Isten "bánkód
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hang:** a *Bereseit Rabbá* 26:5 és a korai Targumok (Targum Onkelosz, Targum Pszeudo-Jonatán) jelentős feszültséget mutatnak a "bené ha'Elohim" kifejezés kezelésében — Targum Onkelosz kifejezetten **elkerüli** az angyali olvasatot, és "a nemesek/főemberek fiait" (*bnei ravrevaya*) érti alatta, feltehetően polemikus szándékkal a kortárs (Második Templom utáni, illetve keresztény) angyal-olvasattal szemben. Ezzel párhuzamosan a Talmud (b. Jóma 67b) és a korábbi *1Énokh*-hagyomány még ismeri és megőrzi az "Őrzők" (*Watchers*) angyali értelmezését, jelezve, hogy a rabbinikus konszenzus idővel tudatosan tolódott el a Séthita/dinasztikus irányba.
 
@@ -167,7 +167,7 @@ A Peshat/Remez rétegekből ténylegesen levezethető mélység: Isten "bánkód
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika**
 A szakasz irodalmi funkciója átmeneti/hídszerű: lezárja az 5. fejezet genealógiai ívét, és megnyitja a 6:9-től induló, formálisan is jelzett új *toledot*-egységet. A "látta... hogy jó" (1:31) és a "látta... hogy gonosz" (6:5) tudatos, tükrös ellentétpárt alkot — az elbeszélő retorikailag jelzi, hogy a teremtés eredeti "jóságától" mennyire eltávolodott a világ.
@@ -193,7 +193,7 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent — három önálló vitatot
 - ✅ Kiejtés minden görög/héber szónál feltüntetve
 - ✅ ⚠️ pontok nevesített képviselőkkel (Wenham, Hamilton, Kidner, Augustinus, Aranyszájú Szent János, Cassuto, Waltke)
 - ✅ Arányok: Peshat + Drash legrészletesebb, Sod tömör, Alapkérdések rövid
-- ✅ 3/b formátum: inline blokkok, irányjelölés, félkövér kulcsszó, Károli-idézet, kiejtés
+- ✅ 4 formátum: inline blokkok, irányjelölés, félkövér kulcsszó, Károli-idézet, kiejtés
 - ✅ Sod fegyelem: csak a rétegekből levezetett állítás, nincs önkényes allegorizálás
 - ✅ „Szent Szellem"/„spirituális" terminológia nem volt releváns ebben a szakaszban (nincs pneuma/pszükhé előfordulás)
 - ✅ Fordítási szabály: Károli teljes idézetekhez

@@ -115,7 +115,7 @@ A halál refrénjének tíz ismétlődése és az egyetlen kivétel (Énokh) egy
 
 ---
 
-## 3/b. Kapcsolódó igehelyek
+## 4. Kapcsolódó igehelyek
 
 **Peshat/Remez szinten — Isten képmása (celem/demut)**
 
@@ -141,7 +141,7 @@ A halál refrénjének tíz ismétlődése és az egyetlen kivétel (Énokh) egy
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hagyomány:** Énokh alakja már a Második Templom korában rendkívül termékeny spekuláció tárgya volt (1Hénokh apokrif irat, Jubileumok könyve), amelyek Énokhot mennyei titkok látnokává, az angyalokkal társalgó alakká teszik. A klasszikus rabbinikus irodalom (Genesis Rabbah 25:1) ezzel szemben ambivalensebb: egyes hagyományok szerint Énokh igaz ember volt, akit Isten korán „elvett", nehogy elbukjon; mások (pl. bizonyos midrási hangok) gyanakvóbbak, és Énokh igazságát ingatagnak, feltételesnek látják — a „הִתְהַלֵּךְ" (*hithalek*, tartós/ismétlődő járás) ige rabbinikus értelmezése szerint ez különbözik attól, ahogy Ábrahámról mondja a szöveg később („járj előttem", 1Móz 17:1, egyenes, nem reflexív igealak) — a nyelvi különbségre több midrás is épít, Énokh „state-of-being" jellegű, folyamatos Isten-közelségét emelve ki.
 
@@ -151,7 +151,7 @@ Mindkét hagyományban (rabbinikus és patrisztikus) releváns anyag található
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika**
 A genealógia műfaji szabálya szerint a formaszerű ismétlés (X élt... nemze... élt még... és meghala) nem üres retorikai töltelék, hanem szándékos irodalmi eszköz — a szöveg maga „tanítja" az olvasót a halál egyetemességére a formula monoton ismétlésével. A kivétel (Énokh) formai megtörése ezért különös súlyt kap: az irodalmi mintázat megszakítása maga is jelentéshordozó.
@@ -186,8 +186,8 @@ Lásd a 3. pont ⚠️ alpontjait.
 - Kiejtés minden görög/héber szónál: ✔️
 - ⚠️ nevesített képviselőkkel: ✔️ (Kidner, Wenham, Morris, Westermann, Hamilton)
 - Arányok (Peshat+Drash legrészletesebb, Sod tömör): ✔️
-- 3/b formátum (inline, blokk, 🔗, Károli-idézet, zárójeles kulcsszó): ✔️
-- 3/c mindkét hagyomány (rabbinikus + patrisztikus): ✔️
+- 4 formátum (inline, blokk, 🔗, Károli-idézet, zárójeles kulcsszó): ✔️
+- 5 mindkét hagyomány (rabbinikus + patrisztikus): ✔️
 - Sod fegyelmezettség (csak P/R/D-ből levezetve): ✔️
 - Terminológia („Szent Szellem" — itt nem volt releváns előfordulás; „spirituális" a Sodnál): ✔️
 - Fordítási szabály (Károli teljes verseknél): ✔️

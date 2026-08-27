@@ -1,5 +1,9 @@
 # PaRDeS gyorsreferencia
 
+*v7 — 2026.08.27 (3/b és 3/c önálló, főszintű ponttá alakítva: „Kereszthivatkozási
+réteg" mostantól „4. Kereszthivatkozási réteg", a Rabbinikus/patrisztikus hivatkozás
+5-re változott; a Mélyelemzés szakasz "3/b."-re mutató visszacsatolása "4. pont"-ra
+frissítve)*
 *v6 — 2026.08.26 (új „Motívum-felismerés módszertana" szakasz beillesztve a 3/b után:
 négyforrásos jelölt-gyűjtés — 🔤 Strong / 📖 Károli-KH / 📚 TSK / 🧠 Claude-tudás —
 és háromkategóriás tartalmi minősítés — ✅/❌/🔶; sablon-verziók frissítve: bővített
@@ -31,9 +35,9 @@ Tömör, kulcsszavas áttekintés a memóriában rögzített szabályokról. A t
 - 0. Sorozat-kontextus: csak ha van korábbi tanulmány ugyanabból a könyvből
 - 1/b. Idővonal/térkép: csak ha 2+ helyszín/időpont vagy sorrend kulcsfontosságú
 - 2. Eredeti nyelv: max 6-8 kulcsszó/vers + szó szerinti tükörfordítás a Károli mellett
-- 3/c. Rabbinikus/patrisztikus: mindkettő, ha van; ha csak egyik, jelezd miért
+- 5. Rabbinikus/patrisztikus: mindkettő, ha van; ha csak egyik, jelezd miért
 
-## 3/b. Kereszthivatkozási réteg
+## 4. Kereszthivatkozási réteg
 - Inline, PaRDeS-szint alatt, nem külön táblázatban
 - Irányjelölés: ← előkép / ↔ párhuzam / ⇒ beteljesedés
 - Max 1-2 igehely szintenként
@@ -109,4 +113,4 @@ teljes lista a tematikusnál).
 - Sablon-fájlokon verziószám/dátum feltüntetése
 
 ## Mélyelemzés (két igehely összevetése)
-Csak explicit kérésre, önálló dokumentumként: (1) szövegkörnyezet, (2) nyelvi összevetés, (3) kapcsolat jellege, (4) tudományos vélemények, (5) visszacsatolás a 3/b.-hez vagy a naplóhoz.
+Csak explicit kérésre, önálló dokumentumként: (1) szövegkörnyezet, (2) nyelvi összevetés, (3) kapcsolat jellege, (4) tudományos vélemények, (5) visszacsatolás a 4. ponthoz vagy a naplóhoz.

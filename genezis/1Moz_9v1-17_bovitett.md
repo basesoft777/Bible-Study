@@ -125,7 +125,7 @@ A szivárvány mint "felfüggesztett hadi íj" képe (lásd Remez) azt sugallja,
 
 ---
 
-## 3/b. Kapcsolódó igehelyek
+## 4. Kapcsolódó igehelyek
 
 **Peshat alatt — az "Isten megemlékezett" motívum második genezisbeli előfordulása**
 
@@ -161,7 +161,7 @@ A szivárvány mint "felfüggesztett hadi íj" képe (lásd Remez) azt sugallja,
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hang:** a klasszikus rabbinikus hagyomány (Talmud, Szanhedrin 56a-60a) ebből a szakaszból (különösen a vér-tilalomból és a gyilkosság tilalmából) vezeti le a "Noé fiainak hét törvényét" (*sevá micvot bné Noách*) — azt a hét alaptörvényt, amelyet a hagyomány szerint minden nem-zsidónak be kell tartania ahhoz, hogy "igaz" (*chászid umót ha'olám*) legyen. Ez az egyik legfontosabb rabbinikus jogi-teológiai konstrukció, amely közvetlenül erre a szakaszra épül.
 
@@ -169,7 +169,7 @@ A szivárvány mint "felfüggesztett hadi íj" képe (lásd Remez) azt sugallja,
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika**
 A szakasz egyfajta "második teremtési charta" — az ember-állat viszony (félelem), az étkezési szabályok, a jogrend (vérontás) és a kozmikus stabilitás (szövetség) együtt alkotják azt a keretet, amelyben a Sínai előtti egész emberiség él, innen ered a "Noahida törvények" rabbinikus hagyománya.
@@ -194,7 +194,7 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent (a *kesét* kettős jelenté
 - ✅ Kiejtés minden görög/héber szónál feltüntetve
 - ✅ ⚠️ pontok nevesített képviselőkkel (Wenham, Westermann, Hamilton)
 - ✅ Arányok: Peshat + Drash legrészletesebb, Sod tömör, Alapkérdések rövid
-- ✅ 3/b formátum: inline blokkok, irányjelölés, félkövér kulcsszó, Károli-idézet, kiejtés
+- ✅ 4 formátum: inline blokkok, irányjelölés, félkövér kulcsszó, Károli-idézet, kiejtés
 - ✅ Sod fegyelem: a "felfüggesztett fegyver" kép a Remez rétegből levezetett, nem önkényes
 - ✅ Fordítási szabály: Károli teljes idézetekhez (hosszabb szakaszoknál összevontan, terjedelmi okból)
 

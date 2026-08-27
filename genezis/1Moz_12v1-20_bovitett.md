@@ -109,7 +109,7 @@ A kettős oltár-refrén (Sikem, majd Bétel-Ai) mintázatot rajzol: a hit útja
 
 ---
 
-## 3/b. Kapcsolódó igehelyek
+## 4. Kapcsolódó igehelyek
 
 **Peshat-szinthez:**
 Ábrám azonnali, célt nem ismerő engedelmessége (12:1,4) közvetlen újszövetségi visszhangra talál a hit-hősök felsorolásában:
@@ -141,7 +141,7 @@ Az "segítségül hívta az Úr nevét" (12:8) formula nem első előfordulás:
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hang:** a Midrás Genezis Rabbá (39. fejezet) a *lech-lechá* kifejezést "menj el a magad javára/önmagad kiteljesedésére" értelemben olvassa — a parancs nemcsak elszakítást, hanem Ábrám saját sorsának, jellemének kibontakozását is jelenti. Rási a *nivrechú* alakhoz fűzött megjegyzésében (lásd fentebb, ⚠️ pont) a reflexív olvasatot részesíti előnyben.
 
@@ -149,7 +149,7 @@ Az "segítségül hívta az Úr nevét" (12:8) formula nem első előfordulás:
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika:** a fejezet irodalmi szerkezete tudatosan ismétlő mintázatra épül — elhívás/ígéret → engedelmesség/vándorlás → oltár/imádat — amely a 13. fejezetben szó szerint megismétlődik (13:3-4, visszatérés ugyanahhoz az oltárhoz). Ez a szerzői szándék szerint nem véletlen párhuzam, hanem tudatos keretezés: Ábrám élete refrénszerűen tér vissza az imádat helyeihez.
 
@@ -189,4 +189,4 @@ Copeland kifejezetten az 1Móz 12:1-3-at veszi alapigéül egy többrészes soro
 
 ---
 
-*Belső önellenőrzés elvégezve: kiejtés minden héber szónál feltüntetve; ⚠️ pontok nevesített képviselőkkel; arányok betartva (Peshat/Drash legrészletesebb, Sod tömör); 3/b formátum és cím szabályszerű; lexikai vs. tematikus kapcsolatok explicit elkülönítve (Gal 3:8 és 4:26 lexikai, a József-előremutatás és nővér-motívum tematikus/nyitott szálként jelölve); terminológia (Szent Szellem, spirituális) — nem volt releváns előfordulás ebben a szakaszban; igehely-formátum egységes.*
+*Belső önellenőrzés elvégezve: kiejtés minden héber szónál feltüntetve; ⚠️ pontok nevesített képviselőkkel; arányok betartva (Peshat/Drash legrészletesebb, Sod tömör); 4 formátum és cím szabályszerű; lexikai vs. tematikus kapcsolatok explicit elkülönítve (Gal 3:8 és 4:26 lexikai, a József-előremutatás és nővér-motívum tematikus/nyitott szálként jelölve); terminológia (Szent Szellem, spirituális) — nem volt releváns előfordulás ebben a szakaszban; igehely-formátum egységes.*

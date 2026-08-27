@@ -145,7 +145,7 @@ Az "egy testté" (*bászár echád*) válás nem pusztán családi-szociológiai
 
 ---
 
-## 3/b. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
+## 4. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
 
 *Az alábbi kereszthivatkozások megmutatják, mely más igehelyek erősítik meg vagy világítják meg az egyes PaRDeS-rétegek meglátásait — irányjelöléssel: ← előkép, ↔ párhuzam, ⇒ beteljesedés.*
 
@@ -179,7 +179,7 @@ Az "egy testté" (*bászár echád*) válás nem pusztán családi-szociológiai
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hang:**
 A Talmud (Erubin 18a) és több midrás hagyomány szerint az első ember eredetileg androgün vagy "kétarcú" (*du-parcufin*) lényként lett megformálva, akit Isten később kettéválasztott (*cela* itt "oldal"-ként értve) férfivá és nővé — ez a hagyomány éppen a *cela* "oldal" jelentését támasztja alá a szó szerinti "borda"-olvasattal szemben, és az emberi nem eredendő, oszthatatlan egységét hangsúlyozza.
@@ -190,7 +190,7 @@ A Talmud (Erubin 18a) és több midrás hagyomány szerint az első ember eredet
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika** — A szakasz etiológiai elbeszélés: megmagyarázza a munka, a házasság és az emberi társas lét eredetét, még a bűneset előtti, romlatlan állapotban — ez fontos különbség a 3. fejezet utáni, már bűn általi torzulást szenvedett viszonyokhoz képest.
 

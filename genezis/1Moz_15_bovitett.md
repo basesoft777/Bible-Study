@@ -97,7 +97,7 @@ Hogy a szövetség köttetése kizárólag **sötétségben** történik (napnyu
 
 ---
 
-## 3/b. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
+## 4. Kapcsolódó igehelyek — hol találkozunk még ezekkel a gondolatokkal a Bibliában
 
 **Drash réteg — hit mint betudott igazság:**
 
@@ -119,7 +119,7 @@ Ez a kapcsolat megmutatja, hogy Ábrám szövetségkötése egy jól ismert kora
 
 ---
 
-## 3/c. Rabbinikus és patrisztikus hangok
+## 5. Rabbinikus és patrisztikus hangok
 
 **Rabbinikus hagyomány:** a klasszikus midrási hagyomány (Genesis Rabbah 44) a „négy király" közötti négy birodalomként (Babilon, Média-Perzsia, Görögország, Róma) is olvassa a kettévágott állatokat és az elűzött ragadozó madarakat mint a jövőbeli birodalmakat, amelyek megpróbálják elfojtani Izráelt, de Ábrahám (itt: imájával) elűzi őket — allegorikus, nemzeti-történeti olvasat, amely túlmutat a szöveg szoros értelmén, de jól mutatja, milyen súlyt tulajdonított a hagyomány e szövetségnek.
 
@@ -127,7 +127,7 @@ Ez a kapcsolat megmutatja, hogy Ábrám szövetségkötése egy jól ismert kora
 
 ---
 
-## 4. Kiegészítő szempontok
+## 6. Kiegészítő szempontok
 
 **Hermeneutika:** a szerzői szándék (Mózes, a pusztai nemzedéknek) kulcsfontosságú a 15:13-16 helyes olvasásához — ez nem elvont prófécia, hanem az olvasó saját, éppen átélt történelme, amely visszaigazolja Isten szavahihetőségét.
 
