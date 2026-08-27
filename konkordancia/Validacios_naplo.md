@@ -15,6 +15,7 @@ megbízhatósági jelölés).*
 | 2026.08.23-24 körül | Gen.1.2-4 | Felhasználói "régi Strong" referenciával összevetve | 12/14, majd 13/14 egyezés | 1 dokumentált kettős Strong-lehetőség (H2895/H2896) |
 | 2026.08.24 | Gen.1-16 (a `Konnyu_ellenorzes_1-16_osszesito_v2.md` megerősített szavai) | Betöltés a `Karoli_Strong_kivonat.tsv` join-táblába: tartalom-alapú azonosítás + KJV/ASV kereszt-ellenőrzés (4.13 szabály), majd minden Károli-szó szigorú, teljes szóhatáros egyezés-ellenőrzése a `Karoli_1908.tsv` tényleges vers-szövegével szemben | 178 sor ténylegesen betöltve (Reliability: magas=177, közepes=1) | KJV/ASV kereszt-ellenőrzés: 177 sor "magas" (talált egyező KJV vagy ASV Strong-adat ugyanarra a versre/Strong-számra), 1 sor "közepes" (Gen.12.1 H1980 "Eredj" — nincs KJV/ASV Strong-adat erre a vers/Strong-párra); ebben a körben ÚJ KJV/ASV ELTÉRÉS nem került elő (a meglévő párosítás minden fellelt esetben egyezett). 7 sor kihagyva "TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ" jelöléssel (צֶלֶם, גַּן, עֵזֶר כְּנֶגְדּוֹ, צֵלָע, אִשָּׁה, נָחָשׁ, מִזְבֵּחַ), 2 sor kihagyva nyitott ELTÉRÉS miatt (1Móz 3:7-24 עֵרֻמִּם/H6174, 1Móz 4:1-24 הֶבֶל/H1892) — egyik kihagyott tétel sem került be a join-táblába, emberi döntésre várnak |
 | 2026.08.26 | Teljes verzifikációs vizsgálat lezárása: 2094 ÓSZ + 4 ÚSZ zárójeles kettős hivatkozású verspár (A + B feladat) | A feladat: `TAHOT_kivonat.tsv` Károli-natív kulcsra állítása + minden zárójeles kettős hivatkozású ÓSZ-eset egyenkénti eldöntése. B feladat: `TAGNT_kivonat.tsv` Károli-natív kulcsra állítása a 4 ÚSZ-esetre + Károli-oldali adatminőségi gyorsaudit. C feladat: retroaktív ellenőrzés a motívumnaplóban + jelen lezáró bejegyzés. | Lásd részletesen lent | **Lezárva.** Nincs eldöntetlen (`NYITOTT`) eset. Az egyetlen nyitott kategória `ADATMINOSEGI_GYANU` (Károli-oldali, nem versifikációs okú). |
+| 2026.08.27 | 7 Károli-adatminőségi anomália javítása (Ez 20:44, Jób 41:25, Préd 9:18, 2Móz 35:35, Dán 3:30, Én 5:16, Hós 14:9) + Ez 20/21 határ lezárása | Független, ellenőrzött forrással (MEK 00161, Drótos-digitalizálás) való összevetés: mind a 7 gyanús sor ténylegesen összeolvadt versekből állt, MEK-szöveg alapján szétbontva. Ez 20/21 határ: MEK szerint Ez 21 pontosan 32 verset tartalmaz (nyugati/elsődleges számozás) → döntés: ELSŐDLEGES. | Lásd részletesen lent | **Lezárva.** Mind a 7 anomália `JAVITVA`. Ez 20/21 határ `ELSŐDLEGES`-re döntve, a 37 érintett sor átkerült a `TAHOT_kivonat_nyitott_esetek.tsv`-ből a `TAHOT_kivonat.tsv`-be. |
 
 ---
 
@@ -175,3 +176,93 @@ lesz elvégezhető (lásd a 2026.08.26-i korábbi kiegészítést a forrás azon
 **Fájlok (a `lxx-fazis2-versificacios-terkep` branch-en, nincs commitolva még):**
 `konkordancia/LXX_versificacios_terkep.tsv` (5426 sor + fejléc),
 `konkordancia/LXX_tobblet_szakaszok.tsv` (106 sor + fejléc).
+
+---
+
+## 2026.08.27 — Károli-adatminőségi anomáliák javítása + Ez 20/21 határ lezárása
+
+### Forrás
+
+**MEK (Magyar Elektronikus Könyvtár), 00161. gyűjtemény**, Drótos Dániel/László által
+1995 óta karbantartott, közösségi hibajavítású digitalizálás. Elérési út mintája:
+`https://mek.oszk.hu/00100/00161/html/o/[könyv-rövidítés]/chapNNN.html`. A digitalizálás
+a Brit és Külföldi Biblia-Társulat 1908-as kiadásán alapul — ugyanaz az 1908-as Károli
+kiadás, mint a projekt saját `Karoli_1908.tsv`-je, tehát **független második
+digitalizálása ugyanannak a forrásszövegnek**, nem egy másik fordítás.
+
+**Licenc:** közkincs (public domain) szöveg, a MEK nyilvános gyűjteményéből.
+
+**Technikai megjegyzés — karakterkódolás:** a MEK-oldalak ISO-8859-2 (Latin-2)
+kódolásúak (`<META ... CHARSET=iso-8859-2>`), nem UTF-8. A nyers letöltés `iconv -f
+ISO-8859-2 -t UTF-8` konverzióval lett olvashatóvá téve; a konverzió után vizuálisan
+ellenőrzött ékezetes szavak (pl. "Isten", "Úr", "mondja", "bölcseség") helyesen
+jelentek meg minden lekért fejezetben.
+
+### 1. lépés eredménye — a 7 anomália
+
+Mind a 7 gyanús sor **ténylegesen összeolvadt versekből állt** — a MEK-forrás minden
+esetben külön, önálló verseket mutatott azon a ponton, ahol a projekt `Karoli_1908.tsv`-je
+egyetlen hosszú sort tartalmazott. Egyik eset sem igényelt `ADATMINOSEGI_GYANU_MEGERŐSÍTVE`
+lezárást.
+
+| Igehely | Eredeti gyanú | MEK-validáció eredménye | Végső bontás |
+|---|---|---|---|
+| Ez 20:44 | 20:45-49 tartalom olvadt bele | Megerősítve — Ez 20. fejezet MEK szerint 49 verset tartalmaz | Ez 20:44-49 (6 vers) |
+| Jób 41:25 | ~8-9 vers olvadt össze (becslés) | MEK szerint valójában **10** vers olvadt össze (a becslés alulbecsülte) | Jób 41:25-34 (10 vers) |
+| Préd 9:18 | feltételezett átlépés Préd 10:1-2-be | **Cáfolva** — MEK szerint mind a 6 vers a 9. fejezetben marad, nincs fejezethatár-átlépés | Préd 9:18-23 (6 vers) |
+| 2Móz 35:35 | feltételezett átlépés 2Móz 36:1-be | **Cáfolva** — MEK szerint a 35. fejezet ténylegesen 36 verset tartalmaz, nincs átlépés | 2Móz 35:35-36 (2 vers) |
+| Dán 3:30 | feltételezett MT/angol fejezethatár-eltolódás (Dán 4:1-3-ba) | **Cáfolva** — MEK szerint mind a 4 vers a 3. fejezetben marad, a meglévő Dán 4:1 tartalma változatlan marad | Dán 3:30-33 (4 vers) |
+| Én 5:16 | feltételezett átlépés Én 6:1-3-ba | **Cáfolva** — MEK szerint mind a 4 vers az 5. fejezetben marad, nincs átlépés | Én 5:16-19 (4 vers) |
+| Hós 14:9 | alacsonyabb megbízhatóságú gyanú | Megerősítve — MEK szerint a fejezet 10 verset tartalmaz | Hós 14:9-10 (2 vers) |
+
+**Fontos módszertani tanulság:** 3 esetben (Préd, 2Móz, Dán, Én — azaz 4 a 6-ból, ha
+Jóbot és Ez 20:44-et és Hós 14:9-et nem számítjuk) az eredeti gyanú **tévesen
+feltételezett fejezethatár-átlépést**, miközben a MEK-forrás szerint az összeolvadt
+tartalom valójában **ugyanabban a fejezetben maradt** — csak a fejezet több verset
+tartalmazott, mint amit a projekt korábbi feldolgozása feltételezett. Emiatt egyik
+eset sem igényelt utólagos átszámozást a következő fejezetben (pl. Dán 4:1-34 sorai
+változatlanul megfelelőek maradtak).
+
+A `Karoli_1908.tsv` összesített verse-szám-változása:
+
+| Fejezet | Régi versszám | Új versszám |
+|---|---|---|
+| Ez 20 | 44 | 49 |
+| Jób 41 | 25 | 34 |
+| Préd 9 | 18 | 23 |
+| 2Móz 35 | 35 | 36 |
+| Dán 3 | 30 | 33 |
+| Én 5 | 16 | 19 |
+| Hós 14 | 9 | 10 |
+
+A `Karoli_adatminosegi_anomaliak.tsv` mind a 7 sorára frissült az `Allapot` (`JAVITVA`)
+és új `Javitas_forrasa` oszlop került hozzáadásra (MEK URL-lel).
+
+### 2. lépés eredménye — Ez 20/21 határ lezárása
+
+A MEK-forrás megerősítette: Ez 21. fejezet pontosan **32 verset** tartalmaz (nem 37-et,
+ahogy a héber/másodlagos számozás szerint lenne). Ez egyezik az elsődleges (nyugati,
+Latin Vulgata + görög LXX) STEPBible-számozással, ugyanúgy, mint a korábban vizsgált
+1Móz 32, Joel 3 és Malakiás 4 esetek.
+
+**Döntés: ELSŐDLEGES.**
+
+- A `TAHOT_kivonat_nyitott_esetek.tsv`-ben talált 37 sor (Ez 20:45-49 + Ez 21:1-32,
+  Károli-natív, elsődleges kulccsal), összesen 736 Strong-szintű bejegyzés, átkerült
+  a `TAHOT_kivonat.tsv` fő táblába, a meglévő Ez 20:44 és Ez 22:1 közé illesztve.
+- A `TAHOT_kivonat_nyitott_esetek.tsv`-ből az érintett 736 sor törölve (a fájlban
+  megmaradó, nem érintett Job 41 blokk — másik, önálló nyitott eset — változatlan).
+- A `LXX_versificacios_terkep.tsv`-ben a 37 érintett sor `Karoli_egyezik_hol` mezője
+  `ELLENORZESRE_VAR`-ról `Latin,Gorog`-ra frissült (a projekt konvenciója szerint,
+  vö. 1Móz 32:30-32, ahol a Károli-számozás szintén a Latin/LXX-hagyományt követi a
+  héberrel szemben).
+- A `Karoli_1908.tsv`-ben az Ez 21:33-37 üres helyőrző sorok (a másodlagos/héber
+  37-verses feltételezésből maradt artifaktumok) törölve, mivel a döntés szerint
+  Ez 21-nek nincs 33-37. verse.
+
+### Validáció
+
+- `Karoli_1908.tsv`: Ez 20 → 49 vers, Ez 21 → 32 vers. ✓
+- `TAHOT_kivonat.tsv`: Ez 21:1 Károli-natív kulccsal jelen van (640 Ez 21-es sor). ✓
+- A többi 6 anomália: mindegyik `Karoli_1908.tsv`-beli verse-száma nőtt (1 sorból
+  2-10 sor lett), tartalma szó szerint egyezik a MEK-referenciával. ✓
