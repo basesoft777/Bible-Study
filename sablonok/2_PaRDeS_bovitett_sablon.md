@@ -1,5 +1,9 @@
 # 2. Bővített PaRDeS sablon — teljes, részletes verzió
 
+*v13 — 2026.08.27 (Napló-frissítési utasítás javítva: a korábbi felsorolás csak
+5 szekciót nevezett meg a hivatalos 7-ből, kimaradt a Részletes kulcsszó-
+magyarázatok és a Feldolgozott igeszakaszok tábla — most mind a 7 név szerint
+szerepel, számozva.)*
 *v12 — 2026.08.27 (a 4. pont „Kereséskor:" bekezdése kiegészítve a kötelező
 kereszthivatkozás-keresési napló előírásával — minden vizsgált jelöltet, nem
 csak a kiválasztottakat, rögzíteni kell egy önálló `[könyv-mappa]/naplok/`
@@ -113,7 +117,7 @@ nem egyszerűen kimaradt a keresésből.
 - Ha egy kapcsolat kivételesen gazdag vagy vitatott: jelezd — *„Ez a kapcsolat érdemes lenne egy önálló összevetésre — szólj, ha szeretnéd."*
 - A rész végén **összegző mondat** köti vissza a kereszthivatkozásokat a tanulmány gondolatmenetéhez.
 - Ha a `PaRDeS_motivumok.md` fájlban már szerepel az adott motívum egy korábbi tanulmányból: *„Ismétlődő motívum korábbi tanulmányodból: ..."* — csak tényleges kapcsolódás esetén.
-- **A tanulmány után frissítsd** a `PaRDeS_motivumok.md` fájlt az új előfordulással — a bővített naplószerkezet minden érintett részét (tematikus áttekintés, kulcsszó-index Téma/ÓSZ-ÚSZ/Előfordulás-szám oszlopai, könyv szerinti index, ⭐ Emlékeztető küszöb, „Még nem feldolgozott, de valószínű motívumok"), nem csak a kulcsszó-listát.
+- **A tanulmány után frissítsd** a `PaRDeS_motivumok.md` fájlt az új előfordulással — a bővített naplószerkezet mind a HÉT érintett részét (1. tematikus áttekintés, 2. kulcsszó-index Téma/ÓSZ-ÚSZ/Előfordulás-szám oszlopai, 3. részletes kulcsszó-magyarázatok — beleértve a „Lásd még" kereszthivatkozásokat is, 4. könyv szerinti index, 5. ⭐ Emlékeztető küszöb, 6. „Még nem feldolgozott, de valószínű motívumok", 7. „Feldolgozott igeszakaszok" tábla), nem csak a kulcsszó-listát. Mielőtt a frissítést véglegesítenéd, `grep`-pel ellenőrizd, mely szekciók ténylegesen érintettek — ne feltételezd.
 - **Rokon motívum-csoport küszöbszámítás:** ha egy azonosított motívum **tematikusan rokon, de lexikailag önálló** egy másik, már naplózott motívummal (pl. eltérő szó, de rokon fogalom vagy ismétlődő mintázat), az egyéni előfordulás-számláló mellett **jelöld külön a rokon-csoport összesített előfordulását is**, figyelmeztetésként (pl. „a szűkebb motívum önmagában még N-nél tart, de a tágabb rokon-csoporttal együtt már túl van a küszöbön"). A csoportosítás mindig indoklással történjen — ne legyen automatikus vagy erőltetett.
 
 **Ha explicit kéred egy igehely-pár/motívum mélyebb összevetését**, az önálló, célzott elemzésként készül (nem a fő tanulmány része), az alábbi szerkezettel:

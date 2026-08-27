@@ -456,3 +456,27 @@ TAHOT-tal és/vagy a MEK-forrással, ami **nem történt meg**.
 Új sorként felvéve a `Karoli_adatminosegi_anomaliak.tsv`-be (`Ézs 3:18-24`,
 `ELLENORZESRE_VAR`, `Karakterhossz` = "—", mivel nem karakterhossz-alapú gyanú).
 Önálló, jövőbeli feladatként vizsgálandó.
+
+---
+
+## 2026.08.27 (folytatás 2) — Motívum-névadás formalizálatlansága (felvetve, a Bibliai Motívumlexikon
+jövőbeli tervezéséhez)
+
+Konkrét példán (1Moz_1v1_bovitett.md Sod-pontja, "ige mint megtestesült Logosz"
+motívum) igazolva: a PaRDeS_motivumok.md "hivatalos motívum-nevei" szabad
+szöveges, ad hoc módon jönnek létre — nincs dokumentált elnevezési konvenció sem
+a sablonokban, sem a workflow-fájlban. Megfigyelt, informális mintázatok: (a)
+magyar leíró kifejezés, (b) eredeti nyelvi szakszó átírva + magyar toldás, (c)
+szakteológiai terminus, (d) kötőjeles/perjeles kettős forma ("fő fogalom /
+alternatív megfogalmazás"). Egyik sincs Strong-szám-kulcsolva vagy kontrollált
+kategória-listához kötve.
+
+Ez azt jelenti, hogy a jelenlegi napló NEM alkalmas gépi kereshetőségre motívum-
+azonosító alapján (csak szabad szöveges egyezésre) — egy jövőbeli motívum-
+lexikonhoz stabil, kereshető azonosítót kellene bevezetni minden motívumhoz
+(pl. Strong-szám-alapú kulcs a domináns lexikai gyök alapján, vagy egy explicit,
+kontrollált kategória-lista), a jelenlegi szabad szöveges nevet pedig csak
+megjelenítési címkeként megtartva, nem keresési kulcsként.
+
+Ez a felvetés a felfüggesztett "Bibliai Motívumlexikon" kezdeményezés első
+konkrét tervezési inputja — akkor veendő elő, amikor az a munka megkezdődik.
