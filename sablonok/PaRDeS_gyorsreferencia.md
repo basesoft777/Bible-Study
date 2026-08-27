@@ -3,7 +3,7 @@
 *v8 — 2026.08.27 (Motívum-felismerés módszertana kiegészítve a 3/b-próba
 tapasztalataival: lexikai/tematikus tengely-függetlenség explicit rögzítve,
 kifejezés-szintű Strong-keresés bevezetve, önigazoló-hajlam figyelmeztetés
-hozzáadva)*
+hozzáadva; kisebb javítás: FIGYELEM hivatkozás iránya)*
 *v7 — 2026.08.27 (3/b és 3/c önálló, főszintű ponttá alakítva: „Kereszthivatkozási
 réteg" mostantól „4. Kereszthivatkozási réteg", a Rabbinikus/patrisztikus hivatkozás
 5-re változott; a Mélyelemzés szakasz "3/b."-re mutató visszacsatolása "4. pont"-ra
@@ -62,7 +62,7 @@ NÉGY párhuzamos forrásból gyűjtünk jelöltet, mindegyiket forrás-cimkéve
 - 🔤 [Strong] — teljes körű grep a releváns Strong-számra a TAHOT_kivonat.tsv /
   TAGNT_kivonat.tsv teljes állományán (LEXIKAI jelölt: ugyanaz a szó). HA egy
   vizsgált versben 2+ olyan tartalmi szó van, ami egyedül-egyedül túl gyakori
-  ahhoz, hogy önmagában érdemi szó-szintű találatot adjon (ld. FIGYELEM fent),
+  ahhoz, hogy önmagában érdemi szó-szintű találatot adjon (ld. FIGYELEM lent),
   futtass egy KOMBINÁLT keresést: melyik más versekben fordul elő UGYANAZ a 2+
   Strong-szám EGYÜTT — ez a kombináció jellemzően sokkal ritkább, mint bármelyik
   szó önmagában, és visszaadja a lexikai pontosságot a gyakori, de együttesen
