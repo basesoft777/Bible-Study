@@ -1,5 +1,8 @@
 # 5. Mélyelemzés prompt-sablon — két igehely összevetése
 
+*v7 — 2026.08.27 (a 2. pont végére felvéve egy rövidebb, kötelező
+kereszthivatkozás-keresési napló előírás — a bővített sablon v12 azonos
+követelményének mélyelemzésre igazított, tömörebb változata)*
 *v6 — 2026.08.27 (a bővített sablon 3/b pontjára mutató hivatkozások frissítve a 4.
 pontra, a 3/b önálló, főszintű ponttá alakítása miatt)*
 *v5 — 2026.08.26 (a verdikt-lista és a Strong-ellenőrzés bekezdés összevonva, hogy ne
@@ -34,6 +37,15 @@ mindkét igehely releváns szavára):
 Ha közös görög/héber szó van: pontosan ugyanazt jelenti-e mindkét kontextusban, vagy
 van árnyalatnyi eltérés? Ugyanaz a szerző használja mindkét helyen, vagy más szerző?
 A szó szórendje, alakja, mondatbeli szerepe eltér-e a két helyen?
+
+**Kötelező napló:** a fenti minősítés eredményét rögzítsd egy önálló fájlban:
+`[könyv-mappa]/naplok/[study-fájlnév-kiterjesztés-nélkül]_kereszthivatkozas_naplo.md`
+(vagy ha a mélyelemzés önálló, lezárt szálként a `Lezart_tematikus_tanulmanyok_index.md`-be
+is felkerül, az ott rögzített fájlnévhez igazítva). Mélyelemzésnél a napló
+kisebb terjedelmű is lehet — elég a két igehely összevetésének és minősítésének
+(✅/❌/🔶) indoklása —, de az elv ugyanaz, mint a bővített/tematikus sablonnál:
+a vizsgálat és annak indoklása auditálható módon, nem csak a végeredmény
+marad rögzítve.
 
 **3. Az irodalmi kapcsolat jellege**
 Valódi idézet/tudatos utalás-e (a szerző ismerte és felhasználta a másik szöveget), vagy csak fogalmi/teológiai rokonság, egymástól függetlenül kialakult gondolat?

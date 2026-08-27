@@ -1,5 +1,8 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
+*v7 — 2026.08.27 (a „Friss, teljes körű keresés" alszakasz végére felvéve a
+kötelező kereszthivatkozás-keresési napló előírása — a bővített sablon v12
+azonos követelményének tematikus sablonra igazított változata)*
 *v6 — 2026.08.26 (redundáns Strong-ellenőrzés bekezdés összevonva az új négyforrásos
 kereséssel, a szomszédos-vers-vizsgálat megtartva)*
 *v5 — 2026.08.26 (az 1. pont elé felvéve egy új „Friss, teljes körű keresés" alszakasz
@@ -31,6 +34,18 @@ belüli ÉS a szomszédos verseken belüli előfordulást is. A táblázatba MIN
 valódinak minősített, a naplóban még NEM szereplő találat bekerül — ne csak a
 legerősebb 1-2-t válaszd ki, mint a bővítettnél, hanem a teljes valódi találati
 halmazt.
+
+**Kötelező napló:** a fenti keresési/minősítési folyamat eredményét — MINDEN
+vizsgált jelöltet, nem csak a bekerülteket — rögzítsd egy önálló fájlban:
+`[könyv-mappa]/naplok/[motívum-vagy-study-fájlnév-kiterjesztés-nélkül]_kereszthivatkozas_naplo.md`
+(könyvhöz köthető motívumnál a releváns könyv-mappa `naplok/` alkönyvtárában, a
+`Lezart_tematikus_tanulmanyok_index.md`-ben szereplő fájlnévhez igazítva;
+könyvfüggetlen motívumnál `tematikus_lezart/naplok/` alatt). A napló szerkezete:
+vizsgált kulcsszavak → nyers találatok forrásonként → tartalmi minősítés minden
+jelöltre → végső döntés és indoklás → összegzés — ugyanaz az elv, mint a
+bővített sablonnál (`2_PaRDeS_bovitett_sablon.md`), azzal a különbséggel, hogy
+itt a "végső döntés" a TELJES ✅ halmaz beépítését dokumentálja, nem csak
+szintenkénti 1-2 kiválasztást.
 
 Táblázatos áttekintés minden eddigi előfordulásról, a `PaRDeS_motivumok.md` napló releváns bejegyzése alapján:
 

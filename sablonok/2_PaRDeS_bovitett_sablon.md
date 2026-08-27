@@ -1,5 +1,9 @@
 # 2. Bővített PaRDeS sablon — teljes, részletes verzió
 
+*v12 — 2026.08.27 (a 4. pont „Kereséskor:" bekezdése kiegészítve a kötelező
+kereszthivatkozás-keresési napló előírásával — minden vizsgált jelöltet, nem
+csak a kiválasztottakat, rögzíteni kell egy önálló `[könyv-mappa]/naplok/`
+fájlban)*
 *v11 — 2026.08.27 (3/b és 3/c önálló, főszintű ponttá alakítva (4. és 5.), a
 Kiegészítő szempontok 6-ra tolódott)*
 *v10 — 2026.08.26 (a 3/b pont „Kereséskor:" mondata lecserélve: a korábbi „célzott,
@@ -91,6 +95,14 @@ blokkba. A forrás-cimkét (🔤/📖/📚/🧠) tartsd meg a végleges szövegb
 kiválasztott kapcsolat [Claude-tudás] eredetű. (Egy ritka szó néhány előfordulása
 pontosabb és erősebb kapcsolódást adhat, mint egy tartalmilag hasonló, de lexikailag
 független párhuzam.)
+
+**Kötelező napló:** a fenti keresési/minősítési folyamat eredményét — MINDEN
+vizsgált jelöltet, nem csak a kiválasztottakat — rögzítsd egy önálló fájlban:
+`[könyv-mappa]/naplok/[study-fájlnév-kiterjesztés-nélkül]_kereszthivatkozas_naplo.md`.
+A napló szerkezete: vizsgált kulcsszavak → nyers találatok forrásonként →
+tartalmi minősítés minden jelöltre → végső döntés és indoklás → összegzés. Ez
+teszi auditálhatóvá, hogy egy jelölt tényleg megvizsgálva lett és elutasítva,
+nem egyszerűen kimaradt a keresésből.
 
 - A kapcsolódó igehelyeket **közvetlenül az adott PaRDeS-szint alatt**, kontextusban add meg — ne külön táblázatban hátrébb.
 - Szintenként **max. 1-2 legerősebb** igehely.

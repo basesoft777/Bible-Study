@@ -1,5 +1,9 @@
 # PaRDeS gyorsreferencia
 
+*v9 — 2026.08.27 (rövid utalás hozzáadva a Motívum-felismerés módszertana
+végéhez az új, kötelező kereszthivatkozás-keresési naplóra — részletek:
+`2_PaRDeS_bovitett_sablon.md` v12, `4_PaRDeS_tematikus_sablon.md` v7,
+`5_Melyelemzes_prompt_sablon.md` v7)*
 *v8 — 2026.08.27 (Motívum-felismerés módszertana kiegészítve a 3/b-próba
 tapasztalataival: lexikai/tematikus tengely-függetlenség explicit rögzítve,
 kifejezés-szintű Strong-keresés bevezetve, önigazoló-hajlam figyelmeztetés
@@ -109,6 +113,13 @@ Módszertani önellenőrzés: ha egy nagyobb mintán (pl. sok tanulmány
 lehet, hogy a korábbi (memória-alapú) választások tényleg jók voltak, de az is
 lehet, hogy a minősítési lépés nem elég szigorú. Ne tekintsd automatikusan
 sikernek, ha a módszer mindig megerősíti a régi döntéseket.
+
+**Kötelező napló:** a fenti négyforrásos keresés/minősítés eredményét — MINDEN
+vizsgált jelöltet, nem csak a bekerülteket — minden bővített/tematikus/mélyelemzés
+tanulmányhoz önálló naplófájlban kell rögzíteni (`[könyv-mappa]/naplok/...`),
+a pontos szerkezetet és fájlnév-konvenciót lásd a `2_PaRDeS_bovitett_sablon.md`,
+`4_PaRDeS_tematikus_sablon.md` és `5_Melyelemzes_prompt_sablon.md` saját
+pontjaiban.
 
 ## Alkalmazás pont — nevesített külső tanítói forrás (opcionális)
 - Alapértelmezés: a 3 kérdésre adott válasz a tanulmány saját Peshat/Remez/Drash/Sod rétegeiből épül
