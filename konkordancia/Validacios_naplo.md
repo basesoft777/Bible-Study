@@ -266,3 +266,96 @@ Latin Vulgata + görög LXX) STEPBible-számozással, ugyanúgy, mint a korábba
 - `TAHOT_kivonat.tsv`: Ez 21:1 Károli-natív kulccsal jelen van (640 Ez 21-es sor). ✓
 - A többi 6 anomália: mindegyik `Karoli_1908.tsv`-beli verse-száma nőtt (1 sorból
   2-10 sor lett), tartalma szó szerint egyezik a MEK-referenciával. ✓
+
+---
+
+## 2026.08.27 — Üres helyőrző sorok felderítése és javítása a `Karoli_1908.tsv`-ben
+
+*Ez a szakasz a fenti 7-anomáliás javítás melléktermékeként (Dán 4:35-37 üres sorok
+észlelése) indult, de önálló, teljes körű vizsgálattá bővült. Nem keverendő össze a
+fenti bejegyzéssel.*
+
+### 1. lépés — Teljes körű keresés
+
+A teljes `Karoli_1908.tsv` végigfuttatva (a `Károli-szöveg` mező üres/whitespace-only
+sorainak keresése): **39 üres helyőrző sor**, 24 fejezetben szétszórva. Ez a
+nagyságrend megfelel a várakozásnak ("néhány tucatnyi elszórt eset") — nem utal
+rendszeresebb hibára, a fájl 31 000+ sorához képest elhanyagolható arány (0,13%).
+
+Kimenet: [`Karoli_ures_helyorzo_sorok.tsv`](Karoli_ures_helyorzo_sorok.tsv) — 39 sor,
+`Igehely, Konyv, Fejezet, Vers, Tipus, Allapot, Megjegyzes_forras` oszlopokkal.
+
+### 2-3. lépés — Kategorizálás és javítás (MEK 00161 alapján)
+
+Forrás: ugyanaz a MEK 00161 (Drótos-digitalizálás), mint a fenti 7-anomáliás
+javításnál — az ÚSZ-esetekhez (Márk, János, ApCsel) a MEK `/uj/` ága szükséges,
+saját könyv-rövidítésekkel (`mark`, `jan`, `csel` — NEM `mk`/`jn`), amit a
+`uj/index.html` oldal listája alapján azonosítottam.
+
+**A) típus — "túlfutó" placeholder, törölve: 35 eset.**
+A MEK-forrás minden esetben szó szerint egyezett a projekt fájljának tényleges
+(nem üres) verséig, és a fejezet ott véget ért a MEK szerint is — az üres sor(ok)
+puszta generálási maradvány(ok), ugyanaz a hibatípus, mint az Ez 21:33-37 korábban:
+
+| Fejezet | Törölt sorok | MEK-fejezet valódi hossza |
+|---|---|---|
+| 2Móz 36 | 36:38 | 37 vers |
+| 4Móz 30 | 30:17 | 16 vers |
+| Jób 17 | 17:16 | 15 vers |
+| Jób 37 | 37:24 | 23 vers |
+| Jób 40 | 40:20-28 (9 sor) | 19 vers |
+| Péld 12 | 12:28 | 27 vers |
+| Préd 1 | 1:18 | 17 vers |
+| Préd 8 | 8:16-17 (2 sor) | 15 vers |
+| Préd 10 | 10:18-20 (3 sor) | 17 vers |
+| Én 6 | 6:11-13 (3 sor) | 10 vers |
+| Ézs 2 | 2:22 | 21 vers |
+| Ézs 8 | 8:23 | 22 vers |
+| Ézs 64 | 64:12 | 11 vers |
+| Dán 4 | 4:35-37 (3 sor) | **34 vers — explicit validálva, ld. lent** |
+| Hós 2 | 2:23 | 22 vers |
+| Hós 12 | 12:15 | 14 vers |
+| Hós 13 | 13:16 | 15 vers |
+| Mk 9 | 9:51 | 50 vers |
+| Mk 10 | 10:53 | 52 vers |
+| ApCsel 24 | 24:28 | 27 vers |
+
+**Dán 4:35-37 explicit validáció (4. lépés kötelező eleme):** a MEK-forrás szerint
+Dán 4. fejezet ténylegesen **34 versig tart** (`https://mek.oszk.hu/00100/00161/html/o/dan/chap004.html`,
+utolsó `para_34`) — a projekt fájljában is 34 valódi vers volt (1-34), a 35-37
+sorok kizárólag üres maradványok voltak. **Megerősítve: A) típus, törölve.**
+
+**B) típus — valódi hiányzó tartalom, pótolva: 3 eset.** Mindhárom az Újszövetségből,
+és mindhárom a fejezet belsejében volt (nem a végén), ami már önmagában jelezte,
+hogy nem "túlfutásról" van szó:
+
+| Igehely | Pótolt szöveg (MEK alapján) |
+|---|---|
+| Ján 21:1 | "Ezek után ismét megjelentette magát Jézus a tanítványoknak a Tibériás tengerénél; megjelentette pedig ekképen:" |
+| ApCsel 12:6 | "Mikor pedig Heródes őt elő akará vezettetni, azon az éjszakán aluszik vala Péter két vitéz között, megkötözve két lánczczal; és őrök őrizék az ajtó előtt a tömlöczöt." |
+| ApCsel 15:18 | "Tudja az Isten öröktől fogva minden ő cselekedeteit." |
+
+**C) típus — bizonytalan, nem módosítva: 1 eset.**
+
+- **Ézs 4:6** — a vizsgálat során kiderült, hogy ez NEM egyszerű túlfutás-hiba, hanem
+  egy eddig fel nem tárt, a mai reggeli 7 anomáliával azonos típusú **összeolvadt
+  Károli-vers** következménye: a projekt `Ézs 3:26` sora valójában 3 verset olvaszt
+  össze (standard 3:26+3:27+4:1), és emiatt tolódik el a teljes 4. fejezet
+  számozása a MEK-hez képest eggyel. Emellett maga a MEK-forrás is más
+  fejezethatárt húz Ézs 3/4 között, mint a Károli-hagyomány, ezért a MEK nyers
+  para-száma itt önmagában nem használható a döntéshez. **Nem törölve, nem
+  javítva** — új sorként felvéve a `Karoli_adatminosegi_anomaliak.tsv`-be
+  (`Ézs 3:26`, `ELLENORZESRE_VAR`), önálló emberi döntésre vár.
+
+### 5. lépés — Összegzés
+
+- **39 üres sor összesen**, ebből **35 törölve (A)**, **3 pótolva (B)**, **1
+  megjelölve (C)**.
+- `Karoli_1908.tsv`: 31 193 → 31 158 sor (35 sor törölve, nettó változás; a 3
+  pótolt sor tartalmat kapott, sorszám nem változott).
+- Ez az arány (39 eset, ~24 fejezetben, egy 31 000+ soros fájlban) megerősíti,
+  hogy **elszórt, egyedi generálási hibákról van szó**, nem egy rendszeresebb
+  hibáról — a korábban már ismert Ez 21:33-37 esettel azonos hibaosztály.
+- Egyetlen új, önálló emberi döntésre váró eset került elő (Ézs 3:26 összeolvadt
+  vers), amely a `Karoli_adatminosegi_anomaliak.tsv`-be került fel, mint 8.
+  bejegyzés.
