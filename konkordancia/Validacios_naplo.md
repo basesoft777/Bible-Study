@@ -359,3 +359,76 @@ hogy nem "túlfutásról" van szó:
 - Egyetlen új, önálló emberi döntésre váró eset került elő (Ézs 3:26 összeolvadt
   vers), amely a `Karoli_adatminosegi_anomaliak.tsv`-be került fel, mint 8.
   bejegyzés.
+
+---
+
+## 2026.08.27 (folytatás) — Ézs 3:26 összeolvadt vers javítása + Ézs 4. fejezet eltolása
+
+*Basesoft jóváhagyásával lezárt eset — az előző (üres helyőrző) szakasz egyetlen
+nyitva maradt C-típusú tétele.*
+
+### Döntés és végrehajtás
+
+A nyugati/Károli-hagyomány szerinti fejezethatár (Ézs 3/4) megtartásával:
+
+- `Ézs 3:26` (korábban 3 vers összeolvadva: standard 3:26+3:27+4:1) szétbontva
+  **2 sorra**: `Ézs 3:26` ("Férfiaid fegyver által hullnak el...") és `Ézs 3:27`
+  ("És sírnak és gyászolnak kapui..."). A harmadik rész ("És megragad hét
+  asszony...") átkerült önálló `Ézs 4:1`-ként.
+- A korábbi `Ézs 4:1-5` tartalma változatlan sorrendben **eggyel feljebb tolva**
+  (`4:2`-`4:6`), egyetlen atomi csere-műveletben (nem volt átmeneti állapot
+  átfedő/duplikált tartalommal).
+- Az így felszabaduló `Ézs 4:6` helyre a korábbi `4:5` tartalma került ("És sátor
+  lészen árnyékul nappal a hőség ellen..."), ami megegyezik a MEK-forrás valódi
+  6. versével — az üres helyőrző véglegesen megszűnt.
+
+### Validáció
+
+| Ellenőrzés | Elvárt | Eredmény |
+|---|---|---|
+| `Ézs 3:26` és `Ézs 3:27` sorszáma | 2 | ✓ 2 |
+| `Ézs 4:1`-`4:6` sorszáma | 6 | ✓ 6 |
+| `Ézs 4:6` tartalma | nem üres, "És sátor lészen árnyékul..." | ✓ egyezik |
+| `Ézs 3` fejezet teljes verse-száma | 27 (korábbi 26 helyett) | ✓ 27 |
+| Nincs `Ézs 4:7` vagy magasabb (a shift nem futott túl) | igen | ✓ nincs |
+
+### Kapcsolódó fájlok frissítése
+
+- `Karoli_adatminosegi_anomaliak.tsv`: az `Ézs 3:26` sor `Allapot` mezője
+  `ELLENORZESRE_VAR` → `JAVITVA`, a `Javitas_forrasa` mező kiegészítve a megoldás
+  leírásával.
+- `Karoli_ures_helyorzo_sorok.tsv`: az `Ézs 4:6` sor `Allapot` mezője
+  `ELLENORZESRE_VAR` → `POTOLVA`.
+
+### Fontos mellékfelfedezés — `TAHOT_kivonat.tsv` NEM módosítva, de eltérés jelezve
+
+A `TAHOT_kivonat.tsv` ellenőrzésekor kiderült, hogy annak Károli-natív kulcsú
+Ézs 3-4 sorai **egy már korábban is fennálló, MÁS eredetű eltolódást** tükröznek,
+mint amit ma javítottunk:
+
+- A `TAHOT_kivonat.tsv`-ben `Ézs 3` pontosan **26** különálló verskulccsal szerepel
+  (`Ézs 3:1`-`Ézs 3:26`, nincs `Ézs 3:27`), és `Ézs 4` **6** verskulccsal
+  (`Ézs 4:1`-`Ézs 4:6`) — ez a standard/tankönyvi (héber/KJV) számozás.
+- Tartalom-egyeztetéssel (Strong-szavak alapján) igazolható, hogy a
+  `TAHOT_kivonat.tsv`-beli `Ézs 3:25` = héber v25 ("férfiaid fegyver által
+  hullnak el"), `Ézs 3:26` = héber v26 ("gyászolnak kapui... a földön ül"),
+  `Ézs 4:1` = héber 4:1 ("hét asszony egy férfit"), `Ézs 4:6` = héber v6
+  ("sátor lészen árnyékul").
+- Ez **nem egyezik** a `Karoli_1908.tsv` saját (és a MEK-kel konzisztens)
+  belső számozásával: a `Karoli_1908.tsv`-ben már a mai javítás ELŐTT is egy
+  korábbi, ma nem vizsgált ponton (valahol Ézs 3. fejezet elején/közepén)
+  egy verssel el volt tolva a MEK-hez képest — pl. a projekt `Ézs 3:24` sora
+  szó szerint a héber/KJV v23 tartalmát hordozza, nem v24-ét. Ez a mai
+  3:26-javítástól **független, korábbi, még fel nem tárt eltérés**.
+- **Nem módosítottam a `TAHOT_kivonat.tsv`-t** — a feladat kifejezett utasítása
+  szerint ez csak jelzendő, nem automatikusan javítandó. Önálló, jövőbeli
+  vizsgálatot igényel: melyik ponton (és miért) tér el a `Karoli_1908.tsv` saját
+  belső Ézs 3 számozása a `TAHOT_kivonat.tsv` héber-alapú Károli-kulcsaitól.
+
+### Lezárás
+
+Ezzel lezárult a `Karoli_ures_helyorzo_sorok.tsv` egyetlen nyitva maradt (C-típusú)
+tétele. A teljes üres-helyőrző vizsgálat végállapota: **35 A (törölve), 3 B
+(pótolva), 1 C (most már lezárva — JAVITVA/POTOLVA)**. Nyitott, önálló
+vizsgálatot igénylő tétel maradt: a fent jelzett `TAHOT_kivonat.tsv` vs.
+`Karoli_1908.tsv` Ézs 3 eleji számozási eltérés.
