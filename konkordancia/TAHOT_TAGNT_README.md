@@ -35,9 +35,16 @@ Igehely | Strong-szám | Ragozott alak | Kiejtés | Szótő | Rövid jelentés |
 - **Igehely — TAHOT_kivonat.tsv:** Károli-natív, magyar formátumú hivatkozás (pl.
   `1Móz 1:1`, `Péld 23:7`) — lásd lent a "Károli-natív kulcs és a zárójeles kettős
   hivatkozás javítása" szakaszt a pontos módszertanért.
-- **Igehely — TAGNT_kivonat.tsv:** a STEPBible-natív hivatkozás VÁLTOZATLANUL (pl.
-  `Gen.1.1`, `Pro.23.7`), **kivéve** a 4 zárójeles kettős hivatkozású ÚSZ-esetet (lásd
-  "Zárójeles kettős hivatkozás" szakasz lent) — ott az `Igehely` mező rögtön Károli-natív.
+- **Igehely — TAGNT_kivonat.tsv:** Károli-natív, magyar formátumú hivatkozás (pl.
+  `Máté 1:1`, `Zsid 4:12`) — a `Konyv_normalizalo_tabla.tsv` alapján egyszerű
+  könyv-rövidítés-cserével (2026-08-31-i konverzió, lásd "Károli-natív kulc-konverzió
+  (TAGNT)" szakasz lent). Ez korábban átmeneti állapot volt: a fájl sorai eredetileg
+  STEPBible-natív formátumban maradtak (pl. `Mat.1.1`), kivéve a 4 zárójeles kettős
+  hivatkozású ÚSZ-esetet (lásd "Zárójeles kettős hivatkozás" szakasz lent), amelyeknél
+  már korábban is Károli-natív volt az `Igehely` mező. A teljes konverzió után ez a 4
+  eset már nem kivétel a többihez képest, hanem a szabály korábban egyedileg igazolt
+  speciális esete — ezeket a konverzió változatlanul hagyta (nem futott le rajtuk
+  másodszor).
 - **Strong-szám:** tiszta forma, homográf-jelölés és instance-toldalék nélkül (pl. `H7225`,
   nem `H7225G` vagy `H7225G_A`).
 
@@ -155,9 +162,13 @@ magyar formátumú hivatkozást:
 | `Mrk.12.15(12.14)` | másodlagos | `Mk 12:14` |
 | `Act.19.41(19.40)` | másodlagos | `ApCsel 19:40` |
 
-Minden más (paren nélküli) sor `Igehely` mezője változatlanul a STEPBible-natív formátumot
-kapja — ez a Károli-natív kulcs kizárólag erre a 4, egyedileg igazolt esetre vonatkozó
-kivétel, nem általános magyar-formátum-konverzió.
+Ez a 4 eset korábban kivételnek számított: minden más (paren nélküli) sor `Igehely` mezője
+a STEPBible-natív formátumot kapta, csak ez a 4 egyedileg igazolt eset volt rögtön
+Károli-natív. **2026-08-31: a TAGNT egészét Károli-natívra konvertáltuk** (lásd lent), így
+ez az állapot lezárult — a 4 eset ma már nem kivétel a formátumot illetően, csupán abban
+különbözik a többi sortól, hogy a Károli-döntés (elsődleges/másodlagos zárójeles hivatkozás)
+egyedi, korábbi tartalmi vizsgálattal lett igazolva, nem a szabványos könyv-rövidítés-cserével
+állt elő.
 
 **Ismert, dokumentált ritka eset (~0,2% a TAGNT-sorokban) — egybeolvadt (krázis) szavak.**
 Néhány görög szó két morfémát olvaszt egybe egyetlen írott alakba (pl. `κἂν` = `καί`
@@ -247,6 +258,48 @@ korlátai közt). A sorok tartalma emiatt is változatlanul bekerült a kivonatb
 könyv+fejezet+vers → Károli-könyv+fejezet+vers egyszerű csere), csak a Károli-oldali
 igehely maga nem létezik — érdemes egy külön, jövőbeli Károli-adatminőségi vizsgálat
 tárgyává tenni.
+
+## Károli-natív kulc-konverzió (TAGNT)
+
+**2026-08-31.** A TAGNT teljes ~141 700 sorát a TAHOT-oldal mintájára Károli-natívra
+konvertáltuk, hogy a két fájl konzisztens legyen. Ez tisztán mechanikus, könyv-rövidítés-
+csere feladat volt, tartalmi/exegetikai döntés nélkül — a `Konyv_normalizalo_tabla.tsv`
+már korábban létezett és validálva volt (a TAHOT-konverzióhoz).
+
+**Módszer:**
+1. A 4, korábban is Károli-natív kivételes `Igehely` érték (`Róm 3:26`, `ApCsel 13:39`,
+   `Mk 12:14`, `ApCsel 19:40`) változatlanul maradt — ezeken a konverzió nem futott le
+   másodszor.
+2. Minden más sor `KönyvRöv.Fejezet.Vers` (pl. `Mat.1.1`) alakú `Igehely` mezőjét
+   szétvágtuk könyv-rövidítésre, fejezetre, versre, majd a könyv-rövidítést a
+   `Konyv_normalizalo_tabla.tsv` `STEPBible-rövidítés` → `Magyar rövidítés` táblája
+   alapján cseréltük, `MagyarRöv Fejezet:Vers` formátumba rendezve (pl. `Máté 1:1`
+   helyett ténylegesen `Mt 1:1`, mivel a tábla `Mat` → `Mt` párt rögzít).
+3. Egyetlen más mező (Strong-szám, ragozott alak, kiejtés, szótő, jelentés, angol
+   tükörfordítás, kritikai kiadás) sem változott.
+
+**Fontos megfigyelés a konverzió során:** a 4 kivételes vers (Róm 3:26, ApCsel 13:39,
+Mk 12:14, ApCsel 19:40) esetén a nyers fájlban **nemcsak** a már Károli-natív "kivétel"-
+sorok szerepeltek, hanem **további, STEPBible-natív formátumú sorok is ugyanahhoz a
+vershez** (pl. `Rom.3.26` egyéb szó-szegmensekre, a `Rom.3.25(3.26)` zárójeles elsődleges/
+másodlagos döntéstől függetlenül). Ezeket a szabványos szabály szerint konvertáltuk —
+emiatt a végleges fájlban ennél a 4 versnél több sor viseli a Károli-kulcsot, mint ahány
+eredetileg "kivételként" dokumentálva volt (pl. Róm 3:26: 26 sor összesen, ebből 5 volt az
+eredeti kivétel + 21 újonnan konvertált). Ez helyes és várt eredmény, nem hiba.
+
+**Validáció:**
+- Sorszám-egyezés: 141 747 sor (fejléccel) a konverzió előtt és után is — csak az
+  `Igehely` mező változott.
+- A 4 eredeti kivétel-sor bájtazonos maradt, ugyanazon a sorszámon.
+- Maradék STEPBible-formátum a konverzió után: 0 sor.
+- Spot-check: `Mat.1.1` → `Mt 1:1` (G0976 megmaradt), `Jhn.1.1` → `Ján 1:1`, `Rom.8.10` →
+  `Róm 8:10`, `Heb.4.12` → `Zsid 4:12` — mind egyezik.
+- Kereszt-ellenőrzés: `ujszovetseg/Rom_8v10_bovitett.md`, `ujszovetseg/Zsid_4v12_bovitett.md`,
+  `ujszovetseg/1Thessz_5v23_bovitett.md` Károli-natív igehely-kulcsai (`Róm 8:10`,
+  `Zsid 4:12`, `1Thessz 5:23`) pontosan megegyeznek a konvertált TAGNT-ben szereplő
+  kulcsokkal.
+- Minden STEPBible-könyvrövidítés megtalálható volt a normalizáló táblában, nem volt
+  hiányzó/kitalált párosítás.
 
 ## Méret és sorszám
 

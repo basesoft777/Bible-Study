@@ -17,6 +17,7 @@ megbízhatósági jelölés).*
 | 2026.08.26 | Teljes verzifikációs vizsgálat lezárása: 2094 ÓSZ + 4 ÚSZ zárójeles kettős hivatkozású verspár (A + B feladat) | A feladat: `TAHOT_kivonat.tsv` Károli-natív kulcsra állítása + minden zárójeles kettős hivatkozású ÓSZ-eset egyenkénti eldöntése. B feladat: `TAGNT_kivonat.tsv` Károli-natív kulcsra állítása a 4 ÚSZ-esetre + Károli-oldali adatminőségi gyorsaudit. C feladat: retroaktív ellenőrzés a motívumnaplóban + jelen lezáró bejegyzés. | Lásd részletesen lent | **Lezárva.** Nincs eldöntetlen (`NYITOTT`) eset. Az egyetlen nyitott kategória `ADATMINOSEGI_GYANU` (Károli-oldali, nem versifikációs okú). |
 | 2026.08.27 | 7 Károli-adatminőségi anomália javítása (Ez 20:44, Jób 41:25, Préd 9:18, 2Móz 35:35, Dán 3:30, Én 5:16, Hós 14:9) + Ez 20/21 határ lezárása | Független, ellenőrzött forrással (MEK 00161, Drótos-digitalizálás) való összevetés: mind a 7 gyanús sor ténylegesen összeolvadt versekből állt, MEK-szöveg alapján szétbontva. Ez 20/21 határ: MEK szerint Ez 21 pontosan 32 verset tartalmaz (nyugati/elsődleges számozás) → döntés: ELSŐDLEGES. | Lásd részletesen lent | **Lezárva.** Mind a 7 anomália `JAVITVA`. Ez 20/21 határ `ELSŐDLEGES`-re döntve, a 37 érintett sor átkerült a `TAHOT_kivonat_nyitott_esetek.tsv`-ből a `TAHOT_kivonat.tsv`-be. |
 | 2026.08.31 | Ézs 3:18-24 gyanú lezárása (teljes Ézs 3. fejezet +1 eltolódás a `TAHOT_kivonat.tsv`-ben) | Chat-felület (Claude Sonnet 5) tartalmi összevetése: Ézs 2:22 (héber) = Ézs 3:1 (Károli) fejezethatár-eltérés az oka, Ézs 4:1-nél magától megszűnik | Lásd részletesen lent | **Lezárva.** `TAHOT_kivonat.tsv` Ézs 2:22 és Ézs 3:1-26 kulcsai +1 eltolva, `Verzifikacios_elteres_tabla.tsv` és `Karoli_adatminosegi_anomaliak.tsv` frissítve (`JAVITVA`). |
+| 2026.08.31 | `TAGNT_kivonat.tsv` teljes Károli-natív kulc-konverziója (141 746 sor, a 4 korábbi kivétel kivételével) | Mechanikus könyv-rövidítés-csere `Konyv_normalizalo_tabla.tsv` alapján (Python-szkript, `KönyvRöv.Fejezet.Vers` → `MagyarRöv Fejezet:Vers`), a 4 már Károli-natív sor (Róm 3:26, ApCsel 13:39, Mk 12:14, ApCsel 19:40) érintetlenül hagyva | Lásd részletesen lent | **Lezárva.** Sorszám-egyezés (141 747, fejléccel), 4 kivétel bájtazonos, 0 maradék STEPBible-formátum, minden spot-check és ÚSZ-tanulmány kereszt-ellenőrzés egyezik. Nem volt hiányzó könyv-rövidítés a normalizáló táblában. |
 
 ---
 
@@ -633,3 +634,69 @@ okok miatt — Basesoft döntésére vár, hogy szükséges-e a fájlba új soro
 felvenni ehhez a 3 esethez (eddig nem szerepeltek benne gyanúként), vagy a
 `Verzifikacios_elteres_tabla.tsv` + ez a naplóbejegyzés önmagában elegendő
 dokumentáció.
+
+---
+
+## 2026.08.31 (folytatás) — `TAGNT_kivonat.tsv` teljes Károli-natív kulc-konverziója
+
+### A feladat
+
+A `TAGNT_kivonat.tsv` `Igehely` mezője a 4 korábban egyedileg igazolt kivétel
+(`Róm 3:26`, `ApCsel 13:39`, `Mk 12:14`, `ApCsel 19:40`) mellett STEPBible-natív
+formátumban volt (pl. `Mat.1.1`, `Jhn.3.16`), ellentétben a TAHOT-oldallal, ahol
+minden sor már Károli-natív. A cél a két fájl konzisztenssé tétele: a TAGNT
+teljes sorállományának mechanikus könyv-rövidítés-cseréje a már validált
+`Konyv_normalizalo_tabla.tsv` alapján — tartalmi/exegetikai döntés nélkül.
+
+### Módszer
+
+Python-szkript (`konkordancia/convert_tagnt.py`):
+1. A 4 ismert Károli-natív kivételes `Igehely` érték pontos egyezés esetén
+   változatlanul maradt (nem futott le rajtuk a konverzió).
+2. Minden más sor `Igehely` mezőjét `^([A-Za-z0-9]+)\.(\d+)\.(\d+)$` mintával
+   szétvágva könyvre/fejezetre/versre, a könyv-rövidítést a normalizáló tábla
+   `STEPBible-rövidítés` → `Magyar rövidítés` párja alapján cserélve,
+   `MagyarRöv Fejezet:Vers` formátumba rendezve (pl. `Mat.1.1` → `Mt 1:1`).
+3. A CRLF sorvégek és minden más mező (Strong-szám, ragozott alak, kiejtés,
+   szótő, jelentés, angol tükörfordítás, kritikai kiadás) érintetlenül maradt.
+
+### Validáció
+
+| Ellenőrzés | Elvárt | Eredmény |
+|---|---|---|
+| Sorszám (fejléccel) | 141 747, változatlan | ✓ 141 747 = 141 747 |
+| A 4 kivétel bájtazonossága, azonos sorszámon | változatlan | ✓ mind a 26 érintett sor (26=5+11+4+6 eredeti kivétel-sor) bájtra egyezik ugyanazon a sorszámon |
+| Maradék STEPBible-formátum (`^[A-Za-z0-9]+\.\d+\.\d+\t`) | 0 | ✓ 0 |
+| Minden konvertált sor a táblának megfelelő | 141 720 sor, mind egyezik | ✓ programozott ellenőrzés: 0 eltérés |
+| Minden más mező (rest of line) változatlan | igen | ✓ 0 eltérés |
+| `Mat.1.1` → | `Mt 1:1` (a tábla `Mat`→`Mt`-t rögzít, nem `Máté`-t) | ✓ egyezik, G0976 (Biblos) megmaradt |
+| `Jhn.1.1` → | `Ján 1:1` | ✓ egyezik |
+| `Rom.8.10` → | `Róm 8:10` | ✓ egyezik |
+| `Heb.4.12` → | `Zsid 4:12` | ✓ egyezik |
+| Kereszt-ellenőrzés `ujszovetseg/Rom_8v10_bovitett.md`, `ujszovetseg/Zsid_4v12_bovitett.md`, `ujszovetseg/1Thessz_5v23_bovitett.md` | a hivatkozott kulcsok (`Róm 8:10`, `Zsid 4:12`, `1Thessz 5:23`) szerepeljenek pontosan így a konvertált TAGNT-ben | ✓ mindhárom pontosan egyezik (nem pl. `1Thes 5:23`) |
+| Hiányzó könyv-rövidítés a normalizáló táblában | nem lehet | ✓ mind a 27 újszövetségi könyv-rövidítés megtalálható volt, nem volt kitalált/üres párosítás |
+
+### Megfigyelés — a 4 kivételes vers "duplikált" sorai
+
+A 4 kivételes vers esetén a nyers fájl **nemcsak** a már Károli-natív kivétel-
+sorokat tartalmazta, hanem ugyanahhoz a vershez tartozó, STEPBible-natív
+formátumú további sorokat is (pl. `Rom.3.26` más szó-szegmensekre). Ezeket a
+szabvány szerint konvertáltuk, ezért a végeredményben ennél a 4 versnél több
+sor viseli a Károli-kulcsot, mint az eredeti "kivétel"-számú sor (pl.
+Róm 3:26: 5 eredeti kivétel + 21 újonnan konvertált = 26 összesen). Ez helyes,
+nem hiba — a `TAHOT_TAGNT_README.md` új szakasza dokumentálja.
+
+### Módosított fájlok
+
+- `konkordancia/TAGNT_kivonat.tsv` (141 720 sor `Igehely` mezője konvertálva, 26
+  sor változatlan)
+- `konkordancia/TAHOT_TAGNT_README.md` (a TAGNT-oldal leírásának frissítése +
+  új "Károli-natív kulc-konverzió (TAGNT)" szakasz)
+- `konkordancia/Validacios_naplo.md` (ez a bejegyzés)
+
+A konverzióhoz használt `convert_tagnt.py` segéd-szkript és a
+`TAGNT_kivonat.tsv.bak` biztonsági másolat a validáció lezárása után törölve
+lett a munkakönyvtárból (a szkript logikája ebben a naplóbejegyzésben
+dokumentálva van).
+
+**Lezárva.** Nincs eldöntetlen eset, nincs hiányzó könyv-rövidítés.
