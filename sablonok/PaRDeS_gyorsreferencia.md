@@ -1,5 +1,8 @@
 # PaRDeS gyorsreferencia
 
+*v10 — 2026.08.31 (Motívum-felismerés módszertana: minősítési kritériumok
+(✅/❌/🔶) konkretizálva — eddig csak elnevezve voltak, most alkalmazható
+szabályokkal)*
 *v9 — 2026.08.27 (rövid utalás hozzáadva a Motívum-felismerés módszertana
 végéhez az új, kötelező kereszthivatkozás-keresési naplóra — részletek:
 `2_PaRDeS_bovitett_sablon.md` v12, `4_PaRDeS_tematikus_sablon.md` v7,
@@ -80,10 +83,28 @@ NÉGY párhuzamos forrásból gyűjtünk jelöltet, mindegyiket forrás-cimkéve
   megalapozottságú, mindig explicit jelölve marad)
 
 Minden jelöltet HÁROM kategóriába sorolunk, TARTALMI olvasással (nem mechanikus
-szűréssel):
-- ✅ valódi, releváns találat
-- ❌ hamis találat (felszíni/homonim egyezés)
-- 🔶 rokon, de eltérő szerkezetű/kategóriájú
+szűréssel), az alábbi konkrét kritériumok szerint:
+
+- ✅ **valódi, releváns találat** — azonos referens/állítás (ugyanarról a
+  dologról/eseményről beszél mindkét igehely), VAGY explicit szerzői szándékú
+  idézés/visszautalás (pl. az egyik szöveg tudatosan idézi vagy visszhangozza a
+  másikat, akkor is, ha a referens időben/kontextusban eltér — pl. Ján 1:1
+  tudatosan idézi Gen 1:1 nyitó szavait).
+- 🔶 **rokon, de eltérő szerkezetű/kategóriájú** — azonos lexikai gyök/szó
+  (megerősített Strong-szám-egyezés VAGY erős tematikus rokonság), DE más
+  referens vagy más grammatikai szerep (pl. ugyanaz az ige kozmikus teremtésre
+  ÉS személyes/metaforikus újjáteremtésre is vonatkozhat — a szó azonos, a
+  tárgy nem). Ez a kategória NEM jelent gyengeséget — Drash-szinten gyakran
+  éppen ez a fajta kapcsolat a leggazdagabb, csak explicit jelölni kell, hogy
+  tematikus, nem szigorúan lexikai egyezésről van szó.
+- ❌ **hamis találat** — felszíni/véletlen szóegyezés, homonima, vagy két,
+  egymástól tartalmilag független kontextus, amiket csak a közös szó/hivatkozás
+  köt össze mechanikusan (pl. egy csataleírásban véletlenül előforduló szó,
+  aminek semmi köze a vizsgált motívumhoz).
+
+Bizonytalan esetben (a három kategória egyike sem egyértelmű) az indoklásban
+explicit rögzítsd, miért nehéz a besorolás — ne kényszerítsd bele automatikusan
+egyikbe sem csak a forma kedvéért.
 
 FIGYELEM — a két granularitás nem helyettesíti egymást: a [Strong] forrás
 ritkasági küszöbe (ld. lent) KIZÁRÓLAG a lexikai (szó-szintű) csatornát szűkíti.

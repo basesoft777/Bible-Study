@@ -1,5 +1,8 @@
 # 2. Bővített PaRDeS sablon — teljes, részletes verzió
 
+*v14 — 2026.08.31 (Új, opcionális „További igazolt kapcsolódások" kompakt lista
+a 4. pont végén — a szintenkénti 1-2-es limiten túli ✅ jelöltek tömör
+megjelenítésére, a kereszthivatkozás-napló mellett, nem helyette)*
 *v13 — 2026.08.27 (Napló-frissítési utasítás javítva: a korábbi felsorolás csak
 5 szekciót nevezett meg a hivatalos 7-ből, kimaradt a Részletes kulcsszó-
 magyarázatok és a Feldolgozott igeszakaszok tábla — most mind a 7 név szerint
@@ -119,6 +122,21 @@ nem egyszerűen kimaradt a keresésből.
 - Ha a `PaRDeS_motivumok.md` fájlban már szerepel az adott motívum egy korábbi tanulmányból: *„Ismétlődő motívum korábbi tanulmányodból: ..."* — csak tényleges kapcsolódás esetén.
 - **A tanulmány után frissítsd** a `PaRDeS_motivumok.md` fájlt az új előfordulással — a bővített naplószerkezet mind a HÉT érintett részét (1. tematikus áttekintés, 2. kulcsszó-index Téma/ÓSZ-ÚSZ/Előfordulás-szám oszlopai, 3. részletes kulcsszó-magyarázatok — beleértve a „Lásd még" kereszthivatkozásokat is, 4. könyv szerinti index, 5. ⭐ Emlékeztető küszöb, 6. „Még nem feldolgozott, de valószínű motívumok", 7. „Feldolgozott igeszakaszok" tábla), nem csak a kulcsszó-listát. Mielőtt a frissítést véglegesítenéd, `grep`-pel ellenőrizd, mely szekciók ténylegesen érintettek — ne feltételezd.
 - **Rokon motívum-csoport küszöbszámítás:** ha egy azonosított motívum **tematikusan rokon, de lexikailag önálló** egy másik, már naplózott motívummal (pl. eltérő szó, de rokon fogalom vagy ismétlődő mintázat), az egyéni előfordulás-számláló mellett **jelöld külön a rokon-csoport összesített előfordulását is**, figyelmeztetésként (pl. „a szűkebb motívum önmagában még N-nél tart, de a tágabb rokon-csoporttal együtt már túl van a küszöbön"). A csoportosítás mindig indoklással történjen — ne legyen automatikus vagy erőltetett.
+
+**További igazolt kapcsolódások (opcionális, kompakt lista):**
+Ha a keresés a szintenkénti 1-2 legerősebbön túl is talál ✅ minősítésű
+jelöltet, ezeket NE teljes 🔗 idézet-blokkban, hanem egy rövid, bullet-point-os
+listában add meg az „Összegzés" bekezdés után:
+
+> **További igazolt kapcsolódások:** Ámós 4:13 (Isten mint teremtő, doxológia);
+> Ézs 40:28 (Isten mint a föld határainak teremtője); 2Kir 19:15 / Ézs 37:16
+> (szinoptikus pár, „te teremtetted az eget és a földet")
+
+Formátum: igehely + zárójeles, 3-6 szavas indoklás, vesszővel elválasztva,
+NEM külön 🔗 blokkban. Ez nem helyettesíti a kereszthivatkozás-naplót (ahol a
+TELJES minősített lista, indoklással szerepel) — ez a tanulmány saját olvasói
+számára ad tömör, de nem elveszejtett hozzáférést a további igazolt
+kapcsolódásokhoz, anélkül hogy a fő szöveget túlterhelné.
 
 **Ha explicit kéred egy igehely-pár/motívum mélyebb összevetését**, az önálló, célzott elemzésként készül (nem a fő tanulmány része), az alábbi szerkezettel:
 1. Szövegkörnyezet mindkét igehelyre.
