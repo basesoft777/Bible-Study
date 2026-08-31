@@ -1,4 +1,4 @@
-# Konkordancia — KJV-Strongs és ASV-Strongs (Példabeszédek, 1Mózes)
+# Konkordancia — KJV-Strongs és ASV-Strongs (Példabeszédek, 1Mózes, 2Mózes)
 
 Ez a mappa a PaRDeS-projekt Strong-számmal ellátott angol híd-forrásait tartalmazza,
 szavankénti bontásban, a `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` döntési fájl
@@ -12,6 +12,8 @@ szavankénti bontásban, a `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` dönt
 | `ASV_Strongs_Proverbs.tsv` | ASV (American Standard Version, 1901) + Strong-számok, Példabeszédek 1-31 | 5872 |
 | `KJV_Strongs_Genesis.tsv` | KJV + Strong-számok + morfológiai kódok, 1Mózes 1-50 | 15098 |
 | `ASV_Strongs_Genesis.tsv` | ASV + Strong-számok, 1Mózes 1-50 | 14917 |
+| `KJV_Strongs_Exodus.tsv` | KJV + Strong-számok + morfológiai kódok, 2Mózes 1-40 | 12253 |
+| `ASV_Strongs_Exodus.tsv` | ASV + Strong-számok, 2Mózes 1-40 | 12119 |
 
 ## Oszlopok
 
@@ -59,8 +61,8 @@ változatlan).
 
 - **KJV_Strongs minta-URL:** `https://studybible.info/KJV_Strongs/{Könyv}%20{N}` (pl. `Proverbs%20{N}`, `Genesis%20{N}`)
 - **ASV_Strongs minta-URL:** `https://studybible.info/ASV_Strongs/{Könyv}%20{N}`
-- **Letöltés dátuma:** 2026-08-24 (Példabeszédek), 2026-08-24 (1Mózes)
-- **Letöltő/feldolgozó módszer:** oldalankénti HTML-letöltés (`fetch`), majd szavankénti kinyerés a forrás `<span class="unit">` szerkezetéből (Strong-szám-hivatkozás + angol szórész; a `[H####]` formátumú, zárójeles hivatkozások morfológiai kódként lettek a megelőző szóhoz rendelve, nem önálló szóként számolva)
+- **Letöltés dátuma:** 2026-08-24 (Példabeszédek), 2026-08-24 (1Mózes), 2026-08-31 (2Mózes)
+- **Letöltő/feldolgozó módszer:** oldalankénti HTML-letöltés (`fetch`), majd szavankénti kinyerés a forrás `<span class="unit">` szerkezetéből (Strong-szám-hivatkozás + angol szórész; a `[H####]` formátumú, zárójeles hivatkozások morfológiai kódként lettek a megelőző szóhoz rendelve, nem önálló szóként számolva). A 2Mózes-feldolgozásnál (80 oldal: 40 fejezet × KJV+ASV) ugyanez a parszolási logika egy erre a célra írt Node.js-szkriptbe került (programozott letöltés + kinyerés a fenti `span.unit` szerkezet szerint), a korábbi két könyvnél alkalmazott, munkamenetenkénti kézi HTML-beolvasás helyett — a kinyerési szabályok (versszám-span vs. szó-span megkülönböztetése, zárójeles morfológiai kódok hozzárendelése) változatlanok maradtak.
 - **Ismert parszolási buktató (a Példabeszédek-körben derült ki, az 1Mózes-feldolgozás ugyanezt a javított logikát használta):** a versszám-jelölő span class-neve `"ref english"`, a szó-span-oké `"english"` — ha a parszoló ezt nem különbözteti meg explicit, hanem pozíció alapján (pl. "hagyd ki az első egységet") próbálja kiszűrni a versszámot, minden vers **első valódi szava is kimarad**, mert a versszám-span technikailag sosem illeszkedik a szó-mintára. A helyes megoldás: ne legyen semmilyen "hagyd ki az elsőt" logika — a versszám-span emiatt magától sosem kerül be az eredménybe.
 
 ## Licenc / eredet
@@ -96,5 +98,21 @@ Mind a hat szó (Strong-szám és morfológiai kód) számjegyre pontosan egyezi
 versre (a nulla-kitöltés különbsége dokumentált fent, az "Igehely-formátum" szakasz
 utáni bekezdésben).
 
-Mindkét könyvnél minden fejezet (Péld 1-31, 1Móz 1-50) sikeresen letöltve és feldolgozva,
-0 hibás formátumú Strong-szám és 0 üres mező egyik fájlban sem.
+Mindhárom könyvnél minden fejezet (Péld 1-31, 1Móz 1-50, 2Móz 1-40) sikeresen letöltve és
+feldolgozva, 0 hibás formátumú Strong-szám és 0 üres kötelező mező egyik fájlban sem.
+
+**2Mózes — Exo.3.14** ("ÉN VAGYOK AKI VAGYOK" / "I AM THAT I AM" — vö. a döntési fájl 4.9
+pontjában dokumentált módszertan) egyezést mutat mindkét irányban: a KJV és ASV
+Strong-sorozata szó szerint megegyezik egymással (`H430, H559, H4872, H1961, H1961, H559,
+H559, H1121, H3478, H7971`), és minden előforduló Strong-szám megjelenik a
+`TAHOT_kivonat.tsv` "2Móz 3:14" sorai között is (a TAHOT ott néhány további funkciószót és
+egy harmadik `H1961`-előfordulást is tartalmaz, amit a KJV/ASV forrás egy szomszédos szóval
+összevonva jelenít meg — ez a forrás szegmentálásának sajátossága, nem hiba).
+
+**2Mózes — Exo.20.1, Exo.20.13, Exo.20.17** (Tízparancsolat, mintavételes ellenőrzés)
+mindhárom versnél a KJV és ASV Strong-sorozata szó szerint megegyezik egymással, és minden
+tartalmi (nem-funkciószó) Strong-szám megjelenik a `TAHOT_kivonat.tsv` megfelelő "2Móz 20:x"
+soraiban.
+
+**Egyik ellenőrzött 2Mózes-versnél sem merült fel KJV≠ASV eltérés** — nincs ⚠️ jelzésre váró
+tétel ebből a validációs körből.
