@@ -131,5 +131,49 @@ Konkrét következmények:
 3. A meglévő kétszintű felépítés (tömör Kulcsszó-index + bővebb Kulcsszavak részletesen szakasz) pontosan illeszkedik ehhez az elvhez — ez most explicit tervezési szabállyá válik, nem csak véletlenül kialakult formátum marad.
 
 Döntés: mindkét szakasz (11-12.) Basesoft jóváhagyásával rögzítve (2026.08.30) — irányadó elvek a jövőbeli Motívumlexikon-architektúrához, implementáció még nem indult el.
-13. Következő lépés
+## 14. Prompt Caching / import-architektúra dokumentum feldolgozása
+    (2026.08.31, Basesoft által megosztott anyag alapján)
+
+**A megosztott dokumentum tartalma:** gyakorlati javaslat a Strong–BDB–TWOT
+import AI-alapú feldolgozásának költséghatékony megszervezésére —
+Anthropic API prompt-caching technika (állandó szabály/séma/példa-blokk
+cache-elve, csak a szófüggő rész megy "élesben" minden híváskor), valamint
+egy architektúra-javaslat: nyers XML → Python-parser (ElementTree/lxml) →
+SQLite/JSONL tartós tárolás → AI csak a ténylegesen értelmezést igénylő
+részekre (fordítás, OCR-javítás, teológiai magyarázat ellenőrzése).
+
+**A chat-felület (Claude Sonnet 5) értékelése:**
+
+1. **Egyetértés a réteg-szétválasztással**: a Strong↔BDB↔TWOT-szám
+   összerendelés determinisztikus adatkapcsolás, nem AI-feladat — ez
+   illeszkedik ahhoz, amit korábban (SQLite-demonstráció) is megmutattunk.
+2. **Ütközés jelezve, de NEM eldöntve**: a dokumentum a BDB-fordítást
+   tömeges, előre elvégzett kampányként veszi alapul (H1-H8674, cache-
+   optimalizálva) — ez szemben áll a 9. szakaszban rögzített döntéssel
+   (fordítás tanulmány-vezérelt, fokozatos, nem előre tömeges). Javasolt
+   feloldás (MÉG NEM ELDÖNTÖTT): a strukturális import (angol nyersadat
+   SQLite-ba, AI nélkül, tisztán parserrel) elválasztható a fordítás
+   ütemezésétől — az import mehetne tömegesen, a fordítás maradna a 9.
+   szakasz szerinti fokozatos módban, a cache-technikát csak az egyedi,
+   on-demand fordítási hívásokon alkalmazva (közös szabályblokk cache-elve,
+   akkor is, ha nem tömeges kampányban történik).
+3. **TWOT-forrás — licenc-kérdés jelezve, Basesoft pontosítása alapján
+   RÉSZBEN FELOLDVA**: a dokumentum egy "TWOT OCR-forrásra" hivatkozik,
+   ami — ha a teljes TWOT-szöveget jelentené — védett, 1980-as kiadású mű,
+   nem közkincs, mint a BDB. **Basesoft pontosítása**: a tervezett
+   felhasználás **kizárólag a TWOT-hivatkozási SZÁM** megjelenítése a
+   lexikonban (pl. "4a"), NEM a TWOT-szöveg maga. A TWOT-szám már most is
+   elérhető, jogtiszta forrásból — az `openscriptures/HebrewLexicon`
+   `LexicalIndex.xml`-je tartalmazza, saját dokumentációja szerint
+   *"TWOT numbers are included for reference purposes only... in no way
+   directly transcribing the Theological Wordbook"*. Emiatt a TWOT-szám
+   megjelenítése **nem igényel új forrás/licenc-ellenőrzést** — a
+   TWOT-szöveg (OCR-forrás) bevonása viszont továbbra is tisztázandó
+   kérdés marad, ha valaha felmerülne.
+
+**Döntés:** egyelőre semmi nincs eldöntve — ez a szakasz a dokumentum
+tartalmát, az értékelést és a TWOT-szám/TWOT-szöveg megkülönböztetést
+rögzíti, a korábbi szakaszokhoz hasonlóan tervezési feljegyzésként.
+
+## 15. Következő lépés
 Egyelőre nincs — ez a fájl kizárólag a terv jelenlegi állását rögzíti. A folytatás (melyik nyitott kérdéssel induljunk) Basesoft külön kezdeményezésére történik.
