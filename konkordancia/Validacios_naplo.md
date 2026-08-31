@@ -16,6 +16,7 @@ megbízhatósági jelölés).*
 | 2026.08.24 | Gen.1-16 (a `Konnyu_ellenorzes_1-16_osszesito_v2.md` megerősített szavai) | Betöltés a `Karoli_Strong_kivonat.tsv` join-táblába: tartalom-alapú azonosítás + KJV/ASV kereszt-ellenőrzés (4.13 szabály), majd minden Károli-szó szigorú, teljes szóhatáros egyezés-ellenőrzése a `Karoli_1908.tsv` tényleges vers-szövegével szemben | 178 sor ténylegesen betöltve (Reliability: magas=177, közepes=1) | KJV/ASV kereszt-ellenőrzés: 177 sor "magas" (talált egyező KJV vagy ASV Strong-adat ugyanarra a versre/Strong-számra), 1 sor "közepes" (Gen.12.1 H1980 "Eredj" — nincs KJV/ASV Strong-adat erre a vers/Strong-párra); ebben a körben ÚJ KJV/ASV ELTÉRÉS nem került elő (a meglévő párosítás minden fellelt esetben egyezett). 7 sor kihagyva "TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ" jelöléssel (צֶלֶם, גַּן, עֵזֶר כְּנֶגְדּוֹ, צֵלָע, אִשָּׁה, נָחָשׁ, מִזְבֵּחַ), 2 sor kihagyva nyitott ELTÉRÉS miatt (1Móz 3:7-24 עֵרֻמִּם/H6174, 1Móz 4:1-24 הֶבֶל/H1892) — egyik kihagyott tétel sem került be a join-táblába, emberi döntésre várnak |
 | 2026.08.26 | Teljes verzifikációs vizsgálat lezárása: 2094 ÓSZ + 4 ÚSZ zárójeles kettős hivatkozású verspár (A + B feladat) | A feladat: `TAHOT_kivonat.tsv` Károli-natív kulcsra állítása + minden zárójeles kettős hivatkozású ÓSZ-eset egyenkénti eldöntése. B feladat: `TAGNT_kivonat.tsv` Károli-natív kulcsra állítása a 4 ÚSZ-esetre + Károli-oldali adatminőségi gyorsaudit. C feladat: retroaktív ellenőrzés a motívumnaplóban + jelen lezáró bejegyzés. | Lásd részletesen lent | **Lezárva.** Nincs eldöntetlen (`NYITOTT`) eset. Az egyetlen nyitott kategória `ADATMINOSEGI_GYANU` (Károli-oldali, nem versifikációs okú). |
 | 2026.08.27 | 7 Károli-adatminőségi anomália javítása (Ez 20:44, Jób 41:25, Préd 9:18, 2Móz 35:35, Dán 3:30, Én 5:16, Hós 14:9) + Ez 20/21 határ lezárása | Független, ellenőrzött forrással (MEK 00161, Drótos-digitalizálás) való összevetés: mind a 7 gyanús sor ténylegesen összeolvadt versekből állt, MEK-szöveg alapján szétbontva. Ez 20/21 határ: MEK szerint Ez 21 pontosan 32 verset tartalmaz (nyugati/elsődleges számozás) → döntés: ELSŐDLEGES. | Lásd részletesen lent | **Lezárva.** Mind a 7 anomália `JAVITVA`. Ez 20/21 határ `ELSŐDLEGES`-re döntve, a 37 érintett sor átkerült a `TAHOT_kivonat_nyitott_esetek.tsv`-ből a `TAHOT_kivonat.tsv`-be. |
+| 2026.08.31 | Ézs 3:18-24 gyanú lezárása (teljes Ézs 3. fejezet +1 eltolódás a `TAHOT_kivonat.tsv`-ben) | Chat-felület (Claude Sonnet 5) tartalmi összevetése: Ézs 2:22 (héber) = Ézs 3:1 (Károli) fejezethatár-eltérés az oka, Ézs 4:1-nél magától megszűnik | Lásd részletesen lent | **Lezárva.** `TAHOT_kivonat.tsv` Ézs 2:22 és Ézs 3:1-26 kulcsai +1 eltolva, `Verzifikacios_elteres_tabla.tsv` és `Karoli_adatminosegi_anomaliak.tsv` frissítve (`JAVITVA`). |
 
 ---
 
@@ -480,3 +481,74 @@ megjelenítési címkeként megtartva, nem keresési kulcsként.
 
 Ez a felvetés a felfüggesztett "Bibliai Motívumlexikon" kezdeményezés első
 konkrét tervezési inputja — akkor veendő elő, amikor az a munka megkezdődik.
+
+---
+
+## 2026.08.31 — Ézs 3:18-24 gyanú lezárása: a teljes Ézs 3. fejezet +1 eltolódása
+
+*A 2026.08.27-i, nyitva hagyott `Ézs 3:18-24` gyanú (lásd fenti szakasz) végleges
+kivizsgálása és javítása. Felfedezés módja: a chat-felület (Claude Sonnet 5)
+tartalmi összevetése, **nem** automatikus szkript vagy a TVTMS-alapú
+`LXX_versificacios_terkep.tsv` mechanizmus.*
+
+### A hiba pontos oka
+
+A gyanú helyes volt, de a hatóköre a feltételezettnél tágabb: nem egy lokális,
+3:18-24 közötti eltolódásról van szó, hanem a **teljes Ézs 3. fejezet** el volt
+tolva a `TAHOT_kivonat.tsv`-ben a Károli-natív számozáshoz képest. Az ok: a héber
+(TAHOT) Ézs 2:22 verse ("szűnjetek meg az emberben bízni... a kinek egy lehellet
+van orrában") a Károli-hagyományban a **3. fejezet első verseként** szerepel
+(Ézs 3:1), nem a 2. fejezet záróverseként — valódi, szándékos fejezethatár-eltérés
+a Károli-fordítási hagyományban, nem digitalizálási hiba. A Károli-szöveg
+(`Karoli_1908.tsv`) maga nem érintett, nem hibás.
+
+Tartalmi bizonyíték-lánc (spot-check-ekkel megerősítve): TAHOT "Ézs 2:22" =
+Károli "Ézs 3:1" ("cease... ember... orr... lehellet" gyökök), ..., TAHOT "Ézs
+3:24" = Károli "Ézs 3:25" (balzsamillat/büdösség — az eredeti 2026.08.27-i
+gyanú alapja), TAHOT "Ézs 3:26" = Károli "Ézs 3:27" (sírás/gyász a kapukban).
+Ézs 4:1-nél az eltolódás magától megszűnik — ez a korábbi (2026.08.27-i) Ézs
+3:26 összeolvadt-vers javítás mellékhatása.
+
+**Új kategóriájú eset a korábbi 2094 ÓSZ-eset TVTMS-alapú javításához képest:**
+a nyers STEPBible-forrás ennél a versnél **nem** ad zárójeles kettős
+hivatkozást (az angol/NRSV számozás is 2:22-t ad, csak a Károli-hagyomány tér
+el mindkettőtől), ezért ez a `TAHOT_TAGNT_README.md`-ben dokumentált automatikus
+mechanizmus ("Károli-natív kulcs és a zárójeles kettős hivatkozás javítása")
+számára láthatatlan volt — teljesen más okú, mint az ott felsorolt esetek, és
+nem is szerepelt sem a `Verzifikacios_elteres_tabla.tsv`-ben, sem a
+`TAHOT_kivonat_nyitott_esetek.tsv`-ben.
+
+### Végrehajtott javítás
+
+- `TAHOT_kivonat.tsv`: az `Ézs 2:22` és `Ézs 3:1`-`Ézs 3:26` közötti sorok
+  `Igehely` kulcsa eggyel eltolva (`Ézs 2:22`→`Ézs 3:1`, `Ézs 3:N`→`Ézs
+  3:N+1`), kizárólag az első oszlopon, a fájlon belüli eredeti sorrend
+  megtartásával. `Ézs 2:1`-`2:21` és `Ézs 4:1`+ változatlan.
+- `Verzifikacios_elteres_tabla.tsv`: új sor (`Isa.2.22 / Isa.3.1 / Ézs 3:1 /
+  ÓSZ / IGAZOLVA`).
+- `Karoli_adatminosegi_anomaliak.tsv`: az `Ézs 3:18-24` sor `Allapot` mezője
+  `ELLENORZESRE_VAR` → `JAVITVA`, a `Javitas_forrasa` mező kiegészítve a
+  megoldás leírásával.
+
+### Validáció
+
+| Ellenőrzés | Elvárt | Eredmény |
+|---|---|---|
+| `Ézs 2:22`+`Ézs 3:*` sorok száma a módosítás előtt/után | egyezik (csak kulcs változik) | ✓ 417 = 417 |
+| `TAHOT_kivonat.tsv` teljes sorszáma | változatlan | ✓ 468 969 = 468 969 |
+| `Ézs 3:1` tartalma (volt `Ézs 2:22`) | "cease/ember/orr/lehellet" gyökök | ✓ egyezik (H2308, H0120, H0639, H5397 köre) |
+| `Ézs 3:27` tartalma (volt `Ézs 3:26`) | "sírnak és gyászolnak kapui" | ✓ egyezik (אָנָה lament, אָבַל mourn, פֶּ֫תַח gate) |
+| `Ézs 2:21` és `Ézs 4:1` | változatlan (nincs másodszori eltolódás) | ✓ változatlan |
+| `Verzifikacios_elteres_tabla.tsv` sorszáma | 4 régi + 1 új = 5 | ✓ 5 |
+
+### Nyitott, önálló mérlegelést igénylő tétel (NEM ennek a feladatnak a része)
+
+**Nem kizárt, hogy a Károli-korpuszban máshol is van hasonló, a jelenlegi
+automatikus detekciós mechanizmus (zárójeles kettős hivatkozás / TVTMS) számára
+láthatatlan fejezethatár-eltérés** — mivel ezt az esetet is csak tartalmi
+összevetés, nem szisztematikus keresés tárta fel. Ez egy külön, jövőbeli
+audit-tétel, Basesoft-tal egyeztetendő döntés, nem ennek a javításnak a
+hatóköre. Szintén nem vizsgált: a `Karoli_Strong_kivonat.tsv` vagy más, Ézs 3-ra
+esetlegesen hivatkozó lezárt tanulmány/motívum-napló bejegyzés — jelenlegi
+ismeret szerint nincs ilyen lezárt tanulmány, de ezt külön ellenőrizni kell,
+ha a jövőben előkerül.
