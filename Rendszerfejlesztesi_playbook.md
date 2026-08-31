@@ -125,6 +125,22 @@ létezik, vagy fordítva.
 
 ---
 
+## 7. GIT-ELLENŐRZÉS — soha ne fogadj el jelentést vakon
+
+Minden Claude Code-jelentést a chat-felület TÉNYLEGESEN ellenőriz — friss
+`git clone`/`git fetch` + célzott `grep`/fájltartalom-összevetés alapján, nem
+a jelentés szövege alapján. Ez a projekt egyik legtöbbször visszaigazolt
+szabálya: több alkalommal (elavult verziószám-feltételezés, branch nem
+push-olva, "0 db" félreértés, saját prompt-hiba mint "fent"/"lent") csak a
+tényleges fájlellenőrzés derített ki pontatlanságot, amit egy jelentés
+elfogadása önmagában nem vett volna észre.
+
+Gyakorlati szabály: minden "kész" jelentés után a chat-felület legalább egy
+`grep`-alapú validációt fut a jelentésben állított konkrét számokra/
+tartalomra, mielőtt a felhasználónak "kész"-ként visszaigazolná.
+
+---
+
 ## Gyors ellenőrzőlista új rendszerfejlesztési kéréshez
 
 Ha egy jövőbeli munkamenetben új dataset/eszköz építése merül fel, ez a hat kérdés
