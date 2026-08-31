@@ -1,0 +1,165 @@
+
+Cél Strongs szórát bővítése jelentéstartománnyál pl. KJV
+
+Letséges adatforrások :
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<lexicon xsi:schemaLocation="http://openscriptures.github.com/morphhb/namespace StrongSchema.xsd" 
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		 xmlns="http://openscriptures.github.com/morphhb/namespace">
+	<entry id="H1">
+		<w pos="n-m" pron="awb" xlit="ʼâb" xml:lang="heb">אָב</w>
+		<source>a primitive word;</source>
+		<meaning><def>father</def>, in a literal and immediate, or figurative and remote application</meaning>
+		<usage>chief, (fore-) father(-less), × patrimony, principal. Compare names in 'Abi-'.</usage>
+	</entry>
+
+
+openscriptures
+HebrewLexicon  - HebrewLexicon
+/BrownDriverBriggs.xml
+
+
+1. Strong_szotar.tsv — a H0001 teljes sora
+text
+H0001	a.Vi	fnv, hímnem	a primitive word	father
+2. BrownDriverBriggs.xml — az אבה gyök (bdb id: a.ae.aa) teljes nyers szócikke
+xml
+<entry id="a.ae.aa" type="root">
+אבה
+(assumed as √ of foll., which however prob. bilit. cf. Sta §188; vid. also Lag BN 82).
+<status p="3">done</status>
+</entry>
+3. BrownDriverBriggs.xml — az אָב szócikk (bdb id: a.ae.ab) teljes nyers szócikke
+xml
+<entry id="a.ae.ab">
+<w>אָב</w> 1101 <pos>n.m</pos>. <def>father</def>
+    <sense n="1"><def>father of individual</def></sense>
+    <sense n="2">of God as <def>father of his people</def></sense>
+    <sense n="3"><def>head of household</def>, family or clan</sense>
+    <sense n="4"><def>ancestor</def></sense>
+    <sense n="5"><def>originator</def> or <def>patron</def> of a class, profession, or art</sense>
+    <sense n="6">fig. of <def>producer</def>, <def>generator</def></sense>
+    <sense n="7">fig. of <def>benevolence</def> &amp; protection</sense>
+    <sense n="8">term of <def>respect</def> &amp; <def>honor</def></sense>
+    <sense n="9">specif., <def>ruler</def>, <def>chief</def> (late)</sense>
+<status p="3">base</status>
+</entry>
+4. LexicalIndex.xml — a aao gyök-bejegyzés (a fő gyök, amelyre az H1 hivatkozik)
+xml
+<entry id="aao">
+<w xlit="bhw">אבה</w>
+<xref bdb="a.ae.aa" twot="4"/>
+<etym root type="main">aac, adk, adm</etym>
+</entry>
+5. LexicalIndex.xml — a aac bejegyzés (ez pontosan a H1)
+xml
+<entry id="aac">
+<w xlit="b">אָב</w> <pos>N</pos> <def>father</def>
+<xref bdb="a.ae.ab" strong="1" twot="4a"/>
+<etym type="sub">aao</etym>
+</entry>
+6. A aao gyök két másik leágazása (etym lista: aac, adk, adm) — ugyanabból a LexicalIndex.xml-ből
+adk bejegyzés (Ábrahám):
+
+xml
+<entry id="adk">
+<w xlit="abrhm">אברהם</w> <pos>Np</pos> <def>Abraham</def>
+<xref bdb="a.ae.aw" strong="85" twot="4b"/>
+<etym type="sub">aao</etym>
+</entry>
+adm bejegyzés (Ábrám):
+
+xml
+<entry id="adm">
+<w xlit="abrm">אברם</w> <pos>Np</pos> <def>Abram</def>
+<xref bdb="a.ae.aw" strong="87"/>
+<etym type="sub">aao</etym>
+</entry>
+7. HebrewLexicon.pdf — a dokumentáció mintaszócikke, amely bemutatja a <xref> mezők szerkezetét (ez a sablon, ami a fenti H1-bejegyzést is generálja)
+xml
+<entry id="bxy">
+  <w xlit="bārāʾ">אָרָב</w> <pos>V</pos> <def>shape</def>
+  <xref bdb="b.cw.aa" strong="1254" aug="a" twot="278"/>
+  <etym root="ארב" type="main">byx</etym>
+</entry>
+(Ez maga nem H1-hez tartozik, hanem a bara" szóhoz — H1254 —, de a dokumentáció ezt a szócikket használja mintaként a <xref> mező felépítésének magyarázatára, ami közvetlenül releváns a H1 <xref> mezőjének értelmezéséhez.)
+
+8. HebrewLexicon.pdf — a status mező lehetséges értékei (ez határozza meg a H1 BDB-szócikkének status p="3">base</status> jelentését)
+text
+Status values currently consist of:
+• base: entries that have basic definitions from BDB.
+• ref: entries that have scripture references added, but remain incomplete.
+• done: entries that fully represent the BDB data.
+• new: root entries from BDB, that have no corresponding Strong entry.
+• added: root entries that had to be added to accommodate internal BDB information.
+• made: cross-reference entries, noting the word in alphabetical order, but referencing the actual definition.
+Ez minden, amit a négy fájlból a H1-re vonatkozóan közvetlenül ki lehet nyerni.
+
+https://raw.githubusercontent.com/openscriptures/strongs/refs/heads/master/hebrew/StrongHebrewG.xml
+
+
+
+https://github.com/openscriptures/strongs
+
+ <div type="glossary">
+      <div type="entry" n="1">
+        <w gloss="4a" lemma="אָב" morph="n-m" POS="awb" xlit="ʼâb" ID="H1" xml:lang="heb">אב</w>
+        <foreign xml:lang="grc">
+          <w gloss="G:1118" />
+          <w gloss="G:2730" />
+          <w gloss="G:3390" />
+          <w gloss="G:3507" />
+          <w gloss="G:3509" />
+          <w gloss="G:3962" />
+          <w gloss="G:3965" />
+          <w gloss="G:3966" />
+          <w gloss="G:3967" />
+          <w gloss="G:3971" />
+        </foreign>
+        <list>
+          <item>1) father of an individual</item>
+          <item>2) of God as father of his people</item>
+          <item>3) head or founder of a household,  group,  family,  or clan</item>
+          <item>4) ancestor</item>
+          <item>4a) grandfather,  forefathers — of person</item>
+          <item>4b) of people</item>
+          <item>5) originator or patron of a class,  profession,  or art</item>
+          <item>6) of producer,  generator (fig.)</item>
+          <item>7) of benevolence and protection (fig.)</item>
+          <item>8) term of respect and honour</item>
+          <item>9) ruler or chief (spec.)</item>
+        </list>
+        <note type="exegesis">a primitive word;</note>
+        <note type="explanation"><hi>father</hi>, in a literal and immediate, or figurative and remote application</note>
+        <note type="translation">chief, (fore-) father(-less), [idiom] patrimony, principal. Compare names in 'Abi-'.</note>
+      </div>
+
+
+      https://github.com/andysaktia/strongs-dictionary-json/blob/main/data/hebrew/strongs-hebrew.json
+
+  {
+    "strong_number": "H1",
+    "lemma": "אָב",
+    "transliteration": "ʼâb",
+    "pronunciation": "awb",
+    "language": "hebrew",
+    "part_of_speech": "n-m",
+    "definition": {
+      "en": "a primitive word; father, in a literal and immediate, or figurative and remote application",
+      "id": null
+    },
+    "kjv_translations": [
+      "chief",
+      "(fore-) father(-less)",
+      "× patrimony",
+      "principal. Compare names in 'Abi-'."
+    ],
+    "root": null,
+    "derivatives": [],
+    "occurrences_count": null,
+    "source": "openscriptures-hebrew-strongs",
+    "translation_status": "pending"
+  },
+  {
