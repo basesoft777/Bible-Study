@@ -552,3 +552,84 @@ hatóköre. Szintén nem vizsgált: a `Karoli_Strong_kivonat.tsv` vagy más, Éz
 esetlegesen hivatkozó lezárt tanulmány/motívum-napló bejegyzés — jelenlegi
 ismeret szerint nincs ilyen lezárt tanulmány, de ezt külön ellenőrizni kell,
 ha a jövőben előkerül.
+
+## 2026.08.31 (folytatás) — 3 új fejezethatár-eltolódás javítása (4Móz 13, Jób 39, Préd 12)
+
+### Forrás-nyom
+
+A 3 eset eredetileg egy korábbi, **nem merge-elt** munkamenetben, az
+`origin/claude/gifted-almeida-e4ba62` branch-en (elavult alapról induló) lett
+azonosítva a `Karoli_adatminosegi_anomaliak.tsv`-ben — de az a branch soha nem
+lett kivizsgálva vagy a `TAHOT_kivonat.tsv`-be beépítve, és maga a branch nem
+kerül megtartásra (külön repó-karbantartási feladat törli). A 3 esetet a
+chat-felület (Claude Sonnet 5) ugyanazzal a tartalmi összevetéses módszerrel
+ellenőrizte és erősítette meg, mint a fenti Ézs 3:18-24 esetet — vers-szintű
+bizonyíték-idézetekkel.
+
+### A 3 eset
+
+- **4Móz 12:16 → 4Móz 13:1** — a héber (TAHOT) 12:16 vers ("azután pedig
+  elindula a nép Haseróthból...") a Károli-hagyományban a 13. fejezet első
+  verse. Teljes 4Móz 13. fejezet +1 eltolódást okozott a TAHOT-kivonatban,
+  4Móz 14:1-nél magától megszűnik.
+- **Jób 38:39-41 + Jób 39 + Jób 40:1-5 → Károli Jób 39. fejezet** — összetett
+  eset, KÉT TAHOT-fejezetet (38:39-41 és 40:1-5) von össze a Károli EGY, 38
+  verses 39. fejezetébe: TAHOT 38:39-41 → Károli 39:1-3, TAHOT 39:1-30 →
+  Károli 39:4-33, TAHOT 40:1-5 → Károli 39:34-38. Károli 40:1-nél (=TAHOT
+  40:6) magától megszűnik. **Nem azonos** a szomszédos, már ismert Jób 40/41
+  ADATMINOSEGI_GYANU esettel (`TAHOT_kivonat_nyitott_esetek.tsv`, `Job.41.1`
+  ↔ `Job.40.25` kettős hivatkozás, 332 sor) — a két eset egymás mellett van a
+  fájlban, de nem érintik egymást.
+- **Préd 11:9-10 → Préd 12:1-2** — a héber 11:9-10 versek a
+  Károli-hagyományban a 12. fejezet első két verse. Teljes Préd 12. fejezet
+  +2 eltolódást okozott, resync-pont nélkül, a könyv végéig tart (Préd 12:14
+  = Károli 12:16, egyben a könyv utolsó verse).
+
+### Végrehajtott javítás
+
+- `TAHOT_kivonat.tsv`: a fenti 3 kulcs-átalakítás alapján, kizárólag az
+  `Igehely` mezőn, a fájlon belüli eredeti sorrend megtartásával (1312 sor
+  módosítva).
+- `Verzifikacios_elteres_tabla.tsv`: 3 új sor (`Num.12.16`/`Job.38.39`/
+  `Ecc.11.9`), 5 régiből 8-ra nőtt.
+- `Karoli_adatminosegi_anomaliak.tsv`: **NEM módosítva** — ld. alább, eltérés
+  a feladatleírástól.
+
+### Eltérés a feladatleírástól — `Karoli_adatminosegi_anomaliak.tsv`
+
+A feladatleírás szerint a fájlban 3 sornak kellett volna szerepelnie
+`ELLENORZESRE_VAR` állapottal (4Móz 12:16, Jób 38:39, Préd 11:9-10 körül),
+amelyeket `JAVITVA`-ra kellett volna átállítani. **A fájl jelenlegi
+tartalma ezt nem támasztja alá**: a fájl mindössze 10 sort tartalmaz, egyik
+sem hivatkozik ezekre a versekre vagy fejezetekre, és egyik állapota sem
+`ELLENORZESRE_VAR` (mind `JAVITVA`). A fájl emellett más hibaosztályt követ
+nyomon (karakterhossz-alapú, MEK-forrással összevetett szöveg-összeolvadási
+gyanúk), nem a TAHOT-alapú fejezethatár-eltéréseket. A `TAHOT_kivonat_nyitott_esetek.tsv`-ben
+sem található ilyen bejegyzés. Valószínű magyarázat: a 3 eset gyanúsora csak a
+törlésre váró `claude/gifted-almeida-e4ba62` branch saját, ehhez a fájlhoz
+készített (és soha nem merge-elt) módosításában létezett, a jelenlegi main
+ágon sosem jött létre. Emiatt az 5.3 lépés kimaradt — nem volt mit
+`ELLENORZESRE_VAR`-ról `JAVITVA`-ra állítani.
+
+### Validáció
+
+| Ellenőrzés | Elvárt | Eredmény |
+|---|---|---|
+| `4Móz 12:*`+`4Móz 13:*` sorok száma előtte/utána | egyezik | ✓ 863 = 863 |
+| `Jób 38:*`+`Jób 39:*`+`Jób 40:*` sorok száma előtte/utána | egyezik | ✓ 984 = 984 |
+| `Préd 11:*`+`Préd 12:*` sorok száma előtte/utána | egyezik | ✓ 497 = 497 |
+| `4Móz 13:1` tartalma (volt `4Móz 12:16`) | Haseróth/Párán pusztája | ✓ egyezik (H2698 Hazeroth, H6290 Paran) |
+| `Jób 39:1` tartalma (volt `Jób 38:39`) | nőstény oroszlán prédája | ✓ egyezik (H3833 lion, H2964 prey) |
+| `Préd 12:1` tartalma (volt `Préd 11:9`) | "örvendezz ifjúságodban" | ✓ egyezik (H8055 rejoice, H0970 youth) |
+| `Jób 39:38` tartalma (volt `Jób 40:5`) | "egyszer szóltam... nem szólok" | ✓ egyezik (H1696 speak, H6030 answer) |
+| `Jób 40:6`+ és `Jób 41` (nyitott eset) | változatlan | ✓ változatlan, `TAHOT_kivonat_nyitott_esetek.tsv` érintetlen |
+| `4Móz 12:1-15`, `Jób 38:1-38`, `Préd 11:1-8` | változatlan | ✓ változatlan |
+| `Verzifikacios_elteres_tabla.tsv` sorszáma | 5 régi + 3 új = 8 | ✓ 8 |
+
+### Nyitott tétel
+
+`Karoli_adatminosegi_anomaliak.tsv` 5.3 lépése nem hajtható végre a fenti
+okok miatt — Basesoft döntésére vár, hogy szükséges-e a fájlba új sorokat
+felvenni ehhez a 3 esethez (eddig nem szerepeltek benne gyanúként), vagy a
+`Verzifikacios_elteres_tabla.tsv` + ez a naplóbejegyzés önmagában elegendő
+dokumentáció.
