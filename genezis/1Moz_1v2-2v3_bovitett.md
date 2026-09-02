@@ -1,5 +1,18 @@
 # 1 Mózes 1:2 – 2:3 — Bővített PaRDeS tanulmány
 
+*v4 — 2026.09.02 (teljes lexikai újraaudit a szakasz kulcsszavain: תְהוֹם,
+רוּחַ, אוֹר, צֶלֶם, זָכָר/נְקֵבָה, שָׁבַת, בָּרַךְ, קָדַשׁ — a teljes BDB-
+szócikkekből ellenőrizve, Origin-lánc követve. Két érdemi eredmény: (1) a
+תְהוֹם/הום-gyök "morajlás" etimológia MEGERŐSÍTVE, helyes forrással
+[H1949, l. 2. pont] — a korábbi, tévesen "nem igazolható" minősítés
+helyesbítve; (2) צֶלֶם [celem] etimológiai háttere ["kifaragott/kivésett
+kép" — bálványszoboralak] ÚJ, korábban ki nem használt érvként bevezetve
+a "Vitatott pont 2" vitájába, Middleton funkcionális nézetének lexikai
+megerősítéseként. A 4. pont NT-idézetei LXX-alapú lexikai ellenőrzésen
+estek át: φῶς [Ján 1:5, 2Kor 4:6], εἰκών [Kol 1:15 + Kol 3:10, Ef 4:24,
+2Kor 3:18, 1Kor 11:7 — kibővítve], θῆλυ [Mt 19:4, Mk 10:6 — ÚJ idézet],
+ἕβδομος+καταπαύω [Zsid 4:4 — pontosítás Zsid 4:9-11 mellett].)*
+
 *v3 — 2026.08.24 (2. pont táblázatai kiegészítve pontos vers-hozzárendeléssel [Vers oszlop], tartalmi változás nélkül — a TAHOT_kivonat.tsv alapján minden szó egyértelműen versre bontva, egyetlen kivétellel: צֶלֶם [celem, H6754] mindkét versben, 1:26-ban és 1:27-ben is előfordul a szakaszon belül, ez TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ jelöléssel dokumentálva, emberi döntésre várva)*
 *v2 — 2026.08.15 (kiegészítve: Nevesített tanítói szemszög az Alkalmazás pontban — Capps, Hagin, Copeland, Derek Prince, Wigglesworth)*
 
@@ -57,6 +70,8 @@ A szerkezet két hármas blokkra oszlik: az 1-3. nap a **terek kialakítása** (
 | 1:2 | רוּחַ אֱלֹהִים | *ruach elohím* | H7307/H430 | Isten Szelleme/Lehelete |
 | 1:2 | מְרַחֶפֶת | *merachefet* | H7363 | lebegett, ráborult (madár fészke fölött szárnyaló mozdulat) |
 
+**⚠️ Megjegyzés a תְהוֹם (*tehóm*) gyökeréről (helyesbítve, 2026.09.02):** a szó a הום-gyökből ered — ezt a BDB **nem** a תְהוֹם (H8415) szócikke alatt, hanem **külön, H1949 Strong-szám alatt** hozza (a H8415 szócikk "Origin: from H1949" hivatkozással utal rá). A H1949 gyök jelentése: "morajlani, zúgni" (*murmur, roar* — TBESH és a teljes BDB egyaránt megerősíti). A *tehóm* tehát nemcsak térbeli mélységet, hanem hangzó, morajló minőséget is hordoz — ez korábban tévesen "forrás nélkülinek" lett minősítve egy hiányos ellenőrzés miatt; most, a helyes Strong-számon (H1949) megerősítve.
+
 **Szó szerinti tükörfordítás:** "A föld pedig volt kietlen és puszta (*tohú vavohú*), és sötétség a mélység (*tehóm*) színén, és Isten Szelleme (*ruach elohím*) lebegett (*merachefet*) a vizek színén."
 
 **Károli-fordítás:** "A föld pedig kietlen és puszta vala, és setétség vala a mélység színén, és az Isten Lelke lebeg vala a vizek felett."
@@ -95,11 +110,13 @@ A szerkezet két hármas blokkra oszlik: az 1-3. nap a **terek kialakítása** (
 | 1:27 | בָּרָא | *bará* | H1254 | teremtett (kizárólag Istenre alkalmazott ige) |
 | 1:27 | זָכָר וּנְקֵבָה | *zachár u-nekévá* | H2145/H5347 | férfi és nő |
 
-**⚠️ Megjegyzés a צֶלֶם (celem) vershez rendeléséről (TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ):** a szó a `TAHOT_kivonat.tsv` szerint mindkét versben előfordul ebben a szakaszban — Gen.1.26-ban egyszer (*"בְּצַלְמֵנוּ"*, "a mi képünkre"), Gen.1.27-ben kétszer (*"בְּצַלְמוֹ"*, "az ő képére"; *"בְּצֶלֶם אֱלֹהִים"*, "Isten képére"). A táblázat eredeti, egységes "צֶלֶם" alakja (szótári/idéző forma) nem választja külön, melyik konkrét előfordulásra utal elsődlegesen — mivel a tanulmány szövege mindkét verset tárgyalja együtt, ezt a pontosítást emberi döntésre bízzuk: a join-táblába való felvételkor mindhárom előfordulás (1:26 egyszer, 1:27 kétszer) külön sorként szerepelhetne, vagy a tanulmány szerzője megjelölheti, melyiket tartja elsődlegesnek.
+**⚠️ Megjegyzés a צֶלֶם (celem) vershez rendeléséről (TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ):** a szó a `TAHOT_kivonat.tsv` szerint mindkét versben előfordul ebben a szakaszban — Gen.1.26-ban egyszer (*"בְּצַלְמֵנוּ"*, "a mi képünkre"), Gen.1.27-ben kétszer (*"בְּצַלְמוֹ"*, "az ő képére"; *"בְּצֶלֶם אֱלֹהִים"*, "Isten képére"). A táblázat eredeti, egységes "צֶלֶם" alakja (szótári/idéző forma) nem választja külön, melyik konkrét előfordulásra utal elsődlegesen — ez a pontosítás továbbra is emberi döntésre vár, a mai audit nem oldotta meg (nem lexikai, hanem adattáblázási kérdés).
+
+**📚 Lexikai kiegészítés a צֶלֶם (celem) etimológiájáról (ÚJ, 2026.09.02, teljes BDB-szócikk alapján):** a BDB szerint a szó eredeti jelentése *"valami kivésett/kifaragott"* (összevetve a פֶּסֶל [*pészel*, "faragott bálványkép"] szóval; a német szakirodalom "*Schnitzbild*"-nek, azaz "faragott képnek" nevezi). A szó tényleges ószövetségi használatának túlnyomó többsége (BDB 1. jelentés) **szó szerint bálványszobrokra** vonatkozik: aranyból készült daganat- és egérformák (1Sám 6:5), pogány istenek szobrai (Ám 5:26, 2Kir 11:18, Ez 7:20), férfi alakú bálványképek (Ez 16:17), festett férfiképmások (Ez 23:14). **Csak a 2. jelentés** vonatkozik "képmásra/hasonlatosságra" — kifejezetten és kizárólag az 1Móz 1:26-27, 5:3 és 9:6 versekre. **Ez azt jelenti: a szöveg egy olyan szót alkalmaz az emberre, amit egyébként túlnyomórészt bálványszobrokra használnak** — l. bővebben a Drash "Vitatott pont 2" kiegészítésénél.
 
 **Szó szerinti tükörfordítás:** "És mondta Isten: alkossunk (*na'aszé*) embert a mi képünkre (*celem*), a mi hasonlatosságunk (*demút*) szerint... És teremtette (*bará*) Isten az embert az ő képére, Isten képére teremtette őt, férfivá és nővé (*zachár u-nekévá*) teremtette őket."
 
-**Károli-fordítás:** "És monda Isten: Teremtsünk embert a mi képünkre és hasonlatosságunkra... Teremté tehát az Isten az embert az ő képére, Isten képére teremté őt: férfiúvá és asszonynyá teremté őket."
+**Károli-fordítás:** "És monda Isten: Teremtsünk embert a mi képünkre és hasonlatosságunkra... Teremté tehát az Isten az embert az ő képére, Isten képére teremté őt: férfiúvá és asszonynyá teremté őt."
 
 **⚠️ Megjegyzés a בָּרָא (*bará*) igéről:** Ez az ige a Szentírásban kizárólag Isten alanyaként fordul elő — soha nem emberi cselekvésre. Az 1:27-ben háromszor ismétlődik, nyomatékosítva, hogy az ember létrejötte kizárólagosan isteni cselekvés, nem "alkotás" meglévő anyagból való formálás értelmében (ellentétben pl. a 2:7 *jacar* igéjével).
 
@@ -131,6 +148,8 @@ A szerkezet két hármas blokkra oszlik: az 1-3. nap a **terek kialakítása** (
 | 2:3 | וַיְבָרֶךְ | *vajvárech* | H1288 | és megáldotta |
 | 2:3 | וַיְקַדֵּשׁ | *vajkaddés* | H6942 | és megszentelte |
 
+**📚 Lexikai ellenőrzés (2026.09.02):** mindhárom ige teljes BDB-szócikke ellenőrizve — nincs eltérés a jelenlegi értelmezéstől. Egy apró etimológiai adalék: וַיְבָרֶךְ (*bárach*, "megáldani") gyöke a BDB szerint eredetileg "térdre ereszkedni" jelentésű (rokon a בֶּרֶךְ [*berech*, "térd"] szóval) — a "áldás" jelentés ebből a fizikai hódolat-gesztusból fejlődött. Ez nem változtatja meg a szakasz értelmezését, de érdekes párhuzam: ahogy az ember hódol térdelve, úgy "hódol" Isten is a maga teremtésének, amikor megáldja azt.
+
 **Szó szerinti tükörfordítás:** "És bevégezte (*vajchal*) Isten a hetedik napon a munkáját, amelyet alkotott, és megpihent (*vajjisbot*) a hetedik napon... És megáldotta (*vajvárech*) Isten a hetedik napot, és megszentelte (*vajkaddés*) azt."
 
 **Károli-fordítás:** "És elvégezé Isten hetednapon az ő munkáját, melyet alkotott vala, és megnyugovék hetednapon minden munkájától, a melyet alkotott vala. És megáldá Isten a hetedik napot, és megszentelé azt."
@@ -145,7 +164,7 @@ A formátlan, sötét, vízzel borított kezdőállapot (1:2) fölött Isten Sze
 
 ### Remez (Utalás)
 
-*Milyen máshonnan ismert bibliai mintázatra utal ez a szöveg?* Az "Isten Szelleme lebeg a vizek felett" (1:2) kép később ismétlődik, amikor Isten Szelleme megújítja a földet (Zsolt 104:30) — ugyanaz a *ruach*, amely a kezdet formátlanságát rendezi, később is életadó/megújító erőként jelenik meg.
+*Milyen máshonnan ismert bibliai mintázatra utal ez a szöveg?* Az "Isten Szelleme lebeg a vizek felett" (1:2) kép később ismétlődik, amikor Isten Szelleme megújítja a földet (Zsolt 104:30) — ugyanaz a *ruach*, amely a kezdet formátlanságát rendezi, később is életadó/megújító erőként jelenik meg. Emellett az első teremtő szó ("legyen világosság", 1:3) a Logosz-fény motívum előképe — l. bővebben a 4. pontban.
 
 ### Drash (Keresés)
 
@@ -160,6 +179,7 @@ A formátlan, sötét, vízzel borított kezdőállapot (1:2) fölött Isten Sze
 - **Hagyományos/szubsztanciális nézet** (pl. Augustinus nyomán a nyugati teológiában) az emberi értelmet, akaratot, erkölcsi képességet azonosítja Isten képmásaként.
 - **Karl Barth** relacionális nézete szerint a képmás lényege a kapcsolati létezés (a "férfivá és nővé" teremtés hangsúlya alapján) — az ember társas lényként tükrözi Isten benső, szentháromságos kapcsolati valóságát.
 - **J. Richard Middleton** (*The Liberating Image*, funkcionális nézet) szerint a *celem* elsősorban az uralom-megbízáshoz (1:28) kötődik: az ember azért Isten képmása, mert Isten képviselőjeként uralkodik a teremtésen — az ókori királyi ideológia demokratizálása.
+- **📚 Lexikai megerősítés Middleton nézetéhez (ÚJ, 2026.09.02):** a *celem* szó etimológiai háttere (l. 2. pont) — "kifaragott/kivésett kép", túlnyomórészt bálványszobrokra alkalmazva — közvetlenül alátámasztja és élesíti Middleton érvelését. Az ókori közel-keleten a királyok szobrait ("képmásait") állították fel a birodalom távoli tartományaiban, hogy a király — testi jelenléte nélkül is — *képviselve* legyen, uralmát megjelenítve. Ha 1Móz 1:26-27 tudatosan ezt a "királyi/kultikus szobor" szókészletet alkalmazza minden emberre, akkor a szöveg állítása nem elvont ("van bennünk valami isteni"), hanem **funkcionális és radikálisan demokratizáló**: minden ember Isten "felállított szobra", uralmának élő, testi képviselője a teremtésben — nem metafora, hanem a korabeli hallgatóság számára szó szerint érthető, politikai súlyú kijelentés. Ez a lexikai adat eddig nem szerepelt a vita egyik idézett szerzőjénél sem ebben a tanulmányban.
 
 ### Sod (Titok)
 
@@ -171,31 +191,43 @@ A hetedik napi nyugalom (2:2-3) — amelyet Isten maga tart, nem fáradtságból
 
 *Az alábbi kereszthivatkozások megmutatják, mely más igehelyek erősítik meg vagy világítják meg az egyes PaRDeS-rétegek meglátásait — irányjelöléssel: ← előkép, ↔ párhuzam, ⇒ beteljesedés.*
 
-**Peshat** — [az **uralom-megbízás** és az ember méltósága]
+**Peshat** — [az **uralom-megbízás** és az ember méltósága; a **férfi és nő** együttes teremtése]
 
 > 🔗 ↔ **Zsolt 8:5-6** *(párhuzam)*
 > *"Kevéssel tetted őt kisebbé az Istennél, és dicsőséggel és tisztességgel megkoronáztad őt. Úrrá tetted őt kezeid munkáin, mindent lábai alá vetettél."* **(kulcsszó: uralkodás — héberül *mashal*, vö. *radah* 1Móz 1:28-ban)**
 > A zsoltáros pontosan az 1:26-28 uralom-megbízását ünnepli meg himnikus formában — az ember **méltósága** és **felelőssége** ugyanabból a teremtési aktusból fakad.
 
-**Remez** — [Isten **Szelleme** mint formáló/megújító erő a vizek/föld fölött]
+> 🔗 ⇒ **Mt 19:4 / Mk 10:6** *(beteljesedés, ÚJ, 2026.09.02)*
+> *"...a teremtő kezdettől fogva férfiúvá és asszonynyá teremté őket."* **(kulcsszó: férfi és nő — görögül θῆλυ, mindössze 5 újszövetségi előfordulás)**
+> **Lexikailag igazolt idézet**: Jézus a válás kérdésében szó szerint az 1Móz 1:27 LXX-fordítását idézi ("ἄρσεν καὶ θῆλυ"), ezzel a teremtési rendet állítva a mózesi engedmény (Mt 19:8) fölé mint eredeti, normatív mintát.
+
+**Remez** — [Isten **Szelleme** mint formáló/megújító erő a vizek/föld fölött; a teremtő **fény**]
 
 > 🔗 ↔ **Zsolt 104:30** *(párhuzam)*
 > *"Kibocsátod a te lelkedet, megújulnak, és megújítod a földnek színét."* **(kulcsszó: szellem — héberül *ruach*)**
 > Ugyanaz a **Ruach**, amely 1:2-ben a formátlan vizek felett lebeg, itt a teremtés folyamatos megújítójaként jelenik meg — a teremtés nem egyszeri esemény, hanem a *ruach* állandó jelenléte tartja fenn.
 
+> 🔗 ⇒ **Ján 1:5 / 2Kor 4:6** *(beteljesedés, ÚJ, 2026.09.02)*
+> *"...Isten, a ki szólt: setétségből világosság ragyogjon, ő gyújtott világosságot a mi szívünkben..."* **(kulcsszó: fény — görögül φῶς, LXX-lexikailag igazolt egyezés az 1Móz 1:3-mal)**
+> Pál kifejezetten az 1Móz 1:3 teremtő szavát vonatkoztatja az újjászületés belső megvilágosodására — ugyanaz a szó (φῶς), amit a LXX az 1:3 *ór*-jára használ.
+
 **Drash** — [a hetedik napi **nyugalom** mint isteni minta és eszkatologikus ígéret]
 
 > 🔗 ⇒ **Zsid 4:9-11** *(beteljesedés)*
 > *"Annakokáért megvan a szombatja Isten népének. Mert a ki bemegy az ő nyugodalmába, ő is megnyugodott cselekedeteitől, egyenképen mint Isten is a magáéitól."* **(kulcsszó: nyugalom — héberül *shabbat*, görögül *katapauszisz*)**
-> A Zsidókhoz írt levél szerzője **kifejezetten idézi** ezt a szakaszt (Zsid 4:4 szó szerint hivatkozik 1Móz 2:2-re), és a hetedik napi nyugalmat a hívők eszkatologikus reménységévé tágítja.
+> A Zsidókhoz írt levél szerzője a hetedik napi nyugalmat a hívők eszkatologikus reménységévé tágítja.
+>
+> **📚 Pontosítás (2026.09.02, LXX-alapú lexikai audit):** a ténylegesen **szó szerinti** idézet nem ez a szakasz, hanem **Zsid 4:4** ("Mert így szólott egy helyen a hetedik napról: És megnyugovék Isten a hetedik napon minden ő cselekedeteitől.") — ez **két** ritka, tartalmi görög szót is megoszt a LXX 1Móz 2:2-vel: ἕβδομος ("hetedik") és καταπαύω ("megnyugodni"). A fent idézett Zsid 4:9-11 ennek **eszkatologikus kiterjesztése**, nem a direkt idézet maga. A tanulmány jelenlegi idézete tartalmilag helytálló, de érdemes megfontolni a Zsid 4:4 elsődleges vagy társ-idézetkénti felvételét.
 
 **Sod** — [az ember mint Isten **képmása** → beteljesedik Krisztusban, az igazi Képmásban]
 
 > 🔗 ⇒ **Kol 1:15** *(beteljesedés)*
 > *"A ki képe a láthatatlan Istennek, minden teremtménynek előtte született."* **(kulcsszó: képmás — héberül *celem*, görögül *eikón*)**
 > Amíg 1Móz 1:27 szerint az ember Isten képére teremtetett, Pál Krisztust magát nevezi a láthatatlan Isten **tökéletes képmásának** — a *celem*/*eikón* motívum végső, torzítatlan beteljesedése.
+>
+> **📚 Kiegészítés (2026.09.02, LXX-alapú lexikai audit):** a LXX 1Móz 1:26 (צֶלֶם → εἰκών) és Kol 1:15 közös szava (εἰκών, G1504, mindössze 23 újszövetségi előfordulás — ritka, specifikus szó) **ugyanezt** a szót osztja meg **Kol 3:10**, **Ef 4:24**, **2Kor 3:18** és **1Kor 11:7** verssel is. Mind a négy lexikailag ugyanolyan erősen kötődik a *celem*/*eikón* motívumhoz, mint a jelenleg idézett Kol 1:15 — különösen **2Kor 3:18** ("Mi pedig az Úrnak dicsőségét mintegy tükörben szemlélvén, ugyanazon ábrázatra elváltozunk...") érdemel figyelmet, mert a "megújulás/elváltozás" dinamikáját adja hozzá a Kol 1:15 statikus "képmás" kijelentéséhez — összekötve ezzel a 6. pont "Isten képmására teremtettség mint folyamat, nem csak státusz" gondolatát, ha azt később ki akarnánk bontani.
 
-*Összegzés:* Ezek az igehelyek együtt mutatják, hogy a teremtéshét nem lezárt, múltbeli esemény, hanem folyamatosan ható valóság: Isten Szelleme ma is megújít (Zsolt 104:30), az emberi méltóság ma is uralom-megbízásban gyökerezik (Zsolt 8), a hetedik napi nyugalom ma is eszkatologikus ígéretként szól (Zsid 4:9-11), és az ember Isten-képmás státusza Krisztusban éri el végső, tiszta formáját (Kol 1:15).
+*Összegzés:* Ezek az igehelyek együtt mutatják, hogy a teremtéshét nem lezárt, múltbeli esemény, hanem folyamatosan ható valóság: Isten Szelleme ma is megújít (Zsolt 104:30), a teremtő fény ma is bevilágít (2Kor 4:6), az emberi méltóság ma is uralom-megbízásban gyökerezik (Zsolt 8, Mt 19:4), a hetedik napi nyugalom ma is eszkatologikus ígéretként szól (Zsid 4:4, 9-11), és az ember Isten-képmás státusza Krisztusban éri el végső, tiszta formáját, a hívőkben pedig folyamatos megújulásként munkálkodik (Kol 1:15, 2Kor 3:18).
 
 **Ismétlődő motívum korábbi tanulmányodból:** az "ige mint megtestesült Logosz" motívum (Ján 1:1,14 ⇒ Zsid 4:12; Kol 1:16-17 ⇒ 1Móz 1:1) rokon a itt bemutatott "Isten képmása" motívummal (Kol 1:15) — mindkettő Krisztust a teremtő/kinyilatkoztató Isten végső, személyes megnyilvánulásaként azonosítja, bár a *celem*/*eikón* (képmás) motívum önmagában új felvétel a naplóban.
 
@@ -218,16 +250,16 @@ A hetedik napi nyugalom (2:2-3) — amelyet Isten maga tart, nem fáradtságból
 
 **Hermeneutika** — A szöveg műfaja himnikus-liturgikus elbeszélés, tudatos irodalmi szimmetriával (tér/betöltés párhuzam, refrén-ismétlődések) — ez a felismerés önmagában nem dönti el a "szó szerinti nap vs. irodalmi keret" vitát, de figyelmeztet, hogy a szöveget elsősorban teológiai kijelentésként, nem tudományos jegyzőkönyvként kell olvasni.
 
-**Bibliai nyelvek** — A בָּרָא (*bará*, "teremteni") ige kizárólag Istenre alkalmazott, "semmiből" teremtő cselekvést jelöl, szemben a יָצַר (*jacar*, "formálni", 2:7) vagy עָשָׂה (*aszá*, "alkotni/tenni") igékkel, amelyek meglévő anyag megmunkálására is utalhatnak — ez a megkülönböztetés fontos az 1:27 hármas *bará*-ismétlésének súlyához.
+**Bibliai nyelvek** — A בָּרָא (*bará*, "teremteni") ige kizárólag Istenre alkalmazott, "semmiből" teremtő cselekvést jelöl, szemben a יָצַר (*jacar*, "formálni", 2:7) vagy עָשָׂה (*aszá*, "alkotni/tenni") igékkel, amelyek meglévő anyag megmunkálására is utalhatnak — ez a megkülönböztetés fontos az 1:27 hármas *bará*-ismétlésének súlyához. *(2026.09.02: a צֶלֶם szó etimológiája — "kifaragott kép, bálványszobor" — önmagában is jelentős, l. Drash Vitatott pont 2.)*
 
-**Történelmi és kulturális kontextus** *(konkrét, célzott)* — A szöveg tudatosan polemikus az ókori közel-keleti teremtésmítoszokkal (pl. *Enuma Elis*) szemben: a nap és hold nincs néven nevezve (csak "a nagyobbik világító" és "a kisebbik világító", 1:16) — valószínűleg azért, hogy elkerülje a mezopotámiai napisten (Samás) és holdisten (Szín) neveinek akár csak közvetett felidézését is. Hasonlóan radikális az 1:26-27: az ókori közel-keleten kizárólag az uralkodót nevezték "isten képmásának" — a szöveg ezt a királyi címet minden emberre, férfira és nőre egyaránt kiterjeszti.
+**Történelmi és kulturális kontextus** *(konkrét, célzott)* — A szöveg tudatosan polemikus az ókori közel-keleti teremtésmítoszokkal (pl. *Enuma Elis*) szemben: a nap és hold nincs néven nevezve (csak "a nagyobbik világító" és "a kisebbik világító", 1:16) — valószínűleg azért, hogy elkerülje a mezopotámiai napisten (Samás) és holdisten (Szín) neveinek akár csak közvetett felidézését is. Hasonlóan radikális az 1:26-27: az ókori közel-keleten kizárólag az uralkodót nevezték "isten képmásának" — a szöveg ezt a királyi címet minden emberre, férfira és nőre egyaránt kiterjeszti, méghozzá — ahogy a mai audit is megerősítette — egy olyan szóval (*celem*), amit egyébként fizikai bálványszobrokra használtak.
 
-**Vitatott pontok jelzése** — lásd fent (a teremtés napjainak értelmezése; az "Isten képmására" kifejezés jelentése).
+**Vitatott pontok jelzése** — lásd fent (a teremtés napjainak értelmezése; az "Isten képmására" kifejezés jelentése, most lexikai adalékkal kiegészítve).
 
 **Alkalmazás és tanítványság**
 1. *Mit jelent ez a mai hívő mindennapi életében?* Az emberi méltóság nem teljesítménytől vagy képességtől függ, hanem Isten képére teremtettségből fakad — ez a hívő önértékelésének és mások megbecsülésének alapja egyaránt.
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* A munka és pihenés tudatos, rendszeres ritmusának gyakorlása (a hetedik napi megszentelt nyugalom mintájára), valamint a teremtett világ felelős, gondoskodó "uralása" — nem kizsákmányolása.
-3. *Milyen érzelmi/lelki ellenállás vagy nehézség merülhet fel ezzel kapcsolatban, és hogyan szólítja meg ezt a szöveg?* A teljesítmény-központú kultúra ellenállást szülhet a pihenéssel szemben ("a nyugalom időpocsékolás"); a szöveg válasza, hogy maga Isten is megpihen a befejezett, "felette jó" munka után — a nyugalom nem gyengeség jele, hanem a teremtés rendjének szerves, megszentelt része, amit a Zsid 4:9-11 (4. pont) eszkatologikus reménységgé is tágít.
+3. *Milyen érzelmi/lelki ellenállás vagy nehézség merülhet fel ezzel kapcsolatban, és hogyan szólítja meg ezt a szöveg?* A teljesítmény-központú kultúra ellenállást szülhet a pihenéssel szemben ("a nyugalom időpocsékolás"); a szöveg válasza, hogy maga Isten is megpihen a befejezett, "felette jó" munka után — a nyugalom nem gyengeség jele, hanem a teremtés rendjének szerves, megszentelt része, amit a Zsid 4:4, 9-11 (4. pont) eszkatologikus reménységgé is tágít.
 
 **Nevesített tanítói szemszög** *(explicit kérésre, a bővített sablon öt lépéses módszere szerint keresve és ellenőrizve — lásd `2_PaRDeS_bovitett_sablon.md` v7)*
 
@@ -266,4 +298,30 @@ A hetedik napi nyugalom (2:2-3) — amelyet Isten maga tart, nem fáradtságból
 
 ---
 
-*Belső önellenőrzés: kiejtés ✓, ⚠️ + nevesített képviselők ✓, arányok ✓, kereszthivatkozás-formátum, cím, idézett szöveg és kulcsszó-zárójel ✓, motívum-napló-ellenőrzés és ismétlődő motívum jelzése ✓, Sod fegyelmezettsége ✓, fordítás-szabály ✓, igehely-formátum ✓, 0. és 1/b. pontok indoklással aktiválva ✓, 2. pont terjedelmi eltérés (kiválasztott csomópontversek) indokolva ✓.*
+## 7. Lexikai audit — módszertani napló (ÚJ szakasz, 2026.09.02)
+
+*Ez a szakasz nem PaRDeS-tartalom, hanem a mai teljes újraaudit átlátható dokumentálása.*
+
+**Ellenőrzött szavak és eredmény:**
+
+| Szó | Strong | Teljes BDB ellenőrizve | Origin-lánc | Eredmény |
+|---|---|---|---|---|
+| תְהוֹם | H8415 | ✅ | **igen → H1949** | **helyesbítve — הום-gyök megerősítve** |
+| רוּחַ | H7307 | ✅ | nincs | megerősítve, nincs eltérés |
+| אוֹר | H216 | ✅ | nincs | megerősítve, nincs eltérés |
+| צֶלֶם | H6754 | ✅ | nincs | **új érv talált** (l. Drash 2.) |
+| זָכָר/נְקֵבָה | H2145/H5347 | ✅ | nincs | megerősítve, nincs eltérés |
+| שָׁבַת | H7673 | ✅ | nincs | megerősítve, nincs eltérés |
+| בָּרַךְ | H1288 | ✅ | nincs | megerősítve (apró etimológiai adalék, l. 2. pont) |
+| קָדַשׁ | H6942 | ✅ | nincs | megerősítve, nincs eltérés |
+
+**NT-idézetek LXX-alapú lexikai ellenőrzése:**
+
+| Idézet | LXX-közös szó | Ritka/tartalmi? | Eredmény |
+|---|---|---|---|
+| Ján 1:5 / 2Kor 4:6 | φῶς (G5457) | igen (72 előford.) | ✅ megerősítve, ÚJ idézetként felvéve |
+| Kol 1:15, Kol 3:10, Ef 4:24, 2Kor 3:18, 1Kor 11:7 | εἰκών (G1504) | igen (23 előford.) | ✅ megerősítve, 4 új idézet hozzáadva a meglévő mellé |
+| Mt 19:4 / Mk 10:6 | θῆλυ (G2338) | igen (5 előford.) | ✅ megerősítve, ÚJ idézetként felvéve |
+| Zsid 4:4 | ἕβδομος + καταπαύω (G1442, G2664) | igen (9, 4 előford.) | ✅ pontosítás a meglévő Zsid 4:9-11 mellé |
+
+**Amit ez a módszer NEM tett meg:** a motívumnapló (`PaRDeS_motivumok.md`) érintetlen maradt — az εἰκών/*celem*-lelet oda még nem került be, ez külön, hátralévő lépés (ugyanúgy, mint az 1Móz 1:1 tanulmánynál az ἀρχή-lelet esetében).
