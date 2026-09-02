@@ -48,12 +48,17 @@ protokoll 2. lépésében. Az openscriptures `BrownDriverBriggs.xml` +
 `LexicalIndex.xml` (lásd `TBESH_TBESG_README.md`) másodlagos/tartalék szerepbe kerül
 a hiányossága miatt.
 
-**Fontos megállapítás (2026-09-02):** a הום-gyök „morajló mélység" etimológiai adat
-(ami korábban a תְּהוֹם/1Móz 1:2 kapcsán felmerült) **egyik ellenőrzött BDB-forrásban
-sem található** — sem a `TBESH.txt`-ben, sem az openscriptures XML-ben, sem ebben a
-teljes, unabridged verzióban. Ez azt jelzi, hogy az az adat valószínűleg NEM
-BDB-ből származott, és felülvizsgálatra szorul azokban a fájlokban, ahol
-felhasználásra került.
+**Helyesbítés (2026-09-02, ugyanazon a napon korrigálva):** a הום-gyök
+„morajló mélység" etimológiai adat (תְּהוֹם/1Móz 1:2 kapcsán) **valós és
+forrással alátámasztott** — csak nem a H8415 (תְּהוֹם) szócikk alatt
+található, hanem a BDB külön, **H1949** Strong-szám alatt hozza a gyök
+önálló szócikkét (a H8415 szócikk "Origin: from H1949" hivatkozással utal
+rá). Mind a `TBESH.txt`, mind ez a teljes unabridged BDB-fájl tartalmazza
+a H1949 szócikket ("murmur, roar" / "to make noise... murmur, roar").
+**Módszertani tanulság:** a determinisztikus BDB-ellenőrzési protokollnak
+(l. `sablonok/Javasolt_sablon_kiegeszites_BDB_arnyalat.md`) a fejszó
+"Origin:" hivatkozási láncát is végig kell követnie, nem elég csak a
+fejszó saját Strong-számát ellenőrizni.
 
 ## Kereszthivatkozás
 

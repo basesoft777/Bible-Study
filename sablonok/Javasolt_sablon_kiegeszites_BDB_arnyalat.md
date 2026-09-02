@@ -41,6 +41,13 @@ KIVÉTEL NÉLKÜL, ebben a sorrendben:
         jelentésárnyalati adat nem elérhető." NEM pótolható web_search-csel
         vagy Claude általános tudásából.
 
+   2/c. Ha a fejszó BDB-szócikke "Origin: from H####" vagy hasonló
+        gyök-hivatkozást tartalmaz, ELLENŐRIZD a hivatkozott Strong-szám
+        szócikkét is ugyanazon forrásban (TBESH.txt / BDB_teljes_unabridged.tsv),
+        mielőtt a fejszó szócikkét "teljesnek" tekintenéd. A gyök-etimológia
+        gyakran külön Strong-szám alatt szerepel, nem a származék szó
+        szócikkében.
+
 3. Minden ⚡-jegyzet FELTÜNTETI, melyik lépés(ek) futottak le, és melyik
    fájlból (TBESH.txt / BDB_teljes_unabridged.tsv).
 
@@ -48,16 +55,14 @@ KIVÉTEL NÉLKÜL, ebben a sorrendben:
    "visszamásolni" ellenőrzés nélkül — minden ⚡-jegyzet a SAJÁT, ebben
    a körben lefuttatott 1–2. lépésből származik.
 
-5. Ha egy állítás korábbi munkamenetből öröklődik (pl. "a תהם gyök
-   morajlást jelent"), és az adott tanulmány jelenlegi felülvizsgálatakor
-   a determinisztikus forrásokban nem található meg → az állítás
-   törlendő vagy explicit "forrás nem igazolható, felülvizsgálatra
-   szorul" jelzéssel látandó el. (Konkrét precedens: a תְּהוֹם/1Móz 1:2
-   הום-gyök "morajló mélység" állítás egyik ellenőrzött BDB-forrásban
-   sem található — sem TBESH, sem openscriptures BDB.xml, sem a teljes
-   unabridged BDB nem tartalmazza. Ezt a `TBESH_pilot_riport_1Moz_1v2-2v3.md`
-   és az `Ujrageneralt_1Moz_1v2-2v3_TELJES.md` fájlokban felül kell vizsgálni,
-   amint ezek elérhetők.)
+5. Ha egy szó szócikke egy másik Strong-számra hivatkozik gyök-eredetként
+   ("Origin: from H####" vagy "√" jelölés a BDB-szövegben), a protokoll
+   KÖVESSE VÉGIG ezt a hivatkozást, és ellenőrizze a hivatkozott
+   Strong-szám szócikkét is, mielőtt gap-et jelezne. Konkrét precedens
+   (2026.09.02): a תְּהוֹם/H8415 "Origin: from H1949" hivatkozása a
+   הום-gyök szócikkére mutat, ami tartalmazza a "morajlás" etimológiát —
+   ez csak a hivatkozási lánc végigkövetésével derült ki, a H8415 önálló
+   ellenőrzése tévesen "nem igazolható" eredményt adott.
 ```
 
 ---
