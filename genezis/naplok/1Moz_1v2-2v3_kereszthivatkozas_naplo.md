@@ -226,3 +226,36 @@ tartalmazza: **Zsolt 8:5-6** (Peshat), **Zsolt 104:30** (Remez), **Zsid 4:9-11**
   elsődlegességének pontosítása a Drash-rétegnél, 2Kor 4:6 mint Remez-
   kiegészítő, valamint Ézs 45:12/Jób 26:10/Jób 38:30 mint nettó új
   kombinált-keresésű Peshat/Remez-jelöltek.
+
+---
+
+## 6. LXX-hidas audit-kiegészítés (2026.09.02)
+
+*Módszertan: l. az 1Móz 1:1 napló azonos című szakaszát.*
+
+**✅ Megerősítve, valódi lexikai alap:**
+- **Ján 1:5 / 2Kor 4:6** ↔ 1Móz 1:3 (LXX): közös szó **φῶς** (G5457,
+  "fény") — alátámasztja a Logosz-fény motívumot; a 2Kor 4:6 jelenleg NEM
+  szerepel a study 4. pontjában, érdemes megfontolni Remez-kiegészítőként.
+- **Kol 1:15, Kol 3:10, 2Kor 3:18, 1Kor 11:7** ↔ 1Móz 1:26 (LXX): közös szó
+  **εἰκών** (G1504, "képmás") — ez maga a *celem/eikón* motívum kulcsszava.
+  Mind a négy NT-hely lexikailag igazoltan ugyanazt a szót használja, amit a
+  LXX a Gen 1:26 צֶלֶם-jére alkalmaz. Ez különösen fontos a Kol 3:10/Ef 4:24/
+  2Kor 3:18 jelölteknél (jelenleg NEM szerepelnek a 4. pontban, csak Kol
+  1:15) — lexikailag legalább annyira megalapozottak, mint a jelenlegi
+  Sod-idézet.
+- **Mt 19:4, Mk 10:6** ↔ 1Móz 1:27 (LXX): közös szó **θῆλυ** (G2338, "nő" —
+  mindössze 5 NT-előfordulás, kivételesen ritka és specifikus) — az "ἄρσεν
+  καὶ θῆλυ" (férfi és nő) kifejezés szó szerint megegyezik. Ez a
+  legerősebb, eddig fel nem használt lexikai bizonyíték a naplóban — a
+  study saját megállapítása (legmagasabb Votes, de NEM szerepel a 4.
+  pontban) most lexikai megerősítést is kap.
+- **Zsid 4:4** ↔ 1Móz 2:2 (LXX): KÉT közös, ritka szó — **ἕβδομος**
+  (G1442, "hetedik", 9 előfordulás) ÉS **καταπαύω** (G2664, "megnyugodni",
+  4 előfordulás). Ez döntő lexikai megerősítés a napló saját korábbi
+  megjegyzésére: a **Zsid 4:4, nem a jelenleg idézett Zsid 4:9-11, a
+  ténylegesen direkt lexikai idézet** — a 4:9-11 inkább eszkatologikus
+  kiterjesztés. Erősen megfontolandó a Drash-idézet pontosítása.
+
+**Vizsgálat alatt, LXX-adat hiánya miatt nem ellenőrizhető:** 2Móz 20:11
+(Exodus, nincs a jelenlegi 1Mózes-only LXX-pilot hatókörében).

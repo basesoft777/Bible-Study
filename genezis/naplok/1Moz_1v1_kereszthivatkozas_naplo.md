@@ -184,3 +184,35 @@ deuterokanonikus szöveghely önálló forrásidézetként nincs beépítve.
   (Peshat-kiegészítés), Zsid 1:10 (Sod-kiegészítés), 2Makk 7:28 (önálló Drash-
   idézetként), 2Kir 19:15/2Krón 2:12/Ézs 37:16/5Móz 4:32/Ámós 4:13/Ézs 40:28
   (kombinált keresésből nyert nettó új Peshat-jelöltek).
+
+---
+
+## 6. LXX-hidas audit-kiegészítés (2026.09.02)
+
+*A `LXX_kivonat_Genezis.tsv` (LXX-fázis3 pilot) elkészülte után elvégzett,
+első valódi tartalmi audit a fenti ✅-minősítéseken — nem új keresés, hanem
+a MEGLÉVŐ minősítések lexikai alátámasztásának/cáfolatának ellenőrzése.*
+
+**✅ Megerősítve, valódi lexikai alap (nem csak tematikus):**
+- **Ján 1:1** ↔ 1Móz 1:1 (LXX): közös szó **ἀρχή** (G0746), TBESG 1. jelentés
+  ("beginning, origin") mindkét helyen — a study Remez-idézete lexikailag is
+  alátámasztott, nem csak tematikus visszhang.
+- **Zsid 1:10** ↔ 1Móz 1:1 (LXX): ugyanez a szó, ugyanez a jelentés (κατ'
+  ἀρχάς) — eddig nem szerepelt a study 4. pontjában, érdemes megfontolni
+  Remez-kiegészítőként.
+
+**❌ KIZÁRVA — hamis pozitív, dokumentált figyelmeztetésként:**
+- **Kol 1:16** (ἀρχαὶ) és 1Móz 1:1 (LXX ἀρχή) — **azonos Strong-szám
+  (G0746), de eltérő jelentésárnyalat**: Kol 1:16-ban a TBESG szerint 3.
+  jelentés ("sovereignty, principality, rule" — a TAGNT saját angol
+  tükörfordítása is "rulers"), NEM az 1. jelentés ("beginning"). **Ha valaha
+  lexikai érvvel akarnánk alátámasztani a Kol 1:16-17 Sod-idézetet, ez a
+  konkrét szó-egyezés NEM használható fel** — a study jelenlegi, tartalmi
+  ("mindenek Krisztus által teremtettek") indoklása érintetlen marad, csak
+  ez az egy lehetséges kiegészítő lexikai érv esik ki.
+
+**Vizsgált, de LXX-adat hiánya miatt nem ellenőrizhető:** a többi ✅-minősített
+NT-jelölt (Zsid 11:3, Jel 4:11, Kol 1:17, ApCsel 17:24, ApCsel 14:15) csak
+generikus (θεός/γῆ/οὐρανός/ἐν, mind >200 előfordulású) közös szót mutatott —
+ezek a napló eredeti, tematikus minősítése alapján maradnak érvényben,
+lexikai megerősítés vagy cáfolat nélkül.
