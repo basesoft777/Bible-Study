@@ -1,5 +1,8 @@
 # 1 Mózes 2:4-7 — Bővített PaRDeS tanulmány
 
+*v4 — 2026.09.03 (Pontosítás a 7. szakaszban: a נֶפֶשׁ←נָפַשׁ [H5314]
+származtatás Strong-only állítás, a BDB nem erősíti meg expliciten —
+a "←" jelölés félrevezető volt, javítva)*
 *v3 — 2026.09.03 (Vitatott pont kiegészítve a נֶפֶשׁ [nefesh] BDB-
 definíciójával, ami Walton érvét támasztja alá; új, kötelező 7. szakasz
 — Lexikai audit — felvéve)*
@@ -156,7 +159,7 @@ A *Bereshit Rabbá* (14:8) és a Talmud (Szanhedrin 38a) hagyománya szerint Ist
 A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára (2. pont táblázata: toldot, jacar, afar, adamá, nafach, nismat chajjim, nefes chajjá).
 
 **Beépített lelet:**
-- נֶפֶשׁ (H5315, "lélek/lény") ← נָפַשׁ (H5314, "felüdülni"): a BDB szócikk saját definíciója ("that which breathes") megerősíti Walton érvét a Vitatott pontban — beépítve.
+- נֶפֶשׁ (H5315, "lélek/lény") — a Strong-szótár נָפַשׁ-ból (H5314, "felüdülni") származtatja, de ezt a BDB nem erősíti meg expliciten (nincs "√"-jelölés a H5315-szócikkben); ettől függetlenül a BDB szócikk saját definíciója ("that which breathes") tartalmilag megerősíti Walton érvét a Vitatott pontban — a definíció beépítve, a Strong-only származtatási állítás nélkül.
 
 **Elutasított/triviálisnak minősített Origin-lánc-elemek:** תוֹלְדוֹת (H8435) ← H3205 "nemzeni" (triviális); יָצַר (H3335) Strong-jegyzete ("squeezing into shape") — már fedi a study meglévő "fazekas"-képe; עָפָר (H6083) ← H6080 (denominatív irányban, H6080 ered H6083-ból, nem fordítva — nem ad új tartalmat).
 
