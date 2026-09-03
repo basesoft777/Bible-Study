@@ -48,17 +48,29 @@ protokoll 2. lépésében. Az openscriptures `BrownDriverBriggs.xml` +
 `LexicalIndex.xml` (lásd `TBESH_TBESG_README.md`) másodlagos/tartalék szerepbe kerül
 a hiányossága miatt.
 
-**Helyesbítés (2026-09-02, ugyanazon a napon korrigálva):** a הום-gyök
-„morajló mélység" etimológiai adat (תְּהוֹם/1Móz 1:2 kapcsán) **valós és
-forrással alátámasztott** — csak nem a H8415 (תְּהוֹם) szócikk alatt
-található, hanem a BDB külön, **H1949** Strong-szám alatt hozza a gyök
-önálló szócikkét (a H8415 szócikk "Origin: from H1949" hivatkozással utal
-rá). Mind a `TBESH.txt`, mind ez a teljes unabridged BDB-fájl tartalmazza
-a H1949 szócikket ("murmur, roar" / "to make noise... murmur, roar").
-**Módszertani tanulság:** a determinisztikus BDB-ellenőrzési protokollnak
-(l. `sablonok/Javasolt_sablon_kiegeszites_BDB_arnyalat.md`) a fejszó
-"Origin:" hivatkozási láncát is végig kell követnie, nem elég csak a
-fejszó saját Strong-számát ellenőrizni.
+**Helyesbítés (2026-09-02, pontosítva 2026-09-03):** a הום-gyök „morajló
+mélység" etimológiai adat (תְּהוֹם/1Móz 1:2 kapcsán) **valós és forrással
+alátámasztott** — de a forrás-hozzárendelés pontosítást igényelt. A H8415
+(תְּהוֹם) BDB-szócikke saját szövegében **NEM tartalmaz gyök-eredeztető
+megjegyzést** (sem "Origin:" jelölést, sem H1949-hivatkozást) — ez
+ellenőrizve mind az eredeti eliranwong-forrású `DictBDB.json`-ban, mind a
+belőle készült ezen `BDB_teljes_unabridged.tsv`-ben. Az "Origin: from
+H1949" hivatkozás ténylegesen a **`Strong_szotar.tsv`** (openscriptures
+Strong-szótár, CC BY 4.0) "Gyök/Származtatás" oszlopából származik, ahol a
+H8415 sora szó szerint "from H1949"-et rögzíti — ez egy **másik lexikon**
+(Strong's Concise Dictionary) tartalma, nem a BDB-é. A gyök (H1949,
+"morajlani, zúgni, megzavarodni") jelentése önmagában valós BDB-tartalom
+is (l. e fájl H1949 sora), csak a תְּהוֹם↔הום kapcsolatot nem a BDB, hanem a
+Strong-szótár mondja ki explicit módon.
+
+**Módszertani tanulság (pontosítva):** a determinisztikus BDB-ellenőrzési
+protokollnak a fejszó eredeztetési láncát a **`Strong_szotar.tsv`
+"Gyök/Származtatás" mezőjéből** kell követnie (nem a BDB szabadszöveges
+szócikkéből, ami nem tartalmaz strukturált gyök-hivatkozást). A
+`Strong_szotar.tsv`-ben 4245+ sor tartalmaz "from H####" vagy hasonló
+(„corresponding to H####", „variation of H####", „feminine of H####")
+keresztre mutató mintázatot — ez az elsődleges, program által is
+kinyerhető forrás az Origin-lánc-ellenőrzéshez, nem a BDB-fájl.
 
 ## Kereszthivatkozás
 
