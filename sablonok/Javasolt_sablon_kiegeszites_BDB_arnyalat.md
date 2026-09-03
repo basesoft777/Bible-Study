@@ -1,9 +1,13 @@
 # Javasolt sablon-kiegészítés — BDB-árnyalat integrálása a PaRDeS-tanulmányokba
 
-*v1 (rekonstruált) — 2026.09.02. Az eredeti fájl elveszett egy korábbi
-kontextusablak-váltás során; ez a verzió a 2026.09.01–02-i munkamenetek
-következtetéseiből újraépítve készült, kiegészítve a determinisztikus
-protokollal, ami az eredetiből még hiányzott.*
+*v2 — 2026.09.03. Teljes szerkezeti átdolgozás: a 2/a-2/e technikasor
+egységes lánccá szervezve (a 2026.09.03-i két study-audit
+[1Moz_7v1-24, 1Moz_12v1-20] gyakorlatából kodifikálva), a
+forrás-hivatkozási fegyelem általános szabállyá emelve, a 7. szakasz
+("Lexikai audit — módszertani napló") kötelező sablon-elemmé téve
+minden jövőbeli auditált tanulmányhoz, a ritkaság-küszöb egységesítve.
+Az előző verzió (v1, rekonstruált 2026.09.02) tartalma megőrizve,
+kiegészítve.*
 
 ---
 
@@ -19,75 +23,156 @@ két alkalmazási szinten:
 
 ---
 
-## 1. Determinisztikus protokoll v1 (MINDEN MÁS ELŐFELTÉTELE)
+## 1. Determinisztikus protokoll v2 (MINDEN MÁS ELŐFELTÉTELE)
 
 ```
-BDB/TBESH-ELLENŐRZÉSI PROTOKOLL v1 — minden triázson átment szónál,
+BDB/TBESH-ELLENŐRZÉSI PROTOKOLL v2 — minden triázson átment szónál,
 KIVÉTEL NÉLKÜL, ebben a sorrendben:
 
 1. `grep "^H####" konkordancia/TBESH.txt` (héber) vagy
    `grep "^G####" konkordancia/TBESG.txt` (görög) — MINDIG lefut,
    MINDEN triázson átment szónál.
 
-2. HA a szó a "13-as kör" tagja (l. 6. pont — a pontos lista Basesoft
-   jóváhagyására vár) → KÖTELEZŐEN kiegészítve teljes BDB-kereséssel is:
+2. HA a szó a "13-as kör" tagja (l. 8. pont — a pontos lista Basesoft
+   jóváhagyására vár) → KÖTELEZŐEN lefut a teljes 2/a-2/e technikasor,
+   ebben a sorrendben:
+
+   2/a — SZÓ-SZINTŰ BDB-ELLENŐRZÉS
    `grep "^H####" konkordancia/BDB_teljes_unabridged.tsv`
-   (elsődleges teljes forrás — l. 2. pont a forrás-hierarchiában).
+   (elsődleges teljes forrás — l. 3. pont, forrás-hierarchia).
+   HA a BDB_teljes_unabridged.tsv-ben SEM ad tartalmilag érdemi
+   találatot (rendkívül ritka eset, mivel ez a forrás 8090/8090
+   bejegyzésnél tartalmaz szöveget) → EXPLICIT gap-jelzés a
+   ⚡-jegyzetben: "Determinisztikus forrásból etimológiai/
+   jelentésárnyalati adat nem elérhető." NEM pótolható web_search-csel
+   vagy Claude általános tudásából.
 
-   2/b. HA a szó a BDB_teljes_unabridged.tsv-ben SEM ad tartalmilag
-        érdemi találatot (rendkívül ritka eset, mivel ez a forrás
-        8090/8090 bejegyzésnél tartalmaz szöveget) → EXPLICIT gap-jelzés
-        a ⚡-jegyzetben: "Determinisztikus forrásból etimológiai/
-        jelentésárnyalati adat nem elérhető." NEM pótolható web_search-csel
-        vagy Claude általános tudásából.
+   2/b — ORIGIN-LÁNC KÖVETÉSE
+   Nézd meg a fejszó Strong-számának sorát a `Strong_szotar.tsv`
+   "Gyök/Származtatás" oszlopában (NEM a BDB-szócikkben — a BDB
+   szabadszöveges bejegyzései NEM tartalmaznak strukturált "Origin:"
+   jelölést). Ha a mező "from H####", "corresponding to H####",
+   "variation of H####" vagy hasonló, másik Strong-számra mutató
+   mintát tartalmaz, ELLENŐRIZD a hivatkozott Strong-szám szócikkét is
+   a TBESH.txt / BDB_teljes_unabridged.tsv-ben, mielőtt a fejszó
+   szócikkét "teljesnek" tekintenéd. Ha a hivatkozott Strong-szám
+   szócikke maga is további hivatkozást tartalmaz, a láncot addig
+   KÖVESD, amíg tartalmilag érdemi adatot nem talál, vagy a lánc nem
+   zárul (pl. "primitive root", "unused root"). Minden lánc-lépésnél
+   MEGNEVEZVE, honnan jön az adat (l. 2. pont, forrás-hivatkozási
+   fegyelem) — konkrét precedens (2026.09.02-03): a תְּהוֹם/H8415
+   esetén a `Strong_szotar.tsv` "from H1949" bejegyzése a הום-gyök
+   szócikkére mutat; a hivatkozás forrása a Strong-szótár, NEM a BDB
+   saját szövege.
 
-   2/c. Nézd meg a fejszó Strong-számának sorát a `Strong_szotar.tsv`
-        "Gyök/Származtatás" oszlopában (NEM a BDB-szócikkben — a BDB
-        szabadszöveges bejegyzései NEM tartalmaznak strukturált
-        "Origin:" jelölést, ez tévesen lett korábban feltételezve, l.
-        2026.09.03-i pontosítás). Ha a mező "from H####", "corresponding
-        to H####", "variation of H####" vagy hasonló, másik Strong-számra
-        mutató mintát tartalmaz, ELLENŐRIZD a hivatkozott Strong-szám
-        szócikkét is a TBESH.txt / BDB_teljes_unabridged.tsv-ben, mielőtt
-        a fejszó szócikkét "teljesnek" tekintenéd.
+   2/c — TELJES-ELŐFORDULÁS FELTÁRÁS (ÚJ, 2026.09.03)
+   `grep "Strong-szám" konkordancia/TAHOT_kivonat.tsv` (héber) vagy
+   `konkordancia/TAGNT_kivonat.tsv` (görög) — a szó ÖSSZES ó- vagy
+   újszövetségi előfordulásának kigyűjtése. NEM kell minden
+   előfordulást tárgyalni a study-ban, de a keresést MINDIG le kell
+   futtatni, hogy legyen alapja eldönteni, van-e kiaknázatlan, a study
+   szempontjából releváns párhuzam. Konkrét precedens (2026.09.03,
+   1Moz_7v1-24): a נִשְׁמַת רוּחַ חַיִּים (7:22) ↔ נִשְׁמַת חַיִּים (2:7)
+   dekreáció-párhuzam pontosan ebből a lépésből derült ki — a BDB
+   H5397-szócikk saját maga veti össze a két igehelyet.
+
+   2/d — KERESZTHIVATKOZÁS/MOTÍVUM-AZONOSSÁG-ELLENŐRZÉS
+   L. részletesen a 6-7. pontban (a TBESH/TBESG pontos rendeltetése és
+   a kétfunkciós triázs szétválasztása) — annak eldöntése, hogy egy már
+   meglévő kapcsolat mögött azonos BDB-jelentésárnyalat áll-e, vagy
+   csak felszíni szóazonosság.
+
+   2/e — LXX-HÍD (ÚJ, 2026.09.03, a Róm 9:27-eset alapján)
+   Amikor egy újszövetségi kereszthivatkozásnál a Strong-szám-szintű
+   metszet üres a genezisi/ószövetségi vers és az idézett újszövetségi
+   vers görög szókészlete között, EZ ÖNMAGÁBAN NEM ELÉG a kapcsolat
+   "tematikusnak" (nem lexikainak) minősítéséhez. KÖTELEZŐ külön
+   ellenőrizni:
+     (a) a héber gyök-szintű kapcsolatot (a study saját nyelvi verse és
+         az idézett ÓSZ-hely azonos triliterális gyöke, akkor is, ha
+         eltérő szófajban/alakban jelenik meg);
+     (b) a görög gyök-szintű kapcsolatot (LXX-fordítás a genezisi/ÓSZ
+         versben vs. az ÚSZ-idézet szava, akkor is, ha eltérő
+         igekötővel/összetétellel).
+   Csak ha SEM a héber, SEM a görög gyök-szinten nincs kapcsolat,
+   minősíthető a kapcsolat "tematikus, nem lexikai"-nak. Konkrét
+   precedens (2026.09.03, 1Moz_7v1-24): a Róm 9:27 piros zászló
+   (üres Strong-szám-szintű metszet) ellenére VALÓDI gyök-szintű
+   kapcsolatot mutatott mindkét nyelvi rétegben (héber שאר, görög
+   λείπω-család) — a "tematikus" minősítés pontatlan lett volna.
 
 3. Minden ⚡-jegyzet FELTÜNTETI, melyik lépés(ek) futottak le, és melyik
-   fájlból (TBESH.txt / BDB_teljes_unabridged.tsv).
+   fájlból (TBESH.txt / BDB_teljes_unabridged.tsv / Strong_szotar.tsv /
+   TAHOT_kivonat.tsv / TAGNT_kivonat.tsv / LXX_kivonat_Genezis.tsv).
 
 4. TILOS korábbi, más kontextusban/munkamenetben talált adatot
    "visszamásolni" ellenőrzés nélkül — minden ⚡-jegyzet a SAJÁT, ebben
-   a körben lefuttatott 1–2. lépésből származik.
-
-5. Ha egy szó Strong-száma a `Strong_szotar.tsv` "Gyök/Származtatás"
-   mezőjében egy másik Strong-számra hivatkozik gyök-eredetként (l. 2/c
-   pont), a protokoll KÖVESSE VÉGIG ezt a hivatkozást, és ellenőrizze a
-   hivatkozott Strong-szám szócikkét is a TBESH.txt / BDB_teljes_
-   unabridged.tsv-ben, mielőtt gap-et jelezne. Konkrét precedens
-   (2026.09.02, forrás pontosítva 2026.09.03): a תְּהוֹם/H8415 esetén a
-   `Strong_szotar.tsv` "from H1949" bejegyzése a הום-gyök szócikkére
-   mutat, ami tartalmazza a "morajlás" etimológiát a BDB_teljes_
-   unabridged.tsv-ben — ez csak a hivatkozási lánc végigkövetésével
-   derült ki. FONTOS: a hivatkozás forrása a Strong-szótár, NEM a BDB
-   saját szövege — a BDB H8415 szócikke önmagában nem tartalmaz
-   gyök-eredeztető megjegyzést.
+   a körben lefuttatott 1–2/e lépésből származik.
 ```
 
 ---
 
-## 2. Forrás-hierarchia (frissítve, 2026.09.02)
+## 2. Forrás-hivatkozási fegyelem (ÁLTALÁNOS SZABÁLY, 2026.09.03)
+
+Minden forrás-eredetű állításnál **kötelező** külön nevezni:
+- **(a)** mi jött **közvetlenül** a saját repó adott fájljából (pl.
+  `BDB_teljes_unabridged.tsv`, `Strong_szotar.tsv`, `TAHOT_kivonat.tsv`,
+  `TAGNT_kivonat.tsv`, `LXX_kivonat_Genezis.tsv`);
+- **(b)** mi jött egy **külső** forrásból, amit csak **tartalmilag**
+  kereszt-ellenőriztünk a saját repónkkal (pl. StudyLight.org, más
+  weboldal, korábbi munkamenetben talált anyag).
+
+**(a) és (b) összemosása tilos**, még akkor is, ha a tartalom helyesnek
+bizonyul.
+
+**Precedens (2026.09.03):** a תְּהוֹם (H8415) "from H1949" hivatkozás
+forrása valójában a `Strong_szotar.tsv` "Gyök/Származtatás" oszlopa —
+korábban tévesen lett a BDB saját szövegének attribuálva
+(`BDB_teljes_unabridged_README.md` és e dokumentum korábbi verziója).
+A tartalmi ellenőrzés (H1949 = "morajlás") helyesnek bizonyult, csak a
+forrás-megnevezés volt pontatlan — ez éppen ezért nehezen észrevehető
+hiba: a hibás forrás-attribúció önmagában nem befolyásolja a végkövetkeztetés
+helyességét, csak a nyomon-követhetőséget és a jövőbeli automatizálhatóságot
+veszélyezteti.
+
+---
+
+## 3. Forrás-hierarchia
 
 | Forrás | Szerep | Megbízhatóság | Megjegyzés |
 |---|---|---|---|
 | `TBESH.txt` / `TBESG.txt` (repóban) | 1. lépés, mindig fut | Csak sense-hierarchia, gyök-etimológia nélkül | STEPBible CC BY 4.0 |
-| `BDB_teljes_unabridged.tsv` (bevezetendő) | **Elsődleges teljes forrás**, 2. lépés | 8090/8090 bejegyzés, 0 üres | Közkincs (Tim Morton/Eliran Wong), l. `Code_prompt_teljes_BDB_bevezetese.md` |
-| `Strong_szotar.tsv` (repóban) | **Origin-lánc forrása** — minden szónál ellenőrzendő a 2/c lépésben | openscriptures, CC BY 4.0 | A "Gyök/Származtatás" oszlop tartalmazza a más Strong-számra mutató hivatkozásokat (pl. "from H1949") — ez a Strong's Concise Dictionary tartalma, NEM a BDB-é; a BDB-fájlok maguk nem tartalmaznak strukturált gyök-hivatkozást |
+| `BDB_teljes_unabridged.tsv` (bevezetve) | **Elsődleges teljes forrás**, 2/a lépés | 8090/8090 bejegyzés, 0 üres | Közkincs (Tim Morton/Eliran Wong) |
+| `Strong_szotar.tsv` (repóban) | **Origin-lánc forrása** — minden szónál ellenőrzendő a 2/b lépésben | openscriptures, CC BY 4.0 | A "Gyök/Származtatás" oszlop tartalmazza a más Strong-számra mutató hivatkozásokat (pl. "from H1949") — ez a Strong's Concise Dictionary tartalma, NEM a BDB-é; a BDB-fájlok maguk nem tartalmaznak strukturált gyök-hivatkozást |
+| `TAHOT_kivonat.tsv` / `TAGNT_kivonat.tsv` (repóban) | **Teljes-előfordulás forrása**, 2/c lépés | 468 232 / teljes ÚSZ sor | STEPBible CC BY 4.0 |
+| `LXX_kivonat_Genezis.tsv` (repóban) | **LXX-híd forrása**, 2/e lépés | Csak Genezis-pilot hatókör | STEPBible CC BY 4.0 |
 | openscriptures `BrownDriverBriggs.xml`+`LexicalIndex.xml` | Másodlagos/tartalék, csak ha az elsődleges forrás hiányzik a repóból | 2595 gyökből 453 (17,5%) üres | CC BY 4.0, de kevésbé teljes |
 | archive.org OCR-szkennelt teljes szövegek (BDB, Gesenius) | **NEM használandó automatikus protokollban** | Tartalmilag teljes, de OCR-zajos, nem grep-elhető megbízhatóan | Csak kivételes, explicit jelzett manuális ellenőrzésre, ha egyáltalán szükséges |
 | web_search | **TILOS** a determinisztikus protokoll részeként | — | Csak akkor, ha Basesoft kifejezetten kéri egy adott, nyitott kérdés kutatását — ilyenkor NEM kerül be ⚡-jegyzetként, hanem külön, "nem determinisztikus kiegészítés" jelzéssel |
 
 ---
 
-## 3. A TBESH/TBESG pontos rendeltetése — mit csinál, és mit NEM
+## 4. Ritkaság-küszöb (egységesítve, 2026.09.03)
+
+A ritkaság-küszöb **kontextusfüggő**, mert két különböző dolgot mér:
+
+- **`<50`** — **szó-szintű kombinált keresésnél** (két vagy több
+  Strong-szám együttes előfordulása egyetlen versen belül). Ez a
+  kombinált co-occurrence-keresések ritkaság-szűrője.
+- **`<200`** — **vers-pár-szintű összevetésnél** (pl. a 2/e LXX-híd
+  lépésben egy teljes igehely-pár görög szókészletének metszete).
+  Ez tágabb küszöb, mert egy teljes vers szókészlete természeténél
+  fogva több gyakori szót (nyelvtani elem, kötőszó) is tartalmaz — a
+  kockázat-szűrő szkript saját, >800 globális előfordulású
+  "ragasztószó"-kizárása (l. `Kockazat_szures_riport_2026-09-03.md`)
+  ennek a küszöbnek egy durvább, automatizált közelítése.
+
+Mindkét küszöb megtartandó, alkalmazási kontextus szerint választva —
+**explicit jóváhagyva, 2026.09.03.**
+
+---
+
+## 5. A TBESH/TBESG pontos rendeltetése — mit csinál, és mit NEM
 
 **Alapvető megkülönböztetés, amit a triázs minden alkalmazásának
 tiszteletben kell tartania:**
@@ -136,12 +221,12 @@ bővített tanulmány saját 3/b pontja nem idézi az adott kapcsolatot.
 
 ---
 
-## 4. Kétfunkciós triázs szétválasztása
+## 6. Kétfunkciós triázs szétválasztása
 
-A 3. pontban tisztázott rendeltetésből (motívum-azonosság igazolása egy
+Az 5. pontban tisztázott rendeltetésből (motívum-azonosság igazolása egy
 MÁR MEGLÉVŐ kapcsolaton belül) közvetlenül következik ez a szétválasztás:
 
-- **Motívum-azonosság ellenőrzés** (ez a 3. pontban tisztázott elsődleges
+- **Motívum-azonosság ellenőrzés** (ez az 5. pontban tisztázott elsődleges
   funkció, napló-tápláló): 2+ előfordulás közötti BDB-árnyalat-egyezés/
   eltérés vizsgálata egy már meglévő kapcsolaton belül. Ez a
   `PaRDeS_motivumok.md` frissítését táplálja.
@@ -159,7 +244,7 @@ szolgálja "a lexikai folyamatot" (a naplót tápláló mechanizmust), a
 
 ---
 
-## 5. Szint-korlátozás
+## 7. Szint-korlátozás
 
 1. szint (a study saját szava → elsődleges jelentésárnyalat) **mindig lefut**.
 2–3. szint (a kereszthivatkozásban idézett TOVÁBBI szó — pl. ἀρχή Kol
@@ -168,10 +253,10 @@ kérésre nyílik meg**, nem automatikusan ugyanabban a körben.
 
 ---
 
-## 6. "13-as kör" — NYITOTT, Basesoft jóváhagyására vár
+## 8. "13-as kör" — NYITOTT, Basesoft jóváhagyására vár
 
 A korábbi munkamenet "13 motívum (8 ✅ önálló tanulmánnyal + 5 ⭐ küszöbön
-túli)" számot említett, amely a teljes BDB-kiegészítést kapná (2. lépés).
+túli)" számot említett, amely a teljes BDB-kiegészítést kapná (2/a lépés).
 A `PaRDeS_motivumok_v43.md` fájl alapján végzett ellenőrzés ettől eltérő
 számot ad (5–6 ✅ lezárt fájl/mélyelemzés + 6 ⭐ aktív küszöbön túli =
 11–12, a Melkizedek-mélyelemzés és a Tehóm-komplexum kettős számítása
@@ -198,10 +283,10 @@ A többi, ~62 motívum csak az 1. lépést (TBESH/TBESG-grep) kapja.
 
 ---
 
-## 7. Lezárási szabály
+## 9. Lezárási szabály
 
 ```
-BDB-ellenőrzés: v1, [dátum] — triázs-szinten lezárva (5 kritérium
+BDB-ellenőrzés: v2, [dátum] — triázs-szinten lezárva (2/a-2/e technikasor
 szerint, max. 2 ⚡-jegyzet/PaRDeS-réteg), N nyitott kérdés dokumentálva.
 Újranyitás csak explicit Basesoft-kérésre.
 ```
@@ -212,7 +297,7 @@ előfordulás kap ellenőrzést, a korábbiak nem nyílnak újra automatikusan.
 
 ---
 
-## 8. Napló-egyesítés
+## 10. Napló-egyesítés és a 7. szakasz kötelezővé tétele (2026.09.03)
 
 A jövőbeli BDB/TBESH-találatok **ugyanabba a kereszthivatkozás-napló-
 formátumba** kerüljenek, mint amit a `1Moz_1v1_kereszthivatkozas_naplo.md`
@@ -220,20 +305,33 @@ formátumba** kerüljenek, mint amit a `1Moz_1v1_kereszthivatkozas_naplo.md`
 (Hivatalossá téve-dátum, ✅/🔶/❌ minősítés, "javasolt, de még nem
 végrehajtott" zárósor) — ne külön, párhuzamos napló-rendszer legyen.
 
+**Kötelező sablon-elem (2026.09.03-tól):** minden ezután, ezzel a
+protokollal auditált bővített tanulmány kapjon egy rögzített
+**"7. szakasz — Lexikai audit, módszertani napló"** részt, amely
+dokumentálja:
+- mely kulcsszavakon futott le a 2/a-2/e technikasor;
+- mi lett beépítve a study-ba, és mi lett explicit elutasítva, megnevezett
+  indokkal (pl. gyenge/ellenőrizetlen forrás-attribúció miatt — l. 2. pont
+  precedense);
+- a forrás-hivatkozási fegyelem (2. pont) betartva dokumentálva minden
+  egyes lelethez.
+
+Ez a szakasz a bővített sablon (`2_PaRDeS_bovitett_sablon.md`) saját
+struktúrájába nem íródik vissza automatikusan ezzel a dokumentummal — a
+sablon-fájl saját, külön jóváhagyást igénylő frissítése továbbra is
+nyitott feladat (l. 11. pont).
+
 ---
 
-## 9. Nyitott végrehajtási kérdések
+## 11. Nyitott végrehajtási kérdések
 
-1. A 6. pont "13-as kör" listájának végleges megerősítése
-2. A `Code_prompt_teljes_BDB_bevezetese.md` tényleges kiadása Claude
-   Code-nak (l. külön fájl)
+1. A 8. pont "13-as kör" listájának végleges megerősítése
+2. A bővített sablon (`2_PaRDeS_bovitett_sablon.md`) saját frissítése a
+   kötelező 7. szakasszal (l. 10. pont) — ez a dokumentum eddig csak a
+   *szabályt* rögzíti, a sablon-fájl saját szerkezeti frissítése még
+   hátravan, külön jóváhagyással
 3. Retroaktív vs. előremenő BDB-rollout a 20 meglévő bővített
-   tanulmányra (korábbi, még döntetlen kérdés)
-4. ~~A `TBESH_pilot_riport_1Moz_1v2-2v3.md` és `Ujrageneralt_1Moz_1v2-2v3_TELJES.md`
-   felülvizsgálata a הום-gyök állítás miatt~~ — **LEZÁRVA (2026.09.03,
-   keresés nélkül):** a két fájl továbbra sem található, de a felülvizsgálat
-   célja okafogyottá vált — a הום-gyök állítás időközben három hiteles
-   helyen javítva lett (`BDB_teljes_unabridged_README.md`,
-   `1Moz_1v2-2v3_bovitett.md` v4, a kereszthivatkozás-napló 6. szakasza).
-   A két elveszett fájl elvesztése emiatt nem blokkoló, további keresés nem
-   szükséges.
+   tanulmányra (korábbi, még döntetlen kérdés) — ide tartozik: a már
+   auditált 2 study (1Moz_7v1-24, 1Moz_12v1-20) kapjon-e utólag formális
+   7. szakaszt is, vagy a jelenlegi (Remez/Sod-blokkba illesztett)
+   megoldás elegendő
