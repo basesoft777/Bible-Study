@@ -1,6 +1,8 @@
 # 1Mózes 16:1-16 — Hágár és Ismáel születése
 
-*v1 — 2026.08.17*
+*v2 — 2026.09.03 (Új, kötelező 7. szakasz — Lexikai audit — felvéve;
+tartalmi lelet nincs, a study lexikailag tiszta; a kockázat-riport
+J4-torzítása [יהוה gyakorisága] tisztázva)*
 
 ---
 
@@ -172,6 +174,18 @@ Amikor egy ígéret vagy vezetés beteljesedésére várunk, érdemes tudatosan 
 
 3. *Milyen érzelmi/lelki ellenállás vagy nehézség merülhet fel ezzel kapcsolatban, és hogyan szólítja meg ezt a szöveg?*
 Sokan azonosulnak Hágár kiszolgáltatottságával — a láthatatlanná válás, az igazságtalan bánásmód érzésével, amikor mások döntése miatt szenvedünk. A szöveg nem bagatellizálja ezt: Isten nem mondja Hágárnak, hogy a helyzet igazságos volt, hanem személyesen megy utána, névvel szólítja, és a legmélyebb pusztai magányban ad neki olyan kinyilatkoztatást (Él Rói), amelyet a Szentírásban előtte senki nem kapott meg ilyen formában. A nehézség nem oldódik meg azonnal (vissza kell térnie ugyanabba a nyomorgató helyzetbe), de a látás és meghallgatás bizonyossága megváltoztatja, hogyan viseli azt.
+
+---
+
+## 7. Lexikai audit — módszertani napló
+
+A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára (2. pont táblázata). Nincs beépítendő tartalmi lelet — az Origin-lánc-hivatkozások mind triviálisak vagy már a study saját szövege explicit kifejti: חָמָס ← "megsérteni" (triviális); יהוה ← "lenni" (közismert etimológia); יִשְׁמָעֵאל ← שמע ("hallani") — már kifejtve a 6. pontban ("Isten meghallja"); אֵל רֳאִי ← ראה ("látni") — már kifejtve a 6. pontban ("a látás Istene").
+
+**LXX-híd, ellenőrizve, nincs teendő:** Gal 4:24-25 ↔ Ἁγάρ (G0028) — a 4. pont már explicit, névvel tárgyalja ezt a kapcsolatot.
+
+**J4-torzítás tisztázva:** a kockázat-riport által jelzett magas ("5522 sosem idézett") szám kizárólag a יהוה (H3068) rendkívüli gyakoriságából adódik — módszertani műtermék, nem tartalmi hiányosság (ugyanaz az ok, mint `1Moz_13v1-18_bovitett.md`-nél).
+
+**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv` és a `TAGNT_kivonat.tsv` fájlokból származnak.
 
 ---
 
