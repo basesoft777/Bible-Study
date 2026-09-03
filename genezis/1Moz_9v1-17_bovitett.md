@@ -1,6 +1,8 @@
 # 1Móz 9:1-17 — bővített PaRDeS tanulmány
 
-*v1 — 2026.08.13*
+*v2 — 2026.09.03 (Új, kötelező 7. szakasz — Lexikai audit — felvéve;
+nincs új tartalmi lelet; két ígéretes etimológia [קֶשֶׁת, עוֹלָם]
+ellenőrizve és elutasítva, mert BDB nem erősíti meg őket)*
 
 ---
 
@@ -187,6 +189,20 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent (a *kesét* kettős jelenté
 1. *Mit jelent ez a mai hívő mindennapi életében?* A vér-tilalom arra tanít, hogy az élet Istentől való és szent — ez a mai hívő számára az emberi élet és méltóság tiszteletének alapelvét hordozza minden területen, nem csupán étkezési szabályként.
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* Az emberi élet védelme (5-6. v.) nem csupán jogi elvként, hanem az Isten-képmás gyakorlati tiszteleteként élendő meg a mindennapi emberi kapcsolatokban — abban is, ahogyan másokról beszélünk (vö. Jak 3:9).
 3. *Milyen érzelmi/lelki ellenállás merülhet fel, és hogyan szólítja meg ezt a szöveg?* A szivárvány népszerű, romantikus-esztétikai olvasata nehezen fér össze a "felfüggesztett hadi íj" komolyabb képével. A szöveg nem azt kéri, hogy elvessük a szivárvány szépségét, hanem hogy mélyebben lássuk: Isten türelme nem gyengeség vagy figyelmetlenség, hanem tudatos, önmagára nézve kötelező önkorlátozás.
+
+---
+
+## 7. Lexikai audit — módszertani napló
+
+A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára (2. pont táblázata). Nincs beépítendő tartalmi lelet.
+
+**Ellenőrzött és elutasított etimológiák:**
+- קֶשֶׁת (H7198, "íj/ív") ← "hajlítani": közvetlenül érintené a study saját ⚠️ vitatott pontját (hadi íj vs. szivárvány), de a BDB szócikk saját maga "meaning unknown" jelzéssel áll ("originally √ perhaps קושׁ, meaning unknown") — a Strong-szótár "hajlítás" etimológiáját NEM erősíti meg — nem építendő be a vitatott pont alátámasztására.
+- עוֹלָם (H5769, "örök") ← עלם ("elrejteni"): ismert tudományos elmélet ("örökkévalóság" mint "a láthatáron túli idő"), de a BDB szócikk nem ad explicit gyök-jelölést az entry elején — Strong-only állítás, nem BDB-igazolt, nem építendő be.
+
+**Elutasított/már ismert Origin-lánc-elemek:** דָּם ← "elhallgattatni" és בְּרִית ← "vágás" — ugyanaz az elutasítás, mint a `1Moz_6v9-22_bovitett.md`, `1Moz_15_bovitett.md` és `1Moz_4v1-24_bovitett.md` 7. szakaszában; זָכַר ← "emlék" (triviális).
+
+**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv` és a `BDB_teljes_unabridged.tsv` fájlokból származnak.
 
 ---
 
