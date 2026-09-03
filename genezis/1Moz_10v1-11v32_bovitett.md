@@ -1,6 +1,11 @@
 # 1Mózes 10:1–11:32 — Népek táblázata, Bábel tornya, Sém toledotja
 ## Bővített PaRDeS tanulmány
 
+*v7 — 2026.09.03 (Sod-pont kiegészítve a מִגְדָּל/אֲגַדְּלָה [11:4↔12:2] közös
+גדל gyök lelettel — ellentétes visszhang: Bábel önerőből, Ábrám ajándékba
+kapja a nagyságot/nevet; új 🔗 kereszthivatkozás felvéve a 4. pontban;
+új, kötelező 7. szakasz — Lexikai audit — felvéve)*
+
 *v6 — 2026.08.15 (Alkalmazás pont kiegészítve nevesített tanítói szemszögekkel: Derek Prince — Blessing and Curses [Kánaán-átok, 9:25-27↔10:15-19]; Kenneth Copeland — szavak teremtő ereje, dokumentált Bábel-hivatkozással [11:6], ⚠️ forráskritikai megjegyzéssel a CRI-kritika alapján; Charles Capps — The Tongue: A Creative Force, tematikus kontraszt [nincs közvetlen forrás]; forráskritikai összegzéssel, hogy a hivatkozások nem egyenrangú exegetikai súlyúak)*
 
 ---
@@ -108,6 +113,8 @@ A 10-11. fejezet együttes szerkezete teológiai ívet rajzol: az egyetemes embe
 
 A "Bábel" név maga is tanítás: az építők **nevet** akartak maguknak szerezni, Isten pedig **nevet adott** nekik — de gúnyos jelentésűt: "összezavarás" (bábel ↔ *balal*), nem dicsőséget. Amit az ember saját erejéből próbál felépíteni Isten nélkül, az önmaga ellen fordul, és éppen abban az irányban szóródik szét, amit el akart kerülni. Spirituális elv, ami a szövegből közvetlenül levezethető: az emberi önmegváltás-projektek — legyen szó tehetség-, technológia- vagy közösségalapú "egységépítésről" — Isten nélkül szükségszerűen a saját ellentétükbe fordulnak.
 
+Ehhez a mintázathoz egy önálló lexikai szál is társul: a **migdal** ("torony", 11:4) ugyanabból a **גדל** ("naggyá lenni/válni") gyökből képződik, mint amivel Isten Ábrámnak ígéri, hogy "**naggyá teszem** a te nevedet" (*אֲגַדְּלָה*, 12:2) — l. 4. pont. Amit Bábel egy fizikai toronnyal, önerőből próbál elérni (nagyság és név), azt Isten Ábrámnak egyetlen szóval, ajándékként adja, ugyanabból a gyökből.
+
 ### ⚠️ Vitatott pontok
 
 1. **Nimród megítélése (10:8-9)** — a "hatalmas vadász **az Úr előtt**" kifejezés (héberül *lifné JHVH*) lehet semleges/pozitív ("Isten színe előtt, Isten szemében kiemelkedő") vagy kihívó/negatív ("Isten ellenében, dacosan"). Wenham (WBC) és Hamilton (NICOT) a kifejezést inkább semlegesen, dicsérő formulaként olvassák; a rabbinikus hagyomány (Talmud, Szanhedrin 109a; Midrás Rabbah) és sok korai egyházatya egyöntetűen zsarnok-lázadóként, Isten elleni háború kezdeményezőjeként mutatja be.
@@ -143,6 +150,13 @@ Ez valódi lexikai kapcsolat (azonos hárombetűs gyök, צוד — Gen 10:9 né
 > Pünkösdkor a Szent Szellem kitöltetésekor a sokféle nemzetből összegyűlt sokaság mindegyike a saját nyelvén hallja Isten csodálatos dolgait — a nyelvi szétszórtság nem törlődik el, hanem a Szellem által áthidalódik.
 
 Ez tematikus, **nem lexikai** párhuzam (a héber *lashon* és a görög *glóssza* nem azonos szócsalád) — a kapcsolat tartalmi fordított-mintázat: Bábelben az egység emberi erőből, Isten ellenében bomlik szét sokféleségre; Pünkösdkor a sokféleség Isten Szelleme által nyer egységet anélkül, hogy megszűnne.
+
+**Sod alatt — a migdal (torony) és az אֲגַדְּלָה (naggyá teszem) közös gyöke:**
+
+> 🔗 ⇒ *1Móz 12:2* (kulcsszó: **nagyság** — héberül גדל, *gadal*)
+> "...és **naggyá teszem** a te nevedet..."
+
+A מִגְדָּל ("torony", 11:4) és az אֲגַדְּלָה ("naggyá teszem", 12:2) azonos גדל gyökből képződik — nem tematikus, hanem valódi lexikai (morfológiai) kapcsolat. Bábel építői önerőből, fizikai tornyon keresztül próbálnak nagyságot és nevet szerezni; Isten ugyanazt (nagyság, név) Ábrámnak ajándékként, egyetlen szóval adja — ellentétes visszhang, ugyanabból a gyökből.
 
 **Drash alatt — Kánaán fiai és a korábban kimondott átok:**
 
@@ -202,6 +216,21 @@ Az égetett tégla és szurok-habarcs (11:3) valódi mezopotámiai/sumér épít
 - **Charles Capps — "The Tongue: A Creative Force" (A nyelv mint teremtő erő)**: Capps tanítása az 1Móz 1 teremtési mintájára ("Legyen világosság") épül — Isten szava által teremt, az ember (Isten képmására teremtve) hasonlóan "teremtő" erővel bír a kimondott szó által. Nincs dokumentált, közvetlen Capps-hivatkozás magára a Bábel-elbeszélésre, de a 11:1-9 tematikusan éles kontrasztot kínál Capps tanításához: Bábelben az emberek *egy nyelvvel, egy szóval* ("Jertek, építsünk... szerezzünk magunknak nevet") önmaguk dicsőségére használják a beszéd erejét — ez Capps rendszerében a "hitvallás" negatív, Isten-ellenes párja lehetne: nem hitből, hanem lázadásból fakadó, mégis valós következményekkel járó kimondott szó, amelyet Isten ítélettel zár le.
 
 **Forráskritikai összegzés:** a fenti három tanító közül Prince alkalmazása áll legközelebb a szöveg saját logikájához (a Kánaán-átok motívum valóban a szöveg centrális témája ebben a szakaszban); Copeland alkalmazása dokumentáltan a szövegtől eltávolodó, vitatott felhasználás; Capps esetében nincs közvetlen forrás, a kapcsolat tematikus konstrukció, nem idézett tanítás. Ezt a különbségtételt fontos megőrizni — nem minden nevesített tanítói hivatkozás egyenrangú exegetikai súlyú.
+
+---
+
+## 7. Lexikai audit — módszertani napló
+
+A 2/a-2/e technikasor lefutott a study kulcsszavaira (2. pont táblázata: toledot, gibbor, tsajid, mamlachah, safá echát, migdal, sém, návelá, balal).
+
+**Beépített lelet:**
+- מִגְדָּל (H4026, "torony") ← גָּדַל (H1431, "naggyá lenni") — a standard héber mem-preformatívumos főnévképzés (mint מִזְבֵּחַ ← זָבַח) alapján a torony szó szerint "nagyság/naggyá-tevés helye" — ugyanaz a gyök, mint a 12:2-es אֲגַדְּלָה ("naggyá teszem") — beépítve a Sod pontba és új kereszthivatkozásként (l. 4. pont).
+
+**Elutasított/triviálisnak minősített Origin-lánc-elemek:** תּוֹלְדֹת (H8435) ← H3205 "nemzeni" (triviális); גִּבֹּר (H1368) ← H1397 "nagy ember" (már fedi a study saját gibbor/gibborim lexikai pontja); מַמְלָכָה (H4467) ← H4427 "uralkodni" (triviális); שָׂפָה (H8193) ← "vég/határ" gyök (nem hoz új tartalmat).
+
+**Elutasított lelet:** שֵׁם (H8034, "név") ↔ שָׁמַיִם (H8064, "ég") — a Strong-szótár felveti, de a BDB nem erősíti meg (l. `1Moz_12v1-20_bovitett.md` 7. szakasza, azonos indoklás).
+
+**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv` és a `BDB_teljes_unabridged.tsv` fájlokból származnak.
 
 ---
 
