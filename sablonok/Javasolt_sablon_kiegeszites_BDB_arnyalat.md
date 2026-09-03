@@ -1,5 +1,10 @@
 # Javasolt sablon-kiegészítés — BDB-árnyalat integrálása a PaRDeS-tanulmányokba
 
+*v4 — 2026.09.03 (A "13-as kör" gating-mechanizmus ELVETVE: a 2/a-2/e
+technikasor mostantól minden, a bővített sablon saját triázsán átment
+kulcsszóra lefut, külön motívum-lista alapú szűrés nélkül — a 8. pont
+történeti feljegyzésként megmarad, de többé nem éles protokoll-elem; az
+1. pont 2. lépése és a 11. pont 1. tétele ennek megfelelően frissítve)*
 *v3 — 2026.09.03 (A 2/e LXX-híd lépés kiegészítve explicit hatókör-
 záradékkal: a `LXX_kivonat_Genezis.tsv` jelenleg KIZÁRÓLAG a Genezis
 könyvet fedi le [1-50. fejezet] — Genezisen kívüli tanulmányoknál a 2/e
@@ -39,9 +44,15 @@ KIVÉTEL NÉLKÜL, ebben a sorrendben:
    `grep "^G####" konkordancia/TBESG.txt` (görög) — MINDIG lefut,
    MINDEN triázson átment szónál.
 
-2. HA a szó a "13-as kör" tagja (l. 8. pont — a pontos lista Basesoft
-   jóváhagyására vár) → KÖTELEZŐEN lefut a teljes 2/a-2/e technikasor,
-   ebben a sorrendben:
+2. A teljes 2/a-2/e technikasor MINDEN, a bővített sablon saját
+   triázsán (`2_PaRDeS_bovitett_sablon.md`, 2. pont, 6 kritérium) átment
+   kulcsszóra kötelezően lefut — nincs további szűrés vagy
+   kör-tagság-vizsgálat. (2026.09.03-ig egy külön "13-as kör" lista
+   szűkítette volna ezt a kört, de a gyakorlat — l. 1Moz_7v1-24 és
+   1Moz_12v1-20 auditja — azt mutatta, hogy a triázson átment szavak
+   száma önmagában elég szűk halmaz ahhoz, hogy külön kör-lista nélkül
+   is kezelhető legyen; a "13-as kör" koncepció emiatt elvetve, l. 8.
+   pont.) Ebben a sorrendben:
 
    2/a — SZÓ-SZINTŰ BDB-ELLENŐRZÉS
    `grep "^H####" konkordancia/BDB_teljes_unabridged.tsv`
@@ -270,7 +281,16 @@ kérésre nyílik meg**, nem automatikusan ugyanabban a körben.
 
 ---
 
-## 8. "13-as kör" — NYITOTT, Basesoft jóváhagyására vár
+## 8. "13-as kör" — ELVETVE (2026.09.03), történeti feljegyzésként megőrizve
+
+**Döntés (2026.09.03):** a "13-as kör" mint külön jóváhagyandó
+szűrő-lista elvetve — a 2/a-2/e technikasor mostantól minden, a
+bővített sablon saját triázsán átment kulcsszóra lefut (l. 1. pont, 2.
+lépés). A lista sosem lett véglegesítve (l. alább az eltérő
+számítások), és a gyakorlati tapasztalat (két teljes study-audit) azt
+mutatta, hogy külön kör-lista nélkül is kezelhető a technikasor
+terjedelme. Az alábbi, korábban javasolt lista TÖRTÉNETI
+FELJEGYZÉSKÉNT megmarad, de többé NEM éles protokoll-elem:
 
 A korábbi munkamenet "13 motívum (8 ✅ önálló tanulmánnyal + 5 ⭐ küszöbön
 túli)" számot említett, amely a teljes BDB-kiegészítést kapná (2/a lépés).
@@ -296,7 +316,10 @@ Javasolt jelölők a végleges listához, ha elkészül:
 [ ] oltárépítés — Ábrám vándorlásának jelölői ⭐
 ```
 
-A többi, ~62 motívum csak az 1. lépést (TBESH/TBESG-grep) kapja.
+**Ez a záró mondat is elavult a fenti döntés fényében** — a gating
+mostantól nem motívum-szinten, hanem study-szintű triázson átment
+kulcsszavanként dől el (l. 1. pont, 2. lépés), nem a motívumnapló
+motívumainak egy előre kijelölt alcsoportjaként.
 
 ---
 
@@ -342,7 +365,8 @@ nyitott feladat (l. 11. pont).
 
 ## 11. Nyitott végrehajtási kérdések
 
-1. A 8. pont "13-as kör" listájának végleges megerősítése
+1. ~~A 8. pont "13-as kör" listájának végleges megerősítése~~ —
+   TÁRGYTALANNÁ VÁLT (2026.09.03): a koncepció elvetve, l. 8. pont.
 2. A bővített sablon (`2_PaRDeS_bovitett_sablon.md`) saját frissítése a
    kötelező 7. szakasszal (l. 10. pont) — ez a dokumentum eddig csak a
    *szabályt* rögzíti, a sablon-fájl saját szerkezeti frissítése még
