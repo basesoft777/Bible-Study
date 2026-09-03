@@ -1,7 +1,9 @@
 # 1Mózes 13:1-18 — Ábrám és Lót elválása; az ígéret megújítása
 ### Bővített PaRDeS-tanulmány — nevesített tanítói alkalmazással
 
-*v1 — 2026.08.16*
+*v2 — 2026.09.03 (Új, kötelező 7. szakasz — Lexikai audit — felvéve;
+tartalmi lelet nincs, a study lexikailag tiszta; a kockázat-riport
+J4-torzítása [יהוה gyakorisága] tisztázva)*
 
 ---
 
@@ -153,6 +155,16 @@ Ugyanaz a szókapcsolat, amellyel Lót a Jordán-síkságot választotta (13:10)
 2. **Névsor a jóváhagyott listából:** a keresés Derek Prince, Kenneth Hagin, Kenneth Copeland és Charles Capps anyagára irányult, mivel ők a szövetségi ígéretek és a hit-járás témakörében a legrendszeresebben tanítanak.
 3. **Célzott keresés motívumonként:** minden fenti tanítóra külön kerestem "Genesis 13", illetve a konkrét versek (13:10, 13:14) és a "hit vs. látás" téma kombinációjára.
 4-5. **Forrás-ellenőrzés és a hiány jelzése:** a keresés **nem hozott fel megbízható, elsődleges forrást** egyik jóváhagyott tanítótól sem, amely *kifejezetten* az 1Mózes 13. fejezetre vagy annak egy konkrét versére hivatkozna. Találtam Derek Prince-től egy tematikusan rokon, de **más igehelyhez kötött** tanítást (*"Hope Beyond This Life"*, Genezis 23 kapcsán): eszerint "a Isten által adott örökség átvételéhez gyakran szükséges a világi örökségről való lemondás", Lukács 14:33-ra hivatkozva. Ez tartalmilag rokon Ábrám 13. fejezetbeli lemondásával, de mivel a forrás nem magát a 13. fejezetet tárgyalja, **a sablon szabálya szerint nem építhető be úgy, mintha 13. fejezet-specifikus tanítás volna** — csak mint megjegyzett, rokon szál jelezhető. Ha szeretnéd, kereshetek tovább konkrétan ehhez a fejezethez kötött anyagot a jóváhagyott tanítói körből, vagy megnyithatjuk a kört más nevesített tanítóra.
+
+---
+
+## 7. Lexikai audit — módszertani napló
+
+A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára (2. pont táblázata). Nincs beépítendő tartalmi lelet — az összes Origin-lánc-hivatkozás triviálisnak minősült: יהוה ("Örökkévaló") ← "lenni" (a név közismert, jól dokumentált etimológiája, nem hoz specifikus új tartalmat ehhez a study-hoz); מַשְׁקֶה ("öntözött") ← "öntözni" (triviális); חַטָּאִים ("bűnösök") ← "vétkezni" (triviális, várható intenzív alak); כַּעֲפַר ← "por" (denominatív, fordított irány, nincs új tartalom); מִזְבֵּחַ ← "áldozni" (már fedi a study saját 6. pontja).
+
+**J4-torzítás tisztázva:** a kockázat-riport által jelzett magas ("5523 sosem idézett") szám kizárólag a יהוה (H3068) rendkívüli gyakoriságából (6528 ószövetségi előfordulás) adódik — ez módszertani műtermék, nem tartalmi hiányosság. A szó azért került be kulcsszóként, mert a "segítségül hívta az Úr nevét" (13:4) kifejezés szerves része.
+
+**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv` és a `TAHOT_kivonat.tsv` fájlokból származnak.
 
 ---
 
