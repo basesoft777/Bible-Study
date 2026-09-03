@@ -1,5 +1,12 @@
 # 2. Bővített PaRDeS sablon — teljes, részletes verzió
 
+*v15 — 2026.09.03 (Új, feltételes „7. Lexikai audit — módszertani napló"
+pont felvéve, a determinisztikus BDB/TBESH-protokoll [`Javasolt_sablon_
+kiegeszites_BDB_arnyalat.md`] 2/a-2/e technikasorának dokumentálására;
+a 4. pont „Kereséskor" bekezdése kiegészítve a technikasorra mutató
+kereszthivatkozással; a záró önellenőrzés frissítve a 2/e LXX-híd
+tanulsággal — üres Strong-szám-metszet önmagában nem elég a „tematikus,
+nem lexikai" minősítéshez, gyök-szintű kapcsolatot is ellenőrizni kell)*
 *v14 — 2026.08.31 (Új, opcionális „További igazolt kapcsolódások" kompakt lista
 a 4. pont végén — a szintenkénti 1-2-es limiten túli ✅ jelöltek tömör
 megjelenítésére, a kereszthivatkozás-napló mellett, nem helyette)*
@@ -103,6 +110,14 @@ kiválasztott kapcsolat [Claude-tudás] eredetű. (Egy ritka szó néhány előf
 pontosabb és erősebb kapcsolódást adhat, mint egy tartalmilag hasonló, de lexikailag
 független párhuzam.)
 
+**A 2/a-2/e technikasor kapcsolódása:** ha egy kiválasztott kulcsszó a "13-as kör"
+tagja (l. `Javasolt_sablon_kiegeszites_BDB_arnyalat.md` 8. pont), a fenti
+négyforrásos FELFEDEZŐ keresésen túl kötelezően lefut a determinisztikus
+BDB/TBESH-protokoll 2/a-2/e technikasora is (2/a BDB-ellenőrzés, 2/b Origin-lánc,
+2/c teljes-előfordulás feltárás, 2/d motívum-azonosság, 2/e LXX-híd) — ez a
+MINŐSÍTŐ funkció, nem újabb felfedezés. Az eredménye a 7. pontban (Lexikai audit)
+dokumentálandó.
+
 **Kötelező napló:** a fenti keresési/minősítési folyamat eredményét — MINDEN
 vizsgált jelöltet, nem csak a kiválasztottakat — rögzítsd egy önálló fájlban:
 `[könyv-mappa]/naplok/[study-fájlnév-kiterjesztés-nélkül]_kereszthivatkozas_naplo.md`.
@@ -182,6 +197,38 @@ Zárja a tanulmányt 2-3 konkrét kérdés megválaszolásával:
 
 ---
 
+## 7. Lexikai audit — módszertani napló *(feltételes pont)*
+
+**Aktiválási feltétel:** illeszd be, ha a tanulmány bármely kulcsszavára
+lefutott a determinisztikus BDB/TBESH-protokoll (`Javasolt_sablon_
+kiegeszites_BDB_arnyalat.md`) 2/a-2/e technikasora — tipikusan azért,
+mert a szó a "13-as kör" tagja. Ha egyetlen kulcsszóra sem futott le a
+technikasor, hagyd ki ezt a pontot, és jelezd explicit, miért marad el
+(pl. "egyik kulcsszó sem tagja a 13-as körnek ebben a tanulmányban").
+
+Dokumentálja, tömören, mely kulcsszavakon futott le a technikasor:
+
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| *(pl. H7604)* | *(rövid összegzés)* | *(talált-e láncot, hova vezetett)* | *(hány előfordulás, van-e kiaknázatlan)* | *(erősít/gyengít egy meglévő kapcsolatot)* | *(ha releváns, gyök-szintű eredmény)* | *(beépítve / elutasítva, hol a tanulmányban)* |
+
+**Elutasított leletek külön, indoklással:** minden olyan találat, amit a
+fenti lépések feltártak, de NEM került be a study szövegébe, itt
+rögzítendő, megnevezett indokkal (pl. "BDB szerint a gyök ismeretlen, a
+Strong-szótár spekulatív hivatkozását nem építettük be — l.
+forrás-hivatkozási fegyelem"). Ez nem redundáns a kereszthivatkozás-
+naplóval (ami a 4. pont felfedező keresésének teljes nyers anyagát
+tartalmazza) — ez a 2/a-2/e lexikai audit saját, tömör összegzése.
+
+**Forrás-hivatkozási fegyelem (kötelező minden sorban):** minden fenti
+cellánál explicit jelölve, honnan jött az adat — közvetlenül a saját
+repó fájljából (`BDB_teljes_unabridged.tsv`, `Strong_szotar.tsv`,
+`TAHOT_kivonat.tsv`/`TAGNT_kivonat.tsv`, `LXX_kivonat_Genezis.tsv`) vagy
+külső, csak tartalmilag ellenőrzött forrásból (l. `Javasolt_sablon_
+kiegeszites_BDB_arnyalat.md` 2. pont).
+
+---
+
 ## Terminológiai és formai szabályok (minden sablonra érvényes)
 
 - „Szentlélek" helyett mindig **„Szent Szellem"**
@@ -196,4 +243,4 @@ Ha két elmentett szabály ütközni látszik, explicit rákérdezés következi
 
 ---
 
-*A tanulmány véglegesítése előtt belső önellenőrzés fut le minden fenti szabályra. Ennek része: valahányszor a szöveg azt állítja/sugallja, hogy két igehely közös szótő/szócsalád (lexikai) kapcsolatban áll, ellenőrizni kell, hogy ténylegesen ugyanaz-e a görög/héber szó (nem csak rokon jelentésű) — ha a kapcsolat valójában csak tematikus/fogalmi, ezt explicit jelezni kell ("tematikus, nem lexikai párhuzam"), és nem szabad úgy fogalmazni, mintha egy szócsalád folytatódna vagy azonos gyökből eredne.*
+*A tanulmány véglegesítése előtt belső önellenőrzés fut le minden fenti szabályra. Ennek része: valahányszor a szöveg azt állítja/sugallja, hogy két igehely közös szótő/szócsalád (lexikai) kapcsolatban áll, ellenőrizni kell, hogy ténylegesen ugyanaz-e a görög/héber szó (nem csak rokon jelentésű). Ha nincs azonos Strong-szám, EZ ÖNMAGÁBAN MÉG NEM ELÉG a "tematikus, nem lexikai" minősítéshez (l. a protokoll 2/e pontja, LXX-híd) — külön ellenőrizni kell a gyök-szintű kapcsolatot is (közös triliterális héber gyök, vagy közös görög szótő eltérő igekötővel/alakban). Csak ha SEM az azonos szó, SEM a közös gyök nem áll fenn, minősíthető a kapcsolat "tematikus, nem lexikai párhuzamnak". Ha gyök-szintű kapcsolat van, de nem azonos a szóalak, ezt "gyök-szintű lexikai rokonság"-ként kell rögzíteni — sem "tematikus"-ként, sem azonos-szóként nem szabad feltüntetni.*
