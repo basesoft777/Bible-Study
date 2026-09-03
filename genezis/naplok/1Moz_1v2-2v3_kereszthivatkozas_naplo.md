@@ -259,3 +259,35 @@ tartalmazza: **Zsolt 8:5-6** (Peshat), **Zsolt 104:30** (Remez), **Zsid 4:9-11**
 
 **Vizsgálat alatt, LXX-adat hiánya miatt nem ellenőrizhető:** 2Móz 20:11
 (Exodus, nincs a jelenlegi 1Mózes-only LXX-pilot hatókörében).
+
+---
+
+## 7. Teljes-előfordulás feltárás — צֶלֶם (celem, H6754), 2026.09.02
+
+*Módszertan: nem a meglévő jelöltlistából (TSK, Károli-KH, study-idézetek)
+indul ki, hanem a Strong-szám teljes, szűretlen ószövetségi
+előfordulás-listáját kéri le a `TAHOT_kivonat.tsv`-ből, és minden, a
+study/napló által korábban SOSEM idézett előfordulást megvizsgál a teljes
+BDB-szócikk alapján. Ellenszer a kereszthivatkozás-vezérelt módszer
+konfirmáló torzítására (l. átadási dokumentum, 2026.09.02 este, 6. pont).*
+
+**Eredmény:** a H6754 teljes ószövetségi előfordulás-listája 17 verset ad.
+Ebből 11 olyan, amelyet a study vagy a napló korábban egyetlen alkalommal
+sem idézett. Mind a 11-et megvizsgálva a teljes BDB-szócikk (3 jelentés-ág)
+alapján:
+
+- **9 előfordulás** a BDB 1. jelentéséhez tartozik (szó szerinti
+  bálványszobor/kép — pl. 1Sám 6:5, Ám 5:26) — nem hoz új tartalmat, a
+  meglévő etimológiai jegyzetet erősíti meg.
+- **2 előfordulás — Zsolt 39:7, Zsolt 73:20** — a BDB **3. jelentéséhez**
+  tartozik ("átvitt értelemben: puszta, üres kép, látszat"), és **eddig
+  egyik dokumentumban sem szerepelt**. Mindkettő az emberi élet
+  mulandóságát fejezi ki, tartalmilag **ellentétes irányú** az 1Móz 1:26-27
+  pozitív "Isten képmása" kijelentésével.
+
+**✅ Beépítve** a `1Moz_1v2-2v3_bovitett.md` 2., 3. (Remez, Drash) és 7.
+pontjába.
+
+**Nyitva maradó pont:** a *celem* másik két genezisi előfordulása (5:1-3,
+9:6) ezzel a módszerrel még nincs önállóan ellenőrizve — igazolatlan
+feltételezés marad, hogy ugyanazt a 2. jelentést hordozzák.
