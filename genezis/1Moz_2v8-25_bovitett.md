@@ -1,5 +1,11 @@
 # 1 Mózes 2:8–25 — Bővített PaRDeS tanulmány
 
+*v4 — 2026.09.03 (Remez-pont kiegészítve az עֲרוּמִּים [2:25] / עָרוּם [3:1]
+hangzásbeli szójáték óvatos, forrás-fegyelmezett megjegyzésével — Strong
+közös gyököt jelez, BDB nem erősíti meg egyértelműen; a Jel 22:1-2
+kereszthivatkozás kiegészítve a μέσῳ [„közepette"] lexikai párhuzammal
+[LXX 1Móz 2:9 ↔ Jel 22:2]; új, kötelező 7. szakasz — Lexikai audit —
+felvéve)*
 *v3 — 2026.08.24 (2. pont táblázatai kiegészítve pontos vers-hozzárendeléssel [Vers oszlop], tartalmi változás nélkül — a TAHOT_kivonat.tsv alapján a legtöbb szó egyértelműen versre bontva, 4 kivétellel: גַּן [2:8/2:9], עֵזֶר כְּנֶגְדּוֹ [2:18/2:20], צֵלָע [2:21/2:22], אִשָּׁה [2:22/2:23] — mindegyik TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ jelöléssel dokumentálva, emberi döntésre várva)*
 *v2 — 2026.07.31 (javítva: a szó szerinti tükörfordítás pótolva minden kulcsszövegnél)*
 
@@ -126,6 +132,8 @@ Isten kertet ültet Édenben, és oda helyezi a frissen megformált embert (2:8)
 
 *Milyen máshonnan ismert bibliai mintázatra utal ez a szöveg?* A 2:15 *avad*-*sámar* szópárosa ugyanabban a kombinációban a Tórában elsősorban a szent sátor körüli lévita-szolgálatra vonatkozik (4Móz 3:7-8; 8:26; 18:5-6). A kert leírásának más elemei is (kelet felőli bejárat, arany és drágakő a vidéken, 2:11-12) rokonságot mutatnak a szent sátor és a templom leírásával.
 
+A szakasz záró szava, עֲרוּמִּים (*arummím*, "mezítelenek", 2:25), hangzásban és írásképben szorosan rokon a 3:1 nyitó jelzőjével, עָרוּם (*arum*, "ravasz" — a kígyóra vonatkoztatva). A Strong-szótár közös gyököt (H6191) jelez a kettő közt, de ezt a BDB nem erősíti meg egyértelműen a עֲרוּמִּים szócikkében (bizonytalan, más gyökre utaló etimológiát ad) — ez tehát **nem állítható be igazolt közös lexikai gyökként**. Ami viszont megáll: a két szó hangzásbeli/írásképi közelsége (mindkettő ער"ם mássalhangzókkal) sok kommentátor szerint tudatos irodalmi szójáték a narrátor részéről, amely élesen köti össze a fejezethatárt — az ártatlan mezítelenségből a kígyó ravaszságába való átmenetet.
+
 ### Drash (Keresés)
 
 *Milyen tanítás vezethető le belőle?* A munka Isten eredeti, jó rendelésének része — nem a bűn következménye, hanem méltóság és rendeltetés (2:15). Az ember társas lény: Isten maga mondja ki, hogy az egyedüllét "nem jó" (2:18) — ez nem az ember hiányossága, hanem Isten saját megállapítása a teremtés rendjéről, még a bűneset előtt. Az állatnevek adása az ember uralmi-megbízásának (1:26-28) konkrét gyakorlása: az elnevezés az ókori közel-keleti gondolkodásban hatalmi-rendelkezési aktus. A házasság alapelve (2:24) nem kulturálisan feltételes szabály, hanem teremtési rendelés: az elsődleges családi köteléknél (szülő-gyermek) is erősebb az új egység (férj-feleség).
@@ -153,7 +161,7 @@ Az "egy testté" (*bászár echád*) válás nem pusztán családi-szociológiai
 
 > 🔗 ⇒ **Jel 22:1-2** *(beteljesedés)*
 > *"...és mutata nékem tiszta életnek folyóvizét... az élet fája, mely tizenkét gyümölcsöt terem..."* **(kulcsszó: élet fája — görögül *xülon tész zóész*, a héber *ec ha-chajjím* megfelelője)**
-> Az Éden kertjéből kitiltott **élet fája** a Jelenések könyvében, az új teremtésben tér vissza — a kezdet és a vég összekapcsolódik.
+> Az Éden kertjéből kitiltott **élet fája** a Jelenések könyvében, az új teremtésben tér vissza — a kezdet és a vég összekapcsolódik. A kapcsolat egy második lexikai szálon is megerősíthető: az LXX 1Móz 2:9 szerint az élet fája **"a paradicsom közepén"** (ἐν **μέσῳ** τῷ παραδείσῳ) állt — ugyanez a görög szó (**μέσῳ**, "közepette") tér vissza Jel 22:2-ben is, a várost átszelő utca leírásánál. Nemcsak a tárgy (élet fája), hanem a térbeli elhelyezés kifejezése is lexikailag egyezik.
 
 **Remez** — [a **munka és őrzés** mint szentélyi szolgálat]
 
@@ -204,6 +212,21 @@ A Talmud (Erubin 18a) és több midrás hagyomány szerint az első ember eredet
 1. *Mit jelent ez a mai hívő mindennapi életében?* A munka nem szükséges rossz vagy a bűn átka, hanem Isten eredeti, jó rendelése — a hívő a hétköznapi munkáját is szolgálatként, nem csupán megélhetésként végezheti.
 2. *Milyen konkrét lépést von maga után?* Az egyedüllét felismerése ("nem jó") Isten saját megállapítása, nem gyengeség jele — a hívő bátran keresheti és értékelheti a valódi közösséget és társ-kapcsolatokat, ahelyett hogy önelégültséget színlelne.
 3. *Milyen érzelmi-lelki ellenállás merülhet fel?* A szégyen nélküli mezítelenség állapota (2:25) a teljes, leplezetlen elfogadottság képe — ehhez képest a mai tapasztalat gyakran az elrejtőzés és az önvédelem ösztöne; a szöveg emlékeztet arra, hogy ez nem az eredeti, Isten által szánt állapot volt.
+
+---
+
+## 7. Lexikai audit — módszertani napló
+
+A 2/a-2/e technikasor lefutott a study mind a 14 kulcsszavára (2. pont táblázatai). A legtöbb Origin-lánc-hivatkozás triviális, nem hozott önálló tartalmat (pl. H5731 Éden ← H5730 "gyönyör", ami már a táblázat saját jelentés-oszlopában szerepel; H1847 tudás ← H3045 "tudni"; H2416 élő ← H2421 "élni"; H5828 segítő ← H5826 "segíteni"; H1588 kert ← H1598 "védeni"; H6086 fa ← H6095 "bezárni"; H5048 "hozzá illő" ← H5046 "közölni"; H1320 hús/test ← H1319 "hírt hozni" — mind közismert vagy tartalmilag nem releváns további jelentésváltás).
+
+**Beépített leletek:**
+- עֲרוּמִּים (H6174, 2:25) ↔ עָרוּם (H6175, 3:1): Strong közös gyököt (H6191) jelez, de a BDB szócikk NEM erősíti meg — ezért NEM közös lexikai gyökként, hanem irodalmi/hangzásbeli szójátékként épült be, explicit etimológiai fenntartással (l. Remez).
+- LXX-híd: 1Móz 2:9 (ἐν μέσῳ τῷ παραδείσῳ) ↔ Jel 22:2 (ἐν μέσῳ τῆς πλατείας) — a "μέσῳ" közös görög szó megerősíti a már meglévő Jel 22:1-2 kereszthivatkozást egy második lexikai szálon (l. 4. pont).
+
+**Elutasított lelet:**
+- צֵלָע (H6763, "oldalborda") ← H6760 ("sántítani") — a Strong-Origin denominatív irányban áll (H6760 ered H6763-ból, nem fordítva), nem ad új tartalmat a study már meglévő, kiterjedt *cela* vitatott pontjához (Vitatott pont 2) képest — kihagyva.
+
+**Forrás-hivatkozási fegyelem:** a fenti Strong-Origin adatok a `Strong_szotar.tsv`-ből, a BDB-ellenőrzés a `BDB_teljes_unabridged.tsv`-ből, az LXX-adat a `LXX_kivonat_Genezis.tsv`-ből és a `TAGNT_kivonat.tsv`-ből származik.
 
 ---
 
