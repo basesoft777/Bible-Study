@@ -1,5 +1,8 @@
 # 1 Mózes 2:4-7 — Bővített PaRDeS tanulmány
 
+*v3 — 2026.09.03 (Vitatott pont kiegészítve a נֶפֶשׁ [nefesh] BDB-
+definíciójával, ami Walton érvét támasztja alá; új, kötelező 7. szakasz
+— Lexikai audit — felvéve)*
 *v2 — 2026.08.24 (2. pont táblázata kiegészítve pontos vers-hozzárendeléssel [Vers oszlop], tartalmi változás nélkül — minden szó egyértelműen 2:4-hez vagy 2:7-hez rendelhető a tanulmány saját, versre tagolt idézetei alapján)*
 *v1 — 2026.07.31*
 
@@ -70,6 +73,7 @@ A 2:4 "toldot"-formulája lezárja az első teremtéstörténetet, és megnyitja
 ⚠️ **Vitatott pont:** vajon a *nismat chajjim* ("élet lehelete") kifejezés ontológiailag megkülönbözteti-e az embert az állatvilágtól, vagy a *nefes chajjá* ("élő lélek") kifejezés — amelyet 1:24, 30 az állatokra is használ — inkább közös kategóriát jelöl?
 - **Gordon Wenham** (*Word Biblical Commentary: Genesis 1-15*, evangéliumi ószövetség-kutató) amellett érvel, hogy a *nismat chajjim* kifejezés a Tórában kizárólag emberre vonatkozik, és ez — a *nefes chajjá* közös szóhasználata ellenére — valódi minőségi különbséget jelez az ember és az állatvilág között.
 - **John Walton** (*The NIV Application Commentary: Genesis*, az ókori közel-keleti háttér kutatója) óvatosságra int: mivel a *nefes chajjá* kifejezés az állatokra is vonatkozik (1:24, 30), önmagában a szóhasználatból nem vezethető le ontológiai kiváltságosság — az ember egyedisége szerinte elsősorban az 1:26-27 "Isten képmására" kifejezésben, nem a 2:7 lehelet-nyelvezetében gyökerezik.
+- **Lexikai megerősítés (BDB):** a *nefes* (H5315) BDB szócikke önmagában is "lélegző lény/létező"-ként (*"that which breathes, the breathing substance or being"*) definiálja a szót — ez tartalmilag Walton érvét támasztja alá: a *nefesh* alapjelentése a lélegzés/életanimáció, nem egy kizárólag emberi minőség.
 
 ### Sod (Titok)
 A *nefes chajjá* — "élő lélek" — kifejezés, amelyet a Septuaginta ψυχὴν ζῶσαν-nak (*pszükhén zószan*) fordít, előrevetíti azt a páli kontrasztot, amely az első Ádámot (*pszükhé*, földi élet) az utolsó Ádámmal, a feltámadt Krisztussal (*pneuma zóopoiun*, megelevenítő szellem) állítja szembe. Ez a következtetés közvetlenül a szöveg saját szóhasználatából és annak újszövetségi idézéséből fakad, nem önkényes ráépítés.
@@ -144,6 +148,21 @@ A *Bereshit Rabbá* (14:8) és a Talmud (Szanhedrin 38a) hagyománya szerint Ist
 - **Derek Prince** — több prédikációjában is kifejezetten 1Móz 2:7-ből indul ki: a por/agyag ("lentről") és az isteni lehelet ("fentről") egyesülése hozza létre az "élő lelket", amit ő "totál embernek" nevez (szellem-lélek-test). Kifejezetten összeköti 1Móz 2:7-et 1Thessz 5:23-mal és **1Kor 15:45-tel** is, és a *jacar* ("formálni") szót a fazekas-képpel szemlélteti: "olyan, mint egy fazekas, aki agyagot formál." *(Forrás: "The Triune Nature of Man" tanítás-összefoglaló; "Functions of Spirit, Soul and Body" és "Come, Creator Spirit" prédikációk, derekprince.com)*
 - **Kenneth Hagin** — a *Man on Three Dimensions* (a *Spirit, Soul and Body* sorozat 1. kötete) tanítja a szellem-lélek-test hármas természetét, és kijelenti, hogy Ádám a bűneset előtt "szellemi lény volt" — de ez a tanítás a fellelhető forrásokban elsősorban 1Thessz 5:23-ra és újszövetségi szövegekre épül. **Nem található megbízható forrás arra, hogy Hagin kifejezetten 1Móz 2:7 por/lehelet-nyelvezetét fejtegetné — ez a hiány jelzésre kerül, nincs pótolva.**
 - **Charles Capps** — **nem található** megbízható, elsődleges forrás arra, hogy kifejezetten 1Móz 2:7 por/formálás/lehelet szövegét fejtegetné. A hiány itt is nyíltan jelezve, pótlás nélkül.
+
+---
+
+## 7. Lexikai audit — módszertani napló
+
+A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára (2. pont táblázata: toldot, jacar, afar, adamá, nafach, nismat chajjim, nefes chajjá).
+
+**Beépített lelet:**
+- נֶפֶשׁ (H5315, "lélek/lény") ← נָפַשׁ (H5314, "felüdülni"): a BDB szócikk saját definíciója ("that which breathes") megerősíti Walton érvét a Vitatott pontban — beépítve.
+
+**Elutasított/triviálisnak minősített Origin-lánc-elemek:** תוֹלְדוֹת (H8435) ← H3205 "nemzeni" (triviális); יָצַר (H3335) Strong-jegyzete ("squeezing into shape") — már fedi a study meglévő "fazekas"-képe; עָפָר (H6083) ← H6080 (denominatív irányban, H6080 ered H6083-ból, nem fordítva — nem ad új tartalmat).
+
+**LXX-híd, ellenőrizve, nincs teendő:** 1Kor 15:45 ↔ G5590 (ψυχή)/G2198 (ζάω) — a Sod blokk már explicit idézi és magyarázza mindkét görög szót (kiejtéssel); a kockázat-riport jelzése csak azért merült fel, mert a kulcsszó-táblázat nem tartalmaz ÚSZ-oldali Strong-számot — tartalmi hiány nincs.
+
+**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv` és `TAGNT_kivonat.tsv` fájlokból származnak.
 
 ---
 
