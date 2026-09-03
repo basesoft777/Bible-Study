@@ -1,5 +1,9 @@
 # 1Móz 7:1-24 — bővített PaRDeS tanulmány
 
+*v3 — 2026.09.03 (Retroaktív „7. Lexikai audit — módszertani napló"
+szakasz felvéve, a v16 sablon kötelező elemének visszamenőleges
+pótlása — a 2026.09.03-i eredeti audit eredményének formalizálása, új
+tartalom nélkül)*
 *v2 — 2026.09.03 (Róm 9:27 gyök-szintű lexikai alátámasztás hozzáadva; új Remez-pont: nismat chajjím [2:7] ↔ nismat rúach chajjím [7:22] dekreáció-párhuzam)*
 
 ---
@@ -229,6 +233,20 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent (az özönvíz kiterjedése 
 1. *Mit jelent ez a mai hívő mindennapi életében?* Noé nem értette (nem érthette) az özönvíz teljes valóságát előre, mégis pontosan engedelmeskedett minden részletnek — ez a hit olyan mintázatát mutatja, amely nem a teljes megértéstől, hanem a bizalomtól függ.
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* A háromszoros "amint Isten parancsolta" refrén arra hív, hogy a hívő ne csak a nagy, látványos döntésekben, hanem az apró, gyakorlati részletekben (ki, mikor, hogyan) is keresse a teljes engedelmességet.
 3. *Milyen érzelmi/lelki ellenállás merülhet fel, és hogyan szólítja meg ezt a szöveg?* Az egyetemes pusztulás leírása (21-23. v.) sokakban felveti Isten igazságosságának/szigorúságának kérdését. A szöveg nem kerüli meg ezt a nehézséget, de a "bezárá az Úr utána" (16b. v.) elhelyezése — közvetlenül az ítélet kibontakozása előtt — azt mutatja, hogy Isten gondoskodása nem az ítélet ellenére, hanem azzal egy időben, azt megelőzve működik.
+
+---
+
+## 7. Lexikai audit — módszertani napló
+
+A 2/a-2/e technikasor lefutott a study mind a 6 kulcsszó-sorára (2. pont táblázatai: táhór, tehóm, arubbot hasámájim, szágár, nismat rúach chajjím, vajjisáér ách).
+
+**Beépített leletek:**
+- נִשְׁמַת רוּחַ חַיִּים (H5397+H7307+H2416, 7:22) ↔ נִשְׁמַת חַיִּים (1Móz 2:7): a BDB H5397-szócikk saját maga veti össze a két igehelyet — második dekreáció-adatpont a *tehóm* (1:2↔7:11) mellett (l. Remez).
+- Róm 9:27 (7:23, "csak Noé marada meg"): Strong-szám-szinten üres a metszet, de gyök-szinten VAN kapcsolat — héber שאר (1Móz 7:23 יִשָּׁאֶר H7604 ↔ Ézs 10:20-22 שְׁאָר H7605) és görög λείπω-család (LXX κατελείφθη ↔ Róm 9:27 ὑπόλειμμα) — l. Sod.
+
+**Elutasított/triviálisnak minősített Origin-lánc-elemek:** רוּחַ (H7307) ← H7306 "szagolni"; אֲרֻבֹּת (H0699) ← H0693 "leselkedni"; נְשָׁמָה (H5397) ← H5395 "zihálni"; חַי (H2416) ← H2421 "élni"; אַךְ (H0389) ← H0403 "bizonyára" — mind várható, nem hoznak új exegetikai tartalmat.
+
+**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv`, `TAHOT_kivonat.tsv`, `TAGNT_kivonat.tsv` és `LXX_kivonat_Genezis.tsv` fájlokból származnak.
 
 ---
 

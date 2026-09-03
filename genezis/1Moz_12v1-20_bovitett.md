@@ -1,5 +1,9 @@
 # 1Mózes 12:1-20 — bővített PaRDeS tanulmány
 
+*v4 — 2026.09.03 (Retroaktív „7. Lexikai audit — módszertani napló"
+szakasz felvéve, a v16 sablon kötelező elemének visszamenőleges
+pótlása — a 2026.09.03-i eredeti audit eredményének formalizálása, új
+tartalom nélkül)*
 *v3 — 2026.09.03 (גדול/אגדלה polyptoton hozzáadva a kulcsszótáblához és a Peshat-ponthoz — a "nagy nemzet" [12:2] és a "naggyá teszem nevedet" [12:2] ugyanazon גדל gyökből)*
 *v2 — 2026.08.24 (2. pont táblázata kiegészítve pontos vers-hozzárendeléssel [Vers oszlop], tartalmi változás nélkül — a TAHOT_kivonat.tsv alapján a legtöbb szó egyértelműen versre bontva, 1 kivétellel: מִזְבֵּחַ [oltár] két külön eseményre is vonatkozhat [12:7 és 12:8, Ábrám két külön oltára], TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ jelöléssel dokumentálva, emberi döntésre várva)*
 *v1 — 2026.08.15*
@@ -188,6 +192,23 @@ Copeland kifejezetten az 1Móz 12:1-3-at veszi alapigéül egy többrészes soro
 3. *Érzelmi ellenállás:* Copeland tanítása szerint a leggyakoribb ellenállás a kétely: "velem is működik ez, mint Jézussal?" — amire ő igenlő választ ad, az áldást minden újjászületett hívőre kiterjesztve.
 
 **Charles Capps szemszögéből** — *forrás-megjegyzés:* nem található Capps-tól konkrét, közvetlenül az 1Móz 12:1-3-ra vagy a 12:10-20 szakaszra vonatkozó, ellenőrizhető tanítás. A legközelebbi releváns, fellelhető anyaga (*"Calling Things That Are Not"*, Capps Ministries) Ábrahám hitéletét a Róm 4:17 ("Isten... azokat, amik nincsenek, előszólítja mintha volnának") elve alapján tárgyalja, közvetlenül az 1Móz 17-hez (névváltoztatás, "sok nép atyjává tettelek") kötve, nem a 12. fejezethez: Capps szerint Isten soha nem tesz semmit anélkül, hogy előbb ki ne mondaná — a kimondott szó hordozza a végeredményt. Mivel ez az elv csak közvetve (a "légy áldás" performatív isteni kijelentésen keresztül) kapcsolódik a 12. fejezethez, és nem magára a szakaszra vonatkozó konkrét Capps-tanítás, ezt a forrás-hiányt jelzem, nem pótlom gyengébb anyaggal.
+
+---
+
+## 7. Lexikai audit — módszertani napló
+
+A 2/a-2/e technikasor lefutott a study kulcsszavaira (2. pont táblázatai: לֶךְ־לְךָ, מוֹלֶדֶת, גּוֹי גָּדוֹל, אֲגַדְּלָה, שֵׁם, מִזְבֵּחַ, רָעָב, נֶגַע).
+
+**Beépített lelet:**
+- גָּדוֹל (H1419, melléknév, "gój gádól") ↔ אֲגַדְּלָה (H1431, ige, "naggyá teszem") — azonos גדל gyök, két alakban, ugyanabban a versben (12:2) — polyptoton, a nemzet- és név-ígéretet nyelvileg is összekötve (l. Peshat).
+
+**Elutasított leletek:**
+- שֵׁם (H8034, "név") ↔ שָׁמַיִם (H8064, "ég"): a Strong-szótár felveti a kapcsolatot ("magasság" jelentésen át), de a BDB szócikk saját maga "√ unknown" (gyök ismeretlen) jelzéssel áll — forrás-fegyelmi okból NEM épült be.
+- גּוֹי (H1471, "nemzet") ↔ Gal 3:8 ἔθνη (G1484): valódi LXX-fordítási lánc, de nagyon gyakori szó (164 NT-előfordulás), és Ábrám saját leendő nemzetére, míg Pálnál a *más* nemzetekre vonatkozik — terminológiai visszhang, nem tartalmi lelet, kihagyva.
+
+**Elutasított/triviálisnak minősített Origin-lánc-elemek:** לֶךְ (H1980) ← H3212 "menni"; מוֹלֶדֶת (H4138) ← H3205 "nemzeni"; מִזְבֵּחַ (H4196) ← H2076 "áldozni"; רָעָב (H7458) ← H7456 "éhezni"; נֶגַע (H5061) ← H5060 "érinteni" — mind várható, nem hoznak új exegetikai tartalmat.
+
+**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv` és `TAGNT_kivonat.tsv` fájlokból származnak.
 
 ---
 
