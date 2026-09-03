@@ -1,5 +1,15 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
+*v8 — 2026.09.03 (Új „0. Forrás-összegyűjtés a meglévő anyagból" szakasz
+beszúrva az 1. pont elé — a motívumnaplón és a friss négyforrásos
+keresésen TÚL a már meglévő bővített tanulmányok 🔗-blokkjait, „nyitva
+maradó szál" jelzéseit, a kereszthivatkozás-naplók 2/a-2/e auditjait
+[beleértve az elutasított leleteket is] és a kockázat-szűrő riportok
+kiaknázatlan Origin-lánc/LXX-híd sorait is begyűjti, hogy a feldolgozás
+ne kezdődjön elölről; az 1. pont táblázata két oszloppal bővítve
+[Strong-szám(ok), BDB sense-utalás] a jövőbeli motívum-lexikon
+KAPCSOLAT-rétege felé; 2. pont kiegészítve explicit mélység-engedménnyel
+a bővített sablonnál szándékosan korlátozott 2-3. szintű vizsgálatra)*
 *v7 — 2026.08.27 (a „Friss, teljes körű keresés" alszakasz végére felvéve a
 kötelező kereszthivatkozás-keresési napló előírása — a bővített sablon v12
 azonos követelményének tematikus sablonra igazított változata)*
@@ -20,6 +30,22 @@ legerősebb 1-2)*
 ## Mikor használandó
 
 Nem egy igeversre/szakaszra, hanem egy **motívumra** fókuszáló, önálló tanulmány — jellemzően akkor, amikor a `PaRDeS_motivumok.md` napló egy motívumot (vagy egymással rokon motívum-csoportot) az **⭐ Emlékeztető küszöbön** (3+ előfordulás) túl jelez, és a felhasználó explicit kéri az önálló feldolgozást. Nem automatikus — mindig felhasználói jóváhagyás után készül.
+
+---
+
+## 0. Forrás-összegyűjtés a meglévő anyagból (KÖTELEZŐ, első lépés — MEGELŐZI az 1. pont friss keresését)
+
+**Ez a lépés kizárólag gyűjtés, nem új elemzés** — célja, hogy mire az 1. pont friss, négyforrásos keresése elindul, minden korábbi lelet egy helyen legyen, és a feldolgozás ne fedezze fel újra ugyanazt. Minden alábbi forrást végig kell nézni a motívum kulcsszavai/Strong-számai alapján, MIELŐTT az 1. pont friss keresése és táblázata elkészülne:
+
+1. **`PaRDeS_motivumok.md`** — a motívum meglévő bejegyzése (előfordulások, PaRDeS-szintek) — ez az 1. pont friss keresésének is a kiindulópontja, itt csak megelőlegezve.
+2. **Minden érintett bővített tanulmány 4. pontja** ("Kapcsolódó igehelyek") — a motívumhoz tartozó 🔗-blokkok, akkor is, ha az adott study saját szövege nem nevezi meg névvel ugyanígy a motívumot.
+3. **"Nyitva maradó szál" / "érdemes lenne egy önálló összevetésre" jelzések** az érintett bővített tanulmányokban — ezek tudatosan idekerülésre várva lettek felszínen hagyva.
+4. **A kereszthivatkozás-naplók 2/a-2/e auditjai** (a determinisztikus protokoll szerint) — beleértve az EXPLICIT ELUTASÍTOTT leleteket is (megnevezett indokkal), mert egy elutasítás oka is értékes: nem kell újra nekifutni ugyanannak a zsákutcának, és a tematikus tanulmány dönthet úgy, hogy motívum-szinten mégis releváns, amit study-szinten nem tartottunk annak.
+5. **A `Kockazat_szures_riport_*.md`** (ha van friss verzió) Origin-lánc/LXX-híd sorai, amik erre a motívumra/Strong-számra vonatkoznak, de "kiaknázatlan" jelzésűek maradtak.
+
+Ha egy forrás nem tartalmaz releváns anyagot, ez explicit jelzendő ("nincs kapcsolódó bejegyzés a [forrás]-ban"), nem hallgatandó el.
+
+**Viszony az 1. pont "Friss, teljes körű keresés" alszakaszához:** a két lépés kiegészíti egymást, nem ismétli. A 0. pont a MÁR ELVÉGZETT munkát gyűjti be (semmi újat nem keres); az 1. pont "Friss keresés" alszakasza ezután a `PaRDeS_gyorsreferencia.md` négyforrásos módszertana szerint ÚJ találatokat keres, amik a 0. pontban begyűjtött anyagban még nem szerepeltek.
 
 ---
 
@@ -47,17 +73,21 @@ bővített sablonnál (`2_PaRDeS_bovitett_sablon.md`), azzal a különbséggel, 
 itt a "végső döntés" a TELJES ✅ halmaz beépítését dokumentálja, nem csak
 szintenkénti 1-2 kiválasztást.
 
-Táblázatos áttekintés minden eddigi előfordulásról, a `PaRDeS_motivumok.md` napló releváns bejegyzése alapján:
+Táblázatos áttekintés minden eddigi előfordulásról, a `PaRDeS_motivumok.md` napló releváns bejegyzése és a 0. pontban begyűjtött anyag alapján:
 
-| Igehely | Kapcsolódás | PaRDeS-szint, ahol felmerült |
-|---|---|---|
-| *(igehely)* | *(a motívum konkrét megjelenési formája ott)* | *(Peshat/Remez/Drash/Sod, és melyik tanulmányból)* |
+| Igehely | Kapcsolódás | PaRDeS-szint, ahol felmerült | Strong-szám(ok) | BDB sense-utalás (ha releváns) |
+|---|---|---|---|---|
+| *(igehely)* | *(a motívum konkrét megjelenési formája ott)* | *(Peshat/Remez/Drash/Sod, és melyik tanulmányból)* | *(pl. H7604)* | *(pl. "1 be left over" — opcionális, csak ha a 2/a lépés már lefutott rá)* |
+
+Az utolsó két oszlop opcionális kitöltésű (nem minden előfordulásnál áll rendelkezésre BDB-adat), de ha a 0. pont gyűjtése vagy a friss keresés során előkerül, itt rögzítendő — ez előkészíti a jövőbeli motívum-lexikon KAPCSOLAT-rétegét, anélkül hogy most bármit automatizálnánk vagy struktúrába kényszerítenénk.
 
 ---
 
 ## 2. Eredeti nyelvi összevetés
 
 A motívum kulcsszavának/kulcsszavainak egymás mellé állítása az összes érintett igehelyen: ugyanazt jelenti-e mindegyik kontextusban, vagy van árnyalatnyi/jelentős eltérés (pl. azonos szó eltérő szerzőnél, eltérő grammatikai szerepben, vagy egy ószövetségi fogalom újszövetségi átértelmezésben)? Kiejtés minden szónál kötelező.
+
+**Mélység-engedmény (2026.09.03):** a determinisztikus protokoll "Szint-korlátozás" szabálya szerint a bővített tanulmányoknál a kereszthivatkozásban idézett TOVÁBBI szavak lexikai mélysége (2-3. szint) csak explicit, névvel jelzett kérésre nyílik meg — ez tudatos korlátozás study-szinten. **A tematikus tanulmány az a hely, ahol ez a korlátozás alapértelmezésben feloldódik**, külön kérés nélkül: amit a bővített tanulmány tudatosan felszínen hagyott, itt kap teljes, 2-3. szintű feldolgozást is, ha a motívum szempontjából releváns.
 
 ---
 
