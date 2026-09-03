@@ -1,6 +1,8 @@
 # 1Mózes 4:1-24 — bővített PaRDeS tanulmány
 
-*v1 — 2026.08.01*
+*v2 — 2026.09.03 (Új, kötelező 7. szakasz — Lexikai audit — felvéve;
+nincs új tartalmi lelet; a 8 "kiaknázatlan" LXX-jelző [Zsid 11:4/12:24]
+ellenőrizve — mind tulajdonnév vagy triviális áldozati szókincs)*
 
 ---
 
@@ -190,6 +192,18 @@ A pásztor (Ábel) és földműves (Kain) foglalkozási ellentét az ókori köz
   *(Forrás: Kenneth E. Hagin, „Changing of Lords" tanítás, Róm 6:14 alapján.)*
 
 *Összegzés:* a három tanító együtt a fejezet három rétegét világítja meg alkalmazási szinten: Prince az ítélet/átok oldalát (mit hoz a kezeletlen bűn, és hogyan törhető meg Krisztusban), Wigglesworth az elfogadott áldozat feltételét (hit, nem önerő), Hagin pedig a „uralkodjál rajta" parancs újszövetségi, kegyelmi beteljesedését.
+
+---
+
+## 7. Lexikai audit — módszertani napló
+
+A 2/a-2/e technikasor lefutott a study mind a 12 kulcsszó-sorára (2. pont táblázata), és külön ellenőriztem mind a 8, a kockázat-riport által jelzett "kiaknázatlan" LXX/NT-szót a Zsid 11:4/12:24 és 1Ján 3:12 körül. Nincs beépítendő tartalmi lelet.
+
+**LXX-híd, ellenőrizve, nincs teendő:** a jelzett görög szavak (Ἅβελ G0006, Κάϊν G2535, δῶρον G1435, προσφέρω G4374, θυσία G2378, αἷμα G0129) mind tulajdonnevek (Ábel, Kain neve saját maga) vagy a legalapvetőbb áldozati szókincs, amit egy áldozatról szóló vers szükségszerűen tartalmaz — nincs mögöttük rejtett lexikai kapcsolat. A study már explicit idézi és kifejti mindkét verset (πίστει, "hit által"; αἷμα, "vér").
+
+**Elutasított/már fedett Origin-lánc-elemek:** הֶבֶל (Hevel/Ábel) ← "hiábavalóvá lenni" — már a study saját táblázatában szerepel (Préd 1:2-vel); דָּם (vér) ← "elhallgattatni" — a BDB nem ad etimológiát a *dam*-hoz, Strong-only állítás, nem építendő be; חָרָה ← "megperzselődni" (triviális); חַטָּאת ← "vétkezni" (triviális).
+
+**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv` és `TAGNT_kivonat.tsv` fájlokból származnak.
 
 ---
 
