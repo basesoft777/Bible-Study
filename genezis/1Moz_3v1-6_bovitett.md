@@ -1,5 +1,8 @@
 # 1 Mózes 3:1-6 — Bővített PaRDeS tanulmány
 
+*v6 — 2026.09.03 (Új megjegyzés a נָחָשׁ/נָחַשׁ gyök-kapcsolat helyes
+irányáról — a Strong-szótár fordított levezetést ad, mint a BDB; új,
+kötelező 7. szakasz — Lexikai audit — felvéve)*
 *v5 — 2026.08.24 (2. pont táblázata kiegészítve pontos vers-hozzárendeléssel [Vers oszlop], tartalmi változás nélkül — a TAHOT_kivonat.tsv alapján a legtöbb szó egyértelműen versre bontva, 1 kivétellel: נָחָשׁ [kígyó] háromszor is előfordul a szakaszon belül [3:1, 3:2, 3:4], TÖBBSZÖRÖS ELŐFORDULÁS, PONTOSÍTANDÓ jelöléssel dokumentálva, emberi döntésre várva)*
 *v4 — 2026.08.21 (javítva: a "0. Sorozat-kontextus" pontban a kronológiailag helytelen hivatkozás — 1Móz 5 és 1Móz 10-11 mint "korábbi" előzmény — eltávolítva; ezek a szakaszok ténylegesen csak 2026.08.13-án és 2026.08.15-én, tehát e tanulmány után készültek el. Helyükre a tényleges, kronológiailag helyes előzménylista került: 1:1 → 1:2-2:3 → 2:4-7 → 2:8-25.)*
 
@@ -45,6 +48,8 @@ Ez már a negyedik önálló tanulmány az 1Mózes könyvéből: 1Móz 1:1 (a te
 | 3:6 | וַתִּתֵּן | *vattittén* | H5414 | és adá |
 
 **⚠️ Megjegyzés a נָחָשׁ (nachás, "kígyó") vershez rendeléséről:** a szó a `TAHOT_kivonat.tsv` szerint háromszor fordul elő a szakaszban — Gen.3.1-ben ("a kígyó pedig ravasz vala"), Gen.3.2-ben (az asszony megszólítja) és Gen.3.4-ben (a kígyó válaszol). A táblázat egységes "נָחָשׁ" alakja nem választja külön ezeket — emberi döntésre bízva, hogy a join-táblába melyik (vagy mindhárom) előfordulás kerüljön be.
+
+**Megjegyzés a נָחָשׁ gyök-kapcsolatáról:** a Strong-szótár a נָחָשׁ ("kígyó") főnevet a נָחַשׁ ("jósolni, varázsolni") igéből származtatja — ez alapján a kígyó neve eleve az okkult/megtévesztő konnotációt hordozná. A BDB ellenőrzése azonban fordított irányt mutat: a נָחַשׁ ("jósolni") ige szócikke saját maga "denominative from נָחָשׁ" jelzéssel áll, vagyis az ige származik a főnévből, nem fordítva. A kapcsolat tartalmilag mindkét irányban fennáll (a "kígyó" és a "varázslás/jóslás" fogalma összefügg a héber nyelvben), de a helyes levezetési irány: a "kígyó"-ból ered a "kígyó módjára viselkedni, azaz jósolni/sziszegve varázsolni" jelentés, nem fordítva.
 
 **Szó szerinti tükörfordítás (kivonat, a kulcsmondatokra):** „A kígyó pedig volt ravasz (*árúm*) minden mezei vadnál, melyet készített az Örökkévaló Isten... Ne egyetek belőle és ne érintsétek (*tiggeú*) azt, nehogy meghaljatok (*pen-temutún*)... Nem halva haltok meg... és lesztek mint Isten, jó és rossz tudói (*jodeéj tov vára*)... és látá az asszony, hogy jó a fa eledelre, és hogy kívánság (*taavá*) az a szemeknek, és kívánatos (*nechmád*) a fa az értelemért, és vőn gyümölcséből, és evék, és adá (*vattittén*) férjének is vele, és evék."
 
@@ -147,6 +152,21 @@ A Genesis Rabbah (18:6 és környéke) hagyománya szerint a kígyó indítéka 
 1. *Mit jelent ez a mai hívő mindennapi életében?* Éberség a szó apró torzításaira — mind Isten szavának hozzátoldására vagy tagadására, mind a saját szív önigazoló magyarázataira, amelyek utat nyithatnak az engedetlenségnek.
 2. *Milyen konkrét lépést von maga után?* A hallott vagy elgondolt „isteni beszédet" mindig vissza kell mérni magára a kinyilatkoztatott igére — nem elég, ha valami vallásosan hangzik; és a kísértő gondolattal szemben nem passzív tűrés, hanem kimondott igei válasz a helyes reakció.
 3. *Milyen érzelmi-lelki ellenállás merülhet fel?* Az autonómia vágya — a kísértés, hogy az ember saját megítélésére bízza a jó és rossz meghatározását, ahelyett hogy bízna Isten már kinyilatkoztatott szavában.
+
+---
+
+## 7. Lexikai audit — módszertani napló
+
+A 2/a-2/e technikasor lefutott a study kulcsszavaira (2. pont táblázata: nachás, árúm, tiggeú, pen-temutún, jodeéj tov vára, taavá, nechmád, vattittén).
+
+**Beépített lelet:**
+- נָחָשׁ (H5175, "kígyó") ↔ נָחַשׁ (H5172, "jósolni"): a Strong-szótár fordított irányt ad ("nachás from H5172"), de a BDB szócikk saját maga "denominative from נָחָשׁ" jelzéssel a helyes irányt mutatja — beépítve, korrigált irányban (l. 2. pont).
+
+**Elutasított/triviálisnak minősített Origin-lánc-elemek:** פֶּן (H6435) ← H6437 "fordulni" (triviális, funkciószó); רַע (H7451) ← H7489 "rossznak lenni" (triviális, azonos gyökcsalád); תַּאֲוָה (H8378) ← H183 (nem ad új tartalmat).
+
+**LXX-híd, ellenőrizve, nincs teendő:** 2Kor 11:3, 1Ján 2:16, Jel 12:9 ↔ a görög kulcsszavak (ofisz, epithümia) már mind explicit szerepelnek a study saját 4. pontjában, kiejtéssel — tartalmi hiány nincs.
+
+**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv` és `TAGNT_kivonat.tsv` fájlokból származnak.
 
 ---
 
