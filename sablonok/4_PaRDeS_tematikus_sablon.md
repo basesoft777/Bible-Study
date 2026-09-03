@@ -1,5 +1,11 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
+*v9 — 2026.09.03 (Az 1. pont táblázatában a „BDB sense-utalás" egyetlen
+oszlop 3 külön oszlopra bontva — BDB-entry-id, Sense-szám,
+Jelentés-szöveg — a `Bibliai_Motivumlexikon_tervezesi_naplo.md` 6.
+szakaszában [2026.08.30] jóváhagyott „reversibilis tervezés" elvének
+megfelelően: már most külön rögzítve minden szint, hogy a jövőbeli
+KAPCSOLAT-réteg ne igényeljen visszamenőleges szétbontást)*
 *v8 — 2026.09.03 (Új „0. Forrás-összegyűjtés a meglévő anyagból" szakasz
 beszúrva az 1. pont elé — a motívumnaplón és a friss négyforrásos
 keresésen TÚL a már meglévő bővített tanulmányok 🔗-blokkjait, „nyitva
@@ -75,11 +81,11 @@ szintenkénti 1-2 kiválasztást.
 
 Táblázatos áttekintés minden eddigi előfordulásról, a `PaRDeS_motivumok.md` napló releváns bejegyzése és a 0. pontban begyűjtött anyag alapján:
 
-| Igehely | Kapcsolódás | PaRDeS-szint, ahol felmerült | Strong-szám(ok) | BDB sense-utalás (ha releváns) |
-|---|---|---|---|---|
-| *(igehely)* | *(a motívum konkrét megjelenési formája ott)* | *(Peshat/Remez/Drash/Sod, és melyik tanulmányból)* | *(pl. H7604)* | *(pl. "1 be left over" — opcionális, csak ha a 2/a lépés már lefutott rá)* |
+| Igehely | Kapcsolódás | PaRDeS-szint, ahol felmerült | Strong-szám(ok) | BDB-entry-id | Sense-szám | Jelentés-szöveg (BDB eredeti) |
+|---|---|---|---|---|---|---|
+| *(igehely)* | *(a motívum konkrét megjelenési formája ott)* | *(Peshat/Remez/Drash/Sod, és melyik tanulmányból)* | *(pl. H7604)* | *(pl. H7604, ha egy Strong-számhoz több BDB-bejegyzés/homonima tartozik, ez különbözteti meg)* | *(pl. "1")* | *(pl. "be left over" — a BDB eredeti angol szövege, nem magyarítva)* |
 
-Az utolsó két oszlop opcionális kitöltésű (nem minden előfordulásnál áll rendelkezésre BDB-adat), de ha a 0. pont gyűjtése vagy a friss keresés során előkerül, itt rögzítendő — ez előkészíti a jövőbeli motívum-lexikon KAPCSOLAT-rétegét, anélkül hogy most bármit automatizálnánk vagy struktúrába kényszerítenénk.
+Az utolsó négy oszlop opcionális kitöltésű (nem minden előfordulásnál áll rendelkezésre BDB-adat), de ha a 0. pont gyűjtése vagy a friss keresés során előkerül, itt rögzítendő, **külön oszlopokban** — a `Bibliai_Motivumlexikon_tervezesi_naplo.md` 6. szakaszában jóváhagyott elv szerint, hogy egy jövőbeli KAPCSOLAT-réteg ne igényeljen visszamenőleges szétbontást. A Jelentés-szöveg oszlop a BDB **eredeti angol** szövegét tartalmazza, nem magyar fordítást — a magyarítás a study Peshat/Drash kifejtésében történik, forrásmegjelöléssel, a `Bibliai_Motivumlexikon_tervezesi_naplo.md` 9. szakaszában rögzített fordítási elv szerint (nem előre, tömegesen, hanem tanulmány-vezérelt, fokozatos fordítás).
 
 ---
 

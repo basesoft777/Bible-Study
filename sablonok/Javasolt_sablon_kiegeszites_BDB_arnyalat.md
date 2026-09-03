@@ -1,5 +1,11 @@
 # Javasolt sablon-kiegészítés — BDB-árnyalat integrálása a PaRDeS-tanulmányokba
 
+*v3 — 2026.09.03 (A 2/e LXX-híd lépés kiegészítve explicit hatókör-
+záradékkal: a `LXX_kivonat_Genezis.tsv` jelenleg KIZÁRÓLAG a Genezis
+könyvet fedi le [1-50. fejezet] — Genezisen kívüli tanulmányoknál a 2/e
+lépés görög oldala nem futtatható le a jelenlegi forrásokkal, csak a
+héber gyök-ellenőrzés; ezt korábban csak a 3. pont forrás-hierarchia
+táblázata jelezte, a technikasor lépésénél nem)*
 *v2 — 2026.09.03. Teljes szerkezeti átdolgozás: a 2/a-2/e technikasor
 egységes lánccá szervezve (a 2026.09.03-i két study-audit
 [1Moz_7v1-24, 1Moz_12v1-20] gyakorlatából kodifikálva), a
@@ -100,6 +106,17 @@ KIVÉTEL NÉLKÜL, ebben a sorrendben:
    (üres Strong-szám-szintű metszet) ellenére VALÓDI gyök-szintű
    kapcsolatot mutatott mindkét nyelvi rétegben (héber שאר, görög
    λείπω-család) — a "tematikus" minősítés pontatlan lett volna.
+
+   **Hatókör-korlátozás (2026.09.03):** a görög oldali ellenőrzéshez
+   használt `LXX_kivonat_Genezis.tsv` JELENLEG KIZÁRÓLAG a Genezis
+   könyvet fedi le (1-50. fejezet). Genezisen kívüli tanulmányoknál
+   (pl. 2Mózes és utána) a 2/e lépés görög fele NEM futtatható le a
+   jelenlegi forrásokkal — ilyenkor csak a héber gyök-ellenőrzés
+   (Strong_szotar.tsv/BDB alapján) végezhető el, és ezt a korlátozást
+   a study saját ⚡-jegyzetében vagy kereszthivatkozás-naplójában
+   EXPLICIT jelezni kell ("LXX-híd görög oldala nem ellenőrizhető,
+   mivel a jelenlegi LXX-forrás csak Genezisre terjed ki"), nem szabad
+   hallgatólagosan kihagyni.
 
 3. Minden ⚡-jegyzet FELTÜNTETI, melyik lépés(ek) futottak le, és melyik
    fájlból (TBESH.txt / BDB_teljes_unabridged.tsv / Strong_szotar.tsv /
