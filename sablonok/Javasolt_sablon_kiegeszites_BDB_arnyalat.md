@@ -221,5 +221,11 @@ végrehajtott" zárósor) — ne külön, párhuzamos napló-rendszer legyen.
    Code-nak (l. külön fájl)
 3. Retroaktív vs. előremenő BDB-rollout a 20 meglévő bővített
    tanulmányra (korábbi, még döntetlen kérdés)
-4. A `TBESH_pilot_riport_1Moz_1v2-2v3.md` és `Ujrageneralt_1Moz_1v2-2v3_TELJES.md`
-   felülvizsgálata a הום-gyök állítás miatt, ha a fájlok elérhetők
+4. ~~A `TBESH_pilot_riport_1Moz_1v2-2v3.md` és `Ujrageneralt_1Moz_1v2-2v3_TELJES.md`
+   felülvizsgálata a הום-gyök állítás miatt~~ — **LEZÁRVA (2026.09.03,
+   keresés nélkül):** a két fájl továbbra sem található, de a felülvizsgálat
+   célja okafogyottá vált — a הום-gyök állítás időközben három hiteles
+   helyen javítva lett (`BDB_teljes_unabridged_README.md`,
+   `1Moz_1v2-2v3_bovitett.md` v4, a kereszthivatkozás-napló 6. szakasza).
+   A két elveszett fájl elvesztése emiatt nem blokkoló, további keresés nem
+   szükséges.
