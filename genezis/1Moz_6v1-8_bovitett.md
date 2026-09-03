@@ -1,6 +1,9 @@
 # 1Móz 6:1-8 — bővített PaRDeS tanulmány
 
-*v1 — 2026.08.13*
+*v2 — 2026.09.03 (Új, kötelező 7. szakasz — Lexikai audit — felvéve;
+nincs új tartalmi lelet, mert a study már maga tartalmazza a legfontosabb
+lexikai kapcsolatokat [jetzer/jacar, עצ״ב-lánc]; a study megfogalmazása
+szó szerint is ellenőrizve BDB-vel — pontos)*
 
 ---
 
@@ -197,6 +200,21 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent — három önálló vitatot
 - ✅ Sod fegyelem: csak a rétegekből levezetett állítás, nincs önkényes allegorizálás
 - ✅ „Szent Szellem"/„spirituális" terminológia nem volt releváns ebben a szakaszban (nincs pneuma/pszükhé előfordulás)
 - ✅ Fordítási szabály: Károli teljes idézetekhez
+
+---
+
+## 7. Lexikai audit — módszertani napló
+
+A 2/a-2/e technikasor lefutott a study mind a 11 kulcsszó-sorára (2. pont táblázata). Nincs beépítendő ÚJ tartalmi lelet — a study saját szövege már tartalmazza a legfontosabb kapcsolatokat: יֵצֶר/יָצַר (jetzer/jacar, 6:5↔2:7, l. Remez) és az עצ״ב-lánc (3:16/3:17/5:29/6:6, l. Remez és Sod). Mindkettőt TAHOT-tal és BDB-vel függetlenül újra-ellenőriztem — a study megfogalmazása szó szerint is pontos, nem túlállít.
+
+**Ellenőrzött, megerősített pontosságú megfogalmazások:**
+- A "יָדוֹן (6:3) gyöke bizonytalan, דין vagy דור" (⚠️ Vitatott pont) — a BDB (H1777) szó szerint "verb dubious; only in יָדוֹן Gen 6:3" jelzéssel áll, pontosan megerősítve a study saját bizonytalansági jelzését.
+- A נְפִלִים "bizonytalan etimológia" jelzése (2. pont táblázata) — a BDB (H5303) szó szerint "etymology dubious... all very precarious" jelzéssel áll, pontosan megerősítve.
+- Az עצ״ב-lánc négy igehelye (3:16, 3:17, 5:29, 6:6) — TAHOT-tal ellenőrizve, mindegyik valóban tartalmazza a gyököt (H6089/H6093/H6087 — azonos triliterális gyök, eltérő szófaji alakok).
+
+**Elutasított/triviálisnak minősített Origin-lánc-elemek:** בְּנֵי/בְּנוֹת ← בנה "építeni" (ismert, de nem specifikus szójáték); רוּחַ ← "szagolni"; בָּשָׂר ← "hírt hozni"; גִּבֹּרִים ← "nagy ember"; חֵן ← חנן "kegyelmesnek lenni" — mind triviális vagy már fedve.
+
+**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv` és `TAHOT_kivonat.tsv` fájlokból származnak.
 
 ---
 
