@@ -41,12 +41,15 @@ KIVÉTEL NÉLKÜL, ebben a sorrendben:
         jelentésárnyalati adat nem elérhető." NEM pótolható web_search-csel
         vagy Claude általános tudásából.
 
-   2/c. Ha a fejszó BDB-szócikke "Origin: from H####" vagy hasonló
-        gyök-hivatkozást tartalmaz, ELLENŐRIZD a hivatkozott Strong-szám
-        szócikkét is ugyanazon forrásban (TBESH.txt / BDB_teljes_unabridged.tsv),
-        mielőtt a fejszó szócikkét "teljesnek" tekintenéd. A gyök-etimológia
-        gyakran külön Strong-szám alatt szerepel, nem a származék szó
-        szócikkében.
+   2/c. Nézd meg a fejszó Strong-számának sorát a `Strong_szotar.tsv`
+        "Gyök/Származtatás" oszlopában (NEM a BDB-szócikkben — a BDB
+        szabadszöveges bejegyzései NEM tartalmaznak strukturált
+        "Origin:" jelölést, ez tévesen lett korábban feltételezve, l.
+        2026.09.03-i pontosítás). Ha a mező "from H####", "corresponding
+        to H####", "variation of H####" vagy hasonló, másik Strong-számra
+        mutató mintát tartalmaz, ELLENŐRIZD a hivatkozott Strong-szám
+        szócikkét is a TBESH.txt / BDB_teljes_unabridged.tsv-ben, mielőtt
+        a fejszó szócikkét "teljesnek" tekintenéd.
 
 3. Minden ⚡-jegyzet FELTÜNTETI, melyik lépés(ek) futottak le, és melyik
    fájlból (TBESH.txt / BDB_teljes_unabridged.tsv).
@@ -55,14 +58,18 @@ KIVÉTEL NÉLKÜL, ebben a sorrendben:
    "visszamásolni" ellenőrzés nélkül — minden ⚡-jegyzet a SAJÁT, ebben
    a körben lefuttatott 1–2. lépésből származik.
 
-5. Ha egy szó szócikke egy másik Strong-számra hivatkozik gyök-eredetként
-   ("Origin: from H####" vagy "√" jelölés a BDB-szövegben), a protokoll
-   KÖVESSE VÉGIG ezt a hivatkozást, és ellenőrizze a hivatkozott
-   Strong-szám szócikkét is, mielőtt gap-et jelezne. Konkrét precedens
-   (2026.09.02): a תְּהוֹם/H8415 "Origin: from H1949" hivatkozása a
-   הום-gyök szócikkére mutat, ami tartalmazza a "morajlás" etimológiát —
-   ez csak a hivatkozási lánc végigkövetésével derült ki, a H8415 önálló
-   ellenőrzése tévesen "nem igazolható" eredményt adott.
+5. Ha egy szó Strong-száma a `Strong_szotar.tsv` "Gyök/Származtatás"
+   mezőjében egy másik Strong-számra hivatkozik gyök-eredetként (l. 2/c
+   pont), a protokoll KÖVESSE VÉGIG ezt a hivatkozást, és ellenőrizze a
+   hivatkozott Strong-szám szócikkét is a TBESH.txt / BDB_teljes_
+   unabridged.tsv-ben, mielőtt gap-et jelezne. Konkrét precedens
+   (2026.09.02, forrás pontosítva 2026.09.03): a תְּהוֹם/H8415 esetén a
+   `Strong_szotar.tsv` "from H1949" bejegyzése a הום-gyök szócikkére
+   mutat, ami tartalmazza a "morajlás" etimológiát a BDB_teljes_
+   unabridged.tsv-ben — ez csak a hivatkozási lánc végigkövetésével
+   derült ki. FONTOS: a hivatkozás forrása a Strong-szótár, NEM a BDB
+   saját szövege — a BDB H8415 szócikke önmagában nem tartalmaz
+   gyök-eredeztető megjegyzést.
 ```
 
 ---
@@ -73,6 +80,7 @@ KIVÉTEL NÉLKÜL, ebben a sorrendben:
 |---|---|---|---|
 | `TBESH.txt` / `TBESG.txt` (repóban) | 1. lépés, mindig fut | Csak sense-hierarchia, gyök-etimológia nélkül | STEPBible CC BY 4.0 |
 | `BDB_teljes_unabridged.tsv` (bevezetendő) | **Elsődleges teljes forrás**, 2. lépés | 8090/8090 bejegyzés, 0 üres | Közkincs (Tim Morton/Eliran Wong), l. `Code_prompt_teljes_BDB_bevezetese.md` |
+| `Strong_szotar.tsv` (repóban) | **Origin-lánc forrása** — minden szónál ellenőrzendő a 2/c lépésben | openscriptures, CC BY 4.0 | A "Gyök/Származtatás" oszlop tartalmazza a más Strong-számra mutató hivatkozásokat (pl. "from H1949") — ez a Strong's Concise Dictionary tartalma, NEM a BDB-é; a BDB-fájlok maguk nem tartalmaznak strukturált gyök-hivatkozást |
 | openscriptures `BrownDriverBriggs.xml`+`LexicalIndex.xml` | Másodlagos/tartalék, csak ha az elsődleges forrás hiányzik a repóból | 2595 gyökből 453 (17,5%) üres | CC BY 4.0, de kevésbé teljes |
 | archive.org OCR-szkennelt teljes szövegek (BDB, Gesenius) | **NEM használandó automatikus protokollban** | Tartalmilag teljes, de OCR-zajos, nem grep-elhető megbízhatóan | Csak kivételes, explicit jelzett manuális ellenőrzésre, ha egyáltalán szükséges |
 | web_search | **TILOS** a determinisztikus protokoll részeként | — | Csak akkor, ha Basesoft kifejezetten kéri egy adott, nyitott kérdés kutatását — ilyenkor NEM kerül be ⚡-jegyzetként, hanem külön, "nem determinisztikus kiegészítés" jelzéssel |
