@@ -1,6 +1,8 @@
 # 1Móz 6:9-22 — bővített PaRDeS tanulmány
 
-*v1 — 2026.08.13*
+*v2 — 2026.09.03 (Új, kötelező 7. szakasz — Lexikai audit — felvéve;
+nincs új tartalmi lelet; a מַבּוּל-etimológia [יבל] BDB által explicit
+elutasítva — dokumentálva)*
 
 ---
 
@@ -209,6 +211,20 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent (gófer-fa azonosítása; El
 1. *Mit jelent ez a mai hívő mindennapi életében?* Noé „Istennel járása" nem egyetlen látványos spirituális élmény volt, hanem évtizedeken át tartó, láthatatlan hűségben megélt kapcsolat — ez a hit mindennapi, nem eseményszerű jellegére emlékeztet.
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* A *hithalech* ige folyamatos, tartós cselekvést jelöl (nem egyszeri "járást") — ez arra hív, hogy a hívő ne pillanatnyi lelki fellángolásokban, hanem kitartó, napi hűségben keresse Isten közelségét, akkor is, ha ez (mint Noé esetében) hosszú időn át látszólag eredménytelen vagy értetlenségbe ütközik.
 3. *Milyen érzelmi/lelki ellenállás merülhet fel, és hogyan szólítja meg ezt a szöveg?* A társadalmi elszigeteltség, amit Noé bizonyára átélt — évtizedekig építve valamit, amit egyetlen kortársa sem értett vagy támogatott — sokakban rezonálhat a mai, kulturálisan ellenszélben élő hívők tapasztalatával. A szöveg nem tagadja ennek nehézségét, de a szövetség-ígéret (18. v.) elhelyezése — még az ítélet kihirdetése *közben* — mutatja, hogy Isten jelenléte és elköteleződése nem a próbatétel után, hanem már annak kezdetén biztosított.
+
+---
+
+## 7. Lexikai audit — módszertani napló
+
+A 2/a-2/e technikasor lefutott a study mind a 10 kulcsszó-sorára (2. pont táblázata). Nincs beépítendő tartalmi lelet.
+
+**Ellenőrzött és elutasított etimológiák:**
+- מַבּוּל (H3999, "özönvíz") ← יבל ("vezetni/hordozni"): a BDB szócikk saját maga "derivation dubious... but improbable" jelzéssel elutasítja ezt a levezetést — nem építendő be, ha valaha felmerülne.
+- בְּרִית (H1285, "szövetség") ← "vágás értelmében": ugyanaz az elutasítás, mint a `1Moz_15_bovitett.md`-nél és `1Moz_9v1-17_bovitett.md`-nél — a BDB nem ad etimológiát a *brit*-hez, a hivatkozott H1262 ("enni") sem támasztja alá a "vágás" jelentést.
+
+**Elutasított/triviálisnak minősített Origin-lánc-elemek:** צַדִּיק ← "igazságosnak lenni" (triviális); תָּמִים ← "befejezni/teljesnek lenni" (triviális); הִתְהַלֵּךְ ← "menni" (triviális); חָמָס ← "megsérteni" (triviális); נֶפֶשׁ חַיָּה — már részletesen tárgyalva a `1Moz_2v4-7_bovitett.md` és `1Moz_6v1-8_bovitett.md` 7. szakaszában.
+
+**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv` és a `BDB_teljes_unabridged.tsv` fájlokból származnak.
 
 ---
 
