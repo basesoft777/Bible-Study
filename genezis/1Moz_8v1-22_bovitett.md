@@ -1,6 +1,8 @@
 # 1Móz 8:1-22 — bővített PaRDeS tanulmány
 
-*v1 — 2026.08.13*
+*v2 — 2026.09.03 (Sod-pont kiegészítve a נוח gyök-hármas lelettel — Noé
+neve, a galamb מָנוֹחַ-a és a נִיחֹחַ [kedves illat, 21. v.] mind ugyanabból
+a gyökből erednek; új, kötelező 7. szakasz — Lexikai audit — felvéve)*
 
 ---
 
@@ -141,6 +143,8 @@ A szakasz két nagy tanítást hordoz. Egyfelől Noé példája — hogy annak e
 
 A galamb, amely a visszahúzódó vizek fölött repül, és amely — miután nem talál "nyugvóhelyet" (*manoach*, rokon Noé nevével, *Nóach*) — végül olajággal tér vissza, az új élet és a béke jelévé válik anélkül, hogy a szöveg ezt explicit módon kimondaná. Ez a kép a Peshat/Remez rétegekből ténylegesen levezethető: a galamb a vizek fölött, az új teremtés kezdetén jelenik meg — pontosan úgy, ahogyan az 1:2-ben Isten Szelleme a vizek fölött lebegett. Ez a párhuzam (nem szó szerinti, hanem képi) segít megérteni, miért vált a galamb a keresztény hagyományban is a Szentlélek jelévé (lásd 4 lent).
 
+Ez a gyök-mintázat a fejezet zárómondatában is folytatódik: amikor Isten "megérzi a kedves illatot" (רֵיחַ הַנִּיחֹחַ, *réach hannichóach*, 21. v.), a *nichóach* szó ugyanabból a נוח gyökből ered, mint Noé neve és a galamb *manoach*-a — mindhármat a BDB "megnyugtató, csillapító" jelentéssel erősíti meg. A fejezet így egyetlen gyök köré szerveződő ívet rajzol: Noé (pihenés) nevétől indulva, a galamb hiábavaló nyugvóhely-keresésén át, végül Isten saját "megnyugvásáig" Noé áldozatában.
+
 ### ⚠️ Vitatott pontok
 
 **Az Ararát-hegy azonosítása** — a héber „Ararát" (אֲרָרָט) az ókori Urartu királyság térségére utal, amely a mai Örményország, Törökország és Irán határvidékén feküdt — nem feltétlenül egyetlen, konkrét csúcsra. Victor Hamilton (NICOT *Genesis*) és Gordon Wenham (WBC *Genesis 1-15*) egyaránt hangsúlyozzák, hogy a szöveg csak a hegyvidéket ("Ararát hegyei", többes szám) nevezi meg, nem egy konkrét csúcsot; a modern "Ararát-hegy" (Ağrı Dağı, Törökország) azonosítása középkori/kora újkori hagyomány, nem szövegi adat. Ezzel szemben számos népszerű (nem akadémiai) "bárkakereső" expedíció kifejezetten ezt a konkrét csúcsot célozza meg — ez utóbbi nem tudományos konszenzus, hanem népszerű hagyomány.
@@ -217,6 +221,19 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent (Ararát azonosítása — H
 1. *Mit jelent ez a mai hívő mindennapi életében?* Noé látta a száraz földet, mégis megvárta Isten kifejezett szavát a kiszálláshoz — ez arra tanít, hogy a látható körülmények kedvező alakulása önmagában nem helyettesíti az Isten vezetésére való várakozást.
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* Noé első cselekedete a szabadulás után nem a saját élete újjászervezése, hanem hála-áldozat bemutatása — ez a mintázat a szabadulás utáni első lépés irányát jelöli ki: hála, nem azonnal saját tervek.
 3. *Milyen érzelmi/lelki ellenállás merülhet fel, és hogyan szólítja meg ezt a szöveg?* Sokakban felmerülhet a kérdés: ha az emberi szív hajlama (*jetzer*) változatlanul gonosz maradt (21. v., szó szerint megismételve a 6:5 diagnózisát), miért lesz Isten mégis türelmesebb? A szöveg nem azt állítja, hogy az ember megváltozott, hanem hogy Isten válasza változott — ez a kegyelem logikája: nem az emberi érdemre, hanem Isten saját elhatározására épül.
+
+---
+
+## 7. Lexikai audit — módszertani napló
+
+A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára (2. pont táblázata).
+
+**Beépített lelet:**
+- נִיחֹחַ (H5207, "kedves illat", 21. v.) ← נוּחַ (H5117, "pihenni") — a Strong-szótár és a BDB ("a quieting, soothing, tranquillizing") is megerősíti, hogy ugyanaz a gyök, mint Noé neve (נֹחַ, H5146, "pihenés") és a study saját Sod-pontjában már említett מָנוֹחַ ("nyugvóhely") — beépítve, a meglévő manoach/Noach-lelet kiegészítéseként.
+
+**Elutasított/triviálisnak minősített Origin-lánc-elemek:** זָכַר ← "emlék" (triviális, önreferens); עֲלֵה ← "felemelkedni" (triviális); זַיִת ← H2099 (nem hoz új tartalmat); מִזְבֵּחַ ← "áldozni" (már ismert minta); יֵצֶר ← יצר (már a `1Moz_6v1-8_bovitett.md` 7. szakaszában lezárva, itt csak szó szerinti ismétlődés).
+
+**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv` és a `BDB_teljes_unabridged.tsv` fájlokból származnak.
 
 ---
 
