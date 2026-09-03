@@ -114,6 +114,26 @@ A szerkezet két hármas blokkra oszlik: az 1-3. nap a **terek kialakítása** (
 
 **📚 Lexikai kiegészítés a צֶלֶם (celem) etimológiájáról (ÚJ, 2026.09.02, teljes BDB-szócikk alapján):** a BDB szerint a szó eredeti jelentése *"valami kivésett/kifaragott"* (összevetve a פֶּסֶל [*pészel*, "faragott bálványkép"] szóval; a német szakirodalom "*Schnitzbild*"-nek, azaz "faragott képnek" nevezi). A szó tényleges ószövetségi használatának túlnyomó többsége (BDB 1. jelentés) **szó szerint bálványszobrokra** vonatkozik: aranyból készült daganat- és egérformák (1Sám 6:5), pogány istenek szobrai (Ám 5:26, 2Kir 11:18, Ez 7:20), férfi alakú bálványképek (Ez 16:17), festett férfiképmások (Ez 23:14). **Csak a 2. jelentés** vonatkozik "képmásra/hasonlatosságra" — kifejezetten és kizárólag az 1Móz 1:26-27, 5:3 és 9:6 versekre. **Ez azt jelenti: a szöveg egy olyan szót alkalmaz az emberre, amit egyébként túlnyomórészt bálványszobrokra használnak** — l. bővebben a Drash "Vitatott pont 2" kiegészítésénél.
 
+**📚 Lexikai kiegészítés — a צֶלֶם (celem) 3. jelentése, ellentétes irányú
+visszhang (ÚJ, 2026.09.02, teljes-előfordulás feltárás alapján):** a BDB
+szócikk egy harmadik, eddig figyelmen kívül hagyott jelentést is rögzít:
+*"átvitt értelemben — puszta, üres kép, látszat"*. Ez a jelentés két helyen
+fordul elő a Zsoltárok könyvében — **Zsolt 39:7** ("bizony, árnyékként jár
+az ember" — héberül *becelem jithallech-ísh*, "látszatban/képmásban jár az
+ember") és **Zsolt 73:20** ("Uram, ha felserkensz, semmivé teszed képüket
+[*calmám*]") —, mindkét esetben az emberi élet mulandóságát, üresség-jellegét
+hangsúlyozva, nem méltóságát. Módszertanilag fontos: ezt a két előfordulást a
+study/napló korábban soha nem idézte — a Strong-szám *teljes, szűretlen*
+előfordulás-listázásával kerültek elő (l. napló 7. szakasza). **Ez a
+szóhasználat feltehetően tudatos, ellentétes irányú visszhangja az 1Móz
+1:26-27 pozitív állításának**: ugyanaz a szó, amely itt Isten dicsőségét
+hordozó, méltóságot adó valóságot jelöl, két zsoltárban éppen az emberi lét
+törékenységét, illuzórikus, múló jellegét fejezi ki. **Nyitva maradó kérdés
+(nem ennek az auditnak a tárgya):** a *celem* másik két genezisi
+előfordulása (5:1-3, 9:6) mindeddig nem lett önállóan, teljes BDB-szócikk
+alapján ellenőrizve — csak feltételezett, hogy ugyanazt az 1:26-27-es (2.)
+jelentést hordozzák.
+
 **Szó szerinti tükörfordítás:** "És mondta Isten: alkossunk (*na'aszé*) embert a mi képünkre (*celem*), a mi hasonlatosságunk (*demút*) szerint... És teremtette (*bará*) Isten az embert az ő képére, Isten képére teremtette őt, férfivá és nővé (*zachár u-nekévá*) teremtette őket."
 
 **Károli-fordítás:** "És monda Isten: Teremtsünk embert a mi képünkre és hasonlatosságunkra... Teremté tehát az Isten az embert az ő képére, Isten képére teremté őt: férfiúvá és asszonynyá teremté őt."
@@ -166,9 +186,21 @@ A formátlan, sötét, vízzel borított kezdőállapot (1:2) fölött Isten Sze
 
 *Milyen máshonnan ismert bibliai mintázatra utal ez a szöveg?* Az "Isten Szelleme lebeg a vizek felett" (1:2) kép később ismétlődik, amikor Isten Szelleme megújítja a földet (Zsolt 104:30) — ugyanaz a *ruach*, amely a kezdet formátlanságát rendezi, később is életadó/megújító erőként jelenik meg. Emellett az első teremtő szó ("legyen világosság", 1:3) a Logosz-fény motívum előképe — l. bővebben a 4. pontban.
 
+A *celem* szó két zsoltári előfordulása (Zsolt 39:7, 73:20) — ahol ugyanez a
+szó az ember mulandóságát, üres látszat-jellegét fejezi ki — ellentétes
+irányú, de ugyanabból a szótőből építkező visszhangja az 1Móz 1:26-27
+pozitív kijelentésének (l. 2. pont lexikai kiegészítése).
+
 ### Drash (Keresés)
 
 *Milyen tanítás vezethető le belőle?* Az emberi méltóság alapja nem teljesítmény vagy képesség, hanem az Isten *képére* teremtettség — ez a kijelentés az ókori közel-keleti kontextusban radikális: a korabeli kultúrákban kizárólag a király számított "isten képmásának", itt viszont minden ember (férfi és nő egyaránt) ezt a státuszt kapja. Az uralom-megbízás (1:28: *kivsuha*, *redú*) nem kizsákmányolásra, hanem felelős gondnokságra szóló felhatalmazás — a szöveg logikája szerint (Isten maga is "jónak" látja és megőrzi teremtését) az emberi uralom mintája Isten saját gondoskodó teremtő munkája. A hetedik napi nyugalom (2:2-3) teológiai alapot ad a munka-pihenés ritmusának: a nyugalom nem a munka hiánya, hanem a teremtés rendjének szerves, megszentelt része.
+
+A *celem* szó zsoltári, ellentétes irányú használata (Zsolt 39:7, 73:20 — l.
+Remez) fontos korrekciót ad a méltóság-tanításhoz: az Isten képére
+teremtettség nem az ember önmagában hordozott, elidegeníthetetlen
+tulajdonsága, hanem ajándék, amely a Teremtővel való kapcsolatból nyeri
+tartalmát — enélkül az ember léte a zsoltáros szavával csak "árnyék",
+"látszat" marad.
 
 ⚠️ **Vitatott pont 1 — a teremtés napjainak értelmezése:**
 - **Henry Morris és John Whitcomb** (*The Genesis Flood*, ifjú-föld kreacionizmus, Institute for Creation Research) szerint a hat nap szó szerinti, egymást követő 24 órás nap, a föld kora néhány ezer év.
@@ -309,7 +341,7 @@ A hetedik napi nyugalom (2:2-3) — amelyet Isten maga tart, nem fáradtságból
 | תְהוֹם | H8415 | ✅ | **igen → H1949** | **helyesbítve — הום-gyök megerősítve** |
 | רוּחַ | H7307 | ✅ | nincs | megerősítve, nincs eltérés |
 | אוֹר | H216 | ✅ | nincs | megerősítve, nincs eltérés |
-| צֶלֶם | H6754 | ✅ | nincs | **új érv talált** (l. Drash 2.) |
+| צֶלֶם | H6754 | ✅ | nincs | **új érv talált** (l. Drash 2.); **+ 3. jelentés feltárva teljes-előfordulás listázással, l. 2. pont és Remez** |
 | זָכָר/נְקֵבָה | H2145/H5347 | ✅ | nincs | megerősítve, nincs eltérés |
 | שָׁבַת | H7673 | ✅ | nincs | megerősítve, nincs eltérés |
 | בָּרַךְ | H1288 | ✅ | nincs | megerősítve (apró etimológiai adalék, l. 2. pont) |
