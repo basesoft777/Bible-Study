@@ -1,6 +1,6 @@
 # 1Móz 7:1-24 — bővített PaRDeS tanulmány
 
-*v1 — 2026.08.13*
+*v2 — 2026.09.03 (Róm 9:27 gyök-szintű lexikai alátámasztás hozzáadva; új Remez-pont: nismat chajjím [2:7] ↔ nismat rúach chajjím [7:22] dekreáció-párhuzam)*
 
 ---
 
@@ -175,6 +175,12 @@ A tiszta/tisztátalan állatok megkülönböztetése (2-3. v.) generációkkal a
 
 *Miért kapcsolódik:* ugyanaz a szó jelöli a teremtés előtti, differenciálatlan óstengert és az özönvíz forrását — irányjelölés: ↔ ellentétes visszhang (dekreáció); a teremtéskor "elválasztott" vizek (1:6-7) itt újraegyesülnek.
 
+**Remez alatt — a lehelet mint a teremtés visszafordítása, második adatpont**
+
+> 🔗 **1Móz 2:7** — „...és lehelle vala az ő orrába életnek leheletét (נִשְׁמַת חַיִּים, *nismat chajjím* — kulcsszó: élet lehelete). Így lőn az ember élő lélekké."
+
+*Miért kapcsolódik:* a BDB szócikk (H5397) saját maga veti össze a két igehelyet: a 2:7-es *nismat chajjím* ("élet lehelete") majdnem szó szerint visszatér a 7:22-es *nismat rúach chajjím* ("élet szellemének lehelete") kifejezésben — egyetlen szóval (רוּחַ) bővülve; irányjelölés: ↔ ellentétes visszhang (dekreáció). Amit Isten a teremtéskor belelehelt az emberbe, azt az özönvízben mindenkitől visszaveszi, akiben megvolt — ugyanaz a mintázat, mint a *tehóm* (1:2 ↔ 7:11) esetében: a teremtés nyelvezete tér vissza, előjelet váltva.
+
 **Drash alatt — a tiszta/tisztátalan megkülönböztetés Sínai előtt**
 
 > 🔗 **3Móz 11:2-3** — „Szóljatok Izráel fiainak, mondván: Ezekazok az állatok, amelyeket megehettek... minden hasadt körmű, egészen ketté vált körmű, és kérődző állatot ehettek."
@@ -191,7 +197,7 @@ A tiszta/tisztátalan állatok megkülönböztetése (2-3. v.) generációkkal a
 
 > 🔗 **Róm 9:27** — „Ésaiás pedig ezt kiáltja Izráel felől: Ha Izráel fiainak száma annyi volna is, mint a tenger fövénye, a maradék tartatik meg."
 
-*Miért kapcsolódik:* Noé — "csak Noé marada meg" (23. v.) — a Szentírás első, névvel jelölt megmaradó maradéka; irányjelölés: ⇒ folytatás/beteljesedés; a próféták (Ézs 10:20-22) és Pál is ugyanezt az elvet alkalmazzák Izráelre.
+*Miért kapcsolódik:* Noé — "csak Noé marada meg" (23. v.) — a Szentírás első, névvel jelölt megmaradó maradéka; irányjelölés: ⇒ folytatás/beteljesedés, **gyök-szintű lexikai rokonság** (nem azonos szóalak, két nyelvi rétegben is). Héber szinten: 1Móz 7:23 **יִשָּׁאֶר** (*jissaér*, H7604, ige) és Ézs 10:20-22 **שְׁאָר** (*se'ár*, H7605, főnév) — ugyanaz a שאר gyök, eltérő szófajban. Görög szinten (LXX/NT): 1Móz 7:23 LXX **κατελείφθη** (*kateleiphthé*, καταλείπω) és Róm 9:27 **ὑπόλειμμα** (*hüpoleimma*, ὑπολείπω) — közös λείπω ("hátrahagyni, megmaradni") gyök, eltérő igekötővel. A próféták (Ézs 10:20-22) és Pál is ugyanezt az elvet alkalmazzák Izráelre — a kapcsolat tehát nem csupán fogalmi, hanem mindkét nyelvi rétegben gyökszinten is megalapozott.
 
 **Összegzés:** a szakasz kereszthivatkozásai egy mintázatot rajzolnak ki: az ítélet kozmikus visszavonása a teremtés rendjének (dekreáció), miközben Isten saját maga gondoskodik egy megmaradó közösség védelméről — ez a minta ismétlődik meg később mind a törvényadásban (tiszta/tisztátalan), mind a szabadításban (Egyiptom), mind a próféciákban (maradék).
 
@@ -233,14 +239,16 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent (az özönvíz kiterjedése 
 - ✅ 4 formátum: inline blokkok, irányjelölés, félkövér kulcsszó, Károli-idézet, kiejtés (a tematikus, nem lexikai kapocs explicit jelölve)
 - ✅ Sod fegyelem: a bezárt ajtó/Egyiptom párhuzam tematikusként jelölve, nem lexikai kényszerkapcsolatként
 - ✅ Fordítási szabály: Károli teljes idézetekhez (a hosszabb, ismétlődő szakaszoknál összevontan, terjedelmi okból, jelezve)
+- ✅ Sod fegyelem: a maradék-elv (Róm 9:27) kapcsolat gyök-szintű lexikai adatokkal (héber שאר, görög λείπω) alátámasztva, nem puszta fogalmi párhuzam
 
 ---
 
 **Motívum-napló frissítésre váró elemek** (a napló tényleges frissítése megerősítésed után):
 - „tehóm — a mélység motívuma: a teremtés visszafordítása" — új motívum (1Móz 1:2 ↔ 7:11)
 - „bezárt ajtó — isteni oltalom" — új Sod-motívum, tematikus kapcsolat (7:16 ↔ 2Móz 12:23)
-- „maradék-elv (she'erit)" — új motívum, első bibliai előfordulás (7:23 ↔ Róm 9:27)
+- „maradék-elv (she'erit)" — új motívum, első bibliai előfordulás (7:23 ↔ Róm 9:27), gyök-szintű lexikai alátámasztás: héber שאר, görög λείπω
 - „tiszta/tisztátalan megkülönböztetés Sínai előtt" — új Drash-motívum (7:2-3 ↔ 3Móz 11)
+- „nismat chajjím / nismat rúach chajjím — a lehelet motívuma: a teremtés visszafordítása" — új motívum, második dekreáció-adatpont (1Móz 2:7 ↔ 7:22), rokon a *tehóm*-motívummal
 
 Szólj, ha ezeket rögzítsem a `PaRDeS_motivumok.md`-ben (v16).
 
