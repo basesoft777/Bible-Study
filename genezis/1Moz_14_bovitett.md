@@ -1,5 +1,9 @@
 # 1Mózes 14 — bővített PaRDeS-tanulmány (nevesített tanítói alkalmazással)
 
+*v3 — 2026.09.03 (Új, kötelező 7. szakasz — Lexikai audit — felvéve;
+nincs új tartalmi lelet; a study saját חנך [chanikáv/chanukká]
+gyök-állítása BDB-vel megerősítve pontosnak bizonyult)*
+
 *v2 — 2026.08.16 (kiegészítve: az Ábrám-Sodoma király esküjéhez [14:22-23] korábban jelzett tanítói gap pótolva — Kenneth Copeland Ministries elsődleges forrás azonosítva)*
 
 ---
@@ -169,6 +173,18 @@ A korábbi keresés során nem került elő megbízható forrás erre a motívum
 
 ## Terminológiai és formai szabályok
 Alkalmazva: „Szent Szellem", „spirituális" (Sod), kiejtések mindenütt, igehely-rövidítések szóköz nélkül, Károli-fordítás teljes idézetekhez.
+
+---
+
+## 7. Lexikai audit — módszertani napló
+
+A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára (2. pont táblázata). Nincs beépítendő ÚJ tartalmi lelet — a study saját חֲנִיכָיו/חנך-állítását (80. sor: kapcsolat a Péld 22:6 *chanók*-hoz és a *chanukká*-hoz) függetlenül ellenőriztem: a BDB H2596-szócikk (חָנַךְ) explicit "train up, dedicate" definíciót ad, pontosan megerősítve a study megfogalmazását — nem spekulatív, hanem azonos triliterális gyökön belüli, standard inflexiós kapcsolat.
+
+**Elutasított/triviálisnak minősített Origin-lánc-elemek:** כֹּהֵן ← "papi szolgálatot végezni" (triviális); לֶחֶם ("kenyér") ← "harcolni" — valódi héber szógyök-egybeesés, de a BDB nem ad rá etimológiai magyarázatot, és a study nem is állítja ezt a kapcsolatot — nem építendő be, ha valaha felmerülne; אֵל עֶלְיוֹן ← עלה "felemelkedni" (triviális); מַעֲשֵׂר ← עֶשֶׂר "tíz" (triviális).
+
+**LXX-híd, ellenőrizve, nincs teendő:** Zsid 7:2 ↔ βασιλεύς (G0935) és G4532 — a study 4. pontja már explicit idézi és tárgyalja ezt a verset.
+
+**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv` és `TAGNT_kivonat.tsv` fájlokból származnak.
 
 ---
 
