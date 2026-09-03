@@ -1,5 +1,9 @@
 # 2. Bővített PaRDeS sablon — teljes, részletes verzió
 
+*v16 — 2026.09.03 (A "13-as kör" hivatkozások eltávolítva/frissítve a 4.
+és 7. pontban — a `Javasolt_sablon_kiegeszites_BDB_arnyalat.md` v4-es
+döntése szerint a 2/a-2/e technikasor mostantól minden triázsolt
+kulcsszóra lefut, nincs külön motívum-lista alapú szűrés)*
 *v15 — 2026.09.03 (Új, feltételes „7. Lexikai audit — módszertani napló"
 pont felvéve, a determinisztikus BDB/TBESH-protokoll [`Javasolt_sablon_
 kiegeszites_BDB_arnyalat.md`] 2/a-2/e technikasorának dokumentálására;
@@ -110,13 +114,15 @@ kiválasztott kapcsolat [Claude-tudás] eredetű. (Egy ritka szó néhány előf
 pontosabb és erősebb kapcsolódást adhat, mint egy tartalmilag hasonló, de lexikailag
 független párhuzam.)
 
-**A 2/a-2/e technikasor kapcsolódása:** ha egy kiválasztott kulcsszó a "13-as kör"
-tagja (l. `Javasolt_sablon_kiegeszites_BDB_arnyalat.md` 8. pont), a fenti
-négyforrásos FELFEDEZŐ keresésen túl kötelezően lefut a determinisztikus
-BDB/TBESH-protokoll 2/a-2/e technikasora is (2/a BDB-ellenőrzés, 2/b Origin-lánc,
-2/c teljes-előfordulás feltárás, 2/d motívum-azonosság, 2/e LXX-híd) — ez a
-MINŐSÍTŐ funkció, nem újabb felfedezés. Az eredménye a 7. pontban (Lexikai audit)
-dokumentálandó.
+**A 2/a-2/e technikasor kapcsolódása:** minden, a fenti (2. pont)
+triázson átment kulcsszóra kötelezően lefut a determinisztikus
+BDB/TBESH-protokoll 2/a-2/e technikasora is (2/a BDB-ellenőrzés, 2/b
+Origin-lánc, 2/c teljes-előfordulás feltárás, 2/d motívum-azonosság,
+2/e LXX-híd) — ez a MINŐSÍTŐ funkció, a fenti négyforrásos FELFEDEZŐ
+keresésen túl, nem helyette. Az eredménye a 7. pontban (Lexikai audit)
+dokumentálandó. (2026.09.03-ig ezt egy külön "13-as kör" motívum-lista
+szűkítette volna — ez elvetve, l. `Javasolt_sablon_kiegeszites_BDB_
+arnyalat.md` 8. pont.)
 
 **Kötelező napló:** a fenti keresési/minősítési folyamat eredményét — MINDEN
 vizsgált jelöltet, nem csak a kiválasztottakat — rögzítsd egy önálló fájlban:
@@ -201,10 +207,11 @@ Zárja a tanulmányt 2-3 konkrét kérdés megválaszolásával:
 
 **Aktiválási feltétel:** illeszd be, ha a tanulmány bármely kulcsszavára
 lefutott a determinisztikus BDB/TBESH-protokoll (`Javasolt_sablon_
-kiegeszites_BDB_arnyalat.md`) 2/a-2/e technikasora — tipikusan azért,
-mert a szó a "13-as kör" tagja. Ha egyetlen kulcsszóra sem futott le a
-technikasor, hagyd ki ezt a pontot, és jelezd explicit, miért marad el
-(pl. "egyik kulcsszó sem tagja a 13-as körnek ebben a tanulmányban").
+kiegeszites_BDB_arnyalat.md`) 2/a-2/e technikasora — ez a 2. pont
+triázsán átment MINDEN kulcsszónál kötelező (2026.09.03-tól nincs külön
+"13-as kör" szűrés). Ha a tanulmánynak nincs egyetlen kulcsszava sem
+(elméleti eset, mivel a triázs mindig legalább egy szót kiválaszt), ezt
+explicit jelezni kell.
 
 Dokumentálja, tömören, mely kulcsszavakon futott le a technikasor:
 
