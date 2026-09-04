@@ -1,5 +1,7 @@
 # 1Mózes 15:1-21 — bővített PaRDeS tanulmány
-*v1 — 2026.08.17*
+*v2 — 2026.09.03 (Formázási hiba javítva: két nyers, meg nem jelenített
+idézet-tag eltávolítva a Kenneth Copeland/Derek Prince szakaszból; új,
+kötelező 7. szakasz — Lexikai audit — felvéve, nincs új tartalmi lelet)*
 
 ---
 
@@ -149,13 +151,27 @@ Ez a kapcsolat megmutatja, hogy Ábrám szövetségkötése egy jól ismert kora
 
 *2-3. Névsor és célzott keresés a jóváhagyott listáról:*
 
-- **Kenneth Copeland (KCM):** a Copeland-szolgálat tanítása kifejezetten a 15:1-re épít — Isten Ábrámnak tett ígérete, hogy „pajzsod és felette bőséges jutalmad" vagyok, a szolgálat szerint <cite index="10-1">Isten olyan bőséges gazdagságra utaló ígéretet tett Ábrahámnak, amely minden újjászületett hívőre nézve is érvényes ígéret marad</cite>. Forrás: KCM Europe napi elmélkedés, „Overtaken – For Better or Worse" (kcm.org.uk).
+- **Kenneth Copeland (KCM):** a Copeland-szolgálat tanítása kifejezetten a 15:1-re épít — Isten Ábrámnak tett ígérete, hogy „pajzsod és felette bőséges jutalmad" vagyok, a szolgálat szerint olyan bőséges gazdagságra utaló ígéret, amely minden újjászületett hívőre nézve is érvényes marad. Forrás: KCM Europe napi elmélkedés, „Overtaken – For Better or Worse" (kcm.org.uk).
 
-- **Derek Prince:** kifejezetten a 15. fejezet szövetségi vér-szertartásáról tanított egy „A szövetség" sorozat részeként. Tanítása szerint <cite index="1-1">az első szövetség a Genezis 15-ben azzal köttetett, hogy Isten és Ábrám átvonultak/átmentek az áldozat részein, és ez alapjaiban más viszonyt teremtett közöttük, mint ami korábban volt</cite> — Prince ezt az újszövetségi, keresztre néző szövetség előképeként tanította: mi már nem az állatrészek, hanem a kereszt „között" lépünk be a szövetségi kapcsolatba. Forrás: Derek Prince Ministries, „The Covenant Of Jesus" prédikáció (derekprince.com/sermons/143).
+- **Derek Prince:** kifejezetten a 15. fejezet szövetségi vér-szertartásáról tanított egy „A szövetség" sorozat részeként. Tanítása szerint az első szövetség a Genezis 15-ben azzal köttetett, hogy Isten és Ábrám átvonultak/átmentek az áldozat részein, ami alapjaiban más viszonyt teremtett közöttük, mint ami korábban volt — Prince ezt az újszövetségi, keresztre néző szövetség előképeként tanította: mi már nem az állatrészek, hanem a kereszt „között" lépünk be a szövetségi kapcsolatba. Forrás: Derek Prince Ministries, „The Covenant Of Jesus" prédikáció (derekprince.com/sermons/143).
 
 *4. Forrás-ellenőrzés:* mindkét fenti hivatkozás elsődleges forrásból (a szolgálatok saját, publikált anyagából) származik, és kifejezetten az adott igehelyre (15:1, illetve 15:9-17) vonatkozik — nem csupán tematikus rokonság.
 
 *5. Hiány explicit jelzése:* a 15:6 („hit mint betudott igazság") konkrét, dedikált, a jóváhagyott listáról származó nevesíthető tanítást (pl. Kenneth Hagin vagy Charles Capps e konkrét versre vonatkozó, ellenőrizhető anyagát) a célzott keresés nem talált — ezen a ponton a hiányt nyíltan jelzem, nem pótoltam gyengébb vagy csak áttételes anyaggal.
+
+---
+
+## 7. Lexikai audit — módszertani napló
+
+A 2/a-2/e technikasor lefutott a study mind a 11 kulcsszó-sorára (2. pont táblázata). Nincs beépítendő tartalmi lelet.
+
+**Ellenőrzött és elutasított etimológia:** בְּרִית (H1285, "szövetség") ← "vágás értelmében" — ugyanaz az elutasítás, mint a `1Moz_6v9-22_bovitett.md`, `1Moz_9v1-17_bovitett.md` és `1Moz_4v1-24_bovitett.md` 7. szakaszában — a BDB nem ad etimológiát a *brit*-hez. A study saját maga is már helyesen különválasztja a *bátar* (בתר, "kettéhasítani", 15:10) és a *karat* (כרת, "kivágni/megkötni", Jer 34:18-19) gyököket "tematikus, nem lexikai" jelöléssel (l. Remez) — ez a megkülönböztetés pontos.
+
+**Elutasított/triviálisnak minősített Origin-lánc-elemek:** מָגֵן ← "védeni" (triviális); שָׂכָר ← "bérelni" (triviális); תַּרְדֵּמָה ← "aludni" (triviális, megegyezik a study saját fordításával); גֵּר ← "tartózkodni/jövevénykedni" (triviális); עָוֺן ← "elferdíteni" (triviális).
+
+**LXX-híd, ellenőrizve, nincs teendő:** Róm 4:3 ↔ δικαιοσύνη (G1343) és λογίζομαι (G3049) — a study 4. pontja már explicit idézi és tárgyalja ezt a verset, pontosan ezekkel a görög szavakkal.
+
+**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv` és `TAGNT_kivonat.tsv` fájlokból származnak.
 
 ---
 
