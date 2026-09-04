@@ -1,5 +1,13 @@
 # Javasolt sablon-kiegészítés — BDB-árnyalat integrálása a PaRDeS-tanulmányokba
 
+*v5 — 2026.09.03 (Új 2/f lépés a technikasorban: rögzült szópár
+együttes-előfordulás ellenőrzése — amikor a study szövege két szót
+rendszeresen együtt említ [pl. תהו/בהו], külön kereséssel meg kell
+állapítani, hányszor fordul elő a PÁR együtt a teljes Szentírásban,
+nem csak külön-külön a két szó; konkrét precedens: 1Móz 1:2 תהו/בהו
+párja mindössze 3 igehelyen fordul elő együtt [1Móz 1:2, Jer 4:23,
+Ézs 34:11], ez korábban nem került elő, mert a 2/c lépés csak egyetlen
+szó önálló előfordulását nézi, nem szópárokét)*
 *v4 — 2026.09.03 (A "13-as kör" gating-mechanizmus ELVETVE: a 2/a-2/e
 technikasor mostantól minden, a bővített sablon saját triázsán átment
 kulcsszóra lefut, külön motívum-lista alapú szűrés nélkül — a 8. pont
@@ -128,6 +136,27 @@ KIVÉTEL NÉLKÜL, ebben a sorrendben:
    EXPLICIT jelezni kell ("LXX-híd görög oldala nem ellenőrizhető,
    mivel a jelenlegi LXX-forrás csak Genezisre terjed ki"), nem szabad
    hallgatólagosan kihagyni.
+
+   2/f — RÖGZÜLT SZÓPÁR EGYÜTTES-ELŐFORDULÁS ELLENŐRZÉSE (ÚJ, 2026.09.03)
+   Amikor a study szövege egy RÖGZÜLT, hendiadysz-szerű szópárt
+   azonosít (két szó, amelyek a study saját passzusában együtt,
+   egymás mellett jelennek meg, pl. תהו/בהו "tohu vabohu" 1Móz 1:2-ben),
+   külön keresést kell futtatni: mindkét szó ÖSSZES előfordulását
+   lekérdezni a TAHOT_kivonat.tsv-ből (vagy TAGNT_kivonat.tsv-ből görög
+   esetén), majd a két előfordulás-listát metszeni — mely versekben
+   szerepel MINDKETTŐ EGYÜTT. Ez különbözik a 2/c lépéstől (ami egy-egy
+   szó önálló előfordulását nézi elszigetelten) — itt kifejezetten a PÁR
+   együttes előfordulása a keresés tárgya. Ha a metszet szűk (kevés
+   igehely), ez önmagában erős, konkordancia-alapú lexikai kapocs a
+   study saját passzusa és a metszetben található más igehelyek között
+   — akkor is, ha ezt korábban semmilyen kommentár vagy más forrás nem
+   jelezte. Aktiválási feltétel: ez a lépés csak akkor fut, ha a study
+   szövege (vagy egy korábbi 2/a-2/e lépés) MAGA már azonosít egy ilyen
+   rögzült szópárt — nem kell minden lehetséges szópár-kombinációra
+   lefuttatni, ami kombinatorikusan kezelhetetlen volna. Konkrét
+   precedens: 1Móz 1:2 תהו/בהו párja mindössze 3 igehelyen fordul elő
+   együtt a teljes Szentírásban (1Móz 1:2, Jer 4:23, Ézs 34:11) — mindhárom
+   ítélet/dekreáció-kontextusban.
 
 3. Minden ⚡-jegyzet FELTÜNTETI, melyik lépés(ek) futottak le, és melyik
    fájlból (TBESH.txt / BDB_teljes_unabridged.tsv / Strong_szotar.tsv /
