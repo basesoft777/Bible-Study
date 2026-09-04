@@ -1,5 +1,14 @@
 # 1 Mózes 1:2 – 2:3 — Bővített PaRDeS tanulmány
 
+*v5 — 2026.09.03 (Csonkítva a וַיְבָרֶךְ/H1288 etimológiai megjegyzés a
+"## 2. Eredeti nyelvi szöveg" szakaszban — a lexikai tény [BDB: bárach
+gyöke ~ "térdre ereszkedni", rokon a berech/"térd" szóval] megmaradt,
+de a belőle levezetett "hódolat" fogalom és annak Istenre alkalmazása
+[„Isten is hódol a teremtésének"] törölve — teológiailag félrevezető
+és nyelvészetileg túlállító volt. A "## 7. Lexikai audit" szakasz בָּרַךְ
+sora változatlan marad, mert az etimológiai adalék továbbra is
+szerepel a 2. pontban.)*
+
 *v4 — 2026.09.02 (teljes lexikai újraaudit a szakasz kulcsszavain: תְהוֹם,
 רוּחַ, אוֹר, צֶלֶם, זָכָר/נְקֵבָה, שָׁבַת, בָּרַךְ, קָדַשׁ — a teljes BDB-
 szócikkekből ellenőrizve, Origin-lánc követve. Két érdemi eredmény: (1) a
@@ -168,7 +177,7 @@ jelentést hordozzák.
 | 2:3 | וַיְבָרֶךְ | *vajvárech* | H1288 | és megáldotta |
 | 2:3 | וַיְקַדֵּשׁ | *vajkaddés* | H6942 | és megszentelte |
 
-**📚 Lexikai ellenőrzés (2026.09.02):** mindhárom ige teljes BDB-szócikke ellenőrizve — nincs eltérés a jelenlegi értelmezéstől. Egy apró etimológiai adalék: וַיְבָרֶךְ (*bárach*, "megáldani") gyöke a BDB szerint eredetileg "térdre ereszkedni" jelentésű (rokon a בֶּרֶךְ [*berech*, "térd"] szóval) — a "áldás" jelentés ebből a fizikai hódolat-gesztusból fejlődött. Ez nem változtatja meg a szakasz értelmezését, de érdekes párhuzam: ahogy az ember hódol térdelve, úgy "hódol" Isten is a maga teremtésének, amikor megáldja azt.
+**📚 Lexikai ellenőrzés (2026.09.02):** mindhárom ige teljes BDB-szócikke ellenőrizve — nincs eltérés a jelenlegi értelmezéstől. Egy apró etimológiai adalék: וַיְבָרֶךְ (*bárach*, "megáldani") gyöke a BDB szerint eredetileg "térdre ereszkedni" jelentésű (rokon a בֶּרֶךְ [*berech*, "térd"] szóval).
 
 **Szó szerinti tükörfordítás:** "És bevégezte (*vajchal*) Isten a hetedik napon a munkáját, amelyet alkotott, és megpihent (*vajjisbot*) a hetedik napon... És megáldotta (*vajvárech*) Isten a hetedik napot, és megszentelte (*vajkaddés*) azt."
 
