@@ -150,7 +150,7 @@ def load_versifikacios_terkep(path, karoli_konyv_prefix, karoli_1908_path=KAROLI
     # masodik felben, l. Validacios_naplo/README).
     karoli_fejezet_re = re.compile(rf'^{re.escape(karoli_konyv_prefix)} (\d+):(\d+)$')
 
-    def gyujt(oszlopnev):
+    def gyujt(oszlopnev, cimke):
         renumber_sorok = []
         egyeb_sorok = []
         with open(path, encoding="utf-8") as f:
@@ -159,6 +159,24 @@ def load_versifikacios_terkep(path, karoli_konyv_prefix, karoli_1908_path=KAROLI
                 igehely = row["Karoli_igehely"]
                 karoli_m = karoli_fejezet_re.match(igehely)
                 if not karoli_m:
+                    continue
+                # FONTOS: ha EZ az oszlop (Gorog/Heber) ugyis megegyezik mar
+                # a Karolival ehhez a sorhoz (a Karoli_egyezik_hol felsorolja),
+                # akkor ez a bejegyzes CSAK trivialis onhivatkozas lenne (a
+                # nyers oldal sosem bocsatana ki ra zarojelet, hiszen mar
+                # egyezik) - SZANDEKOSAN NEM indexeljuk be, mert a nyers
+                # zarojel-szam (fejezet,vers) UGYANAZ lehet, mint egy MASIK
+                # Karoli-vers VALODI (tenylegesen elterő) kereszthivatkozasa
+                # ugyanebben az oszlopban - a trivialis bejegyzes indexelese
+                # alhamis utkozest okozna, ami a keresesnel (or-lancolat)
+                # csendben a rossz erteket adna vissza (l. 1Moz 31:55/32:1
+                # eset: a Gorog oszlop mindket szomszedos versnel trivialisan
+                # egyezik a Karolival, mikozben a Heber oszlop valodi +1
+                # eltolast hordoz - enelkul a szures nelkul a trivialis
+                # Gorog-bejegyzesek felulirnak egy masik vers valodi
+                # Heber-alapu zarojel-celjat, mert a lookup Gorog-ot probalja
+                # elsokent).
+                if cimke in row["Karoli_egyezik_hol"].split(","):
                     continue
                 kert_fejezet = int(karoli_m.group(1))
                 m = GOROG_LXX_VERS_RE.match(row[oszlopnev].strip())
@@ -177,7 +195,7 @@ def load_versifikacios_terkep(path, karoli_konyv_prefix, karoli_1908_path=KAROLI
     figyelmeztetesek = []
 
     def epit(oszlopnev, cimke):
-        renumber_sorok, egyeb_sorok = gyujt(oszlopnev)
+        renumber_sorok, egyeb_sorok = gyujt(oszlopnev, cimke)
         lookup = {}
         for kert_fejezet, fejezet, v1, v2, igehely in renumber_sorok:
             for v in range(v1, v2 + 1):
