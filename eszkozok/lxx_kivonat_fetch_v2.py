@@ -136,7 +136,14 @@ def parse_lxxwh_chapter(html):
             strong = normalize_strong(strong_m.group(1)) if strong_m else None
             morf_m = MORF_RE.search(tvm_raw)
             morf = morf_m.group(1).strip() if morf_m else (tvm_raw.strip() or None)
-            greek = ZAROJEL_PREFIX_RE.sub("", greek_raw.strip()).strip()
+            # FONTOS: a "[fejezet:vers]" keresztreferencia-zarojel-elotagot
+            # (ha van) SZANDEKOSAN NEM vagjuk le itt - a hivo main()-nek kell
+            # latnia, mert a versifikacios-terkep-alapu Igehely-cimkezes
+            # ebbol dönti el, melyik Karoli-vershez tartozik a szo (l. a
+            # korabbi hiba: ha itt levagjuk, a main() zarojel-detektalasa
+            # soha nem talal semmit, es minden szo a nyers oldal-helyi
+            # fejezet/vers-szamra esik vissza).
+            greek = greek_raw.strip()
             if not greek:
                 continue
             szavak.append(Szo(strong, greek, morf))
@@ -341,15 +348,17 @@ def main():
             eredmeny = egyeztet_es_potol(lxx_szavak, abp_szavak, log_prefix, figyelmeztetesek)
 
             aktualis_kulcs = (fejezet, vers_szam)
+            zarojel_volt = False
             for sz, (strong, forras) in zip(lxx_szavak, eredmeny):
                 greek_stripped = sz.greek
                 zarojel_m = ZAROJEL_PREFIX_RE.match(greek_stripped)
                 if zarojel_m:
                     aktualis_kulcs = (int(zarojel_m.group(1)), int(zarojel_m.group(2)))
+                    zarojel_volt = True
                 szo = ZAROJEL_PREFIX_RE.sub("", greek_stripped).strip()
                 if not szo:
                     continue
-                if vers_lookup is not None and zarojel_m:
+                if vers_lookup is not None and zarojel_volt:
                     gorog_lookup, heber_lookup = vers_lookup
                     lookup_kulcs = (fejezet, aktualis_kulcs[0], aktualis_kulcs[1])
                     igehely = gorog_lookup.get(lookup_kulcs) or heber_lookup.get(lookup_kulcs)
