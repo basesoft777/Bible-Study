@@ -1,5 +1,14 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
+*v10 — 2026.09.04 (Lezárási checklist kiegészítve egy 12. ponttal
+[visszahivatkozás minden érintett bővített study-ba] és egy kapcsolódó
+tartalmi-visszaírási szabállyal [ha a tematikus study elkészülte, VAGY egy
+későbbi retroaktív tematikus audit valódi, igehely-szintű lexikai leletet
+talál egy olyan versen, aminek van saját bővített study-ja, az a lelet —
+propose-then-confirm fegyelemmel, egyenként megbeszélve — magába a bővített
+study szövegébe is bekerül, nem csak a tematikusba]. Eddig a kapcsolat csak
+egyirányú volt [bővítettből a tematikusba gyűjtött]; ez a kiegészítés ezt
+mindkét irányban zárja.)*
 *v9 — 2026.09.03 (Az 1. pont táblázatában a „BDB sense-utalás" egyetlen
 oszlop 3 külön oszlopra bontva — BDB-entry-id, Sense-szám,
 Jelentés-szöveg — a `Bibliai_Motivumlexikon_tervezesi_naplo.md` 6.
@@ -165,8 +174,57 @@ Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szüks
 - [ ] **9. Motívumlog fejléc-changelog frissítve** — a lezárás tényének és fő eredményeinek rögzítése (a szokásos, felhasználói jóváhagyással előzetesen egyeztetett szöveggel)
 - [ ] **10. GitHub-feltöltésre emlékeztetés** — jelezve a felhasználónak, hogy a frissített motívumlog és index GitHubra is felkerülhet (`GitHub_feltoltesi_workflow.md` szerint)
 - [ ] **11. STEPBible-ellenőrzés dokumentálva** — a tanulmányban és a naplóban rögzítve, hogy a lezáráshoz milyen Strong-számokra, milyen keresési paraméterekkel (versen belüli / szomszédos vers, teljes ÚSZ/ÓSZ vagy csak egy könyv) futott le az ellenőrzés, és mikor. Formátum: 🔍 STEPBible-ellenőrizve: [Strong-számok] [keresési mód], [forrás: TAGNT/TAHOT], [dátum]
+- [ ] **12. Érintett bővített tanulmányok visszahivatkozása** — minden,
+  a tematikus study 1. pontjának (kereszthivatkozási táblázat) saját,
+  katalogizált előfordulás-listájában szereplő igehelyhez tartozó,
+  meglévő bővített study 4. pontjában (Kapcsolódó igehelyek / 🔗-blokk)
+  egy rövid jegyzet beszúrva: „📎 Bővebben, önálló tematikus
+  feldolgozásban: `[Motívum]_tematikus.md`". Ha egy adott bővített
+  study 🔗-blokkja nem tartalmazza explicit a motívumot (csak a
+  szövegtörzsben szerepel), a jegyzet a study végére, egy „Kapcsolódó
+  tematikus tanulmány" mini-szakaszként kerül be.
+
+  **Fontos korlátozás:** ez NEM egy teljes szövegkeresés a motívum
+  kulcsszavára az összes bővített study-ban — kizárólag a tematikus
+  study saját, már ellenőrzött táblázatában szereplő igehelyek
+  számítanak. Olyan bővített study, amiben a motívum szava/kifejezése
+  csak véletlenül, a tematikus audit által nem dokumentált módon
+  fordul elő, NEM kap visszahivatkozást — ez a fegyelem ugyanaz, ami a
+  2/f-küszöbnél (≤5 igehely, valódi lelet) is érvényes: nem vihető be
+  zaj a rendszerbe egy túl tág értelmezéssel.
+
+  A beszúrás után a motívumnapló 3. szekciójának (részletes bejegyzés)
+  végére egy új sor kerül: „**Visszahivatkozott bővített study-k:**
+  `[fájlnév1]`, `[fájlnév2]`, ..." — felsorolva minden ténylegesen
+  frissített bővített fájlt. Ha egyetlen érintett igehelynek sincs
+  saját bővített study-ja, a sor helyett: „Visszahivatkozott bővített
+  study-k: nincs (nincs átfedő bővített tanulmány)."
 
 **Ha bármelyik pont kimarad, a lezárás nem tekinthető véglegesnek** — a motívum inkonzisztens állapotba kerülhet (pl. ✅ jelölve az 1. szekcióban, de még aktív ⭐ ajánlásként az 5.-ben).
+
+---
+
+### Tartalmi visszaírás bővített tanulmányokba
+
+A 12. ponttól (mutató) függetlenül, külön eldöntendő minden esetben: ha a
+tematikus study elkészítése — vagy egy későbbi, már lezárt tematikus
+tanulmányra irányuló retroaktív audit — **önmagában is megálló, igehely-
+szintű lexikai vagy exegetikai leletet** hoz elő (pl. új BDB-sense,
+Origin-lánc-eredmény, LXX-kereszthivatkozás) egy olyan versen, aminek
+saját bővített study-ja van, ez a lelet:
+
+1. **Egyenként megbeszélve**, mielőtt bármi fájlba kerülne (a szokásos
+   propose-then-confirm fegyelem).
+2. Ha jóváhagyott: bekerül a bővített study saját, releváns szakaszába
+   (jellemzően a kulcsszó-táblázatba vagy az érintett PaRDeS-szintbe) —
+   NEM a teljes tematikus tartalom átmásolásával, csak a konkrét,
+   igehely-szintű tény beépítésével.
+3. A bővített study fejléc-changelogja is frissül, jelezve a forrást
+   (pl. "a [Motívum]_tematikus.md auditja során felmerült lelet alapján").
+
+**Korlát:** ez nem helyettesíti a bővített study saját, önálló 2/a-2/f
+auditját — csak azokat a konkrét adatpontokat viszi át, amik a tematikus
+oldalon ténylegesen előkerültek.
 
 ---
 
