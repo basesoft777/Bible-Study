@@ -1,6 +1,12 @@
 # 1Mózes 4:25–5:32 — Séth nemzetségtáblája
 
-*Bővített PaRDeS-tanulmány — v1, 2026.08.13*
+*Bővített PaRDeS-tanulmány — v2, 2026.09.04 (Teljes lexikai audit
+[protokoll 2/a-2/f] elvégezve, retroaktívan: mind a 7 kulcsszó BDB-
+ellenőrizve, Origin-lánc követve. Új 2/f-lelet: a צֶלֶם/דְּמוּת szópár
+kizárólag 2 igehelyen fordul elő együtt a teljes Ószövetségben — 1Móz
+1:26 és 1Móz 5:3 —, ami konkordancia-alapon megerősíti az 5:3 tudatos,
+kizárólagos visszautalását 1:26-ra. Dokumentálva az új "## 7."
+szakaszban.)*
 
 ---
 
@@ -178,6 +184,28 @@ Lásd a 3. pont ⚠️ alpontjait.
 *Derek Prince — Nóé névadása és az átok (1Móz 5:29):* bár Prince nem tesz közvetlenül idézhető, kifejezett kommentárt erre a konkrét versre, jól dokumentált, önálló tanítási anyaga (*Blessing or Curse: You Can Choose* c. könyve) közvetlenül releváns keretet ad a „megátkozott föld" (1Móz 3:17) és a tőle való megszabadulás reménye (5:29, Nóé neve) témájához: Prince rendszeres bibliai tanulmányt épít arra, hogy az átok valóságos, generációkon átívelő erő, amelytől Krisztusban lehet szabadulni. *(forrás: derekprince.com/books/blessing-or-curse-you-can-choose)* — **forráskritikai megjegyzés:** ez a kapcsolat *tematikus alkalmazás*, nem Prince közvetlen, e vershez fűzött kommentárja; a tanulmány ezt nem állítja be egzegétikai forrásnak.
 
 **Forráskritikai megjegyzés a kutatás korlátairól:** más, a listán szereplő nevesített tanítóknál (pl. Kenneth Hagin, Charles Capps, Smith Wigglesworth) nem található kifejezetten Énokhhoz vagy ehhez a genealógiához köthető, ellenőrizhető tanítási anyag — ezt a hiányt a forrás-integritás elve miatt nyíltan jelezzük, nem töltjük ki gyengébb vagy bizonytalan hivatkozással.
+
+---
+
+## 7. Lexikai audit — módszertani napló (ÚJ szakasz, 2026.09.04, retroaktív audit)
+
+*Ez a szakasz nem PaRDeS-tartalom, hanem a retroaktív 2/a-2/f technikasor átlátható dokumentálása.*
+
+**Ellenőrzött szavak és eredmény:**
+
+| Szó | Strong | Teljes BDB ellenőrizve | Origin-lánc | Eredmény |
+|---|---|---|---|---|
+| קָרָא בְשֵׁם | H7121 | ✅ | nincs (primitív gyök) | megerősítve, nincs eltérés |
+| תּוֹלְדֹת | H8435 | ✅ | igen → H3205 (*jálad*, "szülni") | triviális, megerősítve |
+| דְּמוּת | H1823 | ✅ | igen → H1819 (*dámáh*, "hasonlítani") | triviális, megerősítve — l. 2/f lelet alább |
+| צֶלֶם | H6754 | ✅ | nincs (bizonytalan eredetű) | megerősítve — l. 2/f lelet alább |
+| הִתְהַלֵּךְ | H1980 | ✅ | nincs (primitív gyök) | megerősítve, nincs eltérés |
+| לָקַח | H3947 | ✅ | nincs (primitív gyök) | megerősítve, nincs eltérés |
+| נֹחַ / יְנַחֲמֵנוּ | H5146/H5162 | ✅ | H5146 ← H5118 ("nyugalom") | a BDB az 5:29 névmagyarázatot kifejezetten "hagyományos etimológiaként" (nem tényleges közös gyökként) jelöli — a study jelenlegi "szójáték" megfogalmazása pontos, nincs túlállítás |
+
+**2/f — Rögzült szópár együttes-előfordulás ellenőrzése:** a צֶלֶם (H6754) és דְּמוּת (H1823) szavak teljes körű ellenőrzése (`TAHOT_kivonat.tsv`) megerősítette: a pár **kizárólag 2 igehelyen** fordul elő együtt a teljes Ószövetségben — **1Móz 1:26 és 1Móz 5:3**. Ez konkordancia-alapon igazolja, hogy 5:3 tudatos, kizárólagos (nem csak tartalmi) visszautalás 1:26-ra.
+
+**Amit ez a módszer NEM tett meg:** a motívumnapló (`PaRDeS_motivumok.md`) érintetlen maradt — sem a celem/demut, sem a többi jelen study-beli motívum nem került be, ez külön, hátralévő lépés.
 
 ---
 

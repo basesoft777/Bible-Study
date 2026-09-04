@@ -1,5 +1,12 @@
 # 1Mózes 3:7-24 — bővített PaRDeS-tanulmány
 
+*v3 — 2026.09.04 (Teljes lexikai audit [protokoll 2/a-2/f] elvégezve,
+retroaktívan: mind a 18 kulcsszó BDB-ellenőrizve. A v.7 עֵרֻמִּם
+Strong-számának 2026.08.24 óta nyitott kérdése LEZÁRVA — a felhasználó
+döntése alapján H6174 helyett H5903-ra javítva, a tényleges TAHOT-adat
+szerint; a döntés indoklása és egy kapcsolódó irodalmi megfigyelés az
+új "## 7." szakaszban. A fájl végi régi "⚠️ Megjegyzés" szakasz
+"MEGOLDVA" jelöléssel lezárva.)*
 *v2 — 2026.08.24 (2. pont táblázatai kiegészítve pontos vers-hozzárendeléssel [Vers oszlop], tartalmi változás nélkül — minden szó egyértelműen versre bontható, nincs többszörös előfordulás; a korábbi könnyű ellenőrzésnél talált ELTÉRÉS [v.7, עֵרֻמִּם, H6174 vs. tényleges H5903] pontosítva a fájl végén: kiderült, hogy H6174 valójában Gen.2.25 helyes Strong-száma, nem elgépelés — emberi döntésre vár, nem lett automatikusan javítva)*
 *v1 — 2026.07.31*
 
@@ -41,7 +48,7 @@ A szakaszban a történések sorrendje kulcsfontosságú — a szöveg tudatosan
 |---|---|---|---|---|
 | 3:7 | וַתִּפָּקַחְנָה | vattippakachnah | H6491 (*pakach*) | és megnyilatkozának |
 | 3:7 | עֵינֵי | ejnei | H5869 (*ajin*) | szemei(k) |
-| 3:7 | עֵרֻמִּם | arummim | H6174 (*arom*) ⚠️ | mezítelenek — **ELTÉRÉS, lásd megjegyzés a fájl végén** |
+| 3:7 | עֵרֻמִּם | erumím | H5903 (*erom*) | mezítelenek — javítva 2026.09.04-én, l. "## 7." szakasz |
 | 3:7 | חֲגֹרֹת | chagorot | H2290 (*chagorah*) | övek, körülkötők |
 
 **Héber (v.7):** וַתִּפָּקַחְנָה עֵינֵי שְׁנֵיהֶם וַיֵּדְעוּ כִּי עֵירֻמִּם הֵם
@@ -221,6 +228,40 @@ Célzott keresés nem talált elsődleges Capps-forrást, amely kifejezetten a p
 
 ---
 
+## 7. Lexikai audit — módszertani napló (ÚJ szakasz, 2026.09.04, retroaktív audit)
+
+*Ez a szakasz nem PaRDeS-tartalom, hanem a retroaktív 2/a-2/f technikasor átlátható dokumentálása.*
+
+**Ellenőrzött szavak és eredmény:**
+
+| Szó | Strong | Teljes BDB ellenőrizve | Origin-lánc | Eredmény |
+|---|---|---|---|---|
+| וַתִּפָּקַחְנָה | H6491 | ✅ | nincs (primitív gyök) | megerősítve, nincs eltérés |
+| עֵינֵי | H5869 | ✅ | nincs (valószínűleg primitív) | megerősítve, nincs eltérés |
+| עֵרֻמִּם | H5903 (javítva, l. lent) | ✅ | igen → עור-gyök (BDB szerint bizonytalan) | **JAVÍTVA, l. külön bekezdés lent** |
+| חֲגֹרֹת | H2290 | ✅ | igen → H2296 (*chágar*, "felövezni") | triviális, megerősítve |
+| אָרוּר | H779 | ✅ | nincs (primitív gyök) | megerősítve, nincs eltérés |
+| אֵיבָה | H342 | ✅ | igen → H340 (*ájav*, "ellenségeskedni") | triviális, megerősítve |
+| זֶרַע | H2233 | ✅ | igen → H2232 (*zára*, "vetni") | triviális, megerősítve |
+| יְשׁוּפְךָ | H7779 | ✅ | nincs (primitív gyök) | megerősítve, nincs eltérés |
+| עָקֵב | H6119 | ✅ | igen → H6117 (*áqáv*, "sarkon fogni, kicselezni" — a Jákób-név gyöke) | dokumentálva, nem tartalmi lelet ebben a szakaszban (a Jákób-kapcsolat más igehelyhez tartozik) |
+| עִצְּבוֹנֵךְ | H6093 | ✅ | igen → H6087 (*ácáv*, "fájni, bánkódni") | triviális, megerősítve |
+| תְּשׁוּקָתֵךְ | H8669 | ✅ | nincs, de teljes-előfordulás-lista (3x: 1Móz 3:16, 4:7, Én 7:11) | **már dokumentálva** a "## 6." szakaszban — nincs új teendő |
+| יִמְשָׁל | H4910 | ✅ | nincs (primitív gyök) | megerősítve, nincs eltérés |
+| עָפָר | H6083 | ✅ | igen → H6080 (*áfár*, "porrá lenni") | triviális, megerősítve |
+| שׁוּב | H7725 | ✅ | nincs (primitív gyök) | megerősítve, nincs eltérés |
+| כָּתְנוֹת | H3801 | ✅ | nincs (ismeretlen eredetű gyök) | megerősítve, nincs eltérés |
+| עוֹר | H5785 | ✅ | igen → H5783 (*úr*, "meztelennek lenni") | triviális, megerősítve |
+| כְּרֻבִים | H3742 | ✅ | nincs (bizonytalan eredetű) | megerősítve, nincs eltérés |
+| לַהַט | H3858 | ✅ | igen → H3857 (*láhat*, "lángolni") | triviális, megerősítve |
+| הַחֶרֶב | H2719 | ✅ | igen → H2717 (*chárav*, "pusztává lenni") | triviális, megerősítve |
+
+**A v.7 עֵרֻמִּם Strong-szám javítása — indoklás:** a 2026.08.24-i, emberi döntésre váró tétel lezárva. Friss `TAHOT_kivonat.tsv`-ellenőrzés megerősítette, hogy Gen 3:7 tényleges taggje **H5903** (עֵירֹם, *erom*), NEM H6174 (az utóbbi ténylegesen Gen 2:25 Strong-száma). A táblázat javítva. **Kiegészítő irodalmi megfigyelés:** a BDB szerint H5903 gyökileg rokon lehet H6174-gyel (mindkettő az עור-gyökhöz köthető), de a maszoréta szöveg **tudatosan eltérő alakkal** jelöli a bűneset előtti (2:25, *arummim*, H6174) és a bűneset utáni (3:7, *erumím*, H5903) "meztelenséget" — ezt több fordító/kommentátor (pl. Robert Alter jegyzetei) az ártatlan és a szégyennel terhelt mezítelenség közti szövegszintű megkülönböztetésként említi. Ez **különbözik** a már máshol (1Móz 2:8-25 és 1Móz 3:1-6 study-k) dokumentált עֲרוּמִּים(2:25)/עָרוּם(3:1, "ravasz") szójátéktól — az egy másik szópár (H6174/H6175), nem érintett ezzel a javítással.
+
+**Amit ez a módszer NEM tett meg:** a motívumnapló (`PaRDeS_motivumok.md`) érintetlen maradt, ez külön, hátralévő lépés.
+
+---
+
 ## Terminológiai és formai szabályok
 
 - „Szentlélek" helyett mindig **„Szent Szellem"** — ebben a szakaszban nem volt rá alkalom, mivel a *ruach*/*pneuma* fogalom nem fordul elő.
@@ -246,7 +287,7 @@ A logikus folytatás **1Mózes 4:1-16** (Kain és Ábel) lenne — ez közvetlen
 
 ---
 
-## ⚠️ Megjegyzés — a v.7 עֵרֻמִּם (arummim) Strong-számának pontosítása (2026.08.24, emberi döntésre vár)
+## ⚠️ Megjegyzés — a v.7 עֵרֻמִּם (arummim) Strong-számának pontosítása (2026.08.24, MEGOLDVA 2026.09.04-én — l. "## 7." szakasz)
 
 A korábbi könnyű ellenőrzés (`genezis/Konnyu_ellenorzes_1-16_osszesito.md`) eltérést talált a 2. pont táblázatában szereplő H6174 Strong-szám és a `TAHOT_kivonat.tsv` Gen.3.7-es tényleges adata (H5903) között. A pontos vers-hozzárendelés során ez a kérdés **tisztázódott, de nem lett automatikusan javítva**:
 

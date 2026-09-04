@@ -1,6 +1,9 @@
 # 1Móz 9:18-29 — bővített PaRDeS tanulmány
 
-*v1 — 2026.08.13*
+*v2 — 2026.09.04 (Teljes lexikai audit [protokoll 2/a-2/f] elvégezve,
+retroaktívan: mind a 6 kulcsszó BDB-ellenőrizve. Új ⚠️ vitatott pont
+felvéve a "## 3." szakaszba [Khám vétkének természete, BDB-lexikai
+alapon, Bassett hivatkozással]. Dokumentálva az új "## 7." szakaszban.)*
 
 ---
 
@@ -102,6 +105,8 @@ Sém és Jáfet magatartása (aktív tisztelet, a szégyen elkerülése) élesen
 
 **Miért Kánaán kap átkot, és nem közvetlenül Khám?** — ezen belül is genuinely nyitott exegetikai kérdés, függetlenül a fenti félreértelmezéstől: (a) Gordon Wenham és Victor Hamilton szerint az ókori közel-keleti gondolkodásban egy fiú sorsa hordozhatja apja tettének következményét (családi-nemzetségi felelősség elve), és a szöveg funkciója elsősorban etiológiai — magyarázatot ad arra, miért van Izráelnek felhatalmazása Kánaán földjének elfoglalására a honfoglaláskor; ez tehát elsődlegesen földrajzi-politikai, nem faji kérdés; (b) a korai rabbinikus hagyomány (lásd 5) felveti, hogy maga Kánaán volt a tényleges elkövető vagy társtettes; (c) mások a naplóban már ⭐ küszöbön túli "bűn következményeinek gyűrűzése" motívum egy újabb, nemzedéken átívelő megnyilvánulásaként értik.
 
+**Khám vétkének pontos természete — lexikai alapú kiegészítés (ÚJ, 2026.09.04, retroaktív lexikai audit).** A fenti (5. pontban idézett) rabbinikus hagyomány mellett létezik egy modern kritikai olvasat is, amely nem hagyományra, hanem magára a szóhasználatra épít: a "látta atyja szemérmét" (עֶרְוַת אָבִיו רָאָה, 22. v.) kifejezés ugyanazt a עֶרְוָה (H6172) szót használja, amelyet 3Móz 18 és 20 rendszeresen euphemizmusként alkalmaz a nemi érintkezésre ("valakinek a szemérmét felfedni" = vele hálni). A BDB szócikk maga is **egy szemantikai mezőbe** sorolja az 1Móz 9:22-t és a 3Móz 18/20-beli euphemisztikus használatot. Erre alapozva egyes kritikai kutatók — például **Frederick W. Bassett** ("Noah's Nakedness and the Curse of Canaan: A Case of Incest?", *Vetus Testamentum* 21, 1971) — azt javasolják, hogy Khám vétke a szöveg saját szóhasználata szerint is súlyosabb lehetett puszta "látásnál", ami lexikai (nem csak rabbinikus-hagyományi) alátámasztást adna az 5. pontban idézett Bereseit Rabbá olvasatnak. **Ellenkező oldalon** áll a többségi modern kommentár-hagyomány (pl. **Gordon Wenham**, *Genesis 1-15*, WBC): a עֶרְוָה szó önmagában, kontextus nélkül nem elegendő bizonyíték az euphemisztikus olvasatra, mert a szó szó szerinti "meztelenség" jelentésben is gyakori (l. a fenti táblázat, 15+ nem-euphemisztikus előfordulás); a szöveg egyszerű elbeszélői logikája (részegség → véletlen leleplezés → tapintatlan "meglátás" és elmondás, szemben a másik két fiú tapintatos, hátrafelé menő betakarásával) önmagában is megmagyarázza az átok súlyosságát tiszteletlenségként, incesztus feltételezése nélkül.
+
 ---
 
 ## 4. Kapcsolódó igehelyek
@@ -161,6 +166,25 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent — kiemelt figyelemmel a sz
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?* Amikor másvalaki hibáját vagy gyengeségét látjuk, a "hátrafelé menve betakarni" mintázata — aktív, de tapintatos segítségnyújtás, bámészkodás vagy pletyka nélkül — követendő minta a mindennapi kapcsolatokban.
 3. *Milyen érzelmi/lelki ellenállás merülhet fel, és hogyan szólítja meg ezt a szöveg?* A Kánaán-átok szakasz sokakban jogos történelmi fájdalmat és bizalmatlanságot kelt a szöveg rabszolgaság-igazoló félreértelmezésének öröksége miatt. A tanulmány szándékosan nem hallgatja el ezt a történelmi sebet — a szöveg maga nem támogatja a faji alapú rabszolgaságot, és ennek explicit kimondása maga is a szöveg iránti tisztelet része, nem gyengítése.
 4. *Nevesített tanítói szemszög — Charles Capps (tematikus alkalmazás)* **Fontos módszertani megjegyzés: Capps sehol nem tárgyalja kifejezetten az 1Móz 9:18-29 szakaszt** — az alábbi nem a szöveg kommentárja, hanem egy tőle vett elv alkalmazása rá. *The Tongue: A Creative Force* c. művében Capps azt tanítja, hogy a kimondott szó (áldás vagy átok formájában) teremtő, ható erővel bír a beszélő és a hallgató életében (5Móz 30:19 nyomán). Ebben a keretben Nóé kimondott átka (9:25) nem puszta érzelmi kifakadás, hanem — Capps elve szerint — egy szó-aktus, amelynek saját súlya és következménye van, függetlenül attól, hogy erkölcsileg indokolt volt-e. Ez a szemszög hangsúlyozza a kimondott szó felelősségét, de **nem old fel semmit a fenti ⚠️ pontban jelzett történelmi-etikai problémából**, és nem tekinthető a szakasz elsődleges forrásmagyarázatának. *Forrás:* Charles Capps, *The Tongue: A Creative Force* (1976).
+
+---
+
+## 7. Lexikai audit — módszertani napló (ÚJ szakasz, 2026.09.04, retroaktív audit)
+
+*Ez a szakasz nem PaRDeS-tartalom, hanem a retroaktív 2/a-2/f technikasor átlátható dokumentálása.*
+
+**Ellenőrzött szavak és eredmény:**
+
+| Szó | Strong | Teljes BDB ellenőrizve | Origin-lánc | Eredmény |
+|---|---|---|---|---|
+| אִישׁ הָאֲדָמָה | H376+H127 | ✅ | H127 ← H119 (bizonytalan, vitatott levezetés) | megerősítve, nincs eltérés |
+| וַיִּתְגַּל | H1540 | ✅ | nincs (primitív gyök) | megerősítve, nincs eltérés |
+| עֶרְוָה | H6172 | ✅ | igen → H6168 (*áráh*, "lemeztelenít") | l. új ⚠️ vitatott pont a "## 3." szakaszban |
+| אָרוּר | H779 | ✅ | nincs (primitív gyök) | megerősítve, nincs eltérés |
+| אֱלֹהֵי שֵׁם | H430+H8035 | ✅ | nincs | megerősítve, nincs eltérés |
+| יַפְתְּ | H6601 | ✅ | nincs (primitív gyök) | BDB szó szerint alátámasztja a "kiterjeszt/nagy örökséget ad" jelentést (Hiphil, Gen 9:27) — pontos egyezés, nincs eltérés |
+
+**Amit ez a módszer NEM tett meg:** a motívumnapló (`PaRDeS_motivumok.md`) érintetlen maradt, ez külön, hátralévő lépés.
 
 ---
 
