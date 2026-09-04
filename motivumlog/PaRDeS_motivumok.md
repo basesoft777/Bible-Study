@@ -1,5 +1,17 @@
 # PaRDeS motívum-napló (kulcsszavas)
 
+*v50 — 2026.09.04 (Motívumnapló-adósság rendezve: (1) ÚJ motívum
+felvéve — "תהו/בהו — teremtés-visszavonás mint ítélet-nyelvezet"
+[ID: TEREMT-002], 3 igehely: 1Móz 1:2, Jer 4:23, Ézs 34:11, azonnal
+⭐ küszöbön; (2) "Isten képmása (celem/eikón)" ÚSZ-kereszthivatkozásai
+bővítve 1-ről 5-re [Kol 1:15, Kol 3:10, Ef 4:24, 2Kor 3:18, 1Kor 11:7],
+az 1Móz 1:2-2:3 study 2026.09.02-i auditjából, eddig be nem építve; a
+"Még nem feldolgozott" szakasz vonatkozó, immár teljesült előrejelzése
+törölve; (3) "'Kezdetben' — teremtés Isten szava által" bővítve 2-ről
+3 előfordulásra [Zsid 1:10, azonos BDB-jelentésű ἀρχή, az 1Móz 1:1
+study 2026.09.02-i auditjából]. Könyv szerinti index frissítve mindhárom
+ponthoz.)*
+
 *v49 — 2026.09.04 (Motívum-ID séma bevezetve, véglegesített forma
 szerint [`Motivum_azonosito_sema_javaslat.md` v3] — a 13, ⭐-küszöböt
 elért vagy ✅ lezárt motívum egyedi azonosítót kapott a Kulcsszó-index
@@ -107,6 +119,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - uralom-megbízás / emberi méltóság (3 előfordulás — ⭐ küszöb elérve: 1Móz 1:28 ↔ 8:17, a teremtési áldás megismétlése)
 - munka mint szentélyi szolgálat (avad-sámar) (1)
 - tehóm — a mélység motívuma: a teremtés visszafordítása és helyreállítása (Tóra-szinten 5 előfordulás — ✅ LEZÁRVA: 1Móz 1:2 ↔ 7:11 ↔ 8:2 ↔ 49:25 ↔ 2Móz 15:5,8 ⚠️; LXX-közvetített ÚSZ-visszhang: ábüsszosz; ✅ a teljes lexikai komplexum — tehóm/abüsszosz/hádész/tartarosz — kibővítve, önálló tematikus tanulmányban: `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md`)
+- תהו/בהו — teremtés-visszavonás mint ítélet-nyelvezet (3 előfordulás — ⭐ küszöb azonnal elérve: 1Móz 1:2 ↔ Jer 4:23 ↔ Ézs 34:11; a próféták tudatosan az 1Móz 1:2 szókészletét idézik vissza az ítélet leírására, a teremtés visszavonásaként; rokon, de lexikailag önálló motívum a tehómtól)
 
 **Pneumatológia**
 - lehelet / élet lehelete (2 előfordulás)
@@ -226,9 +239,11 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 **"uralom-megbízás / emberi méltóság" `[ID: ANTROP-002]` — ⭐ ÚJ KÜSZÖBÖN TÚL, 3. előfordulás.** Zsolt 8:5-6 és 1Móz 2:19-20 mellé harmadikként csatlakozik 1Móz 8:17 — a bárkából kilépő élővilágnak szóló "szaporodjatok és sokasodjatok" parancs szó szerint megismétli az 1:28 teremtési áldást. A motívum ezzel alkalmassá vált önálló tematikus feldolgozásra, felhasználói jóváhagyásra várva.
 
-**"Isten képmása (celem/eikón)" `[ID: ANTROP-003]` — ⭐ ÚJ KÜSZÖBÖN TÚL, 3. előfordulás.** 1Móz 1:26-27 (teremtés) és 5:1-3 (genealógiai megismétlés) mellé harmadikként csatlakozik 9:6 — itt már nem csupán leíró, hanem normatív-etikai alkalmazásban: az emberölés jogi számonkérése közvetlenül az Isten-képmásra épül. A szűkebb "Isten képmása" motívum immár önmagában is elérte a küszöböt (a tágabb "Logosz/Képmás" rokon-csoport, amelybe korábban besorolódott, már korábban túl volt rajta). A motívum alkalmassá vált önálló tematikus feldolgozásra, felhasználói jóváhagyásra várva.
+**"Isten képmása (celem/eikón)" `[ID: ANTROP-003]` — ⭐ ÚJ KÜSZÖBÖN TÚL, 3. előfordulás.** 1Móz 1:26-27 (teremtés) és 5:1-3 (genealógiai megismétlés) mellé harmadikként csatlakozik 9:6 — itt már nem csupán leíró, hanem normatív-etikai alkalmazásban: az emberölés jogi számonkérése közvetlenül az Isten-képmásra épül. A szűkebb "Isten képmása" motívum immár önmagában is elérte a küszöböt (a tágabb "Logosz/Képmás" rokon-csoport, amelybe korábban besorolódott, már korábban túl volt rajta). A motívum alkalmassá vált önálló tematikus feldolgozásra, felhasználói jóváhagyásra várva. **Kiegészítés (2026.09.04):** a szűkebb, Genezisen belüli celem/demut pár (1:26-27 ↔ 5:1-3) teljes körű ellenőrzése megerősítette, hogy a két szó (H6754/H1823) kizárólag ezen a 2 igehelyen fordul elő együtt a teljes Ószövetségben — konkordancia-alapon igazolva 5:3 tudatos, kizárólagos visszautalását 1:26-ra. Az ÚSZ-oldali celem/eikón-kereszthivatkozás is bővült: az 1Móz 1:2-2:3 study 2026.09.02-i LXX-alapú auditja négy további, azonos görög szót (εἰκών, G1504) tartalmazó verset azonosított és épített be — **Kol 3:10, Ef 4:24, 2Kor 3:18, 1Kor 11:7** — a korábban egyedüli Kol 1:15 mellé (l. Kulcsszó-index).
 
 **"tehóm — a mélység motívuma" `[ID: TEREMT-001]` — ✅ LEZÁRVA, önálló tematikus tanulmányban feldolgozva (`Tehom_tematikus.md`), Tóra-szintű ívvé kiterjesztve (2Móz 15:5,8-cal, a tematikus tanulmányon belül feldolgozva — külön mélyelemzés nem készült hozzá).** 1Móz 1:2 (teremtés előtti, differenciálatlan mélység), 7:11 (a mélység forrásainak felfakadása) és 8:2 (bezárulás) mellé negyedikként csatlakozik **1Móz 49:25** ("a mélységnek áldásaival, mely alant fekszik") — a motívum ezzel teljes Genezisen belüli ívet ír le: teremtés → dekreáció → helyreállítás → áldás. **Ötödikként csatlakozik 2Móz 15:5,8** (Mózes és Izrael Tengeri éneke: "elborították őket a hullámok... a mélységes vizek megmerevültek") — a Vörös-tenger az egyiptomi seregre nézve dekreációs/ítéletes vízzé válik, funkcionálisan megismételve az özönvíz-mintázatot. Filológiai pontosítás: a Kivonulás **többes számú** (תְּהֹמֹת, *tehómót*) alakot használ, szemben a Genezis egyes számú (תְּהוֹם) alakjaival — tehát nem szó szerinti idézet, hanem funkcionális visszautalás. ⚠️ Vitatott, hogy ez tudatos, konkrét visszautalás-e a Genezis-özönvízre (Cassuto, Sarna, Levenson) vagy inkább a teremtés-káosz séma általánosabb felidézése (Childs). A motívum a továbbiakban nem szerepel aktív ⭐ ajánlásként; jövőbeli előfordulásai (ha lesznek) továbbra is bekerülnek az indexbe.
+
+**"תהו/בהו — teremtés-visszavonás mint ítélet-nyelvezet"** `[ID: TEREMT-002]` **— ⭐ ÚJ, KÜSZÖBÖN AZONNAL TÚL, 3 előfordulás (retroaktív 2/f-audit, protokoll v5).** A תֹהוּ וָבֹהוּ (H8414/H0922) szópár teljes körű, konkordancia-alapú ellenőrzése megerősítette: a pár a teljes Ószövetségben kizárólag 3 igehelyen fordul elő együtt — **1Móz 1:2, Jer 4:23, Ézs 34:11**. Jeremiás és Ézsaiás mindketten tudatosan visszaidézik az 1Móz 1:2 szókészletét: Júda, illetve Edom közelgő ítéletét nem egyszerű katasztrófaként, hanem a teremtés **visszavonásaként** festik le. Érdekesség: Károli a Jer 4:23-at szó szerint ugyanúgy fordítja ("kietlen és puszta"), mint az 1Móz 1:2-t, de az Ézs 34:11-et egészen másképp ("pusztaság mérőkötelét és a semmiségnek köveit") — ugyanaz a héber szópár, két eltérő magyar megoldás. A motívum rokon, de lexikailag önálló a tehóm-motívumtól (eltérő szótő). Önálló tematikus feldolgozásra alkalmassá vált, felhasználói jóváhagyásra várva.
 
 **"hádész (seól) — a halottak birodalma" `[ID: ALVIL-001]` — ✅ ÚJ, LEZÁRVA, önálló tematikus tanulmányban feldolgozva (`Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md`).** A tehóm/abüsszosz kibővített feldolgozása során azonosított, de attól lexikailag élesen elkülönített motívum: a seól/hádész az egyéni halottak birodalma (nem a kozmikus ős-mélység). Négy előfordulás egy tanulmányban rögzítve: Zsolt 16:10 ⇒ ApCsel 2:27,31 (Krisztus nem marad a hádészben), Luk 16:23 (a gazdag ember), Jel 1:18 (Krisztus birtokolja a kulcsokat), Jel 20:13-14 (a hádész végső megsemmisítése). A motívum a továbbiakban nem szerepel aktív ⭐ ajánlásként.
 
@@ -295,12 +310,12 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | **ige mint megtestesült Logosz** | Krisztológia | ÚSZ⇒ÚSZ | 2 | Ján 1:1,14 ⇒ Zsid 4:12; Kol 1:16-17 ⇒ 1Móz 1:1 |
 | **Krisztus bennünk / bennlakozás** | Szoteriológia | ÚSZ↔ÚSZ | 1 | Gal 2:20 ↔ Róm 8:10 |
 | **Szellem mint életadó a halál fölött** | Pneumatológia | ÓSZ→ÚSZ (←) | 1 | Ez 37:5-6,14 ← Róm 8:10 |
-| **"Kezdetben" — teremtés Isten szava által** | Teremtéstan | ÓSZ↔ÚSZ | 2 | Zsolt 33:6 ↔ 1Móz 1:1; Ján 1:1-3 ⇒ 1Móz 1:1 |
+| **"Kezdetben" — teremtés Isten szava által** | Teremtéstan | ÓSZ↔ÚSZ | 3 | Zsolt 33:6 ↔ 1Móz 1:1; Ján 1:1-3 ⇒ 1Móz 1:1; **Zsid 1:10 ⇒ 1Móz 1:1 (ἀρχή, azonos jelentésárnyalat, új)** |
 | **creatio ex nihilo / Isten szava elegendő** | Teremtéstan | ÚSZ⇒ÓSZ | 1 | Zsid 11:3 ⇒ 1Móz 1:1 |
 | **uralom-megbízás / emberi méltóság** ⭐ `[ID: ANTROP-002]` | Teremtéstan | ÓSZ↔ÓSZ | 3 | Zsolt 8:5-6 ↔ 1Móz 1:2-2:3; 1Móz 2:19-20; 1Móz 1:28 ↔ 1Móz 8:17 |
 | **Isten Szelleme mint formáló/megújító erő** | Pneumatológia | ÓSZ↔ÓSZ | 2 | Zsolt 104:30 ↔ 1Móz 1:2-2:3; 1Móz 1:2 ↔ 1Móz 8:1 (rúach) |
 | **hetedik napi nyugalom / szombat** | Eszkatológia | ÓSZ⇒ÚSZ | 1 | Zsid 4:9-11 ⇒ 1Móz 1:2-2:3 |
-| **Isten képmása (celem/eikón)** | Krisztológia | ÓSZ⇒ÚSZ | 1 | Kol 1:15 ⇒ 1Móz 1:2-2:3 |
+| **Isten képmása (celem/eikón)** | Krisztológia | ÓSZ⇒ÚSZ | 5 | Kol 1:15 ⇒ 1Móz 1:2-2:3; **Kol 3:10; Ef 4:24; 2Kor 3:18; 1Kor 11:7 (mind εἰκών, G1504, azonos ritka görög szó, új)** |
 | **munka mint szentélyi szolgálat (avad-sámar)** | Teremtéstan | ÓSZ↔ÓSZ | 1 | 4Móz 3:7-8 ↔ 1Móz 2:15 |
 | **nem jó egyedül / *ézer kenegdó* — társ mint ajándék** | Antropológia | ÓSZ↔ÓSZ | 1 | Mal 2:14-15 ↔ 1Móz 2:18-24 |
 | **egy test — házasság mint Krisztus-egyház misztériuma** | Krisztológia | ÓSZ⇒ÚSZ | 1 | Ef 5:31-32 ⇒ 1Móz 2:24 |
@@ -326,6 +341,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | **tevá — bárka/menedék-edény mint ismétlődő szó** | Szoteriológia | ÓSZ↔ÓSZ | 2 | 1Móz 6:14 ↔ 2Móz 2:3 |
 | **brít — a szövetség első előfordulása/ratifikációja** ⭐ `[ID: SZOVETS-001]` | Szövetségteológia | ÓSZ (belső) | 3 | 1Móz 6:18 (ígéret) → 1Móz 9:9-17 (formális kihirdetés) → 1Móz 15:18 (Ábrahámi szövetség hivatalos megkötése); 1Móz 17:2 *(további megerősítés, előremutató)* |
 | **tehóm — a mélység motívuma: a teremtés visszafordítása és helyreállítása** ✅ *(lezárva + mélyelemzéssel kiterjesztve)* `[ID: TEREMT-001]` | Teremtéstan | ÓSZ↔ÓSZ (Tóra-szintű) / ÓSZ⇒ÚSZ (LXX-közvetített) | **5 (⚠️ az 5. vitatott mértékben tudatos)** | 1Móz 1:2 ↔ 1Móz 7:11 ↔ 1Móz 8:2 ↔ 1Móz 49:25 ↔ **2Móz 15:5,8 (új, ⚠️)**; ábüsszosz (LXX) ⇒ Luk 8:31, Róm 10:7, Jel 9:1-2,11; 11:7; 17:8; 20:1,3 |
+| **תהו/בהו — teremtés-visszavonás mint ítélet-nyelvezet** ⭐ `[ID: TEREMT-002]` | Teremtéstan/Hamartológia | ÓSZ↔ÓSZ (belső) | 3 | 1Móz 1:2 ↔ Jer 4:23 ↔ Ézs 34:11 |
 | **bezárt ajtó — isteni oltalom** | Szoteriológia | ÓSZ↔ÓSZ (tematikus) | 1 | 1Móz 7:16 ↔ 2Móz 12:23 |
 | **maradék-elv (she'erit)** | Eszkatológia | ÓSZ⇒ÚSZ | 1 | 1Móz 7:23 ⇒ Róm 9:27 |
 | **hádész (seól) — a halottak birodalma** ✅ *(lezárva)* `[ID: ALVIL-001]` | Eszkatológia | ÓSZ⇒ÚSZ | 4 | Zsolt 16:10 ⇒ ApCsel 2:27,31; Luk 16:23; Jel 1:18; Jel 20:13-14 |
@@ -541,23 +557,23 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | Könyv | Előfordulás keresztutalásként | Igehelyek és célszövegek |
 |---|---|---|
 | **Zsoltárok** | **9 (frissítve)** | Zsolt 139:1-4→Zsid 4:12; Zsolt 33:6→1Móz 1:1; Zsolt 8:5-6→1Móz 1:2-2:3; Zsolt 104:30→1Móz 1:2-2:3; Zsolt 103:14→1Móz 2:7; Zsolt 16:10⇒ApCsel 2:27,31 (hádész); Zsolt 140:12→1Móz 10:9 (vadász gyök); Zsolt 110:4→1Móz 14:18-20 (Melkizedek); **Zsolt 88:11→1Móz 14:5 (Refáim, tematikus tanulmány, új)** |
-| **Zsidók** | **7 (frissítve)** | Zsid 4:12→1Thessz 5:23; Zsid 11:3→1Móz 1:1; Zsid 4:9-11→1Móz 1:2-2:3; Zsid 11:4→1Móz 4:4; Zsid 12:24→1Móz 4:10; Zsid 11:5→1Móz 5:24 (Énokh); **Zsid 5-7 (kül. 7:2)→1Móz 14:18-20 (Melkizedek/tized, új)** |
+| **Zsidók** | **8 (frissítve)** | Zsid 4:12→1Thessz 5:23; Zsid 11:3→1Móz 1:1; Zsid 4:9-11→1Móz 1:2-2:3; Zsid 11:4→1Móz 4:4; Zsid 12:24→1Móz 4:10; Zsid 11:5→1Móz 5:24 (Énokh); Zsid 5-7 (kül. 7:2)→1Móz 14:18-20 (Melkizedek/tized); **Zsid 1:10→1Móz 1:1 ("Kezdetben", ἀρχή, új)** |
 | **1Mózes (belső)** | **35 (frissítve)** | 1Móz 2:7→1Móz 3:19 (por); 1Móz 9:20-23→1Móz 3:7,21 (mezítelenség); 1Móz 3:16→1Móz 4:7 (tesuká); 1Móz 4:17→1Móz 11:1-9 (proto-Bábel, beteljesült); 1Móz 1:26-27→1Móz 5:1-3 (képmás); 1Móz 3:17→1Móz 5:29 (átok/vigasztalás); 1Móz 2:7→1Móz 6:5 (jetzer); 1Móz 3:16-17→1Móz 6:6 (acav/fájdalom); 1Móz 5:24→1Móz 6:9 (hithalech); 1Móz 6:9→1Móz 17:1 (tamim/hithalech, előremutató); 1Móz 6:18→1Móz 17:2 (brít, előremutató); 1Móz 1:2→1Móz 7:11 (tehóm); 1Móz 1:28→1Móz 8:17 (uralom-áldás); 1Móz 1:2→1Móz 8:1 (rúach); 1Móz 6:5→1Móz 8:21 (jetzer); 1Móz 3:17→1Móz 8:21 (átok); 1Móz 7:2-3→1Móz 8:20 (tiszta/tisztátalan); 1Móz 1:26-27→1Móz 9:6 (képmás); 1Móz 6:18→1Móz 9:9-17 (brít ratifikáció); 1Móz 8:1→1Móz 9:15 (zácsár); 1Móz 1:2→1Móz 8:2 (tehóm, ⭐ küszöb); 1Móz 1:2/7:11/8:2→1Móz 49:25 (tehóm, lezárás); 1Móz 7:11→2Móz 15:5,8 (tehóm, mélyelemzésből, Tóra-szintű kiterjesztés, ⚠️); 1Móz 6:4→1Móz 10:9 (gibbor/Nimród); 1Móz 9:22-27→1Móz 10:15-19 (Kánaán-átok, beteljesült); 1Móz 4:26→1Móz 12:8 (segítségül hívni); 1Móz 12:1→1Móz 22:2 (lech-lechá, előremutató); 1Móz 12:10-20→1Móz 20:1-18/26:6-11 (nővér-motívum, előremutató); 1Móz 4:26/12:8→1Móz 13:4 (segítségül hívni, ⭐ küszöb); 1Móz 12:7/12:8→1Móz 13:18 (oltárépítés, ⭐ küszöb); **1Móz 4:26/12:8/13:4→1Móz 21:33 (segítségül hívni, él olám jelzővel, új); 1Móz 21:33→1Móz 26:25 (segítségül hívni, Ábrahám→Izsák öröklődés, lezárás, új)**; 1Móz 13:10→1Móz 22:4/24:64 (szemek felemelése, előremutató); 1Móz 13:16→1Móz 22:17 (mag-sokasítás, előremutató); 1Móz 13:13→1Móz 18-19 (Sodoma bűnössége, előremutató); 1Móz 6:4→1Móz 14:5 (gibborim↔Rafeusok, tematikus rokon-csoport); **1Móz 15:13→1Móz 16:6,11 (inná — nyomorgatás gyöke, ironikus szerepcsere, új); 1Móz 16:7,9-11→1Móz 22:11 (málach JHVH, előremutató, új)** |
 | **Jób** | **4 (frissítve)** | Jób 10:8-9→1Móz 2:7; Jób 33:4→1Móz 2:7; Jób 10:16→1Móz 10:9 (vadász gyök); **Jób 26:5→1Móz 14:5 (Refáim, tematikus tanulmány, új)** |
 | **János evangéliuma** | 2 | Ján 1:1,14→Zsid 4:12; Ján 1:1-3→1Móz 1:1 |
-| **Kolossé** | 2 | Kol 1:16-17→1Móz 1:1; Kol 1:15→1Móz 1:2-2:3 |
+| **Kolossé** | **3 (frissítve)** | Kol 1:16-17→1Móz 1:1; Kol 1:15→1Móz 1:2-2:3; **Kol 3:10→1Móz 1:2-2:3 (Isten képmása/eikón, új)** |
 | **Róma** | **9 (frissítve)** | Róm 8:23→1Thessz 5:23; Róm 8:11→Róm 8:10 (belső); Róm 16:20→1Móz 3:15; Róm 5:12-14→1Móz 5 (halál refrén); Róm 10:13→1Móz 4:26 (Énós); Róm 9:27→1Móz 7:23 (maradék-elv); Róm 10:7→1Móz 1:2/7:11/8:2 (ábüsszosz, tematikus tanulmány); Róm 5:12-21→1Móz 2-3 (Ádám-Krisztus tipológia, mélyelemzésből); **Róm 4:3→1Móz 15:6 (hit mint betudott igazság, LXX szó szerinti idézet, új)** |
-| **1Korinthus** | **3 (frissítve)** | 1Kor 15:42-44→1Thessz 5:23; 1Kor 15:45→1Móz 2:7; **1Kor 2:14-15→1Thessz 5:23/Zsid 4:12/1Móz 2:7⇒1Kor 15:45/Luk 1:46-47 (pneuma/pszükhé, tematikus tanulmány, új, melléknévi alak)** |
+| **1Korinthus** | **4 (frissítve)** | 1Kor 15:42-44→1Thessz 5:23; 1Kor 15:45→1Móz 2:7; 1Kor 2:14-15→1Thessz 5:23/Zsid 4:12/1Móz 2:7⇒1Kor 15:45/Luk 1:46-47 (pneuma/pszükhé, tematikus tanulmány); **1Kor 11:7→1Móz 1:2-2:3 (Isten képmása/eikón, új)** |
 | **4Mózes** | 1 | 4Móz 3:7-8→1Móz 2:15 |
 | **Malakiás** | 1 | Mal 2:14-15→1Móz 2:18-24 |
-| **Efézus** | 4 | Ef 5:31-32→1Móz 2:24; Ef 2:8→1Móz 6:8 (chen); Ef 5:2→1Móz 8:21 (kedves illat); Ef 2:13→1Móz 9:27 (Jáfet, tematikus) |
+| **Efézus** | **5 (frissítve)** | Ef 5:31-32→1Móz 2:24; Ef 2:8→1Móz 6:8 (chen); Ef 5:2→1Móz 8:21 (kedves illat); Ef 2:13→1Móz 9:27 (Jáfet, tematikus); **Ef 4:24→1Móz 1:2-2:3 (Isten képmása/eikón, új)** |
 | **Jelenések** | 9 | Jel 1:16→Zsid 4:12; Jel 22:1-2→1Móz 2:8-9; Jel 12:9→1Móz 3:1-6; Jel 9:1-2,11; 11:7; 17:8; 20:1,3→1Móz 1:2/7:11/8:2 (ábüsszosz, tematikus tanulmány); Jel 1:18; 20:13-14→hádész-motívum (tematikus tanulmány) |
 | **Lukács evangéliuma** | **3 (frissítve)** | Luk 8:31→1Móz 1:2/7:11/8:2 (ábüsszosz, tematikus tanulmány); Luk 16:23→hádész-motívum (tematikus tanulmány); **Luk 1:46-47→1Thessz 5:23/Zsid 4:12/1Móz 2:7⇒1Kor 15:45 (pneuma/pszükhé, tematikus tanulmány, új)** |
 | **2Péter levele** | 2 | 2Pét 2:4-5→1Móz 6:1-4 (Isten fiai, tematikus/szerkezeti); 2Pét 2:4 (ταρταρόω)→1Móz 6:1-4 (tartarosz, tematikus tanulmány) |
 | **Máté** | 2 | Máté 27:51→1Móz 3:24; Máté 3:16→1Móz 8:11 (galamb, tematikus) |
 | **Hoseás** | 1 (elfogadott projekt-olvasat, FRISSÍTVE) | Hós 6:7 (+8:1) ↔ 1Móz 2-3 (⚠️ tudományos vita dokumentálva, ld. Kulcsszavak részletesen) |
-| **Ézsaiás** | **4 (frissítve)** | Ézs 49:2→Zsid 4:12; Ézs 61:10→1Móz 3:21; Ézs 54:9-10→1Móz 9:15 (Noé esküje); **Ézs 14:9, 26:14,19→1Móz 14:5 (Refáim, tematikus tanulmány, új)** |
-| **2Korinthus** | 1 | 2Kor 11:3→1Móz 3:1-6 |
+| **Ézsaiás** | **5 (frissítve)** | Ézs 49:2→Zsid 4:12; Ézs 61:10→1Móz 3:21; Ézs 54:9-10→1Móz 9:15 (Noé esküje); Ézs 14:9, 26:14,19→1Móz 14:5 (Refáim, tematikus tanulmány); **Ézs 34:11→1Móz 1:2 (תהו/בהו, ⭐ küszöb, új)** |
+| **2Korinthus** | **2 (frissítve)** | 2Kor 11:3→1Móz 3:1-6; **2Kor 3:18→1Móz 1:2-2:3 (Isten képmása/eikón, új)** |
 | **2Mózes** | **7 (frissítve)** | 2Móz 20:17→1Móz 3:1-6; 2Móz 2:3→1Móz 6:14 (tevá); 2Móz 12:23→1Móz 7:16 (bezárt ajtó, tematikus); 2Móz 2:24→1Móz 8:1 (zácsár); 2Móz 15:5,8→1Móz 7:11 (tehóm, ⚠️ vitatott mértékben tudatos, mélyelemzésből); **2Móz 3:2→1Móz 16:7,9-11 (málach JHVH, előremutató, új); 2Móz 3:7→1Móz 16:11 (Isten meghallja a nyomorultat, előremutató, új)** |
 | **1János** | 2 | 1Ján 2:16→1Móz 3:1-6; 1Ján 3:12→1Móz 4:8-9 |
 | **Júdás levele** | 1 | Júd 1:6→1Móz 6:1-4 |
@@ -570,7 +586,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | **1Sámuel** | 1 | 1Sám 24:12→1Móz 10:9 (vadász gyök, rokon H6658) |
 | **Jeremiás siralmai** | 1 | Sir 3:52,4:18→1Móz 10:9 (vadász gyök) |
 | **Mikeás** | 1 | Mik 7:2→1Móz 10:9 (vadász gyök) |
-| **Jeremiás** | **2 (frissítve)** | Jer 16:16→1Móz 10:9 (vadász gyök); **Jer 34:18-19→1Móz 15:9-17 (brit bén habetárim, tematikus, NEM lexikai, új)** |
+| **Jeremiás** | **3 (frissítve)** | Jer 16:16→1Móz 10:9 (vadász gyök); Jer 34:18-19→1Móz 15:9-17 (brit bén habetárim, tematikus, NEM lexikai); **Jer 4:23→1Móz 1:2 (תהו/בהו, ⭐ küszöb, új)** |
 | **Galata** | **2 (frissítve)** | Gal 3:8→1Móz 12:3 (áldás-ígéret); **Gal 4:24-25→1Móz 16 (Hágár mint tipológiai alak, lexikai, új)** |
 | 5Mózes, Filippi, Jóel (közvetítő) | 1-1 | — |
 
@@ -581,7 +597,6 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 ## Még nem feldolgozott, de valószínű motívumok
 
 - **Isten Szelleme mint formáló/megújító erő (*ruach*)** — ⭐ **részben bővült a jelen tanulmánnyal (a Bábel-Pünkösd tematikus kapocs, ApCsel 2, felvéve)**; további bővülés Ezékiel 1. fejezet feldolgozásakor várható.
-- **Isten képmása (celem/eikón)** — ⭐ a küszöböt korábban elérte (3 előfordulás) — önálló tematikus feldolgozásra alkalmassá vált, felhasználói jóváhagyásra várva; további bővülés várható 2Kor 3:18 vagy Róm 8:29 feldolgozásakor.
 - **hetedik napi nyugalom / szombat** — ha Zsid 3:7–4:11 tágabb szakasza is önálló tanulmány tárgya lesz.
 - **háromosztatú kísértés-mintázat** — valószínűleg bővül Máté 4:1-11 / Lukács 4:1-13 feldolgozásakor.
 - **kígyó mint megtévesztő szimbólum** — valószínűleg bővül 4Móz 21 (rézkígyó) vagy Ján 3:14 feldolgozásakor.
