@@ -151,6 +151,16 @@ KIVÉTEL NÉLKÜL, ebben a sorrendben:
    mivel a jelenlegi LXX-forrás csak Genezisre terjed ki"), nem szabad
    hallgatólagosan kihagyni.
 
+   **Hatókör-bővítés (2026.09.04):** az újrafelhasználható
+   `eszkozok/lxx_kivonat_fetch.py` szkripttel és a belőle készült
+   `konkordancia/LXX_kivonat_Zsoltar_Joel_pilot.tsv` fájllal a 2/e lépés
+   görög fele immár Zsolt 16:10, Zsolt 110:4 és Jóel 2:32 igehelyeken is
+   ellenőrizhető (l. `LXX_kivonat_Zsoltar_Joel_pilot_README.md`) — a
+   fenti Genezis-only korlátozás e 3 igehelyre már NEM érvényes. Minden
+   más, e körön kívüli igehelynél a korlátozás változatlanul fennáll.
+   A pilot-fájl nem publikus, nem kimenő adat, ugyanazon licenc-gap
+   miatt, mint a `LXX_kivonat_Genezis.tsv` (l. a README licenc-szakaszát).
+
    2/f — RÖGZÜLT SZÓPÁR EGYÜTTES-ELŐFORDULÁS ELLENŐRZÉSE (ÚJ, 2026.09.03)
    Amikor a study szövege egy RÖGZÜLT, hendiadysz-szerű szópárt
    azonosít (két szó, amelyek a study saját passzusában együtt,
