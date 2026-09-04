@@ -1,5 +1,11 @@
 # Javasolt sablon-kiegészítés — BDB-árnyalat integrálása a PaRDeS-tanulmányokba
 
+*v7 — 2026.09.04 (11. pont, új 4. tétel felvéve: görög mélységi lexikon
+[a BDB görög párja] forrás-kutatás eredménye dokumentálva — a
+STEPBible-Data [már használt, CC BY 4.0 forrás] TFLSJ [teljes LSJ] és
+TBESG [Abbott-Smith-alapú rövid lexikon] fájljai azonosítva, importra
+javasolva, még nem importálva.)*
+
 *v6 — 2026.09.04 (11. pont, 3. nyitott kérdés LEZÁRVA: a 20 meglévő
 bővített study mindegyike rendelkezik "## 7." szakasszal [ellenőrizve];
 a 14, 2/f bevezetése előtti study kulcsszó-táblázatainak retroaktív
@@ -416,3 +422,32 @@ nyitott feladat (l. 11. pont).
    hivatkozások) és שָׂא...עֵינָיו (1Moz_13v1-18) — mindkettő
    ellenőrizve és dokumentálva, egyik sem bizonyult rejtett mintázatnak.
    Külön teljes újraaudit nem szükséges; a jelenlegi lefedettség elég.
+4. **Görög mélységi lexikon (a BDB görög párja) — forrás azonosítva,
+   IMPORT MÉG NEM TÖRTÉNT MEG (2026.09.04).** A cél: a jelenlegi görög-
+   oldali ellenőrzés (Strong-szótár + LXX-híd, utóbbi csak Genezisre)
+   kiegészítése egy BDB-mélységű görög lexikonnal, hasonlóan ahhoz,
+   ahogy a héber oldalon a BDB már rutinszerűen elérhető.
+   - **Eredeti javaslat (Thayer's Greek-English Lexicon, 1889):**
+     közkincs, megerősítve — de nem található önálló, tiszta TSV/
+     strukturált formátumban saját GitHub-repóban; csak nagyobb
+     platformokba (Marvel Bible, Bible Analyzer) beágyazva.
+   - **Jobb, ténylegesen kész megoldás: a már használt STEPBible-Data
+     forrás (`github.com/STEPBible/STEPBible-Data`, CC BY 4.0 — ugyanaz
+     a forrás, ahonnan a TAHOT/TAGNT is származik) két görög lexikon-
+     fájlt is tartalmaz, eddig kihasználatlanul:**
+     - **TFLSJ** (*Tyndale Formatted full LSJ Bible lexicon*) — a
+       teljes Liddell-Scott-Jones lexikon, Strong-számmal összekötve.
+       Ez a **funkcionális megfelelője a BDB-nek**: mély, tudományos,
+       nem csak ÚSZ-re szorítkozó, klasszikus görög lexikográfiai mű —
+       tudományos körökben gyakran Thayer-nél is alaposabbnak tartott.
+     - **TBESG** (*Tyndale Brief lexicon of Extended Strongs for
+       Greek*) — rövidebb, javított Abbott-Smith-alapú definíciók,
+       Strong-hoz hasonló gyorssági szinten, de frissebb tudományos
+       alapokon.
+   - **Előny:** mivel ugyanaz a forrás (STEPBible), amit a TAHOT/TAGNT
+     esetében már használtok, **nincs új licenc-ellenőrzési munka** —
+     ugyanaz a bevált import-csatorna használható, mint a héber
+     konkordancia-adatoknál.
+   - **Import még nem történt meg** — ez egy jövőbeli, önálló méretű
+     feladat (hasonló a BDB-importhoz), külön jóváhagyást igényel,
+     mielőtt Code-nak átadásra kerülne.
