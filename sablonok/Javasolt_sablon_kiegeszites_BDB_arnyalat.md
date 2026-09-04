@@ -1,5 +1,14 @@
 # Javasolt sablon-kiegészítés — BDB-árnyalat integrálása a PaRDeS-tanulmányokba
 
+*v8 — 2026.09.04 (2/e lépés Hatókör-korlátozás alszakasza kiegészítve egy
+"Hatókör-bővítés" bekezdéssel: az újrafelhasználható
+`eszkozok/lxx_kivonat_fetch.py` szkripttel és a belőle készült
+`konkordancia/LXX_kivonat_Zsoltar_Joel_pilot.tsv` fájllal a görög LXX-híd
+immár Zsolt 16:10, Zsolt 110:4 és Jóel 2:32 igehelyeken is ellenőrizhető —
+a Genezis-only korlátozás e 3 igehelyre már NEM érvényes, minden máshol
+változatlanul fennáll. A pilot-fájl nem publikus, ugyanazon licenc-gap
+miatt, mint a `LXX_kivonat_Genezis.tsv`.)*
+
 *v7 — 2026.09.04 (11. pont, új 4. tétel felvéve: görög mélységi lexikon
 [a BDB görög párja] forrás-kutatás eredménye dokumentálva — a
 STEPBible-Data [már használt, CC BY 4.0 forrás] TFLSJ [teljes LSJ] és
