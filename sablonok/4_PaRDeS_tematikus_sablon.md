@@ -1,5 +1,11 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
+*v11 — 2026.09.04 (A 12. pont linkleírása kiegészítve
+motívumnév-felsorolással [a tematikus fájl saját fejléc-címéből] és egy
+rövid, nem-tartalmi gloss-szal a link kontextusához — komplexum-motívumok
+[pl. Isten fiai / Nefilim / Gibborim] esetén mindegyik réteg megnevezve,
+hogy az adott igehelyhez kapcsolódó bővített study olvasója lássa, a
+linkelt tanulmány mely rétegét fedi le a saját verse)*
 *v10 — 2026.09.04 (Lezárási checklist kiegészítve egy 12. ponttal
 [visszahivatkozás minden érintett bővített study-ba] és egy kapcsolódó
 tartalmi-visszaírási szabállyal [ha a tematikus study elkészülte, VAGY egy
@@ -179,7 +185,10 @@ Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szüks
   katalogizált előfordulás-listájában szereplő igehelyhez tartozó,
   meglévő bővített study 4. pontjában (Kapcsolódó igehelyek / 🔗-blokk)
   egy rövid jegyzet beszúrva: „📎 Bővebben, önálló tematikus
-  feldolgozásban: `[Motívum]_tematikus.md`". Ha egy adott bővített
+  feldolgozásban: `[Motívum]_tematikus.md` ([a tematikus study saját
+  fejléc-címéből vett motívumnév-felsorolás] — [egy rövid, max.
+  egymondatos gloss arról, mire vonatkozik a linkelt tanulmány lelete,
+  az adott igehely szempontjából])". Ha egy adott bővített
   study 🔗-blokkja nem tartalmazza explicit a motívumot (csak a
   szövegtörzsben szerepel), a jegyzet a study végére, egy „Kapcsolódó
   tematikus tanulmány" mini-szakaszként kerül be.
@@ -192,6 +201,20 @@ Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szüks
   fordul elő, NEM kap visszahivatkozást — ez a fegyelem ugyanaz, ami a
   2/f-küszöbnél (≤5 igehely, valódi lelet) is érvényes: nem vihető be
   zaj a rendszerbe egy túl tág értelmezéssel.
+
+  A zárójeles motívumnév-felsorolás forrása mindig a tematikus study
+  saját fejléc-címe, nem a motívumnapló rövidített bejegyzés-neve —
+  komplexum-motívumoknál (pl. „Isten fiai — Nefilim — Gibborim")
+  mindegyik réteg megnevezve.
+
+  A gloss nem tartalmi visszaírás: nem visz be új tényt vagy leletet a
+  bővített study-ba, csak megnevezi, mire vonatkozik a linkelt
+  tanulmány — ezért nem igényli a „Tartalmi visszaírás" alszakasz
+  propose-then-confirm/audit-fegyelmét. Ha a gloss megfogalmazásához
+  olyan tényt kellene state-elni, ami maga is új igehely-szintű lelet
+  (nem csak a linkelt study tartalmának egy mondatos összefoglalása),
+  az már a „Tartalmi visszaírás" hatálya alá tartozik, és külön
+  kezelendő.
 
   A beszúrás után a motívumnapló 3. szekciójának (részletes bejegyzés)
   végére egy új sor kerül: „**Visszahivatkozott bővített study-k:**
