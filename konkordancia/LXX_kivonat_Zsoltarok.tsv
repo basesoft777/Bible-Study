@@ -364,6 +364,7 @@ Zsolt 4:1	G3592	ωδη	N-NSF
 Zsolt 4:1	G3588	τω	T-DSM
 Zsolt 4:1	G1722	εν	PREP
 Zsolt 4:1	G3588	τω	T-DSN
+Zsolt 4:1	G1941	επικαλεισθαι	N/A
 Zsolt 4:1	G1473	με	P-AS
 Zsolt 4:1	G1522	εισηκουσεν	V-AAI-3S
 Zsolt 4:1	G1473	μου	P-GS
@@ -2754,6 +2755,7 @@ Zsolt 18:6	G1722	εν	PREP
 Zsolt 18:6	G3588	τω	T-DSN
 Zsolt 18:6	G2346	θλιβεσθαι	V-PMN
 Zsolt 18:6	G1473	με	P-AS
+Zsolt 18:6	G1941	επεκαλεσαμην	N/A
 Zsolt 18:6	G3588	τον	T-ASM
 Zsolt 18:6	G2962	κυριον	N-ASM
 Zsolt 18:6	G2532	και	CONJ
@@ -8892,6 +8894,7 @@ Zsolt 42:6	G3735	ορους	N-GSN
 Zsolt 42:6	G3398	μικρου	A-GSN
 Zsolt 42:7	G0012	αβυσσος	N-NSF
 Zsolt 42:7	G0012	αβυσσον	N-ASF
+Zsolt 42:7	G1941	επικαλειται	N/A
 Zsolt 42:7	G1519	εις	PREP
 Zsolt 42:7	G5456	φωνην	N-ASF
 Zsolt 42:7	G3588	των	T-GPM
@@ -10280,6 +10283,7 @@ Zsolt 49:11	G1519	εις	PREP
 Zsolt 49:11	G1074	γενεαν	N-ASF
 Zsolt 49:11	G2532	και	CONJ
 Zsolt 49:11	G1074	γενεαν	N-ASF
+Zsolt 49:11	G1941	επεκαλεσαντο	N/A
 Zsolt 49:11	G3588	τα	T-APN
 Zsolt 49:11	G3686	ονοματα	N-APN
 Zsolt 49:11	G0846	αυτων	D-GPM
@@ -10592,6 +10596,7 @@ Zsolt 50:14	G3588	τας	T-APF
 Zsolt 50:14	G2171	ευχας	N-APF
 Zsolt 50:14	G4771	σου	P-GS
 Zsolt 50:15	G2532	και	CONJ
+Zsolt 50:15	G1941	επικαλεσαι	N/A
 Zsolt 50:15	G1473	με	P-AS
 Zsolt 50:15	G1722	εν	PREP
 Zsolt 50:15	G2250	ημερα	N-DSF
@@ -16099,6 +16104,7 @@ Zsolt 75:1	G3588	ο	T-NSM
 Zsolt 75:1	G2316	θεος	N-NSM
 Zsolt 75:1	G1843	εξομολογησομεθα	V-FMI-1P
 Zsolt 75:1	G2532	και	CONJ
+Zsolt 75:1	G1941	επικαλεσομεθα	N/A
 Zsolt 75:1	G3588	το	T-ASN
 Zsolt 75:1	G3686	ονομα	N-ASN
 Zsolt 75:1	G4771	σου	P-GS
@@ -18069,6 +18075,7 @@ Zsolt 81:6	G2894	κοφινω	N-DSM
 Zsolt 81:6	G1398	εδουλευσαν	V-AAI-3P
 Zsolt 81:7	G1722	εν	PREP
 Zsolt 81:7	G2347	θλιψει	N-DSF
+Zsolt 81:7	G1941	επεκαλεσω	N/A
 Zsolt 81:7	G1473	με	P-AS
 Zsolt 81:7	G2532	και	CONJ
 Zsolt 81:7	G4771	σε	P-AS
@@ -21678,6 +21685,7 @@ Zsolt 99:6	G2532	και	CONJ
 Zsolt 99:6	G4545	σαμουηλ	N-PRI
 Zsolt 99:6	G1722	εν	PREP
 Zsolt 99:6	G3588	τοις	T-DPM
+Zsolt 99:6	G1941	επικαλουμενοις	N/A
 Zsolt 99:6	G3588	το	T-ASN
 Zsolt 99:6	G3686	ονομα	N-ASN
 Zsolt 99:6	G0846	αυτου	D-GSM
@@ -22982,6 +22990,7 @@ Zsolt 105:1	G1843	εξομολογεισθε	V-PMD-2P
 Zsolt 105:1	G3588	τω	T-DSM
 Zsolt 105:1	G2962	κυριω	N-DSM
 Zsolt 105:1	G2532	και	CONJ
+Zsolt 105:1	G1941	επικαλεισθε	N/A
 Zsolt 105:1	G3588	το	T-ASN
 Zsolt 105:1	G3686	ονομα	N-ASN
 Zsolt 105:1	G0846	αυτου	D-GSM
@@ -26036,6 +26045,7 @@ Zsolt 118:4	G1656	ελεος	N-NSN
 Zsolt 118:4	G0846	αυτου	D-GSM
 Zsolt 118:5	G1722	εν	PREP
 Zsolt 118:5	G2347	θλιψει	N-DSF
+Zsolt 118:5	G1941	επεκαλεσαμην	N/A
 Zsolt 118:5	G3588	τον	T-ASM
 Zsolt 118:5	G2962	κυριον	N-ASM
 Zsolt 118:5	G2532	και	CONJ

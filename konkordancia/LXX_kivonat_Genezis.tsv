@@ -2262,6 +2262,7 @@ Igehely	Strong-szám	Görög szóalak	Morfológiai kód
 1Móz 4:26	G0846	αυτου	D-GSM
 1Móz 4:26	G3778	ουτος	D-NSM
 1Móz 4:26	G1679	ηλπισεν	V-AAI-3S
+1Móz 4:26	G1941	επικαλεισθαι	N/A
 1Móz 4:26	G3588	το	T-ASN
 1Móz 4:26	G3686	ονομα	N-ASN
 1Móz 4:26	G2962	κυριου	N-GSM
@@ -5835,6 +5836,7 @@ Igehely	Strong-szám	Görög szóalak	Morfológiai kód
 1Móz 12:8	G3588	τω	T-DSM
 1Móz 12:8	G2962	κυριω	N-DSM
 1Móz 12:8	G2532	και	CONJ
+1Móz 12:8	G1941	επεκαλεσατο	N/A
 1Móz 12:8	G1909	επι	PREP
 1Móz 12:8	G3588	τω	T-DSN
 1Móz 12:8	G3686	ονοματι	N-DSN
@@ -6098,6 +6100,7 @@ Igehely	Strong-szám	Görög szóalak	Morfológiai kód
 1Móz 13:4	G3588	την	T-ASF
 1Móz 13:4	G0746	αρχην	N-ASF
 1Móz 13:4	G2532	και	CONJ
+1Móz 13:4	G1941	επεκαλεσατο	N/A
 1Móz 13:4	G1563	εκει	ADV
 1Móz 13:4	G3588	το	T-ASN
 1Móz 13:4	G3686	ονομα	N-ASN
@@ -10379,6 +10382,7 @@ Igehely	Strong-szám	Görög szóalak	Morfológiai kód
 1Móz 21:33	G3588	του	T-GSM
 1Móz 21:33	G3727	ορκου	N-GSM
 1Móz 21:33	G2532	και	CONJ
+1Móz 21:33	G1941	επεκαλεσατο	N/A
 1Móz 21:33	G1563	εκει	ADV
 1Móz 21:33	G3588	το	T-ASN
 1Móz 21:33	G3686	ονομα	N-ASN
@@ -13725,6 +13729,7 @@ Igehely	Strong-szám	Görög szóalak	Morfológiai kód
 1Móz 26:25	G1563	εκει	ADV
 1Móz 26:25	G2379	θυσιαστηριον	N-ASN
 1Móz 26:25	G2532	και	CONJ
+1Móz 26:25	G1941	επεκαλεσατο	N/A
 1Móz 26:25	G3588	το	T-ASN
 1Móz 26:25	G3686	ονομα	N-ASN
 1Móz 26:25	G2962	κυριου	N-GSM
@@ -18978,6 +18983,7 @@ Igehely	Strong-szám	Görög szóalak	Morfológiai kód
 1Móz 33:20	G1563	εκει	ADV
 1Móz 33:20	G2379	θυσιαστηριον	N-ASN
 1Móz 33:20	G2532	και	CONJ
+1Móz 33:20	G1941	επεκαλεσατο	N/A
 1Móz 33:20	G3588	τον	T-ASM
 1Móz 33:20	G2316	θεον	N-ASM
 1Móz 33:20	G2474	ισραηλ	N-PRI
