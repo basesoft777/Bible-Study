@@ -1,9 +1,11 @@
-# Motívum-azonosító séma — v2, kétdimenziós (2026.09.02)
+# Motívum-azonosító séma — v3, VÉGLEGESÍTVE (2026.09.04)
 
 *Felváltja a `Motivum_azonosito_sema_javaslat_v1.md`-t (egydimenziós,
 `IMAGO-001` próbával) — az ott felmerült kategorizálási problémák miatt
 (3 motívum sehova nem illett, 2 motívum két területet is érintett)
-áttérve egy kétdimenziós modellre. Nem commitolva, jóváhagyásra vár.*
+áttérve egy kétdimenziós modellre. A v2 (2026.09.02) 3 nyitott kérdését
+a felhasználó 2026.09.04-én lezárta (l. 6. pont) — a séma ezzel
+véglegesítve, ténylegesen bevezetve a `PaRDeS_motivumok.md`-be.*
 
 ---
 
@@ -55,6 +57,7 @@ mezőként** szerepel, akár több érték is megadható egyszerre.
 | Uralom-megbízás / emberi méltóság | `ANTROP-002` | Antropológia |
 | **Isten képmása (celem/eikón)** | **`ANTROP-003`** | **Antropológia + Krisztológia** (mindkettő megadva) |
 | Brít | `SZOVETS-001` | Szövetségteológia |
+| Por/formáltatás (jacar-afar) — emberi esendőség | `ANTROP-004` | Antropológia |
 
 *(12 sor, nem 13 — a Tehóm és a Tehóm-Abüsszosz-Hádész-Tartarosz kibővített
 komplexum egyetlen folytonos motívum-ívnek számít, egy ID alatt, ahogy azt
@@ -87,11 +90,25 @@ ANTROP-003 (Isten képmása)
   ↳ 1Móz 1:26 ↔ 1Kor 11:7   | Bizonyosság: Magas
 ```
 
-## 6. Nyitott kérdések
+## 6. Nyitott kérdések — LEZÁRVA (felhasználói döntés, 2026.09.04)
 
-1. A 9 téma-kód (2. pont) végleges-e, vagy bővítendő már most (pl. a
-   jövőbeli 1Móz 17+ motívumok — körülmetélés, névváltoztatás — melyik
-   témába esnének? Egyik jelenlegi kód sem illik rájuk pontosan.)
-2. A motívumnaplóba (`PaRDeS_motivumok.md`) történő tényleges bevezetés
-   még nem történt meg — ez a dokumentum egyelőre önmagában áll.
-3. Ez a dokumentum is elveszhet, ha nem kerül azonnal átadásra Code-nak.
+1. **A 9 téma-kód bővítése:** a lista **nyitott marad**, nem bővül
+   előre. Új téma-kód csak akkor kerül bevezetésre, amikor egy tényleges
+   motívum ténylegesen nem illik egyik meglévő kódba sem (pl. a
+   jövőbeli 1Móz 17+ körülmetélés/névváltoztatás-motívumoknál, ha
+   felmerül). A mai תהו/בהו-lelet a meglévő `TEREMT` kódba illeszkedett
+   — ez megerősítette, hogy a tág, nyitott kódok jól működnek
+   spekulatív előregyártás nélkül is.
+2. **ID-kiosztás hatóköre:** **nem** kap minden meglévő motívum
+   visszamenőleg ID-t. Az ID-kiosztás a ⭐-küszöböt elért vagy ✅
+   lezárt motívumokra korlátozódik (l. 3. pont — ténylegesen 13 tétel,
+   a por/afar pótlásával). Ezentúl minden újonnan ⭐-küszöböt érő vagy
+   lezáruló motívum a felvétel pillanatában kap ID-t.
+3. **Mely motívumok kapjanak ID-t egyáltalán:** **csak** a ⭐-küszöböt
+   elért/lezárt motívumok — az egyszeri, még alakuló bejegyzések nem.
+   Indoklás: az ID stabil kereszthivatkozási kulcs, aminek csak azoknál
+   a motívumoknál van értéke, amelyek ténylegesen visszatérnek/több
+   study-ban hivatkozásra kerülnek; korai fázisú, még névváltozás
+   előtt álló tételeknél az ID-adás korai elköteleződés lenne.
+4. A motívumnaplóba (`PaRDeS_motivumok.md`) történő tényleges bevezetés
+   **megtörtént** — l. a párhuzamos Code-prompt-részt.
