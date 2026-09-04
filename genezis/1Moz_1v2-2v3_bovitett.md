@@ -1,5 +1,12 @@
 # 1 Mózes 1:2 – 2:3 — Bővített PaRDeS tanulmány
 
+*v6 — 2026.09.04 (Retroaktív 2/f-audit [protokoll v5] elvégezve: a
+תֹהוּ וָבֹהוּ [H8414/H0922] szópár teljes körű együttes-előfordulás
+ellenőrzése megerősítette a protokoll-precedenst — 3 igehely: 1Móz 1:2,
+Jer 4:23, Ézs 34:11. A lelet két új kereszthivatkozásként bekerült a
+"## 4." Remez-szakaszába, és dokumentálva a "## 7." auditnaplóban. A
+motívumnapló-felvétel [PaRDeS_motivumok.md] külön, még hátralévő lépés.)*
+
 *v5 — 2026.09.03 (Csonkítva a וַיְבָרֶךְ/H1288 etimológiai megjegyzés a
 "## 2. Eredeti nyelvi szöveg" szakaszban — a lexikai tény [BDB: bárach
 gyöke ~ "térdre ereszkedni", rokon a berech/"térd" szóval] megmaradt,
@@ -252,6 +259,18 @@ A hetedik napi nyugalom (2:2-3) — amelyet Isten maga tart, nem fáradtságból
 > *"...Isten, a ki szólt: setétségből világosság ragyogjon, ő gyújtott világosságot a mi szívünkben..."* **(kulcsszó: fény — görögül φῶς, LXX-lexikailag igazolt egyezés az 1Móz 1:3-mal)**
 > Pál kifejezetten az 1Móz 1:3 teremtő szavát vonatkoztatja az újjászületés belső megvilágosodására — ugyanaz a szó (φῶς), amit a LXX az 1:3 *ór*-jára használ.
 
+**Remez** — [a תֹהוּ וָבֹהוּ formátlan/üres kezdőállapot mint a teremtés-előtti negatív minta — ugyanez a ritka szópár a próféták ítélet-nyelvezetében a teremtés visszavonásaként tér vissza]
+
+> 🔗 ↔ **Jer 4:23** *(párhuzam, ÚJ, 2026.09.04, retroaktív 2/f-audit)*
+> *"Nézek a földre, de ímé kietlen és puszta; és az égre, de nincsen világossága!"* **(kulcsszó: kietlen és puszta — héberül תֹהוּ וָבֹהוּ, a teljes Ószövetségben mindössze 3 igehelyen fordul elő együtt ez a szópár)**
+> Jeremiás tudatosan idézi vissza az 1Móz 1:2 szókészletét: Júda közelgő pusztulását nem egyszerű katasztrófaként, hanem a teremtés **visszavonásaként** festi le — a kozmosz visszasüllyed abba az állapotba, ahonnan Isten kiemelte.
+
+> 🔗 ↔ **Ézs 34:11** *(párhuzam, ÚJ, 2026.09.04, retroaktív 2/f-audit)*
+> *"És örökségül bírándja azt ökörbika, sündisznó; és gém és holló lakja azt, és fölvonják rá a pusztaság mérőkötelét és a semmiségnek köveit."* **(ugyanaz a héber szópár, de Károli itt egészen más szavakkal — "pusztaság", "semmiség" — adja vissza, mint az 1Móz 1:2 és Jer 4:23 azonos "kietlen és puszta" fordításánál)**
+> Ézsaiás Edom ítéletét ugyanezzel a ritka szópárral írja le — a harmadik és egyben utolsó ószövetségi előfordulás, megerősítve, hogy tudatosan alkalmazott, rögzült prófétai formula, nem véletlen szóhasználat.
+
+> **Ismétlődő motívum:** ez a lelet motívumnapló-jelölt (⭐ küszöb, 3 előfordulás) — a `PaRDeS_motivumok.md`-be még nem került be, önálló jóváhagyást igényel.
+
 **Drash** — [a hetedik napi **nyugalom** mint isteni minta és eszkatologikus ígéret]
 
 > 🔗 ⇒ **Zsid 4:9-11** *(beteljesedés)*
@@ -365,4 +384,6 @@ A hetedik napi nyugalom (2:2-3) — amelyet Isten maga tart, nem fáradtságból
 | Mt 19:4 / Mk 10:6 | θῆλυ (G2338) | igen (5 előford.) | ✅ megerősítve, ÚJ idézetként felvéve |
 | Zsid 4:4 | ἕβδομος + καταπαύω (G1442, G2664) | igen (9, 4 előford.) | ✅ pontosítás a meglévő Zsid 4:9-11 mellé |
 
-**Amit ez a módszer NEM tett meg:** a motívumnapló (`PaRDeS_motivumok.md`) érintetlen maradt — az εἰκών/*celem*-lelet oda még nem került be, ez külön, hátralévő lépés (ugyanúgy, mint az 1Móz 1:1 tanulmánynál az ἀρχή-lelet esetében).
+**2/f — Rögzült szópár együttes-előfordulás ellenőrzése (ÚJ, 2026.09.04, retroaktív audit a protokoll v5 szerint):** a תֹהוּ וָבֹהוּ (H8414/H0922) szópár teljes körű, konkordancia-alapú ellenőrzése (`TAHOT_kivonat.tsv`) megerősítette a protokoll v5-ben rögzített precedenst: a pár a teljes Ószövetségben **kizárólag 3 igehelyen** fordul elő együtt — **1Móz 1:2, Jer 4:23, Ézs 34:11**. A lelet beépítve a "## 4." Remez-szakaszába, két új kereszthivatkozásként.
+
+**Amit ez a módszer NEM tett meg:** a motívumnapló (`PaRDeS_motivumok.md`) érintetlen maradt — sem az εἰκών/*celem*-lelet, sem a most beépített תֹהוּ וָבֹהוּ-lelet nem került be, mindkettő külön, hátralévő lépés (ugyanúgy, mint az 1Móz 1:1 tanulmánynál az ἀρχή-lelet esetében).
