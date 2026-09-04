@@ -1,5 +1,13 @@
 # PaRDeS motívum-napló (kulcsszavas)
 
+*v51 — 2026.09.04 (Retroaktív 2/f-lefedettségi szűrés a 14, ma előtt
+auditált bővített study-n: 2 valódi szópár-jelölt azonosítva a
+kulcsszó-táblázatokból, mindkettő teljes körűen ellenőrizve — egyik
+sem bizonyult rejtett/ritka mintázatnak [szemben a תהו/בהו-lelettel],
+mindkettő megerősítette a már meglévő motívum-hivatkozást. Az
+"uralom-megbízás" [ANTROP-002] bekezdés kiegészítve a פָּרוּ וְרָבוּ
+[15 közös igehely] megerősítő adattal.)*
+
 *v50 — 2026.09.04 (Motívumnapló-adósság rendezve: (1) ÚJ motívum
 felvéve — "תהו/בהו — teremtés-visszavonás mint ítélet-nyelvezet"
 [ID: TEREMT-002], 3 igehely: 1Móz 1:2, Jer 4:23, Ézs 34:11, azonnal
@@ -237,7 +245,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 **"bűn következményeinek gyűrűzése" `[ID: HAMART-001]` — ⭐ KÜSZÖBÖN TÚL, 4. megerősítés.** A minta immár négyszeresen igazolt: 1Móz 3:7-19 (egyéni) → 1Móz 4:1-24 (családi/nemzedéki) → 1Móz 6:1-8 (egyetemes diagnózis: "kol basar") → 1Móz 6:9-22 (a diagnózis konkrét betöltődése: a föld *chamász*-szal telt meg, ez indokolja közvetlenül az özönvíz-parancsot). A motívum önálló tematikus tanulmányra alkalmassá vált (`4_PaRDeS_tematikus_sablon.md` szerint) — nem automatikus, felhasználói jóváhagyásra vár.
 
-**"uralom-megbízás / emberi méltóság" `[ID: ANTROP-002]` — ⭐ ÚJ KÜSZÖBÖN TÚL, 3. előfordulás.** Zsolt 8:5-6 és 1Móz 2:19-20 mellé harmadikként csatlakozik 1Móz 8:17 — a bárkából kilépő élővilágnak szóló "szaporodjatok és sokasodjatok" parancs szó szerint megismétli az 1:28 teremtési áldást. A motívum ezzel alkalmassá vált önálló tematikus feldolgozásra, felhasználói jóváhagyásra várva.
+**"uralom-megbízás / emberi méltóság" `[ID: ANTROP-002]` — ⭐ ÚJ KÜSZÖBÖN TÚL, 3. előfordulás.** Zsolt 8:5-6 és 1Móz 2:19-20 mellé harmadikként csatlakozik 1Móz 8:17 — a bárkából kilépő élővilágnak szóló "szaporodjatok és sokasodjatok" parancs szó szerint megismétli az 1:28 teremtési áldást. A motívum ezzel alkalmassá vált önálló tematikus feldolgozásra, felhasználói jóváhagyásra várva. **Kiegészítés (2026.09.04, retroaktív 2/f-audit):** a פָּרוּ וְרָבוּ ("szaporodjatok és sokasodjatok", H6509+H7235) szópár teljes körű ellenőrzése 15 közös igehelyet talált a teljes Ószövetségben (köztük 1Móz 1:22, 1:28, 8:17, 9:1, 9:7, 17:20, 28:3, 35:11, 47:27, 48:4) — ez egy jól ismert, tudatos áldás-formula, nem rejtett minta; megerősíti az 1:28↔8:17 hivatkozás lexikai megalapozottságát, de önmagában túl gyakori ahhoz, hogy külön 2/f-jelzésű leletnek minősüljön.
 
 **"Isten képmása (celem/eikón)" `[ID: ANTROP-003]` — ⭐ ÚJ KÜSZÖBÖN TÚL, 3. előfordulás.** 1Móz 1:26-27 (teremtés) és 5:1-3 (genealógiai megismétlés) mellé harmadikként csatlakozik 9:6 — itt már nem csupán leíró, hanem normatív-etikai alkalmazásban: az emberölés jogi számonkérése közvetlenül az Isten-képmásra épül. A szűkebb "Isten képmása" motívum immár önmagában is elérte a küszöböt (a tágabb "Logosz/Képmás" rokon-csoport, amelybe korábban besorolódott, már korábban túl volt rajta). A motívum alkalmassá vált önálló tematikus feldolgozásra, felhasználói jóváhagyásra várva. **Kiegészítés (2026.09.04):** a szűkebb, Genezisen belüli celem/demut pár (1:26-27 ↔ 5:1-3) teljes körű ellenőrzése megerősítette, hogy a két szó (H6754/H1823) kizárólag ezen a 2 igehelyen fordul elő együtt a teljes Ószövetségben — konkordancia-alapon igazolva 5:3 tudatos, kizárólagos visszautalását 1:26-ra. Az ÚSZ-oldali celem/eikón-kereszthivatkozás is bővült: az 1Móz 1:2-2:3 study 2026.09.02-i LXX-alapú auditja négy további, azonos görög szót (εἰκών, G1504) tartalmazó verset azonosított és épített be — **Kol 3:10, Ef 4:24, 2Kor 3:18, 1Kor 11:7** — a korábban egyedüli Kol 1:15 mellé (l. Kulcsszó-index).
 

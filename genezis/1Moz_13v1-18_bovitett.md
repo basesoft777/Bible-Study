@@ -1,6 +1,11 @@
 # 1Mózes 13:1-18 — Ábrám és Lót elválása; az ígéret megújítása
 ### Bővített PaRDeS-tanulmány — nevesített tanítói alkalmazással
 
+*v3 — 2026.09.04 (Retroaktív 2/f-audit [protokoll v5] elvégezve: a
+study szövegében kétszer [13:10, 13:14] megjelenő שָׂא...עֵינָיו
+[nasá+énájim, "szemeit felemelte"] szópár teljes körű ellenőrzése —
+eredmény az új "## 7." bekezdésben.)*
+
 *v2 — 2026.09.03 (Új, kötelező 7. szakasz — Lexikai audit — felvéve;
 tartalmi lelet nincs, a study lexikailag tiszta; a kockázat-riport
 J4-torzítása [יהוה gyakorisága] tisztázva)*
@@ -163,6 +168,8 @@ Ugyanaz a szókapcsolat, amellyel Lót a Jordán-síkságot választotta (13:10)
 A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára (2. pont táblázata). Nincs beépítendő tartalmi lelet — az összes Origin-lánc-hivatkozás triviálisnak minősült: יהוה ("Örökkévaló") ← "lenni" (a név közismert, jól dokumentált etimológiája, nem hoz specifikus új tartalmat ehhez a study-hoz); מַשְׁקֶה ("öntözött") ← "öntözni" (triviális); חַטָּאִים ("bűnösök") ← "vétkezni" (triviális, várható intenzív alak); כַּעֲפַר ← "por" (denominatív, fordított irány, nincs új tartalom); מִזְבֵּחַ ← "áldozni" (már fedi a study saját 6. pontja).
 
 **J4-torzítás tisztázva:** a kockázat-riport által jelzett magas ("5523 sosem idézett") szám kizárólag a יהוה (H3068) rendkívüli gyakoriságából (6528 ószövetségi előfordulás) adódik — ez módszertani műtermék, nem tartalmi hiányosság. A szó azért került be kulcsszóként, mert a "segítségül hívta az Úr nevét" (13:4) kifejezés szerves része.
+
+**2/f — Rögzült szópár együttes-előfordulás ellenőrzése (ÚJ, 2026.09.04, retroaktív audit a protokoll v5 szerint):** a study szövegében kétszer [13:10, 13:14] megjelenő שָׂא...עֵינָיו (*nasá*+*énájim*, "szemeit felemelte", H5375+H5869) szópár teljes körű ellenőrzése (`TAHOT_kivonat.tsv`) **60+ közös igehelyet** talált a teljes Ószövetségben — ez egy rendkívül gyakori héber idióma ("felnézett és látta"), nem rejtett/ritka mintázat. Megerősíti, hogy a motívumnapló jelenlegi "FIGYELEM" (nem ⭐) besorolása helyes: a study-n belüli, majd 1Móz 22:4/24:64-re előre jelzett ismétlődés valódi, de az idióma önmagában túl gyakori ahhoz, hogy különleges irodalmi jelzésnek (2/f-értelemben rendhagyó szópárnak) minősüljön.
 
 **Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv` és a `TAHOT_kivonat.tsv` fájlokból származnak.
 
