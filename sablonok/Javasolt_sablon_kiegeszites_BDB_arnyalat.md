@@ -1,5 +1,13 @@
 # Javasolt sablon-kiegészítés — BDB-árnyalat integrálása a PaRDeS-tanulmányokba
 
+*v6 — 2026.09.04 (11. pont, 3. nyitott kérdés LEZÁRVA: a 20 meglévő
+bővített study mindegyike rendelkezik "## 7." szakasszal [ellenőrizve];
+a 14, 2/f bevezetése előtti study kulcsszó-táblázatainak retroaktív
+szűrése 2 valódi szópár-jelöltet talált, mindkettő ellenőrizve és
+dokumentálva — egyik sem bizonyult rejtett mintázatnak. A retroaktív
+BDB/2/f-rollout ezzel lezártnak tekinthető, külön teljes újraaudit nem
+szükséges.)*
+
 *v5 — 2026.09.03 (Új 2/f lépés a technikasorban: rögzült szópár
 együttes-előfordulás ellenőrzése — amikor a study szövege két szót
 rendszeresen együtt említ [pl. תהו/בהו], külön kereséssel meg kell
@@ -400,8 +408,11 @@ nyitott feladat (l. 11. pont).
    kötelező 7. szakasszal (l. 10. pont) — ez a dokumentum eddig csak a
    *szabályt* rögzíti, a sablon-fájl saját szerkezeti frissítése még
    hátravan, külön jóváhagyással
-3. Retroaktív vs. előremenő BDB-rollout a 20 meglévő bővített
-   tanulmányra (korábbi, még döntetlen kérdés) — ide tartozik: a már
-   auditált 2 study (1Moz_7v1-24, 1Moz_12v1-20) kapjon-e utólag formális
-   7. szakaszt is, vagy a jelenlegi (Remez/Sod-blokkba illesztett)
-   megoldás elegendő
+3. ~~Retroaktív vs. előremenő BDB-rollout a 20 meglévő bővített
+   tanulmányra~~ — LEZÁRVA (2026.09.04): mind a 20 study rendelkezik
+   formális "## 7." szakasszal (ellenőrizve). A 14, 2/f-lépés előtti
+   study retroaktív szópár-szűrése (kulcsszó-táblázatok alapján) 2
+   jelöltet talált — פָּרוּ וְרָבוּ (1Moz_8v1-22/1v2-2v3 stb. körüli
+   hivatkozások) és שָׂא...עֵינָיו (1Moz_13v1-18) — mindkettő
+   ellenőrizve és dokumentálva, egyik sem bizonyult rejtett mintázatnak.
+   Külön teljes újraaudit nem szükséges; a jelenlegi lefedettség elég.
