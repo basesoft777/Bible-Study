@@ -14,6 +14,20 @@ dokumentalthoz kepest: https://studybible.info/LXX_WH/<Konyv>%20<fejezetszam>
 Csak Strong-szammal ellatott szavak kerulnek a kimenetbe (a forrasoldal
 nehany szonal - pl. tulajdonnevek - nem ad Strong-szamot; ezek kimaradnak,
 mivel a kimenet celja kifejezetten a Strong-taggelt konkordancia-kivonat).
+
+Opcionalis --versifikacios-terkep + --karoli-konyv-prefix parameterekkel a
+szkript a `konkordancia/LXX_versificacios_terkep.tsv` `Gorog_LXX_vers`
+oszlopat hasznalja az Igehely-cimke meghatarozasahoz a nyers oldal-helyi
+vers-sorszam helyett. Ez azoknal a konyveknel szukseges (pl. Zsoltarok),
+ahol a LXX belso vers-/fejezetszamozasa el van tolva a maszoretai/Karoli
+szamozastol (pl. zsoltar-feliratok kulon LXX-versszamot kapnak, amit a
+Karoli nem szamoz kulon). A forrasoldal minden ilyen esetben `[fejezet:vers]`
+alaku zarojeles jelolessel latja el az erintett szo elejet a nyers HTML-ben
+(pl. `[109:4]`) - ez pontosan megegyezik a `Gorog_LXX_vers` oszloppal, es a
+szkript ezt hasznalja a terkepben valo kereseshez, majd a talalt sor
+`Karoli_igehely` erteket irja a kimenetbe. Zarojel hianyaban (nincs
+elteres az adott fejezetben) a nyers oldal-helyi fejezet/vers-szam kerul
+kozvetlenul hasznalatra (ugyanugy, mint --versifikacios-terkep nelkul).
 """
 import argparse
 import csv
@@ -55,7 +69,8 @@ SZO_EGYSEG_RE = re.compile(
 )
 STRONG_RE = re.compile(r'([GH]\d+)')
 MORF_RE = re.compile(r'>([^<>]+)</a>')
-ZAROJEL_PREFIX_RE = re.compile(r'^\[\d+:\d+\]\s*')
+ZAROJEL_PREFIX_RE = re.compile(r'^\[(\d+):(\d+)\]\s*')
+GOROG_LXX_VERS_RE = re.compile(r'^[A-Za-z]+\.(\d+):(\d+)(?:-(\d+))?[a-z]?$')
 
 
 def normalize_strong(strong):
@@ -87,16 +102,176 @@ def fetch_html(konyv_angol, fejezet):
         raise RuntimeError(f"HTTP hiba {konyv_angol} {fejezet} letoltesekor: {e}") from e
 
 
-def parse_chapter(html, magyar_konyv, fejezet):
-    """Egy fejezet HTML-jebol kinyeri a (Igehely, Strong-szam, Gorog szoalak, Morf kod) sorokat."""
+KAROLI_1908_UTVONAL = "konkordancia/Karoli_1908.tsv"
+
+
+def load_karoli_max_vers(path, karoli_konyv_prefix):
+    """Konyvenkent (fejezet -> legnagyobb Karoli-vers-szam) a Karoli_1908.tsv-bol."""
+    igehely_re = re.compile(rf'^{re.escape(karoli_konyv_prefix)} (\d+):(\d+)$')
+    max_vers = {}
+    with open(path, encoding="utf-8") as f:
+        reader = csv.reader(f, delimiter="\t")
+        next(reader, None)
+        for row in reader:
+            if not row:
+                continue
+            m = igehely_re.match(row[0])
+            if not m:
+                continue
+            fejezet, vers = int(m.group(1)), int(m.group(2))
+            if vers > max_vers.get(fejezet, 0):
+                max_vers[fejezet] = vers
+    return max_vers
+
+
+def load_versifikacios_terkep(path, karoli_konyv_prefix, karoli_1908_path=KAROLI_1908_UTVONAL):
+    """Betolti a LXX_versificacios_terkep.tsv-t egy adott Karoli-konyvre (pl. 'Zsolt', 'Jóel').
+
+    Visszaad: ((kert_fejezet:int, zarojel_fejezet:int, zarojel_vers:int) -> Karoli_igehely)
+    dict, valamint egy figyelmeztetes-lista (utkozesek/kihagyasok a README-hez).
+
+    A kulcs elso eleme a LEKERDEZETT (Karoli-fejezetszammal megegyezo) oldal
+    fejezetszama, mert ugyanaz a zarojeles [fejezet:vers] ertek (pl. "53:4")
+    ket KULONBOZO oldalon is elofordulhat teljesen mas jelentessel: sajat
+    oldalan (pl. a "Psalms 53" oldalon egy belso cim-eltolodas miatt) ES egy
+    masik zsoltar oldalan kereszthivatkozaskent (pl. a "Psalms 54" oldalon a
+    LXX-fejezet-eltolodas miatt) - a lekerdezett fejezet nelkul ezek
+    utkoznenek egy lapos globalis szotarban.
+    """
+    # A studybible.info nyers HTML-jeben a szo elejere irt [fejezet:vers]
+    # zarojel konyvenkent KOVETKEZETESEN vagy a Gorog_LXX_vers, vagy a
+    # Heber_vers oszloppal egyezik (empirikusan ellenorizve: Zsoltaroknal a
+    # Gorog-gal, pl. Zsolt 110:4 -> [109:4]; Joelnel a Heber-rel, pl.
+    # Jóel 3:1 -> [4:1]) - SOHA nem mindkettovel egyszerre egy adott konyvben.
+    # Ezert KET KULON szotar epul (elsodleges: Gorog_LXX_vers, tartalek:
+    # Heber_vers), nem egy kozos - igy a ket oszlop verszam-terei nem
+    # utkozhetnek hamisan (pl. Zsolt 147-nel a Heber_vers ertekei az elso
+    # felben ugyanazt a fejezetszamot hasznaljak, mint a Gorog_LXX_vers a
+    # masodik felben, l. Validacios_naplo/README).
+    karoli_fejezet_re = re.compile(rf'^{re.escape(karoli_konyv_prefix)} (\d+):(\d+)$')
+
+    def gyujt(oszlopnev):
+        renumber_sorok = []
+        egyeb_sorok = []
+        with open(path, encoding="utf-8") as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            for row in reader:
+                igehely = row["Karoli_igehely"]
+                karoli_m = karoli_fejezet_re.match(igehely)
+                if not karoli_m:
+                    continue
+                kert_fejezet = int(karoli_m.group(1))
+                m = GOROG_LXX_VERS_RE.match(row[oszlopnev].strip())
+                if not m:
+                    continue  # pl. korrupt "Psa.Psa.151:x" sor (l. README) - szandekosan kimarad
+                fejezet = int(m.group(1))
+                v1 = int(m.group(2))
+                v2 = int(m.group(3)) if m.group(3) else v1
+                entry = (kert_fejezet, fejezet, v1, v2, igehely)
+                if row["Elteres_tipusa"] == "Renumber":
+                    renumber_sorok.append(entry)
+                else:
+                    egyeb_sorok.append(entry)
+        return renumber_sorok, egyeb_sorok
+
+    figyelmeztetesek = []
+
+    def epit(oszlopnev, cimke):
+        renumber_sorok, egyeb_sorok = gyujt(oszlopnev)
+        lookup = {}
+        for kert_fejezet, fejezet, v1, v2, igehely in renumber_sorok:
+            for v in range(v1, v2 + 1):
+                kulcs = (kert_fejezet, fejezet, v)
+                if kulcs in lookup and lookup[kulcs] != igehely:
+                    figyelmeztetesek.append(
+                        f"UTKOZES (Renumber, {cimke}): {kulcs} mar '{lookup[kulcs]}'-hez rendelve, "
+                        f"ujabb jelolt '{igehely}' figyelmen kivul hagyva"
+                    )
+                    continue
+                lookup[kulcs] = igehely
+        for kert_fejezet, fejezet, v1, v2, igehely in egyeb_sorok:
+            for v in range(v1, v2 + 1):
+                kulcs = (kert_fejezet, fejezet, v)
+                if kulcs in lookup:
+                    if lookup[kulcs] != igehely:
+                        figyelmeztetesek.append(
+                            f"KIHAGYVA (nem-Renumber, {cimke}, mar lefoglalva): {kulcs} -> "
+                            f"'{lookup[kulcs]}' marad ervenyben, NEM '{igehely}'"
+                        )
+                    continue
+                lookup[kulcs] = igehely
+
+        # Cim-felirat-potlas: nehany zsoltarnal (pl. Zsolt 12, 18-21, 30...) a
+        # Karoli maga is ONALLO 1. versnek szamozza a puszta zsoltar-feliratot
+        # (pl. "Zsolt 20:1: Az éneklőmesternek; Dávid zsoltára."), szemben a
+        # tobbsegi esettel, ahol a felirat beleolvad a Karoli 1. versebe vagy
+        # egyaltalan nincs is felirat - emiatt a terkep ILYENKOR NEM
+        # dokumental kulon sort a felirat-vershez (a terkep-generalas csak az
+        # elteres-eseteket rogziti, es ezt a mintat nem ismerte fel). Mivel a
+        # nyers HTML-ben a felirat MINDIG a fejezet elso [fejezet:1] zarojelu
+        # szava, es a Karoli-fejezet TOBBI verse mar dokumentalt egy adott
+        # zarojel-fejezettel (fo), ez biztonsagosan levezethetô: ha egy adott
+        # kert_fejezethez a terkepben dokumentalt LEGKISEBB vers pontosan 2
+        # (azaz nincs sajat 1-es bejegyzes), a hianyzo (fo, 1) kulcsot a
+        # Karoli fejezet 1. versehez rendeljuk.
+        legkisebb_vers = {}
+        for (kf, fo, v), ig in lookup.items():
+            if kf not in legkisebb_vers or v < legkisebb_vers[kf][0]:
+                legkisebb_vers[kf] = (v, fo)
+        for kf, (min_v, fo) in legkisebb_vers.items():
+            if min_v == 2:
+                kulcs1 = (kf, fo, 1)
+                if kulcs1 not in lookup:
+                    lookup[kulcs1] = f"{karoli_konyv_prefix} {kf}:1"
+
+        # Zaro-vers-potlas: sok zsoltarnal (pl. konyv-elvalaszto doxologia,
+        # "Áldott az Úr..." tipusu zaro sor) a terkep a fejezet UTOLSO
+        # Karoli-versehez sem dokumental sort, ugyanazon okbol, mint a
+        # cim-felirat-hianynal (a terkep-generalas nem fedte le a fejezet-
+        # hatarokat teljesen). Ha egy adott kert_fejezetnel a terkepben
+        # dokumentalt LEGNAGYOBB Karoli-vers pontosan eggyel kisebb, mint a
+        # Karoli_1908.tsv-ben tenylegesen letezo utolso vers, a hianyzo
+        # zarojel-kulcsot (ugyanaz a fo, bracket_v+1) a kovetkezo Karoli
+        # vershez rendeljuk.
+        karoli_v_re = re.compile(rf'^{re.escape(karoli_konyv_prefix)} (\d+):(\d+)$')
+        legnagyobb_vers = {}
+        for (kf, fo, bracket_v), ig in lookup.items():
+            m = karoli_v_re.match(ig)
+            if not m:
+                continue
+            karoli_v = int(m.group(2))
+            if kf not in legnagyobb_vers or karoli_v > legnagyobb_vers[kf][0]:
+                legnagyobb_vers[kf] = (karoli_v, fo, bracket_v)
+        karoli_max = load_karoli_max_vers(karoli_1908_path, karoli_konyv_prefix)
+        for kf, (max_karoli_v, fo, bracket_v) in legnagyobb_vers.items():
+            if karoli_max.get(kf) == max_karoli_v + 1:
+                kulcs_uj = (kf, fo, bracket_v + 1)
+                if kulcs_uj not in lookup:
+                    lookup[kulcs_uj] = f"{karoli_konyv_prefix} {kf}:{max_karoli_v + 1}"
+        return lookup
+
+    gorog_lookup = epit("Gorog_LXX_vers", "Gorog")
+    heber_lookup = epit("Heber_vers", "Heber")
+    return (gorog_lookup, heber_lookup), figyelmeztetesek
+
+
+def parse_chapter(html, magyar_konyv, fejezet, vers_lookup=None, hianyzo_kulcsok=None):
+    """Egy fejezet HTML-jebol kinyeri a (Igehely, Strong-szam, Gorog szoalak, Morf kod) sorokat.
+
+    Ha vers_lookup meg van adva, a szo elejere irt `[fejezet:vers]` zarojeles
+    LXX-hivatkozas (ha van) vezerli az Igehely-cimkezest a terkepen keresztul;
+    kulonben (nincs zarojel az adott fejezetben) a nyers oldal-helyi
+    fejezet/vers-szam kerul hasznalatra, ugyanugy mint vers_lookup nelkul.
+    """
     matches = list(VERS_JELOLO_RE.finditer(html))
     rows = []
     for i, m in enumerate(matches):
-        vers_szam = m.group(1)
+        vers_szam = int(m.group(1))
         block_start = m.end()
         block_end = matches[i + 1].start() if i + 1 < len(matches) else len(html)
         block = html[block_start:block_end]
-        igehely = f"{magyar_konyv} {fejezet}:{vers_szam}"
+        aktualis_kulcs = (fejezet, vers_szam)
+        zarojel_volt = False
         for su in SZO_EGYSEG_RE.finditer(block):
             strongs_raw, tvm_raw, greek_raw = su.groups()
             strong_m = STRONG_RE.search(strongs_raw)
@@ -105,9 +280,28 @@ def parse_chapter(html, magyar_konyv, fejezet):
             strong = normalize_strong(strong_m.group(1))
             morf_m = MORF_RE.search(tvm_raw)
             morf = morf_m.group(1).strip() if morf_m else tvm_raw.strip()
-            szo = ZAROJEL_PREFIX_RE.sub("", greek_raw).strip()
+            greek_stripped = greek_raw.strip()
+            zarojel_m = ZAROJEL_PREFIX_RE.match(greek_stripped)
+            if zarojel_m:
+                aktualis_kulcs = (int(zarojel_m.group(1)), int(zarojel_m.group(2)))
+                zarojel_volt = True
+            szo = ZAROJEL_PREFIX_RE.sub("", greek_stripped).strip()
             if not szo:
                 continue
+            if vers_lookup is not None and zarojel_volt:
+                gorog_lookup, heber_lookup = vers_lookup
+                lookup_kulcs = (fejezet, aktualis_kulcs[0], aktualis_kulcs[1])
+                igehely = gorog_lookup.get(lookup_kulcs) or heber_lookup.get(lookup_kulcs)
+                if igehely is None:
+                    # Nincs Karoli-vers-megfeleltetes ehhez az LXX-hivatkozashoz
+                    # (pl. cim-felirat-only LXX-vers vagy a 150. zsoltar utani
+                    # apokrif 151. zsoltar-toldalek) - a szo szandekosan
+                    # kimarad a kimenetbol, l. README.
+                    if hianyzo_kulcsok is not None:
+                        hianyzo_kulcsok.add(lookup_kulcs)
+                    continue
+            else:
+                igehely = f"{magyar_konyv} {fejezet}:{vers_szam}"
             rows.append((igehely, strong, szo, morf))
     return rows
 
@@ -131,6 +325,17 @@ def main():
     ap.add_argument("--fejezet-tol", type=int, dest="fejezet_tol")
     ap.add_argument("--fejezet-ig", type=int, dest="fejezet_ig")
     ap.add_argument("--kimenet", required=True, help="Kimeneti TSV fajl utvonala")
+    ap.add_argument(
+        "--versifikacios-terkep",
+        dest="versifikacios_terkep",
+        help="konkordancia/LXX_versificacios_terkep.tsv utvonala (opcionalis, l. modulszintu docstring)",
+    )
+    ap.add_argument(
+        "--karoli-konyv-prefix",
+        dest="karoli_konyv_prefix",
+        help="Karoli-konyvnev-prefix a terkep Karoli_igehely oszlopahoz, pl. 'Zsolt', 'Jóel' "
+        "(kotelezo, ha --versifikacios-terkep meg van adva)",
+    )
     args = ap.parse_args()
 
     step_kod = ANGOL_NEV_TO_STEP.get(args.konyv)
@@ -140,15 +345,31 @@ def main():
     if not magyar_konyv:
         raise SystemExit(f"'{step_kod}' STEP-kod nem talalhato a {NORMALIZO_TABLA} fajlban")
 
+    vers_lookup = None
+    if args.versifikacios_terkep:
+        if not args.karoli_konyv_prefix:
+            raise SystemExit("--versifikacios-terkep hasznalatahoz --karoli-konyv-prefix is kotelezo")
+        vers_lookup, figyelmeztetesek = load_versifikacios_terkep(
+            args.versifikacios_terkep, args.karoli_konyv_prefix
+        )
+        gorog_n, heber_n = len(vers_lookup[0]), len(vers_lookup[1])
+        print(
+            f"Versifikacios terkep betoltve: {gorog_n} Gorog-kulcs + {heber_n} Heber-kulcs",
+            file=sys.stderr,
+        )
+        for fig in figyelmeztetesek:
+            print(f"  FIGYELMEZTETES: {fig}", file=sys.stderr)
+
     fejezetek = parse_fejezet_lista(args)
 
     all_rows = []
+    hianyzo_kulcsok = set()
     for idx, fejezet in enumerate(fejezetek):
         if idx > 0:
             time.sleep(KERES_KESLELTETES_MP)
         print(f"Letoltes: {args.konyv} {fejezet} ...", file=sys.stderr)
         html = fetch_html(args.konyv, fejezet)
-        rows = parse_chapter(html, magyar_konyv, fejezet)
+        rows = parse_chapter(html, magyar_konyv, fejezet, vers_lookup, hianyzo_kulcsok)
         print(f"  -> {len(rows)} sor ({magyar_konyv} {fejezet})", file=sys.stderr)
         all_rows.extend(rows)
 
@@ -156,6 +377,11 @@ def main():
         writer = csv.writer(f, delimiter="\t", lineterminator="\n")
         writer.writerow(["Igehely", "Strong-szám", "Görög szóalak", "Morfológiai kód"])
         writer.writerows(all_rows)
+
+    if hianyzo_kulcsok:
+        print(f"FIGYELEM: {len(hianyzo_kulcsok)} zarojeles LXX-kulcshoz nem volt terkep-talalat:", file=sys.stderr)
+        for kulcs in sorted(hianyzo_kulcsok):
+            print(f"  {kulcs}", file=sys.stderr)
 
     print(f"Kesz: {len(all_rows)} adatsor -> {args.kimenet}", file=sys.stderr)
 
