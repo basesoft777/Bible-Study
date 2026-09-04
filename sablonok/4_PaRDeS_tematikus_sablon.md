@@ -1,8 +1,14 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
+*v12 — 2026.09.04 (Terminológia-javítás: a v11-ben bevezetett "gloss" szó
+lecserélve "kontextus-jegyzet"-re a 12. pontban és a changelogban — a
+"gloss" szó a projektben már foglalt, a STEPBible/TAHOT/TAGNT angol
+tükörfordítás-oszlopot jelöli [l. PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md],
+a kétféle jelentés keveredése zavaró lett volna)*
+
 *v11 — 2026.09.04 (A 12. pont linkleírása kiegészítve
 motívumnév-felsorolással [a tematikus fájl saját fejléc-címéből] és egy
-rövid, nem-tartalmi gloss-szal a link kontextusához — komplexum-motívumok
+rövid, nem-tartalmi kontextus-jegyzettel a link kontextusához — komplexum-motívumok
 [pl. Isten fiai / Nefilim / Gibborim] esetén mindegyik réteg megnevezve,
 hogy az adott igehelyhez kapcsolódó bővített study olvasója lássa, a
 linkelt tanulmány mely rétegét fedi le a saját verse)*
@@ -187,7 +193,7 @@ Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szüks
   egy rövid jegyzet beszúrva: „📎 Bővebben, önálló tematikus
   feldolgozásban: `[Motívum]_tematikus.md` ([a tematikus study saját
   fejléc-címéből vett motívumnév-felsorolás] — [egy rövid, max.
-  egymondatos gloss arról, mire vonatkozik a linkelt tanulmány lelete,
+  egymondatos kontextus-jegyzet arról, mire vonatkozik a linkelt tanulmány lelete,
   az adott igehely szempontjából])". Ha egy adott bővített
   study 🔗-blokkja nem tartalmazza explicit a motívumot (csak a
   szövegtörzsben szerepel), a jegyzet a study végére, egy „Kapcsolódó
@@ -207,10 +213,10 @@ Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szüks
   komplexum-motívumoknál (pl. „Isten fiai — Nefilim — Gibborim")
   mindegyik réteg megnevezve.
 
-  A gloss nem tartalmi visszaírás: nem visz be új tényt vagy leletet a
+  A kontextus-jegyzet nem tartalmi visszaírás: nem visz be új tényt vagy leletet a
   bővített study-ba, csak megnevezi, mire vonatkozik a linkelt
   tanulmány — ezért nem igényli a „Tartalmi visszaírás" alszakasz
-  propose-then-confirm/audit-fegyelmét. Ha a gloss megfogalmazásához
+  propose-then-confirm/audit-fegyelmét. Ha a kontextus-jegyzet megfogalmazásához
   olyan tényt kellene state-elni, ami maga is új igehely-szintű lelet
   (nem csak a linkelt study tartalmának egy mondatos összefoglalása),
   az már a „Tartalmi visszaírás" hatálya alá tartozik, és külön
