@@ -1,5 +1,8 @@
 # 2. Bővített PaRDeS sablon — teljes, részletes verzió
 
+*v17 — 2026.09.03 (A "2/a-2/e technikasor" hivatkozások "2/a-2/f"-re
+frissítve a 4. és 7. pontban, a protokoll v5-ös új 2/f lépésének
+[rögzült szópár együttes-előfordulás] megfelelően)*
 *v16 — 2026.09.03 (A "13-as kör" hivatkozások eltávolítva/frissítve a 4.
 és 7. pontban — a `Javasolt_sablon_kiegeszites_BDB_arnyalat.md` v4-es
 döntése szerint a 2/a-2/e technikasor mostantól minden triázsolt
@@ -114,13 +117,14 @@ kiválasztott kapcsolat [Claude-tudás] eredetű. (Egy ritka szó néhány előf
 pontosabb és erősebb kapcsolódást adhat, mint egy tartalmilag hasonló, de lexikailag
 független párhuzam.)
 
-**A 2/a-2/e technikasor kapcsolódása:** minden, a fenti (2. pont)
+**A 2/a-2/f technikasor kapcsolódása:** minden, a fenti (2. pont)
 triázson átment kulcsszóra kötelezően lefut a determinisztikus
-BDB/TBESH-protokoll 2/a-2/e technikasora is (2/a BDB-ellenőrzés, 2/b
+BDB/TBESH-protokoll 2/a-2/f technikasora is (2/a BDB-ellenőrzés, 2/b
 Origin-lánc, 2/c teljes-előfordulás feltárás, 2/d motívum-azonosság,
-2/e LXX-híd) — ez a MINŐSÍTŐ funkció, a fenti négyforrásos FELFEDEZŐ
-keresésen túl, nem helyette. Az eredménye a 7. pontban (Lexikai audit)
-dokumentálandó. (2026.09.03-ig ezt egy külön "13-as kör" motívum-lista
+2/e LXX-híd, 2/f rögzült szópár együttes-előfordulás) — ez a MINŐSÍTŐ
+funkció, a fenti négyforrásos FELFEDEZŐ keresésen túl, nem helyette. Az
+eredménye a 7. pontban (Lexikai audit) dokumentálandó. (2026.09.03-ig
+ezt egy külön "13-as kör" motívum-lista
 szűkítette volna — ez elvetve, l. `Javasolt_sablon_kiegeszites_BDB_
 arnyalat.md` 8. pont.)
 
@@ -207,7 +211,7 @@ Zárja a tanulmányt 2-3 konkrét kérdés megválaszolásával:
 
 **Aktiválási feltétel:** illeszd be, ha a tanulmány bármely kulcsszavára
 lefutott a determinisztikus BDB/TBESH-protokoll (`Javasolt_sablon_
-kiegeszites_BDB_arnyalat.md`) 2/a-2/e technikasora — ez a 2. pont
+kiegeszites_BDB_arnyalat.md`) 2/a-2/f technikasora — ez a 2. pont
 triázsán átment MINDEN kulcsszónál kötelező (2026.09.03-tól nincs külön
 "13-as kör" szűrés). Ha a tanulmánynak nincs egyetlen kulcsszava sem
 (elméleti eset, mivel a triázs mindig legalább egy szót kiválaszt), ezt
@@ -225,7 +229,7 @@ rögzítendő, megnevezett indokkal (pl. "BDB szerint a gyök ismeretlen, a
 Strong-szótár spekulatív hivatkozását nem építettük be — l.
 forrás-hivatkozási fegyelem"). Ez nem redundáns a kereszthivatkozás-
 naplóval (ami a 4. pont felfedező keresésének teljes nyers anyagát
-tartalmazza) — ez a 2/a-2/e lexikai audit saját, tömör összegzése.
+tartalmazza) — ez a 2/a-2/f lexikai audit saját, tömör összegzése.
 
 **Forrás-hivatkozási fegyelem (kötelező minden sorban):** minden fenti
 cellánál explicit jelölve, honnan jött az adat — közvetlenül a saját
