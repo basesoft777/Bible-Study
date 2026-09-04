@@ -1,5 +1,11 @@
 # 1 Mózes 1:1 — Bővített PaRDeS tanulmány
 
+*v6 — 2026.09.04 (Retroaktív 2/f-audit [protokoll v5] elvégezve: a
+study szövegében ténylegesen együtt szereplő הַשָּׁמַיִם/הָאָרֶץ merizmus
+teljes körű együttes-előfordulás ellenőrzése — triviális eredmény, 180
+igehely, nincs beépítendő tartalmi lelet. Dokumentálva a "## 7."
+auditnaplóban.)*
+
 *v5 — 2026.09.02 (teljes lexikai újraaudit: mind az 5 tartalmi szó [בְּרֵאשִׁית,
 בָּרָא, אֱלֹהִים, הַשָּׁמַיִם, הָאָרֶץ] önállóan, a teljes BDB-szócikkből
 ellenőrizve, nem a meglévő kereszthivatkozásokból kiindulva. Eredmény: 4 szónál
@@ -212,5 +218,7 @@ Hasonló szerkezetű érvelés, mint Haginnél, de Capps kifejezetten a "Legyen 
 | Zsid 1:10 | ἀρχή (G0746) | igen | igen | ✅ megerősítve, ÚJ idézetként felvéve |
 | Kol 1:16 | ἀρχή (G0746) | igen | **NEM** (3. jelentés ott) | ⚠️ hamis pozitív, dokumentálva |
 | Zsid 11:3 | — | — | — | nincs releváns közös szó (csak generikus θεός) |
+
+**2/f — Rögzült szópár együttes-előfordulás ellenőrzése (ÚJ, 2026.09.04, retroaktív audit a protokoll v5 szerint):** a study szövegében ténylegesen együtt szereplő szópár a הַשָּׁמַיִם/הָאָרֶץ ("az egek és a föld") merizmus. Teljes körű ellenőrzés (`TAHOT_kivonat.tsv`): a két szó **180 igehelyen** fordul elő együtt ugyanabban a versben — ez a gyakoriság kizárja, hogy rejtett, tudatosan rögzült szópár-mintázatról legyen szó (szemben a תהו/בהו 3 előfordulásos esetével); a merizmus egyszerűen a "teljes kozmosz" kifejezésének standard bibliai formája. Nincs beépítendő tartalmi lelet.
 
 **Amit ez a módszer NEM tett meg** (átláthatóság kedvéért): nem futott le formális "13-as kör" szűrés (ez a tanulmány nem tagja annak a listának); a motívumnapló (`PaRDeS_motivumok.md`) ÉRINTETLEN maradt — az ἀρχή-lelet oda még nem került be, ez külön, még hátralévő lépés.
