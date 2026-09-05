@@ -1,89 +1,58 @@
-# LXX kivonat — 1Mózes (pilot)
+# LXX kivonat — Genezis (1Móz, teljes könyv)
 
 Ez a dokumentum a `konkordancia/LXX_kivonat_Genezis.tsv` fájlt írja le: forrás,
-letöltés dátuma, licenc-státusz, sor-szám és a validációs eredmény.
-
-**Ez egy szűkített, 1Mózes-only pilot a `Validacios_naplo.md`-ben rögzített
-LXX-fázisolt terv 3. fázisából.** Teljes LXX-lefedettség (51 könyv) külön,
-jövőbeli feladat, csak sikeres pilot után.
+licenc-státusz, oszlopok, lefedettség és ismert nyitott kérdések.
 
 ## Forrás
 
-- **Weboldal:** [studybible.info](https://studybible.info/), verzió: `LXX_WH`
-  ("Septuagint OT and Westcott-Hort Greek NT")
-- **URL-minta:** `https://studybible.info/LXX_WH/Genesis%20<fejezetszám>`
-  (1-től 50-ig, fejezetenként külön oldal — a `https://studybible.info/LXX_WH/Genesis`
-  URL önmagában csak az 1. fejezetet adja vissza, NEM a teljes könyvet)
-- **Letöltés dátuma:** 2026-09-02
+- **Weboldalak:** [studybible.info](https://studybible.info/) `LXX_WH` (Septuagint
+  OT, Westcott-Hort, elsődleges — megtartja a morfológiai kódot) **+**
+  `interlinear` (ABP — Apostolic Bible Polyglot, kiegészítő forrás azokhoz a
+  szavakhoz, amiket az LXX_WH oldal nem tagged Strong-számmal)
+- **Szkript:** `eszkozok/lxx_kivonat_fetch_v2.py --konyv Genesis --fejezet-tol 1
+  --fejezet-ig 50 --versifikacios-terkep konkordancia/LXX_versificacios_terkep.tsv
+  --karoli-konyv-prefix 1Móz`
+- **Letöltés dátuma:** 2026-09-05
 
 ## Licenc-státusz — explicit gap
 
-A studybible.info oldalon (sem a főoldalon/about-on, sem a `/version/LXX_WH`
-verzió-leíró oldalon) **nem található explicit copyright- vagy
-licenc-nyilatkozat** a Septuaginta-szövegre vagy a Strong-taggelésre
-vonatkozóan. A `/version/LXX_WH` oldal csak annyit közöl, hogy a szöveg
-"Septuagint LXX Greek Old Testament keyed to Strong's numbers with complete
-parsing information" — forrást vagy jogi státuszt nem jelez.
+A studybible.info-n (sem az LXX_WH, sem az ABP verziónál) nem található explicit
+copyright- vagy licencnyilatkozat a görög szövegre vagy a Strong-taggelésre
+vonatkozóan. **Ez a fájl kizárólag belső munkafolyamat-célú, nem publikus**
+kimenet, amíg a licenckérdés nem tisztázódik.
 
-**Ez nyitott kérdés marad.** A LXX görög alapszövege (Rahlfs/Swete-hagyomány)
-önmagában közkincs, de a Strong-számozás és morfológiai kódolás hozzáadott
-szerkesztői munka lehet, aminek jogi státusza a studybible.info-n nincs
-dokumentálva. Mielőtt ez az adat bármilyen publikált vagy továbbterjesztett
-kimenetbe kerülne, a licenc-kérdést tisztázni kell (pl. a studybible.info
-üzemeltetőjének megkeresésével, vagy alternatív, explicit CC-licencű LXX-forrás
-keresésével, mint pl. a Rahlfs-LXX STEPBible-féle Strong-taggelt változata,
-amit a `Validacios_naplo.md` 1. fázisa már azonosított jövőbeli alternatívaként).
-
-## Módszertan
-
-Minden 1Mózes-fejezet (1-50) külön HTML-oldalról lett letöltve
-(`Genesis%20<N>`), majd szavankénti bontásban kinyerve: Strong-szám
-(`G####`/`H####`), morfológiai kód (pl. `N-DSF`, `V-AAI-3S`), görög szóalak.
-A versszám-hivatkozás két HTML-mintában fordul elő a forrásoldalon
-(`<span class="ref greek">N</span>` és `<span class="ref greek"><a ...>N</a></span>`
-— utóbbi olyan verseknél, amiknek van ÚSZ-parallel-hivatkozása) — a parser
-mindkettőt kezeli.
-
-Az "Genesis N:M" hivatkozás "1Móz N:M" formátumra alakítása a
-`Konyv_normalizalo_tabla.tsv` alapján történt (Gen → 1Móz, közvetlen 1:1
-fejezet/vers-megfeleltetés).
-
-## Kimeneti fájl és oszlopok
-
-**`LXX_kivonat_Genezis.tsv`** (4 oszlop):
-```
-Igehely | Strong-szám | Görög szóalak | Morfológiai kód
-```
-
-Külön fájl a `TAGNT_kivonat.tsv`-től (nem lett összemosva vele), mert ez
-LXX-előfordulás (ÓSZ-görög), nem ÚSZ-előfordulás — a két adat összemosása
-torzítaná a jövőbeli globális gyakoriság-számításokat.
-
-## Sor-szám
-
-- **29 727 adatsor** + 1 fejléc-sor = 29 728 sor összesen.
-- A tervezett becslés (kb. 15 000-20 000 sor, 1533 vers × 8-15 szó) alacsonyabb
-  volt a ténylegesnél — a LXX görög szövege verzenként átlagosan kb. 19,4 szót
-  tartalmaz (jóval több önálló szótoken, mint a héber, mert a görög
-  nyelvtan több névelőt, kötőszót és elöljárószót különít el önálló szóként).
-  A gyakorlati eredmény nagyságrendileg nem tér el a becsléstől, csak a
-  becslés volt alacsony — nincs jele parszolási hibának.
-- Fejezetenkénti vers-szám 1:1 egyezik a `Karoli_1908.tsv`-ben szereplő
-  1Mózes-vers-számokkal minden fejezetnél (1-50), összesen 1533 vers —
-  ez megerősíti, hogy a parser helyesen dolgozta fel mind az 50 fejezetet
-  (két fejezet, a 28. és több más, kezdetben 0 sort adott egy HTML-mintázat-
-  eltérés miatt, ami javítva lett és utólag ellenőrizve).
-
-## Validáció
-
-```bash
-grep "^1Móz 1:1" konkordancia/LXX_kivonat_Genezis.tsv
-```
-
-Elvárt és megerősített eredmény: a sorok között szerepel `G0746` (ἀρχή —
-1Móz 1:1 "kezdetben" / Ján 1:1 "kezdetben" közös LXX-ÚSZ szóhasználat,
-l. a fázis motivációját a `Validacios_naplo.md`-ben és a code-promptban).
+## Oszlopok
 
 ```
-1Móz 1:1	G0746	αρχη	N-DSF
+Igehely | Strong-szám | Görög szóalak | Morfológiai kód | Forrás
 ```
+
+A `Forrás` oszlop értékei soronként:
+- `LXX_WH` — a szó eredetileg is Strong-taggelt volt az LXX_WH oldalon
+- `ABP-pótolt` — a Strong-számot az ABP oldalról pótoltuk, kizárólag akkor, ha a
+  közvetlen szövegkörnyezet (előző/következő Strong-szám) egyértelműen egyezett
+- `ELTERO_SZOVEGALAP` — a vers szövegcsalád-eltérés miatt jelzett rése (nincs
+  pótlás, mert a két forrás szórendje/szóhasználata túl eltér ahhoz, hogy
+  biztonságosan illesszük)
+- *(üres)* — sem az LXX_WH, sem az ABP nem ad Strong-számot erre a szóra
+  (jellemzően valódi tulajdonnév)
+
+## Sor-szám és lefedettség
+
+- **32 565 adatsor** + fejléc.
+- **94,6%** lefedettség ((LXX_WH + ABP-pótolt) / összes sor).
+
+## Ismert nyitott kérdések
+
+- **1Móz 31:55–32:32 (és kisebb mértékben 5:32/6:1) fejezethatár-eltolódás:** a
+  studybible.info nyers oldal-helyi vers-számozása ezen a szakaszon nem egyezik a
+  Károlival — amit a raw oldal "32:1"-nek jelöl, az valójában (a
+  `LXX_versificacios_terkep.tsv` szerint) Károli 31:55, és a további versek is
+  +1 eltolással követik egészen 32:32-ig. Ez a `--versifikacios-terkep` opcióval
+  helyesen fel van oldva (megerősítve: mind az 5 érintett vers LXX_WH-natív
+  szószáma pontosan egyezik a korábbi, kézzel validált adatállapottal) — ez a
+  konkrét eset azért érdemel külön említést, mert **Genezisben ez az egyetlen
+  ismert ilyen jellegű eltolódás**, nem általános mintázat a könyvben.
+- 204 sor esetén sem az LXX_WH, sem az ABP nem ad Strong-számot (tulajdonnevek).
+- 0 db betű-utótagos vers-albontási kizárás (l. `Betu_utotag_kizarva.tsv`) —
+  Genezist ez a jelenség nem érinti.
