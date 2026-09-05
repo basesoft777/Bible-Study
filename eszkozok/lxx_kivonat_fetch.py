@@ -69,7 +69,7 @@ SZO_EGYSEG_RE = re.compile(
 )
 STRONG_RE = re.compile(r'([GH]\d+)')
 MORF_RE = re.compile(r'>([^<>]+)</a>')
-ZAROJEL_PREFIX_RE = re.compile(r'^\[(\d+):(\d+)\]\s*')
+ZAROJEL_PREFIX_RE = re.compile(r'^\[(\d+):(\d+)[^\]]*\]\s*')
 GOROG_LXX_VERS_RE = re.compile(r'^[A-Za-z]+\.(\d+):(\d+)(?:-(\d+))?[a-z]?$')
 
 
@@ -124,6 +124,28 @@ def load_karoli_max_vers(path, karoli_konyv_prefix):
     return max_vers
 
 
+def load_karoli_letezo_igehelyek(path, karoli_konyv_prefix):
+    """A Karoli_1908.tsv-ben ENYLEGESEN letezo Igehely-ertekek halmaza egy konyvre.
+
+    Pl. Eszter csak 10 fejezetet tartalmaz a protestans (nem-deuterokanoni)
+    Karoliban - a versifikacios-terkep nehany sora (a gorog apokrif
+    toldalekokhoz, pl. "Eszt 12:1"-"Eszt 16:x") olyan Karoli_igehely erteket
+    ad meg celkent, ami a valosagban SOHA nem letezett a Karoliban. Ezt a
+    halmazt hasznalva a load_versifikacios_terkep() ki tudja szurni az ilyen,
+    fabrikalt cel-hivatkozasu sorokat, mielott azok a keresoszotarba
+    kerulnenek (l. ott a hasznalatot).
+    """
+    igehely_re = re.compile(rf'^{re.escape(karoli_konyv_prefix)} \d+:\d+$')
+    letezo = set()
+    with open(path, encoding="utf-8") as f:
+        reader = csv.reader(f, delimiter="\t")
+        next(reader, None)
+        for row in reader:
+            if row and igehely_re.match(row[0]):
+                letezo.add(row[0])
+    return letezo
+
+
 def load_versifikacios_terkep(path, karoli_konyv_prefix, karoli_1908_path=KAROLI_1908_UTVONAL):
     """Betolti a LXX_versificacios_terkep.tsv-t egy adott Karoli-konyvre (pl. 'Zsolt', 'Jóel').
 
@@ -149,6 +171,7 @@ def load_versifikacios_terkep(path, karoli_konyv_prefix, karoli_1908_path=KAROLI
     # felben ugyanazt a fejezetszamot hasznaljak, mint a Gorog_LXX_vers a
     # masodik felben, l. Validacios_naplo/README).
     karoli_fejezet_re = re.compile(rf'^{re.escape(karoli_konyv_prefix)} (\d+):(\d+)$')
+    letezo_igehelyek = load_karoli_letezo_igehelyek(karoli_1908_path, karoli_konyv_prefix)
 
     def gyujt(oszlopnev, cimke):
         renumber_sorok = []
@@ -159,6 +182,22 @@ def load_versifikacios_terkep(path, karoli_konyv_prefix, karoli_1908_path=KAROLI
                 igehely = row["Karoli_igehely"]
                 karoli_m = karoli_fejezet_re.match(igehely)
                 if not karoli_m:
+                    continue
+                if igehely not in letezo_igehelyek:
+                    # A terkep celkent olyan "Karoli-verset" ad meg, ami a
+                    # valosagban SOHA nem letezett a Karoli_1908.tsv-ben (pl.
+                    # a gorog apokrif Eszter-toldalekok "Eszt 12:1".."Eszt
+                    # 16:x" cimkei - a protestans Karoli csak 10 fejezetet
+                    # tartalmaz Eszterbol). Ezt a sort SOHA nem szabad
+                    # indexelni, kulonben fabrikalt, nem-letezo Igehely-
+                    # cimke kerulne a vegso kimenetbe (l. Zsolt 151 mintajara:
+                    # ha nincs valodi Karoli-cel, a szonak uresen kell
+                    # maradnia, nem egy kitalalt cimke alatt megjelennie).
+                    figyelmeztetesek.append(
+                        f"KIHAGYVA (nem letezik a Karoliban, {cimke}): '{igehely}' "
+                        f"nem valodi Karoli-vers - a rea mutato zarojel-hivatkozas "
+                        f"uresen marad"
+                    )
                     continue
                 # FONTOS: ha EZ az oszlop (Gorog/Heber) ugyis megegyezik mar
                 # a Karolival ehhez a sorhoz (a Karoli_egyezik_hol felsorolja),
