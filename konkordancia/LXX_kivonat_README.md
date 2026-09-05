@@ -184,6 +184,25 @@ jelenség.
 - **Eszter, Dániel** — a görög apokrif toldalékok (Eszter 11-16, Zsuzsanna,
   Bél és a sárkány, Azarjás imája) helyesen kizárva, nem fabrikálnak nem
   létező Károli-verscímkét.
+- **Dániel 3/4 fejezethatár:** a nyers `studybible.info/LXX_WH/Daniel 4` oldal
+  nem ad zárójeles kereszthivatkozást, ezért a `LXX_versificacios_terkep.tsv`
+  automatikus lookupja (ami csak zárójel esetén lép működésbe) itt sosem
+  aktiválódott, holott a térkép egy valódi, konzisztens −3 eltolódást
+  dokumentál: a nyers oldal saját "4:1"–"4:3" verse valójában Károli
+  "3:31"–"3:33", a nyers "4:4"–"4:37" pedig Károli "4:1"–"4:34" (tartalmilag
+  egyeztetve: nyers 4:1 = "Nabukodonozor... békesség adassék néktek" [a
+  levél köszöntése, Károli 3:31], nyers 4:4 = "Én Nabukodonozor békében
+  valék..." [pontosan Károli 4:1], nyers 4:34 = "...szemeimet az égre
+  emelém..." [pontosan Károli 4:31]). Emiatt korábban 1078 sor volt tévesen
+  címkézve, és Károli 3:31–33 teljesen hiányzott a kimenetből. Javítva egy
+  kizárólag Dániel 4. fejezetére (nyers 1-37. vers) vonatkozó, kézi
+  eltolás-szabállyal (`eszkozok/lxx_kivonat_fetch_v2.py`
+  `daniel_4_eltolas()`) — a könyv más része nem érintett. Ez a fajta,
+  zárójel nélküli, de tartalmilag egyeztethető eltolódás **eltér** a fent
+  említett, valóban rekonstruálhatatlan esetektől (betű-utótag, 1 Királyok
+  Miscellanies) — ott a nyers oldal önmagában nem ad elég információt, itt
+  viszont igen, csak a versifikációs térkép nem tudta felhasználni zárójel
+  hiányában.
 - **1 Királyok** — 44 térkép-sor explicit kizárva a
   `Nem_parszolhato_terkep_ertekek.tsv`-n keresztül: ezek a Jeroboám
   királyságáról szóló elbeszélés LXX-beli, a maszoretai szövegtől jelentősen

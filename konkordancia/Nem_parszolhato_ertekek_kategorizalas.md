@@ -46,13 +46,19 @@ utóvizsgálatot.
   parszolva, mindkettőt ugyanarra a Károli-célra indexelve.
 - **Dániel** (`Dan.4:7 / 4:10` stílus, 34 sor, a kategória zöme): a nyers
   `Daniel 4` oldalon **egyetlen zárójel sem található** (0 db, ellenőrizve).
-  Ez azt jelenti, hogy ennél a könyvnél ez a fajta javítás **nem alkalmazható**
-  — de emellett egy **külön, eddig fel nem tárt kérdést** vet fel: ha Dániel 4.
-  fejezetében valóban van egy számozási eltolódás (amit a térkép dokumentál),
-  de az oldal nem jelzi zárójellel, akkor ez a tartalom jelenleg a nyers
-  oldal-helyi számozással kerül ki — **ismeretlen, hogy ez helyes-e vagy
-  csendben hibás**. Ezt **nem ellenőriztem tovább** (túlmutat a mostani kör
-  keretein), de érdemes lenne külön megnézni Dániel 4. fejezetét.
+  Ez azt jelenti, hogy ennél a könyvnél a Nehémiásnál javasolt "oszd ketté a
+  '/'-t" mechanizmus **nem alkalmazható**. **Frissítés (utólagos, külön
+  körben lezárva):** a felvetett kérdés — hogy a zárójel hiányában a nyers
+  oldal-helyi számozás helyes-e — valóban **nem** volt helyes: tartalmi
+  egyeztetéssel megerősítve egy konzisztens −3 eltolódást találtunk (1078
+  sor tévesen címkézve, Károli 3:31–33 teljesen hiányzott). Ez a `Nehémiás`
+  esettől eltérő módon lett javítva: mivel nem a "/" mindkét fele volt
+  ténylegesen jelen a nyers oldalon (egyik sem, csak a térkép Heber_vers/
+  Latin_vers oszlopa dokumentálta az eltolódást), a `load_versifikacios_terkep()`
+  általános mechanizmusa helyett egy **kizárólag Dániel 4. fejezetére szóló,
+  kézi eltolás-szabály** oldotta meg (`eszkozok/lxx_kivonat_fetch_v2.py`
+  `daniel_4_eltolas()`) — l. a `LXX_kivonat_README.md` Dániel-bekezdését a
+  részletekért.
 - **1Móz** (1 sor, `Gen.2:25 / 3:1a`): egyedi eset, nem vizsgáltam külön —
   túl kevés előfordulás ahhoz, hogy megérje.
 
@@ -138,10 +144,10 @@ elfogadott hiányként dokumentálva lezárni, a 2/2b/2c/3 családdal együtt.
   ténylegesen mindkét felet külön zárójelként adja — ez egy jövőbeli, célzott
   kör tárgya lehetne, DE csak könyvenkénti ellenőrzéssel (a Dániel-negatív
   eredmény mutatja, hogy nem általánosítható).
-- **Külön, a jelen kör keretein túlmutató nyitott kérdés:** Dániel 4.
-  fejezetének számozása — a térkép szerint van eltolódás, de a nyers oldal
-  nem jelzi zárójellel, így nem tudni, hogy a jelenlegi kimenet helyes-e.
-  Érdemes lenne külön ellenőrizni.
+- **Dániel 4. fejezet — lezárva, külön körben javítva:** a felvetett nyitott
+  kérdés (van-e valódi eltolódás, és helyes-e a jelenlegi kimenet) tisztázva:
+  igen, valódi, tartalmilag megerősített −3 eltolódás volt, mostanra kézi
+  eltolás-szabállyal javítva (l. `LXX_kivonat_README.md` Dániel-bekezdése).
 - **Minden más kategória (2, 2b, 2c, 3, 4a, 4b, 5, 7 — összesen 87 sor):**
   javaslom véglegesen, dokumentáltan elfogadott hiányként lezárni, ugyanabba
   a "nem rekonstruálható a nyers oldalból" csoportba sorolva, mint a

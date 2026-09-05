@@ -306,6 +306,45 @@ def egyeztet_es_potol(lxx_szavak, abp_szavak, log_prefix, figyelmeztetesek):
     return eredmeny
 
 
+def daniel_4_eltolas(fejezet, vers_szam):
+    """Dan konyv, nyers oldal-helyi 4. fejezet 1-37. verse -> Karoli 3:31-33
+    illetve 4:1-34 (konzisztens -3 eltolodas).
+
+    A nyers studybible.info/LXX_WH/Daniel 4 oldal NEM ad zarojeles
+    kereszthivatkozast (0 db zarojel a teljes fejezetben - ellenorizve), igy a
+    LXX_versificacios_terkep.tsv automatikus lookupja soha nem lep mukodesbe
+    (az csak zarojel eseten aktivalodik). A terkep sajat sorai (Heber_vers/
+    Latin_vers oszlopok) DOKUMENTALJAK az eltolodast, de ezeket a bracket
+    hianyaban semmi nem hasznalja fel - emiatt a kimenet eddig a nyers
+    oldal-helyi szamozast hasznalta kozvetlenul, ami hibas volt.
+
+    Tartalmilag egyeztetve (l. beszelgetes): a nyers "4:1" a level koszontese
+    ("Nabukodonozor kiraly... bekesseg adassek nektek"), ami a Karoliban meg
+    a 3. fejezet zaro verse (3:31); a nyers "4:4" ("En Nabukodonozor bekeben
+    valek...") pontosan egyezik Karoli 4:1-gyel; a nyers "4:34" ("...
+    szemeimet az egre emelem...") pontosan egyezik Karoli 4:31-gyel.
+
+    Csak Dan konyv 4. fejezetere, csak az 1-37. nyers versre vonatkozik - mas
+    konyvet/fejezetet nem erint.
+    """
+    if fejezet != 4 or not (1 <= vers_szam <= 37):
+        return None
+    if vers_szam <= 3:
+        return (3, vers_szam + 30)
+    return (4, vers_szam - 3)
+
+
+# Konyv-specifikus, kezi fejezethatar-eltolas-szabalyok azokra az ismert
+# esetekre, ahol a nyers oldal nem ad zarojelet (a LXX_versificacios_terkep.tsv
+# automatikus lookupja emiatt sosem aktivalodik), DE tartalmilag egyeztetett,
+# konzisztens eltolodas van a nyers oldal-helyi es a Karoli-szamozas kozott.
+# Minden fuggveny (fejezet, vers_szam) -> (karoli_fejezet, karoli_vers) vagy
+# None (ha nem erintett) alairasu.
+KEZI_ELTOLASOK = {
+    "Daniel": daniel_4_eltolas,
+}
+
+
 def parse_fejezet_lista(args):
     if args.fejezetek:
         return [int(x) for x in args.fejezetek.split(",") if x.strip()]
@@ -411,7 +450,12 @@ def main():
                         hianyzo_kulcsok.add(lookup_kulcs)
                         continue
                 else:
-                    igehely = f"{magyar_konyv} {fejezet}:{vers_szam}"
+                    kezi_fn = KEZI_ELTOLASOK.get(args.konyv)
+                    kezi_cel = kezi_fn(fejezet, vers_szam) if kezi_fn else None
+                    if kezi_cel is not None:
+                        igehely = f"{magyar_konyv} {kezi_cel[0]}:{kezi_cel[1]}"
+                    else:
+                        igehely = f"{magyar_konyv} {fejezet}:{vers_szam}"
                 all_rows.append((igehely, strong or "", szo, sz.morf or "", forras))
                 fejezet_sor_szam += 1
                 if forras == "LXX_WH":
