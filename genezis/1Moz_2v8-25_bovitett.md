@@ -237,3 +237,11 @@ A 2/a-2/e technikasor lefutott a study mind a 14 kulcsszavára. 2026.09.05-i ret
 | עֲרוּמִּים / arummím (H6174) | ✅ | ↔ H6175 (3:1) — Strong közös gyököt (H6191) jelez, BDB NEM erősíti meg | 16 | ✅ irodalmi szójáték, nem lexikai gyök (l. Remez) | ✅ 1Móz 2:9 ↔ Jel 22:2 (μέσῳ) | beépítve, etimológiai fenntartással |
 
 **Forrás-hivatkozási fegyelem:** `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv`, `TAHOT_kivonat.tsv`, `TAGNT_kivonat.tsv`, `LXX_kivonat_Genezis.tsv`.
+
+---
+
+*Belső önellenőrzés: kiejtés ✓, ⚠️ + nevesített képviselők ✓, arányok ✓, kereszthivatkozás-formátum, cím, idézett szöveg és kulcsszó-zárójel ✓, motívum-napló-frissítés szükségessége jelezve ✓, Sod fegyelmezettsége (a "titok" kifejezetten a szövegből, Ef 5:32-ből fakad, nem önkényes) ✓, fordítás-szabály ✓, igehely-formátum ✓, 0. és 1/b. pontok indoklással aktiválva ✓.*
+
+---
+
+**Sorozat-folytatás:** a logikailag következő szakasz **1Mózes 3** (a bűneset elbeszélése) — a 2:25 záró mondata (mezítelenség szégyen nélkül) közvetlenül ebbe vezet át.

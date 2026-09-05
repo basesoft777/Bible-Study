@@ -222,3 +222,14 @@ A 2/a-2/e technikasor lefutott a study mind a 11 kulcsszó-sorára. 2026.09.05-i
 | חֵן / chen (H2580) | ✅ | ← H2603 (*chanan*, "kegyelmesnek lenni") triviális | 69 | nincs önálló | nem releváns | megerősítve |
 
 **Forrás-hivatkozási fegyelem:** `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv`, `TAHOT_kivonat.tsv`.
+
+---
+
+**Motívum-napló frissítésre váró elemek** (a napló tényleges frissítése megerősítésed után):
+- „bűn következményeinek gyűrűzése" — 3. előfordulás (immár egyetemes, "kol basar" szintű) → **eléri a ⭐ küszöböt**
+- „jetzer — a szív romlott hajlama" — új motívum, rokon a por/formáltatás gyökkel (יצ״ר), de új szemantikai mezőben
+- „Isten fájdalma (עצ״ב) — a kimondott átok visszhangja Istenben" — új Sod-motívum, 3:16-17 ↔ 6:6
+- „chen — az első kegyelem-előfordulás" — új Szoteriológia-motívum, előremutat Ef 2:8-ra
+- „Isten fiai — angyali/Séthita vita" — új ⚠️ motívum, kapcsolódik Júd 1:6, 2Pét 2:4-5-höz
+
+Szólj, ha ezeket rögzítsem a `PaRDeS_motivumok.md`-ben, vagy ha előbb finomítanál valamit a tanulmányon.

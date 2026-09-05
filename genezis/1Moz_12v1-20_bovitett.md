@@ -213,3 +213,10 @@ A 2/a-2/e technikasor lefutott a study kulcsszavaira. 2026.09.05-i retroaktív e
 | נְגָעִים גְּדֹלִים (H5061+H1419) | ✅ | H5061←H5060 "érinteni" triviális; H1419←H1431 (l. fent) | 78 / 526 | nincs önálló | nem releváns | megerősítve |
 
 **Forrás-hivatkozási fegyelem:** `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv`, `TAHOT_kivonat.tsv`.
+
+**Elutasított lelet (LXX-kereszthivatkozás):**
+- גּוֹי (H1471, "nemzet") ↔ Gal 3:8 ἔθνη (G1484): valódi LXX-fordítási lánc, de nagyon gyakori szó (164 NT-előfordulás), és Ábrám saját leendő nemzetére, míg Pálnál a *más* nemzetekre vonatkozik — terminológiai visszhang, nem tartalmi lelet, kihagyva.
+
+---
+
+*Belső önellenőrzés elvégezve: kiejtés minden héber szónál feltüntetve; ⚠️ pontok nevesített képviselőkkel; arányok betartva (Peshat/Drash legrészletesebb, Sod tömör); 4 formátum és cím szabályszerű; lexikai vs. tematikus kapcsolatok explicit elkülönítve (Gal 3:8 és 4:26 lexikai, a József-előremutatás és nővér-motívum tematikus/nyitott szálként jelölve); terminológia (Szent Szellem, spirituális) — nem volt releváns előfordulás ebben a szakaszban; igehely-formátum egységes.*
