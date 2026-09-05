@@ -1,5 +1,13 @@
 # 2. Bővített PaRDeS sablon — teljes, részletes verzió
 
+*v18 — 2026.09.05 (Új "Tartalmi visszaírás lezárt tematikus
+tanulmányba" alszakasz a 7. pont végén — a tematikus sablon v10-es,
+csak tematikus→bővített irányú visszaírási szabályának tükör-párja:
+ha a bővített study saját 2/a-2/f auditja igehely-szintű leletet talál
+egy már lezárt tematikus tanulmány témájában, az a lelet — propose-
+then-confirm fegyelemmel — a lezárt tematikus study szövegébe is
+bekerül, nem csak a bővítettébe. Eddig ez a kapcsolat csak egyirányú
+volt [3/c terv, retroaktív auditból felmerült hiány].)*
 *v17 — 2026.09.03 (A "2/a-2/e technikasor" hivatkozások "2/a-2/f"-re
 frissítve a 4. és 7. pontban, a protokoll v5-ös új 2/f lépésének
 [rögzült szópár együttes-előfordulás] megfelelően)*
@@ -230,6 +238,32 @@ Strong-szótár spekulatív hivatkozását nem építettük be — l.
 forrás-hivatkozási fegyelem"). Ez nem redundáns a kereszthivatkozás-
 naplóval (ami a 4. pont felfedező keresésének teljes nyers anyagát
 tartalmazza) — ez a 2/a-2/f lexikai audit saját, tömör összegzése.
+
+**Tartalmi visszaírás lezárt tematikus tanulmányba:** ha a fenti
+technikasor önmagában is megálló, igehely-szintű lexikai vagy
+exegetikai leletet hoz elő (pl. Origin-lánc-eredmény, LXX-
+kereszthivatkozás, rögzült szópár-előfordulás) egy olyan motívumhoz,
+aminek **már van lezárt** (`✅ LEZÁRVA`) tematikus tanulmánya —
+ellenőrizve `Lezart_tematikus_tanulmanyok_index.md` és/vagy
+`grep "✅.*LEZÁRVA"` a motívumnaplón — ez a lelet:
+1. **Egyenként megbeszélve**, mielőtt bármi fájlba kerülne (a szokásos
+   propose-then-confirm fegyelem).
+2. Ha jóváhagyott: bekerül a lezárt tematikus study saját, releváns
+   szakaszába (jellemzően az 1. pont kereszthivatkozási táblázatába) —
+   NEM a bővített study tartalmának átmásolásával, csak a konkrét,
+   igehely-szintű tény beépítésével.
+3. A tematikus study fejléc-changelogja frissül, jelezve a forrást
+   (pl. "a `[study].md` retroaktív 2/a-2/f auditja során felmerült
+   lelet alapján").
+4. A `Lezart_tematikus_tanulmanyok_index.md` érintett sorának
+   "Megjegyzés" oszlopa frissül, ha a lelet érdemben bővíti a korábbi
+   lezárás hatókörét.
+
+**Korlát:** ez nem indít újra egy teljes tematikus re-auditot — csak azt
+a konkrét adatpontot viszi át, ami a bővített oldalon ténylegesen
+előkerült. Ez a tematikus sablon (v10) "Tartalmi visszaírás bővített
+tanulmányokba" szabályának tükör-párja — a két sablon mostantól
+szimmetrikus mindkét irányban.
 
 **Forrás-hivatkozási fegyelem (kötelező minden sorban):** minden fenti
 cellánál explicit jelölve, honnan jött az adat — közvetlenül a saját
