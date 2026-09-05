@@ -179,13 +179,21 @@ Sokan azonosulnak Hágár kiszolgáltatottságával — a láthatatlanná válá
 
 ## 7. Lexikai audit — módszertani napló
 
-A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára (2. pont táblázata). Nincs beépítendő tartalmi lelet — az Origin-lánc-hivatkozások mind triviálisak vagy már a study saját szövege explicit kifejti: חָמָס ← "megsérteni" (triviális); יהוה ← "lenni" (közismert etimológia); יִשְׁמָעֵאל ← שמע ("hallani") — már kifejtve a 6. pontban ("Isten meghallja"); אֵל רֳאִי ← ראה ("látni") — már kifejtve a 6. pontban ("a látás Istene").
+A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára. 2026.09.05-i retroaktív ellenőrzés (3/b terv) lezárta a korábban dokumentálatlan עָצַר, מַלְאָךְ, בְּאֵר לַחַי רֹאִי Origin-lánc-lépéseit.
+
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| עָצַר / ácar (H6113) | ✅ | nincs (primitív gyök) | 47 | nincs önálló | nem releváns | megerősítve |
+| חָמָס / chámász (H2555) | ✅ | ← "megsérteni" triviális (l. `1Moz_6v9-22` is) | 60 | nincs önálló | nem releváns | megerősítve |
+| עָנָה (Piél) / inná (H6031) | ✅ | nincs (primitív gyök, l. `1Moz_15` is) | 82 | ✅ visszhang 15:13-hoz (előre jelzett beteljesedés) | nem releváns | beépítve |
+| מַלְאַךְ יְהוָה (H4397+H3068) | ✅ | H4397 ← "elküldeni, mint megbízottat" — elveszett gyök; H3068 ← "lenni" közismert | 214 / 6528 | nincs önálló | nem releváns | megerősítve |
+| יִשְׁמָעֵאל / Jismáél (H3458) | ✅ | ← שמע "hallani" — már kifejtve a 6. pontban | 48 | ✅ már beépítve ("Isten meghallja") | nem releváns | beépítve |
+| אֵל רֳאִי (H410+H7210) | ✅ | H7210 ← ראה "látni" — már kifejtve a 6. pontban | 240 / 5 | ✅ már beépítve ("a látás Istene") | nem releváns | beépítve |
+| בְּאֵר לַחַי רֹאִי (H883) | ✅ | összetett tulajdonnév: H875 (kút) + H2416 (élő) + H7203 (látó) — a study saját fordítása pontosan visszaadja | 9 | ✅ már a study saját fordításában | nem releváns | megerősítve |
 
 **LXX-híd, ellenőrizve, nincs teendő:** Gal 4:24-25 ↔ Ἁγάρ (G0028) — a 4. pont már explicit, névvel tárgyalja ezt a kapcsolatot.
 
-**J4-torzítás tisztázva:** a kockázat-riport által jelzett magas ("5522 sosem idézett") szám kizárólag a יהוה (H3068) rendkívüli gyakoriságából adódik — módszertani műtermék, nem tartalmi hiányosság (ugyanaz az ok, mint `1Moz_13v1-18_bovitett.md`-nél).
-
-**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv` és a `TAGNT_kivonat.tsv` fájlokból származnak.
+**Forrás-hivatkozási fegyelem:** `Strong_szotar.tsv`, `TAGNT_kivonat.tsv`.
 
 ---
 

@@ -165,13 +165,21 @@ Ugyanaz a szókapcsolat, amellyel Lót a Jordán-síkságot választotta (13:10)
 
 ## 7. Lexikai audit — módszertani napló
 
-A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára (2. pont táblázata). Nincs beépítendő tartalmi lelet — az összes Origin-lánc-hivatkozás triviálisnak minősült: יהוה ("Örökkévaló") ← "lenni" (a név közismert, jól dokumentált etimológiája, nem hoz specifikus új tartalmat ehhez a study-hoz); מַשְׁקֶה ("öntözött") ← "öntözni" (triviális); חַטָּאִים ("bűnösök") ← "vétkezni" (triviális, várható intenzív alak); כַּעֲפַר ← "por" (denominatív, fordított irány, nincs új tartalom); מִזְבֵּחַ ← "áldozni" (már fedi a study saját 6. pontja).
+A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára. A 2/f (rögzült szópár együttes-előfordulás) már korábban (2026.09.04) lefutott. 2026.09.05-i retroaktív ellenőrzés (3/b terv) táblázatba rendezte az eredményeket, lezárva a korábban dokumentálatlan קָרָא, נָשָׂא, עַיִן, רָאָה, אֶרֶץ Origin-lánc-lépéseit.
 
-**J4-torzítás tisztázva:** a kockázat-riport által jelzett magas ("5523 sosem idézett") szám kizárólag a יהוה (H3068) rendkívüli gyakoriságából (6528 ószövetségi előfordulás) adódik — ez módszertani műtermék, nem tartalmi hiányosság. A szó azért került be kulcsszóként, mert a "segítségül hívta az Úr nevét" (13:4) kifejezés szerves része.
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| קָרָא בְשֵׁם יְהוָה (H7121+H3068) | ✅ | H7121 nincs (primitív gyök); H3068 ← "lenni" közismert, nem hoz új tartalmat | 733 / 6528 | nincs önálló ezen felül | nem releváns | megerősítve |
+| וַיִּשָּׂא...וַיַּרְא (H5375+H5869+H7200) | ✅ | mind primitív gyök/szó, nincs lánc | 656 / 886 / 1299 | ✅ 2/f: szópár teljes-előfordulás ellenőrizve, 60+ közös igehely — túl gyakori idióma, "FIGYELEM" besorolás megerősítve | nem releváns | megerősítve, meglévő |
+| מַשְׁקֶה / mashqé (H4945) | ✅ | ← "öntözni" triviális | 19 | nincs önálló | nem releváns | megerősítve |
+| רָעִים וְחַטָּאִים (H7451+H2400) | ✅ | H7451←H7489 triviális (l. `1Moz_3v1-6`); H2400 ← "vétkezni" triviális | 662 / 19 | nincs önálló | nem releváns | megerősítve |
+| שָׂא נָא עֵינֶיךָ (H5375+H5869) | ✅ | l. fenti sor | l. fenti sor | l. fenti sor (2/f) | nem releváns | megerősítve |
+| כַּעֲפַר הָאָרֶץ (H6083+H776) | ✅ | H6083 ← "por" denominatív, fordított irány; H776 ← "szilárdnak lenni" (elveszett gyök) | 109 / 2504 | nincs önálló | nem releváns | megerősítve |
+| וַיִּבֶן...מִזְבֵּחַ (H1129+H4196) | ✅ | H1129 ← "építeni" triviális; H4196 ← "áldozni" triviális | 376 / 401 | nincs önálló | nem releváns | megerősítve |
 
-**2/f — Rögzült szópár együttes-előfordulás ellenőrzése (ÚJ, 2026.09.04, retroaktív audit a protokoll v5 szerint):** a study szövegében kétszer [13:10, 13:14] megjelenő שָׂא...עֵינָיו (*nasá*+*énájim*, "szemeit felemelte", H5375+H5869) szópár teljes körű ellenőrzése (`TAHOT_kivonat.tsv`) **60+ közös igehelyet** talált a teljes Ószövetségben — ez egy rendkívül gyakori héber idióma ("felnézett és látta"), nem rejtett/ritka mintázat. Megerősíti, hogy a motívumnapló jelenlegi "FIGYELEM" (nem ⭐) besorolása helyes: a study-n belüli, majd 1Móz 22:4/24:64-re előre jelzett ismétlődés valódi, de az idióma önmagában túl gyakori ahhoz, hogy különleges irodalmi jelzésnek (2/f-értelemben rendhagyó szópárnak) minősüljön.
+**J4-torzítás tisztázva:** a kockázat-riport által jelzett magas ("5523 sosem idézett") szám kizárólag a יהוה (H3068) rendkívüli gyakoriságából adódik — módszertani műtermék, nem tartalmi hiányosság.
 
-**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv` és a `TAHOT_kivonat.tsv` fájlokból származnak.
+**Forrás-hivatkozási fegyelem:** `Strong_szotar.tsv`, `TAHOT_kivonat.tsv`.
 
 ---
 

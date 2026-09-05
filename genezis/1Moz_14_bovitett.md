@@ -178,13 +178,21 @@ Alkalmazva: „Szent Szellem", „spirituális" (Sod), kiejtések mindenütt, ig
 
 ## 7. Lexikai audit — módszertani napló
 
-A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára (2. pont táblázata). Nincs beépítendő ÚJ tartalmi lelet — a study saját חֲנִיכָיו/חנך-állítását (80. sor: kapcsolat a Péld 22:6 *chanók*-hoz és a *chanukká*-hoz) függetlenül ellenőriztem: a BDB H2596-szócikk (חָנַךְ) explicit "train up, dedicate" definíciót ad, pontosan megerősítve a study megfogalmazását — nem spekulatív, hanem azonos triliterális gyökön belüli, standard inflexiós kapcsolat.
+A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára. 2026.09.05-i retroaktív ellenőrzés (3/b terv) lezárta a korábban dokumentálatlan יַיִן, קֹנֵה, יָד Origin-lánc-lépéseit.
 
-**Elutasított/triviálisnak minősített Origin-lánc-elemek:** כֹּהֵן ← "papi szolgálatot végezni" (triviális); לֶחֶם ("kenyér") ← "harcolni" — valódi héber szógyök-egybeesés, de a BDB nem ad rá etimológiai magyarázatot, és a study nem is állítja ezt a kapcsolatot — nem építendő be, ha valaha felmerülne; אֵל עֶלְיוֹן ← עלה "felemelkedni" (triviális); מַעֲשֵׂר ← עֶשֶׂר "tíz" (triviális).
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| חֲנִיכָיו / chanikáv (H2593) | ✅ "train up, dedicate" | ← H2596 (*chanach*) — valódi, standard inflexiós kapcsolat | 1 | ✅ beépítve: Péld 22:6 *chanók* / *chanukká* párhuzam | nem releváns | beépítve |
+| כֹּהֵן / kohén (H3548) | ✅ | ← "papi szolgálatot végezni" triviális | 750 | nincs önálló | nem releváns | megerősítve |
+| לֶחֶם וָיַיִן (H3899+H3196) | ✅ | H3899 ← "harcolni" valódi gyök-egybeesés, BDB nem ad etimológiát, study nem is állítja; H3196 elveszett gyökből ("pezsegni") | 298 / 141 | nincs önálló | nem releváns | H3899 elutasítva; H3196 megerősítve |
+| אֵל עֶלְיוֹן (H410+H5945) | ✅ | H5945 ← עלה "felemelkedni" triviális | 240 / 53 | nincs önálló | nem releváns | megerősítve |
+| קֹנֵה שָׁמַיִם וָאָרֶץ (H7069) | ✅ | nincs (primitív gyök, "venni/birtokolni" — a study már tárgyalja a "birtokosa/alkotója" kettős fordítást) | 84 | ✅ már a study saját fordítás-döntésében | nem releváns | megerősítve |
+| מַעֲשֵׂר / maaszér (H4643) | ✅ | ← עֶשֶׂר "tíz" triviális | 32 | nincs önálló | nem releváns | megerősítve |
+| נָשָׂאתִי יָדִי (H5375+H3027) | ✅ | mindkettő primitív, nincs lánc | 656 / 1619 | nincs önálló | nem releváns | megerősítve |
 
 **LXX-híd, ellenőrizve, nincs teendő:** Zsid 7:2 ↔ βασιλεύς (G0935) és G4532 — a study 4. pontja már explicit idézi és tárgyalja ezt a verset.
 
-**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv` és `TAGNT_kivonat.tsv` fájlokból származnak.
+**Forrás-hivatkozási fegyelem:** `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv`, `TAGNT_kivonat.tsv`.
 
 ---
 
