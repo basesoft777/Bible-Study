@@ -150,11 +150,16 @@ def load_versifikacios_terkep(path, karoli_konyv_prefix, karoli_1908_path=KAROLI
     """Betolti a LXX_versificacios_terkep.tsv-t egy adott Karoli-konyvre (pl. 'Zsolt', 'Jóel').
 
     Visszaad: ((kert_fejezet:int, zarojel_fejezet:int, zarojel_vers:int) -> Karoli_igehely)
-    dict, egy figyelmeztetes-lista (utkozesek/kihagyasok a README-hez), es egy
+    dict, egy figyelmeztetes-lista (utkozesek/kihagyasok a README-hez), egy
     kulon "betu_utotag_kizarasok" lista - (konyv, Karoli_igehely, oszlop,
     nyers_ertek) sorok azokrol a betu-utotagos al-vers-hivatkozasokrol
     (pl. "Exo.28:22a"), amiket a nyers LXX_WH oldal szonkenti szinten nem
-    kulonboztet meg, ezert explicit kizarodtak (l. gyujt() belsejeben).
+    kulonboztet meg, ezert explicit kizarodtak (l. gyujt() belsejeben), es egy
+    "nem_parszolhato_ertekek" lista - ugyanolyan alaku sorok azokrol a
+    Gorog_LXX_vers/Heber_vers ertekekrol, amiket a GOROG_LXX_VERS_RE
+    egyaltalan nem tud ertelmezni (pl. "X / Y" tobbszoros hivatkozas, "*a-w"
+    tobbbetus tartomany) - a puszta "--" (nincs LXX-megfelelo) vegu ertekek
+    NEM kerulnek ebbe a listaba, mert azok szandekos dokumentaciok, nem hibak.
 
     A kulcs elso eleme a LEKERDEZETT (Karoli-fejezetszammal megegyezo) oldal
     fejezetszama, mert ugyanaz a zarojeles [fejezet:vers] ertek (pl. "53:4")
@@ -225,7 +230,28 @@ def load_versifikacios_terkep(path, karoli_konyv_prefix, karoli_1908_path=KAROLI
                 nyers_ertek = row[oszlopnev].strip()
                 m = GOROG_LXX_VERS_RE.match(nyers_ertek)
                 if not m:
-                    continue  # pl. korrupt "Psa.Psa.151:x" sor (l. README) - szandekosan kimarad
+                    # A nyers ertek nem illik az egyszeru "Konyv.fejezet:vers[-vers][betu]"
+                    # mintara. Ket alapvetoen kulonbozo ok lehet:
+                    #   1. explicit "--" veg (pl. "Est.--") - a sor DOKUMENTALJA, hogy
+                    #      ehhez a Karoli-vershez nincs LXX-megfeleloje - ez SZANDEKOS,
+                    #      nem hiba, nem is naplozzuk kulon (ugyanugy jarunk el, mintha
+                    #      a sor nem is letezne - a szo majd vagy egy masik, valodi
+                    #      sorbol, vagy egyaltalan nem kap Karoli-cimket).
+                    #   2. minden mas eset (pl. "X / Y" tobbszoros hivatkozas, "*a-w"
+                    #      tobbbetus tartomany, vesszos/pontosvesszos lista, korrupt
+                    #      "Psa.Psa.151:x" duplikalt prefix) - ezek VALODI, meg fel nem
+                    #      dolgozott terkep-komplexitast jeleznek, amit a jelenlegi
+                    #      GOROG_LXX_VERS_RE nem tud ertelmezni. Ezeket EXPLICIT
+                    #      naplozzuk (nem csendben dobjuk el), hogy lathato maradjon,
+                    #      hany esetben es hol marad esetleg le nem fedett tartalom.
+                    if not nyers_ertek.endswith("--"):
+                        figyelmeztetesek.append(
+                            f"NEM_PARSZOLHATO_ERTEK ({cimke}): '{igehely}' -> '{nyers_ertek}' "
+                            f"- a GOROG_LXX_VERS_RE nem ismeri fel ezt a formatumot, "
+                            f"ez a sor nem kerul be a kereso-szotarba"
+                        )
+                        nem_parszolhato_ertekek.append((karoli_konyv_prefix, igehely, cimke, nyers_ertek))
+                    continue
                 if m.group(4):
                     # Betu-utotagos al-vers-hivatkozas (pl. "Exo.28:22a") - ez
                     # egy Karoli-versre bontott LXX-felvers-hatart jelolne, DE
@@ -258,6 +284,7 @@ def load_versifikacios_terkep(path, karoli_konyv_prefix, karoli_1908_path=KAROLI
 
     figyelmeztetesek = []
     betu_utotag_kizarasok = []
+    nem_parszolhato_ertekek = []
 
     def epit(oszlopnev, cimke):
         renumber_sorok, egyeb_sorok = gyujt(oszlopnev, cimke)
@@ -335,7 +362,7 @@ def load_versifikacios_terkep(path, karoli_konyv_prefix, karoli_1908_path=KAROLI
 
     gorog_lookup = epit("Gorog_LXX_vers", "Gorog")
     heber_lookup = epit("Heber_vers", "Heber")
-    return (gorog_lookup, heber_lookup), figyelmeztetesek, betu_utotag_kizarasok
+    return (gorog_lookup, heber_lookup), figyelmeztetesek, betu_utotag_kizarasok, nem_parszolhato_ertekek
 
 
 def parse_chapter(html, magyar_konyv, fejezet, vers_lookup=None, hianyzo_kulcsok=None):
@@ -432,7 +459,7 @@ def main():
     if args.versifikacios_terkep:
         if not args.karoli_konyv_prefix:
             raise SystemExit("--versifikacios-terkep hasznalatahoz --karoli-konyv-prefix is kotelezo")
-        vers_lookup, figyelmeztetesek, _betu_utotag_kizarasok = load_versifikacios_terkep(
+        vers_lookup, figyelmeztetesek, _betu_utotag_kizarasok, _nem_parszolhato = load_versifikacios_terkep(
             args.versifikacios_terkep, args.karoli_konyv_prefix
         )
         gorog_n, heber_n = len(vers_lookup[0]), len(vers_lookup[1])

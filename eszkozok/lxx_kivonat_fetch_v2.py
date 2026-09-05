@@ -91,6 +91,7 @@ from lxx_kivonat_fetch import (  # noqa: E402
 
 USER_AGENT = "Mozilla/5.0 (compatible; lxx-kivonat-fetch-v2/1.0; +bible-study-repo)"
 BETU_UTOTAG_RIPORT_UTVONAL = "konkordancia/Betu_utotag_kizarva.tsv"
+NEM_PARSZOLHATO_RIPORT_UTVONAL = "konkordancia/Nem_parszolhato_terkep_ertekek.tsv"
 
 
 def irj_betu_utotag_riportot(kizarasok, utvonal=BETU_UTOTAG_RIPORT_UTVONAL):
@@ -343,7 +344,7 @@ def main():
     if args.versifikacios_terkep:
         if not args.karoli_konyv_prefix:
             raise SystemExit("--versifikacios-terkep hasznalatahoz --karoli-konyv-prefix is kotelezo")
-        vers_lookup, terkep_figyelmeztetesek, betu_utotag_kizarasok = load_versifikacios_terkep(
+        vers_lookup, terkep_figyelmeztetesek, betu_utotag_kizarasok, nem_parszolhato = load_versifikacios_terkep(
             args.versifikacios_terkep, args.karoli_konyv_prefix
         )
         for fig in terkep_figyelmeztetesek:
@@ -353,6 +354,13 @@ def main():
             print(
                 f"  {len(betu_utotag_kizarasok)} db betu-utotagos al-vers-hivatkozas "
                 f"kizarva (l. {BETU_UTOTAG_RIPORT_UTVONAL})",
+                file=sys.stderr,
+            )
+        if nem_parszolhato:
+            irj_betu_utotag_riportot(nem_parszolhato, utvonal=NEM_PARSZOLHATO_RIPORT_UTVONAL)
+            print(
+                f"  {len(nem_parszolhato)} db nem-parszolhato terkep-ertek kihagyva "
+                f"(l. {NEM_PARSZOLHATO_RIPORT_UTVONAL})",
                 file=sys.stderr,
             )
 
