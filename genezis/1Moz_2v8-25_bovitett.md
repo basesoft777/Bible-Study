@@ -217,21 +217,23 @@ A Talmud (Erubin 18a) és több midrás hagyomány szerint az első ember eredet
 
 ## 7. Lexikai audit — módszertani napló
 
-A 2/a-2/e technikasor lefutott a study mind a 14 kulcsszavára (2. pont táblázatai). A legtöbb Origin-lánc-hivatkozás triviális, nem hozott önálló tartalmat (pl. H5731 Éden ← H5730 "gyönyör", ami már a táblázat saját jelentés-oszlopában szerepel; H1847 tudás ← H3045 "tudni"; H2416 élő ← H2421 "élni"; H5828 segítő ← H5826 "segíteni"; H1588 kert ← H1598 "védeni"; H6086 fa ← H6095 "bezárni"; H5048 "hozzá illő" ← H5046 "közölni"; H1320 hús/test ← H1319 "hírt hozni" — mind közismert vagy tartalmilag nem releváns további jelentésváltás).
+A 2/a-2/e technikasor lefutott a study mind a 14 kulcsszavára. 2026.09.05-i retroaktív ellenőrzés (3/b terv) lezárta a korábban a prózában nem explicit dokumentált hat kulcsszót (לֹא, טוֹב, אִשָּׁה, אִישׁ, דָּבַק, אֶחָד) — mindegyik triviálisnak/lezártnak bizonyult, nincs új tartalom.
 
-**Beépített leletek:**
-- עֲרוּמִּים (H6174, 2:25) ↔ עָרוּם (H6175, 3:1): Strong közös gyököt (H6191) jelez, de a BDB szócikk NEM erősíti meg — ezért NEM közös lexikai gyökként, hanem irodalmi/hangzásbeli szójátékként épült be, explicit etimológiai fenntartással (l. Remez).
-- LXX-híd: 1Móz 2:9 (ἐν μέσῳ τῷ παραδείσῳ) ↔ Jel 22:2 (ἐν μέσῳ τῆς πλατείας) — a "μέσῳ" közös görög szó megerősíti a már meglévő Jel 22:1-2 kereszthivatkozást egy második lexikai szálon (l. 4. pont).
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| גַּן / gan (H1588) | ✅ | ← H1598 "védeni" — triviális | 42 | nincs önálló | nem releváns | megerősítve |
+| עֵדֶן / éden (H5731) | ✅ | ← H5730 "gyönyör" — triviális (már a jelentés-oszlopban) | 16 | nincs önálló | nem releváns | megerősítve |
+| עֵץ הַחַיִּים (H6086+H2416) | ✅ | H6086←H6095 "bezárni" triviális; H2416←H2421 "élni" triviális | 329 / 498 | nincs önálló | nem releváns | megerősítve |
+| עֵץ הַדַּעַת טוֹב וָרָע (H6086+H1847) | ✅ | H1847←H3045 "tudni" triviális | 92 | nincs önálló | nem releváns | megerősítve |
+| עָבַד / avad (H5647) | ✅ | nincs (primitív gyök) | 288 | nincs önálló | nem releváns | megerősítve |
+| שָׁמַר / sámár (H8104) | ✅ | nincs (primitív gyök) | 469 | nincs önálló | nem releváns | megerősítve |
+| לֹא־טוֹב (H3808+H2896) | ✅ | H3808 nincs (primitív partikula); H2896←H2895 "kedvesnek lenni" triviális | 5166 / 538 | nincs önálló | nem releváns | megerősítve |
+| עֵזֶר כְּנֶגְדּוֹ (H5828+H5048) | ✅ | H5828←H5826 "segíteni" triviális; H5048←H5046 "közölni" triviális | 151 / 151 | nincs önálló | nem releváns | megerősítve |
+| צֵלָע / céla (H6763) | ✅ | ← H6760 "sántítani" — denominatív irány fordított, nem ad új tartalmat | 40 | nincs önálló | nem releváns | elutasítva |
+| אִשָּׁה / issá (H802) | ✅ | feminine of H376 — a study saját Peshat pontja explicit tárgyalja (2:23 szójáték) | 781 | ✅ már a study fő szövegében (2:23) | nem releváns | beépítve a fő szövegben |
+| אִישׁ / is (H376) | ✅ | bizonytalan eredetű gyök (BDB) | 1663 | l. issá sor | nem releváns | megerősítve |
+| דָּבַק / dávak (H1692) | ✅ | nincs (primitív gyök) | 52 | nincs önálló | nem releváns | megerősítve |
+| בָּשָׂר אֶחָד (H1320+H259) | ✅ | H1320←H1319 "hírt hozni" triviális; H259←H258 (szám-gyök) triviális | 269 / 969 | nincs önálló | nem releváns | megerősítve |
+| עֲרוּמִּים / arummím (H6174) | ✅ | ↔ H6175 (3:1) — Strong közös gyököt (H6191) jelez, BDB NEM erősíti meg | 16 | ✅ irodalmi szójáték, nem lexikai gyök (l. Remez) | ✅ 1Móz 2:9 ↔ Jel 22:2 (μέσῳ) | beépítve, etimológiai fenntartással |
 
-**Elutasított lelet:**
-- צֵלָע (H6763, "oldalborda") ← H6760 ("sántítani") — a Strong-Origin denominatív irányban áll (H6760 ered H6763-ból, nem fordítva), nem ad új tartalmat a study már meglévő, kiterjedt *cela* vitatott pontjához (Vitatott pont 2) képest — kihagyva.
-
-**Forrás-hivatkozási fegyelem:** a fenti Strong-Origin adatok a `Strong_szotar.tsv`-ből, a BDB-ellenőrzés a `BDB_teljes_unabridged.tsv`-ből, az LXX-adat a `LXX_kivonat_Genezis.tsv`-ből és a `TAGNT_kivonat.tsv`-ből származik.
-
----
-
-*Belső önellenőrzés: kiejtés ✓, ⚠️ + nevesített képviselők ✓, arányok ✓, kereszthivatkozás-formátum, cím, idézett szöveg és kulcsszó-zárójel ✓, motívum-napló-frissítés szükségessége jelezve ✓, Sod fegyelmezettsége (a "titok" kifejezetten a szövegből, Ef 5:32-ből fakad, nem önkényes) ✓, fordítás-szabály ✓, igehely-formátum ✓, 0. és 1/b. pontok indoklással aktiválva ✓.*
-
----
-
-**Sorozat-folytatás:** a logikailag következő szakasz **1Mózes 3** (a bűneset elbeszélése) — a 2:25 záró mondata (mezítelenség szégyen nélkül) közvetlenül ebbe vezet át.
+**Forrás-hivatkozási fegyelem:** `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv`, `TAHOT_kivonat.tsv`, `TAGNT_kivonat.tsv`, `LXX_kivonat_Genezis.tsv`.
