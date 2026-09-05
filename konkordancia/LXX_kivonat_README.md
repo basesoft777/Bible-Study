@@ -177,6 +177,12 @@ jelenség.
   újragenerálva a javítás után.)
 - **Jób** — a 42:17 utáni nagy LXX-toldalék (Jób családfája és feltámadása)
   a héber szövegben nincs benne, ezért ott magas az `ELTERO_SZOVEGALAP` arány.
+  Emellett a Jób 38-40. fejezetekben lánc-szerű, egymásba kapcsolódó
+  fejezethatár-eltolódás volt (l. a Dániel 3/4-hez hasonló "Dániel-mintázat"
+  lent) — javítva. Néhány további, önálló pont (Jób 17:16, 37:24, 40:20-24;
+  illetve Péld 12:28) genuin, ártalmatlan LXX-plusz — ugyanolyan jellegű,
+  mint a 42:17 utáni toldalék, csak kisebb léptékben; ezeket nem javítottuk,
+  csak dokumentáljuk.
 - **Jeremiás** — mintegy 100 vers hiányzik: ez jól dokumentált LXX/maszoretai
   szöveg-rövidülés (a görög Jeremiás kb. 1/8-dal rövidebb a héber szövegnél) és
   a nemzetek elleni jövendölések LXX-beli átrendezése miatt van így — nem hiba,
@@ -184,25 +190,54 @@ jelenség.
 - **Eszter, Dániel** — a görög apokrif toldalékok (Eszter 11-16, Zsuzsanna,
   Bél és a sárkány, Azarjás imája) helyesen kizárva, nem fabrikálnak nem
   létező Károli-verscímkét.
-- **Dániel 3/4 fejezethatár:** a nyers `studybible.info/LXX_WH/Daniel 4` oldal
-  nem ad zárójeles kereszthivatkozást, ezért a `LXX_versificacios_terkep.tsv`
-  automatikus lookupja (ami csak zárójel esetén lép működésbe) itt sosem
-  aktiválódott, holott a térkép egy valódi, konzisztens −3 eltolódást
-  dokumentál: a nyers oldal saját "4:1"–"4:3" verse valójában Károli
-  "3:31"–"3:33", a nyers "4:4"–"4:37" pedig Károli "4:1"–"4:34" (tartalmilag
-  egyeztetve: nyers 4:1 = "Nabukodonozor... békesség adassék néktek" [a
-  levél köszöntése, Károli 3:31], nyers 4:4 = "Én Nabukodonozor békében
-  valék..." [pontosan Károli 4:1], nyers 4:34 = "...szemeimet az égre
-  emelém..." [pontosan Károli 4:31]). Emiatt korábban 1078 sor volt tévesen
-  címkézve, és Károli 3:31–33 teljesen hiányzott a kimenetből. Javítva egy
-  kizárólag Dániel 4. fejezetére (nyers 1-37. vers) vonatkozó, kézi
-  eltolás-szabállyal (`eszkozok/lxx_kivonat_fetch_v2.py`
-  `daniel_4_eltolas()`) — a könyv más része nem érintett. Ez a fajta,
-  zárójel nélküli, de tartalmilag egyeztethető eltolódás **eltér** a fent
-  említett, valóban rekonstruálhatatlan esetektől (betű-utótag, 1 Királyok
-  Miscellanies) — ott a nyers oldal önmagában nem ad elég információt, itt
-  viszont igen, csak a versifikációs térkép nem tudta felhasználni zárójel
-  hiányában.
+- **"Dániel-mintázat" — zárójel nélküli, de tartalmilag egyeztethető
+  fejezethatár-eltolódás (Dániel, Numeri, Jób, Prédikátor):** ez a fajta hiba
+  **eltér** a fent említett, valóban rekonstruálhatatlan esetektől
+  (betű-utótag, 1 Királyok Miscellanies) — ott a nyers oldal önmagában nem ad
+  elég információt a szónkénti szétosztáshoz; itt viszont igen (a tartalom
+  egyértelműen, szó szerint egyeztethető a Károlival), csak a nyers
+  `studybible.info/LXX_WH` oldal az adott fejezethez **nem ad zárójeles
+  kereszthivatkozást**, ezért a `LXX_versificacios_terkep.tsv` automatikus
+  lookupja (ami csak zárójel esetén lép működésbe) sosem aktiválódik, és a
+  kimenet a nyers oldal-helyi számozást használta közvetlenül — hibásan. Minden
+  esetben kizárólag az érintett fejezet(ek)re vonatkozó, kézi eltolás-szabállyal
+  javítva (`eszkozok/lxx_kivonat_fetch_v2.py`, `KEZI_ELTOLASOK`), tartalmi
+  egyeztetéssel megerősítve minden határponton, és regresszió-tesztelve a
+  szomszédos, nem érintett fejezetekre:
+  - **Dániel 3/4:** nyers "4:1"–"4:3" → Károli "3:31"–"3:33"; nyers
+    "4:4"–"4:37" → Károli "4:1"–"4:34" (konzisztens −3 eltolódás, `daniel_4_eltolas()`).
+    Korábban 1078 sor volt tévesen címkézve, Károli 3:31–33 teljesen hiányzott.
+  - **Numeri 12/13:** a térkép a saját, `LXX_versificacios_terkep.tsv`-ben
+    dokumentált (34 sor) eltolódást sosem tudta érvényesíteni. Nyers "12:16" →
+    Károli "13:1"; nyers "13:1"–"13:33" → Károli "13:2"–"13:34"
+    (`numeri_12_13_eltolas()`).
+  - **Jób 38-40:** három egymásba kapcsolódó határ (33 térkép-sor). Nyers
+    "38:39"–"38:41" → Károli "39:1"–"39:3"; nyers "39:1"–"39:30" → Károli
+    "39:4"–"39:33"; nyers "40:1"–"40:5" → Károli "39:34"–"39:38"; nyers
+    "40:6"–"40:24" → Károli "40:1"–"40:19" (`job_38_41_eltolas()`). A 41.
+    fejezet tiszta, nem érintett.
+  - **Prédikátor (Ecclesiastes) — a térkép itt NULLA sort tartalmaz** (nem
+    "a térkép nem aktiválódik", hanem a térkép maga hiányzik a könyvről):
+    négy önálló határ/összevonási pont a teljes könyvet végigellenőrizve
+    (`predikator_eltolas()`) — 1/2 határ (nyers "1:18" → "2:1"; nyers
+    "2:25"+"2:26" együtt → "2:26", a Károli egy hosszú mondatba vonja össze
+    a két görög felet), 8/9 határ, 9/10 határ, 11/12 határ (nyers "11:9"–"11:10"
+    → "12:1"–"12:2"). A 3–7. fejezetek tiszták, nem érintettek.
+- **Énekek éneke 6/7 — nyitott, még nem javított diagnosztikai eset:** a
+  jelenlegi kimenetben "Én 6:11"–"6:13" nem létező Károli-verseket
+  (a valódi Károli 6. fejezet csak 10 versig tart) ad ki. Van egy valódi
+  `[7:1]` zárójel a nyers `Song of Solomon 6` oldalon — DE ez a nyers "13."
+  vers blokkján belül, annak KÖZEPÉN jelenik meg, nem a blokk elején. A
+  kód zárójel-alapú átirányítása csak a zárójeltől KEZDVE, előre hat — a
+  blokk korábbi szavai (beleértve a teljesen külön "11." és "12." nyers
+  verseket is) nem részesülnek belőle, és mivel ezekhez nincs saját
+  zárójelük, a nyers oldal-helyi számozásra esnek vissza, ami itt érvénytelen
+  (Károli 6. fejezete nem ér el eddig). Ez tehát nem "formátum-eltérés" a
+  könyvnév/zárójel string szintjén, hanem a zárójel-alapú átirányítás
+  hatókör-korlátja (csak előre, a zárójel utáni szavakra hat) ezzel a
+  konkrét, korai zárójel-pozícióval kombinálva. A pontos Károli-cél (mind a
+  11., 12., és a 13. vers bracket ELŐTTI részének) egyelőre nincs
+  meghatározva — **nincs javítva**, külön kör tárgya lehet.
 - **1 Királyok** — 44 térkép-sor explicit kizárva a
   `Nem_parszolhato_terkep_ertekek.tsv`-n keresztül: ezek a Jeroboám
   királyságáról szóló elbeszélés LXX-beli, a maszoretai szövegtől jelentősen
