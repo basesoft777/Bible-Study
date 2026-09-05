@@ -358,32 +358,21 @@ A hetedik napi nyugalom (2:2-3) — amelyet Isten maga tart, nem fáradtságból
 
 ---
 
-## 7. Lexikai audit — módszertani napló (ÚJ szakasz, 2026.09.02)
+## 7. Lexikai audit — módszertani napló (2026.09.02, oszlop-bővítve 2026.09.05, 3/b terv)
 
-*Ez a szakasz nem PaRDeS-tartalom, hanem a mai teljes újraaudit átlátható dokumentálása.*
+*Ez a szakasz nem PaRDeS-tartalom, hanem a teljes újraaudit átlátható dokumentálása.*
 
-**Ellenőrzött szavak és eredmény:**
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| תְהוֹם (H8415) | ✅ | igen → H1949 | 35 | ✅ helyesbítve, הום-gyök megerősítve | nem releváns | helyesbítve |
+| רוּחַ (H7307) | ✅ | nincs | 377 | nincs önálló | nem releváns | megerősítve |
+| אוֹר (H216) | ✅ | nincs | 120 | nincs önálló | ✅ φῶς (G5457), Ján 1:5/2Kor 4:6 | megerősítve |
+| צֶלֶם (H6754) | ✅ | nincs | 17 | ✅ új érv (l. Drash 2.); + 3. jelentés feltárva (l. Remez) | ✅ εἰκών (G1504), 5 idézet | beépítve |
+| זָכָר/נְקֵבָה (H2145+H5347) | ✅ | nincs | 82 / 22 | nincs önálló | ✅ θῆλυ (G2338), Mt 19:4/Mk 10:6 | megerősítve |
+| שָׁבַת (H7673) | ✅ | nincs | 71 | nincs önálló | ✅ ἕβδομος+καταπαύω, Zsid 4:4 | megerősítve |
+| בָּרַךְ (H1288) | ✅ | nincs | 330 | nincs önálló (apró etimológiai adalék, l. 2. pont) | nem releváns | megerősítve |
+| קָדַשׁ (H6942) | ✅ | nincs | 171 | nincs önálló | nem releváns | megerősítve |
 
-| Szó | Strong | Teljes BDB ellenőrizve | Origin-lánc | Eredmény |
-|---|---|---|---|---|
-| תְהוֹם | H8415 | ✅ | **igen → H1949** | **helyesbítve — הום-gyök megerősítve** |
-| רוּחַ | H7307 | ✅ | nincs | megerősítve, nincs eltérés |
-| אוֹר | H216 | ✅ | nincs | megerősítve, nincs eltérés |
-| צֶלֶם | H6754 | ✅ | nincs | **új érv talált** (l. Drash 2.); **+ 3. jelentés feltárva teljes-előfordulás listázással, l. 2. pont és Remez** |
-| זָכָר/נְקֵבָה | H2145/H5347 | ✅ | nincs | megerősítve, nincs eltérés |
-| שָׁבַת | H7673 | ✅ | nincs | megerősítve, nincs eltérés |
-| בָּרַךְ | H1288 | ✅ | nincs | megerősítve (apró etimológiai adalék, l. 2. pont) |
-| קָדַשׁ | H6942 | ✅ | nincs | megerősítve, nincs eltérés |
+**2/f — Rögzült szópár együttes-előfordulás ellenőrzése (2026.09.04, protokoll v5):** a תֹהוּ וָבֹהוּ (H8414/H0922) szópár teljes körű ellenőrzése (`TAHOT_kivonat.tsv`) megerősítette: a pár a teljes Ószövetségben **kizárólag 3 igehelyen** fordul elő együtt — **1Móz 1:2, Jer 4:23, Ézs 34:11**. Beépítve a "## 4." Remez-szakaszába.
 
-**NT-idézetek LXX-alapú lexikai ellenőrzése:**
-
-| Idézet | LXX-közös szó | Ritka/tartalmi? | Eredmény |
-|---|---|---|---|
-| Ján 1:5 / 2Kor 4:6 | φῶς (G5457) | igen (72 előford.) | ✅ megerősítve, ÚJ idézetként felvéve |
-| Kol 1:15, Kol 3:10, Ef 4:24, 2Kor 3:18, 1Kor 11:7 | εἰκών (G1504) | igen (23 előford.) | ✅ megerősítve, 4 új idézet hozzáadva a meglévő mellé |
-| Mt 19:4 / Mk 10:6 | θῆλυ (G2338) | igen (5 előford.) | ✅ megerősítve, ÚJ idézetként felvéve |
-| Zsid 4:4 | ἕβδομος + καταπαύω (G1442, G2664) | igen (9, 4 előford.) | ✅ pontosítás a meglévő Zsid 4:9-11 mellé |
-
-**2/f — Rögzült szópár együttes-előfordulás ellenőrzése (ÚJ, 2026.09.04, retroaktív audit a protokoll v5 szerint):** a תֹהוּ וָבֹהוּ (H8414/H0922) szópár teljes körű, konkordancia-alapú ellenőrzése (`TAHOT_kivonat.tsv`) megerősítette a protokoll v5-ben rögzített precedenst: a pár a teljes Ószövetségben **kizárólag 3 igehelyen** fordul elő együtt — **1Móz 1:2, Jer 4:23, Ézs 34:11**. A lelet beépítve a "## 4." Remez-szakaszába, két új kereszthivatkozásként.
-
-**Amit ez a módszer NEM tett meg:** a motívumnapló (`PaRDeS_motivumok.md`) érintetlen maradt — sem az εἰκών/*celem*-lelet, sem a most beépített תֹהוּ וָבֹהוּ-lelet nem került be, mindkettő külön, hátralévő lépés (ugyanúgy, mint az 1Móz 1:1 tanulmánynál az ἀρχή-lelet esetében).
+**Amit ez a módszer NEM tett meg:** a motívumnapló (`PaRDeS_motivumok.md`) érintetlen maradt — sem az εἰκών/*celem*-lelet, sem a תֹהוּ וָבֹהוּ-lelet nem került be, mindkettő külön, hátralévő lépés.
