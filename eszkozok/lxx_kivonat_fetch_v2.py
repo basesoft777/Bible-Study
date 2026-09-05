@@ -49,6 +49,20 @@ A `Forras` oszlop erteke minden sornal:
   - ""  (ures)          - egyik forras sem ad Strong-szamot erre a szora (nem tevesztes, hanem
                            valodi, mindket oldalon egyezoen Strong nelkuli szo, pl. tulajdonnev)
 
+ISMERT, EXPLICIT KIZART ESET - "betu-utotagos" al-vers-hivatkozasok:
+Nehany konyvben (leginkabb 2Moz, 1Kir, Zsolt, Jozs) a
+`LXX_versificacios_terkep.tsv` betu-utotagos Gorog_LXX_vers/Heber_vers
+ertekeket ad meg (pl. "Exo.28:22a"), jelezve, hogy egy raw LXX-felvers
+tobb, kulon Karoli-versre bomlik. EMPIRIKUSAN ELLENORIZVE (2Moz 28/36-37,
+Zsolt 12(13), 1Kir 12/14): a nyers studybible.info/LXX_WH oldal NEM
+kulonbozteti meg ezeket szonkenti szinten - vagy egyaltalan nincs
+zarojel a nyers oldalon, vagy van, de MAS szamra/betüre mutat, mint a
+terkep allitja. A szavak szetosztasa a Karoli-versek kozott ezert
+TARTALMI dontes lenne, nem mechanikus kulcs-egyeztetes - a szkript ezert
+EXPLICIT KIZARJA ezeket (nem probal becsulni/szetosztani), es
+naplozza oket a `konkordancia/Betu_utotag_kizarva.tsv` kozos riportba
+(konyvek kozott gyulekezik, l. irj_betu_utotag_riportot()).
+
 LICENC-MEGJEGYZES: l. a `konkordancia/LXX_kivonat_*_README.md` fajlokban
 dokumentalt licenc-gap - a studybible.info (mind LXX_WH, mind ABP/interlinear
 verzio) forrasanak licenc-statusza tisztazatlan. **Ez az adat kizarolag
@@ -76,6 +90,22 @@ from lxx_kivonat_fetch import (  # noqa: E402
 )
 
 USER_AGENT = "Mozilla/5.0 (compatible; lxx-kivonat-fetch-v2/1.0; +bible-study-repo)"
+BETU_UTOTAG_RIPORT_UTVONAL = "konkordancia/Betu_utotag_kizarva.tsv"
+
+
+def irj_betu_utotag_riportot(kizarasok, utvonal=BETU_UTOTAG_RIPORT_UTVONAL):
+    """Hozzafuzi a betu-utotagos, ezert kizart al-vers-hivatkozasokat egy kozos,
+    konyvek kozott gyulekezo TSV-riporthoz (l. modulszintu docstring 3. pontja).
+    """
+    import os
+
+    uj_fajl = not os.path.exists(utvonal)
+    with open(utvonal, "a", encoding="utf-8", newline="") as f:
+        import csv
+        writer = csv.writer(f, delimiter="\t", lineterminator="\n")
+        if uj_fajl:
+            writer.writerow(["Karoli_konyv_prefix", "Karoli_igehely", "Oszlop", "Nyers_ertek"])
+        writer.writerows(kizarasok)
 KERES_KESLELTETES_MP = 1.0
 
 STRONG_RE = re.compile(r'([GH]\d+)')
@@ -313,11 +343,18 @@ def main():
     if args.versifikacios_terkep:
         if not args.karoli_konyv_prefix:
             raise SystemExit("--versifikacios-terkep hasznalatahoz --karoli-konyv-prefix is kotelezo")
-        vers_lookup, figyelmeztetesek = load_versifikacios_terkep(
+        vers_lookup, terkep_figyelmeztetesek, betu_utotag_kizarasok = load_versifikacios_terkep(
             args.versifikacios_terkep, args.karoli_konyv_prefix
         )
-        for fig in figyelmeztetesek:
+        for fig in terkep_figyelmeztetesek:
             print(f"  FIGYELMEZTETES: {fig}", file=sys.stderr)
+        if betu_utotag_kizarasok:
+            irj_betu_utotag_riportot(betu_utotag_kizarasok)
+            print(
+                f"  {len(betu_utotag_kizarasok)} db betu-utotagos al-vers-hivatkozas "
+                f"kizarva (l. {BETU_UTOTAG_RIPORT_UTVONAL})",
+                file=sys.stderr,
+            )
 
     fejezetek = parse_fejezet_lista(args)
 
