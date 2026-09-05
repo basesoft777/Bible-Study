@@ -197,18 +197,25 @@ Copeland kifejezetten az 1Móz 12:1-3-at veszi alapigéül egy többrészes soro
 
 ## 7. Lexikai audit — módszertani napló
 
-A 2/a-2/e technikasor lefutott a study kulcsszavaira (2. pont táblázatai: לֶךְ־לְךָ, מוֹלֶדֶת, גּוֹי גָּדוֹל, אֲגַדְּלָה, שֵׁם, מִזְבֵּחַ, רָעָב, נֶגַע).
+A 2/a-2/e technikasor lefutott a study kulcsszavaira. 2026.09.05-i retroaktív ellenőrzés (3/b terv) lezárt két korábban dokumentálatlan Origin-lánc-hivatkozást: גּוֹי (H1471) ← H1465 és שֵׁם (H8034) ← H7760 — mindkettő Strong-only javaslat, a BDB egyiket sem erősíti meg.
 
-**Beépített lelet:**
-- גָּדוֹל (H1419, melléknév, "gój gádól") ↔ אֲגַדְּלָה (H1431, ige, "naggyá teszem") — azonos גדל gyök, két alakban, ugyanabban a versben (12:2) — polyptoton, a nemzet- és név-ígéretet nyelvileg is összekötve (l. Peshat).
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| לֶךְ־לְךָ / lech-lechá (H1980) | ✅ | ← H3212 "menni" triviális | 1548 | nincs önálló | nem releváns | megerősítve |
+| מוֹלֶדֶת / moledet (H4138) | ✅ | ← H3205 "nemzeni" triviális | 22 | nincs önálló | nem releváns | megerősítve |
+| בְּרָכָה / berachá (H1293) | ✅ | ← H1288 (*barakh*, "áldani") triviális (a H1288-kérdés önálló, nagyobb téma, l. korrekciós Code-prompt) | 69 | nincs önálló | nem releváns | megerősítve |
+| גּוֹי גָּדוֹל (H1471+H1419) | ✅ | H1471 ← H1465 "hátrész/tömeg" — **Strong-only, BDB nem ad gyököt** — elutasítva; H1419 ← H1431 valódi (l. lent) | 561 / 526 | H1471: nincs önálló; H1419: l. lent | nem releváns | H1471 elutasítva; H1419 beépítve |
+| אֲגַדְּלָה / agaddelá (H1431) | ✅ | — (maga a gyök, ebből ered H1419/H4026) | 117 | ✅ beépítve: polyptoton 12:2-vel (Peshat) + 10:1-11:32 migdál-lelet | nincs önálló ezen felül | beépítve |
+| נִבְרְכוּ (H1288, Niphal) | ✅ | l. berachá sor | 330 | ⚠️ vitatott pont, study már tárgyalja | nem releváns | megerősítve |
+| מִזְבֵּחַ / mizbéach (H4196) | ✅ | ← H2076 "áldozni" triviális | 401 | nincs önálló | nem releváns | megerősítve |
+| קָרָא בְשֵׁם יְהוָה (H7121+H8034) | ✅ | H7121 nincs/bizonytalan (primitív, esetleg H7122); H8034 két Strong-only javaslat (H7760/H8064), **egyik sem BDB-igazolt** | 733 / 864 | ✅ már dokumentálva: שָׁמַיִם-kapcsolat elutasítva | nem releváns | H8034 elutasítva mindkét javaslat |
+| רָעָב / raáv (H7458) | ✅ | ← H7456 "éhezni" triviális | 101 | nincs önálló | nem releváns | megerősítve |
+| נְגָעִים גְּדֹלִים (H5061+H1419) | ✅ | H5061←H5060 "érinteni" triviális; H1419←H1431 (l. fent) | 78 / 526 | nincs önálló | nem releváns | megerősítve |
 
-**Elutasított leletek:**
-- שֵׁם (H8034, "név") ↔ שָׁמַיִם (H8064, "ég"): a Strong-szótár felveti a kapcsolatot ("magasság" jelentésen át), de a BDB szócikk saját maga "√ unknown" (gyök ismeretlen) jelzéssel áll — forrás-fegyelmi okból NEM épült be.
+**Forrás-hivatkozási fegyelem:** `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv`, `TAHOT_kivonat.tsv`.
+
+**Elutasított lelet (LXX-kereszthivatkozás):**
 - גּוֹי (H1471, "nemzet") ↔ Gal 3:8 ἔθνη (G1484): valódi LXX-fordítási lánc, de nagyon gyakori szó (164 NT-előfordulás), és Ábrám saját leendő nemzetére, míg Pálnál a *más* nemzetekre vonatkozik — terminológiai visszhang, nem tartalmi lelet, kihagyva.
-
-**Elutasított/triviálisnak minősített Origin-lánc-elemek:** לֶךְ (H1980) ← H3212 "menni"; מוֹלֶדֶת (H4138) ← H3205 "nemzeni"; מִזְבֵּחַ (H4196) ← H2076 "áldozni"; רָעָב (H7458) ← H7456 "éhezni"; נֶגַע (H5061) ← H5060 "érinteni" — mind várható, nem hoznak új exegetikai tartalmat.
-
-**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv` és `TAGNT_kivonat.tsv` fájlokból származnak.
 
 ---
 
