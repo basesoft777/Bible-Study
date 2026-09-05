@@ -70,7 +70,7 @@ SZO_EGYSEG_RE = re.compile(
 STRONG_RE = re.compile(r'([GH]\d+)')
 MORF_RE = re.compile(r'>([^<>]+)</a>')
 ZAROJEL_PREFIX_RE = re.compile(r'^\[(\d+):(\d+)[^\]]*\]\s*')
-GOROG_LXX_VERS_RE = re.compile(r'^[A-Za-z]+\.(\d+):(\d+)(?:-(\d+))?([a-z]?)$')
+GOROG_LXX_VERS_RE = re.compile(r'^[0-9A-Za-z]+\.(\d+):(\d+)(?:-(\d+))?([a-z]?)$')
 
 
 def normalize_strong(strong):
