@@ -90,6 +90,13 @@ megkeresésével, vagy alternatív, explicit CC-licencű LXX-forrás keresésév
   — a Septuaginta saját, eltolt "Βασιλειῶν I-IV" könyvhatár-konvenciója nem
   okoz gyakorlati problémát, mert a forrásoldal ezt már feloldva, a megszokott
   könyvhatárok szerint szolgáltatja.
+- **Számmal kezdődő könyvrövidítések (1Ch, 2Ch, 1Sa, 2Sa, 1Ki, 2Ki)** — a
+  térkép feldolgozó regexe eredetileg csak betűkkel kezdődő rövidítéseket
+  ismert fel, ezért ezek a STEP-rövidítések soha nem illeszkedtek — ez a hiba
+  javítva. Amíg élt, gyakorlati hatása csak ott volt, ahol a könyv **saját**
+  rövidítése is számmal kezdődik (1 és 2 Krónika, l. 4. szakasz) — a Sámuel/
+  Királyok könyveknél a rájuk mutató (más könyvekből eredő) kereszthivatkozások
+  vesztek volna el csendben, ha a javítás nem előzi meg a feldolgozásukat.
 
 ## 3. Összesített lefedettségi táblázat (mind a 39 könyv)
 
@@ -165,10 +172,9 @@ jelenség.
   üresen marad.
 - **1 Krónika** — a legalacsonyabb lefedettség (88,7%) a 39 könyv között: sok
   genealógiai tulajdonnév (nemzetségtáblázatok), amit egyik forrás sem taggel
-  Strong-számmal. (Megjegyzés: a versifikációs térkép ennél a könyvnél és a 2
-  Krónikánál egy ideig egyáltalán nem működött egy másik hiba — a számmal
-  kezdődő könyvrövidítések, pl. "1Ch", el nem ismerése — miatt; ez javítva,
-  mindkét könyv újragenerálva.)
+  Strong-számmal. (A 2. szakaszban leírt, számmal kezdődő könyvrövidítések
+  hibája ezt a könyvet és a 2 Krónikát érintette a legérzékenyebben — mindkettő
+  újragenerálva a javítás után.)
 - **Jób** — a 42:17 utáni nagy LXX-toldalék (Jób családfája és feltámadása)
   a héber szövegben nincs benne, ezért ott magas az `ELTERO_SZOVEGALAP` arány.
 - **Jeremiás** — mintegy 100 vers hiányzik: ez jól dokumentált LXX/maszoretai
