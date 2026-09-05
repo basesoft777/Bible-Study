@@ -163,15 +163,25 @@ Ez a kapcsolat megmutatja, hogy Ábrám szövetségkötése egy jól ismert kora
 
 ## 7. Lexikai audit — módszertani napló
 
-A 2/a-2/e technikasor lefutott a study mind a 11 kulcsszó-sorára (2. pont táblázata). Nincs beépítendő tartalmi lelet.
+A 2/a-2/e technikasor lefutott a study mind a 11 kulcsszó-sorára. 2026.09.05-i retroaktív ellenőrzés (3/b terv) lezárta a korábban dokumentálatlan אָמַן, חָשַׁב, צְדָקָה, עָנָה Origin-lánc-lépéseit.
 
-**Ellenőrzött és elutasított etimológia:** בְּרִית (H1285, "szövetség") ← "vágás értelmében" — ugyanaz az elutasítás, mint a `1Moz_6v9-22_bovitett.md`, `1Moz_9v1-17_bovitett.md` és `1Moz_4v1-24_bovitett.md` 7. szakaszában — a BDB nem ad etimológiát a *brit*-hez. A study saját maga is már helyesen különválasztja a *bátar* (בתר, "kettéhasítani", 15:10) és a *karat* (כרת, "kivágni/megkötni", Jer 34:18-19) gyököket "tematikus, nem lexikai" jelöléssel (l. Remez) — ez a megkülönböztetés pontos.
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| מָגֵן / magén (H4043) | ✅ | ← "védeni" triviális | 62 | nincs önálló | nem releváns | megerősítve |
+| שָׂכָר / sákár (H7939) | ✅ | ← "bérelni" triviális | 28 | nincs önálló | nem releváns | megerősítve |
+| אָמַן (hiph.) / he'emín (H539) | ✅ | nincs (primitív gyök) | 106 | ✅ study saját Drash-pontja | nem releváns | megerősítve |
+| חָשַׁב / chásav (H2803) | ✅ | nincs (primitív gyök) | 121 | nincs önálló | nem releváns | megerősítve |
+| צְדָקָה / cedaká (H6666) | ✅ | ← H6663 (*tsadaq*, "igaznak lenni") — standard, várt névszóképzés | 157 | ✅ Róm 4:3 | ✅ Róm 4:3 δικαιοσύνη | beépítve |
+| בָּתַר / bátar (H1334) | ✅ | nincs (primitív gyök) — a study már tudatosan elkülöníti a *karat*-tól (tematikus, nem lexikai) | 2 | ✅ már a study saját Remez pontjában | nem releváns | megerősítve |
+| תַּרְדֵּמָה / tardémá (H8639) | ✅ | ← "aludni" triviális | 7 | nincs önálló | nem releváns | megerősítve |
+| גֵּר / gér (H1616) | ✅ | ← "tartózkodni/jövevénykedni" triviális | 92 | nincs önálló | nem releváns | megerősítve |
+| עָנָה (pi.) / inná (H6031) | ✅ | nincs (primitív gyök, esetleg H6030-tal rokon) | 82 | nincs önálló | nem releváns | megerősítve |
+| עָוֺן / ávón (H5771) | ✅ | ← "elferdíteni" triviális | 233 | nincs önálló | nem releváns | megerősítve |
+| בְּרִית / brít (H1285) | ✅ | ← "vágás" — BDB nem ad etimológiát, elutasítva (ua. mint `1Moz_6v9-22`, `1Moz_9v1-17`, `1Moz_4v1-24`) | 283 | nincs önálló | nem releváns | elutasítva |
 
-**Elutasított/triviálisnak minősített Origin-lánc-elemek:** מָגֵן ← "védeni" (triviális); שָׂכָר ← "bérelni" (triviális); תַּרְדֵּמָה ← "aludni" (triviális, megegyezik a study saját fordításával); גֵּר ← "tartózkodni/jövevénykedni" (triviális); עָוֺן ← "elferdíteni" (triviális).
+**LXX-híd, ellenőrizve, nincs teendő:** Róm 4:3 ↔ δικαιοσύνη (G1343) és λογίζομαι (G3049) — a study 4. pontja már explicit idézi és tárgyalja ezt a verset.
 
-**LXX-híd, ellenőrizve, nincs teendő:** Róm 4:3 ↔ δικαιοσύνη (G1343) és λογίζομαι (G3049) — a study 4. pontja már explicit idézi és tárgyalja ezt a verset, pontosan ezekkel a görög szavakkal.
-
-**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv` és `TAGNT_kivonat.tsv` fájlokból származnak.
+**Forrás-hivatkozási fegyelem:** `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv`, `TAGNT_kivonat.tsv`.
 
 ---
 
