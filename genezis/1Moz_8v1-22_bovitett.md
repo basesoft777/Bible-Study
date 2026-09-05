@@ -226,14 +226,19 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent (Ararát azonosítása — H
 
 ## 7. Lexikai audit — módszertani napló
 
-A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára (2. pont táblázata).
+A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára. 2026.09.05-i retroaktív ellenőrzés (3/b terv) lezárta a korábban dokumentálatlan פָּרוּ וְרָבוּ Origin-lánc-lépését.
 
-**Beépített lelet:**
-- נִיחֹחַ (H5207, "kedves illat", 21. v.) ← נוּחַ (H5117, "pihenni") — a Strong-szótár és a BDB ("a quieting, soothing, tranquillizing") is megerősíti, hogy ugyanaz a gyök, mint Noé neve (נֹחַ, H5146, "pihenés") és a study saját Sod-pontjában már említett מָנוֹחַ ("nyugvóhely") — beépítve, a meglévő manoach/Noach-lelet kiegészítéseként.
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| זָכַר / zácsár (H2142) | ✅ | ← "emlék" triviális, önreferens | 231 | nincs önálló | nem releváns | megerősítve |
+| רוּחַ / rúach (H7307) | ✅ | ← H7306 "szagolni" triviális (ua. mint `1Moz_7v1-24`, `1Moz_6v1-8`) | 377 | nincs önálló | nem releváns | megerősítve |
+| עֲלֵה־זַיִת (H5929+H2132) | ✅ | H5929 ← "felemelkedni" triviális; H2132 ← H2099 nem ad új tartalmat | 18 / 38 | nincs önálló | nem releváns | megerősítve |
+| פָּרוּ וְרָבוּ (H6509+H7235) | ✅ | mindkettő primitív gyök, nincs lánc | 29 / 226 | ✅ visszhangozza az 1:22/1:28 áldás-formulát (Remez) | nem releváns | megerősítve |
+| מִזְבֵּחַ / mizbéach (H4196) | ✅ | ← "áldozni" triviális | 401 | nincs önálló | nem releváns | megerősítve |
+| רֵיחַ הַנִּיחֹחַ (H7381+H5207) | ✅ | H5207 ← H5117 (*nuach*, "pihenni") — Noé nevével (נֹחַ) és a study saját *manoach* leletével azonos gyök | 58 / 43 | ✅ beépítve: manoach/Noach-lelet kiegészítése | nem releváns | beépítve |
+| יֵצֶר / jetzer (H3336) | ✅ | ← H3335 (*jacar*) — már lezárva `1Moz_6v1-8` 7. szakaszában | 9 | l. hivatkozott study | nem releváns | megerősítve, meglévő |
 
-**Elutasított/triviálisnak minősített Origin-lánc-elemek:** זָכַר ← "emlék" (triviális, önreferens); עֲלֵה ← "felemelkedni" (triviális); זַיִת ← H2099 (nem hoz új tartalmat); מִזְבֵּחַ ← "áldozni" (már ismert minta); יֵצֶר ← יצר (már a `1Moz_6v1-8_bovitett.md` 7. szakaszában lezárva, itt csak szó szerinti ismétlődés).
-
-**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv` és a `BDB_teljes_unabridged.tsv` fájlokból származnak.
+**Forrás-hivatkozási fegyelem:** `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv`.
 
 ---
 

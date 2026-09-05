@@ -157,16 +157,22 @@ A Genesis Rabbah (18:6 és környéke) hagyománya szerint a kígyó indítéka 
 
 ## 7. Lexikai audit — módszertani napló
 
-A 2/a-2/e technikasor lefutott a study kulcsszavaira (2. pont táblázata: nachás, árúm, tiggeú, pen-temutún, jodeéj tov vára, taavá, nechmád, vattittén).
+A 2/a-2/e technikasor lefutott a study kulcsszavaira. 2026.09.05-i retroaktív ellenőrzés (3/b terv) lezárta a korábban dokumentálatlan עָרוּם, תִגְּעוּ, פֶּן־תְּמֻתוּן, יֹדְעֵי טוֹב וָרָע, נֶחְמָד, וַתִּתֵּן Origin-lánc-lépéseit.
 
-**Beépített lelet:**
-- נָחָשׁ (H5175, "kígyó") ↔ נָחַשׁ (H5172, "jósolni"): a Strong-szótár fordított irányt ad ("nachás from H5172"), de a BDB szócikk saját maga "denominative from נָחָשׁ" jelzéssel a helyes irányt mutatja — beépítve, korrigált irányban (l. 2. pont).
-
-**Elutasított/triviálisnak minősített Origin-lánc-elemek:** פֶּן (H6435) ← H6437 "fordulni" (triviális, funkciószó); רַע (H7451) ← H7489 "rossznak lenni" (triviális, azonos gyökcsalád); תַּאֲוָה (H8378) ← H183 (nem ad új tartalmat).
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| נָחָשׁ / nachás (H5175) | ✅ | ↔ H5172 ("jósolni") — Strong fordított irányt ad, BDB "denominative from נָחָשׁ" a helyes irányt mutatja | 31 | ✅ beépítve, korrigált irányban (l. 2. pont) | nincs önálló ezen felül | beépítve |
+| עָרוּם / árúm (H6175) | ✅ | passive participle of H6191 — ugyanaz a Strong-közös-gyök, mint a 2:25 arummim (H6174), BDB nem erősíti meg | 11 | ✅ már dokumentálva `1Moz_2v8-25` 7. szakaszában (azonos indoklás) | nem releváns | megerősítve, meglévő szójáték |
+| תִגְּעוּ / tiggeu (H5060) | ✅ | nincs (primitív gyök) | 150 | nincs önálló | nem releváns | megerősítve |
+| פֶּן־תְּמֻתוּן (H6435+H4191) | ✅ | H6435←H6437 "fordulni" triviális; H4191 nincs (primitív gyök) | 133 / 840 | nincs önálló | nem releváns | megerősítve |
+| יֹדְעֵי טוֹב וָרָע (H3045+H2896+H7451) | ✅ | H3045 nincs (primitív gyök); H2896←H2895 triviális (l. `1Moz_2v8-25`); H7451←H7489 "rossznak lenni" triviális | 945 / 538 / 662 | nincs önálló | nem releváns | megerősítve |
+| תַּאֲוָה / taavá (H8378) | ✅ | ← H183, nem ad új tartalmat | 20 | nincs önálló | nem releváns | megerősítve |
+| נֶחְמָד / nechmád (H2530) | ✅ | nincs (primitív gyök) — a study saját maga jelzi a X. parancsolat gyökkapcsolatát | 25 | ✅ már a study saját táblázatában (X. parancsolat) | nem releváns | megerősítve |
+| וַתִּתֵּן / vattittén (H5414) | ✅ | nincs (primitív gyök) | 2011 | nincs önálló | nem releváns | megerősítve |
 
 **LXX-híd, ellenőrizve, nincs teendő:** 2Kor 11:3, 1Ján 2:16, Jel 12:9 ↔ a görög kulcsszavak (ofisz, epithümia) már mind explicit szerepelnek a study saját 4. pontjában, kiejtéssel — tartalmi hiány nincs.
 
-**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv` és `TAGNT_kivonat.tsv` fájlokból származnak.
+**Forrás-hivatkozási fegyelem:** `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv`, `TAHOT_kivonat.tsv`, `TAGNT_kivonat.tsv`.
 
 ---
 
