@@ -238,13 +238,18 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent (az özönvíz kiterjedése 
 
 ## 7. Lexikai audit — módszertani napló
 
-A 2/a-2/e technikasor lefutott a study mind a 6 kulcsszó-sorára (2. pont táblázatai: táhór, tehóm, arubbot hasámájim, szágár, nismat rúach chajjím, vajjisáér ách).
+A 2/a-2/e technikasor lefutott a study mind a 6 kulcsszó-sorára (2. pont táblázatai: táhór, tehóm, arubbot hasámájim, szágár, nismat rúach chajjím, vajjisáér ách). 2026.09.05-i retroaktív ellenőrzés (3/b terv) lezárta a korábban dokumentálatlan táhór/szágár Origin-lánc-lépéseket.
 
-**Beépített leletek:**
-- נִשְׁמַת רוּחַ חַיִּים (H5397+H7307+H2416, 7:22) ↔ נִשְׁמַת חַיִּים (1Móz 2:7): a BDB H5397-szócikk saját maga veti össze a két igehelyet — második dekreáció-adatpont a *tehóm* (1:2↔7:11) mellett (l. Remez).
-- Róm 9:27 (7:23, "csak Noé marada meg"): Strong-szám-szinten üres a metszet, de gyök-szinten VAN kapcsolat — héber שאר (1Móz 7:23 יִשָּׁאֶר H7604 ↔ Ézs 10:20-22 שְׁאָר H7605) és görög λείπω-család (LXX κατελείφθη ↔ Róm 9:27 ὑπόλειμμα) — l. Sod.
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| טָהוֹר / táhór (H2889) | ✅ "tiszta, rituálisan" | ← H2891 (*táhér*, "tisztának lenni") — triviális melléknévi alak, nem hoz új tartalmat | 94 | nincs önálló lelet | nem releváns | megerősítve, nincs eltérés |
+| תְּהוֹם / tehóm (H8415) | ✅ | nincs (önálló gyök) | 35 | ✅ már dokumentálva: 1:2↔7:11 dekreáció-adatpont (l. Remez) | — | meglévő lelet megerősítve |
+| אֲרֻבֹּת הַשָּׁמַיִם (H0699+H8064) | ✅ | H0699 ← H0693 ("leselkedni") — triviális | H0699: 9 / H8064: 420 | nincs önálló lelet | nem releváns | megerősítve, nincs eltérés |
+| סָגַר / szágár (H5462) | ✅ "bezárni, elzárni" | primitív gyök, nincs továbbvezethető lánc | 90 | nincs önálló lelet | nem releváns | megerősítve, nincs eltérés |
+| נִשְׁמַת רוּחַ חַיִּים (H5397+H7307+H2416) | ✅ | mind triviális: H5397←H5395 ("zihálni"), H7307←H7306 ("szagolni"), H2416←H2421 ("élni") | H5397: 24 / H7307: 377 / H2416: 498 | ✅ dokumentálva: BDB H5397-szócikk explicit összeveti 1Móz 2:7-tel — második dekreáció-adatpont | nincs önálló lelet ezen felül | beépítve (Remez) |
+| וַיִּשָּׁאֶר אַךְ (H7604+H0389) | ✅ | H0389 ← H0403 ("bizonyára") — triviális | H7604: 133 / H0389: 161 | ✅ dokumentálva: héber שאר-gyök ↔ Ézs 10:20-22 שְׁאָר (H7605); görög λείπω-család ↔ Róm 9:27 | ✅ LXX: κατελείφθη ↔ Róm 9:27 ὑπόλειμμα | beépítve (Sod) |
 
-**Elutasított/triviálisnak minősített Origin-lánc-elemek:** רוּחַ (H7307) ← H7306 "szagolni"; אֲרֻבֹּת (H0699) ← H0693 "leselkedni"; נְשָׁמָה (H5397) ← H5395 "zihálni"; חַי (H2416) ← H2421 "élni"; אַךְ (H0389) ← H0403 "bizonyára" — mind várható, nem hoznak új exegetikai tartalmat.
+**Elutasított leletek:** a Róm 9:27 kereszthivatkozás Strong-szám-szinten üres metszetet ad (a kockázat-riport ezt piros zászlóként jelezte) — ez NEM lett elutasítva, mert emberi ellenőrzés (2026.09.03) gyök-szintű valódi kapcsolatot talált (l. fenti táblázat utolsó sora). A "hamis pozitívnak minősítés" lett elutasítva, nem maga a kereszthivatkozás.
 
 **Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv`, `TAHOT_kivonat.tsv`, `TAGNT_kivonat.tsv` és `LXX_kivonat_Genezis.tsv` fájlokból származnak.
 
