@@ -334,6 +334,138 @@ def daniel_4_eltolas(fejezet, vers_szam):
     return (4, vers_szam - 3)
 
 
+def numeri_12_13_eltolas(fejezet, vers_szam):
+    """Numeri, nyers 12. fejezet 16. verse -> Karoli 13:1; nyers 13. fejezet
+    1-33. verse -> Karoli 13:2-34 (a valodi Karoli 13:1 tartalma a LXX-ben a
+    12. fejezet vegere "csuszott at").
+
+    A nyers studybible.info/LXX_WH/Numbers 12 es Numbers 13 oldalak egyike
+    sem ad zarojeles kereszthivatkozast ehhez a hatarhoz (ellenorizve), igy a
+    LXX_versificacios_terkep.tsv automatikus lookupja sosem aktivalodott.
+
+    Tartalmilag egyeztetve: a nyers "12:16" ("και μετα ταυτα εξηρεν ο λαος εξ
+    ασηρωθ...") pontosan egyezik Karoli 13:1-gyel ("Azutan pedig elindula a
+    nep Haserothbol..."); a nyers "13:1" ("και ελαλησεν κυριος προς μωυσην
+    λεγων") pontosan egyezik Karoli 13:2-vel; a nyers "13:30" pontosan
+    egyezik Karoli 13:33-mal. A 11. es 14. fejezet hatarai tisztak (tartalmi
+    egyeztetve), nem erintettek.
+    """
+    if fejezet == 12 and vers_szam == 16:
+        return (13, 1)
+    if fejezet == 13 and 1 <= vers_szam <= 33:
+        return (13, vers_szam + 1)
+    return None
+
+
+def job_38_41_eltolas(fejezet, vers_szam):
+    """Job, nyers 38-40. fejezetek elteruleseinek felbontasa Karoli
+    38:1-38 / 39:1-38 / 40:1-19 / 41:1-34 hataraira.
+
+    A nyers studybible.info/LXX_WH/Job 38, 39, 40 oldalak egyike sem ad
+    zarojeles kereszthivatkozast ehhez a lancolt hatarhoz (ellenorizve), igy
+    a LXX_versificacios_terkep.tsv automatikus lookupja sosem aktivalodott.
+    A Job 41. fejezet hatara tiszta (tartalmilag egyeztetve), nem erintett.
+
+    Tartalmilag egyeztetve minden szakaszhataron:
+      - nyers 38:1-38 valtozatlan (Karoli 38:1-38)
+      - nyers 38:39-41 -> Karoli 39:1-3 ("Vadaszol-e predat a nosteny
+        oroszlannak...", "hollonak eledelt" - pontos egyezes)
+      - nyers 39:1-30 -> Karoli 39:4-33 ("Tudod-e a koszali zergek
+        ellesenek idejet..." - pontos egyezes 39:4-gyel, 39:33-mal a vegen)
+      - nyers 40:1-5 -> Karoli 39:34-38 ("Szola tovabba az Ur Jobnak..." -
+        pontos egyezes)
+      - nyers 40:6-24 -> Karoli 40:1-19 ("Ekkor szola az Ur Jobnak a
+        forgoszelbol..." - pontos egyezes 40:1-gyel, 40:19-cel a vegen)
+    """
+    if fejezet == 38:
+        if 1 <= vers_szam <= 38:
+            return None
+        if 39 <= vers_szam <= 41:
+            return (39, vers_szam - 38)
+        return None
+    if fejezet == 39 and 1 <= vers_szam <= 30:
+        return (39, vers_szam + 3)
+    if fejezet == 40:
+        if 1 <= vers_szam <= 5:
+            return (39, vers_szam + 33)
+        if 6 <= vers_szam <= 24:
+            return (40, vers_szam - 5)
+        return None
+    return None
+
+
+def predikator_eltolas(fejezet, vers_szam):
+    """Prédikátor (Ecclesiastes) - a KONYVNEK NINCS EGYETLEN SORA SEM a
+    LXX_versificacios_terkep.tsv-ben (0 sor), tehat itt nem "a terkep nem
+    aktivalodik" a problema (mint Danielnel/Numerinel/Jobnal), hanem a
+    terkep MAGA hianyzik teljesen errol a konyvrol. A teljes konyvet
+    vegigellenorizve (minden fejezethatar, tartalmi egyeztetessel) 4
+    valodi eltolodasi/osszevonasi pont talalhato:
+
+      1/2 hatar:  nyers 1. fej. 1-17. vers valtozatlan; nyers 1:18 -> 2:1
+                  ("oti en plethei sofias..." = "Mert a bolcsessegnek
+                  sokasagaban..." - pontos egyezes). Nyers 2. fej. 1-24.
+                  vers -> Karoli 2:2-25 (egyenkent +1); nyers 2:25 ES 2:26
+                  EGYUTT Karoli 2:26-ba olvad ossze (Karoli itt ket
+                  gorog/nyers verset egyetlen hosszu mondatba von ossze:
+                  "ki ehet... Isten bolcseseget ad" - mindket felet
+                  tartalmazza).
+      8/9 hatar:  nyers 8. fej. 1-15. vers valtozatlan; nyers 8:16-17 ->
+                  9:1-2. Nyers 9. fej. 1-18. vers -> Karoli 9:3-20
+                  (egyenkent +2).
+      9/10 hatar: nyers 10. fej. 1-3. vers -> Karoli 9:21-23 (+20); nyers
+                  10:4-20 -> Karoli 10:1-17 (egyenkent -3).
+      11/12 hatar: nyers 11. fej. 1-8. vers valtozatlan; nyers 11:9-10 ->
+                  Karoli 12:1-2. Nyers 12. fej. 1-14. vers -> Karoli
+                  12:3-16 (egyenkent +2).
+
+    A 2-8. es a vege (12:16) tartalmilag egyeztetve tiszta, nem erintett.
+    Minden pontot tobb, fuggetlen tartalmi idezet-egyezessel ellenoriztunk
+    (l. beszelgetes) - pl. nyers 8:16 = "en ois edoka ten kardian mou tou
+    gnonai sofian..." = Karoli 9:1 "Mikor adam az en szivemet a
+    bolcsesegnek megtudasara..."; nyers 10:4 = "ean pneuma tou
+    exousiazontos anabe..." = Karoli 10:1 "Mikor a fejedelemnek haragja
+    felgerjed..."; nyers 11:9 = "eufrainou neaniske..." = Karoli 12:1
+    "Orvendezz a te ifjusagodban..."; nyers 12:1 = "kai mnestheti tou
+    ktisantos se..." = Karoli 12:3 "Es emlekezzel meg a te Teremtodrol...".
+    """
+    if fejezet == 1:
+        if 1 <= vers_szam <= 17:
+            return None
+        if vers_szam == 18:
+            return (2, 1)
+        return None
+    if fejezet == 2:
+        if 1 <= vers_szam <= 24:
+            return (2, vers_szam + 1)
+        if vers_szam in (25, 26):
+            return (2, 26)
+        return None
+    if fejezet == 8:
+        if 1 <= vers_szam <= 15:
+            return None
+        if vers_szam in (16, 17):
+            return (9, vers_szam - 15)
+        return None
+    if fejezet == 9 and 1 <= vers_szam <= 18:
+        return (9, vers_szam + 2)
+    if fejezet == 10:
+        if 1 <= vers_szam <= 3:
+            return (9, vers_szam + 20)
+        if 4 <= vers_szam <= 20:
+            return (10, vers_szam - 3)
+        return None
+    if fejezet == 11:
+        if 1 <= vers_szam <= 8:
+            return None
+        if vers_szam in (9, 10):
+            return (12, vers_szam - 8)
+        return None
+    if fejezet == 12 and 1 <= vers_szam <= 14:
+        return (12, vers_szam + 2)
+    return None
+
+
 # Konyv-specifikus, kezi fejezethatar-eltolas-szabalyok azokra az ismert
 # esetekre, ahol a nyers oldal nem ad zarojelet (a LXX_versificacios_terkep.tsv
 # automatikus lookupja emiatt sosem aktivalodik), DE tartalmilag egyeztetett,
@@ -342,6 +474,9 @@ def daniel_4_eltolas(fejezet, vers_szam):
 # None (ha nem erintett) alairasu.
 KEZI_ELTOLASOK = {
     "Daniel": daniel_4_eltolas,
+    "Numbers": numeri_12_13_eltolas,
+    "Job": job_38_41_eltolas,
+    "Ecclesiastes": predikator_eltolas,
 }
 
 
