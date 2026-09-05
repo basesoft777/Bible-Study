@@ -205,24 +205,20 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent — három önálló vitatot
 
 ## 7. Lexikai audit — módszertani napló
 
-A 2/a-2/e technikasor lefutott a study mind a 11 kulcsszó-sorára (2. pont táblázata). Nincs beépítendő ÚJ tartalmi lelet — a study saját szövege már tartalmazza a legfontosabb kapcsolatokat: יֵצֶר/יָצַר (jetzer/jacar, 6:5↔2:7, l. Remez) és az עצ״ב-lánc (3:16/3:17/5:29/6:6, l. Remez és Sod). Mindkettőt TAHOT-tal és BDB-vel függetlenül újra-ellenőriztem — a study megfogalmazása szó szerint is pontos, nem túlállít.
+A 2/a-2/e technikasor lefutott a study mind a 11 kulcsszó-sorára. 2026.09.05-i retroaktív ellenőrzés (3/b terv) lezárta a נִחַם, עָצַב, מָחָה kulcsszavak korábban dokumentálatlan Origin-lánc-lépését — mindhárom primitív gyök, nincs továbbvezethető lánc.
 
-**Ellenőrzött, megerősített pontosságú megfogalmazások:**
-- A "יָדוֹן (6:3) gyöke bizonytalan, דין vagy דור" (⚠️ Vitatott pont) — a BDB (H1777) szó szerint "verb dubious; only in יָדוֹן Gen 6:3" jelzéssel áll, pontosan megerősítve a study saját bizonytalansági jelzését.
-- A נְפִלִים "bizonytalan etimológia" jelzése (2. pont táblázata) — a BDB (H5303) szó szerint "etymology dubious... all very precarious" jelzéssel áll, pontosan megerősítve.
-- Az עצ״ב-lánc négy igehelye (3:16, 3:17, 5:29, 6:6) — TAHOT-tal ellenőrizve, mindegyik valóban tartalmazza a gyököt (H6089/H6093/H6087 — azonos triliterális gyök, eltérő szófaji alakok).
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| בְּנֵי־הָאֱלֹהִים (H1121+H430) | ✅ | H1121←H1129 "építeni" triviális; H430 korábbi studyban (1v1) lezárva | 4941 / 2603 | nincs önálló | nem releváns | megerősítve |
+| בְּנוֹת הָאָדָם (H1323+H120) | ✅ | H1323←H1129 triviális; H120←H119 (adam/adamah, korábban lezárva) | 588 / 551 | nincs önálló | nem releváns | megerősítve |
+| רוּחַ / ruach (H7307) | ✅ | ← H7306 "szagolni" triviális | 377 | nincs önálló | nem releváns | megerősítve |
+| בָּשָׂר / basar (H1320) | ✅ | ← H1319 "hírt hozni" triviális | 269 | nincs önálló | nem releváns | megerősítve |
+| נְפִלִים / Nefilim (H5303) | ✅ BDB: "etymology dubious... all very precarious" | nincs megbízható lánc — BDB explicit megerősíti a bizonytalanságot | 3 | nincs önálló | nem releváns | megerősítve, study saját jelzése pontos |
+| גִּבֹּרִים / gibborim (H1368) | ✅ | ← H1397 "nagy ember" triviális | 159 | nincs önálló | nem releváns | megerősítve |
+| יֵצֶר / jetzer (H3336) | ✅ | ← H3335 (*jacar*, "formálni") — valódi kapcsolat | 9 | ✅ beépítve: jetzer/jacar 6:5↔2:7 (Remez) | nincs önálló ezen felül | beépítve |
+| נִחַם / nicham (H5162) | ✅ | nincs (primitív gyök) | 108 | nincs önálló | nem releváns | megerősítve |
+| עָצַב / atzav (H6087) | ✅ | nincs (primitív gyök) | 17 | ✅ már beépítve: עצ״ב-lánc (3:16/3:17/5:29/6:6, l. Remez/Sod) | nincs önálló ezen felül | beépítve |
+| מָחָה / machah (H4229) | ✅ | nincs (primitív gyök) | 36 | nincs önálló | nem releváns | megerősítve |
+| חֵן / chen (H2580) | ✅ | ← H2603 (*chanan*, "kegyelmesnek lenni") triviális | 69 | nincs önálló | nem releváns | megerősítve |
 
-**Elutasított/triviálisnak minősített Origin-lánc-elemek:** בְּנֵי/בְּנוֹת ← בנה "építeni" (ismert, de nem specifikus szójáték); רוּחַ ← "szagolni"; בָּשָׂר ← "hírt hozni"; גִּבֹּרִים ← "nagy ember"; חֵן ← חנן "kegyelmesnek lenni" — mind triviális vagy már fedve.
-
-**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv` és `TAHOT_kivonat.tsv` fájlokból származnak.
-
----
-
-**Motívum-napló frissítésre váró elemek** (a napló tényleges frissítése megerősítésed után):
-- „bűn következményeinek gyűrűzése" — 3. előfordulás (immár egyetemes, "kol basar" szintű) → **eléri a ⭐ küszöböt**
-- „jetzer — a szív romlott hajlama" — új motívum, rokon a por/formáltatás gyökkel (יצ״ר), de új szemantikai mezőben
-- „Isten fájdalma (עצ״ב) — a kimondott átok visszhangja Istenben" — új Sod-motívum, 3:16-17 ↔ 6:6
-- „chen — az első kegyelem-előfordulás" — új Szoteriológia-motívum, előremutat Ef 2:8-ra
-- „Isten fiai — angyali/Séthita vita" — új ⚠️ motívum, kapcsolódik Júd 1:6, 2Pét 2:4-5-höz
-
-Szólj, ha ezeket rögzítsem a `PaRDeS_motivumok.md`-ben, vagy ha előbb finomítanál valamit a tanulmányon.
+**Forrás-hivatkozási fegyelem:** `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv`, `TAHOT_kivonat.tsv`.
