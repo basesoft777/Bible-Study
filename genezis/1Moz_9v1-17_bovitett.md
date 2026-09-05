@@ -194,15 +194,19 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent (a *kesét* kettős jelenté
 
 ## 7. Lexikai audit — módszertani napló
 
-A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára (2. pont táblázata). Nincs beépítendő tartalmi lelet.
+A 2/a-2/e technikasor lefutott a study mind a 7 kulcsszó-sorára. 2026.09.05-i retroaktív ellenőrzés (3/b terv) lezárta a korábban dokumentálatlan צֶלֶם és אוֹת Origin-lánc-lépéseit.
 
-**Ellenőrzött és elutasított etimológiák:**
-- קֶשֶׁת (H7198, "íj/ív") ← "hajlítani": közvetlenül érintené a study saját ⚠️ vitatott pontját (hadi íj vs. szivárvány), de a BDB szócikk saját maga "meaning unknown" jelzéssel áll ("originally √ perhaps קושׁ, meaning unknown") — a Strong-szótár "hajlítás" etimológiáját NEM erősíti meg — nem építendő be a vitatott pont alátámasztására.
-- עוֹלָם (H5769, "örök") ← עלם ("elrejteni"): ismert tudományos elmélet ("örökkévalóság" mint "a láthatáron túli idő"), de a BDB szócikk nem ad explicit gyök-jelölést az entry elején — Strong-only állítás, nem BDB-igazolt, nem építendő be.
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| דָּם / dám (H1818) | ✅ | ← "elhallgattatni" — BDB nem ad etimológiát, elutasítva | 360 | nincs önálló | nem releváns | elutasítva |
+| צֶלֶם / célem (H6754) | ✅ | "from an unused root meaning to shade" — nincs élő gyök | 17 | tematikusan összefügg a Zsolt 39:7/73:20 celem-lelettel (külön, még nem integrált nyitott tétel) | nem releváns | megerősítve, nincs itt új beépítés |
+| בְּרִית / brít (H1285) | ✅ | ← "vágás" elutasítva (ua. mint `1Moz_6v9-22`, `1Moz_15`, `1Moz_4v1-24`) | 283 | nincs önálló | nem releváns | elutasítva |
+| אוֹת / ót (H226) | ✅ | ← H225 "megjelenni" — valószínű, triviális | 80 | nincs önálló | nem releváns | megerősítve |
+| קֶשֶׁת / kesét (H7198) | ✅ "meaning unknown" | Strong "hajlítani" javaslatát a BDB NEM erősíti meg — közvetlenül érinti a study ⚠️ vitatott pontját, de nem alátámasztásra | 75 | ⚠️ vitatott pont, study már tárgyalja | nem releváns | elutasítva mint alátámasztás |
+| זָכַר / zácsár (H2142) | ✅ | ← "emlék" triviális | 231 | nincs önálló | nem releváns | megerősítve |
+| עוֹלָם / olám (H5769) | ✅ | ← עלם "elrejteni" — Strong-only, BDB nem ad explicit gyök-jelölést, elutasítva | 437 | nincs önálló | nem releváns | elutasítva |
 
-**Elutasított/már ismert Origin-lánc-elemek:** דָּם ← "elhallgattatni" és בְּרִית ← "vágás" — ugyanaz az elutasítás, mint a `1Moz_6v9-22_bovitett.md`, `1Moz_15_bovitett.md` és `1Moz_4v1-24_bovitett.md` 7. szakaszában; זָכַר ← "emlék" (triviális).
-
-**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv` és a `BDB_teljes_unabridged.tsv` fájlokból származnak.
+**Forrás-hivatkozási fegyelem:** `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv`.
 
 ---
 

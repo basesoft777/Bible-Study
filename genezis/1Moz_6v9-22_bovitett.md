@@ -216,15 +216,22 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent (gófer-fa azonosítása; El
 
 ## 7. Lexikai audit — módszertani napló
 
-A 2/a-2/e technikasor lefutott a study mind a 10 kulcsszó-sorára (2. pont táblázata). Nincs beépítendő tartalmi lelet.
+A 2/a-2/e technikasor lefutott a study mind a 10 kulcsszó-sorára. 2026.09.05-i retroaktív ellenőrzés (3/b terv) lezárta a korábban dokumentálatlan שָׁחַת, תֵּבָה, עֲצֵי־גֹפֶר Origin-lánc-lépéseit.
 
-**Ellenőrzött és elutasított etimológiák:**
-- מַבּוּל (H3999, "özönvíz") ← יבל ("vezetni/hordozni"): a BDB szócikk saját maga "derivation dubious... but improbable" jelzéssel elutasítja ezt a levezetést — nem építendő be, ha valaha felmerülne.
-- בְּרִית (H1285, "szövetség") ← "vágás értelmében": ugyanaz az elutasítás, mint a `1Moz_15_bovitett.md`-nél és `1Moz_9v1-17_bovitett.md`-nél — a BDB nem ad etimológiát a *brit*-hez, a hivatkozott H1262 ("enni") sem támasztja alá a "vágás" jelentést.
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| צַדִּיק / tzaddik (H6662) | ✅ | ← "igazságosnak lenni" triviális | 206 | nincs önálló | nem releváns | megerősítve |
+| תָּמִים / tamim (H8549) | ✅ | ← "befejezni/teljesnek lenni" triviális | 91 | ✅ már beépítve: *hithalech*+*tamim* szópár ↔ 1Móz 17:1 (Ábrahám) | nem releváns | beépítve |
+| הִתְהַלֵּךְ / hithalech (H1980) | ✅ | ← "menni" triviális | 1548 | ✅ már beépítve: 5:24 Énokh-visszhang (küszöb-figyelés lezárva) | nem releváns | beépítve |
+| חָמָס / chamász (H2555) | ✅ | ← "megsérteni" triviális | 60 | nincs önálló | nem releváns | megerősítve |
+| שָׁחַת / sáchat (H7843) | ✅ | nincs (primitív gyök) | 146 | nincs önálló | nem releváns | megerősítve |
+| תֵּבָה / tevá (H8392) | ✅ | "perhaps of foreign derivation" — nincs héber gyök | 28 | ✅ már beépítve: 2Móz 2:3 (Mózes-kosár), egyetlen másik előfordulás (l. Remez, motívum-javaslat is) | nem releváns | beépítve |
+| עֲצֵי־גֹפֶר / atzé-gófer (H1613) | ✅ | "from an unused root" — hapax legomenon, már jelezve a study saját táblázatában | 1 | nincs önálló | nem releváns | megerősítve |
+| מַבּוּל / mabbúl (H3999) | ✅ | ← יבל BDB "derivation dubious... but improbable" | 13 | nincs önálló | nem releváns | elutasítva |
+| נֶפֶשׁ חַיָּה (H5315+H2416) | ✅ | már részletesen tárgyalva `1Moz_2v4-7` és `1Moz_6v1-8` 7. szakaszában | 753 / 498 | l. hivatkozott studyk | nem releváns | megerősítve, meglévő |
+| בְּרִית / brít (H1285) | ✅ | ← "vágás értelmében" — BDB nem ad etimológiát, elutasítva (ua. mint `1Moz_15`, `1Moz_9v1-17`, `1Moz_4v1-24`) | 283 | nincs önálló | nem releváns | elutasítva |
 
-**Elutasított/triviálisnak minősített Origin-lánc-elemek:** צַדִּיק ← "igazságosnak lenni" (triviális); תָּמִים ← "befejezni/teljesnek lenni" (triviális); הִתְהַלֵּךְ ← "menni" (triviális); חָמָס ← "megsérteni" (triviális); נֶפֶשׁ חַיָּה — már részletesen tárgyalva a `1Moz_2v4-7_bovitett.md` és `1Moz_6v1-8_bovitett.md` 7. szakaszában.
-
-**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv` és a `BDB_teljes_unabridged.tsv` fájlokból származnak.
+**Forrás-hivatkozási fegyelem:** `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv`, `TAHOT_kivonat.tsv`.
 
 ---
 
