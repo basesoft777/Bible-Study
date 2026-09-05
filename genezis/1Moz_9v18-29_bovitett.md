@@ -169,20 +169,18 @@ Lásd a PaRDeS keretrendszer ⚠️ pontjában fent — kiemelt figyelemmel a sz
 
 ---
 
-## 7. Lexikai audit — módszertani napló (ÚJ szakasz, 2026.09.04, retroaktív audit)
+## 7. Lexikai audit — módszertani napló (2026.09.04, oszlop-bővítve 2026.09.05, 3/b terv)
 
 *Ez a szakasz nem PaRDeS-tartalom, hanem a retroaktív 2/a-2/f technikasor átlátható dokumentálása.*
 
-**Ellenőrzött szavak és eredmény:**
-
-| Szó | Strong | Teljes BDB ellenőrizve | Origin-lánc | Eredmény |
-|---|---|---|---|---|
-| אִישׁ הָאֲדָמָה | H376+H127 | ✅ | H127 ← H119 (bizonytalan, vitatott levezetés) | megerősítve, nincs eltérés |
-| וַיִּתְגַּל | H1540 | ✅ | nincs (primitív gyök) | megerősítve, nincs eltérés |
-| עֶרְוָה | H6172 | ✅ | igen → H6168 (*áráh*, "lemeztelenít") | l. új ⚠️ vitatott pont a "## 3." szakaszban |
-| אָרוּר | H779 | ✅ | nincs (primitív gyök) | megerősítve, nincs eltérés |
-| אֱלֹהֵי שֵׁם | H430+H8035 | ✅ | nincs | megerősítve, nincs eltérés |
-| יַפְתְּ | H6601 | ✅ | nincs (primitív gyök) | BDB szó szerint alátámasztja a "kiterjeszt/nagy örökséget ad" jelentést (Hiphil, Gen 9:27) — pontos egyezés, nincs eltérés |
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| אִישׁ הָאֲדָמָה (H376+H127) | ✅ | H127 ← H119 (bizonytalan, vitatott levezetés) | 1663 / 225 | nincs önálló | nem releváns | megerősítve, nincs eltérés |
+| וַיִּתְגַּל (H1540) | ✅ | nincs (primitív gyök) | 185 | nincs önálló | nem releváns | megerősítve, nincs eltérés |
+| עֶרְוָה (H6172) | ✅ | igen → H6168 (*áráh*, "lemeztelenít") | 54 | ✅ új ⚠️ vitatott pont a "## 3." szakaszban | nem releváns | beépítve |
+| אָרוּר (H779) | ✅ | nincs (primitív gyök) | 63 | nincs önálló | nem releváns | megerősítve, nincs eltérés |
+| אֱלֹהֵי שֵׁם (H430+H8035) | ✅ | nincs | 2603 / 17 | nincs önálló | nem releváns | megerősítve, nincs eltérés |
+| יַפְתְּ (H6601) | ✅ | nincs (primitív gyök) | 28 | ✅ BDB alátámasztja a "kiterjeszt/nagy örökséget ad" jelentést (Hiphil, Gen 9:27) — pontos egyezés | nem releváns | megerősítve |
 
 **Amit ez a módszer NEM tett meg:** a motívumnapló (`PaRDeS_motivumok.md`) érintetlen maradt, ez külön, hátralévő lépés.
 

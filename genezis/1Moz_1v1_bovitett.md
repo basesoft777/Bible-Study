@@ -196,21 +196,19 @@ Hasonló szerkezetű érvelés, mint Haginnél, de Capps kifejezetten a "Legyen 
 
 ---
 
-## 7. Lexikai audit — módszertani napló (ÚJ szakasz, 2026.09.02)
+## 7. Lexikai audit — módszertani napló (2026.09.02, oszlop-bővítve 2026.09.05, 3/b terv)
 
-*Ez a szakasz nem PaRDeS-tartalom, hanem a mai teljes újraaudit átlátható dokumentálása — mit néztünk meg, mit találtunk, mit NEM találtunk.*
+*Ez a szakasz nem PaRDeS-tartalom, hanem a teljes újraaudit átlátható dokumentálása.*
 
-**Ellenőrzött szavak és eredmény:**
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| בְּרֵאשִׁית (H7225) | ✅ | nincs | 51 | nincs önálló | nem releváns | megerősítve, nincs eltérés |
+| בָּרָא (H1254) | ✅ | nincs | 55 | ✅ új érv talált (l. Drash 2.) | nem releváns | beépítve |
+| אֱלֹהִים (H430) | ✅ | nincs | 2603 | nincs önálló | nem releváns | megerősítve, nincs eltérés |
+| הַשָּׁמַיִם (H8064) | ✅ | nincs | 420 | ✅ 2/f: הַשָּׁמַיִם/הָאָרֶץ merizmus, 180 közös igehely — túl gyakori, nem rejtett minta | nem releváns | megerősítve |
+| הָאָרֶץ (H776) | ✅ | nincs | 2504 | l. fenti sor (2/f) | nem releváns | megerősítve |
 
-| Szó | Strong | Teljes BDB ellenőrizve | Origin-lánc | Eredmény |
-|---|---|---|---|---|
-| בְּרֵאשִׁית | H7225 | ✅ | nincs | megerősítve, nincs eltérés |
-| בָּרָא | H1254 | ✅ | nincs | **új érv talált** (l. Drash 2.) |
-| אֱלֹהִים | H430 | ✅ | nincs | megerősítve, nincs eltérés |
-| הַשָּׁמַיִם | H8064 | ✅ | nincs | megerősítve, nincs eltérés |
-| הָאָרֶץ | H776 | ✅ | nincs | megerősítve, nincs eltérés |
-
-**NT-idézetek LXX-alapú lexikai ellenőrzése:**
+**NT-idézetek LXX-alapú lexikai ellenőrzése (kiegészítő, verse-szintű axis, nem kulcsszó-szintű):**
 
 | Idézet | LXX-közös szó | Poliszém? | Azonos jelentés-e? | Eredmény |
 |---|---|---|---|---|
@@ -218,7 +216,5 @@ Hasonló szerkezetű érvelés, mint Haginnél, de Capps kifejezetten a "Legyen 
 | Zsid 1:10 | ἀρχή (G0746) | igen | igen | ✅ megerősítve, ÚJ idézetként felvéve |
 | Kol 1:16 | ἀρχή (G0746) | igen | **NEM** (3. jelentés ott) | ⚠️ hamis pozitív, dokumentálva |
 | Zsid 11:3 | — | — | — | nincs releváns közös szó (csak generikus θεός) |
-
-**2/f — Rögzült szópár együttes-előfordulás ellenőrzése (ÚJ, 2026.09.04, retroaktív audit a protokoll v5 szerint):** a study szövegében ténylegesen együtt szereplő szópár a הַשָּׁמַיִם/הָאָרֶץ ("az egek és a föld") merizmus. Teljes körű ellenőrzés (`TAHOT_kivonat.tsv`): a két szó **180 igehelyen** fordul elő együtt ugyanabban a versben — ez a gyakoriság kizárja, hogy rejtett, tudatosan rögzült szópár-mintázatról legyen szó (szemben a תהו/בהו 3 előfordulásos esetével); a merizmus egyszerűen a "teljes kozmosz" kifejezésének standard bibliai formája. Nincs beépítendő tartalmi lelet.
 
 **Amit ez a módszer NEM tett meg** (átláthatóság kedvéért): nem futott le formális "13-as kör" szűrés (ez a tanulmány nem tagja annak a listának); a motívumnapló (`PaRDeS_motivumok.md`) ÉRINTETLEN maradt — az ἀρχή-lelet oda még nem került be, ez külön, még hátralévő lépés.
