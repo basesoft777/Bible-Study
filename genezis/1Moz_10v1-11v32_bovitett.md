@@ -221,16 +221,20 @@ Az égetett tégla és szurok-habarcs (11:3) valódi mezopotámiai/sumér épít
 
 ## 7. Lexikai audit — módszertani napló
 
-A 2/a-2/e technikasor lefutott a study kulcsszavaira (2. pont táblázata: toledot, gibbor, tsajid, mamlachah, safá echát, migdal, sém, návelá, balal).
+A 2/a-2/e technikasor lefutott a study kulcsszavaira. 2026.09.05-i retroaktív ellenőrzés (3/b terv) lezárt két korábban dokumentálatlan Origin-lánc-hivatkozást: שֵׁם (H8034) ← H7760 és בָּלַל (H1101) ← H1098 — mindkettő Strong-only javaslat, a BDB egyiket sem erősíti meg.
 
-**Beépített lelet:**
-- מִגְדָּל (H4026, "torony") ← גָּדַל (H1431, "naggyá lenni") — a standard héber mem-preformatívumos főnévképzés (mint מִזְבֵּחַ ← זָבַח) alapján a torony szó szerint "nagyság/naggyá-tevés helye" — ugyanaz a gyök, mint a 12:2-es אֲגַדְּלָה ("naggyá teszem") — beépítve a Sod pontba és új kereszthivatkozásként (l. 4. pont).
+| Kulcsszó (Strong) | 2/a BDB | 2/b Origin-lánc | 2/c Teljes-előfordulás | 2/d Kereszthiv./motívum-azonosság | 2/e LXX-híd | Eredmény |
+|---|---|---|---|---|---|---|
+| תּוֹלְדֹת / toledot (H8435) | ✅ | ← H3205 "nemzeni" triviális | 39 | nincs önálló | nem releváns | megerősítve |
+| גִּבֹּר / gibbor (H1368) | ✅ | ← H1397 "nagy ember" triviális (fedi a study saját gibbor-pontja) | 159 | nincs önálló | nem releváns | megerősítve |
+| צַיִד גִּבּוֹר (H6679/H6718) | ✅ | H6679↔H6718 kölcsönös/denominatív, egy gyökcsalád — triviális | 18 / 19 | nincs önálló | nem releváns | megerősítve |
+| מַמְלָכָה / mamlachá (H4467) | ✅ | ← H4427 "uralkodni" triviális | 117 | nincs önálló | nem releváns | megerősítve |
+| שָׂפָה אֶחָת (H8193+H259) | ✅ | H8193 ← H5595/H8192/H5490 (3 Strong-only javaslat) — BDB egyiket sem erősíti meg, önálló "vég/határ" gyök; H259←H258 triviális | 176 / 969 | nincs önálló | nem releváns | Strong-only javaslatok elutasítva |
+| מִגְדָּל / migdál (H4026) | ✅ | ← H1431 (*gadal*, "naggyá lenni") — valódi kapcsolat | 48 | ✅ beépítve: azonos gyök mint a 12:2 אֲגַדְּלָה (Sod + kereszthiv.) | nincs önálló ezen felül | beépítve |
+| שֵׁם / sém (H8034) | ✅ | két Strong-only javaslat (← H7760 "elhelyezni"; ← H8064 "ég") — **egyik sem BDB-igazolt** ("√ unknown") | 864 | ✅ már dokumentálva: שָׁמַיִם-kapcsolat elutasítva (l. 1Moz_12v1-20 is) | nem releváns | mindkét javaslat elutasítva |
+| בָּלַל / balal (H1101) | ✅ | ← H1098 (*belil*, "abrak") — Strong körkörös/denominatív javaslata, **BDB nem erősíti meg** (önálló szemita gyökcsalád, nincs "√"-jelölés) | 43 | nincs önálló | nem releváns | elutasítva |
 
-**Elutasított/triviálisnak minősített Origin-lánc-elemek:** תּוֹלְדֹת (H8435) ← H3205 "nemzeni" (triviális); גִּבֹּר (H1368) ← H1397 "nagy ember" (már fedi a study saját gibbor/gibborim lexikai pontja); מַמְלָכָה (H4467) ← H4427 "uralkodni" (triviális); שָׂפָה (H8193) ← "vég/határ" gyök (nem hoz új tartalmat).
-
-**Elutasított lelet:** שֵׁם (H8034, "név") ↔ שָׁמַיִם (H8064, "ég") — a Strong-szótár felveti, de a BDB nem erősíti meg (l. `1Moz_12v1-20_bovitett.md` 7. szakasza, azonos indoklás).
-
-**Forrás-hivatkozási fegyelem:** a fenti adatok a `Strong_szotar.tsv` és a `BDB_teljes_unabridged.tsv` fájlokból származnak.
+**Forrás-hivatkozási fegyelem:** `Strong_szotar.tsv`, `BDB_teljes_unabridged.tsv`, `TAHOT_kivonat.tsv`.
 
 ---
 
