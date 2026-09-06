@@ -31,7 +31,7 @@ mezőként** szerepel, akár több érték is megadható egyszerre.
 |---|---|
 | `TEREMT` | Teremtés, kozmosz, ős-rend/káosz |
 | `ALVIL` | Halál, alvilág |
-| `KULTUSZ` | Istentisztelet, áldozat, szentély, névsegítségül hívás |
+| `ISTENTISZT` | Istentisztelet, áldozat, szentély, névsegítségül hívás |
 | `HODIT` | Ígéret földje, hódítás, ott lakó népek |
 | `ANTROP` | Ember mivolta, méltósága, alkotóeleme |
 | `MENNY` | Mennyei/szellemvilág, angyalok |
@@ -47,12 +47,12 @@ mezőként** szerepel, akár több érték is megadható egyszerre.
 |---|---|---|
 | Tehóm-Abüsszosz-Hádész-Tartarosz komplexum | `TEREMT-001` | Teremtéstan |
 | Hádész (seól) | `ALVIL-001` | Eszkatológia |
-| Segítségül hívni az Úr nevét | `KULTUSZ-001` | *(nincs)* |
+| Segítségül hívni az Úr nevét | `ISTENTISZT-001` | *(nincs)* |
 | Rafeusok/óriás-népek | `HODIT-001` | *(nincs)* |
 | Pneuma/pszükhé megkülönböztetés | `ANTROP-001` | Antropológia / Pneumatológia |
 | Isten fiai — angyali/Séthita vita | `MENNY-001` | Angelológia |
 | Melkizedek — király-pap rendje | `KIRALY-001` | Krisztológia |
-| Oltárépítés — Ábrám vándorlásának jelölői | `KULTUSZ-002` | *(nincs)* |
+| Oltárépítés — Ábrám vándorlásának jelölői | `ISTENTISZT-002` | *(nincs)* |
 | Bűn következményeinek gyűrűzése | `HAMART-001` | Hamartológia |
 | Uralom-megbízás / emberi méltóság | `ANTROP-002` | Antropológia |
 | **Isten képmása (celem/eikón)** | **`ANTROP-003`** | **Antropológia + Krisztológia** (mindkettő megadva) |
