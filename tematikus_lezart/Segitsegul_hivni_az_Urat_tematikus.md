@@ -8,17 +8,55 @@
 
 ---
 
+## 0. Forrás-összegyűjtés a meglévő anyagból (retroaktívan pótolva, 2026.09.05)
+
+*A v12 sablon 0. pontja e study elkészültekor (v1, 2026.08.17) még nem
+létezett — ez a retroaktív pótlás.*
+
+1. **`PaRDeS_motivumok.md`** — a motívum korábbi bejegyzése (v41,
+   2026.08.17) ellenőrizve, öt genezisi előfordulással.
+2. **Érintett bővített tanulmányok 4. pontja** — `1Moz_4v25-5v32_
+   bovitett.md` (a motívum a study saját szövegtörzsében, nem 🔗-
+   blokkban szerepel), `1Moz_12v1-20_bovitett.md` (van saját 🔗-blokk),
+   `1Moz_13v1-18_bovitett.md` (van saját 🔗-blokk) — mindhárom
+   ellenőrizve, l. 6. pont 📎-visszahivatkozása.
+3. **"Nyitva maradó szál" jelzések** — nem volt ilyen explicit jelzés
+   egyik érintett bővített study-ban sem.
+4. **Kereszthivatkozás-naplók 2/a-2/e auditjai** — nincs kapcsolódó
+   bejegyzés (ezek az eszközök 2026.08.17-nél később kerültek
+   bevezetésre).
+5. **`Kockazat_szures_riport_*.md`** — nincs kapcsolódó bejegyzés (ez
+   a riport csak a bővített study-kra készült, nem tematikus
+   motívumokra).
+
+---
+
 ## 1. Előfordulások összegyűjtése
 
-| Igehely | Kapcsolódás | PaRDeS-szint, ahol felmerült |
-|---|---|---|
-| **1Móz 4:26** | A formula első előfordulása — Séth fia, Énós nemzedéke; a Kain-vonal önerős civilizációépítése (4:17-24) utáni korszakváltás jele | Drash — 1Mózes 4:25-5:32 tanulmány |
-| **1Móz 12:8** | Ábrám, Bétel-Ai között — oltárépítés + segítségül hívás első összekapcsolása | Drash |
-| **1Móz 13:4** | Ábrám **visszatér** ugyanahhoz az oltárhoz Egyiptomból; a formula tudatos, felkeresett szokássá válik | Drash, ⭐ küszöb |
-| **1Móz 21:33** *(új, e tanulmányban bevonva)* | Ábrahám, Beérseba — a formula kiegészül egy isteni jelzővel: אֵל עוֹלָם, *él olám*, "örökkévaló Isten" | — |
-| **1Móz 26:25** *(új, e tanulmányban bevonva)* | Izsák, Beérseba — a minta szó szerint átöröklődik a második pátriárka-nemzedékre, ugyanazon a helyszínen | — |
+| Igehely | Kapcsolódás | PaRDeS-szint | Strong-szám(ok) | BDB-entry-id | Sense-szám | Jelentés-szöveg (BDB eredeti) |
+|---|---|---|---|---|---|---|
+| **1Móz 4:26** | A formula első előfordulása — Séth fia, Énós nemzedéke; a Kain-vonal önerős civilizációépítése (4:17-24) utáni korszakváltás jele | Drash — 1Mózes 4:25-5:32 tanulmány | H7121, H8034 | H7121 | 2.c | "call with name of Yahweh (i.e. use it in invocation)" |
+| **1Móz 12:8** | Ábrám, Bétel-Ai között — oltárépítés + segítségül hívás első összekapcsolása | Drash | H7121, H8034 | H7121 | 2.c | (l. fent) |
+| **1Móz 13:4** | Ábrám **visszatér** ugyanahhoz az oltárhoz Egyiptomból; a formula tudatos, felkeresett szokássá válik | Drash, ⭐ küszöb | H7121, H8034 | H7121 | 2.c | (l. fent) |
+| **1Móz 21:33** | Ábrahám, Beérseba — a formula kiegészül egy isteni jelzővel: אֵל עוֹלָם, *él olám*, "örökkévaló Isten" | — | H7121, H8034 | H7121 | 2.c | (l. fent) |
+| **1Móz 26:25** | Izsák, Beérseba — a minta szó szerint átöröklődik a második pátriárka-nemzedékre, ugyanazon a helyszínen | — | H7121, H8034 | H7121 | 2.c | (l. fent) |
+| **1Kir 18:24-26** | Illés a Kármelen — nyilvános, versengő kontextus (Baál nevének segítségül hívása a kontraszt) | Remez | H7121, H8034 | H7121 | 2.c | "with name of Baal 1Kin 18:24-25, 26" |
+| **2Kir 5:11** | Naámán elvárása Elizeus felől — a formula ismertsége a nem-izraeli szereplő szájában is | Remez | H7121, H8034 | H7121 | 2.c | (l. fent) |
+| **Sof 3:9** | Eszkatológiai ígéret — a népek megtisztított ajka egy akarattal hívja segítségül az Urat | Remez | H7121, H8034 | H7121 | 2.c (rokon) | — |
+| **Zsolt 116:4, 13, 17** *(2026.09.05: formálisan táblázatba emelve, korábban csak prózában)* | Személyes hála-könyörgés — a formula a zsoltáros egyéni imaéletében | Remez | H7121, H8034 | H7121 | 2.c | — |
+| **Jóel 2:32 (MT) / 3:5 (Károli)** | Az ószövetségi megfogalmazás csúcspontja — ApCsel 2:21 és Róm 10:13 szó szerint idézi | Remez, ELŐKÉP/BETELJESEDÉS | H7121, H8034 | H7121 | 2.c | (l. fent) |
+| **Zsolt 105:1 / 1Krón 16:8** *(új, 2026.09.05)* | **[Funkció: PÁRHUZAM]** — "Hívjátok segítségül az ő nevét..." — önálló, később keletkezett liturgikus felhasználás, nem közvetlen narratív folytonosság a genezisi vonallal | Remez | H7121, H8034 | H7121 | 2.c | (l. fent) |
+| **Ézs 12:4** *(új, 2026.09.05)* | **[Funkció: PÁRHUZAM]** — szó szerint majdnem azonos a Zsolt 105:1-gyel, eszkatológiai hálaének kontextusban | Remez | H7121, H8034 | H7121 | 2.c | (l. fent) |
+| **Jer 10:25 / Zsolt 79:6** *(új, 2026.09.05)* | **[Funkció: PÁRHUZAM, tagadó/vádló forma]** — "a Te nevedet nem hívták segítségül" — fordított szórenddel (főnév a ige előtt), a pogány nemzetek elleni vádként | Remez | H7121, H8034 | H7121 | 2.c (tagadva) | (l. fent) |
+| **2Móz 33:19 / 34:5** *(új, 2026.09.05)* | **Nem sorolható be tisztán** a meglévő kapcsolat-funkciók egyikébe sem — l. külön indoklás alább | Remez (nyitott besorolású) | H7121, H8034 | H7121 | **3** (nem 2.c!) | "proclaim... followed by oratio recta Exod 34:6" |
+
+**🔍 STEPBible-ellenőrizve:** H7121, H8034, G1941 — versen belüli és szomszédos vers ellenőrzéssel, teljes ÓSZ (TAHOT) + teljes ÚSZ (TAGNT), 2026.09.05.
 
 **Az öt genezisi előfordulás összegző mintázata** *(pontosítva — l. 2026.08.22-i önellenőrzés)*: három eset (12:8, 13:4, 26:25) kifejezetten **oltárépítéssel** párosul. A 4:26-nál nincs oltár — ez nem egyetlen személy egyszeri kultikus cselekedete, hanem egy nemzedéki/közösségi szintű korszakváltás jelzése (l. `1Moz_4v25-5v32_bovitett.md`, amely a gyakorlat Énós korabeli **nyilvánossá válását** hangsúlyozza). A 21:33-nál pedig Ábrahám nem oltárt épít, hanem **tamariszkuszfát ültet** Beérsebában (אֵשֶׁל, *eshel*) — a segítségül hívás itt fa ültetéséhez, nem oltárhoz kötődik. A "minden eset oltárral jár" leegyszerűsítés tehát pontatlan volna; ami valóban közös mind az öt esetben: egy konkrét, helyhez kötött, kézzelfogható jelhez (oltár, fa, vagy — 4:26 esetén — egy nemzedék egésze) kapcsolt invokáció. A 13:4 + 26:25 pár mutatja, hogy a gyakorlat apáról fiúra öröklődik, ugyanahhoz a földrajzi ponthoz kötve (Beérseba: Ábrahám → Izsák).
+
+**A H7121 BDB sense-megkülönböztetés jelentősége:** a fenti táblázat utolsó sora (2Móz 33:19/34:5) a BDB szótár szerint **nem** a 2.c ("call with name of, invocation") jelentés-ágba tartozik, hanem a **3. ("proclaim")** ágba — a szótár saját maga, sense-szinten különbözteti meg "Isten nevének segítségül hívását" (2.c) "Isten saját nevének kihirdetésétől" (3.). Ez BDB-szinten, lexikai adattal is megerősíti a study alábbi, funkcionális elemzését.
+
+**2Móz 33:19 / 34:5 — miért nem sorolható be tisztán:** ez az eset — Isten kihirdeti saját nevét, közvetlenül a Sínai-hegyi tulajdonság-kinyilatkoztatás (34:6-7) előtt — nem illik a meglévő kapcsolat-funkciók egyikébe sem, három konkrét okból: **(1) nem ELŐKÉP/BETELJESEDÉS**, mert mindkét vég ószövetségi, ugyanabban a jelenetben található — nincs ÓSZ→ÚSZ ív. **(2) nem ÖRÖKLÉS/MINTAÁTVÉTEL** (mint 13:4→26:25 apáról fiúra), mert nincs emberi generációs átadás — Isten saját magára alkalmazza a formulát, nem egy következő emberi szereplőre. **(3) nem egyszerű PÁRHUZAM** (mint a fenti Zsolt 105:1/Ézs 12:4 esetek), mert nem "ugyanaz a használat más szereplővel" — a formula szereplőinek grammatikai szerepe (alany/tárgy) cserélődik fel magán a szerkezeten belül: nem az ember hívja segítségül Isten nevét, hanem Isten mondja ki a sajátját. Ezt a szerkezeti fordulatot mind a görög fordítói hagyomány (l. 2. pont pontosítása), mind a BDB saját sense-besorolása megerősíti. **Ez a `Bibliai_Motivumlexikon_tervezesi_naplo.md`-ben eddig csak vázlatosan felvetett kapcsolat-funkció-készlet egy valós, konkrét határesete** — érdemes lehet ezt a tervezési naplóba is felvenni nyitott kérdésként, amikor a KAPCSOLATOK-réteg tervezése folytatódik.
 
 **Kitekintés a teljes kánoni ívre** *(a motívum teljes súlyának megértéséhez, nem külön ⭐ számlálóként)*: a kifejezés az Ószövetségben tovább jelenik meg nyilvános/versengő kontextusban (1Kir 18:24-26, Illés a Kármelen), várakozás-cáfolatként (2Kir 5:11, Naámán), személyes hála-könyörgésként (Zsolt 116:4,13,17), és eszkatológiai ígéretként (Sof 3:9; Zak 13:9), mielőtt a Jóel 3:5 (MT) / 2:32 próféciában nyeri el végső ószövetségi megfogalmazását — amelyet Péter (ApCsel 2:21, Pünkösd) és Pál (Róm 10:13) is szó szerint idéz.
 
@@ -35,7 +73,9 @@ A **קָרָא בְּשֵׁם** szerkezetben a **בְּ** elöljárószó ("-ban
 
 **1Móz 21:33 egyedi kiegészítése:** itt a névhez egy isteni jelző is társul: **אֵל עוֹלָם** (*él olám*, "örökkévaló Isten") — ez az egyetlen genezisi hely, ahol a formula önmagában egy teológiai kijelentést is hordoz Isten természetéről.
 
-**Görög megfelelő (LXX és ÚSZ):** a Septuaginta következetesen az **ἐπικαλέομαι** (*epikaleomai*, G1941, medium/passzív alak — "segítségül hívni [magának], invokálni") igét használja; ugyanezt veszi át Péter (ApCsel 2:21) és Pál (Róm 10:13) is a Jóel-idézetben: *πᾶς ὃς ἂν ἐπικαλέσηται τὸ ὄνομα Κυρίου σωθήσεται* — "mindaz, aki segítségül hívja az Úr nevét, megtartatik."
+**Görög megfelelő (LXX és ÚSZ):** a Septuaginta **15 a 17 igehelyből** az **ἐπικαλέομαι** (*epikaleomai*, G1941, medium/passzív alak — "segítségül hívni [magának], invokálni") igét használja (néhány helyen — Sof 3:9, 1Krón 16:8, Zsolt 79:6, Jer 10:25 — a kritikai szövegalap-eltérés miatt nincs Strong-számos címke, de a görög szóalak azonosíthatóan ugyanabba a szócsaládba tartozik); ugyanezt veszi át Péter (ApCsel 2:21) és Pál (Róm 10:13) is a Jóel-idézetben: *πᾶς ὃς ἂν ἐπικαλέσηται τὸ ὄνομα Κυρίου σωθήσεται* — "mindaz, aki segítségül hívja az Úr nevét, megtartatik." **Két valódi kivétel van**: a fordított irányú 2Móz 33:19/34:5-nél a sima **καλέω** (G2564) áll (l. 1. pont indoklása), az Ézs 12:4-es párhuzamnál pedig egy harmadik ige, **βοάω** (G0994, "hangosan kiáltani").
+
+*(Módszertani megjegyzés, 2026.09.05: a rendszeres LXX-ellenőrzés során két, ehhez a study-hoz nem tartozó, de itt felfedezett adatminőségi észrevétel is előkerült a `LXX_kivonat_Zsoltarok.tsv`-ben — Zsolt 116:4-nél téves Strong-címke, Zsolt 116:17-nél hiányos kinyerés — l. a kereszthivatkozás-napló záró szakasza.)*
 
 **⚠️ Vitatott pont — 1Móz 4:26 értelmezése (héber szövegkritikai és rabbinikus kérdés):**
 
@@ -93,6 +133,12 @@ A motívum közvetlenül érinti a pünkösdi/karizmatikus hangsúlyt a "segíts
 ## 6. Napló-frissítés
 
 ✅ **Ez a lezárás már megtörtént korábban** (`PaRDeS_motivumok.md` v41, 2026.08.17) — a napló rögzíti, hogy a "segítségül hívni az Úr nevét" motívum "önállóan feldolgozott témaként" zárult le, öt genezisi előfordulással (4:26 → 12:8 → 13:4 → 21:33 → 26:25), a hiteles v36→v40 ágból kiindulva, saját kutatással (nem a korábban elutasított v34-2 ág feltöltött anyagának felhasználásával). A motívum a továbbiakban nem szerepel aktív ⭐ ajánlásként — jövőbeli előfordulásai (ha lesznek) továbbra is bekerülnek a kulcsszó-indexbe és a részletes bejegyzésbe, "lezárt téma, bővülő előfordulás-lista" jelleggel. Ez a fájl a naplóban már korábban dokumentált lezárás **tényleges, teljes tartalmát** pótolja a repóban — nem új lezárási lépés.
+
+**2026.09.05-i teljes v12-compliance frissítés:** a TAHOT-adathiány javítása után lefuttatott, pozíció-alapú frázis-keresés (`eszkozok/frazis_kereses_pozicio_alapon.py`), BDB szótári idézet-ellenőrzés, TSK-kereszthivatkozás és szisztematikus LXX-egyeztetés 4 új igehelyet erősített meg tartalmilag (Zsolt 105:1/1Krón 16:8, Ézs 12:4, Jer 10:25/Zsolt 79:6, 2Móz 33:19/34:5), és formálisan táblázatba emelte a korábban csak prózában szereplő Zsolt 116:4,13,17 hármast — a study most 17 igehelyet dokumentál (l. teljes napló: `naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md`). Ezzel egyidejűleg pótolva az "## 0. Forrás-összegyűjtés" szakasz, az 1. pont táblázatának 7-oszlopos formátuma, és az alábbi 📎-visszahivatkozás — a study most már megfelel a `4_PaRDeS_tematikus_sablon.md` v12-es verziójának.
+
+**Visszahivatkozott bővített study-k:** `1Moz_4v25-5v32_bovitett.md` (a study szövegtörzsében szereplő motívum végére, önálló mini-szakaszként), `1Moz_12v1-20_bovitett.md` (meglévő 🔗-blokk kiegészítve), `1Moz_13v1-18_bovitett.md` (meglévő 🔗-blokk kiegészítve) — l. részletek lent.
+
+**A `Karoli_Strong_kivonat.tsv` join-tábla bővítése az új igehelyekkel: külön, még hátralévő lépés, ebben a körben nem történt meg.**
 
 ---
 
