@@ -228,3 +228,7 @@ Lásd a 3. pont ⚠️ alpontjait.
 - **segítségül hívni az Úr nevét (Énós kora)** — új motívum, az istentisztelet/imádság kezdete
 
 **Következő igeszakasz a sorozatban:** 1Móz 6:1-8 (az „Isten fiai" és a romlás fokozódása, közvetlenül az özönvíz-elbeszélés előtt).
+
+---
+
+**Kapcsolódó tematikus tanulmány:** 📎 Bővebben, önálló tematikus feldolgozásban: `Segitsegul_hivni_az_Urat_tematikus.md` (Segítségül hívni az Úr nevét) — a 4:26-ban dokumentált "az Úr nevének segítségül hívása" motívum teljes kánoni ívét (Genezis → próféták → ApCsel/Róma) ez a tematikus tanulmány dolgozza fel részletesen.
