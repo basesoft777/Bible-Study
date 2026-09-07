@@ -219,6 +219,43 @@ leíró magyar névvel.
 Ha két elmentett szabály ütközni látszik, explicit rákérdezés
 következik, nem önkényes döntés.
 
+## Minőségi kapu — a két fájl közzététele/commitolása ELŐTT
+futtatandó
+
+A `4_PaRDeS_tematikus_sablon.md` Minőségi kapujából adaptálva, a
+lexikon-oldal saját kockázataira szabva:
+
+- [ ] **L1. Szerkezeti teljesség** — a TUDOMÁNYOS változat mind a 9
+      kötelező szakasza jelen van (0. Metaadatok, 1. Előfordulások,
+      1/b. PaRDeS keretrendszer, 2-N. lexikon-szócikkek, LXX-híd ha
+      releváns, TSK/Károli-KH, Kapcsolatok, Módszertani napló, Nyitott
+      kérdések), és az OLVASHATÓ változat mind a 7 kötelező szakasza
+      jelen van. Utólagos szerkesztésnél külön ellenőrizendő, hogy egy
+      korábban meglévő szakasz nem maradt-e ki.
+- [ ] **L3. Lexikai vs. tematikus kapcsolat szétválasztva** — minden
+      forrás-hivatkozás, ami nem a motívum saját Strong-számán/szaván
+      keresztül kapcsolódik, hanem csak fogalmilag (pl. egy másik
+      motívum auditjából átvett, kategória-szintű párhuzam), explicit
+      "tematikus, nem lexikai" jelöléssel szerepel.
+- [ ] **L4. Kereszt-motívum szennyeződés kizárva** — a lexikon-oldal
+      kizárólag a saját motívumára (a fájlnévben szereplő
+      MOTÍVUM-ID-ra) vonatkozó leleteket tartalmazza. **Külön
+      ellenőrizendő**, hogy egy másik motívum auditjából (pl. egy
+      másik `[MOTÍVUM-ID]_TUDOMANYOS.md` vagy egy másik tematikus
+      study feldolgozása közben talált lelet) nem került-e át ide
+      névtévesztéssel vagy figyelmetlenségből — ez a hiba már
+      ténylegesen előfordult (2026.09.07, Zakariás 6:13/Melkizedek-
+      lelet egy ISTENTISZT-001 mintaoldalon).
+- [ ] **L5. Nevesített tanítói szakasz átvéve** — ha a forrás-study
+      5. pontja tartalmaz nevesített tanítói egyezés-keresést, az a
+      lexikon-oldalon is szerepel (jelenleg nincs kötelező szakaszként
+      nevesítve a fő struktúrában — ha hiányzik, ez önmagában nem
+      buktatja a kaput, de jelezni kell a Nyitott kérdések
+      szakaszban).
+
+Ha L1, L3, L4 bármelyike bukik, a lexikon-oldal NEM tehető közzé/
+commitolható, amíg nincs javítva.
+
 ---
 
 *A két fájl elkészítése előtt belső önellenőrzés fut le: megvan-e a
