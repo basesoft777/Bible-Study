@@ -51,3 +51,5 @@ Korlát: amíg kevés study használja aktívan a görög oldalt mélyen (eddig 
 * A 4. lehetőség tisztán döntési kérdés, bármelyik másikkal párhuzamosan lezárható, és érdemes a 2. előtt eldönteni, hogy a strukturált TSV már a helyes konvenciót kövesse.
 
 Egyik irány sem lett elindítva. Ha bármelyiket folytatni szeretnéd, jelezd, és külön Code-prompt/terv készül hozzá.
+
+**2026.09.07-i frissítés:** a 3. lehetőség (LSJ/Thayer beszerzése) azóta ténylegesen megtörtént — a felhasználó letöltötte a teljes `biblematedata` lexikon-csomagot. A tartalom-felmérés eredménye: `Uj_lexikon_fajlok_2026-09-07.md`.
