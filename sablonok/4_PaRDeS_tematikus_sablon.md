@@ -171,6 +171,8 @@ A tanulmány végén a `PaRDeS_motivumok.md` naplóban a feldolgozott motívumot
 
 **Index-frissítés:** a motívumlog frissítésével egy időben a `Lezart_tematikus_tanulmanyok_index.md` projektfájlt is frissíteni kell egy új sorral (motívum, fájlnév, érintett igehelyek, megjegyzés) — ez a fájl az összes lezárt tematikus tanulmány központi, strukturált listája, chat-szálakon átívelő visszakereshetőség céljából.
 
+**Utólagos bővítés — ugyanez a kötelezettség érvényes egy már lezárt study-ra is.** Ha egy már ✅ LEZÁRVA státuszú tematikus study utólag bővül (új igehely, új tipológia/alpont, korábban pilot-only jelöléssel visszatartott elem visszaírása stb.), a `PaRDeS_motivumok.md` naplót **ugyanabban a commit/PR-ben** frissíteni kell — nem külön, később, csak rákérdezésre. A frissítésnek ki kell terjednie: (a) a motívum részletes szöveges bejegyzésére (2. szekció) — az igehely-szám és -lista pontosítva; (b) a táblázatos kulcsszó-indexre (a megfelelő sor Előfordulás-száma és igehely-listája); (c) egy új, dátumozott napló-verzióbejegyzésre a fájl elején, a bővítés tényét és forrását (pl. pilot-visszaírás) rögzítve. A Lezárási checklist alábbi pontjai közül a 3., 4. és 9. pont értelemszerűen erre az esetre is vonatkozik, nem csak a kezdeti lezárásra.
+
 ### Lezárási checklist (sorrendben végigjárandó)
 
 Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szükséges, ugyanabban a munkamenetben:
