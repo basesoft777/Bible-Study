@@ -164,7 +164,7 @@ pontjaiban.
 - Elkülönül a Mélyelemzéstől: az utóbbi két igehelyet vet össze, ez egy egész motívumot dolgoz fel
 
 ## Munkafolyamat
-- Motívum-napló (PaRDeS_motivumok.md) frissítése minden tanulmány után — beleértve az "Előrejelzett, konkrét igehelyen megerősítendő motívumok" alszakaszt is (⭐ küszöb és Kulcsszó-index között; a következő tanulmány elején automatikusan ellenőrizendő)
+- Motívum-napló (PaRDeS_motivumok.md) frissítése minden tanulmány után — beleértve az "Előrejelzett, konkrét igehelyen megerősítendő motívumok" alszakaszt is (⭐ küszöb és Kulcsszó-index között; a következő tanulmány elején automatikusan ellenőrizendő). **Ez egy már lezárt study utólagos bővítésére is vonatkozik** (l. `4_PaRDeS_tematikus_sablon.md` 6. pontja) — a napló-szinkron nem csak kezdeti lezáráskor kötelező, ugyanabban a körben kell elvégezni, mint magát a study-módosítást.
 - Ütköző szabályoknál: explicit rákérdezés, nem önkényes döntés
 - **Véglegesítés előtti belső önellenőrzés kiegészítve:** valahányszor a szöveg azt állítja/sugallja, hogy két igehely közös szótő/szócsalád (lexikai) kapcsolatban áll, ellenőrizni kell, hogy ténylegesen ugyanaz-e a görög/héber szó — ha csak tematikus/fogalmi a kapcsolat, ezt explicit jelezni kell ("tematikus, nem lexikai párhuzam")
 - Sorozatfeldolgozásnál: következő igeszakasz felajánlása
