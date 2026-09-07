@@ -175,5 +175,35 @@ részekre (fordítás, OCR-javítás, teológiai magyarázat ellenőrzése).
 tartalmát, az értékelést és a TWOT-szám/TWOT-szöveg megkülönböztetést
 rögzíti, a korábbi szakaszokhoz hasonlóan tervezési feljegyzésként.
 
-## 15. Következő lépés
+## 15. Döntés: a lexikon-TSV-k lapos, teljes-szöveges struktúrája (2026.09.07)
+
+**Kiegészítés a 6-8. pontokhoz és a `konkordancia/Uj_lexikon_fajlok_2026-09-07.md`-hez.** Rögzítve egy chat-alapú beszélgetés (Claude Sonnet 5, chat-felület) végkövetkeztetéseként, a Motívumlexikon-pilot (ISTENTISZT-001) elemzése nyomán.
+
+**A kérdés, amit ez a jegyzet lezár:** a 7. pont ("reverzibilis tervezés" elve) egy granulált, hármas kulcsú struktúrát javasolt a jövőbeli BDB-bővítéshez:
+
+```
+Strong-szám | BDB-entry-id | Sense-szám | Jelentés-szöveg
+```
+
+Ezzel szemben a ma (PR #53) ténylegesen elkészült 5 lexikon-TSV (`Thayer_teljes.tsv`, `LSJ_teljes.tsv`, `SECE_H_teljes.tsv`, `SECE_G_teljes.tsv`, `BDB_teljes_unabridged.tsv`) lapos, 3 oszlopos szerkezetű:
+
+```
+Strong_padded | Strong_eredeti | Teljes_szocikk
+```
+
+A `Teljes_szocikk` egyetlen, tagolatlan szövegblokk — a szótári sense-bontás (pl. BDB a/b/c + 1-9, vagy Thayer 1-5) csak a nyers szövegben van benne, nem külön mezőben.
+
+Ez a jegyzet rögzíti: ez tudatos, végleges formai döntés — nem elmaradt, javítandó granulálás.
+
+**Az indoklás:**
+
+1. **A tényleges munkamód nem mezőnkénti lekérdezés, hanem kereszt-olvasás.** A Motívumlexikon-pilot (`ISTENTISZT-001_TUDOMANYOS.md`, 4. szakasz) konkrét példát adott erre: a G1941 (ἐπικαλέω) szócikknél a BDB, a TBESG (Abbott-Smith) és a Thayer szövege egymás mellé kerülve hozott egy önálló felismerést — a Thayer explicit szétválasztja a "Hebraistically" (5.) sense-t az általános "invokálni" (4.) sense-től, ami három egymástól független forrásból megerősítette a motívum lexikográfiai alapját. Ez a felismerés a teljes, kontextusban hagyott szövegből jött — a "Hebraistically" jelző, a Gesenius-hivatkozás és a zsoltár-párhuzamok együtt adták az értelmezés anyagát. Ha a struktúra eleve granulált, elkülönített sense-mezőkre bontva tárolta volna ezt, pont ez a szövegkörnyezet veszett volna el.
+2. **Összhangban a 8. ponttal.** A 8. pont (Basesoft pontosítása, 2026.08.30) már korábban kimondta: a BDB sense-ek nem egymást kizáró választási lehetőségek, hanem rárétegződő jelentés-mélységek, és hogy "melyik sense aktív egy adott versben" interpretív mérlegelés, nem mechanikus előszűrés kérdése. A döntés szerint a BDB-adat referencia-anyag marad, forrásmegjelöléssel idézve — nem strukturált szűrő. A lapos struktúra ennek a döntésnek a közvetlen, következetes folytatása: ha a sense-ek úgyis interpretív mérlegeléssel, forrásidézetként kerülnek egy tanulmányba (mint egy nevesített tanító idézése), egy granulált adatbázis felesleges plusz-réteg lenne.
+3. **A módszertani fegyelem, nem a formátum, az elsődleges tényező.** A fenti felismerést nem a lapos formátum önmagában generálta, hanem a már kiforrott study-módszertan (négyforrásos kereszt-ellenőrzés, "lexikai vs. tematikus, sosem keverve" önellenőrzés, nevesített forrás-idézés fegyelme), ami a `Segitsegul_hivni_az_Urat_tematikus.md` és a `PaRDeS_gyorsreferencia.md`-ben rögzült. A lapos formátum szükséges feltétel volt (megőrizte a kontextust), a study-fegyelem másik szükséges feltétel volt (értelmezni tudta azt) — a kettő együtt volt elégséges az eredményhez. Gyakorlati következmény: ha a lexikon-adatstruktúra fejlesztése valaha elszakadna az élő study-munkától (pl. a TSV-k bővülnének tematikus/bővített study nélkül), ez a fajta eredmény valószínűleg nem reprodukálódna — a formátum jósága a módszertantól függ, nem önmagában áll.
+
+**Mikor kellene felülvizsgálni:** ha a jövőben a Motívumlexikon KAPCSOLAT-rétege (11. pont, "Lexikai kulcs" mező) ténylegesen gépi, sense-szintű hivatkozást igényelne (nem csak interpretív idézést egy tanulmány szövegében), a granulálás kérdését újra elő kell venni. Eddig erre nem történt konkrét igény.
+
+Forrás: chat-alapú beszélgetés, 2026.09.07, a Motívumlexikon-pilot (ISTENTISZT-001) és a mai lexikon-TSV-k (PR #53) elemzése alapján.
+
+## 16. Következő lépés
 Egyelőre nincs — ez a fájl kizárólag a terv jelenlegi állását rögzíti. A folytatás (melyik nyitott kérdéssel induljunk) Basesoft külön kezdeményezésére történik.
