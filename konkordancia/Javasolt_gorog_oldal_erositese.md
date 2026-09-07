@@ -53,3 +53,25 @@ Korlát: amíg kevés study használja aktívan a görög oldalt mélyen (eddig 
 Egyik irány sem lett elindítva. Ha bármelyiket folytatni szeretnéd, jelezd, és külön Code-prompt/terv készül hozzá.
 
 **2026.09.07-i frissítés:** a 3. lehetőség (LSJ/Thayer beszerzése) azóta ténylegesen megtörtént — a felhasználó letöltötte a teljes `biblematedata` lexikon-csomagot. A tartalom-felmérés eredménye: `Uj_lexikon_fajlok_2026-09-07.md`.
+
+## 6. lehetőség — A 12 új lexikonfájl projekt-szintű rangsorolt hasznosítása
+
+Mit old meg: a `Uj_lexikon_fajlok_2026-09-07.md` fájlonkénti felmérése után szükség volt egy második, projekt-egészre (nem csak az ISTENTISZT-001 motívumra) vonatkozó értékelésre — melyik fájl ad bármely jövőbeli study számára újrafelhasználható képességet, szemben azzal, ami csak erre az egy motívumra hasznos.
+
+Görög oldal, rangsorolva:
+
+1. SECE (Louw-Nida szemantikai domain) — a legnagyobb projekt-szintű nyereség. Új keresési dimenziót nyit: a jelenlegi Strong-szám-alapú grep csak azonos szavas előfordulásokat talál; a Louw-Nida domain-számok jelentés szerint csoportosítják a szavakat, így feltárhatók lennének ugyanahhoz a szemantikai mezőhöz tartozó, de más Strong-számú görög igék is — ezt a mostani módszertan sosem találná meg.
+2. Thayer — projekt-szintű hiánypótlás, a héber BDB görög párja; minden jövőbeli újszövetségi vonatkozású study (bővített és tematikus egyaránt) profitálna belőle.
+3. MCGED (Mounce) — gyorsítja a mindennapi munkát: a 2/c "Teljes-előfordulás" oszlop eddig manuális `TAGNT_kivonat.tsv`-grep-eléssel készült; a Mounce-szótár direktben megadja a pontos előfordulás-számot minden görög szóra.
+4. LSJ — célzottan, nem egyenletesen értékes: ahol a szónak klasszikus/filozófiai háttere van (pl. egy jövőbeli Pneuma/pszükhé-tematikájú study), ott komoly hozzáadott érték; összetett igéknél (pl. ἐπικαλέω) csak az alapigéhez (καλέω) irányít át, de az alapige-szócikk maga gazdag (pl. 28 000+ karakter).
+5. MGLNT, LXX.lexicon, ConcordanceBook, Morphology, ConcordanceMorphology — alacsony projekt-szintű érték: MGLNT az Abbott-Smith duplikátuma (héber szavak helyett Strong-hivatkozásokkal); a többi navigációs/nyelvtani segédeszköz, amit a meglévő TAHOT/TAGNT-kivonatok kényelmesebben kiszolgálnak.
+
+Héber oldal, két konkrét felfedezés:
+
+1. TBESH.lexicon (SQLite) megoldja a korábban dokumentált, nyitott módszertani kérdést (l. 4. lehetőség fent): egy Strong-szám a szöveges `TBESH.txt`-ben több (G/H/I/J) alsort kapott, konvenció nélkül, melyiket használjuk. Az SQLite-verzió egyetlen, konszolidált, rendezett sense-számozású (1a1–1c) bejegyzést ad — ez projekt-szinten lezárná a 4. lehetőségben leírt nyitott kérdést.
+2. SECE héber oldalon egy teljesen új képességet ad: a teljes görög-megfelelő listát egy héber szóhoz. A קָרָא (H7121) SECE-bejegyzése felsorolja az összes görög igét, amit a LXX valaha használt e szó fordítására (βοάω, καλέω, ἐπικαλέομαι mind szerepelnek) — ez azt jelenti, hogy egy adott héber szó "görög fordítási spektruma" bármely jövőbeli LXX-elemzésnél lekérdezhetővé válna, nem csak utólagos, esetenkénti felfedezéssel (mint ahogy ez a mai ISTENTISZT-001-audit során, esetlegesen, előkerült).
+
+Rangsor összegzés (teljes projektre nézve, nem csak erre a motívumra): SECE (Louw-Nida + héber-görög megfelelés) > Thayer > MCGED > LSJ (célzottan) — ez a négy fájl éri meg a feldolgozási beruházást; a TBESH-konszolidáció emellett külön, azonnal lezárható módszertani nyereség (l. 4. lehetőség).
+Jellege: mint a 2–3. lehetőségnél, ez is egyszeri feldolgozási munka (SQLite-lekérdezés → strukturált TSV, a meglévő BDB-import mintáját követve), utána tartós haszonnal minden jövőbeli study számára. Korlát: a 12 SQLite-fájl licenc-státusza még tisztázatlan (l. `konkordancia/lexikonok_nyers/README.md`) — ez a feldolgozás megkezdése előtt tisztázandó, különösen, ha az eredmény publikus vagy harmadik féllel megosztott anyagba kerülne.
+
+Egyik irány sem lett elindítva. Ha bármelyiket folytatni szeretnéd, jelezd, és külön Code-prompt/terv készül hozzá.
