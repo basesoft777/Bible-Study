@@ -63,6 +63,22 @@ NEM újrafogalmazva. Oszlopok: Igehely | Kapcsolódás | PaRDeS-szint |
 Funkció | Strong-szám(ok) | BDB sense (vagy más lexikon sense-
 hivatkozás).
 
+### 1/b. PaRDeS keretrendszer — a study 3. pontjából, a lexikon-adat
+fényében bővítve
+**Kötelező szakasz** (2026.09.07-től) — a forrás-study "3. A PaRDeS
+keretrendszer" szakasza (Peshat/Remez/Drash/Sod, a motívum egészére
+alkalmazva) átemelendő, és **bővítendő** minden olyan lexikai
+felismeréssel, amit a 2-N. szakaszok többforrásos lexikon-idézése
+hozott (pl. ha több forrás egybehangzóan megerősít egy értelmezést,
+vagy egy forrás explicit sense-megkülönböztetést tartalmaz, ami a
+Remez/Drash rétegek valamelyikét alátámasztja). A bővítés a Remez
+és/vagy Drash rétegbe kerül (nem a Peshat vagy Sod rétegbe, hacsak a
+lelet nem kifejezetten ott indokolt) — a Sod réteg fegyelmezettsége
+külön kiemelendő indoklással védendő új adat esetén is. Stílus:
+törekedjen közérthetőségre a tisztán tudományos leírás helyett is,
+különösen a bővítő bekezdésekben — a cél, hogy a lelet jelentősége
+ne csak szakértő olvasó számára legyen világos.
+
 ### 2-N. TELJES lexikon-szócikk(ek) szó szerint
 Minden motívum-kulcsszóra (jellemzően 2, pl. az ige + a főnév) egy
 külön szakasz. Minden szakaszban:

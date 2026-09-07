@@ -57,6 +57,82 @@ olvasmányosságra, hanem teljességre optimalizált — a párja
 
 ---
 
+## PaRDeS keretrendszer — a motívum egészére alkalmazva
+*(a study saját 3. pontjából átvéve, a lexikon-kiegészítés (2-4.
+szakasz) fényében bővítve — 2026.09.07)*
+
+**Peshat:** a genezisi öt előfordulás (4:26, 12:8, 13:4, 21:33, 26:25)
+egyetlen, folytonos gyakorlatot ír le: a hívő ember Isten nevének
+invokálásával fejezi ki függőségét és hódolatát — jellemzően egy
+konkrét, helyhez kötött kultikus jelhez kapcsolva (oltárépítés 12:8,
+13:4 és 26:25 esetén; fa ültetése 21:33-nál). A gyakorlat nem
+egyszeri esemény, hanem nemzedékeken át öröklődő szokás (Ábrahám →
+Izsák), amely konkrét földrajzi pontokhoz kötődik (Bétel-Ai,
+Beérseba).
+
+**Remez:** a minta a Séthita vonaltól a pátriárkákon át húzódik
+tovább, a próféták nyilvános, versengő kontextusán (1Kir 18) és a
+zsoltáros személyes könyörgésén (Zsolt 116) át egy eszkatológiai,
+univerzális ígéretig (Sof 3:9, Zak 13:9; Jóel 3:5/2:32), amely
+Pünkösdkor (ApCsel 2:21) és Pál evangéliumi érvelésében (Róm
+10:13-14) nyeri el végső alkalmazását.
+
+**Miért nem csak véletlen szóegyezés ez — egy kicsit hétköznapibban:**
+amikor Péter és Pál görögül idézik a formulát, egy görög igét
+használnak (ἐπικαλέομαι), aminek önmagában elég tág, általános
+jelentése van — bárkit meg lehet vele "szólítani", akár egy pogány
+istent is. Felmerülhetne tehát a kérdés: tényleg ugyanarról a
+dologról van szó, mint a genezisi történetben, vagy csak egy tág
+jelentésű szót választottak, ami történetesen illik ide?
+
+A válasz most, hogy három egymástól teljesen független szótár
+(a héber BDB, és két külön görög szótár, a TBESG és a most feldolgozott
+Thayer) is elérhető, egyértelműbb, mint korábban volt. A Thayer
+ugyanis **külön kategóriába** teszi azt az esetet, amikor ezt a görög
+igét kifejezetten **egy héber kifejezés fordításaként** használják —
+külön véve attól az esettől, amikor csak simán "hívnak/szólítanak"
+valakit. Vagyis maga a szótár mondja ki: ez nem esetleges
+szóhasználat, hanem tudatos fordítás egy már ismert héber mintára.
+
+Ez azért erősebb bizonyíték, mint ha csak egy forrásra
+támaszkodnánk: három, egymástól független szótárkészítő, más
+korban, más módszerrel dolgozva jutott ugyanarra a következtetésre.
+Ha csak a mi olvasatunk lenne, könnyen mondhatnánk, hogy belelátjuk a
+kapcsolatot, ahol nincs. De ha maguk a szótárak — tőlünk függetlenül —
+külön kezelik ezt az esetet, az megerősíti, hogy a motívum valódi:
+Pál és Péter nem véletlenül fogalmaznak úgy, mint a Genezis, hanem
+tudatosan ugyanazt a régi mintát viszik tovább, csak már görögül.
+
+**Drash:** a motívum azt tanítja, hogy az istentisztelet magja nem a
+nyilvános teljesítmény vagy a rituálé pontossága, hanem a
+**függőség tudatos, névvel azonosított kifejezése**. Ábrahám és
+Izsák párhuzama azt is megmutatja, hogy ez a fajta istentisztelet
+**taníthatóvá és örökölhetővé** válik. A study időközben (2026.09.07)
+visszaírt A/B/C tipológiája ezt a tanítást egy szinttel mélyebbre
+viszi: a קָרָא ("hívni") + שֵׁם ("név") szókapcsolat nemcsak az ember
+Isten felé irányuló invokációját (A — a study fő motívuma) fejezheti
+ki, hanem — ugyanazzal a nyelvi szerkezettel, felcserélt
+alany/tárgy-szereposztásban — Isten önkinyilatkoztatását is (B: Isten
+kihirdeti saját nevét, 2Móz 33:19/34:5) és Isten névadó tettét egy
+emberen (C: Ézs 43:1, 44:5, 45:3). A motívum tehát nem elszigetelt
+emberi gyakorlat, hanem egy tágabb, kölcsönös isteni-emberi
+kommunikációs mintázat egyik — a study szempontjából központi — pólusa.
+
+**Sod** *(fegyelmezetten, csak a fenti rétegekből levezetve)*: a
+bűneset és Kain testvérgyilkossága utáni emberiség első dokumentált
+lelki válasza nem az önmegváltás kísérlete, hanem a segítségül
+hívás — a névbe vetett függőség beismerése, éles ellentétben a
+Bábel-építőkkel, akik "nevet akarnak szerezni maguknak" (1Móz 11:4).
+Ez tematikus, nem lexikai párhuzam. A lexikon-kiegészítés nem indokol
+új Sod-szintű állítást — a réteg fegyelmezetten változatlan marad.
+
+⚠️ *(a Rashi-vita itt is releváns: ha a 4:26 valójában a
+bálványimádás kezdetét jelzi, a Sod-szintű "első pozitív lelki
+válasz" olvasat módosulna — a projekt a többségi olvasatot követi, de
+a vitát nem hallgatja el)*
+
+---
+
 ## 2. TELJES BDB szócikk — H7121 (קָרָא), releváns sense-ek szó szerint
 
 *A teljes BDB-bejegyzés 10 781 karakter (`BDB_teljes_unabridged.tsv`) —
