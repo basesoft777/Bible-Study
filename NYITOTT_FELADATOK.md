@@ -3,8 +3,7 @@ Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumen
 Utolsó frissítés: 2026.09.07
 Nagy, tartalmi döntést igénylő tételek
 
-1. Pilot→study visszaírás — a 4 valódi extra igehely (Zsolt 105:1/1Krón 16:8, Ézs 12:4, Jer 10:25/Zsolt 79:6, Róm 10:14) + A/B/C tipológia beépítése a tényleges `Segitsegul_hivni_az_Urat_ tematikus.md`-be, vagy tudatos elhalasztása. Részletek: `motivumlog/lexikon_pilot/Atadasi_dokumentum_Motivumlexikon_ pilot_2026-09-07.md`. Ez az egyetlen ténylegesen nagy, nyitott döntés jelenleg.
-2. `biblemate-agentic-workspace` (eliranwong) mélyebb, rendszeres integrációja — a `morphology.sqlite` (teljes, vers-soronkénti héber/görög morfológiai adatbázis, Google Drive-on, file ID `11QfpwEd5fjdDglPiqzygLNN99AVz2mw5`), a `cross-reference.sqlite`, és a `search_retriever.py` közül mi érné meg ténylegesen beépíteni a saját workflow-ba. A licenc-státusza NINCS tisztázva (csak egyszeri, ideiglenes felhasználás történt eddig, l. Lezárva). Nincs döntés.
+1. `biblemate-agentic-workspace` (eliranwong) mélyebb, rendszeres integrációja — a `morphology.sqlite` (teljes, vers-soronkénti héber/görög morfológiai adatbázis, Google Drive-on, file ID `11QfpwEd5fjdDglPiqzygLNN99AVz2mw5`), a `cross-reference.sqlite`, és a `search_retriever.py` közül mi érné meg ténylegesen beépíteni a saját workflow-ba. A licenc-státusza NINCS tisztázva (csak egyszeri, ideiglenes felhasználás történt eddig, l. Lezárva). Nincs döntés.
 
 Kisebb, korábbról nyitva maradt tételek
 
@@ -22,6 +21,8 @@ Lezárva
 * BDB "16t" kérdés véglegesen lezárva — három egymástól független módszerrel (TAHOT pozíció-alapú frázis-scan, laza vers-szintű co-occurrence a `morphology.sqlite`-on, ClauseID- alapú szintaktikai scan ugyanazon adatbázison) sem került elő új, valódi igehely; a jelölt Deut 32:3 maga a BDB szerint más szócikk-pontba (3.b "kihirdetni") tartozik, nem a mi 2.c "invokálni" pontunkba
 * Licenc-tisztázás lezárva 4 lexikonra: Thayer és BDB (közkincs), LSJ (Perseus, nyíltan újrafelhasznált), SECE (csak közkincs Strong- szöveg + funkcionális számkódok) — mind feldolgozható; MCGED (Mounce, 1993, copyright) — kizárva a rendszeres feldolgozásból
 * Thayer, LSJ, SECE teljes feldolgozása (PR #53): 4 új TSV (`Thayer_teljes.tsv` 5426 sor, `LSJ_teljes.tsv` 5522 sor, `SECE_H_teljes.tsv` 8674 sor, `SECE_G_teljes.tsv` 5523 sor) + 1 új, újrafelhasználható script (`eszkozok/elofordulas_szamlalo.py` — a kizárt MCGED "Frequency" funkcióját pótolja, a repó saját TAGNT/TAHOT-kivonataiból, licenc-kockázat nélkül)
+* Pilot→study visszaírás lezárva — a scope a vártnál kisebb volt: a 4 igehelyből 3 (Zsolt 105:1/1Krón 16:8, Ézs 12:4, Jer 10:25/Zsolt 79:6) már 2026.09.05 óta a study-ban volt; csak Róm 10:14 (TSK-eredetű, 2026.09.06) és az A/B/C tipológia hiányzott ténylegesen — mindkettő beépítve a `Segitsegul_hivni_az_Urat_tematikus.md`-be
+* `Karoli_Strong_kivonat.tsv`: Róm 10:14 (G1941) sor pótolva
 
 2026.09.07 (korábbi szakasz):
 
