@@ -8,6 +8,14 @@ gondolkodási utat újra végig kellene járni.*
 
 ---
 
+## 0. Alapadatok
+
+* Repó: `basesoft777/Bible-Study` (github.com/basesoft777/Bible-Study)
+* Fő branch: `main`
+* Fájltartalom gyors ellenőrzése (nem az API, nincs rate-limit hitelesítés nélkül sem): `https://raw.githubusercontent.com/basesoft777/Bible-Study/{branch-név}/{fájlútvonal}`
+* Teljes branch letöltése: `https://codeload.github.com/basesoft777/Bible-Study/tar.gz/{branch-név}`
+* PR-metaadat (állapot, kommentek) esetén szükséges az `api.github.com` — hitelesítés nélkül 60/óra a limit, ezért csak ha valóban a PR-állapot kell, ne fájltartalom-ellenőrzésre
+
 ## 1. Mi ez a pilot, és hol tart
 
 A `Bibliai_Motivumlexikon_tervezesi_naplo.md` (2026.08.30 körül) egy
