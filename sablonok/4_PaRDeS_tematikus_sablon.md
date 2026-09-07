@@ -173,6 +173,53 @@ A tanulmány végén a `PaRDeS_motivumok.md` naplóban a feldolgozott motívumot
 
 **Utólagos bővítés — ugyanez a kötelezettség érvényes egy már lezárt study-ra is.** Ha egy már ✅ LEZÁRVA státuszú tematikus study utólag bővül (új igehely, új tipológia/alpont, korábban pilot-only jelöléssel visszatartott elem visszaírása stb.), a `PaRDeS_motivumok.md` naplót **ugyanabban a commit/PR-ben** frissíteni kell — nem külön, később, csak rákérdezésre. A frissítésnek ki kell terjednie: (a) a motívum részletes szöveges bejegyzésére (2. szekció) — az igehely-szám és -lista pontosítva; (b) a táblázatos kulcsszó-indexre (a megfelelő sor Előfordulás-száma és igehely-listája); (c) egy új, dátumozott napló-verzióbejegyzésre a fájl elején, a bővítés tényét és forrását (pl. pilot-visszaírás) rögzítve. A Lezárási checklist alábbi pontjai közül a 3., 4. és 9. pont értelemszerűen erre az esetre is vonatkozik, nem csak a kezdeti lezárásra.
 
+### Minőségi kapu (Quality Gate) — a Lezárási checklist ELŐTT
+futtatandó
+
+A biblemate-agentic-workspace (eliranwong) minőségi-kapu ötletéből
+adaptálva, saját megfogalmazással: mielőtt egy tematikus study-t
+LEZÁRVA jelölnénk (akár első alkalommal, akár utólagos
+átdolgozásnál), a study-fájl saját magán fusson végig ez az öt
+ellenőrzés. Bármelyik kritérium bukása esetén a study NEM
+tekinthető lezártnak — vissza kell térni és javítani, mielőtt a
+Lezárási checklist elindulna.
+
+- [ ] **Q1. Szerkezeti teljesség** — mind a 6 kötelező szakasz jelen
+      van, és egyik sem üres/placeholder: 1. Előfordulások, 2.
+      Eredeti nyelvi összevetés, 3. A PaRDeS keretrendszer (Peshat/
+      Remez/Drash/Sod explicit kifejtve, nem csak táblázat-oszlopban
+      jelölve), 4. Kapcsolódás a kutatási sablonhoz, 5. Alkalmazás és
+      tanítványság, 6. Napló-frissítés. **Utólagos átdolgozásnál
+      külön figyelendő**, hogy az átszerkesztés nem hagyott-e ki
+      egy korábban meglévő kötelező szakaszt.
+- [ ] **Q2. Négyforrásos audit nyoma dokumentált** — a study vagy a
+      napló-bejegyzés rögzíti, hogy TAHOT/TAGNT teljes-előfordulás
+      scan, TSK (Votes-küszöbbel), Károli-KH és BDB-ellenőrzés
+      lefutott, dátummal. Puszta hivatkozás egy korábbi audit
+      dátumára elfogadható, ha a study azóta nem bővült; bővítésnél
+      új dátum szükséges.
+- [ ] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — minden
+      olyan igehely/hivatkozás, ami nem lexikailag (közös Strong-
+      szám/szótő), hanem csak fogalmilag kapcsolódik a motívumhoz,
+      explicit "tematikus, nem lexikai" jelöléssel szerepel.
+- [ ] **Q4. Kereszt-motívum szennyeződés kizárva** — a study
+      tartalma kizárólag a saját motívumára vonatkozó leleteket
+      tartalmazza. Ha a kutatás közben egy MÁSIK motívumra vonatkozó
+      találat is felszínre került (pl. egy másik study auditja
+      hozott egy leletet, ami idekívánkozna), az csak explicit,
+      megnevezett átvételként kerülhet be, nem "általánosan
+      odaillőként" — véletlen összekeverés (pl. másik motívum
+      lexikonleletének bemásolása) a kapu bukását jelenti.
+- [ ] **Q5. Nevesített tanítói szakasz jelen van, vagy explicit
+      hiányjelzéssel zárva** — az 5. pont vagy tartalmaz nevesített
+      tanítói egyezés-keresést (✅/⚠️/gap jelöléssel), vagy explicit
+      rögzíti, hogy ez a lépés miért maradt el.
+
+Ha mind az öt kritérium teljesül, a study mehet tovább a Lezárási
+checklistre. Ha egy study utólag bővül (nem csak első lezáráskor),
+a Minőségi kapu **teljes egészében újra lefuttatandó** — nem csak a
+bővített részre.
+
 ### Lezárási checklist (sorrendben végigjárandó)
 
 Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szükséges, ugyanabban a munkamenetben:
