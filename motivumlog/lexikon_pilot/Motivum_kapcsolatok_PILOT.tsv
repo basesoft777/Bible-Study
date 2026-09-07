@@ -1,0 +1,19 @@
+Forrás-igehely	Cél-igehely	Motívum-ID	Típus	Funkció	Bizonyosság	PaRDeS-szint
+1Móz 13:4	1Móz 26:25	ISTENTISZT-001	NARRATÍV	ÖRÖKLÉS/MINTAÁTVÉTEL	Magas	Drash
+1Móz 4:26	Jóel 2:32	ISTENTISZT-001	TEMATIKUS	KÁNONI ÍV	Magas	Remez
+Jóel 2:32	ApCsel 2:21	ISTENTISZT-001	TEMATIKUS	ELŐKÉP/BETELJESEDÉS	Magas	Remez
+Jóel 2:32	Róm 10:13	ISTENTISZT-001	TEMATIKUS	ELŐKÉP/BETELJESEDÉS	Magas	Remez
+Zsolt 105:1	1Krón 16:8	ISTENTISZT-001	LEXIKAI	PÁRHUZAM (szöveg-párhuzam)	Magas	Remez
+Zsolt 105:1	Ézs 12:4	ISTENTISZT-001	LEXIKAI	PÁRHUZAM	Magas	Remez
+Jer 10:25	Zsolt 79:6	ISTENTISZT-001	LEXIKAI	PÁRHUZAM (szöveg-párhuzam, tagadó forma)	Magas	Remez
+1Móz 4:26	2Móz 33:19	ISTENTISZT-001	STRUKTURÁLIS	NYITOTT (nem sorolható be — l. tematikus study indoklása)	Magas (lexikai kapocs)	Remez
+1Kir 18:24	1Kir 18:25	ISTENTISZT-001	NARRATÍV	ISMÉTLÉS/VISSZATÉRÉS	Magas	Remez
+1Móz 12:8	1Móz 13:4	ISTENTISZT-001	NARRATÍV	ISMÉTLÉS/VISSZATÉRÉS	Magas	Drash
+1Móz 21:33	1Móz 26:25	ISTENTISZT-001	NARRATÍV	ÖRÖKLÉS/MINTAÁTVÉTEL	Magas	Drash
+1Móz 4:26	2Kir 5:11	ISTENTISZT-001	TEMATIKUS	KÁNONI ÍV	Közepes	Remez
+1Móz 4:26	Sof 3:9	ISTENTISZT-001	TEMATIKUS	KÁNONI ÍV	Magas	Remez
+Zsolt 116:4	Zsolt 116:13	ISTENTISZT-001	LEXIKAI	ISMÉTLÉS (azonos zsoltáron belül)	Magas	Remez
+Zsolt 116:13	Zsolt 116:17	ISTENTISZT-001	LEXIKAI	ISMÉTLÉS (azonos zsoltáron belül)	Magas	Remez
+1Kir 18:25	1Kir 18:26	ISTENTISZT-001	NARRATÍV	ISMÉTLÉS/VISSZATÉRÉS (Baál nevének ismételt hívása)	Magas	Remez
+2Móz 33:19	2Móz 34:5	ISTENTISZT-001	STRUKTURÁLIS	NYITOTT (nem sorolható be — ugyanaz a jelenet folytatása)	Magas	Remez
+Róm 10:13	Róm 10:14	ISTENTISZT-001	TEMATIKUS	ISMÉTLÉS (ua. érvelés folytatása)	Magas	Remez
