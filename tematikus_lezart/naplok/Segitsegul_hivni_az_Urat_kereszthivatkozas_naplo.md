@@ -51,11 +51,14 @@ elutasítva megnevezett indokkal.
 "ELTERO_SZOVEGALAP" jelzéssel, Strong-szám nélkül, de a görög szóalak
 azonosítható ἐπικαλέομαι-ként). 2 kivétel: 2Móz 33:19/34:5 (καλέω),
 Ézs 12:4 (βοάω). Emellett két, ehhez a study-hoz nem tartozó, de itt
-felfedezett LXX-híd adatminőségi észrevétel:
+felfedezett LXX-híd észrevétel, 2026.09.07-én lezárva:
 - **Zsolt 116:4**: a ἐπεκαλεσάμην szóalak tévesen G4506-tal (ῥύομαι)
-  van címkézve a `LXX_kivonat_Zsoltarok.tsv`-ben — javítást igényel,
-  külön Code-prompt tárgya, nem ennek a study-nak a hatásköre.
-- **Zsolt 116:17**: a görög kivonat csak a vers első felét
-  tartalmazza (a "segítségül hívom nevét" tagmondat hiányzik) — az
-  LXX-híd dokumentált, ~94-96%-os átlagos lefedettségének egy konkrét
-  esete, nem egyedi hiba.
+  volt címkézve a `LXX_kivonat_Zsoltarok.tsv`-ben — 2026.09.07-én
+  javítva G1941-re (ἐπικαλέομαι).
+- **Zsolt 116:17**: a görög kivonat NEM hiányos, hanem teljes és
+  helyes — külső forrásból (Blue Letter Bible, Rahlfs-alapú LXX-
+  kiadás) megerősítve, hogy a görög szöveg valóban csak "σοὶ θύσω
+  θυσίαν αἰνέσεως"-ig tart; a héber vers második fele ("és segítségül
+  hívom az Úr nevét") NINCS lefordítva a görög LXX-ben. Ez egy
+  autentikus fordítási rés, nem kinyerési hiba — 2026.09.07-én
+  helyesbítve a korábbi téves "hiba" minősítés.
