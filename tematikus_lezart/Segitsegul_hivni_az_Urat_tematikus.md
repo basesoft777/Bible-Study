@@ -75,7 +75,7 @@ A **קָרָא בְּשֵׁם** szerkezetben a **בְּ** elöljárószó ("-ban
 
 **Görög megfelelő (LXX és ÚSZ):** a Septuaginta **15 a 17 igehelyből** az **ἐπικαλέομαι** (*epikaleomai*, G1941, medium/passzív alak — "segítségül hívni [magának], invokálni") igét használja (néhány helyen — Sof 3:9, 1Krón 16:8, Zsolt 79:6, Jer 10:25 — a kritikai szövegalap-eltérés miatt nincs Strong-számos címke, de a görög szóalak azonosíthatóan ugyanabba a szócsaládba tartozik); ugyanezt veszi át Péter (ApCsel 2:21) és Pál (Róm 10:13) is a Jóel-idézetben: *πᾶς ὃς ἂν ἐπικαλέσηται τὸ ὄνομα Κυρίου σωθήσεται* — "mindaz, aki segítségül hívja az Úr nevét, megtartatik." **Két valódi kivétel van**: a fordított irányú 2Móz 33:19/34:5-nél a sima **καλέω** (G2564) áll (l. 1. pont indoklása), az Ézs 12:4-es párhuzamnál pedig egy harmadik ige, **βοάω** (G0994, "hangosan kiáltani").
 
-*(Módszertani megjegyzés, 2026.09.05: a rendszeres LXX-ellenőrzés során két, ehhez a study-hoz nem tartozó, de itt felfedezett adatminőségi észrevétel is előkerült a `LXX_kivonat_Zsoltarok.tsv`-ben — Zsolt 116:4-nél téves Strong-címke, Zsolt 116:17-nél hiányos kinyerés — l. a kereszthivatkozás-napló záró szakasza.)*
+*(Módszertani megjegyzés, 2026.09.05: a rendszeres LXX-ellenőrzés során két, ehhez a study-hoz nem tartozó, de itt felfedezett LXX-híd észrevétel is előkerült — 2026.09.07-én mindkettő lezárva: Zsolt 116:4-nél a téves Strong-címke javítva G1941-re, Zsolt 116:17-nél pedig kiderült, hogy a kivonat eleve helyes és teljes volt, a héber vers második fele autentikusan nincs lefordítva a görög LXX-ben — l. a kereszthivatkozás-napló záró szakasza.)*
 
 **⚠️ Vitatott pont — 1Móz 4:26 értelmezése (héber szövegkritikai és rabbinikus kérdés):**
 

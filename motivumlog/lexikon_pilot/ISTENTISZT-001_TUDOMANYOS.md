@@ -231,9 +231,9 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 | 2Kir 5:11 | ἐπικαλεσεται | V-FMI-3S | G1941 | ABP-pótolt |
 | Sof 3:9 | επικαλεισθαι | V-PMN | *(nincs)* | ELTERO_SZOVEGALAP |
 | Zsolt 105:1 | επικαλεισθε | V-PMD-2P | *(nincs)* | ABP-pótolt |
-| Zsolt 116:4 | επεκαλεσαμην | V-AMI-1S | **G4506 (HIBÁS!)** | ABP-pótolt |
+| Zsolt 116:4 | επεκαλεσαμην | V-AMI-1S | **G1941 (2026.09.07: javítva, korábban tévesen G4506)** | ABP-pótolt |
 | Zsolt 116:13 | επικαλεσομαι | V-FMI-1S | G1941 | ABP-pótolt |
-| Zsolt 116:17 | *(hiányzik a kinyert adatból)* | — | — | — |
+| Zsolt 116:17 | σοὶ θύσω θυσίαν αἰνέσεως (teljes, a görög LXX autentikusan itt végződik) | — | — | LXX_WH |
 | 1Krón 16:8 | επικαλεισθε | V-PMI-2P | *(nincs)* | ELTERO_SZOVEGALAP |
 | Zsolt 79:6 | επεκαλεσαντο | V-AMI-3P | *(nincs)* | ELTERO_SZOVEGALAP |
 | Jer 10:25 | επεκαλεσαντο | V-AMI-3P | *(nincs)* | ELTERO_SZOVEGALAP |
@@ -445,5 +445,7 @@ jellegű motívumoknál is alkalmazható módon?
    a teljes Thayer's Greek-English Lexicon SQLite-fájlban elérhetővé
    vált (5427 bejegyzés), és ebbe a pilot-oldalba be is építve (l. 4.
    szakasz). **A fájl repóba emelése még külön döntést igényel.**
-4. **LXX-híd 2 adatminőségi hibája** — Zsolt 116:4 téves G-címke,
-   Zsolt 116:17 hiányos kinyerés — külön karbantartást igényel.
+4. ~~LXX-híd 2 adatminőségi hibája~~ — 2026.09.07-én lezárva: Zsolt
+   116:4 téves G-címkéje javítva G1941-re; Zsolt 116:17 "hiánya"
+   tévhitnek bizonyult — a görög LXX autentikusan nem fordítja le a
+   vers második felét, a kivonat eleve helyes és teljes volt.
