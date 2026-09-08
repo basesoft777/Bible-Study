@@ -173,6 +173,11 @@ A tanulmány végén a `PaRDeS_motivumok.md` naplóban a feldolgozott motívumot
 
 **Utólagos bővítés — ugyanez a kötelezettség érvényes egy már lezárt study-ra is.** Ha egy már ✅ LEZÁRVA státuszú tematikus study utólag bővül (új igehely, új tipológia/alpont, korábban pilot-only jelöléssel visszatartott elem visszaírása stb.), a `PaRDeS_motivumok.md` naplót **ugyanabban a commit/PR-ben** frissíteni kell — nem külön, később, csak rákérdezésre. A frissítésnek ki kell terjednie: (a) a motívum részletes szöveges bejegyzésére (2. szekció) — az igehely-szám és -lista pontosítva; (b) a táblázatos kulcsszó-indexre (a megfelelő sor Előfordulás-száma és igehely-listája); (c) egy új, dátumozott napló-verzióbejegyzésre a fájl elején, a bővítés tényét és forrását (pl. pilot-visszaírás) rögzítve. A Lezárási checklist alábbi pontjai közül a 3., 4. és 9. pont értelemszerűen erre az esetre is vonatkozik, nem csak a kezdeti lezárásra.
 
+**Napló-jelölés kötelező:** minden folyamat-/napló-jellegű megjegyzést
+(dátum, forrás-eredet, döntési indoklás) `【NAPLO: ...】` formában, külön
+egységben kell rögzíteni — sosem prózai mondatba ágyazva. Részletek:
+`PaRDeS_gyorsreferencia.md` "Napló-jelölés" szakasza.
+
 ### Minőségi kapu (Quality Gate) — a Lezárási checklist ELŐTT
 futtatandó
 

@@ -219,6 +219,11 @@ leíró magyar névvel.
 Ha két elmentett szabály ütközni látszik, explicit rákérdezés
 következik, nem önkényes döntés.
 
+**Napló-jelölés kötelező:** minden folyamat-/napló-jellegű megjegyzést
+(dátum, forrás-eredet, döntési indoklás) `【NAPLO: ...】` formában, külön
+egységben kell rögzíteni — sosem prózai mondatba ágyazva. Részletek:
+`PaRDeS_gyorsreferencia.md` "Napló-jelölés" szakasza.
+
 ## Minőségi kapu — a két fájl közzététele/commitolása ELŐTT
 futtatandó
 

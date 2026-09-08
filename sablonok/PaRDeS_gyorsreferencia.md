@@ -163,6 +163,27 @@ pontjaiban.
 - Szerkezet (részletesen: `4_PaRDeS_tematikus_sablon.md`): (1) előfordulások táblázata, (2) eredeti nyelvi ÉS strukturális összevetés — feltételes: lexikai motívumnál (konkrét szópár/kulcsszó) nyelvi/kiejtéses összevetés; strukturális/narratív mintázatnál (pl. "bűn következményeinek gyűrűzése") a szerkezeti elemek (indító lépés, súlyosbodás lépcsői, lezárás) egymás mellé állítása, (3) PaRDeS keret a motívum egészére alkalmazva (nem egy versre), (4) opcionális kapcsolódás a research sablonhoz, (5) Alkalmazás — motívum-specifikus nevesített tanítókkal, ha van elmentett lista, (6) napló-frissítés: motívum megjelölése "lezárt/önállóan feldolgozott témaként" + fájlnév `[Motívum]_tematikus.md` formátumban + `Lezart_tematikus_tanulmanyok_index.md` frissítése
 - Elkülönül a Mélyelemzéstől: az utóbbi két igehelyet vet össze, ez egy egész motívumot dolgoz fel
 
+## Napló-jelölés — a folyamat-infó és a próza szétválasztása
+
+Napló-/folyamat-jellegű megjegyzés (dátum, forrás-eredet — pl.
+"TSK-eredetű" —, audit-eredmény, döntési indoklás, "pilot-only" jelzés
+stb.) **sosem** kerülhet bele egy prózai mondatba, még zárójelesen vagy
+dőlttel jelölve sem — mindig külön, egységesen jelölt blokkba megy:
+
+`【NAPLO: <rövid tartalom>】`
+
+Ez a jelölés Markdown-ban simán megjelenik (nem tűnik el a munkapéldányból),
+de egyedi és következetes, tehát bármikor megbízhatóan kereshető/
+kiszűrhető, ha valaha szükség lenne rá (pl. olvasói változat készítésekor).
+A korábbi, vegyes formák (*"(új, 2026.09.06, TSK-eredetű)"*, félkövér
+dátumos bekezdés-nyitó, stb.) ezután nem használandók újonnan írt
+szövegben — a meglévő studykban való egységesítésük külön, retrospektív
+feladat, nem e szabály azonnali követelménye.
+
+Ez a szabály nem ír elő második, egyszerűsített szövegváltozatot — csak
+azt biztosítja, hogy ha valaha kell ilyen, a forrás már eleve
+szétválasztott állapotban legyen.
+
 ## Munkafolyamat
 - Motívum-napló (PaRDeS_motivumok.md) frissítése minden tanulmány után — beleértve az "Előrejelzett, konkrét igehelyen megerősítendő motívumok" alszakaszt is (⭐ küszöb és Kulcsszó-index között; a következő tanulmány elején automatikusan ellenőrizendő). **Ez egy már lezárt study utólagos bővítésére is vonatkozik** (l. `4_PaRDeS_tematikus_sablon.md` 6. pontja) — a napló-szinkron nem csak kezdeti lezáráskor kötelező, ugyanabban a körben kell elvégezni, mint magát a study-módosítást.
 - Ütköző szabályoknál: explicit rákérdezés, nem önkényes döntés
