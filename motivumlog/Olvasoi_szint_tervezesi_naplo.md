@@ -1,6 +1,6 @@
 # Olvasói szint — tervezési napló
 
-Rögzítve: 2026.09.08. Státusz: PILOT FOLYAMATBAN — a 6-fokozatú, tengelyenkénti rubrika véglegesítve, próba-mintaszövegek elkészültek; script és formális sablon-fájl még nem készült.
+Rögzítve: 2026.09.08. Státusz: PILOT FOLYAMATBAN — a teljes cikken végzett próba 3 valódi problémát tárt fel, ezekre a második, célzott pilot-kör választ adott; a fokozat-korlátozás elve tisztázva (tartalom-típus, nem hossz alapján); script és formális sablon-fájl még nem készült.
 
 ## 1. Előzmény és probléma
 
@@ -88,3 +88,38 @@ Basesoft: "pilotozni kellene" — a 4 paraméter fokozatainak konkrét rubrikáj
 > Van egy másik minta is. Van, amikor az ember szólítja Istent a nevén. Van, amikor Isten maga mondja ki a saját nevét. És van, amikor Isten nevez meg valakit. Mindhárom ugyanazt a szerkezetet követi. Ez nem véletlen.
 
 Forrás: chat-alapú beszélgetés, 2026.09.08.
+
+## 9. Második pilot-kör — teljes cikk + célzott utóvizsgálat
+
+### 9.1 Teljes cikk próba (lokális, nem repóba szánt)
+
+A `Segitsegul_hivni_az_Urat_tematikus.md` egy bekezdése után a teljes `ISTENTISZT-001_TUDOMANYOS.md` cikken (547 sor) is végigment a kézi pilot, mind a 6 fokozatban, ~22 prózai blokkon. A nyers forrásidézetek/táblázatok/diagram invariánsnak lettek jelölve (nem regiszterezhetők egy szótári idézet meghamisítása nélkül) — ez a döntés helyesnek bizonyult, később a felhasználó kifejezetten kérte az invariáns tartalom visszahelyezését is a fájlba (teljes, nem csak jelölt formában).
+
+**Három probléma merült fel:**
+
+1. **A 4 tengely a gyakorlatban nem volt független.** A pilot során minden blokknál mind a 4 paramétert (terminológia, apparátus, mondatszerkezet, indoklás-sűrűség) együtt, átlósan mozgattam (1,1,1,1 → 6,6,6,6) — nem teszteltem tudatosan aszimmetrikus kombinációkat. A négytengelyes függetlenség tehát még nincs ténylegesen bizonyítva.
+2. **A magas fokozatok rövid, tömör blokkoknál tartalom nélkülivé váltak.** Első felvetés: a fokozat-tartományt a blokk *hosszához* kellene igazítani. Ezt a felhasználó elvetette (l. 9.2) — a hossz csak korrelált a problémával, nem az ok.
+3. **A 【NAPLO】 jelölés határa nem egyértelmű.** Egy blokk (TSK "Miért fut most rendszeresen") folyamat-jegyzetnek lett jelölve, de vitatható, hogy egy tudományos olvasó számára ez inkább legitim módszertani indoklás — a "nekem szóló" vs. "az olvasónak is releváns módszertani megjegyzés" határvonal tisztázatlan maradt.
+
+### 9.2 Felhasználói korrekció — tartalom-típus, nem hossz
+
+A felhasználó pontosította: nem a blokk hossza, hanem a **tartalmának típusa** szabja meg, hány fokozatot bír el. Négy tartalom-típus azonosítva:
+
+| Típus | Jellemző | Kockázat magas fokozaton | Javasolt tartomány |
+|---|---|---|---|
+| Ténymegállapítás | egyetlen állítás, nincs benne törékeny megkülönböztetés | alacsony | 1-6 |
+| Módszertani indoklás | az érv ereje a forrás-redundanciából jön (pl. "3 független szótár") | a bizonyító erő elveszhet, ha a redundancia-tény kimarad | 1-6, de a konklúziónak (pl. "független megerősítés") minden fokozaton meg kell maradnia |
+| Finom megkülönböztetés / határeset | a pontosság maga a tartalom (pl. névvel jelzett vitás olvasat) | a megkülönböztetés teljesen eltűnhet | 1-3 |
+| Leíró/narratív összegzés | történetet mesél el, nincs törékeny elem | alacsony | 1-6 |
+
+### 9.3 Célzott utóvizsgálat — 3 blokk, típus szerint kezelve
+
+- **Sod + Rashi-vita** (határeset-típus, korlátozva 1-3-ra): a korábbi, korlátozás nélküli 4-6. fokozat ténylegesen elvesztette a Rashi-vita tényét (a névvel jelzett alternatív olvasatot) — ez tartalmi hiba volt, nem csak stiláris egyszerűsítés. Az új, 3-ra korlátozott verzió megtartja.
+- **BDB H8034 "Jelentősége"** (ténymegállapítás-típus, teljes 1-6): a korábbi 6. fokozat ("A szó eredete nem ismert.") elvesztette, hogy ez egy *lezárt kutatási kérdés*, nem csak egy tény. Az új 6. fokozat ezt megtartja — a blokk típusa valójában elviseli a teljes 6 fokozatot, a korábbi hiba figyelmetlen vágás volt, nem a tartomány hibája.
+- **BDB H7121 "Kiemelés jelentősége"** (módszertani indoklás-típus, teljes 1-6): a korábbi 6. fokozat elvesztette a *függetlenség* tényét (hogy a szótár tőlünk függetlenül jutott ugyanarra) — ez a bizonyító erő forrása. Az új 6. fokozat megtartja.
+
+### 9.4 Végső felismerés
+
+A korlátozás kulcsa nem egy fix fokozat-tartomány típusonként, hanem egy tudatos kérdés minden fokozat megírásakor: **"mi az az egy dolog, aminek itt muszáj megmaradnia?"** — a határeset-blokknál ez egy név (Rashi), a módszertani blokknál egy tény (függetlenség). A tartomány-korlátozás (1-3 vs. 1-6) csak a valódi határeset-típusnál indokolt; a másik három típusnál a teljes 6 fokozat is működik, ha ez a load-bearing elem tudatosan megmarad minden lépésben.
+
+Forrás: chat-alapú beszélgetés, 2026.09.08 (második pilot-kör).
