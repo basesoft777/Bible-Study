@@ -123,3 +123,31 @@ A felhasználó pontosította: nem a blokk hossza, hanem a **tartalmának típus
 A korlátozás kulcsa nem egy fix fokozat-tartomány típusonként, hanem egy tudatos kérdés minden fokozat megírásakor: **"mi az az egy dolog, aminek itt muszáj megmaradnia?"** — a határeset-blokknál ez egy név (Rashi), a módszertani blokknál egy tény (függetlenség). A tartomány-korlátozás (1-3 vs. 1-6) csak a valódi határeset-típusnál indokolt; a másik három típusnál a teljes 6 fokozat is működik, ha ez a load-bearing elem tudatosan megmarad minden lépésben.
 
 Forrás: chat-alapú beszélgetés, 2026.09.08 (második pilot-kör).
+
+Teljes pilot-artifact: `motivumlog/Olvasoi_szint_pilot_ISTENTISZT-001.md` — a teljes ISTENTISZT-001_TUDOMANYOS.md cikken végzett 6-fokozatú pilot, a 19 típus-tudatos konfigurált átírással kiegészítve (2026.09.08).
+
+## 10. Munkafázis-lezárás — amit még nem tudunk + folytatási terv
+
+*A mai munkafázis (teljes cikk pilot + 19, típus-tudatos konfigurált
+átírással kiegészített blokk) itt lezárva. Az alábbi nyitott kérdések
+és a folytatási terv rögzítve, mielőtt bármi tovább bővülne. Döntés:
+az "olvasói szint" fejlesztés jelen állapotban leáll — a publikálási
+terv (`NYITOTT_FELADATOK.md` 3. tétel) még csak megbeszélés szintjén
+áll, konkrét lépés nem indult el, ezért a 4-tengelyes, 6-fokozatú
+rendszer további építése jelenleg túltervezés lenne. Ha a publikálási
+terv valaha ténylegesen elindul, ez az anyag újra elővehető.*
+
+### Amit még nem tudunk
+
+1. **A 4 tengely függetlensége nincs bizonyítva.** A mai 19 kiegészítés mindegyike egyetlen, kézzel válogatott célfokozat volt — nem tesztelt tudatosan aszimmetrikus kombinációkat (pl. terminológia=1, apparátus=6). A fő nyitott kérdés, hogy a 4 paraméter tényleg egymástól függetlenül hangolható-e, továbbra is megválaszolatlan.
+2. **A script-koncepció megvalósíthatósága kétséges.** A "mi az az egy dolog, aminek meg kell maradnia" döntés minden blokknál ítélőképességet igényelt — ez arra utal, hogy a mondat-egyszerűsítés és a tartalom-megőrzés sosem lesz tisztán mechanikus (regex-alapú) lépés.
+3. **Az általánosíthatóság nincs tesztelve.** A típus-táblázat (ténymegállapítás / módszertani indoklás / határeset / leíró) kizárólag az ISTENTISZT-001 cikken lett kipróbálva — egy szokatlanul sűrű, apparátus-gazdag szövegen. Nem tudni, ugyanígy működne-e egy kevésbé sűrű, elbeszélőbb jellegű szövegrészen.
+
+### Folytatási terv, HA valaha újra elővesszük (4 lépés)
+
+1. **Tengely-függetlenség célzott tesztje** — 1 blokkon, 4 tudatosan szélsőséges, aszimmetrikus konfigurációval.
+2. **A script-koncepció kettéválasztása** — mechanikus réteg (【NAPLO】-kiszűrés, táblázat/idézet-eltávolítás) és ítélet-réteg (mondat-egyszerűsítés, mindig LLM-asszisztált, rögzített promptsablonnal).
+3. **Általánosíthatóság-teszt más szövegtípuson** — rövid, elbeszélőbb szövegrészleten.
+4. **A `7_PaRDeS_olvasoi_szint_sablon.md` csak az 1-3. lépés után.**
+
+Forrás: chat-alapú beszélgetés, 2026.09.08 (munkafázis-lezárás, a fejlesztés leállításával).
