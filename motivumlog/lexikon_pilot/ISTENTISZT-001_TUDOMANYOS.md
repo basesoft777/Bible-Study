@@ -415,46 +415,57 @@ saját, lexikai szintű megfigyelés marad (l. korábbi megállapítás).
 megjelenik — a 2026.09.09-i bővítéssel (Zak 13:9 + 6 ÚSZ-i egyházi
 alkalmazás) a diagram és az alátámasztás-táblázat is kiegészült.*
 
+*A Típus-mező öt kategóriája (l. `Bibliai_Motivumlexikon_tervezesi_
+naplo.md`, 2026.09.09):*
+
+| Típus | Rövid meghatározás |
+|---|---|
+| **Előkép** | korábbi esemény/alak, ami egy későbbi, teljesebb valóság mintája |
+| **Párhuzam** | ismétlődő mintázat, a szereplők szerepe azonos marad |
+| **Beteljesedés** | egy Előkép lezárása/valóra válása — mindig egy Előkép-jelöléshez kapcsolódik |
+| **Kontraszt** | két fél szándékosan szembeállítva, a lényeg az eltérés |
+| **Variáns** | ugyanaz a lexikai/formula-mag, de a szereplők szerepe szisztematikusan felcserélődik, nem szembeállítva |
+
 ```mermaid
 graph LR
-    A["1Móz 4:26"] -->|"KÁNONI ÍV<br/>Magas"| B["Sof 3:9"]
-    A -->|"KÁNONI ÍV<br/>Közepes"| C["2Kir 5:11"]
-    A -->|"KÁNONI ÍV<br/>Magas"| D["Jóel 2:32"]
-    D -->|"ELŐKÉP/<br/>BETELJESEDÉS<br/>Magas"| E["ApCsel 2:21"]
-    D -->|"ELŐKÉP/<br/>BETELJESEDÉS<br/>Magas"| F["Róm 10:13"]
-    F -->|"ISMÉTLÉS<br/>ua. érvelés<br/>Magas"| X["Róm 10:14"]
-    A -.->|"NYITOTT<br/>nem sorolható be"| G["2Móz 33:19"]
-    G -->|"NYITOTT<br/>ua. jelenet"| H["2Móz 34:5"]
-    I["1Móz 12:8"] -->|"ISMÉTLÉS/<br/>VISSZATÉRÉS"| J["1Móz 13:4"]
-    J -->|"ÖRÖKLÉS/<br/>MINTAÁTVÉTEL"| K["1Móz 26:25"]
-    L["1Móz 21:33"] -->|"ÖRÖKLÉS/<br/>MINTAÁTVÉTEL"| K
-    M["1Kir 18:24"] -->|"ISMÉTLÉS/<br/>VISSZATÉRÉS"| N["1Kir 18:25"]
-    N -->|"ISMÉTLÉS/<br/>VISSZATÉRÉS"| O["1Kir 18:26"]
-    P["Zsolt 116:4"] -->|"ISMÉTLÉS"| Q["Zsolt 116:13"]
-    Q -->|"ISMÉTLÉS"| R["Zsolt 116:17"]
+    A["1Móz 4:26"] -->|"PÁRHUZAM<br/>Magas"| B["Sof 3:9"]
+    A -->|"PÁRHUZAM<br/>Közepes"| C["2Kir 5:11"]
+    A -->|"PÁRHUZAM<br/>Magas"| D["Jóel 2:32"]
+    D -->|"BETELJESEDÉS<br/>Magas"| E["ApCsel 2:21"]
+    D -->|"BETELJESEDÉS<br/>Magas"| F["Róm 10:13"]
+    F -->|"PÁRHUZAM<br/>ua. érvelés<br/>Magas"| X["Róm 10:14"]
+    A -.->|"VARIÁNS<br/>A/B/C tipológia"| G["2Móz 33:19"]
+    G -->|"PÁRHUZAM<br/>ua. jelenet"| H["2Móz 34:5"]
+    I["1Móz 12:8"] -->|"PÁRHUZAM<br/>visszatérés"| J["1Móz 13:4"]
+    J -->|"PÁRHUZAM<br/>öröklés"| K["1Móz 26:25"]
+    L["1Móz 21:33"] -->|"PÁRHUZAM<br/>öröklés"| K
+    M["1Kir 18:24"] -->|"PÁRHUZAM<br/>folytatás"| N["1Kir 18:25"]
+    N -->|"PÁRHUZAM<br/>folytatás"| O["1Kir 18:26"]
+    P["Zsolt 116:4"] -->|"PÁRHUZAM"| Q["Zsolt 116:13"]
+    Q -->|"PÁRHUZAM"| R["Zsolt 116:17"]
     S["Zsolt 105:1"] -->|"PÁRHUZAM<br/>Magas"| T["1Krón 16:8"]
     S -->|"PÁRHUZAM<br/>Magas"| U["Ézs 12:4"]
     V["Jer 10:25"] -->|"PÁRHUZAM<br/>tagadó, Magas"| W["Zsolt 79:6"]
-    B -->|"ESZKATOLÓGIAI<br/>KITERJESZTÉS<br/>Magas"| YY["Zak 13:9"]
-    X -->|"FORMULA-ÁTVÉTEL<br/>egyházi azonosító<br/>Közepes"| AA["1Kor 1:2"]
-    X -->|"FORMULA-ÁTVÉTEL<br/>egyházi azonosító<br/>Közepes"| BB["2Tim 2:22"]
-    X -->|"FORMULA-ÁTVÉTEL<br/>egyházi azonosító<br/>Közepes"| CC["1Pét 1:17"]
-    X -->|"FORMULA-ÁTVÉTEL<br/>üldözési kontextus<br/>Közepes"| DD["ApCsel 9:14"]
-    DD -->|"ISMÉTLÉS"| EE["ApCsel 9:21"]
-    X -->|"FORMULA-ÁTVÉTEL<br/>megtérés-elbeszélés<br/>Közepes"| FF["ApCsel 22:16"]
+    B -->|"PÁRHUZAM<br/>Magas"| YY["Zak 13:9"]
+    X -->|"PÁRHUZAM<br/>egyházi azonosító<br/>Közepes"| AA["1Kor 1:2"]
+    X -->|"PÁRHUZAM<br/>egyházi azonosító<br/>Közepes"| BB["2Tim 2:22"]
+    X -->|"PÁRHUZAM<br/>egyházi azonosító<br/>Közepes"| CC["1Pét 1:17"]
+    X -->|"PÁRHUZAM<br/>üldözési kontextus<br/>Közepes"| DD["ApCsel 9:14"]
+    DD -->|"PÁRHUZAM"| EE["ApCsel 9:21"]
+    X -->|"PÁRHUZAM<br/>megtérés-elbeszélés<br/>Közepes"| FF["ApCsel 22:16"]
 
     style D fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#000000
-    style G fill:#f8d7da,stroke:#721c24,stroke-width:2px,color:#000000
-    style H fill:#f8d7da,stroke:#721c24,stroke-width:2px,color:#000000
+    style G fill:#e2d9f3,stroke:#5b3a8e,stroke-width:2px,color:#000000
+    style H fill:#e2d9f3,stroke:#5b3a8e,stroke-width:2px,color:#000000
 ```
 
-*Jelmagyarázat: a sárga csomópont (Jóel 2:32) az ELŐKÉP/BETELJESEDÉS
-csomópont, ahonnan az ÚSZ-i beteljesedés indul; a piros csomópontok
-(2Móz 33:19/34:5) a "be nem sorolható" fordított irányú esetet
-jelölik — a szaggatott nyíl is ezt a bizonytalanabb, csak lexikai
-(nem funkcionális) kapcsolatot jelzi.*
+*Jelmagyarázat: a sárga csomópont (Jóel 2:32) az Előkép, ahonnan a
+Beteljesedés (ApCsel 2:21, Róm 10:13) indul; a lila csomópontok
+(2Móz 33:19/34:5) a Variáns esetet jelölik (A/B/C tipológia, B-eset:
+azonos szerkezet, felcserélt alany/tárgy) — a szaggatott nyíl a
+lexikai (nem funkcionális) alapú kapcsolatot jelzi A és G között.*
 
-**Megjegyzés az 1Kir 18:24-hez:** a kontraszt (Baál neve vs. YHVH neve) **egyetlen versen belül**
+**Megjegyzés az 1Kir 18:24-hez — Típus: Kontraszt:** a kontraszt (Baál neve vs. YHVH neve) **egyetlen versen belül**
 jelenik meg — Illés egy mondatban mondja ki mindkét felet ("ti a ti
 istenetek nevét, én az Úr nevét").
 
@@ -486,6 +497,12 @@ istenetek nevét, én az Úr nevét").
 25 sor, oszlopok: Forrás-igehely | Cél-igehely | Motívum-ID | Típus |
 Funkció | Bizonyosság | PaRDeS-szint. A 2026.09.09-i bővítéssel 7 új
 sorral egészült ki.)*
+
+【NAPLO: névütközés-figyelmeztetés — a TSV "Típus" oszlopa (LEXIKAI/
+NARRATÍV/STRUKTURÁLIS/TEMATIKUS) egy MÁSIK, a kapcsolat jellegét leíró
+tengely, nem azonos a fenti diagramban használt PaRDeS Típus-mezővel
+(Előkép/Párhuzam/Beteljesedés/Kontraszt/Variáns). A TSV-ben jelenleg
+nincs önálló oszlop a PaRDeS Típus-mezőre — ez nyitott kérdés marad.】
 
 ---
 
