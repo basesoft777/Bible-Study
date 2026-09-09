@@ -1,5 +1,13 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
+*v13 — 2026.09.09 (Új, kötelező "Logikai kötőszó szerinti bontás" lépés
+az 1. pont végén — egynél több verset lefedő táblázat-soroknál a
+görög/héber logikai kötőszavak és deklaratív igék [γάρ, οὖν, διό/ὅθεν,
+μαρτυρεῖται] szerinti érvelési lépések explicit ellenőrzése. Konkrét
+eset motiválta: a Melkizedek-study "Zsid 7:1-28" sora hónapokig
+lefedettnek számított, miközben a 7:15-19 μαρτυρεῖται-érvelés sosem
+lett ténylegesen kifejtve.)*
+
 *v12 — 2026.09.04 (Terminológia-javítás: a v11-ben bevezetett "gloss" szó
 lecserélve "kontextus-jegyzet"-re a 12. pontban és a changelogban — a
 "gloss" szó a projektben már foglalt, a STEPBible/TAHOT/TAGNT angol
@@ -107,6 +115,20 @@ Táblázatos áttekintés minden eddigi előfordulásról, a `PaRDeS_motivumok.m
 | *(igehely)* | *(a motívum konkrét megjelenési formája ott)* | *(Peshat/Remez/Drash/Sod, és melyik tanulmányból)* | *(pl. H7604)* | *(pl. H7604, ha egy Strong-számhoz több BDB-bejegyzés/homonima tartozik, ez különbözteti meg)* | *(pl. "1")* | *(pl. "be left over" — a BDB eredeti angol szövege, nem magyarítva)* |
 
 Az utolsó négy oszlop opcionális kitöltésű (nem minden előfordulásnál áll rendelkezésre BDB-adat), de ha a 0. pont gyűjtése vagy a friss keresés során előkerül, itt rögzítendő, **külön oszlopokban** — a `Bibliai_Motivumlexikon_tervezesi_naplo.md` 6. szakaszában jóváhagyott elv szerint, hogy egy jövőbeli KAPCSOLAT-réteg ne igényeljen visszamenőleges szétbontást. A Jelentés-szöveg oszlop a BDB **eredeti angol** szövegét tartalmazza, nem magyar fordítást — a magyarítás a study Peshat/Drash kifejtésében történik, forrásmegjelöléssel, a `Bibliai_Motivumlexikon_tervezesi_naplo.md` 9. szakaszában rögzített fordítási elv szerint (nem előre, tömegesen, hanem tanulmány-vezérelt, fokozatos fordítás).
+
+### Logikai kötőszó szerinti bontás (kötelező, egynél több verset lefedő táblázat-soroknál)
+
+Ha egy táblázat-sor egynél több verset fed le (pl. "Zsid 7:1-28"), a
+2-3. pont megírása előtt listázd ki — akár csak a kereszthivatkozás-
+naplóban, nem feltétlenül a study fő szövegében — a szakasz minden
+explicit logikai kötőszóval vagy deklaratív igével jelölt érvelési
+lépését: γάρ ("mert"), οὖν ("tehát"), διό/ὅθεν ("ezért"), és
+kifejezetten deklaratív igék (pl. μαρτυρεῖται, "bizonyságot tesz").
+Minden kilistázott lépésnél ellenőrizendő: a study 2-3. pontja
+ténylegesen kifejti-e, vagy csak a szakasz végkövetkeztetését
+használja fel anélkül, hogy az odáig vezető lépést bemutatná. Egy
+lépés tudatos kihagyása megengedett, de explicit jelzendő — nem
+hallgatólagos.
 
 ---
 

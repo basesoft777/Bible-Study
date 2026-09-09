@@ -1,5 +1,9 @@
 # 2. Bővített PaRDeS sablon — teljes, részletes verzió
 
+*v19 — 2026.09.09 (Új, kötelező "Logikai kötőszó szerinti bontás"
+lépés a 3. pont végén — azonos indoklással, mint a tematikus sablon
+v13-as changelogjában.)*
+
 *v18 — 2026.09.05 (Új "Tartalmi visszaírás lezárt tematikus
 tanulmányba" alszakasz a 7. pont végén — a tematikus sablon v10-es,
 csak tematikus→bővített irányú visszaírási szabályának tükör-párja:
@@ -110,6 +114,8 @@ A 6. szempont nem helyettesíti, csak kiegészíti az 1-5. tartalmi mérlegelés
 **Sod (Titok)** *(tömör, fegyelmezett)* — csak a Peshat/Remez/Drash rétegekből ténylegesen levezethető mélyebb igazság, önkényes allegorizálás vagy gematria nélkül. Releváns dokumentált misztikus forrás esetén → az 5. ponton keresztül, hivatkozva vonandó be, nem saját spekulációként.
 
 ⚠️ **Vitatott pontok** — csak ha ténylegesen van érdemi tudományos/teológiai vita, nevesített képviselőkkel bemutatva, nem homályos "egyesek szerint" megfogalmazással.
+
+**Logikai kötőszó szerinti bontás (kötelező, ha a feldolgozott szakasz egynél több versre terjed ki):** listázd ki a szakasz minden explicit logikai kötőszóval vagy deklaratív igével jelölt érvelési lépését (γάρ, οὖν, διό/ὅθεν, μαρτυρεῖται-típusú deklaratív igék), és ellenőrizd, hogy a fenti Peshat/Remez/Drash/Sod bontás ténylegesen kifejti-e mindegyiket, vagy csak a szakasz végkövetkeztetését használja fel. Tudatos kihagyás megengedett, de explicit jelzendő.
 
 ---
 

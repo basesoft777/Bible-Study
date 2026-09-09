@@ -1,5 +1,8 @@
 # 5. Mélyelemzés prompt-sablon — két igehely összevetése
 
+*v8 — 2026.09.09 (Új, kötelező "Logikai kötőszó szerinti bontás" lépés
+a 2. pont végén — azonos indoklással, mint a tematikus sablon v13-as
+changelogjában.)*
 *v7 — 2026.08.27 (a 2. pont végére felvéve egy rövidebb, kötelező
 kereszthivatkozás-keresési napló előírás — a bővített sablon v12 azonos
 követelményének mélyelemzésre igazított, tömörebb változata)*
@@ -37,6 +40,8 @@ mindkét igehely releváns szavára):
 Ha közös görög/héber szó van: pontosan ugyanazt jelenti-e mindkét kontextusban, vagy
 van árnyalatnyi eltérés? Ugyanaz a szerző használja mindkét helyen, vagy más szerző?
 A szó szórendje, alakja, mondatbeli szerepe eltér-e a két helyen?
+
+**Logikai kötőszó szerinti bontás (kötelező, ha bármelyik igehely egynél több versre terjedő szakasz része):** listázd ki a szakasz minden explicit logikai kötőszóval vagy deklaratív igével jelölt érvelési lépését (γάρ, οὖν, διό/ὅθεν, μαρτυρεῖται-típusú deklaratív igék), és ellenőrizd, hogy az összevetés ténylegesen kifejti-e mindegyiket, vagy csak a szakasz végkövetkeztetését használja fel. Tudatos kihagyás megengedett, de explicit jelzendő.
 
 **Kötelező napló:** a fenti minősítés eredményét rögzítsd egy önálló fájlban:
 `[könyv-mappa]/naplok/[study-fájlnév-kiterjesztés-nélkül]_kereszthivatkozas_naplo.md`
