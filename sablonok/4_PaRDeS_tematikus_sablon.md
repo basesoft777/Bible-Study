@@ -206,6 +206,46 @@ A tanulmány végén a `PaRDeS_motivumok.md` naplóban a feldolgozott motívumot
 egységben kell rögzíteni — sosem prózai mondatba ágyazva. Részletek:
 `PaRDeS_gyorsreferencia.md` "Napló-jelölés" szakasza.
 
+**Konkrét, ismétlődően előforduló triggerek** (2026.09.09-i
+ISTENTISZT-001 lexikon-oldal átfésüléséből, nem kimerítő lista — ha
+valami ebbe a mintába esik, de nincs felsorolva, akkor is NAPLO-ba
+kerül):
+- inline `*(új, dátum)*` vagy `*(dátum, eredet)*` tag egy táblázat-
+  cellában vagy mondatba ágyazva — a dátum/eredet a NAPLO-ba kerül,
+  a tartalmi cella/mondat tisztán marad
+- bold `**Forrás:**` vagy dőlt `*(Forrás: ...)*` sor futószövegben —
+  ehelyett `【NAPLO: forrás — ...】`
+- első/többes szám első személyű ellenőrzési állítás ("ellenőriztem",
+  "ellenőriztük", "találtuk", "megnéztük") tartalmi mondatba ágyazva —
+  a tartalmi következtetés marad a mondatban, az ellenőrzés ténye
+  NAPLO-ba kerül
+- üzemeltetői/pipeline-stílusú státuszjelzés egy tartalmi mondatban
+  (pl. "csak részlegesen ellenőrizhető", "hiba miatt" egy adat
+  minőségi állapotára utalva) — a mondat a **tartalmi tényt** írja
+  le (mit mond a szöveg), nem az adatfeldolgozás állapotát
+
+**Formázási szabály:** minden `【NAPLO: ...】` blokk saját, elkülönülő
+bekezdés — üres sor kötelezően közvetlenül elé (kivéve, ha a NAPLO egy
+felsorolás/idézet-blokk közvetlen folytatása, és ez így egyértelműbb).
+
+**Idézés-formázási szabály:** blockquote (`>`) csak az eredeti nyelvű
+(héber/görög/latin) szövegre vonatkozik; a magyar fordítás **mindig**
+normál bekezdés, közvetlenül az idézet után, nem a blockquote
+folytatásaként.
+
+**Hangnem-szabály:** a study szövege semleges, harmadik személyű
+előadásban íródik — nincs benne olvasót megszólító vagy "mi"-hangú
+fogalmazás (pl. "hadd fogalmazzam egyszerűbben", "ha csak a mi
+olvasatunk lenne", "tőlünk függetlenül").
+
+**PaRDeS-réteg fegyelem:** a 3. pont (Peshat/Remez/Drash/Sod) egyik
+rétege sem "mélyíthető" vagy egészíthető ki közvetlenül egy másik
+réteg elemzési eszközével (pl. egy KAPCSOLATOK-típusú tipológia nem
+válik a Drash-tanítás részévé). Ha a rétegek között valódi kapcsolat
+van, azt külön, a másik réteg nevével explicit megjelölve, keresztre
+hivatkozva kell megadni ("(Remez-szintű kiegészítés, l. X. pont)"),
+nem összeolvasztva a befogadó réteg saját mondatával.
+
 ### Minőségi kapu (Quality Gate) — a Lezárási checklist ELŐTT
 futtatandó
 
@@ -252,8 +292,18 @@ Lezárási checklist elindulna.
       hiányjelzéssel zárva** — az 5. pont vagy tartalmaz nevesített
       tanítói egyezés-keresést (✅/⚠️/gap jelöléssel), vagy explicit
       rögzíti, hogy ez a lépés miért maradt el.
+- [ ] **Q6. Napló-/formázási-/hangnem-fegyelem** — nincs a fájlban:
+      (a) inline dátum/eredet-tag tartalmi cellában/mondatban; (b)
+      bold/dőlt "Forrás:" sor futószövegben; (c) első személyű
+      ellenőrzési állítás tartalmi mondatba ágyazva; (d) 【NAPLO】 blokk
+      üres sor nélkül a szövegtől; (e) magyar fordítás blockquote-ban
+      (csak az eredeti nyelvű idézet lehet ott); (f) olvasót
+      megszólító/"mi"-hangú mondat; (g) egy réteg elemzési eszköze
+      egy másik réteg tanításába összeolvasztva, keresztre hivatkozás
+      nélkül. Részletek: l. a "Napló-jelölés kötelező" bekezdés (6.
+      pont).
 
-Ha mind az öt kritérium teljesül, a study mehet tovább a Lezárási
+Ha mind a hat kritérium teljesül, a study mehet tovább a Lezárási
 checklistre. Ha egy study utólag bővül (nem csak első lezáráskor),
 a Minőségi kapu **teljes egészében újra lefuttatandó** — nem csak a
 bővített részre.
