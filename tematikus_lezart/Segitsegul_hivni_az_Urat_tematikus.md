@@ -85,6 +85,51 @@ létezett — ez a retroaktív pótlás.*
 
 ---
 
+## 1/b. Kapcsolatok — a KAPCSOLATOK Típus-mező szerint strukturálva
+
+*(A `Bibliai_Motivumlexikon_tervezesi_naplo.md`-ben 2026.09.09-én
+lezárt öt kategóriás Típus-mező retroaktív alkalmazása a fenti,
+korábban csak prózában létező kapcsolat-leírásokra.)*
+
+| Típus | Rövid meghatározás |
+|---|---|
+| **Előkép** | korábbi esemény/alak, ami egy későbbi, teljesebb valóság mintája |
+| **Párhuzam** | ismétlődő mintázat, a szereplők szerepe azonos marad |
+| **Beteljesedés** | egy Előkép lezárása/valóra válása — mindig egy Előkép-jelöléshez kapcsolódik |
+| **Kontraszt** | két fél szándékosan szembeállítva, a lényeg az eltérés |
+| **Variáns** | ugyanaz a lexikai/formula-mag, de a szereplők szerepe szisztematikusan felcserélődik, nem szembeállítva |
+
+| Forrás → Cél | Típus | Indoklás |
+|---|---|---|
+| 1Móz 4:26 → Sof 3:9 | Párhuzam | ugyanaz a szereposztás (ember hívja segítségül Isten nevét) ismétlődik, más kánoni ponton |
+| 1Móz 4:26 → 2Kir 5:11 | Párhuzam | ugyanaz a szereposztás, parafrazált formában |
+| 1Móz 4:26 → Jóel 2:32 | Párhuzam | ugyanaz a szereposztás, az ószövetségi megfogalmazás csúcspontjáig |
+| Jóel 2:32 → ApCsel 2:21 | Beteljesedés *(Előkép: Jóel 2:32)* | szó szerinti LXX-idézés, ÓSZ-prófécia → ÚSZ-beteljesedés |
+| Jóel 2:32 → Róm 10:13 | Beteljesedés *(Előkép: Jóel 2:32)* | szó szerinti LXX-idézés, ÓSZ-prófécia → ÚSZ-beteljesedés |
+| Róm 10:13 → Róm 10:14 | Párhuzam | azonos szereposztás, közvetlen folytatás ugyanabban a szakaszban |
+| 1Móz 4:26 → 2Móz 33:19/34:5 | **Variáns** | A/B/C tipológia B-esete — azonos szerkezet (קָרָא+שֵׁם), felcserélt alany/tárgy (Isten mondja ki a saját nevét, nem az ember hívja segítségül Istenét) |
+| 2Móz 33:19 → 2Móz 34:5 | Párhuzam | ugyanaz a jelenet, ugyanaz a szereposztás (Isten önkinyilatkoztatása) |
+| 1Móz 12:8 → 1Móz 13:4 | Párhuzam | Ábrám visszatér, azonos szereposztás |
+| 1Móz 13:4 → 1Móz 26:25 | Párhuzam | öröklés — azonos szereposztás nemzedékek közt |
+| 1Móz 21:33 → 1Móz 26:25 | Párhuzam | öröklés — azonos szereposztás nemzedékek közt |
+| 1Kir 18:24 → 18:25 → 18:26 | Párhuzam | narratív folytonosság, azonos szereposztás |
+| **1Kir 18:24 (versen belül)** | **Kontraszt** | Baál neve vs. YHVH neve, szándékos szembeállítás egyetlen versen belül — l. séma-korlát alább |
+| Zsolt 116:4 → 116:13 → 116:17 | Párhuzam | egyazon zsoltáros, azonos szereposztás, szó szerinti ismétlés |
+| Zsolt 105:1 → 1Krón 16:8 | Párhuzam | csaknem szó szerint azonos szöveg |
+| Zsolt 105:1 → Ézs 12:4 | Párhuzam | szinte szó szerinti egyezés |
+| Jer 10:25 ↔ Zsolt 79:6 | Párhuzam | csaknem szóról szóra azonos, tagadó forma |
+| Sof 3:9 → Zak 13:9 | Párhuzam | azonos szereposztás, kétirányú megerősítéssel kiegészítve |
+| Róm 10:14 → 1Kor 1:2 / 2Tim 2:22 / 1Pét 1:17 / ApCsel 9:14 / ApCsel 22:16 | Párhuzam | azonos görög ige, formula-átvétel egyházi kontextusba |
+| ApCsel 9:14 → ApCsel 9:21 | Párhuzam | szó szerinti megismétlés ugyanabban a fejezetben |
+
+【NAPLO: séma-korlát — a fenti "1Kir 18:24 (versen belül)" sor nem
+Forrás→Cél formátumú, mert a KAPCSOLATOK-réteg jelenlegi formátuma két
+különböző igehelyet feltételez, egy versen belüli kontrasztot nem tud
+natívan ábrázolni (l. `ISTENTISZT-001_TUDOMANYOS.md` 7. pont NAPLO-ja
+és `Bibliai_Motivumlexikon_tervezesi_naplo.md` 5. pontja).】
+
+---
+
 ## 2. Eredeti nyelvi összevetés
 
 **H7121 (קָרָא, *kará*)** — "hívni, kiáltani, kihirdetni, segítségül hívni."
