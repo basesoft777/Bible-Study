@@ -224,3 +224,48 @@ Forrás: chat-alapú beszélgetés, 2026.09.07, a Motívumlexikon-pilot (ISTENTI
 
 ## 16. Következő lépés
 Egyelőre nincs — ez a fájl kizárólag a terv jelenlegi állását rögzíti. A folytatás (melyik nyitott kérdéssel induljunk) Basesoft külön kezdeményezésére történik.
+
+## 17. Károliba épített kereszthivatkozás — megjelenítési ötletelés (2026.09.09, NEM döntés)
+
+**Kiindulás:** a mai beszélgetés során felmerült, hogy a motívum-alapú
+kereszthivatkozási réteg (l. "Publikálási terv" nyitott pont,
+`NYITOTT_FELADATOK.md` 2. tétel) nem áll meg egy puszta adatrétegnél
+("igehely → motívum-ID"), hanem a felhasználó a **teljes lexikon-cikket
+és a kapcsolati hálót** akarja elérhetővé tenni minden egyes
+előfordulási igehelyről — nem csak egy reprezentatív belépési pontról.
+
+**Ez a szakasz kizárólag a MEGJELENÍTÉS kérdését rögzíti, ötletelés
+szinten, döntés nélkül:**
+
+**1. Inline jelölés a versen — három felmerült minta:**
+- Egyetlen, semleges jel (pl. 🔗) a vers végén — egyszerű, de nem
+  mutatja a típust.
+- Típusonként eltérő ikon/szín (l. az 5 kategóriás Típus-mező, ha az
+  már rögzítve van a fájlban) — informatívabb, de több kapcsolatnál
+  egy versen zsúfolttá válhat.
+- Egységes jel + szám (hagyományos referencia-Biblia mintája, pl.
+  "¹", "²"), a szám egy lábjegyzet-listára mutat — a legjobban
+  skálázódó opció több kapcsolat esetén.
+
+**2. Interakció a jelölésen — három felmerült minta:**
+- Popup/tooltip: cél-igehely + típus + rövid címke + link a teljes
+  lexikon-cikkhez.
+- Oldalsáv (sidebar): az adott vershez tartozó összes kapcsolat
+  folyamatosan listázva olvasás közben.
+- Kombinált: inline jel → popup gyors infóval → popupban link a
+  teljes lexikon-cikkhez.
+
+**3. Technikai alap:** a meglévő Netlify/Hugo-munkamódszer (l. a
+`naszut` projekt és a "Publikálási terv" pont saját hivatkozása
+ugyanerre) valószínűleg elegendő — statikus, build-időben generált
+oldal, a TSV-adatból Hugo-sablon generálná a jelöléseket, külön
+backend/adatbázis-szerver nélkül.
+
+**Nyitva marad — ez a szakasz nem dönt ezekben:**
+- Melyik inline jelölési minta legyen az induló választás.
+- Melyik interakciós minta (popup/sidebar/kombinált).
+- A lexikon-cikkek tényleges megjelenítési formátuma a
+  kereszthivatkozás másik végén (nyers markdown vs. Netlify/Hugo-oldal
+  — ez összeköti ezt a szálat a "Publikálási terv" nyitott ponttal).
+
+Forrás: chat-alapú beszélgetés, 2026.09.09.
