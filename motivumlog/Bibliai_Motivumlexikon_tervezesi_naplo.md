@@ -42,7 +42,10 @@ Amiben a Basesoft-koncepció bővebb, mint a korábbi (szűkebb) javaslat:
 3. Pilot-javaslat (a chat-felülettől, egyelőre csak feljegyezve, NEM elindítva): mielőtt a teljes réteges modellt megterveznénk, érdemes lehet a KAPCSOLATOK-réteget egyetlen, már lezárt motívumon kipróbálni — pont a dokumentum saját példáján, a "Segítségül hívni az Úr nevét" tanulmányon, aminek van 5 rögzített előfordulása és a kapcsolatok jó része már szöveges formában megvan a `Segitsegul_hivni_az_Urat_tematikus.md`-ben.
 4. Viszony a korábban elfogadott, szűkebb motívum-azonosító sémához: az a séma változtatás nélkül beépíthető-e ebbe a nagyobb modellbe, vagy a nagyobb terv fényében érdemes újragondolni, mielőtt az 1Móz 17-es teszt-kör elindulna?
 
-5. Kapcsolódás a Strong-szótár tervezett BDB-bővítéséhez (2026.08.30,
+5. **Séma-korlát — versen belüli kontraszt** *(felvetve: 2026.09.09, forrás: `motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md` NAPLO-jegyzete, 1Kir 18:24 eset)*: a jelenlegi KAPCSOLATOK-formátum (Forrás-igehely | Cél-igehely) két *különböző* igehelyet feltételez. Az 1Kir 18:24 (Illés a Kármelen — YHVH neve vs. a nép istenének neve, ugyanazon a versen belül szembeállítva) ezt nem tudja natívan ábrázolni; jelenleg csak prózai megjegyzésként létezik a study-ban, nem KAPCSOLAT-sorként. Nyitott kérdés: kell-e egy új mező/reláció-típus az intra-verse kontraszthoz, vagy marad prózai kivétel?
+6. **A/B/C tipológia — önálló reláció-típus vagy lexikai lábjegyzet?** *(felvetve: 2026.09.09, forrás: `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`, 2. pont)*: a קָרָא+שֵׁם szerkezet három szisztematikusan variálódó alany/tárgy-mintázatot mutat — **A** (ember hívja Isten nevét — a fő motívum), **B** (Isten kihirdeti saját nevét, 2Móz 33:19/34:5), **C** (Isten nevez meg egy embert, Ézs 43:1/44:5/45:3, korábban a motívumhoz nem tartozóként elutasítva). Ez lexikai szintű megfigyelés, NEM állítja, hogy A/B/C motívum-szinten összetartozna. Nyitott kérdés: érdemel-e ez saját KAPCSOLATOK-reláció-típust, vagy marad study-szintű lábjegyzet?
+
+7. Kapcsolódás a Strong-szótár tervezett BDB-bővítéséhez (2026.08.30,
 
 ```
 utólagos kiegészítés)
