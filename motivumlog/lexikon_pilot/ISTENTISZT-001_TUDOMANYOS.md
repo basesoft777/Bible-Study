@@ -150,6 +150,7 @@ szókapcsolat, felcserélt alany/tárgy-szereposztásban, Isten
 emberen (Ézs 43:1, 44:5, 45:3) is kifejezheti — a motívum tehát nem
 elszigetelt emberi gyakorlat, hanem egy tágabb, kölcsönös isteni-emberi
 kommunikációs mintázat egyik pólusa.
+
 【NAPLO: az A/B/C tipológiát a study 2026.09.07-én írta vissza.】
 
 **Sod** *(fegyelmezetten, csak a fenti rétegekből levezetve)*: a
