@@ -1,5 +1,5 @@
 Bibliai Motívumlexikon — tervezési napló
-Rögzítve: 2026.08.30. Státusz: KONCEPCIONÁLIS FÁZIS, folytatásra vár — nincs jóváhagyott végleges architektúra, nincs megkezdett implementáció. Ez a fájl a tervezés jelenlegi állását naplózza, nem döntést rögzít.
+Rögzítve: 2026.08.30, utolsó frissítés: 2026.09.09. Státusz: KONCEPCIONÁLIS FÁZIS — a végleges architektúra egésze továbbra sem jóváhagyott, implementáció nem indult, de a KAPCSOLATOK réteg Típus-mezőjének öt kategóriás (Előkép/Párhuzam/Beteljesedés/Kontraszt/Variáns) v1 értékkészlete 2026.09.09-én jóváhagyott részdöntés (ld. 6. pont). Ez a fájl a tervezés jelenlegi állását naplózza, a fenti egy ponton kívül nem rögzít végleges döntést.
 1. Előzmény
 
 * 2026.08.30 korábban: a chat-felület (Claude Sonnet 5) javaslatot tett egy szűk, azonnal megvalósítható motívum-azonosító sémára (ld. `Motivum_azonosito_sema_javaslat.md` és a `Claude_Code_prompt_motivum_azonosito_sema_bevezetese.md`), ami a `PaRDeS_motivumok.md` `###` bejegyzéseit látja el stabil, kategórián belüli sorszámmal (pl. `HAMART-009`).
@@ -43,7 +43,21 @@ Amiben a Basesoft-koncepció bővebb, mint a korábbi (szűkebb) javaslat:
 4. Viszony a korábban elfogadott, szűkebb motívum-azonosító sémához: az a séma változtatás nélkül beépíthető-e ebbe a nagyobb modellbe, vagy a nagyobb terv fényében érdemes újragondolni, mielőtt az 1Móz 17-es teszt-kör elindulna?
 
 5. **Séma-korlát — versen belüli kontraszt** *(felvetve: 2026.09.09, forrás: `motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md` NAPLO-jegyzete, 1Kir 18:24 eset)*: a jelenlegi KAPCSOLATOK-formátum (Forrás-igehely | Cél-igehely) két *különböző* igehelyet feltételez. Az 1Kir 18:24 (Illés a Kármelen — YHVH neve vs. a nép istenének neve, ugyanazon a versen belül szembeállítva) ezt nem tudja natívan ábrázolni; jelenleg csak prózai megjegyzésként létezik a study-ban, nem KAPCSOLAT-sorként. Nyitott kérdés: kell-e egy új mező/reláció-típus az intra-verse kontraszthoz, vagy marad prózai kivétel?
-6. **A/B/C tipológia — önálló reláció-típus vagy lexikai lábjegyzet?** *(felvetve: 2026.09.09, forrás: `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`, 2. pont)*: a קָרָא+שֵׁם szerkezet három szisztematikusan variálódó alany/tárgy-mintázatot mutat — **A** (ember hívja Isten nevét — a fő motívum), **B** (Isten kihirdeti saját nevét, 2Móz 33:19/34:5), **C** (Isten nevez meg egy embert, Ézs 43:1/44:5/45:3, korábban a motívumhoz nem tartozóként elutasítva). Ez lexikai szintű megfigyelés, NEM állítja, hogy A/B/C motívum-szinten összetartozna. Nyitott kérdés: érdemel-e ez saját KAPCSOLATOK-reláció-típust, vagy marad study-szintű lábjegyzet?
+6. **A/B/C tipológia — önálló reláció-típus vagy lexikai lábjegyzet?** *(felvetve: 2026.09.09, forrás: `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`, 2. pont)*: a קָרָא+שֵׁם szerkezet három szisztematikusan variálódó alany/tárgy-mintázatot mutat — **A** (ember hívja Isten nevét — a fő motívum), **B** (Isten kihirdeti saját nevét, 2Móz 33:19/34:5), **C** (Isten nevez meg egy embert, Ézs 43:1/44:5/45:3, korábban a motívumhoz nem tartozóként elutasítva). Ez lexikai szintű megfigyelés, NEM állítja, hogy A/B/C motívum-szinten összetartozna. ✅ DÖNTÉS: l. alább.
+
+**✅ DÖNTÉS (2026.09.09) — a KAPCSOLATOK Típus-mező öt kategóriája, lezárja az 5. és 6. pontot:**
+
+A felhasználó saját tapasztalata szerint az eredeti előkép/párhuzam/beteljesedés hármas jól működött a tényleges PaRDeS-munkában, a tervezési napló 2. pontjában vázolt elvontabb TEMATIKUS/NARRATÍV-mátrix nem. A Típus-mező induló (v1) értékkészlete ezért öt kategóriából áll, a meglévő három megtartásával és két, a mai konkrét esetekből szükségessé vált új kategóriával:
+
+| Típus | Definíció | Elhatároló teszt |
+|---|---|---|
+| **Előkép** | korábbi esemény/alak, ami egy későbbi, teljesebb valóság mintája | idői irány kötelező: korábbi → későbbi |
+| **Párhuzam** | ismétlődő mintázat, a szereplők szerepe azonos marad | ismétlődik-e ugyanaz a szereposztás? |
+| **Beteljesedés** | egy előkép lezárása/valóra válása | mindig egy Előkép-jelöléshez kapcsolódik, önmagában nem áll |
+| **Kontraszt** *(ÚJ)* | két fél szándékosan szembeállítva, a lényeg az eltérés | ha a két felet felcserélnéd, a mondanivaló megfordulna-e? (igen → Kontraszt) |
+| **Variáns** *(ÚJ)* | ugyanaz a lexikai/formula-mag, de a szereplők szerepe szisztematikusan felcserélődik, nem szembeállítva | ugyanaz a szó/szerkezet, más az alany-tárgy, és ez a csere hordoz jelentést |
+
+Konkrét besorolás a két nyitott esetre: az **1Kir 18:24** (5. pont) a **Kontraszt** kategóriába kerül; az **A/B/C tipológia** (6. pont) a **Variáns** kategóriába. A tervezési napló eredeti TEMATIKUS/NARRATÍV + ISMÉTLÉS/VISSZATÉRÉS/ÖRÖKLÉS-mátrixa (2. pont) ezzel elavulttá vált, tudatosan nem került átvételre. Nyitva marad: a Funkció, Bizonyosság és PaRDeS-szint mezők tartalma, valamint a Motívum-kapcsolatok.tsv tényleges felépítése — ez a döntés csak a Típus-mezőt zárja le.
 
 7. Kapcsolódás a Strong-szótár tervezett BDB-bővítéséhez (2026.08.30,
 
