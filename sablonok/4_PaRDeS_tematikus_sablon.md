@@ -1,5 +1,11 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
+*v14 — 2026.09.09 (Q4 pont indoklása pontosítva: a hivatkozott konkrét
+eset — 2026.09.07, Zakariás 6:13/Melkizedek-lelet egy ISTENTISZT-001
+lexikon-mintaoldalon — explicit jelölve, hogy a
+`6_PaRDeS_lexikon_oldal_sablon.md` L4 pontjában dokumentált, és a
+lexikon-oldal-rétegben történt, nem egy tematikus study-ban; a Q4
+ellenőrzési követelménye tartalmilag változatlan.)*
 *v13 — 2026.09.09 (Új, kötelező "Logikai kötőszó szerinti bontás" lépés
 az 1. pont végén — egynél több verset lefedő táblázat-soroknál a
 görög/héber logikai kötőszavak és deklaratív igék [γάρ, οὖν, διό/ὅθεν,
@@ -236,7 +242,12 @@ Lezárási checklist elindulna.
       hozott egy leletet, ami idekívánkozna), az csak explicit,
       megnevezett átvételként kerülhet be, nem "általánosan
       odaillőként" — véletlen összekeverés (pl. másik motívum
-      lexikonleletének bemásolása) a kapu bukását jelenti.
+      lexikonleletének bemásolása) a kapu bukását jelenti. *(A
+      szabályt megalapozó konkrét eset — 2026.09.07, Zakariás
+      6:13/Melkizedek-lelet egy ISTENTISZT-001 lexikon-mintaoldalon —
+      a `6_PaRDeS_lexikon_oldal_sablon.md` L4 pontjában dokumentált,
+      és a lexikon-oldal-rétegben történt, nem egy tematikus
+      study-ban; itt analóg elővigyázatosságként vonatkozik.)*
 - [ ] **Q5. Nevesített tanítói szakasz jelen van, vagy explicit
       hiányjelzéssel zárva** — az 5. pont vagy tartalmaz nevesített
       tanítói egyezés-keresést (✅/⚠️/gap jelöléssel), vagy explicit
