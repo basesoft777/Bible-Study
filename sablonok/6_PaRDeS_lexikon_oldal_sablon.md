@@ -224,6 +224,47 @@ következik, nem önkényes döntés.
 egységben kell rögzíteni — sosem prózai mondatba ágyazva. Részletek:
 `PaRDeS_gyorsreferencia.md` "Napló-jelölés" szakasza.
 
+**Konkrét, ismétlődően előforduló triggerek** (2026.09.09-i
+ISTENTISZT-001 átfésülésből, nem kimerítő lista — ha valami ebbe a
+mintába esik, de nincs felsorolva, akkor is NAPLO-ba kerül):
+- inline `*(új, dátum)*` vagy `*(dátum, eredet)*` tag egy táblázat-
+  cellában vagy mondatba ágyazva — a dátum/eredet a NAPLO-ba kerül,
+  a tartalmi cella/mondat tisztán marad
+- bold `**Forrás:**` vagy dőlt `*(Forrás: ...)*` sor futószövegben —
+  ehelyett `【NAPLO: forrás — ...】`
+- első/többes szám első személyű ellenőrzési állítás ("ellenőriztem",
+  "ellenőriztük", "találtuk", "megnéztük") tartalmi mondatba ágyazva —
+  a tartalmi következtetés marad a mondatban, az ellenőrzés ténye
+  NAPLO-ba kerül
+- üzemeltetői/pipeline-stílusú státuszjelzés egy tartalmi cellában
+  (pl. "csak részlegesen ellenőrizhető", "hiba miatt" egy adat
+  minőségi állapotára utalva) — a cella a **tartalmi tényt** írja le
+  (mit mond a szöveg), nem az adatfeldolgozás állapotát
+
+**Formázási szabály:** minden `【NAPLO: ...】` blokk saját, elkülönülő
+bekezdés — üres sor kötelezően közvetlenül elé (kivéve, ha a NAPLO egy
+felsorolás/idézet-blokk közvetlen folytatása, és ez így egyértelműbb).
+
+**Idézés-formázási szabály:** blockquote (`>`) csak az eredeti nyelvű
+(héber/görög/latin) szövegre vonatkozik; a magyar fordítás **mindig**
+normál bekezdés, közvetlenül az idézet után, nem a blockquote
+folytatásaként.
+
+**TUDOMÁNYOS-hangnem szabály:** a TUDOMÁNYOS változat semleges,
+harmadik személyű előadásban íródik — nincs benne olvasót megszólító
+vagy "mi"-hangú fogalmazás (pl. "hadd fogalmazzam egyszerűbben", "ha
+csak a mi olvasatunk lenne", "tőlünk függetlenül"). Ez a casual
+regiszter az OLVASHATÓ változatnak van fenntartva, ott is csak
+mérve.
+
+**PaRDeS-réteg fegyelem:** egy réteg (Peshat/Remez/Drash/Sod)
+tanítása nem "mélyíthető" vagy egészíthető ki közvetlenül egy másik
+réteg elemzési eszközével (pl. a KAPCSOLATOK-réteg A/B/C tipológiája
+nem válik a Drash-tanítás részévé). Ha a rétegek között valódi
+kapcsolat van, azt külön, a másik réteg nevével explicit megjelölve,
+keresztre hivatkozva kell megadni ("(Remez-szintű kiegészítés, l. X.
+pont)"), nem összeolvasztva a befogadó réteg saját mondatával.
+
 ## Minőségi kapu — a két fájl közzététele/commitolása ELŐTT
 futtatandó
 
@@ -257,9 +298,19 @@ lexikon-oldal saját kockázataira szabva:
       nevesítve a fő struktúrában — ha hiányzik, ez önmagában nem
       buktatja a kaput, de jelezni kell a Nyitott kérdések
       szakaszban).
+- [ ] **L6. Napló-/formázási-/hangnem-fegyelem** — nincs a fájlban:
+      (a) inline dátum/eredet-tag tartalmi cellában/mondatban; (b)
+      bold/dőlt "Forrás:" sor futószövegben; (c) első személyű
+      ellenőrzési állítás tartalmi mondatba ágyazva; (d) 【NAPLO】 blokk
+      üres sor nélkül a szövegtől; (e) magyar fordítás blockquote-ban
+      (csak az eredeti nyelvű idézet lehet ott); (f) olvasót
+      megszólító/"mi"-hangú mondat a TUDOMÁNYOS változatban; (g)
+      egy réteg elemzési eszköze egy másik réteg tanításába
+      összeolvasztva, keresztre hivatkozás nélkül. Részletek: l. a
+      "Napló-jelölés kötelező" bekezdés.
 
-Ha L1, L3, L4 bármelyike bukik, a lexikon-oldal NEM tehető közzé/
-commitolható, amíg nincs javítva.
+Ha L1, L3, L4 vagy L6 bármelyike bukik, a lexikon-oldal NEM tehető
+közzé/commitolható, amíg nincs javítva.
 
 ---
 
