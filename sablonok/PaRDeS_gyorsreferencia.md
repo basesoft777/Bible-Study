@@ -1,5 +1,8 @@
 # PaRDeS gyorsreferencia
 
+*v11 — 2026.09.09 (TSK forrás-leírás kiegészítve: a Votes ≥ 15 szűrésen
+átjutó TELJES lista dokumentálandó/felhasználandó, nem csak a legfelső
+1-2 találat — konkrét eset motiválta, l. a bekezdés saját szövege.)*
 *v10 — 2026.08.31 (Motívum-felismerés módszertana: minősítési kritériumok
 (✅/❌/🔶) konkretizálva — eddig csak elnevezve voltak, most alkalmazható
 szabályokkal)*
@@ -78,7 +81,15 @@ NÉGY párhuzamos forrásból gyűjtünk jelöltet, mindegyiket forrás-cimkéve
 - 📖 [Károli-KH] — Karoli_kereszthivatkozasok.tsv lekérdezése (EDITORIÁLIS/TEMATIKUS
   jelölt, szentiras.hu szerkesztői hálózat, nincs erősség-jelzés)
 - 📚 [TSK] — TSK_kereszthivatkozasok.tsv lekérdezése, Votes ≥ 15 szűréssel
-  (EDITORIÁLIS/TEMATIKUS jelölt, Treasury of Scripture Knowledge, erősség-jelzéssel)
+  (EDITORIÁLIS/TEMATIKUS jelölt, Treasury of Scripture Knowledge, erősség-jelzéssel).
+  **A Votes ≥ 15 szűrésen átjutó TELJES listát dokumentálni/felhasználni kell,
+  nem csak a legmagasabb szavazatú 1-2 találatot** — a lista tetszőleges pontján
+  lehet a study szempontjából a leginkább releváns (nem feltétlenül a
+  legmagasabb szavazatú) hely, és egy csak a legfelső 1-2-re szűkített nézet
+  elrejtheti ezt (konkrét eset, 2026.09.09: Zsolt 110:4 TSK-listájának
+  legmagasabb szavazatú tétele, Zsid 7:17 [25 szavazat], hónapokig
+  kiaknázatlan maradt egy Melkizedek-studyban, mert csak az 1Móz 14:18 [15] és
+  a Zak 6:13 [9] találat került felhasználásra).
 - 🧠 [Claude-tudás] — saját, adatforrás nélküli javaslat (a leggyengébb
   megalapozottságú, mindig explicit jelölve marad)
 
