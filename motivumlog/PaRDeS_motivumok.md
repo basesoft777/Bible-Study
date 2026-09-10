@@ -1,5 +1,15 @@
 # PaRDeS motívum-napló (kulcsszavas)
 
+*v53 — 2026.09.09 ("Melkizedek — király-pap rendje, kenyér és bor"
+motívum bővítve két új, lexikailag kapcsolódó igehellyel: 2Móz 19:6 és
+Zak 6:13, mindkettő BDB H3548 "priest-king" ["pap-király"]
+jelentés-kategórián keresztül [1Móz 14:18-20 és Zsolt 110:4 mellett];
+valamint egy tematikus TSK-lelettel, 1Pét 2:9 [22 szavazat, szó
+szerinti LXX-idézés a 2Móz 19:6 "βασίλειον ἱεράτευμα" megfogalmazásából]
+— a TSK-audit ezt már 2026.09.08-09-én megtalálta, de a Q2-szabály
+2026.09.09-i kibővítéséig [minden ÚJ igehelyre mutató TSK-találat
+egyedi minősítést igényel] nem került át a nyers találatok listájából
+a minősítő táblázatba. Részletek: `tematikus_lezart/Melkizedek_tematikus.md`.)*
 *v52 — 2026.09.07 ("segítségül hívni az Úr nevét" [ISTENTISZT-001]
 motívum frissítve a Motívumlexikon-pilot elemzéséből visszaírt két
 elemmel: (1) Róm 10:14 mint 18. igehely [2026.09.06-i TSK-eredetű
@@ -170,7 +180,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - egy test — házasság mint Krisztus-egyház misztériuma (1)
 - protoevangélium — asszony magva (1)
 - kérubok/elzárt-megnyílt út (szentély-tipológia) (1)
-- **Melkizedek — király-pap rendje, kenyér és bor (1, 14:18-20; ✅ LEZÁRVA — mélyelemzés: `1Mozes_14_18-20_Zsolt110_4_Zsid5-7_melyelemzes.md`; teljes tematikus feldolgozás: `Melkizedek_tematikus.md` ⇒ Zsolt 110:4 ⇒ Zsid 5-7 — lásd Kulcsszavak részletesen; ⚠️ két elkülönített vita: (a) Melkizedek kiléte — krisztofánia vs. irodalmi-retorikai olvasat; (b) Gen 14↔Zsolt 110 irány — Rowley/Nel vs. Kidner/Waltke/Hamilton)**
+- **Melkizedek — király-pap rendje, kenyér és bor (1, 14:18-20; ✅ LEZÁRVA — mélyelemzés: `1Mozes_14_18-20_Zsolt110_4_Zsid5-7_melyelemzes.md`; teljes tematikus feldolgozás: `Melkizedek_tematikus.md` ⇒ Zsolt 110:4 ⇒ Zsid 5-7 — lásd Kulcsszavak részletesen; a tanulmány 2026.09.08-09-én bővült két új lexikai kapcsolattal (2Móz 19:6, Zak 6:13, BDB H3548 "priest-king" kategória) és egy tematikus TSK-lelettel (1Pét 2:9, LXX szó szerinti idézés); ⚠️ két elkülönített vita: (a) Melkizedek kiléte — krisztofánia vs. irodalmi-retorikai olvasat; (b) Gen 14↔Zsolt 110 irány — Rowley/Nel vs. Kidner/Waltke/Hamilton)**
 - **málach JHVH — az Úr angyala (1, ÚJ — 16:7,9-11, első szentírási előfordulás; Hágárral beszél a pusztában, és a szöveg nyelvtanilag felcseréli Isten és az angyal megszólalását; ⚠️ vitatott: krisztofánia — preinkarnált Krisztus — Justin Mártír, Kidner, vs. Isten jelenlétének irodalmi-teológiai kifejezőeszköze — Westermann, Wenham; előre jelzett megerősítés: 2Móz 3:2, 1Móz 22:11)**
 
 **Szoteriológia**
@@ -396,7 +406,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | **galamb — a Szellem és az új teremtés jele** | Pneumatológia | ÓSZ↔ÚSZ (tematikus) | 1 | 1Móz 8:11 ↔ Máté 3:16 |
 | **vadász gyök (tsajid/cúd) — embervadászat** *(frissítve 2026.08.26)* | Hamartológia | ÓSZ↔ÓSZ | 8 | 1Móz 10:9 (tsajid, névszó) ↔ Ez 13:18,20; Péld 6:26; 1Sám 24:12 (rokon gyök H6658, nem H6679); Jer 16:16; Zsolt 140:12; Jób 10:16; Sir 3:52,4:18; Mik 7:2 (ez utóbbi 7 hely mind cúd, igei alak) — jelentésmező-rokonság, ld. mélyelemzés |
 | **Bábel — nyelvzavar és Pünkösd fordított mintázata** *(új)* | Pneumatológia/Eszkatológia | ÓSZ⇒ÚSZ (tematikus) | 1 | 1Móz 11:1-9 ⇒ ApCsel 2:4,6 |
-| **Melkizedek — király-pap rendje, kenyér és bor** ✅ *(lezárva)* `[ID: KIRALY-001]` | Krisztológia | ÓSZ⇒ÚSZ | 1 | 1Móz 14:18-20 ⇒ Zsolt 110:4 ⇒ Zsid 5-7 |
+| **Melkizedek — király-pap rendje, kenyér és bor** ✅ *(lezárva)* `[ID: KIRALY-001]` | Krisztológia | ÓSZ⇒ÚSZ | 1 | 1Móz 14:18-20 ⇒ 2Móz 19:6 ⇒ Zsolt 110:4 ⇒ Zak 6:13 ⇒ Zsid 5-7 ⇒ 1Pét 2:9 |
 | **tized (ma'aszér) — első előfordulás** *(új)* | Szövetségteológia | ÓSZ (belső, előremutató) | 1 | 1Móz 14:20 → 3Móz 27:30-33; 4Móz 18:21-24 *(előremutató)* |
 | **Él Eljón — Felséges Isten, ég és föld birtokosa** *(új)* | Szövetségteológia/Teremtéstan | ÓSZ (belső) | 1 | 1Móz 14:18-20,22 (első előfordulás; Ábrám azonosítja JHVH-val) |
 | **chanikav — kiképzett/beavatott háznép** *(új)* | Antropológia | ÓSZ↔ÓSZ | 1 | 1Móz 14:14 ↔ Péld 22:6 (valódi közös גנך gyök) |
@@ -421,14 +431,18 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 ### Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` *(Krisztológia)* — ✅ LEZÁRVA, mélyelemzésben feldolgozva (`1Mozes_14_18-20_Zsolt110_4_Zsid5-7_melyelemzes.md`) és teljes tematikus tanulmányban is (`Melkizedek_tematikus.md`)
 - **1Móz 14:18-20** — Melkizedek, Sálem királya és a Felséges Isten papja, kenyeret és bort hoz Ábrámnak, megáldja őt, majd Ábrám tizedet ad neki — az első alkalom a Szentírásban, hogy a "pap" (כֹּהֵן) szó előfordul, még a lévita rend előtt. Kettős szerep (király + pap) a lévita rendben tiltott kombináció volt.
+- **⇒ 2Móz 19:6** — "lesztek nékem papok királysága" (מַמְלֶכֶת כֹּהֲנִים) — ugyanaz a כֹּהֵן gyök, a kombináció kollektív, nemzeti szintre emelve, még a lévita rend intézményesítése előtt.
 - **⇒ Zsolt 110:4** — "Te vagy pap örökké Melkhisédek rendje szerint" — próféciai megerősítés, Dávid alkalmazza a jövendő Messiásra.
+- **⇒ Zak 6:13** — "pap lesz az ő királyi székén" (כֹהֵן עַל־כִּסְאוֹ) — próféciai kép egyetlen, trónon ülő alakról, a Zsolt 110:4 ígéretét sűrítve.
 - **⇒ Zsid 5-7** — a legrészletesebb újszövetségi kibontás: Melkizedek papi rendje nagyobb a lévitánál, mert Ábrahám (és rajta keresztül Lévi is) tizedet adott neki.
+- **⇒ 1Pét 2:9** — "királyi papság" (βασίλειον ἱεράτευμα) — szó szerint megegyezik a LXX 2Móz 19:6 megfogalmazásával, a Sínai-kollektíva identitását a hívőkre alkalmazva. TSK-eredetű lelet (22 szavazat).
 - **Kapcsolódó rokon motívum:** "segítségül hívni az Úr nevét" (✅ lezárva) — mindkettő Ábrám tudatos istentiszteleti gyakorlatát mutatja, de lexikailag/tartalmilag elkülönülnek.
 - **Nyelvi többlet:** LXX τάξις *taxisz* (ejtsd: taxisz, "rend/sor") — a héber עַל־דִּבְרָתִי fogalmi bővítése; ez válik Zsid 5-7 érvelésének technikai kulcsszavává (5×: 5:6.10; 6:20; 7:11.17).
 - **Zsid 7:3 módszertana:** argumentum e silentio (rabbinikus "hallgatásból való érvelés") — nem Melkizedek természetfeletti eredetét állítja, hanem a Gen 14 szövegi hallgatásából (nincs genealógia, születés, halál) vezeti le a tipológiát (Rooke, *Biblica* 90 [2009]).
 - ⚠️ **Gen 14↔Zsolt 110 iránya vitatott:** Rowley/Nel (kritikai/redakció-történeti: Zsolt 110 korábbi dávidi-jebúszi papi legitimációs szöveg, Gen 14 másodlagos visszavetítés) vs. Kidner/Waltke/Hamilton (kanonikus: Zsolt 110 tudatosan idéz egy már ismert ősi alakot).
 - **Mélyelemzés lezárva:** `1Mozes_14_18-20_Zsolt110_4_Zsid5-7_melyelemzes.md`, 2026.08.17.
-- **Teljes tematikus tanulmány (kiegészítő):** `Melkizedek_tematikus.md`, 2026.08.22 — motívum-szintű Peshat/Remez/Drash/Sod bontás és nevesített tanítói keresés. Named teacher: **Derek Prince** ✅ erős/közvetlen forrás (*"The Ministry Of A Priest"*, *"The Power of Communion"*, *"By Tithing We Acknowledge The Lord As Our God"*, *"Melchizedek, Christ And The Priesthood"*) — kommunió-előképként olvassa a jelenetet. A többi jóváhagyott tanítónál (Hagin, Copeland, Capps, Roberts, Osborn, Wigglesworth) explicit hiányjelzés.
+- **Teljes tematikus tanulmány (kiegészítő):** `Melkizedek_tematikus.md`, 2026.08.22, bővítve 2026.09.08-09-én (2Móz 19:6, Zak 6:13, 1Pét 2:9) — motívum-szintű Peshat/Remez/Drash/Sod bontás és nevesített tanítói keresés. Named teacher: **Derek Prince** ✅ erős/közvetlen forrás (*"The Ministry Of A Priest"*, *"The Power of Communion"*, *"By Tithing We Acknowledge The Lord As Our God"*, *"Melchizedek, Christ And The Priesthood"*) — kommunió-előképként olvassa a jelenetet. A többi jóváhagyott tanítónál (Hagin, Copeland, Capps, Roberts, Osborn, Wigglesworth) explicit hiányjelzés.
+- **Visszahivatkozott bővített study-k:** `1Moz_14_bovitett.md`
 
 ### tized (ma'aszér) — első előfordulás *(Peshat/Drash — Szövetségteológia)* — új
 - **1Móz 14:20** (מַעֲשֵׂר, *ma'aszér*, H4643) — Ábrám önként, minden törvényi kényszer előtt ad tizedet Melkizedeknek. **Előremutató, nyitott szál:** a törvényi keret később **3Móz 27:30-33** és **4Móz 18:21-24** szabályozza (lévita fenntartás céljából); a téma prófétai kritikai éllel visszatér **Mal 3:8-10**-nél is. A motívum megerősítése/kibontása a Mózesi törvény feldolgozásakor várható.
@@ -597,10 +611,11 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | **Hoseás** | 1 (elfogadott projekt-olvasat, FRISSÍTVE) | Hós 6:7 (+8:1) ↔ 1Móz 2-3 (⚠️ tudományos vita dokumentálva, ld. Kulcsszavak részletesen) |
 | **Ézsaiás** | **5 (frissítve)** | Ézs 49:2→Zsid 4:12; Ézs 61:10→1Móz 3:21; Ézs 54:9-10→1Móz 9:15 (Noé esküje); Ézs 14:9, 26:14,19→1Móz 14:5 (Refáim, tematikus tanulmány); **Ézs 34:11→1Móz 1:2 (תהו/בהו, ⭐ küszöb, új)** |
 | **2Korinthus** | **2 (frissítve)** | 2Kor 11:3→1Móz 3:1-6; **2Kor 3:18→1Móz 1:2-2:3 (Isten képmása/eikón, új)** |
-| **2Mózes** | **7 (frissítve)** | 2Móz 20:17→1Móz 3:1-6; 2Móz 2:3→1Móz 6:14 (tevá); 2Móz 12:23→1Móz 7:16 (bezárt ajtó, tematikus); 2Móz 2:24→1Móz 8:1 (zácsár); 2Móz 15:5,8→1Móz 7:11 (tehóm, ⚠️ vitatott mértékben tudatos, mélyelemzésből); **2Móz 3:2→1Móz 16:7,9-11 (málach JHVH, előremutató, új); 2Móz 3:7→1Móz 16:11 (Isten meghallja a nyomorultat, előremutató, új)** |
+| **2Mózes** | **8 (frissítve)** | 2Móz 20:17→1Móz 3:1-6; 2Móz 2:3→1Móz 6:14 (tevá); 2Móz 12:23→1Móz 7:16 (bezárt ajtó, tematikus); 2Móz 2:24→1Móz 8:1 (zácsár); 2Móz 15:5,8→1Móz 7:11 (tehóm, ⚠️ vitatott mértékben tudatos, mélyelemzésből); **2Móz 3:2→1Móz 16:7,9-11 (málach JHVH, előremutató, új); 2Móz 3:7→1Móz 16:11 (Isten meghallja a nyomorultat, előremutató, új); 2Móz 19:6→1Móz 14:18-20 (Melkizedek, kollektív pap-király identitás, új)** |
 | **1János** | 2 | 1Ján 2:16→1Móz 3:1-6; 1Ján 3:12→1Móz 4:8-9 |
 | **Júdás levele** | 1 | Júd 1:6→1Móz 6:1-4 |
-| **1Péter levele** | 1 | 1Pét 3:20-21→1Móz 6:14 (tevá) |
+| **1Péter levele** | **2 (frissítve)** | 1Pét 3:20-21→1Móz 6:14 (tevá); **1Pét 2:9→1Móz 14:18-20 (Melkizedek, LXX szó szerinti idézet 2Móz 19:6-ból, új)** |
+| **Zakariás** | 1 | Zak 6:13→1Móz 14:18-20 (Melkizedek, próféciai pap-király kép, új) |
 | **3Mózes** | 2 | 3Móz 11:2-3→1Móz 7:2-3 (tiszta/tisztátalan); 3Móz 17:11→1Móz 9:4 (vér tilalma) |
 | **Ezékiel** | **2 (frissítve)** | Ezék 1:28→1Móz 9:13 (kesét); **Ez 13:18,20→1Móz 10:9 (vadász gyök, új)** |
 | **Apostolok Cselekedetei** | **3 (frissítve)** | ApCsel 15:20→1Móz 9:4 (vér tilalma); ApCsel 2:27,31←Zsolt 16:10 (hádész); **ApCsel 2:4,6→1Móz 11:1-9 (Bábel-Pünkösd, tematikus, új)** |

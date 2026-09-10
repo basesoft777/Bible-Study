@@ -207,7 +207,7 @@ Ez a tanulmány a Melkizedek-motívumot **kiegészíti**, nem duplikálja a napl
 - [ ] 8. `Lezart_tematikus_tanulmanyok_index.md` frissítve — **még nem**
 - [ ] 9. Motívumlog fejléc-changelog frissítve — **még nem**
 - [ ] 10. GitHub-feltöltésre emlékeztetés — **ez a lépés**: a fájl még NEM commitolva, jóváhagyásra vár
-- [x] 11. STEPBible-ellenőrzés dokumentálva — 🔍 STEPBible-ellenőrizve: H3548, H1700, H410, H5945, H7069 (TAHOT teljes ÓSZ), G5010 (TAGNT teljes ÚSZ), 2026.09.08
+- [x] 11. STEPBible-ellenőrzés dokumentálva — 🔍 STEPBible-ellenőrizve: H3548, H1700, H410, H5945, H7069 (TAHOT teljes ÓSZ), G5010, G0934, G2406 (TAGNT teljes ÚSZ), 2026.09.08–09
 - [ ] 12. Érintett bővített tanulmányok visszahivatkozása (2Móz 19 és Zak 6 saját bővített study-jánál, ha van) — **még nem ellenőrizve, hogy létezik-e ilyen study**
 
 ---

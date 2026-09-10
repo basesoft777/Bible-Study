@@ -121,6 +121,8 @@ A Zsidókhoz írt levél szerzője pontosan azt a Drash-tanítást bontja ki, am
 
 **Összegzés:** a három kereszthivatkozás együtt egy ívet rajzol ki: a földrajzi azonosítás (Zsolt 76) → a próféciai megerősítés (Zsolt 110) → az újszövetségi teológiai kibontás (Zsid 7) — Melkizedek alakja a Genezisben még csak felvillan, de a Szentírás egésze tudatosan visszatér hozzá.
 
+📎 Bővebben, önálló tematikus feldolgozásban: `Melkizedek_tematikus.md` (Melkizedek — király-pap rendje, kenyér és bor — a motívum teljes kánoni íve: 2Móz 19:6, Zsolt 110:4, Zak 6:13, 1Pét 2:9 lexikai/tematikus kapcsolatokkal)
+
 ---
 
 ## 5. Rabbinikus és patrisztikus hangok
