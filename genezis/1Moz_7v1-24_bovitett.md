@@ -205,6 +205,8 @@ A tiszta/tisztátalan állatok megkülönböztetése (2-3. v.) generációkkal a
 
 **Összegzés:** a szakasz kereszthivatkozásai egy mintázatot rajzolnak ki: az ítélet kozmikus visszavonása a teremtés rendjének (dekreáció), miközben Isten saját maga gondoskodik egy megmaradó közösség védelméről — ez a minta ismétlődik meg később mind a törvényadásban (tiszta/tisztátalan), mind a szabadításban (Egyiptom), mind a próféciákban (maradék).
 
+📎 Bővebben, önálló tematikus feldolgozásban: `Tehom_tematikus.md` (a *tehóm* — mélység motívuma — a 7:11-ben dokumentált dekreációt a teljes genezisi/Tóra-szintű ívbe helyezve tárgyalja; a görög ábüsszosz-kiterjesztéshez l. `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md`, a hádész/seól önálló motívumhoz l. `Hadesz_Seol_tematikus.md`).
+
 ---
 
 ## 5. Rabbinikus és patrisztikus hangok

@@ -193,6 +193,8 @@ Ez a gyök-mintázat a fejezet zárómondatában is folytatódik: amikor Isten "
 
 **Összegzés:** a szakasz kereszthivatkozásai egyetlen nagy ívet rajzolnak ki: Isten megemlékezése elindítja a helyreállítást, amely a teremtés áldásának megismétlésében, az átok módosításában és — a keresztény hagyomány olvasatában — a Szentlélek eljövendő munkájának előképében teljesedik ki.
 
+📎 Bővebben, önálló tematikus feldolgozásban: `Tehom_tematikus.md` (a *tehóm* — mélység motívuma — a 8:2-ben dokumentált helyreállítást a teljes genezisi/Tóra-szintű ívbe helyezve tárgyalja; a görög ábüsszosz-kiterjesztéshez l. `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md`, a hádész/seól önálló motívumhoz l. `Hadesz_Seol_tematikus.md`).
+
 ---
 
 ## 5. Rabbinikus és patrisztikus hangok

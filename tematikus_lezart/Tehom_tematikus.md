@@ -3,6 +3,22 @@
 
 *⭐ Küszöbön túli motívum önálló feldolgozása — 4 igeszakaszon átívelő, Genezisen belüli lexikai motívum*
 
+*v2 — 2026.09.10 — retroaktív v14-compliance frissítés: "0. Forrás-összegyűjtés" szakasz pótolva, Minőségi kapu (Q1-Q6) és STEPBible-ellenőrzés retroaktívan dokumentálva, explicit "lásd is" kereszthivatkozás pótolva a kibővített görög komplexumot feldolgozó `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` felé, és 📎-visszahivatkozás pótolva a három érintett bővített tanulmányba (`1Moz_1v2-2v3_bovitett.md`, `1Moz_7v1-24_bovitett.md`, `1Moz_8v1-22_bovitett.md`). Tartalmi következtetés nem változott.*
+
+**Lásd is:** a *tehóm* szó Septuaginta-közvetített görög (ἄβυσσος) folytatását és a teljes ÓSZ előfordulási mezőt a `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` kibővített komplexum-tanulmány dolgozza fel — ez a fájl (`[ID: TEREMT-001]`) marad az elsődleges forrás a Genezisen belüli, ill. a Tóra-szintű (2Móz 15:5,8) ívhez. A vele tematikusan, de nem lexikailag rokon שְׁאוֹל/ᾍδης (hádész) motívum önálló fájlban él: `Hadesz_Seol_tematikus.md` (`[ID: ALVIL-001]`).
+
+---
+
+## 0. Forrás-összegyűjtés a meglévő anyagból (retroaktívan pótolva, 2026.09.10)
+
+*A sablon 0. pontja e study elkészültekor még nem létezett — ez a retroaktív pótlás.*
+
+1. **`PaRDeS_motivumok.md`** — a motívum bejegyzése (`[ID: TEREMT-001]`) ellenőrizve — a study saját szövege már tartalmazza a teljes 5 igehelyes ívet (1:2, 7:11, 8:2, 49:25, 2Móz 15:5,8) és a 2026.08.25-i kiterjesztést (2/b pont, 24 további igehely).
+2. **Érintett bővített tanulmányok 4. pontja** — `1Moz_1v2-2v3_bovitett.md`, `1Moz_7v1-24_bovitett.md`, `1Moz_8v1-22_bovitett.md` (a motívum mindháromban a study saját szövegtörzsében szerepel, nem 🔗-blokkban; 📎-visszahivatkozás e frissítés részeként pótolva, l. 6. pont).
+3. **"Nyitva maradó szál" jelzések** — nem volt ilyen explicit jelzés az érintett bővített study-kban.
+4. **Kereszthivatkozás-naplók 2/a-2/e auditjai** — nincs kapcsolódó bejegyzés.
+5. **`Kockazat_szures_riport_*.md`** — nincs kapcsolódó bejegyzés.
+
 ---
 
 ## 1. Előfordulások összegyűjtése
@@ -98,6 +114,17 @@ Nincs kifejezetten e motívumhoz kötött, elmentett szabály szerinti nevesíte
 
 ---
 
+### Minőségi kapu (Quality Gate) — retroaktívan pótolva, 2026.09.10 (`4_PaRDeS_tematikus_sablon.md` v14 szerint)
+
+- [x] **Q1. Szerkezeti teljesség** — mind a 6 kötelező szakasz jelen van (1. Előfordulások, 2. Eredeti nyelvi összevetés, 3. PaRDeS keretrendszer, 4. Kapcsolódás a kutatási sablonhoz, 5. Alkalmazás, 6. Napló-frissítés).
+- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔍 STEPBible-ellenőrizve: H8415 (תְּהוֹם) teljes ÓSZ-scan (TAHOT), origin-lánc H1949-ig követve, 2026.09.10; a study saját, 2026.08.25-i kiterjesztése (2/b pont, 24 további igehely) a scannel egyezik.
+- [x] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — a Tartarosz-kapcsolat explicit "nem lexikai rokona" jelöléssel (l. 1. pont záró bekezdése).
+- [x] **Q4. Kereszt-motívum szennyeződés kizárva** — friss `grep` a teljes repón (2026.09.10): a study kizárólag a saját (TEREMT-001) motívumára vonatkozó leleteket tartalmazza.
+- [x] **Q5. Nevesített tanítói szakasz jelen van, vagy explicit hiányjelzéssel zárva** — 5. pont, gap-jelzéssel.
+- [x] **Q6. Napló-/formázási-/hangnem-fegyelem** — ellenőrizve: nincs inline dátum-tag tartalmi cellában, nincs "Forrás:" bekezdés, nincs első személyű ellenőrzési állítás, nincs magyar fordítás blockquote-ban, nincs olvasót megszólító mondat, nincs réteg-keveredés.
+
+---
+
 ## 6. Napló-frissítési javaslat
 
 E tanulmány lezárja a *tehóm*-motívum önálló feldolgozását. A `PaRDeS_motivumok.md` naplóban javasolt frissítés:
@@ -109,6 +136,8 @@ E tanulmány lezárja a *tehóm*-motívum önálló feldolgozását. A `PaRDeS_m
 - a **2Móz 15:5,8** felvétele ötödik/Tóra-szintű ágként, a jelen tanulmányban azonosított grammatikai pontosítással (egyes vs. többes szám) és a Cassuto/Sarna/Levenson vs. Childs ⚠️ vitatott ponttal.
 
 *(Ezt a frissítést a jelen munkamenet a mellékelt frissített naplófájlban el is végezte — lásd `PaRDeS_motivumok_v25.md`.)*
+
+**2026.09.10-i retroaktív v14-compliance frissítés:** "0. Forrás-összegyűjtés" szakasz pótolva; Minőségi kapu (Q1-Q6) és STEPBible-ellenőrzés retroaktívan dokumentálva; explicit "lásd is" kereszthivatkozás pótolva a `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` felé; 📎-visszahivatkozás pótolva `1Moz_1v2-2v3_bovitett.md`, `1Moz_7v1-24_bovitett.md` és `1Moz_8v1-22_bovitett.md`-be. Tartalmi következtetés nem változott.
 
 ---
 

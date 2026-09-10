@@ -5,11 +5,29 @@
 
 **v1 — 2026.08.14**
 
+*v2 — 2026.09.10 — retroaktív v14-compliance frissítés + fájlszervezés: "0. Forrás-összegyűjtés" szakasz pótolva, Minőségi kapu (Q1-Q6) és STEPBible-ellenőrzés retroaktívan dokumentálva, explicit "lásd is" kereszthivatkozás pótolva a `Tehom_tematikus.md` alap-tanulmány felé; **a שְׁאוֹל/ᾍδης (hádész/seól, `[ID: ALVIL-001]`) motívum teljes egészében kiszervezve önálló fájlba** (`Hadesz_Seol_tematikus.md`), mert a napló mindig is külön ID-ként tartotta nyilván — ez a fájl innentől kizárólag a תְּהוֹם/ἄβυσσος-komplexumot (`[ID: TEREMT-001]` kiterjesztése) tartalmazza, a Τάρταρος-kereszthivatkozással (nincs önálló ID) együtt. Tartalmi következtetés nem változott.*
+
 ---
 
 ## Bevezető megjegyzés
 
-A `PaRDeS_motivumok.md` naplóban a **tehóm** (a teremtés előtti, differenciálatlan mélység) elérte a ⭐ küszöböt: 1Móz 1:2 → 7:11 → 8:2. Jelen tanulmány ezt a motívumot dolgozza fel önállóan, de a felhasználói kérésnek megfelelően kibővíti azzal, hogy a héber תְּהוֹם (tehóm) hogyan él tovább — és hogyan differenciálódik szét — a görög bibliai szókincsben három rokon, de nem azonos terminusban: **ἄβυσσος** (abüsszosz), **ᾍδης** (hádész) és **Τάρταρος** (tartarosz).
+A `PaRDeS_motivumok.md` naplóban a **tehóm** (a teremtés előtti, differenciálatlan mélység) elérte a ⭐ küszöböt: 1Móz 1:2 → 7:11 → 8:2. Jelen tanulmány ezt a motívumot dolgozza fel önállóan, de a felhasználói kérésnek megfelelően kibővíti azzal, hogy a héber תְּהוֹם (tehóm) hogyan él tovább a görög bibliai szókincsben: **ἄβυσσος** (abüsszosz). A vele tematikusan (nem lexikailag) rokon **Τάρταρος** (tartarosz) fogalmat kereszthivatkozásként érinti (l. 1. pont vége). A szintén felmerülő, de lexikailag élesen elkülönülő **ᾍδης** (hádész/seól) motívum 2026.09.10 óta önálló fájlban él.
+
+**Lásd is:** ez a tanulmány a `Tehom_tematikus.md` (`[ID: TEREMT-001]`) alap-tanulmány szándékos, felhasználói kérésre készült kiterjesztése — a Genezisen belüli tehóm-ívet (1Móz 1:2, 7:11, 8:2) ott dolgoztuk fel elsőként, önálló lezárásként; ez a fájl azt a hármas ívet a teljes bibliai előfordulási mezőre és a görög ábüsszosz-terminusra bővíti ki. A hádész/seól motívum teljes kifejtését l. `Hadesz_Seol_tematikus.md` (`[ID: ALVIL-001]`).
+
+---
+
+## 0. Forrás-összegyűjtés a meglévő anyagból (retroaktívan pótolva, 2026.09.10)
+
+*A sablon 0. pontja e study elkészültekor még nem létezett — ez a retroaktív pótlás.*
+
+1. **`PaRDeS_motivumok.md`** — mindkét érintett bejegyzés ellenőrizve: `[ID: TEREMT-001]` (tehóm, az ábüsszosz-visszhang már ott dokumentálva) és `[ID: ALVIL-001]` (hádész/seól — 2026.09.10 óta önálló fájlban, l. ott).
+2. **Érintett bővített tanulmányok 4. pontja** — l. `Tehom_tematikus.md` 0. pontját.
+3. **"Nyitva maradó szál" jelzések** — nem volt ilyen.
+4. **Kereszthivatkozás-naplók 2/a-2/e auditjai** — nincs kapcsolódó bejegyzés.
+5. **`Kockazat_szures_riport_*.md`** — nincs kapcsolódó bejegyzés.
+
+**Elhatárolási forrás:** l. a `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` "Lásd is" jegyzetét — a tehóm/ábüsszosz-komplexum és e motívum viszonyát ott is dokumentáltuk.
 
 ---
 
@@ -28,14 +46,10 @@ A `PaRDeS_motivumok.md` naplóban a **tehóm** (a teremtés előtti, differenci�
 | Jelenések 9:1-2, 11 | ἄβυσσος, Ἀβαδδών/Ἀπολλύων — a mélység angyala | Remez/Sod (jelen tanulmány) |
 | Jelenések 11:7; 17:8 | ἄβυσσος — a fenevad onnan jön fel | Remez (jelen tanulmány) |
 | Jelenések 20:1-3 | ἄβυσσος — Sátán megkötözve ezer évre | Remez/Drash (jelen tanulmány) |
-| Zsolt 16:10 → ApCsel 2:27, 31 | שְׁאוֹל (seól) → ᾍδης (hádész) — Krisztus nem marad a halál birodalmában | Peshat/Drash (jelen tanulmány) |
-| Lukács 16:23 | ᾍδης — a gazdag ember kínban | Peshat (jelen tanulmány) |
-| Jelenések 1:18 | ᾍδης — Krisztus kezében a halál és a hádész kulcsai | Drash/Sod (jelen tanulmány) |
-| Jelenések 6:8 *(felvéve `Konnyu_ellenorzes_4_lezart_tanulmany.md` alapján, 2026.08.25)* | ᾍδης — a sápadt lovon ülő Halál nyomában jár a hádész | Peshat/Remez (jelen tanulmány) — a Halál+Hádész páros első megjelenése, amely a 20:13-14-es végső "kiadja halottait" jelenetben teljesedik be |
-| Jelenések 20:13-14 | ᾍδης — kiadja halottait, majd a tűz tavába vettetik | Remez/Drash (jelen tanulmány) |
-| Lukács 10:15 / Máté 11:23 *(felvéve 2026.08.25)* | ᾍδης — "égig felmagasztaltattál... hádészig fogsz lealáztatni" (Kapernaum ítélete) | Remez (jelen tanulmány) — **második, önálló hádész-használati mintázat**, ld. lent |
 | 2Péter 2:4 | ταρταρώσας (ige, *tartaroó* gyök) — a vétkes angyalok Tartaroszba vettetnek, **közvetlenül a vízözön-narratíva mellett említve (2:5)** | Remez/Sod — közvetlen kapocs a naplóban már jelzett "Isten fiai" ⚠️ motívumhoz |
 | Júdás 1:6 | tematikus párhuzam (nem a *tartarosz* szót használja, hanem "örök bilincs, sötétség") | Remez — ugyanaz a hagyomány, más szóhasználat |
+
+**Lásd is — hádész/seól (önálló motívum, `[ID: ALVIL-001]`):** a שְׁאוֹל/ᾍδης-anyag 2026.09.10-én önálló fájlba került, mert a napló mindig is külön ID-ként tartotta nyilván — l. `Hadesz_Seol_tematikus.md`. **A Τάρταρος-sor (2Pét 2:4, Júd 1:6) itt marad** — nincs önálló ID, csak tematikus (nem lexikai) rokona a tehóm/abüsszosz-komplexumnak.
 
 ---
 
@@ -45,29 +59,25 @@ A `PaRDeS_motivumok.md` naplóban a **tehóm** (a teremtés előtti, differenci�
 
 **ἄβυσσος — *abüsszosz*** (görög, melléknévi eredetű főnév, szó szerint "fenék nélküli", *a-* fosztóképző + *bűszosz*, "mélység"). A görög bibliai nyelvben tehát ugyanazt a kozmikus mélységet jelöli, amit a héber tehóm — de az újszövetségi apokaliptikus szövegekben (Lukács, Róma, Jelenések) jelentése tovább szűkül: már nemcsak kozmológiai (a teremtés előtti vizek), hanem **eszkatológiai-demonológiai** hely — a gonosz szellemi hatalmak fogva tartásának/ideiglenes börtönének helye.
 
-**שְׁאוֹל — *seól*** (héber) és **ᾍδης — *hádész*** (görög, *hádész* — eredetileg az alvilág görög istenének neve, majd a LXX-ban a *seól* rendszeres fordítása). Fontos megkülönböztetés: a **seól/hádész NEM azonos a tehóm/abüsszosszal.** A seól az **egyéni halottak** birodalma — minden halandó sorsa —, míg a tehóm/abüsszosz **kozmikus-mitológiai** fogalom, a teremtés előtti káosz. A két szócsalád eredetileg élesen elkülönül a héber gondolkodásban.
+*(A שְׁאוֹל/ᾍδης — seól/hádész — nyelvi összevetését, amely NEM azonos a tehóm/abüsszosszal, l. `Hadesz_Seol_tematikus.md` 2. pontjában.)*
 
 **Τάρταρος — *tartarosz*** (görög, csak igei alakban fordul elő az Újszövetségben: **ταρταρόω** — *tartaroó*, "Tartaroszba vet"; 2Péter 2:4-ben: **ταρταρώσας** — *tartarószasz*, melléknévi igenév). Ez a legritkább és legszűkebb terminus: eredetileg a görög mitológiában a Hádésznél is mélyebb hely, ahová a lázadó Titánokat zárták. A Septuagintában is előfordul (pl. Jób 40:20; 41:24 néhány kéziratban, mint a mélység/alvilág egy fokozott kifejezése), de az Újszövetségben **egyetlenegyszer**, kifejezetten a bűnbeesett angyalok fogva tartására alkalmazva.
 
-**Az összevetés eredménye:** három, eredetileg elkülönülő szemantikai mező — (1) *tehóm/abüsszosz* = kozmikus ős-mélység; (2) *seól/hádész* = az egyéni halottak birodalma; (3) *tartarosz* = a lázadó angyalok speciális börtöne — a késői zsidó apokaliptikában és az Újszövetségben **fokozatosan összefonódik** egyetlen képzetkörré: egy olyan hellyé, amelyet Isten szuverén módon nyit meg és zár be, és amely a gonosz szellemi erők (démonok, a Sátán, a bűnbeesett angyalok) ideiglenes, majd végleges fogva tartásának színtere.
+**Az összevetés eredménye:** három, eredetileg elkülönülő szemantikai mező — (1) *tehóm/abüsszosz* = kozmikus ős-mélység; (2) *seól/hádész* = az egyéni halottak birodalma (részletes kifejtés: `Hadesz_Seol_tematikus.md`); (3) *tartarosz* = a lázadó angyalok speciális börtöne — a késői zsidó apokaliptikában és az Újszövetségben **fokozatosan összefonódik** egyetlen képzetkörré: egy olyan hellyé, amelyet Isten szuverén módon nyit meg és zár be, és amely a gonosz szellemi erők (démonok, a Sátán, a bűnbeesett angyalok) ideiglenes, majd végleges fogva tartásának színtere.
 
 ---
 
 ## 3. A PaRDeS keretrendszer — magára a motívum-komplexumra alkalmazva
 
-**Peshat.** A szövegek szó szerint a következőket állítják: 1Móz 1:2-ben a tehóm a teremtés előtti állapot leírása — sötét, formátlan vizek, amelyek felett Isten Szelleme lebeg. 1Móz 7:11 és 8:2 ugyanezt a szót használja az özönvíz elindítására és lezárására — Isten megnyitja, majd bezárja "a nagy mélység forrásait". A Septuaginta ugyanezt a fogalmat ἄβυσσος szóval adja tovább, és az Újszövetség e szót veszi át, amikor a Gadarai megszállott démonai könyörögnek, hogy Jézus ne küldje őket "az abüsszoszba" (Luk 8:31), és amikor a Jelenések könyve leírja, hogy onnan száll fel a füst és a sáskák (Jel 9:1-11), onnan jön fel a fenevad (Jel 11:7; 17:8), és oda köttetik meg a Sátán ezer évre (Jel 20:1-3). A hádész párhuzamosan, de más vonalon fut: az egyéni halottak helye, ahonnan Krisztus feltámadása kiemeli Őt (ApCsel 2:27, 31, Zsolt 16:10 idézésével), és amelynek kulcsait Ő birtokolja (Jel 1:18), majd amelyet a végén magát a halált is a tűz tavába vetik (Jel 20:13-14). A tartarosz pedig egyetlen, éles ponton jelenik meg: 2Péter 2:4, ahol Isten a vétkezett angyalokat "sötét mélységbe taszítva adta át" — és a szöveg a következő versben (2:5) **azonnal** az özönvízre és Noéra tér át, mintegy egy mondatban kötve össze a két eseményt.
+**Peshat.** A szövegek szó szerint a következőket állítják: 1Móz 1:2-ben a tehóm a teremtés előtti állapot leírása — sötét, formátlan vizek, amelyek felett Isten Szelleme lebeg. 1Móz 7:11 és 8:2 ugyanezt a szót használja az özönvíz elindítására és lezárására — Isten megnyitja, majd bezárja "a nagy mélység forrásait". A Septuaginta ugyanezt a fogalmat ἄβυσσος szóval adja tovább, és az Újszövetség e szót veszi át, amikor a Gadarai megszállott démonai könyörögnek, hogy Jézus ne küldje őket "az abüsszoszba" (Luk 8:31), és amikor a Jelenések könyve leírja, hogy onnan száll fel a füst és a sáskák (Jel 9:1-11), onnan jön fel a fenevad (Jel 11:7; 17:8), és oda köttetik meg a Sátán ezer évre (Jel 20:1-3). *(A hádész-vonalat — az egyéni halottak helye, Krisztus feltámadása, a hádész kulcsai — l. `Hadesz_Seol_tematikus.md`.)* A tartarosz pedig egyetlen, éles ponton jelenik meg: 2Péter 2:4, ahol Isten a vétkezett angyalokat "sötét mélységbe taszítva adta át" — és a szöveg a következő versben (2:5) **azonnal** az özönvízre és Noéra tér át, mintegy egy mondatban kötve össze a két eseményt.
 
 **Remez.** A mintázat íve jól kirajzolódik. A tehóm háromszori előfordulása (1Móz 1:2 → 7:11 → 8:2) egy teljes kört ír le: *teremtés → dekreáció → helyreállítás* — ugyanaz a mélység, amely felett a teremtéskor Isten Szelleme lebegett, az özönvízkor felszabadul, majd újra elzáratik. Ez a minta pontosan megismétlődik nagyobb léptékben az Újszövetség eszkatológiájában: az abüsszosz a Jelenések könyvében megnyílik (9:1-2 — a mélység "kútja" megnyittatik), szörnyű erők szabadulnak fel belőle, majd a végén Isten végérvényesen lezárja azt Sátán megkötözésével és végső ítéletével (20:1-3, majd 20:10). A Genezis-özönvíz tehát **típusa (előkép)** a végső eszkatológiai mintázatnak: Isten időlegesen megengedi a mélység/a gonosz erők felszabadulását, majd szuverén módon, saját idejében lezárja azt.
 
-Ezzel párhuzamosan fut a hádész-vonal: a halál birodalma, amelybe minden halandó alászáll, de amelyben Krisztus nem maradt (ApCsel 2:31) — ez a győzelem adja az alapot ahhoz, hogy Ő birtokolja "a halál és a hádész kulcsait" (Jel 1:18), és hogy a történelem végén maga a hádész is megsemmisüljön (Jel 20:14) — egyfajta *"végső bezárás"*, amely tartalmilag rokon azzal, ahogyan 1Móz 8:2-ben a tehóm forrásai bezárultak.
-
-**Második hádész-használati mintázat — hübrisz és megaláztatás** *(felvéve 2026.08.25)*. Luk 10:15 és párhuzamos helye, Mat 11:23, Jézus szájából ugyanazt a szót (ᾍδης) használja, de nem a halál/feltámadás-tipológia keretében: Kapernaum büszke "égig felmagasztaltatását" állítja szembe az eljövendő "hádészig" való megaláztatással. Ez a "felmagasztalás→Seól/Hádész-taszítás" idióma szerkezetileg megegyezik az Ézs 14:9-15 mintázattal (Babilon királyának bukása) — tehát nem a jelen tanulmány fő ívéhez (Krisztus legyőzi a halált) kapcsolódik, hanem egy **másik, önálló bibliai mintázathoz** (a gőg isteni megalázása). Jelzésre érdemes, de a fő tipológiai ívbe nem illesztendő bele.
-
-⚠️ Megjegyzés: Mat 16:18 ("a pokol kapui... sem vesznek diadalmat rajta") szintén a ᾍδης szót használja, de ekkleziológiai kontextusban (az egyház legyőzhetetlensége) — a jelen tanulmány tárgyához (a halál/feltámadás-tipológia) nem kapcsolódik tartalmilag, ezért itt nem tárgyalt, külön motívumként kezelendő, ha valaha sorra kerül.
+*(A hádész-vonal teljes Remez-kifejtését — a halál birodalma, Krisztus győzelme, a "második hádész-mintázat" [Luk 10:15/Mat 11:23], és a Mat 16:18-elhatárolás — l. `Hadesz_Seol_tematikus.md` 3. pontjában.)*
 
 A tartarosz a legszűkebb, de talán legfontosabb kapocs: **2Péter 2:4-5 explicit módon, egyetlen mondaton belül köti össze** a bűnbeesett angyalok Tartaroszba vetését a vízözönnel ("...ha a régi világnak sem kedvezett, de Nóét... megőrizte, mikor özönvizet hozott a hitetlenek világára..."). Ez közvetlenül megerősíti azt, amit a napló már korábban ⚠️-ként jelzett az "Isten fiai" (1Móz 6:1-4) vitatott értelmezésénél: az újszövetségi szerzők (2Péter, Júdás) explicit módon **angyali lázadás-eseményként** kezelik az 1Móz 6:1-4 hátterét, és azt közvetlenül a vízözön okaként/előzményeként mutatják be.
 
-**Drash.** A motívum-komplexum együttes tanítása: **a "mélység" — legyen az kozmikus káosz-víz, a halottak birodalma, vagy a lázadó szellemi erők börtöne — sohasem autonóm.** Minden esetben Isten az, aki megnyitja és bezárja; a mélység sosem cselekvő szuverén, hanem mindig egy nagyobb isteni rendelés tárgya. Ez ad reménységet: a látszólag kaotikus, fenyegető erők (özönvíz, démoni hatalmak, a halál maga) egy meghatározott időre és célra vannak "kiengedve", és Isten ígérete szerint véglegesen le is záródnak. Krisztus feltámadása ennek a mintázatnak a fordulópontja: Ő az, aki nem maradt a hádészben, és aki ezért jogosult "a kulcsokra" — vagyis a nyitás-zárás isteni előjogára, amelyet korábban kizárólag Isten gyakorolt közvetlenül (1Móz 7:11; 8:2).
+**Drash.** A motívum-komplexum együttes tanítása: **a "mélység" — legyen az kozmikus káosz-víz, a halottak birodalma, vagy a lázadó szellemi erők börtöne — sohasem autonóm.** Minden esetben Isten az, aki megnyitja és bezárja; a mélység sosem cselekvő szuverén, hanem mindig egy nagyobb isteni rendelés tárgya. Ez ad reménységet: a látszólag kaotikus, fenyegető erők (özönvíz, démoni hatalmak) egy meghatározott időre és célra vannak "kiengedve", és Isten ígérete szerint véglegesen le is záródnak — ugyanaz az isteni nyitás-zárás előjog, amelyet 1Móz 7:11 és 8:2 dokumentál. *(A hádész-vonalhoz kapcsolódó, Krisztus-központú kifejtést — a halál kulcsainak birtoklása — l. `Hadesz_Seol_tematikus.md` 3. pontjában.)*
 
 **Sod** *(tömör)*. Az, hogy Isten a teremtéskor "csak" lezárta és korlátozta a mélységet (1Móz 1:9-10, a vizek egy helyre gyűjtése), az özönvízkor ideiglenesen felszabadította, majd újra lezárta, míg a végső eszkatológiában Jel 21:1 szerint "a tenger többé nem vala" — ez egy fokozatos, három lépcsős isteni program körvonalát sejteti: *korlátozás → ideiglenes felszabadítás ítéletként → végleges megszüntetés*. **Pontosítás:** a Jel 21:1 görög szövege a θάλασσα (*thalassza*, "tenger") szót használja, ami **nem azonos** és nem lexikai rokona az ἄβυσσος (abüsszosz) szócsaládnak — ez tehát tematikus, nem lexikai párhuzam, és a "no more sea" itt inkább a teremtéskori vízi-káosz-szimbolika végső megszüntetésére utal általánosságban, nem konkrétan az ábüsszoszra. Ennél mélyebb következtetés a szövegekből nem vezethető le fegyelmezetten.
 
@@ -89,11 +99,22 @@ A tanulmány saját megállapításaiból: a mélység-motívum azt tanítja, ho
 
 ---
 
+### Minőségi kapu (Quality Gate) — retroaktívan pótolva, 2026.09.10 (`4_PaRDeS_tematikus_sablon.md` v14 szerint)
+
+- [x] **Q1. Szerkezeti teljesség** — mind a 6 kötelező szakasz jelen van.
+- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔍 STEPBible-ellenőrizve: H8415 (תְּהוֹם), G12 (ἄβυσσος), G5020 (ταρταρόω) teljes ÓSZ/ÚSZ-scan (TAHOT/TAGNT), 2026.09.10; a study saját 2026.08.14-i és 2026.08.25-i kutatása a scannel egyezik, új igehely nem került elő.
+- [x] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — a Jel 21:1 "tenger" (θάλασσα) és a Tartarosz mindkettő explicit "tematikus, nem lexikai"-ként jelölve (Sod, ill. 2. pont); a seól/hádész elhatárolása is explicit (2. pont).
+- [x] **Q4. Kereszt-motívum szennyeződés kizárva** — friss `grep` a teljes repón (2026.09.10): a fájl 2026.09.10 óta kizárólag a saját (TEREMT-001 kiterjesztése) motívumára vonatkozó tartalmat hordozza, a Tartarosz-kereszthivatkozás kivételével (nincs önálló ID); a hádész-anyag (ALVIL-001) önálló fájlba került.
+- [x] **Q5. Nevesített tanítói szakasz jelen van, vagy explicit hiányjelzéssel zárva** — 5. pont, gap-jelzéssel.
+- [x] **Q6. Napló-/formázási-/hangnem-fegyelem** — ellenőrizve: nincs inline dátum-tag tartalmi cellában, nincs "Forrás:" bekezdés, nincs első személyű ellenőrzési állítás, nincs magyar fordítás blockquote-ban, nincs olvasót megszólító mondat, nincs réteg-keveredés.
+
+---
+
 ## 6. Napló-frissítés
 
 ✅ **Ez a lezárás már megtörtént korábban** (`PaRDeS_motivumok.md` v24–v25, 2026.08.14) — a napló rögzíti, hogy:
 - a **"tehóm"** motívum "lezárt/önállóan feldolgozott témaként" van megjelölve, kiegészülve az LXX-közvetített ábüsszosz-visszhanggal (Luk 8:31, Róm 10:7, Jel 9:1-2,11, 11:7, 17:8, 20:1,3);
-- új, önálló motívumként bekerült a **"hádész (seól) — a halottak birodalma"** (4 előfordulás: Zsolt 16:10 ⇒ ApCsel 2:27,31 → Luk 16:23 → Jel 1:18 → Jel 20:13-14), lexikailag élesen elkülönítve a tehóm/abüsszosz-családtól;
+- a **"hádész (seól) — a halottak birodalma"** motívum 2026.09.10-én önálló fájlba (`Hadesz_Seol_tematikus.md`) lett kiszervezve, lexikailag élesen elkülönítve a tehóm/abüsszosz-családtól — l. ott;
 - a **"gibborim/nefilim" alpontnál** rögzítésre került a Tartarosz-elhatárolás (2Pét 2:4, ταρταρόω — nem azonos szócsalád a tehóm/abüsszosszal, csak tartalmi rokonság), kereszthivatkozással az "Isten fiai" ⚠️ vitatott ponthoz;
 - a Jel 21:1 "tenger" (θάλασσα) explicit elhatárolva mint tematikus, nem lexikai párhuzam.
 
@@ -101,4 +122,6 @@ Ez a fájl a naplóban már korábban dokumentált lezárás **tényleges, telje
 
 ---
 
-*Belső önellenőrzés elvégezve: kiejtés minden héber/görög szónál feltüntetve; a három szócsalád (tehóm/abüsszosz, seól/hádész, tartarosz) elhatárolása explicit, lexikai vs. tematikus kapcsolat következetesen megkülönböztetve (Jel 21:1 "tenger" eset); ⚠️ vitatott pont (Isten fiai — angyali vs. Séthita olvasat) nevesített képviselőkkel (Wenham, Hamilton) dokumentálva, a projekt nem dönti el a vitát; pünkösdi/karizmatikus kapcsolódás hiánya explicit jelezve, nem pótolva gyengébb anyaggal; Szent Szellem terminológia használva; igehely-formátum egységes.*
+*Belső önellenőrzés elvégezve: kiejtés minden héber/görög szónál feltüntetve; a tehóm/abüsszosz és a tartarosz elhatárolása explicit (a seól/hádész 2026.09.10 óta önálló fájlban, `Hadesz_Seol_tematikus.md`), lexikai vs. tematikus kapcsolat következetesen megkülönböztetve (Jel 21:1 "tenger" eset); ⚠️ vitatott pont (Isten fiai — angyali vs. Séthita olvasat) nevesített képviselőkkel (Wenham, Hamilton) dokumentálva, a projekt nem dönti el a vitát; pünkösdi/karizmatikus kapcsolódás hiánya explicit jelezve, nem pótolva gyengébb anyaggal; Szent Szellem terminológia használva; igehely-formátum egységes.*
+
+**2026.09.10-i retroaktív v14-compliance frissítés + fájlszervezés:** "0. Forrás-összegyűjtés" szakasz pótolva; Minőségi kapu (Q1-Q6) és STEPBible-ellenőrzés retroaktívan dokumentálva; a hádész/seól motívum (`[ID: ALVIL-001]`) teljes egészében kiszervezve `Hadesz_Seol_tematikus.md`-be; explicit "lásd is" kereszthivatkozások pótolva mindkét irányban. Tartalmi következtetés nem változott.
