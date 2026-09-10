@@ -17,7 +17,7 @@
 4. **Kereszthivatkozás-naplók 2/a-2/e auditjai** — nincs kapcsolódó bejegyzés.
 5. **`Kockazat_szures_riport_*.md`** — nincs kapcsolódó bejegyzés.
 
-**Elhatárolási forrás:** l. a `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` "Lásd is" jegyzetét — a tehóm/ábüsszosz-komplexum és e motívum viszonyát ott is dokumentáltuk.
+**Elhatárolási forrás:** l. a `Tehom_tematikus.md` "Lásd is" jegyzetét — a tehóm/ábüσσος-komplexum és e motívum viszonyát ott is dokumentáltuk. *(2026.09.10: a korábbi `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` fájl a tehóm/abüσσος-anyaggal összevonva `Tehom_tematikus.md`-be — a hádész/seól motívumot és e fájlt ez nem érinti.)*
 
 ---
 

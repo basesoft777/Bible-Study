@@ -291,7 +291,7 @@ A hetedik napi nyugalom (2:2-3) — amelyet Isten maga tart, nem fáradtságból
 
 **Ismétlődő motívum korábbi tanulmányodból:** az "ige mint megtestesült Logosz" motívum (Ján 1:1,14 ⇒ Zsid 4:12; Kol 1:16-17 ⇒ 1Móz 1:1) rokon a itt bemutatott "Isten képmása" motívummal (Kol 1:15) — mindkettő Krisztust a teremtő/kinyilatkoztató Isten végső, személyes megnyilvánulásaként azonosítja, bár a *celem*/*eikón* (képmás) motívum önmagában új felvétel a naplóban.
 
-📎 Bővebben, önálló tematikus feldolgozásban: `Tehom_tematikus.md` (a *tehóm* — mélység motívuma — az 1:2-ben dokumentált teremtés-előtti mélységet a teljes genezisi/Tóra-szintű ívbe helyezve tárgyalja; a görög ábüsszosz-kiterjesztéshez l. `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md`, a hádész/seól önálló motívumhoz l. `Hadesz_Seol_tematikus.md`).
+📎 Bővebben, önálló tematikus feldolgozásban: `Tehom_tematikus.md` (a *tehóm*/ábüσσος — mélység motívuma — az 1:2-ben dokumentált teremtés-előtti mélységet a teljes genezisi/Tóra-szintű ívbe és a görög ábüσσος-kiterjesztésbe helyezve, egyetlen fájlban tárgyalja; a hádész/seól önálló motívumhoz l. `Hadesz_Seol_tematikus.md`).
 
 ---
 
