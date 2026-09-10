@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Károli kereszthivatkozás — pilóta bemutató</title>
+<style>
+  :root{
+    --paper:#f6f1e6;
+    --paper-edge:#ece3d1;
+    --ink:#2b2420;
+    --ink-soft:#5a5044;
+    --line:#d8cbae;
+    --parhuzam:#3a6ea5;
+    --beteljesedes:#8a6d1f;
+    --beteljesedes-bg:#fbf1d6;
+    --variáns:#6b4a8a;
+    --kontraszt:#a13d3d;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper-edge);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    display:flex;
+    justify-content:center;
+    padding:32px 16px 80px;
+  }
+  .page{
+    max-width:620px;
+    width:100%;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:44px 40px 56px;
+    box-shadow:0 1px 0 rgba(0,0,0,0.04);
+  }
+  .kicker{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:0.04em;
+    color:var(--ink-soft);
+    margin:0 0 6px;
+  }
+  h1{
+    font-size:26px;
+    font-weight:600;
+    margin:0 0 2px;
+    letter-spacing:0.01em;
+  }
+  .subtitle{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin:0 0 14px;
+    line-height:1.5;
+    max-width:46ch;
+  }
+  .stats{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11.5px;
+    letter-spacing:0.02em;
+    color:var(--ink);
+    background:var(--beteljesedes-bg);
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:20px;
+    margin:0 0 34px;
+  }
+  .chapter-label{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    border-top:1px solid var(--line);
+    padding-top:18px;
+    margin-bottom:6px;
+  }
+  .passage{
+    font-size:19px;
+    line-height:1.75;
+  }
+  .verse-num{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11px;
+    vertical-align:super;
+    color:var(--ink-soft);
+    margin-right:2px;
+  }
+  .marker{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:20px;
+    height:20px;
+    margin-left:3px;
+    border-radius:50%;
+    background:var(--beteljesedes-bg);
+    border:1px solid var(--beteljesedes);
+    color:var(--beteljesedes);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11px;
+    font-weight:700;
+    line-height:1;
+    cursor:pointer;
+    vertical-align:middle;
+    transform:translateY(-2px);
+    transition:transform .12s ease;
+  }
+  .marker:hover, .marker:focus{
+    transform:translateY(-2px) scale(1.12);
+  }
+  .marker:focus-visible{
+    outline:2px solid var(--beteljesedes);
+    outline-offset:2px;
+  }
+
+  /* popup card */
+  .popup{
+    display:none;
+    margin:14px 0 22px;
+    border:1px solid var(--line);
+    background:#fffdf8;
+    border-radius:3px;
+    padding:18px 20px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    animation:reveal .16s ease-out;
+  }
+  .popup.open{ display:block; }
+  @keyframes reveal{
+    from{ opacity:0; transform:translateY(-4px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .popup-title{
+    font-size:13px;
+    font-weight:700;
+    color:var(--ink);
+    margin:0 0 3px;
+  }
+  .popup-desc{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.55;
+    margin:0 0 14px;
+  }
+  .link-row{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:9px 0;
+    border-top:1px solid var(--line);
+  }
+  .link-row:first-of-type{ border-top:none; padding-top:2px; }
+  .type-dot{
+    width:9px; height:9px;
+    border-radius:50%;
+    margin-top:4px;
+    flex-shrink:0;
+  }
+  .dot-parhuzam{ background:var(--parhuzam); }
+  .dot-beteljesedes{ background:var(--beteljesedes); }
+  .dot-variáns{ background:var(--variáns); }
+  .link-body{ flex:1; }
+  .link-ref{
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  }
+  .link-type{
+    font-size:10.5px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    margin-left:7px;
+    font-weight:600;
+  }
+  .type-parhuzam{ color:var(--parhuzam); }
+  .type-beteljesedes{ color:var(--beteljesedes); }
+  .type-variáns{ color:var(--variáns); }
+  .link-note{
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-top:2px;
+    line-height:1.4;
+  }
+  .full-article{
+    display:inline-block;
+    margin-top:14px;
+    font-size:12px;
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid var(--ink);
+    padding-bottom:1px;
+  }
+  .full-article:hover{ color:var(--beteljesedes); border-color:var(--beteljesedes); }
+
+  .footnote{
+    margin-top:48px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .footnote strong{ color:var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <p class="kicker">PaRDeS motívumlexikon — pilóta</p>
+  <h1>Károliba épített kereszthivatkozás</h1>
+  <p class="subtitle">
+    Kézzel épített bemutató — nem Hugo, nem build-folyamat, csak a
+    jelölés+popup mechanika kipróbálása, mielőtt a teljes technikai
+    alapba időt fektetnénk.
+  </p>
+
+  <p class="stats">29 igehely · 25 kapcsolat · 16 bibliai könyv — a teljes hálózatból alább két részlet</p>
+
+  <p class="chapter-label">1 Mózes 4. rész (részlet)</p>
+  <p class="passage">
+    <span class="verse-num">20</span>És szűlé Háda Jábált. Ez volt atyjok a sátorban-lakóknak, és a barompásztoroknak.
+    <span class="verse-num">21</span>Az ő atyjafiának pedig Jubál vala neve: ez volt atyja minden lantosnak és síposnak.
+    <span class="verse-num">22</span>Czilla pedig szűlé Tubálkaint, mindenféle réz- és vasszerszámok kovácsolóját: és Tubálkain hugát, Nahamát.
+    <span class="verse-num">23</span>Akkor monda Lámekh az ő feleségeinek: Oh Háda és Czilla, hallgassatok szómra, Lámekh feleségei, halljátok beszédem: embert öltem, mert megsebzett; ifjat öltem, mert megütött.
+    <span class="verse-num">24</span>Ha hétszeres a bosszú Kainért, hetvenhétszeres az Lámekhért.
+    <span class="verse-num">25</span>Ádám pedig ismét ismeré az ő feleségét, és az szűle néki fiat, és nevezé annak nevét Séthnek: mert adott úgymond, énnékem az Isten más magot Ábel helyett, kit megöle Kain.
+    <span class="verse-num">26</span>Séthnek is született fia, és nevezé annak nevét Énósnak. Akkor kezdték segítségül hívni az Úrnak nevét.<button class="marker" onclick="toggle('popup-426')" aria-expanded="false" aria-controls="popup-426" title="4 kapcsolat ehhez a igehelyhez">4</button>
+  </p>
+
+  <div class="popup" id="popup-426">
+    <p class="popup-title">1Móz 4:26 — kapcsolatok (ISTENTISZT-001)</p>
+    <p class="popup-desc">
+      A "segítségül hívni az Úr nevét" formula első előfordulása —
+      ez az az alap-mintázat, amihez a motívum minden további
+      előfordulása kapcsolódik.
+    </p>
+
+    <div class="link-row">
+      <span class="type-dot dot-parhuzam"></span>
+      <div class="link-body">
+        <span class="link-ref">Sof 3:9</span><span class="link-type type-parhuzam">Párhuzam</span>
+        <div class="link-note">ugyanaz a szereposztás, eszkatológiai ígéretté bővítve</div>
+      </div>
+    </div>
+
+    <div class="link-row">
+      <span class="type-dot dot-parhuzam"></span>
+      <div class="link-body">
+        <span class="link-ref">2Kir 5:11</span><span class="link-type type-parhuzam">Párhuzam</span>
+        <div class="link-note">ugyanaz a szereposztás, Naámán várakozás-cáfolataként</div>
+      </div>
+    </div>
+
+    <div class="link-row">
+      <span class="type-dot dot-parhuzam"></span>
+      <div class="link-body">
+        <span class="link-ref">Jóel 2:32</span><span class="link-type type-parhuzam">Párhuzam</span>
+        <div class="link-note">az ószövetségi megfogalmazás csúcspontja — innen indul tovább a Beteljesedés (ApCsel 2:21, Róm 10:13)</div>
+      </div>
+    </div>
+
+    <div class="link-row">
+      <span class="type-dot dot-variáns"></span>
+      <div class="link-body">
+        <span class="link-ref">2Móz 33:19</span><span class="link-type type-variáns">Variáns</span>
+        <div class="link-note">A/B/C tipológia B-esete — ugyanaz a szerkezet, de felcserélt alany/tárgy: itt Isten mondja ki a saját nevét, nem az ember hívja segítségül</div>
+      </div>
+    </div>
+
+    <a class="full-article" href="#">Teljes lexikon-cikk megnyitása →</a>
+  </div>
+
+  <p class="chapter-label">Róma levél 10. rész (részlet)</p>
+  <p class="passage">
+    <span class="verse-num">10</span>Mert szívvel hiszünk az igazságra, szájjal teszünk pedig vallást az idvességre.
+    <span class="verse-num">11</span>Mert azt mondja az írás: Valaki hisz ő benne, meg nem szégyenül.
+    <span class="verse-num">12</span>Mert nincs különbség zsidó meg görög között; mert ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag mindenekhez, a kik őt segítségül hívják.
+    <span class="verse-num">13</span>Mert minden, a ki segítségül hívja az Úr nevét, megtartatik.
+    <span class="verse-num">14</span>Mimódon hívják azért segítségül azt, a kiben nem hisznek? Mimódon hisznek pedig abban, a ki felől nem hallottak? Mimódon hallanának pedig prédikáló nélkül?<button class="marker" onclick="toggle('popup-1014')" aria-expanded="false" aria-controls="popup-1014" title="5 kapcsolat ehhez a igehelyhez">5</button>
+  </p>
+
+  <div class="popup" id="popup-1014">
+    <p class="popup-title">Róm 10:14 — kapcsolatok (ISTENTISZT-001)</p>
+    <p class="popup-desc">
+      A hálózat legtöbb kapcsolattal rendelkező pontja — innen indul
+      tovább a formula öt különböző korai-egyházi szövegbe, "egyházi
+      azonosító-formulává" válva.
+    </p>
+
+    <div class="link-row">
+      <span class="type-dot dot-parhuzam"></span>
+      <div class="link-body">
+        <span class="link-ref">1Kor 1:2</span><span class="link-type type-parhuzam">Párhuzam</span>
+        <div class="link-note">a formula első alkalmazása Krisztusra, egyúttal a gyülekezet önmeghatározása</div>
+      </div>
+    </div>
+
+    <div class="link-row">
+      <span class="type-dot dot-parhuzam"></span>
+      <div class="link-body">
+        <span class="link-ref">2Tim 2:22</span><span class="link-type type-parhuzam">Párhuzam</span>
+        <div class="link-note">közösségi hovatartozás jele — kikkel törekedjünk együtt az erényekre</div>
+      </div>
+    </div>
+
+    <div class="link-row">
+      <span class="type-dot dot-parhuzam"></span>
+      <div class="link-body">
+        <span class="link-ref">1Pét 1:17</span><span class="link-type type-parhuzam">Párhuzam</span>
+        <div class="link-note">az invokáció "Atya" megszólításra alkalmazva</div>
+      </div>
+    </div>
+
+    <div class="link-row">
+      <span class="type-dot dot-parhuzam"></span>
+      <div class="link-body">
+        <span class="link-ref">ApCsel 9:14</span><span class="link-type type-parhuzam">Párhuzam</span>
+        <div class="link-note">a korai keresztények Saul általi azonosító megnevezése (→ tovább ismétlődik ApCsel 9:21-ben)</div>
+      </div>
+    </div>
+
+    <div class="link-row">
+      <span class="type-dot dot-parhuzam"></span>
+      <div class="link-body">
+        <span class="link-ref">ApCsel 22:16</span><span class="link-type type-parhuzam">Párhuzam</span>
+        <div class="link-note">Pál saját megtérés-elbeszélésében, a keresztséggel összekapcsolva</div>
+      </div>
+    </div>
+
+    <a class="full-article" href="#">Teljes lexikon-cikk megnyitása →</a>
+  </div>
+
+  <div class="footnote">
+    <strong>Mit demonstrál ez a fájl:</strong> a jelölés (kör + szám,
+    hányszorosan kapcsolódik a vers) és az interakció (kattintásra
+    nyíló kártya, típus szerint színezve) — két, egymástól távoli
+    ponton a hálózatban (1Mózes és Róma levél), hogy lássd: ez nem
+    egy izolált vers-pár, hanem egy 29 igehelyet, 16 könyvet átfogó
+    háló. <strong>Amit nem dönt el:</strong> ez csak egy a lehetséges
+    jelölési/interakciós minták közül — más elrendezés is lehetne
+    (típusonként külön ikon a szó felett, oldalsáv a kártya helyett,
+    stb.). A mögötte álló adat pontosan az, ami már létezik a
+    <code>Motivum_kapcsolatok_PILOT.tsv</code>-ben.
+  </div>
+</div>
+
+<script>
+function toggle(id){
+  var el = document.getElementById(id);
+  var btn = event.currentTarget;
+  var isOpen = el.classList.toggle('open');
+  btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+}
+</script>
+
+</body>
+</html>

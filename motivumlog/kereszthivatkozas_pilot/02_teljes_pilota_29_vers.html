@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Károli kereszthivatkozás — teljes pilóta (29 igehely)</title>
+<style>
+  :root{
+    --paper:#f6f1e6;
+    --paper-edge:#ece3d1;
+    --ink:#2b2420;
+    --ink-soft:#5a5044;
+    --line:#d8cbae;
+    --accent:#8a6d1f;
+    --accent-bg:#fbf1d6;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper-edge);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    display:flex;
+    justify-content:center;
+    padding:32px 16px 100px;
+  }
+  .page{
+    max-width:680px;
+    width:100%;
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:44px 40px 60px;
+  }
+  .kicker{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:0.04em;
+    color:var(--ink-soft);
+    margin:0 0 6px;
+  }
+  h1{
+    font-size:25px;
+    font-weight:600;
+    margin:0 0 10px;
+  }
+  .subtitle{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin:0 0 14px;
+    line-height:1.55;
+    max-width:52ch;
+  }
+  .stats{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11.5px;
+    color:var(--ink);
+    background:var(--accent-bg);
+    display:inline-block;
+    padding:5px 12px;
+    border-radius:20px;
+    margin:0 0 36px;
+  }
+  .book-label{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    border-top:1px solid var(--line);
+    padding-top:22px;
+    margin:34px 0 8px;
+  }
+  .book-label:first-of-type{ margin-top:0; }
+  .passage{
+    font-size:17.5px;
+    line-height:1.72;
+    margin:0 0 6px;
+  }
+  .verse-num{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:10.5px;
+    vertical-align:super;
+    color:var(--ink-soft);
+    margin-right:1px;
+  }
+  a.marker{
+    display:inline-flex;
+    align-items:center;
+    padding:2px 7px;
+    margin:0 2px;
+    border-radius:2px;
+    background:var(--accent);
+    color:var(--paper);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:0.01em;
+    line-height:1.7;
+    text-decoration:none;
+    vertical-align:middle;
+    white-space:nowrap;
+  }
+  a.marker:hover{ background:#6d5518; }
+
+  #lexikon-cikk{
+    margin-top:56px;
+    padding-top:28px;
+    border-top:2px solid var(--accent);
+  }
+  #lexikon-cikk .kicker{ margin-bottom:4px; }
+  #lexikon-cikk h2{
+    font-size:22px;
+    margin:0 0 18px;
+  }
+  #lexikon-cikk p, #lexikon-cikk li{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:14px;
+    line-height:1.65;
+    color:var(--ink);
+  }
+  #lexikon-cikk h3{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:26px 0 8px;
+  }
+  .type-table{
+    width:100%;
+    border-collapse:collapse;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12.5px;
+    margin:8px 0 4px;
+  }
+  .type-table td{
+    padding:6px 10px 6px 0;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+  }
+  .type-table td:first-child{ font-weight:700; white-space:nowrap; }
+  .lex-formula{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:15px;
+    color:var(--ink-soft);
+    margin:0 0 24px;
+  }
+  .occ-table{
+    width:100%;
+    border-collapse:collapse;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    margin:8px 0 4px;
+  }
+  .occ-table th{
+    text-align:left;
+    font-size:10.5px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    padding:4px 10px 6px 0;
+    border-bottom:2px solid var(--ink-soft);
+  }
+  .occ-table td{
+    padding:7px 10px 7px 0;
+    border-bottom:1px solid var(--line);
+    vertical-align:top;
+    line-height:1.5;
+  }
+  .occ-table td:first-child{
+    font-weight:700;
+    white-space:nowrap;
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    font-size:13px;
+  }
+  .back-to-top{
+    display:inline-block;
+    margin-top:24px;
+    font-size:12px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid var(--ink);
+  }
+
+  .footnote{
+    margin-top:40px;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <p class="kicker">PaRDeS motívumlexikon — teljes pilóta</p>
+  <h1>Károliba épített kereszthivatkozás</h1>
+  <p class="subtitle">
+    A 2026.09.09-i döntés (tervezési napló, 18. szakasz) szerinti
+    egyszerűsített megoldás: minden megjelölt vers egyetlen, semleges
+    jellel mutat a teljes lexikon-cikkre — nincs típusonként színezett
+    popup. Mind a 29 igehely szerepel, ahogy a mai KAPCSOLATOK-audit
+    lezárta.
+  </p>
+  <p class="stats">29 igehely · 16 könyv · ISTENTISZT-001</p>
+
+  <p class="book-label">1 Mózes</p>
+  <p class="passage">
+    <span class="verse-num">17</span>És ismeré Kain az ő feleségét, az pedig fogada méhében, és szűlé Hánókhot. És építe várost, és nevezé azt az ő fiának nevéről Hánókhnak.
+    <span class="verse-num">18</span>És lett Hánókhnak fia, Irád: És Irád nemzé Mekhujáelt: Mekhujáel pedig nemzé Methusáelt, és Methusáel nemzé Lámekhet.
+    <span class="verse-num">19</span>Lámekh pedig vett magának két feleséget: az egyiknek neve Háda, a másiknak neve Czilla.
+    <span class="verse-num">20</span>És szűlé Háda Jábált. Ez volt atyjok a sátorban-lakóknak, és a barompásztoroknak.
+    <span class="verse-num">21</span>Az ő atyjafiának pedig Jubál vala neve: ez volt atyja minden lantosnak és síposnak.
+    <span class="verse-num">22</span>Czilla pedig szűlé Tubálkaint, mindenféle réz- és vasszerszámok kovácsolóját: és Tubálkain hugát, Nahamát.
+    <span class="verse-num">23</span>Akkor monda Lámekh az ő feleségeinek: Oh Háda és Czilla, hallgassatok szómra, Lámekh feleségei, halljátok beszédem: embert öltem, mert megsebzett; ifjat öltem, mert megütött.
+    <span class="verse-num">24</span>Ha hétszeres a bosszú Kainért, hetvenhétszeres az Lámekhért.
+    <span class="verse-num">25</span>Ádám pedig ismét ismeré az ő feleségét, és az szűle néki fiat, és nevezé annak nevét Séthnek: mert adott úgymond, énnékem az Isten más magot Ábel helyett, kit megöle Kain.
+    <span class="verse-num">26</span>Séthnek is született fia, és nevezé annak nevét Énósnak. Akkor kezdték segítségül hívni az Úrnak nevét.<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a>
+  </p>
+
+  <p class="passage">
+    <span class="verse-num">6</span>És általméne Ábrám a földön mind Sikhem vidékéig, Móréh tölgyeséig. Akkor Kananeusok valának azon a földön.
+    <span class="verse-num">7</span>És megjelenék az Úr Ábrámnak, és monda néki: A te magodnak adom ezt a földet. És Ábrám oltárt építe ott az Úrnak; a ki megjelent vala néki.
+    <span class="verse-num">8</span>Onnan azután a hegység felé méne Bétheltől keletre és felüté sátorát: Béthel vala nyugatra, Hái pedig keletre, és ott oltárt építe az Úrnak, és segítségűl hívá az Úr nevét.<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a>
+    <span class="verse-num">9</span>És tovább költözék Ábrám; folyton délfelé húzódván.
+  </p>
+
+  <p class="passage">
+    <span class="verse-num">1</span>Feljöve azért Ábrám Égyiptomból, ő és az ő felesége, és mindene valamije vala, és Lót is ő vele, a déli tartományba.
+    <span class="verse-num">2</span>Ábrám pedig igen gazdag vala barmokkal, ezüsttel és aranynyal.
+    <span class="verse-num">3</span>És méne helyről helyre délfelől mind Béthelig, oda a hol először vala az ő sátora, Béthel és Hái között.
+    <span class="verse-num">4</span>Annak az oltárnak helyére, melyet ott elsőben készített vala: és segítségűl hívá ott Ábrám az Úrnak nevét.<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a>
+  </p>
+
+  <p class="passage">
+    <span class="verse-num">31</span>Azért nevezék azt a helyet Beérsebának, mivelhogy ott esküdtek vala meg mind a ketten.
+    <span class="verse-num">32</span>Megköték tehát a szövetséget Beérsebában, és felkele Abimélek és Pikhól annak hadvezére és visszatérének a Filiszteusok földére.
+    <span class="verse-num">33</span>Ábrahám pedig tamariskusfákat ültete Beérsebában, és segítségűl hívá ott az örökkévaló Úr Istennek nevét.<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a>
+    <span class="verse-num">34</span>És sok ideig tartózkodék Ábrahám a Filiszteusok földén.
+  </p>
+
+  <p class="passage">
+    <span class="verse-num">23</span>Felméne pedig onnan Beérsebába.
+    <span class="verse-num">24</span>És megjelenék néki az Úr azon éjszaka, és monda: Én vagyok Ábrahámnak a te atyádnak Istene: Ne félj, mert te veled vagyok, és megáldalak téged, és megsokasítom a te magodat Ábrahámért, az én szolgámért.
+    <span class="verse-num">25</span>Oltárt építe azért ott, és segítségűl hívá az Úrnak nevét, s felvoná ott az ő sátorát; Izsák szolgái pedig kútat ásának ottan.<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a>
+  </p>
+
+  <p class="book-label">2 Mózes</p>
+  <p class="passage">
+    <span class="verse-num">17</span>Monda azért az Úr Mózesnek: Megteszem ezt is a mit kívántál; mert kedvet találtál szemeim előtt, és név szerint ismerlek téged.
+    <span class="verse-num">18</span>És mondá Mózes: Kérlek, mutasd meg nékem a te dicsőségedet.
+    <span class="verse-num">19</span>És monda az Úr: Megteszem, hogy az én dicsőségem a te orczád előtt menjen el, és kiáltom előtted az Úr nevét:<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> És könyörülök, a kin könyörülök, kegyelmezek, a kinek kegyelmezek.
+  </p>
+  <p class="passage">
+    <span class="verse-num">4</span>Vágott azért két kőtáblát, az előbbiekhez hasonlókat, és felkelvén reggel, felméne Mózes a Sinai hegyre, a mint az Úr parancsolta néki, és kezébe vevé a két kőtáblát.
+    <span class="verse-num">5</span>Az Úr pedig leszálla felhőben, és ott álla ő vele, és nevén kiáltá az Urat:<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a>
+    <span class="verse-num">6</span>És az Úr elvonula ő előtte és kiálta: Az Úr, az Úr, irgalmas és kegyelmes Isten, késedelmes a haragra, nagy irgalmasságú és igazságú.
+  </p>
+
+  <p class="book-label">1 Királyok</p>
+  <p class="passage">
+    <span class="verse-num">22</span>Akkor monda Illés a népnek: Én maradtam meg csak egyedül az Úr prófétái közül; míg a Baál prófétái négyszázötvenen vannak;
+    <span class="verse-num">23</span>Adjatok azért nékünk két tulkot, és ők válaszszák magoknak az egyik tulkot, a melyet vagdaljanak darabokra, és rakják a fákra; de tüzet ne tegyenek alája; én pedig a másikat készítem el, a melyet a fákra rakok, de tüzet én sem teszek alája.
+    <span class="verse-num">24</span>Akkor hívjátok segítségül a ti istenteknek nevét, és én is segítségül hívom az Úrnak nevét;<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> és a mely isten tűz által felel, az az Isten. És felelvén az egész sokaság, monda: Jó lesz!
+    <span class="verse-num">25</span>És monda Illés a Baál prófétáinak: Válaszszátok el magatoknak az egyik tulkot, és készítsétek el ti először; mert ti többen vagytok, és hívjátok segítségül a ti istenteknek nevét,<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> de tüzet ne tegyetek alája.
+    <span class="verse-num">26</span>És vevék a tulkot, a melyet nékik adott, és azt elkészíték, és segítségül hívák a Baálnak nevét<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> reggeltől fogva délig, mondván: Baál! hallgass meg minket! De nem jött szó, sem felelet. És ott sántikáltak az oltár körül, a melyet készítettek.
+  </p>
+
+  <p class="book-label">2 Királyok</p>
+  <p class="passage">
+    <span class="verse-num">9</span>És elméne Naámán lovaival és szekereivel, és megálla az Elizeus házának ajtaja előtt.
+    <span class="verse-num">10</span>És külde Elizeus követet ő hozzá, mondván: Menj el és fürödj meg hétszer a Jordánban, és megújul a te tested, és megtisztulsz.
+    <span class="verse-num">11</span>Akkor megharaguvék Naámán és elment, és így szólt: Íme én azt gondoltam, hogy kijő hozzám, és előállván, segítségül hívja az Úrnak, az ő Istenének nevét,<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> és kezével megilleti a beteg helyeket, és úgy gyógyítja meg a kiütést.
+  </p>
+
+  <p class="book-label">Zsoltárok</p>
+  <p class="passage">
+    <span class="verse-num">1</span>Magasztaljátok az Urat, hívjátok segítségül az ő nevét,<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> hirdessétek a népek között az ő cselekedeteit!
+    <span class="verse-num">2</span>Énekeljetek néki, zengedezzetek néki, beszéljétek el minden ő csodatételét.
+    <span class="verse-num">3</span>Dicsekedjetek az ő szent nevével; örvendezzen azoknak a szívök, a kik keresik az Urat.
+    <span class="verse-num">…</span> (105. zsoltár, 4-39. vers kihagyva)
+  </p>
+  <p class="passage">
+    <span class="verse-num">1</span>Szeretem az Urat, mert meghallgatja esedezéseim szavát.
+    <span class="verse-num">2</span>Mert az ő fülét felém fordítja, azért segítségül hívom őt egész életemben.
+    <span class="verse-num">3</span>Körülvettek engem a halál kötelei, és a pokol szorongattatásai támadtak meg engem; nyomorúságba és ínségbe jutottam.
+    <span class="verse-num">4</span>És az Úrnak nevét segítségül hívám:<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> Kérlek Uram, szabadítsd meg az én lelkemet!
+    <span class="verse-num">…</span> (10-11. vers kihagyva)
+    <span class="verse-num">12</span>Mivel fizessek az Úrnak minden hozzám való jótéteményéért?
+    <span class="verse-num">13</span>A szabadulásért való poharat felemelem, és az Úrnak nevét hívom segítségül.<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a>
+    <span class="verse-num">14</span>Az Úr iránt való fogadásaimat megadom az ő egész népe előtt.
+    <span class="verse-num">15</span>Az Úr szemei előtt drága az ő kegyeseinek halála.
+    <span class="verse-num">16</span>Uram! én bizonyára a te szolgád vagyok; szolgád vagyok én, a te szolgáló leányodnak fia, te oldoztad ki az én köteleimet.
+    <span class="verse-num">17</span>Néked áldozom hálaadásnak áldozatával, és az Úr nevét hívom segítségül.<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a>
+  </p>
+  <p class="passage">
+    <span class="verse-num">5</span>Meddig haragszol Uram, szüntelen? meddig gerjedez féltő szerelmed, mint a tűz?
+    <span class="verse-num">6</span>Ontsd ki haragodat a pogányokra, a kik nem ismernek téged, és az országokra, a melyek nem hívják segítségül a te nevedet;<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a>
+  </p>
+
+  <p class="book-label">1 Krónikák</p>
+  <p class="passage">
+    <span class="verse-num">7</span>Azon a napon adott Dávid először éneket az Úrnak dícséretére Asáfnak és az ő atyjafiainak kezébe.
+    <span class="verse-num">8</span>Dícsérjétek az Urat, hívjátok segítségül az ő nevét,<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> hirdessétek minden népek között az ő nagy dolgait.
+    <span class="verse-num">9</span>Énekeljetek néki, mondjatok dícséretet néki, beszéljetek minden csudálatos dolgairól.
+  </p>
+
+  <p class="book-label">Ézsaiás</p>
+  <p class="passage">
+    <span class="verse-num">2</span>Ímé, az Isten az én szabadítóm! bízom és nem félek; mert erősségem és énekem az Úr, az Úr, és lőn nékem szabadítóm!
+    <span class="verse-num">3</span>S örömmel merítetek vizet a szabadító kútfejéből,
+    <span class="verse-num">4</span>És így szólotok ama napon: Adjatok hálát az Úrnak, magasztaljátok az Ő nevét,<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> hirdessétek a népek közt nagyságos dolgait, mondjátok, hogy nagy az Ő neve.
+  </p>
+
+  <p class="book-label">Jeremiás</p>
+  <p class="passage">
+    <span class="verse-num">23</span>Tudom Uram, hogy az embernek nincs hatalmában az ő útja, és egyetlen járókelő sem teheti, hogy irányozza a maga lépését!
+    <span class="verse-num">24</span>Fenyíts meg engem, Uram, de mértékkel, nem haragodban, hogy szét ne morzsolj engem!
+    <span class="verse-num">25</span>Öntsd ki haragodat ama nemzetekre, a melyek nem ismernek téged, és ama nemzetségekre, a melyek nem hívják segítségül a te nevedet;<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> mert megették Jákóbot, bizony megették őt, és elemésztették őt, és lakóhelyét elpusztították!
+  </p>
+
+  <p class="book-label">Sofóniás</p>
+  <p class="passage">
+    <span class="verse-num">8</span>Azért várjatok rám, azt mondja az Úr, míg prédára kelek; mert elvégeztem, hogy egybegyűjtöm a népeket, hogy összeszedem az országokat, hogy kiöntsem rájok búsulásomat, haragomnak egész hevét, mert gerjedezésem tüzében emésztetik meg az egész föld!
+    <span class="verse-num">9</span>Akkor változtatom majd a népek ajkát tisztává, hogy mind segítségül hívják az Úr nevét,<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> hogy egy akarattal szolgálják őt.
+  </p>
+
+  <p class="book-label">Zakariás</p>
+  <p class="passage">
+    <span class="verse-num">8</span>És lészen az egész földön, így szól az Úr: a két rész kivágattatik azon és meghal, de a harmadik megmarad rajta.
+    <span class="verse-num">9</span>És beviszem a harmadrészt a tűzbe, és megtisztítom őket, a mint tisztítják az ezüstöt és megpróbálom őket, a mint próbálják az aranyat; ő segítségül hívja az én nevemet<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> és én felelni fogok néki; ezt mondom: Népem ő! Ő pedig ezt mondja: Az Úr az én Istenem!
+  </p>
+
+  <p class="book-label">Jóel</p>
+  <p class="passage">
+    <span class="verse-num">28</span>És lészen azután, hogy kiöntöm lelkemet minden testre, és prófétálnak a ti fiaitok és leányaitok; véneitek álmokat álmodnak; ifjaitok pedig látomásokat látnak.
+    <span class="verse-num">29</span>Sőt még a szolgákra és szolgálóleányokra is kiöntöm azokban a napokban az én lelkemet.
+    <span class="verse-num">30</span>És csodajeleket mutatok az égen és a földön; vért, tüzet és füstoszlopokat.
+    <span class="verse-num">31</span>A nap sötétséggé válik, a hold pedig vérré, minekelőtte eljő az Úrnak nagy és rettenetes napja.
+    <span class="verse-num">32</span>De mindaz, a ki az Úrnak nevét hívja segítségül, megmenekül;<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> mert a Sion hegyén és Jeruzsálemben lészen a szabadulás, a mint megigérte az Úr, és a megszabadultak közt lesznek azok, a kiket elhí az Úr!
+  </p>
+
+  <p class="book-label">Róma levél</p>
+  <p class="passage">
+    <span class="verse-num">12</span>Mert nincs különbség zsidó meg görög között; mert ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag mindenekhez, a kik őt segítségül hívják.
+    <span class="verse-num">13</span>Mert minden, a ki segítségül hívja az Úr nevét, megtartatik.
+    <span class="verse-num">14</span>Mimódon hívják azért segítségül azt, a kiben nem hisznek?<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> Mimódon hisznek pedig abban, a ki felől nem hallottak? Mimódon hallanának pedig prédikáló nélkül?
+  </p>
+
+  <p class="book-label">1 Korinthus</p>
+  <p class="passage">
+    <span class="verse-num">1</span>Pál, Jézus Krisztusnak Isten akaratából elhívott apostola, és Sosthenes, az atyafi.
+    <span class="verse-num">2</span>Az Isten gyülekezetének, a mely Korinthusban van, a Krisztus Jézusban megszentelteknek, elhívott szenteknek, mindazokkal egybe, a kik a mi Urunk Jézus Krisztus nevét segítségül hívják<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> bármely helyen, a magokén és a miénken:
+  </p>
+
+  <p class="book-label">2 Timóteus</p>
+  <p class="passage">
+    <span class="verse-num">20</span>Nagy házban pedig nemcsak arany- és ezüstedények vannak, hanem fából és cserépből valók is; és azok közül némelyek tisztességre, némelyek pedig gyalázatra valók.
+    <span class="verse-num">21</span>Ha tehát valaki magát ezektől tisztán tartja, tisztességre való edény lesz, megszentelt, és hasznos a gazdának, minden jó cselekedetre alkalmas.
+    <span class="verse-num">22</span>Az ifjúkori kivánságokat pedig kerüld; hanem kövessed az igazságot, a hitet, a szeretetet, a békességet azokkal egyetembe, a kik segítségül hívják az Urat tiszta szívből.<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a>
+  </p>
+
+  <p class="book-label">1 Péter</p>
+  <p class="passage">
+    <span class="verse-num">15</span>Hanem a miképen szent az, a ki elhívott titeket, ti is szentek legyetek teljes életetekben;
+    <span class="verse-num">16</span>Mert meg van írva: Szentek legyetek, mert én szent vagyok.
+    <span class="verse-num">17</span>És ha Atyának hívjátok őt,<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> a ki személyválogatás nélkül ítél, kinek-kinek cselekedete szerint, félelemmel töltsétek a ti jövevénységtek idejét:
+  </p>
+
+  <p class="book-label">Apostolok Cselekedetei</p>
+  <p class="passage">
+    <span class="verse-num">13</span>Felele pedig Ananiás: Uram, sok embertől hallottam e férfiú felől, mily sok bosszúsággal illeté a te szenteidet Jeruzsálemben:
+    <span class="verse-num">14</span>És itt is hatalma van a főpapoktól, hogy mindazokat megkötözze, kik a te nevedet segítségül hívják.<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a>
+  </p>
+  <p class="passage">
+    <span class="verse-num">20</span>És azonnal prédikálá a zsinagógákban a Krisztust, hogy ő az Isten Fia.
+    <span class="verse-num">21</span>Álmélkodnak vala pedig mindnyájan, a kik hallák, és mondának: Nem ez-é az, a ki pusztította Jeruzsálemben azokat, a kik ezt a nevet hívják segítségül,<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a> és ide is azért jött, hogy őket fogva vigye a főpapokhoz?
+  </p>
+  <p class="passage">
+    <span class="verse-num">14</span>Ő pedig monda: A mi atyáinknak Istene választott téged, hogy megismerd az ő akaratát, és meglásd amaz Igazat, és szót hallj az ő szájából.
+    <span class="verse-num">15</span>Mert leszel néki tanúbizonysága minden embernél azok felől, a miket láttál és hallottál.
+    <span class="verse-num">16</span>Most annakokáért mit késedelmezel? Kelj fel és keresztelkedjél meg és mosd le a te bűneidet, segítségül híván az Úrnak nevét.<a class="marker" href="#lexikon-cikk">Névbe vetett segítségül hívás</a>
+  </p>
+
+  <!-- ===== KÖZÖS LEXIKON-OLDAL CÉL ===== -->
+  <div id="lexikon-cikk">
+    <p class="kicker">ISTENTISZT-001 · teljes lexikon-oldal</p>
+    <h2>Segítségül hívni az Úr nevét</h2>
+    <p class="lex-formula">קָרָא בְשֵׁם יְהוָה &nbsp;·&nbsp; <em>kará beshém Adonáj</em> &nbsp;·&nbsp; ἐπικαλέομαι τὸ ὄνομα Κυρίου</p>
+
+    <h3>Mi ez a motívum</h3>
+    <p>29 igehely, 16 bibliai könyv, egyetlen szókapcsolat: a héber
+    קָרָא ("hívni") + שֵׁם ("név"), és görög megfelelője, ἐπικαλέομαι.
+    Az első előfordulástól (1Móz 4:26) az apostoli levelekig ugyanaz
+    az alap-aktus ismétlődik — Isten nevének tudatos, névvel
+    azonosított segítségül hívása —, miközben fokozatosan önálló,
+    egyházi azonosító-formulává válik.</p>
+
+    <h3>Peshat — mit mond a szöveg</h3>
+    <p>A genezisi öt előfordulás (4:26, 12:8, 13:4, 21:33, 26:25)
+    egyetlen, folytonos gyakorlatot ír le: a hívő ember Isten nevének
+    invokálásával fejezi ki függőségét — jellemzően egy konkrét,
+    helyhez kötött kultikus jelhez kapcsolva (oltárépítés, fa
+    ültetése). A gyakorlat nemzedékeken át öröklődik (Ábrahám →
+    Izsák), és konkrét földrajzi pontokhoz kötődik (Bétel-Ai,
+    Beérseba).</p>
+
+    <h3>Remez — hová mutat a szöveg</h3>
+    <p>A minta a Séthita vonaltól a pátriárkákon át húzódik a
+    próféták nyilvános, versengő kontextusán (1Kir 18, a Kármel-hegyi
+    próbatétel) és a zsoltáros személyes könyörgésén (Zsolt 116) át
+    egy eszkatológiai, univerzális ígéretig (Sof 3:9, Zak 13:9; Jóel
+    2:32), amely Pünkösdkor (ApCsel 2:21) és Pál evangéliumi
+    érvelésében (Róm 10:13-14) nyeri el végső alkalmazását.</p>
+    <p>Amikor Péter és Pál görögül idézik a formulát, ugyanazt a görög
+    igét (ἐπικαλέομαι) használják — és három, egymástól független
+    szótár (a héber BDB, és két görög szótár, a TBESG és Thayer)
+    külön kategóriába teszi azt az esetet, amikor ezt az igét
+    kifejezetten egy héber kifejezés fordításaként használják. Ez nem
+    esetleges szóhasználat, hanem tudatos fordítás egy már ismert
+    héber mintára.</p>
+
+    <h3>Drash — mit tanulhatunk ebből</h3>
+    <p>A motívum azt tanítja, hogy az istentisztelet magja nem a
+    nyilvános teljesítmény vagy a rituálé pontossága, hanem a
+    függőség tudatos, névvel azonosított kifejezése. Ábrahám és Izsák
+    párhuzama azt is megmutatja, hogy ez a fajta istentisztelet
+    taníthatóvá és örökölhetővé válik.</p>
+
+    <h3>A kapcsolatok öt típusa</h3>
+    <p>A 29 igehely között öt kategóriájú kapcsolat írható le (l.
+    <code>Bibliai_Motivumlexikon_tervezesi_naplo.md</code>,
+    2026.09.09):</p>
+    <table class="type-table">
+      <tr><td>Előkép</td><td>korábbi esemény, ami egy későbbi, teljesebb valóság mintája</td></tr>
+      <tr><td>Párhuzam</td><td>ismétlődő mintázat, azonos szereposztással — a legtöbb kapcsolat ide tartozik</td></tr>
+      <tr><td>Beteljesedés</td><td>egy Előkép valóra válása — mindig egy Előkép-jelöléshez kapcsolódik</td></tr>
+      <tr><td>Kontraszt</td><td>két fél szándékosan szembeállítva — a lényeg az eltérés</td></tr>
+      <tr><td>Variáns</td><td>ugyanaz a szerkezet, felcserélt szereposztással — nem szembeállítás</td></tr>
+    </table>
+
+    <h3>Minden igehely, kapcsolódásával</h3>
+    <table class="occ-table">
+      <tr><th>Igehely</th><th>Kapcsolódás</th></tr>
+      <tr><td>1Móz 4:26</td><td>a formula első előfordulása — minden későbbi eset erre vezethető vissza</td></tr>
+      <tr><td>1Móz 12:8</td><td>Ábrám oltárt épít, és ott hívja segítségül az Úr nevét — első összekapcsolás oltárépítéssel</td></tr>
+      <tr><td>1Móz 13:4</td><td>Ábrám tudatosan visszatér ugyanahhoz az oltárhoz — a gyakorlat fenntartott szokássá válik</td></tr>
+      <tr><td>1Móz 21:33</td><td>Ábrahám fát ültet, és a névhez isteni jelzőt is társít (<em>él olám</em>, "örökkévaló Isten")</td></tr>
+      <tr><td>1Móz 26:25</td><td>Izsák, ugyanazon a helyen, apja gyakorlatát folytatja — öröklés nemzedékek között</td></tr>
+      <tr><td>1Kir 18:24</td><td>Illés szembeállítja YHVH nevét Baál nevével — <strong>Kontraszt</strong> egyetlen versen belül</td></tr>
+      <tr><td>1Kir 18:25</td><td>a Baál-próféták felszólítása — a próbatétel gyakorlati végrehajtásának kezdete</td></tr>
+      <tr><td>1Kir 18:26</td><td>a Baál-próféták sikertelen, egész délelőttös invokációja — a kontraszt kiteljesedése</td></tr>
+      <tr><td>2Kir 5:11</td><td>Naámán, egy nem-izraeli szereplő is ismeri és elvárja a formulát</td></tr>
+      <tr><td>Sof 3:9</td><td>eszkatológiai ígéret: a népek nyelve megtisztul, hogy mindnyájan segítségül hívják az Úr nevét</td></tr>
+      <tr><td>Zak 13:9</td><td>Sof 3:9 párja — kétirányú szövetségi megerősítés, Isten is válaszol</td></tr>
+      <tr><td>Zsolt 116:4</td><td>a zsoltáros személyes hála-könyörgésének első megfogalmazása</td></tr>
+      <tr><td>Zsolt 116:13</td><td>a formula második, szó szerinti megismétlése ugyanabban a zsoltárban</td></tr>
+      <tr><td>Zsolt 116:17</td><td>a formula harmadik megismétlése, hála-áldozat kontextusában</td></tr>
+      <tr><td>Jóel 2:32</td><td>az ószövetségi megfogalmazás csúcspontja — Péter és Pál is szó szerint idézi — <strong>Előkép</strong></td></tr>
+      <tr><td>Róm 10:14</td><td>Pál folytatja az érvelést ugyanazzal a görög igével — <strong>Beteljesedés</strong> folytatása</td></tr>
+      <tr><td>1Kor 1:2</td><td>a formula első alkalmazása Krisztusra — a gyülekezet önmeghatározása</td></tr>
+      <tr><td>2Tim 2:22</td><td>a segítségül hívás mint közösségi hovatartozás jele</td></tr>
+      <tr><td>1Pét 1:17</td><td>az invokáció "Atya" megszólításra alkalmazva</td></tr>
+      <tr><td>ApCsel 9:14</td><td>a korai keresztények Saul általi azonosító megnevezése</td></tr>
+      <tr><td>ApCsel 9:21</td><td>ugyanaz a leírás megismételve, ugyanabban a fejezetben</td></tr>
+      <tr><td>ApCsel 22:16</td><td>Pál saját megtérés-elbeszélésében, a keresztséggel összekapcsolva</td></tr>
+      <tr><td>Zsolt 105:1</td><td>a genezisi hagyományból örökölt formula önálló, liturgikus tétellé válása</td></tr>
+      <tr><td>1Krón 16:8</td><td>a Zsolt 105:1 szinte szó szerinti megismétlése a frigyláda liturgiájában</td></tr>
+      <tr><td>Ézs 12:4</td><td>szó szerint majdnem azonos a Zsolt 105:1-gyel, eszkatológiai hálaének kontextusában</td></tr>
+      <tr><td>Jer 10:25</td><td>a formula tagadó, vádló formában — elmulasztása mint vád a pogányok ellen</td></tr>
+      <tr><td>Zsolt 79:6</td><td>a Jer 10:25 szinte szó szerinti párhuzama, azonos vádló szerkezettel</td></tr>
+      <tr><td>2Móz 33:19</td><td>Isten maga jelenti ki nevét Mózesnek — <strong>Variáns</strong>: felcserélt alany/tárgy</td></tr>
+      <tr><td>2Móz 34:5</td><td>ugyanaz a jelenet folytatása — Isten végrehajtja az ígért önkihirdetést</td></tr>
+    </table>
+
+    <h3>Miért fontos ez most</h3>
+    <p>A 2Móz 33:19/34:5 eset korábban "be nem sorolható"-ként
+    szerepelt — most a <strong>Variáns</strong> kategóriába tartozik
+    (A/B/C tipológia, B-eset). Az 1Kir 18:24 belső kontrasztja is
+    most kap először formális típust: <strong>Kontraszt</strong>.</p>
+
+    <h3>Miért van jelölés minden versen</h3>
+    <p>A Károli-szövegben látott <strong>kapcsolat ›</strong> címke
+    azt mutatja, hogy az adott vers ehhez a motívumhoz tartozik — nem
+    azt, hogy versenként más-más kapcsolat van jelölve. A fenti öt
+    típus és a köztük lévő konkrét kapcsolatok ennek a lexikon-oldalnak
+    a részét képezik, nem a Károli-szöveg jelölésének.</p>
+
+    <a class="back-to-top" href="#top">↑ Vissza a Károli-szöveghez</a>
+  </div>
+
+  <div class="footnote">
+    Kézzel épített teljes pilóta, 2026.09.09 — mind a 29 igehely
+    valódi Károli 1908-szövege, a lexikon-oldal tartalma az
+    ISTENTISZT-001_TUDOMANYOS.md valódi tartalmából, olvasható
+    formára hozva (nem a teljes, technikai szócikk-anyag — a BDB/
+    TBESG/Thayer nyers idézetek, LXX-morfológia és módszertani napló
+    a teljes fájlban maradnak).
+  </div>
+</div>
+
+</body>
+</html>

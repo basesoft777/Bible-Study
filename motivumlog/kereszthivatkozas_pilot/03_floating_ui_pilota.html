@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Károli kereszthivatkozás — Floating UI pilóta</title>
+<script src="https://cdn.jsdelivr.net/npm/@floating-ui/core@1.8.0" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@floating-ui/dom@1.8.0" crossorigin="anonymous"></script>
+<style>
+  :root{
+    --paper:#f6f1e6;
+    --paper-edge:#ece3d1;
+    --ink:#2b2420;
+    --ink-soft:#5a5044;
+    --line:#d8cbae;
+    --parhuzam:#3a6ea5;
+    --parhuzam-bg:#e8f0f8;
+    --variáns:#6b4a8a;
+    --variáns-bg:#efe8f5;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper-edge);
+    color:var(--ink);
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    display:flex;
+    justify-content:center;
+    padding:32px 16px 400px;
+  }
+  .page{
+    max-width:620px;
+    width:100%;
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:44px 40px 60px;
+  }
+  .kicker{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:0.04em;
+    color:var(--ink-soft);
+    margin:0 0 6px;
+  }
+  h1{ font-size:25px; font-weight:600; margin:0 0 10px; }
+  .subtitle{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    line-height:1.55;
+    margin:0 0 34px;
+    max-width:50ch;
+  }
+  .chapter-label{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+    border-top:1px solid var(--line);
+    padding-top:22px;
+    margin:0 0 8px;
+  }
+  .passage{ font-size:19px; line-height:1.75; margin:0 0 6px; }
+  .verse-num{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:11px;
+    vertical-align:super;
+    color:var(--ink-soft);
+    margin-right:2px;
+  }
+  button.marker{
+    display:inline-flex;
+    align-items:center;
+    padding:2px 6px;
+    margin:0 2px;
+    border-radius:2px;
+    border:none;
+    cursor:pointer;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:10.5px;
+    font-weight:700;
+    line-height:1.7;
+    vertical-align:middle;
+  }
+  .marker.t-parhuzam{ background:var(--parhuzam); color:#fff; }
+  .marker.t-variáns{ background:var(--variáns); color:#fff; }
+
+  /* Floating UI popup */
+  .float-popup{
+    display:none;
+    position:absolute;
+    top:0; left:0;
+    width:280px;
+    background:#fffdf8;
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:14px 16px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    box-shadow:0 6px 20px rgba(0,0,0,0.15);
+    z-index:100;
+  }
+  .float-popup.open{ display:block; }
+  .float-popup .fp-title{ font-size:12.5px; font-weight:700; margin:0 0 8px; }
+  .float-popup .fp-row{
+    display:flex; gap:8px; padding:6px 0; border-top:1px solid var(--line);
+  }
+  .float-popup .fp-row:first-of-type{ border-top:none; }
+  .float-popup .fp-dot{ width:8px; height:8px; border-radius:50%; margin-top:4px; flex-shrink:0; }
+  .fp-dot.t-parhuzam{ background:var(--parhuzam); }
+  .fp-dot.t-variáns{ background:var(--variáns); }
+  .float-popup .fp-ref{ font-size:12.5px; font-weight:600; font-family:"Iowan Old Style",Georgia,serif; }
+  .float-popup .fp-type{ font-size:9.5px; text-transform:uppercase; letter-spacing:0.03em; margin-left:6px; }
+  .fp-type.t-parhuzam{ color:var(--parhuzam); }
+  .fp-type.t-variáns{ color:var(--variáns); }
+  .float-popup .fp-note{ font-size:11px; color:var(--ink-soft); margin-top:2px; line-height:1.4; }
+  .float-popup .fp-arrow{
+    position:absolute;
+    width:9px; height:9px;
+    background:#fffdf8;
+    border-left:1px solid var(--line);
+    border-top:1px solid var(--line);
+  }
+
+  .footnote{
+    margin-top:48px;
+    padding-top:18px;
+    border-top:1px solid var(--line);
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+  .footnote strong{ color:var(--ink); }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <p class="kicker">PaRDeS motívumlexikon — pilóta</p>
+  <h1>Floating UI pozicionálási motor — próba</h1>
+  <p class="subtitle">
+    Ugyanaz a két metszet, mint a korábbi gazdag popup-demóban (1Móz
+    4:26 és Róm 10:14), most a <code>@floating-ui/dom</code>
+    könyvtárral pozicionálva — nem egyszerű "lejjebb told a
+    szöveget" mechanika, hanem valódi lebegő popup, ami a jelölés
+    mellett jelenik meg és automatikusan elkerüli a képernyő szélét.
+    Görgesd le a lap aljáig, és próbáld ki ott a jelöléseket — a
+    popup felfelé fog nyílni, nem lelóg a képernyőről.
+  </p>
+
+  <p class="chapter-label">1 Mózes 4. rész (részlet)</p>
+  <p class="passage">
+    <span class="verse-num">25</span>Ádám pedig ismét ismeré az ő feleségét, és az szűle néki fiat, és nevezé annak nevét Séthnek: mert adott úgymond, énnékem az Isten más magot Ábel helyett, kit megöle Kain.
+    <span class="verse-num">26</span>Séthnek is született fia, és nevezé annak nevét Énósnak. Akkor kezdték segítségül hívni az Úrnak nevét.<button class="marker t-parhuzam" data-target="p-426" aria-expanded="false">4 kapcsolat</button>
+  </p>
+
+  <div class="float-popup" id="p-426">
+    <div class="fp-arrow"></div>
+    <p class="fp-title">1Móz 4:26 — kapcsolatok</p>
+    <div class="fp-row">
+      <span class="fp-dot t-parhuzam"></span>
+      <div><span class="fp-ref">Sof 3:9</span><span class="fp-type t-parhuzam">Párhuzam</span>
+        <div class="fp-note">eszkatológiai ígéretté bővítve</div></div>
+    </div>
+    <div class="fp-row">
+      <span class="fp-dot t-parhuzam"></span>
+      <div><span class="fp-ref">2Kir 5:11</span><span class="fp-type t-parhuzam">Párhuzam</span>
+        <div class="fp-note">Naámán várakozás-cáfolataként</div></div>
+    </div>
+    <div class="fp-row">
+      <span class="fp-dot t-parhuzam"></span>
+      <div><span class="fp-ref">Jóel 2:32</span><span class="fp-type t-parhuzam">Párhuzam</span>
+        <div class="fp-note">innen indul a Beteljesedés (ApCsel 2:21, Róm 10:13)</div></div>
+    </div>
+    <div class="fp-row">
+      <span class="fp-dot t-variáns"></span>
+      <div><span class="fp-ref">2Móz 33:19</span><span class="fp-type t-variáns">Variáns</span>
+        <div class="fp-note">A/B/C tipológia B-esete — felcserélt alany/tárgy</div></div>
+    </div>
+  </div>
+
+  <p class="chapter-label" style="margin-top:30px;">Róma levél 10. rész (részlet)</p>
+  <p class="passage">
+    <span class="verse-num">13</span>Mert minden, a ki segítségül hívja az Úr nevét, megtartatik.
+    <span class="verse-num">14</span>Mimódon hívják azért segítségül azt, a kiben nem hisznek?<button class="marker t-parhuzam" data-target="p-1014" aria-expanded="false">5 kapcsolat</button> Mimódon hisznek pedig abban, a ki felől nem hallottak?
+  </p>
+
+  <div class="float-popup" id="p-1014">
+    <div class="fp-arrow"></div>
+    <p class="fp-title">Róm 10:14 — kapcsolatok</p>
+    <div class="fp-row">
+      <span class="fp-dot t-parhuzam"></span>
+      <div><span class="fp-ref">1Kor 1:2</span><span class="fp-type t-parhuzam">Párhuzam</span>
+        <div class="fp-note">a gyülekezet önmeghatározása</div></div>
+    </div>
+    <div class="fp-row">
+      <span class="fp-dot t-parhuzam"></span>
+      <div><span class="fp-ref">2Tim 2:22</span><span class="fp-type t-parhuzam">Párhuzam</span>
+        <div class="fp-note">közösségi hovatartozás jele</div></div>
+    </div>
+    <div class="fp-row">
+      <span class="fp-dot t-parhuzam"></span>
+      <div><span class="fp-ref">1Pét 1:17</span><span class="fp-type t-parhuzam">Párhuzam</span>
+        <div class="fp-note">"Atya" megszólításra alkalmazva</div></div>
+    </div>
+    <div class="fp-row">
+      <span class="fp-dot t-parhuzam"></span>
+      <div><span class="fp-ref">ApCsel 9:14</span><span class="fp-type t-parhuzam">Párhuzam</span>
+        <div class="fp-note">a korai keresztények azonosító megnevezése</div></div>
+    </div>
+    <div class="fp-row">
+      <span class="fp-dot t-parhuzam"></span>
+      <div><span class="fp-ref">ApCsel 22:16</span><span class="fp-type t-parhuzam">Párhuzam</span>
+        <div class="fp-note">Pál megtérés-elbeszélésében</div></div>
+    </div>
+  </div>
+
+  <div class="footnote">
+    <strong>Mit demonstrál ez a fájl:</strong> a <code>@floating-ui/dom</code>
+    (CDN-ről betöltve, kb. 5kB) számítja ki a popup pozícióját a
+    <code>computePosition</code> hívással, <code>flip</code> és
+    <code>shift</code> middleware-rel — ha nincs hely fölötte, magától
+    lefelé nyílik, ha a szélhez ér, oldalra csúszik. Ez ugyanaz a
+    mechanika, ami a korábbi kézzel épített demóban ("lejjebb told a
+    szöveget") hiányzott: ott a kártya mindig a szövegbe ékelődött, itt
+    valódi, önállóan pozicionált lebegő elem. <strong>Amit ez sem dönt
+    el:</strong> hogy egyáltalán ezt a gazdag verziót akarjuk-e — a
+    2026.09.09-i döntés (tervezési napló, 18. szakasz) az egyszerű
+    link-verziót választotta induló megoldásnak; ez a fájl csak azt
+    mutatja meg, milyen lenne a gazdag verzió, ha mégis emellett
+    döntenénk.
+  </div>
+</div>
+
+<script>
+function initPopups(){
+  const required = ['computePosition', 'flip', 'shift', 'offset', 'arrow'];
+  const missing = required.filter(name => typeof FloatingUIDOM[name] !== 'function');
+  if (missing.length) {
+    const warn = document.createElement('div');
+    warn.style.cssText = 'background:#f8d7da;color:#721c24;padding:10px 16px;margin:0 0 20px;font-family:sans-serif;font-size:13px;border-radius:3px;';
+    warn.textContent = 'FloatingUIDOM betöltődött, de hiányzó függvény(ek): ' + missing.join(', ') + '. Elérhető kulcsok: ' + Object.keys(FloatingUIDOM).join(', ');
+    document.querySelector('.page').prepend(warn);
+    return;
+  }
+
+  const { computePosition, flip, shift, offset, arrow } = FloatingUIDOM;
+  const buttons = document.querySelectorAll('.marker');
+  let openPopup = null;
+
+  buttons.forEach(btn => {
+    const popup = document.getElementById(btn.dataset.target);
+    const arrowEl = popup.querySelector('.fp-arrow');
+
+    btn.addEventListener('click', () => {
+      const isOpen = popup.classList.contains('open');
+
+      // close any other open popup first
+      if (openPopup && openPopup !== popup) {
+        openPopup.classList.remove('open');
+      }
+
+      if (isOpen) {
+        popup.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        openPopup = null;
+        return;
+      }
+
+      popup.classList.add('open');
+      btn.setAttribute('aria-expanded', 'true');
+      openPopup = popup;
+
+      computePosition(btn, popup, {
+        placement: 'top',
+        middleware: [
+          offset(10),
+          flip(),
+          shift({ padding: 12 }),
+          arrow({ element: arrowEl })
+        ]
+      }).then(({x, y, placement, middlewareData}) => {
+        Object.assign(popup.style, { left: `${x}px`, top: `${y}px` });
+
+        const side = placement.split('-')[0];
+        const staticSide = { top: 'bottom', bottom: 'top', left: 'right', right: 'left' }[side];
+        if (middlewareData.arrow) {
+          const { x: ax, y: ay } = middlewareData.arrow;
+          Object.assign(arrowEl.style, {
+            left: ax != null ? `${ax}px` : '',
+            top: ay != null ? `${ay}px` : '',
+            right: '', bottom: '',
+            [staticSide]: '-5px',
+            transform: side === 'top' || side === 'bottom' ? 'rotate(45deg)' : 'rotate(-45deg)'
+          });
+        }
+      });
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (openPopup && !e.target.closest('.marker') && !e.target.closest('.float-popup')) {
+      openPopup.classList.remove('open');
+      openPopup = null;
+    }
+  });
+}
+
+if (window.FloatingUIDOM) {
+  initPopups();
+} else {
+  window.addEventListener('load', () => {
+    if (window.FloatingUIDOM) {
+      initPopups();
+    } else {
+      const warn = document.createElement('div');
+      warn.style.cssText = 'background:#f8d7da;color:#721c24;padding:10px 16px;margin:0 0 20px;font-family:sans-serif;font-size:13px;border-radius:3px;';
+      warn.textContent = 'A Floating UI könyvtár nem töltődött be (hálózati blokk vagy CDN-elérhetetlenség) — a jelölések ebben a nézetben nem fognak popupot nyitni.';
+      document.querySelector('.page').prepend(warn);
+    }
+  });
+}
+</script>
+
+</body>
+</html>
