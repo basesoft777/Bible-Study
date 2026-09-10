@@ -351,3 +351,40 @@ választás.
   igénylő lépés.
 
 Forrás: chat-alapú beszélgetés, 2026.09.09.
+
+## 19. Három pilóta-fájl elkészült és felmentve (2026.09.09-10)
+
+A 18. szakasz döntése (egyszerű, típus nélküli link) és a 17. szakasz
+technikai kutatása (Docsy, BibleUp, Floating UI) alapján három
+kézzel épített HTML-pilóta készült el, mindegyik `motivumlog/
+kereszthivatkozas_pilot/` alatt:
+
+- **`01_demo_2_vers.html`** — az első, kézzel épített próba, csak
+  1Móz 4:26-ra és Róm 10:14-re, típusonként színezett, szövegbe
+  ékelt popup-kártyával, külső könyvtár nélkül.
+- **`02_teljes_pilota_29_vers.html`** — a 18. szakasz döntése szerinti
+  teljes megvalósítás: mind a 29 igehely, valódi Károli 1908-szöveggel,
+  16 könyvön át, egyetlen szögletes UI-címkével ("Névbe vetett
+  segítségül hívás" — a study saját, már definiált Rövid UI-címke
+  mezőjéből, l. `Motivum_azonosito_sema_javaslat.md` 4. pontja),
+  mindegyik ugyanarra a lap-alji, teljes tartalmú lexikon-cikk
+  szakaszra mutatva.
+- **`03_floating_ui_pilota.html`** — a gazdagabb, típusonként
+  színezett popup-verzió próbája, a `@floating-ui/dom` könyvtárral
+  (CDN-ről betöltve) pozicionálva — összehasonlításra a 02-es
+  egyszerű verzióval, nem helyette.
+
+**Technikai tanulság (hibakeresésből):** a Floating UI CDN-betöltésnél
+a `@floating-ui/core` és `@floating-ui/dom` csomagok **egymáshoz nem
+illő verziószámai** (pl. core@1.6.8 + dom@1.6.13) törik az exportált
+függvénykészletet ("offset is not a function" hiba) — mindig
+egyező verziószámmal kell betölteni mindkettőt (pl. mindkettő
+1.8.0), a hivatalos dokumentációban szereplő párosítást követve, nem
+külön-külön "legújabb" verziót választva mindkettőhöz.
+
+**Státusz:** mindhárom fájl kézzel épített, önálló HTML, build-
+folyamat és Hugo-projekt nélkül — a 17. szakasz "külön munkamenetet
+igénylő" build-lépése (tényleges Hugo-projekt-inicializálás) továbbra
+sem történt meg, ez a három fájl csak a koncepció kipróbálása.
+
+Forrás: chat-alapú beszélgetés, 2026.09.09-10.
