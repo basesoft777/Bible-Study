@@ -411,6 +411,20 @@ saját, lexikai szintű megfigyelés marad (l. korábbi megállapítás).
 
 ## 7. Kapcsolatok — teljes relációs adat, diagrammal és alátámasztással
 
+**Fontos módszertani megkülönböztetés:** ez a diagram **nem** azt
+ábrázolja, hogy mely igehelyek használják ugyanazt a lexikai
+formulát (H7121+H8034/G1941) — azt már az 1. pont "Előfordulások"
+táblázata dokumentálja, és abban az értelemben mind a 29 igehely
+"kapcsolódik" 1Móz 4:26-hoz, mint a formula első előfordulásához. Ez
+a diagram egy szűkebb kérdésre válaszol: mely igehely-párok között
+van a közös formulán **túli**, egyedileg indokolható kapcsolat
+(idézés, öröklés, ugyanazon jelenet folytatása, stb.). Emiatt a
+diagram nem egyetlen, 1Móz 4:26-ból induló csillag-alakzat, hanem
+több, egymástól független klaszter — pl. az Ábrahám/Izsák-
+oltárépítés vagy a Zsolt 116 belső ismétlődése saját, önálló
+csoportot alkot, mert nincs egyedi indoklás arra, hogy ezek pont
+1Móz 4:26-hoz kötődnének, a közös formulán túl.
+
 *Mind a 29 táblázat-sor (29 egyedi igehely) legalább egy kapcsolatban
 megjelenik — a 2026.09.09-i bővítéssel (Zak 13:9 + 6 ÚSZ-i egyházi
 alkalmazás) a diagram és az alátámasztás-táblázat is kiegészült.*
