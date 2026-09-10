@@ -44,6 +44,9 @@ H3548 (כֹּהֵן, "pap"), H8004 (שָׁלֵם, "Sálem"), H4442 (מַלְכִ
 | G5010 Luk 1:8, 1Kor 14:40, Kol 2:5 | ❌ elutasítva, indokolt | más sense (papi beosztás / általános rendezettség), nem "Melkizedek-rendi" |
 | Zsid 7:21 (τάξις hatodik előfordulása) | ⚠️ szövegkritikai megjegyzéssel megtartva | csak TR/Bizánci szövegtípusban igazolt, NA28-ban nem |
 | Kenneth Copeland (1Móz 14:22-23, Ábrám esküje) | ❌ elutasítva, indokolt | más igehely/téma a fejezeten belül, nem a Melkizedek-papság motívuma |
+| 1Pét 2:9 | ✅ beépítve (2026.09.09, retroaktív pótlás) | szó szerinti LXX-idézés (βασίλειον ἱεράτευμα, azonos G0934+G2406 pár, mint LXX 2Móz 19:6) — lexikai, nem csak tematikus kapcsolat. **A TSK 2026.09.08-09-i auditja már megtalálta, de a minősítő táblázatból kimaradt — l. a Q2-szabály 2026.09.09-i kibővítését.** |
+| Jel 1:6 | ❌ elutasítva, indokolt | tematikus párhuzam, de más görög szavak (βασιλείαν, ἱερεῖς — nem βασίλειον ἱεράτευμα) — nem szó szerinti LXX-idézés |
+| Jel 5:10 | ❌ elutasítva, indokolt | ugyanaz, mint Jel 1:6 — tematikus párhuzam, más görög szavak, nem lexikai egyezés |
 
 ## Végső döntés és indoklás
 
@@ -51,4 +54,14 @@ A teljes ✅ halmaz (2Móz 19:6, Zak 6:13, Zsolt 76:3) beépítve a study 1. pon
 
 ## Összegzés
 
-17 → jelen állapot: 8 tabulált igehely/igehely-csoport (1Móz 14:18-20, Zsolt 76:3, 2Móz 19:6, Zsolt 110:4, Zak 6:13, Zsid 5:6/10/6:20, Zsid 7:1-28), 3 vizsgált és elutasított lexikai jelölt, 1 vizsgált és elutasított named-teacher jelölt.
+17 → jelen állapot (2026.09.09, második frissítés): 9 tabulált
+igehely/igehely-csoport (1Móz 14:18-20, Zsolt 76:3, 2Móz 19:6, 1Pét
+2:9, Zsolt 110:4, Zak 6:13, Zsid 5:6/10/6:20, Zsid 7:1-28), 5 vizsgált
+és elutasított lexikai/tematikus jelölt (H7069, BDB "chieftain"
+alkategória, G5010 nem-releváns előfordulások, Jel 1:6, Jel 5:10), 1
+vizsgált és elutasított named-teacher jelölt.
+
+【NAPLO: 1Pét 2:9 pótlása 2026.09.09-én — a TSK-audit már megtalálta,
+de a minősítő táblázatból kimaradt (l. fent). Jel 1:6/5:10 ugyanekkor
+formálisan minősítve és elutasítva (korábban nem volt rájuk minősítő
+sor).】
