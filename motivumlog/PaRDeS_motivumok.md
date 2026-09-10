@@ -1,5 +1,13 @@
 # PaRDeS motívum-napló (kulcsszavas)
 
+*v54 — 2026.09.08 ("segítségül hívni az Úr nevét" [ISTENTISZT-001]
+motívum újraauditálva: egy hiányzó táblázat-sor pótolva (Zak 13:9,
+eddig csak prózában szerepelt), hat új ÚSZ igehely felvéve a G1941
+teljes 31-elemű előfordulás-scan alapján [1Kor 1:2, 2Tim 2:22,
+1Pét 1:17, ApCsel 9:14, 9:21, 22:16], egy negyedik, korábban nem
+azonosított minta [D: נִקְרָא...עַל, Zsid 11:16 + héber párhuzamai]
+dokumentálva és explicit kizárva. A study 17-ről 24 igehelyre
+bővült. Részletek: `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`.)*
 *v53 — 2026.09.09 ("Melkizedek — király-pap rendje, kenyér és bor"
 motívum bővítve két új, lexikailag kapcsolódó igehellyel: 2Móz 19:6 és
 Zak 6:13, mindkettő BDB H3548 "priest-king" ["pap-király"]
@@ -10,14 +18,6 @@ szerinti LXX-idézés a 2Móz 19:6 "βασίλειον ἱεράτευμα" megf
 2026.09.09-i kibővítéséig [minden ÚJ igehelyre mutató TSK-találat
 egyedi minősítést igényel] nem került át a nyers találatok listájából
 a minősítő táblázatba. Részletek: `tematikus_lezart/Melkizedek_tematikus.md`.)*
-*v54 — 2026.09.08 ("segítségül hívni az Úr nevét" [ISTENTISZT-001]
-motívum újraauditálva: egy hiányzó táblázat-sor pótolva (Zak 13:9,
-eddig csak prózában szerepelt), hat új ÚSZ igehely felvéve a G1941
-teljes 31-elemű előfordulás-scan alapján [1Kor 1:2, 2Tim 2:22,
-1Pét 1:17, ApCsel 9:14, 9:21, 22:16], egy negyedik, korábban nem
-azonosított minta [D: נִקְרָא...עַל, Zsid 11:16 + héber párhuzamai]
-dokumentálva és explicit kizárva. A study 17-ről 24 igehelyre
-bővült. Részletek: `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`.)*
 *v52 — 2026.09.07 ("segítségül hívni az Úr nevét" [ISTENTISZT-001]
 motívum frissítve a Motívumlexikon-pilot elemzéséből visszaírt két
 elemmel: (1) Róm 10:14 mint 18. igehely [2026.09.06-i TSK-eredetű
