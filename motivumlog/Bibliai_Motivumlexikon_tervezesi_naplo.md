@@ -304,3 +304,50 @@ keveredjen össze a pár-szintű kapcsolat-jelöléssel?
   elkülönítve (l. 4. pont).
 
 Forrás: chat-alapú beszélgetés, 2026.09.09.
+
+## 18. KAPCSOLATOK-megjelenítés — DÖNTÉS: egyszerű motívum-link, induló megoldásként (2026.09.09)
+
+**A döntés:** a 17. pontban feltárt probléma (a pár-szintű,
+típusonként színezett popup nem tudja megjeleníteni a
+gyűjtemény-szintű motívum-tagságot, és a kétféle logika könnyen
+összekeveredik) megoldása: **ne próbáljuk a KAPCSOLATOK-diagram
+részleteit (Típus-mező, klaszterek) versenként lebontva, a Károli-
+oldalon megjeleníteni.** Ehelyett:
+
+- **Inline jelölés:** egyetlen, semleges jel mind a 29 versen —
+  nem típusonként színezett, nem kapcsolat-specifikus. A jel azt
+  jelzi: "ez a vers ehhez a motívumhoz tartozik", nem azt, hogy
+  "itt pontosan ez a kapcsolat van".
+- **Interakció:** nincs mini-popup, ami megpróbálná redundálni a
+  cikk tartalmát — egyszerű **link a teljes lexikon-cikkre**.
+- A KAPCSOLATOK-diagram, a Típus-mező, a klaszterek — mindez
+  **megmarad a lexikon-cikken belül**, változatlanul, ahol már
+  készen van. Nem kell versenként szétbontani vagy leegyszerűsíteni.
+
+**Mit old ez meg:** mindkét, a 17. pont 4. alpontjában feltárt
+problémát egyszerre — nincs többé "melyik kapcsolatot mutassam
+ennél a versnél" döntési kérdés (a link mindig ugyanaz: a teljes
+cikk), és nincs külön UI-elem-igény a gyűjtemény- vs. pár-szintű
+megkülönböztetésre (nincs két külön logika, csak egy: "tartozik
+ehhez a motívumhoz → olvasd el a cikket").
+
+**Az ár:** elveszik a gyors, helyszíni előnézet — az olvasó nem látja
+a Károli-oldalon maradva, mi a 4 (vagy 5) konkrét kapcsolat, csak
+azután, hogy megnyitotta a teljes cikket.
+
+**Ezzel lezárva a 17. pont 1-2. nyitott kérdése** (inline jelölési
+minta, interakciós minta) — legalábbis induló megoldásként. A
+típusonként színezett, pár-szintű popup **később, ha a build
+megvan és az egyszerű verzió kevésnek bizonyul**, bővítésként még
+mindig elképzelhető — ez nem zárja ki, csak nem ez az induló
+választás.
+
+**Változatlanul nyitva marad:**
+- A lexikon-cikkek tényleges megjelenítési formátuma a
+  kereszthivatkozás másik végén (nyers markdown vs. Netlify/Hugo-oldal
+  — a "Publikálási terv" nyitott ponttal összekötve).
+- A technikai build maga (l. 17. pont 3. alpontja — Docsy-minta,
+  Hugo-projekt inicializálása) — ez még mindig egy külön munkamenetet
+  igénylő lépés.
+
+Forrás: chat-alapú beszélgetés, 2026.09.09.
