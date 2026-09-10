@@ -6,11 +6,27 @@
 
 *v2 — 2026.08.21 — ✅ LEZÁRVA. Fontos elhatárolás: ez a tanulmány NEM azonos a "Rafeusok/óriás-népek" (1Móz 14:5, רְפָאִים) motívummal, amely már korábban, önállóan lezárult (`Rafaim_tematikus.md`, 2026.08.16) — a két motívum tematikusan rokon, de lexikailag elkülönül, és külön fájlként, külön naplóbejegyzésként kezelendő.*
 
+*v3 — 2026.09.10 — retroaktív v14-compliance frissítés: "0. Forrás-összegyűjtés" szakasz pótolva, Minőségi kapu (Q1-Q6) és STEPBible-ellenőrzés retroaktívan dokumentálva, az 1. pont táblázata után explicit, kölcsönös elhatárolási jegyzet pótolva a "Rafeusok/óriás-népek" motívummal (`[ID: HODIT-001]`, `Rafaim_tematikus.md`) szemben, és 📎-visszahivatkozás pótolva `1Moz_6v1-8_bovitett.md`-be. Tartalmi következtetés nem változott.*
+
 ---
 
 ## Mikor és miért készült
 
 A motívum jelenleg **nem** éri el a napló ⭐ Emlékeztető küszöbét a szokásos 3+ előfordulásos számlálás szerint (a "bené ha'Elohim" kifejezés maga 1 alkalommal, a hozzá kapcsolódó "gibborim/nefilim" alpont 2 alkalommal fordul elő). A napló ugyanakkor kifejezetten **"kivételesen gazdag és vitatott kapcsolatként"** jelezte előre, önálló feldolgozásra alkalmasként, felhasználói jóváhagyásra várva — ez most megtörtént. A tematikus forma indoka: nem egyetlen igehely-pár összevetéséről van szó (ahhoz a `5_Melyelemzes_prompt_sablon.md` illene), hanem egy három, egymással szorosan összefonódó kifejezésből álló **motívum-komplexumról**, amely több könyvben, több irányból közelíthető meg.
+
+---
+
+## 0. Forrás-összegyűjtés a meglévő anyagból (retroaktívan pótolva, 2026.09.10)
+
+*A sablon 0. pontja e study elkészültekor (v1, 2026.08.14; v2, 2026.08.21) még nem létezett — ez a retroaktív pótlás.*
+
+1. **`PaRDeS_motivumok.md`** — a motívum bejegyzése (v43, 2026.08.21) ellenőrizve, a teljes kereszthivatkozási hálóval (Jób 1:6, 2:1, 38:7; Júd 1:6, 1:14-15; 2Pét 2:4-5), valamint a "Nimród — a gibbor-szótő özönvíz utáni, emberi visszhangja" alponttal (1Móz 10:9), amely a jelen study 3. pontjában (Remez) már szerepel.
+2. **Érintett bővített tanulmányok 4. pontja** — `1Moz_6v1-8_bovitett.md` (a motívum a study saját szövegtörzsében szerepel, nem 🔗-blokkban; 📎-visszahivatkozás e frissítés részeként pótolva, l. 6. pont).
+3. **"Nyitva maradó szál" jelzések** — a napló saját, korábban rögzített nyitott kérdése ("shem — név szerzése mint lázadás", 6:4↔11:4 Bábel-előremutatás) a jelen frissítés sem dönti el, külön jóváhagyást igényel továbbra is.
+4. **Kereszthivatkozás-naplók 2/a-2/e auditjai** — nincs kapcsolódó bejegyzés.
+5. **`Kockazat_szures_riport_*.md`** — nincs kapcsolódó bejegyzés.
+
+**Külön elhatárolási forrás:** l. a `Rafaim_tematikus.md` (`[ID: HODIT-001]`) 0. pontjának azonos bekezdése — a két motívum elhatárolása kölcsönös, mindkét fájl saját szövegében explicit rögzítve.
 
 ---
 
@@ -29,6 +45,8 @@ A motívum jelenleg **nem** éri el a napló ⭐ Emlékeztető küszöbét a szo
 | **2Pét 2:4-5** | Isten nem kegyelmezett a bűnbe esett angyaloknak, Tartaroszba vetette őket — közvetlenül az özönvíz-elbeszélés mellett; **a kapcsolat tematikus/szerkezeti (párhuzamos "nem kegyelmezett" formula), nem közös lexikai gyök** | Drash/Sod (ÚSZ, korábban jelzett kereszthivatkozás, jelen tanulmányban pontosítva) |
 
 **Konkordancia-megjegyzés:** a pontos בְּנֵי הָאֱלֹהִים (határozott névelővel) kifejezés csak négyszer fordul elő a Szentírásban: 1Móz 6:2, 6:4, Jób 1:6, 2:1 (a Jób 38:7-ben névelő nélküli, rokon alak áll: בְּנֵי אֱלֹהִים). A נְפִלִים szó mindössze kétszer fordul elő: 1Móz 6:4 és 4Móz 13:33 — ez zárt, jól körülhatárolható lexikai készlet, nem asszociatív bővítés.
+
+**⚠️ Fontos elhatárolás a táblázathoz (2026.09.10-én explicitté téve):** az 1Móz 14:5-ös רְפָאִים (Refáim) igehely szándékosan NEM szerepel a fenti táblázatban — a בְּנֵי הָאֱלֹהִים/נְפִלִים/גִּבּוֹר szócsalád egyike sem fordul elő ott, a kapcsolat kizárólag tematikus. A Refáim-motívum a `PaRDeS_motivumok.md`-ben elkülönült ID-val (`[ID: HODIT-001]`) és elkülönült fájlban van feldolgozva (`Rafaim_tematikus.md`) — l. annak 0. pontját is.
 
 ---
 
@@ -105,8 +123,21 @@ A motívum érinti az angyalológia és a szellemi hadviselés témakörét, ame
 
 ---
 
+### Minőségi kapu (Quality Gate) — retroaktívan pótolva, 2026.09.10 (`4_PaRDeS_tematikus_sablon.md` v14 szerint)
+
+- [x] **Q1. Szerkezeti teljesség** — mind a 6 kötelező szakasz jelen van.
+- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔍 STEPBible-ellenőrizve: H1121+H430 (בְּנֵי הָאֱלֹהִים), H5303 (נְפִיל), H1368 (גִּבּוֹר) teljes ÓSZ-scan (TAHOT), 2026.09.10; a study saját 2026.08.14-i és 2026.08.21-i kutatása (Jób 1:6, 2:1, 38:7; Júd 1:6, 1:14-15; 2Pét 2:4-5) a scannel egyezik, új igehely nem került elő.
+- [x] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — 2Pét 2:4-5 explicit "tematikus/szerkezeti, nem lexikai"-ként jelölve (3. pont); a Refáim-kapcsolat explicit tematikusként jelölve (l. az 1. pont utáni jegyzet).
+- [x] **Q4. Kereszt-motívum szennyeződés kizárva** — friss `grep` a teljes repón (2026.09.10): a study kizárólag a saját (MENNY-001) motívumára vonatkozó leleteket tartalmazza; a Refáim-anyag nem szerepel benne.
+- [x] **Q5. Nevesített tanítói szakasz jelen van** — 5. pont, Derek Prince ✅ erős forrás; a pünkösdi ószövetség-szakértőknél (Moore, Martin, Thomas) explicit hiányjelzés.
+- [x] **Q6. Napló-/formázási-/hangnem-fegyelem** — ellenőrizve: nincs inline dátum-tag tartalmi cellában, nincs "Forrás:" bekezdés, nincs első személyű ellenőrzési állítás, nincs magyar fordítás blockquote-ban, nincs olvasót megszólító mondat, nincs réteg-keveredés.
+
+---
+
 ## 6. Napló-frissítés
 
-✅ **LEZÁRVA 2026.08.21.** A `PaRDeS_motivumok.md` naplóban az "Isten fiai — angyali/Séthita vita" motívum (a "gibborim/nefilim — a hibrid utódok azonosítása" alponttal együtt) ezzel a tanulmánnyal **"lezárt/önállóan feldolgozott témaként"** jelölve. Fájlnév: `Isten_fiai_Nefilim_Gibborim_tematikus.md`. A "Rafeusok/óriás-népek" (1Móz 14:5) motívum **nem** része ennek a lezárásnak — az korábban, önállóan zárult le, és önálló fájlt igényel (jelenleg pótlásra vár).
+✅ **LEZÁRVA 2026.08.21.** A `PaRDeS_motivumok.md` naplóban az "Isten fiai — angyali/Séthita vita" motívum (a "gibborim/nefilim — a hibrid utódok azonosítása" alponttal együtt) ezzel a tanulmánnyal **"lezárt/önállóan feldolgozott témaként"** jelölve. Fájlnév: `Isten_fiai_Nefilim_Gibborim_tematikus.md`. A "Rafeusok/óriás-népek" (1Móz 14:5) motívum **nem** része ennek a lezárásnak — az korábban, önállóan zárult le, önálló fájlban (`Rafaim_tematikus.md`).
 
 **Nyitva maradó kérdés, külön döntést igényel:** a Bábel-előremutatás ("*shem* — név szerzése mint lázadás", 6:4 ↔ 11:4) felvétele a naplóba mint új, előre jelzett motívum — ez a jelen lezárás **nem** tartalmazza, külön jóváhagyást igényel.
+
+**2026.09.10-i retroaktív v14-compliance frissítés:** "0. Forrás-összegyűjtés" szakasz pótolva; Minőségi kapu (Q1-Q6) és STEPBible-ellenőrzés retroaktívan dokumentálva; az 1. pont táblázata után explicit, kölcsönös elhatárolási jegyzet pótolva a Refáim-motívummal szemben; 📎-visszahivatkozás pótolva `1Moz_6v1-8_bovitett.md`-be. Tartalmi következtetés nem változott.

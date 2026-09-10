@@ -160,6 +160,8 @@ A Peshat/Remez rétegekből ténylegesen levezethető mélység: Isten "bánkód
 
 **Összegzés:** a szakasz kereszthivatkozásai egy koherens ívet rajzolnak ki: a teremtéskor gondosan "formált" ember szíve önmaga ellen fordítja ezt a "formálást"; Isten a bűn saját maga által kimondott fájdalmát hordozza tovább; és mégis, a mélypontban egyetlen ember kegyelmet talál — ez a minta a teljes Szentírás kegyelem-ívének (Ef 2:8) ószövetségi gyökere.
 
+📎 Bővebben, önálló tematikus feldolgozásban: `Isten_fiai_Nefilim_Gibborim_tematikus.md` ("Isten fiai — Nefilim — Gibborim" motívum-komplexum — a 6:2/6:4-ben dokumentált bené ha'Elohim/nefilim/gibborim komplexumot a teljes kánoni ívbe helyezve, Jób/Júdás/2Péter kereszthivatkozásokkal tárgyalja).
+
 ---
 
 ## 5. Rabbinikus és patrisztikus hangok

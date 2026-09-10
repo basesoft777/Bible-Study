@@ -123,6 +123,8 @@ A Zsidókhoz írt levél szerzője pontosan azt a Drash-tanítást bontja ki, am
 
 📎 Bővebben, önálló tematikus feldolgozásban: `Melkizedek_tematikus.md` (Melkizedek — király-pap rendje, kenyér és bor — a motívum teljes kánoni íve: 2Móz 19:6, Zsolt 110:4, Zak 6:13, 1Pét 2:9 lexikai/tematikus kapcsolatokkal)
 
+📎 Bővebben, önálló tematikus feldolgozásban: `Rafaim_tematikus.md` (Rafeusok/óriás-népek — a 14:5-ben dokumentált רְפָאִים/Zuzim/Émim népcsoportot a teljes kánoni ívbe helyezve, a nefilim/gibborim motívumtól explicit tematikusan [NEM lexikailag] elhatárolva tárgyalja)
+
 ---
 
 ## 5. Rabbinikus és patrisztikus hangok

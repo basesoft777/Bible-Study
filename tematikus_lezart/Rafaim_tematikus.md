@@ -2,6 +2,8 @@
 
 *v1 — 2026.08.16 (mélykutatással kiegészítve) — ✅ LEZÁRVA (a `PaRDeS_motivumok.md` v35-ös frissítésében rögzítve)*
 
+*v2 — 2026.09.10 — retroaktív v14-compliance frissítés: "0. Forrás-összegyűjtés" szakasz pótolva, Minőségi kapu (Q1-Q6) és STEPBible-ellenőrzés retroaktívan dokumentálva, az 1Móz 6:4-es kereszthivatkozás kiemelve az 1. pont táblázatából egy explicit, nem-lexikai elhatárolási jegyzetbe (az "Isten fiai — Nefilim — Gibborim" motívummal, `[ID: MENNY-001]`, `Isten_fiai_Nefilim_Gibborim_tematikus.md` — l. részletek a táblázat után), és 📎-visszahivatkozás pótolva `1Moz_14_bovitett.md`-be. Tartalmi következtetés nem változott.*
+
 *Fájlnév-megjegyzés (2026.08.21): ez a fájl korábban tévesen `Rafaim_Gibborim_Nefilim_tematikus.md` néven szerepelt, ami összekeverte egy másik, azóta önállóan lezárt motívummal (Isten fiai/Nefilim/Gibborim komplexum, ld. `Isten_fiai_Nefilim_Gibborim_tematikus.md`). A helyes, végleges fájlnév: `Rafaim_tematikus.md`.*
 
 **Kimenet nyelve:** magyar
@@ -10,11 +12,26 @@
 
 ---
 
+## 0. Forrás-összegyűjtés a meglévő anyagból (retroaktívan pótolva, 2026.09.10)
+
+*A sablon 0. pontja e study elkészültekor (v1, 2026.08.16) még nem létezett — ez a retroaktív pótlás.*
+
+1. **`PaRDeS_motivumok.md`** — a motívum bejegyzése (v35, 2026.08.16, kiegészítve v43/v47-tel) ellenőrizve — a teljes lexikai ív már a study saját szövegében szerepel (1Móz 14:5, 15:20; 5Móz 2:10-11,20-21, 3:11,13; Józs 12:4/13:12; 2Sám 21:15-22/1Krón 20:4-8; Jób 26:5; Zsolt 88:11; Péld 2:18,9:18,21:16; Ézs 14:9,26:14,19; a 2026.08.25-i Refáim-völgy kiegészítéssel: 2Sám 5:18,22, 23:13/1Krón 11:15, 14:9/Ézs 17:5).
+2. **Érintett bővített tanulmányok 4. pontja** — `1Moz_14_bovitett.md` (a motívum a study saját szövegtörzsében szerepel, nem 🔗-blokkban; 📎-visszahivatkozás e frissítés részeként pótolva, l. 6. pont).
+3. **"Nyitva maradó szál" jelzések** — nem volt ilyen explicit jelzés az érintett bővített study-ban.
+4. **Kereszthivatkozás-naplók 2/a-2/e auditjai** — nincs kapcsolódó bejegyzés (ezek az eszközök a study elkészülténél még nem léteztek).
+5. **`Kockazat_szures_riport_*.md`** — nincs kapcsolódó bejegyzés.
+
+**Külön elhatárolási forrás:** a `PaRDeS_motivumok.md` naplóban e motívum (`[ID: HODIT-001]`) és az "Isten fiai — Nefilim — Gibborim" motívum (`[ID: MENNY-001]`) elhatárolása több körben (v21, v34, v35, v43) is dokumentálva — l. az 1. pont utáni jegyzetet is.
+
+---
+
 ## 1. Előfordulások összegyűjtése
+
+*Kizárólag a רְפָאִים szótő és rokon népnevei valódi (lexikai) előfordulásai — l. a táblázat utáni jegyzetet a nefilim/gibborim tematikus (NEM lexikai) kapcsolatról.*
 
 | Igehely | Kapcsolódás | Megjegyzés |
 |---|---|---|
-| **1Móz 6:4** | נְפִילִים (*nefilim*) / גִּבֹּרִים (*gibborim*) — az "Isten fiai" és "emberek lányai" násza nyomán született hibrid/hatalmas utódok | A projekt korábbi tanulmányából (⚠️ Isten fiai — angyali/Séthita vita) |
 | **1Móz 14:5** | רְפָאִים (*Refáim*), זוּזִים (*Zuzim*), אֵימִים (*Émim*) — a keleti királyi koalíció leveri őket, mielőtt az öt lázadó várost is legyőzné | A jelen tanulmány kiindulópontja |
 | **1Móz 14:6** | חֹרִים (*Hórim*, Hóriak) Szeír hegyén | Ugyanabban a hadjáratban legyőzött negyedik népcsoport |
 | **1Móz 15:20** | רְפָאִים | A Refáim az Ábrámnak ígért föld népei között szerepel |
@@ -30,6 +47,8 @@
 | **Ézs 14:9** | רְפָאִים... כָּל־עַתּוּדֵי אָרֶץ | Babilon királyát gúnyosan fogadja a Seól, "fölkelti ellene a Refáimot" |
 | **Ézs 26:14,19** | רְפָאִים | A halottak feltámadásáról szóló szakasz kontextusában |
 | **2Sám 5:18,22; 23:13 / 1Krón 11:15; 14:9; Ézs 17:5** *(felvéve `Konnyu_ellenorzes_4_lezart_tanulmany.md` alapján, 2026.08.25)* | עֵמֶק רְפָאִים (*émek Refáim*, "Refáim völgye") | Jeruzsálemtől délnyugatra fekvő, termékeny völgy, amely a nép után kapta nevét — hasonló emlékeztető funkció, mint az "Óg vaságya" vagy "Refáim földje" (Józs 12:4/13:12); a filiszteusok és Dávid csatáinak, ill. Ézsaiásnál egy aratási hasonlatnak a színtere |
+
+**⚠️ Fontos elhatárolás a táblázathoz (2026.09.10-én explicitté téve):** az 1Móz 6:4-es נְפִילִים/גִּבֹּרִים igehely szándékosan NEM szerepel a fenti táblázatban — a רְפָאִים szótő ott nem fordul elő, a kapcsolat kizárólag tematikus (l. lent, 2. pont). A gibborim/nefilim motívum a `PaRDeS_motivumok.md`-ben elkülönült ID-val (`[ID: MENNY-001]`) és elkülönült fájlban van feldolgozva (`Isten_fiai_Nefilim_Gibborim_tematikus.md`); ez a tanulmány (`[ID: HODIT-001]`) csak a 2. pontban, kereszthivatkozásként említi — a küszöb-számlálást és az előfordulás-táblázatot nem befolyásolja.
 
 ---
 
@@ -95,9 +114,22 @@ Nem releváns — a motívum nem érinti kifejezetten a pünkösdi/karizmatikus 
 
 ---
 
+### Minőségi kapu (Quality Gate) — retroaktívan pótolva, 2026.09.10 (`4_PaRDeS_tematikus_sablon.md` v14 szerint)
+
+- [x] **Q1. Szerkezeti teljesség** — mind a 6 kötelező szakasz jelen van (1. Előfordulások, 2. Eredeti nyelvi összevetés, 3. PaRDeS keretrendszer, 4. Kapcsolódás a kutatási sablonhoz, 5. Alkalmazás, 6. Napló-frissítés).
+- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔍 STEPBible-ellenőrizve: H7497 (רָפָא/רְפָאִים) teljes ÓSZ-scan (TAHOT), 2026.09.10; a study saját, 2026.08.16-i és 2026.08.25-i kutatása (Józs 12:4/13:12, 2Sám 21, Jób 26:5, Zsolt 88:11, Péld 2:18/9:18/21:16, Ézs 14:9/26:14,19, Refáim-völgy) a scannel egyezik, új igehely nem került elő.
+- [x] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — a nefilim/gibborim (1Móz 6:4) kapcsolat explicit "tematikus, NEM lexikai"-ként jelölve (2. pont és az 1. pont utáni jegyzet).
+- [x] **Q4. Kereszt-motívum szennyeződés kizárva** — friss `grep` a teljes repón (2026.09.10): a study kizárólag a saját (HODIT-001) motívumára vonatkozó leleteket tartalmazza; a nefilim/gibborim anyag most explicit kereszthivatkozásként, nem beolvasztva szerepel.
+- [x] **Q5. Nevesített tanítói szakasz jelen van, vagy explicit hiányjelzéssel zárva** — 5. pont, gap-jelzéssel (nincs dedikált forrás a jóváhagyott listáról).
+- [x] **Q6. Napló-/formázási-/hangnem-fegyelem** — ellenőrizve: nincs inline dátum-tag tartalmi cellában, nincs "Forrás:" bekezdés, nincs első személyű ellenőrzési állítás, nincs magyar fordítás blockquote-ban, nincs olvasót megszólító mondat, nincs réteg-keveredés.
+
+---
+
 ## 6. Napló-frissítés
 
 ✅ **Ez a lezárás már megtörtént korábban** (`PaRDeS_motivumok.md` v35, 2026.08.16) — a napló rögzíti, hogy ez a motívum "lezárt/önállóan feldolgozott témaként" szerepel, felhasználói explicit kérésre, a rendes ⭐ küszöb elérése előtt. Ez a fájl a naplóban már korábban dokumentált lezárás **tényleges, teljes tartalmát** pótolja a repóban — nem új lezárási lépés.
+
+**2026.09.10-i retroaktív v14-compliance frissítés:** "0. Forrás-összegyűjtés" szakasz pótolva; Minőségi kapu (Q1-Q6) és STEPBible-ellenőrzés retroaktívan dokumentálva; az 1Móz 6:4-es kereszthivatkozás kiemelve az 1. pont táblázatából egy explicit elhatárolási jegyzetbe; 📎-visszahivatkozás pótolva `1Moz_14_bovitett.md`-be. Tartalmi következtetés nem változott.
 
 ---
 
