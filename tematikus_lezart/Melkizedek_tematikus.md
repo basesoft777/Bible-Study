@@ -197,19 +197,19 @@ Ez a tanulmány a Melkizedek-motívumot **kiegészíti**, nem duplikálja a napl
 
 ### Lezárási checklist (a `4_PaRDeS_tematikus_sablon.md` v12 szerint)
 
-- [x] 1. Tanulmányfájl elkészítve — `Melkizedek_tematikus_v2.md`, `/mnt/user-data/outputs/`-ba kitéve
-- [ ] 2. Motívumlog 1. szekció (Tematikus áttekintés) — **még nem frissítve**, felhasználói jóváhagyásra vár
-- [ ] 3. Motívumlog 2. szekció (Kulcsszó-index) — **még nem frissítve**
-- [ ] 4. Motívumlog 3. szekció (Részletes kulcsszó-magyarázatok) — **még nem frissítve**
-- [ ] 5. Motívumlog 4. szekció (Könyv szerinti index) — **még nem ellenőrizve**
+- [x] 1. Tanulmányfájl elkészítve — ez a fájl (`Melkizedek_tematikus.md`), a repóban él
+- [x] 2. Motívumlog 1. szekció (Tematikus áttekintés) — frissítve 2026.09.10-én (`PaRDeS_motivumok.md`, commit `9b89ef9`)
+- [x] 3. Motívumlog 2. szekció (Kulcsszó-index) — frissítve 2026.09.10-én, ugyanott
+- [x] 4. Motívumlog 3. szekció (Részletes kulcsszó-magyarázatok) — frissítve 2026.09.10-én, "Visszahivatkozott bővített study-k" sorral kiegészítve
+- [x] 5. Motívumlog 4. szekció (Könyv szerinti index) — frissítve 2026.09.10-én (2Mózes/Zakariás/1Péter sorok bővítve)
 - [x] 6. Motívumlog 5. szekció (⭐ Emlékeztető küszöb) — nem érintett (a motívum sosem volt ott, küszöb előtti kivételes feldolgozás)
 - [x] 7. Motívumlog 6. szekció (Előrejelzett motívumok) — nem érintett
-- [ ] 8. `Lezart_tematikus_tanulmanyok_index.md` frissítve — **még nem**
-- [ ] 9. Motívumlog fejléc-changelog frissítve — **még nem**
-- [ ] 10. GitHub-feltöltésre emlékeztetés — **ez a lépés**: a fájl még NEM commitolva, jóváhagyásra vár
+- [x] 8. `Lezart_tematikus_tanulmanyok_index.md` frissítve — 2026.09.10-én, #8 sor
+- [x] 9. Motívumlog fejléc-changelog frissítve — v53 bejegyzés, 2026.09.10
+- [x] 10. GitHub-feltöltésre emlékeztetés — a fájl a repóban él, commitolva és pusholva (`melkizedek-checklist-sync-20260910` branch, commit `9b89ef9`)
 - [x] 11. STEPBible-ellenőrzés dokumentálva — 🔍 STEPBible-ellenőrizve: H3548, H1700, H410, H5945, H7069 (TAHOT teljes ÓSZ), G5010, G0934, G2406 (TAGNT teljes ÚSZ), 2026.09.08–09
-- [ ] 12. Érintett bővített tanulmányok visszahivatkozása (2Móz 19 és Zak 6 saját bővített study-jánál, ha van) — **még nem ellenőrizve, hogy létezik-e ilyen study**
+- [x] 12. Érintett bővített tanulmányok visszahivatkozása — `1Moz_14_bovitett.md` 📎-jegyzettel kiegészítve, 2026.09.10 (2Móz 19-nek és Zak 6-nak nincs saját bővített study-ja, ezért rájuk nem vonatkozik)
 
 ---
 
-*Belső önellenőrzés elvégezve: kiejtés minden héber/görög szónál feltüntetve; a mélyelemzés filológiai eredményei (τάξις, Zsid 7:3 argumentum e silentio, Gen 14↔Zsolt 110 irány-vita) teljes egészében megismételve, hogy a fájl önmagában is olvasható legyen; ⚠️ két elkülönített vita explicit megkülönböztetve (Melkizedek kiléte vs. Gen 14↔Zsolt 110 irány), (b) vita kiegészítve a 2Móz 19:6-lelet lehetséges hatásával; nevesített tanítói keresés az öt lépéses módszertant követte, forrás-erősség jelölve (✅ Prince), hiány esetén explicit jelezve; igehely-formátum egységes; napló-jelölés 【NAPLO: ...】 formában, elkülönítve minden folyamat-jellegű megjegyzésnél; Napló-frissítés és Lezárási checklist elvégezve — a checklist 2-5, 8-9, 12. pontjai TUDATOSAN nyitva hagyva felhasználói jóváhagyásig, a 10. pont (GitHub-feltöltés) explicit még-nem-státusszal.*
+*Belső önellenőrzés elvégezve: kiejtés minden héber/görög szónál feltüntetve; a mélyelemzés filológiai eredményei (τάξις, Zsid 7:3 argumentum e silentio, Gen 14↔Zsolt 110 irány-vita) teljes egészében megismételve, hogy a fájl önmagában is olvasható legyen; ⚠️ két elkülönített vita explicit megkülönböztetve (Melkizedek kiléte vs. Gen 14↔Zsolt 110 irány), (b) vita kiegészítve a 2Móz 19:6-lelet lehetséges hatásával; nevesített tanítói keresés az öt lépéses módszertant követte, forrás-erősség jelölve (✅ Prince), hiány esetén explicit jelezve; igehely-formátum egységes; napló-jelölés 【NAPLO: ...】 formában, elkülönítve minden folyamat-jellegű megjegyzésnél; Napló-frissítés és Lezárási checklist elvégezve — **mind a 12 pont lezárva 2026.09.10-én** (l. fent); a korábbi, 2-5/8-9/10/12. pontokat nyitva hagyó megjegyzés elavult volt, törölve.*
