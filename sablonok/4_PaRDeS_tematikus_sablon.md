@@ -270,7 +270,19 @@ Lezárási checklist elindulna.
       scan, TSK (Votes-küszöbbel), Károli-KH és BDB-ellenőrzés
       lefutott, dátummal. Puszta hivatkozás egy korábbi audit
       dátumára elfogadható, ha a study azóta nem bővült; bővítésnél
-      új dátum szükséges.
+      új dátum szükséges. **A TSK-lefutás önmagában nem elég** — minden
+      TSK-találat, ami a study táblázatában **még nem szereplő, ÚJ**
+      igehelyre mutat, saját, egyedi ✅/❌ sort kap a "Tartalmi
+      minősítés minden jelöltre" táblázatban, ugyanúgy, mint a lexikai
+      kulcsszó-scan jelöltjei — nem elég a nyers találatok listájában
+      megemlíteni. (Már a táblázatban szereplő igehelyek közötti
+      TSK-találat ettől eltérően csak megerősítésként dokumentálandó,
+      nem igényel új minősítő sort.) **A szabályt megalapozó konkrét
+      eset** (2026.09.09): a Melkizedek-study TSK-auditja megtalálta a
+      "2Móz 19:6 ↔ 1Pét 2:9" kapcsolatot (22 szavazat, szó szerinti LXX-
+      idézés, βασίλειον ἱεράτευμα) a nyers találatok között, de ez az
+      ÚJ igehely sosem került át a minősítő táblázatba — se ✅, se ❌
+      nem lett rá írva, egyszerűen kiesett a két lista között.
 - [ ] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — minden
       olyan igehely/hivatkozás, ami nem lexikailag (közös Strong-
       szám/szótő), hanem csak fogalmilag kapcsolódik a motívumhoz,
