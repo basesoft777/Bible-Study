@@ -6,7 +6,9 @@
 
 *v2 — 2026.08.21 — ✅ LEZÁRVA. Fontos elhatárolás: ez a tanulmány NEM azonos a "Rafeusok/óriás-népek" (1Móz 14:5, רְפָאִים) motívummal, amely már korábban, önállóan lezárult (`Rafaim_tematikus.md`, 2026.08.16) — a két motívum tematikusan rokon, de lexikailag elkülönül, és külön fájlként, külön naplóbejegyzésként kezelendő.*
 
-*v3 — 2026.09.10 — retroaktív v14-compliance frissítés: "0. Forrás-összegyűjtés" szakasz pótolva, Minőségi kapu (Q1-Q6) és STEPBible-ellenőrzés retroaktívan dokumentálva, az 1. pont táblázata után explicit, kölcsönös elhatárolási jegyzet pótolva a "Rafeusok/óriás-népek" motívummal (`[ID: HODIT-001]`, `Rafaim_tematikus.md`) szemben, és 📎-visszahivatkozás pótolva `1Moz_6v1-8_bovitett.md`-be. Tartalmi következtetés nem változott.*
+*v3 — 2026.09.10 — retroaktív v14-compliance frissítés: "0. Forrás-összegyűjtés" szakasz pótolva, Minőségi kapu (Q1-Q6) retroaktívan dokumentálva, az 1. pont táblázata után explicit, kölcsönös elhatárolási jegyzet pótolva a "Rafeusok/óriás-népek" motívummal (`[ID: HODIT-001]`, `Rafaim_tematikus.md`) szemben, és 📎-visszahivatkozás pótolva `1Moz_6v1-8_bovitett.md`-be. Tartalmi következtetés nem változott.*
+
+*v4 — 2026.09.10 — valódi lexikai kutatás a helyi `TAHOT_kivonat.tsv` alapján: a בְּנֵי (הָ)אֱלֹהִים pontos szórendi minta (névelős és névelő nélküli forma együtt) teljes ellenőrzése — 5 előfordulás megerősítve (1Móz 6:2, 6:4, Jób 1:6, 2:1, 38:7), új nem került elő; egy igehely-hivatkozási hiba javítva (4Móz 13:33→13:34, mindhárom előfordulási helyen a fájlban); a korábbi, pontatlan Q2-állítás lecserélve a ténylegesen elvégzett kutatás leírására.*
 
 ---
 
@@ -39,12 +41,12 @@ A motívum jelenleg **nem** éri el a napló ⭐ Emlékeztető küszöbét a szo
 | **Jób 1:6** | בְּנֵי הָאֱלֹהִים megjelennek Isten színe előtt, mennyei tanácsban, Sátán is közöttük | Remez (jelen tanulmányban felvéve, korábban nem feldolgozva) |
 | **Jób 2:1** | ugyanaz a jelenet megismétlődik | Remez (jelen tanulmányban felvéve) |
 | **Jób 38:7** | a בְּנֵי אֱלֹהִים örömkiáltása a teremtéskor | Remez (jelen tanulmányban felvéve) |
-| **4Móz 13:33** | a kémek jelentésében נְפִלִים — Anák fiai mint a nefilim leszármazottai | Remez (napló-alpontból, jelen tanulmányban kifejtve) |
+| **4Móz 13:34** | a kémek jelentésében נְפִלִים — Anák fiai mint a nefilim leszármazottai | Remez (napló-alpontból, jelen tanulmányban kifejtve) 【NAPLO: az igehely-hivatkozás 2026.09.10-én javítva 13:33-ról 13:34-re — a helyi TAHOT-kivonat szerint a נְפִלִים szó ténylegesen a 34. versben áll】 |
 | **Júd 1:6** | angyalok, akik "nem tartották meg fejedelemségüket", örök bilincsben — **tartalmi/szerkezeti rokonság 1Énokh 10:4-6, 10:11-12, 12:4-gyel (nem szó szerinti idézet)** | Drash/Sod (ÚSZ, korábban jelzett kereszthivatkozás) |
 | **Júd 1:14-15** | Énokh próféciája az ítéletről — **közvetlen, szinte szó szerinti idézet 1Énokh 1:9-ből** | Drash/Sod (ÚSZ, jelen tanulmányban pontosítva) |
 | **2Pét 2:4-5** | Isten nem kegyelmezett a bűnbe esett angyaloknak, Tartaroszba vetette őket — közvetlenül az özönvíz-elbeszélés mellett; **a kapcsolat tematikus/szerkezeti (párhuzamos "nem kegyelmezett" formula), nem közös lexikai gyök** | Drash/Sod (ÚSZ, korábban jelzett kereszthivatkozás, jelen tanulmányban pontosítva) |
 
-**Konkordancia-megjegyzés:** a pontos בְּנֵי הָאֱלֹהִים (határozott névelővel) kifejezés csak négyszer fordul elő a Szentírásban: 1Móz 6:2, 6:4, Jób 1:6, 2:1 (a Jób 38:7-ben névelő nélküli, rokon alak áll: בְּנֵי אֱלֹהִים). A נְפִלִים szó mindössze kétszer fordul elő: 1Móz 6:4 és 4Móz 13:33 — ez zárt, jól körülhatárolható lexikai készlet, nem asszociatív bővítés.
+**Konkordancia-megjegyzés:** a pontos בְּנֵי הָאֱלֹהִים (határozott névelővel) kifejezés csak négyszer fordul elő a Szentírásban: 1Móz 6:2, 6:4, Jób 1:6, 2:1 (a Jób 38:7-ben névelő nélküli, rokon alak áll: בְּנֵי אֱלֹהִים). A נְפִלִים szó mindössze kétszer fordul elő: 1Móz 6:4 és 4Móz 13:34 — ez zárt, jól körülhatárolható lexikai készlet, nem asszociatív bővítés. 【NAPLO: mindkét állítás 2026.09.10-én, a helyi TAHOT-kivonat közvetlen lekérdezésével (pontos szórendi minta keresése) ténylegesen ellenőrizve és megerősítve; a 4Móz-hivatkozás 13:33-ról 13:34-re javítva.】
 
 **⚠️ Fontos elhatárolás a táblázathoz (2026.09.10-én explicitté téve):** az 1Móz 14:5-ös רְפָאִים (Refáim) igehely szándékosan NEM szerepel a fenti táblázatban — a בְּנֵי הָאֱלֹהִים/נְפִלִים/גִּבּוֹר szócsalád egyike sem fordul elő ott, a kapcsolat kizárólag tematikus. A Refáim-motívum a `PaRDeS_motivumok.md`-ben elkülönült ID-val (`[ID: HODIT-001]`) és elkülönült fájlban van feldolgozva (`Rafaim_tematikus.md`) — l. annak 0. pontját is.
 
@@ -56,7 +58,7 @@ A motívum jelenleg **nem** éri el a napló ⭐ Emlékeztető küszöbét a szo
 A kifejezés mind a négy előfordulásban egy **Istenhez tartozó, nem-emberi, mennyei lény-kategóriát** jelöl — ez a legfontosabb ellenőrizhető nyelvi tény, amely a Séthita-olvasat ellen, az angyali/mennyei lény-olvasat mellett szól. Jób 1:6 és 2:1-ben a בְּנֵי הָאֱלֹהִים egyértelműen a mennyei udvar tagjai, Isten elé állnak, és közöttük van a שָׂטָן (*sátán*, "vádló") is — ez a szó szoros értelemben senki nem olvassa "istenfélő emberi leszármazottként". Jób 38:7-ben ugyanezek a lények a teremtéskor örvendeznek, tehát léthelyzetük megelőzi az emberi történelmet. Ez a következetesség nyomós **belső bibliai (kánonon belüli) érv** az 1Móz 6:2,4 angyali olvasata mellett — még ha a végső azonosítás vitatott is marad (lásd lent, 3. pont, ⚠️).
 
 **נְפִלִים (*nefilim*):**
-A gyök (נפ״ל, "elesni/hullani") vitatott: hagyományosan "elesettek" (a mennyből, vagy csatában elesett hősök) vagy — a görög Septuaginta fordítása alapján (γίγαντες, *gigantes*) — "óriások". A két előfordulás (1Móz 6:4; 4Móz 13:33) között nincs szó szerinti szintaktikai ismétlődés, csak névazonosság — a kémek retorikus túlzása ("óriások, akikhez képest sáskáknak látszottunk") nem feltétlenül állít genealógiai folytonosságot az özönvíz előtti nefilimmel, hiszen azok — a szöveg saját elbeszélése szerint — elpusztultak az özönvízben.
+A gyök (נפ״ל, "elesni/hullani") vitatott: hagyományosan "elesettek" (a mennyből, vagy csatában elesett hősök) vagy — a görög Septuaginta fordítása alapján (γίγαντες, *gigantes*) — "óriások". A két előfordulás (1Móz 6:4; 4Móz 13:34) között nincs szó szerinti szintaktikai ismétlődés, csak névazonosság — a kémek retorikus túlzása ("óriások, akikhez képest sáskáknak látszottunk") nem feltétlenül állít genealógiai folytonosságot az özönvíz előtti nefilimmel, hiszen azok — a szöveg saját elbeszélése szerint — elpusztultak az özönvízben.
 
 **גִּבּוֹר (*gibbor*, "erős/hős") — ⚠️ vitatott: azonos-e a nefilimmel?**
 Ez a szó önmagában rendkívül gyakori a Szentírásban (harcosokra, Istenre — pl. אֵל גִּבּוֹר, "erős Isten", Ézs 9:5 — sőt később Nimródra is: 1Móz 10:8-9, גִּבֹּר צַיִד, "hatalmas vadász"). **Éppen ezért a gibbor önmagában gyenge lexikai horgony** — a laqach (H3947) tanulságához hasonlóan: egy gyakori szó nem alkalmas önálló konkordancia-alapú kapcsolat építésére. A motívum szempontjából nem a szó ritkasága, hanem a mondat szerkezete hordozza a jelentést.
@@ -126,7 +128,7 @@ A motívum érinti az angyalológia és a szellemi hadviselés témakörét, ame
 ### Minőségi kapu (Quality Gate) — retroaktívan pótolva, 2026.09.10 (`4_PaRDeS_tematikus_sablon.md` v14 szerint)
 
 - [x] **Q1. Szerkezeti teljesség** — mind a 6 kötelező szakasz jelen van.
-- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔍 STEPBible-ellenőrizve: H1121+H430 (בְּנֵי הָאֱלֹהִים), H5303 (נְפִיל), H1368 (גִּבּוֹר) teljes ÓSZ-scan (TAHOT), 2026.09.10; a study saját 2026.08.14-i és 2026.08.21-i kutatása (Jób 1:6, 2:1, 38:7; Júd 1:6, 1:14-15; 2Pét 2:4-5) a scannel egyezik, új igehely nem került elő.
+- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔬 Valódi lexikai kutatás elvégezve 2026.09.10-én, a helyi `TAHOT_kivonat.tsv` közvetlen lekérdezésével: a בְּנֵי (הָ)אֱלֹהִים pontos szórendi minta (H1121, opcionális névelő, H0430) keresése — **5 előfordulás megerősítve** (1Móz 6:2, 6:4, Jób 1:6, 2:1 névelővel; Jób 38:7 névelő nélkül), új nem került elő; H5303 (נְפִיל) teljes ÓSZ-listája is megerősítve (1Móz 6:4, 4Móz 13:34 — igehely-hivatkozás javítva 13:33-ról). 【NAPLO: a 2026.09.09-i verzióban itt egy pontatlan, ténylegesen soha le nem futtatott "STEPBible-ellenőrizve" állítás szerepelt — ez a sor annak korrekciója és a valódi kutatás eredménye.】
 - [x] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — 2Pét 2:4-5 explicit "tematikus/szerkezeti, nem lexikai"-ként jelölve (3. pont); a Refáim-kapcsolat explicit tematikusként jelölve (l. az 1. pont utáni jegyzet).
 - [x] **Q4. Kereszt-motívum szennyeződés kizárva** — friss `grep` a teljes repón (2026.09.10): a study kizárólag a saját (MENNY-001) motívumára vonatkozó leleteket tartalmazza; a Refáim-anyag nem szerepel benne.
 - [x] **Q5. Nevesített tanítói szakasz jelen van** — 5. pont, Derek Prince ✅ erős forrás; a pünkösdi ószövetség-szakértőknél (Moore, Martin, Thomas) explicit hiányjelzés.
@@ -140,4 +142,6 @@ A motívum érinti az angyalológia és a szellemi hadviselés témakörét, ame
 
 **Nyitva maradó kérdés, külön döntést igényel:** a Bábel-előremutatás ("*shem* — név szerzése mint lázadás", 6:4 ↔ 11:4) felvétele a naplóba mint új, előre jelzett motívum — ez a jelen lezárás **nem** tartalmazza, külön jóváhagyást igényel.
 
-**2026.09.10-i retroaktív v14-compliance frissítés:** "0. Forrás-összegyűjtés" szakasz pótolva; Minőségi kapu (Q1-Q6) és STEPBible-ellenőrzés retroaktívan dokumentálva; az 1. pont táblázata után explicit, kölcsönös elhatárolási jegyzet pótolva a Refáim-motívummal szemben; 📎-visszahivatkozás pótolva `1Moz_6v1-8_bovitett.md`-be. Tartalmi következtetés nem változott.
+**2026.09.10-i retroaktív v14-compliance frissítés:** "0. Forrás-összegyűjtés" szakasz pótolva; Minőségi kapu (Q1-Q6) retroaktívan dokumentálva; az 1. pont táblázata után explicit, kölcsönös elhatárolási jegyzet pótolva a Refáim-motívummal szemben; 📎-visszahivatkozás pótolva `1Moz_6v1-8_bovitett.md`-be.
+
+**2026.09.10-i, ugyanaznapi második frissítés — valódi lexikai kutatás eredménye:** בְּנֵי (הָ)אֱלֹהִים minta 5 előfordulása megerősítve, új nem került elő; igehely-hivatkozási javítás (4Móz 13:33→13:34, mindhárom előfordulási helyen a fájlban, l. is `Rafaim_tematikus.md` és a motívumnapló). Tartalmi következtetés a fentieken túl nem változott.
