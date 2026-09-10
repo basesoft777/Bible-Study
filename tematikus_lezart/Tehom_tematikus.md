@@ -7,6 +7,8 @@
 
 *v3 — 2026.09.10 — összevonás: a `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` fájl tartalma (a görög ábüσσος-anyag) ebbe a fájlba olvasztva, mert a motívumnaplóban sosem volt önálló ID-ja — mindig is a `[ID: TEREMT-001]` kiterjesztéseként szerepelt. Az a fájl törölve. A hádész/seól (`[ID: ALVIL-001]`) továbbra is önálló fájlban él (`Hadesz_Seol_tematikus.md`), a Tartarosz-kereszthivatkozás (nincs önálló ID) egy bekezdésben marad. Egyúttal valódi lexikai kutatás: a helyi `TAHOT_kivonat.tsv` H8415 teljes ÓSZ-scanje 3, eddig dokumentálatlan igehelyet hozott (Zsolt 36:7; 77:17; Jón 2:6), a `TAGNT_kivonat.tsv` G0012 teljes ÚSZ-scanje pedig megerősítette a meglévő 9 ábüσσος-előfordulást (nincs új). Tartalmi következtetés a fentieken túl nem változott.*
 
+*v4 — 2026.09.10, ugyanaznapi harmadik frissítés — sablon-megfelelőségi javítás: a "2/b" szakasz prózai csoportosítása táblázatra alakítva (a sablon "MINDEN találat a táblázatba" szabálya szerint), és a korábbi hibás "31 további igehely" állítás javítva "28"-ra (a valódi egyedi igehely-szám).*
+
 **Lásd is:** a vele tematikusan, de nem lexikailag rokon שְׁאוֹל/ᾍδης (hádész/seól) motívum önálló fájlban él: `Hadesz_Seol_tematikus.md` (`[ID: ALVIL-001]`).
 
 ---
@@ -62,19 +64,40 @@ A motívum egy konkrét, azonosítható kulcsszón alapul: **תְּהוֹם** (*
 
 ## 2/b. Kiterjesztés — a tehóm teljes bibliai előfordulási mezője
 
-*(felvéve `Konnyu_ellenorzes_4_lezart_tanulmany.md` feltáró STEPBible-ellenőrzése alapján, 2026.08.25; kiegészítve helyi TAHOT-kivonat teljes H8415-scanjével, 2026.09.10)*
+*(felvéve `Konnyu_ellenorzes_4_lezart_tanulmany.md` feltáró STEPBible-ellenőrzése alapján, 2026.08.25; kiegészítve helyi TAHOT-kivonat teljes H8415-scanjével, 2026.09.10; sablon-konform táblázatra alakítva, a számadat javítva 2026.09.10-én)*
 
-A négy genezisi (+ Exodus-Tóra-szintű) előforduláson túl a *tehóm* még **31 helyen** fordul elő az Ószövetségben (teljes valódi darabszám: 35), és ezek egytől egyig a fent azonosított négy regiszter valamelyikébe rendeződnek — megerősítve, hogy a Genezis-ív nem elszigetelt jelenség, hanem egy jól azonosítható, egész Ószövetségen átívelő teológiai szókincs genezisi nyitánya.
+A négy genezisi (+ Exodus-Tóra-szintű) előforduláson túl a *tehóm* még **28 egyedi igehelyen** fordul elő az Ószövetségben (a szó nyers előfordulás-száma 35, mert Zsolt 42:8-ban a תְּהוֹם szó kétszer szerepel egy versen belül — egyedi versek száma emiatt 34, ebből 6 már az alap-táblázatban van).
 
-**Kozmikus elem, Isten uralma alatt** (Gen 1:2 megerősítése): Jób 28:14; 38:16; Péld 3:20; 8:24; Zsolt 33:7; 104:6; 135:6; 148:7; **Zsolt 36:7 — "ítéleteid [olyanok, mint] a nagy mélység" 【NAPLO: felvéve 2026.09.10-én, helyi TAHOT-kivonat teljes H8415-scanje alapján — eddig egyik fájlban sem szerepelt】**.
-
-**A mélység forrásai/bezárása** (Gen 7:11 / 8:2 szoros párhuzamai): Péld 8:27-28 (szinte szó szerinti — "a mélység színén" / "a mélység forrásai"); Jób 38:30; Ez 31:4,15.
-
-**Áldás/bőség** (Gen 49:25 megerősítése): **5Móz 33:13 — Mózes áldása Józsefen, csaknem szó szerint megegyezik Jákób 49:25-ös áldásával**; 5Móz 8:7; Zsolt 78:15.
-
-**Ítélet/dekreáció, ill. Exodus-visszhang** (Gen 7:11 és 2Móz 15:5,8 megerősítése): Ez 26:19; Ámós 7:4; Hab 3:10; **Ézs 51:10; 63:13; Zsolt 106:9 — mind explicit Vörös-tengeri visszaemlékezés**; **Zsolt 77:17 — "látták a vizek téged... megrázkódtak a mélységek", szintén teofánia/Vörös-tenger-visszhang 【NAPLO: felvéve 2026.09.10-én, ugyanabból a scanből】**.
-
-**Szorongatásból kiemelés**: Zsolt 42:8 ("mélység a mélységet hívja"); Zsolt 71:20; 107:26; **Jón 2:6 — "a mélység körülvett engem" — Jónás imája a hal gyomrában 【NAPLO: felvéve 2026.09.10-én, ugyanabból a scanből — a legszorosabb tartalmi párhuzam a Zsolt 71:20/107:26 verspárral】**.
+| Igehely | Kapcsolódás | PaRDeS-szint |
+|---|---|---|
+| 5Móz 8:7 | "a föld... amelynek mélységei forrásokban törnek elő" — áldás/bőség | Remez |
+| 5Móz 33:13 | Mózes áldása Józsefen — "a mélység áldásaival alant" (csaknem szó szerint = 1Móz 49:25) | Remez |
+| Jób 28:14 | "a mélység azt mondja: nincs bennem" — a bölcsesség nem található | Remez |
+| Jób 38:16 | "eljutottál-e a mélység forrásaihoz" | Remez |
+| Jób 38:30 | "a mélység színe mintegy jéggé mered" | Remez |
+| Zsolt 33:7 *(⚠️ Károli 1908 "hullámokat"-tal fordítja, l. lent)* | "összegyűjti mint tömlőbe a tenger vizét, tárházba rakja a mélységeket" | Remez |
+| Zsolt 36:7 | "ítéleteid [olyanok, mint] a nagy mélység" | Remez |
+| Zsolt 42:8 | "mélység a mélységet hívja" — a szó kétszer szerepel e versben | Remez |
+| Zsolt 71:20 | "a föld mélységéből ismét felhozol engem" | Remez |
+| Zsolt 77:17 | "látták a vizek téged... megrázkódtak a mélységek" — teofánia/Vörös-tenger-visszhang | Remez |
+| Zsolt 78:15 | "megnyitotta a kősziklát... itatta, mint a nagy mélységekből" | Remez |
+| Zsolt 104:6 | "vízáradattal, mint egy ruhával, takartad be, a hegyek felett álltak a vizek" | Remez |
+| Zsolt 106:9 | "megdorgálta a veres tengert... átvitte őket a mélységeken" — Exodus-visszhang | Remez |
+| Zsolt 107:26 *(⚠️ Károli 1908 "fenékig"-gel fordítja, l. lent)* | "az égig emelkednek, a fenékig süllyednek" | Remez |
+| Zsolt 135:6 | "amit csak akar, megcselekszi... a mélységekben" | Remez |
+| Zsolt 148:7 | "dicsérjétek az Urat... ti mélységek" | Remez |
+| Péld 3:20 | "az ő tudománya által fakadtak a mélységek" | Remez |
+| Péld 8:24 | "mikor még semmi mélységek nem voltak, születtem" — bölcsesség-teológia | Remez |
+| Péld 8:27 | "mikor a mélység színe felett kört formált" (szinte szó szerinti = 1Móz 1:2) | Remez |
+| Péld 8:28 | "mikor erősekké tette a mélység forrásait" (szinte szó szerinti = 1Móz 7:11) | Remez |
+| Ézs 51:10 | "nem te vagy-e, aki kiszárítottad a tengert, a nagy mélység vizeit" — Exodus-visszhang | Remez |
+| Ézs 63:13 | "aki átvitte őket a mélységeken" — Exodus-visszhang | Remez |
+| Ez 26:19 | "mikor rád hozom a mélységet, hogy elborítsanak a nagy vizek" | Remez |
+| Ez 31:4 | "a mélység naggyá tette [a cédrust]" | Remez |
+| Ez 31:15 | "béburkoltam miatta a mélységet" — Fáraó-siratóének | Remez |
+| Ámós 7:4 | "megemésztette a nagy mélységet" — sáska/tűz-látomás | Remez |
+| Hab 3:10 | "a mélység felemelte szavát" — teofánia | Remez |
+| Jón 2:6 | "a mélység körülvett engem" — Jónás imája a hal gyomrában, legszorosabb párhuzam a Zsolt 71:20/107:26 verspárral | Remez |
 
 ⚠️ **Fordítási megjegyzés:** Zsolt 33:7 és 107:26 esetén a Károli 1908-as fordítás nem a "mélység" szót használja a תְּהוֹם-ra ("hullámokat", ill. "fenékig") — a héber szó azonossága a Strong-adatból egyértelmű, de a magyar szöveg ezt nem teszi láthatóvá.
 
@@ -136,7 +159,7 @@ Nincs kifejezetten e motívumhoz kötött, elmentett szabály szerinti nevesíte
 ### Minőségi kapu (Quality Gate) — 2026.09.10 (`4_PaRDeS_tematikus_sablon.md` v14 szerint)
 
 - [x] **Q1. Szerkezeti teljesség** — mind a 6 kötelező szakasz jelen van.
-- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔬 Valódi lexikai kutatás elvégezve 2026.09.10-én, helyi `TAHOT_kivonat.tsv`/`TAGNT_kivonat.tsv` közvetlen lekérdezésével: H8415 (תְּהוֹם) teljes ÓSZ-scan — 35 előfordulás, ebből **3 eddig dokumentálatlan** (Zsolt 36:7; 77:17; Jón 2:6), felvéve a 2/b pontba; G0012 (ἄβυσσος) teljes ÚSZ-scan — 9 előfordulás, teljes egyezés, nincs új.
+- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔬 Valódi lexikai kutatás elvégezve 2026.09.10-én, helyi `TAHOT_kivonat.tsv`/`TAGNT_kivonat.tsv` közvetlen lekérdezésével: H8415 (תְּהוֹם) teljes ÓSZ-scan — 35 szóelőfordulás, 34 egyedi vers (Zsolt 42:8-ban kétszer), 28 egyedi igehely a 6 alap-versen felül, ebből **3 eddig dokumentálatlan** (Zsolt 36:7; 77:17; Jón 2:6), felvéve táblázatos formában a 2/b pontba (2026.09.10-én sablon-konform formára alakítva, a korábbi prózai forma és a hibás "31" szám javítva); G0012 (ἄβυσσος) teljes ÚSZ-scan — 9 előfordulás, teljes egyezés, nincs új.
 - [x] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — a Tartarosz-kapcsolat explicit "nem lexikai rokona" jelöléssel (1. pont); a hádész/seól teljesen külön fájlban (2/c pont, ill. header).
 - [x] **Q4. Kereszt-motívum szennyeződés kizárva** — friss `grep` a teljes repón (2026.09.10): a study kizárólag a saját (TEREMT-001) motívumára vonatkozó leleteket tartalmazza (a Tartarosz-kereszthivatkozás kivételével, ami nem önálló motívum).
 - [x] **Q5. Nevesített tanítói szakasz jelen van, vagy explicit hiányjelzéssel zárva** — 5. pont, gap-jelzéssel.

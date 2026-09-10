@@ -44,29 +44,79 @@
 
 ## 2/b. Kiterjesztés — a seól teljes bibliai előfordulási mezője
 
-*(felvéve helyi TAHOT-kivonat teljes H7585-scanje alapján, 2026.09.10)*
+*(felvéve helyi TAHOT-kivonat teljes H7585-scanje alapján, 2026.09.10; sablon-konform táblázatra alakítva, 2 kimaradt igehellyel — 1Sám 2:6, Ézs 7:11 — kiegészítve, 2026.09.10)*
 
-A fenti egyetlen (Zsolt 16:10) genezisi-ívbeli előforduláson túl a *seól* még 65 helyen fordul elő az Ószövetségben. Ezek — a *tehóm*-study mintájára — tematikus csoportokba rendezve:
+A fenti egyetlen (Zsolt 16:10) genezisi-ívbeli előforduláson túl a *seól* még **63 egyedi igehelyen** fordul elő az Ószövetségben (a teljes H7585-mező 64 egyedi verset ad; Hós 13:14-ben a szó kétszer szerepel egy versen belül, ez a nyers 66-os számlálást magyarázza).
 
-**Személyes gyász, "leszállok fiamhoz a Seólba"** (Jákób-ciklus): 1Móz 37:35; 42:38; 44:29,31 — mind ugyanaz a formula, apai gyász József/Benjámin miatt.
-
-**Élve alászállás — csodás ítélet**: 4Móz 16:30,33 — Kóré lázadása; kiemelt eset, mert nem a rendes halál útja, hanem egyedi, isteni beavatkozás.
-
-**Isten szuverenitása a Seól fölött**: Jób 11:8 ("mélyebb, mint a Seól"); Jób 26:6 ("a Seól mezítelen Isten előtt"); Zsolt 139:8 ("ha a Seólban vetek ágyat, ott is vagy"); Ámós 9:2 ("ha a Seólba ásnak is, onnan is kihozom kezem").
-
-**Segélykiáltás/hálaadás a halál pereméről** (zsoltáros lament-minta): Zsolt 6:6; 9:18; 18:6 (= 2Sám 22:6 párhuzam); 30:4; 31:18; 49:15(×2),16; 55:16; 86:13; 88:4; 89:49; 116:3; 141:7; Jón 2:3 ("a Seól gyomrából kiáltottam").
-
-**Bölcsességi figyelmeztetés — a Seól mint a bűn/kicsapongás útjának végállomása**: Péld 1:12; 5:5; 7:27; 9:18; 15:11,24; 23:14; 27:20; 30:16; Préd 9:10 ("nincs tudás, munka, terv a Seólban").
-
-**Prófétai gúnydal/ítélet nemzetek ellen**: Ézs 5:14 (Júda ellen); Ézs 14:9,11,15 (Babilon királya elleni gúnydal — **ugyanabban a szakaszban, ahol a רְפָאִים szó is szerepel, l. `Rafaim_tematikus.md`**); Ézs 28:15,18 ("a Seóllal kötött szövetség" — Jeruzsálem vezetőinek hamis biztonságérzete); Ez 31:15-17 (Fáraó/Egyiptom, a Libanon-cédrus-példázat); Ez 32:21,27 (Egyiptom az alvilágban a korábbi hódítókkal); Hab 2:5 (a kevély, mint a Seól, sosem elégszik meg).
+| Igehely | Kapcsolódás | PaRDeS-szint |
+|---|---|---|
+| 1Móz 37:35 | שְׁאוֹל (seól) — Jákób gyásza: "leszállok fiamhoz a Seólba, gyászolva" | Remez |
+| 1Móz 42:38 | ua. — Benjámin miatti félelem | Remez |
+| 1Móz 44:29 | ua. — Júda közbenjárása | Remez |
+| 1Móz 44:31 | ua. | Remez |
+| 4Móz 16:30 | élve alászállás a Seólba — Kóré lázadása, csodás ítélet | Remez |
+| 4Móz 16:33 | ua. — "és befedte őket a föld" | Remez |
+| 5Móz 32:22 | Isten haragjának tüze "a Seól fenekéig" ég | Remez |
+| 1Sám 2:6 | "az Úr... Seólba visz és onnan felhoz" — Anna éneke 【NAPLO: e sor 2026.09.10-én pótolva — kimaradt az eredeti, prózai felsorolásból】 | Remez |
+| 2Sám 22:6 | "a Seól kötelei körülvettek" (= Zsolt 18:6 párhuzam) | Remez |
+| 1Kir 2:6 | Dávid Salamonnak — Joáb "őszen szálljon a Seólba" | Remez |
+| 1Kir 2:9 | ua. — Simei | Remez |
+| Jób 7:9 | "aki leszáll a Seólba, nem jön fel" | Remez |
+| Jób 11:8 | "mélyebb, mint a Seól" — Isten mindentudása | Remez |
+| Jób 14:13 | "bár rejtenél el a Seólban" | Remez |
+| Jób 17:13 | "ha várom is: a Seól az én házam" | Remez |
+| Jób 17:16 | "leszáll-e a Seól rúdjaihoz" | Remez |
+| Jób 21:13 | "egy pillanat alatt szállnak a Seólba" | Remez |
+| Jób 24:19 | "a Seól elragadja a bűnösöket" | Remez |
+| Jób 26:6 | "a Seól mezítelen Isten előtt" | Remez |
+| Zsolt 6:6 | "nincs Rólad emlékezés a Seólban" | Remez |
+| Zsolt 9:18 | "a gonoszok visszatérnek a Seólba" | Remez |
+| Zsolt 18:6 | "a Seól kötelei körülvettek" (= 2Sám 22:6) | Remez |
+| Zsolt 30:4 | hálaadás — "kihoztad lelkem a Seólból" | Remez |
+| Zsolt 31:18 | "hallgassanak el a gonoszok a Seólban" | Remez |
+| Zsolt 49:15 | "mint juhok a Seólnak rendelve" | Remez |
+| Zsolt 49:16 | "Isten megváltja lelkemet a Seól kezéből" | Remez |
+| Zsolt 55:16 | "szálljanak élve a Seólba" | Remez |
+| Zsolt 86:13 | "kihoztad lelkem a legmélyebb Seólból" | Remez |
+| Zsolt 88:4 | "életem közel a Seólhoz" | Remez |
+| Zsolt 89:49 | "ki menti meg lelkét a Seól kezéből" | Remez |
+| Zsolt 116:3 | "a Seól szorongatásai megragadtak" | Remez |
+| Zsolt 139:8 | "ha a Seólban vetek ágyat, ott is vagy" — Isten mindenütt-jelenvalósága | Remez |
+| Zsolt 141:7 | "mint mikor szántanak... a Seól szájánál" | Remez |
+| Péld 1:12 | "elnyeljük őket elevenen, mint a Seól" | Remez |
+| Péld 5:5 | a parázna lába a Seólba száll | Remez |
+| Péld 7:27 | háza a Seól útja | Remez |
+| Péld 9:18 | a balgák a Seól mélyén | Remez |
+| Péld 15:11 | Seól és Abaddón Isten előtt | Remez |
+| Péld 15:24 | "hogy elkerülje a Seólt alant" | Remez |
+| Péld 23:14 | "kiragadod lelkét a Seólból" | Remez |
+| Péld 27:20 | "a Seól és Abaddón nem elégszik meg" | Remez |
+| Péld 30:16 | Seól a négy "nem-elégedő" dolog közt | Remez |
+| Préd 9:10 | "nincs tudás, munka, terv a Seólban, ahová mégy" | Remez |
+| Én 8:6 | "a szerelem kemény, mint a Seól" | Remez |
+| Ézs 5:14 | Júda ítélete — a Seól kitágítja torkát | Remez |
+| Ézs 7:11 | "kérj jelt... tégy mélyre, mint a Seól" 【NAPLO: e sor 2026.09.10-én pótolva — kimaradt az eredeti, prózai felsorolásból】 | Remez |
+| Ézs 14:9 | Babilon-gúnydal — a Seól megmozdul (ugyanaz a szakasz, ahol a רְפָאִים is szerepel, l. `Rafaim_tematikus.md`) | Remez |
+| Ézs 14:11 | "büszkeséged leszállt a Seólba" | Remez |
+| Ézs 14:15 | "a Seól legmélyére vitetel" | Remez |
+| Ézs 28:15 | "szövetséget kötöttünk a Seóllal" | Remez |
+| Ézs 28:18 | "szövetségetek a Seóllal nem áll meg" | Remez |
+| Ézs 38:10 | Ezékiás betegség-éneke — "a Seól kapuiba kell mennem" | Remez |
+| Ézs 38:18 | "a Seól nem dicsőít téged" | Remez |
+| Ézs 57:9 | bálványimádás — "egészen a Seólig alázkodtál" | Remez |
+| Ez 31:15 | Fáraó/Egyiptom a Seólba száll — a Libanon-cédrus-példázat | Remez |
+| Ez 31:16 | ua. | Remez |
+| Ez 31:17 | ua. | Remez |
+| Ez 32:21 | "a hatalmasok szólnak hozzá a Seólból" | Remez |
+| Ez 32:27 | körülmetéletlenek a Seólban, fegyvereikkel | Remez |
+| Hós 13:14 | "Hol van a te veszedelmed, oh Seól?" — Pál idézi 1Kor 15:55-ben (l. 3. pont, ⭐ kiemelt lelet) | Remez/Drash |
+| Ámós 9:2 | "ha a Seólba ásnak is, onnan is kihozom kezem" | Remez |
+| Hab 2:5 | a kevély, mint a Seól, sosem elégszik meg | Remez |
+| Jón 2:3 | "a Seól gyomrából kiáltottam" | Remez |
 
 **⭐ Hós 13:14 — a legfontosabb ÚSZ-visszhang, eddig hiányzott a study-ból.** "Megváltom őket a Seól hatalmából... Hol van a te veszedelmed, oh Seól?" — ezt Pál explicit idézi/parafrazálja **1Kor 15:55**-ben: "Halál! hol a te fullánkod? Pokol! hol a te diadalmad?" A Károli 1908 (Textus Receptus-alapú) szöveg a második tagmondatot "Pokol"-lal (= hádész) adja vissza. 【NAPLO: a helyi `TAGNT_kivonat.tsv` közvetlen lekérdezése (G0086 teljes scan) megerősítette, hogy a modern kritikai szövegkiadás (NA28) 1Kor 15:55-ben mindkét helyen θάνατος-t [halál] hoz, NEM ᾅδης-t — tehát ez az igehely nem szerepel a G0086-előfordulások listájában. A TR/Byzantinus hagyomány eltérő olvasatáról szóló állítás nem a helyi TAHOT/TAGNT-kivonatból, hanem általános szövegkritikai ismeretből származik, 2026.09.10.】
 
-**Királyi/dinasztikus narratíva**: 1Kir 2:6,9 — Dávid utasítása Salamonnak Joábról és Simeiről ("őszen szálljon a Seólba").
-
-**Egyéb, önálló hangvételű előfordulások**: Én 8:6 ("kemény a szerelem, mint a Seól"); Ézs 38:10,18 (Ezékiás betegség-éneke); Ézs 57:9 (bálványimádás/politikai szövetségkeresés "egészen a Seólig alázkodva"); 5Móz 32:22 (Isten haragjának tüze, ami a Seólig ég); Jób 7:9; 14:13; 17:13,16; 21:13; 24:19 (Jób személyes reflexiói a halálról).
-
-**Összegzés:** a 66 előfordulás túlnyomó többsége (kb. 50) a fenti négy fő regiszter (személyes gyász, lament/könyörgés, bölcsességi figyelmeztetés, prófétai ítélet-gúnydal) valamelyikébe rendeződik — egyik sem mond ellent a study fő ívének (Krisztus legyőzi a Seólt/hádészt), sőt a Hós 13:14 lelet **közvetlenül megerősíti és kibővíti** azt egy második, eddig dokumentálatlan páli idézettel.
+**Összegzés:** a 63 új igehely túlnyomó többsége személyes gyász, lament/könyörgés, bölcsességi figyelmeztetés vagy prófétai ítélet-gúnydal regiszterébe rendeződik — egyik sem mond ellent a study fő ívének (Krisztus legyőzi a Seólt/hádészt), sőt a Hós 13:14 lelet **közvetlenül megerősíti és kibővíti** azt egy második, páli idézettel.
 
 ---
 
@@ -112,12 +162,12 @@ A tanulmány saját megállapításaiból: a halál és a rá adott szellemi-lel
 - ✅ Alkalmazás tömör, nincs kikényszerített tanító-hivatkozás, gap explicit jelezve
 - ✅ Igehely-formátum egységes
 - ✅ Napló-frissítési igény jelezve
-- ✅ 2026.09.10-i kiterjesztés (65 új ÓSZ-igehely, tematikus csoportosítással) — forrás és módszer elkülönítve jelölve, textus-kritikai megjegyzés forrás szerint elkülönítve (l. 2/b. pont, Hós 13:14 melletti NAPLO-blokk)
+- ✅ 2026.09.10-i kiterjesztés (63 új ÓSZ-igehely, sablon-konform táblázatban) — forrás és módszer elkülönítve jelölve, textus-kritikai megjegyzés forrás szerint elkülönítve (l. 2/b. pont, Hós 13:14 melletti NAPLO-blokk)
 
 ### Minőségi kapu (Quality Gate) — 2026.09.10 (`4_PaRDeS_tematikus_sablon.md` v14 szerint)
 
 - [x] **Q1. Szerkezeti teljesség** — mind a 6 kötelező szakasz jelen van.
-- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔬 Valódi lexikai kutatás elvégezve 2026.09.10-én, a helyi `TAHOT_kivonat.tsv`/`TAGNT_kivonat.tsv` közvetlen lekérdezésével: G0086 (ᾅδης, javított Strong-szám) teljes ÚSZ-scan — 10 előfordulás, mind lefedve (9 táblázatban + 1 indokolt kizárás), új nem került elő; H7585 (שְׁאוֹל) teljes ÓSZ-scan — **66 előfordulás, ebből 65 eddig hiányzott**, felvéve tematikus csoportokba rendezve (l. 2/b. pont), kiemelt lelet: Hós 13:14 → 1Kor 15:55 páli idézet. 【NAPLO: a 2026.09.09-i verzióban itt egy pontatlan, ténylegesen soha le nem futtatott "STEPBible-ellenőrizve" állítás szerepelt, hibás Strong-számmal (G86) — ez a sor annak korrekciója és a valódi kutatás eredménye.】
+- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔬 Valódi lexikai kutatás elvégezve 2026.09.10-én, a helyi `TAHOT_kivonat.tsv`/`TAGNT_kivonat.tsv` közvetlen lekérdezésével: G0086 (ᾅδης, javított Strong-szám) teljes ÚSZ-scan — 10 előfordulás, mind lefedve (9 táblázatban + 1 indokolt kizárás), új nem került elő; H7585 (שְׁאוֹל) teljes ÓSZ-scan — **64 egyedi igehely, ebből 63 eddig hiányzott** (a nyers 66-os szóelőfordulás-szám a Hós 13:14-i kettős előfordulásból adódik), felvéve táblázatos formában (l. 2/b. pont, sablon-konform formátumra alakítva 2026.09.10-én), kiemelt lelet: Hós 13:14 → 1Kor 15:55 páli idézet. 【NAPLO: a 2026.09.09-i verzióban egy pontatlan, ténylegesen soha le nem futtatott "STEPBible-ellenőrizve" állítás szerepelt, hibás Strong-számmal (G86); a 2026.09.10-i első javítás pedig prózai formában, 2 kimaradt igehellyel (1Sám 2:6, Ézs 7:11) és hibás számmal (65/66) rögzítette az eredményt — ez a sor a végleges, táblázatos és pontos korrekció.】
 - [x] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — a tehóm/abüsszosz-komplexumtól való elkülönülés explicit (2. pont).
 - [x] **Q4. Kereszt-motívum szennyeződés kizárva** — friss `grep` a teljes repón (2026.09.10): a fájl kizárólag a saját (ALVIL-001) motívumára vonatkozó tartalmat hordozza.
 - [x] **Q5. Nevesített tanítói szakasz jelen van, vagy explicit hiányjelzéssel zárva** — 5. pont, gap-jelzéssel.
