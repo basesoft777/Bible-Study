@@ -255,11 +255,43 @@ szinten, döntés nélkül:**
 - Kombinált: inline jel → popup gyors infóval → popupban link a
   teljes lexikon-cikkhez.
 
-**3. Technikai alap:** a meglévő Netlify/Hugo-munkamódszer (l. a
-`naszut` projekt és a "Publikálási terv" pont saját hivatkozása
-ugyanerre) valószínűleg elegendő — statikus, build-időben generált
-oldal, a TSV-adatból Hugo-sablon generálná a jelöléseket, külön
-backend/adatbázis-szerver nélkül.
+**3. Technikai alap:** *(2026.09.09-én, később ugyanezen a napon,
+korrigálva — l. alább)* a `naszut` projekt **nem** Hugót használ,
+hanem sima statikus HTML-t, Netlify drag-and-drop deploy-jal — ez a
+korábbi feltételezés téves volt. Egy tényleges Hugo-alapú megoldáshoz
+két, valóban használható mintát azonosítottunk: a Kubernetes Docsy
+téma `glossary_tooltip`/`glossary_definition` shortcode-párja (popup
++ link + külön adatfájl, majdnem pontosan a szükséges architektúra —
+csak a "term" fogalmat kellene "igehelyre" cserélni), és a
+SermonIndex.net Hugo-Biblia-oldal automatikus igehely-linkelő
+partial-mintája (`linkscripture.html`, 3-menetes regex-technika) —
+utóbbi túlbonyolított lenne a mi esetünkre, mivel nálunk a 29
+igehely fix, előre ismert lista, nem szabad szövegben felismerendő
+hivatkozás.
+
+**Kézzel épített demó** (2026.09.09, Hugo nélkül): egy minimális
+HTML-fájl elkészült, ami két részletet mutat be (1Móz 4:20-26 és Róm
+10:10-14), inline jelöléssel (kör + szám) és kattintásra nyíló
+popup-kártyával, típus szerint színezve. Ez **csak az egyedi
+pár-szintű kapcsolatokat** demonstrálja, a gyűjtemény-szintű
+motívum-tagságot nem — l. 4. pont alább, ami egy korlátot tárt fel
+ebben a megközelítésben.
+
+**4. ÚJ nyitott kérdés (2026.09.09) — gyűjtemény-szintű tagság vs.
+egyedi kapcsolat:** a demó-fájl kipróbálása során kiderült, hogy az
+inline jelölés+popup mechanizmus **csak a 7. pont (KAPCSOLATOK)
+diagramjában szereplő, konkrét, pár-szintű éleket** tudja
+megjeleníteni egy adott versnél. Nem tudja megjeleníteni azt a
+**gyűjtemény-szintű** tényt, hogy egy adott vers ugyanannak a
+lexikai formulának (H7121+H8034/G1941) **29 előfordulása közül az
+egyike** — ez az 1. pont (Előfordulások) táblázatából jönne, nem a
+diagramból, és minden 29 versen megjelenne, függetlenül attól, van-e
+neki konkrét éle máshova (l. a `ISTENTISZT-001_TUDOMANYOS.md` 7.
+pontjának 2026.09.09-i módszertani tisztázó bekezdését erről a
+különbségről). **Nyitott kérdés:** kell-e egyáltalán jelezni ezt a
+"motívum-tagságot" minden előforduláson, függetlenül a konkrét
+kapcsolatoktól, és ha igen, hogyan — külön UI-elemként, hogy ne
+keveredjen össze a pár-szintű kapcsolat-jelöléssel?
 
 **Nyitva marad — ez a szakasz nem dönt ezekben:**
 - Melyik inline jelölési minta legyen az induló választás.
@@ -267,5 +299,8 @@ backend/adatbázis-szerver nélkül.
 - A lexikon-cikkek tényleges megjelenítési formátuma a
   kereszthivatkozás másik végén (nyers markdown vs. Netlify/Hugo-oldal
   — ez összeköti ezt a szálat a "Publikálási terv" nyitott ponttal).
+- **ÚJ:** kell-e külön jelezni a gyűjtemény-szintű motívum-tagságot,
+  és ha igen, milyen UI-elemmel, a pár-szintű kapcsolat-jelöléstől
+  elkülönítve (l. 4. pont).
 
 Forrás: chat-alapú beszélgetés, 2026.09.09.
