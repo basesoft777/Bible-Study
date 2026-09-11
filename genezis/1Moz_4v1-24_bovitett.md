@@ -147,6 +147,8 @@ A תְּשׁוּקָה (*tesuká*) szó tudatos megismétlése a 3:16 és a 4:7 
 
 **Összegzés:** a négy kapcsolódás együtt azt mutatja, hogy Kain és Ábel története nem elszigetelt etiológiai epizód, hanem egy olyan mintázat kezdete — a bűn vágyakozó uralma, a testvéri felelősség, a hit általi elfogadás, és a kiáltó vér versus megbékélő vér ellentéte —, amely a Szentírás egészén végigfut egészen a Golgotáig.
 
+📎 Bővebben, önálló tematikus feldolgozásban: `Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` ("A bűn következményeinek gyűrűzése — átok, föld és romlás" — a 4:7 חַטָּאת-jét mint a szó első bibliai előfordulását, és a 4:11 אָרוּר + אֲדָמָה párosát mint a 3:17 felcserélt szereposztású megismétlését tárgyalja).
+
 **A tanulmány után frissítendő `PaRDeS_motivumok.md` bejegyzések:** lásd a fejezet végén mellékelt, frissített motívum-napló kivonatot.
 
 ---

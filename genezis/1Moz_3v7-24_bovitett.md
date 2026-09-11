@@ -181,6 +181,8 @@ Ez a kérub/kárpit-kapcsolat kivételesen gazdag, és a "munka mint szentélyi 
 
 **Összegzés:** a fenti kereszthivatkozások két irányba mutatnak: visszafelé (a por-motívum a teremtéshez köti vissza a halált) és előre (a protoevangélium és a kérub-motívum a végső helyreállítás felé mutat). A szakasz tehát nemcsak lezárja a bűnbeesés-elbeszélést, hanem — a szöveg saját logikáján belül — már a megoldás felé is nyit.
 
+📎 Bővebben, önálló tematikus feldolgozásban: `Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` ("A bűn következményeinek gyűrűzése — átok, föld és romlás" — a 3:14/3:17 אָרוּר-kimondásait, a megátkozott אֲדָמָה-t és a 3:16-17 עִצָּבוֹן szavát követi végig a genezisi átok-láncon és tovább a Gal 3:13-ig).
+
 ---
 
 ## 5. Rabbinikus és patrisztikus hangok
