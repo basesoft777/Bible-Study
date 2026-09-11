@@ -162,6 +162,8 @@ A Peshat/Remez rétegekből ténylegesen levezethető mélység: Isten "bánkód
 
 📎 Bővebben, önálló tematikus feldolgozásban: `Isten_fiai_Nefilim_Gibborim_tematikus.md` ("Isten fiai — Nefilim — Gibborim" motívum-komplexum — a 6:2/6:4-ben dokumentált bené ha'Elohim/nefilim/gibborim komplexumot a teljes kánoni ívbe helyezve, Jób/Júdás/2Péter kereszthivatkozásokkal tárgyalja).
 
+📎 Bővebben, önálló tematikus feldolgozásban: `Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` ("Bűn következményeinek gyűrűzése — az eszkalálódó ítélet mintázata" — a jelen szakasz 6:1-8 egyetemes diagnózisát [רַע, a 3:5/3:22-ből ismert szó itt már az egész emberiségre kimondva] a bűnbeesés-, Kain- és özönvíz-elbeszéléssel együtt egy négyszakaszos ívbe helyezi).
+
 ---
 
 ## 5. Rabbinikus és patrisztikus hangok

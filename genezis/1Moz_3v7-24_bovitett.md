@@ -181,6 +181,8 @@ Ez a kérub/kárpit-kapcsolat kivételesen gazdag, és a "munka mint szentélyi 
 
 **Összegzés:** a fenti kereszthivatkozások két irányba mutatnak: visszafelé (a por-motívum a teremtéshez köti vissza a halált) és előre (a protoevangélium és a kérub-motívum a végső helyreállítás felé mutat). A szakasz tehát nemcsak lezárja a bűnbeesés-elbeszélést, hanem — a szöveg saját logikáján belül — már a megoldás felé is nyit.
 
+📎 Bővebben, önálló tematikus feldolgozásban: `Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` ("Bűn következményeinek gyűrűzése — az eszkalálódó ítélet mintázata" — a jelen szakasz 3:7-19(-24) egyéni szintű eszkalációját a Kain-történettel [4. fejezet] és az özönvíz-elbeszéléssel [6. fejezet] együtt egy négyszakaszos ívbe helyezi, az אֲדָמָה és אָרַר szavak valódi lexikai visszhangjaival alátámasztva).
+
 ---
 
 ## 5. Rabbinikus és patrisztikus hangok

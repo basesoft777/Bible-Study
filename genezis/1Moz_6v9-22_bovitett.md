@@ -183,6 +183,8 @@ A *tevá* szó egyedülálló, kettős előfordulása (Noé bárkája / Mózes k
 
 **Összegzés:** a szakasz kereszthivatkozásai azt mutatják, hogy Noé jelleme és sorsa nem elszigetelt epizód, hanem szoros lexikai és tipológiai szálakkal kötődik mind visszafelé (Énokh), mind előre (Mózes, Ábrahám, és — az Újszövetség saját értelmezésében — a keresztség) a Szentírás nagyobb megváltás-ívéhez.
 
+📎 Bővebben, önálló tematikus feldolgozásban: `Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` ("Bűn következményeinek gyűrűzése — az eszkalálódó ítélet mintázata" — a jelen szakasz 6:9-22-t a diagnózis [6:1-8] konkrét, nevesített betöltődéseként [חָמָס, "erőszak", 6:11,13] tárgyalja, a bűnbeesés- és Kain-elbeszéléssel együtt egy négyszakaszos ívben).
+
 ---
 
 ## 5. Rabbinikus és patrisztikus hangok

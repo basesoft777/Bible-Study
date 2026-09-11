@@ -149,6 +149,8 @@ A תְּשׁוּקָה (*tesuká*) szó tudatos megismétlése a 3:16 és a 4:7 
 
 **A tanulmány után frissítendő `PaRDeS_motivumok.md` bejegyzések:** lásd a fejezet végén mellékelt, frissített motívum-napló kivonatot.
 
+📎 Bővebben, önálló tematikus feldolgozásban: `Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` ("Bűn következményeinek gyűrűzése — az eszkalálódó ítélet mintázata" — a jelen szakasz 4:1-16(-24) családi/nemzedéki szintű eszkalációját [Kain átka, 4:11, szó szerint megismételve a 3:17 átok-formuláját] a bűnbeesés- és özönvíz-elbeszéléssel együtt egy négyszakaszos ívbe helyezi).
+
 ---
 
 ## 5. Rabbinikus és patrisztikus hangok
