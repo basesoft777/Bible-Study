@@ -1,5 +1,12 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
+*v15 — 2026.09.11 (Szabályváltozás: az 1. pont táblázatának
+"Jelentés-szöveg (BDB eredeti)" oszlopa mostantól az angol BDB-szöveg
+MELLETT magyar fordítást is tartalmaz a cellán belül — a korábbi
+elv, hogy a fordítás kizárólag a study prózájában történjen, hatályát
+veszti. A cella formátuma: `"angol BDB-idézet" — magyarul: "fordítás"`.
+Visszamenőleg nem kötelező a már lezárt study-kat frissíteni, de új
+vagy szerkesztés alatt álló study-nál kötelező.)*
 *v14 — 2026.09.09 (Q4 pont indoklása pontosítva: a hivatkozott konkrét
 eset — 2026.09.07, Zakariás 6:13/Melkizedek-lelet egy ISTENTISZT-001
 lexikon-mintaoldalon — explicit jelölve, hogy a
@@ -116,11 +123,11 @@ szintenkénti 1-2 kiválasztást.
 
 Táblázatos áttekintés minden eddigi előfordulásról, a `PaRDeS_motivumok.md` napló releváns bejegyzése és a 0. pontban begyűjtött anyag alapján:
 
-| Igehely | Kapcsolódás | PaRDeS-szint, ahol felmerült | Strong-szám(ok) | BDB-entry-id | Sense-szám | Jelentés-szöveg (BDB eredeti) |
+| Igehely | Kapcsolódás | PaRDeS-szint, ahol felmerült | Strong-szám(ok) | BDB-entry-id | Sense-szám | Jelentés-szöveg (BDB eredeti + magyar) |
 |---|---|---|---|---|---|---|
-| *(igehely)* | *(a motívum konkrét megjelenési formája ott)* | *(Peshat/Remez/Drash/Sod, és melyik tanulmányból)* | *(pl. H7604)* | *(pl. H7604, ha egy Strong-számhoz több BDB-bejegyzés/homonima tartozik, ez különbözteti meg)* | *(pl. "1")* | *(pl. "be left over" — a BDB eredeti angol szövege, nem magyarítva)* |
+| *(igehely)* | *(a motívum konkrét megjelenési formája ott)* | *(Peshat/Remez/Drash/Sod, és melyik tanulmányból)* | *(pl. H7604)* | *(pl. H7604, ha egy Strong-számhoz több BDB-bejegyzés/homonima tartozik, ez különbözteti meg)* | *(pl. "1")* | *(pl. "be left over" — magyarul: "hátramarad, megmarad")* |
 
-Az utolsó négy oszlop opcionális kitöltésű (nem minden előfordulásnál áll rendelkezésre BDB-adat), de ha a 0. pont gyűjtése vagy a friss keresés során előkerül, itt rögzítendő, **külön oszlopokban** — a `Bibliai_Motivumlexikon_tervezesi_naplo.md` 6. szakaszában jóváhagyott elv szerint, hogy egy jövőbeli KAPCSOLAT-réteg ne igényeljen visszamenőleges szétbontást. A Jelentés-szöveg oszlop a BDB **eredeti angol** szövegét tartalmazza, nem magyar fordítást — a magyarítás a study Peshat/Drash kifejtésében történik, forrásmegjelöléssel, a `Bibliai_Motivumlexikon_tervezesi_naplo.md` 9. szakaszában rögzített fordítási elv szerint (nem előre, tömegesen, hanem tanulmány-vezérelt, fokozatos fordítás).
+Az utolsó négy oszlop opcionális kitöltésű (nem minden előfordulásnál áll rendelkezésre BDB-adat), de ha a 0. pont gyűjtése vagy a friss keresés során előkerül, itt rögzítendő, **külön oszlopokban** — a `Bibliai_Motivumlexikon_tervezesi_naplo.md` 6. szakaszában jóváhagyott elv szerint, hogy egy jövőbeli KAPCSOLAT-réteg ne igényeljen visszamenőleges szétbontást. A Jelentés-szöveg oszlop a BDB **eredeti angol** szövegét **és** egy tömör magyar fordítást is tartalmaz ugyanabban a cellában, `"angol" — magyarul: "fordítás"` formátumban (2026.09.11-től, v15). A study Peshat/Drash kifejtésében ezen felül is történhet bővebb, kontextusba ágyazott magyarítás — a táblázatcella tömör fordítása nem helyettesíti azt.
 
 ### Logikai kötőszó szerinti bontás (kötelező, egynél több verset lefedő táblázat-soroknál)
 
