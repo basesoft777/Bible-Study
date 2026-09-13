@@ -214,51 +214,81 @@ az F1.6-ban feltöltődött 16 sorral, a többi szándékosan üres — az F3 be
 
 ### F1.4 — `adat/grammatikai_strongok.tsv` feltöltve ✅
 
-**183 sor.** A fájl **generált**, nem kézzel írt: `eszkozok/grammatikai_strongok_general.py`
-állítja elő a `TAHOT_kivonat.tsv` + `Strong_szotar.tsv` párosból, plusz két gondozott
-listából, amelyek a szkript forrásában élnek. Determinisztikus — újrafuttatva bitre azonos
-(a timestamp-sor kivételével), ellenőrizve.
+> **Átdolgozva 2026.09.13-án, felhasználói specifikáció szerint.** Az első változat
+> 183 soros volt, négy kategóriával és háromértékű `kizaras` mezővel. A specifikáció
+> ennél szűkebb és élesebb szerkezetet ír elő; az alábbi a hatályos állapot. Az első
+> változat indoklása a `f7c0e67` commitban olvasható.
 
-| kategória | sor | kizárás |
+**78 sor, négy oszlop:** `strong | rovid_jelentes | kategoria | kizaras_oka`.
+A fájl **generált**: `eszkozok/grammatikai_strongok_general.py` állítja elő.
+Determinisztikus, ellenőrizve.
+
+**Három forrás:**
+
+| Forrás | Sor | Hogyan |
 |---|---|---|
-| `affixum` (H9xxx prefixum/szuffixum/névmási elem) | 44 | `mindig` |
-| `funkcioszo` (a Strong-szótár szófaji mezője szerint) | 93 | `mindig` |
-| `keretszo` (elbeszélői keretszavak) | 34 | **`jelzes`** |
-| `kivetel` (motívum-hordozó, nagy gyakoriságú) | 12 | **`soha`** |
+| héber gépi alap — a TAHOT `H9xxx` tartománya | **44** | automatikusan kiolvasva, provenienciával |
+| héber kézi kiegészítés | **3** | `H0853` tárgyrag, `H0834` vonatkozó névmás, `H3808` tagadószó — soronként indokolva |
+| görög tételes lista | **31** | névelő 1, kötőszó 6, elöljáró 12, névmás 6, tagadószó 3, partikula 3 |
 
-⚠️ **Eltérés a tervtől — indokolt.** A terv 1.A táblázata a fájlt egyetlen `Strong`
-kulccsal írja le, tehát puszta kizárási listaként. **Ez a megvalósításnál kevésnek
-bizonyult**, ezért a `kizaras` mező **háromértékű**. Az indok nem elméleti — két
-dokumentált ellenpélda a projekt saját anyagából:
+A `H9xxx` gépi alap **44 kód, 169 598 előfordulás** — a TAHOT-kivonat 468 968 sorának
+36%-a. Ez a fájl legnagyobb hozadéka, és teljes egészében gépi: névelő, kötőszó,
+prefixált elöljárók, névmási szuffixumok.
 
-- **H8085 (*sámá*, „hallani")** elbeszélői keretszó, **de** a *sámá + chámász* kollokáció
-  egyik tagja, amelynek négy találata **az F2 elfogadási tesztje**.
-- **H1121 (*bén*, „fiú")** szintén keretszó, **de** a *bené ha-elohim* szerkezet hordozója,
-  azaz a MENNY-001 lexikai magja.
+**Lelet — a görög oldalnak nincs gépi alapja.** A héber `H9xxx`-nek **nincs megfelelője**
+a TAGNT-ben: a `G9xxx` tartomány ott **nem grammatikai**, hanem hét ritka *lexikai* szó
+(συναλλάσσω „sürgetni", ὑπόλειμμα „maradék", ταπεινοφροσύνη, οἰκουργός stb.), egyenként
+**egy** előfordulással — kiegészítő Strong-számok az eredeti számozásból kimaradt
+szavakhoz. Az ok nyelvi, nem adathiba: a héberben a névelő, a kötőszó és a gyakori
+elöljárók *prefixumok*, tehát külön grammatikai kódot kapnak; a görögben ugyanezek
+*önálló szavak*, tehát rendes Strong-számon ülnek (`G3588` ὁ, `G2532` καί, `G1722` ἐν).
+Ezért a görög oldal tételes lista, soronként indokolva, és a `kizaras_oka` mező ott, ahol
+van párja, megnevezi a héber megfelelőt.
 
-Ha ezek némán kiesnének, a szűrő nem zajt távolítana el, hanem **leletet**. Ezért a
-keretszavak `jelzes` értéket kapnak: megjelennek, megjelölve, és explicit döntést kérnek.
-A `kivetel` kategória pedig azért kell, mert a védett szavak nagy gyakoriságúak
-(H3068 *JHVH* 6 528, H0430 *Elohim* 2 603, H8034 *sém* 864) — egy későbbi, gyakoriság-alapú
-listabővítés különben **be is söpörné őket**.
+*Egy lemmatizálási sajátosság dokumentálva:* a TAGNT a többes számú személyes névmásokat
+is az egyes számú kód alá sorolja (`ἡμῶν` a `G3165` alatt), ezért a `G2249` és a `G5210`
+**nem kap sort** — a kivonatban nulla előfordulásúak. Ezt a generátor futás közben
+jelezte, nem feltételezésből derült ki.
 
-**Kalibrációs teszt — a HAMART-001 eset, gépileg újrafuttatva.** A terv 4.1 pontja szerint
-a metszet 23 közös Strong-számot adott, amelyből egyetlen tartalmi szó maradt (*adamá*).
-A metszetet újraszámoltam (1Móz 3 ∩ 4 ∩ 6:1-8 ∩ 6:9-22) — **pontosan 23**, egyezik a
-tervvel. Átengedve a szűrőn:
+**`TILTOLISTA` — gépi tiltás, nem megjegyzés.** Négy Strong-szám soha nem kerülhet a
+táblába: `H3068` (JHVH), `H0559` (*amar*, „mondani"), valamint görög párjaik, `G2316`
+(θεός) és `G3004` (λέγω). Ha egy későbbi bővítés bármelyiket felvenné, a **szkript
+hibával leáll**. Kipróbálva: `H3068` beszúrására a futás 1-es kilépési kóddal megáll.
+Azért kell gépi őrzés, mert e szavak épp a leggyakoribbak közé tartoznak (`H3068` 6 528,
+`G3004` 1 357, `G2316` 1 343), tehát egy „szűrjük ki a leggyakoribbakat" típusú bővítés
+elsőként söpörné be őket.
+
+**Proveniencia.** A fájl fejléce két proveniencia-sort visel, a `SEMA.md` 1.5
+formátumában — külön a gépi héber alapra (`scope=OT-full | tartomany=H9xxx | n=44 |
+elofordulas=169598`) és a tételes görög listára (`scope=NT-full |
+modszer=teteles-lista | n=31 | elofordulas=65646`). A `modszer=teteles-lista` őszinte
+jelölés: a görög sorok emberi döntésből származnak, csak az előfordulásszámuk gépi.
+
+#### Kalibráció — és amit megmutat
+
+A HAMART-001 metszetét gépileg újraszámoltam (1Móz 3 ∩ 4 ∩ 6:1-8 ∩ 6:9-22):
+**pontosan 23**, egyezik a terv 4.1 pontjával. A szűrőn átengedve:
 
 | | |
 |---|---|
 | metszet | **23** |
-| `mindig` — automatikusan kiszűrve | 12 |
-| `jelzes` — keretszóként megjelölve | 8 |
-| **gerinc-jelölt** | **3** |
+| kiszűrve (7 `H9xxx` + `H0853` + `H0834`) | **9** |
+| **marad** | **14** |
 
-A három: **H0127** *adamá* (a tanulmány saját lelete, fennmarad), **H0430** *Elohim*
-(`kivetel`, szándékosan védve), **H3205** *jalad* („nemzeni") — utóbbi egyik listán sincs,
-és ez helyes: a nemzetség-táblázatokban keretszó, de az 1Móz 3:16-ban a motívum magja.
-**23 → 3, azaz 87% zajszűrés a lelet elvesztése nélkül.** Ez a fájl elfogadási tesztje;
-a szkript módosítása után újra kell futtatni.
+*Összevetés:* az első, 183 soros változat ugyanezen az eseten 23 → 3-at adott (87%
+zajszűrés); a mostani 23 → 14 (39%). A különbséget a most kihagyott keretszó-kategória
+teszi ki.
+
+⚠️ **A megmaradó 14 nem mind tartalmi szó — ez a lista ismert hiánya.** Három közülük
+tiszta funkciószó, pontosan olyan, mint a három felvett kézi tétel, csak szabadon álló
+alakban: **`H0413`** (אֶל, „felé"), **`H5921`** (עַל, „-on, fölött"), **`H3588`**
+(כִּי, „mert, hogy"). A `H9xxx` a *prefixált* elöljárókat fedi le (בְּ, לְ, מִן, כְּ),
+a *szabadon álló* héber elöljárókat és kötőszókat viszont senki — miközben a görög oldal
+12 elöljárót és 6 kötőszót tételesen felsorol. **Az aszimmetria nem elvi, hanem a kézi
+lista terjedelméből adódik; felhasználói döntést igényel, hogy bővüljön-e.**
+
+A maradék tizenegy tartalmi vagy keretszó, köztük a tanulmány saját lelete (`H0127`
+*adamá*), valamint `H0430` *Elohim* és `H3205` *jalad* — ezek helyesen maradnak benn.
 
 ### F1.5 — `adat/datasetek.tsv` ✅
 
@@ -336,7 +366,8 @@ mutat, a 8. szakasz sora pedig „már nem kell megnyitni" jelölést kapott.
 | TSV oszlopszám-integritás (7 `adat/` tábla + index) | **OK, 0 hiba** |
 | a `SEMA.md` lefedi-e minden tábla minden mezőjét | **OK, 0 nem dokumentált mező** |
 | HAMART-001 metszet újraszámolva a terv 23-as értéke ellen | **23 = 23** |
-| szűrő-kalibráció ugyanazon az eseten | **23 → 3, a lelet megmarad** |
+| szűrő-kalibráció ugyanazon az eseten | **23 → 14, a lelet megmarad** (l. F1.4) |
+| TILTOLISTA-őrző élesben (H3068 beszúrása) | **hibával leáll, kilépési kód 1** |
 | `DONTESEK_INDEX.tsv` sorszámai a tényleges fejlécek ellen | javítva (8. szakasz vége 278 → 293) |
 
 ---
