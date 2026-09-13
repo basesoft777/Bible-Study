@@ -1,0 +1,72 @@
+# Dataset-matrix — ATALAKITASI_TERV.md.md 4.3. Kezzel karbantartott policy-tabla.
+# kotelezoseg: mindig | felteteles | ajanlott | oroklott
+# allapot: elerheto | korlatos | hianyzik | generalt_nezet
+study_tipus	dataset	fajl	kotelezoseg	feltetel	allapot	megjegyzes
+bovitett	BDB	konkordancia/BDB_teljes_unabridged.tsv	mindig	—	elerheto	héber lexikon; az entry-id + jelentés-szám forrása
+bovitett	KJV_ASV_Strongs	konkordancia/KJV_Strongs_*.tsv, ASV_Strongs_*.tsv	felteteles	csak ha a szakasz Genezis, Exodus vagy Példabeszédek	korlatos	KORLÁTOS LEFEDETTSÉG: csak Genezis, Exodus, Példabeszédek
+bovitett	Karoli_1908	konkordancia/Karoli_1908.tsv	mindig	a Károli-szó hozzárendeléséhez (4.7)	elerheto	közkincs HunKar alapszöveg
+bovitett	Karoli_KH	konkordancia/Karoli_kereszthivatkozasok.tsv	mindig	—	elerheto	a Károli-kiadás saját kereszthivatkozásai
+bovitett	Karoli_Strong_kivonat	konkordancia/Karoli_Strong_kivonat.tsv	oroklott	generált nézet; olvasható, de nem írandó	generalt_nezet	az elofordulasok.tsv-ből generált nézet (terv 1.C, 4.7) — nem kézzel karbantartott tábla
+bovitett	LSJ	konkordancia/LSJ_teljes.tsv	felteteles	ha klasszikus görög jelentésmező kell	elerheto	klasszikus görög lexikon
+bovitett	LXX_kivonat	konkordancia/LXX_kivonat_*.tsv	felteteles	ha a study bármely ÚSZ-sort állít	elerheto	39 könyv; a héber↔görög híd ellenőrzésére
+bovitett	SDBH		ajanlott	a 4.1 2. lépéséhez (szemantikai mező); import után válik használhatóvá	hianyzik	UBS Semantic Dictionary of Biblical Hebrew, CC BY-SA 4.0; IMPORT MÉG NEM TÖRTÉNT MEG (terv 4.3)
+bovitett	SDGNT		ajanlott	görög oldali szemantikai mező; import után válik használhatóvá	hianyzik	UBS görög megfelelő; IMPORT MÉG NEM TÖRTÉNT MEG (terv 4.3)
+bovitett	SECE_G	konkordancia/SECE_G_teljes.tsv	felteteles	ha a study görög szót elemez	elerheto	Louw-Nida domének a GÖRÖG oldalon, 5 406/5 523 szócikk
+bovitett	SECE_H	konkordancia/SECE_H_teljes.tsv	felteteles	csak a Greek-megfelelő-listáért; doménre NEM használható	elerheto	szemantikai domént NEM tartalmaz (0/8 674); csak a Greek-megfelelő-lista, 42%-os lefedettséggel
+bovitett	Strong_szotar	konkordancia/Strong_szotar.tsv	felteteles	származtatási lánc követéséhez; a grammatikai_strongok.tsv forrása	elerheto	szófaj + származtatási lánc
+bovitett	TAGNT	konkordancia/TAGNT_kivonat.tsv	felteteles	ha a study bármely ÚSZ-sort állít	elerheto	görög ÚSZ szó-szintű, 141 746 sor
+bovitett	TAHOT	konkordancia/TAHOT_kivonat.tsv	mindig	—	elerheto	héber ÓSZ szó-szintű, 468 968 sor; lefedettségi rés ismert (l. NYITOTT_FELADATOK)
+bovitett	TIPNR	konkordancia/TIPNR_kivonat.tsv	felteteles	ha a motívum tulajdonnevet érint	elerheto	tulajdonnév-referenciák
+bovitett	TSK	konkordancia/TSK_kereszthivatkozasok.tsv	mindig	—	elerheto	Treasury of Scripture Knowledge; minden jelölt egyedi minősítést kíván (sablon Q2)
+bovitett	Thayer	konkordancia/Thayer_teljes.tsv	felteteles	ha a görög oldal a TBESG-nél mélyebb szócikket kíván	elerheto	görög lexikon, a TBESG-nél mélyebb szócikkhez
+tematikus	BDB	konkordancia/BDB_teljes_unabridged.tsv	mindig	—	elerheto	héber lexikon; az entry-id + jelentés-szám forrása
+tematikus	KJV_ASV_Strongs	konkordancia/KJV_Strongs_*.tsv, ASV_Strongs_*.tsv	felteteles	csak ha a szakasz Genezis, Exodus vagy Példabeszédek	korlatos	KORLÁTOS LEFEDETTSÉG: csak Genezis, Exodus, Példabeszédek
+tematikus	Karoli_1908	konkordancia/Karoli_1908.tsv	mindig	a Károli-szó hozzárendeléséhez (4.7)	elerheto	közkincs HunKar alapszöveg
+tematikus	Karoli_KH	konkordancia/Karoli_kereszthivatkozasok.tsv	mindig	—	elerheto	a Károli-kiadás saját kereszthivatkozásai
+tematikus	Karoli_Strong_kivonat	konkordancia/Karoli_Strong_kivonat.tsv	oroklott	generált nézet; olvasható, de nem írandó	generalt_nezet	az elofordulasok.tsv-ből generált nézet (terv 1.C, 4.7) — nem kézzel karbantartott tábla
+tematikus	LSJ	konkordancia/LSJ_teljes.tsv	felteteles	ha klasszikus görög jelentésmező kell	elerheto	klasszikus görög lexikon
+tematikus	LXX_kivonat	konkordancia/LXX_kivonat_*.tsv	felteteles	ha a study bármely ÚSZ-sort állít	elerheto	39 könyv; a héber↔görög híd ellenőrzésére
+tematikus	SDBH		ajanlott	a 4.1 2. lépéséhez (szemantikai mező); import után válik használhatóvá	hianyzik	UBS Semantic Dictionary of Biblical Hebrew, CC BY-SA 4.0; IMPORT MÉG NEM TÖRTÉNT MEG (terv 4.3)
+tematikus	SDGNT		ajanlott	görög oldali szemantikai mező; import után válik használhatóvá	hianyzik	UBS görög megfelelő; IMPORT MÉG NEM TÖRTÉNT MEG (terv 4.3)
+tematikus	SECE_G	konkordancia/SECE_G_teljes.tsv	felteteles	ha a study görög szót elemez	elerheto	Louw-Nida domének a GÖRÖG oldalon, 5 406/5 523 szócikk
+tematikus	SECE_H	konkordancia/SECE_H_teljes.tsv	felteteles	csak a Greek-megfelelő-listáért; doménre NEM használható	elerheto	szemantikai domént NEM tartalmaz (0/8 674); csak a Greek-megfelelő-lista, 42%-os lefedettséggel
+tematikus	Strong_szotar	konkordancia/Strong_szotar.tsv	felteteles	származtatási lánc követéséhez; a grammatikai_strongok.tsv forrása	elerheto	szófaj + származtatási lánc
+tematikus	TAGNT	konkordancia/TAGNT_kivonat.tsv	felteteles	ha a study bármely ÚSZ-sort állít	elerheto	görög ÚSZ szó-szintű, 141 746 sor
+tematikus	TAHOT	konkordancia/TAHOT_kivonat.tsv	mindig	—	elerheto	héber ÓSZ szó-szintű, 468 968 sor; lefedettségi rés ismert (l. NYITOTT_FELADATOK)
+tematikus	TIPNR	konkordancia/TIPNR_kivonat.tsv	felteteles	ha a motívum tulajdonnevet érint	elerheto	tulajdonnév-referenciák
+tematikus	TSK	konkordancia/TSK_kereszthivatkozasok.tsv	mindig	—	elerheto	Treasury of Scripture Knowledge; minden jelölt egyedi minősítést kíván (sablon Q2)
+tematikus	Thayer	konkordancia/Thayer_teljes.tsv	felteteles	ha a görög oldal a TBESG-nél mélyebb szócikket kíván	elerheto	görög lexikon, a TBESG-nél mélyebb szócikkhez
+melyelemzes	BDB	konkordancia/BDB_teljes_unabridged.tsv	mindig	—	elerheto	héber lexikon; az entry-id + jelentés-szám forrása
+melyelemzes	KJV_ASV_Strongs	konkordancia/KJV_Strongs_*.tsv, ASV_Strongs_*.tsv	felteteles	csak ha a szakasz Genezis, Exodus vagy Példabeszédek	korlatos	KORLÁTOS LEFEDETTSÉG: csak Genezis, Exodus, Példabeszédek
+melyelemzes	Karoli_1908	konkordancia/Karoli_1908.tsv	mindig	a Károli-szó hozzárendeléséhez (4.7)	elerheto	közkincs HunKar alapszöveg
+melyelemzes	Karoli_KH	konkordancia/Karoli_kereszthivatkozasok.tsv	mindig	—	elerheto	a Károli-kiadás saját kereszthivatkozásai
+melyelemzes	Karoli_Strong_kivonat	konkordancia/Karoli_Strong_kivonat.tsv	oroklott	generált nézet; olvasható, de nem írandó	generalt_nezet	az elofordulasok.tsv-ből generált nézet (terv 1.C, 4.7) — nem kézzel karbantartott tábla
+melyelemzes	LSJ	konkordancia/LSJ_teljes.tsv	felteteles	ha klasszikus görög jelentésmező kell	elerheto	klasszikus görög lexikon
+melyelemzes	LXX_kivonat	konkordancia/LXX_kivonat_*.tsv	mindig	az idézet-azonosság eldöntéséhez	elerheto	39 könyv; a héber↔görög híd ellenőrzésére
+melyelemzes	SDBH		ajanlott	a 4.1 2. lépéséhez (szemantikai mező); import után válik használhatóvá	hianyzik	UBS Semantic Dictionary of Biblical Hebrew, CC BY-SA 4.0; IMPORT MÉG NEM TÖRTÉNT MEG (terv 4.3)
+melyelemzes	SDGNT		ajanlott	görög oldali szemantikai mező; import után válik használhatóvá	hianyzik	UBS görög megfelelő; IMPORT MÉG NEM TÖRTÉNT MEG (terv 4.3)
+melyelemzes	SECE_G	konkordancia/SECE_G_teljes.tsv	ajanlott	görög domén-ellenőrzés	elerheto	Louw-Nida domének a GÖRÖG oldalon, 5 406/5 523 szócikk
+melyelemzes	SECE_H	konkordancia/SECE_H_teljes.tsv	felteteles	csak a Greek-megfelelő-listáért; doménre NEM használható	elerheto	szemantikai domént NEM tartalmaz (0/8 674); csak a Greek-megfelelő-lista, 42%-os lefedettséggel
+melyelemzes	Strong_szotar	konkordancia/Strong_szotar.tsv	felteteles	származtatási lánc követéséhez; a grammatikai_strongok.tsv forrása	elerheto	szófaj + származtatási lánc
+melyelemzes	TAGNT	konkordancia/TAGNT_kivonat.tsv	mindig	—	elerheto	görög ÚSZ szó-szintű, 141 746 sor
+melyelemzes	TAHOT	konkordancia/TAHOT_kivonat.tsv	mindig	—	elerheto	héber ÓSZ szó-szintű, 468 968 sor; lefedettségi rés ismert (l. NYITOTT_FELADATOK)
+melyelemzes	TIPNR	konkordancia/TIPNR_kivonat.tsv	felteteles	ha a motívum tulajdonnevet érint	elerheto	tulajdonnév-referenciák
+melyelemzes	TSK	konkordancia/TSK_kereszthivatkozasok.tsv	mindig	—	elerheto	Treasury of Scripture Knowledge; minden jelölt egyedi minősítést kíván (sablon Q2)
+melyelemzes	Thayer	konkordancia/Thayer_teljes.tsv	felteteles	ha a görög oldal a TBESG-nél mélyebb szócikket kíván	elerheto	görög lexikon, a TBESG-nél mélyebb szócikkhez
+lexikon_oldal	BDB	konkordancia/BDB_teljes_unabridged.tsv	mindig	—	elerheto	héber lexikon; az entry-id + jelentés-szám forrása
+lexikon_oldal	KJV_ASV_Strongs	konkordancia/KJV_Strongs_*.tsv, ASV_Strongs_*.tsv	felteteles	csak ha a szakasz Genezis, Exodus vagy Példabeszédek	korlatos	KORLÁTOS LEFEDETTSÉG: csak Genezis, Exodus, Példabeszédek
+lexikon_oldal	Karoli_1908	konkordancia/Karoli_1908.tsv	mindig	a Károli-szó hozzárendeléséhez (4.7)	elerheto	közkincs HunKar alapszöveg
+lexikon_oldal	Karoli_KH	konkordancia/Karoli_kereszthivatkozasok.tsv	mindig	—	elerheto	a Károli-kiadás saját kereszthivatkozásai
+lexikon_oldal	Karoli_Strong_kivonat	konkordancia/Karoli_Strong_kivonat.tsv	oroklott	generált nézet; olvasható, de nem írandó	generalt_nezet	az elofordulasok.tsv-ből generált nézet (terv 1.C, 4.7) — nem kézzel karbantartott tábla
+lexikon_oldal	LSJ	konkordancia/LSJ_teljes.tsv	felteteles	ha klasszikus görög jelentésmező kell	elerheto	klasszikus görög lexikon
+lexikon_oldal	LXX_kivonat	konkordancia/LXX_kivonat_*.tsv	oroklott	a forrás-study szerint	elerheto	39 könyv; a héber↔görög híd ellenőrzésére
+lexikon_oldal	SDBH		ajanlott	a 4.1 2. lépéséhez (szemantikai mező); import után válik használhatóvá	hianyzik	UBS Semantic Dictionary of Biblical Hebrew, CC BY-SA 4.0; IMPORT MÉG NEM TÖRTÉNT MEG (terv 4.3)
+lexikon_oldal	SDGNT		ajanlott	görög oldali szemantikai mező; import után válik használhatóvá	hianyzik	UBS görög megfelelő; IMPORT MÉG NEM TÖRTÉNT MEG (terv 4.3)
+lexikon_oldal	SECE_G	konkordancia/SECE_G_teljes.tsv	oroklott	a forrás-study szerint	elerheto	Louw-Nida domének a GÖRÖG oldalon, 5 406/5 523 szócikk
+lexikon_oldal	SECE_H	konkordancia/SECE_H_teljes.tsv	felteteles	csak a Greek-megfelelő-listáért; doménre NEM használható	elerheto	szemantikai domént NEM tartalmaz (0/8 674); csak a Greek-megfelelő-lista, 42%-os lefedettséggel
+lexikon_oldal	Strong_szotar	konkordancia/Strong_szotar.tsv	felteteles	származtatási lánc követéséhez; a grammatikai_strongok.tsv forrása	elerheto	szófaj + származtatási lánc
+lexikon_oldal	TAGNT	konkordancia/TAGNT_kivonat.tsv	oroklott	a forrás-study szerint	elerheto	görög ÚSZ szó-szintű, 141 746 sor
+lexikon_oldal	TAHOT	konkordancia/TAHOT_kivonat.tsv	mindig	—	elerheto	héber ÓSZ szó-szintű, 468 968 sor; lefedettségi rés ismert (l. NYITOTT_FELADATOK)
+lexikon_oldal	TIPNR	konkordancia/TIPNR_kivonat.tsv	felteteles	ha a motívum tulajdonnevet érint	elerheto	tulajdonnév-referenciák
+lexikon_oldal	TSK	konkordancia/TSK_kereszthivatkozasok.tsv	mindig	—	elerheto	Treasury of Scripture Knowledge; minden jelölt egyedi minősítést kíván (sablon Q2)
+lexikon_oldal	Thayer	konkordancia/Thayer_teljes.tsv	felteteles	ha a görög oldal a TBESG-nél mélyebb szócikket kíván	elerheto	görög lexikon, a TBESG-nél mélyebb szócikkhez

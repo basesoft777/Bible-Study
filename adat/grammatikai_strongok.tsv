@@ -1,0 +1,186 @@
+# GENERÁLT: eszkozok/grammatikai_strongok_general.py | forras=TAHOT_kivonat.tsv+Strong_szotar.tsv | ts=2026-09-13T18:09Z
+# Kézzel nem szerkesztendő. A KERETSZO/KIVETEL listák a szkript forrásában élnek.
+strong	szoto	szofaj	jelentes	kategoria	kizaras	osz_elofordulas	indok
+H0001	אָב	főnév, hímnemű	father	keretszo	jelzes	1213	ab — 'atya'
+H0127	אֲדָמָה	főnév, nőnemű	land	kivetel	soha	225	adamá — 'termőföld'; a HAMART-001 gerincének egyetlen tartalmi szava
+H0176	אוֹ	kötőszó	or	funkcioszo	mindig	321	Strong_szotar.tsv szófaj: kötőszó
+H0259	אֶחָד	melléknév	one	keretszo	jelzes	969	echad — 'egy'
+H0369	אַ֫יִן	tagadószó	nothing	funkcioszo	mindig	788	Strong_szotar.tsv szófaj: tagadószó
+H0376	אִישׁ	főnév, hímnemű	man	keretszo	jelzes	1663	is — 'férfi, ember'
+H0383	אִיתַי	partikula	there is	funkcioszo	mindig	17	Strong_szotar.tsv szófaj: partikula
+H0398	אָכַל	ige	to eat	keretszo	jelzes	810	akal — 'enni'
+H0411	אֵל	mutató névmás	these	funkcioszo	mindig	9	Strong_szotar.tsv szófaj: mutató névmás
+H0412	אֵל	mutató névmás	these	funkcioszo	mindig	1	Strong_szotar.tsv szófaj: mutató névmás
+H0413	אֶל	elöljárószó	to(wards)	funkcioszo	mindig	5515	Strong_szotar.tsv szófaj: elöljárószó
+H0428	אֵ֫לֶּה	mutató névmás	these	funkcioszo	mindig	746	Strong_szotar.tsv szófaj: mutató névmás
+H0429	אֵלֶּה	mutató névmás	these	funkcioszo	mindig	1	Strong_szotar.tsv szófaj: mutató névmás
+H0430	אֱלֹהִים	főnév, hímnemű	LORD	kivetel	soha	2603	Elohim — a HAMART-001 metszetében is szerepelt; kizárása teológiai tartalmat törölne
+H0432	אִלּוּ	kötőszó	except	funkcioszo	mindig	2	Strong_szotar.tsv szófaj: kötőszó
+H0459	אִלֵּין	mutató névmás	these	funkcioszo	mindig	5	Strong_szotar.tsv szófaj: mutató névmás
+H0479	אִלֵּךְ	mutató névmás	these	funkcioszo	mindig	14	Strong_szotar.tsv szófaj: mutató névmás
+H0518	אִם	partikula	if	funkcioszo	mindig	1069	Strong_szotar.tsv szófaj: partikula
+H0559	אָמַר	ige	to say	keretszo	jelzes	5309	amar — 'mondani', az elbeszélés alapigéje
+H0576	אֲנָה	személyes névmás	me	funkcioszo	mindig	16	Strong_szotar.tsv szófaj: személyes névmás
+H0581	אִנּוּן	mutató névmás	they	funkcioszo	mindig	4	Strong_szotar.tsv szófaj: mutató névmás
+H0586	אֲנַ֫חְנָא	személyes névmás	we	funkcioszo	mindig	4	Strong_szotar.tsv szófaj: személyes névmás
+H0587	אֲנַ֫חְנוּ	személyes névmás	we	funkcioszo	mindig	120	Strong_szotar.tsv szófaj: személyes névmás
+H0589	אֲנִי, אָֽנֹכִ֫י	személyes névmás	I	funkcioszo	mindig	874	Strong_szotar.tsv szófaj: személyes névmás
+H0595	אָֽנֹכִ֫י	személyes névmás	I	funkcioszo	mindig	359	Strong_szotar.tsv szófaj: személyes névmás
+H0607	אַנְתָּה	személyes névmás	you	funkcioszo	mindig	15	Strong_szotar.tsv szófaj: személyes névmás
+H0608	אַנְתּוּן	személyes névmás	you	funkcioszo	mindig	1	Strong_szotar.tsv szófaj: személyes névmás
+H0637	אַף	partikula	also	funkcioszo	mindig	134	Strong_szotar.tsv szófaj: partikula
+H0638	אַף	kötőszó	also	funkcioszo	mindig	4	Strong_szotar.tsv szófaj: kötőszó
+H0645	אֵפוֹ	partikula	then	funkcioszo	mindig	15	Strong_szotar.tsv szófaj: partikula
+H0776	אֶ֫רֶץ	főnév, nőnemű	land	kivetel	soha	2504	erec — 'föld, ország'; a teremtéstani motívumok hordozója
+H0802	אִשָּׁה	főnév, nőnemű	woman	keretszo	jelzes	781	issá — 'asszony, feleség'
+H0834	אֲשֶׁר	vonatkozó névmás	which	funkcioszo	mindig	5500	Strong_szotar.tsv szófaj: vonatkozó névmás
+H0853	אֵת	partikula	[Obj.]	funkcioszo	mindig	10945	Strong_szotar.tsv szófaj: partikula
+H0854	אֵת	elöljárószó	with	funkcioszo	mindig	929	Strong_szotar.tsv szófaj: elöljárószó
+H0859	אַתָּ֫ה	személyes névmás	you(m.s.)	funkcioszo	mindig	1094	Strong_szotar.tsv szófaj: személyes névmás
+H0935	בּוֹא	ige	to come (in)	keretszo	jelzes	2571	bó — 'jönni, bemenni'
+H0994	בִּי	partikula	please	funkcioszo	mindig	12	Strong_szotar.tsv szófaj: partikula
+H0996	בַּ֫יִן	elöljárószó	between	funkcioszo	mindig	405	Strong_szotar.tsv szófaj: elöljárószó
+H0997	בֵּין	elöljárószó	between	funkcioszo	mindig	2	Strong_szotar.tsv szófaj: elöljárószó
+H1004	בַּ֫יִת	főnév, hímnemű	house	keretszo	jelzes	2049	bajit — 'ház'
+H1097	בְּלִי	tagadószó	without	funkcioszo	mindig	56	Strong_szotar.tsv szófaj: tagadószó
+H1107	בִּלְעֲדֵי	partikula	beside	funkcioszo	mindig	17	Strong_szotar.tsv szófaj: partikula
+H1115	בִּלְתִּי	tagadószó	lest	funkcioszo	mindig	112	Strong_szotar.tsv szófaj: tagadószó
+H1119	בְּמוֹ	elöljárószó	in|at|by	funkcioszo	mindig	9	Strong_szotar.tsv szófaj: elöljárószó
+H1121	בֵּן	főnév, hímnemű	son	keretszo	jelzes	4941	bén — 'fiú' (ellenpélda: bené ha-elohim)
+H1157	בַּ֫עַד	elöljárószó	about|through|for	funkcioszo	mindig	105	Strong_szotar.tsv szófaj: elöljárószó
+H1454	גֵּה	mutató névmás	this	funkcioszo	mindig	1	Strong_szotar.tsv szófaj: mutató névmás
+H1668	דָּא	mutató névmás	this	funkcioszo	mindig	6	Strong_szotar.tsv szófaj: mutató névmás
+H1696	דָבַר	ige	to speak	keretszo	jelzes	1141	dabar — 'szólni' (az ige; a H1697 davar főnév kivétel, nem keretszó)
+H1697	דָּבָר	főnév, hímnemű	word	kivetel	soha	1441	davar — 'ige, beszéd, dolog' (főnév)
+H1767	דַּי	elöljárószó	enough	funkcioszo	mindig	39	Strong_szotar.tsv szófaj: elöljárószó
+H1768	דִּי	partikula	that	funkcioszo	mindig	345	Strong_szotar.tsv szófaj: partikula
+H1791	דֵּךְ	mutató névmás	this	funkcioszo	mindig	13	Strong_szotar.tsv szófaj: mutató névmás
+H1836	דְּנָה	mutató névmás	this	funkcioszo	mindig	58	Strong_szotar.tsv szófaj: mutató névmás
+H1888	הֵא	mutató partikula	behold!	funkcioszo	mindig	2	Strong_szotar.tsv szófaj: mutató partikula
+H1931	הוּא	személyes névmás	he;_she;_it	funkcioszo	mindig	1876	Strong_szotar.tsv szófaj: személyes névmás
+H1932	הוּא	személyes névmás	he;_she;_it	funkcioszo	mindig	22	Strong_szotar.tsv szófaj: személyes névmás
+H1961	הָיָה	ige	to be	keretszo	jelzes	3562	hajá — 'lenni', létige
+H1975	הַלָּז	mutató névmás	this	funkcioszo	mindig	7	Strong_szotar.tsv szófaj: mutató névmás
+H1976	הַלָּזֶה	mutató névmás	this	funkcioszo	mindig	2	Strong_szotar.tsv szófaj: mutató névmás
+H1977	הַלֵּ֫זוּ	mutató névmás	this	funkcioszo	mindig	1	Strong_szotar.tsv szófaj: mutató névmás
+H1980	הָלַךְ	ige	to go	keretszo	jelzes	1548	halak — 'menni'
+H1992	הֵ֫מָּה	személyes névmás	they(masc.)	funkcioszo	mindig	553	Strong_szotar.tsv szófaj: személyes névmás
+H1994	הִמּוֹ	személyes névmás	they	funkcioszo	mindig	12	Strong_szotar.tsv szófaj: személyes névmás
+H2005	הֵן	partikula	look!	funkcioszo	mindig	315	Strong_szotar.tsv szófaj: partikula
+H2007	הֵנָּה	személyes névmás	they(fem.)	funkcioszo	mindig	30	Strong_szotar.tsv szófaj: személyes névmás
+H2009	הִנֵּה	mutató partikula	behold	funkcioszo	mindig	843	Strong_szotar.tsv szófaj: mutató partikula
+H2063	זֹאת	mutató névmás	this	funkcioszo	mindig	604	Strong_szotar.tsv szófaj: mutató névmás
+H2088	זֶה	mutató névmás	this	funkcioszo	mindig	1180	Strong_szotar.tsv szófaj: mutató névmás
+H2090	זֹה	mutató névmás	this	funkcioszo	mindig	11	Strong_szotar.tsv szófaj: mutató névmás
+H2097	זוֹ	mutató névmás	this	funkcioszo	mindig	2	Strong_szotar.tsv szófaj: mutató névmás
+H2098	זוּ	mutató névmás	this	funkcioszo	mindig	15	Strong_szotar.tsv szófaj: mutató névmás
+H2416	חַי	melléknév / főnév, hímnemű / főnév, nőnemű	alive	kivetel	soha	498	chaj — 'élő, élet'
+H2962	טֶ֫רֶם	elöljárószó	before	funkcioszo	mindig	56	Strong_szotar.tsv szófaj: elöljárószó
+H3027	יָד	főnév, nőnemű	hand	keretszo	jelzes	1619	jad — 'kéz'
+H3045	יָדַע	ige	to know	keretszo	jelzes	945	jada — 'ismerni, tudni'
+H3068	יהוה	tulajdonnév	LORD	kivetel	soha	6528	JHVH — az istennév maga motívum-hordozó
+H3117	יוֹם	főnév, hímnemű	day;_when	keretszo	jelzes	2306	jóm — 'nap'
+H3282	יַעַן	kötőszó	because	funkcioszo	mindig	99	Strong_szotar.tsv szófaj: kötőszó
+H3318	יָצָא	ige	to come out	keretszo	jelzes	1065	jaca — 'kimenni'
+H3426	יֵשׁ	partikula	there	funkcioszo	mindig	140	Strong_szotar.tsv szófaj: partikula
+H3427	יָשַׁב	ige	to dwell	keretszo	jelzes	1079	jasab — 'lakni, ülni'
+H3487	יָת	partikula	whom	funkcioszo	mindig	1	Strong_szotar.tsv szófaj: partikula
+H3541	כֹּה	partikula	thus	funkcioszo	mindig	577	Strong_szotar.tsv szófaj: partikula
+H3588	כִּי	kötőszó	for	funkcioszo	mindig	4482	Strong_szotar.tsv szófaj: kötőszó
+H3605	כֹּל	főnév, hímnemű	all	keretszo	jelzes	5412	kol — 'minden', kvantor-szerű főnév
+H3644	כְּמוֹ	partikula	like	funkcioszo	mindig	142	Strong_szotar.tsv szófaj: partikula
+H3651	כֵּן	határozószó	so	keretszo	jelzes	771	kén — 'így, úgy'
+H3820	לֵב	főnév, hímnemű	heart	kivetel	soha	594	léb — 'szív'
+H3860	לָהֵן	kötőszó	therefore	funkcioszo	mindig	2	Strong_szotar.tsv szófaj: kötőszó
+H3861	לָהֵן	kötőszó	except	funkcioszo	mindig	7	Strong_szotar.tsv szófaj: kötőszó
+H3863	לוּ	kötőszó	if	funkcioszo	mindig	22	Strong_szotar.tsv szófaj: kötőszó
+H3884	לוּלֵא	kötőszó	unless	funkcioszo	mindig	14	Strong_szotar.tsv szófaj: kötőszó
+H3890	לְוָת	elöljárószó	with	funkcioszo	mindig	1	Strong_szotar.tsv szófaj: elöljárószó
+H3926	לְמוֹ	elöljárószó	upon	funkcioszo	mindig	4	Strong_szotar.tsv szófaj: elöljárószó
+H3947	לָקַח	ige	to take	keretszo	jelzes	965	lakach — 'venni, elvenni'
+H3964	מָא	kérdő névmás	what	funkcioszo	mindig	1	Strong_szotar.tsv szófaj: kérdő névmás
+H4100	מָה	kérdő névmás	what?	funkcioszo	mindig	753	Strong_szotar.tsv szófaj: kérdő névmás
+H4101	מָה	kérdő névmás	what?	funkcioszo	mindig	13	Strong_szotar.tsv szófaj: kérdő névmás
+H4191	מוּת	ige	to die	kivetel	soha	840	mút — 'meghalni'
+H4310	מִי	kérdő névmás	who?	funkcioszo	mindig	418	Strong_szotar.tsv szófaj: kérdő névmás
+H4428	מֶ֫לֶךְ	főnév, hímnemű	king	keretszo	jelzes	2525	melek — 'király'
+H4479	מָן	kérdő névmás	who?	funkcioszo	mindig	10	Strong_szotar.tsv szófaj: kérdő névmás
+H4480	מִן־	elöljárószó	from	funkcioszo	mindig	1189	Strong_szotar.tsv szófaj: elöljárószó
+H4481	מִן־	elöljárószó	from	funkcioszo	mindig	109	Strong_szotar.tsv szófaj: elöljárószó
+H4616	מַ֫עַן	partikula	because	funkcioszo	mindig	272	Strong_szotar.tsv szófaj: partikula
+H5048	נֶ֫גֶד	elöljárószó	before	funkcioszo	mindig	151	Strong_szotar.tsv szófaj: elöljárószó
+H5049	נֶגֶד	elöljárószó	opposite	funkcioszo	mindig	1	Strong_szotar.tsv szófaj: elöljárószó
+H5168	נַ֫חְנוּ	személyes névmás	we	funkcioszo	mindig	5	Strong_szotar.tsv szófaj: személyes névmás
+H5315	נֶ֫פֶשׁ	főnév, nőnemű	soul	kivetel	soha	753	nefes — 'lélek, élet'; ugyanott
+H5414	נָתַן	ige	to give	keretszo	jelzes	2011	natan — 'adni'
+H5650	עֶ֫בֶד	főnév, hímnemű	servant;_slave	keretszo	jelzes	800	ebed — 'szolga'
+H5668	עָבוּר	elöljárószó	for the sake of	funkcioszo	mindig	49	Strong_szotar.tsv szófaj: elöljárószó
+H5704	עַד	elöljárószó	till	funkcioszo	mindig	1261	Strong_szotar.tsv szófaj: elöljárószó
+H5705	עַד	partikula	till	funkcioszo	mindig	35	Strong_szotar.tsv szófaj: partikula
+H5869	עַ֫יִן	főnév, nőnemű	eye	keretszo	jelzes	886	ajin — 'szem'
+H5892	עִיר	főnév, hímnemű	city	keretszo	jelzes	1090	ir — 'város'
+H5921	עַל	elöljárószó	upon	funkcioszo	mindig	5768	Strong_szotar.tsv szófaj: elöljárószó
+H5922	עַל	elöljárószó	since	funkcioszo	mindig	104	Strong_szotar.tsv szófaj: elöljárószó
+H5927	עָלָה	ige	to ascend	keretszo	jelzes	890	alá — 'felmenni'
+H5971	עַם	főnév, hímnemű	people	kivetel	soha	1873	am — 'nép'
+H5973	עִם	elöljárószó	with	funkcioszo	mindig	1051	Strong_szotar.tsv szófaj: elöljárószó
+H5974	עִם	elöljárószó	with	funkcioszo	mindig	22	Strong_szotar.tsv szófaj: elöljárószó
+H5978	עִמָּדִי	elöljárószó	with me	funkcioszo	mindig	42	Strong_szotar.tsv szófaj: elöljárószó
+H6213	עָשָׂה	ige	to make	keretszo	jelzes	2628	aszá — 'tenni, csinálni'
+H6435	פֶּן־	kötőszó	lest	funkcioszo	mindig	133	Strong_szotar.tsv szófaj: kötőszó
+H6440	פָּנֶה	főnév, hímnemű	face	keretszo	jelzes	2123	pané — 'arc, szín előtt' (gyakran elöljárós szerkezet része)
+H6903	קֳבֵל	kötőszó	before	funkcioszo	mindig	29	Strong_szotar.tsv szófaj: kötőszó
+H6925	קֳדָם	elöljárószó	before	funkcioszo	mindig	42	Strong_szotar.tsv szófaj: elöljárószó
+H7200	רָאָה	ige	to see	keretszo	jelzes	1299	ráá — 'látni'
+H7307	רוּחַ	főnév, nőnemű	spirit	kivetel	soha	377	rúach — 'szél, lélek'; a pneuma/pszükhé motívum héber oldala
+H7725	שׁוּב	ige	to return	keretszo	jelzes	1057	sub — 'visszatérni'
+H7971	שָׁלַח	ige	to send	keretszo	jelzes	847	salach — 'küldeni'
+H8033	שָׁם	határozószó	there	keretszo	jelzes	834	sám — 'ott'
+H8034	שֵׁם	főnév, hímnemű	name	kivetel	soha	864	sém — 'név'; nyitott motívum-jelölt tárgya ('shem — név szerzése')
+H8085	שָׁמַע	ige	to hear	keretszo	jelzes	1160	sámá — 'hallani' (ellenpélda: sámá + chámász kollokáció)
+H8141	שָׁנָה	főnév, nőnemű	year	keretszo	jelzes	877	sáná — 'év'
+H8460	תְּחוֹת	elöljárószó	under	funkcioszo	mindig	5	Strong_szotar.tsv szófaj: elöljárószó
+H9001	ו		&	affixum	mindig	21328	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9002	ו		and	affixum	mindig	29691	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9003	ב		in	affixum	mindig	15766	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9004	כ		like	affixum	mindig	2957	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9005	ל		to	affixum	mindig	20806	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9006	מ		from	affixum	mindig	6383	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9007	ש		which	affixum	mindig	139	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9008	ה		¿	affixum	mindig	751	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9009	ה		the	affixum	mindig	23943	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9010	a		the	affixum	mindig	862	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9011	ה		to	affixum	mindig	1078	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9012	ה		emph.	affixum	mindig	407	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9013	נ		emph.	affixum	mindig	309	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9014	־		link	affixum	mindig	8	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9020	Ps1c		my	affixum	mindig	4255	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9021	Ps2m		your	affixum	mindig	4337	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9022	Ps2f		your	affixum	mindig	756	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9023	Ps3m		his	affixum	mindig	7899	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9024	Ps3f		her	affixum	mindig	1625	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9025	Pp1c		our	affixum	mindig	803	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9026	Pp2m		your	affixum	mindig	1328	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9027	Pp2f		your	affixum	mindig	16	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9028	Pp3m		their	affixum	mindig	3360	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9029	Pp3f		their	affixum	mindig	135	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9030	Os1c		me	affixum	mindig	3280	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9031	Os2m		you	affixum	mindig	2417	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9032	Os2f		you	affixum	mindig	737	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9033	Os3m		him	affixum	mindig	5416	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9034	Os3f		her	affixum	mindig	1708	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9035	Op1c		us	affixum	mindig	816	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9036	Op2m		you	affixum	mindig	1259	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9037	Op2f		you	affixum	mindig	2	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9038	Op3m		them	affixum	mindig	3585	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9039	Op3f		them	affixum	mindig	115	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9040	Ss1c		I	affixum	mindig	359	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9041	Ss2m		you	affixum	mindig	166	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9042	Ss2f		you	affixum	mindig	29	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9043	Ss3m		he	affixum	mindig	390	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9044	Ss3f		she	affixum	mindig	44	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9045	Sp1c		we	affixum	mindig	26	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9046	Sp2m		you	affixum	mindig	80	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9047	Sp2f		you	affixum	mindig	1	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9048	Sp3m		they	affixum	mindig	217	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
+H9049	Sp3f		they	affixum	mindig	9	STEPBible H9xxx grammatikai jelölő (prefixum/szuffixum/névmási elem)
