@@ -1,0 +1,15 @@
+# Belepo a PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md archivumba (F1.6, 2026.09.13).
+# A fajl TELJES beolvasasa nem kotelezo es nem is javasolt (96 KB -> 62 KB az F0.6/F0.7 utan).
+# allapot: elo | felfuggesztve | kiszervezve | archiv
+# A sorszamok TAJEKOZTATO jelleguek (barmely szerkesztes eltolja oket).
+# A stabil horgony a '## <szakasz>.' markdown-fejlec — arra keress, ne a sorszamra.
+szakasz	cim	sor_kezdet	sor_veg	allapot	mikor_nyisd_meg	megjegyzes
+0	Dataset-leltár — gyors áttekintés	9	38	elo	mindig, ha datasetről kell dönteni	Részben kiváltva: a kötelezőségi mátrix az adat/datasetek.tsv-ben él, gépi alakban.
+1	Architekturális váltás: GitHub mint elsődleges forrás	39	54	elo	csak ha a repó-szerkezet maga a feladat tárgya	
+2	STEPBible-integráció	55	89	elo	lexikai/kereszthivatkozási kutatásnál	
+3	SzPA-fordítások integrációja	90	112	felfuggesztve	csak ha a privát SzPA-adat a tárgy	Az SzPA-integráció 2026.08.24 óta felfüggesztve (v23).
+4	STEPBible ↔ SzPA join	113	118	kiszervezve	csak a felfüggesztett join-alrendszer folytatásához	Teljes tartalom: PaRDeS_STEPBible_SzPA_join_adatcsatorna.md (F0.7).
+5	Hozzáférési korlátok	119	131	elo	ha bizonytalan, melyik felület melyik repóhoz fér hozzá	
+6	Változtatási workflow	132	163	elo	új dataset vagy séma-változtatás előtt	
+7	Tanulmány-készítési munkafolyamat	164	254	elo	tanulmányírásnál	A 4.1 hétlépéses menet ezt váltja fel; a sablonok az elsődlegesek.
+8	Nyitott pontok	255	293	archiv	NEM kell megnyitni — a nyitott tételek migrálva	F1.6: a [ ] tételek az adat/jeloltek.tsv-be és a NYITOTT_FELADATOK.md-be kerültek. Az [x] tételek lezárt döntések, itt maradnak hivatkozási alapként.

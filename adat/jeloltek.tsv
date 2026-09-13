@@ -1,0 +1,18 @@
+# A kereszthivatkozas-naplo gepi alakja. Kulcs: id + igehely. Sema: adat/SEMA.md 2.4
+id	igehely	forras_kereses	dontes	indoklas	karoli_szo	azonositas_modja	megbizhatosag	datum
+HODIT-001	5Móz 1:4	TSK, alacsony szavazat	nyitva	Óg/Básán tematikus szomszédság; nem H7497-előfordulás — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg				2026.09.13
+HODIT-001	5Móz 2:23	TSK, alacsony szavazat	nyitva	Óg/Básán tematikus szomszédság; nem H7497-előfordulás — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg				2026.09.13
+HODIT-001	5Móz 3:20	TSK, alacsony szavazat	nyitva	Óg/Básán tematikus szomszédság; nem H7497-előfordulás — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg				2026.09.13
+HODIT-001	5Móz 3:22	TSK, alacsony szavazat	nyitva	Óg/Básán tematikus szomszédság; nem H7497-előfordulás — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg				2026.09.13
+HODIT-001	Józs 13:19	TSK, alacsony szavazat	nyitva	Básán-terület egyéb említése; tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg				2026.09.13
+HODIT-001	Józs 13:31	TSK, alacsony szavazat	nyitva	Básán-terület egyéb említése; tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg				2026.09.13
+HODIT-001	Jer 48:1	TSK, alacsony szavazat	nyitva	Móáb-prófécia, a 'Refáim' szó nélkül — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg				2026.09.13
+HODIT-001	Jer 48:23	TSK, alacsony szavazat	nyitva	Móáb-prófécia, a 'Refáim' szó nélkül — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg				2026.09.13
+HODIT-001	Zsolt 78:51	TSK, alacsony szavazat	nyitva	'Khám földje' tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg				2026.09.13
+HODIT-001	Zsolt 105:23	TSK, alacsony szavazat	nyitva	'Khám földje' tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg				2026.09.13
+HODIT-001	Zsolt 105:27	TSK, alacsony szavazat	nyitva	'Khám földje' tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg				2026.09.13
+HODIT-001	Zsolt 106:22	TSK, alacsony szavazat	nyitva	'Khám földje' tematikus szomszédság — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg				2026.09.13
+HODIT-001	1Krón 4:40	TSK, alacsony szavazat	nyitva	tematikus szomszédság, nem lexikai egyezés — egyedi minősítést igényel, a 2026.09.10-i körben nem történt meg				2026.09.13
+MENNY-001	Mt 24:38	Károli-KH (forrás-vers: 1Móz 6:2)	nyitva	tartalmilag nem az 'Isten fiai kiléte' kérdéshez, hanem az eszkatológiai-ítéleti 'mint Noé napjaiban' analógiához tartozik; eldöntendő: (a) jegyzet valamelyik study-ba, (b) önálló motívum, (c) figyelmen kívül — FELHASZNÁLÓI DÖNTÉS				2026.09.13
+MENNY-001	Luk 17:27	Károli-KH (forrás-vers: 1Móz 6:2)	nyitva	tartalmilag nem az 'Isten fiai kiléte' kérdéshez, hanem az eszkatológiai-ítéleti 'mint Noé napjaiban' analógiához tartozik; eldöntendő: (a) jegyzet valamelyik study-ba, (b) önálló motívum, (c) figyelmen kívül — FELHASZNÁLÓI DÖNTÉS				2026.09.13
+ANTROP-001	Fil 1:27	döntési fájl 8. szakasz (migrálva F1.6-ban)	nyitva	bekerüljön-e ötödik, korporatív jellegű előfordulásként a pneuma/pszükhé tanulmányba; a study jelenlegi szövege NEM említi — ellenőrizve 2026.09.13				2026.09.13
