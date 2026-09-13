@@ -26,7 +26,10 @@ esetekkel illusztrálva.
 
 ## 1. KONTEXTUS-beolvasás — mindig innen indulunk
 
-**(F0.8, 2026.09.13 — ideiglenes csere, végleges formáját az F1 fázis `CLAUDE.md`-je kapja.)**
+**(F0.8 ideiglenes csere → F1.1 végleges, 2026.09.13.** A belépési pont mostantól a repó
+gyökerében álló **`CLAUDE.md`** — azt olvassa be minden munkamenet, és az mondja meg, mit
+kell még megnyitni. Az alábbi szakasz-táblázat érvényben marad, de a döntési fájlba a
+`DONTESEK_INDEX.tsv` a gépi belépő.**)**
 A "teljes beolvasás" szabály 2026.09.13-tól nem érvényes: a döntési fájl a F0.6/F0.7
 kiszervezések után is 8 szakaszra tagolt, de a changelog (`PaRDeS_dontesek_CHANGELOG.md`)
 és a felfüggesztett SzPA-join alrendszer (`PaRDeS_STEPBible_SzPA_join_adatcsatorna.md`)
@@ -43,7 +46,7 @@ külön fájlba került — ezeket csak akkor kell megnyitni, ha a feladat tény
 | 5. Hozzáférési korlátok | csak ha bizonytalan, melyik felület melyik repóhoz fér hozzá |
 | 6. Változtatási workflow | új dataset vagy nagyobb séma-változtatás előtt |
 | 7. Tanulmány-készítési munkafolyamat | minden tanulmányírási feladatnál |
-| 8. Nyitott pontok | mindig — gyors ellenőrzés, nincs-e a feladat már részben eldöntve/nyitva |
+| 8. Nyitott pontok | **már nem kell megnyitni** — F1.6-ban migrálva: vers-szintű jelöltek → `adat/jeloltek.tsv`, a többi → `NYITOTT_FELADATOK.md` |
 
 Plusz a feladathoz közvetlenül kapcsolódó fájlok (pl. egy korábbi
 validációs jelentés, egy már meglévő dataset README-je).
