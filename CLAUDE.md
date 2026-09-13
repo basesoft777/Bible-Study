@@ -91,5 +91,24 @@ használ (`Gen.1.1`): `Karoli_kereszthivatkozasok.tsv`, `Karoli_Strong_kivonat.t
 `TIPNR_kivonat.tsv`. Köztük a `konkordancia/Konyv_normalizalo_tabla.tsv` konvertál —
 **normalizálás nélkül néma nem-találatot kapsz**, nem hibát.
 
+## Shell — kötelező munkamódszer
+
+**Héber, görög vagy magyar szöveget tartalmazó kódot soha ne futtass inline
+`bash -c`-vel. Mindig írd fájlba, és a fájlt futtasd.**
+
+Ok: a transzliterációk aposztrófjai (*Pi'él*, *Nif'ál*, *Hif'íl*, *bené ha-elohim*)
+**törik a shell idézőjelezését**. A hiba nem a kódban jelenik meg, hanem parse-hibaként
+(`unexpected EOF while looking for matching`), tehát a szkript **el sem indul** — és ha
+egy `&&`-lánc közepén áll, a lánc korábbi tagjai már lefutottak. Ugyanez vonatkozik a
+heredocra is: az idézett határoló (`<<'EOF'`) sem véd meg minden esetben.
+
+```bash
+# HELYES: fájlba írás, majd futtatás
+python eszkozok/valami.py
+```
+
+Ez a magyar kimenetre is áll: `PYTHONIOENCODING=utf-8` nélkül a Windows-konzol
+`cp1250` kódlapja `UnicodeEncodeError`-t dob a héber és görög karakterekre.
+
 **Git:** munkaág `main`; commit-üzenet magyarul, tétel-azonosítóval kezdve (`F1.4: …`);
 push csak kérésre.
