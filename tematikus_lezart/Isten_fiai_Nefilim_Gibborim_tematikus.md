@@ -145,3 +145,5 @@ A motívum érinti az angyalológia és a szellemi hadviselés témakörét, ame
 **2026.09.10-i retroaktív v14-compliance frissítés:** "0. Forrás-összegyűjtés" szakasz pótolva; Minőségi kapu (Q1-Q6) retroaktívan dokumentálva; az 1. pont táblázata után explicit, kölcsönös elhatárolási jegyzet pótolva a Refáim-motívummal szemben; 📎-visszahivatkozás pótolva `1Moz_6v1-8_bovitett.md`-be.
 
 **2026.09.10-i, ugyanaznapi második frissítés — valódi lexikai kutatás eredménye:** בְּנֵי (הָ)אֱלֹהִים minta 5 előfordulása megerősítve, új nem került elő; igehely-hivatkozási javítás (4Móz 13:33→13:34, mindhárom előfordulási helyen a fájlban, l. is `Rafaim_tematikus.md` és a motívumnapló). Tartalmi következtetés a fentieken túl nem változott.
+
+**Teljes jelölt-lista** (F0.5, 2026.09.13-án retroaktívan pótolva): `tematikus_lezart/naplok/Isten_fiai_Nefilim_Gibborim_kereszthivatkozas_naplo.md` — tartalmazza a Károli-KH nyitott jelöltet (1Móz 6:2 → Mt 24:38/Lk 17:27) is.

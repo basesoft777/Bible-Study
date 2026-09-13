@@ -152,6 +152,8 @@ A tanulmány saját megállapításaiból: a halál és a rá adott szellemi-lel
 
 ✅ **A motívum korábban a `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` fájlban élt** (a `PaRDeS_motivumok.md` naplóban mindig is önálló `[ID: ALVIL-001]` alatt, lezárva). **2026.09.10: fájlszervezési kiszervezés** — a napló ALVIL-001 bejegyzésének fájlnév-hivatkozása erre a fájlra frissítve, és az előfordulás-szám a korábban dokumentálatlan 2026.08.25-i bővítéssel (Jel 6:8; Luk 10:15/Mát 11:23) 4-ről 6-ra korrigálva (l. külön edit ugyanebben a promptban).
 
+**Teljes jelölt-lista** (F0.5, 2026.09.13-án retroaktívan pótolva): `tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md`.
+
 ---
 
 ## Önellenőrzés

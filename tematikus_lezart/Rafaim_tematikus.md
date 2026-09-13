@@ -139,6 +139,8 @@ Nem releváns — a motívum nem érinti kifejezetten a pünkösdi/karizmatikus 
 
 **2026.09.10-i, ugyanaznapi második frissítés — valódi lexikai kutatás eredménye:** három új igehely (Józs 15:8; 17:15; 18:16), H7496/H7497 Strong-szám tisztázás, igehely-hivatkozási javítás (4Móz 13:33→13:34, l. is `Isten_fiai_Nefilim_Gibborim_tematikus.md` és a motívumnapló). Tartalmi következtetés a fentieken túl nem változott.
 
+**Teljes jelölt-lista** (F0.5, 2026.09.13-án retroaktívan pótolva): `tematikus_lezart/naplok/Rafaim_kereszthivatkozas_naplo.md`.
+
 ---
 
 ## Terminológiai és formai szabályok

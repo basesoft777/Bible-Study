@@ -176,6 +176,8 @@ E tanulmány (összevont formában) a *tehóm*/*abüσσος*-motívum (`[ID: TE
 
 **2026.09.10-i retroaktív v14-compliance + összevonási + valódi kutatási frissítés:** l. a fejléc v2/v3 jegyzeteit. Tartalmi következtetés a fentieken túl nem változott.
 
+**Teljes jelölt-lista** (F0.5, 2026.09.13-án retroaktívan pótolva): `tematikus_lezart/naplok/Tehom_kereszthivatkozas_naplo.md`.
+
 ---
 
 ## Önellenőrzés
