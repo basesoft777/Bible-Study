@@ -26,8 +26,26 @@ esetekkel illusztrálva.
 
 ## 1. KONTEXTUS-beolvasás — mindig innen indulunk
 
-Minden Claude Code-feladat első lépése: a `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md`
-teljes beolvasása, plusz a feladathoz közvetlenül kapcsolódó fájlok (pl. egy korábbi
+**(F0.8, 2026.09.13 — ideiglenes csere, végleges formáját az F1 fázis `CLAUDE.md`-je kapja.)**
+A "teljes beolvasás" szabály 2026.09.13-tól nem érvényes: a döntési fájl a F0.6/F0.7
+kiszervezések után is 8 szakaszra tagolt, de a changelog (`PaRDeS_dontesek_CHANGELOG.md`)
+és a felfüggesztett SzPA-join alrendszer (`PaRDeS_STEPBible_SzPA_join_adatcsatorna.md`)
+külön fájlba került — ezeket csak akkor kell megnyitni, ha a feladat ténylegesen érinti
+őket. Helyette **szakasz-szintű útmutatás**, melyik szakaszt mikor kell megnyitni:
+
+| Szakasz | Mikor releváns |
+|---|---|
+| 0. Dataset-leltár | mindig — gyors áttekintés, melyik dataset hol tart |
+| 1. Architekturális váltás | csak ha a GitHub/repó-szerkezet maga a feladat tárgya |
+| 2. STEPBible-integráció | lexikai/kereszthivatkozási kutatással járó feladatnál |
+| 3. SzPA-fordítások integrációja | csak ha a feladat a privát SzPA-adatot érinti |
+| 4. STEPBible↔SzPA join | csak ha a felfüggesztett SzPA-join alrendszert kell folytatni — l. `PaRDeS_STEPBible_SzPA_join_adatcsatorna.md` |
+| 5. Hozzáférési korlátok | csak ha bizonytalan, melyik felület melyik repóhoz fér hozzá |
+| 6. Változtatási workflow | új dataset vagy nagyobb séma-változtatás előtt |
+| 7. Tanulmány-készítési munkafolyamat | minden tanulmányírási feladatnál |
+| 8. Nyitott pontok | mindig — gyors ellenőrzés, nincs-e a feladat már részben eldöntve/nyitva |
+
+Plusz a feladathoz közvetlenül kapcsolódó fájlok (pl. egy korábbi
 validációs jelentés, egy már meglévő dataset README-je).
 
 **Miért fontos ez ennyire konzisztensen:** a projekt architektúrája (Claude Code nem
