@@ -1,9 +1,15 @@
 # GENERÁLT: eszkozok/grammatikai_strongok_general.py — kézzel nem szerkesztendő.
 # A kézi listák (HEBER_KEZI, GOROG_KEZI) és a TILTOLISTA a szkript forrásában élnek.
-# proveniencia-heber: scope=OT-full | forras=TAHOT_kivonat.tsv | tartomany=H9xxx | n=44 | elofordulas=169598 | ts=2026-09-13T18:39Z
-# proveniencia-gorog: scope=NT-full | forras=TAGNT_kivonat.tsv | modszer=teteles-lista | n=31 | elofordulas=65646 | ts=2026-09-13T18:39Z
+# proveniencia-heber: scope=OT-full | forras=TAHOT_kivonat.tsv | tartomany=H9xxx | n=44 | elofordulas=169598 | ts=2026-09-14T05:37Z
+# proveniencia-gorog: scope=NT-full | forras=TAGNT_kivonat.tsv | modszer=teteles-lista | n=31 | elofordulas=65646 | ts=2026-09-14T05:37Z
 # A TAGNT G9xxx tartomanya NEM grammatikai (7 ritka lexikai szo), ezert a gorog
 # oldalnak nincs gepi alapja — teteles lista, soronkent indokolva.
+# KRITERIUM: egy Strong-szam akkor grammatikai, ha a szo onmagaban nem hordoz
+# tartalmi jegyet — fuggetlenul attol, hogy prefixkent vagy szabadon all.
+# A H9xxx tartomany kenyelmes kiindulas, de nem definicio.
+# SCOPE: ez a 'gerinc' parancs stopword-listaja, NEM globalis kizaras. Ha egy
+# eloljaro motivumszinten szamit (pl. al-pene), azt a 'kollokacio' parancs
+# talalja meg, nem a metszet. A ketto nem utkozik.
 strong	rovid_jelentes	kategoria	kizaras_oka
 G0235	hanem	kotoszo	Ellentétes kötőszó (ἀλλά).
 G0575	-tól, -től	eloljaro	Elöljáró (ἀπό). Héber párja szintén a H9006.
@@ -36,9 +42,16 @@ G4314	-hoz, felé	eloljaro	Elöljáró (πρός).
 G4771	te, ti	nevmas	Személyes névmás (σύ). A TAGNT a többes számú alakokat is ide sorolja, ezért a G5210 (ὑμεῖς) nem kap sort — a kivonatban 0 előfordulású.
 G4862	-val együtt	eloljaro	Elöljáró (σύν).
 G5259	által	eloljaro	Elöljáró (ὑπό).
+H0413	-hoz, felé	eloljaro	Szabadon álló elöljáró (אֶל). Görög párja a G1519 (εἰς), amely már a listán van. A H9xxx csak a prefixált elöljárókat fedi — ez ortográfiai határ, nem szemantikai.
 H0834	amely, aki	vonatkozo_nevmas	Vonatkozó névmás (אֲשֶׁר). Tisztán szerkezeti elem: alárendelt tagmondatot vezet be, a tagmondat tartalmáról semmit nem mond.
 H0853	[tárgy jelölője]	targyrag	Tárgyrag (אֵת). Nem hordoz jelentést, csak a határozott tárgyat jelöli; gyakorlatilag minden tranzitív mondatban jelen van, ezért minden metszetbe bekerül.
+H1931	ő, az	nevmas	Személyes/mutató névmás (הוּא). Görög párja a G0846 (αὐτός), amely már a listán van.
+H2088	ez	nevmas	Mutató névmás (זֶה). Görög párja a G3778 (οὗτος), amely már a listán van.
+H3588	mert, hogy, amikor	kotoszo	Alárendelő kötőszó (כִּי). Görög párja a G3754 (ὅτι), amely már a listán van.
 H3808	nem	tagadoszo	Tagadószó (לֹא). A tagadás formális jelölője; a tagadott fogalom hordozza a tartalmat, nem maga a partikula.
+H4480	-ból, -ből, -tól	eloljaro	Szabadon álló elöljáró (מִן־). A LEGÁRULKODÓBB eset: a PREFIXÁLT változata (H9006, 6 383 előfordulás) már a gépi H9xxx alapban van, a szabadon álló (1 189) nem volt — ugyanaz a szó, ugyanaz a jelentés, pusztán az írásmód választotta ketté.
+H5704	-ig	eloljaro	Szabadon álló elöljáró (עַד). Időbeli vagy térbeli határt jelöl, tartalmi jegy nélkül.
+H5921	-on, fölött, ellen	eloljaro	Szabadon álló elöljáró (עַל). Görög párja a G1909 (ἐπί), amely már a listán van.
 H9001	&	affixum	STEPBible H9xxx grammatikai jelölő (prefixum, szuffixum vagy névmási elem); gépi alap, nem kézzel karbantartott
 H9002	and	affixum	STEPBible H9xxx grammatikai jelölő (prefixum, szuffixum vagy névmási elem); gépi alap, nem kézzel karbantartott
 H9003	in	affixum	STEPBible H9xxx grammatikai jelölő (prefixum, szuffixum vagy névmási elem); gépi alap, nem kézzel karbantartott

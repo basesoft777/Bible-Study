@@ -264,31 +264,98 @@ elofordulas=169598`) és a tételes görög listára (`scope=NT-full |
 modszer=teteles-lista | n=31 | elofordulas=65646`). A `modszer=teteles-lista` őszinte
 jelölés: a görög sorok emberi döntésből származnak, csak az előfordulásszámuk gépi.
 
-#### Kalibráció — és amit megmutat
+#### A besorolás kritériuma — a második átdolgozás
 
-A HAMART-001 metszetét gépileg újraszámoltam (1Móz 3 ∩ 4 ∩ 6:1-8 ∩ 6:9-22):
-**pontosan 23**, egyezik a terv 4.1 pontjával. A szűrőn átengedve:
+> **Átdolgozva 2026.09.14-én.** Az első kör a kézi héber listát háromtételesre szűkítette
+> (`H0853`, `H0834`, `H3808`), és a kalibráció megmutatta, hogy három tiszta funkciószó
+> bennmarad. A felhasználói válasz nem csak a hármat engedélyezte, hanem **a szabályt
+> is kimondta**, amiből a hiány következett.
+
+**A kritérium, ami eddig hiányzott:**
+
+> Egy Strong-szám akkor grammatikai, ha a szó **önmagában nem hordoz tartalmi jegyet** —
+> függetlenül attól, hogy prefixként vagy szabadon áll. A `H9xxx` tartomány kényelmes
+> kiindulás, de **nem definíció**.
+
+A `H9xxx` **ortográfiai határ, nem szemantikai**: a héberben a névelő, a kötőszó és a
+gyakori elöljárók prefixumként tapadnak, ezért kaptak külön kódot — de egy elöljáró nem
+attól lesz tartalmas, hogy külön szóként írják. Ebből következett, hogy **több ilyen van**,
+nem csak a kérdezett három.
+
+**A kézi héber lista 3 → 10 tételre bővült.** Az új hét:
+
+| Strong | Szó | db | Görög párja a listán |
+|---|---|---|---|
+| `H0413` | אֶל — „felé" | 5 515 | `G1519` (εἰς) |
+| `H5921` | עַל — „-on, fölött" | 5 768 | `G1909` (ἐπί) |
+| `H3588` | כִּי — „mert, hogy" | 4 482 | `G3754` (ὅτι) |
+| `H1931` | הוּא — „ő, az" | 1 876 | `G0846` (αὐτός) |
+| `H5704` | עַד — „-ig" | 1 261 | — |
+| `H4480` | מִן־ — „-ból" | 1 189 | `G1537` (ἐκ) |
+| `H2088` | זֶה — „ez" | 1 180 | `G3778` (οὗτος) |
+
+Mind a hét előfordulásszáma **pontosan egyezett** a megadott értékekkel; ellenőrizve a
+TAHOT-on.
+
+**A `H4480` önmagában bizonyítja a kritériumot.** Ugyanaz a héber elöljáró (*min*) két
+Strong-számon ül, pusztán az írásmód szerint:
+
+| | Strong | Előfordulás | Hol volt |
+|---|---|---|---|
+| prefixált (מִ) | `H9006` | **6 383** | a gépi `H9xxx` alapban, kezdettől |
+| szabadon álló (מִן־) | `H4480` | **1 189** | sehol, amíg kézzel fel nem vettük |
+
+**Egy független ellenőrző jel is adódott, amit nem kerestem:** a felvett tíz héber tétel
+szófaja a `Strong_szotar.tsv`-ben kivétel nélkül `elöljárószó`, `kötőszó` vagy `névmás`,
+a szándékosan kihagyottaké viszont `főnév` (`H3605`), illetve `ige` (`H1961`, `H6213`).
+A kritérium tehát **gépileg ellenőrizhető**, nem csak kimondott — ez a jövőbeli
+bővítéseknél használható kapu.
+
+**A `TILTOLISTA` négyről hatra bővült:** felkerült a `H1961` (*hájá*, „lenni", 3 562) és a
+`H6213` (*aszá*, „tenni", 2 628). Indok a felhasználói megjegyzésből: tartalmi igék,
+amelyek a teremtés-motívumoknál **gerinc-elemek lehetnek**. Ez ugyanaz a logika, amiért a
+`H0559` is tiltólistán van — ezért gépi őrzésbe tettem, nem csak kihagytam. *Ha ez
+túlmegy a szándékon, egyetlen sor visszavonja.*
+
+**Új, `HATARESET` rekesz — dokumentált, de inaktív.** A `H3605` (*kol*, „minden", 5 412)
+**sem a táblán, sem a tiltólistán nincs**: gyakori és kvantor-szerű, de a teljesség /
+kivétel nélküliség motívumszinten releváns lehet. A kérdés így nyitva marad egy későbbi
+kör számára, ahogy a felhasználói megjegyzés kérte („vagy ha igen, külön kategóriával és
+indoklással").
+
+#### Hatókör rögzítve — stopword-lista, nem globális kizárás
+
+A `SEMA.md` új 2.7.5 pontja kimondja: ez a tábla a **`gerinc` parancs stopword-listája**.
+Ha egy elöljáró motívumszinten számít — mint az עַל־פְּנֵי (*al-pené*, „színe fölött",
+1Móz 1:2) —, azt a **`kollokacio`** parancs találja meg, amely szópárt keres egy versen
+belül, nem a `gerinc`, amely szakaszok közös Strong-halmazát metszi. **A kettő nem
+ütközik:** más a bemenetük, más a kérdésük.
+
+Gyakorlati következménye a sémára: ha egy sor elöljárós szerkezeten lóg, a `gerinc_elem`
+mezőbe a **kollokáció-pár** kerül (`al+pané`), nem a puszta Strong-szám.
+
+#### Kalibráció — a lista fejlődése ugyanazon az eseten
+
+| Változat | Eredmény | Mi hagyta bent a többletet |
+|---|---|---|
+| első (keretszavas, 183 sor) | 23 → **3** | — (de keretszavakat is szűrt, ami leletet veszélyeztetett) |
+| szűkített (3 kézi tétel, 78 sor) | 23 → **14** | a lista esetenként épült, nem szabály szerint |
+| **kritérium-alapú (10 kézi tétel, 85 sor)** | **23 → 11** | — |
 
 | | |
 |---|---|
 | metszet | **23** |
-| kiszűrve (7 `H9xxx` + `H0853` + `H0834`) | **9** |
-| **marad** | **14** |
+| kiszűrve — 7 `H9xxx` + `H0853`, `H0834`, `H0413`, `H5921`, `H3588` | **12** |
+| **marad — gerinc-jelölt** | **11** (52%) |
 
-*Összevetés:* az első, 183 soros változat ugyanezen az eseten 23 → 3-at adott (87%
-zajszűrés); a mostani 23 → 14 (39%). A különbséget a most kihagyott keretszó-kategória
-teszi ki.
+**A lényeges eredmény nem a szám, hanem az összetétel: a megmaradó tizenegyből egy sem
+funkciószó.** Mind főnév vagy ige — `H0127` *adamá*, `H0430` *Elohim*, `H0559` *amar*,
+`H0802` *issá*, `H1121` *bén*, `H1961` *hájá*, `H3205` *jalad*, `H3605` *kol*,
+`H3947` *lakach*, `H6213` *aszá*, `H6440` *pané*. A grammatikai osztály ezen a
+teszteseten **lezárult**; ami bent maradt, az emberi ítéletet kíván, nem listabővítést.
 
-⚠️ **A megmaradó 14 nem mind tartalmi szó — ez a lista ismert hiánya.** Három közülük
-tiszta funkciószó, pontosan olyan, mint a három felvett kézi tétel, csak szabadon álló
-alakban: **`H0413`** (אֶל, „felé"), **`H5921`** (עַל, „-on, fölött"), **`H3588`**
-(כִּי, „mert, hogy"). A `H9xxx` a *prefixált* elöljárókat fedi le (בְּ, לְ, מִן, כְּ),
-a *szabadon álló* héber elöljárókat és kötőszókat viszont senki — miközben a görög oldal
-12 elöljárót és 6 kötőszót tételesen felsorol. **Az aszimmetria nem elvi, hanem a kézi
-lista terjedelméből adódik; felhasználói döntést igényel, hogy bővüljön-e.**
-
-A maradék tizenegy tartalmi vagy keretszó, köztük a tanulmány saját lelete (`H0127`
-*adamá*), valamint `H0430` *Elohim* és `H3205` *jalad* — ezek helyesen maradnak benn.
+Ez egyben azt is jelenti, hogy a mostani 52% **nem hasonlítható** az első változat 87%-ához:
+az a szám keretszavak kiszűrésével jött ki, amit a mostani szerkezet szándékosan nem tesz.
 
 ### F1.5 — `adat/datasetek.tsv` ✅
 
@@ -366,8 +433,10 @@ mutat, a 8. szakasz sora pedig „már nem kell megnyitni" jelölést kapott.
 | TSV oszlopszám-integritás (7 `adat/` tábla + index) | **OK, 0 hiba** |
 | a `SEMA.md` lefedi-e minden tábla minden mezőjét | **OK, 0 nem dokumentált mező** |
 | HAMART-001 metszet újraszámolva a terv 23-as értéke ellen | **23 = 23** |
-| szűrő-kalibráció ugyanazon az eseten | **23 → 14, a lelet megmarad** (l. F1.4) |
+| szűrő-kalibráció ugyanazon az eseten | **23 → 11, és a maradékban nincs funkciószó** (l. F1.4) |
 | TILTOLISTA-őrző élesben (H3068 beszúrása) | **hibával leáll, kilépési kód 1** |
+| a 6 tiltólistás + a határeset tényleg kint van-e a táblából | **OK, mind a 7** |
+| a 7 új héber tétel tényleg bekerült-e | **OK, mind a 7** |
 | `DONTESEK_INDEX.tsv` sorszámai a tényleges fejlécek ellen | javítva (8. szakasz vége 278 → 293) |
 
 ---

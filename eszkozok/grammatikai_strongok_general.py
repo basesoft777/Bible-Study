@@ -10,8 +10,8 @@ SZERKEZET (felhasználói döntés, 2026.09.13):
 
   1. HÉBER, GÉPI ALAP — a TAHOT H9xxx tartománya. Ezt a szkript automatikusan
      olvassa ki, provenienciával; kézi karbantartást nem igényel.
-  2. HÉBER, KÉZI KIEGÉSZÍTÉS — három funkciószó, amely nincs a H9xxx-ben, de
-     ugyanolyan zajt ad: H0853, H0834, H3808. Tételes indoklással.
+  2. HÉBER, KÉZI KIEGÉSZÍTÉS — hét funkciószó, amely nincs a H9xxx-ben, de
+     ugyanolyan zajt ad. Tételes indoklással, l. a HEBER_KEZI feletti kritériumot.
   3. GÖRÖG — a TAGNT-ből. FIGYELEM: a héber H9xxx-nek NINCS görög megfelelője.
      A TAGNT G9xxx tartománya nem grammatikai, hanem 7 ritka lexikai szó
      (συναλλάσσω, ὑπόλειμμα, ταπεινοφροσύνη stb.), egyenként 1 előfordulással —
@@ -47,10 +47,33 @@ TILTOLISTA = {
     "H0559": "amar, 'mondani' — elbeszélői keretszó, DE tartalmi ige; kizárása leletet törölne",
     "G2316": "theosz, 'Isten' — a H3068/H0430 görög párja, ugyanazon okból",
     "G3004": "legó, 'szólni' — a H0559 görög párja, ugyanazon okból",
+    "H1961": "hájá, 'lenni' — gyakori (3 562), DE tartalmi ige; a teremtés-motívumoknál gerinc-elem lehet",
+    "H6213": "aszá, 'tenni, csinálni' — gyakori (2 628), DE tartalmi ige; ugyanazon okból",
+}
+
+# ---------------------------------------------------------------------------
+# HATARESET — dokumentált, de NEM aktív. Sem a táblába, sem a tiltólistára nem
+# kerül: a kérdés nyitva marad, hogy egy későbbi kör eldönthesse.
+# ---------------------------------------------------------------------------
+HATARESET = {
+    "H3605": ("kol, 'minden' — gyakori (5 412) és kvantor-szerű, DE tartalmi jegyet is "
+              "hordozhat: a teljesség / kivétel nélküliség motívumszinten releváns lehet. "
+              "Ha valaha felvesszük, külön kategóriával és külön indoklással."),
 }
 
 # ---------------------------------------------------------------------------
 # 2. HÉBER KÉZI KIEGÉSZÍTÉS — nincs a H9xxx-ben, de ugyanaz a zaj.
+#
+# A FELVÉTEL KRITÉRIUMA (nem a H9xxx tagság!):
+#   Egy Strong-szám akkor grammatikai, ha a szó önmagában nem hordoz tartalmi
+#   jegyet — függetlenül attól, hogy prefixként vagy szabadon áll.
+#   A H9xxx tartomány kényelmes kiindulás, de nem definíció: ortográfiai határ,
+#   nem szemantikai. Egy elöljáró nem attól lesz tartalmas, hogy külön szóként
+#   írják. Ezért tartozik ide az alábbi hét tétel is.
+#
+# Ellenőrizhető jel: mind a hét szófaja a Strong_szotar.tsv-ben elöljárószó,
+# kötőszó vagy névmás — szemben a szándékosan kihagyottakkal (H3605 főnév,
+# H1961 és H6213 ige), amelyek a TILTOLISTA-ra, illetve a HATARESET-be kerültek.
 # ---------------------------------------------------------------------------
 HEBER_KEZI = [
     ("H0853", "[tárgy jelölője]", "targyrag",
@@ -62,6 +85,23 @@ HEBER_KEZI = [
     ("H3808", "nem", "tagadoszo",
      "Tagadószó (לֹא). A tagadás formális jelölője; a tagadott fogalom hordozza a tartalmat, "
      "nem maga a partikula."),
+    ("H0413", "-hoz, felé", "eloljaro",
+     "Szabadon álló elöljáró (אֶל). Görög párja a G1519 (εἰς), amely már a listán van. "
+     "A H9xxx csak a prefixált elöljárókat fedi — ez ortográfiai határ, nem szemantikai."),
+    ("H5921", "-on, fölött, ellen", "eloljaro",
+     "Szabadon álló elöljáró (עַל). Görög párja a G1909 (ἐπί), amely már a listán van."),
+    ("H3588", "mert, hogy, amikor", "kotoszo",
+     "Alárendelő kötőszó (כִּי). Görög párja a G3754 (ὅτι), amely már a listán van."),
+    ("H5704", "-ig", "eloljaro",
+     "Szabadon álló elöljáró (עַד). Időbeli vagy térbeli határt jelöl, tartalmi jegy nélkül."),
+    ("H4480", "-ból, -ből, -tól", "eloljaro",
+     "Szabadon álló elöljáró (מִן־). A LEGÁRULKODÓBB eset: a PREFIXÁLT változata (H9006, "
+     "6 383 előfordulás) már a gépi H9xxx alapban van, a szabadon álló (1 189) nem volt — "
+     "ugyanaz a szó, ugyanaz a jelentés, pusztán az írásmód választotta ketté."),
+    ("H1931", "ő, az", "nevmas",
+     "Személyes/mutató névmás (הוּא). Görög párja a G0846 (αὐτός), amely már a listán van."),
+    ("H2088", "ez", "nevmas",
+     "Mutató névmás (זֶה). Görög párja a G3778 (οὗτος), amely már a listán van."),
 ]
 
 # ---------------------------------------------------------------------------
@@ -179,6 +219,12 @@ def main():
         f.write("# proveniencia-gorog: %s\n" % prov_g)
         f.write("# A TAGNT G9xxx tartomanya NEM grammatikai (7 ritka lexikai szo), ezert a gorog\n")
         f.write("# oldalnak nincs gepi alapja — teteles lista, soronkent indokolva.\n")
+        f.write("# KRITERIUM: egy Strong-szam akkor grammatikai, ha a szo onmagaban nem hordoz\n")
+        f.write("# tartalmi jegyet — fuggetlenul attol, hogy prefixkent vagy szabadon all.\n")
+        f.write("# A H9xxx tartomany kenyelmes kiindulas, de nem definicio.\n")
+        f.write("# SCOPE: ez a 'gerinc' parancs stopword-listaja, NEM globalis kizaras. Ha egy\n")
+        f.write("# eloljaro motivumszinten szamit (pl. al-pene), azt a 'kollokacio' parancs\n")
+        f.write("# talalja meg, nem a metszet. A ketto nem utkozik.\n")
         w = csv.DictWriter(f, fieldnames=mezok, delimiter="\t", lineterminator="\n")
         w.writeheader()
         for s in sorok:
@@ -191,6 +237,7 @@ def main():
     print("  gorog teteles:       %3d kod, %6d elofordulas" % (len(GOROG_KEZI), g_db))
     print("  kategoriak: %s" % ", ".join("%s=%d" % (k, v) for k, v in sorted(kat.items())))
     print("  tiltolista ervenyben: %s" % ", ".join(sorted(TILTOLISTA)))
+    print("  hatareset (dokumentalt, nem aktiv): %s" % ", ".join(sorted(HATARESET)))
     if hianyzo_gorog:
         print("  FIGYELEM — nem fordul elo a TAGNT-ben: %s" % ", ".join(hianyzo_gorog))
 

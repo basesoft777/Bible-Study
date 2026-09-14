@@ -299,8 +299,8 @@ forrásmegjelölést követel, **és a származékos adat is ugyanilyen licenc a
 ### 2.7 `grammatikai_strongok.tsv` — **generált**
 
 Kulcs: `strong`. Előállítja: `eszkozok/grammatikai_strongok_general.py`.
-**Kézzel nem szerkesztendő** — a két tételes lista (`HEBER_KEZI`, `GOROG_KEZI`) és a
-`TILTOLISTA` a szkript forrásában él, ott módosítandó.
+**Kézzel nem szerkesztendő** — a két tételes lista (`HEBER_KEZI`, `GOROG_KEZI`), a
+`TILTOLISTA` és a `HATARESET` a szkript forrásában él, ott módosítandó.
 
 A terv 4.1 pontja szerint a gerinc-metszet e fájl nélkül használhatatlan.
 
@@ -315,28 +315,61 @@ A terv 4.1 pontja szerint a gerinc-metszet e fájl nélkül használhatatlan.
 kategória | kizárás oka` alakban adta meg; a fájl a többi `adat/` táblával egyező
 ASCII snake_case alakot használja, azonos jelentéssel.
 
-#### 2.7.1 A tábla három forrása
+#### 2.7.1 A besorolás kritériuma
+
+**Egy Strong-szám akkor grammatikai, ha a szó önmagában nem hordoz tartalmi jegyet —
+függetlenül attól, hogy prefixként vagy szabadon áll. A `H9xxx` tartomány kényelmes
+kiindulás, de nem definíció.**
+
+Ez a szakasz legfontosabb mondata, és a tábla szerkezete ebből következik, nem fordítva.
+A `H9xxx` tartomány **ortográfiai határ, nem szemantikai**: a héberben a névelő, a
+kötőszó és a gyakori elöljárók prefixumként tapadnak a szóhoz, ezért kaptak külön
+grammatikai kódot — de egy elöljáró nem attól lesz tartalmas, hogy külön szóként írják.
+
+A kritérium **ellenőrizhető**, nem csak kimondott: a `Strong_szotar.tsv` szófaj-mezője
+független jelet ad. A kézi listára felvett tíz héber tétel mindegyike `elöljárószó`,
+`kötőszó`, `partikula` vagy `névmás`; a szándékosan kihagyottak `főnév`, illetve `ige`.
+
+#### 2.7.2 A tábla három forrása
 
 | Forrás | Sor | Hogyan keletkezik |
 |---|---|---|
 | **héber gépi alap** — a TAHOT `H9xxx` tartománya | **44** | a szkript automatikusan olvassa ki, provenienciával; kézi karbantartást nem igényel |
-| **héber kézi kiegészítés** | **3** | tételes, soronként indokolt |
+| **héber kézi kiegészítés** | **10** | tételes, soronként indokolt |
 | **görög tételes lista** | **31** | tételes, soronként indokolt |
-| **összesen** | **78** | |
+| **összesen** | **85** | |
 
 A `H9xxx` tartomány a héber névelőt, kötőszót, a prefixált elöljárókat és a névmási
 szuffixumokat fedi le: **44 kód, 169 598 előfordulás** a TAHOT-kivonatban — a kivonat
 468 968 sorának 36%-a. Ez a fájl legnagyobb hozadéka, és teljes egészében gépi.
 
-A **három kézi héber tétel** azért kell, mert ugyanolyan zajt ad, de nincs a `H9xxx`-ben:
+A **tíz kézi héber tétel** azért kell, mert a 2.7.1 kritériuma szerint grammatikai, de
+nincs a `H9xxx`-ben:
 
-| Strong | Szó | Miért |
-|---|---|---|
-| `H0853` | אֵת | tárgyrag — nem hordoz jelentést, csak a határozott tárgyat jelöli; gyakorlatilag minden tranzitív mondatban jelen van |
-| `H0834` | אֲשֶׁר | vonatkozó névmás — alárendelt tagmondatot vezet be, a tagmondat tartalmáról semmit nem mond |
-| `H3808` | לֹא | tagadószó — a tagadás formális jelölője; a tartalmat a tagadott fogalom hordozza |
+| Strong | Szó | Kategória | db | Miért |
+|---|---|---|---|---|
+| `H0853` | אֵת | tárgyrag | 11 050 | nem hordoz jelentést, csak a határozott tárgyat jelöli |
+| `H0834` | אֲשֶׁר | vonatkozó névmás | 5 502 | alárendelt tagmondatot vezet be; a tagmondat tartalmáról semmit nem mond |
+| `H3808` | לֹא | tagadószó | 5 166 | a tagadás formális jelölője; a tartalmat a tagadott fogalom hordozza |
+| `H5921` | עַל | elöljáró | 5 768 | szabadon álló; görög párja a `G1909` (ἐπί) |
+| `H0413` | אֶל | elöljáró | 5 515 | szabadon álló; görög párja a `G1519` (εἰς) |
+| `H3588` | כִּי | kötőszó | 4 482 | alárendelő; görög párja a `G3754` (ὅτι) |
+| `H1931` | הוּא | névmás | 1 876 | személyes/mutató; görög párja a `G0846` (αὐτός) |
+| `H5704` | עַד | elöljáró | 1 261 | időbeli/térbeli határ, tartalmi jegy nélkül |
+| `H4480` | מִן־ | elöljáró | 1 189 | szabadon álló — l. alább |
+| `H2088` | זֶה | névmás | 1 180 | mutató; görög párja a `G3778` (οὗτος) |
 
-#### 2.7.2 A görög oldalnak nincs gépi alapja
+**A `H4480` a legárulkodóbb eset, mert önmagában bizonyítja a kritériumot.** Ugyanaz a
+héber elöljáró (*min*, „-ból, -től") két Strong-számon ül, aszerint, hogy hogyan írják:
+
+| | Strong | Előfordulás | Hol volt |
+|---|---|---|---|
+| prefixált (מִ) | `H9006` | **6 383** | a gépi `H9xxx` alapban, kezdettől |
+| szabadon álló (מִן־) | `H4480` | **1 189** | sehol, amíg kézzel fel nem vettük |
+
+Azonos szó, azonos jelentés, azonos funkció — a listát pusztán az írásmód vágta ketté.
+
+#### 2.7.3 A görög oldalnak nincs gépi alapja
 
 **A héber `H9xxx`-nek nincs görög megfelelője.** A TAGNT `G9xxx` tartománya
 **nem grammatikai**: mindössze hét ritka *lexikai* szó (συναλλάσσω „sürgetni",
@@ -344,51 +377,59 @@ A **három kézi héber tétel** azért kell, mert ugyanolyan zajt ad, de nincs 
 kiegészítő Strong-számok olyan szavakhoz, amelyek az eredeti Strong-számozásban nem
 szerepelnek.
 
-Ennek oka nyelvi, nem adathiba: a héberben a névelő, a kötőszó és a gyakori elöljárók
-**prefixumok**, tehát külön grammatikai kódot kapnak; a görögben ugyanezek **önálló
-szavak**, tehát rendes Strong-számon ülnek (`G3588` ὁ, `G2532` καί, `G1722` ἐν).
+Ennek oka ugyanaz az ortográfiai tény, amit a 2.7.1 mond ki, csak a másik irányból: a
+héberben ezek prefixumok, a görögben **önálló szavak**, tehát rendes Strong-számon ülnek
+(`G3588` ὁ, `G2532` καί, `G1722` ἐν). A görög oldal ezért **eleve** az, amivé a héber
+oldal a tíz kézi tétellel vált: tételes lista.
 
-Ezért a görög oldal **tételes lista, soronként indokolva** — 31 kód, 65 646 előfordulás
-a TAGNT-kivonatban. Tartalmilag azt tükrözi, amit héberül a `H9xxx` lefed: névelő (1),
-kötőszók (6), elöljárók (12), névmások (6), tagadószók (3), partikulák (3).
+31 kód, 65 646 előfordulás a TAGNT-kivonatban: névelő (1), kötőszók (7), elöljárók (12),
+névmások (8), tagadószók (3), partikulák (3).
 
 *Egy lemmatizálási sajátosság dokumentálva:* a TAGNT a **többes számú személyes
 névmásokat is az egyes számú kód alá** sorolja (`ἡμῶν` a `G3165` alatt, a többes számú
 „ti"-alakok a `G4771` alatt), ezért a `G2249` (ἡμεῖς) és a `G5210` (ὑμεῖς) **nem kap
 sort** — a kivonatban nulla előfordulásúak.
 
-#### 2.7.3 `TILTOLISTA` — amit soha nem szabad kiszűrni
+#### 2.7.4 `TILTOLISTA` — amit soha nem szabad kiszűrni
 
-Négy Strong-szám **gépi tiltás** alatt áll. Ha egy későbbi bővítés — például
+Hat Strong-szám **gépi tiltás** alatt áll. Ha egy későbbi bővítés — például
 gyakoriság-alapú — bármelyiket felvenné, a **szkript hibával leáll**, nem csak
 figyelmeztet:
 
-| Strong | Szó | Miért nem szűrhető |
-|---|---|---|
-| `H3068` | יהוה | az istennév maga motívum-hordozó |
-| `H0559` | אָמַר | „mondani" — elbeszélői keretszó, **de tartalmi ige**; kizárása leletet törölne |
-| `G2316` | θεός | a `H3068`/`H0430` görög párja, ugyanazon okból |
-| `G3004` | λέγω | a `H0559` görög párja, ugyanazon okból |
+| Strong | Szó | db | Miért nem szűrhető |
+|---|---|---|---|
+| `H3068` | יהוה | 6 528 | az istennév maga motívum-hordozó |
+| `H1961` | הָיָה | 3 562 | „lenni" — **tartalmi ige**; a teremtés-motívumoknál gerinc-elem lehet |
+| `H6213` | עָשָׂה | 2 628 | „tenni, csinálni" — tartalmi ige, ugyanazon okból |
+| `H0559` | אָמַר | 5 309 | „mondani" — elbeszélői keretszó, **de tartalmi ige**; kizárása leletet törölne |
+| `G2316` | θεός | 1 343 | a `H3068`/`H0430` görög párja, ugyanazon okból |
+| `G3004` | λέγω | 1 357 | a `H0559` görög párja, ugyanazon okból |
 
-**Miért gépi tiltás, és nem megjegyzés:** e szavak nagy gyakoriságúak (`H3068` 6 528,
-`G3004` 1 357, `G2316` 1 343 előfordulás), tehát pontosan azok, amelyeket egy „szűrjük
-ki a leggyakoribbakat" típusú bővítés **elsőként söpörne be**. A tiltás azt a hibát
-zárja ki, amit a szándék nem tud: a szűrő így nem zajt távolítana el, hanem leletet.
+**Miért gépi tiltás, és nem megjegyzés:** e szavak nagy gyakoriságúak — pontosan azok,
+amelyeket egy „szűrjük ki a leggyakoribbakat" típusú bővítés **elsőként söpörne be**.
+A tiltás azt a hibát zárja ki, amit a szándék nem tud: a szűrő így nem zajt távolítana
+el, hanem leletet.
 
-#### 2.7.4 Proveniencia
+**Határeset, szándékosan nyitva hagyva:** a `H3605` (כֹּל, *kol*, „minden", 5 412
+előfordulás) gyakori és kvantor-szerű, **de tartalmi jegyet is hordozhat** — a teljesség,
+a kivétel nélküliség motívumszinten releváns lehet. Ezért **sem a táblán, sem a
+tiltólistán nincs**: a szkript `HATARESET` szótárában dokumentált, de inaktív. Ha valaha
+felvesszük, külön kategóriával és külön indoklással.
 
-A fájl fejléce **két proveniencia-sort** visel, az 1.5 formátumában — külön a gépi héber
-alapra és a tételes görög listára:
+#### 2.7.5 Hatókör — ez stopword-lista, nem globális kizárás
 
-```
-scope=OT-full | forras=TAHOT_kivonat.tsv | tartomany=H9xxx | n=44 | elofordulas=169598 | ts=…
-scope=NT-full | forras=TAGNT_kivonat.tsv | modszer=teteles-lista | n=31 | elofordulas=65646 | ts=…
-```
+**Ez a tábla a `lekerdez.py gerinc` parancs stopword-listája.** Nem jelenti azt, hogy a
+felsorolt szavak a projektben bárhol érdektelenek.
 
-A `modszer=teteles-lista` érték őszinte jelölés: a görög sorok **nem** lekérdezésből
-származnak, hanem emberi döntésből — csak az előfordulásszámuk gépi.
+Ha egy elöljáró **motívumszinten** számít — mint az עַל־פְּנֵי (*al-pené*, „színe fölött",
+1Móz 1:2) szerkezet —, azt a **`kollokacio` parancs** találja meg, amely szópárt keres
+egy versen belül, nem a **`gerinc` parancs**, amely szakaszok közös Strong-halmazát
+metszi. **A kettő nem ütközik:** más a bemenetük, más a kérdésük.
 
-#### 2.7.5 Kalibráció a HAMART-001 esetre
+A megkülönböztetés gyakorlati következménye: ha egy sor egy elöljárós szerkezeten lóg,
+a `gerinc_elem` mezőbe a **kollokáció-pár** kerül (`al+pané`), nem a puszta Strong-szám.
+
+#### 2.7.6 Kalibráció a HAMART-001 esetre
 
 A terv 4.1 pontja szerint a HAMART-001 gerinc-metszete 23 közös Strong-számot adott,
 amelyből egyetlen tartalmi szó maradt: אֲדָמָה (*adamá*, H0127). A metszetet gépileg
@@ -399,25 +440,19 @@ A szűrőn átengedve:
 | | |
 |---|---|
 | metszet | **23** |
-| kiszűrve (7 `H9xxx` + `H0853` + `H0834`) | **9** |
-| **marad** | **14** |
+| kiszűrve — 7 `H9xxx` affixum + `H0853`, `H0834`, `H0413`, `H5921`, `H3588` | **12** |
+| **marad — gerinc-jelölt** | **11** (52% zajszűrés) |
 
-**A megmaradó 14 nem mind tartalmi szó.** Három közülük tiszta funkciószó, pontosan
-olyan, mint a három kézi tétel, csak szabadon álló alakban:
+**A lényeges eredmény nem a szám, hanem az összetétel: a megmaradó tizenegyből egy sem
+funkciószó.** Mind főnév vagy ige — `H0127` *adamá*, `H0430` *Elohim*, `H0559` *amar*,
+`H0802` *issá*, `H1121` *bén*, `H1961` *hájá*, `H3205` *jalad*, `H3605` *kol*,
+`H3947` *lakach*, `H6213` *aszá*, `H6440` *pané*. A grammatikai osztály ezen a
+teszteseten **lezárult**; ami bent maradt, az emberi ítéletet kíván, nem listabővítést.
 
-| Strong | Szó | Kategória |
-|---|---|---|
-| `H0413` | אֶל | elöljáró („felé") |
-| `H5921` | עַל | elöljáró („-on, fölött") |
-| `H3588` | כִּי | kötőszó („mert, hogy") |
-
-Ez a héber lista **ismert, dokumentált hiánya**: a `H9xxx` a *prefixált* elöljárókat
-fedi le (בְּ, לְ, מִן, כְּ), a *szabadon álló* héber elöljárókat és kötőszókat viszont
-senki — miközben a görög oldal 12 elöljárót és 6 kötőszót tételesen felsorol. Az
-aszimmetria nem elvi, hanem a lista terjedelméből adódik.
-
-A többi tizenegy tartalmi vagy keretszó, köztük a tanulmány saját lelete, `H0127`
-*adamá*, valamint `H0430` *Elohim* és `H3205` *jalad* — ezek helyesen maradnak benn.
+*A lista fejlődése ugyanezen az eseten:* 23 → 3 (első, keretszavas változat) → 23 → 14
+(szűkített, háromtételes kézi lista) → **23 → 11** (a kritérium következetes
+alkalmazása). A középső lépés hagyta bent a `H0413`/`H5921`/`H3588` hármast — nem elvi
+okból, hanem mert a lista még esetenként épült, nem szabály szerint.
 
 **Ez a fájl elfogadási tesztje; a szkript módosítása után újra kell futtatni.**
 
