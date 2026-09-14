@@ -151,12 +151,12 @@ def olvas_kivonat(path, prefix):
     freq = Counter()
     gloss = {}
     with open(path, encoding="utf-8") as f:
-        r = csv.reader(f, delimiter="\t")
-        next(r, None)
-        for row in r:
-            if len(row) >= 6 and row[1].startswith(prefix):
-                freq[row[1]] += 1
-                gloss.setdefault(row[1], row[5])
+        sorok = [ln.rstrip("\n").rstrip("\r") for ln in f if ln.strip()]
+    for s in sorok[1:]:
+        row = s.split("\t")
+        if len(row) >= 6 and row[1].startswith(prefix):
+            freq[row[1]] += 1
+            gloss.setdefault(row[1], row[5])
     return freq, gloss
 
 

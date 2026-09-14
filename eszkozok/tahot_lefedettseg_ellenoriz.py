@@ -10,7 +10,6 @@ közismert, közkincs adata (nem STEPBible-fájlból származik) — csak az
 ellenőrzés vázához kell.
 """
 
-import csv
 import sys
 from pathlib import Path
 from collections import defaultdict
@@ -40,8 +39,22 @@ def parse_igehely(s):
     return book, int(ch), int(v)
 
 
+def read_tsv(path):
+    with open(path, encoding="utf-8") as f:
+        sorok = [ln.rstrip("\n").rstrip("\r") for ln in f if ln.strip()]
+    fejlec = sorok[0].split("\t")
+    ki = []
+    for i, s in enumerate(sorok[1:], start=2):
+        mezok = s.split("\t")
+        if len(mezok) != len(fejlec):
+            raise ValueError("%s %d. sor: %d mező a fejléc %d mezője helyett"
+                              % (path, i, len(mezok), len(fejlec)))
+        ki.append(dict(zip(fejlec, mezok)))
+    return ki
+
+
 def main():
-    rows = list(csv.DictReader(open(TAHOT, encoding="utf-8"), delimiter="\t"))
+    rows = read_tsv(TAHOT)
     present = defaultdict(set)  # book -> set(chapter)
     max_verse = defaultdict(dict)  # book -> {chapter: max verse}
     for r in rows:

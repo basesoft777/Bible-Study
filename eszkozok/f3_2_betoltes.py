@@ -33,7 +33,6 @@ import sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-import csv
 import os
 import re
 
@@ -48,14 +47,15 @@ def load_tahot_index(strong_codes):
     index = {}
     verses_seen = set()
     with open(TAHOT_PATH, encoding="utf-8") as f:
-        r = csv.reader(f, delimiter="\t")
-        header = next(r)
-        assert header[0] == "Igehely" and header[1] == "Strong-szám"
-        for row in r:
-            igehely, strong = row[0], row[1]
-            verses_seen.add(igehely)
-            if strong in wanted:
-                index.setdefault(igehely, set()).add(strong)
+        sorok = [ln.rstrip("\n").rstrip("\r") for ln in f if ln.strip()]
+    header = sorok[0].split("\t")
+    assert header[0] == "Igehely" and header[1] == "Strong-szám"
+    for s in sorok[1:]:
+        row = s.split("\t")
+        igehely, strong = row[0], row[1]
+        verses_seen.add(igehely)
+        if strong in wanted:
+            index.setdefault(igehely, set()).add(strong)
     return index, verses_seen
 
 

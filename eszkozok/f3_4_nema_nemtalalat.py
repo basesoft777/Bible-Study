@@ -2,7 +2,7 @@
 """F3.4 néma nem-találat szűrő: mely Károli-versben NEM szerepel a Strong-hoz
 tartozó egyetlen ismert magyar visszaadás sem. Ezek kézi felülvizsgálatra
 kerülnek — nem tölthetők ki gépileg (CLAUDE.md 3. alapszabály)."""
-import csv, sys, os, io, re
+import sys, os, io, re
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', newline='')
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,11 +29,11 @@ HOSSZU = {'Jelenések': 'Jel', 'Lukács': 'Luk', 'Máté': 'Mt', 'Róma': 'Róm'
 
 karoli = {}
 with open(os.path.join(ROOT, 'konkordancia', 'Karoli_1908.tsv'), encoding='utf-8') as f:
-    r = csv.reader(f, delimiter='\t')
-    next(r)
-    for sor in r:
-        if len(sor) >= 2:
-            karoli[sor[0]] = sor[1]
+    karoli_sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
+for sor_s in karoli_sorok[1:]:
+    sor = sor_s.split('\t')
+    if len(sor) >= 2:
+        karoli[sor[0]] = sor[1]
 
 with open(os.path.join(ROOT, 'adat', 'elofordulasok.tsv'), encoding='utf-8') as f:
     sorok = [s.rstrip('\n') for s in f][1:]

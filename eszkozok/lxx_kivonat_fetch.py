@@ -42,6 +42,21 @@ NORMALIZO_TABLA = "konkordancia/Konyv_normalizalo_tabla.tsv"
 USER_AGENT = "Mozilla/5.0 (compatible; lxx-kivonat-fetch/1.0; +bible-study-repo)"
 KERES_KESLELTETES_MP = 1.0
 
+
+def _read_tsv_dicts(path):
+    """TSV-olvasás szótár-sorokkal a csv modul nélkül — l. CLAUDE.md, „TSV-olvasás"."""
+    with open(path, encoding="utf-8") as f:
+        sorok = [ln.rstrip("\n").rstrip("\r") for ln in f if ln.strip()]
+    fejlec = sorok[0].split("\t")
+    ki = []
+    for i, s in enumerate(sorok[1:], start=2):
+        mezok = s.split("\t")
+        if len(mezok) != len(fejlec):
+            raise ValueError("%s %d. sor: %d mező a fejléc %d mezője helyett"
+                              % (path, i, len(mezok), len(fejlec)))
+        ki.append(dict(zip(fejlec, mezok)))
+    return ki
+
 # studybible.info a teljes angol (KJV-hagyomanyu) konyvnevet varja az URL-ben.
 # A STEP-rovidites hidalja at ezt a Konyv_normalizalo_tabla.tsv magyar
 # oszlopaihoz (l. a tablazat elso oszlopa).
@@ -84,11 +99,11 @@ def normalize_strong(strong):
 
 def load_magyar_konyvnev(step_kod):
     with open(NORMALIZO_TABLA, encoding="utf-8") as f:
-        reader = csv.reader(f, delimiter="\t")
-        next(reader)
-        for row in reader:
-            if row and row[0] == step_kod:
-                return row[1]
+        sorok = [ln.rstrip("\n").rstrip("\r") for ln in f if ln.strip()]
+    for s in sorok[1:]:
+        row = s.split("\t")
+        if row and row[0] == step_kod:
+            return row[1]
     return None
 
 
@@ -110,17 +125,17 @@ def load_karoli_max_vers(path, karoli_konyv_prefix):
     igehely_re = re.compile(rf'^{re.escape(karoli_konyv_prefix)} (\d+):(\d+)$')
     max_vers = {}
     with open(path, encoding="utf-8") as f:
-        reader = csv.reader(f, delimiter="\t")
-        next(reader, None)
-        for row in reader:
-            if not row:
-                continue
-            m = igehely_re.match(row[0])
-            if not m:
-                continue
-            fejezet, vers = int(m.group(1)), int(m.group(2))
-            if vers > max_vers.get(fejezet, 0):
-                max_vers[fejezet] = vers
+        sorok = [ln.rstrip("\n").rstrip("\r") for ln in f if ln.strip()]
+    for s in sorok[1:]:
+        row = s.split("\t")
+        if not row:
+            continue
+        m = igehely_re.match(row[0])
+        if not m:
+            continue
+        fejezet, vers = int(m.group(1)), int(m.group(2))
+        if vers > max_vers.get(fejezet, 0):
+            max_vers[fejezet] = vers
     return max_vers
 
 
@@ -138,11 +153,11 @@ def load_karoli_letezo_igehelyek(path, karoli_konyv_prefix):
     igehely_re = re.compile(rf'^{re.escape(karoli_konyv_prefix)} \d+:\d+$')
     letezo = set()
     with open(path, encoding="utf-8") as f:
-        reader = csv.reader(f, delimiter="\t")
-        next(reader, None)
-        for row in reader:
-            if row and igehely_re.match(row[0]):
-                letezo.add(row[0])
+        sorok = [ln.rstrip("\n").rstrip("\r") for ln in f if ln.strip()]
+    for s in sorok[1:]:
+        row = s.split("\t")
+        if row and igehely_re.match(row[0]):
+            letezo.add(row[0])
     return letezo
 
 
@@ -185,101 +200,99 @@ def load_versifikacios_terkep(path, karoli_konyv_prefix, karoli_1908_path=KAROLI
     def gyujt(oszlopnev, cimke):
         renumber_sorok = []
         egyeb_sorok = []
-        with open(path, encoding="utf-8") as f:
-            reader = csv.DictReader(f, delimiter="\t")
-            for row in reader:
-                igehely = row["Karoli_igehely"]
-                karoli_m = karoli_fejezet_re.match(igehely)
-                if not karoli_m:
-                    continue
-                if igehely not in letezo_igehelyek:
-                    # A terkep celkent olyan "Karoli-verset" ad meg, ami a
-                    # valosagban SOHA nem letezett a Karoli_1908.tsv-ben (pl.
-                    # a gorog apokrif Eszter-toldalekok "Eszt 12:1".."Eszt
-                    # 16:x" cimkei - a protestans Karoli csak 10 fejezetet
-                    # tartalmaz Eszterbol). Ezt a sort SOHA nem szabad
-                    # indexelni, kulonben fabrikalt, nem-letezo Igehely-
-                    # cimke kerulne a vegso kimenetbe (l. Zsolt 151 mintajara:
-                    # ha nincs valodi Karoli-cel, a szonak uresen kell
-                    # maradnia, nem egy kitalalt cimke alatt megjelennie).
+        for row in _read_tsv_dicts(path):
+            igehely = row["Karoli_igehely"]
+            karoli_m = karoli_fejezet_re.match(igehely)
+            if not karoli_m:
+                continue
+            if igehely not in letezo_igehelyek:
+                # A terkep celkent olyan "Karoli-verset" ad meg, ami a
+                # valosagban SOHA nem letezett a Karoli_1908.tsv-ben (pl.
+                # a gorog apokrif Eszter-toldalekok "Eszt 12:1".."Eszt
+                # 16:x" cimkei - a protestans Karoli csak 10 fejezetet
+                # tartalmaz Eszterbol). Ezt a sort SOHA nem szabad
+                # indexelni, kulonben fabrikalt, nem-letezo Igehely-
+                # cimke kerulne a vegso kimenetbe (l. Zsolt 151 mintajara:
+                # ha nincs valodi Karoli-cel, a szonak uresen kell
+                # maradnia, nem egy kitalalt cimke alatt megjelennie).
+                figyelmeztetesek.append(
+                    f"KIHAGYVA (nem letezik a Karoliban, {cimke}): '{igehely}' "
+                    f"nem valodi Karoli-vers - a rea mutato zarojel-hivatkozas "
+                    f"uresen marad"
+                )
+                continue
+            # FONTOS: ha EZ az oszlop (Gorog/Heber) ugyis megegyezik mar
+            # a Karolival ehhez a sorhoz (a Karoli_egyezik_hol felsorolja),
+            # akkor ez a bejegyzes CSAK trivialis onhivatkozas lenne (a
+            # nyers oldal sosem bocsatana ki ra zarojelet, hiszen mar
+            # egyezik) - SZANDEKOSAN NEM indexeljuk be, mert a nyers
+            # zarojel-szam (fejezet,vers) UGYANAZ lehet, mint egy MASIK
+            # Karoli-vers VALODI (tenylegesen elterő) kereszthivatkozasa
+            # ugyanebben az oszlopban - a trivialis bejegyzes indexelese
+            # alhamis utkozest okozna, ami a keresesnel (or-lancolat)
+            # csendben a rossz erteket adna vissza (l. 1Moz 31:55/32:1
+            # eset: a Gorog oszlop mindket szomszedos versnel trivialisan
+            # egyezik a Karolival, mikozben a Heber oszlop valodi +1
+            # eltolast hordoz - enelkul a szures nelkul a trivialis
+            # Gorog-bejegyzesek felulirnak egy masik vers valodi
+            # Heber-alapu zarojel-celjat, mert a lookup Gorog-ot probalja
+            # elsokent).
+            if cimke in row["Karoli_egyezik_hol"].split(","):
+                continue
+            kert_fejezet = int(karoli_m.group(1))
+            nyers_ertek = row[oszlopnev].strip()
+            m = GOROG_LXX_VERS_RE.match(nyers_ertek)
+            if not m:
+                # A nyers ertek nem illik az egyszeru "Konyv.fejezet:vers[-vers][betu]"
+                # mintara. Ket alapvetoen kulonbozo ok lehet:
+                #   1. explicit "--" veg (pl. "Est.--") - a sor DOKUMENTALJA, hogy
+                #      ehhez a Karoli-vershez nincs LXX-megfeleloje - ez SZANDEKOS,
+                #      nem hiba, nem is naplozzuk kulon (ugyanugy jarunk el, mintha
+                #      a sor nem is letezne - a szo majd vagy egy masik, valodi
+                #      sorbol, vagy egyaltalan nem kap Karoli-cimket).
+                #   2. minden mas eset (pl. "X / Y" tobbszoros hivatkozas, "*a-w"
+                #      tobbbetus tartomany, vesszos/pontosvesszos lista, korrupt
+                #      "Psa.Psa.151:x" duplikalt prefix) - ezek VALODI, meg fel nem
+                #      dolgozott terkep-komplexitast jeleznek, amit a jelenlegi
+                #      GOROG_LXX_VERS_RE nem tud ertelmezni. Ezeket EXPLICIT
+                #      naplozzuk (nem csendben dobjuk el), hogy lathato maradjon,
+                #      hany esetben es hol marad esetleg le nem fedett tartalom.
+                if not nyers_ertek.endswith("--"):
                     figyelmeztetesek.append(
-                        f"KIHAGYVA (nem letezik a Karoliban, {cimke}): '{igehely}' "
-                        f"nem valodi Karoli-vers - a rea mutato zarojel-hivatkozas "
-                        f"uresen marad"
+                        f"NEM_PARSZOLHATO_ERTEK ({cimke}): '{igehely}' -> '{nyers_ertek}' "
+                        f"- a GOROG_LXX_VERS_RE nem ismeri fel ezt a formatumot, "
+                        f"ez a sor nem kerul be a kereso-szotarba"
                     )
-                    continue
-                # FONTOS: ha EZ az oszlop (Gorog/Heber) ugyis megegyezik mar
-                # a Karolival ehhez a sorhoz (a Karoli_egyezik_hol felsorolja),
-                # akkor ez a bejegyzes CSAK trivialis onhivatkozas lenne (a
-                # nyers oldal sosem bocsatana ki ra zarojelet, hiszen mar
-                # egyezik) - SZANDEKOSAN NEM indexeljuk be, mert a nyers
-                # zarojel-szam (fejezet,vers) UGYANAZ lehet, mint egy MASIK
-                # Karoli-vers VALODI (tenylegesen elterő) kereszthivatkozasa
-                # ugyanebben az oszlopban - a trivialis bejegyzes indexelese
-                # alhamis utkozest okozna, ami a keresesnel (or-lancolat)
-                # csendben a rossz erteket adna vissza (l. 1Moz 31:55/32:1
-                # eset: a Gorog oszlop mindket szomszedos versnel trivialisan
-                # egyezik a Karolival, mikozben a Heber oszlop valodi +1
-                # eltolast hordoz - enelkul a szures nelkul a trivialis
-                # Gorog-bejegyzesek felulirnak egy masik vers valodi
-                # Heber-alapu zarojel-celjat, mert a lookup Gorog-ot probalja
-                # elsokent).
-                if cimke in row["Karoli_egyezik_hol"].split(","):
-                    continue
-                kert_fejezet = int(karoli_m.group(1))
-                nyers_ertek = row[oszlopnev].strip()
-                m = GOROG_LXX_VERS_RE.match(nyers_ertek)
-                if not m:
-                    # A nyers ertek nem illik az egyszeru "Konyv.fejezet:vers[-vers][betu]"
-                    # mintara. Ket alapvetoen kulonbozo ok lehet:
-                    #   1. explicit "--" veg (pl. "Est.--") - a sor DOKUMENTALJA, hogy
-                    #      ehhez a Karoli-vershez nincs LXX-megfeleloje - ez SZANDEKOS,
-                    #      nem hiba, nem is naplozzuk kulon (ugyanugy jarunk el, mintha
-                    #      a sor nem is letezne - a szo majd vagy egy masik, valodi
-                    #      sorbol, vagy egyaltalan nem kap Karoli-cimket).
-                    #   2. minden mas eset (pl. "X / Y" tobbszoros hivatkozas, "*a-w"
-                    #      tobbbetus tartomany, vesszos/pontosvesszos lista, korrupt
-                    #      "Psa.Psa.151:x" duplikalt prefix) - ezek VALODI, meg fel nem
-                    #      dolgozott terkep-komplexitast jeleznek, amit a jelenlegi
-                    #      GOROG_LXX_VERS_RE nem tud ertelmezni. Ezeket EXPLICIT
-                    #      naplozzuk (nem csendben dobjuk el), hogy lathato maradjon,
-                    #      hany esetben es hol marad esetleg le nem fedett tartalom.
-                    if not nyers_ertek.endswith("--"):
-                        figyelmeztetesek.append(
-                            f"NEM_PARSZOLHATO_ERTEK ({cimke}): '{igehely}' -> '{nyers_ertek}' "
-                            f"- a GOROG_LXX_VERS_RE nem ismeri fel ezt a formatumot, "
-                            f"ez a sor nem kerul be a kereso-szotarba"
-                        )
-                        nem_parszolhato_ertekek.append((karoli_konyv_prefix, igehely, cimke, nyers_ertek))
-                    continue
-                if m.group(4):
-                    # Betu-utotagos al-vers-hivatkozas (pl. "Exo.28:22a") - ez
-                    # egy Karoli-versre bontott LXX-felvers-hatart jelolne, DE
-                    # a nyers studybible.info/LXX_WH oldal (ellenorizve tobb
-                    # konyvon: 2Moz 28/36-37, Zsolt 12(13), 1Kir 12/14) NEM
-                    # bontja szonkenti szinten kulon zarojellel az egyes
-                    # al-verseket - vagy egyaltalan nincs zarojel a nyers
-                    # oldalon erre a szora, vagy van, de MAS (nem a terkeppel
-                    # egyezo) szamra/betüre mutat. A szavak Karoli-versek
-                    # kozotti szetosztasa emiatt TARTALMI dontes lenne, nem
-                    # mechanikus kulcs-egyeztetes - ezert EXPLICIT kizarjuk
-                    # (nem probaljuk megbecsulni/szetosztani), ugyanugy, mint
-                    # a nem letezo Karoli-celu sorokat.
-                    figyelmeztetesek.append(
-                        f"TOMB_HATAR_NEM_SZETVALASZTHATO ({cimke}): '{igehely}' <- "
-                        f"'{nyers_ertek}' - a LXX_WH-oldal nem bontja szonkenti "
-                        f"szinten a Karoli-alverseket, a zarojel-hivatkozas kizarva"
-                    )
-                    betu_utotag_kizarasok.append((karoli_konyv_prefix, igehely, cimke, nyers_ertek))
-                    continue
-                fejezet = int(m.group(1))
-                v1 = int(m.group(2))
-                v2 = int(m.group(3)) if m.group(3) else v1
-                entry = (kert_fejezet, fejezet, v1, v2, igehely)
-                if row["Elteres_tipusa"] == "Renumber":
-                    renumber_sorok.append(entry)
-                else:
-                    egyeb_sorok.append(entry)
+                    nem_parszolhato_ertekek.append((karoli_konyv_prefix, igehely, cimke, nyers_ertek))
+                continue
+            if m.group(4):
+                # Betu-utotagos al-vers-hivatkozas (pl. "Exo.28:22a") - ez
+                # egy Karoli-versre bontott LXX-felvers-hatart jelolne, DE
+                # a nyers studybible.info/LXX_WH oldal (ellenorizve tobb
+                # konyvon: 2Moz 28/36-37, Zsolt 12(13), 1Kir 12/14) NEM
+                # bontja szonkenti szinten kulon zarojellel az egyes
+                # al-verseket - vagy egyaltalan nincs zarojel a nyers
+                # oldalon erre a szora, vagy van, de MAS (nem a terkeppel
+                # egyezo) szamra/betüre mutat. A szavak Karoli-versek
+                # kozotti szetosztasa emiatt TARTALMI dontes lenne, nem
+                # mechanikus kulcs-egyeztetes - ezert EXPLICIT kizarjuk
+                # (nem probaljuk megbecsulni/szetosztani), ugyanugy, mint
+                # a nem letezo Karoli-celu sorokat.
+                figyelmeztetesek.append(
+                    f"TOMB_HATAR_NEM_SZETVALASZTHATO ({cimke}): '{igehely}' <- "
+                    f"'{nyers_ertek}' - a LXX_WH-oldal nem bontja szonkenti "
+                    f"szinten a Karoli-alverseket, a zarojel-hivatkozas kizarva"
+                )
+                betu_utotag_kizarasok.append((karoli_konyv_prefix, igehely, cimke, nyers_ertek))
+                continue
+            fejezet = int(m.group(1))
+            v1 = int(m.group(2))
+            v2 = int(m.group(3)) if m.group(3) else v1
+            entry = (kert_fejezet, fejezet, v1, v2, igehely)
+            if row["Elteres_tipusa"] == "Renumber":
+                renumber_sorok.append(entry)
+            else:
+                egyeb_sorok.append(entry)
         return renumber_sorok, egyeb_sorok
 
     figyelmeztetesek = []

@@ -17,11 +17,11 @@ def olvas(ut, komment=True):
 # 1. normalizáló tábla: STEPBible -> magyar
 norm = {}
 with open(os.path.join(ROOT, 'konkordancia', 'Konyv_normalizalo_tabla.tsv'), encoding='utf-8') as f:
-    r = csv.reader(f, delimiter='\t')
-    next(r)
-    for sor in r:
-        if len(sor) >= 2:
-            norm[sor[0]] = sor[1]
+    norm_sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
+for sor_s in norm_sorok[1:]:
+    sor = sor_s.split('\t')
+    if len(sor) >= 2:
+        norm[sor[0]] = sor[1]
 
 def step_to_hu(ig):
     m = re.match(r'^([A-Za-z0-9]+)\.(\d+)\.(\d+)', ig)
@@ -35,19 +35,25 @@ def step_to_hu(ig):
 # 2. Károli teljes szöveg
 karoli = {}
 with open(os.path.join(ROOT, 'konkordancia', 'Karoli_1908.tsv'), encoding='utf-8') as f:
-    r = csv.reader(f, delimiter='\t')
-    next(r)
-    for sor in r:
-        if len(sor) >= 2:
-            karoli[sor[0]] = sor[1]
+    karoli_sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
+for sor_s in karoli_sorok[1:]:
+    sor = sor_s.split('\t')
+    if len(sor) >= 2:
+        karoli[sor[0]] = sor[1]
 
 # 3. meglévő join-tábla
 join = {}
 with open(os.path.join(ROOT, 'konkordancia', 'Karoli_Strong_kivonat.tsv'), encoding='utf-8') as f:
-    r = csv.DictReader(f, delimiter='\t')
-    for sor in r:
-        hu = step_to_hu(sor['Igehely'])
-        join.setdefault((hu, sor['Strong-szám']), []).append(sor)
+    join_sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
+join_fejlec = join_sorok[0].split('\t')
+for sor_s in join_sorok[1:]:
+    mezok = sor_s.split('\t')
+    if len(mezok) != len(join_fejlec):
+        raise ValueError('Karoli_Strong_kivonat.tsv: %d mező a fejléc %d mezője helyett'
+                          % (len(mezok), len(join_fejlec)))
+    sor = dict(zip(join_fejlec, mezok))
+    hu = step_to_hu(sor['Igehely'])
+    join.setdefault((hu, sor['Strong-szám']), []).append(sor)
 
 fej, elo = olvas(os.path.join(ROOT, 'adat', 'elofordulasok.tsv'))
 

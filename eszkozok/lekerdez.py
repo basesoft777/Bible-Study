@@ -17,7 +17,6 @@ kockázat-táblája). A `TAHOT-teljes` azt jelenti: a kivonat egészére, nem az
 """
 
 import argparse
-import csv
 import datetime
 import re
 import sys
@@ -39,17 +38,35 @@ def ts():
     return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M") + "Z"
 
 
-def read_tsv(path):
+def read_tsv(path, skip_comments=False):
+    """TSV-olvasás a csv modul nélkül — l. CLAUDE.md, „TSV-olvasás".
+
+    A mezők szabad magyar szöveget tartalmaznak idézőjelekkel; a csv modul ezt
+    idézés-szintaxisnak veszi, és a kapcsolodas oszlop 79 sorában leszedi a
+    határoló " jeleket. Egyetlen mező sem tartalmaz tabot, a szétvágás egyértelmű.
+
+    skip_comments=True: néhány generált TSV (pl. grammatikai_strongok.tsv)
+    '#'-tal kezdődő dokumentáló sorokkal indul a fejléc előtt.
+    """
     with open(path, encoding="utf-8") as f:
-        return list(csv.DictReader(f, delimiter="\t"))
+        sorok = [ln.rstrip("\n").rstrip("\r") for ln in f]
+    if skip_comments:
+        sorok = [s for s in sorok if not s.startswith("#")]
+    sorok = [s for s in sorok if s.strip()]
+    fejlec = sorok[0].split("\t")
+    ki = []
+    for i, s in enumerate(sorok[1:], start=2):
+        mezok = s.split("\t")
+        if len(mezok) != len(fejlec):
+            raise ValueError(
+                "%s %d. sor: %d mező a fejléc %d mezője helyett"
+                % (path, i, len(mezok), len(fejlec)))
+        ki.append(dict(zip(fejlec, mezok)))
+    return ki
 
 
 def read_tsv_skip_comments(path):
-    """Néhány generált TSV (pl. grammatikai_strongok.tsv) '#'-tal kezdődő
-    dokumentáló sorokkal indul a fejléc előtt."""
-    with open(path, encoding="utf-8") as f:
-        lines = [ln for ln in f if not ln.startswith("#")]
-    return list(csv.DictReader(lines, delimiter="\t"))
+    return read_tsv(path, skip_comments=True)
 
 
 # ---------------------------------------------------------------------------

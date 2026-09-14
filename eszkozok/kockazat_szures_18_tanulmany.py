@@ -14,7 +14,6 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 
 import re
-import csv
 import sys
 from pathlib import Path
 from collections import defaultdict
@@ -59,17 +58,21 @@ GREEK_STRONG_RE = re.compile(r"G\d+")
 # Konkordancia-adatok betoltese
 # ---------------------------------------------------------------------------
 
+def _tsv_data_rows(path):
+    """A fejlecen tuli sorokat adja vissza, mezonkent szetvagva (csv modul nelkul)."""
+    with open(path, encoding="utf-8") as f:
+        sorok = [ln.rstrip("\n").rstrip("\r") for ln in f if ln.strip()]
+    return [s.split("\t") for s in sorok[1:]]
+
+
 def load_strong_dict():
     """Strong_szotar.tsv -> {H szam: {szoto, gyok, jelentes}}"""
     d = {}
-    with open(KONK_DIR / "Strong_szotar.tsv", encoding="utf-8") as f:
-        reader = csv.reader(f, delimiter="\t")
-        header = next(reader)
-        for row in reader:
-            if len(row) < 6:
-                continue
-            code, szoto, kiejtes, szofaj, gyok, jelentes = row[:6]
-            d[code] = {"szoto": szoto, "gyok": gyok, "jelentes": jelentes}
+    for row in _tsv_data_rows(KONK_DIR / "Strong_szotar.tsv"):
+        if len(row) < 6:
+            continue
+        code, szoto, kiejtes, szofaj, gyok, jelentes = row[:6]
+        d[code] = {"szoto": szoto, "gyok": gyok, "jelentes": jelentes}
     return d
 
 
@@ -109,16 +112,13 @@ def load_bdb_dict():
     path = KONK_DIR / "BDB_teljes_unabridged.tsv"
     if not path.exists():
         return d
-    with open(path, encoding="utf-8") as f:
-        reader = csv.reader(f, delimiter="\t")
-        header = next(reader)
-        for row in reader:
-            if len(row) < 3:
-                continue
-            padded, eredeti, szocikk = row[0], row[1], row[2]
-            code = padded.strip()
-            if code and re.fullmatch(r"H\d+", code) and code not in d:
-                d[code] = szocikk
+    for row in _tsv_data_rows(path):
+        if len(row) < 3:
+            continue
+        padded, eredeti, szocikk = row[0], row[1], row[2]
+        code = padded.strip()
+        if code and re.fullmatch(r"H\d+", code) and code not in d:
+            d[code] = szocikk
     return d
 
 
@@ -132,15 +132,12 @@ def count_senses_bdb(text):
 def load_lxx_genesis():
     """LXX_kivonat_Genezis.tsv -> {Igehely (pl. '1Móz 2:7'): set(G szamok)}"""
     d = defaultdict(set)
-    with open(KONK_DIR / "LXX_kivonat_Genezis.tsv", encoding="utf-8") as f:
-        reader = csv.reader(f, delimiter="\t")
-        header = next(reader)
-        for row in reader:
-            if len(row) < 2:
-                continue
-            verse, strong = row[0], row[1]
-            if GREEK_STRONG_RE.fullmatch(strong.strip()):
-                d[verse.strip()].add(strong.strip())
+    for row in _tsv_data_rows(KONK_DIR / "LXX_kivonat_Genezis.tsv"):
+        if len(row) < 2:
+            continue
+        verse, strong = row[0], row[1]
+        if GREEK_STRONG_RE.fullmatch(strong.strip()):
+            d[verse.strip()].add(strong.strip())
     return d
 
 
@@ -148,46 +145,37 @@ def load_tagnt():
     """TAGNT_kivonat.tsv -> ({Igehely: set(G szamok)}, {G szam: globalis elofordulas-szam})"""
     by_verse = defaultdict(set)
     global_freq = defaultdict(int)
-    with open(KONK_DIR / "TAGNT_kivonat.tsv", encoding="utf-8") as f:
-        reader = csv.reader(f, delimiter="\t")
-        header = next(reader)
-        for row in reader:
-            if len(row) < 2:
-                continue
-            verse, strong = row[0].strip(), row[1].strip()
-            if GREEK_STRONG_RE.fullmatch(strong):
-                by_verse[verse].add(strong)
-                global_freq[strong] += 1
+    for row in _tsv_data_rows(KONK_DIR / "TAGNT_kivonat.tsv"):
+        if len(row) < 2:
+            continue
+        verse, strong = row[0].strip(), row[1].strip()
+        if GREEK_STRONG_RE.fullmatch(strong):
+            by_verse[verse].add(strong)
+            global_freq[strong] += 1
     return by_verse, global_freq
 
 
 def load_tahot_occurrences():
     """TAHOT_kivonat.tsv -> {H szam: [Igehely, ...]} (osszes ELOFORDULAS)"""
     d = defaultdict(list)
-    with open(KONK_DIR / "TAHOT_kivonat.tsv", encoding="utf-8") as f:
-        reader = csv.reader(f, delimiter="\t")
-        header = next(reader)
-        for row in reader:
-            if len(row) < 2:
-                continue
-            verse, strong = row[0].strip(), row[1].strip()
-            if STRONG_RE.fullmatch(strong):
-                d[strong].append(verse)
+    for row in _tsv_data_rows(KONK_DIR / "TAHOT_kivonat.tsv"):
+        if len(row) < 2:
+            continue
+        verse, strong = row[0].strip(), row[1].strip()
+        if STRONG_RE.fullmatch(strong):
+            d[strong].append(verse)
     return d
 
 
 def load_tagnt_occurrences():
     """TAGNT_kivonat.tsv -> {G szam: [Igehely, ...]} (osszes ELOFORDULAS, gorog kulcsszavakhoz)"""
     d = defaultdict(list)
-    with open(KONK_DIR / "TAGNT_kivonat.tsv", encoding="utf-8") as f:
-        reader = csv.reader(f, delimiter="\t")
-        header = next(reader)
-        for row in reader:
-            if len(row) < 2:
-                continue
-            verse, strong = row[0].strip(), row[1].strip()
-            if GREEK_STRONG_RE.fullmatch(strong):
-                d[strong].append(verse)
+    for row in _tsv_data_rows(KONK_DIR / "TAGNT_kivonat.tsv"):
+        if len(row) < 2:
+            continue
+        verse, strong = row[0].strip(), row[1].strip()
+        if GREEK_STRONG_RE.fullmatch(strong):
+            d[strong].append(verse)
     return d
 
 

@@ -48,7 +48,6 @@ történik, hogy egy korábbi beillesztés ne tolja el a későbbi keresések po
 
 import sys
 import os
-import csv
 import argparse
 import io
 
@@ -66,9 +65,9 @@ KONKORDANCIA = os.path.join(REPO_ROOT, 'konkordancia')
 def load_tsv(filename):
     path = os.path.join(KONKORDANCIA, filename)
     with open(path, 'r', encoding='utf-8') as f:
-        reader = csv.reader(f, delimiter='\t')
-        header = next(reader)
-        rows = [row for row in reader if row and len(row) == len(header)]
+        sorok = [ln.rstrip('\n').rstrip('\r') for ln in f]
+    header = sorok[0].split('\t')
+    rows = [row for row in (s.split('\t') for s in sorok[1:] if s) if row and len(row) == len(header)]
     return header, rows
 
 

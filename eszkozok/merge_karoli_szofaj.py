@@ -23,19 +23,18 @@ def normalize(strong):
 
 lookup = {}
 with open(SZOTAR_PATH, encoding="utf-8") as f:
-    reader = csv.reader(f, delimiter="\t")
-    header = next(reader)
-    for row in reader:
-        if not row:
-            continue
-        strong = row[0]
-        szofaj = row[3] if len(row) > 3 else ""
-        gyok = row[4] if len(row) > 4 else ""
-        lookup[strong] = (szofaj, gyok)
+    szotar_sorok = [ln.rstrip("\n").rstrip("\r") for ln in f if ln.strip()]
+for s in szotar_sorok[1:]:
+    row = s.split("\t")
+    if not row:
+        continue
+    strong = row[0]
+    szofaj = row[3] if len(row) > 3 else ""
+    gyok = row[4] if len(row) > 4 else ""
+    lookup[strong] = (szofaj, gyok)
 
 with open(KIVONAT_PATH, encoding="utf-8") as f:
-    reader = csv.reader(f, delimiter="\t")
-    rows = list(reader)
+    rows = [ln.rstrip("\n").rstrip("\r").split("\t") for ln in f if ln.strip()]
 
 out_rows = [rows[0] + ["Szófaj", "Gyök/Származtatás"]]
 for row in rows[1:]:

@@ -66,48 +66,45 @@ KULON_SOR_KIVETEL = {
 }
 
 
+def _tsv_data_rows(path):
+    with open(path, encoding='utf-8') as f:
+        sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
+    return [s.split('\t') for s in sorok[1:]]
+
+
 def load_norm():
     m = {}
-    with open(NORM_PATH, encoding='utf-8') as f:
-        r = csv.reader(f, delimiter='\t')
-        next(r)
-        for row in r:
-            step, hu, full = row
-            m[step] = hu
+    for row in _tsv_data_rows(NORM_PATH):
+        step, hu, full = row
+        m[step] = hu
     return m
 
 
 def load_karoli_valid_refs():
     s = set()
-    with open(KAROLI_PATH, encoding='utf-8') as f:
-        r = csv.reader(f, delimiter='\t')
-        next(r)
-        for row in r:
-            if row:
-                s.add(row[0])
+    for row in _tsv_data_rows(KAROLI_PATH):
+        if row:
+            s.add(row[0])
     return s
 
 
 def load_decisions():
     """(konyv, fejezet) -> dontes string, tovabba csoport-info a felulbiralashoz."""
     chap_decision = {}
-    with open(DECISIONS_PATH, encoding='utf-8') as f:
-        r = csv.reader(f, delimiter='\t')
-        next(r)
-        for row in r:
-            book, hu, chapters_s, decision = row[0], row[1], row[2], row[3]
-            chapters = tuple(int(x) for x in chapters_s.split(','))
-            key = (book, chapters)
-            if key in DONTES_FELULBIRALAS:
-                decision = DONTES_FELULBIRALAS[key][0]
-            elif decision == "TARTALMI_ELLENORZES_SZUKSEGES(mindketto_egyezik)":
-                # a fejezethossz mindket hipotezis alatt egyezik (tipikusan zsoltarcim,
-                # ami egybeolvad az 1. verssel) - a per-sor alapertelmezett szabaly
-                # (masodlagos, ha van zarojel, kulonben elsodleges) helyesen mukodik,
-                # lasd a dontesi naplo/README erveleset.
-                decision = "MASODLAGOS"
-            for c in chapters:
-                chap_decision[(book, c)] = decision
+    for row in _tsv_data_rows(DECISIONS_PATH):
+        book, hu, chapters_s, decision = row[0], row[1], row[2], row[3]
+        chapters = tuple(int(x) for x in chapters_s.split(','))
+        key = (book, chapters)
+        if key in DONTES_FELULBIRALAS:
+            decision = DONTES_FELULBIRALAS[key][0]
+        elif decision == "TARTALMI_ELLENORZES_SZUKSEGES(mindketto_egyezik)":
+            # a fejezethossz mindket hipotezis alatt egyezik (tipikusan zsoltarcim,
+            # ami egybeolvad az 1. verssel) - a per-sor alapertelmezett szabaly
+            # (masodlagos, ha van zarojel, kulonben elsodleges) helyesen mukodik,
+            # lasd a dontesi naplo/README erveleset.
+            decision = "MASODLAGOS"
+        for c in chapters:
+            chap_decision[(book, c)] = decision
     return chap_decision
 
 
@@ -132,87 +129,81 @@ def main():
     # --- 1) meglevo TAHOT_kivonat.tsv sorok: csak az Igehely mezo konvertalasa ---
     n_old = 0
     n_old_bad = 0
-    with open(OLD_TAHOT, encoding='utf-8') as f:
-        r = csv.reader(f, delimiter='\t')
-        header = next(r)
-        for row in r:
-            if len(row) != 7:
-                continue
-            ref, strong, heb, translit, root, gloss, english = row
-            m = REF_RE.match(ref)
-            if not m:
-                n_old_bad += 1
-                continue
-            book, chap, verse = m.group(1), int(m.group(2)), int(m.group(3))
-            karoli_ref = to_karoli_ref(norm, book, chap, verse)
-            if karoli_ref is None:
-                n_old_bad += 1
-                continue
-            main_rows.append((karoli_ref, strong, heb, translit, root, gloss, english))
-            n_old += 1
+    for row in _tsv_data_rows(OLD_TAHOT):
+        if len(row) != 7:
+            continue
+        ref, strong, heb, translit, root, gloss, english = row
+        m = REF_RE.match(ref)
+        if not m:
+            n_old_bad += 1
+            continue
+        book, chap, verse = m.group(1), int(m.group(2)), int(m.group(3))
+        karoli_ref = to_karoli_ref(norm, book, chap, verse)
+        if karoli_ref is None:
+            n_old_bad += 1
+            continue
+        main_rows.append((karoli_ref, strong, heb, translit, root, gloss, english))
+        n_old += 1
     print(f"Regi sorok atvéve: {n_old} (hiba: {n_old_bad})", file=sys.stderr)
 
     # --- 2) korabban eldobott (zarojeles) sorok phaseA_all.tsv-bol ---
     n_new_main = 0
     n_new_open = 0
-    with open(PHASEA_PATH, encoding='utf-8') as f:
-        r = csv.reader(f, delimiter='\t')
-        next(r)
-        for row in r:
-            primary, secondary, strong, heb, translit, root, gloss, english = row
-            if not secondary:
-                continue  # ezeket mar az 1) lepes lefedte
+    for row in _tsv_data_rows(PHASEA_PATH):
+        primary, secondary, strong, heb, translit, root, gloss, english = row
+        if not secondary:
+            continue  # ezeket mar az 1) lepes lefedte
 
-            # egyedi sor-szintu kivetel eloszor
-            if (primary, secondary) in KULON_SOR_KIVETEL:
-                karoli_ref = KULON_SOR_KIVETEL[(primary, secondary)]
-                main_rows.append((karoli_ref, strong, heb, translit, root, gloss, english))
-                n_new_main += 1
-                continue
-
-            pm = REF_RE.match(primary)
-            sm = REF_RE.match(secondary)
-            if not pm or not sm:
-                open_rows.append((primary, secondary, "NYITOTT", "hivatkozas-format hiba",
-                                   strong, heb, translit, root, gloss, english))
-                n_new_open += 1
-                continue
-            pbook, pchap, pverse = pm.group(1), int(pm.group(2)), int(pm.group(3))
-            sbook, schap, sverse = sm.group(1), int(sm.group(2)), int(sm.group(3))
-
-            decision = chap_decision.get((pbook, pchap))
-            if decision is None:
-                # nincs dontes-csoportban - ne forduljon elo, de biztonsag kedveert NYITOTT
-                open_rows.append((primary, secondary, "NYITOTT", "nincs dontesi csoport",
-                                   strong, heb, translit, root, gloss, english))
-                n_new_open += 1
-                continue
-
-            if decision == "ADATMINOSEGI_GYANU":
-                open_rows.append((primary, secondary, "ADATMINOSEGI_GYANU",
-                                   f"lasd DONTES_FELULBIRALAS a generalo szkriptben ({pbook} fejezet {pchap})",
-                                   strong, heb, translit, root, gloss, english))
-                n_new_open += 1
-                continue
-            elif decision == "ELSODLEGES":
-                karoli_ref = to_karoli_ref(norm, pbook, pchap, pverse)
-            elif decision == "MASODLAGOS":
-                karoli_ref = to_karoli_ref(norm, sbook, schap, sverse)
-            else:
-                open_rows.append((primary, secondary, "NYITOTT", f"ismeretlen dontes: {decision}",
-                                   strong, heb, translit, root, gloss, english))
-                n_new_open += 1
-                continue
-
-            if karoli_ref is None or karoli_ref not in valid_karoli:
-                open_rows.append((primary, secondary, "NYITOTT",
-                                   f"a generalt Karoli-kulcs ('{karoli_ref}') nem letezik a Karoli_1908.tsv-ben",
-                                   strong, heb, translit, root, gloss, english))
-                n_new_open += 1
-                continue
-
+        # egyedi sor-szintu kivetel eloszor
+        if (primary, secondary) in KULON_SOR_KIVETEL:
+            karoli_ref = KULON_SOR_KIVETEL[(primary, secondary)]
             main_rows.append((karoli_ref, strong, heb, translit, root, gloss, english))
             n_new_main += 1
+            continue
+
+        pm = REF_RE.match(primary)
+        sm = REF_RE.match(secondary)
+        if not pm or not sm:
+            open_rows.append((primary, secondary, "NYITOTT", "hivatkozas-format hiba",
+                               strong, heb, translit, root, gloss, english))
+            n_new_open += 1
+            continue
+        pbook, pchap, pverse = pm.group(1), int(pm.group(2)), int(pm.group(3))
+        sbook, schap, sverse = sm.group(1), int(sm.group(2)), int(sm.group(3))
+
+        decision = chap_decision.get((pbook, pchap))
+        if decision is None:
+            # nincs dontes-csoportban - ne forduljon elo, de biztonsag kedveert NYITOTT
+            open_rows.append((primary, secondary, "NYITOTT", "nincs dontesi csoport",
+                               strong, heb, translit, root, gloss, english))
+            n_new_open += 1
+            continue
+
+        if decision == "ADATMINOSEGI_GYANU":
+            open_rows.append((primary, secondary, "ADATMINOSEGI_GYANU",
+                               f"lasd DONTES_FELULBIRALAS a generalo szkriptben ({pbook} fejezet {pchap})",
+                               strong, heb, translit, root, gloss, english))
+            n_new_open += 1
+            continue
+        elif decision == "ELSODLEGES":
+            karoli_ref = to_karoli_ref(norm, pbook, pchap, pverse)
+        elif decision == "MASODLAGOS":
+            karoli_ref = to_karoli_ref(norm, sbook, schap, sverse)
+        else:
+            open_rows.append((primary, secondary, "NYITOTT", f"ismeretlen dontes: {decision}",
+                               strong, heb, translit, root, gloss, english))
+            n_new_open += 1
+            continue
+
+        if karoli_ref is None or karoli_ref not in valid_karoli:
+            open_rows.append((primary, secondary, "NYITOTT",
+                               f"a generalt Karoli-kulcs ('{karoli_ref}') nem letezik a Karoli_1908.tsv-ben",
+                               strong, heb, translit, root, gloss, english))
+            n_new_open += 1
+            continue
+
+        main_rows.append((karoli_ref, strong, heb, translit, root, gloss, english))
+        n_new_main += 1
 
     print(f"Uj sorok a fokivonatba: {n_new_main}  nyitott/gyanus sorok: {n_new_open}", file=sys.stderr)
 

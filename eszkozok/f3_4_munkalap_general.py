@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """F3.4 munkalap: minden karoli_szo nélküli elofordulasok-sorhoz a Károli-versszöveg.
 Könyvnév-normalizálás és versintervallum-kibontás kötelező (CLAUDE.md: néma nem-találat)."""
-import csv, sys, os, io, re
+import sys, os, io, re
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', newline='')
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,11 +20,11 @@ def olvas_tsv(ut, komment=True):
 
 karoli = {}
 with open(os.path.join(ROOT, 'konkordancia', 'Karoli_1908.tsv'), encoding='utf-8') as f:
-    r = csv.reader(f, delimiter='\t')
-    next(r)
-    for sor in r:
-        if len(sor) >= 2:
-            karoli[sor[0]] = sor[1]
+    karoli_sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
+for sor_s in karoli_sorok[1:]:
+    sor = sor_s.split('\t')
+    if len(sor) >= 2:
+        karoli[sor[0]] = sor[1]
 
 def bont(igehely):
     """'Jelenések 20:1-3' -> [('Jel 20:1', szoveg), ...]; hiányzót None-nal jelöl."""

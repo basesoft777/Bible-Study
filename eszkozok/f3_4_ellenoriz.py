@@ -8,7 +8,6 @@ Ket dolgot nez:
   (2) a megadott karoli_szo tenylegesen szerepel-e a hivatkozott Karoli-versben,
       a ket ismert vers-eltolodast (Job 17, Pred 9) figyelembe veve.
 """
-import csv
 import io
 import os
 import re
@@ -22,11 +21,11 @@ ELTOLAS = {'Jób 17:16': 'Jób 17:15', 'Préd 9:10': 'Préd 9:12'}
 
 karoli = {}
 with open(os.path.join(ROOT, 'konkordancia', 'Karoli_1908.tsv'), encoding='utf-8') as f:
-    r = csv.reader(f, delimiter='\t')
-    next(r)
-    for s in r:
-        if len(s) >= 2:
-            karoli[s[0]] = s[1]
+    karoli_sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
+for s in karoli_sorok[1:]:
+    mezok = s.split('\t')
+    if len(mezok) >= 2:
+        karoli[mezok[0]] = mezok[1]
 
 with open(os.path.join(ROOT, 'adat', 'elofordulasok.tsv'), encoding='utf-8') as f:
     sorok = [s.rstrip('\n') for s in f][1:]
@@ -34,7 +33,15 @@ fejlec = sorok[0].split('\t')
 elo = [dict(zip(fejlec, s.split('\t'))) for s in sorok[1:] if s.strip()]
 
 with open(os.path.join(ROOT, 'naplok', 'f3_4_dontesek.tsv'), encoding='utf-8') as f:
-    dont = list(csv.DictReader(f, delimiter='\t'))
+    dontesek_sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
+dontesek_fejlec = dontesek_sorok[0].split('\t')
+dont = []
+for i, s in enumerate(dontesek_sorok[1:], start=2):
+    mezok = s.split('\t')
+    if len(mezok) != len(dontesek_fejlec):
+        raise ValueError('f3_4_dontesek.tsv %d. sor: %d mező a fejléc %d mezője helyett'
+                          % (i, len(mezok), len(dontesek_fejlec)))
+    dont.append(dict(zip(dontesek_fejlec, mezok)))
 dkulcs = [(d['id'], d['igehely']) for d in dont]
 dmap = {k: d for k, d in zip(dkulcs, dont)}
 

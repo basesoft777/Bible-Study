@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """F3.4 zaro integritas-ellenorzes."""
-import csv
 import io
 import os
 import re
@@ -48,8 +47,7 @@ for j in jel:
 print('jeloltek.tsv: %d sor, elofordulasok-tol elteroe karoli_szo: %d' % (len(jel), elteres))
 
 ut = os.path.join(ROOT, 'konkordancia', 'Karoli_Strong_kivonat.tsv')
-with open(ut, encoding='utf-8') as f:
-    join = list(csv.DictReader(f, delimiter='\t'))
+_, join = olvas(ut)
 kulcsok = [(s['Igehely'], s['Strong-szám']) for s in join]
 dup = set(k for k in kulcsok if kulcsok.count(k) > 1)
 print('Karoli_Strong_kivonat.tsv: %d sor, %d egyedi igehely, %d egyedi Strong'

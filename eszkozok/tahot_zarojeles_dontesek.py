@@ -38,28 +38,27 @@ REF_RE = re.compile(r'^([A-Za-z0-9]+)\.(\d+)\.(\d+)(\((\d+)\.(\d+)\))?#(\d+)=')
 def load_norm():
     m = {}
     with open(NORM_PATH, encoding='utf-8') as f:
-        r = csv.reader(f, delimiter='\t')
-        next(r)
-        for row in r:
-            step, hu, full = row
-            m[step] = hu
+        sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
+    for s in sorok[1:]:
+        step, hu, full = s.split('\t')
+        m[step] = hu
     return m
 
 
 def load_karoli_verses():
     verses_seen = defaultdict(set)
     with open(KAROLI_PATH, encoding='utf-8') as f:
-        r = csv.reader(f, delimiter='\t')
-        next(r)
-        for row in r:
-            if len(row) < 2:
-                continue
-            ref = row[0]
-            m = re.match(r'^(\S+)\s+(\d+):(\d+)$', ref)
-            if not m:
-                continue
-            book, chap, verse = m.group(1), int(m.group(2)), int(m.group(3))
-            verses_seen[(book, chap)].add(verse)
+        sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
+    for s in sorok[1:]:
+        row = s.split('\t')
+        if len(row) < 2:
+            continue
+        ref = row[0]
+        m = re.match(r'^(\S+)\s+(\d+):(\d+)$', ref)
+        if not m:
+            continue
+        book, chap, verse = m.group(1), int(m.group(2)), int(m.group(3))
+        verses_seen[(book, chap)].add(verse)
     return verses_seen
 
 

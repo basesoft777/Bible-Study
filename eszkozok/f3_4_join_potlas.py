@@ -10,7 +10,6 @@ Harom tablat ir:
 Forras: naplok/f3_4_dontesek.tsv (soronkenti, tartalom-alapu itelet) es
         naplok/f3_4_extra_join.tsv (egy igehelyhez tobb Strong / tartomany tovabbi versei).
 """
-import csv
 import io
 import os
 import re
@@ -52,6 +51,21 @@ def olvas(ut):
     return komment, fej, adat
 
 
+def olvas_dict(ut):
+    """TSV-olvasás szótár-sorokkal a csv modul nélkül — l. CLAUDE.md, „TSV-olvasás"."""
+    with open(ut, encoding='utf-8') as f:
+        sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
+    fej = sorok[0].split('\t')
+    ki = []
+    for i, s in enumerate(sorok[1:], start=2):
+        mezok = s.split('\t')
+        if len(mezok) != len(fej):
+            raise ValueError('%s %d. sor: %d mező a fejléc %d mezője helyett'
+                              % (ut, i, len(mezok), len(fej)))
+        ki.append(dict(zip(fej, mezok)))
+    return ki
+
+
 def ir(ut, komment, fej, adat):
     with open(ut, 'w', encoding='utf-8', newline='\n') as f:
         if komment:
@@ -67,8 +81,8 @@ def tisztit(szoveg):
 
 
 # --- dontes-tabla ---
-with open(os.path.join(ROOT, 'naplok', 'f3_4_dontesek.tsv'), encoding='utf-8') as f:
-    dontesek = {(d['id'], d['igehely']): d for d in csv.DictReader(f, delimiter='\t')}
+dontesek = {(d['id'], d['igehely']): d
+            for d in olvas_dict(os.path.join(ROOT, 'naplok', 'f3_4_dontesek.tsv'))}
 
 # --- 1. elofordulasok.tsv ---
 ut = os.path.join(ROOT, 'adat', 'elofordulasok.tsv')
@@ -124,11 +138,11 @@ print('jeloltek.tsv: %d eltolt sor javitva, %d sor kapott tripletet' % (javitott
 # --- 3. Karoli_Strong_kivonat.tsv ---
 norm = {}
 with open(os.path.join(ROOT, 'konkordancia', 'Konyv_normalizalo_tabla.tsv'), encoding='utf-8') as f:
-    r = csv.reader(f, delimiter='\t')
-    next(r)
-    for sor in r:
-        if len(sor) >= 2:
-            norm[sor[1]] = sor[0]
+    norm_sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
+for sor_s in norm_sorok[1:]:
+    sor = sor_s.split('\t')
+    if len(sor) >= 2:
+        norm[sor[1]] = sor[0]
 
 
 def hu_to_step(ig):
@@ -141,11 +155,10 @@ def hu_to_step(ig):
 
 
 szotar = {}
-with open(os.path.join(ROOT, 'konkordancia', 'Strong_szotar.tsv'), encoding='utf-8') as f:
-    for sor in csv.DictReader(f, delimiter='\t'):
-        szotar[sor['Strong-szám']] = (
-            sor['Szófaj'],
-            sor['Gyök/Származtatás'])
+for sor in olvas_dict(os.path.join(ROOT, 'konkordancia', 'Strong_szotar.tsv')):
+    szotar[sor['Strong-szám']] = (
+        sor['Szófaj'],
+        sor['Gyök/Származtatás'])
 
 ut = os.path.join(ROOT, 'konkordancia', 'Karoli_Strong_kivonat.tsv')
 with open(ut, encoding='utf-8') as f:
@@ -178,10 +191,9 @@ for d in dontesek.values():
 
 extra = os.path.join(ROOT, 'naplok', 'f3_4_extra_join.tsv')
 if os.path.exists(extra):
-    with open(extra, encoding='utf-8') as f:
-        for d in csv.DictReader(f, delimiter='\t'):
-            felvesz(d['igehely'], d['strong'], d['karoli_szo'],
-                    d['azonositas_modja'], d['megbizhatosag'], d['id'])
+    for d in olvas_dict(extra):
+        felvesz(d['igehely'], d['strong'], d['karoli_szo'],
+                d['azonositas_modja'], d['megbizhatosag'], d['id'])
 
 jadat.extend(ujak)
 with open(ut, 'w', encoding='utf-8', newline='\n') as f:
