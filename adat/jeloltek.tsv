@@ -54,3 +54,170 @@ ISTENTISZT-001	Jer 10:25	pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, 
 ISTENTISZT-001	Zsolt 79:6	pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés	beépítve	A Jer 10:25 szinte szó szerinti párhuzama, azonos vádló szerkezettel.	invokálni — tagadó szerkezetben, a mulasztás vádjaként			2026.09.05
 ISTENTISZT-001	2Móz 33:19	pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés	beépítve	Isten maga jelenti ki Mózesnek: "kihirdetem előtted az Úr nevét" — nem az ember hívja segítségül Isten nevét, hanem Isten mondja ki a sajátját.	kihirdetni, kinyilatkoztatni (NEM invokáció)			2026.09.05
 ISTENTISZT-001	2Móz 34:5	pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív F3.1 betöltés	beépítve	Ugyanaz a jelenet folytatása: "az Úr nevében kiáltott" — Isten végrehajtja az előző fejezetben megígért önkihirdetést.	kihirdetni, kinyilatkoztatni (NEM invokáció)			2026.09.05
+TEREMT-001	1Móz 1:2	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	A teremtés előtti, differenciálatlan, formátlan vizek — "sötétség vala a mélység színén"				2026.09.10
+TEREMT-001	1Móz 7:11	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	A dekreáció kezdete: "felfakadának a nagy mélység forrásai" — a teremtéskor elválasztott vizek újraegyesülnek				2026.09.10
+TEREMT-001	1Móz 8:2	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	A helyreállítás mozzanata: "bezárultak a mélység forrásai és az ég csatornái" — a rend visszatér				2026.09.10
+TEREMT-001	1Móz 49:25	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Jákób áldása Józsefen: "a mélységnek áldásaival, mely alant fekszik" — a tehóm immár nem fenyegetés, hanem áldás forrása				2026.09.10
+TEREMT-001	2Móz 15:5	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Mózes és Izrael éneke: "elborították őket a hullámok... a mélységes vizek megmerevültek" — a Vörös-tenger dekreációs/ítéletes vízzé válik				2026.09.10
+TEREMT-001	2Móz 15:8	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua. — a Vörös-tengeri ének folytatása, ugyanaz a szó (תְּהֹמֹת, többes szám)				2026.09.10
+TEREMT-001	5Móz 8:7	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a föld... amelynek mélységei forrásokban törnek elő" — áldás/bőség				2026.09.10
+TEREMT-001	5Móz 33:13	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Mózes áldása Józsefen — "a mélység áldásaival alant" (csaknem szó szerint = 1Móz 49:25)				2026.09.10
+TEREMT-001	Jób 28:14	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a mélység azt mondja: nincs bennem" — a bölcsesség nem található				2026.09.10
+TEREMT-001	Jób 38:16	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"eljutottál-e a mélység forrásaihoz"				2026.09.10
+TEREMT-001	Jób 38:30	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a mélység színe mintegy jéggé mered"				2026.09.10
+TEREMT-001	Zsolt 33:7	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"összegyűjti mint tömlőbe a tenger vizét, tárházba rakja a mélységeket" (Károli 1908 "hullámokat"-tal fordítja a תְּהוֹם-ot)				2026.09.10
+TEREMT-001	Zsolt 36:7	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"ítéleteid [olyanok, mint] a nagy mélység"				2026.09.10
+TEREMT-001	Zsolt 42:8	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"mélység a mélységet hívja" — a szó kétszer szerepel e versben				2026.09.10
+TEREMT-001	Zsolt 71:20	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a föld mélységéből ismét felhozol engem"				2026.09.10
+TEREMT-001	Zsolt 77:17	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"látták a vizek téged... megrázkódtak a mélységek" — teofánia/Vörös-tenger-visszhang				2026.09.10
+TEREMT-001	Zsolt 78:15	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"megnyitotta a kősziklát... itatta, mint a nagy mélységekből"				2026.09.10
+TEREMT-001	Zsolt 104:6	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"vízáradattal, mint egy ruhával, takartad be, a hegyek felett álltak a vizek"				2026.09.10
+TEREMT-001	Zsolt 106:9	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"megdorgálta a veres tengert... átvitte őket a mélységeken" — Exodus-visszhang				2026.09.10
+TEREMT-001	Zsolt 107:26	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"az égig emelkednek, a fenékig süllyednek" (Károli 1908 "fenékig"-gel fordítja a תְּהוֹם-ot)				2026.09.10
+TEREMT-001	Zsolt 135:6	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"amit csak akar, megcselekszi... a mélységekben"				2026.09.10
+TEREMT-001	Zsolt 148:7	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"dicsérjétek az Urat... ti mélységek"				2026.09.10
+TEREMT-001	Péld 3:20	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"az ő tudománya által fakadtak a mélységek"				2026.09.10
+TEREMT-001	Péld 8:24	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"mikor még semmi mélységek nem voltak, születtem" — bölcsesség-teológia				2026.09.10
+TEREMT-001	Péld 8:27	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"mikor a mélység színe felett kört formált" (szinte szó szerinti = 1Móz 1:2)				2026.09.10
+TEREMT-001	Péld 8:28	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"mikor erősekké tette a mélység forrásait" (szinte szó szerinti = 1Móz 7:11)				2026.09.10
+TEREMT-001	Ézs 51:10	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"nem te vagy-e, aki kiszárítottad a tengert, a nagy mélység vizeit" — Exodus-visszhang				2026.09.10
+TEREMT-001	Ézs 63:13	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"aki átvitte őket a mélységeken" — Exodus-visszhang				2026.09.10
+TEREMT-001	Ez 26:19	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"mikor rád hozom a mélységet, hogy elborítsanak a nagy vizek"				2026.09.10
+TEREMT-001	Ez 31:4	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a mélység naggyá tette [a cédrust]"				2026.09.10
+TEREMT-001	Ez 31:15	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"béburkoltam miatta a mélységet" — Fáraó-siratóének				2026.09.10
+TEREMT-001	Ámós 7:4	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"megemésztette a nagy mélységet" — sáska/tűz-látomás				2026.09.10
+TEREMT-001	Hab 3:10	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a mélység felemelte szavát" — teofánia				2026.09.10
+TEREMT-001	Jón 2:6	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a mélység körülvett engem" — Jónás imája a hal gyomrában, legszorosabb párhuzam a Zsolt 71:20/107:26 verspárral				2026.09.10
+TEREMT-001	Lukács 8:31	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ἄβυσσος — a démonok kérik, ne oda küldje őket Jézus				2026.09.10
+TEREMT-001	Róma 10:7	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ἄβυσσος — "ki száll le az abüsszoszba?"				2026.09.10
+TEREMT-001	Jelenések 9:1-2	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ἄβυσσος — a mélység kútja megnyílik, füst és sáskák jönnek fel				2026.09.10
+TEREMT-001	Jelenések 9:11	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ἄβυσσος, Ἀβαδδών/Ἀπολλύων — a mélység angyala				2026.09.10
+TEREMT-001	Jelenések 11:7	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ἄβυσσος — a fenevad onnan jön fel				2026.09.10
+TEREMT-001	Jelenések 17:8	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ἄβυσσος — a fenevad onnan jön fel				2026.09.10
+TEREMT-001	Jelenések 20:1-3	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ἄβυσσος — Sátán megkötözve ezer évre				2026.09.10
+ALVIL-001	Zsolt 16:10	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	שְׁאוֹל (seól) → ᾍδης (hádész), ApCsel 2:27,31 idézi — Krisztus nem marad a halál birodalmában				2026.09.10
+ALVIL-001	1Móz 37:35	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Jákób gyásza: "leszállok fiamhoz a Seólba, gyászolva"				2026.09.10
+ALVIL-001	1Móz 42:38	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Benjámin miatti félelem				2026.09.10
+ALVIL-001	1Móz 44:29	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Júda közbenjárása				2026.09.10
+ALVIL-001	1Móz 44:31	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Júda közbenjárása, folytatás				2026.09.10
+ALVIL-001	4Móz 16:30	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	élve alászállás a Seólba — Kóré lázadása, csodás ítélet				2026.09.10
+ALVIL-001	4Móz 16:33	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"és befedte őket a föld"				2026.09.10
+ALVIL-001	5Móz 32:22	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Isten haragjának tüze "a Seól fenekéig" ég				2026.09.10
+ALVIL-001	1Sám 2:6	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"az Úr... Seólba visz és onnan felhoz" — Anna éneke				2026.09.10
+ALVIL-001	2Sám 22:6	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a Seól kötelei körülvettek" (= Zsolt 18:6 párhuzam)				2026.09.10
+ALVIL-001	1Kir 2:6	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Dávid Salamonnak — Joáb "őszen szálljon a Seólba"				2026.09.10
+ALVIL-001	1Kir 2:9	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua. — Simei				2026.09.10
+ALVIL-001	Jób 7:9	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"aki leszáll a Seólba, nem jön fel"				2026.09.10
+ALVIL-001	Jób 11:8	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"mélyebb, mint a Seól" — Isten mindentudása				2026.09.10
+ALVIL-001	Jób 14:13	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"bár rejtenél el a Seólban"				2026.09.10
+ALVIL-001	Jób 17:13	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"ha várom is: a Seól az én házam"				2026.09.10
+ALVIL-001	Jób 17:16	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"leszáll-e a Seól rúdjaihoz"				2026.09.10
+ALVIL-001	Jób 21:13	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"egy pillanat alatt szállnak a Seólba"				2026.09.10
+ALVIL-001	Jób 24:19	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a Seól elragadja a bűnösöket"				2026.09.10
+ALVIL-001	Jób 26:6	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a Seól mezítelen Isten előtt"				2026.09.10
+ALVIL-001	Zsolt 6:6	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"nincs Rólad emlékezés a Seólban"				2026.09.10
+ALVIL-001	Zsolt 9:18	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a gonoszok visszatérnek a Seólba"				2026.09.10
+ALVIL-001	Zsolt 18:6	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a Seól kötelei körülvettek" (= 2Sám 22:6)				2026.09.10
+ALVIL-001	Zsolt 30:4	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	hálaadás — "kihoztad lelkem a Seólból"				2026.09.10
+ALVIL-001	Zsolt 31:18	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"hallgassanak el a gonoszok a Seólban"				2026.09.10
+ALVIL-001	Zsolt 49:15	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"mint juhok a Seólnak rendelve"				2026.09.10
+ALVIL-001	Zsolt 49:16	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"Isten megváltja lelkemet a Seól kezéből"				2026.09.10
+ALVIL-001	Zsolt 55:16	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"szálljanak élve a Seólba"				2026.09.10
+ALVIL-001	Zsolt 86:13	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"kihoztad lelkem a legmélyebb Seólból"				2026.09.10
+ALVIL-001	Zsolt 88:4	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"életem közel a Seólhoz"				2026.09.10
+ALVIL-001	Zsolt 89:49	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"ki menti meg lelkét a Seól kezéből"				2026.09.10
+ALVIL-001	Zsolt 116:3	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a Seól szorongatásai megragadtak"				2026.09.10
+ALVIL-001	Zsolt 139:8	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"ha a Seólban vetek ágyat, ott is vagy" — Isten mindenütt-jelenvalósága				2026.09.10
+ALVIL-001	Zsolt 141:7	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"mint mikor szántanak... a Seól szájánál"				2026.09.10
+ALVIL-001	Péld 1:12	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"elnyeljük őket elevenen, mint a Seól"				2026.09.10
+ALVIL-001	Péld 5:5	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	a parázna lába a Seólba száll				2026.09.10
+ALVIL-001	Péld 7:27	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	háza a Seól útja				2026.09.10
+ALVIL-001	Péld 9:18	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	a balgák a Seól mélyén				2026.09.10
+ALVIL-001	Péld 15:11	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Seól és Abaddón Isten előtt				2026.09.10
+ALVIL-001	Péld 15:24	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"hogy elkerülje a Seólt alant"				2026.09.10
+ALVIL-001	Péld 23:14	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"kiragadod lelkét a Seólból"				2026.09.10
+ALVIL-001	Péld 27:20	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a Seól és Abaddón nem elégszik meg"				2026.09.10
+ALVIL-001	Péld 30:16	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Seól a négy "nem-elégedő" dolog közt				2026.09.10
+ALVIL-001	Préd 9:10	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"nincs tudás, munka, terv a Seólban, ahová mégy"				2026.09.10
+ALVIL-001	Én 8:6	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a szerelem kemény, mint a Seól"				2026.09.10
+ALVIL-001	Ézs 5:14	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Júda ítélete — a Seól kitágítja torkát				2026.09.10
+ALVIL-001	Ézs 7:11	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"kérj jelt... tégy mélyre, mint a Seól"				2026.09.10
+ALVIL-001	Ézs 14:9	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Babilon-gúnydal — a Seól megmozdul (ugyanaz a szakasz, ahol a רְפָאִים is szerepel, l. HODIT-001)				2026.09.10
+ALVIL-001	Ézs 14:11	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"büszkeséged leszállt a Seólba"				2026.09.10
+ALVIL-001	Ézs 14:15	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a Seól legmélyére vitetel"				2026.09.10
+ALVIL-001	Ézs 28:15	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"szövetséget kötöttünk a Seóllal"				2026.09.10
+ALVIL-001	Ézs 28:18	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"szövetségetek a Seóllal nem áll meg"				2026.09.10
+ALVIL-001	Ézs 38:10	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Ezékiás betegség-éneke — "a Seól kapuiba kell mennem"				2026.09.10
+ALVIL-001	Ézs 38:18	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a Seól nem dicsőít téged"				2026.09.10
+ALVIL-001	Ézs 57:9	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	bálványimádás — "egészen a Seólig alázkodtál"				2026.09.10
+ALVIL-001	Ez 31:15	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Fáraó/Egyiptom a Seólba száll — a Libanon-cédrus-példázat				2026.09.10
+ALVIL-001	Ez 31:16	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua.				2026.09.10
+ALVIL-001	Ez 31:17	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua.				2026.09.10
+ALVIL-001	Ez 32:21	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a hatalmasok szólnak hozzá a Seólból"				2026.09.10
+ALVIL-001	Ez 32:27	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	körülmetéletlenek a Seólban, fegyvereikkel				2026.09.10
+ALVIL-001	Hós 13:14	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"Hol van a te veszedelmed, oh Seól?" — Pál idézi 1Kor 15:55-ben, ⭐ kiemelt lelet				2026.09.10
+ALVIL-001	Ámós 9:2	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"ha a Seólba ásnak is, onnan is kihozom kezem"				2026.09.10
+ALVIL-001	Hab 2:5	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	a kevély, mint a Seól, sosem elégszik meg				2026.09.10
+ALVIL-001	Jón 2:3	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	"a Seól gyomrából kiáltottam"				2026.09.10
+ALVIL-001	ApCsel 2:27	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Péter Zsolt 16:10-et idézi: "mert nem hagyod az én lelkemet a sírban [hádész]"				2026.09.10
+ALVIL-001	ApCsel 2:31	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírban [hádész]"				2026.09.10
+ALVIL-001	Lukács 16:23	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ᾍδης — a gazdag ember kínban				2026.09.10
+ALVIL-001	Jelenések 1:18	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ᾍδης — Krisztus kezében a halál és a hádész kulcsai				2026.09.10
+ALVIL-001	Jelenések 6:8	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ᾍδης — a sápadt lovon ülő Halál nyomában jár a hádész				2026.09.10
+ALVIL-001	Jelenések 20:13-14	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ᾍδης — kiadja halottait, majd a tűz tavába vettetik				2026.09.10
+ALVIL-001	Lukács 10:15	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ᾍδης — "égig felmagasztaltattál... hádészig fogsz lealáztatni" (Kapernaum ítélete)				2026.09.10
+ALVIL-001	Máté 11:23	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ᾍδης — párhuzamos hely Luk 10:15-höz				2026.09.10
+MENNY-001	1Móz 6:2	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	בְּנֵי הָאֱלֹהִים — "Isten fiai" látják és elveszik az emberek lányait				2026.09.10
+MENNY-001	1Móz 6:4	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	נְפִלִים a földön; az egyesülésből születnek a גִּבֹּרִים, "ősidők óta neves emberek" — ⚠️ vitatott, hogy a nefilim és a gibborim azonosak-e				2026.09.10
+MENNY-001	Jób 1:6	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	בְּנֵי הָאֱלֹהִים megjelennek Isten színe előtt, mennyei tanácsban, Sátán is közöttük				2026.09.10
+MENNY-001	Jób 2:1	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ugyanaz a jelenet megismétlődik				2026.09.10
+MENNY-001	Jób 38:7	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	a בְּנֵי אֱלֹהִים örömkiáltása a teremtéskor (névelő nélküli, rokon alak)				2026.09.10
+MENNY-001	4Móz 13:34	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	a kémek jelentésében נְפִלִים — Anák fiai mint a nefilim leszármazottai (a kémek szubjektív állítása, nem a narrátoré)				2026.09.10
+MENNY-001	Júd 1:6	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	angyalok, akik "nem tartották meg fejedelemségüket", örök bilincsben — tartalmi/szerkezeti rokonság 1Énokh 10:4-6, 10:11-12, 12:4-gyel (nem szó szerinti idézet)				2026.09.10
+MENNY-001	Júd 1:14-15	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Énokh próféciája az ítéletről — közvetlen, szinte szó szerinti idézet 1Énokh 1:9-ből				2026.09.10
+MENNY-001	2Pét 2:4-5	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Isten nem kegyelmezett a bűnbe esett angyaloknak, Tartaroszba vetette őket — tematikus/szerkezeti (párhuzamos "nem kegyelmezett" formula), NEM közös lexikai gyök				2026.09.10
+ANTROP-001	1Móz 2:7	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	az ember נֶפֶשׁ חַיָּה ("élő lélek") lesz Isten leheletétől; Pál ezt állítja szembe 1Kor 15:45-ben az utolsó Ádámmal — tematikus, ellentétező párhuzam, NEM lexikai folytonosság				2026.08.22
+ANTROP-001	1Thessz 5:23	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Pál imája: a pneuma, pszükhé és szóma három külön főnévként, egy-egy külön határozott névelővel sorolva fel				2026.08.22
+ANTROP-001	Zsid 4:12	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Isten Igéje "elhat a szellem és lélek... megoszlásáig" (μερισμοῦ) — a szerző explicit szétválasztásról beszél				2026.08.22
+ANTROP-001	1Kor 15:45	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Pál: az utolsó Ádám "pneuma zóopoiun" ("megelevenítő szellemmé") lett — szemben az első Ádám "élő lelkével" (1Móz 2:7)				2026.08.22
+ANTROP-001	Luk 1:46	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Mária éneke: "magasztalja az én lelkem (ψυχή) az Urat" — negyedik, valódi lexikai előfordulás, párhuzamos szerkezetben Luk 1:47-tel				2026.08.22
+ANTROP-001	Luk 1:47	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	Mária éneke: "és örvendez az én szellemem (πνεῦμα) az én megtartó Istenemben" — ugyanabban a grammatikai szerepben, mint 1:46				2026.08.22
+ANTROP-001	1Kor 2:14	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	a "természet szerinti ember" (ψυχικὸς ἄνθρωπος) nem fogadja be Isten Szellemének dolgait — ötödik előfordulás, melléknévi alakban				2026.08.22
+ANTROP-001	1Kor 2:15	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	a "szellemi ember" (πνευματικός) mindent megvizsgál — az 1Kor 2:14 párja				2026.08.22
+HODIT-001	1Móz 14:5	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	רְפָאִים, זוּזִים, אֵימִים — a keleti királyi koalíció leveri őket, mielőtt az öt lázadó várost is legyőzné				2026.09.10
+HODIT-001	1Móz 15:20	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	רְפָאִים — a Refáim az Ábrámnak ígért föld népei között szerepel				2026.09.10
+HODIT-001	4Móz 13:34	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	נְפִלִים ⇒ עֲנָקִים — a kémek szerint az Anákok "a Nefilimtől" származnak (a kémek saját kijelentése, nem a narrátoré)				2026.09.10
+HODIT-001	5Móz 2:11	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua. — folytatás				2026.09.10
+HODIT-001	5Móz 2:20	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	זַמְזֻמִּים... רְפָאִים — az Ammoniták Zamzummimnak nevezik ugyanazt a népet				2026.09.10
+HODIT-001	5Móz 3:11	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	עוֹג... מִיֶּתֶר הָרְפָאִים — Óg, Básán királya "a Refáim maradékából" — vaságya 9×4 könyök				2026.09.10
+HODIT-001	5Móz 3:13	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua. — Básán mint "a Refáim földje"				2026.09.10
+HODIT-001	Józs 12:4	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	אֶרֶץ רְפָאִים — Óg földje "a Refáim földje"				2026.09.10
+HODIT-001	Józs 13:12	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua.				2026.09.10
+HODIT-001	2Sám 21:16	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua. — folytatás				2026.09.10
+HODIT-001	2Sám 21:18	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua. — folytatás				2026.09.10
+HODIT-001	2Sám 21:20	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua. — folytatás				2026.09.10
+HODIT-001	2Sám 21:22	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua. — folytatás				2026.09.10
+HODIT-001	1Krón 20:4	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	párhuzamos hely 2Sám 21:15-22-höz				2026.09.10
+HODIT-001	1Krón 20:6	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua. — folytatás				2026.09.10
+HODIT-001	1Krón 20:8	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua. — folytatás				2026.09.10
+HODIT-001	Jób 26:5	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	רְפָאִים יְחוֹלָלוּ מִתַּחַת לַמָּיִם — "a Refáim reszketnek a vizek alatt" — költői kontextus, halottak birodalma				2026.09.10
+HODIT-001	Zsolt 88:11	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	הֲרְפָאִים יָקוּמוּ יוֹדוּךָ — "vajon a Refáim fölkelnek-e, hogy dicsérjenek téged?"				2026.09.10
+HODIT-001	Péld 2:18	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	רְפָאִים — bölcsességi kontextus: aki eltéved, a "Refáim gyülekezetébe" jut				2026.09.10
+HODIT-001	Péld 9:18	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua.				2026.09.10
+HODIT-001	Péld 21:16	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua.				2026.09.10
+HODIT-001	Ézs 14:9	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	רְפָאִים... כָּל־עַתּוּדֵי אָרֶץ — Babilon királyát gúnyosan fogadja a Seól, "fölkelti ellene a Refáimot"				2026.09.10
+HODIT-001	Ézs 26:14	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	רְפָאִים — a halottak feltámadásáról szóló szakasz kontextusában				2026.09.10
+HODIT-001	Ézs 26:19	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua.				2026.09.10
+HODIT-001	2Sám 5:18	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	עֵמֶק רְפָאִים — Refáim völgye, a filiszteusok és Dávid csatáinak színtere				2026.09.10
+HODIT-001	2Sám 5:22	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua.				2026.09.10
+HODIT-001	2Sám 23:13	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua.				2026.09.10
+HODIT-001	1Krón 11:15	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua. — párhuzamos hely				2026.09.10
+HODIT-001	1Krón 14:9	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	ua.				2026.09.10
+HODIT-001	Ézs 17:5	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	עֵמֶק רְפָאִים — aratási hasonlat				2026.09.10
+HODIT-001	Józs 15:8	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	עֵמֶק רְפָאִים — Júda törzsi határának pontosítása				2026.09.10
+HODIT-001	Józs 18:16	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	עֵמֶק רְפָאִים — Benjámin törzsi határának pontosítása				2026.09.10
+HODIT-001	Józs 17:15	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	אֶרֶץ הָרְפָאִים — "a Perizzita és a Refáim földje" — Józsué válasza Efraim/Manassé birtok-panaszára				2026.09.10
+HODIT-001	1Móz 14:6	study 1. pont táblázata (kontextuális sor)	nyitva	חֹרִים (Hórim) nem a רְפָאִים szócsaládból való — nincs közös gyök H2752 és H7497/H7496 között; a study saját táblázatában szerepel mint "ugyanabban a hadjáratban legyőzött negyedik népcsoport", de a motívum negatív kritériuma (l. adat/motivumok.tsv HODIT-001 sora) kizárja: a rokon népnév önmagában nem elég, lexikai átfedés kell				2026.09.14
+HODIT-001	5Móz 2:10	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	elutasítva	a study egy több-verses tartományt (אֵימִים... הֵם רְפָאִים — a Móábiak Émim…) idézett a fenti tartalommal, de a H7497 Strong-szám ebben a konkrét versben nem áll a TAHOT_kivonat.tsv szerint (talált: —) — a lexéma a tartomány másik versében van, az külön elofordulasok-sorként bekerült				2026.09.14
+HODIT-001	5Móz 2:21	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	elutasítva	a study egy több-verses tartományt (ua. — folytatás…) idézett a fenti tartalommal, de a H7497 Strong-szám ebben a konkrét versben nem áll a TAHOT_kivonat.tsv szerint (talált: —) — a lexéma a tartomány másik versében van, az külön elofordulasok-sorként bekerült				2026.09.14
+HODIT-001	2Sám 21:15	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	elutasítva	a study egy több-verses tartományt (הָרָפָה / יְלִידֵי הָרָפָה — Góliát és r…) idézett a fenti tartalommal, de a H7497 Strong-szám ebben a konkrét versben nem áll a TAHOT_kivonat.tsv szerint (talált: —) — a lexéma a tartomány másik versében van, az külön elofordulasok-sorként bekerült				2026.09.14

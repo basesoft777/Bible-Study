@@ -1,10 +1,10 @@
 # Megvalósítási napló — F0-F3 fázis
 
-**Készült:** 2026.09.13 (F0-F1) · frissítve 2026.09.14 (F2, F3.0, F3.1)
+**Készült:** 2026.09.13 (F0-F1) · frissítve 2026.09.14 (F2, F3.0, F3.1, F3.2)
 **Forrás terv:** `ATALAKITASI_TERV.md.md`, 6. szakasz
 **Fázisok:** F0 — Blokkolók feloldása (8 tétel) · F1 — Séma és belépési pont (6 tétel) ·
 F2 — Lekérdező CLI · F3 — Retroaktív betöltés (F3.0 előfeltétel-ellenőrzés, F3.1 könnyű
-csoport; F3.2-F3.4 nyitva)
+csoport, F3.2 nehéz csoport; F3.3-F3.4 nyitva)
 **Munkamenet:** Claude Code
 
 ---
@@ -716,36 +716,138 @@ szabály), és nincs duplikált `id+igehely` kulcs.
 
 ---
 
+### F3.2 — Nehéz csoport ✅
+
+**Készült:** 2026.09.14
+**Forrás terv:** `ATALAKITASI_TERV.md.md` 6. szakasz, F3 lépéstábla F3.2 sora
+
+A terv előírja: Tehóm, Hádész/Seól, Isten fiai/Nefilim/Gibborim, Pneuma/pszükhé, Rafaim —
+**visszakeresés** a `TAHOT_kivonat.tsv`-ből, szkripttel, nem kézzel; a lefedettségi hiányból
+eredő néma nem-találat külön kategóriaként jelentendő, nem keverhető a valódi
+nem-találattal; könyvnév-normalizálás kötelező.
+
+**A könnyű csoporttal (F3.1) szembeni különbség:** e öt study háromoszlopos táblázata
+(`Igehely | Kapcsolódás | PaRDeS-szint`) — a Strong-szám sehol nincs tabellázva, csak a
+study prózájában van megnevezve az az egy-két gyök, amelyen az egész motívum áll (Tehóm:
+H8415; Seól: H7585; Rafaim: H7497/H7496; Isten fiai: H1121+H0430/H5303). A feladat tehát
+nem kinyerés, hanem **visszakeresés**: minden táblázat-sorra ellenőrizni kell, hogy az adott
+igehely valóban tartalmazza-e a motívum lexikai horgonyát a `TAHOT_kivonat.tsv`-ben.
+
+**Egyszeri, kézi futtatású szkript:** `eszkozok/f3_2_betoltes.py` — egyetlen áthaladással
+beolvassa a `TAHOT_kivonat.tsv` 468 968 sorát (csak a szükséges Strong-kódokra szűrve),
+majd minden ÓSZ-sorra három lehetséges kimenetet állapít meg:
+
+| Kimenet | Jelentés | Talált eset |
+|---|---|---|
+| `IGAZOLVA` | a vers szerepel a kivonatban, és az elvárt Strong-szám(ok) mind jelen vannak | 138 |
+| `TAHOT_HIANYOS` | a vers **egyáltalán nem** szerepel a kivonatban — lefedettségi rés, néma nem-találat | 0 |
+| `STRONG_HIANYZIK` | a vers szerepel, de az elvárt Strong-szám hiányzik belőle — valódi anomália | 3 |
+
+**A három kategória nem keveredett.** `TAHOT_HIANYOS` nulla esetben fordult elő — ez a
+gyakorlatban azt jelenti, hogy a Jób 40:1-5/41-es hiány (F2.0/F3.0) egyetlen ide tartozó
+igehelyet sem érintett, és más lefedettségi rés sem került elő. A 3 `STRONG_HIANYZIK` eset
+mindegyike ugyanabból a hibaosztályból ered: a study egy **több-verses tartományt**
+(`5Móz 2:10-11`, `5Móz 2:20-21`, `2Sám 21:15-22`) idézett egységként, de a per-vers
+szétbontás után kiderült, hogy a רְפָאִים szó ténylegesen csak a tartomány egyik tagjában áll
+(ellenőrizve: `5Móz 2:11`, `5Móz 2:20`, `2Sám 21:16`/`21:18` — mind `IGAZOLVA`). A három
+üres tagot (`5Móz 2:10`, `5Móz 2:21`, `2Sám 21:15`) a szkript **nem** léptette elő
+`elofordulasok`-má, hanem a `jeloltek.tsv`-be irányította `dontes=elutasítva` értékkel, a
+konkrét hiányzó Strong-szám megnevezésével.
+
+**Egy negyedik, kézi döntést igénylő eset:** `1Móz 14:6` (חֹרִים, "Hórim") a Rafaim-study saját
+táblázatában szerepel ("ugyanabban a hadjáratban legyőzött negyedik népcsoport"), de a
+חֹרִים szónak **nincs közös gyöke** a רְפָאִים szócsaláddal (más Strong-szám, H2752). Mivel a
+HODIT-001 negatív kritériuma (l. lent) kizárólag a רְפָאִים-rokon népneveket engedi be, ez a
+sor sem lépett elő — `jeloltek.tsv`-ben maradt, `dontes=nyitva`, indokolással.
+
+**Könyvnév-normalizálás:** nem volt rá szükség — a `TAHOT_kivonat.tsv` már eleve magyar
+kanonikus alakban (`1Móz 14:5`) tárolja az igehelyet (l. `adat/SEMA.md` 1.1), ezért a
+`Konyv_normalizalo_tabla.tsv` STEPBible↔magyar konverziója ezen a datasetnél nem
+alkalmazandó — ez maga is dokumentálandó, mert a terv 1.1 pontja szerint másik három dataset
+(`Karoli_kereszthivatkozasok.tsv`, `Karoli_Strong_kivonat.tsv`, `TIPNR_kivonat.tsv`) igenis
+STEPBible-alakot használ, tehát a normalizálás-mentesség dataset-specifikus, nem általános.
+
+**Betöltött adat:**
+
+| ID (motívum) | study | `elofordulasok` sor | ebből ÚSZ (Strong a study prózájából, TAHOT-visszakeresés nélkül) |
+|---|---|---|---|
+| TEREMT-001 (Tehóm) | `Tehom_tematikus.md` | 41 | 7 (G0012, ábüsszosz) |
+| ALVIL-001 (Hádész/Seól) | `Hadesz_Seol_tematikus.md` | 72 | 8 (G0086, hádész) |
+| MENNY-001 (Isten fiai/Nefilim) | `Isten_fiai_Nefilim_Gibborim_tematikus.md` | 9 | 3 (nem lexikai, l. lent) |
+| ANTROP-001 (Pneuma/pszükhé) | `Pneuma_pszukhe_megkulonboztetes_tematikus.md` | 8 | 7 (görög, eleve NT) |
+| HODIT-001 (Rafaim) | `Rafaim_tematikus.md` | 33 | 0 |
+| **Összesen** | | **163** | |
+
+Mindegyik sorhoz `jeloltek.tsv` sor is készült (`dontes=beépítve`), plusz a 4 elutasított/
+nyitva hagyott eset — összesen **167 `jeloltek` sor**.
+
+**A MENNY-001 három ÚSZ-sora (Júd 1:6, Júd 1:14-15, 2Pét 2:4-5) nem lexikai horgonyon áll** —
+a study saját szövege explicit kimondja, hogy ezek "tematikus/szerkezeti, NEM közös lexikai
+gyök" kapcsolatok. A `gerinc_elem` mező ezért nem Strong-számot, hanem a study saját,
+megnevezhető horgonyát kapta (`referencia:1Énokh 10:4-6/…`, `idézet:1Énokh 1:9`,
+`formula:οὐκ ἐφείσατο`) — üres `gerinc_elem` egyik sornál sem maradt, de ez a három sor
+formálisan más horgony-típusú, mint a motívum lexikai magja.
+
+**`motivumok.tsv` — öt új sor, a 4.6 gate mezőivel és háromértékű státusszal.** A terv F3.2
+sora nem írja elő explicit a gate alkalmazását (csak F3.1-nél szerepel), de a
+`motivumok.tsv` sémája szerint az `azonossag_tipusa`/`negativ_kriterium`/
+`folerendelt_fogalom` **kötelező** mező minden `publikálható`/`véglegesített` motívumnál (l.
+`SEMA.md` 3.6. integritási szabály) — ezért mind az öt kapott gate-mezőt, a study-k saját,
+már dokumentált elhatárolásaiból építve (pl. HODIT-001 negatív kritériuma pontosan az a
+szabály, ami az imént a Hórim-sort kizárta — nem utólag kitalált teszt, hanem a study saját
+2. pontjának tétele: "a Refáim szótő teljesen elkülönül a gibborim/nefilim szócsaládtól").
+Mind az öt `publikálható` állapotú (nem `véglegesített`) — egyik motívum sem zárult le úgy,
+hogy kizárt legyen a jövőbeli, csak szerkesztői szándékból eredő újranyitás.
+
+**Integritás-ellenőrzés (kézzel):** mind a 163 `elofordulasok` sorhoz van `jeloltek` sor
+`dontes=beépítve` értékkel, egyetlen `gerinc_elem` vagy `proveniencia` mező sem üres, és
+nincs duplikált `id+igehely` kulcs (ellenőrizve a teljes, F3.1+F3.2 utáni táblára).
+
+---
+
 ## Nyitva maradt tételek
 
-1. **F3.2-F3.4 még nem indult el.** A nehéz csoport (Tehóm, Hádész/Seól, Isten
-   fiai/Nefilim, Pneuma/pszükhé, Rafaim — visszakereséssel a `TAHOT_kivonat.tsv`-ből), a
-   `gate.py` első futtatása a mind a 14 meglévő ID-re (F3.1 ezt csak a két saját ID-jére,
-   KIRALY-001-re és ISTENTISZT-001-re nem futtatta — nem is futtathatta, mert a `gate.py`
-   maga még nem létezik), és a Károli-Strong join visszamenőleges pótlása (F3.4, Opus) külön
+1. **F3.3-F3.4 még nem indult el.** A `gate.py` első futtatása a mind a 14 meglévő ID-re
+   (mind az F3.1, mind az F3.2 új ID-jei — KIRALY-001, ISTENTISZT-001, TEREMT-001,
+   ALVIL-001, MENNY-001, ANTROP-001, HODIT-001 — jelenleg csak kézzel, saját magukon belül
+   ellenőrzöttek; **kereszt-motívum ütközés/részhalmaz-vizsgálat még sehol nem történt**, l.
+   alább 2. pont), és a Károli-Strong join visszamenőleges pótlása (F3.4, Opus) külön
    menetekre várnak.
-2. **`gate.py` hiányában az ütközés-/részhalmaz-ellenőrzés kézzel sem történt meg a többi 12
-   meglévő motívum ellenében.** Az F3.1 csak azt ellenőrizte kézzel, hogy a két új ID saját
-   38 sora belsőleg konzisztens (2-4. integritási szabály) — azt nem, hogy KIRALY-001 vagy
-   ISTENTISZT-001 igehely-halmaza átfedésben áll-e valamelyik másik, még be nem töltött
-   motívummal. Ez a `gate.py` első futtatásáig (F3.3) nyitva marad.
-3. **A Segítségül hívni-study 1Kir 18:24 belső Kontraszt-esete nem került a
+2. **`gate.py` hiányában a hét most betöltött ID egymás közti, illetve a korábbi 7
+   meglévő ID-vel szembeni ütközés-/részhalmaz-ellenőrzése nem történt meg.** Konkrét,
+   névvel is jelzett kockázati pont: a `4Móz 13:34` igehely **két különböző motívumban is**
+   szerepel (MENNY-001-nél "נְפִלִים" horgonyon, HODIT-001-nél is "נְפִלִים ⇒ עֲנָקִים"
+   horgonyon) — ez a 4.6 gate 3. kérdése szerint megengedett, HA a funkció különbözik (itt:
+   MENNY-001-nél a nefilim-eredetkérdés, HODIT-001-nél az Anákim-azonosítás), de ezt a
+   `gate.py` sem futott le rá, hogy gépileg megerősítse. Hasonlóan: `Ézs 14:9` egyszerre
+   hordozza a רְפָאִים (HODIT-001) és a שְׁאוֹל (ALVIL-001) szót — ez a study-k szerint tudatos,
+   dokumentált egymás-mellettiség, de gépi ütközés-jelentés erre sem futott.
+3. **A HODIT-001 negatív kritériuma szerint elutasított `1Móz 14:6` (Hórim) és a 3
+   `STRONG_HIANYZIK` eset (`5Móz 2:10`, `5Móz 2:21`, `2Sám 21:15`) emberi felülvizsgálatra
+   várnak** — a szkript indoklással a `jeloltek.tsv`-be irányította őket, de a végső döntés
+   (véglegesen elutasítva marad-e, vagy a study saját tartomány-idézése frissítendő) emberi
+   megerősítést igényel.
+4. **A Rafaim/HODIT-001 és a Seól/ALVIL-001 táblák nem kaptak `kapcsolatok.tsv` sort** — az
+   F3.2 a terv szövege szerint kizárólag a visszakeresésről szól, a `kapcsolatok` réteg
+   (pl. Ézs 14:9 rafaim↔seól együttállása, vagy a Hós 13:14 → 1Kor 15:55 páli idézet)
+   kitöltése nem volt e lépés hatóköre — nyitva marad egy későbbi körre.
+5. **A Segítségül hívni-study 1Kir 18:24 belső Kontraszt-esete nem került a
    `kapcsolatok.tsv`-be.** Ez nem mulasztás, hanem a séma dokumentált korlátja (l.
    `SEMA.md` 2.3 „Ismert névütközés" doboza): a `forras_igehely`+`cel_igehely` kulcs két
    *különböző* igehelyet feltételez, egy versen belüli kontrasztot (Baál neve vs. YHVH neve,
    ugyanabban a 1Kir 18:24 versben) nem tud natívan ábrázolni. Nyitott kérdés marad a
    `Bibliai_Motivumlexikon_tervezesi_naplo.md` KAPCSOLATOK-fejezete felé.
-4. **A Károli-join (`karoli_szo`) csak a már meglévő `Karoli_Strong_kivonat.tsv`-sorokból
+6. **A Károli-join (`karoli_szo`) csak a már meglévő `Karoli_Strong_kivonat.tsv`-sorokból
    öröklődött** (2Móz 19:6, Zak 6:13 a KIRALY-001-nél; Zak 13:9, Róm 10:14, 1Kor 1:2,
-   2Tim 2:22, 1Pét 1:17, ApCsel 9:14/9:21/22:16 az ISTENTISZT-001-nél) — a többi 30 sornál a
-   mező szándékosan üresen maradt. Ez nem hiba: a terv a teljes visszamenőleges Károli-join
-   pótlást explicit külön, Opus-menetre (F3.4) különíti el, mert soronkénti tartalom-alapú
-   ítéletet igényel, nem gépesíthető.
-5. **A `motivumok.tsv` `sablon_verzio` mezője `v12`-t kapott mindkét motívumnál** — ez a
-   study fejlécének saját állítása, nem egy frissen lefuttatott F5-ös megfelelőségi kör
-   eredménye (az F5 még nem történt meg). Ha az F5 sablon-frissítés (a terv 123. sorának
-   javítása) megtörténik, ez a mező felülvizsgálandó.
-6. **A Jób 40-41 STEPBible-forrásfájl tételes ellenőrzése** (a feltételezett héber/angol
+   2Tim 2:22, 1Pét 1:17, ApCsel 9:14/9:21/22:16 az ISTENTISZT-001-nél; az F3.2 öt új ID-jénél
+   egyáltalán nem futott, l. F3.4) — a mező a legtöbb sornál szándékosan üresen maradt. Ez
+   nem hiba: a terv a teljes visszamenőleges Károli-join pótlást explicit külön, Opus-menetre
+   (F3.4) különíti el, mert soronkénti tartalom-alapú ítéletet igényel, nem gépesíthető.
+7. **A `motivumok.tsv` `sablon_verzio` mezője a study fejlécének saját állítását kapta**
+   mind a hét ID-nél, nem egy frissen lefuttatott F5-ös megfelelőségi kör eredményét (az F5
+   még nem történt meg). Ha az F5 sablon-frissítés (a terv 123. sorának javítása)
+   megtörténik, ez a mező felülvizsgálandó.
+8. **A Jób 40-41 STEPBible-forrásfájl tételes ellenőrzése** (a feltételezett héber/angol
    versszámozási eltolódás hipotézise) továbbra sem történt meg — ugyanaz a nyitott tétel,
    mint az F2.0 zárásakor.
 
