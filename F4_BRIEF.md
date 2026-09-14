@@ -1,6 +1,6 @@
 # F4-0 brief — a `csv` modul kiváltása és a stderr-őr egységesítése
 
-*Készítette: chat-menet (Opus 5), 2026-09-14, v6 (v5-ig l. a döntésnaplót; v6: E5 visszavonva, E11 .gitattributes-szal, Tétel B a HEAD-blobhoz mér). Kiindulási állapot: `main` = `origin/main` = `28ae8d4`.*
+*Készítette: chat-menet (Opus 5), 2026-09-14, v7 (v6-ig l. a döntésnaplót; v7: E1 szűkítve, B21-B23). Kiindulási állapot: `main` = `origin/main` = `28ae8d4`.*
 *Végrehajtás: Claude Code, a repó gyökeréből. A chat-menet nem hajtja végre — ez a brief a bemenete.*
 
 ---
@@ -329,7 +329,7 @@ Mindegyik **mérés**, nem szemrevételezés. A számokat a Code-menet futtassa 
 
 | # | Kritérium | Elvárt |
 |---|---|---:|
-| E1 | `grep -rn "csv\.\(reader\|DictReader\|writer\|DictWriter\)" eszkozok/*.py` | **0 találat** |
+| E1 | `csv.` hívás bármely szkriptben, amely `adat/*.tsv`-t vagy `konkordancia/*.tsv`-t olvas vagy ír | **0** — két nevesített kivétellel, l. lent |
 | E2 | `python -m py_compile eszkozok/*.py` | hibátlan |
 | E3 | `adat/elofordulasok.tsv`: `kapcsolodas` mezők, amelyek `"`-rel kezdődnek és végződnek | **79** (változatlan) |
 | E4 | `git diff --stat` az `adat/` és `konkordancia/` alatt | **üres** — a csere kódot érint, adatot nem |
@@ -536,6 +536,9 @@ indulhat.
 | B18 | **E5 visszavonva** | a repó `core.autocrlf=true`-val megy: a munkafa sorvége checkout-műtermék, nem megőrzendő állapot. Az E5 hibás kritérium volt, és fölösleges munkát okozott az utójavításban | chat-menet, 2026-09-14 (a Code-menet `autocrlf` lelete után) |
 | B19 | Az E11 `.gitattributes`-szal kényszerítendő (`*.tsv text eol=lf`), nem kézi normalizálással | `autocrlf=true` mellett a kézzel LF-re állított tábla a következő checkoutkor visszaáll CRLF-re, és a négy `\r`-t nem strippelő olvasó némán szennyezett utolsó mezőt lát | chat-menet, 2026-09-14 |
 | B20 | Tétel B körút-referenciája a `git show HEAD:<fájl>` blob, nem a munkafa | ugyanezért: a munkafa sorvége nem stabil, a blob igen | chat-menet, 2026-09-14 |
+| B21 | Az E1 szűkítve: két nevesített mérőeszköz kivétel, három feltétellel | a mérés tárgya maga a modul; a feltételek megakadályozzák, hogy a kivétel csendben táguljon | chat-menet, 2026-09-14 (a Code-menet kérdésére) |
+| B22 | A `Karoli_Strong_kivonat.tsv` **nem generálódik újra most** | a két utolsó oszlop elavult a mai `Strong_szotar.tsv`-hez képest (46 105 vs 45 659 bájt), de ez adatfrissesség, nem F4-0; a `Szófaj` oszlop study-bemenet, tehát külön, bizonyítékkal alátámasztott döntés kell | chat-menet, 2026-09-14 |
+| B23 | A `merge_karoli_szofaj.py` rongyos-sor-észlelése a 3. menetbe kerül, nem külön menetbe | egysoros kiegészítés egy amúgy is érintett fájlban | chat-menet, 2026-09-14 |
 
 ---
 
