@@ -1,10 +1,10 @@
 # Megvalósítási napló — F0-F3 fázis
 
-**Készült:** 2026.09.13 (F0-F1) · frissítve 2026.09.14 (F2, F3.0, F3.1, F3.2)
+**Készült:** 2026.09.13 (F0-F1) · frissítve 2026.09.14 (F2, F3.0, F3.1, F3.2, F3.3)
 **Forrás terv:** `ATALAKITASI_TERV.md.md`, 6. szakasz
 **Fázisok:** F0 — Blokkolók feloldása (8 tétel) · F1 — Séma és belépési pont (6 tétel) ·
 F2 — Lekérdező CLI · F3 — Retroaktív betöltés (F3.0 előfeltétel-ellenőrzés, F3.1 könnyű
-csoport, F3.2 nehéz csoport; F3.3-F3.4 nyitva)
+csoport, F3.2 nehéz csoport, F3.3 gate.py első futtatása; F3.4 nyitva)
 **Munkamenet:** Claude Code
 
 ---
@@ -572,9 +572,10 @@ szűretlen metszet, 12 kiszűrt grammatikai Strong, 11 megmaradó gerinc-jelölt
 3. **`igealak` parancs csak adatot szolgáltat, ítéletet nem** — ez szándékos (a terv szerint
    a binyan-csoportosítás emberi döntés), de következmény: a parancs önmagában nem "teszi
    gépesítetté" az 5. lépést a szó szoros értelmében, csak a nyers adathoz jutást gyorsítja.
-4. **`ellenoriz.py` és `gate.py` még nem készült el** — a terv 2. pontja szerint ezek külön
-   eszközök (audit-subagent / hook), nem az F2 hatóköre; a `lekerdez.py`-nak nincs saját
-   validáló rétege azon túl, amit a parancsok kimenete magától nyújt.
+4. **`ellenoriz.py` még nem készült el** *(⏹ a `gate.py` fele időközben elkészült, l. IV. rész
+   F3.3)* — a terv 2. pontja szerint ezek külön eszközök (audit-subagent / hook), nem az F2
+   hatóköre; a `lekerdez.py`-nak nincs saját validáló rétege azon túl, amit a parancsok
+   kimenete magától nyújt.
 5. **A `lxx-hid` parancs nem szűri a Strong-tiltólistát vagy a grammatikai listát** — szándékosan,
    mert a lépés célja a teljes LXX-szókészlet megmutatása egy adott versre, nem egy gerinc-
    metszet. Ha ez gyakorlatban túl zajos, az F5/F6 tapasztalatai alapján érdemes lehet egy
@@ -805,49 +806,101 @@ nincs duplikált `id+igehely` kulcs (ellenőrizve a teljes, F3.1+F3.2 utáni tá
 
 ---
 
+### F3.3 — A `gate.py` első futtatása ✅
+
+**Készült:** 2026.09.14
+**Forrás terv:** `ATALAKITASI_TERV.md.md` 6. szakasz, F3 lépéstábla F3.3 sora; 2. pont
+(eszközréteg); 4.6 (motívum-gate)
+
+A terv előírja: `gate.py` első futtatása a 14 meglévő ID-n, ütközés- és
+részhalmaz-jelentésre — **a jelentés kimenet, nem döntés.**
+
+**A `gate.py` eddig nem létezett** (az F2 nyitva maradt tételei között szerepelt, l. III.
+rész). Elkészült `eszkozok/gate.py`: beolvassa az `adat/motivumok.tsv` + `adat/
+elofordulasok.tsv` táblákat, és minden motívumpárra két vizsgálatot végez —
+
+1. **ütközés-jelentés:** mely igehelyek szerepelnek egynél több motívum táblájában, és
+   mekkora az átfedés motívumpáronként;
+2. **részhalmaz-ellenőrzés:** B ⊆ A (B minden előfordulása A-ban is megvan) — a 4.6 gate
+   4. kérdésének gépi támasza.
+
+Eredményét Markdown-jelentésbe írja (`--md` kapcsoló); a fájl a `motivumlog/
+gate_jelentesek/` alá kerül, generált-jelöléssel (`<!-- GENERÁLT: eszkozok/gate.py -->`),
+mert **kimeneti réteg**, nem `adat/` — az `adat/` kizárólag a hét kanonikus táblát tartja,
+nem levezetett jelentéseket (l. `CLAUDE.md` rétegtáblázata).
+
+**A 14 helyett 7 ID-n futott — ez a jelentés maga is dokumentálja (4. szakasza).** A
+`motivumok.tsv`-ben ma csak az F3.1+F3.2-ben betöltött hét ID van (KIRALY-001,
+ISTENTISZT-001, TEREMT-001, ALVIL-001, MENNY-001, ANTROP-001, HODIT-001) — a további hét,
+a `motivumlog/PaRDeS_motivumok.md`-ben dokumentált ID (HAMART-001, ANTROP-002, ANTROP-003,
+ANTROP-004, ISTENTISZT-002, SZOVETS-001, TEREMT-002) még nincs betöltve az `adat/`
+táblákba — ez utóbbiak közül négy még meg sincs írva tematikus study-ként (l.
+`NYITOTT_FELADATOK.md`), a HAMART-001-nek pedig van lezárt study-ja
+(`Bun_kovetkezmenyeinek_gyuruzese_tematikus.md`), de az a terv F3 betöltési körén (a hét
+lezárt study + ISTENTISZT-001 lexikon) kívül esett — betöltése nem volt sem az F3.1, sem az
+F3.2 hatóköre. A `gate.py` így most **részleges** képet ad; teljes lefedettséghez a
+fennmaradó ID-k betöltése szükséges (nem e lépés feladata).
+
+**Eredmény — `motivumlog/gate_jelentesek/gate_jelentes_F3.3.md`:**
+
+| Ütközés | Osztozó igehelyek | Jelleg |
+|---|---|---|
+| ALVIL-001 ↔ HODIT-001 | Péld 9:18; Ézs 14:9 | mindkettő a study-k saját szövegében már dokumentált, tudatos együttállás (a seól-motívum mindkét helyen kifejezetten a Refáim-kontextusra hivatkozik) |
+| ALVIL-001 ↔ TEREMT-001 | Ez 31:15 | valódi kettős lexikai előfordulás — a vers mindkét szót (שְׁאוֹל **és** תְּהוֹם) tartalmazza, mindkét study 2/b-scanje önállóan, egymástól függetlenül találta meg |
+| HODIT-001 ↔ MENNY-001 | 4Móz 13:34 | a `נְפִלִים` szó közös horgony, de a study-k szerint eltérő funkcióval: MENNY-001-nél a nefilim-eredetkérdés, HODIT-001-nél az Anákim-azonosítás — ez a 4.6 gate 3. kérdése szerint (*különbözik-e a funkció?*) éppen a megengedett eset, nem ütközés-hiba |
+
+**Részhalmaz-viszony egy párnál sem került elő** — egyik betöltött motívum sem B ⊆ A
+viszonyban áll egy másikkal, tehát a hét betöltött ID közül egyik sem gyanús arra, hogy
+valójában egy másik ↳ alpontja legyen.
+
+**A jelentés nem zár le semmit — ez szándékos.** A három ütközés mindegyike a study-k saját,
+már korábban is dokumentált tényeire mutat rá (nem új felfedezés), és egyik sem igényel
+azonnali szerkesztői beavatkozást: a 4.6 gate 3. kérdése szerint az osztozás önmagában nem
+hiba, ha a funkció különbözik — ez mindhárom esetben így van. A jelentés ennek ellenére
+rögzíti őket, mert **a gépi megerősítés maga az érték** (eddig ez csak a kutató fejében élt).
+
+---
+
 ## Nyitva maradt tételek
 
-1. **F3.3-F3.4 még nem indult el.** A `gate.py` első futtatása a mind a 14 meglévő ID-re
-   (mind az F3.1, mind az F3.2 új ID-jei — KIRALY-001, ISTENTISZT-001, TEREMT-001,
-   ALVIL-001, MENNY-001, ANTROP-001, HODIT-001 — jelenleg csak kézzel, saját magukon belül
-   ellenőrzöttek; **kereszt-motívum ütközés/részhalmaz-vizsgálat még sehol nem történt**, l.
-   alább 2. pont), és a Károli-Strong join visszamenőleges pótlása (F3.4, Opus) külön
-   menetekre várnak.
-2. **`gate.py` hiányában a hét most betöltött ID egymás közti, illetve a korábbi 7
-   meglévő ID-vel szembeni ütközés-/részhalmaz-ellenőrzése nem történt meg.** Konkrét,
-   névvel is jelzett kockázati pont: a `4Móz 13:34` igehely **két különböző motívumban is**
-   szerepel (MENNY-001-nél "נְפִלִים" horgonyon, HODIT-001-nél is "נְפִלִים ⇒ עֲנָקִים"
-   horgonyon) — ez a 4.6 gate 3. kérdése szerint megengedett, HA a funkció különbözik (itt:
-   MENNY-001-nél a nefilim-eredetkérdés, HODIT-001-nél az Anákim-azonosítás), de ezt a
-   `gate.py` sem futott le rá, hogy gépileg megerősítse. Hasonlóan: `Ézs 14:9` egyszerre
-   hordozza a רְפָאִים (HODIT-001) és a שְׁאוֹל (ALVIL-001) szót — ez a study-k szerint tudatos,
-   dokumentált egymás-mellettiség, de gépi ütközés-jelentés erre sem futott.
-3. **A HODIT-001 negatív kritériuma szerint elutasított `1Móz 14:6` (Hórim) és a 3
+1. **F3.4 még nem indult el.** A Károli-Strong join visszamenőleges pótlása (Opus, saját
+   menet) külön menetre vár.
+2. **A `gate.py` csak a betöltött hét ID-t látta, nem mind a 14-et.** A további hét ID
+   (HAMART-001, ANTROP-002, ANTROP-003, ANTROP-004, ISTENTISZT-002, SZOVETS-001,
+   TEREMT-002) nincs betöltve az `adat/` táblákba — ebből négy még meg sincs írva
+   tematikus study-ként, a HAMART-001-nek pedig van lezárt study-ja, de az kívül esett a
+   terv F3 betöltési körén (a hét lezárt study + ISTENTISZT-001 lexikon). A `gate.py`
+   jelentése ezért **részleges** — ha a fennmaradó ID-k valaha betöltésre kerülnek, a
+   jelentést újra kell futtatni.
+3. **A `gate.py` három talált ütközése (ALVIL-001↔HODIT-001, ALVIL-001↔TEREMT-001,
+   HODIT-001↔MENNY-001, l. F3.3) emberi megerősítést nem kapott.** A jelentés kimenet, nem
+   döntés — egyik esetet sem zárta le, csak megnevezte és a 4.6 gate keretébe helyezte.
+4. **A HODIT-001 negatív kritériuma szerint elutasított `1Móz 14:6` (Hórim) és a 3
    `STRONG_HIANYZIK` eset (`5Móz 2:10`, `5Móz 2:21`, `2Sám 21:15`) emberi felülvizsgálatra
    várnak** — a szkript indoklással a `jeloltek.tsv`-be irányította őket, de a végső döntés
    (véglegesen elutasítva marad-e, vagy a study saját tartomány-idézése frissítendő) emberi
    megerősítést igényel.
-4. **A Rafaim/HODIT-001 és a Seól/ALVIL-001 táblák nem kaptak `kapcsolatok.tsv` sort** — az
+5. **A Rafaim/HODIT-001 és a Seól/ALVIL-001 táblák nem kaptak `kapcsolatok.tsv` sort** — az
    F3.2 a terv szövege szerint kizárólag a visszakeresésről szól, a `kapcsolatok` réteg
    (pl. Ézs 14:9 rafaim↔seól együttállása, vagy a Hós 13:14 → 1Kor 15:55 páli idézet)
    kitöltése nem volt e lépés hatóköre — nyitva marad egy későbbi körre.
-5. **A Segítségül hívni-study 1Kir 18:24 belső Kontraszt-esete nem került a
+6. **A Segítségül hívni-study 1Kir 18:24 belső Kontraszt-esete nem került a
    `kapcsolatok.tsv`-be.** Ez nem mulasztás, hanem a séma dokumentált korlátja (l.
    `SEMA.md` 2.3 „Ismert névütközés" doboza): a `forras_igehely`+`cel_igehely` kulcs két
    *különböző* igehelyet feltételez, egy versen belüli kontrasztot (Baál neve vs. YHVH neve,
    ugyanabban a 1Kir 18:24 versben) nem tud natívan ábrázolni. Nyitott kérdés marad a
    `Bibliai_Motivumlexikon_tervezesi_naplo.md` KAPCSOLATOK-fejezete felé.
-6. **A Károli-join (`karoli_szo`) csak a már meglévő `Karoli_Strong_kivonat.tsv`-sorokból
+7. **A Károli-join (`karoli_szo`) csak a már meglévő `Karoli_Strong_kivonat.tsv`-sorokból
    öröklődött** (2Móz 19:6, Zak 6:13 a KIRALY-001-nél; Zak 13:9, Róm 10:14, 1Kor 1:2,
    2Tim 2:22, 1Pét 1:17, ApCsel 9:14/9:21/22:16 az ISTENTISZT-001-nél; az F3.2 öt új ID-jénél
    egyáltalán nem futott, l. F3.4) — a mező a legtöbb sornál szándékosan üresen maradt. Ez
    nem hiba: a terv a teljes visszamenőleges Károli-join pótlást explicit külön, Opus-menetre
    (F3.4) különíti el, mert soronkénti tartalom-alapú ítéletet igényel, nem gépesíthető.
-7. **A `motivumok.tsv` `sablon_verzio` mezője a study fejlécének saját állítását kapta**
+8. **A `motivumok.tsv` `sablon_verzio` mezője a study fejlécének saját állítását kapta**
    mind a hét ID-nél, nem egy frissen lefuttatott F5-ös megfelelőségi kör eredményét (az F5
    még nem történt meg). Ha az F5 sablon-frissítés (a terv 123. sorának javítása)
    megtörténik, ez a mező felülvizsgálandó.
-8. **A Jób 40-41 STEPBible-forrásfájl tételes ellenőrzése** (a feltételezett héber/angol
+9. **A Jób 40-41 STEPBible-forrásfájl tételes ellenőrzése** (a feltételezett héber/angol
    versszámozási eltolódás hipotézise) továbbra sem történt meg — ugyanaz a nyitott tétel,
    mint az F2.0 zárásakor.
 
