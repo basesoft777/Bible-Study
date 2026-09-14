@@ -1,0 +1,8 @@
+# Sorvég-politika — l. F4_BRIEF.md, E11 / B19 döntés.
+#
+# A repó core.autocrlf=true-val megy, tehát a munkafa sorvége checkoutonként
+# változhat. A kanonikus és a konkordancia-táblák olvasói közül négy nem
+# strippeli a soron a \r-t, tehát CRLF-es munkapéldányon némán szennyezett
+# utolsó mezőt látnak. Ez a sor teszi tartóssá az LF-et: a kézi normalizálás
+# a következő checkoutkor visszaállna.
+*.tsv text eol=lf
