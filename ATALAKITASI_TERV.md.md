@@ -1,6 +1,7 @@
 # PaRDeS rendszer — átalakítási terv
 
-**Verzió:** v7 — 2026.09.14
+**Verzió:** v8 — 2026.09.14
+**v8 (v7-hez képest):** N12 lezárva → D24 (a `karoli_szo` minden jelöltnél megnézendő, de csak a beépített sorokon őrzendő meg); ez rögzíti az F3.4 hatókörét is
 **v7 (v6-hoz képest):** az F3 öt nevesített lépésre bontva (F3.0-F3.4), lépésenkénti modellhozzárendeléssel — F3.0-F3.3 Sonnet, F3.4 (Károli-Strong join) saját menet Opuson; a 9. pont TAHOT-kockázati sora a lefutott F2.0 felmérés eredményére frissítve (a feltételezett hiányok megvannak, a tényleges hiány Jób 40:1-5 és Jób 41); D22-D23 és N13
 **v2 (v1-hez képest):** a végrehajtási felület rögzítve (Claude Code), az 5. pont szereposztása subagent-topológiára írva, a 4.4 tanítói menet subagentté alakítva, a 11.3 átírva (kötegelt előkészítés, nem kötegelt menet), a 8.4 cache-állítása pontosítva, új 8.6 és 8.7 alszakasz
 **v6 (v5-höz képest):** új 4.7 — Károli-Strong join (kumulatív elv rögzítve, a 09.10-i hiány oka feltárva, visszamenőleges pótlás az F3-ba), `karoli_szo` + `azonositas_modja` + `megbizhatosag` mezők a `jeloltek.tsv`-be és az `elofordulasok.tsv`-be, a `Karoli_Strong_kivonat.tsv` generált nézetté válik, D19-D21 és N12
@@ -867,6 +868,7 @@ A bővített szakasz azért olcsóbb a tematikusnál, mert ott nincs teljes ÓSZ
 | D20 | A `karoli_szo` a `jeloltek.tsv` minősítési sorába kerül | a minősítés és a hozzárendelés egy sor — a 09.10-i hiány így nem ismétlődhet |
 | D21 | A 09.10-i elmaradás visszamenőlegesen pótlandó, az F3-ban | a tanulmányok feldolgozták az igehelyeket; a join-sor csak a kimaradt lépés miatt hiányzik |
 | D22 | Az F3 öt nevesített lépésre bomlik (F3.0-F3.4); F3.0-F3.3 Sonneten, F3.4 saját menetben Opuson | a D11 fázis-szintű modellszabálya és a 4.7 join gépesíthetetlensége csak így egyeztethető össze — váltás helyett menethatár |
+| D24 | A `karoli_szo` **minden** jelöltnél megnézendő (az ítélethez kell), de csak a beépített sorokon őrzendő meg: kötelező az `elofordulasok.tsv`-ben, opcionális a `jeloltek.tsv` elutasított/nyitva sorain | a `Join_tabla_folyamat_magyarazat.md` 2. szakasza két külön lépésről szól — a 3. („MINDEN egyes találatnál") az ítélethozatal, az 5. („a megerősített találatok") a rögzítés; a 4.7 ezt megerősíti (*„a Károli-szöveget is megnézi, mert a tartalmi ítélethez kell"*). N12 ezzel lezárva |
 | D23 | A `scope=OT-full` címke a lefedettség felmérése **után sem** adható ki | az F2.0 felmérés hiányt talált (Jób 40:1-5, Jób 41), nem teljességet igazolt; a korlát oka megváltozott, a korlát maga nem |
 
 ### Nyitva hagyott kérdések — felhasználói döntést igényelnek
@@ -884,7 +886,7 @@ A bővített szakasz azért olcsóbb a tematikusnál, mert ott nincs teljes ÓSZ
 | N9 | Minden motívum megy-e végig mind a három szakaszon? (11.1) | ha nem, kell egy jelentőségi kritérium a mennyiségi ⭐ 3+ mellé |
 | N10 | Épüljön-e MCP-szerver a `lekerdez.py` köré? (11.7) | csak akkor, ha a chat-felületről is használni akarod |
 | N11 | A CC BY-SA 4.0 (SDBH) hatása a lexikon publikálására (11.5) | a származékos adat is ugyanilyen licenc alá esik — érinti a 3.10-es szerzői jogi tételt |
-| N12 | A `Join_tabla_folyamat_magyarazat.md` ellentmondása: a tematikus sablonnál **minden** találathoz kell Károli-szó, vagy csak amit a tanulmány idéz? | ez dönti el, mekkora join-hozamot termel egy nagy scan (a H7585 63 verse) |
+| ~~N12~~ | **LEZÁRVA 2026.09.14 → D24.** A kérdés rosszul volt feltéve: a két dokumentum nem mond ellent egymásnak, mert a „minden" az ítélethozatalra vonatkozik, a „csak a megerősített" a rögzítésre. | — |
 | N13 | Mi a `TAHOT_kivonat.tsv` Jób 40:1-5 / Jób 41 hiányának forrásbeli oka? **Erős nyom a döntési changelogban (v36, 2026.08.31):** ott szerepel a „Jób 38:39-41+39+40:1-5 összevonva Károli 39. fejezetté" fejezethatár-javítás, és a szétbontott összeolvadt versek közt a „Jób 41:25" — tehát Jób 41 létezik a Károli-kulcson. Ez a héber↔angol számozási eltérés képe (héber 40:25-32 = angol 41:1-8). **Ellenőrizendő, nem kimondandó.** | ha számozási eltolódás, a hiány látszólagos: a `scope=OT-full` tiltás (D23) újratárgyalható, és az F3.0 olcsóbb. Ha viszont tényleges kivonatolási hiba, más könyvekben is lehet — akkor a felmérést verselemi szinten, a `Konyv_normalizalo_tabla.tsv` mindkét irányában meg kell ismételni |
 
 ---
