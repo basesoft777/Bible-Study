@@ -105,6 +105,30 @@ Strong-taggelt Károlija, és a döntési fájl 8. szakasza szerint nem is lesz 
 
 ---
 
+### 1.8 `IGAZOLAS` — a D25 szerinti szétválasztás
+
+Zárt értékkészlet: `TAHOT-igazolt` | `TAHOT-hatokoron-kivul` | `nincs`.
+
+**Miért külön mező, és nem a provenienciában:** a proveniencia arra válaszol, *honnan
+származik az állítás*; az igazolás arra, hogy *megerősítette-e valami*. A kettő
+független. Egy retroaktívan betöltött study-sor provenienciája jogosan `manual` (az
+állítás a kézzel írt tanulmányból jön), miközben a Strong-hozzárendelését a
+TAHOT-visszakeresés tételesen igazolta — ez nem teszi a sort lekérdezés-eredménnyé,
+de nem is puszta értelmezés.
+
+Az F3 betöltői ezt eleinte a proveniencia-stringbe írták (`talalat=IGAZOLVA`,
+`strong_vart=…`), ami két hibát okozott: nem szabványos kulcsokat vitt egy olyan
+mezőbe, amelyet az 1.5 szerint a `lekerdez.py` ír szó szerint, és a 3.3 kényszert
+értelmezhetetlenné tette (a sor egyszerre lett volna értelmezés és igazolt tény).
+A szétválasztást az `eszkozok/igazolas_migracio.py` végezte el; a `strong_vart`
+eldobásra került, mert mind a 138 soron azonos volt a `strong` oszloppal.
+
+**A 3.3 kényszer ettől nem gyengül:** `manual` proveniencia esetén a sor továbbra is
+értelmezésként jelölendő a generált kimenetben. Az `igazolas` mező ehhez *hozzátesz*
+egy külön állítást, nem vonja vissza.
+
+---
+
 ## 2. Táblák
 
 ### 2.1 `motivumok.tsv` — motívum-törzstábla
@@ -161,6 +185,7 @@ study táblázatába).
 | `azonositas_modja` | `AZONOSITAS_MODJA` | | Kötelező, ha `karoli_szo` ki van töltve. |
 | `megbizhatosag` | `MEGBIZHATOSAG` | | Kötelező, ha `karoli_szo` ki van töltve. |
 | `proveniencia` | `PROVENIENCIA` | ✔ | L. 1.5. |
+| `igazolas` | `IGAZOLAS` | ✔ | Megerősítette-e lekérdezés ezt a sort. L. 1.8. |
 
 #### 2.2.1 A `gerinc_elem` mező — miért kötelező
 
@@ -467,7 +492,7 @@ ellenőrzés tárgyai.
    `motivumok.id`.
 2. **Nincs közvetlen út.** Minden `elofordulasok` sorhoz tartozik `jeloltek` sor azonos
    kulccsal, `dontes=beépítve` értékkel.
-3. **Proveniencia-kényszer.** `elofordulasok.proveniencia` nem lehet üres. Ha `manual`,
+3. **Proveniencia-kényszer.** `elofordulasok.proveniencia` nem lehet üres, és kulcsai kizárólag `scope`, `forras`, `ts` lehetnek (az igazolás külön mező, l. 1.8). Ha `manual`,
    a sor értelmezésként jelölendő a generált kimenetben.
 4. **Horgony-kényszer.** `elofordulasok.gerinc_elem` nem lehet üres.
 5. **Károli-triplet.** Ha `karoli_szo` ki van töltve, `azonositas_modja` és

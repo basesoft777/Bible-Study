@@ -1,6 +1,7 @@
 # PaRDeS rendszer — átalakítási terv
 
-**Verzió:** v8 — 2026.09.14
+**Verzió:** v9 — 2026.09.14
+**v9 (v8-hoz képest):** D25 — az igazolás ténye önálló `igazolas` mezőbe kerül a proveniencia-string helyett; `adat/SEMA.md` 1.8 és az `eszkozok/igazolas_migracio.py` ezt végrehajtja
 **v8 (v7-hez képest):** N12 lezárva → D24 (a `karoli_szo` minden jelöltnél megnézendő, de csak a beépített sorokon őrzendő meg); ez rögzíti az F3.4 hatókörét is
 **v7 (v6-hoz képest):** az F3 öt nevesített lépésre bontva (F3.0-F3.4), lépésenkénti modellhozzárendeléssel — F3.0-F3.3 Sonnet, F3.4 (Károli-Strong join) saját menet Opuson; a 9. pont TAHOT-kockázati sora a lefutott F2.0 felmérés eredményére frissítve (a feltételezett hiányok megvannak, a tényleges hiány Jób 40:1-5 és Jób 41); D22-D23 és N13
 **v2 (v1-hez képest):** a végrehajtási felület rögzítve (Claude Code), az 5. pont szereposztása subagent-topológiára írva, a 4.4 tanítói menet subagentté alakítva, a 11.3 átírva (kötegelt előkészítés, nem kötegelt menet), a 8.4 cache-állítása pontosítva, új 8.6 és 8.7 alszakasz
@@ -869,6 +870,7 @@ A bővített szakasz azért olcsóbb a tematikusnál, mert ott nincs teljes ÓSZ
 | D21 | A 09.10-i elmaradás visszamenőlegesen pótlandó, az F3-ban | a tanulmányok feldolgozták az igehelyeket; a join-sor csak a kimaradt lépés miatt hiányzik |
 | D22 | Az F3 öt nevesített lépésre bomlik (F3.0-F3.4); F3.0-F3.3 Sonneten, F3.4 saját menetben Opuson | a D11 fázis-szintű modellszabálya és a 4.7 join gépesíthetetlensége csak így egyeztethető össze — váltás helyett menethatár |
 | D24 | A `karoli_szo` **minden** jelöltnél megnézendő (az ítélethez kell), de csak a beépített sorokon őrzendő meg: kötelező az `elofordulasok.tsv`-ben, opcionális a `jeloltek.tsv` elutasított/nyitva sorain | a `Join_tabla_folyamat_magyarazat.md` 2. szakasza két külön lépésről szól — a 3. („MINDEN egyes találatnál") az ítélethozatal, az 5. („a megerősített találatok") a rögzítés; a 4.7 ezt megerősíti (*„a Károli-szöveget is megnézi, mert a tartalmi ítélethez kell"*). N12 ezzel lezárva |
+| D25 | Az igazolás ténye önálló `igazolas` mezőbe kerül, nem a proveniencia-stringbe; a `proveniencia` kulcsai kizárólag `scope`, `forras`, `ts` | egy mező két tényt hordozott (honnan származik az állítás / megerősítette-e lekérdezés). A `manual` gyengítése a rendszer legélesebb szabályát puhította volna; új `scope`-érték pedig az igazolás tényét írta volna a hatókör mezőjébe. A szétválasztás mindkettőt elkerüli, és a 3.3 kényszer érintetlen marad |
 | D23 | A `scope=OT-full` címke a lefedettség felmérése **után sem** adható ki | az F2.0 felmérés hiányt talált (Jób 40:1-5, Jób 41), nem teljességet igazolt; a korlát oka megváltozott, a korlát maga nem |
 
 ### Nyitva hagyott kérdések — felhasználói döntést igényelnek
