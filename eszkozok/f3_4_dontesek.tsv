@@ -1,0 +1,192 @@
+id	igehely	karoli_szo	azonositas_modja	megbizhatosag	join_igehely	join_strong	megjegyzes
+KIRALY-001	1Móz 14:18-20	papja	tartalom-alapú	magas	1Móz 14:18	H3548	
+KIRALY-001	Zsolt 76:3	Sálemben	tartalom-alapú	magas	Zsolt 76:3	H8004	
+KIRALY-001	Zsolt 110:4	Pap	tartalom-alapú	magas	Zsolt 110:4	H3548	
+KIRALY-001	Zsid 5:6	rendje szerint	tartalom-alapú	magas	Zsid 5:6	G5010	
+KIRALY-001	Zsid 5:10	rendje szerint	tartalom-alapú	magas	Zsid 5:10	G5010	
+KIRALY-001	Zsid 6:20	rendje szerint	tartalom-alapú	magas	Zsid 6:20	G5010	
+KIRALY-001	Zsid 7:1-28	rendje szerint (G5010, 7:17); Apa nélkül (G0540, 7:3); anya nélkül (G0282, 7:3); nemzetség nélkül való (G0035, 7:3)	tartalom-alapú	magas	Zsid 7:17	G5010	tobbes: l. f3_4_extra_join.tsv
+ISTENTISZT-001	1Móz 4:26	segítségül hívni az Úrnak nevét	tartalom-alapú	magas	1Móz 4:26	H7121+H8034	
+ISTENTISZT-001	1Móz 12:8	segítségűl hívá az Úr nevét	tartalom-alapú	magas	1Móz 12:8	H7121+H8034	
+ISTENTISZT-001	1Móz 13:4	segítségűl hívá ott Ábrám az Úrnak nevét	tartalom-alapú	magas	1Móz 13:4	H7121+H8034	
+ISTENTISZT-001	1Móz 21:33	segítségűl hívá ott az örökkévaló Úr Istennek nevét	tartalom-alapú	magas	1Móz 21:33	H7121+H8034	
+ISTENTISZT-001	1Móz 26:25	segítségűl hívá az Úrnak nevét	tartalom-alapú	magas	1Móz 26:25	H7121+H8034	
+ISTENTISZT-001	1Kir 18:24	segítségül hívom az Úrnak nevét	tartalom-alapú	magas	1Kir 18:24	H7121+H8034	
+ISTENTISZT-001	1Kir 18:25	hívjátok segítségül a ti istenteknek nevét	tartalom-alapú	magas	1Kir 18:25	H7121+H8034	
+ISTENTISZT-001	1Kir 18:26	segítségül hívák a Baálnak nevét	tartalom-alapú	magas	1Kir 18:26	H7121+H8034	
+ISTENTISZT-001	2Kir 5:11	segítségül hívja az Úrnak, az ő Istenének nevét	tartalom-alapú	magas	2Kir 5:11	H7121+H8034	
+ISTENTISZT-001	Sof 3:9	segítségül hívják az Úr nevét	tartalom-alapú	magas	Sof 3:9	H7121+H8034	
+ISTENTISZT-001	Zsolt 116:4	az Úrnak nevét segítségül hívám	tartalom-alapú	magas	Zsolt 116:4	H7121+H8034	
+ISTENTISZT-001	Zsolt 116:13	az Úrnak nevét hívom segítségül	tartalom-alapú	magas	Zsolt 116:13	H7121+H8034	
+ISTENTISZT-001	Zsolt 116:17	az Úr nevét hívom segítségül	tartalom-alapú	magas	Zsolt 116:17	H7121+H8034	
+ISTENTISZT-001	Jóel 2:32	az Úrnak nevét hívja segítségül	tartalom-alapú	magas	Jóel 2:32	H7121+H8034	
+ISTENTISZT-001	Zsolt 105:1	hívjátok segítségül az ő nevét	tartalom-alapú	magas	Zsolt 105:1	H7121+H8034	
+ISTENTISZT-001	1Krón 16:8	hívjátok segítségül az ő nevét	tartalom-alapú	magas	1Krón 16:8	H7121+H8034	
+ISTENTISZT-001	Ézs 12:4	magasztaljátok az Ő nevét	tartalom-alapú	közepes	Ézs 12:4	H7121+H8034	Károli itt nem a "segítségül hív" fordulattal adja vissza a qárá be-sém szerkezetet
+ISTENTISZT-001	Jer 10:25	nem hívják segítségül a te nevedet	tartalom-alapú	magas	Jer 10:25	H7121+H8034	
+ISTENTISZT-001	Zsolt 79:6	nem hívják segítségül a te nevedet	tartalom-alapú	magas	Zsolt 79:6	H7121+H8034	
+ISTENTISZT-001	2Móz 33:19	kiáltom előtted az Úr nevét	tartalom-alapú	magas	2Móz 33:19	H7121+H8034	D-minta: kihirdetés, nem invokáció
+ISTENTISZT-001	2Móz 34:5	nevén kiáltá az Urat	tartalom-alapú	magas	2Móz 34:5	H7121+H8034	D-minta: kihirdetés, nem invokáció
+TEREMT-001	1Móz 1:2	mélység	tartalom-alapú	magas	1Móz 1:2	H8415	
+TEREMT-001	1Móz 7:11	a nagy mélység	tartalom-alapú	magas	1Móz 7:11	H8415	
+TEREMT-001	1Móz 8:2	a mélység	tartalom-alapú	magas	1Móz 8:2	H8415	
+TEREMT-001	1Móz 49:25	a mélység	tartalom-alapú	magas	1Móz 49:25	H8415	
+TEREMT-001	2Móz 15:5	a mélységbe	tartalom-alapú	magas	2Móz 15:5	H8415	
+TEREMT-001	2Móz 15:8	a mélységes vizek	tartalom-alapú	magas	2Móz 15:8	H8415	
+TEREMT-001	5Móz 8:7	mély vizeknek	tartalom-alapú	magas	5Móz 8:7	H8415	
+TEREMT-001	5Móz 33:13	mélységes vizekkel	tartalom-alapú	magas	5Móz 33:13	H8415	
+TEREMT-001	Jób 28:14	A mélység	tartalom-alapú	magas	Jób 28:14	H8415	
+TEREMT-001	Jób 38:16	a mélységnek	tartalom-alapú	magas	Jób 38:16	H8415	
+TEREMT-001	Jób 38:30	a mély vizek	tartalom-alapú	magas	Jób 38:30	H8415	
+TEREMT-001	Zsolt 33:7	a hullámokat	tartalom-alapú	közepes	Zsolt 33:7	H8415	Károli az ócárót/tehómót szópárt szabadon adja vissza; a tehóm-szlot nem kap önálló "mélység" szót
+TEREMT-001	Zsolt 36:7	a nagy mélységek	tartalom-alapú	magas	Zsolt 36:7	H8415	
+TEREMT-001	Zsolt 42:8	Örvény örvényt	tartalom-alapú	magas	Zsolt 42:8	H8415	
+TEREMT-001	Zsolt 71:20	a föld mélységéből	tartalom-alapú	magas	Zsolt 71:20	H8415	
+TEREMT-001	Zsolt 77:17	a mélységek	tartalom-alapú	magas	Zsolt 77:17	H8415	
+TEREMT-001	Zsolt 78:15	a mélységes vizekből	tartalom-alapú	magas	Zsolt 78:15	H8415	
+TEREMT-001	Zsolt 104:6	Vízáradattal	tartalom-alapú	közepes	Zsolt 104:6	H8415	nem a szokásos "mélység" visszaadás
+TEREMT-001	Zsolt 106:9	a mélységeken	tartalom-alapú	magas	Zsolt 106:9	H8415	
+TEREMT-001	Zsolt 107:26	a fenékig	tartalom-alapú	közepes	Zsolt 107:26	H8415	nem a szokásos "mélység" visszaadás
+TEREMT-001	Zsolt 135:6	minden mélységben	tartalom-alapú	magas	Zsolt 135:6	H8415	
+TEREMT-001	Zsolt 148:7	mély vizek	tartalom-alapú	magas	Zsolt 148:7	H8415	
+TEREMT-001	Péld 3:20	a mélységből	tartalom-alapú	magas	Péld 3:20	H8415	
+TEREMT-001	Péld 8:24	mélységek	tartalom-alapú	magas	Péld 8:24	H8415	
+TEREMT-001	Péld 8:27	a mélységek	tartalom-alapú	magas	Péld 8:27	H8415	
+TEREMT-001	Péld 8:28	a mélységeknek	tartalom-alapú	magas	Péld 8:28	H8415	
+TEREMT-001	Ézs 51:10	a nagy mélység	tartalom-alapú	magas	Ézs 51:10	H8415	
+TEREMT-001	Ézs 63:13	mélységekben	tartalom-alapú	magas	Ézs 63:13	H8415	
+TEREMT-001	Ez 26:19	a mélység	tartalom-alapú	magas	Ez 26:19	H8415	
+TEREMT-001	Ez 31:4	a mélység	tartalom-alapú	magas	Ez 31:4	H8415	
+TEREMT-001	Ez 31:15	a mélység vizeit	tartalom-alapú	magas	Ez 31:15	H8415	
+TEREMT-001	Ámós 7:4	a nagy mélységet	tartalom-alapú	magas	Ámós 7:4	H8415	
+TEREMT-001	Hab 3:10	a víz-ár	tartalom-alapú	közepes	Hab 3:10	H8415	Károli szabadon adja vissza a "tehóm nátan koló" szerkezetet
+TEREMT-001	Jón 2:6	mély ár	tartalom-alapú	magas	Jón 2:6	H8415	
+TEREMT-001	Lukács 8:31	a mélységbe	tartalom-alapú	magas	Luk 8:31	G0012	
+TEREMT-001	Róma 10:7	a mélységbe	tartalom-alapú	magas	Róm 10:7	G0012	
+TEREMT-001	Jelenések 9:1-2	a mélység kútjának	tartalom-alapú	magas	Jel 9:1	G0012	
+TEREMT-001	Jelenések 9:11	a mélység angyala	tartalom-alapú	magas	Jel 9:11	G0012	
+TEREMT-001	Jelenések 11:7	a mélységből	tartalom-alapú	magas	Jel 11:7	G0012	
+TEREMT-001	Jelenések 17:8	a mélységből	tartalom-alapú	magas	Jel 17:8	G0012	
+TEREMT-001	Jelenések 20:1-3	a mélységnek kulcsa	tartalom-alapú	magas	Jel 20:1	G0012	
+ALVIL-001	Zsolt 16:10	a Seolban	tartalom-alapú	magas	Zsolt 16:10	H7585	
+ALVIL-001	1Móz 37:35	a sírba	tartalom-alapú	magas	1Móz 37:35	H7585	
+ALVIL-001	1Móz 42:38	a koporsóba	tartalom-alapú	magas	1Móz 42:38	H7585	
+ALVIL-001	1Móz 44:29	a koporsóba	tartalom-alapú	magas	1Móz 44:29	H7585	
+ALVIL-001	1Móz 44:31	a koporsóba	tartalom-alapú	magas	1Móz 44:31	H7585	
+ALVIL-001	4Móz 16:30	pokolba	tartalom-alapú	magas	4Móz 16:30	H7585	
+ALVIL-001	4Móz 16:33	a pokolra	tartalom-alapú	magas	4Móz 16:33	H7585	
+ALVIL-001	5Móz 32:22	a Seol fenekéig	tartalom-alapú	magas	5Móz 32:22	H7585	
+ALVIL-001	1Sám 2:6	Sírba	tartalom-alapú	magas	1Sám 2:6	H7585	
+ALVIL-001	2Sám 22:6	A pokol kötelei	tartalom-alapú	magas	2Sám 22:6	H7585	
+ALVIL-001	1Kir 2:6	a koporsóba	tartalom-alapú	magas	1Kir 2:6	H7585	
+ALVIL-001	1Kir 2:9	a koporsóba	tartalom-alapú	magas	1Kir 2:9	H7585	
+ALVIL-001	Jób 7:9	a sírba	tartalom-alapú	magas	Jób 7:9	H7585	
+ALVIL-001	Jób 11:8	az alvilágnál	tartalom-alapú	magas	Jób 11:8	H7585	
+ALVIL-001	Jób 14:13	a holtak országában	tartalom-alapú	magas	Jób 14:13	H7585	
+ALVIL-001	Jób 17:13	A sírnak	tartalom-alapú	magas	Jób 17:13	H7585	
+ALVIL-001	Jób 17:16	a sír üregébe	tartalom-alapú	közepes	Jób 17:16	H7585	a Karoli_1908.tsv Jób 17. fejezete egy verssel eltolva (a versszöveg ott Jób 17:15 alatt áll) — l. Karoli_adatminosegi_anomaliak.tsv
+ALVIL-001	Jób 21:13	a sírba	tartalom-alapú	magas	Jób 21:13	H7585	
+ALVIL-001	Jób 24:19	a pokol	tartalom-alapú	magas	Jób 24:19	H7585	
+ALVIL-001	Jób 26:6	Az alvilág	tartalom-alapú	magas	Jób 26:6	H7585	
+ALVIL-001	Zsolt 6:6	a seolban	tartalom-alapú	magas	Zsolt 6:6	H7585	
+ALVIL-001	Zsolt 9:18	Seolba	tartalom-alapú	magas	Zsolt 9:18	H7585	
+ALVIL-001	Zsolt 18:6	A Seol kötelei	tartalom-alapú	magas	Zsolt 18:6	H7585	
+ALVIL-001	Zsolt 30:4	a Seolból	tartalom-alapú	magas	Zsolt 30:4	H7585	
+ALVIL-001	Zsolt 31:18	a Seolba	tartalom-alapú	magas	Zsolt 31:18	H7585	
+ALVIL-001	Zsolt 49:15	a Seolra	tartalom-alapú	magas	Zsolt 49:15	H7585	a vers kétszer hozza: "a Seolra vettetnek" és "elemészti a Seol"
+ALVIL-001	Zsolt 49:16	a Seol kezéből	tartalom-alapú	magas	Zsolt 49:16	H7585	
+ALVIL-001	Zsolt 55:16	a Seolba	tartalom-alapú	magas	Zsolt 55:16	H7585	
+ALVIL-001	Zsolt 86:13	a mélységes pokolból	tartalom-alapú	magas	Zsolt 86:13	H7585	
+ALVIL-001	Zsolt 88:4	a Seolig	tartalom-alapú	magas	Zsolt 88:4	H7585	
+ALVIL-001	Zsolt 89:49	a Seolnak kezéből	tartalom-alapú	magas	Zsolt 89:49	H7585	
+ALVIL-001	Zsolt 116:3	a pokol szorongattatásai	tartalom-alapú	magas	Zsolt 116:3	H7585	
+ALVIL-001	Zsolt 139:8	a Seolba	tartalom-alapú	magas	Zsolt 139:8	H7585	
+ALVIL-001	Zsolt 141:7	a Seol torkában	tartalom-alapú	magas	Zsolt 141:7	H7585	
+ALVIL-001	Péld 1:12	a sír	tartalom-alapú	magas	Péld 1:12	H7585	
+ALVIL-001	Péld 5:5	a sírba	tartalom-alapú	magas	Péld 5:5	H7585	
+ALVIL-001	Péld 7:27	Sírba vívő út	tartalom-alapú	magas	Péld 7:27	H7585	
+ALVIL-001	Péld 9:18	a pokol mélyébe	tartalom-alapú	magas	Péld 9:18	H7585	
+ALVIL-001	Péld 15:11	A sír	tartalom-alapú	magas	Péld 15:11	H7585	a versben "A sír és a pokol" = seól + abaddón; a H7585 a "sír"
+ALVIL-001	Péld 15:24	a pokoltól	tartalom-alapú	magas	Péld 15:24	H7585	
+ALVIL-001	Péld 23:14	a pokolból	tartalom-alapú	magas	Péld 23:14	H7585	
+ALVIL-001	Péld 27:20	a sír	tartalom-alapú	magas	Péld 27:20	H7585	a versben "a sír és a pokol" = seól + abaddón; a H7585 a "sír"
+ALVIL-001	Péld 30:16	A sír	tartalom-alapú	magas	Péld 30:16	H7585	
+ALVIL-001	Préd 9:10	a Seolban	tartalom-alapú	közepes	Préd 9:10	H7585	a Karoli_1908.tsv Préd 9. fejezete két verssel eltolva (a versszöveg ott Préd 9:12 alatt áll) — l. Karoli_adatminosegi_anomaliak.tsv
+ALVIL-001	Én 8:6	a sír	tartalom-alapú	magas	Én 8:6	H7585	
+ALVIL-001	Ézs 5:14	a sír	tartalom-alapú	magas	Ézs 5:14	H7585	
+ALVIL-001	Ézs 7:11	a mélységben	tartalom-alapú	közepes	Ézs 7:11	H7585	a héber seólá szójáték; Károli nem a Seol-jelentést viszi tovább
+ALVIL-001	Ézs 14:9	a sír	tartalom-alapú	magas	Ézs 14:9	H7585	
+ALVIL-001	Ézs 14:11	a sírba	tartalom-alapú	magas	Ézs 14:11	H7585	
+ALVIL-001	Ézs 14:15	a sírba	tartalom-alapú	magas	Ézs 14:15	H7585	
+ALVIL-001	Ézs 28:15	a sírral	tartalom-alapú	magas	Ézs 28:15	H7585	
+ALVIL-001	Ézs 28:18	a sírral	tartalom-alapú	magas	Ézs 28:18	H7585	
+ALVIL-001	Ézs 38:10	a sír kapuihoz	tartalom-alapú	magas	Ézs 38:10	H7585	
+ALVIL-001	Ézs 38:18	a sír	tartalom-alapú	magas	Ézs 38:18	H7585	
+ALVIL-001	Ézs 57:9	a sírig	tartalom-alapú	magas	Ézs 57:9	H7585	
+ALVIL-001	Ez 31:15	sírba	tartalom-alapú	magas	Ez 31:15	H7585	
+ALVIL-001	Ez 31:16	a sírba	tartalom-alapú	magas	Ez 31:16	H7585	
+ALVIL-001	Ez 31:17	a sírba	tartalom-alapú	magas	Ez 31:17	H7585	
+ALVIL-001	Ez 32:21	a sír közepéből	tartalom-alapú	magas	Ez 32:21	H7585	
+ALVIL-001	Ez 32:27	a sírba	tartalom-alapú	magas	Ez 32:27	H7585	
+ALVIL-001	Hós 13:14	a Seol hatalmából	tartalom-alapú	magas	Hós 13:14	H7585	a vers kétszer hozza: "a Seol hatalmából" és "oh Seol"
+ALVIL-001	Ámós 9:2	a Seolba	tartalom-alapú	magas	Ámós 9:2	H7585	
+ALVIL-001	Hab 2:5	a Seol	tartalom-alapú	magas	Hab 2:5	H7585	
+ALVIL-001	Jón 2:3	a Seol torkából	tartalom-alapú	magas	Jón 2:3	H7585	
+ALVIL-001	ApCsel 2:27	a sírban	tartalom-alapú	magas	ApCsel 2:27	G0086	
+ALVIL-001	ApCsel 2:31	a sírban	tartalom-alapú	magas	ApCsel 2:31	G0086	
+ALVIL-001	Lukács 16:23	a pokolban	tartalom-alapú	magas	Luk 16:23	G0086	
+ALVIL-001	Jelenések 1:18	a pokolnak	tartalom-alapú	magas	Jel 1:18	G0086	
+ALVIL-001	Jelenések 6:8	a pokol	tartalom-alapú	magas	Jel 6:8	G0086	
+ALVIL-001	Jelenések 20:13-14	a pokol	tartalom-alapú	magas	Jel 20:13	G0086	a 20:14 is hozza: "A pokol pedig és a halál"
+ALVIL-001	Lukács 10:15	a pokolig	tartalom-alapú	magas	Luk 10:15	G0086	
+ALVIL-001	Máté 11:23	a pokolig	tartalom-alapú	magas	Mt 11:23	G0086	
+MENNY-001	1Móz 6:2	az Istennek fiai	tartalom-alapú	magas	1Móz 6:2	H1121+H0430	
+MENNY-001	1Móz 6:4	Az óriások	tartalom-alapú	magas	1Móz 6:4	H5303	
+MENNY-001	Jób 1:6	az Istennek fiai	tartalom-alapú	magas	Jób 1:6	H1121+H0430	
+MENNY-001	Jób 2:1	az Istennek fiai	tartalom-alapú	magas	Jób 2:1	H1121+H0430	
+MENNY-001	Jób 38:7	Istennek minden fiai	tartalom-alapú	magas	Jób 38:7	H1121+H0430	
+MENNY-001	4Móz 13:34	óriásokat	tartalom-alapú	magas	4Móz 13:34	H5303	
+MENNY-001	Júd 1:6	örök bilincseken, sötétségben tartotta	kikövetkeztetett	közepes			nem lexikai horgony (referencia:1Énokh 10:4-6) — nincs Strong, ezért join-sor sem keletkezik
+MENNY-001	Júd 1:14-15	Ímé eljött az Úr az ő sok ezer szentjével	kikövetkeztetett	közepes			nem lexikai horgony (idézet:1Énokh 1:9) — nincs Strong, ezért join-sor sem keletkezik
+MENNY-001	2Pét 2:4-5	nem kedvezett	tartalom-alapú	magas	2Pét 2:4	G5339	a gerinc formula-horgony (ouk epheiszato); a TAGNT szerint a hordozó szó G5339 (pheidomai), a 2:5 is hozza ("sem kedvezett")
+ANTROP-001	1Móz 2:7	élő lélekké	tartalom-alapú	magas	1Móz 2:7	H5315+H2416	
+ANTROP-001	1Thessz 5:23	valótok (pneuma); lelketek (pszükhé)	tartalom-alapú	közepes	1Thessz 5:23	G4151+G5590	Károli a pneumát "valótok"-nak adja vissza — a hármas tagolás megmarad, de a pneuma/pszükhé megkülönböztetés elmosódik
+ANTROP-001	Zsid 4:12	szívnek (pszükhé); léleknek (pneuma)	tartalom-alapú	közepes	Zsid 4:12	G4151+G5590	Károli a pszükhét "szív"-nek adja vissza — a görög pszükhész kai pneumatosz sorrend alapján pozicionálisan egyértelmű
+ANTROP-001	1Kor 15:45	élő lélekké (pszükhé); megelevenítő szellemmé (pneuma)	tartalom-alapú	magas	1Kor 15:45	G4151+G5590	az egyetlen hely, ahol Károli a pneumát "szellem"-nek fordítja
+ANTROP-001	Luk 1:46	az én lelkem	tartalom-alapú	magas	Luk 1:46	G5590	
+ANTROP-001	Luk 1:47	az én lelkem	tartalom-alapú	magas	Luk 1:47	G4151	a 46-47. vers párhuzamában Károli mindkét görög szót ugyanazzal a magyar szóval adja vissza
+ANTROP-001	1Kor 2:14	Érzéki (pszükhikosz); Isten Lelkének (pneuma)	tartalom-alapú	közepes	1Kor 2:14	G5591	a versben nem G5590 (pszükhé), hanem a G5591 melléknév áll — l. nyitott tétel
+ANTROP-001	1Kor 2:15	A lelki ember	tartalom-alapú	közepes	1Kor 2:15	G4152	a versben nem G4151 (pneuma), hanem a G4152 melléknév áll — l. nyitott tétel
+HODIT-001	1Móz 14:5	a Refeusokat	tartalom-alapú	magas	1Móz 14:5	H7497	
+HODIT-001	1Móz 15:20	a Refeusokat	tartalom-alapú	magas	1Móz 15:20	H7497	
+HODIT-001	4Móz 13:34	óriásokat	tartalom-alapú	magas	4Móz 13:34	H5303	
+HODIT-001	5Móz 2:11	Óriásoknak	tartalom-alapú	magas	5Móz 2:11	H7497	
+HODIT-001	5Móz 2:20	Óriások földének	tartalom-alapú	magas	5Móz 2:20	H7497	
+HODIT-001	5Móz 3:11	az óriások maradéka	tartalom-alapú	magas	5Móz 3:11	H7497	
+HODIT-001	5Móz 3:13	óriások földének	tartalom-alapú	magas	5Móz 3:13	H7497	
+HODIT-001	Józs 12:4	Refaim maradékai	tartalom-alapú	magas	Józs 12:4	H7497	
+HODIT-001	Józs 13:12	a Refaim maradékai	tartalom-alapú	magas	Józs 13:12	H7497	
+HODIT-001	2Sám 21:16	az óriások maradékából	tartalom-alapú	magas	2Sám 21:16	H7497	
+HODIT-001	2Sám 21:18	az óriások maradékai	tartalom-alapú	magas	2Sám 21:18	H7497	
+HODIT-001	2Sám 21:20	óriástól	tartalom-alapú	magas	2Sám 21:20	H7497	
+HODIT-001	2Sám 21:22	az óriástól	tartalom-alapú	magas	2Sám 21:22	H7497	
+HODIT-001	1Krón 20:4	az óriások nemzetségéből	tartalom-alapú	magas	1Krón 20:4	H7497	
+HODIT-001	1Krón 20:6	óriás fia	tartalom-alapú	magas	1Krón 20:6	H7497	
+HODIT-001	1Krón 20:8	óriásnak	tartalom-alapú	magas	1Krón 20:8	H7497	
+HODIT-001	Jób 26:5	A halottak	tartalom-alapú	magas	Jób 26:5	H7496	
+HODIT-001	Zsolt 88:11	az árnyak	tartalom-alapú	magas	Zsolt 88:11	H7496	
+HODIT-001	Péld 2:18	az élet nélkül valókhoz	tartalom-alapú	magas	Péld 2:18	H7496	
+HODIT-001	Péld 9:18	élet nélkül valók	tartalom-alapú	magas	Péld 9:18	H7496	
+HODIT-001	Péld 21:16	az élet nélkül valók	tartalom-alapú	magas	Péld 21:16	H7496	
+HODIT-001	Ézs 14:9	árnyait	tartalom-alapú	magas	Ézs 14:9	H7496	
+HODIT-001	Ézs 26:14	az árnyak	tartalom-alapú	magas	Ézs 26:14	H7496	
+HODIT-001	Ézs 26:19	az árnyakat	tartalom-alapú	magas	Ézs 26:19	H7496	
+HODIT-001	2Sám 5:18	a Réfaim völgyében	tartalom-alapú	magas	2Sám 5:18	H7497	
+HODIT-001	2Sám 5:22	a Réfaim völgyében	tartalom-alapú	magas	2Sám 5:22	H7497	
+HODIT-001	2Sám 23:13	a Réfaim völgyében	tartalom-alapú	magas	2Sám 23:13	H7497	
+HODIT-001	1Krón 11:15	a Réfaim völgyben	tartalom-alapú	magas	1Krón 11:15	H7497	
+HODIT-001	1Krón 14:9	a Réfaim völgyében	tartalom-alapú	magas	1Krón 14:9	H7497	
+HODIT-001	Ézs 17:5	a Refáim völgyében	tartalom-alapú	magas	Ézs 17:5	H7497	
+HODIT-001	Józs 15:8	a Refaim völgyének	tartalom-alapú	magas	Józs 15:8	H7497	
+HODIT-001	Józs 18:16	a Refaim völgyében	tartalom-alapú	magas	Józs 18:16	H7497	
+HODIT-001	Józs 17:15	Refaimnak földén	tartalom-alapú	magas	Józs 17:15	H7497	

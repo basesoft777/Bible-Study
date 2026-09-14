@@ -1,10 +1,11 @@
 # Megvalósítási napló — F0-F3 fázis
 
-**Készült:** 2026.09.13 (F0-F1) · frissítve 2026.09.14 (F2, F3.0, F3.1, F3.2, F3.3)
+**Készült:** 2026.09.13 (F0-F1) · frissítve 2026.09.14 (F2, F3.0, F3.1, F3.2, F3.3, F3.4)
 **Forrás terv:** `ATALAKITASI_TERV.md.md`, 6. szakasz
 **Fázisok:** F0 — Blokkolók feloldása (8 tétel) · F1 — Séma és belépési pont (6 tétel) ·
 F2 — Lekérdező CLI · F3 — Retroaktív betöltés (F3.0 előfeltétel-ellenőrzés, F3.1 könnyű
-csoport, F3.2 nehéz csoport, F3.3 gate.py első futtatása; F3.4 nyitva)
+csoport, F3.2 nehéz csoport, F3.3 gate.py első futtatása, F3.4 Károli-Strong
+join — mind az öt lépés lefutott)
 **Munkamenet:** Claude Code
 
 ---
@@ -588,7 +589,7 @@ szűretlen metszet, 12 kiszűrt grammatikai Strong, 11 megmaradó gerinc-jelölt
 # IV. rész — F3 fázis (Retroaktív betöltés)
 
 **Készült:** 2026.09.14
-**Forrás terv:** `ATALAKITASI_TERV.md.md` 6. szakasz F3 pontja, a lépéstábla F3.0 sora
+**Forrás terv:** `ATALAKITASI_TERV.md.md` 6. szakasz F3 pontja, a lépéstábla F3.0-F3.4 sorai
 
 ---
 
@@ -861,10 +862,178 @@ rögzíti őket, mert **a gépi megerősítés maga az érték** (eddig ez csak 
 
 ---
 
+### F3.4 — A Károli-Strong join visszamenőleges pótlása ✅
+
+**Készült:** 2026.09.14
+**Forrás terv:** `ATALAKITASI_TERV.md.md` 4.7 pont, a 6. szakasz F3 lépéstáblájának F3.4
+sora, és a 10. szakasz **D24** döntése (a `karoli_szo` minden jelöltnél *megnézendő*, de
+csak a beépített sorokon *őrzendő meg*)
+
+A terv ezt a lépést külön, Opus-menetre különíti el, mert **soronkénti, tartalom-alapú
+ítélet** — a Károli-szóalak hozzárendelése egy Strong-számhoz nem gépesíthető. A gépesített
+rész itt csak az előkészítés (versszöveg-előszedés, könyvnév-normalizálás) és az
+utóellenőrzés; az ítélet mind a 191 sornál egyedi, és auditálhatóan rögzítve van az
+`eszkozok/f3_4_dontesek.tsv`-ben.
+
+**A hatókör a D24 szerint.** A 4.7 két körben határozza meg a pótlást (a 2026.09.10-i négy
+scan minősített találatai; ami a hét lezárt study előfordulás-táblájában szerepel, de a
+join-táblában nem). A D24 ezt a `adat/` rétegre fordítja le: a triplet
+(`karoli_szo` + `azonositas_modja` + `megbizhatosag`) **kötelező minden beépített
+`elofordulasok.tsv`-soron**. A mért kiindulás: a 201 sorból **10-en volt** kitöltve (a már
+meglévő join-táblából örökölve az F3.1-ben), **191-en hiányzott** — ez lett az F3.4
+tényleges köre.
+
+| Motívum | Hiányzó sor | Gerinc-elem |
+|---|---|---|
+| ALVIL-001 | 72 | H7585 (64) + G0086 (8) |
+| TEREMT-001 | 41 | H8415 (34) + G0012 (7) |
+| HODIT-001 | 33 | H7497 (24) + H7496 (8) + H5303 (1) |
+| ISTENTISZT-001 | 21 | H7121+H8034 |
+| MENNY-001 | 9 | H1121+H0430 (4) + H5303 (2) + 3 nem lexikai horgony |
+| ANTROP-001 | 8 | G4151+G5590 (7) + H5315+H2416 (1) |
+| KIRALY-001 | 7 | H3548 (2) + H8004 (1) + G5010 (4) |
+
+**A menet négy lépése.**
+
+1. `eszkozok/f3_4_munkalap_general.py` — minden hiányzó sorhoz kiszedi a Károli-versszöveget
+   (`Karoli_1908.tsv`), vers-tartományt kibontva. **Könyvnév-normalizálás kötelező:** az
+   `elofordulasok.tsv` négy helyen teljes könyvnevet visel (`Jelenések`, `Lukács`, `Máté`,
+   `Róma`), a Károli-tábla rövidet (`Jel`, `Luk`, `Mt`, `Róm`) — normalizálás nélkül 17 sor
+   **néma nem-találatot** adott volna, nem hibát.
+2. `eszkozok/f3_4_nema_nemtalalat.py` — gépi előszűrő: melyik versben **nem** szerepel a
+   Strong egyetlen ismert magyar visszaadása sem. Ez a szűrő fogta meg azt a két esetet,
+   amelyet kézzel ki lehetett volna tölteni rossz szóval (l. alább).
+3. A soronkénti ítélet → `eszkozok/f3_4_dontesek.tsv` (191 sor) és
+   `eszkozok/f3_4_extra_join.tsv` (7 sor: egy igehelyhez több Strong, illetve
+   vers-tartomány további versei).
+4. `eszkozok/f3_4_join_potlas.py` írja mind a három táblát; `eszkozok/f3_4_ellenoriz.py` és
+   `eszkozok/f3_4_zaro_ellenoriz.py` ellenőriz.
+
+**Eredmény.**
+
+| Tábla | Változás |
+|---|---|
+| `adat/elofordulasok.tsv` | 191 sor kapott `karoli_szo` tripletet — **üres már egy sincs** (201/201); 3 sor `strong`-pótlást |
+| `adat/jeloltek.tsv` | 201 `beépítve` sor kapta meg a tripletet (SEMA 2.2: innen öröklődik); 25 elcsúszott sor javítva |
+| `konkordancia/Karoli_Strong_kivonat.tsv` | **227 → 383 sor** (156 új); 161 → 309 egyedi igehely; 156 → 171 egyedi Strong; 25 → 29 forrás-tanulmány |
+
+A megbízhatóság megoszlása a teljes join-táblán: **370 `magas`, 13 `közepes`** (a kiindulás
+222/5 volt). A 13 közepes mindegyike meg van indokolva a `dontesek.tsv` `megjegyzes`
+oszlopában — jellemzően ott, ahol Károli nem a szokásos szóval adja vissza a gyököt
+(Zsolt 33:7 *a hullámokat*, Zsolt 104:6 *Vízáradattal*, Zsolt 107:26 *a fenékig*,
+Hab 3:10 *a víz-ár*, Ézs 12:4 *magasztaljátok az Ő nevét*), vagy ahol a héber maga
+kétértelmű (Ézs 7:11 *a mélységben* — a `שְׁאָלָה` szójáték).
+
+**A feltárt hiány mértéke igazolódott.** A 4.7 mérése szerint a `Hadesz_Seol_tematikus.md`
+mindössze négy sorral szerepelt forrásként, holott a H7585-scan 63 új verset hozott — az
+F3.4 után ez a study **72 join-sort** ad. A 4.7 által név szerint hiányolt hat sor
+(Rafaim H7497: Józs 15:8, 17:15, 18:16; Tehóm H8415: Zsolt 36:7, 77:17, Jón 2:6) és a
+kiemelt Hádész-lelet (Hós 13:14) mind bekerült.
+
+#### Amit a soronkénti ítélet feltárt — négy lelet
+
+Ezek nem melléktermékek: pontosan az a fajta hiba, amit csak a tételes, tartalom-alapú
+végigmenés hoz elő, és amiért a terv külön menetet szánt erre a lépésre.
+
+**(1) Két új Károli-adatminőségi anomália — vers-eltolódás.** A néma-nem-találat szűrő két
+sort emelt ki, mindkettő ugyanabból az összeolvadás-hibaosztályból, amelyre a
+`Karoli_adatminosegi_anomaliak.tsv` hét `JAVITVA` tétele is épült:
+
+- **Jób 17** — a `Karoli_1908.tsv` 17. fejezete 15 verset tartalmaz 16 helyett, mert a
+  `Jób 16:22` sor két verset olvaszt egybe. A szabványos `Jób 17:16` szövege a fájlban
+  `Jób 17:15` alatt áll (*„Leszáll az majd a sír üregébe"*).
+- **Préd 9** — a fejezet **két** verssel el van tolva: a fájl `Préd 9:1` sora a szabványos
+  `Préd 8:16` szövegét hozza, és a szabványos `Préd 9:10` (*„nincs a Seolban"*) a fájlban
+  `Préd 9:12` alatt áll.
+
+Mindkettő felvéve a `konkordancia/Karoli_adatminosegi_anomaliak.tsv`-be
+`AZONOSITVA, NEM JAVITVA` állapottal — a szétbontás MEK-forrás tételes ellenőrzését
+igényli, mint a korábbi javításoknál, és ez az F3.4-en kívül esik. A két érintett join-sor
+a **szabványos** igehely alatt, `közepes` megbízhatósággal került be.
+
+*Amiért ez fontos:* eltolódás esetén a naiv kitöltés nem hibát ad, hanem **rossz szót a
+helyes igehelyhez** — a Préd 9:10-re *„A te ruháid mindenkor legyenek fejérek"* jött volna
+vissza. Ezt nem fegyelem fogta meg, hanem a 2. lépés gépi szűrője.
+
+**(2) Oszlop-eltolódás a `jeloltek.tsv`-ben — az F3.1 betöltő hibája, 25 sor.** A
+`karoli_szo` oszlopba az `elofordulasok.tsv` `jelentes_hu` értéke került, és emiatt minden
+következő mező eggyel odébb csúszott: `azonositas_modja` ← `karoli_szo`,
+`megbizhatosag` ← `azonositas_modja`, `datum` ← `datum` — a `megbizhatosag` értéke pedig
+elveszett. Az eltolás-hipotézis mind a 25 soron tételesen igazolódott (nincs kivétel), így
+a javítás gépi volt. Példa: a `2Móz 19:6` sor `karoli_szo` mezője
+*„egyszerre papok és királyok a nemzetekhez való viszonyukban"* volt *„papok"* helyett.
+
+*Amiért ez F3.4 dolga volt, nem külön köré:* a helyes értéket nem lehet olyan oszlopba
+írni, amelyben rossz adat áll. A séma szerint (SEMA 2.2) az `elofordulasok.karoli_szo`
+**a `jeloltek` azonos kulcsú sorából öröklődik** — az öröklés forrása volt hibás.
+
+**(3) Három Strong-szám a Zsid 7:3-nál — a study saját hivatkozása téves.** A
+`Melkizedek_tematikus.md` táblázata és a kereszthivatkozás-naplója a `G0813/G0282/G0035`
+hármast rendeli az *ἀπάτωρ / ἀμήτωρ / ἀγενεαλόγητος* szavakhoz. A `TAGNT_kivonat.tsv`
+tételes ellenőrzése szerint az *ἀπάτωr* Strong-száma **G0540**, nem G0813 (a G0813 az
+*ἄτακτos*, „rendetlen"), és az `elofordulasok.tsv` `bdb_entry_id` mezője
+(`G5010+G0813+G0282`) a G0035-öt egyáltalán nem tartalmazza. A join-táblába ezért a TAGNT
+által megerősített hármas került (`Heb.7.3`: G0540 *Apa nélkül*, G0282 *anya nélkül*,
+G0035 *nemzetség nélkül való*), a study saját hivatkozása viszont **változatlan maradt** —
+javítása tartalmi döntés, nem a join dolga (l. Nyitva maradt tételek).
+
+**(4) A `G4151+G5590` gerinc-elem két ANTROP-001 sornál nem a versben álló szót nevezi
+meg.** Az 1Kor 2:14-ben nem a `G5590` (*ψυχή*) áll, hanem a `G5591` melléknév
+(*ψυχικός*, Károli: *„Érzéki"*), a 2:15-ben pedig nem a `G4151`, hanem a `G4152`
+(*πνευματικός*, Károli: *„A lelki ember"*). A join-sor a ténylegesen a versben álló
+Strong-számot kapta.
+
+*Két további, tartalmilag beszédes lelet ugyanebből a csoportból* — ezek nem hibák, hanem
+a Pneuma/pszükhé-study saját tézisét erősítő adatok, amelyek eddig nem voltak
+adat-szinten rögzítve: a **Zsid 4:12**-ben Károli a `ψυχή`-t *„szív"*-nek adja vissza
+(*„a szívnek és léleknek"*), az **1Thessz 5:23**-ban a `πνεῦμα`-t *„valótok"*-nak — az
+**1Kor 15:45** viszont **az egyetlen hely, ahol Károli a `πνεῦμα`-t *„szellem"*-nek
+fordítja**. A Luk 1:46-47 párhuzamában pedig mindkét görög szó ugyanazt a magyar
+*„az én lelkem"* alakot kapja.
+
+#### Két szerkezeti döntés, amelyet a lépés meghozott
+
+**A nem lexikai horgonyú sorok.** Három MENNY-001 sor horgonya nem Strong-szám
+(`referencia:1Énokh 10:4-6`, `idézet:1Énokh 1:9`, `formula:οὐκ ἐφείσατο`). A D24 szerint a
+`karoli_szo` a beépített sorokon kötelező, a join-tábla viszont Strong-kulcsú. A megoldás
+soronként külön:
+
+- **2Pét 2:4-5** — a formula-horgony *mögött* van Strong: a TAGNT szerint az
+  *οὐκ ἐφείσατο* hordozó szava a **G5339** (*φείδομαι*). Károli: *„nem kedvezett"* (2:4),
+  *„sem kedvezett"* (2:5). Ez tehát **rendes join-sort kapott**, `magas` megbízhatósággal.
+- **Júd 1:6 és Júd 1:14-15** — itt nincs szó-szintű megfelelés, csak a horgonyt hordozó
+  mondat. A `karoli_szo` ezért a mondatot kapta, `azonositas_modja=kikövetkeztetett`,
+  `megbizhatosag=közepes`, és **join-sor nem keletkezett**. A D24 így teljesül (az ítélet
+  megszületett és rögzült), a join-tábla Strong-kulcsú szerkezete pedig sértetlen marad.
+
+**Három `strong` nélküli KIRALY-001 sor pótolva.** A Zsid 5:6, 5:10 és 6:20 `gerinc_elem`-e
+`G5010` volt, a `strong` oszlop viszont üres — ez az F3.3 zárásának 3. nyitott tétele. A
+pótlás nem új állítás, csak átemelés a már kitöltött mezőből, és **az F3.4-nek szüksége
+volt rá**: Strong nélkül nincs join-sor. A másik három `strong` nélküli sor (a fenti
+MENNY-001 hármas) helyesen maradt üres.
+
+#### Ellenőrzés
+
+Az `eszkozok/f3_4_ellenoriz.py` a döntés-táblát ellenőrzi (fedi-e pontosan a 191 hiányzó
+sort, duplikátum nélkül; és a megadott `karoli_szo` ténylegesen szerepel-e a hivatkozott
+Károli-versben, a két ismert eltolódást figyelembe véve) — **0 eltérés**. Az
+`eszkozok/f3_4_zaro_ellenoriz.py` a három tábla utólagos integritását nézi: nincs üres
+`karoli_szo` a beépített sorokon, nincs triplet-töredék, nincs duplikált join-kulcs, minden
+új igehely szabályos STEPBible-alakú, a `jeloltek` és az `elofordulasok` `karoli_szo`
+mezője **mind a 201 soron egyezik**.
+
+A záró ellenőrzés egyetlen hiba-osztályt jelez, és az **nem az F3.4 sorain van**: 26 régi
+join-sor (mind a 182. sor előtt, korábbi genezisi tanulmányokból) nem nullázott
+Strong-számot visel (`H430`, `H779`, `H8414+H922`…), ami sérti a SEMA 1.2-t. Változatlanul
+hagyva — l. Nyitva maradt tételek.
+
+---
+
 ## Nyitva maradt tételek
 
-1. **F3.4 még nem indult el.** A Károli-Strong join visszamenőleges pótlása (Opus, saját
-   menet) külön menetre vár.
+1. ⏹ **LEZÁRVA (F3.4, 2026.09.14).** A Károli-Strong join visszamenőleges pótlása lefutott:
+   191 sor kapott `karoli_szo` tripletet, a join-tábla 227 → 383 sorra nőtt. Az F3 mind az
+   öt lépése megvan.
 2. **A `gate.py` csak a betöltött hét ID-t látta, nem mind a 14-et.** A további hét ID
    (HAMART-001, ANTROP-002, ANTROP-003, ANTROP-004, ISTENTISZT-002, SZOVETS-001,
    TEREMT-002) nincs betöltve az `adat/` táblákba — ebből négy még meg sincs írva
@@ -890,18 +1059,59 @@ rögzíti őket, mert **a gépi megerősítés maga az érték** (eddig ez csak 
    *különböző* igehelyet feltételez, egy versen belüli kontrasztot (Baál neve vs. YHVH neve,
    ugyanabban a 1Kir 18:24 versben) nem tud natívan ábrázolni. Nyitott kérdés marad a
    `Bibliai_Motivumlexikon_tervezesi_naplo.md` KAPCSOLATOK-fejezete felé.
-7. **A Károli-join (`karoli_szo`) csak a már meglévő `Karoli_Strong_kivonat.tsv`-sorokból
-   öröklődött** (2Móz 19:6, Zak 6:13 a KIRALY-001-nél; Zak 13:9, Róm 10:14, 1Kor 1:2,
-   2Tim 2:22, 1Pét 1:17, ApCsel 9:14/9:21/22:16 az ISTENTISZT-001-nél; az F3.2 öt új ID-jénél
-   egyáltalán nem futott, l. F3.4) — a mező a legtöbb sornál szándékosan üresen maradt. Ez
-   nem hiba: a terv a teljes visszamenőleges Károli-join pótlást explicit külön, Opus-menetre
-   (F3.4) különíti el, mert soronkénti tartalom-alapú ítéletet igényel, nem gépesíthető.
+7. ⏹ **LEZÁRVA (F3.4, 2026.09.14).** A `karoli_szo` korábban csak a már meglévő
+   join-sorokból öröklődött (10 sor); az F3.4 után mind a 201 beépített `elofordulasok`-sor
+   ki van töltve. A `NYITOTT_FELADATOK.md` „három KIRALY-001 sor `strong` nélkül" tétele
+   szintén lezárva: a `G5010` átemelve a `gerinc_elem`-ből, mert Strong nélkül nincs
+   join-sor.
 8. **A `motivumok.tsv` `sablon_verzio` mezője a study fejlécének saját állítását kapta**
    mind a hét ID-nél, nem egy frissen lefuttatott F5-ös megfelelőségi kör eredményét (az F5
    még nem történt meg). Ha az F5 sablon-frissítés (a terv 123. sorának javítása)
    megtörténik, ez a mező felülvizsgálandó.
 9. **A Jób 40-41 STEPBible-forrásfájl tételes ellenőrzése** (a feltételezett héber/angol
    versszámozási eltolódás hipotézise) továbbra sem történt meg — ugyanaz a nyitott tétel,
-   mint az F2.0 zárásakor.
+   mint az F2.0 zárásakor. **Az F3.4 két új eltolódást talált a Károli-oldalon** (Jób 17,
+   Préd 9, l. 10. tétel); a kettő független — az egyik a STEPBible-forrás, a másik a
+   `Karoli_1908.tsv` hibája —, de ugyanazt a tanulságot hordozzák.
+
+**Az F3.4-ben felmerült új tételek (2026.09.14):**
+
+10. **A `Karoli_1908.tsv` két azonosított, de nem javított vers-eltolódása.** `Jób 17` (egy
+    verssel) és `Préd 9` (két verssel) — mindkettő felvéve a
+    `konkordancia/Karoli_adatminosegi_anomaliak.tsv`-be `AZONOSITVA, NEM JAVITVA`
+    állapottal. A szétbontás MEK-forrás tételes ellenőrzését igényli, mint a korábbi hét
+    javított tételnél. **Amíg nincs javítva, minden `Jób 17:*` és `Préd 9:*` hivatkozás
+    néma nem-találatot vagy rossz verset ad a Károli-táblán.** A két érintett join-sor
+    `közepes` megbízhatósággal került be. *Érdemes megnézni, hány további fejezet érintett:
+    az `eszkozok/f3_4_nema_nemtalalat.py` mintája (Strong → ismert magyar visszaadások)
+    általánosítható a teljes join-táblára.*
+11. **A `Melkizedek_tematikus.md` Zsid 7:3-as Strong-hármasa téves, javítása nyitva.** A
+    study táblázata és kereszthivatkozás-naplója `G0813`-at ír *ἀπάτωρ*-ra; a
+    `TAGNT_kivonat.tsv` szerint az helyesen **G0540** (a G0813 az *ἄτακτος*). Az
+    `elofordulasok.tsv` `bdb_entry_id` mezője (`G5010+G0813+G0282`) ráadásul a `G0035`-öt
+    sem tartalmazza. A join-táblába a TAGNT-igazolt hármas került; **a study és az
+    `elofordulasok` sor javítása tartalmi döntés, emberi megerősítést kér.**
+12. **Az `elofordulasok.tsv` `G4151+G5590` gerinc-eleme két ANTROP-001 sornál pontatlan.**
+    Az 1Kor 2:14-ben `G5591` (*ψυχικός*), a 2:15-ben `G4152` (*πνευματικός*) áll — nem a
+    főnevek. A join-sorok a versben ténylegesen álló Strong-számot viselik, a `gerinc_elem`
+    viszont változatlan maradt. Döntendő: a gerinc-elem a motívum *magját* nevezi-e meg
+    (akkor helyes így), vagy a soron ténylegesen álló szót (akkor javítandó).
+13. **26 régi join-sor nem nullázott Strong-számot visel** (`H430`, `H779`, `H8414+H922`…),
+    ami sérti a `SEMA.md` 1.2-t („a nullázás kötelező — `H779` nem érvényes érték, mert a
+    datasetek rendezése így rendezi"). Mind a 26 korábbi genezisi tanulmányokból való,
+    egyik sem F3.4-es sor. A javítás mechanikus, de más tanulmányok sorait érinti, és egy
+    esetleges `grep H779` hívást elnémítana — ezért **nem az F3.4 végezte el**.
+14. **A 3 `elutasítva` és 17 `nyitva` jelölt-sor `karoli_szo` mezője üres.** Ez a D24
+    szerint megengedett (a mező csak a beépített sorokon kötelező), és a 4.7 hatókörén is
+    kívül esik (az a ténylegesen feldolgozott igehelyekre szól). A D24 első fele viszont
+    azt mondja, hogy a Károli-szót **minden** jelöltnél meg kell nézni, mert az ítélethez
+    kell — ezeknél a soroknál ez nem történt meg, mert maga az ítélet nyitott.
+    Felülvizsgálandó, amikor a 20 sor minősítése megtörténik.
+15. **A `kikövetkeztetett` azonosítási mód első két használata felülvizsgálatra ajánlott.**
+    A Júd 1:6 és Júd 1:14-15 sor `karoli_szo` mezője nem szóalak, hanem a horgonyt hordozó
+    mondat — ez a mező eredeti jelentésének (*„a Károli-szóalak ezen a helyen"*) tágítása.
+    Alternatíva volna egy külön mező vagy a mező üresen hagyása; a jelenlegi megoldás a D24
+    „minden beépített soron kötelező" felét tartja, a `közepes` megbízhatóság és a
+    `kikövetkeztetett` mód pedig greppelhetővé teszi mindkét sort.
 
 ---
