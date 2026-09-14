@@ -123,8 +123,9 @@ Az üzenet **mindig UTF-8 fájlból megy, soha nem inline `-m`-mel**:
 git -c i18n.commitEncoding=UTF-8 commit -F commit_uzenet.txt
 ```
 
-Ok: a Windows-konzol `cp1250` kódlapja az inline `-m` ékezeteit elnyeli. Az ékezetlen
-üzenet nem kozmetikai hiba — kiüti a `GitHub_feltoltesi_workflow.md`-ben rögzített célt,
-a `git log --grep` tartalmi kereshetőségét: a `--grep="betöltés"` nem találja meg a
-„betoltes"-t. Dokumentált eset: az F3.0-F3.3 három commitja így készült, és utólag
-rebase-szel kellett javítani.
+Két ok. Egy: a Windows-konzol `cp1250` kódlapja az inline `-m` ékezeteit elnyelheti —
+ugyanaz a kockázat, amit a fenti shell-szakasz a szkriptekre rögzít. Kettő, és ez a
+fontosabb: a fájlba írt üzenet szem előtt van íráskor, tehát az ékezetek kitétele nem
+múlik a gépelési kényelmen. Az ékezetlen üzenet ugyanis nem kozmetikai kérdés — kiüti a
+`GitHub_feltoltesi_workflow.md`-ben rögzített célt, a `git log --grep` tartalmi
+kereshetőségét: a `--grep="betöltés"` nem találja meg a „betoltes"-t.
