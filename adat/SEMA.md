@@ -483,12 +483,19 @@ ellenőrzés tárgyai.
 
 ## 4. Amit ez a séma nem old meg
 
-- **A `TAHOT_kivonat.tsv` lefedettségi rése.** A `TAHOT_TAGNT_README.md` „39 könyv, teljes
-  ÓSZ"-t állít, de hiányzik legalább 1Móz 32 teljes fejezete, Zsolt 88/89/140/142 (150-ből
-  88 zsoltárfejezet van jelen) és Jóel 3. Ez **minden** „teljes körű scan" állítás
-  megbízhatóságát érinti, tehát a `PROVENIENCIA` `scope=OT-full` értékét is. Az F2 első
-  lépése a tételes felmérés; addig a `scope=OT-full` **a kivonat teljességét jelenti, nem
-  a kánonét**.
+- **A `TAHOT_kivonat.tsv` lefedettségi rése — F2-ben tételesen felmérve (2026.09.14).**
+  A korábban itt és a `NYITOTT_FELADATOK.md`-ben rögzített tétel (1Móz 32, Zsolt
+  88/89/140/142, Jóel 3 hiánya) **elavultnak bizonyult**: mind a hat fejezet teljes
+  egészében jelen van — ezt a `TAHOT_TAGNT_README.md` már korábban dokumentálta pótlásként,
+  csak ez a két fájl nem lett frissítve utána. A tételes, mind a 39 könyvre kiterjedő
+  fejezet- és versszintű ellenőrzés (`eszkozok/tahot_lefedettseg_ellenoriz.py`) helyette egy
+  **korábban nem dokumentált** hiányt talált: **Jób 40:1-5 és a teljes Jób 41. fejezet
+  hiányzik** — valószínűleg a Jób könyvének 40-41. fejezeteinél ismert héber/angol
+  versszámozási eltolódás miatt, ez a forrás STEPBible-fájlból tételesen még
+  ellenőrizendő (l. `TAHOT_TAGNT_README.md`). **A `scope` proveniencia-értéke ettől
+  függetlenül `TAHOT-teljes` marad, nem `OT-full`** — ez a kivonat egészére vonatkozó,
+  nem a kánon teljességét állító címke, és az `eszkozok/lekerdez.py` minden parancsa
+  ezt írja ki.
 - **A `kapcsolatok.tipus` és a pilot-TSV „Típus" oszlopának névütközése** (l. 2.3).
 - **Az SDBH/SDGNT hiánya** (l. 2.6) — az F2 `domen` parancsának előfeltétele.
 - **A `keretszo` lista teljessége.** 34 tétel, gyakoriság alapján válogatva. Nem állítjuk,

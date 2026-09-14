@@ -316,6 +316,19 @@ Lefedettség: TAHOT — 39 ószövetségi könyv, ~23 000 egyedi igehely (a kor�
 az újonnan bekerült, korábban hiányzó igehelyek, pl. Gen 32, Zsolt 88/89/90/140/142,
 Jóel 3); TAGNT — 27 újszövetségi könyv, 7 948 egyedi igehely.
 
+**Tételes fejezet-szintű felmérés (F2, 2026.09.14, `eszkozok/tahot_lefedettseg_ellenoriz.py`):**
+a korábban (`NYITOTT_FELADATOK.md`) nyitva hagyott hiány — Gen 32, Zsolt 88/89/140/142,
+Jóel 3 — **nem áll fenn**: mind a hat fejezet teljes egészében jelen van a kivonatban,
+ezt a fenti bekezdés már dokumentálta. Az újbóli, mind a 39 könyvre kiterjedő ellenőrzés
+viszont egy eddig **nem dokumentált** hiányt talált: **Jób 40:1-5 és a teljes Jób 41.
+fejezet hiányzik.** Ez feltehetően a Jób könyvének Héber/magyar (MT/Károli) és angol
+versszámozása közti, a 40-41. fejezetnél jól ismert eltolódásból ered (az angol
+40:1-24 egy része a héber count szerint már a 39. fejezet vége, illetve az angol 41.
+fejezet a héber count szerint a 40. fejezet folytatása) — ezt a hipotézist a forrás
+STEPBible-fájlban (`TAHOT Job-Sng...txt`) kell tételesen ellenőrizni, ez **nyitva marad**.
+A `scope=TAHOT-teljes` proveniencia-címke ettől függetlenül helytálló (a kivonat
+egészére vonatkozik, nem a kánon teljességére) — l. `adat/SEMA.md` 1.5 és 4.
+
 ## Validáció
 
 A döntési fájl 2. szakaszában és a feladat-referenciában rögzített három ellenőrző eset

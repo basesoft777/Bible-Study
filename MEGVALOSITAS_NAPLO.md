@@ -1,8 +1,9 @@
-# Megvalósítási napló — F0-F1 fázis
+# Megvalósítási napló — F0-F2 fázis
 
-**Készült:** 2026.09.13
+**Készült:** 2026.09.13 (F0-F1) · frissítve 2026.09.14 (F2)
 **Forrás terv:** `ATALAKITASI_TERV.md.md`, 6. szakasz
-**Fázisok:** F0 — Blokkolók feloldása (8 tétel) · F1 — Séma és belépési pont (6 tétel)
+**Fázisok:** F0 — Blokkolók feloldása (8 tétel) · F1 — Séma és belépési pont (6 tétel) ·
+F2 — Lekérdező CLI
 **Munkamenet:** Claude Code
 
 ---
@@ -468,3 +469,114 @@ Amit az F1 **felszínre hozott**, és a következő fázisoké:
 **A `main` továbbra sincs push-olva** az `origin`-ra. A terv F0-szakasza ezt kifejezetten
 ellenőrizendőként jelöli, mert **az F3 retroaktív betöltés a `main` állapotából indul** —
 ha a távoli ág a hivatkozási pont, a push az F3 előfeltétele.
+
+---
+
+# III. rész — F2 fázis (Lekérdező CLI)
+
+**Készült:** 2026.09.14
+**Forrás terv:** `ATALAKITASI_TERV.md.md` 6. szakasz F2 pontja, 2. pont (eszközréteg), 4.1 (hétlépéses menet)
+
+---
+
+## Elkészült tételek
+
+### F2.0 — A TAHOT_kivonat.tsv lefedettségének tételes felmérése ✅
+
+A terv előírja, hogy ez legyen az F2 első, a CLI-től független lépése. Elkészült
+`eszkozok/tahot_lefedettseg_ellenoriz.py`: mind a 39 ószövetségi könyvre, fejezet- és
+versszinten ellenőrzi a kivonatot a kánoni fejezetszámok ellen.
+
+**Eredmény — a korábbi tétel elavultnak bizonyult, egy másik, eddig dokumentálatlan hiány
+került elő helyette:**
+
+- A `NYITOTT_FELADATOK.md`-ben és a `SEMA.md`-ben rögzített hiány (1Móz 32, Zsolt
+  88/89/140/142, Jóel 3) **nem áll fenn** — mind a hat fejezet teljes egészében jelen van.
+  Ezt a `TAHOT_TAGNT_README.md` már korábban dokumentálta pótlásként (2026.08.24 utáni
+  frissítés), csak a `SEMA.md` és a `NYITOTT_FELADATOK.md` nem lett ezután frissítve —
+  ugyanaz a hibaosztály, mint az F1.6-ban talált elavult tételek.
+- **Új, eddig nem dokumentált hiány: Jób 40:1-5 és a teljes Jób 41. fejezet hiányzik**
+  a kivonatból (0 sor). Valószínű ok: a Jób könyve 40-41. fejezeteinél ismert héber/angol
+  versszámozási eltolódás — ezt a forrás STEPBible-fájlban tételesen még ellenőrizni kell,
+  ez **nyitva marad**.
+- Mindhárom érintett fájl frissítve: `konkordancia/TAHOT_TAGNT_README.md` (a lefedettségi
+  bekezdés kiegészítve), `adat/SEMA.md` 4. pont, `NYITOTT_FELADATOK.md` (a tétel `⏹ JAVÍTVA`
+  jelöléssel lezárva, az új Jób-hiány rögzítve).
+- **Következmény a proveniencia-mezőre:** a `scope` értéke minden `lekerdez.py`-kimenetben
+  `TAHOT-teljes` / `TAGNT-teljes` (soha nem `OT-full` / `NT-full`) — ez a terv 9. pontjának
+  kockázat-táblázata és a `SEMA.md` 1.5 pontja szerinti, tudatosan konzervatív címke: a
+  kivonat egészére vonatkozik, nem a kánon teljességére. Mivel a mérés szerint a kivonat a
+  Jób 41. fejezet kivételével valóban teljes, ez a megkülönböztetés a gyakorlatban ma csak
+  egyetlen könyvet érint — de a címke marad, mert a garancia nem esetenkénti, hanem elvi.
+
+### F2.1-F2.7 — `eszkozok/lekerdez.py`, hét működő parancs ✅
+
+A terv 2. pontja nyolc parancsot ír elő; hét elkészült és tesztelt, a nyolcadik (`domen`)
+a hiányzó SDBH-import miatt csak a hiány jelzéséig jutott (l. Nyitva maradt tételek).
+
+| Parancs | Lépés | Mit csinál |
+|---|---|---|
+| `gerinc <szakasz> <szakasz> ...` | 1. | N igehely-tartomány közös Strong-halmaza, `grammatikai_strongok.tsv` szűréssel |
+| `scan <strong>` | 3. | teljes TAHOT- vagy TAGNT-scan egy Strong-számra, opcionális `--szakasz` szűkítéssel |
+| `kollokacio <strong_a> <strong_b>` | 4. | két Strong együttes előfordulása egy versen belül |
+| `igealak <strong>` | 5. | egy Strong minden ragozott alakja, kiejtéssel és glosszal — a binyan-döntés emberi marad |
+| `lxx-hid <igehely>` | 6. | egy ÓSZ-igehely LXX-görög szavai + azok ÚSZ-előfordulásai (híd-jelöltek) |
+| `tsk <igehely>` | A5 | TSK-kereszthivatkozások, Votes szerint csökkenő sorrendben |
+| `karoli <igehely>` | A5 | Károli 1908-szöveg + Károli-KH kereszthivatkozások (4.7 — `karoli_szo` hozzárendeléshez) |
+
+Minden parancs az utolsó sorban szó szerint másolható `proveniencia:`-sort ír ki
+(`adat/SEMA.md` 1.5 formátuma szerint).
+
+**Igehely-normalizálás** (`parse_igehely`, `to_step`) — a terv szerint az F2 kötelezettsége:
+mindkét irányban kezeli a magyar kanonikus alakot (`1Móz 3:16`) és a STEPBible-alakot
+(`Gen.3.16`), a `konkordancia/Konyv_normalizalo_tabla.tsv` alapján. Enélkül a `karoli` és a
+`tsk` parancs néma nem-találatot adott volna a STEPBible-natív datasetek felé (ez a kockázat
+konkrétan a `Karoli_kereszthivatkozasok.tsv`-t érinti, amely `Gen.1.1` alakban tárolja a
+kulcsot).
+
+### F2.8 — Elfogadási teszt, mindhárom próba ✅ (a harmadik korlátozottan)
+
+A terv F2 szakasza három elfogadási próbát ír elő:
+
+1. **`scan H6093`** (itzávón) → `1Móz 3:16`, `1Móz 3:17`, `1Móz 5:29` — **egyezik** a terv
+   3 igehelyes elvárásával.
+2. **`kollokacio H4390 H2555`** (málé + chámász) → **8 vers**, **`kollokacio H8085 H2555`**
+   (sámá + chámász) → **4 vers** — mindkettő **pontosan egyezik** a terv elvárt
+   számaival, és a versek listája is egyezik a HAMART-001 study alapjával (1Móz 6:11,
+   6:13, Ez 7:23/8:17/28:16, Mik 6:12, Sof 1:9, Zsolt 74:20, illetve Hab 1:2, Jer 6:7/51:46,
+   Ézs 60:18).
+3. **`domen H0779` (arar) / `domen H7043` (kalal)** → **nem futtatható**, mert az SDBH
+   import nem történt meg (`adat/datasetek.tsv`: `allapot=hianyzik`). A parancs ezt
+   explicit jelzi (kilépési kód 2, hivatkozással a `NYITOTT_FELADATOK.md`-re), **nem
+   fabrikál helyettesítő eredményt** — ez szándékos, a terv 4.4/1 elve szerint ("az üres
+   eredmény elfogadható kimenet").
+
+**Kalibrációs melléktermék, nem a hivatalos elfogadási teszt része, de megerősítő jel:**
+a `gerinc "1Móz 3" "1Móz 4" "1Móz 6:1-8" "1Móz 6:9-22"` a HAMART-001 esetre **pontosan**
+a `SEMA.md` 2.7.6 pontjában rögzített számokat és Strong-listát reprodukálja: 23 elemű
+szűretlen metszet, 12 kiszűrt grammatikai Strong, 11 megmaradó gerinc-jelölt
+(`H0127, H0430, H0559, H0802, H1121, H1961, H3205, H3605, H3947, H6213, H6440`).
+
+---
+
+## Nyitva maradt tételek
+
+1. **`domen` parancs — blokkolva az SDBH/SDGNT importon.** A parancs váza és a
+   `datasetek.tsv`-re támaszkodó előfeltétel-ellenőrzés elkészült, de a tényleges
+   domén-lekérdezés (StrongCodes join) csak az import után írható meg. Ez a terv 4.3 és a
+   `NYITOTT_FELADATOK.md` már korábban rögzített nyitott tétele — az F2 ezen nem lép túl.
+2. **Jób 40:1-5 / Jób 41 hiánya a TAHOT_kivonat.tsv-ben** — l. F2.0. A forrás STEPBible-fájl
+   tételes ellenőrzése (hipotézis: héber/angol versszámozási eltolódás a 40-41. fejezetnél)
+   nem történt meg ebben a menetben.
+3. **`igealak` parancs csak adatot szolgáltat, ítéletet nem** — ez szándékos (a terv szerint
+   a binyan-csoportosítás emberi döntés), de következmény: a parancs önmagában nem "teszi
+   gépesítetté" az 5. lépést a szó szoros értelmében, csak a nyers adathoz jutást gyorsítja.
+4. **`ellenoriz.py` és `gate.py` még nem készült el** — a terv 2. pontja szerint ezek külön
+   eszközök (audit-subagent / hook), nem az F2 hatóköre; a `lekerdez.py`-nak nincs saját
+   validáló rétege azon túl, amit a parancsok kimenete magától nyújt.
+5. **A `lxx-hid` parancs nem szűri a Strong-tiltólistát vagy a grammatikai listát** — szándékosan,
+   mert a lépés célja a teljes LXX-szókészlet megmutatása egy adott versre, nem egy gerinc-
+   metszet. Ha ez gyakorlatban túl zajos, az F5/F6 tapasztalatai alapján érdemes lehet egy
+   `--csak-tartalmi` kapcsolót hozzáadni.
+6. **A `main` push-a az `origin`-ra továbbra sincs meghatározva** — ugyanaz a nyitott tétel,
+   mint az F1 zárásakor (l. II. rész vége).
