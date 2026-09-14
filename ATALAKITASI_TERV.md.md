@@ -1,6 +1,7 @@
 # PaRDeS rendszer — átalakítási terv
 
-**Verzió:** v6 — 2026.09.13
+**Verzió:** v7 — 2026.09.14
+**v7 (v6-hoz képest):** az F3 öt nevesített lépésre bontva (F3.0-F3.4), lépésenkénti modellhozzárendeléssel — F3.0-F3.3 Sonnet, F3.4 (Károli-Strong join) saját menet Opuson; a 9. pont TAHOT-kockázati sora a lefutott F2.0 felmérés eredményére frissítve (a feltételezett hiányok megvannak, a tényleges hiány Jób 40:1-5 és Jób 41); D22-D23 és N13
 **v2 (v1-hez képest):** a végrehajtási felület rögzítve (Claude Code), az 5. pont szereposztása subagent-topológiára írva, a 4.4 tanítói menet subagentté alakítva, a 11.3 átírva (kötegelt előkészítés, nem kötegelt menet), a 8.4 cache-állítása pontosítva, új 8.6 és 8.7 alszakasz
 **v6 (v5-höz képest):** új 4.7 — Károli-Strong join (kumulatív elv rögzítve, a 09.10-i hiány oka feltárva, visszamenőleges pótlás az F3-ba), `karoli_szo` + `azonositas_modja` + `megbizhatosag` mezők a `jeloltek.tsv`-be és az `elofordulasok.tsv`-be, a `Karoli_Strong_kivonat.tsv` generált nézetté válik, D19-D21 és N12
 **v5 (v4-hez képest):** új dataset — SDBH (UBS, CC BY-SA 4.0) a héber szemantikai doménekhez, `domen` parancs a `lekerdez.py`-ba, a 4.3 mátrix javítva (a SECE_H nem tartalmaz domént), az F2 elfogadási tesztje háromlépcsős
@@ -423,8 +424,20 @@ Két csoport, eltérő nehézséggel:
 
 - **A 4.6 gate visszamenőleges alkalmazása** a 14 meglévő ID-re (azonosság-típus, negatív kritérium, fölérendelt fogalom kitöltése). Külön körben ez drága volna; a betöltésnél a mezőket amúgy is ki kell tölteni.
 - **A háromértékű státusz bevezetése.** Ha itt még „LEZÁRVA"-t írunk, a rossz szemantika bebetonozódik a sémába.
-- **A Károli-Strong join visszamenőleges pótlása** a 4.7 szerinti körben. Tartalom-alapú ítélet soronként, tehát nem gépesíthető — valószínűleg saját menetet kíván az F3-on belül, Opuson.
+- **A Károli-Strong join visszamenőleges pótlása** a 4.7 szerinti körben. Tartalom-alapú ítélet soronként, tehát nem gépesíthető — saját menetet kíván az F3-on belül, Opuson (l. F3.4).
 - **A `gate.py` első futtatása** ütközés- és részhalmaz-jelentésre — ez lesz az első alkalom, hogy a motívum-határok gépileg ellenőrizhetők.
+
+**Lépések és modellválasztás.** A D11 szerint a modellválasztás fázis-szintű, menet közbeni `/model`-váltás nélkül. Az F3 ezért nem egyetlen menet: a gépesíthető rétege végig **Sonneten** fut, és egyetlen lépés lóg ki ebből — az F3.4 —, ezért az kap külön menetet **Opuson**. A lépéshatárok egyben a kötelező emberi megállási pontok: a betöltés piszkozatot termel, tehát a következő lépés csak az előző validálása után indulhat.
+
+| Lépés | Tartalom | Modell |
+|---|---|---|
+| **F3.0** | **Előfeltétel-ellenőrzés.** Az F2.0 felmérés által feltárt TAHOT-hiány (Jób 40:1-5 és a teljes Jób 41) érint-e bármely betöltendő igehelyet. Ha igen: explicit hiányként jelölendő — gyenge vagy asszociatív anyaggal kitölteni tilos (3. alapszabály). | Sonnet |
+| **F3.1** | **Könnyű csoport:** Melkizedek, Segítségül hívni, + az ISTENTISZT-001 study↔lexikon egyesítés (29 = 29). Vele egy menetben a 4.6 gate visszamenőleges alkalmazása az érintett ID-kre és a háromértékű státusz bevezetése. | Sonnet |
+| **F3.2** | **Nehéz csoport:** Tehóm, Hádész/Seól, Isten fiai/Nefilim, Pneuma/pszükhé, Rafaim — visszakeresés a `TAHOT_kivonat.tsv`-ből, szkripttel (`eszkozok/`), nem kézzel. A lefedettségi hiányból eredő néma nem-találat külön kategóriaként jelentendő, nem keverhető a valódi nem-találattal. Könyvnév-normalizálás kötelező. | Sonnet |
+| **F3.3** | **A `gate.py` első futtatása** a 14 meglévő ID-n, ütközés- és részhalmaz-jelentésre. A jelentés kimenet, nem döntés. | Sonnet |
+| **F3.4** | **A Károli-Strong join visszamenőleges pótlása** (4.7). Soronkénti tartalom-alapú ítélet — **saját menet**. | **Opus** |
+
+A háromértékű státusz bevezetése az F3.1-be tartozik és nem halasztható: ha a könnyű csoport még „LEZÁRVA"-t ír, a rossz szemantika bekerül a sémába, és az F3.2-F3.4 már arra épül.
 
 *Tesztkészlet:* a hat küszöbön túli, feldolgozásra váró motívum (l. 8.5). Nem elméleti migráció — ezeken kell működnie a sémának. Mivel a hatból négy antropológiai vagy teremtéstani, átfedő szakaszokon és dataseteken állnak: ez egyben a kötegelt **előkészítés** (11.3) mintapéldája — a scanek egy passzban futnak, az értelmezés viszont motívumonként külön, rövid menetben.
 
@@ -818,7 +831,7 @@ A bővített szakasz azért olcsóbb a tematikusnál, mert ott nincs teljes ÓSZ
 | A generálás elnyeli egy meglévő fájl kézi finomságait | F4 elfogadási teszt: a diff csak formázási lehet. Tartalmi eltérés vizsgálandó, nem elfedendő. |
 | A migráció alatt a repó inkonzisztens | F0 előbb; a generátorok csak akkor kapcsolnak be, ha a betöltés validált. Addig a próza a forrás. |
 | A séma merevsége eltünteti az árnyalatot | A `motivumok/[ID].md` kézi fájl marad; a séma az igehely-halmazt kényszeríti ki, a megfogalmazást nem. |
-| **A `TAHOT_kivonat.tsv` lefedettségi rése** — a döntési fájl 8. szakasza nyitott tételként rögzíti, hogy a README „39 könyv, teljes ÓSZ"-t állít, de ez nem igazolt | Az F2 első lépése a lefedettség tételes felmérése könyvenként. Amíg nem tisztázott, a `scope=OT-full` proveniencia-címke **nem adható ki** — helyette `scope=TAHOT-teljes` (azaz: a kivonat egészére, nem az Ószövetség egészére). Ez visszamenőleg a lezárt tanulmányok „teljes ÓSZ-scan" állításait is érinti. |
+| **A `TAHOT_kivonat.tsv` lefedettségi rése** — a döntési fájl 8. szakasza nyitott tételként rögzíti, hogy a README „39 könyv, teljes ÓSZ"-t állít, de ez nem igazolt | **Felmérve: F2.0, 2026.09.13** (`eszkozok/tahot_lefedettseg_ellenoriz.py`). A felmérés nem a teljességet igazolta, hanem áthelyezte a hiányt: a korábban feltételezett hiányok (1Móz 32, Zsolt 88/89/140/142, Jóel 3) **valójában megvannak**, viszont van egy addig dokumentálatlan rés — **Jób 40:1-5 és a teljes Jób 41. fejezet**. A `scope=OT-full` proveniencia-címke ezért **továbbra sem adható ki** — marad a `scope=TAHOT-teljes` (azaz: a kivonat egészére, nem az Ószövetség egészére). Ez visszamenőleg a lezárt tanulmányok „teljes ÓSZ-scan" állításait is érinti, és az **F3.0** előfeltétel-ellenőrzés tárgya. A hiány forrásbeli oka nyitva (N13). |
 | A `tanito-kereso` subagent gyenge anyaggal tölti ki a hiányt, mert „hoznia kell valamit" | A rendszerpromptja kimondja, hogy az üres eredmény elfogadható kimenet (4.4/1) |
 | A fő menet kontextus-tömörítése elnyeli, hogy melyik jelöltet miért utasítottuk el | A döntés a `jeloltek.tsv`-be íródik — amit leír, azt nem tömörítheti el semmi. (Megjegyzés: az opus-ág 272 soros naplója azt mutatja, hogy ez a kockázat a gyakorlatban kezelhető.) |
 | Egy fázis nem azon a modellen fut, amin szántuk | `/status` ellenőrzés, illetve `availableModels` korlátozás a `.claude/settings.json`-ban |
@@ -853,6 +866,8 @@ A bővített szakasz azért olcsóbb a tematikusnál, mert ott nincs teljes ÓSZ
 | D19 | A Károli-Strong join kumulatív melléktermék marad; a teljes Károli strongozása nem cél | a tanulmányok bejárta kör a mérce, nem a bibliai szöveg egésze |
 | D20 | A `karoli_szo` a `jeloltek.tsv` minősítési sorába kerül | a minősítés és a hozzárendelés egy sor — a 09.10-i hiány így nem ismétlődhet |
 | D21 | A 09.10-i elmaradás visszamenőlegesen pótlandó, az F3-ban | a tanulmányok feldolgozták az igehelyeket; a join-sor csak a kimaradt lépés miatt hiányzik |
+| D22 | Az F3 öt nevesített lépésre bomlik (F3.0-F3.4); F3.0-F3.3 Sonneten, F3.4 saját menetben Opuson | a D11 fázis-szintű modellszabálya és a 4.7 join gépesíthetetlensége csak így egyeztethető össze — váltás helyett menethatár |
+| D23 | A `scope=OT-full` címke a lefedettség felmérése **után sem** adható ki | az F2.0 felmérés hiányt talált (Jób 40:1-5, Jób 41), nem teljességet igazolt; a korlát oka megváltozott, a korlát maga nem |
 
 ### Nyitva hagyott kérdések — felhasználói döntést igényelnek
 
@@ -870,6 +885,7 @@ A bővített szakasz azért olcsóbb a tematikusnál, mert ott nincs teljes ÓSZ
 | N10 | Épüljön-e MCP-szerver a `lekerdez.py` köré? (11.7) | csak akkor, ha a chat-felületről is használni akarod |
 | N11 | A CC BY-SA 4.0 (SDBH) hatása a lexikon publikálására (11.5) | a származékos adat is ugyanilyen licenc alá esik — érinti a 3.10-es szerzői jogi tételt |
 | N12 | A `Join_tabla_folyamat_magyarazat.md` ellentmondása: a tematikus sablonnál **minden** találathoz kell Károli-szó, vagy csak amit a tanulmány idéz? | ez dönti el, mekkora join-hozamot termel egy nagy scan (a H7585 63 verse) |
+| N13 | Mi a `TAHOT_kivonat.tsv` Jób 40:1-5 / Jób 41 hiányának forrásbeli oka? **Erős nyom a döntési changelogban (v36, 2026.08.31):** ott szerepel a „Jób 38:39-41+39+40:1-5 összevonva Károli 39. fejezetté" fejezethatár-javítás, és a szétbontott összeolvadt versek közt a „Jób 41:25" — tehát Jób 41 létezik a Károli-kulcson. Ez a héber↔angol számozási eltérés képe (héber 40:25-32 = angol 41:1-8). **Ellenőrizendő, nem kimondandó.** | ha számozási eltolódás, a hiány látszólagos: a `scope=OT-full` tiltás (D23) újratárgyalható, és az F3.0 olcsóbb. Ha viszont tényleges kivonatolási hiba, más könyvekben is lehet — akkor a felmérést verselemi szinten, a `Konyv_normalizalo_tabla.tsv` mindkét irányában meg kell ismételni |
 
 ---
 
