@@ -18,7 +18,7 @@ import sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-import re, sys, os, csv
+import re, sys, os
 
 RAW_DIR = os.path.dirname(os.path.abspath(__file__)) + "/tahot"
 RAW_FILES = ["GenDeu.txt", "JosEst.txt", "JobSng.txt", "IsaMal.txt"]
@@ -135,6 +135,25 @@ def process_raw_file(path, rows_out):
                 rows_out.append((primary, secondary, strong, heb, translit, root, short_gloss, translation))
 
 
+def tsv_sor(mezok):
+    """Egy TSV-sor a csv modul nelkul — l. CLAUDE.md, „TSV-olvasas".
+
+    A modul iroja a " jelet tartalmazo mezot korulidezi es belul duplazza,
+    tehat a korutja nem bajthu: az elofordulasok.tsv-n egyetlen korut 127 sort
+    valtoztatna. Sorveg LF, mint a kivaltott hivas lineterminator erteke.
+
+    Elvalasztot (tab, CR, LF) tartalmazo mezore MEGALL: a kivaltott hivas
+    ilyenkor idezojelezett volna, a nyers osszefuzes viszont tonkretenne a
+    tablat.
+    """
+    ki = []
+    for m in mezok:
+        m = "" if m is None else str(m)
+        if "\t" in m or "\n" in m or "\r" in m:
+            raise ValueError("elvalaszto a mezoben: %r" % (m,))
+        ki.append(m)
+    return "\t".join(ki) + "\n"
+
 def main():
     rows = []
     for fn in RAW_FILES:
@@ -142,10 +161,9 @@ def main():
     print(f"Osszesen generalt sor (paren-nel egyutt): {len(rows)}", file=sys.stderr)
     out_path = os.path.dirname(os.path.abspath(__file__)) + "/phaseA_all.tsv"
     with open(out_path, 'w', encoding='utf-8', newline='') as f:
-        w = csv.writer(f, delimiter='\t', lineterminator='\n')
-        w.writerow(['ref_primary','ref_secondary','strong','hebrew','translit','root','short_gloss','english'])
+        f.write(tsv_sor(['ref_primary','ref_secondary','strong','hebrew','translit','root','short_gloss','english']))
         for r in rows:
-            w.writerow(r)
+            f.write(tsv_sor(r))
     print("Kiirva:", out_path, file=sys.stderr)
 
 

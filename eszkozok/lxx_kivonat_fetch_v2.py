@@ -87,6 +87,7 @@ from lxx_kivonat_fetch import (  # noqa: E402
     load_magyar_konyvnev,
     load_versifikacios_terkep,
     normalize_strong,
+    tsv_sor,
 )
 
 USER_AGENT = "Mozilla/5.0 (compatible; lxx-kivonat-fetch-v2/1.0; +bible-study-repo)"
@@ -101,12 +102,20 @@ def irj_betu_utotag_riportot(kizarasok, utvonal=BETU_UTOTAG_RIPORT_UTVONAL):
     import os
 
     uj_fajl = not os.path.exists(utvonal)
+    # Hozzafuzes elott bajt-szintu ellenorzes: ha a megleve fajl nem sorveggel
+    # zarul, a hozzafuzes az utolso sorra ragadna ra — MEGALLAS, nem iras.
+    if not uj_fajl:
+        with open(utvonal, "rb") as f:
+            vege = f.read()[-1:]
+        if vege and vege not in (b"\n", b"\r"):
+            raise SystemExit(
+                "MEGALLAS: %s nem sorveggel zarul, a hozzafuzes osszeragasztana "
+                "az utolso sorral. Nem irtam semmit." % utvonal)
     with open(utvonal, "a", encoding="utf-8", newline="") as f:
-        import csv
-        writer = csv.writer(f, delimiter="\t", lineterminator="\n")
         if uj_fajl:
-            writer.writerow(["Karoli_konyv_prefix", "Karoli_igehely", "Oszlop", "Nyers_ertek"])
-        writer.writerows(kizarasok)
+            f.write(tsv_sor(["Karoli_konyv_prefix", "Karoli_igehely", "Oszlop", "Nyers_ertek"]))
+        for sor in kizarasok:
+            f.write(tsv_sor(sor))
 KERES_KESLELTETES_MP = 1.0
 
 STRONG_RE = re.compile(r'([GH]\d+)')
@@ -605,10 +614,9 @@ def main():
         print(f"  -> {fejezet_sor_szam} sor ({magyar_konyv} {fejezet})", file=sys.stderr)
 
     with open(args.kimenet, "w", encoding="utf-8", newline="") as f:
-        import csv
-        writer = csv.writer(f, delimiter="\t", lineterminator="\n")
-        writer.writerow(["Igehely", "Strong-szám", "Görög szóalak", "Morfológiai kód", "Forrás"])
-        writer.writerows(all_rows)
+        f.write(tsv_sor(["Igehely", "Strong-szám", "Görög szóalak", "Morfológiai kód", "Forrás"]))
+        for sor in all_rows:
+            f.write(tsv_sor(sor))
 
     if hianyzo_kulcsok:
         print(f"FIGYELEM: {len(hianyzo_kulcsok)} zarojeles LXX-kulcshoz nem volt terkep-talalat:", file=sys.stderr)

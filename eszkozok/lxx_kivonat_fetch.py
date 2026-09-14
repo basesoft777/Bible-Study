@@ -30,7 +30,6 @@ elteres az adott fejezetben) a nyers oldal-helyi fejezet/vers-szam kerul
 kozvetlenul hasznalatra (ugyanugy, mint --versifikacios-terkep nelkul).
 """
 import argparse
-import csv
 import re
 import sys
 import time
@@ -42,6 +41,25 @@ NORMALIZO_TABLA = "konkordancia/Konyv_normalizalo_tabla.tsv"
 USER_AGENT = "Mozilla/5.0 (compatible; lxx-kivonat-fetch/1.0; +bible-study-repo)"
 KERES_KESLELTETES_MP = 1.0
 
+
+def tsv_sor(mezok):
+    """Egy TSV-sor a csv modul nelkul — l. CLAUDE.md, „TSV-olvasas".
+
+    A modul iroja a " jelet tartalmazo mezot korulidezi es belul duplazza,
+    tehat a korutja nem bajthu: az elofordulasok.tsv-n egyetlen korut 127 sort
+    valtoztatna. Sorveg LF, mint a kivaltott hivas lineterminator erteke.
+
+    Elvalasztot (tab, CR, LF) tartalmazo mezore MEGALL: a kivaltott hivas
+    ilyenkor idezojelezett volna, a nyers osszefuzes viszont tonkretenne a
+    tablat.
+    """
+    ki = []
+    for m in mezok:
+        m = "" if m is None else str(m)
+        if "\t" in m or "\n" in m or "\r" in m:
+            raise ValueError("elvalaszto a mezoben: %r" % (m,))
+        ki.append(m)
+    return "\t".join(ki) + "\n"
 
 def _read_tsv_dicts(path):
     """TSV-olvasás szótár-sorokkal a csv modul nélkül — l. CLAUDE.md, „TSV-olvasás"."""
@@ -498,9 +516,9 @@ def main():
         all_rows.extend(rows)
 
     with open(args.kimenet, "w", encoding="utf-8", newline="") as f:
-        writer = csv.writer(f, delimiter="\t", lineterminator="\n")
-        writer.writerow(["Igehely", "Strong-szám", "Görög szóalak", "Morfológiai kód"])
-        writer.writerows(all_rows)
+        f.write(tsv_sor(["Igehely", "Strong-szám", "Görög szóalak", "Morfológiai kód"]))
+        for sor in all_rows:
+            f.write(tsv_sor(sor))
 
     if hianyzo_kulcsok:
         print(f"FIGYELEM: {len(hianyzo_kulcsok)} zarojeles LXX-kulcshoz nem volt terkep-talalat:", file=sys.stderr)

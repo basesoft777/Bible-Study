@@ -1,10 +1,25 @@
 # -*- coding: utf-8 -*-
 """F3.4 előkészítés: mely elofordulasok-soroknál hiányzik a karoli_szo,
 és melyikhez van már meglévő join-sor / Károli-versszöveg."""
-import csv, sys, os, io, re
+import sys, os, io, re
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', newline='')
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+def tsv_sor(mezok):
+    """Egy TSV-sor a csv modul nélkül — l. CLAUDE.md, „TSV-olvasás".
+
+    A modul írója a " jelet tartalmazó mezőt körülidézi és belül duplázza, tehát
+    a körútja nem bájthű; a karoli_vers oszlop tele van idézőjellel. Sorvég
+    '\\n', mint a kiváltott hívás lineterminator értéke.
+    """
+    ki = []
+    for m in mezok:
+        m = '' if m is None else str(m)
+        if '\t' in m or '\n' in m or '\r' in m:
+            raise ValueError('elválasztó a mezőben: %r' % (m,))
+        ki.append(m)
+    return '\t'.join(ki) + '\n'
 
 def olvas(ut, komment=True):
     with open(ut, encoding='utf-8') as f:
@@ -82,7 +97,8 @@ print('Károli-versszöveg nincs (%d): %s' % (len(nincs_vers), ', '.join(sorted(
 
 ki = os.path.join(ROOT, 'eszkozok', 'f3_4_munkalap.tsv')
 with open(ki, 'w', encoding='utf-8', newline='') as f:
-    w = csv.writer(f, delimiter='\t', lineterminator='\n')
-    w.writerow(['id', 'igehely', 'strong', 'gerinc_elem', 'jelentes_hu', 'meglevo_join', 'karoli_vers'])
-    w.writerows(kiir)
+    f.write(tsv_sor(['id', 'igehely', 'strong', 'gerinc_elem', 'jelentes_hu',
+                     'meglevo_join', 'karoli_vers']))
+    for sor in kiir:
+        f.write(tsv_sor(sor))
 print('Munkalap: %s' % ki)

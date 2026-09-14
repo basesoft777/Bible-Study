@@ -19,7 +19,7 @@ import sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-import re, csv, os, sys
+import re, os, sys
 from collections import defaultdict
 
 SCRATCH = os.path.dirname(os.path.abspath(__file__))
@@ -117,6 +117,25 @@ def to_karoli_ref(norm, book, chap, verse):
         return None
     return f"{hu} {chap}:{verse}"
 
+
+def tsv_sor(mezok):
+    """Egy TSV-sor a csv modul nelkul — l. CLAUDE.md, „TSV-olvasas".
+
+    A modul iroja a " jelet tartalmazo mezot korulidezi es belul duplazza,
+    tehat a korutja nem bajthu: az elofordulasok.tsv-n egyetlen korut 127 sort
+    valtoztatna. Sorveg LF, mint a kivaltott hivas lineterminator erteke.
+
+    Elvalasztot (tab, CR, LF) tartalmazo mezore MEGALL: a kivaltott hivas
+    ilyenkor idezojelezett volna, a nyers osszefuzes viszont tonkretenne a
+    tablat.
+    """
+    ki = []
+    for m in mezok:
+        m = "" if m is None else str(m)
+        if "\t" in m or "\n" in m or "\r" in m:
+            raise ValueError("elvalaszto a mezoben: %r" % (m,))
+        ki.append(m)
+    return "\t".join(ki) + "\n"
 
 def main():
     norm = load_norm()
@@ -217,19 +236,17 @@ def main():
 
     # --- kiiras ---
     with open(OUT_MAIN, 'w', encoding='utf-8', newline='') as f:
-        w = csv.writer(f, delimiter='\t', lineterminator='\n')
-        w.writerow(['Igehely', 'Strong-szám', 'Ragozott alak', 'Kiejtés', 'Szótő',
-                    'Rövid jelentés', 'Angol tükörfordítás'])
+        f.write(tsv_sor(['Igehely', 'Strong-szám', 'Ragozott alak', 'Kiejtés', 'Szótő',
+                         'Rövid jelentés', 'Angol tükörfordítás']))
         for row in main_rows:
-            w.writerow(row)
+            f.write(tsv_sor(row))
 
     with open(OUT_OPEN, 'w', encoding='utf-8', newline='') as f:
-        w = csv.writer(f, delimiter='\t', lineterminator='\n')
-        w.writerow(['STEPBible_elsodleges', 'STEPBible_masodlagos', 'Státusz', 'Indoklás',
-                    'Strong-szám', 'Ragozott alak', 'Kiejtés', 'Szótő',
-                    'Rövid jelentés', 'Angol tükörfordítás'])
+        f.write(tsv_sor(['STEPBible_elsodleges', 'STEPBible_masodlagos', 'Státusz', 'Indoklás',
+                         'Strong-szám', 'Ragozott alak', 'Kiejtés', 'Szótő',
+                         'Rövid jelentés', 'Angol tükörfordítás']))
         for row in open_rows:
-            w.writerow(row)
+            f.write(tsv_sor(row))
 
     print(f"Vegso fokivonat sorszam: {len(main_rows)}", file=sys.stderr)
     print(f"Nyitott esetek sorszam: {len(open_rows)}", file=sys.stderr)

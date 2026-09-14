@@ -22,7 +22,7 @@ import sys
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-import re, csv, sys, os
+import re, sys, os
 from collections import defaultdict, OrderedDict
 
 SCRATCH = os.path.dirname(os.path.abspath(__file__))
@@ -103,6 +103,25 @@ class DSU:
         if ra != rb:
             self.parent[ra] = rb
 
+
+def tsv_sor(mezok):
+    """Egy TSV-sor a csv modul nelkul — l. CLAUDE.md, „TSV-olvasas".
+
+    A modul iroja a " jelet tartalmazo mezot korulidezi es belul duplazza,
+    tehat a korutja nem bajthu: az elofordulasok.tsv-n egyetlen korut 127 sort
+    valtoztatna. Sorveg LF, mint a kivaltott hivas lineterminator erteke.
+
+    Elvalasztot (tab, CR, LF) tartalmazo mezore MEGALL: a kivaltott hivas
+    ilyenkor idezojelezett volna, a nyers osszefuzes viszont tonkretenne a
+    tablat.
+    """
+    ki = []
+    for m in mezok:
+        m = "" if m is None else str(m)
+        if "\t" in m or "\n" in m or "\r" in m:
+            raise ValueError("elvalaszto a mezoben: %r" % (m,))
+        ki.append(m)
+    return "\t".join(ki) + "\n"
 
 def main():
     norm = load_norm()
@@ -200,13 +219,12 @@ def main():
 
     # kiiras
     with open(SCRATCH + "/step1_decisions.tsv", 'w', encoding='utf-8', newline='') as f:
-        w = csv.writer(f, delimiter='\t', lineterminator='\n')
-        w.writerow(['Konyv', 'Magyar', 'Fejezetek', 'Dontes', 'Primary_reszletek', 'Secondary_reszletek'])
+        f.write(tsv_sor(['Konyv', 'Magyar', 'Fejezetek', 'Dontes', 'Primary_reszletek', 'Secondary_reszletek']))
         for d in all_decisions:
-            w.writerow([
+            f.write(tsv_sor([
                 d['book'], d['hu'], ','.join(map(str, d['chapters'])), d['decision'],
                 str(d['primary_detail']), str(d['secondary_detail'])
-            ])
+            ]))
 
     n_auto = sum(1 for d in all_decisions if d['decision'] in ('ELSODLEGES', 'MASODLAGOS'))
     n_manual = len(all_decisions) - n_auto

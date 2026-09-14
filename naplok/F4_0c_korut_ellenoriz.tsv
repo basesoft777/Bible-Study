@@ -1,0 +1,79 @@
+# GENERÁLT: eszkozok/f4_0c_korut_ellenoriz.py — kézzel nem szerkesztendő.
+# Referencia: git show HEAD:<fájl>. UJ = az új író eltérése a blobtól
+# (elvárt 0); REGI = a kiváltott csv-író eltérése ugyanattól a blobtól.
+fajl	iro_hivas	sorok	veg_ujsor	cr_sor	uj_eltero_sor	regi_eltero_sor	uj_elso_eltero	regi_elso_eltero
+adat/datasetek.tsv	-	72	igen	0	0	0	-	-
+adat/elofordulasok.tsv	-	203	igen	0	0	127	-	KIRALY-001\t1Móz 14:18-20\tMelkizedek, Sálem királya, egyszerre "a Felséges Isten 
+adat/grammatikai_strongok.tsv	grammatikai_strongok_general.py:231	98	igen	0	0	0	-	-
+adat/jeloltek.tsv	-	223	igen	0	0	128	-	KIRALY-001\t1Móz 14:18-20\tnégyforrásos audit (TAHOT/TAGNT/TSK/Károli-Strong), ret
+adat/kapcsolatok.tsv	-	34	igen	0	0	2	-	1Móz 14:18-20\tZsolt 110:4\tKIRALY-001\tElőkép\tegyszeri esemény → örökkévaló, prófé
+adat/lexikon_hivatkozasok.tsv	-	2	igen	0	0	0	-	-
+adat/motivumok.tsv	-	9	igen	0	0	4	-	KIRALY-001\tMelkizedek — király-pap rendje, kenyér és bor\tMelkizedek-rend\tKriszto
+konkordancia/ASV_Strongs_Exodus.tsv	-	12120	igen	0	0	0	-	-
+konkordancia/ASV_Strongs_Genesis.tsv	-	14918	igen	0	0	0	-	-
+konkordancia/ASV_Strongs_Proverbs.tsv	-	5873	igen	0	0	0	-	-
+konkordancia/Angol_konyvnev_STEPBible_tabla.tsv	-	67	igen	0	0	0	-	-
+konkordancia/BDB_teljes_unabridged.tsv	-	8091	igen	0	0	6	-	H0177\tH177\tH177. Uw 'el אוּאֵל proper name, masculine a Judean (will of God, com
+konkordancia/Betu_utotag_kizarva.tsv	lxx_kivonat_fetch_v2.py:106 (hozzáfűz)	136	igen	0	0	0	-	-
+konkordancia/KJV_Strongs_Exodus.tsv	-	12254	igen	0	0	0	-	-
+konkordancia/KJV_Strongs_Genesis.tsv	-	15099	igen	0	0	0	-	-
+konkordancia/KJV_Strongs_Proverbs.tsv	-	5946	igen	0	0	0	-	-
+konkordancia/Karoli_1908.tsv	-	31159	igen	0	0	0	-	-
+konkordancia/Karoli_Strong_kivonat.tsv	merge_karoli_szofaj.py:48 (helyben!)	384	igen	0	0	0	-	-
+konkordancia/Karoli_adatminosegi_anomaliak.tsv	-	15	igen	0	0	10	-	Ez 20:44\t738\tA vers "ezt mondja az Úr Isten!" lezáró formulával véget ér, de a s
+konkordancia/Karoli_kereszthivatkozasok.tsv	-	32408	igen	0	0	0	-	-
+konkordancia/Karoli_ures_helyorzo_sorok.tsv	-	40	igen	0	0	4	-	Ézs 4:6\tÉzs\t4\t6\tC\tPOTOLVA\tLEZARVA (2026.08.27): a gyokoroko Ézs 3:26 osszeolvadt
+konkordancia/Konyv_normalizalo_tabla.tsv	-	67	igen	0	0	0	-	-
+konkordancia/LSJ_teljes.tsv	-	5523	igen	0	0	37	-	G0251\tG251\tἅλς (A), ἁλός [ᾰ], o(: dat. pl. ἅλασιν (v. infr.): - 1. salt, πάσσε δ
+konkordancia/LXX_kivonat_Abdias.tsv	-	473	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Aggeus.tsv	-	948	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Amos.tsv	-	3211	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Birak.tsv	-	15948	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Daniel.tsv	-	9358	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Deuteronomium.tsv	-	22991	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Enekek_Eneke.tsv	-	2005	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Eszter.tsv	-	3758	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Exodus.tsv	-	24423	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Ezekiel.tsv	-	29659	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Ezsaias.tsv	-	27038	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Ezsdras.tsv	-	5587	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Genezis.tsv	-	32566	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Habakuk.tsv	-	1106	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Hoseas.tsv	-	3860	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Jeremias.tsv	-	28409	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Job.tsv	-	13292	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Joel.tsv	-	1581	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Jonas.tsv	-	1070	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Jozsue.tsv	-	14437	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Kiralyok_1.tsv	-	18737	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Kiralyok_2.tsv	-	18782	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Kronikak_1.tsv	-	16236	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Kronikak_2.tsv	-	21038	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Leviticus.tsv	-	19083	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Malakias.tsv	-	1417	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Mikeas.tsv	-	2369	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Nahum.tsv	-	938	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Nehemias.tsv	-	7677	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Numeri.tsv	-	25047	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Peldabeszedek.tsv	-	8910	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Predikator.tsv	-	4547	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Ruth.tsv	-	2073	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Samuel_1.tsv	-	20095	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Samuel_2.tsv	-	17915	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Siralmak.tsv	-	2350	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Sofonias.tsv	-	1224	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Zakarias.tsv	-	4964	igen	0	0	0	-	-
+konkordancia/LXX_kivonat_Zsoltarok.tsv	-	34849	igen	0	0	0	-	-
+konkordancia/LXX_tobblet_szakaszok.tsv	-	107	igen	0	0	0	-	-
+konkordancia/LXX_versificacios_terkep.tsv	-	5427	igen	0	0	0	-	-
+konkordancia/Nem_parszolhato_terkep_ertekek.tsv	-	146	igen	0	0	0	-	-
+konkordancia/SECE_G_teljes.tsv	-	5524	igen	0	0	367	-	G0012\tG12\tἄβυσσος (ábyssos｜ab'-us-sos｜noun｜netherworld) [Grk] ἄβυσσος LN: 1.20 G
+konkordancia/SECE_H_teljes.tsv	-	8675	igen	0	0	0	-	-
+konkordancia/Strong_szotar.tsv	-	14348	igen	0	0	0	-	-
+konkordancia/TAGNT_kivonat.tsv	-	141747	igen	0	0	0	-	-
+konkordancia/TAHOT_kivonat.tsv	tahot_karoli_kulcs_generalas.py:220	468969	igen	0	0	0	-	-
+konkordancia/TAHOT_kivonat_nyitott_esetek.tsv	tahot_karoli_kulcs_generalas.py:227	333	igen	0	0	0	-	-
+konkordancia/TIPNR_kivonat.tsv	-	35523	igen	0	0	0	-	-
+konkordancia/TSK_kereszthivatkozasok.tsv	-	432950	igen	0	0	0	-	-
+konkordancia/Thayer_teljes.tsv	-	5427	igen	0	0	331	-	G0018\tG18\tG18 — ἀγαθός (ή, (akin to ἄγαμαι to wonder at, think highly of, ἀγαστό
+konkordancia/Verzifikacios_elteres_tabla.tsv	-	9	igen	0	0	2	-	Rom.3.25\tRom.3.26\tRóm 3:26\tÚSZ\tIGAZOLVA\tmásodlagos egyezik — "ἐν τῇ ἀνοχῇ τοῦ θε

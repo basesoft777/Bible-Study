@@ -1,0 +1,181 @@
+=== $ python eszkozok/lekerdez.py gerinc 1Móz 3 1Móz 6:1-8 ===
+# gerinc-metszet — 2 szakasz
+#   1Móz 3: 151 egyedi Strong
+#   1Móz 6:1-8: 74 egyedi Strong
+# metszet (szűretlen): 40
+# grammatikai szűrővel kiszűrve (16): H0413,H0834,H0853,H1931,H3588,H3808,H5704,H5921,H9001,H9002,H9003,H9005,H9006,H9009,H9023,H9038
+# gerinc-jelölt (marad): 24
+H0120
+H0127
+H0430
+H0559
+H0802
+H0929
+H1121
+H1571
+H1961
+H1992
+H2896
+H3068
+H3117
+H3205
+H3605
+H3947
+H5769
+H5869
+H6213
+H6440
+H7200
+H7307
+H7451
+H8034
+proveniencia: scope=range:1Móz 3+1Móz 6:1-8 | forras=TAHOT_kivonat.tsv | n=24 | ts=2026-09-14T16:43Z
+--- exit: 0 ---
+
+=== $ python eszkozok/lekerdez.py scan H430 --szakasz 1Móz 1 ===
+# scan H430 — 0 igehely, 0 szó-előfordulás
+proveniencia: scope=range:1Móz 1 | forras=TAHOT_kivonat.tsv | strong=H430 | n=0 | ts=2026-09-14T16:43Z
+--- exit: 0 ---
+
+=== $ python eszkozok/lekerdez.py kollokacio H430 H776 ===
+# kollokáció H430 + H776 — 0 vers
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H430+H776 | n=0 | ts=2026-09-14T16:43Z
+--- exit: 0 ---
+
+=== $ python eszkozok/lekerdez.py igealak H430 ===
+# igealak-ellenőrzés H430 — 0 szó-előfordulás
+# igehely	ragozott_alak	kiejtes	rovid_jelentes	angol_tukorforditas
+# EMBERI DÖNTÉS: a fenti alakok binyan/igealak szerinti csoportosítása nem automatikus.
+proveniencia: scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H430 | n=0 | ts=2026-09-14T16:44Z
+--- exit: 0 ---
+
+=== $ python eszkozok/lekerdez.py lxx-hid 1Móz 3:15 ===
+# LXX-híd 1Móz 3:15 — 32 görög szó-előfordulás
+G2532	και	CONJ
+G2189	εχθραν	N-ASF
+G5087	θησω	V-FAI-1S
+G0303	ανα	PREP
+G3319	μεσον	A-ASN
+G4771	σου	P-GS
+G2532	και	CONJ
+G0303	ανα	PREP
+G3319	μεσον	A-ASM
+G3588	της	T-GSF
+G1135	γυναικος	N-GSF
+G2532	και	CONJ
+G0303	ανα	PREP
+G3319	μεσον	A-ASM
+G3588	του	T-GSN
+G4690	σπερματος	N-GSN
+G4771	σου	P-GS
+G2532	και	CONJ
+G0303	ανα	PREP
+G3319	μεσον	A-ASM
+G3588	του	T-GSN
+G4690	σπερματος	N-GSN
+G0846	αυτης	D-GSF
+G0846	αυτος	D-NSM
+G4771	σου	P-GS
+G5083	τηρησει	V-FAI-3S
+G2776	κεφαλην	N-ASF
+G2532	και	CONJ
+G4771	συ	P-NS
+G5083	τηρησεις	V-FAI-2S
+G0846	αυτου	D-GSM
+G4418	πτερναν	N-ASF
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0303: 13 ÚSZ-vers — 1Kor 6:5, 1Kor 14:27, Jel 4:8, Jel 7:17, Jel 21:21, Ján 2:6, Luk 9:3, Luk 9:14, Luk 10:1, Mk 7:31 ...
+  G0846: 3811 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G1135: 199 ÚSZ-vers — 1Kor 5:1, 1Kor 7:1, 1Kor 7:2, 1Kor 7:3, 1Kor 7:4, 1Kor 7:10, 1Kor 7:11, 1Kor 7:12, 1Kor 7:13, 1Kor 7:14 ...
+  G2189: 5 ÚSZ-vers — Ef 2:16, Gal 5:20, Jak 4:4, Luk 23:12, Róm 8:7
+  G2532: 5254 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2776: 68 ÚSZ-vers — 1Kor 11:3, 1Kor 11:4, 1Kor 11:5, 1Kor 11:7, 1Kor 11:10, 1Kor 12:21, 1Pét 2:7, ApCsel 4:11, ApCsel 18:6, ApCsel 18:18 ...
+  G3319: 58 ÚSZ-vers — 1Kor 5:2, 1Kor 6:5, 1Thessz 2:7, 2Kor 6:17, 2Thessz 2:7, ApCsel 1:15, ApCsel 1:18, ApCsel 2:22, ApCsel 4:7, ApCsel 17:22 ...
+  G3588: 7060 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G4418: 1 ÚSZ-vers — Ján 13:18
+  G4690: 40 ÚSZ-vers — 1Ján 3:9, 1Kor 15:38, 2Kor 11:22, 2Tim 2:8, ApCsel 3:25, ApCsel 7:5, ApCsel 7:6, ApCsel 13:23, Gal 3:16, Gal 3:19 ...
+  G4771: 2087 ÚSZ-vers — 1Ján 1:2, 1Ján 1:3, 1Ján 1:5, 1Ján 2:1, 1Ján 2:7, 1Ján 2:8, 1Ján 2:12, 1Ján 2:13, 1Ján 2:14, 1Ján 2:20 ...
+  G5083: 66 ÚSZ-vers — 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 3:22, 1Ján 3:24, 1Ján 5:3, 1Ján 5:18, 1Kor 7:37, 1Pét 1:4, 1Thessz 5:23 ...
+  G5087: 96 ÚSZ-vers — 1Ján 3:16, 1Kor 3:10, 1Kor 3:11, 1Kor 9:18, 1Kor 12:18, 1Kor 12:28, 1Kor 15:25, 1Kor 16:2, 1Pét 2:6, 1Pét 2:8 ...
+proveniencia: scope=range:1Móz 3:15 | forras=LXX_kivonat_Genezis.tsv+TAGNT_kivonat.tsv | n=32 | ts=2026-09-14T16:44Z
+--- exit: 0 ---
+
+=== $ python eszkozok/lekerdez.py tsk 1Móz 3:15 ===
+# TSK 1Móz 3:15 — 60 kapcsolódó igehely
+Róm 16,20	Votes=144
+1Ján 3,8	Votes=88
+Jel 12,17	Votes=57
+Ézs 7,14	Votes=45
+Gal 4,4	Votes=43
+Zsid 2,14	Votes=33
+Zsid 2,15	Votes=33
+Ján 8,44	Votes=27
+Mt 1,23	Votes=23
+Jel 12,7	Votes=23
+Jel 12,13	Votes=23
+Ézs 53,3	Votes=20
+Ézs 53,4	Votes=20
+Mt 13,38	Votes=16
+1Ján 3,10	Votes=15
+Luk 10,19	Votes=15
+Zsolt 132,11	Votes=14
+Jel 20,10	Votes=12
+ApCsel 13,10	Votes=12
+Kol 2,15	Votes=12
+Jel 2,10	Votes=11
+4Móz 21,6	Votes=9
+4Móz 21,7	Votes=9
+Ján 14,30	Votes=7
+Ján 14,31	Votes=7
+Ézs 53,12	Votes=7
+Luk 1,31	Votes=7
+Luk 1,35	Votes=7
+Jel 20,1	Votes=7
+Jel 20,3	Votes=7
+Jer 31,22	Votes=6
+Mik 5,3	Votes=6
+Ef 4,8	Votes=5
+1Ján 5,5	Votes=5
+Zsid 2,18	Votes=5
+Ján 12,31	Votes=4
+Ján 12,33	Votes=4
+Zsid 5,7	Votes=4
+Luk 22,53	Votes=4
+Luk 22,39	Votes=4
+Luk 22,44	Votes=4
+Mt 23,33	Votes=4
+Jel 13,7	Votes=4
+Mt 3,7	Votes=3
+Mt 4,1	Votes=3
+Mt 4,10	Votes=3
+Jel 15,1	Votes=3
+Jel 15,6	Votes=3
+Mt 12,34	Votes=3
+Luk 1,76	Votes=2
+Róm 3,13	Votes=2
+ApCsel 28,3	Votes=2
+ApCsel 28,6	Votes=2
+1Móz 49,17	Votes=2
+Mk 16,18	Votes=2
+Mt 1,25	Votes=2
+Jel 20,7	Votes=2
+Jel 20,8	Votes=2
+Dán 9,26	Votes=1
+Ámós 9,3	Votes=0
+proveniencia: scope=range:1Móz 3:15 | forras=TSK_kereszthivatkozasok.tsv | n=60 | ts=2026-09-14T16:44Z
+--- exit: 0 ---
+
+=== $ python eszkozok/lekerdez.py karoli 1Móz 3:15 ===
+# Károli 1908 — 1Móz 3:15
+És ellenségeskedést szerzek közötted és az asszony között, a te magod között, és az ő magva között: az neked fejedre tapos, te pedig annak sarkát mardosod.
+# Károli-KH (1Móz 3:15) — 1 kapcsolódó igehely
+1Ján 3,8
+proveniencia: scope=range:1Móz 3:15 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-09-14T16:44Z
+--- exit: 0 ---
+
+=== $ python eszkozok/lekerdez.py domen ===
+A `domen` parancs előfeltétele (SDBH/SDGNT import) nem teljesült.
+adat/datasetek.tsv szerint az SDBH állapota: 'hianyzik'.
+Ez a NYITOTT_FELADATOK.md-ben rögzített nyitott tétel — l. "SDBH / SDGNT import". A parancs nem ad ki eredményt, mert az üres/hiányzó eredmény a helyes viselkedés (nincs helyettesítő adat kitalálva).
+--- exit: 2 ---
+

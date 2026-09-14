@@ -29,7 +29,6 @@ Futtatás a repó gyökeréből:
     python eszkozok/grammatikai_strongok_general.py
 """
 
-import csv
 import os
 import sys
 from collections import Counter
@@ -37,6 +36,22 @@ from datetime import datetime, timezone
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
+
+def tsv_sor(mezok):
+    """Egy TSV-sor a csv modul nelkul — l. CLAUDE.md, „TSV-olvasas".
+
+    A modul iroja a " jelet tartalmazo mezot korulidezi es belul duplazza,
+    tehat a korutja nem bajthu. Sorveg LF, mint a kivaltott hivas
+    lineterminator erteke.
+    """
+    ki = []
+    for m in mezok:
+        m = "" if m is None else str(m)
+        if "\t" in m or "\n" in m or "\r" in m:
+            raise ValueError("elvalaszto a mezoben: %r" % (m,))
+        ki.append(m)
+    return "\t".join(ki) + "\n"
+
 
 TAHOT = os.path.join("konkordancia", "TAHOT_kivonat.tsv")
 TAGNT = os.path.join("konkordancia", "TAGNT_kivonat.tsv")
@@ -228,10 +243,9 @@ def main():
         f.write("# SCOPE: ez a 'gerinc' parancs stopword-listaja, NEM globalis kizaras. Ha egy\n")
         f.write("# eloljaro motivumszinten szamit (pl. al-pene), azt a 'kollokacio' parancs\n")
         f.write("# talalja meg, nem a metszet. A ketto nem utkozik.\n")
-        w = csv.DictWriter(f, fieldnames=mezok, delimiter="\t", lineterminator="\n")
-        w.writeheader()
+        f.write(tsv_sor(mezok))
         for s in sorok:
-            w.writerow(s)
+            f.write(tsv_sor([s[k] for k in mezok]))
 
     kat = Counter(s["kategoria"] for s in sorok)
     print("Kiirva: %s (%d sor)" % (KIMENET, len(sorok)))
