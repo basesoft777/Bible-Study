@@ -490,6 +490,7 @@ def parse_fejezet_lista(args):
 
 def main():
     try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
         sys.stderr.reconfigure(encoding="utf-8", errors="replace")
     except AttributeError:
         pass
