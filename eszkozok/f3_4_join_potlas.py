@@ -7,8 +7,8 @@ Harom tablat ir:
                                 egyben javitja az F3.1 betolto oszlop-eltolodasat
   3. konkordancia/Karoli_Strong_kivonat.tsv — uj join-sorok
 
-Forras: eszkozok/f3_4_dontesek.tsv (soronkenti, tartalom-alapu itelet) es
-        eszkozok/f3_4_extra_join.tsv (egy igehelyhez tobb Strong / tartomany tovabbi versei).
+Forras: naplok/f3_4_dontesek.tsv (soronkenti, tartalom-alapu itelet) es
+        naplok/f3_4_extra_join.tsv (egy igehelyhez tobb Strong / tartomany tovabbi versei).
 """
 import csv
 import io
@@ -67,7 +67,7 @@ def tisztit(szoveg):
 
 
 # --- dontes-tabla ---
-with open(os.path.join(ROOT, 'eszkozok', 'f3_4_dontesek.tsv'), encoding='utf-8') as f:
+with open(os.path.join(ROOT, 'naplok', 'f3_4_dontesek.tsv'), encoding='utf-8') as f:
     dontesek = {(d['id'], d['igehely']): d for d in csv.DictReader(f, delimiter='\t')}
 
 # --- 1. elofordulasok.tsv ---
@@ -176,7 +176,7 @@ for d in dontesek.values():
     felvesz(d['join_igehely'], d['join_strong'], tisztit(d['karoli_szo']),
             d['azonositas_modja'], d['megbizhatosag'], d['id'])
 
-extra = os.path.join(ROOT, 'eszkozok', 'f3_4_extra_join.tsv')
+extra = os.path.join(ROOT, 'naplok', 'f3_4_extra_join.tsv')
 if os.path.exists(extra):
     with open(extra, encoding='utf-8') as f:
         for d in csv.DictReader(f, delimiter='\t'):

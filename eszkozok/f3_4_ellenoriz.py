@@ -33,7 +33,7 @@ with open(os.path.join(ROOT, 'adat', 'elofordulasok.tsv'), encoding='utf-8') as 
 fejlec = sorok[0].split('\t')
 elo = [dict(zip(fejlec, s.split('\t'))) for s in sorok[1:] if s.strip()]
 
-with open(os.path.join(ROOT, 'eszkozok', 'f3_4_dontesek.tsv'), encoding='utf-8') as f:
+with open(os.path.join(ROOT, 'naplok', 'f3_4_dontesek.tsv'), encoding='utf-8') as f:
     dont = list(csv.DictReader(f, delimiter='\t'))
 dkulcs = [(d['id'], d['igehely']) for d in dont]
 dmap = {k: d for k, d in zip(dkulcs, dont)}
