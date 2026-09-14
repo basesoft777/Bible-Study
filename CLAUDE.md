@@ -112,3 +112,19 @@ Ez a magyar kimenetre is áll: `PYTHONIOENCODING=utf-8` nélkül a Windows-konzo
 
 **Git:** munkaág `main`; commit-üzenet magyarul, tétel-azonosítóval kezdve (`F1.4: …`);
 push csak kérésre.
+
+A granularitás **tétel-szintű, nem fázis-szintű**: az `F3` nem egy commit, hanem `F3.0:`,
+`F3.1:`, `F3.2:` … külön-külön. Ok: a piszkozatot termelő lépéseknél a commit a validálás
+visszapontja, és a `git log --oneline` csak így marad olvasható.
+
+Az üzenet **mindig UTF-8 fájlból megy, soha nem inline `-m`-mel**:
+
+```bash
+git -c i18n.commitEncoding=UTF-8 commit -F commit_uzenet.txt
+```
+
+Ok: a Windows-konzol `cp1250` kódlapja az inline `-m` ékezeteit elnyeli. Az ékezetlen
+üzenet nem kozmetikai hiba — kiüti a `GitHub_feltoltesi_workflow.md`-ben rögzített célt,
+a `git log --grep` tartalmi kereshetőségét: a `--grep="betöltés"` nem találja meg a
+„betoltes"-t. Dokumentált eset: az F3.0-F3.3 három commitja így készült, és utólag
+rebase-szel kellett javítani.
