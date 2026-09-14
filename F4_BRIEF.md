@@ -1,6 +1,6 @@
 # F4-0 brief — a `csv` modul kiváltása és a stderr-őr egységesítése
 
-*Készítette: chat-menet (Opus 5), 2026-09-14, v7 (v6-ig l. a döntésnaplót; v7: E1 szűkítve, B21-B23). Kiindulási állapot: `main` = `origin/main` = `28ae8d4`.*
+*Készítette: chat-menet (Opus 5), 2026-09-14, v8 (v6-ig l. a döntésnaplót; v7: E1 szűkítve, B21-B23; v8: a hiányzó §3.1 pótolva, E3 predikátuma javítva). Kiindulási állapot: `main` = `origin/main` = `28ae8d4`.*
 *Végrehajtás: Claude Code, a repó gyökeréből. A chat-menet nem hajtja végre — ez a brief a bemenete.*
 
 ---
@@ -329,17 +329,42 @@ Mindegyik **mérés**, nem szemrevételezés. A számokat a Code-menet futtassa 
 
 | # | Kritérium | Elvárt |
 |---|---|---:|
-| E1 | `csv.` hívás bármely szkriptben, amely `adat/*.tsv`-t vagy `konkordancia/*.tsv`-t olvas vagy ír | **0** — két nevesített kivétellel, l. lent |
-| E2 | `python -m py_compile eszkozok/*.py` | hibátlan |
-| E3 | `adat/elofordulasok.tsv`: `kapcsolodas` mezők, amelyek `"`-rel kezdődnek és végződnek | **79** (változatlan) |
+| E1 | `csv.` hívás bármely szkriptben, amely `adat/*.tsv`-t vagy `konkordancia/*.tsv`-t olvas vagy ír | **0** — két nevesített kivétellel, l. §3.1 |
+| E2 | `python -m py_compile eszkozok/*.py` | hibátlan, minden fájlra |
+| E3 | `adat/elofordulasok.tsv`: ahány mezőn a `csv.DictReader` kimenete eltér a `split('\t')`-étől | **79**, mind a `kapcsolodas` oszlopban — l. §3.2 |
 | E4 | `git diff --stat` az `adat/` és `konkordancia/` alatt | **üres** — a csere kódot érint, adatot nem |
-| ~~E5~~ | ~~`eszkozok/*.py` sorvégei~~ | **visszavonva v6-ban** — `core.autocrlf=true` mellett a munkafa sorvége nem hordoz információt; a blob számít, azt pedig az E4 már őrzi |
-| E11 | `adat/*.tsv` és `konkordancia/*.tsv` a munkafában | **LF**, és ezt `.gitattributes` kényszerítse ki (`*.tsv text eol=lf`), ne egyszeri kézi normalizálás |
+| ~~E5~~ | ~~`eszkozok/*.py` sorvégei~~ | **visszavonva v6-ban** — `core.autocrlf=true` mellett a munkafa sorvége nem hordoz információt; a blob számít, azt pedig az E4 őrzi |
 | E6 | `naplok/F4_0_csv_karmeres.tsv` | létezik, minden `konkordancia/*.tsv`-re van sora |
-| E7 | `gate.py` és `lekerdez.py` futtatva, kimenet összevetve a csere előttivel | **tartalmi diff nulla** (csak időbélyeg) — l. lent |
-| E8 | stderr-őr `eszkozok/*.py`-ban | **24 / 24** |
-| E9 | `python eszkozok/import_sorrend_ellenoriz.py` | **kilépési kód 0** (ma: 1, három fájl) |
+| E7 | `gate.py` és `lekerdez.py` futtatva, kimenet összevetve a csere előttivel | **tartalmi diff nulla** (csak időbélyeg) — l. §3.2 |
+| E8 | stderr-őr | **minden** `eszkozok/*.py`-ban (a szám menetről menetre nő, ne rögzítsd) |
+| E9 | `python eszkozok/import_sorrend_ellenoriz.py` | **kilépési kód 0** (a `28ae8d4`-en: 1, három fájl) |
 | E10 | `git diff --stat` az `adat/`, `konkordancia/`, `sablonok/` alatt az E tétel után | **üres** — a füstteszt mellékhatásai helyreállítva |
+| E11 | `adat/*.tsv` és `konkordancia/*.tsv` a munkafában | **LF**, `.gitattributes`-szal kikényszerítve (`*.tsv text eol=lf`), nem egyszeri kézi normalizálással |
+
+### 3.1 Az E1 két nevesített kivétele
+
+A „0 hívás" nem érhető el és nem is cél: két *mérőeszköz* tárgya maga a `csv`
+modul. A kivétel pontosan ezt a kettőt fedi:
+
+| eszköz | a `csv`-hívás helye | mit mér |
+|---|---|---|
+| `eszkozok/csv_karmeres.py` | 37. sor, `csv.reader` | az E6 bizonyítéka — a `konkordancia/*.tsv` olvasási kára |
+| `eszkozok/f4_0c_korut_ellenoriz.py` | 72., 75. sor, `csv.writer` | a Tétel B „RÉGI" oszlopa — a kiváltott író kimenete |
+
+A kivétel **csak addig érvényes, amíg mindhárom feltétel áll.** Ellenőrizve
+2026-09-14, `852cf0d`:
+
+1. **A táblákat csak olvassák**, egyiket sem írják.
+2. **Minden `csv.writer` memóriapufferbe megy** (`io.StringIO`), soha fájlba —
+   a `f4_0c_korut_ellenoriz.py:75` így épül fel.
+3. **Saját kimenetük kizárólag a `naplok/` alá kerül**:
+   `naplok/F4_0_csv_karmeres.tsv`, illetve `naplok/F4_0c_korut_ellenoriz.tsv`.
+
+Ha a `csv` egy harmadik szkriptben bukkan fel, vagy e három feltétel bármelyike
+megdől, az nem kivétel, hanem hiba. Az E1 ellenőrzése tehát két lépés: a grep,
+majd e három feltétel újramérése a két nevesített fájlon.
+
+### 3.2 Az E3 és az E7 viszonya — melyik mit bizonyít
 
 **E7 — javítva v5-ben.** A v1-v4 azt írta, a diffnek pontosan 79 mezőt kell
 érintenie. Ez hibás elvárás volt: a `CLAUDE.md` maga mondja ki, hogy *„egyik sem
@@ -350,6 +375,22 @@ regressziós teszt, nem a javítás bizonyítéka.
 A javítás bizonyítéka az **E3**: a `csv.DictReader` és a `split('\t')` kimenetét
 a mai fájlon összevetve 79 mezőnek kell eltérnie, mind a `kapcsolodas`-ban — ez
 mutatja, hogy a régi olvasó tényleg rontott, az új pedig nem.
+
+**Az E3-at könnyű rosszul mérni** (a v1-v6 szövege maga csábított rá, és két
+menet is beleesett): ha azt számolod, hány `kapcsolodas`-mező kezdődik **és**
+végződik idézőjellel, **45**-öt kapsz. A helyes predikátum az, hány mezőn **tér
+el a két olvasó kimenete** — a `csv` ugyanis akkor is leszedi a nyitó
+idézőjelet, ha a mező nem idézőjellel végződik. Ez a szám **79**:
+
+```python
+import csv, io
+sorok = [l.rstrip('\r') for l in open('adat/elofordulasok.tsv', encoding='utf-8', newline='').read().split('\n')]
+adat  = [l for l in sorok if l.strip() and not l.lstrip().startswith('#')]
+fejlec = adat[0].split('\t')
+nyers = [dict(zip(fejlec, s.split('\t'))) for s in adat[1:]]
+csvo  = list(csv.DictReader(io.StringIO('\n'.join(adat)), delimiter='\t'))
+print(sum(1 for a, b in zip(nyers, csvo) for k in fejlec if a.get(k, '') != (b.get(k) or '')))
+```
 
 **Ha az E4 nem üres:** állj meg és jelents. Az azt jelenti, hogy egy író szkript
 már a csere előtt is módosított egy táblát, vagy a csere nem bájthű — mindkettő
@@ -539,6 +580,8 @@ indulhat.
 | B21 | Az E1 szűkítve: két nevesített mérőeszköz kivétel, három feltétellel | a mérés tárgya maga a modul; a feltételek megakadályozzák, hogy a kivétel csendben táguljon | chat-menet, 2026-09-14 (a Code-menet kérdésére) |
 | B22 | A `Karoli_Strong_kivonat.tsv` **nem generálódik újra most** | a két utolsó oszlop elavult a mai `Strong_szotar.tsv`-hez képest (46 105 vs 45 659 bájt), de ez adatfrissesség, nem F4-0; a `Szófaj` oszlop study-bemenet, tehát külön, bizonyítékkal alátámasztott döntés kell | chat-menet, 2026-09-14 |
 | B23 | A `merge_karoli_szofaj.py` rongyos-sor-észlelése a 3. menetbe kerül, nem külön menetbe | egysoros kiegészítés egy amúgy is érintett fájlban | chat-menet, 2026-09-14 |
+| B24 | Az E3 predikátuma javítva: „olvasó-eltérés", nem „idézőjellel kezdődik és végződik" | a régi szöveg 45-öt ad 79 helyett, mert a `csv` a nem idézőjellel záruló mezőről is leszedi a nyitó jelet; két menet is beleesett | chat-menet, 2026-09-14 (a Code-menet jelzésére) |
+| B25 | Az E8 elvárásából kikerül a rögzített darabszám | az `eszkozok/` fájlszáma menetről menetre nő (24 -> 27), a rögzített „24 / 24" elavult kritériummá válik | chat-menet, 2026-09-14 |
 
 ---
 
