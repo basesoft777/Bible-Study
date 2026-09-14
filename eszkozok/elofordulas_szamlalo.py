@@ -14,6 +14,12 @@ Hasznalat: python3 eszkozok/elofordulas_szamlalo.py G1941
 """
 
 import sys
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
+
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent

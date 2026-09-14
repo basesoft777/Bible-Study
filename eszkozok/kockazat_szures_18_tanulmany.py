@@ -7,6 +7,12 @@ Futtatas: python eszkozok/kockazat_szures_18_tanulmany.py
 Kimenet:  sablonok/Kockazat_szures_riport_2026-09-03.md
 """
 
+import sys
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
+
 import re
 import csv
 import sys

@@ -15,6 +15,10 @@ nincs véglegesen tisztázva (l. adat/SEMA.md 4., ATALAKITASI_TERV.md.md 9. pont
 kockázat-táblája). A `TAHOT-teljes` azt jelenti: a kivonat egészére, nem az
 Ószövetség kánonjának egészére vonatkozó állítás.
 """
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 import argparse
 import csv
 import datetime

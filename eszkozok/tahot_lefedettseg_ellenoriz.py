@@ -9,6 +9,10 @@ kerül dokumentálva. A könyvenkénti fejezetszám a kánoni maszoréta szöveg
 közismert, közkincs adata (nem STEPBible-fájlból származik) — csak az
 ellenőrzés vázához kell.
 """
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 import csv
 import sys
 from pathlib import Path

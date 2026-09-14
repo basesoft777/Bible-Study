@@ -13,6 +13,12 @@ Bemenetek:
   - step1_decisions.tsv - a fejezet-szintu dontesek (ELSODLEGES/MASODLAGOS/...),
     3 kezi felulbiralassal (lasd DONTES_FELULBIRALAS lent).
 """
+
+import sys
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 import re, csv, os, sys
 from collections import defaultdict
 

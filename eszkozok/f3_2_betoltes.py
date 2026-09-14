@@ -27,6 +27,12 @@ azokra a study sajat, mar dokumentalt Strong-szama kerul at valtozas
 nelkul, TAGNT-visszakereses nelkul (a terv F3.2 sora kifejezetten a
 TAHOT_kivonat.tsv-t nevezi meg).
 """
+
+import sys
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 import csv
 import os
 import re

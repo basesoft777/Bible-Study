@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 """Egyszeri script: Karoli_Strong_kivonat.tsv bovitese Szofaj + Gyok/Szarmaztatas oszlopokkal, Strong_szotar.tsv alapjan."""
+
+import sys
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 import csv
 import re
 

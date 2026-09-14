@@ -16,6 +16,12 @@ Minden vegso csoportra (egy vagy tobb fejezet) ket hipotezist teszteluk:
 
 Kiirja a dontest / NYITOTT-at egy TSV-be, tovabba egy human-readable logot.
 """
+
+import sys
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 import re, csv, sys, os
 from collections import defaultdict, OrderedDict
 

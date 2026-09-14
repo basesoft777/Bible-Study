@@ -21,6 +21,12 @@ Használat:
     python eszkozok/gate.py                    # teljes jelentés, stdout
     python eszkozok/gate.py --md kimenet.md     # jelentés Markdown fájlba is
 """
+
+import sys
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 import argparse
 import csv
 import datetime

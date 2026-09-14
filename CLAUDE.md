@@ -110,6 +110,47 @@ python eszkozok/valami.py
 Ez a magyar kimenetre is áll: `PYTHONIOENCODING=utf-8` nélkül a Windows-konzol
 `cp1250` kódlapja `UnicodeEncodeError`-t dob a héber és görög karakterekre.
 
+Ezt ne a hívóra bízd: minden `eszkozok/*.py` a docstringje után, az importok előtt
+ráteszi magára a wrappert —
+
+```python
+import sys
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+```
+
+— így a szkript csupasz `python eszkozok/valami.py` hívásra is helyes. A
+`PYTHONIOENCODING` ezután tartalék, nem előfeltétel.
+
+## TSV-olvasás — a `csv` modul nem használható ezeken a táblákon
+
+**Az `adat/*.tsv` és a `konkordancia/*.tsv` olvasása `split('\t')`, írása `'\t'.join()`.**
+A `csv.reader` / `csv.DictReader` / `csv.writer` ezeken a fájlokon adatot ront, mert a
+mezők szabad magyar szöveget tartalmaznak idézőjelekkel, a `csv` pedig ezt
+idézés-szintaxisnak veszi. Két külön kár, és külön is jelentkeznek:
+
+| | Mit csinál | Mért hatás az `elofordulasok.tsv`-n |
+|---|---|---|
+| **olvasás** (`csv.reader`) | az idézőjellel kezdődő mezőről leszedi az idézőjeleket | **79 mező, 79 soron** — mind a `kapcsolodas` oszlopban |
+| **írás** (`csv.writer`) | a `"` jelet tartalmazó mezőt körülidézi és belül duplázza | **127 sor** változna egyetlen körúttól |
+
+Az olvasási kár akkor is megtörténik, ha a szkript nem ír vissza semmit — a `gate.py`
+és a `lekerdez.py` ma is megcsonkított `kapcsolodas`-értéket lát. Ez eddig nem
+számított, mert egyik sem dolgozik ezzel a mezővel; **a generátornak viszont számítani
+fog**: a `kapcsolodas` idézőjelei határolják el a szó szerinti igeidézetet a
+magyarázattól, és 79 igehelynél némán eltűnnének a generált motívumnaplóból.
+
+*Miért ez a legveszélyesebb a három csapda közül:* a shell-hibánál a szkript el sem
+indul, a `cp1250`-nél a kimenet dobja el magát — itt viszont **minden hibátlanul
+lefut**, és a kár csendben a kanonikus táblában marad. A hiba nem ott jelentkezik,
+ahol keletkezik.
+
+Egyik mező sem tartalmaz tabot, tehát a szétvágás egyértelmű. Aki mégis `csv`-t
+használna, annak `quoting=csv.QUOTE_NONE, quotechar=None` kell mindkét irányban.
+Táblát író szkript írás előtt vesse össze a sorokat az eredetivel, és eltérésnél
+álljon meg (minta: `eszkozok/igazolas_migracio.py`).
+
 **Git:** munkaág `main`; commit-üzenet magyarul, tétel-azonosítóval kezdve (`F1.4: …`);
 push csak kérésre.
 

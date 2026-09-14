@@ -12,6 +12,12 @@ Kimenet: minden generalt sor mezoi:
 Ezt hasznaljuk (a) regresszios ellenorzesre a meglevo TAHOT_kivonat.tsv-vel szemben
 (csak a nem zarojeles sorokra), es (b) alapul a vegso, Karoli-kulcsos kivonathoz.
 """
+
+import sys
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 import re, sys, os, csv
 
 RAW_DIR = os.path.dirname(os.path.abspath(__file__)) + "/tahot"

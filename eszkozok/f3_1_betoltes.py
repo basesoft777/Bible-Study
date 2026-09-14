@@ -11,6 +11,12 @@ osszeall memoriaban es hossz-ellenorzesen at kell mennie, csak utana
 irodik lemezre -- igy egyetlen elgepelt mezoszam sem torhet el csendben
 egy TSV-oszlopot.
 """
+
+import sys
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+
 import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
