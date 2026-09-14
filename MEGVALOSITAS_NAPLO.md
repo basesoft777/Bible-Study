@@ -872,8 +872,8 @@ csak a beépített sorokon *őrzendő meg*)
 A terv ezt a lépést külön, Opus-menetre különíti el, mert **soronkénti, tartalom-alapú
 ítélet** — a Károli-szóalak hozzárendelése egy Strong-számhoz nem gépesíthető. A gépesített
 rész itt csak az előkészítés (versszöveg-előszedés, könyvnév-normalizálás) és az
-utóellenőrzés; az ítélet mind a 191 sornál egyedi, és auditálhatóan rögzítve van az
-`eszkozok/f3_4_dontesek.tsv`-ben.
+utóellenőrzés; az ítélet mind a 191 sornál egyedi, és auditálhatóan rögzítve van a
+`naplok/f3_4_dontesek.tsv`-ben.
 
 **A hatókör a D24 szerint.** A 4.7 két körben határozza meg a pótlást (a 2026.09.10-i négy
 scan minősített találatai; ami a hét lezárt study előfordulás-táblájában szerepel, de a
@@ -903,9 +903,10 @@ tényleges köre.
 2. `eszkozok/f3_4_nema_nemtalalat.py` — gépi előszűrő: melyik versben **nem** szerepel a
    Strong egyetlen ismert magyar visszaadása sem. Ez a szűrő fogta meg azt a két esetet,
    amelyet kézzel ki lehetett volna tölteni rossz szóval (l. alább).
-3. A soronkénti ítélet → `eszkozok/f3_4_dontesek.tsv` (191 sor) és
-   `eszkozok/f3_4_extra_join.tsv` (7 sor: egy igehelyhez több Strong, illetve
-   vers-tartomány további versei).
+3. A soronkénti ítélet → `naplok/f3_4_dontesek.tsv` (191 sor) és
+   `naplok/f3_4_extra_join.tsv` (7 sor: egy igehelyhez több Strong, illetve
+   vers-tartomány további versei). A két fájl **forrás-rétegű**, nem szkript-melléklet —
+   l. `naplok/README.md`.
 4. `eszkozok/f3_4_join_potlas.py` írja mind a három táblát; `eszkozok/f3_4_ellenoriz.py` és
    `eszkozok/f3_4_zaro_ellenoriz.py` ellenőriz.
 
