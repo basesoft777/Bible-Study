@@ -6,6 +6,7 @@ import re
 import sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', newline='')
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', newline='')
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEGBIZ = {'magas', 'közepes', 'alacsony'}
 AZON = {'tartalom-alapú', 'szó-szintű-tagged', 'interlineáris-gloss', 'kikövetkeztetett'}

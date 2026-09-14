@@ -4,6 +4,7 @@
 import sys, os, io, re
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', newline='')
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', newline='')
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def tsv_sor(mezok):

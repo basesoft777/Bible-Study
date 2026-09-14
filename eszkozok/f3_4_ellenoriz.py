@@ -14,6 +14,7 @@ import re
 import sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', newline='')
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', newline='')
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HOSSZU = {'Jelenések': 'Jel', 'Lukács': 'Luk', 'Máté': 'Mt', 'Róma': 'Róm'}
 # a Karoli_1908.tsv ismert vers-eltolodasai, l. konkordancia/Karoli_adatminosegi_anomaliak.tsv

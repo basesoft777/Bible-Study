@@ -5,6 +5,8 @@ import sys
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
 
 import re
 
@@ -52,6 +54,13 @@ with open(KIVONAT_PATH, encoding="utf-8", newline="") as f:
     eredeti_nyers = f.read()
 kivonat_sorok = [s.rstrip("\r") for s in eredeti_nyers.split("\n")]
 rows = [s.split("\t") for s in kivonat_sorok if s.strip()]
+
+fejlec_hossz = len(rows[0])
+for i, row in enumerate(rows[1:], start=2):
+    if len(row) != fejlec_hossz:
+        raise SystemExit(
+            "MEGALLAS: %s %d. sor: %d mezo a fejlec %d mezoje helyett. Nem irtam semmit."
+            % (KIVONAT_PATH, i, len(row), fejlec_hossz))
 
 out_rows = [rows[0] + ["Szófaj", "Gyök/Származtatás"]]
 for row in rows[1:]:

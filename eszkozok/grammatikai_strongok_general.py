@@ -36,6 +36,8 @@ from datetime import datetime, timezone
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
 
 def tsv_sor(mezok):
     """Egy TSV-sor a csv modul nelkul — l. CLAUDE.md, „TSV-olvasas".

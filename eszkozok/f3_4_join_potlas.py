@@ -16,6 +16,7 @@ import re
 import sys
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', newline='')
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', newline='')
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Az elofordulasok.tsv nehany helyen teljes konyvnevet hasznal; a Karoli_1908.tsv
 # es a Konyv_normalizalo_tabla.tsv viszont a rovid alakot — normalizalas nelkul

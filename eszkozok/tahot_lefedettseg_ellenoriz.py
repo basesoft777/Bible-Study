@@ -16,6 +16,8 @@ from collections import defaultdict
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
 
 ROOT = Path(__file__).resolve().parent.parent
 TAHOT = ROOT / "konkordancia" / "TAHOT_kivonat.tsv"

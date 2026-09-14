@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import sys, io, os
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', newline='')
+sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', newline='')
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CEL = {'1Thessz 5:23', 'Zsid 4:12', '1Kor 15:45', 'Luk 1:46', 'Luk 1:47',
        '1Kor 2:14', '1Kor 2:15', 'Zsid 7:3', 'Zsid 7:17', '2Pét 2:4', '2Pét 2:5'}
