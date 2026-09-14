@@ -1,6 +1,6 @@
 Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.09.14 (F2 — lekérdező CLI, TAHOT-lefedettség tételes felmérése)
+Utolsó frissítés: 2026.09.14 (F3.0-F3.3 — retroaktív betöltés és a gate.py első futtatása)
 
 Nagy, tartalmi döntést igénylő tételek
 
@@ -31,6 +31,8 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 * **Felület-döntés:** készüljön-e szűk hatókörű PAT a privát repóhoz a claude.ai chat-felülethez, vagy a munka véglegesen Claude Code-ra kerül át? *Az átalakítási terv 5. pontja ezt gyakorlatilag eldöntötte (a végrehajtási felület Claude Code), de a privát repó elérése formálisan nyitott.*
 * **Figyelendő, még nem elérhető STEPBible-adatállományok:** **TAGOT** (taggelt Septuaginta — ez pótolná a "tudatos idézet vs. véletlen egybeesés" eldöntéséhez hiányzó láncszemet), **TBCWG** (rokon jelentésű szócsoportok — a motívumlog küszöbszámítási elvét segítené), kisebb jelentőségűek: TOTMM/TNTMM, TFBDB.
 * **ÚJ (F1.6) — SDBH / SDGNT import.** Az átalakítási terv 4.3 pontja új datasetként javasolja az UBS szemantikai domén-szótárakat (CC BY-SA 4.0, `ubsicap/ubs-open-license`). **Az import nem történt meg**, és az `adat/datasetek.tsv` `allapot=hianyzik` értékkel jelöli. Ez az F2 `domen` parancsának és harmadik elfogadási tesztjének előfeltétele. Licenc-következmény: a CC BY-SA 4.0 forrásmegjelölést követel, **és a származékos adat is ugyanilyen licenc alá esik** — rögzítendő a `konkordancia/README.md`-ben, és figyelembe veendő a lexikon publikálásánál.
+* **ÚJ (F3.3) — a `scope=manual` és az F4 generátor ütközése.** Az F3 mind a 201 `elofordulasok.tsv` sort `scope=manual` kulccsal írta ki. Ez a SEMA 1.5 szerint helyes (az állítás forrása a kézzel írt study), de a SEMA 470-471. pontja ehhez azt fűzi, hogy `manual` esetén a sor **értelmezésként jelölendő a generált kimenetben** — vagyis az F4 mind a 201-et értelmezésnek fogja címkézni. Közben 138 sor `talalat=IGAZOLVA` almezőt visel (a TAHOT-visszakeresés tételesen megerősítette), 25 pedig `talalat=NT-nincs_TAHOT_hatalykor` hatókör-jelölést. Az információ bent van, de a vezető kulcs elrejti. **Döntendő az F4 előtt:** vagy a generátor olvassa a `talalat=` almezőt, vagy ezek a sorok külön `scope`-értéket kapnak.
+* **ÚJ (F3.3) — három KIRALY-001 sor `strong` nélkül.** Zsid 5:6, 5:10 és 6:20 esetében a `gerinc_elem` maga `G5010`, tehát a Strong ismert, csak nem került át a `strong` oszlopba. A másik három `strong` nélküli sor (MENNY-001) helyes: ott a horgony nem lexikai (`referencia:1Énokh 10:4-6`, `idézet:1Énokh 1:9`, `formula:οὐκ ἐφείσατο`).
 * **Bibliai Motívumlexikon — koncepcionális tervezés.** Réteges architektúra-vízió (Szöveg → Konkordancia → Lexikon → Motívum → Kapcsolat → Tanulmány), napló: `motivumlog/Bibliai_Motivumlexikon_tervezesi_naplo.md`. *Ez a tétel az `ATALAKITASI_TERV.md.md`-vel implementációs fázisba lépett — az F1 (séma + belépési pont) elkészült; az `adat/` réteg ennek a víziónak az első megvalósult darabja.*
 
 Lezárva
