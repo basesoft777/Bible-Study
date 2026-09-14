@@ -1,2 +1,34 @@
 # Igehely-parok kozti kapcsolatok. Kulcs: forras_igehely + cel_igehely + id. Sema: adat/SEMA.md 2.3
 forras_igehely	cel_igehely	id	tipus	funkcio	bizonyossag	pardes_szint
+1Móz 14:18-20	2Móz 19:6	KIRALY-001	Párhuzam	egyéni eset → kollektív, nemzeti szintre emelve, lévita rend előtt	magas	Remez
+1Móz 14:18-20	Zsolt 110:4	KIRALY-001	Előkép	egyszeri esemény → örökkévaló, próféciai "rendé" emelve; TSK 14 szavazat	magas	Remez
+Zsolt 110:4	Zak 6:13	KIRALY-001	Párhuzam	próféciai visszautalás → explicit "pap a trónon" kép; TSK 9 szavazat	magas	Remez
+1Móz 14:18-20	Zak 6:13	KIRALY-001	Párhuzam	közös H3548 priest-king sense; TSK csak 2 szavazat, gyenge megerősítés	közepes	Remez
+2Móz 19:6	1Pét 2:9	KIRALY-001	Beteljesedés	szó szerinti LXX-idézés (βασίλειον ἱεράτευμα); TSK 22 szavazat	magas	Drash
+Zsolt 110:4	Zsid 5:6	KIRALY-001	Beteljesedés	a Zsolt 110:4 első idézete, Krisztus főpapságának bevezetése	magas	Drash
+Zsolt 110:4	Zsid 5:10	KIRALY-001	Beteljesedés	a Zsolt 110:4 idézése	magas	Drash
+Zsolt 110:4	Zsid 6:20	KIRALY-001	Beteljesedés	a Zsolt 110:4 idézése	magas	Drash
+Zsolt 110:4	Zsid 7:1-28	KIRALY-001	Beteljesedés	a Melkizedek-rend teljes kifejtése, a Zsolt 110:4 nyomán	magas	Drash/Sod
+1Móz 4:26	Sof 3:9	ISTENTISZT-001	Párhuzam	azonos szereposztás (ember hívja segítségül Isten nevét), más kánoni ponton	magas	Remez
+1Móz 4:26	2Kir 5:11	ISTENTISZT-001	Párhuzam	azonos szereposztás, parafrazált formában — nincs szó szerinti egyezés	közepes	Remez
+1Móz 4:26	Jóel 2:32	ISTENTISZT-001	Párhuzam	azonos szereposztás, az ószövetségi megfogalmazás csúcspontjáig	magas	Remez
+Jóel 2:32	Róm 10:14	ISTENTISZT-001	Beteljesedés	szó szerinti LXX-idézés-lánc (2:32⇒Róm 10:13⇒10:14)	magas	Remez
+Róm 10:14	1Kor 1:2	ISTENTISZT-001	Párhuzam	azonos görög ige (ἐπικαλέομαι), egyházi azonosító-formulává válás — nincs szó szerinti idézés	közepes	Remez
+Róm 10:14	2Tim 2:22	ISTENTISZT-001	Párhuzam	azonos görög ige, egyházi azonosító-formulává válás	közepes	Remez
+Róm 10:14	1Pét 1:17	ISTENTISZT-001	Párhuzam	azonos görög ige, egyházi azonosító-formulává válás	közepes	Remez
+Róm 10:14	ApCsel 9:14	ISTENTISZT-001	Párhuzam	azonos görög ige, üldözési kontextus	közepes	Remez
+ApCsel 9:14	ApCsel 9:21	ISTENTISZT-001	Párhuzam	szó szerinti megismétlés ugyanabban a fejezetben	magas	Remez
+Róm 10:14	ApCsel 22:16	ISTENTISZT-001	Párhuzam	azonos görög ige, megtérés-elbeszélés	közepes	Remez
+1Móz 4:26	2Móz 33:19	ISTENTISZT-001	Variáns	A/B/C tipológia B-esete — azonos szerkezet (קָרָא+שֵׁם), felcserélt alany/tárgy (Isten mondja ki a saját nevét)	magas	Remez
+2Móz 33:19	2Móz 34:5	ISTENTISZT-001	Párhuzam	ugyanaz a jelenet, ugyanaz a szereposztás (Isten önkinyilatkoztatása)	magas	Remez
+1Móz 12:8	1Móz 13:4	ISTENTISZT-001	Párhuzam	Ábrám explicit visszatér ugyanahhoz az oltárhoz	magas	Drash
+1Móz 13:4	1Móz 26:25	ISTENTISZT-001	Párhuzam	öröklés — azonos szereposztás nemzedékek közt, azonos helyszín (Beérseba)	magas	Drash
+1Móz 21:33	1Móz 26:25	ISTENTISZT-001	Párhuzam	öröklés — azonos szereposztás nemzedékek közt, azonos helyszín	magas	Drash
+1Kir 18:24	1Kir 18:25	ISTENTISZT-001	Párhuzam	egyazon pericope közvetlenül egymást követő versei	magas	Remez
+1Kir 18:25	1Kir 18:26	ISTENTISZT-001	Párhuzam	egyazon pericope közvetlenül egymást követő versei	magas	Remez
+Zsolt 116:4	Zsolt 116:13	ISTENTISZT-001	Párhuzam	egyazon zsoltáros, szó szerinti ismétlés	magas	Remez
+Zsolt 116:13	Zsolt 116:17	ISTENTISZT-001	Párhuzam	egyazon zsoltáros, szó szerinti ismétlés	magas	Remez
+Zsolt 105:1	1Krón 16:8	ISTENTISZT-001	Párhuzam	csaknem szó szerint azonos szöveg (1Krón 16 a Zsolt 105/96/106 összeállítását idézi)	magas	Remez
+Zsolt 105:1	Ézs 12:4	ISTENTISZT-001	Párhuzam	szinte szó szerinti egyezés a formulában	magas	Remez
+Jer 10:25	Zsolt 79:6	ISTENTISZT-001	Párhuzam	csaknem szóról szóra azonos, tagadó forma; Károli-KH mindkét irányban megerősíti	magas	Remez
+Sof 3:9	Zak 13:9	ISTENTISZT-001	Párhuzam	azonos szereposztás, kétirányú megerősítéssel kiegészítve	magas	Remez

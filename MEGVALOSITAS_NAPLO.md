@@ -1,9 +1,10 @@
-# Megvalósítási napló — F0-F2 fázis
+# Megvalósítási napló — F0-F3 fázis
 
-**Készült:** 2026.09.13 (F0-F1) · frissítve 2026.09.14 (F2)
+**Készült:** 2026.09.13 (F0-F1) · frissítve 2026.09.14 (F2, F3.0, F3.1)
 **Forrás terv:** `ATALAKITASI_TERV.md.md`, 6. szakasz
 **Fázisok:** F0 — Blokkolók feloldása (8 tétel) · F1 — Séma és belépési pont (6 tétel) ·
-F2 — Lekérdező CLI
+F2 — Lekérdező CLI · F3 — Retroaktív betöltés (F3.0 előfeltétel-ellenőrzés, F3.1 könnyű
+csoport; F3.2-F3.4 nyitva)
 **Munkamenet:** Claude Code
 
 ---
@@ -580,3 +581,172 @@ szűretlen metszet, 12 kiszűrt grammatikai Strong, 11 megmaradó gerinc-jelölt
    `--csak-tartalmi` kapcsolót hozzáadni.
 6. **A `main` push-a az `origin`-ra továbbra sincs meghatározva** — ugyanaz a nyitott tétel,
    mint az F1 zárásakor (l. II. rész vége).
+
+---
+
+# IV. rész — F3 fázis (Retroaktív betöltés)
+
+**Készült:** 2026.09.14
+**Forrás terv:** `ATALAKITASI_TERV.md.md` 6. szakasz F3 pontja, a lépéstábla F3.0 sora
+
+---
+
+## Elkészült tételek
+
+### F3.0 — Előfeltétel-ellenőrzés ✅
+
+A lépés kérdése: érinti-e az F2.0-ban feltárt TAHOT-hiány (Jób 40:1-5 és a teljes Jób 41,
+l. III. rész F2.0) bármelyik olyan igehelyet, amelyet az F3 ténylegesen betölt.
+
+**Az F3 betöltési köre** (a terv F3.1-F3.2 sora szerint): a hét lezárt tematikus study —
+`Melkizedek_tematikus.md`, `Segitsegul_hivni_az_Urat_tematikus.md` (könnyű csoport),
+`Tehom_tematikus.md`, `Hadesz_Seol_tematikus.md`, `Isten_fiai_Nefilim_Gibborim_tematikus.md`,
+`Pneuma_pszukhe_megkulonboztetes_tematikus.md`, `Rafaim_tematikus.md` (nehéz csoport) — plusz
+az ISTENTISZT-001 lexikon-oldal (`motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md`).
+
+**Ellenőrzés módja:** mind a nyolc fájl (a hét study + a lexikon-oldal), valamint a hozzájuk
+tartozó kereszthivatkozás-naplók (`tematikus_lezart/naplok/*.md`) tételes `Jób`-grep-je,
+igehely-tartományra szűrve.
+
+**Eredmény: a hiány egyetlen betöltendő igehelyet sem érint.**
+
+A nyolc fájlban előforduló összes Jób-hivatkozás felsorolva: Jób 1:6, 2:1 (Isten fiai/Nefilim),
+Jób 3:8 (Bűn gyűrűzése — ez lezárt, de nem a mostani F3.1-F3.2 könnyű/nehéz körbe tartozó
+study, l. megjegyzés lent), Jób 5:5, 5:6-7, 5:8 (Melkizedek naplója), Jób 7:9, 11:8, 14:13,
+16:18, 17:13, 17:16, 21:13, 21:17, 22:15, 22:17, 24:19, 26:5, 26:6, 28:14, 31:38, 31:40,
+33:27, 38:7, 38:16, 38:30. A legmagasabb fejezetszám, ami ténylegesen előfordul, **Jób 38**
+(a Tehóm-study "mélység forrásai" sora) — a hiány (40:1-5, 41) fölött marad egy teljes
+fejezettel. Egyetlen betöltendő study vagy a lexikon-oldal sem hivatkozik Jób 40-re vagy
+41-re.
+
+*Megjegyzés a Bűn-gyűrűzése studyra:* ez az F0-ban már lezárt HAMART-001 study (nem F3.1/F3.2
+tárgya), de a teljesség kedvéért ellenőrizve — a kereszthivatkozás-naplójában szereplő Jób-helyek
+(3:8, 5:5-7, 16:18, 21:17, 22:15/17, 31:38/40, 33:27) szintén mind 38. fejezet alattiak.
+
+**Következmény:** nincs explicit hiány-jelölésre szoruló sor, a 3. alapszabály (memória vs.
+lekérdezés — hiányt gyenge anyaggal kitölteni tilos) ezen a körön belül nem aktiválódik. Az
+F3.1-F3.4 ettől függetlenül futtathatók a TAHOT-hiány miatti kockázat nélkül.
+
+**Fennmaradó, de az F3.0 hatókörén kívüli kockázat:** ha egy jövőbeli teljes ÓSZ-scan
+(`lekerdez.py scan`) vagy a hat küszöbön túli, még meg nem írt motívum (HAMART-001-en kívüli
+öt) valaha Jób 40-41-et érintő Strong-számra fut, a hiány néma nem-találatot fog adni, mert a
+`TAHOT_kivonat.tsv` ott 0 sort tartalmaz — ez nem új felismerés, hanem az F2.0-ban rögzített,
+még nyitva álló tétel (l. III. rész, Nyitva maradt tételek 2. pont), amit az F3.0 csak
+megerősít, nem old fel.
+
+---
+
+### F3.1 — Könnyű csoport ✅
+
+**Készült:** 2026.09.14
+**Forrás terv:** `ATALAKITASI_TERV.md.md` 6. szakasz, F3 lépéstábla F3.1 sora
+
+A terv előírja: Melkizedek + Segítségül hívni betöltése, egy menetben a 4.6 gate
+visszamenőleges alkalmazásával és a háromértékű státusz bevezetésével. Az ISTENTISZT-001
+study↔lexikon egyesítés vizsgálata megerősítette a terv előfeltevését: a `Segitsegul_
+hivni_az_Urat_tematikus.md` és a `motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md`
+igehely-halmaza **valóban pontosan egyezik (29 = 29)** — a lexikon-oldal táblázata a study
+1. pontjának szó szerinti átemelése, kiegészítve PaRDeS-szint/funkció-besorolással —, tehát
+ez tiszta egyesítés volt, tartalmi ütközés feloldása nélkül.
+
+**Egyszeri, kézi futtatású betöltő szkript:** `eszkozok/f3_1_betoltes.py` — nem a
+`betolt.py`/`lekerdez.py` eszköztár része (azok F2/F4 hatókörébe tartoznak), hanem ennek az
+F3.1 menetnek a jegyzőkönyve: a sorokat memóriában állítja össze, **minden sort mezőszám
+szerint ellenőriz, mielőtt bármit lemezre írna** — így egy elgépelt mezőszám kivétellel áll
+le, nem csendes oszlop-eltolással —, és a kulcs-egyediséget (`id`+`igehely`) is ellenőrzi
+írás előtt.
+
+**Betöltött adat:**
+
+| Tábla | KIRALY-001 (Melkizedek) | ISTENTISZT-001 (Segítségül hívni) | Összesen |
+|---|---|---|---|
+| `motivumok.tsv` | 1 sor | 1 sor | 2 |
+| `elofordulasok.tsv` | 9 sor | 29 sor | 38 |
+| `jeloltek.tsv` (dontes=beépítve) | 9 sor | 29 sor | 38 |
+| `kapcsolatok.tsv` | 9 sor | 23 sor | 32 |
+
+**Forrás az `elofordulasok.tsv`-hez:** a Melkizedek-study 1. pontja + a hozzá tartozó
+kereszthivatkozás-napló; a Segítségül hívni-study 1. pontja helyett — mivel gazdagabb,
+mezőnként (PaRDeS-szint, funkció, Strong, BDB-jelentés) már tagolt forrás — az
+ISTENTISZT-001 lexikon-oldal 1. pontjának táblázata, szó szerint átvéve.
+
+**Proveniencia — tudatos döntés, nem mulasztás.** Mindkét motívum kutatása megelőzte a
+`lekerdez.py`-t (F2, 2026.09.14), tehát egyetlen sor sem `lekerdez.py`-kimenet. Az
+`adat/SEMA.md` 1.5 pontja szerint ez pontosan a `scope=manual` eset — minden sor
+`scope=manual | forras=<study fájl> | ts=<a napló szerint dokumentált dátum>` alakú
+provenienciát kapott, a study/napló saját 【NAPLO】-dátumait követve soronként (pl. a
+Segítségül hívni 2026.09.05-i eredeti 17 sora `ts=2026-09-05`, a 2026.09.08-i G1941-scan
+6 új ÚSZ-sora `ts=2026-09-08`). **Ez nem hamis "ellenőrizve" állítás** — a `manual` érték
+explicit jelzi, hogy a Minőségi kapu ezt értelmezésként, nem gépi ténymegállapításként
+kezelje (l. `SEMA.md` 1.5, a terv legfontosabb egyetlen szabálya).
+
+**`gerinc_elem` retroaktív kitöltése.** Egyik motívum kutatása sem a hétlépéses
+`lekerdez.py`-menettel futott (az még nem létezett), de mindkettő dokumentáltan
+lexikai/formulai horgonyon áll: ISTENTISZT-001 minden ÓSZ-sora a H7121+H8034 kollokációs
+párra, ÚSZ-sorai a G1941-scan-re (a 2Móz 33:19/34:5 kivétellel, amely ugyanabból a
+kollokációs scanből ered, csak funkcionálisan másik BDB-sense alá sorolva); KIRALY-001 sorai
+H3548-ra (BDB "priest-king" sense), Zsolt 76:3 H8004-re, a Zsid-sorok G5010-re (τάξις). Egy
+sor sem maradt horgony nélkül — az integritási ellenőrzés (l. lent) ezt megerősítette.
+
+**4.6 gate — visszamenőleges alkalmazás:**
+
+| Mező | KIRALY-001 | ISTENTISZT-001 |
+|---|---|---|
+| `azonossag_tipusa` | lexikai | formulaikus |
+| `negativ_kriterium` | Melkizedek névszerinti említése VAGY a BDB H3548 "priest-king" sense — a "chieftain" alkategória (Jetró stb.) explicit kizárva | aktív קָרָא+בְּ szerkezet — a passzív נִקְרָא...עַל (D-minta) kizárva |
+| `folerendelt_fogalom` | papi és királyi tisztség kombinációja Melkizedekre hivatkozás nélkül | istentisztelet/imádság általában, a formulán kívül |
+
+A negatív kritériumok mindkét esetnél **már a study-kban is dokumentált, ténylegesen
+alkalmazott elhatárolásokból** származnak (KIRALY-001: a BDB "chieftain" alkategória
+kizárása; ISTENTISZT-001: a D-minta explicit kizárása) — nem új, utólag kitalált szabályok,
+csak a study szövegéből a séma mezőibe emelve.
+
+**Háromértékű státusz.** Mindkét motívum `publikálható` (nem `véglegesített`) lett — ez
+tudatos, a `SEMA.md` 2.1.1 saját példáinak megfelelő döntés: pontosan ez a két motívum a
+dokumentált bizonyíték arra, hogy a régi "LEZÁRVA" címke félrevezető volt (Melkizedek a
+08.22-i lezárás után 09.08-09-én bővült, a Segítségül hívni kétszer is, mindkétszer
+**szerkesztői döntés** nyomán, nem csak új lexikai bizonyítékra). A `véglegesített` állapot
+— ami kizárná az újbóli szerkesztői döntés általi újranyitást — ezért itt nem indokolt.
+
+**Integritás-ellenőrzés (kézzel, az `ellenoriz.py` hiányában — l. F2 nyitva maradt 4. pont):**
+lefuttatva mind a négy `SEMA.md` 3. szakasz szerinti szabályra, ami F3.1 hatókörében
+értelmezhető — mind a 38 `elofordulasok` sorhoz van `jeloltek` sor `dontes=beépítve`
+értékkel (2. szabály), egyetlen `gerinc_elem` és `proveniencia` mező sem üres (3-4.
+szabály), és nincs duplikált `id+igehely` kulcs.
+
+---
+
+## Nyitva maradt tételek
+
+1. **F3.2-F3.4 még nem indult el.** A nehéz csoport (Tehóm, Hádész/Seól, Isten
+   fiai/Nefilim, Pneuma/pszükhé, Rafaim — visszakereséssel a `TAHOT_kivonat.tsv`-ből), a
+   `gate.py` első futtatása a mind a 14 meglévő ID-re (F3.1 ezt csak a két saját ID-jére,
+   KIRALY-001-re és ISTENTISZT-001-re nem futtatta — nem is futtathatta, mert a `gate.py`
+   maga még nem létezik), és a Károli-Strong join visszamenőleges pótlása (F3.4, Opus) külön
+   menetekre várnak.
+2. **`gate.py` hiányában az ütközés-/részhalmaz-ellenőrzés kézzel sem történt meg a többi 12
+   meglévő motívum ellenében.** Az F3.1 csak azt ellenőrizte kézzel, hogy a két új ID saját
+   38 sora belsőleg konzisztens (2-4. integritási szabály) — azt nem, hogy KIRALY-001 vagy
+   ISTENTISZT-001 igehely-halmaza átfedésben áll-e valamelyik másik, még be nem töltött
+   motívummal. Ez a `gate.py` első futtatásáig (F3.3) nyitva marad.
+3. **A Segítségül hívni-study 1Kir 18:24 belső Kontraszt-esete nem került a
+   `kapcsolatok.tsv`-be.** Ez nem mulasztás, hanem a séma dokumentált korlátja (l.
+   `SEMA.md` 2.3 „Ismert névütközés" doboza): a `forras_igehely`+`cel_igehely` kulcs két
+   *különböző* igehelyet feltételez, egy versen belüli kontrasztot (Baál neve vs. YHVH neve,
+   ugyanabban a 1Kir 18:24 versben) nem tud natívan ábrázolni. Nyitott kérdés marad a
+   `Bibliai_Motivumlexikon_tervezesi_naplo.md` KAPCSOLATOK-fejezete felé.
+4. **A Károli-join (`karoli_szo`) csak a már meglévő `Karoli_Strong_kivonat.tsv`-sorokból
+   öröklődött** (2Móz 19:6, Zak 6:13 a KIRALY-001-nél; Zak 13:9, Róm 10:14, 1Kor 1:2,
+   2Tim 2:22, 1Pét 1:17, ApCsel 9:14/9:21/22:16 az ISTENTISZT-001-nél) — a többi 30 sornál a
+   mező szándékosan üresen maradt. Ez nem hiba: a terv a teljes visszamenőleges Károli-join
+   pótlást explicit külön, Opus-menetre (F3.4) különíti el, mert soronkénti tartalom-alapú
+   ítéletet igényel, nem gépesíthető.
+5. **A `motivumok.tsv` `sablon_verzio` mezője `v12`-t kapott mindkét motívumnál** — ez a
+   study fejlécének saját állítása, nem egy frissen lefuttatott F5-ös megfelelőségi kör
+   eredménye (az F5 még nem történt meg). Ha az F5 sablon-frissítés (a terv 123. sorának
+   javítása) megtörténik, ez a mező felülvizsgálandó.
+6. **A Jób 40-41 STEPBible-forrásfájl tételes ellenőrzése** (a feltételezett héber/angol
+   versszámozási eltolódás hipotézise) továbbra sem történt meg — ugyanaz a nyitott tétel,
+   mint az F2.0 zárásakor.
+
+---
