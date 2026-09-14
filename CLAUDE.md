@@ -110,7 +110,7 @@ python eszkozok/valami.py
 Ez a magyar kimenetre is áll: `PYTHONIOENCODING=utf-8` nélkül a Windows-konzol
 `cp1250` kódlapja `UnicodeEncodeError`-t dob a héber és görög karakterekre.
 
-Ezt ne a hívóra bízd: minden `eszkozok/*.py` a docstringje után, az importok előtt
+Ezt ne a hívóra bízd: minden `eszkozok/*.py` a docstringje után, az importok után
 ráteszi magára a wrappert —
 
 ```python
@@ -122,6 +122,11 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 — így a szkript csupasz `python eszkozok/valami.py` hívásra is helyes. A
 `PYTHONIOENCODING` ezután tartalék, nem előfeltétel.
+
+(Az őr az importblokk *után* álljon, ne előtte — ha az `import sys` a wrapper
+alatt van, a wrapper `sys.`-használata `NameError`-ral bukik, mielőtt bármi
+lefutna. Dokumentált eset: `lekerdez.py`, `grammatikai_strongok_general.py`,
+`tahot_lefedettseg_ellenoriz.py`, l. `F4_BRIEF.md` „Tétel E".)
 
 ## TSV-olvasás — a `csv` modul nem használható ezeken a táblákon
 

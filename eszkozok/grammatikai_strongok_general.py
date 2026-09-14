@@ -29,15 +29,14 @@ Futtatás a repó gyökeréből:
     python eszkozok/grammatikai_strongok_general.py
 """
 
-if hasattr(sys.stdout, 'reconfigure'):
-    sys.stdout.reconfigure(encoding='utf-8')
-
-
 import csv
 import os
 import sys
 from collections import Counter
 from datetime import datetime, timezone
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 TAHOT = os.path.join("konkordancia", "TAHOT_kivonat.tsv")
 TAGNT = os.path.join("konkordancia", "TAGNT_kivonat.tsv")

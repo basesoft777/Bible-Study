@@ -16,9 +16,6 @@ kockázat-táblája). A `TAHOT-teljes` azt jelenti: a kivonat egészére, nem az
 Ószövetség kánonjának egészére vonatkozó állítás.
 """
 
-if hasattr(sys.stdout, 'reconfigure'):
-    sys.stdout.reconfigure(encoding='utf-8')
-
 import argparse
 import csv
 import datetime
@@ -26,6 +23,9 @@ import re
 import sys
 from pathlib import Path
 from collections import defaultdict
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 ROOT = Path(__file__).resolve().parent.parent
 KONK = ROOT / "konkordancia"

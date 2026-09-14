@@ -10,13 +10,13 @@ közismert, közkincs adata (nem STEPBible-fájlból származik) — csak az
 ellenőrzés vázához kell.
 """
 
-if hasattr(sys.stdout, 'reconfigure'):
-    sys.stdout.reconfigure(encoding='utf-8')
-
 import csv
 import sys
 from pathlib import Path
 from collections import defaultdict
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
 
 ROOT = Path(__file__).resolve().parent.parent
 TAHOT = ROOT / "konkordancia" / "TAHOT_kivonat.tsv"
