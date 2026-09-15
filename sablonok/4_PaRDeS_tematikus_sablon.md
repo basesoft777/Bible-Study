@@ -10,7 +10,9 @@ alatt álló study-nál kötelező. F5.2: új „Verzió-címke” alszakasz és
 nem dátum, és csak teljes megfelelőségi ellenőrzés után írható át.
 F5.3: az 1. pontban a hétlépéses kutatási protokoll (P1–P7) checklistté
 alakítva, a `lekerdez.py` determinisztikus parancsaival és a
-proveniencia-sor kötelezettségével.)*
+proveniencia-sor kötelezettségével. F5.4: a Minőségi kapu új Q7
+kritériumot kapott (dataset-lefedettség az `adat/datasetek.tsv`
+szerint), a bevezető és záró mondat száma hétre javítva.)*
 *v15 — 2026.09.11 (Szabályváltozás: az 1. pont táblázatának
 "Jelentés-szöveg (BDB eredeti)" oszlopa mostantól az angol BDB-szöveg
 MELLETT magyar fordítást is tartalmaz a cellán belül — a korábbi
@@ -282,7 +284,7 @@ futtatandó
 A biblemate-agentic-workspace (eliranwong) minőségi-kapu ötletéből
 adaptálva, saját megfogalmazással: mielőtt egy tematikus study-t
 LEZÁRVA jelölnénk (akár első alkalommal, akár utólagos
-átdolgozásnál), a study-fájl saját magán fusson végig ez az öt
+átdolgozásnál), a study-fájl saját magán fusson végig ez a hét
 ellenőrzés. Bármelyik kritérium bukása esetén a study NEM
 tekinthető lezártnak — vissza kell térni és javítani, mielőtt a
 Lezárási checklist elindulna.
@@ -344,8 +346,16 @@ Lezárási checklist elindulna.
       egy másik réteg tanításába összeolvasztva, keresztre hivatkozás
       nélkül. Részletek: l. a "Napló-jelölés kötelező" bekezdés (6.
       pont).
+- [ ] **Q7. Dataset-lefedettség indokolt és ellenőrizhető** — az `adat/datasetek.tsv` `study_tipus = tematikus` sorai szerint. A mátrixot ez a tábla tartja; a sablon szándékosan nem másolja.
+      - `mindig`: a lefutás proveniencia-sorral dokumentált.
+      - `felteteles`: vagy a lefutás dokumentált, vagy egy mondat rögzíti, hogy a feltétel nem áll fenn (pl. „a study nem állít ÚSZ-sort” → TAGNT és LXX nem kötelező).
+      - `ajanlott`: a használat vagy a kihagyás jelölve. `allapot = hianyzik` esetén a kihagyás nem bukás, de a study nem hivatkozhat a datasetre.
+      - `korlatos` állapot (KJV/ASV Strongs): a lefedett könyveken kívül nem épülhet rá „teljes” állítás.
+      - `oroklott`: olvasható, a study nem írja.
 
-Ha mind a hat kritérium teljesül, a study mehet tovább a Lezárási
+      A kapu elbukik, ha egy `mindig` sor nyom nélkül marad, vagy ha egy `felteteles` sor feltétele fennáll, de nincs lefutás.
+
+Ha mind a hét kritérium teljesül, a study mehet tovább a Lezárási
 checklistre. Ha egy study utólag bővül (nem csak első lezáráskor),
 a Minőségi kapu **teljes egészében újra lefuttatandó** — nem csak a
 bővített részre.
