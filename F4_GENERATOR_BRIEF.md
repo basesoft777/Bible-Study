@@ -1,6 +1,6 @@
 # F4 brief — a generátorok (`general.py`)
 
-*Készítette: chat-menet (Opus 5), 2026-09-15, **v4** (v1: első kiadás; v2: a G0 három kérdése eldöntve, a D3 lecserélve; v3: a `fo_elofordulas` csoportkulccsá vált, az 1. menet lefutott, három lelet kritériumként felvéve; v4: a 2. menet lefutott, a könyvnév-normalizálás a táblába kerül (K15/D14), a hiánylista kettéosztva, a study-összevetés módszertana pontosítva). Kiindulási állapot: `main` = `origin/main` = **`a7d23a6`** (F4-0, F4.0e, F4.1, F4.2, F4.2a, F4.3 lezárva).*
+*Készítette: chat-menet (Opus 5), 2026-09-15, **v5** (v1: első kiadás; v2: a G0 három kérdése eldöntve, a D3 lecserélve; v3: a `fo_elofordulas` csoportkulccsá vált, az 1. menet lefutott, három lelet kritériumként felvéve; v4: a 2. menet lefutott, a könyvnév-normalizálás a táblába kerül (K15/D14); v5: a 3. menet lefutott és élesített, a forrásréteg archív-szakaszai jelölendők (K16/D15), a sorvég-flip ellenőrzendő (K17), záró 4. menet felvéve). Kiindulási állapot: `main` = `origin/main` = **`3728e76`** (F4-0 … F4.5 lezárva, a generált blokkok élesítve).*
 *Végrehajtás: Claude Code, a repó gyökeréből. A chat-menet nem hajtja végre — ez a brief a bemenete.*
 *Előzmény: `F4_BRIEF.md` (F4-0, csv-mentesítés + stderr-őr). Ez a fájl az F4 tulajdonképpeni tartalmát írja le.*
 
@@ -249,6 +249,52 @@ L. **K15** és **D14**.
   `jeloltek.tsv`-ben — ott nem hiányzó elutasítás van, hanem a már ismert
   F3-hiány következménye. A hat betöltött ID-re **24 tényleges sor** marad.
   L. **K9'**.
+
+### 1.7 A 3. menet mért eredménye *(független ellenőrzés, `3728e76`)*
+
+Az `F4.3a`/`F4.4`/`F4.5` — benne a **visszafordíthatatlan élesítés** — a
+chat-menet `a7d23a6`-kori saját másolatai ellenében újramérve.
+
+| | mért |
+|---|---|
+| K15 | mindkét táblában 0 hosszú alak; egyetlen könyv sem szerepel két alakban; 201 / 221 adatsor; LF ✓ |
+| K15 — join | `id+igehely`: **201/201**, **0 árva kulcs** (a `jeloltek.tsv` kiterjesztése a kérésen felül helyes volt) ✓ |
+| K15 — érintetlenség | az `igehely` oszlop kimaszkolásával **0 eltérő sor** a baseline-hoz képest; idézőjel 268 → 268 ✓ |
+| **K10** | a naplóból eltűnt **60** nem üres sorból **0 fedetlen** ✓ |
+| K10 — index | a 13 eltűnt sor prózája hiánytalanul megvan ✓ |
+| K9' | 24 + 32, a blokkhatár a fájlban is látszik ✓ |
+| D12 | élő `#N` hivatkozás nincs; a megmaradt számok a 2026.09.13-i átszámozás történeti leírásában állnak ✓ |
+| `KONYV_ALIAS` | `{}` ✓ |
+| markerek | napló 4 blokk, index 1 blokk; `--ellenoriz` zöld ✓ |
+
+**Egy szivárgás — a forrásréteg archív szakaszai élő szövegként állnak.** A hét
+`motivumok/[ID].md` öt szakaszból áll, de csak az utolsó van *(archív)*-ként
+jelölve. A másik három pontosan azt duplikálja, amit mostantól a generált blokk
+birtokol, **elavult értékekkel**:
+
+| szakasz | mit mond | mit mond a generált blokk |
+|---|---|---|
+| `## Tematikus áttekintés — a napló mai tétele` | `ALVIL-001.md`: „**4 előfordulás** — ✅ LEZÁRVA" | „**6 fő előfordulás** / 72 igehely-sor — publikálható (v2)" |
+| `## Kulcsszó-index — a napló mai sora` | kézi sor, régi számokkal | a `naplo#kulcsszo_index` blokk |
+| `## Lezárt tanulmányok indexe` | `| 2 |`, `| 5 |`, `| 3 |`, `| 6 |` | a D12 szerint a `#` nem hivatkozási alap |
+
+Ez több, mint konzervált ellentmondás: a `4` most **forrásrétegben** áll — abban
+a rétegben, amely a `CLAUDE.md` szerint kézzel írt igazság —, miközben a D13
+kimondta, hogy az érték 6. A „mai" szó is félrevezet: 2026-09-15-i állapotot
+jelent, ami már nem az, amit a napló mond. Mikor harap: a *Kulcsszavak
+részletesen* beolvasztásánál és az F6-nál. L. **K16** és **D15**.
+
+**Egy ellenőrizetlen tétel — a napló sorvége átfordult.**
+
+| | `a7d23a6` (chat-menet mérése) | `3728e76` |
+|---|---|---|
+| `motivumlog/PaRDeS_motivumok.md` | **CRLF=0**, 589 sor (tiszta LF) | CRLF=646, 646 sor (tiszta CRLF) |
+| `Lezart_tematikus_tanulmanyok_index.md` | CRLF=63/63 | CRLF=94/94 — változatlan |
+
+A Code-jelentés „előtte CRLF=522"-t írt, de a fájl a menet elején LF volt: az
+522-es mérés már a G2-írás **után** készült. A flip menet közben történt,
+valószínűleg a `cb33658` elleni összevetés checkoutjától. `core.autocrlf=true`
+mellett ez ártalmatlan, de ellenőrizendő, nem feltételezendő. L. **K17**.
 
 ---
 
@@ -583,6 +629,8 @@ a része, de a jelentésben szerepeljen.
 | **K14** | a Kulcsszó-index igehely-oszlopa a **fő előfordulásokat** hozza, nem a teljes listát | az ALVIL-001 sor legfeljebb 6 tételt soroljon, ne 72-t |
 | **K9'** | a hiánylista **két blokkra bontva**: a hat betöltött ID tényleges hiányai, külön a `HAMART-001` soraitól | a mai 56 sorból 32 a HAMART-001-é (a teljes ID hiányzik a `jeloltek.tsv`-ből) — ez egyetlen ismert F3-hiány következménye, nem 32 önálló lelet; a valódi lista **24 sor** |
 | **K15** | az `elofordulasok.tsv` **egységes igehely-alakot** használ (`Mt`, `Luk`, `Róm`, `Jel`), és a `KONYV_ALIAS` ezután **üres** | 13 sor javítandó (8 × `Jelenések`, 3 × `Lukács`, 1 × `Róma`, 1 × `Máté`); utána egyetlen könyvnév sem fordul elő két alakban, és az alias nélkül is 0 a `hianyzo_konyvek` |
+| **K16** | a forrásréteg **archív** szakaszai jelölve vannak, és a beolvasztás nem látja őket | mind a hét `motivumok/[ID].md`-ben a *Tematikus áttekintés*, a *Kulcsszó-index* és a *Lezárt tanulmányok indexe* szakasz fejléce hordozza az *(archív …)* jelölést; a szöveg **karakterre változatlan**; a beolvasztó kizárólag a *Kulcsszavak részletesen* szakaszt és a ⭐-prózát olvassa |
+| **K17** | az élesítés **nem vitt sorvég-flipet a repóba** | `git show HEAD:motivumlog/PaRDeS_motivumok.md \| grep -c $'\r'` → **0**; az `F4.4` commit diffje ezen a fájlon ~60 sor, nem ~589 |
 
 ### 3.1 A terv elfogadási tesztje helyére
 
@@ -617,6 +665,8 @@ F4.3:  general.py — kereszthivatkozás-napló és study-1.-pont renderelők
 F4.3a: egységes igehely-alak a táblában (13 sor), a KONYV_ALIAS kiürítése, a hiánylista kettéosztása
 F4.4:  a motívum-forrásréteg leválasztása (motivumok/[ID].md, 7 fájl)
 F4.5:  a generált blokkok élesítése a napló és az index fájlban
+F4.5a: a forrásréteg archív szakaszainak jelölése, a beolvasztási szabály rögzítése
+F4.6:  a NYITOTT_FELADATOK.md generált blokkja (ATX-fejlécek pótlásával)
 ```
 
 Push `origin main` ugyanabban a menetben, amelyikben a commitok születtek — nem
@@ -669,7 +719,8 @@ Három menet, egymás után — párhuzamos Code-menet ugyanazon az ágon tilos.
 |---|---|---|---|---|
 | 1. | **G0/d**, majd G1, G3, G4 + próba-kimenet | Sonnet | `F4.0e`, `F4.1`, `F4.2` | ✅ **lefutott, `8febf2a`**, független ellenőrzésen átment (§1.5) |
 | 2. | a K12'/K13/K14 javítása, majd G5, G6 + a hiánylista | Sonnet | `F4.2a`, `F4.3` | ✅ **lefutott, `a7d23a6`**, független ellenőrzésen átment (§1.6) |
-| 3. | **K15/K9'**, majd G2, majd a D12 hivatkozás-migráció, majd G7 | **Opus** | `F4.3a`, `F4.4`, `F4.5` | következő |
+| 3. | **K15/K9'**, majd G2, majd a D12 hivatkozás-migráció, majd G7 | **Opus** | `F4.3a`, `F4.4`, `F4.5` | ✅ **lefutott, `3728e76`**, független ellenőrzésen átment (§1.7) |
+| 4. | **K17** ellenőrzés, **K16** archív-jelölés, majd a `NYITOTT_FELADATOK.md` blokkja | Sonnet | `F4.5a`, `F4.6` | záró menet |
 
 A K15 (13 sor javítása) és a K9' (a hiánylista kettéosztása) mechanikus, tehát
 önmagában Sonnet-munka volna — de egy külön menet többe kerülne, mint amennyit
@@ -845,7 +896,46 @@ A jelentésbe kerüljön: a K15 (a 13 javított sor, és hogy KONYV_ALIAS nélk�
 blokkonként, és a sorvég-mérés élesítés előtt/után.
 ```
 
-### 6.6 A menetek közé
+### 6.6 A 4. menet nyitó promptja *(záró)*
+
+```
+Olvasd el az F4_GENERATOR_BRIEF.md §1.7-et és a K16/K17 kritériumot.
+
+ELŐSZÖR K17 — ELLENŐRZÉS, NEM JAVÍTÁS. A motivumlog/PaRDeS_motivumok.md
+munkafájl sorvége LF-ről CRLF-re fordult a 3. menet során. Futtasd:
+   git config core.autocrlf
+   git show HEAD:motivumlog/PaRDeS_motivumok.md | grep -c $'\r'
+   git show --stat <az F4.4 commit> -- motivumlog/PaRDeS_motivumok.md
+A blobban 0 CR kell legyen, és az F4.4 diffje ezen a fájlon ~60 sor, nem ~589.
+Ha a blob CR-t tartalmaz, ÁLLJ MEG és jelentsd — a javítás külön döntés,
+mert az egész fájl történetét érinti.
+
+UTÁNA K16 (commit: F4.5a) — a hét motivumok/[ID].md-ben a
+   ## Tematikus áttekintés — a napló mai tétele
+   ## Kulcsszó-index — a napló mai sora
+   ## Lezárt tanulmányok indexe — ...
+szakasz FEJLÉCE kapja meg ugyanazt a jelölést, ami az utolsón már ott van:
+   *(archív — a 2026-09-15-i kivonás előtti szöveg; a mérvadó érték a
+     generált blokkban áll)*
+A szakaszok SZÖVEGE karakterre változatlan marad — az archívum értéke a
+proveniencia, nem az állítás; ezért az ALVIL-001 „4 előfordulás"-át SEM
+javítod, csak megjelölöd (D15).
+A general.py-ban rögzítsd kódban is: a beolvasztás kizárólag a
+„Kulcsszavak részletesen" szakaszt és a ⭐-prózát olvashatja.
+
+UTÁNA F4.6 — a NYITOTT_FELADATOK.md blokkja:
+ - előbb a hiányzó ATX-fejlécek pótlása (a fájlban ma egyetlen # sincs) —
+   enélkül a generált blokk fejléce lenne az egyetlen a fájlban;
+ - majd a --cel nyitott renderelő: a jeloltek.tsv 17 nyitott sora +
+   a motivumok.tsv 7 státusz-sora, marker-blokkba, a többi rész érintetlen;
+ - próba-kimenet, majd élesítés, majd --ellenoriz zöld.
+
+A commit-üzeneteket UTF-8 fájlból add át, majd push origin main.
+A jelentésbe kerüljön: a K17 három parancsának kimenete szó szerint, a K16
+(7 fájl × 3 fejléc), és a --ellenoriz blokkonként mindhárom fájlra.
+```
+
+### 6.7 A menetek közé
 
 Minden menet után a jelentés jöjjön vissza a chat-menetbe ellenőrzésre, mielőtt
 a következő elindul. **Az 1. menet próba-kimenete a legfontosabb kapu**: a
@@ -872,6 +962,7 @@ véglegesíthető.
 | D12 | A generált index `#` oszlopa **puszta vizuális számláló**, nem hivatkozási alap; a `Megjegyzés` próza `#N` hivatkozásai `[ID: …]`-ra írandók át, **a G7 élesítés előtt** | a `#` minden ID-felvételkor átszámozódik, a rá hivatkozó próza viszont a blokkon kívül, kézzel írva marad — az élesítés elszakítaná a hivatkozásokat a soroktól | chat-menet javaslata, 2026-09-15 |
 | D13 | Az ALVIL-001 fő-előfordulás-száma **6**; a tagságra a napló ⭐-szakasza az irányadó, nem az index #2 sora | három hely mond 6-ot, köztük az index fejléce a dátumozott 4→6 javítással; az index sorából viszont hiányzik a `Jel 1:18`, miközben 6-ot állít | **felhasználó, 2026-09-15** |
 | D14 | A könyvnév-normalizálás a **táblában** történik (13 sor), nem a renderelőben; a `KONYV_ALIAS` utána kiürül, vagy legfeljebb **jelentő** őrként marad, amely nem javít | ugyanaz az eset, mint a D5 (`Pshat`→`Peshat`): a `CLAUDE.md` szerint ellentmondásnál a tábla az irányadó. A tábla kulcsa `id + igehely`, tehát a két alak két kulcs — az alias csak a generátort javítja meg, a `gate.py`-t, a `lekerdez.py`-t és minden jövőbeli joint nem | **felhasználó, 2026-09-15** |
+| D15 | A forrásréteg **élő** szövege csak az lehet, amit a tábla nem tud. Ami a táblából levezethető (előfordulás-szám, státusz-címke, index-sorszám), az a forrásrétegben **archív**, jelöléssel, és a beolvasztásból kimarad | a 3. menet után az `ALVIL-001.md` „4 előfordulás"-t állít, miközben a generált blokk 6-ot — a rossz érték a kézzel írt igazság rétegébe került. Az archív szöveg értéke a proveniencia, nem az állítás | chat-menet javaslata, 2026-09-15 |
 
 ### Nyitott, a briefben szándékosan el nem döntött kérdések
 
