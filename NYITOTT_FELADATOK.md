@@ -1,15 +1,15 @@
-Nyitott feladatok
+# Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
 Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py első futtatása és a Károli-Strong join visszamenőleges pótlása)
 
-Nagy, tartalmi döntést igénylő tételek
+## Nagy, tartalmi döntést igénylő tételek
 
 1. `biblemate-agentic-workspace` (eliranwong) `morphology.sqlite` — konkrét, szűkített haszon azonosítva (2026.09.08, a `morphology_retriever.py` forráskód-elemzéséből): a tábla `ClauseID` mezője **tagmondat-szintű** csoportosítást ad, amivel a formula-motívum-kutatás (pl. "segítségül hívni", "Ani Hu") pontosabbá tehető, mint a jelenlegi, csak szórendet néző pozíció-alapú heurisztika — ez már egyszer, kézzel bevetve segített kizárni a Deut 32:3 jelöltet a BDB "16t" lezárásnál. A `Translation`/`Gloss`/angol Biblia-táblák (NET/BSB/KJV) nem jelentenek pluszt a saját TSV-k mellett. Nyitott döntés: megéri-e a technikai integráció (Google Drive-fájl elérés, file ID `11QfpwEd5fjdDglPiqzygLNN99AVz2mw5`, script-adaptálás) költsége a `ClauseID`-scan rendszeresítéséért — licenc nem akadály (UniqueBible/GPLv3, l. Lezárva). A `cross-reference.sqlite` és a `search_retriever.py` haszna továbbra sincs vizsgálva. **Kapcsolódó, de külön szál (2026.09.10):** ugyanennek az eliranwong-ökoszisztémának egy másik ága (UniqueBible mint megjelenítő alkalmazás, BibleMate AI mint kutatás-gyorsító ügynök) megvizsgálva a Károliba épített kereszthivatkozás kapcsán — l. 2. tétel és a `Bibliai_Motivumlexikon_tervezesi_naplo.md` 17. pontja. Konklúzió: az UniqueBible kifutó rendszer (a fejlesztő saját szavai szerint a BibleMate AI az utódja), és a kereszthivatkozás-funkciója zárt, előre csomagolt adatkészletekhez kötött — nem old meg semmit a mi konkrét megjelenítési kérdésünkből.
 2. Publikálási terv — hosszú megbeszélés a magyar nyelvű lexikon-anyag nyilvános közzétételéről. Végkövetkeztetés: van értelme, "kutatási napló"/"motívum-jegyzetek" címmel, TUDOMÁNYOS mélységi szinten (nem hígítva). Licenc-újraellenőrzés szükséges nyilvános közzétételre. **A motívum-alapú kereszthivatkozási réteg** (minden előfordulási igehelyről elérhető a teljes lexikon-cikk/kapcsolati háló, nem csak egy címke) 2026.09.10-re jelentősen előrehaladt: **KAPCSOLATOK Típus-mező v1** lezárt (Előkép/Párhuzam/Beteljesedés/Kontraszt/Variáns); **megjelenítési döntés meghozva** (`Bibliai_Motivumlexikon_tervezesi_naplo.md` 18. szakasz) — induló megoldásként egyszerű, típus nélküli link minden megjelölt versen, nem típusonként színezett popup; **három kézzel épített HTML-pilóta** elkészült és a repóba emelve (`motivumlog/kereszthivatkozas_pilot/`: `01_demo_2_vers.html`, `02_teljes_pilota_29_vers.html` — mind a 29 igehely, valódi Károli-szöveggel, az egyszerűsített döntés szerint —, `03_floating_ui_pilota.html` — a gazdagabb, típusonként színezett popup-verzió próbája `@floating-ui/dom` könyvtárral, összehasonlításra). **A `naszut` projekt Hugo-alapú munkamódszerére való korábbi hivatkozás tévesnek bizonyult** — a `naszut` nem Hugót használ, sima statikus HTML-t Netlify drag-and-drop-pal; egy tényleges Hugo-alapú build ezért nulláról épülne. Technikai kutatás lezárva: Kubernetes Docsy `glossary_tooltip` shortcode-pár, SermonIndex.net auto-linkelő minta, BibleUp (nem használt a pilótákban, csak referenciaként vizsgálva), Floating UI (ténylegesen használva a 03-as pilótában). **Még mindig nyitva:** a lexikon-cikkek tényleges célformátuma a kereszthivatkozás másik végén (nyers markdown vs. Netlify/Hugo-oldal vagy UniqueBible-modul), és maga a tényleges build (Hugo-projekt-inicializálás) — ez továbbra is külön munkamenetet igénylő lépés, amit a mai pilóták nem helyettesítenek, csak előkészítenek.
 3. "Én vagyok" tematikus motívum-jelölt (2026.09.08, chat-kutatás — még sehol nincs repóban dokumentálva) — 2Móz 3:14 (אֶהְיֶה אֲשֶׁר אֶהְיֶה ⇒ LXX ἐγώ εἰμι ὁ ὤν) és az Ézsaiás "Ani Hu" klaszter (אֲנִי הוּא) mint LXX-híd Jézus ἐγώ εἰμι-mondásaihoz Jánosnál. Pozíció-alapú TAHOT/TAGNT-ellenőrzéssel megerősítve: 6 valódi ÓSZ Ani Hu-hely (Ézs 41:4, 43:10, 43:13, 46:4, 48:12, 52:6 — a kezdeti 20 jelöltből 14 hamis találatnak bizonyult), 8 abszolút ÚSZ ἐγώ εἰμι-mondás Jánosnál (4:26, 6:20, 8:24, 8:28, 8:58, 13:19, 18:5, 18:6, 18:8), 7 predikátumos ἐγώ εἰμι-mondás (6:35 kenyér, 8:12 világosság, 10:7/9 ajtó, 10:11/14 jó pásztor, 11:25 feltámadás/élet, 14:6 út/igazság/élet, 15:1/5 szőlőtő). Kiemelt lelet: Jer 2:21 (זֶרַע אֱמֶת, "igaz mag") mint lehetséges lexikai/fordítási gyökér a Ján 15:1 ἀληθινή ("igazi") jelzőjéhez — a hét predikátumos kép közül ez az egyetlen lexikai szintű, a többi hat tematikus/kép-szintű. Formális PaRDeS-feldolgozás (négyforrásos audit, sablon szerinti tanulmány) még nem indult el.
 4. Olvasói szint — FEJLESZTÉS LEÁLLÍTVA (2026.09.08, l. `motivumlog/Olvasoi_szint_tervezesi_naplo.md` 10. pontja). Egy teljes cikken (ISTENTISZT-001) végzett pilot (6 fokozat, 4 tengely, típus-tudatos finomítás) a `olvasoi-szint-pilot-2026-09-08` branch-en van, NEM mergelve a main-be. Leállítás oka: a publikálási terv (l. 2. tétel), ami ezt indokolná, még csak megbeszélés szintjén áll. Nyitott kérdések (l. napló 10. pont): a 4 tengely függetlensége nincs bizonyítva; a script-koncepció valószínűleg sosem lesz tisztán mechanikus; az általánosíthatóság más szövegtípuson nincs tesztelve. Csak akkor veendő elő újra, ha a publikálási terv ténylegesen elindul.
 
-Kisebb, korábbról nyitva maradt tételek
+## Kisebb, korábbról nyitva maradt tételek
 
 * **ÚJ (F4.0e, 2026.09.15) — a `Lezart_tematikus_tanulmanyok_index.md` #2 sora (ALVIL-001) hiányos.** A `fo_elofordulas` mező G0/d kitöltésekor kiderült: a napló saját ⭐-szakasza (`PaRDeS_motivumok.md`, `[ID: ALVIL-001]` bejegyzés) 6 tagot sorol fel — Zsolt 16:10⇒ApCsel 2:27,31, Luk 16:23, **Jel 1:18**, Jel 6:8, Luk 10:15/Mát 11:23, Jel 20:13-14 —, miközben az index #2 sora csak 5-öt nevez meg (a Jel 1:18 hiányzik belőle), a "6 előfordulás" számot mégis helyesen tartja. A napló ⭐-szakasza az irányadó; az index sora pótlandó a Jel 1:18-cal.
 * **ÚJ (F4.0d, 2026.09.14) — `Karoli_Strong_kivonat.tsv` drift: a két utolsó oszlop (Szófaj, Gyök/Származtatás) elavult a mai `Strong_szotar.tsv`-hez képest** (HEAD 46 105 bájt vs. friss futás 45 659 — mérve `eszkozok/merge_karoli_szofaj.py`-jal, olvasás-only, **nem futtatva élesben**). Oszloponkénti bontás: 32 sor érintett összesen; ebből 7 sorban tér el a Szófaj, 32 sorban a Gyök/Származtatás; 14 mezőben üresből lett kitöltött a friss `Strong_szotar.tsv` szerint (fordítva, kitöltöttből üresbe, 0 eset); a héber kombináló-jelek puszta sorrend-eltérése (NFD-azonos, karaktersorrend más) 0 esetben magyarázza az eltérést — minden eltérés tartalmi. Újragenerálás **NINCS** — a Szófaj oszlop study-bemenet, ez külön döntés.
@@ -23,7 +23,7 @@ Kisebb, korábbról nyitva maradt tételek
 * **ÚJ (F4-0, 2026.09.14) — négy `eszkozok/*.py` sorokra bontáskor nem strippeli a `\r`-t** (mérve: `elofordulas_szamlalo.py`, `f3_4_zaro_ellenoriz.py`, `frazis_kereses_pozicio_alapon.py`, `tahot_zarojeles_phaseA_kivonat.py`) — mindegyik `line.rstrip("\n")` (vagy `.rstrip('\n')`) alakot használ, ami CRLF-sorvégű bemeneten a `\r`-t a sor VÉGÉN hagyja, és az a `split('\t')` utáni utolsó mezőbe kerül be szennyeződésként (néma, mert a `\r` nem látható). Jelenleg nincs élő kár, mert az `adat/*.tsv` és a `konkordancia/*.tsv` táblák LF-tisztán tartottak (l. `F4_BRIEF.md` E11), de az `f3_4_zaro_ellenoriz.py` éppen az `adat/elofordulasok.tsv`-t olvassa így — ha az a tábla valaha CRLF-re vált (mint az F4.0a menetben egyszer, véletlenül, most helyreállítva), a szkript némán szennyezett utolsó mezőket lát. Javítás: `rstrip("\n")` helyett `rstrip("\n").rstrip("\r")` vagy `rstrip("\r\n")` mindegyikben — nem az F4-0 része, külön tétel.
 * A lexikon-oldal KAPCSOLATOK-diagram és a TSV "Típus" oszlopa közötti névütközés (l. `ISTENTISZT-001_TUDOMANYOS.md` 7. pont NAPLO-ja, 2026.09.09) — a `Motivum_kapcsolatok_PILOT.tsv` "Típus" oszlopa (LEXIKAI/NARRATÍV/STRUKTURÁLIS/TEMATIKUS) egy MÁSIK tengely, mint a diagram PaRDeS Típus-mezője (Előkép/Párhuzam/Beteljesedés/Kontraszt/Variáns); a TSV-ben nincs önálló oszlop a PaRDeS Típus-mezőre — nyitott kérdés marad, nem oldódott meg. **Az `adat/kapcsolatok.tsv` a PaRDeS-tengelyt viszi (l. `adat/SEMA.md` 2.3); a szétválasztás az F3 betöltés feladata.**
 
-Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
+## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá vált — belépő: `DONTESEK_INDEX.tsv`. A vers-szintű jelöltek nem ide, hanem az `adat/jeloltek.tsv`-be kerültek (16 sor, mind `dontes=nyitva`): HODIT-001 13 alacsony szavazatú TSK-jelölt, MENNY-001 Mt 24:38 + Luk 17:27, ANTROP-001 Fil 1:27. Az alábbiak a nem vers-szintű tételek:
 
@@ -43,9 +43,13 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 * **ÚJ (F3.4) — 26 régi join-sor nem nullázott Strong-számot visel** (`H430`, `H779`, `H8414+H922`…), ami sérti az `adat/SEMA.md` 1.2-t. Mind a 26 korábbi genezisi tanulmányokból való (a `Karoli_Strong_kivonat.tsv` 182. sora előtt), egyik sem F3.4-es. A javítás mechanikus, de más tanulmányok sorait érinti és egy esetleges `grep H779` hívást elnémítana — ezért az F3.4 nem végezte el.
 * **Bibliai Motívumlexikon — koncepcionális tervezés.** Réteges architektúra-vízió (Szöveg → Konkordancia → Lexikon → Motívum → Kapcsolat → Tanulmány), napló: `motivumlog/Bibliai_Motivumlexikon_tervezesi_naplo.md`. *Ez a tétel az `ATALAKITASI_TERV.md.md`-vel implementációs fázisba lépett — az F1 (séma + belépési pont) elkészült; az `adat/` réteg ennek a víziónak az első megvalósult darabja.*
 
-Lezárva
+## Adattáblából generált — nyitott jelöltek és motívum-státuszok
 
-2026.09.09-10 (chat-munkamenet, harmadik szakasz):
+<!-- A GENERÁLT BLOKK HELYE: nyitott -->
+
+## Lezárva
+
+### 2026.09.09-10 (chat-munkamenet, harmadik szakasz):
 
 * **ISTENTISZT-001 lexikon-oldal teljes frissítése** — a study 29-igehelyes állapotára hozva (17→29 tétel): Zak 13:9 + 6 ÚSZ-hely (1Kor 1:2, 2Tim 2:22, 1Pét 1:17, ApCsel 9:14, 9:21, 22:16) pótolva, D-minta dokumentálva. Ezen felül ~15 kisebb, review-alapú javítás: tartalom/proveniencia-keveredés (inline dátum-tagek, "Forrás:" sorok, első személyű ellenőrzési állítások mind NAPLO-formába), hiányzó üres sor NAPLO előtt (10+1 hely), csak eredeti nyelvű szöveg blockquote-ban (fordítás normál bekezdésbe), casual "mi"-hangú fogalmazás semlegesítve, PaRDeS-réteg keveredés javítva (Drash/Remez szétválasztva), félrevezető szóhasználat ("társválasztási") pontosítva, üzemeltetői megfogalmazás + elavult "LXX-hiba" állítás javítva, hiányzó kiejtés pótolva.
 * **Napló-/formázási-/hangnem-fegyelem szabályok rögzítve** mindkét sablonban — `6_PaRDeS_lexikon_oldal_sablon.md` (L6 kapu-tétel), `4_PaRDeS_tematikus_sablon.md` (Q6 kapu-tétel) — konkrét triggerekkel (inline dátum-tag, "Forrás:" sor, első személyű ellenőrzés, NAPLO üres sor, blockquote-fordítás, casual hangnem, réteg-keveredés), a mai ISTENTISZT-001-es átfésülés tapasztalatai alapján.
@@ -62,7 +66,7 @@ Lezárva
 * Tervezési napló **19. szakasz**: a három kereszthivatkozás-pilóta dokumentálva, technikai tanulsággal (Floating UI CDN-nél egyező core/dom verziószám szükséges).
 * **Károliba épített kereszthivatkozás — 3 kézzel épített HTML-pilóta a repóba emelve** (`motivumlog/kereszthivatkozas_pilot/`): `01_demo_2_vers.html` (első próba, típusonként színezett), `02_teljes_pilota_29_vers.html` (mind a 29 igehely, egyszerűsített link-megoldás, valódi Károli-szöveggel), `03_floating_ui_pilota.html` (gazdag popup-verzió próbája Floating UI-val, összehasonlításra).
 
-2026.09.09 (chat-munkamenet, második szakasz):
+### 2026.09.09 (chat-munkamenet, második szakasz):
 
 * A/B/C tipológia + 1Kir 18:24 kontraszt felvéve nyitott kérdésként a `Bibliai_Motivumlexikon_tervezesi_naplo.md`-be (5. és 6. pont), commit `dbdf711`
 * Gen 3:10/3:11 H5903 join-sorok pótolva a `Karoli_Strong_kivonat.tsv`-ben, commit `9612316`
@@ -73,7 +77,7 @@ Lezárva
 * בָּרַךְ (H1288) korrekció — ellenőrizve, kiderült, hogy ez már 2026.09.03 óta lezárva volt (`genezis/1Moz_1v2-2v3_bovitett.md` v5) — a nyitott listán tévesen szerepelt, most eltávolítva
 * "6 további tematikus study v12-compliance" szám javítva 5-re — kiderült, hogy a Segítségül hívni-study már 2026.09.08 óta megkapta a Q1-Q5 kaput, ez korábban nem lett levonva a számból
 
-2026.09.09 (chat-munkamenet, első szakasz):
+### 2026.09.09 (chat-munkamenet, első szakasz):
 
 * Melkizedek-study v1 → v7, teljes v12-compliance — `tematikus_lezart/Melkizedek_tematikus.md`, commit `c1e327a`. Új tartalom: 2Móz 19:6, Zak 6:13, Zsolt 76:3, Zsolt 110:4 részletes eskü-formula/grammatika/legitimáció-levezetés, Zsid 7:20-22 eskü-érv, ἀφωμοιωμένος/μαρτυρούμενος vitatott pont. Táblázat 7 oszlopra igazítva a valódi v13 sablonhoz. Kötelező kereszthivatkozás-napló létrehozva (`tematikus_lezart/naplok/Melkizedek_tematikus_kereszthivatkozas_naplo.md`).
 * "Segítségül hívni az Úr nevét" study — soha nem lett kiadva korábban (a repóban 2026.08.17 óta a 17-igehelyes v1 állt, a 24-igehelyes bővítés csak lokálisan létezett) — most pótolva, `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`, commit `8df6650`.
@@ -83,14 +87,14 @@ Lezárva
 * TSK-teljes-lista szabály — a `PaRDeS_gyorsreferencia.md`-be építve (v11, commit `5f2068e`), ami mind a három sablon közös hivatkozási pontja. Konkrét eset: a Zsolt 110:4 TSK-listájának legmagasabb szavazatú tétele (Zsid 7:17, 25 szavazat) hónapokig kiaknázatlan maradt, mert csak a top 1-2 találatot néztük meg, nem a teljes, Votes ≥ 15 szűrt listát.
 * `Code_prompt_melkizedek_v12_audit.md` elavultnak jelölve — sosem futott le, azóta tartalmilag (v2→v7) és eljárásilag is túlhaladott.
 
-2026.09.08 (chat-ellenőrzés):
+### 2026.09.08 (chat-ellenőrzés):
 
 * `lexikon-oldal-minosegi-kapu-2026-09-07` branch merge-státusza megerősítve — friss `codeload`-tarball ellenőrzés a `main`-en igazolta, hogy mindkét Quality Gate ténylegesen bekerült (`4_PaRDeS_tematikus_sablon.md` Q1-Q5, 176-220. sor; `6_PaRDeS_lexikon_oldal_sablon.md` L1/L3/L4/L5, 222-256. sor) — a korábbi bizonytalanság ("nem kapott explicit megerősítést") tárgytalan
 * "Párhuzam" funkció-indoklás pontosítva (Zsolt 105:1, 1Krón 16:8, Ézs 12:4) — a "nem közvetlen narratív folytonosság a genezisi vonallal" megfogalmazás félreérthető volt (mintha a mózesi hagyománnyal ne lenne kapcsolat); pontosítva "formulai/liturgikus örökség a genezisi hagyományból, nem narratív folytonosság"-ra, mindkét érintett fájlban (`Segitsegul_hivni_az_Urat_tematikus.md`, `ISTENTISZT-001_TUDOMANYOS.md`)
 * Olvasói szint pilot lezárva és naplózva — l. 4. nagy tétel fent
 * Segítségül hívni-study Q1-Q5 Minőségi kapu retroaktívan pótolva, egy hiányzó táblázat-sor (Zak 13:9) és hat új ÚSZ igehely felvéve, D-minta dokumentálva és kizárva
 
-2026.09.07 (második folytatás):
+### 2026.09.07 (második folytatás):
 
 * Lexikon-adatstruktúra döntés dokumentálva — a Thayer/LSJ/SECE/BDB TSV-k lapos, 3 oszlopos (`Strong_padded | Strong_eredeti | Teljes_szocikk`) struktúrája végleges, tudatos döntés, nem elmaradt granulálás (`motivumlog/Bibliai_Motivumlexikon_tervezesi_naplo.md` 15. pont)
 * Reprodukálható lexikon-oldal sablon létrehozva (`sablonok/6_PaRDeS_lexikon_oldal_sablon.md`), az ISTENTISZT-001 pilot két fájljából visszafejtve
@@ -99,7 +103,7 @@ Lezárva
 * Két Quality Gate bevezetve a `biblemate-agentic-workspace` quality-gate *ötletéből* adaptálva, saját szöveggel: `4_PaRDeS_tematikus_sablon.md` Q1-Q5 (a Melkizedek-hiányosság alapján), `6_PaRDeS_lexikon_oldal_sablon.md` L1/L3/L4/L5 (a Zak 6:13/Melkizedek kereszt-motívum-keveredés alapján)
 * `biblemate-agentic-workspace` licenc-helyzet tisztázva: UniqueBible (SQLite-adatbázisok forrása) GPLv3; a workspace maga (125 skill, persona-definíciók) license nélküli, "minden jog fenntartva" — adatbázis-lekérdezés jogilag rendben, minta-átvétel (pl. quality-gate ötlete) jogilag tiszta és megtörtént, szó szerinti fájl-átvétel nem történt és nem is javasolt
 
-2026.09.07 (folytatólagos szakasz):
+### 2026.09.07 (folytatólagos szakasz):
 
 * BDB "16t" kérdés véglegesen lezárva — három egymástól független módszerrel (TAHOT pozíció-alapú frázis-scan, laza vers-szintű co-occurrence a `morphology.sqlite`-on, ClauseID-alapú szintaktikai scan ugyanazon adatbázison) sem került elő új, valódi igehely; a jelölt Deut 32:3 maga a BDB szerint más szócikk-pontba (3.b "kihirdetni") tartozik, nem a mi 2.c "invokálni" pontunkba
 * Licenc-tisztázás lezárva 4 lexikonra: Thayer és BDB (közkincs), LSJ (Perseus, nyíltan újrafelhasznált), SECE (csak közkincs Strong-szöveg + funkcionális számkódok) — mind feldolgozható; MCGED (Mounce, 1993, copyright) — kizárva a rendszeres feldolgozásból
@@ -107,7 +111,7 @@ Lezárva
 * Pilot→study visszaírás lezárva — a scope a vártnál kisebb volt: a 4 igehelyből 3 (Zsolt 105:1/1Krón 16:8, Ézs 12:4, Jer 10:25/Zsolt 79:6) már 2026.09.05 óta a study-ban volt; csak Róm 10:14 (TSK-eredetű, 2026.09.06) és az A/B/C tipológia hiányzott ténylegesen — mindkettő beépítve a `Segitsegul_hivni_az_Urat_tematikus.md`-be
 * `Karoli_Strong_kivonat.tsv`: Róm 10:14 (G1941) sor pótolva
 
-2026.09.07 (korábbi szakasz):
+### 2026.09.07 (korábbi szakasz):
 
 * 12 SQLite-lexikon + Motívumlexikon-pilot fájlok repóba emelése (PR #48)
 * Alapadatok szakasz (repó, branch-lista, raw/codeload URL-minták) a pilot átadási dokumentumban (PR #49)
