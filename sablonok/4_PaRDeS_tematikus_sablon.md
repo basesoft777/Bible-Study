@@ -5,7 +5,9 @@ kötelezővé vált — korábban az utolsó négy opcionálisnak számított;
 üres cellában `—` jelzi a hiányzó BDB-adatot, de az oszlop nem
 hagyható el, és nem vonható össze másik oszloppal. Visszamenőleg nem
 kötelező a már lezárt study-kat átírni, csak új vagy szerkesztés
-alatt álló study-nál kötelező.)*
+alatt álló study-nál kötelező. F5.2: új „Verzió-címke” alszakasz és
+13. Lezárási checklist-lépés — a „v‹N› szerint” megjelölés tanúsítás,
+nem dátum, és csak teljes megfelelőségi ellenőrzés után írható át.)*
 *v15 — 2026.09.11 (Szabályváltozás: az 1. pont táblázatának
 "Jelentés-szöveg (BDB eredeti)" oszlopa mostantól az angol BDB-szöveg
 MELLETT magyar fordítást is tartalmaz a cellán belül — a korábbi
@@ -333,6 +335,16 @@ checklistre. Ha egy study utólag bővül (nem csak első lezáráskor),
 a Minőségi kapu **teljes egészében újra lefuttatandó** — nem csak a
 bővített részre.
 
+### Verzió-címke („v‹N› szerint”)
+
+A „`4_PaRDeS_tematikus_sablon.md` v‹N› szerint” megjelölés **tanúsítás, nem dátum**. Csak akkor írható fel vagy át, ha a megfelelőségi ellenőrzés a v‹N› **minden szakaszára** lefutott. Részleges kör esetén a címke: `v‹N› részleges (érintett: …)`, a zárójelben a ténylegesen ellenőrzött szakaszokkal.
+
+A címke hatóköre az a szerkezeti egység, amely viseli. A study fejlécében az egész study-ra vonatkozik; a Minőségi kapu vagy a Lezárási checklist címsorában csak arra a kapura, illetve listára.
+
+Régebbi címke nem írható át újabbra ellenőrzés nélkül. A régi címke akkor is igaz marad, ha a sablon azóta újabb verzióra lépett.
+
+*(A szabályt megalapozó konkrét eset: 2026.09.15-én a `Tehom_tematikus.md` és a `Hadesz_Seol_tematikus.md` fejléce „v14 szerint”-et állított, miközben az 1. pont táblázata háromoszlopos volt, a v14 pedig hetet ír elő.)*
+
 ### Lezárási checklist (sorrendben végigjárandó)
 
 Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szükséges, ugyanabban a munkamenetben:
@@ -390,6 +402,9 @@ Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szüks
   frissített bővített fájlt. Ha egyetlen érintett igehelynek sincs
   saját bővített study-ja, a sor helyett: „Visszahivatkozott bővített
   study-k: nincs (nincs átfedő bővített tanulmány)."
+
+- [ ] **13. Verzió-címke** — a study fejlécének és a kapu-címsoroknak a
+  címkéje a „Verzió-címke” alszakasz szerint.
 
 **Ha bármelyik pont kimarad, a lezárás nem tekinthető véglegesnek** — a motívum inkonzisztens állapotba kerülhet (pl. ✅ jelölve az 1. szekcióban, de még aktív ⭐ ajánlásként az 5.-ben).
 
