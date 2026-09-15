@@ -73,6 +73,53 @@ UJSZOVETSEGI_TOKENEK = {
     'Luk', 'Lukács', 'Máté', 'Róm', 'Róma', 'Zsid',
 }
 
+KONYV_NORMALIZALO_TSV = os.path.join(ROOT, 'konkordancia', 'Konyv_normalizalo_tabla.tsv')
+
+# Az elofordulasok.tsv-ben ma tenylegesen elofordulo, a normalizalo tabla
+# roevid alakjatol elteroe konyvnev-alakok -- ismert VARIANSOK, nem hianyzo
+# konyvek. A K13 kanonikus rendezese ezen keresztul talalja meg a helyuket
+# a konyv_normalizalo_tabla.tsv sorrendjeben.
+KONYV_ALIAS = {
+    'Jelenések': 'Jel',
+    'Lukács': 'Luk',
+    'Máté': 'Mt',
+    'Róma': 'Róm',
+}
+
+
+def konyv_sorrend_betolt():
+    """{magyar_rövidítés: sorszám} -- a konkordancia/Konyv_normalizalo_tabla.tsv
+    SORRENDJE maga a kanonikus sorrend (nincs önálló sorszám-oszlop, K13)."""
+    _, sorok = tsv_beolvas(KONYV_NORMALIZALO_TSV)
+    return {sor['Magyar rövidítés']: i for i, sor in enumerate(sorok)}
+
+
+def konyv_sorszam(token, konyv_sorrend, hianyzo_konyvek):
+    """A token kanonikus sorszáma. Ismeretlen könyvet a lista VÉGÉRE teszi,
+    de felveszi a hianyzo_konyvek halmazba -- a hívó ezt jelentse, ne
+    hallgassa el (F4_GENERATOR_BRIEF.md K13: "ne rendezd a lista végére
+    némán")."""
+    kulcs = KONYV_ALIAS.get(token, token)
+    if kulcs in konyv_sorrend:
+        return konyv_sorrend[kulcs]
+    hianyzo_konyvek.add(token)
+    return len(konyv_sorrend) + 1
+
+
+def igehely_fejezet_vers(igehely):
+    """(fejezet, vers) -- az igehely ELSŐ fejezet:vers párja; tartománynál
+    (pl. '9:1-2', '7:1-28') a kezdőpont szerint rendezendő (K13)."""
+    m = re.search(r'(\d+):(\d+)', igehely)
+    return (int(m.group(1)), int(m.group(2))) if m else (0, 0)
+
+
+def igehely_rendezo_kulcs(igehely, konyv_sorrend, hianyzo_konyvek):
+    """Rendezőkulcs egy igehelyhez (vagy fő-előfordulás csoport-szöveghez):
+    (könyv kanonikus sorszáma, fejezet, vers) -- K13."""
+    token = konyv_token(igehely)
+    fejezet, vers = igehely_fejezet_vers(igehely)
+    return (konyv_sorszam(token, konyv_sorrend, hianyzo_konyvek), fejezet, vers)
+
 
 # ---------------------------------------------------------------------------
 # TSV I/O -- split('\t') / '\t'.join(), a csv modul nem hasznalhato ezeken a
@@ -175,25 +222,38 @@ def fo_elofordulas_csoportok(sorok):
 # ---------------------------------------------------------------------------
 
 def naplo_bullet_szamlalo(naplo_szoveg):
-    """A '## Tematikus áttekintés' szakasz top-szintű ('- ' kezdetű, nem
-    '  - ↳' alpont) tételeinek száma -- a hatókör-sor 'a fájl további N tétele
-    kézi' állítását ebből számolja, nem beégetett konstansból."""
+    """(felszint, alpont) -- a '## Tematikus áttekintés' szakasz '- ' kezdetű
+    top-szintű, illetve behúzott '  - ↳' alpont tételeinek száma.
+
+    K12': a hatókör-sor számlálója és nevezője azonos granularitású legyen.
+    A HODIT-001 betöltött ID ebben a szakaszban CSAK alpontként szerepel
+    ('  - ↳ Rafeusok/óriás-népek …'), tehát ha a nevező a puszta top-szintű
+    szám (84) lenne, a 7 betöltött ID egyike nem volna benne a nevezőben.
+    A generátor ezért a TELJES (felszint + alpont) számot használja
+    nevezőként -- l. render_naplo_attekintes()."""
     m = re.search(r'^## Tematikus áttekintés\n(.*?)\n## ', naplo_szoveg, re.S | re.M)
     if not m:
         return None
     szakasz = m.group(1)
-    return sum(1 for sor in szakasz.split('\n') if re.match(r'^- ', sor))
+    sorok = szakasz.split('\n')
+    felszint = sum(1 for sor in sorok if re.match(r'^- ', sor))
+    alpont = sum(1 for sor in sorok if re.match(r'^\s+- ', sor))
+    return felszint, alpont
 
 
 def render_naplo_attekintes(motivumok, elof_id_szerint, naplo_szoveg):
     n_betoltott = len(motivumok)
-    n_bullet = naplo_bullet_szamlalo(naplo_szoveg)
-    if n_bullet is None:
+    bullet_szamok = naplo_bullet_szamlalo(naplo_szoveg)
+    if bullet_szamok is None:
         hatokor = 'Ez a blokk a táblában betöltött %d motívum-ID-t fedi.' % n_betoltott
     else:
+        felszint, alpont = bullet_szamok
+        teljes = felszint + alpont
         hatokor = ('Ez a blokk a táblában betöltött %d motívum-ID-t fedi; a napló '
-                    'Tematikus áttekintés szakasza %d tételt sorol fel, ebből %d '
-                    'még nincs a táblában.' % (n_betoltott, n_bullet, n_bullet - n_betoltott))
+                    'Tematikus áttekintés szakasza %d tételt sorol fel (%d felső szint '
+                    '+ %d alpont -- K12\': a nevező a teljes szám, mert a HODIT-001 itt '
+                    'csak alpontként szerepel), ebből %d még nincs a táblában.'
+                    % (n_betoltott, teljes, felszint, alpont, teljes - n_betoltott))
 
     tema_szerint = {}
     for m in motivumok:
@@ -234,11 +294,12 @@ def render_naplo_kuszob(motivumok, elof_id_szerint):
                   hatokor, '\n'.join(sorok).strip())
 
 
-def render_naplo_kulcsszo_index(motivumok, elof_id_szerint):
+def render_naplo_kulcsszo_index(motivumok, elof_id_szerint, konyv_sorrend, hianyzo_konyvek):
     n_betoltott = len(motivumok)
     hatokor = ('Ez a blokk a táblában betöltött %d motívum-ID kulcsszó-sorát fedi; '
-                'a ⭐ küszöb (3+ előfordulás) kizárólag a fő előfordulás oszlopot nézi.'
-                % n_betoltott)
+                'a ⭐ küszöb (3+ előfordulás) kizárólag a fő előfordulás oszlopot nézi. '
+                'Az Igehelyek oszlop a fő előfordulásokat hozza, nem a teljes listát '
+                '(K14) -- a teljes lista a könyv-indexben áll.' % n_betoltott)
 
     fejlec = '| Kulcsszó | Téma | ÓSZ/ÚSZ | Fő előfordulás | Igehelyek |'
     elvalaszto = '|---|---|---|---|---|'
@@ -253,7 +314,9 @@ def render_naplo_kulcsszo_index(motivumok, elof_id_szerint):
             irany = 'ÚSZ'
         else:
             irany = 'ÓSZ+ÚSZ'
-        igehelyek = ', '.join(s['igehely'] for s in sorai)
+        csoportok_rendezve = sorted(
+            csoportok, key=lambda cs: igehely_rendezo_kulcs(cs, konyv_sorrend, hianyzo_konyvek))
+        igehelyek = ', '.join(csoportok_rendezve)
         sorok.append('| %s `[ID: %s]` | %s | %s | %d | %s |'
                       % (m['ui_cimke'], m['id'], m.get('tema') or '—', irany,
                          len(csoportok), igehelyek))
@@ -262,34 +325,37 @@ def render_naplo_kulcsszo_index(motivumok, elof_id_szerint):
                   hatokor, '\n'.join(sorok))
 
 
-def render_naplo_konyv_index(elofordulasok):
+def render_naplo_konyv_index(elofordulasok, konyv_sorrend, hianyzo_konyvek):
     hatokor = ('Ez a blokk az elofordulasok.tsv mind a %d sorát könyv szerint bontja, '
-                'a táblában betöltött motívum-ID-kre korlátozva.' % len(elofordulasok))
+                'a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az '
+                'igehelyek kanonikus sorrendben állnak (K13).' % len(elofordulasok))
 
     konyv_szerint = {}
     for sor in elofordulasok:
         token = konyv_token(sor['igehely'])
         konyv_szerint.setdefault(token, []).append(sor)
 
-    def rendezo_kulcs(token):
-        return (konyv_teszamentum(token), token)
+    def konyv_rendezo(token):
+        return (konyv_sorszam(token, konyv_sorrend, hianyzo_konyvek), token)
 
     sorok = ['| Könyv | Igehely-sor | Tételek |', '|---|---|---|']
-    for token in sorted(konyv_szerint, key=rendezo_kulcs):
-        tetelek = konyv_szerint[token]
+    for token in sorted(konyv_szerint, key=konyv_rendezo):
+        tetelek = sorted(
+            konyv_szerint[token],
+            key=lambda s: igehely_rendezo_kulcs(s['igehely'], konyv_sorrend, hianyzo_konyvek))
         lista = ', '.join('%s [%s]' % (s['igehely'], s['id']) for s in tetelek)
         sorok.append('| %s | %d | %s |' % (token, len(tetelek), lista))
 
     return blokk('naplo#konyv_index', ['adat/elofordulasok.tsv'], hatokor, '\n'.join(sorok))
 
 
-def general_naplo(motivumok, elofordulasok, naplo_szoveg):
+def general_naplo(motivumok, elofordulasok, naplo_szoveg, konyv_sorrend, hianyzo_konyvek):
     elof_id_szerint = elofordulasok_id_szerint(elofordulasok)
     blokkok = [
         render_naplo_attekintes(motivumok, elof_id_szerint, naplo_szoveg),
         render_naplo_kuszob(motivumok, elof_id_szerint),
-        render_naplo_kulcsszo_index(motivumok, elof_id_szerint),
-        render_naplo_konyv_index(elofordulasok),
+        render_naplo_kulcsszo_index(motivumok, elof_id_szerint, konyv_sorrend, hianyzo_konyvek),
+        render_naplo_konyv_index(elofordulasok, konyv_sorrend, hianyzo_konyvek),
     ]
     fejl = fejlec_stampel('naplo', ['adat/motivumok.tsv', 'adat/elofordulasok.tsv'])
     return fejl + '\n\n' + '\n\n---\n\n'.join(blokkok) + '\n'
@@ -315,7 +381,7 @@ def naplo_zart_id_lista(naplo_szoveg):
     return talalt
 
 
-def render_index(motivumok, elofordulasok, naplo_szoveg):
+def render_index(motivumok, elofordulasok, naplo_szoveg, konyv_sorrend, hianyzo_konyvek):
     elof_id_szerint = elofordulasok_id_szerint(elofordulasok)
     lezart_szurt = [m for m in motivumok if m.get('statusz') != 'feldolgozás alatt']
     n_betoltott = len(lezart_szurt)
@@ -331,7 +397,9 @@ def render_index(motivumok, elofordulasok, naplo_szoveg):
     sorok = ['| # | Motívum | Fájlnév | Érintett igehelyek |', '|---|---|---|---|']
     for i, m in enumerate(sorted(lezart_szurt, key=lambda r: r['id']), start=1):
         sorai = elof_id_szerint.get(m['id'], [])
-        csoportok = fo_elofordulas_csoportok(sorai)
+        csoportok = sorted(
+            fo_elofordulas_csoportok(sorai),
+            key=lambda cs: igehely_rendezo_kulcs(cs, konyv_sorrend, hianyzo_konyvek))
         erintett = ('%s (%d fő előfordulás / %d igehely-sor)'
                      % (' → '.join(csoportok) if csoportok else '—', len(csoportok), len(sorai)))
         sorok.append('| %d | %s `[ID: %s]` | %s | %s |'
@@ -412,6 +480,8 @@ def main():
 
     celok = ['naplo', 'index'] if args.cel == 'mind' else [args.cel]
     vegso_kod = 0
+    konyv_sorrend = konyv_sorrend_betolt()
+    hianyzo_konyvek = set()
 
     for cel in celok:
         if cel in MEG_NEM_KESZ:
@@ -429,12 +499,14 @@ def main():
         print('--- cél: %s ---' % cel)
 
         if cel == 'naplo':
-            tartalom = general_naplo(motivumok, elofordulasok, naplo_szoveg)
+            tartalom = general_naplo(motivumok, elofordulasok, naplo_szoveg,
+                                       konyv_sorrend, hianyzo_konyvek)
             kimenet_ir(args, os.path.join('motivumlog', 'PaRDeS_motivumok.md'),
                        tartalom, NAPLO_MD)
 
         elif cel == 'index':
-            tartalom, hianyzo = render_index(motivumok, elofordulasok, naplo_szoveg)
+            tartalom, hianyzo = render_index(motivumok, elofordulasok, naplo_szoveg,
+                                               konyv_sorrend, hianyzo_konyvek)
             kimenet_ir(args, 'Lezart_tematikus_tanulmanyok_index.md', tartalom, INDEX_MD)
             if hianyzo:
                 print('  HIÁNYZÓ ZÁRT ID (K8): %s' % ', '.join(hianyzo), file=sys.stderr)
@@ -446,6 +518,13 @@ def main():
             # marker a célfájlokban (l. F4_GENERATOR_BRIEF.md §3.1).
             print('  --ellenoriz: a célfájlban még nincs marker-blokk -- PIROS.')
             vegso_kod = max(vegso_kod, 1)
+
+    if hianyzo_konyvek:
+        print('  K13 -- a normalizáló táblában NEM található könyvnév(s): %s'
+              % ', '.join(sorted(hianyzo_konyvek)), file=sys.stderr)
+        vegso_kod = max(vegso_kod, 1)
+    else:
+        print('  K13: minden könyvnév feloldva a normalizáló táblán (esetleg alias útján).')
 
     return vegso_kod
 
