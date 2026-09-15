@@ -12,7 +12,11 @@ F5.3: az 1. pontban a hétlépéses kutatási protokoll (P1–P7) checklistté
 alakítva, a `lekerdez.py` determinisztikus parancsaival és a
 proveniencia-sor kötelezettségével. F5.4: a Minőségi kapu új Q7
 kritériumot kapott (dataset-lefedettség az `adat/datasetek.tsv`
-szerint), a bevezető és záró mondat száma hétre javítva.)*
+szerint), a bevezető és záró mondat száma hétre javítva. F5.6: a
+Lezárási checklist és a 6. pont igazítva a generált réteghez
+(`CLAUDE.md`, Rétegek) — a generált blokkokba kézi írást előíró
+lépések megszüntetve vagy a `general.py`-ra mutatva, a régi
+kétértékű címke lecserélve a háromértékű `statusz`-mezőre.)*
 *v15 — 2026.09.11 (Szabályváltozás: az 1. pont táblázatának
 "Jelentés-szöveg (BDB eredeti)" oszlopa mostantól az angol BDB-szöveg
 MELLETT magyar fordítást is tartalmaz a cellán belül — a korábbi
@@ -225,13 +229,13 @@ A jelölést a tanító neve mellett, közvetlenül a forrásmegjelölésnél ke
 
 ## 6. Napló-frissítés
 
-A tanulmány végén a `PaRDeS_motivumok.md` naplóban a feldolgozott motívumot **"lezárt/önállóan feldolgozott témaként"** kell megjelölni, hogy az ⭐ Emlékeztető küszöb szakasz ne ajánlja fel újra ugyanazt a motívumot önálló tanulmányra. A motívum további, jövőbeli előfordulásai (ha lesznek) ettől függetlenül továbbra is bekerülnek a kulcsszó-indexbe és a részletes bejegyzésbe, csak a "még feldolgozandó" jelleg szűnik meg.
+A tanulmány végén a motívum státusza az `adat/motivumok.tsv`-ben `publikálható`-ra áll (az `adat/SEMA.md` 2.1–2.2 szerint), hogy az ⭐ Emlékeztető küszöb szakasz ne ajánlja fel újra ugyanazt a motívumot önálló tanulmányra. A `PaRDeS_motivumok.md` napló megfelelő jelölése ebből a státuszból generálódik, kézzel nem írandó. A motívum további, jövőbeli előfordulásai (ha lesznek) ettől függetlenül továbbra is bekerülnek a kulcsszó-indexbe és a részletes bejegyzésbe, csak a "még feldolgozandó" jelleg szűnik meg.
 
 **Fájlnév-konvenció:** a lezárt tematikus tanulmány fájlneve egységesen `[Motívum]_tematikus.md` formátumot követi (pl. `Tehom_tematikus.md`), ékezet és kötőjel nélkül.
 
-**Index-frissítés:** a motívumlog frissítésével egy időben a `Lezart_tematikus_tanulmanyok_index.md` projektfájlt is frissíteni kell egy új sorral (motívum, fájlnév, érintett igehelyek, megjegyzés) — ez a fájl az összes lezárt tematikus tanulmány központi, strukturált listája, chat-szálakon átívelő visszakereshetőség céljából.
+**Index-frissítés:** a `Lezart_tematikus_tanulmanyok_index.md` generált (`CLAUDE.md`, Rétegek) — a `python eszkozok/general.py --cel index` állítja elő; a Lezárási checklist 3. lépése futtatja, kézzel nem szerkesztendő.
 
-**Utólagos bővítés — ugyanez a kötelezettség érvényes egy már lezárt study-ra is.** Ha egy már ✅ LEZÁRVA státuszú tematikus study utólag bővül (új igehely, új tipológia/alpont, korábban pilot-only jelöléssel visszatartott elem visszaírása stb.), a `PaRDeS_motivumok.md` naplót **ugyanabban a commit/PR-ben** frissíteni kell — nem külön, később, csak rákérdezésre. A frissítésnek ki kell terjednie: (a) a motívum részletes szöveges bejegyzésére (2. szekció) — az igehely-szám és -lista pontosítva; (b) a táblázatos kulcsszó-indexre (a megfelelő sor Előfordulás-száma és igehely-listája); (c) egy új, dátumozott napló-verzióbejegyzésre a fájl elején, a bővítés tényét és forrását (pl. pilot-visszaírás) rögzítve. A Lezárási checklist alábbi pontjai közül a 3., 4. és 9. pont értelemszerűen erre az esetre is vonatkozik, nem csak a kezdeti lezárásra.
+**Utólagos bővítés — ugyanez a kötelezettség érvényes egy már lezárt study-ra is.** Ha egy már `publikálható` vagy `véglegesített` státuszú tematikus study utólag bővül (új igehely, új tipológia/alpont, korábban pilot-only jelöléssel visszatartott elem visszaírása stb.), a `PaRDeS_motivumok.md` naplót **ugyanabban a commit/PR-ben** frissíteni kell — nem külön, később, csak rákérdezésre. A frissítésnek ki kell terjednie: (a) a motívum részletes szöveges bejegyzésére (2. szekció) — az igehely-szám és -lista pontosítva; (b) a táblázatos kulcsszó-indexre (a megfelelő sor Előfordulás-száma és igehely-listája); (c) egy új, dátumozott napló-verzióbejegyzésre a fájl elején, a bővítés tényét és forrását (pl. pilot-visszaírás) rögzítve. A Lezárási checklist alábbi pontjai közül a 3., 4. és 9. pont értelemszerűen erre az esetre is vonatkozik, nem csak a kezdeti lezárásra.
 
 **Napló-jelölés kötelező:** minden folyamat-/napló-jellegű megjegyzést
 (dátum, forrás-eredet, döntési indoklás) `【NAPLO: ...】` formában, külön
@@ -283,8 +287,9 @@ futtatandó
 
 A biblemate-agentic-workspace (eliranwong) minőségi-kapu ötletéből
 adaptálva, saját megfogalmazással: mielőtt egy tematikus study-t
-LEZÁRVA jelölnénk (akár első alkalommal, akár utólagos
-átdolgozásnál), a study-fájl saját magán fusson végig ez a hét
+`publikálható` státuszra állítanánk (akár első alkalommal, akár
+utólagos átdolgozásnál), a study-fájl saját magán fusson végig ez a hét
+ellenőrzés
 ellenőrzés. Bármelyik kritérium bukása esetén a study NEM
 tekinthető lezártnak — vissza kell térni és javítani, mielőtt a
 Lezárási checklist elindulna.
@@ -375,16 +380,16 @@ Régebbi címke nem írható át újabbra ellenőrzés nélkül. A régi címke 
 Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szükséges, ugyanabban a munkamenetben:
 
 - [ ] **1. Tanulmányfájl elkészítve** — `[Motívum]_tematikus.md` néven (ékezet és kötőjel nélkül), `/mnt/user-data/outputs/`-ba kitéve
-- [ ] **2. Motívumlog 1. szekció** (Tematikus áttekintés) — a motívum melletti jelölés frissítve ✅ LEZÁRVA-ra, a tematikus fájl nevének feltüntetésével
-- [ ] **3. Motívumlog 2. szekció** (Kulcsszó-index) — az érintett sor Előfordulás-száma frissítve, ha a lezárás új előfordulást is hozott
-- [ ] **4. Motívumlog 3. szekció** (Részletes kulcsszó-magyarázatok) — a motívum bejegyzése kiegészítve a lezárás tényével, forrásfájllal, és "Lásd még" kereszthivatkozással a rokon motívumok felé (ha van)
-- [ ] **5. Motívumlog 4. szekció** (Könyv szerinti index) — ellenőrizve, hogy minden érintett könyv/fejezet szerepel-e
-- [ ] **6. Motívumlog 5. szekció** (⭐ Emlékeztető küszöb) — a motívum bejegyzése ÁTHELYEZVE az aktív ⭐ ajánlások közül a lezárt motívumok közé (✅ jelöléssel), hogy ne ajánlódjon fel újra
-- [ ] **7. Motívumlog 6. szekció** (Előrejelzett motívumok) — ha a motívum itt is szerepelt előrejelzésként, a bejegyzés törölve/áthelyezve a "Teljesült" listába
-- [ ] **8. `Lezart_tematikus_tanulmanyok_index.md` frissítve** — új sor: motívum, fájlnév, érintett igehelyek, megjegyzés
-- [ ] **9. Motívumlog fejléc-changelog frissítve** — a lezárás tényének és fő eredményeinek rögzítése (a szokásos, felhasználói jóváhagyással előzetesen egyeztetett szöveggel)
+- [ ] **2. Adatréteg frissítve** — a minősített jelöltek a `adat/jeloltek.tsv`-ben; a `dontes=beépítve` sorok előléptetve az `adat/elofordulasok.tsv`-be; a motívum `statusz` / `statusz_verzio` / `statusz_datum` mezője az `adat/motivumok.tsv`-ben, az `adat/SEMA.md` 2.1–2.2 szerint. Lezáráskor a státusz `publikálható`.
+- [ ] **3. Generált blokkok újragenerálva** — `python eszkozok/general.py --cel naplo`, `--cel index`, `--cel nyitott`, és a diff soronként átnézve. A motívumnapló Tematikus áttekintés, ⭐ Emlékeztető küszöb, Kulcsszó-index és Könyv szerinti index blokkja, valamint a `Lezart_tematikus_tanulmanyok_index.md` és a `NYITOTT_FELADATOK.md` generált blokkja **kézzel nem szerkeszthető** (`CLAUDE.md`, Rétegek). Ha a generált érték hibás, a tábla javul, nem a blokk.
+- [ ] **4. Kulcsszavak részletesen** — a motívum bejegyzése kiegészítve a lezárás tényével, forrásfájllal, és "Lásd még" kereszthivatkozással a rokon motívumok felé (ha van)
+- [ ] **5.** *(megszűnt — a Könyv szerinti index generált blokk, a 3. lépés fedi)*
+- [ ] **6.** *(megszűnt — az ⭐ Emlékeztető küszöb generált blokk, a státusz alapján a 3. lépés fedi)*
+- [ ] **7. Előrejelzett, konkrét igehelyen megerősítendő motívumok** — ha a motívum itt is szerepelt előrejelzésként, a bejegyzés törölve/áthelyezve a "Teljesült" listába
+- [ ] **8.** *(megszűnt — az index generált blokk, a 3. lépés fedi)*
+- [ ] **9. `motivumlog/PaRDeS_motivumok_CHANGELOG.md` frissítve** — a lezárás tényének és fő eredményeinek rögzítése (a szokásos, felhasználói jóváhagyással előzetesen egyeztetett szöveggel)
 - [ ] **10. GitHub-feltöltésre emlékeztetés** — jelezve a felhasználónak, hogy a frissített motívumlog és index GitHubra is felkerülhet (`GitHub_feltoltesi_workflow.md` szerint)
-- [ ] **11. STEPBible-ellenőrzés dokumentálva** — a tanulmányban és a naplóban rögzítve, hogy a lezáráshoz milyen Strong-számokra, milyen keresési paraméterekkel (versen belüli / szomszédos vers, teljes ÚSZ/ÓSZ vagy csak egy könyv) futott le az ellenőrzés, és mikor. Formátum: 🔍 STEPBible-ellenőrizve: [Strong-számok] [keresési mód], [forrás: TAGNT/TAHOT], [dátum]
+- [ ] **11. STEPBible-ellenőrzés dokumentálva** — a tanulmányban és a naplóban rögzítve, hogy a lezáráshoz milyen Strong-számokra, milyen keresési paraméterekkel (versen belüli / szomszédos vers, teljes ÚSZ/ÓSZ vagy csak egy könyv) futott le az ellenőrzés, és mikor. Formátum: 🔍 STEPBible-ellenőrizve: [Strong-számok] [keresési mód], [forrás: TAGNT/TAHOT], [dátum] — a `lekerdez.py` proveniencia-soraival (l. P1–P6)
 - [ ] **12. Érintett bővített tanulmányok visszahivatkozása** — minden,
   a tematikus study 1. pontjának (kereszthivatkozási táblázat) saját,
   katalogizált előfordulás-listájában szereplő igehelyhez tartozó,
