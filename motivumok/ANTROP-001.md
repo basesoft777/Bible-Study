@@ -4,7 +4,7 @@
 
 *Proveniencia: az alábbi szövegblokkok a `motivumlog/PaRDeS_motivumok.md`-ből lettek átemelve, **karakterre azonosan**, 2026-09-15-én (F4.4 / G2). A naplóban a helyükön a `general.py` generált marker-blokkjai állnak. Ami a tábláról levezethető (`adat/motivumok.tsv`, `adat/elofordulasok.tsv`), az nem ide tartozik — ez a réteg csak azt hordozza, ami emberi ítélet: a ⚠️-vitákat, az elhatárolások indoklását, a kiegészítő szótartalmi jegyzeteket, a nevesített tanítói alkalmazást és a gap-jelzéseket, valamint a 【NAPLO: …】 megjegyzéseket.*
 
-## Tematikus áttekintés — a napló mai tétele
+## Tematikus áttekintés — a napló mai tétele *(archív — a 2026-09-15-i kivonás előtti szöveg; a mérvadó érték a generált blokkban áll)*
 
 - pneuma/pszükhé megkülönböztetés (5 előfordulás — ✅ LEZÁRVA, önálló tematikus tanulmányban feldolgozva: `Pneuma_pszukhe_megkulonboztetes_tematikus.md`)
 
@@ -12,7 +12,7 @@
 
 **"pneuma/pszükhé megkülönböztetés" `[ID: ANTROP-001]` — ✅ LEZÁRVA, önálló tematikus tanulmányban feldolgozva (`Pneuma_pszukhe_megkulonboztetes_tematikus.md`).** 1Thessz 5:23 (a kiinduló szövegbeli hármas felosztás: pneuma-pszükhé-szóma), Zsid 4:12 (az ige mint kard, amely "elválasztja" a pszükhét és a pneumát), 1Móz 2:7 ⇒ 1Kor 15:45 (az első Ádám "élő lélekké" — pszükhé — lett, szemben az utolsó Ádámmal, aki "megelevenítő szellemmé" — pneuma, tematikus/ellentétező, NEM lexikai kapocs), negyedikként **Luk 1:46-47** (Mária éneke: "Magasztalja az én lelkem [ψυχή] az Urat, és örvendez az én szellemem [πνεῦμα] az én megtartó Istenemben" — ugyanabban a grammatikai szerepben, közvetlen párhuzamos szerkezetben, valódi lexikai kapocs), és ötödikként **1Kor 2:14-15** (a "természet szerinti ember", ψυχικός, és a "szellemi ember", πνευματικός, páli megkülönböztetése — melléknévi alakban, ezért a másik négy nominális előfordulástól grammatikailag megkülönböztetve, elsősorban Drash-szintű megerősítésként számolva). ⚠️ Vitatott: trichotomizmus (Delitzsch, Watchman Nee) vs. dichotomizmus/retorikai olvasat (F.F. Bruce). Nevesített tanítói alkalmazás: Kenneth Hagin ✅, Derek Prince ✅, Charles Capps ⚠️ részleges/beágyazott. A motívum a továbbiakban nem szerepel aktív ⭐ ajánlásként; jövőbeli előfordulásai továbbra is bekerülnek az indexbe.
 
-## Kulcsszó-index — a napló mai sora
+## Kulcsszó-index — a napló mai sora *(archív — a 2026-09-15-i kivonás előtti szöveg; a mérvadó érték a generált blokkban áll)*
 
 | **pneuma/pszükhé megkülönböztetés** ✅ *(lezárva)* `[ID: ANTROP-001]` | Antropológia | ÚSZ↔ÚSZ / ÓSZ⇒ÚSZ | 5 | Zsid 4:12 ↔ 1Thessz 5:23; 1Móz 2:7 ⇒ 1Kor 15:45; Luk 1:46-47; 1Kor 2:14-15 |
 

@@ -4,11 +4,11 @@
 
 *Proveniencia: az alábbi szövegblokkok a `motivumlog/PaRDeS_motivumok.md`-ből lettek átemelve, **karakterre azonosan**, 2026-09-15-én (F4.4 / G2). A naplóban a helyükön a `general.py` generált marker-blokkjai állnak. Ami a tábláról levezethető (`adat/motivumok.tsv`, `adat/elofordulasok.tsv`), az nem ide tartozik — ez a réteg csak azt hordozza, ami emberi ítélet: a ⚠️-vitákat, az elhatárolások indoklását, a kiegészítő szótartalmi jegyzeteket, a nevesített tanítói alkalmazást és a gap-jelzéseket, valamint a 【NAPLO: …】 megjegyzéseket.*
 
-## Tematikus áttekintés — a napló mai tétele
+## Tematikus áttekintés — a napló mai tétele *(archív — a 2026-09-15-i kivonás előtti szöveg; a mérvadó érték a generált blokkban áll)*
 
 - **Melkizedek — király-pap rendje, kenyér és bor (1, 14:18-20; ✅ LEZÁRVA — mélyelemzés: `1Mozes_14_18-20_Zsolt110_4_Zsid5-7_melyelemzes.md`; teljes tematikus feldolgozás: `Melkizedek_tematikus.md` ⇒ Zsolt 110:4 ⇒ Zsid 5-7 — lásd Kulcsszavak részletesen; a tanulmány 2026.09.08-09-én bővült két új lexikai kapcsolattal (2Móz 19:6, Zak 6:13, BDB H3548 "priest-king" kategória) és egy tematikus TSK-lelettel (1Pét 2:9, LXX szó szerinti idézés); ⚠️ két elkülönített vita: (a) Melkizedek kiléte — krisztofánia vs. irodalmi-retorikai olvasat; (b) Gen 14↔Zsolt 110 irány — Rowley/Nel vs. Kidner/Waltke/Hamilton)**
 
-## Kulcsszó-index — a napló mai sora
+## Kulcsszó-index — a napló mai sora *(archív — a 2026-09-15-i kivonás előtti szöveg; a mérvadó érték a generált blokkban áll)*
 
 | **Melkizedek — király-pap rendje, kenyér és bor** ✅ *(lezárva)* `[ID: KIRALY-001]` | Krisztológia | ÓSZ⇒ÚSZ | 1 | 1Móz 14:18-20 ⇒ 2Móz 19:6 ⇒ Zsolt 110:4 ⇒ Zak 6:13 ⇒ Zsid 5-7 ⇒ 1Pét 2:9 |
 

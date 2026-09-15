@@ -4,7 +4,7 @@
 
 *Proveniencia: az alábbi szövegblokkok a `motivumlog/PaRDeS_motivumok.md`-ből lettek átemelve, **karakterre azonosan**, 2026-09-15-én (F4.4 / G2). A naplóban a helyükön a `general.py` generált marker-blokkjai állnak. Ami a tábláról levezethető (`adat/motivumok.tsv`, `adat/elofordulasok.tsv`), az nem ide tartozik — ez a réteg csak azt hordozza, ami emberi ítélet: a ⚠️-vitákat, az elhatárolások indoklását, a kiegészítő szótartalmi jegyzeteket, a nevesített tanítói alkalmazást és a gap-jelzéseket, valamint a 【NAPLO: …】 megjegyzéseket.*
 
-## Tematikus áttekintés — a napló mai tétele
+## Tematikus áttekintés — a napló mai tétele *(archív — a 2026-09-15-i kivonás előtti szöveg; a mérvadó érték a generált blokkban áll)*
 
   - **↳ Rafeusok/óriás-népek (1Móz 14:5, רְפָאִים, *refáim*, Zuzim, Émim, Hóriak) — ✅ LEZÁRVA, önálló tematikus tanulmányban feldolgozva (`Rafaim_tematikus.md`, felhasználói explicit kérésre, a ⭐ küszöb elérése ELŐTT — FONTOS: ez egy különálló motívum és fájl, NEM azonos a fenti "Isten fiai/Nefilim/Gibborim" lezárással, csak tematikusan rokon vele): a *refáim* szótő teljesen eltér a גִּבֹּרִים/נְפִילִים szócsaládtól, ezért nem növeli a gibborim/nefilim számlálót; a szó kettős jelentésmezőt hordoz (élő "óriás-nép" prózai szövegekben vs. halottak árnyai a Seólban költői szövegekben), ugariti rāpiʾūma-háttérrel; ⚠️ vitatott, hogy folytatja-e a nefilim/gibborim vérvonalat (Heiser) vagy csak a kémek túlzása (Wenham, Mathews, Hess) — a motívum a továbbiakban nem szerepel aktív ⭐ ajánlásként****
 
@@ -12,7 +12,7 @@
 
 **"Rafeusok/óriás-népek — tematikus rokon-csoport a gibborim/nefilim motívummal" `[ID: HODIT-001]` — ✅ ÚJ, LEZÁRVA, önálló tematikus tanulmányban feldolgozva (`Rafaim_tematikus.md`), KIVÉTELESEN a ⭐ küszöb elérése ELŐTT (felhasználói explicit kérésre).** A רְפָאִים szótő önmagában csak 1 előfordulásnál tartott (1Móz 14:5) a gibborim/nefilim (1Móz 6:4) tematikus, NEM lexikai rokonaként — a rendes eljárás szerint ez nem érte volna el az önálló tematikus feldolgozás küszöbét. A tanulmány mélykutatással feltárta a *refáim* szó kettős jelentésmezőjét (élő "óriás-nép" vs. a halottak árnyai a Seólban, ugariti rāpiʾūma-háttérrel), és rokonságát a már lezárt "hádész (seól)" tematikus tanulmánnyal. A motívum a továbbiakban nem szerepel aktív ⭐ ajánlásként; jövőbeli előfordulásai (5Móz 2-3, 2Sám 21 stb.) továbbra is bekerülnek az indexbe, a gibborim/nefilim számlálótól lexikailag elkülönítve.
 
-## Kulcsszó-index — a napló mai sora
+## Kulcsszó-index — a napló mai sora *(archív — a 2026-09-15-i kivonás előtti szöveg; a mérvadó érték a generált blokkban áll)*
 
 | **↳ Rafeusok/óriás-népek** ✅ *(lezárva, önálló tematikus tanulmányban feldolgozva)* `[ID: HODIT-001]` | Hamartológia | ÓSZ (belső, tematikus) | 1 | 1Móz 14:5 ↔ 1Móz 6:4 (gibborim/nefilim, tematikus, NEM lexikai); teljes lexikai ív: Jób 26:5; Zsolt 88:11; Péld 2:18,9:18,21:16; Ézs 14:9,26:14,19 (Seól-jelentés) |
 

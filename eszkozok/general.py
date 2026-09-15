@@ -39,6 +39,11 @@ futtatasuk 2-es kilepesi koddal jelzi ezt, nem hamis sikerrel.
 TSV-olvasas kizarolag split('\\t')-vel, iras '\\t'.join()-nal -- a `csv` modul
 importja is tilos (CLAUDE.md, "TSV-olvasas" szakasz).
 
+A forrasretegbol (`motivumok/[ID].md`) a beolvasztas KIZAROLAG a
+BEOLVASZTHATO_SZAKASZOK allowlistjet olvashatja: a "Kulcsszavak részletesen"
+szakaszt es a ⭐-prozat. A harom archiv szakasz (ARCHIV_SZAKASZOK) elavult,
+tablarol levezetheto erteket hordoz, es nem olvashato -- l. K16 / D15.
+
 Futtatas a repo gyokerebol:
     python eszkozok/general.py --cel naplo
     python eszkozok/general.py --cel index --ellenoriz
@@ -80,6 +85,69 @@ NAPLO_ID_TERKEP = {
     'Tehom_kereszthivatkozas_naplo.md': 'TEREMT-001',
 }
 ID_NAPLO_TERKEP = {azon: fajlnev for fajlnev, azon in NAPLO_ID_TERKEP.items()}
+
+MOTIVUMOK_DIR = os.path.join(ROOT, 'motivumok')
+
+# --- K16 / D15: mit szabad a forrasretegbol beolvasztani -------------------
+#
+# A het `motivumok/[ID].md` ot szakaszbol all, de kozuluk harom ARCHIV: a
+# tartalmuk a D13 ota a generalt blokk birtoka (elofordulas-szam, statusz-
+# cimke, index-sorszam), es a forrasretegben szandekosan ELAVULT ertekkel all
+# -- pl. az ALVIL-001 "4 elofordulas"-a, miutan a tabla 6-ot mond. Ezek a
+# szakaszok a fejlecukben *(archív ...)* jelolest hordoznak (K16), es a
+# beolvasztas SOHA nem olvashatja oket: kulonben az elavult ertek visszaszivarog
+# a generalt blokkba, es pont azt a reteget rontja el, amelyet a generator
+# birtokol.
+#
+# A szures ALLOWLIST, nem tiltolista: nem a jelolest keressuk (az emberi
+# olvasonak szol es elirhato), hanem tetelesen felsoroljuk, mi olvashato.
+# Uj szakasz a forrasretegben alapertelmezesben NEM olvashato -- csak akkor,
+# ha ide is felkerul, dontessel.
+BEOLVASZTHATO_SZAKASZOK = (
+    '## Kulcsszavak részletesen — naplóbejegyzés',
+    '## ⭐ Emlékeztető küszöb — a napló mai bekezdése',
+)
+
+ARCHIV_SZAKASZOK = (
+    '## Tematikus áttekintés — a napló mai tétele',
+    '## Kulcsszó-index — a napló mai sora',
+    '## Lezárt tanulmányok indexe — a mai kézi sor',
+)
+
+
+def forrasreteg_beolvaszthato_szakaszok(motivum_id):
+    """A `motivumok/[ID].md` beolvaszthato szakaszai: {fejlec: torzs}.
+
+    Csak a BEOLVASZTHATO_SZAKASZOK-ban felsorolt fejlecek kerulnek bele; minden
+    mas szakasz -- nevezetesen a harom ARCHIV_SZAKASZOK-beli -- kimarad, akkor
+    is, ha a fejlecrol hianyzik az *(archív ...)* jeloles. A fejlec-illesztes
+    prefix-alapu, mert a jeloles a fejlec-sor vegen all.
+
+    Hianyzo fajl eseten ures dict -- nem hiba: az ANTROP-001-nek pl. nincs
+    minden szakasza.
+    """
+    ut = os.path.join(MOTIVUMOK_DIR, '%s.md' % motivum_id)
+    if not os.path.exists(ut):
+        return {}
+    with io.open(ut, encoding='utf-8', newline='') as fh:
+        sorok = fh.read().split('\n')
+
+    eredmeny = {}
+    aktualis = None
+    for sor in sorok:
+        if sor.startswith('## '):
+            aktualis = None
+            for fejlec in BEOLVASZTHATO_SZAKASZOK:
+                if sor == fejlec or sor.startswith(fejlec + ' '):
+                    aktualis = fejlec
+                    eredmeny[fejlec] = []
+                    break
+            continue
+        if aktualis is not None:
+            eredmeny[aktualis].append(sor)
+
+    return {k: '\n'.join(v).strip() for k, v in eredmeny.items()}
+
 
 TS = datetime.date.today().isoformat()
 
