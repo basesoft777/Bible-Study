@@ -1,5 +1,11 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
+*v16 — 2026.09.15 (F5.1: az 1. pont táblázatának mind a hét oszlopa
+kötelezővé vált — korábban az utolsó négy opcionálisnak számított;
+üres cellában `—` jelzi a hiányzó BDB-adatot, de az oszlop nem
+hagyható el, és nem vonható össze másik oszloppal. Visszamenőleg nem
+kötelező a már lezárt study-kat átírni, csak új vagy szerkesztés
+alatt álló study-nál kötelező.)*
 *v15 — 2026.09.11 (Szabályváltozás: az 1. pont táblázatának
 "Jelentés-szöveg (BDB eredeti)" oszlopa mostantól az angol BDB-szöveg
 MELLETT magyar fordítást is tartalmaz a cellán belül — a korábbi
@@ -127,7 +133,7 @@ Táblázatos áttekintés minden eddigi előfordulásról, a `PaRDeS_motivumok.m
 |---|---|---|---|---|---|---|
 | *(igehely)* | *(a motívum konkrét megjelenési formája ott)* | *(Peshat/Remez/Drash/Sod, és melyik tanulmányból)* | *(pl. H7604)* | *(pl. H7604, ha egy Strong-számhoz több BDB-bejegyzés/homonima tartozik, ez különbözteti meg)* | *(pl. "1")* | *(pl. "be left over" — magyarul: "hátramarad, megmarad")* |
 
-Az utolsó négy oszlop opcionális kitöltésű (nem minden előfordulásnál áll rendelkezésre BDB-adat), de ha a 0. pont gyűjtése vagy a friss keresés során előkerül, itt rögzítendő, **külön oszlopokban** — a `Bibliai_Motivumlexikon_tervezesi_naplo.md` 6. szakaszában jóváhagyott elv szerint, hogy egy jövőbeli KAPCSOLAT-réteg ne igényeljen visszamenőleges szétbontást. A Jelentés-szöveg oszlop a BDB **eredeti angol** szövegét **és** egy tömör magyar fordítást is tartalmaz ugyanabban a cellában, `"angol" — magyarul: "fordítás"` formátumban (2026.09.11-től, v15). A study Peshat/Drash kifejtésében ezen felül is történhet bővebb, kontextusba ágyazott magyarítás — a táblázatcella tömör fordítása nem helyettesíti azt.
+**Mind a hét oszlop kötelezően jelen van.** Az utolsó négy oszlop (Strong-szám(ok), BDB-entry-id, Sense-szám, Jelentés-szöveg) cellája üresen maradhat — ilyenkor `—` áll benne, mert nem minden előfordulásnál áll rendelkezésre BDB-adat —, de **az oszlop nem hagyható el**, és nem vonható össze másik oszloppal. Ha az adat a 0. pont gyűjtése vagy a friss keresés során előkerül, itt rögzítendő, **külön oszlopokban** — a `Bibliai_Motivumlexikon_tervezesi_naplo.md` 6. szakaszában jóváhagyott elv szerint, hogy egy jövőbeli KAPCSOLAT-réteg ne igényeljen visszamenőleges szétbontást. A Jelentés-szöveg oszlop a BDB **eredeti angol** szövegét **és** egy tömör magyar fordítást is tartalmaz ugyanabban a cellában, `"angol" — magyarul: "fordítás"` formátumban (2026.09.11-től, v15). A study Peshat/Drash kifejtésében ezen felül is történhet bővebb, kontextusba ágyazott magyarítás — a táblázatcella tömör fordítása nem helyettesíti azt.
 
 ### Logikai kötőszó szerinti bontás (kötelező, egynél több verset lefedő táblázat-soroknál)
 
