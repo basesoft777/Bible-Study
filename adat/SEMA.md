@@ -186,6 +186,8 @@ study táblázatába).
 | `megbizhatosag` | `MEGBIZHATOSAG` | | Kötelező, ha `karoli_szo` ki van töltve. |
 | `proveniencia` | `PROVENIENCIA` | ✔ | L. 1.5. |
 | `igazolas` | `IGAZOLAS` | ✔ | Megerősítette-e lekérdezés ezt a sort. L. 1.8. |
+| `fo_elofordulas` | szabad szöveg — **csoportkulcs, nem igen/nem** | | A naplóban (`PaRDeS_motivumok.md`) megnevezett "fő előfordulás" saját szövege, szó szerint (pl. `2Móz 15:5,8`, `1Móz 6:1-4`). Üres, ha a sor nem tartozik fő előforduláshoz. L. 2.2.3. |
+| `felmerult_tanulmany` | szabad szöveg | | A study 1. pontja "PaRDeS-szint, ahol felmerült" oszlopának a szint utáni része, szó szerint. Üres, ha a study táblázata nem tartalmaz ilyen oszlopot, vagy a sor csak a szintet ismétli. |
 
 #### 2.2.1 A `gerinc_elem` mező — miért kötelező
 
@@ -198,6 +200,29 @@ Ingyen van: a `lekerdez.py` tudja, melyik parancs melyik sort hozta.
 
 *Kalibráció:* az opus-ág 49 sora ~8 gerinc-elemen állt, azaz ~6 sor elemenként. Húsz sor
 egyetlen elemre **vizsgálandó — jelzés, nem tiltás.**
+
+#### 2.2.3 A `fo_elofordulas` mező — miért csoportkulcs, nem logikai érték
+
+**Eredeti terv (D10, F4_GENERATOR_BRIEF.md): `igen`/`nem`.** A G0/d kitöltés közben
+kiderült, hogy ez elveszít egy tényt: a napló többször **egyetlen "fő
+előfordulásként" nevez meg egy verközt vagy verspárt** (pl. `2Móz 15:5,8`,
+`1Móz 6:1-4`, `Luk 1:46-47`, `1Kor 2:14-15`), miközben ez a tábla verssoronként
+tárol. Egy logikai mező ilyenkor vagy két sorra bontaná a "fő előfordulást"
+(a generált szám elszakadna a napló számától), vagy csak az egyik sort jelölné
+(a másik verssor indoklás nélkül tűnne el a küszöbszámlálásból).
+
+**A döntés (2026.09.15, chat-menet):** a mező típusa szöveg — a napló saját
+megnevezése a csoportról, szó szerint. A ⭐ küszöb-generátor ezután
+`COUNT(DISTINCT fo_elofordulas)`-t számol ID-nként, nem sorszámlálást. Egyik
+verssor sem vész el, a generált szám egyezik a napló prózájának számával, és a
+mező grepelhető vissza a napló szövegére — az összevetés bármikor
+megismételhető. Ez a D10 módosítása, nem visszavonása.
+
+*Önellenőrzési szabály a generátornak:* ID-nként a `COUNT(DISTINCT
+fo_elofordulas)` egyezzen a napló ⭐-szakaszában kimondott számmal; eltérésnél a
+szkript álljon meg (l. a G0/d 2026.09.15-i futásának ALVIL-001-esetét, ahol ez a
+szabály egy második, addig dokumentálatlan hibát is felszínre hozott — a
+`Lezart_tematikus_tanulmanyok_index.md` #2 sorából hiányzott a Jel 1:18).
 
 #### 2.2.2 A `jelentes_szam` mező — a 3.8-as tétel lezárása
 
