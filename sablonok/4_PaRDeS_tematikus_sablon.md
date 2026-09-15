@@ -7,7 +7,10 @@ hagyható el, és nem vonható össze másik oszloppal. Visszamenőleg nem
 kötelező a már lezárt study-kat átírni, csak új vagy szerkesztés
 alatt álló study-nál kötelező. F5.2: új „Verzió-címke” alszakasz és
 13. Lezárási checklist-lépés — a „v‹N› szerint” megjelölés tanúsítás,
-nem dátum, és csak teljes megfelelőségi ellenőrzés után írható át.)*
+nem dátum, és csak teljes megfelelőségi ellenőrzés után írható át.
+F5.3: az 1. pontban a hétlépéses kutatási protokoll (P1–P7) checklistté
+alakítva, a `lekerdez.py` determinisztikus parancsaival és a
+proveniencia-sor kötelezettségével.)*
 *v15 — 2026.09.11 (Szabályváltozás: az 1. pont táblázatának
 "Jelentés-szöveg (BDB eredeti)" oszlopa mostantól az angol BDB-szöveg
 MELLETT magyar fordítást is tartalmaz a cellán belül — a korábbi
@@ -116,6 +119,18 @@ belüli ÉS a szomszédos verseken belüli előfordulást is. A táblázatba MIN
 valódinak minősített, a naplóban még NEM szereplő találat bekerül — ne csak a
 legerősebb 1-2-t válaszd ki, mint a bővítettnél, hanem a teljes valódi találati
 halmazt.
+
+**Kutatási protokoll — hét lépés, kötött sorrendben.** A determinisztikus lépések az `eszkozok/lekerdez.py` parancsaival futnak. Minden futás saját proveniencia-sort ír ki (`scope=… | forras=… | ts=…`), és ez a sor szó szerint a kereszthivatkozás-naplóba kerül. Ahol nem futott lekérdezés, ott az állítás értelmezésként jelölendő.
+
+- [ ] **P1. Gerinc-metszet** — `python eszkozok/lekerdez.py gerinc "<szakasz>" "<szakasz>" …`. A levezetést **akkor is dokumentálni kell, ha az eredmény üres vagy triviális.** Az üres metszet maga is lelet: a motívum szerkezeti, nem lexikai, ezért a P2 a szemantikai mező szerint építi fel a gerincet.
+- [ ] **P2. Szemantikai mező-hipotézis** — generatív lépés, nincs parancsa. A mező szavai a naplóba kerülnek. A `lekerdez.py domen` ma nem ad eredményt, mert az `adat/datasetek.tsv` szerint az SDBH/SDGNT állapota `hianyzik`. Amíg ez így áll, gépi doménre hivatkozni nem lehet.
+- [ ] **P3. Teljes scan** — `python eszkozok/lekerdez.py scan <Strong>` minden mező-szóra. A `--szakasz` szűkítéssel futott scan eredménye nem nevezhető „teljes”-nek; a proveniencia `scope` mezője ezt gépileg mutatja.
+- [ ] **P4. Kollokáció** — `python eszkozok/lekerdez.py kollokacio <Strong_A> <Strong_B>`.
+- [ ] **P5. Igealak-szintű ellenőrzés** — `python eszkozok/lekerdez.py igealak <Strong>`.
+- [ ] **P6. LXX-híd** — `python eszkozok/lekerdez.py lxx-hid "<igehely>"`; kötelező, ha a study bármely ÚSZ-sort állít (l. Q7).
+- [ ] **P7. Nevesített tanító** — önálló menet, saját fájl, az 5. pont „Nevesített tanítói egyezés-keresés módszere” szerint.
+
+A Q2-es négyforrásos audit támogató parancsai: `lekerdez.py tsk "<igehely>"` és `lekerdez.py karoli "<igehely>"`.
 
 **Kötelező napló:** a fenti keresési/minősítési folyamat eredményét — MINDEN
 vizsgált jelöltet, nem csak a bekerülteket — rögzítsd egy önálló fájlban:
