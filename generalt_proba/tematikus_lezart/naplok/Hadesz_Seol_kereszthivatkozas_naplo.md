@@ -79,14 +79,14 @@
 | Ámós 9:2 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | "ha a Seólba ásnak is, onnan is kihozom kezem" | 2026.09.10 |
 | Jón 2:3 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | "a Seól gyomrából kiáltottam" | 2026.09.10 |
 | Hab 2:5 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | a kevély, mint a Seól, sosem elégszik meg | 2026.09.10 |
-| Máté 11:23 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ᾍδης — párhuzamos hely Luk 10:15-höz | 2026.09.10 |
-| Lukács 10:15 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ᾍδης — "égig felmagasztaltattál... hádészig fogsz lealáztatni" (Kapernaum ítélete) | 2026.09.10 |
-| Lukács 16:23 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ᾍδης — a gazdag ember kínban | 2026.09.10 |
+| Mt 11:23 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ᾍδης — párhuzamos hely Luk 10:15-höz | 2026.09.10 |
+| Luk 10:15 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ᾍδης — "égig felmagasztaltattál... hádészig fogsz lealáztatni" (Kapernaum ítélete) | 2026.09.10 |
+| Luk 16:23 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ᾍδης — a gazdag ember kínban | 2026.09.10 |
 | ApCsel 2:27 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | Péter Zsolt 16:10-et idézi: "mert nem hagyod az én lelkemet a sírban [hádész]" | 2026.09.10 |
 | ApCsel 2:31 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírban [hádész]" | 2026.09.10 |
-| Jelenések 1:18 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ᾍδης — Krisztus kezében a halál és a hádész kulcsai | 2026.09.10 |
-| Jelenések 6:8 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ᾍδης — a sápadt lovon ülő Halál nyomában jár a hádész | 2026.09.10 |
-| Jelenések 20:13-14 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ᾍδης — kiadja halottait, majd a tűz tavába vettetik | 2026.09.10 |
+| Jel 1:18 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ᾍδης — Krisztus kezében a halál és a hádész kulcsai | 2026.09.10 |
+| Jel 6:8 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ᾍδης — a sápadt lovon ülő Halál nyomában jár a hádész | 2026.09.10 |
+| Jel 20:13-14 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ᾍδης — kiadja halottait, majd a tűz tavába vettetik | 2026.09.10 |
 
 ## Végső döntés és összegzés
 72 jelölt vizsgálva a `jeloltek.tsv`-ben; 72 beépítve, 0 elutasítva, 0 nyitva.

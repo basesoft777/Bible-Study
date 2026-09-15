@@ -70,13 +70,13 @@
 | Ámós 9:2 | "ha a Seólba ásnak is, onnan is kihozom kezem" | Remez | H7585 | — | — | — |
 | Jón 2:3 | "a Seól gyomrából kiáltottam" | Remez | H7585 | — | — | — |
 | Hab 2:5 | a kevély, mint a Seól, sosem elégszik meg | Remez | H7585 | — | — | — |
-| Máté 11:23 | ᾍδης — párhuzamos hely Luk 10:15-höz | Remez — második, önálló hádész-használati mintázat, ld. lent | G0086 | — | — | — |
-| Lukács 10:15 | ᾍδης — "égig felmagasztaltattál... hádészig fogsz lealáztatni" (Kapernaum ítélete) | Remez — második, önálló hádész-használati mintázat, ld. lent | G0086 | — | — | — |
-| Lukács 16:23 | ᾍδης — a gazdag ember kínban | Peshat | G0086 | — | — | — |
+| Mt 11:23 | ᾍδης — párhuzamos hely Luk 10:15-höz | Remez — második, önálló hádész-használati mintázat, ld. lent | G0086 | — | — | — |
+| Luk 10:15 | ᾍδης — "égig felmagasztaltattál... hádészig fogsz lealáztatni" (Kapernaum ítélete) | Remez — második, önálló hádész-használati mintázat, ld. lent | G0086 | — | — | — |
+| Luk 16:23 | ᾍδης — a gazdag ember kínban | Peshat | G0086 | — | — | — |
 | ApCsel 2:27 | Péter Zsolt 16:10-et idézi: "mert nem hagyod az én lelkemet a sírban [hádész]" | Peshat/Drash | G0086 | — | — | — |
 | ApCsel 2:31 | Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírban [hádész]" | Peshat/Drash | G0086 | — | — | — |
-| Jelenések 1:18 | ᾍδης — Krisztus kezében a halál és a hádész kulcsai | Drash/Sod | G0086 | — | — | — |
-| Jelenések 6:8 | ᾍδης — a sápadt lovon ülő Halál nyomában jár a hádész | Peshat/Remez — a Halál+Hádész páros első megjelenése, amely a 20:13-14-es végső „kiadja halottait” jelenetben teljesedik be | G0086 | — | — | — |
-| Jelenések 20:13-14 | ᾍδης — kiadja halottait, majd a tűz tavába vettetik | Remez/Drash | G0086 | — | — | — |
+| Jel 1:18 | ᾍδης — Krisztus kezében a halál és a hádész kulcsai | Drash/Sod | G0086 | — | — | — |
+| Jel 6:8 | ᾍδης — a sápadt lovon ülő Halál nyomában jár a hádész | Peshat/Remez — a Halál+Hádész páros első megjelenése, amely a 20:13-14-es végső „kiadja halottait” jelenetben teljesedik be | G0086 | — | — | — |
+| Jel 20:13-14 | ᾍδης — kiadja halottait, majd a tűz tavába vettetik | Remez/Drash | G0086 | — | — | — |
 
 <!-- GENERÁLT-VÉGE: study --id ALVIL-001 -->

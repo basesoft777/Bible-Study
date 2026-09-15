@@ -105,12 +105,10 @@
 | Hab | 2 | Hab 2:5 [ALVIL-001], Hab 3:10 [TEREMT-001] |
 | Sof | 1 | Sof 3:9 [ISTENTISZT-001] |
 | Zak | 2 | Zak 6:13 [KIRALY-001], Zak 13:9 [ISTENTISZT-001] |
-| Máté | 1 | Máté 11:23 [ALVIL-001] |
-| Luk | 2 | Luk 1:46 [ANTROP-001], Luk 1:47 [ANTROP-001] |
-| Lukács | 3 | Lukács 8:31 [TEREMT-001], Lukács 10:15 [ALVIL-001], Lukács 16:23 [ALVIL-001] |
+| Mt | 1 | Mt 11:23 [ALVIL-001] |
+| Luk | 5 | Luk 1:46 [ANTROP-001], Luk 1:47 [ANTROP-001], Luk 8:31 [TEREMT-001], Luk 10:15 [ALVIL-001], Luk 16:23 [ALVIL-001] |
 | ApCsel | 5 | ApCsel 2:27 [ALVIL-001], ApCsel 2:31 [ALVIL-001], ApCsel 9:14 [ISTENTISZT-001], ApCsel 9:21 [ISTENTISZT-001], ApCsel 22:16 [ISTENTISZT-001] |
-| Róm | 1 | Róm 10:14 [ISTENTISZT-001] |
-| Róma | 1 | Róma 10:7 [TEREMT-001] |
+| Róm | 2 | Róm 10:7 [TEREMT-001], Róm 10:14 [ISTENTISZT-001] |
 | 1Kor | 4 | 1Kor 1:2 [ISTENTISZT-001], 1Kor 2:14 [ANTROP-001], 1Kor 2:15 [ANTROP-001], 1Kor 15:45 [ANTROP-001] |
 | 1Thessz | 1 | 1Thessz 5:23 [ANTROP-001] |
 | 2Tim | 1 | 2Tim 2:22 [ISTENTISZT-001] |
@@ -118,6 +116,6 @@
 | 1Pét | 1 | 1Pét 1:17 [ISTENTISZT-001] |
 | 2Pét | 1 | 2Pét 2:4-5 [MENNY-001] |
 | Júd | 2 | Júd 1:6 [MENNY-001], Júd 1:14-15 [MENNY-001] |
-| Jelenések | 8 | Jelenések 1:18 [ALVIL-001], Jelenések 6:8 [ALVIL-001], Jelenések 9:1-2 [TEREMT-001], Jelenések 9:11 [TEREMT-001], Jelenések 11:7 [TEREMT-001], Jelenések 17:8 [TEREMT-001], Jelenések 20:1-3 [TEREMT-001], Jelenések 20:13-14 [ALVIL-001] |
+| Jel | 8 | Jel 1:18 [ALVIL-001], Jel 6:8 [ALVIL-001], Jel 9:1-2 [TEREMT-001], Jel 9:11 [TEREMT-001], Jel 11:7 [TEREMT-001], Jel 17:8 [TEREMT-001], Jel 20:1-3 [TEREMT-001], Jel 20:13-14 [ALVIL-001] |
 
 <!-- GENERÁLT-VÉGE: naplo#konyv_index -->

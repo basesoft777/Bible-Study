@@ -49,13 +49,13 @@
 | Ámós 7:4 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | "megemésztette a nagy mélységet" — sáska/tűz-látomás | 2026.09.10 |
 | Jón 2:6 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | "a mélység körülvett engem" — Jónás imája a hal gyomrában, legszorosabb párhuzam a Zsolt 71:20/107:26 verspárral | 2026.09.10 |
 | Hab 3:10 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | "a mélység felemelte szavát" — teofánia | 2026.09.10 |
-| Lukács 8:31 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ἄβυσσος — a démonok kérik, ne oda küldje őket Jézus | 2026.09.10 |
-| Róma 10:7 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ἄβυσσος — "ki száll le az abüsszoszba?" | 2026.09.10 |
-| Jelenések 9:1-2 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ἄβυσσος — a mélység kútja megnyílik, füst és sáskák jönnek fel | 2026.09.10 |
-| Jelenések 9:11 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ἄβυσσος, Ἀβαδδών/Ἀπολλύων — a mélység angyala | 2026.09.10 |
-| Jelenések 11:7 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ἄβυσσος — a fenevad onnan jön fel | 2026.09.10 |
-| Jelenések 17:8 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ἄβυσσος — a fenevad onnan jön fel | 2026.09.10 |
-| Jelenések 20:1-3 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ἄβυσσος — Sátán megkötözve ezer évre | 2026.09.10 |
+| Luk 8:31 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ἄβυσσος — a démonok kérik, ne oda küldje őket Jézus | 2026.09.10 |
+| Róm 10:7 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ἄβυσσος — "ki száll le az abüsszoszba?" | 2026.09.10 |
+| Jel 9:1-2 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ἄβυσσος — a mélység kútja megnyílik, füst és sáskák jönnek fel | 2026.09.10 |
+| Jel 9:11 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ἄβυσσος, Ἀβαδδών/Ἀπολλύων — a mélység angyala | 2026.09.10 |
+| Jel 11:7 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ἄβυσσος — a fenevad onnan jön fel | 2026.09.10 |
+| Jel 17:8 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ἄβυσσος — a fenevad onnan jön fel | 2026.09.10 |
+| Jel 20:1-3 | TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés | beépítve | ἄβυσσος — Sátán megkötözve ezer évre | 2026.09.10 |
 
 ## Végső döntés és összegzés
 41 jelölt vizsgálva a `jeloltek.tsv`-ben; 41 beépítve, 0 elutasítva, 0 nyitva.

@@ -2,3 +2,6 @@
 # duplikáltan, csak build időben másolódnak be.
 bovitmenyek/pardes_strong_annotator/data/
 bovitmenyek/*.oxt
+
+# Python bytecode-gyorsitotar -- nem verziozzuk
+__pycache__/

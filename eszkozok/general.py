@@ -83,26 +83,29 @@ ID_NAPLO_TERKEP = {azon: fajlnev for fajlnev, azon in NAPLO_ID_TERKEP.items()}
 
 TS = datetime.date.today().isoformat()
 
-# A tablaban ma nem szereplo, de a naploban mar konyvkent hasznalt ujszovetsegi
-# tokenek -- csak a ma ELOFORDULO alakok, nem az osszes bibliai konyv (l. a
-# konyv_teszament() dokumentaciojat lent).
+# A ma az elofordulasok.tsv-ben ELOFORDULO ujszovetsegi konyv-tokenek -- nem az
+# osszes bibliai konyv (l. a konyv_teszamentum() dokumentaciojat lent). A K15
+# utan kizarolag a normalizalo tabla roevid alakjai allnak itt: a hosszu
+# variansok (`Jelenések`, `Lukács`, `Máté`, `Róma`) kikerultek a tablabol.
 UJSZOVETSEGI_TOKENEK = {
-    '1Kor', '1Pét', '1Thessz', '2Pét', '2Tim', 'ApCsel', 'Jelenések', 'Júd',
-    'Luk', 'Lukács', 'Máté', 'Róm', 'Róma', 'Zsid',
+    '1Kor', '1Pét', '1Thessz', '2Pét', '2Tim', 'ApCsel', 'Jel', 'Júd',
+    'Luk', 'Mt', 'Róm', 'Zsid',
 }
 
 KONYV_NORMALIZALO_TSV = os.path.join(ROOT, 'konkordancia', 'Konyv_normalizalo_tabla.tsv')
 
-# Az elofordulasok.tsv-ben ma tenylegesen elofordulo, a normalizalo tabla
-# roevid alakjatol elteroe konyvnev-alakok -- ismert VARIANSOK, nem hianyzo
-# konyvek. A K13 kanonikus rendezese ezen keresztul talalja meg a helyuket
-# a konyv_normalizalo_tabla.tsv sorrendjeben.
-KONYV_ALIAS = {
-    'Jelenések': 'Jel',
-    'Lukács': 'Luk',
-    'Máté': 'Mt',
-    'Róma': 'Róm',
-}
+# SZANDEKOSAN URES (K15/D14). Korabban ez a szotar javitotta a renderelo
+# oldalan az elofordulasok.tsv negy hosszu konyvnev-varianset (`Jelenések`,
+# `Lukács`, `Máté`, `Róma`). A javitas 2026-09-15-tol a TABLABAN tortent meg
+# (13 sor, eszkozok/k15_konyvnev_normalizalas.py), mert a tabla kulcsa
+# id + igehely: a renderelo-oldali alias csak a generatort javitotta volna
+# meg, a gate.py-t, a lekerdez.py-t es minden jovobeli joint nem.
+#
+# JELENTO OR, amely NEM javit: ha ide barmi visszakerul, az azt jelenti, hogy
+# a tabla ujra ket alakban tarol egy konyvet -- a helyes valasz a tabla
+# javitasa, nem a szotar bovitese. A konyv_sorszam() ezert NEM hasznalja
+# feloldasra; az ismeretlen token a hianyzo_konyvek jelentesbe kerul.
+KONYV_ALIAS = {}
 
 
 def konyv_sorrend_betolt():
@@ -116,8 +119,15 @@ def konyv_sorszam(token, konyv_sorrend, hianyzo_konyvek):
     """A token kanonikus sorszáma. Ismeretlen könyvet a lista VÉGÉRE teszi,
     de felveszi a hianyzo_konyvek halmazba -- a hívó ezt jelentse, ne
     hallgassa el (F4_GENERATOR_BRIEF.md K13: "ne rendezd a lista végére
-    némán")."""
-    kulcs = KONYV_ALIAS.get(token, token)
+    némán").
+
+    A KONYV_ALIAS itt szándékosan NEM oldja fel a tokent (K15/D14) -- a
+    szótár üres, és ha nem az, az őr jelent, nem javít."""
+    if KONYV_ALIAS:
+        print('  K15-ŐR: a KONYV_ALIAS nem üres (%s) -- a könyvnév-normalizálás '
+              'a táblában történik, nem a renderelőben (D14).'
+              % ', '.join(sorted(KONYV_ALIAS)), file=sys.stderr)
+    kulcs = token
     if kulcs in konyv_sorrend:
         return konyv_sorrend[kulcs]
     hianyzo_konyvek.add(token)
@@ -544,10 +554,52 @@ def naplo_hianylista_sorok(jeloltek):
     return sorok
 
 
-def hianylista_tsv_szoveg(sorok):
+# K9': a HAMART-001-nek egyetlen sora sincs a jeloltek.tsv-ben -- a teljes ID
+# hianyzik a tablabol (ismert F3-betoltesi hiany). Az o "hianyai" ezert nem
+# 32 onallo lelet, hanem egyetlen ismert hiany kovetkezmenye; a hat betoltott
+# ID tenyleges hianyaitol kulon blokkban allnak, hogy a szam ne fusson ossze.
+K9_KULON_BLOKK_ID = 'HAMART-001'
+
+
+def hianylista_blokkok(sorok, jeloltek):
+    """(betoltott_sorok, kulon_sorok) -- a K9' ketteosztas. A besorolas nem
+    beegetett ID-lista: az kerul a kulon blokkba, amelynek EGYETLEN sora sincs
+    a jeloltek.tsv-ben (tehat a teljes ID hianyzik), es amely a
+    K9_KULON_BLOKK_ID."""
+    jel_id_szerint = jeloltek_id_szerint(jeloltek)
+    kulon = [s for s in sorok
+             if s['id'] == K9_KULON_BLOKK_ID and not jel_id_szerint.get(s['id'])]
+    kulon_id = {s['id'] for s in kulon}
+    betoltott = [s for s in sorok if s['id'] not in kulon_id]
+    return betoltott, kulon
+
+
+def hianylista_tsv_szoveg(betoltott, kulon):
+    """A ket blokk egyetlen TSV-ben, lathato blokkhatarral. A '#' elotetsorokat
+    a tsv_beolvas() kihagyja, tehat a fajl gepileg tovabbra is egy tabla."""
     fejlec = ['id', 'jelolt', 'tipus', 'forras_naplo', 'indoklas']
-    sorlista = [fejlec] + [[s[m].replace('\t', ' ') for m in fejlec] for s in sorok]
-    return '\n'.join('\t'.join(sor) for sor in sorlista) + '\n'
+
+    def adatsorok(lista):
+        return ['\t'.join(s[m].replace('\t', ' ') for m in fejlec) for s in lista]
+
+    kulon_id = sorted({s['id'] for s in kulon})
+    ki = []
+    ki.append('# F4 napló-hiánylista (K9/K9\') -- KÉT BLOKK, l. F4_GENERATOR_BRIEF.md 3. pont')
+    ki.append('# 1. blokk: a betöltött motívum-ID-k TÉNYLEGES hiányai (%d sor) -- '
+              'ezek a naplókban ❌-szal minősített jelöltek, amelyek nincsenek a '
+              'jeloltek.tsv-ben.' % len(betoltott))
+    ki.append('# 2. blokk: %s (%d sor) -- EGYETLEN ismert F3-hiány következménye, '
+              'nem %d önálló lelet: ennek az ID-nek egyetlen sora sincs a '
+              'jeloltek.tsv-ben, mert maga az ID nincs betöltve.'
+              % (', '.join(kulon_id) or '(üres)', len(kulon), len(kulon)))
+    ki.append('#')
+    ki.append('\t'.join(fejlec))
+    ki.append('# --- 1. BLOKK: betöltött ID-k tényleges hiányai (%d sor) ---' % len(betoltott))
+    ki.extend(adatsorok(betoltott))
+    ki.append('# --- 2. BLOKK: %s -- ismert F3-betöltési hiány következménye (%d sor) ---'
+              % (', '.join(kulon_id) or '(üres)', len(kulon)))
+    ki.extend(adatsorok(kulon))
+    return '\n'.join(ki) + '\n'
 
 
 # ---------------------------------------------------------------------------
@@ -616,13 +668,16 @@ def kimenet_ir(args, relativ_ut, tartalom, forras_ut_a_sorveghez):
     return cel_ut
 
 
-def hianylista_ir(args, sorok):
+def hianylista_ir(args, sorok, jeloltek):
     """A K9 melléktermék írása -- LF-es (a .gitattributes szerint minden
     *.tsv LF-es), nem a célfájl-sorvég-megtartó kimenet_ir() útján, mert ez
     egy ÚJ artefaktum, nincs neki 'mai' célfájlja."""
-    tartalom = hianylista_tsv_szoveg(sorok)
+    betoltott, kulon = hianylista_blokkok(sorok, jeloltek)
+    tartalom = hianylista_tsv_szoveg(betoltott, kulon)
     cel_ut = os.path.join(args.kimenet, 'naplok', 'F4_naplo_hianylista.tsv')
-    print('  hiánylista (K9): %d sor' % len(sorok))
+    print('  hiánylista (K9\'): %d sor = 1. blokk %d (betöltött ID-k tényleges hiányai) '
+          '+ 2. blokk %d (%s -- egyetlen ismert F3-hiány következménye)'
+          % (len(sorok), len(betoltott), len(kulon), K9_KULON_BLOKK_ID))
     if args.ellenoriz:
         print('  --ellenoriz: nincs írás.')
         return cel_ut
@@ -733,7 +788,7 @@ def main():
             # képest készül, hogy a --id ne rejtse el a más ID-khez tartozó hiányt.
             _, jeloltek_teljes = tsv_beolvas(JELOLTEK_TSV)
             hianylista_sorok = naplo_hianylista_sorok(jeloltek_teljes)
-            hianylista_ir(args, hianylista_sorok)
+            hianylista_ir(args, hianylista_sorok, jeloltek_teljes)
 
         elif cel == 'study':
             elof_id_szerint = elofordulasok_id_szerint(elofordulasok)
@@ -764,7 +819,8 @@ def main():
               % ', '.join(sorted(hianyzo_konyvek)), file=sys.stderr)
         vegso_kod = max(vegso_kod, 1)
     else:
-        print('  K13: minden könyvnév feloldva a normalizáló táblán (esetleg alias útján).')
+        print('  K13/K15: minden könyvnév feloldva a normalizáló táblán, '
+              'alias nélkül (a KONYV_ALIAS üres).')
 
     return vegso_kod
 

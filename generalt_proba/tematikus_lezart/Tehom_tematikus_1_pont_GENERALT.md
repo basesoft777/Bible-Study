@@ -40,12 +40,12 @@
 | Ámós 7:4 | "megemésztette a nagy mélységet" — sáska/tűz-látomás | Remez | H8415 | — | — | — |
 | Jón 2:6 | "a mélység körülvett engem" — Jónás imája a hal gyomrában, legszorosabb párhuzam a Zsolt 71:20/107:26 verspárral | Remez | H8415 | — | — | — |
 | Hab 3:10 | "a mélység felemelte szavát" — teofánia | Remez | H8415 | — | — | — |
-| Lukács 8:31 | ἄβυσσος — a démonok kérik, ne oda küldje őket Jézus | Peshat/Remez | G0012 | — | — | — |
-| Róma 10:7 | ἄβυσσος — "ki száll le az abüsszoszba?" | Remez/Drash | G0012 | — | — | — |
-| Jelenések 9:1-2 | ἄβυσσος — a mélység kútja megnyílik, füst és sáskák jönnek fel | Remez/Sod | G0012 | — | — | — |
-| Jelenések 9:11 | ἄβυσσος, Ἀβαδδών/Ἀπολλύων — a mélység angyala | Remez/Sod | G0012 | — | — | — |
-| Jelenések 11:7 | ἄβυσσος — a fenevad onnan jön fel | Remez | G0012 | — | — | — |
-| Jelenések 17:8 | ἄβυσσος — a fenevad onnan jön fel | Remez | G0012 | — | — | — |
-| Jelenések 20:1-3 | ἄβυσσος — Sátán megkötözve ezer évre | Remez/Drash | G0012 | — | — | — |
+| Luk 8:31 | ἄβυσσος — a démonok kérik, ne oda küldje őket Jézus | Peshat/Remez | G0012 | — | — | — |
+| Róm 10:7 | ἄβυσσος — "ki száll le az abüsszoszba?" | Remez/Drash | G0012 | — | — | — |
+| Jel 9:1-2 | ἄβυσσος — a mélység kútja megnyílik, füst és sáskák jönnek fel | Remez/Sod | G0012 | — | — | — |
+| Jel 9:11 | ἄβυσσος, Ἀβαδδών/Ἀπολλύων — a mélység angyala | Remez/Sod | G0012 | — | — | — |
+| Jel 11:7 | ἄβυσσος — a fenevad onnan jön fel | Remez | G0012 | — | — | — |
+| Jel 17:8 | ἄβυσσος — a fenevad onnan jön fel | Remez | G0012 | — | — | — |
+| Jel 20:1-3 | ἄβυσσος — Sátán megkötözve ezer évre | Remez/Drash | G0012 | — | — | — |
 
 <!-- GENERÁLT-VÉGE: study --id TEREMT-001 -->
