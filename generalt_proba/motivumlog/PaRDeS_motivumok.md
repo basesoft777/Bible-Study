@@ -2,7 +2,7 @@
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#attekintes | forrás: adat/motivumok.tsv, adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk a táblában betöltött 7 motívum-ID-t fedi; a napló Tematikus áttekintés szakasza 90 tételt sorol fel (84 felső szint + 6 alpont -- K12': a nevező a teljes szám, mert a HODIT-001 itt csak alpontként szerepel), ebből 83 még nincs a táblában.*
+*Ez a blokk a táblában betöltött 7 motívum-ID-t fedi; a napló Tematikus áttekintés szakasza a blokkon kívül további 84 kézi tételt sorol fel (79 felső szint + 5 alpont -- K12': azonos granularitás, az alpontok is számítanak), amelyek kézi karbantartásban maradnak.*
 
 **Angyalológia**
 - Isten fiai — Nefilim — Gibborim motívum-komplexum `[ID: MENNY-001]` — 1 fő előfordulás / 9 igehely-sor — publikálható (v4, 2026.09.10)

@@ -15,3 +15,9 @@
 ## Kulcsszó-index — a napló mai sora
 
 | **tehóm — Abüσσος: a mélység motívuma, a teremtés visszafordítása és helyreállítása** ✅ *(lezárva, összevonva, valódi kutatással kiegészítve)* `[ID: TEREMT-001]` | Teremtéstan | ÓSZ↔ÓSZ (Tóra-szintű) / ÓSZ⇒ÚSZ (LXX-közvetített) | **5 fő genezisi/Tóra-szintű (⚠️ az 5. vitatott mértékben tudatos); teljes kánoni mező: 35 ÓSZ + 9 ÚSZ** | 1Móz 1:2 ↔ 1Móz 7:11 ↔ 1Móz 8:2 ↔ 1Móz 49:25 ↔ 2Móz 15:5,8 (⚠️); ábüσσος (LXX) ⇒ Luk 8:31, Róm 10:7, Jel 9:1-2,11; 11:7; 17:8; 20:1,3; **teljes ÓSZ-mező 2026.09.10-i valódi kutatással megerősítve, 3 új igehellyel: Zsolt 36:7, 77:17, Jón 2:6** |
+
+## Lezárt tanulmányok indexe — a mai kézi sor *(archív: a generált blokk csak a fő előfordulásokat hozza)*
+
+| # | Motívum | Fájlnév | Érintett igehelyek | Megjegyzés |
+|---|---|---|---|---|
+| 1 | **Tehóm — Abüsszosz: a mélység motívuma** | `Tehom_tematikus.md` | 1Móz 1:2 ↔ 7:11 ↔ 8:2 ↔ 49:25 ↔ 2Móz 15:5,8 (5 fő genezisi/Tóra-szintű előfordulás; teljes kánoni mező: 35 ÓSZ + 9 ÚSZ, valódi TAHOT/TAGNT-scannel 2026.09.10-én megerősítve, 3 új ÓSZ-igehellyel: Zsolt 36:7, 77:17, Jón 2:6) | Tóra-szintű ívvé kiterjesztve; a tematikus tanulmány önmagában tartalmazza a teljes elemzést. 2026.09.10-én összevonva a korábbi, önálló sorszám nélküli `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` tartalmával — az a fájl törölve, mert a napló sosem adott önálló ID-t az ábüσσος-anyagnak. (F0.4: a törölt fájl korábban önálló sort foglalt el a táblázatban; a táblázat azóta folyamatosan, kihagyás nélkül számozott.) A Tartarosz egy rövid kereszthivatkozó bekezdés marad; a hádész/seól (`[ID: ALVIL-001]`) továbbra is önálló fájlban él, l. a `[ID: ALVIL-001]` sort. |

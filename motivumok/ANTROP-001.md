@@ -27,3 +27,9 @@
 - ⚠️ **Vitatott pont: trichotomizmus vs. dichotomizmus.** Trichotomista hang: Franz Delitzsch (*A System of Biblical Psychology*) és Watchman Nee (*The Spiritual Man*) szerint a *pneuma* és *pszükhé* ontológiailag is elkülönülő alkotóelemek. Dichotomista hang: F.F. Bruce (*Hebrews*, NICNT) a Zsid 4:12 "szétválasztást" elsősorban retorikai, nem metafizikai megkülönböztetésként olvassa.
 - **Nevesített tanítói alkalmazás:** Kenneth Hagin ✅ erős/közvetlen (*Man on Three Dimensions*, *The Human Spirit* — "A Study of the Spirit, Soul and Body" sorozat); Derek Prince ✅ erős/közvetlen (*Spirit, Soul and Body* tanítás-sorozat, "Triune Man At Creation" és "Functions Of Spirit, Soul And Body", közvetlenül 1Thessz 5:23 és 1Móz 2:7 alapján); Charles Capps ⚠️ részleges/beágyazott (*God's System for Your Success* — a szélesebb dominion/szavak ereje tanítás részeként, nem önálló dedikált mű).
 - A motívum a továbbiakban nem szerepel aktív ⭐ ajánlásként; jövőbeli előfordulásai (ha lesznek) továbbra is bekerülnek az indexbe.
+
+## Lezárt tanulmányok indexe — a mai kézi sor *(archív: a generált blokk csak a fő előfordulásokat hozza)*
+
+| # | Motívum | Fájlnév | Érintett igehelyek | Megjegyzés |
+|---|---|---|---|---|
+| 5 | **Pneuma/pszükhé megkülönböztetés** | `Pneuma_pszukhe_megkulonboztetes_tematikus.md` | 1Thessz 5:23 ↔ Zsid 4:12; 1Móz 2:7 ⇒ 1Kor 15:45; Luk 1:46-47; 1Kor 2:14-15 (5 előfordulás) | Named teachers: Kenneth Hagin ✅, Derek Prince ✅, Charles Capps ⚠️ beágyazott. Luk 1:46-47: negyedik, valódi lexikai előfordulás (nominális alak). 1Kor 2:14-15: ötödik, melléknévi alakú (ψυχικός/πνευματικός), elsősorban Drash-szintű megerősítés — grammatikailag megkülönböztetve a másik négytől. 2026.08.22-én lezárva (v3). |

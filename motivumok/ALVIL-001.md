@@ -15,3 +15,9 @@
 ## Kulcsszó-index — a napló mai sora
 
 | **hádész (seól) — a halottak birodalma** ✅ *(lezárva)* `[ID: ALVIL-001]` | Eszkatológia | ÓSZ⇒ÚSZ | 6 | Zsolt 16:10 ⇒ ApCsel 2:27,31; Luk 16:23; Jel 1:18; Jel 6:8; Luk 10:15/Mát 11:23; Jel 20:13-14 |
+
+## Lezárt tanulmányok indexe — a mai kézi sor *(archív: a generált blokk csak a fő előfordulásokat hozza)*
+
+| # | Motívum | Fájlnév | Érintett igehelyek | Megjegyzés |
+|---|---|---|---|---|
+| 2 | **Hádész (seól) — a halottak birodalma** | `Hadesz_Seol_tematikus.md` | Zsolt 16:10 ⇒ ApCsel 2:27,31 → Luk 16:23 → Jel 6:8 → Luk 10:15/Mát 11:23 → Jel 20:13-14 (6 előfordulás) | A törölt, önálló sorszám nélküli kibővített tanulmányon (`Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md`) belül élt 2026.09.10-ig, azóta önálló fájlban — a napló mindig is külön ID-ként (`[ID: ALVIL-001]`) tartotta nyilván. Lexikailag élesen elkülönül a tehóm/abüsszosz-családtól. |

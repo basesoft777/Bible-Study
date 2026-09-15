@@ -11,3 +11,9 @@
 ## Kulcsszó-index — a napló mai sora
 
 | **Isten fiai — angyali/Séthita vita** ✅ *(lezárva)* `[ID: MENNY-001]` | Hamartológia | ÓSZ↔ÚSZ | 1 | 1Móz 6:1-4 ↔ Júd 1:6 (tartalmi/szerkezeti, 1Énokh 10-12 nyomán); Júd 1:14-15 (közvetlen idézet 1Énokh 1:9-ből); 2Pét 2:4-5 (tematikus/szerkezeti, nem lexikai); Jób 1:6, 2:1, 38:7 (bené ha'Elohim, mennyei udvar) |
+
+## Lezárt tanulmányok indexe — a mai kézi sor *(archív: a generált blokk csak a fő előfordulásokat hozza)*
+
+| # | Motívum | Fájlnév | Érintett igehelyek | Megjegyzés |
+|---|---|---|---|---|
+| 6 | **Isten fiai — angyali/Séthita vita (Nefilim/Gibborim komplexum)** | `Isten_fiai_Nefilim_Gibborim_tematikus.md` | 1Móz 6:1-4 ↔ Jób 1:6, 2:1, 38:7; Júd 1:6, 1:14-15; 2Pét 2:4-5 (1 fő előfordulás, gazdag kereszthivatkozási hálóval) | **FONTOS ELHATÁROLÁS a `[ID: HODIT-001]`-től**: tematikusan rokon a Rafeusok-motívummal, de lexikailag és fájl szerint is önálló. Named teacher: Derek Prince ("Because of the Angels", ✅ erős forrás). 2026.08.21-én lezárva. |

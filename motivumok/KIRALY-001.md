@@ -28,3 +28,9 @@
 - **Mélyelemzés lezárva:** `1Mozes_14_18-20_Zsolt110_4_Zsid5-7_melyelemzes.md`, 2026.08.17.
 - **Teljes tematikus tanulmány (kiegészítő):** `Melkizedek_tematikus.md`, 2026.08.22, bővítve 2026.09.08-09-én (2Móz 19:6, Zak 6:13, 1Pét 2:9) — motívum-szintű Peshat/Remez/Drash/Sod bontás és nevesített tanítói keresés. Named teacher: **Derek Prince** ✅ erős/közvetlen forrás (*"The Ministry Of A Priest"*, *"The Power of Communion"*, *"By Tithing We Acknowledge The Lord As Our God"*, *"Melchizedek, Christ And The Priesthood"*) — kommunió-előképként olvassa a jelenetet. A többi jóváhagyott tanítónál (Hagin, Copeland, Capps, Roberts, Osborn, Wigglesworth) explicit hiányjelzés.
 - **Visszahivatkozott bővített study-k:** `1Moz_14_bovitett.md`
+
+## Lezárt tanulmányok indexe — a mai kézi sor *(archív: a generált blokk csak a fő előfordulásokat hozza)*
+
+| # | Motívum | Fájlnév | Érintett igehelyek | Megjegyzés |
+|---|---|---|---|---|
+| 7 | **Melkizedek — király-pap rendje, kenyér és bor** | `Melkizedek_tematikus.md` | 1Móz 14:18-20 ⇒ 2Móz 19:6 ⇒ Zsolt 110:4 ⇒ Zak 6:13 ⇒ Zsid 5-7 ⇒ 1Pét 2:9 (1 fő genezisi előfordulás, gazdag ÓSZ⇒ÚSZ kánoni ívvel) | Kiegészíti a "Lezárt mélyelemzések" szekció `1Mozes_14_18-20_Zsolt110_4_Zsid5-7_melyelemzes.md` tételét (ugyanaz a motívum, más feldolgozási forma): motívum-szintű teljes Peshat/Remez/Drash/Sod bontás + nevesített tanítói keresés. Named teacher: Derek Prince ✅ erős forrás; Hagin/Copeland/Capps/Roberts/Osborn/Wigglesworth — gap. ⚠️ két elkülönített vita: Melkizedek kiléte (krisztofánia vs. irodalmi-retorikai) és Gen 14↔Zsolt 110 irány (Rowley/Nel vs. Kidner/Waltke/Hamilton). 2026.08.22-én lezárva, 2026.09.08-09-én bővítve: 2Móz 19:6 és Zak 6:13 (lexikai, BDB H3548 "priest-king"), valamint 1Pét 2:9 (tematikus TSK-lelet, LXX szó szerinti idézés). |

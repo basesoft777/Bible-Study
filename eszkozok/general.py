@@ -222,6 +222,67 @@ def fejlec_stampel(cel, forras_lista):
         cel, ', '.join(forras_lista), TS)
 
 
+# --- G7: marker-parok kezelese eles fajlban -------------------------------
+#
+# A blokk azonossaga a CEL-KULCS, nem a tartalom es nem a ts. A kezdo marker
+# ts-e futasonkent valtozik, ezert az --ellenoriz a marker-parok KOZOTTI
+# torzset veti ossze, nem a markereket.
+
+MARKER_KEZDET = '<!-- GENERÁLT-KEZDET: general.py --cel %s |'
+MARKER_VEGE = '<!-- GENERÁLT-VÉGE: %s -->'
+
+
+def blokk_torzs(blokk_szoveg, cel_kulcs):
+    """A marker-par kozotti torzs (a hatokor-sorral egyutt), markerek nelkul."""
+    veg = MARKER_VEGE % cel_kulcs
+    i = blokk_szoveg.index('-->') + len('-->')
+    j = blokk_szoveg.index(veg)
+    return blokk_szoveg[i:j]
+
+
+def marker_par_keres(fajl_szoveg, cel_kulcs):
+    """(kezdet_idx, torzs_kezdet, torzs_veg, veg_idx) vagy None."""
+    kezd_minta = MARKER_KEZDET % cel_kulcs
+    i = fajl_szoveg.find(kezd_minta)
+    if i < 0:
+        return None
+    torzs_kezd = fajl_szoveg.index('-->', i) + len('-->')
+    veg = MARKER_VEGE % cel_kulcs
+    j = fajl_szoveg.find(veg, torzs_kezd)
+    if j < 0:
+        raise ValueError('nyitó marker záró pár nélkül: %s' % cel_kulcs)
+    return i, torzs_kezd, j, j + len(veg)
+
+
+def marker_blokkok_nelkul(fajl_szoveg):
+    """A fajl szovege a GENERÁLT-KEZDET…GENERÁLT-VÉGE szakaszok NELKUL --
+    a hatokor-szamlalok csak a kezi tartalmat lathatjak (l.
+    naplo_bullet_szamlalo)."""
+    return re.sub(r'<!-- GENERÁLT-KEZDET:.*?<!-- GENERÁLT-VÉGE: [^>]*-->',
+                  '', fajl_szoveg, flags=re.S)
+
+
+def blokk_beilleszt(fajl_szoveg, cel_kulcs, uj_blokk, horgony):
+    """(uj_szoveg, mit_csinalt). Ha a marker-par megvan, a TORZSET csereli
+    (a kezi tartalom a blokkon kivul erintetlen); ha nincs, a horgony-sor
+    utan szurja be a teljes blokkot. Horgony nelkul/nem talalt horgonynal
+    hibat dob -- nem tippel helyet."""
+    talalat = marker_par_keres(fajl_szoveg, cel_kulcs)
+    if talalat:
+        _, tk, tv, _ = talalat
+        regi = fajl_szoveg[tk:tv]
+        uj = blokk_torzs(uj_blokk, cel_kulcs)
+        if regi == uj:
+            return fajl_szoveg, 'változatlan'
+        return fajl_szoveg[:tk] + uj + fajl_szoveg[tv:], 'frissítve'
+    if horgony is None:
+        raise ValueError('nincs marker-pár és nincs horgony: %s' % cel_kulcs)
+    if fajl_szoveg.count(horgony) != 1:
+        raise ValueError('a horgony %d helyen illeszkedik (%s): %r'
+                         % (fajl_szoveg.count(horgony), cel_kulcs, horgony))
+    return fajl_szoveg.replace(horgony, horgony + '\n\n' + uj_blokk, 1), 'beszúrva'
+
+
 # ---------------------------------------------------------------------------
 # Adatszervezés
 # ---------------------------------------------------------------------------
@@ -254,12 +315,16 @@ def naplo_bullet_szamlalo(naplo_szoveg):
     top-szintű, illetve behúzott '  - ↳' alpont tételeinek száma.
 
     K12': a hatókör-sor számlálója és nevezője azonos granularitású legyen.
-    A HODIT-001 betöltött ID ebben a szakaszban CSAK alpontként szerepel
-    ('  - ↳ Rafeusok/óriás-népek …'), tehát ha a nevező a puszta top-szintű
-    szám (84) lenne, a 7 betöltött ID egyike nem volna benne a nevezőben.
-    A generátor ezért a TELJES (felszint + alpont) számot használja
-    nevezőként -- l. render_naplo_attekintes()."""
-    m = re.search(r'^## Tematikus áttekintés\n(.*?)\n## ', naplo_szoveg, re.S | re.M)
+    A HODIT-001 betöltött ID ebben a szakaszban CSAK alpontként szerepelt
+    ('  - ↳ Rafeusok/óriás-népek …'), tehát a puszta top-szintű szám nem
+    volna azonos granularitású -- a generátor ezért a felszint + alpont
+    számot használja (l. render_naplo_attekintes()).
+
+    A GENERÁLT MARKER-BLOKKOK TARTALMA KIMARAD a számlálásból (G7). Enélkül
+    a blokk a SAJÁT sorait is beleszámolná az élesítés után, tehát a
+    hatókör-sor önmagától függne, és soha nem érne fixpontot."""
+    szoveg = marker_blokkok_nelkul(naplo_szoveg)
+    m = re.search(r'^## Tematikus áttekintés\n(.*?)\n## ', szoveg, re.S | re.M)
     if not m:
         return None
     szakasz = m.group(1)
@@ -278,10 +343,11 @@ def render_naplo_attekintes(motivumok, elof_id_szerint, naplo_szoveg):
         felszint, alpont = bullet_szamok
         teljes = felszint + alpont
         hatokor = ('Ez a blokk a táblában betöltött %d motívum-ID-t fedi; a napló '
-                    'Tematikus áttekintés szakasza %d tételt sorol fel (%d felső szint '
-                    '+ %d alpont -- K12\': a nevező a teljes szám, mert a HODIT-001 itt '
-                    'csak alpontként szerepel), ebből %d még nincs a táblában.'
-                    % (n_betoltott, teljes, felszint, alpont, teljes - n_betoltott))
+                    'Tematikus áttekintés szakasza a blokkon kívül további %d kézi '
+                    'tételt sorol fel (%d felső szint + %d alpont -- K12\': azonos '
+                    'granularitás, az alpontok is számítanak), amelyek kézi '
+                    'karbantartásban maradnak.'
+                    % (n_betoltott, teljes, felszint, alpont))
 
     tema_szerint = {}
     for m in motivumok:
@@ -377,14 +443,27 @@ def render_naplo_konyv_index(elofordulasok, konyv_sorrend, hianyzo_konyvek):
     return blokk('naplo#konyv_index', ['adat/elofordulasok.tsv'], hatokor, '\n'.join(sorok))
 
 
-def general_naplo(motivumok, elofordulasok, naplo_szoveg, konyv_sorrend, hianyzo_konyvek):
+def general_naplo_blokkok(motivumok, elofordulasok, naplo_szoveg,
+                           konyv_sorrend, hianyzo_konyvek):
+    """[(cel_kulcs, blokk_szoveg)] -- a napló négy generált blokkja, az
+    élesítéshez (G7) és a próba-kimenethez egyaránt ebből épül a fájl."""
     elof_id_szerint = elofordulasok_id_szerint(elofordulasok)
-    blokkok = [
-        render_naplo_attekintes(motivumok, elof_id_szerint, naplo_szoveg),
-        render_naplo_kuszob(motivumok, elof_id_szerint),
-        render_naplo_kulcsszo_index(motivumok, elof_id_szerint, konyv_sorrend, hianyzo_konyvek),
-        render_naplo_konyv_index(elofordulasok, konyv_sorrend, hianyzo_konyvek),
+    return [
+        ('naplo#attekintes',
+         render_naplo_attekintes(motivumok, elof_id_szerint, naplo_szoveg)),
+        ('naplo#kuszob',
+         render_naplo_kuszob(motivumok, elof_id_szerint)),
+        ('naplo#kulcsszo_index',
+         render_naplo_kulcsszo_index(motivumok, elof_id_szerint, konyv_sorrend,
+                                      hianyzo_konyvek)),
+        ('naplo#konyv_index',
+         render_naplo_konyv_index(elofordulasok, konyv_sorrend, hianyzo_konyvek)),
     ]
+
+
+def general_naplo(motivumok, elofordulasok, naplo_szoveg, konyv_sorrend, hianyzo_konyvek):
+    blokkok = [b for _, b in general_naplo_blokkok(
+        motivumok, elofordulasok, naplo_szoveg, konyv_sorrend, hianyzo_konyvek)]
     fejl = fejlec_stampel('naplo', ['adat/motivumok.tsv', 'adat/elofordulasok.tsv'])
     return fejl + '\n\n' + '\n\n---\n\n'.join(blokkok) + '\n'
 
@@ -402,7 +481,7 @@ def naplo_zart_id_lista(naplo_szoveg):
     ahol bekezdés-szintű keresés minden benne szereplő ID-t hamisan
     "zártnak" jelölne)."""
     talalt = set()
-    for sor in naplo_szoveg.split('\n'):
+    for sor in marker_blokkok_nelkul(naplo_szoveg).split('\n'):
         if '✅' in sor and 'LEZÁRVA' in sor:
             for m in re.finditer(r'\[ID:\s*([A-ZÁÉÍÓÖŐÚÜŰ]+-\d+)\]', sor):
                 talalt.add(m.group(1))
@@ -441,8 +520,16 @@ def render_index(motivumok, elofordulasok, naplo_szoveg, konyv_sorrend, hianyzo_
                    'hiánya; l. F4_GENERATOR_BRIEF.md §5.)' % ', '.join(hianyzo))
 
     blk = blokk('index', ['adat/motivumok.tsv', 'adat/elofordulasok.tsv'], hatokor, torzs)
+    return blk, hianyzo
+
+
+def general_index(motivumok, elofordulasok, naplo_szoveg, konyv_sorrend, hianyzo_konyvek):
+    """(fajl_tartalom, [(cel_kulcs, blokk)], hianyzo) -- a próba-kimenethez a
+    teljes fájl, az élesítéshez a blokk-lista."""
+    blk, hianyzo = render_index(motivumok, elofordulasok, naplo_szoveg,
+                                 konyv_sorrend, hianyzo_konyvek)
     fejl = fejlec_stampel('index', ['adat/motivumok.tsv', 'adat/elofordulasok.tsv'])
-    return fejl + '\n\n' + blk + '\n', hianyzo
+    return fejl + '\n\n' + blk + '\n', [('index', blk)], hianyzo
 
 
 # ---------------------------------------------------------------------------
@@ -689,8 +776,53 @@ def hianylista_ir(args, sorok, jeloltek):
 
 
 # ---------------------------------------------------------------------------
-# CLI
+# G7 -- élesítés és ellenőrzés az ÉLES fájlokon
 # ---------------------------------------------------------------------------
+#
+# Horgony: az a SOR az éles fájlban, amely UTÁN a blokk első beszúrása
+# történik. Ha a marker-pár már ott van, a horgonyra nincs szükség -- akkor a
+# törzs cserélődik, és a blokkon kívüli kézi tartalom érintetlen marad.
+
+HORGONY = {
+    'naplo#attekintes': '## Tematikus áttekintés',
+    'naplo#kuszob': '## ⭐ Emlékeztető küszöb (3+ előfordulás)',
+    'naplo#kulcsszo_index': '## Kulcsszó-index',
+    'naplo#konyv_index': '## Könyv szerinti index',
+    'index': '<!-- A GENERÁLT BLOKK HELYE: index -->',
+}
+
+
+def eles_fajl_beolvas(path):
+    """(LF-re normalizált szöveg, domináns sorvég) -- a repó core.autocrlf=true,
+    és a .gitattributes csak a *.tsv-t köti LF-hez, tehát a .md munkapéldány
+    sorvége checkoutonként változhat. A visszaírás a fájl saját sorvégével
+    történik (K7)."""
+    with io.open(path, encoding='utf-8', newline='') as f:
+        nyers = f.read()
+    crlf = nyers.count('\r\n')
+    lf = nyers.count('\n') - crlf
+    return nyers.replace('\r\n', '\n'), ('\r\n' if crlf > lf else '\n'), crlf, lf
+
+
+def eles_fajl_ir(path, szoveg_lf, sorveg):
+    with io.open(path, 'w', encoding='utf-8', newline='') as f:
+        f.write(sorveg.join(szoveg_lf.split('\n')))
+
+
+def blokkok_ellenoriz(path, blokkok):
+    """[(cel_kulcs, allapot)] -- allapot: 'zöld' | 'eltér' | 'hiányzik'."""
+    szoveg, _, _, _ = eles_fajl_beolvas(path)
+    eredmeny = []
+    for cel_kulcs, blk in blokkok:
+        talalat = marker_par_keres(szoveg, cel_kulcs)
+        if not talalat:
+            eredmeny.append((cel_kulcs, 'hiányzik'))
+            continue
+        _, tk, tv, _ = talalat
+        eredmeny.append((cel_kulcs,
+                          'zöld' if szoveg[tk:tv] == blokk_torzs(blk, cel_kulcs) else 'eltér'))
+    return eredmeny
+
 
 def build_parser():
     p = argparse.ArgumentParser(
@@ -703,13 +835,17 @@ def build_parser():
     p.add_argument('--kimenet', default=os.path.join(ROOT, 'generalt_proba'),
                     help='alapértelmezés: generalt_proba/')
     p.add_argument('--ir', action='store_true',
-                    help='NÉLKÜLE a szkript soha nem ír éles fájlba -- ez a kapcsoló '
-                         'ebben a fázisban (G1/G3/G4) még nem old fel semmit, mert az '
-                         'élesítés G7 külön tétele')
+                    help='ÉLESÍTÉS (G7): a marker-blokkokat az ÉLES fájlba írja. '
+                         'Nélküle a szkript soha nem ír éles fájlba, csak a '
+                         '--kimenet könyvtár alá. Csak a naplo és az index cél '
+                         'élesíthető; a study-fájlok nem (brief G7).')
     p.add_argument('--ellenoriz', action='store_true',
-                    help='nem ír; a generált blokkot a célfájlban álló marker-blokkal '
-                         'veti össze, eltérésnél/hiánynál 1-gyel lép ki')
+                    help='nem ír; a generált blokkot az ÉLES fájlban álló marker-blokk '
+                         'törzsével veti össze, eltérésnél/hiánynál 1-gyel lép ki')
     return p
+
+
+ELESITHETO = {'naplo', 'index'}
 
 
 MEG_NEM_KESZ = {
@@ -717,13 +853,56 @@ MEG_NEM_KESZ = {
 }
 
 
+def blokk_lista_eles(cel, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
+    """A cél élesíthető blokkjai, MINDIG az éles fájl aktuális szövegéből
+    számolva (a naplo#attekintes hatóköre a napló saját kézi listáját méri)."""
+    if cel == 'naplo':
+        naplo_szoveg = szoveg_beolvas(NAPLO_MD)
+        return general_naplo_blokkok(motivumok, elofordulasok, naplo_szoveg,
+                                      konyv_sorrend, hianyzo_konyvek), None
+    naplo_szoveg = szoveg_beolvas(NAPLO_MD)
+    _, blokkok, hianyzo = general_index(motivumok, elofordulasok, naplo_szoveg,
+                                         konyv_sorrend, hianyzo_konyvek)
+    return blokkok, hianyzo
+
+
+def elesites(cel, path, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek,
+             max_iteracio=6):
+    """A marker-blokkok beírása/frissítése az ÉLES fájlba, FIXPONTIG.
+
+    Miért iteráció: a naplo#attekintes hatókör-sora a napló saját, blokkon
+    KÍVÜLI kézi listáját számolja, tehát az első beírás után a szám
+    megváltozik. A marker_blokkok_nelkul() kiveszi a generált blokkokat a
+    számlálásból, ezért a második kör után a szám már nem mozdul -- a ciklus
+    ezt MÉRI (addig fut, amíg egyetlen blokk sem változik), nem feltételezi."""
+    for kor in range(1, max_iteracio + 1):
+        blokkok, _ = blokk_lista_eles(cel, motivumok, elofordulasok,
+                                       konyv_sorrend, hianyzo_konyvek)
+        szoveg, sorveg, crlf, lf = eles_fajl_beolvas(path)
+        if kor == 1:
+            print('  sorvég élesítés előtt (%s): CRLF=%d, LF=%d -> domináns=%r'
+                  % (os.path.relpath(path, ROOT), crlf, lf, sorveg))
+        valtozott = []
+        for cel_kulcs, blk in blokkok:
+            szoveg, mit = blokk_beilleszt(szoveg, cel_kulcs, blk, HORGONY.get(cel_kulcs))
+            if mit != 'változatlan':
+                valtozott.append((cel_kulcs, mit))
+        if valtozott:
+            eles_fajl_ir(path, szoveg, sorveg)
+        print('  %d. kör: %s' % (kor, ', '.join('%s=%s' % t for t in valtozott)
+                                  if valtozott else 'nincs változás (fixpont)'))
+        if not valtozott:
+            return kor
+    raise SystemExit('MEGALLAS: az élesítés %d kör alatt sem ért fixpontot (%s).'
+                     % (max_iteracio, cel))
+
+
 def main():
     args = build_parser().parse_args()
 
-    if args.ir:
-        print('FIGYELEM: --ir kapcsoló ebben a fázisban (G1/G3/G4) nem old fel semmit -- '
-              'az élesítés a G7 külön tétele, külön emberi jóváhagyással. A kimenet '
-              'továbbra is a --kimenet könyvtár alá megy.', file=sys.stderr)
+    if args.ir and args.cel not in ELESITHETO and args.cel != 'mind':
+        print('FIGYELEM: a(z) %r cél NEM élesíthető (brief G7) -- a kimenet a '
+              '--kimenet könyvtár alá megy.' % args.cel, file=sys.stderr)
 
     celok = ['naplo', 'index', 'naplok', 'study'] if args.cel == 'mind' else [args.cel]
     vegso_kod = 0
@@ -745,6 +924,27 @@ def main():
 
         print('--- cél: %s ---' % cel)
 
+        if cel in ELESITHETO and (args.ir or args.ellenoriz):
+            path = NAPLO_MD if cel == 'naplo' else INDEX_MD
+            blokkok, hianyzo = blokk_lista_eles(cel, motivumok, elofordulasok,
+                                                  konyv_sorrend, hianyzo_konyvek)
+            if args.ir:
+                korok = elesites(cel, path, motivumok, elofordulasok,
+                                  konyv_sorrend, hianyzo_konyvek)
+                print('  élesítve: %s (%d kör, fixpont)' % (os.path.relpath(path, ROOT), korok))
+                blokkok, hianyzo = blokk_lista_eles(cel, motivumok, elofordulasok,
+                                                     konyv_sorrend, hianyzo_konyvek)
+            print('  --ellenoriz (%s):' % os.path.relpath(path, ROOT))
+            for cel_kulcs, allapot in blokkok_ellenoriz(path, blokkok):
+                jel = '✓ ZÖLD' if allapot == 'zöld' else '✗ PIROS'
+                print('    %-24s %s (%s)' % (cel_kulcs, jel, allapot))
+                if allapot != 'zöld':
+                    vegso_kod = max(vegso_kod, 1)
+            if cel == 'index' and hianyzo:
+                print('  HIÁNYZÓ ZÁRT ID (K8): %s' % ', '.join(hianyzo), file=sys.stderr)
+                vegso_kod = max(vegso_kod, 1)
+            continue
+
         if cel == 'naplo':
             tartalom = general_naplo(motivumok, elofordulasok, naplo_szoveg,
                                        konyv_sorrend, hianyzo_konyvek)
@@ -752,8 +952,8 @@ def main():
                        tartalom, NAPLO_MD)
 
         elif cel == 'index':
-            tartalom, hianyzo = render_index(motivumok, elofordulasok, naplo_szoveg,
-                                               konyv_sorrend, hianyzo_konyvek)
+            tartalom, _, hianyzo = general_index(motivumok, elofordulasok, naplo_szoveg,
+                                                   konyv_sorrend, hianyzo_konyvek)
             kimenet_ir(args, 'Lezart_tematikus_tanulmanyok_index.md', tartalom, INDEX_MD)
             if hianyzo:
                 print('  HIÁNYZÓ ZÁRT ID (K8): %s' % ', '.join(hianyzo), file=sys.stderr)
@@ -809,9 +1009,10 @@ def main():
                 kimenet_ir(args, relativ, tartalom, forras_ut)
 
         if args.ellenoriz:
-            # Az első futásnál minden blokk pirosnak számít -- még nincs
-            # marker a célfájlokban (l. F4_GENERATOR_BRIEF.md §3.1).
-            print('  --ellenoriz: a célfájlban még nincs marker-blokk -- PIROS.')
+            # A naplok/study célok NEM élesíthetők ebben a fázisban (brief G7),
+            # tehát nincs marker-pár, amihez a blokkot mérni lehetne.
+            print('  --ellenoriz: a(z) %r cél nem élesíthető (G7), nincs mihez '
+                  'mérni -- PIROS.' % cel)
             vegso_kod = max(vegso_kod, 1)
 
     if hianyzo_konyvek:

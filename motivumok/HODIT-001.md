@@ -25,3 +25,9 @@
 - **⚠️ Vitatott pont:** a Refáim/Anákim/Émim/Zamzummim csoport a nefilim/gibborim (1Móz 6:4) vérvonal folytatása-e (Michael S. Heiser, *The Unseen Realm*, *Reversing Hermon* — az isteni tanács iskola, 4Móz 13:34 alapján) vagy csupán a rettegő kémek szubjektív túlzása, nem a narrátor állítása (Gordon Wenham, Kenneth Mathews, Richard Hess) — ez a korábbi "gibborim/nefilim — a hibrid utódok azonosítása" ⚠️ vitát örökli tovább, nem dönti el.
 - **Nevesített tanítói alkalmazás:** gap-jelzéssel zárult — nem található megbízható, dedikált forrás a jóváhagyott listáról kifejezetten erre a motívumra; a szélesebb "giants in the land / grasshopper mentality" (4Móz 13:34) téma gyakori a Word of Faith-kultúrában, de nem volt visszavezethető elsődleges, jóváhagyott-listás forrásra. Alkalmazás ezért kizárólag a tanulmány saját Drash-rétegéből készült. 【NAPLO: a 4Móz-hivatkozás mindkét helyen 2026.09.10-én javítva 13:33-ról 13:34-re, valódi TAHOT-lekérdezés alapján.】
 - A motívum a továbbiakban nem szerepel aktív ⭐ ajánlásként; jövőbeli előfordulásai (ha lesznek, pl. 5Móz 2-3 vagy 2Sám 21 feldolgozásakor) továbbra is bekerülnek az indexbe, csak a "még feldolgozandó" jelleg szűnt meg.
+
+## Lezárt tanulmányok indexe — a mai kézi sor *(archív: a generált blokk csak a fő előfordulásokat hozza)*
+
+| # | Motívum | Fájlnév | Érintett igehelyek | Megjegyzés |
+|---|---|---|---|---|
+| 4 | **Rafeusok/óriás-népek** | `Rafaim_tematikus.md` | 1Móz 14:5 → 14:6 → 15:20 → 4Móz 13:34 → 5Móz 2:10-11,20-21, 3:11,13 → Józs 12:4/13:12 → 2Sám 21:15-22 → Jób 26:5 → Zsolt 88:11 → Péld 2:18/9:18/21:16 → Ézs 14:9, 26:14,19 (teljes lexikai ív) | Kivételesen a ⭐ küszöb elérése ELŐTT feldolgozva, felhasználói explicit kérésre. Rokonságban a `[ID: ALVIL-001]` (hádész/seól) és `[ID: MENNY-001]` (Isten fiai/Nefilim/Gibborim) tanulmánnyal, de lexikailag mindkettőtől elkülönül. |
