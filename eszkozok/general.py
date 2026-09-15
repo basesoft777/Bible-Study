@@ -60,8 +60,26 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ADAT = os.path.join(ROOT, 'adat')
 MOTIVUMOK_TSV = os.path.join(ADAT, 'motivumok.tsv')
 ELOFORDULASOK_TSV = os.path.join(ADAT, 'elofordulasok.tsv')
+JELOLTEK_TSV = os.path.join(ADAT, 'jeloltek.tsv')
 NAPLO_MD = os.path.join(ROOT, 'motivumlog', 'PaRDeS_motivumok.md')
 INDEX_MD = os.path.join(ROOT, 'Lezart_tematikus_tanulmanyok_index.md')
+NAPLOK_DIR = os.path.join(ROOT, 'tematikus_lezart', 'naplok')
+
+# A meglévő 7 kereszthivatkozás-napló fájlneve -> motívum-ID (mérve, l.
+# F4_GENERATOR_BRIEF.md G5). A HAMART-001-hez van napló, de nincs betöltve a
+# motivumok.tsv-be; az ANTROP-001-hez nincs napló (a G5 ezt új fájlnévvel
+# rendereli). A leképezés nem vezethető le fájlnév-mintából (a Melkizedek-fájl
+# megtartja a "_tematikus" tagot, a többi eldobja), ezért tételes.
+NAPLO_ID_TERKEP = {
+    'Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md': 'HAMART-001',
+    'Hadesz_Seol_kereszthivatkozas_naplo.md': 'ALVIL-001',
+    'Isten_fiai_Nefilim_Gibborim_kereszthivatkozas_naplo.md': 'MENNY-001',
+    'Melkizedek_tematikus_kereszthivatkozas_naplo.md': 'KIRALY-001',
+    'Rafaim_kereszthivatkozas_naplo.md': 'HODIT-001',
+    'Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md': 'ISTENTISZT-001',
+    'Tehom_kereszthivatkozas_naplo.md': 'TEREMT-001',
+}
+ID_NAPLO_TERKEP = {azon: fajlnev for fajlnev, azon in NAPLO_ID_TERKEP.items()}
 
 TS = datetime.date.today().isoformat()
 
@@ -418,6 +436,165 @@ def render_index(motivumok, elofordulasok, naplo_szoveg, konyv_sorrend, hianyzo_
 
 
 # ---------------------------------------------------------------------------
+# G5 -- kereszthivatkozás-naplók + a hiánylista (K9)
+# ---------------------------------------------------------------------------
+
+def jeloltek_id_szerint(jeloltek):
+    csoport = {}
+    for sor in jeloltek:
+        csoport.setdefault(sor['id'], []).append(sor)
+    return csoport
+
+
+def render_naplo_egy_id(m, jeloltek_id, elof_id, konyv_sorrend, hianyzo_konyvek):
+    """A sablon szerkezete (4_PaRDeS_tematikus_sablon.md, 'Kötelező napló'):
+    vizsgált kulcsszavak -> nyers találatok forrásonként -> tartalmi
+    minősítés MINDEN jelöltre -> végső döntés és indoklás -> összegzés.
+    A vizsgált kulcsszavak Strong-listája és a named-teacher gap-jelzés a
+    jeloltek.tsv-ből nem vezethető le (l. brief G5) -- ez itt explicit
+    jelölve, nem hallgatva el."""
+    gerinc_elemek = sorted({s['gerinc_elem'] for s in elof_id if s.get('gerinc_elem')})
+
+    forrasok = {}
+    for j in jeloltek_id:
+        forrasok.setdefault(j['forras_kereses'], []).append(j)
+
+    sorok = []
+    sorok.append('## Vizsgált kulcsszavak (részleges, a `gerinc_elem` mezőből -- Strong-lista nem vezethető le a `jeloltek.tsv`-ből)')
+    sorok.append(', '.join('`%s`' % g for g in gerinc_elemek) if gerinc_elemek else '(nincs gerinc_elem rögzítve)')
+    sorok.append('')
+    sorok.append('## Nyers találatok forrásonként')
+    for forras in sorted(forrasok):
+        sorok.append('- **%s** — %d jelölt' % (forras, len(forrasok[forras])))
+    sorok.append('')
+    sorok.append('## Tartalmi minősítés minden jelöltre')
+    sorok.append('| Igehely | Forrás | Döntés | Indoklás | Dátum |')
+    sorok.append('|---|---|---|---|---|')
+    jeloltek_rendezve = sorted(
+        jeloltek_id, key=lambda r: igehely_rendezo_kulcs(r['igehely'], konyv_sorrend, hianyzo_konyvek))
+    for j in jeloltek_rendezve:
+        sorok.append('| %s | %s | %s | %s | %s |'
+                      % (j['igehely'], j['forras_kereses'], j['dontes'], j['indoklas'], j['datum']))
+    sorok.append('')
+
+    n = len(jeloltek_id)
+    n_be = sum(1 for j in jeloltek_id if j['dontes'] == 'beépítve')
+    n_el = sum(1 for j in jeloltek_id if j['dontes'] == 'elutasítva')
+    n_ny = sum(1 for j in jeloltek_id if j['dontes'] == 'nyitva')
+    sorok.append('## Végső döntés és összegzés')
+    sorok.append('%d jelölt vizsgálva a `jeloltek.tsv`-ben; %d beépítve, %d elutasítva, %d nyitva.'
+                  % (n, n_be, n_el, n_ny))
+    sorok.append('')
+    sorok.append('*Named-teacher gap-jelzés és a vizsgált kulcsszavak teljes Strong-listája a '
+                  'forrásrétegben (`motivumok/%s.md`, G2) él -- innen nem vezethető le '
+                  '(F4_GENERATOR_BRIEF.md G5).*' % m['id'])
+
+    fejsor = '# %s -- kereszthivatkozás-napló `[ID: %s]` (generált)' % (m['cim'], m['id'])
+    hatokor = ('Ez a blokk a `jeloltek.tsv` %d sorát fedi a `[ID: %s]` motívumhoz; a vizsgált '
+                'kulcsszavak Strong-listája és a named-teacher gap-jelzés nem generálható, '
+                'a forrásrétegben él (G2).' % (n, m['id']))
+    return blokk('naplok --id %s' % m['id'], ['adat/jeloltek.tsv', 'adat/elofordulasok.tsv'],
+                  hatokor, fejsor + '\n\n' + '\n'.join(sorok))
+
+
+def naplo_hianylista_sorok(jeloltek):
+    """G5 kötelező melléktermék (K9): a tematikus_lezart/naplok/ alatti hét
+    meglévő napló minősítő táblázatainak ❌-sorai, amelyek NINCSENEK a
+    jeloltek.tsv-ben. A táblázat-cella szerkezete a hét fájlban nem
+    egységes (3 vagy 4 oszlop) -- ezért a döntés-cellát tartalom szerint
+    (a '❌'-lal kezdődő cella), nem pozíció szerint azonosítja."""
+    jel_id_szerint = jeloltek_id_szerint(jeloltek)
+    sorok = []
+    for fajlnev in sorted(NAPLO_ID_TERKEP):
+        azon = NAPLO_ID_TERKEP[fajlnev]
+        path = os.path.join(NAPLOK_DIR, fajlnev)
+        if not os.path.exists(path):
+            continue
+        szoveg = szoveg_beolvas(path)
+        meglevo_elutasitott = {j['igehely'] for j in jel_id_szerint.get(azon, [])
+                                if j['dontes'] == 'elutasítva'}
+        for sor in szoveg.split('\n'):
+            sor = sor.strip()
+            if not sor.startswith('|') or '❌' not in sor:
+                continue
+            cellak = [c.strip() for c in sor.strip('|').split('|')]
+            if len(cellak) < 3:
+                continue
+            dontes_cella = next((c for c in cellak if c.startswith('❌')), None)
+            if dontes_cella is None:
+                continue
+            jelolt = cellak[0]
+            indoklas = cellak[-1]
+            if jelolt in meglevo_elutasitott:
+                continue
+            teljes_lc = ' '.join(cellak).lower()
+            if 'gap' in teljes_lc:
+                tipus = 'gap'
+            elif 'elhatárol' in teljes_lc:
+                tipus = 'elhatarolas'
+            else:
+                tipus = 'elutasitva'
+            sorok.append({
+                'id': azon,
+                'jelolt': jelolt,
+                'tipus': tipus,
+                'forras_naplo': 'tematikus_lezart/naplok/' + fajlnev,
+                'indoklas': indoklas,
+            })
+    return sorok
+
+
+def hianylista_tsv_szoveg(sorok):
+    fejlec = ['id', 'jelolt', 'tipus', 'forras_naplo', 'indoklas']
+    sorlista = [fejlec] + [[s[m].replace('\t', ' ') for m in fejlec] for s in sorok]
+    return '\n'.join('\t'.join(sor) for sor in sorlista) + '\n'
+
+
+# ---------------------------------------------------------------------------
+# G6 -- tematikus study 1. pont (hétoszlopos táblázat)
+# ---------------------------------------------------------------------------
+
+def studytabla_pardes_oszlop(sor):
+    """A harmadik oszlop -- pardes_szint + felmerult_tanulmany összefűzése.
+    Ahol a felmerult_tanulmany üres, csak a szint áll ott -- nem pótolható
+    találgatással (F4_GENERATOR_BRIEF.md G6)."""
+    szint = sor.get('pardes_szint') or ''
+    felmerult = sor.get('felmerult_tanulmany') or ''
+    if szint and felmerult:
+        return '%s — %s' % (szint, felmerult)
+    return szint or felmerult or '—'
+
+
+def studytabla_jelentes_oszlop(sor):
+    en = sor.get('jelentes_en') or ''
+    hu = sor.get('jelentes_hu') or ''
+    if en and hu:
+        return '"%s" — magyarul: "%s"' % (en, hu)
+    if en:
+        return '"%s"' % en
+    if hu:
+        return 'magyarul: "%s"' % hu
+    return '—'
+
+
+def render_study_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek):
+    sorai_rendezve = sorted(
+        sorai, key=lambda s: igehely_rendezo_kulcs(s['igehely'], konyv_sorrend, hianyzo_konyvek))
+    hatokor = ('Ez a blokk a `[ID: %s]` motívum %d igehely-sorát fedi az `elofordulasok.tsv`-ből, '
+                'kanonikus sorrendben (K13); a hiányzó BDB-mezők helyén "—" áll.'
+                % (m['id'], len(sorai_rendezve)))
+    sorok = ['| Igehely | Kapcsolódás | PaRDeS-szint, ahol felmerült | Strong-szám(ok) | '
+             'BDB-entry-id | Sense-szám | Jelentés-szöveg (EN + HU) |',
+             '|---|---|---|---|---|---|---|']
+    for s in sorai_rendezve:
+        sorok.append('| %s | %s | %s | %s | %s | %s | %s |' % (
+            s['igehely'], s['kapcsolodas'], studytabla_pardes_oszlop(s),
+            s.get('strong') or '—', s.get('bdb_entry_id') or '—',
+            s.get('jelentes_szam') or '—', studytabla_jelentes_oszlop(s)))
+    return blokk('study --id %s' % m['id'], ['adat/elofordulasok.tsv'], hatokor, '\n'.join(sorok))
+
+
+# ---------------------------------------------------------------------------
 # Kimenet-írás
 # ---------------------------------------------------------------------------
 
@@ -435,6 +612,23 @@ def kimenet_ir(args, relativ_ut, tartalom, forras_ut_a_sorveghez):
     sorok = tartalom.split('\n')
     with io.open(cel_ut, 'w', encoding='utf-8', newline='') as f:
         f.write(domináns.join(sorok))
+    print('  megírva: %s (%d bájt)' % (os.path.relpath(cel_ut, ROOT), os.path.getsize(cel_ut)))
+    return cel_ut
+
+
+def hianylista_ir(args, sorok):
+    """A K9 melléktermék írása -- LF-es (a .gitattributes szerint minden
+    *.tsv LF-es), nem a célfájl-sorvég-megtartó kimenet_ir() útján, mert ez
+    egy ÚJ artefaktum, nincs neki 'mai' célfájlja."""
+    tartalom = hianylista_tsv_szoveg(sorok)
+    cel_ut = os.path.join(args.kimenet, 'naplok', 'F4_naplo_hianylista.tsv')
+    print('  hiánylista (K9): %d sor' % len(sorok))
+    if args.ellenoriz:
+        print('  --ellenoriz: nincs írás.')
+        return cel_ut
+    os.makedirs(os.path.dirname(cel_ut), exist_ok=True)
+    with io.open(cel_ut, 'w', encoding='utf-8', newline='') as f:
+        f.write(tartalom)
     print('  megírva: %s (%d bájt)' % (os.path.relpath(cel_ut, ROOT), os.path.getsize(cel_ut)))
     return cel_ut
 
@@ -464,8 +658,6 @@ def build_parser():
 
 
 MEG_NEM_KESZ = {
-    'naplok': 'G5 -- a 2. menetben készül (kereszthivatkozás-napló renderelő).',
-    'study': 'G6 -- a 2. menetben készül (tematikus study 1. pont renderelő).',
     'nyitott': 'G7 -- a 3. menetben készül (NYITOTT_FELADATOK.md blokk-generátor).',
 }
 
@@ -478,7 +670,7 @@ def main():
               'az élesítés a G7 külön tétele, külön emberi jóváhagyással. A kimenet '
               'továbbra is a --kimenet könyvtár alá megy.', file=sys.stderr)
 
-    celok = ['naplo', 'index'] if args.cel == 'mind' else [args.cel]
+    celok = ['naplo', 'index', 'naplok', 'study'] if args.cel == 'mind' else [args.cel]
     vegso_kod = 0
     konyv_sorrend = konyv_sorrend_betolt()
     hianyzo_konyvek = set()
@@ -512,6 +704,54 @@ def main():
                 print('  HIÁNYZÓ ZÁRT ID (K8): %s' % ', '.join(hianyzo), file=sys.stderr)
                 if args.ellenoriz:
                     vegso_kod = 1
+
+        elif cel == 'naplok':
+            _, jeloltek = tsv_beolvas(JELOLTEK_TSV)
+            if args.id:
+                jeloltek = [j for j in jeloltek if j['id'] == args.id]
+            jel_id_szerint = jeloltek_id_szerint(jeloltek)
+            elof_id_szerint = elofordulasok_id_szerint(elofordulasok)
+            for m in motivumok:
+                jelt = jel_id_szerint.get(m['id'], [])
+                if not jelt:
+                    continue
+                blk = render_naplo_egy_id(m, jelt, elof_id_szerint.get(m['id'], []),
+                                            konyv_sorrend, hianyzo_konyvek)
+                fejl = fejlec_stampel('naplok --id %s' % m['id'], ['adat/jeloltek.tsv'])
+                tartalom = fejl + '\n\n' + blk + '\n'
+                celfajlnev = ID_NAPLO_TERKEP.get(m['id'])
+                if celfajlnev:
+                    relativ = os.path.join('tematikus_lezart', 'naplok', celfajlnev)
+                    forras_ut = os.path.join(NAPLOK_DIR, celfajlnev)
+                else:
+                    relativ = os.path.join('tematikus_lezart', 'naplok',
+                                             '%s_kereszthivatkozas_naplo_GENERALT.md' % m['id'])
+                    forras_ut = NAPLO_MD
+                kimenet_ir(args, relativ, tartalom, forras_ut)
+
+            # K9 -- a hiánylista MINDIG a teljes (nem --id-szűkített) jeloltek.tsv-hez
+            # képest készül, hogy a --id ne rejtse el a más ID-khez tartozó hiányt.
+            _, jeloltek_teljes = tsv_beolvas(JELOLTEK_TSV)
+            hianylista_sorok = naplo_hianylista_sorok(jeloltek_teljes)
+            hianylista_ir(args, hianylista_sorok)
+
+        elif cel == 'study':
+            elof_id_szerint = elofordulasok_id_szerint(elofordulasok)
+            for m in motivumok:
+                sorai = elof_id_szerint.get(m['id'], [])
+                if not sorai:
+                    continue
+                blk = render_study_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek)
+                fejl = fejlec_stampel('study --id %s' % m['id'], ['adat/elofordulasok.tsv'])
+                tartalom = fejl + '\n\n' + blk + '\n'
+                elso_study = (m.get('forras_study') or '').split(';')[0].strip()
+                forras_ut = os.path.join(ROOT, elso_study) if elso_study else ''
+                if not elso_study or not os.path.exists(forras_ut):
+                    forras_ut = NAPLO_MD
+                alap = os.path.splitext(elso_study)[0] if elso_study else \
+                    os.path.join('tematikus_lezart', m['id'])
+                relativ = alap + '_1_pont_GENERALT.md'
+                kimenet_ir(args, relativ, tartalom, forras_ut)
 
         if args.ellenoriz:
             # Az első futásnál minden blokk pirosnak számít -- még nincs
