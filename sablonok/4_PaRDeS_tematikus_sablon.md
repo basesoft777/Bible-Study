@@ -16,7 +16,10 @@ szerint), a bevezető és záró mondat száma hétre javítva. F5.6: a
 Lezárási checklist és a 6. pont igazítva a generált réteghez
 (`CLAUDE.md`, Rétegek) — a generált blokkokba kézi írást előíró
 lépések megszüntetve vagy a `general.py`-ra mutatva, a régi
-kétértékű címke lecserélve a háromértékű `statusz`-mezőre.)*
+kétértékű címke lecserélve a háromértékű `statusz`-mezőre. F5.6a: a
+Minőségi kapu bevezetőjének szóismétlése javítva; a 6. pont
+„Utólagos bővítés” bekezdése, a 12. lépés vége és a checklist záró
+mondata a generált réteghez igazítva.)*
 *v15 — 2026.09.11 (Szabályváltozás: az 1. pont táblázatának
 "Jelentés-szöveg (BDB eredeti)" oszlopa mostantól az angol BDB-szöveg
 MELLETT magyar fordítást is tartalmaz a cellán belül — a korábbi
@@ -235,7 +238,7 @@ A tanulmány végén a motívum státusza az `adat/motivumok.tsv`-ben `publikál
 
 **Index-frissítés:** a `Lezart_tematikus_tanulmanyok_index.md` generált (`CLAUDE.md`, Rétegek) — a `python eszkozok/general.py --cel index` állítja elő; a Lezárási checklist 3. lépése futtatja, kézzel nem szerkesztendő.
 
-**Utólagos bővítés — ugyanez a kötelezettség érvényes egy már lezárt study-ra is.** Ha egy már `publikálható` vagy `véglegesített` státuszú tematikus study utólag bővül (új igehely, új tipológia/alpont, korábban pilot-only jelöléssel visszatartott elem visszaírása stb.), a `PaRDeS_motivumok.md` naplót **ugyanabban a commit/PR-ben** frissíteni kell — nem külön, később, csak rákérdezésre. A frissítésnek ki kell terjednie: (a) a motívum részletes szöveges bejegyzésére (2. szekció) — az igehely-szám és -lista pontosítva; (b) a táblázatos kulcsszó-indexre (a megfelelő sor Előfordulás-száma és igehely-listája); (c) egy új, dátumozott napló-verzióbejegyzésre a fájl elején, a bővítés tényét és forrását (pl. pilot-visszaírás) rögzítve. A Lezárási checklist alábbi pontjai közül a 3., 4. és 9. pont értelemszerűen erre az esetre is vonatkozik, nem csak a kezdeti lezárásra.
+**Utólagos bővítés — ugyanez a kötelezettség érvényes egy már lezárt study-ra is.** Ha egy már `publikálható` vagy `véglegesített` státuszú tematikus study utólag bővül (új igehely, új tipológia/alpont, korábban pilot-only jelöléssel visszatartott elem visszaírása stb.), a hozzá tartozó adat- és naplóréteget **ugyanabban a commit/PR-ben** frissíteni kell — nem külön, később, csak rákérdezésre. A frissítésnek ki kell terjednie: (a) az új jelöltekre és előfordulásokra az `adat/jeloltek.tsv`-ben és az `adat/elofordulasok.tsv`-ben, majd a generált blokkok újragenerálására — a kulcsszó-index előfordulás-száma és igehely-listája ebből áll elő, kézzel nem írandó; (b) a motívum „Kulcsszavak részletesen” bejegyzésére — az igehely-szám és -lista pontosítva; (c) egy új, dátumozott bejegyzésre a `motivumlog/PaRDeS_motivumok_CHANGELOG.md`-ben, a bővítés tényét és forrását (pl. pilot-visszaírás) rögzítve. A Lezárási checklist alábbi lépései közül a 2., 3., 4. és 9. értelemszerűen erre az esetre is vonatkozik, nem csak a kezdeti lezárásra.
 
 **Napló-jelölés kötelező:** minden folyamat-/napló-jellegű megjegyzést
 (dátum, forrás-eredet, döntési indoklás) `【NAPLO: ...】` formában, külön
@@ -289,7 +292,6 @@ A biblemate-agentic-workspace (eliranwong) minőségi-kapu ötletéből
 adaptálva, saját megfogalmazással: mielőtt egy tematikus study-t
 `publikálható` státuszra állítanánk (akár első alkalommal, akár
 utólagos átdolgozásnál), a study-fájl saját magán fusson végig ez a hét
-ellenőrzés
 ellenőrzés. Bármelyik kritérium bukása esetén a study NEM
 tekinthető lezártnak — vissza kell térni és javítani, mielőtt a
 Lezárási checklist elindulna.
@@ -426,7 +428,7 @@ Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szüks
   az már a „Tartalmi visszaírás" hatálya alá tartozik, és külön
   kezelendő.
 
-  A beszúrás után a motívumnapló 3. szekciójának (részletes bejegyzés)
+  A beszúrás után a motívum „Kulcsszavak részletesen” bejegyzésének
   végére egy új sor kerül: „**Visszahivatkozott bővített study-k:**
   `[fájlnév1]`, `[fájlnév2]`, ..." — felsorolva minden ténylegesen
   frissített bővített fájlt. Ha egyetlen érintett igehelynek sincs
@@ -436,7 +438,7 @@ Egy tematikus tanulmány lezárásakor a következő lépések MINDEGYIKE szüks
 - [ ] **13. Verzió-címke** — a study fejlécének és a kapu-címsoroknak a
   címkéje a „Verzió-címke” alszakasz szerint.
 
-**Ha bármelyik pont kimarad, a lezárás nem tekinthető véglegesnek** — a motívum inkonzisztens állapotba kerülhet (pl. ✅ jelölve az 1. szekcióban, de még aktív ⭐ ajánlásként az 5.-ben).
+**Ha bármelyik pont kimarad, a lezárás nem tekinthető véglegesnek** — az adatréteg, a generált blokkok és a study inkonzisztens állapotba kerülhetnek (pl. az `adat/motivumok.tsv` már `publikálható` státuszt mutat, de a generált blokkok nem lettek újragenerálva, vagy a study új igehelyet állít, amely nincs az `adat/elofordulasok.tsv`-ben).
 
 ---
 
