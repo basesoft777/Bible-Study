@@ -32,9 +32,9 @@ CLI:
                                [--ellenoriz]         # nem ir; diffel, 1-gyel lep ki eltéresnel
 
 --ir nelkul a szkript SOHA nem ir eles fajlba -- csak a --kimenet konyvtar
-ala. A G5/G6 celok (naplok, study, nyitott) ebben a menetben (G1/G3/G4) meg
-nincsenek megirva -- --cel-kent elfogadottak, de meg nem valositottak meg;
-futtatasuk 2-es kilepesi koddal jelzi ezt, nem hamis sikerrel.
+ala. Elesitheto cel harom van (ELESITHETO): naplo, index, nyitott. A naplok es
+a study cel a briefek G7 tetele szerint ebben a fazisban NEM elesitheto --
+csak probat termel, es --ellenoriz-zel PIROS, mert nincs mihez merni.
 
 TSV-olvasas kizarolag split('\\t')-vel, iras '\\t'.join()-nal -- a `csv` modul
 importja is tilos (CLAUDE.md, "TSV-olvasas" szakasz).
@@ -68,6 +68,7 @@ ELOFORDULASOK_TSV = os.path.join(ADAT, 'elofordulasok.tsv')
 JELOLTEK_TSV = os.path.join(ADAT, 'jeloltek.tsv')
 NAPLO_MD = os.path.join(ROOT, 'motivumlog', 'PaRDeS_motivumok.md')
 INDEX_MD = os.path.join(ROOT, 'Lezart_tematikus_tanulmanyok_index.md')
+NYITOTT_MD = os.path.join(ROOT, 'NYITOTT_FELADATOK.md')
 NAPLOK_DIR = os.path.join(ROOT, 'tematikus_lezart', 'naplok')
 
 # A meglévő 7 kereszthivatkozás-napló fájlneve -> motívum-ID (mérve, l.
@@ -601,6 +602,87 @@ def general_index(motivumok, elofordulasok, naplo_szoveg, konyv_sorrend, hianyzo
 
 
 # ---------------------------------------------------------------------------
+# G6 -- NYITOTT_FELADATOK.md: a nyitott jelöltek és a motívum-státuszok
+# ---------------------------------------------------------------------------
+#
+# A fájl túlnyomó része kézzel írt, hosszú prózájú feladatlista, és az is
+# marad: EGYETLEN blokk generálódik, marker közé (brief G7). A blokk azt a két
+# listát fedi, amely ma is a táblából olvasható ki, de a fájlban nem szerepel
+# -- a `jeloltek.tsv` `dontes=nyitva` sorait (ezek a 2. szabály szerinti,
+# döntésre váró jelöltek) és a `motivumok.tsv` státusz-oszlopát.
+
+def cella(ertek):
+    """Markdown-tábla cella: a `|` elhatárolna egy oszlopot, a sortörés
+    szétvágná a sort -- mindkettő escape-elendő. Üres mező `—`."""
+    sz = (ertek or '').strip()
+    if not sz:
+        return '—'
+    return sz.replace('|', '\\|').replace('\n', ' ')
+
+
+def render_nyitott(motivumok, elofordulasok, jeloltek, konyv_sorrend, hianyzo_konyvek):
+    nyitott = [j for j in jeloltek if j.get('dontes') == 'nyitva']
+    n_be = sum(1 for j in jeloltek if j.get('dontes') == 'beépítve')
+    n_el = sum(1 for j in jeloltek if j.get('dontes') == 'elutasítva')
+    erintett_id = sorted({j['id'] for j in nyitott})
+
+    hatokor = ('Ez a blokk a `jeloltek.tsv` %d nyitott (`dontes=nyitva`) sorát fedi '
+                '%d motívum-ID-ről, és a `motivumok.tsv` %d státusz-sorát. A %d '
+                'beépítve és %d elutasítva döntésű jelölt nem tartozik ide. A fájl '
+                'minden más szakasza kézi, a marker-blokkon kívül marad.'
+                % (len(nyitott), len(erintett_id), len(motivumok), n_be, n_el))
+
+    sorok = ['### Nyitott jelöltek (`adat/jeloltek.tsv`, `dontes=nyitva`)', '']
+    if nyitott:
+        sorok.append('| # | Motívum-ID | Igehely | Forrás-keresés | Indoklás | Dátum |')
+        sorok.append('|---|---|---|---|---|---|')
+        rendezett = sorted(
+            nyitott,
+            key=lambda j: (j['id'],
+                           igehely_rendezo_kulcs(j.get('igehely', ''),
+                                                  konyv_sorrend, hianyzo_konyvek)))
+        for i, j in enumerate(rendezett, start=1):
+            sorok.append('| %d | `[ID: %s]` | %s | %s | %s | %s |'
+                          % (i, j['id'], cella(j.get('igehely')),
+                             cella(j.get('forras_kereses')), cella(j.get('indoklas')),
+                             cella(j.get('datum'))))
+    else:
+        sorok.append('*Nincs nyitott jelölt a táblában.*')
+
+    elof_id_szerint = elofordulasok_id_szerint(elofordulasok)
+    sorok.append('')
+    sorok.append('### Motívum-státuszok (`adat/motivumok.tsv`)')
+    sorok.append('')
+    sorok.append('| Motívum | Státusz | Verzió | Státusz dátuma | Fő előfordulás | '
+                  'Nyitott jelölt | Forrás-study |')
+    sorok.append('|---|---|---|---|---|---|---|')
+    nyitott_darab = {}
+    for j in nyitott:
+        nyitott_darab[j['id']] = nyitott_darab.get(j['id'], 0) + 1
+    for m in sorted(motivumok, key=lambda r: r['id']):
+        sorai = elof_id_szerint.get(m['id'], [])
+        n_fo = len(fo_elofordulas_csoportok(sorai))
+        sorok.append('| %s `[ID: %s]` | %s | %s | %s | %d fő / %d sor | %d | %s |'
+                      % (cella(m.get('cim')), m['id'], cella(m.get('statusz')),
+                         cella(m.get('statusz_verzio')), cella(m.get('statusz_datum')),
+                         n_fo, len(sorai), nyitott_darab.get(m['id'], 0),
+                         cella(m.get('forras_study'))))
+
+    return blokk('nyitott',
+                  ['adat/jeloltek.tsv', 'adat/motivumok.tsv', 'adat/elofordulasok.tsv'],
+                  hatokor, '\n'.join(sorok))
+
+
+def general_nyitott(motivumok, elofordulasok, jeloltek, konyv_sorrend, hianyzo_konyvek):
+    """(fajl_tartalom, [(cel_kulcs, blokk)]) -- a próba-kimenethez a teljes
+    fájl, az élesítéshez a blokk-lista."""
+    blk = render_nyitott(motivumok, elofordulasok, jeloltek,
+                          konyv_sorrend, hianyzo_konyvek)
+    fejl = fejlec_stampel('nyitott', ['adat/jeloltek.tsv', 'adat/motivumok.tsv'])
+    return fejl + '\n\n' + blk + '\n', [('nyitott', blk)]
+
+
+# ---------------------------------------------------------------------------
 # G5 -- kereszthivatkozás-naplók + a hiánylista (K9)
 # ---------------------------------------------------------------------------
 
@@ -857,6 +939,7 @@ HORGONY = {
     'naplo#kulcsszo_index': '## Kulcsszó-index',
     'naplo#konyv_index': '## Könyv szerinti index',
     'index': '<!-- A GENERÁLT BLOKK HELYE: index -->',
+    'nyitott': '<!-- A GENERÁLT BLOKK HELYE: nyitott -->',
 }
 
 
@@ -913,12 +996,12 @@ def build_parser():
     return p
 
 
-ELESITHETO = {'naplo', 'index'}
+ELESITHETO = {'naplo', 'index', 'nyitott'}
+
+CEL_FAJL = {'naplo': NAPLO_MD, 'index': INDEX_MD, 'nyitott': NYITOTT_MD}
 
 
-MEG_NEM_KESZ = {
-    'nyitott': 'G7 -- a 3. menetben készül (NYITOTT_FELADATOK.md blokk-generátor).',
-}
+MEG_NEM_KESZ = {}
 
 
 def blokk_lista_eles(cel, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
@@ -928,6 +1011,11 @@ def blokk_lista_eles(cel, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyv
         naplo_szoveg = szoveg_beolvas(NAPLO_MD)
         return general_naplo_blokkok(motivumok, elofordulasok, naplo_szoveg,
                                       konyv_sorrend, hianyzo_konyvek), None
+    if cel == 'nyitott':
+        _, jeloltek = tsv_beolvas(JELOLTEK_TSV)
+        _, blokkok = general_nyitott(motivumok, elofordulasok, jeloltek,
+                                      konyv_sorrend, hianyzo_konyvek)
+        return blokkok, None
     naplo_szoveg = szoveg_beolvas(NAPLO_MD)
     _, blokkok, hianyzo = general_index(motivumok, elofordulasok, naplo_szoveg,
                                          konyv_sorrend, hianyzo_konyvek)
@@ -972,7 +1060,8 @@ def main():
         print('FIGYELEM: a(z) %r cél NEM élesíthető (brief G7) -- a kimenet a '
               '--kimenet könyvtár alá megy.' % args.cel, file=sys.stderr)
 
-    celok = ['naplo', 'index', 'naplok', 'study'] if args.cel == 'mind' else [args.cel]
+    celok = ['naplo', 'index', 'naplok', 'study', 'nyitott'] \
+        if args.cel == 'mind' else [args.cel]
     vegso_kod = 0
     konyv_sorrend = konyv_sorrend_betolt()
     hianyzo_konyvek = set()
@@ -993,7 +1082,7 @@ def main():
         print('--- cél: %s ---' % cel)
 
         if cel in ELESITHETO and (args.ir or args.ellenoriz):
-            path = NAPLO_MD if cel == 'naplo' else INDEX_MD
+            path = CEL_FAJL[cel]
             blokkok, hianyzo = blokk_lista_eles(cel, motivumok, elofordulasok,
                                                   konyv_sorrend, hianyzo_konyvek)
             if args.ir:
@@ -1027,6 +1116,12 @@ def main():
                 print('  HIÁNYZÓ ZÁRT ID (K8): %s' % ', '.join(hianyzo), file=sys.stderr)
                 if args.ellenoriz:
                     vegso_kod = 1
+
+        elif cel == 'nyitott':
+            _, jeloltek = tsv_beolvas(JELOLTEK_TSV)
+            tartalom, _ = general_nyitott(motivumok, elofordulasok, jeloltek,
+                                            konyv_sorrend, hianyzo_konyvek)
+            kimenet_ir(args, 'NYITOTT_FELADATOK.md', tartalom, NYITOTT_MD)
 
         elif cel == 'naplok':
             _, jeloltek = tsv_beolvas(JELOLTEK_TSV)
