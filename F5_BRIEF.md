@@ -1,7 +1,7 @@
 # F5 brief — sablon-frissítés (`4_PaRDeS_tematikus_sablon.md`)
 
-*Készítette: chat-menet (Opus 5), 2026-09-15, **v1** (első kiadás). Kiindulási állapot: `main` = `origin/main` = **`f425331`** (F0–F4 lezárva).*
-*Végrehajtás: Claude Code, a repó gyökeréből, egy menetben. A chat-menet nem hajtja végre — ez a brief a bemenete.*
+*Készítette: chat-menet (Opus 5), 2026-09-15, **v2** (v1: első kiadás; v2: az 1. menet lefutott, a független ellenőrzés három rést talált — §1.5 —, ezeket az új F5.6a tétel zárja; az F5.5 parancsa a rögzített kiindulóponthoz mér, és a tartalmi tételek elé került; a K10 a tartalmi commitokra szűkült). Kiindulási állapot: `main` = `origin/main` = **`f425331`** (F0–F4 lezárva); az 1. menet után **`2126ebf`**.*
+*Végrehajtás: Claude Code, a repó gyökeréből, két menetben (a 2. az F5.6a). A chat-menet nem hajtja végre — ez a brief a bemenete.*
 *Előzmény: `ATALAKITASI_TERV.md.md` 6. szakasz, F5. A három F4-en kívüli nyitott tétel (HODIT-001 témája, HAMART-001 betöltése, `Karoli_Strong_kivonat.tsv` forrás-ütközése) ettől a fázistól független, és ez a brief nem nyúl hozzájuk.*
 
 ---
@@ -67,6 +67,22 @@ A kereszthivatkozás-naplók (G5) és a study 1. pontja (G6) renderelője elkés
 - A `domen` ma **nem ad eredményt**: az `adat/datasetek.tsv` szerint az SDBH és az SDGNT állapota `hianyzik`, és a parancs ezt ki is írja.
 - Az `adat/datasetek.tsv` tartja a 4.3-as mátrixot tanulmány-típusonként. A `study_tipus = tematikus` csoportban 17 sor van, benne a `Karoli_Strong_kivonat` `oroklott` / `generalt_nezet` jelöléssel.
 
+### 1.5 Az 1. menet mért eredménye *(független ellenőrzés, `2126ebf`)*
+
+Commitok: `2020bab` (F5.1), `4db452a` (F5.2), `05237e0` (F5.3), `d9aa3ff` (F5.4), `e24239a` (F5.6), majd `2f5095a` (`F4_GENERATOR_BRIEF.md` v5) és `2126ebf` (e brief v1 felvétele). Az F5.0 és az F5.5 nem commitolt. A repóba került v1 karakterre azonos a kiadottal.
+
+A zárójelentés K1–K11 eredménye megerősítve. A `f425331..e24239a` tartomány kizárólag a sablont érinti. A `sablonok/` alatt `f425331` és az opus-ág (`749e187`) között nincs eltérés.
+
+**A teljes sablon-diff soronkénti átolvasása három rést talált, amelyet egyik K-kritérium sem fog meg:**
+
+| # | Hol | Mi a hiba | Kinek a hibája |
+|---|---|---|---|
+| L1 | Minőségi kapu bevezetője | a szó megduplázódott: „ez a hét / ellenőrzés / ellenőrzés.” — a menet közben javított ideiglenes beszúrás maradéka. A K5 átengedte, mert a `„ez a hét ellenőrzés”` minta sortöréssel is illeszkedik. | végrehajtás |
+| L2 | 6. pont, „Utólagos bővítés” bekezdés | a (b) pont ma is a kulcsszó-index kézi frissítését írja elő (generált blokk); az (a) pont „2. szekció”-ra, a (c) pont „a fájl elején” álló verzióbejegyzésre hivatkozik, holott a changelog külön fájl. Az F5.6 ebben a bekezdésben csak a státusz-szót cserélte. | **brief**: a v1 F5.6-táblázata nem vette fel ezt a bekezdést, a K7 pedig csak a checklist 2–9. lépését vizsgálta |
+| L3 | Lezárási checklist záró mondata és a 12. lépés vége | a záró mondat példája („✅ jelölve az 1. szekcióban, de még aktív ⭐ ajánlásként az 5.-ben”) olyan eltérést ír le, ami a generált rétegben már nem állhat elő, mert mindkét blokk ugyanabból a státuszból generálódik. A 12. lépés vége „a motívumnapló 3. szekciójá”-ra hivatkozik, a 4. lépés viszont már a tényleges címsort használja. | **brief**: ugyanaz a hatókör-rés |
+
+A három rés közül egyik sem hibás adat; mind szöveg, és egy commitban javítható (F5.6a).
+
 ---
 
 ## 2. Mit kell csinálni
@@ -78,6 +94,20 @@ A sablon verziója **v16** lesz. A fejléc-bejegyzést az első tartalmi commit 
 ### Tétel F5.0 — előfeltétel-mérés *(nincs commit)*
 
 Mérd újra az 1.1–1.4 pont minden állítását. Ha bármelyik eltér — más a sorszám, más a státusz, van új generált blokk, változott a `lekerdez.py` parancslistája —, **állj meg, és jelentsd az eltérést**, mielőtt írnál. A brief szövegei ezekre a tényekre épülnek.
+
+### Tétel F5.5 — a v15 átvezetésének ellenőrzése *(nincs commit; az F5.0 után, a tartalmi tételek előtt)*
+
+*v2: a v1 parancsa a mozgó `main`-hez mért, ezért az F5.1–F5.4 saját commitjai után szükségszerűen nem üres diffet adott (l. D10). Az ellenőrzés a rögzített kiindulóponthoz mér, és a tartalmi commitok elé került.*
+
+```bash
+git fetch origin bun-gyuruzese-20260911-opus
+git diff --stat f425331 origin/bun-gyuruzese-20260911-opus -- sablonok/
+git rev-parse origin/bun-gyuruzese-20260911-opus
+```
+
+Ha a diff üres és a hash `749e1872044652358eed03574cd1d3cb605475ac`, a tétel teljesült: a zárójelentés a két kimenettel egy mondatban rögzíti. Ha bármelyik eltér, **ne vezess át semmit**: listázd az eltérő fájlokat és hunkokat, és állj meg.
+
+*Lefutott az 1. menetben: mindkét feltétel teljesült.*
 
 ### Tétel F5.1 — az 1. pont oszlop-szabálya
 
@@ -142,15 +172,6 @@ A „Friss, teljes körű keresés” meglévő első bekezdése, amely a `PaRDe
 
 A Q2 szövege nem változik. A Q2 a négy „mindig” forrás auditjának *dátumát és minősítő sorait* kéri, a Q7 a *teljes mátrix indokoltságát*.
 
-### Tétel F5.5 — a v15 átvezetésének ellenőrzése *(várhatóan nincs commit)*
-
-```bash
-git fetch origin bun-gyuruzese-20260911-opus
-git diff --stat main origin/bun-gyuruzese-20260911-opus -- sablonok/
-```
-
-Ha a kimenet üres, a tétel teljesült: a zárójelentés egy mondatban rögzíti, commit nincs. Ha nem üres, **ne vezess át semmit**. Listázd az eltérő fájlokat és hunkokat, és állj meg; az átvezetésről a chat-menet dönt.
-
 ### Tétel F5.6 — a Lezárási checklist és a 6. pont összehangolása a generált réteggel
 
 A lépések **sorszáma nem változik**, mert a sablon korábbi changelog-bejegyzései sorszámmal hivatkoznak rájuk (pl. „12. pont”). A megszűnő lépések helyén rövid jelölés marad.
@@ -177,6 +198,39 @@ A lépések **sorszáma nem változik**, mert a sablon korábbi changelog-bejegy
 
 A Lezárási checklist **1. lépése** (`/mnt/user-data/outputs/` útvonal) és a **12. lépés** nem változik (l. N2).
 
+### Tétel F5.6a — az 1. menet után maradt három rés *(2. menet)*
+
+Mind a négy csere szöveg-horgonnyal történik, a `sablonok/4_PaRDeS_tematikus_sablon.md`-ben. A v16 fejléc-bejegyzés végére egy tagmondat kerül: *„F5.6a: a Minőségi kapu bevezetőjének szóismétlése javítva; a 6. pont »Utólagos bővítés« bekezdése, a 12. lépés vége és a checklist záró mondata a generált réteghez igazítva.”*
+
+**a) L1 — szóismétlés.** A horgony (három egymást követő sor):
+
+```
+utólagos átdolgozásnál), a study-fájl saját magán fusson végig ez a hét
+ellenőrzés
+ellenőrzés. Bármelyik kritérium bukása esetén a study NEM
+```
+
+Helyette:
+
+```
+utólagos átdolgozásnál), a study-fájl saját magán fusson végig ez a hét
+ellenőrzés. Bármelyik kritérium bukása esetén a study NEM
+```
+
+**b) L2 — „Utólagos bővítés”.** A bekezdésben a *„a `PaRDeS_motivumok.md` naplót **ugyanabban a commit/PR-ben** frissíteni kell”* szövegrésztől a bekezdés végéig tartó részt cseréld erre:
+
+> a hozzá tartozó adat- és naplóréteget **ugyanabban a commit/PR-ben** frissíteni kell — nem külön, később, csak rákérdezésre. A frissítésnek ki kell terjednie: (a) az új jelöltekre és előfordulásokra az `adat/jeloltek.tsv`-ben és az `adat/elofordulasok.tsv`-ben, majd a generált blokkok újragenerálására — a kulcsszó-index előfordulás-száma és igehely-listája ebből áll elő, kézzel nem írandó; (b) a motívum „Kulcsszavak részletesen” bejegyzésére — az igehely-szám és -lista pontosítva; (c) egy új, dátumozott bejegyzésre a `motivumlog/PaRDeS_motivumok_CHANGELOG.md`-ben, a bővítés tényét és forrását (pl. pilot-visszaírás) rögzítve. A Lezárási checklist alábbi lépései közül a 2., 3., 4. és 9. értelemszerűen erre az esetre is vonatkozik, nem csak a kezdeti lezárásra.
+
+A bekezdés eleje (*„**Utólagos bővítés — …** Ha egy már `publikálható` vagy `véglegesített` státuszú … stb.),”*) szó szerint marad.
+
+**c) L3/1 — a 12. lépés vége.** *„A beszúrás után a motívumnapló 3. szekciójának (részletes bejegyzés)”* → *„A beszúrás után a motívum „Kulcsszavak részletesen” bejegyzésének”*. A sortörések a környezethez igazodnak; a mondat többi része változatlan.
+
+**d) L3/2 — a checklist záró mondata.** A *„— a motívum inkonzisztens állapotba kerülhet (pl. ✅ jelölve az 1. szekcióban, de még aktív ⭐ ajánlásként az 5.-ben).”* rész helyett:
+
+> — az adatréteg, a generált blokkok és a study inkonzisztens állapotba kerülhetnek (pl. az `adat/motivumok.tsv` már `publikálható` státuszt mutat, de a generált blokkok nem lettek újragenerálva, vagy a study új igehelyet állít, amely nincs az `adat/elofordulasok.tsv`-ben).
+
+A mondat eleje (*„**Ha bármelyik pont kimarad, a lezárás nem tekinthető véglegesnek**”*) marad.
+
 ---
 
 ## 3. Elfogadási kritériumok
@@ -194,8 +248,11 @@ Mind gépileg ellenőrizhető a munkapéldányon.
 | K7 | Egyik checklist-lépés sem ír elő generált blokkba írást | a 2–9. lépésben nem szerepel „frissítve” / „áthelyezve” / „új sor” generált szakaszra vonatkoztatva; a 3. lépés a `general.py`-t nevezi meg |
 | K8 | A „LEZÁRVA” címke eltűnt a sablonból | `grep -c "LEZÁRVA"` = 0 — ezért a v16 fejléc-bejegyzés sem idézi a szót, hanem „a régi kétértékű címke” néven hivatkozik rá |
 | K9 | A `general.py` által hivatkozott „Kötelező napló” bekezdés érintetlen | a `git diff` a bekezdést nem érinti |
-| K10 | Csak a sablon változott | `git diff --name-only f425331..HEAD` = `sablonok/4_PaRDeS_tematikus_sablon.md` |
-| K11 | A v16 fejléc-bejegyzés minden tartalmi tételt megnevez | F5.1, F5.2, F5.3, F5.4, F5.6 mind szerepel; a visszamenőleges hatály kizárása kimondva |
+| K10 | A tartalmi commitok csak a sablont érintik | *(v2)* minden `F5.*` commitra: `git show --name-only --format= <hash>` = `sablonok/4_PaRDeS_tematikus_sablon.md`. A brief-fájlok saját commitjai (`F5_BRIEF.md …`) nem tartoznak ide. |
+| K11 | A v16 fejléc-bejegyzés minden tartalmi tételt megnevez | F5.1, F5.2, F5.3, F5.4, F5.6 *(és a 2. menet után F5.6a)* mind szerepel; a visszamenőleges hatály kizárása kimondva |
+| K12 | *(v2)* Nincs szóismétlés sorhatáron | a sablonban nincs olyan szomszédos sorpár, ahol egy sor utolsó szava megegyezik a következő első szavával (a szó írásjel nélkül): `python -c` egysoros ellenőrzéssel, 0 találat |
+| K13 | *(v2)* A 6. pontban és a checklist záró mondatában nincs generált blokkra vonatkozó kézi utasítás és régi szakasz-szám | a sablon `## Mikor használandó` utáni részében `grep -c "szekció"` = 0; az „Utólagos bővítés” bekezdésben a `PaRDeS_motivumok_CHANGELOG.md` és a `jeloltek.tsv` hivatkozás jelen van |
+| K14 | *(v2)* A javítás nem nyúlt más szakaszhoz | az F5.6a diffje pontosan a négy horgony környezetét és a v16 fejléc-bejegyzést érinti |
 
 ---
 
@@ -209,9 +266,10 @@ F5.2: tematikus sablon — verzió-címke szabály + 13. checklist-lépés
 F5.3: tematikus sablon — hétlépéses kutatási protokoll (P1–P7) az 1. pontban
 F5.4: tematikus sablon — Q7 dataset-lefedettség, a kapu számai javítva
 F5.6: tematikus sablon — Lezárási checklist és 6. pont a generált réteghez igazítva
+F5.6a: tematikus sablon — szóismétlés, „Utólagos bővítés” és a checklist záró mondata a generált réteghez
 ```
 
-Az F5.0 és az F5.5 nem commitol, ha nincs eltérés. **Push csak külön kérésre.**
+Az F5.0 és az F5.5 nem commitol, ha nincs eltérés. A brief saját verziói tétel-azonosító nélkül mennek, a korábbi brief-commitok formájában (`F5_BRIEF.md v2: …`). **Push csak külön kérésre.**
 
 ---
 
@@ -229,11 +287,11 @@ Az F5.0 és az F5.5 nem commitol, ha nincs eltérés. **Push csak külön kéré
 
 ## 6. Futtatás és modellválasztás
 
-**Egy menet, Sonnet.** A terv D11-e szerint a migrációs menetek Sonneten futnak, és az F5 nem tartalmaz soronkénti tartalmi ítéletet. A szövegek a briefben készen állnak, a végrehajtás beillesztés és ellenőrzés.
+**Két menet, Sonnet.** Az 1. menet (F5.0–F5.6) lefutott; a 2. menet egyetlen tétel, az F5.6a. A terv D11-e szerint a migrációs menetek Sonneten futnak, és az F5 nem tartalmaz soronkénti tartalmi ítéletet. A szövegek a briefben készen állnak, a végrehajtás beillesztés és ellenőrzés.
 
 **Megállási pontok:** az F5.0 után, ha bármi eltér; az F5.5-nél, ha az ág eltér; minden commit előtt a hozzá tartozó K-kritériumok.
 
-### 6.1 A menet nyitó promptja
+### 6.1 Az 1. menet nyitó promptja *(lefutott, `e24239a`)*
 
 ```
 Olvasd el a CLAUDE.md-t, majd az F5_BRIEF.md-t teljes egészében.
@@ -253,6 +311,24 @@ Push nincs. A végén zárójelentés: commit-hash-ek, K1–K11 eredménye
 kritériumonként, és minden eltérés, amit menet közben találtál.
 ```
 
+### 6.2 A 2. menet nyitó promptja
+
+```
+Olvasd el az F5_BRIEF.md v2 §1.5 pontját és az F5.6a tételt.
+
+0. Ellenőrizd: main = origin/main = 2126ebf (vagy utódja, amely csak az
+   F5_BRIEF.md v2-t hozza). Ha nem, állj meg.
+1. F5.6a a)–d): a négy cserét a megadott horgonyokhoz, szó szerint.
+   Ha bármelyik horgony nem illeszkedik pontosan egy helyen, állj meg és
+   idézd a környezetet. Utána a v16 fejléc-bejegyzés végére az F5.6a tagmondat.
+2. K12, K13, K14, majd K1–K11 újra (regresszió).
+3. Commit: „F5.6a: tematikus sablon — szóismétlés, „Utólagos bővítés” és a
+   checklist záró mondata a generált réteghez" (UTF-8 fájlból).
+
+Push nincs. Zárójelentés: hash, K1–K14 kritériumonként, a diff teljes
+szövege (rövid, idézd egészben).
+```
+
 ---
 
 ## Döntésnapló
@@ -267,7 +343,11 @@ kritériumonként, és minden eltérés, amit menet közben találtál.
 | D6 | Az F5.1 és az F5.2 nem visszamenőleges | A v15 előzményét követi; a lezárt study-k átírása tartalmi ítélet. |
 | D7 | Egyetlen v16 verzióugrás, tételenként bővülő bejegyzéssel | Egy fázis, egy menet; a commit-történet ettől még tételenként olvasható. |
 | D8 | Lezáráskor a státusz `publikálható` | `SEMA.md` 2.1.1: a kapuzott, de újranyitható tanulmány értéke; a `véglegesített` külön döntés. |
-| D9 | Egy menet, Sonnet | D11 (terv); nincs soronkénti tartalmi ítélet. |
+| D9 | Egy menet, Sonnet | D11 (terv); nincs soronkénti tartalmi ítélet. *(v2: két menet, l. D12.)* |
+| D10 | *(v2)* Az F5.5 a rögzített `f425331`-hez mér, és a tartalmi tételek elé kerül | Az ellenőrzésnek a kiindulópontot kell vizsgálnia, nem a menet saját haladását; a v1 parancsa emiatt állt meg jogosan, de hamis riasztással. |
+| D11 | *(v2)* A K10 a tartalmi commitokra szűkül | A brief-fájlok a tartalmi commitok után kerülnek a repóba; tartomány-alapú ellenőrzéssel a kritérium utólag hamissá válna, holott a menet közben teljesült. |
+| D12 | *(v2)* A három rés külön F5.6a commitban javul, nem az F5.6 módosításával | A kiadott commitok nem íródnak át (push után vannak); a hiba és a javítás így a történetben is nyomon követhető. |
+| D13 | *(v2)* Új K12–K14 | Mindhárom rés azért jutott át, mert a K-kritériumok egy-egy mintát kerestek, nem a szakasz egészét. A K12 a mechanikus hibát, a K13 a hatókört, a K14 a mellékhatást fogja meg. |
 
 ### Nyitott, a briefben szándékosan el nem döntött kérdések
 
@@ -276,4 +356,5 @@ kritériumonként, és minden eltérés, amit menet közben találtál.
 - **N3 — A „Kulcsszavak részletesen” kanonikus helye.** A napló szakasza nem generált, a `motivumok/[ID].md` archív másolatot tart belőle. A terv 1.C szerint ez a szakasz a forrásrétegből olvad be. Amíg ez nincs élesítve, a 4. lépés a naplót szerkeszti — ez rendben van-e?
 - **N4 — A `CLAUDE.md` két eltérése.** A forrásréteg útvonala a `CLAUDE.md`-ben `motivumlog/[ID].md`, a valóságban `motivumok/[ID].md` (G0 döntés). A generált jelölést `# GENERÁLT: …` formában írja le, a valóságban `<!-- GENERÁLT-KEZDET: … -->`. Mindkettő egysoros javítás, de nem sablon-munka.
 - **N5 — A dataset-lefedettség gépi ellenőrzése.** Melyik fázisba kerüljön az eszköz (F6 előtt, vagy az F7 üzemmenet része)?
+- **N7 — *(v2)* Az SDBH/SDGNT import időzítése.** Javaslat: önálló, rövid menet az F5 után és az F6 előtt — az F6 lexikon-generátora a `lexikon_hivatkozasok.tsv` `szotar` mezőjén keresztül már ismeri a két értéket, és a CC BY-SA 4.0 miatti licencdöntésnek (terv N11) a lexikon előtt kell megszületnie. A P2 és a Q7 szövege feltételes, az import után a sablont nem kell módosítani, csak az `adat/datasetek.tsv` `allapot` mezőjét. Felhasználói döntés: saját brief vagy az F6 brief része.
 - **N6 — A G6 fejléc eltérése.** A `general.py` study-renderelője az utolsó oszlopot „Jelentés-szöveg (EN + HU)” néven írja, a sablon „Jelentés-szöveg (BDB eredeti + magyar)” néven. A G6 nincs élesítve, tehát ma nincs kár, de az élesítés előtt egyeztetendő; javaslat: a generátor igazodjon a sablonhoz.
