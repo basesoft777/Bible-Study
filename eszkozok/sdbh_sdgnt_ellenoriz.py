@@ -12,6 +12,7 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 import hashlib
+import json
 import os
 import re
 
@@ -107,23 +108,49 @@ def main():
 
     # --- doménfa-sor / anomália-sor összesítve ---
     ok("doménfa-sor = 1149", len(domenfa_rows) == 1149, str(len(domenfa_rows)))
-    ok("anomália-sor = 150", len(anom_rows) == 150, str(len(anom_rows)))
+    ok("anomália-sor = 185", len(anom_rows) == 185, str(len(anom_rows)))
     sdbh_anom = [r for r in anom_rows if r[0] == "SDBH"]
     sdgnt_anom = [r for r in anom_rows if r[0] == "SDGNT"]
-    ok("SDBH anomália = 40 (35 strong_nelkul + 5 ervenytelen_kod)",
-       len(sdbh_anom) == 40
+    ok("SDBH anomália = 75 (35 strong_nelkul + 5 ervenytelen_kod + 35 jelentes_nelkul)",
+       len(sdbh_anom) == 75
        and sum(1 for r in sdbh_anom if r[3] == "strong_nelkul") == 35
-       and sum(1 for r in sdbh_anom if r[3] == "ervenytelen_kod") == 5)
+       and sum(1 for r in sdbh_anom if r[3] == "ervenytelen_kod") == 5
+       and sum(1 for r in sdbh_anom if r[3] == "jelentes_nelkul") == 35)
     ok("SDGNT anomália = 110 strong_nelkul",
        len(sdgnt_anom) == 110
        and all(r[3] == "strong_nelkul" for r in sdgnt_anom))
+
+    # --- allapot tipusonkent ---
+    allapot_expected = {
+        "strong_nelkul": "AZONOSITVA, NEM JAVITVA",
+        "ervenytelen_kod": "AZONOSITVA, NEM JAVITVA",
+        "jelentes_nelkul": "FORRASBAN_BEFEJEZETLEN",
+    }
+    bad_allapot = [r for r in anom_rows if r[5] != allapot_expected.get(r[3])]
+    ok("allapot tipusonkent helyes (jelentes_nelkul -> FORRASBAN_BEFEJEZETLEN, tobbi -> AZONOSITVA, NEM JAVITVA)",
+       not bad_allapot, str(bad_allapot[:5]) if bad_allapot else "")
+
+    # --- forrás-leltár: szótáranként diszjunkt halmazok, unió = teljes forrás ---
+    leltar_expected = {"SDBH": 7932, "SDGNT": 5507}
+    for szotar, extract_rows, total in (
+        ("SDBH", sdbh_rows, leltar_expected["SDBH"]),
+        ("SDGNT", sdgnt_rows, leltar_expected["SDGNT"]),
+    ):
+        kivonat_ids = {r[5] for r in extract_rows}
+        sn_ids = {r[1] for r in anom_rows if r[0] == szotar and r[3] == "strong_nelkul"}
+        jn_ids = {r[1] for r in anom_rows if r[0] == szotar and r[3] == "jelentes_nelkul"}
+        diszjunkt = not (kivonat_ids & sn_ids) and not (kivonat_ids & jn_ids) and not (sn_ids & jn_ids)
+        unio = kivonat_ids | sn_ids | jn_ids
+        ok(f"{szotar} forrás-leltár: kivonat/strong_nelkul/jelentes_nelkul páronként diszjunkt",
+           diszjunkt)
+        ok(f"{szotar} forrás-leltár: unió = {total}", len(unio) == total, str(len(unio)))
 
     # --- négy SHA-256 ---
     expected_sha = {
         "SDBH_domenek.tsv": "678160daa869dc81ef8d5b7743d4e4be533d8933409805bc45158bef5debd709",
         "SDGNT_domenek.tsv": "800ae82baebdcc4ca9951fcfff8b861d98f4d6da5b9aec3917c2316395c0c097",
         "SDBH_SDGNT_domenfa.tsv": "88319a86cb313242b08abecc282f891353668f1862d918b54a8e9ec77efef991",
-        "SDBH_SDGNT_anomaliak.tsv": "ab69a6162ff741282a5739326a848ef8d963a8862e0f01d26d2c3ef76dcb5ba1",
+        "SDBH_SDGNT_anomaliak.tsv": "2c45f330c1f76af0b66a001498e1379c45c74b7249be1cfb9137f476c27839a2",
     }
     for name, expected in expected_sha.items():
         actual = sha256_no_comments(os.path.join(KONK, name))
@@ -161,13 +188,59 @@ def main():
     for r in sdbh_rows:
         aram_by_entry.setdefault(r[5], set()).add(r[3])
     only_aram_entries = {eid for eid, nyelvek in aram_by_entry.items() if nyelvek == {"arameus"}}
-    ok("csak arámi kódot viselő bejegyzések száma = 367",
+    ok("a kivonatban csak arámi bejegyzés száma = 367",
        len(only_aram_entries) == 367, str(len(only_aram_entries)))
+
+    # --- arámi ellenőrzés második egysége (L3): kivonat + jelentes_nelkul, normalizált kód ---
+    STRONG_PART_RE = re.compile(r'^([HAG])(\d{4})([a-f]?)$')
+
+    def normalized_codes_of(nyers_ertek):
+        try:
+            raw = json.loads(nyers_ertek)
+        except (ValueError, TypeError):
+            return None
+        prefixes = []
+        normalized = []
+        for sc in raw:
+            if sc == "":
+                continue
+            for part in sc.split("+"):
+                m = STRONG_PART_RE.match(part)
+                if not m:
+                    continue
+                prefix, digits, _suf = m.groups()
+                prefixes.append(prefix)
+                normalized.append(("H" if prefix in ("H", "A") else "G") + digits)
+        return prefixes, normalized
+
+    jn_only_a_entries = 0
+    jn_normalized_codes = set()
+    for r in anom_rows:
+        if r[0] != "SDBH" or r[3] != "jelentes_nelkul":
+            continue
+        prefixes, normalized = normalized_codes_of(r[4])
+        if prefixes and all(p == "A" for p in prefixes):
+            jn_only_a_entries += 1
+            jn_normalized_codes |= set(normalized)
+
+    ok("csak A-kódot viselő jelentes_nelkul bejegyzések száma = 5",
+       jn_only_a_entries == 5, str(jn_only_a_entries))
+
+    combined_entries = len(only_aram_entries) + jn_only_a_entries
+    ok("csak arámi kódot viselő bejegyzések (kivonat + jelentes_nelkul) együtt = 372",
+       combined_entries == 372, str(combined_entries))
 
     codes_by_entry = {}
     for r in sdbh_rows:
         if r[5] in only_aram_entries:
             codes_by_entry.setdefault(r[5], set()).add(r[0])
+
+    kivonat_normalized_codes = set()
+    for codes in codes_by_entry.values():
+        kivonat_normalized_codes |= codes
+    combined_normalized_codes = kivonat_normalized_codes | jn_normalized_codes
+    ok("mögöttük együtt 367 különböző normalizált kód (kivonat + jelentes_nelkul)",
+       len(combined_normalized_codes) == 367, str(len(combined_normalized_codes)))
 
     tahot_path = os.path.join(KONK, "TAHOT_kivonat.tsv")
     tahot_header, tahot_rows = read_tsv(tahot_path)

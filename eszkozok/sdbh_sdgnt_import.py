@@ -60,6 +60,12 @@ DOMENEK_HEADER = [
 DOMENFA_HEADER = ["szotar", "kod", "szint", "szulo_kod", "cimke", "leiras"]
 ANOMALIAK_HEADER = ["szotar", "entry_id", "lemma", "tipus", "nyers_ertek", "allapot"]
 
+ALLAPOT_MAP = {
+    "strong_nelkul": "AZONOSITVA, NEM JAVITVA",
+    "ervenytelen_kod": "AZONOSITVA, NEM JAVITVA",
+    "jelentes_nelkul": "FORRASBAN_BEFEJEZETLEN",
+}
+
 
 def clean_text(s):
     if not s:
@@ -190,13 +196,16 @@ def process_dictionary(json_path, szotar):
     for e in entries:
         entry_id = e["MainId"]
         lemma = clean_text(e.get("Lemma"))
+        raw_strong_codes = e.get("StrongCodes")
         strong_parts = parse_strong_codes(
-            e.get("StrongCodes"), szotar, entry_id, lemma, anomalies
+            raw_strong_codes, szotar, entry_id, lemma, anomalies
         )
         if not strong_parts:
             continue
+        meanings_count = 0
         for bf in (e.get("BaseForms") or []):
             for lm in (bf.get("LEXMeanings") or []):
+                meanings_count += 1
                 lexid = lm.get("LEXID", "")
                 raw_entry_kod = lm.get("LEXEntryCode")
                 entry_kod = clean_text(raw_entry_kod) if raw_entry_kod else EM_DASH
@@ -210,6 +219,11 @@ def process_dictionary(json_path, szotar):
                             entry_id, lemma, lexid, entry_kod, domen_kod,
                             domen, glossza, hivatkozas_n,
                         ))
+        if meanings_count == 0:
+            anomalies.append((
+                szotar, entry_id, lemma, "jelentes_nelkul",
+                json.dumps(raw_strong_codes or [], ensure_ascii=False),
+            ))
     return rows, anomalies, len(entries)
 
 
@@ -327,7 +341,9 @@ def run_full(paths):
         + "; "
         + src_desc("UBSGreekNTDic-v1.1-en.JSON", paths["greek_dic"])
     )
-    all_anoms = {tuple(list(a) + ["AZONOSITVA, NEM JAVITVA"]) for a in hebrew_anoms + greek_anoms}
+    all_anoms = [
+        tuple(list(a) + [ALLAPOT_MAP[a[3]]]) for a in hebrew_anoms + greek_anoms
+    ]
     write_tsv(
         os.path.join(KONKORDANCIA_DIR, "SDBH_SDGNT_anomaliak.tsv"),
         ANOMALIAK_HEADER,
