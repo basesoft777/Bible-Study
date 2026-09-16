@@ -802,3 +802,60 @@ anomália-fájlból is.
 `konkordancia/SDBH_SDGNT_anomaliak.tsv`.
 
 **Lezárva.** Nincs eltérés a brief v2 referencia-értékeitől.
+
+---
+
+## 2026.09.16 — F6.1: OSHL lexikális index import — TWOT-szám és BDB-azonosító
+
+### Mit
+
+Az `F6_BRIEF.md` F6.1 tétele: a `openscriptures/HebrewLexicon` repó
+`LexicalIndex.xml` fájljának (CC BY 4.0) kivonatolása Strong-szám, TWOT-szám
+és BDB-azonosító hármasokra, az `eszkozok/oshl_index_import.py` szkripttel.
+A cél a `lexikon_hivatkozasok.tsv` jövőbeli TWOT-oszlopának jogtiszta
+forrása (D7): a TWOT szövege nem kerül a repóba, csak a hivatkozási száma.
+
+### Mivel vetettük össze
+
+- `F6_BRIEF.md` §1.4 (rögzített forrás-adatok: repó, commit, fájl-SHA-256)
+  és §F6.1 (elvárt mért értékek táblája: adatsor, kimeneti SHA-256, `strong
+  = —`, `twot = —`, mindkettő kitöltve, `nyelv = arameus`, különböző
+  `strong`, mintasorok).
+- K1 (SHA-256-ellenőrzés hibás forrásnál 2-es kóddal, írás nélkül), K2 (két
+  egymás utáni `--letolt` byte-azonos kimenetet ad), K3 (nincs nyers XML/
+  tarball a repóban), K4 (nincs `csv` modul-használat).
+
+### Eredmény kritériumonként
+
+- **K1:** egy szándékosan sérült ideiglenes fájlra a szkript `HIBA:
+  SHA-256 eltérés` üzenettel 2-es kilépési kóddal állt le, a
+  `konkordancia/OSHL_lexikalis_index.tsv` nem jött létre. A valódi
+  `--letolt` futás SHA-256-ja egyezett a §1.4 rögzített értékével
+  (`8f7a605c58899d2f44430149c143c00903976e1e91232476677972a69e5bc85f`).
+- **K2:** két egymás utáni `--letolt` futás kimenete `cmp`-vel
+  byte-azonosnak bizonyult.
+- **K3:** `git status --porcelain` a menet végén csak a §6 szerinti három
+  fájlt mutatja (szkript, kivonat, README); nincs XML, tarball vagy
+  ideiglenes könyvtár a repóban (a letöltés a repón kívüli
+  `tempfile.mkdtemp()`-be történik, és a `finally`-ág törli).
+- **K4:** `grep -n "import csv\|csv\."` az új szkriptre 0 találatot ad.
+- Mért értékek, mind egyezik a brief táblájával: adatsor **10 221**;
+  kimeneti SHA-256 `f5b9e02fbf8ba707eaaecccccbc5512176cc5c3c9b29c81e22a983b30b4eeef3`;
+  `strong = —` **930**; `twot = —` **2 918**; mindkettő kitöltve **6 640**;
+  `nyelv = arameus` **789**; különböző `strong` **8 673**; a négy mintasor
+  (`H0001`→`4a`/`a.ae.ab`, `H3548`→`959a`/`k.as.ab`, `H7121`→`2063`/
+  `s.cy.aa`, `H8034`→`2405`/`v.dv.ab`) pontosan egyezik.
+- **Egy eltérés a brief szövegétől** (nem K-kritérium, csak a §0
+  indoklás-szövegben szereplő szám): a brief „417 Strong-számhoz több
+  TWOT-szám tartozik” állítás helyett a tényleges mérés **419**-et ad
+  (Strong-számonként a nem üres TWOT-értékek halmazának mérete > 1). A
+  README ezt a mért értéket rögzíti.
+
+### Módosított/létrehozott fájlok
+
+`eszkozok/oshl_index_import.py`, `konkordancia/OSHL_lexikalis_index.tsv`,
+`konkordancia/OSHL_lexikalis_index_README.md`,
+`konkordancia/Validacios_naplo.md` (ez a bejegyzés).
+
+**Lezárva.** Egyetlen eltérés a brief-től: a homográf-szám (417 helyett
+419), l. fent — nem K-kritérium, dokumentálva.
