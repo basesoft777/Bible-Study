@@ -700,3 +700,54 @@ lett a munkakönyvtárból (a szkript logikája ebben a naplóbejegyzésben
 dokumentálva van).
 
 **Lezárva.** Nincs eldöntetlen eset, nincs hiányzó könyv-rövidítés.
+
+---
+
+## 2026.09.16 — SDBH/SDGNT import (szemantikai domén-szótárak)
+
+### Mit
+
+Az UBS szemantikai domén-szótárak (SDBH v0.9.2 héber, SDGNT v1.1 görög, CC
+BY-SA 4.0, `ubsicap/ubs-open-license` @ `3a6edd8212df2e1189037ad39687726990c80d56`)
+kivonatolása `Strong × jelentés × domén` sor-egységgel — l.
+`SDBH_IMPORT_BRIEF.md`.
+
+### Mivel vetettük össze
+
+- A brief §1.4 referencia-értékei (sorszám, különböző `strong`/`strong_kod`/
+  `entry_id`/`lexid`/`domen_kod` szám, `—`-sorok száma, arámi sorok száma,
+  doménfa-sor, anomália-sor, mind a négy kimeneti fájl SHA-256-ja).
+- A `TAHOT_kivonat.tsv` arámi ellenőrzése: a csak arámi (`A####`) kódot
+  viselő SDBH-bejegyzések (367) A→H leképezése a TAHOT-ban.
+- A `TAHOT_kivonat.tsv` és a `TAGNT_kivonat.tsv` lefedettsége az SDBH/SDGNT
+  Strong-kód- és token-szinten.
+
+### Eredmény kritériumonként
+
+- `--letolt --minta`: a `H0779`, `H6093`, `A0002`, `G2671` adatsorai, a
+  `H1237+H0205a` összetett sorai, a `H7043` 11 doménje és az öt
+  `ervenytelen_kod` anomália mind egyezett a brief §1.3/§3.5 elvárt
+  értékeivel.
+- Teljes futtatás (`--letolt`) kétszer egymás után: a négy kimeneti fájl
+  byte-azonos (K3).
+- `eszkozok/sdbh_sdgnt_ellenoriz.py`: mind a 40 kritérium `OK`, kilépési kód
+  0 — l. a teljes kimenetet a chat-menet zárójelentésében.
+- Az arámi ellenőrzés egysége a **bejegyzés** (nem az A-kód): 367 csak-arámi
+  bejegyzés, mind a 367 megtalálható H-alakban a TAHOT-ban, 362 kizárólag
+  Dán/Ezsd/Jer 10/1Móz 31-ben, 5 Strong-homográf (`H1529`, `H2269`, `H5613`,
+  `H6211`, `H8412`) — pontosan a brief §1.3-ban felsoroltak.
+- Lefedettség: TAHOT 8 421/8 502 Strong (99,0%), 259 162/299 370 token
+  (86,6%); TAGNT 5 252/5 410 Strong (97,1%), 130 159/141 489 token (92,0%) —
+  a TAGNT-nál a 141 746 nyers sorból 257 (összetett `+`-kódú vagy hibás
+  formátumú Strong-érték) kimaradt a nevezőből, ugyanúgy, mint a TAHOT
+  oldalán a `H9xxx` (nyelvtani elem, nem szótári tétel).
+
+### Módosított/létrehozott fájlok
+
+`eszkozok/sdbh_sdgnt_import.py`, `eszkozok/sdbh_sdgnt_ellenoriz.py`,
+`konkordancia/SDBH_domenek.tsv`, `konkordancia/SDGNT_domenek.tsv`,
+`konkordancia/SDBH_SDGNT_domenfa.tsv`, `konkordancia/SDBH_SDGNT_anomaliak.tsv`,
+`konkordancia/SDBH_SDGNT_README.md`, `konkordancia/README.md` (ez a
+bejegyzés).
+
+**Lezárva.** Nincs eltérés a brief referencia-értékeitől.

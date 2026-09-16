@@ -116,3 +116,13 @@ soraiban.
 
 **Egyik ellenőrzött 2Mózes-versnél sem merült fel KJV≠ASV eltérés** — nincs ⚠️ jelzésre váró
 tétel ebből a validációs körből.
+
+## CC BY-SA 4.0 licencű datasetek — SDBH, SDGNT
+
+A `SDBH_domenek.tsv`, a `SDGNT_domenek.tsv`, a `SDBH_SDGNT_domenfa.tsv` és a
+`SDBH_SDGNT_anomaliak.tsv` a United Bible Societies nyílt szótáraiból származik,
+**CC BY-SA 4.0** licenc alatt. A forrásmegjelölés kötelező, és a belőlük származó
+adat — beleértve a motívumlexikon domén-hivatkozásait — **ugyanilyen licenc alá
+esik**. Ez eltér a mappa többi, közkincs vagy CC BY 4.0 licencű forrásától.
+Forrás-commit, ellenőrző összegek és a pontos forrásmegjelölés:
+`SDBH_SDGNT_README.md`.
