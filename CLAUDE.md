@@ -76,13 +76,13 @@ hígulni fog. Minden új sornál: *csak ezen keresztül tartozik ide?* Ha igen, 
 
 ## Adat-tár
 
-`konkordancia/` — 387 MB, 17 dataset; kötelezőségük study-típusonként: `adat/datasetek.tsv`.
+`konkordancia/` — 389 MB, 17 dataset; kötelezőségük study-típusonként: `adat/datasetek.tsv`.
 Három korlát, amit tudnod kell:
 
 - **`TAHOT_kivonat.tsv` nem teljes**, bár a README annak mondja (hiányzik legalább
   1Móz 32, Zsolt 88/89/140/142, Jóel 3) — minden „teljes körű scan" ennyivel gyengébb.
 - **`KJV_/ASV_Strongs`** csak Genezis, Exodus, Példabeszédek.
-- **SDBH / SDGNT** (szemantikai domének) **még nincs importálva**.
+- **SDBH / SDGNT** (szemantikai domének, **CC BY-SA 4.0**) az ÓSZ szókincsének kb. 90%-át fedik — **üres `domen`-eredmény nem negatív lelet**, és a domén támasz, nem a mező-hipotézis helyettesítője.
 
 Nyers adat soha ne kerüljön a fő szál kontextusába — csak kivonat.
 

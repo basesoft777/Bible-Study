@@ -334,15 +334,14 @@ Kulcs: `study_tipus` + `dataset`. A terv 4.3 mátrixa, négy study-típusra kife
 
 **Két `allapot` érték követel figyelmet:**
 
-- `hianyzik` — az **SDBH és az SDGNT importja nem történt meg**. A terv 4.3 pontja ezeket
-  új datasetként javasolja (UBS, CC BY-SA 4.0, a `ubsicap/ubs-open-license` repóból), és az
-  F2 `domen` parancsa **ezekre épül**. Amíg az import nincs meg, a `domen` parancs nem
-  implementálható, és az F2 harmadik elfogadási tesztje (az `arar`/`kalal` közös „Curse"
-  doménje) nem futtatható.
+- `hianyzik` — jelenleg egyetlen sor sem viseli. Az SDBH és az SDGNT volt ilyen; importjuk
+  2026.09-ben megtörtént (`konkordancia/SDBH_SDGNT_README.md`). Az érték az értékkészletben
+  marad a még nem importált datasetek számára.
 - `korlatos` — a `KJV_ASV_Strongs` **csak Genezis, Exodus és Példabeszédek** könyvekre áll
   rendelkezésre. Bármely más könyvre hivatkozó „ellenőrizve" állítás ezen a dataseten hamis.
 
-*Licenc-következmény, amit a `konkordancia/README.md`-nek rögzítenie kell:* a CC BY-SA 4.0
+*Licenc-következmény, rögzítve a `konkordancia/README.md` licenc-szakaszában és a
+`konkordancia/SDBH_SDGNT_README.md`-ben:* a CC BY-SA 4.0
 forrásmegjelölést követel, **és a származékos adat is ugyanilyen licenc alá esik** — ez
 érinti a lexikon publikálási formáját.
 
@@ -547,6 +546,6 @@ ellenőrzés tárgyai.
   nem a kánon teljességét állító címke, és az `eszkozok/lekerdez.py` minden parancsa
   ezt írja ki.
 - **A `kapcsolatok.tipus` és a pilot-TSV „Típus" oszlopának névütközése** (l. 2.3).
-- **Az SDBH/SDGNT hiánya** (l. 2.6) — az F2 `domen` parancsának előfeltétele.
+- **Az SDBH lefedettsége** (l. 2.6) — kb. 90%; gyakori szavak is hiányoznak (pl. H1961, H5414, H6440), ezért a `domen` üres eredménye nem negatív lelet.
 - **A `keretszo` lista teljessége.** 34 tétel, gyakoriság alapján válogatva. Nem állítjuk,
   hogy teljes; bővítése az F3 betöltés tapasztalatai alapján várható.
