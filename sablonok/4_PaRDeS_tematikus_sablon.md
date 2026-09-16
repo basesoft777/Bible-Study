@@ -1,5 +1,7 @@
 # 4. PaRDeS tematikus (motívum-alapú) sablon — teljes, részletes verzió
 
+*v17 — 2026.09.16 (SDBH.6: a P2 domén-mondata állapotfüggetlenné vált — az SDBH/SDGNT import után a `domen` a `datasetek.tsv` állapota szerint ad eredményt; a domén támasz, nem a mező-hipotézis helyettesítője. Tartalmi követelmény nem változott; a „v16 szerint” címkék érvényesek maradnak.)*
+
 *v16 — 2026.09.15 (F5.1: az 1. pont táblázatának mind a hét oszlopa
 kötelezővé vált — korábban az utolsó négy opcionálisnak számított;
 üres cellában `—` jelzi a hiányzó BDB-adatot, de az oszlop nem
@@ -132,7 +134,7 @@ halmazt.
 **Kutatási protokoll — hét lépés, kötött sorrendben.** A determinisztikus lépések az `eszkozok/lekerdez.py` parancsaival futnak. Minden futás saját proveniencia-sort ír ki (`scope=… | forras=… | ts=…`), és ez a sor szó szerint a kereszthivatkozás-naplóba kerül. Ahol nem futott lekérdezés, ott az állítás értelmezésként jelölendő.
 
 - [ ] **P1. Gerinc-metszet** — `python eszkozok/lekerdez.py gerinc "<szakasz>" "<szakasz>" …`. A levezetést **akkor is dokumentálni kell, ha az eredmény üres vagy triviális.** Az üres metszet maga is lelet: a motívum szerkezeti, nem lexikai, ezért a P2 a szemantikai mező szerint építi fel a gerincet.
-- [ ] **P2. Szemantikai mező-hipotézis** — generatív lépés, nincs parancsa. A mező szavai a naplóba kerülnek. A `lekerdez.py domen` ma nem ad eredményt, mert az `adat/datasetek.tsv` szerint az SDBH/SDGNT állapota `hianyzik`. Amíg ez így áll, gépi doménre hivatkozni nem lehet.
+- [ ] **P2. Szemantikai mező-hipotézis** — generatív lépés, nincs parancsa. A mező szavai a naplóba kerülnek. A `lekerdez.py domen <Strong> [<Strong>]` gépi támaszt ad (doméntársak, illetve közös domén), ha az `adat/datasetek.tsv` szerint az SDBH/SDGNT `elerheto`; ellenkező esetben gépi doménre hivatkozni nem lehet. A domén **nem helyettesíti** a mező-hipotézist: a mező megválasztása emberi döntés, és a domén-lekérdezés üres vagy szűk eredménye nem negatív lelet.
 - [ ] **P3. Teljes scan** — `python eszkozok/lekerdez.py scan <Strong>` minden mező-szóra. A `--szakasz` szűkítéssel futott scan eredménye nem nevezhető „teljes”-nek; a proveniencia `scope` mezője ezt gépileg mutatja.
 - [ ] **P4. Kollokáció** — `python eszkozok/lekerdez.py kollokacio <Strong_A> <Strong_B>`.
 - [ ] **P5. Igealak-szintű ellenőrzés** — `python eszkozok/lekerdez.py igealak <Strong>`.
