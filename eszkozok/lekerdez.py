@@ -245,6 +245,24 @@ def load_karoli_1908():
     return _karoli_1908_cache
 
 
+_sdbh_domenek_cache = None
+_sdgnt_domenek_cache = None
+
+
+def load_sdbh_domenek():
+    global _sdbh_domenek_cache
+    if _sdbh_domenek_cache is None:
+        _sdbh_domenek_cache = read_tsv_skip_comments(KONK / "SDBH_domenek.tsv")
+    return _sdbh_domenek_cache
+
+
+def load_sdgnt_domenek():
+    global _sdgnt_domenek_cache
+    if _sdgnt_domenek_cache is None:
+        _sdgnt_domenek_cache = read_tsv_skip_comments(KONK / "SDGNT_domenek.tsv")
+    return _sdgnt_domenek_cache
+
+
 def combined_rows():
     """(parsed_igehely, strong, forrasfajl) hármasok TAHOT + TAGNT-ből."""
     out = []
@@ -460,26 +478,121 @@ def cmd_karoli(args):
     print(f"proveniencia: {prov}")
 
 
+_DOMEN_PLAIN_RE = re.compile(r'^[HG]\d{4}$')
+
+
+def _domen_nyelv(strong):
+    if strong[:1] in ("H", "A"):
+        return "H"
+    if strong[:1] == "G":
+        return "G"
+    return None
+
+
+def _domen_match(rows, strong):
+    if _DOMEN_PLAIN_RE.match(strong):
+        return [r for r in rows if r["strong"] == strong]
+    return [r for r in rows if r["strong_kod"] == strong]
+
+
 def cmd_domen(args):
-    """3. használat (4.3) — szemantikai domén lekérdezés (SDBH/SDGNT). Előfeltétel: import."""
+    """3. használat (4.3) — szemantikai domén lekérdezés (SDBH/SDGNT): mező-tágítás 1 Stronggal, elhatárolás 2-vel."""
+    strongok = [s.strip() for s in args.strong]
+    if len(strongok) > 2:
+        print("A `domen` legfeljebb két Strong-kódot fogad el.", file=sys.stderr)
+        sys.exit(1)
+
+    nyelvek = {_domen_nyelv(s) for s in strongok}
+    if None in nyelvek or len(nyelvek) > 1:
+        print("Vegyes nyelvű vagy ismeretlen előtagú Strong-kód(ok) — a `domen` "
+              "csak azonos nyelvű (H/A vagy G) argumentumot fogad el.", file=sys.stderr)
+        sys.exit(1)
+    nyelv = nyelvek.pop()
+
+    dataset_name = "SDBH" if nyelv == "H" else "SDGNT"
     dataset_rows = read_tsv_skip_comments(ADAT / "datasetek.tsv")
-    sdbh = [r for r in dataset_rows if r["dataset"] == "SDBH"]
-    allapot = sdbh[0]["allapot"] if sdbh else "ismeretlen"
+    ds = [r for r in dataset_rows if r["dataset"] == dataset_name]
+    allapot = ds[0]["allapot"] if ds else "ismeretlen"
     if allapot != "elerheto":
         print(
-            "A `domen` parancs előfeltétele (SDBH/SDGNT import) nem teljesült.\n"
-            f"adat/datasetek.tsv szerint az SDBH állapota: {allapot!r}.\n"
-            "Ez a NYITOTT_FELADATOK.md-ben rögzített nyitott tétel — l. "
-            "\"SDBH / SDGNT import\". A parancs nem ad ki eredményt, mert az "
-            "üres/hiányzó eredmény a helyes viselkedés (nincs helyettesítő adat "
-            "kitalálva).",
+            f"A `domen` parancs előfeltétele ({dataset_name} import) nem teljesült.\n"
+            f"adat/datasetek.tsv szerint a {dataset_name} állapota: {allapot!r}.\n"
+            "A parancs nem ad ki eredményt, mert az üres/hiányzó eredmény a helyes "
+            "viselkedés (nincs helyettesítő adat kitalálva).",
             file=sys.stderr,
         )
         sys.exit(2)
-    # Az importálás után ide kerül a tényleges lekérdezés (StrongCodes join).
-    print("SDBH elérhető, de a domén-lekérdezés logikája még nincs implementálva.",
-          file=sys.stderr)
-    sys.exit(2)
+
+    if dataset_name == "SDBH":
+        rows = load_sdbh_domenek()
+        scope, forras = "SDBH-v0.9.2", "SDBH_domenek.tsv"
+    else:
+        rows = load_sdgnt_domenek()
+        scope, forras = "SDGNT-v1.1", "SDGNT_domenek.tsv"
+
+    if len(strongok) == 1:
+        strong = strongok[0]
+        hits = _domen_match(rows, strong)
+        domenkodok = sorted({r["domen_kod"] for r in hits if r["domen_kod"] != "—"})
+        n = len(domenkodok)
+
+        if not hits:
+            print(f"# domen {strong} — nincs {dataset_name}-bejegyzés "
+                  "(a szótár nem teljes: hiányzó bejegyzés nem negatív lelet)")
+            prov = f"scope={scope} | forras={forras} | strong={strong} | n=0 | ts={ts()}"
+            print(f"proveniencia: {prov}")
+            sys.exit(0)
+
+        print(f"# domen {strong} — {len(hits)} jelentés-egység, {n} domén")
+        for r in sorted(hits, key=lambda r: (r["lexid"], r["domen_kod"])):
+            domen_label = r["domen"] if r["domen_kod"] != "—" else "domén nélkül"
+            print(f"{r['strong_kod']}\t{r['nyelv']}\t{r['lemma']}\t{r['lexid']}\t"
+                  f"{r['glossza']}\t{r['domen_kod']}\t{domen_label}")
+
+        queried_strongs = {r["strong"] for r in hits}
+        for domen_kod in domenkodok:
+            domain_rows = [r for r in rows if r["domen_kod"] == domen_kod]
+            domen_label = domain_rows[0]["domen"] if domain_rows else ""
+            all_strongs = sorted({r["strong"] for r in domain_rows})
+            print(f"## {domen_kod} {domen_label} ({len(all_strongs)} Strong)")
+            tarsak = sorted(s for s in all_strongs if s not in queried_strongs)
+            for tars in tarsak:
+                glosszak = sorted({r["glossza"] for r in domain_rows if r["strong"] == tars})
+                print(f"{tars}\t{'; '.join(glosszak)}")
+
+        prov = f"scope={scope} | forras={forras} | strong={strong} | n={n} | ts={ts()}"
+        print(f"proveniencia: {prov}")
+        sys.exit(0)
+
+    # elhatárolás — két Strong
+    strong_a, strong_b = strongok
+    hits_a = _domen_match(rows, strong_a)
+    hits_b = _domen_match(rows, strong_b)
+    kodok_a = {r["domen_kod"] for r in hits_a if r["domen_kod"] != "—"}
+    kodok_b = {r["domen_kod"] for r in hits_b if r["domen_kod"] != "—"}
+    kozos = sorted(kodok_a & kodok_b)
+    n = len(kozos)
+
+    if not kozos:
+        print("# nincs közös domén")
+        prov = (f"scope={scope} | forras={forras} | strong={strong_a}+{strong_b} "
+                f"| n=0 | ts={ts()}")
+        print(f"proveniencia: {prov}")
+        sys.exit(0)
+
+    print(f"# domen {strong_a} {strong_b} — {n} közös domén")
+    for domen_kod in kozos:
+        domain_rows = [r for r in rows if r["domen_kod"] == domen_kod]
+        domen_label = domain_rows[0]["domen"] if domain_rows else ""
+        print(f"## {domen_kod} {domen_label}")
+        for label, hits in ((strong_a, hits_a), (strong_b, hits_b)):
+            for r in sorted(hits, key=lambda r: r["lexid"]):
+                if r["domen_kod"] == domen_kod:
+                    print(f"{label}\t{r['lexid']}\t{r['glossza']}")
+
+    prov = (f"scope={scope} | forras={forras} | strong={strong_a}+{strong_b} "
+            f"| n={n} | ts={ts()}")
+    print(f"proveniencia: {prov}")
 
 
 # ---------------------------------------------------------------------------
@@ -523,8 +636,8 @@ def build_parser():
     sp.add_argument("igehely")
     sp.set_defaults(func=cmd_karoli)
 
-    sp = sub.add_parser("domen", help="szemantikai domén (SDBH/SDGNT) — előfeltétel hiányzik")
-    sp.add_argument("strong", nargs="?")
+    sp = sub.add_parser("domen", help="szemantikai domén (SDBH/SDGNT) — mező-tágítás 1 Stronggal, elhatárolás 2-vel")
+    sp.add_argument("strong", nargs="+")
     sp.set_defaults(func=cmd_domen)
 
     return p
