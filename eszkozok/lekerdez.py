@@ -18,6 +18,7 @@ kockázat-táblája). A `TAHOT-teljes` azt jelenti: a kivonat egészére, nem az
 
 import argparse
 import datetime
+import json
 import re
 import sys
 from pathlib import Path
@@ -263,6 +264,16 @@ def load_sdgnt_domenek():
     return _sdgnt_domenek_cache
 
 
+_sdbh_sdgnt_anomaliak_cache = None
+
+
+def load_sdbh_sdgnt_anomaliak():
+    global _sdbh_sdgnt_anomaliak_cache
+    if _sdbh_sdgnt_anomaliak_cache is None:
+        _sdbh_sdgnt_anomaliak_cache = read_tsv_skip_comments(KONK / "SDBH_SDGNT_anomaliak.tsv")
+    return _sdbh_sdgnt_anomaliak_cache
+
+
 def combined_rows():
     """(parsed_igehely, strong, forrasfajl) hármasok TAHOT + TAGNT-ből."""
     out = []
@@ -495,6 +506,57 @@ def _domen_match(rows, strong):
     return [r for r in rows if r["strong_kod"] == strong]
 
 
+_STRONG_PART_RE = re.compile(r'^([HAG])(\d{4})([a-f]?)$')
+
+
+def _anomaly_valid_parts(nyers_ertek):
+    """A nyers_ertek JSON-listájából kinyeri az érvényes Strong-részeket,
+    ugyanazzal a szabállyal, mint az import (§2.2/1)."""
+    try:
+        raw_list = json.loads(nyers_ertek)
+    except (ValueError, TypeError):
+        return []
+    parts = []
+    for sc in raw_list:
+        if sc == "":
+            continue
+        for part in sc.split("+"):
+            if _STRONG_PART_RE.match(part):
+                parts.append(part)
+    return parts
+
+
+def _anomaly_part_matches(part, strong):
+    """Utótag nélküli H####/G#### bemenetnél normalizált illesztés, utótagos
+    vagy A#### bemenetnél a részen, ahogy áll."""
+    if _DOMEN_PLAIN_RE.match(strong):
+        m = _STRONG_PART_RE.match(part)
+        prefix, digits, _suffix = m.groups()
+        normalized = ("H" if prefix in ("H", "A") else "G") + digits
+        return normalized == strong
+    return part == strong
+
+
+def _matching_jelentes_nelkul(anom_rows, dataset_name, strong):
+    matches = []
+    for r in anom_rows:
+        if r["szotar"] != dataset_name or r["tipus"] != "jelentes_nelkul":
+            continue
+        parts = _anomaly_valid_parts(r["nyers_ertek"])
+        if any(_anomaly_part_matches(p, strong) for p in parts):
+            matches.append(r)
+    return matches
+
+
+def _print_anomaly_warnings(dataset_name, matches):
+    for r in matches:
+        print(f"# figyelem: elemzetlen {dataset_name}-bejegyzés illeszkedik — "
+              f"{r['entry_id']} {r['lemma']} {r['nyers_ertek']}")
+    if matches:
+        print("# (a forrásban szerepel, de jelentés-elemzés és domén nélkül: "
+              "SDBH_SDGNT_anomaliak.tsv, jelentes_nelkul — nem negatív lelet)")
+
+
 def cmd_domen(args):
     """3. használat (4.3) — szemantikai domén lekérdezés (SDBH/SDGNT): mező-tágítás 1 Stronggal, elhatárolás 2-vel."""
     strongok = [s.strip() for s in args.strong]
@@ -525,25 +587,33 @@ def cmd_domen(args):
 
     if dataset_name == "SDBH":
         rows = load_sdbh_domenek()
-        scope, forras = "SDBH-v0.9.2", "SDBH_domenek.tsv"
+        scope, forras = "SDBH-v0.9.2", "SDBH_domenek.tsv+SDBH_SDGNT_anomaliak.tsv"
     else:
         rows = load_sdgnt_domenek()
-        scope, forras = "SDGNT-v1.1", "SDGNT_domenek.tsv"
+        scope, forras = "SDGNT-v1.1", "SDGNT_domenek.tsv+SDBH_SDGNT_anomaliak.tsv"
+
+    anom_rows = load_sdbh_sdgnt_anomaliak()
 
     if len(strongok) == 1:
         strong = strongok[0]
         hits = _domen_match(rows, strong)
+        matches = _matching_jelentes_nelkul(anom_rows, dataset_name, strong)
         domenkodok = sorted({r["domen_kod"] for r in hits if r["domen_kod"] != "—"})
         n = len(domenkodok)
 
         if not hits:
-            print(f"# domen {strong} — nincs {dataset_name}-bejegyzés "
-                  "(a szótár nem teljes: hiányzó bejegyzés nem negatív lelet)")
+            if matches:
+                print(f"# domen {strong} — nincs elemzett {dataset_name}-bejegyzés")
+                _print_anomaly_warnings(dataset_name, matches)
+            else:
+                print(f"# domen {strong} — nincs {dataset_name}-bejegyzés "
+                      "(a szótár nem teljes: hiányzó bejegyzés nem negatív lelet)")
             prov = f"scope={scope} | forras={forras} | strong={strong} | n=0 | ts={ts()}"
             print(f"proveniencia: {prov}")
             sys.exit(0)
 
         print(f"# domen {strong} — {len(hits)} jelentés-egység, {n} domén")
+        _print_anomaly_warnings(dataset_name, matches)
         for r in sorted(hits, key=lambda r: (r["lexid"], r["domen_kod"])):
             domen_label = r["domen"] if r["domen_kod"] != "—" else "domén nélkül"
             print(f"{r['strong_kod']}\t{r['nyelv']}\t{r['lemma']}\t{r['lexid']}\t"
@@ -568,6 +638,11 @@ def cmd_domen(args):
     strong_a, strong_b = strongok
     hits_a = _domen_match(rows, strong_a)
     hits_b = _domen_match(rows, strong_b)
+    matches_a = _matching_jelentes_nelkul(anom_rows, dataset_name, strong_a)
+    matches_b = _matching_jelentes_nelkul(anom_rows, dataset_name, strong_b)
+    _print_anomaly_warnings(dataset_name, matches_a)
+    _print_anomaly_warnings(dataset_name, matches_b)
+
     kodok_a = {r["domen_kod"] for r in hits_a if r["domen_kod"] != "—"}
     kodok_b = {r["domen_kod"] for r in hits_b if r["domen_kod"] != "—"}
     kozos = sorted(kodok_a & kodok_b)
