@@ -43,7 +43,7 @@ N11.
 | `SDBH_domenek.tsv` | 22 280 |
 | `SDGNT_domenek.tsv` | 9 075 |
 | `SDBH_SDGNT_domenfa.tsv` | 1 149 |
-| `SDBH_SDGNT_anomaliak.tsv` | 150 |
+| `SDBH_SDGNT_anomaliak.tsv` | 185 |
 
 ### `SDBH_domenek.tsv` / `SDGNT_domenek.tsv`
 
@@ -97,7 +97,14 @@ minden sorban `AZONOSITVA, NEM JAVITVA`.
 | `osszetett ≠ —` sor | 12 | 0 |
 | `nyelv = arameus` sor / különböző `strong_kod` | 2 086 / 647 | — |
 | doménfa-sor | 411 | 738 |
-| anomália-sor | 40 (35 `strong_nelkul` + 5 `ervenytelen_kod`) | 110 `strong_nelkul` |
+| anomália-sor | 75 (35 `strong_nelkul` + 5 `ervenytelen_kod` + 35 `jelentes_nelkul`) | 110 `strong_nelkul` |
+
+**Forrás-leltár** (minden forrásbejegyzés pontosan egy helyen áll):
+
+| | forrás | a kivonatban (`entry_id`) | `strong_nelkul` | `jelentes_nelkul` |
+|---|---|---|---|---|
+| SDBH | 7 932 | 7 862 | 35 | 35 |
+| SDGNT | 5 507 | 5 397 | 110 | 0 |
 
 **Lefedettség** (a kivonat `strong` oszlopa a kivonatok lexikai Strong-kódjaihoz
 mérve; a héber oldalon a `H9xxx` nélkül):
@@ -117,9 +124,18 @@ mérve; a héber oldalon a `H9xxx` nélkül):
 - **Strong-homográfok.** Öt Strong-szám (`H1529`, `H2269`, `H5613`, `H6211`,
   `H8412`) egyszerre héber és arámi szóra is ki van osztva a `TAHOT_kivonat.tsv`
   szerint — ez a forrás Strong-rendszerének sajátossága, nem leképezési hiba.
-- **Az anomália-fájl** (`SDBH_SDGNT_anomaliak.tsv`) 150 sora dokumentált, de
-  javítatlan forráshiba (pl. szerzőnév a Strong-mezőben, előtag nélküli
-  szám) — l. a döntésnaplót a `SDBH_IMPORT_BRIEF.md`-ben.
+- **Az anomália-fájl** (`SDBH_SDGNT_anomaliak.tsv`) 185 sora két fajta tételt tart.
+  **150 sor javítatlan forráshiba** (`AZONOSITVA, NEM JAVITVA`): szerzőnév a
+  Strong-mezőben, előtag nélküli szám, Strong-kód nélküli bejegyzés. **35 sor
+  elemzetlen bejegyzés** (`jelentes_nelkul`, `FORRASBAN_BEFEJEZETLEN`): a
+  szótár felvette a szót, de jelentés-egységet és domént még nem rendelt
+  hozzá — köztük gyakori szavak, pl. `A0116` (*'edajin*, „akkor"), `H0518`
+  (*'im*, „ha"), `H1931` (*hú'*, „ő"). A `domen` ezeket külön jelzi. L. a
+  döntésnaplót a `SDBH_IMPORT_BRIEF.md`-ben.
+- **Az arámi ellenőrzés egysége.** 372 forrásbejegyzés visel csak `A`-kódot;
+  ebből 367 van a kivonatban (5 elemzetlen), a 372 mögött pedig 367 különböző
+  normalizált kód. A két 367 véletlenül egyezik; az `sdbh_sdgnt_ellenoriz.py`
+  mindkét egységet külön ellenőrzi.
 - **A `LEXReferences` (héber versszámozás) nincs importálva** — csak a darabszám
   (`hivatkozas_n`). A tényleges igehely-szintű hivatkozás-tábla (szakasz-profil)
   ennek a menetnek szándékosan nem része (`SDBH_IMPORT_BRIEF.md` N1).

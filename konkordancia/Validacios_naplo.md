@@ -751,3 +751,54 @@ kivonatolása `Strong × jelentés × domén` sor-egységgel — l.
 bejegyzés).
 
 **Lezárva.** Nincs eltérés a brief referencia-értékeitől.
+
+---
+
+## 2026.09.16 — SDBH.1a: elemzetlen bejegyzések, forrás-leltár
+
+### Mit
+
+A független ellenőrzés (`SDBH_IMPORT_BRIEF.md` v2 §1.5) egy adat-rést (L1) és
+két kisebb hibát (L2, L3) talált az 1. menetben. Ez a bejegyzés az L1 javítását
+dokumentálja: 35 érvényes Strong-kódú, de jelentés-egység nélküli
+SDBH-bejegyzés, amely eddig némán kiesett a kivonatból és az
+anomália-fájlból is.
+
+### Mivel vetettük össze
+
+- A brief v2 §1.4 leltártáblája (forrás 7 932/5 507, kivonat 7 862/5 397,
+  `strong_nelkul` 35/110, `jelentes_nelkul` 35/0).
+- K15 (anomália-fájl 185 sor, új SHA-256), K16 (forrás-leltár: páronként
+  diszjunkt halmazok, unió = forrás egésze), K17 (a kivonat és a doménfa
+  SHA-256-ja változatlan), K19 (nincs halmaz az anomália-gyűjtésben).
+
+### Eredmény kritériumonként
+
+- `eszkozok/sdbh_sdgnt_import.py`: a `process_dictionary` most számolja a
+  `BaseForms[].LEXMeanings[]` együttes elemszámát; ha nulla (de van érvényes
+  Strong-rész), `jelentes_nelkul` anomáliát ír (`FORRASBAN_BEFEJEZETLEN`).
+  Az anomáliák gyűjtése listára váltott (`all_anoms`), típusonkénti
+  `allapot`-hozzárendeléssel (`ALLAPOT_MAP`) — L2 javítva.
+- `--letolt` kétszer egymás után: a négy kimeneti fájl byte-azonos (K3).
+- `eszkozok/sdbh_sdgnt_ellenoriz.py`: mind a 48 kritérium `OK`, kilépési kód
+  0 — a teljes kimenet a zárójelentésben.
+- Anomália-sor: 185 (SDBH 75 = 35 `strong_nelkul` + 5 `ervenytelen_kod` + 35
+  `jelentes_nelkul`; SDGNT 110 `strong_nelkul`), SHA-256
+  `2c45f330c1f76af0b66a001498e1379c45c74b7249be1cfb9137f476c27839a2`.
+- Forrás-leltár: SDBH és SDGNT szótáranként a kivonat, `strong_nelkul` és
+  `jelentes_nelkul` entry_id-halmaza páronként diszjunkt, uniójuk 7 932,
+  illetve 5 507 — pontosan a forrás bejegyzésszáma.
+- K17: `SDBH_domenek.tsv`, `SDGNT_domenek.tsv`, `SDBH_SDGNT_domenfa.tsv`
+  SHA-256-ja a v1-ből ismert érték, a `git diff 6fe0d1e` a három fájlon
+  üres.
+- Az arámi ellenőrzés két egysége (L3) külön kritériumként: a kivonatban
+  csak arámi bejegyzés = 367; a kivonat + a csak `A`-kódot viselő
+  `jelentes_nelkul` bejegyzések együtt 372 bejegyzés, mögöttük 367 különböző
+  normalizált kód (a két 367 véletlenül egyezik).
+
+### Módosított/létrehozott fájlok
+
+`eszkozok/sdbh_sdgnt_import.py`, `eszkozok/sdbh_sdgnt_ellenoriz.py`,
+`konkordancia/SDBH_SDGNT_anomaliak.tsv`.
+
+**Lezárva.** Nincs eltérés a brief v2 referencia-értékeitől.
