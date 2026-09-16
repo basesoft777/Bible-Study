@@ -1,0 +1,1153 @@
+# GENERÁLT: eszkozok/sdbh_sdgnt_import.py — kézzel nem szerkesztendő.
+# forras: ubsicap/ubs-open-license @ 3a6edd8212df2e1189037ad39687726990c80d56 | UBSHebrewDicLexicalDomains-v0.9.2-en.JSON sha256=fbc862b2c46966cf7f3bf19c2f3e79a7391c34f8c737e1979fa5178ac603d0df; UBSGreekNTDicLexicalDomains-v1.1-en.JSON sha256=a816a6bb2bdbdd7df6f46f771b5ddb1b9c019d73c3f0147e5a5cead5cfef8b4b
+# licenc: CC BY-SA 4.0 — © United Bible Societies; forrásmegjelölés: konkordancia/SDBH_SDGNT_README.md
+szotar	kod	szint	szulo_kod	cimke	leiras
+SDBH	001	1	—	Objects	All animate and inanimate entities, both natural and supernatural, either created or pre-existent before creation, either existing in nature or human-made.
+SDBH	001001	2	001	Regions Above the Earth	All objects found in the regions above the earth.
+SDBH	001001001	3	001001	Deities	All supernatural beings.
+SDBH	001001002	3	001001	Celestial Bodies	All celestial bodies found in the regions above the earth, such as sun, moon, stars, constellations, etc.
+SDBH	001002	2	001	Regions On the Earth	All objects found on the earth.
+SDBH	001002001	3	001002	Land	All terms related to land in its relation to the people living there or those engaging with it in other ways.
+SDBH	001002002	3	001002	Landforms	All landforms, such as mountains, valleys, plains.
+SDBH	001002003	3	001002	Landscapes	All terms for different landscapes, such as forests, deserts, etc.
+SDBH	001002004	3	001002	Vegetation	All vegetation.
+SDBH	001002004001	4	001002004	Plants	All plants.
+SDBH	001002004002	4	001002004	Trees	All trees.
+SDBH	001002005	3	001002	Waterbodies	All terms for bodies of water on the earth, such as oceans, seas, lakes, rivers, and ponds.
+SDBH	001002006	3	001002	Animals	All living creatures, with the exception of created supernatural beings and humans.
+SDBH	001002006001	4	001002006	Wild Animals	All wild land animals of the larger variety, excluding smaller animals, such as the mouse or the weasel, which, according to Lev. 11:29, are to be considered |uSmall Animals|u*.
+SDBH	001002006002	4	001002006	Domestic Animals	All domesticated animals.
+SDBH	001002006003	4	001002006	Small Animals	All wild land animals of the smaller variety. According to Genesis 1:24 this is a category in itself. It does somewhat overlap with שֶׁרֶץ, however. Leviticus 11:29 refers to (part of) this subcategory of animals as שֶׁרֶץ הַשֹּׁרֵץ עַל־הָאָרֶץ which refers to all land animals that have short legs (reptiles) or no legs at all (snakes). To use the term reptiles would be incorrect as small mammals, such as the mouse and the weasel, are part of this subcategory as well.
+SDBH	001002006004	4	001002006	Aquatic Animals	All water creatures except what is considered שֶׁרֶץ הַמַּיִם (see Swarming Creatures). See Leviticus 11:9-12; Deuteronomy 14:9,10.
+SDBH	001002006005	4	001002006	Birds	All birds, covered by the Hebrew generic term עוֹף. Flying insects are part of the category Swarming Creatures.
+SDBH	001002006006	4	001002006	Swarming Creatures	All animals covered by the generic term שֶׁרֶץ, with the exception of the reptiles and small rodents that are classified as רֶמֶשׂ Small Animals. This comprises what is referred to as שֶׁרֶץ הָעוֹף (Lev. 11:20), שֶׁרֶץ הַמַּיִם (Lev. 11:10), and probably the smaller species of the שֶׁרֶץ הַשֹׂרֵץ עַל־הָאָרֶץ (Lev. 11:29).
+SDBH	001002007	3	001002	People	All human beings.
+SDBH	001002007001	4	001002007	Classes	All social classes among humans, such as slave, free, alien, rich, poor, etc.
+SDBH	001002007002	4	001002007	Enemies	All humans with whom one has a hostile relationship—for example, enemies, opponents, or adversaries.
+SDBH	001002007003	4	001002007	Friends	All humans with whom one has a positive relationship—for example, friends, companions, or partners.
+SDBH	001002007004	4	001002007	Groups	All groups of humans not mentioned under any of the other categories.
+SDBH	001002007005	4	001002007	Leaders	All humans that are in a position of authority over others, e.g. kings, commanders, officers, prefects, etc.
+SDBH	001002007006	4	001002007	Messengers	All humans that are commissioned to pass on a message to others.
+SDBH	001002007007	4	001002007	Officials	All humans that are in the service of a king or other leader.
+SDBH	001002007008	4	001002007	Priests	All humans functioning as priests or hold another religious office.
+SDBH	001002007009	4	001002007	Professions	All people engaged in a certain professional activity, such as farmers, craftsmen, fishermen, etc.
+SDBH	001002007010	4	001002007	Prophets	All humans speaking or acting on behalf of a deity, e.g. seers and prophets.
+SDBH	001002007011	4	001002007	Prostitutes	All humans, both male and female, who engage in non-sanctioned sexual relationships, whether professionally or occasionally.
+SDBH	001002007012	4	001002007	Relatives	All humans that are related by blood or marriage.
+SDBH	001002007013	4	001002007	Soldiers	All humans engaged in military activities, e.g. warriors, soldiers, officers, etc.
+SDBH	001002007014	4	001002007	Witnesses	All humans giving testimony in courts or other legal contexts.
+SDBH	001002008	3	001002	Products	All inanimate objects, usually of a relatively small size, produced by people, deities, animals, or plants. An important characteristic of this category is that this type of objects can be actively used as instruments in other processes. In figures of speech objects of this category often take the place of the events in which they are used as instruments.
+SDBH	001002008001	4	001002008	Artifacts	All human-made objects.
+SDBH	001002008001001	5	001002008001	Banners	All flags, banner, standards and other objects that function as visible signs.
+SDBH	001002008001002	5	001002008001	Clothing	All terms referring to clothing and armor.
+SDBH	001002008001003	5	001002008001	Containers	All objects produced to contain other objects such as liquids or dry substances.
+SDBH	001002008001004	5	001002008001	Cords	All objects used to keep other objects in place, such as cords, chains, fetters and similar objects.
+SDBH	001002008001005	5	001002008001	Coverings	All objects that are used to cover other objects, such as the lid of a jar, the coverings of the tabernacle, or a saddle-cloth to ride on. For clothes, see Clothing.
+SDBH	001002008001006	5	001002008001	Cult Objects	All objects that are the object of worship, such as idols, scared pillars, sacred poles,etc.
+SDBH	001002008001007	5	001002008001	Furnaces	All objects that generate and contain heat—typically by burning fuel—for heating, cooking, or baking.
+SDBH	001002008001008	5	001002008001	Furnishings	All objects used to furnish and decorate the inside of buildings.
+SDBH	001002008001009	5	001002008001	Gemstones	All precious stones.
+SDBH	001002008001010	5	001002008001	Images	All objects that are visual representations of deities, humans, or other objects, either or not used for worship.
+SDBH	001002008001011	5	001002008001	Jewellery	All jewellery, such as rings, necklaces, etc.
+SDBH	001002008001012	5	001002008001	Lamps	All human-made objects used for producing light in a certain area.
+SDBH	001002008001013	5	001002008001	Musical Instruments	All musical instruments.
+SDBH	001002008001014	5	001002008001	Scrolls	All terms for writing equipment and objects holding written text, such as scrolls, tablets, seals, etc.
+SDBH	001002008001015	5	001002008001	Ships	All vehicles used for travel and transportation over water.
+SDBH	001002008001016	5	001002008001	Signs	All visible signs, such as flags, banners, standards and other objects that function as visible signs.
+SDBH	001002008001017	5	001002008001	Tools	All objects used by craftsmen to produce artifacts.
+SDBH	001002008001018	5	001002008001	Traps	All instruments used for hunting and fishing. These objects are often used in a metaphorical sense to denote devices used by evil people to ensnare others.
+SDBH	001002008001019	5	001002008001	Vehicles	All vehicles used for travel and transportation over land.
+SDBH	001002008001020	5	001002008001	Weapons	All artifacts used in warfare, ranging from small hand-held arms to large siege-works.
+SDBH	001002008002	4	001002008	Body Products	All body products, such as excrement, sweat, semen, blood, etc.
+SDBH	001002008003	4	001002008	Food	All terms for food items. It must be noted that many food items can be regarded as substances as well. Honey, for instance, is both a food product and a substance. That fact that it is a substance, however, seems to be less relevant than its membership of of the food category.
+SDBH	001002008003001	5	001002008003	Bread	All baked food products made out of grain.
+SDBH	001002008003002	5	001002008003	Crops	All crops growing as plants, such as grain, wheat, barley, flax, etc.
+SDBH	001002008003003	5	001002008003	Dairy	All food produced by animals, such as dairy products, but also eggs and honey.
+SDBH	001002008003004	5	001002008003	Fruits	All edible objects produced by plants and trees.
+SDBH	001002008003005	5	001002008003	Wine	All terms for wine and other alcoholic beverages.
+SDBH	001002009	3	001002	Constructions	All inanimate objects that are immovable and constructed by humans, such as huts, shelters, houses, fortresses, and palaces. For larger population centers such as towns and villages, see |uTowns|u.
+SDBH	001002009001	4	001002009	Buildings	All permanent constructions not covered by any of the other categories at this level.
+SDBH	001002009002	4	001002009	Cultic Sites	All places where religious activities are concentrated, such as shrines, temples, high places, etc.
+SDBH	001002009003	4	001002009	Fortifications	All constructions that serve to fortify a city.
+SDBH	001002009004	4	001002009	Monuments	All constructions erected to serve as a memorial for a certain person or event.
+SDBH	001002009005	4	001002009	Ports	All places where ships find shelter and can be loaded or unloaded.
+SDBH	001002009006	4	001002009	Prisons	All constructions where people are incarcerated.
+SDBH	001002009007	4	001002009	Roads	All infrastructural constructions that facilitate travel and transportation from one place to the other.
+SDBH	001002009008	4	001002009	Stalls	All constructions where domestic animals are kept
+SDBH	001002009009	4	001002009	Tents	All temporary constructions, such as tents, shelters, etc.
+SDBH	001002009010	4	001002009	Tombs	All terms referring to burial places.
+SDBH	001002009011	4	001002009	Towns	All population centers, such as villages and towns.
+SDBH	001002009012	4	001002009	Walls	All constructions surrounding an area, building, compound, or population center.
+SDBH	001002009013	4	001002009	Wells and Cisterns	All constructions were water is drawn from the ground or stored.
+SDBH	001002010	3	001002	Substances	All inanimate objects that are shaped in such a way that they usually cannot be counted but are to be measured instead, and from which other objects can be produced, e.g. gold, silver, wood, clay, etc. This category includes liquids like water, and elements like fire. These objects are either exclusively used in the singular, or in the shape of a fixed plural or dual form
+SDBH	001002010001	4	001002010	Air	All terms referring to the air and the movement of air, e.g. wind, breeze, storm, etc.
+SDBH	001002010002	4	001002010	Bitumen	All terms related to bitumen and other petroleum-based materials.
+SDBH	001002010003	4	001002010	Cloth	All terms for cloth and the materials used for making clothes, such as linen and wool
+SDBH	001002010004	4	001002010	Clouds	All terms related to clouds.
+SDBH	001002010005	4	001002010	Dust	All small particles covering the earth, such as dust, ashes, soot, sand, etc.
+SDBH	001002010006	4	001002010	Fire	All terms related to fire, except smoke.
+SDBH	001002010007	4	001002010	Liquids	All liquids.
+SDBH	001002010008	4	001002010	Metals	All metals, such as gold, silver, bronze, iron, tin, lead, etc.
+SDBH	001002010009	4	001002010	Minerals	All terms for minerals, such as salt and sulphur.
+SDBH	001002010010	4	001002010	Paint	All terms for substances used to apply color to other objects.
+SDBH	001002010011	4	001002010	Rain	All forms of precipitation, such as rain, hail, snow.
+SDBH	001002010012	4	001002010	Smoke	All terms referring to the gases and vapors produced by fire.
+SDBH	001002010013	4	001002010	Soap	All substances used to facilitate the removal of dirt from people and objects.
+SDBH	001002010014	4	001002010	Spices	All terms for substances such as fragrant spices, powders, and ointments used for culinary, medicinal, and cosmetic purposes.
+SDBH	001002010015	4	001002010	Spirit	—
+SDBH	001002010016	4	001002010	Stone	All types of stones, rocks, and pebbles; for precious stones, see: |uGemstones|u*.
+SDBH	001002010017	4	001002010	Wood	All terms for wood as a product.
+SDBH	001003	2	001	Regions Under the Earth	All terms relating to the regions under the earth, such as the subterranean waters, the world of the dead, etc.
+SDBH	002	1	—	Events	All states, processes, actions, and causative actions, featuring one or more objects or other events. States and Processes overlap in biblical Hebrew and are therefore considered one single category in SDBH (State/Process). Terms that are often labeled abstracts or attributes in semantic theory function as states in biblical Hebrew and are therefore considered events
+SDBH	002001	2	002	Description	Events that describe features of objects or other events. This includes certain adjectives and adverbs, words that according to Nida's analysis usually classify as abstracts rather than events. In biblical Hebrew, however, the distinction between events and abstracts does not work very well, as there is much overlap between the two semantic classes
+SDBH	002001001	3	002001	Attribute	Events describing the physical features of an object
+SDBH	002001001001	4	002001001	Able	Events denoting the ability to do certain things.
+SDBH	002001001002	4	002001001	Agile	—
+SDBH	002001001003	4	002001001	Alive	Events involving the attribute of being alive or not
+SDBH	002001001004	4	002001001	Asleep	—
+SDBH	002001001005	4	002001001	Awake	—
+SDBH	002001001006	4	002001001	Be	—
+SDBH	002001001007	4	002001001	Bad	Events denoting good quality
+SDBH	002001001008	4	002001001	Bald	—
+SDBH	002001001009	4	002001001	Bow	—
+SDBH	002001001010	4	002001001	Burn	Events involving fire, e.g. בער
+SDBH	002001001011	4	002001001	Capacity	Units of capacity, including both dry and liquid measures
+SDBH	002001001012	4	002001001	Clean	opposite Unclean
+SDBH	002001001013	4	002001001	Close	Events involving the attribute of not having an opening allowing entrance, passage, or access, or where that opening has been blocked
+SDBH	002001001014	4	002001001	Cold	Events involving the attribute of having a relatively low temperature
+SDBH	002001001015	4	002001001	Color	Events involving the attribute of having a particular color, e.g
+SDBH	002001001016	4	002001001	Common	—
+SDBH	002001001017	4	002001001	Cooked	Events denoting that food items have been made ready for human consumption by cooking, boiling, frying, baking, etc.
+SDBH	002001001018	4	002001001	Dark	—
+SDBH	002001001019	4	002001001	Dead	Events involving the attribute of being dead
+SDBH	002001001020	4	002001001	Different	Events denoting dissimilarity between objects and events
+SDBH	002001001021	4	002001001	Dimension	Events involving the dimensions of objects, such as length, width, height, depth, etc
+SDBH	002001001022	4	002001001	Dry	Events denoting the absence of water or moisture
+SDBH	002001001023	4	002001001	Identify	—
+SDBH	002001001024	4	002001001	Impact	Events involving the attribute of something being impacted by a certain action. which may be either constructive or destructive.
+SDBH	002001001025	4	002001001	Ingest	Events involving the process of animate beings taking in food and drink
+SDBH	002001001026	4	002001001	Non-Ingest	—
+SDBH	002001001027	4	002001001	Excrete	Events involving the excretion of body products, e.g. spitting, urinating, sweating, vomiting, etc
+SDBH	002001001028	4	002001001	Fat	opposite: Thin
+SDBH	002001001029	4	002001001	Good	Events denoting good quality
+SDBH	002001001030	4	002001001	Heavy	Events involving the attribute of having a relatively great weight, e.g. כבד
+SDBH	002001001031	4	002001001	Holy	—
+SDBH	002001001032	4	002001001	Hot	Events involving the attribute of having a relatively high temperature
+SDBH	002001001033	4	002001001	High	opposite: Low
+SDBH	002001001034	4	002001001	Large	Events denoting the relatively small large size of objects
+SDBH	002001001035	4	002001001	Little	Events denoting the relatively small size of objects
+SDBH	002001001036	4	002001001	Long	—
+SDBH	002001001037	4	002001001	Low	opposite: High
+SDBH	002001001038	4	002001001	Old	Events denoting relatively old age, e.g. זָקֵן
+SDBH	002001001039	4	002001001	Open	Events involving the attribute of having an opening allowing entrance, passage, or access
+SDBH	002001001040	4	002001001	Poor	Events pertaining to a lack of resources that, according to popular opinion, are required for a life of well-being
+SDBH	002001001041	4	002001001	Pregnant	Events involving conception resulting in pregnancy.
+SDBH	002001001042	4	002001001	Quantity	Events involving the quantity of objects, e.g. numerals
+SDBH	002001001043	4	002001001	Quench	Events involving the putting out of fire
+SDBH	002001001044	4	002001001	Raw	Events denoting that food items have not been cooked.
+SDBH	002001001045	4	002001001	Restrict	—
+SDBH	002001001046	4	002001001	Rich	Events pertaining to the possession of an abundance of resources that, according to popular opinion, are required for a life of well-being
+SDBH	002001001047	4	002001001	Sex	—
+SDBH	002001001048	4	002001001	Shape	Events involving the shape of objects
+SDBH	002001001049	4	002001001	Shine	Events denoting the production or reflection of light
+SDBH	002001001050	4	002001001	Short	—
+SDBH	002001001051	4	002001001	Sick	Events involving the attribute of suffering from some sort of sickness
+SDBH	002001001052	4	002001001	Similar	Events denoting similarity between objects and events
+SDBH	002001001053	4	002001001	Soft	Events involving the attribute of being malleable, yielding to pressure
+SDBH	002001001054	4	002001001	Solid	Events involving the attribute of being firm, unyielding to pressure
+SDBH	002001001055	4	002001001	Spasm	Events involving contractions of the muscles, such as the contractions that accompany the birth of a child
+SDBH	002001001056	4	002001001	Stage	Events describing the stage of growth of an object; applies to plants, animals, and human beings
+SDBH	002001001057	4	002001001	Stance	Events involving stances of the body of humans and animals
+SDBH	002001001058	4	002001001	Steady	—
+SDBH	002001001059	4	002001001	Strong	Events denoting physical strength
+SDBH	002001001060	4	002001001	Thin	opposite: Fat
+SDBH	002001001061	4	002001001	Unable	Events denoting the inability to do certain things, as a result of a physical challenge, being overcome by emotions, etc.
+SDBH	002001001062	4	002001001	Unclean	opposite: Clean
+SDBH	002001001063	4	002001001	Unsteady	—
+SDBH	002001001064	4	002001001	Weak	Events denoting the absence of physical strength
+SDBH	002001001065	4	002001001	Weight	units of weight
+SDBH	002001001066	4	002001001	Wet	Events denoting the presence of water or moisture
+SDBH	002001001067	4	002001001	Write	—
+SDBH	002001001068	4	002001001	Young	Events denoting that an object is relatively young
+SDBH	002001002	3	002001	Attitude	Events describing non-physical features of (usually animate) objects, such as attitudes and emotions
+SDBH	002001002001	4	002001002	Afraid	Events denoting an emotion of fear
+SDBH	002001002002	4	002001002	Angry	Events denoting an emotion of anger or displeasure
+SDBH	002001002003	4	002001002	Confident	Events denoting an attitude of confidence and lack of fear
+SDBH	002001002004	4	002001002	Cruel	Events describing a lack of compassion towards other animate or sometimes even inanimate beings
+SDBH	002001002005	4	002001002	Despise	Events denoting a lack of respect for someone else
+SDBH	002001002006	4	002001002	Diligent	Events denoting a willingness to work hard
+SDBH	002001002007	4	002001002	Evil	רשׁע
+SDBH	002001002008	4	002001002	Faithful	Events denoting that someone is committed to stick to one's obligations
+SDBH	002001002009	4	002001002	Ferocious	Events denoting an inclination for violence
+SDBH	002001002010	4	002001002	Foolish	—
+SDBH	002001002011	4	002001002	Generous	—
+SDBH	002001002012	4	002001002	Great	Events describing the greatness of people and/or supernatural beings
+SDBH	002001002013	4	002001002	Grieve	Events describing an emotion of grief or sadness
+SDBH	002001002014	4	002001002	Hate	Events denoting an attitude of hatred
+SDBH	002001002015	4	002001002	Insignificant	Events denoting the relative insignificance of certain people and/or supernatural beings
+SDBH	002001002016	4	002001002	Just	צדק
+SDBH	002001002017	4	002001002	Lazy	עָצֵל
+SDBH	002001002018	4	002001002	Love	Events denoting an attitude of affection
+SDBH	002001002019	4	002001002	Merciful	Events describing the attitude of compassion, e.g. חנן
+SDBH	002001002020	4	002001002	Patient	Events describing an attitude of patience
+SDBH	002001002021	4	002001002	Ready	—
+SDBH	002001002022	4	002001002	Rejoice	Events describing an emotion of joy or gladness
+SDBH	002001002023	4	002001002	Relief	—
+SDBH	002001002024	4	002001002	Respect	כבד
+SDBH	002001002025	4	002001002	Shame	Events describing an emotion of shame or a state of feeling let down by another object, such as a human being or deity
+SDBH	002001002026	4	002001002	Tame	—
+SDBH	002001002027	4	002001002	Unfaithful	—
+SDBH	002001002028	4	002001002	Willing	Events denoting a willingness to associate or be involved with a person, object, or activity
+SDBH	002001002029	4	002001002	Wise	Events denoting people's skill, intelligence, or wisdom
+SDBH	002001002030	4	002001002	Worthless	—
+SDBH	002001002031	4	002001002	Unwilling	Events describing an animate object's refusal to associate or be involved with another object or event.
+SDBH	002001003	3	002001	Modification	Events describing the features of events
+SDBH	002001003001	4	002001003	Abundant	—
+SDBH	002001003002	4	002001003	Change	—
+SDBH	002001003003	4	002001003	Complete	—
+SDBH	002001003004	4	002001003	Complicated	Events that take relatively much wisdom or special skills to perform
+SDBH	002001003005	4	002001003	Easy	Something that causes little physical or mental effort
+SDBH	002001003006	4	002001003	Extraordinary	—
+SDBH	002001003007	4	002001003	False	Events signifying that another event cannot be relied on to be true
+SDBH	002001003008	4	002001003	Fast	—
+SDBH	002001003009	4	002001003	Frequency	Events describing the frequency with which an event occurs
+SDBH	002001003010	4	002001003	Hard	Events requiring a lot of physical or mental effort
+SDBH	002001003011	4	002001003	Imminent	—
+SDBH	002001003012	4	002001003	Intense	Events describing the intensity or force with which other events take place, e.g. חזק
+SDBH	002001003013	4	002001003	Lax	Events describing the lack of intensity or force with which other events take place, e.g
+SDBH	002001003014	4	002001003	Right	Events describing the extent to which a particular event is morally and/or ethically right
+SDBH	002001003015	4	002001003	Simple	Events that take relatively little wisdom or special skills to perform
+SDBH	002001003016	4	002001003	Slow	—
+SDBH	002001003017	4	002001003	Trivial	—
+SDBH	002001003018	4	002001003	True	Events signifying that another event can be relied on to be true
+SDBH	002001003019	4	002001003	Well	—
+SDBH	002001003020	4	002001003	Wrong	Events describing the extent to which a particular event is morally and/or ethically wrong
+SDBH	002002	2	002	Position	Events describing relations between objects and events and the environment in which they are located or occur
+SDBH	002002001	3	002002	Location	Events describing relations between objects and the physical environment in which they are located
+SDBH	002002001001	4	002002001	Arrange	—
+SDBH	002002001002	4	002002001	Blow	—
+SDBH	002002001003	4	002002001	Contain	—
+SDBH	002002001004	4	002002001	Non-Contain	—
+SDBH	002002001005	4	002002001	Dwell	to make one's temporary or permanent abode in a certain location, e.g. שׁכן
+SDBH	002002001006	4	002002001	Find	—
+SDBH	002002001007	4	002002001	Flee	(2) to go to another location to save one's life (Action)
+SDBH	002002001008	4	002002001	Flow	—
+SDBH	002002001009	4	002002001	Non-Flow	—
+SDBH	002002001010	4	002002001	Hide	(1) to be in a certain location with the purpose not to be seen by certain people (State/Process); (2) to go to a certain location with the purpose not to be seen by certain people (Action), and (3) to put another object certain location for this same pur
+SDBH	002002001011	4	002002001	Leap	—
+SDBH	002002001012	4	002002001	Move	Events denoting movement from one place to another
+SDBH	002002001013	4	002002001	Non-Move	—
+SDBH	002002001014	4	002002001	Plant	—
+SDBH	002002001015	4	002002001	Remain	—
+SDBH	002002001016	4	002002001	Search	to try to find out the location of an object, e.g. בקשׁ
+SDBH	002002001017	4	002002001	Space	(1) to be in a certain location (State/Process), (2) to take position in a certain location (Action), or (3) to put an object in a certain location (Causative), e.g. עמד
+SDBH	002002001018	4	002002001	Non-Space	(1) to not be in a certain location (State/Process), (2) to disappear from a certain location (Action), or (3) to cause an object to disappear from a certain location (Causative), e.g. אַיִן
+SDBH	002002001019	4	002002001	Pursue	e.g. רדף
+SDBH	002002001020	4	002002001	Turn	—
+SDBH	002002002	3	002002	Existence	Events describing relations between objects and the non-physical environment (existence, time, etc.) in which they are located
+SDBH	002002002001	4	002002002	Act	This lexical domain contains lexicalized metaphors regarding life as a journey; (2) to behave in a certain way, and (3) to cause to behave in a certain way
+SDBH	002002002002	4	002002002	Non-Act	to defer action, either permanently or for a certain period
+SDBH	002002002003	4	002002002	Birth	Events describing the coming in existence of humans and animals by way of birth; (1) to be born (State/Process), (2) to give birth (Causative)
+SDBH	002002002004	4	002002002	Chaos	—
+SDBH	002002002005	4	002002002	Exist	Events describing the coming in existence of objects by way of |bcreation|b* or |bmanufacturing|b*; (1) to be produced or brought forth (State/Process), (2) to produce or bring forth an object (Action), or (3) to cause an object to be produced or brought
+SDBH	002002002006	4	002002002	Non-Exist	Events describing the removal of objects from existence; (1) to be removed from existence (State/Process), (2) to remove oneself from existence (Action), or (3) to remove another object from existence (Causative)
+SDBH	002002002007	4	002002002	Order	—
+SDBH	002002002008	4	002002002	Role	—
+SDBH	002002002009	4	002002002	Non-Role	—
+SDBH	002002002010	4	002002002	Time	Events describing existence in time rather than in space
+SDBH	002002002011	4	002002002	Festivals	Events describing fixed times for religious festivals and other special occasions
+SDBH	002002003	3	002002	Occurrence	Events describing relations between other events and the environment in which they occur
+SDBH	002002003001	4	002002003	Endure	—
+SDBH	002002003002	4	002002003	Non-Endure	—
+SDBH	002002003003	4	002002003	Happen	(1) to happen (State/Process), (2) to perform an event (Action), or (3) to cause something to happen (Causative)
+SDBH	002002003004	4	002002003	Non-Happen	(1) to not happen (State/Process), (2) to refrain from performing an event, or (3) to keep something from happen (Causative)
+SDBH	002003	2	002	Connection	Events describing relations between Objects and Events that are closely associated with one another.
+SDBH	002003001	3	002003	Attachment	Events describing relations of physical attachment between objects
+SDBH	002003001001	4	002003001	Attach	(1) to be attached to another object (State/Process), (2) to attach oneself to another object (Action), or to tie one object to another
+SDBH	002003001002	4	002003001	Bind	(1) to be bound (with a rope or in chains) (State/Process), (2) to bind oneself (Action), or (3) to bind someone or something else (Causative)
+SDBH	002003001003	4	002003001	Carry	(1) to carry an object (State/Process), (2) to pick up an object (Action), or (3) to cause someone else to carry an object
+SDBH	002003001004	4	002003001	Copulate	—
+SDBH	002003001005	4	002003001	Cover	(1) to be covered by something (State/Process), (2) to cover oneself (Action), and (3) to cover something else (Causative); for covering oneself with clothes or armor, see: Dress
+SDBH	002003001006	4	002003001	Detach	—
+SDBH	002003001007	4	002003001	Dress	(1) to wear clothes or armor (State/Process), (2) to put on clothes or armor (Action), or (3) or to dress or arm someone else
+SDBH	002003001008	4	002003001	Hang	Events relating to objects being attached to other objects from above, with the lower part not attached
+SDBH	002003001009	4	002003001	Hold	(1) to hold an object in one's hand (State/Process), (2) to take hold of an object with one's hand (Action), or (3) to cause someone else to hold an object in his/her hand (Causative)
+SDBH	002003001010	4	002003001	Non-Hold	—
+SDBH	002003001011	4	002003001	Kiss	—
+SDBH	002003001012	4	002003001	Mixed	—
+SDBH	002003001013	4	002003001	Play	—
+SDBH	002003001014	4	002003001	Pure	Events describing that objects are homogenous and free from other ingredients
+SDBH	002003001015	4	002003001	Release	—
+SDBH	002003001016	4	002003001	Rub	—
+SDBH	002003001017	4	002003001	Undress	(1) to be naked (State/Process), (2) to take of one's clothes (Action), or (3) to strip someone else (Causative)
+SDBH	002003001018	4	002003001	Uncover	(1) to becone uncovered (State/Process), (2) to uncover oneself (Action), and (3) to uncover something else (Causative); for taking off one's clothes or armor, see: |uStrip|u*
+SDBH	002003001019	4	002003001	Weave	—
+SDBH	002003001020	4	002003001	Whole	Events denoting to objects being complete, without and damage.
+SDBH	002003001021	4	002003001	Non-Whole	—
+SDBH	002003001022	4	002003001	Wrestle	—
+SDBH	002003002	3	002003	Association	Events describing relationships of non-physical attachment between objects (e.g. possession, acquaintance)
+SDBH	002003002001	4	002003002	Worship	Events denoting people showing reverence and adoration for a deity
+SDBH	002003002002	4	002003002	Associate	(1) to be in league with an individual or group for a common purpose (State/Process), (2) to join oneself to an individual or group for a common purpose, and (3) to bring to individuals or groups together for a common purpose
+SDBH	002003002003	4	002003002	Bless	—
+SDBH	002003002004	4	002003002	Care	—
+SDBH	002003002005	4	002003002	Chastise	—
+SDBH	002003002006	4	002003002	Conflict	to be engaged in a conflict with another individual or group, which does no go beyond a verbal argument but may escalate into a physical fight or even warfare
+SDBH	002003002007	4	002003002	Control	(1) to have control over someone else (State/Process), (2) to put oneself in control of someone else (Action), and (3) to put someone else in control of someone (Causative)
+SDBH	002003002008	4	002003002	Curse	—
+SDBH	002003002009	4	002003002	Dissociate	Events denoting that an individual or group is denied access to a certain community or country, either temporarily or permanently
+SDBH	002003002010	4	002003002	Exchange	—
+SDBH	002003002011	4	002003002	Forsake	(1) to disassociate oneself from something (Action)
+SDBH	002003002012	4	002003002	Free	—
+SDBH	002003002013	4	002003002	Gather	Events involving both animate and inanimate objects being brought together in one location, e.g. (1) to be gathered together in one place (State/Process), (2) to come together (Action), or (3) to bring together (Causative)
+SDBH	002003002014	4	002003002	Hire	—
+SDBH	002003002015	4	002003002	Meet	Events describing objects that meet each other while moving from one place to another; (1) to meet another object (unintentionally, State/Process), (2) to go to meet another object (intentionally, Action), and (3) to cause two objects to meet each other (Causative)
+SDBH	002003002016	4	002003002	Neglect	—
+SDBH	002003002017	4	002003002	Non-Possess	(1) to be not in possession or lose possession of an object (State/Process); (2) to dispose  of an object that one possesses (Action); (3) to cause someone else to lose possession of an object (Causative)
+SDBH	002003002018	4	002003002	Possess	(1) to be in possession or gain possession of an object (State/Process); (2) to take possession of an object (Action); (3) to give someone else possession of an object (Causative)
+SDBH	002003002019	4	002003002	Reconcile	—
+SDBH	002003002020	4	002003002	Sacrifice	(2) to present an offering to a deity (Action)
+SDBH	002003002021	4	002003002	Scatter	(1) to be scattered (State/Process), (2) to scatter (oneselves), and (3) to cause other people to scatter (Causative)
+SDBH	002003002022	4	002003002	Serve	Events describing humans serving deities or other humans
+SDBH	002003003	3	002003	Involvement	Events describing relationships between objects and events (e.g. involvement, commitment)
+SDBH	002003003001	4	002003003	Attain	(1) to be in or attain a certain state or position (State/Process), (2) to procure a certain state of position for oneself (Action), and (3) to grant a certain state or position to someone else (Causative)
+SDBH	002003003002	4	002003003	Affect	(1) to affect someone (of events; State/Process), and (3) to cause an event to affect someone else (Causative)
+SDBH	002003003003	4	002003003	Bear	(1) to bear the responsibility an event (State/Process), (2) to take the responsibility for an event upon oneself (Action), or (3) to put the responsibility of an event upon someone else (Causative)
+SDBH	002003003004	4	002003003	Non-Bear	—
+SDBH	002003003005	4	002003003	Begin	—
+SDBH	002003003006	4	002003003	Compile	—
+SDBH	002003003007	4	002003003	Continue	Events denoting the continuation of another event that has started earlier.
+SDBH	002003003008	4	002003003	Delay	—
+SDBH	002003003009	4	002003003	Divination	—
+SDBH	002003003010	4	002003003	End	—
+SDBH	002003003011	4	002003003	Engage	—
+SDBH	002003003012	4	002003003	Non-Engage	—
+SDBH	002003003013	4	002003003	Fail	—
+SDBH	002003003014	4	002003003	Guilty	Events denoting that people are responsible for a particular action.
+SDBH	002003003015	4	002003003	Innocent	Events denoting that people are not responsible for a particular action.
+SDBH	002003003016	4	002003003	Laws	—
+SDBH	002003003017	4	002003003	Prosper	—
+SDBH	002003003018	4	002003003	Sin	(1) to live in a state of guilt (State/Process), (2) to be involved in morally or ethically unjust activities (Action), or (3) to lead other people astray (Causative)
+SDBH	002003003019	4	002003003	Safe	Events denoting a situation in which one is free from hardship; (1) to be free from hardship (State/Process); (2) to protect or save oneself from hardship (Action), or (3) to protect or save someone else from hardship
+SDBH	002003003020	4	002003003	Succeed	—
+SDBH	002003003021	4	002003003	Try	Events denoting someone's effort to perform another event
+SDBH	002003003022	4	002003003	Unsafe	Events denoting hardship
+SDBH	002003003023	4	002003003	Urge	—
+SDBH	002004	2	002	Perception	Events describing relations between objects and events and the mind of animate beings
+SDBH	002004001	3	002004	Sensation	Events describing the physical aspects of the relationship between objects and events and the mind of animate beings (e.g. seeing, hearing, smelling, feeling, etc.)
+SDBH	002004001001	4	002004001	Feel	Events describing the physical aspects of the relationship
+SDBH	002004001001001	5	002004001001	Desire	(1) to experience a physical desire
+SDBH	002004001001002	5	002004001001	Hunger	(1) to feel hungry (State/Process)
+SDBH	002004001001003	5	002004001001	Thirst	(1) to feel thirst (State/Process); prototype: צמ
+SDBH	002004001001004	5	002004001001	Touch	(1) to feel (State/Process), (2) to touch (Action), (3) to cause to feel (Causative), משׁש
+SDBH	002004001002	4	002004001	Non-Feel	—
+SDBH	002004001003	4	002004001	Hear	(1) to hear (State/Process), (2) to listen (Action), or (3) to cause to hear (Causative), e.g. |bשׁמע|b*
+SDBH	002004001004	4	002004001	Non-Hear	—
+SDBH	002004001005	4	002004001	See	(1) to see (State/Process), (2) to look (Action), or (3) to cause to see, show (Causative), e.g. ראה
+SDBH	002004001006	4	002004001	Non-See	—
+SDBH	002004001007	4	002004001	Smell	(1) to smell (State/Process), (2) to sniff (Action), (3) to cause to smell (Causative), e.g. באשׁ
+SDBH	002004001008	4	002004001	Taste	(1) to taste (while eating or drinking = State/Process), (2) to taste (on purpose = Action), or (3) to cause to taste (Causative)
+SDBH	002004001009	4	002004001	Utter	to utter sounds
+SDBH	002004001009001	5	002004001009	Ask	Events describing utterances involving a request, usually part of a conversation between humans. For requests adressed to a deity, see |uPray|u*.
+SDBH	002004001009002	5	002004001009	Complain	e.g. לו
+SDBH	002004001009003	5	002004001009	Languages	—
+SDBH	002004001009004	5	002004001009	Non-Speak	—
+SDBH	002004001009005	5	002004001009	Shout	—
+SDBH	002004001009006	5	002004001009	Sing	—
+SDBH	002004001009007	5	002004001009	Sounds	—
+SDBH	002004001009008	5	002004001009	Speak	(1) to speak (Action), or (2) to cause to speak (Causative)
+SDBH	002004001009009	5	002004001009	Praise	Mock
+SDBH	002004001009010	5	002004001009	Pray	Events denoting people addressing prayers to a deity
+SDBH	002004001009011	5	002004001009	Rebuke	—
+SDBH	002004001009012	5	002004001009	Revile	—
+SDBH	002004001009013	5	002004001009	Vow	—
+SDBH	002004002	3	002004	Cognition	Events describing the non-physical aspects of the relationship between objects and events and the mind of animate beings (e.g. knowing, thinking, remembering, etc.)
+SDBH	002004002001	4	002004002	Sense	Events describing inner feelings of people
+SDBH	002004002001001	5	002004002001	Wish	(1) to long for something to happen (State/Process
+SDBH	002004002002	4	002004002	Cause	to be the cause or reason for something to happen
+SDBH	002004002003	4	002004002	Compare	—
+SDBH	002004002004	4	002004002	Design	—
+SDBH	002004002005	4	002004002	Estimate	—
+SDBH	002004002006	4	002004002	Judge	To make a decision concerning an individual or group, usually to determine whether their actions are right or wrong
+SDBH	002004002007	4	002004002	Know	Events dealing with information stored in the brain; (1) to know, learn, remember (State/Process); (2) to study (Action); (3) to teach (Causative), e.g. ידע; opposite Forget
+SDBH	002004002008	4	002004002	Non-Know	—
+SDBH	002004002009	4	002004002	Measure	—
+SDBH	002004002010	4	002004002	Name	—
+SDBH	002004002011	4	002004002	Partial	Events denoting people giving preferential treatment to some to the exclusion of others.
+SDBH	002004002012	4	002004002	Test	—
+SDBH	002004002013	4	002004002	Think	Events describing the processing of information by the brain; (2) to think (Action)
+SDBH	002004002014	4	002004002	Non-Think	—
+SDBH	002004002015	4	002004002	Vision	—
+SDBH	003	1	—	Referents	All lexical units that substitute for objects and events
+SDBH	003001	2	003	Object Referents	All lexical units that substitute for objects
+SDBH	003001001	3	003001	Names of Books	—
+SDBH	003001002	3	003001	Names of Constellations	—
+SDBH	003001003	3	003001	Names of Constructions	All names of constructions, such as towers, gates, etc
+SDBH	003001004	3	003001	Names of Deities	—
+SDBH	003001005	3	003001	Names of Documents	—
+SDBH	003001006	3	003001	Names of Groups	All names of ethnic groups, communities, etc
+SDBH	003001007	3	003001	Names of People	All names of individuals
+SDBH	003001008	3	003001	Names of Landforms	All names of landforms, such as mountains, valleys, rocks, etc.
+SDBH	003001009	3	003001	Names of Languages	All names of languages
+SDBH	003001010	3	003001	Names of Locations	All names of towns, villages, areas, and other population centers
+SDBH	003001011	3	003001	Names of Roads	—
+SDBH	003001012	3	003001	Names of Supernatural Beings	All names of deities and other supernatural beings
+SDBH	003001013	3	003001	Names of Times	All names of periods of time, especially months
+SDBH	003001014	3	003001	Names of Trees	—
+SDBH	003001015	3	003001	Names of Waterbodies	All names of bodies of water, such as seas, rivers, streams, etc.
+SDBH	003001016	3	003001	Self	—
+SDBH	003001017	3	003001	Titles	All titles and other ways to address people and deities while not using their names
+SDBH	003002	2	003	Event Referents	—
+SDBH	003002001	3	003002	Circumstantial Referents	—
+SDBH	003002002	3	003002	Descriptive Referents	—
+SDBH	003002003	3	003002	Group Referents	—
+SDBH	003002004	3	003002	Perceptive Referents	—
+SDBH	003002005	3	003002	Spatial Referents	—
+SDBH	003002006	3	003002	Temporal Referents	—
+SDBH	004	1	—	Markers	Relationals that are used to highlight or put the focus on a particular object or event, e.g. הִנֵּה (GEN.12:19), אַךְ (GEN.7:23), גַּם (GEN.3:6)
+SDBH	004001	2	004	Affirmers	Markers pointing to the probability of a particular statement
+SDBH	004002	2	004	Contrastors	Markers pointing to new information that is an unexpected consequence of what has been stated previously
+SDBH	004003	2	004	Identifiers	Relationals that put the focus on a particular object or event, e.g. הִנֵּה see, including definite articles and demonstratives
+SDBH	004004	2	004	Extenders	Relationals indicating that than object or event has been added to the range of objects/events in focus, e.g. גַּם also
+SDBH	004005	2	004	Evaluators	Marker expressing an opinion concerning the information that it introduces, which may be one of joy, regret, etc.
+SDBH	004006	2	004	Negators	Relationals that negate an event, e.g. לֹא
+SDBH	004007	2	004	Restrictors	Relationals indicating that an object or event is the only object/event in focus, e.g. אַךְ
+SDBH	004008	2	004	Stipulators	—
+SDBH	004009	2	004	Timers	—
+SDGNT	001	1	—	Geographical Objects and Features	—
+SDGNT	001001	2	001	Universe, Creation	—
+SDGNT	001002	2	001	Regions Above the Earth	—
+SDGNT	001003	2	001	Regions Below the Surface of the Earth	—
+SDGNT	001004	2	001	Heavenly Bodies	—
+SDGNT	001005	2	001	Atmospheric Objects	—
+SDGNT	001006	2	001	The Earth's Surface	—
+SDGNT	001007	2	001	Elevated Land Formations	—
+SDGNT	001008	2	001	Depressions and Holes	—
+SDGNT	001009	2	001	Land in Contrast With the Sea	—
+SDGNT	001010	2	001	Bodies of Water	—
+SDGNT	001011	2	001	Sociopolitical Areas	—
+SDGNT	001012	2	001	Governmental Administrative Areas	—
+SDGNT	001013	2	001	Areas Which Are Uninhabited or Only Sparsely Populated	—
+SDGNT	001014	2	001	Population Centers	—
+SDGNT	001015	2	001	Pastures and Cultivated Lands	—
+SDGNT	001016	2	001	Thoroughfares: Roads, Streets, Paths, etc.	—
+SDGNT	002	1	—	Natural Substances	—
+SDGNT	002001	2	002	Elements	—
+SDGNT	002002	2	002	Air	—
+SDGNT	002003	2	002	Fire	—
+SDGNT	002004	2	002	Water	—
+SDGNT	002005	2	002	Earth, Mud, Sand, Rock	—
+SDGNT	002006	2	002	Precious and Semiprecious Stones and Substances	—
+SDGNT	002007	2	002	Metals	—
+SDGNT	003	1	—	Plants	—
+SDGNT	003001	2	003	Plants [General Meaning]	—
+SDGNT	003002	2	003	Trees	—
+SDGNT	003003	2	003	Plants That Are Not Trees	—
+SDGNT	003004	2	003	Fruit Parts of Plants	—
+SDGNT	003005	2	003	Non-Fruit Parts of Plants	—
+SDGNT	003006	2	003	Wood and Wood Products	—
+SDGNT	004	1	—	Animals	—
+SDGNT	004001	2	004	Animals	—
+SDGNT	004002	2	004	Birds	—
+SDGNT	004003	2	004	Insects	—
+SDGNT	004004	2	004	Reptiles and Other 'Creeping Things'	—
+SDGNT	004005	2	004	Fishes and Other Sea Creatures	—
+SDGNT	005	1	—	Foods and Condiments	—
+SDGNT	005001	2	005	Food	—
+SDGNT	005002	2	005	Condiments	—
+SDGNT	006	1	—	Artifacts	—
+SDGNT	006001	2	006	Artifacts [General Meaning]	—
+SDGNT	006002	2	006	Instruments Used in Agriculture and Husbandry	—
+SDGNT	006003	2	006	Instruments Used in Fishing	—
+SDGNT	006004	2	006	Instruments Used in Binding and Fastening	—
+SDGNT	006005	2	006	Traps, Snares	—
+SDGNT	006006	2	006	Instruments Used in Punishment and Execution	—
+SDGNT	006007	2	006	Weapons and Armor	—
+SDGNT	006008	2	006	Boats and Parts of Boats	—
+SDGNT	006009	2	006	Vehicles	—
+SDGNT	006010	2	006	Instruments Used in Marking and Writing	—
+SDGNT	006011	2	006	Money and Monetary Units	—
+SDGNT	006012	2	006	Musical Instruments	—
+SDGNT	006013	2	006	Images and Idols	—
+SDGNT	006014	2	006	Lights and Light Holders	—
+SDGNT	006015	2	006	Furniture	—
+SDGNT	006016	2	006	Containers	—
+SDGNT	006017	2	006	Cloth, Leather, and Objects Made of Such Materials	—
+SDGNT	006018	2	006	Adornments	—
+SDGNT	006019	2	006	Plant Products	—
+SDGNT	006020	2	006	Medicines	—
+SDGNT	006021	2	006	Perfumes and Incense	—
+SDGNT	006022	2	006	Instruments for Measuring	—
+SDGNT	006023	2	006	Miscellaneous	—
+SDGNT	007	1	—	Constructions	—
+SDGNT	007001	2	007	Constructions [General Meaning]	—
+SDGNT	007002	2	007	Buildings	—
+SDGNT	007003	2	007	Parts and Areas of Buildings	—
+SDGNT	007004	2	007	Open Constructions	—
+SDGNT	007005	2	007	Constructions for Holding Water	—
+SDGNT	007006	2	007	Walls and Fences	—
+SDGNT	007007	2	007	Miscellaneous Constructions	—
+SDGNT	007008	2	007	Building Materials	—
+SDGNT	008	1	—	Body, Body Parts, and Body Products	—
+SDGNT	008001	2	008	Body	—
+SDGNT	008002	2	008	Parts of the Body	—
+SDGNT	008003	2	008	Physiological Products of the Body	—
+SDGNT	009	1	—	People	—
+SDGNT	009001	2	009	Human Beings	—
+SDGNT	009002	2	009	Males	—
+SDGNT	009003	2	009	Females	—
+SDGNT	009004	2	009	Children	—
+SDGNT	009005	2	009	Persons For Whom There Is Affectionate Concern	—
+SDGNT	010	1	—	Kinship Terms	—
+SDGNT	010001	2	010	Groups and Members of Groups of Persons Regarded as Related by Blood but without Special Reference to Successive Generations	—
+SDGNT	010002	2	010	Kinship Relations Involving Successive Generations	—
+SDGNT	010003	2	010	Kinship Relations of the Same Generation	—
+SDGNT	010004	2	010	Kinship Relations Based upon Marriage	—
+SDGNT	011	1	—	Groups and Classes of Persons and Members of Such Groups and Classes	—
+SDGNT	011001	2	011	General	—
+SDGNT	011002	2	011	Socio-Religious	—
+SDGNT	011003	2	011	Socio-Political	—
+SDGNT	011004	2	011	Ethnic-Cultural	—
+SDGNT	011005	2	011	Philosophical	—
+SDGNT	012	1	—	Supernatural Beings and Powers	—
+SDGNT	012001	2	012	Supernatural Beings	—
+SDGNT	012002	2	012	Supernatural Powers	—
+SDGNT	013	1	—	Be, Become, Exist, Happen	—
+SDGNT	013001	2	013	State	—
+SDGNT	013002	2	013	Change of State	—
+SDGNT	013003	2	013	Exist	—
+SDGNT	013004	2	013	Happen	—
+SDGNT	014	1	—	Physical Events and States	—
+SDGNT	014001	2	014	Weather	—
+SDGNT	014002	2	014	Wind	—
+SDGNT	014003	2	014	Rain	—
+SDGNT	014004	2	014	Thunder and Lightning	—
+SDGNT	014005	2	014	Events Involving Liquids and Dry Masses	—
+SDGNT	014006	2	014	Light	—
+SDGNT	014007	2	014	Darkness	—
+SDGNT	014008	2	014	Burning	—
+SDGNT	014009	2	014	Sound	—
+SDGNT	014010	2	014	Movement of the Earth	—
+SDGNT	015	1	—	Linear Movement	—
+SDGNT	015001	2	015	Move, Come/Go	—
+SDGNT	015002	2	015	Travel, Journey	—
+SDGNT	015003	2	015	Pass, Cross Over, Go Through, Go Around	—
+SDGNT	015004	2	015	Leave, Depart, Flee, Escape, Send	—
+SDGNT	015005	2	015	Come Near, Approach	—
+SDGNT	015006	2	015	Come, Come To, Arrive	—
+SDGNT	015007	2	015	Return	—
+SDGNT	015008	2	015	Come/Go Into	—
+SDGNT	015009	2	015	Come/Go Onto	—
+SDGNT	015010	2	015	Come/Go Up, Ascend	—
+SDGNT	015011	2	015	Come/Go Down, Descend	—
+SDGNT	015012	2	015	Fall	—
+SDGNT	015013	2	015	Gather, Cause To Come Together	—
+SDGNT	015014	2	015	Disperse, Scatter	—
+SDGNT	015015	2	015	Come/Go Prior To	—
+SDGNT	015016	2	015	Come/Go In Front Of	—
+SDGNT	015017	2	015	Come/Go Behind	—
+SDGNT	015018	2	015	Go Around, Surround	—
+SDGNT	015019	2	015	Come/Go With, Travel With	—
+SDGNT	015020	2	015	Follow, Accompany	—
+SDGNT	015021	2	015	Pursue, Follow	—
+SDGNT	015022	2	015	Drive Along, Carry Along	—
+SDGNT	015023	2	015	Lead, Bring, Take	—
+SDGNT	015024	2	015	Carry, Bear	—
+SDGNT	015025	2	015	Pull, Draw, Drag	—
+SDGNT	015026	2	015	Throw, Hurl	—
+SDGNT	015027	2	015	Movement with Speed	—
+SDGNT	015028	2	015	Goal-Oriented Movement	—
+SDGNT	015029	2	015	Walk, Step	—
+SDGNT	015030	2	015	Run	—
+SDGNT	015031	2	015	Jump, Leap	—
+SDGNT	015032	2	015	Dance	—
+SDGNT	015033	2	015	Fly	—
+SDGNT	015034	2	015	Swim	—
+SDGNT	015035	2	015	Roll	—
+SDGNT	016	1	—	Non-Linear Movement	—
+SDGNT	017	1	—	Stances and Events Related to Stances	—
+SDGNT	017001	2	017	Stand	—
+SDGNT	017002	2	017	Sit	—
+SDGNT	017003	2	017	Kneel	—
+SDGNT	017004	2	017	Prostrate	—
+SDGNT	017005	2	017	Prostrate as an Act of Reverence or Supplication	—
+SDGNT	017006	2	017	Recline [to eat]	—
+SDGNT	017007	2	017	Lie	—
+SDGNT	017008	2	017	Bend Over, Straighten Up	—
+SDGNT	018	1	—	Attachment	—
+SDGNT	018001	2	018	Grasp, Hold	—
+SDGNT	018002	2	018	Fasten, Stick To	—
+SDGNT	019	1	—	Physical Impact	—
+SDGNT	019001	2	019	Hit, Strike	—
+SDGNT	019002	2	019	Pierce, Cut	—
+SDGNT	019003	2	019	Split, Tear	—
+SDGNT	019004	2	019	Break, Break Through	—
+SDGNT	019005	2	019	Press	—
+SDGNT	019006	2	019	Dig	—
+SDGNT	020	1	—	Violence, Harm, Destroy, Kill	—
+SDGNT	020001	2	020	Violence	—
+SDGNT	020002	2	020	Harm, Wound	—
+SDGNT	020003	2	020	Destroy	—
+SDGNT	020004	2	020	Kill	—
+SDGNT	021	1	—	Danger, Risk, Safe, Save	—
+SDGNT	021001	2	021	Danger	—
+SDGNT	021002	2	021	Expose Oneself to Danger	—
+SDGNT	021003	2	021	Safe, Free from Danger	—
+SDGNT	021004	2	021	Become Safe, Free from Danger	—
+SDGNT	021005	2	021	Cause To Be Safe, Free from Danger	—
+SDGNT	021006	2	021	Save in a Religious Sense	—
+SDGNT	022	1	—	Trouble, Hardship, Relief, Favorable Circumstances	—
+SDGNT	022001	2	022	Trouble, Hardship, Distress	—
+SDGNT	022002	2	022	Experience Trouble, Hardship	—
+SDGNT	022003	2	022	Cause Trouble, Hardship	—
+SDGNT	022004	2	022	Difficult, Hard	—
+SDGNT	022005	2	022	Relief from Trouble	—
+SDGNT	022006	2	022	Easy, Light	—
+SDGNT	022007	2	022	Favorable Circumstances or State	—
+SDGNT	023	1	—	Physiological Processes and States	—
+SDGNT	023001	2	023	Eat, Drink	—
+SDGNT	023002	2	023	Processes Involving the Mouth, Other Than Eating and Drinking	—
+SDGNT	023003	2	023	Birth, Procreation	—
+SDGNT	023004	2	023	Sexual Relations	—
+SDGNT	023005	2	023	Sleep, Waking	—
+SDGNT	023006	2	023	Tire, Rest	—
+SDGNT	023007	2	023	Live, Die	—
+SDGNT	023008	2	023	Health, Vigor, Strength	—
+SDGNT	023009	2	023	Sickness, Disease, Weakness	—
+SDGNT	023010	2	023	Breathe, Breath	—
+SDGNT	023011	2	023	Grow, Growth	—
+SDGNT	023012	2	023	Ripen, Produce Fruit, Bear Seed	—
+SDGNT	023013	2	023	Rot, Decay	—
+SDGNT	024	1	—	Sensory Events and States	—
+SDGNT	024001	2	024	See	—
+SDGNT	024002	2	024	Hear	—
+SDGNT	024003	2	024	Smell	—
+SDGNT	024004	2	024	Taste	—
+SDGNT	024005	2	024	Touch, Feel	—
+SDGNT	024006	2	024	Pain, Suffering	—
+SDGNT	024007	2	024	General Sensory Perception	—
+SDGNT	025	1	—	Attitudes and Emotions	—
+SDGNT	025001	2	025	Desire, Want, Wish	—
+SDGNT	025002	2	025	Desire Strongly	—
+SDGNT	025003	2	025	Love, Affection, Compassion	—
+SDGNT	025004	2	025	Hope, Look Forward To	—
+SDGNT	025005	2	025	Be Willing	—
+SDGNT	025006	2	025	Be Eager, Be Earnest, In a Devoted Manner	—
+SDGNT	025007	2	025	Content, Satisfied	—
+SDGNT	025008	2	025	Acceptable To, To Be Pleased With	—
+SDGNT	025009	2	025	Thankful, Grateful	—
+SDGNT	025010	2	025	Enjoy, Take Pleasure In, Be Fond of Doing	—
+SDGNT	025011	2	025	Happy, Glad, Joyful	—
+SDGNT	025012	2	025	Laugh, Cry, Groan	—
+SDGNT	025013	2	025	Encouragement, Consolation	—
+SDGNT	025014	2	025	Courage, Boldness	—
+SDGNT	025015	2	025	Patience, Endurance, Perseverance	—
+SDGNT	025016	2	025	Offend, Be Offended	—
+SDGNT	025017	2	025	Abhor	—
+SDGNT	025018	2	025	Shame, Disgrace, Humiliation	—
+SDGNT	025019	2	025	Pride [legitimate]	—
+SDGNT	025020	2	025	Surprise, Astonish	—
+SDGNT	025021	2	025	Worry, Anxiety, Distress, Peace	—
+SDGNT	025022	2	025	Fear, Terror, Alarm	—
+SDGNT	025023	2	025	Sorrow, Regret	—
+SDGNT	025024	2	025	Discouragement	—
+SDGNT	026	1	—	Psychological Faculties	—
+SDGNT	027	1	—	Learn	—
+SDGNT	027001	2	027	Learn	—
+SDGNT	027002	2	027	Learn the Location of Something	—
+SDGNT	027003	2	027	Learn Something Against Someone	—
+SDGNT	027004	2	027	Try To Learn	—
+SDGNT	027005	2	027	Be Willing To Learn	—
+SDGNT	027006	2	027	Be Ready To Learn, Pay Attention	—
+SDGNT	027007	2	027	Recognize	—
+SDGNT	028	1	—	Know	—
+SDGNT	028001	2	028	Know	—
+SDGNT	028002	2	028	Known [the content of knowledge]	—
+SDGNT	028003	2	028	Well Known, Clearly Shown, Revealed	—
+SDGNT	028004	2	028	Able To Be Known	—
+SDGNT	028005	2	028	Not Able To Be Known, Secret	—
+SDGNT	029	1	—	Memory and Recall	—
+SDGNT	029001	2	029	Storing of Information	—
+SDGNT	029002	2	029	Recalling from Memory	—
+SDGNT	029003	2	029	Not Remembering, Forgetting	—
+SDGNT	029004	2	029	Recalling and Responding with Appropriate Action	—
+SDGNT	030	1	—	Think	—
+SDGNT	030001	2	030	To Think, Thought	—
+SDGNT	030002	2	030	To Think About, with the Implied Purpose of Responding Appropriately	—
+SDGNT	030003	2	030	To Think Concerning Future Contingencies	—
+SDGNT	030004	2	030	To Intend, To Purpose, To Plan	—
+SDGNT	030005	2	030	To Decide, To Conclude	—
+SDGNT	030006	2	030	To Choose, To Select, To Prefer	—
+SDGNT	030007	2	030	To Distinguish, To Evaluate, To Judge	—
+SDGNT	031	1	—	Hold a View, Believe, Trust	—
+SDGNT	031001	2	031	Have an Opinion, Hold a View	—
+SDGNT	031002	2	031	Hold a Wrong View, Be Mistaken	—
+SDGNT	031003	2	031	Agree, Consent	—
+SDGNT	031004	2	031	Acknowledge	—
+SDGNT	031005	2	031	Suppose, Think Possible	—
+SDGNT	031006	2	031	Believe To Be True	—
+SDGNT	031007	2	031	Accept As True	—
+SDGNT	031008	2	031	Change an Opinion Concerning Truth	—
+SDGNT	031009	2	031	Trust, Rely	—
+SDGNT	031010	2	031	Be a Believer, Christian Faith	—
+SDGNT	032	1	—	Understand	—
+SDGNT	032001	2	032	Understand	—
+SDGNT	032002	2	032	Come To Understand	—
+SDGNT	032003	2	032	Ease or Difficulty in Understanding	—
+SDGNT	032004	2	032	Capacity for Understanding	—
+SDGNT	032005	2	032	Lack of Capacity for Understanding	—
+SDGNT	033	1	—	Communication	—
+SDGNT	033001	2	033	Language	—
+SDGNT	033002	2	033	Word, Passage	—
+SDGNT	033003	2	033	Discourse Types	—
+SDGNT	033004	2	033	Language Levels	—
+SDGNT	033005	2	033	Written Language	—
+SDGNT	033006	2	033	Speak, Talk	—
+SDGNT	033007	2	033	Sing, Lament	—
+SDGNT	033008	2	033	Keep Silent	—
+SDGNT	033009	2	033	Name	—
+SDGNT	033010	2	033	Interpret, Mean, Explain	—
+SDGNT	033011	2	033	Converse, Discuss	—
+SDGNT	033012	2	033	Ask For, Request	—
+SDGNT	033013	2	033	Pray	—
+SDGNT	033014	2	033	Question, Answer	—
+SDGNT	033015	2	033	Inform, Announce	—
+SDGNT	033016	2	033	Assert, Declare	—
+SDGNT	033017	2	033	Teach	—
+SDGNT	033018	2	033	Speak Truth, Speak Falsehood	—
+SDGNT	033019	2	033	Preach, Proclaim	—
+SDGNT	033020	2	033	Witness, Testify	—
+SDGNT	033021	2	033	Profess Allegiance	—
+SDGNT	033022	2	033	Admit, Confess, Deny	—
+SDGNT	033023	2	033	Agree	—
+SDGNT	033024	2	033	Foretell, Tell Fortunes	—
+SDGNT	033025	2	033	Promise	—
+SDGNT	033026	2	033	Threaten	—
+SDGNT	033027	2	033	Advise	—
+SDGNT	033028	2	033	Urge, Persuade	—
+SDGNT	033029	2	033	Call	—
+SDGNT	033030	2	033	Invite	—
+SDGNT	033031	2	033	Insist	—
+SDGNT	033032	2	033	Command, Order	—
+SDGNT	033033	2	033	Law, Regulation, Ordinance	—
+SDGNT	033034	2	033	Recommend, Propose	—
+SDGNT	033035	2	033	Intercede	—
+SDGNT	033036	2	033	Thanks	—
+SDGNT	033037	2	033	Praise	—
+SDGNT	033038	2	033	Flatter	—
+SDGNT	033039	2	033	Boast	—
+SDGNT	033040	2	033	Foolish Talk	—
+SDGNT	033041	2	033	Complain	—
+SDGNT	033042	2	033	Insult, Slander	—
+SDGNT	033043	2	033	Gossip	—
+SDGNT	033044	2	033	Mock, Ridicule	—
+SDGNT	033045	2	033	Criticize	—
+SDGNT	033046	2	033	Rebuke	—
+SDGNT	033047	2	033	Warn	—
+SDGNT	033048	2	033	Accuse, Blame	—
+SDGNT	033049	2	033	Defend, Excuse	—
+SDGNT	033050	2	033	Dispute, Debate	—
+SDGNT	033051	2	033	Argue, Quarrel	—
+SDGNT	033052	2	033	Oppose, Contradict	—
+SDGNT	033053	2	033	Prophesy	—
+SDGNT	033054	2	033	Swear, Put Under Oath, Vow	—
+SDGNT	033055	2	033	Bless, Curse	—
+SDGNT	033056	2	033	Non-Verbal Communication	—
+SDGNT	034	1	—	Association	—
+SDGNT	034001	2	034	Associate	—
+SDGNT	034002	2	034	Join, Begin To Associate	—
+SDGNT	034003	2	034	Belong To, Be Included in the Membership of, Be Excluded From	—
+SDGNT	034004	2	034	Limit or Avoid Association	—
+SDGNT	034005	2	034	Establish or Confirm a Relation	—
+SDGNT	034006	2	034	Visit	—
+SDGNT	034007	2	034	Welcome, Receive	—
+SDGNT	034008	2	034	Show Hospitality	—
+SDGNT	034009	2	034	Kiss, Embrace	—
+SDGNT	034010	2	034	Marriage, Divorce	—
+SDGNT	035	1	—	Help, Care For	—
+SDGNT	035001	2	035	Help	—
+SDGNT	035002	2	035	Serve	—
+SDGNT	035003	2	035	Provide For, Support	—
+SDGNT	035004	2	035	Care For, Take Care Of	—
+SDGNT	035005	2	035	Entrust To the Care Of	—
+SDGNT	035006	2	035	Rear, Bring Up	—
+SDGNT	035007	2	035	Adopt	—
+SDGNT	035008	2	035	Desert, Forsake	—
+SDGNT	036	1	—	Guide, Discipline, Follow	—
+SDGNT	036001	2	036	Guide, Lead	—
+SDGNT	036002	2	036	Discipline, Train	—
+SDGNT	036003	2	036	Obey, Disobey	—
+SDGNT	036004	2	036	Follow, Be a Disciple	—
+SDGNT	037	1	—	Control, Rule	—
+SDGNT	037001	2	037	Control, Restrain	—
+SDGNT	037002	2	037	Compel, Force	—
+SDGNT	037003	2	037	Exercise Authority	—
+SDGNT	037004	2	037	Rule, Govern	—
+SDGNT	037005	2	037	Assign to a Role or Function	—
+SDGNT	037006	2	037	Seize, Take into Custody	—
+SDGNT	037007	2	037	Hand Over, Betray	—
+SDGNT	037008	2	037	Imprison	—
+SDGNT	037009	2	037	Guard, Watch Over	—
+SDGNT	037010	2	037	Release, Set Free	—
+SDGNT	038	1	—	Punish, Reward	—
+SDGNT	038001	2	038	Punish	—
+SDGNT	038002	2	038	Reward, Recompense	—
+SDGNT	039	1	—	Hostility, Strife	—
+SDGNT	039001	2	039	Opposition, Hostility	—
+SDGNT	039002	2	039	Division	—
+SDGNT	039003	2	039	Resistance	—
+SDGNT	039004	2	039	Yielding	—
+SDGNT	039005	2	039	Strife, Struggle	—
+SDGNT	039006	2	039	Revenge	—
+SDGNT	039007	2	039	Rebellion	—
+SDGNT	039008	2	039	Riot	—
+SDGNT	039009	2	039	Persecution	—
+SDGNT	039010	2	039	Attack	—
+SDGNT	039011	2	039	Ambush	—
+SDGNT	039012	2	039	Conquer	—
+SDGNT	040	1	—	Reconciliation, Forgiveness	—
+SDGNT	040001	2	040	Reconciliation	—
+SDGNT	040002	2	040	Forgiveness	—
+SDGNT	041	1	—	Behavior and Related States	—
+SDGNT	041001	2	041	Behavior, Conduct	—
+SDGNT	041002	2	041	Custom, Tradition	—
+SDGNT	041003	2	041	Particular Patterns of Behavior	—
+SDGNT	041004	2	041	Imitate Behavior	—
+SDGNT	041005	2	041	Change Behavior	—
+SDGNT	042	1	—	Perform, Do	—
+SDGNT	042001	2	042	Function	—
+SDGNT	042002	2	042	Do, Perform	—
+SDGNT	042003	2	042	Make, Create	—
+SDGNT	042004	2	042	Work, Toil	—
+SDGNT	042005	2	042	Craft, Trade	—
+SDGNT	043	1	—	Agriculture	—
+SDGNT	044	1	—	Animal Husbandry, Fishing	—
+SDGNT	045	1	—	Building, Constructing	—
+SDGNT	046	1	—	Household Activities	—
+SDGNT	047	1	—	Activities Involving Liquids or Masses	—
+SDGNT	047001	2	047	Movement of Liquids or Masses	—
+SDGNT	047002	2	047	Use of Liquids	—
+SDGNT	047003	2	047	Application and Removal of Liquids or Masses	—
+SDGNT	048	1	—	Activities Involving Cloth	—
+SDGNT	049	1	—	Activities Involving Clothing and Adorning	—
+SDGNT	050	1	—	Contests and Play	—
+SDGNT	051	1	—	Festivals	—
+SDGNT	052	1	—	Funerals and Burial	—
+SDGNT	053	1	—	Religious Activities	—
+SDGNT	053001	2	053	Religious Practice	—
+SDGNT	053002	2	053	Offering, Sacrifice	—
+SDGNT	053003	2	053	Purify, Cleanse	—
+SDGNT	053004	2	053	Defile, Unclean, Common	—
+SDGNT	053005	2	053	Baptize	—
+SDGNT	053006	2	053	Dedicate, Consecrate	—
+SDGNT	053007	2	053	Worship, Reverence	—
+SDGNT	053008	2	053	Fasting	—
+SDGNT	053009	2	053	Roles and Functions	—
+SDGNT	053010	2	053	Magic	—
+SDGNT	053011	2	053	Exorcism	—
+SDGNT	053012	2	053	Sacrilege	—
+SDGNT	054	1	—	Maritime Activities	—
+SDGNT	055	1	—	Military Activities	—
+SDGNT	055001	2	055	To Arm	—
+SDGNT	055002	2	055	To Fight	—
+SDGNT	055003	2	055	Army	—
+SDGNT	055004	2	055	Soldiers, Officers	—
+SDGNT	055005	2	055	Prisoners of War	—
+SDGNT	056	1	—	Courts and Legal Procedures	—
+SDGNT	056001	2	056	Court of Justice	—
+SDGNT	056002	2	056	Lawsuit, Case	—
+SDGNT	056003	2	056	Accusation	—
+SDGNT	056004	2	056	Judicial Hearing, Inquiry	—
+SDGNT	056005	2	056	Judge, Condemn, Acquit	—
+SDGNT	056006	2	056	Obtain Justice	—
+SDGNT	056007	2	056	Attorney, Lawyer	—
+SDGNT	056008	2	056	Lead Off to Punishment	—
+SDGNT	057	1	—	Possess, Transfer, Exchange	—
+SDGNT	057001	2	057	Have, Possess, Property, Owner	—
+SDGNT	057002	2	057	Have Sufficient	—
+SDGNT	057003	2	057	Be Rich, Be Wealthy	—
+SDGNT	057004	2	057	Treasure	—
+SDGNT	057005	2	057	Need, Lack	—
+SDGNT	057006	2	057	Be Poor, Be Needy, Poverty	—
+SDGNT	057007	2	057	Take, Obtain, Gain, Lose	—
+SDGNT	057008	2	057	Give	—
+SDGNT	057009	2	057	Receive	—
+SDGNT	057010	2	057	Exchange	—
+SDGNT	057011	2	057	Spend, Waste	—
+SDGNT	057012	2	057	Pay, Price, Cost	—
+SDGNT	057013	2	057	Hire, Rent Out	—
+SDGNT	057014	2	057	Tax, Tribute	—
+SDGNT	057015	2	057	Sell, Buy, Price	—
+SDGNT	057016	2	057	Earn, Gain, Do Business	—
+SDGNT	057017	2	057	Lend, Loan, Interest, Borrow, Bank	—
+SDGNT	057018	2	057	Owe, Debt, Cancel	—
+SDGNT	057019	2	057	Be a Financial Burden	—
+SDGNT	057020	2	057	Keep Records	—
+SDGNT	057021	2	057	Steal, Rob	—
+SDGNT	058	1	—	Nature, Class, Example	—
+SDGNT	058001	2	058	Nature, Character	—
+SDGNT	058002	2	058	Appearance as an Outward Manifestation of Form	—
+SDGNT	058003	2	058	Basic Principles or Features Defining the Nature of Something	—
+SDGNT	058004	2	058	Class, Kind	—
+SDGNT	058005	2	058	Same or Equivalent Kind or Class	—
+SDGNT	058006	2	058	Different Kind or Class	—
+SDGNT	058007	2	058	Distinctive, Unique	—
+SDGNT	058008	2	058	Unusual, Different From the Ordinary	—
+SDGNT	058009	2	058	Pattern, Model, Example, and Corresponding Representation	—
+SDGNT	058010	2	058	Archetype, Corresponding Type [Antitype]	—
+SDGNT	058011	2	058	New, Old [primarily non-temporal]	—
+SDGNT	059	1	—	Quantity	—
+SDGNT	059001	2	059	Many, Few [Countables]	—
+SDGNT	059002	2	059	Much, Little [Masses, Collectives, Extensions]	—
+SDGNT	059003	2	059	All, Any, Each, Every [Totality]	—
+SDGNT	059004	2	059	Full, Empty	—
+SDGNT	059005	2	059	Enough, Sufficient	—
+SDGNT	059006	2	059	Abundance, Excess, Sparing	—
+SDGNT	059007	2	059	Increase, Decrease	—
+SDGNT	059008	2	059	Add, Subtract	—
+SDGNT	060	1	—	Number	—
+SDGNT	060001	2	060	Number, Countless	—
+SDGNT	060002	2	060	One, Two, Three, Etc. [Cardinals]	—
+SDGNT	060003	2	060	First, Second, Third, Etc. [Ordinals]	—
+SDGNT	060004	2	060	Half, Third, Fourth [Fractional Part]	—
+SDGNT	060005	2	060	Once, Twice, Three Times, Etc. [Cardinals of Time]	—
+SDGNT	060006	2	060	Double, Four Times As Much, Etc. [Multiples]	—
+SDGNT	060007	2	060	Pair, Group [Numbered Collectives]	—
+SDGNT	061	1	—	Sequence	—
+SDGNT	062	1	—	Arrange, Organize	—
+SDGNT	062001	2	062	Put Together, Arrange [of physical objects]	—
+SDGNT	062002	2	062	Organize [of events and states]	—
+SDGNT	063	1	—	Whole, Unite, Part, Divide	—
+SDGNT	063001	2	063	Whole	—
+SDGNT	063002	2	063	Unite	—
+SDGNT	063003	2	063	Mix	—
+SDGNT	063004	2	063	Part	—
+SDGNT	063005	2	063	Remnant	—
+SDGNT	063006	2	063	Divide	—
+SDGNT	063007	2	063	Separate	—
+SDGNT	064	1	—	Comparison	—
+SDGNT	065	1	—	Value	—
+SDGNT	065001	2	065	Valuable, Lacking in Value	—
+SDGNT	065002	2	065	Worthy, Not Worthy	—
+SDGNT	065003	2	065	Good, Bad	—
+SDGNT	065004	2	065	Useful, Useless	—
+SDGNT	065005	2	065	Advantageous, Not Advantageous	—
+SDGNT	065006	2	065	Important, Unimportant	—
+SDGNT	066	1	—	Proper, Improper	—
+SDGNT	067	1	—	Time	—
+SDGNT	067001	2	067	A Point of Time without Reference to Other Points of Time: Time, Occasion, Ever, Often	—
+SDGNT	067002	2	067	A Point of Time with Reference to Other Points of Time: Before, Long Ago, Now, At the Same Time, When, About, After	—
+SDGNT	067003	2	067	A Point of Time with Reference to Duration of Time: Beginning, End	—
+SDGNT	067004	2	067	A Point of Time with Reference to Units of Time: Daybreak, Midday, Midnight, Late	—
+SDGNT	067005	2	067	Duration of Time without Reference to Points or Units of Time: Time, Spend Time, Always, Eternal, Old, Immediately, Young	—
+SDGNT	067006	2	067	Duration of Time with Reference to Some Point of Time: Until, Delay, Still, From	—
+SDGNT	067007	2	067	Duration of Time with Reference to Some Unit of Time: During, In, While, Throughout	—
+SDGNT	067008	2	067	Indefinite Units of Time: Age, Lifetime, Interval, Period	—
+SDGNT	067009	2	067	Definite Units of Time: Year, Month, Week, Day, Hour	—
+SDGNT	067010	2	067	Units of Time with Reference to Other Units or Points of Time: Yesterday, Today, Next Day	—
+SDGNT	068	1	—	Aspect	—
+SDGNT	068001	2	068	Begin, Start	—
+SDGNT	068002	2	068	Continue	—
+SDGNT	068003	2	068	Complete, Finish, Succeed	—
+SDGNT	068004	2	068	Cease, Stop	—
+SDGNT	068005	2	068	Try, Attempt	—
+SDGNT	068006	2	068	Do Intensely or Extensively	—
+SDGNT	068007	2	068	Rapidity, Suddenness	—
+SDGNT	069	1	—	Affirmation, Negation	—
+SDGNT	069001	2	069	Affirmation	—
+SDGNT	069002	2	069	Negation	—
+SDGNT	069003	2	069	Negation Combined with Clitics	—
+SDGNT	069004	2	069	Markers for an Affirmative Response to Questions	—
+SDGNT	069005	2	069	Markers for a Negative Response to Questions	—
+SDGNT	070	1	—	Real, Unreal	—
+SDGNT	071	1	—	Mode	—
+SDGNT	071001	2	071	Possible, Impossible	—
+SDGNT	071002	2	071	Probable, Improbable	—
+SDGNT	071003	2	071	Certain, Uncertain	—
+SDGNT	071004	2	071	Should, Ought	—
+SDGNT	071005	2	071	Necessary, Unnecessary	—
+SDGNT	072	1	—	True, False	—
+SDGNT	072001	2	072	True, False	—
+SDGNT	072002	2	072	Accurate, Inaccurate	—
+SDGNT	073	1	—	Genuine, Phony	—
+SDGNT	074	1	—	Able, Capable	—
+SDGNT	075	1	—	Adequate, Qualified	—
+SDGNT	076	1	—	Power, Force	—
+SDGNT	077	1	—	Ready, Prepared	—
+SDGNT	078	1	—	Degree	—
+SDGNT	078001	2	078	Much, Little [Positive-Negative Degree]	—
+SDGNT	078002	2	078	More Than, Less Than [Comparative Degree]	—
+SDGNT	078003	2	078	About, Approximately, Almost, Hardly [Approximate Degree]	—
+SDGNT	078004	2	078	Completely, Enough [Completive Degree]	—
+SDGNT	078005	2	078	Up To, As Much As, To the Degree That [Marked Extent of Degree]	—
+SDGNT	079	1	—	Features of Objects	—
+SDGNT	079001	2	079	Physical [Material], Spiritual	—
+SDGNT	079002	2	079	Natural [Human], Spiritual	—
+SDGNT	079003	2	079	Solid, Liquid	—
+SDGNT	079004	2	079	Beautiful, Ugly	—
+SDGNT	079005	2	079	Glorious	—
+SDGNT	079006	2	079	Transparent	—
+SDGNT	079007	2	079	Color	—
+SDGNT	079008	2	079	Sweet, Bitter, Tasteless	—
+SDGNT	079009	2	079	Fragrance, Odor	—
+SDGNT	079010	2	079	Clean, Dirty	—
+SDGNT	079011	2	079	Spotted, Spotless	—
+SDGNT	079012	2	079	Blemished, Unblemished	—
+SDGNT	079013	2	079	Strong, Weak	—
+SDGNT	079014	2	079	Hot, Lukewarm, Cold	—
+SDGNT	079015	2	079	Wet, Dry	—
+SDGNT	079016	2	079	Uneven [Rough], Level [Smooth]	—
+SDGNT	079017	2	079	Straight, Crooked	—
+SDGNT	079018	2	079	Two-Dimensional and Three-Dimensional Shapes	—
+SDGNT	079019	2	079	Sharp	—
+SDGNT	079020	2	079	Pure, Unadulterated, Undiluted	—
+SDGNT	079021	2	079	Soft, Tender	—
+SDGNT	079022	2	079	Male, Female	—
+SDGNT	079023	2	079	Shapes	—
+SDGNT	079024	2	079	Open, Closed	—
+SDGNT	079025	2	079	Covered Over	—
+SDGNT	079026	2	079	Wrapped	—
+SDGNT	079027	2	079	Rolled Up	—
+SDGNT	079028	2	079	Large, Small	—
+SDGNT	079029	2	079	Perfect	—
+SDGNT	080	1	—	Space	—
+SDGNT	080001	2	080	Space, Place	—
+SDGNT	080002	2	080	Limits, Boundaries of Space	—
+SDGNT	081	1	—	Spacial Dimensions	—
+SDGNT	081001	2	081	Measure, To Measure	—
+SDGNT	081002	2	081	High, Low, Deep	—
+SDGNT	081003	2	081	Long, Short, Far	—
+SDGNT	081004	2	081	Narrow, Wide	—
+SDGNT	081005	2	081	Specific Measures of Volume	—
+SDGNT	081006	2	081	Specific Measures of Length	—
+SDGNT	082	1	—	Spacial Orientations	—
+SDGNT	082001	2	082	North, South, East, West	—
+SDGNT	082002	2	082	Left, Right, Straight Ahead, Opposite	—
+SDGNT	083	1	—	Spacial Positions	—
+SDGNT	083001	2	083	Here, There	—
+SDGNT	083002	2	083	Where, Somewhere, Everywhere	—
+SDGNT	083003	2	083	Among, Between, In, Inside	—
+SDGNT	083004	2	083	Around, About, Outside	—
+SDGNT	083005	2	083	At, Beside, Near, Far	—
+SDGNT	083006	2	083	In Front Of, Face To Face, In Back Of, Behind	—
+SDGNT	083007	2	083	Opposite, Over Against, Across From, Offshore From	—
+SDGNT	083008	2	083	On, Upon, On the Surface Of	—
+SDGNT	083009	2	083	Above, Below	—
+SDGNT	083010	2	083	Beyond, On the Other Side Of	—
+SDGNT	084	1	—	Spacial Extensions	—
+SDGNT	084001	2	084	Extension From a Source	—
+SDGNT	084002	2	084	Extension To a Goal	—
+SDGNT	084003	2	084	Extension Along a Path	—
+SDGNT	085	1	—	Existence in Space	—
+SDGNT	085001	2	085	Be in a Place	—
+SDGNT	085002	2	085	Put, Place	—
+SDGNT	085003	2	085	Remain, Stay	—
+SDGNT	085004	2	085	Leave in a Place	—
+SDGNT	085005	2	085	Dwell, Reside	—
+SDGNT	086	1	—	Weight	—
+SDGNT	086001	2	086	Heavy, Light	—
+SDGNT	086002	2	086	Pound, Talent [Specific Units of Weight]	—
+SDGNT	087	1	—	Status	—
+SDGNT	087001	2	087	Position, Rank	—
+SDGNT	087002	2	087	Honor or Respect in Relation to Status	—
+SDGNT	087003	2	087	High Status or Rank [including persons of high status]	—
+SDGNT	087004	2	087	Low Status or Rank [including persons of low status]	—
+SDGNT	087005	2	087	Slave, Free	—
+SDGNT	088	1	—	Moral and Ethical Qualities and Related Behavior	—
+SDGNT	088001	2	088	Goodness	—
+SDGNT	088002	2	088	Just, Righteous	—
+SDGNT	088003	2	088	Holy, Pure	—
+SDGNT	088004	2	088	Perfect, Perfection	—
+SDGNT	088005	2	088	Honesty, Sincerity	—
+SDGNT	088006	2	088	Modesty, Propriety	—
+SDGNT	088007	2	088	Humility	—
+SDGNT	088008	2	088	Gentleness, Mildness	—
+SDGNT	088009	2	088	Kindness, Harshness	—
+SDGNT	088010	2	088	Mercy, Merciless	—
+SDGNT	088011	2	088	Self-Control, Lack of Self-Control	—
+SDGNT	088012	2	088	Sensible Behavior, Senseless Behavior	—
+SDGNT	088013	2	088	Mature Behavior	—
+SDGNT	088014	2	088	Peaceful Behavior	—
+SDGNT	088015	2	088	Bad, Evil, Harmful, Damaging	—
+SDGNT	088016	2	088	Treat Badly	—
+SDGNT	088017	2	088	Act Harshly	—
+SDGNT	088018	2	088	Act Lawlessly	—
+SDGNT	088019	2	088	Exploit	—
+SDGNT	088020	2	088	Act Shamefully	—
+SDGNT	088021	2	088	Mislead, Lead Astray, Deceive	—
+SDGNT	088022	2	088	Envy, Jealousy	—
+SDGNT	088023	2	088	Resentful, Hold a Grudge Against	—
+SDGNT	088024	2	088	Anger, Be Indignant With	—
+SDGNT	088025	2	088	Despise, Scorn, Contempt	—
+SDGNT	088026	2	088	Hate, Hateful	—
+SDGNT	088027	2	088	Arrogance, Haughtiness, Pride	—
+SDGNT	088028	2	088	Stubbornness	—
+SDGNT	088029	2	088	Hypocrisy, Pretense	—
+SDGNT	088030	2	088	Show Favoritism, Prejudice	—
+SDGNT	088031	2	088	Being a Busybody	—
+SDGNT	088032	2	088	Laziness, Idleness	—
+SDGNT	088033	2	088	Extravagant Living, Intemperate Living	—
+SDGNT	088034	2	088	Impurity	—
+SDGNT	088035	2	088	Licentiousness, Perversion	—
+SDGNT	088036	2	088	Sexual Misbehavior	—
+SDGNT	088037	2	088	Drunkenness	—
+SDGNT	088038	2	088	Sin, Wrongdoing, Guilt	—
+SDGNT	089	1	—	Relations	—
+SDGNT	089001	2	089	Relation	—
+SDGNT	089002	2	089	Dependency	—
+SDGNT	089003	2	089	Derivation	—
+SDGNT	089004	2	089	Specification	—
+SDGNT	089005	2	089	Relations Involving Correspondences [Isomorphisms]	—
+SDGNT	089006	2	089	Basis	—
+SDGNT	089007	2	089	Cause and/or Reason	—
+SDGNT	089008	2	089	Result	—
+SDGNT	089009	2	089	Purpose	—
+SDGNT	089010	2	089	Condition	—
+SDGNT	089011	2	089	Concession	—
+SDGNT	089012	2	089	Means	—
+SDGNT	089013	2	089	Attendant Circumstances	—
+SDGNT	089014	2	089	Manner	—
+SDGNT	089015	2	089	Sequential Addition	—
+SDGNT	089016	2	089	Distribution	—
+SDGNT	089017	2	089	Addition	—
+SDGNT	089018	2	089	Linkage	—
+SDGNT	089019	2	089	Equivalence	—
+SDGNT	089020	2	089	Association	—
+SDGNT	089021	2	089	Dissociation	—
+SDGNT	089022	2	089	Combinative Relation	—
+SDGNT	089023	2	089	Contrast	—
+SDGNT	089024	2	089	Alternative Relation	—
+SDGNT	089025	2	089	Substance	—
+SDGNT	089026	2	089	Mediation	—
+SDGNT	090	1	—	Case	—
+SDGNT	090001	2	090	Agent, Personal or Nonpersonal, Causative or Immediate, Direct or Indirect	—
+SDGNT	090002	2	090	Instrument	—
+SDGNT	090003	2	090	Source of Event or Activity	—
+SDGNT	090004	2	090	Responsibility	—
+SDGNT	090005	2	090	Viewpoint Participant	—
+SDGNT	090006	2	090	Content	—
+SDGNT	090007	2	090	Guarantor Participant with Oaths	—
+SDGNT	090008	2	090	Opposition	—
+SDGNT	090009	2	090	Benefaction	—
+SDGNT	090010	2	090	Reason Participant	—
+SDGNT	090011	2	090	Agent of a Numerable Event	—
+SDGNT	090012	2	090	Agent in a Causative Role Marked by Verbs	—
+SDGNT	090013	2	090	Experiencer	—
+SDGNT	090014	2	090	To Cause To Experience	—
+SDGNT	091	1	—	Discourse Markers	—
+SDGNT	091001	2	091	Markers of Transition	—
+SDGNT	091002	2	091	Markers of Emphasis	—
+SDGNT	091003	2	091	Prompters of Attention	—
+SDGNT	091004	2	091	Marker of Direct Address	—
+SDGNT	091005	2	091	Markers of Identificational and Explanatory Clauses [Epexegetical]	—
+SDGNT	092	1	—	Discourse Referentials	—
+SDGNT	092001	2	092	Speaker	—
+SDGNT	092002	2	092	Speaker and Those Associated with the Speaker [exclusive and inclusive]	—
+SDGNT	092003	2	092	Receptor, Receptors	—
+SDGNT	092004	2	092	Whom or What Spoken or Written About	—
+SDGNT	092005	2	092	Reciprocal Reference	—
+SDGNT	092006	2	092	Relative Reference	—
+SDGNT	092007	2	092	Demonstrative or Deictic Reference	—
+SDGNT	092008	2	092	Emphatic Adjunct	—
+SDGNT	093	1	—	Names of Persons and Places	—
+SDGNT	093001	2	093	Persons	—
+SDGNT	093002	2	093	Places	—
