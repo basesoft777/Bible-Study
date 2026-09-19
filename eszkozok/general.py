@@ -982,7 +982,7 @@ def build_parser():
         description='A motivumlexikon generatorai -- F4_GENERATOR_BRIEF.md.',
     )
     p.add_argument('--cel', required=True,
-                    choices=['naplo', 'index', 'naplok', 'study', 'nyitott', 'mind'])
+                    choices=['naplo', 'index', 'naplok', 'study', 'nyitott', 'lexikon', 'mind'])
     p.add_argument('--id', help='egyetlen motívum-ID-re szűkítés (opcionális)')
     p.add_argument('--kimenet', default=os.path.join(ROOT, 'generalt_proba'),
                     help='alapértelmezés: generalt_proba/')
@@ -1153,6 +1153,11 @@ def main():
             _, jeloltek_teljes = tsv_beolvas(JELOLTEK_TSV)
             hianylista_sorok = naplo_hianylista_sorok(jeloltek_teljes)
             hianylista_ir(args, hianylista_sorok, jeloltek_teljes)
+
+        elif cel == 'lexikon':
+            import lexikon_general
+            vegso_kod = max(vegso_kod, lexikon_general.run(
+                args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek))
 
         elif cel == 'study':
             elof_id_szerint = elofordulasok_id_szerint(elofordulasok)
