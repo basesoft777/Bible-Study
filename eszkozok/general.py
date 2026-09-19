@@ -997,7 +997,7 @@ def build_parser():
     return p
 
 
-ELESITHETO = {'naplo', 'index', 'nyitott'}
+ELESITHETO = {'naplo', 'index', 'nyitott', 'lexikon'}
 
 CEL_FAJL = {'naplo': NAPLO_MD, 'index': INDEX_MD, 'nyitott': NYITOTT_MD}
 
@@ -1061,7 +1061,7 @@ def main():
         print('FIGYELEM: a(z) %r cél NEM élesíthető (brief G7) -- a kimenet a '
               '--kimenet könyvtár alá megy.' % args.cel, file=sys.stderr)
 
-    celok = ['naplo', 'index', 'naplok', 'study', 'nyitott'] \
+    celok = ['naplo', 'index', 'naplok', 'study', 'nyitott', 'lexikon'] \
         if args.cel == 'mind' else [args.cel]
     vegso_kod = 0
     konyv_sorrend = konyv_sorrend_betolt()
@@ -1082,7 +1082,7 @@ def main():
 
         print('--- cél: %s ---' % cel)
 
-        if cel in ELESITHETO and (args.ir or args.ellenoriz):
+        if cel in ELESITHETO and cel != 'lexikon' and (args.ir or args.ellenoriz):
             path = CEL_FAJL[cel]
             blokkok, hianyzo = blokk_lista_eles(cel, motivumok, elofordulasok,
                                                   konyv_sorrend, hianyzo_konyvek)
@@ -1177,9 +1177,11 @@ def main():
                 relativ = alap + '_1_pont_GENERALT.md'
                 kimenet_ir(args, relativ, tartalom, forras_ut)
 
-        if args.ellenoriz:
+        if args.ellenoriz and cel not in ('lexikon',):
             # A naplok/study célok NEM élesíthetők ebben a fázisban (brief G7),
-            # tehát nincs marker-pár, amihez a blokkot mérni lehetne.
+            # tehát nincs marker-pár, amihez a blokkot mérni lehetne. A
+            # lexikon cél (F6.5) a saját --ellenoriz-jelentését a
+            # lexikon_general.run()-ban adja, a valódi lexikon/ mappához mérve.
             print('  --ellenoriz: a(z) %r cél nem élesíthető (G7), nincs mihez '
                   'mérni -- PIROS.' % cel)
             vegso_kod = max(vegso_kod, 1)

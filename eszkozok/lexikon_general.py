@@ -690,8 +690,14 @@ def frissit_meglevo_fajlt(meglevo_szoveg, m, blokkok):
 
 
 def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
+    """--ir/--ellenoriz: éles célfájl `lexikon/‹ID›_TUDOMANYOS.md` (F6.5,
+    ELESITHETO). Egyébként (próba) a --kimenet (alapértelmezésben
+    generalt_proba/) alá."""
     elof_id_szerint = G.elofordulasok_id_szerint(elofordulasok)
-    kimenet_gyoker = os.path.join(args.kimenet, 'lexikon')
+    kimenet_gyoker = (
+        os.path.join(G.ROOT, 'lexikon') if (args.ir or args.ellenoriz)
+        else os.path.join(args.kimenet, 'lexikon')
+    )
 
     osszesitett_tisztazatlan = {}
 
