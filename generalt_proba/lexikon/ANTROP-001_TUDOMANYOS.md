@@ -250,7 +250,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 ## 9. Források és licencek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#forrasok | forrás: adat/elofordulasok.tsv, adat/kapcsolatok.tsv, adat/motivumok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_kivonat_Genezis.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TSK_kereszthivatkozasok.tsv | licenc: projekt-adat | ts=2026-09-19 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#forrasok | forrás: adat/elofordulasok.tsv, adat/kapcsolatok.tsv, adat/motivumok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_kivonat_Genezis.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TSK_kereszthivatkozasok.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat, tisztazatlan | ts=2026-09-19 -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum lexikon-oldalán ténylegesen felhasznált forrásokat sorolja fel.*
 

@@ -241,7 +241,7 @@ graph LR
 
 ## 9. Források és licencek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#forrasok | forrás: adat/elofordulasok.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_kivonat_Exodus.tsv, konkordancia/LXX_kivonat_Genezis.tsv, konkordancia/LXX_kivonat_Zakarias.tsv, konkordancia/LXX_kivonat_Zsoltarok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TSK_kereszthivatkozasok.tsv | licenc: projekt-adat | ts=2026-09-19 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#forrasok | forrás: adat/elofordulasok.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_kivonat_Exodus.tsv, konkordancia/LXX_kivonat_Genezis.tsv, konkordancia/LXX_kivonat_Zakarias.tsv, konkordancia/LXX_kivonat_Zsoltarok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TSK_kereszthivatkozasok.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat, tisztazatlan | ts=2026-09-19 -->
 
 *Ez a blokk a `[ID: KIRALY-001]` motívum lexikon-oldalán ténylegesen felhasznált forrásokat sorolja fel.*
 

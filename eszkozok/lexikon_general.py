@@ -502,16 +502,18 @@ def blokk_forrasok(m, fajl_licenc_blokk_lista):
 
     fejlec = ['| Forrás | Fájl | Licenc | Blokk |', '|---|---|---|---|']
     sorok = list(fejlec)
+    tabla_licencek = set()
     for fajl in sorted(per_fajl):
         rekord = per_fajl[fajl]
         licenc = ', '.join(sorted(rekord['licenc']))
         blokkok = ', '.join(sorted(rekord['blokkok']))
+        tabla_licencek.update(rekord['licenc'])
         sorok.append('| `%s` | `%s` | %s | %s |' % (
             os.path.basename(fajl), fajl, licenc, blokkok))
 
     hatokor = 'Ez a blokk a `[ID: %s]` motívum lexikon-oldalán ténylegesen felhasznált forrásokat sorolja fel.' % m['id']
     torzs = '\n'.join(sorok)
-    return _lexikon_blokk(m['id'], 'forrasok', sorted(per_fajl), ['projekt-adat'], hatokor, torzs)
+    return _lexikon_blokk(m['id'], 'forrasok', sorted(per_fajl), sorted(tabla_licencek), hatokor, torzs)
 
 
 # ---------------------------------------------------------------------------
@@ -649,11 +651,41 @@ def epit_uj_fajl(m, blokkok):
     }
 
 
+_TS_LEVAGVA_RE = re.compile(r'\| ts=\S+ -->$')
+
+
+def _fejlec_ts_nelkul(fejlec):
+    return _TS_LEVAGVA_RE.sub('-->', fejlec)
+
+
+def _blokk_beilleszt_fejleccel(fajl_szoveg, cel_kulcs, uj_blokk):
+    """Mint a G.blokk_beilleszt, de a fejlécet (forrás/licenc) IS cseréli,
+    ha az — a ts mezőt figyelmen kívül hagyva — eltér a régitől; a `ts=` a
+    G.blokk_beilleszt-nél a törzzsel együtt fagyott be, ezért a fejlécben
+    ténylegesen felhasznált forrás/licenc soha nem frissült (F6.5a L1). Ha
+    sem a fejléc (ts nélkül), sem a törzs nem változott, a régi fejléc (a
+    régi ts-sel) marad — így a nem érintett blokkok ts-e sem mozdul (K22)."""
+    talalat = G.marker_par_keres(fajl_szoveg, cel_kulcs)
+    if not talalat:
+        raise ValueError('nincs marker-pár: %s' % cel_kulcs)
+    kezd_idx, torzs_kezd, torzs_veg, _veg_idx = talalat
+    regi_fejlec = fajl_szoveg[kezd_idx:torzs_kezd]
+    regi_torzs = fajl_szoveg[torzs_kezd:torzs_veg]
+
+    uj_fejlec_vege = uj_blokk.index('-->') + len('-->')
+    uj_fejlec = uj_blokk[:uj_fejlec_vege]
+    uj_torzs = G.blokk_torzs(uj_blokk, cel_kulcs)
+
+    if _fejlec_ts_nelkul(regi_fejlec) == _fejlec_ts_nelkul(uj_fejlec) and regi_torzs == uj_torzs:
+        return fajl_szoveg, 'változatlan'
+    return fajl_szoveg[:kezd_idx] + uj_fejlec + uj_torzs + fajl_szoveg[torzs_veg:], 'frissítve'
+
+
 def frissit_meglevo_fajlt(meglevo_szoveg, m, blokkok):
     szoveg = meglevo_szoveg
     for blokk_nev in BLOKK_NEVEK:
         cel_kulcs = _cel_kulcs(m['id'], blokk_nev)
-        szoveg, _ = G.blokk_beilleszt(szoveg, cel_kulcs, blokkok[blokk_nev], horgony=None)
+        szoveg, _ = _blokk_beilleszt_fejleccel(szoveg, cel_kulcs, blokkok[blokk_nev])
     return szoveg
 
 
