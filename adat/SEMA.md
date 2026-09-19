@@ -177,8 +177,9 @@ study táblázatába).
 | `funkcio` | szabad szöveg | | A vers szerepe a motívum ívében. A 4.6 gate 3. kérdésének adata: ha egy igehely két motívumhoz tartozik, **a funkciónak különböznie kell**. |
 | `gerinc_elem` | szabad szöveg | ✔ | **Melyik gerinc-elemen lóg ez a sor** — Strong-szám, kollokáció-pár vagy LXX-híd megnevezve (`H8415`, `málé+chámász`, `LXX:ᾅδης←H7585`). Ha egy sor nem tudja megnevezni a horgonyát, **a `jeloltek.tsv`-ben marad**. L. 2.2.1. |
 | `strong` | `STRONG` | | Üres, ha a sor nem lexikai horgonyon áll (strukturális motívumnál ez normális). |
-| `bdb_entry_id` | szabad szöveg | | A BDB-szócikk azonosítója. |
-| `jelentes_szam` | **union** | | L. 2.2.2 — ez a mező a 3.8-as nyitott tétel lezárása. |
+| `lexikon_szotar` | zárt: a 2.5 `szotar` értékkészlete | | Melyik szótár jelentésére hivatkozik a sor. Kötelező, ha `lexikon_entry_id` ki van töltve. |
+| `lexikon_entry_id` | szabad szöveg | | A szócikk azonosítója az adott szótár kulcsa szerint (l. 2.5). |
+| `jelentes_szam` | **union** | | L. 2.2.2 — ez a mező a 3.8-as nyitott tétel lezárása. A `lexikon_szotar` + `lexikon_entry_id` + `jelentes_szam` hármas a `lexikon_hivatkozasok.tsv` kulcsára mutat (2.5). |
 | `jelentes_en` | szabad szöveg | | A szótári jelentés eredetiben. |
 | `jelentes_hu` | szabad szöveg | | Magyar fordítása. |
 | `karoli_szo` | szabad szöveg | | A Károli-szóalak ezen a helyen. **Öröklődik a `jeloltek.tsv` azonos kulcsú sorából.** |
@@ -305,17 +306,21 @@ Hádész 4).
 
 ### 2.5 `lexikon_hivatkozasok.tsv`
 
-Kulcs: `strong` + `entry_id` + `jelentes_szam`.
+Kulcs: `szotar` + `strong` + `entry_id` + `jelentes_szam`.
 
 | Mező | Típus | Kötelező | Leírás |
 |---|---|---|---|
 | `strong` | `STRONG` | ✔ | |
-| `szotar` | zárt | ✔ | `BDB` \| `Thayer` \| `LSJ` \| `Strong` \| `SDBH` \| `SDGNT` \| `SECE_G` \| `SECE_H` |
-| `entry_id` | szabad szöveg | ✔ | |
+| `szotar` | zárt | ✔ | `BDB` \| `TBESH` \| `TBESG` \| `Thayer` \| `LSJ` \| `Strong` \| `SDBH` \| `SDGNT` \| `SECE_G` \| `SECE_H` \| `MCGED` |
+| `entry_id` | szabad szöveg | ✔ | Szótáranként: BDB, Thayer, LSJ, SECE → a konkordancia-fájl `Strong_padded` kulcsa; MCGED → a `lexikonok_nyers/MCGED.lexicon` `G####` Strong-kulcsa (a `gkG5####` GK-kulcs nem használható, l. `lexikonok_nyers/README.md`); TBESH/TBESG → a fájl első oszlopa; SDBH/SDGNT → `entry_id` (`MainId`), a `jelentes_szam` pedig a `lexid`. |
 | `jelentes_szam` | union (l. 2.2.2) | ✔ | |
-| `szoveg_en` | szabad szöveg | ✔ | **Rövid kivonat, nem teljes szócikk** — a BDB-sorok egyenként több kilobájtosak. |
-| `forditas_hu` | szabad szöveg | | |
+| `szoveg_en` | szabad szöveg | ✔ | **Rövid kivonat, nem teljes szócikk** — a forrásfájl sorának szó szerinti részlete; a generált lexikon innen idéz. |
+| `forditas_hu` | szabad szöveg | | A jelentés magyar fordítása — jelentésenként egyszer. Az igehelyi alkalmazás az `elofordulasok.jelentes_hu` mezőben áll, nem itt. |
 | `forrasfajl` | fájlút | ✔ | Pl. `konkordancia/BDB_teljes_unabridged.tsv`. |
+
+Tisztázatlan licencű szótár (Thayer, LSJ, SECE, MCGED) sora a táblába felvehető, és a
+generált lexikon-oldal ugyanúgy idéz belőle, mint a többiből, `tisztazatlan`
+licenc-jelöléssel (F6 D9).
 
 ### 2.6 `datasetek.tsv`
 

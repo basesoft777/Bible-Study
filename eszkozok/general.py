@@ -876,9 +876,10 @@ def render_study_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek):
              'BDB-entry-id | Sense-szám | Jelentés-szöveg (EN + HU) |',
              '|---|---|---|---|---|---|---|']
     for s in sorai_rendezve:
+        bdb_cella = s.get('lexikon_entry_id') or '—' if s.get('lexikon_szotar') == 'BDB' else '—'
         sorok.append('| %s | %s | %s | %s | %s | %s | %s |' % (
             s['igehely'], s['kapcsolodas'], studytabla_pardes_oszlop(s),
-            s.get('strong') or '—', s.get('bdb_entry_id') or '—',
+            s.get('strong') or '—', bdb_cella,
             s.get('jelentes_szam') or '—', studytabla_jelentes_oszlop(s)))
     return blokk('study --id %s' % m['id'], ['adat/elofordulasok.tsv'], hatokor, '\n'.join(sorok))
 
