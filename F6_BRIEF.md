@@ -1,6 +1,6 @@
 # F6 brief — lexikon-generátor (`lexikon/[ID]_TUDOMANYOS.md`)
 
-*Készítette: chat-menet (Opus 5), 2026-09-16, **v2** (v1: első kiadás; v2: a felhasználó átnézése alapján a tisztázatlan licencű források bekerülnek a generált rétegbe — D9). Kiindulási állapot: `main` = `origin/main` = **`cb4aac3`** (F0–F5 és az SDBH-import lezárva).*
+*Készítette: chat-menet (Opus 5), 2026-09-16, **v5** (v1: első kiadás; v2: a tisztázatlan licencű források bekerülnek a generált rétegbe — D9; v3: az 1. menet lefutott és ellenőrizve — §1.5 —, a `forrasok`-blokk licenc-mezőjét az F6.5a javítja; v4: a licenc-státuszok tisztázva — §1.6 —, a Thayer, az LSJ és a SECE már nem `tisztazatlan`, a Mounce megjelölése kötelező; **v5**: a 2. menet lefutott, de az F6.5a *(v4)* fele kimaradt — §1.7 —, a K11 és a K21 szövege átvezetve a v4-re, új F6.5b tétel egy rövid 3. menetben). Kiindulási állapot: `main` = `origin/main` = **`cb4aac3`** (F0–F5 és az SDBH-import lezárva).*
 *Végrehajtás: Claude Code, a repó gyökeréből, két menetben, Sonneten. A 2. menet az 1. menet független ellenőrzése után indul. A chat-menet nem hajtja végre — ez a brief a bemenete.*
 *Előzmény: `ATALAKITASI_TERV.md.md` 6. szakasz F6, 1.C, 11.5, N11; `SDBH_IMPORT_BRIEF.md` v2 N3–N4. Felhasználói döntések (2026-09-16): a lexikon egyelőre belső használatra készül, a generátor rétegenként jelöli a forrás licencét; **a repó nyilvános marad**; a G0 javaslatok elfogadva (l. Döntésnapló D1–D12).*
 
@@ -59,7 +59,10 @@ A terv szerint a `[ID]_TUDOMANYOS.md` 0–8. szakasza generálható, és ezt az 
 | `SDBH_domenek.tsv`, `SDGNT_domenek.tsv` (UBS) | `CC BY-SA 4.0` |
 | `LXX_kivonat_*.tsv` | `tisztazatlan` |
 | `adat/*.tsv` | `projekt-adat` |
-| `Thayer_teljes.tsv`, `LSJ_teljes.tsv`, `SECE_*`, `lexikonok_nyers/MCGED.lexicon` | `tisztazatlan` — **bekerül**, jelöléssel (D9) |
+| `Thayer_teljes.tsv` | *(v4)* `közkincs` — Thayer 1886/1889; a formázási réteg másodkézből (§1.6) |
+| `LSJ_teljes.tsv` | *(v4)* `CC BY-SA 3.0` — Perseus Digital Library, `lexica` |
+| `SECE_G_teljes.tsv`, `SECE_H_teljes.tsv` | *(v4)* `közkincs` — OpenScriptures Strong's, kiegészített formázással |
+| `lexikonok_nyers/MCGED.lexicon` | *(v4)* `© Mounce 1993` — **kötelező, szó szerinti megjelöléssel** (§1.6) |
 
 ### 1.4 Az OSHL-forrás *(rögzítve, F6.1)*
 
@@ -71,6 +74,52 @@ A terv szerint a `[ID]_TUDOMANYOS.md` 0–8. szakasza generálható, és ezt az 
 | Fájl | `HebrewLexicon-<commit>/LexicalIndex.xml`, SHA-256 `8f7a605c58899d2f44430149c143c00903976e1e91232476677972a69e5bc85f` |
 | Licenc | CC BY 4.0 (`readme.md`: forrásmegjelölés „Open Scriptures Hebrew Bible Project”; a TWOT-szám csak hivatkozásként szerepel, a TWOT szövegét nem írja át) |
 | Szerkezet | `<part xml:lang="heb|arc">` → `<entry id>` → `<w xlit>`, `<pos>`, `<def>`, pontosan egy `<xref bdb strong? twot?>` |
+
+### 1.5 Az 1. menet mért eredménye *(v3; független ellenőrzés, `2b2e642`)*
+
+Commitok: `1139799` (brief v2), `55b1de5` (F6.1), `4ff5436` (F6.2), `5d904b6` (F6.3), `2b2e642` (F6.4); push `cb4aac3..2b2e642`.
+
+Friss klónon megerősítve: az öt commit fájllistája (= §6); az `OSHL_lexikalis_index.tsv` és a `lexikon_hivatkozasok.tsv` SHA-256-ja; az `elofordulasok.tsv` új mezőpárja 27 `BDB`-sorral; hét próbafájl, fájlonként hét marker-pár, mindegyikben `licenc:` mezővel; a K13 minden motívumonkénti száma.
+
+**Három lelet:**
+
+| # | Mi | Kié | Hol javul |
+|---|---|---|---|
+| L1 | A `forrasok`-blokk markere `licenc: projekt-adat`, miközben `forrás:` mezője felsorolja az LXX-kivonatokat, és a blokk táblája `tisztazatlan`, illetve `CC BY-SA 4.0` sorokat is mutat. Öt fájlt érint (ALVIL, ANTROP, ISTENTISZT, KIRALY, TEREMT). A `tisztazatlan` blokkok gépi keresése így nem hozná elő ezeket az oldalakat — pont az ellen, amiért a K11 készült. | **brief**: a K11 csak az olvasott fájlokra fogalmazott, nem a blokkban megjelenített licencekre | F6.5a, K21 |
+| L2 | A `forrasok`-blokk első változata blokk-szintű licenc-halmazt ragasztott minden fájlra (az OSHL-index `CC BY-SA 4.0`-t is kapott volna). A menet saját maga vette észre és javította, fájlonkénti licenc-követésre. | végrehajtás, javítva | — |
+| L3 | A K8 „kilépési kód 0” feltétele teljesíthetetlen volt: az `index` már a menet előtt is 1-gyel állt (HAMART-001). A helyes feltétel: előtte és utána azonos. A `cb4aac3`-on visszamérve: `naplo` 0, `nyitott` 0, `index` 1. | **brief** | K8 szövege javítva (v3) |
+
+Az L1 a 2. menet első tétele; a v1/v2 commitok nem íródnak át.
+
+### 1.6 A licenc-státuszok tisztázása *(v4)*
+
+A `biblematedata`-csomag (Eliran Wong) lexikon-moduljainak forrását és licencét a szerző saját forrásoldala (`marvel.bible/resource.php`) dokumentálja. A 2026-09-19-i lekérdezés szerint:
+
+| Forrás | A szerző forrásoldala szerint | Besorolás |
+|---|---|---|
+| Thayer | 1886/1889, közkincs; a modul anyagát Tim Morton (Bible Analyzer) formázta, engedéllyel | `közkincs` — a formázási réteg eredete másodkézből, ezt a README rögzíti |
+| LSJ | Perseus `lexica` repó, Creative Commons Attribution-ShareAlike 3.0 | `CC BY-SA 3.0` |
+| SECE | közkincs, az `openscriptures/strongs` repóból, a szerző kiegészítő leképezésével | `közkincs` |
+| MCGED | `billmounce/dictionary`, ezzel a kötelező megjelöléssel: *Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, www.teknia.com/greek-dictionary* | `© Mounce 1993`, megjelölés kötelező |
+| Abbott-Smith (a TBESG alapja) | 1922-es kiadás, közkincs | `közkincs` |
+
+**Fenntartás:** ezek a megállapítások a szerző forrásoldaláról származnak, nem a letöltött fájlokhoz csatolt licencszövegből — a `lexikonok_nyers/` fájljai nem tartalmaznak licenc-jelzést. A modulok azonossága erősen valószínű, de nem bizonyított; egy saját, rögzített import az eredeti forrásból (Perseus, OpenScriptures) ezt a bizonytalanságot is megszüntetné (N5).
+
+**Felhasználói döntés (2026-09-19):** a Mounce marad a generált rétegben, a kötelező megjelöléssel; a Thayer beépíthető a görög oldal mélységi szintjeként.
+
+### 1.7 A 2. menet mért eredménye és a hiányzó F6.5a-fél *(v5)*
+
+Commitok: `cdf02dc` (F6.5a), `0fa6927` (F6.5), `0368f28` (F6.6), `7e23e61` (F6.7). `main` = **`7e23e61`**, push nincs. A K16–K22 a menet jelentése szerint teljesült.
+
+**Három lelet:**
+
+| # | Mi | Kié | Hol javul |
+|---|---|---|---|
+| L4 | Az F6.5a *(v4)* fele — a licenc-térkép frissítése (licenc-konstans, kötelező Mounce-megjelölés, `adat/SEMA.md` 2.5, `konkordancia/lexikonok_nyers/README.md`) — nem futott le: a `cdf02dc` fájllistája csak `eszkozok/lexikon_general.py` + `generalt_proba/lexikon/`, a §6 szerinti két dokumentum nélkül. A K20 ezt nem fogta meg, mert csak a *plusz* fájlokat vetette össze, a hiányzókat nem. | végrehajtás | F6.5b, K23–K26 |
+| L5 | A **K23 kimaradt a zárójelentésből** (K16–K22 szerepel, a §8.2 prompt K16–K23-at kért) — épp az a kritérium, amelyik az L4-et elkapta volna. | végrehajtás | F6.5b |
+| L6 | A v4 a §1.3-at, a §1.6-ot, a D16-ot és a K23-at megírta, de **a K11 és a K21 szövegét nem vezette át**: mindkettő a Thayer/LSJ/SECE/MCGED blokkokra is `tisztazatlan`-t követelt, ami a K23-mal ellentmondásban áll. A menet a K21-et a betű szerinti (v3-as) értelemben ellenőrizte, és üresen teljesült, mert ma egyetlen blokk sem olvas Thayert, LSJ-t, SECE-t vagy MCGED-et. | **brief** | K11 és K21 szövege javítva (v5) |
+
+**Következmény a hatókörre:** mivel a hét lexikon-oldal ma csak BDB/TBESG/LXX/TSK/KH/SDBH/SDGNT/projekt-adat forrásokat olvas, a licenc-térkép javítása a generált fájlok törzsét **nem változtathatja meg**. Az F6.5b ezért szűk, dokumentum-túlsúlyos tétel; ha a hét fájl törzse mégis változik, az hiba (K25).
 
 ---
 
@@ -85,7 +134,7 @@ A részletes indoklás a Döntésnaplóban.
 5. **Kanonikus görög jelentés-forrás: TBESG** (D5).
 6. **TWOT: csak a szám, OSHL-forrásból** (D7).
 7. **Licenc-jelölés blokkonként** és a 9. szakaszban (D8).
-8. **Tisztázatlan licencű források** (D9): a Thayer, az LSJ, a SECE, az MCGED és az LXX-kivonat is bekerül a generált rétegbe, minden blokkban `tisztazatlan` licenc-jelöléssel.
+8. **Licenc-jelölés forrásonként** (D9, *(v4)* D16): minden forrás a §1.3 szerinti tényleges licencét viseli. `tisztazatlan` már csak az LXX-kivonat. A Mounce-nál a szó szerinti megjelölés kötelező.
 
 ---
 
@@ -129,7 +178,7 @@ Minden szöveg: `\s+` → egy szóköz, `strip()`; üres vagy hiányzó → `—
 
 *A `H7121` → `2063` és a `H8034` → `2405` egyezik a pilot SECE-ből vett TWOT-számával — ez független megerősítés.*
 
-**`konkordancia/OSHL_lexikalis_index_README.md`**: forrás (repó, commit, hash, reprodukáló parancs); licenc és forrásmegjelölés (CC BY 4.0, „Open Scriptures Hebrew Bible Project”); a TWOT-szám hivatkozási jellege (**a TWOT-szöveg nem kerül a repóba**, tervezési napló 14. pont); oszlopok és szabályok; mért értékek; ismert korlátok (a `strong` hiánya 930 sorban; 417 Strong-számhoz több TWOT-szám tartozik, homográfok miatt). **`konkordancia/Validacios_naplo.md`**: új bejegyzés.
+**`konkordancia/OSHL_lexikalis_index_README.md`**: forrás (repó, commit, hash, reprodukáló parancs); licenc és forrásmegjelölés (CC BY 4.0, „Open Scriptures Hebrew Bible Project”); a TWOT-szám hivatkozási jellege (**a TWOT-szöveg nem kerül a repóba**, tervezési napló 14. pont); oszlopok és szabályok; mért értékek; ismert korlátok (a `strong` hiánya 930 sorban; 419 Strong-számhoz több TWOT-szám tartozik, homográfok miatt *(v3: nyelvi bontás nélkül számolva; nyelvenként 417 — a join a Strong-számra megy, ezért a 419 a helyes érték)*). **`konkordancia/Validacios_naplo.md`**: új bejegyzés.
 
 A tábla **nem kerül** az `adat/datasetek.tsv` mátrixába (D7).
 
@@ -276,6 +325,22 @@ A `licenc:` érték a blokkban **ténylegesen felhasznált** források licencein
 
 ## 4. Tételek — 2. menet *(az 1. menet független ellenőrzése után)*
 
+### Tétel F6.5a — a `forrasok`-blokk licenc-mezője *(az élesítés előtt)*
+
+`eszkozok/lexikon_general.py`, a `blokk_forrasok` markere. A `licenc:` mező értéke a blokk **táblájában megjelenített** licencek rendezett, egyedi, vesszővel elválasztott halmaza (az ISTENTISZT-001-nél: `CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat, tisztazatlan`). A `forrás:` mező és a tábla tartalma nem változik.
+
+Ugyanez az elv minden blokkra: **a marker `licenc:` mezője a blokkban ténylegesen felhasznált források licenceinek uniója.** A többi hat blokknál ez ma már teljesül.
+
+
+*(v4)* **Ugyanebben a tételben a licenc-térkép is frissül**, a §1.3 és a §1.6 szerint:
+
+- a `lexikon_general.py` licenc-konstansa: `Thayer_teljes.tsv` → `közkincs`, `LSJ_teljes.tsv` → `CC BY-SA 3.0`, `SECE_G_teljes.tsv` és `SECE_H_teljes.tsv` → `közkincs`, `lexikonok_nyers/MCGED.lexicon` → `© Mounce 1993`; `tisztazatlan` csak az `LXX_kivonat_*.tsv` marad;
+- ha a fájlban bárhol MCGED-tartalom szerepel, a 9. szakasz táblája alatt **szó szerint** megjelenik: *Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, www.teknia.com/greek-dictionary*; az LSJ-sornál a Perseus-forrásmegjelölés;
+- `adat/SEMA.md` 2.5, az F6.2-ben felvett bekezdés: a „tisztázatlan licencű szótár (Thayer, LSJ, SECE, MCGED)” felsorolás helyett a forrásonkénti licenc a `konkordancia/lexikonok_nyers/README.md`-re hivatkozik;
+- `konkordancia/lexikonok_nyers/README.md`: a „LICENC-STÁTUSZ TISZTÁZATLAN” figyelmeztetés helyére a §1.6 táblája kerül, a forrásoldal megjelölésével és a fenntartással.
+
+Futtasd újra a próbát (`--cel lexikon`), és vesd össze: a hét fájlban a `forrasok` marker `licenc:` mezője és a licenc-oszlop értékei változhatnak, más nem.
+
 ### Tétel F6.5 — élesítés
 
 - A `lexikon` bekerül az `ELESITHETO` halmazba; célfájl: `lexikon/‹ID›_TUDOMANYOS.md`. A `mind` ettől kezdve a lexikont is futtatja.
@@ -298,6 +363,23 @@ A `licenc:` érték a blokkban **ténylegesen felhasznált** források licencein
 
 ---
 
+## 4/b. Tétel — 3. menet *(javító, v5)*
+
+### Tétel F6.5b — a licenc-térkép élesítése *(az F6.5a kimaradt fele)*
+
+Tartalmilag azonos a §4 F6.5a *(v4)* blokkjával; itt csak a mai állapothoz igazítva. Négy dolog:
+
+1. **`eszkozok/lexikon_general.py`, licenc-konstans:** `Thayer_teljes.tsv` → `közkincs`; `LSJ_teljes.tsv` → `CC BY-SA 3.0`; `SECE_G_teljes.tsv` és `SECE_H_teljes.tsv` → `közkincs`; `lexikonok_nyers/MCGED.lexicon` → `© Mounce 1993`. `tisztazatlan` **csak** az `LXX_kivonat_*.tsv` marad.
+2. **Mounce-megjelölés:** ha a fájlban bárhol MCGED-tartalom szerepel, a 9. szakasz táblája alatt **szó szerint** megjelenik: *Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, www.teknia.com/greek-dictionary*; az LSJ-sornál a Perseus-forrásmegjelölés. Ma egyik oldal sem olvas MCGED-et vagy LSJ-t — a kódágnak akkor is léteznie kell, és a menet ideiglenes próbával (commit nélkül) igazolja, hogy működik.
+3. **`adat/SEMA.md` 2.5** — az F6.2-ben felvett bekezdésben a „tisztázatlan licencű szótár (Thayer, LSJ, SECE, MCGED)” felsorolás helyett a forrásonkénti licenc a `konkordancia/lexikonok_nyers/README.md`-re hivatkozik.
+4. **`konkordancia/lexikonok_nyers/README.md`** — a „LICENC-STÁTUSZ TISZTÁZATLAN” figyelmeztetés helyére a §1.6 táblája kerül, a forrásoldal (`marvel.bible/resource.php`, 2026-09-19-i lekérdezés) megjelölésével és a §1.6 **fenntartásával** (a megállapítások a szerző forrásoldaláról valók, nem a letöltött fájlokhoz csatolt licencszövegből; l. N5).
+
+Ezután `--cel lexikon` próba **és** `--cel lexikon --ellenoriz` az éles `lexikon/`-ra. A hét fájl törzse nem változhat (§1.7); ha változik, **állj meg és jelentsd**.
+
+Egy commit, a §6 szerint. Az `F6_BRIEF.md` v5 saját, tétel-azonosító nélküli commitot kap.
+
+---
+
 ## 5. Elfogadási kritériumok
 
 ### 1. menet
@@ -311,10 +393,10 @@ A `licenc:` érték a blokkban **ténylegesen felhasznált** források licencein
 | K5 | A migráció a §F6.2 szerint | 201 sor; 27 `BDB`; 174 üres; minden más mező byte-azonos (a migrációs szkript összevetése) |
 | K6 | Nincs maradék hivatkozás | `grep -rn "bdb_entry_id" eszkozok/ adat/` csak a migrációs szkriptben ad találatot |
 | K7 | A study-próba nem változott | `python eszkozok/general.py --cel study` után a `git diff -- generalt_proba/tematikus_lezart/` üres |
-| K8 | A régi célok nem regresszáltak | `--cel naplo --ellenoriz`, `--cel index --ellenoriz`, `--cel nyitott --ellenoriz`: kilépési kód 0 az F6.2 előtt és után |
+| K8 | A régi célok nem regresszáltak | `--cel naplo --ellenoriz`, `--cel index --ellenoriz`, `--cel nyitott --ellenoriz`: a kilépési kód **az F6.2 előtti és utáni futásban azonos** *(v3: a `naplo` és a `nyitott` 0, az `index` 1 — utóbbi a HAMART-001 hiányzó betöltése miatt már a menet előtt is)* |
 | K9 | A `lexikon_hivatkozasok.tsv` a §F6.3 szerint | 5 sor, az SHA-256 egyezik; minden `szoveg_en` részsztringje a `forrasfajl` megfelelő sorának |
 | K10 | Hét próbafájl, ép markerekkel | `generalt_proba/lexikon/` alatt 7 fájl; fájlonként 7 `GENERÁLT-KEZDET` és 7 `GENERÁLT-VÉGE`, páronként azonos kulccsal; minden `GENERÁLT-KEZDET` tartalmaz `\| licenc: ` részt |
-| K11 | Tisztázatlan forrás jelölve | minden blokk, amelynek `forrás:` mezőjében `LXX_kivonat`, `Thayer`, `LSJ`, `SECE_` vagy `MCGED` áll, a `licenc:` mezőjében `tisztazatlan`-t visel; a 9. szakasz táblája ugyanezeket `tisztazatlan`-ként sorolja. Ma ez csak az `lxx` blokkot érinti, mert a `lexikon_hivatkozasok.tsv` 5 sora BDB/TBESG |
+| K11 | *(v5)* A forrás licence jelölve | minden blokk `licenc:` mezője a `forrás:`-ában szereplő fájlok **§1.3 szerinti tényleges** licencét viseli, és a 9. szakasz táblája ugyanezt mutatja; `tisztazatlan` csak az `LXX_kivonat`-nál. Ma ez csak az `lxx` blokkot érinti, mert a `lexikon_hivatkozasok.tsv` 5 sora BDB/TBESG. *(A v1–v3 szövege a Thayer/LSJ/SECE/MCGED forrásokra is `tisztazatlan`-t kért; a §1.6 után ez érvénytelen — l. §1.7 L6.)* |
 | K12 | Pilot-összevetés | ISTENTISZT-001: az 1. szakasz igehely-halmaza 29 elemű, és a pilot 1. szakaszának halmazával egyezik, egyetlen ismert kulcsalak-eltéréssel (`Jóel 2:32 (MT) / 3:5 (Károli)` ↔ `Jóel 2:32`) |
 | K13 | Blokk-tartalom az adatból | fájlonként: az 1. szakasz sorainak száma = §1.1; a `###` szócikk-alszakaszok száma = a Strong-tokenek száma (7, 3, 2, 2, 3, 4, 3); a `####` jelentés-sorok: ISTENTISZT-001 4, KIRALY-001 1, a többi 0; a `**🇭🇺**` sorok: ISTENTISZT-001 3; minden domén-szám = a `lekerdez.py domen` `n` értéke; a TWOT az ISTENTISZT-001-nél `H7121` → 2063, `H8034` → 2405, `G1941` → `—`; a kapcsolat-táblák sorszáma ISTENTISZT-001 23, KIRALY-001 9, a többi az üres-mondat |
 | K14 | Determinizmus és kézi szakasz | két egymás utáni próbafuttatás byte-azonos; egy próbafájl kézi szakaszába beírt tesztsor az újrafuttatás után megmarad, majd a tesztsor visszavonva (commit nélkül) |
@@ -328,7 +410,20 @@ A `licenc:` érték a blokkban **ténylegesen felhasznált** források licencein
 | K17 | A pilot érintetlen | `git diff cb4aac3 -- motivumlog/lexikon_pilot/` üres |
 | K18 | Lexikon-sablon v2 | `grep -c "TELJES lexikon-szócikk"` = 0; `lexikon/` útvonal jelen; minden `##`/`###` szakaszcím a TUDOMÁNYOS részben `(generált)` vagy `(kézi)` jelölést visel; a „Licenc és nyilvános repó” alszakasz jelen; a v2 bejegyzés jelen |
 | K19 | Nyitott tételek | az N1–N6 hat `ÚJ (F6)` pontként jelen; a generált blokk a diffben nem változik |
-| K20 | Commitok | az `F6.5`–`F6.7` fájllistája a §6 szerint |
+| K20 | Commitok | az `F6.5a`–`F6.7` fájllistája a §6 szerint |
+| K21 | *(v3, v5)* Minden marker licence teljes | minden `GENERÁLT-KEZDET` sorra: a `licenc:` mező a blokkban felhasznált összes forrás **§1.3 szerinti** licencének uniója — `LXX_kivonat` → `tisztazatlan`, `Thayer` és `SECE_` → `közkincs`, `LSJ` → `CC BY-SA 3.0`, `MCGED` → `© Mounce 1993`; a `forrasok`-blokknál a `licenc:` a tábla licenc-oszlopának egyedi halmaza |
+| K22 | *(v3, v4)* Az F6.5a nem változtat mást | a próba újrafuttatása után a `git diff -- generalt_proba/lexikon/` csak a `forrasok` markerek `licenc:` mezőjét, a 9. szakasz licenc-oszlopát (és a `ts=` értékét) érinti |
+| K23 | *(v4)* Licenc-térkép — **a 2. menetben elmaradt, l. §1.7 L5 és a 3. menet táblája** | `grep -c "tisztazatlan"` a hét fájlban csak `LXX_kivonat`-ot tartalmazó blokkokban ad találatot; a `Thayer`, `LSJ`, `SECE` sorok a §1.3 szerinti licencet viselik; MCGED-tartalom esetén a Mounce-megjelölés szó szerint jelen van |
+
+### 3. menet *(v5)*
+
+| # | Kritérium | Ellenőrzés |
+|---|---|---|
+| K23 | *(v4; a 2. menetben elmaradt)* Licenc-térkép | `grep` a hét éles fájlban: `tisztazatlan` csak olyan blokkban, amelynek `forrás:` mezőjében `LXX_kivonat` áll; a licenc-konstansban a `Thayer`/`SECE_` `közkincs`, az `LSJ` `CC BY-SA 3.0`, az `MCGED` `© Mounce 1993` |
+| K24 | Dokumentumok átvezetve | `konkordancia/lexikonok_nyers/README.md`: `grep -c "LICENC-STÁTUSZ TISZTÁZATLAN"` = 0, a §1.6 öt sora és a fenntartás jelen; `adat/SEMA.md` 2.5: a négyes felsorolás helyén a README-hivatkozás |
+| K25 | Szűk hatókör | `git diff -- lexikon/ generalt_proba/lexikon/` a marker `ts=` mezőjén kívül üres, mind a 14 fájlban; `--cel lexikon --ellenoriz` kilépési kódja 0 |
+| K26 | Mounce-ág bizonyítva | ideiglenes, commit nélküli próbával (pl. egy MCGED-sor ideiglenes felvétele a `lexikon_hivatkozasok.tsv`-be): a 9. szakasz alatt a megjelölés szó szerint megjelenik, a marker `licenc:`-e `© Mounce 1993`-at kap; a próba után minden visszaállítva, `git status --porcelain` a §6-on kívül üres |
+| K27 | Commit | az `F6.5b` fájllistája a §6 szerint; a `naplo`/`index`/`nyitott` `--ellenoriz` kilépési kódja változatlan (0 / 1 / 0) |
 
 ---
 
@@ -342,11 +437,15 @@ Tétel-szintű commitok, magyar üzenettel, UTF-8 fájlból (`git -c i18n.commit
 | `F6.2: elofordulasok.tsv — bdb_entry_id → lexikon_szotar + lexikon_entry_id; SEMA 2.2/2.5` | `eszkozok/f6_2_lexikon_hivatkozas_migracio.py`, `adat/elofordulasok.tsv`, `adat/SEMA.md`, `adat/lexikon_hivatkozasok.tsv`, `eszkozok/general.py` |
 | `F6.3: lexikon_hivatkozasok.tsv — öt jelentés-sor (BDB, TBESG), három pilot-fordítással` | `eszkozok/f6_3_lexikon_hivatkozasok_toltes.py`, `adat/lexikon_hivatkozasok.tsv` |
 | `F6.4: general.py --cel lexikon — lexikon-generátor, próba a generalt_proba/lexikon/ alá` | `eszkozok/lexikon_general.py`, `eszkozok/general.py`, `generalt_proba/lexikon/` (7 fájl) |
+| `F6.5a: lexikon_general.py — teljes licenc-halmaz a markerben, tisztázott licenc-térkép` | `eszkozok/lexikon_general.py`, `adat/SEMA.md`, `konkordancia/lexikonok_nyers/README.md`, `generalt_proba/lexikon/` (7 fájl) |
 | `F6.5: lexikon élesítve — lexikon/[ID]_TUDOMANYOS.md, hét motívum` | `eszkozok/general.py`, `lexikon/` (7 fájl) |
 | `F6.6: lexikon-sablon v2 — generált váz, kézi szakaszok, licenc-szabály` | `sablonok/6_PaRDeS_lexikon_oldal_sablon.md` |
 | `F6.7: NYITOTT_FELADATOK.md — az F6 nyitott tételei` | `NYITOTT_FELADATOK.md` |
+| *(v5)* `F6.5b: licenc-térkép élesítve — Thayer/SECE közkincs, LSJ CC BY-SA 3.0, kötelező Mounce-megjelölés` | `eszkozok/lexikon_general.py`, `adat/SEMA.md`, `konkordancia/lexikonok_nyers/README.md` |
 
-Az F6.0 nem commitol. A brief saját commitja tétel-azonosító nélkül megy (`F6_BRIEF.md v1: …`). **Push csak külön kérésre.**
+Az F6.0 nem commitol. A brief saját commitja tétel-azonosító nélkül megy (`F6_BRIEF.md v5: …`). **Push csak külön kérésre.**
+
+*(v5)* Az F6.5b commitjában a `lexikon/` és a `generalt_proba/lexikon/` **nem szerepel**: a §1.7 szerint a törzsük nem változhat. Ha mégis szerepelnie kellene, az a K25 sérülése — előtte megállás és jelentés.
 
 ---
 
@@ -397,15 +496,38 @@ számai motívumonként táblázatban, a TSK/KH-blokkok találatszáma és a
 ```
 Olvasd el az F6_BRIEF.md 4. pontját és az 5. pont 2. menet-tábláját.
 
-0. Ellenőrizd: main = origin/main = az 1. menet ellenőrzött push-hash-e.
-   Ha nem, állj meg.
-1. F6.5: ELESITHETO + lexikon; --cel lexikon --ir. K16, K17. Commit.
-2. F6.6: lexikon-sablon v2 a brief öt követelménye szerint. K18. Commit.
-3. F6.7: NYITOTT_FELADATOK.md, hat új pont. K19. Commit.
-4. K20.
+0. Ellenőrizd: main = origin/main = 2b2e642. Ha nem, állj meg.
+1. F6.5a: lexikon_general.py blokk_forrasok marker licenc-mezője + a
+   licenc-térkép frissítése (SEMA 2.5, lexikonok_nyers/README.md);
+   próba újrafuttatása. K21, K22, K23. Commit.
+2. F6.5: ELESITHETO + lexikon; --cel lexikon --ir. K16, K17, K21 az éles
+   fájlokra is. Commit.
+3. F6.6: lexikon-sablon v2 a brief öt követelménye szerint. K18. Commit.
+4. F6.7: NYITOTT_FELADATOK.md, hat új pont. K19. Commit.
+5. K20.
 
-Push nincs. Zárójelentés: hash-ek, K16–K20 kritériumonként, a sablon-diff
+Push nincs. Zárójelentés: hash-ek, K16–K23 kritériumonként, a sablon-diff
 szakaszcímei, és minden eltérés.
+```
+
+### 8.3 A 3. menet nyitó promptja *(javító, v5; Sonnet)*
+
+```
+Olvasd el az F6_BRIEF.md §1.7, §4/b és §5 „3. menet” pontját.
+
+0. Ellenőrizd: main = 7e23e61, a munkafa tiszta (az F6_BRIEF.md
+   módosítottan állhat). Ha nem, állj meg.
+1. F6.5b a §4/b négy pontja szerint. K23, K24, K26.
+2. --cel lexikon próba, majd --cel lexikon --ellenoriz az éles lexikon/-ra.
+   K25. Ha bármelyik fájl törzse változik, ÁLLJ MEG és jelentsd — ne commitolj.
+3. naplo/index/nyitott --ellenoriz regresszió (0 / 1 / 0). K27.
+4. Commit a §6 F6.5b sora szerint. Külön commit: F6_BRIEF.md v5.
+
+Héber vagy görög karaktert tartalmazó kódot csak fájlból futtass.
+Push nincs. Zárójelentés: hash-ek, K23–K27 kritériumonként (mindegyik
+külön sorban, kihagyás nélkül), a K26 ideiglenes próbájának kimenete,
+és minden eltérés — külön kiemelve a hiányzó és a plusz fájlokat a §6
+táblájához képest.
 ```
 
 ---
@@ -428,6 +550,9 @@ szakaszcímei, és minden eltérés.
 | D12 | A TSK/KH-blokk a `lekerdez.py` pontos igehely-illesztését követi | Egy igazságforrás: a lexikon ugyanazt mutassa, amit a lekérdezés. A tartományos igehelyek felsorolva, nem csendben kihagyva. |
 | D13 | A render-logika külön modulban | A `general.py` már 1 193 sor; a lexikon hét blokktípusa külön modulban tesztelhető. |
 | D14 | Két menet, Sonnet | Terv D11; a tartalmi ítélet kívül esik. |
+| D16 | *(v4)* A Thayer, az LSJ és a SECE a tényleges licencét kapja; a Mounce marad, kötelező megjelöléssel | A §1.6 tisztázása után a `tisztazatlan` gyűjtőcímke ezeknél félrevezető lenne. A Mounce az egyetlen kifejezetten jogfenntartott forrás, ezért nála a megjelölés nem díszítés, hanem feltétel; felhasználói döntés (2026-09-19), hogy benne marad. |
+| D17 | *(v5)* A kimaradt licenc-térkép önálló F6.5b tételként, rövid 3. menetben fut, a `cdf02dc` átírása nélkül; a K11 és a K21 szövege a v4-hez igazítva | A v1–v3 commitok nem íródnak át (a §1.5 elve). A K21 és a K23 ellentmondása a brief hibája volt — javítás nélkül a 3. menet ugyanabba futna bele. Az F6.5b hatóköre szándékosan dokumentum-túlsúlyos: a generált törzs változása itt hiba, nem eredmény. |
+| D15 | *(v3)* A marker `licenc:` mezője a blokkban megjelenített licencek uniója, nem csak az olvasott adatfájloké | Felhasználói döntés (2026-09-19). A 9. szakasz azért van, hogy egy helyen lássuk az oldal licenc-képét; ha a marker ezt nem tükrözi, a gépi keresés kihagyja az érintett oldalakat. A `forrás:` mező marad az, amit a blokk olvasott. |
 
 ### Nyitott, a briefben szándékosan el nem döntött kérdések
 
@@ -435,5 +560,5 @@ szakaszcímei, és minden eltérés.
 - **N2 — A `jelentes_szam` három union-sértő értéke.** A `(tagadva)` és a `(rokon)` igehelyi megjegyzés, nem jelentésszám. Hová kerüljön: a `kapcsolodas`-ba, új mezőbe, vagy a `jelentes_hu`-ba?
 - **N3 — Formula és Kapcsolódó motívum.** A sablon 0. szakasza kéri, a `motivumok.tsv`-ben nincs mezőjük. Új mezők, vagy maradnak kézi szövegként?
 - **N4 — A tisztázatlan források kockázata.** A D9 szerint idézhetők; az MCGED (Mounce) valószínűleg védett. Ha publikálás vagy megkeresés merül fel, a `tisztazatlan` jelölésű blokkok az elsők, amelyeket jogilag át kell nézni.
-- **N5 — A Thayer digitalizált forrása.** Ha jogtiszta forrás azonosítható (playbook 2. pont), a `tisztazatlan` jelölés `közkincs`-re cserélhető.
+- **N5 — Saját import az eredeti forrásokból.** *(v4: a licenc-státuszok tisztázva, l. §1.6.)* A Thayer, az LSJ és a SECE ma egy köztes csomagon át érkezett. Egy rögzített commitra hivatkozó saját import (Perseus `lexica`, `openscriptures/strongs`) a proveniencia-bizonytalanságot is megszüntetné, és megnyitná a Thayert a görög oldal mélységi szintjeként (kétszintű fordítási séma).
 - **N6 — A KIRALY-001 `G0813` tokenje.** A `NYITOTT_FELADATOK.md` szerint téves (helyesen `G0540`), és a generált szócikk-alszakasz ezt továbbviszi. Felhasználói megerősítésre vár.
