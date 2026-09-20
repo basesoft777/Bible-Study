@@ -29,6 +29,30 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
 * **ÚJ (F6, 2026.09.20) — a Thayer digitalizált forrásának jogtisztázása.** Ha jogtiszta forrás azonosítható (l. `Rendszerfejlesztesi_playbook.md` 2. pont), a Thayer `tisztazatlan` licenc-jelölése `közkincs`-re cserélhető a generátorban (F6_BRIEF.md N5).
 * **ÚJ (F6, 2026.09.20) — a KIRALY-001 `G0813` tokenje téves.** A `TAGNT_kivonat.tsv` szerint helyesen `G0540` volna (l. fent, F3.4-es tétel); a generált lexikon-szócikk ezt a hibát a mai `motivumok.tsv`/`elofordulasok.tsv` állapot szerint továbbviszi — felhasználói megerősítésre vár (F6_BRIEF.md N6).
 
+- **N7 — A marker-fejléc befagyása meglévő fájlon.** *(ÚJ, F6 zárás után,
+  2026.09.20)* A megosztott `G.blokk_beilleszt` (`eszkozok/general.py`) csak a
+  marker-pár közötti törzset cseréli, a kezdő marker fejlécét soha — így a
+  fejlécmezők (pl. `licenc:`) meglévő fájlon némán befagynak. Az F6.5a ezt csak
+  a lexikon célra kerülte meg (`_blokk_beilleszt_fejleccel`, `lexikon_general.py`);
+  a `naplo`/`index`/`nyitott`/`motivumok` célokon ma azért nem látszik, mert a
+  fejlécükben a `ts=`-en kívül nincs érdemi adat. Amint bármelyikébe metaadat
+  kerül, ugyanez a néma nem-frissülés jön vissza. Eldöntendő: a fejléces
+  beillesztés váltsa-e ki a megosztott függvényt (a K7/K8 byte-azonossági
+  garanciák újramérésével), vagy maradjon célonkénti.
+
+- **N8 — A `general.py` main() cél-kivételei.** *(ÚJ, F6 zárás után, 2026.09.20)*
+  Az F6.5 után három helyen `cel != 'lexikon'` kivétel ágaztatja a main()-t
+  (egyfájlos `CEL_FAJL`-ág, „nem élesíthető” üzenet, `vegso_kod`). A minta a
+  következő könyvtáras célnál megismétlődne. Eldöntendő: cél-képesség leíró
+  (egyfájlos/könyvtáras, élesíthető, saját jelentés) váltsa-e ki mindhármat.
+
+- **N9 — A licenc-besorolás kettős forrása.** *(ÚJ, F6 zárás után, 2026.09.20)*
+  Az F6.5b után a besorolás két helyen áll: a `lexikon_general.py`
+  licenc-konstansában és a `TISZTAZATLAN_SZOTARAK` halmazban (ez utóbbi most
+  üres, magyarázó kommenttel). Egy új, tisztázatlan licencű forrásnál a kettő
+  szétcsúszhat. Javaslat: a halmaz származzon a konstansból
+  (`{f for f, l in LICENC.items() if l == 'tisztazatlan'}`), vagy szűnjön meg.
+
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá vált — belépő: `DONTESEK_INDEX.tsv`. A vers-szintű jelöltek nem ide, hanem az `adat/jeloltek.tsv`-be kerültek (16 sor, mind `dontes=nyitva`): HODIT-001 13 alacsony szavazatú TSK-jelölt, MENNY-001 Mt 24:38 + Luk 17:27, ANTROP-001 Fil 1:27. Az alábbiak a nem vers-szintű tételek:
