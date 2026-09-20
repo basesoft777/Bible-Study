@@ -50,7 +50,7 @@ Generált fájl fejlécében gépi jelölés áll (`# GENERÁLT: …`). Ha ilyet
 ## Kutatási menet — a hét lépés
 
 A sorrend maga a védelem a hígulás ellen: **a gerincet mindig le kell vezetni, és a
-levezetést dokumentálni kell — akkor is, ha üres az eredmény.**
+levezetést dokumentálni kell — akkor is, ha üres az eredmény.** *(A hét lépés a B2–B6 és B9 belső protokollja; a teljes A/B/C munkamenet-ív a `MUNKAMENET.md`-ben áll.)*
 
 1. **gerinc-metszet** (közös Strong-halmaz, `adat/grammatikai_strongok.tsv` szűréssel)
 2. **szemantikai mező-hipotézis** — az egyetlen *generatív* lépés; a mező-szavak a naplóba kerülnek
