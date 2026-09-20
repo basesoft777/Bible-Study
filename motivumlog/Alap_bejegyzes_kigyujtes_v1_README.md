@@ -15,3 +15,11 @@ Ez azt jelenti: a 111 "találatból" ismeretlen hányad téves szó-párosítás
 ## Felhasználási korlátozás
 
 **Ez az adat NEM használható fel a lexikonban vagy a motívumnaplóban emberi felülvizsgálat nélkül.**
+
+## Archív státusz *(F7.5, 2026.09.20)*
+
+Ez a fájl és a mellette álló `Alap_bejegyzes_kigyujtes_v1_PISZKOZAT.tsv` **archív**: a
+visszabányászó módszert (bővített tanulmány prózából Strong-adat kikövetkeztetése) az
+`ATALAKITASI_TERV.md.md` 7. pontjának A3 lépése váltotta ki — az új rendben a kulcsszó-táblázat
+*kiíródik* a `jeloltek.tsv`-be, nem visszakereshető. A PISZKOZAT TSV-re ma egyetlen
+`eszkozok/*.py` szkript sem hivatkozik (mérve, 2026.09.20).
