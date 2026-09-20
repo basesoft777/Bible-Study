@@ -53,6 +53,14 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
   szétcsúszhat. Javaslat: a halmaz származzon a konstansból
   (`{f for f, l in LICENC.items() if l == 'tisztazatlan'}`), vagy szűnjön meg.
 
+- **N10 — A „sorozat-tábla" (terv A7) nincs definiálva.** *(ÚJ, F7 után,
+  2026.09.20)* Az `ATALAKITASI_TERV.md.md` 7. pontja az A7 lépésnél
+  „motívumnapló, index, sorozat-tábla újragenerálása"-t ír elő, de a
+  „sorozat-tábla" fogalma a tervben sehol máshol nincs definiálva, és nincs
+  hozzá implementáció (`eszkozok/`-ban nincs rá utaló szkript). Eldöntendő:
+  definiálandó artefaktum-e (és ha igen, mi a tartalma/forrása), vagy a
+  tervből törlendő, félbehagyott fogalom.
+
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá vált — belépő: `DONTESEK_INDEX.tsv`. A vers-szintű jelöltek nem ide, hanem az `adat/jeloltek.tsv`-be kerültek (16 sor, mind `dontes=nyitva`): HODIT-001 13 alacsony szavazatú TSK-jelölt, MENNY-001 Mt 24:38 + Luk 17:27, ANTROP-001 Fil 1:27. Az alábbiak a nem vers-szintű tételek:
