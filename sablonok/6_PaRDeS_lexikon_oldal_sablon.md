@@ -1,5 +1,15 @@
 # 6. PaRDeS lexikon-oldal sablon (Motívumlexikon-pilot alapján)
 
+*v2 — 2026.09.19/20 (F6_BRIEF.md: a TUDOMÁNYOS változat mostantól
+generált vázból és kézi szakaszokból áll — `eszkozok/lexikon_general.py`,
+`python eszkozok/general.py --cel lexikon --ir`, célfájl
+`lexikon/[ID]_TUDOMANYOS.md`. A generátor a 0., 1., 2., 3., 4., 5. és 9.
+szakaszt írja marker-blokkokként; a köztük álló szakaszok kézzel
+írandók, és a generátor nem nyúl hozzájuk. Minden generált blokk
+markere licenc-mezőt visel — l. „Licenc és nyilvános repó" alább. A
+lenti A) szakasz ennek megfelelően frissült; a B) OLVASHATÓ változat és
+a közös szabályok tartalmilag változatlanok maradtak.)*
+
 *v1 — 2026.09.07 (visszafejtve az ISTENTISZT-001 pilot két kimeneti
 fájljából — `ISTENTISZT-001_TUDOMANYOS.md` és `ISTENTISZT-001_
 OLVASHATO.md` —, hogy a folyamat ismételhető és a kimenet
@@ -14,8 +24,12 @@ a memóriára.)*
 
 Nem helyettesíti a tematikus study-t — **kizárólag már lezárt,
 v12-compliant tematikus tanulmányból** készíthető, annak
-"lexikon-nézeteként". Nem automatikus — mindig felhasználói jóváhagyás
-után indul, motívumonként egyesével.
+"lexikon-nézeteként". A TUDOMÁNYOS változat generált váza automatikus
+(`general.py --cel lexikon`), de csak akkor fut le értelmesen, ha az
+alábbi előfeltétel teljesül — a kézi szakaszok (1/b, "Miért fontos ez a
+lelet", Minősítés, Alátámasztás, Módszertani napló, Nyitott kérdések)
+továbbra is felhasználói jóváhagyás után, motívumonként egyesével
+íródnak.
 
 **Kötelező előfeltétel-ellenőrzés indítás előtt:**
 1. Létezik-e a `[Motívum]_tematikus.md` a `tematikus_lezart/`
@@ -31,10 +45,10 @@ után indul, motívumonként egyesével.
 
 ## Kimenet: KÉT fájl, kötelezően mindkettő
 
-| Fájl | Cél | Hossz-jelleg |
-|---|---|---|
-| `[MOTÍVUM-ID]_TUDOMANYOS.md` | Teljes, minden forrást szó szerint idéző referencia-lap | Hosszú, táblázatos |
-| `[MOTÍVUM-ID]_OLVASHATO.md` | Rövid, prózai, nyomtatható változat | Rövid, folyó szöveg |
+| Fájl | Cél | Hossz-jelleg | Előállítás |
+|---|---|---|---|
+| `lexikon/[MOTÍVUM-ID]_TUDOMANYOS.md` | Teljes, minden forrást szó szerint idéző referencia-lap | Hosszú, táblázatos | **generált váz + kézi szakaszok** (`general.py --cel lexikon --ir`) |
+| `[MOTÍVUM-ID]_OLVASHATO.md` | Rövid, prózai, nyomtatható változat | Rövid, folyó szöveg | **kézi**, motívumonként |
 
 Ez nem opcionális kettősség — a `Bibliai_Motivumlexikon_tervezesi_
 naplo.md` 12. pontja ("a motívumnaplónak önmagában is, adatbázis-
@@ -42,130 +56,156 @@ lekérdezés nélkül olvashatónak kell maradnia, akár nyomtatható
 formában is") kifejezett tervezési elv, amit ez a két fájl valósít
 meg.
 
-Könyvtár: `motivumlog/lexikon_pilot/` (vagy a végleges, nem-pilot
-elnevezésű könyvtár, ha a pilot-fázis lezárul).
+**Könyvtár:** a TUDOMÁNYOS változat éles helye `lexikon/`
+(`[MOTÍVUM-ID]_TUDOMANYOS.md`); az OLVASHATÓ változat helye egyelőre
+szintén ott íródik, motívumonként kézzel. A `motivumlog/lexikon_pilot/`
+**csak archívum** — az ISTENTISZT-001 és KIRALY-001 pilot-fájljai ott
+maradnak, a generátor nem nyúl hozzájuk, és nem a jelenlegi folyamat
+bemenete vagy kimenete (F6_BRIEF.md K17).
 
 ---
 
 ## A) TUDOMÁNYOS változat — kötelező szakaszok, pontos sorrendben
 
-### 0. Metaadatok
-Táblázat, mezők pontosan ebben a sorrendben: `ID` (a motívum-
-azonosító séma szerint, pl. `ISTENTISZT-001`) | `Rövid UI-címke`
-(2-4 szó) | `Teljes cím` | `Formula` (eredeti nyelvi kifejezés,
-kiejtéssel) | `Kapcsolódó motívum` (ha van, elhatárolással) |
-`Forrás-study` (elérési út) | `Kereszthivatkozás-napló` (elérési
-út, ha van) | `Sablon-megfelelőség` (verziószám + audit dátuma).
+A sorrend és a címek a generátor fájlváza szerint kötöttek
+(`eszkozok/lexikon_general.py` `VAZ_SABLON`, F6_BRIEF.md §3 F6.4).
+Minden szakaszcím **(generált)** vagy **(kézi)** jelöléssel: a
+**(generált)** szakasz tartalma a `general.py --cel lexikon` GENERÁLT-
+marker-blokkja, kézzel nem szerkeszthető (a szerkesztés a legközelebbi
+futtatáskor felülíródik); a **(kézi)** szakaszt a generátor nem érinti.
 
-### 1. Előfordulások — teljes leírással
-A forrás-study 1. pontjának táblázata **szó szerint átemelve** —
-NEM újrafogalmazva. Oszlopok: Igehely | Kapcsolódás | PaRDeS-szint |
-Funkció | Strong-szám(ok) | BDB sense (vagy más lexikon sense-
-hivatkozás).
+### 0. Metaadatok (generált)
+Tábla: ID | Rövid UI-címke | Teljes cím | Téma | PaRDeS-szint | Státusz
+| Azonosság típusa | Negatív kritérium | Fölérendelt fogalom |
+Forrás-study | Kereszthivatkozás-napló | Sablon-megfelelőség — a
+`motivumok.tsv` sora szerint.
 
-### 1/b. PaRDeS keretrendszer — a study 3. pontjából, a lexikon-adat
-fényében bővítve
-**Kötelező szakasz** (2026.09.07-től) — a forrás-study "3. A PaRDeS
-keretrendszer" szakasza (Peshat/Remez/Drash/Sod, a motívum egészére
-alkalmazva) átemelendő, és **bővítendő** minden olyan lexikai
-felismeréssel, amit a 2-N. szakaszok többforrásos lexikon-idézése
-hozott (pl. ha több forrás egybehangzóan megerősít egy értelmezést,
-vagy egy forrás explicit sense-megkülönböztetést tartalmaz, ami a
-Remez/Drash rétegek valamelyikét alátámasztja). A bővítés a Remez
-és/vagy Drash rétegbe kerül (nem a Peshat vagy Sod rétegbe, hacsak a
-lelet nem kifejezetten ott indokolt) — a Sod réteg fegyelmezettsége
-külön kiemelendő indoklással védendő új adat esetén is. Stílus:
-törekedjen közérthetőségre a tisztán tudományos leírás helyett is,
-különösen a bővítő bekezdésekben — a cél, hogy a lelet jelentősége
-ne csak szakértő olvasó számára legyen világos.
+### 1. Előfordulások (generált)
+Az `elofordulasok.tsv` sorai kanonikus sorrendben: Igehely |
+Kapcsolódás | PaRDeS-szint | Funkció | Strong-szám(ok) |
+Lexikon-jelentés (`‹szótár› ‹entry_id› ‹jelentés-szám› — ‹magyar
+fordítás›`, vagy `—`, ha nincs hivatkozás).
 
-### 2-N. TELJES lexikon-szócikk(ek) szó szerint
-Minden motívum-kulcsszóra (jellemzően 2, pl. az ige + a főnév) egy
-külön szakasz. Minden szakaszban:
-- A releváns sense(ek) **szó szerint, eredeti nyelven** idézve,
-  forrásmegjelöléssel (fájlnév + sor).
-- Közvetlenül alatta **magyar fordítás**, 🇭🇺 jelöléssel.
-- **Forrás:** sor a szakasz végén (fájlnév, feldolgozási módszer).
-- Ha a szócikk hosszú és sok, a motívum szempontjából nem releváns
-  részt is tartalmaz (pl. morfológiai alakok teljes listája), ezt
-  explicit jelezni kell: *"a teljes szócikk X karakter — itt csak a
-  releváns N. és M. sense szerepel, mert a többi [ok]"*.
+### 1/b. PaRDeS keretrendszer (kézi)
+A forrás-study "3. A PaRDeS keretrendszer" szakasza (Peshat/Remez/
+Drash/Sod, a motívum egészére alkalmazva) átemelendő, és **bővítendő**
+minden olyan lexikai felismeréssel, amit a 2. szakasz többforrásos
+lexikon-idézése hozott (pl. ha több forrás egybehangzóan megerősít egy
+értelmezést, vagy egy forrás explicit jelentés-megkülönböztetést
+tartalmaz, ami a Remez/Drash rétegek valamelyikét alátámasztja). A
+bővítés a Remez és/vagy Drash rétegbe kerül (nem a Peshat vagy Sod
+rétegbe, hacsak a lelet nem kifejezetten ott indokolt) — a Sod réteg
+fegyelmezettsége külön kiemelendő indoklással védendő új adat esetén
+is. Stílus: törekedjen közérthetőségre a tisztán tudományos leírás
+helyett is, különösen a bővítő bekezdésekben — a cél, hogy a lelet
+jelentősége ne csak szakértő olvasó számára legyen világos.
 
-**Ha egy szóhoz TÖBB lexikon is elérhető** (pl. TBESG ÉS Thayer),
-mindegyiket **külön alszakaszban, egymás után** kell idézni — ne
-összeolvasztva, ne csak az egyiket választva. A cél a **kereszt-
-olvasás lehetővé tétele**, nem a redundancia elkerülése — ez a
-lapos, teljes-szöveges lexikon-struktúra tudatos kihasználása (l.
-tervezési napló 15. pont).
+### 2. Lexikon-szócikkek (generált)
+A motívum minden Strong-tokenjére egy `###` alszakasz: TWOT-szám (ha
+héber), szemantikai domén (SDBH/SDGNT), és a `lexikon_hivatkozasok.tsv`
+minden hozzá tartozó sora — szótáranként és jelentés-számonként
+alszakaszban, a forrásfájl megfelelő sorának **szó szerinti kivonatával**
+(`szoveg_en`), alatta a magyar fordítással (`forditas_hu`, ha van) és a
+forrásfájl megjelölésével. **Ha egy szóhoz TÖBB szótár is elérhető**
+(pl. TBESG ÉS Thayer), mindegyik saját `####` alszakaszban, egymás
+után jelenik meg — ez a `lexikon_hivatkozasok.tsv` szótárankénti
+sorai szerint automatikus, nem kézi döntés.
 
-Minden ilyen többforrásos szakasz után kötelező egy **"Miért fontos
-ez a lelet"** bekezdés, ami kimondja: mit ad hozzá a második/
-harmadik forrás, amit az első önmagában nem adott — vagy explicit
-jelzi, ha nem ad hozzá semmi újat.
+**Új jelentés felvétele:** ha egy motívum-token jelentés-hivatkozása
+hiányzik vagy hiányos, az **nem** a lexikon-oldalon pótlandó, hanem az
+`adat/lexikon_hivatkozasok.tsv` táblában — új sorral, a `szoveg_en`
+mezőben a forrásfájl szó szerinti kivonatával és a `forditas_hu`
+mezőben a magyar fordítással (l. `adat/SEMA.md` 2.5). A generátor
+következő futtatása ezt automatikusan megjeleníti a szócikk-blokkban.
 
-### N+1. LXX-híd nyers adat (ha a motívum ÓSZ-i eredetű és van ÚSZ-i
-kapcsolódása)
+### Miért fontos ez a lelet (kézi)
+Minden többforrásos szócikk-alszakasz után kötelező egy bekezdés, ami
+kimondja: mit ad hozzá a második/harmadik forrás, amit az első
+önmagában nem adott — vagy explicit jelzi, ha nem ad hozzá semmi újat.
+
+### 3. LXX-híd — nyers adat (generált)
 Táblázat: Igehely | Görög szóalak | Morfológiai kód | Strong |
-Forrás-jelzés (pl. `ABP-pótolt`, `LXX_WH`, `ELTERO_SZOVEGALAP`).
-Forrás-fájlok felsorolva a táblázat alatt.
+Forrás-jelzés — a motívum görög Strong-tokenjeire szűrve, a motívum
+ÓSZ-i igehelyein. Ha a motívumnak nincs görög tokenje, ezt a blokk
+explicit jelzi, tábla nélkül.
 
-### N+2. TSK és Károli-KH kereszthivatkozás — nyers eredmény
+### 4. TSK és Károli-KH — nyers eredmény (generált)
 A négyforrásos módszertan (`PaRDeS_gyorsreferencia.md`) szerinti,
-**minden** vizsgált igehelyre lefuttatott TSK (Votes ≥ 15 szűréssel)
-és Károli-KH eredmény, felsorolva:
-- Ami **független megerősítés** egy már ismert kapcsolatra
-- Ami **új, valódi találat** — ezt kiemelve, külön bekezdésben
-  indokolva
-- Ami ellenőrizve lett, de **nem releváns** — ezt is fel kell
-  sorolni, ne csak hallgatni róla (a hamis nyomok dokumentálása
-  ugyanolyan fontos, mint a találatoké)
+**minden** vizsgált igehelyre lefuttatott TSK (Votes ≥ 15 szűréssel) és
+Károli-KH eredmény, igehelyenkénti bekezdésekben; a versenkénti
+kereséssel nem vizsgálható igehelyek felsorolva a blokk végén.
 
-### N+3. Kapcsolatok — teljes relációs adat, diagrammal és
-alátámasztással
-1. **Mermaid `graph LR` diagram** — minden előfordulás legalább egy
-   élen szerepeljen. Szín-konvenció: `style X fill:#fff3cd,
-   stroke:#856404` sárga az ELŐKÉP/BETELJESEDÉS csomópontra;
-   `fill:#f8d7da,stroke:#721c24` piros a kivételes/nyitott/be nem
-   sorolható csomópontra; szaggatott nyíl (`-.->`) bizonytalanabb,
-   csak lexikai (nem funkcionális) kapcsolatnál.
-2. Jelmagyarázat bekezdés közvetlenül a diagram alatt.
-3. **⚠️ Séma-korlát bekezdés, ha releváns** — ha egy eset nem fér
-   bele a Forrás-igehely/Cél-igehely kétpontos modellbe (pl. egy
-   versen belüli kontraszt), ezt itt explicit ki kell mondani, és
-   jelezni, hogy ez nyitott tervezési kérdés a `Bibliai_
-   Motivumlexikon_tervezesi_naplo.md` KAPCSOLATOK-fejezetéhez.
-4. **"A kapcsolatok alátámasztása" táblázat** — MINDEN sorra: miért
-   ez a funkció-címke, miért ez a bizonyossági szint (Magas/
-   Közepes/Alacsony), konkrét szövegi indoklással (szó szerinti
-   idézés vs. parafrázis vs. csak lexikai egyezés).
-5. Zárósor: hivatkozás a nyers, gépileg olvasható forrásra
-   (`Motivum_kapcsolatok_PILOT.tsv` vagy véglegesített megfelelője),
-   az oszlopnevek felsorolásával.
+### Minősítés (kézi)
+Igehelyenként/találatonként: független megerősítés / új találat / nem
+releváns — indoklással. A hamis nyomok dokumentálása ugyanolyan
+fontos, mint a találatoké.
 
-### N+4. Módszertani napló
+### 5. Kapcsolatok (generált)
+**Mermaid `graph LR` diagram** (minden érintett igehely legalább egy
+élen szerepel) és alatta tábla: Forrás | Cél | Típus | Funkció |
+Bizonyosság | PaRDeS-szint — a `kapcsolatok.tsv` sorai szerint. Ha nincs
+kapcsolat-sor a motívumhoz, ezt a blokk explicit jelzi.
+
+### Alátámasztás (kézi)
+A kapcsolatok táblájának MINDEN sorára: miért ez a funkció-címke, miért
+ez a bizonyossági szint (Magas/Közepes/Alacsony), konkrét szövegi
+indoklással (szó szerinti idézés vs. parafrázis vs. csak lexikai
+egyezés). Ha egy eset nem fér bele a Forrás-igehely/Cél-igehely
+kétpontos modellbe (pl. egy versen belüli kontraszt), ezt itt explicit
+ki kell mondani, és jelezni a nyitott tervezési kérdést.
+
+### 6. Módszertani napló (kézi)
 Táblázat: # | Módszer | Eredmény — a study elkészítésekor futtatott
-összes ellenőrzési réteg (jellemzően a projekt 8 rétegű
-ellenőrzési sorozata, l. `method-learnings`), tömören összefoglalva.
-Alatta egy mondat, ami a teljes indoklás helyére mutat (chat-napló
-dátuma, kereszthivatkozás-napló fájlneve).
+összes ellenőrzési réteg, tömören összefoglalva. Alatta egy mondat, ami
+a teljes indoklás helyére mutat (chat-napló dátuma,
+kereszthivatkozás-napló fájlneve).
 
-### N+5. ÚJ FELISMERÉS (ha van) — pilot-only jelöléssel
-Ha a lexikon-oldal elkészítése közben olyan felismerés születik,
-ami **nincs** még a tematikus study-ban, ezt **külön, explicit
-jelölt szakaszként** kell felvenni, a szakasz elején kötelező
-figyelmeztetéssel: *"Ez a szakasz kizárólag a lexikon-pilotban
-rögzített megfigyelés — a `[Motívum]_tematikus.md` fájlba
-szándékosan NEM került be, amíg külön döntés nem születik róla."*
-A szakasz végén kötelező egy "Amit ez a felismerés NEM állít"
-bekezdés (a túlterjeszkedés explicit korlátozására) és egy "Nyitott
-kérdés a folytatáshoz" bekezdés.
+### 7. ÚJ FELISMERÉS (kézi, ha van)
+Ha a lexikon-oldal elkészítése közben olyan felismerés születik, ami
+**nincs** még a tematikus study-ban, ezt **külön, explicit jelölt
+szakaszként** kell felvenni, a szakasz elején kötelező
+figyelmeztetéssel: *"Ez a szakasz kizárólag a lexikon-oldalon rögzített
+megfigyelés — a `[Motívum]_tematikus.md` fájlba szándékosan NEM került
+be, amíg külön döntés nem születik róla."* A szakasz végén kötelező egy
+"Amit ez a felismerés NEM állít" bekezdés és egy "Nyitott kérdés a
+folytatáshoz" bekezdés.
 
-### Utolsó szakasz. Nyitott kérdések és séma-korlátok
+### 8. Nyitott kérdések és séma-korlátok (kézi)
 Számozott lista — minden, ami a fenti szakaszokban "nyitva" maradt
-(funkcionális besorolás hiánya, séma-korlát, forrás hiánya stb.),
-egy helyen összegyűjtve. Lezárt tételek áthúzva (`~~...~~`)
-megtarthatók, dátummal, ha időközben megoldódtak — ne töröld, hogy
-látszódjon a folyamat.
+(funkcionális besorolás hiánya, séma-korlát, forrás hiánya stb.), egy
+helyen összegyűjtve. Lezárt tételek áthúzva (`~~...~~`) megtarthatók,
+dátummal, ha időközben megoldódtak — ne töröld, hogy látszódjon a
+folyamat.
+
+### 9. Források és licencek (generált)
+Tábla: Forrás | Fájl | Licenc | Blokk — a fájlban ténylegesen
+felhasznált forrásfájlok, fájlonkénti licenc-hozzárendeléssel. L.
+"Licenc és nyilvános repó" alább.
+
+---
+
+## Licenc és nyilvános repó (kézi)
+
+**A repó nyilvános marad.** Minden generált marker-blokk fejléce
+(`<!-- GENERÁLT-KEZDET: … | forrás: … | licenc: … | ts=… -->`) a
+blokkban ténylegesen felhasznált források licenceinek rendezett,
+egyedi halmazát viseli; a 9. szakasz táblája ugyanezt forrásfájlonkénti
+bontásban ismétli meg. Gépi kereséssel (`grep "licenc:.*tisztazatlan"`)
+mindig visszakereshető, mely oldal melyik blokkja épül tisztázatlan
+licencű forrásra.
+
+**Tisztázatlan licencű források** (D9, F6_BRIEF.md 2. pont 8. sora):
+a `Thayer_teljes.tsv`, `LSJ_teljes.tsv`, a `SECE_*` fájlok, az
+`MCGED.lexicon` és az `LXX_kivonat_*.tsv` **bekerülnek** a generált
+rétegbe — idézhetők, ugyanúgy, mint a jogtiszta források —, de minden
+blokk, amely ilyet olvas, a markerében és a 9. szakasz táblájában
+`tisztazatlan` licencet visel. Ha a döntés később megfordul, a
+jelölés miatt gépileg visszakereshető, mely oldal melyik blokkja
+érintett (l. Döntésnapló D9, N4, N5).
+
+**TWOT-szabály:** a lexikon-szócikk csak a TWOT-**számot** idézi (az
+`OSHL_lexikalis_index.tsv`-ből, CC BY 4.0), a TWOT szócikk **szövegét**
+sosem — a TWOT-nak nincs jogtiszta forrása a repóban (D7).
 
 ---
 
