@@ -318,9 +318,10 @@ Kulcs: `szotar` + `strong` + `entry_id` + `jelentes_szam`.
 | `forditas_hu` | szabad szöveg | | A jelentés magyar fordítása — jelentésenként egyszer. Az igehelyi alkalmazás az `elofordulasok.jelentes_hu` mezőben áll, nem itt. |
 | `forrasfajl` | fájlút | ✔ | Pl. `konkordancia/BDB_teljes_unabridged.tsv`. |
 
-Tisztázatlan licencű szótár (Thayer, LSJ, SECE, MCGED) sora a táblába felvehető, és a
-generált lexikon-oldal ugyanúgy idéz belőle, mint a többiből, `tisztazatlan`
-licenc-jelöléssel (F6 D9).
+A szótárankénti tényleges licenc a `konkordancia/lexikonok_nyers/README.md`-ben van
+rögzítve (Thayer, LSJ, SECE, MCGED); a generált lexikon-oldal minden szótárból idézhet,
+a forrás saját licencének jelölésével — az MCGED-nél kötelező szó szerinti
+forrásmegjelöléssel (F6 D16).
 
 ### 2.6 `datasetek.tsv`
 

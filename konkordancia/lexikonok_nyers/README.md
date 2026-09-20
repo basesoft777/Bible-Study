@@ -5,11 +5,26 @@
 `1xlvJ6GURwYCxPnYwo2xuyREutWTeWMcH` (a projekt `main.py`
 forráskódjából azonosítva).*
 
-**⚠️ LICENC-STÁTUSZ TISZTÁZATLAN.** A fájlok maguk nem tartalmaznak
-explicit licenc-jelzést. Ez a beemelés Basesoft explicit döntése
-alapján történt, méret- és licenc-ellenőrzés NÉLKÜL — ezt utólag
-tisztázni kell, mielőtt a tartalom bármilyen publikus vagy
-harmadik féllel megosztott anyagba kerülne.
+## Licenc-státusz *(F6_BRIEF.md §1.6, v4/v5)*
+
+A fájlok maguk nem tartalmaznak explicit licenc-jelzést. A
+`biblematedata`-csomag (Eliran Wong) lexikon-moduljainak forrását és
+licencét a szerző saját forrásoldala (`marvel.bible/resource.php`)
+dokumentálja. A 2026-09-19-i lekérdezés szerint:
+
+| Forrás | A szerző forrásoldala szerint | Besorolás |
+|---|---|---|
+| Thayer | 1886/1889, közkincs; a modul anyagát Tim Morton (Bible Analyzer) formázta, engedéllyel | `közkincs` — a formázási réteg eredete másodkézből, ezt a README rögzíti |
+| LSJ | Perseus `lexica` repó, Creative Commons Attribution-ShareAlike 3.0 | `CC BY-SA 3.0` |
+| SECE | közkincs, az `openscriptures/strongs` repóból, a szerző kiegészítő leképezésével | `közkincs` |
+| MCGED | `billmounce/dictionary`, ezzel a kötelező megjelöléssel: *Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, www.teknia.com/greek-dictionary* | `© Mounce 1993`, megjelölés kötelező |
+| Abbott-Smith (a TBESG alapja) | 1922-es kiadás, közkincs | `közkincs` |
+
+**Fenntartás:** ezek a megállapítások a szerző forrásoldaláról származnak, nem a
+letöltött fájlokhoz csatolt licencszövegből — a `lexikonok_nyers/` fájljai nem
+tartalmaznak licenc-jelzést. A modulok azonossága erősen valószínű, de nem
+bizonyított; egy saját, rögzített import az eredeti forrásból (Perseus,
+OpenScriptures) ezt a bizonytalanságot is megszüntetné (F6_BRIEF.md N5).
 
 ## Formátum
 

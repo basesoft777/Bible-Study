@@ -54,15 +54,31 @@ LICENC = {
     'SDBH': 'CC BY-SA 4.0',
     'SDGNT': 'CC BY-SA 4.0',
     'LXX': 'tisztazatlan',
-    'Thayer': 'tisztazatlan',
-    'LSJ': 'tisztazatlan',
-    'SECE_G': 'tisztazatlan',
-    'SECE_H': 'tisztazatlan',
-    'MCGED': 'tisztazatlan',
+    'Thayer': 'közkincs',
+    'LSJ': 'CC BY-SA 3.0',
+    'SECE_G': 'közkincs',
+    'SECE_H': 'közkincs',
+    'MCGED': '© Mounce 1993',
     'projekt-adat': 'projekt-adat',
 }
 
-TISZTAZATLAN_SZOTARAK = {'Thayer', 'LSJ', 'SECE_G', 'SECE_H', 'MCGED'}
+# A F6.5b (v5) óta egyik "szótár" sem tisztázatlan a lexikon_hivatkozasok.tsv
+# szótárkulcsai közül -- csak az LXX-kivonat marad az (l. LICENC['LXX'],
+# §1.3, §1.6). A halmaz üresen marad, nem törölve: a blokk_szocikkek
+# TISZTAZATLAN_SZOTARAK-ellenőrzése így némán helyes marad, ha egy jövőbeli
+# szótár licence utólag mégis tisztázatlanná válna.
+TISZTAZATLAN_SZOTARAK = set()
+
+# A szó szerint kötelező forrásmegjelölések (F6.5b, K26) -- azoknál a
+# licenceknél, amelyek ezt megkövetelik.
+MOUNCE_MEGJELOLES = (
+    'Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights '
+    'Reserved, www.teknia.com/greek-dictionary'
+)
+LSJ_FORRASMEGJELOLES = (
+    'LSJ forrás: Liddell-Scott-Jones, Perseus Digital Library (`lexica` '
+    'repó), CC BY-SA 3.0.'
+)
 
 
 def _sorted_unique(seq):
@@ -511,8 +527,16 @@ def blokk_forrasok(m, fajl_licenc_blokk_lista):
         sorok.append('| `%s` | `%s` | %s | %s |' % (
             os.path.basename(fajl), fajl, licenc, blokkok))
 
+    megjelolesek = []
+    if '© Mounce 1993' in tabla_licencek:
+        megjelolesek.append('*%s*' % MOUNCE_MEGJELOLES)
+    if 'CC BY-SA 3.0' in tabla_licencek:
+        megjelolesek.append('*%s*' % LSJ_FORRASMEGJELOLES)
+
     hatokor = 'Ez a blokk a `[ID: %s]` motívum lexikon-oldalán ténylegesen felhasznált forrásokat sorolja fel.' % m['id']
     torzs = '\n'.join(sorok)
+    if megjelolesek:
+        torzs += '\n\n' + '\n\n'.join(megjelolesek)
     return _lexikon_blokk(m['id'], 'forrasok', sorted(per_fajl), sorted(tabla_licencek), hatokor, torzs)
 
 
