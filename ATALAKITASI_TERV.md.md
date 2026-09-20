@@ -459,11 +459,11 @@ A háromértékű státusz bevezetése az F3.1-be tartozik és nem halasztható:
 
 ### F6 — Lexikon-generátor *(2 munkamenet)*
 
-A `[ID]_TUDOMANYOS.md` 0-8. szakasza generálva. Az ISTENTISZT-001 bizonyítja, hogy ez működik: a lexikon §1 nem más, mint a study-táblázat JOIN-ja a kapcsolat-TSV-vel — ezt a joint egyszer már elvégezte kézzel egy modell, részleges kitöltéssel. Modell-munka a 9. szakaszban (*Nyitott kérdések*) és az „ÚJ FELISMERÉS" blokkokban marad.
+A `[ID]_TUDOMANYOS.md` generált szakaszai: **0, 1, 2, 3, 4, 5, 9** (nem 0-8. — javítva F7.4, 2026.09.20, l. `MUNKAMENET.md` C) szakasz). Az ISTENTISZT-001 bizonyítja, hogy ez működik: a lexikon §1 nem más, mint a study-táblázat JOIN-ja a kapcsolat-TSV-vel — ezt a joint egyszer már elvégezte kézzel egy modell, részleges kitöltéssel. Modell-munka a 8. szakaszban (*Nyitott kérdések és séma-korlátok*) és a 7. szakasz („ÚJ FELISMERÉS") blokkjaiban marad.
 
 ### F7 — Üzemmenet
 
-Az F0-F6 után a 7. ponti munkafolyamat lép életbe.
+Az F0-F6 után a 7. ponti munkafolyamat lép életbe. Az üzemmenet mai állapota — a 23 lépés ki-mit-mivel bontása — a `MUNKAMENET.md`-ben áll.
 
 ---
 
@@ -483,7 +483,7 @@ A munkafolyamat **nem a küszöbátlépésnél kezdődik, hanem a bővített tan
 | A5 | 3/b pont kereszthivatkozásai | **kutató** + végrehajtó (TSK/Károli-KH lekérdezés) | `kapcsolatok.tsv` |
 | A6 | előrejelzett motívum rögzítése (státusz = *előrejelzett*, várható igehely) | **kutató** | `motivumok.tsv` |
 | A6b | új ID esetén a 4.6 gate négy kérdésének megválaszolása | **kutató** + **ember** | `motivumok.tsv` mezői |
-| A7 | motívumnapló, index, sorozat-tábla újragenerálása | végrehajtó | generált fájlok |
+| A7 | motívumnapló, index, sorozat-tábla *(nem definiált, nem implementált — l. `NYITOTT_FELADATOK.md` N10)* újragenerálása | végrehajtó | generált fájlok |
 
 Az **A3b** azt a hibaosztályt fogja meg, amely ma az olvasó figyelmén múlik: amikor a motívum létezik, de az új szakasz hozzájárulása észrevétlen marad. Amit viszont **nem old meg — és nem is oldható meg:** egy valóban új motívum első felismerését. Annak nincs mihez illeszkednie; azt csak ember veszi észre olvasás közben. Ezért létezik az „Előrejelzett motívumok" szakasz, és ezért marad az.
 
@@ -510,8 +510,8 @@ A B1 azért automatikus, mert az A4-ben minden előfordulás bekerült a táblá
 
 | # | Lépés | Ki | Kimenet |
 |---|---|---|---|
-| C1 | lexikon TUDOMÁNYOS 0-8. szakaszának generálása | végrehajtó | generált fájl |
-| C2 | „ÚJ FELISMERÉS" és „Nyitott kérdések" megírása | **kutató** | kézi blokkok |
+| C1 | lexikon TUDOMÁNYOS generált szakaszainak (0, 1, 2, 3, 4, 5, 9) generálása | végrehajtó | generált fájl |
+| C2 | a hét kézi rész megírása (1/b, „Miért fontos ez a lelet", „Minősítés", „Alátámasztás", 6, 7 „ÚJ FELISMERÉS", 8 „Nyitott kérdések és séma-korlátok") | **kutató** | kézi blokkok |
 | C3 | lexikon OLVASHATÓ megírása | **kutató** | kézi fájl |
 | C4 | commit/push, `main` merge | végrehajtó + **ember** | — |
 
