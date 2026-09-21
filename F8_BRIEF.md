@@ -1,6 +1,6 @@
 # F8 — Hiányzó eszközök: az üzemmenet kiegészítése
 
-*Készítette: chat-menet (Opus 5), 2026-09-21, **v2** — a §2 G-döntései jóváhagyva (2026-09-21), alternatíva nélkül.*
+*Készítette: chat-menet (Opus 5), 2026-09-21, **v3** — a §2 G-döntései jóváhagyva (2026-09-21); az 1. menet lefutott és pusholva (`ca7bfd7`, `33a0228`, `42950ab`); ez a verzió a 2. menetet részletezi.*
 *Kiindulási állapot: `main` = `origin/main` = `8511e35` (az F7 lezárva és pusholva).*
 
 ---
@@ -132,16 +132,50 @@ A lépéstábla sorai ebben a menetben **nem** változnak.
 - `adat/SEMA.md`: új **2.8** alszakasz a G2(a) mezőivel, kulcs: `tanulmany` + `igehely` + `strong`. Kimondja, hogy a tábla átmeneti: az `id` az A4-ben születik a `jeloltek`-ben.
 - `adat/kulcsszavak.tsv`: csak komment-sor és fejléc, adatsor nélkül.
 
-### 2. menet — eszközök *(Sonnet; a v3 nyitó promptjával)*
+### 2. menet — eszközök *(Sonnet; a §7b nyitó promptjával)*
 
-- **F8.4 — `eszkozok/kuszob.py`** a G5 szerint.
-- **F8.5 — `eszkozok/ellenoriz.py`** a G4 szerint.
-- **F8.6 — `eszkozok/jelolt.py`** a G6 szerint.
-- **F8.7 — tanítói sablon** a G8 szerint.
+**Közös szabályok (mind a négy eszközre):** `--adat DIR` kapcsoló, alapértelmezés a repó `adat/` könyvtára — a próbák ideiglenes másolaton futnak, az éles `adat/` érintetlen marad. Beolvasás a `general.tsv_beolvas()`-szal (kezeli a `#` sorokat). A meglévő logika importálva, nem másolva (D6). stdout/stderr UTF-8 `reconfigure`, a meglévő szkriptek mintájára. Kilépési kód: 0 / 1 / 2 (D7). `--md FILE`: a jelentés Markdownban is.
 
-Mindegyik tétel a saját `MUNKAMENET.md` sorát is frissíti. A „Ma mivel fut" oszlopba a tényleges parancs kerül (B1, A3b, B10). A B9 sor Megjegyzése a sablon helyét kapja; az oszlopa a 3. menetig `F8 — nincs eszköz` marad.
+#### F8.3a — SEMA 2.8 hivatkozás pontosítása
+Az `adat/SEMA.md` 2.8-ban a `(l. 2.4, L4)` helyébe `(l. 2.4 és \`F8_BRIEF.md\` §1 L4)` kerül. Más nem változik.
 
-### 3. menet — átjáró és agentek *(Sonnet; a v4 nyitó promptjával)*
+#### F8.4 — `eszkozok/kuszob.py` (G5)
+- Importálja: `general.tsv_beolvas`, `general.elofordulasok_id_szerint`, `general.fo_elofordulas_csoportok`.
+- Kimenet ID-nként: cím, fő előfordulás száma, `forras_study` (üres/kitöltött), **átlépés** (igen/nem). Átlépés = ≥ 3 ÉS üres `forras_study`. Az L2 motívumai (1 fő előfordulás) nem átlépés és nem hiba.
+- `MUNKAMENET.md`: a B1 sor „Ma mivel fut" oszlopa `eszkozok/kuszob.py`, a Megjegyzés: „a ⭐ számítás a `general.py`-ban marad, a `kuszob.py` importálja; átlépés = ≥ 3 és üres `forras_study`; kód 1 = van átlépés". A „Generátor-tények" ⭐-bekezdése egy mondattal bővül: a küszöb-összevetést és a kilépési kódot a `kuszob.py` adja.
+
+#### F8.5 — `eszkozok/ellenoriz.py` (G4)
+- **Táblaszabályok (SEMA §3):** 1–6 kikényszerítve. 7: a `gate.py` `collision_report` / `pair_overlap_report` / `subset_report` függvényei importálva — JELENTÉS, a kilépési kódot nem befolyásolja. 8: gépileg **csak a `mindig` sorok** (`study_tipus = tematikus`, `allapot != hianyzik`): a motívum `elofordulasok.proveniencia` mezői közt legyen `forras=` a dataset fájlnevével. A `felteteles` sorok `KÉZI` (a `feltetel` oszlop próza); az `ajanlott` és `oroklott` sorokat nem vizsgálja.
+- **`--study FILE` (ismételhető):** Q1 = a `## 1.`–`## 6.` számozott főcímek mind megvannak, és egyik törzse sem üres (a cím szövegét nem vizsgálja: a 6. főcím a gyakorlatban „Napló-frissítési javaslat"). Q7 = a 8. szabály arra a motívumra, amelynek `forras_study`-ja a fájlt tartalmazza. Q2–Q6: `KÉZI`.
+- **Jelentés:** szabályonként egy sor — `RENDBEN` / `SÉRTÉS (n)` legfeljebb 10 példa-kulccsal / `KÉZI` / `JELENTÉS`.
+- A mai adaton futtatott teljes jelentés (a tábla-szabályok + mind a 7 `forras_study`-fájl `--study`-val) a `naplok/F8_5_ellenoriz_alap.txt`-be kerül (az `F4_0_baseline_*` precedense). A talált sértést **nem javítja** (D5).
+- `MUNKAMENET.md`: a B10 sor „Ma mivel fut" oszlopa `eszkozok/ellenoriz.py [--study …]`, Megjegyzés: „Q2–Q6 és a `felteteles` datasetek kézi; hook nincs (F8 §3)". A „Szereposztás" szakasz audit-pontja: a B1-hez a `kuszob.py`, a B10-hez az `ellenoriz.py`.
+
+#### F8.6 — `eszkozok/jelolt.py` (G6)
+- CLI: `--szakasz "<tartomány>"` (kötelező), `--ir`, `--adat`, `--md`.
+- Importálja a `lekerdez.py`-ból: `parse_range`, `in_range`, `load_tahot`, `load_tagnt`, `load_grammatikai_strongok`. A tartományra mindkét kivonatot szűri, az eredmény uniója.
+- Metszet: a szakasz Strongjai (grammatikai Strongok nélkül) ∩ a nem üres `elofordulasok.strong`. Egy Strong több ID-hez: ID-nként külön sor.
+- Soronkénti állapot: `már előfordulás` (id + igehely az `elofordulasok`-ban) / `már jelölt` (a `jeloltek`-ben) / `új jelölt`. A `formulaikus` azonosságú motívum sorai mellé: `pozicionális ellenőrzés kell`.
+- `--ir`: csak az `új jelölt` sorok kerülnek a `jeloltek.tsv` végére: `dontes = nyitva`, `indoklas = automatikus jelölt (A3b), minősítendő`, `forras_kereses = jelolt.py <szakasz>`, `datum` = a futás napja, a többi mező üres. A fájl meglévő sorvége megmarad (`general.sorveg_elemez`). `beépítve` vagy `elutasítva` soha nem íródik.
+- `MUNKAMENET.md`: az A3b sor „Ma mivel fut" oszlopa `eszkozok/jelolt.py --szakasz "…"`.
+
+#### F8.7 — tanítói sablon (G8) + a jelmagyarázat általánosítása
+- Új fájl: `sablonok/7_PaRDeS_tanitoi_kereses_sablon.md`, v1. Kötelező szakaszai: **fejléc** (motívum-ID, study-fájl, dátum, modell); **1. Kiinduló motívum-kivonat** — a study-ból, nem a webről; **2. Névsor** — a `sablonok/PaRDeS_tanitok_lista.md`-ből, a választás indoklásával; **3. Keresések tanítónként** — kereső-kifejezés, forrás (mű + pontos hely), erősség (✅ / ⚠️ / gap), saját szavas összefoglalás; **4. Összegzés** — az üres eredmény elfogadott, kimondottan jelölt kimenet.
+- Az öt lépést és a ✅/⚠️ definíciót **nem másolja**, hanem a `sablonok/4_PaRDeS_tematikus_sablon.md` „Nevesített tanítói egyezés-keresés módszere" szakaszára hivatkozik. Szó szerinti idézet csak kivételesen és egy mondatnál rövidebben; egyébként összefoglalás.
+- A kimenet helye a sablonban: `[study-mappa]/naplok/[motívum]_tanitoi_kereses.md`.
+- `MUNKAMENET.md`: a B9 sor Megjegyzése: „a sablon megvan (`sablonok/7_PaRDeS_tanitoi_kereses_sablon.md`); a `tanito-kereso` subagent a 3. menetben". Az oszlopa `F8 — nincs eszköz` marad.
+- `MUNKAMENET.md` jelmagyarázat, csere szó szerint. Régi:
+
+      Nem létező eszköz (`jelolt.py`, `_tanitoi_kereses.md` minta, a
+      `lexikai-scan`/tanítói/audit subagentek) **kizárólag** az `F8 — nincs eszköz`
+      jelöléssel szerepel — futtathatóként sehol nem áll.
+
+  Új:
+
+      Nem létező eszköz **kizárólag** az `F8 — nincs eszköz` jelöléssel szerepel —
+      futtathatóként sehol nem áll.
+
+### 3. menet — átjáró és agentek *(Sonnet; a v4 nyitó promptjával — a v4 írja a táblasor-mérés szerinti záró kritériumot is)*
 
 - **F8.8 — `eszkozok/betolt.py`** a G2 szerint, két alparanccsal (`kulcsszo`, `beepit`). Az A3 és a B6 sor frissül.
 - **F8.9 — subagentek** a G7 szerint, `.gitignore`-ral. A B9 sor frissül; a `MUNKAMENET.md` „Szereposztás — a mai valóság" szakasza átíródik.
@@ -162,16 +196,26 @@ Mindegyik tétel a saját `MUNKAMENET.md` sorát is frissíti. A „Ma mivel fut
 | K5 | SEMA 2.8 + üres tábla | a 2.8 megvan; `adat/kulcsszavak.tsv` adatsora 0; a többi `adat/*.tsv` bájtra változatlan |
 | K6 | Commitok | a §6 szerint, a hiányzó és a plusz fájlok is jelentve; `git status --porcelain` üres |
 
-### 2. és 3. menet — a v3/v4 részletezi; a kötelező minimum
+### 2. menet
+
+| # | Kritérium | Ellenőrzés |
+|---|---|---|
+| K7 | `kuszob.py` | a mai adaton: 7 ID, 0 átlépés, kód 0, az L2 három motívuma „nem"; ideiglenes `--adat` másolaton, egy ID `forras_study`-ját kiürítve és ≥ 3 fő előfordulással: 1 átlépés, kód 1; a próba-könyvtár nincs a repóban |
+| K8 | `ellenoriz.py` | lefut, kód 0 vagy 1; mind a 8 szabály szerepel; a Q2–Q6 és a `felteteles` sorok mindenhol `KÉZI`, „RENDBEN" egyiknél sem; a 7 study-fájl mind futott; `naplok/F8_5_ellenoriz_alap.txt` létezik; `git diff adat/` üres |
+| K9 | `jelolt.py` | `--szakasz "1Móz 7:1-24"`: a TEREMT-001 / H8415 / 1Móz 7:11 sor `már előfordulás`; `--szakasz "1Móz 13:1-18"`: az ISTENTISZT-001 sorai `pozicionális ellenőrzés kell` jelöléssel; `--ir` ideiglenes `--adat` másolaton: csak `nyitva` sorok íródnak, a második futás 0 új sort ír (idempotens); az éles `adat/` változatlan |
+| K10 | tanítói sablon | a fájl megvan, mind a négy szakasszal; hivatkozik a tematikus sablon szakaszára; a „Célzott keresés motívumonként" kifejezés 0-szor fordul elő benne (nem másolt) |
+| K11 | `MUNKAMENET.md` | `grep -c '| \`F8 — nincs eszköz\` |' MUNKAMENET.md` = 3 (A3, B6, B9); a B1, A3b, B10 sorban megnevezett szkript létezik (`test -f`); a jelmagyarázat cseréje szó szerint megvan |
+| K12 | Import, nem másolat | a három új szkriptben nincs saját `def fo_elofordulas_csoportok`, `def parse_range`, `def in_range`, `def collision_report`; az import-sorok megvannak |
+| K13 | SEMA 2.8 | a hivatkozás pontosítva, más sor nem változott |
+| K14 | Commitok | a §6 2. menet-táblája szerint, a hiányzó és a plusz fájlok is jelentve; `git status --porcelain` üres |
+
+### 3. menet — a v4 részletezi; a kötelező minimum
 
 | # | Kritérium |
 |---|---|
-| K7 | `kuszob.py` a mai adaton 0 átlépés, kód 0; egy ideiglenes próba-TSV-n (nem az `adat/`-ban) egy átlépés, kód 1 |
-| K8 | `ellenoriz.py` a mai adaton lefut; a talált sértéseket jelenti, **nem javítja**; a Q2–Q6 soha nem „megfelelt" |
-| K9 | `jelolt.py --szakasz "1Móz 7:1-24"` jelentésében a TEREMT-001 / H8415 / 1Móz 7:11 pár szerepel, „már előfordulás" jelöléssel; `--ir` nélkül az `adat/` változatlan |
-| K10 | `betolt.py beepit` elutasít minden nem `beépítve` sort, és hiányzó kötelező mezőnél semmit nem ír |
-| K11 | F8 végén `grep -c 'F8 — nincs eszköz' MUNKAMENET.md` = 0; minden megnevezett eszköz létezik (`test -f`) |
-| K12 | Az új eszközök a meglévő függvényeket importálják (`general`, `lekerdez`); a küszöb- és tartomány-logika nincs lemásolva |
+| K15 | `betolt.py beepit` elutasít minden nem `beépítve` sort, és hiányzó kötelező mezőnél semmit nem ír |
+| K16 | F8 végén `grep -c '| \`F8 — nincs eszköz\` |' MUNKAMENET.md` = 0 (a táblasorok; a jelmagyarázat 28. sora marad, mert az értékkészletet definiálja); minden megnevezett eszköz létezik |
+| K17 | A `betolt.py` a meglévő függvényeket importálja; a subagentek csak a G7 szerinti eszközöket kapják |
 
 ---
 
@@ -184,7 +228,18 @@ Mindegyik tétel a saját `MUNKAMENET.md` sorát is frissíti. A „Ma mivel fut
 | `F8.3: SEMA 2.8 — kulcsszavak.tsv átmeneti tábla` | `adat/SEMA.md`, `adat/kulcsszavak.tsv` |
 | `F8_BRIEF.md v2: az F8 brief, a G1–G8 döntésekkel` | `F8_BRIEF.md` |
 
-Az F8.0 nem commitol. **Push csak külön kérésre.** A 2. menet commit-táblája a v3-ban, a 3. menetté a v4-ben.
+Az F8.0 nem commitol. **Push csak külön kérésre.** A 3. menet commit-táblája a v4-ben.
+
+### 2. menet
+
+| Commit-üzenet | Fájlok |
+|---|---|
+| `F8_BRIEF.md v3: a 2. menet részletezése` | `F8_BRIEF.md` |
+| `F8.3a: SEMA 2.8 — a hivatkozás pontosítása` | `adat/SEMA.md` |
+| `F8.4: kuszob.py — B1 küszöbfigyelő` | `eszkozok/kuszob.py`, `MUNKAMENET.md` |
+| `F8.5: ellenoriz.py — SEMA §3 és a Q-kapu gépi része` | `eszkozok/ellenoriz.py`, `naplok/F8_5_ellenoriz_alap.txt`, `MUNKAMENET.md` |
+| `F8.6: jelolt.py — A3b jelölt-generálás` | `eszkozok/jelolt.py`, `MUNKAMENET.md` |
+| `F8.7: tanítói keresés sablonja + a jelmagyarázat általánosítása` | `sablonok/7_PaRDeS_tanitoi_kereses_sablon.md`, `MUNKAMENET.md` |
 
 ---
 
@@ -209,6 +264,31 @@ fájlokat a §6 táblájához képest.
 
 ---
 
+## 7b. Nyitó prompt — 2. menet *(Sonnet)*
+
+```
+Olvasd el a CLAUDE.md-t, majd az F8_BRIEF.md-t teljes egészében (v3).
+
+0. Kiindulás: main = origin/main = 42950ab; az egyetlen változás a
+   commitolatlan F8_BRIEF.md (v3). Ha más is változott, ÁLLJ MEG.
+1. Commitold az F8_BRIEF.md-t: "F8_BRIEF.md v3: a 2. menet részletezése".
+2. F8.3a. K13.
+3. F8.4 a §4 szerint. K7.
+4. F8.5 a §4 szerint. K8. A talált sértéseket NE javítsd.
+5. F8.6 a §4 szerint. K9. Az éles adat/-ra --ir-rel NE futtasd.
+6. F8.7 a §4 szerint. K10.
+7. K11, K12 a teljes menetre.
+8. Commitok a §6 2. menet-táblája szerint (a brief-commit már az 1. lépésben). K14.
+
+A 3. menet tételeihez (F8.8–F8.10) NE nyúlj.
+Héber vagy görög karaktert tartalmazó kódot csak fájlból futtass.
+A próbákhoz ideiglenes könyvtárat használj a repón kívül; a repóba nem kerülhet.
+Push nincs. Zárójelentés: hash-ek, K7-K14 kritériumonként, külön sorban,
+kihagyás nélkül; az ellenoriz.py alapjelentésének összesítő sora (hány
+szabály RENDBEN / SÉRTÉS / KÉZI); és minden eltérés — külön kiemelve a
+hiányzó és a plusz fájlokat a §6 táblájához képest.
+```
+
 ## Döntésnapló
 
 | # | Döntés | Indok |
@@ -222,3 +302,9 @@ fájlokat a §6 táblájához képest.
 | D7 | Próba alapértelmezés, élesítés `--ir`-rel; kilépési kód 0/1/2 | A `general.py` meglévő konvenciója |
 | D8 | A `MUNKAMENET.md` sorai tételenként frissülnek, nem a fázis végén | A runbook soha ne hivatkozzon nem létező eszközre, és ne hallgasson el meglévőt (F7 D6) |
 | D9 | A 2. menet részletei a v3-ba, a 3. menetéi a v4-be kerülnek | Az 1. menet eredménye alakítja őket; a v2 a jóváhagyási verzió |
+| D10 | A v2 külön commitot kapott (`d8e74c2`) az 1. menet előtt; az 1. menet egy igazított nyitó prompttal futott | A brief §7 `8511e35`-ös kiindulást várt — eltérés rögzítve, a brief szövege nem módosult |
+| D11 | Az 1. menet K2-jének „= 5" elvárása téves volt (a tényleges és változatlan érték 7); a mérés ezentúl csak a táblasorokat számolja | A 28. és 31. sor jelmagyarázat, nem lépés; a 28. sor az értékkészletet definiálja, ezért marad |
+| D12 | Minden új eszköz `--adat` kapcsolót kap | A próbák ideiglenes másolaton futnak; a mai adaton a `kuszob.py` átlépés-ága nem tesztelhető (mind a 7 motívumnak van `forras_study`-ja) |
+| D13 | A 8. szabályból gépileg csak a `mindig` sorok; a `felteteles` `KÉZI` | A `feltetel` oszlop próza — gépi kiértékelése hamis „rendben" kockázat volna (G4 elve) |
+| D14 | Az `ellenoriz.py` mai alapjelentése commitolva a gyökér `naplok/`-ba | Mérhető kiindulás a javító tételekhez; az `F4_0_baseline_*` precedense |
+| D15 | A `MUNKAMENET.md` jelmagyarázatának felsorolása általánosul az F8.7-ben | A 2. menet után a `jelolt.py` létezik — a felsorolás hamis lenne (D8) |
