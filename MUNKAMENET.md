@@ -122,15 +122,5 @@ igaz (l. `ATALAKITASI_TERV.md.md` F7.4 javítása):
 
 ## Mi hiányzik az üzemmenetből ma
 
-Hét tétel, mindegyik `F8` (l. `F8_BRIEF.md` §0):
-
-1. **`jelolt.py`** (A3b) — jelölt-generálás meglévő motívumokhoz.
-2. **A B1 küszöbfigyelő önálló eszköze** (`kuszob.py`) — ma a `general.py`
-   csak számol, küszöböt nem hasonlít, kilépési kódot nem ad.
-3. **`ellenoriz.py`** (B10) — az `adat/SEMA.md` §3 szabályai és a Q-kapu gépi
-   része (Q1, Q7).
-4. **`betolt.py`** (A3, B6) — study→adat átjáró; csak `beépítve` sort léptet elő.
-5. **A tanítói keresés sablonja** (B9).
-6. **Két subagent** (B4, B9) — `lexikai-scan` és `tanito-kereso`; az audit (B1,
-   B10) és a C1 szkript marad (F7 D3).
-7. **A „sorozat-tábla"** (A7) — definiálva az F8.2-ben, l. `NYITOTT_FELADATOK.md` N10.
+Az F8 óta nincs `F8`-jelölt hiány. Nyitva: `NYITOTT_FELADATOK.md` N12–N13 és
+az `F8_BRIEF.md` §3 tételei.

@@ -70,6 +70,21 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
   generálás esetén is a kutató írná; a generálás nyeresége a 0. pont
   aktiválási feltételének gépi ellenőrizhetősége volna.
 
+- **N12 — A SEMA §3/8 és a retroaktív sorok.** *(ÚJ, F8.10, 2026.09.21)* Mind
+  a 201 `elofordulasok`-sor `scope=manual` (F3-betöltés), ezért az
+  `ellenoriz.py` 8. szabálya (dataset-lefedettség) mind a 7 motívumra sért —
+  egyetlen sor sem hordoz `forras=`-nyomot a `mindig` datasetekhez. Eldöntendő:
+  (a) a szabály csak az F8 után betöltött sorokra vonatkozzon; (b) retroaktív
+  motívumnál a study saját dataset-dokumentációja elfogadott nyomnak
+  számítson; (c) utólagos igazoló lekérdezések adjanak valódi provenienciát.
+
+- **N13 — A `jelolt.py` túltermelése gyakori Strongokon.** *(ÚJ, F8.10,
+  2026.09.21)* Az 1Móz 7:1-24 szakaszra `jelolt.py` 10 „új jelölt" sort ad,
+  főleg H1121, H0430 (MENNY-001) és H2416 (ANTROP-001) gyakori Strongokon.
+  Eldöntendő: gyakorisági küszöb, kollokáció-pár megkövetelése a többstrongos
+  motívumoknál, vagy a MENNY-001 `azonossag_tipusa` felülvizsgálata. A
+  GENERÁLT blokk nem módosul.
+
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá vált — belépő: `DONTESEK_INDEX.tsv`. A vers-szintű jelöltek nem ide, hanem az `adat/jeloltek.tsv`-be kerültek (16 sor, mind `dontes=nyitva`): HODIT-001 13 alacsony szavazatú TSK-jelölt, MENNY-001 Mt 24:38 + Luk 17:27, ANTROP-001 Fil 1:27. Az alábbiak a nem vers-szintű tételek:
