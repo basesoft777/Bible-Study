@@ -116,6 +116,26 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
   index --ir` fixponton ZÖLD; `gate.py` nem talált új HAMART-001-ütközést.
   L. `N14_BRIEF.md`, `N14.0`–`N14.4` commitok.
 
+- **N15 — Az LXX-kivonat licenc-tisztázása.** *(ÚJ, LEX, 2026.09.21)*
+  A `konkordancia/LXX_kivonat_*.tsv` (39 könyv) a studybible.info
+  LXX_WH + ABP oldalaiból készült, licencnyilatkozat nélkül (l.
+  `LXX_kivonat_README.md` „Licenc-státusz — explicit gap"); az F6
+  licenc-térképén ez az egyetlen `tisztazatlan` forrás, és minden
+  lexikon-oldal 3. szakaszát (LXX-híd) érinti. Belső használatra nem
+  akadály (N11/N3: a lexikon belső), a publikálási döntésnek viszont
+  elzáró tétele. Két út: (a) a studybible.info üzemeltetőjének
+  megkeresése; (b) forráscsere azonos oszlopformátummal. A (b) jelöltje
+  az OpenScriptorium/lxx-morph (egy harmadik projekt leírása szerint
+  CC BY 4.0, Rahlfs 1935 alapszöveg, Morpheus-morfológia) — az eredeti
+  repó licence még ellenőrizendő; lemmát ad, nem Strong-számot, ezért
+  lemma→Strong megfeleltetés kell (jelölt: Open Scriptures Septuagint
+  Project, CC BY 4.0). Nem jelölt: Eliran Wong LXX-Rahlfs-1935 és a
+  CenterBLC/LXX (CATSS-alapú, CC BY-NC-SA 4.0, felhasználói
+  nyilatkozathoz kötött). Alternatíva, ha elérhetővé válik: a STEPBible
+  TAGOT (l. a lenti figyelő tételt). Első lépés: az eredeti repó
+  licencének ellenőrzése és egy könyv (Genezis) összevetése a mostani
+  kivonattal.
+
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá vált — belépő: `DONTESEK_INDEX.tsv`. A vers-szintű jelöltek nem ide, hanem az `adat/jeloltek.tsv`-be kerültek (16 sor, mind `dontes=nyitva`): HODIT-001 13 alacsony szavazatú TSK-jelölt, MENNY-001 Mt 24:38 + Luk 17:27, ANTROP-001 Fil 1:27. Az alábbiak a nem vers-szintű tételek:
