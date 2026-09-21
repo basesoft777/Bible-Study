@@ -16,18 +16,7 @@
 
 **7. Ütközés-/részhalmaz-jelentés (gate.py)**: JELENTÉS -- 4 osztozó igehely, 3 átfedő motívumpár, 0 részhalmaz-gyanús pár (l. `python eszkozok/gate.py` a részletekért)
 
-**8. Dataset-lefedettség**: SÉRTÉS (35)
-  - ALVIL-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
-  - ALVIL-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
-  - ALVIL-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
-  - ALVIL-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
-  - ALVIL-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
-  - ANTROP-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
-  - ANTROP-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
-  - ANTROP-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
-  - ANTROP-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
-  - ANTROP-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
-  - ... és további 25
+**8. Dataset-lefedettség (gépi)**: KÉZI -- nincs gépileg ellenőrizhető motívum
 
 **8/b. Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
   - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
@@ -39,6 +28,15 @@
   - TAGNT (TAGNT_kivonat.tsv)
   - TIPNR (TIPNR_kivonat.tsv)
   - Thayer (Thayer_teljes.tsv)
+
+**8/c. Kézi dataset-lefedettség**: KÉZI (7)
+  - ALVIL-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Hadesz_Seol_tematikus.md` + `tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md`
+  - ANTROP-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | napló nincs (csak generált próba: `generalt_proba/tematikus_lezart/naplok/ANTROP-001_kereszthivatkozas_naplo_GENERALT.md`, nem a study eredeti keresése)
+  - HODIT-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Rafaim_tematikus.md` + `tematikus_lezart/naplok/Rafaim_kereszthivatkozas_naplo.md`
+  - ISTENTISZT-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md` + `tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md`
+  - KIRALY-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Melkizedek_tematikus.md` + `tematikus_lezart/naplok/Melkizedek_tematikus_kereszthivatkozas_naplo.md`
+  - MENNY-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md` + `tematikus_lezart/naplok/Isten_fiai_Nefilim_Gibborim_kereszthivatkozas_naplo.md`
+  - TEREMT-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Tehom_tematikus.md` + `tematikus_lezart/naplok/Tehom_kereszthivatkozas_naplo.md`
 
 ## `--study` ellenőrzés
 
@@ -54,12 +52,7 @@
 
 **Q6 (tematikus_lezart/Melkizedek_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
 
-**Q7 (tematikus_lezart/Melkizedek_tematikus.md, KIRALY-001)**: SÉRTÉS (5)
-  - KIRALY-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
-  - KIRALY-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
-  - KIRALY-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
-  - KIRALY-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
-  - KIRALY-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+**Q7 (tematikus_lezart/Melkizedek_tematikus.md, KIRALY-001)**: KÉZI -- nincs gépileg ellenőrizhető motívum
 
 **8/b (tematikus_lezart/Melkizedek_tematikus.md, KIRALY-001). Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
   - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
@@ -71,6 +64,9 @@
   - TAGNT (TAGNT_kivonat.tsv)
   - TIPNR (TIPNR_kivonat.tsv)
   - Thayer (Thayer_teljes.tsv)
+
+**8/c (tematikus_lezart/Melkizedek_tematikus.md, KIRALY-001). Kézi dataset-lefedettség**: KÉZI (1)
+  - KIRALY-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Melkizedek_tematikus.md` + `tematikus_lezart/naplok/Melkizedek_tematikus_kereszthivatkozas_naplo.md`
 
 **Q1 (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md)**: RENDBEN
 
@@ -84,12 +80,7 @@
 
 **Q6 (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
 
-**Q7 (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md, ISTENTISZT-001)**: SÉRTÉS (5)
-  - ISTENTISZT-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
-  - ISTENTISZT-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
-  - ISTENTISZT-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
-  - ISTENTISZT-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
-  - ISTENTISZT-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+**Q7 (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md, ISTENTISZT-001)**: KÉZI -- nincs gépileg ellenőrizhető motívum
 
 **8/b (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md, ISTENTISZT-001). Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
   - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
@@ -101,6 +92,9 @@
   - TAGNT (TAGNT_kivonat.tsv)
   - TIPNR (TIPNR_kivonat.tsv)
   - Thayer (Thayer_teljes.tsv)
+
+**8/c (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md, ISTENTISZT-001). Kézi dataset-lefedettség**: KÉZI (1)
+  - ISTENTISZT-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md` + `tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md`
 
 **Q1 (tematikus_lezart/Tehom_tematikus.md)**: RENDBEN
 
@@ -114,12 +108,7 @@
 
 **Q6 (tematikus_lezart/Tehom_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
 
-**Q7 (tematikus_lezart/Tehom_tematikus.md, TEREMT-001)**: SÉRTÉS (5)
-  - TEREMT-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
-  - TEREMT-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
-  - TEREMT-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
-  - TEREMT-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
-  - TEREMT-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+**Q7 (tematikus_lezart/Tehom_tematikus.md, TEREMT-001)**: KÉZI -- nincs gépileg ellenőrizhető motívum
 
 **8/b (tematikus_lezart/Tehom_tematikus.md, TEREMT-001). Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
   - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
@@ -131,6 +120,9 @@
   - TAGNT (TAGNT_kivonat.tsv)
   - TIPNR (TIPNR_kivonat.tsv)
   - Thayer (Thayer_teljes.tsv)
+
+**8/c (tematikus_lezart/Tehom_tematikus.md, TEREMT-001). Kézi dataset-lefedettség**: KÉZI (1)
+  - TEREMT-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Tehom_tematikus.md` + `tematikus_lezart/naplok/Tehom_kereszthivatkozas_naplo.md`
 
 **Q1 (tematikus_lezart/Hadesz_Seol_tematikus.md)**: RENDBEN
 
@@ -144,12 +136,7 @@
 
 **Q6 (tematikus_lezart/Hadesz_Seol_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
 
-**Q7 (tematikus_lezart/Hadesz_Seol_tematikus.md, ALVIL-001)**: SÉRTÉS (5)
-  - ALVIL-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
-  - ALVIL-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
-  - ALVIL-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
-  - ALVIL-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
-  - ALVIL-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+**Q7 (tematikus_lezart/Hadesz_Seol_tematikus.md, ALVIL-001)**: KÉZI -- nincs gépileg ellenőrizhető motívum
 
 **8/b (tematikus_lezart/Hadesz_Seol_tematikus.md, ALVIL-001). Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
   - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
@@ -161,6 +148,9 @@
   - TAGNT (TAGNT_kivonat.tsv)
   - TIPNR (TIPNR_kivonat.tsv)
   - Thayer (Thayer_teljes.tsv)
+
+**8/c (tematikus_lezart/Hadesz_Seol_tematikus.md, ALVIL-001). Kézi dataset-lefedettség**: KÉZI (1)
+  - ALVIL-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Hadesz_Seol_tematikus.md` + `tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md`
 
 **Q1 (tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md)**: RENDBEN
 
@@ -174,12 +164,7 @@
 
 **Q6 (tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
 
-**Q7 (tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md, MENNY-001)**: SÉRTÉS (5)
-  - MENNY-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
-  - MENNY-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
-  - MENNY-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
-  - MENNY-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
-  - MENNY-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+**Q7 (tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md, MENNY-001)**: KÉZI -- nincs gépileg ellenőrizhető motívum
 
 **8/b (tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md, MENNY-001). Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
   - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
@@ -191,6 +176,9 @@
   - TAGNT (TAGNT_kivonat.tsv)
   - TIPNR (TIPNR_kivonat.tsv)
   - Thayer (Thayer_teljes.tsv)
+
+**8/c (tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md, MENNY-001). Kézi dataset-lefedettség**: KÉZI (1)
+  - MENNY-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md` + `tematikus_lezart/naplok/Isten_fiai_Nefilim_Gibborim_kereszthivatkozas_naplo.md`
 
 **Q1 (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md)**: RENDBEN
 
@@ -204,12 +192,7 @@
 
 **Q6 (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
 
-**Q7 (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md, ANTROP-001)**: SÉRTÉS (5)
-  - ANTROP-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
-  - ANTROP-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
-  - ANTROP-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
-  - ANTROP-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
-  - ANTROP-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+**Q7 (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md, ANTROP-001)**: KÉZI -- nincs gépileg ellenőrizhető motívum
 
 **8/b (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md, ANTROP-001). Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
   - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
@@ -221,6 +204,9 @@
   - TAGNT (TAGNT_kivonat.tsv)
   - TIPNR (TIPNR_kivonat.tsv)
   - Thayer (Thayer_teljes.tsv)
+
+**8/c (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md, ANTROP-001). Kézi dataset-lefedettség**: KÉZI (1)
+  - ANTROP-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | napló nincs (csak generált próba: `generalt_proba/tematikus_lezart/naplok/ANTROP-001_kereszthivatkozas_naplo_GENERALT.md`, nem a study eredeti keresése)
 
 **Q1 (tematikus_lezart/Rafaim_tematikus.md)**: RENDBEN
 
@@ -234,12 +220,7 @@
 
 **Q6 (tematikus_lezart/Rafaim_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
 
-**Q7 (tematikus_lezart/Rafaim_tematikus.md, HODIT-001)**: SÉRTÉS (5)
-  - HODIT-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
-  - HODIT-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
-  - HODIT-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
-  - HODIT-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
-  - HODIT-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+**Q7 (tematikus_lezart/Rafaim_tematikus.md, HODIT-001)**: KÉZI -- nincs gépileg ellenőrizhető motívum
 
 **8/b (tematikus_lezart/Rafaim_tematikus.md, HODIT-001). Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
   - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
@@ -252,6 +233,9 @@
   - TIPNR (TIPNR_kivonat.tsv)
   - Thayer (Thayer_teljes.tsv)
 
+**8/c (tematikus_lezart/Rafaim_tematikus.md, HODIT-001). Kézi dataset-lefedettség**: KÉZI (1)
+  - HODIT-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Rafaim_tematikus.md` + `tematikus_lezart/naplok/Rafaim_kereszthivatkozas_naplo.md`
+
 ## Összesítő
 
-RENDBEN: 13 | SÉRTÉS: 8 | KÉZI: 43 | JELENTÉS: 1
+RENDBEN: 13 | SÉRTÉS: 0 | KÉZI: 59 | JELENTÉS: 1

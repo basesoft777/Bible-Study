@@ -14,6 +14,13 @@ Hatokor (G4):
     (dataset-lefedettseg arra a motivumra, amelynek forras_study-ja a
     fajlt tartalmazza) gepi; Q2-Q6 mindig KEZI, soha nem "megfelelt".
 
+N12: a 8. szabaly motivumszintu -- a nyomot az `adat/auditok.tsv` (l.
+SEMA.md 2.9) es az `elofordulasok.tsv` proveniencia-mezoi egyutt adjak,
+a `forras` kulcs `+` menten bontott fajlnevei, PONTOS egyezessel (a regi
+reszsztring-illesztes hibaja megszunt). Ket jelentessorra bomlik: "8.
+Dataset-lefedettseg (gepi)" es "8/c. Kezi dataset-lefedettseg" -- l.
+LEKERDEZO_NELKULI es RETROAKTIV_IDK lent.
+
 CLI:
     python eszkozok/ellenoriz.py [--adat DIR] [--study FILE ...] [--md FILE]
 
@@ -39,6 +46,21 @@ ALAPERTELMEZETT_ADAT = os.path.join(ROOT, 'adat')
 PROVENIENCIA_KOTELEZO_KULCSOK = {'scope', 'forras', 'ts'}
 PROVENIENCIA_MEGENGEDETT_TOVABBI_KULCSOK = {'strong', 'n'}
 PROVENIENCIA_TILTOTT_KULCSOK = {'talalat', 'strong_vart'}
+
+# N12/G4: azok a `mindig` tematikus datasetek, amelyekhez nincs `lekerdez.py`
+# parancs -- a lefedettsegük mindig KEZI ("nincs lekérdező"), minden ID-nel.
+# Ha egyszer lesz `lekerdez.py bdb`, a fajlnev kikerul a halmazbol.
+LEKERDEZO_NELKULI = {'BDB_teljes_unabridged.tsv'}
+
+# N12/G3: a `6e3fd43`-ban F3-betoltessel retroaktivan bekerult 7 motivum
+# ID-jenek ZART listaja. A retroaktiv motivumok hianyzo datasetjei KEZI
+# jelentest kapnak ("retroaktiv, F3"), nem SÉRTÉST -- de a lista NEM bovul
+# automatikusan ("nincs auditok-sora -> retroaktiv" eppen az uj, elfelejtett
+# rogzitesu motivumot rejtene el, l. N12_BRIEF.md G3).
+RETROAKTIV_IDK = {
+    'ALVIL-001', 'ANTROP-001', 'HODIT-001', 'ISTENTISZT-001',
+    'KIRALY-001', 'MENNY-001', 'TEREMT-001',
+}
 
 
 class Sor(object):
@@ -94,11 +116,21 @@ def proveniencia_ervenyes(ertek):
     return True
 
 
+def forras_fajlok(proveniencia):
+    """set -- a proveniencia `forras` kulcsa `+` menten bontva, strip-pel.
+    Ervenytelen sornal (proveniencia_parse ures dict-et ad) ures halmaz."""
+    kulcsok = proveniencia_parse(proveniencia)
+    forras = kulcsok.get('forras', '')
+    if not forras:
+        return set()
+    return {r.strip() for r in forras.split('+') if r.strip()}
+
+
 # ---------------------------------------------------------------------------
 # SEMA §3 tabla-szabalyok
 # ---------------------------------------------------------------------------
 
-def szabaly1_hivatkozasi_epseg(motivum_id_halmaz, elofordulasok, kapcsolatok, jeloltek):
+def szabaly1_hivatkozasi_epseg(motivum_id_halmaz, elofordulasok, kapcsolatok, jeloltek, auditok):
     hibas = []
     for sor in elofordulasok:
         if sor['id'] not in motivum_id_halmaz:
@@ -110,6 +142,9 @@ def szabaly1_hivatkozasi_epseg(motivum_id_halmaz, elofordulasok, kapcsolatok, je
     for sor in jeloltek:
         if sor['id'] not in motivum_id_halmaz:
             hibas.append('jeloltek: %s / %s' % (sor['id'], sor['igehely']))
+    for sor in auditok:
+        if sor['id'] not in motivum_id_halmaz:
+            hibas.append('auditok: %s / %s' % (sor['id'], sor.get('lepes', '')))
     if hibas:
         return Sor('1. Hivatkozási épség', 'SÉRTÉS', len(hibas), hibas)
     return Sor('1. Hivatkozási épség', 'RENDBEN')
@@ -127,14 +162,20 @@ def szabaly2_nincs_kozvetlen_ut(elofordulasok, jeloltek):
     return Sor('2. Nincs közvetlen út', 'RENDBEN')
 
 
-def szabaly3_proveniencia(elofordulasok):
+def szabaly3_proveniencia(elofordulasok, auditok):
     """G9: a scope/forras/ts kotelezo; a lekerdez.py tovabbi kulcsai (strong,
     n) megengedettek; az igazolas-jellegu kulcsok (talalat, strong_vart)
-    tiltottak (F8_BRIEF.md G9)."""
+    tiltottak (F8_BRIEF.md G9). Az `auditok.proveniencia` ugyanezen szabaly
+    ala esik (SEMA.md §3/3, N12) -- a proveniencia_ervenyes hivasa import,
+    nem masolat (F8 D21)."""
     hibas = []
     for sor in elofordulasok:
         if not proveniencia_ervenyes(sor.get('proveniencia', '')):
             hibas.append('%s / %s (%r)' % (sor['id'], sor['igehely'], sor.get('proveniencia', '')))
+    for sor in auditok:
+        if not proveniencia_ervenyes(sor.get('proveniencia', '')):
+            hibas.append('auditok: %s / %s (%r)' % (
+                sor['id'], sor.get('lepes', ''), sor.get('proveniencia', '')))
     if hibas:
         return Sor('3. Proveniencia-kényszer', 'SÉRTÉS', len(hibas), hibas)
     return Sor('3. Proveniencia-kényszer', 'RENDBEN')
@@ -224,25 +265,125 @@ def szabaly8b_feltetel_datasetek(datasetek, cim='8/b. Feltételes datasetek'):
                megjegyzes='a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a')
 
 
-def szabaly8_dataset_lefedettseg(motivumok, elofordulasok, datasetek, csak_id=None):
-    """(Sor, erintett_id_lista). csak_id: ha adott, csak erre az egy ID-re
-    (Q7 hasznalja); egyebkent minden, elofordulasokban jelen levo ID-re."""
-    mindig = _mindig_datasetek(datasetek)
-    id_szerint_proveniencia = {}
+def _id_szerint_provok(elofordulasok, auditok):
+    """{motivum_id: [proveniencia, ...]} -- az elofordulasok es az auditok
+    provenienciai egyutt (N12: a nyom motivumszintu, ket tablabol jon)."""
+    ki = {}
     for sor in elofordulasok:
-        id_szerint_proveniencia.setdefault(sor['id'], []).append(sor.get('proveniencia', ''))
+        ki.setdefault(sor['id'], []).append(sor.get('proveniencia', ''))
+    for sor in auditok:
+        ki.setdefault(sor['id'], []).append(sor.get('proveniencia', ''))
+    return ki
+
+
+def _fedett_datasetek(provok):
+    """set -- a provok listajanak forras_fajlok()-uniója."""
+    fedett = set()
+    for p in provok:
+        fedett |= forras_fajlok(p)
+    return fedett
+
+
+def szabaly8_dataset_lefedettseg_gepi(motivumok, elofordulasok, auditok, datasetek, csak_id=None):
+    """(Sor, erintett_id_lista). N12: PONTOS fajlnev-egyezes (a regi
+    reszsztring-illesztes megszunt); a LEKERDEZO_NELKULI datasetek es a
+    RETROAKTIV_IDK meg fedetlen datasetjei nem szamitanak gepi parnak --
+    ezeket a 8/c (szabaly8c_kezi_lefedettseg) jelenti. 0 gepi par eseten a
+    sor KEZI, sose RENDBEN (F8 D13/D16 elve: ures halmazon a "rendben" hamis
+    zold). csak_id: ha adott, csak erre az egy ID-re (Q7 hasznalja);
+    egyebkent minden, elofordulasok/auditok-ban jelen levo ID-re."""
+    mindig = _mindig_datasetek(datasetek)
+    id_szerint_proveniencia = _id_szerint_provok(elofordulasok, auditok)
 
     id_lista = [csak_id] if csak_id else sorted(id_szerint_proveniencia)
     hibas = []
+    gepi_par_szam = 0
     for motivum_id in id_lista:
-        provok = id_szerint_proveniencia.get(motivum_id, [])
+        fedett = _fedett_datasetek(id_szerint_proveniencia.get(motivum_id, []))
         for dataset_nev, dataset_fajl in mindig:
-            talalt = any(('forras=%s' % dataset_fajl) in p for p in provok)
+            if dataset_fajl in LEKERDEZO_NELKULI:
+                continue
+            talalt = dataset_fajl in fedett
+            if not talalt and motivum_id in RETROAKTIV_IDK:
+                continue
+            gepi_par_szam += 1
             if not talalt:
                 hibas.append('%s -- hiányzik: %s (%s)' % (motivum_id, dataset_nev, dataset_fajl))
+    if gepi_par_szam == 0:
+        return Sor('8. Dataset-lefedettség (gépi)', 'KÉZI', megjegyzes='nincs gépileg ellenőrizhető motívum'), id_lista
     if hibas:
-        return Sor('8. Dataset-lefedettség', 'SÉRTÉS', len(hibas), hibas), id_lista
-    return Sor('8. Dataset-lefedettség', 'RENDBEN'), id_lista
+        return Sor('8. Dataset-lefedettség (gépi)', 'SÉRTÉS', len(hibas), hibas), id_lista
+    return Sor('8. Dataset-lefedettség (gépi)', 'RENDBEN'), id_lista
+
+
+def _tematikus_forras_study(forras_study_ertek):
+    """Az elso `tematikus_lezart/`-tagu resz a `;`-vel tagolt forras_study
+    mezobol, vagy None."""
+    for resz in (forras_study_ertek or '').split(';'):
+        resz = resz.strip()
+        if resz.startswith('tematikus_lezart/'):
+            return resz
+    return None
+
+
+def _naplo_mutato(motivum_id, motivum_sor):
+    """A 8/c ember-ellenorzesi mutato-szovege egy ID-hez (N12.2). A naplo
+    utja: '<study-mappa>/naplok/<torzs>_kereszthivatkozas_naplo.md', ahol
+    <torzs> a study-fajl neve '.md' nelkul, vagy ugyanez a '_tematikus'
+    vegzodes nelkul -- az elso letezo. Ha egyik sem, de letezik a generalt
+    proba, arra mutat kifejezett megszoritassal; ha az sem, "napló nincs"."""
+    forras_study = _tematikus_forras_study((motivum_sor or {}).get('forras_study'))
+    if not forras_study:
+        return 'ember ellenőrizze: (nincs tematikus_lezart forrás_study) | napló nincs'
+
+    study_mappa = forras_study.split('/', 1)[0]
+    fajlnev = forras_study.rsplit('/', 1)[-1]
+    torzs1 = fajlnev[:-3] if fajlnev.endswith('.md') else fajlnev
+    torzsek = [torzs1]
+    if torzs1.endswith('_tematikus'):
+        torzsek.append(torzs1[:-len('_tematikus')])
+
+    for torzs in torzsek:
+        jelolt = '%s/naplok/%s_kereszthivatkozas_naplo.md' % (study_mappa, torzs)
+        if os.path.exists(os.path.join(ROOT, jelolt)):
+            return 'ember ellenőrizze: `%s` + `%s`' % (forras_study, jelolt)
+
+    generalt = 'generalt_proba/%s/naplok/%s_kereszthivatkozas_naplo_GENERALT.md' % (
+        study_mappa, motivum_id)
+    if os.path.exists(os.path.join(ROOT, generalt)):
+        return ('napló nincs (csak generált próba: `%s`, nem a study eredeti keresése)'
+                % generalt)
+    return 'napló nincs'
+
+
+def szabaly8c_kezi_lefedettseg(motivumok, elofordulasok, auditok, datasetek, csak_id=None,
+                                cim='8/c. Kézi dataset-lefedettség'):
+    """N12: soronkent egy ID -- a fedetlen datasetek listaja, BDB-nel
+    '(nincs lekérdező)', retroaktivnal '(retroaktív, F3)', plusz a
+    naplo-mutato. Az a dataset, amely SEM LEKERDEZO_NELKULI, SEM nem
+    retroaktiv-fedetlen, itt nem jelenik meg -- azt a gepi szabaly mar
+    SÉRTÉSkent jelentette."""
+    mindig = _mindig_datasetek(datasetek)
+    id_szerint_proveniencia = _id_szerint_provok(elofordulasok, auditok)
+    motivum_szerint = {m['id']: m for m in motivumok}
+
+    id_lista = [csak_id] if csak_id else sorted(id_szerint_proveniencia)
+    sorok = []
+    for motivum_id in id_lista:
+        fedett = _fedett_datasetek(id_szerint_proveniencia.get(motivum_id, []))
+        hianyok = []
+        for dataset_nev, dataset_fajl in mindig:
+            if dataset_fajl in fedett:
+                continue
+            if dataset_fajl in LEKERDEZO_NELKULI:
+                hianyok.append('%s (nincs lekérdező)' % dataset_nev)
+            elif motivum_id in RETROAKTIV_IDK:
+                hianyok.append('%s (retroaktív, F3)' % dataset_nev)
+        if not hianyok:
+            continue
+        mutato = _naplo_mutato(motivum_id, motivum_szerint.get(motivum_id))
+        sorok.append('%s -- fedetlen: %s | %s' % (motivum_id, ', '.join(hianyok), mutato))
+    return Sor(cim, 'KÉZI', len(sorok), sorok)
 
 
 # ---------------------------------------------------------------------------
@@ -285,8 +426,8 @@ def forras_study_illeszkedik(forras_study_ertek, study_fajl_relativ):
     return study_fajl_relativ in reszek
 
 
-def study_ellenorzes(study_path, motivumok, elofordulasok, datasetek):
-    """[Sor] -- Q1, Q2-Q6 (KÉZI), Q7 egy study-fajlra."""
+def study_ellenorzes(study_path, motivumok, elofordulasok, auditok, datasetek):
+    """[Sor] -- Q1, Q2-Q6 (KÉZI), Q7 + 8/b + 8/c egy study-fajlra."""
     rel = os.path.relpath(study_path, ROOT).replace(os.sep, '/')
     with open(study_path, encoding='utf-8') as f:
         szoveg = f.read()
@@ -308,14 +449,17 @@ def study_ellenorzes(study_path, motivumok, elofordulasok, datasetek):
     else:
         felteteles = _felteteles_datasetek(datasetek)
         for motivum_id in erintett_id:
-            q7_sor, _ = szabaly8_dataset_lefedettseg(motivumok, elofordulasok, datasetek,
-                                                      csak_id=motivum_id)
+            q7_sor, _ = szabaly8_dataset_lefedettseg_gepi(motivumok, elofordulasok, auditok,
+                                                           datasetek, csak_id=motivum_id)
             q7_sor.cim = 'Q7 (%s, %s)' % (rel, motivum_id)
             if q7_sor.verdict == 'RENDBEN' and felteteles:
                 q7_sor.verdict = 'RENDBEN (mindig)'
             sorok.append(q7_sor)
             sorok.append(szabaly8b_feltetel_datasetek(
                 datasetek, cim='8/b (%s, %s). Feltételes datasetek' % (rel, motivum_id)))
+            sorok.append(szabaly8c_kezi_lefedettseg(
+                motivumok, elofordulasok, auditok, datasetek, csak_id=motivum_id,
+                cim='8/c (%s, %s). Kézi dataset-lefedettség' % (rel, motivum_id)))
     return sorok
 
 
@@ -347,6 +491,7 @@ def main():
         _, jeloltek = G.tsv_beolvas(os.path.join(args.adat, 'jeloltek.tsv'))
         _, kapcsolatok = G.tsv_beolvas(os.path.join(args.adat, 'kapcsolatok.tsv'))
         _, datasetek = G.tsv_beolvas(os.path.join(args.adat, 'datasetek.tsv'))
+        _, auditok = G.tsv_beolvas(os.path.join(args.adat, 'auditok.tsv'))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
@@ -356,19 +501,20 @@ def main():
     tabla_sorok = []
     try:
         tabla_sorok.append(szabaly1_hivatkozasi_epseg(motivum_id_halmaz, elofordulasok,
-                                                        kapcsolatok, jeloltek))
+                                                        kapcsolatok, jeloltek, auditok))
         tabla_sorok.append(szabaly2_nincs_kozvetlen_ut(elofordulasok, jeloltek))
-        tabla_sorok.append(szabaly3_proveniencia(elofordulasok))
+        tabla_sorok.append(szabaly3_proveniencia(elofordulasok, auditok))
         tabla_sorok.append(szabaly4_gerinc_elem(elofordulasok))
         tabla_sorok.append(szabaly5_karoli_triplet(elofordulasok))
         tabla_sorok.append(szabaly6_gate_kenyszer(motivumok))
         tabla_sorok.append(szabaly7_gate_jelentes(motivumok, elofordulasok))
-        sor8, _ = szabaly8_dataset_lefedettseg(motivumok, elofordulasok, datasetek)
+        sor8, _ = szabaly8_dataset_lefedettseg_gepi(motivumok, elofordulasok, auditok, datasetek)
         felteteles = _felteteles_datasetek(datasetek)
         if sor8.verdict == 'RENDBEN' and felteteles:
             sor8.verdict = 'RENDBEN (mindig)'
         tabla_sorok.append(sor8)
         tabla_sorok.append(szabaly8b_feltetel_datasetek(datasetek))
+        tabla_sorok.append(szabaly8c_kezi_lefedettseg(motivumok, elofordulasok, auditok, datasetek))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
@@ -376,7 +522,8 @@ def main():
     study_sorok = []
     try:
         for study_path in args.study:
-            study_sorok.extend(study_ellenorzes(study_path, motivumok, elofordulasok, datasetek))
+            study_sorok.extend(study_ellenorzes(study_path, motivumok, elofordulasok,
+                                                 auditok, datasetek))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
