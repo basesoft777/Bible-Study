@@ -37,6 +37,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ALAPERTELMEZETT_ADAT = os.path.join(ROOT, 'adat')
 
 PROVENIENCIA_KOTELEZO_KULCSOK = {'scope', 'forras', 'ts'}
+PROVENIENCIA_MEGENGEDETT_TOVABBI_KULCSOK = {'strong', 'n'}
+PROVENIENCIA_TILTOTT_KULCSOK = {'talalat', 'strong_vart'}
 
 
 class Sor(object):
@@ -112,10 +114,21 @@ def szabaly2_nincs_kozvetlen_ut(elofordulasok, jeloltek):
 
 
 def szabaly3_proveniencia(elofordulasok):
+    """G9: a scope/forras/ts kotelezo; a lekerdez.py tovabbi kulcsai (strong,
+    n) megengedettek; az igazolas-jellegu kulcsok (talalat, strong_vart)
+    tiltottak (F8_BRIEF.md G9)."""
     hibas = []
     for sor in elofordulasok:
         kulcsok = proveniencia_parse(sor.get('proveniencia', ''))
-        if not kulcsok or set(kulcsok) != PROVENIENCIA_KOTELEZO_KULCSOK:
+        hiba = False
+        if not kulcsok or not PROVENIENCIA_KOTELEZO_KULCSOK.issubset(kulcsok):
+            hiba = True
+        elif set(kulcsok) & PROVENIENCIA_TILTOTT_KULCSOK:
+            hiba = True
+        elif not set(kulcsok).issubset(
+                PROVENIENCIA_KOTELEZO_KULCSOK | PROVENIENCIA_MEGENGEDETT_TOVABBI_KULCSOK):
+            hiba = True
+        if hiba:
             hibas.append('%s / %s (%r)' % (sor['id'], sor['igehely'], sor.get('proveniencia', '')))
     if hibas:
         return Sor('3. Proveniencia-kényszer', 'SÉRTÉS', len(hibas), hibas)

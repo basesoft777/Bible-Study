@@ -538,8 +538,10 @@ ellenőrzés tárgyai.
    `motivumok.id`.
 2. **Nincs közvetlen út.** Minden `elofordulasok` sorhoz tartozik `jeloltek` sor azonos
    kulccsal, `dontes=beépítve` értékkel.
-3. **Proveniencia-kényszer.** `elofordulasok.proveniencia` nem lehet üres, és kulcsai kizárólag `scope`, `forras`, `ts` lehetnek (az igazolás külön mező, l. 1.8). Ha `manual`,
-   a sor értelmezésként jelölendő a generált kimenetben.
+3. **Proveniencia-kényszer.** `elofordulasok.proveniencia` nem lehet üres. Kötelező kulcsai
+   `scope`, `forras`, `ts`; a `lekerdez.py` által írt további kulcsok (`strong`, `n`)
+   megengedettek; az igazolás-jellegű kulcsok (`talalat`, `strong_vart`, l. 1.8) tiltottak
+   (`F8_BRIEF.md` G9). Ha `manual`, a sor értelmezésként jelölendő a generált kimenetben.
 4. **Horgony-kényszer.** `elofordulasok.gerinc_elem` nem lehet üres.
 5. **Károli-triplet.** Ha `karoli_szo` ki van töltve, `azonositas_modja` és
    `megbizhatosag` is kötelező.
