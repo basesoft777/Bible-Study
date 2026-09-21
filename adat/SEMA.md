@@ -8,7 +8,7 @@ Ez a réteg a **kanonikus igazságforrás**. A `tematikus_lezart/`, `genezis/`, 
 és `lexikon/` kimenetei ebből generálódnak vagy ehhez igazodnak. Ha egy tény itt és egy
 markdown-fájlban ellentmond, **ez a tábla az irányadó**.
 
-A hét tábla és a hozzájuk tartozó kulcs:
+A nyolc tábla és a hozzájuk tartozó kulcs:
 
 | Fájl | Kulcs | Ki írja |
 |---|---|---|
@@ -19,6 +19,7 @@ A hét tábla és a hozzájuk tartozó kulcs:
 | `lexikon_hivatkozasok.tsv` | `strong` + `entry_id` + `jelentes_szam` | `betolt.py` |
 | `datasetek.tsv` | `study_tipus` + `dataset` | kézzel (policy-tábla) |
 | `grammatikai_strongok.tsv` | `strong` | **generált** — `eszkozok/grammatikai_strongok_general.py` |
+| `auditok.tsv` | nincs (l. 2.9) | a `lekerdez.py` proveniencia-sora, kézzel rögzítve |
 
 ---
 
@@ -527,6 +528,29 @@ csak az A4 lépésben, a `jeloltek.tsv`-ben születik meg (l. 2.4 és `F8_BRIEF.
 | `strong` | `STRONG` | ✔ | |
 | `datum` | `DATUM` | ✔ | |
 
+### 2.9 `auditok.tsv` — lekérdezés-napló, motívumszintű dataset-nyom (N12)
+
+Kulcs **nincs** — egy ID-hez több azonos sor is lehet (egy motívumnál a `scan`
+parancs több Strong-számra is fut, mindegyik saját sort kap). Ez a tábla adja
+a 8. szabály (3.8) nyomát: a 8. szabály **motívumszintű**, nem igehely-szintű
+— egy 0 találatos lekérdezés is dataset-lefedettséget bizonyít, de nincs
+hozzá `elofordulasok` sor, amelyben a proveniencia elférne.
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `id` | motívum-id | ✔ | Idegen kulcs a `motivumok.tsv`-re. |
+| `lepes` | zárt: `A5` \| `B2` \| `B4` | ✔ | A `MUNKAMENET.md` lépés-kódja, amely a lekérdezést futtatta. |
+| `proveniencia` | `PROVENIENCIA` | ✔ | A `lekerdez.py` utolsó sora **szó szerint**, a `proveniencia: ` előtag nélkül — l. 1.5. |
+| `datum` | `DATUM` | ✔ | |
+
+Minden A5/B2/B4-lekérdezés sort kap, **0 találatnál is** — a nyom a
+lekérdezéshez tartozik, nem a találathoz. A lefedett dataset a `proveniencia`
+`forras` kulcsából **származtatott**: a `+` mentén bontott fájlnevek, a
+`datasetek.tsv` `fajl` mezőjének alapnevével pontos egyezéssel (nem
+részsztring — l. 3.8 indoklása). A `lexikai-scan` subagent a proveniencia-sort
+amúgy is szó szerint adja vissza; a rögzítés a fő szál feladata, nem a
+subagenté.
+
 ---
 
 ## 3. Integritási szabályok
@@ -534,14 +558,15 @@ csak az A4 lépésben, a `jeloltek.tsv`-ben születik meg (l. 2.4 és `F8_BRIEF.
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi
 ellenőrzés tárgyai.
 
-1. **Hivatkozási épség.** `elofordulasok.id`, `kapcsolatok.id`, `jeloltek.id` → létező
-   `motivumok.id`.
+1. **Hivatkozási épség.** `elofordulasok.id`, `kapcsolatok.id`, `jeloltek.id`, `auditok.id`
+   → létező `motivumok.id`.
 2. **Nincs közvetlen út.** Minden `elofordulasok` sorhoz tartozik `jeloltek` sor azonos
    kulccsal, `dontes=beépítve` értékkel.
 3. **Proveniencia-kényszer.** `elofordulasok.proveniencia` nem lehet üres. Kötelező kulcsai
    `scope`, `forras`, `ts`; a `lekerdez.py` által írt további kulcsok (`strong`, `n`)
    megengedettek; az igazolás-jellegű kulcsok (`talalat`, `strong_vart`, l. 1.8) tiltottak
    (`F8_BRIEF.md` G9). Ha `manual`, a sor értelmezésként jelölendő a generált kimenetben.
+   Ugyanez a szabály vonatkozik az `auditok.proveniencia` mezőre (N12).
 4. **Horgony-kényszer.** `elofordulasok.gerinc_elem` nem lehet üres.
 5. **Károli-triplet.** Ha `karoli_szo` ki van töltve, `azonositas_modja` és
    `megbizhatosag` is kötelező.
@@ -549,8 +574,12 @@ ellenőrzés tárgyai.
    egyike sem lehet üres egy `publikálható` vagy `véglegesített` motívumnál.
 7. **Ütközés- és részhalmaz-jelentés** (`gate.py`): mely motívumpárok osztoznak igehelyen;
    ha `B` igehely-halmaza ⊆ `A`, akkor **B nem önálló ID, hanem ↳ alpont**.
-8. **Dataset-lefedettség.** Minden `mindig` és teljesült feltételű `felteteles` datasethez
-   tartozzon legalább egy proveniencia-nyom a motívum sorai közt.
+8. **Dataset-lefedettség** (motívumszintű, N12). Egy motívum nyomai: az `auditok` sorai és
+   az `elofordulasok` proveniencia-mezői; a nyomot a `forras` `+` mentén bontott fájlnevei
+   adják, pontos egyezéssel. Minden `mindig` datasethez tartozzon nyom. Kivételek, KÉZI
+   jelentéssel: (a) a lekérdező nélküli datasetek (`ellenoriz.LEKERDEZO_NELKULI`, ma: BDB);
+   (b) a 7 retroaktív, F3-betöltésű motívum hiányzó datasetjei (`ellenoriz.RETROAKTIV_IDK`,
+   zárt lista). A `felteteles` datasetek a 8/b alatt KÉZI.
 
 ---
 
