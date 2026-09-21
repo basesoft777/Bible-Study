@@ -143,7 +143,7 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
   Strong→lemma joinjával a Genezis újraépítése, és a motívum-tokenek
   találatainak összevetése a mostani `LXX_kivonat_Genezis.tsv`-vel.
 
-- **N16 — Az ISTENTISZT-001 hiányzó ÚSZ-i idézőhelyei.** *(ÚJ, LEX.2
+- **N16 — Az ISTENTISZT-001 hiányzó ÚSZ-i idézőhelyei. LEZÁRVA (N16, 2026.09.21).** *(ÚJ, LEX.2
   zárójelentése, 2026.09.21)* A Jóel 2:32 szó szerinti ÚSZ-i idézetei
   — ApCsel 2:21 és Róm 10:13 — nincsenek az `elofordulasok.tsv`
   29 ISTENTISZT-001 sora között, noha a Jóel 2:32 sor megjegyzése
@@ -158,6 +158,8 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
   ⚠ ELTÉRÉS jelölések feloldhatók. Kapcsolódó: a módszertani napló
   „15 emberi-invokációs eset" állítása a jelenlegi táblán
   ellenőrizendő (a zárójelentés 27-et becsült, nem mért).
+
+  **Megoldás (N16_BRIEF.md):** a két sor a study kapcsolat-táblája alapján, `scope=manual` provenienciával, `betolt.py beepit` úton betöltve (29 → 31 sor); a Jóel 2:32 → Róm 10:14 kapcsolat a study szerinti három sorra bontva (23 → 25 kapcsolat). A lexikon-oldal ApCsel/Róm 10:13 ⚠ ELTÉRÉS-jelölései feloldva; a pilot szótári anyaga (2–4. szakasz) a 2/b. kézi alszakaszba átemelve. L. `N16.0`–`N16.5` commitok.
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
