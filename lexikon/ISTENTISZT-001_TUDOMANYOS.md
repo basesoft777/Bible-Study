@@ -6,7 +6,7 @@
 
 ## 0. Metaadatok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#metaadat | forrás: adat/motivumok.tsv | licenc: projekt-adat | ts=2026-09-19 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#metaadat | forrás: adat/motivumok.tsv | licenc: projekt-adat | ts=2026-09-21 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum törzsadatait fedi a `motivumok.tsv`-ből.*
 
@@ -29,9 +29,9 @@
 
 ## 1. Előfordulások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#elofordulasok | forrás: adat/elofordulasok.tsv | licenc: projekt-adat | ts=2026-09-19 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#elofordulasok | forrás: adat/elofordulasok.tsv | licenc: projekt-adat | ts=2026-09-21 -->
 
-*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 29 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, ebből 22 lexikon-jelentéssel.*
+*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 31 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, ebből 24 lexikon-jelentéssel.*
 
 | Igehely | Kapcsolódás | PaRDeS-szint | Funkció | Strong-szám(ok) | Lexikon-jelentés |
 |---|---|---|---|---|---|
@@ -57,9 +57,11 @@
 | Jóel 2:32 | Az ószövetségi megfogalmazás csúcspontja: "mindaz, aki segítségül hívja az Úr nevét, megmenekül" — ezt Péter (ApCsel 2:21) és Pál (Róm 10:13) is szó szerint idézi. Károli-számozás: Jóel 3:5. | Remez | 🎯 előkép/beteljesedés — az ÓSZ-i ígéret, amit az ÚSZ tételesen, szó szerint idéz | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni |
 | Sof 3:9 | Eszkatológiai ígéret — a népek megtisztított ajka egy akarattal hívja segítségül az Urat. | Remez | 🔮 eszkatológiai kitekintés — a formula jövőbeli, univerzális beteljesedésének előrevetítése | H7121+H8034 | BDB H7121 2.c (rokon) |
 | Zak 13:9 | Sof 3:9 párja: a megtisztított maradék segítségül hívja Isten nevét, és Isten válaszol — kétirányú szövetségi megerősítés. | Remez | 🔮 eszkatológiai kitekintés (folytatás) — kétirányú szövetségi megerősítéssé bővíti az ígéretet | H7121+H8034 | BDB H7121 2.c |
+| ApCsel 2:21 | Péter pünkösdi beszéde szó szerint idézi a LXX Jóel 2:32-t: "mindaz, a ki az Úrnak nevét segítségül hívja, megtartatik." | Remez | 🎯 előkép/beteljesedés (idézet) — az ÚSZ szó szerint idézi a Jóel 2:32-t | G1941 | TBESG G1941 2 — segítségül hívni, invokálni |
 | ApCsel 9:14 | "…mindazokat…, kik a te nevedet segítségül hívják" — Saul üldözési célpontjainak leírása, a korai keresztények azonosító megnevezése. | Remez | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | G1941 | — |
 | ApCsel 9:21 | "…a kik ezt a nevet hívják segítségül" — az ApCsel 9:14-es leírás közvetlen megismétlése ugyanabban a fejezetben. | Remez | 🔁 ismétlődés — az ApCsel 9:14-es leírás közvetlen megismétlése | G1941 | — |
 | ApCsel 22:16 | "…segítségül híván az Úrnak nevét" — Pál saját megtérés-elbeszélésében, a keresztséggel összekapcsolva. | Remez | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | G1941 | — |
+| Róm 10:13 | Pál szó szerint idézi a LXX Jóel 2:32-t: "minden, a ki segítségül hívja az Úr nevét, megtartatik." — erre épül a 10:14 kérdéssora. | Remez | 🎯 előkép/beteljesedés (idézet) — az ÚSZ szó szerint idézi a Jóel 2:32-t | G1941 | TBESG G1941 2 — segítségül hívni, invokálni |
 | Róm 10:14 | Pál közvetlenül folytatja az érvelést: "Mimódon hívják segítségül, a kiben nem hittek?" — ugyanaz a görög ige, mint 10:13-nál. | Remez | 🎯 előkép/beteljesedés (folytatás) — Pál közvetlenül továbbviszi az érvelést ugyanabban a szakaszban | G1941 | — |
 | 1Kor 1:2 | "…mindazokkal egybe, a kik a mi Urunk Jézus Krisztus nevét segítségül hívják bármely helyen" — a formula első explicit alkalmazása Krisztusra, a gyülekezet önmeghatározása. | Remez | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | G1941 | — |
 | 2Tim 2:22 | "…azokkal egyetembe, a kik segítségül hívják az Urat tiszta szívből" — a segítségül hívás mint közösségválasztási kritérium. | Remez | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | G1941 | — |
@@ -168,7 +170,7 @@ a vitát nem hallgatja el)*
 
 ## 2. Lexikon-szócikkek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-09-19 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-09-21 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 3 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
@@ -244,7 +246,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 ## 3. LXX-híd — nyers adat
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#lxx | forrás: konkordancia/LXX_kivonat_Exodus.tsv, konkordancia/LXX_kivonat_Ezsaias.tsv, konkordancia/LXX_kivonat_Genezis.tsv, konkordancia/LXX_kivonat_Jeremias.tsv, konkordancia/LXX_kivonat_Joel.tsv, konkordancia/LXX_kivonat_Kiralyok_1.tsv, konkordancia/LXX_kivonat_Kiralyok_2.tsv, konkordancia/LXX_kivonat_Kronikak_1.tsv, konkordancia/LXX_kivonat_Sofonias.tsv, konkordancia/LXX_kivonat_Zakarias.tsv, konkordancia/LXX_kivonat_Zsoltarok.tsv | licenc: tisztazatlan | ts=2026-09-19 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#lxx | forrás: konkordancia/LXX_kivonat_Exodus.tsv, konkordancia/LXX_kivonat_Ezsaias.tsv, konkordancia/LXX_kivonat_Genezis.tsv, konkordancia/LXX_kivonat_Jeremias.tsv, konkordancia/LXX_kivonat_Joel.tsv, konkordancia/LXX_kivonat_Kiralyok_1.tsv, konkordancia/LXX_kivonat_Kiralyok_2.tsv, konkordancia/LXX_kivonat_Kronikak_1.tsv, konkordancia/LXX_kivonat_Sofonias.tsv, konkordancia/LXX_kivonat_Zakarias.tsv, konkordancia/LXX_kivonat_Zsoltarok.tsv | licenc: tisztazatlan | ts=2026-09-21 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 1 görög Strong-tokenjét keresi 22 ÓSZ igehelyen az LXX-kivonatban, és 13 találatot ad.*
 
@@ -268,9 +270,9 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 ## 4. TSK és Károli-KH — nyers eredmény
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#tsk_kh | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-09-19 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#tsk_kh | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-09-21 -->
 
-*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 29 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 20 igehely ad legalább egy találatot (93 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható.*
+*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 31 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 22 igehely ad legalább egy találatot (102 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható.*
 
 #### 1Móz 13:4
 - Károli-KH: 1Móz 12,8
@@ -369,6 +371,13 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 - TSK: Ez 36,28 (Votes: 15)
 - Károli-KH: 1Pét 1,6-7
 
+#### ApCsel 2:21
+- TSK: Róm 10,12 (Votes: 29)
+- TSK: Róm 10,13 (Votes: 29)
+- TSK: Jóel 2,32 (Votes: 26)
+- TSK: Zsolt 86,5 (Votes: 20)
+- Károli-KH: 1Móz 25,21-26
+
 #### ApCsel 9:14
 - Károli-KH: 1Sám 13,13-14
 - Károli-KH: Zsolt 89,21-22
@@ -379,6 +388,12 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 #### ApCsel 22:16
 - TSK: ApCsel 2,38 (Votes: 15)
 - Károli-KH: Jón 1,5
+
+#### Róm 10:13
+- TSK: ApCsel 2,21 (Votes: 106)
+- TSK: Jóel 2,32 (Votes: 103)
+- Károli-KH: Jóel 2,32
+- Károli-KH: Csel 2,21
 
 #### Róm 10:14
 - TSK: Mk 16,15 (Votes: 23)
@@ -441,9 +456,9 @@ saját, lexikai szintű megfigyelés marad (l. korábbi megállapítás).
 
 ## 5. Kapcsolatok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: projekt-adat | ts=2026-09-19 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: projekt-adat | ts=2026-09-21 -->
 
-*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 23 kapcsolat-sorát fedi a `kapcsolatok.tsv`-ből, 29 igehely-csomóponttal.*
+*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 25 kapcsolat-sorát fedi a `kapcsolatok.tsv`-ből, 31 igehely-csomóponttal.*
 
 ```mermaid
 graph LR
@@ -469,23 +484,27 @@ graph LR
     n20["Jóel 2:32"]
     n21["Sof 3:9"]
     n22["Zak 13:9"]
-    n23["ApCsel 9:14"]
-    n24["ApCsel 9:21"]
-    n25["ApCsel 22:16"]
-    n26["Róm 10:14"]
-    n27["1Kor 1:2"]
-    n28["2Tim 2:22"]
-    n29["1Pét 1:17"]
+    n23["ApCsel 2:21"]
+    n24["ApCsel 9:14"]
+    n25["ApCsel 9:21"]
+    n26["ApCsel 22:16"]
+    n27["Róm 10:13"]
+    n28["Róm 10:14"]
+    n29["1Kor 1:2"]
+    n30["2Tim 2:22"]
+    n31["1Pét 1:17"]
     n1 -->|Párhuzam| n21
     n1 -->|Párhuzam| n11
     n1 -->|Párhuzam| n20
-    n20 -->|Beteljesedés| n26
-    n26 -->|Párhuzam| n27
-    n26 -->|Párhuzam| n28
-    n26 -->|Párhuzam| n29
-    n26 -->|Párhuzam| n23
-    n23 -->|Párhuzam| n24
-    n26 -->|Párhuzam| n25
+    n20 -->|Beteljesedés| n23
+    n20 -->|Beteljesedés| n27
+    n27 -->|Párhuzam| n28
+    n28 -->|Párhuzam| n29
+    n28 -->|Párhuzam| n30
+    n28 -->|Párhuzam| n31
+    n28 -->|Párhuzam| n24
+    n24 -->|Párhuzam| n25
+    n28 -->|Párhuzam| n26
     n1 -->|Variáns| n6
     n6 -->|Párhuzam| n7
     n2 -->|Párhuzam| n3
@@ -506,7 +525,9 @@ graph LR
 | 1Móz 4:26 | Sof 3:9 | Párhuzam | azonos szereposztás (ember hívja segítségül Isten nevét), más kánoni ponton | magas | Remez |
 | 1Móz 4:26 | 2Kir 5:11 | Párhuzam | azonos szereposztás, parafrazált formában — nincs szó szerinti egyezés | közepes | Remez |
 | 1Móz 4:26 | Jóel 2:32 | Párhuzam | azonos szereposztás, az ószövetségi megfogalmazás csúcspontjáig | magas | Remez |
-| Jóel 2:32 | Róm 10:14 | Beteljesedés | szó szerinti LXX-idézés-lánc (2:32⇒Róm 10:13⇒10:14) | magas | Remez |
+| Jóel 2:32 | ApCsel 2:21 | Beteljesedés | szó szerinti LXX-idézés, ÓSZ-prófécia → ÚSZ-beteljesedés | magas | Remez |
+| Jóel 2:32 | Róm 10:13 | Beteljesedés | szó szerinti LXX-idézés, ÓSZ-prófécia → ÚSZ-beteljesedés | magas | Remez |
+| Róm 10:13 | Róm 10:14 | Párhuzam | azonos szereposztás, közvetlen folytatás ugyanabban a szakaszban | magas | Remez |
 | Róm 10:14 | 1Kor 1:2 | Párhuzam | azonos görög ige (ἐπικαλέομαι), egyházi azonosító-formulává válás — nincs szó szerinti idézés | közepes | Remez |
 | Róm 10:14 | 2Tim 2:22 | Párhuzam | azonos görög ige, egyházi azonosító-formulává válás | közepes | Remez |
 | Róm 10:14 | 1Pét 1:17 | Párhuzam | azonos görög ige, egyházi azonosító-formulává válás | közepes | Remez |
@@ -692,7 +713,7 @@ tévesen ne sorolja be a motívumba.】
 
 ## 9. Források és licencek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#forrasok | forrás: adat/elofordulasok.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_kivonat_Exodus.tsv, konkordancia/LXX_kivonat_Ezsaias.tsv, konkordancia/LXX_kivonat_Genezis.tsv, konkordancia/LXX_kivonat_Jeremias.tsv, konkordancia/LXX_kivonat_Joel.tsv, konkordancia/LXX_kivonat_Kiralyok_1.tsv, konkordancia/LXX_kivonat_Kiralyok_2.tsv, konkordancia/LXX_kivonat_Kronikak_1.tsv, konkordancia/LXX_kivonat_Sofonias.tsv, konkordancia/LXX_kivonat_Zakarias.tsv, konkordancia/LXX_kivonat_Zsoltarok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TSK_kereszthivatkozasok.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat, tisztazatlan | ts=2026-09-19 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#forrasok | forrás: adat/elofordulasok.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_kivonat_Exodus.tsv, konkordancia/LXX_kivonat_Ezsaias.tsv, konkordancia/LXX_kivonat_Genezis.tsv, konkordancia/LXX_kivonat_Jeremias.tsv, konkordancia/LXX_kivonat_Joel.tsv, konkordancia/LXX_kivonat_Kiralyok_1.tsv, konkordancia/LXX_kivonat_Kiralyok_2.tsv, konkordancia/LXX_kivonat_Kronikak_1.tsv, konkordancia/LXX_kivonat_Sofonias.tsv, konkordancia/LXX_kivonat_Zakarias.tsv, konkordancia/LXX_kivonat_Zsoltarok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TSK_kereszthivatkozasok.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat, tisztazatlan | ts=2026-09-21 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum lexikon-oldalán ténylegesen felhasznált forrásokat sorolja fel.*
 

@@ -30,7 +30,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` — 1 fő előfordulás / 9 igehely-sor — publikálható (v2, 2026.09.10)
 
 **Pneumatológia/istentisztelet**
-- Segítségül hívni az Úr nevét `[ID: ISTENTISZT-001]` — 5 fő előfordulás / 29 igehely-sor — publikálható (v2, 2026.09.09)
+- Segítségül hívni az Úr nevét `[ID: ISTENTISZT-001]` — 5 fő előfordulás / 31 igehely-sor — publikálható (v2, 2026.09.09)
 
 **Teremtéstan**
 - Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma `[ID: TEREMT-001]` — 5 fő előfordulás / 41 igehely-sor — publikálható (v4, 2026.09.10)
@@ -488,7 +488,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#konyv_index | forrás: adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk az elofordulasok.tsv mind a 253 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
+*Ez a blokk az elofordulasok.tsv mind a 255 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
 
 | Könyv | Igehely-sor | Tételek |
 |---|---|---|
@@ -521,8 +521,8 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | Mt | 2 | Mt 11:23 [ALVIL-001], Mt 15:19 [HAMART-001] |
 | Mk | 1 | Mk 7:21-23 [HAMART-001] |
 | Luk | 5 | Luk 1:46 [ANTROP-001], Luk 1:47 [ANTROP-001], Luk 8:31 [TEREMT-001], Luk 10:15 [ALVIL-001], Luk 16:23 [ALVIL-001] |
-| ApCsel | 5 | ApCsel 2:27 [ALVIL-001], ApCsel 2:31 [ALVIL-001], ApCsel 9:14 [ISTENTISZT-001], ApCsel 9:21 [ISTENTISZT-001], ApCsel 22:16 [ISTENTISZT-001] |
-| Róm | 3 | Róm 8:20-22 [HAMART-001], Róm 10:7 [TEREMT-001], Róm 10:14 [ISTENTISZT-001] |
+| ApCsel | 6 | ApCsel 2:21 [ISTENTISZT-001], ApCsel 2:27 [ALVIL-001], ApCsel 2:31 [ALVIL-001], ApCsel 9:14 [ISTENTISZT-001], ApCsel 9:21 [ISTENTISZT-001], ApCsel 22:16 [ISTENTISZT-001] |
+| Róm | 4 | Róm 8:20-22 [HAMART-001], Róm 10:7 [TEREMT-001], Róm 10:13 [ISTENTISZT-001], Róm 10:14 [ISTENTISZT-001] |
 | 1Kor | 4 | 1Kor 1:2 [ISTENTISZT-001], 1Kor 2:14 [ANTROP-001], 1Kor 2:15 [ANTROP-001], 1Kor 15:45 [ANTROP-001] |
 | Gal | 2 | Gal 3:10 [HAMART-001], Gal 3:13 [HAMART-001] |
 | 1Thessz | 1 | 1Thessz 5:23 [ANTROP-001] |
