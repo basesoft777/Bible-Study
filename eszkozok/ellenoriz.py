@@ -184,6 +184,28 @@ def _mindig_datasetek(datasetek):
     return ki
 
 
+def _felteteles_datasetek(datasetek):
+    """[(nev, fajlnev)] -- a study_tipus=tematikus, kotelezoseg=felteteles
+    sorok, a `fajl` mezo alapneve szerint (F8.5a)."""
+    ki = []
+    for sor in datasetek:
+        if sor.get('study_tipus') != 'tematikus':
+            continue
+        if sor.get('kotelezoseg') != 'felteteles':
+            continue
+        ki.append((sor['dataset'], os.path.basename(sor['fajl'])))
+    return ki
+
+
+def szabaly8b_feltetel_datasetek(datasetek, cim='8/b. Feltételes datasetek'):
+    """KEZI sor a felteteles tematikus datasetekrol (F8.5a) -- a feltetel
+    teljesulese iteletet igenyel, nem geppel donthet."""
+    felteteles = _felteteles_datasetek(datasetek)
+    peldak = ['%s (%s)' % (nev, fajl) for nev, fajl in felteteles]
+    return Sor(cim, 'KÉZI', len(peldak), peldak,
+               megjegyzes='a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a')
+
+
 def szabaly8_dataset_lefedettseg(motivumok, elofordulasok, datasetek, csak_id=None):
     """(Sor, erintett_id_lista). csak_id: ha adott, csak erre az egy ID-re
     (Q7 hasznalja); egyebkent minden, elofordulasokban jelen levo ID-re."""
@@ -266,11 +288,16 @@ def study_ellenorzes(study_path, motivumok, elofordulasok, datasetek):
         sorok.append(Sor('Q7 (%s)' % rel, 'SÉRTÉS', 1,
                           ['egyetlen motivumok.tsv sor forras_study-ja sem tartalmazza ezt a fájlt']))
     else:
+        felteteles = _felteteles_datasetek(datasetek)
         for motivum_id in erintett_id:
             q7_sor, _ = szabaly8_dataset_lefedettseg(motivumok, elofordulasok, datasetek,
                                                       csak_id=motivum_id)
             q7_sor.cim = 'Q7 (%s, %s)' % (rel, motivum_id)
+            if q7_sor.verdict == 'RENDBEN' and felteteles:
+                q7_sor.verdict = 'RENDBEN (mindig)'
             sorok.append(q7_sor)
+            sorok.append(szabaly8b_feltetel_datasetek(
+                datasetek, cim='8/b (%s, %s). Feltételes datasetek' % (rel, motivum_id)))
     return sorok
 
 
@@ -279,9 +306,11 @@ def study_ellenorzes(study_path, motivumok, elofordulasok, datasetek):
 # ---------------------------------------------------------------------------
 
 def osszesito(sorok):
+    """A 'RENDBEN (mindig)' is a RENDBEN kosarba szamit (F8.5a)."""
     darab = {'RENDBEN': 0, 'SÉRTÉS': 0, 'KÉZI': 0, 'JELENTÉS': 0}
     for s in sorok:
-        darab[s.verdict] = darab.get(s.verdict, 0) + 1
+        alap = s.verdict.split(' ', 1)[0]
+        darab[alap] = darab.get(alap, 0) + 1
     return darab
 
 
@@ -317,7 +346,11 @@ def main():
         tabla_sorok.append(szabaly6_gate_kenyszer(motivumok))
         tabla_sorok.append(szabaly7_gate_jelentes(motivumok, elofordulasok))
         sor8, _ = szabaly8_dataset_lefedettseg(motivumok, elofordulasok, datasetek)
+        felteteles = _felteteles_datasetek(datasetek)
+        if sor8.verdict == 'RENDBEN' and felteteles:
+            sor8.verdict = 'RENDBEN (mindig)'
         tabla_sorok.append(sor8)
+        tabla_sorok.append(szabaly8b_feltetel_datasetek(datasetek))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)

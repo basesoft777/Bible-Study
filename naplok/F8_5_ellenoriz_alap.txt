@@ -29,6 +29,17 @@
   - ANTROP-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
   - ... és további 25
 
+**8/b. Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
+  - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
+  - LSJ (LSJ_teljes.tsv)
+  - LXX_kivonat (LXX_kivonat_*.tsv)
+  - SECE_G (SECE_G_teljes.tsv)
+  - SECE_H (SECE_H_teljes.tsv)
+  - Strong_szotar (Strong_szotar.tsv)
+  - TAGNT (TAGNT_kivonat.tsv)
+  - TIPNR (TIPNR_kivonat.tsv)
+  - Thayer (Thayer_teljes.tsv)
+
 ## `--study` ellenőrzés
 
 **Q1 (tematikus_lezart/Melkizedek_tematikus.md)**: RENDBEN
@@ -50,6 +61,17 @@
   - KIRALY-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
   - KIRALY-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
 
+**8/b (tematikus_lezart/Melkizedek_tematikus.md, KIRALY-001). Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
+  - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
+  - LSJ (LSJ_teljes.tsv)
+  - LXX_kivonat (LXX_kivonat_*.tsv)
+  - SECE_G (SECE_G_teljes.tsv)
+  - SECE_H (SECE_H_teljes.tsv)
+  - Strong_szotar (Strong_szotar.tsv)
+  - TAGNT (TAGNT_kivonat.tsv)
+  - TIPNR (TIPNR_kivonat.tsv)
+  - Thayer (Thayer_teljes.tsv)
+
 **Q1 (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md)**: RENDBEN
 
 **Q2 (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
@@ -68,6 +90,17 @@
   - ISTENTISZT-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
   - ISTENTISZT-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
   - ISTENTISZT-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+
+**8/b (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md, ISTENTISZT-001). Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
+  - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
+  - LSJ (LSJ_teljes.tsv)
+  - LXX_kivonat (LXX_kivonat_*.tsv)
+  - SECE_G (SECE_G_teljes.tsv)
+  - SECE_H (SECE_H_teljes.tsv)
+  - Strong_szotar (Strong_szotar.tsv)
+  - TAGNT (TAGNT_kivonat.tsv)
+  - TIPNR (TIPNR_kivonat.tsv)
+  - Thayer (Thayer_teljes.tsv)
 
 **Q1 (tematikus_lezart/Tehom_tematikus.md)**: RENDBEN
 
@@ -88,6 +121,17 @@
   - TEREMT-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
   - TEREMT-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
 
+**8/b (tematikus_lezart/Tehom_tematikus.md, TEREMT-001). Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
+  - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
+  - LSJ (LSJ_teljes.tsv)
+  - LXX_kivonat (LXX_kivonat_*.tsv)
+  - SECE_G (SECE_G_teljes.tsv)
+  - SECE_H (SECE_H_teljes.tsv)
+  - Strong_szotar (Strong_szotar.tsv)
+  - TAGNT (TAGNT_kivonat.tsv)
+  - TIPNR (TIPNR_kivonat.tsv)
+  - Thayer (Thayer_teljes.tsv)
+
 **Q1 (tematikus_lezart/Hadesz_Seol_tematikus.md)**: RENDBEN
 
 **Q2 (tematikus_lezart/Hadesz_Seol_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
@@ -106,6 +150,17 @@
   - ALVIL-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
   - ALVIL-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
   - ALVIL-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+
+**8/b (tematikus_lezart/Hadesz_Seol_tematikus.md, ALVIL-001). Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
+  - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
+  - LSJ (LSJ_teljes.tsv)
+  - LXX_kivonat (LXX_kivonat_*.tsv)
+  - SECE_G (SECE_G_teljes.tsv)
+  - SECE_H (SECE_H_teljes.tsv)
+  - Strong_szotar (Strong_szotar.tsv)
+  - TAGNT (TAGNT_kivonat.tsv)
+  - TIPNR (TIPNR_kivonat.tsv)
+  - Thayer (Thayer_teljes.tsv)
 
 **Q1 (tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md)**: RENDBEN
 
@@ -126,6 +181,17 @@
   - MENNY-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
   - MENNY-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
 
+**8/b (tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md, MENNY-001). Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
+  - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
+  - LSJ (LSJ_teljes.tsv)
+  - LXX_kivonat (LXX_kivonat_*.tsv)
+  - SECE_G (SECE_G_teljes.tsv)
+  - SECE_H (SECE_H_teljes.tsv)
+  - Strong_szotar (Strong_szotar.tsv)
+  - TAGNT (TAGNT_kivonat.tsv)
+  - TIPNR (TIPNR_kivonat.tsv)
+  - Thayer (Thayer_teljes.tsv)
+
 **Q1 (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md)**: RENDBEN
 
 **Q2 (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
@@ -144,6 +210,17 @@
   - ANTROP-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
   - ANTROP-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
   - ANTROP-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+
+**8/b (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md, ANTROP-001). Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
+  - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
+  - LSJ (LSJ_teljes.tsv)
+  - LXX_kivonat (LXX_kivonat_*.tsv)
+  - SECE_G (SECE_G_teljes.tsv)
+  - SECE_H (SECE_H_teljes.tsv)
+  - Strong_szotar (Strong_szotar.tsv)
+  - TAGNT (TAGNT_kivonat.tsv)
+  - TIPNR (TIPNR_kivonat.tsv)
+  - Thayer (Thayer_teljes.tsv)
 
 **Q1 (tematikus_lezart/Rafaim_tematikus.md)**: RENDBEN
 
@@ -164,6 +241,17 @@
   - HODIT-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
   - HODIT-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
 
+**8/b (tematikus_lezart/Rafaim_tematikus.md, HODIT-001). Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
+  - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
+  - LSJ (LSJ_teljes.tsv)
+  - LXX_kivonat (LXX_kivonat_*.tsv)
+  - SECE_G (SECE_G_teljes.tsv)
+  - SECE_H (SECE_H_teljes.tsv)
+  - Strong_szotar (Strong_szotar.tsv)
+  - TAGNT (TAGNT_kivonat.tsv)
+  - TIPNR (TIPNR_kivonat.tsv)
+  - Thayer (Thayer_teljes.tsv)
+
 ## Összesítő
 
-RENDBEN: 13 | SÉRTÉS: 8 | KÉZI: 35 | JELENTÉS: 1
+RENDBEN: 13 | SÉRTÉS: 8 | KÉZI: 43 | JELENTÉS: 1
