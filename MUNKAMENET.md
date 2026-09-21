@@ -27,8 +27,7 @@ Az oszlop kizárólag három alakot vehet fel:
 2. **kézi** — a lépés emberi/kutatói munka, nincs is szüksége eszközre;
 3. **`F8 — nincs eszköz`** — a terv „végrehajtó" szerepet ír elő, de a hozzá tartozó eszköz (script, subagent, minta) ma nem létezik.
 
-Nem létező eszköz (`jelolt.py`, `_tanitoi_kereses.md` minta, a
-`lexikai-scan`/tanítói/audit subagentek) **kizárólag** az `F8 — nincs eszköz`
+Nem létező eszköz **kizárólag** az `F8 — nincs eszköz`
 jelöléssel szerepel — futtathatóként sehol nem áll.
 
 ## A) szakasz — bővített tanulmány: a motívum felismerése
@@ -57,7 +56,7 @@ jelöléssel szerepel — futtathatóként sehol nem áll.
 | B6 | beépített sorok átvezetése | végrehajtó | `elofordulasok` + `kapcsolatok` | `F8 — nincs eszköz` | nincs általános beépítő; a történeti betöltők egyediek (l. A3) |
 | B7 | study 1. pont, kereszthivatkozás-napló, index generálása | végrehajtó | generált fájlok | `eszkozok/general.py --cel study`; `--cel naplok`; `--cel index --ir` | a `study` és a `naplok` cél **nem élesíthető** — csak `--kimenet` alá termel próbát; kizárólag az `index` írható közvetlenül élesen |
 | B8 💎 | 2-5. pont megírása | kutató | PaRDeS-próza | kézi | drága modell |
-| B9 | nevesített tanítói menet | tanítói-agent | `_tanitoi_kereses.md` | `F8 — nincs eszköz` | sem a subagent, sem a minta-fájl nem létezik |
+| B9 | nevesített tanítói menet | tanítói-agent | `_tanitoi_kereses.md` | `F8 — nincs eszköz` | a sablon megvan (`sablonok/7_PaRDeS_tanitoi_kereses_sablon.md`); a `tanito-kereso` subagent a 3. menetben |
 | B10 | Q-kapu + konzisztencia-ellenőrzés | audit | jelentés | `eszkozok/ellenoriz.py [--study …]` | Q2–Q6 és a `felteteles` datasetek kézi; hook nincs (F8 §3) |
 
 ## C) szakasz — lexikon-oldal
