@@ -65,7 +65,7 @@ jelöléssel szerepel — futtathatóként sehol nem áll.
 |---|---|---|---|---|---|
 | C1 | lexikon TUDOMÁNYOS szakaszainak generálása | végrehajtó | generált fájl | `eszkozok/general.py --cel lexikon --ir` | a generált szakaszok: **0, 1, 2, 3, 4, 5, 9** — nem 0-8 (l. lent) |
 | C2 💎 | a kézi részek megírása | kutató | kézi blokkok | kézi | drága modell — hét kézi rész, l. lent |
-| C3 💎 | lexikon OLVASHATÓ megírása | kutató | kézi fájl | kézi | drága modell; az első (ISTENTISZT-001) átemelve a pilotból, a többi a célvonal-döntéstől függ |
+| C3 💎 | ~~lexikon OLVASHATÓ megírása~~ — MEGSZŰNT (2026.09.21, felhasználói döntés): a lexikon-oldal egyetlen változata a _TUDOMANYOS.md | kutató | kézi fájl | kézi | drága modell; az első (ISTENTISZT-001) átemelve a pilotból, a többi a célvonal-döntéstől függ |
 | C4 | commit/push, `main` merge | végrehajtó + ember | — | kézi | git-parancsok a `CLAUDE.md` szabálya szerint; nincs önálló script |
 
 💎 = a kilenc, drága modellt igénylő lépés (A1, A2, A4, A5 — a kutatói rész, A6, B3, B8, C2, C3). ⛔ = kötelező emberi megállási pont.

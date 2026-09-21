@@ -211,6 +211,8 @@ sosem — a TWOT-nak nincs jogtiszta forrása a repóban (D7).
 
 ## B) OLVASHATÓ változat — kötelező szakaszok, pontos sorrendben
 
+**MEGSZŰNT (2026.09.21, felhasználói döntés):** a lexikon-oldalnak csak az A) TUDOMÁNYOS változata készül. Ez a szakasz csak archív referencia.
+
 1. **Cím + rövid bevezető bekezdés** — a formula bemutatása, eredeti
    nyelven + kiejtéssel + magyar jelentéssel, 2-3 mondatban.
 2. **"Hol jelenik meg a Bibliában?"** — az összes előfordulás

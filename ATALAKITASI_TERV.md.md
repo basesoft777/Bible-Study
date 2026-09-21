@@ -64,7 +64,7 @@ Két megjegyzés a sémához:
 | `motivumok/[ID].md` | a motívum jegyzetei: ⚠️-viták nevesített képviselőkkel, kizárások indoklása, kiegészítő szótartalmi jegyzetek |
 | `tematikus_lezart/*.md` | a 2-5. pont: nyelvi összevetés, PaRDeS-kifejtés, alkalmazás |
 | `genezis/*_bovitett.md` | a teljes PaRDeS-próza |
-| `lexikon/[ID]_OLVASHATO.md` | a közérthető változat — ez az egyetlen igazán írói feladat a lexikon-szinten |
+| `lexikon/[ID]_OLVASHATO.md` | a közérthető változat — ez az egyetlen igazán írói feladat a lexikon-szinten — **MEGSZŰNT 2026.09.21** (felhasználói döntés; a lexikon-oldal egyetlen változata a _TUDOMANYOS.md) |
 
 ### C) Kimeneti réteg — generált, kézzel nem szerkeszthető
 
@@ -140,6 +140,8 @@ flowchart TD
     M -->|general.py| IX
     M -->|"⭐ 3+ küszöbfigyelő"| T
 ```
+
+*A C3 (lexikon OLVASHATÓ) 2026.09.21-én megszűnt; l. a 67. és 515. sort.*
 
 **Az áramlás három szabálya:**
 
@@ -512,7 +514,7 @@ A B1 azért automatikus, mert az A4-ben minden előfordulás bekerült a táblá
 |---|---|---|---|
 | C1 | lexikon TUDOMÁNYOS generált szakaszainak (0, 1, 2, 3, 4, 5, 9) generálása | végrehajtó | generált fájl |
 | C2 | a hét kézi rész megírása (1/b, „Miért fontos ez a lelet", „Minősítés", „Alátámasztás", 6, 7 „ÚJ FELISMERÉS", 8 „Nyitott kérdések és séma-korlátok") | **kutató** | kézi blokkok |
-| C3 | lexikon OLVASHATÓ megírása | **kutató** | kézi fájl |
+| C3 | ~~lexikon OLVASHATÓ megírása~~ MEGSZŰNT (2026.09.21) | **kutató** | kézi fájl |
 | C4 | commit/push, `main` merge | végrehajtó + **ember** | — |
 
 **A teljes íven kilenc lépés igényel drága modellt** (A1, A2, A4, A5, A6, B3, B8, C2, C3). Ezek nem külön felület, hanem a **fő szál** lépései ugyanabban a Claude Code-menetben; a többi subagentbe, scriptbe vagy hookba megy (l. 5.1). Egyik sem lát nyers adatot: a `lexikai-scan` subagent kivonataiból és a sablon érintett szakaszából dolgoznak.
