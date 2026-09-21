@@ -1,6 +1,6 @@
 # N14 — A HAMART-001 betöltése az `adat/`-ba
 
-*Készítette: chat-menet (Opus 5), 2026-09-21, **v1** — a §2 G1–G6 és a §5 várt számai jóváhagyva (2026-09-21), a javasolt változatban.*
+*Készítette: chat-menet (Opus 5), 2026-09-21, **v2** — az 1. menet lefutott (`ac3eef4`, `d7a58a6`); a független ellenőrzés két elemzési hibát és egy formai eltérést talált → N14.1a a 2. menet elején. A §2 G1–G6 és a §5 jóváhagyva (2026-09-21).*
 *Kiindulási állapot: `main` = `origin/main` = `32d7952`.*
 *Két menet, Sonnet, köztük kötelező emberi megállási pont (⛔, az A4/B5 mintájára).*
 
@@ -96,6 +96,16 @@ A felhasználó átnézi a `N14_hamart_jelentes.md`-t: a gerinc-eloszlást, a TA
 
 ### 2. menet — élesítés
 
+#### N14.1a — munkalap-javítás *(a független ellenőrzés alapján, a v2-ben új)*
+A javítás a **szkriptben** történik, a munkalapok újragenerálva — kézi TSV-szerkesztés nincs.
+1. **1Móz 3:18** — a Jelentés-cella két szócikket tartalmaz (H6975 / H1863), a szétválasztás elcsúszott: a `jelentes_en` a magyar szöveg egy részét is hordozza. Javítás: `lexikon_entry_id` = `H6975` (a `strong`-gal egyezően), `jelentes_szam` = `1` (a Sense-cella „1 / —” H6975-ös fele), `jelentes_en` = `thornbush, thorn ... Gen 3:18`, `jelentes_hu` = `tövisbokor, tövis`. A `gerinc_elem` marad `H6975+H1863`.
+2. **1Móz 8:21** — a teljes cella a `jelentes_en`-be került, a `jelentes_hu` üres. Javítás: `jelentes_en` = `be slight, of water, be abated; Pi'él: curse`, `jelentes_hu` = `csekélynek lenni, vízről: apadni; Pi'él: megátkozni`.
+3. **`kapcsolodas`** — mind az 52 sor markdown-jelölést hordoz (`*…*`, `**…**`, backtick), a meglévő 201 sorból egy sem. Javítás: a `*` és a backtick jelek eltávolítva, a szöveg egyébként változatlan (a `felmerult_tanulmany` szabálya kiterjesztve).
+4. Általános őr a szkriptben: ha egy `jelentes_en` tartalmazza a „magyarul” szót, vagy a két jelentés-mező közül csak az egyik üres, a szkript kód 1-gyel megáll.
+
+A próba-futás megismétlődik (K4 ugyanazokkal a számokkal). Commit: `N14.1a: munkalap-javítás — 1Móz 3:18, 8:21, kapcsolodas-jelölés`.
+
+
 #### N14.2 — adat
 Sorrend: `motivumok` → `jeloltek` (a szkript `--ir`-je) → `elofordulasok` (`betolt.py beepit --munkalap naplok/N14_hamart_elofordulasok_munkalap.tsv --ir`). Az `ellenoriz.py` `RETROAKTIV_IDK`-ja 8 ID, a SEMA §3/8 szövege „8 retroaktív".
 
@@ -146,6 +156,7 @@ A számok a study táblájának a G2–G4 szerinti előzetes feldolgozásából 
 
 | # | Kritérium | Ellenőrzés |
 |---|---|---|
+| K6a | N14.1a | a négy pont mért értékkel: a két sor négy-négy mezője szó szerint; a `kapcsolodas`-ban `*` és backtick 0 sorban; a „magyarul”-őr aktív; a K4 számai változatlanok |
 | K7 | Adat | `motivumok` 8, `jeloltek` +52, `elofordulasok` +52 sor; a 7 régi ID sorai bájtra változatlanok |
 | K8 | `ellenoriz.py` | a §5 szerint; `RETROAKTIV_IDK` 8 elem; SEMA §3/8 „8 retroaktív" |
 | K9 | Forrásréteg | `motivumok/HAMART-001.md` megvan; a négy átemelt szöveg `diff`-fel karakterre azonos az eredetivel; a napló és az index helyükön nem tartalmazza őket |
@@ -168,6 +179,7 @@ A számok a study táblájának a G2–G4 szerinti előzetes feldolgozásából 
 
 | Commit-üzenet | Fájlok |
 |---|---|
+| `N14.1a: munkalap-javítás — 1Móz 3:18, 8:21, kapcsolodas-jelölés` | `eszkozok/n14_hamart_betoltes.py`, `naplok/N14_hamart_*.tsv`, `naplok/N14_hamart_jelentes.md` |
 | `N14.2: HAMART-001 az adat/-ban — retroaktív, 52 sor` | `adat/motivumok.tsv`, `adat/jeloltek.tsv`, `adat/elofordulasok.tsv`, `adat/SEMA.md`, `eszkozok/ellenoriz.py` |
 | `N14.3: HAMART-001 forrásréteg + generált napló és index` | `motivumok/HAMART-001.md`, `motivumlog/PaRDeS_motivumok.md`, `Lezart_tematikus_tanulmanyok_index.md` |
 | `N14.4: N14 lezárva` | `NYITOTT_FELADATOK.md`, `MUNKAMENET.md`, `naplok/F8_5_ellenoriz_alap.txt` |
@@ -201,9 +213,11 @@ a várttól eltérő sorok kiemelve; minden eltérés.
 ```
 Olvasd el a CLAUDE.md-t, majd az N14_BRIEF.md-t és a naplok/N14_hamart_jelentes.md-t.
 
-0. main = origin/main = <az 1. menet utolsó hash-e>; munkafa tiszta.
-   Ha nem, ÁLLJ MEG.
-1. N14.2. K7, K8.
+0. main = origin/main = d7a58a6; az egyetlen változás a commitolatlan
+   N14_BRIEF.md (v2). Ha más is változott, ÁLLJ MEG.
+   Commitold: "N14_BRIEF.md v2: N14.1a a független ellenőrzés alapján".
+1. N14.1a. K6a. Ha a K4 számai eltérnek, ÁLLJ MEG.
+1b. N14.2. K7, K8.
 2. N14.3. K9, K10. A general.py-t előbb --kimenet próbával futtasd;
    ha a HAMART-001 bármely szövege kétszer szerepelne, ÁLLJ MEG.
 3. N14.4. K11.
@@ -211,7 +225,7 @@ Olvasd el a CLAUDE.md-t, majd az N14_BRIEF.md-t és a naplok/N14_hamart_jelentes
 
 Héber vagy görög karaktert tartalmazó kódot csak fájlból futtass.
 Minden K-kritériumot mért értékkel igazolj. Push nincs.
-Zárójelentés: hash-ek, K7–K12 külön sorban; az ellenoriz.py új összesítő
+Zárójelentés: hash-ek, K6a és K7–K12 külön sorban; az ellenoriz.py új összesítő
 sora; minden eltérés, külön kiemelve a hiányzó és a plusz fájlokat a §7-hez képest.
 ```
 
@@ -232,3 +246,7 @@ sora; minden eltérés, külön kiemelve a hiányzó és a plusz fájlokat a §7
 | D9 | A napló kézi szövegei a forrásrétegbe, karakterre azonosan | A F4.4/G2 mintája; generált és kézi HAMART-001-szöveg nem állhat egymás mellett |
 | D10 | Az `igazolas` a mai TAHOT-scanből számolódik | Az igazolás megerősítés, nem proveniencia (SEMA 1.8) — a D2-vel nem ütközik |
 | D11 | A G1–G6 és a §5 számai jóváhagyva (2026-09-21), a javasolt változatban — a Hós 4:1-3 `tematikus:1Móz 3:17` horgonnyal, `pardes_szint` = Remez/Drash, a `negativ_kriterium` a G5 szövegével | A G0-minta; a számtábla a futás előtt megerősítve |
+| D12 | Független ellenőrzés az 1. menet után (`d7a58a6`): a számok, a szúrópróbák (1Móz 3:17, Ez 8:17, Hós 4:1-3, Zsolt 14:1 / 53:2, 5Móz 27:15-26) és a „nincs új ütközés” állítás tartomány-kibontással is megerősítve | A F8 D16 óta minden zárójelentés független ellenőrzést kap |
+| D13 | N14.1a: két elemzési hiba (1Móz 3:18, 8:21) a szkriptben javítva, nem kézzel | A munkalap a szkript kimenete; a kézi javítás a jegyzőkönyvet hamisítaná |
+| D14 | A `kapcsolodas` markdown-jelölése eltávolítva | A meglévő 201 sor egyike sem hordoz jelölést — adatréteg-konzisztencia; a v1 „szó szerint” előírása ezt nem látta előre |
+| D15 | 1Móz 3:18: a lexikon-hivatkozás a H6975-re szűkül, a H1863 a `gerinc_elem`-ben marad | A `lexikon_entry_id` egyetlen szócikk kulcsa (SEMA 2.5); a horgony-információ nem vész el |
