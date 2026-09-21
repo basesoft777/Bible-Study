@@ -316,7 +316,7 @@ Kulcs: `szotar` + `strong` + `entry_id` + `jelentes_szam`.
 | `entry_id` | szabad szöveg | ✔ | Szótáranként: BDB, Thayer, LSJ, SECE → a konkordancia-fájl `Strong_padded` kulcsa; MCGED → a `lexikonok_nyers/MCGED.lexicon` `G####` Strong-kulcsa (a `gkG5####` GK-kulcs nem használható, l. `lexikonok_nyers/README.md`); TBESH/TBESG → a fájl első oszlopa; SDBH/SDGNT → `entry_id` (`MainId`), a `jelentes_szam` pedig a `lexid`. |
 | `jelentes_szam` | union (l. 2.2.2) | ✔ | |
 | `szoveg_en` | szabad szöveg | ✔ | **Rövid kivonat, nem teljes szócikk** — a forrásfájl sorának szó szerinti részlete; a generált lexikon innen idéz. |
-| `forditas_hu` | szabad szöveg | | A jelentés magyar fordítása — jelentésenként egyszer. Az igehelyi alkalmazás az `elofordulasok.jelentes_hu` mezőben áll, nem itt. |
+| `forditas_hu` | szabad szöveg | | A jelentés hű magyar fordítása — jelentésenként egyszer. Csak azt mondja, amit a szótár: a rövidítések feloldva (bizonytalan feloldásnál változatlanul hagyva), a bibliai helyek Károli-rövidítéssel; a forrás héber/görög idézetei változatlanok; betoldás, kiemelés és formázás nincs, számozás csak ha a forrásban is van. Minden értelmezés a lexikon-oldal kézi szakaszaiba kerül. Az igehelyi alkalmazás az `elofordulasok.jelentes_hu` mezőben áll, nem itt. Ugyanez a szabály vonatkozik a lexikon-oldalak kézi szakaszaira: minden idegen nyelvű szótári idézet után hű magyar fordítás áll (`**🇭🇺 Magyarul (<szótár>):**` címkével). |
 | `forrasfajl` | fájlút | ✔ | Pl. `konkordancia/BDB_teljes_unabridged.tsv`. |
 
 A szótárankénti tényleges licenc a `konkordancia/lexikonok_nyers/README.md`-ben van

@@ -53,7 +53,7 @@
 
 ## 2. Lexikon-szócikkek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-09-19 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-09-21 -->
 
 *Ez a blokk a `[ID: KIRALY-001]` motívum 7 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
@@ -91,7 +91,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 > 1 priest-king: e.g. Melchizedek Gen 14:18 (E ?), compare Psa 110:4 (the Messianic priest-king like Melchizedek); Zech 6:13 (Messianic priest and king); Israel כֹּהֲנִים מַמְלֶכֶת Exod 19:6 (E) a kingdom of priests (priests and kings at once in their relation to the nations); compare Isa 61:6 (of Israel ministering as a priest); or a chieftain (exercising priestly functions) מִדְיָן כֹּהֵן Exod 2:16; 3:1; 18:1 (all J E); so also probably the sons of David 2Sam 8:18, his grandson 1Kin 4:5, and Ira the Jairite 2Sam 20:26, who as princes performed priestly functions. With these we may class the כהנים Exod 19:22, 24 (J).
 
-Fordítás nincs (a `forditas_hu` üres).
+**🇭🇺** 1 pap-király: pl. Melkisédek 1Móz 14:18 (E ?), vö. Zsolt 110:4 (a Melkisédekhez hasonló messiási pap-király); Zak 6:13 (messiási pap és király); Izráel: כֹּהֲנִים מַמְלֶכֶת 2Móz 19:6 (E), papok királysága (a népekhez való viszonyukban egyszerre papok és királyok); vö. Ézs 61:6 (Izráelről, amint papként szolgál); vagy törzsfő (aki papi feladatokat lát el): מִדְיָן כֹּהֵן 2Móz 2:16; 3:1; 18:1 (mind J E); így valószínűleg Dávid fiai is, 2Sám 8:18, az unokája, 1Kir 4:5, és a jairita Íra, 2Sám 20:26, akik fejedelmekként papi feladatokat végeztek. Velük sorolhatók a כהנים is, 2Móz 19:22, 24 (J).
 
 *Forrás: konkordancia/BDB_teljes_unabridged.tsv*
 
