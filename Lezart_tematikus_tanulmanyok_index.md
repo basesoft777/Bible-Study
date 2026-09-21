@@ -10,19 +10,18 @@
 
 <!-- GENERÁLT-KEZDET: general.py --cel index | forrás: adat/motivumok.tsv, adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk a táblában publikálható/véglegesített 7 motívum-ID-t fedi; a Megjegyzés oszlop nem generálható (l. G2), a marker-blokkon kívül marad.*
+*Ez a blokk a táblában publikálható/véglegesített 8 motívum-ID-t fedi; a Megjegyzés oszlop nem generálható (l. G2), a marker-blokkon kívül marad.*
 
 | # | Motívum | Fájlnév | Érintett igehelyek |
 |---|---|---|---|
 | 1 | Hádész (Seól) — a halottak birodalma `[ID: ALVIL-001]` | tematikus_lezart/Hadesz_Seol_tematikus.md | Zsolt 16:10 ⇒ ApCsel 2:27,31 → Luk 10:15/Mát 11:23 → Luk 16:23 → Jel 1:18 → Jel 6:8 → Jel 20:13-14 (6 fő előfordulás / 72 igehely-sor) |
 | 2 | Pneuma/pszükhé megkülönböztetés `[ID: ANTROP-001]` | tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md | 1Móz 2:7 ⇒ 1Kor 15:45 → Luk 1:46-47 → 1Kor 2:14-15 → 1Thessz 5:23 → Zsid 4:12 (5 fő előfordulás / 8 igehely-sor) |
-| 3 | Rafeusok/óriás-népek `[ID: HODIT-001]` | tematikus_lezart/Rafaim_tematikus.md | 1Móz 14:5 (1 fő előfordulás / 33 igehely-sor) |
-| 4 | Segítségül hívni az Úr nevét `[ID: ISTENTISZT-001]` | tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md;motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md | 1Móz 4:26 → 1Móz 12:8 → 1Móz 13:4 → 1Móz 21:33 → 1Móz 26:25 (5 fő előfordulás / 29 igehely-sor) |
-| 5 | Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` | tematikus_lezart/Melkizedek_tematikus.md | 1Móz 14:18-20 (1 fő előfordulás / 9 igehely-sor) |
-| 6 | Isten fiai — Nefilim — Gibborim motívum-komplexum `[ID: MENNY-001]` | tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md | 1Móz 6:1-4 (1 fő előfordulás / 9 igehely-sor) |
-| 7 | Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma `[ID: TEREMT-001]` | tematikus_lezart/Tehom_tematikus.md | 1Móz 1:2 → 1Móz 7:11 → 1Móz 8:2 → 1Móz 49:25 → 2Móz 15:5,8 (5 fő előfordulás / 41 igehely-sor) |
-
-⚠️ **HIÁNYZÓ TÉTEL** -- a napló a következő ID(k)et "✅ ... LEZÁRVA" jelöléssel dokumentálja, de a `adat/motivumok.tsv` nem tartalmazza őket: HAMART-001. (K8 -- ez nem generálási hiba, hanem az F3 betöltés hatókörének hiánya; l. F4_GENERATOR_BRIEF.md §5.)
+| 3 | A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` | tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md | 1Móz 3:7-19 → 1Móz 4:1-24 → 1Móz 6:1-8 → 1Móz 6:9-22 (4 fő előfordulás / 52 igehely-sor) |
+| 4 | Rafeusok/óriás-népek `[ID: HODIT-001]` | tematikus_lezart/Rafaim_tematikus.md | 1Móz 14:5 (1 fő előfordulás / 33 igehely-sor) |
+| 5 | Segítségül hívni az Úr nevét `[ID: ISTENTISZT-001]` | tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md;motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md | 1Móz 4:26 → 1Móz 12:8 → 1Móz 13:4 → 1Móz 21:33 → 1Móz 26:25 (5 fő előfordulás / 29 igehely-sor) |
+| 6 | Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` | tematikus_lezart/Melkizedek_tematikus.md | 1Móz 14:18-20 (1 fő előfordulás / 9 igehely-sor) |
+| 7 | Isten fiai — Nefilim — Gibborim motívum-komplexum `[ID: MENNY-001]` | tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md | 1Móz 6:1-4 (1 fő előfordulás / 9 igehely-sor) |
+| 8 | Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma `[ID: TEREMT-001]` | tematikus_lezart/Tehom_tematikus.md | 1Móz 1:2 → 1Móz 7:11 → 1Móz 8:2 → 1Móz 49:25 → 2Móz 15:5,8 (5 fő előfordulás / 41 igehely-sor) |
 
 <!-- GENERÁLT-VÉGE: index -->
 
@@ -39,14 +38,6 @@
 | **Melkizedek — király-pap rendje, kenyér és bor** `[ID: KIRALY-001]` | Kiegészíti a "Lezárt mélyelemzések" szekció `1Mozes_14_18-20_Zsolt110_4_Zsid5-7_melyelemzes.md` tételét (ugyanaz a motívum, más feldolgozási forma): motívum-szintű teljes Peshat/Remez/Drash/Sod bontás + nevesített tanítói keresés. Named teacher: Derek Prince ✅ erős forrás; Hagin/Copeland/Capps/Roberts/Osborn/Wigglesworth — gap. ⚠️ két elkülönített vita: Melkizedek kiléte (krisztofánia vs. irodalmi-retorikai) és Gen 14↔Zsolt 110 irány (Rowley/Nel vs. Kidner/Waltke/Hamilton). 2026.08.22-én lezárva, 2026.09.08-09-én bővítve: 2Móz 19:6 és Zak 6:13 (lexikai, BDB H3548 "priest-king"), valamint 1Pét 2:9 (tematikus TSK-lelet, LXX szó szerinti idézés). |
 | **Isten fiai — angyali/Séthita vita (Nefilim/Gibborim komplexum)** `[ID: MENNY-001]` | **FONTOS ELHATÁROLÁS a `[ID: HODIT-001]`-től**: tematikusan rokon a Rafeusok-motívummal, de lexikailag és fájl szerint is önálló. Named teacher: Derek Prince ("Because of the Angels", ✅ erős forrás). 2026.08.21-én lezárva. |
 | **Tehóm — Abüsszosz: a mélység motívuma** `[ID: TEREMT-001]` | Tóra-szintű ívvé kiterjesztve; a tematikus tanulmány önmagában tartalmazza a teljes elemzést. 2026.09.10-én összevonva a korábbi, önálló sorszám nélküli `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` tartalmával — az a fájl törölve, mert a napló sosem adott önálló ID-t az ábüσσος-anyagnak. (F0.4: a törölt fájl korábban önálló sort foglalt el a táblázatban; a táblázat azóta folyamatosan, kihagyás nélkül számozott.) A Tartarosz egy rövid kereszthivatkozó bekezdés marad; a hádész/seól (`[ID: ALVIL-001]`) továbbra is önálló fájlban él, l. a `[ID: ALVIL-001]` sort. |
-
-### A táblába még nem betöltött, lezárt tanulmány *(kézi)*
-
-*Ez a sor azért áll a generált blokkon kívül, mert az ID nincs betöltve az `adat/motivumok.tsv`-be (ismert F3-hiány; a generátor ezt a K8 szerint explicit hibaként jelenti). A sor kézi karbantartásban marad, amíg az F3 be nem tölti.*
-
-| Motívum | Fájlnév | Érintett igehelyek | Megjegyzés |
-|---|---|---|---|
-| **A bűn következményeinek gyűrűzése — átok, föld és romlás** | `Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` | **Genezis:** 1Móz 3:14, 3:16, 3:17, 3:18, 3:19,23 → 4:2-3, 4:7, 4:10-11, 4:12,14 → **5:29** → 6:5, 6:7 → 6:11, 6:12, 6:13, 6:17 → **8:21** → 9:11,15 → 9:25 → **12:3**. **Kánoni:** 5Móz 27:15-26, 28:16-19; Jer 17:5; Zsolt 14:1/53:2; Ez 7:23, 8:17, 28:16; Zsolt 74:20; Mik 6:12; Sof 1:9; Hab 2:8, 2:17; Jón 3:8; Ézs 60:18; Jer 6:7, 51:46; Hab 1:2. **ÚSZ:** Róm 8:20-22; Gal 3:10; Gal 3:13; Zsid 6:7-8; Jel 11:18; Jel 19:2. (46 táblázat-sor; a napló korábban 4 szakaszt tartott nyilván) | A motívum a naplóban lexikai gerinc nélkül, prózai leírással szerepelt — a lezáráskor kapott gerincet: אָרַר (H0779) + אֲדָמָה (H0127) + עִצָּבוֹן (H6093) + חַטָּאת (H2403) + חָמָס (H2555) + שָׁחַת (H7843); görögül ἐπικατάρατος (G1944), κατάρα (G2671) és a φθείρω-szócsalád. Nyolc új lexikai lelet, köztük: a H6093 *itzávón* mindhárom ÓSZ-előfordulása ide tartozik (1Móz 3:16, 3:17, 5:29), és az 5:29 egyetlen mondatban idézi vissza mind a hármat; az 1Móz 8:21 a *kalal*-t (H7043), NEM az *arar*-t tagadja; a Zsid 6:8 háromszavas LXX-egyezése az 1Móz 3:17-18-cal; a Gal 3:13 ἐπικατάρατος-ra hangolt idézete; a φθείρω-család + γῆ kollokáció a teljes ÚSZ-ben csak Jel 11:18 és Jel 19:2. **Tematikus, nem lexikai** (explicit jelöléssel): Ézs 24:5-6, Hós 4:1-3, Mt 15:19/Mk 7:21-23, 2Pét 3:6-7. Named teacher: **Derek Prince** ✅ erős/közvetlen a 3-4. fejezet átok-láncára; gap a bővített kánoni hatókörre. ⚠️ három vitatott pont dokumentálva (6:11-13 forrásrétege, az "eredendő bűn" fogalom, a 8:21 hatóköre). Elhatárolva a rokon, önálló motívumoktól: Kánaán-átok (9:25 csak lexikai tagként), "Isten fájdalma / *acav*", "jetzer", "kiáltó vér", "tesuká/másal". Teljes jelölt-lista: `tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md`. 2026.09.11-én lezárva. |
 
 ---
 

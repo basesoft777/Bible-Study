@@ -12,7 +12,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#attekintes | forrás: adat/motivumok.tsv, adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk a táblában betöltött 7 motívum-ID-t fedi; a napló Tematikus áttekintés szakasza a blokkon kívül további 84 kézi tételt sorol fel (79 felső szint + 5 alpont -- K12': azonos granularitás, az alpontok is számítanak), amelyek kézi karbantartásban maradnak.*
+*Ez a blokk a táblában betöltött 8 motívum-ID-t fedi; a napló Tematikus áttekintés szakasza a blokkon kívül további 83 kézi tételt sorol fel (78 felső szint + 5 alpont -- K12': azonos granularitás, az alpontok is számítanak), amelyek kézi karbantartásban maradnak.*
 
 **Angyalológia**
 - Isten fiai — Nefilim — Gibborim motívum-komplexum `[ID: MENNY-001]` — 1 fő előfordulás / 9 igehely-sor — publikálható (v4, 2026.09.10)
@@ -22,6 +22,9 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 **Eszkatológia**
 - Hádész (Seól) — a halottak birodalma `[ID: ALVIL-001]` — 6 fő előfordulás / 72 igehely-sor — publikálható (v2, 2026.09.10)
+
+**Hamartológia**
+- A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` — 4 fő előfordulás / 52 igehely-sor — publikálható (v1, 2026.09.11)
 
 **Krisztológia**
 - Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` — 1 fő előfordulás / 9 igehely-sor — publikálható (v2, 2026.09.10)
@@ -116,7 +119,6 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - kígyó mint megtévesztő szimbólum (Sátán-azonosítás) (1)
 - *chámad*-gyök — kívánság mint a bűn gyökere (1)
 - háromosztatú kísértés-mintázat (test / szem / élet kérkedése) (1)
-- **bűn következményeinek gyűrűzése** ✅ **LEZÁRVA** `[ID: HAMART-001]` — önálló tematikus tanulmányban feldolgozva (`Bun_kovetkezmenyeinek_gyuruzese_tematikus.md`); a korábbi 4 genezisi szakasz lexikai gerincre bontva és kánoni ívvé kiterjesztve, 46 táblázat-sor (egyéni → családi → egyetemes → konkrét betöltődés/*chámász* → özönvíz utáni újraindulás → ábrahámi megfordítás)
 - **Ádám mint szövetségszegő — Hós 6:7, elfogadott projekt-olvasat (1 — FRISSÍTVE: korábban "bizonytalan/vitatott azonosítású"; Basesoft explicit döntése alapján a projekt munkahipotézise az „a) mint Ádám" olvasat; a ⚠️ tudományos vita [helynév- vs. Ádám-olvasat] továbbra is dokumentált, mint ismert alternatíva, nem bizonytalanságként)**
   - **↳ Ádám–Krisztus tipológia — Róm 5:12-21 ⚠️ (1, ÚJ, mélyelemzésből — biztos/tudatos szerzői utalás, névvel megnevezett tipológia; lexikailag elkülönül a Hós 6:7-tételtől [parabaszisz/parakoé/hamartia vs. brit/bagad], ezért önálló al-tételként, nem automatikus lexikai egyesítésként rögzítve; csoport-összesen: 2 előfordulás)**
 - testvéri felelősség / testvérgyilkosság (1)
@@ -143,13 +145,16 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#kuszob | forrás: adat/motivumok.tsv, adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk a táblában betöltött 7 motívum-ID fejsorát fedi.*
+*Ez a blokk a táblában betöltött 8 motívum-ID fejsorát fedi.*
 
 **Hádész (Seól) — a halottak birodalma** `[ID: ALVIL-001]` — publikálható (v2, 2026.09.10), 6 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/ALVIL-001.md`-ből fűződik ide)*
 
 **Pneuma/pszükhé megkülönböztetés** `[ID: ANTROP-001]` — publikálható (v3, 2026.08.22), 5 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/ANTROP-001.md`-ből fűződik ide)*
+
+**A bűn következményeinek gyűrűzése — átok, föld és romlás** `[ID: HAMART-001]` — publikálható (v1, 2026.09.11), 4 fő előfordulás.
+*(a bekezdés-próza a G2 után a `motivumok/HAMART-001.md`-ből fűződik ide)*
 
 **Rafeusok/óriás-népek** `[ID: HODIT-001]` — publikálható (v3, 2026.09.10), 1 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/HODIT-001.md`-ből fűződik ide)*
@@ -179,8 +184,6 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 **Korábbi küszöb-figyelmeztetés — kérubok/szentély-tipológia:** 2 előfordulásnál, változatlan (1Móz 2:15 + 3:24); a Kain városa (proto-Bábel) tematikusan rokon, de nem lexikailag azonos motívum, ezért nem növeli automatikusan ezt a számlálót.
 
 **"Istennel járás (hithalek) és elragadtatás" — MEGERŐSÍTVE, 2 előfordulás.** Noé (1Móz 6:9) megismételte az Énokhnál (5:24) használt *hithalech* igét — a korábban jelzett küszöb-figyelés lezárult. Egy jövőbeli Illés-tanulmány (2Kir 2) egy tematikus feldolgozásban elérheti a 3+ küszöböt.
-
-**"bűn következményeinek gyűrűzése" `[ID: HAMART-001]` — ✅ LEZÁRVA, önálló tematikus tanulmányban feldolgozva (`Bun_kovetkezmenyeinek_gyuruzese_tematikus.md`).** A korábban négy szakasszal (1Móz 3:7-19 egyéni → 1Móz 4:1-24 családi/nemzedéki → 1Móz 6:1-8 egyetemes "kol basar" diagnózis → 1Móz 6:9-22 konkrét betöltődés, *chámász*) rögzített minta a 2026.09.11-i lezáráskor **lexikai gerincet kapott**, és 46 táblázat-sorra bővült. A gerinc: אָרַר (*arar*, H0779) + אֲדָמָה (*adamá*, H0127) + עִצָּבוֹן (*itzávón*, H6093) + חַטָּאת (*chattát*, H2403) + חָמָס (*chámász*, H2555) + שָׁחַת (*sáchat*, H7843); görögül ἐπικατάρατος (G1944), κατάρα (G2671) és a φθείρω-szócsalád (G5351/G1311/G5356/G2704). **Genezisen belüli ív:** 3:14, 3:16, 3:17, 3:18, 3:19,23 → 4:2-3, 4:7, 4:10-11, 4:12,14 → **5:29** (a lánc forgópontja) → 6:5, 6:7 → 6:11, 6:12, 6:13, 6:17 → **8:21** → 9:11,15 → 9:25 → **12:3** (megfordítás). **Kánoni kiterjedés:** 5Móz 27:15-26, 28:16-19; Jer 17:5; Zsolt 14:1/53:2; Ez 7:23, 8:17, 28:16; Zsolt 74:20; Mik 6:12; Sof 1:9; Hab 2:8,17; Jón 3:8; Ézs 60:18; Jer 6:7, 51:46; Hab 1:2; ÚSZ: Róm 8:20-22, Gal 3:10, Gal 3:13, Zsid 6:7-8, Jel 11:18, Jel 19:2. **Tematikus, NEM lexikai** (explicit jelöléssel): Ézs 24:5-6 (אָלָה, nem *arar*), Hós 4:1-3, Mt 15:19/Mk 7:21-23, 2Pét 3:6-7. **Nyolc új lexikai lelet**, köztük: a H6093 *itzávón* mindhárom ÓSZ-előfordulása ide tartozik (3:16, 3:17, 5:29); az 1Móz 8:21 a *kalal*-t (H7043), nem az *arar*-t tagadja; a Zsid 6:8 háromszavas LXX-egyezése az 1Móz 3:17-18-cal; a Gal 3:13 ἐπικατάρατος-ra hangolt idézete. ⚠️ Vitatott: a 6:11-13 forrásrétege (P/J), az "eredendő bűn" fogalom alkalmazhatósága, a 8:21 ígéretének hatóköre. **Nevesített tanítói alkalmazás:** Derek Prince ✅ erős/közvetlen a 3-4. fejezet átok-láncára (*Blessing or Curse: You Can Choose*); gap a bővített kánoni hatókörre. **Nyitva hagyva:** Jób 16:18/31:38 (a "kiáltó vér" motívumhoz tartozik); 5Móz 4:25 + Bír 2:19 + Sof 3:7 (a *sáchat* Hif'íl erkölcsi jelentése szövetséges népre — lehetséges önálló motívum); az Ez 7:2,6 / Ámós 8:2 "vég elérkezett" (קֵץ) formula. A motívum a továbbiakban nem szerepel aktív ⭐ ajánlásként; jövőbeli előfordulásai továbbra is bekerülnek az indexbe. Teljes jelölt-lista: `tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md`.
 
 **"uralom-megbízás / emberi méltóság" `[ID: ANTROP-002]` — ⭐ ÚJ KÜSZÖBÖN TÚL, 3. előfordulás.** Zsolt 8:5-6 és 1Móz 2:19-20 mellé harmadikként csatlakozik 1Móz 8:17 — a bárkából kilépő élővilágnak szóló "szaporodjatok és sokasodjatok" parancs szó szerint megismétli az 1:28 teremtési áldást. A motívum ezzel alkalmassá vált önálló tematikus feldolgozásra, felhasználói jóváhagyásra várva. **Kiegészítés (2026.09.04, retroaktív 2/f-audit):** a פָּרוּ וְרָבוּ ("szaporodjatok és sokasodjatok", H6509+H7235) szópár teljes körű ellenőrzése 15 közös igehelyet talált a teljes Ószövetségben (köztük 1Móz 1:22, 1:28, 8:17, 9:1, 9:7, 17:20, 28:3, 35:11, 47:27, 48:4) — ez egy jól ismert, tudatos áldás-formula, nem rejtett minta; megerősíti az 1:28↔8:17 hivatkozás lexikai megalapozottságát, de önmagában túl gyakori ahhoz, hogy külön 2/f-jelzésű leletnek minősüljön.
 
@@ -236,12 +239,13 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#kulcsszo_index | forrás: adat/motivumok.tsv, adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk a táblában betöltött 7 motívum-ID kulcsszó-sorát fedi; a ⭐ küszöb (3+ előfordulás) kizárólag a fő előfordulás oszlopot nézi. Az Igehelyek oszlop a fő előfordulásokat hozza, nem a teljes listát (K14) -- a teljes lista a könyv-indexben áll.*
+*Ez a blokk a táblában betöltött 8 motívum-ID kulcsszó-sorát fedi; a ⭐ küszöb (3+ előfordulás) kizárólag a fő előfordulás oszlopot nézi. Az Igehelyek oszlop a fő előfordulásokat hozza, nem a teljes listát (K14) -- a teljes lista a könyv-indexben áll.*
 
 | Kulcsszó | Téma | ÓSZ/ÚSZ | Fő előfordulás | Igehelyek |
 |---|---|---|---|---|
 | Hádész/Seól `[ID: ALVIL-001]` | Eszkatológia | ÓSZ+ÚSZ | 6 | Zsolt 16:10 ⇒ ApCsel 2:27,31, Luk 10:15/Mát 11:23, Luk 16:23, Jel 1:18, Jel 6:8, Jel 20:13-14 |
 | Pneuma/pszükhé `[ID: ANTROP-001]` | Antropológia | ÓSZ+ÚSZ | 5 | 1Móz 2:7 ⇒ 1Kor 15:45, Luk 1:46-47, 1Kor 2:14-15, 1Thessz 5:23, Zsid 4:12 |
+| Bűn gyűrűzése `[ID: HAMART-001]` | Hamartológia | ÓSZ+ÚSZ | 4 | 1Móz 3:7-19, 1Móz 4:1-24, 1Móz 6:1-8, 1Móz 6:9-22 |
 | Refáim/óriás-népek `[ID: HODIT-001]` | Teremtéstan | ÓSZ | 1 | 1Móz 14:5 |
 | Névbe vetett segítségülhívás `[ID: ISTENTISZT-001]` | Pneumatológia/istentisztelet | ÓSZ+ÚSZ | 5 | 1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25 |
 | Melkizedek-rend `[ID: KIRALY-001]` | Krisztológia | ÓSZ+ÚSZ | 1 | 1Móz 14:18-20 |
@@ -281,7 +285,6 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | **protoevangélium — asszony magva** | Krisztológia | ÓSZ⇒ÚSZ | 1 | 1Móz 3:15 ⇒ Róm 16:20 |
 | **kérubok/elzárt-megnyílt út (szentély-tipológia)** | Krisztológia | ÓSZ⇒ÚSZ | 1 | 1Móz 3:24 ⇒ Máté 27:51 |
 | **helyettesítő fedezet előképe (bőr ruha)** | Szoteriológia | ÓSZ⇒ÚSZ | 1 | 1Móz 3:21 → Ézs 61:10 |
-| **bűn következményeinek gyűrűzése** ✅ `[ID: HAMART-001]` *(LEZÁRVA, `Bun_kovetkezmenyeinek_gyuruzese_tematikus.md`)* | Hamartológia | ÓSZ↔ÓSZ⇒ÚSZ | **46 (frissítve, korábban 4)** | **Genezis:** 1Móz 3:14, 3:16, 3:17, 3:18, 3:19,23 → 4:2-3, 4:7, 4:10-11, 4:12,14 → **5:29** (*itzávón*+*adamá*+*arar* hármas visszaidézés) → 6:5, 6:7 → 6:11, 6:12, 6:13, 6:17 → **8:21** (*kalal*, nem *arar*) → 9:11,15 → 9:25 → **12:3** (megfordítás). **Kánoni:** 5Móz 27:15-26; 28:16-19; Jer 17:5; Zsolt 14:1/53:2; Ez 7:23; Ez 8:17; Ez 28:16; Zsolt 74:20; Mik 6:12; Sof 1:9; Hab 2:8; Hab 2:17; Jón 3:8; Ézs 60:18; Jer 6:7; Jer 51:46; Hab 1:2. **ÚSZ:** Róm 8:20-22; Gal 3:10; Gal 3:13; Zsid 6:7-8; Jel 11:18; Jel 19:2. **Tematikus, nem lexikai:** Ézs 24:5-6; Hós 4:1-3; Mt 15:19/Mk 7:21-23; 2Pét 3:6-7. Strong: H0779, H0127, H6093, H2403, H2555, H7843; G1944, G2671, G5351, G1311, G5356 |
 | **Ádám mint szövetségszegő** *(elfogadott projekt-olvasat, FRISSÍTVE)* | Hamartológia | ÓSZ↔ÓSZ | 1 | 1Móz 2-3 (implicit) ↔ Hós 6:7; ⚠️ tudományos vita: Andersen–Freedman, Wolff (helynév-olvasat) vs. Kline, Robertson (Ádám-olvasat, elfogadva); rokon: Jób 31:33; Zsolt 82:7; Hós 8:1 |
 | **↳ Ádám–Krisztus tipológia** ⚠️ *(új, mélyelemzésből, biztos szerzői utalás)* | Hamartológia/Szoteriológia | ÓSZ⇒ÚSZ | 1 (csoport-összesen a fentivel: 2) | 1Móz 2-3 ⇒ Róm 5:12-21 (parabaszisz/parakoé/hamartia — lexikailag elkülönül a Hós 6:7-tételtől); vitatott pontok: ἐφ' ᾧ (5:12) fordítása/eredendő bűn, föderalisztikus vs. realisztikus modell, történeti Ádám kérdése |
 | **tesuká/másal visszhang — bűn mint uralkodni akaró vágy** | Antropológia | ÓSZ↔ÓSZ | 2 | 1Móz 3:16 ↔ 1Móz 4:7 |
@@ -485,14 +488,14 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#konyv_index | forrás: adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk az elofordulasok.tsv mind a 201 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
+*Ez a blokk az elofordulasok.tsv mind a 253 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
 
 | Könyv | Igehely-sor | Tételek |
 |---|---|---|
-| 1Móz | 19 | 1Móz 1:2 [TEREMT-001], 1Móz 2:7 [ANTROP-001], 1Móz 4:26 [ISTENTISZT-001], 1Móz 6:2 [MENNY-001], 1Móz 6:4 [MENNY-001], 1Móz 7:11 [TEREMT-001], 1Móz 8:2 [TEREMT-001], 1Móz 12:8 [ISTENTISZT-001], 1Móz 13:4 [ISTENTISZT-001], 1Móz 14:5 [HODIT-001], 1Móz 14:18-20 [KIRALY-001], 1Móz 15:20 [HODIT-001], 1Móz 21:33 [ISTENTISZT-001], 1Móz 26:25 [ISTENTISZT-001], 1Móz 37:35 [ALVIL-001], 1Móz 42:38 [ALVIL-001], 1Móz 44:29 [ALVIL-001], 1Móz 44:31 [ALVIL-001], 1Móz 49:25 [TEREMT-001] |
+| 1Móz | 42 | 1Móz 1:2 [TEREMT-001], 1Móz 2:7 [ANTROP-001], 1Móz 3:14 [HAMART-001], 1Móz 3:16 [HAMART-001], 1Móz 3:17 [HAMART-001], 1Móz 3:18 [HAMART-001], 1Móz 3:19 [HAMART-001], 1Móz 3:23 [HAMART-001], 1Móz 4:2-3 [HAMART-001], 1Móz 4:7 [HAMART-001], 1Móz 4:10-11 [HAMART-001], 1Móz 4:12 [HAMART-001], 1Móz 4:14 [HAMART-001], 1Móz 4:26 [ISTENTISZT-001], 1Móz 5:29 [HAMART-001], 1Móz 6:2 [MENNY-001], 1Móz 6:4 [MENNY-001], 1Móz 6:5 [HAMART-001], 1Móz 6:7 [HAMART-001], 1Móz 6:11 [HAMART-001], 1Móz 6:12 [HAMART-001], 1Móz 6:13 [HAMART-001], 1Móz 6:17 [HAMART-001], 1Móz 7:11 [TEREMT-001], 1Móz 8:2 [TEREMT-001], 1Móz 8:21 [HAMART-001], 1Móz 9:11 [HAMART-001], 1Móz 9:15 [HAMART-001], 1Móz 9:25 [HAMART-001], 1Móz 12:3 [HAMART-001], 1Móz 12:8 [ISTENTISZT-001], 1Móz 13:4 [ISTENTISZT-001], 1Móz 14:5 [HODIT-001], 1Móz 14:18-20 [KIRALY-001], 1Móz 15:20 [HODIT-001], 1Móz 21:33 [ISTENTISZT-001], 1Móz 26:25 [ISTENTISZT-001], 1Móz 37:35 [ALVIL-001], 1Móz 42:38 [ALVIL-001], 1Móz 44:29 [ALVIL-001], 1Móz 44:31 [ALVIL-001], 1Móz 49:25 [TEREMT-001] |
 | 2Móz | 5 | 2Móz 15:5 [TEREMT-001], 2Móz 15:8 [TEREMT-001], 2Móz 19:6 [KIRALY-001], 2Móz 33:19 [ISTENTISZT-001], 2Móz 34:5 [ISTENTISZT-001] |
 | 4Móz | 4 | 4Móz 13:34 [MENNY-001], 4Móz 13:34 [HODIT-001], 4Móz 16:30 [ALVIL-001], 4Móz 16:33 [ALVIL-001] |
-| 5Móz | 7 | 5Móz 2:11 [HODIT-001], 5Móz 2:20 [HODIT-001], 5Móz 3:11 [HODIT-001], 5Móz 3:13 [HODIT-001], 5Móz 8:7 [TEREMT-001], 5Móz 32:22 [ALVIL-001], 5Móz 33:13 [TEREMT-001] |
+| 5Móz | 9 | 5Móz 2:11 [HODIT-001], 5Móz 2:20 [HODIT-001], 5Móz 3:11 [HODIT-001], 5Móz 3:13 [HODIT-001], 5Móz 8:7 [TEREMT-001], 5Móz 27:15-26 [HAMART-001], 5Móz 28:16-19 [HAMART-001], 5Móz 32:22 [ALVIL-001], 5Móz 33:13 [TEREMT-001] |
 | Józs | 5 | Józs 12:4 [HODIT-001], Józs 13:12 [HODIT-001], Józs 15:8 [HODIT-001], Józs 17:15 [HODIT-001], Józs 18:16 [HODIT-001] |
 | 1Sám | 1 | 1Sám 2:6 [ALVIL-001] |
 | 2Sám | 8 | 2Sám 5:18 [HODIT-001], 2Sám 5:22 [HODIT-001], 2Sám 21:16 [HODIT-001], 2Sám 21:18 [HODIT-001], 2Sám 21:20 [HODIT-001], 2Sám 21:22 [HODIT-001], 2Sám 22:6 [ALVIL-001], 2Sám 23:13 [HODIT-001] |
@@ -500,32 +503,35 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | 2Kir | 1 | 2Kir 5:11 [ISTENTISZT-001] |
 | 1Krón | 6 | 1Krón 11:15 [HODIT-001], 1Krón 14:9 [HODIT-001], 1Krón 16:8 [ISTENTISZT-001], 1Krón 20:4 [HODIT-001], 1Krón 20:6 [HODIT-001], 1Krón 20:8 [HODIT-001] |
 | Jób | 15 | Jób 1:6 [MENNY-001], Jób 2:1 [MENNY-001], Jób 7:9 [ALVIL-001], Jób 11:8 [ALVIL-001], Jób 14:13 [ALVIL-001], Jób 17:13 [ALVIL-001], Jób 17:16 [ALVIL-001], Jób 21:13 [ALVIL-001], Jób 24:19 [ALVIL-001], Jób 26:5 [HODIT-001], Jób 26:6 [ALVIL-001], Jób 28:14 [TEREMT-001], Jób 38:7 [MENNY-001], Jób 38:16 [TEREMT-001], Jób 38:30 [TEREMT-001] |
-| Zsolt | 34 | Zsolt 6:6 [ALVIL-001], Zsolt 9:18 [ALVIL-001], Zsolt 16:10 [ALVIL-001], Zsolt 18:6 [ALVIL-001], Zsolt 30:4 [ALVIL-001], Zsolt 31:18 [ALVIL-001], Zsolt 33:7 [TEREMT-001], Zsolt 36:7 [TEREMT-001], Zsolt 42:8 [TEREMT-001], Zsolt 49:15 [ALVIL-001], Zsolt 49:16 [ALVIL-001], Zsolt 55:16 [ALVIL-001], Zsolt 71:20 [TEREMT-001], Zsolt 76:3 [KIRALY-001], Zsolt 77:17 [TEREMT-001], Zsolt 78:15 [TEREMT-001], Zsolt 79:6 [ISTENTISZT-001], Zsolt 86:13 [ALVIL-001], Zsolt 88:4 [ALVIL-001], Zsolt 88:11 [HODIT-001], Zsolt 89:49 [ALVIL-001], Zsolt 104:6 [TEREMT-001], Zsolt 105:1 [ISTENTISZT-001], Zsolt 106:9 [TEREMT-001], Zsolt 107:26 [TEREMT-001], Zsolt 110:4 [KIRALY-001], Zsolt 116:3 [ALVIL-001], Zsolt 116:4 [ISTENTISZT-001], Zsolt 116:13 [ISTENTISZT-001], Zsolt 116:17 [ISTENTISZT-001], Zsolt 135:6 [TEREMT-001], Zsolt 139:8 [ALVIL-001], Zsolt 141:7 [ALVIL-001], Zsolt 148:7 [TEREMT-001] |
+| Zsolt | 37 | Zsolt 6:6 [ALVIL-001], Zsolt 9:18 [ALVIL-001], Zsolt 14:1 [HAMART-001], Zsolt 16:10 [ALVIL-001], Zsolt 18:6 [ALVIL-001], Zsolt 30:4 [ALVIL-001], Zsolt 31:18 [ALVIL-001], Zsolt 33:7 [TEREMT-001], Zsolt 36:7 [TEREMT-001], Zsolt 42:8 [TEREMT-001], Zsolt 49:15 [ALVIL-001], Zsolt 49:16 [ALVIL-001], Zsolt 53:2 [HAMART-001], Zsolt 55:16 [ALVIL-001], Zsolt 71:20 [TEREMT-001], Zsolt 74:20 [HAMART-001], Zsolt 76:3 [KIRALY-001], Zsolt 77:17 [TEREMT-001], Zsolt 78:15 [TEREMT-001], Zsolt 79:6 [ISTENTISZT-001], Zsolt 86:13 [ALVIL-001], Zsolt 88:4 [ALVIL-001], Zsolt 88:11 [HODIT-001], Zsolt 89:49 [ALVIL-001], Zsolt 104:6 [TEREMT-001], Zsolt 105:1 [ISTENTISZT-001], Zsolt 106:9 [TEREMT-001], Zsolt 107:26 [TEREMT-001], Zsolt 110:4 [KIRALY-001], Zsolt 116:3 [ALVIL-001], Zsolt 116:4 [ISTENTISZT-001], Zsolt 116:13 [ISTENTISZT-001], Zsolt 116:17 [ISTENTISZT-001], Zsolt 135:6 [TEREMT-001], Zsolt 139:8 [ALVIL-001], Zsolt 141:7 [ALVIL-001], Zsolt 148:7 [TEREMT-001] |
 | Péld | 16 | Péld 1:12 [ALVIL-001], Péld 2:18 [HODIT-001], Péld 3:20 [TEREMT-001], Péld 5:5 [ALVIL-001], Péld 7:27 [ALVIL-001], Péld 8:24 [TEREMT-001], Péld 8:27 [TEREMT-001], Péld 8:28 [TEREMT-001], Péld 9:18 [ALVIL-001], Péld 9:18 [HODIT-001], Péld 15:11 [ALVIL-001], Péld 15:24 [ALVIL-001], Péld 21:16 [HODIT-001], Péld 23:14 [ALVIL-001], Péld 27:20 [ALVIL-001], Péld 30:16 [ALVIL-001] |
 | Préd | 1 | Préd 9:10 [ALVIL-001] |
 | Én | 1 | Én 8:6 [ALVIL-001] |
-| Ézs | 17 | Ézs 5:14 [ALVIL-001], Ézs 7:11 [ALVIL-001], Ézs 12:4 [ISTENTISZT-001], Ézs 14:9 [ALVIL-001], Ézs 14:9 [HODIT-001], Ézs 14:11 [ALVIL-001], Ézs 14:15 [ALVIL-001], Ézs 17:5 [HODIT-001], Ézs 26:14 [HODIT-001], Ézs 26:19 [HODIT-001], Ézs 28:15 [ALVIL-001], Ézs 28:18 [ALVIL-001], Ézs 38:10 [ALVIL-001], Ézs 38:18 [ALVIL-001], Ézs 51:10 [TEREMT-001], Ézs 57:9 [ALVIL-001], Ézs 63:13 [TEREMT-001] |
-| Jer | 1 | Jer 10:25 [ISTENTISZT-001] |
-| Ez | 8 | Ez 26:19 [TEREMT-001], Ez 31:4 [TEREMT-001], Ez 31:15 [TEREMT-001], Ez 31:15 [ALVIL-001], Ez 31:16 [ALVIL-001], Ez 31:17 [ALVIL-001], Ez 32:21 [ALVIL-001], Ez 32:27 [ALVIL-001] |
-| Hós | 1 | Hós 13:14 [ALVIL-001] |
+| Ézs | 19 | Ézs 5:14 [ALVIL-001], Ézs 7:11 [ALVIL-001], Ézs 12:4 [ISTENTISZT-001], Ézs 14:9 [ALVIL-001], Ézs 14:9 [HODIT-001], Ézs 14:11 [ALVIL-001], Ézs 14:15 [ALVIL-001], Ézs 17:5 [HODIT-001], Ézs 24:5-6 [HAMART-001], Ézs 26:14 [HODIT-001], Ézs 26:19 [HODIT-001], Ézs 28:15 [ALVIL-001], Ézs 28:18 [ALVIL-001], Ézs 38:10 [ALVIL-001], Ézs 38:18 [ALVIL-001], Ézs 51:10 [TEREMT-001], Ézs 57:9 [ALVIL-001], Ézs 60:18 [HAMART-001], Ézs 63:13 [TEREMT-001] |
+| Jer | 4 | Jer 6:7 [HAMART-001], Jer 10:25 [ISTENTISZT-001], Jer 17:5 [HAMART-001], Jer 51:46 [HAMART-001] |
+| Ez | 11 | Ez 7:23 [HAMART-001], Ez 8:17 [HAMART-001], Ez 26:19 [TEREMT-001], Ez 28:16 [HAMART-001], Ez 31:4 [TEREMT-001], Ez 31:15 [TEREMT-001], Ez 31:15 [ALVIL-001], Ez 31:16 [ALVIL-001], Ez 31:17 [ALVIL-001], Ez 32:21 [ALVIL-001], Ez 32:27 [ALVIL-001] |
+| Hós | 2 | Hós 4:1-3 [HAMART-001], Hós 13:14 [ALVIL-001] |
 | Jóel | 1 | Jóel 2:32 [ISTENTISZT-001] |
 | Ámós | 2 | Ámós 7:4 [TEREMT-001], Ámós 9:2 [ALVIL-001] |
-| Jón | 2 | Jón 2:3 [ALVIL-001], Jón 2:6 [TEREMT-001] |
-| Hab | 2 | Hab 2:5 [ALVIL-001], Hab 3:10 [TEREMT-001] |
-| Sof | 1 | Sof 3:9 [ISTENTISZT-001] |
+| Jón | 3 | Jón 2:3 [ALVIL-001], Jón 2:6 [TEREMT-001], Jón 3:8 [HAMART-001] |
+| Mik | 1 | Mik 6:12 [HAMART-001] |
+| Hab | 5 | Hab 1:2 [HAMART-001], Hab 2:5 [ALVIL-001], Hab 2:8 [HAMART-001], Hab 2:17 [HAMART-001], Hab 3:10 [TEREMT-001] |
+| Sof | 2 | Sof 1:9 [HAMART-001], Sof 3:9 [ISTENTISZT-001] |
 | Zak | 2 | Zak 6:13 [KIRALY-001], Zak 13:9 [ISTENTISZT-001] |
-| Mt | 1 | Mt 11:23 [ALVIL-001] |
+| Mt | 2 | Mt 11:23 [ALVIL-001], Mt 15:19 [HAMART-001] |
+| Mk | 1 | Mk 7:21-23 [HAMART-001] |
 | Luk | 5 | Luk 1:46 [ANTROP-001], Luk 1:47 [ANTROP-001], Luk 8:31 [TEREMT-001], Luk 10:15 [ALVIL-001], Luk 16:23 [ALVIL-001] |
 | ApCsel | 5 | ApCsel 2:27 [ALVIL-001], ApCsel 2:31 [ALVIL-001], ApCsel 9:14 [ISTENTISZT-001], ApCsel 9:21 [ISTENTISZT-001], ApCsel 22:16 [ISTENTISZT-001] |
-| Róm | 2 | Róm 10:7 [TEREMT-001], Róm 10:14 [ISTENTISZT-001] |
+| Róm | 3 | Róm 8:20-22 [HAMART-001], Róm 10:7 [TEREMT-001], Róm 10:14 [ISTENTISZT-001] |
 | 1Kor | 4 | 1Kor 1:2 [ISTENTISZT-001], 1Kor 2:14 [ANTROP-001], 1Kor 2:15 [ANTROP-001], 1Kor 15:45 [ANTROP-001] |
+| Gal | 2 | Gal 3:10 [HAMART-001], Gal 3:13 [HAMART-001] |
 | 1Thessz | 1 | 1Thessz 5:23 [ANTROP-001] |
 | 2Tim | 1 | 2Tim 2:22 [ISTENTISZT-001] |
-| Zsid | 5 | Zsid 4:12 [ANTROP-001], Zsid 5:6 [KIRALY-001], Zsid 5:10 [KIRALY-001], Zsid 6:20 [KIRALY-001], Zsid 7:1-28 [KIRALY-001] |
+| Zsid | 6 | Zsid 4:12 [ANTROP-001], Zsid 5:6 [KIRALY-001], Zsid 5:10 [KIRALY-001], Zsid 6:7-8 [HAMART-001], Zsid 6:20 [KIRALY-001], Zsid 7:1-28 [KIRALY-001] |
 | 1Pét | 1 | 1Pét 1:17 [ISTENTISZT-001] |
-| 2Pét | 1 | 2Pét 2:4-5 [MENNY-001] |
+| 2Pét | 2 | 2Pét 2:4-5 [MENNY-001], 2Pét 3:6-7 [HAMART-001] |
 | Júd | 2 | Júd 1:6 [MENNY-001], Júd 1:14-15 [MENNY-001] |
-| Jel | 8 | Jel 1:18 [ALVIL-001], Jel 6:8 [ALVIL-001], Jel 9:1-2 [TEREMT-001], Jel 9:11 [TEREMT-001], Jel 11:7 [TEREMT-001], Jel 17:8 [TEREMT-001], Jel 20:1-3 [TEREMT-001], Jel 20:13-14 [ALVIL-001] |
+| Jel | 10 | Jel 1:18 [ALVIL-001], Jel 6:8 [ALVIL-001], Jel 9:1-2 [TEREMT-001], Jel 9:11 [TEREMT-001], Jel 11:7 [TEREMT-001], Jel 11:18 [HAMART-001], Jel 17:8 [TEREMT-001], Jel 19:2 [HAMART-001], Jel 20:1-3 [TEREMT-001], Jel 20:13-14 [ALVIL-001] |
 
 <!-- GENERÁLT-VÉGE: naplo#konyv_index -->
 
