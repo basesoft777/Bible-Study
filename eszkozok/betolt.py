@@ -39,6 +39,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import general as G
 import lekerdez as L
+import ellenoriz as E
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ALAPERTELMEZETT_ADAT = os.path.join(ROOT, 'adat')
@@ -55,10 +56,6 @@ ELOFORDULASOK_FEJLEC = [
 
 ELOFORDULASOK_KOTELEZO = ['id', 'igehely', 'kapcsolodas', 'gerinc_elem',
                            'proveniencia', 'igazolas']
-
-PROVENIENCIA_KOTELEZO_KULCSOK = {'scope', 'forras', 'ts'}
-PROVENIENCIA_MEGENGEDETT_TOVABBI_KULCSOK = {'strong', 'n'}
-PROVENIENCIA_TILTOTT_KULCSOK = {'talalat', 'strong_vart'}
 
 
 # ---------------------------------------------------------------------------
@@ -251,31 +248,6 @@ def fut_kulcsszo(args):
 # beepit (B6)
 # ---------------------------------------------------------------------------
 
-def _proveniencia_parse(ertek):
-    if not ertek or not ertek.strip():
-        return {}
-    ki = {}
-    for resz in ertek.split('|'):
-        resz = resz.strip()
-        if '=' not in resz:
-            return {}
-        k, v = resz.split('=', 1)
-        ki[k.strip()] = v.strip()
-    return ki
-
-
-def _proveniencia_ervenyes(ertek):
-    kulcsok = _proveniencia_parse(ertek)
-    if not kulcsok or not PROVENIENCIA_KOTELEZO_KULCSOK.issubset(kulcsok):
-        return False
-    if set(kulcsok) & PROVENIENCIA_TILTOTT_KULCSOK:
-        return False
-    if not set(kulcsok).issubset(
-            PROVENIENCIA_KOTELEZO_KULCSOK | PROVENIENCIA_MEGENGEDETT_TOVABBI_KULCSOK):
-        return False
-    return True
-
-
 def munkalap_ellenoriz(munkalap_sorok, jeloltek, elofordulasok):
     """[(sor, hibauzenet_lista)] -- minden munkalap-sorra a feltetelek
     ellenorzese (SEMA §3/2, 2.2 kotelezo mezok, G9 proveniencia). Az
@@ -305,7 +277,7 @@ def munkalap_ellenoriz(munkalap_sorok, jeloltek, elofordulasok):
             if not (sor.get(mezo) or '').strip():
                 hibak.append('%s / %s -- kötelező mező üres: %s' % (kulcs[0], kulcs[1], mezo))
 
-        if (sor.get('proveniencia') or '').strip() and not _proveniencia_ervenyes(sor.get('proveniencia')):
+        if (sor.get('proveniencia') or '').strip() and not E.proveniencia_ervenyes(sor.get('proveniencia')):
             hibak.append('%s / %s -- érvénytelen proveniencia: %r' % (kulcs[0], kulcs[1], sor.get('proveniencia')))
 
         uj_sor = dict(sor)

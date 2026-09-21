@@ -381,3 +381,4 @@ táblájához képest.
 | D18 | G10: a `kapcsolatok` kézi marad | l. §2 |
 | D19 | A 8. szabály retroaktív sértése nem javítódik az F8-ban, hanem N12 | Elvi döntés kell (hatókör vagy elfogadott nyom), nem sorszintű javítás (D5) |
 | D20 | A `jelolt.py` túltermelése nem javítódik az F8-ban, hanem N13 | A viselkedés a G6 szerinti; a szűrés módszertani döntés |
+| D21 | F8.10a: a proveniencia-szabály egyetlen helyen (`ellenoriz.proveniencia_ervenyes`), a `betolt.py` importálja; a „Mi hiányzik" N11–N13 | A független ellenőrzés találta: a 3. menet lemásolta a szabályt (az N9 hibaosztálya), a K22 túl szűk volt |

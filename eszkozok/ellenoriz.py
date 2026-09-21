@@ -80,6 +80,20 @@ def proveniencia_parse(ertek):
     return ki
 
 
+def proveniencia_ervenyes(ertek):
+    """True, ha a proveniencia-sor megfelel G9-nek (kotelezo scope/forras/ts,
+    megengedett tovabbi strong/n, tiltott talalat/strong_vart)."""
+    kulcsok = proveniencia_parse(ertek)
+    if not kulcsok or not PROVENIENCIA_KOTELEZO_KULCSOK.issubset(kulcsok):
+        return False
+    if set(kulcsok) & PROVENIENCIA_TILTOTT_KULCSOK:
+        return False
+    if not set(kulcsok).issubset(
+            PROVENIENCIA_KOTELEZO_KULCSOK | PROVENIENCIA_MEGENGEDETT_TOVABBI_KULCSOK):
+        return False
+    return True
+
+
 # ---------------------------------------------------------------------------
 # SEMA §3 tabla-szabalyok
 # ---------------------------------------------------------------------------
@@ -119,16 +133,7 @@ def szabaly3_proveniencia(elofordulasok):
     tiltottak (F8_BRIEF.md G9)."""
     hibas = []
     for sor in elofordulasok:
-        kulcsok = proveniencia_parse(sor.get('proveniencia', ''))
-        hiba = False
-        if not kulcsok or not PROVENIENCIA_KOTELEZO_KULCSOK.issubset(kulcsok):
-            hiba = True
-        elif set(kulcsok) & PROVENIENCIA_TILTOTT_KULCSOK:
-            hiba = True
-        elif not set(kulcsok).issubset(
-                PROVENIENCIA_KOTELEZO_KULCSOK | PROVENIENCIA_MEGENGEDETT_TOVABBI_KULCSOK):
-            hiba = True
-        if hiba:
+        if not proveniencia_ervenyes(sor.get('proveniencia', '')):
             hibas.append('%s / %s (%r)' % (sor['id'], sor['igehely'], sor.get('proveniencia', '')))
     if hibas:
         return Sor('3. Proveniencia-kényszer', 'SÉRTÉS', len(hibas), hibas)
