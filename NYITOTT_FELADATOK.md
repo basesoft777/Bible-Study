@@ -91,22 +91,30 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
   motívumoknál, vagy a MENNY-001 `azonossag_tipusa` felülvizsgálata. A
   GENERÁLT blokk nem módosul.
 
-- **N14 — A HAMART-001 betöltése az `adat/`-ba.** *(ÚJ, N12 után,
-  2026.09.21)* A HAMART-001-nek lezárt study-ja
+- **N14 — A HAMART-001 betöltése az `adat/`-ba. LEZÁRVA (N14, 2026.09.21).**
+  *(ÚJ, N12 után, 2026.09.21)* A HAMART-001-nek lezárt study-ja volt
   (`tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md`) és
-  kereszthivatkozás-naplója van, de az `adat/`-ban egyetlen sora sincs:
-  a terv F3-köre (7 lezárt study + ISTENTISZT-001 lexikon) a 2026.09.13-i
+  kereszthivatkozás-naplója, de az `adat/`-ban egyetlen sora sem volt: a
+  terv F3-köre (7 lezárt study + ISTENTISZT-001 lexikon) a 2026.09.13-i
   állapotot rögzítette, amikor a study még két ágon, mergeletlenül állt;
-  az F0.1-es merge (`c28b49e`) után a kört senki nem bővítette
-  (`MEGVALOSITAS_NAPLO.md` F3.3, nyitott tételek 2.). Következmények: a
-  `gate.py` ütközés-jelentése részleges; a `general.py` külön kivételt
-  tart (`K9_KULON_BLOKK_ID`), az index „betöltetlen lezárt tanulmány"
-  táblát. Eldöntendő a betöltés előtt: (1) a `gerinc_elem` értéke —
-  strukturális motívum, a 23 közös Strongból 22 grammatikai; (2) a
-  SEMA §3/8 viszonya: (a) a betöltéskor valódi `lekerdez.py`-lekérdezések
-  `auditok`-sorokkal (a `gerinc` az F2-ben már futott rá, 23 = 23), vagy
-  (b) indokolt döntéssel felvétel az `ellenoriz.RETROAKTIV_IDK` listára
-  (az N12 G3 zárt listája ma 7 ID). Betöltés után a `gate.py` újrafuttatandó.
+  az F0.1-es merge (`c28b49e`) után a kört senki nem bővítette.
+  **Megoldás (N14_BRIEF.md G1–G6):** a study 1. pontjának A/B/C táblázata
+  retroaktív betöltéssel, `scope=manual` provenienciával, `eszkozok/
+  n14_hamart_betoltes.py`-n és a `betolt.py beepit` F8-átjárón át 52
+  `elofordulasok`-sorra bomlott (a 46 study-sorból G3 szerint 3 vesszős/
+  perjeles összevonás szétbontva); a `gerinc_elem` a study saját
+  BDB-horgonyát követi (G2), kollokációnál a SEMA 2.2 pár-alakját
+  (`málé+chámász`, `sámá+chámász`); a `fo_elofordulas` a napló négy
+  szakasz-megnevezése (G4). A SEMA §3/8 (b) útja: a HAMART-001 az
+  `ellenoriz.RETROAKTIV_IDK` zárt listájára került (7 → 8 ID) — a study
+  2026.09.11-i megírásakor a `lekerdez.py` még nem létezett (F2:
+  2026.09.14), tehát valódi lekérdezés utólagos gyártása lett volna a
+  proveniencia. A napló három kézi HAMART-001-szövege és az index kézi
+  „betöltetlen tanulmány" szakasza a forrásrétegbe költözött
+  (`motivumok/HAMART-001.md`, F4.4 mintája), karakterre azonosan. Eredmény:
+  `ellenoriz.py` 6·0·3·1, kód 0, 8/c KÉZI (8); a `general.py --cel naplo/
+  index --ir` fixponton ZÖLD; `gate.py` nem talált új HAMART-001-ütközést.
+  L. `N14_BRIEF.md`, `N14.0`–`N14.4` commitok.
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 

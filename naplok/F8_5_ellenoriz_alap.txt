@@ -29,9 +29,10 @@
   - TIPNR (TIPNR_kivonat.tsv)
   - Thayer (Thayer_teljes.tsv)
 
-**8/c. Kézi dataset-lefedettség**: KÉZI (7)
+**8/c. Kézi dataset-lefedettség**: KÉZI (8)
   - ALVIL-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Hadesz_Seol_tematikus.md` + `tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md`
   - ANTROP-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | napló nincs (csak generált próba: `generalt_proba/tematikus_lezart/naplok/ANTROP-001_kereszthivatkozas_naplo_GENERALT.md`, nem a study eredeti keresése)
+  - HAMART-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` + `tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md`
   - HODIT-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Rafaim_tematikus.md` + `tematikus_lezart/naplok/Rafaim_kereszthivatkozas_naplo.md`
   - ISTENTISZT-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md` + `tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md`
   - KIRALY-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Melkizedek_tematikus.md` + `tematikus_lezart/naplok/Melkizedek_tematikus_kereszthivatkozas_naplo.md`
@@ -236,6 +237,34 @@
 **8/c (tematikus_lezart/Rafaim_tematikus.md, HODIT-001). Kézi dataset-lefedettség**: KÉZI (1)
   - HODIT-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Rafaim_tematikus.md` + `tematikus_lezart/naplok/Rafaim_kereszthivatkozas_naplo.md`
 
+**Q1 (tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md)**: RENDBEN
+
+**Q2 (tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q3 (tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q4 (tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q5 (tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q6 (tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q7 (tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md, HAMART-001)**: KÉZI -- nincs gépileg ellenőrizhető motívum
+
+**8/b (tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md, HAMART-001). Feltételes datasetek**: KÉZI (9) -- a feltétel teljesülése ítélet, l. F8_BRIEF.md F8.5a
+  - KJV_ASV_Strongs (KJV_Strongs_*.tsv, ASV_Strongs_*.tsv)
+  - LSJ (LSJ_teljes.tsv)
+  - LXX_kivonat (LXX_kivonat_*.tsv)
+  - SECE_G (SECE_G_teljes.tsv)
+  - SECE_H (SECE_H_teljes.tsv)
+  - Strong_szotar (Strong_szotar.tsv)
+  - TAGNT (TAGNT_kivonat.tsv)
+  - TIPNR (TIPNR_kivonat.tsv)
+  - Thayer (Thayer_teljes.tsv)
+
+**8/c (tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md, HAMART-001). Kézi dataset-lefedettség**: KÉZI (1)
+  - HAMART-001 -- fedetlen: BDB (nincs lekérdező), Karoli_1908 (retroaktív, F3), Karoli_KH (retroaktív, F3), TAHOT (retroaktív, F3), TSK (retroaktív, F3) | ember ellenőrizze: `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` + `tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md`
+
 ## Összesítő
 
-RENDBEN: 13 | SÉRTÉS: 0 | KÉZI: 59 | JELENTÉS: 1
+RENDBEN: 14 | SÉRTÉS: 0 | KÉZI: 67 | JELENTÉS: 1
