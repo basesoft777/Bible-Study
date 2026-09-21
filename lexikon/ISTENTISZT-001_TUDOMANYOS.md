@@ -228,6 +228,180 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 <!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#szocikkek -->
 
+### 2/b. Teljes szótári anyag — a pilotból *(kézi)*
+
+*A `motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md` 2–4. szakaszának szó szerinti átvétele (N16, 2026.09.21).*
+
+#### 2. TELJES BDB szócikk — H7121 (קָרָא), releváns jelentések szó szerint
+
+【NAPLO: a teljes BDB-bejegyzés 10 781 karakter
+(`BDB_teljes_unabridged.tsv`) — itt a motívum szempontjából releváns
+2. és 3. jelentés szó szerint, angolul, forrásmegjelöléssel idézve. A
+teljes szócikk a morfológiai alakokat (Qal, Niphal, Pual stb.) és
+minden előfordulást is felsorolja, ami itt nem releváns, ezért nincs
+beidézve.】
+
+> **2. c.** ׳ק בְּשֵׁם י׳ *call with name of Yahweh (i.e. use it in invocation)*: Gen 4:26; 12:8; 2Kin 5:11; Jer 10:25 = Psa 79:6 16t. (1Kin 18:24 of specific appeal to ׳י to display his power), + Isa 65:1 (see Pu`al); with name of Baal 1Kin 18:24-25, 26.
+
+**🇭🇺 Magyarul:** *"hívni Jahve nevével" (azaz segítségül hívni, invokálni)*: 1Móz 4:26; 12:8; 2Kir 5:11; Jer 10:25 = Zsolt 79:6, és további 16 előfordulás (1Kir 18:24-nél kifejezetten arra a konkrét felszólításra vonatkozik, hogy Jahve mutassa meg hatalmát), valamint Ézs 65:1 (l. szenvedő alak); Baál nevével: 1Kir 18:24-25, 26.
+
+> **3. proclaim: a.** with accusative of thing procl. Amos 4:5; Gen 41:43; Deut 15:2; Jer 31:6; Lev 25:10 +; **׳ק followed by oratio recta [direct speech] Exod 34:6, etc.**
+
+**🇭🇺 Magyarul:** *3. kihirdetni: a.* a kihirdetett dolog tárgyesetével: Ámós 4:5; 1Móz 41:43; 5Móz 15:2; Jer 31:6; 3Móz 25:10 és mások; **egyenes idézetet [közvetlen beszédet] követve: 2Móz 34:6, stb.**
+
+【NAPLO: forrás — `BDB_teljes_unabridged.tsv`, H7121 sor, saját
+feldolgozás (Python `csv`, `encoding='utf-8', errors='replace'`).】
+
+**Kiemelés jelentősége:** a fenti **2.c** és **3.** jelentések —
+kiemelve, mert a motívum funkcionális kettéválasztásának (emberi
+invokáció vs. isteni önki­hirdetés) ez a lexikográfiai, BDB-szintű
+alapja. A **2.c** citációs listája (Gen 4:26; 12:8; 2Kin 5:11; Jer
+10:25 = Psa 79:6; 1Kin 18:24; Baal 1Kin 18:24-26) **önállóan, a mi
+kutatásunktól függetlenül** csaknem pontosan egyezik a study saját
+audit-eredményével — beleértve a Jer 10:25 = Psa 79:6 párt.
+
+【NAPLO: a study saját auditja 2026.09.05-i; a Jer 10:25 = Psa 79:6 párt a study a BDB-idézet alapján találta meg, nem önálló kereséssel.】
+
+---
+
+#### 3. TELJES BDB szócikk — H8034 (שֵׁם), etimológiai rész szó szerint
+
+> **H8034. shem I. שֵׁם_864 noun masculine name (√ unknown; Thes שׁמה, compare Ba^ZMG xli (1887), 635; Lag^BN 160 ושׁם, Arabic brand, mark; Late Hebrew = Biblical Hebrew (especially הַשֵּׁם = יהוה); Phoenician שם; Assyrian šumu; Sabean סם; Ethiopic; Arabic; Aramaic שְׁמָא שֵׁם, Old Aramaic, Palmyrene שם);** — absolute ׳שׁ Gen 6:4 +; construct ׳שׁ 12:8 +...
+
+**🇭🇺 Magyarul:** *shem I. שֵׁם — hímnemű főnév: "név" (gyök ismeretlen; a Thesaurus szerint a שׁמה szóval rokon; késői héberben megegyezik a bibliai héberrel, különösen a הַשֵּׁם ["a Név"] kifejezésben, ami YHVH körülírása; főníciaiul שם; asszírul šumu; sabeus nyelven סם; megvan etióp és arab nyelvben is; arámiul שְׁמָא/שֵׁם, óarámiul és palmürai nyelven is שם) — abszolút alakban 1Móz 6:4-től, birtokos szerkezetben 12:8-tól kezdve...*
+
+【NAPLO: forrás — `BDB_teljes_unabridged.tsv`, H8034 sor.】
+
+**Jelentősége:** a **"√ unknown"** (gyök ismeretlen) jelölés a szócikk
+legelején azt jelzi: nincs tovább vezethető etimológia.
+
+【NAPLO: ez a lexikográfiai alap ahhoz, hogy a study 2/b Origin-lánc lépése lezártnak minősüljön — nincs mit "elutasítani" vagy "beépíteni" ezen a téren.】
+
+---
+
+#### 4. TELJES TBESG (Abbott-Smith) szócikkek — a három görög ige
+
+##### G1941 ἐπικαλέω (epikaleō)
+
+**TBESG (Abbott-Smith):**
+
+> **ἐπι-καλέω**, -ῶ [in LXX chiefly for קָרָא] —
+> **1.** *to call, name, surname*: with accusative (cl.), Mat.10:25; pass., Act.1:23, 4:36, 10:5, 18, 10:22, 11:13, 12:12, 25, Heb.11:16; τ. ὄνομα, before ἐπί (denoting possession, as Heb. עַל..שֻׁם קָרָא), Act.15:17 (LXX), Jas.2:7.
+> **2. Mid. (so also act.; cl., LXX), to call upon, invoke, appeal to** (θεόν, θεούς, Hdt., Xen., al.): Καίσαρα (Σεβαστόν, Act.25:25), Act.25:11-12, 21, 26:32, 28:19; sc. τ. Κύριον Ἰησοῦν, Act.7:59; μάρτυρα (cl.) τ. θεόν, 2Co.1:23; πατέρα, 1Pe.1:17; τ. κύριον, Rom.10:12, 2Ti.2:22; **τ. ὄνομα κυρίου (μου, σου; like Heb. יְהוָֹה שֻׁם קָרָא), Act.2:21 (LXX) Act.9:14, 21, 22:16, Rom.10:13-14 (LXX) 1Co.1:2** (Cremer, 335, 742). (AS)
+
+**🇭🇺 Magyarul (Abbott-Smith):** *ἐπι-καλέω — a LXX-ben elsősorban a קָרָא megfelelője —*
+
+**1.** *hívni, nevezni, elnevezni*: tárgyesettel (klasszikus göröngben), Mt 10:25; szenvedő szerkezetben, ApCsel 1:23, 4:36, 10:5,18,22, 11:13, 12:12,25, Zsid 11:16; "a nevet" ἐπί-vel (birtoklást jelölve, mint a héber עַל..שֻׁם קָרָא), ApCsel 15:17 (LXX), Jak 2:7.
+
+**2. Közép alakban (de aktívban is; klasszikus göröngben és LXX-ben): *segítségül hívni, invokálni, folyamodni*** (istenhez/istenekhez): a császárhoz (fellebbezve), ApCsel 25:11-12,21, 26:32, 28:19; "az Úr Jézust", ApCsel 7:59; tanúul hívni az Istent, 2Kor 1:23; "Atyát", 1Pét 1:17; "az Urat", Róm 10:12, 2Tim 2:22; **"az Úr nevét" (enyémet/tiédet) — pontosan úgy, mint a héber יְהוָֹה שֻׁם קָרָא — ApCsel 2:21 (LXX-idézet), ApCsel 9:14,21, 22:16, Róm 10:13-14 (LXX-idézet), 1Kor 1:2.**
+
+**Thayer's Greek-English Lexicon (2026.09.07-től ténylegesen elérhető, l. 10. szakasz) — TELJES, 5 jelentés-ágas szócikk:**
+
+> **G1941 — ἐπικαλέω** ... the Sept. very often for קָרָא ; **1.** to put a name upon, to surname: τινα, Mat 10:25; passive ὁ ἐπικαλούμενος, "he who is surnamed", Luk 22:3, Act 10:18, 11:13, 12:12 etc. **2.** ἐπικαλεῖται τό ὄνομα τίνος ἐπί τινα, after the Hebrew ... "the name of one is named upon some one" (cf. Gesenius, Thesaurus iii., p. 1232a): Act 15:17 from Amo 9:12; Jam 2:7. **3.** τίνι with accusative — legal sense, "to charge something to one as a crime; to accuse of": Mat 10:25. **4. to call upon (like German** *anrufen***), to invoke; middle, to call upon for oneself, in one's behalf**: as a helper, Act 7:59; as a witness, 2Co 1:23; as a judge/appeal, Act 25:11, 26:32, 28:19. **5. Hebraistically (like יְהוָה בְּשֵׁם קָרָא to call upon by pronouncing the name of Jehovah, Gen 4:26; Gen 12:8; 2Ki 5:11, etc.; cf. Gesenius, Thesaurus, p. 1231b ... an expression finding its explanation in the fact that prayers addressed to God ordinarily began with an invocation of the divine name: Psa 3:2; Psa 6:2; Psa 7:2, etc.) ἐπικαλοῦμαι τό ὄνομα τοῦ κυρίου, I call upon the name of the Lord, i.e. to invoke, adore, worship, the Lord: Act 2:21 (from Joe 2:32); Act 9:14,21; 22:16; Rom 10:13; 1Co 1:2; τόν κύριον, Rom 10:12; 2Ti 2:22.**
+
+**🇭🇺 Magyarul (Thayer, kivonatosan a releváns 4-5. pontra):** ***4. segítségül hívni** (mint a német "anrufen"), **invokálni**; közép alakban: segítségül hívni magának, a saját javára*: mint segítőt, ApCsel 7:59; mint tanút, 2Kor 1:23; mint bírót/fellebbezésként, ApCsel 25:11, 26:32, 28:19. ***5. héberiesen** (mint a יְהוָה בְּשֵׁם קָרָא, "az Úr nevét kimondva hívni segítségül", 1Móz 4:26; 12:8; 2Kir 5:11 stb.; vö. Gesenius Thesaurus, 1231b oldal ... ez a kifejezés onnan nyeri magyarázatát, hogy az Istenhez intézett imák rendszerint az isteni név segítségülhívásával kezdődtek: Zsolt 3:2; 6:2; 7:2, stb.) "az Úr nevét hívom segítségül", azaz invokálni, imádni, tisztelni az Urat*: ApCsel 2:21 (a Jóel 2:32-ből); ApCsel 9:14,21; 22:16; Róm 10:13; 1Kor 1:2; "az Urat", Róm 10:12; 2Tim 2:22.
+
+*(L. lent: Miért fontos ez a lelet — G1941.)*
+
+【NAPLO: a Thayer-idézet Zsolt 3:2/6:2/7:2 hivatkozásait ellenőriztük —
+nem tartalmazzák a H7121+H8034 formulát; Thayer itt csak
+általánosságban jegyzi meg, hogy a zsoltárok gyakran isteni névvel
+kezdődnek — nem új rejtett találat, de nem is hamis nyom.】
+
+##### G2564 καλέω (kaleō)
+
+> **καλέω**, -ῶ, [in LXX chiefly for קרא] —
+> **1.** *to call, summon*: with accusative of person(s), Mat.20:8, 25:14, Mrk.3:31, Luk.19:13, Act.4:18; before ἐκ, Mat.2:15 (LXX); metaphorically, 1Pe.2:9.
+> **2.** *to call to one's house, invite*: Luk.14:16, 1Co.10:27, Rev.19:9; ... metaphorically, of inviting to partake of the blessings of the kingdom of God: Rom.8:30, 9:24-25, 1Co.7:17-18...
+> **3.** *to call, name, call by name*: pass., Mat.2:23, Luk.1:32, al.; with pred. nom., Mat.5:9, Luk.1:35, Rom.9:26, Jas.2:23, 1Jn.3:1. (AS)
+
+**🇭🇺 Magyarul:** *καλέω — a LXX-ben elsősorban a קרא megfelelője —*
+
+**1.** *hívni, odahívni*: személy tárgyesetével, Mt 20:8, 25:14, Mk 3:31, Lk 19:13, ApCsel 4:18; ἐκ-val (közül), Mt 2:15 (LXX); átvitt értelemben, 1Pét 2:9.
+
+**2.** *házába hívni, meghívni*: Lk 14:16, 1Kor 10:27, Jel 19:9; ... átvitt értelemben, Isten országa áldásaiban való részesedésre hívva: Róm 8:30, 9:24-25, 1Kor 7:17-18...
+
+**3.** *hívni, nevezni, néven nevezni*: szenvedő szerkezetben, Mt 2:23, Lk 1:32, és másutt; állítmányi névszóval, Mt 5:9, Lk 1:35, Róm 9:26, Jak 2:23, 1Jn 3:1.
+
+##### G0994 βοάω (boaō)
+
+**TBESG (Abbott-Smith):**
+
+> **βοάω**, -ῶ (βοή), [in LXX chiefly for זעק, צעק, קרא] —
+> **1. absol., to cry, call out**: Mat.3:3, 27:46, Mrk.1:3, 15:34, Luk.3:4, 9:38, 18:38, Jhn.1:23, Act.8:7, 17:6, 25:24, Gal.4:27.
+> **2. C. dative, to call on for help** (Heb. זעק על, Hos.7:14, al.), Luk.18:7.
+> **SYN.: καλέω, to call, invite, summon; κράζω, to cry, harshly or inarticulately, as animals; κραυγάζω, intensive of κράζω. βοάω expresses emotion, whether joy, fear, etc.** (AS)
+
+**🇭🇺 Magyarul (Abbott-Smith):** *βοάω (a βοή főnévből) — a LXX-ben elsősorban a זעק, צעק, קרא megfelelője —*
+
+**1. önmagában: *kiáltani, hangosan szólni***: Mt 3:3, 27:46, Mk 1:3, 15:34, Lk 3:4, 9:38, 18:38, Jn 1:23, ApCsel 8:7, 17:6, 25:24, Gal 4:27.
+
+**2. részes esettel: *segítségért kiáltani*** (héberül זעק על, Hós 7:14, és másutt), Lk 18:7.
+
+**SZINONIMÁK: καλέω — hívni, meghívni, összehívni; κράζω — kiáltani, durván vagy artikulálatlanul, mint az állatok; κραυγάζω — a κράζω fokozott alakja. A βοάω érzelmet fejez ki — legyen az öröm, félelem vagy más.**
+
+**Thayer's Greek-English Lexicon (2026.09.07-től ténylegesen elérhető):**
+
+> **G994 — βοάω** ... in the Sept. mostly for קָרָא, זָעַק, צָעַק; **to cry aloud, shout: 1. to raise a cry**: of joy, Gal 4:27 (from Isa 54:1); of pain, Mat 27:46, Act 8:7. **2. to cry i.e. speak with a high, strong voice**: Mat 3:3, Mar 1:3, Luk 3:4, Joh 1:23 (all from Isa 40:3); Mar 15:34; Luk 9:38; Act 17:6; Act 21:34. **3. πρός τινα to cry to one for help, implore his aid**: Luk 18:7 (1Sa 7:8; 1Ch 5:20; Hos 7:14, etc. for אֶל...זָעַק). (Compare: ἀναβοάω, ἐπιβοάω.)
+
+**🇭🇺 Magyarul (Thayer):** *G994 — βοάω ... a LXX-ben leginkább a קָרָא, זָעַק, צָעַק megfelelője; **hangosan kiáltani, ordítani: 1. felkiáltani***: örömből, Gal 4:27 (Ézs 54:1-ből); fájdalomból, Mt 27:46, ApCsel 8:7. ***2. kiáltani, azaz magas, erős hangon beszélni***: Mt 3:3, Mk 1:3, Lk 3:4, Jn 1:23 (mind Ézs 40:3-ból); Mk 15:34; Lk 9:38; ApCsel 17:6; ApCsel 21:34. ***3. πρός τινα — segítségért kiáltani valakihez, segítségét kérve***: Lk 18:7 (1Sám 7:8; 1Krón 5:20; Hós 7:14 stb., a héber אֶל...זָעַק megfelelőjeként). (Vö.: ἀναβοάω, ἐπιβοάω.)
+
+*(L. lent: Miért fontos ez a lelet — G0994.)*
+
+##### Kiegészítő adatok: MCGED (Mounce), SECE (Louw-Nida) és LSJ
+
+【NAPLO: elérhetővé vált 2026.09.07-től.】
+
+**MCGED (Mounce Concise Greek-English Dictionary) — pontos NT-előfordulás-szám mindhárom igére:**
+
+| Ige | Frekvencia (teljes ÚSZ) | Mounce tömör gloss |
+|---|---|---|
+| ἐπικαλέω (G1941) | **30×** | "to call on; to attach or connect a name" |
+| καλέω (G2564) | **148×** | "to call, call to... to invite... to call to a participation in the privileges of the Gospel" |
+| βοάω (G994) | **12×** | "to cry out; to exclaim, proclaim... πρός τινα, to invoke, implore" |
+
+**SECE (kibővített Strong's) — Louw-Nida szemantikai domain + teljes héber-megfelelő lista:**
+
+| Ige | Louw-Nida domain-számok | Héber megfelelők (a teljes LXX-en át) |
+|---|---|---|
+| ἐπικαλέω (G1941) | 11.28, 33.131, 33.176, 56.15 | זָכַר, מָצָא, נָקַב, עָשָׂה, **קָרָא**, שׂוּם, שָׁכַן, שֻׁם |
+| καλέω (G2564) | 33.129, 33.131, 33.307, 33.312, 33.315 | אָמַר, בֹּוא, דָבַר, הָיָה, זָכַר, זָעַק, לָקַח, עֲלַל, **קָרָא**, רוּם, שֵׁם |
+| βοάω (G994) | 33.81 | אָמַר, הָגָה, הָמָה, זָעַק, זַעַק, כָּנָה, נָהַם, נָהַק, נָשָׂא, פָּצַח, צָהַל, צָוַח, צָעַק, צָרַח, **קָרָא**, רוּעַ, רָעַם, שָׁאַג, שָׁבַע, שָׁעָה |
+
+*(L. lent: Miért fontos ez a lelet — Kiemelt módszertani jelentőség.)*
+
+**LSJ (Liddell-Scott-Jones) — καλέω teljes klasszikus szócikke (13 750 karakter, itt csak reprezentatív részlet):**
+
+> ...**II 1. call by name, name**: ὃν Βριάρεων καλέουσι θεοί ("akit Briareósznak neveznek az istenek"), Il. 1.403; ὄνομα καλεῖν τινα — "néven nevezni valakit", Od. 8.550; κ. ὄνομα ἐπί τινι — "nevet adni valaminek", Pl. Prm. 147d; κ. τινὰ ἐπὶ τῷ ὀνόματι τοῦ πατρός — "apja nevén nevezni", **Luk 1:59**... Passzívban: ὁ καλούμενος — "az úgynevezett"... **2.** Passzívban: "neveztetni", majdnem = "lenni", különösen rokonsági/státusz-kifejezésekkel...
+
+**🇭🇺 Magyarul (kivonatosan):** a καλέω klasszikus göröngben (Homérosztól kezdve) elsősorban **"néven nevezni, elnevezni"** jelentésben áll — ez pontosan megegyezik azzal a jelentés-ággal, amit a 2Móz 33:19/34:5-nél azonosítottunk (BDB 3. jelentés, "proclaim/kihirdetni"; Thayer 1. jelentés, "to surname"). **Az LSJ tehát klasszikus görög irodalmi háttérrel is megerősíti**: a καλέω elsődleges, legrégebbi jelentése a "megnevezés" aktusa, nem az "invokáció" — így nyelvtörténetileg is indokolt, hogy a fordító pont ezt az igét választotta Isten *önmegnevező* aktusára, nem az ἐπικαλέομαι-t (ami maga is a καλέω-ból képzett, de már specializálódott "segítségül hívás" jelentéssel).
+
+*(Az ἐπικαλέω LSJ-szócikke maga csak átirányít a καλέω alapigéhez — klasszikus lexikográfiai gyakorlat összetett igéknél, önálló LSJ-tartalom nincs rá.)*
+
+##### A héber oldal kiegészítő adatai (TBESH-konszolidáció + SECE)
+
+**TBESH.lexicon (SQLite, konszolidált verzió)** — H7121 itt **egyetlen, tiszta bejegyzésben** jelenik meg:
+
+【NAPLO: 2026.09.07-től elérhető; a korábban dokumentált "többsoros Strong-szám" probléma (H7121 4 alsora a szöveges TBESH.txt-ben) ezzel megoldódott.】
+
+> קָרָא [H:V] to call **1)** to call, call out, recite, read, cry out, proclaim **1a)** (Qal) **1a1)** to call, cry, utter a loud sound **1a2) to call unto, cry (for help), call (with name of God)** **1a3)** to proclaim **1a4)** to read aloud, read (to oneself), read **1a5)** to summon, invite, call for, call and commission, appoint, call and endow **1a6)** to call, name, give name to, call by **1b)** (Niphal) ... **1c)** (Pual) to be called, be named, be called out, be chosen
+
+**SECE H7121 — teljes görög-megfelelő lista (a teljes LXX-en át):** ἄγω, ἀναβοάω, ἀναγγέλλω, ἀναγινώσκω, ἀνακράζω, ἀνοίγω, ..., **βοάω**, ..., ἐγκαλέω, ..., **ἐπικαλέομαι** (kétszer is szerepel a listában, jelezve gyakoriságát), ..., **καλέω**, κηρύσσω, κράζω, ..., ὀνομάζω, παρακαλέω, προσκαλέομαι, ..., φωνέω. TWOT-szám: **2063**. GK-szám: **H7924**.
+
+**SECE H8034 (שֵׁם) — görög megfelelők:** θρόνος, **καλέω**, καλός, καύχημα, **ὄνομα** (kétszer), Σήμ. TWOT-szám: **2405**.
+
+【NAPLO: forrás mindháromhoz — `TBESG.txt` (Abbott-Smith-alapú,
+STEPBible-Data, CC BY 4.0), saját `grep "^G####"` lekérdezés,
+2026.09.05/06.】
+
+**Kereszt-elemzés a három ige között (a szótár SYN.-jegyzete alapján):**
+a βοáω saját szinonima-magyarázata explicit szembeállítja magát a
+καλέω-val és a κράζω-val — ez azt jelenti, hogy az Ézs 12:4 fordítója
+egy **tudatos, a szótár által is dokumentált stilisztikai spektrumból**
+választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tól.
+
+*Források és licencek ehhez az alszakaszhoz:* BDB (Brown–Driver–Briggs) — közkincs; TBESG, TBESH (STEPBible-Data, Abbott-Smith-alapú) — CC BY 4.0; Thayer's Greek-English Lexicon — közkincs; SECE — közkincs; LSJ forrás: Liddell-Scott-Jones, Perseus Digital Library (`lexica` repó), CC BY-SA 3.0.; Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, www.teknia.com/greek-dictionary
+
 ### Miért fontos ez a lelet *(kézi)*
 
 #### G1941
