@@ -36,7 +36,7 @@ jelöléssel szerepel — futtathatóként sehol nem áll.
 |---|---|---|---|---|---|
 | A1 💎 | a szakasz feldolgozása, PaRDeS-kifejtés | kutató | bővített tanulmány prózája | kézi | drága modell (l. lent) |
 | A2 💎 | 2. pont kulcsszó-táblázata | kutató | kulcsszavak, Strong-számmal | kézi | drága modell |
-| A3 | a kulcsszó-táblázat sorainak kiírása a táblába | végrehajtó | `jeloltek.tsv` sorok | `F8 — nincs eszköz` | nincs általános study→`jeloltek.tsv` betöltő; a történeti F3-betöltők (`f3_1_betoltes.py`, `f3_2_betoltes.py` stb.) egyediek, egy adott retroaktív menethez kötve, nem újrafelhasználhatók |
+| A3 | a kulcsszó-táblázat sorainak kiírása a táblába | végrehajtó | `kulcsszavak.tsv` sorok | `eszkozok/betolt.py kulcsszo --study … --konyv …` | átmeneti tábla, `id` nélkül (SEMA 2.8); a motívum-ID az A4-ben, a `jeloltek.tsv`-ben születik |
 | A3b | jelölt-generálás meglévő motívumokhoz | végrehajtó (`jelolt.py`) | automatikus jelöltlista | `eszkozok/jelolt.py --szakasz "…"` | formulaikus motívumnál a sorok `pozicionális ellenőrzés kell` jelzést kapnak; `beépítve`/`elutasítva` soha nem íródik |
 | A4 💎 ⛔ | motívum-felismerés: új ID vagy meglévő ID új előfordulása | kutató javasol + **ember dönt** | `motivumok.tsv` + `elofordulasok.tsv` | kézi | **kötelező megállási pont — l. lent** |
 | A5 | 3/b pont kereszthivatkozásai | kutató + végrehajtó | `kapcsolatok.tsv` | `eszkozok/lekerdez.py tsk` / `eszkozok/lekerdez.py karoli` | a lekérdezés fut; a `kapcsolatok.tsv`-be írás kézi |
@@ -53,7 +53,7 @@ jelöléssel szerepel — futtathatóként sehol nem áll.
 | B3 💎 | szemantikai mező-hipotézis | kutató | mező-szavak listája | kézi | drága modell — a menet egyetlen generatív lépése |
 | B4 | teljes scan + kollokáció + igealak + LXX-híd | végrehajtó | jelölt-halmaz provenienciával | `eszkozok/lekerdez.py scan` / `kollokacio` / `igealak` / `lxx-hid` | mind a négy parancs fut, mindegyik saját provenienciát ír |
 | B5 💎 ⛔ | jelöltek minősítése | **ember** + kutató javaslattal | `jeloltek.tsv` kitöltve | kézi | **kötelező megállási pont — l. lent** |
-| B6 | beépített sorok átvezetése | végrehajtó | `elofordulasok` + `kapcsolatok` | `F8 — nincs eszköz` | nincs általános beépítő; a történeti betöltők egyediek (l. A3) |
+| B6 | beépített sorok átvezetése | végrehajtó | `elofordulasok` + `kapcsolatok` | `eszkozok/betolt.py beepit --munkalap …` | csak `beépítve` sort léptet elő; a `kapcsolatok` kézi (G10) |
 | B7 | study 1. pont, kereszthivatkozás-napló, index generálása | végrehajtó | generált fájlok | `eszkozok/general.py --cel study`; `--cel naplok`; `--cel index --ir` | a `study` és a `naplok` cél **nem élesíthető** — csak `--kimenet` alá termel próbát; kizárólag az `index` írható közvetlenül élesen |
 | B8 💎 | 2-5. pont megírása | kutató | PaRDeS-próza | kézi | drága modell |
 | B9 | nevesített tanítói menet | tanítói-agent | `_tanitoi_kereses.md` | `F8 — nincs eszköz` | a sablon megvan (`sablonok/7_PaRDeS_tanitoi_kereses_sablon.md`); a `tanito-kereso` subagent a 3. menetben |
