@@ -12,7 +12,9 @@ Zsolt 110:4	Zsid 7:1-28	KIRALY-001	Beteljesedés	a Melkizedek-rend teljes kifejt
 1Móz 4:26	Sof 3:9	ISTENTISZT-001	Párhuzam	azonos szereposztás (ember hívja segítségül Isten nevét), más kánoni ponton	magas	Remez
 1Móz 4:26	2Kir 5:11	ISTENTISZT-001	Párhuzam	azonos szereposztás, parafrazált formában — nincs szó szerinti egyezés	közepes	Remez
 1Móz 4:26	Jóel 2:32	ISTENTISZT-001	Párhuzam	azonos szereposztás, az ószövetségi megfogalmazás csúcspontjáig	magas	Remez
-Jóel 2:32	Róm 10:14	ISTENTISZT-001	Beteljesedés	szó szerinti LXX-idézés-lánc (2:32⇒Róm 10:13⇒10:14)	magas	Remez
+Jóel 2:32	ApCsel 2:21	ISTENTISZT-001	Beteljesedés	szó szerinti LXX-idézés, ÓSZ-prófécia → ÚSZ-beteljesedés	magas	Remez
+Jóel 2:32	Róm 10:13	ISTENTISZT-001	Beteljesedés	szó szerinti LXX-idézés, ÓSZ-prófécia → ÚSZ-beteljesedés	magas	Remez
+Róm 10:13	Róm 10:14	ISTENTISZT-001	Párhuzam	azonos szereposztás, közvetlen folytatás ugyanabban a szakaszban	magas	Remez
 Róm 10:14	1Kor 1:2	ISTENTISZT-001	Párhuzam	azonos görög ige (ἐπικαλέομαι), egyházi azonosító-formulává válás — nincs szó szerinti idézés	közepes	Remez
 Róm 10:14	2Tim 2:22	ISTENTISZT-001	Párhuzam	azonos görög ige, egyházi azonosító-formulává válás	közepes	Remez
 Róm 10:14	1Pét 1:17	ISTENTISZT-001	Párhuzam	azonos görög ige, egyházi azonosító-formulává válás	közepes	Remez
