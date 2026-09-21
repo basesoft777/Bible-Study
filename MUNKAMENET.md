@@ -122,5 +122,5 @@ igaz (l. `ATALAKITASI_TERV.md.md` F7.4 javítása):
 
 ## Mi hiányzik az üzemmenetből ma
 
-Az F8 óta nincs `F8`-jelölt hiány. Nyitva: `NYITOTT_FELADATOK.md` N11, N13, N15 és
+Az F8 óta nincs `F8`-jelölt hiány. Nyitva: `NYITOTT_FELADATOK.md` N11, N13, N15, N16 és
 az `F8_BRIEF.md` §3 tételei. (N14 lezárva, 2026.09.21.)

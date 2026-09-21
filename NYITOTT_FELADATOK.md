@@ -143,6 +143,22 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
   Strong→lemma joinjával a Genezis újraépítése, és a motívum-tokenek
   találatainak összevetése a mostani `LXX_kivonat_Genezis.tsv`-vel.
 
+- **N16 — Az ISTENTISZT-001 hiányzó ÚSZ-i idézőhelyei.** *(ÚJ, LEX.2
+  zárójelentése, 2026.09.21)* A Jóel 2:32 szó szerinti ÚSZ-i idézetei
+  — ApCsel 2:21 és Róm 10:13 — nincsenek az `elofordulasok.tsv`
+  29 ISTENTISZT-001 sora között, noha a Jóel 2:32 sor megjegyzése
+  mindkettőt megnevezi. A `kapcsolatok.tsv` Jóel 2:32 → Róm 10:14
+  „Beteljesedés" sora „szó szerinti LXX-idézés-lánc (2:32⇒Róm
+  10:13⇒10:14)" indoklású, de a lánc középső tagja sorként nem
+  létezik, a Róm 10:14 pedig nem idézet, hanem folytatás. A lexikon-
+  oldal (`lexikon/ISTENTISZT-001_TUDOMANYOS.md`, `_OLVASHATO.md`) kézi
+  szövegében ⚠ ELTÉRÉS jelöli. Eldöntendő: a két sor felvétele
+  (proveniencia: a pilot 2026.09.06-i auditja vagy új lekérdezés) és
+  a Jóel 2:32 → Róm 10:14 kapcsolat átkötése Róm 10:13-ra. Utána a
+  ⚠ ELTÉRÉS jelölések feloldhatók. Kapcsolódó: a módszertani napló
+  „15 emberi-invokációs eset" állítása a jelenlegi táblán
+  ellenőrizendő (a zárójelentés 27-et becsült, nem mért).
+
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá vált — belépő: `DONTESEK_INDEX.tsv`. A vers-szintű jelöltek nem ide, hanem az `adat/jeloltek.tsv`-be kerültek (16 sor, mind `dontes=nyitva`): HODIT-001 13 alacsony szavazatú TSK-jelölt, MENNY-001 Mt 24:38 + Luk 17:27, ANTROP-001 Fil 1:27. Az alábbiak a nem vers-szintű tételek:
