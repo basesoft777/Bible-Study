@@ -38,7 +38,7 @@ jelöléssel szerepel — futtathatóként sehol nem áll.
 | A1 💎 | a szakasz feldolgozása, PaRDeS-kifejtés | kutató | bővített tanulmány prózája | kézi | drága modell (l. lent) |
 | A2 💎 | 2. pont kulcsszó-táblázata | kutató | kulcsszavak, Strong-számmal | kézi | drága modell |
 | A3 | a kulcsszó-táblázat sorainak kiírása a táblába | végrehajtó | `jeloltek.tsv` sorok | `F8 — nincs eszköz` | nincs általános study→`jeloltek.tsv` betöltő; a történeti F3-betöltők (`f3_1_betoltes.py`, `f3_2_betoltes.py` stb.) egyediek, egy adott retroaktív menethez kötve, nem újrafelhasználhatók |
-| A3b | jelölt-generálás meglévő motívumokhoz | végrehajtó (`jelolt.py`) | automatikus jelöltlista | `F8 — nincs eszköz` | a terv saját maga nevezi meg hiányzóként (l. `F7_BRIEF.md` §0) |
+| A3b | jelölt-generálás meglévő motívumokhoz | végrehajtó (`jelolt.py`) | automatikus jelöltlista | `eszkozok/jelolt.py --szakasz "…"` | formulaikus motívumnál a sorok `pozicionális ellenőrzés kell` jelzést kapnak; `beépítve`/`elutasítva` soha nem íródik |
 | A4 💎 ⛔ | motívum-felismerés: új ID vagy meglévő ID új előfordulása | kutató javasol + **ember dönt** | `motivumok.tsv` + `elofordulasok.tsv` | kézi | **kötelező megállási pont — l. lent** |
 | A5 | 3/b pont kereszthivatkozásai | kutató + végrehajtó | `kapcsolatok.tsv` | `eszkozok/lekerdez.py tsk` / `eszkozok/lekerdez.py karoli` | a lekérdezés fut; a `kapcsolatok.tsv`-be írás kézi |
 | A6 💎 | előrejelzett motívum rögzítése (státusz = *előrejelzett*) | kutató | `motivumok.tsv` | kézi | drága modell |
