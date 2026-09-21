@@ -34,6 +34,9 @@ a két changelogot (`PaRDeS_dontesek_CHANGELOG.md`, `motivumlog/PaRDeS_motivumok
 
 Generált fájl fejlécében gépi jelölés áll (`# GENERÁLT: …`). Ha ilyet látsz, ne írd át.
 
+A `generalt_proba/` verziózott könyvtár (F4-próbák kimenete), nem scratch. Törölni tilos;
+a `--kimenet` próbák ideiglenes könyvtárba, a repón kívülre menjenek.
+
 ## Három szabály, amit soha ne sérts
 
 1. **Proveniencia.** Minden lekérdezésből származó állítás mellé a lekérdezés saját
