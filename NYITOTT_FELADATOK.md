@@ -70,13 +70,19 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
   generálás esetén is a kutató írná; a generálás nyeresége a 0. pont
   aktiválási feltételének gépi ellenőrizhetősége volna.
 
-- **N12 — A SEMA §3/8 és a retroaktív sorok.** *(ÚJ, F8.10, 2026.09.21)* Mind
-  a 201 `elofordulasok`-sor `scope=manual` (F3-betöltés), ezért az
-  `ellenoriz.py` 8. szabálya (dataset-lefedettség) mind a 7 motívumra sért —
-  egyetlen sor sem hordoz `forras=`-nyomot a `mindig` datasetekhez. Eldöntendő:
-  (a) a szabály csak az F8 után betöltött sorokra vonatkozzon; (b) retroaktív
-  motívumnál a study saját dataset-dokumentációja elfogadott nyomnak
-  számítson; (c) utólagos igazoló lekérdezések adjanak valódi provenienciát.
+- **N12 — A SEMA §3/8 és a retroaktív sorok. LEZÁRVA (N12, 2026.09.21).**
+  *(ÚJ, F8.10, 2026.09.21)* Mind a 201 `elofordulasok`-sor `scope=manual`
+  (F3-betöltés), ezért az `ellenoriz.py` 8. szabálya (dataset-lefedettség)
+  mind a 7 motívumra sértett — a régi illesztés emellett részsztring-alapú
+  volt, tehát a `karoli` parancs `+`-szal összefűzött forrása soha nem
+  illeszkedett a Karoli_KH-ra. **Megoldás (N12_BRIEF.md G1–G4):** a 8.
+  szabály motívumszintűvé vált, új `adat/auditok.tsv` nyom-táblával (0
+  találatos lekérdezés is nyom); a `forras` érték `+` mentén bontva, PONTOS
+  fájlnév-egyezéssel illeszt; a BDB (nincs lekérdező parancs) és a 7
+  retroaktív motívum hiányzó datasetjei (zárt lista) KÉZI jelentést kapnak,
+  nem SÉRTÉST. Eredmény: a 8. szabály ma KÉZI (0 gépileg ellenőrizhető
+  motívum) a korábbi SÉRTÉS (35) helyett; az első új motívumnál gépi zöld
+  vagy piros. L. `N12_BRIEF.md`, `N12.1`–`N12.3` commitok.
 
 - **N13 — A `jelolt.py` túltermelése gyakori Strongokon.** *(ÚJ, F8.10,
   2026.09.21)* Az 1Móz 7:1-24 szakaszra `jelolt.py` 10 „új jelölt" sort ad,
