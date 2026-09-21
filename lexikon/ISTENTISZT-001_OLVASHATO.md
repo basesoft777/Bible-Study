@@ -41,7 +41,7 @@ aki segítségül hívja az Úr nevét, megmenekül"* (Jóel 2:32) — ezt a
 mondatot idézi szó szerint Péter a pünkösdi prédikációjában (ApCsel
 2:21), és Pál is, amikor az evangéliumot magyarázza (Róm 10:13) — sőt
 egy verssel később (Róm 10:14) ugyanezzel a szóval folytatja: *"mimódon
-hívják segítségül, akiben nem hisznek?"* ⚠ ELTÉRÉS: az ApCsel 2:21 és a Róm 10:13 nem szerepel önálló igehelyként a jelenlegi 29 igehelyes táblázatban (l. `lexikon/ISTENTISZT-001_TUDOMANYOS.md` 1. és 5. szakasza — a generált kapcsolat-gráf Jóel 2:32-t közvetlenül Róm 10:14-hez köti, „Beteljesedés" típussal).
+hívják segítségül, akiben nem hisznek?"*
 
 ## Egy meglepő fordulat
 
@@ -77,8 +77,6 @@ graph LR
 
 *A piros csomópont a kivételt jelöli: itt nem az ember hívja
 segítségül Istent, hanem Isten mondja ki a saját nevét.*
-
-⚠ ELTÉRÉS: a diagram „Pünkösd (ApCsel 2:21)" és „Pál (Róm 10:13)" csomópontjai nem szerepelnek önálló igehelyként a jelenlegi 29 igehelyes táblázatban (l. fent).
 
 ---
 

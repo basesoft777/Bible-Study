@@ -424,7 +424,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 ### Minősítés *(kézi)*
 
-**TSK (Votes ≥ 15 szűréssel), 21 igehelyre lefuttatva — eredmény:** ⚠ ELTÉRÉS: a generált 4. szakasz jelenleg 29 igehelyet vet össze (a 2026.09.09-i 7-soros bővítés miatt); ez a minősítés a pilot 2026.09.06-i, még 21 igehelyes állapotára vonatkozik.
+**TSK (Votes ≥ 15 szűréssel), 21 igehelyre lefuttatva — eredmény:** ⚠ ELTÉRÉS: a generált 4. szakasz jelenleg 31 igehelyet vet össze (a 2026.09.09-i 7-soros bővítés miatt); ez a minősítés a pilot 2026.09.06-i, még 21 igehelyes állapotára vonatkozik.
 
 - Zsolt 105:1 ↔ Ézs 12:4 (Votes 24) — **független megerősítés**
 - 1Krón 16:8 ↔ Ézs 12:4 (Votes 18), 1Krón 16:8 ↔ Zsolt 105:1 (Votes 22) — **független megerősítés**
@@ -432,7 +432,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 - **Jóel 2:32 → Róm 10:14 (Votes 19) — ÚJ, VALÓDI TALÁLAT** (l. lent)
 - Jóel 2:32 → Róm 10:11 (Votes 19) — ellenőrizve, nincs ἐπικαλέομαι/καλέω a versben, NEM releváns
 
-**Károli-KH (szentiras.hu szerkesztői hálózat), 21 igehelyre lefuttatva:** ⚠ ELTÉRÉS: l. a fenti megjegyzés — a generált 4. szakasz 29 igehelyre fut.
+**Károli-KH (szentiras.hu szerkesztői hálózat), 21 igehelyre lefuttatva:** ⚠ ELTÉRÉS: l. a fenti megjegyzés — a generált 4. szakasz 31 igehelyre fut.
 
 - 1Móz 13:4 → 1Móz 12:8 — **független megerősítés**
 - Zsolt 105:1 → 1Krón 16:8 — **független megerősítés**
@@ -558,7 +558,7 @@ graph LR
 |---|---|
 | 1Móz 4:26 → Sof 3:9 | Mindkettő explicit a formulát alkalmazza istentiszteleti kontextusban ("segítségül hívni az Úr nevét" / "segítségül hívják mindnyájan az Úr nevét") — közös, felismerhető hitvallási nyelvezet, nem csak tematikus rokonság. |
 | 1Móz 4:26 → 2Kir 5:11 | Naámán nem szó szerint idézi a formulát, hanem parafrazálja ("segítségül hívja az Úr, az ő Istene nevét") — a tartalmi kapcsolat egyértelmű, de nincs szó szerinti szövegi egyezés, innen a Közepes (nem Magas) bizonyosság. |
-| 1Móz 4:26 → Jóel 2:32 → ApCsel 2:21 / Róm 10:13 | Az ApCsel és a Róma-levél **szó szerint**, görögül idézi a LXX Jóel-szöveget (πᾶς ὃς ἂν ἐπικαλέσηται τὸ ὄνομα Κυρίου σωθήσεται) — ez verbális, nem csak tematikus idézés, innen a Magas bizonyosság mindkét NT-kapcsolatnál. ⚠ ELTÉRÉS: az ApCsel 2:21 és a Róm 10:13 nem szerepel a jelenlegi 29 igehelyes „Előfordulások" táblában (a generált 5. szakasz kapcsolat-gráfja Jóel 2:32-t közvetlenül Róm 10:14-hez köti, „Beteljesedés" típussal, nem ezen a két közbülső igehelyen át). |
+| 1Móz 4:26 → Jóel 2:32 → ApCsel 2:21 / Róm 10:13 | Az ApCsel és a Róma-levél **szó szerint**, görögül idézi a LXX Jóel-szöveget (πᾶς ὃς ἂν ἐπικαλέσηται τὸ ὄνομα Κυρίου σωθήσεται) — ez verbális, nem csak tematikus idézés, innen a Magas bizonyosság mindkét NT-kapcsolatnál. |
 | 1Móz 4:26 → 2Móz 33:19 | A lexikai kapocs (azonos H7121+H8034 pár) önmagában Magas bizonyosságú — de a BDB eltérő jelentés alá sorolja (2.c vs. 3.) és a LXX eltérő igét használ (ἐπικαλέομαι vs. καλέω), ezért a *funkcionális* besorolás marad nyitott, a *lexikai* kapcsolat bizonyossága nem. |
 | 1Móz 12:8 → 1Móz 13:4 | A szöveg explicit jelzi: Ábrám "**visszatér** ugyanahhoz az oltárhoz" — azonos helyszín, azonos szereplő, közvetlen szövegi utalás, nem rekonstrukció. |
 | 1Móz 13:4 → 1Móz 26:25 / 1Móz 21:33 → 1Móz 26:25 | Izsák explicit Ábrahám fia, ugyanazon a földrajzi ponton (Beérseba) cselekszik — a genealógiai és helyrajzi kapcsolat mindkét irányban a szövegből, nem következtetésből ered. |
@@ -567,7 +567,7 @@ graph LR
 | Zsolt 105:1 → 1Krón 16:8 | A két szöveg **majdnem szó szerint azonos** — 1Krón 16 ismerten a Zsolt 105/96/106 összeállítását idézi a frigyláda Sátor elé helyezésekor; ez bibliakritikailag jól dokumentált szövegpárhuzam, nem feltételezés. |
 | Zsolt 105:1 → Ézs 12:4 | Szinte szó szerinti egyezés a formulában, de nincs explicit idézési jelzés egyik szövegben sem — a Magas bizonyosság a szövegi hasonlóság mértékén alapul, nem irodalomkritikai konszenzuson a közvetlen függésről. |
 | Jer 10:25 → Zsolt 79:6 | A két vers csaknem szóról szóra megegyezik (jól ismert, kommentárokban gyakran tárgyalt szövegpárhuzam a két könyv között) — a Magas bizonyosság indokolt. **2026.09.06: Károli-KH is megerősíti, mindkét irányban.** |
-| Róm 10:13 → Róm 10:14 | Ugyanaz a görög ige (ἐπικαλέομαι), Pál közvetlenül folytatódó érvelésében ugyanabban a szakaszban — TSK-eredetű lelet, 2026.09.06. ⚠ ELTÉRÉS: l. fent, a Róm 10:13 nem szerepel önálló igehelyként a jelenlegi táblában. |
+| Róm 10:13 → Róm 10:14 | Ugyanaz a görög ige (ἐπικαλέομαι), Pál közvetlenül folytatódó érvelésében ugyanabban a szakaszban — TSK-eredetű lelet, 2026.09.06. |
 | Sof 3:9 → Zak 13:9 | Mindkettő explicit, egyértelműen eszkatológiai ígéretként fogalmazza meg a segítségül hívást; Zak 13:9 kétirányú szövetségi megerősítéssel egészíti ki (Isten is válaszol) — közös próféciai regiszter, innen a Magas bizonyosság. |
 | Róm 10:14 → 1Kor 1:2 / 2Tim 2:22 / 1Pét 1:17 / ApCsel 9:14 / ApCsel 22:16 | Azonos görög ige (ἐπικαλέομαι/ἐπικαλεῖσθε), de nincs szó szerinti idézési kapcsolat a Jóel-lánchoz vagy egymáshoz — a kapcsolat lexikai (azonos G1941 szó, azonos jelentés-ág), nem verbális idézés, innen a Közepes (nem Magas) bizonyosság. |
 | ApCsel 9:14 → ApCsel 9:21 | Ugyanaz a leírás, ugyanabban a fejezetben, néhány verssel később szó szerint megismételve ("kik ezt a nevet hívják segítségül") — Magas bizonyosság. |
@@ -621,7 +621,7 @@ elkülönülő teológiai aktust fejez ki:
 | **B** | Isten | saját neve | 2Móz 33:19, 34:5 | "be nem sorolható" — l. 1. pont |
 | **C** | Isten | ember neve | Ézs 43:1, 44:5, 45:3 | ❌ elutasítva, "hamis pozitív" |
 
-⚠ ELTÉRÉS: a táblázat „15 emberi-invokációs eset" száma a pilot 2026.09.06-i, a 2026.09.09-i 7-soros bővítés előtti állapotára vonatkozik; a jelenlegi „Előfordulások" tábla 29 igehelyet tartalmaz, ebből 27 emberi-invokációs (a 2 „B"-mintás — 2Móz 33:19, 34:5 — nélkül).
+⚠ ELTÉRÉS: a táblázat „15 emberi-invokációs eset" száma a pilot 2026.09.06-i, a 2026.09.09-i 7-soros bővítés előtti állapotára vonatkozik; a jelenlegi „Előfordulások" tábla 31 igehelyet tartalmaz, az emberi-invokációs esetek száma rajta nem mért.
 
 **Miért fontos ez:** a "B" eset eddig elszigetelt anomáliaként szerepelt
 a study-ban ("nem sorolható be a meglévő funkciók egyikébe sem"). A
@@ -701,10 +701,7 @@ tévesen ne sorolja be a motívumba.】
    (`konkordancia/Javasolt_gorog_oldal_erositese.md`). Ebből a
    "Thayer beszerzése" pont **2026.09.07-én ténylegesen megoldódott**:
    a teljes Thayer's Greek-English Lexicon SQLite-fájlban elérhetővé
-   vált (5427 bejegyzés), és ebbe a pilot-oldalba be is építve (l. a
-   `motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md` 4. szakasza
-   — a szó szerinti szótári idézetek erre a lexikon-oldalra nem
-   kerültek át, l. 2. szakasz "Miért fontos ez a lelet"). **A fájl
+   vált (5427 bejegyzés), és ebbe a pilot-oldalba be is építve (l. 2/b. szakasz). **A fájl
    repóba emelése még külön döntést igényel.**
 4. ~~LXX-híd 2 adatminőségi hibája~~ — 2026.09.07-én lezárva: Zsolt
    116:4 téves G-címkéje javítva G1941-re; Zsolt 116:17 "hiánya"
