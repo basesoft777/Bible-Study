@@ -49,7 +49,7 @@ jelöléssel szerepel — futtathatóként sehol nem áll.
 
 | # | Lépés | Ki | Kimenet | Ma mivel fut | Megjegyzés |
 |---|---|---|---|---|---|
-| B1 | küszöbfigyelő jelzi a ⭐ 3+ átlépést | audit | jelentés | `eszkozok/general.py --cel naplo` (`render_naplo_kuszob` + `fo_elofordulas_csoportok`) | a számítás megvan, csak nem önálló audit-eszköz/kilépési kód — l. `F7_BRIEF.md` §1 L1 |
+| B1 | küszöbfigyelő jelzi a ⭐ 3+ átlépést | audit | jelentés | `eszkozok/kuszob.py` | a ⭐ számítás a `general.py`-ban marad, a `kuszob.py` importálja; átlépés = ≥ 3 és üres `forras_study`; kód 1 = van átlépés |
 | B2 | gerinc-metszet + grammatikai szűrés | végrehajtó | kivonat | `eszkozok/lekerdez.py gerinc` | a grammatikai szűrés (`adat/grammatikai_strongok.tsv`) be van építve |
 | B3 💎 | szemantikai mező-hipotézis | kutató | mező-szavak listája | kézi | drága modell — a menet egyetlen generatív lépése |
 | B4 | teljes scan + kollokáció + igealak + LXX-híd | végrehajtó | jelölt-halmaz provenienciával | `eszkozok/lekerdez.py scan` / `kollokacio` / `igealak` / `lxx-hid` | mind a négy parancs fut, mindegyik saját provenienciát ír |
@@ -87,8 +87,8 @@ A terv 5.1 pontja hat szerepet ír le (fő szál, `lexikai-scan` subagent,
 Ma egyik subagent sincs definiálva: a `.claude/` alatt nincs `agents/`
 könyvtár és nincs `settings.json`. A három érintett szerep ma:
 
-- **audit (B1, B10)** — nem subagent, hanem szkript-szerep: a B1 logikája a
-  `general.py` naplóblokkjában él (l. B1 sor), a B10-hez nincs eszköz.
+- **audit (B1, B10)** — nem subagent, hanem szkript-szerep: a B1-hez a
+  `kuszob.py`, a B10-hez nincs eszköz.
 - **`lexikai-scan` (B2, B4)** — ma nem burkolt subagent, hanem közvetlen
   `lekerdez.py`-hívás a fő szálon.
 - **tanítói (B9)** — a tervben valódi subagent-szerep; ma nincs eszköz, sem
@@ -102,6 +102,7 @@ könyvtár és nincs `settings.json`. A három érintett szerep ma:
   `--kimenet` könyvtár alá termel próbát, `--ellenoriz`-nél PIROS marad.
 - A ⭐ 3+ küszöb-számítás a `general.py`-ban él (`fo_elofordulas_csoportok()`
   + `render_naplo_kuszob()`), nem a `gate.py`-ban és nem a `lekerdez.py`-ban.
+  A küszöb-összevetést és a kilépési kódot a `kuszob.py` adja (F8.4).
 
 ## C) szakasz — a lexikon-generálás tényleges hatóköre
 
