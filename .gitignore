@@ -5,3 +5,7 @@ bovitmenyek/*.oxt
 
 # Python bytecode-gyorsitotar -- nem verziozzuk
 __pycache__/
+
+# .claude/ nincs verziozva (worktrees, lokalis allapot), kiveve az agent-definiciokat
+.claude/*
+!.claude/agents/

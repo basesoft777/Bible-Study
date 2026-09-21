@@ -51,12 +51,12 @@ jelöléssel szerepel — futtathatóként sehol nem áll.
 | B1 | küszöbfigyelő jelzi a ⭐ 3+ átlépést | audit | jelentés | `eszkozok/kuszob.py` | a ⭐ számítás a `general.py`-ban marad, a `kuszob.py` importálja; átlépés = ≥ 3 és üres `forras_study`; kód 1 = van átlépés |
 | B2 | gerinc-metszet + grammatikai szűrés | végrehajtó | kivonat | `eszkozok/lekerdez.py gerinc` | a grammatikai szűrés (`adat/grammatikai_strongok.tsv`) be van építve |
 | B3 💎 | szemantikai mező-hipotézis | kutató | mező-szavak listája | kézi | drága modell — a menet egyetlen generatív lépése |
-| B4 | teljes scan + kollokáció + igealak + LXX-híd | végrehajtó | jelölt-halmaz provenienciával | `eszkozok/lekerdez.py scan` / `kollokacio` / `igealak` / `lxx-hid` | mind a négy parancs fut, mindegyik saját provenienciát ír |
+| B4 | teljes scan + kollokáció + igealak + LXX-híd | végrehajtó | jelölt-halmaz provenienciával | `eszkozok/lekerdez.py scan` / `kollokacio` / `igealak` / `lxx-hid` | mind a négy parancs fut, mindegyik saját provenienciát ír; burkoltan a `lexikai-scan` subagent (`.claude/agents/lexikai-scan.md`) is futtathatja |
 | B5 💎 ⛔ | jelöltek minősítése | **ember** + kutató javaslattal | `jeloltek.tsv` kitöltve | kézi | **kötelező megállási pont — l. lent** |
 | B6 | beépített sorok átvezetése | végrehajtó | `elofordulasok` + `kapcsolatok` | `eszkozok/betolt.py beepit --munkalap …` | csak `beépítve` sort léptet elő; a `kapcsolatok` kézi (G10) |
 | B7 | study 1. pont, kereszthivatkozás-napló, index generálása | végrehajtó | generált fájlok | `eszkozok/general.py --cel study`; `--cel naplok`; `--cel index --ir` | a `study` és a `naplok` cél **nem élesíthető** — csak `--kimenet` alá termel próbát; kizárólag az `index` írható közvetlenül élesen |
 | B8 💎 | 2-5. pont megírása | kutató | PaRDeS-próza | kézi | drága modell |
-| B9 | nevesített tanítói menet | tanítói-agent | `_tanitoi_kereses.md` | `F8 — nincs eszköz` | a sablon megvan (`sablonok/7_PaRDeS_tanitoi_kereses_sablon.md`); a `tanito-kereso` subagent a 3. menetben |
+| B9 | nevesített tanítói menet | tanítói-agent | `_tanitoi_kereses.md` | `tanito-kereso` subagent (`.claude/agents/tanito-kereso.md`) | a sablon: `sablonok/7_PaRDeS_tanitoi_kereses_sablon.md` |
 | B10 | Q-kapu + konzisztencia-ellenőrzés | audit | jelentés | `eszkozok/ellenoriz.py [--study …]` | Q2–Q6 és a `felteteles` datasetek kézi; hook nincs (F8 §3) |
 
 ## C) szakasz — lexikon-oldal
@@ -83,15 +83,18 @@ sem kérdezett (`ATALAKITASI_TERV.md.md` 520. sor). A menet ezen a két ponton
 
 A terv 5.1 pontja hat szerepet ír le (fő szál, `lexikai-scan` subagent,
 `tanito-kereso` subagent, `szerkeszto` subagent, `ellenor` subagent, ember).
-Ma egyik subagent sincs definiálva: a `.claude/` alatt nincs `agents/`
-könyvtár és nincs `settings.json`. A három érintett szerep ma:
+Az F8.9 óta két subagent van definiálva a `.claude/agents/` alatt
+(`settings.json` továbbra sincs); a `szerkeszto` és az `ellenor` subagent
+nem F8-tárgy (`F8_BRIEF.md` §3). A négy érintett szerep ma:
 
 - **audit (B1, B10)** — nem subagent, hanem szkript-szerep: a B1-hez a
-  `kuszob.py`, a B10-hez az `ellenoriz.py`.
-- **`lexikai-scan` (B2, B4)** — ma nem burkolt subagent, hanem közvetlen
-  `lekerdez.py`-hívás a fő szálon.
-- **tanítói (B9)** — a tervben valódi subagent-szerep; ma nincs eszköz, sem
-  minta-fájl.
+  `kuszob.py`, a B10-hez az `ellenoriz.py` (F7 D3 — az audit determinisztikus,
+  a modell csak hibaforrás volna).
+- **`lexikai-scan` (B2, B4)** — `.claude/agents/lexikai-scan.md`, haiku;
+  kizárólag `lekerdez.py`/`jelolt.py` futtatása, fájlt nem ír.
+- **`tanito-kereso` (B9)** — `.claude/agents/tanito-kereso.md`, sonnet; a
+  `sablonok/7_PaRDeS_tanitoi_kereses_sablon.md` szerint dolgozik, kizárólag a
+  `[study-mappa]/naplok/[motívum]_tanitoi_kereses.md` fájlt írja.
 
 ## Generátor-tények
 
