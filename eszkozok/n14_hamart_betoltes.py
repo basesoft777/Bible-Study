@@ -144,6 +144,32 @@ def split_jelentes(cell):
     return cell, ''
 
 
+def strip_kapcsolodas_markdown(szoveg):
+    """A `kapcsolodas` mező markdown-jelölése (`*`, backtick) eltávolítva --
+    N14.1a 3. pont: a meglévő 201 elofordulasok-sor egyike sem hordoz
+    ilyen jelölést, adatréteg-konzisztencia."""
+    return szoveg.replace('*', '').replace('`', '')
+
+
+# N14.1a -- a fuggetlen ellenorzes ket elemzesi hibaja a szkriptben javitva
+# (nem kezzel a munkalapon, D13): a split_jelentes() ketszeres BDB-cellat
+# (1Moz 3:18) es zarojeles binyan-megjegyzest (1Moz 8:21) nem tud tisztan
+# szetvalasztani -- ezt a ket sort a study szovege alapjan explicit iras
+# feluliraja, a `gerinc_elem` valtozatlan marad.
+JELENTES_FELULIRAS = {
+    '1Móz 3:18': {
+        'lexikon_entry_id': 'H6975',
+        'jelentes_szam': '1',
+        'jelentes_en': 'thornbush, thorn ... Gen 3:18',
+        'jelentes_hu': 'tövisbokor, tövis',
+    },
+    '1Móz 8:21': {
+        'jelentes_en': "be slight, of water, be abated; Pi'él: curse",
+        'jelentes_hu': "csekélynek lenni, vízről: apadni; Pi'él: megátkozni",
+    },
+}
+
+
 SENSE_ERVENYES = {
     "Qal pass. ptc.", "Pi'él", "Qal impf.", "Nif'ál", "Hif'íl",
     "Nif'ál / Hif'íl",
@@ -389,7 +415,7 @@ def epit_sorok(tahot_ellenoriz_fn):
             if not sense_ok:
                 jelentes_szam_kihagyva.append((igehely, sense))
             sor = {
-                'id': 'HAMART-001', 'igehely': igehely, 'kapcsolodas': kapcsolodas,
+                'id': 'HAMART-001', 'igehely': igehely, 'kapcsolodas': strip_kapcsolodas_markdown(kapcsolodas),
                 'pardes_szint': szint, 'funkcio': '', 'gerinc_elem': gerinc_elem,
                 'strong': strong, 'lexikon_szotar': 'BDB' if bdb_entry_id else '',
                 'lexikon_entry_id': bdb_entry_id.replace(' / ', '+') if bdb_entry_id else '',
@@ -420,7 +446,7 @@ def epit_sorok(tahot_ellenoriz_fn):
             else:
                 igazolas = 'TAHOT-hatokoron-kivul'
             sor = {
-                'id': 'HAMART-001', 'igehely': igehely, 'kapcsolodas': kapcsolodas,
+                'id': 'HAMART-001', 'igehely': igehely, 'kapcsolodas': strip_kapcsolodas_markdown(kapcsolodas),
                 'pardes_szint': szint, 'funkcio': '', 'gerinc_elem': gerinc_elem,
                 'strong': strong, 'lexikon_szotar': 'BDB' if bdb_entry_id else '',
                 'lexikon_entry_id': bdb_entry_id.replace(' / ', '+') if bdb_entry_id else '',
@@ -444,7 +470,7 @@ def epit_sorok(tahot_ellenoriz_fn):
                 gerinc_elem, strong = gerinc_es_strong_c(igehely, strong_oszlop)
                 igazolas = 'TAHOT-hatokoron-kivul'
             sor = {
-                'id': 'HAMART-001', 'igehely': igehely, 'kapcsolodas': kapcsolodas,
+                'id': 'HAMART-001', 'igehely': igehely, 'kapcsolodas': strip_kapcsolodas_markdown(kapcsolodas),
                 'pardes_szint': szint, 'funkcio': '', 'gerinc_elem': gerinc_elem,
                 'strong': strong, 'lexikon_szotar': '', 'lexikon_entry_id': '',
                 'jelentes_szam': '', 'jelentes_en': '', 'jelentes_hu': '',
@@ -455,6 +481,30 @@ def epit_sorok(tahot_ellenoriz_fn):
                 'felmerult_tanulmany': felmerult,
             }
             sorok.append(sor)
+
+    # N14.1a -- a study szövege alapján explicit felülírás a két hibás sorra
+    # (D13: a szkriptben javítva, nem a munkalapon kézzel).
+    for sor in sorok:
+        felulir = JELENTES_FELULIRAS.get(sor['igehely'])
+        if felulir:
+            sor.update(felulir)
+            if 'jelentes_szam' in felulir:
+                jelentes_szam_kihagyva = [
+                    (ig, s) for ig, s in jelentes_szam_kihagyva if ig != sor['igehely']]
+
+    # N14.1a 4. pont -- általános őr: "magyarul" szó a jelentes_en-ben, vagy
+    # csak az egyik jelentes-mező üres -- mindkettő a split_jelentes()
+    # elcsúszásának jele (1Móz 3:18/8:21 esete), nem hallgatható el.
+    for sor in sorok:
+        en, hu = sor['jelentes_en'], sor['jelentes_hu']
+        if 'magyarul' in en.lower():
+            raise SystemExit(
+                'HIBA: %s jelentes_en mezője a "magyarul" szót tartalmazza -- '
+                'a split_jelentes() valószínűleg elcsúszott: %r' % (sor['igehely'], en))
+        if bool(en) != bool(hu):
+            raise SystemExit(
+                'HIBA: %s -- csak az egyik jelentés-mező üres (en=%r, hu=%r)'
+                % (sor['igehely'], en, hu))
 
     return sorok, jelentes_szam_kihagyva
 

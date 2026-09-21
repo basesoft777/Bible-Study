@@ -33,7 +33,7 @@
 - 1Móz 8:21 -- `H7043`
 
 ## `jelentes_szam` kihagyások
-- 1Móz 3:18 -- Sense-cella: '1 / —' (nem illik az egyértékű SEMA 2.2.2 keszletbe)
+(nincs kihagyás)
 
 ## TAHOT-eltérések (K3)
 0 eltérés -- minden ÓSZ lexikai sort a TAHOT megerősített.
