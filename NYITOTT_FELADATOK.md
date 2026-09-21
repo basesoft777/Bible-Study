@@ -15,7 +15,7 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
 * **ÚJ (F4.0d, 2026.09.14) — `Karoli_Strong_kivonat.tsv` drift: a két utolsó oszlop (Szófaj, Gyök/Származtatás) elavult a mai `Strong_szotar.tsv`-hez képest** (HEAD 46 105 bájt vs. friss futás 45 659 — mérve `eszkozok/merge_karoli_szofaj.py`-jal, olvasás-only, **nem futtatva élesben**). Oszloponkénti bontás: 32 sor érintett összesen; ebből 7 sorban tér el a Szófaj, 32 sorban a Gyök/Származtatás; 14 mezőben üresből lett kitöltött a friss `Strong_szotar.tsv` szerint (fordítva, kitöltöttből üresbe, 0 eset); a héber kombináló-jelek puszta sorrend-eltérése (NFD-azonos, karaktersorrend más) 0 esetben magyarázza az eltérést — minden eltérés tartalmi. Újragenerálás **NINCS** — a Szófaj oszlop study-bemenet, ez külön döntés.
 * 3 ÚSZ study első audit (Róm 8:10, Zsid 4:12, 1Thessz 5:23) — a három bővített tanulmányfájl már létezik (2026.07.28/07.30 óta), de a négyforrásos audit még nem futott le rajtuk
 * **5 további tematikus study v12-compliance** — a 7 meglévő tematikus study közül eddig 2 kapta meg a Q1-Q5 Minőségi kaput (Melkizedek — 2026.09.09; Segítségül hívni — már 2026.09.08 óta). Az 5 még hátralévő: `Isten_fiai_Nefilim_Gibborim_tematikus.md`, `Rafaim_tematikus.md`, `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md`, `Tehom_tematikus.md`, `Pneuma_pszukhe_megkulonboztetes_tematikus.md`
-* 6 küszöbön-túli, még meg sem írt motívum (l. `PaRDeS_motivumok.md` ⭐ szakasz) — HAMART-001 (bűn következményeinek gyűrűzése), ANTROP-002 (uralom-megbízás), ANTROP-003 (Isten képmása), TEREMT-002 (תהו/בהו mint ítélet-nyelvezet), ISTENTISZT-002 (oltárépítés), SZOVETS-001 (brít első előfordulása) — mindegyik felhasználói jóváhagyásra vár
+* 5 küszöbön-túli, még meg sem írt motívum (l. `PaRDeS_motivumok.md` ⭐ szakasz) — ANTROP-002 (uralom-megbízás), ANTROP-003 (Isten képmása), TEREMT-002 (תהו/בהו mint ítélet-nyelvezet), ISTENTISZT-002 (oltárépítés), SZOVETS-001 (brít első előfordulása) — mindegyik felhasználói jóváhagyásra vár. *(Javítva N14, 2026.09.21: a HAMART-001 tévesen szerepelt itt — lezárt study-ja van, a hiánya betöltési, l. N14.)*
 * Tehóm/Seól (H8415/H7585) — ⏹ **JAVÍTVA (F1.6 ellenőrzés, 2026.09.13): ez a tétel elavult volt.** A korábbi szöveg azt állította, hogy „a Seól-motívum jelölt-listája továbbra is valóban nyitott; egy teljes, friss H7585-scan szükséges" — **a scan azóta lefutott**: a `Hadesz_Seol_tematikus.md` v2 (2026.09.10) 66 nyers szóelőfordulást / 64 egyedi verset vizsgált, **64 beépítve**, Hós 13:14 kiemelt leletként; naplózva a `tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md`-ben. A Tehóm-ág változatlanul gyakorlatilag lezárt (24/24 jelölt beépítve, v47-es kör, 2026.08.25). **Ami ténylegesen marad:** (a) egy gyors megerősítő újra-scan mindkét gyökre friss adaton, (b) a Tehóm-gyök rokon gyökű jelöltje, H4103 (*mehumáh*, „zűrzavar, pánik") — egyedi minősítés nélkül.
 * Nevesített tanítói szakasz pótlása az ISTENTISZT-001 pilotban (`motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md`) — döntés megvan: "halvány, tematikus, nem bizonyító erejű" jelöléssel, változtatás nélkül átvehető a `Segitsegul_hivni_az_Urat_tematikus.md` Alkalmazás-szakaszából; csak a végrehajtás hiányzik
 * **ÚJ (2026.09.10) — más tematikus study-k TSK-auditjának újra-átnézése a Q2-szabály fényében.** A Melkizedek-study 1Pét 2:9-es hiánya (l. Lezárva) azért derült ki, mert a TSK a nyers találatok között megtalálta, de sosem került át a minősítő táblázatba — ez strukturális hiba volt, nem egyedi eset. A `4_PaRDeS_tematikus_sablon.md` Q2 pontja mostantól kötelezővé teszi minden TSK-jelölt egyedi minősítését, de ez csak a jövőbeli study-kra vonatkozik automatikusan — a meglévő 7 tematikus study egyikén sem lett systematikusan újra átnézve, van-e hasonlóan kiesett, korábban megtalált de sosem minősített TSK-jelölt.
@@ -90,6 +90,23 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
   Eldöntendő: gyakorisági küszöb, kollokáció-pár megkövetelése a többstrongos
   motívumoknál, vagy a MENNY-001 `azonossag_tipusa` felülvizsgálata. A
   GENERÁLT blokk nem módosul.
+
+- **N14 — A HAMART-001 betöltése az `adat/`-ba.** *(ÚJ, N12 után,
+  2026.09.21)* A HAMART-001-nek lezárt study-ja
+  (`tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md`) és
+  kereszthivatkozás-naplója van, de az `adat/`-ban egyetlen sora sincs:
+  a terv F3-köre (7 lezárt study + ISTENTISZT-001 lexikon) a 2026.09.13-i
+  állapotot rögzítette, amikor a study még két ágon, mergeletlenül állt;
+  az F0.1-es merge (`c28b49e`) után a kört senki nem bővítette
+  (`MEGVALOSITAS_NAPLO.md` F3.3, nyitott tételek 2.). Következmények: a
+  `gate.py` ütközés-jelentése részleges; a `general.py` külön kivételt
+  tart (`K9_KULON_BLOKK_ID`), az index „betöltetlen lezárt tanulmány"
+  táblát. Eldöntendő a betöltés előtt: (1) a `gerinc_elem` értéke —
+  strukturális motívum, a 23 közös Strongból 22 grammatikai; (2) a
+  SEMA §3/8 viszonya: (a) a betöltéskor valódi `lekerdez.py`-lekérdezések
+  `auditok`-sorokkal (a `gerinc` az F2-ben már futott rá, 23 = 23), vagy
+  (b) indokolt döntéssel felvétel az `ellenoriz.RETROAKTIV_IDK` listára
+  (az N12 G3 zárt listája ma 7 ID). Betöltés után a `gate.py` újrafuttatandó.
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
