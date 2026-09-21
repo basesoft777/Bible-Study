@@ -578,7 +578,7 @@ ellenőrzés tárgyai.
    az `elofordulasok` proveniencia-mezői; a nyomot a `forras` `+` mentén bontott fájlnevei
    adják, pontos egyezéssel. Minden `mindig` datasethez tartozzon nyom. Kivételek, KÉZI
    jelentéssel: (a) a lekérdező nélküli datasetek (`ellenoriz.LEKERDEZO_NELKULI`, ma: BDB);
-   (b) a 7 retroaktív, F3-betöltésű motívum hiányzó datasetjei (`ellenoriz.RETROAKTIV_IDK`,
+   (b) a 8 retroaktív, F3/N14-betöltésű motívum hiányzó datasetjei (`ellenoriz.RETROAKTIV_IDK`,
    zárt lista). A `felteteles` datasetek a 8/b alatt KÉZI.
 
 ---

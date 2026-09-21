@@ -13,15 +13,15 @@ csak utana irodik lemezre a harom munkalapra -- igy egyetlen elgepelt
 mezoszam sem torhet el csendben egy TSV-oszlopot (f3_1_betoltes.py elve).
 
 Ez a szkript NEM resze a lekerdez.py/betolt.py/ellenoriz.py eszkoztarnak --
-csak ennek az N14 menetnek a jegyzokonyve. Az `adat/`-ba kizarolag a
-`betolt.py beepit --ir` es a G5/G6 kulon irt sorai iranyaban ir, ez a szkript
-maga soha nem ir eles `adat/`-at: csak a harom munkalapot es a jelentest.
+csak ennek az N14 menetnek a jegyzokonyve. `--ir` nelkul (1. menet) soha
+nem ir eles `adat/`-at, csak a harom munkalapot es a jelentest. `--ir`-rel
+(N14.2, 2. menet) a `motivumok.tsv` es a `jeloltek.tsv` sorait fuzi az eles
+`adat/` vegehez -- az `elofordulasok.tsv`-t ez a szkript SOHA nem irja,
+azt a `betolt.py beepit --ir` vegzi kulon lepesben (F8 atjaro).
 
 CLI:
-    python eszkozok/n14_hamart_betoltes.py --naplok DIR [--tahot-ellenoriz]
-
-A `--tahot-ellenoriz` a lekerdez.py-t hivja (import, nem sajat scan-logika,
-l. K5) minden OSZ lexikai sorra, es az `igazolas` mezot ez alapjan tolti ki.
+    python eszkozok/n14_hamart_betoltes.py --naplok DIR             # proba
+    python eszkozok/n14_hamart_betoltes.py --ir --adat DIR          # eles iras
 """
 
 import argparse
@@ -38,6 +38,9 @@ if hasattr(sys.stderr, 'reconfigure'):
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'eszkozok'))
 import lekerdez as L  # noqa: E402 -- csak import, nem sajat parse_range/scan (K5)
+import general as G  # noqa: E402 -- csak import, nem sajat TSV-olvaso (K5)
+
+ALAPERTELMEZETT_ADAT = os.path.join(ROOT, 'adat')
 
 STUDY = 'Bun_kovetkezmenyeinek_gyuruzese_tematikus.md'
 PROV = 'scope=manual | forras=%s | ts=2026-09-11' % STUDY
@@ -667,10 +670,36 @@ def jelentes(elof_sorok, motivum_sor, jel_sorok, jelentes_szam_kihagyva, kivul_g
     return '\n'.join(ki) + '\n'
 
 
+def eles_ir(adat_dir, path_nev, mezok_sorrend, sorok):
+    """A sorok vegehez fuzese az eles TSV-hez, a fajl mai sorveget megtartva
+    (betolt.py elofordulasok_ir() mintaja) -- CSAK motivumok.tsv/jeloltek.tsv-hez,
+    az elofordulasok.tsv-t ez a szkript soha nem irja (azt a betolt.py beepit
+    vegzi, F8 atjaro)."""
+    path = os.path.join(adat_dir, path_nev)
+    sorszovegek = [sor_tsv(mezok_sorrend, sor) for sor in sorok]
+    if not sorszovegek:
+        return
+    dominans, _, _ = G.sorveg_elemez(path)
+    with open(path, 'rb') as f:
+        nyers = f.read()
+    vegzodik_sorveggel = nyers.endswith(b'\n')
+    dominans_b = dominans.encode('utf-8')
+    with open(path, 'ab') as f:
+        if not vegzodik_sorveggel:
+            f.write(dominans_b)
+        f.write(dominans_b.join(s.encode('utf-8') for s in sorszovegek))
+        f.write(dominans_b)
+
+
 def main():
     parser = argparse.ArgumentParser(description='N14.1 -- HAMART-001 munkalapok')
     parser.add_argument('--naplok', default=os.path.join(ROOT, 'naplok'),
                          help='hova írja a három munkalapot + a jelentést')
+    parser.add_argument('--ir', action='store_true',
+                         help='N14.2: a motivumok.tsv és a jeloltek.tsv sorait '
+                              'az éles adat/ végéhez fűzi (az elofordulasok.tsv-t NEM)')
+    parser.add_argument('--adat', default=ALAPERTELMEZETT_ADAT,
+                         help='az adat/ könyvtár (--ir esetén ide ír)')
     args = parser.parse_args()
 
     elof_sorok, jelentes_szam_kihagyva = epit_sorok(tahot_ellenoriz)
@@ -711,6 +740,12 @@ def main():
 
     print(jelentes_szoveg)
     print('megírva: %s' % args.naplok, file=sys.stderr)
+
+    if args.ir:
+        eles_ir(args.adat, 'motivumok.tsv', MOTIVUMOK_FEJLEC, [MOTIVUM_SOR])
+        eles_ir(args.adat, 'jeloltek.tsv', JELOLTEK_FEJLEC, jel_sorok)
+        print('  --ir: 1 motivumok.tsv sor + %d jeloltek.tsv sor íródott az élesbe (%s).'
+              % (len(jel_sorok), args.adat), file=sys.stderr)
 
 
 if __name__ == '__main__':

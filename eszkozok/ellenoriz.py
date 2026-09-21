@@ -53,12 +53,15 @@ PROVENIENCIA_TILTOTT_KULCSOK = {'talalat', 'strong_vart'}
 LEKERDEZO_NELKULI = {'BDB_teljes_unabridged.tsv'}
 
 # N12/G3: a `6e3fd43`-ban F3-betoltessel retroaktivan bekerult 7 motivum
-# ID-jenek ZART listaja. A retroaktiv motivumok hianyzo datasetjei KEZI
-# jelentest kapnak ("retroaktiv, F3"), nem SÉRTÉST -- de a lista NEM bovul
-# automatikusan ("nincs auditok-sora -> retroaktiv" eppen az uj, elfelejtett
-# rogzitesu motivumot rejtene el, l. N12_BRIEF.md G3).
+# ID-jenek ZART listaja, N14/G1-gyel a HAMART-001-gyel 8-ra bovitve (a
+# study 2026.09.11-i megirasakor a lekerdez.py meg nem letezett -- F2:
+# 2026.09.14 --, tehat a HAMART-001 ugyanabba az osztalyba tartozik, mint
+# a masik het retroaktiv ID). A retroaktiv motivumok hianyzo datasetjei
+# KEZI jelentest kapnak ("retroaktiv, F3"), nem SÉRTÉST -- de a lista NEM
+# bovul automatikusan ("nincs auditok-sora -> retroaktiv" eppen az uj,
+# elfelejtett rogzitesu motivumot rejtene el, l. N12_BRIEF.md G3).
 RETROAKTIV_IDK = {
-    'ALVIL-001', 'ANTROP-001', 'HODIT-001', 'ISTENTISZT-001',
+    'ALVIL-001', 'ANTROP-001', 'HAMART-001', 'HODIT-001', 'ISTENTISZT-001',
     'KIRALY-001', 'MENNY-001', 'TEREMT-001',
 }
 
