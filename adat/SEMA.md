@@ -516,7 +516,7 @@ okból, hanem mert a lista még esetenként épült, nem szabály szerint.
 Kulcs: `tanulmany` + `igehely` + `strong`. **Átmeneti tábla:** a bővített sablon 2.
 pontjának kulcsszó-táblázatát viszi géppel olvasható alakba, mielőtt a betöltés
 motívum-ID-t rendelne hozzá. Az `id` mező szándékosan **nincs** ezen a táblán — az
-csak az A4 lépésben, a `jeloltek.tsv`-ben születik meg (l. 2.4, L4). A `betolt.py`
+csak az A4 lépésben, a `jeloltek.tsv`-ben születik meg (l. 2.4 és `F8_BRIEF.md` §1 L4). A `betolt.py`
 (A3 irány, G2a) írja; kézzel nem bővítendő.
 
 | Mező | Típus | Kötelező | Leírás |
