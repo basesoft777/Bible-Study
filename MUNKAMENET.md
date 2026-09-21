@@ -58,7 +58,7 @@ jelöléssel szerepel — futtathatóként sehol nem áll.
 | B7 | study 1. pont, kereszthivatkozás-napló, index generálása | végrehajtó | generált fájlok | `eszkozok/general.py --cel study`; `--cel naplok`; `--cel index --ir` | a `study` és a `naplok` cél **nem élesíthető** — csak `--kimenet` alá termel próbát; kizárólag az `index` írható közvetlenül élesen |
 | B8 💎 | 2-5. pont megírása | kutató | PaRDeS-próza | kézi | drága modell |
 | B9 | nevesített tanítói menet | tanítói-agent | `_tanitoi_kereses.md` | `F8 — nincs eszköz` | sem a subagent, sem a minta-fájl nem létezik |
-| B10 | Q-kapu + konzisztencia-ellenőrzés | audit | jelentés | `F8 — nincs eszköz` | nincs `ellenoriz.py`; a `gate.py` csak ütközés-/részhalmaz-jelentést ad, teljes Q-kaput nem |
+| B10 | Q-kapu + konzisztencia-ellenőrzés | audit | jelentés | `eszkozok/ellenoriz.py [--study …]` | Q2–Q6 és a `felteteles` datasetek kézi; hook nincs (F8 §3) |
 
 ## C) szakasz — lexikon-oldal
 
@@ -88,7 +88,7 @@ Ma egyik subagent sincs definiálva: a `.claude/` alatt nincs `agents/`
 könyvtár és nincs `settings.json`. A három érintett szerep ma:
 
 - **audit (B1, B10)** — nem subagent, hanem szkript-szerep: a B1-hez a
-  `kuszob.py`, a B10-hez nincs eszköz.
+  `kuszob.py`, a B10-hez az `ellenoriz.py`.
 - **`lexikai-scan` (B2, B4)** — ma nem burkolt subagent, hanem közvetlen
   `lekerdez.py`-hívás a fő szálon.
 - **tanítói (B9)** — a tervben valódi subagent-szerep; ma nincs eszköz, sem

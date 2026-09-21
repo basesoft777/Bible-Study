@@ -1,0 +1,169 @@
+# ellenoriz.py -- SEMA §3 + Q-kapu gépi része (F8.5)
+
+## Tábla-szabályok (`adat/SEMA.md` §3)
+
+**1. Hivatkozási épség**: RENDBEN
+
+**2. Nincs közvetlen út**: RENDBEN
+
+**3. Proveniencia-kényszer**: RENDBEN
+
+**4. Horgony-kényszer**: RENDBEN
+
+**5. Károli-triplet**: RENDBEN
+
+**6. Gate-kényszer (4.6)**: RENDBEN
+
+**7. Ütközés-/részhalmaz-jelentés (gate.py)**: JELENTÉS -- 4 osztozó igehely, 3 átfedő motívumpár, 0 részhalmaz-gyanús pár (l. `python eszkozok/gate.py` a részletekért)
+
+**8. Dataset-lefedettség**: SÉRTÉS (35)
+  - ALVIL-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
+  - ALVIL-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
+  - ALVIL-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
+  - ALVIL-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
+  - ALVIL-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+  - ANTROP-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
+  - ANTROP-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
+  - ANTROP-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
+  - ANTROP-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
+  - ANTROP-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+  - ... és további 25
+
+## `--study` ellenőrzés
+
+**Q1 (tematikus_lezart/Melkizedek_tematikus.md)**: RENDBEN
+
+**Q2 (tematikus_lezart/Melkizedek_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q3 (tematikus_lezart/Melkizedek_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q4 (tematikus_lezart/Melkizedek_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q5 (tematikus_lezart/Melkizedek_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q6 (tematikus_lezart/Melkizedek_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q7 (tematikus_lezart/Melkizedek_tematikus.md, KIRALY-001)**: SÉRTÉS (5)
+  - KIRALY-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
+  - KIRALY-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
+  - KIRALY-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
+  - KIRALY-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
+  - KIRALY-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+
+**Q1 (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md)**: RENDBEN
+
+**Q2 (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q3 (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q4 (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q5 (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q6 (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q7 (tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md, ISTENTISZT-001)**: SÉRTÉS (5)
+  - ISTENTISZT-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
+  - ISTENTISZT-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
+  - ISTENTISZT-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
+  - ISTENTISZT-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
+  - ISTENTISZT-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+
+**Q1 (tematikus_lezart/Tehom_tematikus.md)**: RENDBEN
+
+**Q2 (tematikus_lezart/Tehom_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q3 (tematikus_lezart/Tehom_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q4 (tematikus_lezart/Tehom_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q5 (tematikus_lezart/Tehom_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q6 (tematikus_lezart/Tehom_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q7 (tematikus_lezart/Tehom_tematikus.md, TEREMT-001)**: SÉRTÉS (5)
+  - TEREMT-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
+  - TEREMT-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
+  - TEREMT-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
+  - TEREMT-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
+  - TEREMT-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+
+**Q1 (tematikus_lezart/Hadesz_Seol_tematikus.md)**: RENDBEN
+
+**Q2 (tematikus_lezart/Hadesz_Seol_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q3 (tematikus_lezart/Hadesz_Seol_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q4 (tematikus_lezart/Hadesz_Seol_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q5 (tematikus_lezart/Hadesz_Seol_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q6 (tematikus_lezart/Hadesz_Seol_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q7 (tematikus_lezart/Hadesz_Seol_tematikus.md, ALVIL-001)**: SÉRTÉS (5)
+  - ALVIL-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
+  - ALVIL-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
+  - ALVIL-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
+  - ALVIL-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
+  - ALVIL-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+
+**Q1 (tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md)**: RENDBEN
+
+**Q2 (tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q3 (tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q4 (tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q5 (tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q6 (tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q7 (tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md, MENNY-001)**: SÉRTÉS (5)
+  - MENNY-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
+  - MENNY-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
+  - MENNY-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
+  - MENNY-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
+  - MENNY-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+
+**Q1 (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md)**: RENDBEN
+
+**Q2 (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q3 (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q4 (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q5 (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q6 (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q7 (tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md, ANTROP-001)**: SÉRTÉS (5)
+  - ANTROP-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
+  - ANTROP-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
+  - ANTROP-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
+  - ANTROP-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
+  - ANTROP-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+
+**Q1 (tematikus_lezart/Rafaim_tematikus.md)**: RENDBEN
+
+**Q2 (tematikus_lezart/Rafaim_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q3 (tematikus_lezart/Rafaim_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q4 (tematikus_lezart/Rafaim_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q5 (tematikus_lezart/Rafaim_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q6 (tematikus_lezart/Rafaim_tematikus.md)**: KÉZI -- ítéletet igényel, l. F8_BRIEF.md G4
+
+**Q7 (tematikus_lezart/Rafaim_tematikus.md, HODIT-001)**: SÉRTÉS (5)
+  - HODIT-001 -- hiányzik: BDB (BDB_teljes_unabridged.tsv)
+  - HODIT-001 -- hiányzik: Karoli_1908 (Karoli_1908.tsv)
+  - HODIT-001 -- hiányzik: Karoli_KH (Karoli_kereszthivatkozasok.tsv)
+  - HODIT-001 -- hiányzik: TAHOT (TAHOT_kivonat.tsv)
+  - HODIT-001 -- hiányzik: TSK (TSK_kereszthivatkozasok.tsv)
+
+## Összesítő
+
+RENDBEN: 13 | SÉRTÉS: 8 | KÉZI: 35 | JELENTÉS: 1
