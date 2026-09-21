@@ -124,17 +124,24 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
   lexikon-oldal 3. szakaszát (LXX-híd) érinti. Belső használatra nem
   akadály (N11/N3: a lexikon belső), a publikálási döntésnek viszont
   elzáró tétele. Két út: (a) a studybible.info üzemeltetőjének
-  megkeresése; (b) forráscsere azonos oszlopformátummal. A (b) jelöltje
-  az OpenScriptorium/lxx-morph (egy harmadik projekt leírása szerint
-  CC BY 4.0, Rahlfs 1935 alapszöveg, Morpheus-morfológia) — az eredeti
-  repó licence még ellenőrizendő; lemmát ad, nem Strong-számot, ezért
-  lemma→Strong megfeleltetés kell (jelölt: Open Scriptures Septuagint
-  Project, CC BY 4.0). Nem jelölt: Eliran Wong LXX-Rahlfs-1935 és a
-  CenterBLC/LXX (CATSS-alapú, CC BY-NC-SA 4.0, felhasználói
-  nyilatkozathoz kötött). Alternatíva, ha elérhetővé válik: a STEPBible
-  TAGOT (l. a lenti figyelő tételt). Első lépés: az eredeti repó
-  licencének ellenőrzése és egy könyv (Genezis) összevetése a mostani
-  kivonattal.
+  megkeresése; (b) forráscsere azonos oszlopformátummal — jelölt: az
+  Open Scriptorium (openscriptorium.org) Rahlfs-LXX adata. Szöveg:
+  Rahlfs 1935, közkincs; szószintű morfológia és lemma: lxx-morph
+  (`git.sr.ht/~sethkush/lxx-morph`, CC BY 4.0, megjelöléssel; a szerző
+  nem szakértő, a proveniencia megbízhatósági sávval jelölt). A szavak
+  `strongs_number` mezője üres, de a közös lemma-tábla Strong-számot
+  ad (`/api/v1/lemmas/124` → θεός → `strongs_numbers: ["G2316"]`;
+  ellenőrizve mindkét irányban, 2026.09.21: `/lemmas/strong/G2316` →
+  egyetlen lemma, id 124). Így a szűrés a mostani logikával mehet:
+  motívum-Strong → lemma-id(k) → LXX-szavak, külső híd nélkül; ha egy
+  Strong több lemmára mutat, mind bekerül a szűrőbe. A morfológia
+  szöveges címke (`noun fem dat sg`), nem tömör kód. Forrás: a teljes
+  SQLite-letöltés (`openscriptorium.org/downloads`), nem az API
+  (60 kérés/perc). Nem jelölt (CATSS-alapú, felhasználói nyilatkozathoz
+  kötött): Eliran Wong LXX-Rahlfs-1935 (CC BY-NC-SA 4.0),
+  CenterBLC/LXX, codykingham/catss_lxx. Első lépés: az SQLite
+  Strong→lemma joinjával a Genezis újraépítése, és a motívum-tokenek
+  találatainak összevetése a mostani `LXX_kivonat_Genezis.tsv`-vel.
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
