@@ -53,13 +53,22 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
   szétcsúszhat. Javaslat: a halmaz származzon a konstansból
   (`{f for f, l in LICENC.items() if l == 'tisztazatlan'}`), vagy szűnjön meg.
 
-- **N10 — A „sorozat-tábla" (terv A7) nincs definiálva.** *(ÚJ, F7 után,
-  2026.09.20)* Az `ATALAKITASI_TERV.md.md` 7. pontja az A7 lépésnél
-  „motívumnapló, index, sorozat-tábla újragenerálása"-t ír elő, de a
-  „sorozat-tábla" fogalma a tervben sehol máshol nincs definiálva, és nincs
-  hozzá implementáció (`eszkozok/`-ban nincs rá utaló szkript). Eldöntendő:
-  definiálandó artefaktum-e (és ha igen, mi a tartalma/forrása), vagy a
-  tervből törlendő, félbehagyott fogalom.
+- **N10 — A „sorozat-tábla" (terv A7) nincs definiálva. LEZÁRVA (F8.2,
+  2026.09.21).** *(ÚJ, F7 után, 2026.09.20)* Az `ATALAKITASI_TERV.md.md` 7.
+  pontja az A7 lépésnél „motívumnapló, index, sorozat-tábla újragenerálása"-t
+  ír elő, de a „sorozat-tábla" fogalma a tervben sehol máshol nincs
+  definiálva, és nincs hozzá implementáció (`eszkozok/`-ban nincs rá utaló
+  szkript). **Definíció (F8_BRIEF.md G1):** a sorozat-tábla = a napló
+  „Feldolgozott igeszakaszok listája" (`motivumlog/PaRDeS_motivumok.md`),
+  kézzel karbantartva. A generálás önálló tétel, l. N11.
+
+- **N11 — A sorozat-tábla generálása.** *(ÚJ, F8.2, 2026.09.21)* Az N10
+  lezárása a sorozat-táblát a napló „Feldolgozott igeszakaszok listája"
+  szakaszaként azonosította, kézi karbantartással. Eldöntendő, generálandó-e
+  a jövőben egy új `adat/tanulmanyok.tsv`-ből (a 24 sor migrálásával) — ez
+  volt az F8_BRIEF.md G1 elvetett alternatívája. A „Fő kulcsszavak" oszlopot
+  generálás esetén is a kutató írná; a generálás nyeresége a 0. pont
+  aktiválási feltételének gépi ellenőrizhetősége volna.
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 

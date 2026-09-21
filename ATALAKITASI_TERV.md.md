@@ -483,7 +483,7 @@ A munkafolyamat **nem a küszöbátlépésnél kezdődik, hanem a bővített tan
 | A5 | 3/b pont kereszthivatkozásai | **kutató** + végrehajtó (TSK/Károli-KH lekérdezés) | `kapcsolatok.tsv` |
 | A6 | előrejelzett motívum rögzítése (státusz = *előrejelzett*, várható igehely) | **kutató** | `motivumok.tsv` |
 | A6b | új ID esetén a 4.6 gate négy kérdésének megválaszolása | **kutató** + **ember** | `motivumok.tsv` mezői |
-| A7 | motívumnapló, index, sorozat-tábla *(nem definiált, nem implementált — l. `NYITOTT_FELADATOK.md` N10)* újragenerálása | végrehajtó | generált fájlok |
+| A7 | motívumnapló, index, sorozat-tábla *(= a napló „Feldolgozott igeszakaszok listája", kézi — l. `NYITOTT_FELADATOK.md` N10, N11)* újragenerálása | végrehajtó | generált fájlok |
 
 Az **A3b** azt a hibaosztályt fogja meg, amely ma az olvasó figyelmén múlik: amikor a motívum létezik, de az új szakasz hozzájárulása észrevétlen marad. Amit viszont **nem old meg — és nem is oldható meg:** egy valóban új motívum első felismerését. Annak nincs mihez illeszkednie; azt csak ember veszi észre olvasás közben. Ezért létezik az „Előrejelzett motívumok" szakasz, és ezért marad az.
 
