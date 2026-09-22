@@ -551,6 +551,49 @@ részsztring — l. 3.8 indoklása). A `lexikai-scan` subagent a proveniencia-so
 amúgy is szó szerint adja vissza; a rögzítés a fő szál feladata, nem a
 subagenté.
 
+### 2.10 `forditas_ubs.tsv` — UBS DNTG (Louw–Nida) jelentések magyar fordítása (LEXV2_2_BRIEF.md V2.2)
+
+Kulcs: `strong` + `entry_kod`. Kézzel bővítendő tábla — a lexikon-generátor
+(G3, LEXV2_2_BRIEF.md) ebből olvassa az ÚSZ-i Strong-tokenek UBS-jelentésének
+magyar fordítását, a `konkordancia/UBS_DNTG_jelentesek.tsv` logikáját
+(`eszkozok/ubs_hozzarendeles.py`) renderidőben újrafelhasználva, nem másolva.
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `strong` | `STRONG` | ✔ | |
+| `entry_kod` | szabad szöveg | ✔ | Louw–Nida domén.alszám (pl. `33.176`). |
+| `lexid` | szabad szöveg | ✔ | A `UBS_DNTG_jelentesek.tsv` `lexid` mezője, a `strong`+`entry_kod` párral azonosítva. Ha ez a pár nem egyértelmű (több sor), a pontos `strong_kod`==`strong` egyezés dönt (a betűutótagos variánsok — pl. `G1944a` — kizárva); ha így is több vagy nulla sor marad, a tétel emberi döntést igényel, nem tölthető ki gépiesen. |
+| `definicio_hu` | szabad szöveg | ✔ | A `definicio_rovid` hű magyar fordítása. |
+| `glosszak_hu` | szabad szöveg | ✔ | A `glosszak` hű magyar fordítása, pontosvesszővel elválasztva. |
+| `megjegyzes` | szabad szöveg | | Csak akkor töltött, ha a forrás UBS-definíció `{N:0..}` lábjegyzet-hivatkozást tartalmaz — ilyenkor `forrásban {N:001} lábjegyzet` (a lábjegyzet szövege nem kerül be a táblába, csak a generált oldal jelöli a hiányt). |
+| `proveniencia` | `PROVENIENCIA` | ✔ | `forras=UBS_DNTG_jelentesek.tsv \| forditas=chat-jovahagyas <dátum>`. |
+
+Üres `forditas_hu`/hiányzó UBS-fordítás a generált lexikon-oldalon mindig
+`fordítás függőben` jelölést kap, sosem üres cellát.
+
+### 2.11 `lxx_dontesek.tsv` — kutatói LXX-fordítói döntések (LEXV2_2_BRIEF.md V2.2, G5)
+
+Kulcs: `id`. Kézzel bővítendő tábla, csak azokra a versekre, ahol a motívum
+saját G-tokenje **nem** fordul elő a `konkordancia/LXX_OS` adott versében
+(„eltérő" eset) — a héber→görög megfelelőt ilyenkor gépi tippelés helyett ez
+a tábla adja. Automatikus héber→görög tippelés nincs (l. 0. Kiindulás:
+`HebrewStrong.xml` 0/8674 szócikke tartalmaz görög Strong-számot).
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `id` | szabad szöveg | ✔ | Sorazonosító (nem motívum-ID). |
+| `igehely` | `IGEHELY` | ✔ | Károli-igehely. |
+| `lxx_igehely` | szabad szöveg | ✔ | Az `LXX_OS` szerinti igehely (pl. `Genesis 4:26`). |
+| `heber_strong` | `STRONG` | ✔ | A motívum héber Strong-tokenje, amelyre a döntés vonatkozik. |
+| `gorog_lemma` | szabad szöveg | ✔ | A kutatói azonosítású görög megfelelő lemmája (ékezetes szóalak). |
+| `gorog_strong` | `STRONG` | | A görög Strong-szám, ha van. |
+| `lxx_pozicio` | egész szám | | Az `LXX_OS` adott sorának `pozicio` mezője, ha a szóalak egyértelműen egy adott előfordulásra mutat. |
+| `megjegyzes` | szabad szöveg | | Indoklás/forrás a döntéshez. |
+| `proveniencia` | `PROVENIENCIA` | ✔ | |
+
+Ebben a körben (V2.2) a tábla csak fejlécet tartalmaz — a tartalmi feltöltés
+a 2. kör (V2.8, ISTENTISZT-001 LXX-döntések) tárgya.
+
 ---
 
 ## 3. Integritási szabályok
