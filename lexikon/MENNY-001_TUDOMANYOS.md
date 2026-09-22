@@ -63,15 +63,15 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 | Igehely | Kulcsszó | Funkció | PaRDeS-szint | Strong | Szótári jelentés | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
-| [1Móz 6:2](#ige-1móz-6-2)[^1] | az Istennek fiai — בְנֵי (ve.nei-); אֱלֹהִים֙ ('E.lo.Him) | — | Peshat | H1121+H0430 | — | — | magas · tartalom-alapú |
-| [1Móz 6:4](#ige-1móz-6-4)[^2] | Az óriások — נְּפִלִ֞ים (ne.fi.Lim) | — | Peshat | H5303 | — | — | magas · tartalom-alapú |
-| [4Móz 13:34](#ige-4móz-13-34)[^3] | óriásokat — נְּפִלִ֑ים (ne.fi.Lim) | — | Remez | H5303 | — | — | magas · tartalom-alapú |
-| [Jób 1:6](#ige-jób-1-6)[^4] | az Istennek fiai — בְּנֵ֣י (be.Nei); אֱלֹהִ֔ים ('E.lo.Him) | — | Remez | H1121+H0430 | — | — | magas · tartalom-alapú |
-| [Jób 2:1](#ige-jób-2-1)[^5] | az Istennek fiai — בְּנֵ֣י (be.Nei); אֱלֹהִ֔ים ('E.lo.Him) | — | Remez | H1121+H0430 | — | — | magas · tartalom-alapú |
-| [Jób 38:7](#ige-jób-38-7)[^6] | Istennek minden fiai — בְּנֵ֥י (be.Nei); אֱלֹהִֽים ('E.lo.Him) | — | Remez | H1121+H0430 | — | — | magas · tartalom-alapú |
-| [2Pét 2:4-5](#ige-2pét-2-4-5)[^7] | nem kedvezett — — | — | Drash/Sod | — | — | — | magas · tartalom-alapú |
-| [Júd 1:6](#ige-júd-1-6)[^8] | örök bilincseken, sötétségben tartotta — — | — | Drash/Sod | — | — | — | közepes · kikövetkeztetett |
-| [Júd 1:14-15](#ige-júd-1-14-15)[^9] | Ímé eljött az Úr az ő sok ezer szentjével — — | — | Drash/Sod | — | — | — | közepes · kikövetkeztetett |
+| [1Móz 6:2](#ige-1móz-6-2)[^1] | az Istennek fiai — בְנֵי (ve.nei-); אֱלֹהִים֙ ('E.lo.Him) | — | Peshat | H1121+H0430 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [1Móz 6:4](#ige-1móz-6-4)[^2] | Az óriások — נְּפִלִ֞ים (ne.fi.Lim) | — | Peshat | H5303 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [4Móz 13:34](#ige-4móz-13-34)[^3] | óriásokat — נְּפִלִ֑ים (ne.fi.Lim) | — | Remez | H5303 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Jób 1:6](#ige-jób-1-6)[^4] | az Istennek fiai — בְּנֵ֣י (be.Nei); אֱלֹהִ֔ים ('E.lo.Him) | — | Remez | H1121+H0430 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Jób 2:1](#ige-jób-2-1)[^5] | az Istennek fiai — בְּנֵ֣י (be.Nei); אֱלֹהִ֔ים ('E.lo.Him) | — | Remez | H1121+H0430 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Jób 38:7](#ige-jób-38-7)[^6] | Istennek minden fiai — בְּנֵ֥י (be.Nei); אֱלֹהִֽים ('E.lo.Him) | — | Remez | H1121+H0430 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [2Pét 2:4-5](#ige-2pét-2-4-5)[^7] | nem kedvezett — — | — | Drash/Sod | — | — | — *(nincs G-token)* | magas · tartalom-alapú |
+| [Júd 1:6](#ige-júd-1-6)[^8] | örök bilincseken, sötétségben tartotta — — | — | Drash/Sod | — | — | — *(nincs G-token)* | közepes · kikövetkeztetett |
+| [Júd 1:14-15](#ige-júd-1-14-15)[^9] | Ímé eljött az Úr az ő sok ezer szentjével — — | — | Drash/Sod | — | — | — *(nincs G-token)* | közepes · kikövetkeztetett |
 
 [^1]: proveniencia: scope=manual | forras=Isten_fiai_Nefilim_Gibborim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
 [^2]: proveniencia: scope=manual | forras=Isten_fiai_Nefilim_Gibborim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
@@ -82,6 +82,8 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 [^7]: proveniencia: scope=manual | forras=Isten_fiai_Nefilim_Gibborim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-hatokoron-kivul
 [^8]: proveniencia: scope=manual | forras=Isten_fiai_Nefilim_Gibborim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-hatokoron-kivul
 [^9]: proveniencia: scope=manual | forras=Isten_fiai_Nefilim_Gibborim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-hatokoron-kivul
+
+*Az UBS-jelentés csak újszövetségi soroknál áll: az UBS Greek New Testament Dictionary az Újszövetséget fedi.*
 
 #### 1/a. Az igehelyek szövege
 

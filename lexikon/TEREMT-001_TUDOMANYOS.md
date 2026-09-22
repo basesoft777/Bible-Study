@@ -63,40 +63,40 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 | Igehely | Kulcsszó | Funkció | PaRDeS-szint | Strong | Szótári jelentés | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
-| [1Móz 1:2](#ige-1móz-1-2)[^1] | mélység — תְה֑וֹם (te.Hom) | — | Peshat/Remez | H8415 | — | — | magas · tartalom-alapú |
-| [1Móz 7:11](#ige-1móz-7-11)[^2] | a nagy mélység — תְּה֣וֹם (te.Hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [1Móz 8:2](#ige-1móz-8-2)[^3] | a mélység — תְּה֔וֹם (te.Hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [1Móz 49:25](#ige-1móz-49-25)[^4] | a mélység — תְּה֖וֹם (te.Hom) | — | Drash | H8415 | — | — | magas · tartalom-alapú |
-| [2Móz 15:5](#ige-2móz-15-5)[^5] | a mélységbe — תְּהֹמֹ֖ת (te.ho.Mot) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [2Móz 15:8](#ige-2móz-15-8)[^6] | a mélységes vizek — תְהֹמֹ֖ת (te.ho.Mot) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [5Móz 8:7](#ige-5móz-8-7)[^7] | mély vizeknek — תְהֹמֹ֔ת (te.ho.Mot) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [5Móz 33:13](#ige-5móz-33-13)[^8] | mélységes vizekkel — תְּה֖וֹם (te.Hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Jób 28:14](#ige-jób-28-14)[^9] | A mélység — תְּה֣וֹם (te.Hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Jób 38:16](#ige-jób-38-16)[^10] | a mélységnek — תְּ֝ה֗וֹם (te.Hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Jób 38:30](#ige-jób-38-30)[^11] | a mély vizek — תְ֝ה֗וֹם (te.Hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Zsolt 33:7](#ige-zsolt-33-7)[^12] | a hullámokat — תְּהוֹמֽוֹת (te.ho.Mot) | — | Remez | H8415 | — | — | közepes · tartalom-alapú |
-| [Zsolt 36:7](#ige-zsolt-36-7)[^13] | a nagy mélységek — תְּה֣וֹם (te.Hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Zsolt 42:8](#ige-zsolt-42-8)[^14] | Örvény örvényt — תְּה֣וֹם (te.Hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Zsolt 71:20](#ige-zsolt-71-20)[^15] | a föld mélységéből — תְּהֹמ֥וֹת (te.ho.Mot) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Zsolt 77:17](#ige-zsolt-77-17)[^16] | a mélységek — תְהֹמֽוֹת (te.ho.Mot) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Zsolt 78:15](#ige-zsolt-78-15)[^17] | a mélységes vizekből — תְהֹמ֥וֹת (t.ho.Mot) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Zsolt 104:6](#ige-zsolt-104-6)[^18] | Vízáradattal — תְּ֭הוֹם (Te.hom) | — | Remez | H8415 | — | — | közepes · tartalom-alapú |
-| [Zsolt 106:9](#ige-zsolt-106-9)[^19] | a mélységeken — תְּהֹמ֗וֹת (te.ho.Mot) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Zsolt 107:26](#ige-zsolt-107-26)[^20] | a fenékig — תְהוֹמ֑וֹת (te.ho.Mot) | — | Remez | H8415 | — | — | közepes · tartalom-alapú |
-| [Zsolt 135:6](#ige-zsolt-135-6)[^21] | minden mélységben — תְּהוֹמֽוֹת (te.ho.Mot) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Zsolt 148:7](#ige-zsolt-148-7)[^22] | mély vizek — תְּהֹמֽוֹת (te.ho.Mot) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Péld 3:20](#ige-péld-3-20)[^23] | a mélységből — תְּהוֹמ֣וֹת (te.ho.Mot) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Péld 8:24](#ige-péld-8-24)[^24] | mélységek — תְּהֹמ֥וֹת (te.ho.Mot) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Péld 8:27](#ige-péld-8-27)[^25] | a mélységek — תְהֽוֹם (te.Hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Péld 8:28](#ige-péld-8-28)[^26] | a mélységeknek — תְּהוֹם (te.hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Ézs 51:10](#ige-ézs-51-10)[^27] | a nagy mélység — תְּה֣וֹם (te.Hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Ézs 63:13](#ige-ézs-63-13)[^28] | mélységekben — תְּהֹמ֑וֹת (te.ho.Mot) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Ez 26:19](#ige-ez-26-19)[^29] | a mélység — תְּה֔וֹם (te.Hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Ez 31:4](#ige-ez-31-4)[^30] | a mélység — תְּה֖וֹם (te.Hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Ez 31:15](#ige-ez-31-15)[^31] | a mélység vizeit — תְּה֔וֹם (te.Hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Ámós 7:4](#ige-ámós-7-4)[^32] | a nagy mélységet — תְּה֣וֹם (te.Hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Jón 2:6](#ige-jón-2-6)[^33] | mély ár — תְּה֖וֹם (te.Hom) | — | Remez | H8415 | — | — | magas · tartalom-alapú |
-| [Hab 3:10](#ige-hab-3-10)[^34] | a víz-ár — תְּהוֹם֙ (te.hOm) | — | Remez | H8415 | — | — | közepes · tartalom-alapú |
+| [1Móz 1:2](#ige-1móz-1-2)[^1] | mélység — תְה֑וֹם (te.Hom) | — | Peshat/Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [1Móz 7:11](#ige-1móz-7-11)[^2] | a nagy mélység — תְּה֣וֹם (te.Hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [1Móz 8:2](#ige-1móz-8-2)[^3] | a mélység — תְּה֔וֹם (te.Hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [1Móz 49:25](#ige-1móz-49-25)[^4] | a mélység — תְּה֖וֹם (te.Hom) | — | Drash | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [2Móz 15:5](#ige-2móz-15-5)[^5] | a mélységbe — תְּהֹמֹ֖ת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [2Móz 15:8](#ige-2móz-15-8)[^6] | a mélységes vizek — תְהֹמֹ֖ת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [5Móz 8:7](#ige-5móz-8-7)[^7] | mély vizeknek — תְהֹמֹ֔ת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [5Móz 33:13](#ige-5móz-33-13)[^8] | mélységes vizekkel — תְּה֖וֹם (te.Hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Jób 28:14](#ige-jób-28-14)[^9] | A mélység — תְּה֣וֹם (te.Hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Jób 38:16](#ige-jób-38-16)[^10] | a mélységnek — תְּ֝ה֗וֹם (te.Hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Jób 38:30](#ige-jób-38-30)[^11] | a mély vizek — תְ֝ה֗וֹם (te.Hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Zsolt 33:7](#ige-zsolt-33-7)[^12] | a hullámokat — תְּהוֹמֽוֹת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | közepes · tartalom-alapú |
+| [Zsolt 36:7](#ige-zsolt-36-7)[^13] | a nagy mélységek — תְּה֣וֹם (te.Hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Zsolt 42:8](#ige-zsolt-42-8)[^14] | Örvény örvényt — תְּה֣וֹם (te.Hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Zsolt 71:20](#ige-zsolt-71-20)[^15] | a föld mélységéből — תְּהֹמ֥וֹת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Zsolt 77:17](#ige-zsolt-77-17)[^16] | a mélységek — תְהֹמֽוֹת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Zsolt 78:15](#ige-zsolt-78-15)[^17] | a mélységes vizekből — תְהֹמ֥וֹת (t.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Zsolt 104:6](#ige-zsolt-104-6)[^18] | Vízáradattal — תְּ֭הוֹם (Te.hom) | — | Remez | H8415 | — | — *(ÓSZ)* | közepes · tartalom-alapú |
+| [Zsolt 106:9](#ige-zsolt-106-9)[^19] | a mélységeken — תְּהֹמ֗וֹת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Zsolt 107:26](#ige-zsolt-107-26)[^20] | a fenékig — תְהוֹמ֑וֹת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | közepes · tartalom-alapú |
+| [Zsolt 135:6](#ige-zsolt-135-6)[^21] | minden mélységben — תְּהוֹמֽוֹת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Zsolt 148:7](#ige-zsolt-148-7)[^22] | mély vizek — תְּהֹמֽוֹת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Péld 3:20](#ige-péld-3-20)[^23] | a mélységből — תְּהוֹמ֣וֹת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Péld 8:24](#ige-péld-8-24)[^24] | mélységek — תְּהֹמ֥וֹת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Péld 8:27](#ige-péld-8-27)[^25] | a mélységek — תְהֽוֹם (te.Hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Péld 8:28](#ige-péld-8-28)[^26] | a mélységeknek — תְּהוֹם (te.hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Ézs 51:10](#ige-ézs-51-10)[^27] | a nagy mélység — תְּה֣וֹם (te.Hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Ézs 63:13](#ige-ézs-63-13)[^28] | mélységekben — תְּהֹמ֑וֹת (te.ho.Mot) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Ez 26:19](#ige-ez-26-19)[^29] | a mélység — תְּה֔וֹם (te.Hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Ez 31:4](#ige-ez-31-4)[^30] | a mélység — תְּה֖וֹם (te.Hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Ez 31:15](#ige-ez-31-15)[^31] | a mélység vizeit — תְּה֔וֹם (te.Hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Ámós 7:4](#ige-ámós-7-4)[^32] | a nagy mélységet — תְּה֣וֹם (te.Hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Jón 2:6](#ige-jón-2-6)[^33] | mély ár — תְּה֖וֹם (te.Hom) | — | Remez | H8415 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [Hab 3:10](#ige-hab-3-10)[^34] | a víz-ár — תְּהוֹם֙ (te.hOm) | — | Remez | H8415 | — | — *(ÓSZ)* | közepes · tartalom-alapú |
 | [Luk 8:31](#ige-luk-8-31)[^35] | a mélységbe — ἄβυσσον (abusson) | — | Peshat/Remez | G0012 | — | 1.20 — (az ἄβυσσος 'verem' jelentés átvitt kiterjesztése, amely az Újszövetségben nem fordul elő) a halottak helye, és az a hely, ahol az Ördögöt fogva tartják (Jel 20:3); a fenevadnak mint antikrisztusnak a lakóhelye (Jel 11:7), valamint Abaddoné, az alvilág angyaláé (Jel 9:11) | magas · tartalom-alapú |
 | [Róm 10:7](#ige-róm-10-7)[^36] | a mélységbe — ἄβυσσον; (abusson) | — | Remez/Drash | G0012 | — | 1.20 — (az ἄβυσσος 'verem' jelentés átvitt kiterjesztése, amely az Újszövetségben nem fordul elő) a halottak helye, és az a hely, ahol az Ördögöt fogva tartják (Jel 20:3); a fenevadnak mint antikrisztusnak a lakóhelye (Jel 11:7), valamint Abaddoné, az alvilág angyaláé (Jel 9:11) | magas · tartalom-alapú |
 | [Jel 9:1-2](#ige-jel-9-1-2)[^37] | a mélység kútjának — ἀβύσσου, (abussou) | — | Remez/Sod | G0012 | — | 1.20 — (az ἄβυσσος 'verem' jelentés átvitt kiterjesztése, amely az Újszövetségben nem fordul elő) a halottak helye, és az a hely, ahol az Ördögöt fogva tartják (Jel 20:3); a fenevadnak mint antikrisztusnak a lakóhelye (Jel 11:7), valamint Abaddoné, az alvilág angyaláé (Jel 9:11) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú |
@@ -146,6 +146,8 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 [^39]: proveniencia: scope=manual | forras=Tehom_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-hatokoron-kivul
 [^40]: proveniencia: scope=manual | forras=Tehom_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-hatokoron-kivul
 [^41]: proveniencia: scope=manual | forras=Tehom_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-hatokoron-kivul
+
+*Az UBS-jelentés csak újszövetségi soroknál áll: az UBS Greek New Testament Dictionary az Újszövetséget fedi.*
 
 #### 1/a. Az igehelyek szövege
 

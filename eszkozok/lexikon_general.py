@@ -373,17 +373,25 @@ def forditas_ubs_index():
 
 def ubs_jelentes_cella(sor_id, igehely, strong_field):
     """G3: L–N kód — magyar definíció (vagy angol + 'fordítás függőben'),
-    csak ÚSZ-soroknál; egyébként EM_DASH. Az UBS.hozzarendel()-t hívja
-    közvetlenül, egyetlen elemű bemenettel — nem másolja a logikáját."""
+    csak ÚSZ-soroknál. Az UBS.hozzarendel()-t hívja közvetlenül, egyetlen
+    elemű bemenettel — nem másolja a logikáját. A cella sosem csupasz
+    EM_DASH (P4, ISTENTISZT_V3_POTLAS.md): ÓSZ-sor, G-token nélküli sor és
+    hozzárendelés nélküli Strong-token mind jelölve van, és összetett
+    (Strong+Strong) token esetén mindkét token szerepel, tokenenként."""
     parsed = UBS.parse_igehely(igehely)
     if parsed is None:
-        return EM_DASH
+        return '%s *(ÓSZ)*' % EM_DASH
     _konyv, versek = parsed
+
+    strong_tokens = [s for s in (strong_field or '').split('+') if s]
+    if not strong_tokens:
+        return '%s *(nincs G-token)*' % EM_DASH
+
     ref_idx, jel_idx, definicio_idx = ubs_indexek()
     out_rows = UBS.hozzarendel([(sor_id, igehely, strong_field, versek)], ref_idx, jel_idx)
     fud_idx = forditas_ubs_index()
 
-    cellak = []
+    tokenenkent = {}
     for r in out_rows:
         _id, _ige, strong, lexid, entry_kod, glosszak, egyertelmu, _megjegyzes = r
         if not entry_kod:
@@ -395,8 +403,20 @@ def ubs_jelentes_cella(sor_id, igehely, strong_field):
             angol = definicio_idx.get((strong, lexid)) or glosszak
             szoveg = '%s *(fordítás függőben)*' % angol
         jelolt = '' if egyertelmu == 'igen' else ' *(jelölt, nem egyértelmű)*'
-        cellak.append('%s — %s%s' % (entry_kod, szoveg, jelolt))
-    return '; '.join(cellak) if cellak else EM_DASH
+        tokenenkent.setdefault(strong, []).append('%s — %s%s' % (entry_kod, szoveg, jelolt))
+
+    if len(strong_tokens) == 1:
+        cellak = tokenenkent.get(strong_tokens[0])
+        return '; '.join(cellak) if cellak else '%s *(nincs hozzárendelés)*' % EM_DASH
+
+    reszek = []
+    for strong in strong_tokens:
+        cellak = tokenenkent.get(strong)
+        if cellak:
+            reszek.append('%s: %s' % (strong, '; '.join(cellak)))
+        else:
+            reszek.append('%s: *(nincs hozzárendelés)*' % strong)
+    return ' · '.join(reszek)
 
 
 # ---------------------------------------------------------------------------
@@ -461,6 +481,9 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
     torzs = '\n'.join(sorok)
     if labjegyzetek:
         torzs += '\n\n' + '\n'.join('[^%d]: %s' % (i, lj) for i, lj in enumerate(labjegyzetek, start=1))
+
+    torzs += ('\n\n*Az UBS-jelentés csak újszövetségi soroknál áll: az UBS Greek New '
+              'Testament Dictionary az Újszövetséget fedi.*')
 
     torzs += '\n\n#### 1/a. Az igehelyek szövege\n'
     karoli_terkep = L.load_karoli_1908()
