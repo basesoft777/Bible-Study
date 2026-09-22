@@ -47,6 +47,8 @@ JELOLTEK_TSV = os.path.join(ADAT, 'jeloltek.tsv')
 FORDITAS_UBS_TSV = os.path.join(ADAT, 'forditas_ubs.tsv')
 LXX_DONTESEK_TSV = os.path.join(ADAT, 'lxx_dontesek.tsv')
 STRONG_SZOTAR_TSV = os.path.join(KONKORDANCIA, 'Strong_szotar.tsv')
+TBESG_TXT = os.path.join(KONKORDANCIA, 'TBESG.txt')
+TBESH_TXT = os.path.join(KONKORDANCIA, 'TBESH.txt')
 LXX_OS_DIR = os.path.join(KONKORDANCIA, 'LXX_OS')
 
 STRONG_TOKEN_RE = re.compile(r'^[HG]\d{4}[A-Za-z]?$')
@@ -191,17 +193,11 @@ def tagnt_index():
     return _tagnt_idx_cache
 
 
-def strong_szotar_index():
-    global _strong_szotar_cache
-    if _strong_szotar_cache is None:
-        rows = L.read_tsv(STRONG_SZOTAR_TSV)
-        _strong_szotar_cache = {r['Strong-szám']: r for r in rows}
-    return _strong_szotar_cache
-
-
 def kiejtes_ehhez(igehely, strong):
     """(ragozott_alak, kiejtes, forras) vagy None — a TAHOT/TAGNT Igehely+
-    Strong kulcsával, az igehely-lista első verséig visszaesve tartománynál."""
+    Strong kulcsával, az igehely-lista első verséig visszaesve tartománynál.
+    Ragozott alak kiejtése -- kizárólag a tényleges ragozott alak mellett
+    használandó (V2.6a pont 2), nem lemma-fejlécekben."""
     forras_idx = tahot_index() if strong.startswith('H') else tagnt_index()
     for ige in igehely_lista(igehely):
         r = forras_idx.get((ige, strong))
@@ -210,11 +206,46 @@ def kiejtes_ehhez(igehely, strong):
     return None
 
 
-def strong_kiejtes(strong):
-    r = strong_szotar_index().get(strong)
-    if r and r.get('Kiejtés'):
-        return r['Kiejtés']
-    return None
+_tbesg_tbesh_cache = None
+
+
+def tbesg_tbesh_index():
+    """(pontos_kulcs, alap_kulcs) -- strong -> (lemma, kiejtes), a
+    TBESG.txt/TBESH.txt 4./5. oszlopából (index 3/4) -- a lemma-szintű
+    kiejtés egyetlen forrása (V2.6a pont 2). Az `alap_kulcs` a betűutótag
+    nélküli Strong-számra esik vissza (első előfordulás), mert a TBESH egy
+    részt sense-onként bont (`H2416a`, `H2416b`, …), a motívum saját
+    `strong` mezője viszont a betűutótag nélküli alakot használja."""
+    global _tbesg_tbesh_cache
+    if _tbesg_tbesh_cache is None:
+        pontos = {}
+        alap = {}
+        alap_re = re.compile(r'^([HG]\d{4})[a-zA-Z]?$')
+        for path in (TBESG_TXT, TBESH_TXT):
+            with io.open(path, encoding='utf-8') as f:
+                for sor in f:
+                    sor = sor.rstrip('\r\n')
+                    cols = sor.split('\t')
+                    if len(cols) < 5:
+                        continue
+                    strong = cols[0]
+                    if not STRONG_TOKEN_RE.match(strong):
+                        continue
+                    pontos.setdefault(strong, (cols[3], cols[4]))
+                    m = alap_re.match(strong)
+                    if m:
+                        alap.setdefault(m.group(1), (cols[3], cols[4]))
+        _tbesg_tbesh_cache = (pontos, alap)
+    return _tbesg_tbesh_cache
+
+
+def lemma_kiejtes(strong):
+    """(lemma, kiejtes) vagy None, a TBESG/TBESH-ből, Strong-szám szerint
+    -- pontos egyezés, majd betűutótag nélküli alapalakra visszaesve."""
+    pontos, alap = tbesg_tbesh_index()
+    if strong in pontos:
+        return pontos[strong]
+    return alap.get(strong)
 
 
 # ---------------------------------------------------------------------------
@@ -438,7 +469,7 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
         for vers in igehely_lista(s['igehely']):
             szoveg = karoli_terkep.get(vers)
             if szoveg:
-                reszek.append('> %s **%s**' % (szoveg, vers))
+                reszek.append('*%s*' % szoveg)
             else:
                 reszek.append('*(%s: nincs Károli-szöveg)*' % vers)
         if s.get('kapcsolodas'):
@@ -569,11 +600,15 @@ def blokk_szocikkek(m, tokenek):
     van_hivatkozas_barmelyikhez = False
     tisztazatlan_erintve = False
 
+    fajl_licenc_kulcsok_tbesg_tbesh = set()
     for strong in tokenek:
-        alszakasz = ['### %s' % strong]
-        kiejtes = strong_kiejtes(strong)
-        if kiejtes:
-            alszakasz.append('**Kiejtés:** %s' % kiejtes)
+        lk = lemma_kiejtes(strong)
+        if lk:
+            lemma, kiejtes = lk
+            alszakasz = ['### %s — %s (%s)' % (strong, lemma, kiejtes)]
+            fajl_licenc_kulcsok_tbesg_tbesh.add('TBESG' if strong.startswith('G') else 'TBESH')
+        else:
+            alszakasz = ['### %s' % strong]
 
         if strong.startswith('H'):
             twotok = oshl_twot_ehhez(strong)
@@ -615,6 +650,10 @@ def blokk_szocikkek(m, tokenek):
 
     if not fajl_licenc_kulcsok['adat/lexikon_hivatkozasok.tsv']:
         del fajl_licenc_kulcsok['adat/lexikon_hivatkozasok.tsv']
+    if 'TBESG' in fajl_licenc_kulcsok_tbesg_tbesh:
+        fajl_licenc_kulcsok.setdefault('konkordancia/TBESG.txt', set()).add('TBESG')
+    if 'TBESH' in fajl_licenc_kulcsok_tbesg_tbesh:
+        fajl_licenc_kulcsok.setdefault('konkordancia/TBESH.txt', set()).add('TBESH')
 
     torzs = '\n\n'.join(reszek)
     licenc_lista = _sorted_unique(LICENC[k] for kulcsok in fajl_licenc_kulcsok.values() for k in kulcsok)
@@ -694,11 +733,30 @@ def lxx_os_strong_normalizalt(nyers_strong):
     return 'G%04d' % int(nyers_strong)
 
 
+_LXX_IGEHELY_VERS_RE = re.compile(r'(\d+):(\d+)$')
+
+
+def lxx_igehely_magyar(r, karoli_konyv, karoli_fej, karoli_vers):
+    """A LXX_OS sor saját (fejezet:vers) számozása, magyar könyv-rövidítéssel;
+    '(LXX)' jelöléssel közvetlenül a könyvnév után, ha a számozás eltér a
+    Károli-céltól (pl. 'Zsolt(LXX) 114:4'), egyezéskor jelölés nélkül
+    (V2.6a pont 4)."""
+    m = _LXX_IGEHELY_VERS_RE.search(r.get('igehely_lxx') or '')
+    if not m:
+        return r.get('igehely_lxx') or EM_DASH
+    lxx_fej, lxx_vers = int(m.group(1)), int(m.group(2))
+    if lxx_fej == karoli_fej and lxx_vers == karoli_vers:
+        return '%s %d:%d' % (karoli_konyv, karoli_fej, karoli_vers)
+    return '%s(LXX) %d:%d' % (karoli_konyv, lxx_fej, lxx_vers)
+
+
 def gorog_megfelelo_szoveg(r):
     strong = lxx_os_strong_normalizalt(r.get('strong'))
-    kiejtes = strong_kiejtes(strong) if strong else None
-    if not kiejtes:
-        kiejtes = gepi_atiras(r['szoalak']) + ' *(gépi átírás)*'
+    lk = lemma_kiejtes(strong) if strong else None
+    if lk:
+        kiejtes = lk[1]
+    else:
+        kiejtes = gepi_atiras(r['lemma']) + ' *(gépi átírás)*'
     return '%s (%s, %s%s)' % (r['szoalak'], r['lemma'], kiejtes, ' %s' % strong if strong else '')
 
 
@@ -725,7 +783,7 @@ def blokk_lxx(m, sorai, tokenek):
         heber_tokenek = [t.strip() for t in strong_field.split('+') if t.strip().startswith('H')]
 
         for vers in igehely_lista(s['igehely']):
-            konyv = G.konyv_token(vers)
+            konyv, karoli_fej, karoli_vers = L.parse_igehely(vers)
             slug = terkep.get(konyv)
             heber_kulcsszo = EM_DASH
             for ht in heber_tokenek:
@@ -748,9 +806,10 @@ def blokk_lxx(m, sorai, tokenek):
                     vers, EM_DASH, heber_kulcsszo, EM_DASH, 'szamozas_elteres'))
                 continue
 
+            lxx_igehely = lxx_igehely_magyar(sorai_ehhez_vershez[0], konyv, karoli_fej, karoli_vers)
+
             egyezo = [r for r in sorai_ehhez_vershez
                       if gorog_tokenek and lxx_os_strong_normalizalt(r.get('strong')) in gorog_tokenek]
-            lxx_igehely = sorai_ehhez_vershez[0]['igehely_lxx']
             if egyezo:
                 szamlalo['egyező'] += 1
                 gm = gorog_megfelelo_szoveg(egyezo[0])
@@ -762,10 +821,19 @@ def blokk_lxx(m, sorai, tokenek):
             if kutatoi:
                 szamlalo['eltérő'] += 1
                 r = kutatoi[0]
-                gm = '%s (%s%s)' % (r.get('gorog_lemma') or EM_DASH, gepi_atiras(r.get('gorog_lemma') or ''),
-                                     ' %s' % r['gorog_strong'] if r.get('gorog_strong') else '')
+                if (r.get('tipus') or '').strip() == 'lxx_minusz':
+                    gm = 'nincs megfelelő a görögben (LXX-minusz)'
+                else:
+                    gorog_strong = (r.get('gorog_strong') or '').strip()
+                    lk = lemma_kiejtes(gorog_strong) if gorog_strong else None
+                    if lk:
+                        kiejtes = lk[1]
+                    else:
+                        kiejtes = gepi_atiras(r.get('gorog_lemma') or '') + ' *(gépi átírás)*'
+                    gm = '%s (%s%s)' % (r.get('gorog_lemma') or EM_DASH, kiejtes,
+                                         ' %s' % gorog_strong if gorog_strong else '')
                 tabla_sorok.append('| %s | %s | %s | %s | eltérő | adat/lxx_dontesek.tsv |' % (
-                    vers, lxx_igehely, heber_kulcsszo, gm))
+                    vers, r.get('lxx_igehely') or lxx_igehely, heber_kulcsszo, gm))
                 continue
 
             szamlalo['kutatói azonosítás függőben'] += 1
@@ -930,6 +998,33 @@ def blokk_kapcsolatok(m, konyv_sorrend, hianyzo_konyvek):
 # 8. Irodalom és idézés
 # ---------------------------------------------------------------------------
 
+FAJL_TELJES_NEV = {
+    'konkordancia/BDB_teljes_unabridged.tsv': 'BDB (Brown–Driver–Briggs Hebrew and English Lexicon)',
+    'konkordancia/TBESG.txt': 'TBESG (Tyndale Brief lexicon of Extended Strongs for Greek)',
+    'konkordancia/TBESH.txt': 'TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew)',
+    'konkordancia/Thayer_teljes.tsv': "Thayer (Thayer's Greek-English Lexicon of the New Testament)",
+    'konkordancia/UBS_DNTG_jelentesek.tsv': 'UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének)',
+    'konkordancia/UBS_DNTG_referenciak.tsv': 'UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének)',
+    'konkordancia/SDBH_domenek.tsv': 'SDBH (Semantic Dictionary of Biblical Hebrew)',
+    'konkordancia/SDGNT_domenek.tsv': 'SDGNT (Semantic Dictionary of Biblical Greek)',
+    'konkordancia/OSHL_lexikalis_index.tsv': 'OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám',
+    'konkordancia/TSK_kereszthivatkozasok.tsv': 'TSK (Treasury of Scripture Knowledge)',
+}
+ADATFORRAS_FAJLOK = {'konkordancia/Karoli_1908.tsv', 'konkordancia/Karoli_kereszthivatkozasok.tsv'}
+
+
+def _teljes_nev(fajl):
+    if fajl in FAJL_TELJES_NEV:
+        return FAJL_TELJES_NEV[fajl]
+    if fajl.startswith('konkordancia/LXX_OS/'):
+        return 'LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz)'
+    return None
+
+
+def _adatforras(fajl):
+    return fajl.startswith('adat/') or fajl in ADATFORRAS_FAJLOK
+
+
 def blokk_idezes(m, fajl_licenc_blokk_lista):
     per_fajl = {}
     for fajl, licenc, _blokk_nev in fajl_licenc_blokk_lista:
@@ -945,14 +1040,29 @@ def blokk_idezes(m, fajl_licenc_blokk_lista):
         '- Generálva: %s' % G.TS,
         '- Fájl: `%s`' % github_url,
     ]
-    szotarak = ['**Felhasznált szótárak:**']
-    for fajl in sorted(per_fajl):
-        licencek = ', '.join(sorted(per_fajl[fajl]))
-        szotarak.append('- `%s` (%s)' % (fajl, licencek))
 
-    torzs = '\n'.join(hogyan) + '\n\n' + '\n'.join(szotarak)
-    hatokor = ('Ez a blokk a `[ID: %s]` motívum hivatkozási adatait és a ténylegesen felhasznált '
-               'szótárak listáját adja (G9, LEXV2_3-ig szűkítve).' % m['id'])
+    lxx_os_fajlok = sorted(f for f in per_fajl if f.startswith('konkordancia/LXX_OS/'))
+    egyeb_szotarak = sorted(f for f in per_fajl if _teljes_nev(f) and not f.startswith('konkordancia/LXX_OS/'))
+    adat_fajlok = sorted(f for f in per_fajl if _adatforras(f))
+    beazonositatlan = sorted(set(per_fajl) - set(egyeb_szotarak) - set(lxx_os_fajlok) - set(adat_fajlok))
+
+    szotarak = ['**Felhasznált szótárak:**']
+    for fajl in egyeb_szotarak:
+        licencek = ', '.join(sorted(per_fajl[fajl]))
+        szotarak.append('- %s (`%s`, %s)' % (_teljes_nev(fajl), fajl, licencek))
+    if lxx_os_fajlok:
+        licencek = ', '.join(sorted(set().union(*(per_fajl[f] for f in lxx_os_fajlok))))
+        fajlok_felsorolas = ', '.join('`%s`' % f for f in lxx_os_fajlok)
+        szotarak.append('- %s (%s, %s)' % (_teljes_nev(lxx_os_fajlok[0]), fajlok_felsorolas, licencek))
+
+    adatforrasok = ['**Adatforrások:**']
+    for fajl in adat_fajlok + beazonositatlan:
+        licencek = ', '.join(sorted(per_fajl[fajl]))
+        adatforrasok.append('- `%s` (%s)' % (fajl, licencek))
+
+    torzs = '\n'.join(hogyan) + '\n\n' + '\n'.join(szotarak) + '\n\n' + '\n'.join(adatforrasok)
+    hatokor = ('Ez a blokk a `[ID: %s]` motívum hivatkozási adatait, a ténylegesen felhasznált '
+               'szótárakat (teljes névvel) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).' % m['id'])
     return _lexikon_blokk(m['id'], 'idezes', [], ['projekt-adat'], hatokor, torzs)
 
 

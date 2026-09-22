@@ -86,42 +86,42 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 <a id="ige-1móz-2-7"></a>
 **1Móz 2:7**
-> És formálta vala az Úr Isten az embert a földnek porából, és lehellett vala az ő orrába életnek lehelletét. Így lőn az ember élő lélekké. **1Móz 2:7**
+*És formálta vala az Úr Isten az embert a földnek porából, és lehellett vala az ő orrába életnek lehelletét. Így lőn az ember élő lélekké.*
 az ember נֶפֶשׁ חַיָּה ("élő lélek") lesz Isten leheletétől; Pál ezt állítja szembe 1Kor 15:45-ben az utolsó Ádámmal — tematikus, ellentétező párhuzam, NEM lexikai folytonosság
 
 <a id="ige-luk-1-46"></a>
 **Luk 1:46**
-> Akkor monda Mária: Magasztalja az én lelkem az Urat, **Luk 1:46**
+*Akkor monda Mária: Magasztalja az én lelkem az Urat,*
 Mária éneke: "magasztalja az én lelkem (ψυχή) az Urat" — negyedik, valódi lexikai előfordulás, párhuzamos szerkezetben Luk 1:47-tel
 
 <a id="ige-luk-1-47"></a>
 **Luk 1:47**
-> És örvendez az én lelkem az én megtartó Istenemben. **Luk 1:47**
+*És örvendez az én lelkem az én megtartó Istenemben.*
 Mária éneke: "és örvendez az én szellemem (πνεῦμα) az én megtartó Istenemben" — ugyanabban a grammatikai szerepben, mint 1:46
 
 <a id="ige-1kor-2-14"></a>
 **1Kor 2:14**
-> Érzéki ember pedig nem foghatja meg az Isten Lelkének dolgait: mert bolondságok néki; meg sem értheti, mivelhogy lelkiképen ítéltetnek meg. **1Kor 2:14**
+*Érzéki ember pedig nem foghatja meg az Isten Lelkének dolgait: mert bolondságok néki; meg sem értheti, mivelhogy lelkiképen ítéltetnek meg.*
 a "természet szerinti ember" (ψυχικὸς ἄνθρωπος) nem fogadja be Isten Szellemének dolgait — ötödik előfordulás, melléknévi alakban
 
 <a id="ige-1kor-2-15"></a>
 **1Kor 2:15**
-> A lelki ember azonban mindent megítél, de ő senkitől sem ítéltetik meg. **1Kor 2:15**
+*A lelki ember azonban mindent megítél, de ő senkitől sem ítéltetik meg.*
 a "szellemi ember" (πνευματικός) mindent megvizsgál — az 1Kor 2:14 párja
 
 <a id="ige-1kor-15-45"></a>
 **1Kor 15:45**
-> Így is van megírva: Lőn az első ember, Ádám, élő lélekké; az utolsó Ádám megelevenítő szellemmé. **1Kor 15:45**
+*Így is van megírva: Lőn az első ember, Ádám, élő lélekké; az utolsó Ádám megelevenítő szellemmé.*
 Pál: az utolsó Ádám "pneuma zóopoiun" ("megelevenítő szellemmé") lett — szemben az első Ádám "élő lelkével" (1Móz 2:7)
 
 <a id="ige-1thessz-5-23"></a>
 **1Thessz 5:23**
-> Maga pedig a békességnek Istene szenteljen meg titeket mindenestől; és a ti egész valótok, mind lelketek, mind testetek feddhetetlenül őriztessék meg a mi Urunk Jézus Krisztus eljövetelére. **1Thessz 5:23**
+*Maga pedig a békességnek Istene szenteljen meg titeket mindenestől; és a ti egész valótok, mind lelketek, mind testetek feddhetetlenül őriztessék meg a mi Urunk Jézus Krisztus eljövetelére.*
 Pál imája: a pneuma, pszükhé és szóma három külön főnévként, egy-egy külön határozott névelővel sorolva fel
 
 <a id="ige-zsid-4-12"></a>
 **Zsid 4:12**
-> Mert az Istennek beszéde élő és ható, és élesebb minden kétélű fegyvernél, és elhat a szívnek és léleknek, az ízeknek és a velőknek megoszlásáig, és megítéli a gondolatokat és a szívnek indulatait. **Zsid 4:12**
+*Mert az Istennek beszéde élő és ható, és élesebb minden kétélű fegyvernél, és elhat a szívnek és léleknek, az ízeknek és a velőknek megoszlásáig, és megítéli a gondolatokat és a szívnek indulatait.*
 Isten Igéje "elhat a szellem és lélek... megoszlásáig" (μερισμοῦ) — a szerző explicit szétválasztásról beszél
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#elofordulasok -->
@@ -140,13 +140,11 @@ Isten Igéje "elhat a szellem és lélek... megoszlásáig" (μερισμοῦ) 
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum 4 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
-### G4151
-
-**Kiejtés:** pneumatos
+### G4151 — πνεῦμα (pneuma)
 
 **TWOT:** —
 
@@ -160,9 +158,7 @@ Isten Igéje "elhat a szellem és lélek... megoszlásáig" (μερισμοῦ) 
 
 *Forrás: konkordancia/Thayer_teljes.tsv*
 
-### G5590
-
-**Kiejtés:** psuchēn
+### G5590 — ψυχή (psuchē)
 
 **TWOT:** —
 
@@ -176,9 +172,7 @@ Isten Igéje "elhat a szellem és lélek... megoszlásáig" (μερισμοῦ) 
 
 *Forrás: konkordancia/Thayer_teljes.tsv*
 
-### H2416
-
-**Kiejtés:** chai.Yah
+### H2416 — חַי (chay)
 
 **TWOT:** 644a, 644b, 644c, 644d, 644f
 
@@ -186,9 +180,7 @@ Isten Igéje "elhat a szellem és lélek... megoszlásáig" (μερισμοῦ) 
 
 Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### H5315
-
-**Kiejtés:** Ne.fesh
+### H5315 — נֶ֫פֶשׁ (ne.phesh)
 
 **TWOT:** 1395a
 
@@ -214,7 +206,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 2:7 | Genesis 2:7 | נֶ֥פֶשׁ (Ne.fesh) | ψυχὴν (ψυχή, psuchēn G5590) | egyező | LXX_OS |
+| 1Móz 2:7 | 1Móz 2:7 | נֶ֥פֶשׁ (Ne.fesh) | ψυχὴν (ψυχή, psuchē G5590) | egyező | LXX_OS |
 
 *Összesítés: egyező=1, eltérő=0, kutatói azonosítás függőben=0, szamozas_elteres=0.*
 
@@ -354,19 +346,17 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 ## 6. Értelmezés *(kézi)*
 
-## 1/b. PaRDeS keretrendszer *(kézi)*
+### PaRDeS keretrendszer
 
 *Kézzel írandó — a forrás-study 3. pontja alapján, a 2. szakasz lexikai adataival bővítve.*
 
-## 7. ÚJ FELISMERÉS *(kézi, ha van)*
-
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
-## 6. Módszertani napló *(kézi)*
+### Módszertani napló
 
 *Kézzel írandó.*
 
-## 8. Nyitott kérdések és séma-korlátok *(kézi)*
+### Nyitott kérdések és séma-korlátok
 
 *Kézzel írandó.*
 
@@ -374,7 +364,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
 
-*Ez a blokk a `[ID: ANTROP-001]` motívum hivatkozási adatait és a ténylegesen felhasznált szótárak listáját adja (G9, LEXV2_3-ig szűkítve).*
+*Ez a blokk a `[ID: ANTROP-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
 **Hogyan hivatkozz:**
 - ID: `ANTROP-001`
@@ -384,6 +374,17 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ANTROP-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
+- OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám (`konkordancia/OSHL_lexikalis_index.tsv`, CC BY 4.0)
+- SDBH (Semantic Dictionary of Biblical Hebrew) (`konkordancia/SDBH_domenek.tsv`, CC BY-SA 4.0)
+- SDGNT (Semantic Dictionary of Biblical Greek) (`konkordancia/SDGNT_domenek.tsv`, CC BY-SA 4.0)
+- TBESG (Tyndale Brief lexicon of Extended Strongs for Greek) (`konkordancia/TBESG.txt`, CC BY 4.0)
+- TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, CC BY 4.0)
+- TSK (Treasury of Scripture Knowledge) (`konkordancia/TSK_kereszthivatkozasok.tsv`, CC BY 4.0)
+- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_jelentesek.tsv`, CC BY-SA 4.0)
+- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_referenciak.tsv`, CC BY-SA 4.0)
+- LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz) (`konkordancia/LXX_OS/genesis.tsv`, CC BY 4.0)
+
+**Adatforrások:**
 - `adat/elofordulasok.tsv` (projekt-adat)
 - `adat/forditas_ubs.tsv` (projekt-adat)
 - `adat/jeloltek.tsv` (projekt-adat)
@@ -392,19 +393,12 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 - `adat/motivumok.tsv` (projekt-adat)
 - `konkordancia/Karoli_1908.tsv` (közkincs)
 - `konkordancia/Karoli_kereszthivatkozasok.tsv` (közkincs)
-- `konkordancia/LXX_OS/genesis.tsv` (CC BY 4.0)
-- `konkordancia/OSHL_lexikalis_index.tsv` (CC BY 4.0)
-- `konkordancia/SDBH_domenek.tsv` (CC BY-SA 4.0)
-- `konkordancia/SDGNT_domenek.tsv` (CC BY-SA 4.0)
-- `konkordancia/TSK_kereszthivatkozasok.tsv` (CC BY 4.0)
-- `konkordancia/UBS_DNTG_jelentesek.tsv` (CC BY-SA 4.0)
-- `konkordancia/UBS_DNTG_referenciak.tsv` (CC BY-SA 4.0)
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#idezes -->
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ANTROP-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
@@ -439,6 +433,8 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 | `OSHL_lexikalis_index.tsv` | `konkordancia/OSHL_lexikalis_index.tsv` | CC BY 4.0 | szocikkek |
 | `SDBH_domenek.tsv` | `konkordancia/SDBH_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
 | `SDGNT_domenek.tsv` | `konkordancia/SDGNT_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
+| `TBESG.txt` | `konkordancia/TBESG.txt` | CC BY 4.0 | szocikkek |
+| `TBESH.txt` | `konkordancia/TBESH.txt` | CC BY 4.0 | szocikkek |
 | `TSK_kereszthivatkozasok.tsv` | `konkordancia/TSK_kereszthivatkozasok.tsv` | CC BY 4.0 | kereszthivatkozasok |
 | `UBS_DNTG_jelentesek.tsv` | `konkordancia/UBS_DNTG_jelentesek.tsv` | CC BY-SA 4.0 | elofordulasok |
 | `UBS_DNTG_referenciak.tsv` | `konkordancia/UBS_DNTG_referenciak.tsv` | CC BY-SA 4.0 | elofordulasok |

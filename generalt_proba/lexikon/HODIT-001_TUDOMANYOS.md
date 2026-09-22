@@ -136,167 +136,167 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 <a id="ige-1móz-14-5"></a>
 **1Móz 14:5**
-> A tizennegyedik esztendőben pedig eljöve Khédorlaomer, és a királyok, a kik ő vele valának, és megverék a Refeusokat Asztheroth Kárnajimban, és a Zuzeusokat Hámban, és az Emeusokat Sávé-Kirjáthajimban. **1Móz 14:5**
+*A tizennegyedik esztendőben pedig eljöve Khédorlaomer, és a királyok, a kik ő vele valának, és megverék a Refeusokat Asztheroth Kárnajimban, és a Zuzeusokat Hámban, és az Emeusokat Sávé-Kirjáthajimban.*
 רְפָאִים, זוּזִים, אֵימִים — a keleti királyi koalíció leveri őket, mielőtt az öt lázadó várost is legyőzné
 
 <a id="ige-1móz-15-20"></a>
 **1Móz 15:20**
-> A Hittheusokat, Perizeusokat, és a Refeusokat. **1Móz 15:20**
+*A Hittheusokat, Perizeusokat, és a Refeusokat.*
 רְפָאִים — a Refáim az Ábrámnak ígért föld népei között szerepel
 
 <a id="ige-4móz-13-34"></a>
 **4Móz 13:34**
-> És láttunk ott óriásokat is, az óriások közül való Anáknak fiait, és olyanok valánk a magunk szemében, mint a sáskák, és az ő szemeikben is olyanok valánk. **4Móz 13:34**
+*És láttunk ott óriásokat is, az óriások közül való Anáknak fiait, és olyanok valánk a magunk szemében, mint a sáskák, és az ő szemeikben is olyanok valánk.*
 נְפִלִים ⇒ עֲנָקִים — a kémek szerint az Anákok "a Nefilimtől" származnak (a kémek saját kijelentése, nem a narrátoré)
 
 <a id="ige-5móz-2-11"></a>
 **5Móz 2:11**
-> Óriásoknak állíttatnak vala azok is, mint az Anákok, és a Moábiták Emeknek hívták őket. **5Móz 2:11**
+*Óriásoknak állíttatnak vala azok is, mint az Anákok, és a Moábiták Emeknek hívták őket.*
 ua. — folytatás
 
 <a id="ige-5móz-2-20"></a>
 **5Móz 2:20**
-> (Óriások földének tartották azt is; óriások laktak azon régenten, a kiket az Ammoniták Zanzummoknak hívtak. **5Móz 2:20**
+*(Óriások földének tartották azt is; óriások laktak azon régenten, a kiket az Ammoniták Zanzummoknak hívtak.*
 זַמְזֻמִּים... רְפָאִים — az Ammoniták Zamzummimnak nevezik ugyanazt a népet
 
 <a id="ige-5móz-3-11"></a>
 **5Móz 3:11**
-> Mert egyedül Óg, Básánnak királya maradt meg az óriások maradéka közül. Ímé az ő ágya vas-ágy, nemde Rabbátban az Ammon fiainál van-é? Kilencz sing a hosszasága és négy sing a szélessége, férfi könyök szerint. **5Móz 3:11**
+*Mert egyedül Óg, Básánnak királya maradt meg az óriások maradéka közül. Ímé az ő ágya vas-ágy, nemde Rabbátban az Ammon fiainál van-é? Kilencz sing a hosszasága és négy sing a szélessége, férfi könyök szerint.*
 עוֹג... מִיֶּתֶר הָרְפָאִים — Óg, Básán királya "a Refáim maradékából" — vaságya 9×4 könyök
 
 <a id="ige-5móz-3-13"></a>
 **5Móz 3:13**
-> A Gileád többi részét pedig, és az egész Básánt, az Óg országát odaadtam a Manassé fél törzsének, Argóbnak egész vidékét. Ezt az egész Básánt óriások földének hívták. **5Móz 3:13**
+*A Gileád többi részét pedig, és az egész Básánt, az Óg országát odaadtam a Manassé fél törzsének, Argóbnak egész vidékét. Ezt az egész Básánt óriások földének hívták.*
 ua. — Básán mint "a Refáim földje"
 
 <a id="ige-józs-12-4"></a>
 **Józs 12:4**
-> És Ógnak, a Básán királyának tartománya, a ki Refaim maradékai közül való, a ki Astarotban és Edreiben lakozik vala. **Józs 12:4**
+*És Ógnak, a Básán királyának tartománya, a ki Refaim maradékai közül való, a ki Astarotban és Edreiben lakozik vala.*
 אֶרֶץ רְפָאִים — Óg földje "a Refáim földje"
 
 <a id="ige-józs-13-12"></a>
 **Józs 13:12**
-> Básánban Ógnak egész országát, a ki uralkodik vala Astarótban és Edreiben. Ez maradt vala meg a Refaim maradékai közül, de leveré és kiűzé őket Mózes. **Józs 13:12**
+*Básánban Ógnak egész országát, a ki uralkodik vala Astarótban és Edreiben. Ez maradt vala meg a Refaim maradékai közül, de leveré és kiűzé őket Mózes.*
 ua.
 
 <a id="ige-józs-15-8"></a>
 **Józs 15:8**
-> Azután felmegy a határ a Hinnom fiának völgyén, Jebuzeusnak, azaz Jeruzsálemnek déli oldala felé; felmegy továbbá e határ a hegynek tetejére, a mely átellenben van a Hinnom völgyével napnyugat felé, a mely északra van a Refaim völgyének szélén. **Józs 15:8**
+*Azután felmegy a határ a Hinnom fiának völgyén, Jebuzeusnak, azaz Jeruzsálemnek déli oldala felé; felmegy továbbá e határ a hegynek tetejére, a mely átellenben van a Hinnom völgyével napnyugat felé, a mely északra van a Refaim völgyének szélén.*
 עֵמֶק רְפָאִים — Júda törzsi határának pontosítása
 
 <a id="ige-józs-17-15"></a>
 **Józs 17:15**
-> Józsué pedig monda nékik: Ha sok nép vagy te, menj fel az erdőre, és írts ott magadnak a Perizzeusoknak és Refaimnak földén, ha szoros néked az Efraim hegye. **Józs 17:15**
+*Józsué pedig monda nékik: Ha sok nép vagy te, menj fel az erdőre, és írts ott magadnak a Perizzeusoknak és Refaimnak földén, ha szoros néked az Efraim hegye.*
 אֶרֶץ הָרְפָאִים — "a Perizzita és a Refáim földje" — Józsué válasza Efraim/Manassé birtok-panaszára
 
 <a id="ige-józs-18-16"></a>
 **Józs 18:16**
-> Azután alámegy a határ a hegynek széléhez, a mely átellenben van a Hinnom fiának völgyével, a mely észak felé van a Refaim völgyében; alámegy a Hinnom völgyébe is a Jebuzeus mellett dél felé, és alámegy a Rógel forrásához. **Józs 18:16**
+*Azután alámegy a határ a hegynek széléhez, a mely átellenben van a Hinnom fiának völgyével, a mely észak felé van a Refaim völgyében; alámegy a Hinnom völgyébe is a Jebuzeus mellett dél felé, és alámegy a Rógel forrásához.*
 עֵמֶק רְפָאִים — Benjámin törzsi határának pontosítása
 
 <a id="ige-2sám-5-18"></a>
 **2Sám 5:18**
-> A Filiszteusok pedig elérkezének és elszéledének a Réfaim völgyében. **2Sám 5:18**
+*A Filiszteusok pedig elérkezének és elszéledének a Réfaim völgyében.*
 עֵמֶק רְפָאִים — Refáim völgye, a filiszteusok és Dávid csatáinak színtere
 
 <a id="ige-2sám-5-22"></a>
 **2Sám 5:22**
-> Azután ismét feljövének a Filiszteusok, és elszéledének a Réfaim völgyében. **2Sám 5:22**
+*Azután ismét feljövének a Filiszteusok, és elszéledének a Réfaim völgyében.*
 ua.
 
 <a id="ige-2sám-21-16"></a>
 **2Sám 21:16**
-> Akkor Jisbi Bénób, ki az óriások maradékából való vala (kinek kopjavasa háromszáz rézsiklust nyomott, és új hadi szerszámmal volt felövezve), elhatározá magában, hogy megöli Dávidot; **2Sám 21:16**
+*Akkor Jisbi Bénób, ki az óriások maradékából való vala (kinek kopjavasa háromszáz rézsiklust nyomott, és új hadi szerszámmal volt felövezve), elhatározá magában, hogy megöli Dávidot;*
 ua. — folytatás
 
 <a id="ige-2sám-21-18"></a>
 **2Sám 21:18**
-> Lőn azután is harczuk a Filiszteusokkal Gób városánál, és Sibbékai, Husát városból való, akkor megölé Sáfot, ki az óriások maradékai közül való vala. **2Sám 21:18**
+*Lőn azután is harczuk a Filiszteusokkal Gób városánál, és Sibbékai, Husát városból való, akkor megölé Sáfot, ki az óriások maradékai közül való vala.*
 ua. — folytatás
 
 <a id="ige-2sám-21-20"></a>
 **2Sám 21:20**
-> Gáthban is volt háború, hol egy óriás férfi vala, kinek kezein és lábain hat-hat ujjai valának, azaz mindenestől huszonnégy, és ez is óriástól származott vala. **2Sám 21:20**
+*Gáthban is volt háború, hol egy óriás férfi vala, kinek kezein és lábain hat-hat ujjai valának, azaz mindenestől huszonnégy, és ez is óriástól származott vala.*
 ua. — folytatás
 
 <a id="ige-2sám-21-22"></a>
 **2Sám 21:22**
-> Ezek négyen származtak Gáthban az óriástól, kik mind Dávid keze által és az ő szolgáinak kezeik által estek el. **2Sám 21:22**
+*Ezek négyen származtak Gáthban az óriástól, kik mind Dávid keze által és az ő szolgáinak kezeik által estek el.*
 ua. — folytatás
 
 <a id="ige-2sám-23-13"></a>
 **2Sám 23:13**
-> A harmincz vezér közül is hárman lementek, és elérkezének aratáskor Dávidhoz az Adullám barlangjába, mikor a Filiszteusok táborban valának a Réfaim völgyében. **2Sám 23:13**
+*A harmincz vezér közül is hárman lementek, és elérkezének aratáskor Dávidhoz az Adullám barlangjába, mikor a Filiszteusok táborban valának a Réfaim völgyében.*
 ua.
 
 <a id="ige-1krón-11-15"></a>
 **1Krón 11:15**
-> Továbbá, mikor alámentek hárman a harmincz főember közül Dávidhoz, a kősziklához, az Adullám barlangjába; a Filiszteusok pedig tábort járának a Réfaim völgyben. **1Krón 11:15**
+*Továbbá, mikor alámentek hárman a harmincz főember közül Dávidhoz, a kősziklához, az Adullám barlangjába; a Filiszteusok pedig tábort járának a Réfaim völgyben.*
 ua. — párhuzamos hely
 
 <a id="ige-1krón-14-9"></a>
 **1Krón 14:9**
-> A Filiszteusok pedig eljövén, elszéledének a Réfaim völgyében. **1Krón 14:9**
+*A Filiszteusok pedig eljövén, elszéledének a Réfaim völgyében.*
 ua.
 
 <a id="ige-1krón-20-4"></a>
 **1Krón 20:4**
-> Ezután ismét had támada Gézerben a Filiszteusok ellen; és akkor ölé meg a Husátites Sibbékai az óriások nemzetségéből való Sippait; és ilyen módon megaláztatának. **1Krón 20:4**
+*Ezután ismét had támada Gézerben a Filiszteusok ellen; és akkor ölé meg a Husátites Sibbékai az óriások nemzetségéből való Sippait; és ilyen módon megaláztatának.*
 párhuzamos hely 2Sám 21:15-22-höz
 
 <a id="ige-1krón-20-6"></a>
 **1Krón 20:6**
-> Ezek után ismét versengés támadt Gáthban, hol egy magas ember vala, a kinek hat-hat, vagyis huszonnégy ujja volt; ez is óriás fia vala. **1Krón 20:6**
+*Ezek után ismét versengés támadt Gáthban, hol egy magas ember vala, a kinek hat-hat, vagyis huszonnégy ujja volt; ez is óriás fia vala.*
 ua. — folytatás
 
 <a id="ige-1krón-20-8"></a>
 **1Krón 20:8**
-> Ezek ugyanazon egy óriásnak fiai voltak Gáthban, a kik elveszének Dávidnak és az ő szolgáinak keze által. **1Krón 20:8**
+*Ezek ugyanazon egy óriásnak fiai voltak Gáthban, a kik elveszének Dávidnak és az ő szolgáinak keze által.*
 ua. — folytatás
 
 <a id="ige-jób-26-5"></a>
 **Jób 26:5**
-> A halottak is megremegnek tőle; a vizek alatt levők és azok lakói is. **Jób 26:5**
+*A halottak is megremegnek tőle; a vizek alatt levők és azok lakói is.*
 רְפָאִים יְחוֹלָלוּ מִתַּחַת לַמָּיִם — "a Refáim reszketnek a vizek alatt" — költői kontextus, halottak birodalma
 
 <a id="ige-zsolt-88-11"></a>
 **Zsolt 88:11**
-> Avagy a holtakkal teszel-é csodát? Felkelnek-é vajjon az árnyak, hogy dicsérjenek téged? Szela. **Zsolt 88:11**
+*Avagy a holtakkal teszel-é csodát? Felkelnek-é vajjon az árnyak, hogy dicsérjenek téged? Szela.*
 הֲרְפָאִים יָקוּמוּ יוֹדוּךָ — "vajon a Refáim fölkelnek-e, hogy dicsérjenek téged?"
 
 <a id="ige-péld-2-18"></a>
 **Péld 2:18**
-> Mert a halálra hanyatlik az ő háza, és az ő ösvényei az élet nélkül valókhoz. **Péld 2:18**
+*Mert a halálra hanyatlik az ő háza, és az ő ösvényei az élet nélkül valókhoz.*
 רְפָאִים — bölcsességi kontextus: aki eltéved, a "Refáim gyülekezetébe" jut
 
 <a id="ige-péld-9-18"></a>
 **Péld 9:18**
-> És az nem tudja, hogy ott élet nélkül valók vannak; és a pokol mélyébe esnek az ő hivatalosai! **Péld 9:18**
+*És az nem tudja, hogy ott élet nélkül valók vannak; és a pokol mélyébe esnek az ő hivatalosai!*
 ua.
 
 <a id="ige-péld-21-16"></a>
 **Péld 21:16**
-> Az ember, a ki eltévelyedik az értelemnek útáról, az élet nélkül valók gyülekezetiben nyugszik. **Péld 21:16**
+*Az ember, a ki eltévelyedik az értelemnek útáról, az élet nélkül valók gyülekezetiben nyugszik.*
 ua.
 
 <a id="ige-ézs-14-9"></a>
 **Ézs 14:9**
-> Alant a sír megindul te miattad megérkezésedkor, miattad felriasztja árnyait, a föld minden hatalmasit, felkölti székeikről a népek minden királyait; **Ézs 14:9**
+*Alant a sír megindul te miattad megérkezésedkor, miattad felriasztja árnyait, a föld minden hatalmasit, felkölti székeikről a népek minden királyait;*
 רְפָאִים... כָּל־עַתּוּדֵי אָרֶץ — Babilon királyát gúnyosan fogadja a Seól, "fölkelti ellene a Refáimot"
 
 <a id="ige-ézs-17-5"></a>
 **Ézs 17:5**
-> És lészen, mint mikor az arató összefogja a gabonát és a kalászokat kezével learatja, és lészen, mint mikor valaki kalászokat szed össze a Refáim völgyében; **Ézs 17:5**
+*És lészen, mint mikor az arató összefogja a gabonát és a kalászokat kezével learatja, és lészen, mint mikor valaki kalászokat szed össze a Refáim völgyében;*
 עֵמֶק רְפָאִים — aratási hasonlat
 
 <a id="ige-ézs-26-14"></a>
 **Ézs 26:14**
-> A meghaltak nem élnek, az árnyak nem kelnek föl: ezért látogatád meg és vesztéd el őket, és eltörléd emlékezetöket. **Ézs 26:14**
+*A meghaltak nem élnek, az árnyak nem kelnek föl: ezért látogatád meg és vesztéd el őket, és eltörléd emlékezetöket.*
 רְפָאִים — a halottak feltámadásáról szóló szakasz kontextusában
 
 <a id="ige-ézs-26-19"></a>
 **Ézs 26:19**
-> Megelevenednek halottaid és holttesteim fölkelnek: serkenjetek föl és énekeljetek, a kik a porban lakoztok, mert harmatod az élet harmata, és visszaadja a föld az árnyakat! **Ézs 26:19**
+*Megelevenednek halottaid és holttesteim fölkelnek: serkenjetek föl és énekeljetek, a kik a porban lakoztok, mert harmatod az élet harmata, és visszaadja a föld az árnyakat!*
 ua.
 
 <!-- GENERÁLT-VÉGE: lexikon#HODIT-001#elofordulasok -->
@@ -331,13 +331,11 @@ ua.
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#szocikkek | forrás: konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0 | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#szocikkek | forrás: konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/TBESH.txt | licenc: CC BY 4.0, CC BY-SA 4.0 | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: HODIT-001]` motívum 3 Strong-tokenjét fedi, nincs jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
-### H5303
-
-**Kiejtés:** ne.fi.Lim
+### H5303 — נְפִלִים (ne.phil)
 
 **TWOT:** 1393a
 
@@ -345,9 +343,7 @@ ua.
 
 Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### H7496
-
-**Kiejtés:** re.fa.'Im
+### H7496 — רְפָאִים (ra.pah)
 
 **TWOT:** 2198c
 
@@ -355,9 +351,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### H7497
-
-**Kiejtés:** re.fa.'Im
+### H7497 — רָפָה (ra.pah)
 
 **TWOT:** 2198d
 
@@ -383,36 +377,36 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 14:5 | Genesis 14:5 | רְפָאִים֙ (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 15:20 | Genesis 15:20 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| 4Móz 13:34 | Numbers 13:33 | נְּפִלִ֑ים (ne.fi.Lim) | — | kutatói azonosítás függőben | LXX_OS |
-| 5Móz 2:11 | Deuteronomy 2:11 | רְפָאִ֛ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| 5Móz 2:20 | Deuteronomy 2:20 | רְפָאִ֤ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| 5Móz 3:11 | Deuteronomy 3:11 | רְפָאִים֒ (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| 5Móz 3:13 | Deuteronomy 3:13 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 14:5 | 1Móz 14:5 | רְפָאִים֙ (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 15:20 | 1Móz 15:20 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 4Móz 13:34 | 4Móz(LXX) 13:33 | נְּפִלִ֑ים (ne.fi.Lim) | — | kutatói azonosítás függőben | LXX_OS |
+| 5Móz 2:11 | 5Móz 2:11 | רְפָאִ֛ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 5Móz 2:20 | 5Móz 2:20 | רְפָאִ֤ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 5Móz 3:11 | 5Móz 3:11 | רְפָאִים֒ (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 5Móz 3:13 | 5Móz 3:13 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
 | Józs 12:4 | — | רְפָאִ֑ים (re.fa.'Im) | — | szamozas_elteres | LXX_OS |
 | Józs 13:12 | — | רְפָאִ֔ים (re.fa.'Im) | — | szamozas_elteres | LXX_OS |
-| 2Sám 21:16 | 2 Samuel 21:16 | רָפָ֗ה (ra.Fah) | — | kutatói azonosítás függőben | LXX_OS |
-| 2Sám 21:18 | 2 Samuel 21:18 | רָפָֽה (ra.Fah) | — | kutatói azonosítás függőben | LXX_OS |
-| 2Sám 21:20 | 2 Samuel 21:20 | רָפָֽה (ra.Fah) | — | kutatói azonosítás függőben | LXX_OS |
-| 2Sám 21:22 | 2 Samuel 21:22 | רָפָ֖ה (ra.Fah) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Krón 20:4 | 1 Chronicles 20:4 | רְפָאִ֖ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Krón 20:6 | 1 Chronicles 20:6 | רָפָֽא (ra.Fa') | — | kutatói azonosítás függőben | LXX_OS |
-| 1Krón 20:8 | 1 Chronicles 20:8 | רָפָ֖א (ra.Fa') | — | kutatói azonosítás függőben | LXX_OS |
-| Jób 26:5 | Job (LXX) 26:5 | רְפָאִ֥ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| Zsolt 88:11 | Psalms (LXX) 87:11 | רְ֝פָאִ֗ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| Péld 2:18 | Proverbs 2:18 | רְ֝פָאִ֗ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| Péld 9:18 | Proverbs 9:18 | רְפָאִ֣ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| Péld 21:16 | Proverbs 21:16 | רְפָאִ֣ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| Ézs 14:9 | Isaiah 14:9 | רְפָאִים֙ (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| Ézs 26:14 | Isaiah 26:14 | רְפָאִ֖ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| Ézs 26:19 | Isaiah 26:19 | רְפָאִ֥ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| 2Sám 5:18 | 2 Samuel 5:18 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| 2Sám 5:22 | 2 Samuel 5:22 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| 2Sám 23:13 | 2 Samuel 23:13 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Krón 11:15 | 1 Chronicles 11:15 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Krón 14:9 | 1 Chronicles 14:9 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
-| Ézs 17:5 | Isaiah 17:5 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Sám 21:16 | 2Sám 21:16 | רָפָ֗ה (ra.Fah) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Sám 21:18 | 2Sám 21:18 | רָפָֽה (ra.Fah) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Sám 21:20 | 2Sám 21:20 | רָפָֽה (ra.Fah) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Sám 21:22 | 2Sám 21:22 | רָפָ֖ה (ra.Fah) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Krón 20:4 | 1Krón 20:4 | רְפָאִ֖ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Krón 20:6 | 1Krón 20:6 | רָפָֽא (ra.Fa') | — | kutatói azonosítás függőben | LXX_OS |
+| 1Krón 20:8 | 1Krón 20:8 | רָפָ֖א (ra.Fa') | — | kutatói azonosítás függőben | LXX_OS |
+| Jób 26:5 | Jób 26:5 | רְפָאִ֥ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Zsolt 88:11 | Zsolt(LXX) 87:11 | רְ֝פָאִ֗ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Péld 2:18 | Péld 2:18 | רְ֝פָאִ֗ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Péld 9:18 | Péld 9:18 | רְפָאִ֣ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Péld 21:16 | Péld 21:16 | רְפָאִ֣ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Ézs 14:9 | Ézs 14:9 | רְפָאִים֙ (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Ézs 26:14 | Ézs 26:14 | רְפָאִ֖ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Ézs 26:19 | Ézs 26:19 | רְפָאִ֥ים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Sám 5:18 | 2Sám 5:18 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Sám 5:22 | 2Sám 5:22 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Sám 23:13 | 2Sám 23:13 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Krón 11:15 | 1Krón 11:15 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Krón 14:9 | 1Krón 14:9 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
+| Ézs 17:5 | Ézs 17:5 | רְפָאִֽים (re.fa.'Im) | — | kutatói azonosítás függőben | LXX_OS |
 | Józs 15:8 | — | רְפָאִ֖ים (re.fa.'Im) | — | szamozas_elteres | LXX_OS |
 | Józs 18:16 | — | רְפָאִ֖ים (re.fa.'Im) | — | szamozas_elteres | LXX_OS |
 | Józs 17:15 | — | רְפָאִ֑ים (re.fa.'Im) | — | szamozas_elteres | LXX_OS |
@@ -512,19 +506,17 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 ## 6. Értelmezés *(kézi)*
 
-## 1/b. PaRDeS keretrendszer *(kézi)*
+### PaRDeS keretrendszer
 
 *Kézzel írandó — a forrás-study 3. pontja alapján, a 2. szakasz lexikai adataival bővítve.*
 
-## 7. ÚJ FELISMERÉS *(kézi, ha van)*
-
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
-## 6. Módszertani napló *(kézi)*
+### Módszertani napló
 
 *Kézzel írandó.*
 
-## 8. Nyitott kérdések és séma-korlátok *(kézi)*
+### Nyitott kérdések és séma-korlátok
 
 *Kézzel írandó.*
 
@@ -532,7 +524,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
 
-*Ez a blokk a `[ID: HODIT-001]` motívum hivatkozási adatait és a ténylegesen felhasznált szótárak listáját adja (G9, LEXV2_3-ig szűkítve).*
+*Ez a blokk a `[ID: HODIT-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
 **Hogyan hivatkozz:**
 - ID: `HODIT-001`
@@ -542,6 +534,15 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/HODIT-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
+- OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám (`konkordancia/OSHL_lexikalis_index.tsv`, CC BY 4.0)
+- SDBH (Semantic Dictionary of Biblical Hebrew) (`konkordancia/SDBH_domenek.tsv`, CC BY-SA 4.0)
+- TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, CC BY 4.0)
+- TSK (Treasury of Scripture Knowledge) (`konkordancia/TSK_kereszthivatkozasok.tsv`, CC BY 4.0)
+- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_jelentesek.tsv`, CC BY-SA 4.0)
+- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_referenciak.tsv`, CC BY-SA 4.0)
+- LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz) (`konkordancia/LXX_OS/1-chronicles.tsv`, `konkordancia/LXX_OS/2-samuel.tsv`, `konkordancia/LXX_OS/deuteronomy.tsv`, `konkordancia/LXX_OS/genesis.tsv`, `konkordancia/LXX_OS/isaiah.tsv`, `konkordancia/LXX_OS/job-lxx.tsv`, `konkordancia/LXX_OS/joshua.tsv`, `konkordancia/LXX_OS/numbers.tsv`, `konkordancia/LXX_OS/proverbs.tsv`, `konkordancia/LXX_OS/psalms-lxx.tsv`, CC BY 4.0)
+
+**Adatforrások:**
 - `adat/elofordulasok.tsv` (projekt-adat)
 - `adat/forditas_ubs.tsv` (projekt-adat)
 - `adat/jeloltek.tsv` (projekt-adat)
@@ -549,27 +550,12 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 - `adat/motivumok.tsv` (projekt-adat)
 - `konkordancia/Karoli_1908.tsv` (közkincs)
 - `konkordancia/Karoli_kereszthivatkozasok.tsv` (közkincs)
-- `konkordancia/LXX_OS/1-chronicles.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/2-samuel.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/deuteronomy.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/genesis.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/isaiah.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/job-lxx.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/joshua.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/numbers.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/proverbs.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/psalms-lxx.tsv` (CC BY 4.0)
-- `konkordancia/OSHL_lexikalis_index.tsv` (CC BY 4.0)
-- `konkordancia/SDBH_domenek.tsv` (CC BY-SA 4.0)
-- `konkordancia/TSK_kereszthivatkozasok.tsv` (CC BY 4.0)
-- `konkordancia/UBS_DNTG_jelentesek.tsv` (CC BY-SA 4.0)
-- `konkordancia/UBS_DNTG_referenciak.tsv` (CC BY-SA 4.0)
 
 <!-- GENERÁLT-VÉGE: lexikon#HODIT-001#idezes -->
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/joshua.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/joshua.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: HODIT-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
@@ -611,6 +597,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 | `psalms-lxx.tsv` | `konkordancia/LXX_OS/psalms-lxx.tsv` | CC BY 4.0 | lxx |
 | `OSHL_lexikalis_index.tsv` | `konkordancia/OSHL_lexikalis_index.tsv` | CC BY 4.0 | szocikkek |
 | `SDBH_domenek.tsv` | `konkordancia/SDBH_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
+| `TBESH.txt` | `konkordancia/TBESH.txt` | CC BY 4.0 | szocikkek |
 | `TSK_kereszthivatkozasok.tsv` | `konkordancia/TSK_kereszthivatkozasok.tsv` | CC BY 4.0 | kereszthivatkozasok |
 | `UBS_DNTG_jelentesek.tsv` | `konkordancia/UBS_DNTG_jelentesek.tsv` | CC BY-SA 4.0 | elofordulasok |
 | `UBS_DNTG_referenciak.tsv` | `konkordancia/UBS_DNTG_referenciak.tsv` | CC BY-SA 4.0 | elofordulasok |

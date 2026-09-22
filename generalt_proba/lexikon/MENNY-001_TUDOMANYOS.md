@@ -88,49 +88,49 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 <a id="ige-1móz-6-2"></a>
 **1Móz 6:2**
-> És láták az Istennek fiai az emberek leányait, hogy szépek azok, és vevének magoknak feleségeket mind azok közűl, kiket megkedvelnek vala. **1Móz 6:2**
+*És láták az Istennek fiai az emberek leányait, hogy szépek azok, és vevének magoknak feleségeket mind azok közűl, kiket megkedvelnek vala.*
 בְּנֵי הָאֱלֹהִים — "Isten fiai" látják és elveszik az emberek lányait
 
 <a id="ige-1móz-6-4"></a>
 **1Móz 6:4**
-> Az óriások valának a földön abban az időben, sőt még azután is, mikor az Isten fiai bémenének az emberek leányaihoz, és azok gyermekeket szűlének nékik. Ezek ama hatalmasok, kik eleitől fogva híres-neves emberek voltak. **1Móz 6:4**
+*Az óriások valának a földön abban az időben, sőt még azután is, mikor az Isten fiai bémenének az emberek leányaihoz, és azok gyermekeket szűlének nékik. Ezek ama hatalmasok, kik eleitől fogva híres-neves emberek voltak.*
 נְפִלִים a földön; az egyesülésből születnek a גִּבֹּרִים, "ősidők óta neves emberek" — ⚠️ vitatott, hogy a nefilim és a gibborim azonosak-e
 
 <a id="ige-4móz-13-34"></a>
 **4Móz 13:34**
-> És láttunk ott óriásokat is, az óriások közül való Anáknak fiait, és olyanok valánk a magunk szemében, mint a sáskák, és az ő szemeikben is olyanok valánk. **4Móz 13:34**
+*És láttunk ott óriásokat is, az óriások közül való Anáknak fiait, és olyanok valánk a magunk szemében, mint a sáskák, és az ő szemeikben is olyanok valánk.*
 a kémek jelentésében נְפִלִים — Anák fiai mint a nefilim leszármazottai (a kémek szubjektív állítása, nem a narrátoré)
 
 <a id="ige-jób-1-6"></a>
 **Jób 1:6**
-> Lőn pedig egy napon, hogy eljövének az Istennek fiai, hogy udvaroljanak az Úr előtt; és eljöve a Sátán is közöttök. **Jób 1:6**
+*Lőn pedig egy napon, hogy eljövének az Istennek fiai, hogy udvaroljanak az Úr előtt; és eljöve a Sátán is közöttök.*
 בְּנֵי הָאֱלֹהִים megjelennek Isten színe előtt, mennyei tanácsban, Sátán is közöttük
 
 <a id="ige-jób-2-1"></a>
 **Jób 2:1**
-> Lőn pedig, hogy egy napon eljövének az Istennek fiai, hogy udvaroljanak az Úr előtt. Eljöve a Sátán is közöttök, hogy udvaroljon az Úr előtt. **Jób 2:1**
+*Lőn pedig, hogy egy napon eljövének az Istennek fiai, hogy udvaroljanak az Úr előtt. Eljöve a Sátán is közöttök, hogy udvaroljon az Úr előtt.*
 ugyanaz a jelenet megismétlődik
 
 <a id="ige-jób-38-7"></a>
 **Jób 38:7**
-> Mikor együtt örvendezének a hajnalcsillagok, és Istennek minden fiai vigadozának? **Jób 38:7**
+*Mikor együtt örvendezének a hajnalcsillagok, és Istennek minden fiai vigadozának?*
 a בְּנֵי אֱלֹהִים örömkiáltása a teremtéskor (névelő nélküli, rokon alak)
 
 <a id="ige-2pét-2-4-5"></a>
 **2Pét 2:4-5**
-> Mert ha nem kedvezett az Isten a bűnbe esett angyaloknak, hanem mélységbe taszítván, a sötétség lánczaira adta oda őket, hogy fenntartassanak az ítéletre; **2Pét 2:4**
-> És ha a régi világnak sem kedvezett, de Nóét az igazság hirdetőjét, nyolczad magával megőrizte, özönvízzel borítván el az istentelenek világát; **2Pét 2:5**
+*Mert ha nem kedvezett az Isten a bűnbe esett angyaloknak, hanem mélységbe taszítván, a sötétség lánczaira adta oda őket, hogy fenntartassanak az ítéletre;*
+*És ha a régi világnak sem kedvezett, de Nóét az igazság hirdetőjét, nyolczad magával megőrizte, özönvízzel borítván el az istentelenek világát;*
 Isten nem kegyelmezett a bűnbe esett angyaloknak, Tartaroszba vetette őket — tematikus/szerkezeti (párhuzamos "nem kegyelmezett" formula), NEM közös lexikai gyök
 
 <a id="ige-júd-1-6"></a>
 **Júd 1:6**
-> És az angyalokat is, a kik nem tartották meg fejedelemségöket, hanem elhagyták az ő lakóhelyöket, a nagy nap ítéletére örök bilincseken, sötétségben tartotta. **Júd 1:6**
+*És az angyalokat is, a kik nem tartották meg fejedelemségöket, hanem elhagyták az ő lakóhelyöket, a nagy nap ítéletére örök bilincseken, sötétségben tartotta.*
 angyalok, akik "nem tartották meg fejedelemségüket", örök bilincsben — tartalmi/szerkezeti rokonság 1Énokh 10:4-6, 10:11-12, 12:4-gyel (nem szó szerinti idézet)
 
 <a id="ige-júd-1-14-15"></a>
 **Júd 1:14-15**
-> Ezekről is prófétált pedig Énok, a ki Ádámtól fogva a hetedik volt, mondván: Ímé eljött az Úr az ő sok ezer szentjével, **Júd 1:14**
-> Hogy ítéletet tartson mindenek felett, és feddőzzék mindazok ellen, a kik közöttök istentelenek, istentelenségöknek minden cselekedetéért, a melyekkel istentelenkedtek, és minden kemény beszédért, a melyet az istentelen bűnösök szóltak ő ellene. **Júd 1:15**
+*Ezekről is prófétált pedig Énok, a ki Ádámtól fogva a hetedik volt, mondván: Ímé eljött az Úr az ő sok ezer szentjével,*
+*Hogy ítéletet tartson mindenek felett, és feddőzzék mindazok ellen, a kik közöttök istentelenek, istentelenségöknek minden cselekedetéért, a melyekkel istentelenkedtek, és minden kemény beszédért, a melyet az istentelen bűnösök szóltak ő ellene.*
 Énokh próféciája az ítéletről — közvetlen, szinte szó szerinti idézet 1Énokh 1:9-ből
 
 <!-- GENERÁLT-VÉGE: lexikon#MENNY-001#elofordulasok -->
@@ -150,13 +150,11 @@ angyalok, akik "nem tartották meg fejedelemségüket", örök bilincsben — ta
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#szocikkek | forrás: konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0 | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#szocikkek | forrás: konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/TBESH.txt | licenc: CC BY 4.0, CC BY-SA 4.0 | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: MENNY-001]` motívum 3 Strong-tokenjét fedi, nincs jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
-### H0430
-
-**Kiejtés:** 'E.lo.Him
+### H0430 — אֱלֹהִים (e.lo.him)
 
 **TWOT:** 93c
 
@@ -164,9 +162,7 @@ angyalok, akik "nem tartották meg fejedelemségüket", örök bilincsben — ta
 
 Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### H1121
-
-**Kiejtés:** va.Nim
+### H1121 — בֵּן (ben)
 
 **TWOT:** 254
 
@@ -174,9 +170,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### H5303
-
-**Kiejtés:** ne.fi.Lim
+### H5303 — נְפִלִים (ne.phil)
 
 **TWOT:** 1393a
 
@@ -202,12 +196,12 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 6:2 | Genesis 6:2 | בְנֵי (ve.nei-) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 6:4 | Genesis 6:4 | נְּפִלִ֞ים (ne.fi.Lim) | — | kutatói azonosítás függőben | LXX_OS |
-| Jób 1:6 | Job (LXX) 1:6 | בְּנֵ֣י (be.Nei) | — | kutatói azonosítás függőben | LXX_OS |
-| Jób 2:1 | Job (LXX) 2:1 | בְּנֵ֣י (be.Nei) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 6:2 | 1Móz 6:2 | בְנֵי (ve.nei-) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 6:4 | 1Móz 6:4 | נְּפִלִ֞ים (ne.fi.Lim) | — | kutatói azonosítás függőben | LXX_OS |
+| Jób 1:6 | Jób 1:6 | בְּנֵ֣י (be.Nei) | — | kutatói azonosítás függőben | LXX_OS |
+| Jób 2:1 | Jób 2:1 | בְּנֵ֣י (be.Nei) | — | kutatói azonosítás függőben | LXX_OS |
 | Jób 38:7 | — | בְּנֵ֥י (be.Nei) | — | szamozas_elteres | LXX_OS |
-| 4Móz 13:34 | Numbers 13:33 | נְּפִלִ֑ים (ne.fi.Lim) | — | kutatói azonosítás függőben | LXX_OS |
+| 4Móz 13:34 | 4Móz(LXX) 13:33 | נְּפִלִ֑ים (ne.fi.Lim) | — | kutatói azonosítás függőben | LXX_OS |
 
 *Összesítés: egyező=0, eltérő=0, kutatói azonosítás függőben=5, szamozas_elteres=1.*
 
@@ -267,19 +261,17 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 ## 6. Értelmezés *(kézi)*
 
-## 1/b. PaRDeS keretrendszer *(kézi)*
+### PaRDeS keretrendszer
 
 *Kézzel írandó — a forrás-study 3. pontja alapján, a 2. szakasz lexikai adataival bővítve.*
 
-## 7. ÚJ FELISMERÉS *(kézi, ha van)*
-
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
-## 6. Módszertani napló *(kézi)*
+### Módszertani napló
 
 *Kézzel írandó.*
 
-## 8. Nyitott kérdések és séma-korlátok *(kézi)*
+### Nyitott kérdések és séma-korlátok
 
 *Kézzel írandó.*
 
@@ -287,7 +279,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
 
-*Ez a blokk a `[ID: MENNY-001]` motívum hivatkozási adatait és a ténylegesen felhasznált szótárak listáját adja (G9, LEXV2_3-ig szűkítve).*
+*Ez a blokk a `[ID: MENNY-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
 **Hogyan hivatkozz:**
 - ID: `MENNY-001`
@@ -297,6 +289,15 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/MENNY-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
+- OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám (`konkordancia/OSHL_lexikalis_index.tsv`, CC BY 4.0)
+- SDBH (Semantic Dictionary of Biblical Hebrew) (`konkordancia/SDBH_domenek.tsv`, CC BY-SA 4.0)
+- TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, CC BY 4.0)
+- TSK (Treasury of Scripture Knowledge) (`konkordancia/TSK_kereszthivatkozasok.tsv`, CC BY 4.0)
+- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_jelentesek.tsv`, CC BY-SA 4.0)
+- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_referenciak.tsv`, CC BY-SA 4.0)
+- LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz) (`konkordancia/LXX_OS/genesis.tsv`, `konkordancia/LXX_OS/job-lxx.tsv`, `konkordancia/LXX_OS/numbers.tsv`, CC BY 4.0)
+
+**Adatforrások:**
 - `adat/elofordulasok.tsv` (projekt-adat)
 - `adat/forditas_ubs.tsv` (projekt-adat)
 - `adat/jeloltek.tsv` (projekt-adat)
@@ -304,20 +305,12 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 - `adat/motivumok.tsv` (projekt-adat)
 - `konkordancia/Karoli_1908.tsv` (közkincs)
 - `konkordancia/Karoli_kereszthivatkozasok.tsv` (közkincs)
-- `konkordancia/LXX_OS/genesis.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/job-lxx.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/numbers.tsv` (CC BY 4.0)
-- `konkordancia/OSHL_lexikalis_index.tsv` (CC BY 4.0)
-- `konkordancia/SDBH_domenek.tsv` (CC BY-SA 4.0)
-- `konkordancia/TSK_kereszthivatkozasok.tsv` (CC BY 4.0)
-- `konkordancia/UBS_DNTG_jelentesek.tsv` (CC BY-SA 4.0)
-- `konkordancia/UBS_DNTG_referenciak.tsv` (CC BY-SA 4.0)
 
 <!-- GENERÁLT-VÉGE: lexikon#MENNY-001#idezes -->
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: MENNY-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
@@ -352,6 +345,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 | `numbers.tsv` | `konkordancia/LXX_OS/numbers.tsv` | CC BY 4.0 | lxx |
 | `OSHL_lexikalis_index.tsv` | `konkordancia/OSHL_lexikalis_index.tsv` | CC BY 4.0 | szocikkek |
 | `SDBH_domenek.tsv` | `konkordancia/SDBH_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
+| `TBESH.txt` | `konkordancia/TBESH.txt` | CC BY 4.0 | szocikkek |
 | `TSK_kereszthivatkozasok.tsv` | `konkordancia/TSK_kereszthivatkozasok.tsv` | CC BY 4.0 | kereszthivatkozasok |
 | `UBS_DNTG_jelentesek.tsv` | `konkordancia/UBS_DNTG_jelentesek.tsv` | CC BY-SA 4.0 | elofordulasok |
 | `UBS_DNTG_referenciak.tsv` | `konkordancia/UBS_DNTG_referenciak.tsv` | CC BY-SA 4.0 | elofordulasok |

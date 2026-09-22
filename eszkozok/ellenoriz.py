@@ -458,12 +458,19 @@ def szabaly10_v22_tablak(adat_dir):
 
     lxx_fejlec, lxx_sorok = G.tsv_beolvas(os.path.join(adat_dir, 'lxx_dontesek.tsv'))
     vart_lxx_fejlec = ['id', 'igehely', 'lxx_igehely', 'heber_strong', 'gorog_lemma',
-                        'gorog_strong', 'lxx_pozicio', 'megjegyzes', 'proveniencia']
+                        'gorog_strong', 'lxx_pozicio', 'tipus', 'megjegyzes', 'proveniencia']
     if lxx_fejlec != vart_lxx_fejlec:
         hibas.append('lxx_dontesek.tsv fejlec eltero: %r' % (lxx_fejlec,))
+    LXX_DONTES_TIPUSOK = {'eltero_forditas', 'lxx_minusz'}
     for sor in lxx_sorok:
-        if not (sor.get('igehely') or '').strip() or not (sor.get('gorog_strong') or '').strip():
-            hibas.append('lxx_dontesek.tsv %s: igehely vagy gorog_strong ures' % sor.get('id'))
+        if not (sor.get('igehely') or '').strip():
+            hibas.append('lxx_dontesek.tsv %s: igehely ures' % sor.get('id'))
+        tipus = (sor.get('tipus') or '').strip()
+        if tipus not in LXX_DONTES_TIPUSOK:
+            hibas.append('lxx_dontesek.tsv %s: tipus=%r nem eleme a {eltero_forditas, lxx_minusz} halmaznak'
+                          % (sor.get('id'), tipus))
+        elif tipus == 'eltero_forditas' and not (sor.get('gorog_lemma') or '').strip():
+            hibas.append('lxx_dontesek.tsv %s: tipus=eltero_forditas, de gorog_lemma ures' % sor.get('id'))
 
     if hibas:
         return Sor('10. LEXV2_2 tablak (forditas_ubs, lxx_dontesek)', 'SÉRTÉS', len(hibas), hibas)

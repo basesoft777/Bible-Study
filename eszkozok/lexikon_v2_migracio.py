@@ -96,35 +96,91 @@ def _darab_szoveg(darab):
     return cimsor
 
 
-def ertelmezes_szoveg(darabok):
+def _van_tartalom(darab):
+    return darab is not None and darab[1].strip() != ''
+
+
+# V2.6a pont 1: az áthelyezett kézi szakaszok címét a migráció egy
+# szinttel lejjebb teszi és a régi számot elhagyja -- csak azoknál a
+# szakaszoknál, amelyek egy ÚJ, összevont cím alá kerülnek (6. Értelmezés,
+# 7. Módszertan és nyitott kérdések). A G11 a szakasztörzsre vonatkozik
+# (bájtra azonos); a CÍM ezeknél a szakaszoknál szándékosan változik.
+UJ_CIM = {
+    'pardes_keretrendszer': '### PaRDeS keretrendszer',
+    'uj_felismeres': '### Új felismerés',
+    'modszertani_naplo': '### Módszertani napló',
+    'nyitott_kerdesek': '### Nyitott kérdések és séma-korlátok',
+}
+
+_KEZI_SUFFIX_RE = re.compile(r'\s*\*\(kézi[^)]*\)\*\s*$')
+
+
+def demote_body_headings(torzs):
+    """Minden # -kezdetű sor eggyel mélyebb szintre kerül (### -> ####,
+    stb.) -- az összevont szakasz alá kerülő törzs belső headingjeihez."""
+    sorok = torzs.split('\n')
+    return '\n'.join(('#' + sor) if HEADING_RE.match(sor) else sor for sor in sorok)
+
+
+def undemote_body_headings(torzs):
+    sorok = torzs.split('\n')
+    return '\n'.join((sor[1:] if HEADING_RE.match(sor) else sor) for sor in sorok)
+
+
+def _darab_uj_cimmel(darabok, kulcs):
+    """(uj_szoveg_resz, ellenorzo_fv) -- a demótált cím+törzs darab, és egy
+    függvény, ami True-t ad, ha a kapott (regi_torzs) visszaadja a
+    demótált törzset (fordítva)."""
+    darab = darabok.get(kulcs)
+    if not _van_tartalom(darab):
+        return None, None
+    _regi_cimsor, torzs = darab
+    demotalt_torzs = demote_body_headings(torzs)
+    uj_cim = UJ_CIM[kulcs]
+    resz = uj_cim + '\n\n' + demotalt_torzs
+    return resz, demotalt_torzs
+
+
+def ertelmezes_szoveg(darabok, cimvaltasok):
     reszek = []
-    d = _darab_szoveg(darabok.get('pardes_keretrendszer'))
-    if d:
-        reszek.append(d)
-    d = _darab_szoveg(darabok.get('uj_felismeres'))
-    if d:
-        reszek.append(d)
+    for kulcs in ('pardes_keretrendszer', 'uj_felismeres'):
+        resz, demotalt_torzs = _darab_uj_cimmel(darabok, kulcs)
+        if resz is None:
+            continue
+        reszek.append(resz)
+        regi_cimsor = darabok[kulcs][0]
+        cimvaltasok.append((kulcs, regi_cimsor, UJ_CIM[kulcs]))
     if not reszek:
         return '*Kézzel írandó — a forrás-study PaRDeS keretrendszere, bővítve a lexikai leletekkel.*'
     return '\n\n'.join(reszek)
 
 
-def modszertan_szoveg(darabok):
+def modszertan_szoveg(darabok, cimvaltasok):
     reszek = []
-    d = _darab_szoveg(darabok.get('modszertani_naplo'))
-    if d:
-        reszek.append(d)
-    d = _darab_szoveg(darabok.get('nyitott_kerdesek'))
-    if d:
-        reszek.append(d)
+    for kulcs in ('modszertani_naplo', 'nyitott_kerdesek'):
+        resz, _demotalt_torzs = _darab_uj_cimmel(darabok, kulcs)
+        if resz is None:
+            continue
+        reszek.append(resz)
+        regi_cimsor = darabok[kulcs][0]
+        cimvaltasok.append((kulcs, regi_cimsor, UJ_CIM[kulcs]))
     if not reszek:
         return '*Kézzel írandó.*'
     return '\n\n'.join(reszek)
 
 
-def kettosb_szoveg(darabok, kulcs, alapertelmezett):
-    d = _darab_szoveg(darabok.get(kulcs))
-    return d if d else alapertelmezett
+def teljesbszotar_szoveg(darabok, alapertelmezett, cimvaltasok):
+    """2/b: a generikus '### 2/b *(kézi, ha van)*' helyőrző CSAK akkor
+    marad, ha nincs valódi kézi 2/b -- ha van, a régi cím marad, csak a
+    '*(kézi...)*' jelölés esik le (nincs számváltás, nincs demótálás,
+    mert a szint nem változik)."""
+    darab = darabok.get('teljes_szotari_anyag')
+    if not _van_tartalom(darab):
+        return alapertelmezett
+    regi_cimsor, torzs = darab
+    uj_cim = _KEZI_SUFFIX_RE.sub('', regi_cimsor)
+    cimvaltasok.append(('teljes_szotari_anyag', regi_cimsor, uj_cim))
+    return uj_cim + '\n\n' + torzs
 
 
 def torzs_szoveg(darabok, kulcs, alapertelmezett):
@@ -140,26 +196,39 @@ def torzs_szoveg(darabok, kulcs, alapertelmezett):
 
 
 def onellenorzes(regi_szoveg, uj_szoveg, darabok):
-    """Minden nem-üres kézi darab (cimsor+torzs) szó szerint (bájtra
-    azonosan) megtalálható-e az új szövegben. Hibalistát ad vissza."""
+    """Szakaszonkénti hitelesség-ellenőrzés: a torzs (cím nélkül) mindig
+    bájtra azonosan kell megtaláljon (demótált alakban a demótált
+    szakaszoknál, változatlanul a többinél) -- a CÍM ezeknél a
+    szakaszoknál szándékosan más (l. UJ_CIM), ezért a cím NEM kerül
+    összevetésre. Hibalistát ad vissza."""
     hibak = []
     for kulcs, _cim_re, _szint in KEZI_SZAKASZOK:
         darab = darabok.get(kulcs)
-        if darab is None:
+        if not _van_tartalom(darab):
             continue
-        eredeti = _darab_szoveg(darab)
-        if eredeti not in uj_szoveg:
-            hibak.append('%s: a kézi darab nem található meg változatlanul az új fájlban' % kulcs)
-        if eredeti not in regi_szoveg:
-            hibak.append('%s: a kézi darab (önellenőrzési hiba: nem is volt a régiben?)' % kulcs)
+        _regi_cimsor, torzs = darab
+
+        if kulcs in UJ_CIM:
+            elvart_torzs = demote_body_headings(torzs)
+            if undemote_body_headings(elvart_torzs) != torzs:
+                hibak.append('%s: a demótálás nem fordítható vissza hibátlanul' % kulcs)
+        else:
+            elvart_torzs = torzs
+
+        if elvart_torzs not in uj_szoveg:
+            hibak.append('%s: a kézi szakasztörzs nem található meg (bájtra azonosan) az új fájlban' % kulcs)
+        if torzs not in regi_szoveg:
+            hibak.append('%s: a kézi szakasztörzs (önellenőrzési hiba: nem is volt a régiben?)' % kulcs)
     return hibak
 
 
 def epit_uj_fajl_migralva(m, blokkok, darabok):
     """A Kivonat szakaszra a régi v1 fájlban nincs megfelelő -- ott a
     generátor alapértelmezett placeholdere marad (G11: a migráció nem
-    talál ki kézi szöveget, ahol nem volt)."""
-    return (LG.VAZ_SABLON % {
+    talál ki kézi szöveget, ahol nem volt). Visszaad: (uj_szoveg,
+    cimvaltasok) -- a cimvaltasok [(kulcs, regi_cim, uj_cim), ...]."""
+    cimvaltasok = []
+    szoveg = (LG.VAZ_SABLON % {
         'id': m['id'],
         'cim': m.get('cim', ''),
         'tartalom': blokkok['tartalom'],
@@ -174,7 +243,7 @@ def epit_uj_fajl_migralva(m, blokkok, darabok):
         'kolofon': blokkok['kolofon'],
     }).replace(
         '### 2/b *(kézi, ha van)*\n\n*Kézzel írandó, ha van.*',
-        '### 2/b *(kézi, ha van)*\n\n' + kettosb_szoveg(darabok, 'teljes_szotari_anyag', '*Kézzel írandó, ha van.*')
+        teljesbszotar_szoveg(darabok, '### 2/b *(kézi, ha van)*\n\n*Kézzel írandó, ha van.*', cimvaltasok)
     ).replace(
         '### Miért fontos ez a lelet *(kézi)*\n\n*Kézzel írandó.*',
         '### Miért fontos ez a lelet *(kézi)*\n\n' + torzs_szoveg(darabok, 'miert_fontos', '*Kézzel írandó.*')
@@ -188,11 +257,12 @@ def epit_uj_fajl_migralva(m, blokkok, darabok):
     ).replace(
         '## 6. Értelmezés *(kézi)*\n\n*Kézzel írandó — a forrás-study PaRDeS keretrendszere, '
         'bővítve a lexikai leletekkel.*',
-        '## 6. Értelmezés *(kézi)*\n\n' + ertelmezes_szoveg(darabok)
+        '## 6. Értelmezés *(kézi)*\n\n' + ertelmezes_szoveg(darabok, cimvaltasok)
     ).replace(
         '## 7. Módszertan és nyitott kérdések *(kézi)*\n\n*Kézzel írandó.*',
-        '## 7. Módszertan és nyitott kérdések *(kézi)*\n\n' + modszertan_szoveg(darabok)
+        '## 7. Módszertan és nyitott kérdések *(kézi)*\n\n' + modszertan_szoveg(darabok, cimvaltasok)
     )
+    return szoveg, cimvaltasok
 
 
 def migral_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek, regi_ut, celkonyvtar):
@@ -201,17 +271,17 @@ def migral_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek, regi_ut, celkonyvtar
 
     darabok = kezi_darabok_kiolvasasa(regi_szoveg)
     blokkok, _tisztazatlan = LG.render_lexikon_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek)
-    uj_szoveg = epit_uj_fajl_migralva(m, blokkok, darabok)
+    uj_szoveg, cimvaltasok = epit_uj_fajl_migralva(m, blokkok, darabok)
 
     hibak = onellenorzes(regi_szoveg, uj_szoveg, darabok)
     if hibak:
-        return None, darabok, hibak
+        return None, darabok, cimvaltasok, hibak
 
     cel_ut = os.path.join(celkonyvtar, '%s_TUDOMANYOS.md' % m['id'])
     os.makedirs(celkonyvtar, exist_ok=True)
     with io.open(cel_ut, 'w', encoding='utf-8', newline='\n') as f:
         f.write(uj_szoveg)
-    return cel_ut, darabok, []
+    return cel_ut, darabok, cimvaltasok, []
 
 
 def main():
@@ -239,7 +309,8 @@ def main():
         if not sorai:
             continue
 
-        cel_ut, darabok, hibak = migral_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek, regi_ut, celkonyvtar)
+        cel_ut, darabok, cimvaltasok, hibak = migral_egy_id(
+            m, sorai, konyv_sorrend, hianyzo_konyvek, regi_ut, celkonyvtar)
         if hibak:
             hiba_volt = True
             print('  %s: MEGALLAS -- onellenorzes hibaja:' % m['id'])
@@ -251,6 +322,8 @@ def main():
         print('  %s: %s (%d bájt) -- kézi szakaszok átemelve: %s'
               % (m['id'], os.path.relpath(cel_ut, ROOT), os.path.getsize(cel_ut),
                  ', '.join(szakaszlista) if szakaszlista else '(nincs)'))
+        for kulcs, regi_cim, uj_cim in cimvaltasok:
+            print('      cím (%s): %r -> %r' % (kulcs, regi_cim, uj_cim))
 
     if hiba_volt:
         sys.exit(2)

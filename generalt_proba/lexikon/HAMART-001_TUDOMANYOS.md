@@ -174,287 +174,287 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 <a id="ige-1móz-3-14"></a>
 **1Móz 3:14**
-> És monda az Úr Isten a kígyónak: Mivelhogy ezt cselekedted, átkozott légy minden barom és minden mezei vad között; hasadon járj, és port egyél életed minden napjaiban. **1Móz 3:14**
+*És monda az Úr Isten a kígyónak: Mivelhogy ezt cselekedted, átkozott légy minden barom és minden mezei vad között; hasadon járj, és port egyél életed minden napjaiban.*
 אָרוּר (árúr) — az átok első kimondása, a kígyóra
 
 <a id="ige-1móz-3-16"></a>
 **1Móz 3:16**
-> Az asszonynak monda: Felette igen megsokasítom viselősséged fájdalmait, fájdalommal szűlsz magzatokat; és epekedel a te férjed után, ő pedig uralkodik te rajtad. **1Móz 3:16**
+*Az asszonynak monda: Felette igen megsokasítom viselősséged fájdalmait, fájdalommal szűlsz magzatokat; és epekedel a te férjed után, ő pedig uralkodik te rajtad.*
 עִצְּבוֹנֵךְ (itzevónékh) — a fájdalom az asszonyra
 
 <a id="ige-1móz-3-17"></a>
 **1Móz 3:17**
-> Az embernek pedig monda: Mivelhogy hallgattál a te feleséged szavára, és ettél arról a fáról, a melyről azt parancsoltam, hogy ne egyél arról: Átkozott legyen a föld te miattad, fáradságos munkával élj belőle életednek minden napjaiban. **1Móz 3:17**
+*Az embernek pedig monda: Mivelhogy hallgattál a te feleséged szavára, és ettél arról a fáról, a melyről azt parancsoltam, hogy ne egyél arról: Átkozott legyen a föld te miattad, fáradságos munkával élj belőle életednek minden napjaiban.*
 אֲרוּרָה הָאֲדָמָה בַּעֲבוּרֶךָ (arúrá há'adamá ba'avúrekhá) — nem az ember átkoztatik meg, hanem a föld miatta; a következmény az elkövetőn kívülre lép
 
 <a id="ige-1móz-3-18"></a>
 **1Móz 3:18**
-> Töviset és bogácskórót teremjen tenéked; s egyed a mezőnek fűvét. **1Móz 3:18**
+*Töviset és bogácskórót teremjen tenéked; s egyed a mezőnek fűvét.*
 קוֹץ וְדַרְדַּר (kóc vedardar) — tövis és bogáncs mint az átkozott föld terméke
 
 <a id="ige-1móz-3-19"></a>
 **1Móz 3:19**
-> Orczád verítékével egyed a te kenyeredet, míglen visszatérsz a földbe, mert abból vétettél: mert por vagy te s ismét porrá leszesz. **1Móz 3:19**
+*Orczád verítékével egyed a te kenyeredet, míglen visszatérsz a földbe, mert abból vétettél: mert por vagy te s ismét porrá leszesz.*
 אֲדָמָה (adamá) — a föld, amelybe visszatér, és amelyhez kiűzetve odaköttetik
 
 <a id="ige-1móz-3-23"></a>
 **1Móz 3:23**
-> Kiküldé őt az Úr Isten az Éden kertjéből, hogy mívelje a földet, a melyből vétetett vala. **1Móz 3:23**
+*Kiküldé őt az Úr Isten az Éden kertjéből, hogy mívelje a földet, a melyből vétetett vala.*
 אֲדָמָה (adamá) — a föld, amelybe visszatér, és amelyhez kiűzetve odaköttetik
 
 <a id="ige-1móz-4-2-3"></a>
 **1Móz 4:2-3**
-> És ismét szűlé annak atyjafiát, Ábelt. És Ábel juhok pásztora lőn, Kain pedig földmívelő. **1Móz 4:2**
-> Lőn pedig idő multával, hogy Kain ajándékot vive az Úrnak a föld gyümölcséből. **1Móz 4:3**
+*És ismét szűlé annak atyjafiát, Ábelt. És Ábel juhok pásztora lőn, Kain pedig földmívelő.*
+*Lőn pedig idő multával, hogy Kain ajándékot vive az Úrnak a föld gyümölcséből.*
 אֲדָמָה (adamá) — Kain "földmívelő", és a földből hozza áldozatát: az átkozott föld a testvéri konfliktus színtere
 
 <a id="ige-1móz-4-7"></a>
 **1Móz 4:7**
-> Hiszen, ha jól cselekszel, emelt fővel járhatsz; ha pedig nem jól cselekszel, a bűn az ajtó előtt leselkedik, és reád van vágyódása; de te uralkodjál rajta. **1Móz 4:7**
+*Hiszen, ha jól cselekszel, emelt fővel járhatsz; ha pedig nem jól cselekszel, a bűn az ajtó előtt leselkedik, és reád van vágyódása; de te uralkodjál rajta.*
 חַטָּאת — a "bűn" szó első előfordulása a Szentírásban, nem áldozatként, hanem az ajtóban leselkedő hatalomként
 
 <a id="ige-1móz-4-10-11"></a>
 **1Móz 4:10-11**
-> Monda pedig az Úr: Mit cselekedtél? A te atyádfiának vére kiált én hozzám a földről. **1Móz 4:10**
-> Mostan azért átkozott légy e földön, mely megnyitotta az ő száját, hogy befogadja a te atyádfiának vérét, a te kezedből. **1Móz 4:11**
+*Monda pedig az Úr: Mit cselekedtél? A te atyádfiának vére kiált én hozzám a földről.*
+*Mostan azért átkozott légy e földön, mely megnyitotta az ő száját, hogy befogadja a te atyádfiának vérét, a te kezedből.*
 אָרוּר אַתָּה מִן־הָאֲדָמָה (árúr attá min-há'adamá) — fokozás: most már nem a föld, hanem a személy az átok alanya, és éppen a föld felől; ugyanaz a két szó, felcserélt szereposztásban
 
 <a id="ige-1móz-4-12"></a>
 **1Móz 4:12**
-> Mikor a földet míveled, ne adja az többé néked az ő termő erejét, bujdosó és vándorló légy a földön. **1Móz 4:12**
+*Mikor a földet míveled, ne adja az többé néked az ő termő erejét, bujdosó és vándorló légy a földön.*
 אֲדָמָה (adamá) — a föld megtagadja termőerejét, és Kain elűzetik róla: a 3:17-19 büntetés megismételve, szigorítva
 
 <a id="ige-1móz-4-14"></a>
 **1Móz 4:14**
-> Ímé elűzöl engem ma e földnek színéről, és a te színed elől el kell rejtőznöm; bujdosó és vándorló leszek a földön, és akkor akárki talál reám, megöl engemet. **1Móz 4:14**
+*Ímé elűzöl engem ma e földnek színéről, és a te színed elől el kell rejtőznöm; bujdosó és vándorló leszek a földön, és akkor akárki talál reám, megöl engemet.*
 אֲדָמָה (adamá) — a föld megtagadja termőerejét, és Kain elűzetik róla: a 3:17-19 büntetés megismételve, szigorítva
 
 <a id="ige-1móz-5-29"></a>
 **1Móz 5:29**
-> És nevezé azt Noénak, mondván: Ez vígasztal meg minket munkálkodásunkban s kezünk terhes fáradozásában e földön, melyet megátkozott az Úr. **1Móz 5:29**
+*És nevezé azt Noénak, mondván: Ez vígasztal meg minket munkálkodásunkban s kezünk terhes fáradozásában e földön, melyet megátkozott az Úr.*
 A lánc forgópontja: Lámek Noé névadásában egyetlen mondatban idézi vissza mindhárom kulcsszót — עִצְּבוֹן (itzevón) + אֲדָמָה (adamá) + אֵרְרָהּ יְהוָה (érerá JHVH, Pi'él) —, és vigasztalást vár alóla
 
 <a id="ige-1móz-6-5"></a>
 **1Móz 6:5**
-> És látá az Úr, hogy megsokasult az ember gonoszsága a földön, és hogy szíve gondolatának minden alkotása szüntelen csak gonosz. **1Móz 6:5**
+*És látá az Úr, hogy megsokasult az ember gonoszsága a földön, és hogy szíve gondolatának minden alkotása szüntelen csak gonosz.*
 רָעָה / רַע (rá'á / ra) — a diagnózis kiterjesztése: a gonoszság nem tettekben, hanem a szív minden gondolat-alkotásában
 
 <a id="ige-1móz-6-7"></a>
 **1Móz 6:7**
-> És monda az Úr: Eltörlöm az embert, a kit teremtettem, a földnek színéről; az embert, a barmot, a csúszó-mászó állatokat, és az ég madarait; mert bánom, hogy azokat teremtettem. **1Móz 6:7**
+*És monda az Úr: Eltörlöm az embert, a kit teremtettem, a földnek színéről; az embert, a barmot, a csúszó-mászó állatokat, és az ég madarait; mert bánom, hogy azokat teremtettem.*
 אֲדָמָה (adamá) — "eltörlöm az embert a föld színéről": a következmény visszatér ahhoz a szóhoz, amellyel 3:17-ben elindult
 
 <a id="ige-1móz-6-11"></a>
 **1Móz 6:11**
-> A föld pedig romlott vala Isten előtt és megtelék a föld erőszakoskodással. **1Móz 6:11**
+*A föld pedig romlott vala Isten előtt és megtelék a föld erőszakoskodással.*
 וַתִּשָּׁחֵת הָאָרֶץ (vattissáchét há'árec, Nif'ál) + וַתִּמָּלֵא הָאָרֶץ חָמָס — a föld megromlott és megtelt erőszakkal
 
 <a id="ige-1móz-6-12"></a>
 **1Móz 6:12**
-> Tekinte azért Isten a földre, és ímé meg vala romolva, mert minden test megrontotta vala az ő útát a földön. **1Móz 6:12**
+*Tekinte azért Isten a földre, és ímé meg vala romolva, mert minden test megrontotta vala az ő útát a földön.*
 נִשְׁחָתָה (nishcháta, Nif'ál) + הִשְׁחִית כָּל־בָּשָׂר (hishchít kol-bászár, Hif'íl) — a romlás nem baleset: minden test aktívan megrontotta a maga útját
 
 <a id="ige-1móz-6-13"></a>
 **1Móz 6:13**
-> Monda azért Isten Noénak: Minden testnek vége elérkezett előttem, mivelhogy a föld erőszakoskodással telt meg általok: és ímé elvesztem őket a földdel egybe. **1Móz 6:13**
+*Monda azért Isten Noénak: Minden testnek vége elérkezett előttem, mivelhogy a föld erőszakoskodással telt meg általok: és ímé elvesztem őket a földdel egybe.*
 מָלְאָה הָאָרֶץ חָמָס + מַשְׁחִיתָם (mashchítám) — Isten ugyanazzal az igével felel, amellyel az ember vétkezett
 
 <a id="ige-1móz-6-17"></a>
 **1Móz 6:17**
-> Én pedig ímé özönvizet hozok a földre, hogy elveszessek minden testet, a melyben élő lélek van az ég alatt; valami a földön van, elvész. **1Móz 6:17**
+*Én pedig ímé özönvizet hozok a földre, hogy elveszessek minden testet, a melyben élő lélek van az ég alatt; valami a földön van, elvész.*
 לְשַׁחֵת כָּל־בָּשָׂר (lesachét, Pi'él) — az özönvíz célja szó szerint ugyanaz az ige, mint a 6:12 emberi cselekvése
 
 <a id="ige-1móz-8-21"></a>
 **1Móz 8:21**
-> És megérezé az Úr a kedves illatot, és monda az Úr az ő szívében: Nem átkozom meg többé a földet az emberért, mert az ember szívének gondolatja gonosz az ő ifjúságától fogva; és többé nem vesztem el mind az élő állatot, mint cselekedtem. **1Móz 8:21**
+*És megérezé az Úr a kedves illatot, és monda az Úr az ő szívében: Nem átkozom meg többé a földet az emberért, mert az ember szívének gondolatja gonosz az ő ifjúságától fogva; és többé nem vesztem el mind az élő állatot, mint cselekedtem.*
 לֹא אֹסִף לְקַלֵּל (ló oszíf lekallél) עוֹד אֶת־הָאֲדָמָה — lexikai finomság: az ígéret nem a 3:17 arar-t vonja vissza, hanem egy másik igét (קָלַל, kalal, H7043) tagad meg; az emberi szív állapotára adott indoklás (רַע) változatlan marad
 
 <a id="ige-1móz-9-11"></a>
 **1Móz 9:11**
-> Szövetséget kötök ti veletek, hogy soha ezután el nem vész özönvíz miatt minden test; és soha sem lesz többé özönvíz a földnek elvesztésére. **1Móz 9:11**
+*Szövetséget kötök ti veletek, hogy soha ezután el nem vész özönvíz miatt minden test; és soha sem lesz többé özönvíz a földnek elvesztésére.*
 לְשַׁחֵת (lesachét, Pi'él) tagadva — a szövetség pontosan azt az igét zárja ki a jövőből, amellyel a 6:13,17 ítélet megtörtént
 
 <a id="ige-1móz-9-15"></a>
 **1Móz 9:15**
-> És megemlékezem az én szövetségemről, mely van én közöttem és ti közöttetek, és minden testből való élő állat között; és nem lesz többé a víz özönné minden testnek elvesztésére. **1Móz 9:15**
+*És megemlékezem az én szövetségemről, mely van én közöttem és ti közöttetek, és minden testből való élő állat között; és nem lesz többé a víz özönné minden testnek elvesztésére.*
 לְשַׁחֵת (lesachét, Pi'él) tagadva — a szövetség pontosan azt az igét zárja ki a jövőből, amellyel a 6:13,17 ítélet megtörtént
 
 <a id="ige-1móz-9-25"></a>
 **1Móz 9:25**
-> Monda: Átkozott Kanaán! Szolgák szolgája legyen atyjafiai közt. **1Móz 9:25**
+*Monda: Átkozott Kanaán! Szolgák szolgája legyen atyjafiai közt.*
 אָרוּר כְּנָעַן (árúr Kenáan) — az átok-lánc az özönvíz után azonnal újraindul, immár egy leszármazottra
 
 <a id="ige-1móz-12-3"></a>
 **1Móz 12:3**
-> És megáldom azokat, a kik téged áldanak, és a ki téged átkoz, megátkozom azt: és megáldatnak te benned a föld minden nemzetségei. **1Móz 12:3**
+*És megáldom azokat, a kik téged áldanak, és a ki téged átkoz, megátkozom azt: és megáldatnak te benned a föld minden nemzetségei.*
 וּמְקַלֶּלְךָ אָאֹר ... וְנִבְרְכוּ בְךָ כֹּל מִשְׁפְּחֹת הָאֲדָמָה (umkalelkhá á'ór ... venivrekhú vekhá kol mispechót há'adamá) — a lánc megfordítása: ugyanaz az ige (arar) és ugyanaz a főnév (adamá), de most az áldás keretében
 
 <a id="ige-5móz-27-15-26"></a>
 **5Móz 27:15-26**
-> Átkozott az ember, a ki faragott és öntött képet csinál, útálatára az Úrnak, mesterember kezének munkáját, és rejtve tartja azt! És feleljen az egész nép és mondja: Ámen! **5Móz 27:15**
-> Átkozott a ki kevésre becsüli az ő atyját vagy anyját! És mondja az egész nép: Ámen! **5Móz 27:16**
-> Átkozott, a ki elmozdítja az ő felebarátjának határát! És mondja az egész nép: Ámen! **5Móz 27:17**
-> Átkozott, a ki félrevezeti a vakot az úton! És mondja az egész nép: Ámen! **5Móz 27:18**
-> Átkozott, a ki elfordítja a jövevénynek, árvának és özvegynek igazságát! És mondja az egész nép: Ámen! **5Móz 27:19**
-> Átkozott, a ki az ő atyjának feleségével hál, mert feltakarja az ő atyjának takaróját! És mondja az egész nép: Ámen! **5Móz 27:20**
-> Átkozott, a ki közösül valamely barommal! És mondja az egész nép: Ámen! **5Móz 27:21**
-> Átkozott, a ki az ő leánytestvérével hál, az ő atyjának leányával vagy az ő anyjának leányával! És mondja az egész nép: Ámen! **5Móz 27:22**
-> Átkozott, a ki az ő napával hál! És mondja az egész nép: Ámen! **5Móz 27:23**
-> Átkozott, a ki megöli az ő felebarátját titkon! És mondja az egész nép: Ámen! **5Móz 27:24**
-> Átkozott, a ki ajándékot fogad el, hogy ártatlan lélek vérét ontsa! És mondja az egész nép: Ámen! **5Móz 27:25**
-> Átkozott, a ki meg nem tartja e törvénynek ígéit, hogy cselekedje azokat! És mondja az egész nép: Ámen! **5Móz 27:26**
+*Átkozott az ember, a ki faragott és öntött képet csinál, útálatára az Úrnak, mesterember kezének munkáját, és rejtve tartja azt! És feleljen az egész nép és mondja: Ámen!*
+*Átkozott a ki kevésre becsüli az ő atyját vagy anyját! És mondja az egész nép: Ámen!*
+*Átkozott, a ki elmozdítja az ő felebarátjának határát! És mondja az egész nép: Ámen!*
+*Átkozott, a ki félrevezeti a vakot az úton! És mondja az egész nép: Ámen!*
+*Átkozott, a ki elfordítja a jövevénynek, árvának és özvegynek igazságát! És mondja az egész nép: Ámen!*
+*Átkozott, a ki az ő atyjának feleségével hál, mert feltakarja az ő atyjának takaróját! És mondja az egész nép: Ámen!*
+*Átkozott, a ki közösül valamely barommal! És mondja az egész nép: Ámen!*
+*Átkozott, a ki az ő leánytestvérével hál, az ő atyjának leányával vagy az ő anyjának leányával! És mondja az egész nép: Ámen!*
+*Átkozott, a ki az ő napával hál! És mondja az egész nép: Ámen!*
+*Átkozott, a ki megöli az ő felebarátját titkon! És mondja az egész nép: Ámen!*
+*Átkozott, a ki ajándékot fogad el, hogy ártatlan lélek vérét ontsa! És mondja az egész nép: Ámen!*
+*Átkozott, a ki meg nem tartja e törvénynek ígéit, hogy cselekedje azokat! És mondja az egész nép: Ámen!*
 Tizenkét egymást követő אָרוּר (árúr) — a genezisi kimondás-formula törvényi, liturgikus rendszerré szervezve
 
 <a id="ige-5móz-28-16-19"></a>
 **5Móz 28:16-19**
-> Átkozott leszesz a városban, és átkozott a mezőn. **5Móz 28:16**
-> Átkozott lesz a te kosarad és a te sütő tekenőd. **5Móz 28:17**
-> Átkozott lesz a te méhednek gyümölcse és a te földednek gyümölcse, a te teheneidnek fajzása és a te juhaidnak ellése. **5Móz 28:18**
-> Átkozott leszesz bejöttödben, és átkozott leszesz kimentedben. **5Móz 28:19**
+*Átkozott leszesz a városban, és átkozott a mezőn.*
+*Átkozott lesz a te kosarad és a te sütő tekenőd.*
+*Átkozott lesz a te méhednek gyümölcse és a te földednek gyümölcse, a te teheneidnek fajzása és a te juhaidnak ellése.*
+*Átkozott leszesz bejöttödben, és átkozott leszesz kimentedben.*
 Négy אָרוּר (árúr) a szövetségszegés következményeiként, a 28:3-6 négy בָּרוּךְ (bárúkh) tükörképeként
 
 <a id="ige-zsolt-14-1"></a>
 **Zsolt 14:1**
-> Az éneklőmesternek; Dávidé. Azt mondja a balgatag az ő szívében: Nincs Isten. Megromlottak, útálatosságot cselekedtek; nincs, a ki jót cselekedjék. **Zsolt 14:1**
+*Az éneklőmesternek; Dávidé. Azt mondja a balgatag az ő szívében: Nincs Isten. Megromlottak, útálatosságot cselekedtek; nincs, a ki jót cselekedjék.*
 הִשְׁחִיתוּ (hishchítú) — pontosan a 1Móz 6:12 Hif'íl alakja, az emberiség egyetemes romlásának diagnózisaként
 
 <a id="ige-zsolt-53-2"></a>
 **Zsolt 53:2**
-> Ezt mondta a balgatag az ő szívében: Nincs Isten. Megromlottak és útálatos hamisságot cselekedtek, nincs a ki jót cselekedjék. **Zsolt 53:2**
+*Ezt mondta a balgatag az ő szívében: Nincs Isten. Megromlottak és útálatos hamisságot cselekedtek, nincs a ki jót cselekedjék.*
 הִשְׁחִיתוּ (hishchítú) — pontosan a 1Móz 6:12 Hif'íl alakja, az emberiség egyetemes romlásának diagnózisaként
 
 <a id="ige-zsolt-74-20"></a>
 **Zsolt 74:20**
-> Tekints a szövetségre; mert telve vannak e földnek rejtekhelyei zsaroló tanyákkal. **Zsolt 74:20**
+*Tekints a szövetségre; mert telve vannak e földnek rejtekhelyei zsaroló tanyákkal.*
 מָלְאוּ ... נְאוֹת חָמָס (málú ... ne'ót chámász) — a kollokáció panasz-imában
 
 <a id="ige-ézs-24-5-6"></a>
 **Ézs 24:5-6**
-> A föld megfertőztetett lakosai alatt, mert áthágták a törvényeket, a rendelést megszegték, megtörték az örök szövetséget. **Ézs 24:5**
-> Ezért átok emészti meg a földet, és lakolnak a rajta lakók; ezért megégnek a földnek lakói, és kevés ember marad meg. **Ézs 24:6**
+*A föld megfertőztetett lakosai alatt, mert áthágták a törvényeket, a rendelést megszegték, megtörték az örök szövetséget.*
+*Ezért átok emészti meg a földet, és lakolnak a rajta lakók; ezért megégnek a földnek lakói, és kevés ember marad meg.*
 "A föld megfertőztetett lakosai alatt... ezért átok emészti meg a földet" — a föld/átok/lakosok hármas szerkezete azonos a 1Móz 3:17-tel, de más szóval: אָלָה (álá, H0423), nem arar ⇒ tematikus, nem lexikai
 
 <a id="ige-ézs-60-18"></a>
 **Ézs 60:18**
-> Nem hallatik többé erőszaktétel földeden, pusztítás és romlás határaidban, és a szabadulást hívod kőfalaidnak, és kapuidnak a dicsőséget. **Ézs 60:18**
+*Nem hallatik többé erőszaktétel földeden, pusztítás és romlás határaidban, és a szabadulást hívod kőfalaidnak, és kapuidnak a dicsőséget.*
 לֹא־יִשָּׁמַע עוֹד חָמָס בְּאַרְצֵךְ (ló-jissámá ód chámász be'arcékh) — eszkatológiai visszavonás: a chámász eltűnik a földről
 
 <a id="ige-jer-6-7"></a>
 **Jer 6:7**
-> Mint a kút hidegen tartja meg a vizét, úgy tartja meg az ő gonoszságát: erőszakosság és önkény hallatszik benne, és betegség és vereség van előttem szüntelen. **Jer 6:7**
+*Mint a kút hidegen tartja meg a vizét, úgy tartja meg az ő gonoszságát: erőszakosság és önkény hallatszik benne, és betegség és vereség van előttem szüntelen.*
 חָמָס וָשֹׁד יִשָּׁמַע בָּהּ (chámász vásód jissámá báh) — a "hallatszik az erőszak" kollokáció (H8085+H2555) Jeruzsálemre
 
 <a id="ige-jer-17-5"></a>
 **Jer 17:5**
-> Ezt mondja az Úr: Átkozott az a férfi, a ki emberben bízik és testbe helyezi erejét, az Úrtól pedig eltávozott az ő szíve! **Jer 17:5**
+*Ezt mondja az Úr: Átkozott az a férfi, a ki emberben bízik és testbe helyezi erejét, az Úrtól pedig eltávozott az ő szíve!*
 אָרוּר הַגֶּבֶר אֲשֶׁר יִבְטַח בָּאָדָם (árúr haggever aser jivtach bá'ádám) — a próféta az átok-formulát egyéni bizalmi döntésre alkalmazza
 
 <a id="ige-jer-51-46"></a>
 **Jer 51:46**
-> És el ne olvadjon a ti szívetek és ne féljetek a hírtől, a mely hallatszik e földön, mikor egyik esztendőben hír jő, és a másik esztendőben is a hír, hogy erőszakosság van a földön, uralkodó tör uralkodóra! **Jer 51:46**
+*És el ne olvadjon a ti szívetek és ne féljetek a hírtől, a mely hallatszik e földön, mikor egyik esztendőben hír jő, és a másik esztendőben is a hír, hogy erőszakosság van a földön, uralkodó tör uralkodóra!*
 חָמָס בָּאָרֶץ (chámász bá'árec) — "erőszakosság van a földön": a chámász + erec párosítás, Babilon összeomlásának előjeleként
 
 <a id="ige-ez-7-23"></a>
 **Ez 7:23**
-> Készítsd a lánczot; mert a föld tele van véres ítélettel, és a város tele van erőszakossággal. **Ez 7:23**
+*Készítsd a lánczot; mert a föld tele van véres ítélettel, és a város tele van erőszakossággal.*
 מָלְאָה ... חָמָס (málá ... chámász) — a 1Móz 6:11,13 kollokáció (megtelni + erőszak) Jeruzsálemre alkalmazva
 
 <a id="ige-ez-8-17"></a>
 **Ez 8:17**
-> És mondá nékem: Láttad-é, embernek fia? avagy kevés-é Júda házának ily útálatosságokat cselekedni, a milyeneket itt cselekedtek? hogy még a földet is betöltik erőszakossággal, és engem megint haragra ingerelnek, ímé, hogy tartják a venyigét orrukhoz! **Ez 8:17**
+*És mondá nékem: Láttad-é, embernek fia? avagy kevés-é Júda házának ily útálatosságokat cselekedni, a milyeneket itt cselekedtek? hogy még a földet is betöltik erőszakossággal, és engem megint haragra ingerelnek, ímé, hogy tartják a venyigét orrukhoz!*
 מָלְאוּ אֶת־הָאָרֶץ חָמָס (málú et-há'árec chámász) — a legközelebbi ószövetségi párhuzam: ugyanaz az ige+tárgy szerkezet, mint 1Móz 6:11,13-ban, Júda házára
 
 <a id="ige-ez-28-16"></a>
 **Ez 28:16**
-> Kereskedésed bősége miatt belsőd erőszakossággal telt meg és vétkezél; azért levetélek téged az Isten hegyéről, és elvesztélek, te oltalmazó Kérub, a tüzes kövek közül. **Ez 28:16**
+*Kereskedésed bősége miatt belsőd erőszakossággal telt meg és vétkezél; azért levetélek téged az Isten hegyéről, és elvesztélek, te oltalmazó Kérub, a tüzes kövek közül.*
 מָלְאוּ תוֹכְךָ חָמָס (málú tókhekhá chámász) — a kollokáció Tírusz fejedelmére
 
 <a id="ige-hós-4-1-3"></a>
 **Hós 4:1-3**
-> Halljátok meg az Úrnak beszédét Izráel fiai, mert pere van az Úrnak a földnek lakóival, mert nincs igazság és nincsen szeretet és nincsen Istennek ismerete a földön. **Hós 4:1**
-> Hamisan esküsznek és hazudnak és gyilkolnak és lopnak és paráználkodnak, betörnek és egyik vér a másikat éri. **Hós 4:2**
-> Azért búsul a föld és elerőtlenül minden, a mi azon lakik, a mező vada és az ég madara egyaránt, bizony a tenger halai is elveszíttetnek. **Hós 4:3**
+*Halljátok meg az Úrnak beszédét Izráel fiai, mert pere van az Úrnak a földnek lakóival, mert nincs igazság és nincsen szeretet és nincsen Istennek ismerete a földön.*
+*Hamisan esküsznek és hazudnak és gyilkolnak és lopnak és paráználkodnak, betörnek és egyik vér a másikat éri.*
+*Azért búsul a föld és elerőtlenül minden, a mi azon lakik, a mező vada és az ég madara egyaránt, bizony a tenger halai is elveszíttetnek.*
 "Nincs igazság... azért gyászol a föld" — a lakosok bűne és a föld sorvadása közti okozati kapcsolat; chámász nélkül ⇒ tematikus, nem lexikai
 
 <a id="ige-jón-3-8"></a>
 **Jón 3:8**
-> Hanem öltözzenek zsákba az emberek és barmok, és kiáltsanak az Istenhez erősen, és térjen meg kiki az ő gonosz útáról és az erőszakosságból, a mely az ő kezökben van! **Jón 3:8**
+*Hanem öltözzenek zsákba az emberek és barmok, és kiáltsanak az Istenhez erősen, és térjen meg kiki az ő gonosz útáról és az erőszakosságból, a mely az ő kezökben van!*
 וְיָשֻׁבוּ ... מִן־הֶחָמָס אֲשֶׁר בְּכַפֵּיהֶם (vejásúvú ... min-hechámász aser bekhappéhem) — az egyetlen hely, ahol egy nép a chámász-ból megtérve elkerüli a már kimondott pusztulást: a gyűrűzés megszakítható
 
 <a id="ige-mik-6-12"></a>
 **Mik 6:12**
-> Mert a gazdagok megtöltöztek köztök ragadománynyal, lakosai pedig hazugságot szólnak, és nyelvök csalárd az ő szájokban. **Mik 6:12**
+*Mert a gazdagok megtöltöztek köztök ragadománynyal, lakosai pedig hazugságot szólnak, és nyelvök csalárd az ő szájokban.*
 מָלְאוּ חָמָס (málú chámász) — a kollokáció Izráel gazdagjaira
 
 <a id="ige-hab-1-2"></a>
 **Hab 1:2**
-> Meddig kiáltok még oh Uram, és nem hallgatsz meg! Kiáltozom hozzád az erőszak miatt, és nem szabadítasz meg! **Hab 1:2**
+*Meddig kiáltok még oh Uram, és nem hallgatsz meg! Kiáltozom hozzád az erőszak miatt, és nem szabadítasz meg!*
 אֶזְעַק אֵלֶיךָ חָמָס וְלֹא תוֹשִׁיעַ (ez'ak élekhá chámász veló tósía) — a megfordított irány: a chámász miatt kiáltó próféta panasza arról, hogy Isten nem hallja
 
 <a id="ige-hab-2-8"></a>
 **Hab 2:8**
-> Mivelhogy kifosztogattál sok nemzetet, kifosztanak téged mind a többi népek az emberek véréért, és az országok, városok és minden bennök lakozók ellen való erőszaktételért. **Hab 2:8**
+*Mivelhogy kifosztogattál sok nemzetet, kifosztanak téged mind a többi népek az emberek véréért, és az országok, városok és minden bennök lakozók ellen való erőszaktételért.*
 מֵחֲמַס אָדָם (méchamasz ádám) — az erőszak visszatér elkövetőjére: a gyűrűzés mint megtorlási elv, explicit kimondva
 
 <a id="ige-hab-2-17"></a>
 **Hab 2:17**
-> Bizony, a libanoni erőszakoskodás gyászba borít téged, és a vadak pusztítása, a mely rettegteté őket, az emberek véréért és az országon, a városon és annak minden lakosán űzött erőszakosságért. **Hab 2:17**
+*Bizony, a libanoni erőszakoskodás gyászba borít téged, és a vadak pusztítása, a mely rettegteté őket, az emberek véréért és az országon, a városon és annak minden lakosán űzött erőszakosságért.*
 מֵחֲמַס אָדָם (méchamasz ádám) — az erőszak visszatér elkövetőjére: a gyűrűzés mint megtorlási elv, explicit kimondva
 
 <a id="ige-sof-1-9"></a>
 **Sof 1:9**
-> És megfenyítem mindazt, a ki a küszöbön ugrál ama napon, a kik erőszakkal és csalárdsággal töltik meg az ő uroknak házát. **Sof 1:9**
+*És megfenyítem mindazt, a ki a küszöbön ugrál ama napon, a kik erőszakkal és csalárdsággal töltik meg az ő uroknak házát.*
 הַמְמַלְאִים ... חָמָס וּמִרְמָה (hamemal'ím ... chámász umirmá) — a kollokáció az úr házának megtöltésére
 
 <a id="ige-mt-15-19"></a>
 **Mt 15:19**
-> Mert a szívből származnak a gonosz gondolatok, gyilkosságok, házasságtörések, paráznaságok, lopások, hamis tanubizonyságok, káromlások. **Mt 15:19**
+*Mert a szívből származnak a gonosz gondolatok, gyilkosságok, házasságtörések, paráznaságok, lopások, hamis tanubizonyságok, káromlások.*
 "a szívből származnak a gonosz gondolatok" — a 1Móz 6:5 szív-diagnózisának újszövetségi megismétlése ⇒ tematikus, nem lexikai
 
 <a id="ige-mk-7-21-23"></a>
 **Mk 7:21-23**
-> Mert onnan belőlről, az emberek szívéből származnak a gonosz gondolatok, házasságtörések, paráznaságok, gyilkosságok, **Mk 7:21**
-> Lopások, telhetetlenségek, gonoszságok, álnokság, szemérmetlenség, gonosz szem, káromlás, kevélység, bolondság: **Mk 7:22**
-> Mind ezek a gonoszságok belőlről jőnek ki, és megfertőztetik az embert. **Mk 7:23**
+*Mert onnan belőlről, az emberek szívéből származnak a gonosz gondolatok, házasságtörések, paráznaságok, gyilkosságok,*
+*Lopások, telhetetlenségek, gonoszságok, álnokság, szemérmetlenség, gonosz szem, káromlás, kevélység, bolondság:*
+*Mind ezek a gonoszságok belőlről jőnek ki, és megfertőztetik az embert.*
 "a szívből származnak a gonosz gondolatok" — a 1Móz 6:5 szív-diagnózisának újszövetségi megismétlése ⇒ tematikus, nem lexikai
 
 <a id="ige-róm-8-20-22"></a>
 **Róm 8:20-22**
-> Mert a teremtett világ hiábavalóság alá vettetett, nem önként, hanem azért, a ki az alá vetette. **Róm 8:20**
-> Azzal a reménységgel, hogy maga a teremtett világ is megszabadul a rothadandóság rabságától az Isten fiai dicsőségének szabadságára. **Róm 8:21**
-> Mert tudjuk, hogy az egész teremtett világ egyetemben fohászkodik és nyög mind idáig. **Róm 8:22**
+*Mert a teremtett világ hiábavalóság alá vettetett, nem önként, hanem azért, a ki az alá vetette.*
+*Azzal a reménységgel, hogy maga a teremtett világ is megszabadul a rothadandóság rabságától az Isten fiai dicsőségének szabadságára.*
+*Mert tudjuk, hogy az egész teremtett világ egyetemben fohászkodik és nyög mind idáig.*
 ἡ κτίσις ... τῇ ματαιότητι ὑπετάγη (hé ktiszisz ... té mataiotéti hüpetagé), majd ἡ δουλεία τῆς φθορᾶς (hé dúleia tész fthorász) — a teremtett világ továbbra is a 1Móz 3:17 átok alatt áll, és a φθορά ugyanabból a φθείρω-szócsaládból való, amellyel a LXX a 1Móz 6:11-13 sáchat-ját fordítja
 
 <a id="ige-gal-3-10"></a>
 **Gal 3:10**
-> Mert a kik törvény cselekedeteiből vannak, átok alatt vannak; minthogy meg van írva: Átkozott minden, a ki meg nem marad mindazokban, a mik megirattak a törvény könyvében, hogy azokat cselekedje. **Gal 3:10**
+*Mert a kik törvény cselekedeteiből vannak, átok alatt vannak; minthogy meg van írva: Átkozott minden, a ki meg nem marad mindazokban, a mik megirattak a törvény könyvében, hogy azokat cselekedje.*
 ἐπικατάρατος πᾶς ὃς οὐκ ἐμμένει (epikatáratosz pász hosz úk emmenei) — az 5Móz 27:26 idézete; a LXX ott ugyanazt a szót használja, amelyet a 1Móz 3:17-ben
 
 <a id="ige-gal-3-13"></a>
 **Gal 3:13**
-> Krisztus váltott meg minket a törvény átkától, átokká levén érettünk; mert meg van írva: Átkozott minden, a ki fán függ: **Gal 3:13**
+*Krisztus váltott meg minket a törvény átkától, átokká levén érettünk; mert meg van írva: Átkozott minden, a ki fán függ:*
 γενόμενος ὑπὲρ ἡμῶν κατάρα (genomenosz hüper hémón katara) — Krisztus átokká lesz; Pál itt az 5Móz 21:23-at idézi, de nem a LXX κεκατηραμένος (kekatéraménosz, G2672) szavával, hanem ἐπικατάρατος-szal — vagyis a két idézetet (27:26 és 21:23) ugyanarra a szóra hangolja, amely a 1Móz 3:17 átok-szava is
 
 <a id="ige-zsid-6-7-8"></a>
 **Zsid 6:7-8**
-> Mert a föld, a mely beiszsza a gyakorta reá hulló esőt és hasznos füvet terem azoknak, a kikért műveltetik, áldást nyer Istentől; **Zsid 6:7**
-> A mely pedig töviseket és bojtorjánokat terem, megvetett és közel van az átokhoz, annak vége megégetés. **Zsid 6:8**
+*Mert a föld, a mely beiszsza a gyakorta reá hulló esőt és hasznos füvet terem azoknak, a kikért műveltetik, áldást nyer Istentől;*
+*A mely pedig töviseket és bojtorjánokat terem, megvetett és közel van az átokhoz, annak vége megégetés.*
 γῆ ... ἐκφέρουσα ἀκάνθας καὶ τριβόλους ... κατάρας ἐγγύς (gé ... ekferúsza akanthász kai tribolúsz ... katarász engüsz) — háromszavas lexikai egyezés a LXX 1Móz 3:17-18-cal: γῆ + ἄκανθα + τρίβολος, a κατάρα-szócsaláddal
 
 <a id="ige-2pét-3-6-7"></a>
 **2Pét 3:6-7**
-> A melyek által az akkori világ vízzel elboríttatván elveszett: **2Pét 3:6**
-> A mostani egek pedig és a föld, ugyanazon szó által megkíméltettek, tűznek tartatván fenn, az ítéletnek és az istentelen emberek romlásának napjára. **2Pét 3:7**
+*A melyek által az akkori világ vízzel elboríttatván elveszett:*
+*A mostani egek pedig és a föld, ugyanazon szó által megkíméltettek, tűznek tartatván fenn, az ítéletnek és az istentelen emberek romlásának napjára.*
 az özönvíz-világ elpusztulása és a jelenlegi világ tűzre tartatása — a 1Móz 6:13 ítélet-logikájának eszkatológiai kiterjesztése ⇒ tematikus, nem lexikai
 
 <a id="ige-jel-11-18"></a>
 **Jel 11:18**
-> És megharagudtak a pogányok, és eljött a te haragod, és a halottak ideje, hogy megítéltessenek, és jutalmat adj a te szolgáidnak, a prófétáknak és a szenteknek, és a kik a te nevedet félik, kicsinyeknek és nagyoknak; és elpusztítsd azokat, a kik a földet pusztítják. **Jel 11:18**
+*És megharagudtak a pogányok, és eljött a te haragod, és a halottak ideje, hogy megítéltessenek, és jutalmat adj a te szolgáidnak, a prófétáknak és a szenteknek, és a kik a te nevedet félik, kicsinyeknek és nagyoknak; és elpusztítsd azokat, a kik a földet pusztítják.*
 διαφθεῖραι τοὺς διαφθείροντας τὴν γῆν (diaftheirai túsz diaftheirontász tén gén) — "elpusztítani azokat, akik a földet pusztítják": a 1Móz 6:12-13 szerkezete (ember megrontja → Isten megrontja) görögül, ugyanazzal az igével mindkét oldalon
 
 <a id="ige-jel-19-2"></a>
 **Jel 19:2**
-> Mert igazak és igazságosak az ő ítéletei, és azt a nagy paráznát, a mely a földet megrontotta az ő paráznaságával, elítélte, és megbosszúlta az ő szolgáinak vérét annak kezén. **Jel 19:2**
+*Mert igazak és igazságosak az ő ítéletei, és azt a nagy paráznát, a mely a földet megrontotta az ő paráznaságával, elítélte, és megbosszúlta az ő szolgáinak vérét annak kezén.*
 ἥτις ἔφθειρεν τὴν γῆν ἐν τῇ πορνείᾳ αὐτῆς (hétisz eftheiren tén gén en té porneia autész) — "a mely a földet megrontotta az ő paráznaságával": ugyanaz az ige+tárgy szerkezet, mint a LXX 1Móz 6:11-ben (ἐφθάρη … ἡ γῆ)
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#elofordulasok -->
@@ -473,13 +473,11 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: HAMART-001]` motívum 14 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
-### G1311
-
-**Kiejtés:** diaphtheirei
+### G1311 — διαφθείρω (diaphtheirō)
 
 **TWOT:** —
 
@@ -493,9 +491,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 *Forrás: konkordancia/Thayer_teljes.tsv*
 
-### G1944
-
-**Kiejtés:** epikataratos
+### G1944 — ἐπικατάρατος (epikataratos)
 
 **TWOT:** —
 
@@ -509,9 +505,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 *Forrás: konkordancia/Thayer_teljes.tsv*
 
-### G2671
-
-**Kiejtés:** kataran
+### G2671 — κατάρα (katara)
 
 **TWOT:** —
 
@@ -525,9 +519,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 *Forrás: konkordancia/Thayer_teljes.tsv*
 
-### G5351
-
-**Kiejtés:** phtheirei
+### G5351 — φθείρω (phtheirō)
 
 **TWOT:** —
 
@@ -541,9 +533,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 *Forrás: konkordancia/Thayer_teljes.tsv*
 
-### G5356
-
-**Kiejtés:** phthoras
+### G5356 — φθορά (phthora)
 
 **TWOT:** —
 
@@ -557,9 +547,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 *Forrás: konkordancia/Thayer_teljes.tsv*
 
-### H0127
-
-**Kiejtés:** 'a.da.Mah
+### H0127 — אֲדָמָה (a.da.mah)
 
 **TWOT:** 25b
 
@@ -567,9 +555,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### H0779
-
-**Kiejtés:** 'a.Rur
+### H0779 — אָרַר (a.rar)
 
 **TWOT:** 168
 
@@ -577,9 +563,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### H2403
-
-**Kiejtés:** cha.Tat
+### H2403 — חַטָּאָה (chat.ta.ah)
 
 **TWOT:** 638c, 638e
 
@@ -587,9 +571,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### H2555
-
-**Kiejtés:** cha.Mas
+### H2555 — חָמָס (cha.mas)
 
 **TWOT:** 678a
 
@@ -597,9 +579,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### H6093
-
-**Kiejtés:** i.tze.vo.Ne
+### H6093 — עִצָּבוֹן (its.tsa.von)
 
 **TWOT:** 1666e
 
@@ -607,9 +587,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### H6975
-
-**Kiejtés:** Kotz
+### H6975 — קוֹץ (qots)
 
 **TWOT:** 2003a
 
@@ -617,9 +595,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### H7043
-
-**Kiejtés:** Ka.lu
+### H7043 — קָלַל (qa.lal)
 
 **TWOT:** 2028
 
@@ -627,9 +603,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### H7451
-
-**Kiejtés:** Ra'
+### H7451 — רַע (ra)
 
 **TWOT:** 2191a, 2191c
 
@@ -637,9 +611,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### H7843
-
-**Kiejtés:** ti.sha.Chet
+### H7843 — שָׁחַת (sha.chat)
 
 **TWOT:** 2370
 
@@ -665,68 +637,68 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 3:14 | Genesis 3:14 | אָר֤וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 1Móz 3:16 | Genesis 3:16 | עִצְּבוֹנֵ֣ (i.tze.vo.Ne) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 3:17 | Genesis 3:17 | אֲדָמָה֙ ('a.da.Mah) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 1Móz 3:18 | Genesis 3:18 | ק֥וֹץ (Kotz) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 3:19 | Genesis 3:19 | אֲדָמָ֔ה ('a.da.Mah) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 3:23 | Genesis 3:23 | אֲדָמָ֔ה ('a.da.Mah) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 4:2 | Genesis 4:2 | אֲדָמָֽה ('a.da.Mah) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 4:3 | Genesis 4:3 | אֲדָמָ֛ה ('a.da.Mah) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 4:7 | Genesis 4:7 | חַטָּ֣את (cha.Tat) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 4:10 | Genesis 4:10 | — | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 4:11 | Genesis 4:11 | אָר֣וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 1Móz 4:12 | Genesis 4:12 | אֲדָמָ֔ה ('a.da.Mah) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 4:14 | Genesis 4:14 | אֲדָמָ֔ה ('a.da.Mah) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 5:29 | Genesis 5:29 | עִצְּב֣וֹן ('i.tze.Von) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 6:5 | Genesis 6:5 | רַ֖ע (ra') | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 6:7 | Genesis 6:7 | אֲדָמָ֔ה ('a.da.Mah) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 6:11 | Genesis 6:11 | תִּשָּׁחֵ֥ת (ti.sha.Chet) | ἐφθάρη (φθείρω, phtheirei G5351) | egyező | LXX_OS |
-| 1Móz 6:12 | Genesis 6:12 | הִשְׁחִ֧ית (hish.Chit) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 6:13 | Genesis 6:13 | חָמָ֖ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 6:17 | Genesis 6:17 | שַׁחֵ֣ת (sha.Chet) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 8:21 | Genesis 8:21 | קַלֵּ֨ל (ka.Lel) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 9:11 | Genesis 9:11 | שַׁחֵ֥ת (sha.Chet) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 9:15 | Genesis 9:15 | שַׁחֵ֖ת (sha.Chet) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 9:25 | Genesis 9:25 | אָר֣וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 1Móz 12:3 | Genesis 12:3 | אָאֹ֑ר ('a.'Or) | — | kutatói azonosítás függőben | LXX_OS |
-| 5Móz 27:15 | Deuteronomy 27:15 | אָר֣וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 5Móz 27:16 | Deuteronomy 27:16 | אָר֕וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 5Móz 27:17 | Deuteronomy 27:17 | אָר֕וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 5Móz 27:18 | Deuteronomy 27:18 | אָר֕וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 5Móz 27:19 | Deuteronomy 27:19 | אָר֗וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 5Móz 27:20 | Deuteronomy 27:20 | אָר֗וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 5Móz 27:21 | Deuteronomy 27:21 | אָר֕וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 5Móz 27:22 | Deuteronomy 27:22 | אָר֗וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 5Móz 27:23 | Deuteronomy 27:23 | אָר֕וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 5Móz 27:24 | Deuteronomy 27:24 | אָר֕וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 5Móz 27:25 | Deuteronomy 27:25 | אָרוּר֙ ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 5Móz 27:26 | Deuteronomy 27:26 | אָר֗וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 5Móz 28:16 | Deuteronomy 28:16 | אָר֥וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 5Móz 28:17 | Deuteronomy 28:17 | אָר֥וּר ('a.Rur) | ἐπικατάρατοι (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 5Móz 28:18 | Deuteronomy 28:18 | אָר֥וּר ('a.Rur) | ἐπικατάρατα (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| 5Móz 28:19 | Deuteronomy 28:19 | אָר֥וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| Jer 17:5 | Jeremiah (LXX) 17:5 | אָר֤וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
-| Zsolt 14:1 | Psalms (LXX) 13:1 | הִֽשְׁחִ֗יתוּ (hish.Chi.tu) | διέφθειραν (διαφθείρω, diaphtheirei G1311) | egyező | LXX_OS |
-| Zsolt 53:2 | Psalms (LXX) 52:2 | הִֽ֝שְׁחִ֗יתוּ (hish.Chi.tu) | διεφθάρησαν (διαφθείρω, diaphtheirei G1311) | egyező | LXX_OS |
-| Ez 7:23 | Ezekiel 7:23 | חָמָֽס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
-| Ez 8:17 | Ezekiel 8:17 | חָמָ֗ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
-| Ez 28:16 | Ezekiel 28:16 | חָמָ֖ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
-| Zsolt 74:20 | Psalms (LXX) 73:20 | חָמָֽס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
-| Mik 6:12 | Micah 6:12 | חָמָ֔ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
-| Sof 1:9 | Zephaniah 1:9 | חָמָ֥ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
-| Hab 2:8 | Habakkuk 2:8 | חֲמַס (cha.mas-) | — | kutatói azonosítás függőben | LXX_OS |
-| Hab 2:17 | Habakkuk 2:17 | חֲמַס (cha.mas-) | — | kutatói azonosítás függőben | LXX_OS |
-| Jón 3:8 | Jonah 3:8 | חָמָ֖ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
-| Ézs 60:18 | Isaiah 60:18 | חָמָס֙ (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
-| Jer 6:7 | Jeremiah (LXX) 6:7 | חָמָ֣ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 3:14 | 1Móz 3:14 | אָר֤וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 1Móz 3:16 | 1Móz 3:16 | עִצְּבוֹנֵ֣ (i.tze.vo.Ne) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 3:17 | 1Móz 3:17 | אֲדָמָה֙ ('a.da.Mah) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 1Móz 3:18 | 1Móz 3:18 | ק֥וֹץ (Kotz) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 3:19 | 1Móz 3:19 | אֲדָמָ֔ה ('a.da.Mah) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 3:23 | 1Móz 3:23 | אֲדָמָ֔ה ('a.da.Mah) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 4:2 | 1Móz 4:2 | אֲדָמָֽה ('a.da.Mah) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 4:3 | 1Móz 4:3 | אֲדָמָ֛ה ('a.da.Mah) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 4:7 | 1Móz 4:7 | חַטָּ֣את (cha.Tat) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 4:10 | 1Móz 4:10 | — | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 4:11 | 1Móz 4:11 | אָר֣וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 1Móz 4:12 | 1Móz 4:12 | אֲדָמָ֔ה ('a.da.Mah) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 4:14 | 1Móz 4:14 | אֲדָמָ֔ה ('a.da.Mah) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 5:29 | 1Móz 5:29 | עִצְּב֣וֹן ('i.tze.Von) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 6:5 | 1Móz 6:5 | רַ֖ע (ra') | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 6:7 | 1Móz 6:7 | אֲדָמָ֔ה ('a.da.Mah) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 6:11 | 1Móz 6:11 | תִּשָּׁחֵ֥ת (ti.sha.Chet) | ἐφθάρη (φθείρω, phtheirō G5351) | egyező | LXX_OS |
+| 1Móz 6:12 | 1Móz 6:12 | הִשְׁחִ֧ית (hish.Chit) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 6:13 | 1Móz 6:13 | חָמָ֖ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 6:17 | 1Móz 6:17 | שַׁחֵ֣ת (sha.Chet) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 8:21 | 1Móz 8:21 | קַלֵּ֨ל (ka.Lel) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 9:11 | 1Móz 9:11 | שַׁחֵ֥ת (sha.Chet) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 9:15 | 1Móz 9:15 | שַׁחֵ֖ת (sha.Chet) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 9:25 | 1Móz 9:25 | אָר֣וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 1Móz 12:3 | 1Móz 12:3 | אָאֹ֑ר ('a.'Or) | — | kutatói azonosítás függőben | LXX_OS |
+| 5Móz 27:15 | 5Móz 27:15 | אָר֣וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 5Móz 27:16 | 5Móz 27:16 | אָר֕וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 5Móz 27:17 | 5Móz 27:17 | אָר֕וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 5Móz 27:18 | 5Móz 27:18 | אָר֕וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 5Móz 27:19 | 5Móz 27:19 | אָר֗וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 5Móz 27:20 | 5Móz 27:20 | אָר֗וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 5Móz 27:21 | 5Móz 27:21 | אָר֕וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 5Móz 27:22 | 5Móz 27:22 | אָר֗וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 5Móz 27:23 | 5Móz 27:23 | אָר֕וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 5Móz 27:24 | 5Móz 27:24 | אָר֕וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 5Móz 27:25 | 5Móz 27:25 | אָרוּר֙ ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 5Móz 27:26 | 5Móz 27:26 | אָר֗וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 5Móz 28:16 | 5Móz 28:16 | אָר֥וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 5Móz 28:17 | 5Móz 28:17 | אָר֥וּר ('a.Rur) | ἐπικατάρατοι (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 5Móz 28:18 | 5Móz 28:18 | אָר֥וּר ('a.Rur) | ἐπικατάρατα (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| 5Móz 28:19 | 5Móz 28:19 | אָר֥וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| Jer 17:5 | Jer 17:5 | אָר֤וּר ('a.Rur) | ἐπικατάρατος (ἐπικατάρατος, epikataratos G1944) | egyező | LXX_OS |
+| Zsolt 14:1 | Zsolt(LXX) 13:1 | הִֽשְׁחִ֗יתוּ (hish.Chi.tu) | διέφθειραν (διαφθείρω, diaphtheirō G1311) | egyező | LXX_OS |
+| Zsolt 53:2 | Zsolt(LXX) 52:2 | הִֽ֝שְׁחִ֗יתוּ (hish.Chi.tu) | διεφθάρησαν (διαφθείρω, diaphtheirō G1311) | egyező | LXX_OS |
+| Ez 7:23 | Ez 7:23 | חָמָֽס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
+| Ez 8:17 | Ez 8:17 | חָמָ֗ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
+| Ez 28:16 | Ez 28:16 | חָמָ֖ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
+| Zsolt 74:20 | Zsolt(LXX) 73:20 | חָמָֽס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
+| Mik 6:12 | Mik 6:12 | חָמָ֔ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
+| Sof 1:9 | Sof 1:9 | חָמָ֥ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
+| Hab 2:8 | Hab 2:8 | חֲמַס (cha.mas-) | — | kutatói azonosítás függőben | LXX_OS |
+| Hab 2:17 | Hab 2:17 | חֲמַס (cha.mas-) | — | kutatói azonosítás függőben | LXX_OS |
+| Jón 3:8 | Jón 3:8 | חָמָ֖ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
+| Ézs 60:18 | Ézs 60:18 | חָמָס֙ (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
+| Jer 6:7 | Jer 6:7 | חָמָ֣ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
 | Jer 51:46 | — | חָמָ֣ס (cha.Mas) | — | szamozas_elteres | LXX_OS |
-| Hab 1:2 | Habakkuk 1:2 | חָמָ֖ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
-| Ézs 24:5 | Isaiah 24:5 | — | — | kutatói azonosítás függőben | LXX_OS |
-| Ézs 24:6 | Isaiah 24:6 | — | — | kutatói azonosítás függőben | LXX_OS |
-| Hós 4:1 | Hosea 4:1 | — | — | kutatói azonosítás függőben | LXX_OS |
-| Hós 4:2 | Hosea 4:2 | — | — | kutatói azonosítás függőben | LXX_OS |
-| Hós 4:3 | Hosea 4:3 | — | — | kutatói azonosítás függőben | LXX_OS |
+| Hab 1:2 | Hab 1:2 | חָמָ֖ס (cha.Mas) | — | kutatói azonosítás függőben | LXX_OS |
+| Ézs 24:5 | Ézs 24:5 | — | — | kutatói azonosítás függőben | LXX_OS |
+| Ézs 24:6 | Ézs 24:6 | — | — | kutatói azonosítás függőben | LXX_OS |
+| Hós 4:1 | Hós 4:1 | — | — | kutatói azonosítás függőben | LXX_OS |
+| Hós 4:2 | Hós 4:2 | — | — | kutatói azonosítás függőben | LXX_OS |
+| Hós 4:3 | Hós 4:3 | — | — | kutatói azonosítás függőben | LXX_OS |
 | Gal 3:10 | — | — | — | nincs LXX_OS-könyv | — |
 | Gal 3:13 | — | — | — | nincs LXX_OS-könyv | — |
 | Mk 7:21 | — | — | — | nincs LXX_OS-könyv | — |
@@ -965,19 +937,17 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 ## 6. Értelmezés *(kézi)*
 
-## 1/b. PaRDeS keretrendszer *(kézi)*
+### PaRDeS keretrendszer
 
 *Kézzel írandó — a forrás-study 3. pontja alapján, a 2. szakasz lexikai adataival bővítve.*
 
-## 7. ÚJ FELISMERÉS *(kézi, ha van)*
-
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
-## 6. Módszertani napló *(kézi)*
+### Módszertani napló
 
 *Kézzel írandó.*
 
-## 8. Nyitott kérdések és séma-korlátok *(kézi)*
+### Nyitott kérdések és séma-korlátok
 
 *Kézzel írandó.*
 
@@ -985,7 +955,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
 
-*Ez a blokk a `[ID: HAMART-001]` motívum hivatkozási adatait és a ténylegesen felhasznált szótárak listáját adja (G9, LEXV2_3-ig szűkítve).*
+*Ez a blokk a `[ID: HAMART-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
 **Hogyan hivatkozz:**
 - ID: `HAMART-001`
@@ -995,6 +965,17 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/HAMART-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
+- OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám (`konkordancia/OSHL_lexikalis_index.tsv`, CC BY 4.0)
+- SDBH (Semantic Dictionary of Biblical Hebrew) (`konkordancia/SDBH_domenek.tsv`, CC BY-SA 4.0)
+- SDGNT (Semantic Dictionary of Biblical Greek) (`konkordancia/SDGNT_domenek.tsv`, CC BY-SA 4.0)
+- TBESG (Tyndale Brief lexicon of Extended Strongs for Greek) (`konkordancia/TBESG.txt`, CC BY 4.0)
+- TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, CC BY 4.0)
+- TSK (Treasury of Scripture Knowledge) (`konkordancia/TSK_kereszthivatkozasok.tsv`, CC BY 4.0)
+- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_jelentesek.tsv`, CC BY-SA 4.0)
+- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_referenciak.tsv`, CC BY-SA 4.0)
+- LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz) (`konkordancia/LXX_OS/deuteronomy.tsv`, `konkordancia/LXX_OS/ezekiel.tsv`, `konkordancia/LXX_OS/genesis.tsv`, `konkordancia/LXX_OS/habakkuk.tsv`, `konkordancia/LXX_OS/hosea.tsv`, `konkordancia/LXX_OS/isaiah.tsv`, `konkordancia/LXX_OS/jeremiah-lxx.tsv`, `konkordancia/LXX_OS/jonah.tsv`, `konkordancia/LXX_OS/micah.tsv`, `konkordancia/LXX_OS/psalms-lxx.tsv`, `konkordancia/LXX_OS/zephaniah.tsv`, CC BY 4.0)
+
+**Adatforrások:**
 - `adat/elofordulasok.tsv` (projekt-adat)
 - `adat/forditas_ubs.tsv` (projekt-adat)
 - `adat/jeloltek.tsv` (projekt-adat)
@@ -1003,29 +984,12 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 - `adat/motivumok.tsv` (projekt-adat)
 - `konkordancia/Karoli_1908.tsv` (közkincs)
 - `konkordancia/Karoli_kereszthivatkozasok.tsv` (közkincs)
-- `konkordancia/LXX_OS/deuteronomy.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/ezekiel.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/genesis.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/habakkuk.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/hosea.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/isaiah.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/jeremiah-lxx.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/jonah.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/micah.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/psalms-lxx.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/zephaniah.tsv` (CC BY 4.0)
-- `konkordancia/OSHL_lexikalis_index.tsv` (CC BY 4.0)
-- `konkordancia/SDBH_domenek.tsv` (CC BY-SA 4.0)
-- `konkordancia/SDGNT_domenek.tsv` (CC BY-SA 4.0)
-- `konkordancia/TSK_kereszthivatkozasok.tsv` (CC BY 4.0)
-- `konkordancia/UBS_DNTG_jelentesek.tsv` (CC BY-SA 4.0)
-- `konkordancia/UBS_DNTG_referenciak.tsv` (CC BY-SA 4.0)
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#idezes -->
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: HAMART-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
@@ -1070,6 +1034,8 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 | `OSHL_lexikalis_index.tsv` | `konkordancia/OSHL_lexikalis_index.tsv` | CC BY 4.0 | szocikkek |
 | `SDBH_domenek.tsv` | `konkordancia/SDBH_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
 | `SDGNT_domenek.tsv` | `konkordancia/SDGNT_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
+| `TBESG.txt` | `konkordancia/TBESG.txt` | CC BY 4.0 | szocikkek |
+| `TBESH.txt` | `konkordancia/TBESH.txt` | CC BY 4.0 | szocikkek |
 | `TSK_kereszthivatkozasok.tsv` | `konkordancia/TSK_kereszthivatkozasok.tsv` | CC BY 4.0 | kereszthivatkozasok |
 | `UBS_DNTG_jelentesek.tsv` | `konkordancia/UBS_DNTG_jelentesek.tsv` | CC BY-SA 4.0 | elofordulasok |
 | `UBS_DNTG_referenciak.tsv` | `konkordancia/UBS_DNTG_referenciak.tsv` | CC BY-SA 4.0 | elofordulasok |

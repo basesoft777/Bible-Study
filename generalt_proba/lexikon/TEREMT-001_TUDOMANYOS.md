@@ -152,210 +152,210 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 <a id="ige-1móz-1-2"></a>
 **1Móz 1:2**
-> A föld pedig kietlen és puszta vala, és setétség vala a mélység színén, és az Isten Lelke lebeg vala a vizek felett. **1Móz 1:2**
+*A föld pedig kietlen és puszta vala, és setétség vala a mélység színén, és az Isten Lelke lebeg vala a vizek felett.*
 A teremtés előtti, differenciálatlan, formátlan vizek — "sötétség vala a mélység színén"
 
 <a id="ige-1móz-7-11"></a>
 **1Móz 7:11**
-> Noé életének hatszázadik esztendejében, a második hónapban, e hónap tizenhetedik napján, felfakadának ezen a napon a nagy mélység minden forrásai, és az ég csatornái megnyilatkozának. **1Móz 7:11**
+*Noé életének hatszázadik esztendejében, a második hónapban, e hónap tizenhetedik napján, felfakadának ezen a napon a nagy mélység minden forrásai, és az ég csatornái megnyilatkozának.*
 A dekreáció kezdete: "felfakadának a nagy mélység forrásai" — a teremtéskor elválasztott vizek újraegyesülnek
 
 <a id="ige-1móz-8-2"></a>
 **1Móz 8:2**
-> És bezárulának a mélység forrásai s az ég csatornái; és megszűnt az eső az égből. **1Móz 8:2**
+*És bezárulának a mélység forrásai s az ég csatornái; és megszűnt az eső az égből.*
 A helyreállítás mozzanata: "bezárultak a mélység forrásai és az ég csatornái" — a rend visszatér
 
 <a id="ige-1móz-49-25"></a>
 **1Móz 49:25**
-> Atyád Istenétől, a ki segéljen; a mindenhatótól, a ki megáldjon, az ég áldásaival, onnan felülről, a mélység áldásaival, mely alant terül, az emlők és anyaméh áldásaival. **1Móz 49:25**
+*Atyád Istenétől, a ki segéljen; a mindenhatótól, a ki megáldjon, az ég áldásaival, onnan felülről, a mélység áldásaival, mely alant terül, az emlők és anyaméh áldásaival.*
 Jákób áldása Józsefen: "a mélységnek áldásaival, mely alant fekszik" — a tehóm immár nem fenyegetés, hanem áldás forrása
 
 <a id="ige-2móz-15-5"></a>
 **2Móz 15:5**
-> Elborították őket a hullámok, kő módjára merültek a mélységbe. **2Móz 15:5**
+*Elborították őket a hullámok, kő módjára merültek a mélységbe.*
 Mózes és Izrael éneke: "elborították őket a hullámok... a mélységes vizek megmerevültek" — a Vörös-tenger dekreációs/ítéletes vízzé válik
 
 <a id="ige-2móz-15-8"></a>
 **2Móz 15:8**
-> Orrod lehelletétől feltorlódtak a vizek. És a futó habok fal módjára megálltak; a mélységes vizek megmerevültek a tenger szívében. **2Móz 15:8**
+*Orrod lehelletétől feltorlódtak a vizek. És a futó habok fal módjára megálltak; a mélységes vizek megmerevültek a tenger szívében.*
 ua. — a Vörös-tengeri ének folytatása, ugyanaz a szó (תְּהֹמֹת, többes szám)
 
 <a id="ige-5móz-8-7"></a>
 **5Móz 8:7**
-> Mert az Úr, a te Istened jó földre visz be téged; bővizű patakoknak, forrásoknak és mély vizeknek földére, a melyek a völgyekben és a hegyeken fakadnak. **5Móz 8:7**
+*Mert az Úr, a te Istened jó földre visz be téged; bővizű patakoknak, forrásoknak és mély vizeknek földére, a melyek a völgyekben és a hegyeken fakadnak.*
 "a föld... amelynek mélységei forrásokban törnek elő" — áldás/bőség
 
 <a id="ige-5móz-33-13"></a>
 **5Móz 33:13**
-> Józsefről pedig monda: Áldott az Úrtól az ő földe az égnek kincseivel, a harmattal és az alant elterülő mélységes vizekkel; **5Móz 33:13**
+*Józsefről pedig monda: Áldott az Úrtól az ő földe az égnek kincseivel, a harmattal és az alant elterülő mélységes vizekkel;*
 Mózes áldása Józsefen — "a mélység áldásaival alant" (csaknem szó szerint = 1Móz 49:25)
 
 <a id="ige-jób-28-14"></a>
 **Jób 28:14**
-> A mélység azt mondja: Nincsen az bennem; a tenger azt mondja: én nálam sincsen. **Jób 28:14**
+*A mélység azt mondja: Nincsen az bennem; a tenger azt mondja: én nálam sincsen.*
 "a mélység azt mondja: nincs bennem" — a bölcsesség nem található
 
 <a id="ige-jób-38-16"></a>
 **Jób 38:16**
-> Eljutottál-é a tenger forrásáig, bejártad-é a mélységnek fenekét? **Jób 38:16**
+*Eljutottál-é a tenger forrásáig, bejártad-é a mélységnek fenekét?*
 "eljutottál-e a mélység forrásaihoz"
 
 <a id="ige-jób-38-30"></a>
 **Jób 38:30**
-> Miként rejtőznek el a vizek mintegy kő alá, és mint zárul be a mély vizek színe? **Jób 38:30**
+*Miként rejtőznek el a vizek mintegy kő alá, és mint zárul be a mély vizek színe?*
 "a mélység színe mintegy jéggé mered"
 
 <a id="ige-zsolt-33-7"></a>
 **Zsolt 33:7**
-> Összegyűjti a tenger vizeit, mintegy tömlőbe; tárházakba rakja a hullámokat. **Zsolt 33:7**
+*Összegyűjti a tenger vizeit, mintegy tömlőbe; tárházakba rakja a hullámokat.*
 "összegyűjti mint tömlőbe a tenger vizét, tárházba rakja a mélységeket" (Károli 1908 "hullámokat"-tal fordítja a תְּהוֹם-ot)
 
 <a id="ige-zsolt-36-7"></a>
 **Zsolt 36:7**
-> Igazságod, mint Isten hegyei; ítéleteid, mint a nagy mélységek; az embert és barmot te tartod meg, Uram! **Zsolt 36:7**
+*Igazságod, mint Isten hegyei; ítéleteid, mint a nagy mélységek; az embert és barmot te tartod meg, Uram!*
 "ítéleteid [olyanok, mint] a nagy mélység"
 
 <a id="ige-zsolt-42-8"></a>
 **Zsolt 42:8**
-> Örvény örvényt hív elő zuhatagjaid hangjára; minden vízáradásod és hullámod összecsap fölöttem! **Zsolt 42:8**
+*Örvény örvényt hív elő zuhatagjaid hangjára; minden vízáradásod és hullámod összecsap fölöttem!*
 "mélység a mélységet hívja" — a szó kétszer szerepel e versben
 
 <a id="ige-zsolt-71-20"></a>
 **Zsolt 71:20**
-> A ki sok bajt és nyomorúságot éreztettél velünk, de ismét megelevenítesz, és a föld mélységéből ismét felhozol minket. **Zsolt 71:20**
+*A ki sok bajt és nyomorúságot éreztettél velünk, de ismét megelevenítesz, és a föld mélységéből ismét felhozol minket.*
 "a föld mélységéből ismét felhozol engem"
 
 <a id="ige-zsolt-77-17"></a>
 **Zsolt 77:17**
-> Láttak téged a vizek, oh Isten, láttak téged a vizek és megfélemlének; a mélységek is megrázkódának. **Zsolt 77:17**
+*Láttak téged a vizek, oh Isten, láttak téged a vizek és megfélemlének; a mélységek is megrázkódának.*
 "látták a vizek téged... megrázkódtak a mélységek" — teofánia/Vörös-tenger-visszhang
 
 <a id="ige-zsolt-78-15"></a>
 **Zsolt 78:15**
-> Sziklákat hasított meg a pusztában, és inniok adott bőségesen, akárcsak a mélységes vizekből. **Zsolt 78:15**
+*Sziklákat hasított meg a pusztában, és inniok adott bőségesen, akárcsak a mélységes vizekből.*
 "megnyitotta a kősziklát... itatta, mint a nagy mélységekből"
 
 <a id="ige-zsolt-104-6"></a>
 **Zsolt 104:6**
-> Vízáradattal, mint egy ruhával borítottad be azt, a hegyek felett is vizek állottak vala. **Zsolt 104:6**
+*Vízáradattal, mint egy ruhával borítottad be azt, a hegyek felett is vizek állottak vala.*
 "vízáradattal, mint egy ruhával, takartad be, a hegyek felett álltak a vizek"
 
 <a id="ige-zsolt-106-9"></a>
 **Zsolt 106:9**
-> Rákiálta a veres tengerre és kiszáradt, s úgy vivé őket a mélységeken, mint egy síkon. **Zsolt 106:9**
+*Rákiálta a veres tengerre és kiszáradt, s úgy vivé őket a mélységeken, mint egy síkon.*
 "megdorgálta a veres tengert... átvitte őket a mélységeken" — Exodus-visszhang
 
 <a id="ige-zsolt-107-26"></a>
 **Zsolt 107:26**
-> Az égig emelkedének, a fenékig sülyedének; lelkök elolvada az inségben. **Zsolt 107:26**
+*Az égig emelkedének, a fenékig sülyedének; lelkök elolvada az inségben.*
 "az égig emelkednek, a fenékig süllyednek" (Károli 1908 "fenékig"-gel fordítja a תְּהוֹם-ot)
 
 <a id="ige-zsolt-135-6"></a>
 **Zsolt 135:6**
-> Mind megteszi az Úr, a mit akar: az egekben és a földön, a vizekben és minden mélységben. **Zsolt 135:6**
+*Mind megteszi az Úr, a mit akar: az egekben és a földön, a vizekben és minden mélységben.*
 "amit csak akar, megcselekszi... a mélységekben"
 
 <a id="ige-zsolt-148-7"></a>
 **Zsolt 148:7**
-> Dicsérjétek az Urat a földről: viziszörnyek és mély vizek ti mind! **Zsolt 148:7**
+*Dicsérjétek az Urat a földről: viziszörnyek és mély vizek ti mind!*
 "dicsérjétek az Urat... ti mélységek"
 
 <a id="ige-péld-3-20"></a>
 **Péld 3:20**
-> Az ő tudománya által fakadtak ki a mélységből a vizek, és a felhők csepegnek harmatot, **Péld 3:20**
+*Az ő tudománya által fakadtak ki a mélységből a vizek, és a felhők csepegnek harmatot,*
 "az ő tudománya által fakadtak a mélységek"
 
 <a id="ige-péld-8-24"></a>
 **Péld 8:24**
-> Még mikor semmi mélységek nem voltak, születtem vala; még mikor semmi források, vízzel teljesek nem voltak. **Péld 8:24**
+*Még mikor semmi mélységek nem voltak, születtem vala; még mikor semmi források, vízzel teljesek nem voltak.*
 "mikor még semmi mélységek nem voltak, születtem" — bölcsesség-teológia
 
 <a id="ige-péld-8-27"></a>
 **Péld 8:27**
-> Mikor készíté az eget, ott valék; mikor felveté a mélységek színén a kerekséget; **Péld 8:27**
+*Mikor készíté az eget, ott valék; mikor felveté a mélységek színén a kerekséget;*
 "mikor a mélység színe felett kört formált" (szinte szó szerinti = 1Móz 1:2)
 
 <a id="ige-péld-8-28"></a>
 **Péld 8:28**
-> Mikor megerősíté a felhőket ott fenn, mikor erősekké lőnek a mélységeknek forrásai; **Péld 8:28**
+*Mikor megerősíté a felhőket ott fenn, mikor erősekké lőnek a mélységeknek forrásai;*
 "mikor erősekké tette a mélység forrásait" (szinte szó szerinti = 1Móz 7:11)
 
 <a id="ige-ézs-51-10"></a>
 **Ézs 51:10**
-> Nem te vagy-é, a ki a tengert megszáraztotta, a nagy mélység vizeit; a ki a tenger fenekét úttá változtatta, hogy átmenjenek a megváltottak?! **Ézs 51:10**
+*Nem te vagy-é, a ki a tengert megszáraztotta, a nagy mélység vizeit; a ki a tenger fenekét úttá változtatta, hogy átmenjenek a megváltottak?!*
 "nem te vagy-e, aki kiszárítottad a tengert, a nagy mélység vizeit" — Exodus-visszhang
 
 <a id="ige-ézs-63-13"></a>
 **Ézs 63:13**
-> Ki járatá őket mélységekben, mint a lovat a síkon, és meg nem botlottanak! **Ézs 63:13**
+*Ki járatá őket mélységekben, mint a lovat a síkon, és meg nem botlottanak!*
 "aki átvitte őket a mélységeken" — Exodus-visszhang
 
 <a id="ige-ez-26-19"></a>
 **Ez 26:19**
-> Mert azt mondja az Úr Isten: Mikor én téged elpusztult várossá teszlek, mint a mely városokat nem laknak; mikor a mélység árját felhozom reád, hogy beborítsanak a sok vizek: **Ez 26:19**
+*Mert azt mondja az Úr Isten: Mikor én téged elpusztult várossá teszlek, mint a mely városokat nem laknak; mikor a mélység árját felhozom reád, hogy beborítsanak a sok vizek:*
 "mikor rád hozom a mélységet, hogy elborítsanak a nagy vizek"
 
 <a id="ige-ez-31-4"></a>
 **Ez 31:4**
-> Víz nevelte nagygyá, a mélység vizei tették magassá, folyóikkal körüljárták ültetése földjét, s csak folyásaikat bocsáták a mező egyéb fáihoz. **Ez 31:4**
+*Víz nevelte nagygyá, a mélység vizei tették magassá, folyóikkal körüljárták ültetése földjét, s csak folyásaikat bocsáták a mező egyéb fáihoz.*
 "a mélység naggyá tette [a cédrust]"
 
 <a id="ige-ez-31-15"></a>
 **Ez 31:15**
-> Így szól az Úr Isten: Azon a napon, a melyen sírba aláméne, gyászba öltöztetém miatta a mélység vizeit, és megtartóztatám folyóikat, úgy hogy a sok víz elzáraték, s meggyászoltatám őt a Libánonnal, és a mező minden fája elepede miatta. **Ez 31:15**
+*Így szól az Úr Isten: Azon a napon, a melyen sírba aláméne, gyászba öltöztetém miatta a mélység vizeit, és megtartóztatám folyóikat, úgy hogy a sok víz elzáraték, s meggyászoltatám őt a Libánonnal, és a mező minden fája elepede miatta.*
 "béburkoltam miatta a mélységet" — Fáraó-siratóének
 
 <a id="ige-ámós-7-4"></a>
 **Ámós 7:4**
-> Ily dolgot láttatott velem az Úr Isten: Ímé, tüzet híva elő ítéletre az Úr Isten, és megemészté az a nagy mélységet, és megemészté az országot. **Ámós 7:4**
+*Ily dolgot láttatott velem az Úr Isten: Ímé, tüzet híva elő ítéletre az Úr Isten, és megemészté az a nagy mélységet, és megemészté az országot.*
 "megemésztette a nagy mélységet" — sáska/tűz-látomás
 
 <a id="ige-jón-2-6"></a>
 **Jón 2:6**
-> Körülvettek engem a vizek lelkemig, mély ár kerített be engem, hinár szövődött fejemre. **Jón 2:6**
+*Körülvettek engem a vizek lelkemig, mély ár kerített be engem, hinár szövődött fejemre.*
 "a mélység körülvett engem" — Jónás imája a hal gyomrában, legszorosabb párhuzam a Zsolt 71:20/107:26 verspárral
 
 <a id="ige-hab-3-10"></a>
 **Hab 3:10**
-> Látnak téged és megrendülnek a hegyek, gátat tör a víz-ár, harsog a hullám, és magasra emeli karjait. **Hab 3:10**
+*Látnak téged és megrendülnek a hegyek, gátat tör a víz-ár, harsog a hullám, és magasra emeli karjait.*
 "a mélység felemelte szavát" — teofánia
 
 <a id="ige-luk-8-31"></a>
 **Luk 8:31**
-> És kérék őt, hogy ne parancsolja nékik, hogy a mélységbe menjenek. **Luk 8:31**
+*És kérék őt, hogy ne parancsolja nékik, hogy a mélységbe menjenek.*
 ἄβυσσος — a démonok kérik, ne oda küldje őket Jézus
 
 <a id="ige-róm-10-7"></a>
 **Róm 10:7**
-> Avagy: Kicsoda száll le a mélységbe? (azaz, hogy Krisztust a halálból felhozza.) **Róm 10:7**
+*Avagy: Kicsoda száll le a mélységbe? (azaz, hogy Krisztust a halálból felhozza.)*
 ἄβυσσος — "ki száll le az abüsszoszba?"
 
 <a id="ige-jel-9-1-2"></a>
 **Jel 9:1-2**
-> Az ötödik angyal is trombitált, és látám, hogy egy csillag esett le az égről a földre, és adaték annak a mélység kútjának kulcsa. **Jel 9:1**
-> Megnyitá azért a mélységnek kútját: és füst jöve fel a kútból, mint egy nagy kemenczének füstje; és meghomályosodék a nap és a levegőég a kút füstje miatt. **Jel 9:2**
+*Az ötödik angyal is trombitált, és látám, hogy egy csillag esett le az égről a földre, és adaték annak a mélység kútjának kulcsa.*
+*Megnyitá azért a mélységnek kútját: és füst jöve fel a kútból, mint egy nagy kemenczének füstje; és meghomályosodék a nap és a levegőég a kút füstje miatt.*
 ἄβυσσος — a mélység kútja megnyílik, füst és sáskák jönnek fel
 
 <a id="ige-jel-9-11"></a>
 **Jel 9:11**
-> Királyukul pedig a mélység angyala vala felettök; annak a neve zsidóul Abaddon, görögül pedig Apollion, azaz Vesztő a neve. **Jel 9:11**
+*Királyukul pedig a mélység angyala vala felettök; annak a neve zsidóul Abaddon, görögül pedig Apollion, azaz Vesztő a neve.*
 ἄβυσσος, Ἀβαδδών/Ἀπολλύων — a mélység angyala
 
 <a id="ige-jel-11-7"></a>
 **Jel 11:7**
-> És mikor elvégezik az ő bizonyságtételöket, a mélységből feljövő fenevad hadakozik ellenök, és legyőzi őket, és megöli őket. **Jel 11:7**
+*És mikor elvégezik az ő bizonyságtételöket, a mélységből feljövő fenevad hadakozik ellenök, és legyőzi őket, és megöli őket.*
 ἄβυσσος — a fenevad onnan jön fel
 
 <a id="ige-jel-17-8"></a>
 **Jel 17:8**
-> A fenevad, a melyet láttál, volt és nincs; és a mélységből jő fel és megy a veszedelemre. És a föld lakosai csodálkoznak (a kiknek neve nincs beírva az életnek könyvébe e világ alapítása óta) látván a fenevadat, a mely vala és nincs, noha van. **Jel 17:8**
+*A fenevad, a melyet láttál, volt és nincs; és a mélységből jő fel és megy a veszedelemre. És a föld lakosai csodálkoznak (a kiknek neve nincs beírva az életnek könyvébe e világ alapítása óta) látván a fenevadat, a mely vala és nincs, noha van.*
 ἄβυσσος — a fenevad onnan jön fel
 
 <a id="ige-jel-20-1-3"></a>
 **Jel 20:1-3**
-> És láték egy angyalt leszállani a mennyből, a kinél vala a mélységnek kulcsa, és egy nagy láncz a kezében. **Jel 20:1**
-> És megfogá a sárkányt, azt a régi kígyót, a ki az ördög és Sátán, és megkötözé azt ezer esztendőre, **Jel 20:2**
-> És veté őt a mélységbe, és bezárá azt és bepecsételé ő felette, hogy többé el ne hitesse a népeket, míg betelik az ezer esztendő; azután el kell néki oldoztatni egy kevés időre. **Jel 20:3**
+*És láték egy angyalt leszállani a mennyből, a kinél vala a mélységnek kulcsa, és egy nagy láncz a kezében.*
+*És megfogá a sárkányt, azt a régi kígyót, a ki az ördög és Sátán, és megkötözé azt ezer esztendőre,*
+*És veté őt a mélységbe, és bezárá azt és bepecsételé ő felette, hogy többé el ne hitesse a népeket, míg betelik az ezer esztendő; azután el kell néki oldoztatni egy kevés időre.*
 ἄβυσσος — Sátán megkötözve ezer évre
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-001#elofordulasok -->
@@ -374,13 +374,11 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: TEREMT-001]` motívum 2 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
-### G0012
-
-**Kiejtés:** abusson
+### G0012 — ἄβυσσος (abussos)
 
 **TWOT:** —
 
@@ -394,9 +392,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 *Forrás: konkordancia/Thayer_teljes.tsv*
 
-### H8415
-
-**Kiejtés:** te.Hom
+### H8415 — תְּהוֹם (te.hom)
 
 **TWOT:** 2495a
 
@@ -422,39 +418,39 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 1:2 | Genesis 1:2 | תְה֑וֹם (te.Hom) | ἀβύσσου (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| 1Móz 7:11 | Genesis 7:11 | תְּה֣וֹם (te.Hom) | ἀβύσσου (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| 1Móz 8:2 | Genesis 8:2 | תְּה֔וֹם (te.Hom) | ἀβύσσου (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| 1Móz 49:25 | Genesis 49:25 | תְּה֖וֹם (te.Hom) | — | kutatói azonosítás függőben | LXX_OS |
-| 2Móz 15:5 | Exodus 15:5 | תְּהֹמֹ֖ת (te.ho.Mot) | — | kutatói azonosítás függőben | LXX_OS |
-| 2Móz 15:8 | Exodus 15:8 | תְהֹמֹ֖ת (te.ho.Mot) | — | kutatói azonosítás függőben | LXX_OS |
-| 5Móz 8:7 | Deuteronomy 8:7 | תְהֹמֹ֔ת (te.ho.Mot) | ἀβύσσων (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| 5Móz 33:13 | Deuteronomy 33:13 | תְּה֖וֹם (te.Hom) | ἀβύσσων (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Jób 28:14 | Job (LXX) 28:14 | תְּה֣וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
+| 1Móz 1:2 | 1Móz 1:2 | תְה֑וֹם (te.Hom) | ἀβύσσου (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| 1Móz 7:11 | 1Móz 7:11 | תְּה֣וֹם (te.Hom) | ἀβύσσου (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| 1Móz 8:2 | 1Móz 8:2 | תְּה֔וֹם (te.Hom) | ἀβύσσου (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| 1Móz 49:25 | 1Móz 49:25 | תְּה֖וֹם (te.Hom) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Móz 15:5 | 2Móz 15:5 | תְּהֹמֹ֖ת (te.ho.Mot) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Móz 15:8 | 2Móz 15:8 | תְהֹמֹ֖ת (te.ho.Mot) | — | kutatói azonosítás függőben | LXX_OS |
+| 5Móz 8:7 | 5Móz 8:7 | תְהֹמֹ֔ת (te.ho.Mot) | ἀβύσσων (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| 5Móz 33:13 | 5Móz 33:13 | תְּה֖וֹם (te.Hom) | ἀβύσσων (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Jób 28:14 | Jób 28:14 | תְּה֣וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Jób 38:16 | — | תְּ֝ה֗וֹם (te.Hom) | — | szamozas_elteres | LXX_OS |
 | Jób 38:30 | — | תְ֝ה֗וֹם (te.Hom) | — | szamozas_elteres | LXX_OS |
-| Zsolt 33:7 | Psalms (LXX) 32:7 | תְּהוֹמֽוֹת (te.ho.Mot) | ἀβύσσους (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Zsolt 36:7 | Psalms (LXX) 35:7 | תְּה֣וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Zsolt 42:8 | Psalms (LXX) 41:8 | תְּה֣וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Zsolt 71:20 | Psalms (LXX) 70:20 | תְּהֹמ֥וֹת (te.ho.Mot) | ἀβύσσων (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Zsolt 77:17 | Psalms (LXX) 76:17 | תְהֹמֽוֹת (te.ho.Mot) | ἄβυσσοι (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Zsolt 78:15 | Psalms (LXX) 77:15 | תְהֹמ֥וֹת (t.ho.Mot) | ἀβύσσῳ (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Zsolt 104:6 | Psalms (LXX) 103:6 | תְּ֭הוֹם (Te.hom) | ἄβυσσος (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Zsolt 106:9 | Psalms (LXX) 105:9 | תְּהֹמ֗וֹת (te.ho.Mot) | ἀβύσσῳ (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Zsolt 107:26 | Psalms (LXX) 106:26 | תְהוֹמ֑וֹת (te.ho.Mot) | ἀβύσσων (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Zsolt 135:6 | Psalms (LXX) 134:6 | תְּהוֹמֽוֹת (te.ho.Mot) | ἀβύσσοις (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Zsolt 148:7 | Psalms (LXX) 148:7 | תְּהֹמֽוֹת (te.ho.Mot) | ἄβυσσοι (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Péld 3:20 | Proverbs 3:20 | תְּהוֹמ֣וֹת (te.ho.Mot) | ἄβυσσοι (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Péld 8:24 | Proverbs 8:24 | תְּהֹמ֥וֹת (te.ho.Mot) | ἀβύσσους (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Péld 8:27 | Proverbs 8:27 | תְהֽוֹם (te.Hom) | — | kutatói azonosítás függőben | LXX_OS |
-| Péld 8:28 | Proverbs 8:28 | תְּהוֹם (te.hom) | — | kutatói azonosítás függőben | LXX_OS |
-| Ézs 51:10 | Isaiah 51:10 | תְּה֣וֹם (te.Hom) | ἀβύσσου (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
+| Zsolt 33:7 | Zsolt(LXX) 32:7 | תְּהוֹמֽוֹת (te.ho.Mot) | ἀβύσσους (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Zsolt 36:7 | Zsolt(LXX) 35:7 | תְּה֣וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Zsolt 42:8 | Zsolt(LXX) 41:8 | תְּה֣וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Zsolt 71:20 | Zsolt(LXX) 70:20 | תְּהֹמ֥וֹת (te.ho.Mot) | ἀβύσσων (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Zsolt 77:17 | Zsolt(LXX) 76:17 | תְהֹמֽוֹת (te.ho.Mot) | ἄβυσσοι (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Zsolt 78:15 | Zsolt(LXX) 77:15 | תְהֹמ֥וֹת (t.ho.Mot) | ἀβύσσῳ (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Zsolt 104:6 | Zsolt(LXX) 103:6 | תְּ֭הוֹם (Te.hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Zsolt 106:9 | Zsolt(LXX) 105:9 | תְּהֹמ֗וֹת (te.ho.Mot) | ἀβύσσῳ (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Zsolt 107:26 | Zsolt(LXX) 106:26 | תְהוֹמ֑וֹת (te.ho.Mot) | ἀβύσσων (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Zsolt 135:6 | Zsolt(LXX) 134:6 | תְּהוֹמֽוֹת (te.ho.Mot) | ἀβύσσοις (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Zsolt 148:7 | Zsolt 148:7 | תְּהֹמֽוֹת (te.ho.Mot) | ἄβυσσοι (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Péld 3:20 | Péld 3:20 | תְּהוֹמ֣וֹת (te.ho.Mot) | ἄβυσσοι (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Péld 8:24 | Péld 8:24 | תְּהֹמ֥וֹת (te.ho.Mot) | ἀβύσσους (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Péld 8:27 | Péld 8:27 | תְהֽוֹם (te.Hom) | — | kutatói azonosítás függőben | LXX_OS |
+| Péld 8:28 | Péld 8:28 | תְּהוֹם (te.hom) | — | kutatói azonosítás függőben | LXX_OS |
+| Ézs 51:10 | Ézs 51:10 | תְּה֣וֹם (te.Hom) | ἀβύσσου (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Ézs 63:13 | — | תְּהֹמ֑וֹת (te.ho.Mot) | — | szamozas_elteres | LXX_OS |
-| Ez 26:19 | Ezekiel 26:19 | תְּה֔וֹם (te.Hom) | ἄβυσσον (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Ez 31:4 | Ezekiel 31:4 | תְּה֖וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Ez 31:15 | Ezekiel 31:15 | תְּה֔וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Ámós 7:4 | Amos 7:4 | תְּה֣וֹם (te.Hom) | ἄβυσσον (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
-| Hab 3:10 | Habakkuk 3:10 | תְּהוֹם֙ (te.hOm) | ἄβυσσος (ἄβυσσος, abusson G0012) | egyező | LXX_OS |
+| Ez 26:19 | Ez 26:19 | תְּה֔וֹם (te.Hom) | ἄβυσσον (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Ez 31:4 | Ez 31:4 | תְּה֖וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Ez 31:15 | Ez 31:15 | תְּה֔וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Ámós 7:4 | Ámós 7:4 | תְּה֣וֹם (te.Hom) | ἄβυσσον (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Hab 3:10 | Hab 3:10 | תְּהוֹם֙ (te.hOm) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Jón 2:6 | — | תְּה֖וֹם (te.Hom) | — | szamozas_elteres | LXX_OS |
 
 *Összesítés: egyező=25, eltérő=0, kutatói azonosítás függőben=5, szamozas_elteres=4.*
@@ -584,19 +580,17 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 ## 6. Értelmezés *(kézi)*
 
-## 1/b. PaRDeS keretrendszer *(kézi)*
+### PaRDeS keretrendszer
 
 *Kézzel írandó — a forrás-study 3. pontja alapján, a 2. szakasz lexikai adataival bővítve.*
 
-## 7. ÚJ FELISMERÉS *(kézi, ha van)*
-
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
-## 6. Módszertani napló *(kézi)*
+### Módszertani napló
 
 *Kézzel írandó.*
 
-## 8. Nyitott kérdések és séma-korlátok *(kézi)*
+### Nyitott kérdések és séma-korlátok
 
 *Kézzel írandó.*
 
@@ -604,7 +598,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
 
-*Ez a blokk a `[ID: TEREMT-001]` motívum hivatkozási adatait és a ténylegesen felhasznált szótárak listáját adja (G9, LEXV2_3-ig szűkítve).*
+*Ez a blokk a `[ID: TEREMT-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
 **Hogyan hivatkozz:**
 - ID: `TEREMT-001`
@@ -614,6 +608,17 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/TEREMT-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
+- OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám (`konkordancia/OSHL_lexikalis_index.tsv`, CC BY 4.0)
+- SDBH (Semantic Dictionary of Biblical Hebrew) (`konkordancia/SDBH_domenek.tsv`, CC BY-SA 4.0)
+- SDGNT (Semantic Dictionary of Biblical Greek) (`konkordancia/SDGNT_domenek.tsv`, CC BY-SA 4.0)
+- TBESG (Tyndale Brief lexicon of Extended Strongs for Greek) (`konkordancia/TBESG.txt`, CC BY 4.0)
+- TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, CC BY 4.0)
+- TSK (Treasury of Scripture Knowledge) (`konkordancia/TSK_kereszthivatkozasok.tsv`, CC BY 4.0)
+- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_jelentesek.tsv`, CC BY-SA 4.0)
+- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_referenciak.tsv`, CC BY-SA 4.0)
+- LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz) (`konkordancia/LXX_OS/amos.tsv`, `konkordancia/LXX_OS/deuteronomy.tsv`, `konkordancia/LXX_OS/exodus.tsv`, `konkordancia/LXX_OS/ezekiel.tsv`, `konkordancia/LXX_OS/genesis.tsv`, `konkordancia/LXX_OS/habakkuk.tsv`, `konkordancia/LXX_OS/isaiah.tsv`, `konkordancia/LXX_OS/job-lxx.tsv`, `konkordancia/LXX_OS/jonah.tsv`, `konkordancia/LXX_OS/proverbs.tsv`, `konkordancia/LXX_OS/psalms-lxx.tsv`, CC BY 4.0)
+
+**Adatforrások:**
 - `adat/elofordulasok.tsv` (projekt-adat)
 - `adat/forditas_ubs.tsv` (projekt-adat)
 - `adat/jeloltek.tsv` (projekt-adat)
@@ -622,29 +627,12 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 - `adat/motivumok.tsv` (projekt-adat)
 - `konkordancia/Karoli_1908.tsv` (közkincs)
 - `konkordancia/Karoli_kereszthivatkozasok.tsv` (közkincs)
-- `konkordancia/LXX_OS/amos.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/deuteronomy.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/exodus.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/ezekiel.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/genesis.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/habakkuk.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/isaiah.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/job-lxx.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/jonah.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/proverbs.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/psalms-lxx.tsv` (CC BY 4.0)
-- `konkordancia/OSHL_lexikalis_index.tsv` (CC BY 4.0)
-- `konkordancia/SDBH_domenek.tsv` (CC BY-SA 4.0)
-- `konkordancia/SDGNT_domenek.tsv` (CC BY-SA 4.0)
-- `konkordancia/TSK_kereszthivatkozasok.tsv` (CC BY 4.0)
-- `konkordancia/UBS_DNTG_jelentesek.tsv` (CC BY-SA 4.0)
-- `konkordancia/UBS_DNTG_referenciak.tsv` (CC BY-SA 4.0)
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-001#idezes -->
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: TEREMT-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
@@ -689,6 +677,8 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 | `OSHL_lexikalis_index.tsv` | `konkordancia/OSHL_lexikalis_index.tsv` | CC BY 4.0 | szocikkek |
 | `SDBH_domenek.tsv` | `konkordancia/SDBH_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
 | `SDGNT_domenek.tsv` | `konkordancia/SDGNT_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
+| `TBESG.txt` | `konkordancia/TBESG.txt` | CC BY 4.0 | szocikkek |
+| `TBESH.txt` | `konkordancia/TBESH.txt` | CC BY 4.0 | szocikkek |
 | `TSK_kereszthivatkozasok.tsv` | `konkordancia/TSK_kereszthivatkozasok.tsv` | CC BY 4.0 | kereszthivatkozasok |
 | `UBS_DNTG_jelentesek.tsv` | `konkordancia/UBS_DNTG_jelentesek.tsv` | CC BY-SA 4.0 | elofordulasok |
 | `UBS_DNTG_referenciak.tsv` | `konkordancia/UBS_DNTG_referenciak.tsv` | CC BY-SA 4.0 | elofordulasok |

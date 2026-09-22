@@ -132,157 +132,157 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 <a id="ige-1móz-4-26"></a>
 **1Móz 4:26**
-> Séthnek is született fia, és nevezé annak nevét Énósnak. Akkor kezdték segítségül hívni az Úrnak nevét. **1Móz 4:26**
+*Séthnek is született fia, és nevezé annak nevét Énósnak. Akkor kezdték segítségül hívni az Úrnak nevét.*
 A formula első előfordulása — Séth fia, Énós nemzedéke; a Kain-vonal önerős civilizációépítése utáni korszakváltás jele.
 
 <a id="ige-1móz-12-8"></a>
 **1Móz 12:8**
-> Onnan azután a hegység felé méne Bétheltől keletre és felüté sátorát: Béthel vala nyugatra, Hái pedig keletre, és ott oltárt építe az Úrnak, és segítségűl hívá az Úr nevét. **1Móz 12:8**
+*Onnan azután a hegység felé méne Bétheltől keletre és felüté sátorát: Béthel vala nyugatra, Hái pedig keletre, és ott oltárt építe az Úrnak, és segítségűl hívá az Úr nevét.*
 Ábrám, Bétel-Ai között — oltárépítés + segítségül hívás első összekapcsolása.
 
 <a id="ige-1móz-13-4"></a>
 **1Móz 13:4**
-> Annak az oltárnak helyére, melyet ott elsőben készített vala: és segítségűl hívá ott Ábrám az Úrnak nevét. **1Móz 13:4**
+*Annak az oltárnak helyére, melyet ott elsőben készített vala: és segítségűl hívá ott Ábrám az Úrnak nevét.*
 Ábrám visszatér ugyanahhoz az oltárhoz Egyiptomból; a formula tudatos, felkeresett szokássá válik.
 
 <a id="ige-1móz-21-33"></a>
 **1Móz 21:33**
-> Ábrahám pedig tamariskusfákat ültete Beérsebában, és segítségűl hívá ott az örökkévaló Úr Istennek nevét. **1Móz 21:33**
+*Ábrahám pedig tamariskusfákat ültete Beérsebában, és segítségűl hívá ott az örökkévaló Úr Istennek nevét.*
 Ábrahám, Beérseba — a formula kiegészül egy isteni jelzővel: אֵל עוֹלָם, "örökkévaló Isten".
 
 <a id="ige-1móz-26-25"></a>
 **1Móz 26:25**
-> Oltárt építe azért ott, és segítségűl hívá az Úrnak nevét, s felvoná ott az ő sátorát; Izsák szolgái pedig kútat ásának ottan. **1Móz 26:25**
+*Oltárt építe azért ott, és segítségűl hívá az Úrnak nevét, s felvoná ott az ő sátorát; Izsák szolgái pedig kútat ásának ottan.*
 Izsák, Beérseba — a minta szó szerint átöröklődik a második pátriárka-nemzedékre, ugyanazon a helyszínen.
 
 <a id="ige-2móz-33-19"></a>
 **2Móz 33:19**
-> És monda az Úr: Megteszem, hogy az én dicsőségem a te orczád előtt menjen el, és kiáltom előtted az Úr nevét: És könyörülök, a kin könyörülök, kegyelmezek, a kinek kegyelmezek. **2Móz 33:19**
+*És monda az Úr: Megteszem, hogy az én dicsőségem a te orczád előtt menjen el, és kiáltom előtted az Úr nevét: És könyörülök, a kin könyörülök, kegyelmezek, a kinek kegyelmezek.*
 Isten maga jelenti ki Mózesnek: "kihirdetem előtted az Úr nevét" — nem az ember hívja segítségül Isten nevét, hanem Isten mondja ki a sajátját.
 
 <a id="ige-2móz-34-5"></a>
 **2Móz 34:5**
-> Az Úr pedig leszálla felhőben, és ott álla ő vele, és nevén kiáltá az Urat: **2Móz 34:5**
+*Az Úr pedig leszálla felhőben, és ott álla ő vele, és nevén kiáltá az Urat:*
 Ugyanaz a jelenet folytatása: "az Úr nevében kiáltott" — Isten végrehajtja az előző fejezetben megígért önkihirdetést.
 
 <a id="ige-1kir-18-24"></a>
 **1Kir 18:24**
-> Akkor hívjátok segítségül a ti istenteknek nevét, és én is segítségül hívom az Úrnak nevét; és a mely isten tűz által felel, az az Isten. És felelvén az egész sokaság, monda: Jó lesz! **1Kir 18:24**
+*Akkor hívjátok segítségül a ti istenteknek nevét, és én is segítségül hívom az Úrnak nevét; és a mely isten tűz által felel, az az Isten. És felelvén az egész sokaság, monda: Jó lesz!*
 Illés a Kármelen: "ti a ti isteneitek nevét hívjátok, és én segítségül hívom az Úr nevét" — nyilvános, versengő kontextus, a kontraszt magán a versen belül.
 
 <a id="ige-1kir-18-25"></a>
 **1Kir 18:25**
-> És monda Illés a Baál prófétáinak: Válaszszátok el magatoknak az egyik tulkot, és készítsétek el ti először; mert ti többen vagytok, és hívjátok segítségül a ti istenteknek nevét, de tüzet ne tegyetek alája. **1Kir 18:25**
+*És monda Illés a Baál prófétáinak: Válaszszátok el magatoknak az egyik tulkot, és készítsétek el ti először; mert ti többen vagytok, és hívjátok segítségül a ti istenteknek nevét, de tüzet ne tegyetek alája.*
 A Baál-próféták felszólítása: "hívjátok segítségül a ti istenetek nevét".
 
 <a id="ige-1kir-18-26"></a>
 **1Kir 18:26**
-> És vevék a tulkot, a melyet nékik adott, és azt elkészíték, és segítségül hívák a Baálnak nevét reggeltől fogva délig, mondván: Baál! hallgass meg minket! De nem jött szó, sem felelet. És ott sántikáltak az oltár körül, a melyet készítettek. **1Kir 18:26**
+*És vevék a tulkot, a melyet nékik adott, és azt elkészíték, és segítségül hívák a Baálnak nevét reggeltől fogva délig, mondván: Baál! hallgass meg minket! De nem jött szó, sem felelet. És ott sántikáltak az oltár körül, a melyet készítettek.*
 A Baál-próféták ismétlődő, sikertelen invokációja — a formula kudarca a kontraszt kiteljesedése.
 
 <a id="ige-2kir-5-11"></a>
 **2Kir 5:11**
-> Akkor megharaguvék Naámán és elment, és így szólt: Íme én azt gondoltam, hogy kijő hozzám, és előállván, segítségül hívja az Úrnak, az ő Istenének nevét, és kezével megilleti a beteg helyeket, és úgy gyógyítja meg a kiütést. **2Kir 5:11**
+*Akkor megharaguvék Naámán és elment, és így szólt: Íme én azt gondoltam, hogy kijő hozzám, és előállván, segítségül hívja az Úrnak, az ő Istenének nevét, és kezével megilleti a beteg helyeket, és úgy gyógyítja meg a kiütést.*
 Naámán elvárása Elizeus felől — a formula ismertsége a nem-izraeli szereplő szájában is.
 
 <a id="ige-1krón-16-8"></a>
 **1Krón 16:8**
-> Dícsérjétek az Urat, hívjátok segítségül az ő nevét, hirdessétek minden népek között az ő nagy dolgait. **1Krón 16:8**
+*Dícsérjétek az Urat, hívjátok segítségül az ő nevét, hirdessétek minden népek között az ő nagy dolgait.*
 A Zsolt 105:1 szinte szó szerinti megismétlése a frigyláda Sátor elé állításának liturgiájában.
 
 <a id="ige-zsolt-79-6"></a>
 **Zsolt 79:6**
-> Ontsd ki haragodat a pogányokra, a kik nem ismernek téged, és az országokra, a melyek nem hívják segítségül a te nevedet; **Zsolt 79:6**
+*Ontsd ki haragodat a pogányokra, a kik nem ismernek téged, és az országokra, a melyek nem hívják segítségül a te nevedet;*
 A Jer 10:25 szinte szó szerinti párhuzama, azonos vádló szerkezettel.
 
 <a id="ige-zsolt-105-1"></a>
 **Zsolt 105:1**
-> Magasztaljátok az Urat, hívjátok segítségül az ő nevét, hirdessétek a népek között az ő cselekedeteit! **Zsolt 105:1**
+*Magasztaljátok az Urat, hívjátok segítségül az ő nevét, hirdessétek a népek között az ő cselekedeteit!*
 "Hívjátok segítségül az ő nevét, hirdessétek a népek közt az ő cselekedeteit" — a genezisi hagyományból örökölt formula önálló, liturgikus felhasználása, nem a történetszál narratív folytatása.
 
 <a id="ige-zsolt-116-4"></a>
 **Zsolt 116:4**
-> És az Úrnak nevét segítségül hívám: Kérlek Uram, szabadítsd meg az én lelkemet! **Zsolt 116:4**
+*És az Úrnak nevét segítségül hívám: Kérlek Uram, szabadítsd meg az én lelkemet!*
 A zsoltáros saját, személyes hála-könyörgésének első megfogalmazása: "segítségül hívom az Úr nevét".
 
 <a id="ige-zsolt-116-13"></a>
 **Zsolt 116:13**
-> A szabadulásért való poharat felemelem, és az Úrnak nevét hívom segítségül. **Zsolt 116:13**
+*A szabadulásért való poharat felemelem, és az Úrnak nevét hívom segítségül.*
 A formula második, szó szerinti megismétlése ugyanabban a zsoltárban, a "szabadulás poharának" felemelése kontextusában.
 
 <a id="ige-zsolt-116-17"></a>
 **Zsolt 116:17**
-> Néked áldozom hálaadásnak áldozatával, és az Úr nevét hívom segítségül. **Zsolt 116:17**
+*Néked áldozom hálaadásnak áldozatával, és az Úr nevét hívom segítségül.*
 A formula harmadik megismétlése, hála-áldozat felajánlása kontextusában.
 
 <a id="ige-ézs-12-4"></a>
 **Ézs 12:4**
-> És így szólotok ama napon: Adjatok hálát az Úrnak, magasztaljátok az Ő nevét, hirdessétek a népek közt nagyságos dolgait, mondjátok, hogy nagy az Ő neve. **Ézs 12:4**
+*És így szólotok ama napon: Adjatok hálát az Úrnak, magasztaljátok az Ő nevét, hirdessétek a népek közt nagyságos dolgait, mondjátok, hogy nagy az Ő neve.*
 Szó szerint majdnem azonos a Zsolt 105:1-gyel, eszkatológiai hálaének kontextusban.
 
 <a id="ige-jer-10-25"></a>
 **Jer 10:25**
-> Öntsd ki haragodat ama nemzetekre, a melyek nem ismernek téged, és ama nemzetségekre, a melyek nem hívják segítségül a te nevedet; mert megették Jákóbot, bizony megették őt, és elemésztették őt, és lakóhelyét elpusztították! **Jer 10:25**
+*Öntsd ki haragodat ama nemzetekre, a melyek nem ismernek téged, és ama nemzetségekre, a melyek nem hívják segítségül a te nevedet; mert megették Jákóbot, bizony megették őt, és elemésztették őt, és lakóhelyét elpusztították!*
 "…a nemzetségekre, akik a Te nevedet nem hívják segítségül" — a formula tagadó, vádló formában, fordított szórenddel.
 
 <a id="ige-jóel-2-32"></a>
 **Jóel 2:32**
-> De mindaz, a ki az Úrnak nevét hívja segítségül, megmenekül; mert a Sion hegyén és Jeruzsálemben lészen a szabadulás, a mint megigérte az Úr, és a megszabadultak közt lesznek azok, a kiket elhí az Úr! **Jóel 2:32**
+*De mindaz, a ki az Úrnak nevét hívja segítségül, megmenekül; mert a Sion hegyén és Jeruzsálemben lészen a szabadulás, a mint megigérte az Úr, és a megszabadultak közt lesznek azok, a kiket elhí az Úr!*
 Az ószövetségi megfogalmazás csúcspontja: "mindaz, aki segítségül hívja az Úr nevét, megmenekül" — ezt Péter (ApCsel 2:21) és Pál (Róm 10:13) is szó szerint idézi. Károli-számozás: Jóel 3:5.
 
 <a id="ige-sof-3-9"></a>
 **Sof 3:9**
-> Akkor változtatom majd a népek ajkát tisztává, hogy mind segítségül hívják az Úr nevét, hogy egy akarattal szolgálják őt. **Sof 3:9**
+*Akkor változtatom majd a népek ajkát tisztává, hogy mind segítségül hívják az Úr nevét, hogy egy akarattal szolgálják őt.*
 Eszkatológiai ígéret — a népek megtisztított ajka egy akarattal hívja segítségül az Urat.
 
 <a id="ige-zak-13-9"></a>
 **Zak 13:9**
-> És beviszem a harmadrészt a tűzbe, és megtisztítom őket, a mint tisztítják az ezüstöt és megpróbálom őket, a mint próbálják az aranyat; ő segítségül hívja az én nevemet és én felelni fogok néki; ezt mondom: Népem ő! Ő pedig ezt mondja: Az Úr az én Istenem! **Zak 13:9**
+*És beviszem a harmadrészt a tűzbe, és megtisztítom őket, a mint tisztítják az ezüstöt és megpróbálom őket, a mint próbálják az aranyat; ő segítségül hívja az én nevemet és én felelni fogok néki; ezt mondom: Népem ő! Ő pedig ezt mondja: Az Úr az én Istenem!*
 Sof 3:9 párja: a megtisztított maradék segítségül hívja Isten nevét, és Isten válaszol — kétirányú szövetségi megerősítés.
 
 <a id="ige-apcsel-2-21"></a>
 **ApCsel 2:21**
-> És lészen, hogy mindaz, a ki az Úrnak nevét segítségül hívja, megtartatik. **ApCsel 2:21**
+*És lészen, hogy mindaz, a ki az Úrnak nevét segítségül hívja, megtartatik.*
 Péter pünkösdi beszéde szó szerint idézi a LXX Jóel 2:32-t: "mindaz, a ki az Úrnak nevét segítségül hívja, megtartatik."
 
 <a id="ige-apcsel-9-14"></a>
 **ApCsel 9:14**
-> És itt is hatalma van a főpapoktól, hogy mindazokat megkötözze, kik a te nevedet segítségül hívják. **ApCsel 9:14**
+*És itt is hatalma van a főpapoktól, hogy mindazokat megkötözze, kik a te nevedet segítségül hívják.*
 "…mindazokat…, kik a te nevedet segítségül hívják" — Saul üldözési célpontjainak leírása, a korai keresztények azonosító megnevezése.
 
 <a id="ige-apcsel-9-21"></a>
 **ApCsel 9:21**
-> Álmélkodnak vala pedig mindnyájan, a kik hallák, és mondának: Nem ez-é az, a ki pusztította Jeruzsálemben azokat, a kik ezt a nevet hívják segítségül, és ide is azért jött, hogy őket fogva vigye a főpapokhoz? **ApCsel 9:21**
+*Álmélkodnak vala pedig mindnyájan, a kik hallák, és mondának: Nem ez-é az, a ki pusztította Jeruzsálemben azokat, a kik ezt a nevet hívják segítségül, és ide is azért jött, hogy őket fogva vigye a főpapokhoz?*
 "…a kik ezt a nevet hívják segítségül" — az ApCsel 9:14-es leírás közvetlen megismétlése ugyanabban a fejezetben.
 
 <a id="ige-apcsel-22-16"></a>
 **ApCsel 22:16**
-> Most annakokáért mit késedelmezel? Kelj fel és keresztelkedjél meg és mosd le a te bűneidet, segítségül híván az Úrnak nevét. **ApCsel 22:16**
+*Most annakokáért mit késedelmezel? Kelj fel és keresztelkedjél meg és mosd le a te bűneidet, segítségül híván az Úrnak nevét.*
 "…segítségül híván az Úrnak nevét" — Pál saját megtérés-elbeszélésében, a keresztséggel összekapcsolva.
 
 <a id="ige-róm-10-13"></a>
 **Róm 10:13**
-> Mert minden, a ki segítségül hívja az Úr nevét, megtartatik. **Róm 10:13**
+*Mert minden, a ki segítségül hívja az Úr nevét, megtartatik.*
 Pál szó szerint idézi a LXX Jóel 2:32-t: "minden, a ki segítségül hívja az Úr nevét, megtartatik." — erre épül a 10:14 kérdéssora.
 
 <a id="ige-róm-10-14"></a>
 **Róm 10:14**
-> Mimódon hívják azért segítségül azt, a kiben nem hisznek? Mimódon hisznek pedig abban, a ki felől nem hallottak? Mimódon hallanának pedig prédikáló nélkül? **Róm 10:14**
+*Mimódon hívják azért segítségül azt, a kiben nem hisznek? Mimódon hisznek pedig abban, a ki felől nem hallottak? Mimódon hallanának pedig prédikáló nélkül?*
 Pál közvetlenül folytatja az érvelést: "Mimódon hívják segítségül, a kiben nem hittek?" — ugyanaz a görög ige, mint 10:13-nál.
 
 <a id="ige-1kor-1-2"></a>
 **1Kor 1:2**
-> Az Isten gyülekezetének, a mely Korinthusban van, a Krisztus Jézusban megszentelteknek, elhívott szenteknek, mindazokkal egybe, a kik a mi Urunk Jézus Krisztus nevét segítségül hívják bármely helyen, a magokén és a miénken: **1Kor 1:2**
+*Az Isten gyülekezetének, a mely Korinthusban van, a Krisztus Jézusban megszentelteknek, elhívott szenteknek, mindazokkal egybe, a kik a mi Urunk Jézus Krisztus nevét segítségül hívják bármely helyen, a magokén és a miénken:*
 "…mindazokkal egybe, a kik a mi Urunk Jézus Krisztus nevét segítségül hívják bármely helyen" — a formula első explicit alkalmazása Krisztusra, a gyülekezet önmeghatározása.
 
 <a id="ige-2tim-2-22"></a>
 **2Tim 2:22**
-> Az ifjúkori kivánságokat pedig kerüld; hanem kövessed az igazságot, a hitet, a szeretetet, a békességet azokkal egyetembe, a kik segítségül hívják az Urat tiszta szívből. **2Tim 2:22**
+*Az ifjúkori kivánságokat pedig kerüld; hanem kövessed az igazságot, a hitet, a szeretetet, a békességet azokkal egyetembe, a kik segítségül hívják az Urat tiszta szívből.*
 "…azokkal egyetembe, a kik segítségül hívják az Urat tiszta szívből" — a segítségül hívás mint közösségválasztási kritérium.
 
 <a id="ige-1pét-1-17"></a>
 **1Pét 1:17**
-> És ha Atyának hívjátok őt, a ki személyválogatás nélkül ítél, kinek-kinek cselekedete szerint, félelemmel töltsétek a ti jövevénységtek idejét: **1Pét 1:17**
+*És ha Atyának hívjátok őt, a ki személyválogatás nélkül ítél, kinek-kinek cselekedete szerint, félelemmel töltsétek a ti jövevénységtek idejét:*
 "…ha Atyának hívjátok őt…" — az invokáció "Atya" megszólításra alkalmazva; a görög ige azonos, a Károli nem tartja meg a "segítségül" szót.
 
 <!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#elofordulasok -->
@@ -301,13 +301,11 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 3 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
-### G1941
-
-**Kiejtés:** epiklētheis
+### G1941 — ἐπικαλέω (epikaleō)
 
 **TWOT:** —
 
@@ -337,9 +335,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 *Forrás: konkordancia/Thayer_teljes.tsv*
 
-### H7121
-
-**Kiejtés:** i.yik.Ra'
+### H7121 — קָרָא (qa.ra)
 
 **TWOT:** 2063
 
@@ -361,9 +357,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 *Forrás: konkordancia/BDB_teljes_unabridged.tsv*
 
-### H8034
-
-**Kiejtés:** shem
+### H8034 — שֵׁם (shem)
 
 **TWOT:** 2405
 
@@ -373,9 +367,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 <!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#szocikkek -->
 
-### 2/b *(kézi, ha van)*
-
-### 2/b. Teljes szótári anyag — a pilotból *(kézi)*
+### 2/b. Teljes szótári anyag — a pilotból
 
 *A `motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md` 2–4. szakaszának szó szerinti átvétele (N16, 2026.09.21). A magyar fordítások az LXH.2-ben (2026.09.21) hű fordításra cserélve, a SEMA 2.5 szabálya szerint.*
 
@@ -561,28 +553,28 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 4:26 | Genesis 4:26 | קְרֹ֖א (k.Ro') | ἐπικαλεῖσθαι (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| 1Móz 12:8 | Genesis 12:8 | יִּקְרָ֖א (i.yik.Ra') | ἐπεκαλέσατο (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| 1Móz 13:4 | Genesis 13:4 | יִּקְרָ֥א (i.yik.Ra') | ἐπεκαλέσατο (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| 1Móz 21:33 | Genesis 21:33 | יִּ֨קְרָא (i.Yik.ra'-) | ἐπεκαλέσατο (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| 1Móz 26:25 | Genesis 26:25 | יִּקְרָא֙ (i.yik.Ra') | ἐπεκαλέσατο (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| 1Kir 18:24 | 1 Kings 18:24 | אֶקְרָ֣א ('ek.Ra') | ἐπικαλέσομαι (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| 1Kir 18:25 | 1 Kings 18:25 | קִרְאוּ֙ (kir.'U) | ἐπικαλέσασθε (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| 1Kir 18:26 | 1 Kings 18:26 | יִּקְרְא֣וּ (i.yik.re.'U) | ἐπεκαλοῦντο (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| 2Kir 5:11 | 2 Kings 5:11 | קָרָא֙ (ka.Ra') | ἐπικαλέσεται (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| Sof 3:9 | Zephaniah 3:9 | קְרֹ֤א (k.Ro') | ἐπικαλεῖσθαι (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| Zak 13:9 | Zechariah 13:9 | יִקְרָ֣א (yik.Ra') | ἐπικαλέσεται (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| Zsolt 116:4 | Psalms (LXX) 114:4 | אֶקְרָ֑א ('ek.Ra') | ἐπεκαλεσάμην (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| Zsolt 116:13 | Psalms (LXX) 115:4 | אֶקְרָֽא ('ek.Ra') | ἐπικαλέσομαι (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| Zsolt 116:17 | Psalms (LXX) 115:8 | אֶקְרָֽא ('ek.Ra') | — | kutatói azonosítás függőben | LXX_OS |
-| Jóel 2:32 | Joel 3:5 | קֹרֵֽא (ko.Re') | ἐπικαλέσηται (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| Zsolt 105:1 | Psalms (LXX) 104:1 | קִרְא֣וּ (kir.'U) | ἐπικαλεῖσθε (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| 1Krón 16:8 | 1 Chronicles 16:8 | קִרְא֣וּ (kir.'U) | ἐπικαλεῖσθε (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| Ézs 12:4 | Isaiah 12:4 | קִרְא֣וּ (kir.'U) | — | kutatói azonosítás függőben | LXX_OS |
-| Jer 10:25 | Jeremiah (LXX) 10:25 | קָרָ֑אוּ (ka.Ra.'u) | ἐπεκαλέσαντο (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| Zsolt 79:6 | Psalms (LXX) 78:6 | קָרָֽאוּ (ka.Ra.'u) | ἐπεκαλέσαντο (ἐπικαλέω, epiklētheis G1941) | egyező | LXX_OS |
-| 2Móz 33:19 | Exodus 33:19 | קָרָ֧אתִֽי (ka.Ra.ti) | — | kutatói azonosítás függőben | LXX_OS |
-| 2Móz 34:5 | Exodus 34:5 | יִּקְרָ֥א (i.yik.Ra') | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 4:26 | 1Móz 4:26 | קְרֹ֖א (k.Ro') | ἐπικαλεῖσθαι (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| 1Móz 12:8 | 1Móz 12:8 | יִּקְרָ֖א (i.yik.Ra') | ἐπεκαλέσατο (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| 1Móz 13:4 | 1Móz 13:4 | יִּקְרָ֥א (i.yik.Ra') | ἐπεκαλέσατο (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| 1Móz 21:33 | 1Móz 21:33 | יִּ֨קְרָא (i.Yik.ra'-) | ἐπεκαλέσατο (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| 1Móz 26:25 | 1Móz 26:25 | יִּקְרָא֙ (i.yik.Ra') | ἐπεκαλέσατο (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| 1Kir 18:24 | 1Kir 18:24 | אֶקְרָ֣א ('ek.Ra') | ἐπικαλέσομαι (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| 1Kir 18:25 | 1Kir 18:25 | קִרְאוּ֙ (kir.'U) | ἐπικαλέσασθε (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| 1Kir 18:26 | 1Kir 18:26 | יִּקְרְא֣וּ (i.yik.re.'U) | ἐπεκαλοῦντο (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| 2Kir 5:11 | 2Kir 5:11 | קָרָא֙ (ka.Ra') | ἐπικαλέσεται (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| Sof 3:9 | Sof 3:9 | קְרֹ֤א (k.Ro') | ἐπικαλεῖσθαι (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| Zak 13:9 | Zak 13:9 | יִקְרָ֣א (yik.Ra') | ἐπικαλέσεται (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| Zsolt 116:4 | Zsolt(LXX) 114:4 | אֶקְרָ֑א ('ek.Ra') | ἐπεκαλεσάμην (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| Zsolt 116:13 | Zsolt(LXX) 115:4 | אֶקְרָֽא ('ek.Ra') | ἐπικαλέσομαι (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| Zsolt 116:17 | Zsolt(LXX) 115:8 | אֶקְרָֽא ('ek.Ra') | — | kutatói azonosítás függőben | LXX_OS |
+| Jóel 2:32 | Jóel(LXX) 3:5 | קֹרֵֽא (ko.Re') | ἐπικαλέσηται (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| Zsolt 105:1 | Zsolt(LXX) 104:1 | קִרְא֣וּ (kir.'U) | ἐπικαλεῖσθε (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| 1Krón 16:8 | 1Krón 16:8 | קִרְא֣וּ (kir.'U) | ἐπικαλεῖσθε (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| Ézs 12:4 | Ézs 12:4 | קִרְא֣וּ (kir.'U) | — | kutatói azonosítás függőben | LXX_OS |
+| Jer 10:25 | Jer 10:25 | קָרָ֑אוּ (ka.Ra.'u) | ἐπεκαλέσαντο (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| Zsolt 79:6 | Zsolt(LXX) 78:6 | קָרָֽאוּ (ka.Ra.'u) | ἐπεκαλέσαντο (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
+| 2Móz 33:19 | 2Móz 33:19 | קָרָ֧אתִֽי (ka.Ra.ti) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Móz 34:5 | 2Móz 34:5 | יִּקְרָ֥א (i.yik.Ra') | — | kutatói azonosítás függőben | LXX_OS |
 
 *Összesítés: egyező=18, eltérő=0, kutatói azonosítás függőben=4, szamozas_elteres=0.*
 
@@ -910,7 +902,7 @@ nincs önálló oszlop a PaRDeS Típus-mezőre — ez nyitott kérdés marad.】
 
 ## 6. Értelmezés *(kézi)*
 
-## 1/b. PaRDeS keretrendszer *(kézi)*
+### PaRDeS keretrendszer
 
 **PaRDeS keretrendszer — a motívum egészére alkalmazva**
 
@@ -1009,13 +1001,11 @@ bálványimádás kezdetét jelzi, a Sod-szintű "első pozitív lelki
 válasz" olvasat módosulna — a projekt a többségi olvasatot követi, de
 a vitát nem hallgatja el)*
 
-## 7. ÚJ FELISMERÉS *(kézi, ha van)*
-
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
-## 6. Módszertani napló *(kézi)*
+### Módszertani napló
 
-### 8 ellenőrzési réteg összegzése
+#### 8 ellenőrzési réteg összegzése
 
 | # | Módszer | Eredmény |
 |---|---|---|
@@ -1031,7 +1021,7 @@ a vitát nem hallgatja el)*
 **Teljes indoklás:** l. a chat-munkamenet 2026.09.05-i naplója és a
 `Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md`.
 
-### A "be nem sorolható" eset mögötti hármas tipológia (A/B/C)
+#### A "be nem sorolható" eset mögötti hármas tipológia (A/B/C)
 
 【NAPLO: eredetileg lexikon-pilot-only megfigyelésként rögzítve, 2026.09.06. 2026.09.07-én a study PaRDeS-keretrendszer Drash-szakaszába visszaírva (l. 1/b. szakasz) — ez a szakasz itt a tipológia teljes, részletes kifejtését őrzi.】
 
@@ -1084,7 +1074,7 @@ jellegű motívumoknál is alkalmazható módon?
 döntése: az A/B/C tipológia (szereplő-csere ugyanazon a szerkezeten
 belül) a KAPCSOLATOK-réteg új **Variáns** kategóriájába tartozik.】
 
-#### D — negyedik minta: נִקְרָא...עַל (birtoklás/hovatartozás), kizárva
+##### D — negyedik minta: נִקְרָא...עַל (birtoklás/hovatartozás), kizárva
 
 A H7121+H8034 kombinált teljes-előfordulás scan
 (`tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`, 2026.09.08-i
@@ -1116,7 +1106,7 @@ megnevezett/invokált fél áll szemben); a D inkább egy ötödik dimenzió
 lexikon-oldalon dokumentálva 2026.09.09-én, hogy egy jövőbeli kör
 tévesen ne sorolja be a motívumba.】
 
-## 8. Nyitott kérdések és séma-korlátok *(kézi)*
+### Nyitott kérdések és séma-korlátok
 
 1. **2Móz 33:19/34:5 funkcionális besorolása** — nem sorolható be a
    meglévő KAPCSOLATOK-funkciók egyikébe sem (l. 1. pont indoklása a
@@ -1140,7 +1130,7 @@ tévesen ne sorolja be a motívumba.】
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
 
-*Ez a blokk a `[ID: ISTENTISZT-001]` motívum hivatkozási adatait és a ténylegesen felhasznált szótárak listáját adja (G9, LEXV2_3-ig szűkítve).*
+*Ez a blokk a `[ID: ISTENTISZT-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
 **Hogyan hivatkozz:**
 - ID: `ISTENTISZT-001`
@@ -1150,6 +1140,17 @@ tévesen ne sorolja be a motívumba.】
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ISTENTISZT-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
+- OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám (`konkordancia/OSHL_lexikalis_index.tsv`, CC BY 4.0)
+- SDBH (Semantic Dictionary of Biblical Hebrew) (`konkordancia/SDBH_domenek.tsv`, CC BY-SA 4.0)
+- SDGNT (Semantic Dictionary of Biblical Greek) (`konkordancia/SDGNT_domenek.tsv`, CC BY-SA 4.0)
+- TBESG (Tyndale Brief lexicon of Extended Strongs for Greek) (`konkordancia/TBESG.txt`, CC BY 4.0)
+- TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, CC BY 4.0)
+- TSK (Treasury of Scripture Knowledge) (`konkordancia/TSK_kereszthivatkozasok.tsv`, CC BY 4.0)
+- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_jelentesek.tsv`, CC BY-SA 4.0)
+- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_referenciak.tsv`, CC BY-SA 4.0)
+- LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz) (`konkordancia/LXX_OS/1-chronicles.tsv`, `konkordancia/LXX_OS/1-kings.tsv`, `konkordancia/LXX_OS/2-kings.tsv`, `konkordancia/LXX_OS/exodus.tsv`, `konkordancia/LXX_OS/genesis.tsv`, `konkordancia/LXX_OS/isaiah.tsv`, `konkordancia/LXX_OS/jeremiah-lxx.tsv`, `konkordancia/LXX_OS/joel.tsv`, `konkordancia/LXX_OS/psalms-lxx.tsv`, `konkordancia/LXX_OS/zechariah.tsv`, `konkordancia/LXX_OS/zephaniah.tsv`, CC BY 4.0)
+
+**Adatforrások:**
 - `adat/elofordulasok.tsv` (projekt-adat)
 - `adat/forditas_ubs.tsv` (projekt-adat)
 - `adat/jeloltek.tsv` (projekt-adat)
@@ -1158,29 +1159,12 @@ tévesen ne sorolja be a motívumba.】
 - `adat/motivumok.tsv` (projekt-adat)
 - `konkordancia/Karoli_1908.tsv` (közkincs)
 - `konkordancia/Karoli_kereszthivatkozasok.tsv` (közkincs)
-- `konkordancia/LXX_OS/1-chronicles.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/1-kings.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/2-kings.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/exodus.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/genesis.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/isaiah.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/jeremiah-lxx.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/joel.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/psalms-lxx.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/zechariah.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/zephaniah.tsv` (CC BY 4.0)
-- `konkordancia/OSHL_lexikalis_index.tsv` (CC BY 4.0)
-- `konkordancia/SDBH_domenek.tsv` (CC BY-SA 4.0)
-- `konkordancia/SDGNT_domenek.tsv` (CC BY-SA 4.0)
-- `konkordancia/TSK_kereszthivatkozasok.tsv` (CC BY 4.0)
-- `konkordancia/UBS_DNTG_jelentesek.tsv` (CC BY-SA 4.0)
-- `konkordancia/UBS_DNTG_referenciak.tsv` (CC BY-SA 4.0)
 
 <!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#idezes -->
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
@@ -1225,6 +1209,8 @@ tévesen ne sorolja be a motívumba.】
 | `OSHL_lexikalis_index.tsv` | `konkordancia/OSHL_lexikalis_index.tsv` | CC BY 4.0 | szocikkek |
 | `SDBH_domenek.tsv` | `konkordancia/SDBH_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
 | `SDGNT_domenek.tsv` | `konkordancia/SDGNT_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
+| `TBESG.txt` | `konkordancia/TBESG.txt` | CC BY 4.0 | szocikkek |
+| `TBESH.txt` | `konkordancia/TBESH.txt` | CC BY 4.0 | szocikkek |
 | `TSK_kereszthivatkozasok.tsv` | `konkordancia/TSK_kereszthivatkozasok.tsv` | CC BY 4.0 | kereszthivatkozasok |
 | `UBS_DNTG_jelentesek.tsv` | `konkordancia/UBS_DNTG_jelentesek.tsv` | CC BY-SA 4.0 | elofordulasok |
 | `UBS_DNTG_referenciak.tsv` | `konkordancia/UBS_DNTG_referenciak.tsv` | CC BY-SA 4.0 | elofordulasok |

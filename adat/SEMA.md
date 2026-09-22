@@ -598,9 +598,10 @@ a tábla adja. Automatikus héber→görög tippelés nincs (l. 0. Kiindulás:
 | `igehely` | `IGEHELY` | ✔ | Károli-igehely. |
 | `lxx_igehely` | szabad szöveg | ✔ | Az `LXX_OS` szerinti igehely (pl. `Genesis 4:26`). |
 | `heber_strong` | `STRONG` | ✔ | A motívum héber Strong-tokenje, amelyre a döntés vonatkozik. |
-| `gorog_lemma` | szabad szöveg | ✔ | A kutatói azonosítású görög megfelelő lemmája (ékezetes szóalak). |
+| `gorog_lemma` | szabad szöveg | `eltero_forditas`-nál ✔, `lxx_minusz`-nál üres | A kutatói azonosítású görög megfelelő lemmája (ékezetes szóalak); `lxx_minusz`-nál nincs mit megadni (nincs görög megfelelő). |
 | `gorog_strong` | `STRONG` | | A görög Strong-szám, ha van. |
 | `lxx_pozicio` | egész szám | | Az `LXX_OS` adott sorának `pozicio` mezője, ha a szóalak egyértelműen egy adott előfordulásra mutat. |
+| `tipus` | zárt | ✔ | `eltero_forditas` (a LXX más görög szóval fordítja, mint amit a motívum ÚSZ-i G-tokenje várna) \| `lxx_minusz` (a héber tagmondatnak/szónak nincs görög megfelelője a LXX-ben — LXX-minusz). A generált lexikon-oldal 3. szakasza `lxx_minusz`-nál „nincs megfelelő a görögben (LXX-minusz)" szöveget ír a Görög megfelelő cellába (LEXV2_2_BRIEF.md V2.6a G6). |
 | `megjegyzes` | szabad szöveg | | Indoklás/forrás a döntéshez. |
 | `proveniencia` | `PROVENIENCIA` | ✔ | |
 

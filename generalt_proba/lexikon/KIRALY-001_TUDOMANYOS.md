@@ -88,76 +88,76 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 <a id="ige-1móz-14-18-20"></a>
 **1Móz 14:18-20**
-> Melkhisédek pedig Sálem királya, kenyeret és bort hoza; ő pedig a Magasságos Istennek papja vala. **1Móz 14:18**
-> És megáldá őt, és monda: Áldott legyen Ábrám a Magasságos Istentől, ég és föld teremtőjétől. **1Móz 14:19**
-> Áldott a Magasságos Isten, a ki kezedbe adta ellenségeidet. És tizedet ada néki mindenből. **1Móz 14:20**
+*Melkhisédek pedig Sálem királya, kenyeret és bort hoza; ő pedig a Magasságos Istennek papja vala.*
+*És megáldá őt, és monda: Áldott legyen Ábrám a Magasságos Istentől, ég és föld teremtőjétől.*
+*Áldott a Magasságos Isten, a ki kezedbe adta ellenségeidet. És tizedet ada néki mindenből.*
 Melkizedek, Sálem királya, egyszerre "a Felséges Isten papja" — kenyeret és bort hoz, megáldja Ábrámot, aki tizedet ad neki. Első előfordulás, minden előzmény és genealógia nélkül.
 
 <a id="ige-2móz-19-6"></a>
 **2Móz 19:6**
-> És lesztek ti nékem papok birodalma és szent nép. Ezek azok az ígék, melyeket el kell mondanod Izráel fiainak. **2Móz 19:6**
+*És lesztek ti nékem papok birodalma és szent nép. Ezek azok az ígék, melyeket el kell mondanod Izráel fiainak.*
 "Ti pedig lesztek nékem papok királysága" — a Sínai-szövetségben Izráel egésze kap kollektív király-pap identitást, a lévita papság intézményesítése előtt. Ugyanaz a כֹּהֵן gyök, mint Melkizedeknél, de itt nem egy egyén, hanem egy egész nép viseli.
 
 <a id="ige-zsolt-76-3"></a>
 **Zsolt 76:3**
-> Mert hajléka van Sálemben, és lakhelye Sionban. **Zsolt 76:3**
+*Mert hajléka van Sálemben, és lakhelye Sionban.*
 "Sálemben van az ő sátora, és lakóhelye Sionban" — a Sálem=Jeruzsálem/Sion azonosítás, ugyanazzal a Strong-számmal (H8004), mint 1Móz 14:18-nál — lexikai, nem csak tematikus kapcsolat.
 
 <a id="ige-zsolt-110-4"></a>
 **Zsolt 110:4**
-> Megesküdt az Úr és meg nem másítja: Pap vagy te örökké Melkhisedek rendje szerint. **Zsolt 110:4**
+*Megesküdt az Úr és meg nem másítja: Pap vagy te örökké Melkhisedek rendje szerint.*
 "Megesküdt az Úr és meg nem másítja: Te vagy pap örökké Melkhisédek rendje szerint" — próféciai eskü-formula, dávidi/individuális szintre visszavéve a mintát.
 
 <a id="ige-zak-6-13"></a>
 **Zak 6:13**
-> Mert ő fogja megépíteni az Úrnak templomát, és nagy lesz az ő dicsősége, és ülni és uralkodni fog az ő székében, és pap is lesz az ő székében, és békesség tanácsa lesz kettőjük között. **Zak 6:13**
+*Mert ő fogja megépíteni az Úrnak templomát, és nagy lesz az ő dicsősége, és ülni és uralkodni fog az ő székében, és pap is lesz az ő székében, és békesség tanácsa lesz kettőjük között.*
 "pap lesz az ő királyi székén" — próféciai kép egyetlen alakról, aki egyszerre ül a trónon és visel papi tisztséget.
 
 <a id="ige-zsid-5-6"></a>
 **Zsid 5:6**
-> Miképen másutt is mondja: Te örökké való pap vagy, Melkisédek rendje szerint. **Zsid 5:6**
+*Miképen másutt is mondja: Te örökké való pap vagy, Melkisédek rendje szerint.*
 A Zsolt 110:4 első idézetei, bevezetve Krisztus főpapságának témáját.
 
 <a id="ige-zsid-5-10"></a>
 **Zsid 5:10**
-> Neveztetvén az Istentől Melkisédek rendje szerint való főpapnak. **Zsid 5:10**
+*Neveztetvén az Istentől Melkisédek rendje szerint való főpapnak.*
 A Zsolt 110:4 idézése, Krisztus főpapságának bevezetése.
 
 <a id="ige-zsid-6-20"></a>
 **Zsid 6:20**
-> A hová útnyitóul bement érettünk Jézus, a ki örökké való főpap lett Melkisédek rendje szerint. **Zsid 6:20**
+*A hová útnyitóul bement érettünk Jézus, a ki örökké való főpap lett Melkisédek rendje szerint.*
 A Zsolt 110:4 idézése, Krisztus "örökkévaló főpap Melkhisédek rendje szerint" bevezetése.
 
 <a id="ige-zsid-7-1-28"></a>
 **Zsid 7:1-28**
-> Mert ez a Melkisédek Sálem királya, a felséges Isten papja, a ki a királyok leveréséből visszatérő Ábrahámmal találkozván, őt megáldotta, **Zsid 7:1**
-> A kinek tizedet is adott Ábrahám mindenből: a ki elsőben is magyarázat szerint igazság királya, azután pedig Sálem királya is, azaz békesség királya, **Zsid 7:2**
-> Apa nélkül, anya nélkül, nemzetség nélkül való; sem napjainak kezdete, sem életének vége nincs, de hasonlóvá tétetvén az Isten Fiához, pap marad örökké. **Zsid 7:3**
-> Nézzétek meg pedig, mily nagy ez, a kinek a zsákmányból tizedet is adott Ábrahám, a pátriárka; **Zsid 7:4**
-> És bár azoknak, kik a Lévi fiai közül nyerik el a papságot, parancsolatjok van, hogy törvény szerint tizedet szedjenek a néptől, azaz az ő atyafiaiktól, jóllehet ők is az Ábrahám ágyékából származtak; **Zsid 7:5**
-> De az, a kinek nemzetsége nem azok közül való, tizedet vett Ábrahámtól, és az ígéretek birtokosát megáldotta, **Zsid 7:6**
-> Pedig minden ellenmondás nélkül való, hogy a nagyobb áldja meg a kisebbet. **Zsid 7:7**
-> És itt halandó emberek szednek tizedet, ott ellenben az, a ki bizonyság szerint él: **Zsid 7:8**
-> És hogy úgy szóljak, Ábrahámnál fogva tized vétetett Lévitől is, a tizedszedőtől, **Zsid 7:9**
-> Mert ő még az atyja ágyékában vala, a mikor annak elébe ment Melkisédek. **Zsid 7:10**
-> Ha tehát a lévitai papság által volna a tökéletesség (mert a nép ez alatt nyerte a törvényt): mi szükség tovább is mondogatni, hogy más pap támadjon a Melkisédek rendje szerint és ne az Áron rendje szerint? **Zsid 7:11**
-> Mert a papság megváltozásával szükségképen megváltozik a törvény is. **Zsid 7:12**
-> Mert a kiről ezek mondatnak, az más nemzetségből származott, a melyből senki sem szolgált az oltár körül; **Zsid 7:13**
-> Mert nyilvánvaló, hogy a mi Urunk Júdából támadott, a mely nemzetségre nézve semmit sem szólott Mózes a papságról. **Zsid 7:14**
-> És még inkább nyilvánvaló az, ha a Melkisédek hasonlatossága szerint áll elő más pap, **Zsid 7:15**
-> A ki nem testi parancsolatnak törvénye szerint, hanem enyészhetetlen életnek ereje szerint lett. **Zsid 7:16**
-> Mert ez a bizonyságtétel: Te pap vagy örökké, Melkisédek rendje szerint. **Zsid 7:17**
-> Mert az előbbi parancsolat eltöröltetik, mivelhogy erőtelen és haszontalan, **Zsid 7:18**
-> Minthogy a törvény semmiben sem szerzett tökéletességet; de beáll a jobb reménység, a mely által közeledünk az Istenhez. **Zsid 7:19**
-> És a mennyiben nem esküvés nélkül való, mert amazok esküvés nélkül lettek papokká, **Zsid 7:20**
-> De ez esküvéssel, az által, a ki azt mondá néki: Megesküdött az Úr, és nem bánja meg, te pap vagy örökké, Melkisédek rendje szerint: **Zsid 7:21**
-> Annyiban jobb szövetségnek lett kezesévé Jézus. **Zsid 7:22**
-> És amazok jóllehet többen lettek papokká, mert a halál miatt meg nem maradhattak: **Zsid 7:23**
-> De ennek, minthogy örökké megmarad, változhatatlan a papsága. **Zsid 7:24**
-> Ennekokáért ő mindenképen idvezítheti is azokat, a kik ő általa járulnak Istenhez, mert mindenha él, hogy esedezzék érettök. **Zsid 7:25**
-> Mert ilyen főpap illet vala minket, szent, ártatlan, szeplőtelen, a bűnösöktől elválasztott, és a ki az egeknél magasságosabb lőn, **Zsid 7:26**
-> A kinek nincs szüksége, mint a főpapoknak, hogy napról-napra előbb a saját bűneiért vigyen áldozatot, azután a népéiért, mert ezt egyszer megcselekedte, maga-magát megáldozván. **Zsid 7:27**
-> Mert a törvény gyarló embereket rendel főpapokká, de a törvény után való esküvés beszéde örök tökéletes Fiút. **Zsid 7:28**
+*Mert ez a Melkisédek Sálem királya, a felséges Isten papja, a ki a királyok leveréséből visszatérő Ábrahámmal találkozván, őt megáldotta,*
+*A kinek tizedet is adott Ábrahám mindenből: a ki elsőben is magyarázat szerint igazság királya, azután pedig Sálem királya is, azaz békesség királya,*
+*Apa nélkül, anya nélkül, nemzetség nélkül való; sem napjainak kezdete, sem életének vége nincs, de hasonlóvá tétetvén az Isten Fiához, pap marad örökké.*
+*Nézzétek meg pedig, mily nagy ez, a kinek a zsákmányból tizedet is adott Ábrahám, a pátriárka;*
+*És bár azoknak, kik a Lévi fiai közül nyerik el a papságot, parancsolatjok van, hogy törvény szerint tizedet szedjenek a néptől, azaz az ő atyafiaiktól, jóllehet ők is az Ábrahám ágyékából származtak;*
+*De az, a kinek nemzetsége nem azok közül való, tizedet vett Ábrahámtól, és az ígéretek birtokosát megáldotta,*
+*Pedig minden ellenmondás nélkül való, hogy a nagyobb áldja meg a kisebbet.*
+*És itt halandó emberek szednek tizedet, ott ellenben az, a ki bizonyság szerint él:*
+*És hogy úgy szóljak, Ábrahámnál fogva tized vétetett Lévitől is, a tizedszedőtől,*
+*Mert ő még az atyja ágyékában vala, a mikor annak elébe ment Melkisédek.*
+*Ha tehát a lévitai papság által volna a tökéletesség (mert a nép ez alatt nyerte a törvényt): mi szükség tovább is mondogatni, hogy más pap támadjon a Melkisédek rendje szerint és ne az Áron rendje szerint?*
+*Mert a papság megváltozásával szükségképen megváltozik a törvény is.*
+*Mert a kiről ezek mondatnak, az más nemzetségből származott, a melyből senki sem szolgált az oltár körül;*
+*Mert nyilvánvaló, hogy a mi Urunk Júdából támadott, a mely nemzetségre nézve semmit sem szólott Mózes a papságról.*
+*És még inkább nyilvánvaló az, ha a Melkisédek hasonlatossága szerint áll elő más pap,*
+*A ki nem testi parancsolatnak törvénye szerint, hanem enyészhetetlen életnek ereje szerint lett.*
+*Mert ez a bizonyságtétel: Te pap vagy örökké, Melkisédek rendje szerint.*
+*Mert az előbbi parancsolat eltöröltetik, mivelhogy erőtelen és haszontalan,*
+*Minthogy a törvény semmiben sem szerzett tökéletességet; de beáll a jobb reménység, a mely által közeledünk az Istenhez.*
+*És a mennyiben nem esküvés nélkül való, mert amazok esküvés nélkül lettek papokká,*
+*De ez esküvéssel, az által, a ki azt mondá néki: Megesküdött az Úr, és nem bánja meg, te pap vagy örökké, Melkisédek rendje szerint:*
+*Annyiban jobb szövetségnek lett kezesévé Jézus.*
+*És amazok jóllehet többen lettek papokká, mert a halál miatt meg nem maradhattak:*
+*De ennek, minthogy örökké megmarad, változhatatlan a papsága.*
+*Ennekokáért ő mindenképen idvezítheti is azokat, a kik ő általa járulnak Istenhez, mert mindenha él, hogy esedezzék érettök.*
+*Mert ilyen főpap illet vala minket, szent, ártatlan, szeplőtelen, a bűnösöktől elválasztott, és a ki az egeknél magasságosabb lőn,*
+*A kinek nincs szüksége, mint a főpapoknak, hogy napról-napra előbb a saját bűneiért vigyen áldozatot, azután a népéiért, mert ezt egyszer megcselekedte, maga-magát megáldozván.*
+*Mert a törvény gyarló embereket rendel főpapokká, de a törvény után való esküvés beszéde örök tökéletes Fiút.*
 A Melkizedek-rend teljes kifejtése: nagyobb a lévita rendnél (a tized-jelenetből levezetve), örökkévaló (argumentum e silentio), a törvény megváltozásának alapja.
 
 <!-- GENERÁLT-VÉGE: lexikon#KIRALY-001#elofordulasok -->
@@ -176,13 +176,11 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: KIRALY-001]` motívum 7 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
-### G0282
-
-**Kiejtés:** amētōr
+### G0282 — ἀμήτωρ (amētōr)
 
 **TWOT:** —
 
@@ -196,9 +194,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 *Forrás: konkordancia/Thayer_teljes.tsv*
 
-### G0813
-
-**Kiejtés:** ataktous
+### G0813 — ἄτακτος (ataktos)
 
 **TWOT:** —
 
@@ -212,9 +208,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 *Forrás: konkordancia/Thayer_teljes.tsv*
 
-### G5010
-
-**Kiejtés:** taxei
+### G5010 — τάξις (taxis)
 
 **TWOT:** —
 
@@ -228,9 +222,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 *Forrás: konkordancia/Thayer_teljes.tsv*
 
-### H3548
-
-**Kiejtés:** kho.Hen
+### H3548 — כֹּהֵן (ko.hen)
 
 **TWOT:** 959a
 
@@ -244,9 +236,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 *Forrás: konkordancia/BDB_teljes_unabridged.tsv*
 
-### H3678
-
-**Kiejtés:** ki.Se'
+### H3678 — כִּסֵּא (kis.se)
 
 **TWOT:** 1007
 
@@ -254,9 +244,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### H4467
-
-**Kiejtés:** mam.lakh.T
+### H4467 — מַמְלָכָה (mam.la.khah)
 
 **TWOT:** 1199f
 
@@ -264,9 +252,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
-### H8004
-
-**Kiejtés:** sha.Lem
+### H8004 — שָׁלֵם (sha.lem)
 
 **TWOT:** —
 
@@ -292,13 +278,13 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 | Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |
 |---|---|---|---|---|---|
-| 1Móz 14:18 | Genesis 14:18 | כֹהֵ֖ן (kho.Hen) | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 14:19 | Genesis 14:19 | — | — | kutatói azonosítás függőben | LXX_OS |
-| 1Móz 14:20 | Genesis 14:20 | — | — | kutatói azonosítás függőben | LXX_OS |
-| Zsolt 76:3 | Psalms (LXX) 75:3 | שָׁלֵ֣ם (sha.Lem) | — | kutatói azonosítás függőben | LXX_OS |
-| 2Móz 19:6 | Exodus 19:6 | כֹּהֲנִ֖ים (ko.ha.Nim) | — | kutatói azonosítás függőben | LXX_OS |
-| Zsolt 110:4 | Psalms (LXX) 109:4 | כֹהֵ֥ן (kho.Hen) | τάξιν (τάξις, taxei G5010) | egyező | LXX_OS |
-| Zak 6:13 | Zechariah 6:13 | כֹהֵן֙ (kho.Hen) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 14:18 | 1Móz 14:18 | כֹהֵ֖ן (kho.Hen) | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 14:19 | 1Móz 14:19 | — | — | kutatói azonosítás függőben | LXX_OS |
+| 1Móz 14:20 | 1Móz 14:20 | — | — | kutatói azonosítás függőben | LXX_OS |
+| Zsolt 76:3 | Zsolt(LXX) 75:3 | שָׁלֵ֣ם (sha.Lem) | — | kutatói azonosítás függőben | LXX_OS |
+| 2Móz 19:6 | 2Móz 19:6 | כֹּהֲנִ֖ים (ko.ha.Nim) | — | kutatói azonosítás függőben | LXX_OS |
+| Zsolt 110:4 | Zsolt(LXX) 109:4 | כֹהֵ֥ן (kho.Hen) | τάξιν (τάξις, taxis G5010) | egyező | LXX_OS |
+| Zak 6:13 | Zak 6:13 | כֹהֵן֙ (kho.Hen) | — | kutatói azonosítás függőben | LXX_OS |
 
 *Összesítés: egyező=1, eltérő=0, kutatói azonosítás függőben=6, szamozas_elteres=0.*
 
@@ -403,19 +389,17 @@ graph LR
 
 ## 6. Értelmezés *(kézi)*
 
-## 1/b. PaRDeS keretrendszer *(kézi)*
+### PaRDeS keretrendszer
 
 *Kézzel írandó — a forrás-study 3. pontja alapján, a 2. szakasz lexikai adataival bővítve.*
 
-## 7. ÚJ FELISMERÉS *(kézi, ha van)*
-
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
-## 6. Módszertani napló *(kézi)*
+### Módszertani napló
 
 *Kézzel írandó.*
 
-## 8. Nyitott kérdések és séma-korlátok *(kézi)*
+### Nyitott kérdések és séma-korlátok
 
 *Kézzel írandó.*
 
@@ -423,7 +407,7 @@ graph LR
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
 
-*Ez a blokk a `[ID: KIRALY-001]` motívum hivatkozási adatait és a ténylegesen felhasznált szótárak listáját adja (G9, LEXV2_3-ig szűkítve).*
+*Ez a blokk a `[ID: KIRALY-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
 **Hogyan hivatkozz:**
 - ID: `KIRALY-001`
@@ -433,6 +417,17 @@ graph LR
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/KIRALY-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
+- OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám (`konkordancia/OSHL_lexikalis_index.tsv`, CC BY 4.0)
+- SDBH (Semantic Dictionary of Biblical Hebrew) (`konkordancia/SDBH_domenek.tsv`, CC BY-SA 4.0)
+- SDGNT (Semantic Dictionary of Biblical Greek) (`konkordancia/SDGNT_domenek.tsv`, CC BY-SA 4.0)
+- TBESG (Tyndale Brief lexicon of Extended Strongs for Greek) (`konkordancia/TBESG.txt`, CC BY 4.0)
+- TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew) (`konkordancia/TBESH.txt`, CC BY 4.0)
+- TSK (Treasury of Scripture Knowledge) (`konkordancia/TSK_kereszthivatkozasok.tsv`, CC BY 4.0)
+- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_jelentesek.tsv`, CC BY-SA 4.0)
+- UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének) (`konkordancia/UBS_DNTG_referenciak.tsv`, CC BY-SA 4.0)
+- LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz) (`konkordancia/LXX_OS/exodus.tsv`, `konkordancia/LXX_OS/genesis.tsv`, `konkordancia/LXX_OS/psalms-lxx.tsv`, `konkordancia/LXX_OS/zechariah.tsv`, CC BY 4.0)
+
+**Adatforrások:**
 - `adat/elofordulasok.tsv` (projekt-adat)
 - `adat/forditas_ubs.tsv` (projekt-adat)
 - `adat/jeloltek.tsv` (projekt-adat)
@@ -441,22 +436,12 @@ graph LR
 - `adat/motivumok.tsv` (projekt-adat)
 - `konkordancia/Karoli_1908.tsv` (közkincs)
 - `konkordancia/Karoli_kereszthivatkozasok.tsv` (közkincs)
-- `konkordancia/LXX_OS/exodus.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/genesis.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/psalms-lxx.tsv` (CC BY 4.0)
-- `konkordancia/LXX_OS/zechariah.tsv` (CC BY 4.0)
-- `konkordancia/OSHL_lexikalis_index.tsv` (CC BY 4.0)
-- `konkordancia/SDBH_domenek.tsv` (CC BY-SA 4.0)
-- `konkordancia/SDGNT_domenek.tsv` (CC BY-SA 4.0)
-- `konkordancia/TSK_kereszthivatkozasok.tsv` (CC BY 4.0)
-- `konkordancia/UBS_DNTG_jelentesek.tsv` (CC BY-SA 4.0)
-- `konkordancia/UBS_DNTG_referenciak.tsv` (CC BY-SA 4.0)
 
 <!-- GENERÁLT-VÉGE: lexikon#KIRALY-001#idezes -->
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: KIRALY-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
@@ -494,6 +479,8 @@ graph LR
 | `OSHL_lexikalis_index.tsv` | `konkordancia/OSHL_lexikalis_index.tsv` | CC BY 4.0 | szocikkek |
 | `SDBH_domenek.tsv` | `konkordancia/SDBH_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
 | `SDGNT_domenek.tsv` | `konkordancia/SDGNT_domenek.tsv` | CC BY-SA 4.0 | szocikkek |
+| `TBESG.txt` | `konkordancia/TBESG.txt` | CC BY 4.0 | szocikkek |
+| `TBESH.txt` | `konkordancia/TBESH.txt` | CC BY 4.0 | szocikkek |
 | `TSK_kereszthivatkozasok.tsv` | `konkordancia/TSK_kereszthivatkozasok.tsv` | CC BY 4.0 | kereszthivatkozasok |
 | `UBS_DNTG_jelentesek.tsv` | `konkordancia/UBS_DNTG_jelentesek.tsv` | CC BY-SA 4.0 | elofordulasok |
 | `UBS_DNTG_referenciak.tsv` | `konkordancia/UBS_DNTG_referenciak.tsv` | CC BY-SA 4.0 | elofordulasok |
