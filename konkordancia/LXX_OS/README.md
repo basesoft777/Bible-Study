@@ -55,27 +55,88 @@ előkészítése, és a régi LXX-kivonat licenc-tisztázatlanságát (N15) oldj
   sor) — emiatt nem használható elsődleges forrásként a lemma/Strong-adathoz,
   l. `LEXV2_1_BRIEF.md` döntésnapló v3.
 
-## 2. Károli-vers-megfeleltetés (G5)
+## 2. Károli-vers-megfeleltetés (G5, V1.3a)
 
-Az `igehely_karoli` oszlop **elsődleges forrása a repóban már meglévő
-versifikációs infrastruktúra**, nem a `verse_pairs.jsonl`:
+**V1.3a (2026.09.22) — a V1.3 első változata a régi
+`LXX_versificacios_terkep.tsv`-t használta elsődleges forrásként; ez hibás
+volt.** A térkép a studybible.info saját belső oldal-verzőszámozására épült
+(pl. a Zsoltár-feliratoknál más granularitással bontja a LXX-verseket, mint
+az lxx-morph), ezért a raw (fejezet,vers) kulcsai NEM esnek egybe az
+lxx-morph saját `ref`-jeivel — a két forrás összekeverése rendszeresen rossz
+Károli-célt adott (pl. LXX(Zsolt) 50:3 → hibásan "Zsolt 50:3" a helyes
+"Zsolt 51:3" helyett). A térkép ezért **teljesen kikerült** az
+`igehely_karoli` számításából (l. `LEXV2_1_BRIEF.md` döntésnapló v4).
 
-1. `konkordancia/LXX_versificacios_terkep.tsv` — a `Gorog_LXX_vers` (elsőként)
-   és `Heber_vers` (másodikként) oszlop szerinti (fejezet,vers) → Károli-cél
-   megfeleltetés (betöltve az `eszkozok/lxx_kivonat_fetch.py`
-   `load_versifikacios_terkep()` függvényével — **ugyanaz a függvény, amit a
-   régi `LXX_kivonat_*.tsv` is használ**).
-2. `eszkozok/lxx_kivonat_fetch_v2.py` `KEZI_ELTOLASOK` — a Dániel 3/4,
-   Numeri 12/13, Jób 38–40 és Prédikátor tartalmilag egyeztetett,
-   dokumentált kézi eltolás-táblái (l. `LXX_kivonat_README.md` 4. szakasz).
-3. **Identitás** — ha sem (1), sem (2) nem ad célt, és a nyers fejezet:vers
-   Károli-címként létezik a `Karoli_1908.tsv`-ben, azt használjuk.
-4. Ha egyik sem ad érvényes célt: `igehely_karoli` üres, `karoli_ok=szamozas_elteres`.
+Az új algoritmus:
+
+1. **`eszkozok/lxx_kivonat_fetch_v2.py` `KEZI_ELTOLASOK`** — a Dániel 3/4,
+   Numeri 12/13, Jób 38–40 és Prédikátor tartalmilag egyeztetett, dokumentált
+   kézi eltolás-táblái (l. `LXX_kivonat_README.md` 4. szakasz) — ezek a raw
+   (fejezet,vers)-ből számolnak, függetlenek a KJV-lépéstől, elsőbbséget
+   élveznek.
+2. **KJV-alapú fejezet-egyezés**: a `verse_pairs.jsonl` `mt_refs` adja a
+   KJV-igehelyet; ha az adott KJV-fejezetben a `Karoli_1908.tsv` legmagasabb
+   versszáma megegyezik a KJV legmagasabb versszámával abban a fejezetben,
+   `igehely_karoli` = a KJV-cím (a fejezet:vers változatlanul átvéve).
+3. **Zsoltár cím-eltolás** (`karoli_ok=zsolt_felirat_eltolas`): ha a Zsoltár-
+   fejezetben a Károli legmagasabb versszáma pontosan `d` (∈{1,2}) híján
+   egyezik a KJV-vel (a Károli a zsoltárcímet önálló versként számozza, a KJV
+   nem), akkor `Károli-vers = KJV-vers + d`. **Ellenpróba**: ha egy KJV-célra
+   több LXX-forrás is mutat (a cím a LXX-ben több sorra bomlik, mint a KJV-ben
+   — pl. LXX(Zsolt) 3:1 ÉS 3:2 is KJV 3:1-re mutat), csak a **legmagasabb**
+   (utolsó, a tartalmi folytatáshoz tartozó) LXX-forrás kapja meg az
+   eltolást; a korábbi cím-sor(ok) KJV-megfelelő nélkül maradnak
+   (`karoli_ok=szamozas_elteres`) — nem találunk ki szétosztást.
+4. Minden más eltérés (a fejezet Károli/KJV versszáma nem egyezik, és nem
+   Zsoltár d∈{1,2} eset): `igehely_karoli` üres, `karoli_ok=szamozas_elteres`.
 
 A `karoli_ok` oszlop egyéb értékei: `nincs_mt_parositas` (a `verse_pairs.jsonl`
 szerint `method=unpaired`, azaz nincs héber/MT megfelelő — LXX-plusz),
 `nincs_karoli_konyv` (deuterokanonikus/pszeudepigráf könyv, aminek nincs
 Károli-szövege).
+
+**Automatikus ellenőrzés** (a szkript minden futáskor lefuttatja): minden
+kitöltött sorban a Károli-fejezet-szám egyezik a KJV-fejezet-számmal, kivéve
+a `KEZI_ELTOLASOK` dokumentált eseteit — eltérés esetén a szkript figyelmeztet
+(`K6-ELLENORZES`). A jelen futásban **0 ilyen figyelmeztetés** volt.
+
+**Tartalmi szúrópróba** (a 4, korábban hibásan felismert eset + egy minta
+könyvenként a szükséges versek közül — görög kezdőszavak / Károli-szöveg):
+
+| Károli-igehely | LXX-igehely | Görög (részlet) | Károli-szöveg (részlet) |
+|---|---|---|---|
+| Zsolt 51:3 | Psalms (LXX) 50:3 | Ἐλέησόν με… | Könyörülj rajtam én Istenem… |
+| Zsolt 3:2 | Psalms (LXX) 3:2 | Κύριε… | Uram! mennyire megsokasodtak ellenségeim!… |
+| Jóel 2:1 | Joel 2:1 | σαλπίσατε… | (2:1, harsonaszó — egyezik) |
+| Jer 9:24 | Jeremiah (LXX) 9:23 | ἀλλ᾿… | (9:24 — egyezik) |
+| 1Móz 14:18 | Genesis 14:18 | Μελχισεδεκ βασιλεὺς Σαλημ… | Melkhisédek pedig Sálem királya… |
+| 2Móz 19:6 | Exodus 19:6 | βασίλειον ἱεράτευμα… | papok birodalma és szent nép… |
+| 4Móz 16:30 | Numbers 16:30 | ἐν φάσματι δείξει κύριος… | ha az Úr valami új dolgot cselekszik… |
+| 5Móz 8:7 | Deuteronomy 8:7 | ὁ κύριος ὁ θεός σου εἰσάγει σε… | az Úr, a te Istened jó földre visz be… |
+| Józs 12:4 | Joshua (Vaticanus B) 12:4 | Ωγ βασιλεὺς Βασαν… | Ógnak, a Básán királyának… |
+| 1Sám 2:6 | 1 Samuel 2:6 | κύριος θανατοῖ καὶ ζωογονεῖ… | Az Úr öl és elevenít… |
+| 2Sám 22:6 | 2 Samuel 22:6 | ὠδῖνες θανάτου ἐκύκλωσάν με… | A pokol kötelei vettek körül… |
+| 1Kir 18:24 | 1 Kings 18:24 | βοᾶτε ἐν ὀνόματι θεῶν ὑμῶν… | hívjátok segítségül a ti istenteknek nevét… |
+| 2Kir 5:11 | 2 Kings 5:11 | ἐθυμώθη Ναιμαν… | megharaguvék Naámán… |
+| 1Krón 16:8 | 1 Chronicles 16:8 | ἐπικαλεῖσθε αὐτὸν ἐν ὀνόματι αὐτοῦ… | hívjátok segítségül az ő nevét… |
+| Jób 28:14 | Job (LXX) 28:14 | ἄβυσσος εἶπεν οὐκ ἔστιν ἐν ἐμοί… | A mélység azt mondja: Nincsen az bennem… |
+| Péld 3:20 | Proverbs 3:20 | ἐν αἰσθήσει ἄβυσσοι ἐρράγησαν… | tudománya által fakadtak ki a mélységből a vizek… |
+| Préd 9:10 | Ecclesiastes 9:8 (kézi eltolás) | ἱμάτιά σου λευκά… | ruháid mindenkor legyenek fejérek… |
+| Én 8:6 | Song of Solomon 8:6 | θές με ὡς σφραγῖδα… | Tégy engem mintegy pecsétet… |
+| Ézs 12:4 | Isaiah 12:4 | ὑμνεῖτε κύριον… | magasztaljátok az Ő nevét… |
+| Jer 10:25 | Jeremiah (LXX) 10:25 | ἔκχεον τὸν θυμόν σου ἐπὶ ἔθνη… | Öntsd ki haragodat ama nemzetekre… |
+| Ez 26:19 | Ezekiel 26:19 | τάδε λέγει κύριος κύριος… | azt mondja az Úr Isten… |
+| Hós 4:1 | Hosea 4:1 | ἀκούσατε λόγον κυρίου… | Halljátok meg az Úrnak beszédét… |
+| Ámós 7:4 | Amos 7:4 | ἔδειξέν μοι κύριος καὶ ἰδοὺ… | Ily dolgot láttatott velem az Úr Isten… |
+| Mik 6:12 | Micah 6:12 | τὸν πλοῦτον αὐτῶν ἀσεβείας ἔπλησαν… | a gazdagok megtöltöztek köztök ragadománynyal… |
+| Jón 3:8 | Jonah 3:8 | περιεβάλοντο σάκκους οἱ ἄνθρωποι… | öltözzenek zsákba az emberek és barmok… |
+| Hab 3:10 | Habakkuk 3:10 | ὄψονταί σε καὶ ὠδινήσουσιν λαοί… | Látnak téged és megrendülnek a hegyek… |
+| Sof 3:9 | Zephaniah 3:9 | μεταστρέψω ἐπὶ λαοὺς γλῶσσαν… | változtatom majd a népek ajkát tisztává… |
+| Zak 6:13 | Zechariah 6:13 | λήμψεται ἀρετὴν καὶ καθίεται… | megépíteni az Úrnak templomát… |
+
+Mind a 27 minta tartalmilag egyezik (tulajdonnevek és kulcsszavak: Μελχισεδεκ
+= Melkhisédek, Σαλημ = Sálem, Ναιμαν = Naámán, Ωγ βασιλεὺς Βασαν = Ógnak, a
+Básán királyának stb.).
 
 **A `verse_pairs.jsonl` `mt_refs` mezője csak az `igehely_kjv` oszlopba kerül**
 (változtatás nélkül, angol/KJV-számozásban) és a `nincs_mt_parositas`
@@ -89,17 +150,21 @@ minden versre kibontva), **nem a teljes korpuszra**:
 | | Érték |
 |---|---|
 | szükséges vers | 229 |
-| `igehely_karoli`-val | 214 |
-| hiányzik | 15 (6,55%) |
+| `igehely_karoli`-val | 218 |
+| hiányzik | 11 (4,80%) |
 
-A 15 hiányzó közül 12 Zsoltár (116, 42, 78, 107, 31, 55, 86, 89, 74 —
-számozási eltérés, amit sem a térkép, sem a kézi táblák nem dokumentálnak),
-1 Jób 17:16 (a `LXX_kivonat_README.md` szerint dokumentált, genuin LXX-plusz),
-1 Péld 27:20, 1 Jer 51:46. **≤10% — a küszöb teljesül.**
+A 11 hiányzó: Jób 17:13, 17:16, 38:7, 38:16, 38:30 (5 — az itt is dokumentált,
+genuin LXX-plusz/számozás-eltérés, l. `LXX_kivonat_README.md`), Ézs 63:13,
+Jón 2:3, 2:6, Hós 13:14, Józs 13:12, Jer 51:46 — mindegyik egyedi, könyv-
+specifikus eltérés, amit a `KEZI_ELTOLASOK` nem fed le. **≤10% — a küszöb
+teljesül.** (A V1.3 első, hibás verziójában 15/229 = 6,55% volt — a javítás
+után a Zsoltár-verseknél teljes lefedettség lett.)
 
-A teljes korpuszon (nem a küszöb tárgya, csak tájékoztató): 30 186 vers,
-ebből 21 952 `karoli_ok`, 1 167 `szamozas_elteres` (~5,1%), 146
-`nincs_mt_parositas`, 7 071 `nincs_karoli_konyv` (deuterokanon/pszeudepigráf).
+A teljes korpuszon (nem a küszöb tárgya, csak tájékoztató, `testament=ot`
+könyvekre): 23 119 vers, ebből 21 121 `karoli_ok` + 983
+`zsolt_felirat_eltolas` (össz. 22 104, ~95,6%), 1 015 `szamozas_elteres`
+(~4,4%), 146 `nincs_mt_parositas`. A deuterokanonikus/pszeudepigráf könyvek
+(7 071 vers) mindig `nincs_karoli_konyv`.
 
 ## 3. Fájlok és oszlopok
 
@@ -207,9 +272,9 @@ egy részhalmazra szűkít.)
   ÚSZ-ben is előfordul (a GreekWordList forrás saját korlátja) — **üres
   `strong` nem hibás lelet**, a legtöbb tisztán ÓSZ-i lemmánál várt.
 - A `karoli_ok=szamozas_elteres` fejezetek (teljes lista a szkript
-  futásnaplójában) nem javítottak — ahol a `LXX_versificacios_terkep.tsv`
-  vagy a `KEZI_ELTOLASOK` nem dokumentál megfeleltetést, a menet nem talál ki
-  újat (`LEXV2_1_BRIEF.md` G5).
+  futásnaplójában) nem javítottak — ahol sem a `KEZI_ELTOLASOK`, sem a
+  KJV-fejezet-egyezés (sem a Zsoltár cím-eltolás), a menet nem talál ki újat
+  (`LEXV2_1_BRIEF.md` G5, V1.3a).
 - A `Karoli_1908.tsv`-ben nem szereplő igehelyek (pl. deuterokanonikus
   toldalékok) `igehely_karoli`-ja mindig üres — ez a Károli-kánon
   szerkezetéből következik, nem hiba.

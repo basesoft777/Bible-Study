@@ -172,6 +172,27 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
 
   **Megoldás (N16_BRIEF.md):** a két sor a study kapcsolat-táblája alapján, `scope=manual` provenienciával, `betolt.py beepit` úton betöltve (29 → 31 sor); a Jóel 2:32 → Róm 10:14 kapcsolat a study szerinti három sorra bontva (23 → 25 kapcsolat). A lexikon-oldal ApCsel/Róm 10:13 ⚠ ELTÉRÉS-jelölései feloldva; a pilot szótári anyaga (2–4. szakasz) a 2/b. kézi alszakaszba átemelve. L. `N16.0`–`N16.5` commitok.
 
+- **N17 — A régi `LXX_kivonat_Zsoltarok.tsv` Igehely-címkéi gyanúsan a KJV
+  (angol) versszámozást viselhetik Károli helyett, cím-viselő zsoltároknál.**
+  *(ÚJ, LEXV2_1 V1.3a független ellenőrzése, 2026.09.22)* A `LEXV2_1_BRIEF.md`
+  V1.3a tétele során kiderült: a `konkordancia/LXX_versificacios_terkep.tsv`
+  a studybible.info saját belső oldal-verszámozására épült, ami cím-viselő
+  zsoltároknál NEM esik egybe sem az lxx-morph, sem a valódi Károli
+  versszámozással. Ennek gyanús tünete a régi kivonatban is megjelenik:
+  `LXX_kivonat_Zsoltarok.tsv` „Zsolt 3:2" sora a `πολλοι λεγουσιν τη ψυχη
+  μου` („sokan mondják az én lelkem felől") szöveget tartalmazza — ez
+  tartalmilag a KJV/angol Zsolt 3:2, míg a valódi Károli 3:2 („Uram!
+  mennyire megsokasodtak ellenségeim!") a KJV/angol 3:1-nek felel meg (a
+  Károli a zsoltárcímet önálló 1. versnek számozza, az angol hagyomány nem).
+  **Nincs megvizsgálva, mekkora a hatóköre** (hány zsoltár-fejezetet érint,
+  és érinti-e ez a jelenlegi generált lexikon-oldalak LXX-hídját, amely a
+  régi kivonatot használja). Külön menet/brief tárgya: a
+  `LXX_versificacios_terkep.tsv` és a `LXX_kivonat_*.tsv` (elsősorban
+  Zsoltárok) szisztematikus átvizsgálása, összevetve a
+  `LEXV2_1_BRIEF.md` V1.3a algoritmusával (KJV-fejezet-egyezés + Zsoltár
+  cím-eltolás), és ha valódi hiba igazolódik, a régi kivonat javítása vagy
+  lecserélése az új `konkordancia/LXX_OS/`-re.
+
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá vált — belépő: `DONTESEK_INDEX.tsv`. A vers-szintű jelöltek nem ide, hanem az `adat/jeloltek.tsv`-be kerültek (16 sor, mind `dontes=nyitva`): HODIT-001 13 alacsony szavazatú TSK-jelölt, MENNY-001 Mt 24:38 + Luk 17:27, ANTROP-001 Fil 1:27. Az alábbiak a nem vers-szintű tételek:

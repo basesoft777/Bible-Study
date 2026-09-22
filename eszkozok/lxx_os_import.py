@@ -27,16 +27,10 @@ import urllib.request
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO_ROOT, "eszkozok"))
 
-from lxx_kivonat_fetch import (  # noqa: E402
-    GOROG_LXX_VERS_RE,
-    load_karoli_letezo_igehelyek,
-    load_versifikacios_terkep,
-)
 from lxx_kivonat_fetch_v2 import KEZI_ELTOLASOK  # noqa: E402
 
 KONKORDANCIA_DIR = os.path.join(REPO_ROOT, "konkordancia")
 LXX_OS_DIR = os.path.join(KONKORDANCIA_DIR, "LXX_OS")
-TERKEP_UTVONAL = os.path.join(KONKORDANCIA_DIR, "LXX_versificacios_terkep.tsv")
 
 LXX_MORPH_COMMIT = "c91f6b1e8fb3ba37df701e6ae31f675ace71a2b2"
 LXX_MORPH_RAW = f"https://raw.githubusercontent.com/OpenScriptorium/lxx-morph/{LXX_MORPH_COMMIT}/"
@@ -203,58 +197,153 @@ def load_verse_pairs(path):
     return idx
 
 
-def build_gorog_to_karoli(karoli_book):
-    """LXX_versificacios_terkep.tsv alapján (fejezet,vers) -> Karoli_igehely."""
-    gorog_lookup, warns, betu_excl, nem_parsz = load_versifikacios_terkep(TERKEP_UTVONAL, karoli_book)
-    gorog_map, heber_map = gorog_lookup
-    result = {}
-    for (kert_fej, zar_fej, zar_vers), igehely in gorog_map.items():
-        result.setdefault((kert_fej, zar_vers), igehely)
-    for (kert_fej, zar_fej, zar_vers), igehely in heber_map.items():
-        result.setdefault((kert_fej, zar_vers), igehely)
-    return result, warns
+KAROLI_MAX_CACHE = None
+KJV_MAX_CACHE = None
 
 
-def resolve_karoli(karoli_book, gorog_to_karoli, letezo_igehelyek, fejezet, vers, kezi_fn):
-    key = (fejezet, vers)
-    if key in gorog_to_karoli:
-        return gorog_to_karoli[key], "versificacios_terkep"
+def load_karoli_max():
+    """(Karoli_konyv, fejezet) -> legmagasabb versszam, a Karoli_1908.tsv-bol."""
+    global KAROLI_MAX_CACHE
+    if KAROLI_MAX_CACHE is not None:
+        return KAROLI_MAX_CACHE
+    idx = {}
+    path = os.path.join(KONKORDANCIA_DIR, "Karoli_1908.tsv")
+    with open(path, encoding="utf-8") as f:
+        f.readline()
+        for line in f:
+            line = line.rstrip("\n")
+            if not line:
+                continue
+            parts = line.split("\t")
+            m = re.match(r'^(\S+)\s+(\d+):(\d+)$', parts[0])
+            if not m:
+                continue
+            book, ch, v = m.groups()
+            key = (book, int(ch))
+            idx[key] = max(idx.get(key, 0), int(v))
+    KAROLI_MAX_CACHE = idx
+    return idx
+
+
+def load_kjv_max(verse_pairs_path):
+    """(mt_book, fejezet) -> legmagasabb KJV-versszam, a verse_pairs.jsonl-bol."""
+    global KJV_MAX_CACHE
+    if KJV_MAX_CACHE is not None:
+        return KJV_MAX_CACHE
+    idx = {}
+    with open(verse_pairs_path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            d = json.loads(line)
+            mt_book = d.get("mt_book")
+            if not mt_book:
+                continue
+            for ref in d.get("mt_refs") or []:
+                m = VERS_REF_RE.match(ref)
+                if not m:
+                    continue
+                ch, v = m.groups()
+                key = (mt_book, int(ch))
+                idx[key] = max(idx.get(key, 0), int(v))
+    KJV_MAX_CACHE = idx
+    return idx
+
+
+def build_dup_kjv_terkep(vp_for_book):
+    """(kjv_fejezet, kjv_vers) -> a legmagasabb (fejezet,vers) grk_ref, ami
+    ráhivatkozik (egyertelmu mt_refs eseten). Ha egy KJV-célra több LXX-forrás
+    is mutat (Zsoltár-felirat, ami a LXX-ben több sorra bomlik, de a KJV nem
+    számozza külön), csak a LEGMAGASABB (utolsó, a tartalmi folytatáshoz
+    tartozó) LXX-forrás tekinthető felbonthatónak — a korábbi(ak) a felirat
+    része, KJV-megfelelő nélkül (l. LEXV2_1_BRIEF.md V1.3a "ellenpróba")."""
+    max_forras = {}
+    for grk_ref, (mt_book, mt_refs, method) in vp_for_book.items():
+        if method == "unpaired" or len(mt_refs) != 1:
+            continue
+        m = VERS_REF_RE.match(mt_refs[0])
+        gm = VERS_REF_RE.match(grk_ref)
+        if not m or not gm:
+            continue
+        key = (int(m.group(1)), int(m.group(2)))
+        grk_key = (int(gm.group(1)), int(gm.group(2)))
+        if key not in max_forras or grk_key > max_forras[key]:
+            max_forras[key] = grk_key
+    return max_forras
+
+
+def resolve_karoli(karoli_book, book_key, fejezet, vers, mt_refs, method, kezi_fn,
+                    karoli_max_idx, kjv_max_idx, dup_kjv_terkep):
+    """V1.3a: (1) KEZI_ELTOLASOK (raw fejezet/vers alapú, tartalmilag
+    egyeztetett táblák) elsőbbséget élveznek; (2) egyébként a KJV-igehely
+    (verse_pairs.jsonl) + fejezet-szintű versszám-egyezés/Zsoltár cím-eltolás;
+    (3) minden más eltérés üresen marad. A régi LXX_versificacios_terkep.tsv-t
+    (studybible.info-számozásra épült) ez a menet NEM használja (l.
+    LEXV2_1_BRIEF.md döntésnapló v4)."""
     if kezi_fn:
         cel = kezi_fn(fejezet, vers)
         if cel is not None:
-            igehely = f"{karoli_book} {cel[0]}:{cel[1]}"
-            return igehely, "kezi_eltolas_tabla"
-    identity = f"{karoli_book} {fejezet}:{vers}"
-    if identity in letezo_igehelyek:
-        return identity, ""
-    return None, "szamozas_elteres"
+            return f"{karoli_book} {cel[0]}:{cel[1]}", ""
+
+    if method == "unpaired" or not mt_refs:
+        return "", "nincs_mt_parositas"
+    if len(mt_refs) != 1:
+        return "", "szamozas_elteres"
+
+    m = VERS_REF_RE.match(mt_refs[0])
+    if not m:
+        return "", "szamozas_elteres"
+    kjv_ch, kjv_v = int(m.group(1)), int(m.group(2))
+
+    karoli_max = karoli_max_idx.get((karoli_book, kjv_ch))
+    kjv_max = kjv_max_idx.get((book_key, kjv_ch))
+    if karoli_max is None or kjv_max is None:
+        return "", "szamozas_elteres"
+    d = karoli_max - kjv_max
+
+    if d == 0:
+        return f"{karoli_book} {kjv_ch}:{kjv_v}", ""
+
+    if karoli_book == "Zsolt" and d in (1, 2):
+        legmagasabb = dup_kjv_terkep.get((kjv_ch, kjv_v))
+        if legmagasabb != (fejezet, vers):
+            # a cél-KJV-vershez tobb LXX-forras is mutat (cim-tobbesertelmuseg);
+            # ez itt NEM a legmagasabb (utolso, tartalmi) forras -- felirat-sor,
+            # KJV-megfelelő nélkül marad ("ellenpróba", l. docstring)
+            return "", "szamozas_elteres"
+        return f"{karoli_book} {kjv_ch}:{kjv_v + d}", "zsolt_felirat_eltolas"
+
+    return "", "szamozas_elteres"
 
 
-def process_book(slug, morph_dir, verse_pairs_idx, greek_word_list, proveniencia_line):
+def process_book(slug, morph_dir, verse_pairs_idx, greek_word_list, proveniencia_line, verse_pairs_path):
     title, book_key, testament = BOOKS[slug]
     karoli_book = BOOK_KEY_TO_KAROLI.get(book_key)
 
-    gorog_to_karoli = {}
-    letezo_igehelyek = set()
     kezi_fn = None
-    map_warns = []
+    vp_for_book = verse_pairs_idx.get(slug, {})
+    dup_kjv_terkep = {}
+    karoli_max_idx = {}
+    kjv_max_idx = {}
     if karoli_book:
-        gorog_to_karoli, map_warns = build_gorog_to_karoli(karoli_book)
-        letezo_igehelyek = load_karoli_letezo_igehelyek(
-            os.path.join(KONKORDANCIA_DIR, "Karoli_1908.tsv"), karoli_book
-        )
         eng_name = KAROLI_TO_ENGLISH_FOR_KEZI.get(karoli_book)
         kezi_fn = KEZI_ELTOLASOK.get(eng_name) if eng_name else None
+        dup_kjv_terkep = build_dup_kjv_terkep(vp_for_book)
+        karoli_max_idx = load_karoli_max()
+        kjv_max_idx = load_kjv_max(verse_pairs_path)
 
     morph_path = os.path.join(morph_dir, f"{slug}.json")
     with open(morph_path, encoding="utf-8") as f:
         verses = json.load(f)
 
-    vp_for_book = verse_pairs_idx.get(slug, {})
-
     rows = []
-    stats = {"karoli_ok": 0, "szamozas_elteres": 0, "nincs_mt_parositas": 0, "nincs_karoli_konyv": 0}
+    stats = {
+        "karoli_ok": 0, "zsolt_felirat_eltolas": 0, "szamozas_elteres": 0,
+        "nincs_mt_parositas": 0, "nincs_karoli_konyv": 0,
+    }
     hiany_fejezetek = set()
+    chapter_mismatch_warns = []
 
     for v in verses:
         ref = v["ref"]
@@ -270,21 +359,26 @@ def process_book(slug, morph_dir, verse_pairs_idx, greek_word_list, proveniencia
         if not karoli_book:
             igehely_karoli, karoli_ok = "", "nincs_karoli_konyv"
             stats["nincs_karoli_konyv"] += 1
-        elif method == "unpaired" or not mt_refs:
-            igehely_karoli, karoli_ok = "", "nincs_mt_parositas"
-            stats["nincs_mt_parositas"] += 1
         else:
             igehely_karoli, karoli_ok = resolve_karoli(
-                karoli_book, gorog_to_karoli, letezo_igehelyek, fejezet, vers, kezi_fn
+                karoli_book, book_key, fejezet, vers, mt_refs, method, kezi_fn,
+                karoli_max_idx, kjv_max_idx, dup_kjv_terkep,
             )
-            if igehely_karoli is None:
-                igehely_karoli = ""
-                stats["szamozas_elteres"] += 1
-                hiany_fejezetek.add(fejezet)
+            if igehely_karoli == "":
+                stats[karoli_ok] += 1
+                if karoli_ok == "szamozas_elteres":
+                    hiany_fejezetek.add(fejezet)
             else:
-                stats["karoli_ok"] += 1
-                if karoli_ok == "":
-                    pass
+                stats["karoli_ok" if karoli_ok == "" else karoli_ok] += 1
+                # K6: minden kitöltött sorban a Károli-fejezet = KJV-fejezet,
+                # kivéve a KEZI_ELTOLASOK dokumentált eseteit.
+                karoli_fej = int(igehely_karoli.rsplit(" ", 1)[1].split(":")[0])
+                if mt_refs and len(mt_refs) == 1:
+                    m2 = VERS_REF_RE.match(mt_refs[0])
+                    if m2 and int(m2.group(1)) != karoli_fej and kezi_fn is None:
+                        chapter_mismatch_warns.append(
+                            f"{igehely_lxx}: Karoli-fejezet={karoli_fej} != KJV-fejezet={m2.group(1)} (nem kezi_eltolas)"
+                        )
 
         for pozicio, w in enumerate(v.get("words") or [], start=1):
             surface = w.get("surface", "")
@@ -308,7 +402,7 @@ def process_book(slug, morph_dir, verse_pairs_idx, greek_word_list, proveniencia
                 strong, strong_ok, proveniencia_line,
             ))
 
-    return rows, stats, sorted(hiany_fejezetek), map_warns
+    return rows, stats, sorted(hiany_fejezetek), chapter_mismatch_warns
 
 
 def write_tsv(path, rows, comment_lines):
@@ -404,9 +498,12 @@ def main():
         if args.sqlite_ellenoriz:
             sqlite_path = letolt_sqlite(cache_dir if args.letolt else args.forras)
 
-        osszes_stat = {"karoli_ok": 0, "szamozas_elteres": 0, "nincs_mt_parositas": 0, "nincs_karoli_konyv": 0}
+        osszes_stat = {
+            "karoli_ok": 0, "zsolt_felirat_eltolas": 0, "szamozas_elteres": 0,
+            "nincs_mt_parositas": 0, "nincs_karoli_konyv": 0,
+        }
         osszes_hiany = {}
-        osszes_map_warns = []
+        osszes_chapter_warns = []
         sqlite_eltek = []
 
         for slug in slugs:
@@ -416,8 +513,9 @@ def main():
                 continue
             with open(morph_path, encoding="utf-8") as f:
                 verses = json.load(f)
-            rows, stats, hiany_fejezetek, map_warns = process_book(
-                slug, morph_dir, verse_pairs_idx, greek_word_list, proveniencia_line
+            rows, stats, hiany_fejezetek, chapter_warns = process_book(
+                slug, morph_dir, verse_pairs_idx, greek_word_list, proveniencia_line,
+                os.path.join(cache_dir, "verse_pairs.jsonl"),
             )
             comment = [
                 "# GENERÁLT: eszkozok/lxx_os_import.py — kézzel nem szerkesztendő.",
@@ -429,7 +527,7 @@ def main():
                 osszes_stat[k] += v
             if hiany_fejezetek:
                 osszes_hiany[slug] = hiany_fejezetek
-            osszes_map_warns.extend(map_warns)
+            osszes_chapter_warns.extend(chapter_warns)
             if sqlite_path:
                 sqlite_eltek.extend(ellenoriz_sqlite(sqlite_path, slug, verses))
             print(f"  {slug}: {len(rows)} sor", file=sys.stderr)
@@ -441,6 +539,10 @@ def main():
             print("\n=== Fejezetek szamozas_elteres-szel ===", file=sys.stderr)
             for slug, chs in osszes_hiany.items():
                 print(f"  {slug}: {chs}", file=sys.stderr)
+        if osszes_chapter_warns:
+            print(f"\n=== K6-ELLENORZES: {len(osszes_chapter_warns)} Karoli-fejezet != KJV-fejezet (nem kezi_eltolas) ===", file=sys.stderr)
+            for w in osszes_chapter_warns[:50]:
+                print(f"  {w}", file=sys.stderr)
         if sqlite_path:
             print(f"\n=== SQLite-ellenorzes: {len(sqlite_eltek)} elteres ===", file=sys.stderr)
             for e in sqlite_eltek[:50]:
