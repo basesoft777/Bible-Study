@@ -633,6 +633,7 @@ def blokk_szocikkek(m, tokenek):
             van_hivatkozas_barmelyikhez = True
             for r in hiv_sorok:
                 fajl_licenc_kulcsok['adat/lexikon_hivatkozasok.tsv'].add(r['szotar'])
+                fajl_licenc_kulcsok.setdefault(r['forrasfajl'], set()).add(r['szotar'])
                 if r['szotar'] in TISZTAZATLAN_SZOTARAK:
                     tisztazatlan_erintve = True
                 jsz_cimke = '(teljes szócikk)' if r['jelentes_szam'] == 'teljes' else '%s. jelentés' % r['jelentes_szam']
@@ -999,7 +1000,8 @@ def blokk_kapcsolatok(m, konyv_sorrend, hianyzo_konyvek):
 # ---------------------------------------------------------------------------
 
 FAJL_TELJES_NEV = {
-    'konkordancia/BDB_teljes_unabridged.tsv': 'BDB (Brown–Driver–Briggs Hebrew and English Lexicon)',
+    'konkordancia/BDB_teljes_unabridged.tsv':
+        'BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906)',
     'konkordancia/TBESG.txt': 'TBESG (Tyndale Brief lexicon of Extended Strongs for Greek)',
     'konkordancia/TBESH.txt': 'TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew)',
     'konkordancia/Thayer_teljes.tsv': "Thayer (Thayer's Greek-English Lexicon of the New Testament)",
@@ -1010,7 +1012,8 @@ FAJL_TELJES_NEV = {
     'konkordancia/OSHL_lexikalis_index.tsv': 'OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám',
     'konkordancia/TSK_kereszthivatkozasok.tsv': 'TSK (Treasury of Scripture Knowledge)',
 }
-ADATFORRAS_FAJLOK = {'konkordancia/Karoli_1908.tsv', 'konkordancia/Karoli_kereszthivatkozasok.tsv'}
+ADATFORRAS_FAJLOK = {'konkordancia/Karoli_1908.tsv', 'konkordancia/Karoli_kereszthivatkozasok.tsv',
+                      'adat/lexikon_hivatkozasok.tsv'}
 
 
 def _teljes_nev(fajl):
@@ -1026,6 +1029,12 @@ def _adatforras(fajl):
 
 
 def blokk_idezes(m, fajl_licenc_blokk_lista):
+    """A szótárak a lexikon_hivatkozasok.tsv-ben ténylegesen idézett
+    forrásfájljuk (nem maga a lexikon_hivatkozasok.tsv) szerint, teljes
+    névvel jelennek meg a 'Felhasznált szótárak' alatt; egy szótár EGY
+    sorban (a fájljai zárójelben felsorolva), az adat/*.tsv és a Károli-
+    fájlok (a lexikon_hivatkozasok.tsv is) az 'Adatforrások' alatt
+    maradnak (V2.7-előtti javítás)."""
     per_fajl = {}
     for fajl, licenc, _blokk_nev in fajl_licenc_blokk_lista:
         per_fajl.setdefault(fajl, set()).add(licenc)
@@ -1041,19 +1050,25 @@ def blokk_idezes(m, fajl_licenc_blokk_lista):
         '- Fájl: `%s`' % github_url,
     ]
 
-    lxx_os_fajlok = sorted(f for f in per_fajl if f.startswith('konkordancia/LXX_OS/'))
-    egyeb_szotarak = sorted(f for f in per_fajl if _teljes_nev(f) and not f.startswith('konkordancia/LXX_OS/'))
-    adat_fajlok = sorted(f for f in per_fajl if _adatforras(f))
-    beazonositatlan = sorted(set(per_fajl) - set(egyeb_szotarak) - set(lxx_os_fajlok) - set(adat_fajlok))
+    szotar_fajlok = {}
+    szotar_licenc = {}
+    adat_fajlok = []
+    beazonositatlan = []
+    for fajl in sorted(per_fajl):
+        nev = _teljes_nev(fajl)
+        if nev:
+            szotar_fajlok.setdefault(nev, set()).add(fajl)
+            szotar_licenc.setdefault(nev, set()).update(per_fajl[fajl])
+        elif _adatforras(fajl):
+            adat_fajlok.append(fajl)
+        else:
+            beazonositatlan.append(fajl)
 
     szotarak = ['**Felhasznált szótárak:**']
-    for fajl in egyeb_szotarak:
-        licencek = ', '.join(sorted(per_fajl[fajl]))
-        szotarak.append('- %s (`%s`, %s)' % (_teljes_nev(fajl), fajl, licencek))
-    if lxx_os_fajlok:
-        licencek = ', '.join(sorted(set().union(*(per_fajl[f] for f in lxx_os_fajlok))))
-        fajlok_felsorolas = ', '.join('`%s`' % f for f in lxx_os_fajlok)
-        szotarak.append('- %s (%s, %s)' % (_teljes_nev(lxx_os_fajlok[0]), fajlok_felsorolas, licencek))
+    for nev in sorted(szotar_fajlok):
+        fajlok_felsorolas = ', '.join('`%s`' % f for f in sorted(szotar_fajlok[nev]))
+        licencek = ', '.join(sorted(szotar_licenc[nev]))
+        szotarak.append('- %s (%s, %s)' % (nev, fajlok_felsorolas, licencek))
 
     adatforrasok = ['**Adatforrások:**']
     for fajl in adat_fajlok + beazonositatlan:
@@ -1062,7 +1077,8 @@ def blokk_idezes(m, fajl_licenc_blokk_lista):
 
     torzs = '\n'.join(hogyan) + '\n\n' + '\n'.join(szotarak) + '\n\n' + '\n'.join(adatforrasok)
     hatokor = ('Ez a blokk a `[ID: %s]` motívum hivatkozási adatait, a ténylegesen felhasznált '
-               'szótárakat (teljes névvel) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).' % m['id'])
+               'szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja '
+               '(G9, LEXV2_3-ig szűkítve).' % m['id'])
     return _lexikon_blokk(m['id'], 'idezes', [], ['projekt-adat'], hatokor, torzs)
 
 
