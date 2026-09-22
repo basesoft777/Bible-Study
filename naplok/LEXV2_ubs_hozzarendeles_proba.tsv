@@ -1,0 +1,63 @@
+# GENERÁLT: eszkozok/ubs_hozzarendeles.py — kézzel nem szerkesztendő.
+# szarmaztatott proba-jelentes; nem kerul az elofordulasok.tsv-be (LEXV2_1_BRIEF.md G2)
+id	igehely	strong	lexid	entry_kod	glosszak	egyertelmu	megjegyzes
+KIRALY-001	Zsid 5:6	G5010	004915001003000	58.21	kind; type	igen	
+KIRALY-001	Zsid 5:10	G5010	004915001003000	58.21	kind; type	igen	
+KIRALY-001	Zsid 6:20	G5010	004915001003000	58.21	kind; type	igen	
+KIRALY-001	Zsid 7:1-28	G5010	004915001003000	58.21	kind; type	nem	tartomány: 28 vers (Zsid 7:1-28)
+KIRALY-001	Zsid 7:1-28	G0813					a hivatkozott vers(ek)ben nincs UBS-referencia erre a Strong-kódra (tartomány: 28 vers)
+KIRALY-001	Zsid 7:1-28	G0282	000280001001000	10.17	without mother	nem	tartomány: 28 vers (Zsid 7:1-28)
+ISTENTISZT-001	Róm 10:14	G1941	001957001002000	33.176	to call upon; to appeal to; to ask for help	igen	
+ISTENTISZT-001	1Kor 1:2	G1941	001957001002000	33.176	to call upon; to appeal to; to ask for help	igen	
+ISTENTISZT-001	2Tim 2:22	G1941	001957001002000	33.176	to call upon; to appeal to; to ask for help	igen	
+ISTENTISZT-001	1Pét 1:17	G1941	001957001001000	33.131	to call; to name	nem	2 különböző jelentés a tartományban/versben
+ISTENTISZT-001	1Pét 1:17	G1941	001957001002000	33.176	to call upon; to appeal to; to ask for help	nem	2 különböző jelentés a tartományban/versben
+ISTENTISZT-001	ApCsel 9:14	G1941	001957001004000	11.28	to be one of (God’s) people; to be the people of	igen	
+ISTENTISZT-001	ApCsel 9:21	G1941	001957001001000	33.131	to call; to name	igen	
+ISTENTISZT-001	ApCsel 22:16	G1941	001957001002000	33.176	to call upon; to appeal to; to ask for help	igen	
+TEREMT-001	Luk 8:31	G0012	000012001001000	1.20	abyss; abode of evil spirits; very deep place	igen	
+TEREMT-001	Róm 10:7	G0012	000012001001000	1.20	abyss; abode of evil spirits; very deep place	igen	
+TEREMT-001	Jel 9:1-2	G0012	000012001001000	1.20	abyss; abode of evil spirits; very deep place	nem	tartomány: 2 vers (Jel 9:1-2)
+TEREMT-001	Jel 9:11	G0012	000012001001000	1.20	abyss; abode of evil spirits; very deep place	igen	
+TEREMT-001	Jel 11:7	G0012	000012001001000	1.20	abyss; abode of evil spirits; very deep place	igen	
+TEREMT-001	Jel 17:8	G0012	000012001001000	1.20	abyss; abode of evil spirits; very deep place	igen	
+TEREMT-001	Jel 20:1-3	G0012	000012001001000	1.20	abyss; abode of evil spirits; very deep place	nem	tartomány: 3 vers (Jel 20:1-3)
+ALVIL-001	ApCsel 2:27	G0086	000086001001000	1.19	the world of the dead; Hades	igen	
+ALVIL-001	ApCsel 2:31	G0086	000086001001000	1.19	the world of the dead; Hades	igen	
+ALVIL-001	Luk 16:23	G0086	000086001001000	1.19	the world of the dead; Hades	igen	
+ALVIL-001	Jel 1:18	G0086	000086001001000	1.19	the world of the dead; Hades	igen	
+ALVIL-001	Jel 6:8	G0086	000086001002000	23.108	death; power of death	igen	
+ALVIL-001	Jel 20:13-14	G0086	000086001001000	1.19	the world of the dead; Hades	nem	tartomány: 2 vers (Jel 20:13-14)
+ALVIL-001	Luk 10:15	G0086	000086001001000	1.19	the world of the dead; Hades	igen	
+ALVIL-001	Mt 11:23	G0086	000086001001000	1.19	the world of the dead; Hades	igen	
+MENNY-001	Júd 1:6						nincs strong-token a sorban
+MENNY-001	Júd 1:14-15						nincs strong-token a sorban
+MENNY-001	2Pét 2:4-5						nincs strong-token a sorban
+ANTROP-001	1Thessz 5:23	G4151	004054001005000	26.9	spirit; spiritual; spiritual nature; inner being	igen	
+ANTROP-001	1Thessz 5:23	G5590	005475001001000	26.4	inner self; mind; thoughts; feelings; heart; being	nem	2 különböző jelentés a tartományban/versben
+ANTROP-001	1Thessz 5:23	G5590	005475001002000	23.88	life	nem	2 különböző jelentés a tartományban/versben
+ANTROP-001	Zsid 4:12	G4151	004054001005000	26.9	spirit; spiritual; spiritual nature; inner being	igen	
+ANTROP-001	Zsid 4:12	G5590	005475001001000	26.4	inner self; mind; thoughts; feelings; heart; being	nem	2 különböző jelentés a tartományban/versben
+ANTROP-001	Zsid 4:12	G5590	005475001002000	23.88	life	nem	2 különböző jelentés a tartományban/versben
+ANTROP-001	1Kor 15:45	G4151	004054001002000	12.33	spirit	igen	
+ANTROP-001	1Kor 15:45	G5590	005475001003000	9.20	person; people	igen	
+ANTROP-001	Luk 1:46	G4151					a hivatkozott vers(ek)ben nincs UBS-referencia erre a Strong-kódra
+ANTROP-001	Luk 1:46	G5590	005475001001000	26.4	inner self; mind; thoughts; feelings; heart; being	igen	
+ANTROP-001	Luk 1:47	G4151	004054001005000	26.9	spirit; spiritual; spiritual nature; inner being	igen	
+ANTROP-001	Luk 1:47	G5590					a hivatkozott vers(ek)ben nincs UBS-referencia erre a Strong-kódra
+ANTROP-001	1Kor 2:14	G4151	004054001001000	12.18	Spirit; Spirit of God; Holy Spirit	igen	
+ANTROP-001	1Kor 2:14	G5590					a hivatkozott vers(ek)ben nincs UBS-referencia erre a Strong-kódra
+ANTROP-001	1Kor 2:15	G4151					a hivatkozott vers(ek)ben nincs UBS-referencia erre a Strong-kódra
+ANTROP-001	1Kor 2:15	G5590					a hivatkozott vers(ek)ben nincs UBS-referencia erre a Strong-kódra
+HAMART-001	Róm 8:20-22	G5356	005246001002000	23.205	to rot; to decay; decay	nem	tartomány: 3 vers (Róm 8:20-22)
+HAMART-001	Gal 3:10	G1944	001960001001000	33.475	cursed; accursed	igen	
+HAMART-001	Gal 3:13	G1944	001960001001000	33.475	cursed; accursed	igen	
+HAMART-001	Zsid 6:7-8	G2671	002680001003000	33.474	cursed; accursed	nem	tartomány: 2 vers (Zsid 6:7-8)
+HAMART-001	Jel 11:18	G1311	001325001001000	20.40	to destroy utterly	nem	2 különböző jelentés a tartományban/versben
+HAMART-001	Jel 11:18	G1311	001325001002000	88.266	to deprave; to pervert; to ruin; to cause the moral ruin of	nem	2 különböző jelentés a tartományban/versben
+HAMART-001	Jel 19:2	G5351	005241001003000	88.266	to deprave; to pervert; to ruin; to cause the moral ruin of	igen	
+HAMART-001	Mt 15:19						nincs strong-token a sorban
+HAMART-001	Mk 7:21-23						nincs strong-token a sorban
+HAMART-001	2Pét 3:6-7						nincs strong-token a sorban
+ISTENTISZT-001	ApCsel 2:21	G1941	001957001002000	33.176	to call upon; to appeal to; to ask for help	igen	
+ISTENTISZT-001	Róm 10:13	G1941	001957001002000	33.176	to call upon; to appeal to; to ask for help	igen	
