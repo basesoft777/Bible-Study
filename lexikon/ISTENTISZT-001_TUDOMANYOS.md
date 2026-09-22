@@ -430,7 +430,7 @@ legelején azt jelzi: nincs tovább vezethető etimológia.
 
 **🇭🇺 Magyarul (Abbott-Smith):** ἐπι-καλέω (összevont alakban: ἐπικαλῶ) — a Septuagintában többnyire a héber קָרָא fordítására szolgál. 1. hívni, nevezni, melléknevet adni: tárgyesettel (klasszikus), Mt 10:25; szenvedő alakban: ApCsel 1:23; 4:36; 10:5, 18, 22; 11:13; 12:12, 25; Zsid 11:16; τ. ὄνομα, ἐπί előtt (birtoklást jelölve, mint a héb. עַל..שֻׁם קָרָא): ApCsel 15:17 (LXX), Jak 2:7. 2. Közép alakban (így cselekvő alakban is; klasszikus, LXX): segítségül hívni, invokálni, folyamodni valakihez (θεόν, θεούς: Hérodotosz, Xenophón és mások): Καίσαρα (Σεβαστόν, ApCsel 25:25), ApCsel 25:11-12, 21; 26:32; 28:19; ti. τ. Κύριον Ἰησοῦν, ApCsel 7:59; μάρτυρα (klasszikus) τ. θεόν, 2Kor 1:23; πατέρα, 1Pét 1:17; τ. κύριον, Róm 10:12; 2Tim 2:22; τ. ὄνομα κυρίου (μου, σου; mint a héb. יְהוָֹה שֻׁם קָרָא), ApCsel 2:21 (LXX); 9:14, 21; 22:16; Róm 10:13-14 (LXX); 1Kor 1:2 (Cremer, 335, 742). (Abbott-Smith)
 
-**Thayer's Greek-English Lexicon (2026.09.07-től ténylegesen elérhető, l. 10. szakasz) — TELJES, 5 jelentés-ágas szócikk:**
+**Thayer's Greek-English Lexicon (2026.09.07-től ténylegesen elérhető, l. Kolofon) — TELJES, 5 jelentés-ágas szócikk:**
 
 > **G1941 — ἐπικαλέω** ... the Sept. very often for קָרָא ; **1.** to put a name upon, to surname: τινα, Mat 10:25; passive ὁ ἐπικαλούμενος, "he who is surnamed", Luk 22:3, Act 10:18, 11:13, 12:12 etc. **2.** ἐπικαλεῖται τό ὄνομα τίνος ἐπί τινα, after the Hebrew ... "the name of one is named upon some one" (cf. Gesenius, Thesaurus iii., p. 1232a): Act 15:17 from Amo 9:12; Jam 2:7. **3.** τίνι with accusative — legal sense, "to charge something to one as a crime; to accuse of": Mat 10:25. **4. to call upon (like German** *anrufen***), to invoke; middle, to call upon for oneself, in one's behalf**: as a helper, Act 7:59; as a witness, 2Co 1:23; as a judge/appeal, Act 25:11, 26:32, 28:19. **5. Hebraistically (like יְהוָה בְּשֵׁם קָרָא to call upon by pronouncing the name of Jehovah, Gen 4:26; Gen 12:8; 2Ki 5:11, etc.; cf. Gesenius, Thesaurus, p. 1231b ... an expression finding its explanation in the fact that prayers addressed to God ordinarily began with an invocation of the divine name: Psa 3:2; Psa 6:2; Psa 7:2, etc.) ἐπικαλοῦμαι τό ὄνομα τοῦ κυρίου, I call upon the name of the Lord, i.e. to invoke, adore, worship, the Lord: Act 2:21 (from Joe 2:32); Act 9:14,21; 22:16; Rom 10:13; 1Co 1:2; τόν κύριον, Rom 10:12; 2Ti 2:22.**
 
@@ -537,7 +537,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 #### G0994
 
-*(Megjegyzés: a G0994-hez a 2. szakaszban jelenleg nincs generált lexikon-szócikk.)*
+*(Megjegyzés: a G0994 nem a motívum saját tokenje, ezért a 2. szakasz generált része nem ad hozzá szócikket; LXX-beli szerepét a 3. szakasz mutatja: Ézs 12:4.)*
 
 **Miért fontos ez a lelet:** a Thayer megerősíti az Abbott-Smith szinonima-magyarázatát (βοάω ≠ ἐπικαλέομαι, más érzelmi regiszter), és pontosítja, hogy az Ézs 12:4-nél használt fordítói döntés (βοάω) illeszkedik a βοάω tipikus LXX-forrásaihoz (Ézs 40:3, Ézs 54:1 — mindkettő Ézsaiás-részlet, ahogy a mi versünk is!) — vagyis a fordító **stílusregiszterben és forráskönyvben is konzisztens** választást tett, nem véletlenszerű eltérést az ἐπικαλέομαι-tól.
 
@@ -973,7 +973,7 @@ külön véve attól az esettől, amikor csak simán "hívnak/szólítanak"
 valakit. Vagyis maga a szótár mondja ki: ez nem esetleges
 szóhasználat, hanem tudatos fordítás egy már ismert héber mintára.
 
-【NAPLO: a Thayer 2026.09.07-től vált ténylegesen elérhetővé (l. 8. szakasz — Nyitott kérdések) — előtte csak a BDB és a TBESG állt rendelkezésre.】
+【NAPLO: a Thayer 2026.09.07-től vált ténylegesen elérhetővé (l. 7. szakasz — Nyitott kérdések és séma-korlátok) — előtte csak a BDB és a TBESG állt rendelkezésre.】
 
 Ez azért erősebb bizonyíték, mint egyetlen forrásra támaszkodni:
 három, egymástól független szótárkészítő, más korban, más módszerrel
@@ -990,7 +990,7 @@ nyilvános teljesítmény vagy a rituálé pontossága, hanem a
 Izsák párhuzama azt is megmutatja, hogy ez a fajta istentisztelet
 **taníthatóvá és örökölhetővé** válik.
 
-*(Remez-szintű kiegészítés, l. 6. szakasz — Módszertani napló, A/B/C tipológia):* ugyanez a קָרָא+שֵׁם
+*(Remez-szintű kiegészítés, l. 7. szakasz — Módszertani napló, A/B/C tipológia):* ugyanez a קָרָא+שֵׁם
 szókapcsolat, felcserélt alany/tárgy-szereposztásban, Isten
 önkinyilatkoztatását (2Móz 33:19/34:5) és Isten névadó tettét egy
 emberen (Ézs 43:1, 44:5, 45:3) is kifejezheti — a motívum tehát nem
@@ -1036,7 +1036,7 @@ a vitát nem hallgatja el)*
 
 #### A "be nem sorolható" eset mögötti hármas tipológia (A/B/C)
 
-【NAPLO: eredetileg lexikon-pilot-only megfigyelésként rögzítve, 2026.09.06. 2026.09.07-én a study PaRDeS-keretrendszer Drash-szakaszába visszaírva (l. 1/b. szakasz) — ez a szakasz itt a tipológia teljes, részletes kifejtését őrzi.】
+【NAPLO: eredetileg lexikon-pilot-only megfigyelésként rögzítve, 2026.09.06. 2026.09.07-én a study PaRDeS-keretrendszer Drash-szakaszába visszaírva (l. 6. szakasz — PaRDeS keretrendszer) — ez a szakasz itt a tipológia teljes, részletes kifejtését őrzi.】
 
 Az elutasított jelöltek (Ézs 43:1, 44:5, 45:3
 — "Isten néven szólít egy embert") és a "be nem sorolható" eset
@@ -1132,12 +1132,12 @@ tévesen ne sorolja be a motívumba.】
    (`konkordancia/Javasolt_gorog_oldal_erositese.md`). Ebből a
    "Thayer beszerzése" pont **2026.09.07-én ténylegesen megoldódott**:
    a teljes Thayer's Greek-English Lexicon SQLite-fájlban elérhetővé
-   vált (5427 bejegyzés), és ebbe a pilot-oldalba be is építve (l. 2/b. szakasz). **A fájl
-   repóba emelése még külön döntést igényel.**
+   vált (5427 bejegyzés), és ebbe a pilot-oldalba be is építve (l. 2/b. szakasz). ~~A fájl repóba emelése még külön döntést igényel.~~ — 2026.09.20-án lezárva (F7.1): közkincs, `konkordancia/Thayer_teljes.tsv`; a teljes G1941-szócikk és magyar fordítása a 2. szakasz generált részében áll.
 4. ~~LXX-híd 2 adatminőségi hibája~~ — 2026.09.07-én lezárva: Zsolt
    116:4 téves G-címkéje javítva G1941-re; Zsolt 116:17 "hiánya"
    tévhitnek bizonyult — a görög LXX autentikusan nem fordítja le a
    vers második felét, a kivonat eleve helyes és teljes volt.
+5. **UBS-besorolás (2026.09.22)** — az UBS Greek New Testament Dictionary az ApCsel 9:14 ἐπικαλουμένους (epikalúmenúsz) alakját nem a 33.176-os „segítségül hívni" jelentéshez sorolja, hanem a 11.28-hoz („Isten népéhez tartozni", szó szerint: „akire valakinek a nevét hívják"), és a 11.28 megjegyzése ezt a verset a hagyományos értelmezéstől eltérőként kifejezetten megnevezi; az 1Pét 1:17 hozzárendelése kettős (33.131 és 33.176). Mindkettő a 6. Értelmezés feldolgozandó kérdése; a lexikon-adat (1. szakasz, UBS-oszlop) a forrás besorolását mutatja.
 
 ## 8. Irodalom és idézés
 
