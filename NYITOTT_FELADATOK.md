@@ -116,7 +116,7 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
   index --ir` fixponton ZÖLD; `gate.py` nem talált új HAMART-001-ütközést.
   L. `N14_BRIEF.md`, `N14.0`–`N14.4` commitok.
 
-- **N15 — Az LXX-kivonat licenc-tisztázása.** *(ÚJ, LEX, 2026.09.21)*
+- **N15 — Az LXX-kivonat licenc-tisztázása. LEZÁRVA (LEXV2_2, 2026.09.22).** *(ÚJ, LEX, 2026.09.21)*
   A `konkordancia/LXX_kivonat_*.tsv` (39 könyv) a studybible.info
   LXX_WH + ABP oldalaiból készült, licencnyilatkozat nélkül (l.
   `LXX_kivonat_README.md` „Licenc-státusz — explicit gap"); az F6
@@ -153,6 +153,14 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
   Károli-igehely pedig a meglévő `LXX_versificacios_terkep.tsv` +
   `KEZI_ELTOLASOK` újrafelhasználásával, nem a `verse_pairs.jsonl`
   KJV-számozásával (l. `LEXV2_1_BRIEF.md` döntésnapló v3).
+
+  **Lezárás (LEXV2_2_BRIEF.md, 2026.09.22):** a lexikon-oldal generátora
+  (`eszkozok/lexikon_general.py`, V2.4) a 3. szakaszt (LXX-fordítói döntések)
+  mostantól kizárólag a `konkordancia/LXX_OS/`-ből építi — a régi
+  `LXX_kivonat_*.tsv` teljesen kikerült a generált rétegből (nincs rá
+  hivatkozás egyetlen `lexikon/*_TUDOMANYOS.md`-ben sem, ellenőrizve
+  szkripttel, K4). A `LXX_OS` licence CC BY 4.0 (lxx-morph + GreekWordList),
+  tisztázott — az N15 ezzel lezárva.
 
 - **N16 — Az ISTENTISZT-001 hiányzó ÚSZ-i idézőhelyei. LEZÁRVA (N16, 2026.09.21).** *(ÚJ, LEX.2
   zárójelentése, 2026.09.21)* A Jóel 2:32 szó szerinti ÚSZ-i idézetei
@@ -192,6 +200,14 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
   `LEXV2_1_BRIEF.md` V1.3a algoritmusával (KJV-fejezet-egyezés + Zsoltár
   cím-eltolás), és ha valódi hiba igazolódik, a régi kivonat javítása vagy
   lecserélése az új `konkordancia/LXX_OS/`-re.
+
+  **Szűkítés (LEXV2_2_BRIEF.md, 2026.09.22):** a régi `LXX_kivonat_*.tsv`
+  (és a rá épülő `LXX_versificacios_terkep.tsv`) mostantól kizárólag
+  archív — a lexikon-generátor (V2.4) a `LXX_OS`-t használja, a régi
+  kivonatot semmilyen generált oldal nem olvassa. Az N17 hátralévő
+  hatóköre ezért csak a saját magára, archívumként: a Zsoltár-számozási
+  gyanú ellenőrzése akkor válik ismét élessé, ha a régi kivonatot valaki
+  újra bemenetként használná (jelenleg nincs ilyen felhasználás).
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
