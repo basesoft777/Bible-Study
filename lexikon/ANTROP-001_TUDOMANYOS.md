@@ -208,7 +208,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 |---|---|---|---|---|---|
 | 1Móz 2:7 | 1Móz 2:7 | נֶ֥פֶשׁ (Ne.fesh) | ψυχὴν (ψυχή, psuchē G5590) | egyező | LXX_OS |
 
-*Összesítés: egyező=1, eltérő=0, kutatói azonosítás függőben=0, szamozas_elteres=0.*
+*Összesítés: egyező=1, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=0, szamozas_elteres=0.*
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#lxx -->
 

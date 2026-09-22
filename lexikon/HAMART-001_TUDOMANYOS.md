@@ -705,7 +705,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 | Mk 7:22 | — | — | — | nincs LXX_OS-könyv | — |
 | Mk 7:23 | — | — | — | nincs LXX_OS-könyv | — |
 
-*Összesítés: egyező=24, eltérő=0, kutatói azonosítás függőben=37, szamozas_elteres=1.*
+*Összesítés: egyező=24, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=37, szamozas_elteres=1.*
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#lxx -->
 

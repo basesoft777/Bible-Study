@@ -737,14 +737,18 @@ def lxx_os_strong_normalizalt(nyers_strong):
 _LXX_IGEHELY_VERS_RE = re.compile(r'(\d+):(\d+)$')
 
 
-def lxx_igehely_magyar(r, karoli_konyv, karoli_fej, karoli_vers):
-    """A LXX_OS sor saját (fejezet:vers) számozása, magyar könyv-rövidítéssel;
-    '(LXX)' jelöléssel közvetlenül a könyvnév után, ha a számozás eltér a
-    Károli-céltól (pl. 'Zsolt(LXX) 114:4'), egyezéskor jelölés nélkül
-    (V2.6a pont 4)."""
-    m = _LXX_IGEHELY_VERS_RE.search(r.get('igehely_lxx') or '')
+def lxx_igehely_magyar(lxx_ref, karoli_konyv, karoli_fej, karoli_vers):
+    """A nyers LXX-igehely (angol könyvnév, pl. 'Genesis 4:26' vagy
+    'Psalms (LXX) 115:8') saját (fejezet:vers) számozása, magyar könyv-
+    rövidítéssel; '(LXX)' jelöléssel közvetlenül a könyvnév után, ha a
+    számozás eltér a Károli-céltól (pl. 'Zsolt(LXX) 114:4'), egyezéskor
+    jelölés nélkül (V2.6a pont 4). Ugyanez a függvény alakítja az
+    `LXX_OS` sorok és az `lxx_dontesek.tsv` kutatói sorainak
+    `lxx_igehely` mezőjét is — a tábla mezője angol marad, csak a
+    megjelenítés magyar (V2.6b)."""
+    m = _LXX_IGEHELY_VERS_RE.search(lxx_ref or '')
     if not m:
-        return r.get('igehely_lxx') or EM_DASH
+        return lxx_ref or EM_DASH
     lxx_fej, lxx_vers = int(m.group(1)), int(m.group(2))
     if lxx_fej == karoli_fej and lxx_vers == karoli_vers:
         return '%s %d:%d' % (karoli_konyv, karoli_fej, karoli_vers)
@@ -776,7 +780,7 @@ def blokk_lxx(m, sorai, tokenek):
     fejlec = ['| Igehely (Károli) | LXX-igehely | Héber kulcsszó | Görög megfelelő | Egyezés | Forrás |',
               '|---|---|---|---|---|---|']
     tabla_sorok = list(fejlec)
-    szamlalo = {'egyező': 0, 'eltérő': 0, 'kutatói azonosítás függőben': 0, 'szamozas_elteres': 0}
+    szamlalo = {'egyező': 0, 'eltérő': 0, 'LXX-minusz': 0, 'kutatói azonosítás függőben': 0, 'szamozas_elteres': 0}
     forras_fajlok = set()
 
     for s in osz_sorai:
@@ -807,7 +811,7 @@ def blokk_lxx(m, sorai, tokenek):
                     vers, EM_DASH, heber_kulcsszo, EM_DASH, 'szamozas_elteres'))
                 continue
 
-            lxx_igehely = lxx_igehely_magyar(sorai_ehhez_vershez[0], konyv, karoli_fej, karoli_vers)
+            lxx_igehely = lxx_igehely_magyar(sorai_ehhez_vershez[0].get('igehely_lxx'), konyv, karoli_fej, karoli_vers)
 
             egyezo = [r for r in sorai_ehhez_vershez
                       if gorog_tokenek and lxx_os_strong_normalizalt(r.get('strong')) in gorog_tokenek]
@@ -820,11 +824,17 @@ def blokk_lxx(m, sorai, tokenek):
 
             kutatoi = dontesek_idx.get(vers, [])
             if kutatoi:
-                szamlalo['eltérő'] += 1
                 r = kutatoi[0]
-                if (r.get('tipus') or '').strip() == 'lxx_minusz':
-                    gm = 'nincs megfelelő a görögben (LXX-minusz)'
+                if r.get('lxx_igehely'):
+                    dontesek_lxx_igehely = lxx_igehely_magyar(r['lxx_igehely'], konyv, karoli_fej, karoli_vers)
                 else:
+                    dontesek_lxx_igehely = lxx_igehely
+                if (r.get('tipus') or '').strip() == 'lxx_minusz':
+                    szamlalo['LXX-minusz'] += 1
+                    gm = 'nincs megfelelő a görögben (LXX-minusz)'
+                    egyezes_cimke = 'LXX-minusz'
+                else:
+                    szamlalo['eltérő'] += 1
                     gorog_strong = (r.get('gorog_strong') or '').strip()
                     lk = lemma_kiejtes(gorog_strong) if gorog_strong else None
                     if lk:
@@ -833,8 +843,9 @@ def blokk_lxx(m, sorai, tokenek):
                         kiejtes = gepi_atiras(r.get('gorog_lemma') or '') + ' *(gépi átírás)*'
                     gm = '%s (%s%s)' % (r.get('gorog_lemma') or EM_DASH, kiejtes,
                                          ' %s' % gorog_strong if gorog_strong else '')
-                tabla_sorok.append('| %s | %s | %s | %s | eltérő | adat/lxx_dontesek.tsv |' % (
-                    vers, r.get('lxx_igehely') or lxx_igehely, heber_kulcsszo, gm))
+                    egyezes_cimke = 'eltérő'
+                tabla_sorok.append('| %s | %s | %s | %s | %s | adat/lxx_dontesek.tsv |' % (
+                    vers, dontesek_lxx_igehely, heber_kulcsszo, gm, egyezes_cimke))
                 continue
 
             szamlalo['kutatói azonosítás függőben'] += 1
@@ -842,19 +853,19 @@ def blokk_lxx(m, sorai, tokenek):
                 vers, lxx_igehely, heber_kulcsszo, EM_DASH))
 
     torzs = '\n'.join(tabla_sorok)
-    torzs += ('\n\n*Összesítés: egyező=%d, eltérő=%d, kutatói azonosítás függőben=%d, '
+    torzs += ('\n\n*Összesítés: egyező=%d, eltérő=%d, LXX-minusz=%d, kutatói azonosítás függőben=%d, '
               'szamozas_elteres=%d.*'
-              % (szamlalo['egyező'], szamlalo['eltérő'], szamlalo['kutatói azonosítás függőben'],
-                 szamlalo['szamozas_elteres']))
+              % (szamlalo['egyező'], szamlalo['eltérő'], szamlalo['LXX-minusz'],
+                 szamlalo['kutatói azonosítás függőben'], szamlalo['szamozas_elteres']))
 
     hatokor = ('Ez a blokk a `[ID: %s]` motívum ÓSZ-i előfordulásait veti össze az `LXX_OS`-szel '
                '(G5), soronként a Károli-vers minden versére.' % m['id'])
-    forras_lista = sorted(forras_fajlok) + (['adat/lxx_dontesek.tsv'] if any(
-        'eltérő' in sor for sor in tabla_sorok) else [])
+    dontesek_hasznalt = bool(szamlalo['eltérő'] or szamlalo['LXX-minusz'])
+    forras_lista = sorted(forras_fajlok) + (['adat/lxx_dontesek.tsv'] if dontesek_hasznalt else [])
     blokk_szoveg = _lexikon_blokk(m['id'], 'lxx', sorted(set(forras_lista)),
                                    ['CC BY 4.0', 'projekt-adat'], hatokor, torzs)
     forras_licenc_parok = [(f, 'CC BY 4.0') for f in sorted(forras_fajlok)]
-    if szamlalo['eltérő']:
+    if dontesek_hasznalt:
         forras_licenc_parok.append(('adat/lxx_dontesek.tsv', 'projekt-adat'))
     return blokk_szoveg, forras_licenc_parok
 

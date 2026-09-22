@@ -203,7 +203,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 | Jób 38:7 | — | בְּנֵ֥י (be.Nei) | — | szamozas_elteres | LXX_OS |
 | 4Móz 13:34 | 4Móz(LXX) 13:33 | נְּפִלִ֑ים (ne.fi.Lim) | — | kutatói azonosítás függőben | LXX_OS |
 
-*Összesítés: egyező=0, eltérő=0, kutatói azonosítás függőben=5, szamozas_elteres=1.*
+*Összesítés: egyező=0, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=5, szamozas_elteres=1.*
 
 <!-- GENERÁLT-VÉGE: lexikon#MENNY-001#lxx -->
 

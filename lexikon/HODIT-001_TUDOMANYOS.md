@@ -411,7 +411,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 | Józs 18:16 | — | רְפָאִ֖ים (re.fa.'Im) | — | szamozas_elteres | LXX_OS |
 | Józs 17:15 | — | רְפָאִ֑ים (re.fa.'Im) | — | szamozas_elteres | LXX_OS |
 
-*Összesítés: egyező=0, eltérő=0, kutatói azonosítás függőben=28, szamozas_elteres=5.*
+*Összesítés: egyező=0, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=28, szamozas_elteres=5.*
 
 <!-- GENERÁLT-VÉGE: lexikon#HODIT-001#lxx -->
 

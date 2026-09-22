@@ -286,7 +286,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 | Zsolt 110:4 | Zsolt(LXX) 109:4 | כֹהֵ֥ן (kho.Hen) | τάξιν (τάξις, taxis G5010) | egyező | LXX_OS |
 | Zak 6:13 | Zak 6:13 | כֹהֵן֙ (kho.Hen) | — | kutatói azonosítás függőben | LXX_OS |
 
-*Összesítés: egyező=1, eltérő=0, kutatói azonosítás függőben=6, szamozas_elteres=0.*
+*Összesítés: egyező=1, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=6, szamozas_elteres=0.*
 
 <!-- GENERÁLT-VÉGE: lexikon#KIRALY-001#lxx -->
 

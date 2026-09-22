@@ -698,7 +698,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 | Hab 2:5 | Hab 2:5 | שְׁא֜וֹל (sh.'ol) | ᾅδης (ᾅδης, Hadēs G0086) | egyező | LXX_OS |
 | Jón 2:3 | — | שְׁא֛וֹל (she.'ol) | — | szamozas_elteres | LXX_OS |
 
-*Összesítés: egyező=54, eltérő=0, kutatói azonosítás függőben=6, szamozas_elteres=4.*
+*Összesítés: egyező=54, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=6, szamozas_elteres=4.*
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#lxx -->
 

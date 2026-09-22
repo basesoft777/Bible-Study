@@ -566,17 +566,17 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 | Zak 13:9 | Zak 13:9 | יִקְרָ֣א (yik.Ra') | ἐπικαλέσεται (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
 | Zsolt 116:4 | Zsolt(LXX) 114:4 | אֶקְרָ֑א ('ek.Ra') | ἐπεκαλεσάμην (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
 | Zsolt 116:13 | Zsolt(LXX) 115:4 | אֶקְרָֽא ('ek.Ra') | ἐπικαλέσομαι (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
-| Zsolt 116:17 | Psalms (LXX) 115:8 | אֶקְרָֽא ('ek.Ra') | nincs megfelelő a görögben (LXX-minusz) | eltérő | adat/lxx_dontesek.tsv |
+| Zsolt 116:17 | Zsolt(LXX) 115:8 | אֶקְרָֽא ('ek.Ra') | nincs megfelelő a görögben (LXX-minusz) | LXX-minusz | adat/lxx_dontesek.tsv |
 | Jóel 2:32 | Jóel(LXX) 3:5 | קֹרֵֽא (ko.Re') | ἐπικαλέσηται (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
 | Zsolt 105:1 | Zsolt(LXX) 104:1 | קִרְא֣וּ (kir.'U) | ἐπικαλεῖσθε (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
 | 1Krón 16:8 | 1Krón 16:8 | קִרְא֣וּ (kir.'U) | ἐπικαλεῖσθε (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
-| Ézs 12:4 | Isaiah 12:4 | קִרְא֣וּ (kir.'U) | βοάω (boaō G0994) | eltérő | adat/lxx_dontesek.tsv |
+| Ézs 12:4 | Ézs 12:4 | קִרְא֣וּ (kir.'U) | βοάω (boaō G0994) | eltérő | adat/lxx_dontesek.tsv |
 | Jer 10:25 | Jer 10:25 | קָרָ֑אוּ (ka.Ra.'u) | ἐπεκαλέσαντο (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
 | Zsolt 79:6 | Zsolt(LXX) 78:6 | קָרָֽאוּ (ka.Ra.'u) | ἐπεκαλέσαντο (ἐπικαλέω, epikaleō G1941) | egyező | LXX_OS |
-| 2Móz 33:19 | Exodus 33:19 | קָרָ֧אתִֽי (ka.Ra.ti) | καλέω (kaleō G2564) | eltérő | adat/lxx_dontesek.tsv |
-| 2Móz 34:5 | Exodus 34:5 | יִּקְרָ֥א (i.yik.Ra') | καλέω (kaleō G2564) | eltérő | adat/lxx_dontesek.tsv |
+| 2Móz 33:19 | 2Móz 33:19 | קָרָ֧אתִֽי (ka.Ra.ti) | καλέω (kaleō G2564) | eltérő | adat/lxx_dontesek.tsv |
+| 2Móz 34:5 | 2Móz 34:5 | יִּקְרָ֥א (i.yik.Ra') | καλέω (kaleō G2564) | eltérő | adat/lxx_dontesek.tsv |
 
-*Összesítés: egyező=18, eltérő=4, kutatói azonosítás függőben=0, szamozas_elteres=0.*
+*Összesítés: egyező=18, eltérő=3, LXX-minusz=1, kutatói azonosítás függőben=0, szamozas_elteres=0.*
 
 <!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#lxx -->
 

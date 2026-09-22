@@ -453,7 +453,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 | Hab 3:10 | Hab 3:10 | תְּהוֹם֙ (te.hOm) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Jón 2:6 | — | תְּה֖וֹם (te.Hom) | — | szamozas_elteres | LXX_OS |
 
-*Összesítés: egyező=25, eltérő=0, kutatói azonosítás függőben=5, szamozas_elteres=4.*
+*Összesítés: egyező=25, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=5, szamozas_elteres=4.*
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-001#lxx -->
 
