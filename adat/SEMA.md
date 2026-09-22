@@ -236,6 +236,19 @@ szabály egy második, addig dokumentálatlan hibát is felszínre hozott — a
 | binyan-címke | **a BDB az igegyököket binyan szerint tagolja, nem számozott sense-ekkel** | `Nif'ál`, `Pi'él`, `Hif'íl` |
 | binyan + igealak | ha a megkülönböztetés igealakon múlik | `Qal pass. ptc.`, `Qal impf.` |
 | alternatíva | ha a hely két binyan között eldöntetlen | `Nif'ál / Hif'íl` |
+| `teljes` | **a forrásfájl nem bont számozott jelentésekre — a teljes szócikk egy sorban áll** (LEXV2_2_BRIEF.md V2.3, jelenleg: Thayer) | `teljes` |
+
+**A `teljes` érték három korlátja:**
+1. Csak olyan szótárnál használható, amelynek forrásfájlja ténylegesen nem bont
+   számozott jelentésekre (jelenleg egyedül a `Thayer_teljes.tsv` — egy sor =
+   egy teljes szócikk, `Teljes_szocikk` mezővel).
+2. Csak a `lexikon_hivatkozasok.tsv`-ben szerepelhet. Az `elofordulasok.tsv`
+   `jelentes_szam` mezője **soha** nem mutathat `teljes` értékre — egy
+   előfordulás mindig egy konkrét jelentésre hivatkozik, nem a teljes
+   szócikkre.
+3. Egy `szotar` + `strong` + `entry_id` hármashoz **legfeljebb egy** `teljes`
+   jelentes_szam-ú sor tartozhat (a kulcs egyébként `szotar`+`strong`+
+   `entry_id`+`jelentes_szam`, tehát enélkül a korlát nélkül duplázható lenne).
 
 *A ma használatban lévő teljes értékkészlet* (mért, `tematikus_lezart/` + `genezis/`):
 `Qal pass. ptc.` (6), `Pi'él` (2), `Qal impf.` (1), `Nif'ál` (1), `Hif'íl` (1),
@@ -313,7 +326,7 @@ Kulcs: `szotar` + `strong` + `entry_id` + `jelentes_szam`.
 |---|---|---|---|
 | `strong` | `STRONG` | ✔ | |
 | `szotar` | zárt | ✔ | `BDB` \| `TBESH` \| `TBESG` \| `Thayer` \| `LSJ` \| `Strong` \| `SDBH` \| `SDGNT` \| `SECE_G` \| `SECE_H` \| `MCGED` |
-| `entry_id` | szabad szöveg | ✔ | Szótáranként: BDB, Thayer, LSJ, SECE → a konkordancia-fájl `Strong_padded` kulcsa; MCGED → a `lexikonok_nyers/MCGED.lexicon` `G####` Strong-kulcsa (a `gkG5####` GK-kulcs nem használható, l. `lexikonok_nyers/README.md`); TBESH/TBESG → a fájl első oszlopa; SDBH/SDGNT → `entry_id` (`MainId`), a `jelentes_szam` pedig a `lexid`. |
+| `entry_id` | szabad szöveg | ✔ | Szótáranként: BDB, LSJ, SECE → a konkordancia-fájl `Strong_padded` kulcsa; **Thayer** → a `Thayer_teljes.tsv` `Strong_eredeti` mezője (nullázatlan, pl. `G12`, nem `G0012` — LEXV2_2_BRIEF.md V2.3 döntés, eltér a többi szótár konvenciójától); MCGED → a `lexikonok_nyers/MCGED.lexicon` `G####` Strong-kulcsa (a `gkG5####` GK-kulcs nem használható, l. `lexikonok_nyers/README.md`); TBESH/TBESG → a fájl első oszlopa; SDBH/SDGNT → `entry_id` (`MainId`), a `jelentes_szam` pedig a `lexid`. |
 | `jelentes_szam` | union (l. 2.2.2) | ✔ | |
 | `szoveg_en` | szabad szöveg | ✔ | **Rövid kivonat, nem teljes szócikk** — a forrásfájl sorának szó szerinti részlete; a generált lexikon innen idéz. |
 | `forditas_hu` | szabad szöveg | | A jelentés hű magyar fordítása — jelentésenként egyszer. Csak azt mondja, amit a szótár: a rövidítések feloldva (bizonytalan feloldásnál változatlanul hagyva), a bibliai helyek Károli-rövidítéssel; a forrás héber/görög idézetei változatlanok; betoldás, kiemelés és formázás nincs, számozás csak ha a forrásban is van. Minden értelmezés a lexikon-oldal kézi szakaszaiba kerül. Az igehelyi alkalmazás az `elofordulasok.jelentes_hu` mezőben áll, nem itt. Ugyanez a szabály vonatkozik a lexikon-oldalak kézi szakaszaira: minden idegen nyelvű szótári idézet után hű magyar fordítás áll (`**🇭🇺 Magyarul (<szótár>):**` címkével). |

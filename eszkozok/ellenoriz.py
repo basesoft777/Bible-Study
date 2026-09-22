@@ -390,6 +390,87 @@ def szabaly8c_kezi_lefedettseg(motivumok, elofordulasok, auditok, datasetek, csa
 
 
 # ---------------------------------------------------------------------------
+# 9-10. LEXV2_2 tablak (V2.2/V2.3 dontesnaplo v2/v3)
+# ---------------------------------------------------------------------------
+
+
+def szabaly9_teljes_jelentes_szam(elofordulasok, lexikon_hivatkozasok):
+    """SEMA.md 2.2.2 'teljes' ertek 2-3. korlata: (2) az elofordulasok.tsv
+    jelentes_szam mezoje sosem 'teljes'; (3) egy szotar+strong+entry_id
+    harmashoz legfeljebb egy 'teljes' soru lexikon_hivatkozasok sor tartozhat."""
+    hibas = []
+    for sor in elofordulasok:
+        if (sor.get('jelentes_szam') or '').strip() == 'teljes':
+            hibas.append("elofordulasok: %s / %s jelentes_szam='teljes'" % (sor['id'], sor['igehely']))
+
+    szamlalo = {}
+    for sor in lexikon_hivatkozasok:
+        if (sor.get('jelentes_szam') or '').strip() != 'teljes':
+            continue
+        kulcs = (sor.get('szotar'), sor.get('strong'), sor.get('entry_id'))
+        szamlalo[kulcs] = szamlalo.get(kulcs, 0) + 1
+    for kulcs, n in szamlalo.items():
+        if n > 1:
+            hibas.append("lexikon_hivatkozasok: %s duplikalt 'teljes' sor (%d db)" % (kulcs, n))
+
+    if hibas:
+        return Sor("9. 'teljes' jelentes_szam korlatok (SEMA 2.2.2)", 'SÉRTÉS', len(hibas), hibas)
+    return Sor("9. 'teljes' jelentes_szam korlatok (SEMA 2.2.2)", 'RENDBEN')
+
+
+def szabaly10_v22_tablak(adat_dir):
+    """LEXV2_2_BRIEF.md V2.2: forditas_ubs.tsv es lxx_dontesek.tsv
+    minimum-ellenorzese -- fejlec-oszlopok a SEMA szerint; forditas_ubs.tsv:
+    20 sor, strong+entry_kod egyedi, minden lexid letezik a
+    UBS_DNTG_jelentesek.tsv-ben, definicio_hu nem ures; lxx_dontesek.tsv:
+    fejlec egyezik, soronkent igehely + gorog_strong kitoltve (ha van sor)."""
+    hibas = []
+
+    ubs_fejlec, ubs_sorok = G.tsv_beolvas(os.path.join(adat_dir, 'forditas_ubs.tsv'))
+    vart_ubs_fejlec = ['strong', 'entry_kod', 'lexid', 'definicio_hu', 'glosszak_hu',
+                        'megjegyzes', 'proveniencia']
+    if ubs_fejlec != vart_ubs_fejlec:
+        hibas.append('forditas_ubs.tsv fejlec eltero: %r' % (ubs_fejlec,))
+    if len(ubs_sorok) != 20:
+        hibas.append('forditas_ubs.tsv sorszam=%d, vart=20' % len(ubs_sorok))
+    kulcsok = set()
+    for sor in ubs_sorok:
+        kulcs = (sor.get('strong'), sor.get('entry_kod'))
+        if kulcs in kulcsok:
+            hibas.append('forditas_ubs.tsv duplikalt kulcs: %s' % (kulcs,))
+        kulcsok.add(kulcs)
+        if not (sor.get('definicio_hu') or '').strip():
+            hibas.append('forditas_ubs.tsv %s: ures definicio_hu' % (kulcs,))
+
+    konkordancia_dir = os.path.join(os.path.dirname(adat_dir), 'konkordancia')
+    ubs_dntg_path = os.path.join(konkordancia_dir, 'UBS_DNTG_jelentesek.tsv')
+    ismert_lexidk = set()
+    try:
+        _, ubs_dntg_sorok = G.tsv_beolvas(ubs_dntg_path)
+        ismert_lexidk = {sor.get('lexid') for sor in ubs_dntg_sorok}
+    except Exception as exc:
+        hibas.append('UBS_DNTG_jelentesek.tsv nem olvashato: %s' % exc)
+    for sor in ubs_sorok:
+        lexid = (sor.get('lexid') or '').strip()
+        if lexid and ismert_lexidk and lexid not in ismert_lexidk:
+            hibas.append('forditas_ubs.tsv %s/%s: lexid=%s nincs a UBS_DNTG_jelentesek.tsv-ben'
+                          % (sor.get('strong'), sor.get('entry_kod'), lexid))
+
+    lxx_fejlec, lxx_sorok = G.tsv_beolvas(os.path.join(adat_dir, 'lxx_dontesek.tsv'))
+    vart_lxx_fejlec = ['id', 'igehely', 'lxx_igehely', 'heber_strong', 'gorog_lemma',
+                        'gorog_strong', 'lxx_pozicio', 'megjegyzes', 'proveniencia']
+    if lxx_fejlec != vart_lxx_fejlec:
+        hibas.append('lxx_dontesek.tsv fejlec eltero: %r' % (lxx_fejlec,))
+    for sor in lxx_sorok:
+        if not (sor.get('igehely') or '').strip() or not (sor.get('gorog_strong') or '').strip():
+            hibas.append('lxx_dontesek.tsv %s: igehely vagy gorog_strong ures' % sor.get('id'))
+
+    if hibas:
+        return Sor('10. LEXV2_2 tablak (forditas_ubs, lxx_dontesek)', 'SÉRTÉS', len(hibas), hibas)
+    return Sor('10. LEXV2_2 tablak (forditas_ubs, lxx_dontesek)', 'RENDBEN')
+
+
+# ---------------------------------------------------------------------------
 # Q1 / Q7 -- --study
 # ---------------------------------------------------------------------------
 
@@ -495,6 +576,7 @@ def main():
         _, kapcsolatok = G.tsv_beolvas(os.path.join(args.adat, 'kapcsolatok.tsv'))
         _, datasetek = G.tsv_beolvas(os.path.join(args.adat, 'datasetek.tsv'))
         _, auditok = G.tsv_beolvas(os.path.join(args.adat, 'auditok.tsv'))
+        _, lexikon_hivatkozasok = G.tsv_beolvas(os.path.join(args.adat, 'lexikon_hivatkozasok.tsv'))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
@@ -518,6 +600,8 @@ def main():
         tabla_sorok.append(sor8)
         tabla_sorok.append(szabaly8b_feltetel_datasetek(datasetek))
         tabla_sorok.append(szabaly8c_kezi_lefedettseg(motivumok, elofordulasok, auditok, datasetek))
+        tabla_sorok.append(szabaly9_teljes_jelentes_szam(elofordulasok, lexikon_hivatkozasok))
+        tabla_sorok.append(szabaly10_v22_tablak(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
