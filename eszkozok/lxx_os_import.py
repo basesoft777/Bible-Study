@@ -284,7 +284,7 @@ def resolve_karoli(karoli_book, book_key, fejezet, vers, mt_refs, method, kezi_f
     if kezi_fn:
         cel = kezi_fn(fejezet, vers)
         if cel is not None:
-            return f"{karoli_book} {cel[0]}:{cel[1]}", ""
+            return f"{karoli_book} {cel[0]}:{cel[1]}", "kezi_eltolas_tabla"
 
     if method == "unpaired" or not mt_refs:
         return "", "nincs_mt_parositas"
@@ -340,7 +340,7 @@ def process_book(slug, morph_dir, verse_pairs_idx, greek_word_list, proveniencia
     rows = []
     stats = {
         "karoli_ok": 0, "zsolt_felirat_eltolas": 0, "szamozas_elteres": 0,
-        "nincs_mt_parositas": 0, "nincs_karoli_konyv": 0,
+        "nincs_mt_parositas": 0, "nincs_karoli_konyv": 0, "kezi_eltolas_tabla": 0,
     }
     hiany_fejezetek = set()
     chapter_mismatch_warns = []
@@ -500,7 +500,7 @@ def main():
 
         osszes_stat = {
             "karoli_ok": 0, "zsolt_felirat_eltolas": 0, "szamozas_elteres": 0,
-            "nincs_mt_parositas": 0, "nincs_karoli_konyv": 0,
+            "nincs_mt_parositas": 0, "nincs_karoli_konyv": 0, "kezi_eltolas_tabla": 0,
         }
         osszes_hiany = {}
         osszes_chapter_warns = []
