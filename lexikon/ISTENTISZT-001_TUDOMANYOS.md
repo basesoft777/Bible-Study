@@ -324,7 +324,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 > to call, name, surname : with accusative (cl.), Mat.10:25; pass., Act.1:23 4:36 10:5, 18 10:22 11:13 12:12, 25 , Heb.11:16 ; τ. ὄνομα, before ἐπί (denoting possession, as Heb. עַל. . שֻׁם קָרָא), Act.15:17 (LXX), Jas.2:7 (see. CB on Amo.9:12 ).
 
-**🇭🇺** hívni, nevezni, melléknevet adni: tárgyesettel (klasszikus), Mt 10:25; szenvedő alakban: ApCsel 1:23; 4:36; 10:5, 18, 22; 11:13; 12:12, 25; Zsid 11:16; τ. ὄνομα, ἐπί előtt (birtoklást jelölve, mint a héb. עַל. . שֻׁם קָרָא): ApCsel 15:17 (LXX), Jak 2:7 (l. CB, Ámós 9:12-höz).
+**🇭🇺** hívni, nevezni, melléknevet adni: tárgyesettel (klasszikus), Mt 10:25; szenvedő alakban: ApCsel 1:23; 4:36; 10:5, 18, 22; 11:13; 12:12, 25; Zsid 11:16; τ. ὄνομα (t. onoma), ἐπί (epi) előtt (birtoklást jelölve, mint a héb. עַל. . שֻׁם קָרָא (kárá sum … al)): ApCsel 15:17 (LXX), Jak 2:7 (l. CB, Ámós 9:12-höz).
 
 *Forrás: konkordancia/TBESG.txt*
 
@@ -332,7 +332,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 > Mid. (so also act.; cl., LXX), to call upon, invoke, appeal to (θεόν, θεούς, Hdt., Xen., al.; cf. Deiss., LAE , 426): Καίσαρα (Σεβαστόν, Act.25:25 ), Act.25:11-12, 21 26:32 28:19 ; sc. τ. Κύριον Ἰησοῦν, Act.7:59; μάρτυρα (cl.) τ. θεόν, 2Co.1:23; πατέρα, 1Pe.1:17; τ. κύριον, Rom.10:12 , 2Ti.2:22 ; τ. ὄνομα κυρίου (μου, σου; like Heb. יְהוָֹה שֻׁם קָרָא), Act.2:21 (LXX) Act.9:14, 21 22:16 , Rom.10:13-14 " (LXX) 1Co.1:2 (Cremer, 335, 742).† (AS)
 
-**🇭🇺** Közép alakban (így cselekvő alakban is; klasszikus, LXX): segítségül hívni, invokálni, folyamodni valakihez (θεόν, θεούς: Hérodotosz, Xenophón és mások; vö. Deissmann, LAE, 426): Καίσαρα (Σεβαστόν, ApCsel 25:25), ApCsel 25:11-12, 21; 26:32; 28:19; ti. τ. Κύριον Ἰησοῦν, ApCsel 7:59; μάρτυρα (klasszikus) τ. θεόν, 2Kor 1:23; πατέρα, 1Pét 1:17; τ. κύριον, Róm 10:12; 2Tim 2:22; τ. ὄνομα κυρίου (μου, σου; mint a héb. יְהוָֹה שֻׁם קָרָא), ApCsel 2:21 (LXX); 9:14, 21; 22:16; Róm 10:13-14 (LXX); 1Kor 1:2 (Cremer, 335, 742). † (Abbott-Smith; † = minden újszövetségi előfordulás felsorolva)
+**🇭🇺** Közép alakban (így cselekvő alakban is; klasszikus, LXX): segítségül hívni, invokálni, folyamodni valakihez (θεόν (theon), θεούς (theúsz): Hérodotosz, Xenophón és mások; vö. Deissmann, LAE, 426): Καίσαρα (Kaiszara) (Σεβαστόν (Szebaszton), ApCsel 25:25), ApCsel 25:11-12, 21; 26:32; 28:19; ti. τ. Κύριον Ἰησοῦν (t. Kürion Iészún), ApCsel 7:59; μάρτυρα (martüra) (klasszikus) τ. θεόν (t. theon), 2Kor 1:23; πατέρα (patera), 1Pét 1:17; τ. κύριον (t. kürion), Róm 10:12; 2Tim 2:22; τ. ὄνομα κυρίου (t. onoma küriú) (μου (mú), σου (szú); mint a héb. יְהוָֹה שֻׁם קָרָא (kárá sum JHVH)), ApCsel 2:21 (LXX); 9:14, 21; 22:16; Róm 10:13-14 (LXX); 1Kor 1:2 (Cremer, 335, 742). † (Abbott-Smith; † = minden újszövetségi előfordulás felsorolva)
 
 *Forrás: konkordancia/TBESG.txt*
 
@@ -354,7 +354,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 > c. ׳ק י ׳בְּשֵׁם call with name of ׳י (i.e. use it in invocation): Gen 4:26; 12:8; 2Kin 5:11; Jer 10:25 = Psa 79:6 16t. (1Kin 18:24 of specific appeal to ׳י to display his power), + Isa 65:1 (see Pu`al); with name of Baal 1Kin 18:24-25, 26.
 
-**🇭🇺** c. ׳ק י ׳בְּשֵׁם hívni ׳י nevével (azaz használni azt a segítségül hívásban): 1Móz 4:26; 12:8; 2Kir 5:11; Jer 10:25 = Zsolt 79:6, összesen 16-szor (1Kir 18:24: annak konkrét kérésére, hogy ׳י mutassa meg hatalmát), továbbá Ézs 65:1 (l. Pual); Baál nevével: 1Kir 18:24-25, 26.
+**🇭🇺** c. ׳ק י ׳בְּשֵׁם (k. besém J., azaz kárá besém JHVH) hívni ׳י (J., azaz JHVH) nevével (azaz használni azt a segítségül hívásban): 1Móz 4:26; 12:8; 2Kir 5:11; Jer 10:25 = Zsolt 79:6, összesen 16-szor (1Kir 18:24: annak konkrét kérésére, hogy ׳י (J., azaz JHVH) mutassa meg hatalmát), továbbá Ézs 65:1 (l. Pual); Baál nevével: 1Kir 18:24-25, 26.
 
 *Forrás: konkordancia/BDB_teljes_unabridged.tsv*
 
@@ -362,7 +362,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 > 3 proclaim: a. with accusative of thing procl. Amos 4:5; Gen 41:43; Deut 15:2; Jer 31:6; Lev 25:10 +; ׳ק צוֺם proclaim a fast 1Kin 21:9, 12; Jer 36:9 +, ׳ק י ׳מוֺעֲדֵי Lev 23:2, 4; ׳ק followed by oratio recta [direct speech] Exod 34:6, etc.; followed by ל person Jer 34:8, 15, 17 (twice in verse); Isa 61:1, עַל person (against, concerning) 1Kin 13:4, 32; Jer 49:29; Lam 1:15; proclaim peace to (ל person) Judg 21:13; compare ׳ק לְשָׁלוֺם אֵלֶיהָ Deut 20:10; ׳ק with accusative of congnate meaning with verb מִקְרָא Isa 1:13, הַקְּרִיאָה Jonah 3:2 (+ אֶל).
 
-**🇭🇺** 3 kihirdetni: a. a kihirdetett dolog tárgyesetével: Ámós 4:5; 1Móz 41:43; 5Móz 15:2; Jer 31:6; 3Móz 25:10 és máshol; ׳ק צוֺם böjtöt hirdetni: 1Kir 21:9, 12; Jer 36:9 és máshol; ׳ק י ׳מוֺעֲדֵי: 3Móz 23:2, 4; ׳ק után egyenes beszéd: 2Móz 34:6 stb.; ל + személy: Jer 34:8, 15, 17 (a versben kétszer); Ézs 61:1; עַל + személy (ellen, felől): 1Kir 13:4, 32; Jer 49:29; JSir 1:15; békességet hirdetni valakinek (ל + személy): Bír 21:13; vö. ׳ק לְשָׁלוֺם אֵלֶיהָ 5Móz 20:10; ׳ק az igével rokon jelentésű tárgyesettel: מִקְרָא Ézs 1:13, הַקְּרִיאָה Jón 3:2 (+ אֶל).
+**🇭🇺** 3 kihirdetni: a. a kihirdetett dolog tárgyesetével: Ámós 4:5; 1Móz 41:43; 5Móz 15:2; Jer 31:6; 3Móz 25:10 és máshol; ׳ק צוֺם (kárá com) böjtöt hirdetni: 1Kir 21:9, 12; Jer 36:9 és máshol; ׳ק י ׳מוֺעֲדֵי (kárá móadé JHVH): 3Móz 23:2, 4; ׳ק (k., azaz kárá) után egyenes beszéd: 2Móz 34:6 stb.; ל (le) + személy: Jer 34:8, 15, 17 (a versben kétszer); Ézs 61:1; עַל (al) + személy (ellen, felől): 1Kir 13:4, 32; Jer 49:29; JSir 1:15; békességet hirdetni valakinek (ל (le) + személy): Bír 21:13; vö. ׳ק לְשָׁלוֺם אֵלֶיהָ (kárá lesálóm éléhá) 5Móz 20:10; ׳ק az igével rokon jelentésű tárgyesettel: מִקְרָא (mikrá) Ézs 1:13, הַקְּרִיאָה (hakkeriá) Jón 3:2 (+ אֶל (el)).
 
 *Forrás: konkordancia/BDB_teljes_unabridged.tsv*
 
