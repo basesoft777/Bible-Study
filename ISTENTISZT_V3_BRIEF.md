@@ -94,3 +94,6 @@ A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá bes�
 | Verzió | Dátum | Döntés |
 |---|---|---|
 | v1 | 2026.09.22 | Az ISTENTISZT-001 egy menetben v3-ra. Róm 10:12 felvéve (TSK ×2, TAGNT, Thayer 5. jelentés; a 2Tim 2:22 precedense). A Thayer G1941 fordítása, a 10+1 igehely minősítése, a kivonat és az UBS-kérdés szövege chatben készült. Rokon szavak generált blokkja, TSK+minősítés egysoros tábla, kapcsolat-indoklás adatként, bibliográfia: LEXV2_3. |
+| v2 | 2026.09.22 | P1: I2 kiejtéssel — a Thayer G1941 `forditas_hu` mezője az `ISTENTISZT_V3_POTLAS.md` szerinti, kiejtéssel ellátott szövegre cserélve. |
+| v3 | 2026.09.22 | P2–P3: kiejtés a kézi szövegben — 54+46 csere a 2/b „🇭🇺 Magyarul" bekezdésekben és a többi kézi szövegben, a `65d581b` eredeti tartalomhoz illesztett célsorokkal (a 980. sor esetén git diff-térképpel). |
+| v4 | 2026.09.22 | P4: UBS-cellák jelölése — `eszkozok/lexikon_general.py` `ubs_jelentes_cella()`: ÓSZ-sor, G-token nélküli sor és hozzárendelés nélküli Strong-token mind jelölve, összetett token tokenenként; mind a 8 lexikon-oldalon élesítve. |
