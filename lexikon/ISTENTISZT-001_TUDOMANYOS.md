@@ -486,29 +486,29 @@ kezdődnek — nem új rejtett találat, de nem is hamis nyom.】
 
 | Ige | Frekvencia (teljes ÚSZ) | Mounce tömör gloss | Magyarul |
 |---|---|---|---|
-| ἐπικαλέω (G1941) | **30×** | "to call on; to attach or connect a name" | segítségül hívni; nevet rátenni vagy hozzákapcsolni |
-| καλέω (G2564) | **148×** | "to call, call to... to invite... to call to a participation in the privileges of the Gospel" | hívni, odahívni… meghívni… meghívni az evangélium kiváltságaiban való részesedésre |
-| βοάω (G994) | **12×** | "to cry out; to exclaim, proclaim... πρός τινα, to invoke, implore" | kiáltani; felkiáltani, kihirdetni… πρός τινα: segítségül hívni, könyörögni |
+| ἐπικαλέω (epikaleó, G1941) | **30×** | "to call on; to attach or connect a name" | segítségül hívni; nevet rátenni vagy hozzákapcsolni |
+| καλέω (kaleó, G2564) | **148×** | "to call, call to... to invite... to call to a participation in the privileges of the Gospel" | hívni, odahívni… meghívni… meghívni az evangélium kiváltságaiban való részesedésre |
+| βοάω (boaó, G994) | **12×** | "to cry out; to exclaim, proclaim... πρός τινα, to invoke, implore" | kiáltani; felkiáltani, kihirdetni… πρός τινα (prosz tina): segítségül hívni, könyörögni |
 
 **SECE (kibővített Strong's) — Louw-Nida szemantikai domain + teljes héber-megfelelő lista:**
 
 | Ige | Louw-Nida domain-számok | Héber megfelelők (a teljes LXX-en át) |
 |---|---|---|
-| ἐπικαλέω (G1941) | 11.28, 33.131, 33.176, 56.15 | זָכַר, מָצָא, נָקַב, עָשָׂה, **קָרָא**, שׂוּם, שָׁכַן, שֻׁם |
-| καλέω (G2564) | 33.129, 33.131, 33.307, 33.312, 33.315 | אָמַר, בֹּוא, דָבַר, הָיָה, זָכַר, זָעַק, לָקַח, עֲלַל, **קָרָא**, רוּם, שֵׁם |
-| βοάω (G994) | 33.81 | אָמַר, הָגָה, הָמָה, זָעַק, זַעַק, כָּנָה, נָהַם, נָהַק, נָשָׂא, פָּצַח, צָהַל, צָוַח, צָעַק, צָרַח, **קָרָא**, רוּעַ, רָעַם, שָׁאַג, שָׁבַע, שָׁעָה |
+| ἐπικαλέω (epikaleó, G1941) | 11.28, 33.131, 33.176, 56.15 | זָכַר (zákar), מָצָא (mácá), נָקַב (nákav), עָשָׂה (ászá), **קָרָא** (kárá), שׂוּם (szúm), שָׁכַן (sákan), שֻׁם (sum) |
+| καλέω (kaleó, G2564) | 33.129, 33.131, 33.307, 33.312, 33.315 | אָמַר (ámar), בֹּוא (bó), דָבַר (dávar), הָיָה (hájá), זָכַר (zákar), זָעַק (záak), לָקַח (lákah), עֲלַל (alal), **קָרָא** (kárá), רוּם (rúm), שֵׁם (sém) |
+| βοάω (boaó, G994) | 33.81 | אָמַר (ámar), הָגָה (hágá), הָמָה (hámá), זָעַק (záak), זַעַק (zaak), כָּנָה (káná), נָהַם (náham), נָהַק (náhak), נָשָׂא (nászá), פָּצַח (pácah), צָהַל (cáhal), צָוַח (cávah), צָעַק (cáak), צָרַח (cárah), **קָרָא** (kárá), רוּעַ (rúa), רָעַם (ráam), שָׁאַג (sáag), שָׁבַע (sáva), שָׁעָה (sáá) |
 
 *(L. lent: Miért fontos ez a lelet — Kiemelt módszertani jelentőség.)*
 
-**LSJ (Liddell-Scott-Jones) — καλέω teljes klasszikus szócikke (13 750 karakter, itt csak reprezentatív részlet):**
+**LSJ (Liddell-Scott-Jones) — καλέω (kaleó) teljes klasszikus szócikke (13 750 karakter, itt csak reprezentatív részlet):**
 
 > ...**II 1. call by name, name**: ὃν Βριάρεων καλέουσι θεοί ("akit Briareósznak neveznek az istenek"), Il. 1.403; ὄνομα καλεῖν τινα — "néven nevezni valakit", Od. 8.550; κ. ὄνομα ἐπί τινι — "nevet adni valaminek", Pl. Prm. 147d; κ. τινὰ ἐπὶ τῷ ὀνόματι τοῦ πατρός — "apja nevén nevezni", **Luk 1:59**... Passzívban: ὁ καλούμενος — "az úgynevezett"... **2.** Passzívban: "neveztetni", majdnem = "lenni", különösen rokonsági/státusz-kifejezésekkel...
 
 **🇭🇺 Magyarul (LSJ):** … II 1. néven nevezni, nevezni: ὃν Βριάρεων καλέουσι θεοί (hon Briareón kaleúszi theoi) („akit Briareósznak neveznek az istenek"), Iliász 1.403; ὄνομα καλεῖν τινα (onoma kalein tina), „néven nevezni valakit", Odüsszeia 8.550; κ. ὄνομα ἐπί τινι (k. onoma epi tini), „nevet adni valaminek", Platón, Parmenidész 147d; κ. τινὰ ἐπὶ τῷ ὀνόματι τοῦ πατρός (k. tina epi tó onomati tú patrosz), „apja nevén nevezni", Lk 1:59 … Szenvedő alakban: ὁ καλούμενος (ho kalúmenosz), „az úgynevezett" … 2. Szenvedő alakban: „neveztetni", majdnem = „lenni", különösen rokonsági/státusz-kifejezésekkel …
 
-**Jelentősége:** a καλέω klasszikus göröngben (Homérosztól kezdve) elsősorban **"néven nevezni, elnevezni"** jelentésben áll — ez pontosan megegyezik azzal a jelentés-ággal, amit a 2Móz 33:19/34:5-nél azonosítottunk (BDB 3. jelentés, "proclaim/kihirdetni"; Thayer 1. jelentés, "to surname"). **Az LSJ tehát klasszikus görög irodalmi háttérrel is megerősíti**: a καλέω elsődleges, legrégebbi jelentése a "megnevezés" aktusa, nem az "invokáció" — így nyelvtörténetileg is indokolt, hogy a fordító pont ezt az igét választotta Isten *önmegnevező* aktusára, nem az ἐπικαλέομαι-t (ami maga is a καλέω-ból képzett, de már specializálódott "segítségül hívás" jelentéssel).
+**Jelentősége:** a καλέω (kaleó) klasszikus göröngben (Homérosztól kezdve) elsősorban **"néven nevezni, elnevezni"** jelentésben áll — ez pontosan megegyezik azzal a jelentés-ággal, amit a 2Móz 33:19/34:5-nél azonosítottunk (BDB 3. jelentés, "proclaim/kihirdetni"; Thayer 1. jelentés, "to surname"). **Az LSJ tehát klasszikus görög irodalmi háttérrel is megerősíti**: a καλέω (kaleó) elsődleges, legrégebbi jelentése a "megnevezés" aktusa, nem az "invokáció" — így nyelvtörténetileg is indokolt, hogy a fordító pont ezt az igét választotta Isten *önmegnevező* aktusára, nem az ἐπικαλέομαι-t (epikaleomai) (ami maga is a καλέω-ból (kaleó) képzett, de már specializálódott "segítségül hívás" jelentéssel).
 
-*(Az ἐπικαλέω LSJ-szócikke maga csak átirányít a καλέω alapigéhez — klasszikus lexikográfiai gyakorlat összetett igéknél, önálló LSJ-tartalom nincs rá.)*
+*(Az ἐπικαλέω (epikaleó) LSJ-szócikke maga csak átirányít a καλέω (kaleó) alapigéhez — klasszikus lexikográfiai gyakorlat összetett igéknél, önálló LSJ-tartalom nincs rá.)*
 
 ##### A héber oldal kiegészítő adatai (TBESH-konszolidáció + SECE)
 
@@ -520,19 +520,19 @@ kezdődnek — nem új rejtett találat, de nem is hamis nyom.】
 
 **🇭🇺 Magyarul (TBESH):** קָרָא (kárá) [héber ige] hívni 1) hívni, kiáltani, recitálni, olvasni, felkiáltani, kihirdetni 1a) (Qal) 1a1) hívni, kiáltani, hangos hangot adni 1a2) hívni valakit, kiáltani (segítségért), hívni (Isten nevével) 1a3) kihirdetni 1a4) hangosan felolvasni, olvasni (magában), olvasni 1a5) hívatni, meghívni, hívni valakit, elhívni és megbízni, kinevezni, elhívni és felruházni 1a6) hívni, nevezni, nevet adni, néven hívni 1b) (Niphal) … 1c) (Pual) hívatni, neveztetni, kihívatni, kiválasztatni
 
-**SECE H7121 — teljes görög-megfelelő lista (a teljes LXX-en át):** ἄγω, ἀναβοάω, ἀναγγέλλω, ἀναγινώσκω, ἀνακράζω, ἀνοίγω, ..., **βοάω**, ..., ἐγκαλέω, ..., **ἐπικαλέομαι** (kétszer is szerepel a listában, jelezve gyakoriságát), ..., **καλέω**, κηρύσσω, κράζω, ..., ὀνομάζω, παρακαλέω, προσκαλέομαι, ..., φωνέω. TWOT-szám: **2063**. GK-szám: **H7924**.
+**SECE H7121 — teljes görög-megfelelő lista (a teljes LXX-en át):** ἄγω (agó), ἀναβοάω (anaboaó), ἀναγγέλλω (anangelló), ἀναγινώσκω (anaginószkó), ἀνακράζω (anakradzó), ἀνοίγω (anoigó), ..., **βοάω** (boaó), ..., ἐγκαλέω (enkaleó), ..., **ἐπικαλέομαι** (epikaleomai; kétszer is szerepel a listában, jelezve gyakoriságát), ..., **καλέω** (kaleó), κηρύσσω (kérüsszó), κράζω (kradzó), ..., ὀνομάζω (onomadzó), παρακαλέω (parakaleó), προσκαλέομαι (proszkaleomai), ..., φωνέω (fóneó). TWOT-szám: **2063**. GK-szám: **H7924**.
 
-**SECE H8034 (שֵׁם) — görög megfelelők:** θρόνος, **καλέω**, καλός, καύχημα, **ὄνομα** (kétszer), Σήμ. TWOT-szám: **2405**.
+**SECE H8034 (שֵׁם, sém) — görög megfelelők:** θρόνος (thronosz), **καλέω** (kaleó), καλός (kalosz), καύχημα (kaukhéma), **ὄνομα** (onoma; kétszer), Σήμ (Szém). TWOT-szám: **2405**.
 
 【NAPLO: forrás mindháromhoz — `TBESG.txt` (Abbott-Smith-alapú,
 STEPBible-Data, CC BY 4.0), saját `grep "^G####"` lekérdezés,
 2026.09.05/06.】
 
 **Kereszt-elemzés a három ige között (a szótár SYN.-jegyzete alapján):**
-a βοáω saját szinonima-magyarázata explicit szembeállítja magát a
-καλέω-val és a κράζω-val — ez azt jelenti, hogy az Ézs 12:4 fordítója
+a βοάω (boaó) saját szinonima-magyarázata explicit szembeállítja magát a
+καλέω-val (kaleó) és a κράζω-val (kradzó) — ez azt jelenti, hogy az Ézs 12:4 fordítója
 egy **tudatos, a szótár által is dokumentált stilisztikai spektrumból**
-választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tól.
+választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tól (epikaleomai).
 
 *Források és licencek ehhez az alszakaszhoz:* BDB (Brown–Driver–Briggs) — közkincs; TBESG, TBESH (STEPBible-Data, Abbott-Smith-alapú) — CC BY 4.0; Thayer's Greek-English Lexicon — közkincs; SECE — közkincs; LSJ forrás: Liddell-Scott-Jones, Perseus Digital Library (`lexica` repó), CC BY-SA 3.0.; Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, www.teknia.com/greek-dictionary
 
@@ -546,11 +546,11 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 *(Megjegyzés: a G0994 nem a motívum saját tokenje, ezért a 2. szakasz generált része nem ad hozzá szócikket; LXX-beli szerepét a 3. szakasz mutatja: Ézs 12:4.)*
 
-**Miért fontos ez a lelet:** a Thayer megerősíti az Abbott-Smith szinonima-magyarázatát (βοάω ≠ ἐπικαλέομαι, más érzelmi regiszter), és pontosítja, hogy az Ézs 12:4-nél használt fordítói döntés (βοάω) illeszkedik a βοάω tipikus LXX-forrásaihoz (Ézs 40:3, Ézs 54:1 — mindkettő Ézsaiás-részlet, ahogy a mi versünk is!) — vagyis a fordító **stílusregiszterben és forráskönyvben is konzisztens** választást tett, nem véletlenszerű eltérést az ἐπικαλέομαι-tól.
+**Miért fontos ez a lelet:** a Thayer megerősíti az Abbott-Smith szinonima-magyarázatát (βοάω (boaó) ≠ ἐπικαλέομαι (epikaleomai), más érzelmi regiszter), és pontosítja, hogy az Ézs 12:4-nél használt fordítói döntés (βοάω, boaó) illeszkedik a βοάω (boaó) tipikus LXX-forrásaihoz (Ézs 40:3, Ézs 54:1 — mindkettő Ézsaiás-részlet, ahogy a mi versünk is!) — vagyis a fordító **stílusregiszterben és forráskönyvben is konzisztens** választást tett, nem véletlenszerű eltérést az ἐπικαλέομαι-tól (epikaleomai).
 
 #### Kiemelt módszertani jelentőség
 
-**Kiemelt módszertani jelentőség:** mindhárom ige SECE-listája tartalmazza a קָרָא-t (kiemelve) mint egyik lehetséges héber forrását — ez **független megerősítés** arra, amit a mai LXX-audit talált: a קָרָא fordítása mindhárom göröggel (ἐπικαλέομαι, καλέω, βοάω) **általánosan bevett, dokumentált gyakorlat** volt, nem a mi két "kivételes" versünkre (2Móz 33:19/34:5; Ézs 12:4) jellemző egyedi eset. A Louw-Nida domain-számok egy teljesen új, **jelentés szerinti** keresési dimenziót nyitnak meg a jövőre nézve — a jelenlegi Strong-szám-alapú módszertan csak azonos-gyökű szavakat talál meg, a Louw-Nida-alapú keresés viszont *azonos jelentésmezőbe* tartozó, eltérő gyökű szavakat is felszínre hozhatna.
+**Kiemelt módszertani jelentőség:** mindhárom ige SECE-listája tartalmazza a קָרָא-t (kárá) (kiemelve) mint egyik lehetséges héber forrását — ez **független megerősítés** arra, amit a mai LXX-audit talált: a קָרָא (kárá) fordítása mindhárom göröggel (ἐπικαλέομαι – epikaleomai, καλέω – kaleó, βοάω – boaó) **általánosan bevett, dokumentált gyakorlat** volt, nem a mi két "kivételes" versünkre (2Móz 33:19/34:5; Ézs 12:4) jellemző egyedi eset. A Louw-Nida domain-számok egy teljesen új, **jelentés szerinti** keresési dimenziót nyitnak meg a jövőre nézve — a jelenlegi Strong-szám-alapú módszertan csak azonos-gyökű szavakat talál meg, a Louw-Nida-alapú keresés viszont *azonos jelentésmezőbe* tartozó, eltérő gyökű szavakat is felszínre hozhatna.
 
 ## 3. LXX-fordítói döntések
 
@@ -755,7 +755,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 - 1Krón 16:8 ↔ Ézs 12:4 (Votes 18), 1Krón 16:8 ↔ Zsolt 105:1 (Votes 22) — **független megerősítés**
 - 1Krón 16:8 → Zsolt 105:15 (Votes 22) — ellenőrizve, tartalmilag NEM releváns (a próféták érintetlenségéről szól, ugyanabban a zsoltárban)
 - **Jóel 2:32 → Róm 10:14 (Votes 19) — ÚJ, VALÓDI TALÁLAT** (l. lent)
-- Jóel 2:32 → Róm 10:11 (Votes 19) — ellenőrizve, nincs ἐπικαλέομαι/καλέω a versben, NEM releváns
+- Jóel 2:32 → Róm 10:11 (Votes 19) — ellenőrizve, nincs ἐπικαλέομαι (epikaleomai) / καλέω (kaleó) a versben, NEM releváns
 
 **Károli-KH (szentiras.hu szerkesztői hálózat), 21 igehelyre lefuttatva:** a pilot 21 igehelyére; a kiegészítés lent.
 
@@ -764,7 +764,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 - 1Krón 16:8 → Ézs 12:4 — **független megerősítés**
 - Jer 10:25 ↔ Zsolt 79:6 (mindkét irányban) — **független megerősítés**
 - 2Móz 34:5 → 2Móz 33:19 — **független megerősítés**
-- Zsolt 116:13 → Róm 3:13, Jak 3:8; Zsolt 116:17 → 2Sám 7:9; Zep 3:9 → Zsolt 113:3, 114:2; Ézs 12:4 → Zsolt 66:1-5, 118:1, 106:1; 2Móz 33:19 → Róm 9:15 — mind ellenőrizve, egyik sem tartalmazza a H7121+H8034/ἐπικαλέομαι formulát, NEM relevánsak
+- Zsolt 116:13 → Róm 3:13, Jak 3:8; Zsolt 116:17 → 2Sám 7:9; Zep 3:9 → Zsolt 113:3, 114:2; Ézs 12:4 → Zsolt 66:1-5, 118:1, 106:1; 2Móz 33:19 → Róm 9:15 — mind ellenőrizve, egyik sem tartalmazza a H7121+H8034 / ἐπικαλέομαι (epikaleomai) formulát, NEM relevánsak
 
 **ÚJ IGEHELY: Róm 10:14** — *"Mimódon hívják tehát segítségül, a kiben
 nem hittek? mimódon hisznek pedig abban, a ki felől nem hallottak?"*
@@ -777,7 +777,7 @@ hisznek" — előfeltételezi és megerősíti a 10:13 pozitív állítását).
 
 **Kiegészítés (2026.09.22) — a 2026.09.09-i bővítés 10 igehelye és a Róm 10:12 (TSK Votes ≥ 15 és Károli-KH), azonos kritériummal: tartalmazza-e a cél-igehely a H7121+H8034 / ἐπικαλέομαι (epikaleomai) formulát:**
 
-- Zak 13:9 → 46 TSK-találat + Károli-KH 1Pét 1:6-7: a formulát a már dokumentált Jóel 2:32, ApCsel 2:21 és Róm 10:14 — **független megerősítés** — mellett egyedül a Róm 10:12 tartalmazza (Votes 18) — **ÚJ, VALÓDI TALÁLAT** (l. lent). Név nélküli segítségül hívást (H7121, שֵׁם – sém nélkül) tartalmaz a Zsolt 50:15, Zsolt 91:15, Jer 29:12, Ézs 58:9 és Ézs 65:24: rokon igei használat, nem a formula, NEM a motívum része. A többi 37 találat (tisztítás, próbatétel, szövetségi formula) a formula szempontjából NEM releváns.
+- Zak 13:9 → 46 TSK-találat + Károli-KH 1Pét 1:6-7: a formulát a már dokumentált Jóel 2:32, ApCsel 2:21 és Róm 10:14 — **független megerősítés** — mellett egyedül a Róm 10:12 tartalmazza (Votes 18) — **ÚJ, VALÓDI TALÁLAT** (l. lent). Név nélküli segítségül hívást (H7121, שֵׁם (sém) nélkül) tartalmaz a Zsolt 50:15, Zsolt 91:15, Jer 29:12, Ézs 58:9 és Ézs 65:24: rokon igei használat, nem a formula, NEM a motívum része. A többi 37 találat (tisztítás, próbatétel, szövetségi formula) a formula szempontjából NEM releváns.
 - ApCsel 2:21 → Róm 10:13 (Votes 29), Jóel 2:32 (Votes 26) — **független megerősítés**; Róm 10:12 (Votes 29) — **ÚJ, VALÓDI TALÁLAT**, azonos a fentivel; Zsolt 86:5 (H7121, név nélkül) — rokon, NEM a formula; Károli-KH 1Móz 25:21-26 — a 25:25-26-ban a H7121+H8034 névadás („nevezék nevét Ézsaunak"), nem segítségül hívás — NEM releváns.
 - Róm 10:13 → ApCsel 2:21 (Votes 106), Jóel 2:32 (Votes 103), és a Károli-KH ugyanezt a két helyet adja — **független megerősítés**.
 - 2Tim 2:22 → Károli-KH 1Kor 1:2 — **független megerősítés**; a 7 TSK-találat (1Pét 2:11; 3:11; 1Kor 6:18; Zsolt 119:9; 1Tim 6:11; Zsid 12:14; 1Tim 4:12) az erkölcsi intelmet köti össze — NEM releváns.
@@ -785,7 +785,7 @@ hisznek" — előfeltételezi és megerősíti a 10:13 pozitív állítását).
 - Róm 10:12 (saját hivatkozásai) → Jel 17:14 (Votes 15), Fil 4:19 (Votes 18), Róm 3:22 (Votes 15), Károli-KH ApCsel 10:34-35 — egyik sem tartalmazza a formulát, NEM relevánsak.
 
 **ÚJ IGEHELY: Róm 10:12** — *„Mert nincs különbség zsidó meg görög között; mert ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag mindenekhez, a kik őt segítségül hívják."*
-— **ἐπικαλουμένους** (*epikalúmenúsz*, G1941), ugyanaz az ige, mint a 10:13-nál és a 10:14-nél; a Thayer az 5. jelentésnél a 2Tim 2:22-vel együtt sorolja fel (τόν κύριον – ton kürion, név nélkül).
+— **ἐπικαλουμένους** (*epikalúmenúsz*, G1941), ugyanaz az ige, mint a 10:13-nál és a 10:14-nél; a Thayer az 5. jelentésnél a 2Tim 2:22-vel együtt sorolja fel (τόν κύριον (ton kürion), név nélkül).
 Funkció: ELŐKÉP/BETELJESEDÉS klaszter kiegészítése — a 10:13-as Jóel-idézet közvetlen bevezetése, amely a segítségül hívók körét zsidóra és görögre egyaránt kiterjeszti.
 
 **A 2Móz 33:19/34:5 → Ézs 12:4 és a 9 emberi-invokációs igehely felé
@@ -902,7 +902,7 @@ graph LR
 | 1Móz 4:26 → Sof 3:9 | Mindkettő explicit a formulát alkalmazza istentiszteleti kontextusban ("segítségül hívni az Úr nevét" / "segítségül hívják mindnyájan az Úr nevét") — közös, felismerhető hitvallási nyelvezet, nem csak tematikus rokonság. |
 | 1Móz 4:26 → 2Kir 5:11 | Naámán nem szó szerint idézi a formulát, hanem parafrazálja ("segítségül hívja az Úr, az ő Istene nevét") — a tartalmi kapcsolat egyértelmű, de nincs szó szerinti szövegi egyezés, innen a Közepes (nem Magas) bizonyosság. |
 | 1Móz 4:26 → Jóel 2:32 → ApCsel 2:21 / Róm 10:13 | Az ApCsel és a Róma-levél **szó szerint**, görögül idézi a LXX Jóel-szöveget (πᾶς ὃς ἂν ἐπικαλέσηται τὸ ὄνομα Κυρίου σωθήσεται) — ez verbális, nem csak tematikus idézés, innen a Magas bizonyosság mindkét NT-kapcsolatnál. |
-| 1Móz 4:26 → 2Móz 33:19 | A lexikai kapocs (azonos H7121+H8034 pár) önmagában Magas bizonyosságú — de a BDB eltérő jelentés alá sorolja (2.c vs. 3.) és a LXX eltérő igét használ (ἐπικαλέομαι vs. καλέω), ezért a *funkcionális* besorolás marad nyitott, a *lexikai* kapcsolat bizonyossága nem. |
+| 1Móz 4:26 → 2Móz 33:19 | A lexikai kapocs (azonos H7121+H8034 pár) önmagában Magas bizonyosságú — de a BDB eltérő jelentés alá sorolja (2.c vs. 3.) és a LXX eltérő igét használ (ἐπικαλέομαι – epikaleomai vs. καλέω – kaleó), ezért a *funkcionális* besorolás marad nyitott, a *lexikai* kapcsolat bizonyossága nem. |
 | 1Móz 12:8 → 1Móz 13:4 | A szöveg explicit jelzi: Ábrám "**visszatér** ugyanahhoz az oltárhoz" — azonos helyszín, azonos szereplő, közvetlen szövegi utalás, nem rekonstrukció. |
 | 1Móz 13:4 → 1Móz 26:25 / 1Móz 21:33 → 1Móz 26:25 | Izsák explicit Ábrahám fia, ugyanazon a földrajzi ponton (Beérseba) cselekszik — a genealógiai és helyrajzi kapcsolat mindkét irányban a szövegből, nem következtetésből ered. |
 | 1Kir 18:24 → 18:25 → 18:26 | Egyazon pericope (a Kármel-hegyi próbatétel) közvetlenül egymást követő versei — a narratív folytonosság szövegi tény, nem értelmezés. |
@@ -912,7 +912,7 @@ graph LR
 | Jer 10:25 → Zsolt 79:6 | A két vers csaknem szóról szóra megegyezik (jól ismert, kommentárokban gyakran tárgyalt szövegpárhuzam a két könyv között) — a Magas bizonyosság indokolt. **2026.09.06: Károli-KH is megerősíti, mindkét irányban.** |
 | Róm 10:13 → Róm 10:14 | Ugyanaz a görög ige (ἐπικαλέομαι), Pál közvetlenül folytatódó érvelésében ugyanabban a szakaszban — TSK-eredetű lelet, 2026.09.06. |
 | Sof 3:9 → Zak 13:9 | Mindkettő explicit, egyértelműen eszkatológiai ígéretként fogalmazza meg a segítségül hívást; Zak 13:9 kétirányú szövetségi megerősítéssel egészíti ki (Isten is válaszol) — közös próféciai regiszter, innen a Magas bizonyosság. |
-| Róm 10:14 → 1Kor 1:2 / 2Tim 2:22 / 1Pét 1:17 / ApCsel 9:14 / ApCsel 22:16 | Azonos görög ige (ἐπικαλέομαι/ἐπικαλεῖσθε), de nincs szó szerinti idézési kapcsolat a Jóel-lánchoz vagy egymáshoz — a kapcsolat lexikai (azonos G1941 szó, azonos jelentés-ág), nem verbális idézés, innen a Közepes (nem Magas) bizonyosság. |
+| Róm 10:14 → 1Kor 1:2 / 2Tim 2:22 / 1Pét 1:17 / ApCsel 9:14 / ApCsel 22:16 | Azonos görög ige (ἐπικαλέομαι – epikaleomai / ἐπικαλεῖσθε – epikaleiszthe), de nincs szó szerinti idézési kapcsolat a Jóel-lánchoz vagy egymáshoz — a kapcsolat lexikai (azonos G1941 szó, azonos jelentés-ág), nem verbális idézés, innen a Közepes (nem Magas) bizonyosság. |
 | ApCsel 9:14 → ApCsel 9:21 | Ugyanaz a leírás, ugyanabban a fejezetben, néhány verssel később szó szerint megismételve ("kik ezt a nevet hívják segítségül") — Magas bizonyosság. |
 
 *(A nyers, gépileg olvasható adat: `Motivum_kapcsolatok_PILOT.tsv`,
@@ -1003,7 +1003,7 @@ nyilvános teljesítmény vagy a rituálé pontossága, hanem a
 Izsák párhuzama azt is megmutatja, hogy ez a fajta istentisztelet
 **taníthatóvá és örökölhetővé** válik.
 
-*(Remez-szintű kiegészítés, l. 7. szakasz — Módszertani napló, A/B/C tipológia):* ugyanez a קָרָא+שֵׁם
+*(Remez-szintű kiegészítés, l. 7. szakasz — Módszertani napló, A/B/C tipológia):* ugyanez a קָרָא+שֵׁם (kárá + sém)
 szókapcsolat, felcserélt alany/tárgy-szereposztásban, Isten
 önkinyilatkoztatását (2Móz 33:19/34:5) és Isten névadó tettét egy
 emberen (Ézs 43:1, 44:5, 45:3) is kifejezheti — a motívum tehát nem
@@ -1042,7 +1042,7 @@ a vitát nem hallgatja el)*
 | 5 | TSK kereszthivatkozás | Ézs 12:4 |
 | 6 | BDB szótári idézet-ellenőrzés | Jer 10:25 / Zsolt 79:6 |
 | 7 | Kétirányú szórend-ellenőrzés, teljes ÓSZ | 0 új, megerősítve |
-| 8 | Szisztematikus LXX-egyeztetés, mind a 17 versre | 15/17 ἐπικαλέομαι; 2 kivétel; 1 adathiba; 1 kinyerési hiány |
+| 8 | Szisztematikus LXX-egyeztetés, mind a 17 versre | 15/17 ἐπικαλέομαι (epikaleomai); 2 kivétel; 1 adathiba; 1 kinyerési hiány |
 
 **Teljes indoklás:** l. a chat-munkamenet 2026.09.05-i naplója és a
 `Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md`.
@@ -1055,7 +1055,7 @@ Az elutasított jelöltek (Ézs 43:1, 44:5, 45:3
 — "Isten néven szólít egy embert") és a "be nem sorolható" eset
 (2Móz 33:19/34:5 — "Isten kihirdeti saját nevét") **együtt nézve nem
 véletlen zaj, hanem egy koherens, háromtagú mintázat** részei. A
-קָרָא + שֵׁם szerkezet ugyanazokkal a szavakkal, de szisztematikusan
+קָרָא (kárá) + שֵׁם (sém) szerkezet ugyanazokkal a szavakkal, de szisztematikusan
 variálódó alany/tárgy-szereposztással három, egymástól élesen
 elkülönülő teológiai aktust fejez ki:
 
@@ -1106,22 +1106,22 @@ A H7121+H8034 kombinált teljes-előfordulás scan
 (`tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`, 2026.09.08-i
 v2-bővítés) egy negyedik, nyelvtanilag élesen elkülönülő szerkezetet is
 felszínre hozott: **נִקְרָא...עַל** (*nikrá...al*, "[egy név] hivatik ...
-felette/rajta") — passzív nifal ige + עַל elöljárószó, szemben a fő
-motívum aktív קָרָא + בְּ szerkezetével. Ez nem invokációt fejez ki, hanem
+felette/rajta") — passzív nifal ige + עַל (al) elöljárószó, szemben a fő
+motívum aktív קָרָא (kárá) + בְּ (be) szerkezetével. Ez nem invokációt fejez ki, hanem
 **birtoklást/hovatartozást**: "X az Ő nevéről neveztetik", azaz X
 Istenhez tartozik, az Ő tulajdona. Példák: a frigyláda (2Sám 6:2, 1Krón
 13:6), a jeruzsálemi templom (Jer 7:10-11,14,30), Izráel egésze (5Móz
 28:10).
 
 **Ez a motívumhoz NEM tartozik** — Q3-fegyelem: azonos két gyök, de
-eltérő grammatikai forma (aktív vs. passzív), eltérő elöljárószó (בְּ
-vs. עַל), és eltérő jelentés (invokáció vs. birtoklás). **ÚSZ-párja:**
+eltérő grammatikai forma (aktív vs. passzív), eltérő elöljárószó (בְּ – be
+vs. עַל – al), és eltérő jelentés (invokáció vs. birtoklás). **ÚSZ-párja:**
 Zsid 11:16 (ugyanez a D-minta, passzív "neveztetni" értelemben, G1941)
 — emiatt explicit kizárva, annak ellenére, hogy Strong-szinten (G1941)
 azonos szót használ, mint a fő motívum ÚSZ-i helyei.
 
 **Kapcsolata az A/B/C tipológiához:** a D-minta ugyanannak a
-קָרָא+שֵׁם szerkezetnek egy negyedik szisztematikus variánsa — de mivel
+קָרָא+שֵׁם (kárá + sém) szerkezetnek egy negyedik szisztematikus variánsa — de mivel
 az alany itt nem személy (Isten vagy ember), hanem egy tárgy/hely/nép,
 amire a név *rájuk mondatik*, ez nem simán illeszkedik az A/B/C sorba
 (ahol mindhárom esetben egy invokáló/megnevező cselekvő és egy
