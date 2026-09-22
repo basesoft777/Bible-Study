@@ -143,6 +143,17 @@ Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py
   Strong→lemma joinjával a Genezis újraépítése, és a motívum-tokenek
   találatainak összevetése a mostani `LXX_kivonat_Genezis.tsv`-vel.
 
+  **Állapot (LEXV2_1, 2026.09.22):** az Open Scriptorium-kivonat elkészült
+  (`konkordancia/LXX_OS/`), összevetés: `naplok/LEXV2_lxx_osszevetes.tsv`; a
+  generátor átállítása a lexikon-oldal v2 (2. menet) része. Az N15 akkor
+  zárul, ha a régi kivonat kikerül a generált rétegből. **Pontosítás a fenti
+  tervhez képest:** a bulk SQLite végül nem tartalmazott lemma-táblát
+  (`words.strongs_number` üres a teljes rahlfs-lxx műre) — a tényleges forrás
+  az lxx-morph szavankénti `lemma` mezője + a GreekWordList (Strong), a
+  Károli-igehely pedig a meglévő `LXX_versificacios_terkep.tsv` +
+  `KEZI_ELTOLASOK` újrafelhasználásával, nem a `verse_pairs.jsonl`
+  KJV-számozásával (l. `LEXV2_1_BRIEF.md` döntésnapló v3).
+
 - **N16 — Az ISTENTISZT-001 hiányzó ÚSZ-i idézőhelyei. LEZÁRVA (N16, 2026.09.21).** *(ÚJ, LEX.2
   zárójelentése, 2026.09.21)* A Jóel 2:32 szó szerinti ÚSZ-i idézetei
   — ApCsel 2:21 és Róm 10:13 — nincsenek az `elofordulasok.tsv`
