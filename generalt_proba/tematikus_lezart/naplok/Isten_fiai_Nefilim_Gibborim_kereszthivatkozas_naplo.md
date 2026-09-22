@@ -1,6 +1,6 @@
-<!-- GENERÁLT: general.py --cel naplok --id MENNY-001 | forrás: adat/jeloltek.tsv | ts=2026-09-15 -->
+<!-- GENERÁLT: general.py --cel naplok --id MENNY-001 | forrás: adat/jeloltek.tsv | ts=2026-09-22 -->
 
-<!-- GENERÁLT-KEZDET: general.py --cel naplok --id MENNY-001 | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv | ts=2026-09-15 -->
+<!-- GENERÁLT-KEZDET: general.py --cel naplok --id MENNY-001 | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv | ts=2026-09-22 -->
 
 *Ez a blokk a `jeloltek.tsv` 11 sorát fedi a `[ID: MENNY-001]` motívumhoz; a vizsgált kulcsszavak Strong-listája és a named-teacher gap-jelzés nem generálható, a forrásrétegben él (G2).*
 

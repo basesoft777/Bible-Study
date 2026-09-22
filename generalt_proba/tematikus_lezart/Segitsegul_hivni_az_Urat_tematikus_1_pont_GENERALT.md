@@ -1,8 +1,8 @@
-<!-- GENERÁLT: general.py --cel study --id ISTENTISZT-001 | forrás: adat/elofordulasok.tsv | ts=2026-09-15 -->
+<!-- GENERÁLT: general.py --cel study --id ISTENTISZT-001 | forrás: adat/elofordulasok.tsv | ts=2026-09-22 -->
 
-<!-- GENERÁLT-KEZDET: general.py --cel study --id ISTENTISZT-001 | forrás: adat/elofordulasok.tsv | ts=2026-09-15 -->
+<!-- GENERÁLT-KEZDET: general.py --cel study --id ISTENTISZT-001 | forrás: adat/elofordulasok.tsv | ts=2026-09-22 -->
 
-*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 29 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben (K13); a hiányzó BDB-mezők helyén "—" áll.*
+*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 32 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben (K13); a hiányzó BDB-mezők helyén "—" áll.*
 
 | Igehely | Kapcsolódás | PaRDeS-szint, ahol felmerült | Strong-szám(ok) | BDB-entry-id | Sense-szám | Jelentés-szöveg (EN + HU) |
 |---|---|---|---|---|---|---|
@@ -28,9 +28,12 @@
 | Jóel 2:32 | Az ószövetségi megfogalmazás csúcspontja: "mindaz, aki segítségül hívja az Úr nevét, megmenekül" — ezt Péter (ApCsel 2:21) és Pál (Róm 10:13) is szó szerint idézi. Károli-számozás: Jóel 3:5. | Remez | H7121+H8034 | H7121 | 2.c | magyarul: "invokálni, segítségül hívni" |
 | Sof 3:9 | Eszkatológiai ígéret — a népek megtisztított ajka egy akarattal hívja segítségül az Urat. | Remez | H7121+H8034 | H7121 | 2.c (rokon) | — |
 | Zak 13:9 | Sof 3:9 párja: a megtisztított maradék segítségül hívja Isten nevét, és Isten válaszol — kétirányú szövetségi megerősítés. | Remez | H7121+H8034 | H7121 | 2.c | — |
+| ApCsel 2:21 | Péter pünkösdi beszéde szó szerint idézi a LXX Jóel 2:32-t: "mindaz, a ki az Úrnak nevét segítségül hívja, megtartatik." | Remez | G1941 | — | 2 | magyarul: "segítségül hívni, invokálni" |
 | ApCsel 9:14 | "…mindazokat…, kik a te nevedet segítségül hívják" — Saul üldözési célpontjainak leírása, a korai keresztények azonosító megnevezése. | Remez | G1941 | — | — | — |
 | ApCsel 9:21 | "…a kik ezt a nevet hívják segítségül" — az ApCsel 9:14-es leírás közvetlen megismétlése ugyanabban a fejezetben. | Remez | G1941 | — | — | — |
 | ApCsel 22:16 | "…segítségül híván az Úrnak nevét" — Pál saját megtérés-elbeszélésében, a keresztséggel összekapcsolva. | Remez | G1941 | — | — | — |
+| Róm 10:12 | "…ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag mindenekhez, a kik őt segítségül hívják" — a 10:13-as Jóel-idézet közvetlen bevezetése: a segítségül hívók körét zsidóra és görögre egyaránt kiterjeszti. | Remez | G1941 | — | 2 | magyarul: "segítségül hívni, invokálni" |
+| Róm 10:13 | Pál szó szerint idézi a LXX Jóel 2:32-t: "minden, a ki segítségül hívja az Úr nevét, megtartatik." — erre épül a 10:14 kérdéssora. | Remez | G1941 | — | 2 | magyarul: "segítségül hívni, invokálni" |
 | Róm 10:14 | Pál közvetlenül folytatja az érvelést: "Mimódon hívják segítségül, a kiben nem hittek?" — ugyanaz a görög ige, mint 10:13-nál. | Remez | G1941 | — | — | — |
 | 1Kor 1:2 | "…mindazokkal egybe, a kik a mi Urunk Jézus Krisztus nevét segítségül hívják bármely helyen" — a formula első explicit alkalmazása Krisztusra, a gyülekezet önmeghatározása. | Remez | G1941 | — | — | — |
 | 2Tim 2:22 | "…azokkal egyetembe, a kik segítségül hívják az Urat tiszta szívből" — a segítségül hívás mint közösségválasztási kritérium. | Remez | G1941 | — | — | — |

@@ -59,7 +59,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditas_ubs.tsv | licenc: projekt-adat, közkincs, CC BY-SA 4.0 | ts=2026-09-22 -->
 
-*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 31 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3).*
+*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 32 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3).*
 
 | Igehely | Kulcsszó | Funkció | PaRDeS-szint | Strong | Szótári jelentés | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
@@ -89,11 +89,12 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 | [ApCsel 9:14](#ige-apcsel-9-14)[^24] | segítségül hívják — ἐπικαλουμένους (epikaloumenous) | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | Remez | G1941 | — | 11.28 — (idióma, szó szerint: valakinek a nevét valakire hívják) elismertnek lenni úgy, mint aki ahhoz tartozik, akinek a nevét rá hívták | magas · tartalom-alapú |
 | [ApCsel 9:21](#ige-apcsel-9-21)[^25] | hívják segítségül — ἐπικαλουμένους (epikaloumenous) | 🔁 ismétlődés — az ApCsel 9:14-es leírás közvetlen megismétlése | Remez | G1941 | — | 33.131 — valakiről szólva megjelölést (címet, jelzőt) alkalmazni | magas · tartalom-alapú |
 | [ApCsel 22:16](#ige-apcsel-22-16)[^26] | segítségül híván — ἐπικαλεσάμενος (epikalesamenos) | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | Remez | G1941 | — | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
-| [Róm 10:13](#ige-róm-10-13)[^27] | segítségül hívja az Úr nevét — ἐπικαλέσηται (epikalesētai) | 🎯 előkép/beteljesedés (idézet) — az ÚSZ szó szerint idézi a Jóel 2:32-t | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
-| [Róm 10:14](#ige-róm-10-14)[^28] | hívják segítségül — ἐπικαλέσωνται (epikalesōntai) | 🎯 előkép/beteljesedés (folytatás) — Pál közvetlenül továbbviszi az érvelést ugyanabban a szakaszban | Remez | G1941 | — | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
-| [1Kor 1:2](#ige-1kor-1-2)[^29] | segítségül hívják — ἐπικαλουμένοις (epikaloumenois) | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | Remez | G1941 | — | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
-| [2Tim 2:22](#ige-2tim-2-22)[^30] | segítségül hívják — ἐπικαλουμένων (epikaloumenōn) | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | Remez | G1941 | — | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
-| [1Pét 1:17](#ige-1pét-1-17)[^31] | hívjátok — ἐπικαλεῖσθε (epikaleisthe) | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | Remez | G1941 | — | 33.131 — valakiről szólva megjelölést (címet, jelzőt) alkalmazni *(jelölt, nem egyértelmű)*; 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal *(jelölt, nem egyértelmű)* | magas · tartalom-alapú |
+| [Róm 10:12](#ige-róm-10-12)[^27] | segítségül hívják — ἐπικαλουμένους (epikaloumenous) | 🎯 előkép/beteljesedés (bevezetés) — a 10:13 idézetét előkészítő egyetemes kiterjesztés | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
+| [Róm 10:13](#ige-róm-10-13)[^28] | segítségül hívja az Úr nevét — ἐπικαλέσηται (epikalesētai) | 🎯 előkép/beteljesedés (idézet) — az ÚSZ szó szerint idézi a Jóel 2:32-t | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
+| [Róm 10:14](#ige-róm-10-14)[^29] | hívják segítségül — ἐπικαλέσωνται (epikalesōntai) | 🎯 előkép/beteljesedés (folytatás) — Pál közvetlenül továbbviszi az érvelést ugyanabban a szakaszban | Remez | G1941 | — | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
+| [1Kor 1:2](#ige-1kor-1-2)[^30] | segítségül hívják — ἐπικαλουμένοις (epikaloumenois) | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | Remez | G1941 | — | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
+| [2Tim 2:22](#ige-2tim-2-22)[^31] | segítségül hívják — ἐπικαλουμένων (epikaloumenōn) | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | Remez | G1941 | — | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
+| [1Pét 1:17](#ige-1pét-1-17)[^32] | hívjátok — ἐπικαλεῖσθε (epikaleisthe) | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | Remez | G1941 | — | 33.131 — valakiről szólva megjelölést (címet, jelzőt) alkalmazni *(jelölt, nem egyértelmű)*; 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal *(jelölt, nem egyértelmű)* | magas · tartalom-alapú |
 
 [^1]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs
 [^2]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs
@@ -121,11 +122,12 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 [^24]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-08 | igazolas: nincs
 [^25]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-08 | igazolas: nincs
 [^26]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-08 | igazolas: nincs
-[^27]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs
-[^28]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-06 | igazolas: nincs
-[^29]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-08 | igazolas: nincs
+[^27]: proveniencia: scope=manual | forras=TSK (Zak 13:9→Róm 10:12 Votes 18; ApCsel 2:21→Róm 10:12 Votes 29) + TAGNT G1941 + Thayer G1941 5. jelentés | ts=2026-09-22 | igazolas: nincs
+[^28]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs
+[^29]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-06 | igazolas: nincs
 [^30]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-08 | igazolas: nincs
 [^31]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-08 | igazolas: nincs
+[^32]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-08 | igazolas: nincs
 
 #### 1/a. Az igehelyek szövege
 
@@ -260,6 +262,11 @@ Péter pünkösdi beszéde szó szerint idézi a LXX Jóel 2:32-t: "mindaz, a ki
 *Most annakokáért mit késedelmezel? Kelj fel és keresztelkedjél meg és mosd le a te bűneidet, segítségül híván az Úrnak nevét.*
 "…segítségül híván az Úrnak nevét" — Pál saját megtérés-elbeszélésében, a keresztséggel összekapcsolva.
 
+<a id="ige-róm-10-12"></a>
+**Róm 10:12**
+*Mert nincs különbség zsidó meg görög között; mert ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag mindenekhez, a kik őt segítségül hívják.*
+"…ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag mindenekhez, a kik őt segítségül hívják" — a 10:13-as Jóel-idézet közvetlen bevezetése: a segítségül hívók körét zsidóra és görögre egyaránt kiterjeszti.
+
 <a id="ige-róm-10-13"></a>
 **Róm 10:13**
 *Mert minden, a ki segítségül hívja az Úr nevét, megtartatik.*
@@ -331,7 +338,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 > G1941 — ἐπικαλέω ἐπικαλῶ: 1 aorist ἐπεκαλεσα; (passive and middle, present ἐπικαλοῦμαι); perfect passive ἐπικέκλημαι; pluperfect 3 person singular ἐπεκέκλητο, and with neglect of augment (cf. Winers Grammar, § 12, 5; Buttmann, 33 (29)) ἐπικεκλητο (Act 26:32 Lachmann); 1 aorist passive ἐπεκλήθην; future middle ἐπικαλέσομαι; 1 aorist middle ἐπεκαλεσάμην; the Sept. very often for קָרָא; 1. to put a name upon, to surname: τινα (Xenophon, Plato, others), Mat 10:25 G T Tr WH (Rec. ἐκάλεσαν); passive ὁ ἐπικαλούμενος, he who is surnamed, Luk 22:3 R G L; Act 10:18; Act 11:13; Act 12:12; Act 15:22 R G; also ὅς ἐπικαλεῖται, Act 10:5, Act 10:32; ὁ ἐπικληθείς, Mat 10:3 (R G); Act 4:36; Act 12:25; equivalent to ὅς ἐπεκλήθη, Act 1:23. Passive with the force of a middle (cf. Winers Grammar, § 38, 3), to permit oneself to be surnamed: Heb 11:16; middle with τινα: 1Pe 1:17 εἰ πατέρα ἐπικαλεῖσθε τόν etc. i. e. if ye call (for yourselves) on him as father, i. e. if ye surname him your father. 2. ἐπικαλεῖται τό ὄνομα τίνος ἐπί τινα, after the Hebrew פ עַל פ... שֵׁם נִקְרָא..., "the name of one is named upon some one, i. e. he is called by his name or declared to be dedicated to him" (cf. Gesenius, Thesaurus iii., p. 1232a): Act 15:17 from Amo 9:12 (the name referred to is the people of God); Jam 2:7 (the name οἱ τοῦ Χριστοῦ). 3. τίνι with the accusative of the object; properly, to call something to one (cf. English to cry out upon (or against) one); "to charge something to one as a crime or reproach; to summon one on any charge, prosecute one for a crime; to blame one for, accuse one of" (Aristophanes pax 663; Thucydides 2, 27; 3, 36; Plato, legg. 6, 761 e.; 7, 809 e.; Dio Cass. 36, 28; 40, 41 and often in the orators (cf. under the word κατηγορέω)): εἰ τῷ οἰκοδεσπότῃ Βηλζεβουλ ἐπεκάλεσαν (i. e. accused of commerce with Beelzebul, of receiving his help, cf. Mat 9:34; Mat 12:24; Mar 3:22; Luk 11:15), πόσῳ μᾶλλον τοῖς ὀικιακοις αὐτοῦ, Mat 10:25 L WH marginal reading after Vat. (see 1 above), a reading defended by Rettig in the Studien und Kritiken for 1838, p. 477ff and by Alexander Buttmann (1873) in the same journal for 1860, p. 343, and also in his N. T. Gram. 151 (132); (also by Weiss in Meyer edition 7 at the passage). But this expression (Beelzebul for the help of Beelzebul) is too hard not to be suggestive of the emendation of some ignorant scribe, who took offence because (with the exception of this passage) the enemies of Jesus are nowhere in the Gospels said to have called him by the name of Beelzebul. 4. to call upon (like German anrufen), to invoke; middle, to call upon for oneself, in one's behalf: anyone as a helper, Act 7:59, where supply τόν κύριον Ἰησοῦν (βοηθόν, Plato, Euthyd., p. 297 c.; Diodorus 5, 79); τινα μάρτυρα, as my witness, 2Co 1:23 (Plato, legg. 2, 664 c.); as a judge, i. e. to appeal to one, make appeal unto: Καίσαρα, Act 25:11; Act 26:32; Act 28:19; (τόν Σεβαστόν, Act 25:25); followed by the infinitive passive Act 25:21 (to be reserved). 5. Hebraistically (like יְהוָה בְּשֵׁם קָרָא to call upon by pronouncing the name of Jehovah, Gen 4:26; Gen 12:8; 2Ki 5:11, etc.; cf. Gesenius, Thesaurus, p. 1231{b} (or his Hebrew Lexicon, under the word קָרָא); an expression finding its explanation in the fact that prayers addressed to God ordinarily began with an invocation of the divine name: Psa 3:2; Psa 6:2; Psa 7:2, etc.) ἐπικαλοῦμαι τό ὄνομα τοῦ κυρίου, I call upon (on my behalf) the name of the Lord, i. e. to invoke, adore, worship, the Lord, i. e. Christ: Act 2:21 (from Joe 2:32 ()); Act 9:14,21; 22:16>; Rom 10:13; 1Co 1:2; τόν κύριον, Rom 10:12; 2Ti 2:22; (often in Greek writings ἐπικαλεῖσθαι τούς Θεούς, as Xenophon, Cyril 7, 1, 35; Plato, Tim., p. 27 c.; Polybius 15, 1, 13).
 
-*Fordítás függőben.*
+**🇭🇺** G1941 — ἐπικαλέω ἐπικαλῶ: 1. aorisztosz ἐπεκαλεσα; (szenvedő és közép alak, jelen idő ἐπικαλοῦμαι); perfektum szenvedő ἐπικέκλημαι; pluskvamperfektum egyes szám 3. személy ἐπεκέκλητο, és az augmentum elhagyásával (vö. Winer, Grammatika, 12. §, 5; Buttmann, 33 (29)) ἐπικεκλητο (ApCsel 26:32, Lachmann); 1. aorisztosz szenvedő ἐπεκλήθην; jövő idő közép ἐπικαλέσομαι; 1. aorisztosz közép ἐπεκαλεσάμην; a Septuagintában igen gyakran a קָרָא fordítása; 1. nevet tenni valakire, melléknéven nevezni: τινα (Xenophón, Platón és mások), Mt 10:25 G T Tr WH (a Rec.-ben ἐκάλεσαν); szenvedő alakban ὁ ἐπικαλούμενος: akit melléknéven neveznek, Lk 22:3 R G L; ApCsel 10:18; 11:13; 12:12; 15:22 R G; továbbá ὅς ἐπικαλεῖται, ApCsel 10:5; 10:32; ὁ ἐπικληθείς, Mt 10:3 (R G); ApCsel 4:36; 12:25; egyenértékű a ὅς ἐπεκλήθη kifejezéssel, ApCsel 1:23. Közép jelentésű szenvedő alak (vö. Winer, Grammatika, 38. §, 3): megengedni, hogy valakit melléknéven nevezzenek: Zsid 11:16; közép alak τινα-val: 1Pét 1:17 εἰ πατέρα ἐπικαλεῖσθε τόν stb., azaz ha (magatoknak) Atyaként hívjátok őt, azaz ha Atyátoknak nevezitek. 2. ἐπικαλεῖται τό ὄνομα τίνος ἐπί τινα, a héber פ עַל פ... שֵׁם נִקְרָא... mintájára: „valakinek a nevét nevezik valaki fölött, azaz az ő nevéről nevezik, vagy neki szenteltnek nyilvánítják" (vö. Gesenius, Thesaurus iii., 1232a. o.): ApCsel 15:17, az Ám 9:12-ből (a szóban forgó név Isten népéé); Jak 2:7 (a név: οἱ τοῦ Χριστοῦ). 3. τίνι, a tárgy tárgyesetével; tulajdonképpen: valamit rákiáltani valakire (vö. angol to cry out upon (or against) one); „valamit bűnként vagy szemrehányásként valakinek a terhére róni; valakit valamilyen vádpont alapján perbe idézni, bűncselekményért perbe fogni; hibáztatni valakit valamiért, vádolni valakit valamivel" (Arisztophanész, Béke 663; Thuküdidész 2, 27; 3, 36; Platón, Törvények 6, 761 e.; 7, 809 e.; Dio Cassius 36, 28; 40, 41, és gyakran a szónokoknál (vö. a κατηγορέω címszót)): εἰ τῷ οἰκοδεσπότῃ Βηλζεβουλ ἐπεκάλεσαν (azaz a Belzebúllal való kapcsolattal, az ő segítségének elfogadásával vádolták, vö. Mt 9:34; 12:24; Mk 3:22; Lk 11:15), πόσῳ μᾶλλον τοῖς ὀικιακοις αὐτοῦ, Mt 10:25, L WH széljegyzeti olvasata a Vaticanus nyomán (lásd fent az 1. pontot); ezt az olvasatot Rettig védte a Studien und Kritiken 1838-as évfolyamában, 477. skk. o., valamint Alexander Buttmann (1873) ugyanebben a folyóiratban, 1860, 343. o., és újszövetségi grammatikájában is, 151 (132); (továbbá Weiss a Meyer-kommentár 7. kiadásában, az adott helynél). Ez a kifejezés azonban (Belzebúl a Belzebúl segítsége helyett) túl nehézkes ahhoz, hogy ne valamely tudatlan írnok javítását sejtesse, aki azon botránkozott meg, hogy (e hely kivételével) az evangéliumokban sehol sem mondják Jézus ellenségeiről, hogy Belzebúlnak nevezték volna őt. 4. segítségül hívni (mint a német anrufen), invokálni; közép alakban: segítségül hívni magának, a maga javára: valakit segítőként, ApCsel 7:59, ahol τόν κύριον Ἰησοῦν értendő (βοηθόν, Platón, Euthüdémosz 297 c.; Diodórosz 5, 79); τινα μάρτυρα: tanúmul, 2Kor 1:23 (Platón, Törvények 2, 664 c.); bíróként, azaz hozzá fellebbezni, hozzá folyamodni: Καίσαρα, ApCsel 25:11; 26:32; 28:19; (τόν Σεβαστόν, ApCsel 25:25); szenvedő főnévi igenévvel, ApCsel 25:21 (hogy megtartassék). 5. héber mintára (mint a יְהוָה בְּשֵׁם קָרָא: segítségül hívni a JHVH név kimondásával, 1Móz 4:26; 12:8; 2Kir 5:11 stb.; vö. Gesenius, Thesaurus, 1231b. o. (vagy héber szótára a קָרָא címszónál); a kifejezés magyarázata az, hogy az Istenhez intézett imádságok rendszerint az isteni név segítségül hívásával kezdődtek: Zsolt 3:2; 6:2; 7:2 stb.) ἐπικαλοῦμαι τό ὄνομα τοῦ κυρίου: segítségül hívom (a magam javára) az Úr nevét, azaz segítségül hívom, imádom, tisztelem az Urat, azaz Krisztust: ApCsel 2:21 (a Jóel 2:32-ből); ApCsel 9:14, 21; 22:16; Róm 10:13; 1Kor 1:2; τόν κύριον, Róm 10:12; 2Tim 2:22; (a görög íróknál gyakran ἐπικαλεῖσθαι τούς Θεούς, mint Xenophón, Cyril [értsd: Kürupaideia] 7, 1, 35; Platón, Tímaiosz 27 c.; Polübiosz 15, 1, 13).
 
 *Forrás: konkordancia/Thayer_teljes.tsv*
 
@@ -584,7 +591,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-09-22 -->
 
-*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 31 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 22 igehely ad legalább egy találatot (102 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható.*
+*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 32 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 23 igehely ad legalább egy találatot (106 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható.*
 
 #### 1Móz 13:4
 - Károli-KH: 1Móz 12:8
@@ -700,6 +707,12 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 #### ApCsel 22:16
 - TSK: ApCsel 2:38 (Votes: 15)
 - Károli-KH: Jón 1:5
+
+#### Róm 10:12
+- TSK: Fil 4:19 (Votes: 18)
+- TSK: Jel 17:14 (Votes: 15)
+- TSK: Róm 3:22 (Votes: 15)
+- Károli-KH: Csel 10:34-35
 
 #### Róm 10:13
 - TSK: ApCsel 2:21 (Votes: 106)
@@ -1148,7 +1161,7 @@ tévesen ne sorolja be a motívumba.】
 **Hogyan hivatkozz:**
 - ID: `ISTENTISZT-001`
 - Cím: Segítségül hívni az Úr nevét
-- Státusz: publikálható (`v2`, 2026.09.09)
+- Státusz: publikálható (`v3`, 2026.09.22)
 - Generálva: 2026-09-22
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ISTENTISZT-001_TUDOMANYOS.md`
 
@@ -1190,7 +1203,7 @@ tévesen ne sorolja be a motívumba.】
 | Teljes cím | Segítségül hívni az Úr nevét |
 | Téma | Pneumatológia/istentisztelet |
 | PaRDeS-szint | Drash |
-| Státusz | publikálható (`v2`, 2026.09.09) |
+| Státusz | publikálható (`v3`, 2026.09.22) |
 | Azonosság típusa | formulaikus |
 | Negatív kritérium | az igehelynek a קָרָא + בְּ (aktív, invokáló szerkezet: "[valaki] hívja segítségül [Isten nevét]") mintát kell mutatnia — a passzív נִקְרָא...עַל szerkezet (birtoklás/hovatartozás kifejezése, nem invokáció) kizárja a besorolást, még akkor is, ha ugyanazt a két gyököt használja (l. D-minta, 2Sám 6:2, Jer 7:10-14, 5Móz 28:10, ÚSZ-párja Zsid 11:16) |
 | Fölérendelt fogalom | istentisztelet/imádság általában (bármely invokációs forma, a קָרָא בְשֵׁם formulán kívül) |

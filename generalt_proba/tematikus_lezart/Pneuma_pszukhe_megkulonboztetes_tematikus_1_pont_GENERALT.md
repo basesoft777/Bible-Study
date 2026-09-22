@@ -1,6 +1,6 @@
-<!-- GENERÁLT: general.py --cel study --id ANTROP-001 | forrás: adat/elofordulasok.tsv | ts=2026-09-15 -->
+<!-- GENERÁLT: general.py --cel study --id ANTROP-001 | forrás: adat/elofordulasok.tsv | ts=2026-09-22 -->
 
-<!-- GENERÁLT-KEZDET: general.py --cel study --id ANTROP-001 | forrás: adat/elofordulasok.tsv | ts=2026-09-15 -->
+<!-- GENERÁLT-KEZDET: general.py --cel study --id ANTROP-001 | forrás: adat/elofordulasok.tsv | ts=2026-09-22 -->
 
 *Ez a blokk a `[ID: ANTROP-001]` motívum 8 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben (K13); a hiányzó BDB-mezők helyén "—" áll.*
 
