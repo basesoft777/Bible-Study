@@ -157,3 +157,11 @@ Ellenőrzés: egyik oldalon sincs üres vagy csupasz `—` UBS-cella; az 1Kor 2:
 ## P6 — Push
 
 `git push`, majd rövid jelentés: a P5 öt pontja, az `ellenoriz.py` összesítője, a push commit-hash. Az `ISTENTISZT_V3_BRIEF.md` döntésnaplójába: v2 „P1: I2 kiejtéssel", v3 „P2–P3: kiejtés a kézi szövegben", v4 „P4: UBS-cellák jelölése".
+
+## Döntésnapló
+
+| Dátum | Döntés |
+|---|---|
+| 2026.09.22 | **P2, sor=385, régi=„hogy ׳י mutassa"** két nem-idézet sorban illeszkedett: 355. (a `## 2. Szótári háttér` generált `#szocikkek` blokkjában, G1941-alszakasz) és 392. (a kézi `### 2/b. Teljes szótári anyag` alatt, „🇭🇺 Magyarul (BDB):" bekezdés). Döntés: csak a 392. (2/b) sor kapja a cserét; a 355. változatlan. |
+| 2026.09.22 | **Szabálypontosítás (P2/P3 egyediség-ellenőrzés):** az illeszkedést csak a kézi szövegben kell keresni — a `<!-- GENERÁLT-KEZDET … -->`/`<!-- GENERÁLT-VÉGE … -->` közötti sorok (a határoló sorokkal együtt) és a blockquote-sorok (`>`-lal kezdődők) ki vannak zárva a keresési/csere-halmazból. Az egyediség ezen a szűrt halmazon értendő; ha így is 0 vagy több illeszkedés van, ⛔. |
+| 2026.09.22 | **Generált 2. szakasz kiejtés-hiánya:** a generált `#szocikkek` blokkban (`lexikon_hivatkozasok.tsv` `forditas_hu` mezőiből) kiejtés nélkül maradó görög/héber szavakat a P2/P3 nem javítja a `.md`-ben (kézi szöveg csak); a forrás-tsv soronkénti javítása külön csere-táblát kap. A P5 jelentés felsorolja az érintett `lexikon_hivatkozasok.tsv`-sorokat (szotar, strong, jelentes_szam) és a `forditas_hu` teljes szövegét. |
