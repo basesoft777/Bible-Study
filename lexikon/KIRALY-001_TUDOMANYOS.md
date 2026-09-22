@@ -63,15 +63,15 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 | Igehely | Kulcsszó | Funkció | PaRDeS-szint | Strong | Szótári jelentés | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
-| [1Móz 14:18-20](#ige-1móz-14-18-20)[^1] | papja — כֹהֵ֖ן (kho.Hen) | 🌱 alap-előfordulás — a motívum legelső megjelenése | Peshat | H3548 | BDB H3548 1 — pap-király | — *(ÓSZ)* | magas · tartalom-alapú |
-| [2Móz 19:6](#ige-2móz-19-6)[^2] | papok — כֹּהֲנִ֖ים (ko.ha.Nim); מַמְלֶ֥כֶת (mam.Le.khet) | egyéni → kollektív szintre emelve | Remez | H3548+H4467 | BDB H3548 1 — egyszerre papok és királyok a nemzetekhez való viszonyukban | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 76:3](#ige-zsolt-76-3)[^3] | Sálemben — שָׁלֵ֣ם (sha.Lem) | helynév-azonosítás, lexikai kapocs | Remez | H8004 | BDB H8004 — helynév, Jeruzsálem rövidüléseként/archaizáló neveként; a BDB explicit Zsolt 76:3-at idézi Gen 14:18 mellett | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 110:4](#ige-zsolt-110-4)[^4] | Pap — כֹהֵ֥ן (kho.Hen) | próféciai megerősítés, dávidi szintre szűkítve | Remez | H3548 | BDB H3548 1 — messiási pap-király, mint Melkizedek | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zak 6:13](#ige-zak-6-13)[^5] | pap — כֹהֵן֙ (kho.Hen); כִּסְא֔ (kis.') | explicit "pap a trónon" kép, próféciai megerősítés | Remez | H3548+H3678 | BDB H3548 1 — messiási pap és király | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsid 5:6](#ige-zsid-5-6)[^6] | rendje szerint — τάξιν (taxin) | krisztológiai betöltés, első idézet | Drash | G5010 | — | 58.21 — valamely dolog fajtája vagy típusa, más hasonló dolgokkal való szembeállítást és összehasonlítást feltételezve | magas · tartalom-alapú |
-| [Zsid 5:10](#ige-zsid-5-10)[^7] | rendje szerint — τάξιν (taxin) | krisztológiai betöltés | Drash | G5010 | — | 58.21 — valamely dolog fajtája vagy típusa, más hasonló dolgokkal való szembeállítást és összehasonlítást feltételezve | magas · tartalom-alapú |
-| [Zsid 6:20](#ige-zsid-6-20)[^8] | rendje szerint — τάξιν (taxin) | krisztológiai betöltés | Drash | G5010 | — | 58.21 — valamely dolog fajtája vagy típusa, más hasonló dolgokkal való szembeállítást és összehasonlítást feltételezve | magas · tartalom-alapú |
-| [Zsid 7:1-28](#ige-zsid-7-1-28)[^9] | rendje szerint (G5010, 7:17); Apa nélkül (G0540, 7:3); anya nélkül (G0282, 7:3); nemzetség nélkül való (G0035, 7:3) — τάξιν (taxin); ἀμήτωρ, (amētōr) | krisztológiai betöltés, teljes kifejtés | Drash/Sod | G5010+G0813+G0282 | — | G5010: 58.21 — valamely dolog fajtája vagy típusa, más hasonló dolgokkal való szembeállítást és összehasonlítást feltételezve *(jelölt, nem egyértelmű)* · G0813: *(nincs hozzárendelés)* · G0282: 10.17 — olyan személy, akinek anyjáról nincs feljegyzés, vagy akinek sohasem volt anyja, vagy akinek anyja meghalt *(jelölt, nem egyértelmű)* | magas · tartalom-alapú |
+| [1Móz 14:18-20](#ige-1móz-14-18-20) | papja — כֹהֵ֖ן (kho.Hen) | 🌱 alap-előfordulás | Peshat | H3548 | BDB H3548 1 — pap-király | — *(ÓSZ)* | magas · tartalom-alapú[^1] |
+| [2Móz 19:6](#ige-2móz-19-6) | papok — כֹּהֲנִ֖ים (ko.ha.Nim); מַמְלֶ֥כֶת (mam.Le.khet) | egyéni → kollektív szintre emelve | Remez | H3548+H4467 | BDB H3548 1 — egyszerre papok és királyok a nemzetekhez való viszonyukban | — *(ÓSZ)* | magas · tartalom-alapú[^2] |
+| [Zsolt 76:3](#ige-zsolt-76-3) | Sálemben — שָׁלֵ֣ם (sha.Lem) | helynév-azonosítás, lexikai kapocs | Remez | H8004 | BDB H8004 — helynév, Jeruzsálem rövidüléseként/archaizáló neveként; a BDB explicit Zsolt 76:3-at idézi Gen 14:18 mellett | — *(ÓSZ)* | magas · tartalom-alapú[^3] |
+| [Zsolt 110:4](#ige-zsolt-110-4) | Pap — כֹהֵ֥ן (kho.Hen) | próféciai megerősítés, dávidi szintre szűkítve | Remez | H3548 | BDB H3548 1 — messiási pap-király, mint Melkizedek | — *(ÓSZ)* | magas · tartalom-alapú[^4] |
+| [Zak 6:13](#ige-zak-6-13) | pap — כֹהֵן֙ (kho.Hen); כִּסְא֔ (kis.') | explicit "pap a trónon" kép, próféciai megerősítés | Remez | H3548+H3678 | BDB H3548 1 — messiási pap és király | — *(ÓSZ)* | magas · tartalom-alapú[^5] |
+| [Zsid 5:6](#ige-zsid-5-6) | rendje szerint — τάξιν (taxin) | krisztológiai betöltés, első idézet | Drash | G5010 | — | 58.21 — valamely dolog fajtája vagy típusa, más hasonló dolgokkal való szembeállítást és összehasonlítást feltételezve | magas · tartalom-alapú[^6] |
+| [Zsid 5:10](#ige-zsid-5-10) | rendje szerint — τάξιν (taxin) | krisztológiai betöltés | Drash | G5010 | — | 58.21 — valamely dolog fajtája vagy típusa, más hasonló dolgokkal való szembeállítást és összehasonlítást feltételezve | magas · tartalom-alapú[^7] |
+| [Zsid 6:20](#ige-zsid-6-20) | rendje szerint — τάξιν (taxin) | krisztológiai betöltés | Drash | G5010 | — | 58.21 — valamely dolog fajtája vagy típusa, más hasonló dolgokkal való szembeállítást és összehasonlítást feltételezve | magas · tartalom-alapú[^8] |
+| [Zsid 7:1-28](#ige-zsid-7-1-28) | rendje szerint (G5010, 7:17); Apa nélkül (G0540, 7:3); anya nélkül (G0282, 7:3); nemzetség nélkül való (G0035, 7:3) — τάξιν (taxin); ἀμήτωρ (amētōr) | krisztológiai betöltés, teljes kifejtés | Drash/Sod | G5010+G0813+G0282 | — | G5010: 58.21 — valamely dolog fajtája vagy típusa, más hasonló dolgokkal való szembeállítást és összehasonlítást feltételezve *(jelölt, nem egyértelmű)* · G0813: *(nincs hozzárendelés)* · G0282: 10.17 — olyan személy, akinek anyjáról nincs feljegyzés, vagy akinek sohasem volt anyja, vagy akinek anyja meghalt *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^9] |
 
 [^1]: proveniencia: scope=manual | forras=Melkizedek_tematikus.md | ts=2026-09-08 | igazolas: nincs
 [^2]: proveniencia: scope=manual | forras=Melkizedek_tematikus.md | ts=2026-09-08 | igazolas: nincs
@@ -94,6 +94,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 *És megáldá őt, és monda: Áldott legyen Ábrám a Magasságos Istentől, ég és föld teremtőjétől.*
 *Áldott a Magasságos Isten, a ki kezedbe adta ellenségeidet. És tizedet ada néki mindenből.*
 Melkizedek, Sálem királya, egyszerre "a Felséges Isten papja" — kenyeret és bort hoz, megáldja Ábrámot, aki tizedet ad neki. Első előfordulás, minden előzmény és genealógia nélkül.
+Funkció: a motívum legelső megjelenése
 
 <a id="ige-2móz-19-6"></a>
 **2Móz 19:6**

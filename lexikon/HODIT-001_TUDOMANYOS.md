@@ -63,39 +63,39 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 | Igehely | Kulcsszó | Funkció | PaRDeS-szint | Strong | Szótári jelentés | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
-| [1Móz 14:5](#ige-1móz-14-5)[^1] | a Refeusokat — רְפָאִים֙ (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Móz 15:20](#ige-1móz-15-20)[^2] | a Refeusokat — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [4Móz 13:34](#ige-4móz-13-34)[^3] | óriásokat — נְּפִלִ֑ים (ne.fi.Lim) | — | — | H5303 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [5Móz 2:11](#ige-5móz-2-11)[^4] | Óriásoknak — רְפָאִ֛ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [5Móz 2:20](#ige-5móz-2-20)[^5] | Óriások földének — רְפָאִ֤ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [5Móz 3:11](#ige-5móz-3-11)[^6] | az óriások maradéka — רְפָאִים֒ (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [5Móz 3:13](#ige-5móz-3-13)[^7] | óriások földének — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Józs 12:4](#ige-józs-12-4)[^8] | Refaim maradékai — רְפָאִ֑ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Józs 13:12](#ige-józs-13-12)[^9] | a Refaim maradékai — רְפָאִ֔ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Józs 15:8](#ige-józs-15-8)[^10] | a Refaim völgyének — רְפָאִ֖ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Józs 17:15](#ige-józs-17-15)[^11] | Refaimnak földén — רְפָאִ֑ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Józs 18:16](#ige-józs-18-16)[^12] | a Refaim völgyében — רְפָאִ֖ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [2Sám 5:18](#ige-2sám-5-18)[^13] | a Réfaim völgyében — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [2Sám 5:22](#ige-2sám-5-22)[^14] | a Réfaim völgyében — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [2Sám 21:16](#ige-2sám-21-16)[^15] | az óriások maradékából — רָפָ֗ה (ra.Fah) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [2Sám 21:18](#ige-2sám-21-18)[^16] | az óriások maradékai — רָפָֽה (ra.Fah) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [2Sám 21:20](#ige-2sám-21-20)[^17] | óriástól — רָפָֽה (ra.Fah) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [2Sám 21:22](#ige-2sám-21-22)[^18] | az óriástól — רָפָ֖ה (ra.Fah) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [2Sám 23:13](#ige-2sám-23-13)[^19] | a Réfaim völgyében — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Krón 11:15](#ige-1krón-11-15)[^20] | a Réfaim völgyben — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Krón 14:9](#ige-1krón-14-9)[^21] | a Réfaim völgyében — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Krón 20:4](#ige-1krón-20-4)[^22] | az óriások nemzetségéből — רְפָאִ֖ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Krón 20:6](#ige-1krón-20-6)[^23] | óriás fia — רָפָֽא (ra.Fa') | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Krón 20:8](#ige-1krón-20-8)[^24] | óriásnak — רָפָ֖א (ra.Fa') | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Jób 26:5](#ige-jób-26-5)[^25] | A halottak — רְפָאִ֥ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 88:11](#ige-zsolt-88-11)[^26] | az árnyak — רְ֝פָאִ֗ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Péld 2:18](#ige-péld-2-18)[^27] | az élet nélkül valókhoz — רְ֝פָאִ֗ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Péld 9:18](#ige-péld-9-18)[^28] | élet nélkül valók — רְפָאִ֣ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Péld 21:16](#ige-péld-21-16)[^29] | az élet nélkül valók — רְפָאִ֣ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ézs 14:9](#ige-ézs-14-9)[^30] | árnyait — רְפָאִים֙ (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ézs 17:5](#ige-ézs-17-5)[^31] | a Refáim völgyében — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ézs 26:14](#ige-ézs-26-14)[^32] | az árnyak — רְפָאִ֖ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ézs 26:19](#ige-ézs-26-19)[^33] | az árnyakat — רְפָאִ֥ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú |
+| [1Móz 14:5](#ige-1móz-14-5) | a Refeusokat — רְפָאִים֙ (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^1] |
+| [1Móz 15:20](#ige-1móz-15-20) | a Refeusokat — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^2] |
+| [4Móz 13:34](#ige-4móz-13-34) | óriásokat — נְּפִלִ֑ים (ne.fi.Lim) | — | — | H5303 | — | — *(ÓSZ)* | magas · tartalom-alapú[^3] |
+| [5Móz 2:11](#ige-5móz-2-11) | Óriásoknak — רְפָאִ֛ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^4] |
+| [5Móz 2:20](#ige-5móz-2-20) | Óriások földének — רְפָאִ֤ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^5] |
+| [5Móz 3:11](#ige-5móz-3-11) | az óriások maradéka — רְפָאִים֒ (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^6] |
+| [5Móz 3:13](#ige-5móz-3-13) | óriások földének — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^7] |
+| [Józs 12:4](#ige-józs-12-4) | Refaim maradékai — רְפָאִ֑ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^8] |
+| [Józs 13:12](#ige-józs-13-12) | a Refaim maradékai — רְפָאִ֔ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^9] |
+| [Józs 15:8](#ige-józs-15-8) | a Refaim völgyének — רְפָאִ֖ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^10] |
+| [Józs 17:15](#ige-józs-17-15) | Refaimnak földén — רְפָאִ֑ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^11] |
+| [Józs 18:16](#ige-józs-18-16) | a Refaim völgyében — רְפָאִ֖ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^12] |
+| [2Sám 5:18](#ige-2sám-5-18) | a Réfaim völgyében — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^13] |
+| [2Sám 5:22](#ige-2sám-5-22) | a Réfaim völgyében — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^14] |
+| [2Sám 21:16](#ige-2sám-21-16) | az óriások maradékából — רָפָ֗ה (ra.Fah) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^15] |
+| [2Sám 21:18](#ige-2sám-21-18) | az óriások maradékai — רָפָֽה (ra.Fah) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^16] |
+| [2Sám 21:20](#ige-2sám-21-20) | óriástól — רָפָֽה (ra.Fah) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^17] |
+| [2Sám 21:22](#ige-2sám-21-22) | az óriástól — רָפָ֖ה (ra.Fah) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^18] |
+| [2Sám 23:13](#ige-2sám-23-13) | a Réfaim völgyében — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^19] |
+| [1Krón 11:15](#ige-1krón-11-15) | a Réfaim völgyben — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^20] |
+| [1Krón 14:9](#ige-1krón-14-9) | a Réfaim völgyében — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^21] |
+| [1Krón 20:4](#ige-1krón-20-4) | az óriások nemzetségéből — רְפָאִ֖ים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^22] |
+| [1Krón 20:6](#ige-1krón-20-6) | óriás fia — רָפָֽא (ra.Fa') | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^23] |
+| [1Krón 20:8](#ige-1krón-20-8) | óriásnak — רָפָ֖א (ra.Fa') | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^24] |
+| [Jób 26:5](#ige-jób-26-5) | A halottak — רְפָאִ֥ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^25] |
+| [Zsolt 88:11](#ige-zsolt-88-11) | az árnyak — רְ֝פָאִ֗ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^26] |
+| [Péld 2:18](#ige-péld-2-18) | az élet nélkül valókhoz — רְ֝פָאִ֗ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^27] |
+| [Péld 9:18](#ige-péld-9-18) | élet nélkül valók — רְפָאִ֣ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^28] |
+| [Péld 21:16](#ige-péld-21-16) | az élet nélkül valók — רְפָאִ֣ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^29] |
+| [Ézs 14:9](#ige-ézs-14-9) | árnyait — רְפָאִים֙ (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^30] |
+| [Ézs 17:5](#ige-ézs-17-5) | a Refáim völgyében — רְפָאִֽים (re.fa.'Im) | — | — | H7497 | — | — *(ÓSZ)* | magas · tartalom-alapú[^31] |
+| [Ézs 26:14](#ige-ézs-26-14) | az árnyak — רְפָאִ֖ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^32] |
+| [Ézs 26:19](#ige-ézs-26-19) | az árnyakat — רְפָאִ֥ים (re.fa.'Im) | — | — | H7496 | — | — *(ÓSZ)* | magas · tartalom-alapú[^33] |
 
 [^1]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
 [^2]: proveniencia: scope=manual | forras=Rafaim_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt

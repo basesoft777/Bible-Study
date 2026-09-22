@@ -63,78 +63,78 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 | Igehely | Kulcsszó | Funkció | PaRDeS-szint | Strong | Szótári jelentés | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
-| [1Móz 37:35](#ige-1móz-37-35)[^1] | a sírba — שְׁאֹ֑לָ (she.'O.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Móz 42:38](#ige-1móz-42-38)[^2] | a koporsóba — שְׁאֽוֹלָ (she.'o.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Móz 44:29](#ige-1móz-44-29)[^3] | a koporsóba — שְׁאֹֽלָ (she.'O.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Móz 44:31](#ige-1móz-44-31)[^4] | a koporsóba — שְׁאֹֽלָ (she.'O.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [4Móz 16:30](#ige-4móz-16-30)[^5] | pokolba — שְׁאֹ֑לָ (she.'O.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [4Móz 16:33](#ige-4móz-16-33)[^6] | a pokolra — שְׁאֹ֑לָ (she.'O.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [5Móz 32:22](#ige-5móz-32-22)[^7] | a Seol fenekéig — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Sám 2:6](#ige-1sám-2-6)[^8] | Sírba — שְׁא֖וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [2Sám 22:6](#ige-2sám-22-6)[^9] | A pokol kötelei — שְׁא֖וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Kir 2:6](#ige-1kir-2-6)[^10] | a koporsóba — שְׁאֹֽל (she.'Ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Kir 2:9](#ige-1kir-2-9)[^11] | a koporsóba — שְׁאֽוֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Jób 7:9](#ige-jób-7-9)[^12] | a sírba — שְׁ֝א֗וֹל (She.ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Jób 11:8](#ige-jób-11-8)[^13] | az alvilágnál — שְּׁא֗וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Jób 14:13](#ige-jób-14-13)[^14] | a holtak országában — שְׁא֬וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Jób 17:13](#ige-jób-17-13)[^15] | A sírnak — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Jób 17:16](#ige-jób-17-16)[^16] | a sír üregébe — שְׁאֹ֣ל (she.'Ol) | — | Remez | H7585 | — | — *(ÓSZ)* | közepes · tartalom-alapú |
-| [Jób 21:13](#ige-jób-21-13)[^17] | a sírba — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Jób 24:19](#ige-jób-24-19)[^18] | a pokol — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Jób 26:6](#ige-jób-26-6)[^19] | Az alvilág — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 6:6](#ige-zsolt-6-6)[^20] | a seolban — שְׁא֗וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 9:18](#ige-zsolt-9-18)[^21] | Seolba — שְׁא֑וֹלָ (sh.'o.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 16:10](#ige-zsolt-16-10)[^22] | a Seolban — שְׁא֑וֹל (sh.'ol) | — | Peshat/Drash | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 18:6](#ige-zsolt-18-6)[^23] | A Seol kötelei — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 30:4](#ige-zsolt-30-4)[^24] | a Seolból — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 31:18](#ige-zsolt-31-18)[^25] | a Seolba — שְׁאֽוֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 49:15](#ige-zsolt-49-15)[^26] | a Seolra — שְׁא֗וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 49:16](#ige-zsolt-49-16)[^27] | a Seol kezéből — שְׁא֑וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 55:16](#ige-zsolt-55-16)[^28] | a Seolba — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 86:13](#ige-zsolt-86-13)[^29] | a mélységes pokolból — שְּׁא֥וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 88:4](#ige-zsolt-88-4)[^30] | a Seolig — שְׁא֥וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 89:49](#ige-zsolt-89-49)[^31] | a Seolnak kezéből — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 116:3](#ige-zsolt-116-3)[^32] | a pokol szorongattatásai — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 139:8](#ige-zsolt-139-8)[^33] | a Seolba — שְּׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 141:7](#ige-zsolt-141-7)[^34] | a Seol torkában — שְׁאֽוֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Péld 1:12](#ige-péld-1-12)[^35] | a sír — שְׁא֣וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Péld 5:5](#ige-péld-5-5)[^36] | a sírba — שְׁ֝א֗וֹל (She.ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Péld 7:27](#ige-péld-7-27)[^37] | Sírba vívő út — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Péld 9:18](#ige-péld-9-18)[^38] | a pokol mélyébe — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Péld 15:11](#ige-péld-15-11)[^39] | A sír — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Péld 15:24](#ige-péld-15-24)[^40] | a pokoltól — שְּׁא֥וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Péld 23:14](#ige-péld-23-14)[^41] | a pokolból — שְּׁא֥וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Péld 27:20](#ige-péld-27-20)[^42] | a sír — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Péld 30:16](#ige-péld-30-16)[^43] | A sír — שְׁאוֹל֮ (she.'Ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Préd 9:10](#ige-préd-9-10)[^44] | a Seolban — שְׁא֕וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | közepes · tartalom-alapú |
-| [Én 8:6](#ige-én-8-6)[^45] | a sír — שְׁא֖וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ézs 5:14](#ige-ézs-5-14)[^46] | a sír — שְּׁאוֹל֙ (she.'Ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ézs 7:11](#ige-ézs-7-11)[^47] | a mélységben — שְׁאָ֔לָה (she.'A.lah) | — | Remez | H7585 | — | — *(ÓSZ)* | közepes · tartalom-alapú |
-| [Ézs 14:9](#ige-ézs-14-9)[^48] | a sír — שְׁא֗וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ézs 14:11](#ige-ézs-14-11)[^49] | a sírba — שְׁא֛וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ézs 14:15](#ige-ézs-14-15)[^50] | a sírba — שְׁא֛וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ézs 28:15](#ige-ézs-28-15)[^51] | a sírral — שְׁא֖וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ézs 28:18](#ige-ézs-28-18)[^52] | a sírral — שְׁא֖וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ézs 38:10](#ige-ézs-38-10)[^53] | a sír kapuihoz — שְׁא֑וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ézs 38:18](#ige-ézs-38-18)[^54] | a sír — שְׁא֛וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ézs 57:9](#ige-ézs-57-9)[^55] | a sírig — שְׁאֽוֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ez 31:15](#ige-ez-31-15)[^56] | sírba — שְׁא֙וֹלָ (she.'o.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ez 31:16](#ige-ez-31-16)[^57] | a sírba — שְׁא֖וֹלָ (she.'o.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ez 31:17](#ige-ez-31-17)[^58] | a sírba — שְׁא֖וֹלָ (she.'o.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ez 32:21](#ige-ez-32-21)[^59] | a sír közepéből — שְׁא֖וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ez 32:27](#ige-ez-32-27)[^60] | a sírba — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Hós 13:14](#ige-hós-13-14)[^61] | a Seol hatalmából — שְׁא֔וֹל (she.'ol) | — | Remez/Drash | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ámós 9:2](#ige-ámós-9-2)[^62] | a Seolba — שְׁא֔וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Jón 2:3](#ige-jón-2-3)[^63] | a Seol torkából — שְׁא֛וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Hab 2:5](#ige-hab-2-5)[^64] | a Seol — שְׁא֜וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Mt 11:23](#ige-mt-11-23)[^65] | a pokolig — ᾅδου (hadou) | — | Remez | G0086 | — | 1.19 — a halottak helye vagy lakóhelye, az igazakat és a hamisakat egyaránt beleértve (a legtöbb szövegösszefüggésben a ᾅδης[a] a héber seol megfelelője) | magas · tartalom-alapú |
-| [Luk 10:15](#ige-luk-10-15)[^66] | a pokolig — ᾅδου (hadou) | — | Remez | G0086 | — | 1.19 — a halottak helye vagy lakóhelye, az igazakat és a hamisakat egyaránt beleértve (a legtöbb szövegösszefüggésben a ᾅδης[a] a héber seol megfelelője) | magas · tartalom-alapú |
-| [Luk 16:23](#ige-luk-16-23)[^67] | a pokolban — ᾅδῃ (hadē) | — | Peshat | G0086 | — | 1.19 — a halottak helye vagy lakóhelye, az igazakat és a hamisakat egyaránt beleértve (a legtöbb szövegösszefüggésben a ᾅδης[a] a héber seol megfelelője) | magas · tartalom-alapú |
-| [ApCsel 2:27](#ige-apcsel-2-27)[^68] | a sírban — ᾅδην, (hadēn) | — | Peshat/Drash | G0086 | — | 1.19 — a halottak helye vagy lakóhelye, az igazakat és a hamisakat egyaránt beleértve (a legtöbb szövegösszefüggésben a ᾅδης[a] a héber seol megfelelője) | magas · tartalom-alapú |
-| [ApCsel 2:31](#ige-apcsel-2-31)[^69] | a sírban — ᾅδην (hadēn) | — | Peshat/Drash | G0086 | — | 1.19 — a halottak helye vagy lakóhelye, az igazakat és a hamisakat egyaránt beleértve (a legtöbb szövegösszefüggésben a ᾅδης[a] a héber seol megfelelője) | magas · tartalom-alapú |
-| [Jel 1:18](#ige-jel-1-18)[^70] | a pokolnak — ᾅδου. (hadou) | — | Drash/Sod | G0086 | — | 1.19 — a halottak helye vagy lakóhelye, az igazakat és a hamisakat egyaránt beleértve (a legtöbb szövegösszefüggésben a ᾅδης[a] a héber seol megfelelője) | magas · tartalom-alapú |
-| [Jel 6:8](#ige-jel-6-8)[^71] | a pokol — ᾅδης (hadēs) | — | Peshat/Remez | G0086 | — | 23.108 — (a ᾅδης[a] 'Hádész' [Louw–Nida 1.19] jelentés átvitt kiterjesztése: a Hádésznak mint a halottak helyének hatalmát személyesíti meg) | magas · tartalom-alapú |
-| [Jel 20:13-14](#ige-jel-20-13-14)[^72] | a pokol — ᾅδης (hadēs) | — | Remez/Drash | G0086 | — | 1.19 — a halottak helye vagy lakóhelye, az igazakat és a hamisakat egyaránt beleértve (a legtöbb szövegösszefüggésben a ᾅδης[a] a héber seol megfelelője) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú |
+| [1Móz 37:35](#ige-1móz-37-35) | a sírba — שְׁאֹ֑לָ (she.'O.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^1] |
+| [1Móz 42:38](#ige-1móz-42-38) | a koporsóba — שְׁאֽוֹלָ (she.'o.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^2] |
+| [1Móz 44:29](#ige-1móz-44-29) | a koporsóba — שְׁאֹֽלָ (she.'O.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^3] |
+| [1Móz 44:31](#ige-1móz-44-31) | a koporsóba — שְׁאֹֽלָ (she.'O.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^4] |
+| [4Móz 16:30](#ige-4móz-16-30) | pokolba — שְׁאֹ֑לָ (she.'O.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^5] |
+| [4Móz 16:33](#ige-4móz-16-33) | a pokolra — שְׁאֹ֑לָ (she.'O.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^6] |
+| [5Móz 32:22](#ige-5móz-32-22) | a Seol fenekéig — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^7] |
+| [1Sám 2:6](#ige-1sám-2-6) | Sírba — שְׁא֖וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^8] |
+| [2Sám 22:6](#ige-2sám-22-6) | A pokol kötelei — שְׁא֖וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^9] |
+| [1Kir 2:6](#ige-1kir-2-6) | a koporsóba — שְׁאֹֽל (she.'Ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^10] |
+| [1Kir 2:9](#ige-1kir-2-9) | a koporsóba — שְׁאֽוֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^11] |
+| [Jób 7:9](#ige-jób-7-9) | a sírba — שְׁ֝א֗וֹל (She.ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^12] |
+| [Jób 11:8](#ige-jób-11-8) | az alvilágnál — שְּׁא֗וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^13] |
+| [Jób 14:13](#ige-jób-14-13) | a holtak országában — שְׁא֬וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^14] |
+| [Jób 17:13](#ige-jób-17-13) | A sírnak — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^15] |
+| [Jób 17:16](#ige-jób-17-16) | a sír üregébe — שְׁאֹ֣ל (she.'Ol) | — | Remez | H7585 | — | — *(ÓSZ)* | közepes · tartalom-alapú[^16] |
+| [Jób 21:13](#ige-jób-21-13) | a sírba — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^17] |
+| [Jób 24:19](#ige-jób-24-19) | a pokol — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^18] |
+| [Jób 26:6](#ige-jób-26-6) | Az alvilág — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^19] |
+| [Zsolt 6:6](#ige-zsolt-6-6) | a seolban — שְׁא֗וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^20] |
+| [Zsolt 9:18](#ige-zsolt-9-18) | Seolba — שְׁא֑וֹלָ (sh.'o.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^21] |
+| [Zsolt 16:10](#ige-zsolt-16-10) | a Seolban — שְׁא֑וֹל (sh.'ol) | — | Peshat/Drash | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^22] |
+| [Zsolt 18:6](#ige-zsolt-18-6) | A Seol kötelei — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^23] |
+| [Zsolt 30:4](#ige-zsolt-30-4) | a Seolból — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^24] |
+| [Zsolt 31:18](#ige-zsolt-31-18) | a Seolba — שְׁאֽוֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^25] |
+| [Zsolt 49:15](#ige-zsolt-49-15) | a Seolra — שְׁא֗וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^26] |
+| [Zsolt 49:16](#ige-zsolt-49-16) | a Seol kezéből — שְׁא֑וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^27] |
+| [Zsolt 55:16](#ige-zsolt-55-16) | a Seolba — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^28] |
+| [Zsolt 86:13](#ige-zsolt-86-13) | a mélységes pokolból — שְּׁא֥וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^29] |
+| [Zsolt 88:4](#ige-zsolt-88-4) | a Seolig — שְׁא֥וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^30] |
+| [Zsolt 89:49](#ige-zsolt-89-49) | a Seolnak kezéből — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^31] |
+| [Zsolt 116:3](#ige-zsolt-116-3) | a pokol szorongattatásai — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^32] |
+| [Zsolt 139:8](#ige-zsolt-139-8) | a Seolba — שְּׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^33] |
+| [Zsolt 141:7](#ige-zsolt-141-7) | a Seol torkában — שְׁאֽוֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^34] |
+| [Péld 1:12](#ige-péld-1-12) | a sír — שְׁא֣וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^35] |
+| [Péld 5:5](#ige-péld-5-5) | a sírba — שְׁ֝א֗וֹל (She.ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^36] |
+| [Péld 7:27](#ige-péld-7-27) | Sírba vívő út — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^37] |
+| [Péld 9:18](#ige-péld-9-18) | a pokol mélyébe — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^38] |
+| [Péld 15:11](#ige-péld-15-11) | A sír — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^39] |
+| [Péld 15:24](#ige-péld-15-24) | a pokoltól — שְּׁא֥וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^40] |
+| [Péld 23:14](#ige-péld-23-14) | a pokolból — שְּׁא֥וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^41] |
+| [Péld 27:20](#ige-péld-27-20) | a sír — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^42] |
+| [Péld 30:16](#ige-péld-30-16) | A sír — שְׁאוֹל֮ (she.'Ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^43] |
+| [Préd 9:10](#ige-préd-9-10) | a Seolban — שְׁא֕וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | közepes · tartalom-alapú[^44] |
+| [Én 8:6](#ige-én-8-6) | a sír — שְׁא֖וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^45] |
+| [Ézs 5:14](#ige-ézs-5-14) | a sír — שְּׁאוֹל֙ (she.'Ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^46] |
+| [Ézs 7:11](#ige-ézs-7-11) | a mélységben — שְׁאָ֔לָה (she.'A.lah) | — | Remez | H7585 | — | — *(ÓSZ)* | közepes · tartalom-alapú[^47] |
+| [Ézs 14:9](#ige-ézs-14-9) | a sír — שְׁא֗וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^48] |
+| [Ézs 14:11](#ige-ézs-14-11) | a sírba — שְׁא֛וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^49] |
+| [Ézs 14:15](#ige-ézs-14-15) | a sírba — שְׁא֛וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^50] |
+| [Ézs 28:15](#ige-ézs-28-15) | a sírral — שְׁא֖וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^51] |
+| [Ézs 28:18](#ige-ézs-28-18) | a sírral — שְׁא֖וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^52] |
+| [Ézs 38:10](#ige-ézs-38-10) | a sír kapuihoz — שְׁא֑וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^53] |
+| [Ézs 38:18](#ige-ézs-38-18) | a sír — שְׁא֛וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^54] |
+| [Ézs 57:9](#ige-ézs-57-9) | a sírig — שְׁאֽוֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^55] |
+| [Ez 31:15](#ige-ez-31-15) | sírba — שְׁא֙וֹלָ (she.'o.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^56] |
+| [Ez 31:16](#ige-ez-31-16) | a sírba — שְׁא֖וֹלָ (she.'o.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^57] |
+| [Ez 31:17](#ige-ez-31-17) | a sírba — שְׁא֖וֹלָ (she.'o.la) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^58] |
+| [Ez 32:21](#ige-ez-32-21) | a sír közepéből — שְׁא֖וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^59] |
+| [Ez 32:27](#ige-ez-32-27) | a sírba — שְׁא֣וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^60] |
+| [Hós 13:14](#ige-hós-13-14) | a Seol hatalmából — שְׁא֔וֹל (she.'ol) | — | Remez/Drash | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^61] |
+| [Ámós 9:2](#ige-ámós-9-2) | a Seolba — שְׁא֔וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^62] |
+| [Jón 2:3](#ige-jón-2-3) | a Seol torkából — שְׁא֛וֹל (she.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^63] |
+| [Hab 2:5](#ige-hab-2-5) | a Seol — שְׁא֜וֹל (sh.'ol) | — | Remez | H7585 | — | — *(ÓSZ)* | magas · tartalom-alapú[^64] |
+| [Mt 11:23](#ige-mt-11-23) | a pokolig — ᾅδου (hadou) | — | Remez | G0086 | — | 1.19 — a halottak helye vagy lakóhelye, az igazakat és a hamisakat egyaránt beleértve (a legtöbb szövegösszefüggésben a ᾅδης[a] a héber seol megfelelője) | magas · tartalom-alapú[^65] |
+| [Luk 10:15](#ige-luk-10-15) | a pokolig — ᾅδου (hadou) | — | Remez | G0086 | — | 1.19 — a halottak helye vagy lakóhelye, az igazakat és a hamisakat egyaránt beleértve (a legtöbb szövegösszefüggésben a ᾅδης[a] a héber seol megfelelője) | magas · tartalom-alapú[^66] |
+| [Luk 16:23](#ige-luk-16-23) | a pokolban — ᾅδῃ (hadē) | — | Peshat | G0086 | — | 1.19 — a halottak helye vagy lakóhelye, az igazakat és a hamisakat egyaránt beleértve (a legtöbb szövegösszefüggésben a ᾅδης[a] a héber seol megfelelője) | magas · tartalom-alapú[^67] |
+| [ApCsel 2:27](#ige-apcsel-2-27) | a sírban — ᾅδην (hadēn) | — | Peshat/Drash | G0086 | — | 1.19 — a halottak helye vagy lakóhelye, az igazakat és a hamisakat egyaránt beleértve (a legtöbb szövegösszefüggésben a ᾅδης[a] a héber seol megfelelője) | magas · tartalom-alapú[^68] |
+| [ApCsel 2:31](#ige-apcsel-2-31) | a sírban — ᾅδην (hadēn) | — | Peshat/Drash | G0086 | — | 1.19 — a halottak helye vagy lakóhelye, az igazakat és a hamisakat egyaránt beleértve (a legtöbb szövegösszefüggésben a ᾅδης[a] a héber seol megfelelője) | magas · tartalom-alapú[^69] |
+| [Jel 1:18](#ige-jel-1-18) | a pokolnak — ᾅδου (hadou) | — | Drash/Sod | G0086 | — | 1.19 — a halottak helye vagy lakóhelye, az igazakat és a hamisakat egyaránt beleértve (a legtöbb szövegösszefüggésben a ᾅδης[a] a héber seol megfelelője) | magas · tartalom-alapú[^70] |
+| [Jel 6:8](#ige-jel-6-8) | a pokol — ᾅδης (hadēs) | — | Peshat/Remez | G0086 | — | 23.108 — (a ᾅδης[a] 'Hádész' [Louw–Nida 1.19] jelentés átvitt kiterjesztése: a Hádésznak mint a halottak helyének hatalmát személyesíti meg) | magas · tartalom-alapú[^71] |
+| [Jel 20:13-14](#ige-jel-20-13-14) | a pokol — ᾅδης (hadēs) | — | Remez/Drash | G0086 | — | 1.19 — a halottak helye vagy lakóhelye, az igazakat és a hamisakat egyaránt beleértve (a legtöbb szövegösszefüggésben a ᾅδης[a] a héber seol megfelelője) *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^72] |
 
 [^1]: proveniencia: scope=manual | forras=Hadesz_Seol_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt
 [^2]: proveniencia: scope=manual | forras=Hadesz_Seol_tematikus.md | ts=2026-09-10 | igazolas: TAHOT-igazolt

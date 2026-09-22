@@ -63,38 +63,38 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 | Igehely | Kulcsszó | Funkció | PaRDeS-szint | Strong | Szótári jelentés | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
-| [1Móz 4:26](#ige-1móz-4-26)[^1] | segítségül hívni az Úrnak nevét — קְרֹ֖א (k.Ro'); שֵׁ֥ם (Shem) | 🌱 alap-előfordulás — a motívum legelső megjelenése a kánonban, minden későbbi eset erre vezethető vissza | Drash | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Móz 12:8](#ige-1móz-12-8)[^2] | segítségűl hívá az Úr nevét — יִּקְרָ֖א (i.yik.Ra'); שֵׁ֥ם (Shem) | 🔁 ismétlődés — a formula második, még nem rögzült szokásként ismétlődő megjelenése | Drash | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Móz 13:4](#ige-1móz-13-4)[^3] | segítségűl hívá ott Ábrám az Úrnak nevét — יִּקְרָ֥א (i.yik.Ra'); שֵׁ֥ם (Shem) | ⭐ küszöb-előfordulás — a 3. genezisi eset, ami miatt a motívum elérte az önálló tematikus feldolgozáshoz szükséges gyakoriságot | Drash | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Móz 21:33](#ige-1móz-21-33)[^4] | segítségűl hívá ott az örökkévaló Úr Istennek nevét — יִּ֨קְרָא (i.Yik.ra'-); שֵׁ֥ם (Shem) | ➕ bővülés — a formula első alkalommal egészül ki isteni jelzővel, új teológiai tartalmat hordozva | — | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Móz 26:25](#ige-1móz-26-25)[^5] | segítségűl hívá az Úrnak nevét — יִּקְרָא֙ (i.yik.Ra'); שֵׁ֣ם (Shem) | 👨‍👦 öröklés — a gyakorlat generációk között, tudatos folytonossággal adódik át | — | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú |
-| [2Móz 33:19](#ige-2móz-33-19)[^6] | kiáltom előtted az Úr nevét — קָרָ֧אתִֽי (ka.Ra.ti); שֵׁ֛ם (Shem) | ❓ be nem sorolható — a szereplők szerepe felcserélődik, egyik meglévő kategóriába sem illik tisztán (A/B/C tipológia, B-eset) | Remez | H7121+H8034 | BDB H7121 3 — kihirdetni, kinyilatkoztatni (NEM invokáció) | — *(ÓSZ)* | magas · tartalom-alapú |
-| [2Móz 34:5](#ige-2móz-34-5)[^7] | nevén kiáltá az Urat — יִּקְרָ֥א (i.yik.Ra'); שֵׁ֖ם (Shem) | ❓ be nem sorolható — a szereplők szerepe felcserélődik, egyik meglévő kategóriába sem illik tisztán (A/B/C tipológia, B-eset) | Remez | H7121+H8034 | BDB H7121 3 — kihirdetni, kinyilatkoztatni (NEM invokáció) | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Kir 18:24](#ige-1kir-18-24)[^8] | segítségül hívom az Úrnak nevét — אֶקְרָ֣א ('ek.Ra'); שֵׁם (shem-) | ⚔️ nyilvános versengés — a formula először jelenik meg nyilvános, két isten közötti próbatételi kontextusban | Remez | H7121+H8034 | BDB H7121 2.c — Jahve nevével, konkrét felszólítás hatalma megmutatására | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Kir 18:25](#ige-1kir-18-25)[^9] | hívjátok segítségül a ti istenteknek nevét — קִרְאוּ֙ (kir.'U); שֵׁ֣ם (Shem) | ⚔️ nyilvános versengés (folytatás) — a próbatétel gyakorlati végrehajtása | Remez | H7121+H8034 | BDB H7121 2.c — Baál nevével | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Kir 18:26](#ige-1kir-18-26)[^10] | segítségül hívák a Baálnak nevét — יִּקְרְא֣וּ (i.yik.re.'U); שֵׁם (shem-) | ⚔️ nyilvános versengés (folytatás) — a próbatétel kudarca | Remez | H7121+H8034 | BDB H7121 2.c — Baál nevével | — *(ÓSZ)* | magas · tartalom-alapú |
-| [2Kir 5:11](#ige-2kir-5-11)[^11] | segítségül hívja az Úrnak, az ő Istenének nevét — קָרָא֙ (ka.Ra'); שֵׁם (shem-) | 🔁 ismétlődés, kívülálló szemszögéből | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú |
-| [1Krón 16:8](#ige-1krón-16-8)[^12] | hívjátok segítségül az ő nevét — קִרְא֣וּ (kir.'U); שְׁמ֔ (sh.M) | ⇄ párhuzam — formulai/liturgikus örökség a genezisi hagyományból, nem narratív folytonosság | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 79:6](#ige-zsolt-79-6)[^13] | nem hívják segítségül a te nevedet — קָרָֽאוּ (ka.Ra.'u); שִׁמְ (shim.) | ⇄🚫 párhuzam, tagadó forma — a formula elmulasztása mint vád, fordított szórenddel | Remez | H7121+H8034 | BDB H7121 2.c (tagadva) — invokálni — tagadó szerkezetben, a mulasztás vádjaként | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 105:1](#ige-zsolt-105-1)[^14] | hívjátok segítségül az ő nevét — קִרְא֣וּ (kir.'U); שְׁמ֑ (sh.M) | ⇄ párhuzam — formulai/liturgikus örökség a genezisi hagyományból, nem narratív folytonosság | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 116:4](#ige-zsolt-116-4)[^15] | az Úrnak nevét segítségül hívám — אֶקְרָ֑א ('ek.Ra'); שֵֽׁם (shem-) | 🔁 ismétlődés, személyes könyörgésben | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 116:13](#ige-zsolt-116-13)[^16] | az Úrnak nevét hívom segítségül — אֶקְרָֽא ('ek.Ra'); שֵׁ֖ם (Shem) | 🔁 ismétlődés, személyes könyörgésben | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zsolt 116:17](#ige-zsolt-116-17)[^17] | az Úr nevét hívom segítségül — אֶקְרָֽא ('ek.Ra'); שֵׁ֖ם (Shem) | 🔁 ismétlődés, személyes könyörgésben | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Ézs 12:4](#ige-ézs-12-4)[^18] | magasztaljátok az Ő nevét — קִרְא֣וּ (kir.'U); שְׁמֽ (she.M) | ⇄ párhuzam — formulai/liturgikus örökség a genezisi hagyományból, nem narratív folytonosság | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | közepes · tartalom-alapú |
-| [Jer 10:25](#ige-jer-10-25)[^19] | nem hívják segítségül a te nevedet — קָרָ֑אוּ (ka.Ra.'u); שִׁמְ (shim.) | ⇄🚫 párhuzam, tagadó forma — a formula elmulasztása mint vád, fordított szórenddel | Remez | H7121+H8034 | BDB H7121 2.c (tagadva) — invokálni — tagadó szerkezetben, a mulasztás vádjaként | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Jóel 2:32](#ige-jóel-2-32)[^20] | az Úrnak nevét hívja segítségül — קֹרֵֽא (ko.Re'); שֵׁ֥ם (Shem) | 🎯 előkép/beteljesedés — az ÓSZ-i ígéret, amit az ÚSZ tételesen, szó szerint idéz | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Sof 3:9](#ige-sof-3-9)[^21] | segítségül hívják az Úr nevét — קְרֹ֤א (k.Ro'); שֵׁ֣ם (Shem) | 🔮 eszkatológiai kitekintés — a formula jövőbeli, univerzális beteljesedésének előrevetítése | Remez | H7121+H8034 | BDB H7121 2.c (rokon) | — *(ÓSZ)* | magas · tartalom-alapú |
-| [Zak 13:9](#ige-zak-13-9)[^22] | segítségül hívja ... nevemet — יִקְרָ֣א (yik.Ra'); שְׁמִ֗ (sh.M) | 🔮 eszkatológiai kitekintés (folytatás) — kétirányú szövetségi megerősítéssé bővíti az ígéretet | Remez | H7121+H8034 | BDB H7121 2.c | — *(ÓSZ)* | magas · tartalom-alapú |
-| [ApCsel 2:21](#ige-apcsel-2-21)[^23] | az Úrnak nevét segítségül hívja — ἐπικαλέσηται (epikalesētai) | 🎯 előkép/beteljesedés (idézet) — az ÚSZ szó szerint idézi a Jóel 2:32-t | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
-| [ApCsel 9:14](#ige-apcsel-9-14)[^24] | segítségül hívják — ἐπικαλουμένους (epikaloumenous) | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | Remez | G1941 | — | 11.28 — (idióma, szó szerint: valakinek a nevét valakire hívják) elismertnek lenni úgy, mint aki ahhoz tartozik, akinek a nevét rá hívták | magas · tartalom-alapú |
-| [ApCsel 9:21](#ige-apcsel-9-21)[^25] | hívják segítségül — ἐπικαλουμένους (epikaloumenous) | 🔁 ismétlődés — az ApCsel 9:14-es leírás közvetlen megismétlése | Remez | G1941 | — | 33.131 — valakiről szólva megjelölést (címet, jelzőt) alkalmazni | magas · tartalom-alapú |
-| [ApCsel 22:16](#ige-apcsel-22-16)[^26] | segítségül híván — ἐπικαλεσάμενος (epikalesamenos) | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | Remez | G1941 | — | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
-| [Róm 10:12](#ige-róm-10-12)[^27] | segítségül hívják — ἐπικαλουμένους (epikaloumenous) | 🎯 előkép/beteljesedés (bevezetés) — a 10:13 idézetét előkészítő egyetemes kiterjesztés | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
-| [Róm 10:13](#ige-róm-10-13)[^28] | segítségül hívja az Úr nevét — ἐπικαλέσηται (epikalesētai) | 🎯 előkép/beteljesedés (idézet) — az ÚSZ szó szerint idézi a Jóel 2:32-t | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
-| [Róm 10:14](#ige-róm-10-14)[^29] | hívják segítségül — ἐπικαλέσωνται (epikalesōntai) | 🎯 előkép/beteljesedés (folytatás) — Pál közvetlenül továbbviszi az érvelést ugyanabban a szakaszban | Remez | G1941 | — | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
-| [1Kor 1:2](#ige-1kor-1-2)[^30] | segítségül hívják — ἐπικαλουμένοις (epikaloumenois) | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | Remez | G1941 | — | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
-| [2Tim 2:22](#ige-2tim-2-22)[^31] | segítségül hívják — ἐπικαλουμένων (epikaloumenōn) | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | Remez | G1941 | — | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú |
-| [1Pét 1:17](#ige-1pét-1-17)[^32] | hívjátok — ἐπικαλεῖσθε (epikaleisthe) | 🎯 előkép/beteljesedés (kiterjesztés) — a formula önálló egyházi azonosító-formulává válik | Remez | G1941 | — | 33.131 — valakiről szólva megjelölést (címet, jelzőt) alkalmazni *(jelölt, nem egyértelmű)*; 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal *(jelölt, nem egyértelmű)* | magas · tartalom-alapú |
+| [1Móz 4:26](#ige-1móz-4-26) | segítségül hívni az Úrnak nevét — קְרֹ֖א (k.Ro'); שֵׁ֥ם (Shem) | 🌱 alap-előfordulás | Drash | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú[^1] |
+| [1Móz 12:8](#ige-1móz-12-8) | segítségűl hívá az Úr nevét — יִּקְרָ֖א (i.yik.Ra'); שֵׁ֥ם (Shem) | 🔁 ismétlődés | Drash | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú[^2] |
+| [1Móz 13:4](#ige-1móz-13-4) | segítségűl hívá ott Ábrám az Úrnak nevét — יִּקְרָ֥א (i.yik.Ra'); שֵׁ֥ם (Shem) | ⭐ küszöb-előfordulás | Drash | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú[^3] |
+| [1Móz 21:33](#ige-1móz-21-33) | segítségűl hívá ott az örökkévaló Úr Istennek nevét — יִּ֨קְרָא (i.Yik.ra'-); שֵׁ֥ם (Shem) | ➕ bővülés | Drash | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú[^4] |
+| [1Móz 26:25](#ige-1móz-26-25) | segítségűl hívá az Úrnak nevét — יִּקְרָא֙ (i.yik.Ra'); שֵׁ֣ם (Shem) | 👨‍👦 öröklés | Drash | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú[^5] |
+| [2Móz 33:19](#ige-2móz-33-19) | kiáltom előtted az Úr nevét — קָרָ֧אתִֽי (ka.Ra.ti); שֵׁ֛ם (Shem) | ❓ be nem sorolható | Remez | H7121+H8034 | BDB H7121 3 — kihirdetni, kinyilatkoztatni (NEM invokáció) | — *(ÓSZ)* | magas · tartalom-alapú[^6] |
+| [2Móz 34:5](#ige-2móz-34-5) | nevén kiáltá az Urat — יִּקְרָ֥א (i.yik.Ra'); שֵׁ֖ם (Shem) | ❓ be nem sorolható | Remez | H7121+H8034 | BDB H7121 3 — kihirdetni, kinyilatkoztatni (NEM invokáció) | — *(ÓSZ)* | magas · tartalom-alapú[^7] |
+| [1Kir 18:24](#ige-1kir-18-24) | segítségül hívom az Úrnak nevét — אֶקְרָ֣א ('ek.Ra'); שֵׁם (shem-) | ⚔️ nyilvános versengés | Remez | H7121+H8034 | BDB H7121 2.c — Jahve nevével, konkrét felszólítás hatalma megmutatására | — *(ÓSZ)* | magas · tartalom-alapú[^8] |
+| [1Kir 18:25](#ige-1kir-18-25) | hívjátok segítségül a ti istenteknek nevét — קִרְאוּ֙ (kir.'U); שֵׁ֣ם (Shem) | ⚔️ nyilvános versengés (folytatás) | Remez | H7121+H8034 | BDB H7121 2.c — Baál nevével | — *(ÓSZ)* | magas · tartalom-alapú[^9] |
+| [1Kir 18:26](#ige-1kir-18-26) | segítségül hívák a Baálnak nevét — יִּקְרְא֣וּ (i.yik.re.'U); שֵׁם (shem-) | ⚔️ nyilvános versengés (folytatás) | Remez | H7121+H8034 | BDB H7121 2.c — Baál nevével | — *(ÓSZ)* | magas · tartalom-alapú[^10] |
+| [2Kir 5:11](#ige-2kir-5-11) | segítségül hívja az Úrnak, az ő Istenének nevét — קָרָא֙ (ka.Ra'); שֵׁם (shem-) | 🔁 ismétlődés, kívülálló szemszögéből | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú[^11] |
+| [1Krón 16:8](#ige-1krón-16-8) | hívjátok segítségül az ő nevét — קִרְא֣וּ (kir.'U); שְׁמ֔ (sh.M) | ⇄ párhuzam | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú[^12] |
+| [Zsolt 79:6](#ige-zsolt-79-6) | nem hívják segítségül a te nevedet — קָרָֽאוּ (ka.Ra.'u); שִׁמְ (shim.) | ⇄🚫 párhuzam, tagadó forma | Remez | H7121+H8034 | BDB H7121 2.c (tagadva) — invokálni — tagadó szerkezetben, a mulasztás vádjaként | — *(ÓSZ)* | magas · tartalom-alapú[^13] |
+| [Zsolt 105:1](#ige-zsolt-105-1) | hívjátok segítségül az ő nevét — קִרְא֣וּ (kir.'U); שְׁמ֑ (sh.M) | ⇄ párhuzam | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú[^14] |
+| [Zsolt 116:4](#ige-zsolt-116-4) | az Úrnak nevét segítségül hívám — אֶקְרָ֑א ('ek.Ra'); שֵֽׁם (shem-) | 🔁 ismétlődés, személyes könyörgésben | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú[^15] |
+| [Zsolt 116:13](#ige-zsolt-116-13) | az Úrnak nevét hívom segítségül — אֶקְרָֽא ('ek.Ra'); שֵׁ֖ם (Shem) | 🔁 ismétlődés, személyes könyörgésben | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú[^16] |
+| [Zsolt 116:17](#ige-zsolt-116-17) | az Úr nevét hívom segítségül — אֶקְרָֽא ('ek.Ra'); שֵׁ֖ם (Shem) | 🔁 ismétlődés, személyes könyörgésben | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú[^17] |
+| [Ézs 12:4](#ige-ézs-12-4) | magasztaljátok az Ő nevét — קִרְא֣וּ (kir.'U); שְׁמֽ (she.M) | ⇄ párhuzam | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | közepes · tartalom-alapú[^18] |
+| [Jer 10:25](#ige-jer-10-25) | nem hívják segítségül a te nevedet — קָרָ֑אוּ (ka.Ra.'u); שִׁמְ (shim.) | ⇄🚫 párhuzam, tagadó forma | Remez | H7121+H8034 | BDB H7121 2.c (tagadva) — invokálni — tagadó szerkezetben, a mulasztás vádjaként | — *(ÓSZ)* | magas · tartalom-alapú[^19] |
+| [Jóel 2:32](#ige-jóel-2-32) | az Úrnak nevét hívja segítségül — קֹרֵֽא (ko.Re'); שֵׁ֥ם (Shem) | 🎯 előkép/beteljesedés | Remez | H7121+H8034 | BDB H7121 2.c — invokálni, segítségül hívni | — *(ÓSZ)* | magas · tartalom-alapú[^20] |
+| [Sof 3:9](#ige-sof-3-9) | segítségül hívják az Úr nevét — קְרֹ֤א (k.Ro'); שֵׁ֣ם (Shem) | 🔮 eszkatológiai kitekintés | Remez | H7121+H8034 | BDB H7121 2.c (rokon) | — *(ÓSZ)* | magas · tartalom-alapú[^21] |
+| [Zak 13:9](#ige-zak-13-9) | segítségül hívja ... nevemet — יִקְרָ֣א (yik.Ra'); שְׁמִ֗ (sh.M) | 🔮 eszkatológiai kitekintés (folytatás) | Remez | H7121+H8034 | BDB H7121 2.c | — *(ÓSZ)* | magas · tartalom-alapú[^22] |
+| [ApCsel 2:21](#ige-apcsel-2-21) | az Úrnak nevét segítségül hívja — ἐπικαλέσηται (epikalesētai) | 🎯 előkép/beteljesedés (idézet) | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú[^23] |
+| [ApCsel 9:14](#ige-apcsel-9-14) | segítségül hívják — ἐπικαλουμένους (epikaloumenous) | 🎯 előkép/beteljesedés (kiterjesztés) | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 11.28 — (idióma, szó szerint: valakinek a nevét valakire hívják) elismertnek lenni úgy, mint aki ahhoz tartozik, akinek a nevét rá hívták | magas · tartalom-alapú[^24] |
+| [ApCsel 9:21](#ige-apcsel-9-21) | hívják segítségül — ἐπικαλουμένους (epikaloumenous) | 🔁 ismétlődés | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 33.131 — valakiről szólva megjelölést (címet, jelzőt) alkalmazni | magas · tartalom-alapú[^25] |
+| [ApCsel 22:16](#ige-apcsel-22-16) | segítségül híván — ἐπικαλεσάμενος (epikalesamenos) | 🎯 előkép/beteljesedés (kiterjesztés) | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú[^26] |
+| [Róm 10:12](#ige-róm-10-12) | segítségül hívják — ἐπικαλουμένους (epikaloumenous) | 🎯 előkép/beteljesedés (bevezetés) | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú[^27] |
+| [Róm 10:13](#ige-róm-10-13) | segítségül hívja az Úr nevét — ἐπικαλέσηται (epikalesētai) | 🎯 előkép/beteljesedés (idézet) | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú[^28] |
+| [Róm 10:14](#ige-róm-10-14) | hívják segítségül — ἐπικαλέσωνται (epikalesōntai) | 🎯 előkép/beteljesedés (folytatás) | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú[^29] |
+| [1Kor 1:2](#ige-1kor-1-2) | segítségül hívják — ἐπικαλουμένοις (epikaloumenois) | 🎯 előkép/beteljesedés (kiterjesztés) | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú[^30] |
+| [2Tim 2:22](#ige-2tim-2-22) | segítségül hívják — ἐπικαλουμένων (epikaloumenōn) | 🎯 előkép/beteljesedés (kiterjesztés) | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal | magas · tartalom-alapú[^31] |
+| [1Pét 1:17](#ige-1pét-1-17) | hívjátok — ἐπικαλεῖσθε (epikaleisthe) | 🎯 előkép/beteljesedés (kiterjesztés) | Remez | G1941 | TBESG G1941 2 — segítségül hívni, invokálni | 33.131 — valakiről szólva megjelölést (címet, jelzőt) alkalmazni *(jelölt, nem egyértelmű)*; 33.176 — valakit arra hívni, hogy tegyen valamit; rendszerint segítségkérést is magában foglal *(jelölt, nem egyértelmű)* | magas · tartalom-alapú[^32] |
 
 [^1]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs
 [^2]: proveniencia: scope=manual | forras=Segitsegul_hivni_az_Urat_tematikus.md | ts=2026-09-05 | igazolas: nincs
@@ -138,51 +138,61 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 **1Móz 4:26**
 *Séthnek is született fia, és nevezé annak nevét Énósnak. Akkor kezdték segítségül hívni az Úrnak nevét.*
 A formula első előfordulása — Séth fia, Énós nemzedéke; a Kain-vonal önerős civilizációépítése utáni korszakváltás jele.
+Funkció: a motívum legelső megjelenése a kánonban, minden későbbi eset erre vezethető vissza
 
 <a id="ige-1móz-12-8"></a>
 **1Móz 12:8**
 *Onnan azután a hegység felé méne Bétheltől keletre és felüté sátorát: Béthel vala nyugatra, Hái pedig keletre, és ott oltárt építe az Úrnak, és segítségűl hívá az Úr nevét.*
 Ábrám, Bétel-Ai között — oltárépítés + segítségül hívás első összekapcsolása.
+Funkció: a formula második, még nem rögzült szokásként ismétlődő megjelenése
 
 <a id="ige-1móz-13-4"></a>
 **1Móz 13:4**
 *Annak az oltárnak helyére, melyet ott elsőben készített vala: és segítségűl hívá ott Ábrám az Úrnak nevét.*
 Ábrám visszatér ugyanahhoz az oltárhoz Egyiptomból; a formula tudatos, felkeresett szokássá válik.
+Funkció: a 3. genezisi eset, ami miatt a motívum elérte az önálló tematikus feldolgozáshoz szükséges gyakoriságot
 
 <a id="ige-1móz-21-33"></a>
 **1Móz 21:33**
 *Ábrahám pedig tamariskusfákat ültete Beérsebában, és segítségűl hívá ott az örökkévaló Úr Istennek nevét.*
 Ábrahám, Beérseba — a formula kiegészül egy isteni jelzővel: אֵל עוֹלָם (él olám), "örökkévaló Isten".
+Funkció: a formula első alkalommal egészül ki isteni jelzővel, új teológiai tartalmat hordozva
 
 <a id="ige-1móz-26-25"></a>
 **1Móz 26:25**
 *Oltárt építe azért ott, és segítségűl hívá az Úrnak nevét, s felvoná ott az ő sátorát; Izsák szolgái pedig kútat ásának ottan.*
 Izsák, Beérseba — a minta szó szerint átöröklődik a második pátriárka-nemzedékre, ugyanazon a helyszínen.
+Funkció: a gyakorlat generációk között, tudatos folytonossággal adódik át
 
 <a id="ige-2móz-33-19"></a>
 **2Móz 33:19**
 *És monda az Úr: Megteszem, hogy az én dicsőségem a te orczád előtt menjen el, és kiáltom előtted az Úr nevét: És könyörülök, a kin könyörülök, kegyelmezek, a kinek kegyelmezek.*
 Isten maga jelenti ki Mózesnek: "kihirdetem előtted az Úr nevét" — nem az ember hívja segítségül Isten nevét, hanem Isten mondja ki a sajátját.
+Funkció: a szereplők szerepe felcserélődik, egyik meglévő kategóriába sem illik tisztán (A/B/C tipológia, B-eset)
 
 <a id="ige-2móz-34-5"></a>
 **2Móz 34:5**
 *Az Úr pedig leszálla felhőben, és ott álla ő vele, és nevén kiáltá az Urat:*
 Ugyanaz a jelenet folytatása: "az Úr nevében kiáltott" — Isten végrehajtja az előző fejezetben megígért önkihirdetést.
+Funkció: a szereplők szerepe felcserélődik, egyik meglévő kategóriába sem illik tisztán (A/B/C tipológia, B-eset)
 
 <a id="ige-1kir-18-24"></a>
 **1Kir 18:24**
 *Akkor hívjátok segítségül a ti istenteknek nevét, és én is segítségül hívom az Úrnak nevét; és a mely isten tűz által felel, az az Isten. És felelvén az egész sokaság, monda: Jó lesz!*
 Illés a Kármelen: "ti a ti isteneitek nevét hívjátok, és én segítségül hívom az Úr nevét" — nyilvános, versengő kontextus, a kontraszt magán a versen belül.
+Funkció: a formula először jelenik meg nyilvános, két isten közötti próbatételi kontextusban
 
 <a id="ige-1kir-18-25"></a>
 **1Kir 18:25**
 *És monda Illés a Baál prófétáinak: Válaszszátok el magatoknak az egyik tulkot, és készítsétek el ti először; mert ti többen vagytok, és hívjátok segítségül a ti istenteknek nevét, de tüzet ne tegyetek alája.*
 A Baál-próféták felszólítása: "hívjátok segítségül a ti istenetek nevét".
+Funkció: a próbatétel gyakorlati végrehajtása
 
 <a id="ige-1kir-18-26"></a>
 **1Kir 18:26**
 *És vevék a tulkot, a melyet nékik adott, és azt elkészíték, és segítségül hívák a Baálnak nevét reggeltől fogva délig, mondván: Baál! hallgass meg minket! De nem jött szó, sem felelet. És ott sántikáltak az oltár körül, a melyet készítettek.*
 A Baál-próféták ismétlődő, sikertelen invokációja — a formula kudarca a kontraszt kiteljesedése.
+Funkció: a próbatétel kudarca
 
 <a id="ige-2kir-5-11"></a>
 **2Kir 5:11**
@@ -193,16 +203,19 @@ Naámán elvárása Elizeus felől — a formula ismertsége a nem-izraeli szere
 **1Krón 16:8**
 *Dícsérjétek az Urat, hívjátok segítségül az ő nevét, hirdessétek minden népek között az ő nagy dolgait.*
 A Zsolt 105:1 szinte szó szerinti megismétlése a frigyláda Sátor elé állításának liturgiájában.
+Funkció: formulai/liturgikus örökség a genezisi hagyományból, nem narratív folytonosság
 
 <a id="ige-zsolt-79-6"></a>
 **Zsolt 79:6**
 *Ontsd ki haragodat a pogányokra, a kik nem ismernek téged, és az országokra, a melyek nem hívják segítségül a te nevedet;*
 A Jer 10:25 szinte szó szerinti párhuzama, azonos vádló szerkezettel.
+Funkció: a formula elmulasztása mint vád, fordított szórenddel
 
 <a id="ige-zsolt-105-1"></a>
 **Zsolt 105:1**
 *Magasztaljátok az Urat, hívjátok segítségül az ő nevét, hirdessétek a népek között az ő cselekedeteit!*
 "Hívjátok segítségül az ő nevét, hirdessétek a népek közt az ő cselekedeteit" — a genezisi hagyományból örökölt formula önálló, liturgikus felhasználása, nem a történetszál narratív folytatása.
+Funkció: formulai/liturgikus örökség a genezisi hagyományból, nem narratív folytonosság
 
 <a id="ige-zsolt-116-4"></a>
 **Zsolt 116:4**
@@ -223,76 +236,91 @@ A formula harmadik megismétlése, hála-áldozat felajánlása kontextusában.
 **Ézs 12:4**
 *És így szólotok ama napon: Adjatok hálát az Úrnak, magasztaljátok az Ő nevét, hirdessétek a népek közt nagyságos dolgait, mondjátok, hogy nagy az Ő neve.*
 Szó szerint majdnem azonos a Zsolt 105:1-gyel, eszkatológiai hálaének kontextusban.
+Funkció: formulai/liturgikus örökség a genezisi hagyományból, nem narratív folytonosság
 
 <a id="ige-jer-10-25"></a>
 **Jer 10:25**
 *Öntsd ki haragodat ama nemzetekre, a melyek nem ismernek téged, és ama nemzetségekre, a melyek nem hívják segítségül a te nevedet; mert megették Jákóbot, bizony megették őt, és elemésztették őt, és lakóhelyét elpusztították!*
 "…a nemzetségekre, akik a Te nevedet nem hívják segítségül" — a formula tagadó, vádló formában, fordított szórenddel.
+Funkció: a formula elmulasztása mint vád, fordított szórenddel
 
 <a id="ige-jóel-2-32"></a>
 **Jóel 2:32**
 *De mindaz, a ki az Úrnak nevét hívja segítségül, megmenekül; mert a Sion hegyén és Jeruzsálemben lészen a szabadulás, a mint megigérte az Úr, és a megszabadultak közt lesznek azok, a kiket elhí az Úr!*
 Az ószövetségi megfogalmazás csúcspontja: "mindaz, aki segítségül hívja az Úr nevét, megmenekül" — ezt Péter (ApCsel 2:21) és Pál (Róm 10:13) is szó szerint idézi. Károli-számozás: Jóel 3:5.
+Funkció: az ÓSZ-i ígéret, amit az ÚSZ tételesen, szó szerint idéz
 
 <a id="ige-sof-3-9"></a>
 **Sof 3:9**
 *Akkor változtatom majd a népek ajkát tisztává, hogy mind segítségül hívják az Úr nevét, hogy egy akarattal szolgálják őt.*
 Eszkatológiai ígéret — a népek megtisztított ajka egy akarattal hívja segítségül az Urat.
+Funkció: a formula jövőbeli, univerzális beteljesedésének előrevetítése
 
 <a id="ige-zak-13-9"></a>
 **Zak 13:9**
 *És beviszem a harmadrészt a tűzbe, és megtisztítom őket, a mint tisztítják az ezüstöt és megpróbálom őket, a mint próbálják az aranyat; ő segítségül hívja az én nevemet és én felelni fogok néki; ezt mondom: Népem ő! Ő pedig ezt mondja: Az Úr az én Istenem!*
 Sof 3:9 párja: a megtisztított maradék segítségül hívja Isten nevét, és Isten válaszol — kétirányú szövetségi megerősítés.
+Funkció: kétirányú szövetségi megerősítéssé bővíti az ígéretet
 
 <a id="ige-apcsel-2-21"></a>
 **ApCsel 2:21**
 *És lészen, hogy mindaz, a ki az Úrnak nevét segítségül hívja, megtartatik.*
 Péter pünkösdi beszéde szó szerint idézi a LXX Jóel 2:32-t: "mindaz, a ki az Úrnak nevét segítségül hívja, megtartatik."
+Funkció: az ÚSZ szó szerint idézi a Jóel 2:32-t
 
 <a id="ige-apcsel-9-14"></a>
 **ApCsel 9:14**
 *És itt is hatalma van a főpapoktól, hogy mindazokat megkötözze, kik a te nevedet segítségül hívják.*
 "…mindazokat…, kik a te nevedet segítségül hívják" — Saul üldözési célpontjainak leírása, a korai keresztények azonosító megnevezése.
+Funkció: a formula önálló egyházi azonosító-formulává válik
 
 <a id="ige-apcsel-9-21"></a>
 **ApCsel 9:21**
 *Álmélkodnak vala pedig mindnyájan, a kik hallák, és mondának: Nem ez-é az, a ki pusztította Jeruzsálemben azokat, a kik ezt a nevet hívják segítségül, és ide is azért jött, hogy őket fogva vigye a főpapokhoz?*
 "…a kik ezt a nevet hívják segítségül" — az ApCsel 9:14-es leírás közvetlen megismétlése ugyanabban a fejezetben.
+Funkció: az ApCsel 9:14-es leírás közvetlen megismétlése
 
 <a id="ige-apcsel-22-16"></a>
 **ApCsel 22:16**
 *Most annakokáért mit késedelmezel? Kelj fel és keresztelkedjél meg és mosd le a te bűneidet, segítségül híván az Úrnak nevét.*
 "…segítségül híván az Úrnak nevét" — Pál saját megtérés-elbeszélésében, a keresztséggel összekapcsolva.
+Funkció: a formula önálló egyházi azonosító-formulává válik
 
 <a id="ige-róm-10-12"></a>
 **Róm 10:12**
 *Mert nincs különbség zsidó meg görög között; mert ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag mindenekhez, a kik őt segítségül hívják.*
 "…ugyanaz az Ura mindeneknek, a ki kegyelemben gazdag mindenekhez, a kik őt segítségül hívják" — a 10:13-as Jóel-idézet közvetlen bevezetése: a segítségül hívók körét zsidóra és görögre egyaránt kiterjeszti.
+Funkció: a 10:13 idézetét előkészítő egyetemes kiterjesztés
 
 <a id="ige-róm-10-13"></a>
 **Róm 10:13**
 *Mert minden, a ki segítségül hívja az Úr nevét, megtartatik.*
 Pál szó szerint idézi a LXX Jóel 2:32-t: "minden, a ki segítségül hívja az Úr nevét, megtartatik." — erre épül a 10:14 kérdéssora.
+Funkció: az ÚSZ szó szerint idézi a Jóel 2:32-t
 
 <a id="ige-róm-10-14"></a>
 **Róm 10:14**
 *Mimódon hívják azért segítségül azt, a kiben nem hisznek? Mimódon hisznek pedig abban, a ki felől nem hallottak? Mimódon hallanának pedig prédikáló nélkül?*
 Pál közvetlenül folytatja az érvelést: "Mimódon hívják segítségül, a kiben nem hittek?" — ugyanaz a görög ige, mint 10:13-nál.
+Funkció: Pál közvetlenül továbbviszi az érvelést ugyanabban a szakaszban
 
 <a id="ige-1kor-1-2"></a>
 **1Kor 1:2**
 *Az Isten gyülekezetének, a mely Korinthusban van, a Krisztus Jézusban megszentelteknek, elhívott szenteknek, mindazokkal egybe, a kik a mi Urunk Jézus Krisztus nevét segítségül hívják bármely helyen, a magokén és a miénken:*
 "…mindazokkal egybe, a kik a mi Urunk Jézus Krisztus nevét segítségül hívják bármely helyen" — a formula első explicit alkalmazása Krisztusra, a gyülekezet önmeghatározása.
+Funkció: a formula önálló egyházi azonosító-formulává válik
 
 <a id="ige-2tim-2-22"></a>
 **2Tim 2:22**
 *Az ifjúkori kivánságokat pedig kerüld; hanem kövessed az igazságot, a hitet, a szeretetet, a békességet azokkal egyetembe, a kik segítségül hívják az Urat tiszta szívből.*
 "…azokkal egyetembe, a kik segítségül hívják az Urat tiszta szívből" — a segítségül hívás mint közösségválasztási kritérium.
+Funkció: a formula önálló egyházi azonosító-formulává válik
 
 <a id="ige-1pét-1-17"></a>
 **1Pét 1:17**
 *És ha Atyának hívjátok őt, a ki személyválogatás nélkül ítél, kinek-kinek cselekedete szerint, félelemmel töltsétek a ti jövevénységtek idejét:*
 "…ha Atyának hívjátok őt…" — az invokáció "Atya" megszólításra alkalmazva; a görög ige azonos, a Károli nem tartja meg a "segítségül" szót.
+Funkció: a formula önálló egyházi azonosító-formulává válik
 
 <!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#elofordulasok -->
 

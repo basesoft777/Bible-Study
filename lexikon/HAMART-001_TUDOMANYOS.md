@@ -63,58 +63,58 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 | Igehely | Kulcsszó | Funkció | PaRDeS-szint | Strong | Szótári jelentés | UBS-jelentés | Megbízhatóság · azonosítás módja |
 |---|---|---|---|---|---|---|---|
-| [1Móz 3:14](#ige-1móz-3-14)[^1] | אָר֤וּר ('a.Rur) | — | Peshat | H0779 | BDB H0779 Qal pass. ptc. — átkozott — jellemzően felkiáltásként, ellentétpárja: áldott | — *(ÓSZ)* | — · — |
-| [1Móz 3:16](#ige-1móz-3-16)[^2] | עִצְּבוֹנֵ֣ (i.tze.vo.Ne) | — | Peshat | H6093 | BDB H6093 — fájdalom, gyötrelmes fáradság — birtokos raggal, vajúdás értelemben | — *(ÓSZ)* | — · — |
-| [1Móz 3:17](#ige-1móz-3-17)[^3] | אֲדָמָה֙ ('a.da.Mah) | — | Peshat/Drash | H0127 | BDB H0127 1 — föld (mint megművelt, terményt adó talaj) | — *(ÓSZ)* | — · — |
-| [1Móz 3:18](#ige-1móz-3-18)[^4] | ק֥וֹץ (Kotz) | — | Peshat | H6975 | BDB H6975 1 — tövisbokor, tövis | — *(ÓSZ)* | — · — |
-| [1Móz 3:19](#ige-1móz-3-19)[^5] | אֲדָמָ֔ה ('a.da.Mah) | — | Peshat | H0127 | BDB H0127 3 — föld mint anyagi szubsztancia; amelyből az ember lett | — *(ÓSZ)* | — · — |
-| [1Móz 3:23](#ige-1móz-3-23)[^6] | אֲדָמָ֔ה ('a.da.Mah) | — | Peshat | H0127 | BDB H0127 3 — föld mint anyagi szubsztancia; amelyből az ember lett | — *(ÓSZ)* | — · — |
-| [1Móz 4:2-3](#ige-1móz-4-2-3)[^7] | אֲדָמָֽה ('a.da.Mah) | — | Peshat | H0127 | BDB H0127 1 — föld (mint megművelt, terményt adó talaj) | — *(ÓSZ)* | — · — |
-| [1Móz 4:7](#ige-1móz-4-7)[^8] | חַטָּ֣את (cha.Tat) | — | Peshat/Drash | H2403 | BDB H2403 1 — a bűn az ajtóban (Kainénál) leselkedő vadállat | — *(ÓSZ)* | — · — |
-| [1Móz 4:10-11](#ige-1móz-4-10-11)[^9] | אָר֣וּר ('a.Rur) | — | Peshat/Remez | H0779 | BDB H0779 Qal pass. ptc. — átkozott — l. Gen 3:14, 17; 4:11; 9:25 | — *(ÓSZ)* | — · — |
-| [1Móz 4:12](#ige-1móz-4-12)[^10] | אֲדָמָ֔ה ('a.da.Mah) | — | Peshat | H0127 | BDB H0127 1 — föld (mint megművelt, terményt adó talaj) | — *(ÓSZ)* | — · — |
-| [1Móz 4:14](#ige-1móz-4-14)[^11] | אֲדָמָ֔ה ('a.da.Mah) | — | Peshat | H0127 | BDB H0127 1 — föld (mint megművelt, terményt adó talaj) | — *(ÓSZ)* | — · — |
-| [1Móz 5:29](#ige-1móz-5-29)[^12] | עִצְּב֣וֹן ('i.tze.Von) | — | Remez | H6093 | BDB H6093 — szerkezetes forma: ’kezünk fáradsága’ 5:29 (mindkettő a földműveléshez kötődik) | — *(ÓSZ)* | — · — |
-| [1Móz 6:5](#ige-1móz-6-5)[^13] | רַ֖ע (ra') | — | Peshat/Drash | H7451 | BDB H7451 1 — rossz, gonosz | — *(ÓSZ)* | — · — |
-| [1Móz 6:7](#ige-1móz-6-7)[^14] | אֲדָמָ֔ה ('a.da.Mah) | — | Peshat | H0127 | BDB H0127 4 — föld mint a föld látható felszíne | — *(ÓSZ)* | — · — |
-| [1Móz 6:11](#ige-1móz-6-11)[^15] | תִּשָּׁחֵ֥ת (ti.sha.Chet) | — | Peshat | H7843 | BDB H7843 Nif'ál — megromlani, erkölcsi/vallási értelemben megromlott — a földről, Gen 6:11-12 | — *(ÓSZ)* | — · — |
-| [1Móz 6:12](#ige-1móz-6-12)[^16] | הִשְׁחִ֧ית (hish.Chit) | — | Peshat/Drash | H7843 | BDB H7843 Nif'ál / Hif'íl — megromlani; erkölcsi/vallási értelemben megromlott | — *(ÓSZ)* | — · — |
-| [1Móz 6:13](#ige-1móz-6-13)[^17] | חָמָ֖ס (cha.Mas) | — | Peshat/Drash/Sod | H2555 | BDB H2555 — erőszak, jogtalanság — vö. Gen 6:11, 13 | — *(ÓSZ)* | — · — |
-| [1Móz 6:17](#ige-1móz-6-17)[^18] | שַׁחֵ֣ת (sha.Chet) | — | Peshat | H7843 | BDB H7843 Pi'él — elrontani, tönkretenni... elpusztítani ’minden testet’, Gen 6:17 | — *(ÓSZ)* | — · — |
-| [1Móz 8:21](#ige-1móz-8-21)[^19] | קַלֵּ֨ל (ka.Lel) | — | Remez | H7043 | BDB H7043 1 — csekélynek lenni, vízről: apadni; Pi'él: megátkozni | — *(ÓSZ)* | — · — |
-| [1Móz 9:11](#ige-1móz-9-11)[^20] | שַׁחֵ֥ת (sha.Chet) | — | Remez | H7843 | BDB H7843 Pi'él — föld, Gen 9:11 | — *(ÓSZ)* | — · — |
-| [1Móz 9:15](#ige-1móz-9-15)[^21] | שַׁחֵ֖ת (sha.Chet) | — | Remez | H7843 | BDB H7843 Pi'él — föld, Gen 9:11 | — *(ÓSZ)* | — · — |
-| [1Móz 9:25](#ige-1móz-9-25)[^22] | אָר֣וּר ('a.Rur) | — | Peshat | H0779 | BDB H0779 Qal pass. ptc. — átkozott — l. Gen 3:14, 17; 4:11; 9:25 | — *(ÓSZ)* | — · — |
-| [1Móz 12:3](#ige-1móz-12-3)[^23] | אָאֹ֑ר ('a.'Or) | — | Remez/Drash | H0779 | BDB H0779 Qal impf. — megátkozni — ellentétpárja: megáldani, 12:3 | — *(ÓSZ)* | — · — |
-| [5Móz 27:15-26](#ige-5móz-27-15-26)[^24] | אָר֣וּר ('a.Rur) | — | Remez | H0779 | BDB H0779 Qal pass. ptc. — átkozott — jellemzően felkiáltásként, ellentétpárja: áldott — 5Móz 27:15-26 | — *(ÓSZ)* | — · — |
-| [5Móz 28:16-19](#ige-5móz-28-16-19)[^25] | אָר֥וּר ('a.Rur) | — | Remez | H0779 | BDB H0779 Qal pass. ptc. — átkozott — ellentétpárja: áldott | — *(ÓSZ)* | — · — |
-| [Zsolt 14:1](#ige-zsolt-14-1)[^26] | הִֽשְׁחִ֗יתוּ (hish.Chi.tu) | — | Remez | H7843 | BDB H7843 Hif'íl — megrontani, erkölcsi értelemben megrontani — ’utálatos tettet követtek el’, Zsolt 14:1 = 53:2 | — *(ÓSZ)* | — · — |
-| [Zsolt 53:2](#ige-zsolt-53-2)[^27] | הִֽ֝שְׁחִ֗יתוּ (hish.Chi.tu) | — | Remez | H7843 | BDB H7843 Hif'íl — megrontani, erkölcsi értelemben megrontani — ’utálatos tettet követtek el’, Zsolt 14:1 = 53:2 | — *(ÓSZ)* | — · — |
-| [Zsolt 74:20](#ige-zsolt-74-20)[^28] | חָמָֽס (cha.Mas) | — | Remez | H2555 | BDB H2555 — erőszak, jogtalanság — ’a föld sötét helyei megteltek [erőszakkal]’, Zsolt 74:20 | — *(ÓSZ)* | — · — |
-| [Ézs 24:5-6](#ige-ézs-24-5-6)[^29] | — | — | Drash | — | BDB H0423 3 — átok (a) Istentől — Ézs 24:6 | — *(ÓSZ)* | — · — |
-| [Ézs 60:18](#ige-ézs-60-18)[^30] | חָמָס֙ (cha.Mas) | — | Sod | H2555 | BDB H2555 — ’pusztítás’ szó párjaként — Ézs 60:18 | — *(ÓSZ)* | — · — |
-| [Jer 6:7](#ige-jer-6-7)[^31] | חָמָ֣ס (cha.Mas) | — | Remez | H2555 | BDB H2555 — ’pusztítás’ szó párjaként — Jer 6:7 | — *(ÓSZ)* | — · — |
-| [Jer 17:5](#ige-jer-17-5)[^32] | אָר֤וּר ('a.Rur) | — | Drash | H0779 | BDB H0779 Qal pass. ptc. — átkozott — jellemzően felkiáltásként, ellentétpárja: áldott — Jer 11:3; 17:5 | — *(ÓSZ)* | — · — |
-| [Jer 51:46](#ige-jer-51-46)[^33] | חָמָ֣ס (cha.Mas) | — | Remez | H2555 | BDB H2555 — erőszak a földön — Jer 51:46, vö. 1Móz 6:11, 13 | — *(ÓSZ)* | — · — |
-| [Ez 7:23](#ige-ez-7-23)[^34] | חָמָֽס (cha.Mas) | — | Remez | H2555 | BDB H2555 — erőszak, jogtalanság — ’megtelt a város [erőszakkal]’, Ez 7:23; 28:16 | — *(ÓSZ)* | — · — |
-| [Ez 8:17](#ige-ez-8-17)[^35] | חָמָ֗ס (cha.Mas) | — | Remez | H2555 | BDB H2555 — erőszak, jogtalanság — vö. 1Móz 6:11, 13; Ez 8:17 | — *(ÓSZ)* | — · — |
-| [Ez 28:16](#ige-ez-28-16)[^36] | חָמָ֖ס (cha.Mas) | — | Remez | H2555 | BDB H2555 — erőszak, jogtalanság — ’megtelt a város [erőszakkal]’, Ez 7:23; 28:16 | — *(ÓSZ)* | — · — |
-| [Hós 4:1-3](#ige-hós-4-1-3)[^37] | — | — | Drash | — | — | — *(ÓSZ)* | — · — |
-| [Jón 3:8](#ige-jón-3-8)[^38] | חָמָ֖ס (cha.Mas) | — | Drash | H2555 | BDB H2555 — erőszak a kezeikben — Jón 3:8 | — *(ÓSZ)* | — · — |
-| [Mik 6:12](#ige-mik-6-12)[^39] | חָמָ֔ס (cha.Mas) | — | Remez | H2555 | BDB H2555 — általában az emberek durva gonoszsága, zajos, vad kíméletlensége — Mik 6:12 | — *(ÓSZ)* | — · — |
-| [Hab 1:2](#ige-hab-1-2)[^40] | חָמָ֖ס (cha.Mas) | — | Drash | H2555 | BDB H2555 — általában az emberek durva gonoszsága, zajos, vad kíméletlensége — Hab 1:2 | — *(ÓSZ)* | — · — |
-| [Hab 2:8](#ige-hab-2-8)[^41] | חֲמַס (cha.mas-) | — | Drash | H2555 | BDB H2555 — erőszak, kifejezetten fizikai erőszak — Hab 2:8, 17 (kétszer a versben) | — *(ÓSZ)* | — · — |
-| [Hab 2:17](#ige-hab-2-17)[^42] | חֲמַס (cha.mas-) | — | Drash | H2555 | BDB H2555 — erőszak, kifejezetten fizikai erőszak — Hab 2:8, 17 (kétszer a versben) | — *(ÓSZ)* | — · — |
-| [Sof 1:9](#ige-sof-1-9)[^43] | חָמָ֥ס (cha.Mas) | — | Remez | H2555 | BDB H2555 — általában az emberek durva gonoszsága, zajos, vad kíméletlensége — Sof 1:9 | — *(ÓSZ)* | — · — |
-| [Mt 15:19](#ige-mt-15-19)[^44] | — | — | Drash | — | — | — *(nincs G-token)* | — · — |
-| [Mk 7:21-23](#ige-mk-7-21-23)[^45] | — | — | Drash | — | — | — *(nincs G-token)* | — · — |
-| [Róm 8:20-22](#ige-róm-8-20-22)[^46] | φθορᾶς (phthoras) | — | Drash/Sod | G5356 | — | 23.205 — rothadni vagy bomlani, szerves anyagra vonatkoztatva *(jelölt, nem egyértelmű)* | — · — |
-| [Gal 3:10](#ige-gal-3-10)[^47] | ἐπικατάρατος (epikataratos) | — | Drash | G1944 | — | 33.475 — átkozott állapotra vonatkozó | — · — |
-| [Gal 3:13](#ige-gal-3-13)[^48] | ἐπικατάρατος (epikataratos) | — | Drash/Sod | G1944 | — | 33.475 — átkozott állapotra vonatkozó | — · — |
-| [Zsid 6:7-8](#ige-zsid-6-7-8)[^49] | κατάρας (kataras) | — | Remez/Drash | G2671 | — | 33.474 — az, amit megátkoztak *(jelölt, nem egyértelmű)* | — · — |
-| [2Pét 3:6-7](#ige-2pét-3-6-7)[^50] | — | — | Drash | — | — | — *(nincs G-token)* | — · — |
-| [Jel 11:18](#ige-jel-11-18)[^51] | διαφθείροντας (diaphtheirontas) | — | Sod | G1311 | — | 20.40 — valakinek vagy valaminek a teljes pusztulását okozni *(jelölt, nem egyértelmű)*; 88.266 — valakit romlottá vagy züllötté tenni, az erkölcsi pusztulás egy fajtájaként *(jelölt, nem egyértelmű)* | — · — |
-| [Jel 19:2](#ige-jel-19-2)[^52] | ἔφθειρεν (ephtheiren) | — | Remez/Sod | G5351 | — | 88.266 — valakit romlottá vagy züllötté tenni, az erkölcsi pusztulás egy fajtájaként | — · — |
+| [1Móz 3:14](#ige-1móz-3-14) | אָר֤וּר ('a.Rur) | — | Peshat | H0779 | BDB H0779 Qal pass. ptc. — átkozott — jellemzően felkiáltásként, ellentétpárja: áldott | — *(ÓSZ)* | — · —[^1] |
+| [1Móz 3:16](#ige-1móz-3-16) | עִצְּבוֹנֵ֣ (i.tze.vo.Ne) | — | Peshat | H6093 | BDB H6093 — fájdalom, gyötrelmes fáradság — birtokos raggal, vajúdás értelemben | — *(ÓSZ)* | — · —[^2] |
+| [1Móz 3:17](#ige-1móz-3-17) | אֲדָמָה֙ ('a.da.Mah) | — | Peshat/Drash | H0127 | BDB H0127 1 — föld (mint megművelt, terményt adó talaj) | — *(ÓSZ)* | — · —[^3] |
+| [1Móz 3:18](#ige-1móz-3-18) | ק֥וֹץ (Kotz) | — | Peshat | H6975 | BDB H6975 1 — tövisbokor, tövis | — *(ÓSZ)* | — · —[^4] |
+| [1Móz 3:19](#ige-1móz-3-19) | אֲדָמָ֔ה ('a.da.Mah) | — | Peshat | H0127 | BDB H0127 3 — föld mint anyagi szubsztancia; amelyből az ember lett | — *(ÓSZ)* | — · —[^5] |
+| [1Móz 3:23](#ige-1móz-3-23) | אֲדָמָ֔ה ('a.da.Mah) | — | Peshat | H0127 | BDB H0127 3 — föld mint anyagi szubsztancia; amelyből az ember lett | — *(ÓSZ)* | — · —[^6] |
+| [1Móz 4:2-3](#ige-1móz-4-2-3) | אֲדָמָֽה ('a.da.Mah) | — | Peshat | H0127 | BDB H0127 1 — föld (mint megművelt, terményt adó talaj) | — *(ÓSZ)* | — · —[^7] |
+| [1Móz 4:7](#ige-1móz-4-7) | חַטָּ֣את (cha.Tat) | — | Peshat/Drash | H2403 | BDB H2403 1 — a bűn az ajtóban (Kainénál) leselkedő vadállat | — *(ÓSZ)* | — · —[^8] |
+| [1Móz 4:10-11](#ige-1móz-4-10-11) | אָר֣וּר ('a.Rur) | — | Peshat/Remez | H0779 | BDB H0779 Qal pass. ptc. — átkozott — l. Gen 3:14, 17; 4:11; 9:25 | — *(ÓSZ)* | — · —[^9] |
+| [1Móz 4:12](#ige-1móz-4-12) | אֲדָמָ֔ה ('a.da.Mah) | — | Peshat | H0127 | BDB H0127 1 — föld (mint megművelt, terményt adó talaj) | — *(ÓSZ)* | — · —[^10] |
+| [1Móz 4:14](#ige-1móz-4-14) | אֲדָמָ֔ה ('a.da.Mah) | — | Peshat | H0127 | BDB H0127 1 — föld (mint megművelt, terményt adó talaj) | — *(ÓSZ)* | — · —[^11] |
+| [1Móz 5:29](#ige-1móz-5-29) | עִצְּב֣וֹן ('i.tze.Von) | — | Remez | H6093 | BDB H6093 — szerkezetes forma: ’kezünk fáradsága’ 5:29 (mindkettő a földműveléshez kötődik) | — *(ÓSZ)* | — · —[^12] |
+| [1Móz 6:5](#ige-1móz-6-5) | רַ֖ע (ra') | — | Peshat/Drash | H7451 | BDB H7451 1 — rossz, gonosz | — *(ÓSZ)* | — · —[^13] |
+| [1Móz 6:7](#ige-1móz-6-7) | אֲדָמָ֔ה ('a.da.Mah) | — | Peshat | H0127 | BDB H0127 4 — föld mint a föld látható felszíne | — *(ÓSZ)* | — · —[^14] |
+| [1Móz 6:11](#ige-1móz-6-11) | תִּשָּׁחֵ֥ת (ti.sha.Chet) | — | Peshat | H7843 | BDB H7843 Nif'ál — megromlani, erkölcsi/vallási értelemben megromlott — a földről, Gen 6:11-12 | — *(ÓSZ)* | — · —[^15] |
+| [1Móz 6:12](#ige-1móz-6-12) | הִשְׁחִ֧ית (hish.Chit) | — | Peshat/Drash | H7843 | BDB H7843 Nif'ál / Hif'íl — megromlani; erkölcsi/vallási értelemben megromlott | — *(ÓSZ)* | — · —[^16] |
+| [1Móz 6:13](#ige-1móz-6-13) | חָמָ֖ס (cha.Mas) | — | Peshat/Drash/Sod | H2555 | BDB H2555 — erőszak, jogtalanság — vö. Gen 6:11, 13 | — *(ÓSZ)* | — · —[^17] |
+| [1Móz 6:17](#ige-1móz-6-17) | שַׁחֵ֣ת (sha.Chet) | — | Peshat | H7843 | BDB H7843 Pi'él — elrontani, tönkretenni... elpusztítani ’minden testet’, Gen 6:17 | — *(ÓSZ)* | — · —[^18] |
+| [1Móz 8:21](#ige-1móz-8-21) | קַלֵּ֨ל (ka.Lel) | — | Remez | H7043 | BDB H7043 1 — csekélynek lenni, vízről: apadni; Pi'él: megátkozni | — *(ÓSZ)* | — · —[^19] |
+| [1Móz 9:11](#ige-1móz-9-11) | שַׁחֵ֥ת (sha.Chet) | — | Remez | H7843 | BDB H7843 Pi'él — föld, Gen 9:11 | — *(ÓSZ)* | — · —[^20] |
+| [1Móz 9:15](#ige-1móz-9-15) | שַׁחֵ֖ת (sha.Chet) | — | Remez | H7843 | BDB H7843 Pi'él — föld, Gen 9:11 | — *(ÓSZ)* | — · —[^21] |
+| [1Móz 9:25](#ige-1móz-9-25) | אָר֣וּר ('a.Rur) | — | Peshat | H0779 | BDB H0779 Qal pass. ptc. — átkozott — l. Gen 3:14, 17; 4:11; 9:25 | — *(ÓSZ)* | — · —[^22] |
+| [1Móz 12:3](#ige-1móz-12-3) | אָאֹ֑ר ('a.'Or) | — | Remez/Drash | H0779 | BDB H0779 Qal impf. — megátkozni — ellentétpárja: megáldani, 12:3 | — *(ÓSZ)* | — · —[^23] |
+| [5Móz 27:15-26](#ige-5móz-27-15-26) | אָר֣וּר ('a.Rur) | — | Remez | H0779 | BDB H0779 Qal pass. ptc. — átkozott — jellemzően felkiáltásként, ellentétpárja: áldott — 5Móz 27:15-26 | — *(ÓSZ)* | — · —[^24] |
+| [5Móz 28:16-19](#ige-5móz-28-16-19) | אָר֥וּר ('a.Rur) | — | Remez | H0779 | BDB H0779 Qal pass. ptc. — átkozott — ellentétpárja: áldott | — *(ÓSZ)* | — · —[^25] |
+| [Zsolt 14:1](#ige-zsolt-14-1) | הִֽשְׁחִ֗יתוּ (hish.Chi.tu) | — | Remez | H7843 | BDB H7843 Hif'íl — megrontani, erkölcsi értelemben megrontani — ’utálatos tettet követtek el’, Zsolt 14:1 = 53:2 | — *(ÓSZ)* | — · —[^26] |
+| [Zsolt 53:2](#ige-zsolt-53-2) | הִֽ֝שְׁחִ֗יתוּ (hish.Chi.tu) | — | Remez | H7843 | BDB H7843 Hif'íl — megrontani, erkölcsi értelemben megrontani — ’utálatos tettet követtek el’, Zsolt 14:1 = 53:2 | — *(ÓSZ)* | — · —[^27] |
+| [Zsolt 74:20](#ige-zsolt-74-20) | חָמָֽס (cha.Mas) | — | Remez | H2555 | BDB H2555 — erőszak, jogtalanság — ’a föld sötét helyei megteltek [erőszakkal]’, Zsolt 74:20 | — *(ÓSZ)* | — · —[^28] |
+| [Ézs 24:5-6](#ige-ézs-24-5-6) | — | — | Drash | — | BDB H0423 3 — átok (a) Istentől — Ézs 24:6 | — *(ÓSZ)* | — · —[^29] |
+| [Ézs 60:18](#ige-ézs-60-18) | חָמָס֙ (cha.Mas) | — | Sod | H2555 | BDB H2555 — ’pusztítás’ szó párjaként — Ézs 60:18 | — *(ÓSZ)* | — · —[^30] |
+| [Jer 6:7](#ige-jer-6-7) | חָמָ֣ס (cha.Mas) | — | Remez | H2555 | BDB H2555 — ’pusztítás’ szó párjaként — Jer 6:7 | — *(ÓSZ)* | — · —[^31] |
+| [Jer 17:5](#ige-jer-17-5) | אָר֤וּר ('a.Rur) | — | Drash | H0779 | BDB H0779 Qal pass. ptc. — átkozott — jellemzően felkiáltásként, ellentétpárja: áldott — Jer 11:3; 17:5 | — *(ÓSZ)* | — · —[^32] |
+| [Jer 51:46](#ige-jer-51-46) | חָמָ֣ס (cha.Mas) | — | Remez | H2555 | BDB H2555 — erőszak a földön — Jer 51:46, vö. 1Móz 6:11, 13 | — *(ÓSZ)* | — · —[^33] |
+| [Ez 7:23](#ige-ez-7-23) | חָמָֽס (cha.Mas) | — | Remez | H2555 | BDB H2555 — erőszak, jogtalanság — ’megtelt a város [erőszakkal]’, Ez 7:23; 28:16 | — *(ÓSZ)* | — · —[^34] |
+| [Ez 8:17](#ige-ez-8-17) | חָמָ֗ס (cha.Mas) | — | Remez | H2555 | BDB H2555 — erőszak, jogtalanság — vö. 1Móz 6:11, 13; Ez 8:17 | — *(ÓSZ)* | — · —[^35] |
+| [Ez 28:16](#ige-ez-28-16) | חָמָ֖ס (cha.Mas) | — | Remez | H2555 | BDB H2555 — erőszak, jogtalanság — ’megtelt a város [erőszakkal]’, Ez 7:23; 28:16 | — *(ÓSZ)* | — · —[^36] |
+| [Hós 4:1-3](#ige-hós-4-1-3) | — | — | Drash | — | — | — *(ÓSZ)* | — · —[^37] |
+| [Jón 3:8](#ige-jón-3-8) | חָמָ֖ס (cha.Mas) | — | Drash | H2555 | BDB H2555 — erőszak a kezeikben — Jón 3:8 | — *(ÓSZ)* | — · —[^38] |
+| [Mik 6:12](#ige-mik-6-12) | חָמָ֔ס (cha.Mas) | — | Remez | H2555 | BDB H2555 — általában az emberek durva gonoszsága, zajos, vad kíméletlensége — Mik 6:12 | — *(ÓSZ)* | — · —[^39] |
+| [Hab 1:2](#ige-hab-1-2) | חָמָ֖ס (cha.Mas) | — | Drash | H2555 | BDB H2555 — általában az emberek durva gonoszsága, zajos, vad kíméletlensége — Hab 1:2 | — *(ÓSZ)* | — · —[^40] |
+| [Hab 2:8](#ige-hab-2-8) | חֲמַס (cha.mas-) | — | Drash | H2555 | BDB H2555 — erőszak, kifejezetten fizikai erőszak — Hab 2:8, 17 (kétszer a versben) | — *(ÓSZ)* | — · —[^41] |
+| [Hab 2:17](#ige-hab-2-17) | חֲמַס (cha.mas-) | — | Drash | H2555 | BDB H2555 — erőszak, kifejezetten fizikai erőszak — Hab 2:8, 17 (kétszer a versben) | — *(ÓSZ)* | — · —[^42] |
+| [Sof 1:9](#ige-sof-1-9) | חָמָ֥ס (cha.Mas) | — | Remez | H2555 | BDB H2555 — általában az emberek durva gonoszsága, zajos, vad kíméletlensége — Sof 1:9 | — *(ÓSZ)* | — · —[^43] |
+| [Mt 15:19](#ige-mt-15-19) | — | — | Drash | — | — | — *(nincs G-token)* | — · —[^44] |
+| [Mk 7:21-23](#ige-mk-7-21-23) | — | — | Drash | — | — | — *(nincs G-token)* | — · —[^45] |
+| [Róm 8:20-22](#ige-róm-8-20-22) | φθορᾶς (phthoras) | — | Drash/Sod | G5356 | — | 23.205 — rothadni vagy bomlani, szerves anyagra vonatkoztatva *(jelölt, nem egyértelmű)* | — · —[^46] |
+| [Gal 3:10](#ige-gal-3-10) | ἐπικατάρατος (epikataratos) | — | Drash | G1944 | — | 33.475 — átkozott állapotra vonatkozó | — · —[^47] |
+| [Gal 3:13](#ige-gal-3-13) | ἐπικατάρατος (epikataratos) | — | Drash/Sod | G1944 | — | 33.475 — átkozott állapotra vonatkozó | — · —[^48] |
+| [Zsid 6:7-8](#ige-zsid-6-7-8) | κατάρας (kataras) | — | Remez/Drash | G2671 | — | 33.474 — az, amit megátkoztak *(jelölt, nem egyértelmű)* | — · —[^49] |
+| [2Pét 3:6-7](#ige-2pét-3-6-7) | — | — | Drash | — | — | — *(nincs G-token)* | — · —[^50] |
+| [Jel 11:18](#ige-jel-11-18) | διαφθείροντας (diaphtheirontas) | — | Sod | G1311 | — | 20.40 — valakinek vagy valaminek a teljes pusztulását okozni *(jelölt, nem egyértelmű)*; 88.266 — valakit romlottá vagy züllötté tenni, az erkölcsi pusztulás egy fajtájaként *(jelölt, nem egyértelmű)* | — · —[^51] |
+| [Jel 19:2](#ige-jel-19-2) | ἔφθειρεν (ephtheiren) | — | Remez/Sod | G5351 | — | 88.266 — valakit romlottá vagy züllötté tenni, az erkölcsi pusztulás egy fajtájaként | — · —[^52] |
 
 [^1]: proveniencia: scope=manual | forras=Bun_kovetkezmenyeinek_gyuruzese_tematikus.md | ts=2026-09-11 | igazolas: TAHOT-igazolt
 [^2]: proveniencia: scope=manual | forras=Bun_kovetkezmenyeinek_gyuruzese_tematikus.md | ts=2026-09-11 | igazolas: TAHOT-igazolt
@@ -441,7 +441,7 @@ Négy אָרוּר (árúr) a szövetségszegés következményeiként, a 28:3-6
 **Zsid 6:7-8**
 *Mert a föld, a mely beiszsza a gyakorta reá hulló esőt és hasznos füvet terem azoknak, a kikért műveltetik, áldást nyer Istentől;*
 *A mely pedig töviseket és bojtorjánokat terem, megvetett és közel van az átokhoz, annak vége megégetés.*
-γῆ ... ἐκφέρουσα ἀκάνθας καὶ τριβόλους ... κατάρας ἐγγύς (gé ... ekferúsza akanthász kai tribolúsz ... katarász engüsz) — háromszavas lexikai egyezés a LXX 1Móz 3:17-18-cal: γῆ + ἄκανθα + τρίβολος (gé + akantha + tribolosz), a κατάρα-szócsaláddal (katara)
+γῆ ... ἐκφέρουσα ἀκάνθας καὶ τριβόλους ... κατάρας ἐγγύς (gé ... ekferúsza akanthász kai tribolúsz ... katarász engüsz) — háromszavas lexikai egyezés a LXX 1Móz 3:17-18-cal: γῆ + ἄκανθα + τρίβολος (gé + akantha + tribolosz), a κατάρα (katara)-szócsaláddal
 
 <a id="ige-2pét-3-6-7"></a>
 **2Pét 3:6-7**

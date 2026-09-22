@@ -423,6 +423,9 @@ def ubs_jelentes_cella(sor_id, igehely, strong_field):
 # 1. Előfordulások + 1/a
 # ---------------------------------------------------------------------------
 
+_RAGOZOTT_ZARO_IRASJEL_RE = re.compile(r'[,.;·]+$')
+
+
 def kulcsszo_cella(sor):
     karoli_szo = sor.get('karoli_szo') or ''
     strong_field = sor.get('strong') or ''
@@ -434,6 +437,7 @@ def kulcsszo_cella(sor):
         talalat = kiejtes_ehhez(sor['igehely'], strong)
         if talalat:
             ragozott, kiejtes, _forras = talalat
+            ragozott = _RAGOZOTT_ZARO_IRASJEL_RE.sub('', ragozott)
             reszek.append('%s (%s)' % (ragozott, kiejtes))
     eredeti = '; '.join(reszek) if reszek else EM_DASH
     if karoli_szo:
@@ -462,21 +466,27 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
 
         proveniencia = (s.get('proveniencia') or '').strip()
         igazolas = (s.get('igazolas') or '').strip()
+        labjegyzet_jel = ''
         if proveniencia or igazolas:
             lj = 'proveniencia: %s | igazolas: %s' % (proveniencia or EM_DASH, igazolas or EM_DASH)
             labjegyzetek.append(lj)
-            igehely_link += '[^%d]' % len(labjegyzetek)
+            labjegyzet_jel = '[^%d]' % len(labjegyzetek)
 
         szotari_jelentes = lexikon_jelentes_cella(s)
         ubs_cella = ubs_jelentes_cella(s['id'], s['igehely'], s.get('strong') or '')
-        megb = '%s · %s' % (s.get('megbizhatosag') or EM_DASH, s.get('azonositas_modja') or EM_DASH)
+        megb = '%s · %s%s' % (s.get('megbizhatosag') or EM_DASH, s.get('azonositas_modja') or EM_DASH,
+                               labjegyzet_jel)
+
+        funkcio_teljes = s.get('funkcio') or ''
+        funkcio_cimke, _sep, funkcio_magyarazat = funkcio_teljes.partition(' — ')
+        funkcio_cella = funkcio_cimke if funkcio_teljes else EM_DASH
 
         sorok.append('| %s | %s | %s | %s | %s | %s | %s | %s |' % (
-            igehely_link, kulcsszo_cella(s), s.get('funkcio') or EM_DASH,
+            igehely_link, kulcsszo_cella(s), funkcio_cella,
             s.get('pardes_szint') or EM_DASH, s.get('strong') or EM_DASH,
             szotari_jelentes, ubs_cella, megb))
 
-        tetelek_1a.append((anchor, s))
+        tetelek_1a.append((anchor, s, funkcio_magyarazat if _sep else ''))
 
     torzs = '\n'.join(sorok)
     if labjegyzetek:
@@ -487,7 +497,7 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
 
     torzs += '\n\n#### 1/a. Az igehelyek szövege\n'
     karoli_terkep = L.load_karoli_1908()
-    for anchor, s in tetelek_1a:
+    for anchor, s, funkcio_magyarazat in tetelek_1a:
         reszek = ['<a id="%s"></a>' % anchor, '**%s**' % s['igehely']]
         for vers in igehely_lista(s['igehely']):
             szoveg = karoli_terkep.get(vers)
@@ -497,6 +507,8 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
                 reszek.append('*(%s: nincs Károli-szöveg)*' % vers)
         if s.get('kapcsolodas'):
             reszek.append(s['kapcsolodas'])
+        if funkcio_magyarazat:
+            reszek.append('Funkció: %s' % funkcio_magyarazat)
         torzs += '\n\n' + '\n'.join(reszek)
 
     hatokor = ('Ez a blokk a `[ID: %s]` motívum %d igehely-sorát fedi az `elofordulasok.tsv`-ből, '
