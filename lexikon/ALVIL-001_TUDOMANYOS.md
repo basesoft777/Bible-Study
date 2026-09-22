@@ -452,7 +452,7 @@ Júda ítélete — a Seól kitágítja torkát
 <a id="ige-ézs-14-9"></a>
 **Ézs 14:9**
 *Alant a sír megindul te miattad megérkezésedkor, miattad felriasztja árnyait, a föld minden hatalmasit, felkölti székeikről a népek minden királyait;*
-Babilon-gúnydal — a Seól megmozdul (ugyanaz a szakasz, ahol a רְפָאִים is szerepel, l. HODIT-001)
+Babilon-gúnydal — a Seól megmozdul (ugyanaz a szakasz, ahol a רְפָאִים (refáím) is szerepel, l. HODIT-001)
 
 <a id="ige-ézs-14-11"></a>
 **Ézs 14:11**
@@ -537,17 +537,17 @@ a kevély, mint a Seól, sosem elégszik meg
 <a id="ige-mt-11-23"></a>
 **Mt 11:23**
 *Te is Kapernaum, a ki az égig felmagasztaltattál, a pokolig fogsz megaláztatni; mert ha Sodomában történnek vala azok a csodák, a melyek te benned lőnek, mind e mai napig megmaradt volna.*
-ᾍδης — párhuzamos hely Luk 10:15-höz
+ᾍδης (hadész) — párhuzamos hely Luk 10:15-höz
 
 <a id="ige-luk-10-15"></a>
 **Luk 10:15**
 *És te Kapernaum, mely mind az égig felmagasztaltattál, a pokolig fogsz lealáztatni.*
-ᾍδης — "égig felmagasztaltattál... hádészig fogsz lealáztatni" (Kapernaum ítélete)
+ᾍδης (hadész) — "égig felmagasztaltattál... hádészig fogsz lealáztatni" (Kapernaum ítélete)
 
 <a id="ige-luk-16-23"></a>
 **Luk 16:23**
 *És a pokolban felemelé az ő szemeit, kínokban lévén, és látá Ábrahámot távol, és Lázárt annak kebelében.*
-ᾍδης — a gazdag ember kínban
+ᾍδης (hadész) — a gazdag ember kínban
 
 <a id="ige-apcsel-2-27"></a>
 **ApCsel 2:27**
@@ -562,18 +562,18 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 <a id="ige-jel-1-18"></a>
 **Jel 1:18**
 *És az Élő; pedig halott valék, és ímé élek örökkön örökké Ámen, és nálam vannak a pokolnak és a halálnak kulcsai.*
-ᾍδης — Krisztus kezében a halál és a hádész kulcsai
+ᾍδης (hadész) — Krisztus kezében a halál és a hádész kulcsai
 
 <a id="ige-jel-6-8"></a>
 **Jel 6:8**
 *És látám, és ímé egy sárgaszínű ló; és a ki rajta üle, annak a neve halál, és a pokol követi vala azt; és adaték azoknak hatalom a földnek negyedrészén, hogy öljenek fegyverrel és éhséggel és halállal és a földnek fenevadai által.*
-ᾍδης — a sápadt lovon ülő Halál nyomában jár a hádész
+ᾍδης (hadész) — a sápadt lovon ülő Halál nyomában jár a hádész
 
 <a id="ige-jel-20-13-14"></a>
 **Jel 20:13-14**
 *És a tenger kiadá a halottakat, a kik ő benne voltak; és a halál és a pokol is kiadá a halottakat, a kik ő nálok voltak; és megítéltetének mindnyájan az ő cselekedeteik szerint.*
 *A pokol pedig és a halál vettetének a tűznek tavába. Ez a második halál, a tűznek tava.*
-ᾍδης — kiadja halottait, majd a tűz tavába vettetik
+ᾍδης (hadész) — kiadja halottait, majd a tűz tavába vettetik
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#elofordulasok -->
 
@@ -585,7 +585,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumhoz.
 
-**Negatív kritérium** (`motivumok.tsv`): az igehelynek a שְׁאוֹל gyököt (ÚSZ-ben az LXX-közvetített ᾍδης megfelelőjét) kell tartalmaznia — a תְּהוֹם (tehóm) / ἄβυσσος (abüsszosz) szócsalád explicit kizárva (kozmikus, nem egyéni-halotti fogalom, l. TEREMT-001 elhatárolása)
+**Negatív kritérium** (`motivumok.tsv`): az igehelynek a שְׁאוֹל (seól) gyököt (ÚSZ-ben az LXX-közvetített ᾍδης (hadész) megfelelőjét) kell tartalmaznia — a תְּהוֹם (tehóm) / ἄβυσσος (abüsszosz) szócsalád explicit kizárva (kozmikus, nem egyéni-halotti fogalom, l. TEREMT-001 elhatárolása)
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#kizart -->
 
@@ -1032,7 +1032,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 | PaRDeS-szint | Remez/Drash |
 | Státusz | publikálható (`v2`, 2026.09.10) |
 | Azonosság típusa | lexikai |
-| Negatív kritérium | az igehelynek a שְׁאוֹל gyököt (ÚSZ-ben az LXX-közvetített ᾍδης megfelelőjét) kell tartalmaznia — a תְּהוֹם (tehóm) / ἄβυσσος (abüsszosz) szócsalád explicit kizárva (kozmikus, nem egyéni-halotti fogalom, l. TEREMT-001 elhatárolása) |
+| Negatív kritérium | az igehelynek a שְׁאוֹל (seól) gyököt (ÚSZ-ben az LXX-közvetített ᾍδης (hadész) megfelelőjét) kell tartalmaznia — a תְּהוֹם (tehóm) / ἄβυσσος (abüsszosz) szócsalád explicit kizárva (kozmikus, nem egyéni-halotti fogalom, l. TEREMT-001 elhatárolása) |
 | Fölérendelt fogalom | a halál/túlvilág fogalma általában, a שְׁאוֹל (seól) / ᾍδης (hadész) lexémán kívül |
 | Forrás-study | `tematikus_lezart/Hadesz_Seol_tematikus.md` |
 | Kereszthivatkozás-napló | `tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md` |

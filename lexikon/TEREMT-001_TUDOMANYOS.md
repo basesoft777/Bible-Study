@@ -210,7 +210,7 @@ Mózes áldása Józsefen — "a mélység áldásaival alant" (csaknem szó sze
 <a id="ige-zsolt-33-7"></a>
 **Zsolt 33:7**
 *Összegyűjti a tenger vizeit, mintegy tömlőbe; tárházakba rakja a hullámokat.*
-"összegyűjti mint tömlőbe a tenger vizét, tárházba rakja a mélységeket" (Károli 1908 "hullámokat"-tal fordítja a תְּהוֹם-ot)
+"összegyűjti mint tömlőbe a tenger vizét, tárházba rakja a mélységeket" (Károli 1908 "hullámokat"-tal fordítja a תְּהוֹם (tehóm)-ot)
 
 <a id="ige-zsolt-36-7"></a>
 **Zsolt 36:7**
@@ -250,7 +250,7 @@ Mózes áldása Józsefen — "a mélység áldásaival alant" (csaknem szó sze
 <a id="ige-zsolt-107-26"></a>
 **Zsolt 107:26**
 *Az égig emelkedének, a fenékig sülyedének; lelkök elolvada az inségben.*
-"az égig emelkednek, a fenékig süllyednek" (Károli 1908 "fenékig"-gel fordítja a תְּהוֹם-ot)
+"az égig emelkednek, a fenékig süllyednek" (Károli 1908 "fenékig"-gel fordítja a תְּהוֹם (tehóm)-ot)
 
 <a id="ige-zsolt-135-6"></a>
 **Zsolt 135:6**
@@ -325,40 +325,40 @@ Mózes áldása Józsefen — "a mélység áldásaival alant" (csaknem szó sze
 <a id="ige-luk-8-31"></a>
 **Luk 8:31**
 *És kérék őt, hogy ne parancsolja nékik, hogy a mélységbe menjenek.*
-ἄβυσσος — a démonok kérik, ne oda küldje őket Jézus
+ἄβυσσος (abüsszosz) — a démonok kérik, ne oda küldje őket Jézus
 
 <a id="ige-róm-10-7"></a>
 **Róm 10:7**
 *Avagy: Kicsoda száll le a mélységbe? (azaz, hogy Krisztust a halálból felhozza.)*
-ἄβυσσος — "ki száll le az abüsszoszba?"
+ἄβυσσος (abüsszosz) — "ki száll le az abüsszoszba?"
 
 <a id="ige-jel-9-1-2"></a>
 **Jel 9:1-2**
 *Az ötödik angyal is trombitált, és látám, hogy egy csillag esett le az égről a földre, és adaték annak a mélység kútjának kulcsa.*
 *Megnyitá azért a mélységnek kútját: és füst jöve fel a kútból, mint egy nagy kemenczének füstje; és meghomályosodék a nap és a levegőég a kút füstje miatt.*
-ἄβυσσος — a mélység kútja megnyílik, füst és sáskák jönnek fel
+ἄβυσσος (abüsszosz) — a mélység kútja megnyílik, füst és sáskák jönnek fel
 
 <a id="ige-jel-9-11"></a>
 **Jel 9:11**
 *Királyukul pedig a mélység angyala vala felettök; annak a neve zsidóul Abaddon, görögül pedig Apollion, azaz Vesztő a neve.*
-ἄβυσσος, Ἀβαδδών/Ἀπολλύων — a mélység angyala
+ἄβυσσος (abüsszosz), Ἀβαδδών (Abaddón) / Ἀπολλύων (Apollüón) — a mélység angyala
 
 <a id="ige-jel-11-7"></a>
 **Jel 11:7**
 *És mikor elvégezik az ő bizonyságtételöket, a mélységből feljövő fenevad hadakozik ellenök, és legyőzi őket, és megöli őket.*
-ἄβυσσος — a fenevad onnan jön fel
+ἄβυσσος (abüsszosz) — a fenevad onnan jön fel
 
 <a id="ige-jel-17-8"></a>
 **Jel 17:8**
 *A fenevad, a melyet láttál, volt és nincs; és a mélységből jő fel és megy a veszedelemre. És a föld lakosai csodálkoznak (a kiknek neve nincs beírva az életnek könyvébe e világ alapítása óta) látván a fenevadat, a mely vala és nincs, noha van.*
-ἄβυσσος — a fenevad onnan jön fel
+ἄβυσσος (abüsszosz) — a fenevad onnan jön fel
 
 <a id="ige-jel-20-1-3"></a>
 **Jel 20:1-3**
 *És láték egy angyalt leszállani a mennyből, a kinél vala a mélységnek kulcsa, és egy nagy láncz a kezében.*
 *És megfogá a sárkányt, azt a régi kígyót, a ki az ördög és Sátán, és megkötözé azt ezer esztendőre,*
 *És veté őt a mélységbe, és bezárá azt és bepecsételé ő felette, hogy többé el ne hitesse a népeket, míg betelik az ezer esztendő; azután el kell néki oldoztatni egy kevés időre.*
-ἄβυσσος — Sátán megkötözve ezer évre
+ἄβυσσος (abüsszosz) — Sátán megkötözve ezer évre
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-001#elofordulasok -->
 
@@ -370,7 +370,7 @@ Mózes áldása Józsefen — "a mélység áldásaival alant" (csaknem szó sze
 
 Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumhoz.
 
-**Negatív kritérium** (`motivumok.tsv`): az igehelynek a תְּהוֹם gyököt kell tartalmaznia (ÚSZ-ben az LXX-közvetített ἄβυσσος megfelelőjét) — tematikus vízkép önmagában (pl. יָם – jám, "tenger") nem elég
+**Negatív kritérium** (`motivumok.tsv`): az igehelynek a תְּהוֹם (tehóm) gyököt kell tartalmaznia (ÚSZ-ben az LXX-közvetített ἄβυσσος (abüsszosz) megfelelőjét) — tematikus vízkép önmagában (pl. יָם – jám, "tenger") nem elég
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-001#kizart -->
 
@@ -647,7 +647,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 | PaRDeS-szint | Remez/Drash |
 | Státusz | publikálható (`v4`, 2026.09.10) |
 | Azonosság típusa | lexikai |
-| Negatív kritérium | az igehelynek a תְּהוֹם gyököt kell tartalmaznia (ÚSZ-ben az LXX-közvetített ἄβυσσος megfelelőjét) — tematikus vízkép önmagában (pl. יָם – jám, "tenger") nem elég |
+| Negatív kritérium | az igehelynek a תְּהוֹם (tehóm) gyököt kell tartalmaznia (ÚSZ-ben az LXX-közvetített ἄβυσσος (abüsszosz) megfelelőjét) — tematikus vízkép önmagában (pl. יָם – jám, "tenger") nem elég |
 | Fölérendelt fogalom | vízi/kozmikus káosz-képzetek általában, a תְּהוֹם (tehóm) / ἄβυσσος (abüsszosz) lexémán kívül |
 | Forrás-study | `tematikus_lezart/Tehom_tematikus.md` |
 | Kereszthivatkozás-napló | `tematikus_lezart/naplok/Tehom_kereszthivatkozas_naplo.md` |

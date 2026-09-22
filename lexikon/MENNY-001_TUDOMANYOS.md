@@ -91,22 +91,22 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 <a id="ige-1móz-6-2"></a>
 **1Móz 6:2**
 *És láták az Istennek fiai az emberek leányait, hogy szépek azok, és vevének magoknak feleségeket mind azok közűl, kiket megkedvelnek vala.*
-בְּנֵי הָאֱלֹהִים — "Isten fiai" látják és elveszik az emberek lányait
+בְּנֵי הָאֱלֹהִים (bené háelóhím) — "Isten fiai" látják és elveszik az emberek lányait
 
 <a id="ige-1móz-6-4"></a>
 **1Móz 6:4**
 *Az óriások valának a földön abban az időben, sőt még azután is, mikor az Isten fiai bémenének az emberek leányaihoz, és azok gyermekeket szűlének nékik. Ezek ama hatalmasok, kik eleitől fogva híres-neves emberek voltak.*
-נְפִלִים a földön; az egyesülésből születnek a גִּבֹּרִים, "ősidők óta neves emberek" — ⚠️ vitatott, hogy a nefilim és a gibborim azonosak-e
+נְפִלִים (nefilím) a földön; az egyesülésből születnek a גִּבֹּרִים (gibbórím), "ősidők óta neves emberek" — ⚠️ vitatott, hogy a nefilim és a gibborim azonosak-e
 
 <a id="ige-4móz-13-34"></a>
 **4Móz 13:34**
 *És láttunk ott óriásokat is, az óriások közül való Anáknak fiait, és olyanok valánk a magunk szemében, mint a sáskák, és az ő szemeikben is olyanok valánk.*
-a kémek jelentésében נְפִלִים — Anák fiai mint a nefilim leszármazottai (a kémek szubjektív állítása, nem a narrátoré)
+a kémek jelentésében נְפִלִים (nefilím) — Anák fiai mint a nefilim leszármazottai (a kémek szubjektív állítása, nem a narrátoré)
 
 <a id="ige-jób-1-6"></a>
 **Jób 1:6**
 *Lőn pedig egy napon, hogy eljövének az Istennek fiai, hogy udvaroljanak az Úr előtt; és eljöve a Sátán is közöttök.*
-בְּנֵי הָאֱלֹהִים megjelennek Isten színe előtt, mennyei tanácsban, Sátán is közöttük
+בְּנֵי הָאֱלֹהִים (bené háelóhím) megjelennek Isten színe előtt, mennyei tanácsban, Sátán is közöttük
 
 <a id="ige-jób-2-1"></a>
 **Jób 2:1**
@@ -116,7 +116,7 @@ ugyanaz a jelenet megismétlődik
 <a id="ige-jób-38-7"></a>
 **Jób 38:7**
 *Mikor együtt örvendezének a hajnalcsillagok, és Istennek minden fiai vigadozának?*
-a בְּנֵי אֱלֹהִים örömkiáltása a teremtéskor (névelő nélküli, rokon alak)
+a בְּנֵי אֱלֹהִים (bené elóhím) örömkiáltása a teremtéskor (névelő nélküli, rokon alak)
 
 <a id="ige-2pét-2-4-5"></a>
 **2Pét 2:4-5**
@@ -146,7 +146,7 @@ angyalok, akik "nem tartották meg fejedelemségüket", örök bilincsben — ta
 - **Mt 24:38** (nyitva, `Károli-KH (forrás-vers: 1Móz 6:2)`): tartalmilag nem az 'Isten fiai kiléte' kérdéshez, hanem az eszkatológiai-ítéleti 'mint Noé napjaiban' analógiához tartozik; eldöntendő: (a) jegyzet valamelyik study-ba, (b) önálló motívum, (c) figyelmen kívül — FELHASZNÁLÓI DÖNTÉS
 - **Luk 17:27** (nyitva, `Károli-KH (forrás-vers: 1Móz 6:2)`): tartalmilag nem az 'Isten fiai kiléte' kérdéshez, hanem az eszkatológiai-ítéleti 'mint Noé napjaiban' analógiához tartozik; eldöntendő: (a) jegyzet valamelyik study-ba, (b) önálló motívum, (c) figyelmen kívül — FELHASZNÁLÓI DÖNTÉS
 
-**Negatív kritérium** (`motivumok.tsv`): az igehelynek a בְּנֵי (הָ)אֱלֹהִים szórendi mintát VAGY a נְפִלִים szót kell tartalmaznia — a רְפָאִים (refáím) szócsalád explicit kizárva (tematikus, nem lexikai rokon, l. HODIT-001 elhatárolása)
+**Negatív kritérium** (`motivumok.tsv`): az igehelynek a בְּנֵי (הָ)אֱלֹהִים (bené (há)elóhím) szórendi mintát VAGY a נְפִלִים (nefilím) szót kell tartalmaznia — a רְפָאִים (refáím) szócsalád explicit kizárva (tematikus, nem lexikai rokon, l. HODIT-001 elhatárolása)
 
 <!-- GENERÁLT-VÉGE: lexikon#MENNY-001#kizart -->
 
@@ -324,7 +324,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 | PaRDeS-szint | Remez/Drash |
 | Státusz | publikálható (`v4`, 2026.09.10) |
 | Azonosság típusa | lexikai |
-| Negatív kritérium | az igehelynek a בְּנֵי (הָ)אֱלֹהִים szórendi mintát VAGY a נְפִלִים szót kell tartalmaznia — a רְפָאִים (refáím) szócsalád explicit kizárva (tematikus, nem lexikai rokon, l. HODIT-001 elhatárolása) |
+| Negatív kritérium | az igehelynek a בְּנֵי (הָ)אֱלֹהִים (bené (há)elóhím) szórendi mintát VAGY a נְפִלִים (nefilím) szót kell tartalmaznia — a רְפָאִים (refáím) szócsalád explicit kizárva (tematikus, nem lexikai rokon, l. HODIT-001 elhatárolása) |
 | Fölérendelt fogalom | mennyei/angyali lények általában, a בְּנֵי (הָ)אֱלֹהִים (bené (há)elóhím) / נְפִלִים (nefilím) lexémákon kívül |
 | Forrás-study | `tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md` |
 | Kereszthivatkozás-napló | `tematikus_lezart/naplok/Isten_fiai_Nefilim_Gibborim_kereszthivatkozas_naplo.md` |

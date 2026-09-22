@@ -98,7 +98,7 @@ Melkizedek, Sálem királya, egyszerre "a Felséges Isten papja" — kenyeret é
 <a id="ige-2móz-19-6"></a>
 **2Móz 19:6**
 *És lesztek ti nékem papok birodalma és szent nép. Ezek azok az ígék, melyeket el kell mondanod Izráel fiainak.*
-"Ti pedig lesztek nékem papok királysága" — a Sínai-szövetségben Izráel egésze kap kollektív király-pap identitást, a lévita papság intézményesítése előtt. Ugyanaz a כֹּהֵן gyök, mint Melkizedeknél, de itt nem egy egyén, hanem egy egész nép viseli.
+"Ti pedig lesztek nékem papok királysága" — a Sínai-szövetségben Izráel egésze kap kollektív király-pap identitást, a lévita papság intézményesítése előtt. Ugyanaz a כֹּהֵן (kóhén) gyök, mint Melkizedeknél, de itt nem egy egyén, hanem egy egész nép viseli.
 
 <a id="ige-zsolt-76-3"></a>
 **Zsolt 76:3**

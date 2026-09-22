@@ -139,17 +139,17 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 <a id="ige-1móz-14-5"></a>
 **1Móz 14:5**
 *A tizennegyedik esztendőben pedig eljöve Khédorlaomer, és a királyok, a kik ő vele valának, és megverék a Refeusokat Asztheroth Kárnajimban, és a Zuzeusokat Hámban, és az Emeusokat Sávé-Kirjáthajimban.*
-רְפָאִים, זוּזִים, אֵימִים — a keleti királyi koalíció leveri őket, mielőtt az öt lázadó várost is legyőzné
+רְפָאִים, זוּזִים, אֵימִים (refáím, zúzím, émím) — a keleti királyi koalíció leveri őket, mielőtt az öt lázadó várost is legyőzné
 
 <a id="ige-1móz-15-20"></a>
 **1Móz 15:20**
 *A Hittheusokat, Perizeusokat, és a Refeusokat.*
-רְפָאִים — a Refáim az Ábrámnak ígért föld népei között szerepel
+רְפָאִים (refáím) — a Refáim az Ábrámnak ígért föld népei között szerepel
 
 <a id="ige-4móz-13-34"></a>
 **4Móz 13:34**
 *És láttunk ott óriásokat is, az óriások közül való Anáknak fiait, és olyanok valánk a magunk szemében, mint a sáskák, és az ő szemeikben is olyanok valánk.*
-נְפִלִים ⇒ עֲנָקִים — a kémek szerint az Anákok "a Nefilimtől" származnak (a kémek saját kijelentése, nem a narrátoré)
+נְפִלִים ⇒ עֲנָקִים (nefilím ⇒ anákím) — a kémek szerint az Anákok "a Nefilimtől" származnak (a kémek saját kijelentése, nem a narrátoré)
 
 <a id="ige-5móz-2-11"></a>
 **5Móz 2:11**
@@ -159,12 +159,12 @@ ua. — folytatás
 <a id="ige-5móz-2-20"></a>
 **5Móz 2:20**
 *(Óriások földének tartották azt is; óriások laktak azon régenten, a kiket az Ammoniták Zanzummoknak hívtak.*
-זַמְזֻמִּים... רְפָאִים — az Ammoniták Zamzummimnak nevezik ugyanazt a népet
+זַמְזֻמִּים... רְפָאִים (zamzummím … refáím) — az Ammoniták Zamzummimnak nevezik ugyanazt a népet
 
 <a id="ige-5móz-3-11"></a>
 **5Móz 3:11**
 *Mert egyedül Óg, Básánnak királya maradt meg az óriások maradéka közül. Ímé az ő ágya vas-ágy, nemde Rabbátban az Ammon fiainál van-é? Kilencz sing a hosszasága és négy sing a szélessége, férfi könyök szerint.*
-עוֹג... מִיֶּתֶר הָרְפָאִים — Óg, Básán királya "a Refáim maradékából" — vaságya 9×4 könyök
+עוֹג... מִיֶּתֶר הָרְפָאִים (óg … mijjeter hárefáím) — Óg, Básán királya "a Refáim maradékából" — vaságya 9×4 könyök
 
 <a id="ige-5móz-3-13"></a>
 **5Móz 3:13**
@@ -174,7 +174,7 @@ ua. — Básán mint "a Refáim földje"
 <a id="ige-józs-12-4"></a>
 **Józs 12:4**
 *És Ógnak, a Básán királyának tartománya, a ki Refaim maradékai közül való, a ki Astarotban és Edreiben lakozik vala.*
-אֶרֶץ רְפָאִים — Óg földje "a Refáim földje"
+אֶרֶץ רְפָאִים (erec refáím) — Óg földje "a Refáim földje"
 
 <a id="ige-józs-13-12"></a>
 **Józs 13:12**
@@ -184,22 +184,22 @@ ua.
 <a id="ige-józs-15-8"></a>
 **Józs 15:8**
 *Azután felmegy a határ a Hinnom fiának völgyén, Jebuzeusnak, azaz Jeruzsálemnek déli oldala felé; felmegy továbbá e határ a hegynek tetejére, a mely átellenben van a Hinnom völgyével napnyugat felé, a mely északra van a Refaim völgyének szélén.*
-עֵמֶק רְפָאִים — Júda törzsi határának pontosítása
+עֵמֶק רְפָאִים (émek refáím) — Júda törzsi határának pontosítása
 
 <a id="ige-józs-17-15"></a>
 **Józs 17:15**
 *Józsué pedig monda nékik: Ha sok nép vagy te, menj fel az erdőre, és írts ott magadnak a Perizzeusoknak és Refaimnak földén, ha szoros néked az Efraim hegye.*
-אֶרֶץ הָרְפָאִים — "a Perizzita és a Refáim földje" — Józsué válasza Efraim/Manassé birtok-panaszára
+אֶרֶץ הָרְפָאִים (erec hárefáím) — "a Perizzita és a Refáim földje" — Józsué válasza Efraim/Manassé birtok-panaszára
 
 <a id="ige-józs-18-16"></a>
 **Józs 18:16**
 *Azután alámegy a határ a hegynek széléhez, a mely átellenben van a Hinnom fiának völgyével, a mely észak felé van a Refaim völgyében; alámegy a Hinnom völgyébe is a Jebuzeus mellett dél felé, és alámegy a Rógel forrásához.*
-עֵמֶק רְפָאִים — Benjámin törzsi határának pontosítása
+עֵמֶק רְפָאִים (émek refáím) — Benjámin törzsi határának pontosítása
 
 <a id="ige-2sám-5-18"></a>
 **2Sám 5:18**
 *A Filiszteusok pedig elérkezének és elszéledének a Réfaim völgyében.*
-עֵמֶק רְפָאִים — Refáim völgye, a filiszteusok és Dávid csatáinak színtere
+עֵמֶק רְפָאִים (émek refáím) — Refáim völgye, a filiszteusok és Dávid csatáinak színtere
 
 <a id="ige-2sám-5-22"></a>
 **2Sám 5:22**
@@ -259,17 +259,17 @@ ua. — folytatás
 <a id="ige-jób-26-5"></a>
 **Jób 26:5**
 *A halottak is megremegnek tőle; a vizek alatt levők és azok lakói is.*
-רְפָאִים יְחוֹלָלוּ מִתַּחַת לַמָּיִם — "a Refáim reszketnek a vizek alatt" — költői kontextus, halottak birodalma
+רְפָאִים יְחוֹלָלוּ מִתַּחַת לַמָּיִם (refáím jehólálú mittahat lammájim) — "a Refáim reszketnek a vizek alatt" — költői kontextus, halottak birodalma
 
 <a id="ige-zsolt-88-11"></a>
 **Zsolt 88:11**
 *Avagy a holtakkal teszel-é csodát? Felkelnek-é vajjon az árnyak, hogy dicsérjenek téged? Szela.*
-הֲרְפָאִים יָקוּמוּ יוֹדוּךָ — "vajon a Refáim fölkelnek-e, hogy dicsérjenek téged?"
+הֲרְפָאִים יָקוּמוּ יוֹדוּךָ (harefáím jákúmú jódúkhá) — "vajon a Refáim fölkelnek-e, hogy dicsérjenek téged?"
 
 <a id="ige-péld-2-18"></a>
 **Péld 2:18**
 *Mert a halálra hanyatlik az ő háza, és az ő ösvényei az élet nélkül valókhoz.*
-רְפָאִים — bölcsességi kontextus: aki eltéved, a "Refáim gyülekezetébe" jut
+רְפָאִים (refáím) — bölcsességi kontextus: aki eltéved, a "Refáim gyülekezetébe" jut
 
 <a id="ige-péld-9-18"></a>
 **Péld 9:18**
@@ -284,17 +284,17 @@ ua.
 <a id="ige-ézs-14-9"></a>
 **Ézs 14:9**
 *Alant a sír megindul te miattad megérkezésedkor, miattad felriasztja árnyait, a föld minden hatalmasit, felkölti székeikről a népek minden királyait;*
-רְפָאִים... כָּל־עַתּוּדֵי אָרֶץ — Babilon királyát gúnyosan fogadja a Seól, "fölkelti ellene a Refáimot"
+רְפָאִים... כָּל־עַתּוּדֵי אָרֶץ (refáím … kol-attúdé árec) — Babilon királyát gúnyosan fogadja a Seól, "fölkelti ellene a Refáimot"
 
 <a id="ige-ézs-17-5"></a>
 **Ézs 17:5**
 *És lészen, mint mikor az arató összefogja a gabonát és a kalászokat kezével learatja, és lészen, mint mikor valaki kalászokat szed össze a Refáim völgyében;*
-עֵמֶק רְפָאִים — aratási hasonlat
+עֵמֶק רְפָאִים (émek refáím) — aratási hasonlat
 
 <a id="ige-ézs-26-14"></a>
 **Ézs 26:14**
 *A meghaltak nem élnek, az árnyak nem kelnek föl: ezért látogatád meg és vesztéd el őket, és eltörléd emlékezetöket.*
-רְפָאִים — a halottak feltámadásáról szóló szakasz kontextusában
+רְפָאִים (refáím) — a halottak feltámadásáról szóló szakasz kontextusában
 
 <a id="ige-ézs-26-19"></a>
 **Ézs 26:19**
@@ -327,7 +327,7 @@ ua.
 - **5Móz 2:21** (elutasítva, `TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés`): a study egy több-verses tartományt (ua. — folytatás…) idézett a fenti tartalommal, de a H7497 Strong-szám ebben a konkrét versben nem áll a TAHOT_kivonat.tsv szerint (talált: —) — a lexéma a tartomány másik versében van, az külön elofordulasok-sorként bekerült
 - **2Sám 21:15** (elutasítva, `TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés`): a study egy több-verses tartományt (הָרָפָה / יְלִידֵי הָרָפָה — Góliát és r…) idézett a fenti tartalommal, de a H7497 Strong-szám ebben a konkrét versben nem áll a TAHOT_kivonat.tsv szerint (talált: —) — a lexéma a tartomány másik versében van, az külön elofordulasok-sorként bekerült
 
-**Negatív kritérium** (`motivumok.tsv`): az igehelynek a רְפָאִים gyököt (vagy a vele explicit azonosított rokon népnevet: זוּזִים, אֵימִים, זַמְזֻמִּים) kell tartalmaznia — a נְפִלִים (nefilím) / גִּבּוֹר (gibbór) szócsalád (MENNY-001) explicit kizárva, nincs közös gyök
+**Negatív kritérium** (`motivumok.tsv`): az igehelynek a רְפָאִים (refáím) gyököt (vagy a vele explicit azonosított rokon népnevet: זוּזִים – zúzím, אֵימִים – émím, זַמְזֻמִּים – zamzummím) kell tartalmaznia — a נְפִלִים (nefilím) / גִּבּוֹר (gibbór) szócsalád (MENNY-001) explicit kizárva, nincs közös gyök
 
 <!-- GENERÁLT-VÉGE: lexikon#HODIT-001#kizart -->
 
@@ -569,7 +569,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 | PaRDeS-szint | Remez/Drash |
 | Státusz | publikálható (`v3`, 2026.09.10) |
 | Azonosság típusa | lexikai |
-| Negatív kritérium | az igehelynek a רְפָאִים gyököt (vagy a vele explicit azonosított rokon népnevet: זוּזִים, אֵימִים, זַמְזֻמִּים) kell tartalmaznia — a נְפִלִים (nefilím) / גִּבּוֹר (gibbór) szócsalád (MENNY-001) explicit kizárva, nincs közös gyök |
+| Negatív kritérium | az igehelynek a רְפָאִים (refáím) gyököt (vagy a vele explicit azonosított rokon népnevet: זוּזִים – zúzím, אֵימִים – émím, זַמְזֻמִּים – zamzummím) kell tartalmaznia — a נְפִלִים (nefilím) / גִּבּוֹר (gibbór) szócsalád (MENNY-001) explicit kizárva, nincs közös gyök |
 | Fölérendelt fogalom | ókori óriás-népek/nagytermetű ellenfelek általában, a רְפָאִים (refáím) lexémán kívül |
 | Forrás-study | `tematikus_lezart/Rafaim_tematikus.md` |
 | Kereszthivatkozás-napló | `tematikus_lezart/naplok/Rafaim_kereszthivatkozas_naplo.md` |

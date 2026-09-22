@@ -213,7 +213,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 <a id="ige-1móz-4-7"></a>
 **1Móz 4:7**
 *Hiszen, ha jól cselekszel, emelt fővel járhatsz; ha pedig nem jól cselekszel, a bűn az ajtó előtt leselkedik, és reád van vágyódása; de te uralkodjál rajta.*
-חַטָּאת — a "bűn" szó első előfordulása a Szentírásban, nem áldozatként, hanem az ajtóban leselkedő hatalomként
+חַטָּאת (hattát) — a "bűn" szó első előfordulása a Szentírásban, nem áldozatként, hanem az ajtóban leselkedő hatalomként
 
 <a id="ige-1móz-4-10-11"></a>
 **1Móz 4:10-11**
@@ -249,7 +249,7 @@ A lánc forgópontja: Lámek Noé névadásában egyetlen mondatban idézi vissz
 <a id="ige-1móz-6-11"></a>
 **1Móz 6:11**
 *A föld pedig romlott vala Isten előtt és megtelék a föld erőszakoskodással.*
-וַתִּשָּׁחֵת הָאָרֶץ (vattissáchét há'árec, Nif'ál) + וַתִּמָּלֵא הָאָרֶץ חָמָס — a föld megromlott és megtelt erőszakkal
+וַתִּשָּׁחֵת הָאָרֶץ (vattissáchét há'árec, Nif'ál) + וַתִּמָּלֵא הָאָרֶץ חָמָס (vattimmálé háárec hámász) — a föld megromlott és megtelt erőszakkal
 
 <a id="ige-1móz-6-12"></a>
 **1Móz 6:12**
@@ -269,7 +269,7 @@ A lánc forgópontja: Lámek Noé névadásában egyetlen mondatban idézi vissz
 <a id="ige-1móz-8-21"></a>
 **1Móz 8:21**
 *És megérezé az Úr a kedves illatot, és monda az Úr az ő szívében: Nem átkozom meg többé a földet az emberért, mert az ember szívének gondolatja gonosz az ő ifjúságától fogva; és többé nem vesztem el mind az élő állatot, mint cselekedtem.*
-לֹא אֹסִף לְקַלֵּל (ló oszíf lekallél) עוֹד אֶת־הָאֲדָמָה — lexikai finomság: az ígéret nem a 3:17 arar-t vonja vissza, hanem egy másik igét (קָלַל, kalal, H7043) tagad meg; az emberi szív állapotára adott indoklás (רַע) változatlan marad
+לֹא אֹסִף לְקַלֵּל (ló oszíf lekallél) עוֹד אֶת־הָאֲדָמָה (ód et-háadámá) — lexikai finomság: az ígéret nem a 3:17 arar-t vonja vissza, hanem egy másik igét (קָלַל, kalal, H7043) tagad meg; az emberi szív állapotára adott indoklás (רַע) változatlan marad
 
 <a id="ige-1móz-9-11"></a>
 **1Móz 9:11**
@@ -425,7 +425,7 @@ Négy אָרוּר (árúr) a szövetségszegés következményeiként, a 28:3-6
 *Mert a teremtett világ hiábavalóság alá vettetett, nem önként, hanem azért, a ki az alá vetette.*
 *Azzal a reménységgel, hogy maga a teremtett világ is megszabadul a rothadandóság rabságától az Isten fiai dicsőségének szabadságára.*
 *Mert tudjuk, hogy az egész teremtett világ egyetemben fohászkodik és nyög mind idáig.*
-ἡ κτίσις ... τῇ ματαιότητι ὑπετάγη (hé ktiszisz ... té mataiotéti hüpetagé), majd ἡ δουλεία τῆς φθορᾶς (hé dúleia tész fthorász) — a teremtett világ továbbra is a 1Móz 3:17 átok alatt áll, és a φθορά ugyanabból a φθείρω-szócsaládból való, amellyel a LXX a 1Móz 6:11-13 sáchat-ját fordítja
+ἡ κτίσις ... τῇ ματαιότητι ὑπετάγη (hé ktiszisz ... té mataiotéti hüpetagé), majd ἡ δουλεία τῆς φθορᾶς (hé dúleia tész fthorász) — a teremtett világ továbbra is a 1Móz 3:17 átok alatt áll, és a φθορά (fthora) ugyanabból a φθείρω (ftheiró)-szócsaládból való, amellyel a LXX a 1Móz 6:11-13 sáchat-ját fordítja
 
 <a id="ige-gal-3-10"></a>
 **Gal 3:10**
@@ -435,13 +435,13 @@ Négy אָרוּר (árúr) a szövetségszegés következményeiként, a 28:3-6
 <a id="ige-gal-3-13"></a>
 **Gal 3:13**
 *Krisztus váltott meg minket a törvény átkától, átokká levén érettünk; mert meg van írva: Átkozott minden, a ki fán függ:*
-γενόμενος ὑπὲρ ἡμῶν κατάρα (genomenosz hüper hémón katara) — Krisztus átokká lesz; Pál itt az 5Móz 21:23-at idézi, de nem a LXX κεκατηραμένος (kekatéraménosz, G2672) szavával, hanem ἐπικατάρατος-szal — vagyis a két idézetet (27:26 és 21:23) ugyanarra a szóra hangolja, amely a 1Móz 3:17 átok-szava is
+γενόμενος ὑπὲρ ἡμῶν κατάρα (genomenosz hüper hémón katara) — Krisztus átokká lesz; Pál itt az 5Móz 21:23-at idézi, de nem a LXX κεκατηραμένος (kekatéraménosz, G2672) szavával, hanem ἐπικατάρατος (epikataratosz)-szal — vagyis a két idézetet (27:26 és 21:23) ugyanarra a szóra hangolja, amely a 1Móz 3:17 átok-szava is
 
 <a id="ige-zsid-6-7-8"></a>
 **Zsid 6:7-8**
 *Mert a föld, a mely beiszsza a gyakorta reá hulló esőt és hasznos füvet terem azoknak, a kikért műveltetik, áldást nyer Istentől;*
 *A mely pedig töviseket és bojtorjánokat terem, megvetett és közel van az átokhoz, annak vége megégetés.*
-γῆ ... ἐκφέρουσα ἀκάνθας καὶ τριβόλους ... κατάρας ἐγγύς (gé ... ekferúsza akanthász kai tribolúsz ... katarász engüsz) — háromszavas lexikai egyezés a LXX 1Móz 3:17-18-cal: γῆ + ἄκανθα + τρίβολος, a κατάρα-szócsaláddal
+γῆ ... ἐκφέρουσα ἀκάνθας καὶ τριβόλους ... κατάρας ἐγγύς (gé ... ekferúsza akanthász kai tribolúsz ... katarász engüsz) — háromszavas lexikai egyezés a LXX 1Móz 3:17-18-cal: γῆ + ἄκανθα + τρίβολος (gé + akantha + tribolosz), a κατάρα-szócsaláddal (katara)
 
 <a id="ige-2pét-3-6-7"></a>
 **2Pét 3:6-7**
@@ -457,7 +457,7 @@ az özönvíz-világ elpusztulása és a jelenlegi világ tűzre tartatása — 
 <a id="ige-jel-19-2"></a>
 **Jel 19:2**
 *Mert igazak és igazságosak az ő ítéletei, és azt a nagy paráznát, a mely a földet megrontotta az ő paráznaságával, elítélte, és megbosszúlta az ő szolgáinak vérét annak kezén.*
-ἥτις ἔφθειρεν τὴν γῆν ἐν τῇ πορνείᾳ αὐτῆς (hétisz eftheiren tén gén en té porneia autész) — "a mely a földet megrontotta az ő paráznaságával": ugyanaz az ige+tárgy szerkezet, mint a LXX 1Móz 6:11-ben (ἐφθάρη … ἡ γῆ)
+ἥτις ἔφθειρεν τὴν γῆν ἐν τῇ πορνείᾳ αὐτῆς (hétisz eftheiren tén gén en té porneia autész) — "a mely a földet megrontotta az ő paráznaságával": ugyanaz az ige+tárgy szerkezet, mint a LXX 1Móz 6:11-ben (ἐφθάρη … ἡ γῆ – eftharé … hé gé)
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#elofordulasok -->
 
