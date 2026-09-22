@@ -327,7 +327,7 @@ ua.
 - **5Móz 2:21** (elutasítva, `TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés`): a study egy több-verses tartományt (ua. — folytatás…) idézett a fenti tartalommal, de a H7497 Strong-szám ebben a konkrét versben nem áll a TAHOT_kivonat.tsv szerint (talált: —) — a lexéma a tartomány másik versében van, az külön elofordulasok-sorként bekerült
 - **2Sám 21:15** (elutasítva, `TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés`): a study egy több-verses tartományt (הָרָפָה / יְלִידֵי הָרָפָה — Góliát és r…) idézett a fenti tartalommal, de a H7497 Strong-szám ebben a konkrét versben nem áll a TAHOT_kivonat.tsv szerint (talált: —) — a lexéma a tartomány másik versében van, az külön elofordulasok-sorként bekerült
 
-**Negatív kritérium** (`motivumok.tsv`): az igehelynek a רְפָאִים gyököt (vagy a vele explicit azonosított rokon népnevet: זוּזִים, אֵימִים, זַמְזֻמִּים) kell tartalmaznia — a נְפִלִים/גִּבּוֹר szócsalád (MENNY-001) explicit kizárva, nincs közös gyök
+**Negatív kritérium** (`motivumok.tsv`): az igehelynek a רְפָאִים gyököt (vagy a vele explicit azonosított rokon népnevet: זוּזִים, אֵימִים, זַמְזֻמִּים) kell tartalmaznia — a נְפִלִים (nefilím) / גִּבּוֹר (gibbór) szócsalád (MENNY-001) explicit kizárva, nincs közös gyök
 
 <!-- GENERÁLT-VÉGE: lexikon#HODIT-001#kizart -->
 
@@ -569,8 +569,8 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 | PaRDeS-szint | Remez/Drash |
 | Státusz | publikálható (`v3`, 2026.09.10) |
 | Azonosság típusa | lexikai |
-| Negatív kritérium | az igehelynek a רְפָאִים gyököt (vagy a vele explicit azonosított rokon népnevet: זוּזִים, אֵימִים, זַמְזֻמִּים) kell tartalmaznia — a נְפִלִים/גִּבּוֹר szócsalád (MENNY-001) explicit kizárva, nincs közös gyök |
-| Fölérendelt fogalom | ókori óriás-népek/nagytermetű ellenfelek általában, a רְפָאִים lexémán kívül |
+| Negatív kritérium | az igehelynek a רְפָאִים gyököt (vagy a vele explicit azonosított rokon népnevet: זוּזִים, אֵימִים, זַמְזֻמִּים) kell tartalmaznia — a נְפִלִים (nefilím) / גִּבּוֹר (gibbór) szócsalád (MENNY-001) explicit kizárva, nincs közös gyök |
+| Fölérendelt fogalom | ókori óriás-népek/nagytermetű ellenfelek általában, a רְפָאִים (refáím) lexémán kívül |
 | Forrás-study | `tematikus_lezart/Rafaim_tematikus.md` |
 | Kereszthivatkozás-napló | `tematikus_lezart/naplok/Rafaim_kereszthivatkozas_naplo.md` |
 | Sablon-megfelelőség | v14 |

@@ -469,7 +469,7 @@ az özönvíz-világ elpusztulása és a jelenlegi világ tűzre tartatása — 
 
 Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumhoz.
 
-**Negatív kritérium** (`motivumok.tsv`): az igehelynek a gerinc valamelyik elemén (arar, adamá, itzávón, chattát, chámász, sáchat; ἐπικατάρατος, κατάρα, φθείρω-család) vagy megnevezett kollokációján (málé+chámász, sámá+chámász) át kell a genezisi átok→föld→romlás láncra visszautalnia; a bűn, a büntetés vagy az átok puszta említése e lexémák nélkül csak explicit „tematikus, nem lexikai” jelöléssel kerülhet be
+**Negatív kritérium** (`motivumok.tsv`): az igehelynek a gerinc valamelyik elemén (arar, adamá, itzávón, chattát, chámász, sáchat; ἐπικατάρατος – epikataratosz, κατάρα – katara, φθείρω-család – ftheiró) vagy megnevezett kollokációján (málé+chámász, sámá+chámász) át kell a genezisi átok→föld→romlás láncra visszautalnia; a bűn, a büntetés vagy az átok puszta említése e lexémák nélkül csak explicit „tematikus, nem lexikai” jelöléssel kerülhet be
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#kizart -->
 
@@ -1004,7 +1004,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 | PaRDeS-szint | Remez/Drash |
 | Státusz | publikálható (`v1`, 2026.09.11) |
 | Azonosság típusa | strukturális |
-| Negatív kritérium | az igehelynek a gerinc valamelyik elemén (arar, adamá, itzávón, chattát, chámász, sáchat; ἐπικατάρατος, κατάρα, φθείρω-család) vagy megnevezett kollokációján (málé+chámász, sámá+chámász) át kell a genezisi átok→föld→romlás láncra visszautalnia; a bűn, a büntetés vagy az átok puszta említése e lexémák nélkül csak explicit „tematikus, nem lexikai” jelöléssel kerülhet be |
+| Negatív kritérium | az igehelynek a gerinc valamelyik elemén (arar, adamá, itzávón, chattát, chámász, sáchat; ἐπικατάρατος – epikataratosz, κατάρα – katara, φθείρω-család – ftheiró) vagy megnevezett kollokációján (málé+chámász, sámá+chámász) át kell a genezisi átok→föld→romlás láncra visszautalnia; a bűn, a büntetés vagy az átok puszta említése e lexémák nélkül csak explicit „tematikus, nem lexikai” jelöléssel kerülhet be |
 | Fölérendelt fogalom | a bűn / hamartológia általában |
 | Forrás-study | `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` |
 | Kereszthivatkozás-napló | `tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md` |

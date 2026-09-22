@@ -350,7 +350,7 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 | 1Móz 14:18-20 | Zsolt 110:4 | Előkép | egyszeri esemény → örökkévaló, próféciai "rendé" emelve; TSK 14 szavazat | magas | Remez |
 | Zsolt 110:4 | Zak 6:13 | Párhuzam | próféciai visszautalás → explicit "pap a trónon" kép; TSK 9 szavazat | magas | Remez |
 | 1Móz 14:18-20 | Zak 6:13 | Párhuzam | közös H3548 priest-king sense; TSK csak 2 szavazat, gyenge megerősítés | közepes | Remez |
-| 2Móz 19:6 | 1Pét 2:9 | Beteljesedés | szó szerinti LXX-idézés (βασίλειον ἱεράτευμα); TSK 22 szavazat | magas | Drash |
+| 2Móz 19:6 | 1Pét 2:9 | Beteljesedés | szó szerinti LXX-idézés (βασίλειον ἱεράτευμα – baszileion hierateuma); TSK 22 szavazat | magas | Drash |
 | Zsolt 110:4 | Zsid 5:6 | Beteljesedés | a Zsolt 110:4 első idézete, Krisztus főpapságának bevezetése | magas | Drash |
 | Zsolt 110:4 | Zsid 5:10 | Beteljesedés | a Zsolt 110:4 idézése | magas | Drash |
 | Zsolt 110:4 | Zsid 6:20 | Beteljesedés | a Zsolt 110:4 idézése | magas | Drash |

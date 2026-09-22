@@ -146,7 +146,7 @@ angyalok, akik "nem tartották meg fejedelemségüket", örök bilincsben — ta
 - **Mt 24:38** (nyitva, `Károli-KH (forrás-vers: 1Móz 6:2)`): tartalmilag nem az 'Isten fiai kiléte' kérdéshez, hanem az eszkatológiai-ítéleti 'mint Noé napjaiban' analógiához tartozik; eldöntendő: (a) jegyzet valamelyik study-ba, (b) önálló motívum, (c) figyelmen kívül — FELHASZNÁLÓI DÖNTÉS
 - **Luk 17:27** (nyitva, `Károli-KH (forrás-vers: 1Móz 6:2)`): tartalmilag nem az 'Isten fiai kiléte' kérdéshez, hanem az eszkatológiai-ítéleti 'mint Noé napjaiban' analógiához tartozik; eldöntendő: (a) jegyzet valamelyik study-ba, (b) önálló motívum, (c) figyelmen kívül — FELHASZNÁLÓI DÖNTÉS
 
-**Negatív kritérium** (`motivumok.tsv`): az igehelynek a בְּנֵי (הָ)אֱלֹהִים szórendi mintát VAGY a נְפִלִים szót kell tartalmaznia — a רְפָאִים szócsalád explicit kizárva (tematikus, nem lexikai rokon, l. HODIT-001 elhatárolása)
+**Negatív kritérium** (`motivumok.tsv`): az igehelynek a בְּנֵי (הָ)אֱלֹהִים szórendi mintát VAGY a נְפִלִים szót kell tartalmaznia — a רְפָאִים (refáím) szócsalád explicit kizárva (tematikus, nem lexikai rokon, l. HODIT-001 elhatárolása)
 
 <!-- GENERÁLT-VÉGE: lexikon#MENNY-001#kizart -->
 
@@ -324,8 +324,8 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 | PaRDeS-szint | Remez/Drash |
 | Státusz | publikálható (`v4`, 2026.09.10) |
 | Azonosság típusa | lexikai |
-| Negatív kritérium | az igehelynek a בְּנֵי (הָ)אֱלֹהִים szórendi mintát VAGY a נְפִלִים szót kell tartalmaznia — a רְפָאִים szócsalád explicit kizárva (tematikus, nem lexikai rokon, l. HODIT-001 elhatárolása) |
-| Fölérendelt fogalom | mennyei/angyali lények általában, a בְּנֵי (הָ)אֱלֹהִים/נְפִלִים lexémákon kívül |
+| Negatív kritérium | az igehelynek a בְּנֵי (הָ)אֱלֹהִים szórendi mintát VAGY a נְפִלִים szót kell tartalmaznia — a רְפָאִים (refáím) szócsalád explicit kizárva (tematikus, nem lexikai rokon, l. HODIT-001 elhatárolása) |
+| Fölérendelt fogalom | mennyei/angyali lények általában, a בְּנֵי (הָ)אֱלֹהִים (bené (há)elóhím) / נְפִלִים (nefilím) lexémákon kívül |
 | Forrás-study | `tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md` |
 | Kereszthivatkozás-napló | `tematikus_lezart/naplok/Isten_fiai_Nefilim_Gibborim_kereszthivatkozas_naplo.md` |
 | Sablon-megfelelőség | v14 |

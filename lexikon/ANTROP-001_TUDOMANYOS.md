@@ -136,7 +136,7 @@ Isten Igéje "elhat a szellem és lélek... megoszlásáig" (μερισμοῦ) 
 
 - **Fil 1:27** (nyitva, `döntési fájl 8. szakasz (migrálva F1.6-ban)`): bekerüljön-e ötödik, korporatív jellegű előfordulásként a pneuma/pszükhé tanulmányba; a study jelenlegi szövege NEM említi — ellenőrizve 2026.09.13
 
-**Negatív kritérium** (`motivumok.tsv`): az igehelynek a πνεῦμα és ψυχή szavakat (vagy melléknévi alakjukat) egyazon mondaton belül, megkülönböztető szerepben kell tartalmaznia — puszta "lélek" vagy "szellem" említés önmagában, a másik nélkül, nem elég
+**Negatív kritérium** (`motivumok.tsv`): az igehelynek a πνεῦμα (pneuma) és ψυχή (pszükhé) szavakat (vagy melléknévi alakjukat) egyazon mondaton belül, megkülönböztető szerepben kell tartalmaznia — puszta "lélek" vagy "szellem" említés önmagában, a másik nélkül, nem elég
 
 <!-- GENERÁLT-VÉGE: lexikon#ANTROP-001#kizart -->
 
@@ -413,7 +413,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 | PaRDeS-szint | Pshat/Drash |
 | Státusz | publikálható (`v3`, 2026.08.22) |
 | Azonosság típusa | lexikai |
-| Negatív kritérium | az igehelynek a πνεῦμα és ψυχή szavakat (vagy melléknévi alakjukat) egyazon mondaton belül, megkülönböztető szerepben kell tartalmaznia — puszta "lélek" vagy "szellem" említés önmagában, a másik nélkül, nem elég |
+| Negatív kritérium | az igehelynek a πνεῦμα (pneuma) és ψυχή (pszükhé) szavakat (vagy melléknévi alakjukat) egyazon mondaton belül, megkülönböztető szerepben kell tartalmaznia — puszta "lélek" vagy "szellem" említés önmagában, a másik nélkül, nem elég |
 | Fölérendelt fogalom | emberi belső élet/antropológia általában, a pneuma/pszükhé megkülönböztető használatán kívül |
 | Forrás-study | `tematikus_lezart/Pneuma_pszukhe_megkulonboztetes_tematikus.md` |
 | Kereszthivatkozás-napló | — |

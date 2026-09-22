@@ -9,7 +9,7 @@
 | 1Móz 4:26 | A formula első előfordulása — Séth fia, Énós nemzedéke; a Kain-vonal önerős civilizációépítése utáni korszakváltás jele. | Drash | H7121+H8034 | H7121 | 2.c | "call with name of Yahweh (i.e. use it in invocation)" — magyarul: "invokálni, segítségül hívni" |
 | 1Móz 12:8 | Ábrám, Bétel-Ai között — oltárépítés + segítségül hívás első összekapcsolása. | Drash | H7121+H8034 | H7121 | 2.c | magyarul: "invokálni, segítségül hívni" |
 | 1Móz 13:4 | Ábrám visszatér ugyanahhoz az oltárhoz Egyiptomból; a formula tudatos, felkeresett szokássá válik. | Drash | H7121+H8034 | H7121 | 2.c | magyarul: "invokálni, segítségül hívni" |
-| 1Móz 21:33 | Ábrahám, Beérseba — a formula kiegészül egy isteni jelzővel: אֵל עוֹלָם, "örökkévaló Isten". | — | H7121+H8034 | H7121 | 2.c | magyarul: "invokálni, segítségül hívni" |
+| 1Móz 21:33 | Ábrahám, Beérseba — a formula kiegészül egy isteni jelzővel: אֵל עוֹלָם (él olám), "örökkévaló Isten". | — | H7121+H8034 | H7121 | 2.c | magyarul: "invokálni, segítségül hívni" |
 | 1Móz 26:25 | Izsák, Beérseba — a minta szó szerint átöröklődik a második pátriárka-nemzedékre, ugyanazon a helyszínen. | — | H7121+H8034 | H7121 | 2.c | magyarul: "invokálni, segítségül hívni" |
 | 2Móz 33:19 | Isten maga jelenti ki Mózesnek: "kihirdetem előtted az Úr nevét" — nem az ember hívja segítségül Isten nevét, hanem Isten mondja ki a sajátját. | Remez | H7121+H8034 | H7121 | 3 | "proclaim" — magyarul: "kihirdetni, kinyilatkoztatni (NEM invokáció)" |
 | 2Móz 34:5 | Ugyanaz a jelenet folytatása: "az Úr nevében kiáltott" — Isten végrehajtja az előző fejezetben megígért önkihirdetést. | Remez | H7121+H8034 | H7121 | 3 | "proclaim" — magyarul: "kihirdetni, kinyilatkoztatni (NEM invokáció)" |

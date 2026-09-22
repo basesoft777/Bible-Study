@@ -152,7 +152,7 @@ A formula első előfordulása — Séth fia, Énós nemzedéke; a Kain-vonal ö
 <a id="ige-1móz-21-33"></a>
 **1Móz 21:33**
 *Ábrahám pedig tamariskusfákat ültete Beérsebában, és segítségűl hívá ott az örökkévaló Úr Istennek nevét.*
-Ábrahám, Beérseba — a formula kiegészül egy isteni jelzővel: אֵל עוֹלָם, "örökkévaló Isten".
+Ábrahám, Beérseba — a formula kiegészül egy isteni jelzővel: אֵל עוֹלָם (él olám), "örökkévaló Isten".
 
 <a id="ige-1móz-26-25"></a>
 **1Móz 26:25**
@@ -304,7 +304,7 @@ Pál közvetlenül folytatja az érvelést: "Mimódon hívják segítségül, a 
 
 Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumhoz.
 
-**Negatív kritérium** (`motivumok.tsv`): az igehelynek a קָרָא + בְּ (aktív, invokáló szerkezet: "[valaki] hívja segítségül [Isten nevét]") mintát kell mutatnia — a passzív נִקְרָא...עַל szerkezet (birtoklás/hovatartozás kifejezése, nem invokáció) kizárja a besorolást, még akkor is, ha ugyanazt a két gyököt használja (l. D-minta, 2Sám 6:2, Jer 7:10-14, 5Móz 28:10, ÚSZ-párja Zsid 11:16)
+**Negatív kritérium** (`motivumok.tsv`): az igehelynek a קָרָא + בְּ (aktív, invokáló szerkezet: "[valaki] hívja segítségül [Isten nevét]") mintát kell mutatnia — a passzív נִקְרָא...עַל (nikrá … al) szerkezet (birtoklás/hovatartozás kifejezése, nem invokáció) kizárja a besorolást, még akkor is, ha ugyanazt a két gyököt használja (l. D-minta, 2Sám 6:2, Jer 7:10-14, 5Móz 28:10, ÚSZ-párja Zsid 11:16)
 
 <!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#kizart -->
 
@@ -808,13 +808,13 @@ saját, lexikai szintű megfigyelés marad (l. korábbi megállapítás).
 | Jóel 2:32 | ApCsel 2:21 | Beteljesedés | szó szerinti LXX-idézés, ÓSZ-prófécia → ÚSZ-beteljesedés | magas | Remez |
 | Jóel 2:32 | Róm 10:13 | Beteljesedés | szó szerinti LXX-idézés, ÓSZ-prófécia → ÚSZ-beteljesedés | magas | Remez |
 | Róm 10:13 | Róm 10:14 | Párhuzam | azonos szereposztás, közvetlen folytatás ugyanabban a szakaszban | magas | Remez |
-| Róm 10:14 | 1Kor 1:2 | Párhuzam | azonos görög ige (ἐπικαλέομαι), egyházi azonosító-formulává válás — nincs szó szerinti idézés | közepes | Remez |
+| Róm 10:14 | 1Kor 1:2 | Párhuzam | azonos görög ige (ἐπικαλέομαι, epikaleomai), egyházi azonosító-formulává válás — nincs szó szerinti idézés | közepes | Remez |
 | Róm 10:14 | 2Tim 2:22 | Párhuzam | azonos görög ige, egyházi azonosító-formulává válás | közepes | Remez |
 | Róm 10:14 | 1Pét 1:17 | Párhuzam | azonos görög ige, egyházi azonosító-formulává válás | közepes | Remez |
 | Róm 10:14 | ApCsel 9:14 | Párhuzam | azonos görög ige, üldözési kontextus | közepes | Remez |
 | ApCsel 9:14 | ApCsel 9:21 | Párhuzam | szó szerinti megismétlés ugyanabban a fejezetben | magas | Remez |
 | Róm 10:14 | ApCsel 22:16 | Párhuzam | azonos görög ige, megtérés-elbeszélés | közepes | Remez |
-| 1Móz 4:26 | 2Móz 33:19 | Variáns | A/B/C tipológia B-esete — azonos szerkezet (קָרָא+שֵׁם), felcserélt alany/tárgy (Isten mondja ki a saját nevét) | magas | Remez |
+| 1Móz 4:26 | 2Móz 33:19 | Variáns | A/B/C tipológia B-esete — azonos szerkezet (קָרָא+שֵׁם – kárá + sém), felcserélt alany/tárgy (Isten mondja ki a saját nevét) | magas | Remez |
 | 2Móz 33:19 | 2Móz 34:5 | Párhuzam | ugyanaz a jelenet, ugyanaz a szereposztás (Isten önkinyilatkoztatása) | magas | Remez |
 | 1Móz 12:8 | 1Móz 13:4 | Párhuzam | Ábrám explicit visszatér ugyanahhoz az oltárhoz | magas | Drash |
 | 1Móz 13:4 | 1Móz 26:25 | Párhuzam | öröklés — azonos szereposztás nemzedékek közt, azonos helyszín (Beérseba) | magas | Drash |
@@ -1207,8 +1207,8 @@ tévesen ne sorolja be a motívumba.】
 | PaRDeS-szint | Drash |
 | Státusz | publikálható (`v3`, 2026.09.22) |
 | Azonosság típusa | formulaikus |
-| Negatív kritérium | az igehelynek a קָרָא + בְּ (aktív, invokáló szerkezet: "[valaki] hívja segítségül [Isten nevét]") mintát kell mutatnia — a passzív נִקְרָא...עַל szerkezet (birtoklás/hovatartozás kifejezése, nem invokáció) kizárja a besorolást, még akkor is, ha ugyanazt a két gyököt használja (l. D-minta, 2Sám 6:2, Jer 7:10-14, 5Móz 28:10, ÚSZ-párja Zsid 11:16) |
-| Fölérendelt fogalom | istentisztelet/imádság általában (bármely invokációs forma, a קָרָא בְשֵׁם formulán kívül) |
+| Negatív kritérium | az igehelynek a קָרָא + בְּ (aktív, invokáló szerkezet: "[valaki] hívja segítségül [Isten nevét]") mintát kell mutatnia — a passzív נִקְרָא...עַל (nikrá … al) szerkezet (birtoklás/hovatartozás kifejezése, nem invokáció) kizárja a besorolást, még akkor is, ha ugyanazt a két gyököt használja (l. D-minta, 2Sám 6:2, Jer 7:10-14, 5Móz 28:10, ÚSZ-párja Zsid 11:16) |
+| Fölérendelt fogalom | istentisztelet/imádság általában (bármely invokációs forma, a קָרָא בְשֵׁם (kárá besém) formulán kívül) |
 | Forrás-study | `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`<br>`motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md` |
 | Kereszthivatkozás-napló | `tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md` |
 | Sablon-megfelelőség | v12 |

@@ -585,7 +585,7 @@ Péter folytatja: Krisztus feltámadásáról szólva — "nem hagyatott a sírb
 
 Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumhoz.
 
-**Negatív kritérium** (`motivumok.tsv`): az igehelynek a שְׁאוֹל gyököt (ÚSZ-ben az LXX-közvetített ᾍδης megfelelőjét) kell tartalmaznia — a תְּהוֹם/ἄβυσσος szócsalád explicit kizárva (kozmikus, nem egyéni-halotti fogalom, l. TEREMT-001 elhatárolása)
+**Negatív kritérium** (`motivumok.tsv`): az igehelynek a שְׁאוֹל gyököt (ÚSZ-ben az LXX-közvetített ᾍδης megfelelőjét) kell tartalmaznia — a תְּהוֹם (tehóm) / ἄβυσσος (abüsszosz) szócsalád explicit kizárva (kozmikus, nem egyéni-halotti fogalom, l. TEREMT-001 elhatárolása)
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#kizart -->
 
@@ -1032,8 +1032,8 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 | PaRDeS-szint | Remez/Drash |
 | Státusz | publikálható (`v2`, 2026.09.10) |
 | Azonosság típusa | lexikai |
-| Negatív kritérium | az igehelynek a שְׁאוֹל gyököt (ÚSZ-ben az LXX-közvetített ᾍδης megfelelőjét) kell tartalmaznia — a תְּהוֹם/ἄβυσσος szócsalád explicit kizárva (kozmikus, nem egyéni-halotti fogalom, l. TEREMT-001 elhatárolása) |
-| Fölérendelt fogalom | a halál/túlvilág fogalma általában, a שְׁאוֹל/ᾍδης lexémán kívül |
+| Negatív kritérium | az igehelynek a שְׁאוֹל gyököt (ÚSZ-ben az LXX-közvetített ᾍδης megfelelőjét) kell tartalmaznia — a תְּהוֹם (tehóm) / ἄβυσσος (abüsszosz) szócsalád explicit kizárva (kozmikus, nem egyéni-halotti fogalom, l. TEREMT-001 elhatárolása) |
+| Fölérendelt fogalom | a halál/túlvilág fogalma általában, a שְׁאוֹל (seól) / ᾍδης (hadész) lexémán kívül |
 | Forrás-study | `tematikus_lezart/Hadesz_Seol_tematikus.md` |
 | Kereszthivatkozás-napló | `tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md` |
 | Sablon-megfelelőség | v14 |

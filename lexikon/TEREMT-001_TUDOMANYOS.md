@@ -370,7 +370,7 @@ Mózes áldása Józsefen — "a mélység áldásaival alant" (csaknem szó sze
 
 Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumhoz.
 
-**Negatív kritérium** (`motivumok.tsv`): az igehelynek a תְּהוֹם gyököt kell tartalmaznia (ÚSZ-ben az LXX-közvetített ἄβυσσος megfelelőjét) — tematikus vízkép önmagában (pl. יָם, "tenger") nem elég
+**Negatív kritérium** (`motivumok.tsv`): az igehelynek a תְּהוֹם gyököt kell tartalmaznia (ÚSZ-ben az LXX-közvetített ἄβυσσος megfelelőjét) — tematikus vízkép önmagában (pl. יָם – jám, "tenger") nem elég
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-001#kizart -->
 
@@ -647,8 +647,8 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 | PaRDeS-szint | Remez/Drash |
 | Státusz | publikálható (`v4`, 2026.09.10) |
 | Azonosság típusa | lexikai |
-| Negatív kritérium | az igehelynek a תְּהוֹם gyököt kell tartalmaznia (ÚSZ-ben az LXX-közvetített ἄβυσσος megfelelőjét) — tematikus vízkép önmagában (pl. יָם, "tenger") nem elég |
-| Fölérendelt fogalom | vízi/kozmikus káosz-képzetek általában, a תְּהוֹם/ἄβυσσος lexémán kívül |
+| Negatív kritérium | az igehelynek a תְּהוֹם gyököt kell tartalmaznia (ÚSZ-ben az LXX-közvetített ἄβυσσος megfelelőjét) — tematikus vízkép önmagában (pl. יָם – jám, "tenger") nem elég |
+| Fölérendelt fogalom | vízi/kozmikus káosz-képzetek általában, a תְּהוֹם (tehóm) / ἄβυσσος (abüsszosz) lexémán kívül |
 | Forrás-study | `tematikus_lezart/Tehom_tematikus.md` |
 | Kereszthivatkozás-napló | `tematikus_lezart/naplok/Tehom_kereszthivatkozas_naplo.md` |
 | Sablon-megfelelőség | v14 |
