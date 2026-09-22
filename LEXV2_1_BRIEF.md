@@ -1,11 +1,11 @@
-# LEXV2_1_BRIEF.md — v1
+# LEXV2_1_BRIEF.md — v2
 
 Lexikon-oldal v2, 1. menet: adatforrások. UBS Dictionary of New Testament Greek (jelentések + igehely-hivatkozások) és Open Scriptorium Rahlfs-LXX importja, próba-hozzárendelés, összevetés. **Generátor nem változik.**
 
 ## 0. Kiindulás — mérve, `f9142a4` (2026.09.22)
 
 - A `konkordancia/SDGNT_domenek.tsv` az UBS görög szótárból (`ubsicap/ubs-open-license` @ `3a6edd8`, `UBSGreekNTDic-v1.1-en.JSON`) csak a doméneket vette át. A JSON jelentésenként tartalmazza: `LEXEntryCode` (Louw–Nida), `LEXSenses[en].DefinitionShort/DefinitionLong/Glosses/Comments`, `LEXReferences` (14 jegyű: `BBBCCCVVVWWWWW`, könyv 040 = Mt … 066 = Jel, utolsó 5 jegy a szópozíció). 5 507 bejegyzés.
-- Az `elofordulasok.tsv` 42 ÚSZ-sorából 36-nak van G-tokenje; próbamérés szerint 32 sor egyértelműen UBS-jelentéshez köthető a verskulcs + Strong egyezésével, 17 különböző jelentéssel. Nem ment: 3 igehely-tartomány (Róm 8:20-22, Zsid 6:7-8, Zsid 7:1-28) és 1Kor 2:15 (G4151 nincs a versben).
+- Az `elofordulasok.tsv`-ben **47 ÚSZ-sor** van, ebből **41-nek van G-tokenje** (36 egyverses sor + 5 igehely-tartomány: `Zsid 7:1-28`, `Róm 8:20-22`, `Zsid 6:7-8`, `Jel 9:1-2`, `Jel 20:1-3`). A maradék 6 sornak nincs G-tokenje (`MENNY-001` × 3, `HAMART-001` × 3: `Mt 15:19`, `Mk 7:21-23`, `2Pét 3:6-7`) — ezek a V1.2-ben „nincs G-token" jelöléssel szerepelnek, hozzárendelési kísérlet nélkül. Próbamérés szerint a 36 egyverses sorból 32 egyértelműen UBS-jelentéshez köthető a verskulcs + Strong egyezésével, 17 különböző jelentéssel; nem ment 1Kor 2:15 (G4151 nincs a versben) és a `Róm 8:20-22`/`Zsid 6:7-8`/`Zsid 7:1-28` tartományok (l. javítás alább — **a v1-ben itt tévesen 42/36 szerepelt, l. a döntésnaplót**).
 - A `konkordancia/LXX_kivonat_*.tsv` licence `tisztazatlan` (N15). Jelölt forrás: Open Scriptorium Rahlfs-LXX (openscriptorium.org, szöveg közkincs, szószintű adat lxx-morph, CC BY 4.0); a szavakon `strongs_number` üres, a Strong a lemma-táblából jön (`lemma.id` → `strongs_numbers`, lista).
 
 ## 1. A feladat
@@ -54,7 +54,7 @@ A `NYITOTT_FELADATOK.md` N15 blokkjának végére új bekezdés: `  **Állapot (
 |---|---|
 | UBS NT bejegyzés | 5 507 |
 | `UBS_DNTG_jelentesek.tsv` sor | mérendő (a SDGNT 9 178 jelentés-egységéhez közel) |
-| ÚSZ-sor / G-tokennel | 42 / 36 |
+| ÚSZ-sor / G-tokennel | 47 / 41 (36 egyverses + 5 tartomány) |
 | Próba: egyértelműen hozzárendelt sor | ≥ 32 (tartományokkal várhatóan 35) |
 | Próba: különböző jelentés | ≈ 17–20 |
 | LXX_OS: könyvek száma | mérendő; a Rahlfs-korpusz könyvei |
@@ -87,3 +87,4 @@ Push a K1–K8 teljesülése után. ⛔ Utána megállás: a 2. menet (generáto
 | Verzió | Dátum | Döntés |
 |---|---|---|
 | v1 | 2026.09.22 | A felhasználó elfogadta a lexikon-oldal v2 javaslatot, az LXX-híd megújítását (N15) és az UBS NT-szótár beépítését. Két menet: 1. adatforrások (ez), 2. generátor. A UBS-jelentés hozzárendelése származtatott (nem az `elofordulasok.tsv`-be); az LXX saját számozás + Károli-oszlop, leképezés kitalálása nélkül; ⛔ megállás a menet végén. |
+| v2 | 2026.09.22 | V1.1 után, V1.2 előtt kiderült: a 0. és 5. pont „42 ÚSZ-sor / 36 G-tokenes" száma hibás volt — a tényleges `f9142a4` állapotban 47 ÚSZ-sor van, 41 G-tokennel (a v1 száma az 5 igehely-tartomány sort tévesen kihagyta az alapszámból, miközben a G3 tétel kifejezetten előírja a tartományok feldolgozását). A felhasználó döntése: a V1.2 mind a 41 G-tokenes sort dolgozza fel a tartományokkal együtt (G3 szerint); a 0. és 5. pont száma erre javítva; a 6 G-token nélküli sor a próba-jelentésben „nincs G-token" jelöléssel szerepel. |
