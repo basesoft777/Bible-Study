@@ -114,6 +114,66 @@ mérve; a héber oldalon a `H9xxx` nélkül):
 | `TAHOT_kivonat.tsv` | 8 421 / 8 502 (99,0%) | 259 162 / 299 370 (86,6%) |
 | `TAGNT_kivonat.tsv` | 5 252 / 5 410 (97,1%) | 130 159 / 141 489 (92,0%) |
 
+## UBS NT-szótár: jelentések és hivatkozások
+
+A `SDGNT_domenek.tsv` csak a doméneket vette át az UBS görög szótárból
+(`UBSGreekNTDic-v1.1-en.JSON`, ugyanaz a rögzített commit és SHA-256, l.
+fent). Ez a szakasz a szótár jelentés- és igehely-hivatkozás-adatát írja le —
+az importot l. `eszkozok/ubs_dntg_import.py` (`LEXV2_1_BRIEF.md` V1.1).
+
+**Reprodukáló parancs:**
+
+```bash
+python eszkozok/ubs_dntg_import.py --letolt
+```
+
+| Fájl | Sor (fejléc nélkül) |
+|---|---|
+| `UBS_DNTG_jelentesek.tsv` | 9 075 |
+| `UBS_DNTG_referenciak.tsv` | 130 948 |
+| `UBS_DNTG_anomaliak.tsv` | 110 |
+
+### `UBS_DNTG_jelentesek.tsv`
+
+Fejléc: `strong strong_kod lemma main_id lexid entry_kod domen_kod domen definicio_rovid definicio_hosszu glosszak megjegyzes`
+
+A sor egysége — a `SDGNT_domenek.tsv`-hez hasonlóan — `Strong × jelentés ×
+domén`, nem `Strong × jelentés`: 9 075 sor, de csak 9 067 különböző `lexid`
+(8 jelentés több doménben is szerepel). 5 312 különböző `strong`.
+
+- `strong` / `strong_kod` — a Strong-kód levágott (`G0001`), illetve eredeti,
+  betű-utótagos alakja (`G0001a`); a görög szótár kizárólag `G`-kódokat
+  tartalmaz.
+- `main_id` — a bejegyzés (`MainId`) szintje; `lexid` a jelentés (`LEXID`)
+  szintje.
+- `entry_kod` — Louw–Nida hivatkozás (`LEXEntryCode`, pl. `33.98`).
+- `domen_kod` / `domen` — ugyanaz a kinyerési logika, mint a
+  `SDGNT_domenek.tsv`-nél (`LEXSubDomains`, ha üres, `LEXDomains`).
+- `definicio_rovid` / `definicio_hosszu` / `glosszak` / `megjegyzes` — az
+  angol (`LanguageCode = "en"`) `LEXSenses`-bejegyzés `DefinitionShort` /
+  `DefinitionLong` / `Glosses` (`; `-vel összefűzve) / `Comments` mezője.
+  Üres mezőnél `—`.
+
+### `UBS_DNTG_referenciak.tsv`
+
+Fejléc: `lexid strong igehely szopozicio ref_kod`
+
+A `LEXReferences` 14 jegyű kódjainak (`BBBCCCVVVWWWWW`) dekódolt alakja:
+`BBB` a könyvkód (`040` = Mt … `066` = Jel, l. a szkript `BOOK_CODES`
+táblája — megfelel a `Konyv_normalizalo_tabla.tsv` 41–67. sorának),
+`CCC`/`VVV` a fejezet/vers, `WWWWW` a szópozíció. Az `igehely` a Károli-rövid
+alakban (`Mt 5:37`). Néhány forráskód a 14 jegy után jegyzet-hivatkozást
+visel (`{N:001}` vagy `(N:003)`) — ezt a dekódolás figyelmen kívül hagyja, a
+teljes nyers kód a `ref_kod` oszlopban marad. 130 948 sor, 9 066 különböző
+`lexid`, 7 941 különböző `igehely`.
+
+### `UBS_DNTG_anomaliak.tsv`
+
+Fejléc: `entry_id lemma tipus nyers_ertek allapot`. 110 sor, mind
+`strong_nelkul` / `AZONOSITVA, NEM JAVITVA` — a szótár Strong-kód nélküli
+bejegyzései (pl. `α`), javítás vagy kitalált kód nélkül (`CLAUDE.md` 3.
+szabálya).
+
 ## Ismert korlátok
 
 - **A lefedettség kb. 90%.** Az SDBH még nem teljes szótár (a forrás README-je
