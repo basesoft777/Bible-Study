@@ -39,20 +39,22 @@ KIRALY-001	1Móz 14:20	G3860	igen	igen	παρέδωκεν	παραδίδωμι	e
 KIRALY-001	1Móz 14:20	G3956	igen	igen	πάντων	πᾶς	egyezik
 KIRALY-001	1Móz 14:20	G4771	igen	igen	σου	σύ	egyezik
 KIRALY-001	1Móz 14:20	G5310	igen	igen	ὕψιστος	ὕψιστος	egyezik
-KIRALY-001	Zsolt 76:3	G1473	nem	igen	μου	ἐγώ	csak uj
+KIRALY-001	Zsolt 76:3	G0846	nem	igen	αὐτοῦ	αὐτός	csak uj
+KIRALY-001	Zsolt 76:3	G1096	nem	igen	ἐγενήθη	γίνομαι	csak uj
+KIRALY-001	Zsolt 76:3	G1515	nem	igen	εἰρήνῃ	εἰρήνη	csak uj
 KIRALY-001	Zsolt 76:3	G1563	igen	nem			csak regi
-KIRALY-001	Zsolt 76:3	G2165	nem	igen	εὐφράνθην	εὐφραίνω	csak uj
-KIRALY-001	Zsolt 76:3	G2316	nem	igen	θεοῦ	θεός	csak uj
+KIRALY-001	Zsolt 76:3	G1722	nem	igen	ἐν	ἐν	csak uj
 KIRALY-001	Zsolt 76:3	G2532	igen	igen	καὶ	καί	egyezik
+KIRALY-001	Zsolt 76:3	G2732	nem	igen	κατοικητήριον	κατοικητήριον	csak uj
 KIRALY-001	Zsolt 76:3	G2904	igen	nem			csak regi
-KIRALY-001	Zsolt 76:3	G3403	nem	igen	ἐμνήσθην	μιμνήσκω	csak uj
-KIRALY-001	Zsolt 76:3	G3588	igen	igen	τοῦ	ὁ	egyezik
+KIRALY-001	Zsolt 76:3	G3588	igen	igen	ὁ	ὁ	egyezik
 KIRALY-001	Zsolt 76:3	G3696	igen	nem			csak regi
-KIRALY-001	Zsolt 76:3	G4151	nem	igen	πνεῦμά	πνεῦμα	csak uj
 KIRALY-001	Zsolt 76:3	G4171	igen	nem			csak regi
 KIRALY-001	Zsolt 76:3	G4501	igen	nem			csak regi
+KIRALY-001	Zsolt 76:3	G4622	nem	igen	Σιων	Σιων	csak uj
 KIRALY-001	Zsolt 76:3	G4937	igen	nem			csak regi
 KIRALY-001	Zsolt 76:3	G5115	igen	nem			csak regi
+KIRALY-001	Zsolt 76:3	G5117	nem	igen	τόπος	τόπος	csak uj
 KIRALY-001	2Móz 19:6	G0040	igen	igen	ἅγιον	ἅγιος	egyezik
 KIRALY-001	2Móz 19:6	G0934	igen	igen	βασίλειον	βασίλειος	egyezik
 KIRALY-001	2Móz 19:6	G1161	igen	igen	δὲ	δέ	egyezik
@@ -69,23 +71,19 @@ KIRALY-001	2Móz 19:6	G3778	igen	igen	ταῦτα	οὗτος	egyezik
 KIRALY-001	2Móz 19:6	G4487	igen	igen	ῥήματα	ῥῆμα	egyezik
 KIRALY-001	2Móz 19:6	G4771	igen	igen	ὑμεῖς	σύ	egyezik
 KIRALY-001	2Móz 19:6	G5207	igen	igen	υἱοῖς	υἱός	egyezik
-KIRALY-001	Zsolt 110:4	G0165	igen	nem			csak regi
-KIRALY-001	Zsolt 110:4	G0846	nem	igen	αὐτοῦ	αὐτός	csak uj
-KIRALY-001	Zsolt 110:4	G1510	igen	nem			csak regi
-KIRALY-001	Zsolt 110:4	G1519	igen	nem			csak regi
-KIRALY-001	Zsolt 110:4	G1655	nem	igen	ἐλεήμων	ἐλεήμων	csak uj
-KIRALY-001	Zsolt 110:4	G2297	nem	igen	θαυμασίων	θαυμάσιος	csak uj
-KIRALY-001	Zsolt 110:4	G2409	igen	nem			csak regi
+KIRALY-001	Zsolt 110:4	G0165	igen	igen	αἰῶνα	αἰών	egyezik
+KIRALY-001	Zsolt 110:4	G1510	igen	igen	εἶ	εἰμί	egyezik
+KIRALY-001	Zsolt 110:4	G1519	igen	igen	εἰς	εἰς	egyezik
+KIRALY-001	Zsolt 110:4	G2409	igen	igen	ἱερεὺς	ἱερεύς	egyezik
 KIRALY-001	Zsolt 110:4	G2532	igen	igen	καὶ	καί	egyezik
-KIRALY-001	Zsolt 110:4	G2596	igen	nem			csak regi
+KIRALY-001	Zsolt 110:4	G2596	igen	igen	κατὰ	κατά	egyezik
 KIRALY-001	Zsolt 110:4	G2962	igen	igen	κύριος	κύριος	egyezik
+KIRALY-001	Zsolt 110:4	G3198	nem	igen	Μελχισεδεκ	Μελχισεδεκ	csak uj
 KIRALY-001	Zsolt 110:4	G3364	igen	nem			csak regi
-KIRALY-001	Zsolt 110:4	G3417	nem	igen	μνείαν	μνεία	csak uj
-KIRALY-001	Zsolt 110:4	G3588	igen	igen	τῶν	ὁ	egyezik
-KIRALY-001	Zsolt 110:4	G3629	nem	igen	οἰκτίρμων	οἰκτίρμων	csak uj
-KIRALY-001	Zsolt 110:4	G4160	nem	igen	ἐποιήσατο	ποιέω	csak uj
-KIRALY-001	Zsolt 110:4	G4771	igen	nem			csak regi
-KIRALY-001	Zsolt 110:4	G5010	igen	nem			csak regi
+KIRALY-001	Zsolt 110:4	G3588	igen	igen	τὸν	ὁ	egyezik
+KIRALY-001	Zsolt 110:4	G3756	nem	igen	οὐ	οὐ	csak uj
+KIRALY-001	Zsolt 110:4	G4771	igen	igen	σὺ	σύ	egyezik
+KIRALY-001	Zsolt 110:4	G5010	igen	igen	τάξιν	τάξις	egyezik
 KIRALY-001	Zak 6:13	G0303	igen	nem			csak regi
 KIRALY-001	Zak 6:13	G0703	igen	igen	ἀρετὴν	ἀρετή	egyezik
 KIRALY-001	Zak 6:13	G0846	igen	igen	αὐτὸς	αὐτός	egyezik
@@ -314,74 +312,59 @@ ISTENTISZT-001	Zak 13:9	G4442	igen	igen	πυρὸς	πῦρ	egyezik
 ISTENTISZT-001	Zak 13:9	G4448	igen	igen	πυρώσω	πυρόω	egyezik
 ISTENTISZT-001	Zak 13:9	G5154	igen	igen	τρίτον	τρίτος	egyezik
 ISTENTISZT-001	Zak 13:9	G5553	igen	igen	χρυσίον	χρυσίον	egyezik
-ISTENTISZT-001	Zsolt 116:4	G1473	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:4	G1941	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:4	G2532	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:4	G2962	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:4	G3588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:4	G3686	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:4	G4506	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:4	G5590	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:13	G1941	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:13	G2532	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:13	G2962	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:13	G2983	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:13	G3588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:13	G3686	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:13	G4221	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:13	G4992	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:17	G0133	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:17	G2378	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:17	G2380	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Zsolt 116:17	G4771	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ISTENTISZT-001	Jóel 2:32	G0302	igen	nem			csak regi
+ISTENTISZT-001	Zsolt 116:4	G1473	igen	igen	μου	ἐγώ	egyezik
+ISTENTISZT-001	Zsolt 116:4	G1941	igen	igen	ἐπεκαλεσάμην	ἐπικαλέω	egyezik
+ISTENTISZT-001	Zsolt 116:4	G2532	igen	igen	καὶ	καί	egyezik
+ISTENTISZT-001	Zsolt 116:4	G2962	igen	igen	κυρίου	κύριος	egyezik
+ISTENTISZT-001	Zsolt 116:4	G3588	igen	igen	τὸ	ὁ	egyezik
+ISTENTISZT-001	Zsolt 116:4	G3686	igen	igen	ὄνομα	ὄνομα	egyezik
+ISTENTISZT-001	Zsolt 116:4	G4506	igen	igen	ῥῦσαι	ῥύομαι	egyezik
+ISTENTISZT-001	Zsolt 116:4	G5590	igen	igen	ψυχήν	ψυχή	egyezik
+ISTENTISZT-001	Zsolt 116:4	G5598	nem	igen	ὦ	ὦ	csak uj
+ISTENTISZT-001	Zsolt 116:13	G1941	igen	igen	ἐπικαλέσομαι	ἐπικαλέω	egyezik
+ISTENTISZT-001	Zsolt 116:13	G2532	igen	igen	καὶ	καί	egyezik
+ISTENTISZT-001	Zsolt 116:13	G2962	igen	igen	κυρίου	κύριος	egyezik
+ISTENTISZT-001	Zsolt 116:13	G2983	igen	igen	λήμψομαι	λαμβάνω	egyezik
+ISTENTISZT-001	Zsolt 116:13	G3588	igen	igen	τὸ	ὁ	egyezik
+ISTENTISZT-001	Zsolt 116:13	G3686	igen	igen	ὄνομα	ὄνομα	egyezik
+ISTENTISZT-001	Zsolt 116:13	G4221	igen	igen	ποτήριον	ποτήριον	egyezik
+ISTENTISZT-001	Zsolt 116:13	G4992	igen	nem			csak regi
+ISTENTISZT-001	Zsolt 116:17	G0133	igen	igen	αἰνέσεως	αἴνεσις	egyezik
+ISTENTISZT-001	Zsolt 116:17	G2378	igen	igen	θυσίαν	θυσία	egyezik
+ISTENTISZT-001	Zsolt 116:17	G2380	igen	igen	θύσω	θύω	egyezik
+ISTENTISZT-001	Zsolt 116:17	G4771	igen	igen	σοὶ	σύ	egyezik
+ISTENTISZT-001	Jóel 2:32	G0302	igen	igen	ἂν	ἄν	egyezik
 ISTENTISZT-001	Jóel 2:32	G0391	igen	nem			csak regi
-ISTENTISZT-001	Jóel 2:32	G0716	nem	igen	ἁρμάτων	ἅρμα	csak uj
-ISTENTISZT-001	Jóel 2:32	G1510	igen	nem			csak regi
-ISTENTISZT-001	Jóel 2:32	G1519	nem	igen	εἰς	εἰς	csak uj
-ISTENTISZT-001	Jóel 2:32	G1722	igen	nem			csak regi
-ISTENTISZT-001	Jóel 2:32	G1814	nem	igen	ἐξαλοῦνται	ἐξάλλομαι	csak uj
-ISTENTISZT-001	Jóel 2:32	G1909	nem	igen	ἐπὶ	ἐπί	csak uj
-ISTENTISZT-001	Jóel 2:32	G1941	igen	nem			csak regi
+ISTENTISZT-001	Jóel 2:32	G1510	igen	igen	ἔσται	εἰμί	egyezik
+ISTENTISZT-001	Jóel 2:32	G1722	igen	igen	ἐν	ἐν	egyezik
+ISTENTISZT-001	Jóel 2:32	G1941	igen	igen	ἐπικαλέσηται	ἐπικαλέω	egyezik
 ISTENTISZT-001	Jóel 2:32	G2097	igen	nem			csak regi
-ISTENTISZT-001	Jóel 2:32	G2419	igen	nem			csak regi
-ISTENTISZT-001	Jóel 2:32	G2478	nem	igen	ἰσχυρὸς	ἰσχυρός	csak uj
-ISTENTISZT-001	Jóel 2:32	G2530	igen	nem			csak regi
+ISTENTISZT-001	Jóel 2:32	G2419	igen	igen	Ιερουσαλημ	Ιερουσαλημ	egyezik
+ISTENTISZT-001	Jóel 2:32	G2530	igen	igen	καθότι	καθότι	egyezik
 ISTENTISZT-001	Jóel 2:32	G2532	igen	igen	καὶ	καί	egyezik
-ISTENTISZT-001	Jóel 2:32	G2562	nem	igen	καλάμην	καλάμη	csak uj
-ISTENTISZT-001	Jóel 2:32	G2719	nem	igen	κατεσθιούσης	κατεσθίω	csak uj
-ISTENTISZT-001	Jóel 2:32	G2962	igen	nem			csak regi
-ISTENTISZT-001	Jóel 2:32	G2992	nem	igen	λαὸς	λαός	csak uj
-ISTENTISZT-001	Jóel 2:32	G3588	igen	igen	τὰς	ὁ	egyezik
-ISTENTISZT-001	Jóel 2:32	G3686	igen	nem			csak regi
-ISTENTISZT-001	Jóel 2:32	G3735	igen	igen	ὀρέων	ὄρος	egyezik
-ISTENTISZT-001	Jóel 2:32	G3739	igen	nem			csak regi
-ISTENTISZT-001	Jóel 2:32	G3754	igen	nem			csak regi
-ISTENTISZT-001	Jóel 2:32	G3956	igen	nem			csak regi
-ISTENTISZT-001	Jóel 2:32	G4171	nem	igen	πόλεμον	πόλεμος	csak uj
-ISTENTISZT-001	Jóel 2:32	G4183	nem	igen	πολὺς	πολύς	csak uj
-ISTENTISZT-001	Jóel 2:32	G4341	igen	nem			csak regi
-ISTENTISZT-001	Jóel 2:32	G4442	nem	igen	πυρὸς	πῦρ	csak uj
-ISTENTISZT-001	Jóel 2:32	G4622	igen	nem			csak regi
-ISTENTISZT-001	Jóel 2:32	G4982	igen	nem			csak regi
-ISTENTISZT-001	Jóel 2:32	G5395	nem	igen	φλογὸς	φλόξ	csak uj
-ISTENTISZT-001	Jóel 2:32	G5456	nem	igen	φωνὴ	φωνή	csak uj
-ISTENTISZT-001	Zsolt 105:1	G0165	nem	igen	αἰῶνα	αἰών	csak uj
-ISTENTISZT-001	Zsolt 105:1	G0239	igen	igen	αλληλουια	αλληλουια	egyezik
+ISTENTISZT-001	Jóel 2:32	G2962	igen	igen	κυρίου	κύριος	egyezik
+ISTENTISZT-001	Jóel 2:32	G3004	nem	igen	εἶπεν	λέγω	csak uj
+ISTENTISZT-001	Jóel 2:32	G3588	igen	igen	τὸ	ὁ	egyezik
+ISTENTISZT-001	Jóel 2:32	G3686	igen	igen	ὄνομα	ὄνομα	egyezik
+ISTENTISZT-001	Jóel 2:32	G3735	igen	igen	ὄρει	ὄρος	egyezik
+ISTENTISZT-001	Jóel 2:32	G3739	igen	igen	ὃς	ὅς	egyezik
+ISTENTISZT-001	Jóel 2:32	G3754	igen	igen	ὅτι	ὅτι	egyezik
+ISTENTISZT-001	Jóel 2:32	G3956	igen	igen	πᾶς	πᾶς	egyezik
+ISTENTISZT-001	Jóel 2:32	G4341	igen	igen	προσκέκληται	προσκαλέω	egyezik
+ISTENTISZT-001	Jóel 2:32	G4622	igen	igen	Σιων	Σιων	egyezik
+ISTENTISZT-001	Jóel 2:32	G4982	igen	igen	σωθήσεται	σῴζω	egyezik
+ISTENTISZT-001	Zsolt 105:1	G0239	igen	igen	αλληλουια	ἁλληλουϊά	egyezik
+ISTENTISZT-001	Zsolt 105:1	G0518	nem	igen	ἀπαγγείλατε	ἀπαγγέλλω	csak uj
 ISTENTISZT-001	Zsolt 105:1	G0846	igen	igen	αὐτοῦ	αὐτός	egyezik
-ISTENTISZT-001	Zsolt 105:1	G1484	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 105:1	G1519	nem	igen	εἰς	εἰς	csak uj
-ISTENTISZT-001	Zsolt 105:1	G1656	nem	igen	ἔλεος	ἔλεος	csak uj
-ISTENTISZT-001	Zsolt 105:1	G1722	igen	nem			csak regi
+ISTENTISZT-001	Zsolt 105:1	G1484	igen	igen	ἔθνεσιν	ἔθνος	egyezik
+ISTENTISZT-001	Zsolt 105:1	G1722	igen	igen	ἐν	ἐν	egyezik
 ISTENTISZT-001	Zsolt 105:1	G1843	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 105:1	G1941	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 105:1	G2041	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 105:1	G2532	igen	nem			csak regi
+ISTENTISZT-001	Zsolt 105:1	G1941	igen	igen	ἐπικαλεῖσθε	ἐπικαλέω	egyezik
+ISTENTISZT-001	Zsolt 105:1	G2041	igen	igen	ἔργα	ἔργον	egyezik
+ISTENTISZT-001	Zsolt 105:1	G2532	igen	igen	καὶ	καί	egyezik
 ISTENTISZT-001	Zsolt 105:1	G2962	igen	igen	κυρίῳ	κύριος	egyezik
 ISTENTISZT-001	Zsolt 105:1	G3588	igen	igen	τῷ	ὁ	egyezik
-ISTENTISZT-001	Zsolt 105:1	G3686	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 105:1	G3754	nem	igen	ὅτι	ὅτι	csak uj
-ISTENTISZT-001	Zsolt 105:1	G5543	nem	igen	χρηστός	χρηστός	csak uj
+ISTENTISZT-001	Zsolt 105:1	G3686	igen	igen	ὄνομα	ὄνομα	egyezik
 ISTENTISZT-001	1Krón 16:8	G0846	igen	igen	αὐτὸν	αὐτός	egyezik
 ISTENTISZT-001	1Krón 16:8	G1107	igen	igen	γνωρίσατε	γνωρίζω	egyezik
 ISTENTISZT-001	1Krón 16:8	G1722	igen	igen	ἐν	ἐν	egyezik
@@ -430,26 +413,22 @@ ISTENTISZT-001	Jer 10:25	G3739	igen	igen	αἳ	ὅς	egyezik
 ISTENTISZT-001	Jer 10:25	G3754	igen	igen	ὅτι	ὅτι	egyezik
 ISTENTISZT-001	Jer 10:25	G3756	nem	igen	οὐκ	οὐ	csak uj
 ISTENTISZT-001	Jer 10:25	G4771	igen	igen	σου	σύ	egyezik
-ISTENTISZT-001	Zsolt 79:6	G0740	nem	igen	ἄρτον	ἄρτος	csak uj
-ISTENTISZT-001	Zsolt 79:6	G0932	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 79:6	G1097	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 79:6	G1144	nem	igen	δακρύων	δάκρυ	csak uj
-ISTENTISZT-001	Zsolt 79:6	G1473	nem	igen	ἡμᾶς	ἐγώ	csak uj
-ISTENTISZT-001	Zsolt 79:6	G1484	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 79:6	G1632	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 79:6	G1722	nem	igen	ἐν	ἐν	csak uj
-ISTENTISZT-001	Zsolt 79:6	G1909	igen	nem			csak regi
+ISTENTISZT-001	Zsolt 79:6	G0932	igen	igen	βασιλείας	βασιλεία	egyezik
+ISTENTISZT-001	Zsolt 79:6	G1097	igen	igen	γινώσκοντά	γινώσκω	egyezik
+ISTENTISZT-001	Zsolt 79:6	G1484	igen	igen	ἔθνη	ἔθνος	egyezik
+ISTENTISZT-001	Zsolt 79:6	G1632	igen	igen	ἔκχεον	ἐκχέω	egyezik
+ISTENTISZT-001	Zsolt 79:6	G1909	igen	igen	ἐπὶ	ἐπί	egyezik
+ISTENTISZT-001	Zsolt 79:6	G1941	nem	igen	ἐπεκαλέσαντο	ἐπικαλέω	csak uj
 ISTENTISZT-001	Zsolt 79:6	G2532	igen	igen	καὶ	καί	egyezik
 ISTENTISZT-001	Zsolt 79:6	G3165	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 79:6	G3358	nem	igen	μέτρῳ	μέτρον	csak uj
+ISTENTISZT-001	Zsolt 79:6	G3361	nem	igen	μὴ	μή	csak uj
 ISTENTISZT-001	Zsolt 79:6	G3364	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 79:6	G3588	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 79:6	G3686	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 79:6	G3709	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 79:6	G3739	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 79:6	G4222	nem	igen	ποτιεῖς	ποτίζω	csak uj
-ISTENTISZT-001	Zsolt 79:6	G4771	igen	nem			csak regi
-ISTENTISZT-001	Zsolt 79:6	G5595	nem	igen	ψωμιεῖς	ψωμίζω	csak uj
+ISTENTISZT-001	Zsolt 79:6	G3588	igen	igen	τὴν	ὁ	egyezik
+ISTENTISZT-001	Zsolt 79:6	G3686	igen	igen	ὄνομά	ὄνομα	egyezik
+ISTENTISZT-001	Zsolt 79:6	G3709	igen	igen	ὀργήν	ὀργή	egyezik
+ISTENTISZT-001	Zsolt 79:6	G3739	igen	igen	αἳ	ὅς	egyezik
+ISTENTISZT-001	Zsolt 79:6	G3756	nem	igen	οὐκ	οὐ	csak uj
+ISTENTISZT-001	Zsolt 79:6	G4771	igen	igen	σου	σύ	egyezik
 ISTENTISZT-001	2Móz 33:19	G0302	igen	igen	ἂν	ἄν	egyezik
 ISTENTISZT-001	2Móz 33:19	G1391	igen	igen	δόξῃ	δόξα	egyezik
 ISTENTISZT-001	2Móz 33:19	G1473	igen	igen	ἐγὼ	ἐγώ	egyezik
@@ -611,196 +590,168 @@ TEREMT-001	Jób 28:14	G3004	nem	igen	εἶπεν	λέγω	csak uj
 TEREMT-001	Jób 28:14	G3326	igen	igen	μετ᾿	μετά	egyezik
 TEREMT-001	Jób 28:14	G3364	igen	nem			csak regi
 TEREMT-001	Jób 28:14	G3756	nem	igen	οὐκ	οὐ	csak uj
-TEREMT-001	Jób 38:16	G0012	igen	igen	ἀβύσσου	ἄβυσσος	egyezik
-TEREMT-001	Jób 38:16	G1161	igen	igen	δὲ	δέ	egyezik
-TEREMT-001	Jób 38:16	G1722	igen	igen	ἐν	ἐν	egyezik
-TEREMT-001	Jób 38:16	G1909	igen	igen	ἐπὶ	ἐπί	egyezik
-TEREMT-001	Jób 38:16	G2064	igen	igen	ἦλθες	ἔρχομαι	egyezik
-TEREMT-001	Jób 38:16	G2281	igen	igen	θαλάσσης	θάλασσα	egyezik
-TEREMT-001	Jób 38:16	G2487	igen	igen	ἴχνεσιν	ἴχνος	egyezik
-TEREMT-001	Jób 38:16	G4043	igen	igen	περιεπάτησας	περιπατέω	egyezik
-TEREMT-001	Jób 38:16	G4077	igen	igen	πηγὴν	πηγή	egyezik
-TEREMT-001	Jób 38:30	G0012	igen	igen	ἀβύσσου	ἄβυσσος	egyezik
-TEREMT-001	Jób 38:30	G1161	igen	igen	δὲ	δέ	egyezik
-TEREMT-001	Jób 38:30	G2597	igen	igen	καταβαίνει	καταβαίνω	egyezik
-TEREMT-001	Jób 38:30	G3739	igen	igen	ἣ	ὅς	egyezik
-TEREMT-001	Jób 38:30	G3746	igen	nem			csak regi
-TEREMT-001	Jób 38:30	G4078	igen	igen	ἔπηξεν	πήγνυμι	egyezik
-TEREMT-001	Jób 38:30	G4383	igen	igen	πρόσωπον	πρόσωπον	egyezik
-TEREMT-001	Jób 38:30	G4482	igen	igen	ῥέον	ῥέω	egyezik
-TEREMT-001	Jób 38:30	G5100	igen	igen	τίς	τίς	egyezik
-TEREMT-001	Jób 38:30	G5204	igen	igen	ὕδωρ	ὕδωρ	egyezik
-TEREMT-001	Jób 38:30	G5618	nem	igen	ὥσπερ	ὥσπερ	csak uj
-TEREMT-001	Zsolt 33:7	G0012	igen	nem			csak regi
-TEREMT-001	Zsolt 33:7	G0779	igen	nem			csak regi
-TEREMT-001	Zsolt 33:7	G0846	nem	igen	αὐτοῦ	αὐτός	csak uj
-TEREMT-001	Zsolt 33:7	G1522	nem	igen	εἰσήκουσεν	εἰσακούω	csak uj
-TEREMT-001	Zsolt 33:7	G1537	nem	igen	ἐκ	ἐκ	csak uj
-TEREMT-001	Zsolt 33:7	G1722	igen	nem			csak regi
-TEREMT-001	Zsolt 33:7	G2281	igen	nem			csak regi
-TEREMT-001	Zsolt 33:7	G2344	igen	nem			csak regi
-TEREMT-001	Zsolt 33:7	G2347	nem	igen	θλίψεων	θλῖψις	csak uj
-TEREMT-001	Zsolt 33:7	G2532	nem	igen	καὶ	καί	csak uj
-TEREMT-001	Zsolt 33:7	G2896	nem	igen	ἐκέκραξεν	κράζω	csak uj
-TEREMT-001	Zsolt 33:7	G2962	nem	igen	κύριος	κύριος	csak uj
-TEREMT-001	Zsolt 33:7	G3588	nem	igen	ὁ	ὁ	csak uj
+TEREMT-001	Jób 38:16	G0012	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:16	G1161	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:16	G1722	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:16	G1909	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:16	G2064	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:16	G2281	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:16	G2487	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:16	G4043	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:16	G4077	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:30	G0012	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:30	G1161	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:30	G2597	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:30	G3739	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:30	G3746	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:30	G4078	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:30	G4383	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:30	G4482	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:30	G5100	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jób 38:30	G5204	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Zsolt 33:7	G0012	igen	igen	ἀβύσσους	ἄβυσσος	egyezik
+TEREMT-001	Zsolt 33:7	G0779	igen	igen	ἀσκὸν	ἀσκός	egyezik
+TEREMT-001	Zsolt 33:7	G1722	igen	igen	ἐν	ἐν	egyezik
+TEREMT-001	Zsolt 33:7	G2281	igen	igen	θαλάσσης	θάλασσα	egyezik
+TEREMT-001	Zsolt 33:7	G2344	igen	igen	θησαυροῖς	θησαυρός	egyezik
 TEREMT-001	Zsolt 33:7	G3739	igen	nem			csak regi
-TEREMT-001	Zsolt 33:7	G3778	nem	igen	οὗτος	οὗτος	csak uj
-TEREMT-001	Zsolt 33:7	G3956	nem	igen	πασῶν	πᾶς	csak uj
-TEREMT-001	Zsolt 33:7	G4434	nem	igen	πτωχὸς	πτωχός	csak uj
-TEREMT-001	Zsolt 33:7	G4863	igen	nem			csak regi
-TEREMT-001	Zsolt 33:7	G4982	nem	igen	ἔσωσεν	σῴζω	csak uj
-TEREMT-001	Zsolt 33:7	G5087	igen	nem			csak regi
-TEREMT-001	Zsolt 33:7	G5204	igen	nem			csak regi
-TEREMT-001	Zsolt 36:7	G0444	igen	nem			csak regi
-TEREMT-001	Zsolt 36:7	G0575	nem	igen	ἀπὸ	ἀπό	csak uj
+TEREMT-001	Zsolt 33:7	G4863	igen	igen	συνάγων	συνάγω	egyezik
+TEREMT-001	Zsolt 33:7	G5087	igen	igen	τιθεὶς	τίθημι	egyezik
+TEREMT-001	Zsolt 33:7	G5204	igen	igen	ὕδατα	ὕδωρ	egyezik
+TEREMT-001	Zsolt 36:7	G0012	nem	igen	ἄβυσσος	ἄβυσσος	csak uj
+TEREMT-001	Zsolt 36:7	G0444	igen	igen	ἀνθρώπους	ἄνθρωπος	egyezik
 TEREMT-001	Zsolt 36:7	G1161	igen	nem			csak regi
-TEREMT-001	Zsolt 36:7	G1459	nem	igen	ἐγκατάλιπε	ἐγκαταλείπω	csak uj
+TEREMT-001	Zsolt 36:7	G1343	nem	igen	δικαιοσύνη	δικαιοσύνη	csak uj
 TEREMT-001	Zsolt 36:7	G1656	igen	nem			csak regi
 TEREMT-001	Zsolt 36:7	G1679	igen	nem			csak regi
 TEREMT-001	Zsolt 36:7	G1722	igen	nem			csak regi
-TEREMT-001	Zsolt 36:7	G2316	igen	nem			csak regi
-TEREMT-001	Zsolt 36:7	G2372	nem	igen	θυμόν	θυμός	csak uj
+TEREMT-001	Zsolt 36:7	G2316	igen	igen	θεοῦ	θεός	egyezik
 TEREMT-001	Zsolt 36:7	G2532	nem	igen	καὶ	καί	csak uj
-TEREMT-001	Zsolt 36:7	G3361	nem	igen	μὴ	μή	csak uj
-TEREMT-001	Zsolt 36:7	G3588	igen	nem			csak regi
-TEREMT-001	Zsolt 36:7	G3709	nem	igen	ὀργῆς	ὀργή	csak uj
+TEREMT-001	Zsolt 36:7	G2917	nem	igen	κρίματά	κρίμα	csak uj
+TEREMT-001	Zsolt 36:7	G2934	nem	igen	κτήνη	κτῆνος	csak uj
+TEREMT-001	Zsolt 36:7	G2962	nem	igen	κύριε	κύριος	csak uj
+TEREMT-001	Zsolt 36:7	G3588	igen	igen	ἡ	ὁ	egyezik
+TEREMT-001	Zsolt 36:7	G3735	nem	igen	ὄρη	ὄρος	csak uj
 TEREMT-001	Zsolt 36:7	G3739	igen	nem			csak regi
-TEREMT-001	Zsolt 36:7	G3863	nem	igen	παραζήλου	παραζηλόω	csak uj
-TEREMT-001	Zsolt 36:7	G3973	nem	igen	παῦσαι	παύω	csak uj
 TEREMT-001	Zsolt 36:7	G4129	igen	nem			csak regi
+TEREMT-001	Zsolt 36:7	G4183	nem	igen	πολλή	πολύς	csak uj
 TEREMT-001	Zsolt 36:7	G4420	igen	nem			csak regi
 TEREMT-001	Zsolt 36:7	G4629	igen	nem			csak regi
-TEREMT-001	Zsolt 36:7	G4771	igen	nem			csak regi
+TEREMT-001	Zsolt 36:7	G4771	igen	igen	σου	σύ	egyezik
+TEREMT-001	Zsolt 36:7	G4982	nem	igen	σώσεις	σῴζω	csak uj
 TEREMT-001	Zsolt 36:7	G5207	igen	nem			csak regi
-TEREMT-001	Zsolt 36:7	G5620	nem	igen	ὥστε	ὥστε	csak uj
-TEREMT-001	Zsolt 42:8	G0846	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 42:8	G1473	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 42:8	G1656	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 42:8	G2222	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 42:8	G2250	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 42:8	G2316	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 42:8	G2532	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 42:8	G2962	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 42:8	G3571	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 42:8	G3588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 42:8	G3592	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 42:8	G3844	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 42:8	G4335	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 71:20	G0012	igen	nem			csak regi
-TEREMT-001	Zsolt 71:20	G0321	igen	nem			csak regi
+TEREMT-001	Zsolt 36:7	G5616	nem	igen	ὡσεὶ	ὡσεί	csak uj
+TEREMT-001	Zsolt 42:8	G0012	nem	igen	ἄβυσσος	ἄβυσσος	csak uj
+TEREMT-001	Zsolt 42:8	G0846	igen	nem			csak regi
+TEREMT-001	Zsolt 42:8	G1330	nem	igen	διῆλθον	διέρχομαι	csak uj
+TEREMT-001	Zsolt 42:8	G1473	igen	igen	ἐμὲ	ἐγώ	egyezik
+TEREMT-001	Zsolt 42:8	G1519	nem	igen	εἰς	εἰς	csak uj
+TEREMT-001	Zsolt 42:8	G1656	igen	nem			csak regi
+TEREMT-001	Zsolt 42:8	G1909	nem	igen	ἐπ᾿	ἐπί	csak uj
+TEREMT-001	Zsolt 42:8	G1941	nem	igen	ἐπικαλεῖται	ἐπικαλέω	csak uj
+TEREMT-001	Zsolt 42:8	G2222	igen	nem			csak regi
+TEREMT-001	Zsolt 42:8	G2250	igen	nem			csak regi
+TEREMT-001	Zsolt 42:8	G2316	igen	nem			csak regi
+TEREMT-001	Zsolt 42:8	G2532	igen	igen	καὶ	καί	egyezik
+TEREMT-001	Zsolt 42:8	G2949	nem	igen	κύματά	κῦμα	csak uj
+TEREMT-001	Zsolt 42:8	G2962	igen	nem			csak regi
+TEREMT-001	Zsolt 42:8	G3571	igen	nem			csak regi
+TEREMT-001	Zsolt 42:8	G3588	igen	igen	τῶν	ὁ	egyezik
+TEREMT-001	Zsolt 42:8	G3592	igen	nem			csak regi
+TEREMT-001	Zsolt 42:8	G3844	igen	nem			csak regi
+TEREMT-001	Zsolt 42:8	G3956	nem	igen	πάντες	πᾶς	csak uj
+TEREMT-001	Zsolt 42:8	G4335	igen	nem			csak regi
+TEREMT-001	Zsolt 42:8	G4771	nem	igen	σου	σύ	csak uj
+TEREMT-001	Zsolt 42:8	G5456	nem	igen	φωνὴν	φωνή	csak uj
+TEREMT-001	Zsolt 71:20	G0012	igen	igen	ἀβύσσων	ἄβυσσος	egyezik
+TEREMT-001	Zsolt 71:20	G0321	igen	igen	ἀνήγαγές	ἀνάγω	egyezik
 TEREMT-001	Zsolt 71:20	G1065	igen	nem			csak regi
+TEREMT-001	Zsolt 71:20	G1093	nem	igen	γῆς	γῆ	csak uj
 TEREMT-001	Zsolt 71:20	G1166	igen	nem			csak regi
-TEREMT-001	Zsolt 71:20	G1473	igen	nem			csak regi
-TEREMT-001	Zsolt 71:20	G1537	igen	nem			csak regi
-TEREMT-001	Zsolt 71:20	G1587	nem	igen	ἐξέλιπον	ἐκλείπω	csak uj
-TEREMT-001	Zsolt 71:20	G1994	igen	nem			csak regi
-TEREMT-001	Zsolt 71:20	G2227	igen	nem			csak regi
-TEREMT-001	Zsolt 71:20	G2347	igen	nem			csak regi
-TEREMT-001	Zsolt 71:20	G2421	nem	igen	Ιεσσαι	Ιεσσαι	csak uj
-TEREMT-001	Zsolt 71:20	G2532	igen	nem			csak regi
-TEREMT-001	Zsolt 71:20	G2556	igen	nem			csak regi
-TEREMT-001	Zsolt 71:20	G3588	igen	igen	οἱ	ὁ	egyezik
-TEREMT-001	Zsolt 71:20	G3745	igen	nem			csak regi
-TEREMT-001	Zsolt 71:20	G3825	igen	nem			csak regi
-TEREMT-001	Zsolt 71:20	G4183	igen	nem			csak regi
-TEREMT-001	Zsolt 71:20	G5207	nem	igen	υἱοῦ	υἱός	csak uj
-TEREMT-001	Zsolt 71:20	G5215	nem	igen	ὕμνοι	ὕμνος	csak uj
-TEREMT-001	Zsolt 77:17	G0154	nem	igen	αἰτῆσαι	αἰτέω	csak uj
-TEREMT-001	Zsolt 77:17	G0846	nem	igen	αὐτῶν	αὐτός	csak uj
+TEREMT-001	Zsolt 71:20	G1473	igen	igen	μοι	ἐγώ	egyezik
+TEREMT-001	Zsolt 71:20	G1537	igen	igen	ἐκ	ἐκ	egyezik
+TEREMT-001	Zsolt 71:20	G1994	igen	igen	ἐπιστρέψας	ἐπιστρέφω	egyezik
+TEREMT-001	Zsolt 71:20	G2227	igen	igen	ἐζωοποίησάς	ζωοποιέω	egyezik
+TEREMT-001	Zsolt 71:20	G2347	igen	igen	θλίψεις	θλῖψις	egyezik
+TEREMT-001	Zsolt 71:20	G2532	igen	igen	καὶ	καί	egyezik
+TEREMT-001	Zsolt 71:20	G2556	igen	igen	κακάς	κακός	egyezik
+TEREMT-001	Zsolt 71:20	G3588	igen	igen	τῶν	ὁ	egyezik
+TEREMT-001	Zsolt 71:20	G3745	igen	igen	ὅσας	ὅσος	egyezik
+TEREMT-001	Zsolt 71:20	G3825	igen	igen	πάλιν	πάλιν	egyezik
+TEREMT-001	Zsolt 71:20	G4183	igen	igen	πολλὰς	πολύς	egyezik
+TEREMT-001	Zsolt 77:17	G0012	nem	igen	ἄβυσσοι	ἄβυσσος	csak uj
 TEREMT-001	Zsolt 77:17	G0956	igen	nem			csak regi
-TEREMT-001	Zsolt 77:17	G1033	nem	igen	βρώματα	βρῶμα	csak uj
 TEREMT-001	Zsolt 77:17	G1063	igen	nem			csak regi
 TEREMT-001	Zsolt 77:17	G1279	igen	nem			csak regi
 TEREMT-001	Zsolt 77:17	G1325	igen	nem			csak regi
-TEREMT-001	Zsolt 77:17	G1598	nem	igen	ἐξεπείρασαν	ἐκπειράζω	csak uj
-TEREMT-001	Zsolt 77:17	G1722	nem	igen	ἐν	ἐν	csak uj
-TEREMT-001	Zsolt 77:17	G2316	nem	igen	θεὸν	θεός	csak uj
+TEREMT-001	Zsolt 77:17	G2279	nem	igen	ἤχους	ἦχος	csak uj
+TEREMT-001	Zsolt 77:17	G2316	nem	igen	θεός	θεός	csak uj
 TEREMT-001	Zsolt 77:17	G2532	igen	igen	καὶ	καί	egyezik
-TEREMT-001	Zsolt 77:17	G2588	nem	igen	καρδίαις	καρδία	csak uj
 TEREMT-001	Zsolt 77:17	G3507	igen	nem			csak regi
-TEREMT-001	Zsolt 77:17	G3588	igen	igen	τὸν	ὁ	egyezik
-TEREMT-001	Zsolt 77:17	G4771	igen	nem			csak regi
+TEREMT-001	Zsolt 77:17	G3588	igen	igen	ὁ	ὁ	egyezik
+TEREMT-001	Zsolt 77:17	G3708	nem	igen	εἴδοσάν	ὁράω	csak uj
+TEREMT-001	Zsolt 77:17	G4128	nem	igen	πλῆθος	πλῆθος	csak uj
+TEREMT-001	Zsolt 77:17	G4771	igen	igen	σε	σύ	egyezik
+TEREMT-001	Zsolt 77:17	G5015	nem	igen	ἐταράχθησαν	ταράσσω	csak uj
+TEREMT-001	Zsolt 77:17	G5204	nem	igen	ὕδατα	ὕδωρ	csak uj
 TEREMT-001	Zsolt 77:17	G5456	igen	nem			csak regi
-TEREMT-001	Zsolt 77:17	G5590	nem	igen	ψυχαῖς	ψυχή	csak uj
-TEREMT-001	Zsolt 78:15	G0012	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 78:15	G0846	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 78:15	G1284	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 78:15	G1722	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 78:15	G2048	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 78:15	G2532	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 78:15	G3739	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 78:15	G4073	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 78:15	G4183	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 78:15	G4222	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 104:6	G0011	nem	igen	Αβρααμ	Αβρααμ	csak uj
-TEREMT-001	Zsolt 104:6	G0012	igen	nem			csak regi
+TEREMT-001	Zsolt 78:15	G0012	igen	igen	ἀβύσσῳ	ἄβυσσος	egyezik
+TEREMT-001	Zsolt 78:15	G0846	igen	igen	αὐτοὺς	αὐτός	egyezik
+TEREMT-001	Zsolt 78:15	G1284	igen	nem			csak regi
+TEREMT-001	Zsolt 78:15	G1722	igen	igen	ἐν	ἐν	egyezik
+TEREMT-001	Zsolt 78:15	G2048	igen	igen	ἐρήμῳ	ἔρημος	egyezik
+TEREMT-001	Zsolt 78:15	G2532	igen	igen	καὶ	καί	egyezik
+TEREMT-001	Zsolt 78:15	G3739	igen	nem			csak regi
+TEREMT-001	Zsolt 78:15	G4073	igen	nem			csak regi
+TEREMT-001	Zsolt 78:15	G4183	igen	igen	πολλῇ	πολύς	egyezik
+TEREMT-001	Zsolt 78:15	G4222	igen	igen	ἐπότισεν	ποτίζω	egyezik
+TEREMT-001	Zsolt 104:6	G0012	igen	igen	ἄβυσσος	ἄβυσσος	egyezik
 TEREMT-001	Zsolt 104:6	G0846	igen	igen	αὐτοῦ	αὐτός	egyezik
-TEREMT-001	Zsolt 104:6	G1401	nem	igen	δοῦλοι	δοῦλος	csak uj
-TEREMT-001	Zsolt 104:6	G1588	nem	igen	ἐκλεκτοὶ	ἐκλεκτός	csak uj
-TEREMT-001	Zsolt 104:6	G1909	igen	nem			csak regi
-TEREMT-001	Zsolt 104:6	G2384	nem	igen	Ιακωβ	Ιακωβ	csak uj
-TEREMT-001	Zsolt 104:6	G2440	igen	nem			csak regi
-TEREMT-001	Zsolt 104:6	G2476	igen	nem			csak regi
-TEREMT-001	Zsolt 104:6	G3588	igen	nem			csak regi
-TEREMT-001	Zsolt 104:6	G3735	igen	nem			csak regi
+TEREMT-001	Zsolt 104:6	G1909	igen	igen	ἐπὶ	ἐπί	egyezik
+TEREMT-001	Zsolt 104:6	G2440	igen	igen	ἱμάτιον	ἱμάτιον	egyezik
+TEREMT-001	Zsolt 104:6	G2476	igen	igen	στήσονται	ἵστημι	egyezik
+TEREMT-001	Zsolt 104:6	G3588	igen	igen	τὸ	ὁ	egyezik
+TEREMT-001	Zsolt 104:6	G3735	igen	igen	ὀρέων	ὄρος	egyezik
 TEREMT-001	Zsolt 104:6	G3739	igen	nem			csak regi
-TEREMT-001	Zsolt 104:6	G4018	igen	nem			csak regi
-TEREMT-001	Zsolt 104:6	G4690	nem	igen	σπέρμα	σπέρμα	csak uj
-TEREMT-001	Zsolt 104:6	G5204	igen	nem			csak regi
-TEREMT-001	Zsolt 104:6	G5207	nem	igen	υἱοὶ	υἱός	csak uj
-TEREMT-001	Zsolt 106:9	G0012	igen	nem			csak regi
-TEREMT-001	Zsolt 106:9	G0018	nem	igen	ἀγαθῶν	ἀγαθός	csak uj
-TEREMT-001	Zsolt 106:9	G0846	igen	nem			csak regi
-TEREMT-001	Zsolt 106:9	G1705	nem	igen	ἐνέπλησεν	ἐμπίπλημι	csak uj
-TEREMT-001	Zsolt 106:9	G1722	igen	nem			csak regi
-TEREMT-001	Zsolt 106:9	G2008	igen	nem			csak regi
-TEREMT-001	Zsolt 106:9	G2048	igen	nem			csak regi
-TEREMT-001	Zsolt 106:9	G2063	igen	nem			csak regi
-TEREMT-001	Zsolt 106:9	G2281	igen	nem			csak regi
+TEREMT-001	Zsolt 104:6	G4018	igen	igen	περιβόλαιον	περιβόλαιον	egyezik
+TEREMT-001	Zsolt 104:6	G5204	igen	igen	ὕδατα	ὕδωρ	egyezik
+TEREMT-001	Zsolt 106:9	G0012	igen	igen	ἀβύσσῳ	ἄβυσσος	egyezik
+TEREMT-001	Zsolt 106:9	G0846	igen	igen	αὐτοὺς	αὐτός	egyezik
+TEREMT-001	Zsolt 106:9	G1722	igen	igen	ἐν	ἐν	egyezik
+TEREMT-001	Zsolt 106:9	G2008	igen	igen	ἐπετίμησεν	ἐπιτιμάω	egyezik
+TEREMT-001	Zsolt 106:9	G2048	igen	igen	ἐρήμῳ	ἔρημος	egyezik
+TEREMT-001	Zsolt 106:9	G2063	igen	igen	ἐρυθρᾷ	ἐρυθρός	egyezik
+TEREMT-001	Zsolt 106:9	G2281	igen	igen	θαλάσσῃ	θάλασσα	egyezik
 TEREMT-001	Zsolt 106:9	G2532	igen	igen	καὶ	καί	egyezik
-TEREMT-001	Zsolt 106:9	G2756	nem	igen	κενὴν	κενός	csak uj
-TEREMT-001	Zsolt 106:9	G3583	igen	nem			csak regi
-TEREMT-001	Zsolt 106:9	G3588	igen	nem			csak regi
-TEREMT-001	Zsolt 106:9	G3594	igen	nem			csak regi
+TEREMT-001	Zsolt 106:9	G3583	igen	igen	ἐξηράνθη	ξηραίνω	egyezik
+TEREMT-001	Zsolt 106:9	G3588	igen	igen	τῇ	ὁ	egyezik
+TEREMT-001	Zsolt 106:9	G3594	igen	igen	ὡδήγησεν	ὁδηγέω	egyezik
 TEREMT-001	Zsolt 106:9	G3739	igen	nem			csak regi
-TEREMT-001	Zsolt 106:9	G3754	nem	igen	ὅτι	ὅτι	csak uj
-TEREMT-001	Zsolt 106:9	G3983	nem	igen	πεινῶσαν	πεινάω	csak uj
-TEREMT-001	Zsolt 106:9	G5526	nem	igen	ἐχόρτασεν	χορτάζω	csak uj
-TEREMT-001	Zsolt 106:9	G5590	nem	igen	ψυχὴν	ψυχή	csak uj
-TEREMT-001	Zsolt 107:26	G0012	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 107:26	G0305	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 107:26	G0846	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 107:26	G1722	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 107:26	G2193	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 107:26	G2532	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 107:26	G2556	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 107:26	G2597	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 107:26	G3588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 107:26	G3772	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 107:26	G5080	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 107:26	G5590	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-TEREMT-001	Zsolt 135:6	G0012	igen	nem			csak regi
-TEREMT-001	Zsolt 135:6	G0165	nem	igen	αἰῶνα	αἰών	csak uj
-TEREMT-001	Zsolt 135:6	G0846	nem	igen	αὐτοῦ	αὐτός	csak uj
+TEREMT-001	Zsolt 107:26	G0012	igen	igen	ἀβύσσων	ἄβυσσος	egyezik
+TEREMT-001	Zsolt 107:26	G0305	igen	igen	ἀναβαίνουσιν	ἀναβαίνω	egyezik
+TEREMT-001	Zsolt 107:26	G0846	igen	igen	αὐτῶν	αὐτός	egyezik
+TEREMT-001	Zsolt 107:26	G1722	igen	igen	ἐν	ἐν	egyezik
+TEREMT-001	Zsolt 107:26	G2193	igen	igen	ἕως	ἕως	egyezik
+TEREMT-001	Zsolt 107:26	G2532	igen	igen	καὶ	καί	egyezik
+TEREMT-001	Zsolt 107:26	G2556	igen	igen	κακοῖς	κακός	egyezik
+TEREMT-001	Zsolt 107:26	G2597	igen	igen	καταβαίνουσιν	καταβαίνω	egyezik
+TEREMT-001	Zsolt 107:26	G3588	igen	igen	τῶν	ὁ	egyezik
+TEREMT-001	Zsolt 107:26	G3772	igen	igen	οὐρανῶν	οὐρανός	egyezik
+TEREMT-001	Zsolt 107:26	G5080	igen	igen	ἐτήκετο	τήκω	egyezik
+TEREMT-001	Zsolt 107:26	G5590	igen	igen	ψυχὴ	ψυχή	egyezik
+TEREMT-001	Zsolt 135:6	G0012	igen	igen	ἀβύσσοις	ἄβυσσος	egyezik
 TEREMT-001	Zsolt 135:6	G1065	igen	nem			csak regi
-TEREMT-001	Zsolt 135:6	G1093	nem	igen	γῆν	γῆ	csak uj
-TEREMT-001	Zsolt 135:6	G1519	nem	igen	εἰς	εἰς	csak uj
-TEREMT-001	Zsolt 135:6	G1656	nem	igen	ἔλεος	ἔλεος	csak uj
-TEREMT-001	Zsolt 135:6	G1722	igen	nem			csak regi
-TEREMT-001	Zsolt 135:6	G1909	nem	igen	ἐπὶ	ἐπί	csak uj
-TEREMT-001	Zsolt 135:6	G2281	igen	nem			csak regi
-TEREMT-001	Zsolt 135:6	G2309	igen	nem			csak regi
-TEREMT-001	Zsolt 135:6	G2532	igen	nem			csak regi
-TEREMT-001	Zsolt 135:6	G2962	igen	nem			csak regi
-TEREMT-001	Zsolt 135:6	G3588	igen	igen	τῷ	ὁ	egyezik
-TEREMT-001	Zsolt 135:6	G3745	igen	nem			csak regi
-TEREMT-001	Zsolt 135:6	G3754	nem	igen	ὅτι	ὅτι	csak uj
-TEREMT-001	Zsolt 135:6	G3772	igen	nem			csak regi
-TEREMT-001	Zsolt 135:6	G3956	igen	nem			csak regi
-TEREMT-001	Zsolt 135:6	G4160	igen	nem			csak regi
-TEREMT-001	Zsolt 135:6	G4732	nem	igen	στερεώσαντι	στερεόω	csak uj
-TEREMT-001	Zsolt 135:6	G5204	nem	igen	ὑδάτων	ὕδωρ	csak uj
+TEREMT-001	Zsolt 135:6	G1093	nem	igen	γῇ	γῆ	csak uj
+TEREMT-001	Zsolt 135:6	G1722	igen	igen	ἐν	ἐν	egyezik
+TEREMT-001	Zsolt 135:6	G2281	igen	igen	θαλάσσαις	θάλασσα	egyezik
+TEREMT-001	Zsolt 135:6	G2309	igen	igen	ἠθέλησεν	θέλω	egyezik
+TEREMT-001	Zsolt 135:6	G2532	igen	igen	καὶ	καί	egyezik
+TEREMT-001	Zsolt 135:6	G2962	igen	igen	κύριος	κύριος	egyezik
+TEREMT-001	Zsolt 135:6	G3588	igen	igen	ὁ	ὁ	egyezik
+TEREMT-001	Zsolt 135:6	G3745	igen	igen	ὅσα	ὅσος	egyezik
+TEREMT-001	Zsolt 135:6	G3772	igen	igen	οὐρανῷ	οὐρανός	egyezik
+TEREMT-001	Zsolt 135:6	G3956	igen	igen	πάντα	πᾶς	egyezik
+TEREMT-001	Zsolt 135:6	G4160	igen	igen	ἐποίησεν	ποιέω	egyezik
 TEREMT-001	Zsolt 148:7	G0012	igen	igen	ἄβυσσοι	ἄβυσσος	egyezik
 TEREMT-001	Zsolt 148:7	G0134	igen	igen	αἰνεῖτε	αἰνέω	egyezik
 TEREMT-001	Zsolt 148:7	G1065	igen	nem			csak regi
@@ -864,18 +815,17 @@ TEREMT-001	Ézs 51:10	G4128	igen	igen	πλῆθος	πλῆθος	egyezik
 TEREMT-001	Ézs 51:10	G4506	nem	igen	ῥυομένοις	ῥύομαι	csak uj
 TEREMT-001	Ézs 51:10	G5087	igen	igen	θεῖσα	τίθημι	egyezik
 TEREMT-001	Ézs 51:10	G5204	igen	igen	ὕδωρ	ὕδωρ	egyezik
-TEREMT-001	Ézs 63:13	G0012	igen	igen	ἀβύσσου	ἄβυσσος	egyezik
-TEREMT-001	Ézs 63:13	G0071	igen	igen	ἤγαγεν	ἄγω	egyezik
-TEREMT-001	Ézs 63:13	G0846	igen	igen	αὐτοὺς	αὐτός	egyezik
-TEREMT-001	Ézs 63:13	G1223	igen	igen	διὰ	διά	egyezik
-TEREMT-001	Ézs 63:13	G2048	igen	igen	ἐρήμου	ἔρημος	egyezik
-TEREMT-001	Ézs 63:13	G2462	igen	igen	ἵππον	ἵππος	egyezik
-TEREMT-001	Ézs 63:13	G2532	igen	igen	καὶ	καί	egyezik
-TEREMT-001	Ézs 63:13	G2872	igen	igen	ἐκοπίασαν	κοπιάω	egyezik
-TEREMT-001	Ézs 63:13	G3364	igen	nem			csak regi
-TEREMT-001	Ézs 63:13	G3588	igen	igen	τῆς	ὁ	egyezik
-TEREMT-001	Ézs 63:13	G3739	igen	nem			csak regi
-TEREMT-001	Ézs 63:13	G3756	nem	igen	οὐκ	οὐ	csak uj
+TEREMT-001	Ézs 63:13	G0012	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Ézs 63:13	G0071	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Ézs 63:13	G0846	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Ézs 63:13	G1223	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Ézs 63:13	G2048	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Ézs 63:13	G2462	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Ézs 63:13	G2532	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Ézs 63:13	G2872	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Ézs 63:13	G3364	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Ézs 63:13	G3588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Ézs 63:13	G3739	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
 TEREMT-001	Ez 26:19	G0012	igen	igen	ἄβυσσον	ἄβυσσος	egyezik
 TEREMT-001	Ez 26:19	G0321	igen	igen	ἀναγαγεῖν	ἀνάγω	egyezik
 TEREMT-001	Ez 26:19	G1325	igen	igen	δῶ	δίδωμι	egyezik
@@ -971,40 +921,35 @@ TEREMT-001	Hab 3:10	G5311	igen	igen	ὕψος	ὕψος	egyezik
 TEREMT-001	Hab 3:10	G5325	igen	igen	φαντασίας	φαντασία	egyezik
 TEREMT-001	Hab 3:10	G5456	igen	igen	φωνὴν	φωνή	egyezik
 TEREMT-001	Hab 3:10	G5605	igen	igen	ὠδινήσουσιν	ὠδίνω	egyezik
-TEREMT-001	Jón 2:6	G0166	igen	igen	αἰώνιοι	αἰώνιος	egyezik
-TEREMT-001	Jón 2:6	G0305	igen	igen	ἀναβήτω	ἀναβαίνω	egyezik
-TEREMT-001	Jón 2:6	G0846	igen	igen	αὐτῆς	αὐτός	egyezik
-TEREMT-001	Jón 2:6	G1065	igen	nem			csak regi
-TEREMT-001	Jón 2:6	G1093	nem	igen	γῆν	γῆ	csak uj
-TEREMT-001	Jón 2:6	G1473	igen	igen	μου	ἐγώ	egyezik
-TEREMT-001	Jón 2:6	G1519	igen	igen	εἰς	εἰς	egyezik
-TEREMT-001	Jón 2:6	G2222	igen	igen	ζωῆς	ζωή	egyezik
-TEREMT-001	Jón 2:6	G2316	igen	igen	θεός	θεός	egyezik
-TEREMT-001	Jón 2:6	G2532	igen	igen	καὶ	καί	egyezik
-TEREMT-001	Jón 2:6	G2597	igen	igen	κατέβην	καταβαίνω	egyezik
-TEREMT-001	Jón 2:6	G2962	igen	igen	κύριε	κύριος	egyezik
-TEREMT-001	Jón 2:6	G3588	igen	igen	οἱ	ὁ	egyezik
-TEREMT-001	Jón 2:6	G3739	igen	igen	ἧς	ὅς	egyezik
-TEREMT-001	Jón 2:6	G5356	igen	igen	φθορὰ	φθορά	egyezik
-ALVIL-001	Zsolt 16:10	G0086	igen	nem			csak regi
-ALVIL-001	Zsolt 16:10	G0846	nem	igen	αὐτῶν	αὐτός	csak uj
-ALVIL-001	Zsolt 16:10	G1312	igen	nem			csak regi
-ALVIL-001	Zsolt 16:10	G1325	igen	nem			csak regi
-ALVIL-001	Zsolt 16:10	G1459	igen	nem			csak regi
-ALVIL-001	Zsolt 16:10	G1473	igen	nem			csak regi
-ALVIL-001	Zsolt 16:10	G1519	igen	nem			csak regi
-ALVIL-001	Zsolt 16:10	G2980	nem	igen	ἐλάλησεν	λαλέω	csak uj
+TEREMT-001	Jón 2:6	G0166	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jón 2:6	G0305	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jón 2:6	G0846	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jón 2:6	G1065	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jón 2:6	G1473	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jón 2:6	G1519	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jón 2:6	G2222	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jón 2:6	G2316	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jón 2:6	G2532	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jón 2:6	G2597	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jón 2:6	G2962	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jón 2:6	G3588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jón 2:6	G3739	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+TEREMT-001	Jón 2:6	G5356	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Zsolt 16:10	G0086	igen	igen	ᾅδην	ᾅδης	egyezik
+ALVIL-001	Zsolt 16:10	G1312	igen	igen	διαφθοράν	διαφθορά	egyezik
+ALVIL-001	Zsolt 16:10	G1325	igen	igen	δώσεις	δίδωμι	egyezik
+ALVIL-001	Zsolt 16:10	G1459	igen	igen	ἐγκαταλείψεις	ἐγκαταλείπω	egyezik
+ALVIL-001	Zsolt 16:10	G1473	igen	igen	μου	ἐγώ	egyezik
+ALVIL-001	Zsolt 16:10	G1519	igen	igen	εἰς	εἰς	egyezik
 ALVIL-001	Zsolt 16:10	G3364	igen	nem			csak regi
-ALVIL-001	Zsolt 16:10	G3588	igen	igen	τὸ	ὁ	egyezik
-ALVIL-001	Zsolt 16:10	G3708	igen	nem			csak regi
-ALVIL-001	Zsolt 16:10	G3741	igen	nem			csak regi
-ALVIL-001	Zsolt 16:10	G3754	igen	nem			csak regi
-ALVIL-001	Zsolt 16:10	G3761	igen	nem			csak regi
-ALVIL-001	Zsolt 16:10	G4750	nem	igen	στόμα	στόμα	csak uj
-ALVIL-001	Zsolt 16:10	G4771	igen	nem			csak regi
-ALVIL-001	Zsolt 16:10	G4788	nem	igen	συνέκλεισαν	συγκλείω	csak uj
-ALVIL-001	Zsolt 16:10	G5243	nem	igen	ὑπερηφανίαν	ὑπερηφανία	csak uj
-ALVIL-001	Zsolt 16:10	G5590	igen	nem			csak regi
+ALVIL-001	Zsolt 16:10	G3588	igen	igen	τὴν	ὁ	egyezik
+ALVIL-001	Zsolt 16:10	G3708	igen	igen	ἰδεῖν	ὁράω	egyezik
+ALVIL-001	Zsolt 16:10	G3741	igen	igen	ὅσιόν	ὅσιος	egyezik
+ALVIL-001	Zsolt 16:10	G3754	igen	igen	ὅτι	ὅτι	egyezik
+ALVIL-001	Zsolt 16:10	G3756	nem	igen	οὐκ	οὐ	csak uj
+ALVIL-001	Zsolt 16:10	G3761	igen	igen	οὐδὲ	οὐδέ	egyezik
+ALVIL-001	Zsolt 16:10	G4771	igen	igen	σου	σύ	egyezik
+ALVIL-001	Zsolt 16:10	G5590	igen	igen	ψυχήν	ψυχή	egyezik
 ALVIL-001	1Móz 37:35	G0086	igen	igen	ᾅδου	ᾅδης	egyezik
 ALVIL-001	1Móz 37:35	G0846	igen	igen	αὐτοῦ	αὐτός	egyezik
 ALVIL-001	1Móz 37:35	G1161	igen	igen	δὲ	δέ	egyezik
@@ -1255,18 +1200,18 @@ ALVIL-001	Jób 14:13	G4771	igen	igen	σου	σύ	egyezik
 ALVIL-001	Jób 14:13	G5021	igen	igen	τάξῃ	τάσσω	egyezik
 ALVIL-001	Jób 14:13	G5442	igen	igen	ἐφύλαξας	φυλάσσω	egyezik
 ALVIL-001	Jób 14:13	G5550	igen	igen	χρόνον	χρόνος	egyezik
-ALVIL-001	Jób 17:13	G0086	igen	igen	ᾅδης	ᾅδης	egyezik
-ALVIL-001	Jób 17:13	G1063	igen	igen	γὰρ	γάρ	egyezik
-ALVIL-001	Jób 17:13	G1105	igen	igen	γνόφῳ	γνόφος	egyezik
-ALVIL-001	Jób 17:13	G1161	igen	igen	δὲ	δέ	egyezik
-ALVIL-001	Jób 17:13	G1437	igen	igen	ἐὰν	ἐάν	egyezik
-ALVIL-001	Jób 17:13	G1473	igen	igen	μου	ἐγώ	egyezik
-ALVIL-001	Jób 17:13	G1722	igen	igen	ἐν	ἐν	egyezik
-ALVIL-001	Jób 17:13	G3588	igen	igen	ὁ	ὁ	egyezik
-ALVIL-001	Jób 17:13	G3624	igen	igen	οἶκος	οἶκος	egyezik
-ALVIL-001	Jób 17:13	G4765	igen	nem			csak regi
-ALVIL-001	Jób 17:13	G4766	igen	nem			csak regi
-ALVIL-001	Jób 17:13	G5278	igen	igen	ὑπομείνω	ὑπομένω	egyezik
+ALVIL-001	Jób 17:13	G0086	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jób 17:13	G1063	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jób 17:13	G1105	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jób 17:13	G1161	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jób 17:13	G1437	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jób 17:13	G1473	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jób 17:13	G1722	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jób 17:13	G3588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jób 17:13	G3624	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jób 17:13	G4765	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jób 17:13	G4766	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jób 17:13	G5278	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
 ALVIL-001	Jób 17:16	G0086	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
 ALVIL-001	Jób 17:16	G1473	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
 ALVIL-001	Jób 17:16	G1519	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
@@ -1307,240 +1252,265 @@ ALVIL-001	Jób 26:6	G3364	igen	nem			csak regi
 ALVIL-001	Jób 26:6	G3588	igen	igen	ὁ	ὁ	egyezik
 ALVIL-001	Jób 26:6	G3756	nem	igen	οὐκ	οὐ	csak uj
 ALVIL-001	Jób 26:6	G4018	igen	igen	περιβόλαιον	περιβόλαιον	egyezik
-ALVIL-001	Zsolt 6:6	G1026	igen	igen	βρέξω	βρέχω	egyezik
-ALVIL-001	Zsolt 6:6	G1144	igen	igen	δάκρυσίν	δάκρυ	egyezik
-ALVIL-001	Zsolt 6:6	G1473	igen	igen	μου	ἐγώ	egyezik
-ALVIL-001	Zsolt 6:6	G1538	igen	igen	ἑκάστην	ἕκαστος	egyezik
+ALVIL-001	Zsolt 6:6	G0086	nem	igen	ᾅδῃ	ᾅδης	csak uj
+ALVIL-001	Zsolt 6:6	G1026	igen	nem			csak regi
+ALVIL-001	Zsolt 6:6	G1144	igen	nem			csak regi
+ALVIL-001	Zsolt 6:6	G1161	nem	igen	δὲ	δέ	csak uj
+ALVIL-001	Zsolt 6:6	G1473	igen	nem			csak regi
+ALVIL-001	Zsolt 6:6	G1510	nem	igen	ἔστιν	εἰμί	csak uj
+ALVIL-001	Zsolt 6:6	G1538	igen	nem			csak regi
 ALVIL-001	Zsolt 6:6	G1722	igen	igen	ἐν	ἐν	egyezik
-ALVIL-001	Zsolt 6:6	G2596	igen	igen	καθ᾿	κατά	egyezik
-ALVIL-001	Zsolt 6:6	G2825	igen	igen	κλίνην	κλίνη	egyezik
-ALVIL-001	Zsolt 6:6	G2872	igen	igen	ἐκοπίασα	κοπιάω	egyezik
-ALVIL-001	Zsolt 6:6	G3068	igen	igen	λούσω	λούω	egyezik
-ALVIL-001	Zsolt 6:6	G3571	igen	igen	νύκτα	νύξ	egyezik
+ALVIL-001	Zsolt 6:6	G2288	nem	igen	θανάτῳ	θάνατος	csak uj
+ALVIL-001	Zsolt 6:6	G2596	igen	nem			csak regi
+ALVIL-001	Zsolt 6:6	G2825	igen	nem			csak regi
+ALVIL-001	Zsolt 6:6	G2872	igen	nem			csak regi
+ALVIL-001	Zsolt 6:6	G3068	igen	nem			csak regi
+ALVIL-001	Zsolt 6:6	G3421	nem	igen	μνημονεύων	μνημονεύω	csak uj
+ALVIL-001	Zsolt 6:6	G3571	igen	nem			csak regi
 ALVIL-001	Zsolt 6:6	G3588	igen	igen	τῷ	ὁ	egyezik
-ALVIL-001	Zsolt 6:6	G4726	igen	igen	στεναγμῷ	στεναγμός	egyezik
-ALVIL-001	Zsolt 9:18	G0165	igen	igen	αἰῶνα	αἰών	egyezik
-ALVIL-001	Zsolt 9:18	G0622	nem	igen	ἀπολεῖται	ἀπόλλυμι	csak uj
+ALVIL-001	Zsolt 6:6	G3754	nem	igen	ὅτι	ὅτι	csak uj
+ALVIL-001	Zsolt 6:6	G3756	nem	igen	οὐκ	οὐ	csak uj
+ALVIL-001	Zsolt 6:6	G4726	igen	nem			csak regi
+ALVIL-001	Zsolt 6:6	G4771	nem	igen	σου	σύ	csak uj
+ALVIL-001	Zsolt 6:6	G5100	nem	igen	τίς	τίς	csak uj
+ALVIL-001	Zsolt 9:18	G0086	nem	igen	ᾅδην	ᾅδης	csak uj
+ALVIL-001	Zsolt 9:18	G0165	igen	nem			csak regi
+ALVIL-001	Zsolt 9:18	G0268	nem	igen	ἁμαρτωλοὶ	ἁμαρτωλός	csak uj
+ALVIL-001	Zsolt 9:18	G0654	nem	igen	ἀποστραφήτωσαν	ἀποστρέφω	csak uj
+ALVIL-001	Zsolt 9:18	G1484	nem	igen	ἔθνη	ἔθνος	csak uj
 ALVIL-001	Zsolt 9:18	G1519	igen	igen	εἰς	εἰς	egyezik
-ALVIL-001	Zsolt 9:18	G1950	igen	igen	ἐπιλησθήσεται	ἐπιλανθάνομαι	egyezik
+ALVIL-001	Zsolt 9:18	G1950	igen	igen	ἐπιλανθανόμενα	ἐπιλανθάνομαι	egyezik
+ALVIL-001	Zsolt 9:18	G2316	nem	igen	θεοῦ	θεός	csak uj
 ALVIL-001	Zsolt 9:18	G3364	igen	nem			csak regi
-ALVIL-001	Zsolt 9:18	G3588	igen	igen	ὁ	ὁ	egyezik
-ALVIL-001	Zsolt 9:18	G3754	igen	igen	ὅτι	ὅτι	egyezik
-ALVIL-001	Zsolt 9:18	G3756	nem	igen	οὐκ	οὐ	csak uj
-ALVIL-001	Zsolt 9:18	G3993	igen	igen	πενήτων	πένης	egyezik
-ALVIL-001	Zsolt 9:18	G4434	igen	igen	πτωχός	πτωχός	egyezik
-ALVIL-001	Zsolt 9:18	G5056	igen	igen	τέλος	τέλος	egyezik
-ALVIL-001	Zsolt 9:18	G5281	igen	igen	ὑπομονὴ	ὑπομονή	egyezik
+ALVIL-001	Zsolt 9:18	G3588	igen	igen	οἱ	ὁ	egyezik
+ALVIL-001	Zsolt 9:18	G3754	igen	nem			csak regi
+ALVIL-001	Zsolt 9:18	G3956	nem	igen	πάντα	πᾶς	csak uj
+ALVIL-001	Zsolt 9:18	G3993	igen	nem			csak regi
+ALVIL-001	Zsolt 9:18	G4434	igen	nem			csak regi
+ALVIL-001	Zsolt 9:18	G5056	igen	nem			csak regi
+ALVIL-001	Zsolt 9:18	G5281	igen	nem			csak regi
 ALVIL-001	Zsolt 18:6	G0040	igen	nem			csak regi
+ALVIL-001	Zsolt 18:6	G0086	nem	igen	ᾅδου	ᾅδης	csak uj
 ALVIL-001	Zsolt 18:6	G0191	igen	nem			csak regi
-ALVIL-001	Zsolt 18:6	G0575	nem	igen	ἀπ᾿	ἀπό	csak uj
-ALVIL-001	Zsolt 18:6	G0613	nem	igen	ἀποκρυβήσεται	ἀποκρύπτω	csak uj
-ALVIL-001	Zsolt 18:6	G0846	igen	igen	αὐτοῦ	αὐτός	egyezik
-ALVIL-001	Zsolt 18:6	G1473	igen	nem			csak regi
-ALVIL-001	Zsolt 18:6	G1510	nem	igen	ἔστιν	εἰμί	csak uj
+ALVIL-001	Zsolt 18:6	G0846	igen	nem			csak regi
+ALVIL-001	Zsolt 18:6	G1473	igen	igen	με	ἐγώ	egyezik
 ALVIL-001	Zsolt 18:6	G1519	igen	nem			csak regi
 ALVIL-001	Zsolt 18:6	G1525	igen	nem			csak regi
 ALVIL-001	Zsolt 18:6	G1537	igen	nem			csak regi
 ALVIL-001	Zsolt 18:6	G1722	igen	nem			csak regi
 ALVIL-001	Zsolt 18:6	G1799	igen	nem			csak regi
-ALVIL-001	Zsolt 18:6	G1841	nem	igen	ἔξοδος	ἔξοδος	csak uj
-ALVIL-001	Zsolt 18:6	G2193	nem	igen	ἕως	ἕως	csak uj
+ALVIL-001	Zsolt 18:6	G2288	nem	igen	θανάτου	θάνατος	csak uj
 ALVIL-001	Zsolt 18:6	G2316	igen	nem			csak regi
-ALVIL-001	Zsolt 18:6	G2329	nem	igen	θέρμην	θέρμη	csak uj
 ALVIL-001	Zsolt 18:6	G2346	igen	nem			csak regi
-ALVIL-001	Zsolt 18:6	G2532	igen	igen	καὶ	καί	egyezik
+ALVIL-001	Zsolt 18:6	G2532	igen	nem			csak regi
 ALVIL-001	Zsolt 18:6	G2896	igen	nem			csak regi
 ALVIL-001	Zsolt 18:6	G2906	igen	nem			csak regi
 ALVIL-001	Zsolt 18:6	G2962	igen	nem			csak regi
 ALVIL-001	Zsolt 18:6	G3485	igen	nem			csak regi
-ALVIL-001	Zsolt 18:6	G3588	igen	igen	τοῦ	ὁ	egyezik
-ALVIL-001	Zsolt 18:6	G3739	nem	igen	ὃς	ὅς	csak uj
-ALVIL-001	Zsolt 18:6	G3756	nem	igen	οὐκ	οὐ	csak uj
-ALVIL-001	Zsolt 18:6	G3772	nem	igen	οὐρανοῦ	οὐρανός	csak uj
+ALVIL-001	Zsolt 18:6	G3588	igen	nem			csak regi
 ALVIL-001	Zsolt 18:6	G3775	igen	nem			csak regi
+ALVIL-001	Zsolt 18:6	G3803	nem	igen	παγίδες	παγίς	csak uj
+ALVIL-001	Zsolt 18:6	G4033	nem	igen	περιεκύκλωσάν	περικυκλόω	csak uj
 ALVIL-001	Zsolt 18:6	G4314	igen	nem			csak regi
+ALVIL-001	Zsolt 18:6	G4399	nem	igen	προέφθασάν	προφθάνω	csak uj
 ALVIL-001	Zsolt 18:6	G5456	igen	nem			csak regi
+ALVIL-001	Zsolt 18:6	G5604	nem	igen	ὠδῖνες	ὠδίν	csak uj
 ALVIL-001	Zsolt 30:4	G0042	igen	nem			csak regi
+ALVIL-001	Zsolt 30:4	G0086	nem	igen	ᾅδου	ᾅδης	csak uj
+ALVIL-001	Zsolt 30:4	G0321	nem	igen	ἀνήγαγες	ἀνάγω	csak uj
+ALVIL-001	Zsolt 30:4	G0575	nem	igen	ἀπὸ	ἀπό	csak uj
 ALVIL-001	Zsolt 30:4	G0846	igen	nem			csak regi
-ALVIL-001	Zsolt 30:4	G1473	nem	igen	με	ἐγώ	csak uj
-ALVIL-001	Zsolt 30:4	G1510	nem	igen	εἶ	εἰμί	csak uj
-ALVIL-001	Zsolt 30:4	G1537	nem	igen	ἐκ	ἐκ	csak uj
-ALVIL-001	Zsolt 30:4	G1806	nem	igen	ἐξάξεις	ἐξάγω	csak uj
+ALVIL-001	Zsolt 30:4	G1473	nem	igen	μου	ἐγώ	csak uj
+ALVIL-001	Zsolt 30:4	G1519	nem	igen	εἰς	εἰς	csak uj
+ALVIL-001	Zsolt 30:4	G1537	nem	igen	ἐξ	ἐκ	csak uj
 ALVIL-001	Zsolt 30:4	G1843	igen	nem			csak regi
 ALVIL-001	Zsolt 30:4	G2532	igen	nem			csak regi
-ALVIL-001	Zsolt 30:4	G2928	nem	igen	ἔκρυψάν	κρύπτω	csak uj
-ALVIL-001	Zsolt 30:4	G2962	igen	nem			csak regi
+ALVIL-001	Zsolt 30:4	G2597	nem	igen	καταβαινόντων	καταβαίνω	csak uj
+ALVIL-001	Zsolt 30:4	G2962	igen	igen	κύριε	κύριος	egyezik
 ALVIL-001	Zsolt 30:4	G3420	igen	nem			csak regi
-ALVIL-001	Zsolt 30:4	G3588	igen	igen	ὁ	ὁ	egyezik
-ALVIL-001	Zsolt 30:4	G3739	nem	igen	ἧς	ὅς	csak uj
+ALVIL-001	Zsolt 30:4	G3588	igen	igen	τὴν	ὁ	egyezik
 ALVIL-001	Zsolt 30:4	G3741	igen	nem			csak regi
-ALVIL-001	Zsolt 30:4	G3754	nem	igen	ὅτι	ὅτι	csak uj
-ALVIL-001	Zsolt 30:4	G3778	nem	igen	ταύτης	οὗτος	csak uj
-ALVIL-001	Zsolt 30:4	G3803	nem	igen	παγίδος	παγίς	csak uj
-ALVIL-001	Zsolt 30:4	G4771	nem	igen	σὺ	σύ	csak uj
+ALVIL-001	Zsolt 30:4	G4982	nem	igen	ἔσωσάς	σῴζω	csak uj
 ALVIL-001	Zsolt 30:4	G5567	igen	nem			csak regi
-ALVIL-001	Zsolt 31:18	G0216	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 31:18	G0458	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 31:18	G1096	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 31:18	G1342	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 31:18	G1386	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 31:18	G1722	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 31:18	G1847	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 31:18	G2532	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 31:18	G2596	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 31:18	G2980	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 31:18	G3588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 31:18	G5243	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 31:18	G5491	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 49:15	G0086	igen	nem			csak regi
-ALVIL-001	Zsolt 49:15	G0268	nem	igen	ἁμαρτωλῷ	ἁμαρτωλός	csak uj
-ALVIL-001	Zsolt 49:15	G0353	nem	igen	ἀναλαμβάνεις	ἀναλαμβάνω	csak uj
-ALVIL-001	Zsolt 49:15	G1161	nem	igen	δὲ	δέ	csak uj
-ALVIL-001	Zsolt 49:15	G1223	nem	igen	διὰ	διά	csak uj
-ALVIL-001	Zsolt 49:15	G1242	nem	igen	διαθήκην	διαθήκη	csak uj
-ALVIL-001	Zsolt 49:15	G1334	nem	igen	διηγῇ	διηγέομαι	csak uj
-ALVIL-001	Zsolt 49:15	G1345	nem	igen	δικαιώματά	δικαίωμα	csak uj
-ALVIL-001	Zsolt 49:15	G1473	igen	igen	μου	ἐγώ	egyezik
-ALVIL-001	Zsolt 49:15	G1537	igen	nem			csak regi
-ALVIL-001	Zsolt 49:15	G2316	igen	igen	θεός	θεός	egyezik
-ALVIL-001	Zsolt 49:15	G2443	nem	igen	ἵνα	ἵνα	csak uj
+ALVIL-001	Zsolt 30:4	G5590	nem	igen	ψυχήν	ψυχή	csak uj
+ALVIL-001	Zsolt 31:18	G0086	nem	igen	ᾅδου	ᾅδης	csak uj
+ALVIL-001	Zsolt 31:18	G0153	nem	igen	αἰσχυνθείησαν	αἰσχύνω	csak uj
+ALVIL-001	Zsolt 31:18	G0216	igen	nem			csak regi
+ALVIL-001	Zsolt 31:18	G0458	igen	nem			csak regi
+ALVIL-001	Zsolt 31:18	G0765	nem	igen	ἀσεβεῖς	ἀσεβής	csak uj
+ALVIL-001	Zsolt 31:18	G1096	igen	nem			csak regi
+ALVIL-001	Zsolt 31:18	G1342	igen	nem			csak regi
+ALVIL-001	Zsolt 31:18	G1386	igen	nem			csak regi
+ALVIL-001	Zsolt 31:18	G1519	nem	igen	εἰς	εἰς	csak uj
+ALVIL-001	Zsolt 31:18	G1722	igen	nem			csak regi
+ALVIL-001	Zsolt 31:18	G1847	igen	nem			csak regi
+ALVIL-001	Zsolt 31:18	G1941	nem	igen	ἐπεκαλεσάμην	ἐπικαλέω	csak uj
+ALVIL-001	Zsolt 31:18	G2532	igen	igen	καὶ	καί	egyezik
+ALVIL-001	Zsolt 31:18	G2596	igen	nem			csak regi
+ALVIL-001	Zsolt 31:18	G2609	nem	igen	καταχθείησαν	κατάγω	csak uj
+ALVIL-001	Zsolt 31:18	G2617	nem	igen	καταισχυνθείην	καταισχύνω	csak uj
+ALVIL-001	Zsolt 31:18	G2962	nem	igen	κύριε	κύριος	csak uj
+ALVIL-001	Zsolt 31:18	G2980	igen	nem			csak regi
+ALVIL-001	Zsolt 31:18	G3361	nem	igen	μὴ	μή	csak uj
+ALVIL-001	Zsolt 31:18	G3588	igen	igen	οἱ	ὁ	egyezik
+ALVIL-001	Zsolt 31:18	G3754	nem	igen	ὅτι	ὅτι	csak uj
+ALVIL-001	Zsolt 31:18	G4771	nem	igen	σε	σύ	csak uj
+ALVIL-001	Zsolt 31:18	G5243	igen	nem			csak regi
+ALVIL-001	Zsolt 31:18	G5491	igen	nem			csak regi
+ALVIL-001	Zsolt 49:15	G0086	igen	igen	ᾅδῃ	ᾅδης	egyezik
+ALVIL-001	Zsolt 49:15	G0846	nem	igen	αὐτούς	αὐτός	csak uj
+ALVIL-001	Zsolt 49:15	G0996	nem	igen	βοήθεια	βοήθεια	csak uj
+ALVIL-001	Zsolt 49:15	G1391	nem	igen	δόξης	δόξα	csak uj
+ALVIL-001	Zsolt 49:15	G1473	igen	nem			csak regi
+ALVIL-001	Zsolt 49:15	G1537	igen	igen	ἐκ	ἐκ	egyezik
+ALVIL-001	Zsolt 49:15	G1722	nem	igen	ἐν	ἐν	csak uj
+ALVIL-001	Zsolt 49:15	G2117	nem	igen	εὐθεῖς	εὐθύς	csak uj
+ALVIL-001	Zsolt 49:15	G2288	nem	igen	θάνατος	θάνατος	csak uj
+ALVIL-001	Zsolt 49:15	G2316	igen	nem			csak regi
 ALVIL-001	Zsolt 49:15	G2532	nem	igen	καὶ	καί	csak uj
+ALVIL-001	Zsolt 49:15	G2634	nem	igen	κατακυριεύσουσιν	κατακυριεύω	csak uj
 ALVIL-001	Zsolt 49:15	G2983	igen	nem			csak regi
-ALVIL-001	Zsolt 49:15	G3004	nem	igen	εἶπεν	λέγω	csak uj
 ALVIL-001	Zsolt 49:15	G3084	igen	nem			csak regi
-ALVIL-001	Zsolt 49:15	G3588	igen	igen	τῷ	ὁ	egyezik
+ALVIL-001	Zsolt 49:15	G3588	igen	igen	οἱ	ὁ	egyezik
 ALVIL-001	Zsolt 49:15	G3752	igen	nem			csak regi
+ALVIL-001	Zsolt 49:15	G3822	nem	igen	παλαιωθήσεται	παλαιόω	csak uj
 ALVIL-001	Zsolt 49:15	G4133	igen	nem			csak regi
-ALVIL-001	Zsolt 49:15	G4750	nem	igen	στόματός	στόμα	csak uj
-ALVIL-001	Zsolt 49:15	G4771	nem	igen	σὺ	σύ	csak uj
-ALVIL-001	Zsolt 49:15	G5100	nem	igen	τί	τίς	csak uj
+ALVIL-001	Zsolt 49:15	G4165	nem	igen	ποιμαίνει	ποιμαίνω	csak uj
+ALVIL-001	Zsolt 49:15	G4263	nem	igen	πρόβατα	πρόβατον	csak uj
+ALVIL-001	Zsolt 49:15	G4404	nem	igen	πρωί	πρωί	csak uj
+ALVIL-001	Zsolt 49:15	G5087	nem	igen	ἔθεντο	τίθημι	csak uj
 ALVIL-001	Zsolt 49:15	G5495	igen	nem			csak regi
 ALVIL-001	Zsolt 49:15	G5590	igen	nem			csak regi
+ALVIL-001	Zsolt 49:16	G0086	nem	igen	ᾅδου	ᾅδης	csak uj
 ALVIL-001	Zsolt 49:16	G0444	igen	nem			csak regi
 ALVIL-001	Zsolt 49:16	G0846	igen	nem			csak regi
-ALVIL-001	Zsolt 49:16	G1161	nem	igen	δὲ	δέ	csak uj
 ALVIL-001	Zsolt 49:16	G1391	igen	nem			csak regi
 ALVIL-001	Zsolt 49:16	G1473	nem	igen	μου	ἐγώ	csak uj
-ALVIL-001	Zsolt 49:16	G1519	nem	igen	εἰς	εἰς	csak uj
-ALVIL-001	Zsolt 49:16	G1544	nem	igen	ἐξέβαλες	ἐκβάλλω	csak uj
-ALVIL-001	Zsolt 49:16	G2532	igen	igen	καὶ	καί	egyezik
-ALVIL-001	Zsolt 49:16	G3056	nem	igen	λόγους	λόγος	csak uj
+ALVIL-001	Zsolt 49:16	G1537	nem	igen	ἐκ	ἐκ	csak uj
+ALVIL-001	Zsolt 49:16	G2316	nem	igen	θεὸς	θεός	csak uj
+ALVIL-001	Zsolt 49:16	G2532	igen	nem			csak regi
+ALVIL-001	Zsolt 49:16	G2983	nem	igen	λαμβάνῃ	λαμβάνω	csak uj
+ALVIL-001	Zsolt 49:16	G3084	nem	igen	λυτρώσεται	λυτρόω	csak uj
 ALVIL-001	Zsolt 49:16	G3165	igen	nem			csak regi
-ALVIL-001	Zsolt 49:16	G3404	nem	igen	ἐμίσησας	μισέω	csak uj
-ALVIL-001	Zsolt 49:16	G3588	igen	igen	τοὺς	ὁ	egyezik
+ALVIL-001	Zsolt 49:16	G3588	igen	igen	ὁ	ὁ	egyezik
 ALVIL-001	Zsolt 49:16	G3624	igen	nem			csak regi
-ALVIL-001	Zsolt 49:16	G3694	nem	igen	ὀπίσω	ὀπίσω	csak uj
-ALVIL-001	Zsolt 49:16	G3752	igen	nem			csak regi
-ALVIL-001	Zsolt 49:16	G3809	nem	igen	παιδείαν	παιδεία	csak uj
+ALVIL-001	Zsolt 49:16	G3752	igen	igen	ὅταν	ὅταν	egyezik
 ALVIL-001	Zsolt 49:16	G4129	igen	nem			csak regi
+ALVIL-001	Zsolt 49:16	G4133	nem	igen	πλὴν	πλήν	csak uj
 ALVIL-001	Zsolt 49:16	G4147	igen	nem			csak regi
-ALVIL-001	Zsolt 49:16	G4771	nem	igen	σὺ	σύ	csak uj
 ALVIL-001	Zsolt 49:16	G5399	igen	nem			csak regi
-ALVIL-001	Zsolt 55:16	G1161	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 55:16	G1473	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 55:16	G1522	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 55:16	G2316	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 55:16	G2532	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 55:16	G2896	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 55:16	G2962	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 55:16	G3588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 55:16	G4314	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 86:13	G0086	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 86:13	G1473	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 86:13	G1537	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 86:13	G1656	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 86:13	G1909	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 86:13	G2532	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 86:13	G2737	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 86:13	G3173	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 86:13	G3588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 86:13	G3754	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 86:13	G4506	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 86:13	G4771	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 86:13	G5590	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 88:4	G0165	nem	igen	αἰῶνος	αἰών	csak uj
+ALVIL-001	Zsolt 49:16	G5495	nem	igen	χειρὸς	χείρ	csak uj
+ALVIL-001	Zsolt 49:16	G5590	nem	igen	ψυχήν	ψυχή	csak uj
+ALVIL-001	Zsolt 55:16	G0086	nem	igen	ᾅδου	ᾅδης	csak uj
+ALVIL-001	Zsolt 55:16	G0846	nem	igen	αὐτούς	αὐτός	csak uj
+ALVIL-001	Zsolt 55:16	G1161	igen	nem			csak regi
+ALVIL-001	Zsolt 55:16	G1473	igen	nem			csak regi
+ALVIL-001	Zsolt 55:16	G1519	nem	igen	εἰς	εἰς	csak uj
+ALVIL-001	Zsolt 55:16	G1522	igen	nem			csak regi
+ALVIL-001	Zsolt 55:16	G1722	nem	igen	ἐν	ἐν	csak uj
+ALVIL-001	Zsolt 55:16	G1909	nem	igen	ἐπ᾿	ἐπί	csak uj
+ALVIL-001	Zsolt 55:16	G2064	nem	igen	ἐλθέτω	ἔρχομαι	csak uj
+ALVIL-001	Zsolt 55:16	G2198	nem	igen	ζῶντες	ζάω	csak uj
+ALVIL-001	Zsolt 55:16	G2288	nem	igen	θάνατος	θάνατος	csak uj
+ALVIL-001	Zsolt 55:16	G2316	igen	nem			csak regi
+ALVIL-001	Zsolt 55:16	G2532	igen	igen	καὶ	καί	egyezik
+ALVIL-001	Zsolt 55:16	G2597	nem	igen	καταβήτωσαν	καταβαίνω	csak uj
+ALVIL-001	Zsolt 55:16	G2896	igen	nem			csak regi
+ALVIL-001	Zsolt 55:16	G2962	igen	nem			csak regi
+ALVIL-001	Zsolt 55:16	G3319	nem	igen	μέσῳ	μέσος	csak uj
+ALVIL-001	Zsolt 55:16	G3588	igen	igen	ταῖς	ὁ	egyezik
+ALVIL-001	Zsolt 55:16	G3754	nem	igen	ὅτι	ὅτι	csak uj
+ALVIL-001	Zsolt 55:16	G3940	nem	igen	παροικίαις	παροικία	csak uj
+ALVIL-001	Zsolt 55:16	G4189	nem	igen	πονηρίαι	πονηρία	csak uj
+ALVIL-001	Zsolt 55:16	G4314	igen	nem			csak regi
+ALVIL-001	Zsolt 86:13	G0086	igen	igen	ᾅδου	ᾅδης	egyezik
+ALVIL-001	Zsolt 86:13	G1473	igen	igen	ἐμὲ	ἐγώ	egyezik
+ALVIL-001	Zsolt 86:13	G1537	igen	igen	ἐξ	ἐκ	egyezik
+ALVIL-001	Zsolt 86:13	G1656	igen	igen	ἔλεός	ἔλεος	egyezik
+ALVIL-001	Zsolt 86:13	G1909	igen	igen	ἐπ᾿	ἐπί	egyezik
+ALVIL-001	Zsolt 86:13	G2532	igen	igen	καὶ	καί	egyezik
+ALVIL-001	Zsolt 86:13	G2737	igen	nem			csak regi
+ALVIL-001	Zsolt 86:13	G3173	igen	igen	μέγα	μέγας	egyezik
+ALVIL-001	Zsolt 86:13	G3588	igen	igen	τὸ	ὁ	egyezik
+ALVIL-001	Zsolt 86:13	G3754	igen	igen	ὅτι	ὅτι	egyezik
+ALVIL-001	Zsolt 86:13	G4506	igen	igen	ἐρρύσω	ῥύομαι	egyezik
+ALVIL-001	Zsolt 86:13	G4771	igen	igen	σου	σύ	egyezik
+ALVIL-001	Zsolt 86:13	G5590	igen	igen	ψυχήν	ψυχή	egyezik
+ALVIL-001	Zsolt 88:4	G0086	nem	igen	ᾅδῃ	ᾅδης	csak uj
 ALVIL-001	Zsolt 88:4	G0444	igen	nem			csak regi
-ALVIL-001	Zsolt 88:4	G1074	nem	igen	γενεὰν	γενεά	csak uj
 ALVIL-001	Zsolt 88:4	G1096	igen	nem			csak regi
-ALVIL-001	Zsolt 88:4	G1519	igen	igen	εἰς	εἰς	egyezik
+ALVIL-001	Zsolt 88:4	G1448	nem	igen	ἤγγισεν	ἐγγίζω	csak uj
+ALVIL-001	Zsolt 88:4	G1473	nem	igen	μου	ἐγώ	csak uj
+ALVIL-001	Zsolt 88:4	G1519	igen	nem			csak regi
 ALVIL-001	Zsolt 88:4	G1658	igen	nem			csak regi
 ALVIL-001	Zsolt 88:4	G1722	igen	nem			csak regi
-ALVIL-001	Zsolt 88:4	G2090	nem	igen	ἑτοιμάσω	ἑτοιμάζω	csak uj
-ALVIL-001	Zsolt 88:4	G2193	nem	igen	ἕως	ἕως	csak uj
-ALVIL-001	Zsolt 88:4	G2362	nem	igen	θρόνον	θρόνος	csak uj
+ALVIL-001	Zsolt 88:4	G2222	nem	igen	ζωή	ζωή	csak uj
 ALVIL-001	Zsolt 88:4	G2532	nem	igen	καὶ	καί	csak uj
+ALVIL-001	Zsolt 88:4	G2556	nem	igen	κακῶν	κακός	csak uj
 ALVIL-001	Zsolt 88:4	G2597	igen	nem			csak regi
 ALVIL-001	Zsolt 88:4	G2978	igen	nem			csak regi
 ALVIL-001	Zsolt 88:4	G3326	igen	nem			csak regi
 ALVIL-001	Zsolt 88:4	G3498	igen	nem			csak regi
-ALVIL-001	Zsolt 88:4	G3588	igen	igen	τοῦ	ὁ	egyezik
-ALVIL-001	Zsolt 88:4	G3618	nem	igen	οἰκοδομήσω	οἰκοδομέω	csak uj
+ALVIL-001	Zsolt 88:4	G3588	igen	igen	ἡ	ὁ	egyezik
 ALVIL-001	Zsolt 88:4	G3739	igen	nem			csak regi
+ALVIL-001	Zsolt 88:4	G3754	nem	igen	ὅτι	ὅτι	csak uj
 ALVIL-001	Zsolt 88:4	G4356	igen	nem			csak regi
-ALVIL-001	Zsolt 88:4	G4690	nem	igen	σπέρμα	σπέρμα	csak uj
-ALVIL-001	Zsolt 88:4	G4771	nem	igen	σου	σύ	csak uj
-ALVIL-001	Zsolt 89:49	G0225	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 89:49	G0744	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 89:49	G1510	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 89:49	G1656	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 89:49	G1722	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 89:49	G2962	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 89:49	G3588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 89:49	G3660	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 89:49	G3739	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 89:49	G4225	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 89:49	G4771	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 116:3	G0086	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 116:3	G1473	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 116:3	G2147	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 116:3	G2288	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 116:3	G2347	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 116:3	G2532	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 116:3	G2794	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 116:3	G3601	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 116:3	G4023	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 116:3	G5604	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-ALVIL-001	Zsolt 139:8	G0086	igen	nem			csak regi
-ALVIL-001	Zsolt 139:8	G0305	igen	nem			csak regi
-ALVIL-001	Zsolt 139:8	G1411	nem	igen	δύναμις	δύναμις	csak uj
-ALVIL-001	Zsolt 139:8	G1437	igen	nem			csak regi
-ALVIL-001	Zsolt 139:8	G1473	nem	igen	μου	ἐγώ	csak uj
-ALVIL-001	Zsolt 139:8	G1510	igen	nem			csak regi
-ALVIL-001	Zsolt 139:8	G1519	igen	nem			csak regi
-ALVIL-001	Zsolt 139:8	G1563	igen	nem			csak regi
-ALVIL-001	Zsolt 139:8	G1722	nem	igen	ἐν	ἐν	csak uj
-ALVIL-001	Zsolt 139:8	G1909	nem	igen	ἐπὶ	ἐπί	csak uj
-ALVIL-001	Zsolt 139:8	G1982	nem	igen	ἐπεσκίασας	ἐπισκιάζω	csak uj
-ALVIL-001	Zsolt 139:8	G2250	nem	igen	ἡμέρᾳ	ἡμέρα	csak uj
-ALVIL-001	Zsolt 139:8	G2597	igen	nem			csak regi
-ALVIL-001	Zsolt 139:8	G2776	nem	igen	κεφαλήν	κεφαλή	csak uj
-ALVIL-001	Zsolt 139:8	G2962	nem	igen	κύριε	κύριος	csak uj
-ALVIL-001	Zsolt 139:8	G3588	igen	igen	τῆς	ὁ	egyezik
-ALVIL-001	Zsolt 139:8	G3772	igen	nem			csak regi
-ALVIL-001	Zsolt 139:8	G3918	igen	nem			csak regi
-ALVIL-001	Zsolt 139:8	G4171	nem	igen	πολέμου	πόλεμος	csak uj
-ALVIL-001	Zsolt 139:8	G4771	igen	nem			csak regi
-ALVIL-001	Zsolt 139:8	G4991	nem	igen	σωτηρίας	σωτηρία	csak uj
-ALVIL-001	Zsolt 141:7	G0086	igen	nem			csak regi
+ALVIL-001	Zsolt 88:4	G5590	nem	igen	ψυχή	ψυχή	csak uj
+ALVIL-001	Zsolt 89:49	G0086	nem	igen	ᾅδου	ᾅδης	csak uj
+ALVIL-001	Zsolt 89:49	G0225	igen	nem			csak regi
+ALVIL-001	Zsolt 89:49	G0444	nem	igen	ἄνθρωπος	ἄνθρωπος	csak uj
+ALVIL-001	Zsolt 89:49	G0744	igen	nem			csak regi
+ALVIL-001	Zsolt 89:49	G0846	nem	igen	αὐτοῦ	αὐτός	csak uj
+ALVIL-001	Zsolt 89:49	G1510	igen	igen	ἐστιν	εἰμί	egyezik
+ALVIL-001	Zsolt 89:49	G1537	nem	igen	ἐκ	ἐκ	csak uj
+ALVIL-001	Zsolt 89:49	G1656	igen	nem			csak regi
+ALVIL-001	Zsolt 89:49	G1722	igen	nem			csak regi
+ALVIL-001	Zsolt 89:49	G2198	nem	igen	ζήσεται	ζάω	csak uj
+ALVIL-001	Zsolt 89:49	G2288	nem	igen	θάνατον	θάνατος	csak uj
+ALVIL-001	Zsolt 89:49	G2532	nem	igen	καὶ	καί	csak uj
+ALVIL-001	Zsolt 89:49	G2962	igen	nem			csak regi
+ALVIL-001	Zsolt 89:49	G3588	igen	igen	τὴν	ὁ	egyezik
+ALVIL-001	Zsolt 89:49	G3660	igen	nem			csak regi
+ALVIL-001	Zsolt 89:49	G3708	nem	igen	ὄψεται	ὁράω	csak uj
+ALVIL-001	Zsolt 89:49	G3739	igen	igen	ὃς	ὅς	egyezik
+ALVIL-001	Zsolt 89:49	G3756	nem	igen	οὐκ	οὐ	csak uj
+ALVIL-001	Zsolt 89:49	G4225	igen	nem			csak regi
+ALVIL-001	Zsolt 89:49	G4506	nem	igen	ῥύσεται	ῥύομαι	csak uj
+ALVIL-001	Zsolt 89:49	G4771	igen	nem			csak regi
+ALVIL-001	Zsolt 89:49	G5100	nem	igen	τίς	τίς	csak uj
+ALVIL-001	Zsolt 89:49	G5495	nem	igen	χειρὸς	χείρ	csak uj
+ALVIL-001	Zsolt 89:49	G5590	nem	igen	ψυχὴν	ψυχή	csak uj
+ALVIL-001	Zsolt 116:3	G0086	igen	igen	ᾅδου	ᾅδης	egyezik
+ALVIL-001	Zsolt 116:3	G1473	igen	igen	με	ἐγώ	egyezik
+ALVIL-001	Zsolt 116:3	G2147	igen	igen	εὕροσάν	εὑρίσκω	egyezik
+ALVIL-001	Zsolt 116:3	G2288	igen	igen	θανάτου	θάνατος	egyezik
+ALVIL-001	Zsolt 116:3	G2347	igen	igen	θλῖψιν	θλῖψις	egyezik
+ALVIL-001	Zsolt 116:3	G2532	igen	igen	καὶ	καί	egyezik
+ALVIL-001	Zsolt 116:3	G2794	igen	igen	κίνδυνοι	κίνδυνος	egyezik
+ALVIL-001	Zsolt 116:3	G3601	igen	igen	ὀδύνην	ὀδύνη	egyezik
+ALVIL-001	Zsolt 116:3	G4023	igen	igen	περιέσχον	περιέχω	egyezik
+ALVIL-001	Zsolt 116:3	G5604	igen	igen	ὠδῖνες	ὠδίν	egyezik
+ALVIL-001	Zsolt 139:8	G0086	igen	igen	ᾅδην	ᾅδης	egyezik
+ALVIL-001	Zsolt 139:8	G0305	igen	igen	ἀναβῶ	ἀναβαίνω	egyezik
+ALVIL-001	Zsolt 139:8	G1437	igen	igen	ἐὰν	ἐάν	egyezik
+ALVIL-001	Zsolt 139:8	G1510	igen	igen	εἶ	εἰμί	egyezik
+ALVIL-001	Zsolt 139:8	G1519	igen	igen	εἰς	εἰς	egyezik
+ALVIL-001	Zsolt 139:8	G1563	igen	igen	ἐκεῖ	ἐκεῖ	egyezik
+ALVIL-001	Zsolt 139:8	G2597	igen	igen	καταβῶ	καταβαίνω	egyezik
+ALVIL-001	Zsolt 139:8	G3588	igen	igen	τὸν	ὁ	egyezik
+ALVIL-001	Zsolt 139:8	G3772	igen	igen	οὐρανόν	οὐρανός	egyezik
+ALVIL-001	Zsolt 139:8	G3918	igen	igen	πάρει	πάρειμι	egyezik
+ALVIL-001	Zsolt 139:8	G4771	igen	igen	σὺ	σύ	egyezik
+ALVIL-001	Zsolt 141:7	G0086	igen	igen	ᾅδην	ᾅδης	egyezik
 ALVIL-001	Zsolt 141:7	G1065	igen	nem			csak regi
-ALVIL-001	Zsolt 141:7	G1162	nem	igen	δέησίν	δέησις	csak uj
-ALVIL-001	Zsolt 141:7	G1287	igen	nem			csak regi
-ALVIL-001	Zsolt 141:7	G1473	igen	igen	μου	ἐγώ	egyezik
-ALVIL-001	Zsolt 141:7	G1537	nem	igen	ἐκ	ἐκ	csak uj
-ALVIL-001	Zsolt 141:7	G1909	igen	nem			csak regi
-ALVIL-001	Zsolt 141:7	G2614	nem	igen	καταδιωκόντων	καταδιώκω	csak uj
-ALVIL-001	Zsolt 141:7	G2901	nem	igen	ἐκραταιώθησαν	κραταιόω	csak uj
-ALVIL-001	Zsolt 141:7	G3588	igen	igen	τὴν	ὁ	egyezik
+ALVIL-001	Zsolt 141:7	G1093	nem	igen	γῆς	γῆ	csak uj
+ALVIL-001	Zsolt 141:7	G1287	igen	igen	διεσκορπίσθη	διασκορπίζω	egyezik
+ALVIL-001	Zsolt 141:7	G1473	igen	igen	ἡμῶν	ἐγώ	egyezik
+ALVIL-001	Zsolt 141:7	G1909	igen	igen	ἐπὶ	ἐπί	egyezik
+ALVIL-001	Zsolt 141:7	G3588	igen	igen	τῆς	ὁ	egyezik
 ALVIL-001	Zsolt 141:7	G3747	igen	nem			csak regi
-ALVIL-001	Zsolt 141:7	G3754	nem	igen	ὅτι	ὅτι	csak uj
-ALVIL-001	Zsolt 141:7	G3844	igen	nem			csak regi
-ALVIL-001	Zsolt 141:7	G4314	nem	igen	πρὸς	πρός	csak uj
-ALVIL-001	Zsolt 141:7	G4337	nem	igen	πρόσχες	προσέχω	csak uj
-ALVIL-001	Zsolt 141:7	G4506	nem	igen	ῥῦσαί	ῥύομαι	csak uj
-ALVIL-001	Zsolt 141:7	G4970	nem	igen	σφόδρα	σφόδρα	csak uj
-ALVIL-001	Zsolt 141:7	G5013	nem	igen	ἐταπεινώθην	ταπεινόω	csak uj
-ALVIL-001	Zsolt 141:7	G5228	nem	igen	ὑπὲρ	ὑπέρ	csak uj
-ALVIL-001	Zsolt 141:7	G5616	igen	nem			csak regi
+ALVIL-001	Zsolt 141:7	G3844	igen	igen	παρὰ	παρά	egyezik
+ALVIL-001	Zsolt 141:7	G5616	igen	igen	ὡσεὶ	ὡσεί	egyezik
 ALVIL-001	Péld 1:12	G0086	igen	igen	ᾅδης	ᾅδης	egyezik
 ALVIL-001	Péld 1:12	G0142	igen	igen	ἄρωμεν	αἴρω	egyezik
 ALVIL-001	Péld 1:12	G0846	igen	igen	αὐτὸν	αὐτός	egyezik
@@ -1628,7 +1598,15 @@ ALVIL-001	Péld 23:14	G4464	nem	igen	ῥάβδῳ	ῥάβδος	csak uj
 ALVIL-001	Péld 23:14	G4506	igen	igen	ῥύσῃ	ῥύομαι	egyezik
 ALVIL-001	Péld 23:14	G4771	igen	igen	σὺ	σύ	egyezik
 ALVIL-001	Péld 23:14	G5590	igen	igen	ψυχὴν	ψυχή	egyezik
-ALVIL-001	Péld 27:20		nem	nem			nincs adat egyik kivonatban sem ehhez a igehelyhez
+ALVIL-001	Péld 27:20	G0086	nem	igen	ᾅδης	ᾅδης	csak uj
+ALVIL-001	Péld 27:20	G0444	nem	igen	ἀνθρώπων	ἄνθρωπος	csak uj
+ALVIL-001	Péld 27:20	G0684	nem	igen	ἀπώλεια	ἀπώλεια	csak uj
+ALVIL-001	Péld 27:20	G1705	nem	igen	ἐμπίμπλανται	ἐμπίπλημι	csak uj
+ALVIL-001	Péld 27:20	G2532	nem	igen	καὶ	καί	csak uj
+ALVIL-001	Péld 27:20	G3588	nem	igen	οἱ	ὁ	csak uj
+ALVIL-001	Péld 27:20	G3756	nem	igen	οὐκ	οὐ	csak uj
+ALVIL-001	Péld 27:20	G3788	nem	igen	ὀφθαλμοὶ	ὀφθαλμός	csak uj
+ALVIL-001	Péld 27:20	G5615	nem	igen	ὡσαύτως	ὡσαύτως	csak uj
 ALVIL-001	Péld 30:16	G0086	igen	igen	ᾅδης	ᾅδης	egyezik
 ALVIL-001	Péld 30:16	G0714	igen	igen	ἀρκεῖ	ἀρκέω	egyezik
 ALVIL-001	Péld 30:16	G1065	igen	nem			csak regi
@@ -1952,24 +1930,23 @@ ALVIL-001	Ez 32:27	G4098	igen	igen	πεπτωκότων	πίπτω	egyezik
 ALVIL-001	Ez 32:27	G4170	igen	nem			csak regi
 ALVIL-001	Ez 32:27	G5087	igen	igen	ἔθηκαν	τίθημι	egyezik
 ALVIL-001	Ez 32:27	G5259	igen	igen	ὑπὸ	ὑπό	egyezik
-ALVIL-001	Hós 13:14	G0086	igen	igen	ᾅδου	ᾅδης	egyezik
-ALVIL-001	Hós 13:14	G0575	igen	igen	ἀπὸ	ἀπό	egyezik
-ALVIL-001	Hós 13:14	G0846	igen	igen	αὐτοὺς	αὐτός	egyezik
-ALVIL-001	Hós 13:14	G1349	igen	igen	δίκη	δίκη	egyezik
-ALVIL-001	Hós 13:14	G1473	igen	igen	μου	ἐγώ	egyezik
-ALVIL-001	Hós 13:14	G1537	igen	igen	ἐκ	ἐκ	egyezik
-ALVIL-001	Hós 13:14	G2288	igen	igen	θανάτου	θάνατος	egyezik
-ALVIL-001	Hós 13:14	G2532	igen	igen	καὶ	καί	egyezik
-ALVIL-001	Hós 13:14	G2759	igen	igen	κέντρον	κέντρον	egyezik
-ALVIL-001	Hós 13:14	G2928	igen	igen	κέκρυπται	κρύπτω	egyezik
-ALVIL-001	Hós 13:14	G3084	igen	igen	λυτρώσομαι	λυτρόω	egyezik
-ALVIL-001	Hós 13:14	G3588	igen	igen	ἡ	ὁ	egyezik
-ALVIL-001	Hós 13:14	G3788	igen	igen	ὀφθαλμῶν	ὀφθαλμός	egyezik
-ALVIL-001	Hós 13:14	G3874	igen	igen	παράκλησις	παράκλησις	egyezik
-ALVIL-001	Hós 13:14	G4225	igen	igen	ποῦ	ποῦ	egyezik
-ALVIL-001	Hós 13:14	G4506	nem	igen	ῥύσομαι	ῥύομαι	csak uj
-ALVIL-001	Hós 13:14	G4771	igen	igen	σου	σύ	egyezik
-ALVIL-001	Hós 13:14	G5495	igen	igen	χειρὸς	χείρ	egyezik
+ALVIL-001	Hós 13:14	G0086	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G0575	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G0846	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G1349	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G1473	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G1537	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G2288	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G2532	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G2759	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G2928	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G3084	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G3588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G3788	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G3874	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G4225	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G4771	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Hós 13:14	G5495	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
 ALVIL-001	Ámós 9:2	G0086	igen	igen	ᾅδου	ᾅδης	egyezik
 ALVIL-001	Ámós 9:2	G0305	igen	igen	ἀναβῶσιν	ἀναβαίνω	egyezik
 ALVIL-001	Ámós 9:2	G0385	igen	igen	ἀνασπάσει	ἀνασπάω	egyezik
@@ -2010,21 +1987,21 @@ ALVIL-001	Hab 2:5	G3956	igen	igen	πάντα	πᾶς	egyezik
 ALVIL-001	Hab 2:5	G4115	igen	igen	ἐπλάτυνεν	πλατύνω	egyezik
 ALVIL-001	Hab 2:5	G4314	igen	igen	πρὸς	πρός	egyezik
 ALVIL-001	Hab 2:5	G5590	igen	igen	ψυχὴν	ψυχή	egyezik
-ALVIL-001	Jón 2:3	G0641	igen	igen	ἀπέρριψάς	ἀπορρίπτω	egyezik
-ALVIL-001	Jón 2:3	G0899	igen	igen	βάθη	βάθος	egyezik
-ALVIL-001	Jón 2:3	G1330	igen	igen	διῆλθον	διέρχομαι	egyezik
-ALVIL-001	Jón 2:3	G1473	igen	igen	με	ἐγώ	egyezik
-ALVIL-001	Jón 2:3	G1519	igen	igen	εἰς	εἰς	egyezik
-ALVIL-001	Jón 2:3	G1909	igen	igen	ἐπ᾿	ἐπί	egyezik
-ALVIL-001	Jón 2:3	G2281	igen	igen	θαλάσσης	θάλασσα	egyezik
-ALVIL-001	Jón 2:3	G2532	igen	igen	καὶ	καί	egyezik
-ALVIL-001	Jón 2:3	G2588	igen	igen	καρδίας	καρδία	egyezik
-ALVIL-001	Jón 2:3	G2944	igen	igen	ἐκύκλωσαν	κυκλόω	egyezik
-ALVIL-001	Jón 2:3	G2949	igen	igen	κύματά	κῦμα	egyezik
-ALVIL-001	Jón 2:3	G3588	igen	igen	οἱ	ὁ	egyezik
-ALVIL-001	Jón 2:3	G3956	igen	igen	πάντες	πᾶς	egyezik
-ALVIL-001	Jón 2:3	G4215	igen	igen	ποταμοί	ποταμός	egyezik
-ALVIL-001	Jón 2:3	G4771	igen	igen	σου	σύ	egyezik
+ALVIL-001	Jón 2:3	G0641	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jón 2:3	G0899	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jón 2:3	G1330	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jón 2:3	G1473	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jón 2:3	G1519	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jón 2:3	G1909	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jón 2:3	G2281	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jón 2:3	G2532	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jón 2:3	G2588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jón 2:3	G2944	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jón 2:3	G2949	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jón 2:3	G3588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jón 2:3	G3956	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jón 2:3	G4215	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+ALVIL-001	Jón 2:3	G4771	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
 MENNY-001	1Móz 6:2	G0444	igen	igen	ἀνθρώπων	ἄνθρωπος	egyezik
 MENNY-001	1Móz 6:2	G0575	igen	igen	ἀπὸ	ἀπό	egyezik
 MENNY-001	1Móz 6:2	G1135	igen	igen	γυναῖκας	γυνή	egyezik
@@ -2100,15 +2077,15 @@ MENNY-001	Jób 2:1	G3588	igen	igen	ἡ	ὁ	egyezik
 MENNY-001	Jób 2:1	G3739	igen	nem			csak regi
 MENNY-001	Jób 2:1	G3778	igen	igen	αὕτη	οὗτος	egyezik
 MENNY-001	Jób 2:1	G3936	igen	igen	παραστῆναι	παρίστημι	egyezik
-MENNY-001	Jób 38:7	G0032	igen	igen	ἄγγελοί	ἄγγελος	egyezik
-MENNY-001	Jób 38:7	G0134	igen	igen	ᾔνεσάν	αἰνέω	egyezik
-MENNY-001	Jób 38:7	G0798	igen	igen	ἄστρα	ἄστρον	egyezik
-MENNY-001	Jób 38:7	G1096	igen	igen	ἐγενήθησαν	γίνομαι	egyezik
-MENNY-001	Jób 38:7	G1473	igen	igen	με	ἐγώ	egyezik
-MENNY-001	Jób 38:7	G3173	igen	igen	μεγάλῃ	μέγας	egyezik
-MENNY-001	Jób 38:7	G3753	igen	igen	ὅτε	ὅτε	egyezik
-MENNY-001	Jób 38:7	G3956	igen	igen	πάντες	πᾶς	egyezik
-MENNY-001	Jób 38:7	G5456	igen	igen	φωνῇ	φωνή	egyezik
+MENNY-001	Jób 38:7	G0032	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+MENNY-001	Jób 38:7	G0134	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+MENNY-001	Jób 38:7	G0798	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+MENNY-001	Jób 38:7	G1096	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+MENNY-001	Jób 38:7	G1473	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+MENNY-001	Jób 38:7	G3173	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+MENNY-001	Jób 38:7	G3753	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+MENNY-001	Jób 38:7	G3956	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+MENNY-001	Jób 38:7	G5456	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
 MENNY-001	4Móz 13:34	G0200	igen	igen	ἀκρίδες	ἀκρίς	egyezik
 MENNY-001	4Móz 13:34	G0235	igen	igen	ἀλλὰ	ἀλλά	egyezik
 MENNY-001	4Móz 13:34	G0846	igen	igen	αὐτῶν	αὐτός	egyezik
@@ -2231,18 +2208,18 @@ HODIT-001	Józs 12:4	G3588	igen	igen	τῶν	ὁ	egyezik
 HODIT-001	Józs 12:4	G3725	igen	nem			csak regi
 HODIT-001	Józs 12:4	G3739	igen	nem			csak regi
 HODIT-001	Józs 12:4	G5275	igen	igen	ὑπελείφθη	ὑπολείπω	egyezik
-HODIT-001	Józs 13:12	G0575	igen	igen	ἀπὸ	ἀπό	egyezik
-HODIT-001	Józs 13:12	G0846	igen	igen	αὐτὸν	αὐτός	egyezik
-HODIT-001	Józs 13:12	G0932	igen	igen	βασιλείαν	βασιλεία	egyezik
-HODIT-001	Józs 13:12	G0936	igen	igen	ἐβασίλευσεν	βασιλεύω	egyezik
-HODIT-001	Józs 13:12	G1722	igen	igen	ἐν	ἐν	egyezik
-HODIT-001	Józs 13:12	G2532	igen	igen	καὶ	καί	egyezik
-HODIT-001	Józs 13:12	G2641	igen	igen	κατελείφθη	καταλείπω	egyezik
-HODIT-001	Józs 13:12	G3588	igen	igen	τὴν	ὁ	egyezik
-HODIT-001	Józs 13:12	G3739	igen	igen	ὃς	ὅς	egyezik
-HODIT-001	Józs 13:12	G3778	igen	igen	οὗτος	οὗτος	egyezik
-HODIT-001	Józs 13:12	G3956	igen	igen	πᾶσαν	πᾶς	egyezik
-HODIT-001	Józs 13:12	G3960	igen	igen	ἐπάταξεν	πατάσσω	egyezik
+HODIT-001	Józs 13:12	G0575	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+HODIT-001	Józs 13:12	G0846	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+HODIT-001	Józs 13:12	G0932	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+HODIT-001	Józs 13:12	G0936	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+HODIT-001	Józs 13:12	G1722	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+HODIT-001	Józs 13:12	G2532	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+HODIT-001	Józs 13:12	G2641	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+HODIT-001	Józs 13:12	G3588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+HODIT-001	Józs 13:12	G3739	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+HODIT-001	Józs 13:12	G3778	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+HODIT-001	Józs 13:12	G3956	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+HODIT-001	Józs 13:12	G3960	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
 HODIT-001	2Sám 21:16	G0575	igen	nem			csak regi
 HODIT-001	2Sám 21:16	G0846	igen	igen	αὐτοῦ	αὐτός	egyezik
 HODIT-001	2Sám 21:16	G1510	igen	igen	ἦν	εἰμί	egyezik
@@ -2350,22 +2327,21 @@ HODIT-001	Jób 26:5	G3361	nem	igen	μὴ	μή	csak uj
 HODIT-001	Jób 26:5	G3588	igen	igen	τῶν	ὁ	egyezik
 HODIT-001	Jób 26:5	G5204	igen	igen	ὕδατος	ὕδωρ	egyezik
 HODIT-001	Zsolt 88:11	G0225	igen	nem			csak regi
+HODIT-001	Zsolt 88:11	G0450	nem	igen	ἀναστήσουσιν	ἀνίστημι	csak uj
 HODIT-001	Zsolt 88:11	G0684	igen	nem			csak regi
-HODIT-001	Zsolt 88:11	G0846	nem	igen	αὐτῆς	αὐτός	csak uj
-HODIT-001	Zsolt 88:11	G1093	nem	igen	γῆ	γῆ	csak uj
 HODIT-001	Zsolt 88:11	G1334	igen	nem			csak regi
-HODIT-001	Zsolt 88:11	G1510	nem	igen	εἰσιν	εἰμί	csak uj
 HODIT-001	Zsolt 88:11	G1656	igen	nem			csak regi
 HODIT-001	Zsolt 88:11	G1722	igen	nem			csak regi
-HODIT-001	Zsolt 88:11	G2311	nem	igen	ἐθεμελίωσας	θεμελιόω	csak uj
+HODIT-001	Zsolt 88:11	G2228	nem	igen	ἢ	ἤ	csak uj
+HODIT-001	Zsolt 88:11	G2297	nem	igen	θαυμάσια	θαυμάσιος	csak uj
+HODIT-001	Zsolt 88:11	G2395	nem	igen	ἰατροὶ	ἰατρός	csak uj
 HODIT-001	Zsolt 88:11	G2532	igen	igen	καὶ	καί	egyezik
 HODIT-001	Zsolt 88:11	G3165	igen	nem			csak regi
-HODIT-001	Zsolt 88:11	G3588	igen	igen	οἱ	ὁ	egyezik
-HODIT-001	Zsolt 88:11	G3625	nem	igen	οἰκουμένην	οἰκουμένη	csak uj
-HODIT-001	Zsolt 88:11	G3772	nem	igen	οὐρανοί	οὐρανός	csak uj
-HODIT-001	Zsolt 88:11	G4138	nem	igen	πλήρωμα	πλήρωμα	csak uj
-HODIT-001	Zsolt 88:11	G4674	nem	igen	σή	σός	csak uj
-HODIT-001	Zsolt 88:11	G4771	igen	igen	σοί	σύ	egyezik
+HODIT-001	Zsolt 88:11	G3361	nem	igen	μὴ	μή	csak uj
+HODIT-001	Zsolt 88:11	G3498	nem	igen	νεκροῖς	νεκρός	csak uj
+HODIT-001	Zsolt 88:11	G3588	igen	igen	τοῖς	ὁ	egyezik
+HODIT-001	Zsolt 88:11	G4160	nem	igen	ποιήσεις	ποιέω	csak uj
+HODIT-001	Zsolt 88:11	G4771	igen	igen	σοι	σύ	egyezik
 HODIT-001	Zsolt 88:11	G5028	igen	nem			csak regi
 HODIT-001	Zsolt 88:11	G5100	igen	nem			csak regi
 HODIT-001	Péld 2:18	G0086	igen	igen	ᾅδῃ	ᾅδης	egyezik
@@ -3276,37 +3252,34 @@ HAMART-001	Jer 17:5	G3588	igen	igen	ὁ	ὁ	egyezik
 HAMART-001	Jer 17:5	G3739	igen	igen	ὃς	ὅς	egyezik
 HAMART-001	Jer 17:5	G4561	igen	igen	σάρκα	σάρξ	egyezik
 HAMART-001	Jer 17:5	G4741	igen	igen	στηρίσει	στηρίζω	egyezik
-HAMART-001	Zsolt 14:1	G0040	nem	igen	ἁγίῳ	ἅγιος	csak uj
-HAMART-001	Zsolt 14:1	G0846	igen	nem			csak regi
-HAMART-001	Zsolt 14:1	G0878	igen	nem			csak regi
+HAMART-001	Zsolt 14:1	G0846	igen	igen	αὐτοῦ	αὐτός	egyezik
+HAMART-001	Zsolt 14:1	G0878	igen	igen	ἄφρων	ἄφρων	egyezik
 HAMART-001	Zsolt 14:1	G0948	igen	nem			csak regi
-HAMART-001	Zsolt 14:1	G1311	igen	nem			csak regi
-HAMART-001	Zsolt 14:1	G1510	igen	nem			csak regi
-HAMART-001	Zsolt 14:1	G1519	igen	nem			csak regi
+HAMART-001	Zsolt 14:1	G1311	igen	igen	διέφθειραν	διαφθείρω	egyezik
+HAMART-001	Zsolt 14:1	G1510	igen	igen	ἔστιν	εἰμί	egyezik
+HAMART-001	Zsolt 14:1	G1519	igen	igen	εἰς	εἰς	egyezik
 HAMART-001	Zsolt 14:1	G1722	igen	igen	ἐν	ἐν	egyezik
-HAMART-001	Zsolt 14:1	G2193	igen	nem			csak regi
-HAMART-001	Zsolt 14:1	G2316	igen	nem			csak regi
+HAMART-001	Zsolt 14:1	G2193	igen	igen	ἕως	ἕως	egyezik
+HAMART-001	Zsolt 14:1	G2316	igen	igen	θεός	θεός	egyezik
 HAMART-001	Zsolt 14:1	G2532	igen	igen	καὶ	καί	egyezik
-HAMART-001	Zsolt 14:1	G2588	igen	nem			csak regi
-HAMART-001	Zsolt 14:1	G2681	nem	igen	κατασκηνώσει	κατασκηνόω	csak uj
-HAMART-001	Zsolt 14:1	G2962	nem	igen	κύριε	κύριος	csak uj
+HAMART-001	Zsolt 14:1	G2588	igen	igen	καρδίᾳ	καρδία	egyezik
+HAMART-001	Zsolt 14:1	G3004	nem	igen	εἶπεν	λέγω	csak uj
 HAMART-001	Zsolt 14:1	G3364	igen	nem			csak regi
-HAMART-001	Zsolt 14:1	G3588	igen	igen	τῷ	ὁ	egyezik
-HAMART-001	Zsolt 14:1	G3735	nem	igen	ὄρει	ὄρος	csak uj
-HAMART-001	Zsolt 14:1	G3939	nem	igen	παροικήσει	παροικέω	csak uj
-HAMART-001	Zsolt 14:1	G4160	igen	nem			csak regi
-HAMART-001	Zsolt 14:1	G4638	nem	igen	σκηνώματί	σκήνωμα	csak uj
-HAMART-001	Zsolt 14:1	G4771	nem	igen	σου	σύ	csak uj
-HAMART-001	Zsolt 14:1	G5056	igen	nem			csak regi
-HAMART-001	Zsolt 14:1	G5100	nem	igen	τίς	τίς	csak uj
-HAMART-001	Zsolt 14:1	G5544	igen	nem			csak regi
+HAMART-001	Zsolt 14:1	G3588	igen	igen	τὸ	ὁ	egyezik
+HAMART-001	Zsolt 14:1	G3756	nem	igen	οὐκ	οὐ	csak uj
+HAMART-001	Zsolt 14:1	G4160	igen	igen	ποιῶν	ποιέω	egyezik
+HAMART-001	Zsolt 14:1	G5056	igen	igen	τέλος	τέλος	egyezik
+HAMART-001	Zsolt 14:1	G5544	igen	igen	χρηστότητα	χρηστότης	egyezik
 HAMART-001	Zsolt 14:1	G5568	igen	igen	ψαλμὸς	ψαλμός	egyezik
+HAMART-001	Zsolt 53:2	G0018	nem	igen	ἀγαθόν	ἀγαθός	csak uj
 HAMART-001	Zsolt 53:2	G0444	igen	nem			csak regi
+HAMART-001	Zsolt 53:2	G0458	nem	igen	ἀνομίαις	ἀνομία	csak uj
+HAMART-001	Zsolt 53:2	G0846	nem	igen	αὐτοῦ	αὐτός	csak uj
+HAMART-001	Zsolt 53:2	G0878	nem	igen	ἄφρων	ἄφρων	csak uj
 HAMART-001	Zsolt 53:2	G1253	igen	nem			csak regi
-HAMART-001	Zsolt 53:2	G1411	nem	igen	δυνάμει	δύναμις	csak uj
-HAMART-001	Zsolt 53:2	G1473	nem	igen	με	ἐγώ	csak uj
+HAMART-001	Zsolt 53:2	G1311	nem	igen	διεφθάρησαν	διαφθείρω	csak uj
 HAMART-001	Zsolt 53:2	G1487	igen	nem			csak regi
-HAMART-001	Zsolt 53:2	G1510	igen	nem			csak regi
+HAMART-001	Zsolt 53:2	G1510	igen	igen	ἔστιν	εἰμί	egyezik
 HAMART-001	Zsolt 53:2	G1537	igen	nem			csak regi
 HAMART-001	Zsolt 53:2	G1567	igen	nem			csak regi
 HAMART-001	Zsolt 53:2	G1722	nem	igen	ἐν	ἐν	csak uj
@@ -3314,14 +3287,14 @@ HAMART-001	Zsolt 53:2	G1909	igen	nem			csak regi
 HAMART-001	Zsolt 53:2	G2228	igen	nem			csak regi
 HAMART-001	Zsolt 53:2	G2316	igen	igen	θεός	θεός	egyezik
 HAMART-001	Zsolt 53:2	G2532	nem	igen	καὶ	καί	csak uj
-HAMART-001	Zsolt 53:2	G2919	nem	igen	κρῖνόν	κρίνω	csak uj
-HAMART-001	Zsolt 53:2	G3588	igen	igen	ὁ	ὁ	egyezik
-HAMART-001	Zsolt 53:2	G3686	nem	igen	ὀνόματί	ὄνομα	csak uj
+HAMART-001	Zsolt 53:2	G2588	nem	igen	καρδίᾳ	καρδία	csak uj
+HAMART-001	Zsolt 53:2	G3004	nem	igen	εἶπεν	λέγω	csak uj
+HAMART-001	Zsolt 53:2	G3588	igen	nem			csak regi
 HAMART-001	Zsolt 53:2	G3708	igen	nem			csak regi
+HAMART-001	Zsolt 53:2	G3756	nem	igen	οὐκ	οὐ	csak uj
 HAMART-001	Zsolt 53:2	G3772	igen	nem			csak regi
-HAMART-001	Zsolt 53:2	G4771	nem	igen	σου	σύ	csak uj
+HAMART-001	Zsolt 53:2	G4160	nem	igen	ποιῶν	ποιέω	csak uj
 HAMART-001	Zsolt 53:2	G4920	igen	nem			csak regi
-HAMART-001	Zsolt 53:2	G4982	nem	igen	σῶσόν	σῴζω	csak uj
 HAMART-001	Zsolt 53:2	G5207	igen	nem			csak regi
 HAMART-001	Ez 7:23	G0458	igen	igen	ἀνομίας	ἀνομία	egyezik
 HAMART-001	Ez 7:23	G1065	igen	nem			csak regi
@@ -3378,17 +3351,18 @@ HAMART-001	Ez 28:16	G4771	igen	igen	σου	σύ	egyezik
 HAMART-001	Ez 28:16	G4951	igen	nem			csak regi
 HAMART-001	Ez 28:16	G5135	igen	igen	ἐτραυματίσθης	τραυματίζω	egyezik
 HAMART-001	Ez 28:16	G5502	nem	igen	χερουβ	χερουβ	csak uj
-HAMART-001	Zsolt 74:20	G0458	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-HAMART-001	Zsolt 74:20	G1065	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-HAMART-001	Zsolt 74:20	G1242	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-HAMART-001	Zsolt 74:20	G1519	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-HAMART-001	Zsolt 74:20	G1914	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-HAMART-001	Zsolt 74:20	G3588	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-HAMART-001	Zsolt 74:20	G3624	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-HAMART-001	Zsolt 74:20	G3754	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-HAMART-001	Zsolt 74:20	G4137	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-HAMART-001	Zsolt 74:20	G4654	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
-HAMART-001	Zsolt 74:20	G4771	igen	nem			szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)
+HAMART-001	Zsolt 74:20	G0458	igen	igen	ἀνομιῶν	ἀνομία	egyezik
+HAMART-001	Zsolt 74:20	G1065	igen	nem			csak regi
+HAMART-001	Zsolt 74:20	G1093	nem	igen	γῆς	γῆ	csak uj
+HAMART-001	Zsolt 74:20	G1242	igen	igen	διαθήκην	διαθήκη	egyezik
+HAMART-001	Zsolt 74:20	G1519	igen	igen	εἰς	εἰς	egyezik
+HAMART-001	Zsolt 74:20	G1914	igen	igen	ἐπίβλεψον	ἐπιβλέπω	egyezik
+HAMART-001	Zsolt 74:20	G3588	igen	igen	τὴν	ὁ	egyezik
+HAMART-001	Zsolt 74:20	G3624	igen	igen	οἴκων	οἶκος	egyezik
+HAMART-001	Zsolt 74:20	G3754	igen	igen	ὅτι	ὅτι	egyezik
+HAMART-001	Zsolt 74:20	G4137	igen	igen	ἐπληρώθησαν	πληρόω	egyezik
+HAMART-001	Zsolt 74:20	G4654	igen	igen	ἐσκοτισμένοι	σκοτίζω	egyezik
+HAMART-001	Zsolt 74:20	G4771	igen	igen	σου	σύ	egyezik
 HAMART-001	Mik 6:12	G0763	igen	igen	ἀσεβείας	ἀσέβεια	egyezik
 HAMART-001	Mik 6:12	G0846	igen	igen	αὐτῶν	αὐτός	egyezik
 HAMART-001	Mik 6:12	G1100	igen	igen	γλῶσσα	γλῶσσα	egyezik
