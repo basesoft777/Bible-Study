@@ -19,6 +19,8 @@
 
 ## Kivonat
 
+A motívum lexikai azonosságú: a שְׁאוֹל (*seól*) és a görög ᾍδης (*hádész*) az egyéni halottak birodalmát jelöli — élesen elkülönülve a תְּהוֹם/ἄβυσσος kozmikus-mitológiai fogalomtól —, a teljes Ószövetségben 64 egyedi igehelyen, az Újszövetségben — teljes szövegvizsgálat szerint — tíz ᾍδης-előfordulásban. A legfontosabb lelet Hós 13:14, amelyet Pál explicit idéz/parafrazál 1Kor 15:55-ben ("Halál! hol a te fullánkod?"), és amely a study fő ívét (Krisztus legyőzi a hádészt, Jel 1:18, 20:13-14) egy második, páli hivatkozással erősíti meg. Önálló, ettől elkülönülő második használati minta is azonosítható: a "felmagasztalás→hádészig-taszítás" idióma (Luk 10:15/Mát 11:23), amely nem a halál/feltámadás-tipológiához, hanem a gőg isteni megalázásának mintázatához kapcsolódik.
+
 ## Tartalom
 
 - [1. Igehelyek és kereszthivatkozások](#1-igehelyek-és-kereszthivatkozások)
@@ -1049,7 +1051,22 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 ### Alátámasztás
 
+A motívumhoz nincs rögzített kapcsolat.
+
 ## 3. A kereszthivatkozások minősítése
+
+| Jelölt | Minősítés | Indoklás |
+|---|---|---|
+| Hós 13:14 | ✅ beépítve, ⭐ kiemelt lelet | H7585 teljes scan; Pál 1Kor 15:55-ben explicit idézi/parafrazálja — a study fő ívét (Krisztus legyőzi a Seólt/hádészt) közvetlenül megerősíti és kibővíti |
+| A fennmaradó 62 H7585-igehely (1Móz 37:35 stb.) | ✅ beépítve, táblázatos formában | személyes gyász, lament/könyörgés, bölcsességi figyelmeztetés vagy prófétai ítélet-gúnydal regisztere — egyik sem mond ellent a study fő ívének |
+| 1Sám 2:6 | ✅ beépítve, pótolva | kimaradt az eredeti, prózai felsorolásból — a második, javított körben pótolva |
+| Ézs 7:11 | ✅ beépítve, pótolva | ua. |
+| 1Kor 15:55 (θάνατος, NA28 szerint NEM ᾅδης) | ❌ elutasítva a G0086-listáról, indokolt | a kritikai szövegkiadás mindkét tagmondatban θάνατος-t hoz; a TR/Byzantinus-alapú Károli-olvasat eltérése szövegkritikai kérdés, nem a jelen scan tárgya — dokumentálva, nem hallgatólagosan kihagyva |
+| Máté 16:18 (ᾅδης, "a pokol kapui") | ❌ elutasítva, indokolt (elhatárolás) | ekkleziológiai kontextus (az egyház legyőzhetetlensége), tartalmilag nem kapcsolódik a jelen tanulmány tárgyához (halál/feltámadás-tipológia) — külön motívumként kezelendő, ha sorra kerül |
+| Tehóm/abüsszosz-komplexum (H8415/G0012) | ❌ elutasítva, indokolt (elhatárolás) | a seól/hádész az egyéni halottak birodalma, a tehóm/abüsszosz kozmikus-mitológiai teremtés előtti káosz — a két szócsalád sosem azonosított egymással, l. `Tehom_kereszthivatkozas_naplo.md` |
+| Named teacher (Derek Prince stb., dedikáltan a seól/hádész-komplexumra) | ❌ gap, indokolt | nem áll rendelkezésre megbízható, ellenőrizhető, dedikáltan erre a témára szánt forrás a jóváhagyott listáról |
+
+A Hós 13:14 lelet beépítve, kiemelt ⭐ jelöléssel — ez a legfontosabb ÚSZ-visszhang, amely eddig hiányzott a study-ból. A fennmaradó 62 igehely táblázatos formában beépítve, a két kimaradt (1Sám 2:6, Ézs 7:11) pótolva. A G0086-lista Strong-száma javítva (G86→G0086); az 1Kor 15:55 szövegkritikai kizárása explicit dokumentálva. A Máté 16:18 és a tehóm/abüsszosz-komplexum explicit, indokolt elhatárolással kimaradt. A named teacher gap explicit.
 
 ## 4. LXX-fordítói döntések
 
@@ -1150,13 +1167,44 @@ A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (
 
 ## 6. Értelmezés
 
-### PaRDeS keretrendszer
+**Peshat.** A hádész-vonal az egyéni halottak helye, ahonnan Krisztus feltámadása kiemeli Őt (ApCsel 2:27, 31, Zsolt 16:10 idézésével), és amelynek kulcsait Ő birtokolja (Jel 1:18), majd amelyet a végén magát a halált is a tűz tavába vetik (Jel 20:13-14). A gazdag ember és Lázár példázatában (Luk 16:23) a hádész a halál utáni, tudatos szenvedés helyeként jelenik meg. A Jelenések könyvében a Halál és a Hádész személyesített párosként lép fel (6:8), amely a végső ítéletben magával a hádésszel együtt semmisül meg (20:13-14).
+
+**Remez.** A minta íve: a halál birodalma, amelybe minden halandó alászáll, de amelyben Krisztus nem maradt (ApCsel 2:31) — ez a győzelem adja az alapot ahhoz, hogy Ő birtokolja "a halál és a hádész kulcsait" (Jel 1:18), és hogy a történelem végén maga a hádész is megsemmisüljön (Jel 20:14) — egyfajta *"végső bezárás"*, amely tartalmilag rokon azzal, ahogyan a tehóm-motívumban a mélység forrásai bezárultak (1Móz 8:2) — de ez **csak tartalmi, nem lexikai** párhuzam a két motívum között.
+
+**Második hádész-használati mintázat — hübrisz és megaláztatás** *(felvéve 2026.08.25)*. Luk 10:15 és párhuzamos helye, Mat 11:23, Jézus szájából ugyanazt a szót (ᾍδης) használja, de nem a halál/feltámadás-tipológia keretében: Kapernaum büszke "égig felmagasztaltatását" állítja szembe az eljövendő "hádészig" való megaláztatással. Ez a "felmagasztalás→Seól/Hádész-taszítás" idióma szerkezetileg megegyezik az Ézs 14:9-15 mintázattal (Babilon királyának bukása) — tehát nem a jelen tanulmány fő ívéhez (Krisztus legyőzi a halált) kapcsolódik, hanem egy **másik, önálló bibliai mintázathoz** (a gőg isteni megalázása). Jelzésre érdemes, de a fő tipológiai ívbe nem illesztendő bele.
+
+**Drash.** A motívum tanítása: a halál — még a maga legfélelmetesebb, birodalom-szerű formájában is — Isten szuverén hatalma alatt áll. Krisztus nem "elkerülte" a hádészt, hanem belépett oda és győztesen távozott, ezért "birtokolja a kulcsait" — vagyis a nyitás-zárás jogát, amely korábban kizárólag Isten közvetlen előjoga volt. Ez a hívő számára azt jelenti, hogy a halál nem autonóm, félelmetes végállomás, hanem egy olyan hely, amely fölött Krisztusnak hatalma van.
+
+**Sod** *(tömör)*. A hádész végső megsemmisítése (Jel 20:14, "a halál és a pokol/hádész pedig vettetének a tüzes tóba") azt a mintát fejezi be, amelyet Krisztus feltámadása nyitott meg: a halál birodalma maga is ideiglenes, Isten végső programjában felszámolandó valóság — nem örök ellenpólusa Isten uralmának, hanem annak alárendelt, végül megszüntetett intézménye.
 
 ## 7. Módszertan és nyitott kérdések
 
-### Módszertani napló
+1. **`PaRDeS_motivumok.md`** — `[ID: ALVIL-001]` bejegyzés ellenőrizve; a fájl-kiszervezéssel egyidejűleg a bejegyzés 4→6 előfordulásra frissül (l. 6. pont és külön napló-Code-prompt).
+2. **Érintett bővített tanulmányok 4. pontja** — nincs olyan genezisi bővített study, amelynek saját kulcsszava lenne a seól/hádész (a motívum kizárólag Zsoltárok/Lukács/ApCsel/Jelenések igehelyeken él) — nincs pótlandó 📎-visszahivatkozás.
+3. **"Nyitva maradó szál" jelzések** — nem volt ilyen.
+4. **Kereszthivatkozás-naplók 2/a-2/e auditjai** — nincs kapcsolódó bejegyzés.
+5. **`Kockazat_szures_riport_*.md`** — nincs kapcsolódó bejegyzés.
 
-### Nyitott kérdések és séma-korlátok
+**Elhatárolási forrás:** l. a `Tehom_tematikus.md` "Lásd is" jegyzetét — a tehóm/ábüσσος-komplexum és e motívum viszonyát ott is dokumentáltuk. *(2026.09.10: a korábbi `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` fájl a tehóm/abüσσος-anyaggal összevonva `Tehom_tematikus.md`-be — a hádész/seól motívumot és e fájlt ez nem érinti.)*
+
+✅ **A motívum korábban a `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` fájlban élt** (a `PaRDeS_motivumok.md` naplóban mindig is önálló `[ID: ALVIL-001]` alatt, lezárva). **2026.09.10: fájlszervezési kiszervezés** — a napló ALVIL-001 bejegyzésének fájlnév-hivatkozása erre a fájlra frissítve, és az előfordulás-szám a korábban dokumentálatlan 2026.08.25-i bővítéssel (Jel 6:8; Luk 10:15/Mát 11:23) 4-ről 6-ra korrigálva (l. külön edit ugyanebben a promptban).
+
+**Teljes jelölt-lista** (F0.5, 2026.09.13-án retroaktívan pótolva): `tematikus_lezart/naplok/Hadesz_Seol_kereszthivatkozas_naplo.md`.
+
+- ✅ Kiejtés minden héber/görög szónál feltüntetve
+- ✅ Lexikai vs. tematikus elhatárolás explicit (2. pont: seól/hádész ≠ tehóm/abüsszosz)
+- ✅ Arányok: Peshat/Remez részletes, Sod tömör
+- ✅ Alkalmazás tömör, nincs kikényszerített tanító-hivatkozás, gap explicit jelezve
+- ✅ Igehely-formátum egységes
+- ✅ Napló-frissítési igény jelezve
+- ✅ 2026.09.10-i kiterjesztés (63 új ÓSZ-igehely, sablon-konform táblázatban) — forrás és módszer elkülönítve jelölve, textus-kritikai megjegyzés forrás szerint elkülönítve (l. 2/b. pont, Hós 13:14 melletti NAPLO-blokk)
+
+- [x] **Q1. Szerkezeti teljesség** — mind a 6 kötelező szakasz jelen van.
+- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔬 Valódi lexikai kutatás elvégezve 2026.09.10-én, a helyi `TAHOT_kivonat.tsv`/`TAGNT_kivonat.tsv` közvetlen lekérdezésével: G0086 (ᾅδης, javított Strong-szám) teljes ÚSZ-scan — 10 előfordulás, mind lefedve (9 táblázatban + 1 indokolt kizárás), új nem került elő; H7585 (שְׁאוֹל) teljes ÓSZ-scan — **64 egyedi igehely, ebből 63 eddig hiányzott** (a nyers 66-os szóelőfordulás-szám a Hós 13:14-i kettős előfordulásból adódik), felvéve táblázatos formában (l. 2/b. pont, sablon-konform formátumra alakítva 2026.09.10-én), kiemelt lelet: Hós 13:14 → 1Kor 15:55 páli idézet.
+- [x] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — a tehóm/abüsszosz-komplexumtól való elkülönülés explicit (2. pont).
+- [x] **Q4. Kereszt-motívum szennyeződés kizárva** — friss `grep` a teljes repón (2026.09.10): a fájl kizárólag a saját (ALVIL-001) motívumára vonatkozó tartalmat hordozza.
+- [x] **Q5. Nevesített tanítói szakasz jelen van, vagy explicit hiányjelzéssel zárva** — 5. pont, gap-jelzéssel.
+- [x] **Q6. Napló-/formázási-/hangnem-fegyelem** — ellenőrizve: nincs inline dátum-tag tartalmi cellában, nincs "Forrás:" bekezdés önálló bekezdésként, nincs első személyű ellenőrzési állítás, nincs magyar fordítás blockquote-ban, nincs olvasót megszólító mondat, nincs réteg-keveredés.
 
 ## Jelmagyarázat
 

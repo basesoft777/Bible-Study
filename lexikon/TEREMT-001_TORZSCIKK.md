@@ -19,6 +19,8 @@
 
 ## Kivonat
 
+A motívum lexikai azonosságú: a תְּהוֹם (*tehóm*, "mélység") szó a Genezisben négyszer jelöli ugyanazt az őstenger-fogalmat — a teremtés előtti állapotot (1Móz 1:2), az özönvíz kitörését (7:11) és elzárását (8:2), majd Jákób áldásában megszelídült termékenység-forrásként (49:25) —, a teljes Ószövetségben összesen 35 szóelőfordulásban, a görög ἄβυσσος (*abüsszosz*) LXX-közvetítésével pedig kilenc újszövetségi helyen, túlnyomórészt a Jelenések könyvében. A legfontosabb lelet a 7:11↔8:2 tükrös szerkezet (ugyanaz a szókapcsolat, ellentétes igeiránnyal) és ennek eszkatológiai visszhangja Jel 20:1,3-ban, amely szerkezetileg megismétli az 1Móz 8:2 "bezárás" mozzanatát. Vitatott pont marad a תְּהוֹם esetleges kapcsolata a közel-keleti teremtésmítoszok Tiámat-alakjával.
+
 ## Tartalom
 
 - [1. Igehelyek és kereszthivatkozások](#1-igehelyek-és-kereszthivatkozások)
@@ -611,7 +613,22 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 ### Alátámasztás
 
+A motívumhoz nincs rögzített kapcsolat.
+
 ## 3. A kereszthivatkozások minősítése
+
+| Jelölt | Minősítés | Indoklás |
+|---|---|---|
+| Zsolt 36:7 | ✅ beépítve | H8415 teljes scan, eddig dokumentálatlan |
+| Zsolt 77:17 | ✅ beépítve | H8415 teljes scan, eddig dokumentálatlan, teofánia/Vörös-tenger-visszhang |
+| Jón 2:6 | ✅ beépítve | H8415 teljes scan, eddig dokumentálatlan, legszorosabb párhuzam Zsolt 71:20/107:26-tal |
+| A fennmaradó 25 H8415-igehely | ✅ már a táblázatban, csak formára hozva | 2026.08.25-ös feltáró ellenőrzésből, most sablon-konform táblázatba rendezve, a hibás "31 további igehely" állítás "28"-ra javítva |
+| G0012 9 előfordulása | ✅ már a táblázatban, TAGNT-scannel megerősítve | teljes egyezés, nincs új |
+| ταρταρόω (2Pét 2:4) | ❌ elutasítva, indokolt (elhatárolás) | nem lexikai rokona a tehóm/ábüσσος szónak — külön, görög mitológiából kölcsönzött terminus; tartalmilag inkább az "Isten fiai / gibborim-nefilim" motívumhoz kapcsolódik |
+| Jel 21:1 (θάλασσα, "tenger") | ❌ elutasítva, indokolt | nem lexikai rokona az ἄβυσσος szócsaládnak — tematikus, nem lexikai párhuzam |
+| Named teacher (Derek Prince / Hagin / Capps) | ❌ gap, indokolt | nincs kifejezetten e motívumhoz kötött, elmentett szabály szerinti nevesített tanító-hivatkozás; gyengébb anyaggal nem pótolva |
+
+A három ✅ igehely (Zsolt 36:7, 77:17, Jón 2:6) beépítve a study 2/b pontjának táblázatába. A korábban prózai formában dokumentált 25 igehely sablon-konform táblázatra alakítva, a hibás számadat javítva. A G0012 teljes scan megerősítette a meglévő 9 ábüσσος-előfordulást, új nem került elő. A Tartarosz és a Jel 21:1 "tenger" explicit, indokolt elhatárolással kimaradt. A named teacher gap explicit.
 
 ## 4. LXX-fordítói döntések
 
@@ -682,13 +699,61 @@ A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (
 
 ## 6. Értelmezés
 
-### PaRDeS keretrendszer
+**Peshat** *(részletesen kifejtve)*
+A négy Genezisen belüli előfordulás lefedi a teljes könyvet: a *tehóm* Mózes első könyvének elején, közepén (kétszer) és végén jelenik meg, minden alkalommal ugyanazzal a ritka szóval, egyes számú (תְּהוֹם) alakban.
+
+**A motívum kiterjesztése a Tóra egészére:** a **2Móz 15:5,8** (Mózes és Izrael Tengeri éneke) ugyanazt a szótövet használja, de **többes számú** (תְּהֹמֹת, *tehómót*) alakban — nem szó szerinti idézet, hanem funkcionális visszautalás: az egyiptomi sereget elnyelő "mélységek" ugyanazt a szerepet töltik be (Isten ítéletének eszköze), mint az özönvíz *tehóm*-ja. ⚠️ Vitatott, hogy ez tudatos, konkrét visszautalás-e a Genezis-özönvízre (Cassuto, Sarna, Levenson) vagy inkább a teremtés-káosz séma általánosabb, nem egy konkrét szöveghelyhez kötött felidézése (Childs). 1Móz 1:2-ben a *tehóm* a teremtés kiindulópontja: a föld még "puszta és üres", sötétség van a mélység színén, és Isten Szelleme lebeg fölötte. Ez nem gonosz erő, hanem a formálás előtti nyersanyag. 1Móz 7:11-ben ugyanez a szó jelöli az ítélet eszközét: "e napon felfakadának a nagy mélység forrásai" — a teremtéskor "fent" és "lent" közé húzott határ (1:6-7) leomlik, és a világ visszazuhan a differenciálatlan állapot felé. 1Móz 8:2 ennek pontos tükörképe: "bezárultak a mélység forrásai és az ég csatornái" — ugyanazok a szavak, fordított mozgásban, a rend helyreállítását jelezve. Végül 1Móz 49:25-ben, egy egészen más műfajban (haldokló pátriárka áldása), a *tehóm* immár nem katasztrófa forrása, hanem — a föld alatti vízkészletekre utalva — mezőgazdasági bőség és termékenység záloga József leszármazottai számára.
+
+**A görög abüσσος-vonal, LXX-közvetített:** a Septuaginta ugyanezt a fogalmat ἄβυσσος szóval adja tovább, és az Újszövetség e szót veszi át, amikor a Gadarai megszállott démonai könyörögnek, hogy Jézus ne küldje őket "az abüσσωzba" (Luk 8:31), és amikor a Jelenések könyve leírja, hogy onnan száll fel a füst és a sáskák (Jel 9:1-11), onnan jön fel a fenevad (Jel 11:7; 17:8), és oda köttetik meg a Sátán ezer évre (Jel 20:1-3).
+
+**Remez**
+A bibliai ív világosan kirajzolódik: *teremtés (1:2) → dekreáció/ítélet (7:11) → rekreáció/helyreállítás (8:2) → áldás (49:25)*. Ez a sorrend nem véletlen elhelyezkedés — a szerkesztett Genezis-könyv szándékosan viszi végig ugyanazt a szót négy féle teológiai regiszteren. A 7:11↔8:2 pár már önmagában is szoros, tükrös szerkezetű (ugyanaz a szókapcsolat, ellentétes irányú igével), ez a korábbi 1Mózes 7:1–24 tanulmányban azonosított kapcsolat. A 49:25 hozzáadása az ívet lezárja: a mélység, amely a teremtéskor még nyers potenciál, az özönvízkor fenyegetés, itt már szelídített, Isten uralma alá rendelt erőforrás — ez maga a teremtés-helyreállítás programjának betelesedése egy konkrét családi áldás szintjén.
+
+**Ez a minta pontosan megismétlődik nagyobb léptékben az Újszövetség eszkatológiájában:** az abüσσος a Jelenések könyvében megnyílik (9:1-2 — a mélység "kútja" megnyittatik), szörnyű erők szabadulnak fel belőle, majd a végén Isten végérvényesen lezárja azt Sátán megkötözésével és végső ítéletével (20:1-3, majd 20:10). A Genezis-özönvíz tehát **típusa (előkép)** a végső eszkatológiai mintázatnak: Isten időlegesen megengedi a mélység/a gonosz erők felszabadulását, majd szuverén módon, saját idejében lezárja azt. Jel 20:1,3 ("bezárta és lepecsételte") szerkezetileg visszhangozza az 1Móz 8:2 "bezárultak a mélység forrásai" mozzanatát — ugyanaz a bezárás/rend-helyreállítás logika, eszkatológiai regiszterbe emelve.
+
+**Drash** *(részletesen kifejtve)*
+A motívum egységes teológiai tanítása: **a mélység (a rendezetlenség, a káosz-potenciál) mindvégig Isten uralma alatt áll, és sorsa attól függ, hogyan viszonyul hozzá az, aki fölötte "lebeg" vagy uralkodik.** A teremtéskor Isten Szelleme lebeg a *tehóm* fölött, és rendet formál belőle. Az özönvízkor az emberi gonoszság miatt Isten megengedi, hogy a *tehóm* visszatérjen — a teremtés részleges visszavonása nem önkényes pusztítás, hanem a rend Gondozójának válasza a rendbontásra. A vizek bezárása (8:2) mutatja, hogy a dekreáció sosem végleges Isten szándékában. A 49:25 pedig azt tanítja, hogy ami egykor fenyegetés volt, Isten népe számára végül áldássá szelídül. **Ugyanez a mintázat — a mélység sohasem autonóm, mindig Isten nyitja/zárja — folytatódik a görög abüσσος-vonalon is:** a látszólag kaotikus, fenyegető erők (özönvíz, démoni hatalmak) egy meghatározott időre és célra vannak "kiengedve", és Isten ígérete szerint véglegesen le is záródnak — ugyanaz az isteni nyitás-zárás előjog, amelyet 1Móz 7:11 és 8:2 dokumentál.
+
+**Sod** *(tömör, fegyelmezett)*
+A mélység motívuma a Peshat/Remez/Drash rétegekből annyit enged levezetni: a formátlan, rendezetlen állapot (akár kozmikus, akár erkölcsi értelemben) önmagában nem azonos a gonosszal — sorsa attól függ, hogy Isten Szelleme "lebeg-e fölötte". Ez a mintázat előremutat minden olyan bibliai helyzetre, ahol a rendezetlenség rendezetté, a fenyegetés áldássá válik Isten jelenlétében. A Septuaginta-közvetített ábüσσος-visszhang (Jel 20:1,3) mutatja, hogy ugyanez a "bezárás" logika az eszkatológiai beteljesedésben is megjelenik. **Pontosítás:** a Jel 21:1 görög szövege a θάλασσα (*thalassza*, "tenger") szót használja, ami **nem azonos** és nem lexikai rokona az ἄβυσσος szócsaládnak — tematikus, nem lexikai párhuzam, és a "no more sea" inkább a teremtéskori vízi-káosz-szimbolika végső megszüntetésére utal általánosságban. Ennél mélyebb következtetés a szövegekből nem vezethető le fegyelmezetten.
+
+⚠️ **Vitatott pont:** az 1Móz 1:2 *tehóm*-ának esetleges kapcsolata a közel-keleti teremtésmítoszok (pl. az akkád *Enūma Eliš* Tiámat-alakjával, amely nyelvileg rokon szó) tudományosan vitatott kérdés. **Hermann Gunkel** és követői (*Schöpfung und Chaos*) történeti-vallástörténeti rokonságot és polemikus átvételt feltételeztek. Ezzel szemben konzervatívabb exegéták, köztük **Gordon Wenham** (WBC) és **Umberto Cassuto**, hangsúlyozzák, hogy a *tehóm* a bibliai szövegben sehol nem viselkedik önálló, Istennel szembeni akarattal bíró lényként — pusztán anyagi elemként szerepel. A jelen tanulmány ez utóbbi olvasatot követi (összhangban a Sod-fegyelemmel), de a vita létezését jelzi.
 
 ## 7. Módszertan és nyitott kérdések
 
-### Módszertani napló
+*A sablon 0. pontja e study elkészültekor még nem létezett — ez a retroaktív pótlás.*
 
-### Nyitott kérdések és séma-korlátok
+1. **`PaRDeS_motivumok.md`** — a motívum bejegyzése (`[ID: TEREMT-001]`) ellenőrizve és 2026.09.10-én frissítve az összevonás és a valódi kutatás eredményével.
+2. **Érintett bővített tanulmányok 4. pontja** — `1Moz_1v2-2v3_bovitett.md`, `1Moz_7v1-24_bovitett.md`, `1Moz_8v1-22_bovitett.md` (📎-visszahivatkozás mindháromban megvan, szövegük a fájlnév-változás miatt 2026.09.10-én frissítve).
+3. **"Nyitva maradó szál" jelzések** — nem volt ilyen explicit jelzés az érintett bővített study-kban.
+4. **Kereszthivatkozás-naplók 2/a-2/e auditjai** — nincs kapcsolódó bejegyzés.
+5. **`Kockazat_szures_riport_*.md`** — nincs kapcsolódó bejegyzés.
+
+- [x] **Q1. Szerkezeti teljesség** — mind a 6 kötelező szakasz jelen van.
+- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔬 Valódi lexikai kutatás elvégezve 2026.09.10-én, helyi `TAHOT_kivonat.tsv`/`TAGNT_kivonat.tsv` közvetlen lekérdezésével: H8415 (תְּהוֹם) teljes ÓSZ-scan — 35 szóelőfordulás, 34 egyedi vers (Zsolt 42:8-ban kétszer), 28 egyedi igehely a 6 alap-versen felül, ebből **3 eddig dokumentálatlan** (Zsolt 36:7; 77:17; Jón 2:6), felvéve táblázatos formában a 2/b pontba (2026.09.10-én sablon-konform formára alakítva, a korábbi prózai forma és a hibás "31" szám javítva); G0012 (ἄβυσσος) teljes ÚSZ-scan — 9 előfordulás, teljes egyezés, nincs új.
+- [x] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — a Tartarosz-kapcsolat explicit "nem lexikai rokona" jelöléssel (1. pont); a hádész/seól teljesen külön fájlban (2/c pont, ill. header).
+- [x] **Q4. Kereszt-motívum szennyeződés kizárva** — friss `grep` a teljes repón (2026.09.10): a study kizárólag a saját (TEREMT-001) motívumára vonatkozó leleteket tartalmazza (a Tartarosz-kereszthivatkozás kivételével, ami nem önálló motívum).
+- [x] **Q5. Nevesített tanítói szakasz jelen van, vagy explicit hiányjelzéssel zárva** — 5. pont, gap-jelzéssel.
+- [x] **Q6. Napló-/formázási-/hangnem-fegyelem** — ellenőrizve: nincs inline dátum-tag tartalmi cellában (a NAPLO-blokkok kivételével, amelyek a szabály szerintiek), nincs "Forrás:" bekezdés, nincs első személyű ellenőrzési állítás, nincs magyar fordítás blockquote-ban, nincs olvasót megszólító mondat, nincs réteg-keveredés.
+
+E tanulmány (összevont formában) a *tehóm*/*abüσσος*-motívum (`[ID: TEREMT-001]`) teljes feldolgozását tartalmazza. A `PaRDeS_motivumok.md` naplóban a 2026.09.10-i frissítés (l. külön Code-prompt-részlet):
+- a `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` fájlra mutató hivatkozás törölve/frissítve `Tehom_tematikus.md`-re mindenhol,
+- az előfordulás-szám és a "kánoni kitekintés" leírás frissítve a valódi kutatás eredményével (35 ÓSZ + 9 ÚSZ),
+- az index (`Lezart_tematikus_tanulmanyok_index.md`) #2 sora törölve, #1 sora frissítve.
+
+**2026.09.10-i retroaktív v14-compliance + összevonási + valódi kutatási frissítés:** l. a fejléc v2/v3 jegyzeteit. Tartalmi következtetés a fentieken túl nem változott.
+
+**Teljes jelölt-lista** (F0.5, 2026.09.13-án retroaktívan pótolva): `tematikus_lezart/naplok/Tehom_kereszthivatkozas_naplo.md`.
+
+- ✅ Kiejtés minden héber/görög szónál feltüntetve
+- ✅ ⚠️ vitatott pontok nevesített képviselőkkel (Gunkel vs. Wenham/Cassuto; Cassuto/Sarna/Levenson vs. Childs)
+- ✅ Arányok: Peshat és Drash részletes, Sod tömör
+- ✅ Alkalmazás tömör, nincs kikényszerített tanító-hivatkozás
+- ✅ Terminológia: "Szent Szellem" használva; igehely-formátum egységes
+- ✅ Károli-fordítás rövid idézetekhez
+- ✅ Napló-frissítési igény jelezve
+- ✅ ÚSZ-visszhang (LXX-közvetített ábüσσος, teljes tábla) és Tartarosz-elhatárolás rögzítve
+- ✅ Valódi kutatás eredménye (3 új ÓSZ-igehely) forrás szerint elkülönítve jelölve (NAPLO-blokkok)
 
 ## Jelmagyarázat
 

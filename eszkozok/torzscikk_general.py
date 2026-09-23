@@ -67,10 +67,17 @@ def anchor(ref):
     return 'v-' + a
 
 
+_INLINE_NAPLO_RE = re.compile(r'\s?【NAPLO.*?】')
+
+
 def clean(lines):
     """A kézi rész-szövegekben előforduló 【NAPLO...】 blokkok, GENERÁLT
     markerek, hatókör-sorok, forrás-sorok, lábjegyzet-jelek és *(kézi...)*
-    címkék eltávolítása -- a pilot clean()-jének változatlan logikája."""
+    címkék eltávolítása -- a pilot clean()-jének logikája, kiegészítve
+    (RENDER R2.6): a `tanulmany` forrású rések (G1) a tanulmány szabad
+    prózáját hordozzák, amelyben a 【NAPLO...】 blokk gyakran egy mondat
+    KÖZEPÉN áll, nem önálló soron -- ezt az eredeti, csak sor-eleji
+    esetet kezelő logika nem fogta volna."""
     out, in_naplo = [], False
     for ln in lines:
         if in_naplo:
@@ -95,6 +102,7 @@ def clean(lines):
             continue
         ln = re.sub(r'\[\^\d+\]', '', ln)
         ln = re.sub(r'\s*\*\(kézi[^)]*\)\*', '', ln)
+        ln = _INLINE_NAPLO_RE.sub('', ln)
         out.append(ln)
     res = []
     for ln in out:
@@ -222,7 +230,10 @@ def torzscikk_szoveg(m, lex_szoveg, model):
     # ---------- kimenet ----------
     O = []
     w = O.append
-    cim = L[0].replace('# 📖 ', '# ')
+    # R2.5: a lexikon-oldal első sora most a fájl-szintű GENERÁLT jelölés
+    # lehet (nem a cím) -- a cím sort keresve, nem index 0 feltételezve.
+    i_cim = idx(L, lambda s: s.startswith('# 📖 '))
+    cim = L[i_cim].replace('# 📖 ', '# ')
     w(cim); w('')
     w('*Kereszthivatkozási törzscikk — ugyanannak a tartalomnak az olvasói nézete, mint a '
       '[tudományos lexikonoldal](%s_TUDOMANYOS.md).*' % m['id'])

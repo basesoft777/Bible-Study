@@ -19,6 +19,8 @@
 
 ## Kivonat
 
+A motívum lexikai azonosságú: a görög πνεῦμα (*pneuma*, "szellem") és ψυχή (*pszükhé*, "lélek") öt újszövetségi helyen jelenik meg egyértelmű grammatikai megkülönböztetésben — háromszor nominális alakban (1Thessz 5:23, 1Kor 15:45 az 1Móz 2:7 hátterével, Luk 1:46-47), kétszer melléknévi alakban (1Kor 2:14-15). A legerősebb lexikai bizonyíték a Luk 1:46-47 pár, ahol a két szó ugyanabban a grammatikai szerepben, közvetlen párhuzamos szerkezetben áll, tudatosan megkülönböztetve a magasztaló "lelket" és az örvendező "szellemet". Vitatott pont marad, hogy a megkülönböztetés valódi ontológiai trichotómiát (Watchman Nee) vagy funkcionális/retorikai különbségtételt (F.F. Bruce) jelent-e.
+
 ## Tartalom
 
 - [1. Igehelyek és kereszthivatkozások](#1-igehelyek-és-kereszthivatkozások)
@@ -168,7 +170,11 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 ### Alátámasztás
 
+A motívumhoz nincs rögzített kapcsolat.
+
 ## 3. A kereszthivatkozások minősítése
+
+A kereszthivatkozás-minősítés ennél a motívumnál nem készült el.
 
 ## 4. LXX-fordítói döntések
 
@@ -208,13 +214,23 @@ A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (
 
 ## 6. Értelmezés
 
-### PaRDeS keretrendszer
+**Peshat** *(részletesen kifejtve)* — A Szentírás legalább négy helyen, egymástól függetlenül, egyértelmű grammatikai különállásban nevezi meg a *pneumát* és a *pszükhét* (nominális alakban): Pál 1Thessz 5:23-ban három külön, egyenként névelővel ellátott főnévként sorolja fel őket egy imában; a Zsidókhoz írt levél szerzője pedig kifejezetten azt állítja, hogy Isten Igéje képes ezeket "szétválasztani" — ami logikailag feltételezi, hogy a hallgató számára ez a kettő a hétköznapi tapasztalatban összemosódik, és csak Isten Igéje tudja élesen elkülöníteni őket; Mária éneke (Luk 1:46-47) pedig tudatos költői párhuzamban, ugyanabban a grammatikai szerepben állítja egymás mellé a kettőt — nem szinonimaként, hanem megkülönböztetve a magasztaló "lelket" és az örvendező "szellemet". Egy ötödik helyen, 1Kor 2:14-15-ben Pál a *pszükhé*/*pneuma* szavak melléknévi alakjaiból épít fel egy embertípus-megkülönböztetést: a "természet szerinti ember" (ψυχικός) nem fogadja be Isten Szellemének dolgait, míg a "szellemi ember" (πνευματικός) mindent képes megítélni/megvizsgálni — ez a felosztás a korábbi rétegtől eltérően nem az egyén belső szerkezetéről, hanem az Isten Szelleme felé való nyitottság/befogadóképesség szerinti emberi kategorizálásról szól. 1Móz 2:7 ehhez képest más nyelvi regiszterben mozog: nem "szellemet" és "lelket" különít el egymástól, hanem azt írja le, hogy Isten lehelete (amely a későbbi *pneuma* fogalom ószövetségi előzménye) és a porból formált test találkozásából lesz az ember "élő lélekké" (*nefes chajjá*) — tehát itt a "lélek" az egész, eleven emberi személyt jelöli, nem egy harmadik, elkülönült alkotóelemet.
+
+**Remez** — A motívum íve a Genezistől az apostoli levelekig húzódik, és csúcspontja 1Kor 15:45-nél van: Pál itt tudatosan állítja szembe az első Ádámot (aki "élő lélekké", *nefes chajjá* lett) az utolsó Ádámmal, Krisztussal (aki "megelevenítő szellemmé", *pneuma zóopoiun* lett). Ez a szembeállítás nem véletlen szóhasználat — az egész emberi történelem antropológiai íve a "lélek" szintjéről a "szellem" szintjére mutat, a feltámadás által. Az 1Kor 2:14-15-ben ugyanez a páli szerző már a jelen idejű keresztény életre alkalmazza a megkülönböztetést: az, hogy valaki "lélek szerint" vagy "szellem szerint" él-e, gyakorlati, napi tapasztalati kérdéssé válik.
+
+**Drash** *(részletesen kifejtve)* — A Szentírás nem ad egy mereven rendszerezett, filozófiai-metafizikai antropológiai rendszert (nem disszertáció, hanem pásztori/imádságos és apostoli tanító nyelvezet), mégis következetesen fenntartja, hogy az ember nem egynemű: van benne olyan dimenzió, amely közvetlenül Istennel léphet kapcsolatba (*pneuma*), és van, amely az értelmet, érzelmet, akaratot hordozza (*pszükhé*). A gyakorlati tanulság: a megkülönböztetés (discernment) képessége — annak felismerése, hogy egy belső indíttatás honnan ered — nem magától értetődő emberi képesség, hanem olyasmi, amit "Isten Igéje" végez el bennünk (Zsid 4:12), tehát imádságos, Ige-központú önvizsgálatot igényel. **1Kor 2:14-15 ezt a tanítást egy éles gyakorlati megkülönböztetéssé sűríti:** a "természet szerinti ember" számára Isten Szellemének dolgai egyenesen "bolondságok", mert azokat csak szellemi úton lehet megítélni — ez direkt Drash-szintű megerősítése annak, hogy a *pneuma*/*pszükhé* megkülönböztetés nem elméleti kérdés, hanem meghatározza, mit képes valaki egyáltalán befogadni Istentől.
+
+**Sod** *(tömör, fegyelmezett)* — A "megelevenítő szellem" (*pneuma zóopoiun*) kifejezés, amelyet Pál kifejezetten a feltámadott Krisztusra alkalmaz, összekapcsolja az emberi antropológiát a feltámadás misztériumával: az emberi szellem rendeltetése végső soron nem önmagában áll meg, hanem arra mutat, hogy befogadja a feltámadott Krisztus életét — a *pneuma/pszükhé* megkülönböztetés így nem elvont osztályozás, hanem az üdvtörténet iránya felé mutató jel.
+
+⚠️ **Vitatott pont: trichotomizmus vs. dichotomizmus**
+- **Trichotomista hang:** Franz Delitzsch (19. századi luteránus ószövetség-kutató, *A System of Biblical Psychology*) és a modern karizmatikus vonalban **Watchman Nee** (*The Spiritual Man*) amellett érvelnek, hogy a *pneuma* és *pszükhé* valódi, ontológiailag is elkülönülő alkotóelemei az embernek, nem csupán funkcionális/retorikai megkülönböztetés.
+- **Dichotomista hang:** F.F. Bruce (evangéliumi újszövetség-kutató, *Hebrews*, NICNT-kommentár) a Zsid 4:12 "szétválasztás" kifejezését elsősorban retorikai, nem metafizikai megkülönböztetésként olvassa — szerinte a szöveg az Ige átható erejét szemlélteti, nem az emberi alkotóelemek szétbogozását célozza. Az 1Kor 2:14-15 melléknévi (ψυχικός/πνευματικός) szóhasználata mindkét olvasat számára hivatkozási alap lehet — a trichotomisták az itt leírt "szellemi ember" meglétét önálló, aktiválható alkotóelemként értik, míg a dichotomisták/funkcionalisták inkább a Szellem jelenlétével/hiányával jellemzett két emberi állapotként.
 
 ## 7. Módszertan és nyitott kérdések
 
-### Módszertani napló
+✅ A `PaRDeS_motivumok.md` naplóban a "pneuma/pszükhé megkülönböztetés" motívum ezzel a tanulmánnyal **"lezárt/önállóan feldolgozott témaként"** van megjelölve, 5 előfordulással (1Thessz 5:23, Zsid 4:12, 1Móz 2:7⇒1Kor 15:45, Luk 1:46-47, 1Kor 2:14-15) — az ⭐ Emlékeztető küszöb szakasz többé nem ajánlja fel önálló tanulmányra. A motívum jövőbeli, új igehelyeken való előfordulásai továbbra is bekerülnek a kulcsszó-indexbe és a részletes bejegyzésbe, csak a "még feldolgozandó" jelleg szűnik meg.
 
-### Nyitott kérdések és séma-korlátok
+**Korrekció:** a `Lezart_tematikus_tanulmanyok_index.md` fájlban 2026.08.21-én egy korábbi frissítés már megelőlegezte az 1Kor 2:14-15 felvételét (4. előfordulásként), de ez a tényleges tanulmányfájlba és a naplóba akkor nem került be — ez a v3-as frissítés pótolja a hiányzó tartalmat, és egyúttal hozzáadja az időközben (v2-ben) felvett Luk 1:46-47-et is, összesen 5 előfordulásra.
 
 ## Jelmagyarázat
 

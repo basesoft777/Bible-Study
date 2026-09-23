@@ -19,6 +19,8 @@
 
 ## Kivonat
 
+A motívum lexikai azonosságú: a רְפָאִים (*refáim*) szótő és rokon népnevei (זוּזִים, אֵימִים, זַמְזֻמִּים) 33 igehelyen jelölik ugyanazt a kettős jelentésmezőt — prózai kontextusban egy nagytermetű, félig-mitikus népcsoportot (1Móz 14:5-től Dávid koráig), költői kontextusban pedig a Seól erőtlen árnyait (H7496, nyolc hely). A legfontosabb lelet a szó jelentésíve a félelmetes élő népcsoporttól a Seól erőtlen árnyaiig; a tanulmány ezt úgy értelmezi, hogy ami a világ szemében legyőzhetetlennek tűnik, Isten előtt átmeneti és véges. A motívum lexikailag szándékosan elkülönül az 1Móz 6:4-es נְפִילִים/גִּבֹּרִים komplexumtól (`[ID: MENNY-001]`), bár a kettő tudományos vitában (Michael Heiser vs. Gordon Wenham) tematikusan összekapcsolható.
+
 ## Tartalom
 
 - [1. Igehelyek és kereszthivatkozások](#1-igehelyek-és-kereszthivatkozások)
@@ -513,7 +515,26 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 ### Alátámasztás
 
+A motívumhoz nincs rögzített kapcsolat.
+
 ## 3. A kereszthivatkozások minősítése
+
+| Jelölt | Minősítés | Indoklás |
+|---|---|---|
+| Józs 15:8 | ✅ beépítve | H7497 teljes scan, "עֵמֶק רְפָאִים" — azonos mintázat, mint 2Sám 5:18/22 |
+| Józs 17:15 | ✅ beépítve | H7497 teljes scan, "אֶרֶץ הָרְפָאִים" — néptörzs-említés, mint Józs 12:4/13:12 |
+| Józs 18:16 | ✅ beépítve | H7497 teljes scan, "עֵמֶק רְפָאִים" — Benjámin törzsi határleírás |
+| H7496 nyolc előfordulása (Jób 26:5 stb.) | ✅ már a táblázatban, Strong-szám szinten megerősítve | a költői/halott-árnyak-értelem önálló kódja — nem új sor, hanem a meglévő sorok lexikai alátámasztása |
+| 4Móz 13:33 (téves hivatkozás) | ❌ javítva 13:34-re | a נְפִלִים szó a 34. versben áll, nem a 33.-ban — igehely-azonosítási hiba, nem tartalmi kérdés |
+| 1Móz 6:4 (נְפִילִים/גִּבֹּרִים) | ❌ elutasítva, indokolt (elhatárolás) | a רְפָאִים szótő ott nem fordul elő; a kapcsolat kizárólag tematikus — önálló motívum, `[ID: MENNY-001]`, l. `Isten_fiai_Nefilim_Gibborim_kereszthivatkozas_naplo.md` |
+| 5Móz 1:4, 3:20, 3:22, 2:23 (TSK, alacsony szavazat) | ⚠️ nyitva — nem minősítve | Óg/Básán tematikus szomszédság, nem H7497-előfordulás; egyedi minősítést igényelnének, ebben a körben nem történt meg |
+| Józs 13:19, 13:31 (TSK, alacsony szavazat) | ⚠️ nyitva — nem minősítve | ua. — Básán-terület egyéb említései, tematikus szomszédság |
+| Jer 48:1, 48:23 (TSK, alacsony szavazat) | ⚠️ nyitva — nem minősítve | Móáb-próféciák, "Refáim" szó nélkül |
+| Zsolt 105:23, 105:27, 106:22, 78:51 (TSK, alacsony szavazat) | ⚠️ nyitva — nem minősítve | "Khám földje" tematikus szomszédság |
+| 1Krón 4:40 (TSK, alacsony szavazat) | ⚠️ nyitva — nem minősítve | tematikus szomszédság, nem lexikai egyezés |
+| Named teacher (Hagin, Copeland, Roberts, Osborn, Capps, Prince, Wommack stb.) | ❌ gap, indokolt | nincs megbízható, elsődleges forrás a jóváhagyott listáról, amely kifejezetten az 1Móz 14:5 Refáim/Zuzim/Émim szakaszra vagy a Refáim-motívumra hivatkozna; a "giants in the land" téma áttételes, nem dedikált |
+
+A három ✅ igehely (Józs 15:8, 17:15, 18:16) beépítve a study 1. pontjának táblázatába. A H7496/H7497 Strong-szám szerinti megoszlás a 2. pontban rögzítve. A 4Móz 13:33→13:34 hiba minden előfordulási helyen javítva. Az 1Móz 6:4 explicit, kölcsönös elhatárolással kimaradt (l. a testvér-naplót). A 12 alacsony szavazatú TSK-jelölt **nyitva marad** — egyedi minősítést igényelnének, ami ebben a munkamenetben nem történt meg; a `NYITOTT_FELADATOK.md`-be vagy egy jövőbeli célzott körbe valók. A named teacher gap explicit, indokolt.
 
 ## 4. LXX-fordítói döntések
 
@@ -584,13 +605,60 @@ A cella értéke: forrás-hivatkozás (a szerep ma adatosítva), `kézi (2/b)` (
 
 ## 6. Értelmezés
 
-### PaRDeS keretrendszer
+### Peshat
+
+A Szentírás együttesen egy különös kettősséget rajzol ki. Egyfelől a Refáim (és rokon nevű népek: Zuzim, Émim, Zamzummim, részben az Anákim is) történelmi, prózai szinten valóságos, nagy termetű népcsoportként jelennek meg, akik Kánaán és a szomszédos területek (Básán, Moáb, Ammón) korai lakói voltak — 1Móz 14-ben már Ábrám idejében is létező, majd a honfoglalás korára jórészt kihalt/felszívódott nép, akiknek utolsó ismert királya Óg volt. Másfelől ugyanez a szó a bölcsességi és prófétai irodalomban a halottak birodalmának, a Seólnak lakóit jelöli — erőtlen árnyakat, akik nem dicsérik Istent, és akikhez a gonosz sorsa vezet.
+
+**Peshat-kiegészítés — Refáim mint helynév** *(felvéve 2026.08.25)*: a Refáim-völgy (Jeruzsálem közelében) a nép után kapott, továbbélő helynév — ez egy **harmadik nyoma** annak a mintázatnak, hogy az egykor félelmetes nép mára csak névemlékként, földrajzi jelölőként létezik, akárcsak Básán "Refáim földje" elnevezése (Józs 12:4/13:12). A völgy a filiszteusok és Dávid csatáinak (2Sám 5:18,22; 23:13 / 1Krón 11:15; 14:9), ill. Ézsaiásnál egy aratási hasonlatnak (17:5) a színtere — a nép fizikailag egyik esetben sincs jelen, csak a névben.
+
+### Remez
+
+A mintázat, amely a szövegek elhelyezkedéséből kirajzolódik: a "Refáim" szó **útja a félelmetes élő hatalmasságtól a tehetetlen halottig** tükrözi magát a bibliai narratíva ívét. 1Móz 14:5-ben a Refáim még ellenség, akit egy pogány királyi koalíció ver le — Ábrám még nincs is jelen ekkor. 5Móz 3:11-re már csak egyetlen "maradék" (Óg) van belőlük, és annak vaságya emlékmű-kuriózumként említve. 2Sám 21-re már csak "a Rafá szülöttei" (négy egyén) maradnak, akiket Dávid vitézei (immár a valódi גִּבֹּרִים) egyenként győznek le. A költői szövegekben pedig a Refáim már csak emlék — halott árnyak, akik "nem kelnek fel" dicsérni Istent (Zsolt 88:11). **Isten népe előtt a valaha rettegett óriások fokozatosan eltűnnek, majd a halál birodalmába száműzve teljesen erőtlenné válnak.**
+
+### Drash
+
+A tanítás kettős. Egyfelől ez a motívum-komplexum azt mutatja be, hogy **a világ szemében legyőzhetetlennek tűnő hatalom Isten előtt átmeneti és véges** — legyen szó Kedor-Laomer hadjáratáról (aki maga is csak eszköz Isten tervében), Izrael honfoglalásáról (Óg és Szihón legyőzése, 5Móz 3), vagy Dávid győzelmeiről a Refáim-leszármazottak fölött. Másfelől — és ez a mélyebb, Ézs 14:9 által kimondott tanítás — **minden emberi nagyság, bármilyen "óriási", végül ugyanoda kerül**: a Seólba, ahol már nincs különbség hatalmas és jelentéktelen között. A büszkeség és a testi/katonai erő nem menti meg az embert a halandóság sorsától.
+
+### Sod
+
+Fegyelmezetten, csak a fentiekből levezetve: ha a "Refáim" szó egyetlen íve az élő félelmetességtől a halott erőtlenségig vezet, ez a szó maga válik jellé arra, amit a Szentírás egésze tanít a testi erőről — hogy az, ami e világban óriásinak tűnik, Isten szemszögéből mulandó árnyék. Ez rokon azzal a mintázattal, amit a már lezárt "hádész (seól) — a halottak birodalma" tematikus tanulmány rögzített: a halál birodalma kiegyenlítő erő, amely előtt a földi nagyság elenyészik.
+
+### ⚠️ Vitatott pontok
+
+**(a) Refáim = a nefilim/gibborim vérvonal folytatása, vagy önálló, "csupán" nagytermetű nép?**
+Egyes kortárs kutatók (**Michael S. Heiser**, *The Unseen Realm*, *Reversing Hermon* — az "isteni tanács" / divine council iskola képviselője) a Refáim-Anákim-Emim-Zamzummim csoportot tudatosan a Gen 6:4-i nefilim/gibborim vonal folytatásaként olvassák — arra hivatkozva, hogy 4Móz 13:34 kifejezetten "a Nefilimtől" származtatja az Anákimot, és hogy az ugariti rāpiʾūma-hagyomány félig-isteni jelleget hordoz. Ezzel szemben óvatosabb, filológiailag konzervatívabb kommentátorok (**Gordon Wenham**, **Kenneth Mathews**, **Richard Hess**) rámutatnak, hogy a 4Móz 13:34-i kijelentés **a rettegő kémek szubjektív túlzása**, nem a narrátor tárgyilagos állítása — a szöveg nem mondja ki tényként, hogy a vízözön után is léteztek volna hibrid lények, csupán azt rögzíti, mit gondoltak/mondtak a kémek. E két tábor között a projekt korábban már dokumentálta a rokon vitát (lásd "gibborim/nefilim — a hibrid utódok azonosítása" ⚠️ bejegyzés); a Refáim-kapcsolat ugyanezt a vitát örökli tovább, anélkül hogy eldöntené.
+
+**(b) Egyetlen szó két jelentéssel, vagy két homonim gyök?**
+A klasszikus lexikográfia (BDB) két külön gyököt tételez fel; az újabb levantei/ugaritológiai kutatás (**Theodore J. Lewis**, *Cults of the Dead in Ancient Israel and Ugarit*; **Baruch Levine és Jean-Michel de Tarragon**, *Dead Kings and Rephaim*) egységes kulturális-vallási hátteret mutat ki: a Refáim/rāpiʾūma egy közös nyugat-sémi hagyomány, amely az ősi hősi-királyi ősök kultikus tiszteletét kötötte össze az alvilággal — a Biblia ezt a hagyományt polemikusan "üresíti ki" (a tisztelt ősi hősökből erőtlen árnyak lesznek). Ez a kérdés nyitott tudományos vita, nem eldöntött konszenzus.
 
 ## 7. Módszertan és nyitott kérdések
 
-### Módszertani napló
+*A sablon 0. pontja e study elkészültekor (v1, 2026.08.16) még nem létezett — ez a retroaktív pótlás.*
 
-### Nyitott kérdések és séma-korlátok
+1. **`PaRDeS_motivumok.md`** — a motívum bejegyzése (v35, 2026.08.16, kiegészítve v43/v47-tel) ellenőrizve — a teljes lexikai ív már a study saját szövegében szerepel (1Móz 14:5, 15:20; 5Móz 2:10-11,20-21, 3:11,13; Józs 12:4/13:12; 2Sám 21:15-22/1Krón 20:4-8; Jób 26:5; Zsolt 88:11; Péld 2:18,9:18,21:16; Ézs 14:9,26:14,19; a 2026.08.25-i Refáim-völgy kiegészítéssel: 2Sám 5:18,22, 23:13/1Krón 11:15, 14:9/Ézs 17:5).
+2. **Érintett bővített tanulmányok 4. pontja** — `1Moz_14_bovitett.md` (a motívum a study saját szövegtörzsében szerepel, nem 🔗-blokkban; 📎-visszahivatkozás e frissítés részeként pótolva, l. 6. pont).
+3. **"Nyitva maradó szál" jelzések** — nem volt ilyen explicit jelzés az érintett bővített study-ban.
+4. **Kereszthivatkozás-naplók 2/a-2/e auditjai** — nincs kapcsolódó bejegyzés (ezek az eszközök a study elkészülténél még nem léteztek).
+5. **`Kockazat_szures_riport_*.md`** — nincs kapcsolódó bejegyzés.
+
+**Külön elhatárolási forrás:** a `PaRDeS_motivumok.md` naplóban e motívum (`[ID: HODIT-001]`) és az "Isten fiai — Nefilim — Gibborim" motívum (`[ID: MENNY-001]`) elhatárolása több körben (v21, v34, v35, v43) is dokumentálva — l. az 1. pont utáni jegyzetet is.
+
+- [x] **Q1. Szerkezeti teljesség** — mind a 6 kötelező szakasz jelen van (1. Előfordulások, 2. Eredeti nyelvi összevetés, 3. PaRDeS keretrendszer, 4. Kapcsolódás a kutatási sablonhoz, 5. Alkalmazás, 6. Napló-frissítés).
+- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔬 Valódi lexikai kutatás elvégezve 2026.09.10-én, a helyi `TAHOT_kivonat.tsv` közvetlen lekérdezésével (H7497 teljes ÓSZ-scan, 25 előfordulás) és a `Karoli_kereszthivatkozasok.tsv` átnézésével. **Három, eddig dokumentálatlan igehely került elő** (Józs 15:8; 17:15; 18:16), felvéve az 1. pont táblázatába; a H7496/H7497 Strong-szám szerinti megoszlás tisztázva (l. 2. pont); egy igehely-hivatkozási hiba javítva (4Móz 13:33→13:34).
+- [x] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — a nefilim/gibborim (1Móz 6:4) kapcsolat explicit "tematikus, NEM lexikai"-ként jelölve (2. pont és az 1. pont utáni jegyzet).
+- [x] **Q4. Kereszt-motívum szennyeződés kizárva** — friss `grep` a teljes repón (2026.09.10): a study kizárólag a saját (HODIT-001) motívumára vonatkozó leleteket tartalmazza; a nefilim/gibborim anyag most explicit kereszthivatkozásként, nem beolvasztva szerepel.
+- [x] **Q5. Nevesített tanítói szakasz jelen van, vagy explicit hiányjelzéssel zárva** — 5. pont, gap-jelzéssel (nincs dedikált forrás a jóváhagyott listáról).
+- [x] **Q6. Napló-/formázási-/hangnem-fegyelem** — ellenőrizve: nincs inline dátum-tag tartalmi cellában, nincs "Forrás:" bekezdés, nincs első személyű ellenőrzési állítás, nincs magyar fordítás blockquote-ban, nincs olvasót megszólító mondat, nincs réteg-keveredés.
+
+✅ **Ez a lezárás már megtörtént korábban** (`PaRDeS_motivumok.md` v35, 2026.08.16) — a napló rögzíti, hogy ez a motívum "lezárt/önállóan feldolgozott témaként" szerepel, felhasználói explicit kérésre, a rendes ⭐ küszöb elérése előtt. Ez a fájl a naplóban már korábban dokumentált lezárás **tényleges, teljes tartalmát** pótolja a repóban — nem új lezárási lépés.
+
+**2026.09.10-i retroaktív v14-compliance frissítés:** "0. Forrás-összegyűjtés" szakasz pótolva; Minőségi kapu (Q1-Q6) retroaktívan dokumentálva; az 1Móz 6:4-es kereszthivatkozás kiemelve az 1. pont táblázatából egy explicit elhatárolási jegyzetbe; 📎-visszahivatkozás pótolva `1Moz_14_bovitett.md`-be.
+
+**2026.09.10-i, ugyanaznapi második frissítés — valódi lexikai kutatás eredménye:** három új igehely (Józs 15:8; 17:15; 18:16), H7496/H7497 Strong-szám tisztázás, igehely-hivatkozási javítás (4Móz 13:33→13:34, l. is `Isten_fiai_Nefilim_Gibborim_tematikus.md` és a motívumnapló). Tartalmi következtetés a fentieken túl nem változott.
+
+**Teljes jelölt-lista** (F0.5, 2026.09.13-án retroaktívan pótolva): `tematikus_lezart/naplok/Rafaim_kereszthivatkozas_naplo.md`.
+
+„Szent Szellem", kiejtések mindenütt, igehely-rövidítések szóköz nélkül, Károli teljes idézetekhez.
 
 ## Jelmagyarázat
 

@@ -1328,18 +1328,39 @@ def res_tanulmany_torzs(relativ_ut, res):
 
 def res_torzs(m, res, sor):
     """A rés törzse a `forras` mező szerint -- 'tanulmany': a tanulmány/napló
-    jelölői közötti szöveg; 'adat': a generátor saját, adatból vezetett
-    mondata (G16); 'lap' erre a függvényre sosem hívódik (l. res_blokkok_alkalmaz)."""
+    jelölői közötti szöveg (a `tanulmany` oszlop ilyenkor útvonal); 'adat':
+    a `tanulmany` oszlop maga a generátor saját, adatból vezetett mondata
+    (G16) -- a res_forras.tsv-be előre rögzítve, motívumonként eltérő
+    indoklással (l. KIRALY-001, N19); 'lap' erre a függvényre sosem hívódik
+    (l. res_blokkok_alkalmaz)."""
     forras = sor['forras']
     if forras == 'tanulmany':
         return res_tanulmany_torzs(sor['tanulmany'], res)
     if forras == 'adat':
-        if res == 'alatamasztas':
-            sorok_ehhez = [r for r in kapcsolatok_sorok() if r['id'] == m['id']]
-            if not sorok_ehhez:
-                return 'A motívumhoz nincs rögzített kapcsolat.'
-        raise ValueError('nincs adat-alapú render szabály: %s / %s' % (m['id'], res))
+        mondat = sor.get('tanulmany')
+        if not mondat:
+            raise ValueError('nincs adat-alapú render szabály: %s / %s' % (m['id'], res))
+        return mondat
     raise ValueError('ismeretlen forras: %r (%s / %s)' % (forras, m['id'], res))
+
+
+# G11: a 2/b fejléc egységesítése a 2. menetben -- a meglévő lexikonoldalak
+# még a régi fejlécet hordozzák a boundary-keresés pillanatában, ezért a
+# határ-keresés (nem az írás) egyszeri fallback-ként elfogadja a régi
+# szöveget is. Csak a '2b' résnél volt eltérő induló fejléc (R0.2).
+_LEGACY_FEJLEC = {'2b': '### 2/b *(kézi, ha van)*'}
+
+
+def _boundary_index(fajl_szoveg, needle, search_from, res):
+    """(index, ténylegesen megtalált szöveg) -- a hívó a második elem
+    hosszával lépteti tovább a keresés kezdőpontját."""
+    try:
+        return fajl_szoveg.index(needle, search_from), needle
+    except ValueError:
+        legacy = _LEGACY_FEJLEC.get(res)
+        if legacy is not None and legacy != needle:
+            return fajl_szoveg.index(legacy, search_from), legacy
+        raise
 
 
 def res_blokkok_alkalmaz(fajl_szoveg, m):
@@ -1358,15 +1379,14 @@ def res_blokkok_alkalmaz(fajl_szoveg, m):
         search_from = 0
         for kind, ertek in _BOUNDARY_SLOTS:
             if kind == 'lit':
-                needle = ertek
+                i, talalt = _boundary_index(fajl_szoveg, ertek, search_from, None)
             else:
                 masik_sor = sorok.get((m['id'], ertek))
                 if masik_sor is None:
                     raise ValueError('hiányzó res_forras.tsv sor: %s / %s' % (m['id'], ertek))
-                needle = masik_sor['fejlec']
-            i = fajl_szoveg.index(needle, search_from)
+                i, talalt = _boundary_index(fajl_szoveg, masik_sor['fejlec'], search_from, ertek)
             offsets.append(i)
-            search_from = i + len(needle)
+            search_from = i + len(talalt)
 
         slot_idx = _BOUNDARY_SLOTS.index(('res', res))
         fejlec = sor['fejlec']
@@ -1586,6 +1606,21 @@ def epit_uj_fajl(m, blokkok):
     }
 
 
+def _generalt_fejlec_sor(m):
+    """R2.5: a lexikonoldal első sora elé kerülő, fájl-szintű gépi jelölés --
+    nem tévesztendő össze a 10 blokk saját GENERÁLT-KEZDET/VÉGE jelölésével."""
+    return '<!-- GENERÁLT: general.py --cel lexikon | rések: %s -->' % (m.get('forras_study') or '')
+
+
+def _generalt_fejlec_alkalmaz(szoveg, m):
+    fejlec = _generalt_fejlec_sor(m)
+    if szoveg.startswith('<!-- GENERÁLT: general.py --cel lexikon'):
+        sor_vege = szoveg.index('\n')
+        marad = szoveg[sor_vege + 1:].lstrip('\n')
+        return fejlec + '\n\n' + marad
+    return fejlec + '\n\n' + szoveg
+
+
 _TS_LEVAGVA_RE = re.compile(r'\| ts=\S+ -->$')
 
 
@@ -1642,10 +1677,12 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
                 meglevo = f.read()
             uj_szoveg = frissit_meglevo_fajlt(meglevo, m, blokkok)
             uj_szoveg = res_blokkok_alkalmaz(uj_szoveg, m)
+            uj_szoveg = _generalt_fejlec_alkalmaz(uj_szoveg, m)
             allapot = 'változatlan' if uj_szoveg == meglevo else 'frissítve'
         else:
             uj_szoveg = epit_uj_fajl(m, blokkok)
             uj_szoveg = res_blokkok_alkalmaz(uj_szoveg, m)
+            uj_szoveg = _generalt_fejlec_alkalmaz(uj_szoveg, m)
             allapot = 'új fájl'
 
         if args.ellenoriz:

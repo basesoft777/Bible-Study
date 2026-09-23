@@ -1,8 +1,10 @@
+<!-- GENERÁLT: general.py --cel lexikon | rések: tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md -->
+
 # 📖 HAMART-001 — A bűn következményeinek gyűrűzése — átok, föld és romlás
 
 ## Kivonat *(kézi)*
 
-*Kézzel írandó — 3-5 mondatos prózai kivonat: mi a motívum, milyen azonosság-típusú, hány igehelyen, mi a legfontosabb lexikai lelet.*
+A motívum strukturális azonosságú: a genezisi átok-lánc (*arar → adamá → itzávón → chattát → chámász → sáchat*) négy szakaszon (1Móz 3, 4, 6:1-8, 6:9-22) át íveli a következmény terjedését az egyénitől az egyetemesig, összesen 52 igehelyen az ÓSZ és ÚSZ kánoni kiterjesztésével együtt. A legfontosabb lelet 1Móz 5:29, a lánc szerkezeti forgópontja, ahol Lámek egyetlen mondatban idézi vissza mind a három kulcsszót (*itzávón* + *adamá* + *arar*), valamint a *sáchat* ige háromszori igetörzsváltása (6:11-13,17), amely nyelvtanilag mutatja, hogy Isten ítélete ugyanaz a cselekvés, amit az ember már elvégzett önmagán. A lánc újszövetségi feloldása Gal 3:13: Krisztus nem eltörli az átkot, hanem magára veszi — ugyanazzal a görög szóval (ἐπικατάρατος), amellyel a LXX az 1Móz 3:17-et fordítja.
 
 ## Tartalomjegyzék
 
@@ -623,13 +625,65 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#szocikkek -->
 
-### 2/b *(kézi, ha van)*
+### 2/b. Kiegészítő szótári adatok *(kézi)*
 
-*Kézzel írandó, ha van.*
+Nincs kiegészítő szótári adat.
 
 ### Miért fontos ez a lelet *(kézi)*
 
-*Kézzel írandó.*
+### אָרַר — *arar* (H0779): az átok mint kimondott, jogi aktus
+
+A BDB szerint a gyök alapjelentése "curse", és a szó jellemző alakja az **אָרוּר** (*árúr*) passzív participium, amely "chiefly as exclamation" áll, rendszerint a בָּרוּךְ (*bárúkh*, "áldott") ellentétpárjaként. A Genezisben öt ilyen kimondás található: 3:14 (kígyó), 3:17 (föld), 4:11 (Kain), 9:25 (Kánaán) — és ezektől eltérő, **Pi'él** alakban 5:29 (a föld, "melyet megátkozott az Úr").
+
+A négy passzív participiumos kimondás sorrendje mutatja a gyűrűzést: az átok tárgya **kígyó → föld → ember → leszármazott**. A 3:17-ben a föld átkoztatik meg "temiattad" (בַּעֲבוּרֶךָ, *ba'avúrekhá*) — az ember tette olyasmire száll át, ami nem ő. A 4:11-ben viszont már a személy az átok alanya, **a föld felől** (מִן־הָאֲדָמָה, *min-há'adamá*). A két vers ugyanazt a két szót használja felcserélt szereposztásban: ami 3:17-ben a megátkozott, az 4:11-ben az átok forrása.
+
+### אֲדָמָה — *adamá* (H0127): a hordozó
+
+A négy kiinduló szakasz Strong-szám-halmazainak metszetében ez az **egyetlen** tartalmi szó. A BDB első jelentése "ground (as tilled, yielding sustenance)", és a szócikk saját forráslistája külön megnevezi a Gen 3:17, 23; 4:2-3, 12; 5:29; 8:21 sorozatot. A motívum szempontjából ez azt jelenti: a bűn következménye nem elvont állapot, hanem **egy konkrét anyagi közeg megváltozása**, amely az embert eltartja. Az ember a földből van (3:19, BDB sense 3), a földet míveli (4:2), a föld megtagadja termőerejét (4:12), a földről töröltetik el (6:7).
+
+### עִצָּבוֹן — *itzávón* (H6093): a háromszavas kapocs
+
+Ez a főnév a **teljes Ószövetségben mindössze háromszor** fordul elő: 1Móz 3:16 (עִצְּבוֹנֵךְ, *itzevónékh*, az asszonyra), 1Móz 3:17 (עִצָּבוֹן, *itzávón*, az emberre) és 1Móz 5:29 (עִצְּבוֹן יָדֵינוּ, *itzevón jádénú*, "kezünk fáradozása"). A BDB a szócikk teljes terjedelmében ezt a három helyet sorolja fel, a 3:17-et és az 5:29-et "both of agriculture" megjegyzéssel.
+
+Az 5:29 nem általánosságban emlékezik a bűnbeesésre: **három kulcsszót idéz vissza egyetlen mondatban** — *itzávón* + *adamá* + *arar* —, vagyis pontosan azt a hármast, amely a 3:17 átok-mondatát alkotja. Lámek Noé névadásakor tehát nem új témát nyit, hanem a 3:17 kimondását nevezi meg mint azt a terhet, amely alól vigasztalást vár. A genealógia közepén álló, látszólag mellékes névmagyarázat így a motívum belső forgópontja, és közvetlenül átvezet a 6. fejezetbe.
+
+### שָׁחַת — *sáchat* (H7843): a tükör-ige
+
+Az 1Móz 6:11-17 öt előfordulása három különböző igetörzsben áll, és éppen a törzsváltás hordozza a teológiai állítást:
+
+> וַתִּשָּׁחֵת הָאָרֶץ לִפְנֵי הָאֱלֹהִים (6:11, Nif'ál)
+
+"És a föld megromlott Isten előtt" (Károli nyomán; *vattissáchét há'árec lifné há'Elóhím*) — a föld állapota.
+
+> כִּי־הִשְׁחִית כָּל־בָּשָׂר אֶת־דַּרְכּוֹ עַל־הָאָרֶץ (6:12, Hif'íl)
+
+"Mert minden test megrontotta vala az ő útát a földön" (Károli; *ki-hishchít kol-bászár et-darkó al-há'árec*) — nem baleset, hanem cselekvés: aktív, okozó igetörzs.
+
+> וְהִנְנִי מַשְׁחִיתָם אֶת־הָאָרֶץ (6:13, Hif'íl participium)
+
+"És ímé elvesztem őket a földdel egybe" (Károli; *vehinní mashchítám et-há'árec*) — **ugyanaz az igetörzs, Istennel mint alannyal**.
+
+A BDB a Nif'álnál kifejezetten "be corrupted, corrupt, in morals and rel., of earth" jelentést ad a 6:11-12-re, a Pi'élnél pedig "spoil, ruin ... destroy" jelentést a 6:17-re és a 9:11-re. A magyar fordítás kényszerűen két különböző szót használ ("megromlott" / "elvesztem"), és ezzel elfedi azt, amit a héber szöveg egyetlen igével mond ki: **Isten ítélete ugyanaz a cselekvés, amit az ember már elvégzett önmagán.** A gyűrűzés itt éri el a záró pontját — a következmény nem külső büntetésként érkezik, hanem az elkövetett cselekvés visszafordításaként.
+
+Ugyanez a szerkezet a 9:11 és 9:15 tagadásában zárul le: a szövetség pontosan azt az igét (*lesachét*, Pi'él infinitivus) zárja ki a jövőből, amellyel az ítélet megtörtént.
+
+### חָמָס — *chámász* (H2555): a tartalom
+
+A BDB "violence, wrong" jelentést ad, és a szócikk maga hozza össze a Gen 6:11,13-at az Ez 7:23; 8:17; 28:16 és Zsolt 74:20 helyekkel. A közös elem nem pusztán a szó, hanem a **kollokáció**: a מָלֵא (*málé*, H4390, "megtelni") ige a *chámász*-szal azonos versben mindössze nyolc helyen áll a teljes Ószövetségben — 1Móz 6:11, 1Móz 6:13, Zsolt 74:20, Ez 7:23, Ez 8:17, Ez 28:16, Mik 6:12, Sof 1:9. Ezékiel kétszer (7:23, 8:17) szerkezeti mását adja a genezisi mondatnak, immár Júdára alkalmazva — az özönvíz előtti diagnózis prófétai újramondása.
+
+Egy második, ettől független kollokáció is kirajzolódik: a שָׁמַע (*sáma*, H8085, "hallani") ige a *chámász*-szal négy versben áll együtt — Jer 6:7, Jer 51:46, Ézs 60:18 és Hab 1:2. Az első kettő állító alakban ("erőszakosság hallatszik benne", "erőszakosság van a földön"), a harmadik tagadva ("nem hallatik többé erőszaktétel földeden"), a negyedik pedig megfordítva: nem a föld hallatja az erőszakot, hanem a próféta kiált miatta, és Isten az, aki "nem hallgat meg" (Károli). A négy vers együtt a Genezis-diagnózis prófétai és eszkatológiai továbbvitelét adja.
+
+A **Jón 3:8** ezen belül egyedülálló: Ninive lakói "térjenek meg... az erőszakosságból (*chámász*), a mely az ő kezökben van" (Károli), és a már kimondott pusztulás elmarad. Ez a *chámász*-előfordulások közül az egyetlen, ahol a folyamat **visszafordul**.
+
+### A görög oldal
+
+A LXX a 1Móz 3:17-et ἐπικατάρατος ἡ γῆ (*epikatáratosz hé gé*) alakban adja vissza, a 3:18-at pedig ἀκάνθας καὶ τριβόλους (*akanthász kai tribolúsz*) szavakkal. A 6:11-13,17 *sáchat*-alakjait a φθείρω (*ftheiró*, G5351) és καταφθείρω (*kataftheiró*, G2704) igékkel fordítja — ugyanabból a szócsaládból, amelyből a Róm 8:21 φθορά (*fthorá*) főneve és a Jel 11:18 διαφθείρω (*diaftheiró*) igéje való.
+
+Ez teszi lehetővé, hogy a motívum görög nyelven is felismerhető maradjon:
+
+- a **Zsid 6:8** három szót (γῆ, ἄκανθα, τρίβολος) és egy szócsaládot (κατάρα) vesz át a LXX 1Móz 3:17-18-ból;
+- a **Jel 11:18** a 6:12-13 kettős szerkezetét adja vissza egyetlen mondatban, ugyanazzal az igével mindkét oldalon, a **Jel 19:2** pedig a LXX 6:11 ige+tárgy szerkezetét (φθείρω + γῆ) — a szócsalád a γῆ-vel a teljes Újszövetségben csak ebben a két versben áll együtt;
+- a **Gal 3:13** az 5Móz 21:23-at idézve elhagyja a LXX ott álló κεκατηραμένος (*kekatéraménosz*) szavát, és az ἐπικατάρατος-szal helyettesíti — azzal a szóval, amely az 5Móz 27:26-ban (a 3:10 idézete) és a 1Móz 3:17-ben is áll.
 
 ## 3. LXX-fordítói döntések
 
@@ -921,7 +975,97 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 ### Minősítés *(kézi)*
 
-*Kézzel írandó: független megerősítés / új találat / nem releváns.*
+### 4/a. A lexikai gerinc jelöltjei
+
+| Igehely / csoport | Forrás | Döntés | Indoklás |
+|---|---|---|---|
+| 1Móz 3:14, 3:16, 3:17, 3:18, 3:19, 3:23 | H0779, H6093, H0127 scan | ✅ BEÉPÍTVE | A motívum kiinduló szakasza; három kulcsszó együtt, egyetlen ítélet-mondatban |
+| 1Móz 4:2-3, 4:7, 4:10-11, 4:12, 4:14 | H0127, H2403, H0779 scan | ✅ BEÉPÍTVE | A 3:17 két kulcsszava (*arar* + *adamá*) felcserélt szereposztásban tér vissza; a *chattát* első bibliai előfordulása |
+| **1Móz 5:29** | H6093 teljes scan (3 találat) | ✅ BEÉPÍTVE — **új lelet** | Mindhárom kulcsszót egyetlen mondatban idézi vissza (*itzávón* + *adamá* + *arar*); a *itzávón* összesen 3× szerepel az ÓSZ-ben, és mindhárom hely ehhez a motívumhoz tartozik. TSK is jelzi (1Móz 3:17 → 1Móz 5:29, 12 szavazat), de a háromszavas egybeesés nem volt dokumentálva |
+| 1Móz 6:5, 6:7 | H7451, H0127 scan | ✅ BEÉPÍTVE | A diagnózis belsővé és egyetemessé válása; az *adamá* visszatérése |
+| 1Móz 6:11, 6:12, 6:13, 6:17 | H7843, H2555, H4390 scan | ✅ BEÉPÍTVE | A *sáchat* három igetörzsben (Nif'ál/Hif'íl/Pi'él), az emberi és az isteni cselekvés azonos igével; a *málé*+*chámász* kollokáció |
+| **1Móz 8:21** | H7043, H0127, H7451 kontroll-scan | ✅ BEÉPÍTVE — **új lelet** | Az ígéret a *kalal* (H7043) igét tagadja, NEM a 3:17 *arar*-t (H0779) — a különbség a motívum lezáratlanságát mutatja. A napló korábban "1Móz 3:17→1Móz 8:21 (átok)" formában rögzítette a kapcsolatot, az igék eltérésének megnevezése nélkül |
+| 1Móz 9:11, 9:15 | H7843 scan | ✅ BEÉPÍTVE | A szövetség pontosan a 6:17 igéjét (Pi'él *lesachét*) zárja ki a jövőből |
+| 1Móz 9:25 | H0779 scan | ✅ BEÉPÍTVE | Az *arar*-lánc ötödik genezisi tagja, az özönvíz után. **Korlátozás:** kizárólag lexikai tagként, a Khám-vétek értelmezése nélkül — a "Kánaán-átok" a naplóban önálló motívum |
+| 1Móz 12:3 | H0779, H7043, H0127 scan | ✅ BEÉPÍTVE | Ugyanaz az ige és ugyanaz a főnév (*adamá*), megfordított előjellel — a lánc szerkezeti lezárása |
+| 5Móz 27:15-26 (12 vers) | H0779 scan | ✅ BEÉPÍTVE (egy blokként) | A genezisi kimondás-formula törvényi rendszerré szervezve; a 27:26 Pál Gal 3:10 idézetének forrása |
+| 5Móz 28:16-19 (4 vers) | H0779 scan | ✅ BEÉPÍTVE (egy blokként) | Négy *árúr* a 28:3-6 négy *bárúkh* tükörképeként |
+| Jer 17:5 | H0779 scan | ✅ BEÉPÍTVE | A formula egyéni bizalmi döntésre alkalmazva — az átok-kimondás prófétai továbbélése |
+| **Zsolt 14:1 / Zsolt 53:2** | H7843 Hif'íl-alak-scan | ✅ BEÉPÍTVE — **új lelet** | Pontosan a 1Móz 6:12 Hif'íl alakja (*hishchítú*), az emberiség egyetemes romlásának diagnózisaként. TSK (1Móz 6:12 → Zsolt 53:2-3, 10 szavazat) és Károli-KH (Gen.6.12 → Zsolt 14,2-3) függetlenül is megerősíti |
+| Ez 7:23, Ez 8:17, Ez 28:16, Zsolt 74:20, Mik 6:12, Sof 1:9 | H4390+H2555 kollokáció-scan | ✅ BEÉPÍTVE | A 1Móz 6:11,13 szerkezetének hat további előfordulása a teljes ÓSZ-ben. Ez 8:17-et TSK is jelzi (9 szavazat). A BDB szócikk maga is ezeket sorolja fel a Gen 6:11,13 mellé |
+| Jer 6:7, Jer 51:46, Ézs 60:18, Hab 1:2 | H8085+H2555 kollokáció-scan | ✅ BEÉPÍTVE | Második, önálló kollokáció ("hallatszik az erőszak"), a teljes ÓSZ-ben négy hely. Jer 6:7-et és Hab 1:2-t TSK is jelzi (3, ill. 3 szavazat) |
+| Hab 2:8, Hab 2:17 | H2555 scan + TSK | ✅ BEÉPÍTVE | Az erőszak elkövetőjére való visszafordulása explicit elvként kimondva — a motívum Drash-magva. TSK is jelzi (6, ill. 3 szavazat) |
+| **Jón 3:8** | H2555 teljes scan | ✅ BEÉPÍTVE — **új lelet** | Az egyetlen *chámász*-előfordulás, ahol egy nép megtérése miatt a már kimondott pusztulás elmarad |
+| **Zsid 6:7-8** | G2671 scan + LXX-egyeztetés | ✅ BEÉPÍTVE — **új lelet** | Háromszavas lexikai egyezés a LXX 1Móz 3:17-18-cal (γῆ + ἄκανθα + τρίβολος) a κατάρα-szócsaláddal. TSK is jelzi (1Móz 3:18 → Zsid 6:8, 3 szavazat), de a háromszavas LXX-egybeesés nem volt dokumentálva |
+| Gal 3:10 | G1944 scan + LXX 5Móz 27:26 | ✅ BEÉPÍTVE | Pál az 5Móz 27:26-ot idézi, ahol a LXX ugyanazt a szót használja, mint a 1Móz 3:17-ben. TSK is jelzi (1Móz 4:11 → Gal 3:10, 4 szavazat) |
+| **Gal 3:13** | G1944/G2672 scan + LXX 5Móz 21:23 | ✅ BEÉPÍTVE — **új lelet** | A LXX 5Móz 21:23 κεκατηραμένος (G2672) szava helyett Pál ἐπικατάρατος-t (G1944) ír — a két idézetet a Gen 3:17 LXX-szavára hangolja |
+| Róm 8:20-22 | G5356/G3153 scan + TSK | ✅ BEÉPÍTVE | A teremtett világ még mindig a 3:17 átok alatt; a φθορά ugyanabból a szócsaládból való, mint a LXX 6:11-13 igéi. TSK 13 szavazat |
+| **Jel 11:18** | G1311 scan | ✅ BEÉPÍTVE — **új lelet** | διαφθεῖραι τοὺς διαφθείροντας τὴν γῆν — a 6:12-13 kettős szerkezete görögül, ugyanazzal az igével mindkét oldalon |
+| **Jel 19:2** | G5351 scan + φθείρω-család×G1093 kollokáció-scan | ✅ BEÉPÍTVE — **új lelet** | ἔφθειρεν τὴν γῆν — ugyanaz az ige+tárgy szerkezet, mint a LXX 1Móz 6:11-ben (ἐφθάρη … ἡ γῆ). A φθείρω-család a γῆ-vel a teljes ÚSZ-ben csak két versben áll együtt: Jel 11:18 és Jel 19:2 |
+
+### 4/b. TSK- és Károli-eredetű jelöltek, amelyek a táblázatban még nem szerepeltek
+
+*A Minőségi kapu Q2 előírása szerint minden ÚJ igehelyre mutató kereszthivatkozás saját minősítő sort kap.*
+
+| Igehely | Forrás (Votes) | Döntés | Indoklás |
+|---|---|---|---|
+| Ézs 24:5-6 | TSK 1Móz 3:17 (10) | ✅ BEÉPÍTVE — **tematikus, nem lexikai** | A föld/átok/lakosok hármas szerkezete azonos, de az "átok" szó itt אָלָה (*álá*, H0423), nem *arar* — TAHOT-tal ellenőrizve |
+| Hós 4:1-3 | TSK 1Móz 6:11 (6), 6:13 (8) | ✅ BEÉPÍTVE — **tematikus, nem lexikai** | A lakosok bűne és a föld sorvadása közti okozati kapcsolat; a *chámász* szó nem szerepel benne (H2555-scan alapján) |
+| Mt 15:19 / Mk 7:21-23 | TSK 1Móz 6:5 (43, 30); Károli-KH is | ✅ BEÉPÍTVE — **tematikus, nem lexikai** | A 6:5 szív-diagnózisának újszövetségi megismétlése |
+| 2Pét 3:6-7, 3:10, 3:12 | TSK 1Móz 6:13 (4, 5) | ✅ BEÉPÍTVE — **tematikus, nem lexikai** | A 6:13 ítélet-logikájának eszkatológiai kiterjesztése |
+| Jer 17:9 | TSK 1Móz 6:5 (25); Károli-KH is | ❌ ELUTASÍTVA | "Csalárdabb a szív mindennél" — a szív romlottsága a **"jetzer — a szív romlott hajlama"** motívum tárgya, amely a naplóban önálló tételként szerepel. Kereszt-motívum szennyeződés elkerülése (Q4) |
+| Jer 4:14 | TSK 1Móz 6:5 (26) | ❌ ELUTASÍTVA | Ugyanaz az indok, mint Jer 17:9-nél |
+| Préd 7:29, Préd 9:3 | TSK 1Móz 6:5 (20, 21) | ❌ ELUTASÍTVA | Antropológiai általánosítás az emberi szívről; nem a következmény-terjedésről |
+| Róm 1:28, 1:31 | TSK 1Móz 6:5 (33) | ❌ ELUTASÍTVA | A "kivetett elme" páli katalógusa — hamartológiai rokon, de sem lexikai kapocs, sem a terjedés-szerkezet nincs meg benne |
+| Ef 2:1, 2:3 | TSK 1Móz 6:5 (25) | ❌ ELUTASÍTVA | "Természet szerint a harag fiai" — az öröklött bűnösség kérdése, amelyet a study explicit módon NEM dönt el (l. ⚠️ Vitatott pontok) |
+| Tit 3:3 | TSK 1Móz 6:5 (15) | ❌ ELUTASÍTVA | Megtérés előtti életmód-katalógus; nincs lexikai vagy szerkezeti kapocs |
+| Jób 5:6-7, Jób 14:1, Jób 21:17, Préd 1:2-3, 1:13-14, 2:11, 2:17, 2:22-23, 5:17, Zsolt 90:7,9, Zsolt 127:2 | TSK 1Móz 3:17 (1-8) | ❌ ELUTASÍTVA (csoportosan) | Az emberi fáradság/hiábavalóság bölcsességirodalmi toposza. A Zsolt 127:2 kivételesen tartalmazza a rokon H6089 עֶצֶב szót, de nem a H6093 *itzávón*-t — a három *itzávón*-hely a Genezisre korlátozódik |
+| Luk 19:22, Mt 25:26-27, Mt 22:12, Mt 25:45, 1Sám 15:23-24, Jer 7:23-24, Róm 3:19 | TSK 1Móz 3:17 (1-3) | ❌ ELUTASÍTVA (csoportosan) | Engedetlenség/számonkérés általános témája; nincs kapocs a föld-átok szerkezethez |
+| Zsolt 104:2, 104:14-15, Zsolt 90:3, Jób 1:21, Róm 14:2 | TSK 1Móz 3:18 (2-3) | ❌ ELUTASÍTVA (csoportosan) | A "mezőnek fűve" táplálék-motívuma; nem a tövis-átok |
+| Péld 22:5, Péld 24:31, Ézs 5:6, Ézs 7:23, Ézs 32:13, Jer 4:3, Jer 12:13, Józs 23:13, Mt 13:7, Jób 5:5, Jób 31:40 | TSK 1Móz 3:18 (2-4) | ❌ ELUTASÍTVA (csoportosan) | Tövis/bogáncs mint kép, de **nem** a LXX 1Móz 3:18 kettős szókapcsolatával (ἄκανθα + τρίβολος együtt) — ezt kizárólag a Zsid 6:8 hozza. A Jób 31:40 héberül más szavakat használt (חוֹחַ, בָּאְשָׁה) |
+| Jób 16:18, Jób 31:38 | TSK 1Móz 4:11 (4, 2) | ⚠️ NYITVA HAGYVA | "Föld, ne fedezd be véremet" (16:18) és "ha földem ellenem kiált" (31:38) — a föld mint erkölcsi tanú, ami a 4:10-11 szerkezetére megy vissza. Ez azonban a naplóban önálló motívum ("kiáltó vér vs. megbékélő vér"), ezért nem került át. Ha az a motívum valaha tematikus feldolgozást kap, ez a két igehely oda tartozik |
+| 5Móz 29:19, 29:21, 5Móz 28:15, 28:20, 28:23-24, 28:65-66, 3Móz 26:20, 26:36 | TSK 1Móz 4:11, 4:12 (2-4) | ❌ ELUTASÍTVA (csoportosan) | Szövetségi átok-szakaszok, amelyek **nem** az *arar* igét használják (a H0779-scan szerint az 5Móz-ből csak a 27:15-26 és 28:16-19 verssorok tartalmazzák) |
+| Ézs 26:21, Jel 12:16 | TSK 1Móz 4:11 (2) | ❌ ELUTASÍTVA | A föld mint vért befogadó/kivető szereplő — l. a Jób 16:18-nál írt indoklást, ugyanaz a másik motívum |
+| Hós 9:17, Zsolt 109:10, Jer 20:3-4 | TSK 1Móz 4:12 (5, 2, 2) | ❌ ELUTASÍTVA | Bujdosás/száműzetés mint büntetés; a *adamá* kulcsszó nélkül |
+| Zsolt 11:5, Zsolt 55:9, Zsolt 140:11, Jer 6:7, Hab 1:2, Ez 28:16, Ézs 60:18 | TSK 1Móz 6:11 (3-4) | részben ✅, részben ❌ | Ez 28:16, Ézs 60:18, Jer 6:7, Hab 1:2 — ✅ BEÉPÍTVE (kollokáció-scan, l. 4/a). Zsolt 11:5, 55:9, 140:11 — ❌ ELUTASÍTVA: *chámász* általános használatban, kollokáció nélkül |
+| 1Móz 10:9, 1Móz 13:13 | TSK 1Móz 6:11 (2) | ❌ ELUTASÍTVA | Nimród, ill. Sodoma — a naplóban mindkettő önálló motívum ("vadász gyök", "Sodoma bűnössége") |
+| Luk 1:6, Róm 2:13, Róm 3:19, 2Krón 34:27 | TSK 1Móz 6:11 (1-5) | ❌ ELUTASÍTVA | Az "Isten előtt" (לִפְנֵי) kifejezés kapcsán felhozott helyek; nem a motívumhoz |
+| Péld 15:3, 1Móz 18:21, Zsolt 33:13-14, Jób 22:15,17, Jób 33:27, Luk 3:6 | TSK 1Móz 6:12 (2-4) | ❌ ELUTASÍTVA (csoportosan) | Az "Isten látja/letekint" toposza, ill. a "minden test" kifejezés — nem a *sáchat* szerkezethez |
+| 1Pét 3:19-20, 2Pét 2:5, Zsid 11:7 | TSK 1Móz 6:12, 6:13 (3, 4, 2) | ❌ ELUTASÍTVA | Noé alakja és az özönvíz-narratíva újszövetségi felidézése; a **motívum** (az átok/romlás terjedése) nem tárgyuk |
+| Ez 7:2, 7:6, Ámós 8:2, Jer 51:13 | TSK 1Móz 6:13 (6, 4, 2) | ❌ ELUTASÍTVA | A "vég elérkezett" (קֵץ) formula — valódi prófétai visszautalás lehet a 6:13-ra, de **más kulcsszóval**; önálló motívum-jelöltként érdemes lehet külön vizsgálatra, a jelen gerinchez nem tartozik |
+| Jer 4:23, 4:28 | TSK 1Móz 6:13 (2) | ❌ ELUTASÍTVA | A Jer 4:23 a naplóban már rögzített **"תהו/בהו — teremtés-visszavonás"** motívum (`[ID: TEREMT-002]`) tagja — kereszt-motívum szennyeződés elkerülése (Q4) |
+| 1Pét 4:7 | TSK 1Móz 6:13 (7) | ❌ ELUTASÍTVA | "Mindeneknek vége elközelgetett" — eszkatológiai formula, l. az Ez 7:2-nél írt indoklást |
+| 1Móz 8:21 | TSK 1Móz 6:5 (18); Károli-KH is | ✅ BEÉPÍTVE | Már a lexikai scanből is bekerült, l. 4/a — a TSK/Károli megerősítésként dokumentálva |
+
+### 4/c. A gerinc-scanek elutasított előfordulásai
+
+| Csoport | Szám | Döntés | Indoklás |
+|---|---|---|---|
+| **H0779 (*arar*)** — 1Móz 27:29, 49:7; 2Móz 22:28; 4Móz 5:18,19,22,24,27; 4Móz 22:6, 22:12, 23:7, 24:9; Józs 6:26, 9:23; Bír 5:23, 21:18; 1Sám 14:24, 14:28, 26:19; 2Kir 9:34; Jób 3:8; Zsolt 119:21; Jer 11:3, 20:14, 20:15, 48:10; Mal 1:14, 2:2, 3:9 | 29 igehely | ❌ ELUTASÍTVA | Az *arar* itt rituális, jogi vagy indulati átok-kimondás (áldás-átok formula pátriárkai áldásban, keserű víz próbája, Bálám, eskü, önátok, prófétai feddés) — **nincs meg a következmény-terjedés szerkezete**: nem egy elkövetett tett hatása száll át egy harmadik közegre. A *arar* önmagában nem a motívum, csak annak egyik eszköze; a motívum a *arar* + *adamá* együttállásán és a fokozási soron áll |
+| **H2555 (*chámász*)** — a 12 beépített igehelyen kívüli 47 | 47 igehely | ❌ ELUTASÍTVA | *chámász* általános használatban ("erőszakos ember", "hamis tanú", "erőszakkal szerzett bor" stb.), a *málé* vagy *sáma* kollokáció nélkül. Külön megjegyzés a két genezisi helyről: **1Móz 16:5** (Szárai panasza: "bántódásom van miattad") és **1Móz 49:5** ("erőszak eszközei az ő fegyverök") — genezisi *chámász*-előfordulások, de az elsőben személyközi sérelem, a másodikban fegyverjelző; egyik sem a föld megtelésének szerkezete |
+| **H7843 (*sáchat*)** — a 8 beépített igehelyen kívüli 127 | 127 igehely | ❌ ELUTASÍTVA | A *sáchat* az ÓSZ egyik leggyakoribb "elpusztít/elront" igéje (városok, szőlő, edény, nép elpusztítása); a motívumhoz kizárólag az a használat tartozik, ahol az **erkölcsi megromlás** és az **ítélet** ugyanazzal az igével áll |
+| **H7843 Hif'íl-alakok** — 5Móz 4:25, Bír 2:19, Sof 3:7 | 3 igehely | ⚠️ NYITVA HAGYVA | Ugyanaz a Hif'íl képzés és ugyanaz az erkölcsi "megrontani" jelentés, mint a 1Móz 6:12-ben, de mindhárom **egy szövetséges nép bálványimádására** vonatkozik, nem az egyetemes "minden test" szintre. Lehetséges önálló motívum ("a szövetséges nép megrontja magát"), külön vizsgálatot érdemel; a jelen study-ba nem került be, hogy a Zsolt 14:1/53:2 egyetemes-diagnózis jellege ne híguljon |
+| **H7843 Hif'íl-alakok** — 2Krón 34:11, Ézs 37:12, Jer 36:29, 49:9, 51:20, Dán 8:24 | 6 igehely | ❌ ELUTASÍTVA | Fizikai pusztítás (épületek, országok, szőlő), nem erkölcsi megromlás |
+| **H0127 (*adamá*)** — a beépítetteken kívül | ~195 igehely | ❌ ELUTASÍTVA | Túl gyakori köznyelvi főnév ("termőföld, ország") ahhoz, hogy önmagában lexikai kapcsolatot jelentsen; a motívumhoz csak a *arar*/*itzávón*/*sáchat* melletti együttállásban tartozik. **Genezisen belüli határeset:** 1Móz 6:1 ("elkezdtek megsokasodni a föld színén"), 6:20, 8:8, 8:13, 9:2, 9:20 — semleges, narratív használat, nem az átok-szerkezetben |
+| **H2403 (*chattát*)** — a 1Móz 4:7-en kívüli 270 | 270 igehely | ❌ ELUTASÍTVA | A szó túlnyomó részt a levitikus bűnáldozat-rendszer technikai terminusa (BDB: "sin-offering"); a motívumhoz kizárólag az első, Genezis 4:7-beli, személyesített használat tartozik |
+| **G2672 (*kataraomai*)** — Mt 5:44, Mt 25:41, Mk 11:21, Luk 6:28, Róm 12:14, Jak 3:9 | 6 igehely | ❌ ELUTASÍTVA | Emberi átkozódás (ellenség átkozása, fügefa, embertárs) — a Mt 25:41 ("Távozzatok tőlem, ti átkozottak") eszkatológiai ítélet-formula, de nem a genezisi lánc folytatása |
+| **G2671 (*katara*)** — Jak 3:10, 2Pét 2:14 | 2 igehely | ❌ ELUTASÍTVA | Jak 3:10 emberi beszéd (áldás és átok ugyanabból a szájból); 2Pét 2:14 "átok gyermekei" — jellemzés, nem a motívum |
+| **G5351 (*ftheiró*)** — 1Kor 3:17, 15:33, 2Kor 7:2, 11:3, Ef 4:22, 2Pét 2:12, Júd 1:10 | 7 igehely | ❌ ELUTASÍTVA | A szócsalád tagjai, de nem a 1Móz 6:11-13 szerkezetében (templom megrontása, jó erkölcs megrontása, elme megrontása) |
+| **G5356 (*fthorá*)** — 1Kor 15:42, 15:50, Gal 6:8, Kol 2:22, 2Pét 1:4, 2:12, 2:19 | 7 igehely | ❌ ELUTASÍTVA | A "romlandóság" antropológiai/eszkatológiai használatban (feltámadás-test, testi vetés); kizárólag a Róm 8:21 köti a teremtett világ állapotához |
+| **G1311 (*diaftheiró*)** — Luk 12:33, 2Kor 4:16, 1Tim 6:5, Jel 8:9 | 4 igehely | ❌ ELUTASÍTVA | Moly rágása, külső ember romlása, elme megromlása, tengeri hajók pusztulása — nem a 6:12-13 tükör-szerkezet |
+| **G0093 (*adikia*)** — 24 igehely | 24 igehely | ❌ ELUTASÍTVA | A LXX ezzel fordítja a 1Móz 6:11,13 *chámász*-át, de az újszövetségi *adikia* önálló, tág fogalom ("igazságtalanság"); egyetlen előfordulása sem idézi vissza a genezisi mondatot |
+
+**Beépítve a study 1. pontjának táblázatába — összesen 46 táblázat-sor:**
+
+- **A) genezisi lánc** — 20 sor (1Móz 3:14-tól 12:3-ig), közte három korábban nem dokumentált lexikai lelet (5:29 háromszavas visszaidézése; 8:21 *kalal* ≠ *arar*; 9:11,15 a 6:17 igéjének tagadása).
+- **B) ószövetségi kiterjedés** — 18 sor, közte a *málé*+*chámász* kollokáció hat új helye, a *sáma*+*chámász* kollokáció négy helye, a Zsolt 14:1/53:2 Hif'íl-egyezés, a Jón 3:8 megfordulás, és két explicit "tematikus, nem lexikai" jelölésű tétel (Ézs 24:5-6, Hós 4:1-3).
+- **C) újszövetségi oldal** — 8 sor, közte négy új lexikai lelet (Zsid 6:7-8, Gal 3:13, Jel 11:18, Jel 19:2) és két "tematikus, nem lexikai" tétel.
+
+**Elutasítva megnevezett indokkal:** a gerinc-scanek 480+ előfordulása (a legnagyobb tételek: H7843 127, H2403 270, H0127 ~195, H2555 47, H0779 29), valamint 40+ önálló TSK/Károli-eredetű jelölt.
+
+**Nyitva hagyva, megnevezett okkal:** 2 tétel — (a) Jób 16:18 + 31:38 (a "kiáltó vér" motívumhoz tartozik); (b) 5Móz 4:25 + Bír 2:19 + Sof 3:7 (a *sáchat* Hif'íl erkölcsi jelentése szövetséges népre alkalmazva — lehetséges önálló motívum).
+
+**Önálló motívum-jelöltként felmerült, de nem vizsgált:** a "vég elérkezett" (קֵץ) formula Ez 7:2,6 / Ámós 8:2 / 1Móz 6:13 kapcsolata — más kulcsszó, külön vizsgálatot érdemel.
 
 ## 5. Kapcsolatok
 
@@ -935,23 +1079,108 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 ### Alátámasztás *(kézi)*
 
-*Kézzel írandó.*
+A motívumhoz nincs rögzített kapcsolat.
 
 ## 6. Értelmezés *(kézi)*
 
-### PaRDeS keretrendszer
+### Peshat
 
-*Kézzel írandó — a forrás-study 3. pontja alapján, a 2. szakasz lexikai adataival bővítve.*
+A szövegek szó szerint egy **terjedési folyamatot** írnak le, négy mérhető dimenzió mentén.
+
+*Alany szerint*: az átok tárgya a kígyó (3:14), majd a föld (3:17), majd egy ember (4:11), majd egy leszármazott (9:25). *Hordozó szerint*: minden szakasz az אֲדָמָה köré szerveződik — az ember belőle van, rajta dolgozik, róla űzetik el, végül róla töröltetik el. *Mennyiség szerint*: egy pár (3. fejezet), egy család (4. fejezet), "minden test" (6:12, כָּל־בָּשָׂר, *kol-bászár*), majd "megtelt a föld" (6:11,13). *Minőség szerint*: a 4:7 még leselkedő, külső hatalomként írja le a bűnt ("az ajtó előtt leselkedik"), a 6:5 viszont már belső állapotként ("szíve gondolatának minden alkotása szüntelen csak gonosz"), a 6:12 pedig cselekvésként, amelyet minden test elvégzett.
+
+A szövegek nem mondják ki, hogy a bűn öröklődik; azt mondják ki, hogy **a következményei kiterjednek** — térben (a földre), időben (a következő nemzedékre) és mértékben.
+
+### Remez
+
+A motívum elhelyezkedése a Genezisben nem véletlenszerű: az öt *arar*-kimondás (3:14, 3:17, 4:11, 5:29, 9:25) az 1-11. fejezetek őstörténetét fogja keretbe, a hatodik (12:3) pedig már az ábrahámi elhívásban áll, **megfordított előjellel**. A 12:3 ugyanazt az igét és ugyanazt a főnevet (*adamá*) hozza vissza, amely a 3:17-ben az átkot hordozta: "megáldatnak te benned a föld minden nemzetségei" (Károli). Az őstörténet átok-láncát tehát a szöveg saját szerkezete zárja le egy áldás-ígérettel, nem egy külső megoldással.
+
+Ezen belül a **1Móz 5:29** a szerkezeti forgópont. A *itzávón* szó három előfordulása (3:16, 3:17, 5:29) egyetlen ívet feszít ki a bűnbeeséstől Noé névadásáig, és a névadás explicit módon vigasztalást vár "e földön, melyet megátkozott az Úr" (Károli). A genealógia közepén álló mondat így előrejelzi, hogy a következő fejezet az átok ügyében hoz döntést.
+
+A **1Móz 8:21** viszont pontosan azt nem adja meg, amit Lámek várt. Az ígéret nem a *arar*-t vonja vissza, hanem a קָלַל (*kalal*, H7043) igét tagadja meg — és az indoklás (רַע, *ra*, "gonosz" az ember szívének gondolata) szó szerint megismétli a 6:5 diagnózisát, amely az özönvíz **okaként** hangzott el. Ugyanaz a tény, amely korábban az ítélet indoka volt, most a türelem indoka. A föld átka mint állapot nem szűnik meg; ezt erősíti meg a Róm 8:20-22 is, amely a teremtett világot még mindig "hiábavalóság alá vetve" és a "rothadandóság rabságában" látja (Károli).
+
+A **Zsid 6:7-8** γάρ-ral bevezetett kettős képe ugyanezt a 3:17-18 szóanyagot használja: a földről van szó, amely vagy hasznos füvet terem (áldás), vagy töviset és bogáncsot (ἀκάνθας καὶ τριβόλους) — és akkor "közel van az átokhoz" (Károli). Az érvelés két lépése: (a) az esőt beivó, termő föld áldást nyer Istentől; (b) ugyanaz a föld, ha tövist terem, megvetetté válik. A levél szerzője a genezisi átok-képet erkölcsi példázattá alakítja, de a képanyagot szó szerint a LXX 3:18-ból veszi.
+
+### Drash
+
+A motívum egységes tanítása három tételben foglalható össze, és a harmadik tétel feszültségben áll az első kettővel — ez a feszültség maga is a tanítás része.
+
+**Első tétel: a következmény nem áll meg az elkövetőnél.** A 3:17 ezt mondja ki a legélesebben: az ember vétkezett, és a föld átkoztatott meg. Ez nem igazságtalanság-állítás, hanem leírás arról, hogy egy döntés milyen közegben fejti ki hatását. A 4:11-ben ugyanez fordítva jelenik meg: Kain tettét a föld "nyitotta meg száját", hogy befogadja a vért, és Kain immár onnan van megátkozva. A Hab 2:8,17 ezt elvi szintre emeli: "az emberek véréért és az országon... űzött erőszakosságért" (Károli) a kifosztó maga fosztatik ki.
+
+**Második tétel: a következmény visszafordul az elkövetőre — ugyanabban a formában.** Ez a *sáchat* kettős használatának teológiai magva (6:12 ↔ 6:13,17): amit "minden test" elvégzett a maga útján, azt végzi el Isten "minden testen". A Jel 11:18 ezt a szerkezetet görögül ismétli meg: διαφθεῖραι τοὺς διαφθείροντας τὴν γῆν. Az ítélet itt nem önkényes, hanem **tükröző** — az elkövetett cselekvés visszafordítása.
+
+**Harmadik tétel: a gyűrűzés megszakítható, de nem emberi érdemből.** A Jón 3:8 az egyetlen hely, ahol egy nép a *chámász*-ból megtérve elkerüli a már kimondott ítéletet — vagyis a folyamat nem mechanikus. Ugyanakkor a genezisi lánc maga mutatja, hogy az ember ezt nem tartja fenn: az özönvíz után három fejezettel újra elhangzik az אָרוּר (9:25). A megoldás ezért a szövegek szerint nem a lánc emberi megszakítása, hanem az, ami a Gal 3:13-ban áll: κατάρα-vá (*katara*) levés — Krisztus nem eltörli az átkot, hanem magára veszi. Pál szóválasztása itt nem közömbös: a LXX 5Móz 21:23 κεκατηραμένος szavát az ἐπικατάρατος-ra cseréli, azaz arra a szóra, amellyel a LXX a 1Móz 3:17-et is fordítja.
+
+**Feszültség, amit nem kell feloldani.** A 8:21 ígérete és a 9:25 átka közt három fejezet van. Az özönvíz nem az emberi szív állapotát változtatta meg — ezt maga a 8:21 indoklása mondja ki —, hanem Isten válaszát arra az állapotra. A motívum tehát nem egy megoldott probléma története, hanem egy nyitva hagyott feszültségé, amelyre a kánon a 12:3-ban és a Gal 3:13-14-ben ad választ.
+
+### Sod
+
+Az átok a szövegekben mindvégig **kimondott szó** marad (*árúr*, kijelentő formula), nem mechanikus erő. Ami terjed, az nem egy szubsztancia, hanem egy kimondás érvényessége — és ezért oldható fel szintén kimondással, egy másik szó által, amely magára veszi az elsőt.
+
+*(Remez-szintű kiegészítés, l. a Remez réteget: a 12:3 szerkezeti megfordítása adja ennek a szöveg-belső előképét — ugyanaz az ige, ellentétes irányban.)*
+
+### ⚠️ Vitatott pontok
+
+**A 1Móz 6:11-13 forrásrétege.** A klasszikus dokumentum-elmélet a 6:11-22-t a Papi irathoz (P), a 6:5-8-at a Jahvistához (J) sorolja; a BDB szócikkei maguk is ezzel a jelöléssel hivatkoznak rájuk ("Gen 6:11 (P)", "Gen 5:29 (J)"). Ez a besorolás azt jelenti, hogy a *sáchat*/*chámász* szókincs P-hez, a *arar*/*itzávón*/*adamá* szókincs pedig J-hez kötődik. A jelen tanulmány a szöveg végső, kanonikus alakjával dolgozik, amelyben a két szóanyag egyetlen ívet alkot; a forráselméleti kérdés dokumentálva, de nem eldöntve.
+
+【NAPLO: a forráselméleti besorolás a `BDB_teljes_unabridged.tsv` szócikkeinek saját (J/E/P/D) jelöléseiből származik, nem külön szakirodalmi ellenőrzésből.】
+
+**Az "eredendő bűn" fogalom alkalmazhatósága.** Az, hogy a következmények gyűrűznek, nem azonos azzal az állítással, hogy a bűnösség öröklődik. A szövegek az előbbit mondják ki explicit módon; az utóbbi teológiai következtetés, amelyet a Róm 5:12-21 érvelése alapoz meg. A napló ezt külön motívumként tartja nyilván ("Ádám–Krisztus tipológia", ⚠️ jelöléssel, a Róm 5:12 ἐφ' ᾧ (*ef hó*) fordítási vitájával együtt) — a jelen tanulmány nem dönti el a kérdést.
+
+**A 1Móz 8:21 hatóköre.** Hogy az ígéret a 3:17 átkának teljes visszavonását jelenti-e, vagy csak egy megismételt, özönvíz-szerű csapás kizárását, a lexikai adat alapján nem dönthető el egyértelműen: a vers más igét (*kalal*) tagad, mint amelyet a 3:17 használ (*arar*), ami a szűkebb olvasat felé mutat; ugyanakkor a két ige a Genezisen belül másutt (12:3) egymás mellett is áll.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
-### Módszertani napló
+1. **`PaRDeS_motivumok.md`** — a `[ID: HAMART-001]` bejegyzés négy előfordulást rögzít: 1Móz 3:7-19 (egyéni) → 1Móz 4:1-16, kiterjesztve 4:24-ig (családi/nemzedéki) → 1Móz 6:1-8 (egyetemes, *kol basar* szint) → 1Móz 6:9-22 (konkrét betöltődés, *chámász*). A Kánaán-átok (1Móz 9:22-27, 10:15-19) a naplóban tematikusan rokonként, de **önálló motívumként** van rögzítve, és nem növeli ezt a számlálót.
+2. **Az érintett bővített tanulmányok 4. pontja** — `1Moz_3v7-24_bovitett.md`: a 🔗-blokkok a por/*afar*, a mezítelenség/fedés, a protoevangélium és a kérub-tipológia köré szerveződnek; az átok-lánc mint önálló kereszthivatkozási szál nem szerepel bennük. `1Moz_4v1-24_bovitett.md`: a 🔗-blokkok a *tesuká*/*másal*, a hit általi áldozat, a testvérgyilkosság és a kiáltó vér köré szerveződnek. `1Moz_6v1-8_bovitett.md` és `1Moz_6v9-22_bovitett.md`: a 🔗-blokkok az Isten fiai/Nefilim-komplexumra, a *jetzer*-re, a *chen*-re, a *hithalech*-re, a *tevá*-ra és a *brít*-re irányulnak. Egyik study sem tárgyalja önálló kereszthivatkozási szálként a *arar* → *adamá* → *sáchat* láncot — ez a jelen tanulmány saját hozzájárulása.
+3. **"Nyitva maradó szál" jelzések** — nincs olyan explicit jelzés a négy bővített tanulmányban, amely kifejezetten ehhez a motívumhoz kötné a nyitva hagyást.
+4. **Kereszthivatkozás-naplók 2/a-2/e auditjai** — nincs kapcsolódó bejegyzés (a `tematikus_lezart/naplok/` alatt eddig két napló létezett: Melkizedek és "Segítségül hívni az Úr nevét"; egyikben sem szerepel elutasított vagy nyitva hagyott lelet erre a motívumra).
+5. **`Kockazat_szures_riport_*.md`** — nincs kapcsolódó Origin-lánc/LXX-híd sor erre a motívumra.
 
-*Kézzel írandó.*
+**Elhatárolás egy szomszédos motívumtól (Q4).** A napló külön motívumként tartja nyilván az **"Isten fájdalma (*acav*) — a kimondott átok visszhangja Istenben"** tételt (1Móz 3:16-17 → 1Móz 6:6, עָצַב *acav*, H6087). A jelen tanulmány lexikai gerincébe az עִצָּבוֹן (*itzávón*, H6093) főnév tartozik; az 1Móz 6:6 igei alakja (יִּתְעַצֵּב, *jitacév*, H6087) **nem** — az a másik motívum tárgya. A két tétel azonos gyökre (עצב) megy vissza, de eltérő szófajban és eltérő alanyra vonatkozik, ezért itt csak megnevezett kereszthivatkozásként szerepel, nem beolvasztva.
 
-### Nyitott kérdések és séma-korlátok
+A `PaRDeS_motivumok.md` naplóban a motívum **✅ LEZÁRVA** jelölést kapott, `Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` forrásfájllal, és átkerült az aktív ⭐ ajánlások közül a lezárt motívumok közé.
 
-*Kézzel írandó.*
+🔍 **STEPBible-ellenőrizve:** H0779, H0127, H6093, H2403, H2555, H7843, H7451, H7043, H4390, H8085 — teljes ószövetségi előfordulás-scan, versen belüli együttállás-vizsgálattal (H4390+H2555 és H8085+H2555 kollokáció); G1944, G2671, G2672, G1311, G5351, G5356, G0093 — teljes újszövetségi előfordulás-scan; LXX-egyeztetés 1Móz 3:14,17,18; 4:11; 6:11-13,17; 9:25; 5Móz 21:23; 27:26; Zsolt 14:1; 53:2 igehelyeken. Forrás: `TAHOT_kivonat.tsv`, `TAGNT_kivonat.tsv`, `LXX_kivonat_Genezis.tsv`, `LXX_kivonat_Deuteronomium.tsv`, `LXX_kivonat_Zsoltarok.tsv`. Dátum: 2026.09.11.
+
+### Minőségi kapu (Quality Gate)
+
+- [x] **Q1. Szerkezeti teljesség** — mind a hat kötelező szakasz jelen van és kitöltött; a 4. pont explicit, indokolt kihagyással zárva, nem placeholderrel.
+- [x] **Q2. Négyforrásos audit nyoma dokumentált** — TAHOT teljes előfordulás-scan (10 héber Strong-szám), TAGNT teljes scan (7 görög Strong-szám), TSK-lekérdezés a nyolc fő igehelyre (Votes-értékekkel együtt rögzítve), Károli-kereszthivatkozás ugyanezekre, BDB-ellenőrzés minden héber kulcsszóra — mind 2026.09.11-én, l. a kereszthivatkozás-naplót. Minden TSK-találat, amely a táblázatban még nem szereplő ÚJ igehelyre mutatott, saját ✅/❌ sort kapott a napló minősítő táblázatában.
+- [x] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — az Ézs 24:5-6, Hós 4:1-3, Mt 15:19/Mk 7:21-23 és 2Pét 3:6-7 tételek explicit "tematikus, nem lexikai" jelöléssel szerepelnek; minden más sor megnevezett Strong-számmal kapcsolódik.
+- [x] **Q4. Kereszt-motívum szennyeződés kizárva** — az "Isten fájdalma (*acav*) — a kimondott átok visszhangja Istenben" motívum (H6087, 1Móz 6:6) explicit, megnevezett elhatárolással kimaradt, l. 0. pont; a Kánaán-átok (1Móz 9:22-27) önálló naplóbeli motívumként kezelve, a 9:25 csak a *arar*-lánc lexikai tagjaként szerepel, a Khám-vétek értelmezése nélkül; a "tesuká/másal visszhang" és a "jetzer" motívumok anyaga nem került át.
+- [x] **Q5. Nevesített tanítói szakasz** — Derek Prince ✅ erős/közvetlen forrással a motívum első felére (3-4. fejezet), a bővített kánoni hatókörre explicit, indokolt hiányjelzéssel (gap) zárva.
+- [x] **Q6. Napló-/formázási-/hangnem-fegyelem** — minden dátum- és módszer-megjegyzés 【NAPLO】 blokkban, saját bekezdésben, üres sorral elválasztva; blockquote kizárólag héber szövegen, a magyar fordítás normál bekezdésben közvetlenül utána; nincs olvasót megszólító vagy "mi"-hangú mondat; a Sod rétegben a Remez-hivatkozás explicit keresztre hivatkozással jelölve.
+
+### Lezárási checklist
+
+- [x] 1. Tanulmányfájl elkészítve — `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md`
+- [x] 2. Motívumlog Tematikus áttekintés — ✅ LEZÁRVA jelölés a fájlnévvel
+- [x] 3. Motívumlog Kulcsszó-index — Előfordulás-szám és igehely-lista frissítve
+- [x] 4. Motívumlog Kulcsszavak részletesen — új, teljes bejegyzés "Lásd még" kereszthivatkozásokkal
+- [x] 5. Motívumlog Könyv szerinti index — az érintett könyvek sorai frissítve
+- [x] 6. Motívumlog ⭐ Emlékeztető küszöb — a bejegyzés átminősítve lezártra
+- [x] 7. Motívumlog Még nem feldolgozott motívumok — a tétel lezártra jelölve
+- [x] 8. `Lezart_tematikus_tanulmanyok_index.md` frissítve — új sor (#9)
+- [x] 9. Motívumlog fejléc-changelog frissítve — v56 bejegyzés
+- [ ] 10. GitHub-feltöltésre emlékeztetés — a frissített motívumlog és index a `GitHub_feltoltesi_workflow.md` szerint felkerülhet
+- [x] 11. STEPBible-ellenőrzés dokumentálva — l. fentebb
+- [x] 12. Érintett bővített tanulmányok visszahivatkozása — `1Moz_3v7-24_bovitett.md`, `1Moz_4v1-24_bovitett.md`, `1Moz_6v1-8_bovitett.md`, `1Moz_6v9-22_bovitett.md`
+
+### Tartalmi visszaírás bővített tanulmányokba
+
+Négy, igehely-szintű lexikai lelet került elő, amely önmagában is megáll, és olyan versen található, amelynek van saját bővített tanulmánya:
+
+1. **1Móz 3:17 + 5:29** — az עִצָּבוֹן (*itzávón*) mindössze három ószövetségi előfordulása (3:16, 3:17, 5:29), és az 5:29 hármas visszaidézése (*itzávón* + *adamá* + *arar*).
+2. **1Móz 3:18 ⇒ Zsid 6:8** — háromszavas LXX-egyezés (γῆ, ἄκανθα, τρίβολος) a κατάρα-szócsaláddal együtt.
+3. **1Móz 6:12-13 ⇒ Jel 11:18** — a *sáchat* kettős szerkezetének görög tükre.
+4. **1Móz 8:21** — az ígéret a קָלַל (*kalal*) igét tagadja, nem a 3:17 אָרַר-t.
+
+【NAPLO: ezek a leletek a sablon "Tartalmi visszaírás" alszakasza szerint propose-then-confirm fegyelem alá tartoznak — egyenként megbeszélendők, mielőtt a `1Moz_3v7-24_bovitett.md`, `1Moz_6v9-22_bovitett.md` és `1Moz_8v1-22_bovitett.md` fájlokba bekerülnének. A 12. pont szerinti 📎-visszahivatkozások ettől függetlenül, mutatóként már bekerültek — azok nem visznek be új tényt.】
+
+- `Isten_fiai_Nefilim_Gibborim_tematikus.md` — ugyanazon szakaszok (1Móz 6:1-4) másik rétege; lexikailag elkülönül.
+- `Tehom_tematikus.md` — az özönvíz kozmikus oldala (a mélység forrásainak felfakadása, 7:11); a jelen motívum az özönvíz **erkölcsi indoklását** követi, nem a mechanizmusát.
+- `Hadesz_Seol_tematikus.md` — a halál birodalma mint önálló motívum; nem érintkezik a *arar*/*sáchat* szóanyaggal.
 
 ## 8. Irodalom és idézés
 

@@ -1,3 +1,5 @@
+<!-- GENERÁLT: general.py --cel lexikon | rések: tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md;motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md -->
+
 # 📖 ISTENTISZT-001 — Segítségül hívni az Úr nevét
 
 ## Kivonat *(kézi)*
@@ -1038,9 +1040,10 @@ egyetemes ígéret tehát nem a 13. versnél kezdődik: a 12. vers már
 kimondja, hogy ugyanaz az Úr gazdag mindazokhoz, akik őt segítségül
 hívják.
 
-【NAPLO: a tematikus study 3. pontja még 17 ószövetségi igehelyről és
-15 ἐπικαλέομαι-fordításról beszél; a mai adat 22 hely és 18 egyezés
-(a 2026.09.09-i bővítés után). A study frissítése külön feladat.】
+【NAPLO: a fenti, korábban 17/15-ös számokat 22/18-ra javító megjegyzés a RENDER
+2. menetében (R2.4, G13) lezárva — a lexikonoldal `ertelmezes` rése immár a
+jelen szakaszból generálódik, a szám itt is a mai (22 hely, 18 egyezés)
+állapotot tükrözi, a study-frissítés így teljesült.】
 
 **Drash:** a motívum azt tanítja, hogy az istentisztelet magja nem a
 nyilvános teljesítmény vagy a rituálé pontossága, hanem a

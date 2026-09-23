@@ -1,8 +1,10 @@
+<!-- GENERÁLT: general.py --cel lexikon | rések: tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md -->
+
 # 📖 MENNY-001 — Isten fiai — Nefilim — Gibborim motívum-komplexum
 
 ## Kivonat *(kézi)*
 
-*Kézzel írandó — 3-5 mondatos prózai kivonat: mi a motívum, milyen azonosság-típusú, hány igehelyen, mi a legfontosabb lexikai lelet.*
+A motívum lexikai azonosságú, három összefonódó kifejezésből álló komplexum: a בְּנֵי הָאֱלֹהִים (*bené ha'Elohim*, "Isten fiai") névelővel négy helyen (1Móz 6:2, 6:4; Jób 1:6, 2:1), névelő nélküli rokon alakban Jób 38:7-ben; a נְפִלִים (*nefilim*) két helyen (1Móz 6:4; 4Móz 13:34); és a hozzájuk kapcsolódó גִּבּוֹר (*gibbor*). A legfontosabb lexikai megfigyelés, hogy a בְּנֵי הָאֱלֹהִים kifejezés mind a négy helyen egy Istenhez tartozó, nem-emberi, mennyei lény-kategóriát jelöl — ez a Jóbban következetes használat a legfontosabb belső bibliai érv az 1Móz 6 angyali olvasata mellett, bár a végső azonosítás (angyali/Watcher, Séthita/dinasztikus, köztes/funkcionális nézet) tudományosan vitatott marad. A motívum szándékosan elkülönül a lexikailag rokontalan רְפָאִים (Refáim, `[ID: HODIT-001]`) motívumtól, amellyel csak tematikus rokonságban áll.
 
 ## Tartalomjegyzék
 
@@ -182,13 +184,26 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 <!-- GENERÁLT-VÉGE: lexikon#MENNY-001#szocikkek -->
 
-### 2/b *(kézi, ha van)*
+### 2/b. Kiegészítő szótári adatok *(kézi)*
 
-*Kézzel írandó, ha van.*
+Nincs kiegészítő szótári adat.
 
 ### Miért fontos ez a lelet *(kézi)*
 
-*Kézzel írandó.*
+**בְּנֵי הָאֱלֹהִים (*bené ha'Elohim*, "Isten fiai"):**
+A kifejezés mind a négy előfordulásban egy **Istenhez tartozó, nem-emberi, mennyei lény-kategóriát** jelöl — ez a legfontosabb ellenőrizhető nyelvi tény, amely a Séthita-olvasat ellen, az angyali/mennyei lény-olvasat mellett szól. Jób 1:6 és 2:1-ben a בְּנֵי הָאֱלֹהִים egyértelműen a mennyei udvar tagjai, Isten elé állnak, és közöttük van a שָׂטָן (*sátán*, "vádló") is — ez a szó szoros értelemben senki nem olvassa "istenfélő emberi leszármazottként". Jób 38:7-ben ugyanezek a lények a teremtéskor örvendeznek, tehát léthelyzetük megelőzi az emberi történelmet. Ez a következetesség nyomós **belső bibliai (kánonon belüli) érv** az 1Móz 6:2,4 angyali olvasata mellett — még ha a végső azonosítás vitatott is marad (lásd lent, 3. pont, ⚠️).
+
+**נְפִלִים (*nefilim*):**
+A gyök (נפ״ל, "elesni/hullani") vitatott: hagyományosan "elesettek" (a mennyből, vagy csatában elesett hősök) vagy — a görög Septuaginta fordítása alapján (γίγαντες, *gigantes*) — "óriások". A két előfordulás (1Móz 6:4; 4Móz 13:34) között nincs szó szerinti szintaktikai ismétlődés, csak névazonosság — a kémek retorikus túlzása ("óriások, akikhez képest sáskáknak látszottunk") nem feltétlenül állít genealógiai folytonosságot az özönvíz előtti nefilimmel, hiszen azok — a szöveg saját elbeszélése szerint — elpusztultak az özönvízben.
+
+**גִּבּוֹר (*gibbor*, "erős/hős") — ⚠️ vitatott: azonos-e a nefilimmel?**
+Ez a szó önmagában rendkívül gyakori a Szentírásban (harcosokra, Istenre — pl. אֵל גִּבּוֹר, "erős Isten", Ézs 9:5 — sőt később Nimródra is: 1Móz 10:8-9, גִּבֹּר צַיִד, "hatalmas vadász"). **Éppen ezért a gibbor önmagában gyenge lexikai horgony** — a laqach (H3947) tanulságához hasonlóan: egy gyakori szó nem alkalmas önálló konkordancia-alapú kapcsolat építésére. A motívum szempontjából nem a szó ritkasága, hanem a mondat szerkezete hordozza a jelentést.
+
+1Móz 6:4 szó szerinti mondatszerkezete két, elvileg elkülöníthető állítást tartalmaz: (1) a nefilim **már a földön volt** — az egyesülés *előtt is*, nem csak abból született ("azokban a napokban, sőt még azután is"); (2) az egyesülésből születtek a gibborim, "ősidők óta neves emberek". Ebből két olvasat lehetséges:
+- **Azonosító olvasat** — a nefilim = a gibborim, a mondat csak két névvel illeti ugyanazt a hibrid utódcsoportot; ezt támogatja a szoros szintaktikai közelség, és hogy a Septuaginta mindkettőt γίγαντες (*gigantes*, "óriások") szóval fordítja. Derek Prince is ezt az azonosító olvasatot követi (lásd 5. pont).
+- **Megkülönböztető olvasat** — a nefilim egy már létező, önálló lény-kategória volt (akár a bené ha'Elohim korábbi generációja), és a gibborim egy *ettől elkülönülő*, az egyesülésből született csoport; ezt támogatja, hogy a nefilim létezése időben megelőzi a mondatot.
+
+A szöveg maga nem dönti el a kérdést — ez a bizonytalanság a naplóban és a fenti táblázatban is ⚠️-ként rögzítve.
 
 ## 3. LXX-fordítói döntések
 
@@ -245,7 +260,17 @@ Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.
 
 ### Minősítés *(kézi)*
 
-*Kézzel írandó: független megerősítés / új találat / nem releváns.*
+| Jelölt | Minősítés | Indoklás |
+|---|---|---|
+| Jób 1:6, 2:1, 38:7 | ✅ már a táblázatban, TAHOT-scannel megerősítve | mennyei udvar / teremtéskori öröm-kontextus, a בְּנֵי (הָ)אֱלֹהִים minta konzisztens használata |
+| 4Móz 13:33 (téves hivatkozás) | ❌ javítva 13:34-re | a נְפִלִים szó a 34. versben áll — igehely-azonosítási hiba |
+| 1Móz 14:5 (רְפָאִים) | ❌ elutasítva, indokolt (elhatárolás) | a בְּנֵי הָאֱלֹהִים/נְפִלִים/גִּבּוֹר szócsalád egyike sem fordul elő ott; a kapcsolat kizárólag tematikus — önálló motívum, `[ID: HODIT-001]`, l. `Rafaim_kereszthivatkozas_naplo.md` |
+| 1Móz 6:2 → Mt 24:38 / Lk 17:27 (Károli-KH) | ⚠️ nyitva — nem minősítve | tartalmilag nem az "Isten fiai kiléte" kérdéshez, hanem az eszkatológiai-ítéleti "mint Noé napjaiban" analógiához tartozik; eldöntendő: (a) jegyzetként bekerüljön-e valamelyik study-ba, (b) önálló motívumként érdemes-e feldolgozni, (c) maradjon-e figyelmen kívül |
+| Named teacher — Derek Prince (*Because of the Angels*) | ✅ beépítve, erős forrás | angyali/Watcher-nézet, explicit forrásmegjelöléssel (5. pont) |
+| Named teacher — pünkösdi ÓSZ-szakértők (Rickie D. Moore, Lee Roy Martin, John Christopher Thomas) | ❌ gap, indokolt | publikált munkáikban nem található kifejezetten erre a pericopára (1Móz 6:1-4) vonatkozó, ellenőrizhető állásfoglalás |
+| "shem — név szerzése mint lázadás" (6:4 ↔ 11:4) | ⚠️ nyitva, előre jelezve | a study 6. pontja explicit nyitva hagyja — felvétele a naplóba mint új, előre jelzett motívum külön jóváhagyást igényel |
+
+A TAHOT-scan nem hozott új igehelyet — a study korábbi táblázata már teljes volt, a kutatás a meglévő öt előfordulást (bené ha'Elohim) és kettőt (nefilim) formálisan megerősítette, és felfedte a 4Móz 13:33→13:34 hibát. A Refáim-kapcsolat explicit, kölcsönös elhatárolással kimaradt. A Károli-KH jelölt (1Móz 6:2 → Mt 24:38/Lk 17:27) és a "shem"-alpont **nyitva marad**, felhasználói döntésre várva.
 
 ## 5. Kapcsolatok
 
@@ -259,23 +284,68 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 ### Alátámasztás *(kézi)*
 
-*Kézzel írandó.*
+A motívumhoz nincs rögzített kapcsolat.
 
 ## 6. Értelmezés *(kézi)*
 
-### PaRDeS keretrendszer
+**Peshat:**
+1Móz 6:1-4 elbeszéli, hogy amikor az emberiség sokasodni kezdett, a "bené ha'Elohim" látta, hogy az emberek lányai szépek, és feleségül vették őket, akiket választottak. A szövegben ezután megjelenik a "nefilim" a földön (már korábban is, majd ezután is), és az egyesülésekből születnek a "gibborim" — "ősidők óta neves emberek". Isten válasza (6:3) az emberi élettartam korlátozása, majd (6:5-7) az egyetemes gonoszság diagnózisa, amely az özönvízhez vezet. A szöveg maga **nem magyarázza meg részletesen**, kik a bené ha'Elohim — ez a legfontosabb Peshat-szintű megfigyelés: az értelmezői bizonytalanság magából a szövegből, nem külső feltételezésből fakad.
 
-*Kézzel írandó — a forrás-study 3. pontja alapján, a 2. szakasz lexikai adataival bővítve.*
+**Remez:**
+A בְּנֵי הָאֱלֹהִים kifejezés következetes használata Jóbban (mennyei udvar, angyali lények) egy tágabb bibliai mintázatra mutat: léteznek Istenhez tartozó, nem-emberi lények, akik közvetlen kapcsolatban állnak a mennyei tanáccsal, és akik — Jób szerint — képesek erkölcsi választásra (a Sátán jelenléte és tevékenysége Jóbban ennek bizonyítéka). Ez a mintázat összeköti az 1Móz 6 elbeszélést egy nagyobb angyalológiai ívvel, amelyet Júd és 2Pét is felhasznál — de a két újszövetségi kapcsolódás **eltérő jellegű**:
+
+- **Júd 1:14-15** ⇒ **1Énokh 1:9** — közvetlen, szinte szó szerinti idézet, nem csupán tartalmi utalás.
+- **Júd 1:6** ↔ **1Énokh 10:4-6, 10:11-12, 12:4** ("Az Őrzők könyve") — tartalmi/szerkezeti rokonság, kiterjedt nyelvi egyezésekkel, de nem szó szerinti idézet.
+- **2Pét 2:4-5** ↔ 1Móz 6-7 — ez a kapcsolat **nem lexikai, hanem tematikus/szerkezeti**: nincs közös héber-görög szógyök a Septuaginta és Péter szövege között (a LXX 1Móz 6:2,4-ben οἱ υἱοὶ τοῦ θεοῦ áll, Péter viszont saját maga értelmezi ezt ἀγγέλων-ként, azaz *exegetikai azonosítást* végez, nem idéz). A kapcsolódás retorikai: Péter egymás után sorolja az ítélet-példákat (bukott angyalok → özönvíz → Szodoma), mindegyiket azonos οὐκ ἐφείσατο ("nem kegyelmezett") formulával vezetve be.
+
+**Fontos megkülönböztetés:** Júd használja az Énokh-hagyományt (részben idézve, részben tartalmilag támaszkodva rá), de ez nem jelenti, hogy Júd vagy a korai egyház az egész 1Énokh-ot ihletett Szentírásnak tekintette volna — inkább azt mutatja, hogy szabadon merített a korabeli, hallgatósága által ismert és tisztelt zsidó irodalomból, retorikai illusztrációként a saját ítélet-üzenete alátámasztására.
+
+**Drash:**
+A motívum-komplexum egészéből levonható tanítás — függetlenül attól, melyik azonosítási elmélet mellett áll valaki — kettős: (1) a határok átlépése (akár mennyei-földi, akár erkölcsi-társadalmi értelemben) katasztrofális következményekkel jár, és közvetlenül megelőzi az özönvíz-ítéletet; (2) a "gibborim/neves emberek" felmagasztalása — az emberi hírnév és erő önmagában való dicsőítése — a bűn egyik korai, jellegzetes formája, amely majd Bábelben (1Móz 11:4, "szerezzünk magunknak nevet") tér vissza szó szerint ismétlődő motívumként. Ez utóbbi kapcsolat (*shem*, "név") figyelemre méltó, konkordancia-alapon is ellenőrizhető ismétlődés — érdemes a naplóban is rögzíteni.
+
+**Sod** *(tömör, fegyelmezett):*
+A szöveg minimum annyit sugall, hogy a teremtett rend (mennyei/földi, ember/nem-ember) kategóriái nem önkényesek, hanem Isten által rendezettek, és ezek szándékos összemosása közvetlenül a teremtés-rend elleni lázadás egyik formája — összhangban azzal, hogy az özönvíz maga is a teremtés visszafordítása (lásd a naplóban már rögzített "tehóm" motívumot). Ennél mélyebb, a szövegből közvetlenül le nem vezethető spekulációba (pl. részletes angyalológiai rendszerekbe) a Sod-fegyelem nem enged belemenni.
+
+### ⚠️ Vitatott pont — az azonosítás kérdése
+
+Ez a motívum a bibliai tudományosság egyik legrégebbi, folyamatosan élő vitája.
+
+**Angyali/Watcher-nézet** — a בְּנֵי הָאֱלֹהִים szó szoros értelemben véve mennyei lényeket jelöl (a Jóbban következetesen ez az értelme); ezt a nézetet képviseli **Gordon Wenham** (WBC), **Victor Hamilton** (NICOT), és ezt támogatja az apokrif hagyomány is — 1Énokh "Az Őrzők könyve" (1-16. fejezet) 200 angyali "őrzőt" (Watchers) nevesít, akik leszálltak a földre; erre a hagyományra Júd 1:6 tartalmilag épít, Júd 1:14-15 pedig közvetlenül idéz belőle (1Énokh 1:9).
+
+**Séthita/dinasztikus nézet** — a "bené ha'Elohim" istenfélő Séth-leszármazottakat jelöl, akik házasodtak az istentelen Kain-vonal nőtagjaival; ezt a nézetet történelmileg **Augustinus** és **Aranyszájú Szent János** képviselte, és **Derek Kidner** (Tyndale) is e felé hajlik, elsősorban etikai-teológiai megfontolásból (az angyalok házassága nehezen értelmezhető Mt 22:30 fényében, ahol Jézus azt mondja, a mennyben nem házasodnak).
+
+**Köztes/funkcionális nézet** — egyes újabb tudósok (pl. **John Walton**, NIV Application Commentary) az azonosítás helyett a szöveg funkciójára helyezik a hangsúlyt: a szakasz elsődleges célja a határátlépés és a felfuvalkodott emberi hírnév bűnének bemutatása, függetlenül a bené ha'Elohim pontos ontológiai státuszától.
+
+Mt 22:30 ("a feltámadáskor sem nem házasodnak, sem férjhez nem mennek, hanem olyanok lesznek, mint az Isten angyalai a mennyben") gyakran felmerül az angyali nézet ellenérveként — de ez a vers a *feltámadás utáni* állapotról szól, nem zárja ki eleve egy bukott angyali cselekedet lehetőségét a történelem korábbi pontján; ez maga is vitatott érvelési lépés mindkét oldalon.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
-### Módszertani napló
+*A sablon 0. pontja e study elkészültekor (v1, 2026.08.14; v2, 2026.08.21) még nem létezett — ez a retroaktív pótlás.*
 
-*Kézzel írandó.*
+1. **`PaRDeS_motivumok.md`** — a motívum bejegyzése (v43, 2026.08.21) ellenőrizve, a teljes kereszthivatkozási hálóval (Jób 1:6, 2:1, 38:7; Júd 1:6, 1:14-15; 2Pét 2:4-5), valamint a "Nimród — a gibbor-szótő özönvíz utáni, emberi visszhangja" alponttal (1Móz 10:9), amely a jelen study 3. pontjában (Remez) már szerepel.
+2. **Érintett bővített tanulmányok 4. pontja** — `1Moz_6v1-8_bovitett.md` (a motívum a study saját szövegtörzsében szerepel, nem 🔗-blokkban; 📎-visszahivatkozás e frissítés részeként pótolva, l. 6. pont).
+3. **"Nyitva maradó szál" jelzések** — a napló saját, korábban rögzített nyitott kérdése ("shem — név szerzése mint lázadás", 6:4↔11:4 Bábel-előremutatás) a jelen frissítés sem dönti el, külön jóváhagyást igényel továbbra is.
+4. **Kereszthivatkozás-naplók 2/a-2/e auditjai** — nincs kapcsolódó bejegyzés.
+5. **`Kockazat_szures_riport_*.md`** — nincs kapcsolódó bejegyzés.
 
-### Nyitott kérdések és séma-korlátok
+**Külön elhatárolási forrás:** l. a `Rafaim_tematikus.md` (`[ID: HODIT-001]`) 0. pontjának azonos bekezdése — a két motívum elhatárolása kölcsönös, mindkét fájl saját szövegében explicit rögzítve.
 
-*Kézzel írandó.*
+- [x] **Q1. Szerkezeti teljesség** — mind a 6 kötelező szakasz jelen van.
+- [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔬 Valódi lexikai kutatás elvégezve 2026.09.10-én, a helyi `TAHOT_kivonat.tsv` közvetlen lekérdezésével: a בְּנֵי (הָ)אֱלֹהִים pontos szórendi minta (H1121, opcionális névelő, H0430) keresése — **5 előfordulás megerősítve** (1Móz 6:2, 6:4, Jób 1:6, 2:1 névelővel; Jób 38:7 névelő nélkül), új nem került elő; H5303 (נְפִיל) teljes ÓSZ-listája is megerősítve (1Móz 6:4, 4Móz 13:34 — igehely-hivatkozás javítva 13:33-ról). 【NAPLO: a 2026.09.09-i verzióban itt egy pontatlan, ténylegesen soha le nem futtatott "STEPBible-ellenőrizve" állítás szerepelt — ez a sor annak korrekciója és a valódi kutatás eredménye.】
+- [x] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — 2Pét 2:4-5 explicit "tematikus/szerkezeti, nem lexikai"-ként jelölve (3. pont); a Refáim-kapcsolat explicit tematikusként jelölve (l. az 1. pont utáni jegyzet).
+- [x] **Q4. Kereszt-motívum szennyeződés kizárva** — friss `grep` a teljes repón (2026.09.10): a study kizárólag a saját (MENNY-001) motívumára vonatkozó leleteket tartalmazza; a Refáim-anyag nem szerepel benne.
+- [x] **Q5. Nevesített tanítói szakasz jelen van** — 5. pont, Derek Prince ✅ erős forrás; a pünkösdi ószövetség-szakértőknél (Moore, Martin, Thomas) explicit hiányjelzés.
+- [x] **Q6. Napló-/formázási-/hangnem-fegyelem** — ellenőrizve: nincs inline dátum-tag tartalmi cellában, nincs "Forrás:" bekezdés, nincs első személyű ellenőrzési állítás, nincs magyar fordítás blockquote-ban, nincs olvasót megszólító mondat, nincs réteg-keveredés.
+
+✅ **LEZÁRVA 2026.08.21.** A `PaRDeS_motivumok.md` naplóban az "Isten fiai — angyali/Séthita vita" motívum (a "gibborim/nefilim — a hibrid utódok azonosítása" alponttal együtt) ezzel a tanulmánnyal **"lezárt/önállóan feldolgozott témaként"** jelölve. Fájlnév: `Isten_fiai_Nefilim_Gibborim_tematikus.md`. A "Rafeusok/óriás-népek" (1Móz 14:5) motívum **nem** része ennek a lezárásnak — az korábban, önállóan zárult le, önálló fájlban (`Rafaim_tematikus.md`).
+
+**Nyitva maradó kérdés, külön döntést igényel:** a Bábel-előremutatás ("*shem* — név szerzése mint lázadás", 6:4 ↔ 11:4) felvétele a naplóba mint új, előre jelzett motívum — ez a jelen lezárás **nem** tartalmazza, külön jóváhagyást igényel.
+
+**2026.09.10-i retroaktív v14-compliance frissítés:** "0. Forrás-összegyűjtés" szakasz pótolva; Minőségi kapu (Q1-Q6) retroaktívan dokumentálva; az 1. pont táblázata után explicit, kölcsönös elhatárolási jegyzet pótolva a Refáim-motívummal szemben; 📎-visszahivatkozás pótolva `1Moz_6v1-8_bovitett.md`-be.
+
+**2026.09.10-i, ugyanaznapi második frissítés — valódi lexikai kutatás eredménye:** בְּנֵי (הָ)אֱלֹהִים minta 5 előfordulása megerősítve, új nem került elő; igehely-hivatkozási javítás (4Móz 13:33→13:34, mindhárom előfordulási helyen a fájlban, l. is `Rafaim_tematikus.md` és a motívumnapló). Tartalmi következtetés a fentieken túl nem változott.
+
+**Teljes jelölt-lista** (F0.5, 2026.09.13-án retroaktívan pótolva): `tematikus_lezart/naplok/Isten_fiai_Nefilim_Gibborim_kereszthivatkozas_naplo.md` — tartalmazza a Károli-KH nyitott jelöltet (1Móz 6:2 → Mt 24:38/Lk 17:27) is.
 
 ## 8. Irodalom és idézés
 
