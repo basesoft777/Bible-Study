@@ -23,6 +23,7 @@ H7585 (שְׁאוֹל, *seól*), G0086 (ᾅδης, *hádész* — javított Stro
 
 ## Tartalmi minősítés minden jelöltre
 
+<!-- RÉS-KEZDET: minosites -->
 | Jelölt | Minősítés | Indoklás |
 |---|---|---|
 | Hós 13:14 | ✅ beépítve, ⭐ kiemelt lelet | H7585 teljes scan; Pál 1Kor 15:55-ben explicit idézi/parafrazálja — a study fő ívét (Krisztus legyőzi a Seólt/hádészt) közvetlenül megerősíti és kibővíti |
@@ -33,10 +34,13 @@ H7585 (שְׁאוֹל, *seól*), G0086 (ᾅδης, *hádész* — javított Stro
 | Máté 16:18 (ᾅδης, "a pokol kapui") | ❌ elutasítva, indokolt (elhatárolás) | ekkleziológiai kontextus (az egyház legyőzhetetlensége), tartalmilag nem kapcsolódik a jelen tanulmány tárgyához (halál/feltámadás-tipológia) — külön motívumként kezelendő, ha sorra kerül |
 | Tehóm/abüsszosz-komplexum (H8415/G0012) | ❌ elutasítva, indokolt (elhatárolás) | a seól/hádész az egyéni halottak birodalma, a tehóm/abüsszosz kozmikus-mitológiai teremtés előtti káosz — a két szócsalád sosem azonosított egymással, l. `Tehom_kereszthivatkozas_naplo.md` |
 | Named teacher (Derek Prince stb., dedikáltan a seól/hádész-komplexumra) | ❌ gap, indokolt | nem áll rendelkezésre megbízható, ellenőrizhető, dedikáltan erre a témára szánt forrás a jóváhagyott listáról |
+<!-- RÉS-VÉGE: minosites -->
 
 ## Végső döntés és indoklás
 
+<!-- RÉS-KEZDET: minosites -->
 A Hós 13:14 lelet beépítve, kiemelt ⭐ jelöléssel — ez a legfontosabb ÚSZ-visszhang, amely eddig hiányzott a study-ból. A fennmaradó 62 igehely táblázatos formában beépítve, a két kimaradt (1Sám 2:6, Ézs 7:11) pótolva. A G0086-lista Strong-száma javítva (G86→G0086); az 1Kor 15:55 szövegkritikai kizárása explicit dokumentálva. A Máté 16:18 és a tehóm/abüsszosz-komplexum explicit, indokolt elhatárolással kimaradt. A named teacher gap explicit.
+<!-- RÉS-VÉGE: minosites -->
 
 ## Összegzés
 

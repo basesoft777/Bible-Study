@@ -9,6 +9,7 @@
 
 ## 0. Forrás-összegyűjtés a meglévő anyagból
 
+<!-- RÉS-KEZDET: modszertan -->
 1. **`PaRDeS_motivumok.md`** — a `[ID: HAMART-001]` bejegyzés négy előfordulást rögzít: 1Móz 3:7-19 (egyéni) → 1Móz 4:1-16, kiterjesztve 4:24-ig (családi/nemzedéki) → 1Móz 6:1-8 (egyetemes, *kol basar* szint) → 1Móz 6:9-22 (konkrét betöltődés, *chámász*). A Kánaán-átok (1Móz 9:22-27, 10:15-19) a naplóban tematikusan rokonként, de **önálló motívumként** van rögzítve, és nem növeli ezt a számlálót.
 2. **Az érintett bővített tanulmányok 4. pontja** — `1Moz_3v7-24_bovitett.md`: a 🔗-blokkok a por/*afar*, a mezítelenség/fedés, a protoevangélium és a kérub-tipológia köré szerveződnek; az átok-lánc mint önálló kereszthivatkozási szál nem szerepel bennük. `1Moz_4v1-24_bovitett.md`: a 🔗-blokkok a *tesuká*/*másal*, a hit általi áldozat, a testvérgyilkosság és a kiáltó vér köré szerveződnek. `1Moz_6v1-8_bovitett.md` és `1Moz_6v9-22_bovitett.md`: a 🔗-blokkok az Isten fiai/Nefilim-komplexumra, a *jetzer*-re, a *chen*-re, a *hithalech*-re, a *tevá*-ra és a *brít*-re irányulnak. Egyik study sem tárgyalja önálló kereszthivatkozási szálként a *arar* → *adamá* → *sáchat* láncot — ez a jelen tanulmány saját hozzájárulása.
 3. **"Nyitva maradó szál" jelzések** — nincs olyan explicit jelzés a négy bővített tanulmányban, amely kifejezetten ehhez a motívumhoz kötné a nyitva hagyást.
@@ -16,6 +17,7 @@
 5. **`Kockazat_szures_riport_*.md`** — nincs kapcsolódó Origin-lánc/LXX-híd sor erre a motívumra.
 
 **Elhatárolás egy szomszédos motívumtól (Q4).** A napló külön motívumként tartja nyilván az **"Isten fájdalma (*acav*) — a kimondott átok visszhangja Istenben"** tételt (1Móz 3:16-17 → 1Móz 6:6, עָצַב *acav*, H6087). A jelen tanulmány lexikai gerincébe az עִצָּבוֹן (*itzávón*, H6093) főnév tartozik; az 1Móz 6:6 igei alakja (יִּתְעַצֵּב, *jitacév*, H6087) **nem** — az a másik motívum tárgya. A két tétel azonos gyökre (עצב) megy vissza, de eltérő szófajban és eltérő alanyra vonatkozik, ezért itt csak megnevezett kereszthivatkozásként szerepel, nem beolvasztva.
+<!-- RÉS-VÉGE: modszertan -->
 
 ---
 
@@ -120,6 +122,7 @@ Egyetlen táblázat-sor sem fed le olyan hosszabb, több verses érvelést, amel
 
 ## 2. Eredeti nyelvi összevetés
 
+<!-- RÉS-KEZDET: miert_fontos -->
 ### אָרַר — *arar* (H0779): az átok mint kimondott, jogi aktus
 
 A BDB szerint a gyök alapjelentése "curse", és a szó jellemző alakja az **אָרוּר** (*árúr*) passzív participium, amely "chiefly as exclamation" áll, rendszerint a בָּרוּךְ (*bárúkh*, "áldott") ellentétpárjaként. A Genezisben öt ilyen kimondás található: 3:14 (kígyó), 3:17 (föld), 4:11 (Kain), 9:25 (Kánaán) — és ezektől eltérő, **Pi'él** alakban 5:29 (a föld, "melyet megátkozott az Úr").
@@ -173,11 +176,19 @@ Ez teszi lehetővé, hogy a motívum görög nyelven is felismerhető maradjon:
 - a **Zsid 6:8** három szót (γῆ, ἄκανθα, τρίβολος) és egy szócsaládot (κατάρα) vesz át a LXX 1Móz 3:17-18-ból;
 - a **Jel 11:18** a 6:12-13 kettős szerkezetét adja vissza egyetlen mondatban, ugyanazzal az igével mindkét oldalon, a **Jel 19:2** pedig a LXX 6:11 ige+tárgy szerkezetét (φθείρω + γῆ) — a szócsalád a γῆ-vel a teljes Újszövetségben csak ebben a két versben áll együtt;
 - a **Gal 3:13** az 5Móz 21:23-at idézve elhagyja a LXX ott álló κεκατηραμένος (*kekatéraménosz*) szavát, és az ἐπικατάρατος-szal helyettesíti — azzal a szóval, amely az 5Móz 27:26-ban (a 3:10 idézete) és a 1Móz 3:17-ben is áll.
+<!-- RÉS-VÉGE: miert_fontos -->
+
+---
+
+<!-- RÉS-KEZDET: 2b -->
+Nincs kiegészítő szótári adat.
+<!-- RÉS-VÉGE: 2b -->
 
 ---
 
 ## 3. A PaRDeS keretrendszer — magára a motívumra alkalmazva
 
+<!-- RÉS-KEZDET: ertelmezes -->
 ### Peshat
 
 A szövegek szó szerint egy **terjedési folyamatot** írnak le, négy mérhető dimenzió mentén.
@@ -223,6 +234,7 @@ Az átok a szövegekben mindvégig **kimondott szó** marad (*árúr*, kijelent�
 **Az "eredendő bűn" fogalom alkalmazhatósága.** Az, hogy a következmények gyűrűznek, nem azonos azzal az állítással, hogy a bűnösség öröklődik. A szövegek az előbbit mondják ki explicit módon; az utóbbi teológiai következtetés, amelyet a Róm 5:12-21 érvelése alapoz meg. A napló ezt külön motívumként tartja nyilván ("Ádám–Krisztus tipológia", ⚠️ jelöléssel, a Róm 5:12 ἐφ' ᾧ (*ef hó*) fordítási vitájával együtt) — a jelen tanulmány nem dönti el a kérdést.
 
 **A 1Móz 8:21 hatóköre.** Hogy az ígéret a 3:17 átkának teljes visszavonását jelenti-e, vagy csak egy megismételt, özönvíz-szerű csapás kizárását, a lexikai adat alapján nem dönthető el egyértelműen: a vers más igét (*kalal*) tagad, mint amelyet a 3:17 használ (*arar*), ami a szűkebb olvasat felé mutat; ugyanakkor a két ige a Genezisen belül másutt (12:3) egymás mellett is áll.
+<!-- RÉS-VÉGE: ertelmezes -->
 
 ---
 
@@ -254,6 +266,7 @@ A válaszok a tanulmány saját Peshat/Remez/Drash/Sod megállapításaiból vez
 
 ## 6. Napló-frissítés
 
+<!-- RÉS-KEZDET: modszertan -->
 A `PaRDeS_motivumok.md` naplóban a motívum **✅ LEZÁRVA** jelölést kapott, `Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` forrásfájllal, és átkerült az aktív ⭐ ajánlások közül a lezárt motívumok közé.
 
 🔍 **STEPBible-ellenőrizve:** H0779, H0127, H6093, H2403, H2555, H7843, H7451, H7043, H4390, H8085 — teljes ószövetségi előfordulás-scan, versen belüli együttállás-vizsgálattal (H4390+H2555 és H8085+H2555 kollokáció); G1944, G2671, G2672, G1311, G5351, G5356, G0093 — teljes újszövetségi előfordulás-scan; LXX-egyeztetés 1Móz 3:14,17,18; 4:11; 6:11-13,17; 9:25; 5Móz 21:23; 27:26; Zsolt 14:1; 53:2 igehelyeken. Forrás: `TAHOT_kivonat.tsv`, `TAGNT_kivonat.tsv`, `LXX_kivonat_Genezis.tsv`, `LXX_kivonat_Deuteronomium.tsv`, `LXX_kivonat_Zsoltarok.tsv`. Dátum: 2026.09.11.
@@ -292,14 +305,17 @@ Négy, igehely-szintű lexikai lelet került elő, amely önmagában is megáll,
 4. **1Móz 8:21** — az ígéret a קָלַל (*kalal*) igét tagadja, nem a 3:17 אָרַר-t.
 
 【NAPLO: ezek a leletek a sablon "Tartalmi visszaírás" alszakasza szerint propose-then-confirm fegyelem alá tartoznak — egyenként megbeszélendők, mielőtt a `1Moz_3v7-24_bovitett.md`, `1Moz_6v9-22_bovitett.md` és `1Moz_8v1-22_bovitett.md` fájlokba bekerülnének. A 12. pont szerinti 📎-visszahivatkozások ettől függetlenül, mutatóként már bekerültek — azok nem visznek be új tényt.】
+<!-- RÉS-VÉGE: modszertan -->
 
 ---
 
 ## Lásd még
 
+<!-- RÉS-KEZDET: modszertan -->
 - `Isten_fiai_Nefilim_Gibborim_tematikus.md` — ugyanazon szakaszok (1Móz 6:1-4) másik rétege; lexikailag elkülönül.
 - `Tehom_tematikus.md` — az özönvíz kozmikus oldala (a mélység forrásainak felfakadása, 7:11); a jelen motívum az özönvíz **erkölcsi indoklását** követi, nem a mechanizmusát.
 - `Hadesz_Seol_tematikus.md` — a halál birodalma mint önálló motívum; nem érintkezik a *arar*/*sáchat* szóanyaggal.
+<!-- RÉS-VÉGE: modszertan -->
 
 ---
 

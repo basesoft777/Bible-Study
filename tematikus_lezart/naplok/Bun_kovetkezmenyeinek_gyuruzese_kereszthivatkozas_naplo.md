@@ -138,6 +138,7 @@ Ugyanerre a nyolc igehelyre mindössze öt sor:
 
 ## 4. Tartalmi minősítés minden jelöltre
 
+<!-- RÉS-KEZDET: minosites -->
 ### 4/a. A lexikai gerinc jelöltjei
 
 | Igehely / csoport | Forrás | Döntés | Indoklás |
@@ -217,6 +218,7 @@ Ugyanerre a nyolc igehelyre mindössze öt sor:
 | **G5356 (*fthorá*)** — 1Kor 15:42, 15:50, Gal 6:8, Kol 2:22, 2Pét 1:4, 2:12, 2:19 | 7 igehely | ❌ ELUTASÍTVA | A "romlandóság" antropológiai/eszkatológiai használatban (feltámadás-test, testi vetés); kizárólag a Róm 8:21 köti a teremtett világ állapotához |
 | **G1311 (*diaftheiró*)** — Luk 12:33, 2Kor 4:16, 1Tim 6:5, Jel 8:9 | 4 igehely | ❌ ELUTASÍTVA | Moly rágása, külső ember romlása, elme megromlása, tengeri hajók pusztulása — nem a 6:12-13 tükör-szerkezet |
 | **G0093 (*adikia*)** — 24 igehely | 24 igehely | ❌ ELUTASÍTVA | A LXX ezzel fordítja a 1Móz 6:11,13 *chámász*-át, de az újszövetségi *adikia* önálló, tág fogalom ("igazságtalanság"); egyetlen előfordulása sem idézi vissza a genezisi mondatot |
+<!-- RÉS-VÉGE: minosites -->
 
 ---
 
@@ -236,6 +238,7 @@ Ugyanerre a nyolc igehelyre mindössze öt sor:
 
 ## 6. Végső döntés és összegzés
 
+<!-- RÉS-KEZDET: minosites -->
 **Beépítve a study 1. pontjának táblázatába — összesen 46 táblázat-sor:**
 
 - **A) genezisi lánc** — 20 sor (1Móz 3:14-tól 12:3-ig), közte három korábban nem dokumentált lexikai lelet (5:29 háromszavas visszaidézése; 8:21 *kalal* ≠ *arar*; 9:11,15 a 6:17 igéjének tagadása).
@@ -247,6 +250,7 @@ Ugyanerre a nyolc igehelyre mindössze öt sor:
 **Nyitva hagyva, megnevezett okkal:** 2 tétel — (a) Jób 16:18 + 31:38 (a "kiáltó vér" motívumhoz tartozik); (b) 5Móz 4:25 + Bír 2:19 + Sof 3:7 (a *sáchat* Hif'íl erkölcsi jelentése szövetséges népre alkalmazva — lehetséges önálló motívum).
 
 **Önálló motívum-jelöltként felmerült, de nem vizsgált:** a "vég elérkezett" (קֵץ) formula Ez 7:2,6 / Ámós 8:2 / 1Móz 6:13 kapcsolata — más kulcsszó, külön vizsgálatot érdemel.
+<!-- RÉS-VÉGE: minosites -->
 
 ---
 

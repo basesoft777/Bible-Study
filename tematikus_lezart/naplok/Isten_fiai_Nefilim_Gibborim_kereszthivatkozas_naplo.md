@@ -26,6 +26,7 @@ H1121+H0430 (בְּנֵי הָ)אֱלֹהִים, *bené (ha)Elohim*, pontos szó
 
 ## Tartalmi minősítés minden jelöltre
 
+<!-- RÉS-KEZDET: minosites -->
 | Jelölt | Minősítés | Indoklás |
 |---|---|---|
 | Jób 1:6, 2:1, 38:7 | ✅ már a táblázatban, TAHOT-scannel megerősítve | mennyei udvar / teremtéskori öröm-kontextus, a בְּנֵי (הָ)אֱלֹהִים minta konzisztens használata |
@@ -35,10 +36,13 @@ H1121+H0430 (בְּנֵי הָ)אֱלֹהִים, *bené (ha)Elohim*, pontos szó
 | Named teacher — Derek Prince (*Because of the Angels*) | ✅ beépítve, erős forrás | angyali/Watcher-nézet, explicit forrásmegjelöléssel (5. pont) |
 | Named teacher — pünkösdi ÓSZ-szakértők (Rickie D. Moore, Lee Roy Martin, John Christopher Thomas) | ❌ gap, indokolt | publikált munkáikban nem található kifejezetten erre a pericopára (1Móz 6:1-4) vonatkozó, ellenőrizhető állásfoglalás |
 | "shem — név szerzése mint lázadás" (6:4 ↔ 11:4) | ⚠️ nyitva, előre jelezve | a study 6. pontja explicit nyitva hagyja — felvétele a naplóba mint új, előre jelzett motívum külön jóváhagyást igényel |
+<!-- RÉS-VÉGE: minosites -->
 
 ## Végső döntés és indoklás
 
+<!-- RÉS-KEZDET: minosites -->
 A TAHOT-scan nem hozott új igehelyet — a study korábbi táblázata már teljes volt, a kutatás a meglévő öt előfordulást (bené ha'Elohim) és kettőt (nefilim) formálisan megerősítette, és felfedte a 4Móz 13:33→13:34 hibát. A Refáim-kapcsolat explicit, kölcsönös elhatárolással kimaradt. A Károli-KH jelölt (1Móz 6:2 → Mt 24:38/Lk 17:27) és a "shem"-alpont **nyitva marad**, felhasználói döntésre várva.
+<!-- RÉS-VÉGE: minosites -->
 
 ## Összegzés
 

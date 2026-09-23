@@ -34,6 +34,7 @@ H3548 (כֹּהֵן, "pap"), H8004 (שָׁלֵם, "Sálem"), H4442 (מַלְכִ
 
 ## Tartalmi minősítés minden jelöltre
 
+<!-- RÉS-KEZDET: minosites -->
 | Jelölt | Minősítés | Indoklás |
 |---|---|---|
 | 2Móz 19:6 | ✅ beépítve | H3548, BDB priest-king sense, önálló kollektív-szintű megjelenés |
@@ -47,10 +48,13 @@ H3548 (כֹּהֵן, "pap"), H8004 (שָׁלֵם, "Sálem"), H4442 (מַלְכִ
 | 1Pét 2:9 | ✅ beépítve (2026.09.09, retroaktív pótlás) | szó szerinti LXX-idézés (βασίλειον ἱεράτευμα, azonos G0934+G2406 pár, mint LXX 2Móz 19:6) — lexikai, nem csak tematikus kapcsolat. **A TSK 2026.09.08-09-i auditja már megtalálta, de a minősítő táblázatból kimaradt — l. a Q2-szabály 2026.09.09-i kibővítését.** |
 | Jel 1:6 | ❌ elutasítva, indokolt | tematikus párhuzam, de más görög szavak (βασιλείαν, ἱερεῖς — nem βασίλειον ἱεράτευμα) — nem szó szerinti LXX-idézés |
 | Jel 5:10 | ❌ elutasítva, indokolt | ugyanaz, mint Jel 1:6 — tematikus párhuzam, más görög szavak, nem lexikai egyezés |
+<!-- RÉS-VÉGE: minosites -->
 
 ## Végső döntés és indoklás
 
+<!-- RÉS-KEZDET: minosites -->
 A teljes ✅ halmaz (2Móz 19:6, Zak 6:13, Zsolt 76:3) beépítve a study 1. pontjának táblázatába. A H7069 és a BDB "chieftain" alkategória, valamint a G5010 nem-releváns előfordulásai és a Copeland-forrás explicit elutasítva, dokumentált indokkal — egyik sem hallgatólagos kihagyás.
+<!-- RÉS-VÉGE: minosites -->
 
 ## Összegzés
 

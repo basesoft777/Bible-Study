@@ -27,6 +27,7 @@ H8415 (תְּהוֹם, *tehóm*, "mélység, őstenger"), G0012 (ἄβυσσος
 
 ## Tartalmi minősítés minden jelöltre
 
+<!-- RÉS-KEZDET: minosites -->
 | Jelölt | Minősítés | Indoklás |
 |---|---|---|
 | Zsolt 36:7 | ✅ beépítve | H8415 teljes scan, eddig dokumentálatlan |
@@ -37,10 +38,13 @@ H8415 (תְּהוֹם, *tehóm*, "mélység, őstenger"), G0012 (ἄβυσσος
 | ταρταρόω (2Pét 2:4) | ❌ elutasítva, indokolt (elhatárolás) | nem lexikai rokona a tehóm/ábüσσος szónak — külön, görög mitológiából kölcsönzött terminus; tartalmilag inkább az "Isten fiai / gibborim-nefilim" motívumhoz kapcsolódik |
 | Jel 21:1 (θάλασσα, "tenger") | ❌ elutasítva, indokolt | nem lexikai rokona az ἄβυσσος szócsaládnak — tematikus, nem lexikai párhuzam |
 | Named teacher (Derek Prince / Hagin / Capps) | ❌ gap, indokolt | nincs kifejezetten e motívumhoz kötött, elmentett szabály szerinti nevesített tanító-hivatkozás; gyengébb anyaggal nem pótolva |
+<!-- RÉS-VÉGE: minosites -->
 
 ## Végső döntés és indoklás
 
+<!-- RÉS-KEZDET: minosites -->
 A három ✅ igehely (Zsolt 36:7, 77:17, Jón 2:6) beépítve a study 2/b pontjának táblázatába. A korábban prózai formában dokumentált 25 igehely sablon-konform táblázatra alakítva, a hibás számadat javítva. A G0012 teljes scan megerősítette a meglévő 9 ábüσσος-előfordulást, új nem került elő. A Tartarosz és a Jel 21:1 "tenger" explicit, indokolt elhatárolással kimaradt. A named teacher gap explicit.
+<!-- RÉS-VÉGE: minosites -->
 
 ## Összegzés
 

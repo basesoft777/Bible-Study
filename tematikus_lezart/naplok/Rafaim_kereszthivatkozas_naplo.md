@@ -29,6 +29,7 @@ H7497 (רְפָאִים, *refáim* — prózai/óriás-értelem), H7496 (רְפ�
 
 ## Tartalmi minősítés minden jelöltre
 
+<!-- RÉS-KEZDET: minosites -->
 | Jelölt | Minősítés | Indoklás |
 |---|---|---|
 | Józs 15:8 | ✅ beépítve | H7497 teljes scan, "עֵמֶק רְפָאִים" — azonos mintázat, mint 2Sám 5:18/22 |
@@ -43,10 +44,13 @@ H7497 (רְפָאִים, *refáim* — prózai/óriás-értelem), H7496 (רְפ�
 | Zsolt 105:23, 105:27, 106:22, 78:51 (TSK, alacsony szavazat) | ⚠️ nyitva — nem minősítve | "Khám földje" tematikus szomszédság |
 | 1Krón 4:40 (TSK, alacsony szavazat) | ⚠️ nyitva — nem minősítve | tematikus szomszédság, nem lexikai egyezés |
 | Named teacher (Hagin, Copeland, Roberts, Osborn, Capps, Prince, Wommack stb.) | ❌ gap, indokolt | nincs megbízható, elsődleges forrás a jóváhagyott listáról, amely kifejezetten az 1Móz 14:5 Refáim/Zuzim/Émim szakaszra vagy a Refáim-motívumra hivatkozna; a "giants in the land" téma áttételes, nem dedikált |
+<!-- RÉS-VÉGE: minosites -->
 
 ## Végső döntés és indoklás
 
+<!-- RÉS-KEZDET: minosites -->
 A három ✅ igehely (Józs 15:8, 17:15, 18:16) beépítve a study 1. pontjának táblázatába. A H7496/H7497 Strong-szám szerinti megoszlás a 2. pontban rögzítve. A 4Móz 13:33→13:34 hiba minden előfordulási helyen javítva. Az 1Móz 6:4 explicit, kölcsönös elhatárolással kimaradt (l. a testvér-naplót). A 12 alacsony szavazatú TSK-jelölt **nyitva marad** — egyedi minősítést igényelnének, ami ebben a munkamenetben nem történt meg; a `NYITOTT_FELADATOK.md`-be vagy egy jövőbeli célzott körbe valók. A named teacher gap explicit, indokolt.
+<!-- RÉS-VÉGE: minosites -->
 
 ## Összegzés
 

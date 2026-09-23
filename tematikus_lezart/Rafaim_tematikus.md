@@ -16,6 +16,7 @@
 
 ## 0. Forrás-összegyűjtés a meglévő anyagból (retroaktívan pótolva, 2026.09.10)
 
+<!-- RÉS-KEZDET: modszertan -->
 *A sablon 0. pontja e study elkészültekor (v1, 2026.08.16) még nem létezett — ez a retroaktív pótlás.*
 
 1. **`PaRDeS_motivumok.md`** — a motívum bejegyzése (v35, 2026.08.16, kiegészítve v43/v47-tel) ellenőrizve — a teljes lexikai ív már a study saját szövegében szerepel (1Móz 14:5, 15:20; 5Móz 2:10-11,20-21, 3:11,13; Józs 12:4/13:12; 2Sám 21:15-22/1Krón 20:4-8; Jób 26:5; Zsolt 88:11; Péld 2:18,9:18,21:16; Ézs 14:9,26:14,19; a 2026.08.25-i Refáim-völgy kiegészítéssel: 2Sám 5:18,22, 23:13/1Krón 11:15, 14:9/Ézs 17:5).
@@ -25,6 +26,7 @@
 5. **`Kockazat_szures_riport_*.md`** — nincs kapcsolódó bejegyzés.
 
 **Külön elhatárolási forrás:** a `PaRDeS_motivumok.md` naplóban e motívum (`[ID: HODIT-001]`) és az "Isten fiai — Nefilim — Gibborim" motívum (`[ID: MENNY-001]`) elhatárolása több körben (v21, v34, v35, v43) is dokumentálva — l. az 1. pont utáni jegyzetet is.
+<!-- RÉS-VÉGE: modszertan -->
 
 ---
 
@@ -58,6 +60,7 @@
 
 ## 2. Eredeti nyelvi összevetés
 
+<!-- RÉS-KEZDET: miert_fontos -->
 **A központi probléma: két, homonim gyök, vagy egyetlen, teológiailag kettéágazó szó?**
 
 A רְפָאִים (*refáim*) szó a héber Bibliában **két, látszólag ellentétes jelentésmezőben** fordul elő:
@@ -69,11 +72,19 @@ A héber lexikográfia hagyományosan **két külön gyököt** feltételezett: 
 **Strong-szám szerinti megoszlás:** a két jelentésmező a konkordanciákban is elkülönül — a prózai/óriás-értelem **H7497** alatt fut (25 előfordulás), a költői/halott-árnyak-értelem pedig önálló, külön **H7496** kód alatt (8 előfordulás: Jób 26:5; Zsolt 88:11; Péld 2:18,9:18,21:16; Ézs 14:9,26:14,19) — tehát nem csupán tartalmi, hanem indexelési szinten is két külön tétel. 【NAPLO: a Strong-szám szerinti szétválás 2026.09.10-én, a helyi `TAHOT_kivonat.tsv` közvetlen lekérdezésével (awk, Strong-szám szerinti szűrés) azonosítva — korábban a study csak tartalmilag különböztette meg a két jelentésmezőt, Strong-szám szinten nem.】
 
 **Fontos módszertani megjegyzés a projekt szabálya szerint:** a Refáim szótő **teljesen elkülönül** a גִּבֹּרִים (*gibborim*) és נְפִילִים (*nefilim*) szócsaládtól — nincs közös triliterális gyök. A kapcsolat tehát **tematikus, NEM lexikai párhuzam**, pontosan úgy, ahogy a `PaRDeS_motivumok_v34.md` már rögzítette.
+<!-- RÉS-VÉGE: miert_fontos -->
+
+---
+
+<!-- RÉS-KEZDET: 2b -->
+Nincs kiegészítő szótári adat.
+<!-- RÉS-VÉGE: 2b -->
 
 ---
 
 ## 3. A PaRDeS keretrendszer — a motívum egészére alkalmazva
 
+<!-- RÉS-KEZDET: ertelmezes -->
 ### Peshat
 
 A Szentírás együttesen egy különös kettősséget rajzol ki. Egyfelől a Refáim (és rokon nevű népek: Zuzim, Émim, Zamzummim, részben az Anákim is) történelmi, prózai szinten valóságos, nagy termetű népcsoportként jelennek meg, akik Kánaán és a szomszédos területek (Básán, Moáb, Ammón) korai lakói voltak — 1Móz 14-ben már Ábrám idejében is létező, majd a honfoglalás korára jórészt kihalt/felszívódott nép, akiknek utolsó ismert királya Óg volt. Másfelől ugyanez a szó a bölcsességi és prófétai irodalomban a halottak birodalmának, a Seólnak lakóit jelöli — erőtlen árnyakat, akik nem dicsérik Istent, és akikhez a gonosz sorsa vezet.
@@ -99,6 +110,7 @@ Egyes kortárs kutatók (**Michael S. Heiser**, *The Unseen Realm*, *Reversing H
 
 **(b) Egyetlen szó két jelentéssel, vagy két homonim gyök?**
 A klasszikus lexikográfia (BDB) két külön gyököt tételez fel; az újabb levantei/ugaritológiai kutatás (**Theodore J. Lewis**, *Cults of the Dead in Ancient Israel and Ugarit*; **Baruch Levine és Jean-Michel de Tarragon**, *Dead Kings and Rephaim*) egységes kulturális-vallási hátteret mutat ki: a Refáim/rāpiʾūma egy közös nyugat-sémi hagyomány, amely az ősi hősi-királyi ősök kultikus tiszteletét kötötte össze az alvilággal — a Biblia ezt a hagyományt polemikusan "üresíti ki" (a tisztelt ősi hősökből erőtlen árnyak lesznek). Ez a kérdés nyitott tudományos vita, nem eldöntött konszenzus.
+<!-- RÉS-VÉGE: ertelmezes -->
 
 ---
 
@@ -122,17 +134,20 @@ Nem releváns — a motívum nem érinti kifejezetten a pünkösdi/karizmatikus 
 
 ### Minőségi kapu (Quality Gate) — retroaktívan pótolva, 2026.09.10 (`4_PaRDeS_tematikus_sablon.md` v14 szerint)
 
+<!-- RÉS-KEZDET: modszertan -->
 - [x] **Q1. Szerkezeti teljesség** — mind a 6 kötelező szakasz jelen van (1. Előfordulások, 2. Eredeti nyelvi összevetés, 3. PaRDeS keretrendszer, 4. Kapcsolódás a kutatási sablonhoz, 5. Alkalmazás, 6. Napló-frissítés).
 - [x] **Q2. Négyforrásos audit nyoma dokumentált** — 🔬 Valódi lexikai kutatás elvégezve 2026.09.10-én, a helyi `TAHOT_kivonat.tsv` közvetlen lekérdezésével (H7497 teljes ÓSZ-scan, 25 előfordulás) és a `Karoli_kereszthivatkozasok.tsv` átnézésével. **Három, eddig dokumentálatlan igehely került elő** (Józs 15:8; 17:15; 18:16), felvéve az 1. pont táblázatába; a H7496/H7497 Strong-szám szerinti megoszlás tisztázva (l. 2. pont); egy igehely-hivatkozási hiba javítva (4Móz 13:33→13:34). 【NAPLO: a 2026.09.09-i verzióban itt egy pontatlan, ténylegesen soha le nem futtatott "STEPBible-ellenőrizve" állítás szerepelt — ez a sor annak korrekciója és a valódi kutatás eredménye.】
 - [x] **Q3. Lexikai vs. tematikus kapcsolat szétválasztva** — a nefilim/gibborim (1Móz 6:4) kapcsolat explicit "tematikus, NEM lexikai"-ként jelölve (2. pont és az 1. pont utáni jegyzet).
 - [x] **Q4. Kereszt-motívum szennyeződés kizárva** — friss `grep` a teljes repón (2026.09.10): a study kizárólag a saját (HODIT-001) motívumára vonatkozó leleteket tartalmazza; a nefilim/gibborim anyag most explicit kereszthivatkozásként, nem beolvasztva szerepel.
 - [x] **Q5. Nevesített tanítói szakasz jelen van, vagy explicit hiányjelzéssel zárva** — 5. pont, gap-jelzéssel (nincs dedikált forrás a jóváhagyott listáról).
 - [x] **Q6. Napló-/formázási-/hangnem-fegyelem** — ellenőrizve: nincs inline dátum-tag tartalmi cellában, nincs "Forrás:" bekezdés, nincs első személyű ellenőrzési állítás, nincs magyar fordítás blockquote-ban, nincs olvasót megszólító mondat, nincs réteg-keveredés.
+<!-- RÉS-VÉGE: modszertan -->
 
 ---
 
 ## 6. Napló-frissítés
 
+<!-- RÉS-KEZDET: modszertan -->
 ✅ **Ez a lezárás már megtörtént korábban** (`PaRDeS_motivumok.md` v35, 2026.08.16) — a napló rögzíti, hogy ez a motívum "lezárt/önállóan feldolgozott témaként" szerepel, felhasználói explicit kérésre, a rendes ⭐ küszöb elérése előtt. Ez a fájl a naplóban már korábban dokumentált lezárás **tényleges, teljes tartalmát** pótolja a repóban — nem új lezárási lépés.
 
 **2026.09.10-i retroaktív v14-compliance frissítés:** "0. Forrás-összegyűjtés" szakasz pótolva; Minőségi kapu (Q1-Q6) retroaktívan dokumentálva; az 1Móz 6:4-es kereszthivatkozás kiemelve az 1. pont táblázatából egy explicit elhatárolási jegyzetbe; 📎-visszahivatkozás pótolva `1Moz_14_bovitett.md`-be.
@@ -140,11 +155,15 @@ Nem releváns — a motívum nem érinti kifejezetten a pünkösdi/karizmatikus 
 **2026.09.10-i, ugyanaznapi második frissítés — valódi lexikai kutatás eredménye:** három új igehely (Józs 15:8; 17:15; 18:16), H7496/H7497 Strong-szám tisztázás, igehely-hivatkozási javítás (4Móz 13:33→13:34, l. is `Isten_fiai_Nefilim_Gibborim_tematikus.md` és a motívumnapló). Tartalmi következtetés a fentieken túl nem változott.
 
 **Teljes jelölt-lista** (F0.5, 2026.09.13-án retroaktívan pótolva): `tematikus_lezart/naplok/Rafaim_kereszthivatkozas_naplo.md`.
+<!-- RÉS-VÉGE: modszertan -->
 
 ---
 
 ## Terminológiai és formai szabályok
+
+<!-- RÉS-KEZDET: modszertan -->
 „Szent Szellem", kiejtések mindenütt, igehely-rövidítések szóköz nélkül, Károli teljes idézetekhez.
+<!-- RÉS-VÉGE: modszertan -->
 
 ---
 

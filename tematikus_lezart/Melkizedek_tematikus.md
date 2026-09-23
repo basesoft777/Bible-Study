@@ -34,6 +34,7 @@ draft felidézett tartalmának visszamásolásával.】
 
 ## 0. Forrás-összegyűjtés a meglévő anyagból
 
+<!-- RÉS-KEZDET: modszertan -->
 Az 1. pont friss keresése előtt végignézve a kötelező forrásokat:
 
 - **`PaRDeS_motivumok.md`** — a motívum meglévő bejegyzése (l. 1. pont).
@@ -42,6 +43,7 @@ Az 1. pont friss keresése előtt végignézve a kötelező forrásokat:
 - **Named teacher, más igehelyre, ezért a jelen motívum szempontjából nem releváns:** a bővített tanulmány szerint **Kenneth Copeland** (kcm.org, *"70 Scriptures That Prove God Is Your Source"*) az 1Móz 14:22-23-at (Ábrám esküje Sodoma királyának) tárgyalja "forrás-reveláció" témában — ez a fejezet egy másik jelenete (nem Melkizedek papsága/tizede), ezért a jelen motívum 5. pontjába nem kerül be.
 - **"Nyitva maradó szál" jelzés:** nincs a bővített tanulmányban.
 - **Kockázat-szűrő riport:** friss verzió nem található a repóban erre a motívumra.
+<!-- RÉS-VÉGE: modszertan -->
 
 ---
 
@@ -74,6 +76,7 @@ Az 1. pont friss keresése előtt végignézve a kötelező forrásokat:
 
 ## 2. Eredeti nyelvi összevetés
 
+<!-- RÉS-KEZDET: miert_fontos -->
 **H3548 (כֹּהֵן, *kohén*)** — "pap." Első előfordulása a Szentírásban éppen itt, Melkizedeknél — még a lévita papság és a Sínai-törvény előtt.
 
 **BDB H3548 — "priest-king" ("pap-király") jelentés:** a BDB szótár a כֹּהֵן szócikk 1. jelentésárnyalatát kifejezetten **"priest-king"** ("pap-király") címkével látja el, és ide sorolja együtt: Melkizedeket (1Móz 14:18), a "Messianic priest-king like Melchizedek" ("messiási pap-király, mint Melkizedek") minősítéssel Zsolt 110:4-et, a "Messianic priest and king" ("messiási pap és király") minősítéssel Zak 6:13-at, és Izráelt mint מַמְלֶכֶת כֹּהֲנִים (*mamlékhet kohaním*, 2Móz 19:6, "priests and kings at once in their relation to the nations" — "egyszerre papok és királyok a nemzetekhez való viszonyukban"), összevetésként Ézs 61:6-ot is megemlítve. **Ez a négy igehely tehát nem a jelen tanulmány szabad asszociációja, hanem magának a BDB-nek egy önálló, elkülönített lexikai jelentés-kategóriája.**
@@ -119,10 +122,19 @@ Ez az öt/hat-szörös hivatkozás tudatosan kihasználja a szó technikai súly
 ⚡ **Mellőzött jelölt, pontosított indoklással:** 1Móz 14:19 "Magasságos Istennek… teremtőjétől" kifejezésben a קֹנֵה (H7069, "birtokló/alkotó") szó — teológiailag súlyos cím (vö. Péld 8:22): a gyök elsődleges jelentése "venni/birtokolni", de a szó egyszerre hordozza a "birtokosa" és az "alkotója" jelentést is (l. 0. pont, a bővített tanulmány 7. pontjának tárgyalása). Ez a *jelen*, Melkizedek-motívum szempontjából nem hordoz önálló többletet: az "Isten mint teremtő/birtokos" egy másik, önálló motívum tárgyköre, nem a "király-pap rendje" mintázaté.
 
 【NAPLO: Q2 audit-átláthatóság — a 0. pont gyűjtése (2026.09.09) tárta fel, hogy a korábbi "nem ritka, egyik réteg sem épül rá" indoklás pontatlan volt: a szó valójában dokumentált a bővített tanulmányban, csak más motívumhoz tartozik.】
+<!-- RÉS-VÉGE: miert_fontos -->
+
+---
+
+<!-- RÉS-KEZDET: 2b -->
+Nincs kiegészítő szótári adat.
+<!-- RÉS-VÉGE: 2b -->
 
 ---
 
 ## 3. A PaRDeS keretrendszer — a motívum egészére alkalmazva
+
+<!-- RÉS-KEZDET: ertelmezes -->
 
 **Peshat:** öt szöveg együttesen egy szokatlan, ismétlődő alakzatot rajzol ki. Egy Ábrahám-kori kánaáni király, aki egyúttal "a Felséges Isten papja" — olyan kombináció, amely a későbbi izraeli rendszerben (király és pap szigorúan elkülönített tisztsége) tiltott lett volna. Melkizedek kenyeret és bort hoz — nem áldozati állatot —, megáldja Ábrámot, és Ábrám önként tizedet ad neki. A Genezis-szöveg semmi mást nem közöl róla: nincs genealógiája, nincs halál-formulája, nem tér vissza többé. Városa, Sálem, azonos a későbbi Jeruzsálem/Sionnal — ezt Zsolt 76:3 ugyanazzal a szóval (H8004) erősíti meg, mint egy, a Genezistől független ószövetségi hang. Alig néhány fejezettel/évszázaddal később, a Sínai-hegynél, Isten **ugyanezt a kombinációt egy egész népre** ruházza: "lesztek nékem papok királysága" (2Móz 19:6) — még mielőtt a lévita papság a maga szigorú, elkülönített intézményeként megszerveződne. Zsolt 110:4 ezt az alakot próféciai mintaként emeli fel egy jövőbeli, immár egyénre (a dávidi királyra) szűkített királyi-papi tisztség számára; Zakariás egy generációval a fogság után explicit próféciai képet fest: "pap lesz az ő királyi székén" (Zak 6:13) — a kombináció ezúttal egyetlen jövőbeli alakra összpontosítva, trónon ülő papként. Zsid 5-7 pedig szisztematikusan kifejti, hogy ez a rend miért és hogyan alkalmazható Krisztusra.
 
@@ -149,6 +161,7 @@ Ez az öt/hat-szörös hivatkozás tudatosan kihasználja a szó technikai súly
 - **Kanonikus/hagyományos irány (Derek Kidner; Bruce Waltke; Victor Hamilton):** a Zsolt 110:4 **tudatosan idézi/hivatkozik** az 1Móz 14 eseményére mint már ismert, rögzült hagyományra — Dávid (vagy a zsoltár szerzője) tudatosan von párhuzamot a maga királyi-papi tisztsége és az ősi, Ábrahám korából ismert Melkizedek-alak közé, hogy a dávidi dinasztia legitimitását egy Áron előtti, ezért a lévita rendtől független papi tekintélyhez kösse.
 
 A projekt módszertani állásfoglalása: ez a vita a történeti-kritikai vs. kanonikus-irodalmi olvasat közötti szélesebb feszültség egyik konkrét megnyilvánulása — nem dönthető el pusztán filológiai eszközökkel, mivel mindkét olvasat konzisztens a rendelkezésre álló szöveggel. **Ez a két vita — (a) és (b) — egymástól független**: nem ugyanarról a kérdésről szól, és a projekt egyiket sem tekinti eldöntöttnek. A 2Móz 19:6 és Zak 6:13 bevonása egyik vitát sem dönti el, de a (b) vitát árnyalja: ha a "kritikai/redakciós irány" helyes, a 2Móz 19:6-nál dokumentált korai, kollektív "papok királysága" hagyomány önálló, a Zsolt 110-től és Gen 14-től is független tanúja lehet ugyanannak a régi ideológiai mintának — ez a lehetőség nyitva marad, nincs a projekt által eldöntve.
+<!-- RÉS-VÉGE: ertelmezes -->
 
 ---
 
@@ -183,6 +196,7 @@ A motívum közvetlenül érinti a pünkösdi/karizmatikus hívő-papság ("kir�
 
 ## 6. Napló-frissítés
 
+<!-- RÉS-KEZDET: modszertan -->
 Ez a tanulmány a Melkizedek-motívumot **kiegészíti**, nem duplikálja a naplóban már rögzített lezárást (v42, mélyelemzés) — a motívum már korábban "lezárt/önállóan feldolgozott mélyelemzési szálként" van megjelölve. E tanulmány (v2) hozzáadja a naplóhoz: (a) a motívum-szintű teljes Peshat/Remez/Drash/Sod bontást, immár öt igehelyre kiterjesztve; (b) két új, lexikailag (nem csak tematikusan) kapcsolódó igehelyet (2Móz 19:6, Zak 6:13), BDB-jelentés szinten is dokumentálva; (c) a nevesített tanítói keresés eredményét (Derek Prince ✅, a többi jóváhagyott tanítónál explicit gap-jelzés) — változatlanul a v1-ből. A `Lezart_tematikus_tanulmanyok_index.md`-ben a motívum mostantól **mindkét formában** szerepel: a "Lezárt mélyelemzések" szekcióban (a filológiai mélyelemzés) és a fő tematikus táblázatban is (a teljes PaRDeS-feldolgozás).
 
 【NAPLO: v1 → v2 bővítés forrása és dátuma: 2026.09.08, chat-munkamenet, önálló négyforrásos audit (TAHOT/TAGNT teljes-előfordulás scan, TSK, Károli-Strong-kivonat, BDB online-ellenőrzés webes kereséssel — a repóban nincs önálló BDB-TSV, l. alábbi Q2 megjegyzés). Nem egy korábbi, elveszett munkamenet tartalmának felidézéséből.】
@@ -213,3 +227,4 @@ Ez a tanulmány a Melkizedek-motívumot **kiegészíti**, nem duplikálja a napl
 ---
 
 *Belső önellenőrzés elvégezve: kiejtés minden héber/görög szónál feltüntetve; a mélyelemzés filológiai eredményei (τάξις, Zsid 7:3 argumentum e silentio, Gen 14↔Zsolt 110 irány-vita) teljes egészében megismételve, hogy a fájl önmagában is olvasható legyen; ⚠️ két elkülönített vita explicit megkülönböztetve (Melkizedek kiléte vs. Gen 14↔Zsolt 110 irány), (b) vita kiegészítve a 2Móz 19:6-lelet lehetséges hatásával; nevesített tanítói keresés az öt lépéses módszertant követte, forrás-erősség jelölve (✅ Prince), hiány esetén explicit jelezve; igehely-formátum egységes; napló-jelölés 【NAPLO: ...】 formában, elkülönítve minden folyamat-jellegű megjegyzésnél; Napló-frissítés és Lezárási checklist elvégezve — **mind a 12 pont lezárva 2026.09.10-én** (l. fent); a korábbi, 2-5/8-9/10/12. pontokat nyitva hagyó megjegyzés elavult volt, törölve.*
+<!-- RÉS-VÉGE: modszertan -->

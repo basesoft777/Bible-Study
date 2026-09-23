@@ -209,6 +209,20 @@ Utolsó frissítés: 2026.09.23 (RENDER_BRIEF.md v4, 1. menet — R1.1–R1.8: r
   gyanú ellenőrzése akkor válik ismét élessé, ha a régi kivonatot valaki
   újra bemenetként használná (jelenleg nincs ilyen felhasználás).
 
+- **N18 — Az ANTROP-001-nek nincs kereszthivatkozás-naplója.** *(ÚJ,
+  RENDER_BRIEF.md R2.1, G14, 2026.09.23)* A `minosites` rés forrása a
+  motívum kereszthivatkozás-naplójának „Tartalmi minősítés minden
+  jelöltre" és „Végső döntés és indoklás" szakasza volna (G14) — a másik
+  hat lezárt motívumnak (KIRALY-001, TEREMT-001, ALVIL-001, MENNY-001,
+  HODIT-001, HAMART-001) megvan ez a naplója, az ANTROP-001-nek
+  (`Pneuma_pszukhe_megkulonboztetes_tematikus.md`) nincs. A lexikonoldal
+  `minosites` rése ezért egy explicit hiány-mondatot kapott a
+  tanulmányban (*„A kereszthivatkozás-minősítés ennél a motívumnál nem
+  készült el."*), jelölők közt. Eldöntendő: készüljön-e utólag napló
+  (`tematikus_lezart/naplok/Pneuma_pszukhe_megkulonboztetes_kereszthivatkozas_naplo.md`)
+  a többi hathoz hasonló TSK/Károli-audittal, vagy maradjon a hiány
+  dokumentálva.
+
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá vált — belépő: `DONTESEK_INDEX.tsv`. A vers-szintű jelöltek nem ide, hanem az `adat/jeloltek.tsv`-be kerültek (16 sor, mind `dontes=nyitva`): HODIT-001 13 alacsony szavazatú TSK-jelölt, MENNY-001 Mt 24:38 + Luk 17:27, ANTROP-001 Fil 1:27. Az alábbiak a nem vers-szintű tételek:
