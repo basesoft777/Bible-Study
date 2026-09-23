@@ -63,7 +63,7 @@ jelöléssel szerepel — futtathatóként sehol nem áll.
 
 | # | Lépés | Ki | Kimenet | Ma mivel fut | Megjegyzés |
 |---|---|---|---|---|---|
-| C1 | lexikon TUDOMÁNYOS szakaszainak + a törzscikk generálása (render) | végrehajtó | generált fájlok | `eszkozok/general.py --cel lexikon --ir`; `eszkozok/general.py --cel torzscikk --ir` | RENDER_BRIEF.md v4 (1. menet) óta a lexikonoldal 10 generált blokkja MELLETT a hét rés (`kivonat`, `2b`, `miert_fontos`, `minosites`, `alatamasztas`, `ertelmezes`, `modszertan`) is generált: `adat/res_forras.tsv` + a tanulmány/napló `<!-- RÉS-KEZDET/VÉGE -->` jelölői közötti törzse alapján (G1/G2). A `_TORZSCIKK.md` a lexikonoldalból renderel ("render a renderből", G7) — nem önálló lépés |
+| C1 | lexikon TUDOMÁNYOS szakaszainak + a törzscikk generálása (render) | végrehajtó | generált fájlok | `eszkozok/general.py --cel lexikon --ir`; `eszkozok/general.py --cel torzscikk --ir` | RENDER_BRIEF.md v5 (2. menet, R2.3) óta mind a 8 motívum lexikonoldalán a 10 generált blokk MELLETT a hét rés (`kivonat`, `2b`, `miert_fontos`, `minosites`, `alatamasztas`, `ertelmezes`, `modszertan`) is generált: `adat/res_forras.tsv` + a tanulmány/napló `<!-- RÉS-KEZDET/VÉGE -->` jelölői közötti törzse, vagy (`alatamasztas`-nál, 0-kapcsolatú motívumoknál és KIRALY-001-nél) egy adatból vezetett mondat alapján (G1/G2/G16). A `_TORZSCIKK.md` a lexikonoldalból renderel ("render a renderből", G7) — nem önálló lépés |
 | C2 💎 | a rések megírása **a tanulmányban**, nem a lexikonoldalon | kutató | tanulmány-rés (a tematikus tanulmány vagy a kereszthivatkozás-napló `<!-- RÉS-KEZDET/VÉGE -->` jelölői között) | kézi | drága modell — hét rés, l. lent. **A lexikonoldal kézzel nem szerkeszthető** (RENDER_BRIEF.md G4); a `ellenoriz.py` 11. szakasza SÉRTÉSnek jelzi az eltérést |
 | C3 💎 | ~~lexikon OLVASHATÓ megírása~~ — MEGSZŰNT (2026.09.21, felhasználói döntés): a lexikon-oldal egyetlen változata a _TUDOMANYOS.md | kutató | kézi fájl | kézi | drága modell; az első (ISTENTISZT-001) átemelve a pilotból, a többi a célvonal-döntéstől függ |
 | C4 | commit/push, `main` merge | végrehajtó + ember | — | kézi | git-parancsok a `CLAUDE.md` szabálya szerint; nincs önálló script |
@@ -120,14 +120,23 @@ v3, `eszkozok/lexikon_general.py`):
   8. Irodalom és idézés, Kolofon.
 - **rés** (hét, `res_blokkok_alkalmaz()`, RENDER_BRIEF.md G1–G4): `kivonat`,
   `2b`, `miert_fontos`, `minosites`, `alatamasztas`, `ertelmezes`,
-  `modszertan` — fejlécsoruk a `adat/res_forras.tsv`-ből, törzsük a motívum
-  tematikus tanulmányából/kereszthivatkozás-naplójából (`forras=tanulmany`)
-  vagy — átmenetileg, amíg a 7 helyőrzős oldal nem áll át — a lexikonoldal
-  mai szövegéből, változatlanul (`forras=lap`, G12). A lexikonoldal ezeket a
-  szakaszokat is a generátorral kapja; **kézzel csak a tanulmányban
-  szerkeszthetők** (G4).
+  `modszertan` — fejlécsoruk a `adat/res_forras.tsv`-ből, törzsük vagy a
+  motívum tematikus tanulmányából/kereszthivatkozás-naplójából
+  (`forras=tanulmany`), vagy — csak a 0-kapcsolatú motívumok
+  `alatamasztas` résénél, és a KIRALY-001 `alatamasztas` résénél —
+  a `res_forras.tsv`-be előre rögzített, adatból vezetett mondatból
+  (`forras=adat`, G16/D26, RENDER_BRIEF.md D28). A `forras=lap` a
+  RENDER_BRIEF.md 2. menetének végére (R2.3) megszűnt: mind az 56 sor
+  `tanulmany` vagy `adat` forrású (`adat/res_forras.tsv`). A lexikonoldal
+  ezeket a szakaszokat is a generátorral kapja; **kézzel csak a
+  tanulmányban szerkeszthetők** (G4). A lexikonoldal első sora fájl-szintű
+  gépi jelölést hordoz (`<!-- GENERÁLT: general.py --cel lexikon | rések:
+  [forras_study] -->`, R2.5) — nem tévesztendő össze a 10 blokk saját
+  GENERÁLT-KEZDET/VÉGE jelölésével.
 - a **törzscikk** (`lexikon/[ID]_TORZSCIKK.md`, `general.py --cel torzscikk`)
-  a lexikonoldalból renderel, önálló kézi rész nélkül (G7).
+  a lexikonoldalból renderel, önálló kézi rész nélkül (G7); a törzscikk
+  a 【NAPLO...】 folyamat-jelölő blokkokat és a fájl-szintű GENERÁLT-sort
+  is eltávolítja (K9: egyik sem jelenhet meg a törzscikkben).
 
 ## Mi hiányzik az üzemmenetből ma
 

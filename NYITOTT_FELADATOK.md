@@ -1,6 +1,6 @@
 # Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.09.23 (RENDER_BRIEF.md v4, 1. menet — R1.1–R1.8: rés-forrás rendszer, törzscikk-generátor)
+Utolsó frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: a rések tartalommal, kivonatok, `forras=lap` megszűnt, diff-osztályozó — RENDER lezárva. **Következő: `SZOTAR_BRIEF.md`.**)
 
 ## Nagy, tartalmi döntést igénylő tételek
 

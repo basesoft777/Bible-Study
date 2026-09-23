@@ -1,6 +1,6 @@
 # RENDER_BRIEF.md — render-átállás: a lexikonoldal és a törzscikk a tematikus tanulmányból
 
-*v4 — 2026.09.23 · jóváhagyva: a §2 G-döntései és a §0/§4 számai · v2 → v3: a rések forrása a tematikus tanulmány (D12); a szótári adatréteg külön briefbe került (`SZOTAR_BRIEF.md`, D13); új szerepmátrix (D14), benne az LXX-híd (D19) és a kiejtés (D20) · v3 → v4: az R0.8 jóváhagyott döntései (G14–G16, D21–D27)*
+*v5 — 2026.09.23 · jóváhagyva: a §2 G-döntései és a §0/§4 számai · v2 → v3: a rések forrása a tematikus tanulmány (D12); a szótári adatréteg külön briefbe került (`SZOTAR_BRIEF.md`, D13); új szerepmátrix (D14), benne az LXX-híd (D19) és a kiejtés (D20) · v3 → v4: az R0.8 jóváhagyott döntései (G14–G16, D21–D27) · v4 → v5: az R2.6 diff-osztályozó kategórialistája kiegészül (D28)*
 
 **Cél.** A render-elv végrehajtása a 8 kész motívumon: minden a tematikus tanulmányban
 készül, a lexikonoldal (`_TUDOMANYOS.md`) és a kereszthivatkozási törzscikk
@@ -140,7 +140,7 @@ domének, LSJ, LXX-híd (mindkét irány). A többi `nincs adatosítva`; ezeket 
 - **R2.3** `res_forras.tsv`: a 49 `lap` sor → `tanulmany`; a 2/b `fejlec` egységesítése (G11).
 - **R2.4** Az ISTENTISZT-001 study-frissítési NAPLO-blokkjának lezárása (G13).
 - **R2.5** A lexikonoldal első sora elé gépi jelölés: `<!-- GENERÁLT: general.py --cel lexikon | rések: [forras_study] -->`.
-- **R2.6** Újragenerálás (`lexikon` és `torzscikk`), majd diff-osztályozó (`eszkozok/render_diff_osztalyoz.py`): minden változott sor egy kategóriába esik — `tanulmany`, `kivonat`, `fejlec`, `naplo`, `jeloles`, `torzscikk_res`. Ismeretlen kategória: **ÁLLJ**.
+- **R2.6** Újragenerálás (`lexikon` és `torzscikk`), majd diff-osztályozó (`eszkozok/render_diff_osztalyoz.py`): minden változott sor egy kategóriába esik — `tanulmany`, `kivonat`, `fejlec`, `naplo`, `jeloles`, `torzscikk_res`, `adat_res` (D28). Ismeretlen kategória: **ÁLLJ**; `adat_res` esetén pontosan 7 sor várt (motívumonként egy, mind `alatamasztas`), eltérésnél **ÁLLJ**.
 - **R2.7** Lezárás: `NYITOTT_FELADATOK.md` (következő: `SZOTAR_BRIEF.md`), `MUNKAMENET.md`.
 
 ---
@@ -300,3 +300,4 @@ Olvasd el a CLAUDE.md-t és a RENDER_BRIEF.md-t (v4).
 | D25 | **v4: a §0 0.1 mércéje: `origin/main` a `main` őse, divergencia nélkül** | a push csak kérésre történik, ezért a brief-commit után a szó szerinti egyezés mindig eltérést mutatna (R0 és R0.8 5. kérdés); a menetek nyitó promptja az egyezést a push után ellenőrzi |
 | D26 | **v4: 0 kapcsolatnál az `alatamasztas` rés adatból generált sor** (G16) | a `kapcsolatok.tsv` 34 sora két motívumé (ISTENTISZT 25, KIRALY 9); ahol nincs kapcsolat, nincs mit alátámasztani — ez adat, nem tanulmány-szöveg |
 | D27 | **v4: elavult szám-javítás nincs** | az R0.8.4 17 sora más hatókörű vagy dátumozott történeti szám; valódi elavult összeg nem került elő |
+| D28 | **v5: az R2.6 kategórialistája kiegészül az `adat_res` kategóriával** | a `forras=adat` (G16/D26, KIRALY-001-re a R2.2-ben kiterjesztve, l. `NYITOTT_FELADATOK.md` N19) később született, mint a hatkategóriás lista; várt tételszám 7 (motívumonként egy, mind `alatamasztas`) |
