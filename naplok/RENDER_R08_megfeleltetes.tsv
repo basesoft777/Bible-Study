@@ -1,0 +1,57 @@
+id	res	fejlec	tanulmany_szakaszok	hiany	megjegyzes
+KIRALY-001	kivonat	## Kivonat *(kézi)*		igen	nincs kivonat-szakasz; új lesz (G10)
+KIRALY-001	2b	### 2/b *(kézi, ha van)*		igen	nincs 2/b vagy 2/c fejléc a tanulmányban
+KIRALY-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	2. Eredeti nyelvi összevetés	nem	
+KIRALY-001	minosites	### Minősítés *(kézi)*		igen	nincs önálló minősítés-fejléc; a '4. Kapcsolódás a kutatási sablonhoz' prózájában lehet, ellenőrizendő
+KIRALY-001	alatamasztas	### Alátámasztás *(kézi)*		igen	nincs 1/b Kapcsolatok fejléc (csak '1. Előfordulások összegyűjtése')
+KIRALY-001	ertelmezes	## 6. Értelmezés *(kézi)*	3. A PaRDeS keretrendszer — a motívum egészére alkalmazva	nem	nincs önálló '⚠️ Vitatott pontok' alszakasz a 3. alatt
+KIRALY-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	0. Forrás-összegyűjtés a meglévő anyagból; 6. Napló-frissítés; Minőségi kapu (Quality Gate)	nem	
+ISTENTISZT-001	kivonat	## Kivonat *(kézi)*		igen	nincs kivonat-szakasz; új lesz (G10), a lexikonoldal kivonatával (G8)
+ISTENTISZT-001	2b	### 2/b. Kiegészítő szótári adatok *(kézi)*		igen	a 2/b csak a lexikonoldalon él ma; a G8 szerint a lexikonoldal rése kerül vissza a tanulmányba (l. R0.8.5)
+ISTENTISZT-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	2. Eredeti nyelvi összevetés	nem	a lexikonoldal rése a G8 szerint felváltja ezt a szakaszt (l. R0.8.5)
+ISTENTISZT-001	minosites	### Minősítés *(kézi)*		igen	nincs önálló minősítés-fejléc; a lexikonoldal rése a G8 szerint ide kerül vissza (l. R0.8.5)
+ISTENTISZT-001	alatamasztas	### Alátámasztás *(kézi)*	1/b. Kapcsolatok — a KAPCSOLATOK Típus-mező szerint strukturálva	nem	a lexikonoldal rése a G8 szerint felváltja ezt a szakaszt (l. R0.8.5)
+ISTENTISZT-001	ertelmezes	## 6. Értelmezés *(kézi)*	3. A PaRDeS keretrendszer — a motívum egészére alkalmazva	nem	nincs önálló Vitatott pontok alszakasz; a lexikonoldal rése a G8 szerint felváltja (l. R0.8.5)
+ISTENTISZT-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	0. Forrás-összegyűjtés a meglévő anyagból (retroaktívan pótolva); 6. Napló-frissítés; Minőségi kapu (Quality Gate)	nem	a lexikonoldal rése a G8 szerint felváltja (l. R0.8.5); a 3 NAPLO-blokk közül az egyik a G13 szerint lezárul a 2. menetben
+TEREMT-001	kivonat	## Kivonat *(kézi)*		igen	nincs kivonat-szakasz; új lesz (G10)
+TEREMT-001	2b	### 2/b *(kézi, ha van)*	2/b. Kiterjesztés — a tehóm teljes bibliai előfordulási mezője; 2/c. Görög visszhang — a teljes ábüσσος-tábla	nem	
+TEREMT-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	2. Eredeti nyelvi összevetés	nem	
+TEREMT-001	minosites	### Minősítés *(kézi)*		igen	nincs önálló minősítés-fejléc
+TEREMT-001	alatamasztas	### Alátámasztás *(kézi)*		igen	nincs 1/b Kapcsolatok fejléc
+TEREMT-001	ertelmezes	## 6. Értelmezés *(kézi)*	3. A PaRDeS keretrendszer — magára a motívumra alkalmazva	nem	nincs önálló Vitatott pontok alszakasz
+TEREMT-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	0. Forrás-összegyűjtés (retroaktívan pótolva); 6. Napló-frissítési javaslat; Minőségi kapu (Quality Gate); Önellenőrzés	nem	a Minőségi kapu az 5. Alkalmazás és tanítványság után, a 6. elé ékelve szerepel — sorrend eltér a hipotézistől
+ALVIL-001	kivonat	## Kivonat *(kézi)*		igen	nincs kivonat-szakasz; új lesz (G10)
+ALVIL-001	2b	### 2/b *(kézi, ha van)*	2/b. Kiterjesztés — a seól teljes bibliai előfordulási mezője	nem	nincs külön 2/c
+ALVIL-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	2. Eredeti nyelvi összevetés	nem	
+ALVIL-001	minosites	### Minősítés *(kézi)*		igen	nincs önálló minősítés-fejléc
+ALVIL-001	alatamasztas	### Alátámasztás *(kézi)*		igen	nincs 1/b Kapcsolatok fejléc
+ALVIL-001	ertelmezes	## 6. Értelmezés *(kézi)*	3. A PaRDeS keretrendszer — a motívum egészére alkalmazva	nem	nincs önálló Vitatott pontok alszakasz
+ALVIL-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	0. Forrás-összegyűjtés (retroaktívan pótolva); 6. Napló-frissítés; Önellenőrzés; Minőségi kapu (Quality Gate)	nem	a Minőségi kapu a legvégén, az Önellenőrzés után szerepel — sorrend eltér a hipotézistől
+MENNY-001	kivonat	## Kivonat *(kézi)*		igen	nincs kivonat-szakasz; új lesz (G10)
+MENNY-001	2b	### 2/b *(kézi, ha van)*		igen	nincs 2/b vagy 2/c fejléc
+MENNY-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	2. Eredeti nyelvi összevetés *(lexikai motívum)*	nem	
+MENNY-001	minosites	### Minősítés *(kézi)*		igen	nincs önálló minősítés-fejléc
+MENNY-001	alatamasztas	### Alátámasztás *(kézi)*		igen	nincs 1/b Kapcsolatok fejléc
+MENNY-001	ertelmezes	## 6. Értelmezés *(kézi)*	3. A PaRDeS keretrendszer — a motívum egészére alkalmazva; ⚠️ Vitatott pont — az azonosítás kérdése	nem	
+MENNY-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	0. Forrás-összegyűjtés (retroaktívan pótolva); Minőségi kapu (Quality Gate); 6. Napló-frissítés	nem	a Minőségi kapu az 5. után, a 6. elé ékelve szerepel — sorrend eltér a hipotézistől
+ANTROP-001	kivonat	## Kivonat *(kézi)*		igen	nincs kivonat-szakasz; új lesz (G10)
+ANTROP-001	2b	### 2/b *(kézi, ha van)*		igen	nincs 2/b vagy 2/c fejléc
+ANTROP-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	2. Eredeti nyelvi összevetés	nem	
+ANTROP-001	minosites	### Minősítés *(kézi)*		igen	nincs önálló minősítés-fejléc
+ANTROP-001	alatamasztas	### Alátámasztás *(kézi)*		igen	nincs 1/b Kapcsolatok fejléc
+ANTROP-001	ertelmezes	## 6. Értelmezés *(kézi)*	3. A PaRDeS keretrendszer — magára a motívumra alkalmazva	nem	nincs önálló Vitatott pontok alszakasz
+ANTROP-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	6. Napló-frissítés	igen	hiányzik a '0. Forrás-összegyűjtés' szakasz ÉS a Minőségi kapu fejléc is (egyedül ennél a motívumnál) — csak a Napló-frissítés van meg
+HODIT-001	kivonat	## Kivonat *(kézi)*		igen	nincs kivonat-szakasz; új lesz (G10)
+HODIT-001	2b	### 2/b *(kézi, ha van)*		igen	nincs 2/b vagy 2/c fejléc
+HODIT-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	2. Eredeti nyelvi összevetés	nem	
+HODIT-001	minosites	### Minősítés *(kézi)*		igen	nincs önálló minősítés-fejléc
+HODIT-001	alatamasztas	### Alátámasztás *(kézi)*		igen	nincs 1/b Kapcsolatok fejléc
+HODIT-001	ertelmezes	## 6. Értelmezés *(kézi)*	3. A PaRDeS keretrendszer — a motívum egészére alkalmazva (Peshat/Remez/Drash/Sod); ⚠️ Vitatott pontok	nem	
+HODIT-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	0. Forrás-összegyűjtés (retroaktívan pótolva); Minőségi kapu (Quality Gate); 6. Napló-frissítés; Terminológiai és formai szabályok	nem	a Minőségi kapu az 5. után, a 6. elé ékelve szerepel — sorrend eltér a hipotézistől
+HAMART-001	kivonat	## Kivonat *(kézi)*		igen	nincs kivonat-szakasz; új lesz (G10)
+HAMART-001	2b	### 2/b *(kézi, ha van)*		igen	nincs 2/b vagy 2/c fejléc
+HAMART-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	2. Eredeti nyelvi összevetés (5 H-lemma alszakasz + A görög oldal)	nem	
+HAMART-001	minosites	### Minősítés *(kézi)*		igen	nincs önálló minősítés-fejléc
+HAMART-001	alatamasztas	### Alátámasztás *(kézi)*		igen	nincs 1/b Kapcsolatok fejléc
+HAMART-001	ertelmezes	## 6. Értelmezés *(kézi)*	3. A PaRDeS keretrendszer — magára a motívumra alkalmazva (Peshat/Remez/Drash/Sod); ⚠️ Vitatott pontok	nem	
+HAMART-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	0. Forrás-összegyűjtés; 6. Napló-frissítés (Minőségi kapu, Lezárási checklist, Tartalmi visszaírás bővített tanulmányokba); Lásd még	nem	
