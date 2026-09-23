@@ -982,7 +982,8 @@ def build_parser():
         description='A motivumlexikon generatorai -- F4_GENERATOR_BRIEF.md.',
     )
     p.add_argument('--cel', required=True,
-                    choices=['naplo', 'index', 'naplok', 'study', 'nyitott', 'lexikon', 'mind'])
+                    choices=['naplo', 'index', 'naplok', 'study', 'nyitott', 'lexikon',
+                             'torzscikk', 'mind'])
     p.add_argument('--id', help='egyetlen motívum-ID-re szűkítés (opcionális)')
     p.add_argument('--kimenet', default=os.path.join(ROOT, 'generalt_proba'),
                     help='alapértelmezés: generalt_proba/')
@@ -997,7 +998,7 @@ def build_parser():
     return p
 
 
-ELESITHETO = {'naplo', 'index', 'nyitott', 'lexikon'}
+ELESITHETO = {'naplo', 'index', 'nyitott', 'lexikon', 'torzscikk'}
 
 CEL_FAJL = {'naplo': NAPLO_MD, 'index': INDEX_MD, 'nyitott': NYITOTT_MD}
 
@@ -1061,7 +1062,7 @@ def main():
         print('FIGYELEM: a(z) %r cél NEM élesíthető (brief G7) -- a kimenet a '
               '--kimenet könyvtár alá megy.' % args.cel, file=sys.stderr)
 
-    celok = ['naplo', 'index', 'naplok', 'study', 'nyitott', 'lexikon'] \
+    celok = ['naplo', 'index', 'naplok', 'study', 'nyitott', 'lexikon', 'torzscikk'] \
         if args.cel == 'mind' else [args.cel]
     vegso_kod = 0
     konyv_sorrend = konyv_sorrend_betolt()
@@ -1082,7 +1083,7 @@ def main():
 
         print('--- cél: %s ---' % cel)
 
-        if cel in ELESITHETO and cel != 'lexikon' and (args.ir or args.ellenoriz):
+        if cel in ELESITHETO and cel not in ('lexikon', 'torzscikk') and (args.ir or args.ellenoriz):
             path = CEL_FAJL[cel]
             blokkok, hianyzo = blokk_lista_eles(cel, motivumok, elofordulasok,
                                                   konyv_sorrend, hianyzo_konyvek)
@@ -1159,6 +1160,11 @@ def main():
             vegso_kod = max(vegso_kod, lexikon_general.run(
                 args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek))
 
+        elif cel == 'torzscikk':
+            import torzscikk_general
+            vegso_kod = max(vegso_kod, torzscikk_general.run(
+                args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek))
+
         elif cel == 'study':
             elof_id_szerint = elofordulasok_id_szerint(elofordulasok)
             for m in motivumok:
@@ -1177,7 +1183,7 @@ def main():
                 relativ = alap + '_1_pont_GENERALT.md'
                 kimenet_ir(args, relativ, tartalom, forras_ut)
 
-        if args.ellenoriz and cel not in ('lexikon',):
+        if args.ellenoriz and cel not in ('lexikon', 'torzscikk'):
             # A naplok/study célok NEM élesíthetők ebben a fázisban (brief G7),
             # tehát nincs marker-pár, amihez a blokkot mérni lehetne. A
             # lexikon cél (F6.5) a saját --ellenoriz-jelentését a

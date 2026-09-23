@@ -1,0 +1,4 @@
+hunk	pilot_sor	torzscikk_sor	kategoria	leiras
+1	27	27	tartalomjegyzek	"5. Szótári háttér" -> "5. Szótári háttér — szerepek és lefedettség" (a szakaszcím és a horgony a G7 szerinti átnevezést követi)
+2	746-957	746-777	5_szakasz	Az 5. szakasz teljes törzse felváltva: a pilot régi (D6) szerepkör-mátrixa és szavankénti prózai szócikk-dump helyett a G6 szerepmátrix (adat/szotar_szerepek.tsv) és a G7 lefedettségi mátrix (szavanként, 10 szerep x cella)
+3	1279-1285	1099-1101	labjec	A lábléc a G7/D12 szerint a ténylegesen használt forrásokra szűkül: a SECE, a Mounce és az LSJ forrásmegjelölés-sora kikerül (az új 5. szakasz nem idézi őket közvetlenül)
