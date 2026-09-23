@@ -1027,6 +1027,44 @@ ez megerősíti a motívum valódiságát: Pál és Péter nem véletlenül
 fogalmaznak úgy, mint a Genezis, hanem tudatosan ugyanazt a régi
 mintát viszik tovább, csak már görögül.
 
+**Lexikai kiegészítés (2026.09.22) — Remez-szint:** a lexikon-oldal
+adatrétege (1-4. szakasz) három olyan leletet hozott, amely a fenti
+Remez-ívet pontosítja.
+
+**1. A Septuaginta fordítói következetessége.** A 22 ószövetségi
+igehely közül 18-ban ugyanaz a görög ige áll, az ἐπικαλέομαι
+(epikaleomai). A három eltérés nem szórvány, hanem magyarázható:
+a 2Móz 33:19-ben és a 34:5-ben a καλέω (kaleó) alapige áll, és ez
+pontosan a fenti A/B/C tipológia B-esete — ott nem ember hívja Isten
+nevét, hanem Isten hirdeti ki a sajátját, és a fordító is jelzi a
+szereposztás megfordulását. Az Ézs 12:4-ben a βοάω (boaó), a
+„hangos kiáltás" igéje áll, az eszkatológiai, nyilvános hirdetés
+regiszterében. A Zsolt 116:17-nél pedig a görögből maga a tagmondat
+hiányzik (LXX-minusz), tehát ott nincs fordítói döntés, amit
+értelmezni lehetne. A formula görög megfelelője tehát stabil, és
+ahol nem az, ott az eltérésnek önálló jelentése van.
+
+**2. A Thayer jelentés-tagolása.** A Thayer öt jelentés-ágra bontja
+az igét: melléknéven nevezni (1.), valakinek a nevét rá-hívni
+valakire (2.), váddal illetni (3.), bíróhoz fellebbezni (4.), és
+külön, ötödikként azt az esetet, amikor a szó a héber
+קָרָא בְּשֵׁם יְהוָה (kárá besém JHVH) fordítása. A motívum
+újszövetségi helyei — ApCsel 2:21; 9:14, 21; 22:16; Róm 10:12-13;
+1Kor 1:2; 2Tim 2:22 — ebben az ötödik ágban állnak. Vagyis nem a tág
+„hívni" jelentésről van szó, hanem arról a szűk kategóriáról,
+amelyet maga a szótár köt a héber formulához.
+
+**3. A Róm 10:12 (2026.09.22-én felvéve).** A 10:13-as Jóel-idézetet
+egy olyan mondat vezeti be, amely ugyanezt az igét használja, és a
+segítségül hívók körét zsidóra és görögre egyaránt kiterjeszti. Az
+egyetemes ígéret tehát nem a 13. versnél kezdődik: a 12. vers már
+kimondja, hogy ugyanaz az Úr gazdag mindazokhoz, akik őt segítségül
+hívják.
+
+【NAPLO: a tematikus study 3. pontja még 17 ószövetségi igehelyről és
+15 ἐπικαλέομαι-fordításról beszél; a mai adat 22 hely és 18 egyezés
+(a 2026.09.09-i bővítés után). A study frissítése külön feladat.】
+
 **Drash:** a motívum azt tanítja, hogy az istentisztelet magja nem a
 nyilvános teljesítmény vagy a rituálé pontossága, hanem a
 **függőség tudatos, névvel azonosított kifejezése**. Ábrahám és
@@ -1056,6 +1094,53 @@ változatlan marad.
 bálványimádás kezdetét jelzi, a Sod-szintű "első pozitív lelki
 válasz" olvasat módosulna — a projekt a többségi olvasatot követi, de
 a vitát nem hallgatja el)*
+
+### Új felismerés — a D-minta görög folytatása *(kézi, 2026.09.22)*
+
+> ⚠️ Ez a szakasz kizárólag a lexikon-oldalon rögzített megfigyelés — a
+> `Segitsegul_hivni_az_Urat_tematikus.md` fájlba szándékosan NEM került
+> be, amíg külön döntés nem születik róla.
+
+A tematikus study a D-mintát (נִקְרָא...עַל, nikrá … al — „valakinek
+a nevét hívják valakire", a birtoklás és a hovatartozás kifejezése)
+héber oldalon azonosította. A lexikon-oldal két, egymástól független
+görög szótára ennek a szerkezetnek **önálló újszövetségi folytatását**
+mutatja.
+
+A Thayer a 2. jelentés-ágban kifejezetten a héber mintára hivatkozva
+adja meg az ἐπικαλεῖται τό ὄνομα τίνος ἐπί τινα (epikaleitai to onoma
+tinosz epi tina) szerkezetet, és két helyet sorol ide: az ApCsel
+15:17-et — amely az Ám 9:12-t idézi — és a Jak 2:7-et. Az UBS szótár
+ugyanezt külön jelentésként kezeli (Louw–Nida 11.28: „elismertnek
+lenni úgy, mint aki ahhoz tartozik, akinek a nevét rá hívták"), és
+**az ApCsel 9:14-et is ide sorolja**, nem a „segítségül hívni"
+jelentéshez; a szócikk megjegyzése ezt a verset a hagyományos
+értelmezéstől eltérőként nevezi meg. Az 1Pét 1:17 hozzárendelése a
+forrásban kettős marad.
+
+Ez azt jelenti, hogy a formula két iránya az Újszövetségben is
+megmarad. Az egyik irányban az ember hívja segítségül a nevet
+(ApCsel 2:21; Róm 10:13); a másikban a név hívatik rá az emberre,
+és ez teszi őt odatartozóvá (ApCsel 15:17; Jak 2:7). Az ApCsel 9:14
+azért érdekes, mert a szövege az első irányhoz áll közel („akik a te
+nevedet segítségül hívják"), a szótár mégis a másodikba sorolja: a
+tanítványok itt már *azok, akikre a Név hívatott*, vagyis a formula
+azonosító, csoportmegnevező szerepet kap.
+
+**Amit ez a felismerés NEM állít.** Nem állítja, hogy az ApCsel 9:14
+fordítása hibás volna, sem azt, hogy a „segítségül hívni" olvasat
+elvetendő — csak azt, hogy az UBS besorolása egy második olvasati
+lehetőséget dokumentál. Nem állítja, hogy az Ám 9:12, az ApCsel 15:17
+és a Jak 2:7 a motívum előfordulása volna: ezek a helyek a
+jeloltek.tsv-ben nem szerepelnek, és a negatív kritérium (aktív
+קָרָא בְּ, kárá be szerkezet) szerint nem is felelnének meg neki. És
+nem állít semmit a Sod-szintről: a megfigyelés lexikai és Remez-szintű.
+
+**Nyitott kérdés a folytatáshoz.** Fel kell-e venni a D-minta görög
+folytatását külön vizsgált (nem beépített) jelölt-körként a
+jeloltek.tsv-be, negatív kritériummal együtt — és át kell-e vezetni a
+felismerést a tematikus study 2. és 3. pontjába? A döntésig ez a
+szakasz a lexikon-oldalon marad.
 
 ## 7. Módszertan és nyitott kérdések *(kézi)*
 
