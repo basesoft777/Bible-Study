@@ -1,6 +1,6 @@
 # SZOTAR_BRIEF.md — szótári adatréteg: szerepmátrix-források, fordítási gyorsítótár, kiejtés
 
-*v1 — 2026.09.23 · jóváhagyásra: a §2 S-döntései és a §0/§4 számai · a `RENDER_BRIEF.md` v3 kettéválásából (ott D13); OCR-kezelés (D12), héber kiejtés-jelöltek (D13), LXX-korpuszszint (D14)*
+*v1 — 2026.09.23 · jóváhagyásra: a §2 S-döntései és a §0/§4 számai · a `RENDER_BRIEF.md` v3 kettéválásából (ott D13); OCR-kezelés (D12), héber kiejtés-jelöltek (D13), LXX-korpuszszint (D14) · KIEJT-kiváltás (D15)*
 
 **Cél.** A `RENDER_BRIEF.md` G6 szerepmátrixának minden cellája adatból töltődjön, és a
 szótári réteg rendezett legyen: fordítási gyorsítótár, terminológia, görög kiejtés, a
@@ -88,7 +88,7 @@ gépi kiejtés, Trench (*Synonyms of the New Testament*, később kiegészítő 
 ### 1. menet — nulla-diff
 
 - **S1.1** Fordítási gyorsítótár (S1): migráció 51 sorral; a generátor innen olvas; SEMA-bejegyzés; a régi oszlop és tábla megszűnik.
-- **S1.2** `terminologia.tsv` (S2), `kiejtes_szabalyok.tsv`, `kiejtes_kivetelek.tsv` (S3); SEMA-bejegyzések.
+- **S1.2** `terminologia.tsv` (S2), `kiejtes_szabalyok.tsv`, `kiejtes_kivetelek.tsv` (S3); SEMA-bejegyzések. A `kiejtes_kivetelek.tsv` induló sorai közé átkerül a `torzscikk_general.py` kódbeli `KIEJT` táblájának 5 szava (SBL → magyaros, ISTENTISZT-001); a kódbeli tábla itt még marad (nulla-diff).
 - **S1.3** `eszkozok/kiejtes.py`: görög átírás; `--ellenoriz` mód a tisztított tesztkészleten. Nem ír.
 - **S1.4** Importok a `konkordancia/` alá, README-vel és licenccel: `TBESH_konszolidalt.tsv` (S4), `UBS_DBH_*` (S5), `MCGED_teljes.tsv` (S6), `Cremer_szocikkek.tsv`, `Cremer_heber_mutato.tsv` (S7), `Girdlestone_szocikkek.tsv` (S8), és ha az S0.8 engedi, `LXX_versszintu_parok.tsv` (S13). A generátor még nem olvassa őket.
 - **S1.4b** Cremer és Girdlestone: OCR-ellenőrzés (`ocr_gyanus`), kézi javítás a javítási naplóba, `allapot` → `javitott`. Összesítő: `naplok/SZOTAR_S1_ocr.tsv` (szócikkenként gyanús tételek, javítások száma).
@@ -99,7 +99,7 @@ gépi kiejtés, Trench (*Synonyms of the New Testament*, később kiegészítő 
 
 ### 2. menet — kimenet-változtató, elvárt diffel
 
-- **S2.1** A jóváhagyott állapot rögzítése (Cremer/Girdlestone `jovahagyott`; a 24 héber lemma a `kiejtes_kivetelek.tsv`-be). Görög kiejtés a generált blokkokban (lemma és alak), a tisztított átírás-lista szerint; héber lemma a kivétel-táblából. Előfeltétel: 100%-os görög egyezés.
+- **S2.1** A jóváhagyott állapot rögzítése (Cremer/Girdlestone `jovahagyott`; a 24 héber lemma a `kiejtes_kivetelek.tsv`-be). Görög kiejtés a generált blokkokban (lemma és alak), a tisztított átírás-lista szerint; héber lemma a kivétel-táblából. **A `torzscikk_general.py` kódbeli `KIEJT` táblája megszűnik**: a törzscikk is a `kiejtes.py`-ból és a kivételtáblából olvas, így a 8 törzscikk egységesen magyaros átírást kap (a pilot D10 konvenciója). Előfeltétel: 100%-os görög egyezés.
 - **S2.2** TBESH: átállás a konszolidált táblára (S4).
 - **S2.3** UBS DBH a lexikonoldalba és a törzscikkbe (S5, S10).
 - **S2.4** Mounce és SECE (S6); a Mounce angol glosszáinak fordítása a gyorsítótárból; a 2/b-ben meglévő 3 magyar glossza `kezi` sorként átkerül.
@@ -156,7 +156,7 @@ gépi kiejtés, Trench (*Synonyms of the New Testament*, később kiegészítő 
 ### 2. menet
 | # | Kritérium |
 |---|---|
-| K9 | S2.1 csak 100%-os görög egyezés után futott |
+| K9 | S2.1 csak 100%-os görög egyezés után futott; `grep -c KIEJT eszkozok/torzscikk_general.py` = 0 |
 | K10 | diff-osztályozó: ismeretlen kategória 0; a kategóriák darabszáma jelentve |
 | K11 | a lábléc és a kolofon az S11 szerint, a Mounce és az UBS megjelölése szó szerint |
 | K12 | az ISTENTISZT-001 2/b rése csak prózát tartalmaz; a jelentőség-bekezdések a `miert_fontos` alatt |
@@ -252,3 +252,4 @@ Olvasd el a CLAUDE.md-t és a SZOTAR_BRIEF.md-t (a jóváhagyott verziót).
 | D12 | Cremer és Girdlestone: gépelt átirat az OCR helyett, szócikk-szintű import csak a motívumok tokenjeire, `ocr_gyanus` jelölés, javítási napló, a render csak `jovahagyott` szöveget használ, és ⛔ jóváhagyás a render előtt (S7, S8) | az OCR a görög és héber betűs részeknél megbízhatatlan (az archive.org Cremer-OCR görögje olvashatatlan); néhány tucat szócikk kézzel ellenőrizhető; a kulcs a saját adatból jön; a fordítás csak javított szövegből készülhet, hogy a hiba ne terjedjen a gyorsítótárba |
 | D13 | Héber kiejtés: OSHL-alapú jelöltek, kézi jóváhagyás, cél 24/24 lemma (S3) | a tudományos átírásban a nehéz esetek (hangzó svá, dagesh, qamets qatan) már eldöntöttek, ezért jelöltnek megbízható; a render továbbra sem generál héber kiejtést (RENDER v2 D6) |
 | D14 | LXX-híd korpuszszinten csak versszintű együtt-előfordulásként, mérés után, jelölve (S13) | az `LXX_OS` nem szóillesztett; a motívum igehelyeire vonatkozó LXX-híd már adatosítva van (RENDER G6, D19) |
+| D15 | A törzscikk kódbeli `KIEJT` táblája (a RENDER 1. menetében került be, 5 szó, csak az ISTENTISZT-001-re) az S1.2-ben a kivételtáblába költözik, az S2.1-ben megszűnik | adat nem lehet a kódban; a RENDER 1. menete után a 8 törzscikk vegyes átírást mutat (az ISTENTISZT-001 magyaros, a többi tudományos), ez a SZOTAR 2. menetével egységesül, `kiejtes` diff-kategóriában |
