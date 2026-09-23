@@ -4,7 +4,7 @@ KIRALY-001	kivonat	## Kivonat *(kézi)*	lap
 KIRALY-001	2b	### 2/b *(kézi, ha van)*	lap	
 KIRALY-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	lap	
 KIRALY-001	minosites	### Minősítés *(kézi)*	lap	
-KIRALY-001	alatamasztas	### Alátámasztás *(kézi)*	lap	
+KIRALY-001	alatamasztas	### Alátámasztás *(kézi)*	adat	Az egyes kapcsolatok indoklása a fenti táblázat Funkció oszlopában áll; külön alátámasztás a tematikus tanulmányban nem készült.
 KIRALY-001	ertelmezes	## 6. Értelmezés *(kézi)*	lap	
 KIRALY-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	lap	
 ISTENTISZT-001	kivonat	## Kivonat *(kézi)*	tanulmany	tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md

@@ -1,4 +1,13 @@
 # Hádész (Seól) — a halottak birodalma
+
+## Kivonat
+
+<!-- RÉS-KEZDET: kivonat -->
+
+A motívum lexikai azonosságú: a שְׁאוֹל (*seól*) és a görög ᾍδης (*hádész*) az egyéni halottak birodalmát jelöli — élesen elkülönülve a תְּהוֹם/ἄβυσσος kozmikus-mitológiai fogalomtól —, a teljes Ószövetségben 64 egyedi igehelyen, az Újszövetségben — teljes szövegvizsgálat szerint — tíz ᾍδης-előfordulásban. A legfontosabb lelet Hós 13:14, amelyet Pál explicit idéz/parafrazál 1Kor 15:55-ben ("Halál! hol a te fullánkod?"), és amely a study fő ívét (Krisztus legyőzi a hádészt, Jel 1:18, 20:13-14) egy második, páli hivatkozással erősíti meg. Önálló, ettől elkülönülő második használati minta is azonosítható: a "felmagasztalás→hádészig-taszítás" idióma (Luk 10:15/Mát 11:23), amely nem a halál/feltámadás-tipológiához, hanem a gőg isteni megalázásának mintázatához kapcsolódik.
+
+<!-- RÉS-VÉGE: kivonat -->
+
 ## Tematikus PaRDeS-tanulmány (`4_PaRDeS_tematikus_sablon.md` v14 szerint)
 
 *Kiszervezve a `Tehom_Abusszosz_Hadesz_Tartarosz_tematikus.md` fájlból, 2026.09.10 — a motívum a `PaRDeS_motivumok.md` naplóban mindig is önálló ID-val (`[ID: ALVIL-001]`) szerepelt, csak praktikus okból élt egy közös fájlban a tehóm/abüsszosz-komplexummal. A tehóm/abüsszosz-anyagtól való lexikai elkülönülés indoklását l. lent, 2. pont. Tartalmi következtetés nem változik — ez egy fájlszervezési lépés.*

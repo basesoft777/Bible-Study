@@ -223,6 +223,23 @@ Utolsó frissítés: 2026.09.23 (RENDER_BRIEF.md v4, 1. menet — R1.1–R1.8: r
   a többi hathoz hasonló TSK/Károli-audittal, vagy maradjon a hiány
   dokumentálva.
 
+- **N19 — KIRALY-001 kapcsolatainak bizonyossági indoklása (C2).** *(ÚJ,
+  RENDER_BRIEF.md R2.2, G16, 2026.09.23)* Az `alatamasztas` rés forrása
+  a hat 0-kapcsolatú motívumnál `adat` (G16 alapértelmezés). A
+  KIRALY-001-nek van kapcsolata (9 sor, `adat/kapcsolatok.tsv`), ezért
+  a G16 egy tanulmány/napló-beli indoklás-forrást várt volna — a
+  felhasználói döntés szerint azonban a napló „Végső döntés és
+  indoklás" szakasza (a `minosites` rés forrása) tartalmilag nem
+  alátámasztás, hanem jelölt-elfogadási indoklás, és nincs olyan kész
+  szövegrész, amely kifejezetten a 9 kapcsolatot indokolná. Ezért a
+  `res_forras.tsv` KIRALY-001/`alatamasztas` sora is `adat` forrású
+  lett, egy a hattól eltérő, a `kapcsolatok.tsv` Funkció oszlopára
+  mutató generált mondattal. Eldöntendő: készüljön-e később egy
+  önálló, a 9 kapcsolatot ténylegesen indokoló bekezdés a
+  `Melkizedek_tematikus_kereszthivatkozas_naplo.md`-be, saját
+  `RÉS-KEZDET/VÉGE: alatamasztas` jelöléssel — ez lecserélné a jelenlegi
+  `adat`-forrású generált mondatot egy valódi, C2-szintű indoklásra.
+
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá vált — belépő: `DONTESEK_INDEX.tsv`. A vers-szintű jelöltek nem ide, hanem az `adat/jeloltek.tsv`-be kerültek (16 sor, mind `dontes=nyitva`): HODIT-001 13 alacsony szavazatú TSK-jelölt, MENNY-001 Mt 24:38 + Luk 17:27, ANTROP-001 Fil 1:27. Az alábbiak a nem vers-szintű tételek:

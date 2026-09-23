@@ -1,5 +1,13 @@
 # Melkizedek — király-pap rendje, kenyér és bor
 
+## Kivonat
+
+<!-- RÉS-KEZDET: kivonat -->
+
+A motívum azt a lexikai azonosságot követi, amelyet a BDB H3548 (*kohén*) "pap-király" jelentés-kategóriája köt össze: Melkizedek (1Móz 14:18-20), Izráel kollektív "papok királysága" (2Móz 19:6), a dávidi eskü-ígéret (Zsolt 110:4), a próféciai "pap a trónon" kép (Zak 6:13) és a Zsidókhoz írt levél Krisztus-alkalmazása (Zsid 5-7) — kilenc tabulált igehely/igehelycsoport, öt lépéses kánoni íven. A legfontosabb lexikai lelet a τάξις (*taxis*, "rend") szó technikai súlya: a Zsidókhoz írt levél öt, minden kritikai kiadásban egységesen igazolt helyen (a hatodik, Zsid 7:21, szövegkritikailag nem egységes) a Melkizedek-rendet a lévitaival szembeállítható, önálló papi rendként azonosítja. Két önálló, egymástól független vitatott pont marad nyitva: Melkizedek kiléte (krisztofánia vs. irodalmi-retorikai olvasat) és az 1Móz 14↔Zsolt 110 kapcsolat iránya.
+
+<!-- RÉS-VÉGE: kivonat -->
+
 ## Tematikus PaRDeS-tanulmány (`4_PaRDeS_tematikus_sablon.md` v12 szerint)
 
 *v2 — 2026.09.08 — a v1 (2026.08.22) kiegészítése két új lelettel

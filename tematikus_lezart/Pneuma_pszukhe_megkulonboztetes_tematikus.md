@@ -1,5 +1,13 @@
 # Pneuma/pszükhé megkülönböztetés — Tematikus PaRDeS tanulmány
 
+## Kivonat
+
+<!-- RÉS-KEZDET: kivonat -->
+
+A motívum lexikai azonosságú: a görög πνεῦμα (*pneuma*, "szellem") és ψυχή (*pszükhé*, "lélek") öt újszövetségi helyen jelenik meg egyértelmű grammatikai megkülönböztetésben — háromszor nominális alakban (1Thessz 5:23, 1Kor 15:45 az 1Móz 2:7 hátterével, Luk 1:46-47), kétszer melléknévi alakban (1Kor 2:14-15). A legerősebb lexikai bizonyíték a Luk 1:46-47 pár, ahol a két szó ugyanabban a grammatikai szerepben, közvetlen párhuzamos szerkezetben áll, tudatosan megkülönböztetve a magasztaló "lelket" és az örvendező "szellemet". Vitatott pont marad, hogy a megkülönböztetés valódi ontológiai trichotómiát (Watchman Nee) vagy funkcionális/retorikai különbségtételt (F.F. Bruce) jelent-e.
+
+<!-- RÉS-VÉGE: kivonat -->
+
 *v3 — 2026.08.22 (ötödik előfordulás felvéve: **1Kor 2:14-15** — a "természet szerinti ember" [ψυχικός] és a "szellemi ember" [πνευματικός] páli megkülönböztetése, melléknévi alakban, elsősorban Drash-szintű megerősítésként; a negyedik előfordulás [**Luk 1:46-47**, Mária éneke] a v2-ben került fel. A motívum összesen 5 előfordulásra bővült, a lexikai súly és a grammatikai forma különbségei explicit jelölve.)*
 
 ---

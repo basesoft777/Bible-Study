@@ -1,4 +1,13 @@
 # Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma, a teremtés visszafordítása és helyreállítása
+
+## Kivonat
+
+<!-- RÉS-KEZDET: kivonat -->
+
+A motívum lexikai azonosságú: a תְּהוֹם (*tehóm*, "mélység") szó a Genezisben négyszer jelöli ugyanazt az őstenger-fogalmat — a teremtés előtti állapotot (1Móz 1:2), az özönvíz kitörését (7:11) és elzárását (8:2), majd Jákób áldásában megszelídült termékenység-forrásként (49:25) —, a teljes Ószövetségben összesen 35 szóelőfordulásban, a görög ἄβυσσος (*abüsszosz*) LXX-közvetítésével pedig kilenc újszövetségi helyen, túlnyomórészt a Jelenések könyvében. A legfontosabb lelet a 7:11↔8:2 tükrös szerkezet (ugyanaz a szókapcsolat, ellentétes igeiránnyal) és ennek eszkatológiai visszhangja Jel 20:1,3-ban, amely szerkezetileg megismétli az 1Móz 8:2 "bezárás" mozzanatát. Vitatott pont marad a תְּהוֹם esetleges kapcsolata a közel-keleti teremtésmítoszok Tiámat-alakjával.
+
+<!-- RÉS-VÉGE: kivonat -->
+
 ### Önálló tematikus PaRDeS-tanulmány (`4_PaRDeS_tematikus_sablon.md` v14 szerint)
 
 *⭐ Küszöbön túli motívum önálló feldolgozása — Genezisen belüli lexikai motívum, Tóra-szintű és LXX-közvetített újszövetségi kiterjesztéssel*

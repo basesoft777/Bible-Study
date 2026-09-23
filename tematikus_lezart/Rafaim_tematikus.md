@@ -1,5 +1,13 @@
 # Rafeusok/óriás-népek — tematikus (NEM lexikai) rokon-csoport a gibborim/nefilim motívummal
 
+## Kivonat
+
+<!-- RÉS-KEZDET: kivonat -->
+
+A motívum lexikai azonosságú: a רְפָאִים (*refáim*) szótő és rokon népnevei (זוּזִים, אֵימִים, זַמְזֻמִּים) 33 igehelyen jelölik ugyanazt a kettős jelentésmezőt — prózai kontextusban egy nagytermetű, félig-mitikus népcsoportot (1Móz 14:5-től Dávid koráig), költői kontextusban pedig a Seól erőtlen árnyait (H7496, nyolc hely). A legfontosabb lelet a szó jelentésíve a félelmetes élő népcsoporttól a Seól erőtlen árnyaiig; a tanulmány ezt úgy értelmezi, hogy ami a világ szemében legyőzhetetlennek tűnik, Isten előtt átmeneti és véges. A motívum lexikailag szándékosan elkülönül az 1Móz 6:4-es נְפִילִים/גִּבֹּרִים komplexumtól (`[ID: MENNY-001]`), bár a kettő tudományos vitában (Michael Heiser vs. Gordon Wenham) tematikusan összekapcsolható.
+
+<!-- RÉS-VÉGE: kivonat -->
+
 *v1 — 2026.08.16 (mélykutatással kiegészítve) — ✅ LEZÁRVA (a `PaRDeS_motivumok.md` v35-ös frissítésében rögzítve)*
 
 *v2 — 2026.09.10 — retroaktív v14-compliance frissítés: "0. Forrás-összegyűjtés" szakasz pótolva, Minőségi kapu (Q1-Q6) retroaktívan dokumentálva, az 1Móz 6:4-es kereszthivatkozás kiemelve az 1. pont táblázatából egy explicit, nem-lexikai elhatárolási jegyzetbe (az "Isten fiai — Nefilim — Gibborim" motívummal, `[ID: MENNY-001]`, `Isten_fiai_Nefilim_Gibborim_tematikus.md` — l. részletek a táblázat után), és 📎-visszahivatkozás pótolva `1Moz_14_bovitett.md`-be. Tartalmi következtetés nem változott.*

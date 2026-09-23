@@ -1,5 +1,13 @@
 # Tematikus PaRDeS-tanulmány: "Isten fiai — Nefilim — Gibborim" motívum-komplexum
 
+## Kivonat
+
+<!-- RÉS-KEZDET: kivonat -->
+
+A motívum lexikai azonosságú, három összefonódó kifejezésből álló komplexum: a בְּנֵי הָאֱלֹהִים (*bené ha'Elohim*, "Isten fiai") névelővel négy helyen (1Móz 6:2, 6:4; Jób 1:6, 2:1), névelő nélküli rokon alakban Jób 38:7-ben; a נְפִלִים (*nefilim*) két helyen (1Móz 6:4; 4Móz 13:34); és a hozzájuk kapcsolódó גִּבּוֹר (*gibbor*). A legfontosabb lexikai megfigyelés, hogy a בְּנֵי הָאֱלֹהִים kifejezés mind a négy helyen egy Istenhez tartozó, nem-emberi, mennyei lény-kategóriát jelöl — ez a Jóbban következetes használat a legfontosabb belső bibliai érv az 1Móz 6 angyali olvasata mellett, bár a végső azonosítás (angyali/Watcher, Séthita/dinasztikus, köztes/funkcionális nézet) tudományosan vitatott marad. A motívum szándékosan elkülönül a lexikailag rokontalan רְפָאִים (Refáim, `[ID: HODIT-001]`) motívumtól, amellyel csak tematikus rokonságban áll.
+
+<!-- RÉS-VÉGE: kivonat -->
+
 **H1121+H430 (בְּנֵי הָאֱלֹהִים, *bené ha'Elohim*) — H5303 (נְפִלִים, *nefilim*) — H1368 (גִּבּוֹר, *gibbor*)**
 
 *Készült: 2026.08.14 — a `4_PaRDeS_tematikus_sablon.md` (v2) szerkezete alapján, felhasználói kérésre, a `PaRDeS_motivumok.md` naplóban rögzített "Isten fiai — angyali/Séthita vita" ⚠️ bejegyzés és annak "gibborim/nefilim" alpontja alapján.*

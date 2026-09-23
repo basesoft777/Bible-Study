@@ -1,4 +1,13 @@
 # A bűn következményeinek gyűrűzése — átok, föld és romlás
+
+## Kivonat
+
+<!-- RÉS-KEZDET: kivonat -->
+
+A motívum strukturális azonosságú: a genezisi átok-lánc (*arar → adamá → itzávón → chattát → chámász → sáchat*) négy szakaszon (1Móz 3, 4, 6:1-8, 6:9-22) át íveli a következmény terjedését az egyénitől az egyetemesig, összesen 52 igehelyen az ÓSZ és ÚSZ kánoni kiterjesztésével együtt. A legfontosabb lelet 1Móz 5:29, a lánc szerkezeti forgópontja, ahol Lámek egyetlen mondatban idézi vissza mind a három kulcsszót (*itzávón* + *adamá* + *arar*), valamint a *sáchat* ige háromszori igetörzsváltása (6:11-13,17), amely nyelvtanilag mutatja, hogy Isten ítélete ugyanaz a cselekvés, amit az ember már elvégzett önmagán. A lánc újszövetségi feloldása Gal 3:13: Krisztus nem eltörli az átkot, hanem magára veszi — ugyanazzal a görög szóval (ἐπικατάρατος), amellyel a LXX az 1Móz 3:17-et fordítja.
+
+<!-- RÉS-VÉGE: kivonat -->
+
 ## Tematikus PaRDeS-tanulmány (`4_PaRDeS_tematikus_sablon.md` v14 szerint)
 
 **v1 — 2026.09.11.** A motívum a `PaRDeS_motivumok.md` naplóban `[ID: HAMART-001]` azonosítóval, négy előfordulással (1Móz 3, 4, 6:1-8, 6:9-22) állt az ⭐ Emlékeztető küszöbön túl, önálló feldolgozásra várva.
