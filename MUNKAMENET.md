@@ -63,8 +63,8 @@ jelöléssel szerepel — futtathatóként sehol nem áll.
 
 | # | Lépés | Ki | Kimenet | Ma mivel fut | Megjegyzés |
 |---|---|---|---|---|---|
-| C1 | lexikon TUDOMÁNYOS szakaszainak generálása | végrehajtó | generált fájl | `eszkozok/general.py --cel lexikon --ir` | a generált szakaszok: **0, 1, 2, 3, 4, 5, 9** — nem 0-8 (l. lent) |
-| C2 💎 | a kézi részek megírása | kutató | kézi blokkok | kézi | drága modell — hét kézi rész, l. lent |
+| C1 | lexikon TUDOMÁNYOS szakaszainak + a törzscikk generálása (render) | végrehajtó | generált fájlok | `eszkozok/general.py --cel lexikon --ir`; `eszkozok/general.py --cel torzscikk --ir` | RENDER_BRIEF.md v4 (1. menet) óta a lexikonoldal 10 generált blokkja MELLETT a hét rés (`kivonat`, `2b`, `miert_fontos`, `minosites`, `alatamasztas`, `ertelmezes`, `modszertan`) is generált: `adat/res_forras.tsv` + a tanulmány/napló `<!-- RÉS-KEZDET/VÉGE -->` jelölői közötti törzse alapján (G1/G2). A `_TORZSCIKK.md` a lexikonoldalból renderel ("render a renderből", G7) — nem önálló lépés |
+| C2 💎 | a rések megírása **a tanulmányban**, nem a lexikonoldalon | kutató | tanulmány-rés (a tematikus tanulmány vagy a kereszthivatkozás-napló `<!-- RÉS-KEZDET/VÉGE -->` jelölői között) | kézi | drága modell — hét rés, l. lent. **A lexikonoldal kézzel nem szerkeszthető** (RENDER_BRIEF.md G4); a `ellenoriz.py` 11. szakasza SÉRTÉSnek jelzi az eltérést |
 | C3 💎 | ~~lexikon OLVASHATÓ megírása~~ — MEGSZŰNT (2026.09.21, felhasználói döntés): a lexikon-oldal egyetlen változata a _TUDOMANYOS.md | kutató | kézi fájl | kézi | drága modell; az első (ISTENTISZT-001) átemelve a pilotból, a többi a célvonal-döntéstől függ |
 | C4 | commit/push, `main` merge | végrehajtó + ember | — | kézi | git-parancsok a `CLAUDE.md` szabálya szerint; nincs önálló script |
 
@@ -98,8 +98,8 @@ nem F8-tárgy (`F8_BRIEF.md` §3). A négy érintett szerep ma:
 
 ## Generátor-tények
 
-- `ELESITHETO = {naplo, index, nyitott, lexikon}` — ez a négy `general.py
-  --cel` érték írható közvetlenül éles fájlba (`--ir`).
+- `ELESITHETO = {naplo, index, nyitott, lexikon, torzscikk}` — ez az öt
+  `general.py --cel` érték írható közvetlenül éles fájlba (`--ir`).
 - A `naplok` és a `study` cél **nem élesíthető** ebben a fázisban — csak a
   `--kimenet` könyvtár alá termel próbát, `--ellenoriz`-nél PIROS marad.
 - A ⭐ 3+ küszöb-számítás a `general.py`-ban él (`fo_elofordulas_csoportok()`
@@ -109,16 +109,25 @@ nem F8-tárgy (`F8_BRIEF.md` §3). A négy érintett szerep ma:
 ## C) szakasz — a lexikon-generálás tényleges hatóköre
 
 A terv 462. sora (F6-szakasz) és a C1/C2 sor korábban „0-8. szakasz
-generálva"-t és „9. szakasz = Nyitott kérdések"-et állított. Ez az F6 óta nem
-igaz (l. `ATALAKITASI_TERV.md.md` F7.4 javítása):
+generálva"-t és „9. szakasz = Nyitott kérdések"-et állított — ez azóta a
+LEXV2_2 (v2 oldalszerkezet) és a RENDER_BRIEF.md v4 (1. menet) miatt kétszer
+is módosult. **Ma érvényes állapot** (`sablonok/6_PaRDeS_lexikon_oldal_sablon.md`
+v3, `eszkozok/lexikon_general.py`):
 
-- **generált** szakaszok: 0 (Metaadatok), 1 (Előfordulások), 2
-  (Lexikon-szócikkek), 3 (LXX-híd — nyers adat), 4 (TSK és Károli-KH — nyers
-  eredmény), 5 (Kapcsolatok), 9 (Források és licencek).
-- **kézi** részek (hét): 1/b (PaRDeS keretrendszer), „Miért fontos ez a
-  lelet" (a 2. szakasz minden többforrásos szócikke után), „Minősítés" (a 4.
-  szakasz után), „Alátámasztás" (az 5. szakasz után), 6 (Módszertani napló),
-  7 (ÚJ FELISMERÉS, ha van), 8 (Nyitott kérdések és séma-korlátok).
+- **generált** szakaszok (10 blokk, `general.py --cel lexikon`): Tartalomjegyzék,
+  Jelmagyarázat, 1. Előfordulások, 1/b. Kizárt és vizsgált helyek, 2. Szótári
+  háttér, 3. LXX-fordítói döntések, 4. Kereszthivatkozások, 5. Kapcsolatok,
+  8. Irodalom és idézés, Kolofon.
+- **rés** (hét, `res_blokkok_alkalmaz()`, RENDER_BRIEF.md G1–G4): `kivonat`,
+  `2b`, `miert_fontos`, `minosites`, `alatamasztas`, `ertelmezes`,
+  `modszertan` — fejlécsoruk a `adat/res_forras.tsv`-ből, törzsük a motívum
+  tematikus tanulmányából/kereszthivatkozás-naplójából (`forras=tanulmany`)
+  vagy — átmenetileg, amíg a 7 helyőrzős oldal nem áll át — a lexikonoldal
+  mai szövegéből, változatlanul (`forras=lap`, G12). A lexikonoldal ezeket a
+  szakaszokat is a generátorral kapja; **kézzel csak a tanulmányban
+  szerkeszthetők** (G4).
+- a **törzscikk** (`lexikon/[ID]_TORZSCIKK.md`, `general.py --cel torzscikk`)
+  a lexikonoldalból renderel, önálló kézi rész nélkül (G7).
 
 ## Mi hiányzik az üzemmenetből ma
 

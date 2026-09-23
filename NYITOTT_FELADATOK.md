@@ -1,6 +1,6 @@
 # Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.09.14 (F3.0-F3.4 — retroaktív betöltés, a gate.py első futtatása és a Károli-Strong join visszamenőleges pótlása)
+Utolsó frissítés: 2026.09.23 (RENDER_BRIEF.md v4, 1. menet — R1.1–R1.8: rés-forrás rendszer, törzscikk-generátor)
 
 ## Nagy, tartalmi döntést igénylő tételek
 
@@ -275,6 +275,14 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 <!-- GENERÁLT-VÉGE: nyitott -->
 
 ## Lezárva
+
+### 2026.09.23 (RENDER_BRIEF.md v4, 1. menet — R1.1–R1.8):
+
+* **A hét lexikonoldal-rés forrása mostantól a tanulmány, nem a lexikonoldal** (RENDER_BRIEF.md G1–G4) — `adat/res_forras.tsv` (56 sor: ISTENTISZT-001 7 sora `tanulmany`, a többi 49 egyelőre `lap`, változatlanul); `eszkozok/lexikon_general.py` `res_blokkok_alkalmaz()`/`modell_epit()` a fejlécet a táblából, a törzset a tanulmány/napló `<!-- RÉS-KEZDET/VÉGE -->` jelölői közül állítja össze. Nulla-diff igazolva (`git status --porcelain lexikon/*_TUDOMANYOS.md` üres az `--ir` után).
+* **ISTENTISZT-001 visszaírás**: a tanulmány (`tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`) és a kereszthivatkozás-napló (`tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md`) megkapta a lexikonoldal hét résének tartalmát, jelölőkkel; a `minosites` a naplóba (G14), a `2b` új szakaszként a "2. Eredeti nyelvi összevetés" után (G15/D22), a `modszertan` csak a "6. Napló-frissítés" szakaszt váltja fel (D23).
+* **Törzscikk-generátor** (`eszkozok/torzscikk_general.py`, `general.py --cel torzscikk`) — mind a 8 motívumra `lexikon/[ID]_TORZSCIKK.md`, a lexikonoldalból renderelve (sablon: `sablonok/8_PaRDeS_torzscikk_sablon.md`). Az 5. szakasz a régi pilot-szócikk-dump helyett a G6 szerepmátrixot (`adat/szotar_szerepek.tsv`, 20 sor) és egy szavankénti lefedettségi mátrixot mutat. Az ISTENTISZT-001 törzscikke a pilottól igazoltan csak az 5. szakaszban és a láblécben tér el (`naplok/RENDER_R1_pilot_diff.tsv`).
+* `eszkozok/ellenoriz.py` 11–12. szakasz: a `tanulmany`/`adat` forrású rések egyezése a lexikonoldallal (SÉRTÉS eltérésnél), és a `lap` forrású sorok száma (JELENTÉS, ma 49).
+* **Nyitva maradt, tudatosan nem javított apróság**: a törzscikk-generátor `KIEJT` táblája (SBL→magyaros kiejtés-javítás) csak az ISTENTISZT-001-nél ismert 5 szót fedi — a többi motívum egyéb szavai nyers, SBL-stílusú átírással jelennek meg a törzscikkben, amíg a `SZOTAR_BRIEF.md` S3 (`kiejtes.py`) nem old meg egy általános átírást. Nem hiba, tudatos hatókör-szűkítés (l. `sablonok/8_PaRDeS_torzscikk_sablon.md`).
 
 ### 2026.09.09-10 (chat-munkamenet, harmadik szakasz):
 

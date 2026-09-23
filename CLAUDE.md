@@ -30,9 +30,18 @@ a két changelogot (`PaRDeS_dontesek_CHANGELOG.md`, `motivumlog/PaRDeS_motivumok
 |---|---|---|
 | **adat** — kanonikus igazságforrás | `adat/*.tsv` | séma szerint; ha itt és egy .md-ben ellentmondás van, **ez az irányadó** |
 | **forrás** — kézzel írt | `tematikus_lezart/`, `genezis/`, `ujszovetseg/`, `melyelemzesek/`, `motivumlog/[ID].md` | szabadon szerkeszthető |
-| **kimenet** — generált | l. `ATALAKITASI_TERV.md.md` 1.C | **kézzel szerkeszteni tilos**; a forrás javul, és újragenerálódik |
+| **kimenet** — generált | l. `ATALAKITASI_TERV.md.md` 1.C; `lexikon/[ID]_TUDOMANYOS.md`, `lexikon/[ID]_TORZSCIKK.md` | **kézzel szerkeszteni tilos**; a forrás javul, és újragenerálódik |
 
 Generált fájl fejlécében gépi jelölés áll (`# GENERÁLT: …`). Ha ilyet látsz, ne írd át.
+
+A `lexikon/[ID]_TUDOMANYOS.md` hét rése (`kivonat`, `2b`, `miert_fontos`,
+`minosites`, `alatamasztas`, `ertelmezes`, `modszertan`) is a kimenet
+rétegbe tartozik: a fejlécsoruk az `adat/res_forras.tsv`-ből, a törzsük a
+motívum tematikus tanulmányából vagy kereszthivatkozás-naplójából
+(`<!-- RÉS-KEZDET: [rés] --> … <!-- RÉS-VÉGE: [rés] -->` jelölők közül)
+generálódik — **csak ott szerkeszthetők**, a lexikonoldalon nem (RENDER_BRIEF.md
+G1/G4). A `lexikon/[ID]_TORZSCIKK.md` a lexikonoldalból renderel, önálló
+forrás nélkül (RENDER_BRIEF.md G7).
 
 A `generalt_proba/` verziózott könyvtár (F4-próbák kimenete), nem scratch. Törölni tilos;
 a `--kimenet` próbák ideiglenes könyvtárba, a repón kívülre menjenek.
