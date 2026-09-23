@@ -1,0 +1,51 @@
+tipus	token	txt_karakter	lexicon_karakter	txt_bejegyzesek_szama	osszevetes
+TBESH	H0127	938	431	3	txt bovebb
+TBESH	H0430	242	388	3	lexicon bovebb
+TBESH	H0779	233	358	1	lexicon bovebb
+TBESH	H1121	866	772	8	kb. egyezik
+TBESH	H2403	595	418	4	txt bovebb
+TBESH	H2416	456	903	5	lexicon bovebb
+TBESH	H2555	35	123	1	lexicon bovebb
+TBESH	H3548	288	360	1	lexicon bovebb
+TBESH	H3678	329	217	3	txt bovebb
+TBESH	H4467	104	213	1	lexicon bovebb
+TBESH	H5303	86	113	1	lexicon bovebb
+TBESH	H5315	4061	666	8	txt bovebb
+TBESH	H6093	36	124	1	lexicon bovebb
+TBESH	H6975	49	144	1	lexicon bovebb
+TBESH	H7043	639	857	1	lexicon bovebb
+TBESH	H7121	2267	699	4	txt bovebb
+TBESH	H7451	1276	1083	5	txt bovebb
+TBESH	H7496	35	123	1	lexicon bovebb
+TBESH	H7497	867	268	4	txt bovebb
+TBESH	H7585	329	469	1	lexicon bovebb
+TBESH	H7843	462	541	1	lexicon bovebb
+TBESH	H8004	218	224	1	kb. egyezik
+TBESH	H8034	171	224	1	lexicon bovebb
+TBESH	H8415	204	321	1	lexicon bovebb
+MCGED_lefedettseg	G0012			1	egyedi sor talalhato
+MCGED_lefedettseg	G0086			1	egyedi sor talalhato
+MCGED_lefedettseg	G0282			1	egyedi sor talalhato
+MCGED_lefedettseg	G0813			1	egyedi sor talalhato
+MCGED_lefedettseg	G1311			1	egyedi sor talalhato
+MCGED_lefedettseg	G1941			1	egyedi sor talalhato
+MCGED_lefedettseg	G1944			1	egyedi sor talalhato
+MCGED_lefedettseg	G2671			1	egyedi sor talalhato
+MCGED_lefedettseg	G4151			1	egyedi sor talalhato
+MCGED_lefedettseg	G5010			1	egyedi sor talalhato
+MCGED_lefedettseg	G5351			1	egyedi sor talalhato
+MCGED_lefedettseg	G5356			1	egyedi sor talalhato
+MCGED_lefedettseg	G5590			1	egyedi sor talalhato
+SECE_G_kinyerheto	G0012		293		LN+GK+Hebrew-megfeleltetes kinyerheto
+SECE_G_kinyerheto	G0086		292		LN+GK+Hebrew-megfeleltetes kinyerheto
+SECE_G_kinyerheto	G0282		228		LN+GK+Hebrew-megfeleltetes kinyerheto
+SECE_G_kinyerheto	G0813		259		LN+GK+Hebrew-megfeleltetes kinyerheto
+SECE_G_kinyerheto	G1311		367		LN+GK+Hebrew-megfeleltetes kinyerheto
+SECE_G_kinyerheto	G1941		419		LN+GK+Hebrew-megfeleltetes kinyerheto
+SECE_G_kinyerheto	G1944		263		LN+GK+Hebrew-megfeleltetes kinyerheto
+SECE_G_kinyerheto	G2671		264		LN+GK+Hebrew-megfeleltetes kinyerheto
+SECE_G_kinyerheto	G4151		602		LN+GK+Hebrew-megfeleltetes kinyerheto
+SECE_G_kinyerheto	G5010		322		LN+GK+Hebrew-megfeleltetes kinyerheto
+SECE_G_kinyerheto	G5351		391		LN+GK+Hebrew-megfeleltetes kinyerheto
+SECE_G_kinyerheto	G5356		295		LN+GK+Hebrew-megfeleltetes kinyerheto
+SECE_G_kinyerheto	G5590		712		LN+GK+Hebrew-megfeleltetes kinyerheto
