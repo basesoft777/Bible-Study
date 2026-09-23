@@ -1,0 +1,58 @@
+# Rés-forrás megfeleltetési tábla. Kulcs: id + res. Séma: adat/SEMA.md (R1.1)
+id	res	fejlec	forras	tanulmany
+KIRALY-001	kivonat	## Kivonat *(kézi)*	lap	
+KIRALY-001	2b	### 2/b *(kézi, ha van)*	lap	
+KIRALY-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	lap	
+KIRALY-001	minosites	### Minősítés *(kézi)*	lap	
+KIRALY-001	alatamasztas	### Alátámasztás *(kézi)*	lap	
+KIRALY-001	ertelmezes	## 6. Értelmezés *(kézi)*	lap	
+KIRALY-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	lap	
+ISTENTISZT-001	kivonat	## Kivonat *(kézi)*	tanulmany	tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md
+ISTENTISZT-001	2b	### 2/b. Kiegészítő szótári adatok *(kézi)*	tanulmany	tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md
+ISTENTISZT-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	tanulmany	tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md
+ISTENTISZT-001	minosites	### Minősítés *(kézi)*	tanulmany	tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md
+ISTENTISZT-001	alatamasztas	### Alátámasztás *(kézi)*	tanulmany	tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md
+ISTENTISZT-001	ertelmezes	## 6. Értelmezés *(kézi)*	tanulmany	tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md
+ISTENTISZT-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	tanulmany	tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md
+TEREMT-001	kivonat	## Kivonat *(kézi)*	lap	
+TEREMT-001	2b	### 2/b *(kézi, ha van)*	lap	
+TEREMT-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	lap	
+TEREMT-001	minosites	### Minősítés *(kézi)*	lap	
+TEREMT-001	alatamasztas	### Alátámasztás *(kézi)*	lap	
+TEREMT-001	ertelmezes	## 6. Értelmezés *(kézi)*	lap	
+TEREMT-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	lap	
+ALVIL-001	kivonat	## Kivonat *(kézi)*	lap	
+ALVIL-001	2b	### 2/b *(kézi, ha van)*	lap	
+ALVIL-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	lap	
+ALVIL-001	minosites	### Minősítés *(kézi)*	lap	
+ALVIL-001	alatamasztas	### Alátámasztás *(kézi)*	lap	
+ALVIL-001	ertelmezes	## 6. Értelmezés *(kézi)*	lap	
+ALVIL-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	lap	
+MENNY-001	kivonat	## Kivonat *(kézi)*	lap	
+MENNY-001	2b	### 2/b *(kézi, ha van)*	lap	
+MENNY-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	lap	
+MENNY-001	minosites	### Minősítés *(kézi)*	lap	
+MENNY-001	alatamasztas	### Alátámasztás *(kézi)*	lap	
+MENNY-001	ertelmezes	## 6. Értelmezés *(kézi)*	lap	
+MENNY-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	lap	
+ANTROP-001	kivonat	## Kivonat *(kézi)*	lap	
+ANTROP-001	2b	### 2/b *(kézi, ha van)*	lap	
+ANTROP-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	lap	
+ANTROP-001	minosites	### Minősítés *(kézi)*	lap	
+ANTROP-001	alatamasztas	### Alátámasztás *(kézi)*	lap	
+ANTROP-001	ertelmezes	## 6. Értelmezés *(kézi)*	lap	
+ANTROP-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	lap	
+HODIT-001	kivonat	## Kivonat *(kézi)*	lap	
+HODIT-001	2b	### 2/b *(kézi, ha van)*	lap	
+HODIT-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	lap	
+HODIT-001	minosites	### Minősítés *(kézi)*	lap	
+HODIT-001	alatamasztas	### Alátámasztás *(kézi)*	lap	
+HODIT-001	ertelmezes	## 6. Értelmezés *(kézi)*	lap	
+HODIT-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	lap	
+HAMART-001	kivonat	## Kivonat *(kézi)*	lap	
+HAMART-001	2b	### 2/b *(kézi, ha van)*	lap	
+HAMART-001	miert_fontos	### Miért fontos ez a lelet *(kézi)*	lap	
+HAMART-001	minosites	### Minősítés *(kézi)*	lap	
+HAMART-001	alatamasztas	### Alátámasztás *(kézi)*	lap	
+HAMART-001	ertelmezes	## 6. Értelmezés *(kézi)*	lap	
+HAMART-001	modszertan	## 7. Módszertan és nyitott kérdések *(kézi)*	lap	

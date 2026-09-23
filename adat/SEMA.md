@@ -613,6 +613,47 @@ a 2. kör (V2.8, ISTENTISZT-001 LXX-döntések) tárgya.
 
 ---
 
+### 2.12 `res_forras.tsv` — rés-forrás megfeleltetés (RENDER_BRIEF.md R1.1)
+
+Kulcs: `id` + `res`. A lexikonoldal (`_TUDOMANYOS.md`) hét kézi rése
+(`kivonat`, `2b`, `miert_fontos`, `minosites`, `alatamasztas`, `ertelmezes`,
+`modszertan`) motívumonkénti és résenkénti forrása — a render-elv szerint a
+rés törzse nem a lexikonoldalon él, hanem a tanulmányban (RENDER_BRIEF.md G1).
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `id` | szabad szöveg | ✔ | Motívum-ID (`motivumok.tsv` kulcsa). |
+| `res` | zárt | ✔ | `kivonat` \| `2b` \| `miert_fontos` \| `minosites` \| `alatamasztas` \| `ertelmezes` \| `modszertan`. |
+| `fejlec` | szabad szöveg | ✔ | A rés fejlécsora a lexikonoldalon, szó szerint (RENDER_BRIEF.md G2/G4 — a `VAZ_SABLON` induló fejléce; a nulla-diff ezt bájtra megőrzi). |
+| `forras` | zárt | ✔ | `lap` (a lexikonoldal mai, kézzel írt rése, változatlanul — átmeneti, RENDER_BRIEF.md G12) \| `tanulmany` (a `tanulmany` mezőben megadott fájl `<!-- RÉS-KEZDET: [res] -->…<!-- RÉS-VÉGE: [res] -->` jelölői közötti törzse) \| `adat` (a generátor adatból írja, pl. 0 kapcsolatnál az `alatamasztas`, RENDER_BRIEF.md G16). |
+| `tanulmany` | szabad szöveg | `forras=tanulmany`-nál ✔, egyébként üres | A forrásfájl relatív útvonala — a motívum tematikus tanulmánya (`tematikus_lezart/*.md`) vagy — a `minosites` résnél — a kereszthivatkozás-napló (`tematikus_lezart/naplok/*.md`), RENDER_BRIEF.md G14. |
+
+A tábla `forras=lap` sorainál a `tanulmany` mező üres: az 1. menetben a 7
+helyőrzős lexikonoldal mind a 49 rése `lap` forrású (RENDER_BRIEF.md G12); a
+2. menet végére minden sor `tanulmany`-ra vált (a `lap` érték eltűnik).
+
+---
+
+### 2.13 `szotar_szerepek.tsv` — szótári szerepmátrix (RENDER_BRIEF.md R1.5, G6)
+
+Kulcs: `nyelv` + `sorrend`. 10 szerep × 2 nyelv = 20 sor, statikus tábla (nem
+motívumonkénti): melyik szótári forrás felel meg egy adott „kérdéstípusnak"
+(pl. „Alapjelentés", „Mélységi szócikk") mindkét nyelven, és a forrás ma
+adatosítva van-e a projektben.
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `nyelv` | zárt | ✔ | `gorog` \| `heber`. |
+| `sorrend` | egész szám | ✔ | 1–10, a szerep-lista rögzített sorrendje (azonos mindkét nyelven). |
+| `szerep` | szabad szöveg | ✔ | A szerep megnevezése (pl. „Alapjelentés", „LXX-híd"). |
+| `forras` | szabad szöveg | ✔ | A szerepet ma (vagy célként) kitöltő forrás megnevezése. |
+| `allapot` | zárt | ✔ | `adatosítva` \| `nincs adatosítva` — a RENDER_BRIEF.md G6 záró bekezdése szerint: adatosítva a TBESG, TBESH, Thayer, BDB, UBS DNTG (a meglévő import), SDBH domének, LSJ és az LXX-híd (mindkét irány); a többi (Cremer, Girdlestone, UBS DBH glossza+referencia, Mounce-kiegészítő önmagában, SECE, BDB-etimológia, kiejtés) a `SZOTAR_BRIEF.md` tárgya. |
+
+A törzscikk (`_TORZSCIKK.md`) 5. szakaszának szerep-mátrixa ebből a táblából
+épül; a lefedettségi mátrix (szavanként) a belső adatmodellből (G5).
+
+---
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi
