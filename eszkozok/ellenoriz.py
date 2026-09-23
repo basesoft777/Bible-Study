@@ -482,6 +482,70 @@ def szabaly10_v22_tablak(adat_dir):
 
 
 # ---------------------------------------------------------------------------
+# 11-12. RENDER_BRIEF.md R1.6: rés-forrás egyezés + lap-számláló
+# ---------------------------------------------------------------------------
+
+def szabaly11_res_forras_egyezes(adat_dir):
+    """G4: SÉRTÉS, ha egy `tanulmany`/`adat` forrású rés a lexikonoldalon
+    eltér a `res_forras.tsv` + a tanulmány/napló szerint elvárttól -- azaz
+    a lexikonoldal ténylegesen a táblából + a tanulmányból állítható-e össze
+    (a `lap` forrású sorokra nincs mit összevetni, ezek nem tartoznak ide,
+    l. a 12. szabály)."""
+    res_path = os.path.join(adat_dir, 'res_forras.tsv')
+    cim = '11. Rés-forrás egyezés (tanulmány/adat ≡ tábla + tanulmány)'
+    if not os.path.exists(res_path):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs adat/res_forras.tsv')
+
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import lexikon_general as LG
+
+    _, res_sorok = G.tsv_beolvas(res_path)
+    erintett = [r for r in res_sorok if r['forras'] != 'lap']
+    if not erintett:
+        return Sor(cim, 'KÉZI', megjegyzes='nincs tanulmány/adat forrású rés-sor')
+
+    hibas = []
+    lex_szoveg_cache = {}
+    for r in erintett:
+        motivum_id, res = r['id'], r['res']
+        if motivum_id not in lex_szoveg_cache:
+            lex_path = os.path.join(ROOT, 'lexikon', '%s_TUDOMANYOS.md' % motivum_id)
+            if not os.path.exists(lex_path):
+                lex_szoveg_cache[motivum_id] = None
+            else:
+                with open(lex_path, encoding='utf-8') as f:
+                    lex_szoveg_cache[motivum_id] = f.read()
+        lex_szoveg = lex_szoveg_cache[motivum_id]
+        if lex_szoveg is None:
+            hibas.append('%s / %s -- nincs lexikonoldal' % (motivum_id, res))
+            continue
+        try:
+            elvart = LG.res_torzs({'id': motivum_id}, res, r)
+            tenyleges = LG.res_torzs_lapbol(lex_szoveg, {'id': motivum_id}, res)
+        except Exception as exc:
+            hibas.append('%s / %s -- hiba: %s' % (motivum_id, res, exc))
+            continue
+        if elvart != tenyleges:
+            hibas.append('%s / %s -- eltér a tábla + tanulmány szerint elvárttól' % (motivum_id, res))
+    if hibas:
+        return Sor(cim, 'SÉRTÉS', len(hibas), hibas)
+    return Sor(cim, 'RENDBEN')
+
+
+def szabaly12_lap_szamlalo(adat_dir):
+    """JELENTÉS: hány rés-sor `forras=lap` -- a RENDER_BRIEF.md 2. menetének
+    végére 0-ra csökken (G12)."""
+    res_path = os.path.join(adat_dir, 'res_forras.tsv')
+    cim = '12. `lap` forrású rés-sorok száma'
+    if not os.path.exists(res_path):
+        return Sor(cim, 'JELENTÉS', megjegyzes='nincs adat/res_forras.tsv')
+    _, res_sorok = G.tsv_beolvas(res_path)
+    lap_sorok = ['%s / %s' % (r['id'], r['res']) for r in res_sorok if r['forras'] == 'lap']
+    return Sor(cim, 'JELENTÉS', n=len(lap_sorok), peldak=lap_sorok,
+               megjegyzes='a RENDER_BRIEF.md 2. menetének végére 0-ra csökken (G12)')
+
+
+# ---------------------------------------------------------------------------
 # Q1 / Q7 -- --study
 # ---------------------------------------------------------------------------
 
@@ -613,6 +677,8 @@ def main():
         tabla_sorok.append(szabaly8c_kezi_lefedettseg(motivumok, elofordulasok, auditok, datasetek))
         tabla_sorok.append(szabaly9_teljes_jelentes_szam(elofordulasok, lexikon_hivatkozasok))
         tabla_sorok.append(szabaly10_v22_tablak(args.adat))
+        tabla_sorok.append(szabaly11_res_forras_egyezes(args.adat))
+        tabla_sorok.append(szabaly12_lap_szamlalo(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
