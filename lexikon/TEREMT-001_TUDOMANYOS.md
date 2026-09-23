@@ -598,7 +598,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-23 -->
 
 *Ez a blokk a `[ID: TEREMT-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
@@ -606,7 +606,7 @@ Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.
 - ID: `TEREMT-001`
 - Cím: Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma
 - Státusz: publikálható (`v4`, 2026.09.10)
-- Generálva: 2026-09-22
+- Generálva: 2026-09-23
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/TEREMT-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
