@@ -629,7 +629,87 @@ def domen_anomalia_figyelmeztetes(strong):
     return L._matching_jelentes_nelkul(anom_rows, dataset_name, strong)
 
 
-def blokk_szocikkek(m, tokenek):
+def _jsz_cimke(jelentes_szam):
+    if jelentes_szam == 'teljes':
+        return '(teljes szócikk)'
+    if jelentes_szam == 'részlet':
+        return '(részlet)'
+    return '%s. jelentés' % jelentes_szam
+
+
+def _epit_szotar_alszakasz(strong, szint_eltolas, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh):
+    """Egy Strong-szám szócikk-alszakasza -- azonos logika a motívum
+    tokenjeire és a Rokon szavak (D2) bejegyzéseire, a `szint_eltolas`
+    (0 vagy 1) csak a heading-mélységet tolja el. Visszaadja: (szöveg,
+    van_hivatkozas, tisztazatlan_erintve)."""
+    cim_hash = '#' * (3 + szint_eltolas)
+    sub_hash = '#' * (4 + szint_eltolas)
+
+    lk = lemma_kiejtes(strong)
+    if lk:
+        lemma, kiejtes = lk
+        alszakasz = ['%s %s — %s (%s)' % (cim_hash, strong, lemma, kiejtes)]
+        fajl_licenc_kulcsok_tbesg_tbesh.add('TBESG' if strong.startswith('G') else 'TBESH')
+    else:
+        alszakasz = ['%s %s' % (cim_hash, strong)]
+
+    if strong.startswith('H'):
+        twotok = oshl_twot_ehhez(strong)
+        alszakasz.append('**TWOT:** %s' % (', '.join(twotok) if twotok else EM_DASH))
+        fajl_licenc_kulcsok.setdefault('konkordancia/OSHL_lexikalis_index.tsv', set()).add('OSHL')
+    else:
+        alszakasz.append('**TWOT:** %s' % EM_DASH)
+
+    domenek = domen_talalatok(strong)
+    domen_szoveg = ', '.join('%s %s' % (kod, label) for kod, label in domenek) if domenek else EM_DASH
+    alszakasz.append('**Szemantikai domén:** %s' % domen_szoveg)
+    domen_fajl = 'konkordancia/SDBH_domenek.tsv' if strong.startswith('H') else 'konkordancia/SDGNT_domenek.tsv'
+    domen_licenc_kulcs = 'SDBH' if strong.startswith('H') else 'SDGNT'
+    fajl_licenc_kulcsok.setdefault(domen_fajl, set()).add(domen_licenc_kulcs)
+
+    for anom in domen_anomalia_figyelmeztetes(strong):
+        alszakasz.append('*Figyelem: elemzetlen bejegyzés illeszkedik — %s %s %s*'
+                          % (anom['entry_id'], anom['lemma'], anom['nyers_ertek']))
+
+    van_hivatkozas = False
+    tisztazatlan_erintve = False
+    hiv_sorok = lexikon_hivatkozasok_ehhez(strong)
+    if hiv_sorok:
+        van_hivatkozas = True
+        for r in hiv_sorok:
+            fajl_licenc_kulcsok.setdefault('adat/lexikon_hivatkozasok.tsv', set()).add(r['szotar'])
+            fajl_licenc_kulcsok.setdefault(r['forrasfajl'], set()).add(r['szotar'])
+            if r['szotar'] in TISZTAZATLAN_SZOTARAK:
+                tisztazatlan_erintve = True
+            alszakasz.append('%s %s %s — %s' % (sub_hash, r['szotar'], r['entry_id'], _jsz_cimke(r['jelentes_szam'])))
+            alszakasz.append('> %s' % r['szoveg_en'])
+            if r['forditas_hu']:
+                alszakasz.append('**🇭🇺** %s' % r['forditas_hu'])
+            else:
+                alszakasz.append('*Fordítás függőben.*')
+            alszakasz.append('*Forrás: %s*' % r['forrasfajl'])
+    else:
+        alszakasz.append('Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.')
+
+    return '\n\n'.join(alszakasz), van_hivatkozas, tisztazatlan_erintve
+
+
+def rokon_szavak_strongok(sorai, tokenek):
+    """D2 (a), (b), (c): a motívum sajat tokenjei kozul kimaradó, a motívum
+    `lxx_dontesek.tsv` soraiban `gorog_strong`-ként megnevezett, és a
+    `lexikon_hivatkozasok.tsv`-ben hivatkozással rendelkező Strong-számok."""
+    dontesek_idx = lxx_dontesek_index()
+    strongok = set()
+    for s in sorai:
+        for vers in igehely_lista(s['igehely']):
+            for r in dontesek_idx.get(vers, []):
+                gs = (r.get('gorog_strong') or '').strip()
+                if gs and STRONG_TOKEN_RE.match(gs) and gs not in tokenek:
+                    strongok.add(gs)
+    return sorted(s for s in strongok if lexikon_hivatkozasok_ehhez(s))
+
+
+def blokk_szocikkek(m, tokenek, sorai):
     reszek = []
     fajl_licenc_kulcsok = {'adat/lexikon_hivatkozasok.tsv': set()}
     van_hivatkozas_barmelyikhez = False
@@ -637,52 +717,22 @@ def blokk_szocikkek(m, tokenek):
 
     fajl_licenc_kulcsok_tbesg_tbesh = set()
     for strong in tokenek:
-        lk = lemma_kiejtes(strong)
-        if lk:
-            lemma, kiejtes = lk
-            alszakasz = ['### %s — %s (%s)' % (strong, lemma, kiejtes)]
-            fajl_licenc_kulcsok_tbesg_tbesh.add('TBESG' if strong.startswith('G') else 'TBESH')
-        else:
-            alszakasz = ['### %s' % strong]
+        alszakasz_szov, van_hiv, tiszt = _epit_szotar_alszakasz(
+            strong, 0, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh)
+        van_hivatkozas_barmelyikhez = van_hivatkozas_barmelyikhez or van_hiv
+        tisztazatlan_erintve = tisztazatlan_erintve or tiszt
+        reszek.append(alszakasz_szov)
 
-        if strong.startswith('H'):
-            twotok = oshl_twot_ehhez(strong)
-            alszakasz.append('**TWOT:** %s' % (', '.join(twotok) if twotok else EM_DASH))
-            fajl_licenc_kulcsok.setdefault('konkordancia/OSHL_lexikalis_index.tsv', set()).add('OSHL')
-        else:
-            alszakasz.append('**TWOT:** %s' % EM_DASH)
-
-        domenek = domen_talalatok(strong)
-        domen_szoveg = ', '.join('%s %s' % (kod, label) for kod, label in domenek) if domenek else EM_DASH
-        alszakasz.append('**Szemantikai domén:** %s' % domen_szoveg)
-        domen_fajl = 'konkordancia/SDBH_domenek.tsv' if strong.startswith('H') else 'konkordancia/SDGNT_domenek.tsv'
-        domen_licenc_kulcs = 'SDBH' if strong.startswith('H') else 'SDGNT'
-        fajl_licenc_kulcsok.setdefault(domen_fajl, set()).add(domen_licenc_kulcs)
-
-        for anom in domen_anomalia_figyelmeztetes(strong):
-            alszakasz.append('*Figyelem: elemzetlen bejegyzés illeszkedik — %s %s %s*'
-                              % (anom['entry_id'], anom['lemma'], anom['nyers_ertek']))
-
-        hiv_sorok = lexikon_hivatkozasok_ehhez(strong)
-        if hiv_sorok:
-            van_hivatkozas_barmelyikhez = True
-            for r in hiv_sorok:
-                fajl_licenc_kulcsok['adat/lexikon_hivatkozasok.tsv'].add(r['szotar'])
-                fajl_licenc_kulcsok.setdefault(r['forrasfajl'], set()).add(r['szotar'])
-                if r['szotar'] in TISZTAZATLAN_SZOTARAK:
-                    tisztazatlan_erintve = True
-                jsz_cimke = '(teljes szócikk)' if r['jelentes_szam'] == 'teljes' else '%s. jelentés' % r['jelentes_szam']
-                alszakasz.append('#### %s %s — %s' % (r['szotar'], r['entry_id'], jsz_cimke))
-                alszakasz.append('> %s' % r['szoveg_en'])
-                if r['forditas_hu']:
-                    alszakasz.append('**🇭🇺** %s' % r['forditas_hu'])
-                else:
-                    alszakasz.append('*Fordítás függőben.*')
-                alszakasz.append('*Forrás: %s*' % r['forrasfajl'])
-        else:
-            alszakasz.append('Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.')
-
-        reszek.append('\n\n'.join(alszakasz))
+    rokon_strongok = rokon_szavak_strongok(sorai, tokenek)
+    if rokon_strongok:
+        rokon_reszek = ['### Rokon szavak']
+        for strong in rokon_strongok:
+            alszakasz_szov, van_hiv, tiszt = _epit_szotar_alszakasz(
+                strong, 1, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh)
+            van_hivatkozas_barmelyikhez = van_hivatkozas_barmelyikhez or van_hiv
+            tisztazatlan_erintve = tisztazatlan_erintve or tiszt
+            rokon_reszek.append(alszakasz_szov)
+        reszek.append('\n\n'.join(rokon_reszek))
 
     if not fajl_licenc_kulcsok['adat/lexikon_hivatkozasok.tsv']:
         del fajl_licenc_kulcsok['adat/lexikon_hivatkozasok.tsv']
@@ -1057,6 +1107,7 @@ FAJL_TELJES_NEV = {
     'konkordancia/SDGNT_domenek.tsv': 'SDGNT (Semantic Dictionary of Biblical Greek)',
     'konkordancia/OSHL_lexikalis_index.tsv': 'OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám',
     'konkordancia/TSK_kereszthivatkozasok.tsv': 'TSK (Treasury of Scripture Knowledge)',
+    'konkordancia/LSJ_teljes.tsv': 'LSJ (Liddell-Scott-Jones, A Greek-English Lexicon)',
 }
 ADATFORRAS_FAJLOK = {'konkordancia/Karoli_1908.tsv', 'konkordancia/Karoli_kereszthivatkozasok.tsv',
                       'adat/lexikon_hivatkozasok.tsv'}
@@ -1275,7 +1326,7 @@ def render_lexikon_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek):
     blokk_jelmagyarazat_szov = blokk_jelmagyarazat(m)
     blokk_elofordulasok_szov, fl_elofordulasok = blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek)
     blokk_kizart_szov, fl_kizart = blokk_kizart(m)
-    blokk_szocikkek_szov, tisztazatlan_erintve, fl_szocikkek = blokk_szocikkek(m, tokenek)
+    blokk_szocikkek_szov, tisztazatlan_erintve, fl_szocikkek = blokk_szocikkek(m, tokenek, sorai)
     blokk_lxx_szov, fl_lxx = blokk_lxx(m, sorai, tokenek)
     blokk_kereszthiv_szov, fl_kereszthiv = blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek)
     blokk_kapcsolatok_szov, fl_kapcsolatok = blokk_kapcsolatok(m, konyv_sorrend, hianyzo_konyvek)
