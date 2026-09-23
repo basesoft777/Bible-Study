@@ -1,6 +1,6 @@
 # RENDER_BRIEF.md — render-átállás és szótári adatréteg
 
-*v1 — 2026.09.23 · jóváhagyásra: a §2 G-döntései és a §0/§4 számai*
+*v2 — 2026.09.23 · jóváhagyásra: a §2 G-döntései és a §0/§4 számai · v1 → v2: a törzscikk-pilot beemelése (D10), módszertani pontosítások (D11)*
 
 **Cél.** A lexikonoldal tiszta render legyen: a kézi szövegek a forrásrétegben élnek, a
 generátor egy belső adatmodellből dolgozik, és ebből két kimenet készül egy futásban —
@@ -34,9 +34,9 @@ bibliográfia).
 | 0.8 | `adat/forditas_ubs.tsv` | 20 sor; `definicio_hu` 20, `glosszak_hu` 20 |
 | 0.9 | `motivumok/*.md` (napló-forrásréteg) | 8 fájl — a lexikonoldal kézi szövegét **nem** tartalmazzák |
 | 0.10 | kiejtés-pár a kézi szövegben (blockquote nélkül) | görög 50, héber 49 — mind az ISTENTISZT-001-ben |
-| 0.11 | tudományos átírás-gyanú a generált blokkokban (becslés) | 859 (8 oldal összesen) — az R0.4 pontosítja |
+| 0.11 | tudományos átírás-gyanú a generált blokkokban (becslés) | 859 (8 oldal összesen; az R0.1 saját becslése 936) — nem megállási ok; az R0.4 pontosítja, az R0.7 mindkét becslési módszert leírja |
 | 0.12 | nyers SQLite | `MCGED.lexicon` 10 666 sor; `TBESH.lexicon` 9 888 sor |
-| 0.13 | törzscikk-pilot (ISTENTISZT-001) | 32 igehely (22 ÓSZ / 10 ÚSZ) · 25 kapcsolat · 22 LXX-sor · 106 kereszthivatkozás · 0 üzemeltetési elem |
+| 0.13 | törzscikk-pilot (ISTENTISZT-001), forrás: `motivumlog/lexikon_pilot/ISTENTISZT-001_TORZSCIKK.md` | 32 igehely (22 ÓSZ / 10 ÚSZ) · 25 kapcsolat · 22 LXX-sor · 106 kereszthivatkozás · 0 üzemeltetési elem; a `torzscikk_pilot.py` a mai `lexikon/ISTENTISZT-001_TUDOMANYOS.md`-ből bájtra azonos kimenetet ad |
 
 ---
 
@@ -64,7 +64,7 @@ bibliográfia).
 | G7 | Terminológia | **`adat/terminologia.tsv`** (`angol`, `magyar`, `megjegyzes`, `verzio`); induló sorok a mai jelmagyarázat konvenciójából: spirit = szellem, spiritual = szellemi, soul = lélek. Az ellenőrző csak jelent (JELENTÉS), nem sért | — |
 | G8 | Kiejtés | **Görög: szabálytábla (`adat/kiejtes_szabalyok.tsv`) + `eszkozok/kiejtes.py`.** Héber: nincs gépi átírás; a lemma-kiejtés csak a kézi `adat/kiejtes_kivetelek.tsv`-ből jön (induló sorai kizárólag a tesztkészletben már jóváhagyott alakok). Az 1. menetben a `kiejtes.py` csak mér és jelent. Élesítés (R2.1) feltétele: a görög tesztkészlet 100%-a egyezik, a kivételekkel együtt | — |
 | G9 | Szerepkör-mátrix | **`adat/szotar_szerepek.tsv`** (`nyelv`, `sorrend`, `szerep`, `forras`, `feltetel`) a pilot D6 sorrendjével; csak a törzscikk-render olvassa | — |
-| G10 | Törzscikk | **`lexikon/[ID]_TORZSCIKK.md` mind a 8 motívumra**, új cél `general.py --cel torzscikk` (élesíthető), új sablon `sablonok/8_PaRDeS_torzscikk_sablon.md`. A pilot döntései (D1–D13, `ISTENTISZT-001_TORZSCIKK_dontesnaplo.md`) érvényesek. A helyőrző-rés és a `【NAPLO: …】` blokk kimarad. Az 1. menetben a 2/b rés egyben, „Kiegészítő szótári adatok" címmel jelenik meg; a „Miért fontos" rés `#### [Strong]` alszakaszai a szó „Jelentősége" pontjához kerülnek, a többi a „A szavak együtt" alá | csak az ISTENTISZT-001-re |
+| G10 | Törzscikk | **`lexikon/[ID]_TORZSCIKK.md` mind a 8 motívumra**, új cél `general.py --cel torzscikk` (élesíthető), új sablon `sablonok/8_PaRDeS_torzscikk_sablon.md`. A pilot döntései (D1–D13, `motivumlog/lexikon_pilot/ISTENTISZT-001_TORZSCIKK_dontesnaplo.md`) érvényesek. A helyőrző-rés és a `【NAPLO: …】` blokk kimarad. Az 1. menetben a 2/b rés egyben, „Kiegészítő szótári adatok" címmel jelenik meg; a „Miért fontos" rés `#### [Strong]` alszakaszai a szó „Jelentősége" pontjához kerülnek, a többi a „A szavak együtt" alá | csak az ISTENTISZT-001-re |
 | G11 | Mounce és SECE | **Adatosítás a 2. menetben:** MCGED-import (`konkordancia/MCGED_teljes.tsv` a nyers SQLite-ból); a SECE a meglévő `SECE_G_teljes.tsv` / `SECE_H_teljes.tsv`-ből (L–N és megfelelő-lista kinyerése). Új generált sorok a 2. szakasz szócikkeiben, a Mounce szó szerinti megjelölésével a 8. szakaszban és a kolofonban. Az ISTENTISZT-001 2/b Mounce/SECE-táblái ezzel a forrásrétegből törlődnek | — |
 | G12 | TBESH | **Átállás a konszolidált változatra** (`konkordancia/TBESH_konszolidalt.tsv` a `TBESH.lexicon`-ból), ha az R0.5 összevetése nem talál tartalomvesztést | marad a `TBESH.txt` |
 | G13 | A 3 tartalmi NAPLO-blokk (ISTENTISZT-001: a Típus-mező névütközése; a study 15 → 22 frissítése; a Variáns-döntés) | **Maradnak NAPLO-blokkban** (a lexikonoldalon látszanak, a törzscikkből kimaradnak); a study-frissítés már nyitott tétel | nyitott kérdésként a 7. szakaszba (R2.4) |
@@ -75,8 +75,8 @@ bibliográfia).
 
 ### R0 — felmérés *(csak olvas; egy commit: a jelentés és a munkalapok)*
 
-- **R0.1** A §0 minden sorának újramérése. Ha bármi eltér: **ÁLLJ**, jelentés.
-- **R0.2** Rés-leltár: 8 oldal × 7 rés — bájtméret, helyőrző-e, fejlécsor szövege; a réseken és a vázon kívül eső szöveg listája (várt: 0). `naplok/RENDER_R0_resek.tsv`.
+- **R0.1** A §0 minden sorának újramérése. Ha bármi eltér: **ÁLLJ**, jelentés. A 0.13-nál a beemelt pilot-kimenet számai, majd a `torzscikk_pilot.py` újrafuttatása `/tmp`-be és bájt-összevetés a beemelt kimenettel.
+- **R0.2** Rés-leltár: 8 oldal × 7 rés — bájtméret, helyőrző-e, fejlécsor szövege; a réseken és a vázon kívül eső szöveg listája (várt: 0). `naplok/RENDER_R0_resek.tsv`. Mérés blokkhatár-pontosan (regex a markerekre), nem soronként: a soronkénti számlálás a 0.5-nél 9 karakterrel tévedett.
 - **R0.3** Kiejtés-tesztkészlet: minden „görög szó (kiejtés)" és „héber szó (kiejtés)" pár a lexikonoldalak kézi szövegéből (blockquote nélkül), a `lexikon_hivatkozasok.forditas_hu` és a `forditas_ubs` mezőiből. `naplok/RENDER_kiejtes_tesztkeszlet.tsv` (`nyelv`, `szo`, `kiejtes`, `hely`).
 - **R0.4** A generált blokkok átírásainak leltára oldalanként és blokkonként: görög lemma, görög alak, héber lemma, héber alak (STEP). `naplok/RENDER_R0_atirasok.tsv`. Ez adja az R2.1 elvárt diffjét.
 - **R0.5** Forrás-összevetés: a 8 motívum H-tokenjeire a `TBESH.txt` és a `TBESH.lexicon` szövege (egyezik / bővebb / szűkebb); a G-tokenekre az MCGED lefedettsége; a SECE L–N- és megfelelő-mezőinek kinyerhetősége.
@@ -166,6 +166,8 @@ bibliográfia).
 | Üzenet | Fájlok |
 |---|---|
 | `RENDER_BRIEF.md v1` | `RENDER_BRIEF.md` |
+| `RENDER_BRIEF.md v2` | `RENDER_BRIEF.md` |
+| `R0: törzscikk-pilot beemelése` | `motivumlog/lexikon_pilot/ISTENTISZT-001_TORZSCIKK.md`, `motivumlog/lexikon_pilot/ISTENTISZT-001_TORZSCIKK_dontesnaplo.md`, `motivumlog/lexikon_pilot/torzscikk_pilot.py` |
 | `R0: felmérés — rés-leltár, kiejtés-tesztkészlet, átírások, forrás-összevetés` | `naplok/RENDER_R0_*.tsv`, `naplok/RENDER_kiejtes_tesztkeszlet.tsv`, `naplok/RENDER_R0_jelentes.md` |
 
 **1. menet**
@@ -193,7 +195,8 @@ bibliográfia).
 ```
 Olvasd el a CLAUDE.md-t, majd a RENDER_BRIEF.md-t teljes egészében.
 
-0. Commitold a briefet: "RENDER_BRIEF.md v1".
+0. Commitold a briefet ("RENDER_BRIEF.md v2") és a pilot beemelését
+   ("R0: törzscikk-pilot beemelése"), a §6 R0-táblája szerint.
 1. R0.1: mérd újra a §0 tábláját. Ha bármi eltér, ÁLLJ MEG és jelents.
 2. R0.2–R0.6 a §3 szerint. Az éles adat/, lexikon/, motivumok/ könyvtárba NE írj.
 3. R0.7: jelentés, a kérdések egy listában. Commit a §6 R0-táblája szerint. K1–K3.
@@ -239,3 +242,5 @@ Olvasd el a CLAUDE.md-t és a RENDER_BRIEF.md-t (a jóváhagyott verziót).
 | D7 | A törzscikk az 1. menetben a 2/b rést egyben mutatja; a pilot szerinti szétosztás a 2. menet forrásréteg-javításával (R2.4) valósul meg | a render nem értelmez szabad prózát; a hozzárendelés a forrásban történik |
 | D8 | Kizárva: fordítási pipeline, BDB SQLite-csere, héber gépi kiejtés, C2, a LEXV2_3 többi tétele | külön kockázat és külön döntés; a 2. menet lezárása nyitott tételként rögzíti őket |
 | D9 | A diff-osztályozó és a nulla-diff próba minden tétel után fut | a szkript csendes sorvesztésének tanulsága (ISTENTISZT ZARO-körök) |
+| D10 | A törzscikk-pilot (kimenet, döntésnapló, szkript) a v2-vel verzióba kerül a `motivumlog/lexikon_pilot/` alá; a 0.13 és a G10 erre hivatkozik | az R0.1 megállt: a pilot chatben, repón kívül készült. Tanulság: chatben készült, a briefben hivatkozott artifact csak commit után hivatkozható |
+| D11 | A 0.11 eltérése (859 / 936) nem megállási ok; a rés-mérés blokkhatár-pontos | a 0.11 becslés, a pontosítása az R0.4 feladata; a soronkénti mérés a 0.5-nél hibázott |
