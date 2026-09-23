@@ -1,6 +1,6 @@
 # RENDER_BRIEF.md — render-átállás: a lexikonoldal és a törzscikk a tematikus tanulmányból
 
-*v3 — 2026.09.23 · jóváhagyva: a §2 G-döntései és a §0/§4 számai · v2 → v3: a rések forrása a tematikus tanulmány (D12); a szótári adatréteg külön briefbe került (`SZOTAR_BRIEF.md`, D13); új szerepmátrix (D14), benne az LXX-híd (D19) és a kiejtés (D20)*
+*v4 — 2026.09.23 · jóváhagyva: a §2 G-döntései és a §0/§4 számai · v2 → v3: a rések forrása a tematikus tanulmány (D12); a szótári adatréteg külön briefbe került (`SZOTAR_BRIEF.md`, D13); új szerepmátrix (D14), benne az LXX-híd (D19) és a kiejtés (D20) · v3 → v4: az R0.8 jóváhagyott döntései (G14–G16, D21–D27)*
 
 **Cél.** A render-elv végrehajtása a 8 kész motívumon: minden a tematikus tanulmányban
 készül, a lexikonoldal (`_TUDOMANYOS.md`) és a kereszthivatkozási törzscikk
@@ -28,7 +28,7 @@ Az R0 (R0.1–R0.7) lefutott, élő adatba nem írt (K3). A 0.7, 0.8, 0.10–0.1
 
 | # | Mérés | Érték |
 |---|---|---|
-| 0.1 | `main` = `origin/main` | `d0a5aa1` (az R0 után), majd e brief commitja |
+| 0.1 | `origin/main` a `main` őse, divergencia nélkül (D25) | `origin/main` = `f840330` (az R0.8 után) |
 | 0.2 | `ellenoriz.py` összesítő | RENDBEN 8 · SÉRTÉS 0 · KÉZI 3 · JELENTÉS 1, kód 0 |
 | 0.3 | `general.py --cel lexikon --ellenoriz` | 8/8 „változatlan lenne" |
 | 0.4 | lexikonoldalak | 8 (`lexikon/*_TUDOMANYOS.md`), mind 10 generált blokkal |
@@ -72,7 +72,10 @@ Az R0 (R0.1–R0.7) lefutott, élő adatba nem írt (K3). A 0.7, 0.8, 0.10–0.1
 | G10 | Kivonat | 3–5 mondat (a mai helyőrző előírása szerint). A 7 tanulmányba a 2. menet írja tervezetként; **⛔ jóváhagyás a commit előtt.** |
 | G11 | 2/b fejléc | A 2. menetben a 8 motívum `fejlec` értéke egységesen `### 2/b. Kiegészítő szótári adatok *(kézi)*` (R0 7. szakasz, 3. kérdés). |
 | G12 | Átmeneti forrás | Az 1. menetben csak az ISTENTISZT-001 rései `tanulmany` forrásúak, a 7 oldal rései `lap` (a lap mai rése, változatlanul). A 2. menet végén `lap` sor nincs. Az `ellenoriz.py` 12. szakasza a `lap` sorok számát jelenti. |
-| G13 | A 3 tartalmi NAPLO-blokk (ISTENTISZT-001) | Az 1. menetben maradnak. A study-frissítésről szóló blokk a 2. menetben lezárul, mert a G8 teljesíti; a másik kettő marad (a lexikonoldalon látszik, a törzscikkből kimarad). |
+| G13 | A 3 tartalmi NAPLO-blokk (ISTENTISZT-001) | Az 1. menetben maradnak. A study-frissítésről szóló blokk (a lexikonoldal ~1041. sora, *„a tematikus study 3. pontja még 17 ószövetségi igehelyről…"*, az `ertelmezes` résben; D24) a 2. menetben lezárul, mert a G8 teljesíti; a másik kettő marad (a lexikonoldalon látszik, a törzscikkből kimarad). |
+| G14 | `minosites` forrása | **A motívum kereszthivatkozás-naplója** (`tematikus_lezart/naplok/*_kereszthivatkozas_naplo.md`), a „Tartalmi minősítés minden jelöltre" és a „Végső döntés és indoklás" szakasz (D21). A `res_forras.tsv` `tanulmany` oszlopa ilyenkor a napló útvonalát tartja. Lefedettség 7/8; az ANTROP-001-nek nincs naplója — a rés a tanulmányban, jelölők közt egy sort kap: *„A kereszthivatkozás-minősítés ennél a motívumnál nem készült el."*, és új NYITOTT-tétel. ISTENTISZT-001: a lexikonrés a napló minősítő szakaszát váltja fel; ha nincs ilyen, új szakasz a napló végén. |
+| G15 | `2b` | **ISTENTISZT-001:** az 1. menetben egyben, új szakaszként a tanulmány „2. Eredeti nyelvi összevetés" szakasza után (D22); a SZOTAR S12 később szétbontja. **A többi 7:** TEREMT-001 (2/b + 2/c) és ALVIL-001 (2/b) a meglévő szakaszt kapja; a másik 5 tanulmányban a jelölők közt egy sor: *„Nincs kiegészítő szótári adat."* |
+| G16 | `alatamasztas` | Forrás `adat` (új `forras` érték): ahol a motívumnak 0 kapcsolata van (`adat/kapcsolatok.tsv`; 6 motívum), a generátor adatból írja: *„A motívumhoz nincs rögzített kapcsolat."* (D26). ISTENTISZT-001 (25 kapcsolat): a lexikonrés felváltja a tanulmány „1/b. Kapcsolatok" szakaszát. KIRALY-001 (9 kapcsolat): a forrást a 2. menet javasolja (várhatóan a napló „Végső döntés és indoklás" szakasza), jóváhagyás az R2.2 ⛔-nél. |
 
 **G6 — a szerepmátrix tartalma:**
 
@@ -122,7 +125,7 @@ domének, LSJ, LXX-híd (mindkét irány). A többi `nincs adatosítva`; ezeket 
 ### 1. menet — nulla-diff
 
 - **R1.1** `adat/res_forras.tsv` (`id`, `res`, `fejlec`, `forras`, `tanulmany`), 56 sor: ISTENTISZT-001 7 sora `tanulmany`, a többi 49 `lap`. SEMA-bejegyzés.
-- **R1.2** ISTENTISZT-001 tanulmány: visszaírás a jóváhagyott R0.8.5 szerint, jelölőkkel; új `## Kivonat` szakasz a lexikonoldal kivonatával (G8).
+- **R1.2** ISTENTISZT-001 tanulmány és kereszthivatkozás-napló: visszaírás a jóváhagyott R0.8.5 szerint, a G14–G16 és a D23 módosításaival (`minosites` → a napló; `2b` → új szakasz a 2. után; `modszertan` → csak a „6. Napló-frissítés" helyére, a 0. szakasz és a Minőségi kapu jelölő nélkül, változatlanul), jelölőkkel; új `## Kivonat` szakasz a lexikonoldal kivonatával (G8).
 - **R1.3** `lexikon_general.py`: a rések a tábla szerint (`tanulmany`: fejléc + jelölt törzs; `lap`: a lap mai rése). Hiányzó jelölő vagy tábla-sor: hibakód, nem helyőrző.
 - **R1.4** Belső adatmodell (G5): `modell_epit()`.
 - **R1.5** `adat/szotar_szerepek.tsv` (G6), 20 sor; SEMA-bejegyzés.
@@ -132,8 +135,8 @@ domének, LSJ, LXX-híd (mindkét irány). A többi `nincs adatosítva`; ezeket 
 
 ### 2. menet — kimenet-változtató, elvárt diffel
 
-- **R2.1** A 7 tanulmány: jelölők a jóváhagyott megfeleltetés szerint; a jóváhagyott elavult számok javítása; a hiányzó rések jóváhagyott kezelése (G9).
-- **R2.2** Kivonat-tervezetek a 7 tanulmány elejére (G10). **ÁLLJ — jóváhagyás**, utána commit.
+- **R2.1** A 7 tanulmány és 6 kereszthivatkozás-napló: jelölők a jóváhagyott megfeleltetés és a G14–G16 szerint; elavult szám-javítás nincs (R0.8.4: 0 tétel, D27); a hiányzó rések jóváhagyott kezelése (G9).
+- **R2.2** Kivonat-tervezetek a 7 tanulmány elejére (G10) és a KIRALY-001 `alatamasztas` forrásjavaslata (G16). **ÁLLJ — jóváhagyás**, utána commit.
 - **R2.3** `res_forras.tsv`: a 49 `lap` sor → `tanulmany`; a 2/b `fejlec` egységesítése (G11).
 - **R2.4** Az ISTENTISZT-001 study-frissítési NAPLO-blokkjának lezárása (G13).
 - **R2.5** A lexikonoldal első sora elé gépi jelölés: `<!-- GENERÁLT: general.py --cel lexikon | rések: [forras_study] -->`.
@@ -153,7 +156,7 @@ domének, LSJ, LXX-híd (mindkét irány). A többi `nincs adatosítva`; ezeket 
 | 1 | `adat/szotar_szerepek.tsv` | 20 sor |
 | 1 | `ellenoriz.py` | RENDBEN 9 · SÉRTÉS 0 · KÉZI 3 · JELENTÉS 2 (a 12. szakasz 49 `lap` sort jelent), kód 0 |
 | 1 | `lexikon/*_TORZSCIKK.md` | 8 fájl; ISTENTISZT-001: 32 (22/10) · 25 · 22 · 106, üzemeltetési elem 0, helyőrző 0; pilot-diff csak az 5. szakaszban és a láblécben |
-| 2 | `res_forras.tsv` | `lap` 0, `tanulmany` 56 |
+| 2 | `res_forras.tsv` | `lap` 0; `adat` 6 (`alatamasztas`, 0 kapcsolat); `tanulmany` 50, ebből `minosites` 7 a kereszthivatkozás-naplóból |
 | 2 | `Kézzel írandó` a 8 lexikonoldalon | 0 |
 | 2 | `## Kivonat` a 8 tanulmányban | 8 |
 | 2 | diff-osztályozó | ismeretlen kategória: 0 |
@@ -186,7 +189,7 @@ domének, LSJ, LXX-híd (mindkét irány). A többi `nincs adatosítva`; ezeket 
 |---|---|
 | K12 | a kivonatok csak jóváhagyás után kerültek commitba |
 | K13 | diff-osztályozó: ismeretlen kategória 0; a kategóriák darabszáma jelentve |
-| K14 | a 7 tanulmányban a jelölőkön, a jóváhagyott számjavításokon, a kivonaton és a jóváhagyott pótlásokon kívül nincs változás (`git diff` a tanulmányokon, kategóriánként) |
+| K14 | a 7 tanulmányban és a kereszthivatkozás-naplókban a jelölőkön, a kivonaton, a G14–G15 egysoros bejegyzésein és a jóváhagyott pótlásokon kívül nincs változás (`git diff` a tanulmányokon, kategóriánként) |
 | K15 | `ellenoriz.py` a §4 szerint; a törzscikkek újragenerálva, K9 ismét teljesül |
 | K16 | commitok a §6 szerint; `git status --porcelain` üres |
 
@@ -204,7 +207,8 @@ domének, LSJ, LXX-híd (mindkét irány). A többi `nincs adatosítva`; ezeket 
 **1. menet**
 | Üzenet | Fájlok |
 |---|---|
-| `R1.1–R1.2: megfeleltetési tábla, ISTENTISZT-001 visszaírás a tanulmányba` | `adat/res_forras.tsv`, `adat/SEMA.md`, `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md` |
+| `RENDER_BRIEF.md v4` | `RENDER_BRIEF.md` |
+| `R1.1–R1.2: megfeleltetési tábla, ISTENTISZT-001 visszaírás a tanulmányba` | `adat/res_forras.tsv`, `adat/SEMA.md`, `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`, `tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md` |
 | `R1.3–R1.5: generátor a tanulmányból, belső adatmodell, szerepmátrix (nulla-diff)` | `eszkozok/lexikon_general.py`, `eszkozok/general.py`, `adat/szotar_szerepek.tsv`, `adat/SEMA.md` |
 | `R1.6: ellenőrző 11–12. szakasz` | `eszkozok/ellenoriz.py` |
 | `R1.7: kereszthivatkozási törzscikk (8. sablon, --cel torzscikk)` | `sablonok/8_PaRDeS_torzscikk_sablon.md`, `eszkozok/torzscikk_general.py`, `eszkozok/general.py`, `lexikon/*_TORZSCIKK.md`, `naplok/RENDER_R1_pilot_diff.tsv` |
@@ -213,7 +217,7 @@ domének, LSJ, LXX-híd (mindkét irány). A többi `nincs adatosítva`; ezeket 
 **2. menet**
 | Üzenet | Fájlok |
 |---|---|
-| `R2.1: a 7 tanulmány résjelölése és számjavításai` | `tematikus_lezart/*_tematikus.md` (7) |
+| `R2.1: a 7 tanulmány és a naplók résjelölése` | `tematikus_lezart/*_tematikus.md` (7), `tematikus_lezart/naplok/*_kereszthivatkozas_naplo.md` (6) |
 | `R2.2: kivonatok a 7 tanulmányban (jóváhagyva)` | `tematikus_lezart/*_tematikus.md` (7) |
 | `R2.3–R2.5: forrás = tanulmány mind a 8-nál, 2/b fejléc, NAPLO-lezárás, GENERÁLT-fejléc` | `adat/res_forras.tsv`, `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`, `eszkozok/lexikon_general.py`, `lexikon/*` |
 | `R2.6–R2.7: diff-osztályozó és lezárás` | `eszkozok/render_diff_osztalyoz.py`, `naplok/RENDER_R2_diff.tsv`, `NYITOTT_FELADATOK.md`, `MUNKAMENET.md` |
@@ -238,10 +242,11 @@ naplok/RENDER_R0_jelentes.md-t.
 
 ### 1. menet
 ```
-Olvasd el a CLAUDE.md-t, a RENDER_BRIEF.md-t (v3) és a naplok/RENDER_R08_jelentes.md-t,
-valamint a jóváhagyott R0.8 munkalapokat.
+Olvasd el a CLAUDE.md-t, a RENDER_BRIEF.md-t (v4) és a naplok/RENDER_R08_jelentes.md-t,
+valamint az R0.8 munkalapokat. Ahol a munkalap és a v4 G14–G16 / D21–D27 eltér,
+a v4 érvényes.
 
-0. main = origin/main = <az R0.8 utáni hash>. Ha nem, ÁLLJ MEG.
+0. main = origin/main = f840330. Ha nem, ÁLLJ MEG. Commitold: "RENDER_BRIEF.md v4".
 1. R1.1–R1.3. Utána: general.py --cel lexikon --ir, majd git status --porcelain
    lexikon/*_TUDOMANYOS.md — ha nem üres, ÁLLJ MEG, és ne commitolj.
 2. R1.4–R1.8 a §3 szerint, minden tétel után újra a nulla-diff próba.
@@ -251,7 +256,7 @@ valamint a jóváhagyott R0.8 munkalapokat.
 
 ### 2. menet
 ```
-Olvasd el a CLAUDE.md-t és a RENDER_BRIEF.md-t (v3).
+Olvasd el a CLAUDE.md-t és a RENDER_BRIEF.md-t (v4).
 
 0. main = origin/main = <az 1. menet utáni hash>. Ha nem, ÁLLJ MEG.
 1. R2.1, commit.
@@ -288,3 +293,10 @@ Olvasd el a CLAUDE.md-t és a RENDER_BRIEF.md-t (v3).
 | D18 | **v3: a törzscikk-pilot kiindulási alap, nem célállapot**; az R1.7 a pilottól csak az 5. szakaszban és a láblécben térhet el | a szerepmátrix változott (D14); a 0.13 számai nem az 5. szakaszból jönnek |
 | D19 | **v3: az LXX-híd önálló szerep a mátrixban**, mindkét irányban; a SECE sora „szótári lista" lett | a projekt módszerének gerince; a SECE a teljes megfelelő-listát adja gyakoriság és igehely nélkül, az LXX-híd a motívum tényleges verseiben mutatja a fordítói döntést; már adatosítva (`LXX_OS`, CC BY 4.0, és `adat/lxx_dontesek.tsv`) |
 | D20 | **v3: a kiejtés (magyaros) önálló szerep a mátrixban**; 10 szerep × 2 nyelv = 20 sor | a szó megjelenítésének szerepe; görögül szabálytábla, héberül kézi kivételtábla OSHL-alapú jelöltekből (SZOTAR S3); a render héber kiejtést továbbra sem generál (v2 D6) |
+| D21 | **v4: a `minosites` forrása a kereszthivatkozás-napló** (G14) | az R0.8 csak a tanulmányfájlt vizsgálta; a `tematikus_lezart/naplok/` 7 naplója pontosan a jelöltenkénti minősítést és indoklást hordozza. Az ANTROP-001 hiánya valós C2-hiány, jelölve és NYITOTT-tételként |
+| D22 | **v4: az ISTENTISZT-001 2/b rése az 1. menetben egyben kerül a tanulmányba, a 2. szakasz után** (G15) | a nulla-diff csak a RENDER 1. menetére vonatkozik; a SZOTAR S12 saját elvárt diffel, `tanulmany` kategóriában bontja szét. A 2/b a vázban „ha van" — az 5 üres tanulmányban egy sor jelzi |
+| D23 | **v4: az ISTENTISZT-001 `modszertan` rése csak a „6. Napló-frissítés" szakaszt váltja fel**; a 0. szakasz és a Minőségi kapu jelölő nélkül marad | egy tömb nem bontható gépileg három szakaszra; a 7 másik motívumnál marad a háromszegmenses összeállítás, fejléc szerinti illesztéssel (R0.8 4. kérdés) |
+| D24 | **v4: a G13 study-frissítési NAPLO-blokkja azonosítva** (a lexikonoldal ~1041. sora, `ertelmezes`) | a visszaírás után a tanulmány 3. pontja friss, a blokk elavul, a 2. menet törli |
+| D25 | **v4: a §0 0.1 mércéje: `origin/main` a `main` őse, divergencia nélkül** | a push csak kérésre történik, ezért a brief-commit után a szó szerinti egyezés mindig eltérést mutatna (R0 és R0.8 5. kérdés); a menetek nyitó promptja az egyezést a push után ellenőrzi |
+| D26 | **v4: 0 kapcsolatnál az `alatamasztas` rés adatból generált sor** (G16) | a `kapcsolatok.tsv` 34 sora két motívumé (ISTENTISZT 25, KIRALY 9); ahol nincs kapcsolat, nincs mit alátámasztani — ez adat, nem tanulmány-szöveg |
+| D27 | **v4: elavult szám-javítás nincs** | az R0.8.4 17 sora más hatókörű vagy dátumozott történeti szám; valódi elavult összeg nem került elő |
