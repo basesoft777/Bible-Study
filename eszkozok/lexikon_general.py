@@ -40,6 +40,7 @@ ROOT = G.ROOT
 ADAT = G.ADAT
 KONKORDANCIA = os.path.join(ROOT, 'konkordancia')
 
+RES_FORRAS_TSV = os.path.join(ADAT, 'res_forras.tsv')
 LEXIKON_HIVATKOZASOK_TSV = os.path.join(ADAT, 'lexikon_hivatkozasok.tsv')
 OSHL_TSV = os.path.join(KONKORDANCIA, 'OSHL_lexikalis_index.tsv')
 KAPCSOLATOK_TSV = os.path.join(ADAT, 'kapcsolatok.tsv')
@@ -1241,6 +1242,216 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista):
 
 
 # ---------------------------------------------------------------------------
+# R1.3 (RENDER_BRIEF.md) -- a het kezi res osszeallitasa adat/res_forras.tsv
+# szerint. G2: fejlecsor a tablabol + torzs a tanulmanybol (vagy a lap mai
+# rese valtozatlanul, vagy -- G16 -- adatbol generalva). Hianyzo jelolo vagy
+# tabla-sor HIBAKOD, nem helyorzo (R1.3).
+# ---------------------------------------------------------------------------
+
+RES_SORREND = ('kivonat', '2b', 'miert_fontos', 'minosites', 'alatamasztas',
+               'ertelmezes', 'modszertan')
+
+# A dokumentum-sorrend a VAZ_SABLON szerint (allandó): egy rés vagy egy
+# generált szakasz literál címe követi az előzőt. A 'res' bejegyzések
+# fejlécét a res_forras.tsv adja (motívumonként eltérhet -- pl. az
+# ISTENTISZT-001 2/b fejléce); a 'lit' bejegyzések szó szerinti, közös
+# szöveg minden oldalon.
+_BOUNDARY_SLOTS = (
+    ('res', 'kivonat'),
+    ('lit', '## Tartalomjegyzék'),
+    ('lit', '## Jelmagyarázat és rövidítések'),
+    ('lit', '## 1. Előfordulások'),
+    ('lit', '## 1/b. Kizárt és vizsgált helyek'),
+    ('lit', '## 2. Szótári háttér'),
+    ('res', '2b'),
+    ('res', 'miert_fontos'),
+    ('lit', '## 3. LXX-fordítói döntések'),
+    ('lit', '## 4. Kereszthivatkozások'),
+    ('res', 'minosites'),
+    ('lit', '## 5. Kapcsolatok'),
+    ('res', 'alatamasztas'),
+    ('res', 'ertelmezes'),
+    ('res', 'modszertan'),
+    ('lit', '## 8. Irodalom és idézés'),
+    ('lit', '## Kolofon'),
+)
+
+_res_forras_cache = None
+_RES_MARKER_KEZDET = '<!-- RÉS-KEZDET: %s -->'
+_RES_MARKER_VEGE = '<!-- RÉS-VÉGE: %s -->'
+
+
+def res_forras_sorok():
+    """{(id, res): sor} -- adat/res_forras.tsv."""
+    global _res_forras_cache
+    if _res_forras_cache is None:
+        _, sorok = G.tsv_beolvas(RES_FORRAS_TSV)
+        _res_forras_cache = {(r['id'], r['res']): r for r in sorok}
+    return _res_forras_cache
+
+
+_tanulmany_szoveg_cache = {}
+
+
+def _tanulmany_szoveg(relativ_ut):
+    if relativ_ut not in _tanulmany_szoveg_cache:
+        path = os.path.join(ROOT, relativ_ut)
+        with io.open(path, encoding='utf-8', newline='') as f:
+            _tanulmany_szoveg_cache[relativ_ut] = f.read().replace('\r\n', '\n')
+    return _tanulmany_szoveg_cache[relativ_ut]
+
+
+def res_tanulmany_torzs(relativ_ut, res):
+    """A tanulmány/napló <!-- RÉS-KEZDET: res -->…<!-- RÉS-VÉGE: res -->
+    jelölőpárjainak törzse, dokumentum-sorrendben, egy üres sorral összefűzve
+    (G2). HIBAKÓD (ValueError), ha egyetlen jelölőpár sincs -- nem helyőrző
+    (R1.3)."""
+    szoveg = _tanulmany_szoveg(relativ_ut)
+    kezd = _RES_MARKER_KEZDET % res
+    veg = _RES_MARKER_VEGE % res
+    torzsek = []
+    pos = 0
+    while True:
+        i = szoveg.find(kezd, pos)
+        if i < 0:
+            break
+        torzs_kezd = i + len(kezd)
+        j = szoveg.find(veg, torzs_kezd)
+        if j < 0:
+            raise ValueError('nyitó RÉS-marker záró pár nélkül: %s (%s)' % (res, relativ_ut))
+        torzsek.append(szoveg[torzs_kezd:j].strip('\n'))
+        pos = j + len(veg)
+    if not torzsek:
+        raise ValueError('nincs RÉS-marker-pár a tanulmányban: %s (%s)' % (res, relativ_ut))
+    return '\n\n'.join(torzsek)
+
+
+def res_torzs(m, res, sor):
+    """A rés törzse a `forras` mező szerint -- 'tanulmany': a tanulmány/napló
+    jelölői közötti szöveg; 'adat': a generátor saját, adatból vezetett
+    mondata (G16); 'lap' erre a függvényre sosem hívódik (l. res_blokkok_alkalmaz)."""
+    forras = sor['forras']
+    if forras == 'tanulmany':
+        return res_tanulmany_torzs(sor['tanulmany'], res)
+    if forras == 'adat':
+        if res == 'alatamasztas':
+            sorok_ehhez = [r for r in kapcsolatok_sorok() if r['id'] == m['id']]
+            if not sorok_ehhez:
+                return 'A motívumhoz nincs rögzített kapcsolat.'
+        raise ValueError('nincs adat-alapú render szabály: %s / %s' % (m['id'], res))
+    raise ValueError('ismeretlen forras: %r (%s / %s)' % (forras, m['id'], res))
+
+
+def res_blokkok_alkalmaz(fajl_szoveg, m):
+    """A het rés fejléc+törzs span-jét cseréli az adat/res_forras.tsv szerint
+    -- 'lap' forrású résekhez NEM NYÚL (G12: a lap mai rése, változatlanul).
+    HIBAKÓD, ha egy sor hiányzik a táblából (R1.3)."""
+    sorok = res_forras_sorok()
+    for res in RES_SORREND:
+        sor = sorok.get((m['id'], res))
+        if sor is None:
+            raise ValueError('hiányzó res_forras.tsv sor: %s / %s' % (m['id'], res))
+        if sor['forras'] == 'lap':
+            continue
+
+        offsets = []
+        search_from = 0
+        for kind, ertek in _BOUNDARY_SLOTS:
+            if kind == 'lit':
+                needle = ertek
+            else:
+                masik_sor = sorok.get((m['id'], ertek))
+                if masik_sor is None:
+                    raise ValueError('hiányzó res_forras.tsv sor: %s / %s' % (m['id'], ertek))
+                needle = masik_sor['fejlec']
+            i = fajl_szoveg.index(needle, search_from)
+            offsets.append(i)
+            search_from = i + len(needle)
+
+        slot_idx = _BOUNDARY_SLOTS.index(('res', res))
+        fejlec = sor['fejlec']
+        span_start = offsets[slot_idx]
+        span_end = offsets[slot_idx + 1]
+        torzs = res_torzs(m, res, sor)
+        uj_span = fejlec + '\n\n' + torzs + '\n\n'
+        fajl_szoveg = fajl_szoveg[:span_start] + uj_span + fajl_szoveg[span_end:]
+    return fajl_szoveg
+
+
+def res_torzs_lapbol(fajl_szoveg, m, res):
+    """A rés törzse egy MÁR MEGÍRT lexikonoldal szövegéből -- 'lap' forrású
+    résekhez (amelyeknek nincs adat-alapú vagy tanulmány-alapú előállítása,
+    l. res_torzs()); a törzscikk-generátor (R1.7) ezzel olvassa vissza,
+    amit a res_blokkok_alkalmaz() a lexikonoldalon változatlanul hagyott."""
+    sorok = res_forras_sorok()
+    offsets = []
+    search_from = 0
+    for kind, ertek in _BOUNDARY_SLOTS:
+        if kind == 'lit':
+            needle = ertek
+        else:
+            sor = sorok.get((m['id'], ertek))
+            if sor is None:
+                raise ValueError('hiányzó res_forras.tsv sor: %s / %s' % (m['id'], ertek))
+            needle = sor['fejlec']
+        i = fajl_szoveg.index(needle, search_from)
+        offsets.append(i)
+        search_from = i + len(needle)
+    slot_idx = _BOUNDARY_SLOTS.index(('res', res))
+    fejlec = sorok[(m['id'], res)]['fejlec']
+    body_start = offsets[slot_idx] + len(fejlec)
+    body_end = offsets[slot_idx + 1]
+    return fajl_szoveg[body_start:body_end].strip('\n')
+
+
+_szerepek_cache = None
+
+
+def szerepek_sorok():
+    """[{nyelv, sorrend, szerep, forras, allapot}, ...] -- adat/szotar_szerepek.tsv
+    (R1.5, G6), a tábla saját sorrendjében (nyelv szerint csoportosítva,
+    azon belül `sorrend` szerint -- a beolvasás maga a fájl sorrendje)."""
+    global _szerepek_cache
+    if _szerepek_cache is None:
+        path = os.path.join(ADAT, 'szotar_szerepek.tsv')
+        _, _szerepek_cache = G.tsv_beolvas(path)
+    return _szerepek_cache
+
+
+def modell_epit(m, sorai, konyv_sorrend, hianyzo_konyvek, lexikon_szoveg=None):
+    """G5: a `_TUDOMANYOS` és a `_TORZSCIKK` render közös belső adatmodellje
+    -- egy szótár: a motívum sorai/tokenjei, a hét rés (fejléc+törzs, vagy
+    `lap`-nál a már megírt lexikonoldalból visszaolvasva, ha az elérhető), és
+    a szerepmátrix. A 10 generált blokk saját építő-logikája nem változik
+    (render_lexikon_egy_id) -- ez a modell a rés- és szerep-réteget adja
+    egységesen mindkét renderernek."""
+    tokenek = motivum_strong_tokenek(sorai)
+    sorok = res_forras_sorok()
+
+    resek = {}
+    for res in RES_SORREND:
+        sor = sorok.get((m['id'], res))
+        if sor is None:
+            raise ValueError('hiányzó res_forras.tsv sor: %s / %s' % (m['id'], res))
+        if sor['forras'] == 'lap':
+            torzs = (res_torzs_lapbol(lexikon_szoveg, m, res)
+                     if lexikon_szoveg is not None else None)
+        else:
+            torzs = res_torzs(m, res, sor)
+        resek[res] = {'fejlec': sor['fejlec'], 'forras': sor['forras'], 'torzs': torzs}
+
+    return {
+        'motivum': m,
+        'tokenek': tokenek,
+        'sorai': sorted(sorai, key=lambda s: G.igehely_rendezo_kulcs(
+            s['igehely'], konyv_sorrend, hianyzo_konyvek)),
+        'resek': resek,
+        'szerepek': szerepek_sorok(),
+        'kapcsolatok': [r for r in kapcsolatok_sorok() if r['id'] == m['id']],
+    }
+
+
+# ---------------------------------------------------------------------------
 # Teljes fájlváz
 # ---------------------------------------------------------------------------
 
@@ -1430,9 +1641,11 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             with io.open(cel_ut, encoding='utf-8', newline='') as f:
                 meglevo = f.read()
             uj_szoveg = frissit_meglevo_fajlt(meglevo, m, blokkok)
+            uj_szoveg = res_blokkok_alkalmaz(uj_szoveg, m)
             allapot = 'változatlan' if uj_szoveg == meglevo else 'frissítve'
         else:
             uj_szoveg = epit_uj_fajl(m, blokkok)
+            uj_szoveg = res_blokkok_alkalmaz(uj_szoveg, m)
             allapot = 'új fájl'
 
         if args.ellenoriz:
