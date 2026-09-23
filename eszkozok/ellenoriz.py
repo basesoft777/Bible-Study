@@ -395,27 +395,31 @@ def szabaly8c_kezi_lefedettseg(motivumok, elofordulasok, auditok, datasetek, csa
 
 
 def szabaly9_teljes_jelentes_szam(elofordulasok, lexikon_hivatkozasok):
-    """SEMA.md 2.2.2 'teljes' ertek 2-3. korlata: (2) az elofordulasok.tsv
-    jelentes_szam mezoje sosem 'teljes'; (3) egy szotar+strong+entry_id
-    harmashoz legfeljebb egy 'teljes' soru lexikon_hivatkozasok sor tartozhat."""
+    """SEMA.md 2.2.2 'teljes'/'reszlet' ertek 2-3. korlata -- azonos mindket
+    ertekre (D0, ISTENTISZT_2B_ADATOSITAS.md): (2) az elofordulasok.tsv
+    jelentes_szam mezoje sosem 'teljes' vagy 'részlet'; (3) egy
+    szotar+strong+entry_id harmashoz legfeljebb egy 'teljes' ES legfeljebb
+    egy 'részlet' soru lexikon_hivatkozasok sor tartozhat."""
     hibas = []
     for sor in elofordulasok:
-        if (sor.get('jelentes_szam') or '').strip() == 'teljes':
-            hibas.append("elofordulasok: %s / %s jelentes_szam='teljes'" % (sor['id'], sor['igehely']))
+        ertek = (sor.get('jelentes_szam') or '').strip()
+        if ertek in ('teljes', 'részlet'):
+            hibas.append("elofordulasok: %s / %s jelentes_szam='%s'" % (sor['id'], sor['igehely'], ertek))
 
-    szamlalo = {}
-    for sor in lexikon_hivatkozasok:
-        if (sor.get('jelentes_szam') or '').strip() != 'teljes':
-            continue
-        kulcs = (sor.get('szotar'), sor.get('strong'), sor.get('entry_id'))
-        szamlalo[kulcs] = szamlalo.get(kulcs, 0) + 1
-    for kulcs, n in szamlalo.items():
-        if n > 1:
-            hibas.append("lexikon_hivatkozasok: %s duplikalt 'teljes' sor (%d db)" % (kulcs, n))
+    for cimke in ('teljes', 'részlet'):
+        szamlalo = {}
+        for sor in lexikon_hivatkozasok:
+            if (sor.get('jelentes_szam') or '').strip() != cimke:
+                continue
+            kulcs = (sor.get('szotar'), sor.get('strong'), sor.get('entry_id'))
+            szamlalo[kulcs] = szamlalo.get(kulcs, 0) + 1
+        for kulcs, n in szamlalo.items():
+            if n > 1:
+                hibas.append("lexikon_hivatkozasok: %s duplikalt '%s' sor (%d db)" % (kulcs, cimke, n))
 
     if hibas:
-        return Sor("9. 'teljes' jelentes_szam korlatok (SEMA 2.2.2)", 'SÉRTÉS', len(hibas), hibas)
-    return Sor("9. 'teljes' jelentes_szam korlatok (SEMA 2.2.2)", 'RENDBEN')
+        return Sor("9. 'teljes'/'részlet' jelentes_szam korlatok (SEMA 2.2.2)", 'SÉRTÉS', len(hibas), hibas)
+    return Sor("9. 'teljes'/'részlet' jelentes_szam korlatok (SEMA 2.2.2)", 'RENDBEN')
 
 
 def szabaly10_v22_tablak(adat_dir):

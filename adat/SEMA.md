@@ -237,18 +237,21 @@ szabály egy második, addig dokumentálatlan hibát is felszínre hozott — a
 | binyan + igealak | ha a megkülönböztetés igealakon múlik | `Qal pass. ptc.`, `Qal impf.` |
 | alternatíva | ha a hely két binyan között eldöntetlen | `Nif'ál / Hif'íl` |
 | `teljes` | **a forrásfájl nem bont számozott jelentésekre — a teljes szócikk egy sorban áll** (LEXV2_2_BRIEF.md V2.3, jelenleg: Thayer) | `teljes` |
+| `részlet` | **a szótári szócikk egy kiemelt része** (szócikkfej, etimológia vagy reprezentatív kivonat), amikor a forrás nem jelentés-szám szerint van tagolva, vagy a teljes szócikk terjedelme miatt csak részlet szerepel (ISTENTISZT_2B_ADATOSITAS.md D0) | `részlet` |
 
-**A `teljes` érték három korlátja:**
+**A `teljes` és a `részlet` érték három korlátja — azonos:**
 1. Csak olyan szótárnál használható, amelynek forrásfájlja ténylegesen nem bont
-   számozott jelentésekre (jelenleg egyedül a `Thayer_teljes.tsv` — egy sor =
-   egy teljes szócikk, `Teljes_szocikk` mezővel).
+   számozott jelentésekre (`teljes`: jelenleg egyedül a `Thayer_teljes.tsv` —
+   egy sor = egy teljes szócikk, `Teljes_szocikk` mezővel), illetve amelynek
+   idézete a fenti okból csak részlet (`részlet`).
 2. Csak a `lexikon_hivatkozasok.tsv`-ben szerepelhet. Az `elofordulasok.tsv`
-   `jelentes_szam` mezője **soha** nem mutathat `teljes` értékre — egy
-   előfordulás mindig egy konkrét jelentésre hivatkozik, nem a teljes
-   szócikkre.
+   `jelentes_szam` mezője **soha** nem mutathat `teljes` vagy `részlet`
+   értékre — egy előfordulás mindig egy konkrét jelentésre hivatkozik, nem a
+   teljes szócikkre vagy annak részletére.
 3. Egy `szotar` + `strong` + `entry_id` hármashoz **legfeljebb egy** `teljes`
-   jelentes_szam-ú sor tartozhat (a kulcs egyébként `szotar`+`strong`+
-   `entry_id`+`jelentes_szam`, tehát enélkül a korlát nélkül duplázható lenne).
+   jelentes_szam-ú **és** legfeljebb egy `részlet` jelentes_szam-ú sor
+   tartozhat (a kulcs egyébként `szotar`+`strong`+`entry_id`+`jelentes_szam`,
+   tehát enélkül a korlát nélkül duplázható lenne).
 
 *A ma használatban lévő teljes értékkészlet* (mért, `tematikus_lezart/` + `genezis/`):
 `Qal pass. ptc.` (6), `Pi'él` (2), `Qal impf.` (1), `Nif'ál` (1), `Hif'íl` (1),
