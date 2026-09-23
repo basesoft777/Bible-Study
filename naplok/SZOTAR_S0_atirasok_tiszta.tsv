@@ -1,0 +1,945 @@
+# S0.6 atiras-lista tisztitasa. Forras: naplok/RENDER_R0_atirasok.tsv (936 tetel).
+# Az "alak" kategoria (896 tetel) szetvalasztva a "blokk" mezo alapjan:
+#   blokk=lxx -> lxx_idezet (347); blokk=elofordulasok -> igeszoveg (386);
+#   blokk=szocikkek/kolofon/kizart/jelmagyarazat -> egyeb (163).
+# "lemma" tipusu sorok (40 tetel) valtozatlanul athozva, kategoria=nem_alkalmazhato.
+# Hamis-gyanus szures: a jelmagyarazat-blokk 1-2 karakteres "szo" mezoi (pl. gorog
+# betujelek pi/pszi/delta a jelmagyarazatban) NEM valodi szoalakok, cimke-jellegűek;
+# a kizart blokk mar eleve a forras sajat kizarasi jelolese.
+fajl	blokk	nyelv	tipus	strong	szo	atirat	kategoria	hamis_besorolas
+lexikon/ALVIL-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		π	pneuma	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/ALVIL-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		ψ	pszükhé	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hadou	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hadou	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hadē	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hadēn	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hadēn	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hadou	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hadēs	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hadēs	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hádész	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hadész	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hadész	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hadész	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hadész	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hadész	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hadész	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'O.la	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'o.la	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'O.la	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'O.la	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'O.la	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'O.la	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'Ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			She.ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			sh.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'Ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			sh.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			sh.'o.la	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			sh.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			sh.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			sh.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			sh.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			She.ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'Ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			sh.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			sh.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'Ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'A.lah	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'o.la	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'o.la	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'o.la	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			sh.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			sh.'ol	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			seól	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	elofordulasok	heber	alak			refáím	igeszoveg	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	kizart	gorog	alak		δ	hadész	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/ALVIL-001_TUDOMANYOS.md	kizart	gorog	alak		β	abüsszosz	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/ALVIL-001_TUDOMANYOS.md	kizart	heber	alak			seól	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/ALVIL-001_TUDOMANYOS.md	kizart	heber	alak			tehóm	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/ALVIL-001_TUDOMANYOS.md	szocikkek	gorog	lemma	G0086	ᾍδης	Hadēs	lemma	nem_alkalmazhato
+lexikon/ALVIL-001_TUDOMANYOS.md	szocikkek	heber	lemma	H7585	שְׁאוֹל	she.ol	lemma	nem_alkalmazhato
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	gorog	alak		δ	ᾅδης, Hadēs G0086	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			sh.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'O.la	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'o.la	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'O.la	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'O.la	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'O.la	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'O.la	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'Ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			She.ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			sh.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'Ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			sh.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			sh.'o.la	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			sh.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			sh.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			sh.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			She.ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'Ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			sh.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			sh.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'Ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'A.lah	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'o.la	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'o.la	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'o.la	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			sh.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			sh.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	lxx	heber	alak			she.'ol	lxx_idezet	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	kolofon	gorog	alak		δ	hadész	egyeb	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	kolofon	gorog	alak		β	abüsszosz	egyeb	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	kolofon	gorog	alak		δ	hadész	egyeb	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	kolofon	heber	alak			seól	egyeb	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	kolofon	heber	alak			tehóm	egyeb	valodinak_tekintve
+lexikon/ALVIL-001_TUDOMANYOS.md	kolofon	heber	alak			seól	egyeb	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		π	pneuma	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/ANTROP-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		ψ	pszükhé	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/ANTROP-001_TUDOMANYOS.md	elofordulasok	gorog	alak		ψ	psuchē	igeszoveg	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	pneuma	igeszoveg	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	pneumatos	igeszoveg	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	pneuma	igeszoveg	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	elofordulasok	gorog	alak		ψ	psuchēn	igeszoveg	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	pneuma	igeszoveg	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	elofordulasok	gorog	alak		ψ	psuchē	igeszoveg	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	pneumatos	igeszoveg	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	elofordulasok	gorog	alak		ψ	psuchēs	igeszoveg	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	elofordulasok	heber	alak			Ne.fesh	igeszoveg	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	elofordulasok	heber	alak			chai.Yah	igeszoveg	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	elofordulasok	heber	alak			"élő lélek"	igeszoveg	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	kizart	gorog	alak		π	pneuma	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/ANTROP-001_TUDOMANYOS.md	kizart	gorog	alak		ψ	pszükhé	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/ANTROP-001_TUDOMANYOS.md	szocikkek	gorog	lemma	G4151	πνεῦμα	pneuma	lemma	nem_alkalmazhato
+lexikon/ANTROP-001_TUDOMANYOS.md	szocikkek	gorog	lemma	G5590	ψυχή	psuchē	lemma	nem_alkalmazhato
+lexikon/ANTROP-001_TUDOMANYOS.md	szocikkek	heber	lemma	H2416	חַי	chay	lemma	nem_alkalmazhato
+lexikon/ANTROP-001_TUDOMANYOS.md	szocikkek	heber	lemma	H5315	נֶ֫פֶשׁ	ne.phesh	lemma	nem_alkalmazhato
+lexikon/ANTROP-001_TUDOMANYOS.md	lxx	gorog	alak		ψ	ψυχή, psuchē G5590	lxx_idezet	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	lxx	heber	alak			Ne.fesh	lxx_idezet	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	kolofon	gorog	alak		π	pneuma	egyeb	valodinak_tekintve
+lexikon/ANTROP-001_TUDOMANYOS.md	kolofon	gorog	alak		ψ	pszükhé	egyeb	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		π	pneuma	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/HAMART-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		ψ	pszükhé	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		φ	phthoras	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	epikataratos	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	epikataratos	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		κ	kataras	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	diaphtheirontas	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		φ	ephtheiren	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		τ	hé ktiszisz ... té mataiotéti hüpetagé	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	hé dúleia tész fthorász	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		φ	fthora	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		φ	ftheiró	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	epikatáratosz pász hosz úk emmenei	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		γ	genomenosz hüper hémón katara	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		κ	kekatéraménosz, G2672	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	epikataratosz	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		κ	gé ... ekferúsza akanthász kai tribolúsz ... katarász engüsz	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		τ	gé + akantha + tribolosz	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		κ	katara	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		δ	diaftheirai túsz diaftheirontász tén gén	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	gorog	alak		τ	hétisz eftheiren tén gén en té porneia autész	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			'a.Rur	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			i.tze.vo.Ne	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			'a.da.Mah	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			Kotz	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			'a.da.Mah	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			'a.da.Mah	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			'a.da.Mah	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			cha.Tat	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			'a.Rur	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			'a.da.Mah	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			'a.da.Mah	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			'i.tze.Von	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			ra'	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			'a.da.Mah	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			ti.sha.Chet	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			hish.Chit	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			cha.Mas	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			sha.Chet	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			ka.Lel	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			sha.Chet	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			sha.Chet	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			'a.Rur	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			'a.'Or	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			'a.Rur	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			'a.Rur	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			hish.Chi.tu	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			hish.Chi.tu	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			cha.Mas	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			cha.Mas	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			cha.Mas	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			'a.Rur	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			cha.Mas	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			cha.Mas	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			cha.Mas	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			cha.Mas	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			cha.Mas	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			cha.Mas	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			cha.Mas	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			cha.mas-	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			cha.mas-	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			cha.Mas	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			árúr	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			itzevónékh	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			arúrá há'adamá ba'avúrekhá	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			kóc vedardar	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			adamá	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			adamá	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			adamá	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			hattát	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			árúr attá min-há'adamá	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			adamá	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			adamá	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			itzevón	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			adamá	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			érerá JHVH, Pi'él	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			rá'á / ra	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			adamá	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			vattissáchét há'árec, Nif'ál	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			vattimmálé háárec hámász	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			nishcháta, Nif'ál	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			hishchít kol-bászár, Hif'íl	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			mashchítám	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			lesachét, Pi'él	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			ló oszíf lekallél	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			ód et-háadámá	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			lesachét, Pi'él	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			lesachét, Pi'él	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			árúr Kenáan	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			umkalelkhá á'ór ... venivrekhú vekhá kol mispechót há'adamá	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			árúr	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			árúr	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			bárúkh	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			hishchítú	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			hishchítú	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			málú ... ne'ót chámász	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			álá, H0423	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			ló-jissámá ód chámász be'arcékh	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			chámász vásód jissámá báh	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			árúr haggever aser jivtach bá'ádám	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			chámász bá'árec	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			málá ... chámász	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			málú et-há'árec chámász	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			málú tókhekhá chámász	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			vejásúvú ... min-hechámász aser bekhappéhem	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			málú chámász	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			ez'ak élekhá chámász veló tósía	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			méchamasz ádám	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			méchamasz ádám	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	elofordulasok	heber	alak			hamemal'ím ... chámász umirmá	igeszoveg	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	szocikkek	gorog	lemma	G1311	διαφθείρω	diaphtheirō	lemma	nem_alkalmazhato
+lexikon/HAMART-001_TUDOMANYOS.md	szocikkek	gorog	lemma	G1944	ἐπικατάρατος	epikataratos	lemma	nem_alkalmazhato
+lexikon/HAMART-001_TUDOMANYOS.md	szocikkek	gorog	lemma	G2671	κατάρα	katara	lemma	nem_alkalmazhato
+lexikon/HAMART-001_TUDOMANYOS.md	szocikkek	gorog	lemma	G5351	φθείρω	phtheirō	lemma	nem_alkalmazhato
+lexikon/HAMART-001_TUDOMANYOS.md	szocikkek	gorog	lemma	G5356	φθορά	phthora	lemma	nem_alkalmazhato
+lexikon/HAMART-001_TUDOMANYOS.md	szocikkek	heber	lemma	H0127	אֲדָמָה	a.da.mah	lemma	nem_alkalmazhato
+lexikon/HAMART-001_TUDOMANYOS.md	szocikkek	heber	lemma	H0779	אָרַר	a.rar	lemma	nem_alkalmazhato
+lexikon/HAMART-001_TUDOMANYOS.md	szocikkek	heber	lemma	H2403	חַטָּאָה	chat.ta.ah	lemma	nem_alkalmazhato
+lexikon/HAMART-001_TUDOMANYOS.md	szocikkek	heber	lemma	H2555	חָמָס	cha.mas	lemma	nem_alkalmazhato
+lexikon/HAMART-001_TUDOMANYOS.md	szocikkek	heber	lemma	H6093	עִצָּבוֹן	its.tsa.von	lemma	nem_alkalmazhato
+lexikon/HAMART-001_TUDOMANYOS.md	szocikkek	heber	lemma	H6975	קוֹץ	qots	lemma	nem_alkalmazhato
+lexikon/HAMART-001_TUDOMANYOS.md	szocikkek	heber	lemma	H7043	קָלַל	qa.lal	lemma	nem_alkalmazhato
+lexikon/HAMART-001_TUDOMANYOS.md	szocikkek	heber	lemma	H7451	רַע	ra	lemma	nem_alkalmazhato
+lexikon/HAMART-001_TUDOMANYOS.md	szocikkek	heber	lemma	H7843	שָׁחַת	sha.chat	lemma	nem_alkalmazhato
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		φ	φθείρω, phtheirō G5351	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικατάρατος, epikataratos G1944	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		δ	διαφθείρω, diaphtheirō G1311	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	gorog	alak		δ	διαφθείρω, diaphtheirō G1311	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			i.tze.vo.Ne	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.da.Mah	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			Kotz	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.da.Mah	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.da.Mah	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.da.Mah	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.da.Mah	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			cha.Tat	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.da.Mah	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.da.Mah	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'i.tze.Von	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			ra'	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.da.Mah	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			ti.sha.Chet	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			hish.Chit	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			cha.Mas	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			sha.Chet	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			ka.Lel	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			sha.Chet	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			sha.Chet	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.'Or	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			'a.Rur	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			hish.Chi.tu	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			hish.Chi.tu	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			cha.Mas	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			cha.Mas	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			cha.Mas	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			cha.Mas	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			cha.Mas	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			cha.Mas	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			cha.mas-	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			cha.mas-	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			cha.Mas	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			cha.Mas	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			cha.Mas	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			cha.Mas	lxx_idezet	valodinak_tekintve
+lexikon/HAMART-001_TUDOMANYOS.md	lxx	heber	alak			cha.Mas	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		π	pneuma	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/HODIT-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		ψ	pszükhé	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			ne.fi.Lim	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			ra.Fah	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			ra.Fah	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			ra.Fah	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			ra.Fah	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			ra.Fa'	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			ra.Fa'	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			re.fa.'Im	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			refáím, zúzím, émím	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			refáím	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			nefilím ⇒ anákím	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			zamzummím … refáím	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			óg … mijjeter hárefáím	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			erec refáím	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			émek refáím	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			erec hárefáím	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			émek refáím	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			émek refáím	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			refáím jehólálú mittahat lammájim	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			harefáím jákúmú jódúkhá	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			refáím	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			refáím … kol-attúdé árec	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			émek refáím	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	elofordulasok	heber	alak			refáím	igeszoveg	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	kizart	heber	alak			Hórim	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/HODIT-001_TUDOMANYOS.md	kizart	heber	alak			refáím	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/HODIT-001_TUDOMANYOS.md	kizart	heber	alak			nefilím	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/HODIT-001_TUDOMANYOS.md	kizart	heber	alak			gibbór	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/HODIT-001_TUDOMANYOS.md	szocikkek	heber	lemma	H5303	נְפִלִים	ne.phil	lemma	nem_alkalmazhato
+lexikon/HODIT-001_TUDOMANYOS.md	szocikkek	heber	lemma	H7496	רְפָאִים	ra.pah	lemma	nem_alkalmazhato
+lexikon/HODIT-001_TUDOMANYOS.md	szocikkek	heber	lemma	H7497	רָפָה	ra.pah	lemma	nem_alkalmazhato
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			ne.fi.Lim	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			ra.Fah	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			ra.Fah	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			ra.Fah	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			ra.Fah	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			ra.Fa'	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			ra.Fa'	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	lxx	heber	alak			re.fa.'Im	lxx_idezet	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	kolofon	heber	alak			refáím	egyeb	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	kolofon	heber	alak			nefilím	egyeb	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	kolofon	heber	alak			gibbór	egyeb	valodinak_tekintve
+lexikon/HODIT-001_TUDOMANYOS.md	kolofon	heber	alak			refáím	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		π	pneuma	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		ψ	pszükhé	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	epikalesētai	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	epikaloumenous	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	epikaloumenous	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	epikalesamenos	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	epikaloumenous	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	epikalesētai	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	epikalesōntai	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	epikaloumenois	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	epikaloumenōn	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	epikaleisthe	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			k.Ro'	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			Shem	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			i.yik.Ra'	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			Shem	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			i.yik.Ra'	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			Shem	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			i.Yik.ra'-	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			Shem	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			i.yik.Ra'	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			Shem	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			ka.Ra.ti	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			Shem	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			i.yik.Ra'	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			Shem	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			'ek.Ra'	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			shem-	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			kir.'U	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			Shem	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			i.yik.re.'U	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			shem-	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			ka.Ra'	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			shem-	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			kir.'U	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			sh.M	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			ka.Ra.'u	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			shim.	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			kir.'U	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			sh.M	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			'ek.Ra'	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			shem-	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			'ek.Ra'	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			Shem	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			'ek.Ra'	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			Shem	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			kir.'U	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			she.M	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			ka.Ra.'u	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			shim.	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			ko.Re'	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			Shem	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			k.Ro'	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			Shem	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			yik.Ra'	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			sh.M	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	elofordulasok	heber	alak			él olám	igeszoveg	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	kizart	heber	alak			kárá	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	kizart	heber	alak			be	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	kizart	heber	alak			nikrá … al	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	lemma	G1941	ἐπικαλέω	epikaleō	lemma	nem_alkalmazhato
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	lemma	H7121	קָרָא	qa.ra	lemma	nem_alkalmazhato
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	lemma	H8034	שֵׁם	shem	lemma	nem_alkalmazhato
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	lemma	G0994	βοάω	boaō	lemma	nem_alkalmazhato
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	lemma	G2564	καλέω	kaleō	lemma	nem_alkalmazhato
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		ν	t. onoma	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	epi	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		θ	theon	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		θ	theúsz	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		Κ	Kaiszara	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		Σ	Szebaszton	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		Κ	t. Kürion Iészún	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		μ	martüra	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		θ	t. theon	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	patera	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		κ	t. kürion	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		ν	t. onoma küriú	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		μ	mú	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		σ	szú	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	epikaleó	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	epikaló	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	epekalesza	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	epikalúmai	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	epikeklémai	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	epekekléto	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	epikekléto	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	epekléthén	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	epikaleszomai	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	epekaleszamén	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		τ	tina	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		κ	ekaleszan	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	ho epikalúmenosz	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		ς	hosz epikaleitai	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	ho epiklétheisz	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		ς	hosz epekléthé	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		τ	tina	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		ε	ei patera epikaleiszthe ton	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	epikaleitai to onoma tinosz epi tina	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		ο	hoi tú Khrisztú	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		τ	tini	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		κ	katégoreó	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		ε	ei tó oikodeszpoté Bélzebúl epekaleszan	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	poszó mallon toisz oikiakoisz autú	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		τ	ton kürion Iészún	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		β	boéthon	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		τ	tina martüra	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		Κ	Kaiszara	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		τ	ton Szebaszton	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	epikalúmai to onoma tú küriú	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		τ	ton kürion	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		π	epikaleiszthai túsz Theúsz	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		β	boaó	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		β	boó	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		β	boé	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		κ	kaleó	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		κ	kradzó	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		κ	kraugadzó	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		κ	kradzó	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		β	boaó	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		ν	hon Briareón kaleúszi theoi	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		ν	onoma kalein tina	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		ν	k. onoma epi tini	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		τ	k. tina epi tó onomati tú patrosz	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		κ	ho kalúmenosz	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		κ	kaleó	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		κ	kaló	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	gorog	alak		κ	ek	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			kárá sum … al	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			kárá sum JHVH	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			kárá	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			kárá besém JHVH	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			kárá	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			k. besém J., azaz kárá besém JHVH	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			J., azaz JHVH	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			J., azaz JHVH	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			kárá com	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			kárá móadé JHVH	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			k., azaz kárá	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			le	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			al	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			le	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			kárá lesálóm éléhá	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			mikrá	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			hakkeriá	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			el	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			kárá	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			sém	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			smh	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			vsm	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			hassém	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			JHVH	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			sm	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			szm	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			semá	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			sém	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			sm	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			s., azaz sém	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			s., azaz sém	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			záak	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			cáak	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			kárá	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			záak al	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	szocikkek	heber	alak			kárá	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		β	boaō G0994	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		π	ἐπικαλέω, epikaleō G1941	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		κ	kaleō G2564	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	gorog	alak		κ	kaleō G2564	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			k.Ro'	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			i.yik.Ra'	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			i.yik.Ra'	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			i.Yik.ra'-	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			i.yik.Ra'	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			'ek.Ra'	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			kir.'U	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			i.yik.re.'U	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			ka.Ra'	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			k.Ro'	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			yik.Ra'	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			'ek.Ra'	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			'ek.Ra'	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			'ek.Ra'	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			ko.Re'	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			kir.'U	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			kir.'U	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			kir.'U	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			ka.Ra.'u	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			ka.Ra.'u	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			ka.Ra.ti	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	lxx	heber	alak			i.yik.Ra'	lxx_idezet	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	kolofon	heber	alak			kárá	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	kolofon	heber	alak			be	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	kolofon	heber	alak			nikrá … al	egyeb	valodinak_tekintve
+lexikon/ISTENTISZT-001_TUDOMANYOS.md	kolofon	heber	alak			kárá besém	egyeb	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		π	pneuma	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/KIRALY-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		ψ	pszükhé	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/KIRALY-001_TUDOMANYOS.md	elofordulasok	gorog	alak		τ	taxin	igeszoveg	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	elofordulasok	gorog	alak		τ	taxin	igeszoveg	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	elofordulasok	gorog	alak		τ	taxin	igeszoveg	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	elofordulasok	gorog	alak		τ	taxin	igeszoveg	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	elofordulasok	gorog	alak		μ	amētōr	igeszoveg	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	elofordulasok	heber	alak			kho.Hen	igeszoveg	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	elofordulasok	heber	alak			ko.ha.Nim	igeszoveg	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	elofordulasok	heber	alak			mam.Le.khet	igeszoveg	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	elofordulasok	heber	alak			sha.Lem	igeszoveg	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	elofordulasok	heber	alak			kho.Hen	igeszoveg	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	elofordulasok	heber	alak			kho.Hen	igeszoveg	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	elofordulasok	heber	alak			kis.'	igeszoveg	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	elofordulasok	heber	alak			kóhén	igeszoveg	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	szocikkek	gorog	lemma	G0282	ἀμήτωρ	amētōr	lemma	nem_alkalmazhato
+lexikon/KIRALY-001_TUDOMANYOS.md	szocikkek	gorog	lemma	G0813	ἄτακτος	ataktos	lemma	nem_alkalmazhato
+lexikon/KIRALY-001_TUDOMANYOS.md	szocikkek	gorog	lemma	G5010	τάξις	taxis	lemma	nem_alkalmazhato
+lexikon/KIRALY-001_TUDOMANYOS.md	szocikkek	heber	lemma	H3548	כֹּהֵן	ko.hen	lemma	nem_alkalmazhato
+lexikon/KIRALY-001_TUDOMANYOS.md	szocikkek	heber	lemma	H3678	כִּסֵּא	kis.se	lemma	nem_alkalmazhato
+lexikon/KIRALY-001_TUDOMANYOS.md	szocikkek	heber	lemma	H4467	מַמְלָכָה	mam.la.khah	lemma	nem_alkalmazhato
+lexikon/KIRALY-001_TUDOMANYOS.md	szocikkek	heber	lemma	H8004	שָׁלֵם	sha.lem	lemma	nem_alkalmazhato
+lexikon/KIRALY-001_TUDOMANYOS.md	szocikkek	heber	alak			mamlekhet kóhaním	egyeb	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	szocikkek	heber	alak			kóhén midján	egyeb	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	szocikkek	heber	alak			kóhaním	egyeb	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	lxx	gorog	alak		τ	τάξις, taxis G5010	lxx_idezet	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	lxx	heber	alak			kho.Hen	lxx_idezet	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	lxx	heber	alak			sha.Lem	lxx_idezet	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	lxx	heber	alak			ko.ha.Nim	lxx_idezet	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	lxx	heber	alak			kho.Hen	lxx_idezet	valodinak_tekintve
+lexikon/KIRALY-001_TUDOMANYOS.md	lxx	heber	alak			kho.Hen	lxx_idezet	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		π	pneuma	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/MENNY-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		ψ	pszükhé	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			ve.nei-	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			'E.lo.Him	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			ne.fi.Lim	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			ne.fi.Lim	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			be.Nei	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			'E.lo.Him	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			be.Nei	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			'E.lo.Him	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			be.Nei	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			'E.lo.Him	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			bené háelóhím	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			nefilím	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			gibbórím	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			nefilím	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			bené háelóhím	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	elofordulasok	heber	alak			bené elóhím	igeszoveg	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	kizart	heber	alak			הָ	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/MENNY-001_TUDOMANYOS.md	kizart	heber	alak			bené (há	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/MENNY-001_TUDOMANYOS.md	kizart	heber	alak			nefilím	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/MENNY-001_TUDOMANYOS.md	kizart	heber	alak			refáím	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/MENNY-001_TUDOMANYOS.md	szocikkek	heber	lemma	H0430	אֱלֹהִים	e.lo.him	lemma	nem_alkalmazhato
+lexikon/MENNY-001_TUDOMANYOS.md	szocikkek	heber	lemma	H1121	בֵּן	ben	lemma	nem_alkalmazhato
+lexikon/MENNY-001_TUDOMANYOS.md	szocikkek	heber	lemma	H5303	נְפִלִים	ne.phil	lemma	nem_alkalmazhato
+lexikon/MENNY-001_TUDOMANYOS.md	lxx	heber	alak			ve.nei-	lxx_idezet	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	lxx	heber	alak			ne.fi.Lim	lxx_idezet	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	lxx	heber	alak			be.Nei	lxx_idezet	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	lxx	heber	alak			be.Nei	lxx_idezet	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	lxx	heber	alak			be.Nei	lxx_idezet	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	lxx	heber	alak			ne.fi.Lim	lxx_idezet	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	kolofon	heber	alak			הָ	egyeb	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	kolofon	heber	alak			bené (há	egyeb	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	kolofon	heber	alak			nefilím	egyeb	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	kolofon	heber	alak			refáím	egyeb	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	kolofon	heber	alak			הָ	egyeb	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	kolofon	heber	alak			bené (há	egyeb	valodinak_tekintve
+lexikon/MENNY-001_TUDOMANYOS.md	kolofon	heber	alak			nefilím	egyeb	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		π	pneuma	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/TEREMT-001_TUDOMANYOS.md	jelmagyarazat	gorog	alak		ψ	pszükhé	egyeb	hamis_gyanus — jelmagyarazat-cimke, nem valodi szoalak
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		β	abusson	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		β	abusson	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		β	abussou	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		β	abussou	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		β	abussou	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		β	abussou	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		β	abussou	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		β	abüsszosz	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		β	abüsszosz	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		β	abüsszosz	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		β	abüsszosz	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		β	Abaddón	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		π	Apollüón	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		β	abüsszosz	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		β	abüsszosz	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	gorog	alak		β	abüsszosz	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.ho.Mot	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.ho.Mot	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.ho.Mot	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.ho.Mot	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.ho.Mot	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.ho.Mot	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			t.ho.Mot	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			Te.hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.ho.Mot	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.ho.Mot	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.ho.Mot	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.ho.Mot	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.ho.Mot	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.ho.Mot	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.ho.Mot	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.Hom	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			te.hOm	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			tehóm	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	elofordulasok	heber	alak			tehóm	igeszoveg	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	kizart	gorog	alak		β	abüsszosz	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/TEREMT-001_TUDOMANYOS.md	kizart	heber	alak			tehóm	egyeb	mar_kizartkent_jelolve_a_forrasban
+lexikon/TEREMT-001_TUDOMANYOS.md	szocikkek	gorog	lemma	G0012	ἄβυσσος	abussos	lemma	nem_alkalmazhato
+lexikon/TEREMT-001_TUDOMANYOS.md	szocikkek	heber	lemma	H8415	תְּהוֹם	te.hom	lemma	nem_alkalmazhato
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	gorog	alak		β	ἄβυσσος, abussos G0012	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.ho.Mot	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.ho.Mot	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.ho.Mot	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.ho.Mot	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.ho.Mot	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.ho.Mot	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			t.ho.Mot	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			Te.hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.ho.Mot	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.ho.Mot	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.ho.Mot	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.ho.Mot	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.ho.Mot	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.ho.Mot	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.ho.Mot	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.hOm	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	lxx	heber	alak			te.Hom	lxx_idezet	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	kolofon	gorog	alak		β	abüsszosz	egyeb	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	kolofon	gorog	alak		β	abüsszosz	egyeb	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	kolofon	heber	alak			tehóm	egyeb	valodinak_tekintve
+lexikon/TEREMT-001_TUDOMANYOS.md	kolofon	heber	alak			tehóm	egyeb	valodinak_tekintve

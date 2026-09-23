@@ -1,0 +1,61 @@
+# S0.3 Girdlestone szovegforras-jelöltek összevetése a 24 H-tokenen.
+# Forrasok: (a) preceptaustin.org — a brief "PDF"-kent hivatkozza
+# (preceptaustin.org/pdf/64152/), de az URL valojaban egy HTML wrapper-oldal
+# (nem tartalmaz .pdf-linket, csak beagyazott JS-viewer-utalast); a tenyleges,
+# gepileg kinyerheto TELJES SZOVEG a testverskal
+# preceptaustin.org/synonyms-of-the-old-testament-robert-girdlestone oldalon
+# talalhato (886 632 bajt nyers HTML, 709 527 karakter cimke nelkuli szoveg).
+# Ez VALODI, gepileg kinyerheto szoveg, tenyleges heber betukkel (1502 heber
+# karakter a teljes oldalon) — ellentetben a Cremer/levendwater esettel
+# (l. SZOTAR_S0_cremer.tsv), itt a brief D12 "gepelt atirat" feltevese
+# beigazolodik, csak a konkret URL maskepp mutatja a tartalmat, mint varhato.
+# (b) archive.org OCR: ket azonosito is letezik ugyanarra a kiadasra
+# (synonymsofoldtes00gird es SynonymsOfTheOldTestament, kb. azonos meretu
+# OCR-szoveg); a synonymsofoldtes00gird-et hasznaltuk (1 287 833 karakter).
+#
+# EREDMENY:
+# - preceptaustin.org: a 24 H-tokenbol 13-nal talalhato ekezet-nelkuli
+#   (masszoretikus pontozas nelkuli) egyezes a konszonans-vazra; a tobbi
+#   11-nel nincs talalat — ez tematikus le-nem-fedettseg lehet (Girdlestone
+#   nem targyal minden szot), nem feltetlenul OCR-hiba, mert a forras VALODI
+#   szoveg, nem szkennelt kep.
+# - archive.org OCR: a 24 H-tokenbol 0 (nulla) egyezes, PONTOS es
+#   ekezet-nelkuli keresessel is; a teljes 1,29M karakteres OCR-szovegben
+#   0 (nulla) heber-betus karakter van — az OCR motor a heber betuket itt is
+#   szisztematikusan felismerhetetlenne torzitja (minta: "Nephesh" -> "Nepbesb",
+#   "Ruach" -> "Buacb" a IV. fejezetcim korul). Ugyanaz a mintazat, mint a
+#   Cremer-OCR-nel (l. SZOTAR_S0_cremer.tsv).
+strong	lemma	preceptaustin_talalat	archive_ocr_heber_talalat	megjegyzes
+H0127	אֲדָמָה	1	0
+H0430	אֱלֹהִים	1	0
+H0779	אָרַר	0	0	nincs talalat egyik forrasban sem — tematikus le-nem-fedettseg gyanus
+H1121	בֵּן	1	0
+H2403	חַטָּאָה	0	0	nincs talalat egyik forrasban sem — tematikus le-nem-fedettseg gyanus
+H2416	חַי	3	0
+H2555	חָמָס	0	0	nincs talalat egyik forrasban sem — tematikus le-nem-fedettseg gyanus
+H3548	כֹּהֵן	1	0
+H3678	כִּסֵּא	0	0	nincs talalat egyik forrasban sem — tematikus le-nem-fedettseg gyanus
+H4467	מַמְלָכָה	0	0	nincs talalat egyik forrasban sem — tematikus le-nem-fedettseg gyanus
+H5303	נְפִלִים	0	0	a fejezetcimben "Rephaim and Nephilim" latszik latin atirassal, konszonans-vazas heber egyezes megsem all elo
+H5315	נֶ֫פֶשׁ	1	0
+H6093	עִצָּבוֹן	0	0	nincs talalat egyik forrasban sem — tematikus le-nem-fedettseg gyanus
+H6975	קוֹץ	0	0	nincs talalat egyik forrasban sem — tematikus le-nem-fedettseg gyanus
+H7043	קָלַל	0	0	nincs talalat egyik forrasban sem — tematikus le-nem-fedettseg gyanus
+H7121	קָרָא	2	0
+H7451	רַע	4	0
+H7496	רְפָאִים	1	0
+H7497	רָפָה	0	0	nincs talalat egyik forrasban sem — tematikus le-nem-fedettseg gyanus
+H7585	שְׁאוֹל	1	0
+H7843	שָׁחַת	2	0
+H8004	שָׁלֵם	2	0
+H8034	שֵׁם	4	0
+H8415	תְּהוֹם	0	0	nincs talalat egyik forrasban sem — tematikus le-nem-fedettseg gyanus
+# Osszesites: preceptaustin.org lefedettseg 13/24 (a hianyzo 11 tematikus
+# le-nem-fedettseg gyanus, nem OCR-hiba, mert a forras nem kepszkenneles);
+# archive.org OCR heber-betus hibaaranya ~100% (0/24, 0 heber karakter a
+# teljes konyvben). KOVETKEZTETES: a preceptaustin.org (a nem-PDF, HTML
+# cikkoldal) egyertelmuen jobb forras, mint az archive.org OCR — ellentetben
+# a Cremer-esettel, itt van hasznalhato elsodleges forras. A tenyleges
+# lefedettseg-hianyt (11 token) csak a Girdlestone konyv tartalomjegyzeke es
+# targymutatoja alapjan lehetne megerositeni, hogy valoban nem targyalja-e
+# oket — ez az S1.4b OCR-ellenorzes / kezi javitas feladata, nem az S0-e.

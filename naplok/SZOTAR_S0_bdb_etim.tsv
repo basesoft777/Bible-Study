@@ -1,0 +1,46 @@
+# S0.4 BDB-etimologia (nyelvi_hatter mezo) kivaghatosaga a 24 H-tokenen.
+# Modszer: a konkordancia/BDB_teljes_unabridged.tsv nyers szocikkeben (3.
+# oszlop) keresve az elso "em dash + szohatar + '1' + szokoz" mintat
+# (regex: em-dash \s* '1' \s), amely a szocikk fejenek (cimszo, szofaj,
+# etimologia/rokon-nyelvi anyag) es az elso szamozott jelentesnek a hatarat
+# jelzi a BDB tipografiajaban. Ahol talalhato, a hatarig tarto resz a
+# jelolt "nyelvi_hatter" mezo.
+strong	bejegyzes_hossz	hatarjelzo_talalhato	hatar_pozicioja	nyelvi_hatter_van_e_erdemi_tartalma
+H0127	3319	igen	375	igen — "(as tilled, German bebaut ? ... Arabic , skin,..."
+H0430	9910	nem	-	nincs_egyszeru_hatar — tobbszoros/eltero szamozasi minta (a szocikk tovabb targyal alszamozott formakat)
+H0779	1462	nem	-	nincs_egyszeru_hatar — a szocikk mindjart "Qal Perfect"-tel folytatodik, nincs kulon etimologiai bekezdes
+H1121	14948	igen	1160	igen, hosszu rokon-nyelvi lista (MI, Phoenician, Sabean, Arabic, Assyrian...)
+H2403	9660	igen	556	igen
+H2416	10357	igen	4892	a hatar kesoi pozicioban — a fejresz maga is hosszu, tobb alszo (חַי/חַיִּים) targyalasaval
+H2555	1693	nem	-	rovid szocikk, nincs kulon etimologiai bekezdes
+H3548	9513	igen	282	igen — rokon-nyelvi lista (Late Hebrew, Aramaic, Ethiopic...)
+H3678	4583	nem	-	van rokon-nyelvi anyag (Late Hebrew, Phoenician, Aramaic), de a regex nem talalja a hatart — eltero szamozasi forma gyanithato
+H4467	2499	igen	274	igen, rovid
+H5303	461	nem	-	nagyon rovid szocikk (tulajdonnev-szeru), nincs kulon etimologia
+H5315	13316	igen	589	igen
+H6093	187	nem	-	nagyon rovid, nincs kulon etimologia
+H6975	584	igen	169	igen, rovid
+H7043	3927	igen	759	igen
+H7121	10780	igen	8685	a hatar nagyon kesoi pozicioban — a fejresz (etimologia+alakok) szokatlanul hosszu, mert ez maga a KIRALY-001 gerinc-token
+H7451	8489	igen	381	igen
+H7496	511	nem	-	nagyon rovid, nincs kulon etimologia
+H7497	796	nem	-	nagyon rovid, nincs kulon etimologia
+H7585	3495	igen	1101	igen
+H7843	4965	igen	1188	igen
+H8004	235	nem	-	nagyon rovid tulajdonnev-szocikk, nincs erdemi etimologia
+H8034	7015	nem	-	van erdemi etimologiai anyag ("√ unknown"; l. NYITOTT_FELADATOK N19-kapcsolodo H8034), de a regex nem talalja a hatart — eltero szamozasi forma
+H8415	1966	igen	351	igen
+# Osszesites: 14/24 tokennel az egyszeru "em-dash + '1 '" hatarjelzo
+# megbizhatoan elvalasztja a nyelvi hattér-mezot; 10/24-nel NEM (H0430,
+# H0779, H2555, H3678, H5303, H6093, H7496, H7497, H8004, H8034). Ebbol
+# 6 esetben (H0779, H2555, H5303, H6093, H7496, H7497) a szocikk maga is
+# nagyon rovid (187-1693 karakter) es nyilvanvaloan nincs kulon, erdemi
+# etimologiai bekezdese — ott a "nyelvi_hatter" mezo joggal maradhat ures
+# vagy "a forras nem targyalja". 4 esetben viszont (H0430, H3678, H8004,
+# H8034) VAN erdemi rokon-nyelvi/etimologiai anyag a szocikkben, csak a
+# hatarjelzo mintaja eltero (pl. tobbszoros alszamozas, vagy a szamozas
+# nem "1 "-gyel kezdodik) — ezeknel egy egyszeru regex NEM eleg, kezi
+# hatarmegallapitas vagy finomabb minta kell. KOVETKEZTETES (S9
+# elofeltetele): a "kivaghatosag" NEM altalanos, tokenenkenti kezi
+# ellenorzes/finomitas szukseges a fennmarado legalabb 4 (H0430, H3678,
+# H8004, H8034), esetleg mind a 10 problemas tokenre.

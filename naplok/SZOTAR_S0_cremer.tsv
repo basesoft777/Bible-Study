@@ -1,0 +1,63 @@
+# S0.2 Cremer szovegforras-jelöltek összevetése a 13 G-tokenen.
+# Forrasok probalt elerese: (a) levendwater.org HTML (a brief S7/D12 szerint
+# "gepelt atirat"); (b) archive.org OCR (cu31924098819406_djvu.txt, ubs
+# nyilvanos szkennelt konyv OCR-je).
+#
+# KRITIKUS TALALAT (a): a levendwater.org/books/cremer_lexicon_nt_greek/
+# oldalak (pl. page0001.htm, page0914.htm) NEM tartalmaznak beagyazott
+# szoveget — kizarolag egy <img src="pg0001im.jpg" usemap="#Map"> lapkep-
+# hivatkozast, imagemap-definicio nelkul (nincs AREA-tag, nincs alt-szoveg).
+# A varhato "szoveges valtozat" URL-mintak (pagetxtNNNN.htm, pageNNNNtxt.htm,
+# NNNN.txt) mind a site generikus frameset-fallback oldalat adjak vissza
+# (200 OK, de nem a keresett tartalom). Tehat a levendwater.org-on NINCS
+# gepileg kinyerheto tipizalt szoveg ezen az uton — ez ellentmond a
+# RENDER_BRIEF.md S7/D12 dontesenek alapjaul szolgalo feltevesnek
+# ("Forras: gepelt atirat (levendwater.org HTML)"). L. a kerdesek kozott.
+#
+# (b) archive.org OCR: sikeresen letoltve (cu31924098819406_djvu.txt,
+# 3 166 034 karakter). A teljes szovegben GOROG BETUS KARAKTER: 0 — az OCR
+# motor a gorog betuket szisztematikusan latin betukre "forditotta" /
+# eltorzitotta, nem hagyta ki es nem jelezte hianykent. Mind a 13 lemma
+# pontos es ekezet-nelkuli kereses is 0 talalatot ad. Minta (G0012,
+# aBvacos/abyssos kornyeke, karakterpozicio 20423):
+#   "A Buocos, ov, from Buvacos Ion. = Buds, depth, bottom. Hence, 1.
+#   bottomless, properly an adjective; eg. d8uccov m dayos, BaOos, even
+#   mTodTos, tpayya."
+# — a gorog "ἄβυσσος" szo helyen "A Buocos" All, felismerhetetlen. Az angol
+# proza (definiciok, referenciak: "Once in Diog. Laert. Epigr. iv. 27",
+# biblia-hivatkozasok) nagyresztolvashato, szorvanyos hibaval (pl. "cst"
+# "est" helyett, "TDout ws" egy latin idezetben) — ez megerosti az R0.5
+# jelentes korabbi megjegyzeset ("az archive.org Cremer-OCR gorogje
+# olvashatatlan").
+strong	lemma	levendwater_szoveg	archive_ocr_gorog_talalat	archive_ocr_minoseg_minta	lefedettseg
+G0012	ἄβυσσος	nincs_kinyerheto_szoveg_csak_kep	0	"A Buocos, ov, from Buvacos" — teljesen olvashatatlan gorog	van_a_konyvben_kep_alapjan
+G0086	ᾅδης	nincs_kinyerheto_szoveg_csak_kep	0	nem_ellenorizve_egyedileg	feltetelezett
+G0282	ἀμήτωρ	nincs_kinyerheto_szoveg_csak_kep	0	nem_ellenorizve_egyedileg	feltetelezett
+G0813	ἄτακτος	nincs_kinyerheto_szoveg_csak_kep	0	nem_ellenorizve_egyedileg	feltetelezett
+G1311	διαφθείρω	nincs_kinyerheto_szoveg_csak_kep	0	nem_ellenorizve_egyedileg	feltetelezett
+G1941	ἐπικαλέω	nincs_kinyerheto_szoveg_csak_kep	0	nem_ellenorizve_egyedileg	feltetelezett
+G1944	ἐπικατάρατος	nincs_kinyerheto_szoveg_csak_kep	0	nem_ellenorizve_egyedileg	feltetelezett
+G2671	κατάρα	nincs_kinyerheto_szoveg_csak_kep	0	nem_ellenorizve_egyedileg	feltetelezett
+G4151	πνεῦμα	nincs_kinyerheto_szoveg_csak_kep	0	nem_ellenorizve_egyedileg	feltetelezett
+G5010	τάξις	nincs_kinyerheto_szoveg_csak_kep	0	nem_ellenorizve_egyedileg	feltetelezett
+G5351	φθείρω	nincs_kinyerheto_szoveg_csak_kep	0	nem_ellenorizve_egyedileg	feltetelezett
+G5356	φθορά	nincs_kinyerheto_szoveg_csak_kep	0	nem_ellenorizve_egyedileg	feltetelezett
+G5590	ψυχή	nincs_kinyerheto_szoveg_csak_kep	0	nem_ellenorizve_egyedileg	feltetelezett
+# Osszesites:
+# - levendwater.org: 0/13 — a forras tipusa NEM "gepelt atirat", hanem
+#   lapkep-szkenneles, szoveg-kinyeres nelkul (legalabbis a probalt statikus
+#   URL-eken; lehet, hogy van egy nem-statikus/JS-alapu kereso ami szoveget
+#   szolgaltat, ezt nem probaltuk).
+# - archive.org OCR: a gorog betus resz hibaaranya ~100% (0/13 felismerheto
+#   lemma a teljes konyvben); a latin/angol proza hibaaranya durvan becsulve
+#   alacsony-kozepes (nincs replacement-karakter, de szorvanyos betu-tevesztes
+#   a mintaban) — pontos szazalekos hibaarany a latin reszre nem keszult,
+#   mert ehhez tobb tucat szocikk kezi proofread-je kellene, ami tullepi az
+#   S0 felmeresi hatokort.
+# - KOVETKEZTETES: egyik forras onmagaban nem adja a brief S7 altal elvart
+#   "szo szerinti gorog szoveg" celt. L. S0.9 1. kerdes.
+#
+# Kiegeszites: a Cremer hebermutatojanak (Index V, "Hebrew words referred to",
+# levendwater.org page0934.htm) lefedettsege a 24 H-tokenre SZINTEN NEM
+# merheto — ugyanaz a blokkolo ok: page0934.htm is kizarolag lapkep
+# (pg0934im.jpg), gepileg kinyerheto szoveg nelkul. Ellenorizve.

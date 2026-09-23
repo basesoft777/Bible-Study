@@ -1,0 +1,68 @@
+# S0.7 heber kiejtes-jeloltek proba: OSHL-tipusu (niqqud-alapu) szabalytabla
+# egyezese a 49 arany heber parral. MODSZERTANI MEGJEGYZES: a proba magat a
+# pontozott heber szoveget hasznalta bemenetkent (nem az OSHL "atiras"
+# mezot, mert a 36 osszehasonlithato arany par tobbsege NEM a 8 motivum 24
+# lemmaja, hanem inflektalt/mas gyoku alak — ezekre nincs OSHL atiras
+# keszen). A 49-bol 13 par tobbszavas kifejezes vagy ismetlodes volt, ezeket
+# kihagytuk; 36 egyedi, egyszavas parat teszteltunk.
+strong_v_szo	vart	kapott	egyezik	elteres_oka
+קָרָא	kárá	kárá	igen
+זָכַר	zákar	zákhar	nem	kaf hard/soft (dagesh) megkulonboztetes tevesen alkalmazva — a konvencio szerint a kaf MINDIG "k", nincs "kh" valtozat
+מָצָא	mácá	mácá	igen
+נָקַב	nákav	nákav	igen
+עָשָׂה	ászá	ásáh	nem	szoveg-vegi ה (mater lectionis) nem nemul el a szabalyban; a konvencio a szovegvegi nema he-t elhagyja
+שׂוּם	szúm	szvm	nem	a ו mint maganhangzo-hordozo (shuruk, וּ) nincs megkulonboztetve a massalhangzo ו-tol
+שָׁכַן	sákan	sákhan	nem	ua. mint זָכַר — kaf hard/soft hiba
+שֻׁם	sum	sum	igen
+אָמַר	ámar	ámar	igen
+בֹּוא	bó	vóv	nem	ua. shuruk/vav-mint-maganhangzo hiba, es a szovegvegi nema א sem tunik el egysegesen
+דָבַר	dávar	dávar	igen
+הָיָה	hájá	hájáh	nem	szovegvegi nema he-hiba (l. עָשָׂה)
+זָעַק	záak	záak	igen
+לָקַח	lákah	lákah	igen
+עֲלַל	alal	alal	igen
+רוּם	rúm	rvm	nem	shuruk/vav-hiba
+שֵׁם	sém	sém	igen
+הָגָה	hágá	hágáh	nem	szovegvegi nema he-hiba
+הָמָה	hámá	hámáh	nem	szovegvegi nema he-hiba
+זַעַק	zaak	zak	nem	SCRIPT-HIBA (nem nyelvi): a probaszkript tevesen osszevonta a ket egymas melletti "a" maganhangzot; javitando a vegleges szabalyban
+כָּנָה	káná	khánáh	nem	kaf hard/soft hiba + szovegvegi nema he-hiba egyszerre
+נָהַם	náham	náham	igen
+נָהַק	náhak	náhak	igen
+נָשָׂא	nászá	násá	nem	SCRIPT-HIBA: a sin-pont (שׂ) felismerese elmaradt ebben a pozicioban — javitando
+פָּצַח	pácah	fácah	nem	SCRIPT-HIBA: a pe dagesh-detektalasa elmaradt (NFD sorrend-fuggo hiba) — javitando
+צָהַל	cáhal	cáhal	igen
+צָוַח	cávah	cávah	igen
+צָעַק	cáak	cáak	igen
+צָרַח	cárah	cárah	igen
+רוּעַ	rúa	rva	nem	shuruk/vav-hiba
+רָעַם	ráam	ráam	igen
+שָׁאַג	sáag	sáag	igen
+שָׁבַע	sáva	sáva	igen
+שָׁעָה	sáá	sáh	nem	szovegvegi nema he-hiba + ayin-dropped interakcio
+עַל	al	al	igen
+בְּ	be	v	nem	egybetus elokezo (בְּ) irott dagesh nelkul is kemenyen ejtett a konvencioban (dagesh lene nincs kiirva, de a szabaly szerint pronomen-elokezoknel mindig "b"/hasonlo hangzo), a nyers massalhangzo-szabaly ezt nem kezeli kulon esetkent
+#
+# OSSZESITES: 20/36 egyezik (55.6%). A 16 elteres 3 kategoriaba sorolhato:
+#  (1) VALODI NYELVI NEHEZSEG (10 eset): a szovegvegi nema he (mater
+#      lectionis, 6 eset) es a shuruk/holam-vav mint maganhangzo-hordozo
+#      (4 eset) megkulonboztetese context-fuggo, nyers niqqud-bol nem
+#      trivialisan dontheto el egyszeru karakter-szabalyokkal.
+#  (2) KONVENCIOS HIBA (2+1 eset): a kaf mindig "k" (nincs kh-valtozat,
+#      2 eset), es az egybetus elokezok kemeny kiejtese (1 eset) — ezek
+#      egyszeru szabaly-hangolassal javithatok.
+#  (3) SCRIPT-HIBA (3 eset): a proba-szkript sajat, nem nyelvi hibaja
+#      (dagesh-detektalasi es maganhangzo-osszevonasi bug) — nem a
+#      modszertant, hanem az implementaciot minositi.
+#
+# KOVETKEZTETES (a brief S3/D13 dontesenek megerositese): mind az (1)
+# kategoria ket fo problemaja (nema he, shuruk/vav) pontosan az, amit a
+# brief D13-ban mar azonosit indoklaskent: "a tudomanyos atirasban a nehez
+# esetek (hangzo sva, dagesh, qamets qatan) mar eldontottek" — az OSHL
+# "atiras" mezo (pl. ʾāb) MAR NEM tartalmazza a nema betuket es a
+# maganhangzo-hordozo ו/ה-t kulon karakterkent, tehat egy az OSHL atirasra
+# epulo szabalytabla (a brief tenyleges S1.2/S3 terve) valoszinuleg
+# lenyegesen jobb aranyt erne el, mint ez a nyers-niqqud-alapu proba. Ez a
+# proba tehat NEM a vegleges szabalytablat teszteli, hanem egy pesszimistabb
+# also korlatot ad, es alatamasztja, hogy az OSHL atiras-mezo hasznalata
+# (nem a nyers niqqud) a helyes iranyu dontes volt.

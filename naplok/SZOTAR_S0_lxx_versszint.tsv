@@ -1,0 +1,39 @@
+# S0.8 LXX korpuszszint: versszintu egyutt-elofordulas probaja H7121 x G1941-en
+# (ISTENTISZT-001 ismert parja). Modszer: TAHOT_kivonat.tsv-bol az osszes
+# H7121-et tartalmazo Karoli-igehely (687 vers); a konkordancia/LXX_OS/*.tsv
+# (59 konyv-fajl) minden sorat, amelynek igehely_karoli mezoje ezek koze
+# esik, osszegyujtottuk a verhez tartozo gorog Strong-kodokkal (a strong
+# oszlop csupasz szammal all, "G" elotag nelkul). Ellenorzes: hany H7121-vers
+# tartalmazza a G1941 (ἐπικαλέω) kodot a LXX-sorai kozott.
+mutato	ertek
+H7121 Karoli-igehely (TAHOT_kivonat, osszes elofordulas)	687
+LXX_OS-ben megtalalhato Karoli-igehely (van legalabb egy LXX-sor)	635
+	687-635=52 vers nem talalhato a LXX_OS-ben (feltehetoen hianyzo lefedettseg vagy elteroigehely-cimke — nem vizsgaltuk tovabb, S0 hatokoron kivul)
+H7121-vers, amely G1941-et is tartalmaz a LXX-soraiban (talalat)	102 (14.8%)
+H7121-vers, amely NEM tartalmaz G1941-et	585 (85.2%)
+atlagos gorog-Strong-szam H7121-versenkent (a LXX_OS teljes verssora)	15.6
+leggyakoribb MAS gorog-Strong a nem-talalt verseknel (top 5, "zaj")	3588 (a nevelo, 502×), 2532 (kai/es, 482×), 846 (autos, 339×), 2564 (kaleo, 326×), 3004 (lego/mond, 230×)
+# ERTELMEZES:
+# - A nyers, szuretlen egyutt-elofordulas (atlag 15.6 gorog szo/vers) tul
+#   zajos onmagaban: a leggyakoribb "talalatok" nem tartalmi szavak, hanem
+#   nevelok, kotoszavak, nevmasok (3588, 2532, 846) — ezeket a
+#   adat/grammatikai_strongok.tsv-fele szuressel ki KELL zarni a vegleges
+#   modszerben (ugyanaz az elv, mint a gerinc-metszetnel, l. CLAUDE.md
+#   "Kutatasi menet" 1. lepes).
+# - A masodik leggyakoribb NEM-grammatikai Strong a nem-talalt verseknel a
+#   G2564 (καλέω, 326×) — ez PONTOSAN megegyezik az adat/lxx_dontesek.tsv
+#   mar rogzitett LD001/LD002 dontesevel (2Móz 33:19, 34:5: a fordito
+#   kaleo-t valaszt epikaleo helyett) — a modszer tehat MEGTALALJA a mar
+#   ismert, kezzel rogzitett eltero-forditas eseteket, nem csak zajt termel.
+# - A 14.8%-os kozvetlen G1941-talalati arany osszhangban van azzal, hogy
+#   H7121 tobbsegeben NEM "segitsegul hivas" ertelemben fordul elo a teljes
+#   ÓSZ-ben (csak egy szuk szemantikai alcsoportnal releváns a G1941-kotes;
+#   a tobbi elofordulas "nevezni", "hivni", "kihirdetni" ertelemben mas
+#   gorog szot kap) — ez maga is tartalmi megerositese annak, hogy a
+#   motivum gerinc-metszete (ISTENTISZT-001) miert csak a H7121 egy
+#   alcsoportjara szukul, nem az egesz Strong-ra.
+# KOVETKEZTETES (S13 elofeltetele): a versszintu egyutt-elofordulas
+# HASZNALHATO modszer, DE csak grammatikai Strong-szures UTAN, es a
+# "versszintu egyutt-elofordulas, nem szoillesztes" jelolessel egyutt (a
+# brief S13 sajat fenntartasa szerint) — nyers formaban tul zajos onallo
+# ertelmezeshez.
