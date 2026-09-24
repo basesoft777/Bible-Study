@@ -31,7 +31,8 @@ modellazonositokat es -arakat a cremer_ocr_config.json adja.
 
 Kilepesi kod: 0 = rendben, 1 = szabalysertes (hianyzo modell/kulcs, vagy
 --pilot nelkuli eles futas -- O2 meg nincs engedelyezve), 2 = hiba (ismeretlen
-level), 3 = a koltsegplafon miatt korai leallas.
+level), 3 = a koltsegplafon miatt korai leallas, 4 = a 'hiba' sorok aranya a
+futas vegen > 10% (D15).
 """
 
 import sys
@@ -61,8 +62,9 @@ JP2ZIP_UTVONAL = os.path.join(NYERS_ALAP, "cu31924098819406_jp2.zip")
 CONFIG_UTVONAL = os.path.join(REPO_GYOKER, "eszkozok", "cremer_ocr_config.json")
 NAPLOK_DIR = os.path.join(REPO_GYOKER, "naplok")
 CACHE_DIR = os.path.join(REPO_GYOKER, "konkordancia", "_nyers", "cremer_cache")
+HIBA_DIR = os.path.join(REPO_GYOKER, "konkordancia", "_nyers", "cremer_hibak")
 
-PROMPT_VERZIO = "v2"
+PROMPT_VERZIO = "v3"
 
 # C7: pilot -- 7 ismert level (Abbott-Smith-szocikkek + gorog mutato) + a heber
 # mutato levele + 12 veletlen level, rogzitett maggal.
@@ -70,6 +72,8 @@ PILOT_ISMERT_LEVELEK = [17, 82, 124, 350, 628, 760, 934, 950]
 PILOT_VELETLEN_MAG = 20260923
 PILOT_VELETLEN_DB = 12
 LEVEL_MIN, LEVEL_MAX = 1, 967  # a page_numbers.json szerinti szamozott levelek (SS 0.2)
+
+HIBA_ARANY_KUSZOB = 0.10  # D15: ha a futas vegen a 'hiba' sorok aranya ennel nagyobb, kilepesi kod 4
 
 
 # ---------------------------------------------------------------------------
@@ -228,12 +232,19 @@ UTASITAS_SZOVEG = (
     "vannak kiemelve (wconf es a lapkepen ervenyes bbox). Add vissza SZIGORU "
     "JSON objektumkent: {\"cserek\": [{\"szo_ids\": [...], \"alak\": ..., "
     "\"nyelv\": \"grc\"|\"heb\"|\"lat\", \"extra\": bool}]}. A 'szo_ids' egy "
-    "vagy tobb, UGYANAZON sorban EGYMAST KOVETO azonosito (ha a torz szo tobb "
-    "hOCR-tokenre esett szet). Az 'alak' irasjel NELKUL ertendo (a program a "
-    "hOCR-tokenbol teszi vissza). Nem-extra elemnel a szo_ids kozott legalabb "
-    "egy gyanus token legyen. Ha egy sorban olyan gorog/heber torzkepet latsz, "
-    "ami NINCS a 'gyanusak' kozott jelolve, jelezd 'extra': true -vel. Ne irj "
-    "szabad szoveget, csak ezt a JSON objektumot."
+    "vagy tobb, UGYANAZON sorban EGYMAST KOVETO azonosito -- KIZAROLAG akkor, "
+    "ha EGYETLEN torz szo esett szet tobb egymas melletti hOCR-tokenre (pl. "
+    "egy szohoz tartozo idezojel es betuk kulon tokenkent). HA UGYANAZ A SZO "
+    "KETSZER (vagy tobbszor) jelenik meg a sorban NEM-SZOMSZEDOS helyeken -- "
+    "peldaul egy elofejben 'CIMSZO [oldalszam] CIMSZO' mintazatban --, az KET "
+    "(vagy tobb) KULON cserek-elem, KULON-KULON szo_ids-szel, MEG AKKOR IS, ha "
+    "az alakjuk azonos. A szo_ids SOHA nem fog at tavoli, kulonallo "
+    "elofordulasokat, csak egyetlen szo egybefuggo toredekeit. Az 'alak' "
+    "irasjel NELKUL ertendo (a program a hOCR-tokenbol teszi vissza). "
+    "Nem-extra elemnel a szo_ids kozott legalabb egy gyanus token legyen. Ha "
+    "egy sorban olyan gorog/heber torzkepet latsz, ami NINCS a 'gyanusak' "
+    "kozott jelolve, jelezd 'extra': true -vel. Ne irj szabad szoveget, csak "
+    "ezt a JSON objektumot."
 )
 
 
@@ -307,49 +318,59 @@ def _json_sema():
 
 
 def _cserek_validal(nyers, ctx):
-    """A modell JSON-valaszat ellenorzi (O0.4 §2/3): letezo, egy sorbeli, egymast
-    koveto azonositok; nem-extra elemnel legalabb egy gyanus id; atfedes tilos.
-    Sikeres validalasnal a szo_ids-t a sorbeli pozicio szerint rendezve adja
-    vissza (igy az egyezes-osszevetes ordering-fuggetlen)."""
+    """A modell JSON-valaszat ellenorzi (D15: elemszintu validalas). Letezo, egy
+    sorbeli, egymast koveto azonositok; nem-extra elemnel legalabb egy gyanus
+    id; atfedes tilos. A 'cserek' lista MEGLETE es tipusa a teljes valaszra
+    vonatkozo, tovabbra is kivetelt dob (ez a hivo oldalon meg mindig 'egesz
+    valasz ervenytelen' -- ujraprobalkozas, utana hiba). Egy-egy ELEM
+    problemaja viszont NEM dob kivetelt: az az elem az 'ervenytelen' listaba
+    kerul, a tobbi ervenyes elem hasznalhato marad (D15). Sikeres elemnel a
+    szo_ids a sorbeli pozicio szerint rendezve.
+    Visszaad: (ervenyes_elemek, ervenytelen_elemek) -- ervenytelen_elemek:
+    [{"elem": <nyers elem>, "hiba": <szoveg>}, ...]."""
     if not isinstance(nyers, dict) or not isinstance(nyers.get("cserek"), list):
         raise ValueError("hianyzik vagy ervenytelen a 'cserek' lista")
-    eredmeny = []
+    ervenyes = []
+    ervenytelen = []
     hasznalt = set()
     for elem in nyers["cserek"]:
-        if not isinstance(elem, dict):
-            raise ValueError("a 'cserek' egy eleme nem objektum: %r" % (elem,))
-        szo_ids = elem.get("szo_ids")
-        alak = elem.get("alak")
-        nyelv = elem.get("nyelv")
-        extra = bool(elem.get("extra", False))
-        if not isinstance(szo_ids, list) or not szo_ids or not all(isinstance(x, str) for x in szo_ids):
-            raise ValueError("ervenytelen szo_ids: %r" % (szo_ids,))
-        if not isinstance(alak, str) or not alak:
-            raise ValueError("ervenytelen alak: %r" % (alak,))
-        if nyelv not in ("grc", "heb", "lat"):
-            raise ValueError("ervenytelen nyelv: %r" % (nyelv,))
-        sor_id = None
-        pozicio_map = {}
-        for sid in szo_ids:
-            info = ctx["id_info"].get(sid)
-            if info is None:
-                raise ValueError("ismeretlen szo_id: %s" % sid)
-            if sor_id is None:
-                sor_id = info[0]
-            elif info[0] != sor_id:
-                raise ValueError("a szo_ids nem egy sorban vannak: %s" % szo_ids)
-            pozicio_map[sid] = info[1]
-        pozok_rendezett = sorted(pozicio_map.values())
-        if pozok_rendezett != list(range(pozok_rendezett[0], pozok_rendezett[-1] + 1)):
-            raise ValueError("a szo_ids nem egymast kovetoek: %s" % szo_ids)
-        if not extra and not any(ctx["id_info"][sid][2] for sid in szo_ids):
-            raise ValueError("nem-extra elemnek legalabb egy gyanus szo_id kell: %s" % szo_ids)
-        if hasznalt & set(szo_ids):
-            raise ValueError("atfedo szo_ids egy masik elemmel: %s" % szo_ids)
-        hasznalt |= set(szo_ids)
-        szo_ids_rendezett = sorted(szo_ids, key=lambda s: pozicio_map[s])
-        eredmeny.append({"szo_ids": szo_ids_rendezett, "alak": alak, "nyelv": nyelv, "extra": extra})
-    return eredmeny
+        try:
+            if not isinstance(elem, dict):
+                raise ValueError("a 'cserek' egy eleme nem objektum: %r" % (elem,))
+            szo_ids = elem.get("szo_ids")
+            alak = elem.get("alak")
+            nyelv = elem.get("nyelv")
+            extra = bool(elem.get("extra", False))
+            if not isinstance(szo_ids, list) or not szo_ids or not all(isinstance(x, str) for x in szo_ids):
+                raise ValueError("ervenytelen szo_ids: %r" % (szo_ids,))
+            if not isinstance(alak, str) or not alak:
+                raise ValueError("ervenytelen alak: %r" % (alak,))
+            if nyelv not in ("grc", "heb", "lat"):
+                raise ValueError("ervenytelen nyelv: %r" % (nyelv,))
+            sor_id = None
+            pozicio_map = {}
+            for sid in szo_ids:
+                info = ctx["id_info"].get(sid)
+                if info is None:
+                    raise ValueError("ismeretlen szo_id: %s" % sid)
+                if sor_id is None:
+                    sor_id = info[0]
+                elif info[0] != sor_id:
+                    raise ValueError("a szo_ids nem egy sorban vannak: %s" % szo_ids)
+                pozicio_map[sid] = info[1]
+            pozok_rendezett = sorted(pozicio_map.values())
+            if pozok_rendezett != list(range(pozok_rendezett[0], pozok_rendezett[-1] + 1)):
+                raise ValueError("a szo_ids nem egymast kovetoek: %s" % szo_ids)
+            if not extra and not any(ctx["id_info"][sid][2] for sid in szo_ids):
+                raise ValueError("nem-extra elemnek legalabb egy gyanus szo_id kell: %s" % szo_ids)
+            if hasznalt & set(szo_ids):
+                raise ValueError("atfedo szo_ids egy korabbi ervenyes elemmel: %s" % szo_ids)
+            hasznalt |= set(szo_ids)
+            szo_ids_rendezett = sorted(szo_ids, key=lambda s: pozicio_map[s])
+            ervenyes.append({"szo_ids": szo_ids_rendezett, "alak": alak, "nyelv": nyelv, "extra": extra})
+        except ValueError as e:
+            ervenytelen.append({"elem": elem, "hiba": str(e)})
+    return ervenyes, ervenytelen
 
 
 # ---------------------------------------------------------------------------
@@ -732,17 +753,26 @@ def _http_post_nyers(model_id, uzenetek, api_key, extra_parameterek,
     raise OpenRouterHiba("nem sikerult a hivas: %s" % utolso_hiba, usage={})
 
 
+ELEM_HIBAARANY_KUSZOB = 0.5  # D15: ha egy modell elemeinek tobb mint fele semasertes -> ujraprobalkozas, utana hiba
+
+
 def openrouter_hivas(model_id, kep_jpeg_bytes, payload, api_key, sema, ctx,
                       reasoning=None, ujraprobalkozas_json=1, ujraprobalkozas_http=4, posztolo=None,
-                      ar_bemenet_1m=None, ar_kimenet_1m=None):
+                      ar_bemenet_1m=None, ar_kimenet_1m=None, hiba_naplo_dir=None):
     """Egy hivas egy modellhez, egy laphoz (C2). posztolo(model_id, uzenetek,
     api_key, extra_parameterek, ujraprobalkozas_http) -> (nyers OpenRouter-valasz
     dict, HTTP-kiserletek szama); alapertelmezesben _http_post_nyers. H5: MINDEN
     JSON-ujraprobalkozasi kiserlet usage-e osszeadodik (token, gondolkodas,
     koltseg) -- a sema-sertes miatt eldobott elso valasz is szamlazott hivas
-    volt. Visszaad: (cserek, osszesitett_usage, utolso_nyers_valasz), vagy dobja
-    az OpenRouterHiba-t ('hiba') -- ilyenkor a kivetel .usage attributuma az
-    addig osszegyult usage-et hordozza."""
+    volt. D15: a 'cserek' letezese/tipusa vagy maga a JSON ervenytelensege
+    tovabbra is a teljes valaszt bukdtatja (ujraprobalkozas, utana 'hiba'), DE
+    egy-egy ELEM semasertese onmagaban NEM -- csak az az elem esik ki (a
+    hibanaploba kerul), a tobbi ervenyes elem hasznalhato marad. Ha egy
+    valaszban az ELEM_HIBAARANY_KUSZOB-nal (0.5) tobb elem semasertes, az
+    egesz valasz ugy szamit, mintha a JSON lenne ervenytelen (ujraprobalkozas,
+    utana 'hiba'). Visszaad: (ervenyes_cserek, osszesitett_usage,
+    utolso_nyers_valasz), vagy dobja az OpenRouterHiba-t ('hiba') -- ilyenkor
+    a kivetel .usage attributuma az addig osszegyult usage-et hordozza."""
     import base64
 
     posztolo = posztolo or _http_post_nyers
@@ -796,11 +826,21 @@ def openrouter_hivas(model_id, kep_jpeg_bytes, payload, api_key, sema, ctx,
         }
         tartalom = nyers_valasz["choices"][0]["message"]["content"]
         try:
-            cserek = _cserek_validal(json.loads(tartalom), ctx)
-            return cserek, osszesitett_usage, nyers_valasz
+            nyers_json = json.loads(tartalom)
+            ervenyes, ervenytelen = _cserek_validal(nyers_json, ctx)
         except (json.JSONDecodeError, ValueError, KeyError) as e:
             utolso_hiba = e
             continue
+
+        if ervenytelen:
+            hiba_naplo_ir(model_id, payload.get("level"), kiserlet + 1, ervenytelen, hiba_naplo_dir)
+
+        elem_szam = len(ervenyes) + len(ervenytelen)
+        if elem_szam > 0 and len(ervenytelen) / elem_szam > ELEM_HIBAARANY_KUSZOB:
+            utolso_hiba = "elemek tobb mint fele semasertes (%d/%d)" % (len(ervenytelen), elem_szam)
+            continue
+
+        return ervenyes, osszesitett_usage, nyers_valasz
     raise OpenRouterHiba(
         "ervenytelen JSON/sema %d kiserlet utan: %s" % (ujraprobalkozas_json + 1, utolso_hiba),
         usage=osszesitett_usage,
@@ -813,6 +853,25 @@ def openrouter_hivas(model_id, kep_jpeg_bytes, payload, api_key, sema, ctx,
 
 def _modell_slug(model_id):
     return re.sub(r"[^A-Za-z0-9_-]", "_", model_id)
+
+
+def hiba_naplo_ir(model_id, level, kiserlet, ervenytelen_elemek, hiba_dir=None):
+    """D15: a semasertes miatt elvetett elemek NYERSEN, kulcs es HTTP-fejlec
+    nelkul -- konkordancia/_nyers/cremer_hibak/<modell_slug>/<level:04d>_<kiserlet>.json.
+    Ez NEM gyorsitotar: ujrafutaskor sosem olvassa vissza senki."""
+    hiba_dir = hiba_dir or HIBA_DIR
+    p = os.path.join(hiba_dir, _modell_slug(model_id), "%04d_%d.json" % (int(level), int(kiserlet)))
+    os.makedirs(os.path.dirname(p), exist_ok=True)
+    adat = {
+        "model": model_id,
+        "level": level,
+        "kiserlet": kiserlet,
+        "ts": datetime.now(timezone.utc).isoformat(),
+        "ervenytelen_elemek": ervenytelen_elemek,
+    }
+    with open(p, "w", encoding="utf-8") as fh:
+        json.dump(adat, fh, ensure_ascii=False, indent=1)
+    return p
 
 
 def cache_utvonal(model_id, level, cache_dir=None):
@@ -847,7 +906,7 @@ def cache_ir(model_id, level, nyers_valasz, usage, cache_dir=None):
 
 
 def level_modell_hivas(level, model_cfg, payload, ctx, kep_jpeg_bytes, api_key, config,
-                        csak_dontes=False, posztolo=None, cache_dir=None):
+                        csak_dontes=False, posztolo=None, cache_dir=None, hiba_naplo_dir=None):
     """Egy modell egy lapra: gyorsitotarbol, vagy (ha --csak-dontes nincs)
     halozatrol -- ekkor SIKERES valaszt es a hasznalt metaadatokat el is menti
     (H3: 'hiba' valasz SOHA nem kerul a gyorsitotarba, hogy az ujrafutas
@@ -858,7 +917,7 @@ def level_modell_hivas(level, model_cfg, payload, ctx, kep_jpeg_bytes, api_key, 
     if talalat is not None:
         tartalom = talalat["nyers_valasz"]["choices"][0]["message"]["content"]
         try:
-            cserek = _cserek_validal(json.loads(tartalom), ctx)
+            cserek, _ervenytelen = _cserek_validal(json.loads(tartalom), ctx)
         except (json.JSONDecodeError, ValueError, KeyError):
             cserek = "hiba"
         return cserek, talalat.get("usage", {}), "cache"
@@ -878,6 +937,7 @@ def level_modell_hivas(level, model_cfg, payload, ctx, kep_jpeg_bytes, api_key, 
             posztolo=posztolo,
             ar_bemenet_1m=model_cfg.get("ar_bemenet_usd_per_1M"),
             ar_kimenet_1m=model_cfg.get("ar_kimenet_usd_per_1M"),
+            hiba_naplo_dir=hiba_naplo_dir,
         )
     except OpenRouterHiba as e:
         return "hiba", e.usage, "halozat"
@@ -1346,6 +1406,57 @@ def _onteszt_i_vegponttol_vegpontig():
         shutil.rmtree(tmp_cache, ignore_errors=True)
 
 
+def _onteszt_j_elemszintu_validalas():
+    tmp = tempfile.mkdtemp(prefix="cremer_onteszt_hibanaplo_")
+    try:
+        # a) 1 ervenyes + 1 nem-szomszedos-szo_ids (semasertes) elem -> az
+        #    ervenyes megmarad, a lap NEM hiba, a hibas elem a hibanaploba kerul
+        ctx = {"id_info": {
+            "a": ("sor1", 0, True), "b": ("sor1", 1, False),
+            "c": ("sor1", 2, True), "x": ("sor1", 3, True),
+        }}
+        valasz = _ror_valasz({"cserek": [
+            {"szo_ids": ["x"], "alak": "λόγος", "nyelv": "grc", "extra": False},
+            {"szo_ids": ["a", "c"], "alak": "y", "nyelv": "grc", "extra": False},  # 'b' kimarad kozbol
+        ]})
+        cserek, usage, _ = openrouter_hivas(
+            "teszt/j-modell", b"x", {"level": 12345}, "kulcs", _json_sema(), ctx,
+            ujraprobalkozas_json=1, posztolo=lambda *a, **k: (valasz, 1),
+            hiba_naplo_dir=tmp,
+        )
+        assert len(cserek) == 1 and cserek[0]["szo_ids"] == ["x"], (
+            "a lapnak NEM szabad hiba-nak lennie, az ervenyes elemnek meg kell maradnia: %r" % cserek
+        )
+        hiba_fajl = os.path.join(tmp, _modell_slug("teszt/j-modell"), "12345_1.json")
+        assert os.path.exists(hiba_fajl), "a semasertes elemnek a hibanaplóba kellett volna kerulnie"
+        with open(hiba_fajl, encoding="utf-8") as fh:
+            naplo = json.load(fh)
+        assert len(naplo["ervenytelen_elemek"]) == 1
+
+        # b) elemek tobb mint fele semasertes -> ujraprobalkozas, utana hiba
+        ctx2 = {"id_info": {"a": ("sor1", 0, True), "b": ("sor1", 1, True)}}
+        tobbsegi_hibas = _ror_valasz({"cserek": [
+            {"szo_ids": ["ismeretlen1"], "alak": "x", "nyelv": "grc", "extra": False},
+            {"szo_ids": ["ismeretlen2"], "alak": "x", "nyelv": "grc", "extra": False},
+            {"szo_ids": ["a"], "alak": "y", "nyelv": "grc", "extra": False},
+        ]})  # 2/3 semasertes > 50%
+        hivas_n = {"n": 0}
+
+        def posztolo2(*a, **k):
+            hivas_n["n"] += 1
+            return tobbsegi_hibas, 1
+
+        try:
+            openrouter_hivas("teszt/j-modell2", b"x", {"level": 999}, "kulcs", _json_sema(), ctx2,
+                              ujraprobalkozas_json=1, posztolo=posztolo2, hiba_naplo_dir=tmp)
+            raise AssertionError("vart OpenRouterHiba (tobbsegi semasertes)")
+        except OpenRouterHiba:
+            pass
+        assert hivas_n["n"] == 2, "a tobbsegi semasertesnek ujra kellett volna probalkoznia"
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
 ONTESZT_AGAK = [
     ("a_bbox_skalazas", _onteszt_a_bbox_skalazas),
     ("b_elonormalizalas", _onteszt_b_elonormalizalas),
@@ -1356,6 +1467,7 @@ ONTESZT_AGAK = [
     ("g_hiba_nem_cachelt", _onteszt_g_hiba_nem_cachelt),
     ("h_usage_osszegzes", _onteszt_h_usage_osszegzes),
     ("i_vegponttol_vegpontig", _onteszt_i_vegponttol_vegpontig),
+    ("j_elemszintu_validalas", _onteszt_j_elemszintu_validalas),
 ]
 
 
@@ -1460,6 +1572,16 @@ def cmd_futtat(args):
     if eredmeny["leallt_plafon_miatt"]:
         print("\nA futas a koltsegplafon miatt korabban leallt.", file=sys.stderr)
         return 3
+
+    osszes_db = len(eredmeny["o1_sorok"])
+    hiba_db = sum(1 for s in eredmeny["o1_sorok"] if s["dontes"] == "hiba")
+    if osszes_db and hiba_db / osszes_db > HIBA_ARANY_KUSZOB:
+        print(
+            "\nHIBA -- a hiba-sorok aranya tul magas: %d/%d = %.1f%% (kuszob: %.0f%%)."
+            % (hiba_db, osszes_db, 100 * hiba_db / osszes_db, 100 * HIBA_ARANY_KUSZOB),
+            file=sys.stderr,
+        )
+        return 4
     return 0
 
 
@@ -1762,7 +1884,7 @@ def _futtat_szaraz(levelek, lapindex, max_el_px, config):
 
 
 def _futtat_eles(levelek, lapindex, max_el_px, config, modellek, api_key, args,
-                  posztolo=None, cache_dir=None):
+                  posztolo=None, cache_dir=None, hiba_naplo_dir=None):
     koltsegplafon = config.get("koltsegplafon_pilot_usd" if args.pilot else "koltsegplafon_usd")
     naplo = KoltsegNaplo(koltsegplafon)
     o1_sorok = []
@@ -1794,6 +1916,7 @@ def _futtat_eles(levelek, lapindex, max_el_px, config, modellek, api_key, args,
             cserek, usage, honnan = level_modell_hivas(
                 level, m_cfg, payload, ctx, kep_bytes, api_key, config,
                 csak_dontes=args.csak_dontes, posztolo=posztolo, cache_dir=cache_dir,
+                hiba_naplo_dir=hiba_naplo_dir,
             )
             eredmenyek[kulcs] = cserek
             if honnan == "halozat":
