@@ -1048,13 +1048,15 @@ def tsv_ir(utvonal, fejlec, sorok):
             fh.write("\t".join(str(sor.get(mezo, "")) for mezo in fejlec) + "\n")
 
 
-def tsv_fejlec_ir_ha_kell(utvonal, fejlec):
-    """O0.5c/3: fejlecet csak akkor ir, ha a fajl meg nem letezik -- ezutan
-    tsv_sorokat_fuzz() hozzafuzessel bovitheti, lapok kozott megszakithatoan."""
-    os.makedirs(os.path.dirname(utvonal), exist_ok=True)
-    if not os.path.exists(utvonal):
-        with open(utvonal, "w", encoding="utf-8", newline="\n") as fh:
-            fh.write("\t".join(fejlec) + "\n")
+def tsv_fejlec_ir_mindig(utvonal, fejlec):
+    """O0.5d: a futas ELEJEN mindig ujrairja a fajlt, csak fejleccel (torli az
+    elozo futas eredmenyet) -- ezutan tsv_sorokat_fuzz() hozzafuzessel bovitheti,
+    lapok kozott megszakithatoan. A FOLYTATAST a gyorsitotar adja (level_modell_hivas
+    cache-olvasasa), NEM a mar meglevo tsv-sorok: egy megismetelt futas ugyanazokat
+    a donteseket ujra kiirja, gyorsitotar-talalat eseten halozati hivas nelkul --
+    ezert nincs duplikacio, es a tsv mindig a legutobbi futas teljes, konzisztens
+    eredmenyet tukrozi."""
+    tsv_ir(utvonal, fejlec, [])
 
 
 def tsv_sorokat_fuzz(utvonal, fejlec, sorok):
@@ -1442,6 +1444,33 @@ def _onteszt_i_vegponttol_vegpontig():
         with open(koltseg_utvonal, encoding="utf-8") as fh:
             koltseg_sorok = fh.read().splitlines()
         assert koltseg_sorok[0].split("\t") == KOLTSEG_FEJLEC
+
+        # O0.5d: masodik futas UGYANAZZAL a gyorsitotarral -- a tsv a futas
+        # elejen ujrairodik (csak fejlec), a folytatast a gyorsitotar adja
+        # (nincs uj halozati hivas), a vegeredmeny sorszama nem duplikalodik
+        elso_csere_sorszam = len(csere_sorok)
+        elso_koltseg_sorszam = len(koltseg_sorok)
+
+        def posztolo_masodik_nem_hivhato(*a, **k):
+            raise AssertionError("a masodik futasnak a gyorsitotarbol kellett volna dolgoznia, nem uj halozati hivasbol")
+
+        eredmeny2 = _futtat_eles([17], lapindex, 2000, config, modellek, "fake-kulcs", _Args(),
+                                  posztolo=posztolo_masodik_nem_hivhato, cache_dir=tmp_cache,
+                                  csere_utvonal=csere_utvonal, koltseg_utvonal=koltseg_utvonal)
+        assert eredmeny2["leallt_plafon_miatt"] is False
+
+        with open(csere_utvonal, encoding="utf-8") as fh:
+            csere_sorok2 = fh.read().splitlines()
+        with open(koltseg_utvonal, encoding="utf-8") as fh:
+            koltseg_sorok2 = fh.read().splitlines()
+        assert len(csere_sorok2) == elso_csere_sorszam, (
+            "a masodik futas utan a csere-tsv sorszamanak ugyanannyinak kell lennie (nincs duplikacio): %d != %d"
+            % (len(csere_sorok2), elso_csere_sorszam)
+        )
+        assert len(koltseg_sorok2) == elso_koltseg_sorszam, (
+            "a masodik futas utan a koltseg-tsv sorszamanak ugyanannyinak kell lennie (nincs duplikacio): %d != %d"
+            % (len(koltseg_sorok2), elso_koltseg_sorszam)
+        )
 
         naplok_utana = os.listdir(NAPLOK_DIR) if os.path.isdir(NAPLOK_DIR) else None
         cache_utana = os.listdir(CACHE_DIR) if os.path.isdir(CACHE_DIR) else None
@@ -1955,15 +1984,19 @@ def _futtat_szaraz(levelek, lapindex, max_el_px, config):
 def _futtat_eles(levelek, lapindex, max_el_px, config, modellek, api_key, args,
                   posztolo=None, cache_dir=None, hiba_naplo_dir=None,
                   csere_utvonal=None, koltseg_utvonal=None):
-    """O0.5c/3: ha csere_utvonal/koltseg_utvonal meg van adva, laponkent
-    hozzafuzessel irja a tsv-ket (fejlec egyszer, utana lapok szerint) -- igy
-    megszakitas eseten a mar kesz lapok eredmenye nem veszik el. A visszaadott
-    dict emellett is tartalmazza a teljes o1_sorok/koltseg_sorok listat a
-    futas-vegi osszesitohoz."""
+    """O0.5c/3 + O0.5d: ha csere_utvonal/koltseg_utvonal meg van adva, a fajlok
+    a futas ELEJEN mindig ujrairodnak (csak fejlec -- torlodik az elozo futas
+    eredmenye), utana laponkent hozzafuzessel bovulnek. A FOLYTATAST a
+    gyorsitotar adja (level_modell_hivas cache-olvasasa a mar lekert lapokra
+    halozati hivas nelkul valaszol): egy megismetelt futas ugyanazokat a
+    donteseket ujra kiirja, tehat nincs duplikacio, es a tsv mindig a legutobbi
+    futas teljes, konzisztens eredmenyet tukrozi. A visszaadott dict emellett
+    is tartalmazza a teljes o1_sorok/koltseg_sorok listat a futas-vegi
+    osszesitohoz."""
     if csere_utvonal:
-        tsv_fejlec_ir_ha_kell(csere_utvonal, O1_CSERE_FEJLEC)
+        tsv_fejlec_ir_mindig(csere_utvonal, O1_CSERE_FEJLEC)
     if koltseg_utvonal:
-        tsv_fejlec_ir_ha_kell(koltseg_utvonal, KOLTSEG_FEJLEC)
+        tsv_fejlec_ir_mindig(koltseg_utvonal, KOLTSEG_FEJLEC)
 
     koltsegplafon = config.get("koltsegplafon_pilot_usd" if args.pilot else "koltsegplafon_usd")
     naplo = KoltsegNaplo(koltsegplafon)
@@ -1999,7 +2032,12 @@ def _futtat_eles(levelek, lapindex, max_el_px, config, modellek, api_key, args,
                 hiba_naplo_dir=hiba_naplo_dir,
             )
             eredmenyek[kulcs] = cserek
-            if honnan == "halozat":
+            if honnan in ("halozat", "cache"):
+                # O0.5d: gyorsitotar-talalatnal is uj koltseg-tsv-sor kerul (a
+                # cache-elt usage-bol) -- igy egy megismetelt/folytatott futas
+                # koltseg-tsv-je mindig teljes es konzisztens (a korabban mar
+                # lekert lapok koltsege sem tunik el a friss ujraírasnal), es
+                # a naplo.plafon_elerve_e() is a teljes, korabbi koltseget latja.
                 uj_koltseg_sor = naplo.hozzaad_usage(
                     level, m_cfg["nev"], usage,
                     m_cfg.get("ar_bemenet_usd_per_1M"), m_cfg.get("ar_kimenet_usd_per_1M"))
