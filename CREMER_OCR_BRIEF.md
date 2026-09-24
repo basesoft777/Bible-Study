@@ -1,6 +1,6 @@
 # CREMER_OCR_BRIEF.md — a Cremer teljes szövegének javítása külső képolvasó modellekkel
 
-*v2 — 2026.09.24 · a v1 jóváhagyva és az O0 kész; a v2 a C1–C4, C6, C7, O1.2 módosításait és az O0.4 tételt hozza (D8–D13)*
+*v2 — 2026.09.24 · a v1 jóváhagyva és az O0 kész; a v2 a C1–C4, C6, C7, O1.2 módosításait és az O0.4 tételt hozza (D8–D13); v2.1: összehasonlító pilot a tartalék m2-vel (D14)*
 
 **Cél.** Hermann Cremer *Biblico-Theological Lexicon of New Testament Greek* (3. angol kiadás,
 Supplementtel) **teljes szövege** gépileg olvasható, görög betűs formában a `konkordancia/`
@@ -75,9 +75,9 @@ változóval. **A kulcs soha nem kerül a repóba, naplóba vagy commit-üzenetb
   Hívás nélküli önteszt: `--onteszt`.
 
 ### O1 — pilot ⛔
-- **O1.1** Futás a 20 lapra. Kimenet: `naplok/CREMER_O1_csere.tsv` (`szo_id`, `level`, `bbox`, `ocr`, `m1`, `m2`, `dontes`, `alak_igazolt`), `naplok/CREMER_O1_koltseg.tsv`.
+- **O1.1** Futás a 20 lapra. Kimenet: `naplok/CREMER_O1_csere.tsv` (`szo_id`, `szo_ids`, `level`, `bbox`, `ocr`, `m1`, `m2`, `dontes`, `alak_igazolt`, `extra`), `naplok/CREMER_O1_koltseg.tsv`. **Összehasonlító futás** (D14): ugyanez a 20 lap m2 = `tartalek_m2` (`google/gemini-3.1-flash-lite`) beállítással, a `naplok/CREMER_O1_lite/` alá. Az m1 válaszai a gyorsítótárból jönnek, új hívás nélkül.
 - **O1.2** Ellenőrző csomag a kézi átnézéshez: 300 véletlen `auto` csere (rögzített maggal), valamint minden `vitas` és `extra_*` sor. Mindegyik mellett a lapkép kivágott része: a szó bbox-a egy sornyi környezettel, legfeljebb 800 px széles JPEG. A kivágások és a tsv **commitolva** kerülnek a `naplok/CREMER_O1_ellenorzes/` alá. Mellé egy GitHubon renderelődő oldalsorozat készül (`ATNEZES_01.md`, `ATNEZES_02.md` …, oldalanként 50 sor), soronként: sorszám, kép, hOCR-alak, m1, m2, döntés és üres ítélet-oszlop. Ezt a felhasználó távoli elérésből nézi át (D13).
-- **O1.3** Jelentés: `naplok/CREMER_O1_jelentes.md` — egyezési arány, `vitas`/`hianyzo` arány, alakellenőrzés-arány, tényleges költség és a teljes kötetre vetített költség. **ÁLLJ** — a kézi ellenőrzés és a C7 küszöb után a felhasználó dönt a teljes futásról (és szükség esetén a modellcseréről).
+- **O1.3** Jelentés: `naplok/CREMER_O1_jelentes.md` — egyezési arány, `vitas`/`hianyzo`/`hiba`/`extra_*` arány, alakellenőrzés-arány, tényleges költség (a gondolkodási tokenekkel) és a teljes kötetre vetített költség, mindkét m2-re. Mellette az összehasonlítás: a két m2 egyezése ugyanazokon a gyanús szavakon, és azok a szavak, ahol a két beállítás `auto` alakja eltér. **ÁLLJ** — a kézi ellenőrzés és a C7 küszöb után a felhasználó dönt a teljes futásról és az m2 választásáról.
 
 ### O2 — teljes futás
 - **O2.1** Futás a teljes kötetre (a pilot lapjai nem futnak újra), plafonnal. Megszakítás után folytatható (a kész lapokat kihagyja).
@@ -166,3 +166,4 @@ Az OPENROUTER_API_KEY-t csak környezeti változóból olvasd; soha ne írd ki, 
 | D11 | Előnormalizálás az egyezés előtt; az írásjel az alakon kívül marad (C4) | az NFC nem egyesíti az aposztróf- és koronisváltozatokat, sem a lunáris és a szóvégi szigmát, ezért nélküle hamis `vitas` sorok keletkeznének. Az írásjel a hOCR-ből jön, így a K3 teljesül |
 | D12 | Költség a `usage`-ből; külön `hiba` állapot; `temperature: 0`; nyers válasz-gyorsítótár (C3, C4, C6) | az O0 eszköze éles futásnál is becslésből számolt, így a plafon nem védett és a gondolkodási tokenek kimaradtak. A gyorsítótárból a döntési szabály változása hívás nélkül újraszámolható, és az API-hiba nem keveredik a `hianyzo` állapottal |
 | D13 | Kézi minta 300 elem (vagy 600 elem, legfeljebb 1 hibával); az ellenőrző kivágások commitolva, GitHubon renderelt oldalakon (C7, O1.2) | 200 hibátlan elemnél a hibaarány 95%-os felső becslése kb. 1,5%, így a < 1% nem igazolható. A felhasználó csak távolról éri el a repót, a `_nyers` alatti képeket nem látná |
+| D14 | A pilot két m2-vel fut: `google/gemini-3.8-flash` és `google/gemini-3.1-flash-lite` (O1.1, O1.3) | a teljes kötet becsült ára kb. 14,5, illetve kb. 6 USD. A különbség csak akkor éri meg, ha a Flash Lite a politonikus görögön érezhetően több `vitas` sort vagy hibát ad. Az összehasonlító futás kb. 0,10 USD, mert az m1 válaszai a gyorsítótárból jönnek |
