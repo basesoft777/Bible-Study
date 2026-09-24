@@ -9,3 +9,7 @@ __pycache__/
 # .claude/ nincs verziozva (worktrees, lokalis allapot), kiveve az agent-definiciokat
 .claude/*
 !.claude/agents/
+
+# CREMER_OCR_BRIEF.md O0.1 -- archive.org nyers fajlok (kb. 1.85 GB), nem verziozzuk;
+# a SHA-256-ok a konkordancia/README.md-ben
+konkordancia/_nyers/

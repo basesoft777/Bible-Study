@@ -117,6 +117,41 @@ soraiban.
 **Egyik ellenőrzött 2Mózes-versnél sem merült fel KJV≠ASV eltérés** — nincs ⚠️ jelzésre váró
 tétel ebből a validációs körből.
 
+---
+
+## Cremer nyers fájlok (archive.org, `cu31924098819406`) — CREMER_OCR_BRIEF.md O0.1
+
+**Tétel:** Hermann Cremer, *Biblico-Theological Lexicon of New Testament Greek*, 3. angol
+kiadás, Supplementtel. Archívum-azonosító: `cu31924098819406` (archive.org). A nyers fájlok
+a `konkordancia/_nyers/cremer/` alatt vannak, **nem verziózva** (`.gitignore`) — kb. 1,85 GB.
+A `CREMER_OCR_BRIEF.md` csak öt fájlt használ fel közülük (a többi az archive.org-letöltés
+mellékterméke: epub, pdf, djvu, cubook.zip stb., ezeket a pipeline nem olvassa).
+
+| Fájl | SHA-256 | Méret (bájt) |
+|---|---|---|
+| `cu31924098819406_hocr.html` | `9dbaf624795988e5116a210dcfaf774bf00b88daa183b5388a5ca232bdfe16af` | 75913833 |
+| `cu31924098819406_page_numbers.json` | `e555123787eb7fa76c1320d6ba46992029a57d2abf016c1526eec9120c16d172` | 185706 |
+| `cu31924098819406_jp2.zip` | `84b654268b1fa3f5ee7fcaae140289e72eeb9f69cb9160904d40866a0bcb6545` | 777703228 |
+| `cu31924098819406_meta.xml` | `d1a13ac7506377373e4bccd6991ca272b1e10b61c37c90be6759497fb4c98e7e` | 2360 |
+| `cu31924098819406_scandata.xml` | `12f48c6f2b38071d0c6dd6993701b2c722dacbc8c7a3cacbd94c0c41f3cfb953` | 329775 |
+
+**Levél/oldal-indexelés (O0 ismételt mérés, 2026-09-24 — a CREMER_OCR_BRIEF.md §0-jával
+mindenben egyezik):**
+
+- 967 számozott levél (`cu31924098819406_page_numbers.json` `pages` tömbje, `leafNum` 1-967);
+  a hOCR emellett tartalmaz egy `page_000000` elemet is (968 `ocr_page` összesen) — ez a
+  page_numbers.json-ban nem szerepel (feltehetően a borító), a pipeline nem használja.
+- A hOCR lapindexe (`page_NNNNNN`, 6 jegyű) és a jp2-zip fájlneve (`..._NNNN.jp2`, 4 jegyű)
+  egyaránt közvetlenül a levélszám — nincs eltolás.
+- 561 048 hOCR-szó, ebből 107 802 `x_wconf < 60`; görög karakter a szavakban: 0 — mindhárom
+  szám pontosan egyezik a brief §0.4-ével.
+- Levél↔oldal formula (§0.3) ellenőrizve a teljes `page_numbers.json`-on: 0 valódi eltérés;
+  a 949 számozott oldalból 3 (oldal 590-592) **két** levélhez is tartozik (`+15` és `+18` ág
+  egyaránt talál rá) — ez a nyomtatott kötet egy duplán számozott oldaltartománya, nem hiba,
+  és pontosan ezért ad meg a brief két, egymást fedő oldaltartományt.
+- Az ismert szócikkek (§0.5) és a két mutató kezdőlevele (§0.6) mind pontosan egyeznek a
+  `page_numbers.json` `pageNumber` mezőjével.
+
 ## CC BY-SA 4.0 licencű datasetek — SDBH, SDGNT
 
 A `SDBH_domenek.tsv`, a `SDGNT_domenek.tsv`, a `SDBH_SDGNT_domenfa.tsv` és a

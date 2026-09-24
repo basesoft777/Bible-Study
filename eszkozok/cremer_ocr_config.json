@@ -1,0 +1,20 @@
+{
+  "modellek": {
+    "m1": {
+      "nev": "",
+      "szolgaltato": "Qwen",
+      "ar_bemenet_usd_per_1M": null,
+      "ar_kimenet_usd_per_1M": null
+    },
+    "m2": {
+      "nev": "",
+      "szolgaltato": "Google Gemini Flash",
+      "ar_bemenet_usd_per_1M": null,
+      "ar_kimenet_usd_per_1M": null
+    }
+  },
+  "kepmeret_max_el_px": 2000,
+  "koltsegplafon_usd": 20.0,
+  "koltsegplafon_pilot_usd": 2.0,
+  "ujraprobalkozas_ervenytelen_json": 1
+}
