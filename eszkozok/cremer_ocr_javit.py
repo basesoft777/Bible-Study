@@ -719,7 +719,15 @@ def _http_post_nyers(model_id, uzenetek, api_key, extra_parameterek,
                 varakozas *= 2
                 continue
             raise OpenRouterHiba("HTTP hiba %d kiserlet utan: %s" % (kiserlet + 1, utolso_hiba), usage={})
-        valasz.raise_for_status()
+        if valasz.status_code >= 400:
+            # 4xx: kliens-hiba (pl. a modell nem fogadja el a reasoning parametert)
+            # -- ujraprobalkozas nem segitene, azonnal 'hiba'
+            szoveg = ""
+            try:
+                szoveg = valasz.text[:300]
+            except Exception:
+                pass
+            raise OpenRouterHiba("HTTP kliens-hiba %d: %s" % (valasz.status_code, szoveg), usage={})
         return valasz.json(), kiserlet + 1
     raise OpenRouterHiba("nem sikerult a hivas: %s" % utolso_hiba, usage={})
 
@@ -959,6 +967,18 @@ def tsv_ir(utvonal, fejlec, sorok):
         fh.write("\t".join(fejlec) + "\n")
         for sor in sorok:
             fh.write("\t".join(str(sor.get(mezo, "")) for mezo in fejlec) + "\n")
+
+
+def tsv_olvas(utvonal):
+    with open(utvonal, encoding="utf-8") as fh:
+        tartalom = fh.read()
+    sorok = tartalom.split("\n")
+    if sorok and sorok[-1] == "":
+        sorok = sorok[:-1]
+    if not sorok:
+        return []
+    fejlec = sorok[0].split("\t")
+    return [dict(zip(fejlec, sor.split("\t"))) for sor in sorok[1:]]
 
 
 def _bbox_unio(bboxok):
@@ -1401,7 +1421,17 @@ def cmd_futtat(args):
         print("O2 meg nincs engedelyezve -- csak --pilot vagy --szaraz futtathato.", file=sys.stderr)
         return 1
 
-    modellek = config.get("modellek", {})
+    modellek = dict(config.get("modellek", {}))
+    if getattr(args, "m2", None) == "tartalek":
+        tartalek = config.get("tartalek_m2")
+        if not tartalek or not tartalek.get("nev"):
+            print("HIBA -- a config.tartalek_m2 nincs kitoltve", file=sys.stderr)
+            return 1
+        uj_m2 = dict(tartalek)
+        uj_m2.setdefault("reasoning", {"effort": "low"})
+        modellek["m2"] = uj_m2
+        print("--m2 tartalek: m2 = %s (reasoning=%s)" % (uj_m2["nev"], uj_m2.get("reasoning")))
+
     hianyzo_modell = [k for k, v in modellek.items() if not v.get("nev")]
     if hianyzo_modell and not args.csak_dontes:
         print(
@@ -1446,6 +1476,235 @@ def _futtat_osszesito_kiir(eredmeny, csere_utvonal, koltseg_utvonal):
     osszgondolkodas = sum(s["gondolkodas_token"] for s in eredmeny["koltseg_sorok"])
     print("osszkoltseg: %.6f USD" % osszkoltseg)
     print("gondolkodasi token osszesen:", osszgondolkodas)
+
+
+# ---------------------------------------------------------------------------
+# O1.2: 'ellenorzes' alparancs -- kivagasok es atnezooldalak, halozat nelkul
+# ---------------------------------------------------------------------------
+
+ELLENORZES_MINTA_MAG = 20260924
+ELLENORZES_MINTA_DB = 300
+ELLENORZES_SOR_PER_OLDAL = 50
+ELLENORZES_KEP_MAX_SZELESSEG = 600
+ELLENORZES_KEP_MINOSEG = 75
+ELLENORZES_VIZSZINTES_PARNAZAS = 150
+
+
+def level_kep_eredeti(level, jp2zip_utvonal=JP2ZIP_UTVONAL):
+    """A level teljes felbontasu kepe (PIL Image), a --szaraz/API-hivasokban
+    hasznalt kicsinyites nelkul -- az O1-csere-tsv bbox-a (H2) is eredeti
+    (nem skalazott) jp2-koordinata, tehat a kivagasnak is ebbol kell jonnie."""
+    from PIL import Image
+
+    nev = "cu31924098819406_jp2/cu31924098819406_%04d.jp2" % level
+    with zipfile.ZipFile(jp2zip_utvonal) as z:
+        nyers = z.read(nev)
+    kep = Image.open(io.BytesIO(nyers))
+    kep.load()
+    return kep
+
+
+def kivagas_hatarok(bbox, kep_meret):
+    """Vizszintesen +-150 px, fuggolegesen egy sormagassaggal a bbox alatt/felett
+    (a csoport sajat magassagat hasznalva sormagassag-kozelitesnek)."""
+    x0, y0, x1, y1 = bbox
+    magassag = max(1, y1 - y0)
+    return [
+        max(0, x0 - ELLENORZES_VIZSZINTES_PARNAZAS), max(0, y0 - magassag),
+        min(kep_meret[0], x1 + ELLENORZES_VIZSZINTES_PARNAZAS), min(kep_meret[1], y1 + magassag),
+    ]
+
+
+def kivagas_ments(kep, hatarok, cel_utvonal, max_szelesseg=ELLENORZES_KEP_MAX_SZELESSEG,
+                   minoseg=ELLENORZES_KEP_MINOSEG):
+    from PIL import Image
+
+    x0, y0, x1, y1 = [int(round(v)) for v in hatarok]
+    x1, y1 = max(x1, x0 + 1), max(y1, y0 + 1)
+    resz = kep.crop((x0, y0, x1, y1)).convert("L")
+    if resz.width > max_szelesseg:
+        arany = max_szelesseg / resz.width
+        resz = resz.resize((max_szelesseg, max(1, round(resz.height * arany))), Image.LANCZOS)
+    os.makedirs(os.path.dirname(cel_utvonal), exist_ok=True)
+    resz.save(cel_utvonal, format="JPEG", quality=minoseg)
+
+
+def _o1_sor_alak(sor, mezo):
+    """A csere-tsv 'm1'/'m2' mezoje JSON-string (csere-dict) vagy ures -- ebbol
+    az 'alak'-ot adja vissza, vagy ''-t."""
+    nyers = sor.get(mezo, "")
+    if not nyers:
+        return ""
+    try:
+        adat = json.loads(nyers)
+    except (json.JSONDecodeError, TypeError):
+        return ""
+    if isinstance(adat, dict):
+        return adat.get("alak", "") or ""
+    return ""
+
+
+def _ellenorzes_minta_epit(fo_sorok, lite_sorok):
+    """O1.2: 300 veletlen 'auto' sor (rogzitett maggal), minden 'vitas'/'extra_*'
+    sor, es kulon a fo/lite elteresek (ugyanaz a szo_ids, mindket futasban
+    'auto', de a C4-elonormalizalt alak kulonbozik)."""
+    auto_sorok = [s for s in fo_sorok if s["dontes"] == "auto"]
+    rng = random.Random(ELLENORZES_MINTA_MAG)
+    if len(auto_sorok) > ELLENORZES_MINTA_DB:
+        minta_auto = rng.sample(auto_sorok, ELLENORZES_MINTA_DB)
+        minta_auto.sort(key=lambda s: (int(s["level"]), s["szo_id"]))
+    else:
+        minta_auto = list(auto_sorok)
+
+    vitas_extra = [s for s in fo_sorok if s["dontes"] in ("vitas", "extra_auto", "extra_vitas")]
+
+    lite_by_key = {(s["level"], s["szo_ids"]): s for s in lite_sorok}
+    elteres_sorok = []
+    for f in fo_sorok:
+        if f["dontes"] != "auto":
+            continue
+        l = lite_by_key.get((f["level"], f["szo_ids"]))
+        if l is None or l["dontes"] != "auto":
+            continue
+        f_alak = _o1_sor_alak(f, "m1")
+        l_alak = _o1_sor_alak(l, "m1")
+        if f_alak and l_alak and elonormalizal(f_alak) != elonormalizal(l_alak):
+            elteres_sorok.append((f, l))
+
+    return minta_auto, vitas_extra, elteres_sorok
+
+
+def _atnezo_sor_szoveg(sorszam, kep_relativ_ut, hocr, m1_alak, m2_alak, dontes_nev):
+    return "| %d | ![](%s) | %s | %s | %s | %s |  |" % (
+        sorszam, kep_relativ_ut, hocr, m1_alak, m2_alak, dontes_nev,
+    )
+
+
+def _atnezo_oldalak_ir(ki_dir, sorok_kepekkel, alap_nev, cim):
+    """sorok_kepekkel: lista (sorszam, kep_relativ_ut, hocr, m1_alak, m2_alak, dontes_nev)
+    tuple-okbol. ELLENORZES_SOR_PER_OLDAL soronkent kulon fajl."""
+    utvonalak = []
+    for i in range(0, len(sorok_kepekkel), ELLENORZES_SOR_PER_OLDAL):
+        resz = sorok_kepekkel[i:i + ELLENORZES_SOR_PER_OLDAL]
+        oldalszam = i // ELLENORZES_SOR_PER_OLDAL + 1
+        nev = "%s_%02d.md" % (alap_nev, oldalszam) if alap_nev != "ATNEZES_ELTERES" else "%s.md" % alap_nev
+        utvonal = os.path.join(ki_dir, nev)
+        sorok = [
+            "# %s (%d/%d)" % (cim, oldalszam, -(-len(sorok_kepekkel) // ELLENORZES_SOR_PER_OLDAL)),
+            "",
+            "Ítélet: `ok` / `hiba: <helyes alak>` / `?`.",
+            "",
+            "| # | kép | hOCR | m1 | m2 | döntés | ítélet |",
+            "|---|---|---|---|---|---|---|",
+        ]
+        for t in resz:
+            sorok.append(_atnezo_sor_szoveg(*t))
+        os.makedirs(ki_dir, exist_ok=True)
+        with open(utvonal, "w", encoding="utf-8", newline="\n") as fh:
+            fh.write("\n".join(sorok) + "\n")
+        utvonalak.append(utvonal)
+        if alap_nev == "ATNEZES_ELTERES":
+            break
+    return utvonalak
+
+
+def _dir_meret_bajt(ut):
+    osszeg = 0
+    for gyoker, _, fajlok in os.walk(ut):
+        for f in fajlok:
+            osszeg += os.path.getsize(os.path.join(gyoker, f))
+    return osszeg
+
+
+def cmd_ellenorzes(args):
+    fo_csv = os.path.join(args.kimenet_dir, "CREMER_O1_csere.tsv")
+    lite_csv = os.path.join(args.lite_dir, "CREMER_O1_csere.tsv")
+    ki_dir = args.ellenorzes_dir
+
+    if not os.path.exists(fo_csv):
+        print("HIBA -- nincs fo csere-tsv:", fo_csv, file=sys.stderr)
+        return 2
+    fo_sorok = tsv_olvas(fo_csv)
+    lite_sorok = tsv_olvas(lite_csv) if os.path.exists(lite_csv) else []
+    if not lite_sorok:
+        print("figyelem -- nincs lite csere-tsv (%s), az elteres-szakasz ures lesz" % lite_csv, file=sys.stderr)
+
+    minta_auto, vitas_extra, elteres = _ellenorzes_minta_epit(fo_sorok, lite_sorok)
+
+    kepek_dir = os.path.join(ki_dir, "kepek")
+    kep_cache = {}
+
+    def kep_szerez(level):
+        level = int(level)
+        if level not in kep_cache:
+            kep_cache[level] = level_kep_eredeti(level)
+        return kep_cache[level]
+
+    def kivag_es_relativ_ut(sor):
+        level = int(sor["level"])
+        try:
+            bbox = json.loads(sor["bbox"])
+        except (json.JSONDecodeError, TypeError):
+            bbox = None
+        fajlnev = "L%04d_%s.jpg" % (level, sor["szo_id"])
+        cel = os.path.join(kepek_dir, fajlnev)
+        if bbox:
+            kep = kep_szerez(level)
+            hatarok = kivagas_hatarok(bbox, kep.size)
+            kivagas_ments(kep, hatarok, cel)
+        return "kepek/" + fajlnev
+
+    minta_tsv_sorok = []
+    atnezo_tuple_auto_vitas = []
+    sorszam = 0
+    for sor in minta_auto + vitas_extra:
+        sorszam += 1
+        kep_relativ = kivag_es_relativ_ut(sor)
+        m1_alak = _o1_sor_alak(sor, "m1")
+        m2_alak = _o1_sor_alak(sor, "m2")
+        atnezo_tuple_auto_vitas.append((sorszam, kep_relativ, sor["ocr"], m1_alak, m2_alak, sor["dontes"]))
+        minta_tsv_sorok.append({
+            "sorszam": sorszam, "oldal": (sorszam - 1) // ELLENORZES_SOR_PER_OLDAL + 1,
+            "szo_ids": sor["szo_ids"], "level": sor["level"], "dontes": sor["dontes"],
+            "m1_alak": m1_alak, "m2_alak": m2_alak,
+        })
+
+    elteres_tuple = []
+    for i, (f, l) in enumerate(elteres, start=1):
+        kep_relativ = kivag_es_relativ_ut(f)
+        f_alak = _o1_sor_alak(f, "m1")
+        l_alak = _o1_sor_alak(l, "m1")
+        elteres_tuple.append((i, kep_relativ, f["ocr"], f_alak, l_alak, "ELTERES (fo/lite)"))
+
+    utvonalak = _atnezo_oldalak_ir(ki_dir, atnezo_tuple_auto_vitas, "ATNEZES", "Cremer O1 ellenorzes")
+    if elteres_tuple:
+        utvonalak += _atnezo_oldalak_ir(ki_dir, elteres_tuple, "ATNEZES_ELTERES", "Cremer O1 fo/lite elteresek")
+
+    minta_tsv_fejlec = ["sorszam", "oldal", "szo_ids", "level", "dontes", "m1_alak", "m2_alak"]
+    minta_tsv_ut = os.path.join(ki_dir, "minta.tsv")
+    tsv_ir(minta_tsv_ut, minta_tsv_fejlec, minta_tsv_sorok)
+
+    meret = _dir_meret_bajt(ki_dir)
+    print("=== ellenorzo csomag ===")
+    print("auto minta:", len(minta_auto))
+    print("vitas/extra_*:", len(vitas_extra))
+    print("fo/lite elteres:", len(elteres))
+    print("kepek:", len(atnezo_tuple_auto_vitas) + len(elteres_tuple))
+    print("konyvtar merete: %.2f MB (%s)" % (meret / (1024 * 1024), ki_dir))
+    for u in utvonalak:
+        print("  ", u)
+    print("  ", minta_tsv_ut)
+
+    if meret > 30 * 1024 * 1024:
+        print(
+            "\nHIBA -- a naplok/CREMER_O1_ellenorzes/ meghaladja a 30 MB-os korlatot "
+            "(%.2f MB) -- NEM commitolhato. Szakaszonkenti sorok: auto minta=%d, "
+            "vitas/extra_*=%d, elteres=%d." % (meret / (1024 * 1024), len(minta_auto),
+                                                len(vitas_extra), len(elteres)),
+            file=sys.stderr,
+        )
+        return 1
+    return 0
 
 
 def _futtat_szaraz(levelek, lapindex, max_el_px, config):
@@ -1566,6 +1825,9 @@ def main():
     ap_futtat.add_argument("--pilot", action="store_true")
     ap_futtat.add_argument("--levelek", type=str, default=None, help="veszovel elvalasztott level-lista")
     ap_futtat.add_argument("--szaraz", action="store_true", help="hivas nelkul: csak bemenet + becsles")
+    ap_futtat.add_argument("--m2", type=str, choices=["tartalek"], default=None,
+                            help="ha 'tartalek': m2 helyett a config.tartalek_m2-t hasznalja "
+                                 "(reasoning: {'effort':'low'}), D14")
     ap_futtat.add_argument("--csak-dontes", dest="csak_dontes", action="store_true",
                             help="hivas nelkul, a gyorsitotarbol szamolja ujra a donteseket")
     ap_futtat.add_argument("--onteszt", action="store_true",
@@ -1574,6 +1836,17 @@ def main():
     ap_futtat.add_argument("--kimenet-dir", dest="kimenet_dir", type=str, default=NAPLOK_DIR,
                             help="hova irja a CREMER_O1_csere.tsv / CREMER_O1_koltseg.tsv fajlokat")
     ap_futtat.set_defaults(func=cmd_futtat)
+
+    ap_ellenorzes = sub.add_parser("ellenorzes", help="O1.2: ellenorzo csomag (kivagasok, atnezooldalak, minta.tsv)")
+    ap_ellenorzes.add_argument("--kimenet-dir", dest="kimenet_dir", type=str, default=NAPLOK_DIR,
+                                help="a fo futas CREMER_O1_csere.tsv-jenek konyvtara")
+    ap_ellenorzes.add_argument("--lite-dir", dest="lite_dir", type=str,
+                                default=os.path.join(NAPLOK_DIR, "CREMER_O1_lite"),
+                                help="a tartalek-m2 futas CREMER_O1_csere.tsv-jenek konyvtara")
+    ap_ellenorzes.add_argument("--ellenorzes-dir", dest="ellenorzes_dir", type=str,
+                                default=os.path.join(NAPLOK_DIR, "CREMER_O1_ellenorzes"),
+                                help="hova irja a kivagasokat es az atnezooldalakat")
+    ap_ellenorzes.set_defaults(func=cmd_ellenorzes)
 
     args = ap.parse_args()
     return args.func(args)
