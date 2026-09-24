@@ -29,8 +29,9 @@ irja ki es nem naplozza -- a gyorsitotar-fajlba sem (csak a valasz torzse es a
 hivas metaadatai kerulnek bele, HTTP-fejlec es kulcs nélkül). A
 modellazonositokat es -arakat a cremer_ocr_config.json adja.
 
-Kilepesi kod: 0 = rendben, 1 = szabalysertes (pl. plafon eleresekor korai
-leallas, vagy hianyzo modell valodi futasnal), 2 = hiba.
+Kilepesi kod: 0 = rendben, 1 = szabalysertes (hianyzo modell/kulcs, vagy
+--pilot nelkuli eles futas -- O2 meg nincs engedelyezve), 2 = hiba (ismeretlen
+level), 3 = a koltsegplafon miatt korai leallas.
 """
 
 import sys
@@ -535,11 +536,45 @@ def dontes(csere1, csere2):
     return "vitas"
 
 
+def _klaszter_dontes(elemek_m1, elemek_m2, ctx):
+    """H4: egy union-find-klaszter (atfedo szo_ids-u m1/m2-elemek) donteset adja.
+    Visszaad: (dontes_nev, szo_ids_unio_rendezve, m1_resz, m2_resz)."""
+    def unio_rendezve(elemek):
+        idk = set()
+        for e in elemek:
+            idk |= set(e["szo_ids"])
+        return sorted(idk, key=lambda sid: ctx["id_info"][sid][1])
+
+    van_m1, van_m2 = bool(elemek_m1), bool(elemek_m2)
+    if van_m1 and not van_m2:
+        d = "extra_vitas" if elemek_m1[0]["extra"] else "hianyzo"
+        return d, unio_rendezve(elemek_m1), elemek_m1, []
+    if van_m2 and not van_m1:
+        d = "extra_vitas" if elemek_m2[0]["extra"] else "hianyzo"
+        return d, unio_rendezve(elemek_m2), [], elemek_m2
+
+    osszes = elemek_m1 + elemek_m2
+    mind_extra = all(e["extra"] for e in osszes)
+    van_extra = any(e["extra"] for e in osszes)
+    if van_extra and not mind_extra:
+        return "vitas", unio_rendezve(osszes), elemek_m1, elemek_m2
+
+    if len(elemek_m1) == 1 and len(elemek_m2) == 1 and elemek_m1[0]["szo_ids"] == elemek_m2[0]["szo_ids"]:
+        alap = dontes(elemek_m1[0], elemek_m2[0])
+    else:
+        alap = "vitas"
+    vegso = ("extra_auto" if alap == "auto" else "extra_vitas") if mind_extra else alap
+    return vegso, unio_rendezve(osszes), elemek_m1, elemek_m2
+
+
 def level_dontesek(ctx, m1_eredmeny, m2_eredmeny):
     """Egy lap donteseit allitja ossze. m1_eredmeny/m2_eredmeny: 'hiba' (a teljes
-    lap sikertelen volt a modellnel), vagy _cserek_validal() listaja.
-    Visszaad: (nem_extra_sorok, extra_sorok) -- mindket lista dict-eket ad,
-    {'szo_ids','dontes','m1','m2','extra'} kulcsokkal."""
+    lap sikertelen volt a modellnel), vagy _cserek_validal() listaja. H4: a ket
+    modell OSSZES eleme (extra es nem-extra egyutt) union-find-klaszterekbe
+    kerul, atfedo szo_ids szerint -- igy az atfedo, de eltero csoportositas is
+    'vitas' lesz, nem tunik el ket kulon 'hianyzo' sorkent. Visszaad:
+    (sorok, []) -- minden gyanus szo_id pontosan egy sorban, {'szo_ids','dontes',
+    'm1','m2','extra'} kulcsokkal (m1/m2: egyetlen csere-dict vagy dict-lista)."""
     gyanus_id_lista = [sid for sid, info in ctx["id_info"].items() if info[2]]
     if m1_eredmeny == "hiba" or m2_eredmeny == "hiba":
         return (
@@ -548,32 +583,52 @@ def level_dontesek(ctx, m1_eredmeny, m2_eredmeny):
             [],
         )
 
-    nem_extra1 = {tuple(c["szo_ids"]): c for c in m1_eredmeny if not c["extra"]}
-    nem_extra2 = {tuple(c["szo_ids"]): c for c in m2_eredmeny if not c["extra"]}
-    kulcsok = sorted(set(nem_extra1) | set(nem_extra2))
+    cimkezett = [("m1", e) for e in m1_eredmeny] + [("m2", e) for e in m2_eredmeny]
+    szulo = list(range(len(cimkezett)))
+
+    def gyoker(x):
+        while szulo[x] != x:
+            szulo[x] = szulo[szulo[x]]
+            x = szulo[x]
+        return x
+
+    def unio(a, b):
+        ra, rb = gyoker(a), gyoker(b)
+        if ra != rb:
+            szulo[ra] = rb
+
+    elso_elem_indexe = {}
+    for i, (_, e) in enumerate(cimkezett):
+        for sid in e["szo_ids"]:
+            if sid in elso_elem_indexe:
+                unio(i, elso_elem_indexe[sid])
+            else:
+                elso_elem_indexe[sid] = i
+
+    klaszterek = {}
+    for i, cimke_e in enumerate(cimkezett):
+        klaszterek.setdefault(gyoker(i), []).append(cimke_e)
+
     sorok = []
     lefedett = set()
-    for k in kulcsok:
-        c1 = nem_extra1.get(k)
-        c2 = nem_extra2.get(k)
-        sorok.append({"szo_ids": list(k), "dontes": dontes(c1, c2), "m1": c1, "m2": c2, "extra": False})
-        lefedett |= set(k)
+    for csoport in klaszterek.values():
+        elemek_m1 = [e for f, e in csoport if f == "m1"]
+        elemek_m2 = [e for f, e in csoport if f == "m2"]
+        dontes_nev, uid_lista, c1_lista, c2_lista = _klaszter_dontes(elemek_m1, elemek_m2, ctx)
+        sorok.append({
+            "szo_ids": uid_lista,
+            "dontes": dontes_nev,
+            "m1": c1_lista[0] if len(c1_lista) == 1 else (c1_lista or None),
+            "m2": c2_lista[0] if len(c2_lista) == 1 else (c2_lista or None),
+            "extra": dontes_nev.startswith("extra_"),
+        })
+        lefedett |= set(uid_lista)
+
     for sid in gyanus_id_lista:
         if sid not in lefedett:
             sorok.append({"szo_ids": [sid], "dontes": "hianyzo", "m1": None, "m2": None, "extra": False})
 
-    extra1 = {tuple(c["szo_ids"]): c for c in m1_eredmeny if c["extra"]}
-    extra2 = {tuple(c["szo_ids"]): c for c in m2_eredmeny if c["extra"]}
-    extra_sorok = []
-    for k in sorted(set(extra1) | set(extra2)):
-        c1 = extra1.get(k)
-        c2 = extra2.get(k)
-        alap = dontes(c1, c2) if (c1 and c2) else "vitas"
-        extra_sorok.append({
-            "szo_ids": list(k), "dontes": "extra_auto" if alap == "auto" else "extra_vitas",
-            "m1": c1, "m2": c2, "extra": True,
-        })
-    return sorok, extra_sorok
+    return sorok, []
 
 
 # ---------------------------------------------------------------------------
@@ -620,7 +675,9 @@ def szoveg_sort_epit(tokenek, auto_cserek):
 # ---------------------------------------------------------------------------
 
 class OpenRouterHiba(Exception):
-    pass
+    def __init__(self, uzenet, usage=None):
+        super().__init__(uzenet)
+        self.usage = usage or {}
 
 
 def _valodi_http_kuldo(model_id, uzenetek, api_key, extra_parameterek):
@@ -637,7 +694,8 @@ def _valodi_http_kuldo(model_id, uzenetek, api_key, extra_parameterek):
 def _http_post_nyers(model_id, uzenetek, api_key, extra_parameterek,
                       ujraprobalkozas_http=4, kezdeti_varakozas=2, kuldo=None, alvas=None):
     """O0.4 §2/4: HTTP 429/5xx/idotullepes eseten visszalepeses ujraprobalkozas
-    (2, 4, 8, 16 s), utana OpenRouterHiba ('hiba')."""
+    (2, 4, 8, 16 s), utana OpenRouterHiba ('hiba'). Visszaad: (nyers_valasz_json,
+    tenylegesen elkuldott HTTP-kerelmek szama) -- H5: a 'kiserletek' oszlophoz."""
     kuldo = kuldo or _valodi_http_kuldo
     alvas = alvas or time.sleep
     import requests
@@ -653,26 +711,30 @@ def _http_post_nyers(model_id, uzenetek, api_key, extra_parameterek,
                 alvas(varakozas)
                 varakozas *= 2
                 continue
-            raise OpenRouterHiba("halozati hiba %d kiserlet utan: %s" % (kiserlet + 1, e))
+            raise OpenRouterHiba("halozati hiba %d kiserlet utan: %s" % (kiserlet + 1, e), usage={})
         if valasz.status_code == 429 or valasz.status_code >= 500:
             utolso_hiba = "HTTP %d" % valasz.status_code
             if kiserlet < ujraprobalkozas_http:
                 alvas(varakozas)
                 varakozas *= 2
                 continue
-            raise OpenRouterHiba("HTTP hiba %d kiserlet utan: %s" % (kiserlet + 1, utolso_hiba))
+            raise OpenRouterHiba("HTTP hiba %d kiserlet utan: %s" % (kiserlet + 1, utolso_hiba), usage={})
         valasz.raise_for_status()
-        return valasz.json()
-    raise OpenRouterHiba("nem sikerult a hivas: %s" % utolso_hiba)
+        return valasz.json(), kiserlet + 1
+    raise OpenRouterHiba("nem sikerult a hivas: %s" % utolso_hiba, usage={})
 
 
 def openrouter_hivas(model_id, kep_jpeg_bytes, payload, api_key, sema, ctx,
-                      reasoning=None, ujraprobalkozas_json=1, ujraprobalkozas_http=4, posztolo=None):
+                      reasoning=None, ujraprobalkozas_json=1, ujraprobalkozas_http=4, posztolo=None,
+                      ar_bemenet_1m=None, ar_kimenet_1m=None):
     """Egy hivas egy modellhez, egy laphoz (C2). posztolo(model_id, uzenetek,
-    api_key, extra_parameterek, ujraprobalkozas_http) -> nyers OpenRouter-valasz
-    (dict); alapertelmezesben _http_post_nyers. Visszaad: (cserek, usage,
-    nyers_valasz) vagy dobja az OpenRouterHiba-t ('hiba', C3: a sema/JSON
-    ervenytelenseget egy ujraprobalkozas kovetheti, utana feladja)."""
+    api_key, extra_parameterek, ujraprobalkozas_http) -> (nyers OpenRouter-valasz
+    dict, HTTP-kiserletek szama); alapertelmezesben _http_post_nyers. H5: MINDEN
+    JSON-ujraprobalkozasi kiserlet usage-e osszeadodik (token, gondolkodas,
+    koltseg) -- a sema-sertes miatt eldobott elso valasz is szamlazott hivas
+    volt. Visszaad: (cserek, osszesitett_usage, utolso_nyers_valasz), vagy dobja
+    az OpenRouterHiba-t ('hiba') -- ilyenkor a kivetel .usage attributuma az
+    addig osszegyult usage-et hordozza."""
     import base64
 
     posztolo = posztolo or _http_post_nyers
@@ -690,17 +752,51 @@ def openrouter_hivas(model_id, kep_jpeg_bytes, payload, api_key, sema, ctx,
     if reasoning:
         extra_parameterek["reasoning"] = reasoning
 
+    osszes_be = osszes_ki = osszes_gondolkodas = osszes_http_kiserlet = 0
+    osszes_koltseg = 0.0
+    van_ismeretlen_koltseg = False
     utolso_hiba = None
+    osszesitett_usage = {}
+
     for kiserlet in range(ujraprobalkozas_json + 1):
-        nyers_valasz = posztolo(model_id, uzenetek, api_key, extra_parameterek, ujraprobalkozas_http)
+        nyers_valasz, http_kiserletek = posztolo(model_id, uzenetek, api_key, extra_parameterek, ujraprobalkozas_http)
+        osszes_http_kiserlet += http_kiserletek
+        usage = nyers_valasz.get("usage") or {}
+        be = usage.get("prompt_tokens", 0) or 0
+        ki = usage.get("completion_tokens", 0) or 0
+        reszletek = usage.get("completion_tokens_details") or {}
+        gondolkodas = reszletek.get("reasoning_tokens", 0) or 0
+        koltseg = usage.get("cost")
+        osszes_be += be
+        osszes_ki += ki
+        osszes_gondolkodas += gondolkodas
+        if koltseg is not None:
+            osszes_koltseg += koltseg
+        else:
+            van_ismeretlen_koltseg = True
+            if ar_bemenet_1m is not None:
+                osszes_koltseg += be / 1_000_000 * ar_bemenet_1m
+            if ar_kimenet_1m is not None:
+                osszes_koltseg += ki / 1_000_000 * ar_kimenet_1m
+        osszesitett_usage = {
+            "prompt_tokens": osszes_be,
+            "completion_tokens": osszes_ki,
+            "completion_tokens_details": {"reasoning_tokens": osszes_gondolkodas},
+            "cost": osszes_koltseg,
+            "koltseg_forras": "ar_config" if van_ismeretlen_koltseg else "openrouter",
+            "kiserletek": osszes_http_kiserlet,
+        }
         tartalom = nyers_valasz["choices"][0]["message"]["content"]
         try:
             cserek = _cserek_validal(json.loads(tartalom), ctx)
-            return cserek, nyers_valasz.get("usage", {}) or {}, nyers_valasz
+            return cserek, osszesitett_usage, nyers_valasz
         except (json.JSONDecodeError, ValueError, KeyError) as e:
             utolso_hiba = e
             continue
-    raise OpenRouterHiba("ervenytelen JSON/sema %d kiserlet utan: %s" % (ujraprobalkozas_json + 1, utolso_hiba))
+    raise OpenRouterHiba(
+        "ervenytelen JSON/sema %d kiserlet utan: %s" % (ujraprobalkozas_json + 1, utolso_hiba),
+        usage=osszesitett_usage,
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -745,8 +841,10 @@ def cache_ir(model_id, level, nyers_valasz, usage, cache_dir=None):
 def level_modell_hivas(level, model_cfg, payload, ctx, kep_jpeg_bytes, api_key, config,
                         csak_dontes=False, posztolo=None, cache_dir=None):
     """Egy modell egy lapra: gyorsitotarbol, vagy (ha --csak-dontes nincs)
-    halozatrol -- ekkor a valaszt es a hasznalt metaadatokat el is menti.
-    Visszaad: (cserek_vagy_'hiba', usage_dict, 'cache'|'halozat'|None)."""
+    halozatrol -- ekkor SIKERES valaszt es a hasznalt metaadatokat el is menti
+    (H3: 'hiba' valasz SOHA nem kerul a gyorsitotarba, hogy az ujrafutas
+    ujraprobalja, ne ragadjon be). Visszaad: (cserek_vagy_'hiba', usage_dict,
+    'cache'|'halozat'|None) -- hiba eseten a usage az addig osszegyult (H5)."""
     model_id = model_cfg["nev"]
     talalat = cache_olvas(model_id, level, cache_dir)
     if talalat is not None:
@@ -770,9 +868,11 @@ def level_modell_hivas(level, model_cfg, payload, ctx, kep_jpeg_bytes, api_key, 
             ujraprobalkozas_json=ujraprobalkozas_json,
             ujraprobalkozas_http=ujraprobalkozas_http,
             posztolo=posztolo,
+            ar_bemenet_1m=model_cfg.get("ar_bemenet_usd_per_1M"),
+            ar_kimenet_1m=model_cfg.get("ar_kimenet_usd_per_1M"),
         )
-    except OpenRouterHiba:
-        cserek, usage, nyers_valasz = "hiba", {}, {"hiba": True, "choices": [{"message": {"content": "{}"}}]}
+    except OpenRouterHiba as e:
+        return "hiba", e.usage, "halozat"
     cache_ir(model_id, level, nyers_valasz, usage, cache_dir)
     return cserek, usage, "halozat"
 
@@ -793,25 +893,34 @@ class KoltsegNaplo:
         self.sorok = []
 
     def hozzaad_usage(self, level, model_id, usage, ar_bemenet_1m, ar_kimenet_1m):
+        """usage: az openrouter_hivas/OpenRouterHiba.usage MAR OSSZESITETT alakja
+        (a JSON-ujraprobalkozasok osszes kiserletenek usage-e osszeadva, H5),
+        vagy egy nyers, egyszeru {'prompt_tokens':...,'completion_tokens':...}
+        (visszafele kompatibilitas)."""
         bemenet = usage.get("prompt_tokens", 0) or 0
         kimenet = usage.get("completion_tokens", 0) or 0
         reszletek = usage.get("completion_tokens_details") or {}
         gondolkodas = reszletek.get("reasoning_tokens", 0) or 0
-        koltseg = usage.get("cost")
-        forras = "openrouter"
-        if koltseg is None:
-            forras = "ar_config"
-            koltseg = 0.0
-            if ar_bemenet_1m is not None:
-                koltseg += bemenet / 1_000_000 * ar_bemenet_1m
-            if ar_kimenet_1m is not None:
-                koltseg += kimenet / 1_000_000 * ar_kimenet_1m
+        kiserletek = usage.get("kiserletek", 1)
+        if "koltseg_forras" in usage:
+            forras = usage["koltseg_forras"]
+            koltseg = usage.get("cost") or 0.0
+        else:
+            koltseg = usage.get("cost")
+            forras = "openrouter"
+            if koltseg is None:
+                forras = "ar_config"
+                koltseg = 0.0
+                if ar_bemenet_1m is not None:
+                    koltseg += bemenet / 1_000_000 * ar_bemenet_1m
+                if ar_kimenet_1m is not None:
+                    koltseg += kimenet / 1_000_000 * ar_kimenet_1m
         self.osszeg_usd += koltseg
         sor = {
             "level": level, "model": model_id,
             "bemenet_token": bemenet, "kimenet_token": kimenet, "gondolkodas_token": gondolkodas,
             "koltseg_usd": round(koltseg, 6), "koltseg_forras": forras,
-            "futo_osszeg_usd": round(self.osszeg_usd, 6),
+            "futo_osszeg_usd": round(self.osszeg_usd, 6), "kiserletek": kiserletek,
         }
         self.sorok.append(sor)
         return sor
@@ -840,6 +949,8 @@ def pilot_levelek():
 # ---------------------------------------------------------------------------
 
 O1_CSERE_FEJLEC = ["szo_id", "szo_ids", "level", "bbox", "ocr", "m1", "m2", "dontes", "alak_igazolt", "extra"]
+KOLTSEG_FEJLEC = ["level", "model", "bemenet_token", "kimenet_token", "gondolkodas_token",
+                   "koltseg_usd", "koltseg_forras", "futo_osszeg_usd", "kiserletek"]
 
 
 def tsv_ir(utvonal, fejlec, sorok):
@@ -850,16 +961,29 @@ def tsv_ir(utvonal, fejlec, sorok):
             fh.write("\t".join(str(sor.get(mezo, "")) for mezo in fejlec) + "\n")
 
 
-def o1_csere_sor_epit(level, ocr_by_id, dontes_sor):
+def _bbox_unio(bboxok):
+    return [
+        min(b[0] for b in bboxok), min(b[1] for b in bboxok),
+        max(b[2] for b in bboxok), max(b[3] for b in bboxok),
+    ]
+
+
+def o1_csere_sor_epit(level, ocr_by_id, bbox_by_id, dontes_sor):
+    """H2: a bbox az EREDETI (nem skalazott) jp2-bbox -- tobb azonositonal az
+    azonositok bbox-ainak uniója. Az m1/m2 mezo 'auto'/'hianyzo'/'extra_*' eseten
+    egyetlen csere-dict (vagy None), de H4 miatt 'vitas'-nal lehet tobb elemu
+    lista is (ha a ket modell mas-mas alakzatban csoportositott)."""
     ids = dontes_sor["szo_ids"]
     m1, m2 = dontes_sor["m1"], dontes_sor["m2"]
-    alak = m1["alak"] if dontes_sor["dontes"] in ("auto", "extra_auto") and m1 else ""
-    nyelv = m1["nyelv"] if dontes_sor["dontes"] in ("auto", "extra_auto") and m1 else ""
+    egyetlen_m1 = m1 if isinstance(m1, dict) else (m1[0] if isinstance(m1, list) and len(m1) == 1 else None)
+    alak = egyetlen_m1["alak"] if dontes_sor["dontes"] in ("auto", "extra_auto") and egyetlen_m1 else ""
+    nyelv = egyetlen_m1["nyelv"] if dontes_sor["dontes"] in ("auto", "extra_auto") and egyetlen_m1 else ""
+    bboxok = [bbox_by_id[i] for i in ids if i in bbox_by_id]
     return {
         "szo_id": ids[0],
         "szo_ids": ",".join(ids),
         "level": level,
-        "bbox": json.dumps([]),  # a hivo tolti ki az eredeti (nem skalazott) bbox-szal, ha van
+        "bbox": json.dumps(_bbox_unio(bboxok)) if bboxok else json.dumps([]),
         "ocr": " ".join(ocr_by_id.get(i, "") for i in ids),
         "m1": json.dumps(m1, ensure_ascii=False) if m1 else "",
         "m2": json.dumps(m2, ensure_ascii=False) if m2 else "",
@@ -937,7 +1061,7 @@ def _onteszt_c_json_feldolgozas():
     sema = _json_sema()
 
     # a) ervenyes valasz
-    valaszok = iter([_ror_valasz({"cserek": [{"szo_ids": ["a"], "alak": "λόγος", "nyelv": "grc", "extra": False}]})])
+    valaszok = iter([(_ror_valasz({"cserek": [{"szo_ids": ["a"], "alak": "λόγος", "nyelv": "grc", "extra": False}]}), 1)])
     cserek, _, _ = openrouter_hivas(
         "m", b"x", {"level": 1}, "kulcs", sema, ctx,
         ujraprobalkozas_json=1, posztolo=lambda *a, **k: next(valaszok),
@@ -945,7 +1069,7 @@ def _onteszt_c_json_feldolgozas():
     assert cserek[0]["szo_ids"] == ["a"]
 
     # b) ketelemu szo_ids
-    valaszok = iter([_ror_valasz({"cserek": [{"szo_ids": ["b", "a"], "alak": "λόγος", "nyelv": "grc", "extra": False}]})])
+    valaszok = iter([(_ror_valasz({"cserek": [{"szo_ids": ["b", "a"], "alak": "λόγος", "nyelv": "grc", "extra": False}]}), 1)])
     cserek, _, _ = openrouter_hivas(
         "m", b"x", {"level": 1}, "kulcs", sema, ctx,
         ujraprobalkozas_json=1, posztolo=lambda *a, **k: next(valaszok),
@@ -954,7 +1078,7 @@ def _onteszt_c_json_feldolgozas():
 
     # c) semasertes -> egy ujraprobalkozas -> hiba
     hibas = _ror_valasz({"cserek": [{"szo_ids": ["ismeretlen"], "alak": "x", "nyelv": "grc", "extra": False}]})
-    valaszok = iter([hibas, hibas])
+    valaszok = iter([(hibas, 1), (hibas, 1)])
     hivas_szamlalo = {"n": 0}
 
     def posztolo_hibas(*a, **k):
@@ -991,10 +1115,11 @@ def _onteszt_c_json_feldolgozas():
         hivas_n["n"] += 1
         return _FakeValasz(allapotok[i], testek[i])
 
-    eredmeny = _http_post_nyers("m", [], "kulcs", {}, ujraprobalkozas_http=2,
-                                 kezdeti_varakozas=0, kuldo=kuldo, alvas=lambda s: None)
+    eredmeny, kiserletek = _http_post_nyers("m", [], "kulcs", {}, ujraprobalkozas_http=2,
+                                             kezdeti_varakozas=0, kuldo=kuldo, alvas=lambda s: None)
     assert eredmeny == testek[1]
     assert hivas_n["n"] == 2
+    assert kiserletek == 2
 
 
 def _onteszt_d_szovegosszeallitas():
@@ -1022,7 +1147,7 @@ def _onteszt_e_gyorsitotar():
 
         def posztolo(model_id, uzenetek, api_key, extra, ujraprobalkozas_http):
             hivas_szamlalo["n"] += 1
-            return _ror_valasz({"cserek": []})
+            return _ror_valasz({"cserek": []}), 1
 
         ctx = {"id_info": {}}
         payload = {"level": 1, "sorok": []}
@@ -1039,12 +1164,178 @@ def _onteszt_e_gyorsitotar():
         shutil.rmtree(tmp, ignore_errors=True)
 
 
+def _onteszt_f_level_dontesek_h4():
+    # m1 [a,b], m2 [a] -- atfedo, de eltero csoportositas -> EGY 'vitas' sor, szo_ids=[a,b]
+    ctx = {"id_info": {"a": ("sor1", 0, True), "b": ("sor1", 1, True)}}
+    m1 = [{"szo_ids": ["a", "b"], "alak": "x", "nyelv": "grc", "extra": False}]
+    m2 = [{"szo_ids": ["a"], "alak": "x", "nyelv": "grc", "extra": False}]
+    sorok, extra = level_dontesek(ctx, m1, m2)
+    assert extra == []
+    assert len(sorok) == 1, "atfedo, de eltero szo_ids-nek egyetlen vitas sort kell adnia: %r" % sorok
+    assert sorok[0]["dontes"] == "vitas"
+    assert sorok[0]["szo_ids"] == ["a", "b"]
+
+    # ugyanarra az id-re az egyik modell extra, a masik nem -> vitas
+    ctx2 = {"id_info": {"a": ("sor1", 0, True)}}
+    m1b = [{"szo_ids": ["a"], "alak": "x", "nyelv": "grc", "extra": True}]
+    m2b = [{"szo_ids": ["a"], "alak": "x", "nyelv": "grc", "extra": False}]
+    sorok2, _ = level_dontesek(ctx2, m1b, m2b)
+    assert len(sorok2) == 1
+    assert sorok2[0]["dontes"] == "vitas"
+
+    # csak az egyik modell ad elemet -> hianyzo
+    ctx3 = {"id_info": {"a": ("sor1", 0, True)}}
+    sorok3, _ = level_dontesek(ctx3, [{"szo_ids": ["a"], "alak": "x", "nyelv": "grc", "extra": False}], [])
+    assert len(sorok3) == 1
+    assert sorok3[0]["dontes"] == "hianyzo"
+
+    # minden gyanus id pontosan egy sorban szerepel (vegyes eset)
+    ctx4 = {"id_info": {
+        "a": ("sor1", 0, True), "b": ("sor1", 1, True), "c": ("sor1", 2, True), "d": ("sor1", 3, False),
+    }}
+    m1c = [{"szo_ids": ["a"], "alak": "x", "nyelv": "grc", "extra": False},
+           {"szo_ids": ["c", "d"], "alak": "y", "nyelv": "grc", "extra": False}]
+    m2c = [{"szo_ids": ["a"], "alak": "x", "nyelv": "grc", "extra": False}]
+    sorok4, _ = level_dontesek(ctx4, m1c, m2c)
+    osszes_id = sorted(sid for s in sorok4 for sid in s["szo_ids"])
+    assert osszes_id == ["a", "b", "c", "d"]
+    egyszeri = [sid for s in sorok4 for sid in s["szo_ids"]]
+    assert len(egyszeri) == len(set(egyszeri)), "egy azonosito tobb sorban is szerepel"
+
+
+def _onteszt_g_hiba_nem_cachelt():
+    tmp = tempfile.mkdtemp(prefix="cremer_onteszt_hibacache_")
+    try:
+        ctx = {"id_info": {"a": ("sor1", 0, True)}}
+        payload = {"level": 1, "sorok": []}
+        model_cfg = {"nev": "teszt/hiba-modell"}
+        config = {"ujraprobalkozas_ervenytelen_json": 0, "ujraprobalkozas_http": 0}
+        hivas_szamlalo = {"n": 0}
+        hibas_valasz = _ror_valasz({"cserek": [{"szo_ids": ["ismeretlen"], "alak": "x", "nyelv": "grc", "extra": False}]})
+
+        def posztolo(model_id, uzenetek, api_key, extra, ujraprobalkozas_http):
+            hivas_szamlalo["n"] += 1
+            return hibas_valasz, 1
+
+        cserek1, _, honnan1 = level_modell_hivas(1, model_cfg, payload, ctx, b"x", "kulcs", config,
+                                                  posztolo=posztolo, cache_dir=tmp)
+        assert cserek1 == "hiba"
+        assert honnan1 == "halozat"
+        assert cache_olvas(model_cfg["nev"], 1, cache_dir=tmp) is None, "hibas valasz nem kerulhet a gyorsitotarba"
+
+        elozo = hivas_szamlalo["n"]
+        level_modell_hivas(1, model_cfg, payload, ctx, b"x", "kulcs", config,
+                            posztolo=posztolo, cache_dir=tmp)
+        assert hivas_szamlalo["n"] == elozo + 1, "a masodik futasnak ujra kellett volna hivnia (nincs gyorsitotar)"
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def _onteszt_h_usage_osszegzes():
+    ctx = {"id_info": {"a": ("sor1", 0, True)}}
+    sema = _json_sema()
+
+    hibas = _ror_valasz(
+        {"cserek": [{"szo_ids": ["ismeretlen"], "alak": "x", "nyelv": "grc", "extra": False}]},
+        usage={"prompt_tokens": 100, "completion_tokens": 20},
+    )
+    ervenyes = _ror_valasz(
+        {"cserek": [{"szo_ids": ["a"], "alak": "λόγος", "nyelv": "grc", "extra": False}]},
+        usage={"prompt_tokens": 100, "completion_tokens": 20},
+    )
+    valaszok = iter([(hibas, 1), (ervenyes, 1)])
+    cserek, usage, _ = openrouter_hivas("m", b"x", {"level": 1}, "kulcs", sema, ctx,
+                                         ujraprobalkozas_json=1, posztolo=lambda *a, **k: next(valaszok))
+    assert cserek[0]["szo_ids"] == ["a"]
+    assert usage["prompt_tokens"] == 200, "a ket kiserlet usage-enek ossze kellett volna adodnia"
+    assert usage["completion_tokens"] == 40
+    assert usage["kiserletek"] == 2
+
+    # hiba esetén is van naplozhato usage, nem nulla tokennel
+    hibas2 = _ror_valasz(
+        {"cserek": [{"szo_ids": ["ismeretlen"], "alak": "x", "nyelv": "grc", "extra": False}]},
+        usage={"prompt_tokens": 50, "completion_tokens": 10},
+    )
+    valaszok2 = iter([(hibas2, 1), (hibas2, 1)])
+    try:
+        openrouter_hivas("m", b"x", {"level": 1}, "kulcs", sema, ctx,
+                          ujraprobalkozas_json=1, posztolo=lambda *a, **k: next(valaszok2))
+        raise AssertionError("vart OpenRouterHiba")
+    except OpenRouterHiba as e:
+        assert e.usage["prompt_tokens"] == 100, "hiba eseten is az osszegyult usage-nek kell megjelennie"
+        assert e.usage["kiserletek"] == 2
+
+
+def _onteszt_i_vegponttol_vegpontig():
+    tmp_kimenet = tempfile.mkdtemp(prefix="cremer_onteszt_e2e_kimenet_")
+    tmp_cache = tempfile.mkdtemp(prefix="cremer_onteszt_e2e_cache_")
+    try:
+        lapindex = hocr_lapindex_epit()
+        config = {
+            "modellek": {
+                "m1": {"nev": "teszt/e2e-m1", "ar_bemenet_usd_per_1M": 0.1, "ar_kimenet_usd_per_1M": 0.1},
+                "m2": {"nev": "teszt/e2e-m2", "ar_bemenet_usd_per_1M": 0.1, "ar_kimenet_usd_per_1M": 0.1},
+            },
+            "koltsegplafon_pilot_usd": 100.0,
+            "ujraprobalkozas_ervenytelen_json": 0,
+            "ujraprobalkozas_http": 0,
+        }
+        modellek = config["modellek"]
+
+        def posztolo(model_id, uzenetek, api_key, extra, ujraprobalkozas_http):
+            return _ror_valasz({"cserek": []}), 1
+
+        class _Args:
+            pilot = True
+            csak_dontes = False
+
+        naplok_elotte = os.listdir(NAPLOK_DIR) if os.path.isdir(NAPLOK_DIR) else None
+        cache_elotte = os.listdir(CACHE_DIR) if os.path.isdir(CACHE_DIR) else None
+
+        eredmeny = _futtat_eles([17], lapindex, 2000, config, modellek, "fake-kulcs", _Args(),
+                                 posztolo=posztolo, cache_dir=tmp_cache)
+        assert eredmeny["leallt_plafon_miatt"] is False  # cmd_futtat ekkor 0-val lepne ki
+
+        csere_utvonal = os.path.join(tmp_kimenet, "CREMER_O1_csere.tsv")
+        koltseg_utvonal = os.path.join(tmp_kimenet, "CREMER_O1_koltseg.tsv")
+        tsv_ir(csere_utvonal, O1_CSERE_FEJLEC, eredmeny["o1_sorok"])
+        tsv_ir(koltseg_utvonal, KOLTSEG_FEJLEC, eredmeny["koltseg_sorok"])
+
+        assert os.path.exists(csere_utvonal)
+        assert os.path.exists(koltseg_utvonal)
+
+        with open(csere_utvonal, encoding="utf-8") as fh:
+            csere_sorok = fh.read().splitlines()
+        assert csere_sorok[0].split("\t") == O1_CSERE_FEJLEC
+        assert len(csere_sorok) > 1, "nincs csere-sor a 17. levelen"
+        bbox_idx = O1_CSERE_FEJLEC.index("bbox")
+        for sor in csere_sorok[1:]:
+            mezok = sor.split("\t")
+            assert mezok[bbox_idx] not in ("", "[]"), "ures bbox mezo: %s" % sor
+
+        with open(koltseg_utvonal, encoding="utf-8") as fh:
+            koltseg_sorok = fh.read().splitlines()
+        assert koltseg_sorok[0].split("\t") == KOLTSEG_FEJLEC
+
+        naplok_utana = os.listdir(NAPLOK_DIR) if os.path.isdir(NAPLOK_DIR) else None
+        cache_utana = os.listdir(CACHE_DIR) if os.path.isdir(CACHE_DIR) else None
+        assert naplok_elotte == naplok_utana, "a valodi naplok/ konyvtarat nem szabad erinteni"
+        assert cache_elotte == cache_utana, "a valodi gyorsitotar-konyvtarat nem szabad erinteni"
+    finally:
+        shutil.rmtree(tmp_kimenet, ignore_errors=True)
+        shutil.rmtree(tmp_cache, ignore_errors=True)
+
+
 ONTESZT_AGAK = [
     ("a_bbox_skalazas", _onteszt_a_bbox_skalazas),
     ("b_elonormalizalas", _onteszt_b_elonormalizalas),
     ("c_json_feldolgozas", _onteszt_c_json_feldolgozas),
     ("d_szovegosszeallitas", _onteszt_d_szovegosszeallitas),
     ("e_gyorsitotar", _onteszt_e_gyorsitotar),
+    ("f_level_dontesek_h4", _onteszt_f_level_dontesek_h4),
+    ("g_hiba_nem_cachelt", _onteszt_g_hiba_nem_cachelt),
+    ("h_usage_osszegzes", _onteszt_h_usage_osszegzes),
+    ("i_vegponttol_vegpontig", _onteszt_i_vegponttol_vegpontig),
 ]
 
 
@@ -1106,6 +1397,10 @@ def cmd_futtat(args):
     if args.szaraz:
         return _futtat_szaraz(levelek, lapindex, max_el_px, config)
 
+    if not args.pilot:
+        print("O2 meg nincs engedelyezve -- csak --pilot vagy --szaraz futtathato.", file=sys.stderr)
+        return 1
+
     modellek = config.get("modellek", {})
     hianyzo_modell = [k for k, v in modellek.items() if not v.get("nev")]
     if hianyzo_modell and not args.csak_dontes:
@@ -1123,7 +1418,34 @@ def cmd_futtat(args):
             print("HIBA -- az OPENROUTER_API_KEY kornyezeti valtozo nincs beallitva", file=sys.stderr)
             return 1
 
-    return _futtat_eles(levelek, lapindex, max_el_px, config, modellek, api_key, args)
+    eredmeny = _futtat_eles(levelek, lapindex, max_el_px, config, modellek, api_key, args)
+
+    csere_utvonal = os.path.join(args.kimenet_dir, "CREMER_O1_csere.tsv")
+    koltseg_utvonal = os.path.join(args.kimenet_dir, "CREMER_O1_koltseg.tsv")
+    tsv_ir(csere_utvonal, O1_CSERE_FEJLEC, eredmeny["o1_sorok"])
+    tsv_ir(koltseg_utvonal, KOLTSEG_FEJLEC, eredmeny["koltseg_sorok"])
+
+    _futtat_osszesito_kiir(eredmeny, csere_utvonal, koltseg_utvonal)
+
+    if eredmeny["leallt_plafon_miatt"]:
+        print("\nA futas a koltsegplafon miatt korabban leallt.", file=sys.stderr)
+        return 3
+    return 0
+
+
+def _futtat_osszesito_kiir(eredmeny, csere_utvonal, koltseg_utvonal):
+    print("\n=== osszesito ===")
+    print("kiirva:", csere_utvonal)
+    print("kiirva:", koltseg_utvonal)
+    szamlalo = {}
+    for sor in eredmeny["o1_sorok"]:
+        szamlalo[sor["dontes"]] = szamlalo.get(sor["dontes"], 0) + 1
+    for d, n in sorted(szamlalo.items()):
+        print("  %-12s %d" % (d, n))
+    osszkoltseg = sum(s["koltseg_usd"] for s in eredmeny["koltseg_sorok"])
+    osszgondolkodas = sum(s["gondolkodas_token"] for s in eredmeny["koltseg_sorok"])
+    print("osszkoltseg: %.6f USD" % osszkoltseg)
+    print("gondolkodasi token osszesen:", osszgondolkodas)
 
 
 def _futtat_szaraz(levelek, lapindex, max_el_px, config):
@@ -1131,7 +1453,6 @@ def _futtat_szaraz(levelek, lapindex, max_el_px, config):
     osszes_bemenet = 0
     osszes_kimenet = 0
     osszes_gyanus = 0
-    osszes_sor = 0
     modellek = config.get("modellek", {})
     aktiv_modellek = list(modellek.keys()) or ["m1", "m2"]
     for level in levelek:
@@ -1181,10 +1502,12 @@ def _futtat_szaraz(levelek, lapindex, max_el_px, config):
     return 0
 
 
-def _futtat_eles(levelek, lapindex, max_el_px, config, modellek, api_key, args):
+def _futtat_eles(levelek, lapindex, max_el_px, config, modellek, api_key, args,
+                  posztolo=None, cache_dir=None):
     koltsegplafon = config.get("koltsegplafon_pilot_usd" if args.pilot else "koltsegplafon_usd")
     naplo = KoltsegNaplo(koltsegplafon)
     o1_sorok = []
+    leallt_plafon_miatt = False
     modell_kulcsok = list(modellek.keys())
     k1 = modell_kulcsok[0] if len(modell_kulcsok) >= 1 else None
     k2 = modell_kulcsok[1] if len(modell_kulcsok) >= 2 else k1
@@ -1192,6 +1515,7 @@ def _futtat_eles(levelek, lapindex, max_el_px, config, modellek, api_key, args):
     for level in levelek:
         if not args.csak_dontes and naplo.plafon_elerve_e():
             print("koltsegplafon elerve, leallas level=%d elott" % level, file=sys.stderr)
+            leallt_plafon_miatt = True
             break
 
         sorok = level_sorok(level, lapindex)
@@ -1201,15 +1525,16 @@ def _futtat_eles(levelek, lapindex, max_el_px, config, modellek, api_key, args):
             continue
 
         ocr_by_id = {w["szo_id"]: w["ocr"] for sor in sorok for w in sor["szavak"]}
+        bbox_by_id = {w["szo_id"]: w["bbox"] for sor in sorok for w in sor["szavak"]}
 
         eredmenyek = {}
-        for kulcs in {k1, k2}:
+        for kulcs in dict.fromkeys([k1, k2]):
             if kulcs is None:
                 continue
             m_cfg = modellek[kulcs]
             cserek, usage, honnan = level_modell_hivas(
                 level, m_cfg, payload, ctx, kep_bytes, api_key, config,
-                csak_dontes=args.csak_dontes,
+                csak_dontes=args.csak_dontes, posztolo=posztolo, cache_dir=cache_dir,
             )
             eredmenyek[kulcs] = cserek
             if honnan == "halozat":
@@ -1221,9 +1546,12 @@ def _futtat_eles(levelek, lapindex, max_el_px, config, modellek, api_key, args):
 
         nem_extra, extra = level_dontesek(ctx, eredmenyek[k1], eredmenyek[k2])
         for d_sor in nem_extra + extra:
-            o1_sorok.append(o1_csere_sor_epit(level, ocr_by_id, d_sor))
+            o1_sorok.append(o1_csere_sor_epit(level, ocr_by_id, bbox_by_id, d_sor))
 
-    return {"o1_sorok": o1_sorok, "koltseg_sorok": naplo.sorok, "naplo": naplo}
+    return {
+        "o1_sorok": o1_sorok, "koltseg_sorok": naplo.sorok, "naplo": naplo,
+        "leallt_plafon_miatt": leallt_plafon_miatt,
+    }
 
 
 def main():
@@ -1243,6 +1571,8 @@ def main():
     ap_futtat.add_argument("--onteszt", action="store_true",
                             help="halozat es kulcs nelkuli onellenorzes; a tobbi kapcsolot figyelmen kivul hagyja")
     ap_futtat.add_argument("--config", type=str, default=CONFIG_UTVONAL)
+    ap_futtat.add_argument("--kimenet-dir", dest="kimenet_dir", type=str, default=NAPLOK_DIR,
+                            help="hova irja a CREMER_O1_csere.tsv / CREMER_O1_koltseg.tsv fajlokat")
     ap_futtat.set_defaults(func=cmd_futtat)
 
     args = ap.parse_args()
