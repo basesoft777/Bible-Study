@@ -64,7 +64,14 @@ NAPLOK_DIR = os.path.join(REPO_GYOKER, "naplok")
 CACHE_DIR = os.path.join(REPO_GYOKER, "konkordancia", "_nyers", "cremer_cache")
 HIBA_DIR = os.path.join(REPO_GYOKER, "konkordancia", "_nyers", "cremer_hibak")
 
-PROMPT_VERZIO = "v4"
+PROMPT_VERZIO = "v5"
+# O0.5e/7: a v4 -> v5 valtas csak a modellnek kuldott UTASITAS_SZOVEG-et es a
+# validalas szemantikajat (Qwen-zaj kulon kezelese) erintette, a tenyleges
+# JSON-huzal-formatumot ("i"/"a"/"l"/"x") NEM -- egy v4-es sikeres valasz
+# tartalma szerkezetileg ervenyes es ujraertelmezheto a v5 szabalyokkal is.
+# Ezert a gyorsitotar-olvasas a v4-et is elfogadja: egy folytatott/megismetelt
+# futas nem hivja ujra azokat a lapokat, amik mar sikerrel lekerultek v4 alatt.
+PROMPT_VERZIO_KOMPATIBILIS = {"v4", "v5"}
 
 # C7: pilot -- 7 ismert level (Abbott-Smith-szocikkek + gorog mutato) + a heber
 # mutato levele + 12 veletlen level, rogzitett maggal.
@@ -242,10 +249,14 @@ UTASITAS_SZOVEG = (
     "(vagy tobb) KULON cserek-elem, KULON-KULON 'i'-vel, MEG AKKOR IS, ha az "
     "alakjuk azonos. Az 'i' SOHA nem fog at tavoli, kulonallo elofordulasokat, "
     "csak egyetlen szo egybefuggo toredekeit. Az 'a' irasjel NELKUL ertendo "
-    "(a program a hOCR-tokenbol teszi vissza). Nem-'x' elemnel az 'i' kozott "
-    "legalabb egy gyanus token legyen. Ha egy sorban olyan gorog/heber "
-    "torzkepet latsz, ami NINCS a 'gyanusak' kozott jelolve, jelezd \"x\": "
-    "true -vel. Ne irj szabad szoveget, csak ezt a JSON objektumot."
+    "(a program a hOCR-tokenbol teszi vissza). SZIGORUAN TILOS elemet adni "
+    "olyan tokenre, ami NINCS a 'gyanusak' listaban, KIVEVE ha ott gorog vagy "
+    "heber torzkepet latsz -- ekkor \"x\": true KOTELEZO. Ha egy 'gyanusak'-ban "
+    "jelolt token szerinted VALOJABAN HELYES (nem kell javitani), egyszeruen "
+    "NE adj ra elemet -- ne is emlitsd. Osszefoglalva: nem-'x' elem CSAK "
+    "'gyanusak'-beli azonositot tartalmazhat; minden mas tokenre vonatkozo "
+    "elemnel \"x\": true KOTELEZO, kulonben az elemet eldobjuk. Ne irj szabad "
+    "szoveget, csak ezt a JSON objektumot."
 )
 
 
@@ -327,27 +338,40 @@ def _json_sema():
     }
 
 
+class _NemGyanusZaj(ValueError):
+    """O0.5e/2: a Qwen-zaj kulon kategoria -- egy egyebkent szerkezetileg
+    ervenyes elem, ami nem-'x'-kent olyan azonositokra vonatkozik, amik kozul
+    egy sem gyanus. Ez NEM szamit sema-sertesnek (nem lassitja/buktatja az
+    50%-os kuszobot), csak elvetett zaj."""
+    pass
+
+
 def _cserek_validal(nyers, ctx):
     """A modell JSON-valaszat ellenorzi (D15: elemszintu validalas; O0.5c/1-2:
-    tomor 'i'/'a'/'l'/'x' mezok es rovid egesz azonositok). Letezo, egy sorbeli,
-    egymast koveto azonositok; nem-'x' elemnel legalabb egy gyanus id; atfedes
-    tilos. A 'cserek' lista MEGLETE es tipusa a teljes valaszra vonatkozo,
-    tovabbra is kivetelt dob (ez a hivo oldalon meg mindig 'egesz valasz
-    ervenytelen' -- ujraprobalkozas, utana hiba). Egy-egy ELEM problemaja
-    viszont NEM dob kivetelt: az az elem az 'ervenytelen' listaba kerul, a
-    tobbi ervenyes elem hasznalhato marad (D15). Sikeres elemnel a rovid 'i'
-    egesz azonositok a ctx['id_terkep'] szerint VISSZAKEPEZODNEK a valodi hOCR
-    szo_id-ra (str), sorbeli pozicio szerint rendezve -- a visszaadott elem a
-    tovabbi feldolgozashoz (level_dontesek, tsv-iras) a regi belso alakot
-    hasznalja: {"szo_ids": [str, ...], "alak": str, "nyelv": str, "extra": bool}.
-    Visszaad: (ervenyes_elemek, ervenytelen_elemek) -- ervenytelen_elemek:
-    [{"elem": <nyers elem>, "hiba": <szoveg>}, ...]."""
+    tomor 'i'/'a'/'l'/'x' mezok es rovid egesz azonositok; O0.5e/1-2: harmas
+    bontas). Letezo, egy sorbeli, egymast koveto azonositok; atfedes tilos.
+    A 'cserek' lista MEGLETE es tipusa a teljes valaszra vonatkozo, tovabbra
+    is kivetelt dob (ez a hivo oldalon meg mindig 'egesz valasz ervenytelen'
+    -- ujraprobalkozas, utana hiba). Egy-egy ELEM problemaja NEM dob kivetelt
+    a teljes valaszra: valodi SZERKEZETI hiba (ismeretlen/nem-szomszedos/
+    tobb-soros/atfedo azonosito, hianyzo mezo) az 'ervenytelen' listaba kerul
+    (D15: ez SZAMIT az 50%-os kuszobbe). A 'Qwen-zaj' -- szerkezetileg rendben
+    levo, de nem-'x'-kent csupa nem-gyanus azonositora vonatkozo elem -- kulon
+    'elvetett_nem_gyanus' listaba kerul, es NEM SZAMIT bele a kuszobbe (O0.5e/2
+    -- a D17 dontes oka). Sikeres elemnel a rovid 'i' egesz azonositok a
+    ctx['id_terkep'] szerint VISSZAKEPEZODNEK a valodi hOCR szo_id-ra (str),
+    sorbeli pozicio szerint rendezve -- a visszaadott elem a tovabbi
+    feldolgozashoz (level_dontesek, tsv-iras) a regi belso alakot hasznalja:
+    {"szo_ids": [str, ...], "alak": str, "nyelv": str, "extra": bool}.
+    Visszaad: (ervenyes_elemek, ervenytelen_elemek, elvetett_nem_gyanus_elemek)
+    -- az utobbi ketto: [{"elem": <nyers elem>, "hiba": <szoveg>}, ...]."""
     if not isinstance(nyers, dict) or not isinstance(nyers.get("cserek"), list):
         raise ValueError("hianyzik vagy ervenytelen a 'cserek' lista")
     id_info = ctx["id_info"]
     id_terkep = ctx["id_terkep"]
     ervenyes = []
     ervenytelen = []
+    elvetett_nem_gyanus = []
     hasznalt = set()
     for elem in nyers["cserek"]:
         try:
@@ -379,16 +403,18 @@ def _cserek_validal(nyers, ctx):
             if pozok_rendezett != list(range(pozok_rendezett[0], pozok_rendezett[-1] + 1)):
                 raise ValueError("az 'i' nem egymast kovetoek: %s" % i_lista)
             if not extra and not any(id_info[iid][2] for iid in i_lista):
-                raise ValueError("nem-'x' elemnek legalabb egy gyanus azonosito kell: %s" % i_lista)
+                raise _NemGyanusZaj("nem-'x' elem, egyetlen gyanus azonosito nelkul: %s" % i_lista)
             i_rendezett = sorted(i_lista, key=lambda x: pozicio_map[x])
             szo_ids_rendezett = [id_terkep[iid] for iid in i_rendezett]
             if hasznalt & set(szo_ids_rendezett):
                 raise ValueError("atfedo azonositok egy korabbi ervenyes elemmel: %s" % szo_ids_rendezett)
             hasznalt |= set(szo_ids_rendezett)
             ervenyes.append({"szo_ids": szo_ids_rendezett, "alak": alak, "nyelv": nyelv, "extra": extra})
+        except _NemGyanusZaj as e:
+            elvetett_nem_gyanus.append({"elem": elem, "hiba": str(e)})
         except ValueError as e:
             ervenytelen.append({"elem": elem, "hiba": str(e)})
-    return ervenyes, ervenytelen
+    return ervenyes, ervenytelen, elvetett_nem_gyanus
 
 
 # ---------------------------------------------------------------------------
@@ -577,7 +603,11 @@ def dontes(csere1, csere2):
 
 def _klaszter_dontes(elemek_m1, elemek_m2, ctx):
     """H4: egy union-find-klaszter (atfedo szo_ids-u m1/m2-elemek) donteset adja.
-    Visszaad: (dontes_nev, szo_ids_unio_rendezve, m1_resz, m2_resz)."""
+    O0.5e/1: ha csak az egyik modellnek van eleme a klaszterben (nem-extra),
+    a dontes 'hianyzo_m1' vagy 'hianyzo_m2' -- megjelolve, melyik modell ADOTT
+    elemet (a masik hallgatasa "megtartanam a hOCR-alakot" -- ez mar nem
+    'valtozatlan', mert az EGYIK modell javasolt valamit). Visszaad:
+    (dontes_nev, szo_ids_unio_rendezve, m1_resz, m2_resz)."""
     def unio_rendezve(elemek):
         idk = set()
         for e in elemek:
@@ -586,10 +616,10 @@ def _klaszter_dontes(elemek_m1, elemek_m2, ctx):
 
     van_m1, van_m2 = bool(elemek_m1), bool(elemek_m2)
     if van_m1 and not van_m2:
-        d = "extra_vitas" if elemek_m1[0]["extra"] else "hianyzo"
+        d = "extra_vitas" if elemek_m1[0]["extra"] else "hianyzo_m1"
         return d, unio_rendezve(elemek_m1), elemek_m1, []
     if van_m2 and not van_m1:
-        d = "extra_vitas" if elemek_m2[0]["extra"] else "hianyzo"
+        d = "extra_vitas" if elemek_m2[0]["extra"] else "hianyzo_m2"
         return d, unio_rendezve(elemek_m2), [], elemek_m2
 
     osszes = elemek_m1 + elemek_m2
@@ -614,8 +644,15 @@ def level_dontesek(ctx, m1_eredmeny, m2_eredmeny):
     'vitas' lesz, nem tunik el ket kulon 'hianyzo' sorkent. Visszaad:
     (sorok, []) -- minden gyanus szo_id pontosan egy sorban, {'szo_ids','dontes',
     'm1','m2','extra'} kulcsokkal (m1/m2: egyetlen csere-dict vagy dict-lista)."""
+    # ctx['id_info'] a rovid EGESZ azonositokkal van kulcsolva (O0.5c), de az
+    # m1_eredmeny/m2_eredmeny elemei mar a VISSZAKEPEZETT hOCR szo_id (str)
+    # stringeket hasznaljak (_cserek_validal). A _klaszter_dontes ezert egy
+    # string-kulcsu id_info-t var -- kulonben KeyError-ral all le (dokumentalt
+    # eset: az elso O1.1-ujraindulas ezzel a hibaval bukott el a 17. levelen).
     id_terkep = ctx["id_terkep"]
-    gyanus_id_lista = [id_terkep[iid] for iid, info in ctx["id_info"].items() if info[2]]
+    string_id_info = {id_terkep[iid]: info for iid, info in ctx["id_info"].items()}
+    string_ctx = {"id_info": string_id_info}
+    gyanus_id_lista = [sid for sid, info in string_id_info.items() if info[2]]
     if m1_eredmeny == "hiba" or m2_eredmeny == "hiba":
         return (
             [{"szo_ids": [sid], "dontes": "hiba", "m1": None, "m2": None, "extra": False}
@@ -654,7 +691,7 @@ def level_dontesek(ctx, m1_eredmeny, m2_eredmeny):
     for csoport in klaszterek.values():
         elemek_m1 = [e for f, e in csoport if f == "m1"]
         elemek_m2 = [e for f, e in csoport if f == "m2"]
-        dontes_nev, uid_lista, c1_lista, c2_lista = _klaszter_dontes(elemek_m1, elemek_m2, ctx)
+        dontes_nev, uid_lista, c1_lista, c2_lista = _klaszter_dontes(elemek_m1, elemek_m2, string_ctx)
         sorok.append({
             "szo_ids": uid_lista,
             "dontes": dontes_nev,
@@ -666,7 +703,10 @@ def level_dontesek(ctx, m1_eredmeny, m2_eredmeny):
 
     for sid in gyanus_id_lista:
         if sid not in lefedett:
-            sorok.append({"szo_ids": [sid], "dontes": "hianyzo", "m1": None, "m2": None, "extra": False})
+            # O0.5e/1: egyik modell sem adott elemet -- mindketto megtartana a
+            # hOCR-alakot, ez 'valtozatlan' (nem 'hianyzo', ami mostantol csak
+            # a "pontosan az egyik modell adott elemet" esetet jeloli)
+            sorok.append({"szo_ids": [sid], "dontes": "valtozatlan", "m1": None, "m2": None, "extra": False})
 
     return sorok, []
 
@@ -846,14 +886,16 @@ def openrouter_hivas(model_id, kep_jpeg_bytes, payload, api_key, sema, ctx,
         tartalom = nyers_valasz["choices"][0]["message"]["content"]
         try:
             nyers_json = json.loads(tartalom)
-            ervenyes, ervenytelen = _cserek_validal(nyers_json, ctx)
+            ervenyes, ervenytelen, elvetett_nem_gyanus = _cserek_validal(nyers_json, ctx)
         except (json.JSONDecodeError, ValueError, KeyError) as e:
             utolso_hiba = e
             continue
 
-        if ervenytelen:
-            hiba_naplo_ir(model_id, payload.get("level"), kiserlet + 1, ervenytelen, hiba_naplo_dir)
+        if ervenytelen or elvetett_nem_gyanus:
+            hiba_naplo_ir(model_id, payload.get("level"), kiserlet + 1, ervenytelen,
+                          elvetett_nem_gyanus, hiba_naplo_dir)
 
+        # O0.5e/2: az elvetett_nem_gyanus (Qwen-zaj) NEM szamit bele a kuszobbe
         elem_szam = len(ervenyes) + len(ervenytelen)
         if elem_szam > 0 and len(ervenytelen) / elem_szam > ELEM_HIBAARANY_KUSZOB:
             utolso_hiba = "elemek tobb mint fele semasertes (%d/%d)" % (len(ervenytelen), elem_szam)
@@ -874,9 +916,11 @@ def _modell_slug(model_id):
     return re.sub(r"[^A-Za-z0-9_-]", "_", model_id)
 
 
-def hiba_naplo_ir(model_id, level, kiserlet, ervenytelen_elemek, hiba_dir=None):
-    """D15: a semasertes miatt elvetett elemek NYERSEN, kulcs es HTTP-fejlec
-    nelkul -- konkordancia/_nyers/cremer_hibak/<modell_slug>/<level:04d>_<kiserlet>.json.
+def hiba_naplo_ir(model_id, level, kiserlet, ervenytelen_elemek, elvetett_nem_gyanus_elemek=None, hiba_dir=None):
+    """D15/O0.5e: a semasertes miatt elvetett ('ervenytelen_elemek', SZAMIT az
+    50%-os kuszobbe) es a Qwen-zaj miatt elvetett ('elvetett_nem_gyanus_elemek',
+    NEM szamit bele) elemek NYERSEN, kulcs es HTTP-fejlec nelkul --
+    konkordancia/_nyers/cremer_hibak/<modell_slug>/<level:04d>_<kiserlet>.json.
     Ez NEM gyorsitotar: ujrafutaskor sosem olvassa vissza senki."""
     hiba_dir = hiba_dir or HIBA_DIR
     p = os.path.join(hiba_dir, _modell_slug(model_id), "%04d_%d.json" % (int(level), int(kiserlet)))
@@ -887,6 +931,7 @@ def hiba_naplo_ir(model_id, level, kiserlet, ervenytelen_elemek, hiba_dir=None):
         "kiserlet": kiserlet,
         "ts": datetime.now(timezone.utc).isoformat(),
         "ervenytelen_elemek": ervenytelen_elemek,
+        "elvetett_nem_gyanus_elemek": elvetett_nem_gyanus_elemek or [],
     }
     with open(p, "w", encoding="utf-8") as fh:
         json.dump(adat, fh, ensure_ascii=False, indent=1)
@@ -904,7 +949,7 @@ def cache_olvas(model_id, level, cache_dir=None):
         return None
     with open(p, encoding="utf-8") as fh:
         adat = json.load(fh)
-    if adat.get("prompt_verzio") != PROMPT_VERZIO or adat.get("model") != model_id:
+    if adat.get("prompt_verzio") not in PROMPT_VERZIO_KOMPATIBILIS or adat.get("model") != model_id:
         return None
     return adat
 
@@ -936,7 +981,7 @@ def level_modell_hivas(level, model_cfg, payload, ctx, kep_jpeg_bytes, api_key, 
     if talalat is not None:
         tartalom = talalat["nyers_valasz"]["choices"][0]["message"]["content"]
         try:
-            cserek, _ervenytelen = _cserek_validal(json.loads(tartalom), ctx)
+            cserek, _ervenytelen, _elvetett = _cserek_validal(json.loads(tartalom), ctx)
         except (json.JSONDecodeError, ValueError, KeyError):
             cserek = "hiba"
         return cserek, talalat.get("usage", {}), "cache"
@@ -1309,11 +1354,23 @@ def _onteszt_f_level_dontesek_h4():
     assert len(sorok2) == 1
     assert sorok2[0]["dontes"] == "vitas"
 
-    # csak az egyik modell ad elemet -> hianyzo
+    # O0.5e/1: csak m1 ad elemet -> hianyzo_m1
     ctx3 = {"id_info": {"a": ("sor1", 0, True)}, "id_terkep": {"a": "a"}}
     sorok3, _ = level_dontesek(ctx3, [{"szo_ids": ["a"], "alak": "x", "nyelv": "grc", "extra": False}], [])
     assert len(sorok3) == 1
-    assert sorok3[0]["dontes"] == "hianyzo"
+    assert sorok3[0]["dontes"] == "hianyzo_m1"
+
+    # O0.5e/1: csak m2 ad elemet -> hianyzo_m2
+    sorok3b, _ = level_dontesek(ctx3, [], [{"szo_ids": ["a"], "alak": "x", "nyelv": "grc", "extra": False}])
+    assert len(sorok3b) == 1
+    assert sorok3b[0]["dontes"] == "hianyzo_m2"
+
+    # O0.5e/1: egyik modell sem ad elemet a gyanus azonositora -> valtozatlan
+    # (nem hianyzo -- mindketto megtartana a hOCR-alakot)
+    sorok3c, _ = level_dontesek(ctx3, [], [])
+    assert len(sorok3c) == 1
+    assert sorok3c[0]["dontes"] == "valtozatlan"
+    assert sorok3c[0]["m1"] is None and sorok3c[0]["m2"] is None
 
     # minden gyanus id pontosan egy sorban szerepel (vegyes eset)
     ctx4 = {
@@ -1330,6 +1387,21 @@ def _onteszt_f_level_dontesek_h4():
     assert osszes_id == ["a", "b", "c", "d"]
     egyszeri = [sid for s in sorok4 for sid in s["szo_ids"]]
     assert len(egyszeri) == len(set(egyszeri)), "egy azonosito tobb sorban is szerepel"
+
+    # regresszio: eles alaku (EGESZ-kulcsu id_info + id_terkep, O0.5c) ctx, ami
+    # tobbelemu 'vitas' klasztert termel -- az elso O1.1-ujraindulas pontosan
+    # itt bukott el (KeyError, mert a _klaszter_dontes belso lekepezese
+    # string-kulcsokat var, de egesz-kulcsu id_info-t kapott)
+    ctx5 = {
+        "id_info": {10: ("sor1", 0, True), 11: ("sor1", 1, True), 12: ("sor1", 2, True)},
+        "id_terkep": {10: "word_a", 11: "word_b", 12: "word_c"},
+    }
+    m1d = [{"szo_ids": ["word_a", "word_b"], "alak": "x", "nyelv": "grc", "extra": False}]
+    m2d = [{"szo_ids": ["word_a"], "alak": "x", "nyelv": "grc", "extra": False},
+           {"szo_ids": ["word_c"], "alak": "z", "nyelv": "grc", "extra": False}]
+    sorok5, _ = level_dontesek(ctx5, m1d, m2d)  # nem szabad KeyError-t dobnia
+    osszes_id5 = sorted(sid for s in sorok5 for sid in s["szo_ids"])
+    assert osszes_id5 == ["word_a", "word_b", "word_c"]
 
 
 def _onteszt_g_hiba_nem_cachelt():
@@ -1556,6 +1628,41 @@ def _onteszt_k_rovid_id_visszakepezes():
     )
 
 
+def _onteszt_l_elvetett_nem_gyanus():
+    """O0.5e/4: nem-gyanus, nem-'x' elemek (Qwen-zaj) elvetett_nem_gyanus-ba
+    kerulnek, a hibanaploba is beirodnak, de NEM szamitanak bele az 50%-os
+    kuszobbe -- a lap az egyetlen valodi (gyanus) elemmel is sikeres marad."""
+    tmp = tempfile.mkdtemp(prefix="cremer_onteszt_zaj_")
+    try:
+        ctx = {
+            "id_info": {0: ("sor1", 0, True), 1: ("sor1", 1, False), 2: ("sor1", 2, False)},
+            "id_terkep": {0: "gyanus_a", 1: "tiszta_b", 2: "tiszta_c"},
+        }
+        valasz = _ror_valasz({"cserek": [
+            {"i": [0], "a": "λόγος", "l": "grc"},
+            {"i": [1], "a": "zaj1", "l": "lat"},
+            {"i": [2], "a": "zaj2", "l": "lat"},
+            {"i": [1], "a": "zaj3", "l": "lat"},
+            {"i": [2], "a": "zaj4", "l": "lat"},
+        ]})
+        cserek, usage, _ = openrouter_hivas(
+            "teszt/l-modell", b"x", {"level": 4242}, "kulcs", _json_sema(), ctx,
+            ujraprobalkozas_json=0, posztolo=lambda *a, **k: (valasz, 1),
+            hiba_naplo_dir=tmp,
+        )
+        assert len(cserek) == 1 and cserek[0]["szo_ids"] == ["gyanus_a"], (
+            "a nem-gyanus zaj-elemek nem szabad, hogy a lapot hiba-va tegyek: %r" % cserek
+        )
+        hiba_fajl = os.path.join(tmp, _modell_slug("teszt/l-modell"), "4242_1.json")
+        assert os.path.exists(hiba_fajl)
+        with open(hiba_fajl, encoding="utf-8") as fh:
+            naplo = json.load(fh)
+        assert naplo["ervenytelen_elemek"] == [], "ezek nem valodi semasertesek, nem oda valok"
+        assert len(naplo["elvetett_nem_gyanus_elemek"]) == 4
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
 ONTESZT_AGAK = [
     ("a_bbox_skalazas", _onteszt_a_bbox_skalazas),
     ("b_elonormalizalas", _onteszt_b_elonormalizalas),
@@ -1568,6 +1675,7 @@ ONTESZT_AGAK = [
     ("i_vegponttol_vegpontig", _onteszt_i_vegponttol_vegpontig),
     ("j_elemszintu_validalas", _onteszt_j_elemszintu_validalas),
     ("k_rovid_id_visszakepezes", _onteszt_k_rovid_id_visszakepezes),
+    ("l_elvetett_nem_gyanus", _onteszt_l_elvetett_nem_gyanus),
 ]
 
 
