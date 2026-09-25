@@ -1,6 +1,6 @@
 # CREMER_OCR_BRIEF.md — a Cremer teljes szövegének javítása külső képolvasó modellekkel
 
-*v2 — 2026.09.24 · a v1 jóváhagyva és az O0 kész; a v2 a C1–C4, C6, C7, O1.2 módosításait és az O0.4 tételt hozza (D8–D13); v2.1: összehasonlító pilot a tartalék m2-vel (D14); v2.2: elemszintű validálás (D15); v2.3: tömör azonosítók és kimeneti kulcsok, laponkénti naplóírás (D16); v2.4: `valtozatlan` döntés, Qwen-zaj elkülönítése (D17); v2.5: jelölt m1 (GPT-5 Mini) és próbafutás, döntési szabály pontosítása, max_tokens (D18); v2.6: O0.6 forrásmérés a cremuoft-tételen, a pilot felfüggesztve (D19)*
+*v2 — 2026.09.24 · a v1 jóváhagyva és az O0 kész; a v2 a C1–C4, C6, C7, O1.2 módosításait és az O0.4 tételt hozza (D8–D13); v2.1: összehasonlító pilot a tartalék m2-vel (D14); v2.2: elemszintű validálás (D15); v2.3: tömör azonosítók és kimeneti kulcsok, laponkénti naplóírás (D16); v2.4: `valtozatlan` döntés, Qwen-zaj elkülönítése (D17); v2.5: jelölt m1 (GPT-5 Mini) és próbafutás, döntési szabály pontosítása, max_tokens (D18); v2.6: O0.6 forrásmérés a cremuoft-tételen, a pilot felfüggesztve (D19); **v3: LEZÁRVA 2026.09.25 — az O-pipeline nem folytatódik (D20–D22)***
 
 **Cél.** Hermann Cremer *Biblico-Theological Lexicon of New Testament Greek* (3. angol kiadás,
 Supplementtel) **teljes szövege** gépileg olvasható, görög betűs formában a `konkordancia/`
@@ -17,6 +17,21 @@ index → O4 jelentés ⛔.
 
 **Futtatás:** a felhasználó, helyben (Claude Code, Sonnet), `OPENROUTER_API_KEY` környezeti
 változóval. **A kulcs soha nem kerül a repóba, naplóba vagy commit-üzenetbe.** Push csak kérésre.
+
+---
+
+## Lezárás (v3, 2026.09.25)
+
+**Állapot:** a brief lezárva. Az O0 kész (O0.1–O0.4, O0.5a–f, O0.6.1–O0.6.4); az O0.6.5, az O1–O4 nem indul (D22). A Cremer további sorsa a SZOTAR-ban a `NYITOTT_FELADATOK.md`-ben van nyitva.
+
+**Ami megmarad és újrahasznosítható:**
+- Forrás: archive.org `biblicotheologic00cremuoft` (4. angol kiadás Supplementtel, 1895; Tesseract 5, `grc+eng`). A görög politonikus, szórványos hibákkal; a héber olvashatatlan. SHA-k a `konkordancia/README.md`-ben, nyers fájlok a `konkordancia/_nyers/cremuoft/` alatt (nem verziózva).
+- Koordinátás réteg: `_hocr.html` (a `_djvu.txt`-vel 100/100 token egyezik).
+- Levél–oldal leképezés (élőfej alapján): level 14–605 → oldal = level − 12; level 606–958 → oldal = level − 15. Görög szómutató: level 929, héber mutató: level 949. A lapszámozás kérdéseit a D20 rögzíti.
+- Eszköz: `eszkozok/cremer_o06_meres.py` (nyomtatott sorok klaszterezése, gyanújelek, kivágások); az ellenőrző csomag: `naplok/CREMER_O06_ellenorzes/` (20 mintalevél, 604 sor, 13 ATNEZES-oldal, ítéletek nélkül) és az `ELOKESZITES.md` (`96c4c5d`).
+- A korábbi O1-futások naplói (`naplok/CREMER_O1_*`) és a modell-összevetés (D15–D18) változatlanul megmaradnak.
+
+**Ha a Cremer-szöveg később mégis kell:** célzott, szócikkszintű kinyerés a cremuoftból (szómutató → oldal → levél → szócikkhatár → gyanús görög és minden héber hely a lapképpel összevetve → jóváhagyás), a héber mutatónál egyszeri lapkép-átírással. A leírás és a becslés a `NYITOTT_FELADATOK.md`-ben.
 
 ---
 
@@ -74,7 +89,7 @@ változóval. **A kulcs soha nem kerül a repóba, naplóba vagy commit-üzenetb
 
   Hívás nélküli önteszt: `--onteszt`.
 
-- **O0.6** *(v2.6)* **Forrásmérés a cremuoft-tételen.** Hálózati forgalom csak az archive.org-letöltés, modellhívás nincs (D19). Az O1 addig nem folytatódik, amíg a felhasználó az O0.6.5 alapján nem döntött.
+- **O0.6** *(v2.6; O0.6.1–O0.6.4 kész, `96c4c5d`; az O0.6.5 nem készült el — a brief lezárva, D22)* **Forrásmérés a cremuoft-tételen.** Hálózati forgalom csak az archive.org-letöltés, modellhívás nincs (D19). Az O1 addig nem folytatódik, amíg a felhasználó az O0.6.5 alapján nem döntött.
   - **O0.6.1 Letöltés és rétegazonosítás.** Az archive.org `biblicotheologic00cremuoft` tétel (Cremer, 4. angol kiadás Supplementtel, T. & T. Clark, 1895) fájljai a `konkordancia/_nyers/cremuoft/` alá kerülnek (`.gitignore` alatt): a `_djvu.txt`, a koordinátás szövegrétegek közül mind, amelyik létezik (`_djvu.xml`, `_chocr.html.gz`, `_hocr.html`), valamint a `_jp2.zip`, `_page_numbers.json`, `_meta.xml` és `_scandata.xml`. A SHA-256 értékek a `konkordancia/README.md`-be kerülnek, a tétel azonosítójával. A jelentés rétegenként megadja a görög karakterek számát (U+0370–03FF, U+1F00–1FFF), és azt, hogy a `_djvu.txt` görögje melyik koordinátás rétegben jelenik meg azonos alakban (100 véletlen görög token összevetése, rögzített maggal). **ÁLLJ, ha egyik koordinátás rétegben sem szerepel politonikus görög**, mert szóhelyzet nélkül a lapképes javítás nem célozható.
   - **O0.6.2 Levél ↔ oldal leképezés.** A cremuoft levél–oldal táblája a `_page_numbers.json`-ból készül, a §0.3 formájában (szakaszok eltolással). Ellenőrzés: a §0.5 hat oldalszámán (2, 67, 109, 335, 610, 742) szerepel-e a megadott címszó a cremuoft azonos nyomtatott oldalán. Ugyanígy 10 további címszó a görög szómutatóból (legalább 5 a Supplementből, rögzített maggal), a `cu31924098819406` §0.3 szerinti leképezésével összevetve. Minden eltérés oldalszámmal a jelentésbe kerül. **ÁLLJ, ha bármelyik ellenőrzött címszó nyomtatott oldala eltér.**
   - **O0.6.3 Mintavétel.** 20 levél: a §0.5 hat oldala, a görög szómutató első és a héber mutató első levele, valamint 12 levél rögzített maggal (20260925). A 12-ből 3–3 a főrész első és második feléből, 3 a Supplementből, 3 pedig a laponkénti görögtoken-szám felső negyedéből jön. Ha a mintában 3-nál kevesebb levélen van héberdetektor-találat (O0.6.4), a minta a 2 legtöbb találatú levéllel bővül.
@@ -98,7 +113,7 @@ változóval. **A kulcs soha nem kerül a repóba, naplóba vagy commit-üzenetb
     | C | a `v`+`h`+`m` pontbecslése > 3% | a v2.5 kétmodelles eljárás marad, a cremuoft-alak harmadik szavazatként |
     | Héber | a detektor felidézése < 90% | minden héber kontextusú sor lapképes javításra megy, nem csak a jelöltek |
 
-### O1 — pilot ⛔ *(felfüggesztve az O0.6 döntéséig, D19)*
+### O1 — pilot ⛔ *(nem indul: a brief lezárva, D22; az O2–O4 szintén)*
 - **O1.1** Futás a 20 lapra. Kimenet: `naplok/CREMER_O1_csere.tsv` (`szo_id`, `szo_ids`, `level`, `bbox`, `ocr`, `m1`, `m2`, `dontes`, `alak_igazolt`, `extra`), `naplok/CREMER_O1_koltseg.tsv`. **Összehasonlító futás** (D14): ugyanez a 20 lap m2 = `tartalek_m2` (`google/gemini-3.1-flash-lite`) beállítással, a `naplok/CREMER_O1_lite/` alá. Az m1 válaszai a gyorsítótárból jönnek, új hívás nélkül.
 - **O1.2** Ellenőrző csomag a kézi átnézéshez: 300 véletlen `auto` csere (rögzített maggal), valamint minden `vitas` és `extra_*` sor. Mindegyik mellett a lapkép kivágott része: a szó bbox-a egy sornyi környezettel, legfeljebb 800 px széles JPEG. A kivágások és a tsv **commitolva** kerülnek a `naplok/CREMER_O1_ellenorzes/` alá. Mellé egy GitHubon renderelődő oldalsorozat készül (`ATNEZES_01.md`, `ATNEZES_02.md` …, oldalanként 50 sor), soronként: sorszám, kép, hOCR-alak, m1, m2, döntés és üres ítélet-oszlop. Ezt a felhasználó távoli elérésből nézi át (D13).
 - **O1.3** Jelentés: `naplok/CREMER_O1_jelentes.md` — egyezési arány, `vitas`/`hianyzo`/`hiba`/`extra_*` arány, alakellenőrzés-arány, tényleges költség (a gondolkodási tokenekkel) és a teljes kötetre vetített költség, mindkét m2-re. Mellette az összehasonlítás: a két m2 egyezése ugyanazokon a gyanús szavakon, és azok a szavak, ahol a két beállítás `auto` alakja eltér. **ÁLLJ** — a kézi ellenőrzés és a C7 küszöb után a felhasználó dönt a teljes futásról és az m2 választásáról.
@@ -155,7 +170,8 @@ változóval. **A kulcs soha nem kerül a repóba, naplóba vagy commit-üzenetb
 | `O0.4: eszközjavítás (bbox, szo_ids, usage-költség, gyorsítótár), modellek a configban` | `eszkozok/cremer_ocr_javit.py`, `eszkozok/cremer_ocr_config.json` |
 | `CREMER_OCR_BRIEF.md v2.6` | `CREMER_OCR_BRIEF.md` |
 | `O0.6a: cremuoft-mérés — rétegek, leképezés, mintavétel, ellenőrző csomag` | `eszkozok/cremer_o06_meres.py`, `konkordancia/README.md`, `naplok/CREMER_O06_ellenorzes/` |
-| `O0.6b: cremuoft-mérés — jelentés` | `naplok/CREMER_O06_meres.md`, `naplok/CREMER_O06_ellenorzes/` |
+| `O0.6b: cremuoft-mérés — jelentés` *(nem készült el, D22)* | `naplok/CREMER_O06_meres.md`, `naplok/CREMER_O06_ellenorzes/` |
+| `CREMER_OCR_BRIEF.md v3 — lezárás; NYITOTT_FELADATOK: …` | `CREMER_OCR_BRIEF.md`, `NYITOTT_FELADATOK.md` |
 | `O1: pilot (20 lap)` | `naplok/CREMER_O1_*` |
 | `O2–O3: Cremer teljes szövege, szócikkek, héber mutató` | `konkordancia/Cremer_szoveg.tsv`, `konkordancia/Cremer_csere.tsv`, `konkordancia/Cremer_szocikkek.tsv`, `konkordancia/Cremer_heber_mutato.tsv`, `konkordancia/Cremer_javitasi_naplo.tsv`, `konkordancia/README.md` |
 | `O4: jelentés` | `naplok/CREMER_O4_jelentes.md` |
@@ -200,3 +216,6 @@ Az OPENROUTER_API_KEY-t csak környezeti változóból olvasd; soha ne írd ki, 
 | D17 | `valtozatlan` döntés; a nem gyanús tokenre adott, jelöletlen elem elvetés, nem sémahiba; v5 utasítás (C3, C4) | az O1 második futása: 31,8% `hiba` (a Qwen 7/20 lapon bukott a nem gyanús tokenekre adott jelöletlen elemek miatt), a sikeres lapokon csak kb. 14% `auto`; a `hianyzo` addig a két modell egyetértése is volt (egyik sem javít), ami hamisan rontotta az arányt |
 | D18 | A Qwen kiesik m1-ként; próbafutás GPT-5 Minivel és Flash Lite-tal; döntési szabály: extra az azonosítóból, többszavas elem bontása, írásjel levágása; max_tokens (C1, C4) | a 30 véletlen vitás sor kézi átnézésében kb. 17-ben a Gemini egyértelműen helyes, a Qwen egyben sem; a Qwen hibái: elcsúszott azonosítók, ismétlődő alak (432.), elszabadult generálás (380., 65 536 token); kb. 6 vitás sort csak a döntési szabály okozott. A Gemini 3.8 Flash laponként kb. 0,020 USD, egymagában kb. 19 USD a kötetre, ezért a pár és a plafon a próbafutás után dől el |
 | D19 | A cremuoft-tétel (4. angol kiadás Supplementtel, 1895, Torontói Egyetem) lesz az OCR alapja, ha az O0.6 igazolja; a pilot addig áll (O0.6, O1) | A `cu31924098819406` hOCR-jében nincs görög karakter, ezért a teljes görög réteget a modelleknek kellene újraolvasniuk. A cremuoft `_djvu.txt`-je a vizsgált szócikkekben politonikus görögöt ad, szórványos hibákkal (nem-szó, latinosított alak, valós szóra csere), és a lapszámozás az ellenőrzött helyeken egyezik. A Google Books `yH8TAAAAYAAJ` (1878, 603 oldal, Supplement nélkül) elvetve: eltérő lapszámozás, gyenge görög OCR, kötöttebb letöltési feltételek. A valós szóra cseréket (ὅτε/ὅτι) semmilyen alakellenőrzés nem fogja meg, ezért a döntés ezek arányán múlik, nem az összes hibán. A héber mindkét tételben rossz, az lapképes javítás marad. A C9 változatlanul áll, mert az 1895-ös kiadás is közkincs |
+| D20 | Lapszámozás: az élőfej az irányadó, nem a `_page_numbers.json`; a két kiadás közötti oldalhivatkozás keresési szabálya: a hivatkozott oldal ±2 oldal, címszó-ellenőrzéssel (felülírja a v2.6 O0.6.2 „bármely eltérés → ÁLLJ” feltételét) | A cremuoft JSON-ja a 606–890. levélen 3-mal magasabb oldalszámot ad (lapképpel megerősítve); a cu31924 JSON-ja pontos — a korábbi „cu31924 JSON +1 hibás” jelentés téves volt: az élőfej OCR-je tévesztett (0↔9). Egyezés: a hat §0.5 Abbott-Smith-címszó (2, 67, 109, 335, 610, 742) a cremuoftban a hivatkozott nyomtatott oldalon áll (levél 14, 79, 121, 347, 625, 757). Az angol horgonyos konkordancia (45 pont) viszont −1/−2 oldal eltolást ad, a kötetben fokozatosan növekvően (24 × −1, 21 × −2), ami ellentmond a címszó-egyezésnek. **Az ellentmondás nincs feloldva**; a horgonymódszer torzíthat (oldalhatárra eső horgony). Ezért a tűrés ±2 és a címszó ellenőrzése kötelező |
+| D21 | Módszertani tanulságok a cremuoft-hOCR-ről (O0.6) | (1) az `ocr_line` bekezdésnyi egység, nem nyomtatott sor: a sorokat a szavak y-koordinátájából kell klaszterezni, 150 px-es minimális sorszélességgel (a lapszéli zaj kiszűrésére); ellenőrzés: 3 levélen ±2 soron belül a lapképhez. (2) Lapszámra vonatkozó állítást csak lapképpel ellenőrizve szabad elfogadni: a JSON is, az élőfej-OCR is tévedett. (3) A torz görög címszavak (`Adns`, `4δης` a ᾅδης helyén) szigorú alakegyezéssel nem találhatók: hangjel nélküli, hasonlósági keresés és élőfej kell |
+| D22 | A brief lezárva; a Cremer-szöveg sem teljes kötetes, sem célzott kinyerése nem folytatódik | A Cremer szövege angol, fordítás nélkül nem kerül a magyar lexikoncikkbe; tartalmi hozzájárulását (klasszikus → LXX → ÚSZ jelentéstörténet) a TBESG, az Abbott-Smith és a LXX-adatok (LXX_OS) nagyrészt lefedik. A célzott kinyerés becsült ráfordítása az ISTENTISZT-001-re (G1941, G2564; a βοάω valószínűleg nincs benne) kb. 2–3 óra átnézés és egy Claude Code-menet, ami a haszonhoz képest nem arányos. Minden eredmény megmarad (Lezárás szakasz); a SZOTAR S7/D8/D12 módosítása (Cremer mint oldalhivatkozás archive.org-linkkel) a `NYITOTT_FELADATOK.md`-ben nyitott döntés |
