@@ -13,6 +13,11 @@ Indoklás-rend (a felhasználó T2.1-utasítása szerint): egyedi a 3 pár-versn
 az Ézs 45:18-nak, az Ézs 24:10-nek és a Jer 4:23 kereszthivatkozás-körének;
 a többi pár nélküli jelölt kategória-indoklást kap; az 5 adathiba-gyanús
 Károli-KH-jelölt rögzített indoklást.
+
+A 2026.09.25-i döntés a javaslatot két ponton módosította (DONTES_SZOVEG,
+KAPCSOLATOK ötödik sora): az Ézs 24:10 indoklása a döntés szövege, és az
+Ézs 24:10 → Ézs 34:11 kapcsolat felvéve. A kimenet ezért már a DÖNTÖTT
+állapot; a T2.2 ebből írja az `adat/`-ot.
 """
 
 import argparse
@@ -63,12 +68,10 @@ EGYEDI = {
     "Ézs 45:18": "Önálló tohu, bohu nélkül — a negatív kritérium kizárja. Tartalmilag a "
                  "legerősebb nem-pár vers: az Úr „nem tohu-nak teremtette” a földet, az 1Móz "
                  "1:2 állapotának kifejezett ellenpontja (Károli: „nem hiába”). Kapcsolatként "
-                 "javasolt (1Móz 1:2 → Ézs 45:18, Kontraszt).",
-    "Ézs 24:10": "Önálló tohu (qirjat-tohu), bohu nélkül — a negatív kritérium kizárja. Az "
-                 "Ézs 24 föld-kiüresítő kerete (24:1, 24:3: bákak) rokon kép, de a mező-"
-                 "kollokáció szerint a versben nincs pusztulás-kísérőszó, Károli pedig "
-                 "erkölcsi jelentésben fordít („álnokság városa”). Kapcsolat nem javasolt; a "
-                 "T3 prózájában említhető.",
+                 "felvéve (1Móz 1:2 → Ézs 45:18, Kontraszt).",
+    # A 2026.09.25-i döntés szövege, szó szerint (a javaslat indoklása hibás volt:
+    # a versben van pusztulás-szó, H7665 nisberá — „rommá lőn”).
+    "Ézs 24:10": None,
     "Mt 24:29": "Kozmikus elsötétülés (nap, hold, csillagok) — a Jer 4:23 „nincsen "
                 "világossága” képével rokon, de lexikai pár nélkül: a fölérendelt fogalom "
                 "felé húz. TSK 35.",
@@ -146,7 +149,18 @@ KAPCSOLATOK = [
      "„nem tohu-nak teremtette, lakásul alkotta” — az 1Móz 1:2 állapota nem a cél; a "
      "végpont nem előfordulás (precedens: KIRALY-001 2Móz 19:6 → 1Pét 2:9)",
      "közepes", "Remez"],
+    # ötödik: a 2026.09.25-i döntés felvette
+    ["Ézs 24:10", "Ézs 34:11", ID, "Párhuzam",
+     "ítélet-kontextusú önálló tohu (qirjat-tohu, „rommá lőn” — H7665) az Ézs 24 "
+     "föld-kiüresítő keretében (24:1, 24:3: H1238 bákak), Edom tohu/bohu-ítéletével "
+     "párhuzamban; a végpont nem előfordulás",
+     "alacsony", "Remez"],
 ]
+
+DONTES_SZOVEG = {
+    "Ézs 24:10": "negatív kritérium: nincs H8414+H0922 pár; ítélet-kontextusú önálló "
+                 "tohu (rommá lőn; Ézs 24:1,3 bákak) — kapcsolatként felvéve",
+}
 
 
 def read_tsv(path):
@@ -183,7 +197,8 @@ def main():
         elif ih in ADATHIBA:
             sor.update(kategoria="adathiba", indoklas=ADATHIBA_INDOK)
         elif ih in EGYEDI:
-            sor.update(kategoria="egyedi", indoklas=NEG + ". " + EGYEDI[ih])
+            sor.update(kategoria="egyedi", indoklas=DONTES_SZOVEG.get(ih)
+                       or NEG + ". " + EGYEDI[ih])
         elif tohu:
             sor.update(kategoria="önálló tohu",
                        indoklas=NEG + " — önálló tohu (a „puszta vidék” vagy a "
@@ -205,8 +220,8 @@ def main():
 
     if a.ir:
         mezok = list(ki[0].keys())
-        szov = ["# T2.1 minősítési JAVASLAT (TEREMT002_KUTATAS_BRIEF.md) — döntésre vár, "
-                "nem adat. gerinc_elem/strong/fo_elofordulas/pardes_szint/funkcio csak "
+        szov = ["# T2.1 minősítés, a 2026.09.25-i döntés szerint (TEREMT002_KUTATAS_BRIEF.md). "
+                "A T2.2 ebből ír. gerinc_elem/strong/fo_elofordulas/pardes_szint/funkcio csak "
                 "a beépítendő sorokon.", "\t".join(mezok)]
         for s in ki:
             for v in s.values():
@@ -216,7 +231,7 @@ def main():
             ("\n".join(szov) + "\n").encode("utf-8"))
         kfej = ["forras_igehely", "cel_igehely", "id", "tipus", "funkcio",
                 "bizonyossag", "pardes_szint"]
-        kszov = ["# T2.1 kapcsolat-JAVASLAT, a kapcsolatok.tsv alakjában — döntésre vár.",
+        kszov = ["# T2.1 kapcsolatok, a 2026.09.25-i döntés szerint (5), a kapcsolatok.tsv alakjában.",
                  "\t".join(kfej)] + ["\t".join(k) for k in KAPCSOLATOK]
         (ROOT / "naplok" / "T2_TEREMT002_kapcsolatok_javaslat.tsv").write_bytes(
             ("\n".join(kszov) + "\n").encode("utf-8"))
