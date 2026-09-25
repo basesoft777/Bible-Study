@@ -2,7 +2,7 @@
 nyelv	sorrend	szerep	forras	allapot
 gorog	1	Alapjelentés	TBESG	adatosítva
 gorog	2	Mélységi szócikk	Thayer	adatosítva
-gorog	3	Teológiai szócikk	Cremer (1895)	nincs adatosítva
+gorog	3	Teológiai szócikk	nincs (Cremer kivezetve, SZOTAR D16)	nincs adatosítva
 gorog	4	Jelentésszerkezet, szemantikai mező	UBS DNTG (Louw–Nida)	adatosítva
 gorog	5	Tömör jelentés, előfordulás	UBS DNTG glossza + referencia-szám; Mounce kiegészítő	adatosítva
 gorog	6	LXX-híd	az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LXX_OS)	adatosítva
@@ -12,7 +12,7 @@ gorog	9	Versenkénti jelentés	UBS DNTG (szópozícióig)	adatosítva
 gorog	10	Kiejtés (magyaros)	kiejtes.py szabálytábla	nincs adatosítva
 heber	1	Alapjelentés	TBESH	adatosítva
 heber	2	Mélységi szócikk	BDB	adatosítva
-heber	3	Teológiai szócikk	Girdlestone (1897) + Cremer héber mutatója; TWOT-szám hivatkozásként	nincs adatosítva
+heber	3	Teológiai szócikk	Girdlestone (1897); TWOT-szám hivatkozásként	nincs adatosítva
 heber	4	Jelentésszerkezet, szemantikai mező	UBS DBH (SDBH)	adatosítva
 heber	5	Tömör jelentés, előfordulás	UBS DBH glossza + referencia-szám	nincs adatosítva
 heber	6	LXX-híd	LXX-fordítói döntés versenként: mely görög szó adja vissza (LXX_OS + adat/lxx_dontesek.tsv; a lexikonoldal 3. szakasza)	adatosítva
