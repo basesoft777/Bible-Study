@@ -555,11 +555,11 @@ hozzá `elofordulasok` sor, amelyben a proveniencia elférne.
 | Mező | Típus | Kötelező | Leírás |
 |---|---|---|---|
 | `id` | motívum-id | ✔ | Idegen kulcs a `motivumok.tsv`-re. |
-| `lepes` | zárt: `A5` \| `B2` \| `B4` | ✔ | A `MUNKAMENET.md` lépés-kódja, amely a lekérdezést futtatta. |
+| `lepes` | zárt: `A5` \| `B2` \| `B3` \| `B4` | ✔ | A `MUNKAMENET.md` lépés-kódja, amely a lekérdezést futtatta. A `B3` a mező-hipotézis támasztó lekérdezése (`lekerdez.py domen`) — maga a hipotézis kézi, sort nem kap (TEREMT002_KUTATAS_BRIEF.md, D2, 2026.09.25). |
 | `proveniencia` | `PROVENIENCIA` | ✔ | A `lekerdez.py` utolsó sora **szó szerint**, a `proveniencia: ` előtag nélkül — l. 1.5. |
 | `datum` | `DATUM` | ✔ | |
 
-Minden A5/B2/B4-lekérdezés sort kap, **0 találatnál is** — a nyom a
+Minden A5/B2/B3/B4-lekérdezés sort kap, **0 találatnál is** — a nyom a
 lekérdezéshez tartozik, nem a találathoz. A lefedett dataset a `proveniencia`
 `forras` kulcsából **származtatott**: a `+` mentén bontott fájlnevek, a
 `datasetek.tsv` `fajl` mezőjének alapnevével pontos egyezéssel (nem

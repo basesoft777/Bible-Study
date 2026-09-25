@@ -1,0 +1,68 @@
+# T2.1 minősítés, a 2026.09.25-i döntés szerint (TEREMT002_KUTATAS_BRIEF.md). A T2.2 ebből ír. gerinc_elem/strong/fo_elofordulas/pardes_szint/funkcio csak a beépítendő sorokon.
+id	igehely	javaslat	kategoria	indoklas	karoli_szo	azonositas_modja	megbizhatosag	gerinc_elem	strong	fo_elofordulas	pardes_szint	funkcio
+TEREMT-002	1Móz 1:2	beépítve	pár	A pár első előfordulása, a föld (há-árec) állítmányaként: a teremtés előtti, rendezetlen állapot. Kollokáció-találat; a TEREMT-001-gyel közös vers, de más mondatrészen és más funkcióval (gate 3. kérdés).	kietlen és puszta	tartalom-alapú	magas	tohu+bohu	H8414+H0922	1Móz 1:2	Peshat	prototípus: a föld teremtés előtti, rendezetlen állapota, amelyre a Jer 4:23 és az Ézs 34:11 ítélet-szövege visszautal
+TEREMT-002	1Sám 12:21	elutasítva	önálló tohu	negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben).	hiábavalóságok	tartalom-alapú	magas					
+TEREMT-002	5Móz 32:10	elutasítva	önálló tohu	negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben).	zordon, sivatag vadonban	tartalom-alapú	közepes					
+TEREMT-002	Jer 4:23	beépítve	pár	A pár második előfordulása: Júda ítélete a föld visszatérése az 1Móz 1:2 állapotába; a 4:23–26 négy „nézek”-sora a teremtési rend elemeit (világosság, hegyek, ember, madarak, termőföld) sorra visszavonja. Károli szó szerint az 1Móz 1:2 fordítását ismétli. TSK 1Móz 1:2 ↔ Jer 4:23: 84 / 21 szavazat.	kietlen és puszta	tartalom-alapú	magas	tohu+bohu	H8414+H0922	Jer 4:23	Remez	ítélet-alkalmazás Júdára: a föld visszarendeződése a teremtés előtti állapotba (4:23–26)
+TEREMT-002	Jób 6:18	elutasítva	önálló tohu	negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben).	sivatagba	tartalom-alapú	magas					
+TEREMT-002	Jób 12:24	elutasítva	önálló tohu	negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben).	pusztában	tartalom-alapú	magas					
+TEREMT-002	Jób 26:7	elutasítva	önálló tohu	negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben).	üresség	tartalom-alapú	magas					
+TEREMT-002	Zsolt 107:40	elutasítva	önálló tohu	negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben).	kietlenben	tartalom-alapú	magas					
+TEREMT-002	Ézs 24:10	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár; ítélet-kontextusú önálló tohu (rommá lőn; Ézs 24:1,3 bákak) — kapcsolatként felvéve	álnokság	tartalom-alapú	magas					
+TEREMT-002	Ézs 29:21	elutasítva	önálló tohu	negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben).	csalárdul	tartalom-alapú	magas					
+TEREMT-002	Ézs 34:11	beépítve	pár	A pár harmadik előfordulása: Edom ítélete; a tohu a mérőkötél (kav), a bohu a függőón kövei (avné) — az építő mérés rombolásra fordítva. Károli itt másként fordít (pusztaság … semmiség), a héber pár azonos.	pusztaság … semmiségnek	tartalom-alapú	magas	tohu+bohu	H8414+H0922	Ézs 34:11	Remez	ítélet-alkalmazás Edomra: a tohu/bohu mint a rombolás mérőeszköze
+TEREMT-002	Ézs 40:17	elutasítva	önálló tohu	negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben).	ürességnél	tartalom-alapú	magas					
+TEREMT-002	Ézs 40:23	elutasítva	önálló tohu	negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben).	hiábavalókká	tartalom-alapú	magas					
+TEREMT-002	Ézs 41:29	elutasítva	önálló tohu	negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben).	hiábavalóság	tartalom-alapú	magas					
+TEREMT-002	Ézs 44:9	elutasítva	önálló tohu	negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben).	hiábavalók	tartalom-alapú	magas					
+TEREMT-002	Ézs 45:18	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. Önálló tohu, bohu nélkül — a negatív kritérium kizárja. Tartalmilag a legerősebb nem-pár vers: az Úr „nem tohu-nak teremtette” a földet, az 1Móz 1:2 állapotának kifejezett ellenpontja (Károli: „nem hiába”). Kapcsolatként felvéve (1Móz 1:2 → Ézs 45:18, Kontraszt).	hiába	tartalom-alapú	magas					
+TEREMT-002	Ézs 45:19	elutasítva	önálló tohu	negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben).	hiába	tartalom-alapú	magas					
+TEREMT-002	Ézs 49:4	elutasítva	önálló tohu	negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben).	semmire	tartalom-alapú	magas					
+TEREMT-002	Ézs 59:4	elutasítva	önálló tohu	negatív kritérium: nincs H8414+H0922 pár — önálló tohu (a „puszta vidék” vagy a „semmiség/hiábavalóság” jelentésben).	haszontalanban	tartalom-alapú	magas					
+TEREMT-002	Zsolt 104:30	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Zsolt 33:6	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Ézs 40:12	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Ézs 40:14	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Jób 26:14	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Náh 2:10	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Mt 24:29	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. Kozmikus elsötétülés (nap, hold, csillagok) — a Jer 4:23 „nincsen világossága” képével rokon, de lexikai pár nélkül: a fölérendelt fogalom felé húz. TSK 35.								
+TEREMT-002	Mk 13:24	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. Az Mt 24:29 szinoptikus párhuzama: elsötétülés, tohu/bohu nélkül. TSK 29.								
+TEREMT-002	Mk 13:25	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. Csillaghullás, az egek megrendülése — pár nélkül. TSK 29.								
+TEREMT-002	Ézs 13:10	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. Babilon-ítélet égi elsötétüléssel — a pusztulás-kép, pár nélkül. TSK 26.								
+TEREMT-002	Jóel 3:15	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. Nap és hold elsötétülése — pár nélkül. TSK 26.								
+TEREMT-002	Jóel 3:16	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. Az egek és a föld megrendülése — pár nélkül; a vers ráadásul oltalom-ígérettel zárul. TSK 26.								
+TEREMT-002	Luk 21:25	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. Jelek a napban, holdban, csillagokban — pár nélkül. TSK 21.								
+TEREMT-002	Luk 21:26	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. Az egek erősségeinek megrendülése — pár nélkül. TSK 21.								
+TEREMT-002	Ez 32:7	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. A fáraó-sirató égi elsötétülése — pár nélkül. TSK 20.								
+TEREMT-002	Ez 32:8	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. „Sötétséget bocsátok földedre” — a Jer 4:23 fény-hiányához legközelebb álló kép, de pár nélkül. TSK 20.								
+TEREMT-002	Ámós 8:9	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. Délben lenyugvó nap — pár nélkül. TSK 18.								
+TEREMT-002	Jóel 2:10	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. Föld- és ég-rengés, elsötétülés — pár nélkül. TSK 18.								
+TEREMT-002	Jóel 2:30	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. Jelek az égen és a földön (vér, tűz, füst) — pár nélkül, elsötétülés sincs benne. TSK 17.								
+TEREMT-002	Jóel 2:31	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. A nap sötétséggé, a hold vérré válik — pár nélkül. TSK 17.								
+TEREMT-002	ApCsel 2:19	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. A Jóel 2:30 idézete — pár nélkül. TSK 17.								
+TEREMT-002	ApCsel 2:20	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. A Jóel 2:31 idézete — pár nélkül; a LXX-híd sem köti a tohu-hoz (a Jer 4:23 LXX-e οὐθέν). TSK 17.								
+TEREMT-002	Ézs 5:30	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. „A földre néz, de ímé sűrű sötétség” — a Jer 4:23 szerkezetének legközelebbi párja (néz → föld → sötétség), de pár nélkül. TSK 16.								
+TEREMT-002	Mt 24:35	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. „Az ég és a föld elmúlnak” — elmúlás, nem visszarendeződés; pár nélkül. TSK 15.								
+TEREMT-002	Ézs 24:19	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. A föld összetörése az Ézs 24 keretében (l. Ézs 24:10) — pár nélkül. TSK 12.								
+TEREMT-002	Ézs 24:23	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. A hold és a nap megszégyenülése a Sion-királyság előtt — pár nélkül. TSK 12.								
+TEREMT-002	Jel 20:11	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. A föld és az ég eltűnése a trón elől — megszűnés, nem a teremtés előtti állapot; pár nélkül. TSK 12.								
+TEREMT-002	Jer 9:10	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. A Jer 4:25 visszhangja („az ég madaraitól fogva a barmokig minden elköltözik”), tehát a Jer 4:23–26 egység motívum-rokona — de tohu/bohu nélkül. TSK 8.								
+TEREMT-002	Jer 9:15	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. Károli-KH a Jer 4:23-hoz: üröm és mérges víz — tartalmi kapcsolat nem látszik; pár nélkül. (Az igazítást nem vizsgáltam.)								
+TEREMT-002	Zsolt 80:6-7	elutasítva	egyedi	negatív kritérium: nincs H8414+H0922 pár. Károli-KH a Jer 4:23-hoz: könnyek kenyere, szomszédok csúfja — tartalmi kapcsolat nem látszik; pár nélkül. (Az igazítást nem vizsgáltam.)								
+TEREMT-002	2Kir 21:13	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Sir 2:8	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Sof 2:14	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Jel 18:2	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Ézs 14:23	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	2Sám 8:2	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Mal 1:3	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Mal 1:4	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Jel 18:21	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Jel 18:23	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Ézs 13:20	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Ézs 13:22	elutasítva	kereszthivatkozás	negatív kritérium: nincs H8414+H0922 pár — kereszthivatkozás-célpont, a versben sem tohu, sem bohu.								
+TEREMT-002	Ézs 66:12	elutasítva	adathiba	adathiba: az Isa.34.11 lista az Isa.40.11 másolata								
+TEREMT-002	Ez 34:12-16	elutasítva	adathiba	adathiba: az Isa.34.11 lista az Isa.40.11 másolata								
+TEREMT-002	Ján 10:11	elutasítva	adathiba	adathiba: az Isa.34.11 lista az Isa.40.11 másolata								
+TEREMT-002	1Móz 33:13	elutasítva	adathiba	adathiba: az Isa.34.11 lista az Isa.40.11 másolata								
+TEREMT-002	4Móz 11:12	elutasítva	adathiba	adathiba: az Isa.34.11 lista az Isa.40.11 másolata								
