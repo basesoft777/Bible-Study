@@ -251,14 +251,48 @@ def load_kjv_max(verse_pairs_path):
     return idx
 
 
+MT_MAX_CACHE = None
+
+
+def load_mt_max():
+    """(Karoli_konyv, fejezet) -> legmagasabb MT/heber-versszam, a
+    TAHOT_kivonat.tsv-bol (KK1/KK1b H2-javitas: a Karoli sok fejezetben
+    ezt koveti, nem a KJV-t)."""
+    global MT_MAX_CACHE
+    if MT_MAX_CACHE is not None:
+        return MT_MAX_CACHE
+    idx = {}
+    path = os.path.join(KONKORDANCIA_DIR, "TAHOT_kivonat.tsv")
+    with open(path, encoding="utf-8") as f:
+        f.readline()
+        for line in f:
+            parts = line.rstrip("\n").split("\t")
+            if not parts or not parts[0]:
+                continue
+            m = re.match(r"^(\S+) (\d+):(\d+)$", parts[0])
+            if not m:
+                continue
+            book, ch, v = m.group(1), int(m.group(2)), int(m.group(3))
+            key = (book, ch)
+            idx[key] = max(idx.get(key, 0), v)
+    MT_MAX_CACHE = idx
+    return idx
+
+
 def build_dup_kjv_terkep(vp_for_book):
-    """(kjv_fejezet, kjv_vers) -> a legmagasabb (fejezet,vers) grk_ref, ami
-    ráhivatkozik (egyertelmu mt_refs eseten). Ha egy KJV-célra több LXX-forrás
-    is mutat (Zsoltár-felirat, ami a LXX-ben több sorra bomlik, de a KJV nem
-    számozza külön), csak a LEGMAGASABB (utolsó, a tartalmi folytatáshoz
-    tartozó) LXX-forrás tekinthető felbonthatónak — a korábbi(ak) a felirat
-    része, KJV-megfelelő nélkül (l. LEXV2_1_BRIEF.md V1.3a "ellenpróba")."""
+    """(kjv_fejezet, kjv_vers) -> (a legmagasabb (fejezet,vers) grk_ref, ami
+    ráhivatkozik, hány grk_ref hivatkozik ráhivatkozik osszesen). Ha egy
+    KJV-célra TÖBB LXX-forrás is mutat (Zsoltár-felirat, ami a LXX-ben több
+    sorra bomlik, de a KJV nem számozza külön), csak a LEGMAGASABB (utolsó,
+    a tartalmi folytatáshoz tartozó) LXX-forrás tekinthető felbonthatónak —
+    a korábbi(ak) a felirat része, KJV-megfelelő nélkül (l. LEXV2_1_BRIEF.md
+    V1.3a "ellenpróba"). A darabszám kell ahhoz, hogy a KK4-es általános
+    MT-ág (l. resolve_karoli) meg tudja különböztetni a valódi (1:1,
+    nem-ambiguus) eseteket a ténylegesen többes hivatkozásoktól — enélkül
+    minden sima 1:1 eset is tévesen "nem a legmagasabb forrás"-ként bukna
+    el (l. KK6 F5 regresszió, 983 hibás Zsoltár-sor)."""
     max_forras = {}
+    darab = {}
     for grk_ref, (mt_book, mt_refs, method) in vp_for_book.items():
         if method == "unpaired" or len(mt_refs) != 1:
             continue
@@ -268,23 +302,68 @@ def build_dup_kjv_terkep(vp_for_book):
             continue
         key = (int(m.group(1)), int(m.group(2)))
         grk_key = (int(gm.group(1)), int(gm.group(2)))
+        darab[key] = darab.get(key, 0) + 1
         if key not in max_forras or grk_key > max_forras[key]:
             max_forras[key] = grk_key
-    return max_forras
+    return {key: (grk_key, darab[key]) for key, grk_key in max_forras.items()}
 
 
 def resolve_karoli(karoli_book, book_key, fejezet, vers, mt_refs, method, kezi_fn,
-                    karoli_max_idx, kjv_max_idx, dup_kjv_terkep):
-    """V1.3a: (1) KEZI_ELTOLASOK (raw fejezet/vers alapú, tartalmilag
-    egyeztetett táblák) elsőbbséget élveznek; (2) egyébként a KJV-igehely
-    (verse_pairs.jsonl) + fejezet-szintű versszám-egyezés/Zsoltár cím-eltolás;
-    (3) minden más eltérés üresen marad. A régi LXX_versificacios_terkep.tsv-t
+                    karoli_max_idx, kjv_max_idx, dup_kjv_terkep,
+                    mt_max_idx=None, kezi_aktiv_fejezetek=None):
+    """V1.3b (KAROLI_KULCS_BRIEF.md KK4, G4). Két javítás a régi (V1.3a)
+    algoritmushoz képest, a KK1/KK1b-menet által feltárt H1/H2 okokra:
+
+    (1) H1 javítás — a `KEZI_ELTOLASOK`-függvény `None`-ja a ténylegesen
+    érintett (legalább egy explicit eltolást tartalmazó) fejezetben
+    **identitást** jelent, nem "nem az én dolgom"-ot — de csak akkor, ha
+    az eredmény egy valóban létező Károli-vers (a `karoli_max_idx`
+    korlátozza — l. KK6 F5 regresszió: enélkül a Jób 40:25–32 hibásan
+    identitást kapott volna a 41. fejezetbe tartozó vers helyett,
+    mert a `job_38_41_eltolas` csak a 40:1–24 tartományt kezeli explicit
+    módon, a 25+ már a 41. fejezetbe tartozik és a régi fejezet-szintű
+    őrnek kell megoldania).
+
+    (2) H2 javítás — ha a Károli egy fejezetben a héber/MT-számozást
+    követi (nem a KJV-t: `karoli_max_idx == mt_max_idx`, de
+    `!= kjv_max_idx`), a Zsoltár-cím-eltolásnál már bevált `d`-eltolásos
+    képlet (`Károli-vers = KJV-vers + d`) **általánosan** alkalmazandó,
+    nem csak a Zsoltárokra és nem csak `d∈{1,2}`-re. **Fontos:** ez NEM
+    a `konkordancia/Karoli_versmegfeleltetes.tsv` KJV-oldali
+    visszakeresésén (reverse lookup) alapul — az első implementáció ezt
+    próbálta, de az F5 regressziós ellenőrzés 983 hibás Zsoltár-sort
+    talált (a `verse_pairs.jsonl` `mt_refs` mezője már KJV-számozású,
+    nem valódi MT-számozású, ezért a tábla visszakeresése a cím-eltolásos
+    fejezetekben szisztematikusan rossz célt adott — l. `naplok/KAROLI_KK6_regresszio.tsv`
+    és a KK6 jelentés "F5" szakasza). A javított, közvetlen `d`-képlet
+    ugyanazt az eredményt adja, mint amit a tábla helyesen KÉNE hogy
+    adjon, de nem függ egy hibásan felépíthető visszakereső indextől.
+
+    A régi fejezet-szintű versszám-egyezés (d==0) és a régi, szűkebb
+    Zsoltár-cím-eltolás-ág (csak biztonsági tartalékként, gyakorlatilag
+    sosem aktiválódik, mert az új, általános MT-ág korábban lefedi)
+    megmarad. A `KAROLI_KULCS_BRIEF.md` F3 szerint az `EGYIK_SEM`-osztályú
+    fejezetek (nincs sem KJV-, sem MT-, sem KEZI-egyezés) szándékosan
+    `szamozas_elteres` maradnak. A régi `LXX_versificacios_terkep.tsv`-t
     (studybible.info-számozásra épült) ez a menet NEM használja (l.
     LEXV2_1_BRIEF.md döntésnapló v4)."""
+    mt_max_idx = mt_max_idx or {}
+    kezi_aktiv_fejezetek = kezi_aktiv_fejezetek or set()
+
     if kezi_fn:
         cel = kezi_fn(fejezet, vers)
         if cel is not None:
             return f"{karoli_book} {cel[0]}:{cel[1]}", "kezi_eltolas_tabla"
+        if fejezet in kezi_aktiv_fejezetek:
+            # KK1 H1: a fuggveny None-ja itt "nincs eltolas ezen a versen"-t
+            # jelent, nem "kivul esik a hataskoromon" -- korabban a kod
+            # tevesen a lenti fejezet-szintu orre esett vissza, es emiatt a
+            # teljes fejezetet szamozas_elteres-kent vesztette el. DE csak
+            # akkor fogadjuk el, ha valoban letezik ilyen Karoli-vers (F5
+            # regresszio, Job 40:25-32 mintajara).
+            helyi_max = karoli_max_idx.get((karoli_book, fejezet))
+            if helyi_max is not None and vers <= helyi_max:
+                return f"{karoli_book} {fejezet}:{vers}", "kezi_eltolas_tabla"
 
     if method == "unpaired" or not mt_refs:
         return "", "nincs_mt_parositas"
@@ -305,13 +384,29 @@ def resolve_karoli(karoli_book, book_key, fejezet, vers, mt_refs, method, kezi_f
     if d == 0:
         return f"{karoli_book} {kjv_ch}:{kjv_v}", ""
 
-    if karoli_book == "Zsolt" and d in (1, 2):
-        legmagasabb = dup_kjv_terkep.get((kjv_ch, kjv_v))
-        if legmagasabb != (fejezet, vers):
-            # a cél-KJV-vershez tobb LXX-forras is mutat (cim-tobbesertelmuseg);
-            # ez itt NEM a legmagasabb (utolso, tartalmi) forras -- felirat-sor,
-            # KJV-megfelelő nélkül marad ("ellenpróba", l. docstring)
+    mt_max = mt_max_idx.get((karoli_book, kjv_ch))
+    if mt_max is not None and karoli_max == mt_max:
+        # KK1 H2: a Karoli ebben a fejezetben az MT-szamozast koveti.
+        # Ugyanaz a d-eltolasos keplet, mint a regi Zsoltar-cim-ag, de
+        # barmely konyvre/fejezetre es barmely d-re altalanositva.
+        bejegyzes = dup_kjv_terkep.get((kjv_ch, kjv_v))
+        if bejegyzes is not None:
+            legmagasabb, darab = bejegyzes
+            if darab > 1 and legmagasabb != (fejezet, vers):
+                # tobb LXX-forras mutat ugyanarra a KJV-celra (cim-tobbesertelmuseg);
+                # csak a legmagasabb (utolso, tartalmi) forras kapja meg az eltolast
+                return "", "szamozas_elteres"
+        uj_vers = kjv_v + d
+        if uj_vers < 1 or uj_vers > karoli_max:
             return "", "szamozas_elteres"
+        return f"{karoli_book} {kjv_ch}:{uj_vers}", "mt_szamozas_kovetes"
+
+    if karoli_book == "Zsolt" and d in (1, 2):
+        bejegyzes = dup_kjv_terkep.get((kjv_ch, kjv_v))
+        if bejegyzes is not None:
+            legmagasabb, darab = bejegyzes
+            if darab > 1 and legmagasabb != (fejezet, vers):
+                return "", "szamozas_elteres"
         return f"{karoli_book} {kjv_ch}:{kjv_v + d}", "zsolt_felirat_eltolas"
 
     return "", "szamozas_elteres"
@@ -326,12 +421,24 @@ def process_book(slug, morph_dir, verse_pairs_idx, greek_word_list, proveniencia
     dup_kjv_terkep = {}
     karoli_max_idx = {}
     kjv_max_idx = {}
+    mt_max_idx = {}
+    kezi_aktiv_fejezetek = set()
     if karoli_book:
         eng_name = KAROLI_TO_ENGLISH_FOR_KEZI.get(karoli_book)
         kezi_fn = KEZI_ELTOLASOK.get(eng_name) if eng_name else None
         dup_kjv_terkep = build_dup_kjv_terkep(vp_for_book)
         karoli_max_idx = load_karoli_max()
         kjv_max_idx = load_kjv_max(verse_pairs_path)
+        mt_max_idx = load_mt_max()
+        if kezi_fn:
+            karoli_max_local = load_karoli_max()
+            for (b, ch) in karoli_max_local:
+                if b != karoli_book:
+                    continue
+                for vs in range(1, karoli_max_local[(b, ch)] + 10):
+                    if kezi_fn(ch, vs) is not None:
+                        kezi_aktiv_fejezetek.add(ch)
+                        break
 
     morph_path = os.path.join(morph_dir, f"{slug}.json")
     with open(morph_path, encoding="utf-8") as f:
@@ -341,6 +448,7 @@ def process_book(slug, morph_dir, verse_pairs_idx, greek_word_list, proveniencia
     stats = {
         "karoli_ok": 0, "zsolt_felirat_eltolas": 0, "szamozas_elteres": 0,
         "nincs_mt_parositas": 0, "nincs_karoli_konyv": 0, "kezi_eltolas_tabla": 0,
+        "mt_szamozas_kovetes": 0,
     }
     hiany_fejezetek = set()
     chapter_mismatch_warns = []
@@ -363,6 +471,7 @@ def process_book(slug, morph_dir, verse_pairs_idx, greek_word_list, proveniencia
             igehely_karoli, karoli_ok = resolve_karoli(
                 karoli_book, book_key, fejezet, vers, mt_refs, method, kezi_fn,
                 karoli_max_idx, kjv_max_idx, dup_kjv_terkep,
+                mt_max_idx, kezi_aktiv_fejezetek,
             )
             if igehely_karoli == "":
                 stats[karoli_ok] += 1
@@ -501,6 +610,7 @@ def main():
         osszes_stat = {
             "karoli_ok": 0, "zsolt_felirat_eltolas": 0, "szamozas_elteres": 0,
             "nincs_mt_parositas": 0, "nincs_karoli_konyv": 0, "kezi_eltolas_tabla": 0,
+            "mt_szamozas_kovetes": 0,
         }
         osszes_hiany = {}
         osszes_chapter_warns = []

@@ -55,7 +55,7 @@ előkészítése, és a régi LXX-kivonat licenc-tisztázatlanságát (N15) oldj
   sor) — emiatt nem használható elsődleges forrásként a lemma/Strong-adathoz,
   l. `LEXV2_1_BRIEF.md` döntésnapló v3.
 
-## 2. Károli-vers-megfeleltetés (G5, V1.3a)
+## 2. Károli-vers-megfeleltetés (G5, V1.3b)
 
 **V1.3a (2026.09.22) — a V1.3 első változata a régi
 `LXX_versificacios_terkep.tsv`-t használta elsődleges forrásként; ez hibás
@@ -67,28 +67,44 @@ Károli-célt adott (pl. LXX(Zsolt) 50:3 → hibásan "Zsolt 50:3" a helyes
 "Zsolt 51:3" helyett). A térkép ezért **teljesen kikerült** az
 `igehely_karoli` számításából (l. `LEXV2_1_BRIEF.md` döntésnapló v4).
 
-Az új algoritmus:
+**V1.3b (2026.09.25, `KAROLI_KULCS_BRIEF.md` KK4) — a KK1/KK1b-menet
+(`claude/karoli-kulcs-35158` ág) feltárta, hogy a V1.3a algoritmus két
+ponton rendszeresen elvesztette a valódi Károli-célt** (l.
+`naplok/KAROLI_KK1_jelentes.md`, `naplok/KAROLI_KK1b_hatas.md`):
 
-1. **`eszkozok/lxx_kivonat_fetch_v2.py` `KEZI_ELTOLASOK`** — a Dániel 3/4,
-   Numeri 12/13, Jób 38–40 és Prédikátor tartalmilag egyeztetett, dokumentált
-   kézi eltolás-táblái (l. `LXX_kivonat_README.md` 4. szakasz) — ezek a raw
-   (fejezet,vers)-ből számolnak, függetlenek a KJV-lépéstől, elsőbbséget
-   élveznek.
-2. **KJV-alapú fejezet-egyezés**: a `verse_pairs.jsonl` `mt_refs` adja a
-   KJV-igehelyet; ha az adott KJV-fejezetben a `Karoli_1908.tsv` legmagasabb
-   versszáma megegyezik a KJV legmagasabb versszámával abban a fejezetben,
-   `igehely_karoli` = a KJV-cím (a fejezet:vers változatlanul átvéve).
-3. **Zsoltár cím-eltolás** (`karoli_ok=zsolt_felirat_eltolas`): ha a Zsoltár-
-   fejezetben a Károli legmagasabb versszáma pontosan `d` (∈{1,2}) híján
-   egyezik a KJV-vel (a Károli a zsoltárcímet önálló versként számozza, a KJV
-   nem), akkor `Károli-vers = KJV-vers + d`. **Ellenpróba**: ha egy KJV-célra
-   több LXX-forrás is mutat (a cím a LXX-ben több sorra bomlik, mint a KJV-ben
-   — pl. LXX(Zsolt) 3:1 ÉS 3:2 is KJV 3:1-re mutat), csak a **legmagasabb**
-   (utolsó, a tartalmi folytatáshoz tartozó) LXX-forrás kapja meg az
-   eltolást; a korábbi cím-sor(ok) KJV-megfelelő nélkül maradnak
-   (`karoli_ok=szamozas_elteres`) — nem találunk ki szétosztást.
-4. Minden más eltérés (a fejezet Károli/KJV versszáma nem egyezik, és nem
-   Zsoltár d∈{1,2} eset): `igehely_karoli` üres, `karoli_ok=szamozas_elteres`.
+- **H1 — a `KEZI_ELTOLASOK`-függvény `None`-ja tévesen "nem az én
+  hatáskörömbe tartozik"-ként lett kezelve**, a fejezet-szintű
+  versszám-őrre esett vissza, ami a teljes fejezetet elvesztette akkor
+  is, ha csak a fejezet VÉGE volt eltolva (pl. Jób 38:1–38 valójában
+  változatlan, csak a 38:39–41 tolódik át a 39. fejezetbe — a régi kód
+  emiatt Jób 38:1–38-at is `szamozas_elteres`-nek jelölte).
+- **H2 — a Károli sok könyvben/fejezetben a héber (MT) versszámozást
+  követi, nem a KJV-t** (pl. egész Jónás könyve, Ézsaiás 63, Józsué 13),
+  amit a régi algoritmus egyáltalán nem ismert fel — csak a KJV-egyezést
+  és a Zsoltár-cím speciális esetét vizsgálta.
+
+Az új (V1.3b) algoritmus egy külön, **`konkordancia/Karoli_versmegfeleltetes.tsv`**
+kulcstáblára épül (939 fejezet-osztályozás alapján generálva — l.
+`naplok/KAROLI_KK1b_kulcstabla_tervezet.tsv` és `naplok/KAROLI_KK4_tabla_veglegesit.py`):
+
+1. **A kulcstábla raw-alapú (KEZI-osztályú) sorai** — a `KEZI_ELTOLASOK`
+   ténylegesen érintett fejezeteinek MINDEN verse (a shiftelt ÉS a
+   változatlan is), elsőbbséget élveznek.
+2. **`eszkozok/lxx_kivonat_fetch_v2.py` `KEZI_ELTOLASOK`** — közvetlen
+   hívás tartalék, ha a fenti táblában nincs a nyers (fejezet,vers)-hez
+   sor, de a fejezet a függvény tényleges hatáskörében van, a `None` most
+   már **identitást** jelent (H1 javítása), nem továbblépést.
+3. **A kulcstábla KJV/MT-alapú sorai** — mind a `KJV`-osztályú (Károli =
+   KJV), mind az **új `MT`-osztályú** (Károli = héber/MT-számozás, H2
+   javítása) fejezetek soraira, elsőbbséget kapnak a régi fejezet-szintű
+   versszám-őrrel szemben. Az `MT`-osztályú sikeres sorok `karoli_ok`
+   értéke `mt_szamozas_kovetes` (megkülönböztetve a sima sikertől, de a
+   lexikon-generátor szempontjából ugyanúgy "kitöltött" sor).
+4. **Régi fejezet-szintű versszám-egyezés/Zsoltár cím-eltolás** — csak a
+   kulcstábla által NEM fedett fejezetekre marad tartalék (elsősorban a
+   13 `EGYIK_SEM`-osztályú fejezetre, amiket a KK1b szándékosan üresen
+   hagyott, F3 szerint — ezek a KK2b menet tárgyai).
+5. Minden más eltérés: `igehely_karoli` üres, `karoli_ok=szamozas_elteres`.
 
 A `karoli_ok` oszlop egyéb értékei: `nincs_mt_parositas` (a `verse_pairs.jsonl`
 szerint `method=unpaired`, azaz nincs héber/MT megfelelő — LXX-plusz),
@@ -98,7 +114,7 @@ Károli-szövege).
 **Automatikus ellenőrzés** (a szkript minden futáskor lefuttatja): minden
 kitöltött sorban a Károli-fejezet-szám egyezik a KJV-fejezet-számmal, kivéve
 a `KEZI_ELTOLASOK` dokumentált eseteit — eltérés esetén a szkript figyelmeztet
-(`K6-ELLENORZES`). A jelen futásban **0 ilyen figyelmeztetés** volt.
+(`K6-ELLENORZES`).
 
 **Tartalmi szúrópróba** (a 4, korábban hibásan felismert eset + egy minta
 könyvenként a szükséges versek közül — görög kezdőszavak / Károli-szöveg):
