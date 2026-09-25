@@ -5,12 +5,12 @@ Jób 38:7	H1	KEZI	Job (LXX) 38:7 (identitás, nincs eltolás)	„örvendezének 
 Jób 38:16	H1	KEZI	Job (LXX) 38:16 (identitás)	„Eljutottál-é a tenger forrásáig”	ἦλθες δὲ ἐπὶ πηγὴν θαλάσσης	ua. — πηγὴν θαλάσσης = tenger forrása, pontos egyezés
 Jób 38:30	H1	KEZI	Job (LXX) 38:30 (identitás)	„Miként rejtőznek el a vizek”	ἣ καταβαίνει ὥσπερ ὕδωρ ῥέον	ua. — ὕδωρ = vizek
 Józs 12:4	H4	KJV	Joshua (Vaticanus B) 12:4 — MÁR MEGVAN a joshua-vaticanus-b.tsv-ben	„Ógnak, a Básán királyának”	Ωγ βασιλεὺς τῆς Βασαν	a joshua-vaticanus-b.tsv 12:4 sora igehely_karoli="Józs 12:4"-gyel MÁR KI VAN TÖLTVE (karoli_ok üres) — a lexikon oldal nyilván a hiányos joshua.tsv (A-szöveg, csak 3 fejezet) alapján jelentette "szamozas_elteres"-nek; a B-szöveg fájl a helyes forrás (H4 megerősítve)
-Józs 13:12	H2	MT	Joshua (Vaticanus B) 13:12	—	—	fejezet 13: Károli=33=MT, KJV=32 — Károli MT-számozást követ ebben a fejezetben
+Józs 13:12	H2	MT	Joshua (Vaticanus B) 13:12	„Básánban Ógnak egész országát”	Ωγ ... ἐν τῇ [Βασανίτιδι]	fejezet 13: Károli=33=MT, KJV=32 — Károli MT-számozást követ ebben a fejezetben; Ωγ (Óg) névanchor egyezik
 Józs 15:8	H4	KJV	Joshua (Vaticanus B) 15:8 — MÁR MEGVAN	„Refaim völgyének szélén”	εἰς φάραγγα Ραφαϊν	ua. az ok, mint Józs 12:4 (H4) — Ραφαϊν = Refaim
 Józs 17:15	H4	KJV	Joshua (Vaticanus B) 17:15 — MÁR MEGVAN	„Józsué pedig monda nékik”	καὶ εἶπεν αὐτοῖς Ἰησοῦς	ua. — Ἰησοῦς = Józsué névanchor
 Józs 18:16	H4	KJV	Joshua (Vaticanus B) 18:16 — MÁR MEGVAN	„alámegy a határ a hegynek széléhez”	καὶ καταβήσεται τὰ ὅρια	ua. — ὅρια = határ
 Hós 13:14	H3	EGYIK_SEM	Hosea 13:14 (kézi egyeztetés kell)	„Megváltom őket a Seol hatalmából”	ἐκ χειρὸς ᾅδου ῥύσομαι αὐτοὺς	fejezet 13: Károli=15/KJV=16/MT=16; a 13/14 fejezethatár Hós 13:16(MT)=14:1(KJV) klasszikus eltolása érinti; ᾅδου anchor megvan, tartalmilag Hós(LXX) 13:14-nek felel meg, de a fejezethatár miatt kézi egyeztetés kell a teljes szakaszra
-Ézs 63:13	H2	MT	Isaiah 63:13	—	—	fejezet 63: Károli=19=MT, KJV=18 — Károli MT-számozást követ
+Ézs 63:13	H2	MT	Isaiah 63:13	„Ki járatá őket mélységekben”	ἤγαγεν αὐτοὺς διὰ τῆς ἀβύσσου	fejezet 63: Károli=19=MT, KJV=18 — Károli MT-számozást követ; ἀβύσσου (mélység) anchor egyezik
 Jón 2:3	H2	MT	Jonah 2:3 (NEM 2:4!)	„Nyomorúságomban… kiálték”	καὶ εἶπεν… ἐβόησα ἐν θλίψει μου	közvetlenül ellenőrizve (KK0 0.8): a Károli szó szerint a NEM eltolt, raw LXX 2:3-mal egyezik — az FJ2 2:4-es javaslata téves volt (l. FJ2-felülvizsgálat)
-Jón 2:6	H2	MT	Jonah 2:6 (NEM 2:7!)	—	—	ua. az ok, mint 2:3 (MT-alapú számozás egész Jónás könyvében, mindkét fejezet MT-osztályú)
-Jer 51:46	H5	KJV	nincs (valódi LXX-minusz)	—	—	a verse_pairs.jsonl-ben nincs mt_ref 51:46-hoz semmilyen grk_ref-ről — genuin LXX-eltérés, kutatói kérdés marad (megerősítve az FJ2-ből)
+Jón 2:6	H2	MT	Jonah 2:6 (NEM 2:7!)	„Körülvettek engem a vizek”	περιεχύθη ὕδωρ μοι ἕως ψυχῆς	ua. az ok, mint 2:3 (MT-alapú számozás egész Jónás könyvében, mindkét fejezet MT-osztályú); ὕδωρ (vizek) anchor egyezik
+Jer 51:46	H5	KJV	nincs (valódi LXX-minusz)	„És el ne olvadjon a ti szívetek”	(nincs LXX-megfelelő — a görög szöveg ezen a ponton nem tartalmaz párhuzamos verset)	a verse_pairs.jsonl-ben nincs mt_ref 51:46-hoz semmilyen grk_ref-ről — genuin LXX-eltérés, kutatói kérdés marad (megerősítve az FJ2-ből); a Károli-oldali horgony csak a hiány dokumentálására szolgál, nincs mivel egyeztetni
