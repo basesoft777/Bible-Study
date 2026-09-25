@@ -1,54 +1,54 @@
 motivum	igehely	heber_kulcsszo	heber_strong	javasolt_gorog_lemma	javasolt_gorog_strong	allapot	bizonyossag
 ALVIL-001	2Sám 22:6	שְׁא֖וֹל (she.'ol)				nincs_konyv	
-ALVIL-001	Jób 24:19	שְׁא֣וֹל (she.'ol)	7585	’’		javasolt	kozepes
-ALVIL-001	Péld 23:14	שְּׁא֥וֹל (she.'ol)	7585	θανάτου	G2288	javasolt	kozepes
-ALVIL-001	Préd 9:10	שְׁא֕וֹל (sh.'ol)	7585	ἅδη	G86	javasolt	kozepes
-ALVIL-001	Ézs 7:11	שְׁאָ֔לָה (she.'A.lah)	7585a			nincs_gorog_parositas_LXX_minusz_v_hianyos	alacsony
-ALVIL-001	Ez 32:21	שְׁא֖וֹל (she.'ol)	7585	βόθρου	G999	javasolt	kozepes
-HAMART-001	1Móz 3:16	עִצְּבוֹנֵ֣ (i.tze.vo.Ne)	6093	λύπας	G3077	javasolt	kozepes
-HAMART-001	1Móz 3:18	ק֥וֹץ (Kotz)	6975	ἀκάνθας	G173	javasolt	kozepes
-HAMART-001	1Móz 3:19	אֲדָמָ֔ה ('a.da.Mah)	0127	γῆν	G1093	javasolt	kozepes
-HAMART-001	1Móz 3:23	אֲדָמָ֔ה ('a.da.Mah)	0127	γῆν	G1093	javasolt	kozepes
-HAMART-001	1Móz 4:2	אֲדָמָֽה ('a.da.Mah)	0127	γῆν	G1093	javasolt	kozepes
-HAMART-001	1Móz 4:3	אֲדָמָ֛ה ('a.da.Mah)	0127	γῆς	G1093	javasolt	kozepes
-HAMART-001	1Móz 4:7	חַטָּ֣את (cha.Tat)	2403	ἥμαρτες	G264	javasolt	kozepes
+ALVIL-001	Jób 24:19	שְׁא֣וֹל (she.'ol)	H7585	’’		javasolt	kozepes
+ALVIL-001	Péld 23:14	שְּׁא֥וֹל (she.'ol)	H7585	θανάτου	G2288	javasolt	kozepes
+ALVIL-001	Préd 9:10	שְׁא֕וֹל (sh.'ol)	H7585	ἅδη	G0086	javasolt	kozepes
+ALVIL-001	Ézs 7:11	שְׁאָ֔לָה (she.'A.lah)	H7585a			nincs_gorog_parositas_LXX_minusz_v_hianyos	alacsony
+ALVIL-001	Ez 32:21	שְׁא֖וֹל (she.'ol)	H7585	βόθρου	G0999	javasolt	kozepes
+HAMART-001	1Móz 3:16	עִצְּבוֹנֵ֣ (i.tze.vo.Ne)	H6093	λύπας	G3077	javasolt	kozepes
+HAMART-001	1Móz 3:18	ק֥וֹץ (Kotz)	H6975	ἀκάνθας	G0173	javasolt	kozepes
+HAMART-001	1Móz 3:19	אֲדָמָ֔ה ('a.da.Mah)	H0127	γῆν	G1093	javasolt	kozepes
+HAMART-001	1Móz 3:23	אֲדָמָ֔ה ('a.da.Mah)	H0127	γῆν	G1093	javasolt	kozepes
+HAMART-001	1Móz 4:2	אֲדָמָֽה ('a.da.Mah)	H0127	γῆν	G1093	javasolt	kozepes
+HAMART-001	1Móz 4:3	אֲדָמָ֛ה ('a.da.Mah)	H0127	γῆς	G1093	javasolt	kozepes
+HAMART-001	1Móz 4:7	חַטָּ֣את (cha.Tat)	H2403	ἥμαρτες	G0264	javasolt	kozepes
 HAMART-001	1Móz 4:10	—				nincs_szoszintu_talalat	
-HAMART-001	1Móz 4:12	אֲדָמָ֔ה ('a.da.Mah)	0127	γῆν	G1093	javasolt	kozepes
-HAMART-001	1Móz 4:14	אֲדָמָ֔ה ('a.da.Mah)	0127	γῆς	G1093	javasolt	kozepes
-HAMART-001	1Móz 5:29	עִצְּב֣וֹן ('i.tze.Von)	6093			nincs_gorog_parositas_LXX_minusz_v_hianyos	alacsony
-HAMART-001	1Móz 6:5	רַ֖ע (ra')	7451	πονηρὰ	G4190	javasolt	kozepes
-HAMART-001	1Móz 6:7	אֲדָמָ֔ה ('a.da.Mah)	0127	γῆς	G1093	javasolt	kozepes
-HAMART-001	1Móz 6:12	הִשְׁחִ֧ית (hish.Chit)	7843	κατέφθειρεν		javasolt	kozepes
-HAMART-001	1Móz 6:13	חָמָ֖ס (cha.Mas)	2555	ἀδικίας	G93	javasolt	kozepes
-HAMART-001	1Móz 6:17	שַׁחֵ֣ת (sha.Chet)	7843	καταφθεῖραι		javasolt	kozepes
-HAMART-001	1Móz 8:21	קַלֵּ֨ל (ka.Lel)	7043	ἔτι	G2089	javasolt	kozepes
-HAMART-001	1Móz 9:11	שַׁחֵ֥ת (sha.Chet)	7843	καταφθεῖραι		javasolt	kozepes
-HAMART-001	1Móz 9:15	שַׁחֵ֖ת (sha.Chet)	7843	ἐχαλεῖψαι		javasolt	kozepes
-HAMART-001	1Móz 12:3	אָאֹ֑ר ('a.'Or)	0779	καταράσομαι		javasolt	kozepes
-HAMART-001	Ez 7:23	חָמָֽס (cha.Mas)	2555	ἀνομίας	G458	javasolt	kozepes
-HAMART-001	Ez 8:17	חָמָ֗ס (cha.Mas)	2555	ἀνομίας	G458	javasolt	kozepes
-HAMART-001	Ez 28:16	חָמָ֖ס (cha.Mas)	2555	ἀνομίας	G458	javasolt	kozepes
-HAMART-001	Zsolt 74:20	חָמָֽס (cha.Mas)	2555	ἀνομιῶν	G458	javasolt	kozepes
-HAMART-001	Mik 6:12	חָמָ֔ס (cha.Mas)	2555	ἔπλησαν	G4130	javasolt	kozepes
-HAMART-001	Sof 1:9	חָמָ֥ס (cha.Mas)	2555	ἀσεβείας	G763	javasolt	kozepes
-HAMART-001	Hab 2:8	חֲמַס (cha.mas-)	2555	ἀσεβείας	G763	javasolt	kozepes
-HAMART-001	Hab 2:17	חֲמַס (cha.mas-)	2555	ἀσεβείας	G763	javasolt	kozepes
-HAMART-001	Jón 3:8	חָמָ֖ס (cha.Mas)	2555	ἀδικίας	G93	javasolt	kozepes
-HAMART-001	Ézs 60:18	חָמָס֙ (cha.Mas)	2555	ἀδικία	G93	javasolt	kozepes
-HAMART-001	Jer 6:7	חָמָ֣ס (cha.Mas)	2555	ἀσέβεια	G763	javasolt	kozepes
-HAMART-001	Hab 1:2	חָמָ֖ס (cha.Mas)	2555	ἀδικούμενος	G91	javasolt	kozepes
+HAMART-001	1Móz 4:12	אֲדָמָ֔ה ('a.da.Mah)	H0127	γῆν	G1093	javasolt	kozepes
+HAMART-001	1Móz 4:14	אֲדָמָ֔ה ('a.da.Mah)	H0127	γῆς	G1093	javasolt	kozepes
+HAMART-001	1Móz 5:29	עִצְּב֣וֹן ('i.tze.Von)	H6093			nincs_gorog_parositas_LXX_minusz_v_hianyos	alacsony
+HAMART-001	1Móz 6:5	רַ֖ע (ra')	H7451	πονηρὰ	G4190	javasolt	kozepes
+HAMART-001	1Móz 6:7	אֲדָמָ֔ה ('a.da.Mah)	H0127	γῆς	G1093	javasolt	kozepes
+HAMART-001	1Móz 6:12	הִשְׁחִ֧ית (hish.Chit)	H7843	κατέφθειρεν		javasolt	kozepes
+HAMART-001	1Móz 6:13	חָמָ֖ס (cha.Mas)	H2555	ἀδικίας	G0093	javasolt	kozepes
+HAMART-001	1Móz 6:17	שַׁחֵ֣ת (sha.Chet)	H7843	καταφθεῖραι		javasolt	kozepes
+HAMART-001	1Móz 8:21	קַלֵּ֨ל (ka.Lel)	H7043	ἔτι	G2089	javasolt	kozepes
+HAMART-001	1Móz 9:11	שַׁחֵ֥ת (sha.Chet)	H7843	καταφθεῖραι		javasolt	kozepes
+HAMART-001	1Móz 9:15	שַׁחֵ֖ת (sha.Chet)	H7843	ἐχαλεῖψαι		javasolt	kozepes
+HAMART-001	1Móz 12:3	אָאֹ֑ר ('a.'Or)	H0779	καταράσομαι		javasolt	kozepes
+HAMART-001	Ez 7:23	חָמָֽס (cha.Mas)	H2555	ἀνομίας	G0458	javasolt	kozepes
+HAMART-001	Ez 8:17	חָמָ֗ס (cha.Mas)	H2555	ἀνομίας	G0458	javasolt	kozepes
+HAMART-001	Ez 28:16	חָמָ֖ס (cha.Mas)	H2555	ἀνομίας	G0458	javasolt	kozepes
+HAMART-001	Zsolt 74:20	חָמָֽס (cha.Mas)	H2555	ἀνομιῶν	G0458	javasolt	kozepes
+HAMART-001	Mik 6:12	חָמָ֔ס (cha.Mas)	H2555	ἔπλησαν	G4130	javasolt	kozepes
+HAMART-001	Sof 1:9	חָמָ֥ס (cha.Mas)	H2555	ἀσεβείας	G0763	javasolt	kozepes
+HAMART-001	Hab 2:8	חֲמַס (cha.mas-)	H2555	ἀσεβείας	G0763	javasolt	kozepes
+HAMART-001	Hab 2:17	חֲמַס (cha.mas-)	H2555	ἀσεβείας	G0763	javasolt	kozepes
+HAMART-001	Jón 3:8	חָמָ֖ס (cha.Mas)	H2555	ἀδικίας	G0093	javasolt	kozepes
+HAMART-001	Ézs 60:18	חָמָס֙ (cha.Mas)	H2555	ἀδικία	G0093	javasolt	kozepes
+HAMART-001	Jer 6:7	חָמָ֣ס (cha.Mas)	H2555	ἀσέβεια	G0763	javasolt	kozepes
+HAMART-001	Hab 1:2	חָמָ֖ס (cha.Mas)	H2555	ἀδικούμενος	G0091	javasolt	kozepes
 HAMART-001	Ézs 24:5	—				nincs_szoszintu_talalat	
 HAMART-001	Ézs 24:6	—				nincs_szoszintu_talalat	
 HAMART-001	Hós 4:1	—				nincs_szoszintu_talalat	
 HAMART-001	Hós 4:2	—				nincs_szoszintu_talalat	
 HAMART-001	Hós 4:3	—				nincs_szoszintu_talalat	
-HODIT-001	1Móz 14:5	רְפָאִים֙ (re.fa.'Im)	7497			nincs_gorog_parositas_LXX_minusz_v_hianyos	alacsony
-HODIT-001	1Móz 15:20	רְפָאִֽים (re.fa.'Im)	7497	ραφαϊν		javasolt	kozepes
+HODIT-001	1Móz 14:5	רְפָאִים֙ (re.fa.'Im)	H7497			nincs_gorog_parositas_LXX_minusz_v_hianyos	alacsony
+HODIT-001	1Móz 15:20	רְפָאִֽים (re.fa.'Im)	H7497	ραφαϊν		javasolt	kozepes
 HODIT-001	4Móz 13:34	נְּפִלִ֑ים (ne.fi.Lim)				nincs_vers	
-HODIT-001	5Móz 2:11	רְפָאִ֛ים (re.fa.'Im)	7497	ραφαϊν		javasolt	kozepes
-HODIT-001	5Móz 2:20	רְפָאִ֤ים (re.fa.'Im)	7497	κατῴκουν		javasolt	kozepes
-HODIT-001	5Móz 3:11	רְפָאִים֒ (re.fa.'Im)	7497	ραφαϊν		javasolt	kozepes
-HODIT-001	5Móz 3:13	רְפָאִֽים (re.fa.'Im)	7497	ραφαϊν		javasolt	kozepes
+HODIT-001	5Móz 2:11	רְפָאִ֛ים (re.fa.'Im)	H7497	ραφαϊν		javasolt	kozepes
+HODIT-001	5Móz 2:20	רְפָאִ֤ים (re.fa.'Im)	H7497	κατῴκουν		javasolt	kozepes
+HODIT-001	5Móz 3:11	רְפָאִים֒ (re.fa.'Im)	H7497	ραφαϊν		javasolt	kozepes
+HODIT-001	5Móz 3:13	רְפָאִֽים (re.fa.'Im)	H7497	ραφαϊν		javasolt	kozepes
 HODIT-001	2Sám 21:16	רָפָ֗ה (ra.Fah)				nincs_konyv	
 HODIT-001	2Sám 21:18	רָפָֽה (ra.Fah)				nincs_konyv	
 HODIT-001	2Sám 21:20	רָפָֽה (ra.Fah)				nincs_konyv	
@@ -56,33 +56,33 @@ HODIT-001	2Sám 21:22	רָפָ֖ה (ra.Fah)				nincs_konyv
 HODIT-001	1Krón 20:4	רְפָאִ֖ים (re.fa.'Im)				nincs_konyv	
 HODIT-001	1Krón 20:6	רָפָֽא (ra.Fa')				nincs_konyv	
 HODIT-001	1Krón 20:8	רָפָ֖א (ra.Fa')				nincs_konyv	
-HODIT-001	Jób 26:5	רְפָאִ֥ים (re.fa.'Im)	7496	γίγαντες		javasolt	kozepes
-HODIT-001	Zsolt 88:11	רְ֝פָאִ֗ים (re.fa.'Im)	7496	ἰατροὶ		javasolt	kozepes
-HODIT-001	Péld 2:18	רְ֝פָאִ֗ים (re.fa.'Im)	7496			nincs_gorog_parositas_LXX_minusz_v_hianyos	alacsony
-HODIT-001	Péld 9:18	רְפָאִ֣ים (re.fa.'Im)	7496	γηγενεῖς		javasolt	kozepes
-HODIT-001	Péld 21:16	רְפָאִ֣ים (re.fa.'Im)	7496	γιγάντων		javasolt	kozepes
-HODIT-001	Ézs 14:9	רְפָאִים֙ (re.fa.'Im)	7496	γίγαντες		javasolt	kozepes
-HODIT-001	Ézs 26:14	רְפָאִ֖ים (re.fa.'Im)	7496	ἰατροὶ		javasolt	kozepes
-HODIT-001	Ézs 26:19	רְפָאִ֥ים (re.fa.'Im)	7496	"{δ}"		javasolt	kozepes
+HODIT-001	Jób 26:5	רְפָאִ֥ים (re.fa.'Im)	H7496	γίγαντες		javasolt	kozepes
+HODIT-001	Zsolt 88:11	רְ֝פָאִ֗ים (re.fa.'Im)	H7496	ἰατροὶ		javasolt	kozepes
+HODIT-001	Péld 2:18	רְ֝פָאִ֗ים (re.fa.'Im)	H7496			nincs_gorog_parositas_LXX_minusz_v_hianyos	alacsony
+HODIT-001	Péld 9:18	רְפָאִ֣ים (re.fa.'Im)	H7496	γηγενεῖς		javasolt	kozepes
+HODIT-001	Péld 21:16	רְפָאִ֣ים (re.fa.'Im)	H7496	γιγάντων		javasolt	kozepes
+HODIT-001	Ézs 14:9	רְפָאִים֙ (re.fa.'Im)	H7496	γίγαντες		javasolt	kozepes
+HODIT-001	Ézs 26:14	רְפָאִ֖ים (re.fa.'Im)	H7496	ἰατροὶ		javasolt	kozepes
+HODIT-001	Ézs 26:19	רְפָאִ֥ים (re.fa.'Im)	H7496	"{δ}"		javasolt	kozepes
 HODIT-001	2Sám 5:18	רְפָאִֽים (re.fa.'Im)				nincs_konyv	
 HODIT-001	2Sám 5:22	רְפָאִֽים (re.fa.'Im)				nincs_konyv	
 HODIT-001	2Sám 23:13	רְפָאִֽים (re.fa.'Im)				nincs_konyv	
 HODIT-001	1Krón 11:15	רְפָאִֽים (re.fa.'Im)				nincs_konyv	
 HODIT-001	1Krón 14:9	רְפָאִֽים (re.fa.'Im)				nincs_konyv	
-HODIT-001	Ézs 17:5	רְפָאִֽים (re.fa.'Im)	7497a	στερεᾷ		javasolt	kozepes
-KIRALY-001	1Móz 14:18	כֹהֵ֖ן (kho.Hen)	3548	ἱερεὺς	G2409	javasolt	kozepes
+HODIT-001	Ézs 17:5	רְפָאִֽים (re.fa.'Im)	H7497a	στερεᾷ		javasolt	kozepes
+KIRALY-001	1Móz 14:18	כֹהֵ֖ן (kho.Hen)	H3548	ἱερεὺς	G2409	javasolt	kozepes
 KIRALY-001	1Móz 14:19	—				nincs_szoszintu_talalat	
 KIRALY-001	1Móz 14:20	—				nincs_szoszintu_talalat	
-KIRALY-001	Zsolt 76:3	שָׁלֵ֣ם (sha.Lem)	8004	εἰρήνῃ	G1515	javasolt	kozepes
-KIRALY-001	2Móz 19:6	כֹּהֲנִ֖ים (ko.ha.Nim)	3548	ἱεράτευμα	G2406	javasolt	kozepes
-KIRALY-001	Zak 6:13	כֹהֵן֙ (kho.Hen)	3548	ἱερεὺς	G2409	javasolt	kozepes
+KIRALY-001	Zsolt 76:3	שָׁלֵ֣ם (sha.Lem)	H8004	εἰρήνῃ	G1515	javasolt	kozepes
+KIRALY-001	2Móz 19:6	כֹּהֲנִ֖ים (ko.ha.Nim)	H3548	ἱεράτευμα	G2406	javasolt	kozepes
+KIRALY-001	Zak 6:13	כֹהֵן֙ (kho.Hen)	H3548	ἱερεὺς	G2409	javasolt	kozepes
 MENNY-001	1Móz 6:2	בְנֵי (ve.nei-)				nincs_szoszintu_talalat	
-MENNY-001	1Móz 6:4	נְּפִלִ֞ים (ne.fi.Lim)	5303	γίγαντες		javasolt	kozepes
-MENNY-001	Jób 1:6	בְּנֵ֣י (be.Nei)	1121	ἄγγελοι	G32	javasolt	kozepes
-MENNY-001	Jób 2:1	בְּנֵ֣י (be.Nei)	1121	ἄγγελοι	G32	javasolt	kozepes
+MENNY-001	1Móz 6:4	נְּפִלִ֞ים (ne.fi.Lim)	H5303	γίγαντες		javasolt	kozepes
+MENNY-001	Jób 1:6	בְּנֵ֣י (be.Nei)	H1121	ἄγγελοι	G0032	javasolt	kozepes
+MENNY-001	Jób 2:1	בְּנֵ֣י (be.Nei)	H1121	ἄγγελοι	G0032	javasolt	kozepes
 MENNY-001	4Móz 13:34	נְּפִלִ֑ים (ne.fi.Lim)				nincs_vers	
-TEREMT-001	1Móz 49:25	תְּה֖וֹם (te.Hom)	8415	γῆς	G1093	javasolt	kozepes
-TEREMT-001	2Móz 15:5	תְּהֹמֹ֖ת (te.ho.Mot)	8415	πόντῳ		javasolt	kozepes
-TEREMT-001	2Móz 15:8	תְהֹמֹ֖ת (te.ho.Mot)	8415			nincs_gorog_parositas_LXX_minusz_v_hianyos	alacsony
-TEREMT-001	Péld 8:27	תְהֽוֹם (te.Hom)	8415	ἀνέμων	G417	javasolt	kozepes
-TEREMT-001	Péld 8:28	תְּהוֹם (te.hom)	8415	οὐρανὸν	G3772	javasolt	kozepes
+TEREMT-001	1Móz 49:25	תְּה֖וֹם (te.Hom)	H8415	γῆς	G1093	javasolt	kozepes
+TEREMT-001	2Móz 15:5	תְּהֹמֹ֖ת (te.ho.Mot)	H8415	πόντῳ		javasolt	kozepes
+TEREMT-001	2Móz 15:8	תְהֹמֹ֖ת (te.ho.Mot)	H8415			nincs_gorog_parositas_LXX_minusz_v_hianyos	alacsony
+TEREMT-001	Péld 8:27	תְהֽוֹם (te.Hom)	H8415	ἀνέμων	G0417	javasolt	kozepes
+TEREMT-001	Péld 8:28	תְּהוֹם (te.hom)	H8415	οὐρανὸν	G3772	javasolt	kozepes
