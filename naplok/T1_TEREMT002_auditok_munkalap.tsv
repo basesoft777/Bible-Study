@@ -1,5 +1,4 @@
-# Lekerdezes-naplo, motivumszintu dataset-nyom. Kulcs nincs. Sema: adat/SEMA.md 2.9
-# lepes: A5 | B2 | B3 | B4
+# T1.1 munkalap (TEREMT002_KUTATAS_BRIEF.md) -- adat/auditok.tsv alakjában, betöltés a T1.3-ban. Sema: adat/SEMA.md 2.9
 id	lepes	proveniencia	datum
 TEREMT-002	B2	scope=range:1Móz 1:2+Jer 4:23+Ézs 34:11 | forras=TAHOT_kivonat.tsv | n=2 | ts=2026-09-25T11:02Z	2026.09.25
 TEREMT-002	B4	scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H8414 | n=19 | ts=2026-09-25T11:02Z	2026.09.25

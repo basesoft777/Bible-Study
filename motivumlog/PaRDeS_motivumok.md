@@ -12,7 +12,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#attekintes | forrás: adat/motivumok.tsv, adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk a táblában betöltött 8 motívum-ID-t fedi; a napló Tematikus áttekintés szakasza a blokkon kívül további 83 kézi tételt sorol fel (78 felső szint + 5 alpont -- K12': azonos granularitás, az alpontok is számítanak), amelyek kézi karbantartásban maradnak.*
+*Ez a blokk a táblában betöltött 9 motívum-ID-t fedi; a napló Tematikus áttekintés szakasza a blokkon kívül további 82 kézi tételt sorol fel (77 felső szint + 5 alpont -- K12': azonos granularitás, az alpontok is számítanak), amelyek kézi karbantartásban maradnak.*
 
 **Angyalológia**
 - Isten fiai — Nefilim — Gibborim motívum-komplexum `[ID: MENNY-001]` — 1 fő előfordulás / 9 igehely-sor — publikálható (v4, 2026.09.10)
@@ -36,6 +36,9 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma `[ID: TEREMT-001]` — 5 fő előfordulás / 41 igehely-sor — publikálható (v4, 2026.09.10)
 - Rafeusok/óriás-népek `[ID: HODIT-001]` — 1 fő előfordulás / 33 igehely-sor — publikálható (v3, 2026.09.10)
 
+**Teremtéstan + Eszkatológia**
+- Tohu va-vohu (תֹהוּ וָבֹהוּ) — a föld kietlen és puszta állapota a teremtéskor és az ítéletkor `[ID: TEREMT-002]` — 3 fő előfordulás / 3 igehely-sor — feldolgozás alatt (v1, 2026.09.25)
+
 <!-- GENERÁLT-VÉGE: naplo#attekintes -->
 
 ### A blokkon kívüli, kézi tételek *(a táblába még nem betöltött motívumok)*
@@ -45,7 +48,6 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - creatio ex nihilo / Isten szava elegendő (1)
 - uralom-megbízás / emberi méltóság (3 előfordulás — ⭐ küszöb elérve: 1Móz 1:28 ↔ 8:17, a teremtési áldás megismétlése)
 - munka mint szentélyi szolgálat (avad-sámar) (1)
-- תהו/בהו — teremtés-visszavonás mint ítélet-nyelvezet (3 előfordulás — ⭐ küszöb azonnal elérve: 1Móz 1:2 ↔ Jer 4:23 ↔ Ézs 34:11; a próféták tudatosan az 1Móz 1:2 szókészletét idézik vissza az ítélet leírására, a teremtés visszavonásaként; rokon, de lexikailag önálló motívum a tehómtól)
 
 **Pneumatológia**
 - lehelet / élet lehelete (2 előfordulás)
@@ -145,7 +147,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#kuszob | forrás: adat/motivumok.tsv, adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk a táblában betöltött 8 motívum-ID fejsorát fedi.*
+*Ez a blokk a táblában betöltött 9 motívum-ID fejsorát fedi.*
 
 **Hádész (Seól) — a halottak birodalma** `[ID: ALVIL-001]` — publikálható (v2, 2026.09.10), 6 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/ALVIL-001.md`-ből fűződik ide)*
@@ -171,6 +173,9 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 **Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma** `[ID: TEREMT-001]` — publikálható (v4, 2026.09.10), 5 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/TEREMT-001.md`-ből fűződik ide)*
 
+**Tohu va-vohu (תֹהוּ וָבֹהוּ) — a föld kietlen és puszta állapota a teremtéskor és az ítéletkor** `[ID: TEREMT-002]` — feldolgozás alatt (v1, 2026.09.25), 3 fő előfordulás.
+*(a bekezdés-próza a G2 után a `motivumok/TEREMT-002.md`-ből fűződik ide)*
+
 <!-- GENERÁLT-VÉGE: naplo#kuszob -->
 
 ### A blokkon kívüli, kézi küszöb-bekezdések *(a táblába még nem betöltött motívumok)*
@@ -188,8 +193,6 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 **"uralom-megbízás / emberi méltóság" `[ID: ANTROP-002]` — ⭐ ÚJ KÜSZÖBÖN TÚL, 3. előfordulás.** Zsolt 8:5-6 és 1Móz 2:19-20 mellé harmadikként csatlakozik 1Móz 8:17 — a bárkából kilépő élővilágnak szóló "szaporodjatok és sokasodjatok" parancs szó szerint megismétli az 1:28 teremtési áldást. A motívum ezzel alkalmassá vált önálló tematikus feldolgozásra, felhasználói jóváhagyásra várva. **Kiegészítés (2026.09.04, retroaktív 2/f-audit):** a פָּרוּ וְרָבוּ ("szaporodjatok és sokasodjatok", H6509+H7235) szópár teljes körű ellenőrzése 15 közös igehelyet talált a teljes Ószövetségben (köztük 1Móz 1:22, 1:28, 8:17, 9:1, 9:7, 17:20, 28:3, 35:11, 47:27, 48:4) — ez egy jól ismert, tudatos áldás-formula, nem rejtett minta; megerősíti az 1:28↔8:17 hivatkozás lexikai megalapozottságát, de önmagában túl gyakori ahhoz, hogy külön 2/f-jelzésű leletnek minősüljön.
 
 **"Isten képmása (celem/eikón)" `[ID: ANTROP-003]` — ⭐ ÚJ KÜSZÖBÖN TÚL, 3. előfordulás.** 1Móz 1:26-27 (teremtés) és 5:1-3 (genealógiai megismétlés) mellé harmadikként csatlakozik 9:6 — itt már nem csupán leíró, hanem normatív-etikai alkalmazásban: az emberölés jogi számonkérése közvetlenül az Isten-képmásra épül. A szűkebb "Isten képmása" motívum immár önmagában is elérte a küszöböt (a tágabb "Logosz/Képmás" rokon-csoport, amelybe korábban besorolódott, már korábban túl volt rajta). A motívum alkalmassá vált önálló tematikus feldolgozásra, felhasználói jóváhagyásra várva. **Kiegészítés (2026.09.04):** a szűkebb, Genezisen belüli celem/demut pár (1:26-27 ↔ 5:1-3) teljes körű ellenőrzése megerősítette, hogy a két szó (H6754/H1823) kizárólag ezen a 2 igehelyen fordul elő együtt a teljes Ószövetségben — konkordancia-alapon igazolva 5:3 tudatos, kizárólagos visszautalását 1:26-ra. Az ÚSZ-oldali celem/eikón-kereszthivatkozás is bővült: az 1Móz 1:2-2:3 study 2026.09.02-i LXX-alapú auditja négy további, azonos görög szót (εἰκών, G1504) tartalmazó verset azonosított és épített be — **Kol 3:10, Ef 4:24, 2Kor 3:18, 1Kor 11:7** — a korábban egyedüli Kol 1:15 mellé (l. Kulcsszó-index).
-
-**"תהו/בהו — teremtés-visszavonás mint ítélet-nyelvezet"** `[ID: TEREMT-002]` **— ⭐ ÚJ, KÜSZÖBÖN AZONNAL TÚL, 3 előfordulás (retroaktív 2/f-audit, protokoll v5).** A תֹהוּ וָבֹהוּ (H8414/H0922) szópár teljes körű, konkordancia-alapú ellenőrzése megerősítette: a pár a teljes Ószövetségben kizárólag 3 igehelyen fordul elő együtt — **1Móz 1:2, Jer 4:23, Ézs 34:11**. Jeremiás és Ézsaiás mindketten tudatosan visszaidézik az 1Móz 1:2 szókészletét: Júda, illetve Edom közelgő ítéletét nem egyszerű katasztrófaként, hanem a teremtés **visszavonásaként** festik le. Érdekesség: Károli a Jer 4:23-at szó szerint ugyanúgy fordítja ("kietlen és puszta"), mint az 1Móz 1:2-t, de az Ézs 34:11-et egészen másképp ("pusztaság mérőkötelét és a semmiségnek köveit") — ugyanaz a héber szópár, két eltérő magyar megoldás. A motívum rokon, de lexikailag önálló a tehóm-motívumtól (eltérő szótő). Önálló tematikus feldolgozásra alkalmassá vált, felhasználói jóváhagyásra várva.
 
 **Terminológiai pontosítás (tehóm/abüsszosz/hádész/tartarosz-tanulmányból):** a Jel 21:1 "és a tenger többé nem vala" a θάλασσα (*thalassza*, "tenger") szót használja, amely **nem lexikai rokona** az ábüsszosz-családnak — a korábbi (v23-24) tehóm-bejegyzésben ez tematikus párhuzamként szerepelt; a kapcsolat típusa explicit módon pontosítva a fenti tanulmányban.
 
@@ -239,7 +242,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#kulcsszo_index | forrás: adat/motivumok.tsv, adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk a táblában betöltött 8 motívum-ID kulcsszó-sorát fedi; a ⭐ küszöb (3+ előfordulás) kizárólag a fő előfordulás oszlopot nézi. Az Igehelyek oszlop a fő előfordulásokat hozza, nem a teljes listát (K14) -- a teljes lista a könyv-indexben áll.*
+*Ez a blokk a táblában betöltött 9 motívum-ID kulcsszó-sorát fedi; a ⭐ küszöb (3+ előfordulás) kizárólag a fő előfordulás oszlopot nézi. Az Igehelyek oszlop a fő előfordulásokat hozza, nem a teljes listát (K14) -- a teljes lista a könyv-indexben áll.*
 
 | Kulcsszó | Téma | ÓSZ/ÚSZ | Fő előfordulás | Igehelyek |
 |---|---|---|---|---|
@@ -251,6 +254,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | Melkizedek-rend `[ID: KIRALY-001]` | Krisztológia | ÓSZ+ÚSZ | 1 | 1Móz 14:18-20 |
 | Isten fiai/Nefilim `[ID: MENNY-001]` | Angyalológia | ÓSZ+ÚSZ | 1 | 1Móz 6:1-4 |
 | Tehóm/Abüsszosz `[ID: TEREMT-001]` | Teremtéstan | ÓSZ+ÚSZ | 5 | 1Móz 1:2, 1Móz 7:11, 1Móz 8:2, 1Móz 49:25, 2Móz 15:5,8 |
+| Tohu va-vohu `[ID: TEREMT-002]` | Teremtéstan + Eszkatológia | ÓSZ | 3 | 1Móz 1:2, Ézs 34:11, Jer 4:23 |
 
 <!-- GENERÁLT-VÉGE: naplo#kulcsszo_index -->
 
@@ -297,7 +301,6 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | **tamim/hithalech szópár — feddhetetlenség és Istennel járás** | Antropológia | ÓSZ↔ÓSZ | 2 | 1Móz 6:9 ↔ 1Móz 17:1 |
 | **tevá — bárka/menedék-edény mint ismétlődő szó** | Szoteriológia | ÓSZ↔ÓSZ | 2 | 1Móz 6:14 ↔ 2Móz 2:3 |
 | **brít — a szövetség első előfordulása/ratifikációja** ⭐ `[ID: SZOVETS-001]` | Szövetségteológia | ÓSZ (belső) | 3 | 1Móz 6:18 (ígéret) → 1Móz 9:9-17 (formális kihirdetés) → 1Móz 15:18 (Ábrahámi szövetség hivatalos megkötése); 1Móz 17:2 *(további megerősítés, előremutató)* |
-| **תהו/בהו — teremtés-visszavonás mint ítélet-nyelvezet** ⭐ `[ID: TEREMT-002]` | Teremtéstan/Hamartológia | ÓSZ↔ÓSZ (belső) | 3 | 1Móz 1:2 ↔ Jer 4:23 ↔ Ézs 34:11 |
 | **bezárt ajtó — isteni oltalom** | Szoteriológia | ÓSZ↔ÓSZ (tematikus) | 1 | 1Móz 7:16 ↔ 2Móz 12:23 |
 | **maradék-elv (she'erit)** | Eszkatológia | ÓSZ⇒ÚSZ | 1 | 1Móz 7:23 ⇒ Róm 9:27 |
 | **tiszta/tisztátalan megkülönböztetés Sínai előtt** | Szövetségteológia | ÓSZ⇒ÓSZ / ÓSZ↔ÓSZ | 2 | 1Móz 7:2-3 ⇒ 3Móz 11:2-3; 1Móz 7:2-3 ↔ 1Móz 8:20 |
@@ -488,11 +491,11 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#konyv_index | forrás: adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk az elofordulasok.tsv mind a 256 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
+*Ez a blokk az elofordulasok.tsv mind a 259 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
 
 | Könyv | Igehely-sor | Tételek |
 |---|---|---|
-| 1Móz | 42 | 1Móz 1:2 [TEREMT-001], 1Móz 2:7 [ANTROP-001], 1Móz 3:14 [HAMART-001], 1Móz 3:16 [HAMART-001], 1Móz 3:17 [HAMART-001], 1Móz 3:18 [HAMART-001], 1Móz 3:19 [HAMART-001], 1Móz 3:23 [HAMART-001], 1Móz 4:2-3 [HAMART-001], 1Móz 4:7 [HAMART-001], 1Móz 4:10-11 [HAMART-001], 1Móz 4:12 [HAMART-001], 1Móz 4:14 [HAMART-001], 1Móz 4:26 [ISTENTISZT-001], 1Móz 5:29 [HAMART-001], 1Móz 6:2 [MENNY-001], 1Móz 6:4 [MENNY-001], 1Móz 6:5 [HAMART-001], 1Móz 6:7 [HAMART-001], 1Móz 6:11 [HAMART-001], 1Móz 6:12 [HAMART-001], 1Móz 6:13 [HAMART-001], 1Móz 6:17 [HAMART-001], 1Móz 7:11 [TEREMT-001], 1Móz 8:2 [TEREMT-001], 1Móz 8:21 [HAMART-001], 1Móz 9:11 [HAMART-001], 1Móz 9:15 [HAMART-001], 1Móz 9:25 [HAMART-001], 1Móz 12:3 [HAMART-001], 1Móz 12:8 [ISTENTISZT-001], 1Móz 13:4 [ISTENTISZT-001], 1Móz 14:5 [HODIT-001], 1Móz 14:18-20 [KIRALY-001], 1Móz 15:20 [HODIT-001], 1Móz 21:33 [ISTENTISZT-001], 1Móz 26:25 [ISTENTISZT-001], 1Móz 37:35 [ALVIL-001], 1Móz 42:38 [ALVIL-001], 1Móz 44:29 [ALVIL-001], 1Móz 44:31 [ALVIL-001], 1Móz 49:25 [TEREMT-001] |
+| 1Móz | 43 | 1Móz 1:2 [TEREMT-001], 1Móz 1:2 [TEREMT-002], 1Móz 2:7 [ANTROP-001], 1Móz 3:14 [HAMART-001], 1Móz 3:16 [HAMART-001], 1Móz 3:17 [HAMART-001], 1Móz 3:18 [HAMART-001], 1Móz 3:19 [HAMART-001], 1Móz 3:23 [HAMART-001], 1Móz 4:2-3 [HAMART-001], 1Móz 4:7 [HAMART-001], 1Móz 4:10-11 [HAMART-001], 1Móz 4:12 [HAMART-001], 1Móz 4:14 [HAMART-001], 1Móz 4:26 [ISTENTISZT-001], 1Móz 5:29 [HAMART-001], 1Móz 6:2 [MENNY-001], 1Móz 6:4 [MENNY-001], 1Móz 6:5 [HAMART-001], 1Móz 6:7 [HAMART-001], 1Móz 6:11 [HAMART-001], 1Móz 6:12 [HAMART-001], 1Móz 6:13 [HAMART-001], 1Móz 6:17 [HAMART-001], 1Móz 7:11 [TEREMT-001], 1Móz 8:2 [TEREMT-001], 1Móz 8:21 [HAMART-001], 1Móz 9:11 [HAMART-001], 1Móz 9:15 [HAMART-001], 1Móz 9:25 [HAMART-001], 1Móz 12:3 [HAMART-001], 1Móz 12:8 [ISTENTISZT-001], 1Móz 13:4 [ISTENTISZT-001], 1Móz 14:5 [HODIT-001], 1Móz 14:18-20 [KIRALY-001], 1Móz 15:20 [HODIT-001], 1Móz 21:33 [ISTENTISZT-001], 1Móz 26:25 [ISTENTISZT-001], 1Móz 37:35 [ALVIL-001], 1Móz 42:38 [ALVIL-001], 1Móz 44:29 [ALVIL-001], 1Móz 44:31 [ALVIL-001], 1Móz 49:25 [TEREMT-001] |
 | 2Móz | 5 | 2Móz 15:5 [TEREMT-001], 2Móz 15:8 [TEREMT-001], 2Móz 19:6 [KIRALY-001], 2Móz 33:19 [ISTENTISZT-001], 2Móz 34:5 [ISTENTISZT-001] |
 | 4Móz | 4 | 4Móz 13:34 [MENNY-001], 4Móz 13:34 [HODIT-001], 4Móz 16:30 [ALVIL-001], 4Móz 16:33 [ALVIL-001] |
 | 5Móz | 9 | 5Móz 2:11 [HODIT-001], 5Móz 2:20 [HODIT-001], 5Móz 3:11 [HODIT-001], 5Móz 3:13 [HODIT-001], 5Móz 8:7 [TEREMT-001], 5Móz 27:15-26 [HAMART-001], 5Móz 28:16-19 [HAMART-001], 5Móz 32:22 [ALVIL-001], 5Móz 33:13 [TEREMT-001] |
@@ -507,8 +510,8 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | Péld | 16 | Péld 1:12 [ALVIL-001], Péld 2:18 [HODIT-001], Péld 3:20 [TEREMT-001], Péld 5:5 [ALVIL-001], Péld 7:27 [ALVIL-001], Péld 8:24 [TEREMT-001], Péld 8:27 [TEREMT-001], Péld 8:28 [TEREMT-001], Péld 9:18 [ALVIL-001], Péld 9:18 [HODIT-001], Péld 15:11 [ALVIL-001], Péld 15:24 [ALVIL-001], Péld 21:16 [HODIT-001], Péld 23:14 [ALVIL-001], Péld 27:20 [ALVIL-001], Péld 30:16 [ALVIL-001] |
 | Préd | 1 | Préd 9:10 [ALVIL-001] |
 | Én | 1 | Én 8:6 [ALVIL-001] |
-| Ézs | 19 | Ézs 5:14 [ALVIL-001], Ézs 7:11 [ALVIL-001], Ézs 12:4 [ISTENTISZT-001], Ézs 14:9 [ALVIL-001], Ézs 14:9 [HODIT-001], Ézs 14:11 [ALVIL-001], Ézs 14:15 [ALVIL-001], Ézs 17:5 [HODIT-001], Ézs 24:5-6 [HAMART-001], Ézs 26:14 [HODIT-001], Ézs 26:19 [HODIT-001], Ézs 28:15 [ALVIL-001], Ézs 28:18 [ALVIL-001], Ézs 38:10 [ALVIL-001], Ézs 38:18 [ALVIL-001], Ézs 51:10 [TEREMT-001], Ézs 57:9 [ALVIL-001], Ézs 60:18 [HAMART-001], Ézs 63:13 [TEREMT-001] |
-| Jer | 4 | Jer 6:7 [HAMART-001], Jer 10:25 [ISTENTISZT-001], Jer 17:5 [HAMART-001], Jer 51:46 [HAMART-001] |
+| Ézs | 20 | Ézs 5:14 [ALVIL-001], Ézs 7:11 [ALVIL-001], Ézs 12:4 [ISTENTISZT-001], Ézs 14:9 [ALVIL-001], Ézs 14:9 [HODIT-001], Ézs 14:11 [ALVIL-001], Ézs 14:15 [ALVIL-001], Ézs 17:5 [HODIT-001], Ézs 24:5-6 [HAMART-001], Ézs 26:14 [HODIT-001], Ézs 26:19 [HODIT-001], Ézs 28:15 [ALVIL-001], Ézs 28:18 [ALVIL-001], Ézs 34:11 [TEREMT-002], Ézs 38:10 [ALVIL-001], Ézs 38:18 [ALVIL-001], Ézs 51:10 [TEREMT-001], Ézs 57:9 [ALVIL-001], Ézs 60:18 [HAMART-001], Ézs 63:13 [TEREMT-001] |
+| Jer | 5 | Jer 4:23 [TEREMT-002], Jer 6:7 [HAMART-001], Jer 10:25 [ISTENTISZT-001], Jer 17:5 [HAMART-001], Jer 51:46 [HAMART-001] |
 | Ez | 11 | Ez 7:23 [HAMART-001], Ez 8:17 [HAMART-001], Ez 26:19 [TEREMT-001], Ez 28:16 [HAMART-001], Ez 31:4 [TEREMT-001], Ez 31:15 [TEREMT-001], Ez 31:15 [ALVIL-001], Ez 31:16 [ALVIL-001], Ez 31:17 [ALVIL-001], Ez 32:21 [ALVIL-001], Ez 32:27 [ALVIL-001] |
 | Hós | 2 | Hós 4:1-3 [HAMART-001], Hós 13:14 [ALVIL-001] |
 | Jóel | 1 | Jóel 2:32 [ISTENTISZT-001] |
