@@ -250,6 +250,50 @@ Utolsó frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: a
   `RÉS-KEZDET/VÉGE: alatamasztas` jelöléssel — ez lecserélné a jelenlegi
   `adat`-forrású generált mondatot egy valódi, C2-szintű indoklásra.
 
+- **N20 — SEMA 1.4: `Pshat` vs. az adatban mindenhol `Peshat`.** *(ÚJ,
+  TEREMT002_KUTATAS_BRIEF T2.1, 2026.09.25)* A SEMA 1.4 `Pshat`-ot ír elő,
+  az `elofordulasok.tsv` minden érintett sora (a TEREMT-002 1Móz 1:2-sorával
+  együtt) `Peshat`-ot használ — a SEMA igazítandó az adathoz.
+
+- **N21 — `Karoli_Strong_kivonat.tsv` Gen.1.2: nullázatlan `H922`.** *(ÚJ,
+  TEREMT002_KUTATAS_BRIEF T2.1, 2026.09.25)* A sor `H8414+H922`-t visel
+  `H8414+H0922` helyett (SEMA 1.2); a 26 nullázatlan régi join-sorról szóló
+  F3.4-es tétel (l. „Migrálva…” szakasz) egyik esete, a TEREMT-002-nél
+  külön is felszínre került.
+
+- **N22 — `Karoli_kereszthivatkozasok.tsv`: az `Isa.34.11` lista az
+  `Isa.40.11` másolata.** *(ÚJ, TEREMT002_KUTATAS_BRIEF T1.1, 2026.09.25)*
+  A lista betűre azonos (pásztor-kép: Ézs 66:12, Ez 34:12-16, Ján 10:11,
+  1Móz 33:13, 4Móz 11:12) — javítandó, és felveendő a
+  `Karoli_adatminosegi_anomaliak.tsv`-be; utána TEREMT-002 pót-scan
+  (`lekerdez.py karoli`) az Ézs 34:11 valódi Károli-KH célpontjaira (az öt
+  hibás célpont a `jeloltek.tsv`-ben `elutasítva`, „adathiba” indokkal).
+
+- **N23 — `ellenoriz.py`: a zárt `lepes`-készlet ellenőrzése; `MUNKAMENET.md`
+  B3.** *(ÚJ, TEREMT002_KUTATAS_BRIEF T1.3, 2026.09.25)* Az `auditok.lepes`
+  zárt készletét (`A5 | B2 | B3 | B4`, SEMA 2.9) ma semmi nem ellenőrzi, és a
+  `MUNKAMENET.md` B3-sora („kézi”) nem említi a `lekerdez.py domen` futást,
+  amely B3-as audit-sort kap.
+
+- **N24 — `general.py`: a többértékű `tema` bontása a napló
+  témacsoportosításában.** *(ÚJ, TEREMT002_KUTATAS_BRIEF T2.3, 2026.09.25)*
+  A `naplo#attekintes` blokk a `Teremtéstan + Eszkatológia` értéket önálló
+  témafejlécként kezeli, ahelyett hogy a motívumot mindkét téma (vagy az
+  első) alá sorolná.
+
+- **N25 — a „teremtés-visszavonás” kifejezés rendezése.** *(ÚJ,
+  TEREMT002_KUTATAS_BRIEF T1.3, 2026.09.25)* A TEREMT-002 címe a gate-döntés
+  óta „a föld kietlen és puszta állapota a teremtéskor és az ítéletkor”; a
+  régi kifejezés előfordulásai (listájuk a T1.3 jelentésében: napló „Lásd
+  még”, changelog, HAMART-001-napló és -lexikon, a brief, a T1-naplók) a T3
+  prózájában rendezendők.
+
+- **N26 — a shell-szabály gépi kényszerítése.** *(ÚJ,
+  TEREMT002_KUTATAS_BRIEF T1–T2, 2026.09.25)* A „héber/görög/magyar szöveget
+  tartalmazó kód csak fájlból” szabály (CLAUDE.md, Shell) a TEREMT-002
+  menetekben kétszer sérült heredocba ágyazott Pythonnal — egy hook (pl. a
+  `python -` / `<<` + nem-ASCII minta tiltása) gépivé tehetné.
+
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá vált — belépő: `DONTESEK_INDEX.tsv`. A vers-szintű jelöltek nem ide, hanem az `adat/jeloltek.tsv`-be kerültek (16 sor, mind `dontes=nyitva`): HODIT-001 13 alacsony szavazatú TSK-jelölt, MENNY-001 Mt 24:38 + Luk 17:27, ANTROP-001 Fil 1:27. Az alábbiak a nem vers-szintű tételek:
@@ -276,7 +320,7 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 
 <!-- GENERÁLT-KEZDET: general.py --cel nyitott | forrás: adat/jeloltek.tsv, adat/motivumok.tsv, adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk a `jeloltek.tsv` 17 nyitott (`dontes=nyitva`) sorát fedi 3 motívum-ID-ről, és a `motivumok.tsv` 8 státusz-sorát. A 256 beépítve és 3 elutasítva döntésű jelölt nem tartozik ide. A fájl minden más szakasza kézi, a marker-blokkon kívül marad.*
+*Ez a blokk a `jeloltek.tsv` 17 nyitott (`dontes=nyitva`) sorát fedi 3 motívum-ID-ről, és a `motivumok.tsv` 9 státusz-sorát. A 259 beépítve és 66 elutasítva döntésű jelölt nem tartozik ide. A fájl minden más szakasza kézi, a marker-blokkon kívül marad.*
 
 ### Nyitott jelöltek (`adat/jeloltek.tsv`, `dontes=nyitva`)
 
@@ -312,6 +356,7 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 | Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` | publikálható | v2 | 2026.09.10 | 1 fő / 9 sor | 0 | tematikus_lezart/Melkizedek_tematikus.md |
 | Isten fiai — Nefilim — Gibborim motívum-komplexum `[ID: MENNY-001]` | publikálható | v4 | 2026.09.10 | 1 fő / 9 sor | 2 | tematikus_lezart/Isten_fiai_Nefilim_Gibborim_tematikus.md |
 | Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma `[ID: TEREMT-001]` | publikálható | v4 | 2026.09.10 | 5 fő / 41 sor | 0 | tematikus_lezart/Tehom_tematikus.md |
+| Tohu va-vohu (תֹהוּ וָבֹהוּ) — a föld kietlen és puszta állapota a teremtéskor és az ítéletkor `[ID: TEREMT-002]` | feldolgozás alatt | v1 | 2026.09.25 | 3 fő / 3 sor | 0 | — |
 
 <!-- GENERÁLT-VÉGE: nyitott -->
 
