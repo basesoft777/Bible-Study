@@ -279,6 +279,37 @@ def load_mt_max():
     return idx
 
 
+FEJEZET_DONTES_CACHE = None
+
+
+def load_fejezet_dontes():
+    """(Karoli_konyv, fejezet) -> (dontes, elfogadott_eltolas) a
+    naplok/KAROLI_KK7_fejezet_dontes.tsv-bol (KAROLI_KULCS_KK7_BRIEF.md
+    KK7.1/G2: a fejezetdontesek adatvezerelt, generalt tablaja). Csak azokra
+    a fejezetekre vonatkozik, amelyekben a KK4-KK6 UJONNAN toltott ki
+    kulcsokat (a regi, mar korabban is kitoltott sorokat sosem erinti --
+    l. resolve_karoli hasznalati helyei). Ha a tabla hianyzik (pl. egy
+    korabbi menetben, mielott a KK7 lefutott), minden fejezet "nincs adat"
+    -- ez visszaall a KK6-os (nem korrigalt) viselkedesre."""
+    global FEJEZET_DONTES_CACHE
+    if FEJEZET_DONTES_CACHE is not None:
+        return FEJEZET_DONTES_CACHE
+    idx = {}
+    path = os.path.join(REPO_ROOT, "naplok", "KAROLI_KK7_fejezet_dontes.tsv")
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            f.readline()
+            for line in f:
+                parts = line.rstrip("\n").split("\t")
+                if len(parts) < 12:
+                    continue
+                karoli_konyv, fejezet = parts[0], int(parts[1])
+                dontes, elfogadott_eltolas = parts[9], int(parts[11])
+                idx[(karoli_konyv, fejezet)] = (dontes, elfogadott_eltolas)
+    FEJEZET_DONTES_CACHE = idx
+    return idx
+
+
 def build_dup_kjv_terkep(vp_for_book):
     """(kjv_fejezet, kjv_vers) -> (a legmagasabb (fejezet,vers) grk_ref, ami
     ráhivatkozik, hány grk_ref hivatkozik ráhivatkozik osszesen). Ha egy
@@ -349,6 +380,7 @@ def resolve_karoli(karoli_book, book_key, fejezet, vers, mt_refs, method, kezi_f
     LEXV2_1_BRIEF.md döntésnapló v4)."""
     mt_max_idx = mt_max_idx or {}
     kezi_aktiv_fejezetek = kezi_aktiv_fejezetek or set()
+    fejezet_dontes = load_fejezet_dontes()
 
     if kezi_fn:
         cel = kezi_fn(fejezet, vers)
@@ -363,7 +395,20 @@ def resolve_karoli(karoli_book, book_key, fejezet, vers, mt_refs, method, kezi_f
             # regresszio, Job 40:25-32 mintajara).
             helyi_max = karoli_max_idx.get((karoli_book, fejezet))
             if helyi_max is not None and vers <= helyi_max:
-                return f"{karoli_book} {fejezet}:{vers}", "kezi_eltolas_tabla"
+                # KK7 G1/G2: ez a KK6-ban UJONNAN keletkezo sor -- a
+                # fejezetdontes-tabla ELLENORZI/KORRIGALJA, mert a KK7
+                # tartalmi probaja szerint az egyenletes identitas-feltetelezes
+                # nem mindig helyes (l. Job 40:25-32 mintaja, F5 regresszio,
+                # es altalanosabban a KK7 tartalmi probaja).
+                dontes, eltolas = fejezet_dontes.get((karoli_book, fejezet), ("nincs_adat", 0))
+                if dontes == "ures":
+                    return "", "szamozas_elteres"
+                cel_vers = vers + eltolas
+                if dontes == "elfogad" and 1 <= cel_vers <= helyi_max:
+                    return f"{karoli_book} {fejezet}:{cel_vers}", "kezi_eltolas_tabla"
+                if dontes == "nincs_adat":
+                    return f"{karoli_book} {fejezet}:{vers}", "kezi_eltolas_tabla"
+                return "", "szamozas_elteres"
 
     if method == "unpaired" or not mt_refs:
         return "", "nincs_mt_parositas"
@@ -399,7 +444,20 @@ def resolve_karoli(karoli_book, book_key, fejezet, vers, mt_refs, method, kezi_f
         uj_vers = kjv_v + d
         if uj_vers < 1 or uj_vers > karoli_max:
             return "", "szamozas_elteres"
-        return f"{karoli_book} {kjv_ch}:{uj_vers}", "mt_szamozas_kovetes"
+        # KK7 G1/G2: ez UJONNAN keletkezo sor (a regi V1.3a algoritmus ezt
+        # meg nem toltotte ki) -- a fejezetdontes-tabla ellenorzi/korrigalja,
+        # mert az egyenletes d-eltolas csak akkor helyes, ha a tobbletvers a
+        # fejezet ELEJEN van (l. brief 0.6: pl. Ezs 63, ahol a tobblet mashol
+        # van, es az egyenletes eltolas minden verset elcsusztat).
+        dontes, korrekcio = fejezet_dontes.get((karoli_book, kjv_ch), ("nincs_adat", 0))
+        if dontes == "ures":
+            return "", "szamozas_elteres"
+        vegso_vers = uj_vers + korrekcio
+        if dontes == "elfogad" and 1 <= vegso_vers <= karoli_max:
+            return f"{karoli_book} {kjv_ch}:{vegso_vers}", "mt_szamozas_kovetes"
+        if dontes == "nincs_adat":
+            return f"{karoli_book} {kjv_ch}:{uj_vers}", "mt_szamozas_kovetes"
+        return "", "szamozas_elteres"
 
     if karoli_book == "Zsolt" and d in (1, 2):
         bejegyzes = dup_kjv_terkep.get((kjv_ch, kjv_v))
