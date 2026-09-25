@@ -1,195 +1,232 @@
-# ELŐKÉSZÍTÉS — cu31924098819406 ↔ biblicotheologic00cremuoft oldalkonkordancia
+# ELŐKÉSZÍTÉS — cu31924098819406 ↔ biblicotheologic00cremuoft oldalkonkordancia és O0.6.3–O0.6.4
 
-*Az O0.6.2(b) ÁLLJ-ra adott válasz: az O0.6.2(c) hat oldalszáma előtt oldalkonkordanciát
-készítettünk a két kiadás között. Ez a fájl még nincs commitolva; a `CREMER_OCR_BRIEF.md`
-és a `konkordancia/README.md` nem módosult.*
+*Negyedik kör (D20): a lapszámozás a két kiadás között ±1 oldal tűréssel egyenértékűnek
+számít; az O0.6.3 és O0.6.4 elindult. A `CREMER_OCR_BRIEF.md` nem módosult.*
 
 ---
 
-## 1. ᾅδης és ἐπικαλέω/ἐπικαλέομαι szócikkfej-előfordulások, Supplement-kezdet
+## 0. Fontos helyesbítés a harmadik kör jelentéséhez
 
-### 1.1 `biblicotheologic00cremuoft` (van benne görög — közvetlen keresés)
+A harmadik körben azt jelentettem, hogy a **cu31924098819406 saját `_page_numbers.json`-ja
+rendszeresen +1-gyel magasabb** oldalszámot ad, mint az élőfej. **Ez tévedés volt.** A
+`cu31924098819406_0035.jp2` és `..._0095.jp2` lapképét ténylegesen megnézve mindkét helyen a
+JSON értéke (20, illetve 80) áll nyomtatva — az „élőfej-OCR" (`19`, `79`) egy, a cu31924
+2008-as OCR-motorjára jellemző, **magas konfidenciájú, de téves** számjegy-felismerés
+(feltehetően `0`↔`9` összetévesztés ebben a betűtípusban). A `_page_numbers.json` tehát a
+cu31924-en **megbízható**, nem az élőfej saját OCR-je. A `biblicotheologic00cremuoft`
+oldalán viszont a level 625-öt (állítólag „610") ténylegesen megnézve a lapkép **valóban
+„610"-et mutat**, míg a cremuoft saját JSON-ja 613-at ad — ott tehát az élőfej a
+megbízható forrás, a JSON téved (l. 1. pont). A két tétel más-más OCR-motorral készült, és
+egymástól függetlenül, **ellentétes irányban** hibázik.
 
-Pontos alak-egyezéssel (NFC, hangjelek és kis/nagybetű nélkül) a `_hocr.html`-ben:
+**Következmény:** a cu31924 oldalszámait mostantól kizárólag a saját `_page_numbers.json`-ja
+adja (korrekció nélkül); a cremuoft oldalszámait az élőfej-alapú, simított tábla (1. pont).
 
-| Címszó | Level | JSON-oldal | Kontextus (rövidítve) |
+---
+
+## 1. Levél–oldal leképezés (végleges, változatlan az előző körhöz képest)
+
+| Level-tartomány (cremuoft) | Oldaltartomány | Eltolás (level − oldal) |
+|---|---|---|
+| 14–605 | 2–593 | +12 |
+| 606–958 | 591–943 | +15 |
+
+A JSON `pageNumber` mezője level 606–890 között kb. 257+30 levélen **+3-mal magasabb**
+értéket ad, mint a fenti (élőfej-alapú) tábla — ezt a `cremer_o06_meres.py` `CR_SZAKASZOK`
+konstansa korrigálja.
+
+---
+
+## 2. Konkordancia — javított tábla (a 0. pont helyesbítése után)
+
+**A cu31924 oldalát mostantól korrekció nélkül, a saját JSON-jából vesszük.** A horgony:
+az oldal felső harmadában lévő szavak (szó-szintű `y`-koordináta) közül 6 egymást követő,
+latin betűs szó.
+
+| cu31924 oldal | cremuoft level | cremuoft oldal | eltolás |
 |---|---|---|---|
-| ἐπικαλέω (1.) | 347 | 335 | `᾿Εκκλησία ᾿Επικαλέω … Ἔπικαλέω to call to, to call upon` — szócikkfej |
-| ἐπικαλέω (2.) | 348 | 336 | `᾿Επικαλέω Παρακαλέω οὖν ἐπικαλέσονται εἰς ὃν οὐκ` — folytatás |
-| ἐπικαλέω (3., Supplement) | 757 | 745 | `Καλέω 742 * Exixaréo` — **futófejléc, a nyomtatott oldalszám a fejlécben szó szerint „742”** |
-| ἐπικαλέω (4., Supplement) | 758 | 746 | `᾿Επικαλέω Καλύπτω ἐπικαλούμενον καὶ λέγοντα κύριε κατ` — folytatás |
-| ἐπικαλέω (mutatóban) | 933 | 918 | görög szómutató sora |
+| 20 | 31 | 19 | −1 |
+| 40 | 51 | 39 | −1 |
+| 60 | 70 | 58 | −2 |
+| 80 | 91 | 79 | −1 |
+| 100 | 110 | 98 | −2 |
+| 120 | 131 | 119 | −1 |
+| 140 | 151 | 139 | −1 |
+| 160 | 171 | 159 | −1 |
+| 180 | 191 | 179 | −1 |
+| 200 | 210 | 198 | −2 |
+| 220 | 231 | 219 | −1 |
+| 240 | 250 | 238 | −2 |
+| 260 | 270 | 258 | −2 |
+| 280 | 290 | 278 | −2 |
+| 300 | 310 | 298 | −2 |
+| 320 | 331 | 319 | −1 |
+| 340 | 350 | 338 | −2 |
+| 360 | 370 | 358 | −2 |
+| 380 | 391 | 379 | −1 |
+| 400 | 411 | 399 | −1 |
+| 420 | 431 | 419 | −1 |
+| 440 | 450 | 438 | −2 |
+| 460 | 471 | 459 | −1 |
+| 480 | 491 | 479 | −1 |
+| 500 | 511 | 499 | −1 |
+| 520 | 530 | 518 | −2 |
+| 540 | 550 | 538 | −2 |
+| 560 | 571 | 559 | −1 |
+| 580 | 591 | 579 | −1 |
+| 600 | 613 | 598 | −2 |
+| 620 | 634 | 619 | −1 |
+| 640 | 654 | 639 | −1 |
+| 660 | 673 | 658 | −2 |
+| 680 | 694 | 679 | −1 |
+| 700 | 714 | 699 | −1 |
+| 720 | 733 | 718 | −2 |
+| 740 | 753 | 738 | −2 |
+| 760 | 773 | 758 | −2 |
+| 780 | 793 | 778 | −2 |
+| 800 | 813 | 798 | −2 |
+| 820 | 834 | 819 | −1 |
+| 840 | 854 | 839 | −1 |
+| 860 | 873 | 858 | −2 |
+| 880 | 893 | 878 | −2 |
+| 900 | 914 | 899 | −1 |
 
-A pontos alakkeresés a `ᾅδης`-re **nem adott találatot** — a szócikkfej OCR-je itt latin/görög
-keveredésű torzkép (`Adns`, `4δης`), amit a szigorú alak-egyezés nem fog meg. Tágabb
-(substring, `csv` nélküli `bare()`-normalizált) kereséssel és a futófejléc-mintázat
-(`[bal őrszó] [oldalszám] [jobb őrszó]`) felhasználásával:
+**Az eltolás minden ponton −1 vagy −2** (24 pont −1, 21 pont −2), fokozatosan növekvő
+tendenciával a könyv mélyebb pontjai felé (ez arra utal, hogy a cremuoft valamivel
+sűrűbben szed, mint a cu31924 — l. a harmadik kör hipotézise). **D20 szerint ez ±1 oldal
+tűréssel egyenértékűnek számít**, ezért az O0.6.3/O0.6.4 folytatódik.
 
-| Címszó | Level | Futófejléc szó szerint | Nyomtatott oldalszám a fejlécben |
+### Sorszintű eltolás — kísérő adat (NEM leállási feltétel)
+
+A cremuoft-oldal első törzsszöveg-sorát (az élőfej utáni első klaszter) kerestem meg a
+cu31924 teljes sorfolyamában (globális sorindex-számozással); a 45 pontból **20-on** volt
+egyedi találat (a többinél a rövid, gyakori szókapcsolat nem volt egyedi, vagy túl kevés
+latin szó volt az első sorban):
+
+| cu31924 oldal | cremuoft level | horgony eleje | sor-eltolás |
 |---|---|---|---|
-| ᾅδης (1.) | 79–80 | `Ἀδελφότης 67 "ἅδης"` / `Adns 68 "4δης"` | **67–68** — pontosan egyezik a cu31924 §0.5-anchorral |
-| ᾅδης (2., Supplement) | 625 | `Φιλάδελφος 610 A8ns` | **610** — a fejléc szó szerint ezt a számot tartalmazza |
-| ᾅδης (3., Supplement, folyt.) | 626 | `Adns 611 Aidas` | 611 |
+| 20 | 31 | messengers who came | 0 |
+| 60 | 70 | atoned by the | −40 |
+| 100 | 110 | *(kiugró, elvetve — l. lent)* | — |
+| 160 | 171 | to give to | −1 |
+| 180 | 191 | for the attic | +1 |
+| 260 | 270 | the general object | −41 |
+| 300 | 310 | to let let | −39 |
+| 340 | 350 | himself at the | −40 |
+| 360 | 370 | of the measured | −39 |
+| 380 | 391 | and also as | −1 |
+| 400 | 411 | to esteem or | +1 |
+| 440 | 450 | in the that | −39 |
+| 480 | 491 | a general opinion | 0 |
+| 660 | 673 | and job the | −39 |
+| 720 | 733 | other explains to | −40 |
+| 760 | 773 | therefore the rendering | −39 |
+| 780 | 793 | once with a | −38 |
+| 820 | 834 | in the mostly | 0 |
+| 860 | 873 | frequently for which | −41 |
+| 880 | 893 | of the not | −40 |
 
-**Fontos módszertani észrevétel:** a `_page_numbers.json` `pageNumber` mezője a 625. levélre
-**613**-at ad, miközben a nyomtatott oldal fejléce szó szerint **610**-et mutat (3 oldal
-eltérés) — l. 2.3 pont, ez egy rendszerhiba a JSON-ban, nem kiadás-eltérés.
-
-### 1.2 Supplement kezdőoldal mindkét kiadásban
-
-- **cu31924** — a `SUPPLEMENT.` angol címsor level 607-en (JSON-oldal 592, üres
-  címlap) és level 609-en (JSON-oldal 591, itt kezdődik ténylegesen a szöveg:
-  `SUPPLEMENT. Ἀγαλλιάομαι, a deponent verb which appears exceptionally in an active
-  form Luke i. 47…`).
-- **cremuoft** — a `SUPPLEMENT.` címsor **level 605**-ön, ugyanazzal a szöveggel:
-  `SUPPLEMENT. ᾿Αγαλλιάομαι, ἃ deponent verb which appears exceptionally in an active
-  form Lake i 47…` — **szó szerint azonos szöveg**, ellentétben a címszavak ábécésorrendjének
-  megszakadásával (az előző level 602 még a főszöveg vége, ω/ψ környéki szócikkek).
-  A JSON ezt a levelet oldal 593-nak jelöli, de a következő level (606) futófejléce
-  szó szerint „591”-et mutat (`Ἀγαλλιᾶσθαι 591 Ἀγαλλιᾶσθαι`) — vagyis a level 605
-  valódi nyomtatott oldala **590**, a level 606-é **591**.
-
-**Következtetés:** a Supplement mindkét kiadásban **ugyanazon az oldalszámon** (590–591)
-kezdődik, szó szerint azonos szöveggel. A korábbi ÁLLJ-jelentésben feltételezett „a
-cremuoft főszövege ~876-ig tart, a Supplement sokkal később kezdődik” **téves volt** — ez
-a `_page_numbers.json` egy belső hibájának (2.3 pont) a félreértelmezéséből adódott.
-
----
-
-## 2. Angol horgonyos konkordancia (cu31924 minden 20. oldala → cremuoft)
-
-**Módszer:** a cu31924 minden 20. nyomtatott oldalán (mutatók nélkül, oldal 20–900) a
-3. sortól kezdve 6 egymást követő, kizárólag latin betűs (görög/fejléc-token nélküli) szót
-vettünk, kisbetűsítve, írásjel nélkül; a cremuoft teljes angol szóláncában kerestük
-(csak egyedi találat számít, egyébként a következő sor). A találat levelét a cremuoft
-`_page_numbers.json`-jából (`json_oldal`) **és** a level saját futófejléc-számjegyéből
-(`header_oldal`, ha volt tiszta olvasat az első ~6 tokenben) is jelentjük.
-
-| cu31924 oldal | cremuoft level | json_oldal | header_oldal | eltolás (cu−json) |
-|---|---|---|---|---|
-| 20 | 31 | 19 | 1* | +1 |
-| 40 | 51 | 39 | 9* | +1 |
-| 60 | 71 | 59 | 59 | +1 |
-| 80 | 91 | 79 | 79 | +1 |
-| 100 | 111 | 99 | 99 | +1 |
-| 120 | 131 | 119 | 119 | +1 |
-| 140 | 151 | 139 | 189* | +1 |
-| 160 | 171 | 159 | 159 | +1 |
-| 180 | — | — | — | nincs egyedi horgony |
-| 200 | — | — | — | nincs egyedi horgony |
-| 220 | — | — | — | nincs egyedi horgony |
-| 240 | 250 | 238 | 238 | +2 |
-| 260 | 271 | 259 | 259 | +1 |
-| 280 | — | — | — | nincs egyedi horgony |
-| 300 | 311 | 299 | 299 | +1 |
-| 320 | 331 | 319 | 819* | +1 |
-| 340 | 351 | 339 | 339 | +1 |
-| 360 | — | — | — | nincs egyedi horgony |
-| 380 | 391 | 379 | — | +1 |
-| 400 | — | — | — | nincs egyedi horgony |
-| 420 | 431 | 419 | 419 | +1 |
-| 440 | 451 | 439 | 439 | +1 |
-| 460 | 471 | 459 | 459 | +1 |
-| 480 | 491 | 479 | 479 | +1 |
-| 500 | 511 | 499 | 499 | +1 |
-| 520 | 531 | 519 | 519 | +1 |
-| 540 | — | — | — | nincs egyedi horgony |
-| 560 | 571 | 559 | 559 | +1 |
-| 580 | 591 | 579 | 579 | +1 |
-| **600** | 614 | **602** | **599** | **−2 (json), +1 (header)** |
-| **620** | 634 | **622** | **619** | **−2 (json), +1 (header)** |
-| 640 | — | — | — | nincs egyedi horgony |
-| 660 | — | — | — | nincs egyedi horgony |
-| **680** | 694 | **682** | **679** | **−2 (json), +1 (header)** |
-| 700 | 714 | 702 | 99* | +1 (json) |
-| **720** | 734 | **722** | **719** | **−2 (json), +1 (header)** |
-| **740** | 754 | **742** | **739** | **−2 (json), +1 (header)** |
-| 760 | — | — | — | nincs egyedi horgony |
-| **780** | 794 | **782** | **779** | **−2 (json), +1 (header)** |
-| **800** | 814 | **802** | **799** | **−2 (json), +1 (header)** |
-| **820** | 834 | **822** | **819** | **−2 (json), +1 (header)** |
-| **840** | 854 | **842** | **839** | **−2 (json), +1 (header)** |
-| **860** | 874 | **862** | **859** | **−2 (json), +1 (header)** |
-| 880 | — | — | — | nincs egyedi horgony |
-| 900 | 914 | 899 | 899 | +1 |
-
-*A csillagozott `header_oldal` értékek hibás olvasatok — a naiv „első számjegy-token az
-első 6 tokenben” heurisztika idézetben szereplő verzőszámot vagy sorszámot talált el a
-valódi oldalszám helyett (pl. Igehely-hivatkozás). Ezeket a 2.3 pont nem használja fel;
-csak a tiszta, futófejléc-mintázatú olvasatok (nem csillagozottak) számítanak bizonyítéknak.*
-
-### 2.1 Főszöveg (oldal 20–580)
-
-**Eltolás: cu31924 oldal − cremuoft valódi oldal = +1, egyenletesen** (a `header_oldal`
-oszlop ezt közvetlenül igazolja, ahol tiszta olvasat volt). A `json_oldal` ugyanezt az
-egyenletes +1-et mutatja — **a JSON ezen a szakaszon megbízható**.
-
-### 2.2 Supplement eleje (oldal 600–860, level ~614–874)
-
-**A `json_oldal` −2-re vált (vagyis json_oldal = cu_oldal − 2, szemben a főszöveg −1-ével)
-— ez egy +1 oldalas romlás a json-ban.** Ezzel szemben a **`header_oldal` (ahol tiszta
-olvasat volt) továbbra is szigorúan +1-et mutat, ugyanúgy, mint a főszövegben.** Ez azt
-jelenti: **a `_page_numbers.json` `pageNumber` mezője ezen a szakaszon (kb. level 605-től
-890-ig) szisztematikusan 3-mal magasabb értéket ad, mint a lapon ténylegesen nyomtatott
-oldalszám** — l. 2.3.
-
-### 2.3 A `_page_numbers.json` hibája (level ~605–890)
-
-A hiba mértéke pontosan 3 oldal, és a Supplement címlapjánál (level 605) kezdődik: a
-level 606 futófejléce szó szerint „591”, a JSON viszont 594-et ad ugyanarra a levélre.
-A hiba a teljes Supplement első kb. 285 levelén át egyenletesen fennmarad (a 610-es és
-742-es ᾅδης/ἐπικαλέω-horgonyoknál igazoltan, l. 1.1), majd valahol level 890–900 között
-magától helyreáll (900-nál json_oldal=899, ismét a főszöveghez hasonló −1-es mintázat).
-**Ez nem kiadás-eltérés, hanem az archive.org automatikus oldalszám-felismerő moduljának
-hibája ezen a tételen — a `pageNumber` mező level 605–~890 között kb. 3-mal magasabb
-értéket ad, mint a nyomtatott oldal.** Bármely további eszköz, amely a `_page_numbers.json`
-`pageNumber` mezőjét használja pontos oldalazonosításra ezen a szakaszon, **3-at
-vonjon le** belőle, vagy a futófejléc-számjegyet olvassa közvetlenül.
-
-### 2.4 Az oldal 900 utáni szakasz
-
-A minta itt véget ér (a mutatók előtt); a 900-as pont már ismét a főszöveg-mintázatú
-(json_oldal = cu_oldal − 1) viselkedést mutatja, összhangban a korábban mért level
-890/891 határponttal (l. az eredeti ÁLLJ-jelentés offset-szegmensei), ahol a JSON saját
-belső képlete `+12`-ről `+15`-re vált — ez a képlet-váltás időben egybeesik a 3 oldalas
-hiba magától való megszűnésével.
+Az oldal-100 pontnál a horgony (`from a privative`) egy teljesen más fejezetben, kb.
+1261 sorral arrébb adott (hamis) egyedi találatot — rövid, gyakori szókapcsolat, elvetve,
+nem vettem be a maximumba. **A többi 19 pont két csoportra esik szét:** ahol az eltolás
+kicsi (0, ±1 — ezek egybeesnek a fenti oldalszintű táblázat −1-es pontjaival), és ahol kb.
+−39-től −41-ig terjed (ezek a −2-es oldalszintű pontok: a cremuoft-oldal első sora a
+cu31924-ben **egy egész oldallal korábban**, annak tetején jelenik meg — konzisztens azzal,
+hogy egy nyomtatott oldal kb. 39-41 sorból áll). **Max |sor-eltolás| (a kiugró nélkül): 41**
+— ez érdemben nem ad új információt az oldalszintű eltolásokhoz képest, csak ugyanazt
+sor-granularitáson igazolja.
 
 ---
 
-## 3. A §0.5 hat Abbott-Smith-hivatkozás cremuoft-oldala a konkordancia szerint
+## 3. O0.6.3 — minta (mag: 20260925)
 
-| Címszó | cu31924 oldal | cremuoft valódi oldal (konkordancia/futófejléc szerint) | A címszó valóban ott áll-e |
+**Supplement-réteg definíciója (D20-kiegészítés):** a `SUPPLEMENT` címsor oldalától
+(level 605, oldal 590/591) a mutatók előtti utolsó oldalig (level 928, oldal 913) tart.
+Főrész: level 14–604.
+
+| Level | Oldal | Indok |
+|---|---|---|
+| 14 | 2 | §0.5 ismert szócikk: ἄβυσσος |
+| 79 | 67 | §0.5 ismert szócikk: ᾅδης (1.) |
+| 121 | 109 | §0.5 ismert szócikk: ἐπικατάρατος |
+| 347 | 335 | §0.5 ismert szócikk: ἐπικαλέω (1.) |
+| 625 | 610 | §0.5 ismert szócikk: ᾅδης (2., Supplement) — **egyben a horgonylap-követelmény is** |
+| 757 | 742 | §0.5 ismert szócikk: ἐπικαλέω (2., Supplement) — **egyben a horgonylap-követelmény is** |
+| 929 | 914 | görög szómutató első levele |
+| 949 | 934 | héber mutató első levele |
+| 80 | 68 | 12-es minta: főrész 1. fele |
+| 182 | 170 | 12-es minta: főrész 1. fele |
+| 275 | 263 | 12-es minta: főrész 1. fele |
+| 370 | 358 | 12-es minta: főrész 2. fele |
+| 531 | 519 | 12-es minta: főrész 2. fele |
+| 599 | 587 | 12-es minta: főrész 2. fele |
+| 725 | 710 | 12-es minta: Supplement |
+| 895 | 880 | 12-es minta: Supplement |
+| 919 | 904 | 12-es minta: Supplement |
+| 110 | 98 | 12-es minta: görögtoken-sűrű felső negyed |
+| 422 | 410 | 12-es minta: görögtoken-sűrű felső negyed |
+| 466 | 454 | 12-es minta: görögtoken-sűrű felső negyed |
+
+**Megjegyzés:** a brief-utasítás szerinti „ᾅδης és ἐπικαλέω Supplement-beli szócikkfejét
+tartalmazó két level, a 20-on felül" **ugyanaz a két level** (625, 757), amelyek már a
+§0.5 hat ismert oldala miatt is a mintában vannak — nem ad új, egyedi levelet, ezért a
+**végleges minta mérete 20, nem 22**.
+
+---
+
+## 4. O0.6.4 — ellenőrző csomag
+
+### Sor-klaszterezés szabálya (fontos módszertani javítás)
+
+A nyomtatott sor **nem** az `ocr_line` elem (az egy egész bekezdést fed le, l. korábbi
+kör) — szó-szintű `y`-koordinátából klaszterezve: **egymást követő szavak, ha a `y`
+(felső koordináta) különbsége ≤ 30 px, egy sorba tartoznak.**
+
+**Validálás 3 véletlen levélen (lapkép vs. klaszterezett sorok száma):**
+
+| Level | Klaszterezett sorok | Lapkép (kézzel számolva) | Eltérés |
 |---|---|---|---|
-| ἄβυσσος | 2 | 2 | **igen** — közvetlenül igazolva (O0.6.2b, első ÁLLJ-jelentés) |
-| ᾅδης (1.) | 67 | 67 | **igen** — közvetlenül igazolva |
-| ᾅδης (2., Supplement) | 610 | **610** (a futófejléc szó szerint ezt írja; a JSON hibásan 613-at adna) | **igen** — l. 1.1 |
-| ἐπικατάρατος | 109 | 109 | **igen** — közvetlenül igazolva |
-| ἐπικαλέω (1.) | 335 | 335 | **igen** — közvetlenül igazolva |
-| ἐπικαλέω (2., Supplement) | 742 | **742** (a futófejléc szó szerint ezt írja; a JSON hibásan 745-öt adna) | **igen** — l. 1.1 |
+| 14 | 40 | ~39 | 1 |
+| 625 | 39 | 39 | 0 |
+| 466 | 46 → **41 javítás után** | ~41 | 0 |
 
-**Mind a hat anchor pontosan egyezik**, ha a valódi (futófejléc szerinti) oldalszámot
-használjuk a `_page_numbers.json` helyett a Supplement-szakaszon. Az eredeti O0.6.2(b)
-ÁLLJ tehát **a JSON 2.3 pontban leírt hibájából adódott, nem a két kiadás közötti valódi
-oldalszám-eltérésből** — a két kiadás Supplementje ugyanott (oldal ~590) kezdődik, és a
-benne lévő szócikkek oldalszáma (legalábbis a két mintavett címszónál) **pontosan
-megegyezik** a két kiadás között.
+A level 466-on **5 hamis klasztert** talált az első futás: a lap jobb szélén (x ≈ 2291–2314
+px, a nyomtatott szedéstükör 350–1998 px-es sávján kívül) álló, elszigetelt OCR-morzsák
+(feltehetően lapszéli folt/kötésárnyék téves felismerése), amelyek `y`-koordinátája nem
+esett egybe egyetlen valódi sorral sem, ezért önálló (5–25 px széles) mini-klasztert
+alkottak. **Javítás:** minden 150 px-nél keskenyebb klasztert eldobunk (`SOR_MIN_SZELESSEG`
+a `cremer_o06_meres.py`-ban) — a valódi nyomtatott sorok szélessége a teljes szedéstükör
+(~1640 px), ez alatt biztosan nem sor. A javítás után mindhárom level ±2-n belül van
+(0–1 eltérés), **ÁLLJ nem indokolt**.
+
+### Gyanújel-logika
+
+- **Latin torzkép-gyanú:** a szó nem szerepel az „angol szótárban" (cu31924 hOCR-jében
+  `x_wconf ≥ 90` mellett legalább 3-szor előforduló, kisbetűsített, írásjel nélküli latin
+  token), **és** a sorban görög karakter, héberkontextus-jelző (`Heb.`, `LXX`) vagy másik
+  gyanús latin token is áll.
+- **Héberdetektor:** a fenti latin torzkép-gyanú `Heb.`/`LXX` jelzővel egy soron.
+- **C5 alakellenőrzés:** a sorban lévő görög szavakra `alak_igazolt_e()` (a meglévő
+  `cremer_ocr_javit.py`-ból, változtatás nélkül importálva) — nincs találat → `c5_nem_igazolt`
+  jelzés (ez **nem hiba**, csak jelölés, l. a brief C5 pontja).
+
+### Eredmény
+
+- **Minta:** 20 level (l. 3. pont).
+- **Megjelölt sor** (görög karakter, latin torzkép-gyanú vagy héberdetektor-találat van
+  rajta): **604**.
+- **ATNEZES-oldalak:** **13** (`naplok/CREMER_O06_ellenorzes/ATNEZES_01.md` … `_13.md`,
+  50 sor/oldal, az első oldal tetején a brief O0.6.4 ítéletkód-listájával).
+- **Kísérő fájlok:** `naplok/CREMER_O06_ellenorzes/sorok.tsv` (604 sor + fejléc, `csv`
+  modul nélkül, tab-elválasztva), `naplok/CREMER_O06_ellenorzes/kepek/` (604 JPEG kivágás,
+  soronként, legfeljebb 1000 px széles).
+- Az ítéleteket a felhasználó tölti ki.
 
 ---
 
-## Összegzés és javaslat a folytatásra
+## Ellenőrzés a commit előtt
 
-1. A cremuoft **`_page_numbers.json` `pageNumber` mezője megbízhatatlan a level ~605–890
-   tartományban** (kb. 3 oldallal magasabb értéket ad a valódinál). Az O0.6.3–O0.6.4
-   (mintavétel, ellenőrző csomag) és minden további O0.6-tétel, amely oldalszámot jelenít
-   meg vagy oldal alapján válogat, **ne a JSON `pageNumber` mezőjét, hanem a level saját
-   futófejlécéből olvasott oldalszámot** használja ezen a szakaszon (vagy a JSON értékéből
-   vonjon le 3-at, miután a hiba pontos határait — a level 605 és kb. 890 közötti szakaszt —
-   megerősítettük).
-2. A két kiadás (cu31924 3. angol kiadás, cremuoft 4. angol kiadás) **főszövege és
-   Supplementje azonos oldalszámozású** (±1 oldal jitter, ami az automatikus
-   horgony-illesztés pontatlanságából ered, nem valódi eltérésből) — a korábbi
-   feltételezés, hogy a cremuoft Supplementje sokkal később kezdődne, hibás volt.
-3. Javaslat: az O0.6.3 mintavétel és az O0.6.4 ellenőrző csomag futhat tovább, de a
-   levél↔oldal leképezéshez (ahol a §0.5-höz hasonló pontos oldalszám kell) a **futófejléc-
-   alapú oldatszám-olvasást** kell elsődlegesnek tekinteni a level 605–890 tartományban,
-   a JSON-t csak azon kívül.
+- `lexikon/`, `adat/`, `tematikus_lezart/`: nem érintett.
+- `konkordancia/_nyers/`: egyik fájl sincs staged állapotban.
+- Az egyetlen új/módosult tétel: `eszkozok/cremer_o06_meres.py`,
+  `naplok/CREMER_O06_ellenorzes/` (ez a fájl, `ATNEZES_01-13.md`, `sorok.tsv`, `kepek/`).
