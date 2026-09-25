@@ -473,7 +473,7 @@ A motívum egy konkrét, azonosítható kulcsszón alapul: **תְּהוֹם** (*
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#lxx | forrás: konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv | licenc: CC BY 4.0, projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#lxx | forrás: konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv | licenc: CC BY 4.0, projekt-adat | ts=2026-09-25 -->
 
 *Ez a blokk a `[ID: TEREMT-001]` motívum ÓSZ-i előfordulásait veti össze az `LXX_OS`-szel (G5), soronként a Károli-vers minden versére.*
 
@@ -488,8 +488,8 @@ A motívum egy konkrét, azonosítható kulcsszón alapul: **תְּהוֹם** (*
 | 5Móz 8:7 | 5Móz 8:7 | תְהֹמֹ֔ת (te.ho.Mot) | ἀβύσσων (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | 5Móz 33:13 | 5Móz 33:13 | תְּה֖וֹם (te.Hom) | ἀβύσσων (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Jób 28:14 | Jób 28:14 | תְּה֣וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
-| Jób 38:16 | — | תְּ֝ה֗וֹם (te.Hom) | — | szamozas_elteres | LXX_OS |
-| Jób 38:30 | — | תְ֝ה֗וֹם (te.Hom) | — | szamozas_elteres | LXX_OS |
+| Jób 38:16 | Jób 38:16 | תְּ֝ה֗וֹם (te.Hom) | ἀβύσσου (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Jób 38:30 | Jób 38:30 | תְ֝ה֗וֹם (te.Hom) | ἀβύσσου (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Zsolt 33:7 | Zsolt(LXX) 32:7 | תְּהוֹמֽוֹת (te.ho.Mot) | ἀβύσσους (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Zsolt 36:7 | Zsolt(LXX) 35:7 | תְּה֣וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Zsolt 42:8 | Zsolt(LXX) 41:8 | תְּה֣וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
@@ -506,15 +506,15 @@ A motívum egy konkrét, azonosítható kulcsszón alapul: **תְּהוֹם** (*
 | Péld 8:27 | Péld 8:27 | תְהֽוֹם (te.Hom) | — | kutatói azonosítás függőben | LXX_OS |
 | Péld 8:28 | Péld 8:28 | תְּהוֹם (te.hom) | — | kutatói azonosítás függőben | LXX_OS |
 | Ézs 51:10 | Ézs 51:10 | תְּה֣וֹם (te.Hom) | ἀβύσσου (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
-| Ézs 63:13 | — | תְּהֹמ֑וֹת (te.ho.Mot) | — | szamozas_elteres | LXX_OS |
+| Ézs 63:13 | Ézs(LXX) 63:12 | תְּהֹמ֑וֹת (te.ho.Mot) | — | kutatói azonosítás függőben | LXX_OS |
 | Ez 26:19 | Ez 26:19 | תְּה֔וֹם (te.Hom) | ἄβυσσον (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Ez 31:4 | Ez 31:4 | תְּה֖וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Ez 31:15 | Ez 31:15 | תְּה֔וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Ámós 7:4 | Ámós 7:4 | תְּה֣וֹם (te.Hom) | ἄβυσσον (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Hab 3:10 | Hab 3:10 | תְּהוֹם֙ (te.hOm) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
-| Jón 2:6 | — | תְּה֖וֹם (te.Hom) | — | szamozas_elteres | LXX_OS |
+| Jón 2:6 | Jón 2:6 | תְּה֖וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 
-*Összesítés: egyező=25, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=5, szamozas_elteres=4.*
+*Összesítés: egyező=28, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=6, szamozas_elteres=0.*
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-001#lxx -->
 
@@ -710,7 +710,7 @@ E tanulmány (összevont formában) a *tehóm*/*abüσσος*-motívum (`[ID: TE
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-23 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-25 -->
 
 *Ez a blokk a `[ID: TEREMT-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
@@ -718,7 +718,7 @@ E tanulmány (összevont formában) a *tehóm*/*abüσσος*-motívum (`[ID: TE
 - ID: `TEREMT-001`
 - Cím: Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma
 - Státusz: publikálható (`v4`, 2026.09.10)
-- Generálva: 2026-09-23
+- Generálva: 2026-09-25
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/TEREMT-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**

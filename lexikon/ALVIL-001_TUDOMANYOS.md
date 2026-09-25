@@ -703,7 +703,7 @@ A fenti egyetlen (Zsolt 16:10) genezisi-ívbeli előforduláson túl a *seól* m
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#lxx | forrás: konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv | licenc: CC BY 4.0, projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#lxx | forrás: konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ecclesiastes.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/jonah.tsv, konkordancia/LXX_OS/numbers.tsv, konkordancia/LXX_OS/proverbs.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/song-of-solomon.tsv | licenc: CC BY 4.0, projekt-adat | ts=2026-09-25 -->
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum ÓSZ-i előfordulásait veti össze az `LXX_OS`-szel (G5), soronként a Károli-vers minden versére.*
 
@@ -772,9 +772,9 @@ A fenti egyetlen (Zsolt 16:10) genezisi-ívbeli előforduláson túl a *seól* m
 | Hós 13:14 | — | שְׁא֔וֹל (she.'ol) | — | szamozas_elteres | LXX_OS |
 | Ámós 9:2 | Ámós 9:2 | שְׁא֔וֹל (sh.'ol) | ᾅδου (ᾅδης, Hadēs G0086) | egyező | LXX_OS |
 | Hab 2:5 | Hab 2:5 | שְׁא֜וֹל (sh.'ol) | ᾅδης (ᾅδης, Hadēs G0086) | egyező | LXX_OS |
-| Jón 2:3 | — | שְׁא֛וֹל (she.'ol) | — | szamozas_elteres | LXX_OS |
+| Jón 2:3 | Jón 2:3 | שְׁא֛וֹל (she.'ol) | ᾅδου (ᾅδης, Hadēs G0086) | egyező | LXX_OS |
 
-*Összesítés: egyező=54, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=6, szamozas_elteres=4.*
+*Összesítés: egyező=55, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=6, szamozas_elteres=3.*
 
 <!-- GENERÁLT-VÉGE: lexikon#ALVIL-001#lxx -->
 
@@ -1093,7 +1093,7 @@ A motívumhoz nincs rögzített kapcsolat.
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-23 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-25 -->
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
@@ -1101,7 +1101,7 @@ A motívumhoz nincs rögzített kapcsolat.
 - ID: `ALVIL-001`
 - Cím: Hádész (Seól) — a halottak birodalma
 - Státusz: publikálható (`v2`, 2026.09.10)
-- Generálva: 2026-09-23
+- Generálva: 2026-09-25
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ALVIL-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**

@@ -1249,7 +1249,7 @@ tévesen ne sorolja be a motívumba.】
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-23 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-25 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
@@ -1257,7 +1257,7 @@ tévesen ne sorolja be a motívumba.】
 - ID: `ISTENTISZT-001`
 - Cím: Segítségül hívni az Úr nevét
 - Státusz: publikálható (`v3`, 2026.09.22)
-- Generálva: 2026-09-23
+- Generálva: 2026-09-25
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ISTENTISZT-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
