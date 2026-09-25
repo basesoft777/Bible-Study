@@ -488,8 +488,8 @@ A motívum egy konkrét, azonosítható kulcsszón alapul: **תְּהוֹם** (*
 | 5Móz 8:7 | 5Móz 8:7 | תְהֹמֹ֔ת (te.ho.Mot) | ἀβύσσων (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | 5Móz 33:13 | 5Móz 33:13 | תְּה֖וֹם (te.Hom) | ἀβύσσων (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Jób 28:14 | Jób 28:14 | תְּה֣וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
-| Jób 38:16 | Jób 38:16 | תְּ֝ה֗וֹם (te.Hom) | ἀβύσσου (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
-| Jób 38:30 | Jób 38:30 | תְ֝ה֗וֹם (te.Hom) | ἀβύσσου (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
+| Jób 38:16 | — | תְּ֝ה֗וֹם (te.Hom) | — | szamozas_elteres | LXX_OS |
+| Jób 38:30 | — | תְ֝ה֗וֹם (te.Hom) | — | szamozas_elteres | LXX_OS |
 | Zsolt 33:7 | Zsolt(LXX) 32:7 | תְּהוֹמֽוֹת (te.ho.Mot) | ἀβύσσους (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Zsolt 36:7 | Zsolt(LXX) 35:7 | תְּה֣וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Zsolt 42:8 | Zsolt(LXX) 41:8 | תְּה֣וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
@@ -506,7 +506,7 @@ A motívum egy konkrét, azonosítható kulcsszón alapul: **תְּהוֹם** (*
 | Péld 8:27 | Péld 8:27 | תְהֽוֹם (te.Hom) | — | kutatói azonosítás függőben | LXX_OS |
 | Péld 8:28 | Péld 8:28 | תְּהוֹם (te.hom) | — | kutatói azonosítás függőben | LXX_OS |
 | Ézs 51:10 | Ézs 51:10 | תְּה֣וֹם (te.Hom) | ἀβύσσου (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
-| Ézs 63:13 | Ézs(LXX) 63:12 | תְּהֹמ֑וֹת (te.ho.Mot) | — | kutatói azonosítás függőben | LXX_OS |
+| Ézs 63:13 | Ézs 63:13 | תְּהֹמ֑וֹת (te.ho.Mot) | ἀβύσσου (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Ez 26:19 | Ez 26:19 | תְּה֔וֹם (te.Hom) | ἄβυσσον (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Ez 31:4 | Ez 31:4 | תְּה֖וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Ez 31:15 | Ez 31:15 | תְּה֔וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
@@ -514,7 +514,7 @@ A motívum egy konkrét, azonosítható kulcsszón alapul: **תְּהוֹם** (*
 | Hab 3:10 | Hab 3:10 | תְּהוֹם֙ (te.hOm) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 | Jón 2:6 | Jón 2:6 | תְּה֖וֹם (te.Hom) | ἄβυσσος (ἄβυσσος, abussos G0012) | egyező | LXX_OS |
 
-*Összesítés: egyező=28, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=6, szamozas_elteres=0.*
+*Összesítés: egyező=27, eltérő=0, LXX-minusz=0, kutatói azonosítás függőben=5, szamozas_elteres=2.*
 
 <!-- GENERÁLT-VÉGE: lexikon#TEREMT-001#lxx -->
 
