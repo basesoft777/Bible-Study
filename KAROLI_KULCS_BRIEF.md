@@ -1,7 +1,7 @@
 # KAROLI_KULCS_BRIEF.md — Károli-versmegfeleltetés: a `szamozas_elteres` valódi oka és javítása
 
-*v1 — 2026.09.25 · jóváhagyásra: a §0 számai és a §2 G-döntései · a FORRASJELOLTEK 1. menetének
-(FJ2) felülvizsgálatából*
+*v1.1 — 2026.09.25 · jóváhagyásra: a §0b számai, a G2 módosítása és a G9–G11 · új: KK1b-menet a
+KK4 előtt (a KK 1. menet jelentésének felülvizsgálatából)*
 
 **Cél.** A `konkordancia/LXX_OS/*.tsv` `igehely_karoli` oszlopa 20 346 szósorban (≈1 000 versben)
 üres, `karoli_ok=szamozas_elteres` címkével; ebből ered a 8 lexikonoldal 15 `szamozas_elteres`
@@ -14,8 +14,9 @@ készít a KJV- és az MT-számozáshoz, (3) jóváhagyás után javítja az imp
 **Futás: cloud.** **Modell:** Sonnet; a KK2 kézi fejezeteihez Opus, ha a „egyik sem” osztály
 10 fejezetnél több. **Push:** csak a saját ágra, tételenként; a `main`-re soha.
 
-**Szerkezet.** 1. menet: KK0–KK3, mérés és táblatervezet ⛔ → jóváhagyás után 2. menet:
-KK4–KK6, élesítés és újragenerálás ⛔.
+**Szerkezet.** 1. menet: KK0–KK3, mérés és táblatervezet ⛔ (lefutott, ág: `claude/karoli-kulcs-35158`)
+→ **1b menet: KK1b-1…KK1b-5, pótlás és ütköztetés ⛔** → jóváhagyás után 2. menet: KK4–KK6,
+élesítés és újragenerálás ⛔.
 
 **Nincs benne:** a lexikon 3. szakaszának kézi szerkesztése (generált réteg); a 87 függő hely
 eldöntése (`LEXIKON_LEZARAS_BRIEF.md` 4c); a teljes KJV/ASV-import (külön brief); közös fájl
@@ -55,6 +56,27 @@ tábla nem szükséges” következtetés, amely csak 1Móz, 2Móz, Péld könyv
 
 ---
 
+## 0b. Az 1. menet eredménye és hiányai *(chat-ellenőrzés a `claude/karoli-kulcs-35158` tarballján, 2026.09.25; a KK1b-1 újraméri)*
+
+| # | Mérés | Érték |
+|---|---|---|
+| 0b.1 | `naplok/KAROLI_KK1_fejezetosztaly.tsv` | 896 fejezet, 36 könyv (KJV 786 · MT 84 · KEZI 13 · EGYIK_SEM 13) |
+| 0b.2 | Hiányzó ószövetségi könyvek | Ezsdrás (10), Nehémiás (13), Eszter (10) — 33 fejezet; 929 − 896 = 33 |
+| 0b.3 | KK3 hatásbecslés alapja | 985 mért vers, „38 nem-Zsoltár könyv”; a Zsoltárok nem mérve; a „~686 (67,6%)” a teljes 1 015-re **arányosítás** |
+| 0b.4 | K4 a jelentésben | „RENDBEN, korláttal”: a 10%-os mintapróba helyett 27+1 tételes kézi minta |
+| 0b.5 | `konkordancia/LXX_versificacios_terkep.tsv` | 5 426 sor + fejléc, 35 könyv; oszlopok: `Karoli_igehely · Heber_vers · Latin_vers · Gorog_LXX_vers · Elteres_tipusa · Karoli_egyezik_hol`; Renumber 5 091 · Concatenation/Merge 335 |
+| 0b.6 | ua., `Karoli_egyezik_hol` | Heber 1 503 · EGYIK_SEM 1 233 · Heber,Latin 1 211 · Latin,Gorog 463 · Latin 361 · ELLENORZESRE_VAR 267 · Heber,Gorog 216 · Heber,Latin,Gorog 165 · egyéb a maradék |
+| 0b.7 | ua., a KK-menet használta-e | nem (0 hivatkozás a `naplok/KAROLI_*` fájlokban) |
+| 0b.8 | Ellentmondás-minta | a térkép: Károli Jón 2:3 → Héber Jon.2:4, `EGYIK_SEM`; tartalmi kontroll (§0.8): Károli Jón 2:3 = MT 2:3 = LXX 2:3 |
+| 0b.9 | A térkép kiejtésének oka | `LXX_OS/README.md` 2. szakasz: a `Gorog_LXX_vers` oszlop a studybible.info saját számozására épül (LEXV2_1 v4); a Károli–Héber–Latin oszlopokat ez nem érinti |
+
+**Következtetés:** a térkép ellenőrzött sorai (tartalmilag egyeztetett, pl. Ez 20/21, 1Móz 32)
+lezárt döntések; az ellenőrizetlen sorokban (`EGYIK_SEM`, `ELLENORZESRE_VAR`) a `Karoli_igehely`
+a 0b.8 szerint az angol számozást hordozhatja. A térkép tehát nem vehető át vakon, de a kulcstábla
+kötelező ütközés-ellenőrzője.
+
+---
+
 ## 1. Mércék
 
 - **Fejezetosztály (KK1):** minden ószövetségi Károli-fejezet pontosan egy osztályba kerül:
@@ -66,6 +88,14 @@ tábla nem szükséges” következtetés, amely csak 1Móz, 2Móz, Péld könyv
 - **A kulcstábla érvényessége (KK3):** minden érintett Károli-vers legfeljebb egy sorban
   szerepel; fejezeten belül monoton; az MT-oldal a TAHOT-ban, a KJV-oldal a `verse_pairs.jsonl`
   `mt_refs`-ében létezik; minden sor forrása megnevezve (`tvtms` · `kezi` · `szamlalas`).
+- **Ütköztetés a térképpel (KK1b-3):** a tervezet minden sora, amelyhez a
+  `LXX_versificacios_terkep.tsv`-ben van `Karoli_igehely` sor, egy osztályt kap: `EGYEZIK`
+  (a tervezet `igehely_mt`-je = `Heber_vers`) · `UTKOZIK_ELLENORZOTT` (eltér, és a térkép sora
+  tartalmilag egyeztetett) · `UTKOZIK_ELLENORIZETLEN` (eltér, a térkép sora `EGYIK_SEM` vagy
+  `ELLENORZESRE_VAR`). `UTKOZIK_ELLENORZOTT` sor a tervezetben nem maradhat: vagy a tervezet
+  javul, vagy horgonnyal bizonyított, miért téves a térkép.
+- **A K4 mintapróba horgonya:** a Károli-vers és a jelölt MT-vers között a `TAHOT_kivonat.tsv`
+  tulajdonnév- (TIPNR) vagy számnév-Strongja; KJV-szöveg nem kell hozzá.
 - **Siker (KK6):** a `szamozas_elteres` szósorok száma a 0.1-hez képest legalább 90%-kal
   csökken; a lexikon 15 sorából mindegyik új besorolást kap indokkal.
 
@@ -78,13 +108,16 @@ Szám csak lefuttatott, fájlba írt szkriptből jöhet; a szkript neve a munkal
 | # | Döntés |
 |---|---|
 | G1 | Az 1. menet csak `naplok/KAROLI_KK*` fájlokba és a `konkordancia/_nyers/` (gitignore) alá ír. |
-| G2 | Az MT↔angol kulcs forrása a STEPBible TVTMS (`STEPBible-Data`, commit rögzítve); a verse_pairs.jsonl marad az LXX↔KJV kulcs. Új, nem GitHub-os forrás nem kell. |
+| G2 | Az MT↔angol kulcs forrása a STEPBible TVTMS (`STEPBible-Data`, commit rögzítve); a verse_pairs.jsonl marad az LXX↔KJV kulcs. **v1.1:** a repó saját, TVTMS-alapú `konkordancia/LXX_versificacios_terkep.tsv`-je a Károli–Héber–Latin oszlopaival kötelező jelöltlista és ütközés-ellenőrző; a `Gorog_LXX_vers` oszlopa nem használható (0b.9). Új, nem GitHub-os forrás nem kell. |
 | G3 | A kulcstábla neve és helye (2. menet): `konkordancia/Karoli_versmegfeleltetes.tsv`, oszlopok: `igehely_karoli · igehely_kjv · igehely_mt · osztaly · forras · megjegyzes`; generált fejléccel és proveniencia-sorral. |
 | G4 | Az importer javítása a `resolve_karoli`-ban: (1) kézi függvény `None`-ja a lefedett fejezetben identitás, nem továbblépés; (2) új ág: ha a fejezet a kulcstáblában szerepel, onnan olvas, és elsőbbséget kap a versszám-őrrel szemben. A versszám-őr megmarad a tábla által nem fedett fejezetekre. |
 | G5 | Az `EGYIK_SEM` fejezetek soronkénti megfeleltetése csak tartalmi egyeztetéssel készülhet, soronkénti horgony-megjegyzéssel (a `job_38_41_eltolas` docstringje a minta); bizonytalan sor üres marad, `karoli_ok=szamozas_elteres`, nem találunk ki megfeleltetést. |
 | G6 | A lexikon 3. szakasza csak a saját generátorából frissül (CLAUDE.md, kimenet réteg). Ha a Józs-sorok oka H4, az a generátor LXX-szövegválasztásának kérdése: javaslat, nem javítás ebben a menetben. |
 | G7 | A FORRASJELOLTEK FJ2-fájljait a menet nem írja át; a KK1 jelentése külön szakaszban sorolja fel, melyik FJ2-állítást cáfolja vagy erősíti meg, mérésre hivatkozva. |
 | G8 | A kulcstábla a teljes KJV/ASV-import (3b) importkulcsa is lesz; ezért a Károli–KJV oldal a 39 ószövetségi könyv minden fejezetére készül, nem csak az LXX-érintett fejezetekre. |
+| G9 | A KK1b csak a `naplok/KAROLI_KK1b_*` fájlokba ír; a `LXX_versificacios_terkep.tsv`-t nem módosítja. A térkép javítandó sorai javaslatként kerülnek a jelentésbe (`naplok/KAROLI_KK1b_terkep_javaslat.tsv`). |
+| G10 | Hatásszám csak teljes mérésből: arányosítás, extrapoláció tilos (G2 v1 „becslés nem”). Ami nem mérhető, az „nem mért”, okkal. |
+| G11 | A K-feltétel állapota csak RENDBEN vagy NEM TELJESÜL lehet; a „RENDBEN, korláttal” nem elfogadható. A nem teljesülő feltétel mellé ok és pótlási javaslat kerül. |
 
 ---
 
@@ -114,9 +147,32 @@ Szám csak lefuttatott, fájlba írt szkriptből jöhet; a szkript neve a munkal
   a 123/87/3/5/1 bontás (csak előrejelzés, a lexikont nem generálja). `naplok/KAROLI_KK3_hatas.md`.
   **ÁLLJ, jelentés a chatbe.**
 
-**2. menet** *(csak a KK3 jóváhagyása után; a nyitó prompt külön kéri)*
+**1b menet** *(ugyanazon az ágon: `claude/karoli-kulcs-35158`; az 1. menet fájljait nem írja felül, újakat hoz létre)*
 
-- **KK4 — Élesítés.** `konkordancia/Karoli_versmegfeleltetes.tsv` a jóváhagyott tervezetből;
+- **KK1b-1 — A §0b újramérése.** 0b.1–0b.9 szkripttel. `naplok/KAROLI_KK1b_kiindulas.md`.
+- **KK1b-2 — Hiányzó könyvek és a Zsoltárok.** (a) Ezsdrás, Nehémiás, Eszter fejezetosztálya a
+  KK1 módszerével (a LXX_OS-ben: `2-esdras.tsv`, `esther-greek.tsv`; a kánoni szakaszok
+  megfeleltetése a `verse_pairs.jsonl` `mt_book`-ja szerint; a görög Eszter-többletek
+  `nincs_karoli_konyv`/`nincs_mt_parositas` maradnak). (b) A 150 zsoltár fejezetosztálya és
+  a Zsoltár-sorok ok-besorolása (H1–H5), a `zsolt_felirat_eltolas` ágat is beleértve.
+  Kimenet: a teljes, 929 fejezetes osztálytábla `naplok/KAROLI_KK1b_fejezetosztaly.tsv`,
+  és az ok-besorolás kiegészítése `naplok/KAROLI_KK1b_ok_besorolas.tsv`.
+- **KK1b-3 — Ütköztetés a térképpel.** A KK2-tervezet és a KK1b-2 új sorai a §1 ütköztetési
+  mércéje szerint. `UTKOZIK_ELLENORZOTT`: javítás a tervezetben, vagy horgonyos bizonyítás.
+  `UTKOZIK_ELLENORIZETLEN`: horgonyos döntés soronként, a 0b.8 mintájára. A térkép javítandó
+  sorai: G9. Kimenet: `naplok/KAROLI_KK1b_kulcstabla_tervezet.tsv` (a G3 oszlopaival, új
+  `terkep_utkozes` oszloppal), `naplok/KAROLI_KK1b_utkozes.tsv`.
+- **KK1b-4 — K4 mintapróba.** 10%-os véletlen minta (seed rögzítve) a `KJV` és `MT` osztályú
+  fejezetekből, fejezetenként az első és az utolsó vers, TAHOT-horgonnyal (§1). Minden
+  mintatétel sorban: Károli-igehely, jelölt MT-igehely, horgony-Strong, egyezik/nem.
+  `naplok/KAROLI_KK1b_mintaproba.tsv`.
+- **KK1b-5 — Hatás újraszámolása ⛔.** A KK3 szkriptje a KK1b-tervezettel, a teljes 1 015
+  (vagy újramért) versen, Zsoltárokkal; a 15 lexikon-sor újra; K1–K6 a G11 szerint.
+  `naplok/KAROLI_KK1b_hatas.md`. **ÁLLJ, jelentés a chatbe.**
+
+**2. menet** *(csak a KK1b-5 jóváhagyása után; a nyitó prompt külön kéri)*
+
+- **KK4 — Élesítés.** `konkordancia/Karoli_versmegfeleltetes.tsv` a jóváhagyott KK1b-tervezetből;
   `eszkozok/lxx_os_import.py` a G4 szerint; `konkordancia/LXX_OS/README.md` 2. szakasza
   az új algoritmussal.
 - **KK5 — Újragenerálás.** `lxx_os_import.py --forras <lxx-morph klón a rögzített commiton>`
@@ -126,7 +182,7 @@ Szám csak lefuttatott, fájlba írt szkriptből jöhet; a szkript neve a munkal
   „Egyezés”-bontása előtte/utána; `ellenoriz.py`. `naplok/KAROLI_KK6_jelentes.md`.
   **ÁLLJ, jelentés a chatbe.**
 
-Commit tételenként: `KK<n>: <rövid leírás>`.
+Commit tételenként: `KK<n>: <rövid leírás>` (az 1b menetben `KK1b-<n>: …`).
 
 ---
 
@@ -134,13 +190,14 @@ Commit tételenként: `KK<n>: <rövid leírás>`.
 
 | # | Feltétel |
 |---|---|
-| K1 | 1. menet: `git diff --stat main..HEAD` csak `KAROLI_KULCS_BRIEF.md` és `naplok/KAROLI_*`. 2. menet: ezeken felül csak `konkordancia/Karoli_versmegfeleltetes.tsv`, `konkordancia/LXX_OS/*`, `eszkozok/lxx_os_import.py`, `eszkozok/lxx_kivonat_fetch_v2.py` (ha a G4 ott javít), és a lexikon generátorának kimenetei |
+| K1 | 1. és 1b menet: `git diff --stat main..HEAD` csak `KAROLI_KULCS_BRIEF.md` és `naplok/KAROLI_*`. 2. menet: ezeken felül csak `konkordancia/Karoli_versmegfeleltetes.tsv`, `konkordancia/LXX_OS/*`, `eszkozok/lxx_os_import.py`, `eszkozok/lxx_kivonat_fetch_v2.py` (ha a G4 ott javít), és a lexikon generátorának kimenetei |
 | K2 | `eszkozok/ellenoriz.py`: SÉRTÉS 0 |
-| K3 | a KK1-ben mind a 15 sor besorolva, horgonyszóval mindkét oldalon |
-| K4 | a KK2 tervezet átmegy a §1 érvényességi próbáin; a mintapróba ≥ 98% |
+| K3 | a KK1-ben mind a 15 sor besorolva, horgonyszóval mindkét oldalon; 1b: a 929 fejezet mind osztályozva |
+| K4 | a KK1b-tervezet átmegy a §1 érvényességi próbáin; a KK1b-4 mintapróba ≥ 98%; nincs `UTKOZIK_ELLENORZOTT` sor bizonyítás nélkül |
 | K5 | minden szám szkriptből, a szkript a munkalap fejlécében; a TVTMS és az lxx-morph commitja rögzítve |
 | K6 | nincs `csv` modul; héber/görög szöveg csak fájlba írt szkriptből (CLAUDE.md, Shell) |
 | K7 | 2. menet: a `szamozas_elteres` csökkenése ≥ 90%, vagy a hiány okonként megindokolva |
+| K8 | minden K-feltétel állapota RENDBEN vagy NEM TELJESÜL (G11); hatásszám csak mérésből (G10) |
 
 ---
 
@@ -148,11 +205,28 @@ Commit tételenként: `KK<n>: <rövid leírás>`.
 
 | Verzió | Dátum | Változás |
 |---|---|---|
+| v1.1 | 2026.09.25 | A KK 1. menet (ág `claude/karoli-kulcs-35158`) jelentésének chat-ellenőrzése után: 36 könyv 39 helyett (0b.2), a Zsoltárok kimaradt és a hatásszám arányosítás (0b.3), a K4 nem teljesült (0b.4), a repó `LXX_versificacios_terkep.tsv`-je nem került felhasználásra (0b.7). Új §0b; §1 ütköztetési mérce és TAHOT-horgonyos mintapróba; G2 módosítva (a térkép kötelező ellenőrző, a görög oszlop kizárva); új G9–G11; új KK1b-menet a KK4 előtt; K1, K3, K4 pontosítva, új K8. |
 | v1 | 2026.09.25 | Első változat. Kiváltó ok: az FJ2 a 15 `szamozas_elteres` sort kivonatolási hézagnak minősítette, de a chat-ellenőrzés szerint a fejezetek megvannak (0.4), az üres Károli-oszlop oka a `resolve_karoli` fejezetszintű versszám-őre (H1), a Károli MT-követése (H2) és valódi Károli-sajátosság (H3). Döntések: TVTMS mint MT-kulcs (G2); kulcstábla a teljes ÓSZ-re, a 3b importkulcsaként is (G8); bizonytalan sor üres marad (G5); a lexikon csak generátorból (G6); az FJ2-fájlok érintetlenek (G7). |
 
 ---
 
-## 6. Nyitó prompt (cloud session; a briefet csatold)
+## 6. Nyitó prompt — 1b menet (cloud session; a briefet csatold)
+
+```
+Először írd ki: pwd, git branch --show-current, git log --oneline -1
+Válts a claude/karoli-kulcs-35158 ágra (git fetch; git checkout), és írd ki újra a git log --oneline -1-et.
+Olvasd el a CLAUDE.md-t, a konkordancia/LXX_OS/README.md 2. szakaszát és a naplok/KAROLI_KK1_jelentes.md-t.
+1. A csatolt KAROLI_KULCS_BRIEF.md v1.1-et írd a repó gyökerében lévő v1 helyére, változtatás nélkül.
+   Commit: "KK: KAROLI_KULCS_BRIEF.md v1.1".
+2. Hajtsd végre a KK1b-1…KK1b-5 tételeket a brief §3 szerint, a §0b, §1 és a G9–G11 szerint.
+   Tételenként külön commit, és minden commit után push erre az ágra. A main-re ne pushold.
+3. A KK1b-5 után ellenőrizd a §4 K1–K6 és K8 feltételt; állapot csak RENDBEN vagy NEM TELJESÜL.
+ÁLLJ a KK1b-5 után: jelentés a chatbe (commitlista, 929 fejezet osztálybontása, a térkép-ütközések
+darabszáma osztályonként, a mintapróba aránya, a mért hatás a Zsoltárokkal, a 15 sor, K1–K8).
+A KK4–KK6-ot ebben a sessionben NE kezdd el.
+```
+
+## 7. Nyitó prompt — 1. menet (v1, lefutott; archív)
 
 ```
 Először írd ki: pwd, git branch --show-current, git log --oneline -1
