@@ -1,6 +1,6 @@
 # CREMER_OCR_BRIEF.md — a Cremer teljes szövegének javítása külső képolvasó modellekkel
 
-*v1 — 2026.09.23 · jóváhagyásra: a §2 C-döntései és a §0/§4 számai*
+*v2 — 2026.09.24 · a v1 jóváhagyva és az O0 kész; a v2 a C1–C4, C6, C7, O1.2 módosításait és az O0.4 tételt hozza (D8–D13); v2.1: összehasonlító pilot a tartalék m2-vel (D14); v2.2: elemszintű validálás (D15); v2.3: tömör azonosítók és kimeneti kulcsok, laponkénti naplóírás (D16); v2.4: `valtozatlan` döntés, Qwen-zaj elkülönítése (D17); v2.5: jelölt m1 (GPT-5 Mini) és próbafutás, döntési szabály pontosítása, max_tokens (D18); v2.6: O0.6 forrásmérés a cremuoft-tételen, a pilot felfüggesztve (D19); **v3: LEZÁRVA 2026.09.25 — az O-pipeline nem folytatódik (D20–D22)***
 
 **Cél.** Hermann Cremer *Biblico-Theological Lexicon of New Testament Greek* (3. angol kiadás,
 Supplementtel) **teljes szövege** gépileg olvasható, görög betűs formában a `konkordancia/`
@@ -20,6 +20,21 @@ változóval. **A kulcs soha nem kerül a repóba, naplóba vagy commit-üzenetb
 
 ---
 
+## Lezárás (v3, 2026.09.25)
+
+**Állapot:** a brief lezárva. Az O0 kész (O0.1–O0.4, O0.5a–f, O0.6.1–O0.6.4); az O0.6.5, az O1–O4 nem indul (D22). A Cremer további sorsa a SZOTAR-ban a `NYITOTT_FELADATOK.md`-ben van nyitva.
+
+**Ami megmarad és újrahasznosítható:**
+- Forrás: archive.org `biblicotheologic00cremuoft` (4. angol kiadás Supplementtel, 1895; Tesseract 5, `grc+eng`). A görög politonikus, szórványos hibákkal; a héber olvashatatlan. SHA-k a `konkordancia/README.md`-ben, nyers fájlok a `konkordancia/_nyers/cremuoft/` alatt (nem verziózva).
+- Koordinátás réteg: `_hocr.html` (a `_djvu.txt`-vel 100/100 token egyezik).
+- Levél–oldal leképezés (élőfej alapján): level 14–605 → oldal = level − 12; level 606–958 → oldal = level − 15. Görög szómutató: level 929, héber mutató: level 949. A lapszámozás kérdéseit a D20 rögzíti.
+- Eszköz: `eszkozok/cremer_o06_meres.py` (nyomtatott sorok klaszterezése, gyanújelek, kivágások); az ellenőrző csomag: `naplok/CREMER_O06_ellenorzes/` (20 mintalevél, 604 sor, 13 ATNEZES-oldal, ítéletek nélkül) és az `ELOKESZITES.md` (`96c4c5d`).
+- A korábbi O1-futások naplói (`naplok/CREMER_O1_*`) és a modell-összevetés (D15–D18) változatlanul megmaradnak.
+
+**Ha a Cremer-szöveg később mégis kell:** célzott, szócikkszintű kinyerés a cremuoftból (szómutató → oldal → levél → szócikkhatár → gyanús görög és minden héber hely a lapképpel összevetve → jóváhagyás), a héber mutatónál egyszeri lapkép-átírással. A leírás és a becslés a `NYITOTT_FELADATOK.md`-ben.
+
+---
+
 ## 0. Kiindulás *(az O0 újraméri; eltérésnél ÁLLJ)*
 
 | # | Mérés | Érték |
@@ -36,8 +51,8 @@ változóval. **A kulcs soha nem kerül a repóba, naplóba vagy commit-üzenetb
 ## 1. Fogalmak
 
 - **Gyanús szó:** hOCR-szó `x_wconf` < 60, vagy latin betűs torzkép görög helyén (pl. `ABvocos`).
-- **Csere:** egy gyanús szó helyére javasolt görög (vagy héber, vagy javított latin) alak, a hOCR szó-azonosítójával.
-- **Egyezés:** a két modell cseréje Unicode NFC-normalizálás után karakterre azonos (ékezettel, hehezettel együtt).
+- **Csere:** egy vagy több gyanús szó helyére javasolt görög (vagy héber, vagy javított latin) alak, a hOCR szó-azonosítóival (`szo_ids`): egy csere egy vagy több, ugyanabban a sorban egymást követő hOCR-szót fedhet le. Az írásjel nem része az alaknak; az eszköz a hOCR-tokenből teszi vissza.
+- **Egyezés:** a két modell cseréje ugyanarra a `szo_ids` listára vonatkozik, azonos `nyelv`-vel, és az alak a C4 előnormalizálása után karakterre azonos (ékezettel, hehezettel együtt).
 
 ---
 
@@ -45,13 +60,13 @@ változóval. **A kulcs soha nem kerül a repóba, naplóba vagy commit-üzenetb
 
 | # | Kérdés | Javaslat |
 |---|---|---|
-| C1 | Modellek | **Két független, képolvasó modell OpenRouteren, eltérő gyártótól.** Javaslat (D7): **(1) Qwen** — a Qwen3.5-Flash vagy a Qwen3-VL-32B (nagyon olcsó, erős dokumentum-OCR); **(2) Google Gemini Flash**, **rögzített verzióval** (a „latest" álnév nem használható, mert menet közben másik modellre válthat, és a futás nem lenne reprodukálható). A pontos modell-azonosítót a beállításkor az openrouter.ai/models oldalról kell kimásolni; az azonosítók és az árak az `eszkozok/cremer_ocr_config.json`-ban. Ha a pilotban valamelyik gyengén teljesít a politonikus görögön, csere a pilot megismétlésével. |
-| C2 | Hívás egysége | **Laponként egy hívás modellenként.** Bemenet: a lapkép (jp2 → JPEG, a hosszabb él legfeljebb 2000 px) + a lap hOCR-szavai (azonosító, szöveg, megbízhatóság, bbox), a gyanúsak kiemelve. |
-| C3 | Kimenet | **Szigorú JSON cserelista**: `{szo_id, alak, nyelv (grc/heb/lat)}` — csak a gyanús szavakra. A modell nem ír szabad szöveget; az angol szöveg a hOCR-ből változatlan. Érvénytelen JSON: egy újrapróba, utána `hiba`. |
-| C4 | Elfogadás | **Egyezés → `auto`**; eltérés → `vitas`; valamelyik modell nem ad cserét → `hianyzo`. A `vitas` és a `hianyzo` sorok nem kerülnek a javított szövegbe (ott a hOCR-alak marad, jelölve). |
+| C1 | Modellek | **Két független, képolvasó modell OpenRouteren, eltérő gyártótól, rögzített azonosítóval** (D8): **m1 = `qwen/qwen3-vl-32b-instruct`** (nem gondolkodó modell), **m2 = `google/gemini-3.8-flash`**, a gondolkodás `low` szinten. A „latest" álnév kizárva, mert menet közben másik modellre válthat. Árak 2026.09.24-én (USD / M token, bemenet / kimenet): m1 0,104 / 0,416; m2 0,75 / 3,75. Az árak a configban vannak, de a költségnapló a ténylegesen számlázott értéket vezeti (C6). Tartalék m2: `google/gemini-3.1-flash-lite` (0,25 / 1,50). Ha a pilotban valamelyik modell gyengén teljesít a politonikus görögön, csere a pilot megismétlésével. **Jelölt m1** (D18): `openai/gpt-5-mini` (0,25 / 2,00 USD/M token), gondolkodás `minimal` szinten — a Qwen 31,8%-os hibaaránya miatt próbafutásra került (`--m1 jelolt`), öt lapon (17, 124, 209, 432, 805), 0,50 USD plafonnal, mindkét m2-vel. Eredmény: `naplok/CREMER_O1_probafutas.md`; a Qwen–m1 csere sorsáról a felhasználó dönt a próbafutás alapján. Modellenkénti `max_tokens` a configból (javaslat: 16000) — csonkolt válasz `hiba`, a naplóban jelölve. |
+| C2 | Hívás egysége | **Laponként egy hívás modellenként**, `temperature: 0`. Bemenet: a lapkép (jp2 → JPEG, a hosszabb él legfeljebb 2000 px), valamint minden olyan hOCR-sor teljes tokenlistája (azonosító, szöveg), amelyben van gyanús szó. A gyanús szavak megjelölve, megbízhatósággal és **a kiküldött JPEG méretére skálázott bbox-szal** (D9). A többi sor nem megy ki. |
+| C3 | Kimenet | **Szigorú JSON**, JSON-sémával, ahol a modell támogatja, **tömör alakban** (D16): `{"cserek": [{"i": [int, ...], "a": str, "l": "grc"|"heb"|"lat", "x": true?}]}`. A payloadban is a hOCR szo_id helyett laponkénti, 0-tól induló egész sorszám megy ki a modellnek; az eszköz a validálás előtt képezi vissza a valódi hOCR szo_id-ra. Az `i` egy vagy több, ugyanazon sorban egymást követő azonosító, amelyből legalább egy gyanús. Az `x` csak akkor szerepel, ha igaz (kivétel: a modell a kiküldött sorokban olyan görög vagy héber torzképet jelez, amely nincs gyanúsnak jelölve, D10). Az `a` írásjel nélkül értendő. A modell nem ír szabad szöveget; az angol szöveg a hOCR-ből változatlan. Érvénytelen JSON esetén egy újrapróba, utána `hiba`: ilyenkor a lap minden gyanús szava `hiba` lesz, nem `hianyzo`. Sémasértő elem esetén csak az az elem esik ki, és a hibanaplóba kerül; ha egy lapon egy modell elemeinek több mint fele sémasértő, egy újrapróba, utána `hiba` (D15). **Kivétel** (D17): egy szerkezetileg rendben lévő, de nem-`x`-ként csak nem-gyanús azonosítóra vonatkozó elem nem sémasértés, hanem `elvetett_nem_gyanus` — kimarad, a hibanaplóba mégis bekerül, de nem számít bele az 50%-os küszöbbe. HTTP 429/5xx esetén visszalépéses újrapróba, és a lap csak ennek kimerülése után kap `hiba` jelölést. |
+| C4 | Elfogadás | **Előnormalizálás az összevetés előtt** (D11): NFC; az aposztróf-szerű jelek (U+0027, U+02BC, U+1FBD és az önálló U+1FBF) → U+2019; a lunáris szigma (U+03F2) → σ, szóvégen ς; a szóvégi σ → ς. **Egyezés → `auto`**; eltérés (az alakban, a `nyelv`-ben vagy a `szo_ids`-ben) → `vitas`; API-hiba → `hiba`. **Pontosítás (D17):** ha a gyanús azonosítóra **egyik** modell sem ad elemet (mindkettő megtartaná a hOCR-alakot), az `valtozatlan` — nem `hianyzo`. A `hianyzo` mostantól csak az az eset, amikor **pontosan az egyik** modell ad elemet; a tsv jelöli, melyik (`hianyzo_m1` / `hianyzo_m2`). Az `extra` cseréknél egyezés esetén `extra_auto`, különben `extra_vitas`. Ezek a pilotban csak jelentve vannak, a javított szövegbe nem kerülnek; az alkalmazásukról a pilot után születik döntés. A `vitas`, `hianyzo_*` és `hiba` sorok nem kerülnek a javított szövegbe (ott a hOCR-alak marad, jelölve) — a `valtozatlan` is a hOCR-alakot hagyja, de jelölés nélkül. Összevont `auto` cserénél az első azonosító kapja az alakot a hOCR-tokenek írásjeleivel, a többi azonosító üres lesz. **Döntési szabály pontosítása (D18):** (a) az `extra`-t az **eszköz** dönti el a `szo_ids` gyanús voltából, nem a modell `x` jelzéséből — a modellek `x`-eltérése önmagában nem tesz `vitas`-sá; (b) ha egy elem `alak`-ja szóközzel pontosan annyi szóra tagolt, ahány azonosító van benne, az eszköz az összevetés előtt azonosítónként külön elemekre bontja; (c) az `alak` elejéről/végéről az írásjel az összevetés előtt levágva (a K3 szerint úgyis a hOCR-tokenből jön vissza). A kis- és nagybetű különbség továbbra is `vitas`, a diagnosztika külön számolja. |
 | C5 | Alakellenőrzés | A görög cserék összevetése a meglévő alaklistákkal (`TAGNT_kivonat`, `LXX_OS`) és lemmalistákkal (Abbott-Smith, LSJ, TBESG). Találat → `alak_igazolt`; nincs találat → nem hiba (a Cremer klasszikus idézetei nincsenek a listákban), csak jelölés. A héber cserék a TBESH/BDB lemmáival. |
-| C6 | Költségplafon | A configban rögzített felső határ (javaslat: **20 USD** a teljes futásra, a pilot külön); a hívásnapló futó összeget vezet, a plafon elérésekor megáll. Költség- és tokennapló laponként. |
-| C7 | Pilot | **20 lap**: a 7 ismert levél (17, 82, 124, 350, 628, 760 + a görög mutató 934. levele), a héber mutató 950. levele és 12 véletlen levél (rögzített maggal). Kézi ellenőrzés: az `auto` cserék mintája (legalább 200) és minden `vitas` sor. **A teljes futás feltétele: az `auto` cserék hibaaránya < 1%**, és a `vitas` + `hianyzo` arány jelentve. |
+| C6 | Költségplafon | A configban rögzített felső határ: **20 USD** a teljes futásra, a pilotra külön 2 USD. A hívásnapló **a válasz `usage` mezőjéből** vezet futó összeget: bemeneti, kimeneti és gondolkodási token, valamint az OpenRouter által számlázott költség. Ha a költség nem jön vissza, a config áraiból számol, jelölve. Becslés csak a `--szaraz` módban használható (D12). A plafon elérésekor a futás megáll. Költség- és tokennapló laponként. |
+| C7 | Pilot | **20 lap**: a 7 ismert levél (17, 82, 124, 350, 628, 760 + a görög mutató 934. levele), a héber mutató 950. levele és 12 véletlen levél (rögzített maggal). Kézi ellenőrzés: az `auto` cserék **300 elemes** véletlen mintája (rögzített maggal) és minden `vitas` és `extra_*` sor. **A teljes futás feltétele: 0 hiba a 300-as mintán, vagy a minta 600-ra bővítése után legfeljebb 1 hiba.** Mindkét esetben a hibaarány 95%-os felső becslése ≤ 1% (D13). Ha a pilot kevesebb mint 300 `auto` cserét ad, mindet át kell nézni, és a felső becslést jelenteni. A `vitas`, `hianyzo`, `hiba` és `extra_*` arányt jelenteni kell. |
 | C8 | Vitás sorok | A teljes futás után nem oldjuk fel mindet: **csak a render által használt szócikkekben** (ma a 13 G-token és a 24 H-token héber mutatója), kézi döntéssel, a javítási naplóba. A többi `vitas` marad, jelölve; a render nem használ feloldatlan sort. |
 | C9 | Külső modell a projekt adatán | Ez az első ilyen lépés (a „fordítási pipeline, külső modellek" eddig kizárva). **Engedett, mert** a forrás közkincs (1880-as kiadás), a modellnek csak a lapkép és a nyilvános OCR-szöveg megy; projekt-saját adat (tanulmány, döntésnapló) nem. |
 
@@ -64,10 +79,44 @@ változóval. **A kulcs soha nem kerül a repóba, naplóba vagy commit-üzenetb
 - **O0.2** `eszkozok/cremer_ocr_javit.py`: lapkép-kivágás a jp2-zipből (kicsomagolás nélkül, laponként), hOCR-feldolgozás, OpenRouter-hívás (C1–C3), egyezés (C4), alakellenőrzés (C5), költségnapló és plafon (C6). Kulcs csak környezeti változóból. `--levelek`, `--pilot`, `--szaraz` (hívás nélkül: csak a bemenetek előállítása és a becsült tokenszám) kapcsolók.
 - **O0.3** `eszkozok/cremer_ocr_config.json` (modellnevek üresen hagyva — a felhasználó tölti ki), `--szaraz` futás a 20 pilot-lapra: becsült token és költség jelentve.
 
-### O1 — pilot ⛔
-- **O1.1** Futás a 20 lapra. Kimenet: `naplok/CREMER_O1_csere.tsv` (`szo_id`, `level`, `bbox`, `ocr`, `m1`, `m2`, `dontes`, `alak_igazolt`), `naplok/CREMER_O1_koltseg.tsv`.
-- **O1.2** Ellenőrző csomag a kézi átnézéshez: 200 véletlen `auto` csere + minden `vitas`, mindegyik mellett a lapkép kivágott része (fájlnév a sorban). `naplok/CREMER_O1_ellenorzes/` (a kivágott képek a `_nyers` alá, a tsv a `naplok/`-ba).
-- **O1.3** Jelentés: `naplok/CREMER_O1_jelentes.md` — egyezési arány, `vitas`/`hianyzo` arány, alakellenőrzés-arány, tényleges költség és a teljes kötetre vetített költség. **ÁLLJ** — a kézi ellenőrzés és a C7 küszöb után a felhasználó dönt a teljes futásról (és szükség esetén a modellcseréről).
+- **O0.4** *(v2)* Eszközjavítás a v2 C1–C7 szerint. Tartalma:
+  - bbox-skálázás (D9);
+  - sorkontextus, `szo_ids` és `extra` (C2–C3);
+  - előnormalizálás és `hiba` állapot (C4);
+  - `usage`-alapú költségszámítás a gondolkodási tokenekkel (C6);
+  - `temperature: 0`, `reasoning` a configból, JSON-séma, HTTP-újrapróba;
+  - nyers válasz-gyorsítótár a `konkordancia/_nyers/cremer_cache/<modell>/<level>.json` alatt, kulcs: levél + modell-azonosító + prompt-verzió. Ebből a döntések hívás nélkül újraszámolhatók, és erre épül a folytatás (O2.1) (D12).
+
+  Hívás nélküli önteszt: `--onteszt`.
+
+- **O0.6** *(v2.6; O0.6.1–O0.6.4 kész, `96c4c5d`; az O0.6.5 nem készült el — a brief lezárva, D22)* **Forrásmérés a cremuoft-tételen.** Hálózati forgalom csak az archive.org-letöltés, modellhívás nincs (D19). Az O1 addig nem folytatódik, amíg a felhasználó az O0.6.5 alapján nem döntött.
+  - **O0.6.1 Letöltés és rétegazonosítás.** Az archive.org `biblicotheologic00cremuoft` tétel (Cremer, 4. angol kiadás Supplementtel, T. & T. Clark, 1895) fájljai a `konkordancia/_nyers/cremuoft/` alá kerülnek (`.gitignore` alatt): a `_djvu.txt`, a koordinátás szövegrétegek közül mind, amelyik létezik (`_djvu.xml`, `_chocr.html.gz`, `_hocr.html`), valamint a `_jp2.zip`, `_page_numbers.json`, `_meta.xml` és `_scandata.xml`. A SHA-256 értékek a `konkordancia/README.md`-be kerülnek, a tétel azonosítójával. A jelentés rétegenként megadja a görög karakterek számát (U+0370–03FF, U+1F00–1FFF), és azt, hogy a `_djvu.txt` görögje melyik koordinátás rétegben jelenik meg azonos alakban (100 véletlen görög token összevetése, rögzített maggal). **ÁLLJ, ha egyik koordinátás rétegben sem szerepel politonikus görög**, mert szóhelyzet nélkül a lapképes javítás nem célozható.
+  - **O0.6.2 Levél ↔ oldal leképezés.** A cremuoft levél–oldal táblája a `_page_numbers.json`-ból készül, a §0.3 formájában (szakaszok eltolással). Ellenőrzés: a §0.5 hat oldalszámán (2, 67, 109, 335, 610, 742) szerepel-e a megadott címszó a cremuoft azonos nyomtatott oldalán. Ugyanígy 10 további címszó a görög szómutatóból (legalább 5 a Supplementből, rögzített maggal), a `cu31924098819406` §0.3 szerinti leképezésével összevetve. Minden eltérés oldalszámmal a jelentésbe kerül. **ÁLLJ, ha bármelyik ellenőrzött címszó nyomtatott oldala eltér.**
+  - **O0.6.3 Mintavétel.** 20 levél: a §0.5 hat oldala, a görög szómutató első és a héber mutató első levele, valamint 12 levél rögzített maggal (20260925). A 12-ből 3–3 a főrész első és második feléből, 3 a Supplementből, 3 pedig a laponkénti görögtoken-szám felső negyedéből jön. Ha a mintában 3-nál kevesebb levélen van héberdetektor-találat (O0.6.4), a minta a 2 legtöbb találatú levéllel bővül.
+  - **O0.6.4 Ellenőrző csomag** a `naplok/CREMER_O06_ellenorzes/` alá, az O1.2 formájában (kivágások, `ATNEZES_NN.md` oldalak, oldalanként 50 sor), **commitolva**. Egy sor = egy szövegsor, amelyben görög karakter, latin torzkép-gyanú vagy héberdetektor-találat van. Soronként: sorszám, a sor kivágása (legfeljebb 1000 px széles), a cremuoft-sor szövege, a gépi jelölések és egy üres ítéletoszlop.
+    - A gépi jelölés háromféle: a C5 alakellenőrzés (nem igazolt görög alak); a latin torzkép-gyanú (angol szótárban nem szereplő latin token görög vagy héber szomszédságban); a héberdetektor (latin torzkép héber kontextusjelző — Heb., LXX, héber mutató — közelében).
+    - Ítéletkódok: `ok`; `n<k>` nem-szó görög (pl. Odvatos); `l<k>` latinosított görög (pl. Adtapoy, x.7.r.); `v<k>` valós szóra cserélt görög (pl. ὅτε/ὅτι); `h<k>` csak ékezet-, hehezet-, iota subscriptum- vagy koronishiba; `m<k>` a képen görög, a rétegből hiányzik; `e<k>` hibás vagy latinosított héber hely. Egy sorban több kód is állhat, vesszővel elválasztva.
+    - **ÁLLJ.** Az ítéleteket a felhasználó tölti ki.
+  - **O0.6.5 Jelentés** a `naplok/CREMER_O06_meres.md`-be. Tartalma:
+    - a görög tokenek száma (token = görög betűk és mellékjelek összefüggő sorozata a koordinátás rétegben, plusz az `m` tételek);
+    - kategóriánként darabszám, arány és 95%-os felső becslés (Clopper–Pearson), a főrészre és a Supplementre külön;
+    - a gépi jelölés felidézése az `n`+`l` hibákon, és a téves jelölések aránya a hibátlan tokeneken;
+    - a héber helyek száma és a detektor felidézése;
+    - az O0.6.2 egyezési táblája.
+
+    A jelentés az alábbi küszöbök szerint döntési javaslatot tesz. **ÁLLJ.** A felhasználó dönt, és a v3 ennek alapján írja át a C1–C8-at.
+
+    | Ág | Feltétel | Következmény |
+    |---|---|---|
+    | A | a nem jelölhető hibák (`v`+`h`+`m`) 95%-os felső becslése ≤ 1%, **és** a gépi jelölés felidézése az `n`+`l` hibákon ≥ 95% | egy modell, csak a jelölt helyeken |
+    | B | az A nem teljesül, de a `v`+`h`+`m` pontbecslése ≤ 3% | egy modell a teljes görög rétegen (minden görögös sor kimegy, a cremuoft-alak javaslatként); második modell csak az eltéréseken |
+    | C | a `v`+`h`+`m` pontbecslése > 3% | a v2.5 kétmodelles eljárás marad, a cremuoft-alak harmadik szavazatként |
+    | Héber | a detektor felidézése < 90% | minden héber kontextusú sor lapképes javításra megy, nem csak a jelöltek |
+
+### O1 — pilot ⛔ *(nem indul: a brief lezárva, D22; az O2–O4 szintén)*
+- **O1.1** Futás a 20 lapra. Kimenet: `naplok/CREMER_O1_csere.tsv` (`szo_id`, `szo_ids`, `level`, `bbox`, `ocr`, `m1`, `m2`, `dontes`, `alak_igazolt`, `extra`), `naplok/CREMER_O1_koltseg.tsv`. **Összehasonlító futás** (D14): ugyanez a 20 lap m2 = `tartalek_m2` (`google/gemini-3.1-flash-lite`) beállítással, a `naplok/CREMER_O1_lite/` alá. Az m1 válaszai a gyorsítótárból jönnek, új hívás nélkül.
+- **O1.2** Ellenőrző csomag a kézi átnézéshez: 300 véletlen `auto` csere (rögzített maggal), valamint minden `vitas` és `extra_*` sor. Mindegyik mellett a lapkép kivágott része: a szó bbox-a egy sornyi környezettel, legfeljebb 800 px széles JPEG. A kivágások és a tsv **commitolva** kerülnek a `naplok/CREMER_O1_ellenorzes/` alá. Mellé egy GitHubon renderelődő oldalsorozat készül (`ATNEZES_01.md`, `ATNEZES_02.md` …, oldalanként 50 sor), soronként: sorszám, kép, hOCR-alak, m1, m2, döntés és üres ítélet-oszlop. Ezt a felhasználó távoli elérésből nézi át (D13).
+- **O1.3** Jelentés: `naplok/CREMER_O1_jelentes.md` — egyezési arány, `vitas`/`hianyzo`/`hiba`/`extra_*` arány, alakellenőrzés-arány, tényleges költség (a gondolkodási tokenekkel) és a teljes kötetre vetített költség, mindkét m2-re. Mellette az összehasonlítás: a két m2 egyezése ugyanazokon a gyanús szavakon, és azok a szavak, ahol a két beállítás `auto` alakja eltér. **ÁLLJ** — a kézi ellenőrzés és a C7 küszöb után a felhasználó dönt a teljes futásról és az m2 választásáról.
 
 ### O2 — teljes futás
 - **O2.1** Futás a teljes kötetre (a pilot lapjai nem futnak újra), plafonnal. Megszakítás után folytatható (a kész lapokat kihagyja).
@@ -88,7 +137,8 @@ változóval. **A kulcs soha nem kerül a repóba, naplóba vagy commit-üzenetb
 | Tétel | Várt |
 |---|---|
 | O0 `--szaraz` | 20 lap bemenete elkészül; becsült token és költség jelentve |
-| O1 | `auto` hibaarány a kézi mintán < 1% (C7) |
+| O0.6 | koordinátás réteg politonikus göröggel; a 16 ellenőrzött címszó oldala egyezik; a kategóriánkénti hibaarányok és a javasolt döntési ág jelentve |
+| O1 | `auto` hibák a kézi mintán: 0 a 300-ason, vagy ≤ 1 a 600-ason (C7) |
 | O2 | ~950 lap feldolgozva; költség ≤ a plafon |
 | O3 | a 13 G-tokenből a Cremer-szócikkel rendelkezők mind megtalálva (legalább a 4 Abbott-Smith-szócikk); Strong-párosítás aránya jelentve |
 | minden szakasz | a `lexikon/`, `adat/`, `tematikus_lezart/` bájtra változatlan; a kulcs sehol nem szerepel (`git grep` a kulcs előtagjára: 0) |
@@ -103,7 +153,7 @@ változóval. **A kulcs soha nem kerül a repóba, naplóba vagy commit-üzenetb
 | K2 | a kulcs nincs a repóban, naplóban, commitban |
 | K3 | a hOCR angol szövege a javított szövegben változatlan (a cseréken kívül karakterre azonos) |
 | K4 | a teljes futás csak a pilot jóváhagyása után indult |
-| K5 | költség ≤ plafon; költségnapló laponként |
+| K5 | a tényleges (`usage`-alapú) költség ≤ plafon; költség- és tokennapló laponként |
 | K6 | a render által használt szócikkekben nincs feloldatlan `vitas` sor |
 | K7 | TSV-kezelés `csv` modul nélkül; TSV-mezőben nincs sortörés |
 | K8 | commitok a §6 szerint; `git status --porcelain` üres |
@@ -115,7 +165,13 @@ változóval. **A kulcs soha nem kerül a repóba, naplóba vagy commit-üzenetb
 | Üzenet | Fájlok |
 |---|---|
 | `CREMER_OCR_BRIEF.md v1` | `CREMER_OCR_BRIEF.md` |
+| `CREMER_OCR_BRIEF.md v2` | `CREMER_OCR_BRIEF.md` |
 | `O0: Cremer OCR-javító eszköz, config, nyers-fájl SHA-k` | `eszkozok/cremer_ocr_javit.py`, `eszkozok/cremer_ocr_config.json`, `konkordancia/README.md`, `.gitignore` |
+| `O0.4: eszközjavítás (bbox, szo_ids, usage-költség, gyorsítótár), modellek a configban` | `eszkozok/cremer_ocr_javit.py`, `eszkozok/cremer_ocr_config.json` |
+| `CREMER_OCR_BRIEF.md v2.6` | `CREMER_OCR_BRIEF.md` |
+| `O0.6a: cremuoft-mérés — rétegek, leképezés, mintavétel, ellenőrző csomag` | `eszkozok/cremer_o06_meres.py`, `konkordancia/README.md`, `naplok/CREMER_O06_ellenorzes/` |
+| `O0.6b: cremuoft-mérés — jelentés` *(nem készült el, D22)* | `naplok/CREMER_O06_meres.md`, `naplok/CREMER_O06_ellenorzes/` |
+| `CREMER_OCR_BRIEF.md v3 — lezárás; NYITOTT_FELADATOK: …` | `CREMER_OCR_BRIEF.md`, `NYITOTT_FELADATOK.md` |
 | `O1: pilot (20 lap)` | `naplok/CREMER_O1_*` |
 | `O2–O3: Cremer teljes szövege, szócikkek, héber mutató` | `konkordancia/Cremer_szoveg.tsv`, `konkordancia/Cremer_csere.tsv`, `konkordancia/Cremer_szocikkek.tsv`, `konkordancia/Cremer_heber_mutato.tsv`, `konkordancia/Cremer_javitasi_naplo.tsv`, `konkordancia/README.md` |
 | `O4: jelentés` | `naplok/CREMER_O4_jelentes.md` |
@@ -148,3 +204,18 @@ Az OPENROUTER_API_KEY-t csak környezeti változóból olvasd; soha ne írd ki, 
 | D5 | Külső modell a projekt adatán: csak közkincs forrás, projekt-saját adat nem megy ki (C9) | első ilyen lépés; a határt rögzíteni kell |
 | D6 | Külön brief, a SZOTAR-tól független | csak `konkordancia/Cremer_*` táblákat ír, a `lexikon/`-t nem érinti; a SZOTAR 1. menete nem vár egy új eszköz fejlesztésére |
 | D7 | Modelljavaslat: egy Qwen- és egy Gemini Flash-modell, rögzített verzióval (C1) | két eltérő gyártó, így a hibáik kevésbé esnek egybe; a Qwen-modellek ára töredéke a Gemini Flash-énak, a Gemini a pontosság másik lábát adja. Becslés laponként kb. 5 ezer bemeneti és 1,5 ezer kimeneti tokennel: a Gemini Flash kb. 1 cent, a Qwen tized cent alatt — a teljes kötet kettővel együtt kb. 10 USD, a 20 USD-s plafon alatt. A „latest" álnév kizárva, mert a futás közben változhat |
+| D8 | A modellek rögzítve: m1 `qwen/qwen3-vl-32b-instruct`, m2 `google/gemini-3.8-flash` `low` szintű gondolkodással; tartalék a `google/gemini-3.1-flash-lite` (C1) | OpenRouter-árak 2026.09.24-én. A `--szaraz` futás szerint laponként kb. 6 900 bemeneti és 1 400 kimeneti token kell, így a teljes kötet kb. 1,3 USD (m1) + 10 USD (m2), gondolkodás nélkül. A D7 becslése elavult, mert a Gemini Flash ára emelkedett. Korlátozás nélkül a gondolkodási tokenek miatt a 20 USD-s plafon közelébe kerülne a költség |
+| D9 | A bbox a kiküldött JPEG méretére skálázva (C2) | az O0 eszköze a kicsinyített képhez az eredeti jp2 koordinátáit küldte, így a modell rossz helyen kereste volna a szavakat |
+| D10 | Többtokenes csere (`szo_ids`), sorkontextus és `extra` jelzés (C2–C3) | a torz görög szó a hOCR-ben gyakran több tokenre esik. A csupa kisbetűs, magas `x_wconf`-ú torzképeket (pl. `rov`) a gyanús-szabály nem fogja meg; az `extra` ezeket a pilotban mérhetővé teszi, az alkalmazásuk külön döntés |
+| D11 | Előnormalizálás az egyezés előtt; az írásjel az alakon kívül marad (C4) | az NFC nem egyesíti az aposztróf- és koronisváltozatokat, sem a lunáris és a szóvégi szigmát, ezért nélküle hamis `vitas` sorok keletkeznének. Az írásjel a hOCR-ből jön, így a K3 teljesül |
+| D12 | Költség a `usage`-ből; külön `hiba` állapot; `temperature: 0`; nyers válasz-gyorsítótár (C3, C4, C6) | az O0 eszköze éles futásnál is becslésből számolt, így a plafon nem védett és a gondolkodási tokenek kimaradtak. A gyorsítótárból a döntési szabály változása hívás nélkül újraszámolható, és az API-hiba nem keveredik a `hianyzo` állapottal |
+| D13 | Kézi minta 300 elem (vagy 600 elem, legfeljebb 1 hibával); az ellenőrző kivágások commitolva, GitHubon renderelt oldalakon (C7, O1.2) | 200 hibátlan elemnél a hibaarány 95%-os felső becslése kb. 1,5%, így a < 1% nem igazolható. A felhasználó csak távolról éri el a repót, a `_nyers` alatti képeket nem látná |
+| D14 | A pilot két m2-vel fut: `google/gemini-3.8-flash` és `google/gemini-3.1-flash-lite` (O1.1, O1.3) | a teljes kötet becsült ára kb. 14,5, illetve kb. 6 USD. A különbség csak akkor éri meg, ha a Flash Lite a politonikus görögön érezhetően több `vitas` sort vagy hibát ad. Az összehasonlító futás kb. 0,10 USD, mert az m1 válaszai a gyorsítótárból jönnek |
+| D15 | Elemszintű validálás, hibanapló, 10%-os hibaküszöb az eszközben, pontosított utasítás (C3) | az O1 első futása 1,14 USD-ért 2346/2346 hiba-sort adott: a Qwen az élőfej két nem szomszédos címszó-előfordulását egy elembe vonta, és a lapszintű szabály ezért minden lapot elvitt; a hibaüzenetek nem maradtak meg, a futás 0-s kóddal zárult |
+| D16 | Tömör azonosítók és kimeneti kulcsok, laponkénti naplóírás (C3, C6) | az O1 első futásának kísérletenkénti számai szerint hibátlan futásnál is kb. 32 USD lett volna a teljes kötet (a Gemini kb. 27): a kimenet elemenként kb. 40 token a becsült 12 helyett, főként a hosszú azonosítók és kulcsnevek miatt; a futás végén írt napló megszakításkor elveszne |
+| D17 | `valtozatlan` döntés; a nem gyanús tokenre adott, jelöletlen elem elvetés, nem sémahiba; v5 utasítás (C3, C4) | az O1 második futása: 31,8% `hiba` (a Qwen 7/20 lapon bukott a nem gyanús tokenekre adott jelöletlen elemek miatt), a sikeres lapokon csak kb. 14% `auto`; a `hianyzo` addig a két modell egyetértése is volt (egyik sem javít), ami hamisan rontotta az arányt |
+| D18 | A Qwen kiesik m1-ként; próbafutás GPT-5 Minivel és Flash Lite-tal; döntési szabály: extra az azonosítóból, többszavas elem bontása, írásjel levágása; max_tokens (C1, C4) | a 30 véletlen vitás sor kézi átnézésében kb. 17-ben a Gemini egyértelműen helyes, a Qwen egyben sem; a Qwen hibái: elcsúszott azonosítók, ismétlődő alak (432.), elszabadult generálás (380., 65 536 token); kb. 6 vitás sort csak a döntési szabály okozott. A Gemini 3.8 Flash laponként kb. 0,020 USD, egymagában kb. 19 USD a kötetre, ezért a pár és a plafon a próbafutás után dől el |
+| D19 | A cremuoft-tétel (4. angol kiadás Supplementtel, 1895, Torontói Egyetem) lesz az OCR alapja, ha az O0.6 igazolja; a pilot addig áll (O0.6, O1) | A `cu31924098819406` hOCR-jében nincs görög karakter, ezért a teljes görög réteget a modelleknek kellene újraolvasniuk. A cremuoft `_djvu.txt`-je a vizsgált szócikkekben politonikus görögöt ad, szórványos hibákkal (nem-szó, latinosított alak, valós szóra csere), és a lapszámozás az ellenőrzött helyeken egyezik. A Google Books `yH8TAAAAYAAJ` (1878, 603 oldal, Supplement nélkül) elvetve: eltérő lapszámozás, gyenge görög OCR, kötöttebb letöltési feltételek. A valós szóra cseréket (ὅτε/ὅτι) semmilyen alakellenőrzés nem fogja meg, ezért a döntés ezek arányán múlik, nem az összes hibán. A héber mindkét tételben rossz, az lapképes javítás marad. A C9 változatlanul áll, mert az 1895-ös kiadás is közkincs |
+| D20 | Lapszámozás: az élőfej az irányadó, nem a `_page_numbers.json`; a két kiadás közötti oldalhivatkozás keresési szabálya: a hivatkozott oldal ±2 oldal, címszó-ellenőrzéssel (felülírja a v2.6 O0.6.2 „bármely eltérés → ÁLLJ” feltételét) | A cremuoft JSON-ja a 606–890. levélen 3-mal magasabb oldalszámot ad (lapképpel megerősítve); a cu31924 JSON-ja pontos — a korábbi „cu31924 JSON +1 hibás” jelentés téves volt: az élőfej OCR-je tévesztett (0↔9). Egyezés: a hat §0.5 Abbott-Smith-címszó (2, 67, 109, 335, 610, 742) a cremuoftban a hivatkozott nyomtatott oldalon áll (levél 14, 79, 121, 347, 625, 757). Az angol horgonyos konkordancia (45 pont) viszont −1/−2 oldal eltolást ad, a kötetben fokozatosan növekvően (24 × −1, 21 × −2), ami ellentmond a címszó-egyezésnek. **Az ellentmondás nincs feloldva**; a horgonymódszer torzíthat (oldalhatárra eső horgony). Ezért a tűrés ±2 és a címszó ellenőrzése kötelező |
+| D21 | Módszertani tanulságok a cremuoft-hOCR-ről (O0.6) | (1) az `ocr_line` bekezdésnyi egység, nem nyomtatott sor: a sorokat a szavak y-koordinátájából kell klaszterezni, 150 px-es minimális sorszélességgel (a lapszéli zaj kiszűrésére); ellenőrzés: 3 levélen ±2 soron belül a lapképhez. (2) Lapszámra vonatkozó állítást csak lapképpel ellenőrizve szabad elfogadni: a JSON is, az élőfej-OCR is tévedett. (3) A torz görög címszavak (`Adns`, `4δης` a ᾅδης helyén) szigorú alakegyezéssel nem találhatók: hangjel nélküli, hasonlósági keresés és élőfej kell |
+| D22 | A brief lezárva; a Cremer-szöveg sem teljes kötetes, sem célzott kinyerése nem folytatódik | A Cremer szövege angol, fordítás nélkül nem kerül a magyar lexikoncikkbe; tartalmi hozzájárulását (klasszikus → LXX → ÚSZ jelentéstörténet) a TBESG, az Abbott-Smith és a LXX-adatok (LXX_OS) nagyrészt lefedik. A célzott kinyerés becsült ráfordítása az ISTENTISZT-001-re (G1941, G2564; a βοάω valószínűleg nincs benne) kb. 2–3 óra átnézés és egy Claude Code-menet, ami a haszonhoz képest nem arányos. Minden eredmény megmarad (Lezárás szakasz); a SZOTAR S7/D8/D12 módosítása (Cremer mint oldalhivatkozás archive.org-linkkel) a `NYITOTT_FELADATOK.md`-ben nyitott döntés |

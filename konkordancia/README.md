@@ -152,6 +152,68 @@ mindenben egyezik):**
 - Az ismert szócikkek (§0.5) és a két mutató kezdőlevele (§0.6) mind pontosan egyeznek a
   `page_numbers.json` `pageNumber` mezőjével.
 
+## Cremer nyers fájlok (archive.org, `biblicotheologic00cremuoft`) — CREMER_OCR_BRIEF.md O0.6.1
+
+**Tétel:** Hermann Cremer, *Biblico-Theological Lexicon of New Testament Greek*, 4. angol
+kiadás, Supplementtel. Archívum-azonosító: `biblicotheologic00cremuoft` (archive.org,
+Torontói Egyetem/Robarts könyvtár, 1895). A nyers fájlok a `konkordancia/_nyers/cremuoft/`
+alatt vannak, **nem verziózva** (`.gitignore`). A `_meta.xml` szerint az OCR-motor
+`tesseract 5.0.0-1-g862e`, `-l grc+eng` paraméterrel — ez a tétel a `cu31924098819406`-tal
+ellentétben **görög nyelvi modellel** lett OCR-ezve.
+
+Nincs önálló `_scandata.xml` fájl ennél a tételnél (csak a tömörített `scandata.zip`,
+48 279 147 bájt) — az `_scandata.xml`-t a `scandata.zip` helyettesíti a lenti táblában.
+
+| Fájl | SHA-256 | Méret (bájt) |
+|---|---|---|
+| `biblicotheologic00cremuoft_djvu.txt` | `f4736481b00a8af03273f7993c0292bfa546e4f2877a6db87261755561d7f3d1` | 3937823 |
+| `biblicotheologic00cremuoft_djvu.xml` | `014a3beae0f95be68ef9412875ae46233c0d2c9fc259fe5c39f9fb0e03ceb6e7` | 43716007 |
+| `biblicotheologic00cremuoft_chocr.html.gz` | `cb76779e7fd4fdf3dd88e537b0399e2b4b88fd39700700ffb7e407340e57df29` | 44516082 |
+| `biblicotheologic00cremuoft_hocr.html` | `9fb53d0ddac63a78c0e1b6b8d171c1cc9c1ab984e9914047db77dc6e53615589` | 84419665 |
+| `biblicotheologic00cremuoft_jp2.zip` | `bb5df74605d50b7ebc48f411cd9262991c4632028dd279f6a5d9963922dd7706` | 452094546 |
+| `biblicotheologic00cremuoft_page_numbers.json` | `7c4118f2f52f93925192a807549860506f27a7e009170b2c43d64a7e2a79cc3e` | 164169 |
+| `biblicotheologic00cremuoft_meta.xml` | `7db5579bf1c2bc25a9ee3572d00cf08e78ebcfe38e07e1fa2a9b0130e26061bc` | 2877 |
+| `biblicotheologic00cremuoft_scandata.zip` (helyettesíti a `_scandata.xml`-t) | `0be5f7d9941ce4a7209e814da93ad6452f062cccbb21b75c80361c5b4ca20ecb` | 48279147 |
+
+**Rétegazonosítás (O0.6.1c, mag: 20260925):** mind a négy réteg (`_djvu.txt`, `_djvu.xml`,
+`_hocr.html`, `_chocr.html.gz`) pontosan ugyanannyi görög karaktert tartalmaz (634 103,
+U+0370–03FF és U+1F00–1FFF). 100 véletlen görög token összevetésében a `_djvu.xml` és a
+`_hocr.html` 100/100-ban egyezik a `_djvu.txt`-vel (karakterre azonos alak, NFC-normalizálva);
+a `_chocr.html.gz` karakterenkénti (nem szóalapú) jelölése miatt a naiv címke-eltávolítás után
+csak 4/100 — ez a fájl szerkezetéből adódik, nem valódi eltérés. **Választott koordinátás
+réteg: `_hocr.html`** (szó-szintű bbox, azonos formátum, mint amit a `cremer_ocr_javit.py` a
+`cu31924098819406`-nál használ).
+
+**Levél↔oldal leképezés (O0.6.2a, `_page_numbers.json` alapján):**
+
+| Levéltartomány | Oldaltartomány | Eltolás (level − oldal) |
+|---|---|---|
+| 14–890 | 2–878 | +12 |
+| 891–957 | 876–942 | +15 |
+
+A két szegmens határán (level 890→891) az oldalszám 878-ról 876-ra esik vissza — ez nem
+hiba a leképezésben (mindkét szegmensen belül az eltolás szigorúan egyenletes), hanem a
+nyomtatott kötet főszöveg/Supplement-átmenetének mellékelt, számozatlan lapjai miatti
++3 eltolás-ugrás. A görög szómutató a 929. levéltől (oldal 914), a héber mutató
+(„V. HEBREW WORDS REFERRED TO") a 949. levéltől (oldal 934) kezdődik — mindkettő a
+`+15` szegmensbe esik, és a lapon szereplő nyomtatott oldalszámmal (929→„INDEX … 915" a
+930. levélen, illetve 949→„INDEX, 934") pontosan egyezik.
+
+**Ismert szócikkek (§0.5) egyezése cross-edition ellenőrzésben (O0.6.2b) — ÁLLJ:** a hat
+oldalszám közül négy egyezik (ἄβυσσος: oldal 2 → level 14; ἐπικατάρατος: oldal 109 →
+level 121; ᾅδης első előfordulása: oldal 67 → level 79; ἐπικαλέω első előfordulása: oldal
+335 → level 347), de **kettő nem** — ᾅδης második (`cu31924`-ben Supplement-beli)
+előfordulása az oldal 610-nek megfelelő level 622-n nem `ᾅδης`-t, hanem a Συνάγω/Ἀγών
+szócikkeket tartalmazza; ugyanígy ἐπικαλέω második előfordulása az oldal 742-nek megfelelő
+level 754-n az Ἀναστατόω/Διχοστασία szócikkeknél jár. A `±1` szomszédos levélen sem
+található egyik címszó sem. Magyarázat: a `cu31924098819406` kiadásban a Supplement kb. a
+590. oldaltól kezdődik (a brief §0.3 offset-váltása), míg a `cremuoft`-ban a főszöveg
+folyamatosan az 876. oldalig tart — a két kiadás Supplementje eltérő ponton kezdődik és
+eltérő terjedelmű, ezért a Supplement-beli (második) címszó-előfordulások oldalszáma a két
+kiadás közt nem transzferálható közvetlenül. A főszövegen belüli (első) előfordulások és a
+mutatók kezdőlevele viszont pontosan egyeznek — a levél↔oldal leképezés önmagában
+helyesnek igazolt a `+12` és a `+15` szegmensen belül is.
+
 ## CC BY-SA 4.0 licencű datasetek — SDBH, SDGNT
 
 A `SDBH_domenek.tsv`, a `SDGNT_domenek.tsv`, a `SDBH_SDGNT_domenfa.tsv` és a

@@ -1,20 +1,40 @@
 {
+  "prompt_verzio": "v5",
   "modellek": {
     "m1": {
-      "nev": "",
+      "nev": "qwen/qwen3-vl-32b-instruct",
       "szolgaltato": "Qwen",
-      "ar_bemenet_usd_per_1M": null,
-      "ar_kimenet_usd_per_1M": null
+      "ar_bemenet_usd_per_1M": 0.104,
+      "ar_kimenet_usd_per_1M": 0.416,
+      "reasoning": null,
+      "max_tokens": 16000
     },
     "m2": {
-      "nev": "",
-      "szolgaltato": "Google Gemini Flash",
-      "ar_bemenet_usd_per_1M": null,
-      "ar_kimenet_usd_per_1M": null
+      "nev": "google/gemini-3.8-flash",
+      "szolgaltato": "Google",
+      "ar_bemenet_usd_per_1M": 0.75,
+      "ar_kimenet_usd_per_1M": 3.75,
+      "reasoning": {"effort": "low"},
+      "max_tokens": 16000
     }
+  },
+  "tartalek_m2": {
+    "nev": "google/gemini-3.1-flash-lite",
+    "ar_bemenet_usd_per_1M": 0.25,
+    "ar_kimenet_usd_per_1M": 1.50,
+    "max_tokens": 16000
+  },
+  "jelolt_m1": {
+    "nev": "openai/gpt-5-mini",
+    "szolgaltato": "OpenAI",
+    "ar_bemenet_usd_per_1M": 0.25,
+    "ar_kimenet_usd_per_1M": 2.00,
+    "reasoning": {"effort": "minimal"},
+    "max_tokens": 16000
   },
   "kepmeret_max_el_px": 2000,
   "koltsegplafon_usd": 20.0,
   "koltsegplafon_pilot_usd": 2.0,
-  "ujraprobalkozas_ervenytelen_json": 1
+  "ujraprobalkozas_ervenytelen_json": 1,
+  "ujraprobalkozas_http": 4
 }
