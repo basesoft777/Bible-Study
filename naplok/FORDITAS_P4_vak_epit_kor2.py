@@ -13,6 +13,13 @@ Kimenet:
                                             maggal; a modellnev nem szerepel.
   naplok/FORDITAS_P4_vak_kulcs_kor2.tsv -- strong, cimke, modell -- KULON
                                             fajlban.
+  naplok/FORDITAS_P4_vak_kor2_pontozando.md -- ugyanaz, mint a fenti .md,
+                                            DE minden cimzett forditas alatt
+                                            kitoltendo pontozotablaval (a
+                                            brief SS1 szempontjai szerint,
+                                            10 pont), mind a 20 szocikkre --
+                                            a felhasznalo keresere, mind a
+                                            ket modellkort (m1-m6) egybefesulve.
 
     python naplok/FORDITAS_P4_vak_epit_kor2.py
 """
@@ -35,6 +42,7 @@ VELETLEN_MAG = 20260926  # ugyanaz a rogzitett mag, mint az 1. korben
 
 VAK_UT = os.path.join(NAPLOK, 'FORDITAS_P4_vak_kor2.md')
 KULCS_UT = os.path.join(NAPLOK, 'FORDITAS_P4_vak_kulcs_kor2.tsv')
+PONTOZANDO_UT = os.path.join(NAPLOK, 'FORDITAS_P4_vak_kor2_pontozando.md')
 
 CIMKEK = ['A', 'B', 'C', 'D', 'E', 'F']
 
@@ -104,6 +112,35 @@ def main():
 
     fordit.tsv_ir(KULCS_UT, ['strong', 'cimke', 'modell'], kulcs_sorok)
     print('irva:', KULCS_UT, '(%d sor)' % len(kulcs_sorok))
+
+    # --- FORDITAS_P4_vak_kor2_pontozando.md -- ugyanez, kitoltendo tablaval,
+    # mind a 20 szocikkre, mind a 6 modellre (a felhasznalo keresere) ---
+    resz3 = []
+    resz3.append('# FORDITAS_P4_vak_kor2_pontozando -- vak pontozás mind a 6 modellre\n')
+    resz3.append('*Mind a 20 szócikk, a két modellkör összefésülve (m1-m6). A modellek neve '
+                  'rejtve (A-F); a címkézés szócikkenként véletlen, rögzített maggal (%d). '
+                  'A kulcs külön fájlban: `FORDITAS_P4_vak_kulcs_kor2.tsv`.*\n' % VELETLEN_MAG)
+    resz3.append('\n**Pontozás címkénként (10 pont, a brief SS1 szerint):**\n')
+    resz3.append('- pontosság 0-3 (kihagyás, betoldás, félreértés)\n')
+    resz3.append('- terminológia 0-2\n')
+    resz3.append('- magyar nyelvhelyesség 0-3\n')
+    resz3.append('- formai szabályok 0-2\n')
+    for strong, csoport, info, hianyzo in minden_szocikk_info:
+        forras = thayer.get(strong, {}).get('Teljes_szocikk', '(nincs forras)')
+        resz3.append('\n---\n\n## %s (csoport: %s)\n' % (strong, csoport))
+        resz3.append('**Forrás (Thayer, angol):**\n\n> %s\n' % forras.replace('\n', '\n> '))
+        for cimke, modell, forditas in info:
+            resz3.append('\n**%s fordítása:**\n\n%s\n' % (cimke, forditas))
+            resz3.append('\n| Szempont | Pont |\n|---|---|\n'
+                          '| pontosság (0-3) | |\n| terminológia (0-2) | |\n'
+                          '| magyar nyelvhelyesség (0-3) | |\n| formai szabályok (0-2) | |\n'
+                          '| **összesen (0-10)** | |\n')
+        if hianyzo:
+            resz3.append('\n*(%d modell kimarad -- a hívás nem hozott érvényes fordítást.)*\n'
+                          % len(hianyzo))
+    with open(PONTOZANDO_UT, 'w', encoding='utf-8', newline='\n') as fh:
+        fh.write(''.join(resz3))
+    print('irva:', PONTOZANDO_UT)
 
 
 if __name__ == '__main__':
