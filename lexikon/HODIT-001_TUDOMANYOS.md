@@ -592,7 +592,7 @@ A klasszikus lexikográfia (BDB) két külön gyököt tételez fel; az újabb l
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-25 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-26 -->
 
 *Ez a blokk a `[ID: HODIT-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
@@ -600,7 +600,7 @@ A klasszikus lexikográfia (BDB) két külön gyököt tételez fel; az újabb l
 - ID: `HODIT-001`
 - Cím: Rafeusok/óriás-népek
 - Státusz: publikálható (`v3`, 2026.09.10)
-- Generálva: 2026-09-25
+- Generálva: 2026-09-26
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/HODIT-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**

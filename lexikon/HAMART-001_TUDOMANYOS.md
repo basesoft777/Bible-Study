@@ -1184,7 +1184,7 @@ Négy, igehely-szintű lexikai lelet került elő, amely önmagában is megáll,
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-25 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-26 -->
 
 *Ez a blokk a `[ID: HAMART-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
@@ -1192,7 +1192,7 @@ Négy, igehely-szintű lexikai lelet került elő, amely önmagában is megáll,
 - ID: `HAMART-001`
 - Cím: A bűn következményeinek gyűrűzése — átok, föld és romlás
 - Státusz: publikálható (`v1`, 2026.09.11)
-- Generálva: 2026-09-25
+- Generálva: 2026-09-26
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/HAMART-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**

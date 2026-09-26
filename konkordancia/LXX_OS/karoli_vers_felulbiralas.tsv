@@ -1,0 +1,6 @@
+# GENERÁLT: naplok/KAROLI_KK75_hatarkereses2_general.py (KK7.5.1) — kézzel nem szerkesztendő.
+# forras: verse_pairs.jsonl fejezethatart atlepo tobbszoros KJV-hivatkozas kereses + gorog/Karoli tartalmi egyeztetes
+# proveniencia: forras=KAROLI_KULCS_KK75_BRIEF.md KK7.5.2 | ts=2026-09-25
+book_key	fejezet	vers	igehely_karoli	indok
+1-samuel	20	42	1Sám 20:42	fejezethatart atlepo tobbszoros KJV-hivatkozas (verse_pairs.jsonl: 1-samuel 20:42 es 1-samuel 21:1 mindketto KJV 20:42-re mutat); tartalmilag egyeztetve: "Monda azert Jonathan Davidnak: Eredj el bekesseggel" = "καὶ εἶπεν Ιωναθαν πορεύου εἰς εἰρήνην"
+1-samuel	21	1	1Sám 20:43	ugyanaz a fejezethatar-atlepes; a Karoli fejezet-zaromondata (43. vers): "Felkele ezutan es elmene" = "καὶ ἀνέστη Δαυιδ καὶ ἀπῆλθεν"

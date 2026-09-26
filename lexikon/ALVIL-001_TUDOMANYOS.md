@@ -1093,7 +1093,7 @@ A motívumhoz nincs rögzített kapcsolat.
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-25 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-26 -->
 
 *Ez a blokk a `[ID: ALVIL-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
@@ -1101,7 +1101,7 @@ A motívumhoz nincs rögzített kapcsolat.
 - ID: `ALVIL-001`
 - Cím: Hádész (Seól) — a halottak birodalma
 - Státusz: publikálható (`v2`, 2026.09.10)
-- Generálva: 2026-09-25
+- Generálva: 2026-09-26
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ALVIL-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**

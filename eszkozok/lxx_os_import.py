@@ -284,22 +284,23 @@ FEJEZET_DONTES_CACHE = None
 
 def load_fejezet_dontes():
     """(Karoli_konyv, fejezet) -> (dontes, elfogadott_eltolas) a
-    naplok/KAROLI_KK7_fejezet_dontes.tsv-bol (KAROLI_KULCS_KK7_BRIEF.md
-    KK7.1/G2: a fejezetdontesek adatvezerelt, generalt tablaja). Csak azokra
-    a fejezetekre vonatkozik, amelyekben a KK4-KK6 UJONNAN toltott ki
-    kulcsokat (a regi, mar korabban is kitoltott sorokat sosem erinti --
-    l. resolve_karoli hasznalati helyei). Ha a tabla hianyzik (pl. egy
-    korabbi menetben, mielott a KK7 lefutott), minden fejezet "nincs adat"
-    -- ez visszaall a KK6-os (nem korrigalt) viselkedesre."""
+    konkordancia/LXX_OS/karoli_fejezet_dontes.tsv-bol (KAROLI_KULCS_KK7_BRIEF.md
+    KK7.1, athelyezve a KAROLI_KULCS_KK75_BRIEF.md G2 szerint -- az importer
+    eles bemenete nem a naplok/ alatt van, l. K3). Csak azokra a fejezetekre
+    vonatkozik, amelyekben a KK4-KK6 UJONNAN toltott ki kulcsokat (a regi,
+    mar korabban is kitoltott sorokat sosem erinti -- l. resolve_karoli
+    hasznalati helyei). Ha a tabla hianyzik, minden fejezet "nincs adat" --
+    ez visszaall a KK6-os (nem korrigalt) viselkedesre."""
     global FEJEZET_DONTES_CACHE
     if FEJEZET_DONTES_CACHE is not None:
         return FEJEZET_DONTES_CACHE
     idx = {}
-    path = os.path.join(REPO_ROOT, "naplok", "KAROLI_KK7_fejezet_dontes.tsv")
+    path = os.path.join(LXX_OS_DIR, "karoli_fejezet_dontes.tsv")
     if os.path.exists(path):
         with open(path, encoding="utf-8") as f:
-            f.readline()
             for line in f:
+                if line.startswith("#") or line.startswith("karoli_konyv"):
+                    continue
                 parts = line.rstrip("\n").split("\t")
                 if len(parts) < 12:
                     continue
@@ -307,6 +308,36 @@ def load_fejezet_dontes():
                 dontes, elfogadott_eltolas = parts[9], int(parts[11])
                 idx[(karoli_konyv, fejezet)] = (dontes, elfogadott_eltolas)
     FEJEZET_DONTES_CACHE = idx
+    return idx
+
+
+VERS_FELULBIRALAS_CACHE = None
+
+
+def load_vers_felulbiralas():
+    """(book_key, nyers_fejezet, nyers_vers) -> igehely_karoli, a
+    konkordancia/LXX_OS/karoli_vers_felulbiralas.tsv-bol (KAROLI_KULCS_KK75_BRIEF.md
+    KK7.5.2, G1). Ez a legelso lepes a resolve_karoli-ban -- meg a
+    KEZI_ELTOLASOK es a fejezetdontes-tabla elott -- mert versszintu,
+    fejezethatart atlepo kivetel, amit sem a fejezet-szintu dontes, sem a
+    konyv-szintu kezi_fn nem tud helyesen kezelni (l. KK7.5.1 hatarkereses:
+    1Sam 20:42/21:1)."""
+    global VERS_FELULBIRALAS_CACHE
+    if VERS_FELULBIRALAS_CACHE is not None:
+        return VERS_FELULBIRALAS_CACHE
+    idx = {}
+    path = os.path.join(LXX_OS_DIR, "karoli_vers_felulbiralas.tsv")
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            for line in f:
+                if line.startswith("#") or line.startswith("book_key"):
+                    continue
+                parts = line.rstrip("\n").split("\t")
+                if len(parts) < 4:
+                    continue
+                book_key, fejezet, vers, igehely_karoli = parts[0], int(parts[1]), int(parts[2]), parts[3]
+                idx[(book_key, fejezet, vers)] = igehely_karoli
+    VERS_FELULBIRALAS_CACHE = idx
     return idx
 
 
@@ -381,6 +412,15 @@ def resolve_karoli(karoli_book, book_key, fejezet, vers, mt_refs, method, kezi_f
     mt_max_idx = mt_max_idx or {}
     kezi_aktiv_fejezetek = kezi_aktiv_fejezetek or set()
     fejezet_dontes = load_fejezet_dontes()
+
+    # KAROLI_KULCS_KK75_BRIEF.md KK7.5.2, G1: versszintu felulbiralas,
+    # MEG a fejezetdontes es a KEZI_ELTOLASOK elott -- fejezethatart
+    # atlepo, egyedi esetekre (l. KK7.5.1 hatarkereses: 1Sam 20:42/21:1),
+    # amit sem a fejezet-szintu dontes, sem a konyv-szintu kezi_fn nem
+    # tud helyesen kezelni.
+    felulbiralas = load_vers_felulbiralas().get((book_key, fejezet, vers))
+    if felulbiralas is not None:
+        return felulbiralas, "kezi_eltolas_tabla"
 
     if kezi_fn:
         cel = kezi_fn(fejezet, vers)

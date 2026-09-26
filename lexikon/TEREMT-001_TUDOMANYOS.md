@@ -710,7 +710,7 @@ E tanulmány (összevont formában) a *tehóm*/*abüσσος*-motívum (`[ID: TE
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-25 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-26 -->
 
 *Ez a blokk a `[ID: TEREMT-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
@@ -718,7 +718,7 @@ E tanulmány (összevont formában) a *tehóm*/*abüσσος*-motívum (`[ID: TE
 - ID: `TEREMT-001`
 - Cím: Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma
 - Státusz: publikálható (`v4`, 2026.09.10)
-- Generálva: 2026-09-25
+- Generálva: 2026-09-26
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/TEREMT-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
