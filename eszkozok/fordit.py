@@ -78,6 +78,11 @@ MODELL_JELEK = {
     'm1': 'deepseek/deepseek-v4-flash',
     'm2': 'google/gemini-3.8-flash',
     'm3': 'anthropic/claude-haiku-4.5',
+    # 2. modellkor -- a felhasznalo keresere, a brief G3-on tuli, kiegeszito
+    # osszehasonlitas (nem a brief eredeti hatarozata, l. a kulon jelentesben)
+    'm4': 'openai/gpt-4o-mini',
+    'm5': 'google/gemini-3.1-flash-lite',
+    'm6': 'qwen/qwen3.7-flash',
 }
 
 KIMENET_FEJLEC = ['szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo',
