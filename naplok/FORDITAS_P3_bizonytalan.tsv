@@ -1,21 +1,30 @@
 strong	modell	darab	bizonytalan_feloldasok
 G0002	deepseek/deepseek-v4-flash	1	de ebriet.
 G0002	google/gemini-3.8-flash	1	de ebriet.
+G0002	openai/gpt-4o-mini	1	rYha
 G0012	deepseek/deepseek-v4-flash	1	Wis.; Sir.; ET; Act. Thom.; Cf.; p.; f.
 G0012	google/gemini-3.8-flash	1	Wis.; the Sept. (Aeschylus); B. D.; [ET]
 G0012	anthropic/claude-haiku-4.5	1	ET; B. D.
+G0012	google/gemini-3.1-flash-lite	1	ET; Arg.
 G0035	google/gemini-3.8-flash	1	R. V.
 G0035	anthropic/claude-haiku-4.5	1	R. V.; O. T.
+G0035	google/gemini-3.1-flash-lite	1	R. V.
+G0035	qwen/qwen3.7-flash	1	R. V.
 G0086	google/gemini-3.8-flash	1	BB. DD.
 G0086	anthropic/claude-haiku-4.5	1	BB. DD.
+G0086	openai/gpt-4o-mini	1	Lob.; Winers; Buttmann; Boettcher; Greswell; BB. DD.
+G0086	google/gemini-3.1-flash-lite	1	Lob.; Path.; Element.; Winers; BB.; DD.
 G0813	google/gemini-3.8-flash	1	c.; legg.
 G0813	anthropic/claude-haiku-4.5	1	de book educ.
 G2671	google/gemini-3.8-flash	1	c.
 G2672	google/gemini-3.8-flash	1	Tdf.
 G2672	anthropic/claude-haiku-4.5	1	Tdf.; Veitch
+G2672	google/gemini-3.1-flash-lite	1	deponent; aorist; pers; singular; perfect; passive; participle; dative; accusative; variant; Tdf.
 G4151	google/gemini-3.8-flash	12	N. T.; B. D.; B.; Wis.; Pts.; Hal.; B. D.; Dict. of Christ. Biog.
 G4151	anthropic/claude-haiku-4.5	12	Tdf.; Rec.; B. D.
+G4151	google/gemini-3.1-flash-lite	12	et al.; B. D.; Dict. of Christ. Biog.; B.; Winer's Grammar; Meyer; Wis.; ET; Hermas; sim.; Ignatius; ad Magn.; B. D.; Dict. of Christ. Biog.
 G5010	google/gemini-3.8-flash	1	A. V.
 G5351	google/gemini-3.8-flash	1	A. V.; R. V.; Advers. misc. l. i. c.
 G5356	google/gemini-3.8-flash	1	R. V.; ad loc.; Wis.
+G5356	google/gemini-3.1-flash-lite	1	R. V.; ad loc.
 G5590	google/gemini-3.8-flash	3	A. V.; R. V.; N.
