@@ -287,22 +287,76 @@ class OpenRouterHiba(Exception):
         self.usage = usage or {}
 
 
+HIVAS_FALIDO_MP_ALAP = 60  # ld. _hatarido_vel_hivas -- a requests timeout ellen a keep-alive vedett
+HIVAS_FALIDO_MP_GONDOLKODIK = 180  # a kotelezo gondolkodasu modelleknek (pl. gemini) tobb ido kell
+
+# A "reasoning" kikapcsolasa szandekos: a forditasi feladat nem igenyel
+# tobblepeses gondolkodast, es a FP3 elso elesitesi kiserlete soran egyes
+# hivasok percekig futottak a bekapcsolt gondolkodassal, mig ugyanaz a keres
+# kikapcsolva ~5 mp alatt vissza is ert -- ellenorizve kozvetlen curl-hivassal,
+# ugyanazon a bemeneten (l. a jelentesben). A google/gemini-3.8-flash viszont
+# HTTP 400-zal utasitja el a kikapcsolast ("Reasoning is mandatory for this
+# endpoint and cannot be disabled.") -- ennel a HIVAS_FALIDO_MP faliora-
+# hatarido a vedelem a lassu/beragadt valasz ellen, nem a gondolkodas tiltasa.
+GONDOLKODAS_KOTELEZO_MODELLEK = {'google/gemini-3.8-flash'}
+
+
 def _valodi_http_kuldo(model_id, uzenetek, api_key, extra_parameterek):
     import requests
+    parameterek = dict(model=model_id, messages=uzenetek, temperature=0,
+                        usage={'include': True}, **extra_parameterek)
+    if model_id not in GONDOLKODAS_KOTELEZO_MODELLEK:
+        parameterek['reasoning'] = {'enabled': False}
     return requests.post(
         'https://openrouter.ai/api/v1/chat/completions',
         headers={'Authorization': 'Bearer ' + api_key, 'Content-Type': 'application/json'},
-        json=dict(model=model_id, messages=uzenetek, temperature=0,
-                   usage={'include': True}, **extra_parameterek),
-        timeout=60,
+        json=parameterek,
+        timeout=300,  # mentsvar -- a tenyleges hatarido a _hatarido_vel_hivas faliora-orzoje
     )
+
+
+def _hivas_hatarido_mp(model_id):
+    return HIVAS_FALIDO_MP_GONDOLKODIK if model_id in GONDOLKODAS_KOTELEZO_MODELLEK else HIVAS_FALIDO_MP_ALAP
+
+
+def _hatarido_vel_hivas(kuldo, model_id, uzenetek, api_key, extra_parameterek, hatarido_mp=None):
+    """A requests 'timeout' parametere csak olvasasi-inaktivitasra vonatkozik:
+    ha a szolgaltato a valasz varakozasa alatt periodikus 'keep-alive'
+    ures/ujsor-bajtokat kuld (megfigyelt viselkedes -- l. a FORDITAS_P3
+    jelentes), a timeout emiatt sosem sul el, mert mindig erkezik uj bajt a
+    hatarido elott. Ezert kulon (daemon) szalban futtatjuk a hivast, es
+    VALODI faliora-hatarido-t szabunk a varakozasra -- ha ez lejar, a hivast
+    hibasnak tekintjuk (ujraprobalkozhato), a szalat pedig elengedjuk (a
+    daemon jelzo miatt a folyamat kilepeset nem akasztja meg)."""
+    import queue
+    import threading
+
+    hatarido_mp = hatarido_mp if hatarido_mp is not None else _hivas_hatarido_mp(model_id)
+    eredmeny_q = queue.Queue(maxsize=1)
+
+    def munka():
+        try:
+            eredmeny_q.put(('ok', kuldo(model_id, uzenetek, api_key, extra_parameterek)))
+        except Exception as e:  # noqa: BLE001 -- barmilyen kivetelt tovabbadunk a fo szalnak
+            eredmeny_q.put(('hiba', e))
+
+    szal = threading.Thread(target=munka, daemon=True)
+    szal.start()
+    try:
+        allapot, ertek = eredmeny_q.get(timeout=hatarido_mp)
+    except queue.Empty:
+        raise OpenRouterHiba('a hivas nem valaszolt %d mp alatt (a HTTP-szintu timeout '
+                              'a keep-alive bajtok miatt nem sult el)' % hatarido_mp)
+    if allapot == 'hiba':
+        raise ertek
+    return ertek
 
 
 def _http_post_nyers(model_id, uzenetek, api_key, extra_parameterek,
                       ujraprobalkozas_http=4, kezdeti_varakozas=2, kuldo=None, alvas=None):
     """Visszalepeses ujraprobalkozas (2, 4, 8, 16 mp) HTTP 429/5xx/halozati
-    hiba eseten; 4xx-nel azonnali OpenRouterHiba (ujraprobalkozas nem
-    segitene)."""
+    hiba/faliora-hatarido eseten; 4xx-nel azonnali OpenRouterHiba
+    (ujraprobalkozas nem segitene)."""
     kuldo = kuldo or _valodi_http_kuldo
     alvas = alvas or time.sleep
     import requests
@@ -311,7 +365,14 @@ def _http_post_nyers(model_id, uzenetek, api_key, extra_parameterek,
     utolso_hiba = None
     for kiserlet in range(ujraprobalkozas_http + 1):
         try:
-            valasz = kuldo(model_id, uzenetek, api_key, extra_parameterek)
+            valasz = _hatarido_vel_hivas(kuldo, model_id, uzenetek, api_key, extra_parameterek)
+        except OpenRouterHiba as e:
+            utolso_hiba = e
+            if kiserlet < ujraprobalkozas_http:
+                alvas(varakozas)
+                varakozas *= 2
+                continue
+            raise
         except requests.exceptions.RequestException as e:
             utolso_hiba = e
             if kiserlet < ujraprobalkozas_http:
