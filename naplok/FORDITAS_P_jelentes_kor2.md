@@ -40,7 +40,7 @@ kicsit marad el tőle.
 | Gemini 3.8 Flash | 109 | 11 | 0 | 90,8% |
 | **Gemini 3.1 Flash Lite** | 106 | 14 | 0 | **88,3%** |
 | DeepSeek V4 Flash | 103 | 17 | 0 | 85,8% |
-| Claude Haiku 4.5 | 97 | 17 | 6 | 85,1% |
+| Claude Haiku 4.5 | 97 | 17 | 6 | 80,8% (97/120; HIBA nélkül 85,1%) |
 | **Qwen3.7 Flash** | 84 | 36 | 0 | **70,0%** |
 | **GPT-4o-mini** | 66 | 54 | 0 | **55,0%** |
 

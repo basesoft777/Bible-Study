@@ -90,3 +90,22 @@ a felhasználó pontjainak összevetését írja elő (> 2 pontos eltérés
 megjelölésével); a felhasználói minta még nem készült el, ezért ez az
 összevetés függőben van. Második, független mérőszámként a gépi ellenőrzés
 (FP4) szolgál, amely nagyfokú egyezést mutat a Claude-pontokkal.
+
+## 6. DeepSeek G1941 újrafuttatás
+
+A `G1941` DeepSeek-fordítása a kor2 futásban csonkolt (pontosság = 0, l. 4.
+pont) -- annak eldöntésére, hogy ez egyszeri esemény vagy a modell hosszú,
+összetett szócikkeken mutatott rendszerhibája, 3 független, gyorsítótár
+nélküli hívás futott ugyanarra a bemenetre (`FORDITAS_P7_g1941_ujra.py`,
+eredmény: `FORDITAS_P7_g1941_deepseek.tsv`/`.md`).
+
+| Futás | Kimenet token | `finish_reason` | Hosszarány | 1. ellenőrzés (görög/héber) |
+|---|---:|---|---:|---|
+| 1 | 1833 | `stop` | 1,02 | RENDBEN |
+| 2 | 1880 | `stop` | 1,04 | RENDBEN |
+| 3 | 1817 | `stop` | 1,02 | RENDBEN |
+
+Mindhárom futás teljes és hű (az eredeti csonkolt futás 602 kimeneti
+tokenje helyett 1817-1880 token, hosszarány 1,02-1,04 a korábbi 0,32
+helyett). **A csonkolás egyszeri volt; a DeepSeek a pontosság = 0 feltétel
+szempontjából versenyben marad.**
