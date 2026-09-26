@@ -287,7 +287,8 @@ class OpenRouterHiba(Exception):
         self.usage = usage or {}
 
 
-HIVAS_FALIDO_MP_ALAP = 60  # ld. _hatarido_vel_hivas -- a requests timeout ellen a keep-alive vedett
+HIVAS_FALIDO_MP_ALAP = 120  # ld. _hatarido_vel_hivas -- a requests timeout ellen a keep-alive vedett;
+                             # megfigyelt legitim (nem elakadt) valaszido akar 84 mp is volt
 HIVAS_FALIDO_MP_GONDOLKODIK = 180  # a kotelezo gondolkodasu modelleknek (pl. gemini) tobb ido kell
 
 # A "reasoning" kikapcsolasa szandekos: a forditasi feladat nem igenyel
@@ -431,7 +432,7 @@ def _kimenet_validal(nyers):
     return nyers
 
 
-def openrouter_hivas(model_id, prompt_szoveg, api_key, ujraprobalkozas_json=1,
+def openrouter_hivas(model_id, prompt_szoveg, api_key, ujraprobalkozas_json=2,
                       ujraprobalkozas_http=4, posztolo=None, ar_bemenet_1m=None,
                       ar_kimenet_1m=None):
     """Egy hivas egy modellhez, egy szocikk-darabhoz. H5 mintajara: minden
@@ -478,8 +479,15 @@ def openrouter_hivas(model_id, prompt_szoveg, api_key, ujraprobalkozas_json=1,
         }
 
         finish_reason = (nyers_valasz.get('choices') or [{}])[0].get('finish_reason')
-        if finish_reason in ('length', 'max_tokens'):
-            utolso_hiba = 'csonkolt valasz (finish_reason=%s)' % finish_reason
+        # 'error': a HTTP 200 valasz ellenere a modell/backend hibaval szakadt
+        # meg -- megfigyelt eset: Claude Haiku a legnagyobb egy-darabos
+        # promptra (G1941, ~7880 karakter) HTTP 200-at es csonkolt JSON-t adott
+        # vissza finish_reason=error mellett; enelkul a szures a
+        # json.JSONDecodeError-ba futott volna bele, de a jovobeli, veletlenul
+        # ERVENYES JSON-nal vegzodo csonkolast is ki kell szurni, nem csak a
+        # parse-hibat.
+        if finish_reason in ('length', 'max_tokens', 'error'):
+            utolso_hiba = 'csonkolt/hibas valasz (finish_reason=%s)' % finish_reason
             continue
 
         tartalom = ((nyers_valasz.get('choices') or [{}])[0].get('message') or {}).get('content')
