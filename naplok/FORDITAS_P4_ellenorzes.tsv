@@ -20,6 +20,27 @@ G0002	V	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G0002	V	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G0002	V	anthropic/claude-haiku-4.5	5_terminologia	RENDBEN	
 G0002	V	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	0.94
+G0002	V	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G0002	V	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: Ααρων×2, ο×1, ωνος×1, אהרן×1, אהר×1, אומר×1, הר×1, ορεινος×1
+G0002	V	openai/gpt-4o-mini	2_versszam	SERTES	hianyzik: 1:5×1, 7:40×1, 5:4×1, 7:11×1, 9:4×1
+G0002	V	openai/gpt-4o-mini	3_karoli_roviditesek	RENDBEN	
+G0002	V	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G0002	V	openai/gpt-4o-mini	5_terminologia	RENDBEN	
+G0002	V	openai/gpt-4o-mini	6_hosszarany	JELZES	0.17 (a 0.8-1.6 savon kivul)
+G0002	V	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0002	V	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0002	V	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0002	V	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0002	V	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0002	V	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G0002	V	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	0.93
+G0002	V	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G0002	V	qwen/qwen3.7-flash	1_gorog_heber	SERTES	hianyzik: אהר×1, אומר×1, הר×1, ορεινος×1; tobblet: אה×1, אומ×1, ה×1, ορειν×1
+G0002	V	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G0002	V	qwen/qwen3.7-flash	3_karoli_roviditesek	RENDBEN	
+G0002	V	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G0002	V	qwen/qwen3.7-flash	5_terminologia	RENDBEN	
+G0002	V	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	0.84
 G0004	V	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G0004	V	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G0004	V	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -41,6 +62,27 @@ G0004	V	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G0004	V	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G0004	V	anthropic/claude-haiku-4.5	5_terminologia	RENDBEN	
 G0004	V	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	1.02
+G0004	V	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G0004	V	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: αβαρης×1, ες×1, βαρος×1
+G0004	V	openai/gpt-4o-mini	2_versszam	RENDBEN	
+G0004	V	openai/gpt-4o-mini	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: 1Th
+G0004	V	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G0004	V	openai/gpt-4o-mini	5_terminologia	RENDBEN	
+G0004	V	openai/gpt-4o-mini	6_hosszarany	JELZES	0.64 (a 0.8-1.6 savon kivul)
+G0004	V	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0004	V	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0004	V	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0004	V	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0004	V	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0004	V	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G0004	V	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	0.98
+G0004	V	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G0004	V	qwen/qwen3.7-flash	1_gorog_heber	SERTES	hianyzik: ετηρησα×1; tobblet: ετηρη×1
+G0004	V	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G0004	V	qwen/qwen3.7-flash	3_karoli_roviditesek	RENDBEN	
+G0004	V	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G0004	V	qwen/qwen3.7-flash	5_terminologia	RENDBEN	
+G0004	V	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	0.98
 G0012	E	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G0012	E	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: γης×1; tobblet: της×1
 G0012	E	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -62,6 +104,27 @@ G0012	E	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G0012	E	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G0012	E	anthropic/claude-haiku-4.5	5_terminologia	RENDBEN	
 G0012	E	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	1.04
+G0012	E	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G0012	E	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: αβυσσος×2, ος×1, ο×1, βυσσος×1, βυθος×1, πλουτος×1, χωρα×1
+G0012	E	openai/gpt-4o-mini	2_versszam	SERTES	hianyzik: 10:19×1
+G0012	E	openai/gpt-4o-mini	3_karoli_roviditesek	RENDBEN	
+G0012	E	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G0012	E	openai/gpt-4o-mini	5_terminologia	SERTES	p. -> o. hianyzik
+G0012	E	openai/gpt-4o-mini	6_hosszarany	RENDBEN	0.85
+G0012	E	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0012	E	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0012	E	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0012	E	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0012	E	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0012	E	google/gemini-3.1-flash-lite	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik
+G0012	E	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.02
+G0012	E	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G0012	E	qwen/qwen3.7-flash	1_gorog_heber	SERTES	hianyzik: αβυσσος×1, βυθος×1; tobblet: αβ×1, βυθ×1
+G0012	E	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G0012	E	qwen/qwen3.7-flash	3_karoli_roviditesek	RENDBEN	
+G0012	E	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G0012	E	qwen/qwen3.7-flash	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik
+G0012	E	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	1.04
 G0035	N	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G0035	N	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G0035	N	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -83,6 +146,27 @@ G0035	N	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G0035	N	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G0035	N	anthropic/claude-haiku-4.5	5_terminologia	RENDBEN	
 G0035	N	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	1.02
+G0035	N	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G0035	N	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: αγενεαλογητος×1, ο×1, γενεαλογεω×1, μη×1, γενεαλογουμενος×1
+G0035	N	openai/gpt-4o-mini	2_versszam	SERTES	hianyzik: 7:3×1, 7:6×1
+G0035	N	openai/gpt-4o-mini	3_karoli_roviditesek	RENDBEN	
+G0035	N	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G0035	N	openai/gpt-4o-mini	5_terminologia	RENDBEN	
+G0035	N	openai/gpt-4o-mini	6_hosszarany	JELZES	0.10 (a 0.8-1.6 savon kivul)
+G0035	N	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0035	N	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0035	N	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0035	N	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0035	N	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0035	N	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G0035	N	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.09
+G0035	N	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G0035	N	qwen/qwen3.7-flash	1_gorog_heber	SERTES	hianyzik: αγενεαλογητος×1, ο×1, γενεαλογεω×1, μη×1, γενεαλογουμενος×1
+G0035	N	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G0035	N	qwen/qwen3.7-flash	3_karoli_roviditesek	RENDBEN	
+G0035	N	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G0035	N	qwen/qwen3.7-flash	5_terminologia	RENDBEN	
+G0035	N	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	0.89
 G0086	E	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G0086	E	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G0086	E	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -104,6 +188,27 @@ G0086	E	anthropic/claude-haiku-4.5	3_karoli_roviditesek	SERTES	ismeretlen rovidi
 G0086	E	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G0086	E	anthropic/claude-haiku-4.5	5_terminologia	SERTES	spirit -> szellem hianyzik; p. -> o. hianyzik
 G0086	E	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	0.99
+G0086	E	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G0086	E	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: Αιδης×2, αδης×1, ο×1, ιδειν×1, την×1, του×2, αδου×6, κρουει×1, πυλην×1, τουτ×1, εστιν×1, αποθανειται×1, שאול×1, θανατος×1, γεεννα×1, παραδεισος×1, αβυσσος×1, εις×2, δομον×1, αδην×1, πυλαι×1, πυλωροι×1, πυλη×1, κλεις×1, θανατε×1, αδη×1, εως×1, καταβαινειν×3, καταβιβαζεσθαι×1, αιδης×1
+G0086	E	openai/gpt-4o-mini	2_versszam	SERTES	hianyzik: 2:6×1, 22:6×1, 10:21×1, 11:8×1, 57:9×1, 9:2×1, 16:23×1, 2:27×2, 2:31×1, 15:10×1, 16:18×1, 38:17×1, 1:18×1, 15:55×1, 2:24×1, 6:8×1, 20:13×1, 11:23×1, 10:15×1
+G0086	E	openai/gpt-4o-mini	3_karoli_roviditesek	RENDBEN	
+G0086	E	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G0086	E	openai/gpt-4o-mini	5_terminologia	SERTES	spirit -> szellem hianyzik; cf. -> vö. hianyzik; see -> l. hianyzik; Sept. -> Septuaginta hianyzik; etc. -> stb. hianyzik; p. -> o. hianyzik
+G0086	E	openai/gpt-4o-mini	6_hosszarany	JELZES	0.08 (a 0.8-1.6 savon kivul)
+G0086	E	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0086	E	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0086	E	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0086	E	google/gemini-3.1-flash-lite	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Element
+G0086	E	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0086	E	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G0086	E	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	0.99
+G0086	E	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G0086	E	qwen/qwen3.7-flash	1_gorog_heber	RENDBEN	
+G0086	E	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G0086	E	qwen/qwen3.7-flash	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Element
+G0086	E	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G0086	E	qwen/qwen3.7-flash	5_terminologia	SERTES	p. -> o. hianyzik
+G0086	E	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	1.03
 G0282	E	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G0282	E	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G0282	E	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -125,6 +230,27 @@ G0282	E	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G0282	E	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G0282	E	anthropic/claude-haiku-4.5	5_terminologia	SERTES	Heb. -> héb. hianyzik
 G0282	E	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	0.97
+G0282	E	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G0282	E	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: αμητωρ×1, ορος×1, ο×1, η×1, μητηρ×1
+G0282	E	openai/gpt-4o-mini	2_versszam	RENDBEN	
+G0282	E	openai/gpt-4o-mini	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Héb
+G0282	E	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G0282	E	openai/gpt-4o-mini	5_terminologia	SERTES	p. -> o. hianyzik; Heb. -> héb. hianyzik
+G0282	E	openai/gpt-4o-mini	6_hosszarany	RENDBEN	0.87
+G0282	E	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0282	E	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0282	E	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0282	E	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0282	E	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0282	E	google/gemini-3.1-flash-lite	5_terminologia	SERTES	Heb. -> héb. hianyzik
+G0282	E	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	0.97
+G0282	E	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G0282	E	qwen/qwen3.7-flash	1_gorog_heber	SERTES	hianyzik: αμητωρ×1, ορος×1, ο×1, η×1, μητηρ×1
+G0282	E	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G0282	E	qwen/qwen3.7-flash	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Heb
+G0282	E	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G0282	E	qwen/qwen3.7-flash	5_terminologia	SERTES	Heb. -> héb. hianyzik
+G0282	E	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	0.87
 G0540	N	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G0540	N	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G0540	N	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -146,6 +272,27 @@ G0540	N	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G0540	N	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G0540	N	anthropic/claude-haiku-4.5	5_terminologia	RENDBEN	
 G0540	N	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	1.04
+G0540	N	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G0540	N	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: απατωρ×1, απατορος×1, ο×1, η×1, πατηρ×1, αμητωρ×1
+G0540	N	openai/gpt-4o-mini	2_versszam	RENDBEN	
+G0540	N	openai/gpt-4o-mini	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Hé
+G0540	N	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G0540	N	openai/gpt-4o-mini	5_terminologia	SERTES	see -> l. hianyzik
+G0540	N	openai/gpt-4o-mini	6_hosszarany	JELZES	0.36 (a 0.8-1.6 savon kivul)
+G0540	N	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0540	N	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0540	N	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0540	N	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0540	N	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0540	N	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G0540	N	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.04
+G0540	N	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G0540	N	qwen/qwen3.7-flash	1_gorog_heber	RENDBEN	
+G0540	N	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G0540	N	qwen/qwen3.7-flash	3_karoli_roviditesek	RENDBEN	
+G0540	N	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G0540	N	qwen/qwen3.7-flash	5_terminologia	RENDBEN	
+G0540	N	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	1.01
 G0813	E	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G0813	E	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G0813	E	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -167,6 +314,27 @@ G0813	E	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G0813	E	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G0813	E	anthropic/claude-haiku-4.5	5_terminologia	RENDBEN	
 G0813	E	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	1.03
+G0813	E	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G0813	E	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: ατακτος×1, ατακτον×1, τασσω×1
+G0813	E	openai/gpt-4o-mini	2_versszam	RENDBEN	
+G0813	E	openai/gpt-4o-mini	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: 1Th, 2Th
+G0813	E	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G0813	E	openai/gpt-4o-mini	5_terminologia	RENDBEN	
+G0813	E	openai/gpt-4o-mini	6_hosszarany	RENDBEN	0.86
+G0813	E	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0813	E	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0813	E	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0813	E	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0813	E	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0813	E	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G0813	E	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.04
+G0813	E	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G0813	E	qwen/qwen3.7-flash	1_gorog_heber	RENDBEN	
+G0813	E	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G0813	E	qwen/qwen3.7-flash	3_karoli_roviditesek	RENDBEN	
+G0813	E	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G0813	E	qwen/qwen3.7-flash	5_terminologia	RENDBEN	
+G0813	E	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	1.11
 G0994	E	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G0994	E	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G0994	E	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -188,6 +356,27 @@ G0994	E	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G0994	E	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G0994	E	anthropic/claude-haiku-4.5	5_terminologia	RENDBEN	
 G0994	E	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	1.08
+G0994	E	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G0994	E	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: βοαω×1, βοω×1, εβοων×1, εβοησα×1, βοη×1, קרא×1, זעק×1, צעק×1
+G0994	E	openai/gpt-4o-mini	2_versszam	SERTES	hianyzik: 21:34×1
+G0994	E	openai/gpt-4o-mini	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Jn
+G0994	E	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G0994	E	openai/gpt-4o-mini	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik
+G0994	E	openai/gpt-4o-mini	6_hosszarany	RENDBEN	0.80
+G0994	E	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0994	E	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0994	E	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0994	E	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0994	E	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0994	E	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G0994	E	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.09
+G0994	E	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G0994	E	qwen/qwen3.7-flash	1_gorog_heber	SERTES	hianyzik: βοαω×1, זעק×1, צעק×1; tobblet: צע×1, זע×1
+G0994	E	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G0994	E	qwen/qwen3.7-flash	3_karoli_roviditesek	RENDBEN	
+G0994	E	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G0994	E	qwen/qwen3.7-flash	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik
+G0994	E	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	1.04
 G1311	E	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G1311	E	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G1311	E	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -209,6 +398,27 @@ G1311	E	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G1311	E	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G1311	E	anthropic/claude-haiku-4.5	5_terminologia	SERTES	i. e. -> azaz hianyzik; p. -> o. hianyzik
 G1311	E	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	1.05
+G1311	E	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G1311	E	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: διαφθειρω×1, διεφθειρα×1, διαφθειρομαι×1, διεφθαρμενος×1, διεφθαρην×1, שחת×1, חבל×1, την×2, γην×1, διεφθαρμενοι×1, τον×2, νουν×1, διανοιαν×1, γνωμην×1, τους×2, οφθαλμους×1, ο×1, εξω×1, ημων×1, ανθρωπος×1, διαφθειρεται×1, διαφθειρειν×1
+G1311	E	openai/gpt-4o-mini	2_versszam	RENDBEN	
+G1311	E	openai/gpt-4o-mini	3_karoli_roviditesek	RENDBEN	
+G1311	E	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G1311	E	openai/gpt-4o-mini	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik; p. -> o. hianyzik
+G1311	E	openai/gpt-4o-mini	6_hosszarany	JELZES	0.78 (a 0.8-1.6 savon kivul)
+G1311	E	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G1311	E	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G1311	E	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G1311	E	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G1311	E	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G1311	E	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G1311	E	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.07
+G1311	E	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G1311	E	qwen/qwen3.7-flash	1_gorog_heber	RENDBEN	
+G1311	E	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G1311	E	qwen/qwen3.7-flash	3_karoli_roviditesek	RENDBEN	
+G1311	E	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G1311	E	qwen/qwen3.7-flash	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik; p. -> o. hianyzik
+G1311	E	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	1.02
 G1941	A	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G1941	A	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: επικαλουμαι×1, קרא×2, τινα×1, ει×1, τον×3, το×1, ονομα×1, οι×1, του×2, Χριστου×1, τινι×1, κατηγορεω×1, τω×1, οικοδεσποτη×1, Βηλζεβουλ×1, επεκαλεσαν×1, ποσω×1, μαλλον×1, τοις×1, οικιακοις×1, αυτου×1, κυριον×2, Ιησουν×1, βοηθον×1, μαρτυρα×1, Καισαρα×1, Σεβαστον×1, יהוה×1, בשם×1, κυριου×1, επικαλεισθαι×1, τους×1, Θεους×1
 G1941	A	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 26:32×1, 10:25×1, 1:23×1, 15:17×1, 9:12×1, 2:7×1, 9:34×1, 12:24×1, 3:22×1, 11:15×1, 7:59×1, 25:11×1, 28:19×1, 25:25×1, 25:21×1, 4:26×1, 12:8×1, 5:11×1, 3:2×1, 6:2×1, 7:2×1, 2:21×1, 2:32×1, 9:14×1, 22:16×1, 10:13×1, 1:2×1, 10:12×1, 2:22×1
@@ -230,6 +440,27 @@ G1941	A	anthropic/claude-haiku-4.5	4_formazas	HIBA	HIBA: a hivas nem valaszolt 1
 G1941	A	anthropic/claude-haiku-4.5	5_terminologia	HIBA	HIBA: a hivas nem valaszolt 120 mp alatt (a HTTP-szintu timeout a keep-alive bajtok miatt nem sult el)
 G1941	A	anthropic/claude-haiku-4.5	6_hosszarany	HIBA	HIBA: a hivas nem valaszolt 120 mp alatt (a HTTP-szintu timeout a keep-alive bajtok miatt nem sult el)
 G1941	A	anthropic/claude-haiku-4.5	7_json_sema	HIBA	HIBA: a hivas nem valaszolt 120 mp alatt (a HTTP-szintu timeout a keep-alive bajtok miatt nem sult el)
+G1941	A	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G1941	A	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: επικαλεω×1, επικαλω×1, επεκαλεσα×1, επικαλουμαι×1, επικεκλημαι×1, επεκεκλητο×1, επικεκλητο×1, επεκληθην×1, επικαλεσομαι×1, επεκαλεσαμην×1, קרא×1; tobblet: με×1
+G1941	A	openai/gpt-4o-mini	2_versszam	SERTES	hianyzik: 26:32×1
+G1941	A	openai/gpt-4o-mini	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Ám
+G1941	A	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G1941	A	openai/gpt-4o-mini	5_terminologia	SERTES	see -> l. hianyzik; Sept. -> Septuaginta hianyzik; p. -> o. hianyzik
+G1941	A	openai/gpt-4o-mini	6_hosszarany	RENDBEN	0.89
+G1941	A	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G1941	A	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G1941	A	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G1941	A	google/gemini-3.1-flash-lite	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Act
+G1941	A	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G1941	A	google/gemini-3.1-flash-lite	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik
+G1941	A	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.04
+G1941	A	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G1941	A	qwen/qwen3.7-flash	1_gorog_heber	SERTES	hianyzik: επικαλεω×1, επικαλω×1, επεκαλεσα×1, επικαλουμαι×1, επικεκλημαι×1, επεκεκλητο×1, επικεκλητο×1, επεκληθην×1, επικαλεσομαι×1, επεκαλεσαμην×1, קרא×2; tobblet: קר×1
+G1941	A	qwen/qwen3.7-flash	2_versszam	SERTES	hianyzik: 26:32×1
+G1941	A	qwen/qwen3.7-flash	3_karoli_roviditesek	RENDBEN	
+G1941	A	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G1941	A	qwen/qwen3.7-flash	5_terminologia	SERTES	cf. -> vö. hianyzik; see -> l. hianyzik; Sept. -> Septuaginta hianyzik; i. e. -> azaz hianyzik; p. -> o. hianyzik
+G1941	A	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	0.87
 G1944	E	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G1944	E	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G1944	E	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -251,6 +482,27 @@ G1944	E	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G1944	E	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G1944	E	anthropic/claude-haiku-4.5	5_terminologia	RENDBEN	
 G1944	E	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	1.01
+G1944	E	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G1944	E	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: επικαταρατος×1, επικαταρατον×1, επικαταραομαι×1
+G1944	E	openai/gpt-4o-mini	2_versszam	RENDBEN	
+G1944	E	openai/gpt-4o-mini	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Joh, Mak
+G1944	E	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G1944	E	openai/gpt-4o-mini	5_terminologia	RENDBEN	
+G1944	E	openai/gpt-4o-mini	6_hosszarany	JELZES	0.66 (a 0.8-1.6 savon kivul)
+G1944	E	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G1944	E	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G1944	E	google/gemini-3.1-flash-lite	2_versszam	SERTES	hianyzik: 3:13×1
+G1944	E	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G1944	E	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G1944	E	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G1944	E	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	0.94
+G1944	E	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G1944	E	qwen/qwen3.7-flash	1_gorog_heber	SERTES	hianyzik: επικαταραομαι×1; tobblet: επικαταραο×1
+G1944	E	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G1944	E	qwen/qwen3.7-flash	3_karoli_roviditesek	RENDBEN	
+G1944	E	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G1944	E	qwen/qwen3.7-flash	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik
+G1944	E	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	0.96
 G2671	E	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G2671	E	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G2671	E	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -272,6 +524,27 @@ G2671	E	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G2671	E	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G2671	E	anthropic/claude-haiku-4.5	5_terminologia	SERTES	i. e. -> azaz hianyzik
 G2671	E	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	0.99
+G2671	E	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G2671	E	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: καταρα×2, καταρας×4, η×1, κατα×2, αρα×1, כללה×1, ευλογια×1, γη×1, εγγυς×1, υπο×1, καταραν×1, ειναι×1, εξαγοραζειν×1, τινα×1, εκ×1, της×1, τεκνα×1, εγω×1, εγενηθην×1
+G2671	E	openai/gpt-4o-mini	2_versszam	SERTES	hianyzik: 6:8×1; tobblet: 3:10×1
+G2671	E	openai/gpt-4o-mini	3_karoli_roviditesek	RENDBEN	
+G2671	E	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G2671	E	openai/gpt-4o-mini	5_terminologia	SERTES	cf. -> vö. hianyzik; Sept. -> Septuaginta hianyzik
+G2671	E	openai/gpt-4o-mini	6_hosszarany	JELZES	0.62 (a 0.8-1.6 savon kivul)
+G2671	E	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G2671	E	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G2671	E	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G2671	E	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G2671	E	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G2671	E	google/gemini-3.1-flash-lite	5_terminologia	SERTES	see -> l. hianyzik; Sept. -> Septuaginta hianyzik
+G2671	E	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	0.97
+G2671	E	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G2671	E	qwen/qwen3.7-flash	1_gorog_heber	SERTES	hianyzik: καταρα×1, καταρας×1, כללה×1; tobblet: כלל×1
+G2671	E	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G2671	E	qwen/qwen3.7-flash	3_karoli_roviditesek	RENDBEN	
+G2671	E	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G2671	E	qwen/qwen3.7-flash	5_terminologia	SERTES	see -> l. hianyzik
+G2671	E	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	1.00
 G2672	N	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G2672	N	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G2672	N	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -293,6 +566,27 @@ G2672	N	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G2672	N	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G2672	N	anthropic/claude-haiku-4.5	5_terminologia	SERTES	i. e. -> azaz hianyzik
 G2672	N	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	0.98
+G2672	N	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G2672	N	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: καταραομαι×1, καταρωμαι×1, καταρα×1, κατηρασω×1, κατηραμενος×1, קלל×1, ארר×1
+G2672	N	openai/gpt-4o-mini	2_versszam	RENDBEN	
+G2672	N	openai/gpt-4o-mini	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Héb
+G2672	N	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G2672	N	openai/gpt-4o-mini	5_terminologia	SERTES	see -> l. hianyzik; Sept. -> Septuaginta hianyzik
+G2672	N	openai/gpt-4o-mini	6_hosszarany	RENDBEN	0.84
+G2672	N	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G2672	N	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G2672	N	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G2672	N	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G2672	N	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G2672	N	google/gemini-3.1-flash-lite	5_terminologia	SERTES	i. e. -> azaz hianyzik
+G2672	N	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.04
+G2672	N	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G2672	N	qwen/qwen3.7-flash	1_gorog_heber	SERTES	hianyzik: ארר×1; tobblet: אר×1
+G2672	N	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G2672	N	qwen/qwen3.7-flash	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Már
+G2672	N	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G2672	N	qwen/qwen3.7-flash	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik; i. e. -> azaz hianyzik
+G2672	N	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	0.96
 G3777	V	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G3777	V	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G3777	V	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -314,6 +608,27 @@ G3777	V	anthropic/claude-haiku-4.5	3_karoli_roviditesek	SERTES	ismeretlen rovidi
 G3777	V	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G3777	V	anthropic/claude-haiku-4.5	5_terminologia	SERTES	p. -> o. hianyzik
 G3777	V	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	1.04
+G3777	V	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G3777	V	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: ουτε×17, ου×8, τε×2, μητε×3, μη×2, ουδε×15, μηδε×1, ουδεις×1, αξιος×1, ευρεθη×1, ανοιξαι×1, το×1, βιβλιον×1, βλεπειν×1, αυτο×1, και×1, μετενοησαν×1, δυναται×2, συκα×2, αλυκον×1, γλυκυ×1, ποιησαι×1, υδωρ×1
+G3777	V	openai/gpt-4o-mini	2_versszam	SERTES	hianyzik: 12:8×1, 20:4×1, 5:4×1, 2:3×1, 1:12×1, 4:11×1, 1:10×1, 2:2×1, 3:2×1, 5:3×1, 12:26×1, 9:20×2, 3:12×1, 6:20×1, 22:30×1, 12:25×1, 14:68×1, 14:35×1, 4:21×1, 5:37×1, 8:19×1, 9:3×1, 15:10×1, 19:37×1, 25:8×1, 28:21×1, 8:38×1, 3:7×1, 6:9×1, 5:6×1, 6:15×1, 2:6×1, 3:15×1, 21:4×1, 20:35×1, 24:12×1
+G3777	V	openai/gpt-4o-mini	3_karoli_roviditesek	RENDBEN	
+G3777	V	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G3777	V	openai/gpt-4o-mini	5_terminologia	SERTES	cf. -> vö. hianyzik; see -> l. hianyzik; p. -> o. hianyzik
+G3777	V	openai/gpt-4o-mini	6_hosszarany	JELZES	0.01 (a 0.8-1.6 savon kivul)
+G3777	V	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G3777	V	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G3777	V	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G3777	V	google/gemini-3.1-flash-lite	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Devar
+G3777	V	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G3777	V	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G3777	V	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.03
+G3777	V	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G3777	V	qwen/qwen3.7-flash	1_gorog_heber	SERTES	hianyzik: ουτε×2, μητε×3, ουδε×4, συκα×1; tobblet: ου×6, μη×3, συ×1
+G3777	V	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G3777	V	qwen/qwen3.7-flash	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Devar, Már
+G3777	V	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G3777	V	qwen/qwen3.7-flash	5_terminologia	SERTES	see -> l. hianyzik
+G3777	V	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	1.03
 G4151	E	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G4151	E	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: πνευματα×1, του×1, ζοωποιουν×1, ζηιν×1, ζοωποιηθεις×1, Θεου×1, τα×1, επτα×1, πενυμα×1; tobblet: πνευμα×1, ζωοποιουν×1, ζην×1, ζωοποιηθεις×1
 G4151	E	deepseek/deepseek-v4-flash	2_versszam	SERTES	tobblet: 1:47×1
@@ -335,6 +650,27 @@ G4151	E	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G4151	E	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G4151	E	anthropic/claude-haiku-4.5	5_terminologia	RENDBEN	
 G4151	E	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	1.01
+G4151	E	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G4151	E	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: πνευματος×1, το×1, πνεω×1, רוח×1, πνευματα×1, του×3, και×1, νοι×1, Θεου×2, πατρος×1, σοφιας×1, τα×1, τελειν×1, επτα×1, ενωπιον×1, θρονου×1, πενυμα×1, α×1; tobblet: νου×1, πα×1, τε×1
+G4151	E	openai/gpt-4o-mini	2_versszam	SERTES	hianyzik: 1:4×1; tobblet: 1:47×1
+G4151	E	openai/gpt-4o-mini	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: 1Co, 1Jn, 1Jo, 1Th, 1Ti, 2Co, 2Th, Eféz, Heb, Jn
+G4151	E	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G4151	E	openai/gpt-4o-mini	5_terminologia	SERTES	p. -> o. hianyzik
+G4151	E	openai/gpt-4o-mini	6_hosszarany	RENDBEN	1.02
+G4151	E	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G4151	E	google/gemini-3.1-flash-lite	1_gorog_heber	SERTES	hianyzik: απτα×1, πενυμα×1, νως×1; tobblet: πνευμα×1, επτα×1, νοος×1
+G4151	E	google/gemini-3.1-flash-lite	2_versszam	SERTES	tobblet: 1:47×1, 1:4×1
+G4151	E	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G4151	E	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G4151	E	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G4151	E	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.04
+G4151	E	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G4151	E	qwen/qwen3.7-flash	1_gorog_heber	SERTES	hianyzik: πνευματα×1, σωμα×1, εν×1, ψυχη×1, πνευματι×1, μια×1, τω×1, σαρκα×1, αιωνιον×1, γραμματι×1, τελειν×1, δυναμις×1, πενυμα×1; tobblet: σω×1, αιων×1, γραμμα×1, σαρ×1, τελει×1, δυναμι×1, πνευ×1
+G4151	E	qwen/qwen3.7-flash	2_versszam	SERTES	tobblet: 4:47×1
+G4151	E	qwen/qwen3.7-flash	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Gen, Isa, Jn, Mar, Mat, Márk, Psa
+G4151	E	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G4151	E	qwen/qwen3.7-flash	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik
+G4151	E	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	1.03
 G5010	E	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G5010	E	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G5010	E	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -356,6 +692,27 @@ G5010	E	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G5010	E	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G5010	E	anthropic/claude-haiku-4.5	5_terminologia	SERTES	see -> l. hianyzik
 G5010	E	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	1.03
+G5010	E	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G5010	E	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: ταξις×1, ταξεως×1, η×1, τασσω×1
+G5010	E	openai/gpt-4o-mini	2_versszam	RENDBEN	
+G5010	E	openai/gpt-4o-mini	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Héber
+G5010	E	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G5010	E	openai/gpt-4o-mini	5_terminologia	RENDBEN	
+G5010	E	openai/gpt-4o-mini	6_hosszarany	RENDBEN	1.00
+G5010	E	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G5010	E	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G5010	E	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G5010	E	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G5010	E	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G5010	E	google/gemini-3.1-flash-lite	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik
+G5010	E	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.06
+G5010	E	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G5010	E	qwen/qwen3.7-flash	1_gorog_heber	RENDBEN	
+G5010	E	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G5010	E	qwen/qwen3.7-flash	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Héb
+G5010	E	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G5010	E	qwen/qwen3.7-flash	5_terminologia	RENDBEN	
+G5010	E	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	1.05
 G5351	E	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G5351	E	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G5351	E	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -377,6 +734,27 @@ G5351	E	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G5351	E	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G5351	E	anthropic/claude-haiku-4.5	5_terminologia	SERTES	sc. -> ti. hianyzik
 G5351	E	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	1.02
+G5351	E	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G5351	E	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: φθειρω×1, φθερω×1, εφθειρα×1, φθειρομαι×1, εφθαρην×1, φθαρησομαι×1, שחת×1, τον×1, ναον×1, του×1, Θεου×1, τινα×1, ηθος×1
+G5351	E	openai/gpt-4o-mini	2_versszam	RENDBEN	
+G5351	E	openai/gpt-4o-mini	3_karoli_roviditesek	RENDBEN	
+G5351	E	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G5351	E	openai/gpt-4o-mini	5_terminologia	SERTES	sc. -> ti. hianyzik; Sept. -> Septuaginta hianyzik; p. -> o. hianyzik
+G5351	E	openai/gpt-4o-mini	6_hosszarany	JELZES	0.72 (a 0.8-1.6 savon kivul)
+G5351	E	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G5351	E	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G5351	E	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G5351	E	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G5351	E	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G5351	E	google/gemini-3.1-flash-lite	5_terminologia	SERTES	sc. -> ti. hianyzik
+G5351	E	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.05
+G5351	E	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G5351	E	qwen/qwen3.7-flash	1_gorog_heber	RENDBEN	
+G5351	E	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G5351	E	qwen/qwen3.7-flash	3_karoli_roviditesek	RENDBEN	
+G5351	E	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G5351	E	qwen/qwen3.7-flash	5_terminologia	SERTES	sc. -> ti. hianyzik; see -> l. hianyzik; Sept. -> Septuaginta hianyzik; etc. -> stb. hianyzik
+G5351	E	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	1.05
 G5356	E	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G5356	E	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G5356	E	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -398,6 +776,27 @@ G5356	E	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G5356	E	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G5356	E	anthropic/claude-haiku-4.5	5_terminologia	SERTES	p. -> o. hianyzik
 G5356	E	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	1.02
+G5356	E	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G5356	E	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: φθορα×2, φθορας×1, η×1, φθειρω×1
+G5356	E	openai/gpt-4o-mini	2_versszam	RENDBEN	
+G5356	E	openai/gpt-4o-mini	3_karoli_roviditesek	RENDBEN	
+G5356	E	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G5356	E	openai/gpt-4o-mini	5_terminologia	SERTES	p. -> o. hianyzik
+G5356	E	openai/gpt-4o-mini	6_hosszarany	RENDBEN	0.96
+G5356	E	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G5356	E	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G5356	E	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G5356	E	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G5356	E	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G5356	E	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G5356	E	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.07
+G5356	E	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G5356	E	qwen/qwen3.7-flash	1_gorog_heber	SERTES	hianyzik: γενεσις×1, σωτηρια×1, αιωνιος×1; tobblet: γενεσι×1, σωτηρι×1, αιων×1
+G5356	E	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G5356	E	qwen/qwen3.7-flash	3_karoli_roviditesek	RENDBEN	
+G5356	E	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G5356	E	qwen/qwen3.7-flash	5_terminologia	SERTES	i. e. -> azaz hianyzik; p. -> o. hianyzik
+G5356	E	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	1.02
 G5590	E	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
 G5590	E	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
 G5590	E	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
@@ -419,3 +818,24 @@ G5590	E	anthropic/claude-haiku-4.5	3_karoli_roviditesek	RENDBEN
 G5590	E	anthropic/claude-haiku-4.5	4_formazas	RENDBEN	
 G5590	E	anthropic/claude-haiku-4.5	5_terminologia	RENDBEN	
 G5590	E	anthropic/claude-haiku-4.5	6_hosszarany	RENDBEN	1.01
+G5590	E	openai/gpt-4o-mini	7_json_sema	RENDBEN	
+G5590	E	openai/gpt-4o-mini	1_gorog_heber	SERTES	hianyzik: ψυχη×1, ψυχης×1, η×1, ψυχω×1, נפש×1, לב×1, לבב×1, πνευαμ×1; tobblet: πνευμα×1
+G5590	E	openai/gpt-4o-mini	2_versszam	RENDBEN	
+G5590	E	openai/gpt-4o-mini	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: 1Pe, 1Th, 2Pe, 3Jo, Act, Col, Deu, Eph, Heb, Jam, Joh, Mar, Mat, Phi, Rev
+G5590	E	openai/gpt-4o-mini	4_formazas	RENDBEN	
+G5590	E	openai/gpt-4o-mini	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik; p. -> o. hianyzik
+G5590	E	openai/gpt-4o-mini	6_hosszarany	RENDBEN	0.97
+G5590	E	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G5590	E	google/gemini-3.1-flash-lite	1_gorog_heber	SERTES	hianyzik: πνευαμ×1; tobblet: πνευμα×1
+G5590	E	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G5590	E	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G5590	E	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G5590	E	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G5590	E	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.01
+G5590	E	qwen/qwen3.7-flash	7_json_sema	RENDBEN	
+G5590	E	qwen/qwen3.7-flash	1_gorog_heber	SERTES	hianyzik: πνευαμ×1, σωμα×1; tobblet: πνευμα×1, μετα×1, σω×1
+G5590	E	qwen/qwen3.7-flash	2_versszam	RENDBEN	
+G5590	E	qwen/qwen3.7-flash	3_karoli_roviditesek	RENDBEN	
+G5590	E	qwen/qwen3.7-flash	4_formazas	RENDBEN	
+G5590	E	qwen/qwen3.7-flash	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik
+G5590	E	qwen/qwen3.7-flash	6_hosszarany	RENDBEN	1.00
