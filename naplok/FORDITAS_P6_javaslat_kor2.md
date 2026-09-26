@@ -2,7 +2,7 @@
 
 *2026.09.26 · ág: `claude/forditas-pilot-brief-3afbbf-37c8ky` · a
 FORDITAS_PILOT_BRIEF.md §1 döntési szabálya szerint, a 2. modellkör (m1-m6)
-gépi ellenőrzésének (`FORDITAS_P4_ellenorzes.tsv`) és a felhasználó vak
+gépi ellenőrzésének (`FORDITAS_P4_ellenorzes.tsv`) és a Claude (Opus, chat-menet) vak
 pontozásának (`FORDITAS_P5_pontok_kor2.tsv`, kulcs:
 `FORDITAS_P4_vak_kulcs_kor2.tsv`) összevetésével. Ez a jelentés a kiegészítő
 (nem a brief eredeti G3-) modellkört zárja le -- az eredeti 3 modellre a
@@ -15,7 +15,7 @@ hivatalos FP5/FP6 (Opus, 2. menet) még nem futott.*
 | Gemini 3.8 Flash | **90,8%** | **9,35** | 0 | 0,6072 |
 | Gemini 3.1 Flash Lite | 88,3% | 8,70 | 0 | 0,0593 |
 | DeepSeek V4 Flash | 85,8% | 8,60 | 1 (`G1941`) | 0,0148 |
-| Claude Haiku 4.5 | 85,1% | 7,47 (n=19) | 0 | 0,2293 |
+| Claude Haiku 4.5 | 80,8% (97/120; a HIBA-sorok nélkül 85,1%) | 7,47 (n=19) | 0 | 0,2293 |
 | Qwen3.7 Flash | 70,0% | 5,00 | 0 | 0,0059 |
 | GPT-4o-mini | 55,0% | 3,95 | 4 | 0,0209 |
 
@@ -34,10 +34,18 @@ adja -- ez önmagában megbízhatóvá teszi mindkét mérést erre a mintára.
 **Egyik modell sem éri el a 95%-os gépi küszöböt** (a legjobb is csak
 90,8%) -- a szabály szó szerinti alkalmazása szerint **egyik sem
 javasolható éles fordításra ezen a mintán**. A szabály explicit
-tartalék-ága lép életbe: **az éles fordítás Claude-dal megy** (l. a jelenlegi
-pilot is Claude Haiku 4.5-tel és a Claude Sonnet 5 munkamenet-modellel
-dolgozik), **a külső modell legfeljebb nyersfordítást (draft) adhat**,
-amit ember vagy Claude ellenőriz/javít.
+tartalék-ága lép életbe: **az éles fordítás Claude-dal megy**, **a külső
+modell legfeljebb nyersfordítást (draft) adhat**, amit ember vagy Claude
+ellenőriz/javít.
+
+**Megjegyzés a tartalék-ághoz:** a szabály nem nevezi meg, melyik Claude-modell
+fordítson. A mérés szerint a Claude Haiku 4.5 vak átlaga (7,47) a Gemini 3.1
+Flash Lite (8,70) és a DeepSeek V4 Flash (8,60) alatt marad, a teljes Thayerre
+becsült ára (~30 USD) pedig többszöröse az övékének — a Haiku mint éles
+fordító tehát rosszabb minőséget adna drágábban. A tartalék-ág gyakorlati
+olvasata: a külső modell nyersfordít, Claude ellenőriz és javít, a gépi
+ellenőrzés által jelzett szócikkekre összpontosítva. A végleges döntés a
+felhasználóé.
 
 Ha a küszöböt tájékozódásképpen 90%-ra engednénk (nem a brief döntése,
 csak érzékeltetés): egyedül a **Gemini 3.8 Flash** kerülne a közelébe
@@ -59,7 +67,9 @@ mellett), ez lenne az első jelölt az újratesztelésre.
 - **DeepSeek V4 Flash**: amikor jó, nagyon jó (több 9-10 pontos), de a
   legnagyobb/legbonyolultabb szócikken (`G1941`) félbehagyta a fordítást --
   ugyanezt a hibát a gépi ellenőrzés (FP4, `FORDITAS_P_jelentes.md` 3.2) és
-  a vak emberi pontozás egymástól függetlenül, egybehangzóan azonosította.
+  a Claude-féle vak pontozás egymástól függetlenül, egybehangzóan azonosította.
+  A kimenet 602 token (a többi modellé 1600–1800), és nem `length` állapottal
+  állt le — egyszeri vagy rendszerszintű voltát a K2 újrafuttatás dönti el.
 - **Claude Haiku 4.5**: a meglévő 19 szócikken erős, de a mintából
   hiányzik a legnagyobb egy-darabos szócikk (`G1941`) -- ismételt,
   tartós API-hiba miatt (l. FP3.2).
@@ -71,9 +81,12 @@ mellett), ez lenne az első jelölt az újratesztelésre.
 
 ## 5. Módszertani megjegyzés
 
-Ez a kör csak EGY bírálót (a felhasználót) használt -- a brief FP5/FP6
-eredeti terve Claude (Opus) és a felhasználó pontjainak összevetését írja
-elő, > 2 pontos eltérések megjelölésével. Mivel itt nem készült külön
-Claude-alapú vak pontozás a kor2 mintára, ez az összevetés most elmarad;
-a gépi ellenőrzés (FP4) szolgál második, független mérőszámként, és --
-amint fent látható -- nagyfokú egyezést mutat a felhasználó pontjaival.
+Ez a kör csak EGY bírálót használt: Claude-ot (Opus, chat-menet), vakon, a
+kulcs megnyitása előtt (`FORDITAS_P5_pontok_kor2.tsv`). A 18 rövid/közepes
+szócikket a bíráló teljes egészében olvasta, a két legnagyobbat (G4151,
+G5590) mintavétellel és teljes gépi összevetéssel (görög/héber eltérés,
+terminológia, Károli-rövidítések) pontozta. A brief FP5/FP6 terve Claude és
+a felhasználó pontjainak összevetését írja elő (> 2 pontos eltérés
+megjelölésével); a felhasználói minta még nem készült el, ezért ez az
+összevetés függőben van. Második, független mérőszámként a gépi ellenőrzés
+(FP4) szolgál, amely nagyfokú egyezést mutat a Claude-pontokkal.
