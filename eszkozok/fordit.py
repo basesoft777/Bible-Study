@@ -294,7 +294,7 @@ def _valodi_http_kuldo(model_id, uzenetek, api_key, extra_parameterek):
         headers={'Authorization': 'Bearer ' + api_key, 'Content-Type': 'application/json'},
         json=dict(model=model_id, messages=uzenetek, temperature=0,
                    usage={'include': True}, **extra_parameterek),
-        timeout=180,
+        timeout=60,
     )
 
 
@@ -602,24 +602,27 @@ def eles_futtatas(minta, modellek, thayer, sablon, terminologia_sz, karoli_sz,
                 info = darab_info_szoveg(i, len(darabok))
                 prompt = prompt_epit(sablon, strong, darab, info, terminologia_sz, karoli_sz)
 
+                print('... %s %s darab %d/%d' % (model_id, strong, i + 1, len(darabok)), flush=True)
                 talalat = cache_olvas(model_id, strong, i, forras_hash)
                 if talalat is not None:
                     eredmeny = talalat['eredmeny']
                     usage = talalat['usage']
                     forras_cimke = 'cache'
+                    print('    cache-talalat', flush=True)
                 else:
                     try:
                         eredmeny, usage, _nyers = openrouter_hivas(
                             model_id, prompt, api_key,
                             ar_bemenet_1m=ar_be, ar_kimenet_1m=ar_ki)
                     except OpenRouterHiba as e:
-                        print('HIBA -- %s %s darab %d/%d: %s' % (model_id, strong, i + 1, len(darabok), e))
+                        print('HIBA -- %s %s darab %d/%d: %s' % (model_id, strong, i + 1, len(darabok), e), flush=True)
                         hiba_naplo_ir(model_id, strong, i, e)
                         koltseg.hozzaad(strong, csoport, model_id, i, e.usage, 'halozat')
                         hiba_uzenet = str(e)
                         break
                     cache_ir(model_id, strong, i, forras_hash, eredmeny, usage)
                     forras_cimke = 'halozat'
+                    print('    kesz (koltseg=%.5f USD)' % (usage.get('cost') or 0.0), flush=True)
 
                 koltseg.hozzaad(strong, csoport, model_id, i, usage, forras_cimke)
                 darab_forditasok.append(eredmeny['forditas_hu'])
