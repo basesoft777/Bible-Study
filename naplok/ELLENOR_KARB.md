@@ -216,3 +216,42 @@ Eredmény: **EXIT=1**. A tahot A-eset `regi==uj: ELTER | sorszam=5 (vart 5)` —
 Az eldobható ág törölve, a `naplok/KARB_KB2_crlf.tsv` a mutáció utáni futásból visszaállítva a `bf5427↔8bd1e40` (pozitív) futás eredményére.
 
 **Következtetés:** a #60 mergelt állapota (`8bd1e40`) helyes, a nulla-kimenet-őr bevezetve és élesben tesztelve (pozitív + mutációs futással is). Ez a kör NEM kért új merge-et — a `naplok/KARB_crlf_teszt.py` és a `naplok/ELLENOR_KARB.md` módosítása egy új, kis PR-ben megy, amit a felhasználó mergel.
+
+---
+
+## 5. kör — az őr saját próbája (a chat kérésére, a #61 merge előtt)
+
+Mindkét próba a `naplok/KARB_crlf_teszt.py` tahot-fixture-jét rontja el (nem a forráskódot), egy-egy friss eldobható ágon, majd `--regi-commit 8bd1e40 --uj-commit 8bd1e40` (ÖNÖSSZEVETÉS — így a `regi==uj` egyezés-vizsgálat triviálisan igaz marad, és KIZÁRÓLAG az őr bukása jelezheti a hibát).
+
+**1. próba — 0 sort adó fixture** (a régi, hibás `\`-elválasztó és érvénytelen `dStrongs`-placeholder visszaállítva L4/L5/L7/L8-ban; ág: `throwaway-fixture-0sor-2`, commit `73f939d`, nem push-olt, törölve):
+
+```
+python naplok/KARB_crlf_teszt.py --regi-commit 8bd1e40 --uj-commit 8bd1e40
+```
+
+Kimenet (kivonat):
+```
+HIBA: tahot_zarojeles_phaseA_kivonat.py A (LF) 0/ures eredmenyt adott -- a fixture nem tesztel semmit!
+HIBA: tahot_zarojeles_phaseA_kivonat.py A (LF) 0 sort adott, 5 volt varva (L4,L5,L7 1-1 sor, L8 2 sor)
+...
+tahot_zarojeles_phaseA_kivonat.py	A: ...	regi==uj: EGYEZIK | sorszam=0 (vart 5) | NULLA-OR: HIBA | eredmeny: []	...
+```
+**EXIT=1.** A `regi==uj: EGYEZIK` (mindkét oldal ugyanaz a hibás fixture) — kizárólag a `NULLA-OR: HIBA` (az őr) buktatta a tesztet, nem az egyezés-vizsgálat.
+
+**2. próba — 4 sort adó fixture** (csak L5 `dStrongs` mezője érvénytelenítve `"dStrongs"`-ra, L4/L7/L8 változatlan, valódi marad; ág: `throwaway-fixture-4sor`, commit `e315baa`, nem push-olt, törölve):
+
+```
+python naplok/KARB_crlf_teszt.py --regi-commit 8bd1e40 --uj-commit 8bd1e40
+```
+
+Kimenet (kivonat):
+```
+HIBA: tahot_zarojeles_phaseA_kivonat.py A (LF) 4 sort adott, 5 volt varva (L4,L5,L7 1-1 sor, L8 2 sor)
+...
+tahot_zarojeles_phaseA_kivonat.py	A: ...	regi==uj: EGYEZIK | sorszam=4 (vart 5) | SORSZAM-OR: HIBA | eredmeny: [('Gen.1.1', None, 'H0430', ...), ('Gen.3.1', None, 'H1121', ...), ('Gen.4.1', None, 'H1111', ...), ('Gen.4.1', None, 'H2222', ...)]	...
+```
+**EXIT=1.** Ismét `regi==uj: EGYEZIK`, kizárólag a `SORSZAM-OR: HIBA` (a pontos elemszám-ellenőrzés) buktatta a tesztet.
+
+**Mindkét próba a vártnak megfelelően bukott, és mindkettőnél az ŐR (nem az egyezés-vizsgálat) jelzett.** Mindkét eldobható ág törölve, a `naplok/KARB_crlf_teszt.py` és a `naplok/KARB_KB2_crlf.tsv` visszaállítva a helyes (`8bd1e40`-nak megfelelő) állapotra.
+
+**A #61 mergelhető.**
