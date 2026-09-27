@@ -37,12 +37,17 @@ G-token hatókörön.*
 
 **Gyökér-ok:** a `T2.2: TEREMT-002 előfordulások és kapcsolatok` commit
 (`ed79575`, 2026.09.25 — **az S0 jelentés dátuma (09.23) UTÁN, a jóváhagyott
-brief előtt**) 3 új sort vitt be az `adat/elofordulasok.tsv`-be, ezek közül
-egy a `TEREMT-001` motívumhoz egy új `H8414+H0922` (tohu+bohu, 1Móz 1:2)
-összetett gerinc-token-párt ad. A `lexikon_general.py` `strong_tokens =
-[s for s in strong.split('+') if s]` logikájával szétbontva ez **két új,
-önálló héber Strong-tokent** (H8414, H0922) old ki, amelyek a T2.2 előtt
-nem szerepeltek egyik motívum előfordulásai közt sem.
+brief előtt**) 3 új sort vitt be az `adat/elofordulasok.tsv`-be — **mindhárom
+a `TEREMT-002`-höz**, amely maga is ÚJ, önálló (a `TEREMT-001`-től eltérő)
+motívum-ID (1Móz 1:2, Jer 4:23, Ézs 34:11), nem a `TEREMT-001` egy sora.
+Mindhárom sor ugyanazt a `H8414+H0922` (tohu+bohu) összetett gerinc-token-párt
+hordozza. A `lexikon_general.py` `strong_tokens = [s for s in strong.split('+')
+if s]` logikájával szétbontva ez **két új, önálló héber Strong-tokent**
+(H8414, H0922) old ki, amelyek a T2.2 előtt nem szerepeltek egyik motívum
+előfordulásai közt sem. **A 8 lexikon-motívum (ALVIL-001…TEREMT-001) mellett
+ezzel egy 9. motívum-ID is bekerült az `elofordulasok.tsv`-be** — a "8
+motívum" korábbi hivatkozásaim ezt a 9. motívumot tévesen figyelmen kívül
+hagyták (l. `naplok/ELLENOR_SZOTAR_S0b.md`, a független ellenőr talált rá).
 
 Ellenőrzés (előtte/utána, a `strong` mező `+`-on szétbontva, egyedi
 tokenekre):
@@ -165,6 +170,15 @@ adja vissza. Ez alátámasztja a D25 döntés módszertani alapját — az S13
 3. A 648 vs. 635 megtalálható LXX_OS-vers közötti kis eltérés (5. szakasz)
    nem vizsgált tovább — ha az S1.4-es import más számot ad, azt jelenteni
    kell, de önmagában nem megállási ok.
+4. **Javítás a független ellenőr (`naplok/ELLENOR_SZOTAR_S0b.md`) jelzése
+   nyomán:** a 2. szakasz eredetileg tévesen `TEREMT-001`-ként azonosította
+   a két új héber token (H8414, H0922) igehelyét — valójában mindhárom
+   érintett sor (1Móz 1:2, Jer 4:23, Ézs 34:11) a `TEREMT-002`-höz tartozik,
+   amelyet ugyanez a T2.2 commit vezetett be új, önálló motívumként. Ebből
+   következik, hogy a brief és e jelentés "8 motívum" hivatkozásai pontatlanok
+   voltak: az `elofordulasok.tsv` jelenleg **9** különálló motívum-ID-t
+   tartalmaz (a 8 lexikon-motívum + a `TEREMT-002`). Javítva: 2. szakasz és
+   `SZOTAR_BRIEF.md` (0.4 sor, S3, S1.7, §4 Várt számok).
 
 ## 7. K1–K3 önellenőrzés
 

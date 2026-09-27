@@ -45,7 +45,7 @@ akkor kell, ha token kiesik, vagy a G-halmaz változik.
 | 0.1 | `main` = `origin/main` | `70eb29c` (az S0b.1 indító hash-e; vagy e brief commitja utáni hash) |
 | 0.2 | `adat/lexikon_hivatkozasok.tsv` | 24 sor (Thayer 14, BDB 4, TBESG 4, TBESH 1, LSJ 1); `forditas_hu` kitöltve: 11 |
 | 0.3 | `adat/forditas_ubs.tsv` | 20 sor; `definicio_hu` 20, `glosszak_hu` 20 |
-| 0.4 | token a 8 motívum előfordulásaiban | **H 26, G 13** (a T2.2 `ed79575` két új héber tokent adott: H8414 *tohu*, H0922 *bohu* — 1Móz 1:2, TEREMT-001; D28) |
+| 0.4 | token a motívumok előfordulásaiban | **H 26, G 13** (a 8 lexikon-motívum mellett a T2.2 `ed79575` egy önálló, 9. motívumot is bevitt az `elofordulasok.tsv`-be — `TEREMT-002` — annak két új héber tokenjével: H8414 *tohu*, H0922 *bohu*, 1Móz 1:2/Jer 4:23/Ézs 34:11; D28) |
 | 0.5 | TBESH: `.txt` bővebb / `.lexicon` bővebb / kb. egyenlő (26 H-token) | 9 / 13 / 2 a régi 24 tokenen; **a 2 új token (H8414, H0922) lefedettsége az S1.4-nél mérendő** |
 | 0.6 | MCGED lefedettség (13 G-token) | 13/13 — a G-halmaz nem változott |
 | 0.7 | SECE (13 G-token) | 13/13; `LN:`, `GK:`, `Hebrew:` almező gépileg kinyerhető — a G-halmaz nem változott |
@@ -81,7 +81,7 @@ akkor kell, ha token kiesik, vagy a G-halmaz változik.
 |---|---|---|
 | **S1** | Fordítási gyorsítótár | **`adat/forditasok.tsv`**, oszlopok: `szotar`, `strong`, `entry_id`, `jelentes_szam`, `mezo`, `forras_hash`, `forditas_hu`, `allapot`, `modell`, `datum`, `terminologia_verzio` — azonos az `eszkozok/fordit.py` kimenet-sémájával (0.17). Kulcs: `szotar+strong+entry_id+jelentes_szam+mezo`. `forras_hash` = a forrásszöveg SHA-1-e. Migráció: 11 lexikon-fordítás + 20 UBS-definíció + 20 UBS-glossza = **51 sor**, `allapot=kezi`. A `lexikon_hivatkozasok.forditas_hu` oszlop és a `forditas_ubs.tsv` megszűnik. A próba kimenete (`naplok/FORDITAS_P3_kimenet.tsv`) **nem** kerül be: az éles fordítás a FELADATOK #7 dolga. |
 | **S2** | Terminológia | **`adat/terminologia.tsv`** (`angol`, `magyar`, `megjegyzes`, `verzio`); induló sorok: **a `naplok/FORDITAS_P_terminologia.tsv` 13 sora változatlanul** (D26). Az `ellenoriz.py` csak jelent; a CI E10 hatóköre a táblát már lefedi (CI D17). |
-| S3 | Kiejtés és átírás | **Görög: szabálytábla (`adat/kiejtes_szabalyok.tsv`) + `eszkozok/kiejtes.py`.** Héber: a render nem generál; lemma-kiejtés csak a kézi `adat/kiejtes_kivetelek.tsv`-ből. **Héber jelöltek:** az OSHL `atiras` mezőjéből szabálytábla (`adat/kiejtes_heber_jeloltszabalyok.tsv`) ad magyaros jelöltet; csak kézi jóváhagyás után kerül a kivételtáblába. **Cél: a 8 motívum 26/26 héber lemmája a kivételtáblában (D28: H8414, H0922 is a hatókörben).** Az alakszint marad STEP-átírás. **Tesztkészlet: a D23 szerint.** **Az élesítés mércéje** a tisztított átírás-lista (`naplok/SZOTAR_S0_atirasok_tiszta.tsv`) tételei; a 936 ellenőrző összeg. Élesítés feltétele: a görög aranykészlet 100%-os egyezése. |
+| S3 | Kiejtés és átírás | **Görög: szabálytábla (`adat/kiejtes_szabalyok.tsv`) + `eszkozok/kiejtes.py`.** Héber: a render nem generál; lemma-kiejtés csak a kézi `adat/kiejtes_kivetelek.tsv`-ből. **Héber jelöltek:** az OSHL `atiras` mezőjéből szabálytábla (`adat/kiejtes_heber_jeloltszabalyok.tsv`) ad magyaros jelöltet; csak kézi jóváhagyás után kerül a kivételtáblába. **Cél: a 9 motívum (a 8 lexikon-motívum + a T2.2 önálló `TEREMT-002`-je, D28) 26/26 héber lemmája a kivételtáblában.** Az alakszint marad STEP-átírás. **Tesztkészlet: a D23 szerint.** **Az élesítés mércéje** a tisztított átírás-lista (`naplok/SZOTAR_S0_atirasok_tiszta.tsv`) tételei; a 936 ellenőrző összeg. Élesítés feltétele: a görög aranykészlet 100%-os egyezése. |
 | S4 | TBESH | **Unió, nem csere:** `konkordancia/TBESH_konszolidalt.tsv` a `.lexicon` strukturált mezőivel és a `.txt` teljes szövegével; szócikkenként a teljesebb szöveg, a forrás soronként jelölve (`forras` = `txt` / `lexicon`). Addig a render a mai `.txt`-ből dolgozik. |
 | S5 | UBS DBH | **Teljes import a meglévő JSON-ból**, az `ubs_dntg_import.py` mintájára: `konkordancia/UBS_DBH_jelentesek.tsv`, `UBS_DBH_referenciak.tsv`, `eszkozok/ubs_dbh_import.py`. Definíció és glossza fordítása a gyorsítótárból. Az S0.1 igazolta a jelentésenkénti igehelyeket (0.11). |
 | S6 | Mounce és SECE | **Mounce kiegészítő forrás:** `konkordancia/MCGED_teljes.tsv` a nyers SQLite-ból; GK-szám és tömör glossza. **SECE:** a megfelelő-lista a `SECE_G_teljes.tsv` / `SECE_H_teljes.tsv`-ből; az L–N-mező csak keresztellenőrzés az UBS DNTG ellen (eltérés = JELENTÉS). A Mounce szó szerinti megjelölése kötelező. |
@@ -121,7 +121,7 @@ Eredmény: `naplok/SZOTAR_S0_jelentes.md` és 8 munkalap. A 7 kérdés válasza:
 - **S1.4** Importok a `konkordancia/` alá, README-vel és licenccel: `TBESH_konszolidalt.tsv` (S4), `UBS_DBH_jelentesek.tsv` és `UBS_DBH_referenciak.tsv` (S5), `MCGED_teljes.tsv` (S6), `BDB_etimologia_kezi_hatarok.tsv` (S9, `allapot=javaslat`); ha az S0b elfogadta: `tW_szocikkek.tsv` (S14) és `LXX_versszintu_parok.tsv` (S13). A generátor még nem olvassa őket.
 - **S1.5** `ellenoriz.py`: **13.** gyorsítótár (kulcs egyedi, `forras_hash` egyezik; eltérés = SÉRTÉS, `allapot` → `elavult` javaslat; terminológia-verzió elmaradás = JELENTÉS); **14.** kiejtés és terminológia (JELENTÉS).
 - **S1.6** Dokumentáció: `adat/SEMA.md` (a `szotar_szerepek.allapot` zárt listája kiegészül a `nincs forrás` értékkel, D27), `konkordancia/README.md`, `NYITOTT_FELADATOK.md`.
-- **S1.7** Héber kiejtés-jelöltek a 8 motívum 26 lemmájára (D28: a T2.2 két új tokenjével bővítve), az OSHL `atiras` mezőjéből (S3, D24): `naplok/SZOTAR_S1_heber_jeloltek.tsv`, a 26 lemmán mért egyezési aránnyal. Nem ír a kivételtáblába.
+- **S1.7** Héber kiejtés-jelöltek a 9 motívum (D28: a T2.2 önálló `TEREMT-002`-jével bővítve) 26 lemmájára, az OSHL `atiras` mezőjéből (S3, D24): `naplok/SZOTAR_S1_heber_jeloltek.tsv`, a 26 lemmán mért egyezési aránnyal. Nem ír a kivételtáblába.
 - **ÁLLJ — jóváhagyás:** a 26 héber kiejtés-jelölt és a (legfeljebb 6, D28 miatt esetleg bővülő) kézi BDB-etimológia-határ (`javaslat` → `jovahagyott`). A jóváhagyott értékek a 2. menet első commitjában kerülnek be. `FELADATOK.md` #5 sor frissítése.
 
 ### 2. menet — kimenet-változtató, elvárt diffel
@@ -154,7 +154,7 @@ Eredmény: `naplok/SZOTAR_S0_jelentes.md` és 8 munkalap. A 7 kérdés válasza:
 | 1 | `konkordancia/` új táblák | 5 (TBESH, UBS DBH ×2, MCGED, BDB-határ), + tW és LXX-párok, ha az S0b elfogadta (legfeljebb 7), mind README- és licenc-bejegyzéssel |
 | 2 | diff-osztályozó | ismeretlen kategória: 0 |
 | 2 | `szotar_szerepek.tsv` | 20 sor; `nincs adatosítva`: 0; `nincs forrás`: legfeljebb 1 (görög 3, ha a tW görögül elutasítva) |
-| 2 | `kiejtes_kivetelek.tsv` | a 8 motívum 26/26 héber lemmája (D28) |
+| 2 | `kiejtes_kivetelek.tsv` | a 9 motívum (D28) 26/26 héber lemmája |
 | 2 | törzscikkek lefedettségi mátrixa | `nincs adatosítva`: 0; Cremer- és Girdlestone-említés: 0 |
 | 2 | `ellenoriz.py` és CI | SÉRTÉS 0, kód 0; a CI zöld |
 
