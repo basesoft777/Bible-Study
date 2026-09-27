@@ -112,3 +112,6 @@ D-pontok: a brief §5 döntésnaplója verziósorokból áll (v1–v3.1), külö
 
 - **Ékezet nélküli commit-üzenet (`db84fca`).** Ugyanaz a döntés, mint az E5-menetnél (l. `naplok/ELLENOR_CI_E5.md`): a branch már pusholt, nem-mergelt commit-jainak szövegét nem írjuk át/force-pusholjuk vissza menőleg, hacsak a felhasználó kifejezetten nem kéri. Ismert, dokumentált korlátozás marad.
 - **K4f (a K4 brief-feltétele csak átértelmezve teljesül a valódi kódon).** A felhasználó saját maga adta ki ezt az átértelmezést a remediáció megrendelésekor ("K4: ... A régi kóddal is fusson, és annak is egyeznie kell ... Tegyél mellé egy newline=''-es kontrollpárt, amely megmutatja, hogy ott a régi minta hibázna"), tehát ez nem nyitott kérdés, hanem a felhasználó által jóváhagyott céldefiníció.
+
+**Kézi mutációs próba (2026.09.27, merge előtt, a chat kérésére):** a `process_raw_file()` zárójel-illesztő ágát (`secondary = ... if chap2 else None` → `if False else None`, azaz a zárójeles másodlagos hivatkozás elvesztése) szándékosan elrontottam egy helyi másolaton, egy valódi `Gen.32.1(32.2)#1=x` alakú sorral lefuttatva a `secondary` mező `'Gen.32.2'`-ről `None`-ra változott — a teszt pirosra vált a hibás kóddal.
+Az eredeti kód visszaállítva (`git checkout --`), `git status --porcelain` üres; az eredmény ismét `secondary='Gen.32.2'`.
