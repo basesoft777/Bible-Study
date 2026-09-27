@@ -1,0 +1,105 @@
+name: ellenorzes
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  ellenorzes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Python telepitese
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Alap es fej meghatarozasa, valtozott fajlok listaja
+        id: diff
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+            HEAD="${{ github.event.pull_request.head.sha }}"
+          else
+            BASE="${{ github.event.before }}"
+            HEAD="${{ github.sha }}"
+          fi
+          # push-esemenynel az elso commit "before"-ja csupa nulla lehet --
+          # ilyenkor nincs ertelmes alap, a diff-hatokor (D8/D3) nem
+          # ertelmezheto, HIBA helyett mindenki JELENTES-t kap.
+          if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
+            BASE=""
+          fi
+          echo "base=$BASE" >> "$GITHUB_OUTPUT"
+          echo "head=$HEAD" >> "$GITHUB_OUTPUT"
+          if [ -n "$BASE" ]; then
+            git diff --name-only "$BASE" "$HEAD" > valtozott_fajlok.txt
+          else
+            : > valtozott_fajlok.txt
+          fi
+          echo "Valtozott fajlok:"
+          cat valtozott_fajlok.txt
+
+      - name: E2-E16 (eszkozok/ellenorzes/futtat.py)
+        id: e2e16
+        run: |
+          set +e
+          if [ -s valtozott_fajlok.txt ]; then
+            python eszkozok/ellenorzes/futtat.py \
+              --valtozott $(cat valtozott_fajlok.txt | tr '\n' ' ') \
+              --diff-alap "${{ steps.diff.outputs.base }}" \
+              --diff-fej "${{ steps.diff.outputs.head }}" \
+              --pr-cim "${{ github.event.pull_request.title }}" \
+              > e2e16_jelentes.md
+            KILEPES=$?
+          else
+            echo "# Ellenorzes jelentes (nincs valtozott fajl)" > e2e16_jelentes.md
+            KILEPES=0
+          fi
+          cat e2e16_jelentes.md >> "$GITHUB_STEP_SUMMARY"
+          echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
+          exit $KILEPES
+
+      - name: E1 (eszkozok/ellenoriz.py --study, mindig fut)
+        id: e1
+        if: always()
+        run: |
+          set +e
+          python eszkozok/ellenorzes/study_fajlok_szurese.py < valtozott_fajlok.txt > study_fajlok.txt
+          STUDY_ARGS=""
+          while IFS= read -r f; do
+            [ -n "$f" ] && STUDY_ARGS="$STUDY_ARGS --study $f"
+          done < study_fajlok.txt
+          python eszkozok/ellenoriz.py $STUDY_ARGS --md e1_jelentes.md
+          KILEPES=$?
+          {
+            echo "## E1 (eszkozok/ellenoriz.py)"
+            echo ""
+            cat e1_jelentes.md
+          } >> "$GITHUB_STEP_SUMMARY"
+          echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
+          exit $KILEPES
+
+      - name: Jelentes PR-kommentkent
+        if: always() && github.event_name == 'pull_request'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_SZAM: ${{ github.event.pull_request.number }}
+        run: |
+          python eszkozok/ellenorzes/pr_komment.py e2e16_jelentes.md e1_jelentes.md
+
+      - name: Bukas, ha E1 vagy E2-E16 HIBA-t jelzett
+        if: always()
+        run: |
+          E2E16="${{ steps.e2e16.outputs.kilepes }}"
+          E1="${{ steps.e1.outputs.kilepes }}"
+          if [ "$E2E16" != "0" ] || [ "$E1" != "0" ]; then
+            echo "Van HIBA-szintu talalat (E2-E16 kilepes: $E2E16, E1 kilepes: $E1)."
+            exit 1
+          fi
+          echo "Minden ellenorzes RENDBEN."
