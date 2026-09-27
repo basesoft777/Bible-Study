@@ -122,3 +122,47 @@ paranccsal futtatva: **EXIT=0, a `tahot_zarojeles_phaseA_kivonat.py` mindkét A-
 Ok: a `naplok/KARB_crlf_teszt.py` saját, beépített tahot-fixture-je (`"Gen.1.1#1=x", ...`) SOSEM tartalmaz zárójeles másodlagos hivatkozást, ezért a `secondary`-ág mindkét oldalon eleve `None`-t ad — a committolt teszt vakfoltja pontosan az a kód-ág, amit a mutáció elrontott. Ez egy valódi, dokumentált hiányosság a `naplok/KARB_crlf_teszt.py` tahot-lefedettségében (a fixture-t nem javítottam, mert ez már egy harmadik körös scope-bővítés lenne, jóváhagyás nélkül).
 
 **Következtetés a chat utasítása szerint ("ha a teszt nem bukik, ne mergelj, szólj"): a #60 MERGE-E NEM TÖRTÉNT MEG.**
+
+---
+
+## 3. kör — ágleltár és fixture-bővítés (a chat kérésére, a #60 merge előtt kötelező)
+
+**Ágleltár** — a KB2-vel érintett 4 szkript mind a négy függvényének minden elágazása, és hogy a `naplok/KARB_crlf_teszt.py` melyik fixture-sora futtatja le:
+
+| Szkript | Függvény | Elágazás | Fixture-sor (javítás előtt) | Fixture-sor (javítás után) |
+|---|---|---|---|---|
+| `elofordulas_szamlalo.py` | `count_occurrences` | fejléc-kihagyás (`next(f)`) | A-eset | A-eset (változatlan) |
+| | | `len(parts) < 2` → skip (csonka sor) | **VAKFOLT** | A-eset: `"csonka_sor_tab_nelkul"` sor hozzáadva |
+| | | `parts[1] == strong` → számlálás | A-eset | A-eset (változatlan) |
+| | | CRLF a `rstrip`-ben | B-eset | B-eset (változatlan) |
+| `frazis_kereses_pozicio_alapon.py` | `load_verse_strongs` | fejléc-kihagyás | A-eset | A-eset (változatlan) |
+| | | `len(parts) < 2` → skip | **VAKFOLT** | A-eset: `"csonka_sor_tab_nelkul"` sor hozzáadva |
+| | | új `ref` vs. meglévő `ref`-hez fűzés | A-eset (a 2 valódi sor azonos igehelyre esik) | A-eset (változatlan, már eddig is lefedve) |
+| | | CRLF | B-eset | B-eset (változatlan) |
+| `f3_4_zaro_ellenoriz.py` | `olvas` | `#`-kommentsor levágása (IGAZ ág) | A-eset | A-eset (változatlan) |
+| | | `#`-kommentsor levágása (HAMIS ág, nincs komment) | **VAKFOLT, nem javítva** — a valódi `adat/elofordulasok.tsv` mindig `#`-kommenttel kezdődik, ez az ág a gyakorlatban nem fordul elő éles adaton | — |
+| | | `if s.strip()` → üres sor kihagyása | **VAKFOLT** | A-eset: 1 üres sor hozzáadva a végén |
+| | | CRLF | A-eset + B-eset | változatlan |
+| `tahot_zarojeles_phaseA_kivonat.py` | `process_raw_file` | `if not line: continue` (üres sor) | **VAKFOLT** | L1 |
+| | | `len(fields) < 12` → skip (csonka sor) | **VAKFOLT** | L2 |
+| | | `REF_RE` nem illeszkedik → skip | **VAKFOLT** | L3 |
+| | | `secondary = ... if chap2 else None`, HAMIS ág (nincs zárójel) | eredeti fixture (`"Gen.1.1#1=x"`) — DE a `dStrongs` mező (`"dStrongs"`) érvénytelen volt, ezért a sor korábban is kiesett, és a `parse_expanded()` `\`-alapú szétválasztása is hibás volt (a valódi függvény `=`-jellel választ) — a régi fixture emiatt SOHA nem termelt sort, még ezt az ágat sem igazolta ténylegesen | L4 (valódi `=`-formátumú `dStrongs`/`Expanded` mezőkkel, tényleg sort termel) |
+| | | **`secondary = ... if chap2 else None`, IGAZ ág (zárójeles másodlagos hivatkozás)** | **VAKFOLT — ezt rontotta el a mutációs próba, és a régi teszt nem vette észre** | **L5 (kötelező, `Gen.32.1(32.2)#2=x` formátum)** |
+| | | `clean_strong()` → `None` (Ketiv/Qere-szerű üres `dStrongs`) → `continue` | **VAKFOLT** | L6 |
+| | | `parse_expanded()` `"»"`-jeloles a glosszban | **VAKFOLT** | L7 |
+| | | több `/`-szegmens egy mezőben (`n = len(heb_segs) > 1`) | **VAKFOLT** | L8 |
+| | | CRLF a `rstrip`-ben, a ZÁRÓJELES (L5) soron | a régi B-eset az 1. (egyetlen) sort nézte, ami zárójel nélküli volt | B-eset mostantól kifejezetten az L5-öt (5. sor) nézi — ez az 1b pont által érintett kombináció |
+
+**Fixture-bővítés eredménye:** `naplok/KARB_crlf_teszt.py` — mind a négy szkript A-esete bővült a fenti vakfoltokkal; a tahot A-eset 8 sorra (L1–L8) bővült, a B-eset célzottan az L5 (zárójeles) sort nézi CRLF-en.
+
+**3. pont — pozitív futás** (a bővített fixture-rel, MUTÁCIÓ NÉLKÜL):
+
+```
+python naplok/KARB_crlf_teszt.py --regi-commit bf5427 --uj-commit bf5427
+```
+
+Eredmény: `EXIT=0`. Minden A/B-eset `EGYEZIK`/`RENDBEN`. A tahot A-eset eredménye mindkét sorvégen:
+`[('Gen.1.1', None, 'H0430', 'heber', 'translit', 'roshora', 'meaning', 'translation'), ('Gen.32.1', 'Gen.32.2', 'H7965', 'shalom', 'shalom', 'shalom', 'peace', 'peace'), ('Gen.3.1', None, 'H1121', 'heb3', 'translit3', 'root3', 'realgloss', 'translation3'), ('Gen.4.1', None, 'H1111', 'heb4a', 'tl4a', 'r1', 'g1', 'tr4a'), ('Gen.4.1', None, 'H2222', 'heb4b', 'tl4b', 'r2', 'g2', 'tr4b')]`
+— igazolja, hogy L1/L2/L3/L6 helyesen kiesik (5 elemű a lista a 8 bemeneti sorból), és L5 `secondary='Gen.32.2'`-t ad.
+
+(Megjegyzés: a chat üzenetében szereplő `--uj-commit 5b33f67` a korábbi, egyszer már felhasznált, majd törölt mutációs commit — azt a "pozitív" lépéshez újra felhasználni önellentmondás lett volna, mert az a kód MÉG MINDIG hibás. A pozitív kontrollhoz ehelyett a bővített fixture-t a MUTÁCIÓ NÉLKÜLI, aktuális kóddal (`bf5427` önmagával) hasonlítottam össze — ez az egyetlen módja annak, hogy a "pozitív" és a "mutációs" lépés ne mondjon ellent egymásnak.)
