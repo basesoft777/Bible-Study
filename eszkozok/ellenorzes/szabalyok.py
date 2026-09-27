@@ -215,6 +215,14 @@ def e4_teljes_scan_naplo_es_dontes(fajlok):
 
 CIMSOR_MINTA = re.compile(r'^#{2,3}\s')
 
+# Sor elejen (opcionalis whitespace utan) allo jeloles -- nem eleg, ha a
+# szoveg barhol csak *emliti* a jelolest (l. naplok/ELLENOR_CI_E5.md,
+# "Sulyos" talalat: sajat commit-uzenet leiro mondata veletlenul kikapcsolta
+# az E5-ot, mert a regi ellenorzes sima reszszoveg-keresest hasznalt).
+SZANDEKOS_JELOLES_MINTA = re.compile(
+    r'^\s*(TÖRLÉS-SZÁNDÉKOS|TORLES-SZANDEKOS):', re.MULTILINE
+)
+
 
 def _study_vagy_sablon_fajl(fajl, study_halmaz):
     """CI_ELLENORZES_BRIEF.md E5: a >30-sor-torles ag csak study- es
@@ -248,7 +256,7 @@ def e5_tartalomvesztes_or(base_ref, head_ref, commit_uzenet=''):
     except (subprocess.CalledProcessError, OSError):
         return talalatok
 
-    van_szandekos = 'TÖRLÉS-SZÁNDÉKOS:' in commit_uzenet or 'TORLES-SZANDEKOS:' in commit_uzenet
+    van_szandekos = bool(SZANDEKOS_JELOLES_MINTA.search(commit_uzenet))
     aktualis_fajl = None
     torolt_szam = 0
     torolt_cimsor = []
