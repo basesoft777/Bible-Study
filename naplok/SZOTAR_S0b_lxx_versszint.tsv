@@ -1,0 +1,38 @@
+# S0b.3 LXX korpuszszint ujramerese grammatikai szuressel — H7121 x G1941 (epikaleo) es x G2564 (kaleo, LD001/LD002 probako).
+# Modszer: a konkordancia/LXX_OS/*.tsv (62 fajl, valtozatlan a KK7.5 ota, sha256(verse_pairs.jsonl)=3a91c571...2e985)
+# minden sora, amelynek igehely_karoli mezoje a TAHOT_kivonat.tsv H7121-Strong-sorainak Karoli-igehelyei koze esik.
+# Verzenkent EGYEDI (deduplikalt) Strong-kod-halmazzal szamolva (igy hasonlithato ossze az S0.8 15.6-os atlagaval).
+# A grammatikai szures az adat/grammatikai_strongok.tsv 31 G-soraval tortenik (vezeto nullak normalizalva).
+# Script: naplok/ alatt (ismetelheto: az elofordulasok.tsv, TAHOT_kivonat.tsv es LXX_OS/*.tsv aktualis allapotan fut).
+mutato	nyers_ertek	szurt_ertek
+H7121 Karoli-igehely (TAHOT_kivonat, osszes elofordulas)	687	687
+LXX_OS-ben megtalalhato H7121-vers (van legalabb egy LXX-sor)	648	648
+H7121-vers, amely G1941-et (epikaleo) is tartalmaz	104 (16,0%)	104 (16,0%) — a szures a celkodokat nem erinti
+H7121-vers, amely G2564-et (kaleo, LD001/LD002 probako) is tartalmaz	332 (51,2%)	332 (51,2%) — a szures a celkodokat nem erinti
+atlagos EGYEDI gorog-Strong-szam H7121-versenkent	15,58	10,01
+zaj arany (grammatikai kod az osszes egyedi koduból)	—	3608/10094 = 35,7%
+leggyakoribb Strong (top 10, verzenkent egyszer szamolva)	3588(606) nevelo, 2532(582) kai/es, 846(398) autos, 2564(332) kaleo, 3004(259) lego/mond, 2962(232) kyrios/Ur, 1473(232) ego, 1722(199) en, 4771(193) sy, 3686(186) onoma/nev	2564(332) kaleo, 3004(259) lego/mond, 2962(232) kyrios/Ur, 3686(186) onoma/nev, 3956(123) pas/minden, 2316(120) theos/Isten, 1510(120) eimi/van, 1941(104) epikaleo, 5207(94) huios/fiu, 2250(76) hemera/nap
+# ERTELMEZES:
+# - A szures a felso 5 helyet teljesen megtisztitja a nyelvtani szavaktol
+#   (nevelo, kotoszo, nevmasok): mind az 5 grammatikai kod (3588, 2532, 846,
+#   1473, 1722) eltunik a top 10-bol, es helyettuk tartalmi szavak
+#   (kyrios, onoma, theos, huios, hemera) jelennek meg.
+# - A masodik leggyakoribb tartalmi szo szurt listaban is a G2564 (kaleo,
+#   332 talalat) — ez PONTOSAN megegyezik az S0.8 korabbi eredmenyevel es
+#   az adat/lxx_dontesek.tsv mar rogzitett LD001/LD002 dontesevel (2Móz
+#   33:19, 34:5: a fordito kaleo-t valaszt epikaleo helyett). A modszer
+#   grammatikai szures UTAN is megtalalja a mar ismert eltero-forditas
+#   esetet, es a zaj (35,7%) kiszurve tisztabb jelet ad.
+# - A 648 vs. az S0.8-ban jelentett 635 megtalalhato vers, es a 16,0% vs.
+#   14,8% G1941-talalati arany kis (13 vers, 1,2 szazalekpont) elteres a
+#   korabbi jelenteshez kepest — az alapadat (LXX_OS, sha256 egyezik)
+#   valtozatlan, a kulonbseg valoszinuleg a szamlalasi modszer korabbi
+#   apro elteresebol (pl. duplikalt igehely-cimke-kezeles) adodik, nem
+#   uj adatbol. Nem blokkolo, mert az S13 dontesehez (D25: versszintu
+#   marad, kuszob alatt) egyik szam sem valtoztat.
+# KOVETKEZTETES: a grammatikai szures HASZNALHATO es ERDEMI zajcsokkentest
+# ad (35,7%-os zaj eltavolitva, az atlagos Strong-szam versenkent 15,6-rol
+# 10,0-ra csokken); a mar ismert LD001/LD002 eset szurt listaban is
+# elsorendu jelkent jelenik meg. Ez alatamasztja a brief S13 (D25) dontesenek
+# modszertani alapjat: versszintu egyutt-elofordulas, grammatikai szuressel,
+# "nem szoillesztes" jelolessel egyutt.

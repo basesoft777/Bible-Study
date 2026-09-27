@@ -1,0 +1,64 @@
+# S0b.2 munkalap: unfoldingWord Translation Words (tW) lefedettseg-meres.
+# Forras: git.door43.org/unfoldingWord/en_tw, tag v91, commit ff5b3852c27c3a0d01b109e482eb26047dcd20e2,
+# tarball https://git.door43.org/unfoldingWord/en_tw/archive/v91.tar.gz,
+# sha256(en_tw_v91.tar.gz)=1d2b32da85b97ef4eac5965e40b4952673cdec89a2573d01427342a719bb15be,
+# letoltve: 2026-09-27, ideiglenes konyvtarba (nem a repoba). Licenc: CC BY-SA 4.0 (LICENSE.md, szo szerint
+# a jelentesben). A szocikkek "## Word Data:" szakasz "* Strong's: ..." soraban hordozzak a Strong-szamot,
+# vesszovel elvalasztva; heber 4-jegyu (padded), gorog 5-jegyu (4-jegyu alapszam + 1 ertelem-valtozat szamjegy,
+# tobbnyire 0). A hatokor a D28 szerinti 26 H-token + 13 G-token (adat/elofordulasok.tsv, 70eb29c).
+# Kulcs: strong.
+strong	nyelv	lefedve	alkonyvtar	fajl	hossz_karakter	tw_kod
+H0127	heber	igen	other	earth.md	1777	H0127
+H0430	heber	igen	kt	angel.md;anoint.md;falsegod.md;god.md;godly.md;holy.md;houseofgod.md;judge.md;lawofmoses.md;lordyahweh.md;peopleofgod.md;sonofgod.md;sonsofgod.md;yahwehofhosts.md	3652;2513;3939;5094;2648;4225;2406;3396;3708;1984;2020;3281;1481;1790	H0430
+H0430	heber	igen	other	judgeposition.md;mighty.md	1273;2117	H0430
+H0779	heber	igen	kt	curse.md	2470	H0779
+H0922	heber	nincs
+H1121	heber	igen	kt	sonofgod.md;sonofman.md;sonsofgod.md	3281;1975;1481	H1121
+H1121	heber	igen	other	descendant.md;family.md;heir.md;member.md	2016;1241;1276;983	H1121
+H2403	heber	igen	kt	purify.md;sin.md	2144;4716	H2403
+H2403	heber	igen	other	commit.md;sacrifice.md;sinoffering.md	793;4131;1209	H2403
+H2416	heber	igen	other	beast.md;bookoflife.md;creature.md	1670;1007;1194	H2416
+H2555	heber	igen	kt	justice.md;righteous.md	5096;5450	H2555
+H2555	heber	igen	other	wrong.md	1310	H2555
+H3548	heber	igen	kt	highpriest.md;priest.md	3764;3711	H3548
+H3548	heber	igen	other	prince.md;ruler.md	2096;1915	H3548
+H3678	heber	igen	kt	honor.md	1680	H3678
+H3678	heber	igen	other	throne.md	1129	H3678
+H4467	heber	igen	other	kingdom.md;reign.md;royal.md;ruler.md	3387;998;1273;1915	H4467
+H5303	heber	igen	other	giant.md	605	H5303
+H5315	heber	igen	kt	soul.md	1628	H5315
+H5315	heber	igen	other	creature.md;member.md	1194;983	H5315
+H6093	heber	nincs
+H6975	heber	igen	other	thorn.md	1288	H6975
+H7043	heber	igen	kt	curse.md	2470	H7043
+H7043	heber	igen	other	contempt.md;dishonor.md;shame.md	1276;1364;3961	H7043
+H7121	heber	igen	kt	call-speakloudly.md;call-toname.md;call-tosummon.md	1100;1318;1766	H7121
+H7121	heber	igen	other	cry.md;declare.md;praise.md;preach.md;renown.md	1209;1759;2250;4260;1451	H7121
+H7451	heber	igen	kt	demon.md;evil.md	2491;3635	H7451
+H7451	heber	igen	other	afflict.md;ruin.md;trouble.md;wrong.md	1932;1329;2141;1310	H7451
+H7496	heber	nincs
+H7497	heber	igen	other	giant.md	605	H7497
+H7585	heber	igen	kt	hades.md;hell.md	2076;2108	H7585
+H7585	heber	igen	other	pit.md;tomb.md	1047;2559	H7585
+H7843	heber	igen	other	corrupt.md;destroyer.md;devastated.md;lust.md;ruin.md;waste.md	1254;1646;1105;1195;1329;1197	H7843
+H8004	heber	nincs
+H8034	heber	igen	kt	pray.md	2681	H8034
+H8034	heber	igen	other	renown.md;report.md	1451;1021	H8034
+H8414	heber	igen	other	desert.md;ruin.md;vain.md;waste.md	1080;1329;1187;1197	H8414
+H8415	heber	nincs
+G0012	gorog	igen	other	abyss.md;pit.md	697;1047	G00120
+G0086	gorog	igen	kt	hades.md;hell.md	2076;2108	G00860
+G0282	gorog	nincs
+G0813	gorog	nincs
+G1311	gorog	igen	kt	perish.md	1615	G13110
+G1311	gorog	igen	other	corrupt.md;destroyer.md	1254;1646	G13110
+G1941	gorog	igen	kt	call-speakloudly.md	1100	G19410
+G1944	gorog	igen	kt	curse.md	2470	G19440
+G2671	gorog	igen	kt	curse.md	2470	G26710
+G4151	gorog	igen	kt	demon.md;evil.md;god.md;holyspirit.md;spirit.md	2491;3635;5094;3351;3476	G41510
+G5010	gorog	nincs
+G5351	gorog	igen	other	corrupt.md;destroyer.md	1254;1646	G53510
+G5356	gorog	igen	kt	perish.md	1615	G53560
+G5356	gorog	igen	other	corrupt.md;destroyer.md	1254;1646	G53560
+G5590	gorog	igen	kt	soul.md	1628	G55900
+G5590	gorog	igen	other	mind.md	1792	G55900
