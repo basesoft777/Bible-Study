@@ -1,6 +1,6 @@
 # FELADATOK.md — feladatkövető
 
-*v1 · 2026.09.27 · `main` = `4b9ae49` · Ez az egyetlen fájl, amit a chat egy új beszélgetés elején elolvas. A részletek a briefekben és a `NYITOTT_FELADATOK.md`-ben vannak; ide csak az állapot, a függés és a következő lépés kerül.*
+*v1 · 2026.09.27 · `main` = `9eb43fe` · Ez az egyetlen fájl, amit a chat egy új beszélgetés elején elolvas. A részletek a briefekben és a `NYITOTT_FELADATOK.md`-ben vannak; ide csak az állapot, a függés és a következő lépés kerül.*
 
 ## Alapelv: előbb az adatréteg, utána a render
 
@@ -12,10 +12,9 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Következő lépés | Hol |
 |---|---|---|---|---|---|---|
-| 3 | Fordítási próba eredményének beolvasztása | a fordító eszközök és a prompt v2 a main-ben | ✅ PR nyitva, CI zöld, ellenőrző ügynök lefutott — **2 ELTÉRÉS a P6 javaslatban (a formális döntést nem érinti)**, merge-re vár | — | **Te:** PR #62 áttekintése és merge-döntés (l. `naplok/ELLENOR_FP.md`) | PR [#62](https://github.com/basesoft777/Bible-Study/pull/62), ág `claude/forditas-pilot-brief-3afbbf-37c8ky` (`bc9895e`) |
 | 5 | Szótári adatréteg, 1. menet (SZOTAR S1) | a szerepmátrix hiányzó sorai adatként: fordítási gyorsítótár, terminológia, kiejtés-táblák, UBS DBH, TBESH, Girdlestone, Mounce | ⬜ nem futott | #1, #2, #4 | **Előbb:** brief-frissítés v1.2-re (FJ-eredmény: Macula küszöb alatt → S13 versszintű marad; KK; CI). Menet közben ⛔ jóváhagyásra vár tőled a Girdlestone-szöveg és 24 héber kiejtés-jelölt | `SZOTAR_BRIEF.md` v1.1 |
 | 6 | Új források 2. felmérése **helyi gépről** (FJ 2. menet) | döntés a Nave, a teljes KJV/ASV és a BSB importjáról; a Macula lefedettsége | ⬜ nincs brief | — (#5-tel párhuzamosan futhat) | Brief kell. Helyi gépen fusson, mert a cloud proxy blokkolt (N27, N29–N31) | `naplok/FORRAS_jelentes.md` (fejlécébe kell a „felülírva: N27–N29” megjegyzés) |
-| 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ nem futott | #3, #5 (terminológia, kiejtés) | **Te:** döntés a v3-ról („természetes hű” stílus a promptban) | `FORDITAS_ELES_THAYER_BRIEF.md` v2, csak chatben |
+| 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ nem futott | #3, #5 (terminológia, kiejtés) | **Te:** döntés a v3-ról („természetes hű” stílus a promptban) + költség újraszámítása a teljes Thayer_teljes.tsv hosszeloszlásából (a P6 ~30 USD-ja nem vezethető le, naiv skálázással ~62 USD; ELLENOR_FP.md 1. eltérés) | `FORDITAS_ELES_THAYER_BRIEF.md` v2, csak chatben |
 | 8 | LXX-fordítói döntések a 87 függő igehelyre | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ nem futott | #1, #6 (Macula-lefedettség) | Kutatói adatmunka; 58 gépi jelölt tájékoztatásul: `naplok/FORRAS_FJ1_lxx_jeloltek.tsv` | eredetileg a LEXIKON_LEZARAS 4c pontja |
 
 ## 2. fázis — render (csak az 1. fázis után)
@@ -60,6 +59,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 ## Kész (utolsó 2 hét)
 
+- Fordítási próba (FP0–FP-KOR2.9): fordító eszközök és a próba eredményei, ellenőrzés naplok/ELLENOR_FP.md, merge `9eb43fe` (PR #62, 09.27)
 - Szkript-karbantartás (KARBANTARTAS KB0–KB4), K1–K10 teljesül (K10 öt körben, ágleltárral, nulla-kimenet-őrrel és három mutációs/hiba-próbával: `naplok/ELLENOR_KARB.md`), merge `b8a418a` (09.27); mérőszkript-vakfoltok és -őrök javítása, PR #60 (`8bd1e40`), PR #61
 - Gépi ellenőrzés GitHubon (CI, #2), PR #57, merge `68eb348` (09.27); E5 javítás: PR #59
 - Károli-versszámok javítása a görög Ószövetségben (KK0–KK7.5), merge `4b9ae49` (09.27)
