@@ -40,6 +40,15 @@ A szkript HAROM reszben bizonyitja ezt:
      `newline=''`-vel (ahol a \\r valoban athaladhat, ha a hivo kod nem
      kezeli kulon) -- csak lelohely-lista, NEM ellenorzott, hogy ezek
      ténylegesen hibaznak-e, es NEM javitott.
+  D) NULLA-KIMENET OR (`nulla_kimenet_e()`): minden A-eset kimenete
+     ellenorzott, hogy nem ures/nulla-e ("0", "None", "[]", ""). Ha egy
+     eset 0/ures eredmenyt ad, a teszt BUKIK -- fuggetlenul attol, hogy a
+     regi es az uj oldal "egyezik"-e. Ez azert kell, mert a korabbi
+     tahot-fixture (hibas elvalaszto + ervenytelen dStrongs-placeholder
+     miatt) SOHA nem termelt sort, es a ket ures ("[]") eredmeny
+     egyezese hamisan zoldet adott -- l. naplok/ELLENOR_KARB.md "3. kor".
+     A tahot A-esetnel emellett a pontos sorszamot (5, az L1-L8
+     fixturebol) is ellenorzi.
 
 A negyedik szkriptnel (tahot_zarojeles_phaseA_kivonat.py) a nyers TAHOT
 input-fajlok (eszkozok/tahot/*.txt) NINCSENEK a repoban (kulso, nem
@@ -112,6 +121,16 @@ def python_futtat(worktree, kod, cwd_fajlok_ide=None):
     return r.stdout.strip()
 
 
+def nulla_kimenet_e(ertek_str):
+    """Ures/nulla-eredmeny or -- ha egy A-eset ezt adja, a fixture NEM
+    tesztel semmit (l. naplok/ELLENOR_KARB.md, "3. kor": a regi tahot-
+    fixture soha nem termelt sort, es a regi==uj egyezes emiatt hamisan
+    zoldet adott). Ezt a hibaosztalyt kulon, az egyezes-ellenorzestol
+    fuggetlenul kell elkapni, mert ket UGYANOLYAN ures eredmeny (pl.
+    "[]" == "[]") a sima egyezes-vizsgalaton simán athaladna."""
+    return ertek_str.strip() in ("0", "None", "[]", "", "()")
+
+
 def ir_ideiglenes(tartalom, sorveg, konyvtar):
     """Egy ideiglenes fajlt ir bytes-szinten a kert sorveggel (LF vagy CRLF),
     hogy a fajl VALODI CRLF-et tartalmazzon a lemezen (nem csak a python-
@@ -170,10 +189,15 @@ def main():
             ki_regi = python_futtat(KB2_REGI, kod % (p_regi, strong_a))
             ki_uj = python_futtat(KB2_UJ, kod % (p_uj, strong_a))
             egyezik = (ki_regi == ki_uj)
-            sikerult = sikerult and egyezik
+            nulla = nulla_kimenet_e(ki_uj)
+            sikerult = sikerult and egyezik and not nulla
+            if nulla:
+                print("HIBA: elofordulas_szamlalo.py A (%s) 0/ures eredmenyt adott -- "
+                      "a fixture nem tesztel semmit!" % sorveg_nev)
             sorok.append((
                 "elofordulas_szamlalo.py", "A: valodi TAGNT-sor, %s" % sorveg_nev,
-                "regi=%s | uj=%s | %s" % (ki_regi, ki_uj, "EGYEZIK" if egyezik else "ELTER"),
+                "regi=%s | uj=%s | %s%s" % (ki_regi, ki_uj, "EGYEZIK" if egyezik else "ELTER",
+                                             " | NULLA-OR: HIBA" if nulla else ""),
                 "valodi (konkordancia/TAGNT_kivonat.tsv 1. adatsora) + 1 csonka sor "
                 "(agleltar: len(parts)<2 skip); MEGJEGYZES: a "
                 "count_occurrences() a 2. mezot (Strong) nezi, NEM az utolso mezot, "
@@ -235,10 +259,15 @@ def main():
             ki_regi = python_futtat(KB2_REGI, kod % (p_regi, ref_b))
             ki_uj = python_futtat(KB2_UJ, kod % (p_uj, ref_b))
             egyezik = (ki_regi == ki_uj)
-            sikerult = sikerult and egyezik
+            nulla = nulla_kimenet_e(ki_uj)
+            sikerult = sikerult and egyezik and not nulla
+            if nulla:
+                print("HIBA: frazis_kereses_pozicio_alapon.py A (%s) 0/ures eredmenyt "
+                      "adott -- a fixture nem tesztel semmit!" % sorveg_nev)
             sorok.append((
                 "frazis_kereses_pozicio_alapon.py", "A: valodi TAHOT-sorok, %s" % sorveg_nev,
-                "regi=%s | uj=%s | %s" % (ki_regi, ki_uj, "EGYEZIK" if egyezik else "ELTER"),
+                "regi=%s | uj=%s | %s%s" % (ki_regi, ki_uj, "EGYEZIK" if egyezik else "ELTER",
+                                             " | NULLA-OR: HIBA" if nulla else ""),
                 "valodi (konkordancia/TAHOT_kivonat.tsv elso 2 adatsora) + 1 csonka sor "
                 "(agleltar: len(parts)<2 skip); MEGJEGYZES: a "
                 "load_verse_strongs() a 2. mezot (Strong) nezi, NEM az utolso mezot -- "
@@ -296,10 +325,15 @@ def main():
             ki_regi = utolso_eredmeny(ki_regi_teljes)
             ki_uj = utolso_eredmeny(ki_uj_teljes)
             egyezik = (ki_regi == ki_uj)
-            sikerult = sikerult and egyezik
+            nulla = nulla_kimenet_e(ki_uj)
+            sikerult = sikerult and egyezik and not nulla
+            if nulla:
+                print("HIBA: f3_4_zaro_ellenoriz.py A (%s) 0/ures eredmenyt adott -- "
+                      "a fixture nem tesztel semmit!" % sorveg_nev)
             sorok.append((
                 "f3_4_zaro_ellenoriz.py", "A: valodi elofordulasok.tsv-sor, %s" % sorveg_nev,
-                "regi==uj: %s" % ("EGYEZIK" if egyezik else "ELTER (l. reszletek stdout-on)"),
+                "regi==uj: %s%s" % ("EGYEZIK" if egyezik else "ELTER (l. reszletek stdout-on)",
+                                     " | NULLA-OR: HIBA" if nulla else ""),
                 "valodi (adat/elofordulasok.tsv 1. adatsora) + 1 ures sor "
                 "(agleltar: `if s.strip()` skip)",
             ))
@@ -399,10 +433,28 @@ def main():
             ki_regi = utolso_eredmeny(ki_regi_teljes)
             ki_uj = utolso_eredmeny(ki_uj_teljes)
             egyezik = (ki_regi == ki_uj)
-            sikerult = sikerult and egyezik
+            nulla = nulla_kimenet_e(ki_uj)
+            # A 8 sorbol (L1-L8) pontosan 5 sornak KELL keletkeznie (L1/L2/L3/L6
+            # kiesik, L4+L5+L7 1-1 sort ad, L8 2-t) -- ha ez a szam eltér, az
+            # vagy a fixture, vagy a fuggveny regressziojat jelzi.
+            db_regi = ki_regi.count("('Gen.") if ki_regi.startswith("[") else None
+            db_uj = ki_uj.count("('Gen.") if ki_uj.startswith("[") else None
+            VART_SORSZAM = 5
+            elemszam_hibas = (db_uj != VART_SORSZAM)
+            sikerult = sikerult and egyezik and not nulla and not elemszam_hibas
+            if nulla:
+                print("HIBA: tahot_zarojeles_phaseA_kivonat.py A (%s) 0/ures eredmenyt "
+                      "adott -- a fixture nem tesztel semmit!" % sorveg_nev)
+            if elemszam_hibas:
+                print("HIBA: tahot_zarojeles_phaseA_kivonat.py A (%s) %s sort adott, "
+                      "%d volt varva (L4,L5,L7 1-1 sor, L8 2 sor)"
+                      % (sorveg_nev, db_uj, VART_SORSZAM))
             sorok.append((
                 "tahot_zarojeles_phaseA_kivonat.py", "A: 8-soros agleltar-fixture (L1-L8), %s" % sorveg_nev,
-                "regi==uj: %s | eredmeny: %s" % ("EGYEZIK" if egyezik else "ELTER", ki_uj),
+                "regi==uj: %s | sorszam=%s (vart %d)%s | eredmeny: %s" % (
+                    "EGYEZIK" if egyezik else "ELTER", db_uj, VART_SORSZAM,
+                    " | NULLA-OR: HIBA" if nulla else (" | SORSZAM-OR: HIBA" if elemszam_hibas else ""),
+                    ki_uj),
                 "MANUAL/FIXTURE -- a nyers TAHOT-fajlok (eszkozok/tahot/*.txt) nincsenek a repoban. "
                 "L1 ures sor, L2 csonka sor, L3 REF_RE-hibas ref, L4 zarojel nelkuli sor, "
                 "L5 ZAROJELES masodlagos hivatkozas (a korabban felfedett vakfolt), "

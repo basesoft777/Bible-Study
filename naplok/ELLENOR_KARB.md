@@ -186,3 +186,72 @@ Az eldobható ág törölve (`git branch -D throwaway-mutacio-proba-2`), a mutá
 - Ágleltár: fent, a "3. kör" táblázatában.
 
 **A feltételek teljesülnek — a #60 mergelhető.**
+
+---
+
+## 4. kör — a #60 mergelt állapotának ellenőrzése + nulla-kimenet-őr (a chat kérésére, #60 merge után)
+
+**1. pont — javított futás a mergelt állapoton:**
+
+```
+python naplok/KARB_crlf_teszt.py --regi-commit bf5427 --uj-commit 8bd1e40
+```
+
+Eredmény: **EXIT=0**, minden A/B-eset `EGYEZIK`/`RENDBEN`. A `8bd1e40` a #60 merge-commitja (tartalmazza a 3. körben bővített fixture-t); a `bf5427` a #60 ág egy korábbi, a fixture-bővítés ELŐTTI állapota. Mivel a `eszkozok/*.py` tényleges kódja a két commit között nem változott (csak a `naplok/KARB_crlf_teszt.py` bővült), ez a futás valóban azt igazolja, amit az előző, `bf5427`↔`bf5427` önösszevetés csak közvetetten sugallt.
+
+**A korábbi `bf5427`↔`bf5427` futás érvénytelen volt**, mert két azonos commitot hasonlított össze — ez csak azt bizonyította, hogy a teszt determinisztikus, nem azt, hogy a #60-cal ténylegesen mergelt kód (`8bd1e40`) helyes a #58 kiindulásához (`bf5427`) képest. A most elvégzett `bf5427↔8bd1e40` futás ezt a hiányt pótolja, és szintén zöld.
+
+**4. pont — nulla-kimenet-őr bevezetve, a mutációs futást is megismételve vele:**
+
+A `naplok/KARB_crlf_teszt.py`-ba bekerült a `nulla_kimenet_e()` ellenőrzés: minden A-eset kimenete ellenőrzött, hogy nem "0"/"None"/"[]"/"" — ha igen, a teszt a `regi==uj` egyezéstől FÜGGETLENÜL bukik (ez pontosan azt a hibaosztályt fedezi, ami miatt a 2. körben a mutáció észrevétlen maradt: a régi tahot-fixture soha nem termelt sort, és két üres eredmény egyezése hamisan zöldet adott). A tahot A-esetnél emellett a pontos várt sorszámot (5) is ellenőrzi.
+
+Mutációs futás az őrrel (friss eldobható ág, `throwaway-mutacio-proba-3`, mutációs commit `63253cf`, alap `8bd1e40`, mindkettő nem push-olt, azóta törölve):
+
+```
+python naplok/KARB_crlf_teszt.py --regi-commit 8bd1e40 --uj-commit 63253cf
+```
+
+Eredmény: **EXIT=1**. A tahot A-eset `regi==uj: ELTER | sorszam=5 (vart 5)` — a sorszám itt nem tér el (a mutáció nem sort veszít el, csak a `secondary` mezőt írja felül), tehát ebben a konkrét mutációban az egyenlőség-ellenőrzés kapja el a hibát, a nulla-kimenet-őr pedig a JÖVŐBELI, "csendben semmit sem tesztel" típusú regressziók ellen való második védelmi vonal.
+
+Az eldobható ág törölve, a `naplok/KARB_KB2_crlf.tsv` a mutáció utáni futásból visszaállítva a `bf5427↔8bd1e40` (pozitív) futás eredményére.
+
+**Következtetés:** a #60 mergelt állapota (`8bd1e40`) helyes, a nulla-kimenet-őr bevezetve és élesben tesztelve (pozitív + mutációs futással is). Ez a kör NEM kért új merge-et — a `naplok/KARB_crlf_teszt.py` és a `naplok/ELLENOR_KARB.md` módosítása egy új, kis PR-ben megy, amit a felhasználó mergel.
+
+---
+
+## 5. kör — az őr saját próbája (a chat kérésére, a #61 merge előtt)
+
+Mindkét próba a `naplok/KARB_crlf_teszt.py` tahot-fixture-jét rontja el (nem a forráskódot), egy-egy friss eldobható ágon, majd `--regi-commit 8bd1e40 --uj-commit 8bd1e40` (ÖNÖSSZEVETÉS — így a `regi==uj` egyezés-vizsgálat triviálisan igaz marad, és KIZÁRÓLAG az őr bukása jelezheti a hibát).
+
+**1. próba — 0 sort adó fixture** (a régi, hibás `\`-elválasztó és érvénytelen `dStrongs`-placeholder visszaállítva L4/L5/L7/L8-ban; ág: `throwaway-fixture-0sor-2`, commit `73f939d`, nem push-olt, törölve):
+
+```
+python naplok/KARB_crlf_teszt.py --regi-commit 8bd1e40 --uj-commit 8bd1e40
+```
+
+Kimenet (kivonat):
+```
+HIBA: tahot_zarojeles_phaseA_kivonat.py A (LF) 0/ures eredmenyt adott -- a fixture nem tesztel semmit!
+HIBA: tahot_zarojeles_phaseA_kivonat.py A (LF) 0 sort adott, 5 volt varva (L4,L5,L7 1-1 sor, L8 2 sor)
+...
+tahot_zarojeles_phaseA_kivonat.py	A: ...	regi==uj: EGYEZIK | sorszam=0 (vart 5) | NULLA-OR: HIBA | eredmeny: []	...
+```
+**EXIT=1.** A `regi==uj: EGYEZIK` (mindkét oldal ugyanaz a hibás fixture) — kizárólag a `NULLA-OR: HIBA` (az őr) buktatta a tesztet, nem az egyezés-vizsgálat.
+
+**2. próba — 4 sort adó fixture** (csak L5 `dStrongs` mezője érvénytelenítve `"dStrongs"`-ra, L4/L7/L8 változatlan, valódi marad; ág: `throwaway-fixture-4sor`, commit `e315baa`, nem push-olt, törölve):
+
+```
+python naplok/KARB_crlf_teszt.py --regi-commit 8bd1e40 --uj-commit 8bd1e40
+```
+
+Kimenet (kivonat):
+```
+HIBA: tahot_zarojeles_phaseA_kivonat.py A (LF) 4 sort adott, 5 volt varva (L4,L5,L7 1-1 sor, L8 2 sor)
+...
+tahot_zarojeles_phaseA_kivonat.py	A: ...	regi==uj: EGYEZIK | sorszam=4 (vart 5) | SORSZAM-OR: HIBA | eredmeny: [('Gen.1.1', None, 'H0430', ...), ('Gen.3.1', None, 'H1121', ...), ('Gen.4.1', None, 'H1111', ...), ('Gen.4.1', None, 'H2222', ...)]	...
+```
+**EXIT=1.** Ismét `regi==uj: EGYEZIK`, kizárólag a `SORSZAM-OR: HIBA` (a pontos elemszám-ellenőrzés) buktatta a tesztet.
+
+**Mindkét próba a vártnak megfelelően bukott, és mindkettőnél az ŐR (nem az egyezés-vizsgálat) jelzett.** Mindkét eldobható ág törölve, a `naplok/KARB_crlf_teszt.py` és a `naplok/KARB_KB2_crlf.tsv` visszaállítva a helyes (`8bd1e40`-nak megfelelő) állapotra.
+
+**A #61 mergelhető.**
