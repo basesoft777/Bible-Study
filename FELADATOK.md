@@ -1,6 +1,6 @@
 # FELADATOK.md — feladatkövető
 
-*v1 · 2026.09.27 · `main` = `72b200c` · Ez az egyetlen fájl, amit a chat egy új beszélgetés elején elolvas. A részletek a briefekben és a `NYITOTT_FELADATOK.md`-ben vannak; ide csak az állapot, a függés és a következő lépés kerül.*
+*v1 · 2026.09.27 · `main` = `4b9ae49` · Ez az egyetlen fájl, amit a chat egy új beszélgetés elején elolvas. A részletek a briefekben és a `NYITOTT_FELADATOK.md`-ben vannak; ide csak az állapot, a függés és a következő lépés kerül.*
 
 ## Alapelv: előbb az adatréteg, utána a render
 
@@ -12,7 +12,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Következő lépés | Hol |
 |---|---|---|---|---|---|---|
-| 2 | Gépi ellenőrzés GitHubon (CI) | minden PR-t gép ellenőriz; a chatnek nem kell a 92 MB-os letöltés | ⏸ az első lépés (CI.0) kész, döntésre vár | — | **Te:** a D8–D15 jóváhagyást másold be a várakozó Code-sessionbe; utána CI.1–CI.5, ellenőrzés, merge | ág `claude/ci-ellenorzes-ci0-ci5-epcjoo` (`8aad628`), `CI_ELLENORZES_BRIEF.md` |
+| 2 | Gépi ellenőrzés GitHubon (CI) | minden PR-t gép ellenőriz; a chatnek nem kell a 92 MB-os letöltés | ⏸ CI.0–CI.5 kész, ellenőrzésre vár | — | **Te:** indítsd el a `fuggetlen-ellenor` ügynököt egy új Code-sessionben; állítsd be a `main` branch protection-t (`naplok/CI_beallitas.md`); utána PR + merge | ág `claude/ci-ellenorzes-ci0-ci5-epcjoo` (`c878f16`), `CI_ELLENORZES_BRIEF.md` |
 | 3 | Fordítási próba eredményének beolvasztása | a fordító eszközök és a prompt v2 a main-ben | ✅ lefutott, **még nincs ellenőrizve** | — | Független ellenőrzés (a CI után a CI + az ellenőrző ügynök), majd merge | ág `claude/forditas-pilot-brief-3afbbf-37c8ky` (`5873918`) |
 | 4 | Szkript-karbantartás (KARBANTARTAS 1a–1c) | egységes parancssor, CRLF-tűrés, 26 Strong-szám nullázása (N21) | ⬜ nem futott | #2 | A briefet a repóba kell tenni, majd futtatni | brief csak chatben |
 | 5 | Szótári adatréteg, 1. menet (SZOTAR S1) | a szerepmátrix hiányzó sorai adatként: fordítási gyorsítótár, terminológia, kiejtés-táblák, UBS DBH, TBESH, Girdlestone, Mounce | ⬜ nem futott | #1, #2, #4 | **Előbb:** brief-frissítés v1.2-re (FJ-eredmény: Macula küszöb alatt → S13 versszintű marad; KK; CI). Menet közben ⛔ jóváhagyásra vár tőled a Girdlestone-szöveg és 24 héber kiejtés-jelölt | `SZOTAR_BRIEF.md` v1.1 |
@@ -61,7 +61,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 ## Kész (utolsó 2 hét)
 
-- Károli-versszámok javítása a görög Ószövetségben (KK0–KK7.5), merge (ez a commit) (09.27)
+- Károli-versszámok javítása a görög Ószövetségben (KK0–KK7.5), merge `4b9ae49` (09.27)
 - Forrásjelöltek 1. menete (FJ0–FJ5), merge `ec7aebc`, zárás `72b200c` (09.25)
 - TEREMT-002 1–2. lépés, merge `15c338e` (09.25)
 - Szótári brief v1.1 (Cremer kivezetve), merge `a6783e4` (09.25)
