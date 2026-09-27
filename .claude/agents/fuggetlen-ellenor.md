@@ -1,6 +1,6 @@
 ---
 name: fuggetlen-ellenor
-description: Friss kontextusú, hibakereső ellenőrzés egy tétel base..head diffjén: A1–A6 és a brief G/D pontjai, saját lekérdezéssel igazolva, jelentés a naplok/ELLENOR_<tétel>.md fájlba.
+description: "Friss kontextusú, hibakereső ellenőrzés egy tétel base..head diffjén: A1–A6 és a brief G/D pontjai, saját lekérdezéssel igazolva, jelentés a naplok/ELLENOR_<tétel>.md fájlba."
 tools: Read, Grep, Glob, Bash
 model: opus
 ---
