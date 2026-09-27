@@ -31,3 +31,19 @@ Bemenet: csak a brief, a commit-tartomány és a CI-jelentés (a CI a `83172cb` 
 
 1. **0.4 motívum-azonosítás hibás** (`SZOTAR_BRIEF.md:48`, `naplok/SZOTAR_S0b_jelentes.md:41`): a két új héber token (H8414 *tohu*, H0922 *bohu*) igehelye a `TEREMT-002` motívumhoz tartozik, a dokumentumok tévesen `TEREMT-001`-ként azonosítják. Ez a D28 döntés indoklásának saját gyökér-oka, tehát nem mellékes részlet.
 2. **"8 motívum" elavult darabszám** (több hely a briefben és a jelentésben): a T2.2 commit (`ed79575`) — ugyanaz, amely a token-bővítést okozta — egy 9. motívumot (`TEREMT-002`) is bevezetett `70eb29c` előtt; a brief S1.7/S3/§4 célszámai és a D28-magyarázat mégis "8 motívum"-ra hivatkoznak. Mivel a szótári hatókör-szabály (D28) éppen a motívum-előfordulási halmazt definiálja mércének, ez a pontatlanság a következő menet (S1.7 héber kiejtés-jelöltek, 26/26 cél) dokumentációs alapját érinti, bár a tényleges 26-os tokenszám maga helyesen van kiszámolva és reprodukálható.
+
+---
+
+## Kiegészítés: 83172cb..864e52c
+
+**Tartomány:** `83172cb..864e52c` · a fenti ellenőrzés két javító commitjára (a TEREMT-002 azonosítás javítása, és az új D29 döntés).
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| **1. `f7cbc65` javítás valódisága** | OK | `SZOTAR_BRIEF.md:48,84,124` (jelenlegi állapot) | `git show f7cbc65 -- SZOTAR_BRIEF.md` és `git show f7cbc65 -- naplok/SZOTAR_S0b_jelentes.md`: mindkét fájlban kizárólag a `TEREMT-001`→`TEREMT-002` azonosítás és a "8 motívum"→"9 motívum"/"a 8 lexikon-motívum + TEREMT-002" megfogalmazás változott; a token-alapú számok (**H 26, G 13**) a diffben szó szerint változatlanul megjelennek (`0.4` sor: "H 26, G 13" mindkét verzióban). Saját ellenőrzés: `grep -n "H8414\|H0922" adat/elofordulasok.tsv` → mind a 3 érintett sor (1Móz 1:2, Jer 4:23, Ézs 34:11) `TEREMT-002` motívum-azonosítóval kezdődik — a javítás ténylegesen helyes, a korábbi `TEREMT-001`-hivatkozás volt a hiba. |
+| **2. `864e52c` (D29) tartalmi konzisztenciája** | OK | `SZOTAR_BRIEF.md:301`; `FELADATOK.md:27` | `git show 864e52c`: a `SZOTAR_BRIEF.md`-ben egyetlen új sor került be a döntéstáblázatba (`D29`), a meglévő `D28` sor és a körülötte lévő szöveg (címsorok, `*A v1.2 → v1.3 változásai*` lábjegyzet) változatlan. `git diff 83172cb..864e52c -- FELADATOK.md` → egyetlen módosított sor, a `#12` sor `Megjegyzés` oszlopa ("—" → "A tohu/bohu szótári adata az S1-ben készül (D29)."); más sor (más `#` tétel, fejléc, "Takarítás" szakasz) nem érintett. |
+| **3. Címsor-épség (E5 relevancia)** | OK | `SZOTAR_BRIEF.md` | `git diff 83172cb..864e52c -- SZOTAR_BRIEF.md \| grep -E "^-#{2,3} "` → üres kimenet, nincs törölt `##`/`###` sor. |
+| **4. Lokális CI-futtatás** | OK | — | `python eszkozok/ellenorzes/futtat.py --valtozott SZOTAR_BRIEF.md FELADATOK.md --diff-alap 83172cb --diff-fej 864e52c --pr-cim teszt --commit-uzenet-fajl /dev/null` → **E2–E16 mind 0 találat**, összhangban a leírt zöld GitHub CI-vel (`864e52c` fejjel). |
+| **5. D29 belső konzisztenciája a D28-cal és a §0 0.4-gyel** | OK | `SZOTAR_BRIEF.md:48,300,301` | A D29 szövege ("az S1 így 26 héber tokenre gyűjt, 8 lexikon-motívum + TEREMT-002") megegyezik a (már `f7cbc65`-ben javított) 0.4 sor és a D28 sor jelenlegi állításával (26 H, 9 motívum-ID = 8 lexikon-motívum + TEREMT-002); nincs ellentmondás — a D29 csupán megerősíti, hogy a D28 hatókör-szabály által bevont 2 tokent (H8414, H0922) a felhasználó véglegesen benn tartja, nem vonja ki. |
+
+A fenti öt pont egyikén sem találtam ELTÉRÉS-t vagy NEM ELLENŐRIZHETŐ tételt a `83172cb..864e52c` szűk tartományon: a `f7cbc65` valódi javítás (a `TEREMT-002` azonosítás saját táblaellenőrzéssel megerősítve, a token-számok nem változtak), a `864e52c` (D29) pontosan egy döntéstáblázat-sort és egy `FELADATOK.md` megjegyzést vitt be, címsor nem sérült, és a lokális CI-futtatás minden szabályon 0 találatot adott.
