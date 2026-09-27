@@ -1,0 +1,7 @@
+eset	fajl	varakozas	teljesult
+A	motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md	piros, "torolt sor" uzenet	True
+B	motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md	zold (sor elejen jeloles)	True
+B2	motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md	piros (csak emlitve, nem sor elejen -- regresszio a PR sajat hibajara)	True
+C	eszkozok/lekerdez.py	zold (E5 nem vonatkozik)	True
+D	sablonok/1_PaRDeS_alap_sablon.md	piros (sablonfajl)	True
+E	motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md	piros (teljes torles + referencia-eltavolitas, union-fix)	True

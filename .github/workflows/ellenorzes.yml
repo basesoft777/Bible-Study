@@ -49,8 +49,13 @@ jobs:
           echo "head=$HEAD" >> "$GITHUB_OUTPUT"
           if [ -n "$BASE" ]; then
             git diff --name-only "$BASE" "$HEAD" > valtozott_fajlok.txt
+            # E5: a PR/push osszes commit-uzenete, osszefuzve, fajlba --
+            # ekezetes/idezojeles szoveg miatt fajlon at, nem shell-argumentumkent
+            # (CLAUDE.md "Shell" szakasz).
+            git log --format=%B "$BASE".."$HEAD" > commit_uzenetek.txt
           else
             : > valtozott_fajlok.txt
+            : > commit_uzenetek.txt
           fi
           echo "Valtozott fajlok:"
           cat valtozott_fajlok.txt
@@ -69,6 +74,7 @@ jobs:
               --diff-alap "$DIFF_ALAP" \
               --diff-fej "$DIFF_FEJ" \
               --pr-cim "$PR_CIM" \
+              --commit-uzenet-fajl commit_uzenetek.txt \
               > e2e16_jelentes.md
             KILEPES=$?
           else
