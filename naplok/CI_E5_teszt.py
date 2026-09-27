@@ -2,19 +2,29 @@
 # -*- coding: utf-8 -*-
 """
 CI_E5_teszt.py -- az E5-javitas (szabalyok.py: a >30-sor-torles ag csak
-study-/sablonfajlra vonatkozik) harom esetes ellenorzese, ideiglenes git
-worktree-ben, a valodi e5_tartalomvesztes_or()-t hasznalva:
+study-/sablonfajlra vonatkozik, es a "TÖRLÉS-SZÁNDÉKOS:" jelolesnek sor
+elejen kell allnia, nem eleg, ha a commit-uzenet csak *emliti*) negyesetes
+ellenorzese, ideiglenes git worktree-ben, a valodi e5_tartalomvesztes_or()-t
+hasznalva.
 
-  A) study-fajlbol >30 sor torlese, jeloles nelkul -- E5 piros varva
-  B) ugyanaz, de a commit-uzenetben "TÖRLÉS-SZÁNDÉKOS:" -- E5 zold varva
-  C) eszkozok/*.py fajlbol >30 sor torlese, jeloles nelkul -- E5 zold varva
+Minden eset szintetikus (fejlec-mentes, sima szoveges) tartalommal dolgozik
+egy-egy valodi study-/sablon-/eszkozok-fajl helyen, hogy a torolt-sor-szam
+ag a cimsor-agtol fuggetlenul, elkulonitve legyen tesztelheto:
+
+  A) study-fajlbol 35 sima sor torlese, jeloles nelkul -- piros varva
+     (a `%d torolt sor` uzenet, NEM a cimsor-uzenet)
+  B) ugyanaz, de a commit-uzenetben sor elejen "TÖRLÉS-SZÁNDÉKOS:" -- zold
+  B2) a jelenlegi PR sajat hibajanak regressziós tesztje: ha a jelzes csak
+      *emlitve* van a szoveg kozepen (nem sor elejen), NEM szamit
+      szandekosnak -- piros varva
+  C) eszkozok/*.py fajlbol 35 sor torlese, jeloles nelkul -- zold varva
      (a szabaly nem vonatkozik ra, mert nem study-/sablonfajl)
+  D) sablonok/ alatti fajlbol 35 sor torlese, jeloles nelkul -- piros varva
 
-Eredmeny: naplok/CI_E5_teszt.tsv. Kilepesi kod: 0, ha mindharom eset a
-vart eredmenyt adta, kulonben 1.
+Eredmeny: naplok/CI_E5_teszt.tsv. Kilepesi kod: 0, ha minden eset a vart
+eredmenyt adta, kulonben 1.
 """
 
-import importlib
 import os
 import subprocess
 import sys
@@ -26,6 +36,9 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+SZINTETIKUS_SOR_SZAM = 60
+TOROLT_SOR_SZAM = 35  # > 30, es nem tartalmaz "##"/"###" cimsort
 
 
 def sh(args, cwd=None, check=True):
@@ -45,6 +58,28 @@ def git_commit(wt, uzenet):
     return sh(['git', 'rev-parse', 'HEAD'], cwd=wt).stdout.strip()
 
 
+def szintetikus_tartalom_ir(path, sorszam=SZINTETIKUS_SOR_SZAM):
+    """Fejlec-mentes (nincs '#' a sor elejen), sima szoveges tartalom --
+    igy a >30-sor-torles ag a cimsor-agtol fuggetlenul tesztelheto."""
+    with open(path, 'w', encoding='utf-8', newline='\n') as f:
+        for i in range(sorszam):
+            f.write('teszt-sor %d -- sima szoveg, nem cimsor\n' % i)
+
+
+def sor_torles_commit(wt, base, rel_path, uzenet):
+    """A `base` commitrol elagazva (detached HEAD) egyetlen fajlbol torol
+    sorokat, es commitol -- igy az esetek fuggetlenek egymastol, a
+    base..head diff nem tartalmazza a tobbi eset valtoztatasat."""
+    sh(['git', 'checkout', '--detach', base], cwd=wt)
+    path = os.path.join(wt, rel_path)
+    with open(path, encoding='utf-8') as f:
+        sorok = f.readlines()
+    with open(path, 'w', encoding='utf-8', newline='\n') as f:
+        f.writelines(sorok[TOROLT_SOR_SZAM:])
+    sh(['git', 'add', rel_path], cwd=wt)
+    return git_commit(wt, uzenet)
+
+
 def main():
     wt = tempfile.mkdtemp(prefix='ci_e5_teszt_')
     branch = 'ci-e5-teszt-tmp'
@@ -61,54 +96,72 @@ def main():
 
         study_halmaz = SFS.study_fajlok_halmaza(adat_dir=os.path.join(wt, 'adat'))
         study_fajl = sorted(study_halmaz)[0]
-        study_path = os.path.join(wt, study_fajl)
+        py_rel = 'eszkozok/lekerdez.py'
+        sablon_rel = 'sablonok/1_PaRDeS_alap_sablon.md'
+        if not os.path.isfile(os.path.join(wt, sablon_rel)):
+            raise RuntimeError('%s nem letezik a worktree-ben' % sablon_rel)
 
-        # --- A + B eset: study-fajlbol >30 sor torles ---
-        with open(study_path, encoding='utf-8') as f:
-            eredeti_sorok = f.readlines()
-        if len(eredeti_sorok) < 40:
-            raise RuntimeError(
-                '%s csak %d sor -- nem alkalmas a >30-soros torles tesztre'
-                % (study_fajl, len(eredeti_sorok))
-            )
-        with open(study_path, 'w', encoding='utf-8', newline='\n') as f:
-            f.writelines(eredeti_sorok[40:])
-        sh(['git', 'add', study_fajl], cwd=wt)
-        base_ab = sh(['git', 'rev-parse', 'HEAD'], cwd=wt).stdout.strip()
-        head_ab = git_commit(wt, 'A/B eset: study-fajl torles jeloles nelkul')
+        # --- alap-commit: szintetikus, fejlec-mentes tartalom mindharom
+        #     erintett fajlban, hogy a torolt-sor-szam ag a cimsor-agtol
+        #     fuggetlenul tesztelheto legyen ---
+        for rel in (study_fajl, py_rel, sablon_rel):
+            szintetikus_tartalom_ir(os.path.join(wt, rel))
+            sh(['git', 'add', rel], cwd=wt)
+        base = git_commit(wt, 'teszt alap: szintetikus, fejlec-mentes tartalom')
 
-        talalatok_a = SZ.e5_tartalomvesztes_or(base_ab, head_ab, commit_uzenet='')
-        ok_a = len(talalatok_a) > 0
-        sorok.append(('A', study_fajl, 'piros (talalat van)', str(ok_a)))
+        # --- A/B/B2 eset: study-fajlbol 35 sor torles ---
+        head_study = sor_torles_commit(
+            wt, base, study_fajl, 'A/B/B2 eset: study-fajl torles jeloles nelkul'
+        )
+
+        talalatok_a = SZ.e5_tartalomvesztes_or(base, head_study, commit_uzenet='')
+        ok_a = len(talalatok_a) > 0 and all(
+            'torolt sor' in t.reszlet and 'cimsor' not in t.reszlet
+            for t in talalatok_a
+        )
+        sorok.append(('A', study_fajl, 'piros, "torolt sor" uzenet', str(ok_a)))
         sikerult = sikerult and ok_a
 
         talalatok_b = SZ.e5_tartalomvesztes_or(
-            base_ab, head_ab, commit_uzenet='TÖRLÉS-SZÁNDÉKOS: teszt A/B eset'
+            base, head_study,
+            commit_uzenet='TÖRLÉS-SZÁNDÉKOS: teszt A/B eset\n'
         )
         ok_b = len(talalatok_b) == 0
-        sorok.append(('B', study_fajl, 'zold (nincs talalat)', str(ok_b)))
+        sorok.append(('B', study_fajl, 'zold (sor elejen jeloles)', str(ok_b)))
         sikerult = sikerult and ok_b
 
-        # --- C eset: eszkozok/*.py fajlbol >30 sor torles ---
-        py_rel = 'eszkozok/lekerdez.py'
-        py_path = os.path.join(wt, py_rel)
-        with open(py_path, encoding='utf-8') as f:
-            py_sorok = f.readlines()
-        if len(py_sorok) < 40:
-            raise RuntimeError(
-                '%s csak %d sor -- nem alkalmas a >30-soros torles tesztre'
-                % (py_rel, len(py_sorok))
-            )
-        with open(py_path, 'w', encoding='utf-8', newline='\n') as f:
-            f.writelines(py_sorok[35:])
-        sh(['git', 'add', py_rel], cwd=wt)
-        base_c = head_ab
-        head_c = git_commit(wt, 'C eset: eszkozok/*.py torles jeloles nelkul')
+        talalatok_b2 = SZ.e5_tartalomvesztes_or(
+            base, head_study,
+            commit_uzenet=(
+                'A commit leirja, hogy a "TÖRLÉS-SZÁNDÉKOS:" jeloles '
+                'mit csinal, de nem sor elejen all.'
+            ),
+        )
+        ok_b2 = len(talalatok_b2) > 0
+        sorok.append((
+            'B2', study_fajl,
+            'piros (csak emlitve, nem sor elejen -- regresszio a PR sajat hibajara)',
+            str(ok_b2),
+        ))
+        sikerult = sikerult and ok_b2
 
-        talalatok_c = SZ.e5_tartalomvesztes_or(base_c, head_c, commit_uzenet='')
+        # --- C eset: eszkozok/*.py fajlbol 35 sor torles ---
+        head_py = sor_torles_commit(
+            wt, base, py_rel, 'C eset: eszkozok/*.py torles jeloles nelkul'
+        )
+        talalatok_c = SZ.e5_tartalomvesztes_or(base, head_py, commit_uzenet='')
         ok_c = len(talalatok_c) == 0
         sorok.append(('C', py_rel, 'zold (E5 nem vonatkozik)', str(ok_c)))
         sikerult = sikerult and ok_c
+
+        # --- D eset: sablonok/ alatti fajlbol 35 sor torles ---
+        head_sablon = sor_torles_commit(
+            wt, base, sablon_rel, 'D eset: sablonfajl torles jeloles nelkul'
+        )
+        talalatok_d = SZ.e5_tartalomvesztes_or(base, head_sablon, commit_uzenet='')
+        ok_d = len(talalatok_d) > 0
+        sorok.append(('D', sablon_rel, 'piros (sablonfajl)', str(ok_d)))
+        sikerult = sikerult and ok_d
 
         fejlec = ['eset', 'fajl', 'varakozas', 'teljesult']
         sorszovegek = ['\t'.join(fejlec)]
