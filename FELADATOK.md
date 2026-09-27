@@ -13,7 +13,6 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Következő lépés | Hol |
 |---|---|---|---|---|---|---|
 | 3 | Fordítási próba eredményének beolvasztása | a fordító eszközök és a prompt v2 a main-ben | ✅ lefutott, **még nincs ellenőrizve** | — | Független ellenőrzés (a CI után a CI + az ellenőrző ügynök), majd merge | ág `claude/forditas-pilot-brief-3afbbf-37c8ky` (`5873918`) |
-| 4 | Szkript-karbantartás (KARBANTARTAS 1a–1c) | egységes parancssor, CRLF-tűrés, 26 Strong-szám nullázása (N21) | ✅ lefutott, K1–K10 teljesül (K10 két körben: `naplok/ELLENOR_KARB.md`) | #2 | Merge a `main`-be (te indítod) | ág `claude/karbantartas-brief-kb0-kb4` (`db84fca`), PR #58 |
 | 5 | Szótári adatréteg, 1. menet (SZOTAR S1) | a szerepmátrix hiányzó sorai adatként: fordítási gyorsítótár, terminológia, kiejtés-táblák, UBS DBH, TBESH, Girdlestone, Mounce | ⬜ nem futott | #1, #2, #4 | **Előbb:** brief-frissítés v1.2-re (FJ-eredmény: Macula küszöb alatt → S13 versszintű marad; KK; CI). Menet közben ⛔ jóváhagyásra vár tőled a Girdlestone-szöveg és 24 héber kiejtés-jelölt | `SZOTAR_BRIEF.md` v1.1 |
 | 6 | Új források 2. felmérése **helyi gépről** (FJ 2. menet) | döntés a Nave, a teljes KJV/ASV és a BSB importjáról; a Macula lefedettsége | ⬜ nincs brief | — (#5-tel párhuzamosan futhat) | Brief kell. Helyi gépen fusson, mert a cloud proxy blokkolt (N27, N29–N31) | `naplok/FORRAS_jelentes.md` (fejlécébe kell a „felülírva: N27–N29” megjegyzés) |
 | 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ nem futott | #3, #5 (terminológia, kiejtés) | **Te:** döntés a v3-ról („természetes hű” stílus a promptban) | `FORDITAS_ELES_THAYER_BRIEF.md` v2, csak chatben |
@@ -61,6 +60,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 ## Kész (utolsó 2 hét)
 
+- Szkript-karbantartás (KARBANTARTAS KB0–KB4), K1–K10 teljesül (K10 három körben, ágleltárral és mutációs próbával: `naplok/ELLENOR_KARB.md`), merge `b8a418a` (09.27); mérőszkript-vakfoltok javítása (PR #60)
 - Gépi ellenőrzés GitHubon (CI, #2), PR #57, merge `68eb348` (09.27); E5 javítás: PR #59
 - Károli-versszámok javítása a görög Ószövetségben (KK0–KK7.5), merge `4b9ae49` (09.27)
 - Forrásjelöltek 1. menete (FJ0–FJ5), merge `ec7aebc`, zárás `72b200c` (09.25)

@@ -154,7 +154,11 @@ def main():
             fejlec_a = f.readline().rstrip("\n")
             sor_a = f.readline().rstrip("\n")
         strong_a = sor_a.split("\t")[1]
-        tartalom_a = fejlec_a + "\n" + sor_a + "\n"
+        # A valodi sor UTAN egy tul-rovid ("< 2 mezo") sor is bekerul, hogy a
+        # `len(parts) < 2: continue` ag (roviditett/csonka sor) is lefusson --
+        # a B-teszt (lent) az elso ket sort olvassa, ezert a garbage-sor a
+        # VEGERE kerul, nem zavarja azt.
+        tartalom_a = fejlec_a + "\n" + sor_a + "\n" + "csonka_sor_tab_nelkul\n"
 
         for sorveg_nev, sorveg in (("LF", "\n"), ("CRLF", "\r\n")):
             p_regi = ir_ideiglenes(tartalom_a, sorveg, munka_regi)
@@ -170,7 +174,8 @@ def main():
             sorok.append((
                 "elofordulas_szamlalo.py", "A: valodi TAGNT-sor, %s" % sorveg_nev,
                 "regi=%s | uj=%s | %s" % (ki_regi, ki_uj, "EGYEZIK" if egyezik else "ELTER"),
-                "valodi (konkordancia/TAGNT_kivonat.tsv 1. adatsora); MEGJEGYZES: a "
+                "valodi (konkordancia/TAGNT_kivonat.tsv 1. adatsora) + 1 csonka sor "
+                "(agleltar: len(parts)<2 skip); MEGJEGYZES: a "
                 "count_occurrences() a 2. mezot (Strong) nezi, NEM az utolso mezot, "
                 "ahol a \\r megjelenhetne -- ez az eset ezert nem az utolso-mezo-kockazatot "
                 "probalja, csak azt igazolja, hogy a fuggveny tenyleges kimenete "
@@ -214,7 +219,9 @@ def main():
         with open(os.path.join(ROOT, "konkordancia", "TAHOT_kivonat.tsv"), encoding="utf-8") as f:
             fejlec_b = f.readline().rstrip("\n")
             sorai_b = [f.readline().rstrip("\n") for _ in range(2)]
-        tartalom_b = fejlec_b + "\n" + "\n".join(sorai_b) + "\n"
+        # Csonka sor a vegen (agleltar: len(parts)<2 skip), a B-teszt (lent)
+        # csak az elso ket adatsort olvassa, nem zavarja.
+        tartalom_b = fejlec_b + "\n" + "\n".join(sorai_b) + "\n" + "csonka_sor_tab_nelkul\n"
         ref_b = sorai_b[0].split("\t")[0]
 
         for sorveg_nev, sorveg in (("LF", "\n"), ("CRLF", "\r\n")):
@@ -232,7 +239,8 @@ def main():
             sorok.append((
                 "frazis_kereses_pozicio_alapon.py", "A: valodi TAHOT-sorok, %s" % sorveg_nev,
                 "regi=%s | uj=%s | %s" % (ki_regi, ki_uj, "EGYEZIK" if egyezik else "ELTER"),
-                "valodi (konkordancia/TAHOT_kivonat.tsv elso 2 adatsora); MEGJEGYZES: a "
+                "valodi (konkordancia/TAHOT_kivonat.tsv elso 2 adatsora) + 1 csonka sor "
+                "(agleltar: len(parts)<2 skip); MEGJEGYZES: a "
                 "load_verse_strongs() a 2. mezot (Strong) nezi, NEM az utolso mezot -- "
                 "l. az elofordulas_szamlalo.py A esetenel irt megjegyzest.",
             ))
@@ -266,7 +274,10 @@ def main():
             komment_c = f.readline().rstrip("\n")
             fejlec_c = f.readline().rstrip("\n")
             sor_c = f.readline().rstrip("\n")
-        tartalom_c = komment_c + "\n" + fejlec_c + "\n" + sor_c + "\n"
+        # Ures sor a vegen (agleltar: `if s.strip()` szures az olvas()-ban) --
+        # a B-teszt (lent) csak sorok[0] (fejlec) es sorok[1] (adatsor)
+        # indexeket olvassa, nem zavarja.
+        tartalom_c = komment_c + "\n" + fejlec_c + "\n" + sor_c + "\n" + "\n"
 
         for sorveg_nev, sorveg in (("LF", "\n"), ("CRLF", "\r\n")):
             p_regi = ir_ideiglenes(tartalom_c, sorveg, munka_regi)
@@ -289,7 +300,8 @@ def main():
             sorok.append((
                 "f3_4_zaro_ellenoriz.py", "A: valodi elofordulasok.tsv-sor, %s" % sorveg_nev,
                 "regi==uj: %s" % ("EGYEZIK" if egyezik else "ELTER (l. reszletek stdout-on)"),
-                "valodi (adat/elofordulasok.tsv 1. adatsora)",
+                "valodi (adat/elofordulasok.tsv 1. adatsora) + 1 ures sor "
+                "(agleltar: `if s.strip()` skip)",
             ))
             if not egyezik:
                 print("  f3_4_zaro_ellenoriz.py %s ELTERES:\n  regi=%s\n  uj=%s"
@@ -326,14 +338,48 @@ def main():
         # a repoban; reprezentativ (nem valodi) 12-mezos sor, a modul sajat
         # docstringje szerinti szerkezettel.
         # --------------------------------------------------------------
-        # A 12. mezo (Expanded) harom backslash-elvalasztott reszt var
-        # (l. parse_expanded() -- "strong\root\gloss"), kulonben a fuggveny
-        # (None, None)-t ad vissza barmilyen sorveggel, es a teszt nem
-        # tudna kulonbseget mutatni. A gloss-resz vegere kerul a sorveg.
-        raw_12mezo = "\t".join([
-            "Gen.1.1#1=x", "heber", "translit", "translation", "dStrongs",
-            "f5", "f6", "f7", "f8", "f9", "f10", "H0430\\shoresh\\GLOSSTEXT",
+        # Agleltar (l. naplok/ELLENOR_KARB.md "Agleltar" tablazat) --
+        # tobbsoros, REPREZENTATIV nyers-TAHOT-tartalom, minden sor egy-egy
+        # elagazast probal a process_raw_file()-ban:
+        #   L1 -- ures sor                          -> `if not line: continue`
+        #   L2 -- <12 mezo (csonka sor)              -> `if len(fields)<12: continue`
+        #   L3 -- REF_RE-re nem illeszkedo ref-mezo  -> `if not m: continue`
+        #   L4 -- rendes sor, ZAROJEL NELKUL         -> secondary=None (regi ag)
+        #   L5 -- ZAROJELES masodlagos hivatkozas    -> secondary="Gen.32.2" (KOTELEZO, ez volt a vakfolt)
+        #   L6 -- Ketiv/Qere-szeru ures dStrongs     -> clean_strong()==None -> `if strong is None: continue`
+        #   L7 -- parse_expanded() "»" jeloles       -> a rovid jelentes a »-jel utan kezdodik
+        #   L8 -- tobb '/'-szegmens egy mezoben      -> n=len(heb_segs)>1, ket sor keletkezik
+        # A parse_expanded() '='-jellel valaszt szet (STRONG=SZOTO=GLOSSZ),
+        # NEM backslash-sal -- a korabbi fixture ("H0430\\shoresh\\GLOSSTEXT")
+        # emiatt soha nem termelt sort, a mutacios proba ezt lepleezte le
+        # (l. naplok/ELLENOR_KARB.md, kezi mutacios proba).
+        L1 = ""
+        L2 = "csonka\tsor"
+        L3 = "\t".join([
+            "NemIllekReferenciaAlakra", "h", "t", "tr", "H1234",
+            "f5", "f6", "f7", "f8", "f9", "f10", "H1234=root=gloss",
         ])
+        L4 = "\t".join([
+            "Gen.1.1#1=x", "heber", "translit", "translation", "H0430",
+            "f5", "f6", "f7", "f8", "f9", "f10", "H0430=roshora=meaning",
+        ])
+        L5 = "\t".join([
+            "Gen.32.1(32.2)#2=x", "shalom", "shalom", "peace", "H7965",
+            "f5", "f6", "f7", "f8", "f9", "f10", "H7965=shalom=peace",
+        ])
+        L6 = "\t".join([
+            "Gen.2.1#1=x", "heb2", "translit2", "translation2", "{}",
+            "f5", "f6", "f7", "f8", "f9", "f10", "ignoralt=ignoralt=ignoralt",
+        ])
+        L7 = "\t".join([
+            "Gen.3.1#1=x", "heb3", "translit3", "translation3", "H1121",
+            "f5", "f6", "f7", "f8", "f9", "f10", "H1121=root3=prefix»realgloss:extra",
+        ])
+        L8 = "\t".join([
+            "Gen.4.1#1=x", "heb4a/heb4b", "tl4a/tl4b", "tr4a/tr4b", "H1111/H2222",
+            "f5", "f6", "f7", "f8", "f9", "f10", "H1111=r1=g1/H2222=r2=g2",
+        ])
+        raw_12mezo = "\n".join([L1, L2, L3, L4, L5, L6, L7, L8])
         for sorveg_nev, sorveg in (("LF", "\n"), ("CRLF", "\r\n")):
             p_regi = ir_ideiglenes(raw_12mezo + "\n", sorveg, munka_regi)
             p_uj = ir_ideiglenes(raw_12mezo + "\n", sorveg, munka_uj)
@@ -355,15 +401,23 @@ def main():
             egyezik = (ki_regi == ki_uj)
             sikerult = sikerult and egyezik
             sorok.append((
-                "tahot_zarojeles_phaseA_kivonat.py", "A: reprezentativ 12-mezos sor, %s" % sorveg_nev,
+                "tahot_zarojeles_phaseA_kivonat.py", "A: 8-soros agleltar-fixture (L1-L8), %s" % sorveg_nev,
                 "regi==uj: %s | eredmeny: %s" % ("EGYEZIK" if egyezik else "ELTER", ki_uj),
-                "MANUAL/FIXTURE -- a nyers TAHOT-fajlok (eszkozok/tahot/*.txt) nincsenek a repoban",
+                "MANUAL/FIXTURE -- a nyers TAHOT-fajlok (eszkozok/tahot/*.txt) nincsenek a repoban. "
+                "L1 ures sor, L2 csonka sor, L3 REF_RE-hibas ref, L4 zarojel nelkuli sor, "
+                "L5 ZAROJELES masodlagos hivatkozas (a korabban felfedett vakfolt), "
+                "L6 Ketiv/Qere-szeru ures dStrongs, L7 '»'-jeloles a glosszban, "
+                "L8 tobb '/'-szegmens egy mezoben.",
             ))
 
+        # Az L5 (5. sor, index 4) a ZAROJELES masodlagos hivatkozasu sor --
+        # ez az 1b pont altal erintett kombinacio (zarojeles ref + CRLF),
+        # nem az elso (ures) sor.
         p_regi_crlf_d = ir_ideiglenes(raw_12mezo + "\n", "\r\n", munka_regi)
         kod_kontroll_d = (
             "with open(%r, encoding='utf-8', newline='') as f:\n"
-            "    sor = f.readline()\n"
+            "    sorai = f.readlines()\n"
+            "sor = sorai[4]\n"
             "regi = sor.rstrip('\\n').split('\\t')\n"
             "uj = sor.rstrip('\\r\\n').split('\\t')\n"
             "print('regi fields[11]=%%r' %% regi[11])\n"
