@@ -1,36 +1,36 @@
 # KARB_jelentes.md — KB0–KB3 összefoglaló jelentés (KARBANTARTAS_BRIEF.md KB4, részleges)
 
-*Ez a jelentés a KB4 tétel elejét adja: a KB0–KB3 összesítését, a
-hívásellenőrzés eredményét, a nem javított helyeket és a lezáráshoz
-javasolt szöveget. A `naplok/ELLENOR_KARB.md` (K10, független ellenőr) és
-a `FELADATOK.md` #4-es sorának frissítése (K9/K10 után, a teljes KB4
-része) ebben a menetben szándékosan NEM készül el — a chat kifejezetten
-úgy kérte, hogy erre a menetre álljak meg a PR megnyitásánál, CI-várás és
-független ellenőr nélkül.*
+*Ez a jelentés a KB0–KB3 összesítését, a hívásellenőrzés eredményét, a nem
+javított helyeket és a lezáráshoz javasolt szöveget adja. A PR megnyitása
+(#58) után lezajlott a CI (K9, zöld) és a független ellenőrzés (K10,
+`naplok/ELLENOR_KARB.md`) — ez a jelentés (v2) már a K10 által jelzett
+javításokat (K3, K4, K7, a KB0 0.1/0.3 pontosítása) tartalmazza. A K10
+eltéréseinek listája és súlyossága a `naplok/ELLENOR_KARB.md`-ben olvasható.*
 
 ## 1. Szkriptenkénti változtatás-tartomány (K7)
 
-A KB1 mind a 10 szkriptet átalakította: a modulszintű mellékhatásos kód
-egy `main()`-be került, `__main__`-őrrel és `argparse`-szal (`description=__doc__`).
-Ez a legtöbb fájlban a teljes törzs újra-behúzását jelenti (a `git diff`
-lényegében az egész fájlra kiterjed) — az alábbi táblázat ezért a
-`git diff --stat 68eb348 HEAD` szerinti tényleges sor-számokat és a
-tartalmi hatókört adja meg soronkénti pontosság helyett, ahol a teljes
-fájl érintett.
+**Javítás (a fuggetlen-ellenor jelezte, naplok/ELLENOR_KARB.md):** az eredeti
+táblázat "teljes fájl" bejegyzései pontatlanok voltak — pl. az `f3_1_betoltes.py`
+1–34. sora ténylegesen változatlan. Az alábbi táblázat a `git diff --unified=0
+b980c57 ba57575 -- eszkozok/<fájl>` szerinti tényleges hunk-tartományokat adja meg
+(a `ba57575` a KB1+KB2 saját kódváltozásainak vége, a KB3 nullázás és a
+`main`-merge előtt) — a régi fájl (b980c57) sorszámozása szerint, min–max
+tartományként, mert a legtöbb fájlban a hunk-ok gyakorlatilag lefedik a törzset,
+de a fejléc/import/konstans-blokk ténylegesen kimarad.
 
-| Szkript | Változás tartománya | Megjegyzés |
+| Szkript | Változás tartománya (régi sorszám) | Megjegyzés |
 |---|---|---|
-| `f3_1_betoltes.py` | teljes fájl (729 diff-sor) | adatlisták + assert + írás `main()`-be zárva; `prov`, `w`, konstansok modulszinten maradtak |
-| `f3_2_betoltes.py` | teljes fájl (837 diff-sor) | ua.; **G1-kivétel**: `build_ot_rows()` a `TAHOT_INDEX`, `TAHOT_VERSES`, `results`, `rejected_strong_hianyzik` neveket globálisan olvassa/módosítja — a `main()` `global` deklarációval hozza létre őket |
-| `f3_4_ellenoriz.py` | teljes fájl (138 diff-sor) | `karoli`/`elo`/`dont`/`hibak` építése és a print-ek `main()`-be; sor 32: `rstrip('\n')` → `rstrip('\r\n')` (G3, mert úgyis hozzányúltunk) |
-| `f3_4_elokeszites.py` | teljes fájl (142 diff-sor) | **G1-kivétel**: `step_to_hu()` a `norm` szótárt globálisan olvassa — `main()` `global norm`-mal hozza létre; `olvas()` belső `rstrip('\n')` → `rstrip('\r\n')` (G3) |
-| `f3_4_gorog_ellenoriz.py` | teljes fájl (35 diff-sor) | egyszerű `main()`-be zárás; **nincs modul-docstring**, tehát `description=__doc__` `None`-t ad `--help`-nél (l. lent) |
-| `f3_4_join_potlas.py` | teljes fájl (215 diff-sor) | **G1-kivétel**: `hu_to_step()` a `norm`-ot, `felvesz()` a `szotar`/`letezo`/`ujak`/`hibak`-ot olvassa/módosítja globálisan — mind `global`-lal a `main()`-ben |
-| `f3_4_munkalap_general.py` | teljes fájl (72 diff-sor) | **G1-kivétel**: `bont()` a `karoli` szótárt globálisan olvassa — `global karoli` |
-| `f3_4_nema_nemtalalat.py` | teljes fájl (68 diff-sor) | `karoli`/`elo`/`gyanus` építése `main()`-be; a `verseк` függvénynév (cirill „к” a végén) változatlanul hagyva — ez a fájl eredeti sajátossága, nem hiba, amit javítani kellett volna |
-| `f3_4_zaro_ellenoriz.py` | teljes fájl (119 diff-sor) | `main()`-be zárás; sor 17: `rstrip('\n')` → `rstrip('\r\n')` (ez egyben a KB2 4. tétele is, l. lent) |
-| `merge_karoli_szofaj.py` | teljes fájl (116 diff-sor) | `lookup`/`rows`/`out_rows` + a körút-ellenőrzés + írás `main()`-be; a `normalize()` függvény (saját belső Strong-padoló) érintetlen |
-| `elofordulas_szamlalo.py` | 1 sor (37. sor) | csak KB2: `rstrip("\n")` → `rstrip("\r\n")`; már volt `__main__`-őre, nem KB1-tétel |
+| `f3_1_betoltes.py` | 35–402 (1–34: docstring/import/`ROOT`/`ADAT`/`prov()` változatlan) | adatlisták + assert + írás `main()`-be zárva |
+| `f3_2_betoltes.py` | 85–547 (1–84: docstring/import/konstansok változatlan) | **G1-kivétel**: `build_ot_rows()` a `TAHOT_INDEX`, `TAHOT_VERSES`, `results`, `rejected_strong_hianyzik` neveket globálisan olvassa/módosítja — a `main()` `global` deklarációval hozza létre őket |
+| `f3_4_ellenoriz.py` | 23–94 (1–22: docstring/import/`ELTOLAS` változatlan) | `karoli`/`elo`/`dont`/`hibak` építése és a print-ek `main()`-be; a KB2 CRLF-cseréje is itt van (l. 3. pont) |
+| `f3_4_elokeszites.py` | 27–105 (1–26: docstring/import/konstansok változatlan) | **G1-kivétel**: `step_to_hu()` a `norm` szótárt globálisan olvassa — `main()` `global norm`-mal hozza létre; `olvas()` belső `rstrip('\n')` → `rstrip('\r\n')` (G3) |
+| `f3_4_gorog_ellenoriz.py` | 8–19 (1–7: import/reconfigure változatlan) | egyszerű `main()`-be zárás; **nincs modul-docstring**, tehát `description=__doc__` `None`-t ad `--help`-nél (l. lent) |
+| `f3_4_join_potlas.py` | 46–208 (1–45: docstring/import/konstansok változatlan) | **G1-kivétel**: `hu_to_step()` a `norm`-ot, `felvesz()` a `szotar`/`letezo`/`ujak`/`hibak`-ot olvassa/módosítja globálisan — mind `global`-lal a `main()`-ben |
+| `f3_4_munkalap_general.py` | 16–66 (1–15: docstring/import változatlan) | **G1-kivétel**: `bont()` a `karoli` szótárt globálisan olvassa — `global karoli` |
+| `f3_4_nema_nemtalalat.py` | 31–69 (1–30: docstring/import/`HOSSZU` változatlan) | `karoli`/`elo`/`gyanus` építése `main()`-be; a `verseк` függvénynév (cirill „к” a végén) változatlanul hagyva — ez a fájl eredeti sajátossága, nem hiba, amit javítani kellett volna |
+| `f3_4_zaro_ellenoriz.py` | 17–82 (1–16: docstring/import változatlan) | `main()`-be zárás; sor 17: `rstrip('\n')` → `rstrip('\r\n')` (ez egyben a KB2 4. tétele is, l. lent) |
+| `merge_karoli_szofaj.py` | 41–94 (1–40: docstring/import/`normalize()` változatlan) | `lookup`/`rows`/`out_rows` + a körút-ellenőrzés + írás `main()`-be |
+| `elofordulas_szamlalo.py` | 1 sor (37. sor) | csak KB2: `rstrip("\n")` → `rstrip("\r\n")` (védekező higiénia, l. 3. pont); már volt `__main__`-őre, nem KB1-tétel |
 | `frazis_kereses_pozicio_alapon.py` | 1 sor (58. sor) | csak KB2, ua. |
 | `tahot_zarojeles_phaseA_kivonat.py` | 1 sor (84. sor) | csak KB2, ua. |
 | `konkordancia/Karoli_Strong_kivonat.tsv` | 26 sor (l. `naplok/KARB_KB3_nullazas.tsv`) | csak a Strong-szám oszlop, KB3 |
@@ -49,23 +49,33 @@ sem változott, csak a `main()` elején egy `global` sor jelent meg).
 
 ## 2. KB1 összesítés
 
-`naplok/KARB_KB1_egyenertekuseg.tsv`: mind a 10 szkript mind a négy
-oszlopban (`fajl_sha_egyezik`, `stdout_egyezik`, `help_tiszta`,
-`import_tiszta`) **egyezik/igaz** — K3 teljesül.
+**Javítás (a fuggetlen-ellenor jelezte, naplok/ELLENOR_KARB.md — K3 eredetileg
+NEM ELLENŐRIZHETŐ volt):** a mérőszkript v2-je (`naplok/KARB_egyenertekuseg.py`)
+argumentumként kapja a két commit-shát, a worktree-ket a repón belüli,
+gitignore-olt `.claude/kb_worktrees/` alá teszi (reprodukálható), és minden
+szkript bare futtatása UTÁN külön-külön méri + a következő szkript előtt
+visszaállítja (`git checkout --force HEAD -- .` + `git clean -fdx`) mindkét
+worktree-t — a `fajl_sha_egyezik` és az esetleges eltérés-lista ezért
+SZKRIPTENKÉNTI, nem egy egyszeri globális érték.
 
-A mérés két ideiglenes git worktree-ben futott (`kb_regi` = `b980c57`,
-`kb_uj` = a KB2 utáni HEAD), a munkapéldányon kívül (G4), a
-`naplok/KARB_egyenertekuseg.py` szkripttel. Módszertani megjegyzés: mivel
-a két worktree abszolút útvonala eltér, a `ROOT`-alapú print-sorokat
-(pl. `f3_4_elokeszites.py` "Munkalap: ..." üzenete) a saját worktree-je
-abszolút útvonalával maszkoltam összehasonlítás előtt — ez a brief
-"időbélyeg-sor maszkolva" engedélyének analóg kiterjesztése egy, a két
-ideiglenes könyvtár nevéből eredő, nem viselkedésbeli különbségre. A
-fájl-sha összevetés a 13 érintett `.py` fájlt és a menet saját
-`naplok/KARB_*`/`KARBANTARTAS_BRIEF.md`/`FELADATOK.md` fájljait kizárta
-(ezek szándékosan különböznek) — minden más fájl (`adat/*.tsv`,
-`konkordancia/*.tsv` stb.) bájtra egyezett a 10 szkript egymás utáni,
-argumentum nélküli lefuttatása után mindkét másolatban.
+Parancs: `python naplok/KARB_egyenertekuseg.py --regi-commit b980c57 --uj-commit ba57575`
+(`b980c57` = a menet kiindulása, `ba57575` = a KB1+KB2 saját kódváltozásainak
+vége, a KB3 nullázás és a `main`-merge előtt — így a fájl-sha összevetés nem
+kavarodik össze a KB3/E5-fix későbbi, más tételekhez tartozó változásaival).
+
+`naplok/KARB_KB1_egyenertekuseg.tsv`: mind a 10 szkript mind a négy mért
+tulajdonságban (`fajl_sha_egyezik`, `stdout_egyezik`, `help_tiszta`,
+`import_tiszta`) **egyezik/igaz**, szkriptenként külön mérve — K3 teljesül.
+Az `elteres_fajlok` oszlop minden sorban üres.
+
+A fájl-sha összevetés a 13 érintett `.py` fájlt (mind a 10 KB1- és mind a 3
+KB2-only szkriptet, mert ezek forráskódja is különbözik a két commit között,
+függetlenül a futási mellékhatástól) és a menet saját
+`naplok/KARB_*`/`KARBANTARTAS_BRIEF.md`/`FELADATOK.md`/`naplok/ELLENOR_KARB.md`
+fájljait, valamint a worktree saját `.git` fájlját zárta ki — minden más fájl
+(`adat/*.tsv`, `konkordancia/*.tsv` stb.) bájtra egyezett a 10 szkript egymás
+utáni, argumentum nélküli lefuttatása után mindkét másolatban, MINDEN egyes
+szkript külön mérve.
 
 **Egyetlen kivétel a docstring-alapú `--help`-nél:**
 `f3_4_gorog_ellenoriz.py`-nak nincs modulszintű docstringje (a fájl
@@ -77,21 +87,44 @@ kifejezetten "a szkript saját docstringjéből" mondja — ha nincs, nincs.
 
 ## 3. KB2 összesítés
 
-`naplok/KARB_KB2_crlf.tsv`: mind a 4 érintett szkript sorára igaz, hogy
-CRLF-bemeneten a régi alak (`rstrip("\n")`) `\r`-t hagyott az utolsó
-mezőben, az új alak (`rstrip("\r\n")`) nem — K4 teljesül (piros→zöld
-váltás, bizonyítottan). LF-bemeneten mindkét változat hibátlan (nincs
-regresszió).
+**Javítás (a fuggetlen-ellenor jelezte, naplok/ELLENOR_KARB.md — K4 eredetileg
+szintetikus stringeken futott, nem a valódi szkripteken):** a mérőszkript v2-je
+(`naplok/KARB_crlf_teszt.py`) a VALÓDI szkriptek VALÓDI függvényeit hívja
+(importálva, nem újraimplementálva), a repó tényleges adatfájlaiból vett
+sorokon, LF- és CRLF-másolatban, két ideiglenes worktree-ből
+(`--regi-commit b980c57 --uj-commit ba57575`, ugyanaz a tartomány, mint a KB1-nél).
 
-A mérés a brief mércéjének megfelelő granularitáson (soronkénti, a KB0
-által azonosított pontos hely) szintetikus 2- illetve 12-mezős
-tesztsorokkal futott, mert a valódi célfájlok (`TAGNT_kivonat.tsv`,
-`elofordulasok.tsv`, `TAHOT_kivonat.tsv`, a `tahot/` nyers fájlok) LF-
-végűek — CRLF-változatuk előállítása és a teljes szkript rájuk futtatása
-a munkapéldányban tiltott (G4), ezért a tesztet a konkrét
-mezőbontó-sorra szűkítettem, pontosan a brief §1 mércéje szerint
-("Minden érintett szkript kap egy LF és egy CRLF változatú ideiglenes
-bemenetet ... Mindkét bemeneten azonos az utolsó mező").
+**Váratlan, de empirikusan igazolt eredmény:** mind a 4 érintett szkript sima
+`open(path, encoding='utf-8')`-fal olvas (nincs `newline=''`), ezért Python
+alapértelmezett univerzális sorvég-kezelése MÁR a `line` változóhoz kerülés
+előtt lecseréli a `\r\n`-t `\n`-re. A VALÓDI fájlból, VALÓDI függvénnyel mért
+"A" esetek ezért **bájtra azonos** eredményt adnak a régi (`rstrip("\n")`) és
+az új (`rstrip("\r\n")`) kóddal, MIND LF-, MIND CRLF-bemeneten (l.
+`naplok/KARB_KB2_crlf.tsv` A-sorai). **A KB2 cseréje ennél a 4 hivatkozási
+pontnál tehát VÉDEKEZŐ HIGIÉNIA, NEM funkcionális javítás** — a feltételezett
+hiba a tényleges használati módban sosem manifesztálódott. Ezt a
+`naplok/KARB_KB0_kiindulas.md` 0.4 pontjába is átvezettem.
+
+Egy külön "B" kontrollpár (ugyanaz a valódi sor, de a fájlt `newline=''`-vel
+nyitva, megkerülve az univerzális sorvég-kezelést) igazolja, hogy maga a
+`rstrip("\r\n")` minta HELYES és ROBUSZTUSABB — csak nem ezen a hívási úton éri
+el a kockázatot: a régi minta itt bizonyítottan `\r`-t hagy az utolsó mezőben,
+az új nem. Ez teljesíti a K4 szó szerinti kritériumát ("piros→zöld váltás,
+bizonyítottan"), a pontos minősítéssel együtt.
+
+A negyedik hivatkozási pont (`tahot_zarojeles_phaseA_kivonat.py`) esetében a
+nyers TAHOT-bemenet (`eszkozok/tahot/*.txt`) nem létezik a repóban (külső,
+nem verziózott adat) — az "A" eset ezért egy reprezentatív, a modul saját
+docstringje szerinti 12-mezős sorral fut, explicit MANUAL/FIXTURE
+proveniencia-jelöléssel, nem a valódi adattal.
+
+**Repo-szintű grep (C rész, csak lelőhely-lista, nem ellenőrzött, nem
+javított):** 22 helyen (kb. 15 fájlban) nyílik meg fájl OLVASÁSRA
+`newline=''`-vel az `eszkozok/` alatt (pl. `general.py` `tsv_beolvas()`-a,
+`lexikon_general.py`, `torzscikk_general.py`, `g2_forrasreteg_levalasztas.py`
+stb.) — ezeken a helyeken a `\r` valóban átjuthatna a feldolgozásba, ha a hívó
+kód nem kezeli külön a sorvéget. Teljes lista: `naplok/KARB_KB2_crlf.tsv` vége.
+Ezek egyike sem tartozik a KARBANTARTAS-brief hatókörébe, javítás nem történt.
 
 ## 4. Hívásellenőrzés (KB3 előkészítés)
 
@@ -157,13 +190,12 @@ a jelentést kéri.
 |---|---|---|
 | K1 | `git diff --stat main..HEAD` csak a megengedett fájlokat mutatja | **TELJESÜL** — `KARBANTARTAS_BRIEF.md`, a 13 érintett `eszkozok/*.py`, `konkordancia/Karoli_Strong_kivonat.tsv`, `naplok/KARB_*`; a `FELADATOK.md`-t ez a menet NEM módosította (a #2-es sor mozgatása már a `68eb348` CI-merge-ben megtörtént, én nem nyúltam hozzá újra) |
 | K2 | `eszkozok/ellenoriz.py` változatlan a KB0-hoz képest | **TELJESÜL** — a fájlhoz a menet nem nyúlt, `git diff` üres rá |
-| K3 | KB1: 10/10 sor egyezik mind a 4 oszlopban | **TELJESÜL** — l. `naplok/KARB_KB1_egyenertekuseg.tsv` |
-| K4 | KB2: a 4 szkript CRLF-tesztje zöld, a régié piros | **TELJESÜL** — l. `naplok/KARB_KB2_crlf.tsv` |
+| K3 | KB1: 10/10 sor egyezik mind a 4 oszlopban | **TELJESÜL** — `python naplok/KARB_egyenertekuseg.py --regi-commit b980c57 --uj-commit ba57575`, reprodukálható worktree-kkel (`.claude/kb_worktrees/`), szkriptenkénti fájl-sha méréssel; l. `naplok/KARB_KB1_egyenertekuseg.tsv` |
+| K4 | KB2: a 4 szkript CRLF-tesztje zöld, a régié piros | **TELJESÜL, pontosítással** — `python naplok/KARB_crlf_teszt.py --regi-commit b980c57 --uj-commit ba57575`, a valódi szkriptek valódi adaton: a régi és az új kód a tényleges hívási úton (sima `open()`, univerzális sorvég-kezelés) bájtra azonos — a csere itt védekező higiénia, nem funkcionális javítás (l. 3. pont). A `newline=''` kontrollpár igazolja a piros→zöld váltást a szó szerinti kritérium szerint. L. `naplok/KARB_KB2_crlf.tsv` |
 | K5 | A munkapéldányban a KB3 26 során kívül egyetlen adat-/konkordanciafájl sem változott | **TELJESÜL** — `git status --porcelain` a KB3 után csak a Károli-táblát és a 2 új `naplok/KARB_KB3_*` fájlt mutatta |
 | K6 | Nincs `csv` modul, nincs új parancssori opció, héber/görög/magyar szöveget tartalmazó kód csak fájlból fut | **TELJESÜL** — egyik módosított/új fájl sem importál `csv`-t; egyik `argparse` sem kapott új opciót (csak `description`); minden szkriptet fájlból futtattam (`python <fájl>`), sosem `bash -c`-vel |
-| K7 | A jelentésben minden szkriptnél szerepel a változtatott sorok tartománya | **TELJESÜL** — l. 1. pont táblázata |
+| K7 | A jelentésben minden szkriptnél szerepel a változtatott sorok tartománya | **TELJESÜL, pontosítva** — l. 1. pont táblázata (`git diff --unified=0` szerinti tényleges hunk-tartományok, nem "teljes fájl") |
 | K8 | KB3: pontosan 26 sor változott, csak a Strong-mezőben; utána 0 nullázatlan token | **TELJESÜL** — `naplok/KARB_KB3_nullazas.tsv` 26 sor; a `git diff --word-diff` csak a Strong-oszlopot mutatja; az ismételt ellenőrzés 0 nullázatlan tokent talált |
 
-K9 (CI zöld) és K10 (`naplok/ELLENOR_KARB.md`, független ellenőr) ebben a
-menetben szándékosan nincs ellenőrizve — a chat kifejezetten kérte, hogy
-ne várjam meg a CI-t, és ne futtassak `fuggetlen-ellenor` ügynököt.
+| K9 | CI zöld a PR-en | **TELJESÜL** — `gh pr checks 58` zöld a `main`-merge (E5-javítás) utáni HEAD-en is |
+| K10 | `naplok/ELLENOR_KARB.md` elkészült | **TELJESÜL** — l. a fájlt; a jelzett eltérések (K3, K4, K7, KB0 0.1/0.3) ebben a v2 jelentésben javítva |

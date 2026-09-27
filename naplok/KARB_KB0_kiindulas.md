@@ -6,7 +6,11 @@ Mérés dátuma: 2026.09.27. Kiinduló commit: `b980c57` (szülő: `68eb348`, a 
 
 A menet ágának (`claude/karbantartas-brief-kb0-kb4`) kiinduló commitja `b980c57`,
 amelynek szülője `68eb348`. Ez a `main`-en levő, #2 (CI) merge utáni commit — a brief
-előfeltétele teljesül. A #1 (KK) ág ekkor még nincs bemergelve.
+előfeltétele teljesül. **Javítás (a fuggetlen-ellenor, naplok/ELLENOR_KARB.md
+jelezte):** a #1 (KK) ág EKKOR MÁR be van mergelve — `git merge-base --is-ancestor
+4b9ae49 68eb348` igazolja, hogy a `4b9ae49` (KK0–KK7.5 merge-commitja) a `68eb348`
+őse. A brief §"Előfeltétel" ezt már jelezte ("Ha az #1 már bent van, a menet arról
+indul") — az eredeti mondat tévesen írta, hogy még nincs bemergelve.
 
 ## 0.2 — Őr és argparse nélküli szkriptek (1a)
 
@@ -30,9 +34,16 @@ terjed ki, és a KB1 sem nyúl hozzájuk — itt csak jelentés.
 
 ## 0.3 — Modulszinten fájlt író szkriptek a 10 közül
 
-8 db ír fájlt modulszinten (mind, kivéve `f3_4_gorog_ellenoriz.py` és
-`f3_4_zaro_ellenoriz.py`, amelyek csak olvasnak/ellenőriznek és stdout-ra írnak).
-Egyezik a brief 0.3-mal.
+**Javítás (a fuggetlen-ellenor jelezte):** az eredeti mérés (8 db) hibás volt.
+Tényleges ellenőrzés (`grep -cE "open\([^)]*['\"](w|a|wb|ab)['\"]" eszkozok/<fajl>`
+mind a 10 fájlon) szerint **6 db** ír ténylegesen fájlt modulszinten:
+`f3_1_betoltes.py`, `f3_2_betoltes.py`, `f3_4_elokeszites.py`,
+`f3_4_join_potlas.py`, `f3_4_munkalap_general.py`, `merge_karoli_szofaj.py`.
+A másik 4 csak olvas/ellenőriz és stdout-ra ír: `f3_4_ellenoriz.py`,
+`f3_4_gorog_ellenoriz.py`, `f3_4_nema_nemtalalat.py`, `f3_4_zaro_ellenoriz.py`.
+Ez a szám nem befolyásolja a KB1 tényleges munkáját (mind a 10 szkript
+`__main__`-őrt kapott, függetlenül attól, ír-e fájlt) — csak a KB0 saját
+leírása volt pontatlan.
 
 ## 0.4 — `\r`-t nem strippelő mezőbontás (1b), a 4 mért szkript
 
@@ -47,6 +58,22 @@ Pontos sor-ellenőrzés (a jelenlegi fájlállapot szerint):
 
 Egyezik a brief 0.4-gyel (a sorszámok is stimmelnek).
 
+**Minősítés-pontosítás (a naplok/KARB_crlf_teszt.py v2 és naplok/ELLENOR_KARB.md
+alapján):** mind a 4 szkript sima `open(path, encoding='utf-8')`-fal nyitja meg a
+bemenetet, `newline=''` NÉLKÜL. Python alapértelmezett szöveges módja
+(`newline=None`) univerzális sorvég-kezelést végez: a `\r\n` MÁR `\n`-re alakul,
+mielőtt a `line` változóhoz kerülne — tehát a `rstrip("\n")` és a `rstrip("\r\n")`
+ennél a 4 konkrét hívási pontnál VALÓDI fájlból olvasva bájtra azonos eredményt ad
+(empirikusan igazolva, l. `naplok/KARB_KB2_crlf.tsv` A-esetei). A KB2 cseréje
+tehát **védekező higiénia, nem funkcionális javítás** ezeknél a hívási pontoknál —
+a feltételezett hiba a tényleges használati módban sosem manifesztálódik. A
+`naplok/KARB_KB2_crlf.tsv` B-esetei (newline='' kontrollpár) igazolják, hogy maga
+a `rstrip("\r\n")` minta helyes és robusztusabb, csak nem ezen az úton érné el a
+kockázatot. A repóban ténylegesen `newline=''`-lel OLVASÁSRA nyitott ~20 helyet
+(ahol a `\r` valóban átjuthatna) a `naplok/KARB_KB2_crlf.tsv` végén, grep-alapú
+lelőhely-listaként rögzítettük — nem ellenőrzött, hogy ezek ténylegesen hibáznak-e,
+és nem javítottuk (kívül esik a KB2 hatókörén).
+
 ## 0.5 — `rstrip("\n")` összesen az `eszkozok/`-ban
 
 A jelen mérésben **36 fájl** tartalmaz `rstrip("\n")` vagy `rstrip('\n')` mintát
@@ -56,6 +83,24 @@ elérhető, ha kell, de a brief szerint ez csak jelentés, nem javítási tétel
 A többség a KB1/KB2 hatókörén kívül esik, mert utána nem `\t`-mezőbontás jön
 (pl. sima szövegsor-feldolgozás). Nem javítjuk őket — ez a brief §"Nincs benne"
 és a KB2 szövege szerint is kizárt kör.
+
+## 0.X — Ki hívja/importálja a 13 érintett szkriptet (hiányzott, a fuggetlen-ellenor pótolta)
+
+`git grep -ln "<szkriptnev-kiterjesztes-nelkul>" -- eszkozok/ .claude/agents/ *.md` mind a 13
+szkriptre (10 KB1 + 3 KB2-only). Kód-szintű (nem dokumentáció-/brief-szintű) találat
+kettőnél van, mindkettő **csak docstring/komment-hivatkozás**, nem tényleges `import`:
+
+- `eszkozok/betolt.py:15` és `eszkozok/n14_hamart_betoltes.py:4,13` — az
+  `f3_1_betoltes.py`-t mintaként/elvként említik ("f3_1_betoltes.py memoria-elobb
+  elve"), nem importálják.
+- `eszkozok/f4_0c_korut_ellenoriz.py:49` és `eszkozok/lxx_kivonat_fetch.py:110` — a
+  `merge_karoli_szofaj.py`-t forrásmegjelölésként említik kommentben/docstringben
+  ("l. eszkozok/merge_karoli_szofaj.py"), nem importálják.
+
+**Eredmény: egyetlen `eszkozok/*.py` sem importálja Python-szinten a 13 érintett
+szkript egyikét sem.** A `__main__`-őr bevezetése (KB1) ezért importbiztonsági
+szempontból sem sérthet meg más szkriptet — nincs olyan hívó, aminek a viselkedése
+a mostani modulszintű-mellékhatás megszűnésétől függne.
 
 ## 0.6 — `eszkozok/ellenoriz.py`
 

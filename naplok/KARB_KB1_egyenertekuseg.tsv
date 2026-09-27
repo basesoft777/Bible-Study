@@ -1,11 +1,12 @@
-szkript	regi_kod	uj_kod	fajl_sha_egyezik	stdout_egyezik	help_tiszta	import_tiszta
-f3_1_betoltes.py	exit=0, stdout 5 sor, stderr 0 sor	exit=0, stdout 5 sor, stderr 0 sor	True	True	True	True
-f3_2_betoltes.py	exit=0, stdout 15 sor, stderr 0 sor	exit=0, stdout 15 sor, stderr 0 sor	True	True	True	True
-f3_4_ellenoriz.py	exit=0, stdout 4 sor, stderr 0 sor	exit=0, stdout 4 sor, stderr 0 sor	True	True	True	True
-f3_4_elokeszites.py	exit=0, stdout 4 sor, stderr 0 sor	exit=0, stdout 4 sor, stderr 0 sor	True	True	True	True
-f3_4_gorog_ellenoriz.py	exit=0, stdout 195 sor, stderr 0 sor	exit=0, stdout 195 sor, stderr 0 sor	True	True	True	True
-f3_4_join_potlas.py	exit=0, stdout 3 sor, stderr 0 sor	exit=0, stdout 3 sor, stderr 0 sor	True	True	True	True
-f3_4_munkalap_general.py	exit=0, stdout 2 sor, stderr 0 sor	exit=0, stdout 2 sor, stderr 0 sor	True	True	True	True
-f3_4_nema_nemtalalat.py	exit=0, stdout 1 sor, stderr 0 sor	exit=0, stdout 1 sor, stderr 0 sor	True	True	True	True
-f3_4_zaro_ellenoriz.py	exit=0, stdout 73 sor, stderr 0 sor	exit=0, stdout 73 sor, stderr 0 sor	True	True	True	True
-merge_karoli_szofaj.py	exit=0, stdout 1 sor, stderr 0 sor	exit=0, stdout 1 sor, stderr 0 sor	True	True	True	True
+# Parancs: python naplok/KARB_egyenertekuseg.py --regi-commit b980c57c173acb09065beb2a9e4a32a0106a24c2 --uj-commit ba57575af7ed0d87b10b5f82cd3174aa16177701
+szkript	regi_kod	uj_kod	fajl_sha_egyezik	elteres_fajlok	stdout_egyezik	help_tiszta	import_tiszta
+f3_1_betoltes.py	exit=0, stdout 5 sor, stderr 0 sor	exit=0, stdout 5 sor, stderr 0 sor	True		True	True	True
+f3_2_betoltes.py	exit=0, stdout 15 sor, stderr 0 sor	exit=0, stdout 15 sor, stderr 0 sor	True		True	True	True
+f3_4_ellenoriz.py	exit=0, stdout 4 sor, stderr 0 sor	exit=0, stdout 4 sor, stderr 0 sor	True		True	True	True
+f3_4_elokeszites.py	exit=0, stdout 4 sor, stderr 0 sor	exit=0, stdout 4 sor, stderr 0 sor	True		True	True	True
+f3_4_gorog_ellenoriz.py	exit=0, stdout 195 sor, stderr 0 sor	exit=0, stdout 195 sor, stderr 0 sor	True		True	True	True
+f3_4_join_potlas.py	exit=0, stdout 3 sor, stderr 0 sor	exit=0, stdout 3 sor, stderr 0 sor	True		True	True	True
+f3_4_munkalap_general.py	exit=0, stdout 2 sor, stderr 0 sor	exit=0, stdout 2 sor, stderr 0 sor	True		True	True	True
+f3_4_nema_nemtalalat.py	exit=0, stdout 1 sor, stderr 0 sor	exit=0, stdout 1 sor, stderr 0 sor	True		True	True	True
+f3_4_zaro_ellenoriz.py	exit=0, stdout 33 sor, stderr 0 sor	exit=0, stdout 33 sor, stderr 0 sor	True		True	True	True
+merge_karoli_szofaj.py	exit=0, stdout 1 sor, stderr 0 sor	exit=0, stdout 1 sor, stderr 0 sor	True		True	True	True
