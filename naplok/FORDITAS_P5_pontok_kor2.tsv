@@ -1,0 +1,120 @@
+strong	cimke	pontossag	terminologia	magyar	formai	osszesen	megjegyzes
+G0002	A	3	2	3	2	10	hű, teljes
+G0002	B	0	1	1	0	2	csak a jelentés maradt, fejléc/etimológia/igehelyek hiányoznak; „a mózesi testvér”
+G0002	C	1	1	2	1	5	az első fele angolul maradt
+G0002	D	3	2	3	2	10	hű, teljes („ékesszóló” jó)
+G0002	E	1	1	2	0	4	sérült héber (אָהַR, הַR), ὀρεινós; „indeclinable proper name” kimaradt
+G0002	F	3	1	2	2	8	„Syriac” fordítatlan; „ami egyenlő ὀρεινός” döcög
+G0004	A	2	2	3	2	9	„az én részem miatt” félrevisz
+G0004	B	2	2	2	1	7	sérült görög (ἐτήρηsa); „lefelé” tükörfordítás; igeidő hibás
+G0004	C	1	1	3	0	5	címszó/etimológia, „6.” és „(From Aristotle down.)” kimaradt; 1Th nem Károli
+G0004	D	3	2	2	2	9	mondatközi nagybetű („Elkerültem”)
+G0004	E	3	2	3	2	10	hű, teljes
+G0004	F	2	2	3	2	9	„on my account” kimaradt
+G0012	A	3	2	2	2	9	„Róma Kelemen”; egyébként teljes
+G0012	B	1	1	1	0	3	sérült címszó (ἄβyszoszz, βυθósszal); „a Sept. helyett תְּהום” félreértés; angol maradványok
+G0012	C	2	1	2	1	6	τῆς τῆς (γῆς helyett); „Istentől” („Istenről”); Kelemen-levél Károli-rövidítéssel; f→k
+G0012	D	1	1	2	1	5	2Móz 7:11 (1Móz helyett!); etimológia összekuszálva; „Clement of Rome”, „under the word” fordítatlan
+G0012	E	3	1	3	1	8	„the Sept.” egy helyen fordítatlan; egyébként igényes
+G0012	F	1	1	1	1	4	fejléc és klasszikus rész kimaradt; „Kelemen Római”; „Isten”, „a sárkány” vonatkozás elveszett
+G0035	A	3	2	3	2	10	hű, teljes
+G0035	B	3	2	3	2	10	hű, teljes
+G0035	C	0	0	2	0	2	csak „genealógia nélküli” — gyakorlatilag az egész hiányzik
+G0035	D	3	2	2	2	9	„Ó. Sz.-ben” esetlen
+G0035	E	3	2	3	2	10	hű, teljes
+G0035	F	1	2	3	0	6	címszó kimaradt; a görög idézetet lefordította („nem származtatva”)
+G0086	A	3	2	3	1	9	ἄβυσσos sérülés; egyébként teljes
+G0086	B	3	2	3	2	10	hű, teljes
+G0086	C	2	1	2	1	6	„1Sám 22:6” (2Sám helyett); chapter/vol./pp./marginal reading fordítatlan
+G0086	D	0	0	2	0	2	egymondatos összefoglaló — a szócikk gyakorlatilag hiányzik
+G0086	E	2	1	2	1	6	שְׁאולot sérült héber; „megtestesüléstől megfosztott”; cf:, pp., marginal reading
+G0086	F	3	1	3	1	8	angol maradványok (marginal reading, chapter, vol.)
+G0282	A	3	2	3	2	10	hű, teljes
+G0282	B	1	1	2	0	4	címszó/fejléc kimaradt; „cf.”, „p.” maradt; „Héb 7:3”
+G0282	C	1	1	2	0	4	fejléc és „in Greek writings” kimaradt; „Heb 7:3”; „Száráhról”
+G0282	D	2	2	2	1	7	„anyja által megfosztott” félreértés; záró zárójel hiányzik
+G0282	E	3	2	3	1	9	„Bleek on Heb.” fordítatlan
+G0282	F	3	2	3	2	10	hű, teljes, igényes
+G0540	A	1	1	3	0	5	a szócikk nagy része kimaradt; „Hé 7:3” nem Károli
+G0540	B	3	2	3	2	10	hű, teljes
+G0540	C	3	2	2	2	9	„Szophoklesztől” helyesírás
+G0540	D	3	2	3	2	10	hű, teljes
+G0540	E	3	2	2	2	9	„az nemzetségtáblázatokban”
+G0540	F	3	2	3	2	10	hű, teljes
+G0813	A	3	2	3	2	10	hű, teljes
+G0813	B	2	2	2	1	7	betoldás/feloldás a forráson túl („A nevelésről c. mű 7. fejezete”); „lefelé”
+G0813	C	1	1	2	0	4	címszó és „(often so of soldiers)” kimaradt; 1Th/2Th nem Károli; „Platónban”
+G0813	D	3	2	3	2	10	hű, teljes (latinos névalakok)
+G0813	E	3	2	2	2	9	„a sorok közül kimaradó” gyenge; „Thukididész”
+G0813	F	3	2	3	2	10	hű, teljes
+G0994	A	3	2	3	1	9	„1 aorist” → „1. aoristos” (álszámozás)
+G0994	B	3	2	2	0	7	Act/Mat/Mar/Joh nem Károli; álszámozás; „Összevetés”
+G0994	C	3	1	3	1	8	„marginal reading” fordítatlan; álszámozás
+G0994	D	2	1	2	0	5	címszó (βοάω) kimaradt; sérült héber (צָעַK, זָעַK); „üvöltetni”; angol nyelvtani szavak
+G0994	E	1	1	2	0	4	a teljes nyelvtani fejléc kimaradt; „Jn” nem Károli
+G0994	F	3	1	3	1	8	„imperfect”, „1 aorist”, „marginal reading” fordítatlan
+G1311	A	3	1	2	1	7	nyelvtani szakszavak angolul (aorist, present, perfect participle)
+G1311	B	3	1	2	1	7	angol nyelvtani szakszavak; „Latinperdere” egybeírva
+G1311	C	2	0	2	1	5	„passzív” a kötelező „szenvedő alakban” helyett; „Sept.” feloldatlan; „Lat indeleere” sérült; „lefelé”
+G1311	D	2	2	3	1	8	a címszó (διαφθείρω) kimaradt; különben kiváló
+G1311	E	3	2	2	2	9	„a testi erőről és erőről” döcög
+G1311	F	1	1	2	0	4	teljes nyelvtani/LXX fejléc kimaradt; a görög idézeteket lefordította
+G1941	A	2	1	2	1	6	3. jelentés félrefordítva („magához hívni”); „Sept.”, „marginal reading” maradt; Act 26:32
+G1941	B	0	1	2	0	3	a szócikk kétharmada hiányzik (a 2. pont közepén megszakad)
+G1941	C	1	1	2	0	4	teljes nyelvtani fejléc kimaradt; betoldott „με”; Beelzebub, „a Bibliában” (evangéliumok helyett)
+G1941	D	1	0	1	0	2	fejléc kimaradt; „cf.”, „i. e.”, „etc.” fordítatlan; „Mózes 1. könyve”; sérült héber; „Istent” (Urat helyett)
+G1941	E	3	2	3	2	10	az aranyhoz legközelebbi: „melléknéven nevez”, hebraizmus, teljes
+G1944	A	3	2	3	2	10	hű, teljes
+G1944	B	1	1	3	0	5	címszó, etimológia, „only in Biblical…” kimaradt; Joh nem Károli
+G1944	C	2	2	3	2	9	„( Wisdom 3:13 )” kimaradt
+G1944	D	3	1	2	1	7	sérült görög (ἐπικαταράοmai); „Sept.” feloldatlan; „Isten átkán fekvő”
+G1944	E	3	1	1	1	6	Wisdom/Macc fordítatlan; „Isten átkának alatt fekvő”
+G1944	F	3	2	3	2	10	hű, teljes
+G2671	A	3	2	3	2	10	hű, teljes
+G2671	B	1	1	1	0	3	görög címszó helyett „kárt, kárhozat”; sérült héber; „közel van Istenhez” félreértés
+G2671	C	3	1	3	2	9	„Sept.” feloldatlan; angol névalakok
+G2671	D	3	2	2	2	9	„az átokot”, „terméktelenségre”
+G2671	E	3	2	2	2	9	nehézkes („átadattatáshoz”)
+G2671	F	1	1	2	0	4	minden görög/héber elhagyva vagy lefordítva; Zsid 6:8 helyett Gal 3:10
+G2672	A	2	1	2	1	6	a címszó (καταράομαι καταρωμαι) kimaradt; „tökéletes szenvedő melléknév”; Winer's Grammar
+G2672	B	3	2	3	1	9	álszámozás („1. aoristos”); „text” fordítatlan
+G2672	C	1	1	1	0	3	fejléc kimaradt; betoldás („a középkori görögből”); „Héb”; „dative-ot”
+G2672	D	3	2	3	2	10	hű, teljes
+G2672	E	3	2	2	2	9	„lefelé” tükörfordítás
+G2672	F	1	0	1	0	2	sok angol maradvány; sérült héber (אָרַR); „Már 11:21”; „gonoszt imáit rá”; „néha néha”
+G3777	A	3	2	3	2	10	hű, teljes, igényes
+G3777	B	0	0	2	0	2	csak „sem; és nem.”
+G3777	C	2	1	2	1	6	„melléknévi tagadó kötőszó” (adjunctive); „az írót eszébe”; Winers Grammar, p.
+G3777	D	3	2	2	2	9	„Szóléczes módon” hibás szó
+G3777	E	3	1	2	1	7	„Hómertől”; „a οὐ” névelőhiba; „Mar 5:3”; Winers Grammar
+G3777	F	1	0	1	0	2	tömeges görögsérülés (μήte, οὐdé, σῦka); „Már”; cf., text fordítatlan
+G4151	A	3	2	3	1	9	teljes, „szellem” következetes; a forrás görög ékezeteit „javítja”; „Mar”/„Jn” nem Károli
+G4151	B	1	1	2	0	4	címszó/fejléc és a 2. számozás kimaradt; görögcsonkolás (πα, τέ); Szentlélek/Szent Szellem vegyesen; Heb, 2Th, Jn
+G4151	C	3	0	2	1	6	„spirit” → „Szentlélek”/„lélek” tömegesen (terminológiai tábla sértése); „chapter” fordítatlan
+G4151	D	2	1	2	0	5	görögcsonkolás latin végződéssel (γράμμαmat-tal, σάρka-val); „pör”; „lefelé”; vegyes terminológia
+G4151	E	3	2	3	1	9	kiváló, „szellem” következetes; néhány görög szó csonkolva (πνεύμαti, κα)
+G4151	F	3	2	3	2	10	a legtisztább: teljes, következetes, Károli-rövidítések rendben
+G5010	A	3	2	2	2	9	„módral” elírás
+G5010	B	2	2	2	0	6	„Melchisédeknek” betoldás; „lefelé”; Héb nem Károli
+G5010	C	2	2	2	1	7	„(Károli: rendje)” — az A. V. helyére kitalált Károli-hivatkozás (betoldás)
+G5010	D	3	2	3	2	10	hű, teljes
+G5010	E	2	2	2	2	8	„(A. V. order)” kimaradt; „elrendezés, elrendezés”; „lefelé”
+G5010	F	1	2	2	0	5	címszó/etimológia kimaradt; „Héber 5:6” nem Károli
+G5351	A	2	2	2	2	8	„ἐν határozószóval” (datívusz helyett); „Hómertől”; „megkárosítja abban valami”
+G5351	B	2	2	3	1	8	görög idézeteket fordított (ἐν τίνι, τινα, ἀπό τίνος); „(A. V. corrupt)” kimaradt
+G5351	C	2	2	2	1	7	„megfelelően” (properly = tulajdonképpen); „vö. miénk ruin”
+G5351	D	2	2	3	1	8	„(Károli: megront)” — kitalált Károli-hivatkozás az A. V. helyén
+G5351	E	1	1	2	0	4	fejléc, templom-idézet és Deyling kimaradt; „passzív” a kötelező alak helyett
+G5351	F	2	2	3	1	8	a címszó (φθείρω) kimaradt; különben kiváló
+G5356	A	3	2	3	1	9	„Wis. 14:12” nem Károli
+G5356	B	3	2	3	2	10	hű, teljes
+G5356	C	2	1	1	0	4	sérült görög (γένεσιzzel, αἰώνioszal); „Platónál, Arisztotelnél”; „lefelé”; Wis.
+G5356	D	3	2	3	2	10	hű, teljes
+G5356	E	2	1	2	1	6	„a megváltás elvesztése” (üdvösség); τῆς kimaradt; „héb.” betoldás; „marginal reading”
+G5356	F	2	2	3	1	8	címszó, etimológia és „from Aeschylus…” kimaradt
+G5590	A	3	2	2	2	9	„a Septuaginta időszakában” félreértés (a „times too many to count” helyett)
+G5590	B	2	1	2	1	6	„sokszor, mint számolni lehet”; σῶ csonkolás; „Sept.” feloldatlan; angol maradvány
+G5590	C	3	2	3	2	10	hű, teljes, a görög hibátlan
+G5590	D	3	2	3	1	9	görögcsonkolás (ψυχα, χαῖς)
+G5590	E	3	2	2	1	8	„élettestet”; ismétlő mondat; ἡ, τό kimaradt
+G5590	F	1	1	2	0	4	fejléc héberrel együtt kimaradt; 1Th/Joh nem Károli; „p.” feloldatlan
