@@ -34,6 +34,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 - A `claude/forditas-pilot-brief-3afbbf` ág törlése (csak az FP0 van rajta, ős).
 - A chatben készült briefek (#4, #7, #10, #11) commitolása a repó gyökerébe, hogy a chat onnan olvassa őket.
 - 72 távoli ág van, ebből kb. 60 régi (2026.09.02–09.11). Egyszeri átnézés, majd törlés.
+- E5: a `-` kezdetű törölt sorok (felsorolás) alulszámolása, 68eb348 óta (l. naplok/ELLENOR_CI_E5.md, 2. kör). Rövid CI-javítás külön ágon (D6), legkésőbb a 2. fázis előtt.
 
 ## Munkamenet (tokentakarékos)
 
