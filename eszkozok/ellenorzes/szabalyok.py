@@ -214,15 +214,76 @@ def e4_teljes_scan_naplo_es_dontes(fajlok):
 
 CIMSOR_MINTA = re.compile(r'^#{2,3}\s')
 
+# Sor elejen (opcionalis whitespace utan) allo jeloles -- nem eleg, ha a
+# szoveg barhol csak *emliti* a jelolest (l. naplok/ELLENOR_CI_E5.md,
+# "Sulyos" talalat: sajat commit-uzenet leiro mondata veletlenul kikapcsolta
+# az E5-ot, mert a regi ellenorzes sima reszszoveg-keresest hasznalt).
+SZANDEKOS_JELOLES_MINTA = re.compile(
+    r'^\s*(TÖRLÉS-SZÁNDÉKOS|TORLES-SZANDEKOS):', re.MULTILINE
+)
+
+
+def _study_fajlok_halmaza_ref(ref):
+    """A study-fajlok halmaza egy adott git ref allapotabol (`git show
+    ref:adat/motivumok.tsv`), NEM a munkakonyvtarbol -- ha a
+    study_fajlok_halmaza()-t hasznalnank, az mindig a jelenleg kicheckoutolt
+    (tipikusan a head_ref) allapotot olvasna, es egy olyan PR, amely egy
+    study-fajlt es a hozza tartozo forras_study-bejegyzest egyszerre torli,
+    nem szamitana study-fajlnak -- pedig eppen ez a tartalomvesztes, amit az
+    E5 hivatott elkapni. `ref` hianyaban vagy hiba eseten ures halmaz."""
+    if not ref:
+        return set()
+    try:
+        nyers = subprocess.check_output(
+            ['git', 'show', '%s:adat/motivumok.tsv' % ref],
+            cwd=ROOT, stderr=subprocess.DEVNULL
+        ).decode('utf-8', errors='replace')
+    except (subprocess.CalledProcessError, OSError):
+        return set()
+    sorok = [s.rstrip('\r') for s in nyers.split('\n') if s.strip() and not s.startswith('#')]
+    if not sorok:
+        return set()
+    fejlec = sorok[0].split('\t')
+    try:
+        idx = fejlec.index('forras_study')
+    except ValueError:
+        return set()
+    halmaz = set()
+    for sor in sorok[1:]:
+        mezok = sor.split('\t')
+        if idx >= len(mezok):
+            continue
+        for f in mezok[idx].split(';'):
+            f = f.strip()
+            if f:
+                halmaz.add(f)
+    return halmaz
+
+
+def _study_vagy_sablon_fajl(fajl, study_halmaz):
+    """CI_ELLENORZES_BRIEF.md E5: a >30-sor-torles ag csak study- es
+    sablonfajlokra vonatkozik. A study-fajlok kanonikus halmaza az
+    `adat/motivumok.tsv` `forras_study` oszlopa; a sablonfajlok a
+    `sablonok/` konyvtar alatt vannak."""
+    if fajl is None:
+        return False
+    if fajl in study_halmaz:
+        return True
+    return fajl.startswith('sablonok/')
+
 
 def e5_tartalomvesztes_or(base_ref, head_ref, commit_uzenet=''):
-    """Git diff `base_ref..head_ref` -- ha torol ##/### cimsort, vagy egy
-    study-/sablonfajlbol 30-nal tobb sort, a commit-uzenetben kell
-    'TORLES-SZANDEKOS:' jelolesnek lennie. `base_ref`/`head_ref` hianyaban
-    (pl. --teljes mod) [] -- ez a szabaly csak diff-mod ban ertelmezheto."""
+    """Git diff `base_ref..head_ref` -- ha torol ##/### cimsort (barmely
+    fajlban), vagy egy study-/sablonfajlbol 30-nal tobb sort, a
+    commit-uzenetben kell 'TORLES-SZANDEKOS:' jelolesnek lennie. Mas
+    fajlokbol (pl. `eszkozok/*.py`) torolt >30 sor nem szamit -- a brief
+    E5-sora expliciten study-/sablonfajlra korlatozza ezt az agat.
+    `base_ref`/`head_ref` hianyaban (pl. --teljes mod) [] -- ez a szabaly
+    csak diff-mod ban ertelmezheto."""
     talalatok = []
     if not base_ref or not head_ref:
         return talalatok
+    study_halmaz = _study_fajlok_halmaza_ref(base_ref) | _study_fajlok_halmaza_ref(head_ref)
     try:
         kimenet = subprocess.check_output(
             ['git', 'diff', '--unified=0', '%s..%s' % (base_ref, head_ref)],
@@ -231,7 +292,7 @@ def e5_tartalomvesztes_or(base_ref, head_ref, commit_uzenet=''):
     except (subprocess.CalledProcessError, OSError):
         return talalatok
 
-    van_szandekos = 'TÖRLÉS-SZÁNDÉKOS:' in commit_uzenet or 'TORLES-SZANDEKOS:' in commit_uzenet
+    van_szandekos = bool(SZANDEKOS_JELOLES_MINTA.search(commit_uzenet))
     aktualis_fajl = None
     torolt_szam = 0
     torolt_cimsor = []
@@ -247,7 +308,7 @@ def e5_tartalomvesztes_or(base_ref, head_ref, commit_uzenet=''):
                     'E5', SZINT['E5'], aktualis_fajl, 0,
                     'torolt cimsor "TÖRLÉS-SZÁNDÉKOS:" jeloles nelkul: %s' % c
                 ))
-        elif torolt_szam > 30:
+        elif torolt_szam > 30 and _study_vagy_sablon_fajl(aktualis_fajl, study_halmaz):
             talalatok.append(Talalat(
                 'E5', SZINT['E5'], aktualis_fajl, 0,
                 '%d torolt sor "TÖRLÉS-SZÁNDÉKOS:" jeloles nelkul' % torolt_szam
