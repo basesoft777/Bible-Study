@@ -87,6 +87,16 @@ def worktree_torol(path):
     sh(["git", "worktree", "remove", "--force", path], cwd=ROOT, check=False)
 
 
+def utolso_eredmeny(szoveg):
+    """A regi (meg __main__-or nelkuli) valtozat modulszinten ir stdout-ra
+    IMPORTKOR -- ezert csak az utolso, sajat jelolt (`##EREDMENY##`) sorunkat
+    hasonlitjuk ossze, nem a teljes kimenetet."""
+    for sor in reversed(szoveg.splitlines()):
+        if sor.startswith("##EREDMENY##"):
+            return sor[len("##EREDMENY##"):]
+    return szoveg
+
+
 def python_futtat(worktree, kod, cwd_fajlok_ide=None):
     """Egy python -c parancsot futtat a MEGADOTT worktree eszkozok/ konyvtaraval
     a sys.path elejen, hogy a valodi (regi vagy uj) modult importalja."""
@@ -160,7 +170,12 @@ def main():
             sorok.append((
                 "elofordulas_szamlalo.py", "A: valodi TAGNT-sor, %s" % sorveg_nev,
                 "regi=%s | uj=%s | %s" % (ki_regi, ki_uj, "EGYEZIK" if egyezik else "ELTER"),
-                "valodi (konkordancia/TAGNT_kivonat.tsv 1. adatsora)",
+                "valodi (konkordancia/TAGNT_kivonat.tsv 1. adatsora); MEGJEGYZES: a "
+                "count_occurrences() a 2. mezot (Strong) nezi, NEM az utolso mezot, "
+                "ahol a \\r megjelenhetne -- ez az eset ezert nem az utolso-mezo-kockazatot "
+                "probalja, csak azt igazolja, hogy a fuggveny tenyleges kimenete "
+                "(a talalatszam) nem valtozik. Az utolso-mezo-kockazatot a B eset "
+                "probalja kozvetlenul.",
             ))
 
         # --------------------------------------------------------------
@@ -217,7 +232,9 @@ def main():
             sorok.append((
                 "frazis_kereses_pozicio_alapon.py", "A: valodi TAHOT-sorok, %s" % sorveg_nev,
                 "regi=%s | uj=%s | %s" % (ki_regi, ki_uj, "EGYEZIK" if egyezik else "ELTER"),
-                "valodi (konkordancia/TAHOT_kivonat.tsv elso 2 adatsora)",
+                "valodi (konkordancia/TAHOT_kivonat.tsv elso 2 adatsora); MEGJEGYZES: a "
+                "load_verse_strongs() a 2. mezot (Strong) nezi, NEM az utolso mezot -- "
+                "l. az elofordulas_szamlalo.py A esetenel irt megjegyzest.",
             ))
 
         p_regi_crlf_b = ir_ideiglenes(tartalom_b, "\r\n", munka_regi)
@@ -262,12 +279,7 @@ def main():
             # A REGI valtozat (b980c57-ben meg nincs __main__-or, KB1
             # targya) modulszinten ir stdout-ra IMPORTKOR -- ezert csak az
             # utolso, sajat jelolt sorunkat hasonlitjuk ossze, nem a teljes
-            # kimenetet.
-            def utolso_eredmeny(szoveg):
-                for sor in reversed(szoveg.splitlines()):
-                    if sor.startswith("##EREDMENY##"):
-                        return sor[len("##EREDMENY##"):]
-                return szoveg
+            # kimenetet (l. utolso_eredmeny() modulszinten).
             ki_regi_teljes = python_futtat(KB2_REGI, kod % p_regi)
             ki_uj_teljes = python_futtat(KB2_UJ, kod % p_uj)
             ki_regi = utolso_eredmeny(ki_regi_teljes)
@@ -314,29 +326,37 @@ def main():
         # a repoban; reprezentativ (nem valodi) 12-mezos sor, a modul sajat
         # docstringje szerinti szerkezettel.
         # --------------------------------------------------------------
+        # A 12. mezo (Expanded) harom backslash-elvalasztott reszt var
+        # (l. parse_expanded() -- "strong\root\gloss"), kulonben a fuggveny
+        # (None, None)-t ad vissza barmilyen sorveggel, es a teszt nem
+        # tudna kulonbseget mutatni. A gloss-resz vegere kerul a sorveg.
         raw_12mezo = "\t".join([
             "Gen.1.1#1=x", "heber", "translit", "translation", "dStrongs",
-            "f5", "f6", "f7", "f8", "f9", "f10", "H0430=El=Isten",
+            "f5", "f6", "f7", "f8", "f9", "f10", "H0430\\shoresh\\GLOSSTEXT",
         ])
         for sorveg_nev, sorveg in (("LF", "\n"), ("CRLF", "\r\n")):
             p_regi = ir_ideiglenes(raw_12mezo + "\n", sorveg, munka_regi)
             p_uj = ir_ideiglenes(raw_12mezo + "\n", sorveg, munka_uj)
+            # A VALODI process_raw_file()-t hivjuk (importalva), NEM
+            # ujraimplementalva -- l. naplok/ELLENOR_KARB_2kor_ideiglenes.md
+            # "K4 -- tahot teszt" eltere: a v1 mindket oldalon ugyanazt a
+            # beegetett, mar az UJ mintat hasznalo kodot futtatta, tehat az
+            # "EGYEZIK" tautologia volt.
             kod = (
-                "import re\n"
-                "REF_RE = re.compile(r'^([A-Za-z0-9]+)\\.(\\d+)\\.(\\d+)(\\((\\d+)\\.(\\d+)\\))?#(\\d+)=(.*)$')\n"
-                "with open(%r, encoding='utf-8') as f:\n"
-                "    for line in f:\n"
-                "        line = line.rstrip('\\r\\n')\n"
-                "        fields = line.split('\\t')\n"
-                "        print(repr(fields[11]))\n"
+                "import tahot_zarojeles_phaseA_kivonat as M\n"
+                "rows = []\n"
+                "M.process_raw_file(%r, rows)\n"
+                "print('##EREDMENY##' + repr(rows))\n"
             )
-            ki_regi = python_futtat(KB2_REGI, kod % p_regi)
-            ki_uj = python_futtat(KB2_UJ, kod % p_uj)
+            ki_regi_teljes = python_futtat(KB2_REGI, kod % p_regi)
+            ki_uj_teljes = python_futtat(KB2_UJ, kod % p_uj)
+            ki_regi = utolso_eredmeny(ki_regi_teljes)
+            ki_uj = utolso_eredmeny(ki_uj_teljes)
             egyezik = (ki_regi == ki_uj)
             sikerult = sikerult and egyezik
             sorok.append((
                 "tahot_zarojeles_phaseA_kivonat.py", "A: reprezentativ 12-mezos sor, %s" % sorveg_nev,
-                "regi=%s | uj=%s | %s" % (ki_regi, ki_uj, "EGYEZIK" if egyezik else "ELTER"),
+                "regi==uj: %s | eredmeny: %s" % ("EGYEZIK" if egyezik else "ELTER", ki_uj),
                 "MANUAL/FIXTURE -- a nyers TAHOT-fajlok (eszkozok/tahot/*.txt) nincsenek a repoban",
             ))
 
@@ -364,26 +384,35 @@ def main():
     finally:
         worktree_torol(KB2_REGI)
         worktree_torol(KB2_UJ)
+        import shutil
+        for d in (os.path.join(WT_ROOT, "fixture_regi"), os.path.join(WT_ROOT, "fixture_uj")):
+            shutil.rmtree(d, ignore_errors=True)
 
     # --------------------------------------------------------------
     # C) repo-szintu grep: hol nyilik meg fajl newline=''-vel OLVASASRA
     #    (irasra nyitott newline='' NEM kockazat -- azt kizarjuk).
     # --------------------------------------------------------------
+    # Mindket idezojelezest fogjuk (newline='' ES newline="") -- a v1
+    # csak az egyszeres idezojeles alakot kereste, l.
+    # naplok/ELLENOR_KARB_2kor_ideiglenes.md, "hianyos newline='' lista".
     grep = subprocess.run(
-        ["git", "grep", "-n", "newline=''", "--", "eszkozok/"],
+        ["git", "grep", "-nE", r"newline=(''|\"\")", "--", "eszkozok/"],
         cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace",
     )
     kockazatos = []
+    erintett_fajlok = set()
     for sor in grep.stdout.splitlines():
         if "sys.stdout" in sor or "sys.stderr" in sor:
             continue
-        if "'w'" in sor or ", 'a'" in sor or "'wb'" in sor:
+        # Iras-mod (nem OLVASASI kockazat) mindket idezojelezesben kizarva.
+        if any(m in sor for m in ("'w'", '"w"', ", 'a'", ', "a"', "'wb'", '"wb"')):
             continue
         kockazatos.append(sor)
+        erintett_fajlok.add(sor.split(":", 1)[0])
 
     print("\n" + "\n".join("%s\t%s\t%s\t%s" % s for s in sorok))
-    print("\nC) newline='' OLVASASRA nyitott lelohelyek (grep, NEM ellenorzott, NEM javitott): %d"
-          % len(kockazatos))
+    print("\nC) newline='' OLVASASRA nyitott lelohelyek (grep, NEM ellenorzott, NEM javitott): "
+          "%d hely, %d fajl" % (len(kockazatos), len(erintett_fajlok)))
     for sor in kockazatos:
         print("  %s" % sor)
 
@@ -396,7 +425,8 @@ def main():
         f.write("szkript\teset\teredmeny\tproveniencia\n")
         for szkript, eset, eredmeny, prov in sorok:
             f.write("%s\t%s\t%s\t%s\n" % (szkript, eset, eredmeny, prov))
-        f.write("\n# C) newline='' OLVASASRA nyitott lelohelyek (grep, nem ellenorzott, nem javitott):\n")
+        f.write("\n# C) newline='' OLVASASRA nyitott lelohelyek (grep, nem ellenorzott, nem javitott),\n")
+        f.write("# %d hely, %d fajl:\n" % (len(kockazatos), len(erintett_fajlok)))
         for sor in kockazatos:
             f.write("# %s\n" % sor)
     print("\nEredmenytabla: %s" % ki)

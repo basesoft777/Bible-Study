@@ -69,7 +69,9 @@ tehát **védekező higiénia, nem funkcionális javítás** ezeknél a hívási
 a feltételezett hiba a tényleges használati módban sosem manifesztálódik. A
 `naplok/KARB_KB2_crlf.tsv` B-esetei (newline='' kontrollpár) igazolják, hogy maga
 a `rstrip("\r\n")` minta helyes és robusztusabb, csak nem ezen az úton érné el a
-kockázatot. A repóban ténylegesen `newline=''`-lel OLVASÁSRA nyitott ~20 helyet
+kockázatot. A repóban ténylegesen `newline=''`/`newline=""`-lel OLVASÁSRA nyitott
+25 helyet (19 fájlban — a `naplok/KARB_KB2_crlf.tsv` grep-je mindkét
+idézőjelezést fogja)
 (ahol a `\r` valóban átjuthatna) a `naplok/KARB_KB2_crlf.tsv` végén, grep-alapú
 lelőhely-listaként rögzítettük — nem ellenőrzött, hogy ezek ténylegesen hibáznak-e,
 és nem javítottuk (kívül esik a KB2 hatókörén).
@@ -84,7 +86,7 @@ A többség a KB1/KB2 hatókörén kívül esik, mert utána nem `\t`-mezőbont�
 (pl. sima szövegsor-feldolgozás). Nem javítjuk őket — ez a brief §"Nincs benne"
 és a KB2 szövege szerint is kizárt kör.
 
-## 0.X — Ki hívja/importálja a 13 érintett szkriptet (hiányzott, a fuggetlen-ellenor pótolta)
+## 0.X — Ki hívja/importálja a 13 érintett szkriptet (hiányzott; a fuggetlen-ellenor jelezte a hiányt, a munkát végző session pótolta)
 
 `git grep -ln "<szkriptnev-kiterjesztes-nelkul>" -- eszkozok/ .claude/agents/ *.md` mind a 13
 szkriptre (10 KB1 + 3 KB2-only). Kód-szintű (nem dokumentáció-/brief-szintű) találat
