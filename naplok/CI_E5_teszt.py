@@ -20,8 +20,20 @@ ag a cimsor-agtol fuggetlenul, elkulonitve legyen tesztelheto:
   C) eszkozok/*.py fajlbol 35 sor torlese, jeloles nelkul -- zold varva
      (a szabaly nem vonatkozik ra, mert nem study-/sablonfajl)
   D) sablonok/ alatti fajlbol 35 sor torlese, jeloles nelkul -- piros varva
+  E) egy study-fajl TELJES torlese, UGYANABBAN a commitban a
+     adat/motivumok.tsv-bol a forras_study-hivatkozas is eltavolitva,
+     jeloles nelkul -- piros varva. Ez azt a hibat teszteli, amit a
+     naplok/ELLENOR_CI_E5.md 2. kore jelzett: ha a study-halmazt csak a
+     head-allapotbol epitenenk, egy ilyen PR utan a fajl mar nem szamitana
+     study-fajlnak, es a >30-soros ag nem jelezne ra. A javitas: a
+     study-halmaz a base_ref ES a head_ref motivumok.tsv-jenek uniojabol
+     epul (l. _study_fajlok_halmaza_ref() a szabalyok.py-ban). Az E eset
+     emellett a teljes futtat.py-t (minden E2-E16 szabalyt) is lefuttatja
+     ugyanerre a base..head parra, hogy dokumentalja, mas szabaly is
+     jelez-e ra (l. a script vegi kiiratast es naplok/CI_E5_teszt.md-t).
 
-Eredmeny: naplok/CI_E5_teszt.tsv. Kilepesi kod: 0, ha minden eset a vart
+Eredmeny: naplok/CI_E5_teszt.tsv (+ naplok/CI_E5_teszt_E_futtat.md, az E
+eset teljes futtat.py-jelentese). Kilepesi kod: 0, ha minden eset a vart
 eredmenyt adta, kulonben 1.
 """
 
@@ -64,6 +76,40 @@ def szintetikus_tartalom_ir(path, sorszam=SZINTETIKUS_SOR_SZAM):
     with open(path, 'w', encoding='utf-8', newline='\n') as f:
         for i in range(sorszam):
             f.write('teszt-sor %d -- sima szoveg, nem cimsor\n' % i)
+
+
+def forras_study_hivatkozas_torol(motivumok_path, torlendo_fajl):
+    """A `forras_study` oszlopbol eltavolitja a `torlendo_fajl` bejegyzest
+    (';'-vel tagolt lista) -- split('\\t')/'\\t'.join(), a CLAUDE.md
+    "TSV-olvasas" szabalya szerint, a `csv` modul nelkul."""
+    with open(motivumok_path, encoding='utf-8', newline='') as f:
+        nyers = f.read()
+    sorveg = '\r\n' if '\r\n' in nyers else '\n'
+    sorok = nyers.split(sorveg)
+    zaro_ures = sorok and sorok[-1] == ''
+    if zaro_ures:
+        sorok = sorok[:-1]
+    fejlec_idx = next(i for i, s in enumerate(sorok) if s and not s.startswith('#'))
+    fejlec = sorok[fejlec_idx].split('\t')
+    idx = fejlec.index('forras_study')
+    talalt = False
+    for i in range(fejlec_idx + 1, len(sorok)):
+        if not sorok[i].strip() or sorok[i].startswith('#'):
+            continue
+        mezok = sorok[i].split('\t')
+        resz = [r.strip() for r in mezok[idx].split(';') if r.strip()]
+        if torlendo_fajl in resz:
+            resz.remove(torlendo_fajl)
+            mezok[idx] = ';'.join(resz)
+            sorok[i] = '\t'.join(mezok)
+            talalt = True
+    if not talalt:
+        raise RuntimeError(
+            '%s nem szerepel a forras_study oszlopban' % torlendo_fajl
+        )
+    uj_nyers = sorveg.join(sorok) + (sorveg if zaro_ures else '')
+    with open(motivumok_path, 'w', encoding='utf-8', newline='') as f:
+        f.write(uj_nyers)
 
 
 def sor_torles_commit(wt, base, rel_path, uzenet):
@@ -163,6 +209,68 @@ def main():
         sorok.append(('D', sablon_rel, 'piros (sablonfajl)', str(ok_d)))
         sikerult = sikerult and ok_d
 
+        # --- E eset: study-fajl teljes torlese + a forras_study-hivatkozas
+        #     eltavolitasa a motivumok.tsv-bol, egyazon commitban ---
+        sh(['git', 'checkout', '--detach', base], cwd=wt)
+        motivumok_path = os.path.join(wt, 'adat', 'motivumok.tsv')
+        forras_study_hivatkozas_torol(motivumok_path, study_fajl)
+        sh(['git', 'rm', study_fajl], cwd=wt)
+        sh(['git', 'add', 'adat/motivumok.tsv'], cwd=wt)
+        head_e = git_commit(
+            wt,
+            'E eset: study-fajl teljes torlese + motivumok.tsv-referencia '
+            'eltavolitasa, jeloles nelkul'
+        )
+        talalatok_e = SZ.e5_tartalomvesztes_or(base, head_e, commit_uzenet='')
+        ok_e = len(talalatok_e) > 0
+        sorok.append((
+            'E', study_fajl,
+            'piros (teljes torles + referencia-eltavolitas, union-fix)',
+            str(ok_e),
+        ))
+        sikerult = sikerult and ok_e
+
+        # --- E eset kiegeszito dokumentacio: a TELJES futtat.py (minden
+        #     E2-E16 szabaly) lefuttatva ugyanerre a base..head parra, hogy
+        #     lathato legyen, mas szabaly is jelez-e ra ezen kivul. Ez NEM
+        #     resze a sikerult/HIBA dontesnek -- tisztan dokumentacio. ---
+        import futtat as FT
+        teljes_eredmeny = FT.fut(
+            [study_fajl, 'adat/motivumok.tsv'], False,
+            diff_alap=base, diff_fej=head_e, commit_uzenet='',
+        )
+        e_dokumentacio_sorok = [
+            '# E eset -- teljes futtat.py jelentes (dokumentacio, nem resze a sikerult/HIBA dontesnek)',
+            '',
+            '`base=%s`, `head=%s` (a study-fajl teljes torlese + motivumok.tsv-referencia eltavolitasa, jeloles nelkul)' % (base, head_e),
+            '',
+        ]
+        egyeb_szabaly_is_jelez = False
+        for nev in sorted(teljes_eredmeny.keys(), key=lambda n: int(n[1:])):
+            talalatok_nev = teljes_eredmeny[nev]
+            if not talalatok_nev:
+                continue
+            if nev != 'E5':
+                egyeb_szabaly_is_jelez = True
+            e_dokumentacio_sorok.append('## %s (%d talalat)' % (nev, len(talalatok_nev)))
+            for t in talalatok_nev[:5]:
+                e_dokumentacio_sorok.append('- `%s` `%s:%s` -- %s' % (t.szint, t.fajl, t.sor, t.reszlet))
+            e_dokumentacio_sorok.append('')
+        e_dokumentacio_sorok.append(
+            'Osszegzes: %s' % (
+                'az E5-on kivul MAS szabaly is jelez erre a valtoztatasra (l. fent).'
+                if egyeb_szabaly_is_jelez else
+                'az E5-on kivul EGYETLEN mas E2-E16 szabaly sem jelzett talalatot '
+                'erre a valtoztatasra -- az E5 union-fix nelkul ez a tartalomvesztes '
+                'szurten athaladna a CI-n.'
+            )
+        )
+        doku_path = os.path.join(ROOT, 'naplok', 'CI_E5_teszt_E_futtat.md')
+        with open(doku_path, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('\n'.join(e_dokumentacio_sorok) + '\n')
+        print('\n'.join(e_dokumentacio_sorok))
+        print()
+
         fejlec = ['eset', 'fajl', 'varakozas', 'teljesult']
         sorszovegek = ['\t'.join(fejlec)]
         for eset, fajl, varakozas, teljesult in sorok:
@@ -177,7 +285,7 @@ def main():
         print('OSSZESEN: %s' % ('RENDBEN' if sikerult else 'HIBA'))
         return 0 if sikerult else 1
     finally:
-        for m in ('szabalyok', 'study_fajlok_szurese', 'kozos', 'general'):
+        for m in ('szabalyok', 'study_fajlok_szurese', 'kozos', 'general', 'futtat'):
             sys.modules.pop(m, None)
         if modul_dir is not None and modul_dir in sys.path:
             sys.path.remove(modul_dir)
