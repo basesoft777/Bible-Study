@@ -43,7 +43,7 @@ BEEPITVE = 'beépítve'  # "beepitve" ekezetesen
 
 def olvas(ut):
     with open(ut, encoding='utf-8') as f:
-        sorok = [s.rstrip('\n') for s in f]
+        sorok = [s.rstrip('\r\n') for s in f]
     komment = sorok[0] if sorok[0].startswith('#') else None
     if komment:
         sorok = sorok[1:]
@@ -81,71 +81,6 @@ def tisztit(szoveg):
     return re.sub(r'\s*\([^)]*\)', '', szoveg).strip()
 
 
-# --- dontes-tabla ---
-dontesek = {(d['id'], d['igehely']): d
-            for d in olvas_dict(os.path.join(ROOT, 'naplok', 'f3_4_dontesek.tsv'))}
-
-# --- 1. elofordulasok.tsv ---
-ut = os.path.join(ROOT, 'adat', 'elofordulasok.tsv')
-kom, fej, adat = olvas(ut)
-I = {n: i for i, n in enumerate(fej)}
-irt = strong_potolt = 0
-for s in adat:
-    d = dontesek.get((s[I['id']], s[I['igehely']]))
-    if not d or s[I['karoli_szo']].strip():
-        continue
-    s[I['karoli_szo']] = d['karoli_szo']
-    s[I['azonositas_modja']] = d['azonositas_modja']
-    s[I['megbizhatosag']] = d['megbizhatosag']
-    irt += 1
-    # a gerinc_elem-ben megnevezett Strong atemelese az ures strong oszlopba
-    if not s[I['strong']].strip():
-        g = s[I['gerinc_elem']].strip()
-        if re.match(r'^[HG]\d{4}$', g):
-            s[I['strong']] = g
-            strong_potolt += 1
-ir(ut, kom, fej, adat)
-print('elofordulasok.tsv: %d sor kapott karoli_szo tripletet, %d sor strong-potlast'
-      % (irt, strong_potolt))
-
-# --- 2. jeloltek.tsv ---
-ut = os.path.join(ROOT, 'adat', 'jeloltek.tsv')
-kom, fej, adat = olvas(ut)
-J = {n: i for i, n in enumerate(fej)}
-_, fe, ea = olvas(os.path.join(ROOT, 'adat', 'elofordulasok.tsv'))
-E = {n: i for i, n in enumerate(fe)}
-eidx = {(s[E['id']], s[E['igehely']]): s for s in ea}
-
-javitott = feltoltott = 0
-for s in adat:
-    e = eidx.get((s[J['id']], s[J['igehely']]))
-    if not e:
-        continue
-    # (a) F3.1 oszlop-eltolodas javitasa: a karoli_szo oszlopban jelentes_hu all
-    if s[J['karoli_szo']] and s[J['karoli_szo']] == e[E['jelentes_hu']]:
-        s[J['karoli_szo']] = ''
-        s[J['azonositas_modja']] = ''
-        s[J['megbizhatosag']] = ''
-        javitott += 1
-    # (b) triplet oroklese az elofordulasok-bol
-    if s[J['dontes']] == BEEPITVE and e[E['karoli_szo']].strip():
-        s[J['karoli_szo']] = e[E['karoli_szo']]
-        s[J['azonositas_modja']] = e[E['azonositas_modja']]
-        s[J['megbizhatosag']] = e[E['megbizhatosag']]
-        feltoltott += 1
-ir(ut, kom, fej, adat)
-print('jeloltek.tsv: %d eltolt sor javitva, %d sor kapott tripletet' % (javitott, feltoltott))
-
-# --- 3. Karoli_Strong_kivonat.tsv ---
-norm = {}
-with open(os.path.join(ROOT, 'konkordancia', 'Konyv_normalizalo_tabla.tsv'), encoding='utf-8') as f:
-    norm_sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
-for sor_s in norm_sorok[1:]:
-    sor = sor_s.split('\t')
-    if len(sor) >= 2:
-        norm[sor[1]] = sor[0]
-
-
 def hu_to_step(ig):
     m = re.match(r'^(.+?)\s+(\d+):(\d+)$', ig.strip())
     if not m:
@@ -153,23 +88,6 @@ def hu_to_step(ig):
     konyv = HOSSZU.get(m.group(1), m.group(1))
     k = norm.get(konyv)
     return '%s.%s.%s' % (k, m.group(2), m.group(3)) if k else None
-
-
-szotar = {}
-for sor in olvas_dict(os.path.join(ROOT, 'konkordancia', 'Strong_szotar.tsv')):
-    szotar[sor['Strong-szám']] = (
-        sor['Szófaj'],
-        sor['Gyök/Származtatás'])
-
-ut = os.path.join(ROOT, 'konkordancia', 'Karoli_Strong_kivonat.tsv')
-with open(ut, encoding='utf-8') as f:
-    jsorok = [s.rstrip('\n') for s in f]
-jfej = jsorok[0].split('\t')
-jadat = [s.split('\t') for s in jsorok[1:] if s.strip()]
-letezo = set((s[0], s[1]) for s in jadat)
-
-ujak = []
-hibak = []
 
 
 def felvesz(igehely_hu, strong, karoli_szo, azon, megbiz, motivum_id):
@@ -184,25 +102,116 @@ def felvesz(igehely_hu, strong, karoli_szo, azon, megbiz, motivum_id):
     letezo.add((step, strong))
 
 
-for d in dontesek.values():
-    if not d['join_igehely'].strip():
-        continue
-    felvesz(d['join_igehely'], d['join_strong'], tisztit(d['karoli_szo']),
-            d['azonositas_modja'], d['megbizhatosag'], d['id'])
+def main():
+    global norm, szotar, letezo, ujak, hibak
 
-extra = os.path.join(ROOT, 'naplok', 'f3_4_extra_join.tsv')
-if os.path.exists(extra):
-    for d in olvas_dict(extra):
-        felvesz(d['igehely'], d['strong'], d['karoli_szo'],
+    # --- dontes-tabla ---
+    dontesek = {(d['id'], d['igehely']): d
+                for d in olvas_dict(os.path.join(ROOT, 'naplok', 'f3_4_dontesek.tsv'))}
+
+    # --- 1. elofordulasok.tsv ---
+    ut = os.path.join(ROOT, 'adat', 'elofordulasok.tsv')
+    kom, fej, adat = olvas(ut)
+    I = {n: i for i, n in enumerate(fej)}
+    irt = strong_potolt = 0
+    for s in adat:
+        d = dontesek.get((s[I['id']], s[I['igehely']]))
+        if not d or s[I['karoli_szo']].strip():
+            continue
+        s[I['karoli_szo']] = d['karoli_szo']
+        s[I['azonositas_modja']] = d['azonositas_modja']
+        s[I['megbizhatosag']] = d['megbizhatosag']
+        irt += 1
+        # a gerinc_elem-ben megnevezett Strong atemelese az ures strong oszlopba
+        if not s[I['strong']].strip():
+            g = s[I['gerinc_elem']].strip()
+            if re.match(r'^[HG]\d{4}$', g):
+                s[I['strong']] = g
+                strong_potolt += 1
+    ir(ut, kom, fej, adat)
+    print('elofordulasok.tsv: %d sor kapott karoli_szo tripletet, %d sor strong-potlast'
+          % (irt, strong_potolt))
+
+    # --- 2. jeloltek.tsv ---
+    ut = os.path.join(ROOT, 'adat', 'jeloltek.tsv')
+    kom, fej, adat = olvas(ut)
+    J = {n: i for i, n in enumerate(fej)}
+    _, fe, ea = olvas(os.path.join(ROOT, 'adat', 'elofordulasok.tsv'))
+    E = {n: i for i, n in enumerate(fe)}
+    eidx = {(s[E['id']], s[E['igehely']]): s for s in ea}
+
+    javitott = feltoltott = 0
+    for s in adat:
+        e = eidx.get((s[J['id']], s[J['igehely']]))
+        if not e:
+            continue
+        # (a) F3.1 oszlop-eltolodas javitasa: a karoli_szo oszlopban jelentes_hu all
+        if s[J['karoli_szo']] and s[J['karoli_szo']] == e[E['jelentes_hu']]:
+            s[J['karoli_szo']] = ''
+            s[J['azonositas_modja']] = ''
+            s[J['megbizhatosag']] = ''
+            javitott += 1
+        # (b) triplet oroklese az elofordulasok-bol
+        if s[J['dontes']] == BEEPITVE and e[E['karoli_szo']].strip():
+            s[J['karoli_szo']] = e[E['karoli_szo']]
+            s[J['azonositas_modja']] = e[E['azonositas_modja']]
+            s[J['megbizhatosag']] = e[E['megbizhatosag']]
+            feltoltott += 1
+    ir(ut, kom, fej, adat)
+    print('jeloltek.tsv: %d eltolt sor javitva, %d sor kapott tripletet' % (javitott, feltoltott))
+
+    # --- 3. Karoli_Strong_kivonat.tsv ---
+    norm = {}
+    with open(os.path.join(ROOT, 'konkordancia', 'Konyv_normalizalo_tabla.tsv'), encoding='utf-8') as f:
+        norm_sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
+    for sor_s in norm_sorok[1:]:
+        sor = sor_s.split('\t')
+        if len(sor) >= 2:
+            norm[sor[1]] = sor[0]
+
+    szotar = {}
+    for sor in olvas_dict(os.path.join(ROOT, 'konkordancia', 'Strong_szotar.tsv')):
+        szotar[sor['Strong-szám']] = (
+            sor['Szófaj'],
+            sor['Gyök/Származtatás'])
+
+    ut = os.path.join(ROOT, 'konkordancia', 'Karoli_Strong_kivonat.tsv')
+    with open(ut, encoding='utf-8') as f:
+        jsorok = [s.rstrip('\r\n') for s in f]
+    jfej = jsorok[0].split('\t')
+    jadat = [s.split('\t') for s in jsorok[1:] if s.strip()]
+    letezo = set((s[0], s[1]) for s in jadat)
+
+    ujak = []
+    hibak = []
+
+    for d in dontesek.values():
+        if not d['join_igehely'].strip():
+            continue
+        felvesz(d['join_igehely'], d['join_strong'], tisztit(d['karoli_szo']),
                 d['azonositas_modja'], d['megbizhatosag'], d['id'])
 
-jadat.extend(ujak)
-with open(ut, 'w', encoding='utf-8', newline='\n') as f:
-    f.write('\t'.join(jfej) + '\n')
-    for s in jadat:
-        f.write('\t'.join(s) + '\n')
-print('Karoli_Strong_kivonat.tsv: %d uj sor (osszesen %d)' % (len(ujak), len(jadat)))
-if hibak:
-    print('HIBAK:')
-    for h in hibak:
-        print('   ' + h)
+    extra = os.path.join(ROOT, 'naplok', 'f3_4_extra_join.tsv')
+    if os.path.exists(extra):
+        for d in olvas_dict(extra):
+            felvesz(d['igehely'], d['strong'], d['karoli_szo'],
+                    d['azonositas_modja'], d['megbizhatosag'], d['id'])
+
+    jadat.extend(ujak)
+    with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\t'.join(jfej) + '\n')
+        for s in jadat:
+            f.write('\t'.join(s) + '\n')
+    print('Karoli_Strong_kivonat.tsv: %d uj sor (osszesen %d)' % (len(ujak), len(jadat)))
+    if hibak:
+        print('HIBAK:')
+        for h in hibak:
+            print('   ' + h)
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.parse_args()
+    main()
