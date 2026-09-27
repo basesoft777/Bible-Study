@@ -1,0 +1,5 @@
+szkript	sor	regi_eredmeny_CRLF	uj_eredmeny_CRLF
+elofordulas_szamlalo.py	37	HIBAS: utolso mezo = 'G1941\r'	OK
+f3_4_zaro_ellenoriz.py	17	HIBAS: utolso mezo = 'teremté\r'	OK
+frazis_kereses_pozicio_alapon.py	58	HIBAS: utolso mezo = 'H7225\r'	OK
+tahot_zarojeles_phaseA_kivonat.py	84	HIBAS: fields[11] = 'H0430=El=Isten\r'	OK
