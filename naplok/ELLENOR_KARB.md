@@ -113,5 +113,12 @@ D-pontok: a brief §5 döntésnaplója verziósorokból áll (v1–v3.1), külö
 - **Ékezet nélküli commit-üzenet (`db84fca`).** Ugyanaz a döntés, mint az E5-menetnél (l. `naplok/ELLENOR_CI_E5.md`): a branch már pusholt, nem-mergelt commit-jainak szövegét nem írjuk át/force-pusholjuk vissza menőleg, hacsak a felhasználó kifejezetten nem kéri. Ismert, dokumentált korlátozás marad.
 - **K4f (a K4 brief-feltétele csak átértelmezve teljesül a valódi kódon).** A felhasználó saját maga adta ki ezt az átértelmezést a remediáció megrendelésekor ("K4: ... A régi kóddal is fusson, és annak is egyeznie kell ... Tegyél mellé egy newline=''-es kontrollpárt, amely megmutatja, hogy ott a régi minta hibázna"), tehát ez nem nyitott kérdés, hanem a felhasználó által jóváhagyott céldefiníció.
 
-**Kézi mutációs próba (2026.09.27, merge előtt, a chat kérésére):** a `process_raw_file()` zárójel-illesztő ágát (`secondary = ... if chap2 else None` → `if False else None`, azaz a zárójeles másodlagos hivatkozás elvesztése) szándékosan elrontottam egy helyi másolaton, egy valódi `Gen.32.1(32.2)#1=x` alakú sorral lefuttatva a `secondary` mező `'Gen.32.2'`-ről `None`-ra változott — a teszt pirosra vált a hibás kóddal.
-Az eredeti kód visszaállítva (`git checkout --`), `git status --porcelain` üres; az eredmény ismét `secondary='Gen.32.2'`.
+**Kézi mutációs próba (2026.09.27, merge előtt, a chat kérésére) — 1. kör, KÜLÖN fixture-futtatás, NEM a committolt teszt:** a `process_raw_file()` zárójel-illesztő ágát (`secondary = ... if chap2 else None` → `if False else None`) egy önálló, ad hoc szkripttel (nem `naplok/KARB_crlf_teszt.py`) futtatva, kézzel írt `Gen.32.1(32.2)#1=x` fixture-rel: a `secondary` mező `'Gen.32.2'`-ről `None`-ra változott — a KÜLÖN futtatás pirosra váltott. Az eredeti kód visszaállítva (`git checkout --`).
+
+**2. kör, a COMMITOLT teszttel megismételve, a chat kérésére:** a mutációt egy eldobható ágon (`throwaway-mutacio-proba`, nem push-olt, azóta törölve) commitolva (`5b33f67`, alap: `bf54271`), majd
+`python naplok/KARB_crlf_teszt.py --regi-commit bf5427 --uj-commit 5b33f67`
+paranccsal futtatva: **EXIT=0, a `tahot_zarojeles_phaseA_kivonat.py` mindkét A-sora `regi==uj: EGYEZIK | eredmeny: []` maradt — a committolt teszt NEM vette észre a mutációt.**
+
+Ok: a `naplok/KARB_crlf_teszt.py` saját, beépített tahot-fixture-je (`"Gen.1.1#1=x", ...`) SOSEM tartalmaz zárójeles másodlagos hivatkozást, ezért a `secondary`-ág mindkét oldalon eleve `None`-t ad — a committolt teszt vakfoltja pontosan az a kód-ág, amit a mutáció elrontott. Ez egy valódi, dokumentált hiányosság a `naplok/KARB_crlf_teszt.py` tahot-lefedettségében (a fixture-t nem javítottam, mert ez már egy harmadik körös scope-bővítés lenne, jóváhagyás nélkül).
+
+**Következtetés a chat utasítása szerint ("ha a teszt nem bukik, ne mergelj, szólj"): a #60 MERGE-E NEM TÖRTÉNT MEG.**
