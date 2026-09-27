@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 """
 CI_E5_teszt.py -- az E5-javitas (szabalyok.py: a >30-sor-torles ag csak
-study-/sablonfajlra vonatkozik, es a "TÖRLÉS-SZÁNDÉKOS:" jelolesnek sor
-elejen kell allnia, nem eleg, ha a commit-uzenet csak *emliti*) negyesetes
-ellenorzese, ideiglenes git worktree-ben, a valodi e5_tartalomvesztes_or()-t
-hasznalva.
+study-/sablonfajlra vonatkozik, a "TÖRLÉS-SZÁNDÉKOS:" jelolesnek sor elejen
+kell allnia, nem eleg, ha a commit-uzenet csak *emliti*, es a study-halmaz
+a base+head unioja) hatesetes (A, B, B2, C, D, E) ellenorzese, ideiglenes
+git worktree-ben, a valodi e5_tartalomvesztes_or()-t hasznalva.
 
 Minden eset szintetikus (fejlec-mentes, sima szoveges) tartalommal dolgozik
 egy-egy valodi study-/sablon-/eszkozok-fajl helyen, hogy a torolt-sor-szam
@@ -23,14 +23,25 @@ ag a cimsor-agtol fuggetlenul, elkulonitve legyen tesztelheto:
   E) egy study-fajl TELJES torlese, UGYANABBAN a commitban a
      adat/motivumok.tsv-bol a forras_study-hivatkozas is eltavolitva,
      jeloles nelkul -- piros varva. Ez azt a hibat teszteli, amit a
-     naplok/ELLENOR_CI_E5.md 2. kore jelzett: ha a study-halmazt csak a
-     head-allapotbol epitenenk, egy ilyen PR utan a fajl mar nem szamitana
-     study-fajlnak, es a >30-soros ag nem jelezne ra. A javitas: a
-     study-halmaz a base_ref ES a head_ref motivumok.tsv-jenek uniojabol
-     epul (l. _study_fajlok_halmaza_ref() a szabalyok.py-ban). Az E eset
-     emellett a teljes futtat.py-t (minden E2-E16 szabalyt) is lefuttatja
-     ugyanerre a base..head parra, hogy dokumentalja, mas szabaly is
-     jelez-e ra (l. a script vegi kiiratast es naplok/CI_E5_teszt.md-t).
+     naplok/ELLENOR_CI_E5.md 1. kore jelzett (a "G2 -- mellekhatas: a
+     study-halmaz forrasa" sor): ha a study-halmazt csak a head-allapotbol
+     epitenenk, egy ilyen PR utan a fajl mar nem szamitana study-fajlnak,
+     es a >30-soros ag nem jelezne ra. A javitas: a study-halmaz a
+     base_ref ES a head_ref motivumok.tsv-jenek uniojabol epul (l.
+     _study_fajlok_halmaza_ref() a szabalyok.py-ban).
+
+     FONTOS PONTOSITAS (a 2. koros ellenorzes eszrevetele,
+     naplok/ELLENOR_CI_E5.md): az E eset SZANDEKOSAN szintetikus,
+     cimsor-mentes tartalommal dolgozik, hogy a torolt-sor-szam agat a
+     cimsor-agtol elkulonitve tesztelje. Egy VALODI study-fajl tobbnyire
+     tartalmaz "##"/"###" cimsort, amelynek torlesere a cimsor-ag a
+     study-halmaztol fuggetlenul, az unio-javitas NELKUL is jelezne --
+     tehat az unio-javitas specifikusan a cimsor-mentes study-tartalom
+     esetere zarja be a rest, nem minden study-fajl-torlesre altalaban.
+     Az E eset emellett a teljes futtat.py-t (minden E2-E16 szabalyt) is
+     lefuttatja ugyanerre a base..head parra, hogy dokumentalja, mas
+     szabaly is jelez-e ra (l. a script vegi kiiratast es
+     naplok/CI_E5_teszt_E_futtat.md-t).
 
 Eredmeny: naplok/CI_E5_teszt.tsv (+ naplok/CI_E5_teszt_E_futtat.md, az E
 eset teljes futtat.py-jelentese). Kilepesi kod: 0, ha minden eset a vart
@@ -64,9 +75,25 @@ def sh(args, cwd=None, check=True):
     return r
 
 
+_ROGZITETT_DATUM = '2000-01-01T00:00:00+0000'
+
+
 def git_commit(wt, uzenet):
-    sh(['git', '-c', 'user.email=teszt@example.com', '-c', 'user.name=CI E5 teszt',
-        'commit', '-m', uzenet], cwd=wt)
+    """Rogzitett szerzo-/committer-datummal, hogy a commit-shak (es igy a
+    naplok/CI_E5_teszt_E_futtat.md-be irt ertekek is) determinisztikusak
+    legyenek futtatasrol futtatasra -- kulonben minden ujrafuttatas mas
+    SHA-t irna a kovetett dokumentacios fajlba (l. naplok/ELLENOR_CI_E5.md
+    2. kor, D4)."""
+    env = dict(os.environ)
+    env['GIT_AUTHOR_DATE'] = _ROGZITETT_DATUM
+    env['GIT_COMMITTER_DATE'] = _ROGZITETT_DATUM
+    r = subprocess.run(
+        ['git', '-c', 'user.email=teszt@example.com', '-c', 'user.name=CI E5 teszt',
+         'commit', '-m', uzenet],
+        cwd=wt, env=env, capture_output=True, text=True, encoding='utf-8'
+    )
+    if r.returncode != 0:
+        raise RuntimeError('git commit hiba:\n%s\n%s' % (r.stdout, r.stderr))
     return sh(['git', 'rev-parse', 'HEAD'], cwd=wt).stdout.strip()
 
 
@@ -261,8 +288,14 @@ def main():
                 'az E5-on kivul MAS szabaly is jelez erre a valtoztatasra (l. fent).'
                 if egyeb_szabaly_is_jelez else
                 'az E5-on kivul EGYETLEN mas E2-E16 szabaly sem jelzett talalatot '
-                'erre a valtoztatasra -- az E5 union-fix nelkul ez a tartalomvesztes '
-                'szurten athaladna a CI-n.'
+                'erre a valtoztatasra. FONTOS: ez a teszteset szandekosan cimsor-mentes '
+                '(szintetikus) study-tartalommal fut, hogy a torolt-sor-szam agat a '
+                'cimsor-agtol elkulonitve tesztelje -- egy VALODI, cimsorokat '
+                'tartalmazo study-fajl teljes torlesere a cimsor-ag (a study-halmaztol '
+                'fuggetlenul) az unio-javitas NELKUL is jelezne. Az unio-javitas tehat '
+                'specifikusan a cimsor-mentes study-tartalom esetere zarja be a rest, '
+                'nem minden study-fajl-torlesre altalaban (l. naplok/ELLENOR_CI_E5.md '
+                '2. kor, "G10 -- a dokumentacio kovetkeztetese").'
             )
         )
         doku_path = os.path.join(ROOT, 'naplok', 'CI_E5_teszt_E_futtat.md')
