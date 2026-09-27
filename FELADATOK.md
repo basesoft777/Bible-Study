@@ -60,7 +60,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 ## Kész (utolsó 2 hét)
 
-- Gépi ellenőrzés GitHubon (CI.0–CI.5 + D8–D18), merge (ez a commit) (09.27)
+- Gépi ellenőrzés GitHubon (CI.0–CI.5 + D8–D18), merge (ez a commit) (09.27); E5 javítás: PR #59
 - Károli-versszámok javítása a görög Ószövetségben (KK0–KK7.5), merge `4b9ae49` (09.27)
 - Forrásjelöltek 1. menete (FJ0–FJ5), merge `ec7aebc`, zárás `72b200c` (09.25)
 - TEREMT-002 1–2. lépés, merge `15c338e` (09.25)
@@ -77,3 +77,4 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | D3 | A Code csak a saját sorát frissíti, új sor csak chat-jóváhagyással | a fájl ne nőjön kontrollálatlanul | a Code szabadon szerkeszti |
 | D4 | Az LXX-döntések (#8) az adatfázisba kerülnek a LEXIKON_LEZARAS-ból | kutatói adat, nem render | a lexikonlezárással együtt |
 | D5 | A Thayer-fordítás (#7) a SZOTAR 1. menet után | terminológia és kiejtés nélkül utólagos csere-körök kellenének (ISTENTISZT-001 tanulsága) | a próba után azonnal |
+| D6 | CI-szabály hibáját külön ágon javítjuk, nem az érintett menetben | a PR ne írja át a saját ellenőrzését | javítás a #58-ban |
