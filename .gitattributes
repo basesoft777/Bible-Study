@@ -6,3 +6,7 @@
 # utolsó mezőt látnak. Ez a sor teszi tartóssá az LF-et: a kézi normalizálás
 # a következő checkoutkor visszaállna.
 *.tsv text eol=lf
+
+# A .claude/agents/*.md frontmatter YAML — a `claude plugin validate` CRLF-es
+# munkapéldányon is hibázhat rajta, tehát ugyanaz a tartóssági indok áll.
+.claude/agents/*.md text eol=lf
