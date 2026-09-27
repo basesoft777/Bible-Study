@@ -128,6 +128,16 @@ def main():
     ap.add_argument('--diff-fej', default=None)
     ap.add_argument('--pr-cim', default='')
     ap.add_argument('--commit-uzenet', default='')
+    ap.add_argument(
+        '--commit-uzenet-fajl', default=None,
+        help=(
+            'Fajl, amelynek tartalma a PR osszes commit-uzenete '
+            '(base..head, osszefuzve). Ekezetes/idezojeles szoveg miatt '
+            'biztonsagosabb, mint a --commit-uzenet shell-argumentum '
+            '(l. CLAUDE.md "Shell" szakasz). Ha meg van adva, felulirja '
+            'a --commit-uzenetet.'
+        ),
+    )
     ap.add_argument('--minta', type=int, default=3)
     args = ap.parse_args()
 
@@ -140,10 +150,15 @@ def main():
         rel = os.path.relpath(os.path.abspath(f), ROOT).replace(os.sep, '/')
         valtozott_relativ.append(rel)
 
+    commit_uzenet = args.commit_uzenet
+    if args.commit_uzenet_fajl:
+        with open(args.commit_uzenet_fajl, encoding='utf-8') as f:
+            commit_uzenet = f.read()
+
     eredmeny = fut(
         valtozott_relativ, args.teljes,
         diff_alap=args.diff_alap, diff_fej=args.diff_fej,
-        pr_cim=args.pr_cim, commit_uzenet=args.commit_uzenet,
+        pr_cim=args.pr_cim, commit_uzenet=commit_uzenet,
     )
     szoveg, hiba_van = jelentes_szoveg(eredmeny, args.teljes, args.minta)
     print(szoveg)

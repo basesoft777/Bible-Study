@@ -29,6 +29,7 @@ from kozos import (
     ROOT, ADAT, Talalat, md_olvasas, dict_sorok, dict_sorok_sorszammal,
     szakaszokra_bont, repo_ut,
 )
+from study_fajlok_szurese import study_fajlok_halmaza
 
 # D8: ezeknek a szabalyoknak a talalata motivum-/fajl-szintu (nem egy
 # konkret uj/modositott sorhoz kotheto), ezert a diff-alapu HIBA/JELENTES
@@ -215,14 +216,30 @@ def e4_teljes_scan_naplo_es_dontes(fajlok):
 CIMSOR_MINTA = re.compile(r'^#{2,3}\s')
 
 
+def _study_vagy_sablon_fajl(fajl, study_halmaz):
+    """CI_ELLENORZES_BRIEF.md E5: a >30-sor-torles ag csak study- es
+    sablonfajlokra vonatkozik. A study-fajlok kanonikus halmaza az
+    `adat/motivumok.tsv` `forras_study` oszlopa (l. study_fajlok_szurese.py);
+    a sablonfajlok a `sablonok/` konyvtar alatt vannak."""
+    if fajl is None:
+        return False
+    if fajl in study_halmaz:
+        return True
+    return fajl.startswith('sablonok/')
+
+
 def e5_tartalomvesztes_or(base_ref, head_ref, commit_uzenet=''):
-    """Git diff `base_ref..head_ref` -- ha torol ##/### cimsort, vagy egy
-    study-/sablonfajlbol 30-nal tobb sort, a commit-uzenetben kell
-    'TORLES-SZANDEKOS:' jelolesnek lennie. `base_ref`/`head_ref` hianyaban
-    (pl. --teljes mod) [] -- ez a szabaly csak diff-mod ban ertelmezheto."""
+    """Git diff `base_ref..head_ref` -- ha torol ##/### cimsort (barmely
+    fajlban), vagy egy study-/sablonfajlbol 30-nal tobb sort, a
+    commit-uzenetben kell 'TORLES-SZANDEKOS:' jelolesnek lennie. Mas
+    fajlokbol (pl. `eszkozok/*.py`) torolt >30 sor nem szamit -- a brief
+    E5-sora expliciten study-/sablonfajlra korlatozza ezt az agat.
+    `base_ref`/`head_ref` hianyaban (pl. --teljes mod) [] -- ez a szabaly
+    csak diff-mod ban ertelmezheto."""
     talalatok = []
     if not base_ref or not head_ref:
         return talalatok
+    study_halmaz = study_fajlok_halmaza()
     try:
         kimenet = subprocess.check_output(
             ['git', 'diff', '--unified=0', '%s..%s' % (base_ref, head_ref)],
@@ -247,7 +264,7 @@ def e5_tartalomvesztes_or(base_ref, head_ref, commit_uzenet=''):
                     'E5', SZINT['E5'], aktualis_fajl, 0,
                     'torolt cimsor "TÖRLÉS-SZÁNDÉKOS:" jeloles nelkul: %s' % c
                 ))
-        elif torolt_szam > 30:
+        elif torolt_szam > 30 and _study_vagy_sablon_fajl(aktualis_fajl, study_halmaz):
             talalatok.append(Talalat(
                 'E5', SZINT['E5'], aktualis_fajl, 0,
                 '%d torolt sor "TÖRLÉS-SZÁNDÉKOS:" jeloles nelkul' % torolt_szam
