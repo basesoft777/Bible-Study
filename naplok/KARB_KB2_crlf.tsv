@@ -1,0 +1,44 @@
+# Parancs: python naplok/KARB_crlf_teszt.py --regi-commit b980c57c173acb09065beb2a9e4a32a0106a24c2 --uj-commit ba57575af7ed0d87b10b5f82cd3174aa16177701
+# MINOSITES: a KB2 rstrip("\n")->rstrip("\r\n") csereje ennel a 4 hivasi
+# pontnal VEDEKEZO HIGIENIA, nem funkcionalis javitas -- l. a szkript fejleceben.
+szkript	eset	eredmeny	proveniencia
+elofordulas_szamlalo.py	A: valodi TAGNT-sor, LF	regi=1 | uj=1 | EGYEZIK	valodi (konkordancia/TAGNT_kivonat.tsv 1. adatsora); MEGJEGYZES: a count_occurrences() a 2. mezot (Strong) nezi, NEM az utolso mezot, ahol a \r megjelenhetne -- ez az eset ezert nem az utolso-mezo-kockazatot probalja, csak azt igazolja, hogy a fuggveny tenyleges kimenete (a talalatszam) nem valtozik. Az utolso-mezo-kockazatot a B eset probalja kozvetlenul.
+elofordulas_szamlalo.py	A: valodi TAGNT-sor, CRLF	regi=1 | uj=1 | EGYEZIK	valodi (konkordancia/TAGNT_kivonat.tsv 1. adatsora); MEGJEGYZES: a count_occurrences() a 2. mezot (Strong) nezi, NEM az utolso mezot, ahol a \r megjelenhetne -- ez az eset ezert nem az utolso-mezo-kockazatot probalja, csak azt igazolja, hogy a fuggveny tenyleges kimenete (a talalatszam) nem valtozik. Az utolso-mezo-kockazatot a B eset probalja kozvetlenul.
+elofordulas_szamlalo.py	B: newline='' kontroll, CRLF	regi utolso mezo='NA28+NA27+Tyn+SBL+WH+Treg+TR+Byz\r' ; uj utolso mezo='NA28+NA27+Tyn+SBL+WH+Treg+TR+Byz' | varva: regi HIBAS, uj OK | RENDBEN	szintetikus kontroll (ugyanaz a valodi sor, csak a fajlnyitas mod maskepp)
+frazis_kereses_pozicio_alapon.py	A: valodi TAHOT-sorok, LF	regi=['H9003', 'H7225'] | uj=['H9003', 'H7225'] | EGYEZIK	valodi (konkordancia/TAHOT_kivonat.tsv elso 2 adatsora); MEGJEGYZES: a load_verse_strongs() a 2. mezot (Strong) nezi, NEM az utolso mezot -- l. az elofordulas_szamlalo.py A esetenel irt megjegyzest.
+frazis_kereses_pozicio_alapon.py	A: valodi TAHOT-sorok, CRLF	regi=['H9003', 'H7225'] | uj=['H9003', 'H7225'] | EGYEZIK	valodi (konkordancia/TAHOT_kivonat.tsv elso 2 adatsora); MEGJEGYZES: a load_verse_strongs() a 2. mezot (Strong) nezi, NEM az utolso mezot -- l. az elofordulas_szamlalo.py A esetenel irt megjegyzest.
+frazis_kereses_pozicio_alapon.py	B: newline='' kontroll, CRLF	regi utolso mezo='in\r' ; uj utolso mezo='in' | varva: regi HIBAS, uj OK | RENDBEN	szintetikus kontroll
+f3_4_zaro_ellenoriz.py	A: valodi elofordulasok.tsv-sor, LF	regi==uj: EGYEZIK	valodi (adat/elofordulasok.tsv 1. adatsora)
+f3_4_zaro_ellenoriz.py	A: valodi elofordulasok.tsv-sor, CRLF	regi==uj: EGYEZIK	valodi (adat/elofordulasok.tsv 1. adatsora)
+f3_4_zaro_ellenoriz.py	B: newline='' kontroll, CRLF	regi utolso mezo='\r' ; uj utolso mezo='' | varva: regi HIBAS, uj OK | RENDBEN	szintetikus kontroll
+tahot_zarojeles_phaseA_kivonat.py	A: reprezentativ 12-mezos sor, LF	regi==uj: EGYEZIK | eredmeny: []	MANUAL/FIXTURE -- a nyers TAHOT-fajlok (eszkozok/tahot/*.txt) nincsenek a repoban
+tahot_zarojeles_phaseA_kivonat.py	A: reprezentativ 12-mezos sor, CRLF	regi==uj: EGYEZIK | eredmeny: []	MANUAL/FIXTURE -- a nyers TAHOT-fajlok (eszkozok/tahot/*.txt) nincsenek a repoban
+tahot_zarojeles_phaseA_kivonat.py	B: newline='' kontroll, CRLF	regi fields[11]='H0430\\shoresh\\GLOSSTEXT\r' ; uj fields[11]='H0430\\shoresh\\GLOSSTEXT' | varva: regi HIBAS, uj OK | RENDBEN	szintetikus kontroll (MANUAL/FIXTURE alapon)
+
+# C) newline='' OLVASASRA nyitott lelohelyek (grep, nem ellenorzott, nem javitott),
+# 25 hely, 19 fajl:
+# eszkozok/csv_karmeres.py:36:    with open(path, encoding="utf-8", newline="") as f:
+# eszkozok/f46a_nyitott_atx_fejlecek.py:67:    with io.open(NYITOTT_MD, encoding='utf-8', newline='') as fh:
+# eszkozok/f46a_nyitott_atx_fejlecek.py:144:    with io.open(NYITOTT_MD, encoding='utf-8', newline='') as fh:
+# eszkozok/f6_2_lexikon_hivatkozas_migracio.py:40:    with io.open(TABLA, encoding='utf-8', newline='') as f:
+# eszkozok/f6_3_lexikon_hivatkozasok_toltes.py:187:    with io.open(LEXIKON_HIVATKOZASOK, encoding='utf-8', newline='') as f:
+# eszkozok/g0d_elofordulasok_bovites.py:168:    with io.open(TABLA, encoding='utf-8', newline='') as f:
+# eszkozok/g2_forrasreteg_levalasztas.py:117:    with io.open(path, encoding='utf-8', newline='') as f:
+# eszkozok/g7_index_atszervezes.py:68:    with io.open(path, encoding='utf-8', newline='') as f:
+# eszkozok/general.py:133:    with io.open(ut, encoding='utf-8', newline='') as fh:
+# eszkozok/general.py:229:    with io.open(path, encoding='utf-8', newline='') as f:
+# eszkozok/general.py:952:    with io.open(path, encoding='utf-8', newline='') as f:
+# eszkozok/igazolas_migracio.py:69:    with io.open(TABLA, encoding='utf-8', newline='') as f:
+# eszkozok/istentiszt_2b_d1_toltes.py:177:    with io.open(LEXIKON_HIVATKOZASOK, encoding='utf-8', newline='') as f:
+# eszkozok/istentiszt_2b_d3_szerkeszt.py:31:    with io.open(OLDAL_FAJL, encoding='utf-8', newline='') as f:
+# eszkozok/k15_konyvnev_normalizalas.py:75:    with io.open(path, encoding='utf-8', newline='') as f:
+# eszkozok/k16_archiv_jeloles.py:148:    return io.open(ut, mod, encoding='utf-8', newline='')
+# eszkozok/lexikon_general.py:1299:        with io.open(path, encoding='utf-8', newline='') as f:
+# eszkozok/lexikon_general.py:1676:            with io.open(cel_ut, encoding='utf-8', newline='') as f:
+# eszkozok/lexikon_v2_migracio.py:269:    with io.open(regi_ut, encoding='utf-8', newline='') as f:
+# eszkozok/merge_karoli_szofaj.py:55:    with open(KIVONAT_PATH, encoding="utf-8", newline="") as f:
+# eszkozok/render_diff_osztalyoz.py:154:                with io.open(teljes, encoding='utf-8', newline='') as f:
+# eszkozok/render_diff_osztalyoz.py:252:        with io.open(fajl_ut, encoding='utf-8', newline='') as f:
+# eszkozok/sdbh_sdgnt_ellenoriz.py:37:    with open(path, encoding="utf-8", newline="") as f:
+# eszkozok/torzscikk_general.py:475:        with io.open(lex_path, encoding='utf-8', newline='') as f:
+# eszkozok/torzscikk_general.py:485:                with io.open(cel_ut, encoding='utf-8', newline='') as f:

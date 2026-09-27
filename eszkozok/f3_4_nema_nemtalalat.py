@@ -28,19 +28,6 @@ KULCSSZAVAK = {
 }
 HOSSZU = {'Jelenések': 'Jel', 'Lukács': 'Luk', 'Máté': 'Mt', 'Róma': 'Róm'}
 
-karoli = {}
-with open(os.path.join(ROOT, 'konkordancia', 'Karoli_1908.tsv'), encoding='utf-8') as f:
-    karoli_sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
-for sor_s in karoli_sorok[1:]:
-    sor = sor_s.split('\t')
-    if len(sor) >= 2:
-        karoli[sor[0]] = sor[1]
-
-with open(os.path.join(ROOT, 'adat', 'elofordulasok.tsv'), encoding='utf-8') as f:
-    sorok = [s.rstrip('\n') for s in f][1:]
-fejlec = sorok[0].split('\t')
-elo = [dict(zip(fejlec, s.split('\t'))) for s in sorok[1:] if s.strip()]
-
 def verseк(igehely):
     m = re.match(r'^(.+?)\s+(\d+):(\d+)(?:-(\d+))?$', igehely.strip())
     if not m:
@@ -50,20 +37,43 @@ def verseк(igehely):
     v2 = int(m.group(4)) if m.group(4) else v1
     return ['%s %s:%d' % (konyv, fej, v) for v in range(v1, v2 + 1)]
 
-gyanus = []
-for s in elo:
-    if s['karoli_szo'].strip():
-        continue
-    kulcs = s['strong'].strip() or s['gerinc_elem'].strip()
-    szavak = KULCSSZAVAK.get(kulcs)
-    if not szavak:
-        continue
-    szoveg = ' '.join(karoli.get(v, '') for v in verseк(s['igehely'])).lower()
-    if not szoveg.strip():
-        gyanus.append((s['id'], s['igehely'], kulcs, 'NINCS KÁROLI-SOR'))
-    elif not any(w in szoveg for w in szavak):
-        gyanus.append((s['id'], s['igehely'], kulcs, 'nincs ismert visszaadás'))
 
-print('Gyanús sorok (%d):' % len(gyanus))
-for g in gyanus:
-    print('  %-14s %-18s %-14s %s' % g)
+def main():
+    karoli = {}
+    with open(os.path.join(ROOT, 'konkordancia', 'Karoli_1908.tsv'), encoding='utf-8') as f:
+        karoli_sorok = [ln.rstrip('\n').rstrip('\r') for ln in f if ln.strip()]
+    for sor_s in karoli_sorok[1:]:
+        sor = sor_s.split('\t')
+        if len(sor) >= 2:
+            karoli[sor[0]] = sor[1]
+
+    with open(os.path.join(ROOT, 'adat', 'elofordulasok.tsv'), encoding='utf-8') as f:
+        sorok = [s.rstrip('\r\n') for s in f][1:]
+    fejlec = sorok[0].split('\t')
+    elo = [dict(zip(fejlec, s.split('\t'))) for s in sorok[1:] if s.strip()]
+
+    gyanus = []
+    for s in elo:
+        if s['karoli_szo'].strip():
+            continue
+        kulcs = s['strong'].strip() or s['gerinc_elem'].strip()
+        szavak = KULCSSZAVAK.get(kulcs)
+        if not szavak:
+            continue
+        szoveg = ' '.join(karoli.get(v, '') for v in verseк(s['igehely'])).lower()
+        if not szoveg.strip():
+            gyanus.append((s['id'], s['igehely'], kulcs, 'NINCS KÁROLI-SOR'))
+        elif not any(w in szoveg for w in szavak):
+            gyanus.append((s['id'], s['igehely'], kulcs, 'nincs ismert visszaadás'))
+
+    print('Gyanús sorok (%d):' % len(gyanus))
+    for g in gyanus:
+        print('  %-14s %-18s %-14s %s' % g)
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.parse_args()
+    main()
