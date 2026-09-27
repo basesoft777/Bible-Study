@@ -1,16 +1,16 @@
 Igehely	Strong-szám	Károli-szó	Azonosítás módja	Forrás-tanulmány	Megbízhatóság	Szófaj	Gyök/Származtatás
 Gen.1.1	H7225	Kezdetben	tartalom-alapú	1Moz_1v1_bovitett.md	magas	főnév, nőnemű	from the same as H7218
 Gen.1.1	H1254	teremté	tartalom-alapú	1Moz_1v1_bovitett.md	magas	ige	a primitive root
-Gen.1.1	H430	Isten	tartalom-alapú	1Moz_1v1_bovitett.md	magas	főnév, hímnemű	plural of H433
+Gen.1.1	H0430	Isten	tartalom-alapú	1Moz_1v1_bovitett.md	magas	főnév, hímnemű	plural of H433
 Gen.1.1	H8064	az eget	tartalom-alapú	1Moz_1v1_bovitett.md	magas	főnév, hímnemű	dual of an unused singular שָׁמֶה; from an unused root meaning to be lofty
-Gen.1.1	H776	a földet	tartalom-alapú	1Moz_1v1_bovitett.md	magas	főnév, nőnemű	from an unused root probably meaning to be firm
-Gen.1.2	H8414+H922	kietlen és puszta	tartalom-alapú	1Moz_1v2-2v3_bovitett.md	magas		
+Gen.1.1	H0776	a földet	tartalom-alapú	1Moz_1v1_bovitett.md	magas	főnév, nőnemű	from an unused root probably meaning to be firm
+Gen.1.2	H8414+H0922	kietlen és puszta	tartalom-alapú	1Moz_1v2-2v3_bovitett.md	magas		
 Gen.1.2	H8415	mélység	tartalom-alapú	1Moz_1v2-2v3_bovitett.md	magas	főnév	or תְּהֹם; (usually feminine) from H1949
-Gen.1.2	H7307+H430	az Isten Lelke	tartalom-alapú	1Moz_1v2-2v3_bovitett.md	magas		
+Gen.1.2	H7307+H0430	az Isten Lelke	tartalom-alapú	1Moz_1v2-2v3_bovitett.md	magas		
 Gen.1.2	H7363	lebeg vala	tartalom-alapú	1Moz_1v2-2v3_bovitett.md	magas	ige	a primitive root
-Gen.1.3	H559	monda	tartalom-alapú	1Moz_1v2-2v3_bovitett.md	magas	ige	a primitive root
+Gen.1.3	H0559	monda	tartalom-alapú	1Moz_1v2-2v3_bovitett.md	magas	ige	a primitive root
 Gen.1.3	H1961	Legyen	tartalom-alapú	1Moz_1v2-2v3_bovitett.md	magas	ige	a primitive root (compare H1933)
-Gen.1.3	H216	világosság	tartalom-alapú	1Moz_1v2-2v3_bovitett.md	magas	főnév, nőnemű	from H215
+Gen.1.3	H0216	világosság	tartalom-alapú	1Moz_1v2-2v3_bovitett.md	magas	főnév, nőnemű	from H215
 Gen.1.26	H6213	Teremtsünk	tartalom-alapú	1Moz_1v2-2v3_bovitett.md	magas	ige	a primitive root
 Gen.1.26	H1823	hasonlatosságunkra	tartalom-alapú	1Moz_1v2-2v3_bovitett.md	magas	főnév, nőnemű	from H1819
 Gen.1.27	H1254	teremté	tartalom-alapú	1Moz_1v2-2v3_bovitett.md	magas	ige	a primitive root
@@ -24,7 +24,7 @@ Gen.2.3	H6942	megszentelé	tartalom-alapú	1Moz_1v2-2v3_bovitett.md	magas	ige	a 
 Gen.2.4	H8435	eredete	tartalom-alapú	1Moz_2v4-7_bovitett.md	magas	főnév, nőnemű	or תֹּלְדָה; from H3205
 Gen.2.7	H3335	formálta vala	tartalom-alapú	1Moz_2v4-7_bovitett.md	magas	ige	probably identical with H3334 (through the squeezing into shape); (compare H3331)
 Gen.2.7	H6083	porából	tartalom-alapú	1Moz_2v4-7_bovitett.md	magas	főnév, hímnemű	from H6080
-Gen.2.7	H127	földnek	tartalom-alapú	1Moz_2v4-7_bovitett.md	magas	főnév, nőnemű	from H119
+Gen.2.7	H0127	földnek	tartalom-alapú	1Moz_2v4-7_bovitett.md	magas	főnév, nőnemű	from H119
 Gen.2.7	H5301	lehellett vala	tartalom-alapú	1Moz_2v4-7_bovitett.md	magas	ige	a primitive root
 Gen.2.7	H5397+H2416	életnek lehelletét	tartalom-alapú	1Moz_2v4-7_bovitett.md	magas		
 Gen.2.7	H5315+H2416	élő lélekké	tartalom-alapú	1Moz_2v4-7_bovitett.md	magas		
@@ -34,9 +34,9 @@ Gen.2.9	H6086+H1847	jó és gonosz tudásának fáját	tartalom-alapú	1Moz_2v8-
 Gen.2.15	H5647	mívelje	tartalom-alapú	1Moz_2v8-25_bovitett.md	magas	ige	a primitive root
 Gen.2.15	H8104	őrizze	tartalom-alapú	1Moz_2v8-25_bovitett.md	magas	ige	a primitive root
 Gen.2.18	H3808+H2896	Nem jó	tartalom-alapú	1Moz_2v8-25_bovitett.md	magas		
-Gen.2.23	H376	emberből	tartalom-alapú	1Moz_2v8-25_bovitett.md	magas	főnév, hímnemű	contracted for H582 (or perhaps rather from an unused root meaning to be extant)
+Gen.2.23	H0376	emberből	tartalom-alapú	1Moz_2v8-25_bovitett.md	magas	főnév, hímnemű	contracted for H582 (or perhaps rather from an unused root meaning to be extant)
 Gen.2.24	H1692	ragaszkodik	tartalom-alapú	1Moz_2v8-25_bovitett.md	magas	ige	a primitive root
-Gen.2.24	H1320+H259	egy testté	tartalom-alapú	1Moz_2v8-25_bovitett.md	magas		
+Gen.2.24	H1320+H0259	egy testté	tartalom-alapú	1Moz_2v8-25_bovitett.md	magas		
 Gen.2.25	H6174	mezítelenek	tartalom-alapú	1Moz_2v8-25_bovitett.md	magas	melléknév	or עָרֹם; from H6191 (in its original sense)
 Gen.3.1	H6175	ravaszabb	tartalom-alapú	1Moz_3v1-6_bovitett.md	magas	melléknév	passive participle of H6191
 Gen.3.3	H5060	illessétek	tartalom-alapú	1Moz_3v1-6_bovitett.md	magas	ige	a primitive root
@@ -51,8 +51,8 @@ Gen.3.7	H5903	mezítelenek	tartalom-alapú	1Moz_3v7-24_bovitett.md	magas	mellék
 Gen.3.7	H2290	körülkötőket	tartalom-alapú	1Moz_3v7-24_bovitett.md	magas	főnév, hímnemű / főnév, nőnemű	or חֲגֹר; and (feminine) חֲגוֹרָה; or חֲגֹרָה; from H2296
 Gen.3.10	H5903	mezítelen	tartalom-alapú	1Moz_3v7-24_bovitett.md	magas	melléknév	or עֵרֹם; from H6191
 Gen.3.11	H5903	mezítelen	tartalom-alapú	1Moz_3v7-24_bovitett.md	magas	melléknév	or עֵרֹם; from H6191
-Gen.3.14	H779	átkozott	tartalom-alapú	1Moz_3v7-24_bovitett.md	magas	ige	a primitive root
-Gen.3.15	H342	ellenségeskedést	tartalom-alapú	1Moz_3v7-24_bovitett.md	magas	főnév, nőnemű	from H340
+Gen.3.14	H0779	átkozott	tartalom-alapú	1Moz_3v7-24_bovitett.md	magas	ige	a primitive root
+Gen.3.15	H0342	ellenségeskedést	tartalom-alapú	1Moz_3v7-24_bovitett.md	magas	főnév, nőnemű	from H340
 Gen.3.15	H2233	magod	tartalom-alapú	1Moz_3v7-24_bovitett.md	magas	főnév, hímnemű	from H2232
 Gen.3.15	H7779	tapos	tartalom-alapú	1Moz_3v7-24_bovitett.md	magas	ige	a primitive root
 Gen.3.15	H6119	sarkát	tartalom-alapú	1Moz_3v7-24_bovitett.md	magas	főnév, hímnemű	or (feminine) עִקְּבָה; from H6117
@@ -75,7 +75,7 @@ Gen.4.7	H8669	vágyódása	tartalom-alapú	1Moz_4v1-24_bovitett.md	magas	főnév
 Gen.4.7	H4910	uralkodjál	tartalom-alapú	1Moz_4v1-24_bovitett.md	magas	ige	a primitive root
 Gen.4.10	H1818	vére	tartalom-alapú	1Moz_4v1-24_bovitett.md	magas	főnév, hímnemű	from H1826 (compare H119)
 Gen.4.12	H5128+H5110	bujdosó és vándorló	tartalom-alapú	1Moz_4v1-24_bovitett.md	magas		
-Gen.4.15	H226	megbélyegzé	tartalom-alapú	1Moz_4v1-24_bovitett.md	magas	főnév, nőnemű	probably from H225 (in the sense of appearing)
+Gen.4.15	H0226	megbélyegzé	tartalom-alapú	1Moz_4v1-24_bovitett.md	magas	főnév, nőnemű	probably from H225 (in the sense of appearing)
 Gen.4.16	H5113	Nód	tartalom-alapú	1Moz_4v1-24_bovitett.md	magas	tulajdonnév, helynév	the same as H5112; vagrancy
 Gen.4.26	H7121	hívni az Úrnak nevét	tartalom-alapú	1Moz_4v25-5v32_bovitett.md	magas	ige	a primitive root (rather identical with H7122 through the idea of accosting a person met)
 Gen.5.1	H8435	nemzetségének	tartalom-alapú	1Moz_4v25-5v32_bovitett.md	magas	főnév, nőnemű	or תֹּלְדָה; from H3205
@@ -84,8 +84,8 @@ Gen.5.3	H6754	képére	tartalom-alapú	1Moz_4v25-5v32_bovitett.md	magas	főnév,
 Gen.5.24	H1980	járt	tartalom-alapú	1Moz_4v25-5v32_bovitett.md	magas	ige	akin to H3212; a primitive root
 Gen.5.24	H3947	vevé	tartalom-alapú	1Moz_4v25-5v32_bovitett.md	magas	ige	a primitive root
 Gen.5.29	H5146+H5162	vígasztal	tartalom-alapú	1Moz_4v25-5v32_bovitett.md	magas		
-Gen.6.2	H1121+H430	az Istennek fiai	tartalom-alapú	1Moz_6v1-8_bovitett.md	magas		
-Gen.6.2	H1323+H120	az emberek leányait	tartalom-alapú	1Moz_6v1-8_bovitett.md	magas		
+Gen.6.2	H1121+H0430	az Istennek fiai	tartalom-alapú	1Moz_6v1-8_bovitett.md	magas		
+Gen.6.2	H1323+H0120	az emberek leányait	tartalom-alapú	1Moz_6v1-8_bovitett.md	magas		
 Gen.6.3	H7307	lelkem	tartalom-alapú	1Moz_6v1-8_bovitett.md	magas	főnév, nőnemű	from H7306
 Gen.6.3	H1320	test	tartalom-alapú	1Moz_6v1-8_bovitett.md	magas	főnév, hímnemű	from H1319
 Gen.6.4	H5303	óriások	tartalom-alapú	1Moz_6v1-8_bovitett.md	magas	főnév, hímnemű	or נְפִל; from H5307
@@ -107,10 +107,10 @@ Gen.6.17	H5315+H2416	élő lélek	tartalom-alapú	1Moz_6v9-22_bovitett.md	magas
 Gen.6.18	H1285	szövetséget	tartalom-alapú	1Moz_6v9-22_bovitett.md	magas	főnév, nőnemű	from H1262 (in the sense of cutting [like H1254])
 Gen.7.2	H2889	tiszta	tartalom-alapú	1Moz_7v1-24_bovitett.md	magas	melléknév	or טָהֹר; from H2891
 Gen.7.11	H8415	mélység	tartalom-alapú	1Moz_7v1-24_bovitett.md	magas	főnév	or תְּהֹם; (usually feminine) from H1949
-Gen.7.11	H699+H8064	az ég csatornái	tartalom-alapú	1Moz_7v1-24_bovitett.md	magas		
+Gen.7.11	H0699+H8064	az ég csatornái	tartalom-alapú	1Moz_7v1-24_bovitett.md	magas		
 Gen.7.16	H5462	bezára	tartalom-alapú	1Moz_7v1-24_bovitett.md	magas	ige	a primitive root
 Gen.7.22	H5397+H7307+H2416	élő lélek lehellete	tartalom-alapú	1Moz_7v1-24_bovitett.md	magas		
-Gen.7.23	H7604+H389	és csak Noé marada meg	tartalom-alapú	1Moz_7v1-24_bovitett.md	magas		
+Gen.7.23	H7604+H0389	és csak Noé marada meg	tartalom-alapú	1Moz_7v1-24_bovitett.md	magas		
 Gen.8.1	H2142	Megemlékezék	tartalom-alapú	1Moz_8v1-22_bovitett.md	magas	ige	a primitive root; also as denominative from H2145
 Gen.8.1	H7307	szelet	tartalom-alapú	1Moz_8v1-22_bovitett.md	magas	főnév, nőnemű	from H7306
 Gen.8.11	H5929+H2132	olajfalevél	tartalom-alapú	1Moz_8v1-22_bovitett.md	magas		
@@ -121,21 +121,21 @@ Gen.8.21	H3336	gondolatja	tartalom-alapú	1Moz_8v1-22_bovitett.md	magas	főnév,
 Gen.9.4	H1818	vérrel	tartalom-alapú	1Moz_9v1-17_bovitett.md	magas	főnév, hímnemű	from H1826 (compare H119)
 Gen.9.6	H6754	képére	tartalom-alapú	1Moz_9v1-17_bovitett.md	magas	főnév, hímnemű	from an unused root meaning to shade
 Gen.9.9	H1285	szövetséget	tartalom-alapú	1Moz_9v1-17_bovitett.md	magas	főnév, nőnemű	from H1262 (in the sense of cutting [like H1254])
-Gen.9.12	H226	jele	tartalom-alapú	1Moz_9v1-17_bovitett.md	magas	főnév, nőnemű	probably from H225 (in the sense of appearing)
+Gen.9.12	H0226	jele	tartalom-alapú	1Moz_9v1-17_bovitett.md	magas	főnév, nőnemű	probably from H225 (in the sense of appearing)
 Gen.9.13	H7198	ívemet	tartalom-alapú	1Moz_9v1-17_bovitett.md	magas	főnév, nőnemű	from H7185 in the original sense (of H6983) of bending
 Gen.9.15	H2142	megemlékezem	tartalom-alapú	1Moz_9v1-17_bovitett.md	magas	ige	a primitive root; also as denominative from H2145
 Gen.9.16	H5769	örökkévaló	tartalom-alapú	1Moz_9v1-17_bovitett.md	magas	főnév, hímnemű	or עֹלָם; from H5956
-Gen.9.20	H376+H127	földmívelő	tartalom-alapú	1Moz_9v18-29_bovitett.md	magas		
+Gen.9.20	H0376+H0127	földmívelő	tartalom-alapú	1Moz_9v18-29_bovitett.md	magas		
 Gen.9.21	H1540	meztelenen	tartalom-alapú	1Moz_9v18-29_bovitett.md	magas	ige	a primitive root
 Gen.9.22	H6172	mezítelenségét	tartalom-alapú	1Moz_9v18-29_bovitett.md	magas	főnév, nőnemű	from H6168
-Gen.9.25	H779	Átkozott	tartalom-alapú	1Moz_9v18-29_bovitett.md	magas	ige	a primitive root
-Gen.9.26	H430+H8035	Sémnek Istene	tartalom-alapú	1Moz_9v18-29_bovitett.md	magas		
+Gen.9.25	H0779	Átkozott	tartalom-alapú	1Moz_9v18-29_bovitett.md	magas	ige	a primitive root
+Gen.9.26	H0430+H8035	Sémnek Istene	tartalom-alapú	1Moz_9v18-29_bovitett.md	magas		
 Gen.9.27	H6601	Terjeszsze ki	tartalom-alapú	1Moz_9v18-29_bovitett.md	magas	ige	a primitive root
 Gen.10.1	H8435	nemzetsége	tartalom-alapú	1Moz_10v1-11v32_bovitett.md	magas	főnév, nőnemű	or תֹּלְדָה; from H3205
 Gen.10.8	H1368	hatalmassá	tartalom-alapú	1Moz_10v1-11v32_bovitett.md	magas	melléknév	or גִּבֹּר; (shortened) intensive from the same as H1397
 Gen.10.9	H6718	vadász	tartalom-alapú	1Moz_10v1-11v32_bovitett.md	magas	főnév, hímnemű	from a form of H6679 and meaning the same
 Gen.10.10	H4467	birodalmának	tartalom-alapú	1Moz_10v1-11v32_bovitett.md	magas	főnév, nőnemű	from H4427
-Gen.11.1	H8193+H259	egy nyelve	tartalom-alapú	1Moz_10v1-11v32_bovitett.md	magas		
+Gen.11.1	H8193+H0259	egy nyelve	tartalom-alapú	1Moz_10v1-11v32_bovitett.md	magas		
 Gen.11.4	H4026	tornyot	tartalom-alapú	1Moz_10v1-11v32_bovitett.md	magas	főnév, hímnemű	also (in plural) feminine מִגְדָּלָה; from H1431
 Gen.11.4	H8034	nevet	tartalom-alapú	1Moz_10v1-11v32_bovitett.md	magas	főnév, hímnemű	a primitive word [perhaps rather from H7760 through the idea of definite and conspicuous position; compare H8064]
 Gen.11.7	H1101	zavarjuk ott össze	tartalom-alapú	1Moz_10v1-11v32_bovitett.md	magas	ige	a primitive root; (also denominatively from H1098) to fodder
@@ -153,18 +153,18 @@ Gen.13.10	H5375+H5869+H7200	Felemelé azért Lót az ő szemeit, és látá	tart
 Gen.13.10	H4945	bővizű	tartalom-alapú	1Moz_13v1-18_bovitett.md	magas	főnév, hímnemű	from H8248
 Gen.13.13	H7451+H2400	gonoszok és bűnösök	tartalom-alapú	1Moz_13v1-18_bovitett.md	magas		
 Gen.13.14	H5375+H5869	Emeld fel szemeidet	tartalom-alapú	1Moz_13v1-18_bovitett.md	magas		
-Gen.13.16	H6083+H776	mint a földnek pora	tartalom-alapú	1Moz_13v1-18_bovitett.md	magas		
+Gen.13.16	H6083+H0776	mint a földnek pora	tartalom-alapú	1Moz_13v1-18_bovitett.md	magas		
 Gen.13.18	H1129+H4196	oltárt építe ott	tartalom-alapú	1Moz_13v1-18_bovitett.md	magas		
 Gen.14.14	H2593	próbált	tartalom-alapú	1Moz_14_bovitett.md	magas	melléknév	from H2596
 Gen.14.18	H3548	papja	tartalom-alapú	1Moz_14_bovitett.md	magas	főnév, hímnemű	active participle of H3547
 Gen.14.18	H3899+H3196	kenyeret és bort	tartalom-alapú	1Moz_14_bovitett.md	magas		
-Gen.14.18	H410+H5945	Magasságos Istennek	tartalom-alapú	1Moz_14_bovitett.md	magas		
+Gen.14.18	H0410+H5945	Magasságos Istennek	tartalom-alapú	1Moz_14_bovitett.md	magas		
 Gen.14.19	H7069	teremtőjétől	tartalom-alapú	1Moz_14_bovitett.md	magas	ige	a primitive root
 Gen.14.20	H4643	tizedet	tartalom-alapú	1Moz_14_bovitett.md	magas	főnév, hímnemű	or מַעֲשַׂר; and (in plural) feminine מַעַשְׂרָה; from H6240
 Gen.14.22	H5375+H3027	Felemeltem az én kezemet	tartalom-alapú	1Moz_14_bovitett.md	magas		
 Gen.15.1	H4043	paizsod	tartalom-alapú	1Moz_15_bovitett.md	magas	főnév, hímnemű	also (in plural) feminine מְגִנָּה; from H1598
 Gen.15.1	H7939	jutalmad	tartalom-alapú	1Moz_15_bovitett.md	magas	főnév, hímnemű	from H7936
-Gen.15.6	H539	hitt	tartalom-alapú	1Moz_15_bovitett.md	magas	ige	a primitive root; (Isaiah 30:21; interchangeable with H541, to go to the right hand)
+Gen.15.6	H0539	hitt	tartalom-alapú	1Moz_15_bovitett.md	magas	ige	a primitive root; (Isaiah 30:21; interchangeable with H541, to go to the right hand)
 Gen.15.6	H2803	tulajdoníttaték	tartalom-alapú	1Moz_15_bovitett.md	magas	ige	a primitive root
 Gen.15.6	H6666	igazságul	tartalom-alapú	1Moz_15_bovitett.md	magas	főnév, nőnemű	from H6663
 Gen.15.10	H1334	hasítá	tartalom-alapú	1Moz_15_bovitett.md	magas	ige	a primitive root,
@@ -178,8 +178,8 @@ Gen.16.5	H2555	Bántódásom	tartalom-alapú	1Moz_16_bovitett.md	magas	főnév, 
 Gen.16.6	H6031	Nyomorgatja	tartalom-alapú	1Moz_16_bovitett.md	magas	ige	a primitive root (possibly rather identical with H6030 through the idea of looking down or browbeating)
 Gen.16.7	H4397+H3068	az Úrnak angyala	tartalom-alapú	1Moz_16_bovitett.md	magas		
 Gen.16.11	H3458	meghallá Isten	tartalom-alapú	1Moz_16_bovitett.md	magas	tulajdonnév, hímnemű (személynév)	from H8085 and H410; God will hear
-Gen.16.13	H410+H7210	látomás	tartalom-alapú	1Moz_16_bovitett.md	magas		
-Gen.16.14	H883	Lakhai Rói	tartalom-alapú	1Moz_16_bovitett.md	magas	tulajdonnév, helynév	from H875 and H2416 (with prefix) and H7203; well of a living (One) my Seer
+Gen.16.13	H0410+H7210	látomás	tartalom-alapú	1Moz_16_bovitett.md	magas		
+Gen.16.14	H0883	Lakhai Rói	tartalom-alapú	1Moz_16_bovitett.md	magas	tulajdonnév, helynév	from H875 and H2416 (with prefix) and H7203; well of a living (One) my Seer
 Deu.8.7	H8415	mély	tartalom-alapú	Tehom_tematikus.md	magas	főnév	or תְּהֹם; (usually feminine) from H1949
 Deu.33.13	H8415	mélységes	tartalom-alapú	Tehom_tematikus.md	magas	főnév	or תְּהֹם; (usually feminine) from H1949
 Ezk.26.19	H8415	mélység	tartalom-alapú	Tehom_tematikus.md	magas	főnév	or תְּהֹם; (usually feminine) from H1949
