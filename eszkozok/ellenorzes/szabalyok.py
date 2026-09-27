@@ -447,7 +447,8 @@ def e9_angol_sense(fajlok):
 # --------------------------------------------------------------------------
 
 SPIRIT_LELEK_MINTA = re.compile(
-    r'\bspirit(ual)?\b[^.\n]{0,25}\blel(ek|ki)\b|\blel(ek|ki)\b[^.\n]{0,25}\bspirit(ual)?\b',
+    r'\bspirit(ual)?\b[^.\n]{0,25}\b(lélek\w*|lelki\w*)\b'
+    r'|\b(lélek\w*|lelki\w*)\b[^.\n]{0,25}\bspirit(ual)?\b',
     re.IGNORECASE
 )
 

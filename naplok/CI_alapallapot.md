@@ -34,7 +34,7 @@ gépesíti — ez a mérés nem ismétli meg.*
 | E7 | HIBA (fájlszintű) | 0 | 0 |
 | E8 | HIBA | 0 | **3** (l. megjegyzés) |
 | E9 | HIBA (szűkítve, D11) | 99 | **86** |
-| E10 | HIBA | 0 | **1** (l. megjegyzés) |
+| E10 | HIBA | 0 | **2** (l. megjegyzés; a CI.1 tesztírás közben derült ki, hogy az eredeti minta az ékezetes "lélek" szót nem ismerte fel — javítva) |
 | E11 | HIBA (szűkítve+hatókör, D12) | 61 | **9** |
 | E12 | FIGYELMEZTETÉS (hatókör, D13) | 4087 | **1853** |
 | E13 | FIGYELMEZTETÉS (hatókör, D13) | 3837 | **1395** |
@@ -53,6 +53,15 @@ kizárás alá, és E8/E10-nek nincs hatókör-szűkítése (D9 ezeket
 változatlanul HIBA-nak hagyta, hatókör-megszorítás nélkül). Diff-módban ez
 nem probléma: a brief tábla sorai nem lesznek "hozzáadott sor" egy jövőbeli,
 más fájlt módosító PR-ben, tehát D8 miatt JELENTÉS marad, nem blokkol.
+
+**E10 második találata** (`SZOTAR_BRIEF.md:59`) hasonló jellegű: a sor épp
+azt dokumentálja, hogy "spirit = szellem" és "soul = lélek" a helyes
+párosítás — a szabály egyszerű közelség-heurisztikája (spirit ... lélek
+25 karakteren belül) ezt tévesen jelzi, mert nem érti a "soul ="
+kontextust. Ugyanúgy diff-védett, mint a fenti E8/E10 eset. (A CI.1
+tesztírás közben derült ki egy másik hiba is: az eredeti E10-minta a
+`lel(ek|ki)` alakot kereste, ami az ékezetes "lélek" szót nem ismerte fel —
+ez javítva lett, ezért nőtt a találatszám 1-ről 2-re.)
 
 ## Találatszám könyvtáranként (2. mérés, `--teljes`)
 
