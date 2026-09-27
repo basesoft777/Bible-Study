@@ -207,7 +207,7 @@ A szöveg maga nem dönti el a kérdést — ez a bizonytalanság a naplóban é
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#lxx | forrás: konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/numbers.tsv | licenc: CC BY 4.0, projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#lxx | forrás: konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/numbers.tsv | licenc: CC BY 4.0, projekt-adat | ts=2026-09-25 -->
 
 *Ez a blokk a `[ID: MENNY-001]` motívum ÓSZ-i előfordulásait veti össze az `LXX_OS`-szel (G5), soronként a Károli-vers minden versére.*
 
@@ -349,7 +349,7 @@ Mt 22:30 ("a feltámadáskor sem nem házasodnak, sem férjhez nem mennek, hanem
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-23 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-26 -->
 
 *Ez a blokk a `[ID: MENNY-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
@@ -357,7 +357,7 @@ Mt 22:30 ("a feltámadáskor sem nem házasodnak, sem férjhez nem mennek, hanem
 - ID: `MENNY-001`
 - Cím: Isten fiai — Nefilim — Gibborim motívum-komplexum
 - Státusz: publikálható (`v4`, 2026.09.10)
-- Generálva: 2026-09-23
+- Generálva: 2026-09-26
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/MENNY-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**

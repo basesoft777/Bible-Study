@@ -81,7 +81,7 @@ def split_bs(s):
 def process_raw_file(path, rows_out):
     with open(path, encoding='utf-8') as f:
         for line in f:
-            line = line.rstrip('\n')
+            line = line.rstrip('\r\n')
             if not line:
                 continue
             fields = line.split('\t')

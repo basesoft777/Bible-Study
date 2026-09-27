@@ -55,7 +55,7 @@ def load_verse_strongs(tsv_path):
     with open(tsv_path, encoding="utf-8", errors="replace") as f:
         next(f)  # fejlec sor kihagyasa
         for line in f:
-            parts = line.rstrip("\n").split("\t")
+            parts = line.rstrip("\r\n").split("\t")
             if len(parts) < 2:
                 continue
             ref, strong = parts[0], parts[1]

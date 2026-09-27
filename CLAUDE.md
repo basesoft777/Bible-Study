@@ -173,6 +173,9 @@ Táblát író szkript írás előtt vesse össze a sorokat az eredetivel, és e
 **Git:** munkaág `main`; commit-üzenet magyarul, tétel-azonosítóval kezdve (`F1.4: …`);
 push csak kérésre.
 
+Minden menet utolsó commitja frissíti a `FELADATOK.md` saját sorát. Új feladat csak a
+chat jóváhagyásával kerül bele.
+
 A granularitás **tétel-szintű, nem fázis-szintű**: az `F3` nem egy commit, hanem `F3.0:`,
 `F3.1:`, `F3.2:` … külön-külön. Ok: a piszkozatot termelő lépéseknél a commit a validálás
 visszapontja, és a `git log --oneline` csak így marad olvasható.
