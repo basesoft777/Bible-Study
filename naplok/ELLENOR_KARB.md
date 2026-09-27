@@ -166,3 +166,23 @@ Eredmény: `EXIT=0`. Minden A/B-eset `EGYEZIK`/`RENDBEN`. A tahot A-eset eredmé
 — igazolja, hogy L1/L2/L3/L6 helyesen kiesik (5 elemű a lista a 8 bemeneti sorból), és L5 `secondary='Gen.32.2'`-t ad.
 
 (Megjegyzés: a chat üzenetében szereplő `--uj-commit 5b33f67` a korábbi, egyszer már felhasznált, majd törölt mutációs commit — azt a "pozitív" lépéshez újra felhasználni önellentmondás lett volna, mert az a kód MÉG MINDIG hibás. A pozitív kontrollhoz ehelyett a bővített fixture-t a MUTÁCIÓ NÉLKÜLI, aktuális kóddal (`bf5427` önmagával) hasonlítottam össze — ez az egyetlen módja annak, hogy a "pozitív" és a "mutációs" lépés ne mondjon ellent egymásnak.)
+
+**4. pont — mutációs futás a bővített, committolt teszttel:**
+
+A `process_raw_file()` ugyanazon zárójel-illesztő ágát (`secondary = ... if chap2 else None` → `if False else None`) egy friss eldobható ágon (`throwaway-mutacio-proba-2`, alap: `e431509`, mutációs commit `e75823d`, mindkettő nem push-olt, azóta törölve) commitolva, majd:
+
+```
+python naplok/KARB_crlf_teszt.py --regi-commit e431509 --uj-commit e75823d
+```
+
+**Eredmény: EXIT=1.** A tahot A-eset mindkét sorvégen `regi==uj: ELTER`-t ad: a `regi` oldalon `('Gen.32.1', 'Gen.32.2', 'H7965', ...)`, az `uj` (mutált) oldalon `('Gen.32.1', None, 'H7965', ...)` — a bővített fixture immár helyesen elkapja a zárójel-illesztés hibáját.
+
+Az eldobható ág törölve (`git branch -D throwaway-mutacio-proba-2`), a mutációs futás által felülírt `naplok/KARB_KB2_crlf.tsv` visszaállítva (`git checkout --`) — a committolt TSV a 3. pont (pozitív, mutáció nélküli) futásának eredményét tükrözi.
+
+**Összegzés (5. pont feltételei):**
+- 3. pont (pozitív futás): **ZÖLD** — `EXIT=0`, `bf5427` önmagával összevetve.
+- 4. pont (mutációs futás): **PIROS** — `EXIT=1`, a zárójeles eset `ELTER`.
+- CI: zöld (l. a PR #60 legutóbbi futása).
+- Ágleltár: fent, a "3. kör" táblázatában.
+
+**A feltételek teljesülnek — a #60 mergelhető.**
