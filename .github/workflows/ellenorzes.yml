@@ -21,15 +21,21 @@ jobs:
 
       - name: Alap es fej meghatarozasa, valtozott fajlok listaja
         id: diff
+        env:
+          EVENT_NEV: ${{ github.event_name }}
+          PR_ALAP_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_FEJ_SHA: ${{ github.event.pull_request.head.sha }}
+          PUSH_ELOTTE: ${{ github.event.before }}
+          PUSH_SHA: ${{ github.sha }}
         run: |
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            BASE="${{ github.event.pull_request.base.sha }}"
-            HEAD="${{ github.event.pull_request.head.sha }}"
+          if [ "$EVENT_NEV" = "pull_request" ]; then
+            BASE="$PR_ALAP_SHA"
+            HEAD="$PR_FEJ_SHA"
           else
-            BASE="${{ github.event.before }}"
-            HEAD="${{ github.sha }}"
+            BASE="$PUSH_ELOTTE"
+            HEAD="$PUSH_SHA"
           fi
-          # push-esemenynel az elso commit "before"-ja csupa nulla lehet --
+          # push-esemenynel az elso commit "elotte"-je csupa nulla lehet --
           # ilyenkor nincs ertelmes alap, a diff-hatokor (D8/D3) nem
           # ertelmezheto, HIBA helyett mindenki JELENTES-t kap.
           if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ]; then
@@ -47,14 +53,18 @@ jobs:
 
       - name: E2-E16 (eszkozok/ellenorzes/futtat.py)
         id: e2e16
+        env:
+          DIFF_ALAP: ${{ steps.diff.outputs.base }}
+          DIFF_FEJ: ${{ steps.diff.outputs.head }}
+          PR_CIM: ${{ github.event.pull_request.title }}
         run: |
           set +e
           if [ -s valtozott_fajlok.txt ]; then
             python eszkozok/ellenorzes/futtat.py \
               --valtozott $(cat valtozott_fajlok.txt | tr '\n' ' ') \
-              --diff-alap "${{ steps.diff.outputs.base }}" \
-              --diff-fej "${{ steps.diff.outputs.head }}" \
-              --pr-cim "${{ github.event.pull_request.title }}" \
+              --diff-alap "$DIFF_ALAP" \
+              --diff-fej "$DIFF_FEJ" \
+              --pr-cim "$PR_CIM" \
               > e2e16_jelentes.md
             KILEPES=$?
           else
@@ -95,11 +105,12 @@ jobs:
 
       - name: Bukas, ha E1 vagy E2-E16 HIBA-t jelzett
         if: always()
+        env:
+          E2E16_KILEPES: ${{ steps.e2e16.outputs.kilepes }}
+          E1_KILEPES: ${{ steps.e1.outputs.kilepes }}
         run: |
-          E2E16="${{ steps.e2e16.outputs.kilepes }}"
-          E1="${{ steps.e1.outputs.kilepes }}"
-          if [ "$E2E16" != "0" ] || [ "$E1" != "0" ]; then
-            echo "Van HIBA-szintu talalat (E2-E16 kilepes: $E2E16, E1 kilepes: $E1)."
+          if [ "$E2E16_KILEPES" != "0" ] || [ "$E1_KILEPES" != "0" ]; then
+            echo "Van HIBA-szintu talalat (E2-E16 kilepes: $E2E16_KILEPES, E1 kilepes: $E1_KILEPES)."
             exit 1
           fi
           echo "Minden ellenorzes RENDBEN."

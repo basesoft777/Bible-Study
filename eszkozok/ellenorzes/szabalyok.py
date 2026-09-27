@@ -384,6 +384,9 @@ HELYES_IGEHELY_MINTA = re.compile(r'\b\d(Móz|Sám|Kir|Krón|Kor|Thessz|Tim|Pét
 
 
 def e8_igehely_format(fajlok):
+    """D16: a backtickes inline kod (`...`) es a kodblokk (```...```) ki van
+    zarva -- egy szabalyleiro sor, amely peldakent idezi a tiltott formatumot
+    (pl. "`1 Móz`"), nem tenyleges study-szoveg."""
     talalatok = []
     for relut in fajlok:
         if not relut.endswith('.md'):
@@ -392,11 +395,16 @@ def e8_igehely_format(fajlok):
             sorok = md_olvasas(repo_ut(relut))
         except (IOError, OSError):
             continue
+        kodblokkban = False
         for i, sor in enumerate(sorok):
-            if '```' in sor:
+            if sor.strip().startswith('```'):
+                kodblokkban = not kodblokkban
                 continue
+            if kodblokkban:
+                continue
+            tisztitott = re.sub(r'`[^`]*`', '', sor)
             for minta in TILTOTT_IGEHELY_MINTAK:
-                m = minta.search(sor)
+                m = minta.search(tisztitott)
                 if m:
                     talalatok.append(Talalat(
                         'E8', SZINT['E8'], relut, i + 1,
@@ -453,17 +461,33 @@ SPIRIT_LELEK_MINTA = re.compile(
 )
 
 
+def _e10_hatokorben_e(relut):
+    """D17: E10 hatokore a szotari forditas tenyleges helye -- adat/ (pl.
+    `forditas_ubs.tsv`, `lexikon_hivatkozasok.tsv`, a jovobeli SZOTAR S1
+    `terminologia.tsv`/`forditasok.tsv`) es lexikon/ (a render). A gyoker
+    brief-/tervfajlok (pl. `SZOTAR_BRIEF.md`, `CI_ELLENORZES_BRIEF.md`), ahol
+    a szabaly sajat magat dokumentalja peldakent, nem tartoznak ide."""
+    return relut.startswith('adat/') or relut.startswith('lexikon/')
+
+
 def e10_spirit_lelek(fajlok):
     talalatok = []
     for relut in fajlok:
-        if not relut.endswith('.md'):
+        if not _e10_hatokorben_e(relut):
             continue
         try:
             sorok = md_olvasas(repo_ut(relut))
         except (IOError, OSError):
             continue
         for i, sor in enumerate(sorok):
-            if SPIRIT_LELEK_MINTA.search(sor):
+            # D17: inline kod es idezojeles pelda kizarva.
+            if sor.lstrip().startswith('>'):
+                continue
+            tisztitott = re.sub(r'`[^`]*`', '', sor)
+            tisztitott = re.sub(r'"[^"]*"', '', tisztitott)
+            tisztitott = re.sub(r'“[^”]*”', '', tisztitott)
+            tisztitott = re.sub(r'„[^”]*”', '', tisztitott)
+            if SPIRIT_LELEK_MINTA.search(tisztitott):
                 talalatok.append(Talalat(
                     'E10', SZINT['E10'], relut, i + 1, sor.strip()[:150]
                 ))

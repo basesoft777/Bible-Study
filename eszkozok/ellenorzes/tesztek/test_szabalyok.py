@@ -215,6 +215,23 @@ class E8Teszt(unittest.TestCase):
             talalatok = SZ.e8_igehely_format([rel])
             self.assertEqual(talalatok, [])
 
+    def test_negativ_backtickes_szabalyleiro_sor_d16(self):
+        """D16: a CI_ELLENORZES_BRIEF.md-fele szabalyleiro sor, ahol a
+        tiltott minta csak peldakent, backtickben szerepel, nem talalat."""
+        with _IdeiglenesGyoker() as gy:
+            rel = _ir(gy, 'CI_ELLENORZES_BRIEF.md', (
+                "| E8 | Igehely-formátum: `1 Móz`, `1. Móz`, `ApCsel. ` stb. "
+                "tiltott; helyes: `1Móz 2:7` | study-rules | HIBA |\n"
+            ))
+            talalatok = SZ.e8_igehely_format([rel])
+            self.assertEqual(talalatok, [])
+
+    def test_negativ_kodblokkban_d16(self):
+        with _IdeiglenesGyoker() as gy:
+            rel = _ir(gy, 'genezis/proba.md', "```\n1 Móz 3:16\n```\n")
+            talalatok = SZ.e8_igehely_format([rel])
+            self.assertEqual(talalatok, [])
+
 
 class E9Teszt(unittest.TestCase):
     def test_pozitiv_angol_sense(self):
@@ -231,15 +248,40 @@ class E9Teszt(unittest.TestCase):
 
 
 class E10Teszt(unittest.TestCase):
-    def test_pozitiv_spirit_lelek(self):
+    """D17: E10 hatokore adat/ es lexikon/ -- a gyoker brief-/tervfajlok
+    (ahol a szabaly sajat magat dokumentalja peldakent) kizarva."""
+
+    def test_pozitiv_spirit_lelek_lexikonban(self):
         with _IdeiglenesGyoker() as gy:
-            rel = _ir(gy, 'tematikus_lezart/proba.md', 'A "spirit" szót itt lélek-nek fordítjuk.\n')
+            rel = _ir(gy, 'lexikon/PROBA-001_TORZSCIKK.md', 'A spirit szót itt lélek-nek fordítottuk.\n')
+            talalatok = SZ.e10_spirit_lelek([rel])
+            self.assertEqual(len(talalatok), 1)
+
+    def test_pozitiv_spirit_lelek_adatban(self):
+        with _IdeiglenesGyoker() as gy:
+            rel = _ir(gy, 'adat/terminologia.tsv', "angol\tmagyar\nspirit\tlélek\n")
             talalatok = SZ.e10_spirit_lelek([rel])
             self.assertEqual(len(talalatok), 1)
 
     def test_negativ_szellem_forditas(self):
         with _IdeiglenesGyoker() as gy:
-            rel = _ir(gy, 'tematikus_lezart/proba.md', 'A "spirit" szót itt szellem-nek fordítjuk.\n')
+            rel = _ir(gy, 'lexikon/PROBA-001_TORZSCIKK.md', 'A spirit szót itt szellem-nek fordítottuk.\n')
+            talalatok = SZ.e10_spirit_lelek([rel])
+            self.assertEqual(talalatok, [])
+
+    def test_negativ_hatokoron_kivul_d17(self):
+        """A gyoker SZOTAR_BRIEF.md-fele sor, ahol a szabaly sajat magat
+        dokumentalja, nincs a D17 hatokorben."""
+        with _IdeiglenesGyoker() as gy:
+            rel = _ir(gy, 'SZOTAR_BRIEF.md', (
+                "induló sorok: spirit = szellem, spiritual = szellemi, soul = lélek.\n"
+            ))
+            talalatok = SZ.e10_spirit_lelek([rel])
+            self.assertEqual(talalatok, [])
+
+    def test_negativ_idezojeles_pelda_d17(self):
+        with _IdeiglenesGyoker() as gy:
+            rel = _ir(gy, 'lexikon/PROBA-001_TORZSCIKK.md', 'A "spirit lélek" forditas tiltott peldakent szerepel.\n')
             talalatok = SZ.e10_spirit_lelek([rel])
             self.assertEqual(talalatok, [])
 

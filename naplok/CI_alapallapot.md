@@ -32,9 +32,9 @@ gépesíti — ez a mérés nem ismétli meg.*
 | E5 | HIBA (fájlszintű, diff-alapú) | 0 (N/A) | 0 (N/A, `--teljes`-ben nincs diff) |
 | E6 | HIBA (fájlszintű) | 1 | 1 |
 | E7 | HIBA (fájlszintű) | 0 | 0 |
-| E8 | HIBA | 0 | **3** (l. megjegyzés) |
+| E8 | HIBA (kizárva: inline kód/kódblokk, D16) | 0 | 0 |
 | E9 | HIBA (szűkítve, D11) | 99 | **86** |
-| E10 | HIBA | 0 | **2** (l. megjegyzés; a CI.1 tesztírás közben derült ki, hogy az eredeti minta az ékezetes "lélek" szót nem ismerte fel — javítva) |
+| E10 | HIBA (szűkítve+hatókör, D17) | 0 | 0 |
 | E11 | HIBA (szűkítve+hatókör, D12) | 61 | **9** |
 | E12 | FIGYELMEZTETÉS (hatókör, D13) | 4087 | **1853** |
 | E13 | FIGYELMEZTETÉS (hatókör, D13) | 3837 | **1395** |
@@ -42,26 +42,29 @@ gépesíti — ez a mérés nem ismétli meg.*
 | E15 | FIGYELMEZTETÉS | 0 | 0 |
 | E16 | HIBA (fájlszintű, PR-alapú) | 0 (N/A) | 0 (N/A, `--teljes`-ben nincs PR-cím) |
 
-**Megjegyzés E8/E10 új találatairól:** a 2. méréshez a `CI_ELLENORZES_BRIEF.md`
-maga bekerült a repóba (a D8–D15 döntési napló commitjával) — a brief saját
-táblázata *szó szerint idézi* a tiltott mintákat (`"1 Móz"`, `"spirit" →
-"lélek"`) a szabály leírásaként, ezt kapja el az E8/E10 mintaillesztés. Ez
-ugyanaz a fajta önhivatkozó hamis találat, mint a `CREMER_OCR_BRIEF.md` az
-E11-nél az 1. mérésben — nem tényleges study-/adatréteg-sértés. Mivel a
-brief root-szintű dokumentum, nem esik a D14 `naplok/CI_*`/`ELLENOR_*`
-kizárás alá, és E8/E10-nek nincs hatókör-szűkítése (D9 ezeket
-változatlanul HIBA-nak hagyta, hatókör-megszorítás nélkül). Diff-módban ez
-nem probléma: a brief tábla sorai nem lesznek "hozzáadott sor" egy jövőbeli,
-más fájlt módosító PR-ben, tehát D8 miatt JELENTÉS marad, nem blokkol.
+**E8/E10 története — 2. mérés → 3. mérés (D16–D18 után).** A 2. mérésben,
+miután a `CI_ELLENORZES_BRIEF.md` maga bekerült a repóba, E8 3, E10 2
+találatot adott — mindkettő a brief saját táblázatának szó szerinti
+idézete volt (`` `1 Móz` ``, "spirit = szellem, ... soul = lélek"), nem
+tényleges study-/adatréteg-sértés. A saját PR-diffre futtatva ez exit
+1-et okozott, mert ezek a sorok a diffben "hozzáadott sor"-nak számítottak
+(D8) — a D14 root-szintű brieffájlokra nem terjed ki, és E8/E10-nek nem
+volt hatókör-szűkítése.
 
-**E10 második találata** (`SZOTAR_BRIEF.md:59`) hasonló jellegű: a sor épp
-azt dokumentálja, hogy "spirit = szellem" és "soul = lélek" a helyes
-párosítás — a szabály egyszerű közelség-heurisztikája (spirit ... lélek
-25 karakteren belül) ezt tévesen jelzi, mert nem érti a "soul ="
-kontextust. Ugyanúgy diff-védett, mint a fenti E8/E10 eset. (A CI.1
-tesztírás közben derült ki egy másik hiba is: az eredeti E10-minta a
-`lel(ek|ki)` alakot kereste, ami az ékezetes "lélek" szót nem ismerte fel —
-ez javítva lett, ezért nőtt a találatszám 1-ről 2-re.)
+A javítás (D16, D17):
+- **E8** kizárja a backtickes inline kódot és a kódblokkot — a brief
+  táblázata pont ilyen backtickben idézi a tiltott mintákat.
+- **E10** hatóköre `adat/` és `lexikon/`-ra szűkült (a szótári fordítás
+  tényleges helye), a gyökér brief-/tervfájlok kívül esnek rajta; emellett
+  inline kód és idézőjeles példa is kizárva.
+
+A 3. mérésben (`--teljes`) mindkettő **0**-ra esett vissza. A saját
+PR-diffre (`origin/main..HEAD`, `--pr-cim "[ELLENŐRZŐ] CI.0–CI.5"`)
+futtatva minden szabály 0 találatot ad, a `futtat.py` kilépési kódja 0.
+
+(Közben, a CI.1 tesztírás során egy másik hiba is kiderült és javításra
+került: az eredeti E10-minta a `lel(ek|ki)` alakot kereste, ami az
+ékezetes "lélek" szót nem ismerte fel.)
 
 ## Találatszám könyvtáranként (2. mérés, `--teljes`)
 
@@ -69,13 +72,11 @@ ez javítva lett, ezért nőtt a találatszám 1-ről 2-re.)
 |---|---|
 | E2 (7) | gyökér: 3 · lexikon: 2 · tematikus_lezart: 2 |
 | E6 (1) | tematikus_lezart: 1 |
-| E8 (3) | gyökér: 3 (mind `CI_ELLENORZES_BRIEF.md`, l. fent) |
 | E9 (86) | motivumlog: 20 · lexikon: 17 · gyökér: 13 · naplok: 13 · tematikus_lezart: 12 · sablonok: 8 · adat: 2 · motivumok: 1 |
-| E10 (1) | gyökér: 1 (`CI_ELLENORZES_BRIEF.md`, l. fent) |
 | E11 (9) | lexikon: 9 |
 | E12 (1853) | lexikon: 1129 · motivumlog: 260 · tematikus_lezart: 257 · genezis: 193 · ujszovetseg: 11 · melyelemzesek: 3 |
 | E13 (1395) | genezis: 553 · lexikon: 306 · tematikus_lezart: 263 · motivumlog: 234 · ujszovetseg: 33 · melyelemzesek: 6 |
-| E3, E4, E5, E7, E14, E15, E16 | 0 találat mindenhol |
+| E3, E4, E5, E7, E8, E10, E14, E15, E16 | 0 találat mindenhol (3. mérés, D16–D18 után) |
 
 A lexikon/ magas E12/E13-részesedése várható: ez a kimenet-réteg, generált
 fájlokból (l. CLAUDE.md "Rétegek" szakasz) — a forrás javítása után
