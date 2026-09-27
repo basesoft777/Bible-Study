@@ -11,6 +11,8 @@ onallo szkriptkent -- csak a futtat.py hasznalja.
 """
 
 import os
+import re
+import subprocess
 import sys
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -30,6 +32,14 @@ KIZART_FAJLOK = {
 }
 KIZART_UTVONAL_RESZLETEK = (
     os.path.join('motivumlog', 'PaRDeS_motivumok_CHANGELOG.md'),
+)
+
+# D14: az ellenorzes sajat naploi/jelentesei -- ezek tartalma (mintasorok,
+# datumok, fajlnevek) sose generaljon onhivatkozo talalatot egyik szabalynal
+# sem.
+KIZART_NAPLO_MINTAK = (
+    re.compile(r'^naplok/CI_.*\.md$'),
+    re.compile(r'^naplok/ELLENOR_.*\.md$'),
 )
 
 # A generalt (kimenet-reteg) konyvtarak/fajlmintak -- CLAUDE.md "Retegek"
@@ -96,6 +106,66 @@ def dict_sorok(ut, koment_elojel='#'):
     return ki
 
 
+def dict_sorok_sorszammal(ut, koment_elojel='#'):
+    """[(fajl_sorszam, {oszlopnev: ertek}), ...] -- a fajl_sorszam a
+    tenyleges 1-alapu sor a fajlban (nem az adatsor-sorszam), hogy a D8
+    diff-hatokorrel osszevethető legyen."""
+    fejlec = None
+    ki = []
+    with open(ut, 'r', encoding='utf-8') as f:
+        for i, eredeti in enumerate(f, start=1):
+            sor = eredeti.rstrip('\n')
+            if not sor.strip():
+                continue
+            if sor.startswith(koment_elojel):
+                continue
+            mezok = sor.split('\t')
+            if fejlec is None:
+                fejlec = mezok
+                continue
+            d = {}
+            for j, nev in enumerate(fejlec):
+                d[nev] = mezok[j] if j < len(mezok) else ''
+            ki.append((i, d))
+    return ki
+
+
+_HUNK_FEJLEC = re.compile(r'^@@ -\d+(?:,\d+)? \+(\d+)(?:,(\d+))? @@')
+
+
+def git_diff_hozzaadott_sorok(base_ref, head_ref, relut):
+    """A `relut` fajlban a `base_ref..head_ref` diff altal HOZZAADOTT/
+    MODOSITOTT sorok szama (a HEAD-beli, azaz uj fajltartalom sorszamai) --
+    D8: a HIBA-szint csak ezekre a sorokra vonatkozik, a fajl regi sorai
+    csak JELENTES-t kapnak.
+
+    Ures halmaz, ha nincs base/head (pl. --teljes mod), vagy a git diff
+    hibaval ter vissza (pl. uj fajl -- akkor minden sora "hozzaadott",
+    ezt kulon kezeljuk lent)."""
+    if not base_ref or not head_ref:
+        return None
+    try:
+        kimenet = subprocess.check_output(
+            ['git', 'diff', '--unified=0', '%s..%s' % (base_ref, head_ref),
+             '--', relut],
+            cwd=ROOT, stderr=subprocess.DEVNULL
+        ).decode('utf-8', errors='replace')
+    except (subprocess.CalledProcessError, OSError):
+        return None
+    if not kimenet.strip():
+        return set()
+    sorok = set()
+    for sor in kimenet.splitlines():
+        m = _HUNK_FEJLEC.match(sor)
+        if not m:
+            continue
+        kezdo = int(m.group(1))
+        hossz = int(m.group(2)) if m.group(2) is not None else 1
+        for i in range(kezdo, kezdo + hossz):
+            sorok.add(i)
+    return sorok
+
+
 def kizart_e(relut):
     relut = relut.replace('\\', '/')
     alap = os.path.basename(relut)
@@ -106,6 +176,9 @@ def kizart_e(relut):
             return True
     for konyvtar in GENERALT_KONYVTARAK:
         if relut.startswith(konyvtar + '/') or relut == konyvtar:
+            return True
+    for minta in KIZART_NAPLO_MINTAK:
+        if minta.match(relut):
             return True
     return False
 

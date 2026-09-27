@@ -26,9 +26,17 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from kozos import (
-    ROOT, ADAT, Talalat, md_olvasas, dict_sorok, szakaszokra_bont,
-    repo_ut,
+    ROOT, ADAT, Talalat, md_olvasas, dict_sorok, dict_sorok_sorszammal,
+    szakaszokra_bont, repo_ut,
 )
+
+# D8: ezeknek a szabalyoknak a talalata motivum-/fajl-szintu (nem egy
+# konkret uj/modositott sorhoz kotheto), ezert a diff-alapu HIBA/JELENTES
+# leminositest a futtat.py nem alkalmazza rajuk -- mindig a sajat
+# (SZINT-ben rogzitett) szintjukon jelentkeznek. E6/E7 a brief expliciten
+# ezt mondja ki; E4/E5/E16 szerkezetileg ugyanide tartozik (E5 maga is
+# diff-alapu, E16 fajl-letezes, E4 motivum-szintu audit-allapot).
+FAJLSZINTU_SZABALYOK = {'E4', 'E5', 'E6', 'E7', 'E16'}
 
 SZINT = {
     'E2': 'HIBA', 'E3': 'HIBA', 'E4': 'HIBA', 'E5': 'HIBA', 'E6': 'HIBA',
@@ -42,12 +50,15 @@ SZINT = {
 # E2 -- "ellenorizve" jeloles csak proveniencia-sorral egy szakaszban
 # --------------------------------------------------------------------------
 
+# D10: a sima "ellenőrizve" szó nem szamit -- csak a harom eros jeloles.
 JELOLES_MINTA = re.compile(
-    r'ellenőrizve|STEPBible-ellenőrizve|🔍|🔬\s*valódi kutatás'
+    r'STEPBible-ellenőrizve|🔍|🔬\s*valódi kutatás'
 )
 PROVENIENCIA_MINTA = re.compile(
     r'scope\s*=.*\|.*forras\s*=.*\|.*ts\s*='
 )
+# D10: checklist-sor ([x]/[ ]) sose szamit jelolesnek.
+CHECKLIST_SOR_MINTA = re.compile(r'^\s*[-*]\s*\[[ xX]\]')
 
 
 def e2_ellenorizve_proveniencia(fajlok):
@@ -63,8 +74,18 @@ def e2_ellenorizve_proveniencia(fajlok):
         for _cim_idx, _cim, eleje, vege in szakaszok:
             szakasz_szoveg = '\n'.join(sorok[eleje:vege])
             van_proveniencia = bool(PROVENIENCIA_MINTA.search(szakasz_szoveg))
+            naplo_blokkban = False
             for i in range(eleje, vege):
                 sor = sorok[i]
+                # D10: a 【NAPLO: ...】 blokk tartalma nem szamit.
+                if '【NAPLO' in sor or '【NAPLÓ' in sor:
+                    naplo_blokkban = True
+                if naplo_blokkban:
+                    if '】' in sor:
+                        naplo_blokkban = False
+                    continue
+                if CHECKLIST_SOR_MINTA.match(sor):
+                    continue
                 if not JELOLES_MINTA.search(sor):
                     continue
                 sor_maga_proveniens = PROVENIENCIA_MINTA.search(sor)
@@ -93,17 +114,19 @@ def e3_proveniencia_mezo_ures_vagy_ellenorizve(fajlok):
         return talalatok
     if 'adat/elofordulasok.tsv' not in fajlok and fajlok != ['__TELJES__']:
         return talalatok
-    sorok = dict_sorok(elofordulasok_ut)
-    for n, d in enumerate(sorok, start=1):
+    # D8: valodi fajl-sorszam kell (nem az adatsor-index), hogy a
+    # diff-alapu HIBA/JELENTES leminosites a tenyleges tsv-sorral
+    # osszevethető legyen.
+    for sorszam, d in dict_sorok_sorszammal(elofordulasok_ut):
         prov = d.get('proveniencia', '')
         if not prov.strip():
             talalatok.append(Talalat(
-                'E3', SZINT['E3'], 'adat/elofordulasok.tsv', n,
+                'E3', SZINT['E3'], 'adat/elofordulasok.tsv', sorszam,
                 '%s | %s -- proveniencia ures' % (d.get('id', ''), d.get('igehely', ''))
             ))
         elif 'ellenőrizve' in prov or 'ellenorizve' in prov:
             talalatok.append(Talalat(
-                'E3', SZINT['E3'], 'adat/elofordulasok.tsv', n,
+                'E3', SZINT['E3'], 'adat/elofordulasok.tsv', sorszam,
                 '%s | %s -- proveniencia="%s"' % (d.get('id', ''), d.get('igehely', ''), prov[:80])
             ))
     return talalatok
@@ -117,11 +140,22 @@ TELJES_SCAN_LEPESEK = {'B3'}  # "3. teljes OSZ/UJSZ scan" -- CLAUDE.md het lepes
 
 
 def e4_teljes_scan_naplo_es_dontes(fajlok):
+    """`fajlok`: `['__TELJES__']` -- minden motivum-ID (teljes-repo/JELENTES
+    mod); egyebkent a valtozott fajlok listaja -- D8 szerint E4 motivum-
+    szintu (FAJLSZINTU_SZABALYOK), de a diff-hatokor (D3) miatt PR-modban
+    csak azokra a motivum-ID-kra fut, amelyeknek az auditok.tsv/jeloltek.tsv
+    sora vagy a naplofajluk maga a valtozott fajlok kozott van -- kulonben
+    minden regi, PR-en kivuli hianyt HIBA-nak jelentene minden PR-en."""
     talalatok = []
     auditok_ut = os.path.join(ADAT, 'auditok.tsv')
     jeloltek_ut = os.path.join(ADAT, 'jeloltek.tsv')
     if not (os.path.exists(auditok_ut) and os.path.exists(jeloltek_ut)):
         return talalatok
+    teljes_mod = fajlok == ['__TELJES__']
+    valtozott_halmaz = set(fajlok)
+    erintett_auditok_jeloltek = teljes_mod or (
+        'adat/auditok.tsv' in valtozott_halmaz or 'adat/jeloltek.tsv' in valtozott_halmaz
+    )
     auditok = dict_sorok(auditok_ut)
     jeloltek = dict_sorok(jeloltek_ut)
 
@@ -154,6 +188,9 @@ def e4_teljes_scan_naplo_es_dontes(fajlok):
             if motivum_id in szoveg:
                 talalt_naplo = relut
                 break
+        naplo_erintett = teljes_mod or (talalt_naplo is not None and talalt_naplo in valtozott_halmaz)
+        if not (erintett_auditok_jeloltek or naplo_erintett):
+            continue
         if talalt_naplo is None:
             talalatok.append(Talalat(
                 'E4', SZINT['E4'], 'adat/auditok.tsv', 0,
@@ -391,9 +428,13 @@ def e9_angol_sense(fajlok):
                 continue
             if kodblokkban:
                 continue
+            # D11: blockquote (idezett angol forrasszoveg) kizarva.
+            if sor.lstrip().startswith('>'):
+                continue
             tisztitott = re.sub(r'`[^`]*`', '', sor)
             tisztitott = re.sub(r'"[^"]*"', '', tisztitott)
             tisztitott = re.sub(r'“[^”]*”', '', tisztitott)
+            tisztitott = re.sub(r'„[^”]*”', '', tisztitott)
             if SENSE_MINTA.search(tisztitott):
                 talalatok.append(Talalat(
                     'E9', SZINT['E9'], relut, i + 1, sor.strip()[:150]
@@ -437,16 +478,33 @@ NIDNTTE_MINTA = re.compile(r'\bNIDNTTE\b')
 NIDOTTE_MINTA = re.compile(r'\bNIDOTTE\b')
 
 
+def _e11_hatokorben_e(relut):
+    """D12: E11 hatokore -- lexikon/, adat/szotar_szerepek.tsv,
+    eszkozok/*general*.py. A CI.0 61 talalatanak nagy resze a
+    CREMER_OCR_BRIEF.md sajat targyalasa volt, nem tenyleges
+    szerepmatrix-/render-sertes."""
+    if relut.startswith('lexikon/'):
+        return True
+    if relut == 'adat/szotar_szerepek.tsv':
+        return True
+    if relut.startswith('eszkozok/') and 'general' in os.path.basename(relut) and relut.endswith('.py'):
+        return True
+    return False
+
+
 def e11_cremer_nidntte_nidotte(fajlok):
     talalatok = []
     for relut in fajlok:
-        if not relut.endswith('.md'):
+        if not _e11_hatokorben_e(relut):
             continue
         try:
             sorok = md_olvasas(repo_ut(relut))
         except (IOError, OSError):
             continue
         for i, sor in enumerate(sorok):
+            # D12: forrasidezeten (blockquote) belul nem szamit.
+            if sor.lstrip().startswith('>'):
+                continue
             for minta, nev in ((CREMER_MINTA, 'Cremer'), (NIDNTTE_MINTA, 'NIDNTTE'), (NIDOTTE_MINTA, 'NIDOTTE')):
                 if minta.search(sor):
                     talalatok.append(Talalat(
@@ -464,11 +522,24 @@ PROZAI_PROVENIENCIA_MINTA = re.compile(
     r'\b202\d\.\d{2}\.|\.tsv\b|\.md\b|audit során|visszaírva|felismerve|l\.\s*\d+\.?\s*pont'
 )
 
+# D13: E12/E13 hatokore a study-/naplo-/lexikon-reteg, nem a teljes repo --
+# a CI.0 4087/3837 talalata jorreszt hatokoron kivuli brief-/tervdokumentumokbol jott.
+E12_E13_HATOKOR = (
+    'tematikus_lezart/', 'genezis/', 'ujszovetseg/', 'melyelemzesek/',
+    'motivumlog/', 'lexikon/',
+)
+
+
+def _e12_e13_hatokorben_e(relut):
+    return any(relut.startswith(p) for p in E12_E13_HATOKOR)
+
 
 def e12_proveniencia_prozaban(fajlok):
     talalatok = []
     for relut in fajlok:
         if not relut.endswith('.md'):
+            continue
+        if not _e12_e13_hatokorben_e(relut):
             continue
         try:
             sorok = md_olvasas(repo_ut(relut))
@@ -496,13 +567,23 @@ def e12_proveniencia_prozaban(fajlok):
 HEBER_GOROG_FUTAM = re.compile(
     r'[֐-׿]{2,}|[Ͱ-Ͽ]{2,}'
 )
-KIEJTES_UTANA = re.compile(r'^[^\n]{0,40}(–\s*\*?[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]|\(\*?[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]+\*?\))')
+# D13: elfogadott kiejtes-jelolesek --
+#   (a) "– atiras" kotojel utan
+#   (b) "(atiras)" zarojelben, akar veszo utan is (pl. "(H8414, tohu)")
+#   (c) STEP-pontozott atiras barhol a 40 karakteres ablakban (pl. "te.hom")
+KIEJTES_ELFOGADVA = re.compile(
+    r'–\s*\*?[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]'
+    r'|\([^()]*[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]{2,}[^()]*\)'
+    r'|\b[a-zá-űA-ZÁ-Ű]+(?:\.[a-zá-űA-ZÁ-Ű]+)+\b'
+)
 
 
 def e13_kiejtes_hianya(fajlok):
     talalatok = []
     for relut in fajlok:
         if not relut.endswith('.md'):
+            continue
+        if not _e12_e13_hatokorben_e(relut):
             continue
         try:
             sorok = md_olvasas(repo_ut(relut))
@@ -513,7 +594,7 @@ def e13_kiejtes_hianya(fajlok):
             if not m:
                 continue
             utana = sor[m.end():m.end() + 40]
-            if KIEJTES_UTANA.match(utana):
+            if KIEJTES_ELFOGADVA.search(utana):
                 continue
             talalatok.append(Talalat(
                 'E13', SZINT['E13'], relut, i + 1, sor.strip()[:150]
