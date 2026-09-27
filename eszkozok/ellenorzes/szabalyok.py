@@ -29,7 +29,6 @@ from kozos import (
     ROOT, ADAT, Talalat, md_olvasas, dict_sorok, dict_sorok_sorszammal,
     szakaszokra_bont, repo_ut,
 )
-from study_fajlok_szurese import study_fajlok_halmaza
 
 # D8: ezeknek a szabalyoknak a talalata motivum-/fajl-szintu (nem egy
 # konkret uj/modositott sorhoz kotheto), ezert a diff-alapu HIBA/JELENTES
@@ -224,11 +223,48 @@ SZANDEKOS_JELOLES_MINTA = re.compile(
 )
 
 
+def _study_fajlok_halmaza_ref(ref):
+    """A study-fajlok halmaza egy adott git ref allapotabol (`git show
+    ref:adat/motivumok.tsv`), NEM a munkakonyvtarbol -- ha a
+    study_fajlok_halmaza()-t hasznalnank, az mindig a jelenleg kicheckoutolt
+    (tipikusan a head_ref) allapotot olvasna, es egy olyan PR, amely egy
+    study-fajlt es a hozza tartozo forras_study-bejegyzest egyszerre torli,
+    nem szamitana study-fajlnak -- pedig eppen ez a tartalomvesztes, amit az
+    E5 hivatott elkapni. `ref` hianyaban vagy hiba eseten ures halmaz."""
+    if not ref:
+        return set()
+    try:
+        nyers = subprocess.check_output(
+            ['git', 'show', '%s:adat/motivumok.tsv' % ref],
+            cwd=ROOT, stderr=subprocess.DEVNULL
+        ).decode('utf-8', errors='replace')
+    except (subprocess.CalledProcessError, OSError):
+        return set()
+    sorok = [s.rstrip('\r') for s in nyers.split('\n') if s.strip() and not s.startswith('#')]
+    if not sorok:
+        return set()
+    fejlec = sorok[0].split('\t')
+    try:
+        idx = fejlec.index('forras_study')
+    except ValueError:
+        return set()
+    halmaz = set()
+    for sor in sorok[1:]:
+        mezok = sor.split('\t')
+        if idx >= len(mezok):
+            continue
+        for f in mezok[idx].split(';'):
+            f = f.strip()
+            if f:
+                halmaz.add(f)
+    return halmaz
+
+
 def _study_vagy_sablon_fajl(fajl, study_halmaz):
     """CI_ELLENORZES_BRIEF.md E5: a >30-sor-torles ag csak study- es
     sablonfajlokra vonatkozik. A study-fajlok kanonikus halmaza az
-    `adat/motivumok.tsv` `forras_study` oszlopa (l. study_fajlok_szurese.py);
-    a sablonfajlok a `sablonok/` konyvtar alatt vannak."""
+    `adat/motivumok.tsv` `forras_study` oszlopa; a sablonfajlok a
+    `sablonok/` konyvtar alatt vannak."""
     if fajl is None:
         return False
     if fajl in study_halmaz:
@@ -247,7 +283,7 @@ def e5_tartalomvesztes_or(base_ref, head_ref, commit_uzenet=''):
     talalatok = []
     if not base_ref or not head_ref:
         return talalatok
-    study_halmaz = study_fajlok_halmaza()
+    study_halmaz = _study_fajlok_halmaza_ref(base_ref) | _study_fajlok_halmaza_ref(head_ref)
     try:
         kimenet = subprocess.check_output(
             ['git', 'diff', '--unified=0', '%s..%s' % (base_ref, head_ref)],
