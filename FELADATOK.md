@@ -12,7 +12,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Következő lépés | Hol |
 |---|---|---|---|---|---|---|
-| 5 | Szótári adatréteg, 1. menet (SZOTAR S1) | a szerepmátrix hiányzó sorai adatként: fordítási gyorsítótár, terminológia, kiejtés-táblák, UBS DBH, TBESH, Girdlestone, Mounce | ⬜ nem futott | #1, #2, #4 | **Előbb:** brief-frissítés v1.2-re (FJ-eredmény: Macula küszöb alatt → S13 versszintű marad; KK; CI). Menet közben ⛔ jóváhagyásra vár tőled a Girdlestone-szöveg és 24 héber kiejtés-jelölt | `SZOTAR_BRIEF.md` v1.1 |
+| 5 | Szótári adatréteg, 1. menet (SZOTAR S1) | a szerepmátrix hiányzó sorai adatként: fordítási gyorsítótár, terminológia, kiejtés-táblák, UBS DBH, TBESH, Mounce, Translation Words | ⬜ S0b kész, 1. menet még nem futott | #1, #2, #4 | S0b lezárva: D28 (24→26 H-token, T2.2 miatt), Translation Words elfogadva mindkét nyelven (H 21/26, G 10/13, l. `naplok/SZOTAR_S0b_jelentes.md`), LXX versszint grammatikai szűréssel megerősítve (D25 marad). Indítható az 1. menet (`SZOTAR_BRIEF.md` v1.3 §7). | `SZOTAR_BRIEF.md` v1.3, `naplok/SZOTAR_S0b_jelentes.md` |
 | 6 | Új források 2. felmérése **helyi gépről** (FJ 2. menet) | döntés a Nave, a teljes KJV/ASV és a BSB importjáról; a Macula lefedettsége | ⬜ nincs brief | — (#5-tel párhuzamosan futhat) | Brief kell. Helyi gépen fusson, mert a cloud proxy blokkolt (N27, N29–N31) | `naplok/FORRAS_jelentes.md` (fejlécébe kell a „felülírva: N27–N29” megjegyzés) |
 | 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ nem futott | #3, #5 (terminológia, kiejtés) | **Te:** döntés a v3-ról („természetes hű” stílus a promptban) + költség újraszámítása a teljes Thayer_teljes.tsv hosszeloszlásából (a P6 ~30 USD-ja nem vezethető le, naiv skálázással ~62 USD; ELLENOR_FP.md 1. eltérés) | `FORDITAS_ELES_THAYER_BRIEF.md` v2, csak chatben |
 | 8 | LXX-fordítói döntések a 87 függő igehelyre | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ nem futott | #1, #6 (Macula-lefedettség) | Kutatói adatmunka; 58 gépi jelölt tájékoztatásul: `naplok/FORRAS_FJ1_lxx_jeloltek.tsv` | eredetileg a LEXIKON_LEZARAS 4c pontja |
@@ -24,7 +24,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | 9 | Szótári adatréteg, 2. menet (SZOTAR S2) | az 1. fázis adatai megjelennek a 8 lexikonoldalon és a 8 törzscikkben | ⬜ | #5, #6, #7 | Ez javítja a törzscikkek elavult Cremer-sorát is (a CI E11 szabálya jelzi) | `SZOTAR_BRIEF.md` 2. menet |
 | 10 | 8 lexikonoldal lezárása (LEXIKON_LEZARAS) | mérhetően kész oldalak (L1–L7) | ⬜ | #8, #9 | **Te:** döntés az L6 és L7 feltételről. Ide tartozik N18, N19 | brief csak chatben |
 | 11 | Migráció: egy forrásból renderelés (MIGRACIO) | minden motívum a forrásrétegből renderel | ⬜ | #9 | Az M0 felmérés csak olvas, de az eredménye itt kell | brief csak chatben |
-| 12 | TEREMT-002 3. lépés (próza, lexikonoldal) | az első natív egyforrású motívum kész | ⬜ | #11 | — | `TEREMT002_KUTATAS_BRIEF.md` |
+| 12 | TEREMT-002 3. lépés (próza, lexikonoldal) | az első natív egyforrású motívum kész | ⬜ | #11 | A tohu/bohu szótári adata az S1-ben készül (D29). | `TEREMT002_KUTATAS_BRIEF.md` |
 | 13 | 1Móz 17-től a tanulmányok és a 6 betöltetlen motívum | a Genezis-kiadás tartalma | ⬜ | #10 | döntés 2026.09.21: a lexikonoldalak lezárása után | — |
 
 ## Takarítás (bármikor, rövid)
