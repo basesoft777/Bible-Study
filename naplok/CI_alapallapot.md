@@ -51,12 +51,17 @@ tényleges study-/adatréteg-sértés. A saját PR-diffre futtatva ez exit
 (D8) — a D14 root-szintű brieffájlokra nem terjed ki, és E8/E10-nek nem
 volt hatókör-szűkítése.
 
-A javítás (D16, D17):
+A javítás (D16, D17, D17a):
 - **E8** kizárja a backtickes inline kódot és a kódblokkot — a brief
   táblázata pont ilyen backtickben idézi a tiltott mintákat.
 - **E10** hatóköre `adat/` és `lexikon/`-ra szűkült (a szótári fordítás
-  tényleges helye), a gyökér brief-/tervfájlok kívül esnek rajta; emellett
-  inline kód és idézőjeles példa is kizárva.
+  tényleges helye), a gyökér brief-/tervfájlok kívül esnek rajta. A D17
+  eredetileg inline kódot ÉS idézőjeles/blockquote-példát is kizárt volna,
+  de a D17a ezt pontosította: csak az **inline kód** marad kizárva — a
+  hatókör-szűkítés önmagában elég volt az önhivatkozás ellen, az
+  idézőjel-/blockquote-kizárás viszont a lexikon valódi magyar
+  glosszáit (idézőjelben, pl. `„lélek"`) és a Thayer-fordítás (#7)
+  blockquote-os renderjét rejtette volna el.
 
 A 3. mérésben (`--teljes`) mindkettő **0**-ra esett vissza. A saját
 PR-diffre (`origin/main..HEAD`, `--pr-cim "[ELLENŐRZŐ] CI.0–CI.5"`)

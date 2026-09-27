@@ -480,13 +480,12 @@ def e10_spirit_lelek(fajlok):
         except (IOError, OSError):
             continue
         for i, sor in enumerate(sorok):
-            # D17: inline kod es idezojeles pelda kizarva.
-            if sor.lstrip().startswith('>'):
-                continue
+            # D17a: csak az inline kod kizart -- az idezojel- es a
+            # blockquote-kizarast a D17a visszavonta, mert a lexikon a
+            # magyar glosszat idezojelben adja ("lélek"), a Thayer-forditas
+            # (#7) pedig blockquote-ban renderel, tehat pont a celpontot
+            # rejtettek volna el.
             tisztitott = re.sub(r'`[^`]*`', '', sor)
-            tisztitott = re.sub(r'"[^"]*"', '', tisztitott)
-            tisztitott = re.sub(r'“[^”]*”', '', tisztitott)
-            tisztitott = re.sub(r'„[^”]*”', '', tisztitott)
             if SPIRIT_LELEK_MINTA.search(tisztitott):
                 talalatok.append(Talalat(
                     'E10', SZINT['E10'], relut, i + 1, sor.strip()[:150]

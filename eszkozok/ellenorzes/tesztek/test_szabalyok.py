@@ -279,9 +279,26 @@ class E10Teszt(unittest.TestCase):
             talalatok = SZ.e10_spirit_lelek([rel])
             self.assertEqual(talalatok, [])
 
-    def test_negativ_idezojeles_pelda_d17(self):
+    def test_pozitiv_idezojeles_glossza_d17a(self):
+        """D17a: az idezojel-kizarast a D17a visszavonta -- a lexikon a
+        magyar glosszat idezojelben adja, ezt nem szabad elrejteni."""
         with _IdeiglenesGyoker() as gy:
-            rel = _ir(gy, 'lexikon/PROBA-001_TORZSCIKK.md', 'A "spirit lélek" forditas tiltott peldakent szerepel.\n')
+            rel = _ir(gy, 'lexikon/PROBA-001_TORZSCIKK.md', 'pneuma: „lélek” (spirit)\n')
+            talalatok = SZ.e10_spirit_lelek([rel])
+            self.assertEqual(len(talalatok), 1)
+
+    def test_pozitiv_blockquote_d17a(self):
+        """D17a: a blockquote-kizarast a D17a visszavonta -- a Thayer-forditas
+        (#7) blockquote-ban renderel, ezt nem szabad elrejteni."""
+        with _IdeiglenesGyoker() as gy:
+            rel = _ir(gy, 'lexikon/PROBA-001_TORZSCIKK.md', '> pneuma: spirit, azaz lélek\n')
+            talalatok = SZ.e10_spirit_lelek([rel])
+            self.assertEqual(len(talalatok), 1)
+
+    def test_negativ_inline_kod_kizarva_d17a(self):
+        """D17a: kizarolag az inline kod marad kizarva."""
+        with _IdeiglenesGyoker() as gy:
+            rel = _ir(gy, 'lexikon/PROBA-001_TORZSCIKK.md', 'Lásd: `spirit -> lélek` (kódpélda).\n')
             talalatok = SZ.e10_spirit_lelek([rel])
             self.assertEqual(talalatok, [])
 
