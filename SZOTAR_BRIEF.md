@@ -27,7 +27,9 @@ igehelyre (FELADATOK #8).
 
 ---
 
-## 0. Kiindulás *(az S0b.1 újraméri; eltérésnél ÁLLJ — a hatókör-szabályt l. D28)*
+## 0. Kiindulás *(az S0.1 újraméri; eltérésnél ÁLLJ)*
+
+**Frissítve (v1.3):** innentől az S0b.1 méri újra; a hatókör-szabályt l. D28.
 
 *A 0.2–0.11 és 0.13–0.14 sor értéke 2026.09.27-én a `9eb43fe`-n újramérve, egyezik a v1-gyel.
 Az S0b.1 (`3b8976b`, `70eb29c`-n) újramért mindent; a 0.4 sor eltért (l. D28) — a
@@ -71,7 +73,9 @@ akkor kell, ha token kiesik, vagy a G-halmaz változik.
 
 ---
 
-## 2. S-döntések *(jóváhagyásra; a v1.2 új vagy módosított sorai **félkövérrel** jelölt számúak)*
+## 2. S-döntések *(jóváhagyásra)*
+
+**Frissítve (v1.2):** az új vagy módosított sorok száma **félkövérrel** jelölve.
 
 | # | Kérdés | Javaslat |
 |---|---|---|
@@ -94,7 +98,9 @@ akkor kell, ha token kiesik, vagy a G-halmaz változik.
 
 ## 3. Tételek
 
-### S0 — kiegészítő felmérés *(lefutott, `1046834`; nem fut újra)*
+### S0 — kiegészítő felmérés *(csak olvas; egy commit)* ⛔
+
+**Frissítve:** lefutott (`1046834`); nem fut újra.
 
 Eredmény: `naplok/SZOTAR_S0_jelentes.md` és 8 munkalap. A 7 kérdés válasza: 1. Cremer → D16;
 2. Girdlestone-URL → tárgytalan (D18); 3. BDB-határ → D21; 4. tesztkészlet-sortörés → D22;
@@ -156,7 +162,10 @@ Eredmény: `naplok/SZOTAR_S0_jelentes.md` és 8 munkalap. A 7 kérdés válasza:
 
 ## 5. Elfogadási kritériumok
 
-### S0b
+### S0
+
+**Frissítve:** innentől az S0b elfogadási kritériumai (az S0 lezárva, l. feljebb).
+
 | # | Kritérium |
 |---|---|
 | K1 | a §0 minden sora jelentve; eltérésnél megállás |
@@ -212,7 +221,10 @@ Eredmény: `naplok/SZOTAR_S0_jelentes.md` és 8 munkalap. A 7 kérdés válasza:
 
 ## 7. Nyitó promptok *(Sonnet)*
 
-### S0b
+### S0
+
+**Frissítve:** innentől az S0b nyitó promptja (az S0 lezárva, l. feljebb).
+
 ```
 Olvasd el a CLAUDE.md-t, a FELADATOK.md-t és a SZOTAR_BRIEF.md-t (v1.2) teljes egészében,
 valamint a naplok/SZOTAR_S0_jelentes.md-t.
