@@ -88,6 +88,38 @@ Ugyanez a konvenció ajánlott a `Lezart_tematikus_tanulmanyok_index.md` frissí
 
 ---
 
+## CI.4 — a chat-oldali ellenőrzés olcsó lekérdezése (CI_ELLENORZES_BRIEF.md)
+
+A CI.0–CI.3 bevezetése óta a merge előtti független ellenőrzés nem a
+teljes repó tarballjának letöltéséből áll, hanem két olcsó lekérdezésből:
+
+1. **CI-státusz** — `GET api.github.com/repos/basesoft777/Bible-Study/commits/<sha>/check-runs`
+   (a PR fej-commitjának SHA-jával). A válasz néhány KB, és megmutatja az
+   `ellenorzes` check állapotát (`queued` / `in_progress` / `completed`) és
+   a végkimenetelét (`success` / `failure`).
+2. **PR-komment** — a `.github/workflows/ellenorzes.yml` minden futás után
+   frissíti (nem újra létrehozza) a PR-en az ellenőrzés-jelentés kommentjét
+   (`eszkozok/ellenorzes/pr_komment.py`). Ez tartalmazza mind az E1
+   (`ellenoriz.py`), mind az E2–E16 (`futtat.py`) jelentését, szabályonkénti
+   találatszámmal és mintákkal — ugyanaz a szöveg, ami a GitHub Actions job
+   summary-jában is megjelenik.
+
+A chat ezt a két végpontot olvassa (a GitHub API-t hitelesített kéréssel,
+vagy a PR/commit oldalának böngészőben is látható állapotát), **nem** tölti
+le a repót tarballként minden merge előtt.
+
+**Mikor kell mégis a tarball (vagy egy célzott fájlolvasás):**
+- Ha a CI **piros**, és a PR-kommentben/job summary-ban lévő jelentés
+  (fájl:sor + részlet minta) nem elég a hiba megértéséhez — pl. ha egy
+  E4/E7 találat kontextusát (a teljes napló- vagy study-szakaszt) is látni
+  kell, nem csak az idézett sort.
+- Ha a `fuggetlen-ellenor` ügynök jelentése (`naplok/ELLENOR_<tétel>.md`)
+  ELTÉRÉS-t jelez, és a chatnek a jelzett fájl:sor környezetét is meg kell
+  néznie a döntéshez.
+- Minden más esetben a fenti két olcsó lekérdezés elég a merge-döntéshez.
+
+---
+
 ## Mi NEM változik
 
 - A Claude Projects-en belüli munkafolyamat (fájl elkészítése, letöltés, projektbe visszatöltés) **továbbra is az elsődleges**, működő rendszer marad.
