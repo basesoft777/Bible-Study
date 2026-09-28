@@ -1,6 +1,10 @@
 # Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.4, D30 — N32, N33 új: a
+Utolsó frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.7, S1.4 — N35–N37 új: a
+MCGED `y`-ág validálatlansága, a gold-készlet 12 csonkolt sora, nincs
+egységes Strong-normalizáló függvény.)
+
+Korábbi frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.4, D30 — N32, N33 új: a
 commitolt render-kimenet elavultsága és a CI generátor-lefedettsége.)
 
 Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: a rések tartalommal, kivonatok, `forras=lap` megszűnt, diff-osztályozó — RENDER lezárva. **Következő: `SZOTAR_BRIEF.md`.**)
@@ -356,6 +360,45 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   a `PARDES_DATUM` rögzítése is kellene, hogy a dátum-mező ne adjon hamis
   pirosat.
 
+- **N35 — a `kiejtes_szabalyok.tsv` `Y`/`y` szabálya (D33, MCGED-konvenció)
+  gold-párral még nincs igazolva.** *(ÚJ, SZOTAR S1.4, 2026.09.28)* Az
+  `U`/`u` ágat az S1.3 26/26 aranyparja validálta (TAGNT/TBESG-forrás); a
+  `Y`/`y` ág csak a `kiejtes.py --onteszt`-tel van ellenőrizve (egyetlen
+  kézi példa, `kyrios`→`kürion`... helyesebben `kyrios`→`küriosz`, nem
+  gold-készletből). Ha a `konkordancia/MCGED_teljes.tsv` `atirat` mezője
+  valaha render-be kerül (S2), előbb egy MCGED-specifikus arany
+  párkészletet kell összeállítani (hasonlóan a
+  `naplok/SZOTAR_S1_kiejtes_arany_sbl.tsv`-hez) és azzal validálni.
+
+- **N36 — a `naplok/SZOTAR_kiejtes_tesztkeszlet_tiszta.tsv` 12 görög
+  "arany" sora csonkolt (hiányzik az első, ékezetes/lehelet-jeles betű).**
+  *(ÚJ, SZOTAR S1.3 ellenőrzés, 2026.09.28)* Pl. `γκαλέω` `ἐγκαλέω`
+  helyett, `νομάζω` `ὀνομάζω` helyett — egy korábbi (S0-előtti)
+  másolási/kódolási hiba a tesztkészletben, nem az S1.3 vagy S1.4
+  bevezetése. A próbát nem érintette (a
+  `naplok/SZOTAR_S1_kiejtes_arany_sbl.tsv` a helyreállított alakot
+  használja, `megjegyzes` oszloppal jelölve, l. `naplok/
+  SZOTAR_S1_kiejtes_jelentes.md` 5. szakasza). **Javaslat, nem döntés:**
+  a gold-tábla saját maga javítható lenne, de más menetek (K10, RENDER)
+  saját mérési alapja is, ezért csak jelzésnek szánt tétel.
+
+- **N37 — nincs egységes Strong-kód-normalizáló függvény a projektben.**
+  *(ÚJ, SZOTAR S1.4 ellenőrzés, 2026.09.28, a felhasználó kérésére, l. a
+  #4/N21 kapcsán)* Legalább 7 önálló implementáció létezik: `eszkozok/
+  lxx_kivonat_fetch.py normalize_strong()`, `lxx_osszevetes.py
+  normalize_strong()`, `merge_karoli_szofaj.py normalize()`,
+  `oshl_index_import.py strong_from_attr()` (mind korábbi), és az S1.4
+  három új szkriptje (`ubs_dbh_import.py`, `mcged_import.py`,
+  `lxx_versszintu_import.py`, `tw_import.py`) — mindegyik saját
+  logikával. Ez ugyanabba a hibaosztályba tartozik, mint az N21
+  (`Karoli_Strong_kivonat.tsv` nullázatlan `H922`-je): decentralizált
+  Strong-kezelés, ahol a padolási/csonkolási hiba könnyen észrevétlen
+  marad — pontosan ez történt a `tw_import.py` első verziójával
+  (`G00120` → tévesen `G0120`, l. `naplok/SZOTAR_S1_4_jelentes.md` 7.
+  szakasza), mielőtt a keresztellenőrzés kifogta. Javaslat: egy közös
+  `eszkozok/strong_util.py` (vagy hasonló) modul, amit minden import
+  átvesz — ez a tétel maga NEM végzi el a konszolidációt (kívül esik az
+  S1 hatókörén), csak jelzi.
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
