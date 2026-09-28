@@ -150,7 +150,12 @@ def forrasreteg_beolvaszthato_szakaszok(motivum_id):
     return {k: '\n'.join(v).strip() for k, v in eredmeny.items()}
 
 
-TS = datetime.date.today().isoformat()
+# A PARDES_DATUM kornyezeti valtozo (YYYY-MM-DD) felulirhatja a mai napot --
+# kizarolag a nulla-diff A/B proba miatt (SZOTAR_BRIEF.md D30,
+# eszkozok/nulladiff.sh): a generalt fejlecek 'ts='/'Generálva:' mezoje
+# maskulonben mindig a futtatas napja, ami ket kulon napon futtatott,
+# egyebkent azonos generalast is elterotte tenne. Mas viselkedest nem erint.
+TS = os.environ.get('PARDES_DATUM') or datetime.date.today().isoformat()
 
 # A ma az elofordulasok.tsv-ben ELOFORDULO ujszovetsegi konyv-tokenek -- nem az
 # osszes bibliai konyv (l. a konyv_teszamentum() dokumentaciojat lent). A K15

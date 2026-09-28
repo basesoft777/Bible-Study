@@ -1,6 +1,6 @@
 # FELADATOK.md — feladatkövető
 
-*v1 · 2026.09.27 · `main` = `9eb43fe` · Ez az egyetlen fájl, amit a chat egy új beszélgetés elején elolvas. A részletek a briefekben és a `NYITOTT_FELADATOK.md`-ben vannak; ide csak az állapot, a függés és a következő lépés kerül.*
+*v1 · 2026.09.28 · `main` = `47fca73` (a `claude/general-teremt002-datum` PR mergelése után frissítendő) · Ez az egyetlen fájl, amit a chat egy új beszélgetés elején elolvas. A részletek a briefekben és a `NYITOTT_FELADATOK.md`-ben vannak; ide csak az állapot, a függés és a következő lépés kerül.*
 
 ## Alapelv: előbb az adatréteg, utána a render
 
@@ -12,7 +12,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Következő lépés | Hol |
 |---|---|---|---|---|---|---|
-| 5 | Szótári adatréteg, 1. menet (SZOTAR S1) | a szerepmátrix hiányzó sorai adatként: fordítási gyorsítótár, terminológia, kiejtés-táblák, UBS DBH, TBESH, Mounce, Translation Words | ⬜ S0b kész, 1. menet még nem futott | #1, #2, #4 | S0b lezárva: D28 (24→26 H-token, T2.2 miatt), Translation Words elfogadva mindkét nyelven (H 21/26, G 10/13, l. `naplok/SZOTAR_S0b_jelentes.md`), LXX versszint grammatikai szűréssel megerősítve (D25 marad). Indítható az 1. menet (`SZOTAR_BRIEF.md` v1.3 §7). | `SZOTAR_BRIEF.md` v1.3, `naplok/SZOTAR_S0b_jelentes.md` |
+| 5 | Szótári adatréteg, 1. menet (SZOTAR S1) | a szerepmátrix hiányzó sorai adatként: fordítási gyorsítótár, terminológia, kiejtés-táblák, UBS DBH, TBESH, Mounce, Translation Words | ⬜ S0b kész, 1. menet S1.1-nél blokkolva volt, a blokk feloldva (D30) | #1, #2, #4 | Blokk feloldva: az 1. menet nulla-diff próbája (K4) `git status --porcelain lexikon/`-ról `eszkozok/nulladiff.sh`-ra vált (D30) — a `general.py --cel lexikon --ir` a TEREMT-002 hiányzó `res_forras.tsv` sora miatt szállt el (`main`-en is), és a `TS` mező a mai nap miatt sosem adott volna üres diffet. A `claude/general-teremt002-datum` PR mergelése után az S1.1 (`claude/szotar-s1-menet`) a SZOTAR_BRIEF.md v1.4 1. menet promptjának 1. lépésétől folytatódik, a `nulladiff.sh`-val. | `SZOTAR_BRIEF.md` v1.4, `naplok/SZOTAR_S0b_jelentes.md` |
 | 6 | Új források 2. felmérése **helyi gépről** (FJ 2. menet) | döntés a Nave, a teljes KJV/ASV és a BSB importjáról; a Macula lefedettsége | ⬜ nincs brief | — (#5-tel párhuzamosan futhat) | Brief kell. Helyi gépen fusson, mert a cloud proxy blokkolt (N27, N29–N31) | `naplok/FORRAS_jelentes.md` (fejlécébe kell a „felülírva: N27–N29” megjegyzés) |
 | 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ nem futott | #3, #5 (terminológia, kiejtés) | **Te:** döntés a v3-ról („természetes hű” stílus a promptban) + költség újraszámítása a teljes Thayer_teljes.tsv hosszeloszlásából (a P6 ~30 USD-ja nem vezethető le, naiv skálázással ~62 USD; ELLENOR_FP.md 1. eltérés) | `FORDITAS_ELES_THAYER_BRIEF.md` v2, csak chatben |
 | 8 | LXX-fordítói döntések a 87 függő igehelyre | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ nem futott | #1, #6 (Macula-lefedettség) | Kutatói adatmunka; 58 gépi jelölt tájékoztatásul: `naplok/FORRAS_FJ1_lxx_jeloltek.tsv` | eredetileg a LEXIKON_LEZARAS 4c pontja |
