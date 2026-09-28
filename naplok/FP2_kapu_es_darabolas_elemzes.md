@@ -55,21 +55,32 @@ függő degradáció**, nem a darabolási mechanizmus mellékhatása.
 
 ## 3. A kulcs felfedése és modell szerinti bontás
 
+**Önjavítás a szúrópróba alapján:** a `fp2/szuroproba.md`-t egy chat-menet pontozta (nem
+a felhasználó személyesen — ezt itt és a döntésnaplóban is így jelölöm). A `G0266`
+DeepSeek-kimenetét (akkor "A" címkén) a chat 1/10-re, én korábban 7/10-re ("mérsékelt
+kihagyás") pontoztam — a tényleges hosszarány (0,42, azaz 58% hiányzik,
+`fp2/kapu_keresztellenorzes.py`) a chat ítéletét igazolja. Javítottam
+(`fp2/biralat_adatok.py`, `kihagyas` → `kihagyas(kritikus)`), és az alábbi táblázat már
+a javított adatot tükrözi.
+
 | Modell | Teljes 30 szócikk (átlag/10, kritikus%) | **Nem darabolt** 25 szócikk | **Darabolt** 5 szócikk |
 |---|---:|---:|---:|
 | Google Gemini 3.1 Flash Lite | 9,67 (3%) | 9,60 (4%) | **10,00 (0%)** |
 | MiniMax M3 | 7,47 (23%) | 8,32 (12%) | **3,20 (80%)** |
-| DeepSeek V4 Flash | 6,13 (47%) | 6,44 (44%) | **4,60 (60%)** |
+| DeepSeek V4 Flash | 5,93 (50%) | 6,44 (44%) | **3,40 (80%)** |
 
 **A darabolás önmagában nem magyarázza a DeepSeek gyengeségét** (44% kritikus a nem
 darabolt mintán is), **de drámaian megmagyarázza a MiniMax problémáját**: a nem darabolt
 szócikkeken a MiniMax a **második legjobb** (8,32, 12% kritikus — versenyképes a
-Geminivel), miközben a darabolt szócikkeken **ő a legrosszabb** (3,20, 80% kritikus —
-rosszabb, mint a DeepSeek). A MiniMax hibamódja a darabolt szócikkeken tehát nem
-véletlenszerű minőségromlás, hanem **rendszeres**: minden egyes önálló darab-hívásnál
+Geminivel), miközben a darabolt szócikkeken **ugyanolyan rossz, mint a DeepSeek**
+(mindkettő 80% kritikus, 4/5 szócikk). A MiniMax hibamódja a darabolt szócikkeken tehát
+nem véletlenszerű minőségromlás, hanem **rendszeres**: minden egyes önálló darab-hívásnál
 újraindítja/kitalálja a fejlécet és a tudományos apparátust, amikor a darab önmagában
 nem elég kontextus egy "teljes" szócikk érzetének keltéséhez — feltehetően a modell saját
-(betanítási) tudásából egészíti ki, amit a forrás abban a darabban nem tartalmaz.
+(betanítási) tudásából egészíti ki, amit a forrás abban a darabban nem tartalmaz. A
+DeepSeek darabolt szócikkeken mutatott gyengülése (80%) ugyanakkor **konzisztens** a nem
+darabolt mintán mért gyengeségével (44%) — nála a darabolás legfeljebb súlyosbító, nem
+kiváltó tényező.
 
 ### Kritikus hibák modellenként (a teljes 30 szócikken)
 
@@ -84,6 +95,27 @@ G2672, G3777, G4151*, G5010, G5351, G5356, G5590*, G0026*, G5013
 
 **Google Gemini 3.1 Flash Lite — 1/30 kritikus:**
 G1106 — "Filem 1:14" tévesen "Fil 1:14" helyett (nem darabolt).
+
+## 3b. A szúrópróba és a vak bírálat összevetése
+
+A `fp2/szuroproba.md`-t **egy chat-menet pontozta, nem a felhasználó személyesen** — ezt
+a felhasználó kifejezetten kérte jelölni. A chat 0–10 skálán pontozott és "legjobb"
+címkét adott, a kulcs ismerete nélkül.
+
+| Szócikk | A=modell / B=modell / C=modell | Chat (A/B/C, legjobb) | Az én vak pontszámom (osszesen, A/B/C) | Egyezés |
+|---|---|---|---|---|
+| G0004 | gemini / deepseek / minimax | 9 / 8 / 5, A | 10 / 10 / 7 | irány egyezik |
+| G0813 | minimax / deepseek / gemini | 8 / 8 / 8,5, C | 10 / 9 / 10 | irány egyezik (mind jó) |
+| G1941 | gemini / minimax / deepseek | 9 / 7 / 1, A | 10 / 6 / 1 | **jó egyezés** |
+| G0086 | gemini / deepseek / minimax | 8,5 / 2 / 8, A | 10 / 3 / 10 | **jó egyezés** (B/deepseek mindkettőnél rossz) |
+| G5590 | deepseek / minimax / gemini | 0,5 / 5 / 8,5, C | 1 / 7 / 10 | irány egyezik |
+| G2105 | deepseek / gemini / minimax | 8,5 / 8 / 9, C | 10 / 10 / 10 | egyezik (nincs hiba) |
+| G3687 | minimax / deepseek / gemini | 8 / 7,5 / 8,5, C | 10 / 10 / 10 | egyezik (nincs hiba) |
+| G0266 | deepseek / gemini / minimax | 1 / 8,5 / 0,5, B | 3\* / 8 / 2 | **javítva** (l. fent, A eredetileg 7 volt) |
+
+7/8 szócikkön jó/irány-egyező a két független pontozás; a 8. (`G0266`) eltérést a fenti
+javítás oldotta fel. Ez megerősíti a vak bírálat megbízhatóságát, és megmutatja a
+szúrópróba tényleges hasznát (önellenőrzés, nem csak a felhasználói ítélet mérése).
 
 ## 4. Prompt v3-javaslatok a jelentésbe (a felhasználó kérése, NEM futtatva)
 

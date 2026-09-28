@@ -71,7 +71,7 @@ SOROK = [
     ('G0026', 'A', 3, 2, 3, 2, 8, '', 'hu, teljes, "Szent Szellem" es "szeretetvendegsegek" terminologia helyesen'),
     ('G0026', 'B', 0, 1, 2, 0, 3, 'betoldas(kritikus)', 'kritikus: a forrasban NEM szereplo kitalalt tudomanyos apparatus betoldasa (Trench, Schmidt, Tittmann, Cremer, Weiss, Holtzmann stb. hivatkozasok), szerkezeti osszeomlas'),
     ('G0026', 'C', 1, 1, 2, 1, 4, 'kihagyas(kritikus)', 'jelentos kihagyas (~60%), de nem toldott be hamis tartalmat, a valodi vegen korrekt zarassal'),
-    ('G0266', 'A', 2, 2, 3, 2, 7, 'kihagyas', 'mersekelt kihagyas nehany [...] jellel, egyebkent hu, korrekt zarassal'),
+    ('G0266', 'A', 0, 1, 2, 0, 3, 'kihagyas(kritikus)', 'JAVITVA a fp2/szuroproba.md fuggetlen (chat-) pontozasa alapjan: a forras 58%-a hianyzik (arany=0.42, l. fp2/kapu_keresztellenorzes.py), a korabbi "mersekelt" minositas tulzottan elnezo volt'),
     ('G0266', 'B', 3, 2, 3, 2, 8, '', 'hu, teljes, "romlottsag" terminologia helyesen'),
     ('G0266', 'C', 0, 1, 1, 0, 2, 'betoldas(kritikus)', 'kritikus: kitalalt alfabetikus taxonomia (a-tol k-ig) es hamis igehelyek betoldasa, ismetlodo fejlecek'),
     ('G0993', 'A', 3, 2, 3, 2, 8, '', 'hu, teljes'),
