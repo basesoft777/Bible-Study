@@ -106,12 +106,16 @@ címkét adott, a kulcs ismerete nélkül.
 |---|---|---|---|---|
 | G0004 | gemini / deepseek / minimax | 9 / 8 / 5, A | 10 / 10 / 7 | irány egyezik |
 | G0813 | minimax / deepseek / gemini | 8 / 8 / 8,5, C | 10 / 9 / 10 | irány egyezik (mind jó) |
-| G1941 | gemini / minimax / deepseek | 9 / 7 / 1, A | 10 / 6 / 1 | **jó egyezés** |
+| G1941 | gemini / minimax / deepseek | 9 / 7 / 1, A | 10 / 9 / 1 | **jó egyezés** |
 | G0086 | gemini / deepseek / minimax | 8,5 / 2 / 8, A | 10 / 3 / 10 | **jó egyezés** (B/deepseek mindkettőnél rossz) |
-| G5590 | deepseek / minimax / gemini | 0,5 / 5 / 8,5, C | 1 / 7 / 10 | irány egyezik |
+| G5590 | deepseek / minimax / gemini | 0,5 / 5 / 8,5, C | 2 / 7 / 10 | irány egyezik |
 | G2105 | deepseek / gemini / minimax | 8,5 / 8 / 9, C | 10 / 10 / 10 | egyezik (nincs hiba) |
 | G3687 | minimax / deepseek / gemini | 8 / 7,5 / 8,5, C | 10 / 10 / 10 | egyezik (nincs hiba) |
-| G0266 | deepseek / gemini / minimax | 1 / 8,5 / 0,5, B | 3\* / 8 / 2 | **javítva** (l. fent, A eredetileg 7 volt) |
+| G0266 | deepseek / gemini / minimax | 1 / 8,5 / 0,5, B | 3\* / 10 / 2 | **javítva** (l. fent, A eredetileg 9 volt) |
+
+*(a táblázat "Az én vak pontszámom" oszlopa egy korábbi verzióban 3 sorban a
+természetesség-pontszámot mutatta az összpontszám helyett — javítva a `fp2/biralat.tsv`
+alapján, l. `naplok/ELLENOR_FP2.md`.)*
 
 7/8 szócikkön jó/irány-egyező a két független pontozás; a 8. (`G0266`) eltérést a fenti
 javítás oldotta fel. Ez megerősíti a vak bírálat megbízhatóságát, és megmutatja a

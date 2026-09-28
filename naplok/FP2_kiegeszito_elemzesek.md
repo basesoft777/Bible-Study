@@ -27,10 +27,13 @@ DeepSeek-kimenetet (`G1311`, `G5010`, `G5356`, `G2672`) újrafuttattam explicit
 
 | Szócikk | Eredeti pontszám (0–10) | Új pontszám (max_tokens=8000-rel) |
 |---|---:|---:|
-| G1311 | 1 (kihagyás, kritikus) | **10** |
-| G5010 | 0 (kihagyás, kritikus) | **10** |
-| G5356 | 1 (kihagyás, kritikus) | **10** |
+| G1311 | 0 (kihagyás, kritikus) | **10** |
+| G5010 | 1 (kihagyás, kritikus) | **10** |
+| G5356 | 2 (kihagyás, kritikus) | **10** |
 | G2672 | 1 (kihagyás, kritikus) | **10** |
+
+*(a "Eredeti pontszám" oszlop egy korábbi verzióban hibás volt 3 sorban — a
+`fp2/biralat.tsv` alapján javítva, l. `naplok/ELLENOR_FP2.md`)*
 
 **Értelmezés:** mivel a `max_tokens` explicit megadása minden esetben javított, de a
 `completion_tokens` eredeti értékei nem utaltak plafon-ütközésre, a legvalószínűbb
@@ -72,9 +75,17 @@ tartalék-modell döntéshez.
   ez nem magyarázható a bíráló szigorának változásával, mert ugyanaz a bíráló,
   ugyanazzal a rubrikával, és a hiba típusa (súlyos hosszcsökkenés) objektíven
   mérhető, nem csak ítélet kérdése.
-- **Csonkolás (darabolás):** a 20 közös szócikk közül csak 1 (`G1941`) igényelt
-  volna darabolást a v1 kor2-mintában is (3746 kar. < 4000, valójában **nem**
-  darabolt) — tehát a regresszió **nem** a darabolási mechanizmus mellékhatása.
+- **Csonkolás (darabolás) — JAVÍTVA (l. `naplok/ELLENOR_FP2.md`):** egy korábbi
+  változat tévesen azt állította, hogy a 20 közös szócikk közül egyik sem igényelt
+  darabolást. Ez **hamis**: `G4151` (23 705 kar., 12 darab) és `G5590` (5950 kar.,
+  3 darab) mindkettő a kor2-mintában is szerepel, és mindkettő darabolást igényel
+  (`G1941`, 3746 kar., valóban nem darabolt — ez volt az egyetlen igaz rész az eredeti
+  állításból). A DeepSeek FP2-pontszáma erre a két szócikkre külön-külön katasztrofális
+  (`G4151`=1/10, `G5590`=2/10, mindkettő kritikus csonkolás). **Ha ezt a két szócikket
+  kizárjuk**, a maradék 18 (nem darabolt) szócikken a DeepSeek FP2-átlaga még mindig
+  csak **≈5,44/10** ((5,05×20−1−2)/18) — vagyis **a regresszió a darabolt szócikkek
+  nélkül is fennáll**, tehát a darabolás nem az egyetlen ok, de hozzájárul a teljes
+  20-as átlag romlásához.
 - **Legvalószínűbb ok — infrastruktúra-/ár-változás:** a `naplok/FP2_felmeres.md`
   0.4 pontja szerint a `deepseek/deepseek-v4-flash` OpenRouter-ára a kor2 (2026.09.26)
   óta **kb. háromszorosára nőtt** (0,047→0,14 USD/1M bemenet). Az OpenRouter gyakran
@@ -103,12 +114,18 @@ nem íródott felül).
   tartozik, ahol a kézi olvasás (erőforrás-korlát miatt) nem volt karakterpontos
   összevetés — **ezt korlátozásként vállalom**, és a gépi jelzést megbízhatóbbnak
   tekintem ezen a két soron, amíg nincs teljes újraellenőrzés.
-- **3 eset, ahol a gép "átenged" egy valódi kritikus hibát** (`G1944`-A [MiniMax],
-  `G5013`-B [MiniMax]: teljesen angolul hagyott szócikk; `G1106`-A [Gemini]:
-  `Phi`→`Filem` hivatkozási csere): **egyik gépi ellenőrzés sem érzékeny** arra, ha a
-  modell a forrást **változatlan hosszal és görög/héber tartalommal, de le nem
-  fordítva** adja vissza, vagy ha egy hivatkozás könyvneve téves, de a szám:szám minta
-  és a rövidítés önmagában érvényes marad. **Ez egy strukturális rés mind a
+- **2+1 eset, ahol a gép nem tudja megkülönböztetni a hiba fajtáját**
+  (`G1944`-A [MiniMax], `G5013`-B [MiniMax]: teljesen angolul hagyott szócikk;
+  `G1106`-A [Gemini]: `Phi`→`Filem` hivatkozási csere) — **JAVÍTVA** (l.
+  `naplok/ELLENOR_FP2.md`): a `G1944`/`G5013` eseteken az 5. (terminológia)
+  ellenőrzés ténylegesen SÉRTÉS-t ad, tehát a kapu **nem "átenged" mindent
+  csendben** — de ugyanez a SÉRTÉS más, ártalmatlan terminológia-eltérésekre is
+  lefut (pl. a `G1944` Gemini-sora is SÉRTÉS ott, holott az teljesen jó fordítás),
+  tehát **a kapu nem különíti el, hogy a SÉRTÉS oka fordítatlanság-e**. A
+  `Phi`→`Filem` hivatkozási cserét (`G1106`) viszont **valóban egyik ellenőrzés sem
+  látja** (sem a hosszarány, sem a görög/héber, sem a Károli-rövidítés-ellenőrzés,
+  mert a rövidítés önmagában érvényes, csak rossz könyvre mutat). **Ez egy
+  strukturális rés mind a
   hosszarány-, mind a görög/héber-, mind a Károli-rövidítés-ellenőrzésben** — a
   jelentésbe "javítandó a #7 előtt" jelöléssel kerül, az FP2-ben nem javítom.
 

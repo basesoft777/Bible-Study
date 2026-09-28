@@ -13,10 +13,14 @@ OpenRouter-ár mögötti szolgáltatóváltás (nem mért tény, következtetés
 a nem darabolt szócikkeken versenyképes (12% kritikus), de a **darabolt** szócikkeken
 **kitalált tartalmat told be** (hamis hivatkozások, hamis szegmentálás) — ugyanolyan
 rossz, mint a DeepSeek (80% kritikus). **Javasolt felállás: Gemini 3.1 Flash Lite,
-prompt-cache-sel és egyszeri önújrapróbával (7. forgatókönyv), ≈4,35 USD becsült
-teljes költséggel (8,70 USD duplázott ár mellett is a 15 USD-s plafonon belül).**
+prompt-cache-sel és egyszeri önújrapróbával (7. forgatókönyv), ≈4,93 USD becsült
+teljes költséggel (9,86 USD duplázott ár mellett is a 15 USD-s plafonon belül).**
 A v3 stílus megtartotta/javította a minőséget (l. 3. pont). Négy tétel javítandó a
-#7 (éles Thayer-fordítás) indítása előtt (l. 6. pont).
+#7 (éles Thayer-fordítás) indítása előtt (l. 6. pont). *(Ez a jelentés a
+`fuggetlen-ellenor` ügynök 2026.09.28-i ellenőrzése — `naplok/ELLENOR_FP2.md` —
+alapján több ponton javítva lett: a költségbecslés egy számítási hibája, a kritikus
+hibák száma, a kor2-minta darabolási állítása és több táblázat-cella. A javítások a
+megfelelő szakaszoknál jelölve vannak.)*
 
 ## 2. Pontszámok modellenként
 
@@ -43,19 +47,25 @@ DeepSeekkel egyformán rossz — a hibája **rendszeresen a darabolási mechaniz
 kötött** (minden önálló darab-hívásnál újrakezdi/kitalálja a fejlécet és a tudományos
 apparátust). A DeepSeek gyengesége **darabolástól függetlenül** is fennáll.
 
-**Kritikus hibák típus szerint** (mind a 90 kimeneten, 21 eset — a G0266 önjavítás
-után, l. 7. pont):
-- **DeepSeek — 15 eset, mind kihagyás (csonkolás).** A 4 legrövidebben csonkolt
-  kimenetet explicit `max_tokens=8000`-rel újrafuttatva mind a 4 teljes, hű fordítást
-  adott (0,0018 USD) — ez a DeepSeek megbízhatatlanságára utal, **nem** paraméterhibára
-  (**következtetés, nem mérés**: a `finish_reason` nem `length` volt egyik esetben sem —
-  a `fp2/_run/hibak/` könyvtár üres, és a `completion_tokens` értékek nem kerek/plafon-
-  szerűek).
+**Kritikus hibák típus szerint** (mind a 90 kimeneten, **23 eset** — l.
+`naplok/ELLENOR_FP2.md`, a korábbi "21" tévedés volt):
+- **DeepSeek — 15 eset: 14 kihagyás (csonkolás) + 1 betoldás** (`G0086` —
+  átfogalmazott/bővített parafrázis, nem a forrás hű fordítása). A 4 legrövidebben
+  csonkolt kimenetet explicit `max_tokens=8000`-rel újrafuttatva mind a 4 teljes, hű
+  fordítást adott (0,0018 USD) — ez a DeepSeek megbízhatatlanságára utal, **nem**
+  paraméterhibára (**következtetés, nem mérés**: a `finish_reason` nem `length` volt
+  egyik esetben sem — a `fp2/_run/hibak/` könyvtár üres, és a `completion_tokens`
+  értékek nem kerek/plafonszerűek).
 - **MiniMax — 7 eset:** 3 esetben a szócikket **egyáltalán nem fordította le**
-  (angolul maradt, nem darabolt szócikkeken), 4 esetben (mind darabolt szócikk)
-  **kitalált, a forrásban nem szereplő tudományos apparátust** toldott be.
+  (angolul maradt: `G0002`, `G1944`, `G5013` — mind nem darabolt szócikk), 4 esetben
+  (mind darabolt szócikk) **kitalált, a forrásban nem szereplő tudományos apparátust**
+  toldott be (`G4151`, `G0026`, `G0266`, `G1343`). A gépi kapu a `G0002`-t véletlenül
+  elkapta (a torz görög token miatt), a `G1944`/`G5013` nem-lefordítást viszont csak
+  közvetve, meg nem különböztetve jelzi (l. 7. pont).
 - **Gemini — 1 eset:** `G1106`-nál `Phi 1:14`-et `Filem 1:14`-re fordította
-  (Filippi helyett Filemon) — a gépi kapu **nem** jelezte (l. 7. pont).
+  (Filippi helyett Filemon) — a gépi kapu **nem** jelezte ezt (l. 7. pont; a
+  `G1944`/`G5013` MiniMax-eseteket viszont a kapu terminológia-ellenőrzése jelzi,
+  csak nem tudja megkülönböztetni a hiba fajtáját tőle — l. 7. pont, pontosítva).
 
 Ha a nyers válaszokban lenne rögzítve `finish_reason`, modellenkénti darabszámát meg
 tudnánk adni — **ez nincs tárolva** a `fordit.py`-ban (l. 6. pont, "javítandó" lista).
@@ -75,9 +85,16 @@ hibalistájából származik, és az FP2-ben következetesen megjelenik.
 
 **A DeepSeek visszaesése** (következtetés, nem mérés) **nem** magyarázható a
 prompt/terminológiával (bővítő jellegűek, nem okoznának rövidebb választ), sem a
-bírálati szigorral (azonos bíráló, azonos rubrika, objektíven mérhető hosszcsonkolás),
-sem a darabolással (a 20 közös szócikk közül egy sem igényelt volna darabolást a
-kor2-mintában sem). A legvalószínűbb ok a **kor2 óta ~3×-osára nőtt OpenRouter-ár**
+bírálati szigorral (azonos bíráló, azonos rubrika, objektíven mérhető hosszcsonkolás).
+**Javítás** (l. `naplok/ELLENOR_FP2.md`): a korábbi állítás, hogy "a 20 közös
+szócikk közül egy sem igényelt volna darabolást", **hamis volt** — `G4151` (23 705
+kar., 12 darab) és `G5590` (5950 kar., 3 darab) is a kor2-mintában van, és mindkettő
+darabolást igényel; a DeepSeek FP2-pontszáma mindkettőn katasztrofális (1/10, 2/10).
+**Ha ezt a két szócikket kizárjuk, a maradék 18 (nem darabolt) szócikken a DeepSeek
+FP2-átlaga még mindig csak ≈5,44/10** — tehát a darabolás **hozzájárul** a
+visszaeséshez, de **nem az egyetlen ok**: a nem darabolt szócikkeken mért 5,44 is
+messze a kor2 8,60-as alapszintje alatt marad. A legvalószínűbb ok a **kor2 óta
+~3×-osára nőtt OpenRouter-ár**
 (`naplok/FP2_felmeres.md` 0.4) mögötti szolgáltató-/kvantálásváltás — ezt erősíti,
 hogy egy tesztlekérdezés a `deepseek/deepseek-v4-flash` mögött **"Venice"**
 szolgáltatót adott vissza (a `provider` mező létezik és élesben elérhető, de a FP2
@@ -95,19 +112,26 @@ hosszarány 0,42 (58% hiányzik) — javítva `kihagyás(kritikus)`-ra. Részlet
 
 ## 5. Költségtábla (jóváhagyott, `naplok/FP2_koltsegbecsles.md`)
 
+**Javítva** (l. `naplok/ELLENOR_FP2.md`): a `fp2/koltsegbecsles.py` a darabolt
+szócikkeknél a szócikk *első* darabjának kimenetét osztotta a *teljes* szócikk
+hosszával, ahelyett hogy az összes darab kimenetét összegezte volna — ez a Gemini
+kimeneti token-arányát kb. 17%-kal alábecsülte. A táblázat az alábbi, javított
+számokat mutatja (a Gemini-forgatókönyvek kb. +0,5–0,6 USD-vel drágábbak, mint a
+korábban jóváhagyott verzióban — a plafonon belül maradnak, a sorrend nem változik).
+
 | # | Forgatókönyv | Alapár (p10–p90) | Ár ×2 |
 |---|---|---:|---:|
-| 1 | Csak Gemini 3.1 Flash Lite | 9,58 (6,55–10,93) | 19,16 |
-| 2 | Csak DeepSeek V4 Flash | 4,25 (3,94–4,39) | 8,50 |
-| 3 | Csak MiniMax M3 | 10,91 (10,47–11,62) | 21,82 |
-| 4a | Gemini + 1× Gemini-önújrapróba | 9,87 | 19,74 |
-| 4b | Gemini + MiniMax tartalék (csak nem darabolt, csak hiba esetén) | 9,92 (≈4a) | — |
-| 5 | Gemini + prompt-cache | 4,22 | 8,44 |
-| 6 | Gemini + apparátus-helyőrzők (becsült, nem tesztelt) | 8,67 | — |
-| **7** | **Gemini + prompt-cache + 1× önújrapróba** | **4,35 (1,23–5,73)** | **8,70** |
+| 1 | Csak Gemini 3.1 Flash Lite | 10,15 (9,63–10,93) | 20,29 |
+| 2 | Csak DeepSeek V4 Flash | 4,26 (4,01–4,39) | 8,53 |
+| 3 | Csak MiniMax M3 | 11,05 (10,63–11,62) | 22,11 |
+| 4a | Gemini + 1× Gemini-önújrapróba | 10,45 | 20,90 |
+| 4b | Gemini + MiniMax tartalék (csak nem darabolt, csak hiba esetén) | 10,49 (≈4a) | — |
+| 5 | Gemini + prompt-cache | 4,79 | 9,57 |
+| 6 | Gemini + apparátus-helyőrzők (becsült, nem tesztelt) | 9,10 | — |
+| **7** | **Gemini + prompt-cache + 1× önújrapróba** | **4,93 (4,40–5,73)** | **9,86** |
 
 **A tervezett plafon 15 USD** — minden alapár belefér; az ár ×2 érzékenység a
-Gemini/MiniMax-forgatókönyveket túltolja (19–24 USD), **de a cache-alapú
+Gemini/MiniMax-forgatókönyveket túltolja (20–22 USD), **de a cache-alapú
 forgatókönyvek (5, 7) duplázott árnál is a plafonon belül maradnak.**
 
 ## 6. Javasolt döntés a #7-hez
@@ -132,9 +156,11 @@ v2+kiegészítés).
 3. **Könyvnév-egyezés ellenőrzése** — a gépi kapu (3. ellenőrzés) jelenleg csak azt
    nézi, hogy a használt Károli-rövidítés *létezik-e*, nem azt, hogy *a helyes
    könyvre* utal-e (l. a `Phi`→`Filem` eset).
-4. **Fordítatlan szöveg ellenőrzése** — egyik jelenlegi ellenőrzés sem veszi észre, ha
-   a modell a forrást változatlan hosszal és görög/héber tartalommal, de **le nem
-   fordítva** adja vissza (l. `G1944`, `G5013` MiniMax-esetek).
+4. **Fordítatlan szöveg ellenőrzése, elkülönítve** — a terminológia-ellenőrzés (5.)
+   valójában SÉRTÉS-t ad a `G1944`/`G5013` MiniMax-eseteken is, de nem különíti el,
+   hogy a SÉRTÉS oka fordítatlanság-e (ugyanez a SÉRTÉS ártalmatlan terminológia-
+   eltérésekre is lefut). Kell egy külön, célzott ellenőrzés, amely kifejezetten azt
+   nézi, hogy a válasz tartalmaz-e hosszabb, összefüggő angol prózaszakaszt.
 5. **Egyszeri önújrapróba** — a G6 önjavító hurok (a `FORDITAS_ELES_THAYER_BRIEF.md`-ben
    már tervezve) bevezetése, mert a DeepSeek/MiniMax csonkolásainak egy része (l. 2.
    pont, `max_tokens` teszt) újrafuttatással megoldódik.
@@ -150,8 +176,15 @@ sérült) alapján állította helyre a kimenetet (`fp2/rendezo.py`). Részletek
 `naplok/FP2_felmeres.md`.
 
 **Gépi kapu (`naplok/FORDITAS_P4_ellenoriz.py`) — strukturális rések** (l. 6. pont
-3–4. tétele): a könyvnév-egyezés és a fordítatlanul hagyott szöveg egyik ellenőrzésen
-sem bukik el.
+3–4. tétele): a könyvnév-egyezés ellenőrzésen (`Phi`→`Filem`) egyáltalán nem bukik el;
+a fordítatlanul hagyott szöveget a terminológia-ellenőrzés SÉRTÉS-e jelzi, de nem
+különíti el más terminológia-eltérésektől.
+
+**`fp2/koltsegbecsles.py` — kimeneti arány számítási hibája darabolt szócikkeken**
+(l. `naplok/ELLENOR_FP2.md`; ez a saját FP2-eszközöm hibája, nem a `#3`-é, de itt
+jegyzem fel): a darabolt szócikkeknél csak az első darab kimenetét vette figyelembe,
+a teljes szócikk hosszával osztva — ez kb. 17%-kal alábecsülte a Gemini kimeneti
+token-arányát. **Javítva**, a költségtábla (5. pont) frissítve.
 
 ## 8. Döntésnapló
 
@@ -163,7 +196,9 @@ sem bukik el.
 | D4 | A `G1941` (arany) a mintában maradt és újra lefordíttattuk mindhárom modellel (nem lett kihagyva a G7-szabály szerint), mert a brief az arannyal való összevetésre szánta | brief 2. lépés |
 | D5 | A 3. lépés (terminológia-kiegészítés) csak az FP2 próbára vonatkozik, nem a `naplok/FORDITAS_P_terminologia_v2.tsv`-re | a felhasználó explicit megerősítette |
 | D6 | A vak bírálatot (5. lépés) én (Claude, ez a session) végeztem a kulcs megnyitása előtt; a szúrópróbát (6. lépés) egy másik chat-menet pontozta, nem a felhasználó személyesen | a felhasználó kérése |
-| D7 | A `G0266` DeepSeek-kimenetét a szúrópróba alapján utólag `kihagyás(kritikus)`-ra javítottam (eredetileg 7/10 volt) | a chat pontszáma (1/10) és a mért hosszarány (0,42) egybehangzóan ezt igazolta |
-| D8 | A G0266-korrekció szabályát (hosszarány<0,8 VAGY görög-paritás SÉRTÉS) gépiesen alkalmaztam mind a 90 kimenetre, az eredeti pontszám megtartásával külön oszlopban | a felhasználó kérése; a két minősítés 11/90 esetben tér el, ebből 3 egy valódi, a gépi kapu által sem látott hibatípust (fordítatlan szöveg) fed fel |
+| D7 | A `G0266` DeepSeek-kimenetét a szúrópróba alapján utólag `kihagyás(kritikus)`-ra javítottam (eredetileg **9**/10 volt — egy korábbi verzió téves 7/10-et írt, l. D11) | a chat pontszáma (1/10) és a mért hosszarány (0,42) egybehangzóan ezt igazolta |
+| D8 | A G0266-korrekció szabályát (hosszarány<0,8 VAGY görög-paritás SÉRTÉS) gépiesen alkalmaztam mind a 90 kimenetre, az eredeti pontszám megtartásával külön oszlopban | a felhasználó kérése; a két minősítés 11/90 esetben tér el, ebből 2 (nem 3) egy valódi, a gépi kapu által meg nem különböztetett hibatípust (fordítatlan szöveg) fed fel, 1 (`G1106`) a Phi/Filem-hiba |
 | D9 | A `Phi`→`Filem` kapurést és a "fordítatlan szöveg" kapurést csak a jelentésbe vettem fel, az FP2 gépi kapuját nem módosítottam | a felhasználó explicit kérése |
 | D10 | A 4b forgatókönyvet a felhasználó javítása szerint (MiniMax csak tartalék, csak hiba esetén) újraszámoltam; mivel gyakorlatilag egyenértékű a 4a-val, a jelentés a 7. (cache-alapú) forgatókönyvet javasolja, nem a 4a/4b-t | a 7. forgatókönyv minden más szempontból (ár, ár-érzékenység) jobb |
+| D11 | A `fuggetlen-ellenor` ügynök (2026.09.28, l. `naplok/ELLENOR_FP2.md`) több érdemi hibát talált és javítottam: a költségbecslés kimeneti-arány számítási hibáját (Gemini-forgatókönyvek +0,5–0,6 USD), a kritikus esetek számát (21→23) és a DeepSeek/MiniMax bontását, a `G0266` eredeti pontszámát (7→9), a kor2-minta darabolási állítását (két, nem egy szócikk igényelt darabolást a kor2-mintában is), és három táblázat-cellát, amelyek a természetesség-oszlopot mutatták az összpontszám helyett | a felhasználó kérte a menetzárás előtti független ellenőrzést; az ügynök nem tudott fájlt írni/commitolni, ezt a Code-session pótolta |
+| D12 | Az ellenőrzés jelezte, hogy a `naplok/FP2_felmeres.md` 0.2 pontja ("a brief tiltja a #3 módosítását, nem módosítom") és a tényleges D3 döntés (a `fordit.py` mégis módosult, additív kapcsolókkal) egymás mellett ellentmondásosnak hat — ezt a felhasználó felé jelzem, a döntést (additív bővítés ≠ hibajavítás) fenntartva, mert nélküle a próba nem lett volna elvégezhető | l. `naplok/ELLENOR_FP2.md` |

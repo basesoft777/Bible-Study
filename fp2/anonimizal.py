@@ -78,7 +78,11 @@ def main():
             kulcs_sorok.append({'strong': strong, 'cimke': cimke, 'modell': model_slug})
 
         forras = thayer.get(strong, '(HIANYZIK A THAYERBOL)')
-        resz = ['## %s\n' % strong, '**Forrás (Thayer, angol):**\n', forras, '']
+        # CI E9 (eszkozok/ellenorzes/szabalyok.py, D11 kivetel): az angol
+        # forrasidezetet blockquote-ba tesszuk, hogy az angol "sense" szo
+        # (gyakori a Thayer-szovegben) ne fusson bele a study-szinten tiltott
+        # angol-szo ellenorzesbe.
+        resz = ['## %s\n' % strong, '**Forrás (Thayer, angol):**\n', '> ' + forras, '']
         for cimke in cimkek:
             model_slug = cimke_modell[cimke]
             forditas = modellek_kimenete[model_slug][strong]['forditas_hu']

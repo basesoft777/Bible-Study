@@ -159,20 +159,30 @@ def main():
 
     kimenet_arany_modaton = {}
     for model_id in ARAK:
-        aranyok = []
+        # HIBA-JAVITAS (fuggetlen ellenorzes, 2026.09.28): korabban a 0. darab
+        # kimenet_token-jet osztotta a TELJES szocikk hosszaval -- ez tobb-
+        # darabos szocikkeknel (pl. G4151, 12 darab) sulyosan alabecsulte az
+        # aranyt, mert a tobbi 11 darab kimenetet figyelmen kivul hagyta,
+        # mikozben a nevezoben a teljes (nem csak az elso darab) hosszat
+        # hasznalta. Javitva: modellenkent es szocikkenkent osszegezzuk az
+        # OSSZES darab kimenet_token-jet, es azt osztjuk a szocikk teljes
+        # forraskarakter-szamaval -- ez helyesen kezeli mind az egy-, mind a
+        # tobb-darabos szocikkeket.
+        szocikk_kimenet_ossz = {}
         for r in futasnaplo:
             if r['modell'] != model_id or r['forras'] not in ('halozat', 'cache'):
                 continue
             strong = r['strong']
             if (strong, model_id) in kritikus_par:
                 continue
-            forras_kar = None
-            if r['darab'] == '0' and strong in minta_hossz:
-                # becsles: az elso darab aranya kepviseli az egesz szocikket
-                # (a legtobb minta-szocikk egy-darabos)
-                forras_kar = minta_hossz[strong]
-            if forras_kar and int(r['kimenet_token']):
-                aranyok.append(int(r['kimenet_token']) / forras_kar)
+            if strong not in minta_hossz:
+                continue
+            szocikk_kimenet_ossz[strong] = szocikk_kimenet_ossz.get(strong, 0) + int(r['kimenet_token'])
+
+        aranyok = []
+        for strong, kimenet_ossz in szocikk_kimenet_ossz.items():
+            if kimenet_ossz:
+                aranyok.append(kimenet_ossz / minta_hossz[strong])
         if aranyok:
             p10 = statistics.quantiles(aranyok, n=10)[0] if len(aranyok) >= 10 else min(aranyok)
             p90 = statistics.quantiles(aranyok, n=10)[8] if len(aranyok) >= 10 else max(aranyok)
@@ -218,14 +228,62 @@ def main():
     b4b = g_full + extra_4b
     print('  4b Gemini+MiniMax tartalek: alap=%.3f (kb. egyenerteku a 4a-val)' % b4b)
 
+    def cache_koltseg(ar_be, ar_ki, ar_cache):
+        a, b = overhead[GEMINI]
+        overhead_cache = 1 * a * ar_be / 1e6 + (N - 1) * a * ar_cache / 1e6
+        forras_resz = b * C * ar_be / 1e6
+        kimenet_resz = kimenet_arany_modaton[GEMINI] * C * ar_ki / 1e6
+        return overhead_cache + forras_resz + kimenet_resz
+
+    c5 = cache_koltseg(*ARAK[GEMINI])
+    c5_x2 = cache_koltseg(ARAK[GEMINI][0] * 2, ARAK[GEMINI][1] * 2, ARAK[GEMINI][2] * 2)
+    c7 = c5 * 1.03
+    c7_x2 = c5_x2 * 1.03
+    print('  5 Gemini+cache:             alap=%.3f | ar x2=%.3f' % (c5, c5_x2))
+    print('  7 Gemini+cache+3%% onujra:   alap=%.3f | ar x2=%.3f' % (c7, c7_x2))
+
+    print('\n=== 4. p10-p90 sav (kimenet-token szorasbol, bemenet fixnek tekintve) ===')
+    for nev, mid in (('1 Gemini', GEMINI), ('2 DeepSeek', DEEPSEEK), ('3 MiniMax', MINIMAX)):
+        a, b = overhead[mid]
+        be = N * a + b * C
+        aranyok = []
+        szocikk_kimenet_ossz = {}
+        for r in futasnaplo:
+            if r['modell'] != mid or r['forras'] not in ('halozat', 'cache'):
+                continue
+            if r['strong'] not in minta_hossz or (r['strong'], mid) in kritikus_par:
+                continue
+            szocikk_kimenet_ossz[r['strong']] = szocikk_kimenet_ossz.get(r['strong'], 0) + int(r['kimenet_token'])
+        for strong, ossz in szocikk_kimenet_ossz.items():
+            aranyok.append(ossz / minta_hossz[strong])
+        aranyok.sort()
+        p10 = statistics.quantiles(aranyok, n=10)[0] if len(aranyok) >= 10 else min(aranyok)
+        p90 = statistics.quantiles(aranyok, n=10)[8] if len(aranyok) >= 10 else max(aranyok)
+        c_lo = be / 1e6 * ARAK[mid][0] + p10 * C / 1e6 * ARAK[mid][1]
+        c_hi = be / 1e6 * ARAK[mid][0] + p90 * C / 1e6 * ARAK[mid][1]
+        print('  %-14s p10=%.3f p90=%.3f USD' % (nev, c_lo, c_hi))
+
+    a, b = overhead[GEMINI]
+    be = N * a + b * C
+    aranyok = []
+    szocikk_kimenet_ossz = {}
+    for r in futasnaplo:
+        if r['modell'] != GEMINI or r['forras'] not in ('halozat', 'cache'):
+            continue
+        if r['strong'] not in minta_hossz or (r['strong'], GEMINI) in kritikus_par:
+            continue
+        szocikk_kimenet_ossz[r['strong']] = szocikk_kimenet_ossz.get(r['strong'], 0) + int(r['kimenet_token'])
+    for strong, ossz in szocikk_kimenet_ossz.items():
+        aranyok.append(ossz / minta_hossz[strong])
+    aranyok.sort()
+    p10 = statistics.quantiles(aranyok, n=10)[0] if len(aranyok) >= 10 else min(aranyok)
+    p90 = statistics.quantiles(aranyok, n=10)[8] if len(aranyok) >= 10 else max(aranyok)
     a, b = overhead[GEMINI]
     overhead_cache = 1 * a * ARAK[GEMINI][0] / 1e6 + (N - 1) * a * ARAK[GEMINI][2] / 1e6
     forras_resz = b * C * ARAK[GEMINI][0] / 1e6
-    kimenet_resz = kimenet_arany_modaton[GEMINI] * C * ARAK[GEMINI][1] / 1e6
-    c5 = overhead_cache + forras_resz + kimenet_resz
-    c7 = c5 * 1.03
-    print('  5 Gemini+cache:             alap=%.3f' % c5)
-    print('  7 Gemini+cache+3%% onujra:   alap=%.3f' % c7)
+    c7_lo = (overhead_cache + forras_resz + p10 * C / 1e6 * ARAK[GEMINI][1]) * 1.03
+    c7_hi = (overhead_cache + forras_resz + p90 * C / 1e6 * ARAK[GEMINI][1]) * 1.03
+    print('  7 Gemini+cache+retry p10=%.3f p90=%.3f USD' % (c7_lo, c7_hi))
 
     return thayer, futasnaplo, minta, overhead, darab_szamok, osszes_darab, teljes_karakter, kimenet_arany_modaton
 
