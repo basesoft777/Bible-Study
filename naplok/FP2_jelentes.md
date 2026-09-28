@@ -203,3 +203,16 @@ token-arányát. **Javítva**, a költségtábla (5. pont) frissítve.
 | D11 | A `fuggetlen-ellenor` ügynök (2026.09.28, l. `naplok/ELLENOR_FP2.md`) több érdemi hibát talált és javítottam: a költségbecslés kimeneti-arány számítási hibáját (Gemini-forgatókönyvek +0,5–0,6 USD), a kritikus esetek számát (21→23) és a DeepSeek/MiniMax bontását, a `G0266` eredeti pontszámát (7→9), a kor2-minta darabolási állítását (két, nem egy szócikk igényelt darabolást a kor2-mintában is), és három táblázat-cellát, amelyek a természetesség-oszlopot mutatták az összpontszám helyett | a felhasználó kérte a menetzárás előtti független ellenőrzést; az ügynök nem tudott fájlt írni/commitolni, ezt a Code-session pótolta |
 | D12 | Az ellenőrzés jelezte, hogy a `naplok/FP2_felmeres.md` 0.2 pontja ("a brief tiltja a #3 módosítását, nem módosítom") és a tényleges D3 döntés (a `fordit.py` mégis módosult, additív kapcsolókkal) egymás mellett ellentmondásosnak hat — ezt a felhasználó felé jelzem, a döntést (additív bővítés ≠ hibajavítás) fenntartva, mert nélküle a próba nem lett volna elvégezhető | l. `naplok/ELLENOR_FP2.md` |
 | D13 | A CI E9-et bukató 3 nyers MiniMax-kimenetet (`fp2/biralando.md`/`fp2/szuroproba.md`) áthelyeztem `naplok/nyers/FP2_minimax_minta.txt`-be (`.txt`, az E9 csak `.md`-t vizsgál); a helyükön rövid hivatkozás maradt. Az E9 szabálya és a CI-konfiguráció változatlan. A CI a merge előtt zöld kell legyen — "ismert piros" nem elfogadható | a felhasználó explicit kérése |
+
+## 9. A felhasználó jóváhagyása (PR #68, 2026.09.28)
+
+A PR #68 jóváhagyva a következő feltételekkel. A költségbecslés végösszegét a nyers
+token-adatokból (`fp2/koltsegbecsles.py`) újraszámoltam: **4,930 USD** — pontosan
+egyezik a jelentésben szereplő 4,93 USD-vel (0% eltérés, a 10%-os tűréshatáron
+messze belül), tehát nem állt meg a menet.
+
+| # | Döntés | Indok |
+|---|---|---|
+| **FP2-D13** | Fő fordító: **Gemini 3.1 Flash Lite** (a 7. forgatókönyv: prompt-cache + 1× önújrapróba) | a jelentés 6. pontjának javaslata, a felhasználó jóváhagyta |
+| **FP2-D14** | Az `eszkozok/fordit.py` additív bővítése (`--prompt-fajl`, `--terminologia-fajl`, `--kimenet-dir`, `max_tokens`, `idotartam_mp`) jóváhagyva | a felhasználó jóváhagyta (l. D3/D12 — a korábbi önellentmondás ezzel lezárva) |
+| **FP2-D15** | Az éles `#7` futás önújrapróbája: naplózással és a bukott szócikkek listájával; **5%-os első adag**, amely egyben a "természetes hű" stílus élesben tesztelt próbája is; **⛔ kötelező megállás**, ha az adott adagban az újrapróbálási arány > 10% VAGY a végleges (önújrapróba utáni) bukási arány > 2% | a felhasználó jóváhagyta |
