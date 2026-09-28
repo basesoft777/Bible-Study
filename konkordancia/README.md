@@ -235,6 +235,27 @@ megerősítés (H7121 × G1941/G2564, a szűrés zajcsökkentő hatása) a
 
 **Licenc:** CC BY 4.0 (öröklődik a `LXX_OS`-től).
 
+## SZOTAR S1.4 importok — index (SZOTAR_BRIEF.md, S1.6)
+
+A szótári adatréteg 1. menetében (SZOTAR S1.4) importált 7 tábla mindegyike
+saját, dedikált README-ben dokumentált (forrás-URL, SHA, licenc, sor- és
+oszlopleírás) — ez a szakasz csak index, hogy melyik tábla melyik
+dokumentumban van:
+
+| Tábla | Dokumentáció | Import-szkript |
+|---|---|---|
+| `TBESH_konszolidalt.tsv` | `TBESH_TBESG_README.md` | `eszkozok/tbesh_konszolidalt_import.py` |
+| `UBS_DBH_jelentesek.tsv`, `UBS_DBH_referenciak.tsv`, `UBS_DBH_anomaliak.tsv` | `SDBH_SDGNT_README.md` | `eszkozok/ubs_dbh_import.py` |
+| `MCGED_teljes.tsv` | `lexikonok_nyers/README.md` | `eszkozok/mcged_import.py` |
+| `BDB_etimologia_kezi_hatarok.tsv` | `BDB_teljes_unabridged_README.md` | `eszkozok/bdb_etim_hatarok_import.py` |
+| `tW_szocikkek.tsv` | `tW_README.md` | `eszkozok/tw_import.py` |
+| `LXX_versszintu_parok.tsv` | l. feljebb, ebben a fájlban | `eszkozok/lxx_versszintu_import.py` |
+
+A generátor (`lexikon_general.py`/`torzscikk_general.py`) ezeket a
+táblákat még nem olvassa — ez a SZOTAR S2 (2. menet) tétele.
+`naplok/SZOTAR_S1_4_jelentes.md`: a teljes S1.4-jelentés, a mért sorszámok
+és a döntésnapló-hivatkozások (D33).
+
 ## CC BY-SA 4.0 licencű datasetek — SDBH, SDGNT
 
 A `SDBH_domenek.tsv`, a `SDGNT_domenek.tsv`, a `SDBH_SDGNT_domenfa.tsv` és a

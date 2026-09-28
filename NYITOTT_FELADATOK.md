@@ -1,6 +1,11 @@
 # Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.7, S1.4 — N35–N37 új: a
+Utolsó frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.7, S1.5 — N38 felvéve és
+lezárva ugyanabban a menetben: az `ellenoriz.py` 10. szabálya a megszűnt
+`forditas_ubs.tsv`-t olvasta, HIBA-val állt le S1.1 óta; javítva, és a
+13–14. szabály bevezetve, S1.5.)
+
+Korábbi frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.7, S1.4 — N35–N37 új: a
 MCGED `y`-ág validálatlansága, a gold-készlet 12 csonkolt sora, nincs
 egységes Strong-normalizáló függvény.)
 
@@ -474,6 +479,9 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 <!-- GENERÁLT-VÉGE: nyitott -->
 
 ## Lezárva
+
+### 2026.09.28 (SZOTAR_BRIEF.md S1.5 — N38 felvéve és lezárva):
+* N38 — az `eszkozok/ellenoriz.py` 10. szabálya (`forditas_ubs.tsv`) az S1.1 óta HIBA-val (kilépési kód 2) állt le minden futtatáskor, észrevétlenül. A `forditas_ubs.tsv` a SZOTAR S1.1-ben megszűnt (`adat/SEMA.md` 2.10, D31, 51-soros `adat/forditasok.tsv`-re költözött), de a 10. szabály (`LEXV2_2 tablak`) a régi fájlnevet feltétel nélkül olvasta be — a hiányzó fájl kivétele az egész szkriptet `HIBA`-val állította le, mielőtt bármi más lefuthatott volna. Mivel az S1.1–S1.4 közben egyetlen menet sem futtatta le az `ellenoriz.py`-t teljes egészében, ez a törés hetekig rejtve maradt volna a következő tényleges futtatásig. Javítva az S1.5-ben (ugyanaz a commit, amely a 13-14. szabályt bevezette): a `forditas_ubs.tsv`-részt a szabály RETIRED-ként kihagyja, ha a fájl hiányzik (a kulcs-/hash-ellenőrzést a 13. szabály veszi át); a `lxx_dontesek.tsv`-rész változatlan. `naplok/SZOTAR_S1_5_ellenoriz_jelentes.md`: RENDBEN 11, SÉRTÉS 0, KÉZI 2, JELENTÉS 3, kilépési kód 0.
 
 ### 2026.09.28 (SZOTAR_BRIEF.md S1.1 — N34 lezárva):
 * N34 — a megszűnt `forditas_ubs.tsv` `megjegyzes` mezője (4 sor: G1311/88.266, G1944/33.475, G5351/88.266, G5590/9.20) pótolva: az `adat/forditasok.tsv` felvett egy opcionális `megjegyzes` oszlopot (`adat/SEMA.md` 2.14), a 4 sor jegyzete mindkét származó soron (`definicio_hu`, `glosszak_hu`) megőrizve. A `nulladiff.sh 8f5a1eb` a két D31-csere mellett továbbra is üres diffet ad.
