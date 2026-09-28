@@ -1,12 +1,14 @@
 # Gorog atirasi szabalytabla (S3). Kulcs: sorszam. Séma: adat/SEMA.md 2.16
-# Bemenet: a TAGNT_kivonat.tsv/TBESG.txt "Kiejtes" oszlopa (SBL-stilusu
-# akademiai atirat, Unicode makronokkal: ē ō ā ī ū). A szabalyok SORREND
-# szerint, EGYMAS UTAN, szekvencialisan alkalmazando literalis (nem regex)
-# cserek -- a sorrend kotelezo: a "z" cserenek meg kell elozne az "s"
-# cseret (kulonben egy s->sz altal letrehozott uj "z" betut a z-szabaly
-# tevesen ujra feldolgozna), az "ou" diftongus-cserenek pedig az allo "u"
-# cseret (kulonben egy "ou"-ban levo u tevesen ü-ve valna, "oü" alakot
-# adva "ú" helyett). A θ (theta) "th" atirata NEM valtozik -- nincs hozza
+# Bemenet: TOBB forras sajat SBL-stilusu (Unicode makronos) akademiai
+# atirata -- l. alant a "Ket eltero forras-konvencio" szakaszt, mert NEM
+# EGYSEGES.
+#
+# A szabalyok SORREND szerint, EGYMAS UTAN, szekvencialisan alkalmazando
+# literalis (nem regex) cserek -- a sorrend kotelezo: a "z" cserenek meg
+# kell elozne az "s" cseret (kulonben egy s->sz altal letrehozott uj "z"
+# betut a z-szabaly tevesen ujra feldolgozna), az "ou" diftongus-cserenek
+# pedig az allo "u"/"y" cseret (kulonben egy "ou"-ban levo u tevesen
+# ü-ve valna). A θ (theta) "th" atirata NEM valtozik -- nincs hozza
 # kulon szabaly.
 #
 # KIVETEL a tablabol: a σσ (dupla szigma) -> "ssz" (nem "szsz", magyar
@@ -16,35 +18,49 @@
 # eredmenyben BENNE MARADO ket bar "s" betut ujra feldolgozna (l. a
 # fuggveny docstringjet).
 #
-# D32 (S1.3): a tabla ELSO valtozata (S1.2) tevesen "y"-t hasznalt az
-# upsilonra (ellenorzes nelkuli feltetelezes) -- a TBESG.txt/
-# TAGNT_kivonat.tsv tenyleges adata sima "u"-t ad (pl. κύριος -> kurios,
-# nem kyrios). Javitva: a Y/y szabaly torolve, U/u szabaly bekerult.
+# KET ELTERO FORRAS-KONVENCIO AZ UPSILONRA (D32, D33):
+#   - TAGNT_kivonat.tsv / TBESG.txt "Kiejtes" oszlopa: sima "u" (pl.
+#     κύριος -> kurios). Ezt hasznalja ma a lexikon_general.py
+#     lemma_kiejtes()/ragozott_alak_kiejtese() -- ez az S1.3-ban tenylegesen
+#     validalt bemenet (naplok/SZOTAR_S1_kiejtes_jelentes.md).
+#   - konkordancia/MCGED_teljes.tsv (S1.4, Mounce) "atirat" oszlopa: "y"-t
+#     hasznal UGYANARRA a hangra (pl. κύριος -> kyrios) -- FELFEDEZVE az
+#     S1.4 MCGED-importja soran (D33), meg MIELOTT barmi rendernek
+#     hasznalta volna. A tabla ezert MINDKET alakot (u/y) ü-re kepezi;
+#     egyik forras diftongusaiban (ου, αυ, ευ) sem fordul elo y, tehat a
+#     ket szabaly nem utkozik.
+# D32 (S1.3): a tabla ELSO valtozata (S1.2) tevesen KIZAROLAG "y"-t
+# hasznalt (ellenorzes nelkuli feltetelezes a TBESG/TAGNT-re) -- javitva
+# "u"-ra; D33 (S1.4) utolag visszahozta a "y"-t IS, mert az kiderult, hogy
+# masik forras (MCGED) tenylegesen hasznalja.
 #
 # Validalva es finomitva az S1.3 (eszkozok/kiejtes.py --ellenoriz)
-# tetelben: naplok/SZOTAR_S1_kiejtes_arany_sbl.tsv (26 par, a
-# naplok/SZOTAR_kiejtes_tesztkeszlet_tiszta.tsv 30 egyedi "arany" parjabol,
-# 4 kontextus-fuggo kihagyva -- l. az S1.3 jelentest).
+# tetelben, kizarolag a TAGNT/TBESG-konvencion (u): naplok/
+# SZOTAR_S1_kiejtes_arany_sbl.tsv (26 par). Az "y" szabaly az S1.4-es
+# MCGED-import lelete alapjan kerult be, gold-parral MEG NEM igazolt --
+# l. NYITOTT_FELADATOK.md.
 sorszam	minta	csere	megjegyzes
 1	Ch	Kh	χ (khi), szo elejen/nagybetuvel -- pl. Χριστός
 2	ch	kh	χ (khi) -- pl. καύχημα -> kauchēma (kaukhéma)
 3	Ph	F	φ (phi), nagybetuvel
 4	ph	f	φ (phi) -- pl. φθορά -> phthora (fthora)
-5	OU	Ú	ου (diftongus, hosszu u-hang), nagybetuvel; az "u"-szabaly elott fusson
+5	OU	Ú	ου (diftongus, hosszu u-hang), nagybetuvel; az "u"/"y"-szabaly elott fusson
 6	ou	ú	ου (diftongus) -- pl. ἐπικαλουμένους -> epikaloumenous (epikalúmenúsz)
-7	U	Ü	υ (üpszilon), nagybetuvel; a diftongus "ou" utan fusson
-8	u	ü	υ (üpszilon) -- pl. κύριος -> kurios (kürion, D32)
-9	Z	Dz	ζ (dzeta), nagybetuvel; az "s"-szabaly elott fusson
-10	z	dz	ζ (dzeta) -- pl. κράζω -> krazō (kradzó)
-11	S	Sz	σ/ς (szigma), nagybetuvel -- pl. Σήμ -> Sēm (Szém)
-12	s	sz	σ/ς (szigma) -- pl. πρός -> pros (prosz)
-13	Ē	É	η (eta), hosszu maganhangzo, nagybetuvel
-14	ē	é	η (eta), hosszu maganhangzo -- pl. φωνέω -> phōneō (fóneó) 2. tagja
-15	Ō	Ó	ω (omega), hosszu maganhangzo, nagybetuvel
-16	ō	ó	ω (omega), hosszu maganhangzo -- pl. καλέω -> kaleō (kaleó)
-17	Ā	Á	makron alfa, nagybetuvel (ritka)
-18	ā	á	makron alfa (ritka)
-19	Ī	Í	makron ióta, nagybetuvel (ritka)
-20	ī	í	makron ióta (ritka)
-21	Ū	Ű	makron üpszilon, nagybetuvel (ritka) -- hosszu u-hang; kulonbozik a plain "u"-tol (D32)
-22	ū	ű	makron üpszilon (ritka)
+7	U	Ü	υ (üpszilon), TAGNT/TBESG-konvencio, nagybetuvel; a diftongus "ou" utan fusson
+8	u	ü	υ (üpszilon), TAGNT/TBESG-konvencio -- pl. κύριος -> kurios (kürion, D32)
+9	Y	Ü	υ (üpszilon), MCGED-konvencio, nagybetuvel (D33)
+10	y	ü	υ (üpszilon), MCGED-konvencio -- pl. κύριος -> kyrios (kürios, D33; a MCGED_teljes.tsv atirat oszlopaban)
+11	Z	Dz	ζ (dzeta), nagybetuvel; az "s"-szabaly elott fusson
+12	z	dz	ζ (dzeta) -- pl. κράζω -> krazō (kradzó)
+13	S	Sz	σ/ς (szigma), nagybetuvel -- pl. Σήμ -> Sēm (Szém)
+14	s	sz	σ/ς (szigma) -- pl. πρός -> pros (prosz)
+15	Ē	É	η (eta), hosszu maganhangzo, nagybetuvel
+16	ē	é	η (eta), hosszu maganhangzo -- pl. φωνέω -> phōneō (fóneó) 2. tagja
+17	Ō	Ó	ω (omega), hosszu maganhangzo, nagybetuvel
+18	ō	ó	ω (omega), hosszu maganhangzo -- pl. καλέω -> kaleō (kaleó)
+19	Ā	Á	makron alfa, nagybetuvel (ritka)
+20	ā	á	makron alfa (ritka)
+21	Ī	Í	makron ióta, nagybetuvel (ritka)
+22	ī	í	makron ióta (ritka)
+23	Ū	Ű	makron üpszilon, nagybetuvel (ritka) -- hosszu u-hang; kulonbozik a plain "u"-tol (D32)
+24	ū	ű	makron üpszilon (ritka)

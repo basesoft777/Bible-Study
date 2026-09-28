@@ -214,6 +214,27 @@ kiadás közt nem transzferálható közvetlenül. A főszövegen belüli (első
 mutatók kezdőlevele viszont pontosan egyeznek — a levél↔oldal leképezés önmagában
 helyesnek igazolt a `+12` és a `+15` szegmensen belül is.
 
+## `LXX_versszintu_parok.tsv` — versszintű együtt-előfordulás (SZOTAR_BRIEF.md S13)
+
+**Generált** (`eszkozok/lxx_versszintu_import.py`, kézzel nem szerkesztendő).
+A D28 hatókörébe tartozó 26 héber gerinc-token mindegyikének TAHOT-igehelyeit
+veti össze a `LXX_OS/*.tsv`-vel: minden versben az ott előforduló, a
+`adat/grammatikai_strongok.tsv` 31 G-sorával **grammatikailag szűrt**, egyedi
+görög Strong-kódokkal — **versszintű együtt-előfordulás, nem szóillesztés**
+(D14/D25 — a `LXX_OS` nem szóillesztett korpusz). Fejléc: `heber_strong
+igehely lxx_igehely gorog_strong proveniencia`. Egy héber token egy verséhez
+több sor tartozhat (egy-egy társ-görög Strong-kódonként); ha a szűrés után
+egy versben nem marad tartalmi görög kód, egy sor kerül be üres
+`gorog_strong` mezővel (a vers lefedettsége így is nyomon követhető).
+
+Mért értékek (2026.09.28-i futtatás): 99 356 sor, 26 héber token, 729
+TAHOT-igehely nem található meg a `LXX_OS`-ben (kihagyva — a `LXX_OS` nem
+fedi le a teljes ÓSZ-t, l. `naplok/FORRAS_jelentes.md`). A módszertani
+megerősítés (H7121 × G1941/G2564, a szűrés zajcsökkentő hatása) a
+`naplok/SZOTAR_S0b_jelentes.md` 5. szakaszában.
+
+**Licenc:** CC BY 4.0 (öröklődik a `LXX_OS`-től).
+
 ## CC BY-SA 4.0 licencű datasetek — SDBH, SDGNT
 
 A `SDBH_domenek.tsv`, a `SDGNT_domenek.tsv`, a `SDBH_SDGNT_domenfa.tsv` és a

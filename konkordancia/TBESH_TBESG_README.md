@@ -87,6 +87,32 @@ Mindkét fájl tab-elválasztott (`\t`), UTF-8 kódolású szöveges fájl. A t�
 - **TBESG appendix-tartalom:** a TBESG fájl elején (a 91. sor előtt) egy beágyazott, eltérő oszlopszámú példa-blokk található (személyek/helynevek jelölési konvenciójának bemutatására, pl. "Herod" család) — ez nem tartozik a fő G-tétel-listához, és `grep "^G####"` nem érinti.
 - **Nyelvtani elemek (TBESH vége felé, H9000+ tartomány):** ragok, névmási végződések, írásjelek önálló "Strong-számként" (pl. `H9020`–`H9049`) — ezek nem szótári tételek, hanem morfológiai komponensek.
 
+## `TBESH_konszolidalt.tsv` — a TBESH.txt és a TBESH.lexicon uniója (SZOTAR_BRIEF.md S4)
+
+**Generált** (`eszkozok/tbesh_konszolidalt_import.py`, kézzel nem szerkesztendő):
+**unió, nem csere** — egyik forrás sem váltja ki a másikat, mert szócikkenként
+hol az egyik, hol a másik bővebb (§0 0.5 mérés). Fejléc: `strong lemma atirat
+pos_kod rovid_glosszak teljes_szoveg forras txt_hossz lexicon_hossz`.
+
+- `teljes_szoveg` / `forras` — a `TBESH.txt` (a szócikk összes alsorának
+  dedupikált, HTML-mentesített definíciója) és a `konkordancia/lexikonok_nyers/
+  TBESH.lexicon` (SQLite, egyetlen konszolidált HTML-bejegyzés) közül a
+  **hosszabb tisztított szöveg** — `forras` jelzi, melyik (`txt` / `lexicon`
+  / `egyenlo`, ha a különbség ≤5%).
+- `rovid_glosszak` — csak a `.txt`-ben elérhető: az adott Strong-szám összes
+  alsorának rövid glosszája (7. mező), pontosvesszővel összefűzve — ez a
+  szócikk mikro-jelentéseinek listája, amit a `.lexicon` nem tartalmaz
+  külön.
+- `lemma` / `atirat` / `pos_kod` — a `.txt` 4./5./6. mezője; ha a szó csak a
+  `.lexicon`-ban szerepel, ezek üresek (a `.lexicon` nem tartja külön ezeket
+  a mezőket).
+
+Mért értékek (2026.09.28): 9 688 sor (964 csak `.txt`, 1 507 csak
+`.lexicon`, 2 608 mindkettő + `.txt` bővebb, 4 528 mindkettő + `.lexicon`
+bővebb, 81 kb. egyenlő). A D28 hatókörébe tartozó 26 motívum-tokenre a
+bontás: 11 `txt`, 13 `lexicon`, 2 `egyenlo` (eltér a §0 0.5 24-tokenes,
+kézi mérésétől — ez utóbbi új, teljes körű, automatizált mérés).
+
 ## Attribúció
 
 Minden felhasználásnál (motívum-cikkben, tanulmányban, jegyzetben) fel kell tüntetni:
