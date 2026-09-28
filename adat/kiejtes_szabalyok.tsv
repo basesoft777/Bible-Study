@@ -1,0 +1,36 @@
+# Gorog atirasi szabalytabla (S3). Kulcs: sorszam. Séma: adat/SEMA.md 2.16
+# Bemenet: a TAGNT_kivonat.tsv/TBESG.txt "Kiejtes" oszlopa (SBL-stilusu
+# akademiai atirat, Unicode makronokkal: ē ō ā ī ū). A szabalyok SORREND
+# szerint, EGYMAS UTAN, szekvencialisan alkalmazando literalis (nem regex)
+# cserek -- a sorrend kotelezo (pl. az "ss" cserenek meg kell elozne az
+# "s" cseret, kulonben "szsz" lenne "ssz" helyett; a "z"/"y" cserenek meg
+# kell elozne az "s" cseret, hogy a keletkezo "sz" ne kerekedjen ossze
+# tobbszoros csere soran). A θ (theta) "th" atirata NEM valtozik -- nincs
+# hozza kulon szabaly. Az S1.3 (eszkozok/kiejtes.py) az 50 paros gorog
+# aranykeszleten (naplok/SZOTAR_kiejtes_tesztkeszlet_tiszta.tsv) validalja
+# es szukseg eseten finomitja ezt a tablat (D31-hez hasonloan iterativ).
+sorszam	minta	csere	megjegyzes
+1	Ch	Kh	χ (khi), szo elejen/nagybetuvel -- pl. Χριστός
+2	ch	kh	χ (khi) -- pl. καύχημα -> kaukhēma (kaukhéma)
+3	Ph	F	φ (phi), nagybetuvel
+4	ph	f	φ (phi) -- pl. φθορά -> phthora (fthora)
+5	SS	SSZ	σσ (dupla szigma), nagybetuvel -- magyar geminacios helyesiras (ssz, nem szsz)
+6	ss	ssz	σσ (dupla szigma) -- pl. κηρύσσω -> kēryssō (kérüsszó); FONTOS: az "s"-szabaly elott fusson
+7	OU	Ú	ου (diftongus, hosszu u-hang), nagybetuvel
+8	ou	ú	ου (diftongus) -- pl. καλούμενος -> kaloumenos (kalúmenosz)
+9	Y	Ü	υ (üpszilon) SBL-atirata, nagybetuvel
+10	y	ü	υ (üpszilon) SBL-atirata -- pl. κύριον -> kyrion (kürion)
+11	Z	Dz	ζ (dzeta), nagybetuvel; az "s"-szabaly elott fusson
+12	z	dz	ζ (dzeta) -- pl. κράζω -> krazō (kradzó)
+13	S	Sz	σ/ς (szigma), nagybetuvel -- pl. Σήμ -> Sēm (Szém)
+14	s	sz	σ/ς (szigma) -- pl. πρός -> pros (prosz)
+15	Ē	É	η (eta), hosszu maganhangzo, nagybetuvel
+16	ē	é	η (eta), hosszu maganhangzo -- pl. φωνέω -> phōneō (fóneó) 2. tagja
+17	Ō	Ó	ω (omega), hosszu maganhangzo, nagybetuvel
+18	ō	ó	ω (omega), hosszu maganhangzo -- pl. καλέω -> kaleō (kaleó)
+19	Ā	Á	makron alfa, nagybetuvel (ritka)
+20	ā	á	makron alfa (ritka)
+21	Ī	Í	makron ióta, nagybetuvel (ritka)
+22	ī	í	makron ióta (ritka)
+23	Ū	Ú	makron üpszilon, nagybetuvel (ritka)
+24	ū	ú	makron üpszilon (ritka)

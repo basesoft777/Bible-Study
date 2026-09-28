@@ -1,0 +1,11 @@
+# Kiejtes-kivetelek (S3, D15). Kulcs: nyelv + alak. Séma: adat/SEMA.md 2.17
+# Gorogul: felulirja/kiegesziti a kiejtes.py szabalytabla-alapu atirasat (a
+# torzscikk_general.py kodbeli KIEJT tablajanak 5 induló sora, S1.2). A
+# kodbeli tabla itt meg valtozatlan marad (nulla-diff), az S2.1-ben szunik meg.
+# Heberul: a render nem general -- lemma-kiejtes kizarolag innen jon (S3).
+nyelv	alak	kiejtes	megjegyzes
+gorog	epikaleō	epikaleó	KIEJT-migracio (torzscikk_general.py, ISTENTISZT-001)
+gorog	kaleō	kaleó	KIEJT-migracio (torzscikk_general.py, ISTENTISZT-001)
+gorog	boaō	boaó	KIEJT-migracio (torzscikk_general.py, ISTENTISZT-001)
+heber	qa.ra	kárá	KIEJT-migracio (torzscikk_general.py, ISTENTISZT-001)
+heber	shem	sém	KIEJT-migracio (torzscikk_general.py, ISTENTISZT-001)
