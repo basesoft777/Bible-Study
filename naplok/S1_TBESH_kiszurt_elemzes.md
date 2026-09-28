@@ -70,16 +70,85 @@ H0682, H0738, H0746, H0783, H0805, H0834, H0838, H0859, H0862, H0899, H0953,
 H0973) a szigoritas egy egyedi, mashonnan nem potolhato TBESH-szocikket
 tavolitott el a kimeneti tablabol.**
 
-## Javaslat
+## Javaslat (eredeti allapot -- azota megvalositva, l. alant)
 
-A minta jelenlegi formajaban (`^H\d{4}$`) helyesen zarja ki a H9xxx
-morfologiai tartomanyt es a TBESH.lexicon ervenytelen index-kulcsait
-(`H9`, `H90`, `H900`), de mellekhatasakent a fenti 35 nem-toltott, egyedi
-Strong-kulcsot is kidobja. Javitas: a szuro elott a Strong-kulcsot
-nullaval-kitoltes-normalizalni kellene (`H%d` -> `H%04d`, azaz `re.sub`
-vagy `zfill(4)` a szamresz-en), MIELOTT a 4-jegyu es H9xxx-teszt lefut --
-igy a 964 artalmatlan duplikatum egyszeruen eggye olvadna a mar meglevo
-toltott parjaval, a 35 egyedi pedig bekerulne a tablaba toltott formaban
-(`H0122` stb.). Ez kulon tetelkent (S1.5 vagy uj N-tetel) vihetne be a
-`tbesh_konszolidalt_import.py`-ba; jelen jelentes csak ellenorzes, a
-tablat nem irja at.
+A minta eredeti formajaban (`^H\d{4}$`) helyesen zarta ki a H9xxx
+morfologiai tartomanyt, de mellekhatasakent a fenti 35 nem-toltott, egyedi
+Strong-kulcsot is kidobta. Javitas: a szuro elott a Strong-kulcsot
+nullaval-kitoltes-normalizalni kell (`H%d` -> `H%04d`, `zfill(4)` a
+szamresz-en), MIELOTT a 4-jegyu es H9xxx-teszt lefut.
+
+**Fontos korrekcio a fenti szoveghez kepest:** a `tbesh_konszolidalt_import.py`
+eredeti kommentje ("`H9`/`H90`/`H900`... feltehetoen a forras sajat
+prefix-index bejegyzesei, nem szotari tetelek") **tevesnek bizonyult**. A
+`TBESH.lexicon`-ban a `H9` Strong-tartalma (`אֲבֵדָה` "something lost") pontosan
+egyezik a `TBESH.txt` `H0009` sorával, a `H90` (`אֲגָג` Agag) a `H0090`-nel, a
+`H900` (`בֹּגְדוֹת` treachery) a `H0900`-nal -- ezek tehat **valodi, csak
+nem-toltott Strong-kulcsok**, nem index-artefaktumok. A H9xxx-kizaras
+(`^H9\d{3}$`, azaz pontosan a H9000-H9999 morfologiai tartomany) marad
+indokolt; a `H9`/`H90`/`H900` (1-3 jegyu) ettol fuggetlen eset, es a
+zfill(4)-normalizalas helyesen H0009/H0090/H0900-ra alakitja oket.
+
+## Javitas alkalmazva (`normalizal()`, zfill(4))
+
+A `tbesh_konszolidalt_import.py`-ba bekerult egy `normalizal()` fuggveny,
+amely minden nyers, csak-szamjegyeket tartalmazo Strong-kulcsot 4 jegyre
+tolt (`H122` -> `H0122`) MIELOTT a `STRONG_H_RE`/`H9XXX_RE` szures lefut.
+Betu-utotagos vagy mar 4-jegyu kulcsot valtozatlanul hagy. Ellenorizve:
+sem a `TBESH.txt`, sem a `TBESH.lexicon` nem tartalmaz ket kulonbozo nyers
+kulcsot (pl. `H9` es `H0009`) egyszerre UGYANABBAN a forrasban -- tehat a
+normalizalas nem okozhat forrason-beluli utkozest, csak a mar meglevo,
+forrasok-kozotti `konszolidal()` hossz-alapu valasztasi logikaba fut bele
+(ugyanugy, mint minden mas Strong, amelynel mindket forras ad szoveget).
+
+Ujrafuttatva (`python eszkozok/tbesh_konszolidalt_import.py`):
+
+| | Regi (9d42da9) | Uj (normalizalas utan) |
+|---|---|---|
+| Sorok szama | 8639 | **8674** |
+| Csak .txt-ben | (nem naplozva) | 0 |
+| Csak .lexicon-ban | (nem naplozva) | 542 |
+| Mindketto, .txt bovebb | (nem naplozva) | 3006 |
+| Mindketto, .lexicon bovebb | (nem naplozva) | 5033 |
+| Mindketto, kb. egyenlo | (nem naplozva) | 93 |
+| Hianyzo alapszam H0001-H8674 | 35 | **0** |
+
+A novekmeny pontosan 8674-8639=35, egyezik a fent azonositott egyedi
+kulcsok szamaval. Ellenorizve: a H0001-H8674 tartomany mind a 8674
+alapszamara van sor a kimeneti tablaban (0 hianyzik). Mintapelda:
+`H0122` sora most `forras=lexicon`, `lexicon_hossz=131`, tartalommal
+toltve (korabban egyaltalan nem volt sora).
+
+**Utolagos korrekcio a "964 artalmatlan duplikatum" allitashoz:** a
+kulcs SZINTJEN valoban artalmatlan volt (a sor letezett), de a
+TARTALOM szintjen nem -- a normalizalas elott a lexikon-valtozat
+`H9`, `H10` stb. alakban soha nem jutott be a `konszolidal()`
+hossz-alapu forras-valasztasba, mert a szures mar korabban kidobta.
+Igy mind a 964 "duplikatum" Strong korabban **kenyszeruen** `forras=txt`
+volt, fuggetlenul attol, hogy a lexikon-valtozat bovebb/jobb lett
+volna-e. Az uj futtatas osszehasonlitva a regi tablaval (`git show
+10d8733:konkordancia/TBESH_konszolidalt.tsv`): a H0001-H0999
+tartomany 964 mar-letezo soraból **521-nel a tartalom valtozott**
+(txt -> lexicon, mert a lexikon szoveg bizonyult hosszabbnak/
+teljesebbnek -- pl. `H0007` korabban "1) to perish, vanish..." (csak
+angol glossza), most "אֲבַד [A:V] to destroy 1) to perish, vanish..."
+(heber lemma + POS-kod is), es 443-nal a tartalom valtozatlan maradt
+(a txt mar korabban is a hosszabb/valasztott valtozat volt). A javitas
+tehat nemcsak 35 sort mentett meg, hanem 521 mar letezo sor
+tartalmi minoseget is javitotta.
+
+## Uj darabszam osszefoglalva
+
+| Mutato | Regi (9d42da9, `8639`-es allapot) | Uj (`normalizal()` zfill(4) utan) |
+|---|---|---|
+| Sorok szama a `TBESH_konszolidalt.tsv`-ben | 8639 | **8674** |
+| Hianyzo alapszam H0001-H8674 | 35 | **0** |
+| H0001-H0999 tartomany: uj sor (korabban hianyzott) | -- | 35 |
+| H0001-H0999 tartomany: tartalom javult (`forras` txt->lexicon) | -- | 521 |
+| H0001-H0999 tartomany: tartalom valtozatlan | -- | 443 |
+
+A `konkordancia/TBESH_konszolidalt.tsv` ujragenerálva es commitolva ezzel
+a jelentessel egyutt. A `naplok/SZOTAR_S1_4_jelentes.md` es a
+`konkordancia/TBESH_TBESG_README.md` meg a regi `8 639` sorszamot
+tartalmazza -- ezek frissitese kulon tetel (S1.5 dokumentacios lepese),
+nem resze ennek a jelentesnek.

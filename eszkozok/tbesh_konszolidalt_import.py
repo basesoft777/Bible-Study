@@ -49,6 +49,25 @@ STRONG_H_RE = re.compile(r'^H\d{4}$')
 # szotari tetel, hanem morfologiai komponens -- ugyanaz a konvencio, mint
 # az adat/grammatikai_strongok.tsv H9xxx-szures. Kiszurve.
 H9XXX_RE = re.compile(r'^H9\d{3}$')
+# Nem-nullaval-toltott nyers kulcs (pl. "H122", "H9" a TBESH.lexicon-ban --
+# a TBESH.txt maga mindig 4 jegyre tolt). A naplok/S1_TBESH_kiszurt_elemzes.md
+# ellenorzese szerint a 999 "4 jegynel rovidebb" kulcs kozul 964 artalmatlan
+# duplikatum volt (a masik forrasban mar megvolt a toltott par -- tartalmilag
+# egyezik, pl. "H9" = "H0009"), 35 pedig egyedi, kizarolag a TBESH.lexicon-ban
+# letezo szocikk (toltott par nelkul), amit a szigoru `^H\d{4}$` szures
+# korabban csendben kidobott. A zfill(4) normalizalas mindket esetet helyesen
+# kezeli: a duplikatumok osszeolvadnak (a mar meglevo `konszolidal()`
+# hossz-alapu valasztassal), az egyedi 35 pedig bekerul a tablaba toltott
+# alakban.
+NYERS_SZAMJEGY_RE = re.compile(r'^H(\d+)$')
+
+
+def normalizal(strong):
+    """"H122" -> "H0122"; mar-4-jegyu vagy betu-utotagos kulcsot valtozatlanul hagy."""
+    m = NYERS_SZAMJEGY_RE.match(strong)
+    if m:
+        return 'H' + m.group(1).zfill(4)
+    return strong
 
 
 def clean(s):
@@ -78,7 +97,7 @@ def txt_betolt(ut):
             mezok = sor.split('\t')
             if len(mezok) < 8:
                 continue
-            strong = mezok[0]
+            strong = normalizal(mezok[0])
             if not STRONG_H_RE.match(strong) or H9XXX_RE.match(strong):
                 continue
             lemma = mezok[3] if len(mezok) > 3 else ''
@@ -114,6 +133,7 @@ def lexicon_betolt(ut):
     cur.execute("SELECT Topic, Definition FROM Lexicon WHERE Topic LIKE 'H%'")
     kimenet = {}
     for topic, html in cur.fetchall():
+        topic = normalizal(topic)
         if not STRONG_H_RE.match(topic) or H9XXX_RE.match(topic):
             continue
         kimenet[topic] = clean(html)
