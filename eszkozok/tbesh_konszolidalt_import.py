@@ -39,7 +39,16 @@ KIMENET = os.path.join(KONKORDANCIA, 'TBESH_konszolidalt.tsv')
 
 TAG_RE = re.compile(r'<[^>]+>')
 WS_RE = re.compile(r'\s+')
-STRONG_H_RE = re.compile(r'^H\d+$')
+# Pontosan 4 szamjegy -- a projekt STRONG tipusa (SEMA 1.2). A korabbi
+# `^H\d+$` tulzottan tagul illesztett: a TBESH.lexicon-ban valodi, de
+# ervenytelen "H9"/"H90"/"H900" kulcsok is vannak (nem 4 jegyu, feltehetoen
+# a forras sajat prefix-index bejegyzesei, nem szotari tetelek).
+STRONG_H_RE = re.compile(r'^H\d{4}$')
+# A H9xxx tartomany a TBESH.txt sajat fejleconek megfogalmazasa szerint is
+# ("prefixes, suffixes, personal pronoun endings and punctuation") nem
+# szotari tetel, hanem morfologiai komponens -- ugyanaz a konvencio, mint
+# az adat/grammatikai_strongok.tsv H9xxx-szures. Kiszurve.
+H9XXX_RE = re.compile(r'^H9\d{3}$')
 
 
 def clean(s):
@@ -70,7 +79,7 @@ def txt_betolt(ut):
             if len(mezok) < 8:
                 continue
             strong = mezok[0]
-            if not STRONG_H_RE.match(strong):
+            if not STRONG_H_RE.match(strong) or H9XXX_RE.match(strong):
                 continue
             lemma = mezok[3] if len(mezok) > 3 else ''
             atirat = mezok[4] if len(mezok) > 4 else ''
@@ -105,7 +114,7 @@ def lexicon_betolt(ut):
     cur.execute("SELECT Topic, Definition FROM Lexicon WHERE Topic LIKE 'H%'")
     kimenet = {}
     for topic, html in cur.fetchall():
-        if not STRONG_H_RE.match(topic):
+        if not STRONG_H_RE.match(topic) or H9XXX_RE.match(topic):
             continue
         kimenet[topic] = clean(html)
     conn.close()

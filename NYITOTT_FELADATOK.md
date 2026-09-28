@@ -382,23 +382,30 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   a gold-tábla saját maga javítható lenne, de más menetek (K10, RENDER)
   saját mérési alapja is, ezért csak jelzésnek szánt tétel.
 
-- **N37 — nincs egységes Strong-kód-normalizáló függvény a projektben.**
-  *(ÚJ, SZOTAR S1.4 ellenőrzés, 2026.09.28, a felhasználó kérésére, l. a
-  #4/N21 kapcsán)* Legalább 7 önálló implementáció létezik: `eszkozok/
+- **N37 — nincs egységes Strong-kód-normalizáló függvény a projektben
+  (`#4/1d`).** *(ÚJ, SZOTAR S1.4 ellenőrzés, 2026.09.28, a felhasználó
+  kérésére, l. a #4/N21 kapcsán)* A `KARBANTARTAS_BRIEF.md` §3 saját
+  `1a`/`1b`/`1c` sorozatának (KB1 = `__main__`-őr+argparse, KB2 =
+  CRLF-tűrés, KB3 = `1c`, N21: a `Karoli_Strong_kivonat.tsv` nullázatlan
+  Strong-számainak javítása) **logikus folytatása — `1d`**: legalább 7
+  önálló Strong-normalizáló implementáció létezik: `eszkozok/
   lxx_kivonat_fetch.py normalize_strong()`, `lxx_osszevetes.py
   normalize_strong()`, `merge_karoli_szofaj.py normalize()`,
   `oshl_index_import.py strong_from_attr()` (mind korábbi), és az S1.4
-  három új szkriptje (`ubs_dbh_import.py`, `mcged_import.py`,
+  négy új szkriptje (`ubs_dbh_import.py`, `mcged_import.py`,
   `lxx_versszintu_import.py`, `tw_import.py`) — mindegyik saját
-  logikával. Ez ugyanabba a hibaosztályba tartozik, mint az N21
-  (`Karoli_Strong_kivonat.tsv` nullázatlan `H922`-je): decentralizált
+  logikával. Ugyanaz a hibaosztály, mint az N21: decentralizált
   Strong-kezelés, ahol a padolási/csonkolási hiba könnyen észrevétlen
   marad — pontosan ez történt a `tw_import.py` első verziójával
   (`G00120` → tévesen `G0120`, l. `naplok/SZOTAR_S1_4_jelentes.md` 7.
   szakasza), mielőtt a keresztellenőrzés kifogta. Javaslat: egy közös
   `eszkozok/strong_util.py` (vagy hasonló) modul, amit minden import
-  átvesz — ez a tétel maga NEM végzi el a konszolidációt (kívül esik az
-  S1 hatókörén), csak jelzi.
+  átvesz. **A `#4` (KARBANTARTAS KB0–KB4) már lezárt és mergelt**
+  (`b8a418a`, 2026.09.27), ezért ez a tétel nem élesztette újra azt a
+  menetet — a `KARBANTARTAS_BRIEF.md` §5 döntésnaplója rögzíti az
+  eltérést (miért N-tételként, nem élő KB5-ként fut). Ez a tétel maga NEM
+  végzi el a konszolidációt (kívül esik az S1 hatókörén), csak jelzi;
+  jövőbeli önálló karbantartás-menet tárgya.
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 

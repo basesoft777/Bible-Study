@@ -107,10 +107,20 @@ pos_kod rovid_glosszak teljes_szoveg forras txt_hossz lexicon_hossz`.
   `.lexicon`-ban szerepel, ezek üresek (a `.lexicon` nem tartja külön ezeket
   a mezőket).
 
-Mért értékek (2026.09.28): 9 688 sor (964 csak `.txt`, 1 507 csak
-`.lexicon`, 2 608 mindkettő + `.txt` bővebb, 4 528 mindkettő + `.lexicon`
-bővebb, 81 kb. egyenlő). A D28 hatókörébe tartozó 26 motívum-tokenre a
-bontás: 11 `txt`, 13 `lexicon`, 2 `egyenlo` (eltér a §0 0.5 24-tokenes,
+**Kiszűrve: a `H9xxx` tartomány és a nem 4 jegyű kulcsok.** A `TBESH.txt`
+saját fejléce szerint az Extended Strongs a "prefixes, suffixes, personal
+pronoun endings and punctuation" jelölésére is `H9xxx`-kódokat használ —
+ugyanaz a konvenció, mint az `adat/grammatikai_strongok.tsv` `H9xxx`-szűrése
+(SEMA 2.7.2) —, ezek nem szótári tételek. A `TBESH.lexicon`-ban emellett
+néhány **érvénytelen, 4 jegynél rövidebb** kulcs is van (`H9`, `H90`,
+`H900` — feltehetően a forrás saját prefix-index bejegyzései, nem
+Strong-szám); ezeket a szigorúbb `^H\d{4}$` minta zárja ki.
+
+Mért értékek (2026.09.28, a `H9xxx`/érvénytelen kulcsok kiszűrése után):
+**8 639 sor** (964 csak `.txt`, 507 csak `.lexicon`, 2 563 mindkettő +
+`.txt` bővebb, 4 524 mindkettő + `.lexicon` bővebb, 81 kb. egyenlő). A D28
+hatókörébe tartozó 26 motívum-tokenre a bontás: 11 `txt`, 13 `lexicon`, 2
+`egyenlo` (eltér a §0 0.5 24-tokenes,
 kézi mérésétől — ez utóbbi új, teljes körű, automatizált mérés).
 
 ## Attribúció

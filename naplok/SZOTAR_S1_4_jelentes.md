@@ -52,7 +52,7 @@ Amit valójában a brief mond (§3, §7 1. menet prompt 4. pontja):
 | `konkordancia/UBS_DBH_referenciak.tsv` | ” | 389 212 | ” |
 | `konkordancia/UBS_DBH_anomaliak.tsv` | ” | 1 109 | ” |
 | `konkordancia/MCGED_teljes.tsv` | `eszkozok/mcged_import.py` | 5 303 | `lexikonok_nyers/README.md` |
-| `konkordancia/TBESH_konszolidalt.tsv` | `eszkozok/tbesh_konszolidalt_import.py` | 9 688 | `TBESH_TBESG_README.md` |
+| `konkordancia/TBESH_konszolidalt.tsv` | `eszkozok/tbesh_konszolidalt_import.py` | 8 639 (a `H9xxx`/érvénytelen kulcsok kiszűrése után, l. 4. szakasz) | `TBESH_TBESG_README.md` |
 | `konkordancia/BDB_etimologia_kezi_hatarok.tsv` | `eszkozok/bdb_etim_hatarok_import.py` | 26 | `BDB_teljes_unabridged_README.md` |
 | `konkordancia/LXX_versszintu_parok.tsv` | `eszkozok/lxx_versszintu_import.py` | 99 356 | `README.md` |
 | `konkordancia/tW_szocikkek.tsv` | `eszkozok/tw_import.py` | 598 | `tW_README.md` (új) |
@@ -81,6 +81,16 @@ ez eltér a §0 0.5 sorban rögzített, kézi méréstől (9/13/2, a régi
 24-tokenes hatókörön) — **nem hiba**, hanem egy új, teljes körű,
 automatizált módszer eredménye (a régi mérés kis mintás, kézi becslés
 volt).
+
+**Utólagos javítás (a felhasználó kérésére, az S1.5 előtti audit során):**
+az eredeti szűrés (`^H\d+$`) túl tágan illesztett — a `TBESH.lexicon`
+valódi, de érvénytelen `H9`/`H90`/`H900`-szerű (4 jegynél rövidebb)
+kulcsokat is tartalmazott, és a `H9xxx` tartomány (prefixumok, toldalékok,
+írásjelek — ugyanaz a konvenció, mint a `grammatikai_strongok.tsv`
+`H9xxx`-szűrése) sem szótári tétel. Szigorúbb `^H\d{4}$` minta +
+explicit `H9xxx`-kizárás: **9 688 → 8 639 sor** (1 049 kiszűrve). A 26
+motívum-token bontása (11/13/2) nem változott. A korábbi árva-Strong
+audit `H9000`-találata (l. 8. szakasz) ezzel megszűnt.
 
 ## 5. BDB-etimológia-határ — `eszkozok/bdb_etim_hatarok_import.py`
 
