@@ -1,6 +1,9 @@
 # Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: a rések tartalommal, kivonatok, `forras=lap` megszűnt, diff-osztályozó — RENDER lezárva. **Következő: `SZOTAR_BRIEF.md`.**)
+Utolsó frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.4, D30 — N32, N33 új: a
+commitolt render-kimenet elavultsága és a CI generátor-lefedettsége.)
+
+Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: a rések tartalommal, kivonatok, `forras=lap` megszűnt, diff-osztályozó — RENDER lezárva. **Következő: `SZOTAR_BRIEF.md`.**)
 
 ## Nagy, tartalmi döntést igénylő tételek
 
@@ -330,6 +333,28 @@ Utolsó frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: a
   FJ1 szerint a letöltött Macula Hebrew-ből hiányzik az 1Sám–2Krón. Ez valószínűleg letöltési
   vagy feldolgozási hiba; a küszöb alatti eredményen nem változtat, de bármilyen későbbi
   használat (pl. a G8 tagmondat-tagolás) előtt ellenőrizni kell.
+
+- **N32 — a commitolt `lexikon/*_TUDOMANYOS.md`/`*_TORZSCIKK.md` elavult a
+  KK7.5 (Károli-versszám-javítás) és a D16 (Cremer kivezetve) óta.**
+  *(ÚJ, SZOTAR D30 ellenőrzés, 2026.09.28)* A `general.py --cel lexikon
+  --ir` és `--cel torzscikk --ir` friss futása (azonos adaton, csak a
+  committolt fájlokhoz képest) valódi, nem dátum-jellegű eltérést ad: több
+  LXX-sor `szamozas_elteres` → `egyező` vált (pl. Jón 2:3, Jón 2:6, Ézs
+  63:13), és a törzscikkek szerepmátrix-sora még mindig `Teológiai szócikk |
+  Cremer (1895)`-t mutat a mai `nincs (Cremer kivezetve, SZOTAR D16)` helyett.
+  A pótlás a #9 (SZOTAR S2, teljes újragenerálás) feladata — nem önálló
+  tétel, csak dokumentálva, hogy az S2 zárásakor ez is bekerül.
+
+- **N33 — a CI (`ellenorzes.yml`) nem futtatja a `general.py`-t, csak az
+  `ellenoriz.py` sértés-alapú szabályait (E1) és a diff-alapú E2–E16
+  szabályokat.** *(ÚJ, SZOTAR D30 ellenőrzés, 2026.09.28 — javaslat, nincs
+  döntés)* Emiatt sem a TEREMT-002 `res_forras.tsv`-hiánya (a `general.py
+  --cel lexikon --ir` kivétellel megszakadt volna bármely PR-en, amely ezt
+  a fájlt érinti), sem az N32 render-drift nem jelent meg CI-hibaként. Egy
+  jövőbeli CI-szabály (pl. `general.py --cel lexikon --ellenoriz` +
+  `--cel torzscikk --ellenoriz` futtatása minden PR-en) elkaphatná — ehhez
+  a `PARDES_DATUM` rögzítése is kellene, hogy a dátum-mező ne adjon hamis
+  pirosat.
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 

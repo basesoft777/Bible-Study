@@ -1290,6 +1290,17 @@ def res_forras_sorok():
     return _res_forras_cache
 
 
+def res_forras_teljesen_hianyzik_e(motivum_id):
+    """Igaz, ha a motívumnak a res_forras.tsv-ben EGYETLEN (a 7 rés közül
+    egy sem) sora sincs -- ilyenkor a motívum még nincs a lexikonoldal-
+    rétegbe felvéve (l. FELADATOK #11/#12), a `run()` ezért kihagyja, nem
+    dobja el a teljes generálást. Ha csak RÉSZBEN hiányzik, ez False marad,
+    és a res_blokkok_alkalmaz saját HIBAKÓD-ja (ValueError) érvényesül --
+    az részleges, tehát valódi adathiba, nem kihagyandó eset."""
+    sorok = res_forras_sorok()
+    return not any((motivum_id, res) in sorok for res in RES_SORREND)
+
+
 _tanulmany_szoveg_cache = {}
 
 
@@ -1665,6 +1676,11 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
     for m in motivumok:
         sorai = elof_id_szerint.get(m['id'], [])
         if not sorai:
+            continue
+
+        if res_forras_teljesen_hianyzik_e(m['id']):
+            print('  %s: KIHAGYVA -- nincs egyetlen res_forras.tsv sora sem (a lexikonoldal-réteg '
+                  'még nem indult el ehhez a motívumhoz, l. FELADATOK #11/#12)' % m['id'])
             continue
 
         blokkok, tisztazatlan_erintve_szocikkek = render_lexikon_egy_id(m, sorai, konyv_sorrend, hianyzo_konyvek)

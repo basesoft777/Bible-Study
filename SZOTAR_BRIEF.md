@@ -3,7 +3,14 @@
 *FELADATOK #5 (és a #9 előkészítése) · v1 — 2026.09.23 · a `RENDER_BRIEF.md` v3 kettéválásából (ott D13); OCR-kezelés (D12), héber kiejtés-jelöltek (D13), LXX-korpuszszint (D14) · KIEJT-kiváltás (D15) · v1.1 — 2026.09.25: a Cremer kivezetve (D16); forrásszabály (D17) · **v1.2 — 2026.09.27: a Girdlestone kivezetve (D18); a TWOT-szám marad a héber 3. szerepben (D19); a 3. szerep új jelöltje az unfoldingWord Translation Words (S14, D20); az S0 kérdései lezárva (D21–D24); FJ-eredmény: a Macula küszöb alatt, az S13 versszintű marad (D25); a pilot terminológiája a kiinduló tábla (D26); új `allapot`-érték: `nincs forrás` (D27). Az S0 lefutott (`1046834`); új, rövid S0b-mérés ⛔. **v1.3 — 2026.09.27: az
 S0b.1 megállt, majd a felhasználó jóváhagyta a hatókör-bővítést — a T2.2
 (`ed79575`) két új héber tokenje (H8414 *tohu*, H0922 *bohu*) bekerül a
-hatókörbe, a héber tokenszám 24→26 (D28); hatókör-szabály rögzítve (D28).***
+hatókörbe, a héber tokenszám 24→26 (D28); hatókör-szabály rögzítve (D28).
+**v1.4 — 2026.09.28: az 1. menet S1.1-nél a `general.py --cel lexikon --ir`
+elszállt (TEREMT-002-nek nincs `res_forras.tsv` sora — a `main`-en, a
+menettől függetlenül is), és a `git status --porcelain lexikon/` a mai nap
+miatt sosem lenne üres a generátor `TS` mezője miatt — a nulla-diff próba
+definíciója megváltozott (D30): `eszkozok/nulladiff.sh` A/B próbája, nem a
+commitolt fájlokhoz viszonyítás. A K4 és a §7 1–2. menet promptja ennek
+megfelelően frissült.*
 
 **Cél.** A szerepmátrix (`adat/szotar_szerepek.tsv`, 10 szerep × 2 nyelv) minden cellája adatból
 töltődjön, és a szótári réteg rendezett legyen: fordítási gyorsítótár, terminológia, görög kiejtés,
@@ -175,7 +182,7 @@ Eredmény: `naplok/SZOTAR_S0_jelentes.md` és 8 munkalap. A 7 kérdés válasza:
 ### 1. menet
 | # | Kritérium |
 |---|---|
-| K4 | nulla-diff a `lexikon/` egészén |
+| K4 | nulla-diff a `lexikon/` egészén — **D30 szerint**: `eszkozok/nulladiff.sh <az S1.1 előtti main-hash>` üres kimenettel, 0 kilépőkóddal (nem a `git status --porcelain lexikon/`) |
 | K5 | `forditasok.tsv` 51 sor, kulcs egyedi, hash egyezik; a régi oszlop és tábla nincs |
 | K6 | az új adattáblák SEMA-bejegyzéssel; a `nincs forrás` érték a SEMA-ban; a `kiejtes.py` nem ír |
 | K7 | az importált táblák reprodukálhatók (importszkript + forrás-SHA a README-ben) |
@@ -244,9 +251,9 @@ Olvasd el a CLAUDE.md-t, a SZOTAR_BRIEF.md-t (a jóváhagyott verziót) és a
 naplok/SZOTAR_S0b_jelentes.md-t.
 
 0. main = origin/main = <az S0b utáni hash>. Ha nem, ÁLLJ MEG. Push a távoli ágra.
-1. S1.1–S1.2. Utána: general.py --cel lexikon --ir és --cel torzscikk --ir, majd
-   git status --porcelain lexikon/ — ha nem üres, ÁLLJ MEG, és ne commitolj.
-2. S1.3–S1.7 a §3 szerint, minden tétel után újra a nulla-diff próba.
+1. S1.1–S1.2. Utána: eszkozok/nulladiff.sh <a 0. pontbeli main-hash> — ha nem üres
+   kimenet / nem 0 kilépőkód (D30), ÁLLJ MEG, és ne commitolj.
+2. S1.3–S1.7 a §3 szerint, minden tétel után újra a nulla-diff próba (D30).
    Az S14 és az S13 importja csak akkor, ha az S0b jelentése és a jóváhagyás elfogadta.
 3. K4–K8. Commitok a §6 1. menet-táblája szerint; a FELADATOK.md #5 sora.
 4. ÁLLJ: mutasd be a 26 héber kiejtés-jelöltet (D28) és a kézi BDB-etimológia-határokat jóváhagyásra.
@@ -299,7 +306,10 @@ Olvasd el a CLAUDE.md-t és a SZOTAR_BRIEF.md-t (a jóváhagyott verziót).
 | **D27** | **Új `allapot`-érték a szerepmátrixban: `nincs forrás`** (a SEMA zárt listája bővül) | a görög 3. szerep (és a tW elutasítása esetén más cella) hiánya végleges, nem pótlandó; a `nincs adatosítva` ígéretet sugallna. A FELADATOK-ban a cél „`nincs adatosítva` 0” így mérhető marad |
 | **D28** | **Hatókör-szabály + a T2.2 két új héber tokenje (H8414 tohu, H0922 bohu) bekerül a szótári réteg hatókörébe; a héber tokenszám 24→26.** Szabály: „A hatókör a menet indító commitjának tokenhalmaza; a szám ebből származik, nem rögzített. Ha a mérés és az indítás között a halmaz változik, az új tokenek bekerülnek, és a jelentés felsorolja őket. Megállás csak akkor kell, ha token kiesik, vagy a G-halmaz változik.” Ha a tohu/bohu valamelyik forrásban (pl. UBS DBH, TBESH) nem szerepel, azt a szerepmátrix `a forrás nem tárgyalja` hiányként rögzíti — ez nem megállási ok. | A felhasználó döntése, 2026.09.27, az S0b.1 ÁLLJ-jára válaszul (`naplok/SZOTAR_S0b_jelentes.md`): a T2.2 (`ed79575`, 2026.09.25) az S0 (09.23) után, de a jóváhagyás előtt bővítette az `elofordulasok.tsv`-t; a felhasználó a szűkítés helyett a bővítést választotta, és a jövőre nézve rögzítette, hogy a token-alapú célszámok a menet indításakori tényleges hatókört tükrözzék, ne egy korábban rögzített konstanst |
 | **D29** | **Pontosítja a D28-at: a H8414 (tohu) és a H0922 (bohu) nem a 8 lexikon-motívumhoz, hanem a TEREMT-002-höz tartozik; ennek ellenére az S1 hatókörében marad (26 H-token).** | két token, elhanyagolható többletmunka; a D1 szerint az adat előbb készül, mint a render, így a #12-nél nem kell pótmenet. Elvetett alternatíva: a két tokent kivenni az S1-ből, és a #12-ben pótolni |
+| **D30** | **A nulla-diff próba (K4) mostantól `eszkozok/nulladiff.sh <alap-commit>`: két KÜLÖN git worktree-ben, KÜLÖN-KÜLÖN legenerálva, azonos `PARDES_DATUM` mellett hasonlítja össze a `lexikon/` kimenetet — nem a commitolt fájlokhoz viszonyít (`git status --porcelain lexikon/`).** A `general.py` `TS` mezője a `PARDES_DATUM` környezeti változóval felülírható (alapértelmezés: a mai nap); más viselkedés nem változott. A `general.py --cel lexikon` egy motívumot (nem dobja el a teljes futást), ha annak `res_forras.tsv`-ben egyetlen sora sincs — csak figyelmeztet (`eszkozok/lexikon_general.py`, `res_forras_teljesen_hianyzik_e`); részleges hiánynál a régi `ValueError` marad. **A commitolt render-kimenet elavultsága (KK7.5 LXX-sorok, D16 Cremer-sor) a #9 (SZOTAR S2, teljes újragenerálás) feladata — ebben a menetben nem regenerálunk semmit.** | A felhasználó döntése, 2026.09.28: az S1.1 nulla-diff próbája (a régi `git status --porcelain lexikon/`) két, egymástól független okból sem futtatható úgy, ahogy a v1.3 leírta — (1) a `general.py --cel lexikon --ir` a TEREMT-002-nél elszáll, mert a T2.2 (`ed79575`) új motívumot vitt be `res_forras.tsv` sor nélkül, a `main`-en (`47fca73`) is, a menettől függetlenül; (2) a `general.py` `TS` mezője mindig a futtatás napja, ezért a commitolt fájlokhoz képest a nap múlásával önmagában is diffet adna — a CI (`ellenorzes.yml`) ezt nem futtatja, nem is kapja el. Külön ág (`claude/general-teremt002-datum`) igazolta: a javítással a `nulladiff.sh 47fca73` üres kimenettel, 0 kilépőkóddal fut a 8 érintett motívumra |
 
 *A v1.1 → v1.2 változásai:* fejléc, cél, előfeltétel; §0 újramérve, 0.12 pontosítva, 0.13–0.18 új/bővített; §1 `nincs forrás`; S1, S2, S8, S9, S11, S13 módosítva, S14 új; S0b új menet (S0 lezárva); S1.4b törölve; 1. menet ⛔ tárgya: kiejtés + BDB-határ (Girdlestone helyett); §4–§7 ennek megfelelően; D9, D12 visszavonva, D18–D27 új.
 
 *A v1.2 → v1.3 változásai:* fejléc (S0b.1 ÁLLJ + hatókör-döntés); §0 hatókör-szabály és 0.1/0.4/0.5/0.11/0.17 frissítve (26 H-token, `KIMENET_FEJLEC`); S3, S9, S14 a 26-os hatókörre igazítva; §3 S1.7, az ÁLLJ-sor és S2.1 24→26; §4 Várt számok a tW-küszöb, a héber kiejtés-jelöltek és a `kiejtes_kivetelek.tsv` sora 26-ra; §7 1. menet prompt ÁLLJ-sora 26-ra; D28 új; **D29 (v1.3): a D28 motívum-hozzárendelésének pontosítása (TEREMT-002).**
+
+*A v1.3 → v1.4 változásai:* fejléc (a nulla-diff próba blokkolódott az S1.1-nél); K4 átfogalmazva (`nulladiff.sh`, nem `git status --porcelain`); §7 1. menet prompt 1. pontja `nulladiff.sh`-ra cserélve; **D30 új** (a nulla-diff próba definíciójának változása; `eszkozok/general.py` `PARDES_DATUM`, `eszkozok/nulladiff.sh`, `eszkozok/lexikon_general.py` `res_forras_teljesen_hianyzik_e`).
