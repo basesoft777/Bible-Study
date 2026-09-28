@@ -1,0 +1,41 @@
+# Heber kiejtes-jelolt szabalytabla (S3, S1.7). Kulcs: sorszam. Séma: adat/SEMA.md 2.18 (S1.6-ban meg nem felvett -- S1.7 uj tabla, SEMA-bejegyzese kesobbi tetel).
+# Bemenet: konkordancia/OSHL_lexikalis_index.tsv "atiras" mezoje (SBL Academic
+# stilusu, Unicode diakritikus jelekkel -- makron/cirkumflex hosszu maganhangzokra,
+# ʾ/ʿ a gutturalisokra, š/ṣ/ṭ/ḥ a pontozott massalhangzokra). NEM a nyers niqqud
+# heber szoveg (azzal a S0.7 proba dolgozott, l. naplok/SZOTAR_S0_heber_jeloltek.tsv
+# -- D24 szerint az OSHL-atiras-alapu ut a jobb iranyu dontes, mert a nehez esetek
+# (nema he, shuruk-mint-maganhangzo, dagesh) MAR eldontottek az atirasban).
+#
+# A szabalyok SORREND szerint, EGYMAS UTAN, szekvencialisan alkalmazando
+# literalis (nem regex) cserek -- tobb-karakteres kodpont-csereknel a sorrend
+# nem szamit (minden minta egyedi Unicode karakter, nem fedik at egymast).
+#
+# JELOLT, NEM VEGLEGES: ez a tabla csak a S1.7 jelolt-listajat allitja elo
+# (naplok/SZOTAR_S1_heber_jeloltek.tsv); a kivetel-tablaba (adat/
+# kiejtes_kivetelek.tsv) csak kezi jovahagyas utan kerulhet be (S2.1).
+#
+# Ket letezo, mar jovahagyott heber kivetel (adat/kiejtes_kivetelek.tsv,
+# KIEJT-migracio) igazolja a fo szabalyokat: H7121 קָרָא (OSHL "qārāʾ") ->
+# jovahagyott "kárá" (q->k, ā->á, vegzodo ʾ elesik); H8034 שֵׁם (OSHL "šēm") ->
+# jovahagyott "sém" (š->s, ē->é).
+sorszam	minta	csere	megjegyzes
+1	ʾ		aleph -- nema massalhangzo (glottal stop), a magyar atirasban elesik (a csere-mezo szandekosan ures); pl. qārāʾ -> kárá (a jovahagyott H7121-mintaval egyezik)
+2	ʿ		ayin -- nema massalhangzo (gegehang), a magyar atirasban elesik, ugyanaz a konvencio, mint az alephnel (a csere-mezo szandekosan ures)
+3	š	s	shin -- a magyar "s" hang; pl. šēm -> sém (a jovahagyott H8034-mintaval egyezik)
+4	ṣ	c	tsade -- a magyar "c" hang
+5	ṭ	t	tet (dagesh nelkuli/pontozott t) -- egybeolvad a sima tavval, ugyanugy "t"
+6	ḥ	h	het -- a magyar "h" hang, egybeolvad a he-vel (nincs kulon "kh")
+7	q	k	qof -- a magyar "k" hang; pl. qārāʾ -> kárá (jovahagyott minta)
+8	y	j	yod massalhangzokent -- a magyar "j" hang (pl. ḥay -> haj)
+9	â	á	hosszu a (cirkumflex, tortenetileg matres lectionis-szal irt), hosszu maganhangzo
+10	ā	á	hosszu a (makron, "plene" hosszu)
+11	ă	a	rovid/redukalt a (hataf patah)
+12	ê	é	hosszu e (cirkumflex) -- ritka a 26-os keszletben, teljesseg kedveert
+13	ē	é	hosszu e (makron); pl. šēm -> sém (jovahagyott minta)
+14	ĕ	e	redukalt e (vokalis sva / hataf szegol)
+15	î	í	hosszu i (cirkumflex)
+16	ī	í	hosszu i (makron) -- ritka a 26-os keszletben, teljesseg kedveert
+17	ô	ó	hosszu o (cirkumflex, holam-vav)
+18	ō	ó	hosszu o (makron)
+19	û	ú	hosszu u (cirkumflex, shuruk)
+20	ū	ú	hosszu u (makron) -- ritka a 26-os keszletben, teljesseg kedveert
