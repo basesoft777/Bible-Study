@@ -13,3 +13,10 @@ __pycache__/
 # CREMER_OCR_BRIEF.md O0.1 -- archive.org nyers fajlok (kb. 1.85 GB), nem verziozzuk;
 # a SHA-256-ok a konkordancia/README.md-ben
 konkordancia/_nyers/
+
+# FORDITAS_STILUSPROBA_FP2_BRIEF.md -- API-kulcsok es a fordit.py nyers
+# gyorsitotar/hibanaplo konyvtarai, sosem verziozzuk
+.env
+naplok/FORDITAS_P_cache/
+naplok/FORDITAS_P_hibak/
+fp2/*_cache/
