@@ -723,17 +723,27 @@ makronos) akadémiai átirat → magyaros kiejtés szekvenciális, literális
 
 | Mező | Típus | Kötelező | Leírás |
 |---|---|---|---|
-| `sorszam` | egész szám | ✔ | Az alkalmazás sorrendje — **kötelező betartani**, mert egyes cserék (pl. a dupla szigma `ss`→`ssz`) csak akkor helyesek, ha egy általánosabb szabály (`s`→`sz`) előtt futnak. |
+| `sorszam` | egész szám | ✔ | Az alkalmazás sorrendje — **kötelező betartani**, mert egyes szabályok csak egy másik szabály előtt/után helyesek (pl. a `z`→`dz` a `s`→`sz` előtt, az `ou`→`ú` a `u`→`ü` előtt). |
 | `minta` | szabad szöveg | ✔ | A cserélendő literális Latin (SBL-átiratos) részstring. |
 | `csere` | szabad szöveg | ✔ | A magyaros megfelelő. |
 | `megjegyzes` | szabad szöveg | | A szabály indoklása, jellemző görög betű/eset, és — ha van — egy igazoló példa a `naplok/SZOTAR_kiejtes_tesztkeszlet_tiszta.tsv` aranykészletéből. |
 
-**Állapot (S1.2, elfogadás előtti tervezet):** a 24 induló sor mind a 25
-egyedi, „arany” minősítésű görög pár (`naplok/SZOTAR_kiejtes_tesztkeszlet_tiszta.tsv`)
-levezetését adja vissza kézi ellenőrzéssel; a `θ` (théta) „th” átirata
-szándékosan nem kap szabályt (nincs csere). **A tényleges validálás és a
-szükség szerinti finomítás az S1.3 tétele**, ahol az `eszkozok/kiejtes.py`
-`--ellenoriz` módja a teljes aranykészleten fut.
+**Két eset NEM szerepel a táblában, kódszinten (`eszkozok/kiejtes.py`
+`atir()`) van maszkolva, mert egy egyszerű szekvenciális csereként
+tévesen viselkedne:** a σσ (dupla szigma) → `ssz` (a magyar geminációs
+helyesírás miatt — a `s`→`sz` szabály a maszkolás nélkül a `ssz`-ben
+bennmaradó két bare `s`-t újra feldolgozná), és az αυ/ευ diftongusok
+`u`-ja (nem álló upsilon, nem válhat `ü`-vé — l. `καύχημα` → `kauchēma`
+→ `kaukhéma`, nem `kaükhéma`).
+
+**Állapot (S1.3, validálva):** a 22 sor az `eszkozok/kiejtes.py
+--ellenoriz` szerint mind a 26 tesztelhető „arany” görög párt (a 30
+egyedi párból 4 kontextus-függő kimaradt) hibátlanul adja vissza —
+`naplok/SZOTAR_S1_kiejtes_jelentes.md`. **D32:** az S1.2-es első
+változat tévesen `y`-t használt az upsilonra (ellenőrzés nélküli
+feltételezésből); a tényleges forrás (`TBESG.txt`/`TAGNT_kivonat.tsv`)
+sima `u`-t ad — javítva. A 100%-os egyezés önmagában nem elfogadási
+érv — l. a jelentés lefedettségi és kihagyásos (leave-one-out) részét.
 
 ### 2.17 `kiejtes_kivetelek.tsv` — kiejtés-kivételek (SZOTAR_BRIEF.md S3, D15)
 

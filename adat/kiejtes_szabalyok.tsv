@@ -2,35 +2,49 @@
 # Bemenet: a TAGNT_kivonat.tsv/TBESG.txt "Kiejtes" oszlopa (SBL-stilusu
 # akademiai atirat, Unicode makronokkal: ē ō ā ī ū). A szabalyok SORREND
 # szerint, EGYMAS UTAN, szekvencialisan alkalmazando literalis (nem regex)
-# cserek -- a sorrend kotelezo (pl. az "ss" cserenek meg kell elozne az
-# "s" cseret, kulonben "szsz" lenne "ssz" helyett; a "z"/"y" cserenek meg
-# kell elozne az "s" cseret, hogy a keletkezo "sz" ne kerekedjen ossze
-# tobbszoros csere soran). A θ (theta) "th" atirata NEM valtozik -- nincs
-# hozza kulon szabaly. Az S1.3 (eszkozok/kiejtes.py) az 50 paros gorog
-# aranykeszleten (naplok/SZOTAR_kiejtes_tesztkeszlet_tiszta.tsv) validalja
-# es szukseg eseten finomitja ezt a tablat (D31-hez hasonloan iterativ).
+# cserek -- a sorrend kotelezo: a "z" cserenek meg kell elozne az "s"
+# cseret (kulonben egy s->sz altal letrehozott uj "z" betut a z-szabaly
+# tevesen ujra feldolgozna), az "ou" diftongus-cserenek pedig az allo "u"
+# cseret (kulonben egy "ou"-ban levo u tevesen ü-ve valna, "oü" alakot
+# adva "ú" helyett). A θ (theta) "th" atirata NEM valtozik -- nincs hozza
+# kulon szabaly.
+#
+# KIVETEL a tablabol: a σσ (dupla szigma) -> "ssz" (nem "szsz", magyar
+# geminacios helyesiras) NEM szerepel itt sorkent -- az eszkozok/kiejtes.py
+# `atir()` fuggvenye kulon, maszkolt lepesben kezeli, MIELOTT ez a
+# szabalytabla lefutna, mert az altalanos "s"->"sz" szabaly a "ssz"
+# eredmenyben BENNE MARADO ket bar "s" betut ujra feldolgozna (l. a
+# fuggveny docstringjet).
+#
+# D32 (S1.3): a tabla ELSO valtozata (S1.2) tevesen "y"-t hasznalt az
+# upsilonra (ellenorzes nelkuli feltetelezes) -- a TBESG.txt/
+# TAGNT_kivonat.tsv tenyleges adata sima "u"-t ad (pl. κύριος -> kurios,
+# nem kyrios). Javitva: a Y/y szabaly torolve, U/u szabaly bekerult.
+#
+# Validalva es finomitva az S1.3 (eszkozok/kiejtes.py --ellenoriz)
+# tetelben: naplok/SZOTAR_S1_kiejtes_arany_sbl.tsv (26 par, a
+# naplok/SZOTAR_kiejtes_tesztkeszlet_tiszta.tsv 30 egyedi "arany" parjabol,
+# 4 kontextus-fuggo kihagyva -- l. az S1.3 jelentest).
 sorszam	minta	csere	megjegyzes
 1	Ch	Kh	χ (khi), szo elejen/nagybetuvel -- pl. Χριστός
-2	ch	kh	χ (khi) -- pl. καύχημα -> kaukhēma (kaukhéma)
+2	ch	kh	χ (khi) -- pl. καύχημα -> kauchēma (kaukhéma)
 3	Ph	F	φ (phi), nagybetuvel
 4	ph	f	φ (phi) -- pl. φθορά -> phthora (fthora)
-5	SS	SSZ	σσ (dupla szigma), nagybetuvel -- magyar geminacios helyesiras (ssz, nem szsz)
-6	ss	ssz	σσ (dupla szigma) -- pl. κηρύσσω -> kēryssō (kérüsszó); FONTOS: az "s"-szabaly elott fusson
-7	OU	Ú	ου (diftongus, hosszu u-hang), nagybetuvel
-8	ou	ú	ου (diftongus) -- pl. καλούμενος -> kaloumenos (kalúmenosz)
-9	Y	Ü	υ (üpszilon) SBL-atirata, nagybetuvel
-10	y	ü	υ (üpszilon) SBL-atirata -- pl. κύριον -> kyrion (kürion)
-11	Z	Dz	ζ (dzeta), nagybetuvel; az "s"-szabaly elott fusson
-12	z	dz	ζ (dzeta) -- pl. κράζω -> krazō (kradzó)
-13	S	Sz	σ/ς (szigma), nagybetuvel -- pl. Σήμ -> Sēm (Szém)
-14	s	sz	σ/ς (szigma) -- pl. πρός -> pros (prosz)
-15	Ē	É	η (eta), hosszu maganhangzo, nagybetuvel
-16	ē	é	η (eta), hosszu maganhangzo -- pl. φωνέω -> phōneō (fóneó) 2. tagja
-17	Ō	Ó	ω (omega), hosszu maganhangzo, nagybetuvel
-18	ō	ó	ω (omega), hosszu maganhangzo -- pl. καλέω -> kaleō (kaleó)
-19	Ā	Á	makron alfa, nagybetuvel (ritka)
-20	ā	á	makron alfa (ritka)
-21	Ī	Í	makron ióta, nagybetuvel (ritka)
-22	ī	í	makron ióta (ritka)
-23	Ū	Ú	makron üpszilon, nagybetuvel (ritka)
-24	ū	ú	makron üpszilon (ritka)
+5	OU	Ú	ου (diftongus, hosszu u-hang), nagybetuvel; az "u"-szabaly elott fusson
+6	ou	ú	ου (diftongus) -- pl. ἐπικαλουμένους -> epikaloumenous (epikalúmenúsz)
+7	U	Ü	υ (üpszilon), nagybetuvel; a diftongus "ou" utan fusson
+8	u	ü	υ (üpszilon) -- pl. κύριος -> kurios (kürion, D32)
+9	Z	Dz	ζ (dzeta), nagybetuvel; az "s"-szabaly elott fusson
+10	z	dz	ζ (dzeta) -- pl. κράζω -> krazō (kradzó)
+11	S	Sz	σ/ς (szigma), nagybetuvel -- pl. Σήμ -> Sēm (Szém)
+12	s	sz	σ/ς (szigma) -- pl. πρός -> pros (prosz)
+13	Ē	É	η (eta), hosszu maganhangzo, nagybetuvel
+14	ē	é	η (eta), hosszu maganhangzo -- pl. φωνέω -> phōneō (fóneó) 2. tagja
+15	Ō	Ó	ω (omega), hosszu maganhangzo, nagybetuvel
+16	ō	ó	ω (omega), hosszu maganhangzo -- pl. καλέω -> kaleō (kaleó)
+17	Ā	Á	makron alfa, nagybetuvel (ritka)
+18	ā	á	makron alfa (ritka)
+19	Ī	Í	makron ióta, nagybetuvel (ritka)
+20	ī	í	makron ióta (ritka)
+21	Ū	Ű	makron üpszilon, nagybetuvel (ritka) -- hosszu u-hang; kulonbozik a plain "u"-tol (D32)
+22	ū	ű	makron üpszilon (ritka)
