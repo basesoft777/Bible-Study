@@ -28,6 +28,7 @@ Kilepesi kod: 0 = rendben, 1 = szabalysertes, 2 = hiba.
 """
 
 import argparse
+import hashlib
 import os
 import sys
 
@@ -423,42 +424,51 @@ def szabaly9_teljes_jelentes_szam(elofordulasok, lexikon_hivatkozasok):
 
 
 def szabaly10_v22_tablak(adat_dir):
-    """LEXV2_2_BRIEF.md V2.2: forditas_ubs.tsv es lxx_dontesek.tsv
-    minimum-ellenorzese -- fejlec-oszlopok a SEMA szerint; forditas_ubs.tsv:
-    20 sor, strong+entry_kod egyedi, minden lexid letezik a
-    UBS_DNTG_jelentesek.tsv-ben, definicio_hu nem ures; lxx_dontesek.tsv:
-    fejlec egyezik, soronkent igehely + gorog_strong kitoltve (ha van sor)."""
+    """LEXV2_2_BRIEF.md V2.2: eredetileg forditas_ubs.tsv es lxx_dontesek.tsv
+    minimum-ellenorzese. A forditas_ubs.tsv a SZOTAR S1.1-ben megszunt
+    (adat/SEMA.md 2.10, D31) -- a 20 sora az adat/forditasok.tsv-be
+    koltozott (`szotar=UBS_DNTG`), a hash-/kulcs-egyediseg ellenorzeset a
+    13. szabaly veszi at (S1.5). Ha a fajl hianyzik, ez a resz RETIRED
+    (nem SÉRTÉS); ha valamiert megis letezik (visszaallitva), a regi
+    ellenorzes tovabbra is lefut. lxx_dontesek.tsv: fejlec egyezik,
+    soronkent igehely + gorog_strong kitoltve (ha van sor)."""
     hibas = []
+    megjegyzesek = []
 
-    ubs_fejlec, ubs_sorok = G.tsv_beolvas(os.path.join(adat_dir, 'forditas_ubs.tsv'))
-    vart_ubs_fejlec = ['strong', 'entry_kod', 'lexid', 'definicio_hu', 'glosszak_hu',
-                        'megjegyzes', 'proveniencia']
-    if ubs_fejlec != vart_ubs_fejlec:
-        hibas.append('forditas_ubs.tsv fejlec eltero: %r' % (ubs_fejlec,))
-    if len(ubs_sorok) != 20:
-        hibas.append('forditas_ubs.tsv sorszam=%d, vart=20' % len(ubs_sorok))
-    kulcsok = set()
-    for sor in ubs_sorok:
-        kulcs = (sor.get('strong'), sor.get('entry_kod'))
-        if kulcs in kulcsok:
-            hibas.append('forditas_ubs.tsv duplikalt kulcs: %s' % (kulcs,))
-        kulcsok.add(kulcs)
-        if not (sor.get('definicio_hu') or '').strip():
-            hibas.append('forditas_ubs.tsv %s: ures definicio_hu' % (kulcs,))
+    ubs_path = os.path.join(adat_dir, 'forditas_ubs.tsv')
+    if not os.path.exists(ubs_path):
+        megjegyzesek.append('forditas_ubs.tsv rész RETIRED (a tábla megszűnt, SZOTAR S1.1, '
+                             'l. adat/SEMA.md 2.10) -- a kulcs-/hash-ellenőrzés a 13. szabályban fut')
+    else:
+        ubs_fejlec, ubs_sorok = G.tsv_beolvas(ubs_path)
+        vart_ubs_fejlec = ['strong', 'entry_kod', 'lexid', 'definicio_hu', 'glosszak_hu',
+                            'megjegyzes', 'proveniencia']
+        if ubs_fejlec != vart_ubs_fejlec:
+            hibas.append('forditas_ubs.tsv fejlec eltero: %r' % (ubs_fejlec,))
+        if len(ubs_sorok) != 20:
+            hibas.append('forditas_ubs.tsv sorszam=%d, vart=20' % len(ubs_sorok))
+        kulcsok = set()
+        for sor in ubs_sorok:
+            kulcs = (sor.get('strong'), sor.get('entry_kod'))
+            if kulcs in kulcsok:
+                hibas.append('forditas_ubs.tsv duplikalt kulcs: %s' % (kulcs,))
+            kulcsok.add(kulcs)
+            if not (sor.get('definicio_hu') or '').strip():
+                hibas.append('forditas_ubs.tsv %s: ures definicio_hu' % (kulcs,))
 
-    konkordancia_dir = os.path.join(os.path.dirname(adat_dir), 'konkordancia')
-    ubs_dntg_path = os.path.join(konkordancia_dir, 'UBS_DNTG_jelentesek.tsv')
-    ismert_lexidk = set()
-    try:
-        _, ubs_dntg_sorok = G.tsv_beolvas(ubs_dntg_path)
-        ismert_lexidk = {sor.get('lexid') for sor in ubs_dntg_sorok}
-    except Exception as exc:
-        hibas.append('UBS_DNTG_jelentesek.tsv nem olvashato: %s' % exc)
-    for sor in ubs_sorok:
-        lexid = (sor.get('lexid') or '').strip()
-        if lexid and ismert_lexidk and lexid not in ismert_lexidk:
-            hibas.append('forditas_ubs.tsv %s/%s: lexid=%s nincs a UBS_DNTG_jelentesek.tsv-ben'
-                          % (sor.get('strong'), sor.get('entry_kod'), lexid))
+        konkordancia_dir = os.path.join(os.path.dirname(adat_dir), 'konkordancia')
+        ubs_dntg_path = os.path.join(konkordancia_dir, 'UBS_DNTG_jelentesek.tsv')
+        ismert_lexidk = set()
+        try:
+            _, ubs_dntg_sorok = G.tsv_beolvas(ubs_dntg_path)
+            ismert_lexidk = {sor.get('lexid') for sor in ubs_dntg_sorok}
+        except Exception as exc:
+            hibas.append('UBS_DNTG_jelentesek.tsv nem olvashato: %s' % exc)
+        for sor in ubs_sorok:
+            lexid = (sor.get('lexid') or '').strip()
+            if lexid and ismert_lexidk and lexid not in ismert_lexidk:
+                hibas.append('forditas_ubs.tsv %s/%s: lexid=%s nincs a UBS_DNTG_jelentesek.tsv-ben'
+                              % (sor.get('strong'), sor.get('entry_kod'), lexid))
 
     lxx_fejlec, lxx_sorok = G.tsv_beolvas(os.path.join(adat_dir, 'lxx_dontesek.tsv'))
     vart_lxx_fejlec = ['id', 'igehely', 'lxx_igehely', 'heber_strong', 'gorog_lemma',
@@ -476,9 +486,11 @@ def szabaly10_v22_tablak(adat_dir):
         elif tipus == 'eltero_forditas' and not (sor.get('gorog_lemma') or '').strip():
             hibas.append('lxx_dontesek.tsv %s: tipus=eltero_forditas, de gorog_lemma ures' % sor.get('id'))
 
+    cim = '10. LEXV2_2 tablak (forditas_ubs -- RETIRED S1.1, lxx_dontesek)'
+    megjegyzes = '; '.join(megjegyzesek) or None
     if hibas:
-        return Sor('10. LEXV2_2 tablak (forditas_ubs, lxx_dontesek)', 'SÉRTÉS', len(hibas), hibas)
-    return Sor('10. LEXV2_2 tablak (forditas_ubs, lxx_dontesek)', 'RENDBEN')
+        return Sor(cim, 'SÉRTÉS', len(hibas), hibas, megjegyzes=megjegyzes)
+    return Sor(cim, 'RENDBEN', megjegyzes=megjegyzes)
 
 
 # ---------------------------------------------------------------------------
@@ -543,6 +555,108 @@ def szabaly12_lap_szamlalo(adat_dir):
     lap_sorok = ['%s / %s' % (r['id'], r['res']) for r in res_sorok if r['forras'] == 'lap']
     return Sor(cim, 'JELENTÉS', n=len(lap_sorok), peldak=lap_sorok,
                megjegyzes='a RENDER_BRIEF.md 2. menetének végére 0-ra csökken (G12)')
+
+
+# ---------------------------------------------------------------------------
+# 13-14. SZOTAR_BRIEF.md S1.5: gyorsitotar + kiejtes/terminologia
+# ---------------------------------------------------------------------------
+
+def _forditasok_forras_szoveg_idx(adat_dir):
+    """{(szotar, strong, entry_id, jelentes_szam): forras_szoveg_en} --
+    lexikon_hivatkozasok.tsv-bol (nem-UBS sorok) es UBS_DNTG_jelentesek.tsv-bol
+    (UBS_DNTG sorok, mezonkent kulon kulcs: 'UBS_DNTG:definicio_hu' /
+    'UBS_DNTG:glosszak_hu' a mezo-fuggo forras miatt, l. SEMA.md 2.14)."""
+    _, lex_hiv_sorok = G.tsv_beolvas(os.path.join(adat_dir, 'lexikon_hivatkozasok.tsv'))
+    idx = {}
+    for r in lex_hiv_sorok:
+        kulcs = (r['szotar'], r['strong'], r['entry_id'], r['jelentes_szam'], 'forditas_hu')
+        idx[kulcs] = r.get('szoveg_en', '')
+
+    konkordancia_dir = os.path.join(os.path.dirname(adat_dir), 'konkordancia')
+    ubs_path = os.path.join(konkordancia_dir, 'UBS_DNTG_jelentesek.tsv')
+    if os.path.exists(ubs_path):
+        _, ubs_sorok = G.tsv_beolvas(ubs_path)
+        for r in ubs_sorok:
+            alap = ('UBS_DNTG', r['strong'], r['lexid'], r['entry_kod'])
+            idx[alap + ('definicio_hu',)] = r.get('definicio_rovid', '')
+            idx[alap + ('glosszak_hu',)] = r.get('glosszak', '')
+    return idx
+
+
+def szabaly13_forditasi_gyorsitotar(adat_dir):
+    """SZOTAR_BRIEF.md S1.5, 13. szabaly (SEMA.md 2.14): a forditasok.tsv
+    kulcsa (szotar+strong+entry_id+jelentes_szam+mezo) egyedi legyen, es a
+    tarolt forras_hash egyezzen a forrasszoveg (szoveg_en / UBS
+    definicio_rovid / glosszak) ujraszamolt SHA-1-evel. Eltéres SÉRTÉS,
+    `allapot=elavult` javaslattal -- a tablat ez a szabaly nem irja at."""
+    cim = '13. Fordítási gyorsítótár (kulcs egyediség, forras_hash)'
+    path = os.path.join(adat_dir, 'forditasok.tsv')
+    if not os.path.exists(path):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs adat/forditasok.tsv')
+    _, sorok = G.tsv_beolvas(path)
+
+    hibas = []
+    kulcs_szamlalo = {}
+    for sor in sorok:
+        kulcs = (sor.get('szotar'), sor.get('strong'), sor.get('entry_id'),
+                 sor.get('jelentes_szam'), sor.get('mezo'))
+        kulcs_szamlalo[kulcs] = kulcs_szamlalo.get(kulcs, 0) + 1
+    for kulcs, n in kulcs_szamlalo.items():
+        if n > 1:
+            hibas.append('duplikált kulcs: %s (%d sor)' % (kulcs, n))
+
+    forras_idx = _forditasok_forras_szoveg_idx(adat_dir)
+    for sor in sorok:
+        kulcs = (sor.get('szotar'), sor.get('strong'), sor.get('entry_id'),
+                 sor.get('jelentes_szam'), sor.get('mezo'))
+        forras_szoveg = forras_idx.get(kulcs)
+        if forras_szoveg is None:
+            hibas.append('%s: nincs hozzá forrásszöveg (lexikon_hivatkozasok.tsv / '
+                          'UBS_DNTG_jelentesek.tsv)' % (kulcs,))
+            continue
+        ujra_hash = hashlib.sha1(forras_szoveg.encode('utf-8')).hexdigest()
+        if ujra_hash != (sor.get('forras_hash') or ''):
+            hibas.append('%s: forras_hash eltér (tárolt=%s, újraszámolt=%s) -- '
+                          'allapot=elavult javasolt' % (
+                              kulcs, sor.get('forras_hash'), ujra_hash))
+    if hibas:
+        return Sor(cim, 'SÉRTÉS', len(hibas), hibas)
+    return Sor(cim, 'RENDBEN')
+
+
+def szabaly14_kiejtes_terminologia(adat_dir):
+    """SZOTAR_BRIEF.md S1.5, 14. szabaly: csak JELENTÉS, nem gátol.
+    (a) hány forditasok.tsv sor terminologia_verzio-ja marad el a
+    terminologia.tsv jelenlegi legmagasabb verziójától (üres is elmaradás,
+    a migrált soroknál ez a várt állapot, SEMA.md 2.14); (b) a
+    kiejtes_kivetelek.tsv héber sorainak száma a D28 26-os hatóköréhez
+    képest -- a hiány az S1.7/S2.1 jóváhagyás előtt VÁRT állapot, nem hiba."""
+    cim = '14. Kiejtés és terminológia (JELENTÉS)'
+    megjegyzesek = []
+
+    terminologia_path = os.path.join(adat_dir, 'terminologia.tsv')
+    forditasok_path = os.path.join(adat_dir, 'forditasok.tsv')
+    if os.path.exists(terminologia_path) and os.path.exists(forditasok_path):
+        _, term_sorok = G.tsv_beolvas(terminologia_path)
+        verziok = {r.get('verzio') for r in term_sorok if r.get('verzio')}
+        jelenlegi_verzio = sorted(verziok)[-1] if verziok else None
+        _, ford_sorok = G.tsv_beolvas(forditasok_path)
+        elmarado = sum(1 for r in ford_sorok if (r.get('terminologia_verzio') or '') != (jelenlegi_verzio or ''))
+        megjegyzesek.append('terminológia-verzió elmaradás: %d/%d sor (jelenlegi verzió: %s)'
+                             % (elmarado, len(ford_sorok), jelenlegi_verzio or '—'))
+    else:
+        megjegyzesek.append('terminológia-ellenőrzés kihagyva (hiányzó tábla)')
+
+    kiejtes_kiv_path = os.path.join(adat_dir, 'kiejtes_kivetelek.tsv')
+    if os.path.exists(kiejtes_kiv_path):
+        _, kiv_sorok = G.tsv_beolvas(kiejtes_kiv_path)
+        heber_darab = sum(1 for r in kiv_sorok if r.get('nyelv') == 'heber')
+        megjegyzesek.append('héber kiejtés-kivétel sorok: %d (a D28 26-os hatóköre az '
+                             'S1.7/ÁLLJ jóváhagyása után kerül be, S2.1)' % heber_darab)
+    else:
+        megjegyzesek.append('kiejtés-ellenőrzés kihagyva (hiányzó tábla)')
+
+    return Sor(cim, 'JELENTÉS', megjegyzes='; '.join(megjegyzesek))
 
 
 # ---------------------------------------------------------------------------
@@ -679,6 +793,8 @@ def main():
         tabla_sorok.append(szabaly10_v22_tablak(args.adat))
         tabla_sorok.append(szabaly11_res_forras_egyezes(args.adat))
         tabla_sorok.append(szabaly12_lap_szamlalo(args.adat))
+        tabla_sorok.append(szabaly13_forditasi_gyorsitotar(args.adat))
+        tabla_sorok.append(szabaly14_kiejtes_terminologia(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
