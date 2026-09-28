@@ -441,15 +441,22 @@ def _kimenet_validal(nyers):
 
 def openrouter_hivas(model_id, prompt_szoveg, api_key, ujraprobalkozas_json=2,
                       ujraprobalkozas_http=4, posztolo=None, ar_bemenet_1m=None,
-                      ar_kimenet_1m=None):
+                      ar_kimenet_1m=None, max_tokens=None):
     """Egy hivas egy modellhez, egy szocikk-darabhoz. H5 mintajara: minden
     JSON-ujraprobalkozasi kiserlet usage-e osszeadodik (a semasertes miatt
     eldobott elso valasz is szamlazott hivas volt). Visszaad:
     (eredmeny_dict, osszesitett_usage, utolso_nyers_valasz), vagy dobja az
-    OpenRouterHiba-t (az addig osszegyult usage-gel)."""
+    OpenRouterHiba-t (az addig osszegyult usage-gel).
+
+    max_tokens: FORDITAS_STILUSPROBA_FP2_BRIEF.md v2, a felhasznalo
+    kiegeszito kerdese -- alapertelmezesben None (valtozatlan viselkedes,
+    nincs explicit max_tokens kuldve), csak a csonkolt kimenetek celzott
+    ujrafuttatasahoz hasznalt."""
     posztolo = posztolo or _http_post_nyers
     uzenetek = [{'role': 'user', 'content': prompt_szoveg}]
     extra_parameterek = {'response_format': _json_sema()}
+    if max_tokens is not None:
+        extra_parameterek['max_tokens'] = max_tokens
 
     osszes_be = osszes_ki = osszes_gondolkodas = osszes_http_kiserlet = 0
     osszes_koltseg = 0.0
