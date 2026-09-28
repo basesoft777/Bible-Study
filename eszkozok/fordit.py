@@ -93,7 +93,7 @@ KIMENET_FEJLEC = ['szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo',
 BIZONYTALAN_FEJLEC = ['strong', 'modell', 'darab', 'bizonytalan_feloldasok']
 KOLTSEG_FEJLEC = ['strong', 'csoport', 'modell', 'darab', 'forras',
                    'bemenet_token', 'kimenet_token', 'koltseg_usd',
-                   'koltseg_forras', 'futo_osszeg_usd']
+                   'koltseg_forras', 'futo_osszeg_usd', 'idotartam_mp']
 SZARAZ_FEJLEC = ['strong', 'csoport', 'modell', 'darabok', 'becsult_bemenet_token',
                   'becsult_kimenet_token', 'becsult_koltseg_usd']
 
@@ -575,7 +575,7 @@ class KoltsegNaplo:
         self.osszeg_usd = 0.0
         self.sorok = []
 
-    def hozzaad(self, strong, csoport, model_id, darab_index, usage, forras):
+    def hozzaad(self, strong, csoport, model_id, darab_index, usage, forras, idotartam_mp=None):
         bemenet = usage.get('prompt_tokens', 0) or 0
         kimenet = usage.get('completion_tokens', 0) or 0
         koltseg = usage.get('cost') or 0.0
@@ -586,6 +586,7 @@ class KoltsegNaplo:
             'forras': forras, 'bemenet_token': bemenet, 'kimenet_token': kimenet,
             'koltseg_usd': round(koltseg, 6), 'koltseg_forras': koltseg_forras,
             'futo_osszeg_usd': round(self.osszeg_usd, 6),
+            'idotartam_mp': round(idotartam_mp, 3) if idotartam_mp is not None else '',
         }
         self.sorok.append(sor)
         return sor
@@ -684,23 +685,27 @@ def eles_futtatas(minta, modellek, thayer, sablon, terminologia_sz, karoli_sz,
                     eredmeny = talalat['eredmeny']
                     usage = talalat['usage']
                     forras_cimke = 'cache'
+                    idotartam_mp = 0.0
                     print('    cache-talalat', flush=True)
                 else:
+                    hivas_kezdet = time.time()
                     try:
                         eredmeny, usage, _nyers = openrouter_hivas(
                             model_id, prompt, api_key,
                             ar_bemenet_1m=ar_be, ar_kimenet_1m=ar_ki)
                     except OpenRouterHiba as e:
+                        idotartam_mp = time.time() - hivas_kezdet
                         print('HIBA -- %s %s darab %d/%d: %s' % (model_id, strong, i + 1, len(darabok), e), flush=True)
                         hiba_naplo_ir(model_id, strong, i, e)
-                        koltseg.hozzaad(strong, csoport, model_id, i, e.usage, 'halozat')
+                        koltseg.hozzaad(strong, csoport, model_id, i, e.usage, 'halozat', idotartam_mp)
                         hiba_uzenet = str(e)
                         break
+                    idotartam_mp = time.time() - hivas_kezdet
                     cache_ir(model_id, strong, i, forras_hash, eredmeny, usage)
                     forras_cimke = 'halozat'
-                    print('    kesz (koltseg=%.5f USD)' % (usage.get('cost') or 0.0), flush=True)
+                    print('    kesz (koltseg=%.5f USD, %.1f mp)' % (usage.get('cost') or 0.0, idotartam_mp), flush=True)
 
-                koltseg.hozzaad(strong, csoport, model_id, i, usage, forras_cimke)
+                koltseg.hozzaad(strong, csoport, model_id, i, usage, forras_cimke, idotartam_mp)
                 darab_forditasok.append(eredmeny['forditas_hu'])
                 bizonytalan_osszes.extend(eredmeny.get('bizonytalan_feloldasok') or [])
 

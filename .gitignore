@@ -20,3 +20,5 @@ konkordancia/_nyers/
 naplok/FORDITAS_P_cache/
 naplok/FORDITAS_P_hibak/
 fp2/*_cache/
+fp2/_run/
+fp2/_dryrun/

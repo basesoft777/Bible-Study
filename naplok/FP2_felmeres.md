@@ -125,6 +125,28 @@ Lekérdezés: `naplok/FP2_meres.py` (`thayer_stat()`), a teljes fájlon.
 *proveniencia: scope=teljeskörű fájlolvasás, split('\t') | forras=konkordancia/Thayer_teljes.tsv
 | ts=2026-09-28T06:33:14Z*
 
+## Talált hiba a #3 eszközeiben (nem javítva, csak jelezve)
+
+**`eszkozok/fordit.py` `tsv_ir`/`tsv_sorok` — sértett TSV embedelt sortöréssel.**
+A 4. lépés éles futásakor a `fp2/_run/kimenet.tsv` (a `KIMENET_UT` sémája) **sérült
+sorokat** tartalmazott: 109 sor helyett a mezőszám soronként hol 1, hol 5, 7, 11 volt
+(elvárt: mindig 11). Ok: a `tsv_ir` `'\t'.join(...)` + `'\n'` sorlezárással ír, a
+`tsv_sorok` pedig `read().split('\n')`-nel olvas vissza — ha egy mező (itt: `forditas_hu`)
+maga is tartalmaz szó szerinti sortörés karaktert, a sor kettévágódik olvasáskor. A
+sortörés a JSON-válaszból származik: a modell a `forditas_hu` string belsejében escapelt
+`\n`-t adott vissza, amit a `json.loads` valódi sortöréssé alakít — ezt a `fordit.py`
+sosem védte ki írás/olvasás közben. **A hiba korábban (kor2) nem manifesztálódott**,
+mert egyik korábbi kimenet sem tartalmazott ilyen belső sortörést; itt legalább egy
+modell/szócikk kombináció igen.
+
+**Hatás az FP2-re:** a hibás `fp2/_run/kimenet.tsv`-t **nem** használtam tovább — a
+4. lépés kimenetét (`fp2/forditas/<modell>/kimenet.tsv`) a `fp2/rendezo.py` a
+gyorsítótár (`fp2/_run/cache/*/*.json`, JSON-formátumban, nem sérült) alapján állította
+össze újra, soronként a sortöréseket szóközre cserélve íráskor. A `fp2/kapuk.tsv`
+(gépi kapuk) és minden további lépés ezt a helyreállított, ellenőrzött kimenetet
+használja. A `fordit.py`-t **nem javítottam** (a brief tiltja), csak a saját
+FP2-feldolgozásomban kerültem ki a hibát.
+
 ## A prompt v2 / terminológia v2 forrása
 
 A felhasználó a session közben csatolta a `FORDITAS_ELES_THAYER_BRIEF.md`-t
