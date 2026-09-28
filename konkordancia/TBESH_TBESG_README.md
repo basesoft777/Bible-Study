@@ -107,20 +107,30 @@ pos_kod rovid_glosszak teljes_szoveg forras txt_hossz lexicon_hossz`.
   `.lexicon`-ban szerepel, ezek üresek (a `.lexicon` nem tartja külön ezeket
   a mezőket).
 
-**Kiszűrve: a `H9xxx` tartomány és a nem 4 jegyű kulcsok.** A `TBESH.txt`
-saját fejléce szerint az Extended Strongs a "prefixes, suffixes, personal
-pronoun endings and punctuation" jelölésére is `H9xxx`-kódokat használ —
-ugyanaz a konvenció, mint az `adat/grammatikai_strongok.tsv` `H9xxx`-szűrése
-(SEMA 2.7.2) —, ezek nem szótári tételek. A `TBESH.lexicon`-ban emellett
-néhány **érvénytelen, 4 jegynél rövidebb** kulcs is van (`H9`, `H90`,
-`H900` — feltehetően a forrás saját prefix-index bejegyzései, nem
-Strong-szám); ezeket a szigorúbb `^H\d{4}$` minta zárja ki.
+**Kiszűrve: a `H9xxx` tartomány.** A `TBESH.txt` saját fejléce szerint az
+Extended Strongs a "prefixes, suffixes, personal pronoun endings and
+punctuation" jelölésére is `H9xxx`-kódokat használ — ugyanaz a konvenció,
+mint az `adat/grammatikai_strongok.tsv` `H9xxx`-szűrése (SEMA 2.7.2) —,
+ezek nem szótári tételek.
 
-Mért értékek (2026.09.28, a `H9xxx`/érvénytelen kulcsok kiszűrése után):
-**8 639 sor** (964 csak `.txt`, 507 csak `.lexicon`, 2 563 mindkettő +
-`.txt` bővebb, 4 524 mindkettő + `.lexicon` bővebb, 81 kb. egyenlő). A D28
-hatókörébe tartozó 26 motívum-tokenre a bontás: 11 `txt`, 13 `lexicon`, 2
-`egyenlo` (eltér a §0 0.5 24-tokenes,
+**Normalizálva, nem kiszűrve: a nem nullával töltött kulcsok.** A
+`TBESH.lexicon` egy részét (pl. `H9`, `H90`, `H900`, `H122`) nem 4 jegyű,
+nullával nem töltött alakban tárolja — ezek **valódi** Strong-kulcsok
+(pl. `H9` tartalma szó szerint egyezik a `TBESH.txt` `H0009` sorával), nem
+a forrás saját prefix-indexei, ahogy egy korábbi mérés feltételezte
+(l. `naplok/S1_TBESH_kiszurt_elemzes.md`). A szűrés előtt egy
+`normalizal()` lépés `zfill(4)`-gyel 4 jegyre tölti a csak-számjegyekből
+álló nyers kulcsot (`H122` → `H0122`), így ezek is bekerülnek a táblába,
+és a `konszolidal()` hossz-alapú forrásválasztásába is — 35 korábban
+teljesen hiányzó Strong-szám mentődött meg ezzel, és 509 már meglévő sor
+tartalma frissült `txt`-ről `lexicon`-ra (mert korábban a lexikon-változat
+sosem jutott be az összehasonlításba).
+
+Mért értékek (2026.09.28, a `H9xxx`-kizárás és a nullával-töltés
+normalizálása után): **8 674 sor** (0 csak `.txt`, 542 csak `.lexicon`,
+3 006 mindkettő + `.txt` bővebb, 5 033 mindkettő + `.lexicon` bővebb, 93
+kb. egyenlő). A D28 hatókörébe tartozó 26 motívum-tokenre a bontás: 11
+`txt`, 13 `lexicon`, 2 `egyenlo` (eltér a §0 0.5 24-tokenes,
 kézi mérésétől — ez utóbbi új, teljes körű, automatizált mérés).
 
 ## Attribúció

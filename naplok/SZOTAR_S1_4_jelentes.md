@@ -52,7 +52,7 @@ Amit valójában a brief mond (§3, §7 1. menet prompt 4. pontja):
 | `konkordancia/UBS_DBH_referenciak.tsv` | ” | 389 212 | ” |
 | `konkordancia/UBS_DBH_anomaliak.tsv` | ” | 1 109 | ” |
 | `konkordancia/MCGED_teljes.tsv` | `eszkozok/mcged_import.py` | 5 303 | `lexikonok_nyers/README.md` |
-| `konkordancia/TBESH_konszolidalt.tsv` | `eszkozok/tbesh_konszolidalt_import.py` | 8 639 (a `H9xxx`/érvénytelen kulcsok kiszűrése után, l. 4. szakasz) | `TBESH_TBESG_README.md` |
+| `konkordancia/TBESH_konszolidalt.tsv` | `eszkozok/tbesh_konszolidalt_import.py` | 8 674 (a `H9xxx`-kizárás és a nullával-töltés normalizálása után, l. 4. szakasz) | `TBESH_TBESG_README.md` |
 | `konkordancia/BDB_etimologia_kezi_hatarok.tsv` | `eszkozok/bdb_etim_hatarok_import.py` | 26 | `BDB_teljes_unabridged_README.md` |
 | `konkordancia/LXX_versszintu_parok.tsv` | `eszkozok/lxx_versszintu_import.py` | 99 356 | `README.md` |
 | `konkordancia/tW_szocikkek.tsv` | `eszkozok/tw_import.py` | 598 | `tW_README.md` (új) |
@@ -84,13 +84,30 @@ volt).
 
 **Utólagos javítás (a felhasználó kérésére, az S1.5 előtti audit során):**
 az eredeti szűrés (`^H\d+$`) túl tágan illesztett — a `TBESH.lexicon`
-valódi, de érvénytelen `H9`/`H90`/`H900`-szerű (4 jegynél rövidebb)
-kulcsokat is tartalmazott, és a `H9xxx` tartomány (prefixumok, toldalékok,
-írásjelek — ugyanaz a konvenció, mint a `grammatikai_strongok.tsv`
-`H9xxx`-szűrése) sem szótári tétel. Szigorúbb `^H\d{4}$` minta +
-explicit `H9xxx`-kizárás: **9 688 → 8 639 sor** (1 049 kiszűrve). A 26
-motívum-token bontása (11/13/2) nem változott. A korábbi árva-Strong
-audit `H9000`-találata (l. 8. szakasz) ezzel megszűnt.
+4 jegynél rövidebb kulcsokat (`H9`, `H90`, `H900` stb.) is tartalmazott,
+és a `H9xxx` tartomány (prefixumok, toldalékok, írásjelek — ugyanaz a
+konvenció, mint a `grammatikai_strongok.tsv` `H9xxx`-szűrése) sem
+szótári tétel. Szigorúbb `^H\d{4}$` minta + explicit `H9xxx`-kizárás:
+**9 688 → 8 639 sor** (1 049 kiszűrve). A 26 motívum-token bontása
+(11/13/2) nem változott. A korábbi árva-Strong audit `H9000`-találata
+(l. 8. szakasz) ezzel megszűnt.
+
+**Második utólagos javítás (a felhasználó kérésére, `naplok/
+S1_TBESH_kiszurt_elemzes.md` auditja):** a `H9`/`H90`/`H900`-szerű
+kulcsok kiszűrése melléktermékeként 35 **valódi**, kizárólag a
+`TBESH.lexicon`-ban létező, nem nullával töltött Strong-kulcsot is
+kidobott — tartalmuk szó szerint egyezik a `TBESH.txt` megfelelő
+4-jegyű sorával (pl. `H9` = `H0009`), tehát nem a forrás "saját
+prefix-index bejegyzései" voltak, ahogy az első javítás feltételezte.
+Új `normalizal()` lépés (`zfill(4)`) a szűrés előtt 4 jegyre tölti a
+csak-számjegyekből álló nyers kulcsot: **8 639 → 8 674 sor** (+35, a
+H0001–H8674 tartományban 0 hiányzó alapszám maradt). Melléktermékként
+509 már meglévő sor tartalma is frissült `txt`-ről `lexicon`-ra (a
+normalizálás előtt a lexikon-változat sosem jutott be a hossz-alapú
+forrásválasztásba ezeknél) — 15 véletlen minta ellenőrzésével mind a
+15 esetben a lexicon-változat bizonyult jobbnak (a teljes txt-szöveget
+megtartja, plusz héber lemmát és POS-kódot ad hozzá), rosszabb eset
+nem fordult elő. Részletek: `naplok/S1_TBESH_kiszurt_elemzes.md`.
 
 ## 5. BDB-etimológia-határ — `eszkozok/bdb_etim_hatarok_import.py`
 

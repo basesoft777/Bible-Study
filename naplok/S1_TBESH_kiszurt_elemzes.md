@@ -128,14 +128,15 @@ Igy mind a 964 "duplikatum" Strong korabban **kenyszeruen** `forras=txt`
 volt, fuggetlenul attol, hogy a lexikon-valtozat bovebb/jobb lett
 volna-e. Az uj futtatas osszehasonlitva a regi tablaval (`git show
 10d8733:konkordancia/TBESH_konszolidalt.tsv`): a H0001-H0999
-tartomany 964 mar-letezo soraból **521-nel a tartalom valtozott**
-(txt -> lexicon, mert a lexikon szoveg bizonyult hosszabbnak/
+tartomany 964 mar-letezo soraból **515-nel a tartalom valtozott**
+(509-nel txt -> lexicon, mert a lexikon szoveg bizonyult hosszabbnak/
 teljesebbnek -- pl. `H0007` korabban "1) to perish, vanish..." (csak
 angol glossza), most "אֲבַד [A:V] to destroy 1) to perish, vanish..."
-(heber lemma + POS-kod is), es 443-nal a tartalom valtozatlan maradt
-(a txt mar korabban is a hosszabb/valasztott valtozat volt). A javitas
-tehat nemcsak 35 sort mentett meg, hanem 521 mar letezo sor
-tartalmi minoseget is javitotta.
+(heber lemma + POS-kod is); tovabbi 6-nal txt -> egyenlo, l. a pontos
+bontast alant), es 449-nel a tartalom valtozatlan maradt (a txt mar
+korabban is a hosszabb/valasztott valtozat volt). A javitas tehat
+nemcsak 35 sort mentett meg, hanem 515 mar letezo sor tartalmi
+minoseget is javitotta.
 
 ## Uj darabszam osszefoglalva
 
@@ -144,11 +145,557 @@ tartalmi minoseget is javitotta.
 | Sorok szama a `TBESH_konszolidalt.tsv`-ben | 8639 | **8674** |
 | Hianyzo alapszam H0001-H8674 | 35 | **0** |
 | H0001-H0999 tartomany: uj sor (korabban hianyzott) | -- | 35 |
-| H0001-H0999 tartomany: tartalom javult (`forras` txt->lexicon) | -- | 521 |
-| H0001-H0999 tartomany: tartalom valtozatlan | -- | 443 |
+| H0001-H0999 tartomany: tartalom javult, txt->lexicon (pontositva, l. alant) | -- | 509 |
+| H0001-H0999 tartomany: tartalom javult, txt->egyenlo | -- | 6 |
+| H0001-H0999 tartomany: tartalom valtozatlan | -- | 449 |
 
-A `konkordancia/TBESH_konszolidalt.tsv` ujragenerálva es commitolva ezzel
-a jelentessel egyutt. A `naplok/SZOTAR_S1_4_jelentes.md` es a
-`konkordancia/TBESH_TBESG_README.md` meg a regi `8 639` sorszamot
-tartalmazza -- ezek frissitese kulon tetel (S1.5 dokumentacios lepese),
-nem resze ennek a jelentesnek.
+A `konkordancia/TBESH_konszolidalt.tsv`, a `naplok/SZOTAR_S1_4_jelentes.md`
+es a `konkordancia/TBESH_TBESG_README.md` ujragenerálva/frissitve es
+commitolva ezzel a jelentessel egyutt (S1.5 dokumentacios lepese, egy
+commitban).
+
+## Az 509 txt -> lexicon forras-csere reszletes listaja (H0001-H0999)
+
+Pontositas: a korabbi becslesben szereplo "521" a teljes tartalom-valtozast szamolta (barmilyen forras-atmenettel); ebbol pontosan **509** tiszta txt -> lexicon csere, 6 pedig txt -> egyenlo atmenet (a hossz kb. 5%-on beluli lett, l. a tablazat alatt). Osszesen 515 sor tartalma valtozott a H0001-H0999 tartomanyban.
+
+txt -> egyenlo atmenetek: H0113 (txt->egyenlo), H0215 (txt->egyenlo), H0622 (txt->egyenlo), H0798 (txt->egyenlo), H0830 (txt->egyenlo), H0995 (txt->egyenlo)
+
+
+| kulcs | regi forras | uj forras | txt_hossz | lexicon_hossz | hosszkulonbseg (lex-txt) |
+|---|---|---|---|---|---|
+| H0007 | txt | lexicon | 90 | 113 | +23 |
+| H0008 | txt | lexicon | 11 | 40 | +29 |
+| H0009 | txt | lexicon | 28 | 62 | +34 |
+| H0010 | txt | lexicon | 11 | 44 | +33 |
+| H0011 | txt | lexicon | 50 | 78 | +28 |
+| H0012 | txt | lexicon | 11 | 43 | +32 |
+| H0013 | txt | lexicon | 11 | 42 | +31 |
+| H0014 | txt | lexicon | 103 | 126 | +23 |
+| H0015 | txt | lexicon | 24 | 51 | +27 |
+| H0016 | txt | lexicon | 13 | 39 | +26 |
+| H0017 | txt | lexicon | 65 | 88 | +23 |
+| H0018 | txt | lexicon | 28 | 51 | +23 |
+| H0019 | txt | lexicon | 40 | 69 | +29 |
+| H0020 | txt | lexicon | 26 | 55 | +29 |
+| H0024 | txt | lexicon | 136 | 180 | +44 |
+| H0025 | txt | lexicon | 108 | 156 | +48 |
+| H0034 | txt | lexicon | 191 | 214 | +23 |
+| H0035 | txt | lexicon | 33 | 63 | +30 |
+| H0046 | txt | lexicon | 83 | 105 | +22 |
+| H0047 | txt | lexicon | 152 | 175 | +23 |
+| H0055 | txt | lexicon | 56 | 80 | +24 |
+| H0056 | txt | lexicon | 224 | 245 | +21 |
+| H0057 | txt | lexicon | 131 | 152 | +21 |
+| H0058 | txt | lexicon | 46 | 70 | +24 |
+| H0060 | txt | lexicon | 104 | 128 | +24 |
+| H0061 | txt | lexicon | 84 | 104 | +20 |
+| H0062 | txt | lexicon | 94 | 144 | +50 |
+| H0064 | txt | lexicon | 57 | 98 | +41 |
+| H0065 | txt | lexicon | 75 | 115 | +40 |
+| H0069 | txt | lexicon | 69 | 90 | +21 |
+| H0070 | txt | lexicon | 68 | 88 | +20 |
+| H0072 | txt | lexicon | 138 | 172 | +34 |
+| H0073 | txt | lexicon | 87 | 110 | +23 |
+| H0075 | txt | lexicon | 58 | 80 | +22 |
+| H0076 | txt | lexicon | 40 | 69 | +29 |
+| H0077 | txt | lexicon | 57 | 79 | +22 |
+| H0079 | txt | lexicon | 48 | 74 | +26 |
+| H0080 | txt | lexicon | 39 | 58 | +19 |
+| H0081 | txt | lexicon | 24 | 59 | +35 |
+| H0082 | txt | lexicon | 31 | 53 | +22 |
+| H0083 | txt | lexicon | 71 | 91 | +20 |
+| H0084 | txt | lexicon | 70 | 93 | +23 |
+| H0088 | txt | lexicon | 114 | 136 | +22 |
+| H0092 | txt | lexicon | 180 | 203 | +23 |
+| H0093 | txt | lexicon | 4 | 26 | +22 |
+| H0095 | txt | lexicon | 20 | 46 | +26 |
+| H0096 | txt | lexicon | 41 | 64 | +23 |
+| H0097 | txt | lexicon | 44 | 72 | +28 |
+| H0098 | txt | lexicon | 120 | 139 | +19 |
+| H0099 | txt | lexicon | 13 | 36 | +23 |
+| H0100 | txt | lexicon | 222 | 246 | +24 |
+| H0101 | txt | lexicon | 128 | 150 | +22 |
+| H0102 | txt | lexicon | 37 | 59 | +22 |
+| H0103 | txt | lexicon | 32 | 54 | +22 |
+| H0105 | txt | lexicon | 34 | 61 | +27 |
+| H0106 | txt | lexicon | 4 | 28 | +24 |
+| H0108 | txt | lexicon | 4 | 24 | +20 |
+| H0109 | txt | lexicon | 82 | 104 | +22 |
+| H0115 | txt | lexicon | 97 | 127 | +30 |
+| H0117 | txt | lexicon | 144 | 164 | +20 |
+| H0119 | txt | lexicon | 254 | 276 | +22 |
+| H0124 | txt | lexicon | 47 | 70 | +23 |
+| H0125 | txt | lexicon | 19 | 47 | +28 |
+| H0126 | txt | lexicon | 47 | 71 | +24 |
+| H0128 | txt | lexicon | 39 | 64 | +25 |
+| H0129 | txt | lexicon | 61 | 101 | +40 |
+| H0131 | txt | lexicon | 77 | 105 | +28 |
+| H0132 | txt | lexicon | 30 | 54 | +24 |
+| H0134 | txt | lexicon | 206 | 228 | +22 |
+| H0136 | txt | lexicon | 119 | 131 | +12 |
+| H0142 | txt | lexicon | 121 | 145 | +24 |
+| H0145 | txt | lexicon | 49 | 67 | +18 |
+| H0147 | txt | lexicon | 15 | 49 | +34 |
+| H0148 | txt | lexicon | 27 | 57 | +30 |
+| H0149 | txt | lexicon | 41 | 76 | +35 |
+| H0150 | txt | lexicon | 96 | 123 | +27 |
+| H0154 | txt | lexicon | 72 | 99 | +27 |
+| H0155 | txt | lexicon | 143 | 170 | +27 |
+| H0158 | txt | lexicon | 54 | 75 | +21 |
+| H0159 | txt | lexicon | 30 | 53 | +23 |
+| H0160 | txt | lexicon | 163 | 184 | +21 |
+| H0162 | txt | lexicon | 15 | 39 | +24 |
+| H0163 | txt | lexicon | 53 | 77 | +24 |
+| H0165 | txt | lexicon | 5 | 29 | +24 |
+| H0166 | txt | lexicon | 27 | 51 | +24 |
+| H0167 | txt | lexicon | 98 | 119 | +21 |
+| H0174 | txt | lexicon | 52 | 71 | +19 |
+| H0178 | txt | lexicon | 169 | 189 | +20 |
+| H0180 | txt | lexicon | 13 | 37 | +24 |
+| H0181 | txt | lexicon | 17 | 43 | +26 |
+| H0182 | txt | lexicon | 50 | 73 | +23 |
+| H0183 | txt | lexicon | 192 | 214 | +22 |
+| H0184 | txt | lexicon | 88 | 108 | +20 |
+| H0185 | txt | lexicon | 41 | 66 | +25 |
+| H0188 | txt | lexicon | 56 | 74 | +18 |
+| H0190 | txt | lexicon | 4 | 27 | +23 |
+| H0191 | txt | lexicon | 161 | 186 | +25 |
+| H0194 | txt | lexicon | 64 | 87 | +23 |
+| H0195 | txt | lexicon | 46 | 68 | +22 |
+| H0196 | txt | lexicon | 7 | 32 | +25 |
+| H0199 | txt | lexicon | 66 | 85 | +19 |
+| H0200 | txt | lexicon | 18 | 45 | +27 |
+| H0202 | txt | lexicon | 80 | 102 | +22 |
+| H0204 | txt | lexicon | 164 | 181 | +17 |
+| H0210 | txt | lexicon | 59 | 97 | +38 |
+| H0212 | txt | lexicon | 123 | 144 | +21 |
+| H0213 | txt | lexicon | 212 | 233 | +21 |
+| H0214 | txt | lexicon | 289 | 313 | +24 |
+| H0216 | txt | lexicon | 279 | 298 | +19 |
+| H0225 | txt | lexicon | 26 | 51 | +25 |
+| H0228 | txt | lexicon | 21 | 44 | +23 |
+| H0231 | txt | lexicon | 57 | 82 | +25 |
+| H0232 | txt | lexicon | 126 | 148 | +22 |
+| H0233 | txt | lexicon | 18 | 40 | +22 |
+| H0234 | txt | lexicon | 74 | 105 | +31 |
+| H0235 | txt | lexicon | 158 | 178 | +20 |
+| H0236 | txt | lexicon | 44 | 62 | +18 |
+| H0237 | txt | lexicon | 111 | 132 | +21 |
+| H0238 | txt | lexicon | 133 | 155 | +22 |
+| H0239 | txt | lexicon | 35 | 60 | +25 |
+| H0240 | txt | lexicon | 26 | 50 | +24 |
+| H0242 | txt | lexicon | 77 | 117 | +40 |
+| H0243 | txt | lexicon | 70 | 110 | +40 |
+| H0246 | txt | lexicon | 16 | 40 | +24 |
+| H0247 | txt | lexicon | 176 | 197 | +21 |
+| H0248 | txt | lexicon | 3 | 28 | +25 |
+| H0249 | txt | lexicon | 100 | 121 | +21 |
+| H0253 | txt | lexicon | 16 | 35 | +19 |
+| H0254 | txt | lexicon | 17 | 39 | +22 |
+| H0255 | txt | lexicon | 38 | 66 | +28 |
+| H0258 | txt | lexicon | 48 | 80 | +32 |
+| H0259 | txt | lexicon | 247 | 263 | +16 |
+| H0260 | txt | lexicon | 27 | 51 | +24 |
+| H0264 | txt | lexicon | 23 | 54 | +31 |
+| H0268 | txt | lexicon | 75 | 95 | +20 |
+| H0269 | txt | lexicon | 198 | 220 | +22 |
+| H0270 | txt | lexicon | 176 | 197 | +21 |
+| H0272 | txt | lexicon | 62 | 90 | +28 |
+| H0305 | txt | lexicon | 37 | 64 | +27 |
+| H0306 | txt | lexicon | 230 | 261 | +31 |
+| H0307 | txt | lexicon | 112 | 141 | +29 |
+| H0312 | txt | lexicon | 72 | 92 | +20 |
+| H0314 | txt | lexicon | 133 | 153 | +20 |
+| H0318 | txt | lexicon | 81 | 106 | +25 |
+| H0322 | txt | lexicon | 30 | 63 | +33 |
+| H0327 | txt | lexicon | 14 | 43 | +29 |
+| H0330 | txt | lexicon | 19 | 48 | +29 |
+| H0331 | txt | lexicon | 114 | 137 | +23 |
+| H0332 | txt | lexicon | 63 | 83 | +20 |
+| H0334 | txt | lexicon | 61 | 88 | +27 |
+| H0335 | txt | lexicon | 67 | 83 | +16 |
+| H0336 | txt | lexicon | 3 | 22 | +19 |
+| H0337 | txt | lexicon | 11 | 31 | +20 |
+| H0338 | txt | lexicon | 21 | 47 | +26 |
+| H0339 | txt | lexicon | 28 | 53 | +25 |
+| H0340 | txt | lexicon | 96 | 119 | +23 |
+| H0341 | txt | lexicon | 40 | 60 | +20 |
+| H0342 | txt | lexicon | 14 | 39 | +25 |
+| H0343 | txt | lexicon | 129 | 151 | +22 |
+| H0344 | txt | lexicon | 18 | 43 | +25 |
+| H0346 | txt | lexicon | 47 | 69 | +22 |
+| H0351 | txt | lexicon | 6 | 31 | +25 |
+| H0353 | txt | lexicon | 19 | 42 | +23 |
+| H0354 | txt | lexicon | 16 | 39 | +23 |
+| H0355 | txt | lexicon | 15 | 39 | +24 |
+| H0357 | txt | lexicon | 178 | 241 | +63 |
+| H0358 | txt | lexicon | 61 | 106 | +45 |
+| H0360 | txt | lexicon | 17 | 46 | +29 |
+| H0361 | txt | lexicon | 25 | 50 | +25 |
+| H0362 | txt | lexicon | 69 | 91 | +22 |
+| H0364 | txt | lexicon | 84 | 116 | +32 |
+| H0365 | txt | lexicon | 157 | 178 | +21 |
+| H0366 | txt | lexicon | 18 | 42 | +24 |
+| H0367 | txt | lexicon | 13 | 38 | +25 |
+| H0369 | txt | lexicon | 128 | 150 | +22 |
+| H0370 | txt | lexicon | 15 | 41 | +26 |
+| H0371 | txt | lexicon | 28 | 50 | +22 |
+| H0374 | txt | lexicon | 250 | 271 | +21 |
+| H0375 | txt | lexicon | 23 | 45 | +22 |
+| H0377 | txt | lexicon | 62 | 86 | +24 |
+| H0380 | txt | lexicon | 74 | 97 | +23 |
+| H0381 | txt | lexicon | 25 | 53 | +28 |
+| H0382 | txt | lexicon | 74 | 105 | +31 |
+| H0383 | txt | lexicon | 53 | 77 | +24 |
+| H0386 | txt | lexicon | 121 | 141 | +20 |
+| H0388 | txt | lexicon | 130 | 159 | +29 |
+| H0389 | txt | lexicon | 69 | 89 | +20 |
+| H0390 | txt | lexicon | 73 | 96 | +23 |
+| H0391 | txt | lexicon | 64 | 91 | +27 |
+| H0392 | txt | lexicon | 115 | 122 | +7 |
+| H0393 | txt | lexicon | 13 | 36 | +23 |
+| H0394 | txt | lexicon | 5 | 30 | +25 |
+| H0395 | txt | lexicon | 26 | 57 | +31 |
+| H0396 | txt | lexicon | 29 | 54 | +25 |
+| H0399 | txt | lexicon | 126 | 148 | +22 |
+| H0400 | txt | lexicon | 58 | 78 | +20 |
+| H0402 | txt | lexicon | 135 | 156 | +21 |
+| H0403 | txt | lexicon | 120 | 141 | +21 |
+| H0404 | txt | lexicon | 44 | 65 | +21 |
+| H0405 | txt | lexicon | 25 | 50 | +25 |
+| H0406 | txt | lexicon | 77 | 99 | +22 |
+| H0407 | txt | lexicon | 77 | 105 | +28 |
+| H0411 | txt | lexicon | 12 | 31 | +19 |
+| H0413 | txt | lexicon | 412 | 435 | +23 |
+| H0415 | txt | lexicon | 89 | 141 | +52 |
+| H0416 | txt | lexicon | 89 | 124 | +35 |
+| H0417 | txt | lexicon | 26 | 55 | +29 |
+| H0418 | txt | lexicon | 34 | 65 | +31 |
+| H0421 | txt | lexicon | 21 | 44 | +23 |
+| H0422 | txt | lexicon | 153 | 174 | +21 |
+| H0423 | txt | lexicon | 76 | 95 | +19 |
+| H0424 | txt | lexicon | 65 | 83 | +18 |
+| H0426 | txt | lexicon | 54 | 75 | +21 |
+| H0427 | txt | lexicon | 19 | 38 | +19 |
+| H0430 | txt | lexicon | 208 | 226 | +18 |
+| H0432 | txt | lexicon | 29 | 55 | +26 |
+| H0434 | txt | lexicon | 71 | 94 | +23 |
+| H0435 | txt | lexicon | 78 | 100 | +22 |
+| H0437 | txt | lexicon | 15 | 38 | +23 |
+| H0439 | txt | lexicon | 88 | 127 | +39 |
+| H0442 | txt | lexicon | 77 | 101 | +24 |
+| H0444 | txt | lexicon | 39 | 65 | +26 |
+| H0451 | txt | lexicon | 45 | 73 | +28 |
+| H0457 | txt | lexicon | 103 | 123 | +20 |
+| H0480 | txt | lexicon | 10 | 34 | +24 |
+| H0481 | txt | lexicon | 83 | 103 | +20 |
+| H0482 | txt | lexicon | 18 | 44 | +26 |
+| H0483 | txt | lexicon | 35 | 56 | +21 |
+| H0484 | txt | lexicon | 58 | 87 | +29 |
+| H0485 | txt | lexicon | 71 | 93 | +22 |
+| H0487 | txt | lexicon | 56 | 91 | +35 |
+| H0488 | txt | lexicon | 38 | 64 | +26 |
+| H0489 | txt | lexicon | 9 | 38 | +29 |
+| H0490 | txt | lexicon | 5 | 32 | +27 |
+| H0491 | txt | lexicon | 9 | 41 | +32 |
+| H0492 | txt | lexicon | 22 | 49 | +27 |
+| H0495 | txt | lexicon | 79 | 106 | +27 |
+| H0500 | txt | lexicon | 74 | 102 | +28 |
+| H0502 | txt | lexicon | 50 | 77 | +27 |
+| H0503 | txt | lexicon | 124 | 158 | +34 |
+| H0504 | txt | lexicon | 50 | 72 | +22 |
+| H0507 | txt | lexicon | 56 | 83 | +27 |
+| H0509 | txt | lexicon | 14 | 37 | +23 |
+| H0510 | txt | lexicon | 110 | 132 | +22 |
+| H0512 | txt | lexicon | 88 | 120 | +32 |
+| H0513 | txt | lexicon | 56 | 86 | +30 |
+| H0514 | txt | lexicon | 95 | 123 | +28 |
+| H0515 | txt | lexicon | 78 | 107 | +29 |
+| H0516 | txt | lexicon | 131 | 166 | +35 |
+| H0517 | txt | lexicon | 123 | 142 | +19 |
+| H0519 | txt | lexicon | 79 | 105 | +26 |
+| H0522 | txt | lexicon | 38 | 61 | +23 |
+| H0525 | txt | lexicon | 53 | 79 | +26 |
+| H0527 | txt | lexicon | 17 | 45 | +28 |
+| H0528 | txt | lexicon | 134 | 157 | +23 |
+| H0529 | txt | lexicon | 56 | 79 | +23 |
+| H0530 | txt | lexicon | 45 | 78 | +33 |
+| H0533 | txt | lexicon | 14 | 38 | +24 |
+| H0534 | txt | lexicon | 42 | 61 | +19 |
+| H0535 | txt | lexicon | 179 | 201 | +22 |
+| H0536 | txt | lexicon | 12 | 34 | +22 |
+| H0537 | txt | lexicon | 12 | 34 | +22 |
+| H0538 | txt | lexicon | 48 | 69 | +21 |
+| H0542 | txt | lexicon | 50 | 76 | +26 |
+| H0543 | txt | lexicon | 29 | 51 | +22 |
+| H0544 | txt | lexicon | 12 | 43 | +31 |
+| H0545 | txt | lexicon | 72 | 102 | +30 |
+| H0546 | txt | lexicon | 21 | 46 | +25 |
+| H0547 | txt | lexicon | 61 | 84 | +23 |
+| H0548 | txt | lexicon | 75 | 96 | +21 |
+| H0551 | txt | lexicon | 21 | 46 | +25 |
+| H0552 | txt | lexicon | 21 | 46 | +25 |
+| H0553 | txt | lexicon | 381 | 407 | +26 |
+| H0554 | txt | lexicon | 46 | 65 | +19 |
+| H0555 | txt | lexicon | 8 | 35 | +27 |
+| H0556 | txt | lexicon | 8 | 36 | +28 |
+| H0561 | txt | lexicon | 49 | 71 | +22 |
+| H0562 | txt | lexicon | 49 | 71 | +22 |
+| H0563 | txt | lexicon | 4 | 27 | +23 |
+| H0570 | txt | lexicon | 43 | 70 | +27 |
+| H0572 | txt | lexicon | 60 | 85 | +25 |
+| H0574 | txt | lexicon | 8 | 35 | +27 |
+| H0575 | txt | lexicon | 73 | 92 | +19 |
+| H0577 | txt | lexicon | 109 | 137 | +28 |
+| H0578 | txt | lexicon | 14 | 39 | +25 |
+| H0579 | txt | lexicon | 195 | 215 | +20 |
+| H0584 | txt | lexicon | 69 | 89 | +20 |
+| H0585 | txt | lexicon | 60 | 87 | +27 |
+| H0587 | txt | lexicon | 47 | 70 | +23 |
+| H0588 | txt | lexicon | 71 | 118 | +47 |
+| H0589 | txt | lexicon | 48 | 76 | +28 |
+| H0590 | txt | lexicon | 12 | 33 | +21 |
+| H0591 | txt | lexicon | 32 | 55 | +23 |
+| H0592 | txt | lexicon | 21 | 53 | +32 |
+| H0594 | txt | lexicon | 27 | 55 | +28 |
+| H0596 | txt | lexicon | 27 | 54 | +27 |
+| H0599 | txt | lexicon | 123 | 144 | +21 |
+| H0601 | txt | lexicon | 39 | 61 | +22 |
+| H0602 | txt | lexicon | 74 | 95 | +21 |
+| H0603 | txt | lexicon | 29 | 57 | +28 |
+| H0604 | txt | lexicon | 100 | 122 | +22 |
+| H0605 | txt | lexicon | 190 | 216 | +26 |
+| H0610 | txt | lexicon | 20 | 45 | +25 |
+| H0611 | txt | lexicon | 26 | 49 | +23 |
+| H0614 | txt | lexicon | 20 | 50 | +30 |
+| H0615 | txt | lexicon | 26 | 53 | +27 |
+| H0616 | txt | lexicon | 53 | 78 | +25 |
+| H0618 | txt | lexicon | 16 | 44 | +28 |
+| H0624 | txt | lexicon | 78 | 103 | +25 |
+| H0625 | txt | lexicon | 30 | 58 | +28 |
+| H0626 | txt | lexicon | 23 | 53 | +30 |
+| H0627 | txt | lexicon | 10 | 41 | +31 |
+| H0628 | txt | lexicon | 39 | 67 | +28 |
+| H0629 | txt | lexicon | 43 | 75 | +32 |
+| H0631 | txt | lexicon | 280 | 300 | +20 |
+| H0640 | txt | lexicon | 59 | 79 | +20 |
+| H0642 | txt | lexicon | 370 | 393 | +23 |
+| H0643 | txt | lexicon | 6 | 32 | +26 |
+| H0644 | txt | lexicon | 84 | 104 | +20 |
+| H0645 | txt | lexicon | 127 | 146 | +19 |
+| H0646 | txt | lexicon | 320 | 341 | +21 |
+| H0648 | txt | lexicon | 10 | 31 | +21 |
+| H0650 | txt | lexicon | 46 | 69 | +23 |
+| H0651 | txt | lexicon | 12 | 33 | +21 |
+| H0652 | txt | lexicon | 62 | 86 | +24 |
+| H0653 | txt | lexicon | 54 | 79 | +25 |
+| H0655 | txt | lexicon | 31 | 62 | +31 |
+| H0656 | txt | lexicon | 37 | 59 | +22 |
+| H0659 | txt | lexicon | 20 | 46 | +26 |
+| H0660 | txt | lexicon | 14 | 39 | +25 |
+| H0661 | txt | lexicon | 48 | 72 | +24 |
+| H0662 | txt | lexicon | 121 | 144 | +23 |
+| H0664 | txt | lexicon | 95 | 130 | +35 |
+| H0665 | txt | lexicon | 39 | 60 | +21 |
+| H0666 | txt | lexicon | 17 | 42 | +25 |
+| H0667 | txt | lexicon | 45 | 68 | +23 |
+| H0668 | txt | lexicon | 45 | 74 | +29 |
+| H0674 | txt | lexicon | 41 | 66 | +25 |
+| H0678 | txt | lexicon | 46 | 67 | +21 |
+| H0679 | txt | lexicon | 34 | 59 | +25 |
+| H0680 | txt | lexicon | 140 | 163 | +23 |
+| H0681 | txt | lexicon | 144 | 166 | +22 |
+| H0685 | txt | lexicon | 29 | 57 | +28 |
+| H0686 | txt | lexicon | 89 | 110 | +21 |
+| H0688 | txt | lexicon | 60 | 87 | +27 |
+| H0689 | txt | lexicon | 9 | 37 | +28 |
+| H0691 | txt | lexicon | 89 | 108 | +19 |
+| H0693 | txt | lexicon | 178 | 200 | +22 |
+| H0694 | txt | lexicon | 36 | 57 | +21 |
+| H0695 | txt | lexicon | 39 | 61 | +22 |
+| H0696 | txt | lexicon | 54 | 76 | +22 |
+| H0697 | txt | lexicon | 128 | 152 | +24 |
+| H0698 | txt | lexicon | 23 | 49 | +26 |
+| H0699 | txt | lexicon | 82 | 106 | +24 |
+| H0700 | txt | lexicon | 67 | 96 | +29 |
+| H0702 | txt | lexicon | 4 | 27 | +23 |
+| H0705 | txt | lexicon | 5 | 32 | +27 |
+| H0707 | txt | lexicon | 115 | 136 | +21 |
+| H0708 | txt | lexicon | 13 | 39 | +26 |
+| H0712 | txt | lexicon | 18 | 42 | +24 |
+| H0713 | txt | lexicon | 18 | 47 | +29 |
+| H0717 | txt | lexicon | 47 | 68 | +21 |
+| H0719 | txt | lexicon | 56 | 80 | +24 |
+| H0724 | txt | lexicon | 20 | 47 | +27 |
+| H0727 | txt | lexicon | 69 | 89 | +20 |
+| H0729 | txt | lexicon | 93 | 117 | +24 |
+| H0730 | txt | lexicon | 100 | 121 | +21 |
+| H0731 | txt | lexicon | 24 | 49 | +25 |
+| H0732 | txt | lexicon | 175 | 198 | +23 |
+| H0736 | txt | lexicon | 27 | 54 | +27 |
+| H0737 | txt | lexicon | 44 | 67 | +23 |
+| H0741 | txt | lexicon | 27 | 53 | +26 |
+| H0750 | txt | lexicon | 43 | 61 | +18 |
+| H0752 | txt | lexicon | 46 | 64 | +18 |
+| H0753 | txt | lexicon | 86 | 109 | +23 |
+| H0760 | txt | lexicon | 90 | 124 | +34 |
+| H0762 | txt | lexicon | 52 | 81 | +29 |
+| H0763 | txt | lexicon | 54 | 92 | +38 |
+| H0766 | txt | lexicon | 15 | 37 | +22 |
+| H0768 | txt | lexicon | 142 | 165 | +23 |
+| H0769 | txt | lexicon | 124 | 149 | +25 |
+| H0774 | txt | lexicon | 128 | 153 | +25 |
+| H0779 | txt | lexicon | 215 | 237 | +22 |
+| H0780 | txt | lexicon | 192 | 270 | +78 |
+| H0781 | txt | lexicon | 85 | 109 | +24 |
+| H0782 | txt | lexicon | 15 | 44 | +29 |
+| H0786 | txt | lexicon | 19 | 44 | +25 |
+| H0793 | txt | lexicon | 37 | 62 | +25 |
+| H0794 | txt | lexicon | 17 | 43 | +26 |
+| H0795 | txt | lexicon | 104 | 132 | +28 |
+| H0799 | txt | lexicon | 60 | 87 | +27 |
+| H0800 | txt | lexicon | 4 | 28 | +24 |
+| H0807 | txt | lexicon | 61 | 89 | +28 |
+| H0808 | txt | lexicon | 39 | 70 | +31 |
+| H0809 | txt | lexicon | 96 | 126 | +30 |
+| H0810 | txt | lexicon | 27 | 53 | +26 |
+| H0811 | txt | lexicon | 59 | 86 | +27 |
+| H0814 | txt | lexicon | 4 | 30 | +26 |
+| H0815 | txt | lexicon | 13 | 44 | +31 |
+| H0816 | txt | lexicon | 294 | 317 | +23 |
+| H0817 | txt | lexicon | 149 | 181 | +32 |
+| H0818 | txt | lexicon | 54 | 77 | +23 |
+| H0819 | txt | lexicon | 154 | 182 | +28 |
+| H0820 | txt | lexicon | 63 | 91 | +28 |
+| H0821 | txt | lexicon | 37 | 66 | +29 |
+| H0822 | txt | lexicon | 14 | 42 | +28 |
+| H0823 | txt | lexicon | 48 | 93 | +45 |
+| H0824 | txt | lexicon | 36 | 62 | +26 |
+| H0827 | txt | lexicon | 63 | 88 | +25 |
+| H0829 | txt | lexicon | 77 | 109 | +32 |
+| H0833 | txt | lexicon | 308 | 331 | +23 |
+| H0835 | txt | lexicon | 72 | 96 | +24 |
+| H0837 | txt | lexicon | 9 | 34 | +25 |
+| H0839 | txt | lexicon | 9 | 56 | +47 |
+| H0842 | txt | lexicon | 205 | 268 | +63 |
+| H0849 | txt | lexicon | 16 | 50 | +34 |
+| H0851 | txt | lexicon | 146 | 207 | +61 |
+| H0854 | txt | lexicon | 156 | 174 | +18 |
+| H0855 | txt | lexicon | 11 | 36 | +25 |
+| H0860 | txt | lexicon | 19 | 45 | +26 |
+| H0861 | txt | lexicon | 7 | 34 | +27 |
+| H0864 | txt | lexicon | 84 | 106 | +22 |
+| H0865 | txt | lexicon | 215 | 243 | +28 |
+| H0866 | txt | lexicon | 45 | 67 | +22 |
+| H0868 | txt | lexicon | 98 | 120 | +22 |
+| H0870 | txt | lexicon | 12 | 35 | +23 |
+| H0871 | txt | lexicon | 54 | 85 | +31 |
+| H0872 | txt | lexicon | 101 | 125 | +24 |
+| H0874 | txt | lexicon | 94 | 121 | +27 |
+| H0875 | txt | lexicon | 17 | 40 | +23 |
+| H0877 | txt | lexicon | 18 | 43 | +25 |
+| H0879 | txt | lexicon | 55 | 90 | +35 |
+| H0883 | txt | lexicon | 92 | 136 | +44 |
+| H0884 | txt | lexicon | 78 | 114 | +36 |
+| H0885 | txt | lexicon | 155 | 211 | +56 |
+| H0887 | txt | lexicon | 289 | 312 | +23 |
+| H0889 | txt | lexicon | 18 | 44 | +26 |
+| H0890 | txt | lexicon | 53 | 84 | +31 |
+| H0891 | txt | lexicon | 55 | 89 | +34 |
+| H0892 | txt | lexicon | 28 | 52 | +24 |
+| H0894 | txt | lexicon | 149 | 173 | +24 |
+| H0898 | txt | lexicon | 129 | 163 | +34 |
+| H0900 | txt | lexicon | 58 | 89 | +31 |
+| H0901 | txt | lexicon | 22 | 51 | +29 |
+| H0906 | txt | lexicon | 18 | 40 | +22 |
+| H0907 | txt | lexicon | 32 | 56 | +24 |
+| H0908 | txt | lexicon | 84 | 107 | +23 |
+| H0909 | txt | lexicon | 118 | 140 | +22 |
+| H0910 | txt | lexicon | 90 | 115 | +25 |
+| H0913 | txt | lexicon | 44 | 64 | +20 |
+| H0914 | txt | lexicon | 336 | 361 | +25 |
+| H0915 | txt | lexicon | 43 | 67 | +24 |
+| H0916 | txt | lexicon | 23 | 53 | +30 |
+| H0918 | txt | lexicon | 34 | 60 | +26 |
+| H0919 | txt | lexicon | 43 | 69 | +26 |
+| H0922 | txt | lexicon | 22 | 45 | +23 |
+| H0923 | txt | lexicon | 45 | 73 | +28 |
+| H0925 | txt | lexicon | 28 | 52 | +24 |
+| H0926 | txt | lexicon | 418 | 441 | +23 |
+| H0927 | txt | lexicon | 97 | 120 | +23 |
+| H0928 | txt | lexicon | 36 | 64 | +28 |
+| H0929 | txt | lexicon | 117 | 141 | +24 |
+| H0931 | txt | lexicon | 53 | 86 | +33 |
+| H0933 | txt | lexicon | 42 | 66 | +24 |
+| H0934 | txt | lexicon | 197 | 227 | +30 |
+| H0936 | txt | lexicon | 96 | 119 | +23 |
+| H0937 | txt | lexicon | 93 | 116 | +23 |
+| H0939 | txt | lexicon | 8 | 36 | +28 |
+| H0943 | txt | lexicon | 80 | 104 | +24 |
+| H0944 | txt | lexicon | 18 | 43 | +25 |
+| H0945 | txt | lexicon | 94 | 115 | +21 |
+| H0947 | txt | lexicon | 318 | 341 | +23 |
+| H0948 | txt | lexicon | 54 | 82 | +28 |
+| H0949 | txt | lexicon | 121 | 145 | +24 |
+| H0950 | txt | lexicon | 9 | 38 | +29 |
+| H0951 | txt | lexicon | 8 | 36 | +28 |
+| H0952 | txt | lexicon | 102 | 125 | +23 |
+| H0954 | txt | lexicon | 311 | 335 | +24 |
+| H0955 | txt | lexicon | 5 | 31 | +26 |
+| H0958 | txt | lexicon | 36 | 62 | +26 |
+| H0961 | txt | lexicon | 12 | 39 | +27 |
+| H0962 | txt | lexicon | 145 | 169 | +24 |
+| H0963 | txt | lexicon | 8 | 39 | +31 |
+| H0964 | txt | lexicon | 76 | 111 | +35 |
+| H0965 | txt | lexicon | 26 | 54 | +28 |
+| H0966 | txt | lexicon | 87 | 111 | +24 |
+| H0967 | txt | lexicon | 66 | 90 | +24 |
+| H0969 | txt | lexicon | 43 | 70 | +27 |
+| H0970 | txt | lexicon | 16 | 41 | +25 |
+| H0971 | txt | lexicon | 24 | 48 | +24 |
+| H0972 | txt | lexicon | 46 | 72 | +26 |
+| H0974 | txt | lexicon | 190 | 211 | +21 |
+| H0975 | txt | lexicon | 10 | 40 | +30 |
+| H0976 | txt | lexicon | 22 | 49 | +27 |
+| H0977 | txt | lexicon | 111 | 134 | +23 |
+| H0979 | txt | lexicon | 5 | 33 | +28 |
+| H0980 | txt | lexicon | 131 | 159 | +28 |
+| H0981 | txt | lexicon | 140 | 169 | +29 |
+| H0982 | txt | lexicon | 202 | 224 | +22 |
+| H0983 | txt | lexicon | 35 | 60 | +25 |
+| H0984 | txt | lexicon | 71 | 95 | +24 |
+| H0985 | txt | lexicon | 27 | 53 | +26 |
+| H0986 | txt | lexicon | 23 | 51 | +28 |
+| H0987 | txt | lexicon | 16 | 47 | +31 |
+| H0989 | txt | lexicon | 52 | 74 | +22 |
+| H0991 | txt | lexicon | 32 | 56 | +24 |
+| H0992 | txt | lexicon | 65 | 96 | +31 |
+| H0993 | txt | lexicon | 74 | 102 | +28 |
+| H0994 | txt | lexicon | 94 | 114 | +20 |
+
+## 15 veletlen minta ellenorzese -- lexicon-valtozat minosege a txt-hez kepest
+
+(`random.seed(42)`, a fenti 509-es listabol vett minta, novekvo Strong-sorrendben.)
+Mind a 15 esetben a lexicon-valtozat **jobb**: minden esetben tartalmazza a
+teljes txt-szoveget VALTOZATLANUL, plusz a heber lemmat es a POS-kodot
+(pl. `[H:N-F]`) elore teve -- tisztan bovites, adatvesztes egyik esetben sem
+tortent. Osszesites: **15/15 jobb, 0 azonos, 0 rosszabb** -- nincs megallasra
+ok, a csere nem igenyel tovabbi vizsgalatot vagy javitast.
+
+| kulcs | verdikt | egy mondatos indoklas |
+|---|---|---|
+| H0019 | jobb | A lexicon megtartja a teljes txt-glosszat, es hozzateszi a heber lemmat (`אִבְחָה`) es a `[H:N-F]` POS-kodot. |
+| H0093 | jobb | A 4 karakteres txt-glossza ("nuts") a lexicon-ban lemmaval, POS-koddal es rovid gloss-elovezetovel egeszul ki, adatvesztes nelkul. |
+| H0102 | jobb | A teljes txt-definicio valtozatlanul bekerul, csak a lemma (`אֲגַף`) es POS-kod elozi meg. |
+| H0109 | jobb | A hosszabb, tobb-agu (1, 1a) txt-definicio szoveghelyesen megjelenik, kiegeszitve a lemmaval es igetorzs-jelolessel (`[H:V]`). |
+| H0145 | jobb | A ket ertelmet felsorolo txt-szoveg valtozatlan, a lexicon csak a lemmat (`אֶ֫דֶר`) es a `[H:N]` kodot teszi ele. |
+| H0234 | jobb | A hosszu, technikai txt-definicio ("memorial-offering...") sertetlenul megmarad, a lexicon lemmaval es POS-koddal bovit. |
+| H0248 | jobb | A minimalis "arm" txt-glossza a lexicon-ban lemmaval (`אֶזְרוֹעַ`) es POS-koddal egeszul ki, tartalmi veszteseg nelkul. |
+| H0307 | jobb | A tulajdonnev-magyarazat (Achmetha/Ecbatana) teljes egeszeben megmarad; a lexicon a nevet ket helyen is kozli (lemma + `Ecbatana` gloss), ami redundans, de nem hibas vagy hianyos. |
+| H0570 | jobb | A ket-jelentesu txt-definicio valtozatlan, a lexicon lemmaval (`אֶ֫מֶשׁ`) es hatarozoi POS-koddal (`[H:ADV]`) bovit. |
+| H0610 | jobb | A rovid txt-glossza teljesen megmarad, csak lemma es POS-kod kerul ele. |
+| H0656 | jobb | A `(Qal)` igealak-jeloles es a teljes definicio valtozatlan, a lexicon lemmaval es `[H:V]` koddal egeszit ki. |
+| H0691 | jobb | A harom-agu (CLBL/BDB/TWOT) txt-magyarazat tartalmilag megmarad; a "form and meaning uncertain" (txt) es "dubious" (lexicon) szohasznalati elteres jelentestanilag egyenertekű, nem informaciovesztes. |
+| H0763 | jobb | A helynev-magyarazat (Aram-naharaim/Mesopotamia) teljes egeszeben megmarad, a lexicon lemmaval es a nev ismetelt feltuntetesevel bovit. |
+| H0768 | jobb | A hosszu, magyarazo labjegyzetes ("arnebeth") txt-definicio szo szerint atkerul, a lexicon csak lemmat es POS-kodot ad hozza. |
+| H0923 | jobb | A koszikla-leiras (porphyry, red marble) valtozatlan, a lexicon lemmaval (`בַּ֫הַט`) es POS-koddal bovit. |
