@@ -356,17 +356,6 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   a `PARDES_DATUM` rögzítése is kellene, hogy a dátum-mező ne adjon hamis
   pirosat.
 
-- **N34 — a `forditas_ubs.tsv` `megjegyzes` mezője (4 sor: G1311/88.266,
-  G1944/33.475, G5351/88.266, G5590/9.20) nem került át az
-  `adat/forditasok.tsv`-be.** *(ÚJ, SZOTAR S1.1, 2026.09.28)* A
-  `forditasok.tsv` sémája (a `SZOTAR_BRIEF.md` S1 táblája) nem tartalmaz
-  `megjegyzes` oszlopot. Ellenőrizve: ezt a mezőt a render soha nem
-  olvasta (a `lexikon_general.py`-ban látszólag hasonló `_megjegyzes`
-  változó a `UBS_DNTG_referenciak.tsv`-ből jön, más forrásból) — tehát
-  funkcionális regresszió nincs, csak egy addig is csak emberi olvasásra
-  szánt archív jegyzet (lábjegyzet-hivatkozás, illetve a G1944/G1944a
-  döntés indoklása) veszett el a törölt táblával együtt. Pótlás csak akkor
-  szükséges, ha valaki ezt a jegyzetet a jövőben meg akarja jeleníteni.
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
@@ -435,6 +424,9 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 <!-- GENERÁLT-VÉGE: nyitott -->
 
 ## Lezárva
+
+### 2026.09.28 (SZOTAR_BRIEF.md S1.1 — N34 lezárva):
+* N34 — a megszűnt `forditas_ubs.tsv` `megjegyzes` mezője (4 sor: G1311/88.266, G1944/33.475, G5351/88.266, G5590/9.20) pótolva: az `adat/forditasok.tsv` felvett egy opcionális `megjegyzes` oszlopot (`adat/SEMA.md` 2.14), a 4 sor jegyzete mindkét származó soron (`definicio_hu`, `glosszak_hu`) megőrizve. A `nulladiff.sh 8f5a1eb` a két D31-csere mellett továbbra is üres diffet ad.
 
 ### 2026.09.25 (CREMER_OCR_BRIEF.md v3 — lezárva):
 * A Cremer teljes szövegének javítása külső modellekkel (O-pipeline) lezárva, D22. Eredmény: a cremuoft-tétel azonosítása (görög betűs OCR), élőfej-alapú leképezés, módszertani tanulságok (D20–D21), ellenőrző csomag (`96c4c5d`). A Cremer a szótári rétegbe sem kerül be (SZOTAR D16).

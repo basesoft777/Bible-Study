@@ -592,7 +592,7 @@ Kulcs (volt): `strong` + `entry_kod`.
 | `lexid` | szabad szöveg | ✔ | A `UBS_DNTG_jelentesek.tsv` `lexid` mezője — ma az `adat/forditasok.tsv` `entry_id` mezője. |
 | `definicio_hu` | szabad szöveg | ✔ | A `definicio_rovid` hű magyar fordítása. |
 | `glosszak_hu` | szabad szöveg | ✔ | A `glosszak` hű magyar fordítása, pontosvesszővel elválasztva. |
-| `megjegyzes` | szabad szöveg | | Csak akkor töltött, ha a forrás UBS-definíció `{N:0..}` lábjegyzet-hivatkozást tartalmaz — ilyenkor `forrásban {N:001} lábjegyzet` (a lábjegyzet szövege nem kerül be a táblába, csak a generált oldal jelöli a hiányt). **Az `adat/forditasok.tsv`-ben nincs `megjegyzes` mező — ez az információ 4 sornál (G1311/88.266, G1944/33.475, G5351/88.266, G5590/9.20) ténylegesen elveszett a migrációnál** (l. `NYITOTT_FELADATOK.md` N34). |
+| `megjegyzes` | szabad szöveg | | Csak akkor töltött, ha a forrás UBS-definíció `{N:0..}` lábjegyzet-hivatkozást tartalmaz — ilyenkor `forrásban {N:001} lábjegyzet` (a lábjegyzet szövege nem kerül be a táblába, csak a generált oldal jelöli a hiányt). **Az `adat/forditasok.tsv` is felvette ezt a mezőt (l. 2.14) — a 4 érintett sor (G1311/88.266, G1944/33.475, G5351/88.266, G5590/9.20) jegyzete átkerült** (`NYITOTT_FELADATOK.md` N34, lezárva). |
 | `proveniencia` | `PROVENIENCIA` | ✔ | `forras=UBS_DNTG_jelentesek.tsv \| forditas=chat-jovahagyas <dátum>` — ma az `adat/forditasok.tsv` `datum` mezőjeként őrződik meg (a `forditas=chat-jovahagyas ` előtag nélkül). |
 
 Üres UBS-fordítás a generált lexikon-oldalon mindig `fordítás függőben`
@@ -685,12 +685,15 @@ magyar szótári fordítás egyetlen helye — a `lexikon_hivatkozasok.tsv`
 | `modell` | szabad szöveg | | A fordító LLM modell-azonosítója (pl. `anthropic/claude-haiku-4.5`); üres, ha `allapot=kezi` (nem model-fordítás). |
 | `datum` | `DATUM` | ✔ | A migrált soroknál a forrás utolsó tartalmi módosításának git-dátuma (a `lexikon_hivatkozasok.tsv` soraira) vagy a korábbi `forditas_ubs.proveniencia` jóváhagyási dátuma (az UBS-soroknál); új soroknál a fordítás dátuma. |
 | `terminologia_verzio` | szabad szöveg | | A 2.15 `terminologia.tsv` verziója, amellyel a fordítás készült; üres a migrált (a terminológia-tábla előtti) soroknál. |
+| `megjegyzes` | szabad szöveg | | A megszűnt `forditas_ubs.tsv` `megjegyzes` oszlopának öröksége — lábjegyzet-hivatkozás vagy a fordítói döntés indoklása. A render nem olvassa (csak emberi/archív jegyzet); üres a legtöbb sornál. |
 
 **Migráció (S1.1, 51 sor):** 11 sor a `lexikon_hivatkozasok.tsv` akkor
 töltött `forditas_hu` celláiból (`mezo=forditas_hu`), 40 sor a megszűnt
-`forditas_ubs.tsv`-ből (20×`definicio_hu` + 20×`glosszak_hu`). **Ismert,
-elfogadott hiány:** a `forditas_ubs.tsv` `megjegyzes` oszlopa (4 sor)
-nem került át — a render soha nem olvasta, l. `NYITOTT_FELADATOK.md` N34.
+`forditas_ubs.tsv`-ből (20×`definicio_hu` + 20×`glosszak_hu`). A megszűnt
+`forditas_ubs.tsv` `megjegyzes` oszlopa (4 sor: G1311/88.266, G1944/33.475,
+G5351/88.266, G5590/9.20) a `megjegyzes` mezőben őrződik meg, mindkét
+származó soron (`definicio_hu` és `glosszak_hu`) — l. `NYITOTT_FELADATOK.md`
+N34 (lezárva).
 
 ### 2.15 `terminologia.tsv` — fordítási terminológia (SZOTAR_BRIEF.md S2, D26)
 
