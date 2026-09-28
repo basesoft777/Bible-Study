@@ -83,6 +83,8 @@ MODELL_JELEK = {
     'm4': 'openai/gpt-4o-mini',
     'm5': 'google/gemini-3.1-flash-lite',
     'm6': 'qwen/qwen3.7-flash',
+    # FORDITAS_STILUSPROBA_FP2_BRIEF.md v2 -- uj jelolt, a v3 stiluspróbahoz
+    'm7': 'minimax/minimax-m3',
 }
 
 KIMENET_FEJLEC = ['szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo',
@@ -794,6 +796,9 @@ def onteszt_futtat():
 # ---------------------------------------------------------------------------
 
 def main():
+    global PROMPT_UT, PROMPT_VERZIO, TERMINOLOGIA_UT, TERMINOLOGIA_VERZIO
+    global CACHE_DIR, HIBA_DIR, KIMENET_UT, BIZONYTALAN_UT, KOLTSEG_UT, SZARAZ_UT
+
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--szaraz', action='store_true', help='hivas nelkul, csak becsult token-/koltsegigeny')
     ap.add_argument('--onteszt', action='store_true', help='halozat es kulcs nelkuli onellenorzes')
@@ -801,7 +806,33 @@ def main():
     ap.add_argument('--strongok', default=None, help='vesszovel elvalasztott Strong-lista (alap: mind a 20)')
     ap.add_argument('--plafon', type=float, default=2.0, help='G7: koltsegplafon USD-ben (alap: 2.0)')
     ap.add_argument('--minta', default=MINTA_UT, help='naplok/FORDITAS_P1_minta.tsv')
+    ap.add_argument('--prompt-fajl', default=PROMPT_UT,
+                     help='FORDITAS_STILUSPROBA_FP2_BRIEF.md v2 -- prompt-sablon fajlja (alap: v1)')
+    ap.add_argument('--prompt-verzio', default=PROMPT_VERZIO,
+                     help='a gyorsitotar-kulcsba es a kimenetbe kerulo prompt-verzio-cimke (alap: v1)')
+    ap.add_argument('--terminologia-fajl', default=TERMINOLOGIA_UT,
+                     help='FORDITAS_STILUSPROBA_FP2_BRIEF.md v2 -- terminologia TSV fajlja (alap: v1)')
+    ap.add_argument('--terminologia-verzio', default=TERMINOLOGIA_VERZIO,
+                     help='a gyorsitotar-kulcsba es a kimenetbe kerulo terminologia-verzio-cimke (alap: v1)')
+    ap.add_argument('--kimenet-dir', default=None,
+                     help='FORDITAS_STILUSPROBA_FP2_BRIEF.md v2 -- ha meg van adva, a kimeneti '
+                          'TSV-k (kimenet/bizonytalan/koltseg/szaraz-becsles) es a gyorsitotar/hibanaplo '
+                          'ez ala a konyvtar ala irodnak, a pilot naplok/FORDITAS_P3_*/FORDITAS_P_cache '
+                          'fajljai helyett (alap: naplok/, a pilot eredeti helye, valtozatlanul)')
     args = ap.parse_args()
+
+    PROMPT_UT = args.prompt_fajl
+    PROMPT_VERZIO = args.prompt_verzio
+    TERMINOLOGIA_UT = args.terminologia_fajl
+    TERMINOLOGIA_VERZIO = args.terminologia_verzio
+    if args.kimenet_dir:
+        os.makedirs(args.kimenet_dir, exist_ok=True)
+        CACHE_DIR = os.path.join(args.kimenet_dir, 'cache')
+        HIBA_DIR = os.path.join(args.kimenet_dir, 'hibak')
+        KIMENET_UT = os.path.join(args.kimenet_dir, 'kimenet.tsv')
+        BIZONYTALAN_UT = os.path.join(args.kimenet_dir, 'bizonytalan.tsv')
+        KOLTSEG_UT = os.path.join(args.kimenet_dir, 'koltseg.tsv')
+        SZARAZ_UT = os.path.join(args.kimenet_dir, 'szaraz_becsles.tsv')
 
     if args.onteszt:
         onteszt_futtat()
@@ -818,7 +849,7 @@ def main():
     arak = modell_arak_betolt()
     modellek = modellek_felold(args.modellek, arak)
     thayer = thayer_betolt()
-    terminologia_sz = terminologia_szoveg(terminologia_betolt())
+    terminologia_sz = terminologia_szoveg(terminologia_betolt(TERMINOLOGIA_UT))
     karoli_sz = karoli_tabla_szoveg(karoli_tabla_betolt())
 
     if args.szaraz:
@@ -829,7 +860,7 @@ def main():
                                  .replace('{{STRONG}}', 'G0000')
                                  .replace('{{DARAB_MEGJEGYZES}}', '')
                                  .replace('{{FORRAS_SZOVEG}}', ''))
-        becsles_futtatas(minta, modellek, thayer, sablon_alap_hossz)
+        becsles_futtatas(minta, modellek, thayer, sablon_alap_hossz, csoport_kimenet=SZARAZ_UT)
         return 0
 
     api_key = os.environ.get('OPENROUTER_API_KEY')

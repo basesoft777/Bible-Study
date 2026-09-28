@@ -18,7 +18,7 @@ Osszetetel:
     dokumentalva -- ez SZERKESZTOI dontes, nem lekerdezes eredmenye, a CLAUDE.md 3.
     szabalya szerint jelolve).
 
-Kimenet: fp2/minta.tsv (strong, forras_csoport, hossz_kategoria, sulyos, hossz, forras_hash)
+Kimenet: fp2/minta.tsv (strong, csoport, hossz_kategoria, sulyos, hossz, forras_hash)
          es stdout indoklas.
 
     python fp2/mintavalaszto.py
@@ -177,19 +177,19 @@ def main():
     for s in kor2:
         h = len(thayer[s]['Teljes_szocikk'])
         sorok.append({
-            'strong': s, 'forras_csoport': 'kor2',
+            'strong': s, 'csoport': 'kor2',
             'hossz_kategoria': hossz_kategoria(h) if s != 'G1941' else 'arany',
             'sulyos': 'nem', 'hossz': h, 'forras_hash': forras_hash(thayer[s]['Teljes_szocikk']),
         })
     for s, kat, sulyos_e in kivalasztott:
         h = len(thayer[s]['Teljes_szocikk'])
         sorok.append({
-            'strong': s, 'forras_csoport': 'uj',
+            'strong': s, 'csoport': 'uj',
             'hossz_kategoria': kat, 'sulyos': 'igen' if sulyos_e else 'nem',
             'hossz': h, 'forras_hash': forras_hash(thayer[s]['Teljes_szocikk']),
         })
 
-    fejlec = ['strong', 'forras_csoport', 'hossz_kategoria', 'sulyos', 'hossz', 'forras_hash']
+    fejlec = ['strong', 'csoport', 'hossz_kategoria', 'sulyos', 'hossz', 'forras_hash']
     os.makedirs(os.path.dirname(KIMENET_UT), exist_ok=True)
     with open(KIMENET_UT, 'w', encoding='utf-8', newline='\n') as fh:
         fh.write('\t'.join(fejlec) + '\n')

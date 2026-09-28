@@ -143,6 +143,22 @@ sorát. Ezekből építettem fel (a 2. lépés részeként):
 *proveniencia: scope=fájlolvasás (nem lekérdezés) | forras=E:\Letöltések\FORDITAS_ELES_THAYER_BRIEF.md
 (E1 szakasz) | ts=2026-09-28*
 
+## 2. lépés — v2→v3 diff
+
+A `fp2/prompt_v3.md` a `naplok/FORDITAS_P_prompt_v2.md` szó szerinti másolata, **egyetlen
+új szakasszal kiegészítve** (a "## Kiegészítő szabályok (v2)" és a "## Ideiglenes
+terminológia" közé beszúrva): "## Stílus: természetes hű", a FP2 brief 2. lépésében
+szó szerint megadott 5 pont. A v2 semmilyen más része (a fejléc, a további kötelező
+szabályok, a placeholderek) nem változott.
+
+Viszonyítási alap (jóváhagyott G1941 "természetes hű" minta): **nincs a repóban.**
+A `FELADATOK.md` #7 sora ("Következő lépés" cella) a v3-stílusdöntést a mai napig
+nyitva jelzi ("**Te:** döntés a v3-ról"), tehát ilyen jóváhagyott minta még nem
+született — a brief feltételes utasítása ("ha megvan, használd") itt nem alkalmazható.
+Ezt a jelentésben (8. lépés, döntésnapló) is rögzítem.
+
+*proveniencia: scope=fájlolvasás (nem lekérdezés) | forras=FELADATOK.md (#7 sor) | ts=2026-09-28*
+
 ## Döntés a `fordit.py` prompt/terminológia-útvonaláról
 
 A 0.2 pontban jelzett korlát (nincs CLI-kapcsoló az útvonalra) feloldása: a
