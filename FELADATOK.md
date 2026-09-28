@@ -14,9 +14,8 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 |---|---|---|---|---|---|---|
 | 5 | Szótári adatréteg, 1. menet (SZOTAR S1) | a szerepmátrix hiányzó sorai adatként: fordítási gyorsítótár, terminológia, kiejtés-táblák, UBS DBH, TBESH, Mounce, Translation Words | ⬜ S0b kész, 1. menet S1.1-nél blokkolva volt, a blokk feloldva (D30) | #1, #2, #4 | Blokk feloldva: az 1. menet nulla-diff próbája (K4) `git status --porcelain lexikon/`-ról `eszkozok/nulladiff.sh`-ra vált (D30) — a `general.py --cel lexikon --ir` a TEREMT-002 hiányzó `res_forras.tsv` sora miatt szállt el (`main`-en is), és a `TS` mező a mai nap miatt sosem adott volna üres diffet. A `claude/general-teremt002-datum` PR mergelése után az S1.1 (`claude/szotar-s1-menet`) a SZOTAR_BRIEF.md v1.4 1. menet promptjának 1. lépésétől folytatódik, a `nulladiff.sh`-val. | `SZOTAR_BRIEF.md` v1.4, `naplok/SZOTAR_S0b_jelentes.md` |
 | 6 | Új források 2. felmérése **helyi gépről** (FJ 2. menet) | döntés a Nave, a teljes KJV/ASV és a BSB importjáról; a Macula lefedettsége | ⬜ nincs brief | — (#5-tel párhuzamosan futhat) | Brief kell. Helyi gépen fusson, mert a cloud proxy blokkolt (N27, N29–N31) | `naplok/FORRAS_jelentes.md` (fejlécébe kell a „felülírva: N27–N29” megjegyzés) |
-| 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ nem futott | #3, #5 (terminológia, kiejtés), #14 | **Te:** döntés a v3-ról („természetes hű” stílus a promptban) + költség újraszámítása a teljes Thayer_teljes.tsv hosszeloszlásából (a P6 ~30 USD-ja nem vezethető le, naiv skálázással ~62 USD; ELLENOR_FP.md 1. eltérés) · a v3- és modelldöntés alapja a #14 jelentése | `FORDITAS_ELES_THAYER_BRIEF.md` v2, csak chatben |
+| 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ nem futott | #3, #5 (terminológia, kiejtés), #14 (kész) | brief v3 (Gemini, természetes hű, FP2-D15 szabályai) | `FORDITAS_ELES_THAYER_BRIEF.md` v2 → v3, `naplok/FP2_jelentes.md` (FP2-D13–D15) |
 | 8 | LXX-fordítói döntések a 87 függő igehelyre | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ nem futott | #1, #6 (Macula-lefedettség) | Kutatói adatmunka; 58 gépi jelölt tájékoztatásul: `naplok/FORRAS_FJ1_lxx_jeloltek.tsv` | eredetileg a LEXIKON_LEZARAS 4c pontja |
-| 14 | Thayer-stíluspróba modern magyarra: Gemini Flash Lite, DeepSeek, MiniMax (FP2) | döntési alap a #7-hez: v3 stílus, fő fordító és tartalék, költség | ⏸ jelentés kész, felhasználói döntésre vár | — (a #3 a main-ben) | **Te:** döntés a fő fordítóról a `naplok/FP2_jelentes.md` 6. pontja alapján (javaslat: Gemini 3.1 Flash Lite, prompt-cache + 1× önújrapróba); a PR nyitása és a `#7` briefjének v3-ra frissítése | ág `claude/thayer-stilusproba-fp2`, `FORDITAS_STILUSPROBA_FP2_BRIEF.md`, `naplok/FP2_jelentes.md` |
 
 ## 2. fázis — render (csak az 1. fázis után)
 
@@ -60,6 +59,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 ## Kész (utolsó 2 hét)
 
+- Thayer-stíluspróba (FP2): Gemini 3.1 Flash Lite, DeepSeek V4 Flash, MiniMax M3 összevetése, vak bírálat és költségbecslés, `naplok/FP2_jelentes.md`; döntés (FP2-D13): fő fordító Gemini 3.1 Flash Lite; ellenőrzés `naplok/ELLENOR_FP2.md`, merge `971d0f2` (PR #68, 09.28)
 - Fordítási próba (FP0–FP-KOR2.9): fordító eszközök és a próba eredményei, ellenőrzés naplok/ELLENOR_FP.md, merge `9eb43fe` (PR #62, 09.27)
 - Szkript-karbantartás (KARBANTARTAS KB0–KB4), K1–K10 teljesül (K10 öt körben, ágleltárral, nulla-kimenet-őrrel és három mutációs/hiba-próbával: `naplok/ELLENOR_KARB.md`), merge `b8a418a` (09.27); mérőszkript-vakfoltok és -őrök javítása, PR #60 (`8bd1e40`), PR #61
 - Gépi ellenőrzés GitHubon (CI, #2), PR #57, merge `68eb348` (09.27); E5 javítás: PR #59
