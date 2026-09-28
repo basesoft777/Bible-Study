@@ -1,0 +1,20 @@
+{
+ "strong": "G5356",
+ "model": "deepseek/deepseek-v4-flash",
+ "max_tokens": 8000,
+ "usage": {
+  "prompt_tokens": 4020,
+  "completion_tokens": 541,
+  "completion_tokens_details": {
+   "reasoning_tokens": 0
+  },
+  "cost": 0.000219564,
+  "koltseg_forras": "openrouter",
+  "kiserletek": 1
+ },
+ "eredmeny": {
+  "strong": "G5356",
+  "forditas_hu": "G5356 — φθορά φθορᾶς, ἡ (φθείρω), Aiszkhülosztól és Hérodotosztól kezdve: 1. romlás, pusztulás, enyészet (ellentéte a γένεσις, eredet, gyakran Platónnál, Arisztotelésznél, Plutarkhosznál; ellentéte a σωτηρία, Platón, Phileb., p. 35 e.; a שַׁחַת helyett, Zsolt 102:4; Jón 2:7): Róm 8:21 (l. ott a δουλεία szónál); 2Pét 2:12a (némelyek (vö. R. V. széljegyzeti olvasat) itt a φθορά-t aktív értelemben veszik: εἰς φθοράν, hogy elpusztítsák); ἐν φθορά, romlott vagy bomló állapotban (a testről a temetéskor), 1Kor 15:42; metonímiával, ami romlásnak van alávetve, ami mulandó, ellentéte az ἀφθαρσία, 1Kor 15:50; keresztény értelemben az üdvösség elvesztése, örök nyomorúság (amit máshol ἀπώλεια-nak neveznek), Kol 2:22 (l. ἀπόχρησις); ellentéte a ζωή αἰώνιος, Gal 6:8, vö. Schott az adott helynél. 2. az Újszövetségben etikai értelemben romlottság, azaz erkölcsi hanyatlás: 2Pét 1:4; 2Pét 2:12{b} (némelyek itt aktív értelemben veszik a szót (R. V. szöveg: pusztulásukban), mások a fenti 1. alá sorolják), 2Pét 2:19; τῆς ζωῆς hozzátétellel, Bölcs 14:12.",
+  "bizonytalan_feloldasok": []
+ }
+}

@@ -1,0 +1,631 @@
+strong	csoport	modell	ellenorzes	eredmeny	reszlet
+G0002	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G0002	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
+G0002	kor2	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
+G0002	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G0002	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G0002	kor2	deepseek/deepseek-v4-flash	5_terminologia	RENDBEN	
+G0002	kor2	deepseek/deepseek-v4-flash	6_hosszarany	RENDBEN	0.94
+G0004	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G0004	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
+G0004	kor2	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
+G0004	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G0004	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G0004	kor2	deepseek/deepseek-v4-flash	5_terminologia	RENDBEN	
+G0004	kor2	deepseek/deepseek-v4-flash	6_hosszarany	RENDBEN	1.04
+G0012	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G0012	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: ο×2, εκ×1, των×1, αβυσσων×2, της×1, γης×1, ταρταρου×2, αβυσσα×1, χασματα×1, ανεξιχνιαστα×1, κλιματα×1, επιβλεπων×1, εν×1, ταις×1, αβυσσοις×1, την×1, αβυσσον×2, του×1, οικων×1, κατηλθες×1, εις×1, μελαιναν×1, Πλουτεως×1
+G0012	kor2	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 1:2×1, 1:3×1, 16:18×1, 70:20×1, 10:7×1, 8:31×1, 9:1×1, 9:11×1, 11:7×1, 17:8×1, 20:1×1, 20:3×1
+G0012	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G0012	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G0012	kor2	deepseek/deepseek-v4-flash	5_terminologia	SERTES	etc. -> stb. hianyzik; p. -> o. hianyzik; under the word -> a … címszó alatt hianyzik
+G0012	kor2	deepseek/deepseek-v4-flash	6_hosszarany	JELZES	0.30 (a 0.8-1.6 savon kivul)
+G0026	uj	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G0026	uj	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: αγαπη×5, η×1, αγαπησων×1, αγαπης×6, αγαπαω×2, του×3, Θεου×1, πατρος×1, αγαπην×6, εις×2, τινα×3, την×1, τη×1, εξ×2, υμων×2, εν×3, ημιν×1, μεθ×2, ημων×1, εχειν×1, διδοναι×1, αγαπαν×2, πνευματος×1, ο×3, υιος×1, της×4, αγαπητος×1, Θεος×2, κοπος×1, αληθειας×1, εστιν×1, φιλημα×1, δια×1, αληθευοντες×1, αυξησωμεν×1, κατα×1
+G0026	uj	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 2:4×3, 3:5×1, 5:8×2, 7:6×1, 8:4×1, 2:2×1, 9:1×1, 9:6×1, 13:15×1, 3:9×1, 6:19×1, 24:12×1, 1:5×1, 6:10×1, 10:24×1, 13:35×1, 4:7×1, 2:19×1, 11:42×1, 5:42×1, 2:15×1, 3:17×1, 4:12×1, 8:39×1, 13:13×2, 15:10×1, 17:26×2, 15:9×1, 5:14×2, 8:35×1, 3:19×1, 2:8×1, 8:7×1, 16:24×1, 4:17×1, 1:4×1, 4:8×2, 3:1×1, 15:30×1, 1:13×1, 13:11×1, 1:3×2, 2:10×1, 4:16×2, 1:9×1, 1:14×1, 4:21×1, 4:15×1, 1:17×1, 14:15×1, 10:22×1
+G0026	uj	deepseek/deepseek-v4-flash	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Jn, Schenkel, Énekek
+G0026	uj	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G0026	uj	deepseek/deepseek-v4-flash	5_terminologia	SERTES	spirit -> szellem hianyzik; soul -> lélek hianyzik; see -> l. hianyzik; i. e. -> azaz hianyzik; etc. -> stb. hianyzik; present -> jelen idő hianyzik; genitive -> birtokos eset hianyzik; under the word -> a … címszó alatt hianyzik; Winer's Grammar -> Winer, Grammatika hianyzik; Holy Spirit -> Szent Szellem hianyzik
+G0026	uj	deepseek/deepseek-v4-flash	6_hosszarany	JELZES	0.31 (a 0.8-1.6 savon kivul)
+G0035	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G0035	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
+G0035	kor2	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
+G0035	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G0035	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G0035	kor2	deepseek/deepseek-v4-flash	5_terminologia	RENDBEN	
+G0035	kor2	deepseek/deepseek-v4-flash	6_hosszarany	RENDBEN	1.04
+G0086	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G0086	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: Αιδης×2, την×1, του×2, αδου×5, κρουει×1, πυλην×1, τουτ×1, εστιν×1, αποθανειται×1, θανατος×1, γεεννα×1, παραδεισος×1, αβυσσος×1, εις×1, δομον×1, πυλαι×1, πυλωροι×1, πυλη×1, κλεις×1; tobblet: αδης×1, ου×1, α×2, δης×1, δωματα×1
+G0086	kor2	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 2:6×1, 22:6×1, 11:8×1, 57:9×1, 9:2×1, 16:23×1, 2:27×1, 2:31×1, 15:10×1, 16:18×1, 38:17×1, 1:18×1, 6:8×1, 20:13×1
+G0086	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G0086	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G0086	kor2	deepseek/deepseek-v4-flash	5_terminologia	SERTES	spirit -> szellem hianyzik; see -> l. hianyzik; etc. -> stb. hianyzik; p. -> o. hianyzik; under the word -> a … címszó alatt hianyzik
+G0086	kor2	deepseek/deepseek-v4-flash	6_hosszarany	RENDBEN	0.85
+G0266	uj	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G0266	uj	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: αμαρτια×10, το×1, αμαρτανειν×1, υφ×1, αμαρτιαν×6, ειναι×2, επιμενειν×1, τη×4, αποθνησκειν×2, ζην×1, εν×3, αυτη×1, την×3, γινωσκειν×1, νεκρος×1, περι×1, αμαρτιας×6, σωμα×1, της×6, απατη×1, βασιλευει×1, κυριευει×1, κατεργαζεται×1, δουλευειν×1, αμ×5, δουλος×1, νομος×1, δυναμις×1, χωρις×1, ποιειν×2, εχειν×2, αιμα×1, αμαρτιαι×1, πληθος×1, αμαρτιων×2, αφεσις×1, αφιεναι×1, τας×1, αφιημι×1, Εν×1, αμαρτιαις×3, συ×1, εγεννηθης×1, ολος×1, ταις×1, ετι×1, ταυτην×1, πασα×1, προς×1, θανατον×1, ζωη×1, θανατος×2
+G0266	uj	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 5:12×1, 3:9×1, 6:1×1, 6:2×1, 7:7×1, 6:11×1, 8:3×1, 6:6×2, 3:13×1, 6:12×1, 6:14×1, 7:17×1, 7:20×1, 8:34×1, 6:17×1, 7:23×1, 8:2×1, 15:56×1, 4:7×1, 27:10×1, 8:46×1, 4:15×1, 9:41×1, 15:22×1, 15:24×1, 19:11×1, 1:8×1, 12:31×2, 2:16×1, 5:16×1, 18:4×1, 5:20×1, 4:8×1, 5:15×1, 9:34×1, 8:24×1, 15:17×1, 7:60×1
+G0266	uj	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G0266	uj	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G0266	uj	deepseek/deepseek-v4-flash	5_terminologia	SERTES	i. e. -> azaz hianyzik; etc. -> stb. hianyzik; present -> jelen idő hianyzik; prosopopaeia -> megszemélyesítés hianyzik; vitiosity -> romlottság hianyzik
+G0266	uj	deepseek/deepseek-v4-flash	6_hosszarany	JELZES	0.42 (a 0.8-1.6 savon kivul)
+G0282	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G0282	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
+G0282	kor2	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
+G0282	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G0282	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G0282	kor2	deepseek/deepseek-v4-flash	5_terminologia	SERTES	Heb. -> héb. hianyzik
+G0282	kor2	deepseek/deepseek-v4-flash	6_hosszarany	RENDBEN	1.01
+G0540	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G0540	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
+G0540	kor2	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
+G0540	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G0540	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G0540	kor2	deepseek/deepseek-v4-flash	5_terminologia	RENDBEN	
+G0540	kor2	deepseek/deepseek-v4-flash	6_hosszarany	RENDBEN	1.09
+G0813	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G0813	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
+G0813	kor2	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
+G0813	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G0813	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G0813	kor2	deepseek/deepseek-v4-flash	5_terminologia	RENDBEN	
+G0813	kor2	deepseek/deepseek-v4-flash	6_hosszarany	RENDBEN	1.05
+G0993	uj	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G0993	uj	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
+G0993	uj	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
+G0993	uj	deepseek/deepseek-v4-flash	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Mar
+G0993	uj	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G0993	uj	deepseek/deepseek-v4-flash	5_terminologia	RENDBEN	
+G0993	uj	deepseek/deepseek-v4-flash	6_hosszarany	RENDBEN	0.99
+G0994	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G0994	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: βοαω×1, βοω×1, εβοησα×1, βοη×1, קרא×1, זעק×2, צעק×1, αναβοαω×2, επιβοαω×2, אל×1
+G0994	kor2	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 4:27×1, 54:1×1, 8:7×1, 15:34×1, 9:38×1, 18:38×1, 17:6×1, 7:8×1, 5:20×1, 7:14×1
+G0994	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G0994	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G0994	kor2	deepseek/deepseek-v4-flash	5_terminologia	SERTES	cf. -> vö. hianyzik; Sept. -> Septuaginta hianyzik; i. e. -> azaz hianyzik; etc. -> stb. hianyzik; aorist -> aorisztosz hianyzik; imperfect -> imperfektum hianyzik; perfect -> perfektum hianyzik; Winer's Grammar -> Winer, Grammatika hianyzik
+G0994	kor2	deepseek/deepseek-v4-flash	6_hosszarany	JELZES	0.45 (a 0.8-1.6 savon kivul)
+G1106	uj	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G1106	uj	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
+G1106	uj	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
+G1106	uj	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G1106	uj	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G1106	uj	deepseek/deepseek-v4-flash	5_terminologia	RENDBEN	
+G1106	uj	deepseek/deepseek-v4-flash	6_hosszarany	RENDBEN	1.07
+G1311	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G1311	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: διαφθειρω×1, διεφθειρα×1, διαφθειρομαι×1, διεφθαρμενος×1, διεφθαρην×1, שחת×1, חבל×1, την×2, γην×1, διεφθαρμενοι×1, τον×2, νουν×1, διανοιαν×1, γνωμην×1, τους×2, οφθαλμους×1, ο×1, εξω×1, ημων×1, ανθρωπος×1, διαφθειρεται×1, διαφθειρειν×1
+G1311	kor2	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 11:18×2, 6:5×1, 4:16×1, 12:33×1, 8:9×1
+G1311	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G1311	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G1311	kor2	deepseek/deepseek-v4-flash	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik; i. e. -> azaz hianyzik; etc. -> stb. hianyzik; p. -> o. hianyzik; aorist -> aorisztosz hianyzik; perfect -> perfektum hianyzik; present -> jelen idő hianyzik; participle -> melléknévi igenév hianyzik
+G1311	kor2	deepseek/deepseek-v4-flash	6_hosszarany	JELZES	0.06 (a 0.8-1.6 savon kivul)
+G1343	uj	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G1343	uj	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: δικαιοσυνη×17, δικαιοσυνης×2, η×13, δικαιος×1, צדקה×1, της×2, του×2, ανομια×1, εν×2, οδω×1, Θεου×5, και×2, οσιοτης×1, οσιος×1, ευσεβεια×1, ποιειν×1, την×1, δικαιοσυνην×5, εργαζεσθαι×1, ζην×1, τη×2, πληρουν×1, πασαν×1, πιστις×2, δικαιοω×1, δια×2, πιστεως×4, εκ×3, επι×1, πιστει×1, εχων×1, Χριστου×1, κατα×1, πιστιν×1, εις×2, λογιζεται×1, τινι×1, διακονια×2, νομου×1, νομω×1, ιδια×1, εμη×1, εδικαιοσυνη×1
+G1343	uj	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 3:15×1, 6:7×1, 6:14×2, 11:15×1, 5:9×1, 1:11×1, 6:11×1, 2:22×1, 3:16×1, 4:8×1, 3:5×2, 1:9×1, 12:11×1, 3:18×1, 3:14×1, 2:5×1, 2:21×2, 3:13×1, 21:32×1, 6:33×1, 1:20×1, 9:9×1, 14:11×2, 4:24×2, 1:75×1, 9:3×1, 2:29×1, 3:7×1, 3:10×3, 22:11×1, 10:35×1, 11:33×1, 2:24×1, 16:8×1, 16:10×1, 3:25×1, 3:12×1, 1:24×1, 2:1×1, 2:14×1, 4:5×1, 5:17×1, 5:21×2, 9:30×1, 1:30×2, 5:5×1, 1:17×1, 3:21×2, 10:3×2, 10:4×2, 3:22×1, 4:11×1, 4:13×1, 3:9×4, 10:6×1, 11:7×1, 10:10×1, 4:3×1, 4:6×1, 4:9×1, 4:22×1, 3:6×2, 2:23×1, 10:5×1
+G1343	uj	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G1343	uj	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G1343	uj	deepseek/deepseek-v4-flash	5_terminologia	SERTES	soul -> lélek hianyzik; i. e. -> azaz hianyzik; p. -> o. hianyzik; perfect -> perfektum hianyzik; under the word -> a … címszó alatt hianyzik; Winer's Grammar -> Winer, Grammatika hianyzik; expiatory sacrifice -> engesztelő áldozat hianyzik
+G1343	uj	deepseek/deepseek-v4-flash	6_hosszarany	JELZES	0.30 (a 0.8-1.6 savon kivul)
+G1941	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G1941	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: επικαλουμαι×1, επικεκλημαι×1, επεκεκλητο×1, επικεκλητο×1, επεκληθην×1, επικαλεσομαι×1, επεκαλεσαμην×1, קרא×1, τινα×3, εκαλεσαν×1, ο×2, επικαλουμενος×1, ος×2, επικαλειται×2, επικληθεις×1, επεκληθη×1, ει×2, πατερα×1, επικαλεισθε×1, τον×4, το×1, ονομα×1, τινος×1, επι×1, פ×2, על×1, τινι×1, κατηγορεω×1, τω×1, οικοδεσποτη×1, Βηλζεβουλ×1, επεκαλεσαν×1, κυριον×2, Ιησουν×1, βοηθον×1, μαρτυρα×1, Καισαρα×1, Σεβαστον×1
+G1941	kor2	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 26:32×2, 22:3×1, 10:18×1, 11:13×1, 12:12×1, 15:22×1, 10:5×1, 10:32×1, 10:3×1, 4:36×1, 12:25×1, 1:23×2, 11:16×1, 1:17×1, 9:34×1, 12:24×1, 3:22×1, 7:59×1, 25:11×1, 28:19×1, 25:25×1, 25:21×1, 12:8×1, 5:11×1, 6:2×1, 2:21×1, 2:32×1, 9:14×1, 22:16×1, 10:13×1, 1:2×1, 10:12×1, 2:22×1
+G1941	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G1941	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G1941	kor2	deepseek/deepseek-v4-flash	5_terminologia	SERTES	see -> l. hianyzik; Sept. -> Septuaginta hianyzik; p. -> o. hianyzik; perfect -> perfektum hianyzik; pluperfect -> pluskvamperfektum hianyzik; future -> jövő idő hianyzik; present -> jelen idő hianyzik; middle -> közép alak hianyzik; passive and middle -> szenvedő és közép alak hianyzik; infinitive -> főnévi igenév hianyzik; 3 person singular -> egyes szám 3. személy hianyzik; accusative -> tárgyeset hianyzik; under the word -> a … címszó alatt hianyzik
+G1941	kor2	deepseek/deepseek-v4-flash	6_hosszarany	JELZES	0.27 (a 0.8-1.6 savon kivul)
+G1944	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G1944	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
+G1944	kor2	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
+G1944	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G1944	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G1944	kor2	deepseek/deepseek-v4-flash	5_terminologia	RENDBEN	
+G1944	kor2	deepseek/deepseek-v4-flash	6_hosszarany	RENDBEN	1.01
+G2105	uj	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G2105	uj	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
+G2105	uj	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
+G2105	uj	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G2105	uj	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G2105	uj	deepseek/deepseek-v4-flash	5_terminologia	SERTES	genitive -> birtokos eset hianyzik
+G2105	uj	deepseek/deepseek-v4-flash	6_hosszarany	RENDBEN	0.97
+G2671	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G2671	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
+G2671	kor2	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
+G2671	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G2671	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G2671	kor2	deepseek/deepseek-v4-flash	5_terminologia	RENDBEN	
+G2671	kor2	deepseek/deepseek-v4-flash	6_hosszarany	RENDBEN	1.00
+G2672	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G2672	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: καταραομαι×1, καταρωμαι×1, καταρα×2, κατηρασω×1, κατηραμενος×2, קלל×1, ארר×1, ευλογειν×1, κεκατηραμ×1, κεκαταρανται×1, κεκατηρανται×1
+G2672	kor2	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 12:14×1, 1:65×1, 6:66×1, 3:9×1, 11:21×1, 6:8×1, 12:11×1, 9:34×1, 21:23×1, 3:16×1, 25:41×1, 22:6×1, 24:9×1
+G2672	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Mat
+G2672	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G2672	kor2	deepseek/deepseek-v4-flash	5_terminologia	SERTES	see -> l. hianyzik; Sept. -> Septuaginta hianyzik; i. e. -> azaz hianyzik; etc. -> stb. hianyzik; aorist -> aorisztosz hianyzik; perfect -> perfektum hianyzik; middle -> közép alak hianyzik; deponent -> deponens hianyzik; participle -> melléknévi igenév hianyzik; under the word -> a … címszó alatt hianyzik
+G2672	kor2	deepseek/deepseek-v4-flash	6_hosszarany	JELZES	0.24 (a 0.8-1.6 savon kivul)
+G3687	uj	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G3687	uj	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
+G3687	uj	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
+G3687	uj	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G3687	uj	deepseek/deepseek-v4-flash	4_formazas	SERTES	tobb nyito zarojel a forditasban (11) mint a forrasban (10) -- lehetseges betoldas
+G3687	uj	deepseek/deepseek-v4-flash	5_terminologia	SERTES	middle -> közép alak hianyzik
+G3687	uj	deepseek/deepseek-v4-flash	6_hosszarany	RENDBEN	0.98
+G3777	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G3777	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: ουτε×8, ου×4, τε×2, μητε×3, μη×2, ουδε×5, μηδε×1, ουδεις×1, αξιος×1, ευρεθη×1, ανοιξαι×1, το×1, βιβλιον×1, βλεπειν×1, αυτο×1, και×1, δυναται×1, συκα×2
+G3777	kor2	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 5:4×1, 4:11×1, 1:10×1, 2:2×1, 9:20×1, 6:20×1, 22:30×1, 12:25×1, 14:35×1, 4:21×1, 5:37×1, 8:19×1, 9:3×1, 15:10×1, 19:37×1, 25:8×1, 28:21×1, 8:38×1, 3:7×1, 6:9×1, 5:6×1, 6:15×1, 2:6×1, 3:15×1, 21:4×1
+G3777	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Mar
+G3777	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G3777	kor2	deepseek/deepseek-v4-flash	5_terminologia	SERTES	see -> l. hianyzik; p. -> o. hianyzik; which see -> l. ott hianyzik; under the word -> a … címszó alatt hianyzik
+G3777	kor2	deepseek/deepseek-v4-flash	6_hosszarany	JELZES	0.43 (a 0.8-1.6 savon kivul)
+G3782	uj	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G3782	uj	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
+G3782	uj	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
+G3782	uj	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G3782	uj	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G3782	uj	deepseek/deepseek-v4-flash	5_terminologia	RENDBEN	
+G3782	uj	deepseek/deepseek-v4-flash	6_hosszarany	RENDBEN	1.12
+G4151	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G4151	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: πνευμα×83, πνευματος×11, το×62, רוח×3, ανεμων×1, πνευματα×7, του×22, ζωης×3, πνοη×3, αφιεναι×2, θανσιμω×1, σφαγη×1, σωμα×5, χωρις×1, νεκρον×1, εστιν×4, εστι×1, ζοωποιουν×1, η×5, σαρξ×3, ουκ×1, ωφελει×1, ουδεν×1, ανθρωπου×1, εν×32, αυτω×1, ψυχη×6, και×11, αχρι×1, μερισμου×1, ψυχης×1, μερισμος×1, ενι×3, πνευματι×33, μια×3, καρδια×1, τινος×1, ο×2, Θεος×1, των×2, πνευματων×2, αγιων×1, προφητων×2, τω×14, επιγινωσκειν×1, αναστεναζειν×1, εμβριμασθαι×1, ταρασσεσθαι×1, ζηιν×1, αγιω×7, κραταιουσθαι×1, αγιον×15, ειναι×3, ζοωποιηθεις×1, ζην×1, πτωχοι×1, δεδεμενος×1, Θεω×1, λατρευειν×1, ανεσιν×1, μου×4, πνευματικως×1, τιθεναι×1, πορευεσθαι×1, προσευχεται×1, νους×2, λαλειν×2, μυστηρια×1, προσευχεσθαι×2, ψαλλειν×1, ευλογειν×1, νοι×1, σαρκα×1, πατηρ×1, Πυθωνος×1, πυθωνα×1, δαιμονιων×2, δαιμονιου×1, ακαθαρτου×1, δαιμονιον×1, ασθενειας×1, ακαθαρτον×1, αλαλον×1, κωφον×1, δαιμονιζομαι×1, πονηρον×1, αγιωσυνης×2, αγιωσυνη×1, αιωνιον×1, ψυχαι×1, אלהים×1, יהוה×1, קדש×1, Θεου×14, ημων×1, πατρος×1, ζωντος×1, εγειραντος×1, Ιησουν×1, εκ×4, κυριου×3, Ιησου×2, Χριστου×2, τινι×2, υιου×1, αγιου×6, μενον×1, επ×1, αυτον×1, βαπτισμα×1, της×12, αληθειας×2, σοφιας×4, αποκαλυψεως×2, χαρισμα×1, τα×3, ερχομενα×1, αναγγελει×1, προφητειας×3, ταδε×1, λεγει×3, ταις×1, εκκλησιαις×1, μαρτυρει×1, ελαλησε×1, δια×1, Ησαιου×1, διδοναι×1, αυτου×2, ε᾿κχειν×1, απο×1, λαμβανειν×2, εχειν×2, μη×2, πληρουσθαι×1, πλησθηναι×1, πλησθησεσθαι×1, πληρης×1, αγεσθαι×1, φερεσθαι×1, υπο×1, βαπτιζω×1, γενναω×1, εκχεω×1, χριω×1, γινεσθαι×1, απεκαλυφθη×1, τη×1, δυναμει×2, πνευματου×2, ειπειν×1, αγαπη×1, περιτομη×1, γραμματι×1, ενοτης×1, καινοτης×1, περιπατειν×1, κατα×2, οι×3, οντες×2, πνευματικοι×1, σαρκι×1, επιθυμιαν×1, σαρκος×1, τελειν×1, δυναμις×5, υπιστου×1, καθως×1, βουλεται×1, ειπε×1, διαμαρτυρεται×1, μοι×1, εθετο×1, επισκοπους×1, υπερεντυγχανει×1, στεναγμοις×1, αλαλητοις×1, τι×1, προσευξωμεθα×1, καθο×1, δει×1, αντιπιπτειν×1, ενυβριζειν×1, χαριτος×1, πειραζειν×1, λυπειν×1, παροξυνειν×1, παραπικραινειν×1, επτα×1, πενυμα×1, διακρισεις×1, παντι×1, πιστευετε×1, δοκιμαζετε×1, ει×1, πλανα×1, διδασκαλιαι×1, κυριος×1, οιου×1, εστε×1, υμεις×1, ω×1, ελαλει×1, πραυ×1, ησυχιον×1, πραοτητος×1, πιστεως×1, υιοθεσιας×1, Χριστω×1, δυναμεως×1, αγαπης×1, σωφρονισμου×1, εις×1, ποτιζεσθαι×1, ενεργουν×1, τοις×1, υιοις×1, απειθειας×1, κοσμου×1, δουλειας×1, κατανυξεως×1, δειλιας×1, πλανης×1, πλανησεως×1, πορνειας×1, αντιχριστου×1, ετερον×1, νως×1
+G4151	kor2	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 3:8×3, 1:7×3, 18:45×1, 19:11×1, 1:19×3, 103:4×1, 2:8×2, 11:4×2, 11:11×1, 6:17×2, 8:55×1, 23:46×1, 19:30×1, 7:59×1, 13:15×1, 27:50×1, 38:23×1, 16:14×2, 2:26×2, 6:63×2, 2:11×2, 26:41×1, 14:38×1, 5:5×7, 7:1×1, 2:5×2, 8:10×1, 4:6×6, 5:23×1, 4:12×2, 1:27×2, 8:12×3, 17:16×1, 1:9×2, 8:16×3, 5:4×3, 16:18×2, 2:13×3, 7:13×1, 6:18×3, 4:23×2, 1:25×1, 4:22×1, 22:6×1, 11:33×1, 13:21×1, 18:25×1, 12:11×3, 10:21×1, 5:3×3, 1:80×1, 7:34×1, 3:18×2, 20:22×4, 3:3×3, 6:19×3, 19:21×1, 14:32×1, 14:14×1, 14:2×1, 4:24×1, 12:9×1, 12:23×1, 3:19×1, 1:14×3, 9:20×1, 9:39×1, 12:45×1, 10:20×3, 11:26×2, 16:16×1, 4:33×1, 13:11×2, 10:1×1, 12:43×1, 1:23×1, 1:26×1, 3:11×2, 3:30×1, 5:2×1, 5:8×2, 5:13×1, 6:7×1, 7:25×1, 9:25×2, 4:36×1, 8:29×3, 9:42×1, 11:24×2, 5:16×4, 8:7×1, 16:13×4, 18:2×1, 9:17×3, 7:21×1, 8:2×2, 19:12×1, 19:13×1, 19:15×1, 19:16×1, 9:23×1, 19:9×1, 3:16×8, 1:4×1, 9:14×1, 1:5×4, 50:13×1, 63:10×2, 63:11×1, 1:18×2, 1:20×4, 12:32×2, 28:19×2, 1:8×3, 3:29×1, 12:36×2, 1:15×2, 1:35×3, 2:25×1, 3:22×3, 4:1×9, 11:13×2, 12:10×2, 12:12×2, 1:33×3, 7:39×1, 14:26×2, 1:2×2, 1:16×2, 2:33×1, 2:38×2, 9:31×1, 10:38×3, 11:15×1, 13:2×2, 15:8×2, 16:6×2, 19:6×2, 20:28×3, 9:1×1, 14:17×2, 12:3×2, 6:6×1, 13:13×1, 1:13×3, 1:6×1, 3:5×5, 2:4×4, 6:4×1, 9:8×1, 2:22×1, 4:30×2, 4:8×2, 8:9×4, 8:14×2, 4:14×4, 12:18×1, 12:28×3, 2:14×2, 4:2×2, 6:11×1, 8:11×3, 2:12×3, 4:18×1, 5:9×2, 3:17×2, 16:7×1, 12:31×1, 22:43×2, 1:10×3, 1:12×3, 2:1×2, 1:32×2, 3:6×3, 3:34×3, 10:19×3, 11:12×3, 11:28×1, 21:4×1, 8:6×2, 8:23×1, 8:26×3, 8:27×1, 15:30×1, 12:4×1, 1:22×3, 3:14×1, 4:29×1, 5:17×2, 5:22×2, 5:25×1, 4:3×3, 4:5×2, 3:24×1, 5:6×1, 22:17×1, 3:2×2, 12:13×2, 19:5×1, 8:15×5, 10:44×1, 15:26×2, 16:12×1, 2:6×1, 1:17×1, 13:4×2, 15:28×1, 12:7×1, 19:10×2, 5:19×2, 21:11×1, 14:13×1, 2:7×1, 2:17×2, 2:29×2, 3:13×1, 1:21×2, 3:7×1, 10:15×1, 28:25×1, 4:13×2, 2:18×2, 8:17×1, 8:19×1, 19:2×1, 10:47×1, 7:40×1, 13:52×1, 5:18×2, 1:41×1, 1:67×1, 4:31×1, 13:9×1, 6:5×1, 7:55×1, 6:3×1, 8:13×1, 17:3×1, 21:10×1, 2:27×1, 7:6×1, 8:5×1, 24:49×1, 14:16×1, 20:23×1, 14:23×1, 7:51×1, 10:29×1, 105:33×1, 2:2×2, 14:12×1, 6:10×1, 3:4×1, 4:21×1, 6:1×1, 11:2×1, 34:9×1, 7:7×1, 4:4×1, 11:8×1, 19:14×1
+G4151	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: 2Th, Act, Joh, Psa
+G4151	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G4151	kor2	deepseek/deepseek-v4-flash	5_terminologia	SERTES	soul -> lélek hianyzik; Sept. -> Septuaginta hianyzik; future -> jövő idő hianyzik; present -> jelen idő hianyzik; middle -> közép alak hianyzik; infinitive -> főnévi igenév hianyzik; dative -> részes eset hianyzik; under the word -> a … címszó alatt hianyzik; Winer's Grammar -> Winer, Grammatika hianyzik
+G4151	kor2	deepseek/deepseek-v4-flash	6_hosszarany	JELZES	0.18 (a 0.8-1.6 savon kivul)
+G5010	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G5010	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: ταξις×2, ταξεως×1, η×1, τασσω×1, κατα×3, ταξιν×3, ου×1, γαρ×1, ιστοριας×1, αλλα×1, κουρεακης×1, λαλιας×1, εμοι×1, δοκουσι×1, εχειν×1, την×2, ομοιοτητα×1, Μελχισεδεκ×1, על־דברתי×1
+G5010	kor2	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 1:8×1, 14:40×1, 9:18×1, 1:19×1, 7:15×1, 109:5×1, 5:6×1, 5:10×1, 6:20×1
+G5010	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G5010	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G5010	kor2	deepseek/deepseek-v4-flash	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik; i. e. -> azaz hianyzik; Macc. -> Makk hianyzik
+G5010	kor2	deepseek/deepseek-v4-flash	6_hosszarany	JELZES	0.19 (a 0.8-1.6 savon kivul)
+G5013	uj	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G5013	uj	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: ταπεινω×1, ταπεινουμαι×1, τινα×1, εμαυτον×2, εαυτον×1, ενωπιον×2, κυριου×1, ταπεινουν×1, την×3, ψυχην×2, αυτου×1, נפשו×1, ענה×2, τινος×1, υπο×1, χειρα×1, του×1, Θεου×1, שפל×1, השפיל×1, דכא×1, הכניע×1, ταπεινοφροσυνη×1
+G5013	uj	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 23:12×1, 14:11×1, 18:14×1, 11:7×1, 4:12×1, 2:8×1, 18:4×1, 4:10×1, 2:17×1, 7:17×1, 16:29×1, 16:31×1, 23:27×1, 23:32×1, 58:3×1, 58:5×1, 58:10×1, 5:6×1, 16:9×1, 12:21×1
+G5013	uj	deepseek/deepseek-v4-flash	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Mat
+G5013	uj	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G5013	uj	deepseek/deepseek-v4-flash	5_terminologia	SERTES	spirit -> szellem hianyzik; spiritual -> szellemi hianyzik; soul -> lélek hianyzik; cf. -> vö. hianyzik; Sept. -> Septuaginta hianyzik; etc. -> stb. hianyzik; middle -> közép alak hianyzik; under the word -> a … címszó alatt hianyzik
+G5013	uj	deepseek/deepseek-v4-flash	6_hosszarany	JELZES	0.35 (a 0.8-1.6 savon kivul)
+G5298	uj	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G5298	uj	deepseek/deepseek-v4-flash	1_gorog_heber	RENDBEN	
+G5298	uj	deepseek/deepseek-v4-flash	2_versszam	RENDBEN	
+G5298	uj	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G5298	uj	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G5298	uj	deepseek/deepseek-v4-flash	5_terminologia	RENDBEN	
+G5298	uj	deepseek/deepseek-v4-flash	6_hosszarany	RENDBEN	1.02
+G5351	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G5351	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: φθειρομαι×1, τινα×1, εν×1, τινι×1, φθειρουσιν×1, εθη×1, χρηστα×1, ομιλιαι×1, κακαι×1, ηθος×1, απο×2, τινος×1, φθειρομενον×1, κατα×1, τας×1, επιθυμιας×1, διαφθειρω×1, καταφθειρω×1
+G5351	kor2	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 3:17×2, 7:2×1, 1:10×1, 15:33×1, 19:2×1, 11:3×1, 4:22×1
+G5351	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G5351	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G5351	kor2	deepseek/deepseek-v4-flash	5_terminologia	SERTES	sc. -> ti. hianyzik; see -> l. hianyzik; etc. -> stb. hianyzik; which see -> l. ott hianyzik
+G5351	kor2	deepseek/deepseek-v4-flash	6_hosszarany	JELZES	0.44 (a 0.8-1.6 savon kivul)
+G5356	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G5356	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: φθορα×2, γενεσις×1, δουλεια×1, εις×1, φθοραν×1, εν×1, αφθαρσια×1, απωλεια×1, αποχρησις×1, ζωη×1, αιωνιος×1, της×1, ζωης×1
+G5356	kor2	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 2:7×1, 8:21×1, 2:12×2, 15:42×1, 15:50×1, 2:22×1, 6:8×1, 1:4×1, 2:19×1, 14:12×1
+G5356	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G5356	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G5356	kor2	deepseek/deepseek-v4-flash	5_terminologia	SERTES	cf. -> vö. hianyzik; see -> l. hianyzik; i. e. -> azaz hianyzik; p. -> o. hianyzik; marginal reading -> széljegyzeti olvasat hianyzik; which see -> l. ott hianyzik
+G5356	kor2	deepseek/deepseek-v4-flash	6_hosszarany	JELZES	0.19 (a 0.8-1.6 savon kivul)
+G5590	kor2	deepseek/deepseek-v4-flash	7_json_sema	RENDBEN	
+G5590	kor2	deepseek/deepseek-v4-flash	1_gorog_heber	SERTES	hianyzik: ψυχη×15, ψυχης×7, η×7, נפש×2, επιστραφητω×1, του×3, παιδαριου×1, το×3, πνευμα×3, πνευαμ×1, μεριμναν×1, τη×3, την×5, ψυχην×6, αγαπαν×1, μισειν×1, τιθεναι×1, παραδιδοναι×1, διδοναι×1, λυτρον×1, ζητειν×1, τινος×2, ζητεω×1, ευρισκειν×2, σωζειν×2, απολλυναι×1, αυτου×1, περιποιησις×1, κτασθαι×1, τας×4, ψυχας×4, υπερ×2, των×3, ψυχων×4, ζωσα×1, πασα×1, כל־נפש×1, ανθρωπου×1, אדם×1, ψυχαι×2, ανθρωπων×1, σωμα×2, αιρω×1, επιθυμια×1, της×4, αναπαυσιν×1, ταις×2, ψυχαις×2, αναπαυου×1, φαγε×1, πιε×1, ευφραινου×1, αναπαυσεται×1, ευφραινειν×1, ευδοκει×1, μου×3, περιλυπος×1, εστιν×1, τεταρακται×1, υμων×1, ακλυομενοι×1, εκλυω×1, εν×1, ολη×2, σου×2, εξ×1, ολης×1, εκ×5, φροντιζειν×1, κεχαρισθαι×1, μια×3, πληθους×1, ην×1, καρδια×1, και×1, ερωτηθεις×1, τι×1, εστι×1, φιλος×1, εφη×1, δυο×1, σωμασιν×1, ενοικουσα×1, απο×3, μιας×1, πενθος×1, αγρυπνειν×1, επιθυμιαι×1, αιτινες×1, στρατευονται×1, κατα×1, επισκοπος×1, θανατου×1, σωτηρια×1, αγνιζειν×1, εαυτων×1, πιστω×1, κτιστη×1, παρατιθεσθαι×1, αθανατος×1, αφθαρτος×1, διαλυθηναι×1, σωματος×1
+G5590	kor2	deepseek/deepseek-v4-flash	2_versszam	SERTES	hianyzik: 17:21×1, 5:23×1, 4:12×1, 6:25×2, 12:22×1, 12:11×1, 14:26×1, 10:11×1, 10:15×1, 10:17×1, 13:37×1, 15:13×1, 3:16×1, 15:26×1, 20:28×1, 10:45×1, 2:20×1, 11:3×1, 3:4×1, 6:9×2, 12:20×1, 12:23×1, 20:24×1, 27:10×1, 27:22×1, 16:4×1, 1:23×1, 2:30×1, 2:8×2, 10:39×2, 16:25×1, 8:35×1, 12:25×1, 21:19×1, 12:15×1, 15:45×1, 2:43×1, 3:23×2, 13:1×1, 7:17×1, 31:40×1, 31:46×1, 2:38×1, 2:9×1, 2:41×1, 7:14×1, 27:37×1, 3:20×1, 46:15×1, 46:18×1, 46:22×1, 46:26×1, 46:27×1, 1:5×1, 12:4×1, 2:1×1, 19:11×1, 19:13×1, 19:18×1, 10:22×1, 18:13×1, 31:35×1, 27:13×1, 1:46×1, 2:35×1, 10:24×1, 14:2×1, 14:22×1, 15:24×1, 6:19×1, 2:14×1, 18:14×1, 11:29×1, 12:19×1, 12:18×2, 10:38×1, 26:38×1, 14:34×1, 12:27×1, 12:3×1, 22:37×1, 10:27×2, 12:30×1, 12:33×1, 6:5×1, 1:27×1, 4:32×1, 6:6×1, 6:7×1, 1:2×1, 13:17×1, 2:11×1, 2:25×1, 1:21×1, 5:20×1, 1:9×1, 1:22×1, 4:19×1, 10:28×1, 13:14×1, 2:27×1, 2:31×1, 20:4×1, 3:1×1
+G5590	kor2	deepseek/deepseek-v4-flash	3_karoli_roviditesek	RENDBEN	
+G5590	kor2	deepseek/deepseek-v4-flash	4_formazas	RENDBEN	
+G5590	kor2	deepseek/deepseek-v4-flash	5_terminologia	SERTES	see -> l. hianyzik; etc. -> stb. hianyzik; p. -> o. hianyzik; which see -> l. ott hianyzik; under the word -> a … címszó alatt hianyzik; Winer's Grammar -> Winer, Grammatika hianyzik; Macc. -> Makk hianyzik
+G5590	kor2	deepseek/deepseek-v4-flash	6_hosszarany	JELZES	0.10 (a 0.8-1.6 savon kivul)
+G0002	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0002	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0002	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0002	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0002	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0002	kor2	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G0002	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	0.96
+G0004	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0004	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0004	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0004	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0004	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0004	kor2	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G0004	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.08
+G0012	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0012	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0012	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0012	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0012	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0012	kor2	google/gemini-3.1-flash-lite	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik
+G0012	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.02
+G0026	uj	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0026	uj	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0026	uj	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0026	uj	google/gemini-3.1-flash-lite	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Schenkel
+G0026	uj	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0026	uj	google/gemini-3.1-flash-lite	5_terminologia	SERTES	spirit -> szellem hianyzik; present -> jelen idő hianyzik; under the word -> a … címszó alatt hianyzik
+G0026	uj	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.07
+G0035	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0035	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0035	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0035	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0035	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0035	kor2	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G0035	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.13
+G0086	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0086	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0086	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0086	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Element
+G0086	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0086	kor2	google/gemini-3.1-flash-lite	5_terminologia	SERTES	p. -> o. hianyzik; under the word -> a … címszó alatt hianyzik
+G0086	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.00
+G0266	uj	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0266	uj	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0266	uj	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0266	uj	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0266	uj	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0266	uj	google/gemini-3.1-flash-lite	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik; present -> jelen idő hianyzik
+G0266	uj	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.06
+G0282	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0282	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0282	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0282	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0282	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0282	kor2	google/gemini-3.1-flash-lite	5_terminologia	SERTES	Heb. -> héb. hianyzik
+G0282	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	0.99
+G0540	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0540	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0540	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0540	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0540	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0540	kor2	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G0540	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.08
+G0813	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0813	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0813	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0813	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0813	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0813	kor2	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G0813	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.06
+G0993	uj	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0993	uj	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0993	uj	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0993	uj	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0993	uj	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0993	uj	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G0993	uj	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.00
+G0994	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G0994	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G0994	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G0994	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G0994	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G0994	kor2	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G0994	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.11
+G1106	uj	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G1106	uj	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G1106	uj	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G1106	uj	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G1106	uj	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G1106	uj	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G1106	uj	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.07
+G1311	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G1311	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G1311	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G1311	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G1311	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G1311	kor2	google/gemini-3.1-flash-lite	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik
+G1311	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.11
+G1343	uj	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G1343	uj	google/gemini-3.1-flash-lite	1_gorog_heber	SERTES	hianyzik: חסד×1; tobblet: חס×1
+G1343	uj	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G1343	uj	google/gemini-3.1-flash-lite	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Tób
+G1343	uj	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G1343	uj	google/gemini-3.1-flash-lite	5_terminologia	SERTES	soul -> lélek hianyzik; perfect -> perfektum hianyzik; marginal reading -> széljegyzeti olvasat hianyzik; under the word -> a … címszó alatt hianyzik
+G1343	uj	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.03
+G1941	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G1941	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G1941	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G1941	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G1941	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G1941	kor2	google/gemini-3.1-flash-lite	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik; under the word -> a … címszó alatt hianyzik
+G1941	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.04
+G1944	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G1944	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G1944	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G1944	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G1944	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G1944	kor2	google/gemini-3.1-flash-lite	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik
+G1944	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	0.97
+G2105	uj	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G2105	uj	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G2105	uj	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G2105	uj	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G2105	uj	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G2105	uj	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G2105	uj	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.03
+G2671	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G2671	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G2671	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G2671	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G2671	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G2671	kor2	google/gemini-3.1-flash-lite	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik
+G2671	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.01
+G2672	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G2672	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G2672	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G2672	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G2672	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G2672	kor2	google/gemini-3.1-flash-lite	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik; i. e. -> azaz hianyzik; deponent -> deponens hianyzik; under the word -> a … címszó alatt hianyzik
+G2672	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.04
+G3687	uj	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G3687	uj	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G3687	uj	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G3687	uj	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G3687	uj	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G3687	uj	google/gemini-3.1-flash-lite	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik; middle -> közép alak hianyzik
+G3687	uj	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.01
+G3777	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G3777	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G3777	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G3777	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Devar
+G3777	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G3777	kor2	google/gemini-3.1-flash-lite	5_terminologia	SERTES	under the word -> a … címszó alatt hianyzik
+G3777	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.04
+G3782	uj	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G3782	uj	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G3782	uj	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G3782	uj	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G3782	uj	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G3782	uj	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G3782	uj	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.10
+G4151	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G4151	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	SERTES	hianyzik: απτα×1, πενυμα×1, νως×1; tobblet: πνευμα×1, επτα×1, νοος×1
+G4151	kor2	google/gemini-3.1-flash-lite	2_versszam	SERTES	tobblet: 1:47×1
+G4151	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G4151	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G4151	kor2	google/gemini-3.1-flash-lite	5_terminologia	SERTES	future -> jövő idő hianyzik; present -> jelen idő hianyzik; middle -> közép alak hianyzik; under the word -> a … címszó alatt hianyzik
+G4151	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.05
+G5010	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G5010	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G5010	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G5010	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G5010	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G5010	kor2	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G5010	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.06
+G5013	uj	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G5013	uj	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G5013	uj	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G5013	uj	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G5013	uj	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G5013	uj	google/gemini-3.1-flash-lite	5_terminologia	SERTES	soul -> lélek hianyzik; Sept. -> Septuaginta hianyzik; middle -> közép alak hianyzik; under the word -> a … címszó alatt hianyzik
+G5013	uj	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.04
+G5298	uj	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G5298	uj	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G5298	uj	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G5298	uj	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G5298	uj	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G5298	uj	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G5298	uj	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.05
+G5351	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G5351	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G5351	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G5351	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G5351	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G5351	kor2	google/gemini-3.1-flash-lite	5_terminologia	SERTES	sc. -> ti. hianyzik; etc. -> stb. hianyzik; which see -> l. ott hianyzik
+G5351	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.06
+G5356	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G5356	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	RENDBEN	
+G5356	kor2	google/gemini-3.1-flash-lite	2_versszam	SERTES	hianyzik: 102:4×1; tobblet: 103:4×1
+G5356	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G5356	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G5356	kor2	google/gemini-3.1-flash-lite	5_terminologia	RENDBEN	
+G5356	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.12
+G5590	kor2	google/gemini-3.1-flash-lite	7_json_sema	RENDBEN	
+G5590	kor2	google/gemini-3.1-flash-lite	1_gorog_heber	SERTES	hianyzik: πνευαμ×1; tobblet: πνευμα×1
+G5590	kor2	google/gemini-3.1-flash-lite	2_versszam	RENDBEN	
+G5590	kor2	google/gemini-3.1-flash-lite	3_karoli_roviditesek	RENDBEN	
+G5590	kor2	google/gemini-3.1-flash-lite	4_formazas	RENDBEN	
+G5590	kor2	google/gemini-3.1-flash-lite	5_terminologia	SERTES	under the word -> a … címszó alatt hianyzik
+G5590	kor2	google/gemini-3.1-flash-lite	6_hosszarany	RENDBEN	1.01
+G0002	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G0002	kor2	minimax/minimax-m3	1_gorog_heber	SERTES	hianyzik: Ααρων×1; tobblet: Ααρω×1
+G0002	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G0002	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G0002	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G0002	kor2	minimax/minimax-m3	5_terminologia	RENDBEN	
+G0002	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	1.01
+G0004	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G0004	kor2	minimax/minimax-m3	1_gorog_heber	SERTES	hianyzik: ετηρησα×1; tobblet: ετηρησ×1
+G0004	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G0004	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G0004	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G0004	kor2	minimax/minimax-m3	5_terminologia	SERTES	see -> l. hianyzik
+G0004	kor2	minimax/minimax-m3	6_hosszarany	JELZES	0.74 (a 0.8-1.6 savon kivul)
+G0012	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G0012	kor2	minimax/minimax-m3	1_gorog_heber	SERTES	hianyzik: βυθος×1; tobblet: βυθο×1
+G0012	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G0012	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G0012	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G0012	kor2	minimax/minimax-m3	5_terminologia	RENDBEN	
+G0012	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	1.01
+G0026	uj	minimax/minimax-m3	7_json_sema	RENDBEN	
+G0026	uj	minimax/minimax-m3	1_gorog_heber	SERTES	tobblet: αγαπη×2, ης×1, η×2, אהבה×1, αγαπαω×2, ηγαπησα×1, αγαπησω×1, ηγαπηκα×1, ηγαπηθην×1, αγαπηθησομαι×1, אהב×1
+G0026	uj	minimax/minimax-m3	2_versszam	SERTES	tobblet: 1:22×1, 6:4×1, 10:12×1, 11:13×1, 19:9×1, 30:6×1, 22:5×1, 23:11×1, 6:8×1, 22:37×1, 12:29×1, 10:27×1, 8:1×1
+G0026	uj	minimax/minimax-m3	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: 1Pe, Deut, Schenkel
+G0026	uj	minimax/minimax-m3	4_formazas	SERTES	tobb nyito zarojel a forditasban (36) mint a forrasban (33) -- lehetseges betoldas
+G0026	uj	minimax/minimax-m3	5_terminologia	SERTES	spirit -> szellem hianyzik; present -> jelen idő hianyzik
+G0026	uj	minimax/minimax-m3	6_hosszarany	RENDBEN	1.22
+G0035	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G0035	kor2	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G0035	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G0035	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G0035	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G0035	kor2	minimax/minimax-m3	5_terminologia	RENDBEN	
+G0035	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	1.03
+G0086	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G0086	kor2	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G0086	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G0086	kor2	minimax/minimax-m3	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Element
+G0086	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G0086	kor2	minimax/minimax-m3	5_terminologia	SERTES	p. -> o. hianyzik; under the word -> a … címszó alatt hianyzik
+G0086	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	1.01
+G0266	uj	minimax/minimax-m3	7_json_sema	RENDBEN	
+G0266	uj	minimax/minimax-m3	1_gorog_heber	SERTES	tobblet: αμαρτια×4, ας×4, η×4, αμαρτανω×2, חטאת×5, חטא×2, αμαρτανειν×3, αμαρτιαν×1, εν×1, την×2, περι×1, ημαρτησα×1, ημαρτηθην×1, τινα×2, τι×3, τινος×2, τινι×2, κατα×1, εις×1, παρα×1, פשע×1, עון×5, ποιειν×1, αιρεσις×1, αμαρτημα×1, παραπτωμα×1, παραβασις×1, οφειλημα×1, חטאה×1, נפש×1, פשעים×1, ποιων×1, δικαιοσυνην×1
+G0266	uj	minimax/minimax-m3	2_versszam	SERTES	tobblet: 5:12×2, 3:9×2, 6:1×1, 8:3×1, 2:3×1, 8:34×1, 6:17×1, 15:56×1, 3:8×2, 3:4×2, 1:15×3, 8:46×2, 2:22×1, 12:31×1, 2:16×1, 9:34×1, 7:60×1, 27:4×1, 7:41×1, 2:29×1, 3:7×1, 7:14×1, 8:10×1, 14:23×1, 5:17×1, 7:8×1, 1:14×1, 7:13×2, 5:19×1, 6:23×1
+G0266	uj	minimax/minimax-m3	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Lk
+G0266	uj	minimax/minimax-m3	4_formazas	SERTES	tobb nyito zarojel a forditasban (48) mint a forrasban (37) -- lehetseges betoldas
+G0266	uj	minimax/minimax-m3	5_terminologia	SERTES	aorist -> aorisztosz hianyzik; present -> jelen idő hianyzik
+G0266	uj	minimax/minimax-m3	6_hosszarany	RENDBEN	1.39
+G0282	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G0282	kor2	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G0282	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G0282	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G0282	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G0282	kor2	minimax/minimax-m3	5_terminologia	SERTES	Heb. -> héb. hianyzik
+G0282	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	0.98
+G0540	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G0540	kor2	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G0540	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G0540	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G0540	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G0540	kor2	minimax/minimax-m3	5_terminologia	RENDBEN	
+G0540	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	1.08
+G0813	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G0813	kor2	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G0813	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G0813	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G0813	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G0813	kor2	minimax/minimax-m3	5_terminologia	RENDBEN	
+G0813	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	1.07
+G0993	uj	minimax/minimax-m3	7_json_sema	RENDBEN	
+G0993	uj	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G0993	uj	minimax/minimax-m3	2_versszam	RENDBEN	
+G0993	uj	minimax/minimax-m3	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Lk
+G0993	uj	minimax/minimax-m3	4_formazas	RENDBEN	
+G0993	uj	minimax/minimax-m3	5_terminologia	RENDBEN	
+G0993	uj	minimax/minimax-m3	6_hosszarany	RENDBEN	0.97
+G0994	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G0994	kor2	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G0994	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G0994	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G0994	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G0994	kor2	minimax/minimax-m3	5_terminologia	SERTES	imperfect -> imperfektum hianyzik; perfect -> perfektum hianyzik
+G0994	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	1.10
+G1106	uj	minimax/minimax-m3	7_json_sema	RENDBEN	
+G1106	uj	minimax/minimax-m3	1_gorog_heber	SERTES	hianyzik: γινωσκω×1; tobblet: γιννωσκω×1
+G1106	uj	minimax/minimax-m3	2_versszam	RENDBEN	
+G1106	uj	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G1106	uj	minimax/minimax-m3	4_formazas	RENDBEN	
+G1106	uj	minimax/minimax-m3	5_terminologia	RENDBEN	
+G1106	uj	minimax/minimax-m3	6_hosszarany	RENDBEN	1.07
+G1311	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G1311	kor2	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G1311	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G1311	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G1311	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G1311	kor2	minimax/minimax-m3	5_terminologia	RENDBEN	
+G1311	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	1.01
+G1343	uj	minimax/minimax-m3	7_json_sema	RENDBEN	
+G1343	uj	minimax/minimax-m3	1_gorog_heber	SERTES	hianyzik: חסד×1; tobblet: δικαιοσυνη×4, η×4, δικαιος×2, צדק×3, צדקה×3, חס×1, ης×4, α×1, εδικαιωσα×1, δικαιοω×1, δικαιωσω×1
+G1343	uj	minimax/minimax-m3	2_versszam	SERTES	tobblet: 9:3×1, 15:3×1
+G1343	uj	minimax/minimax-m3	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Lk
+G1343	uj	minimax/minimax-m3	4_formazas	SERTES	tobb nyito zarojel a forditasban (43) mint a forrasban (36) -- lehetseges betoldas
+G1343	uj	minimax/minimax-m3	5_terminologia	SERTES	soul -> lélek hianyzik; perfect -> perfektum hianyzik; under the word -> a … címszó alatt hianyzik
+G1343	uj	minimax/minimax-m3	6_hosszarany	RENDBEN	1.13
+G1941	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G1941	kor2	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G1941	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G1941	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G1941	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G1941	kor2	minimax/minimax-m3	5_terminologia	SERTES	pluperfect -> pluskvamperfektum hianyzik; under the word -> a … címszó alatt hianyzik
+G1941	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	1.05
+G1944	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G1944	kor2	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G1944	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G1944	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G1944	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G1944	kor2	minimax/minimax-m3	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik
+G1944	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	0.99
+G2105	uj	minimax/minimax-m3	7_json_sema	RENDBEN	
+G2105	uj	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G2105	uj	minimax/minimax-m3	2_versszam	RENDBEN	
+G2105	uj	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G2105	uj	minimax/minimax-m3	4_formazas	RENDBEN	
+G2105	uj	minimax/minimax-m3	5_terminologia	RENDBEN	
+G2105	uj	minimax/minimax-m3	6_hosszarany	RENDBEN	0.98
+G2671	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G2671	kor2	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G2671	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G2671	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G2671	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G2671	kor2	minimax/minimax-m3	5_terminologia	RENDBEN	
+G2671	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	0.92
+G2672	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G2672	kor2	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G2672	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G2672	kor2	minimax/minimax-m3	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Bár
+G2672	kor2	minimax/minimax-m3	4_formazas	SERTES	tobb nyito zarojel a forditasban (18) mint a forrasban (17) -- lehetseges betoldas
+G2672	kor2	minimax/minimax-m3	5_terminologia	RENDBEN	
+G2672	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	1.10
+G3687	uj	minimax/minimax-m3	7_json_sema	RENDBEN	
+G3687	uj	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G3687	uj	minimax/minimax-m3	2_versszam	RENDBEN	
+G3687	uj	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G3687	uj	minimax/minimax-m3	4_formazas	RENDBEN	
+G3687	uj	minimax/minimax-m3	5_terminologia	RENDBEN	
+G3687	uj	minimax/minimax-m3	6_hosszarany	RENDBEN	1.04
+G3777	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G3777	kor2	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G3777	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G3777	kor2	minimax/minimax-m3	3_karoli_roviditesek	SERTES	ismeretlen roviditesek: Devar
+G3777	kor2	minimax/minimax-m3	4_formazas	SERTES	tobb nyito zarojel a forditasban (46) mint a forrasban (45) -- lehetseges betoldas
+G3777	kor2	minimax/minimax-m3	5_terminologia	RENDBEN	
+G3777	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	1.05
+G3782	uj	minimax/minimax-m3	7_json_sema	RENDBEN	
+G3782	uj	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G3782	uj	minimax/minimax-m3	2_versszam	RENDBEN	
+G3782	uj	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G3782	uj	minimax/minimax-m3	4_formazas	RENDBEN	
+G3782	uj	minimax/minimax-m3	5_terminologia	RENDBEN	
+G3782	uj	minimax/minimax-m3	6_hosszarany	RENDBEN	1.10
+G4151	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G4151	kor2	minimax/minimax-m3	1_gorog_heber	SERTES	hianyzik: πνευματα×1, εν×6, ψυχη×2, και×1, αχρι×1, μερισμου×1, ψυχης×1, μερισμος×1, ενι×1, πνευματι×10, μια×3, καρδια×1, τινος×1, ο×2, Θεος×1, των×2, πνευματων×1, αγιων×1, προφητων×2, τω×8, επιγινωσκειν×1, αναστεναζειν×1, εμβριμασθαι×1, ταρασσεσθαι×1, ζηιν×1, αγαλλιασθαι×1, αγιω×1, κραταιουσθαι×1, αγιον×1, ειναι×1, ζοωποιηθεις×1, ζην×1, πτωχοι×1, δεδεμενος×1, συνεχεσθαι×1, Θεω×1, λατρευειν×1, ανεσιν×1, μου×4, πνευματικως×1, τιθεναι×1, πορευεσθαι×1, προσευχεται×1, νους×1, λαλειν×1, μυστηρια×1, προσευχεσθαι×1, ψαλλειν×1, ευλογειν×1, νοι×1, πενυμα×1, ηλιου×1, αντιχριστου×1, νως×1; tobblet: πνευμα×9, πνευματος×4, το×7, πνεω×4, רוח×3, πνοη×3, πνευσαι×1, πνευσομαι×2, πνευσω×1, επνευσα×1, πεπνευκα×1, πεπνευσμαι×1, επνευσθην×1, πνευσθησομαι×1, ατος×1, επνευματισα×1, πνευματικος×1, Ηλιου×1, αντικριστου×1, νοος×1
+G4151	kor2	minimax/minimax-m3	2_versszam	SERTES	hianyzik: 2:8×2, 2:5×1, 6:20×1, 4:6×2, 4:12×1, 1:27×1, 8:12×2, 17:16×1, 1:9×2, 8:16×1, 5:4×1, 16:18×1, 2:13×2, 7:13×1, 6:18×1, 4:23×2, 1:25×1, 4:22×1, 22:6×1, 11:33×1, 13:21×1, 18:25×1, 12:11×1, 10:21×1, 5:3×2, 1:80×1, 2:40×1, 7:34×1, 3:18×1, 20:22×1, 3:3×1, 6:19×1, 19:21×1, 14:32×1, 14:14×1, 14:2×1
+G4151	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G4151	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G4151	kor2	minimax/minimax-m3	5_terminologia	SERTES	infinitive -> főnévi igenév hianyzik; dative -> részes eset hianyzik; under the word -> a … címszó alatt hianyzik
+G4151	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	0.97
+G5010	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G5010	kor2	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G5010	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G5010	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G5010	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G5010	kor2	minimax/minimax-m3	5_terminologia	RENDBEN	
+G5010	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	1.01
+G5013	uj	minimax/minimax-m3	7_json_sema	RENDBEN	
+G5013	uj	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G5013	uj	minimax/minimax-m3	2_versszam	RENDBEN	
+G5013	uj	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G5013	uj	minimax/minimax-m3	4_formazas	RENDBEN	
+G5013	uj	minimax/minimax-m3	5_terminologia	SERTES	spirit -> szellem hianyzik; spiritual -> szellemi hianyzik; soul -> lélek hianyzik; cf. -> vö. hianyzik; see -> l. hianyzik; Sept. -> Septuaginta hianyzik; i. e. -> azaz hianyzik; etc. -> stb. hianyzik; aorist -> aorisztosz hianyzik; future -> jövő idő hianyzik; present -> jelen idő hianyzik; middle -> közép alak hianyzik; under the word -> a … címszó alatt hianyzik
+G5013	uj	minimax/minimax-m3	6_hosszarany	RENDBEN	1.00
+G5298	uj	minimax/minimax-m3	7_json_sema	RENDBEN	
+G5298	uj	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G5298	uj	minimax/minimax-m3	2_versszam	RENDBEN	
+G5298	uj	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G5298	uj	minimax/minimax-m3	4_formazas	RENDBEN	
+G5298	uj	minimax/minimax-m3	5_terminologia	RENDBEN	
+G5298	uj	minimax/minimax-m3	6_hosszarany	RENDBEN	1.01
+G5351	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G5351	kor2	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G5351	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G5351	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G5351	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G5351	kor2	minimax/minimax-m3	5_terminologia	SERTES	sc. -> ti. hianyzik; which see -> l. ott hianyzik
+G5351	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	1.05
+G5356	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G5356	kor2	minimax/minimax-m3	1_gorog_heber	RENDBEN	
+G5356	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G5356	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G5356	kor2	minimax/minimax-m3	4_formazas	RENDBEN	
+G5356	kor2	minimax/minimax-m3	5_terminologia	SERTES	which see -> l. ott hianyzik
+G5356	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	1.04
+G5590	kor2	minimax/minimax-m3	7_json_sema	RENDBEN	
+G5590	kor2	minimax/minimax-m3	1_gorog_heber	SERTES	tobblet: ψυχη×1, η×1, ης×1, πνευμα×2
+G5590	kor2	minimax/minimax-m3	2_versszam	RENDBEN	
+G5590	kor2	minimax/minimax-m3	3_karoli_roviditesek	RENDBEN	
+G5590	kor2	minimax/minimax-m3	4_formazas	SERTES	tobb nyito zarojel a forditasban (71) mint a forrasban (69) -- lehetseges betoldas
+G5590	kor2	minimax/minimax-m3	5_terminologia	SERTES	Sept. -> Septuaginta hianyzik; under the word -> a … címszó alatt hianyzik
+G5590	kor2	minimax/minimax-m3	6_hosszarany	RENDBEN	1.04
