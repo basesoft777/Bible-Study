@@ -97,7 +97,7 @@ lexicon_hossz`.
 
 - `strong` — a STEP-forrás saját kulcsa; **betű-utótaggal is lehet** (pl.
   `H7121a`), ha a forrás egy Strong-számot több alszócikkre/
-  mikro-jelentésre bont (l. lent, F05/D-UT1). A kulcs önmagában NEM mindig
+  mikro-jelentésre bont (l. lent, D38). A kulcs önmagában NEM mindig
   a 4-jegyű alapszám.
 - `alap_strong` — a 4-jegyű Strong-szám, betű-utótag nélkül. Ha az
   alapszámhoz több sor is tartozik (egy alaptétel + N alszócikk), a
@@ -118,11 +118,14 @@ lexicon_hossz`.
   `.lexicon`-ban szerepel, ezek üresek (a `.lexicon` nem tartja külön ezeket
   a mezőket).
 
-**Betű-utótagos kulcsok (F05, D-UT1, 2026.09.29 — javítás egy független
+**Betű-utótagos kulcsok (D38, 2026.09.29 — javítás egy független
 ellenőrzés nyomán):** mindkét forrás egy Strong-számot időnként több,
 betű-utótagos alszócikkre bont (pl. `H1121` "ben" a `TBESH.txt`-ben
-KIZÁRÓLAG `H1121a`/`H1121b` alakban létezik, sima `H1121` sosem — a szó
-"gyermek/fiú" és "kinsfolk" jelentése két külön alszócikk). A korábbi
+KIZÁRÓLAG `H1121a`/`H1121b` alakban létezik, sima `H1121` sosem — a
+`H1121a` a "gyermek/fiú" köznévi jelentés (héberül בֵּן), a `H1121b` egy
+tulajdonnév, "Beno" (héberül בְּנוֹ, "his son", egy lévita neve) —
+két teljesen külön szócikk, nem ugyanannak a szónak két árnyalata). A
+korábbi
 szigorú `^H\d{4}$` szűrő ezeket a kulcsokat egyáltalán nem ismerte fel
 Strong-kulcsként, és **szó nélkül eldobta** — 1424 nyers `.txt`-sor és a
 megfelelő `.lexicon`-bejegyzések vesztek el így, összesen **542 Strong-szám

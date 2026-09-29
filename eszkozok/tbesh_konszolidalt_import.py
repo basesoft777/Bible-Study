@@ -13,11 +13,11 @@ Forrasok:
     definicio (col8) azonban a legtobb esetben AZONOS az adott Strong
     osszes alsoraban -- ezert Strongonkent EGYETLEN (dedupikalt) teljes
     szoveget ad, plusz a roevid glosszak listajat. FONTOS: "Strongonkent"
-    itt a STEP-forras sajat, betu-utotagos kulcsat jelenti (pl. "H7121a"),
+    itt a STEP-forras sajat, betu-utotagos kulcsat jelenti (pl. "H1121a"),
     NEM feltetlenul a 4-jegyu alapszamot -- egy alapszamnak tobb, kulon
     betu-utotagos alszocikke is lehet (pl. H1121 "ben" csak "H1121a"/
     "H1121b" alakban letezik a TBESH.txt-ben, sima "H1121" sosem), es
-    ezek KULON sorkent maradnak a kimenetben (F05, D-UT1) -- nem vonjuk
+    ezek KULON sorkent maradnak a kimenetben (D38) -- nem vonjuk
     ossze oket az alapszamba, es nem is dobjuk el. Az `alap_strong`
     oszlop koti vissza az utotagos sorokat az alapszamukhoz.
   - konkordancia/lexikonok_nyers/TBESH.lexicon (SQLite): egyetlen,
@@ -47,10 +47,14 @@ KIMENET = os.path.join(KONKORDANCIA, 'TBESH_konszolidalt.tsv')
 
 TAG_RE = re.compile(r'<[^>]+>')
 WS_RE = re.compile(r'\s+')
-# 4 szamjegy, opcionalisan egy STEP-alszocikk-betuvel (F05, D-UT1). A
-# projekt STRONG tipusa (SEMA 1.2) maga 4 jegyu; a betu-utotag ("H7121G",
-# a raw sorban tobbnyire kisbetus "H7121a" alakban) a STEP-forrasok sajat
+# 4 szamjegy, opcionalisan egy STEP-alszocikk-betuvel (D38). A
+# projekt STRONG tipusa (SEMA 1.2) maga 4 jegyu; a betu-utotag ("H1121G",
+# a raw sor 1. oszlopaban kisbetus "H1121a" alakban) a STEP-forrasok sajat
 # alszocikk-jeloleset adja at -- l. NYERS_KULCS_RE es alap_strong_szamol().
+# (H7121-nek magának NINCS betu-utotagos kulcsa -- a tobb mikro-jelentese
+# a raw sorokban csak a 2. oszlopban kulonbozik, "H7121G/H/I", az 1.
+# oszlop mindharomnal sima "H7121" marad; ezt a mar meglevo dedup-logika
+# (rovid_lista/teljes_lista) kezeli, nem az itteni betu-utotag-szures.)
 STRONG_H_RE = re.compile(r'^H\d{4}[a-zA-Z]?$')
 # A H9xxx tartomany a TBESH.txt sajat fejleconek megfogalmazasa szerint is
 # ("prefixes, suffixes, personal pronoun endings and punctuation") nem
@@ -68,7 +72,7 @@ ALAP_STRONG_RE = re.compile(r'^(H\d{4})[a-zA-Z]?$')
 
 
 def normalizal(strong):
-    """"H122" -> "H0122"; "H122a" -> "H0122a" (F05, D-UT1: a betu-utotag
+    """"H122" -> "H0122"; "H122a" -> "H0122a" (D38: a betu-utotag
     MEGMARAD, csak a szamresz tolt 4 jegyre); mar rendben levo vagy
     felismerhetetlen kulcsot valtozatlanul hagy."""
     m = NYERS_KULCS_RE.match(strong)
@@ -79,7 +83,7 @@ def normalizal(strong):
 
 
 def alap_strong_szamol(strong):
-    """"H0122a" -> "H0122"; "H0122" -> "H0122" (F05, D-UT1: a betu-utotagos
+    """"H0122a" -> "H0122"; "H0122" -> "H0122" (D38: a betu-utotagos
     kulcs sajat sor marad, de ez az oszlop koti az alapszamahoz -- a
     downstream kod, ha alapszam szerint illeszt, ezen keresztul tegye)."""
     m = ALAP_STRONG_RE.match(strong)
@@ -223,8 +227,8 @@ def run():
                 % (txt_hash, lex_hash))
         f.write('# unio-szabaly: szocikkenkent a hosszabb tisztitott szoveg (forras=txt/lexicon), '
                 '+-5%% elteresnel forras=egyenlo. Dok.: konkordancia/TBESH_TBESG_README.md\n')
-        f.write('# strong: a STEP-forras sajat kulcsa, betu-utotaggal is lehet (pl. H7121G a '
-                'TBESH.txt-ben "H7121a" alakban -- STEP-alszocikk/mikro-jelentes, F05/D-UT1). '
+        f.write('# strong: a STEP-forras sajat kulcsa, betu-utotaggal is lehet (pl. H1121G a '
+                'TBESH.txt-ben "H1121a" alakban -- STEP-alszocikk/mikro-jelentes, D38). '
                 'alap_strong: a 4-jegyu Strong-szam utotag nelkul -- ha a downstream kod '
                 'alapszam szerint illeszt, EZEN az oszlopon keresztul tegye, ne a strong '
                 'oszlopon (annak tobb sora is tartozhat egy alapszamhoz).\n')

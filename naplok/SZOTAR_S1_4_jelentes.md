@@ -52,7 +52,7 @@ Amit valójában a brief mond (§3, §7 1. menet prompt 4. pontja):
 | `konkordancia/UBS_DBH_referenciak.tsv` | ” | 389 212 | ” |
 | `konkordancia/UBS_DBH_anomaliak.tsv` | ” | 1 109 | ” |
 | `konkordancia/MCGED_teljes.tsv` | `eszkozok/mcged_import.py` | 5 303 | `lexikonok_nyers/README.md` |
-| `konkordancia/TBESH_konszolidalt.tsv` | `eszkozok/tbesh_konszolidalt_import.py` | 8 674 (a `H9xxx`-kizárás és a nullával-töltés normalizálása után, l. 4. szakasz) | `TBESH_TBESG_README.md` |
+| `konkordancia/TBESH_konszolidalt.tsv` | `eszkozok/tbesh_konszolidalt_import.py` | 9 838 (a `H9xxx`-kizárás, a nullával-töltés normalizálása és a betű-utótag-javítás után, l. 4. szakasz) | `TBESH_TBESG_README.md` |
 | `konkordancia/BDB_etimologia_kezi_hatarok.tsv` | `eszkozok/bdb_etim_hatarok_import.py` | 26 | `BDB_teljes_unabridged_README.md` |
 | `konkordancia/LXX_versszintu_parok.tsv` | `eszkozok/lxx_versszintu_import.py` | 99 356 | `README.md` |
 | `konkordancia/tW_szocikkek.tsv` | `eszkozok/tw_import.py` | 598 | `tW_README.md` (új) |
@@ -108,6 +108,23 @@ forrásválasztásba ezeknél) — 15 véletlen minta ellenőrzésével mind a
 15 esetben a lexicon-változat bizonyult jobbnak (a teljes txt-szöveget
 megtartja, plusz héber lemmát és POS-kódot ad hozzá), rosszabb eset
 nem fordult elő. Részletek: `naplok/S1_TBESH_kiszurt_elemzes.md`.
+
+**Harmadik utólagos javítás (`fuggetlen-ellenor`, 2026.09.29, `naplok/
+ELLENOR_SZOTAR_S1.md`):** a `^H\d{4}$` szűrő a STEP-források betű-utótagos
+alszócikk-kulcsait (pl. `H1121` "ben" a `TBESH.txt`-ben KIZÁRÓLAG
+`H1121a`/`H1121b` alakban létezik, sima `H1121` sosem) sosem ismerte fel —
+sem a régi, sem az új regex, ez FÜGGETLEN volt a fenti két javítástól.
+1424 nyers `.txt`-sor és a megfelelő `.lexicon`-bejegyzések szó nélkül
+kimaradtak, összesen 542 Strong `.txt`-oldali tartalma, köztük 5
+motívum-tokené (`H1121`, `H2403`, `H2416`, `H7451`, `H7497`). Javítás
+(D38): a betű-utótagos kulcs saját sorként marad (a mikro-jelentések
+közti különbség nem összemosható), új `alap_strong` oszlop köti vissza
+az alapszámhoz. **8 674 → 9 838 sor.** A 26 motívum-token alapszám-sorára
+(betű-utótagos alszócikk nélkül) a bontás a valóságban már a második
+javítás óta is **8 `txt` / 16 `lexicon` / 2 `egyenlő`** volt — a fenti,
+79-92. sorban közölt „11/13/2” elavult, sosem lett újramérve a
+harmadik javításig. Részletek: `konkordancia/TBESH_TBESG_README.md`,
+`naplok/ELLENOR_SZOTAR_S1.md`.
 
 ## 5. BDB-etimológia-határ — `eszkozok/bdb_etim_hatarok_import.py`
 
