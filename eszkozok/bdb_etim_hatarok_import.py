@@ -9,11 +9,10 @@ besorolasa negy kategoriaba (S9, D21, D28/D29 kiegeszitve).
   hatar, JOVAHAGYASRA VAR.
 - jovahagyott: mint a `javaslat`, de a felhasznalo chat-dontessel mar
   jovahagyta (2026.09.29, l. naplok/SZOTAR_S1_7_jelentes.md) -- a
-  JOVAHAGYOTT halmazban felsorolt Strongok. A H0430 -- a `Nes^l. c,)`
-  hatarvegre vonatkozo felhasznaloi ALLJ miatt -- MEG NEM jovahagyott,
-  `javaslat` marad (a raw BDB.lexicon HTML-forras alapjan igazolva, hogy
-  a hatar teljes, nem csonka -- l. a jelentesben), a vegso dontes a
-  felhasznaloe.
+  JOVAHAGYOTT halmazban felsorolt Strongok. A H0430-at a felhasznalo
+  eloszor ALLJ ala helyezte (a `Nes^l. c,)` hatarveg gyanus volt), majd
+  a raw BDB.lexicon HTML-forras alapjan vegzett vizsgalat (a hatar
+  teljes, nem csonka -- l. a jelentesben) utan kulon jova is hagyta.
 - nem_targyalja: rovid szocikk, nincs kulon etimologiai/rokon-nyelvi
   bekezdes.
 
@@ -46,9 +45,11 @@ BOUNDARY_RE = re.compile(r'—\s*1\s')  # em-dash + '1 '
 # D21 (a regi 24 tokenen) + D28/D29 (H8414 uj gepi, H0922 uj javaslat).
 NEM_TARGYALJA = {'H0779', 'H2555', 'H5303', 'H6093', 'H7496', 'H7497'}
 
-# Chat-dontessel jovahagyva 2026.09.29 (l. naplok/SZOTAR_S1_7_jelentes.md) --
-# a H0430 explicit ALLJ alatt marad, `javaslat` allapotban.
-JOVAHAGYOTT = {'H0922', 'H3678', 'H8004', 'H8034'}
+# Chat-dontessel jovahagyva 2026.09.29 (l. naplok/SZOTAR_S1_7_jelentes.md).
+# A H0430-at kulon, utolagos vizsgalat utan hagyta jova a felhasznalo (a
+# hatarveg "Nes^l. c,)" a nyers BDB.lexicon HTML-lel igazolva -- nem
+# OCR-hiba/csonkolas).
+JOVAHAGYOTT = {'H0430', 'H0922', 'H3678', 'H8004', 'H8034'}
 
 # Kezi hatar-javaslatok -- a nyelvi_hatter szoveget a BDB_teljes_unabridged.tsv
 # szocikkebol kezzel masoltuk ki, addig a pontig, ahol az erdemi etimologiai/
@@ -129,7 +130,7 @@ def run(heber_tokenek):
         f.write('# GENERÁLT (részben kézi javaslat) — eszkozok/bdb_etim_hatarok_import.py.\n')
         f.write('# allapot: gepi (regex-hatar) | javaslat (kezi, JOVAHAGYASRA VAR — l. menet '
                 'vegi ⛔) | jovahagyott (kezi, chat-dontessel jovahagyva, 2026.09.29 -- H0922, '
-                'H3678, H8004, H8034; a H0430 tovabbra is javaslat, l. naplok/'
+                'H3678, H8004, H8034, majd kulon vizsgalat utan H0430 is, l. naplok/'
                 'SZOTAR_S1_7_jelentes.md) | nem_targyalja (nincs erdemi etimologia). Dok.: '
                 'konkordancia/BDB_teljes_unabridged_README.md\n')
         f.write('\t'.join(header) + '\n')

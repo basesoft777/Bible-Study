@@ -152,9 +152,14 @@ pontosan az a fajta határ, amit a `gepi` (em-dash + „1 ”) minta más
 szócikkeknél automatikusan megtalál, itt csak azért `javaslat`, mert
 nincs em-dash a forrásban.
 
-**Javaslat: a jelenlegi határ helyes, nincs jobb végpont.** A végső
-jóváhagyás a felhasználóé — a `konkordancia/BDB_etimologia_kezi_hatarok.tsv`
-H0430-sora egyelőre `javaslat` marad.
+**Javaslat: a jelenlegi határ helyes, nincs jobb végpont.**
+
+**Jóváhagyva (2026.09.29):** a felhasználó a fenti vizsgálat alapján
+jóváhagyta a H0430-sort is — `konkordancia/BDB_etimologia_kezi_hatarok.tsv`
+`allapot=jovahagyott` (a forrás: `eszkozok/bdb_etim_hatarok_import.py`
+`JOVAHAGYOTT` halmaza, most már mind az 5 Stronggal). Ezzel a BDB-
+etimológia-határ mind az 5 kézi javaslata jóváhagyott állapotban van, 0
+`javaslat` maradt.
 
 ## 7. 2. kör — szabályjavítás (D34–D37) és eredmény (2026.09.29)
 
@@ -218,3 +223,18 @@ Nem íródott az `adat/kiejtes_kivetelek.tsv`-be (az S1 „nulla-diff” menet
 kimenetet nem változtat) — a formális rögzítés az S2.1 tétele. A
 `nulladiff.sh 8f5a1eb` a D31 két `--csere`-jével ezen a ponton lefutott:
 `exit 0`, üres diff.
+
+## 8. Lezárás (2026.09.29)
+
+A H2555-kivétel (D36) helye egyértelműsítve: `adat/kiejtes_heber_kivetelek.tsv`
+a **jelölt-generátor** (`eszkozok/heber_kiejtes_jeloltek.py`) bemenete,
+csak a `naplok/SZOTAR_S1_heber_jeloltek.tsv` jelölt-listát alakítja —
+**nem azonos** a végleges, render által olvasott `adat/kiejtes_kivetelek.tsv`
+kivétel-táblával, abba (mind a 26 jóváhagyott lemmával) csak az S2.1
+tétel ír.
+
+A H0430 BDB-határ a 6. szakasz vizsgálata alapján szintén jóváhagyva —
+mind a 26 héber kiejtés-jelölt és mind az 5 BDB-etimológia-határ
+jóváhagyott állapotban van. **Az S1 (1. menet) ezzel lezárva.** A branch
+(`claude/szotar-s1-menet`) még nincs a `main`-ben — következő lépés a CI
+és a `fuggetlen-ellenor` ügynök, majd a merge.
