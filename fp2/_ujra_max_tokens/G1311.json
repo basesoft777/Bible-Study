@@ -1,0 +1,20 @@
+{
+ "strong": "G1311",
+ "model": "deepseek/deepseek-v4-flash",
+ "max_tokens": 8000,
+ "usage": {
+  "prompt_tokens": 3985,
+  "completion_tokens": 442,
+  "completion_tokens_details": {
+   "reasoning_tokens": 0
+  },
+  "cost": 0.00068166,
+  "koltseg_forras": "openrouter",
+  "kiserletek": 1
+ },
+ "eredmeny": {
+  "strong": "G1311",
+  "forditas_hu": "G1311 — διαφθείρω 1. aorisztosz διεφθειρα; szenvedő (jelen idő διαφθείρομαι); perfektum melléknévi igenév διεφθαρμενος; 2. aorisztosz διεφθαρην; a Septuaginta nagyon gyakran a שִׁחֵת, alkalmanként a חִבֵּל megfelelője; a görög írásokban Homérosztól kezdve; 1. rosszabbá tenni, megrontani: elméket, erkölcsöket; τήν γῆν, azaz a földet lakó embereket, Jel 11:18; διεφθαρμένοι τόν νοῦν, 1Tim 6:5 (τήν διάνοιαν, Plato, legg. 10, p. 888 a.; τόν γνώμην, Dionysius Halicarnassus Antiquities 5, 21; τούς ὀφθαλμούς, Xenophon, an. 4, 5, 12). 2. elpusztítani, tönkretenni, (latin perdere); a. felemészteni, a testi erőről és erőnlégről: ὁ ἔξω ἡμῶν ἄνθρωπος διαφθείρεται (elpusztul), 2Kor 4:16; a féregről vagy molyról, amely élelmet, ruházatot stb. eszik, Luk 12:33. b. elpusztítani (latin delere): Jel 8:9; megölni, διαφθείρειν τούς, stb. Jel 11:18.",
+  "bizonytalan_feloldasok": []
+ }
+}

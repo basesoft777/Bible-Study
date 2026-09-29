@@ -1,0 +1,20 @@
+{
+ "strong": "G5010",
+ "model": "deepseek/deepseek-v4-flash",
+ "max_tokens": 8000,
+ "usage": {
+  "prompt_tokens": 4022,
+  "completion_tokens": 507,
+  "completion_tokens_details": {
+   "reasoning_tokens": 0
+  },
+  "cost": 0.00045324,
+  "koltseg_forras": "openrouter",
+  "kiserletek": 1
+ },
+ "eredmeny": {
+  "strong": "G5010",
+  "forditas_hu": "G5010 — τάξις τάξεως, ἡ (τάσσω), Aiszkhülosztól és Hérodotosztól kezdve; 1. elrendezés, elrendezés. 2. rend, azaz meghatározott egymásután, amely meghatározott időt is betart: Luk 1:8. 3. kellő vagy helyes rend: κατά τάξιν, rendben, 1Kor 14:40; rendezett állapot, Kol 2:5 (némelyek itt katonai értelemben veszik, 'rendezett sorakozó', l. στερέωμα, c.). 4. az a tisztség, rang vagy helyzet, amelyet valaki polgári vagy más ügyekben betölt; és mivel ez a helyzet általában az ember tehetségétől, tapasztalatától, erőforrásaitól függ, a τάξις egyenlővé válik a jellemmel, móddal, minőséggel, stílussal, (2Makk 9:18 2Makk 1:19; οὐ γάρ ἱστορίας, ἀλλά κουρεακης λαλιᾶς ἐμοί δοκοῦσι τάξιν ἔχειν, Polybius 3, 20, 5): κατά τήν τάξιν (amely helyett a Zsid 7:15-ben κατά τήν ὁμοιότητα áll) Μελχισέδεκ, a Melkisédek-féle papság módja szerint (A. V. order) (a Septuaginta szerint Zsolt 109:5 עַל־דִּבְרָתִי), Zsid 5:6, Zsid 5:10; Zsid 6:20; Zsid 7:11, Zsid 7:17, Zsid 7:21 (ahol T Tr WH kihagyják a kifejezést).",
+  "bizonytalan_feloldasok": []
+ }
+}
