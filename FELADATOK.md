@@ -1,6 +1,6 @@
 # FELADATOK.md — feladatkövető
 
-*v1.1 · 2026.09.29 · `main` = `d0736aa` · Ez az egyetlen fájl, amit a chat egy új beszélgetés elején elolvas. A részletek a briefekben és a `NYITOTT_FELADATOK.md`-ben vannak; ide csak az állapot, a függés és a következő lépés kerül. Munkafolyamat: `/kovetkezo` orkesztrátor, döntések a `DONTESEK.md`-ben.*
+*v1.1 · 2026.09.29 · `main` = `634d567` · Ez az egyetlen fájl, amit a chat egy új beszélgetés elején elolvas. A részletek a briefekben és a `NYITOTT_FELADATOK.md`-ben vannak; ide csak az állapot, a függés és a következő lépés kerül. Munkafolyamat: `/kovetkezo` orkesztrátor, döntések a `DONTESEK.md`-ben.*
 
 ## Alapelv: előbb az adatréteg, utána a render
 
@@ -12,7 +12,6 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Következő lépés | Hol |
 |---|---|---|---|---|---|---|
-| 6 | Új források 2. felmérése **helyi gépről** (FJ 2. menet) | döntés a Nave, a teljes KJV/ASV és a BSB importjáról; a Macula lefedettsége | 🟡 kész, PR-re vár | — (#5-tel párhuzamosan futhat) | Ág `claude/f06-forrasfelmeres`, jelentés `naplok/F06_forras_jelentes.md`. **Te:** döntés a Nave/KJV-ASV/BSB importról (N27, N29–N31); a menet Actionsben futott, helyi gép nem kellett | `naplok/FORRAS_jelentes.md` (fejlécébe kell a „felülírva: N27–N29” megjegyzés) |
 | 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ nem futott | #3, #5 (terminológia, kiejtés), #14 (kész) | brief v3 (Gemini, természetes hű, FP2-D15 szabályai) | `FORDITAS_ELES_THAYER_BRIEF.md` v2 → v3, `naplok/FP2_jelentes.md` (FP2-D13–D15) |
 | 8 | LXX-fordítói döntések a 87 függő igehelyre | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ nem futott | #1, #6 (Macula-lefedettség) | Kutatói adatmunka; 58 gépi jelölt tájékoztatásul: `naplok/FORRAS_FJ1_lxx_jeloltek.tsv` | eredetileg a LEXIKON_LEZARAS 4c pontja |
 
@@ -60,6 +59,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 ## Kész (utolsó 2 hét)
 
+- Új források 2. felmérése (#6, F06): GitHub Actionsben futott, helyi gép nem kellett; BSB 1Móz 98,83% (küszöb 95%, mérés előtt rögzítve), Macula teljes letöltés és 39/87 függő helyre LXX-megfelelő (#8 bemenete), KJV/ASV, Nave és licenc-javaslatok (MiniMax-költség 0,011927 USD); jelentés `naplok/F06_forras_jelentes.md`, ellenőrzés `naplok/ELLENOR_F06.md`, `naplok/ELLENOR_F06_v2.md`, merge `634d567` (PR #75, 09.29). Az import-döntés (N27, N29–N31) a felhasználóé, nyitva.
 - Szótári adatréteg, 1. menet (#5, SZOTAR S1): fordítási gyorsítótár, terminológia/kiejtés-táblák, 7 konkordancia-import (TBESH, UBS DBH, MCGED, BDB-etimológia-határ, LXX-versszint, tW), `ellenoriz.py` 13–14. szabály, 26 héber kiejtés-jelölt + 6 BDB-etimológia-határ jóváhagyva; a `fuggetlen-ellenor` 3 körben talált és javított hibák (TBESH betű-utótag adatvesztés D38–D40, BDB-határ szabály D41), K6/K7 pótolva; ellenőrzés `naplok/ELLENOR_SZOTAR_S1.md`, merge `d0736aa` (PR #72, 09.29). Tartalmi döntést igénylő tételek N39–N44-ként nyitva (`NYITOTT_FELADATOK.md`).
 - Orkesztrátor-parancs (F15: `/kovetkezo`, `DONTESEK.md`, végrehajtó subagentek, ellenőrzőlista), PR #70, ✅ a merge-commitban (09.29); próbafuttatás merge után új sessionben: `/kovetkezo`
 - Thayer-stíluspróba (FP2): Gemini 3.1 Flash Lite, DeepSeek V4 Flash, MiniMax M3 összevetése, vak bírálat és költségbecslés, `naplok/FP2_jelentes.md`; döntés (FP2-D13): fő fordító Gemini 3.1 Flash Lite; ellenőrzés `naplok/ELLENOR_FP2.md`, merge `971d0f2` (PR #68, 09.28)
