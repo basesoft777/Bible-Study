@@ -1,4 +1,4 @@
-# ELLENOR_orkesztrator-14 — F14_ORKESZTRATOR_BRIEF.md v1.3 · `origin/main..claude/orkesztrator-14` (2. kör, fej: 268a929)
+# ELLENOR_orkesztrator-15 — F14_ORKESZTRATOR_BRIEF.md v1.3 · `origin/main..claude/orkesztrator-14` (2. kör, fej: 268a929)
 
 *A `fuggetlen-ellenor` 2. körös jelentése a teljes PR-re, tömörítve; az ügynöknek nincs Write eszköze, a mentést az orkesztráló session végezte. 1. kör (2754a82): ELTÉRÉS: 6 tétel, javítva (F14.2–F14.3).*
 

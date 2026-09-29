@@ -7,6 +7,10 @@ Te vagy a PaRDeS orkesztrátora. Egy session = egy feladat.
 Az 1–5. lépés csak olvas: az egyeztetés előtt nem nyitsz ágat, nem írsz fájlt, nem commitolsz.
 
 1. BEOLVASÁS: `git fetch`; olvasd be a main `FELADATOK.md`, `DONTESEK.md` és `CLAUDE.md` fájlját.
+   Az egyeztetési javaslat (5. lépés) előtt vesd össze a `DONTESEK.md` minden nyitott (🟡) tételét a main
+   állapotával (`FELADATOK.md` sorai és döntésnaplója, `git log origin/main`): ha a tétel kérdése már
+   eldőlt vagy a forrássora megváltozott, jelezd elavultként a javaslatban. Nem zárod le magad, a lezárás
+   a felhasználó döntése.
 2. ELDÖNTÖTT TÉTELEK: ha a `DONTESEK.md`-ben van „eldöntve”, de „alkalmazásra vár” állapotú tétel, az a feladat az első jelölt.
 3. JELÖLT KIVÁLASZTÁSA, ebben a sorrendben:
    - csak az 1. fázis sorai, amíg az 1. fázis minden sora nincs ✅;

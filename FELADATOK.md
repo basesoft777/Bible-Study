@@ -16,7 +16,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | 6 | Új források 2. felmérése **helyi gépről** (FJ 2. menet) | döntés a Nave, a teljes KJV/ASV és a BSB importjáról; a Macula lefedettsége | ⬜ nincs brief | — (#5-tel párhuzamosan futhat) | Brief kell. Helyi gépen fusson, mert a cloud proxy blokkolt (N27, N29–N31) | `naplok/FORRAS_jelentes.md` (fejlécébe kell a „felülírva: N27–N29” megjegyzés) |
 | 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ nem futott | #3, #5 (terminológia, kiejtés), #14 (kész) | brief v3 (Gemini, természetes hű, FP2-D15 szabályai) | `FORDITAS_ELES_THAYER_BRIEF.md` v2 → v3, `naplok/FP2_jelentes.md` (FP2-D13–D15) |
 | 8 | LXX-fordítói döntések a 87 függő igehelyre | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ nem futott | #1, #6 (Macula-lefedettség) | Kutatói adatmunka; 58 gépi jelölt tájékoztatásul: `naplok/FORRAS_FJ1_lxx_jeloltek.tsv` | eredetileg a LEXIKON_LEZARAS 4c pontja |
-| 14 | Orkesztrátor-parancs (munkafolyamat) | a következő feladatot gép választja és futtatja; a chat csak döntéskor kap jelzést | ⏸ kész, draft PR merge-re vár (`claude/orkesztrator-14`) | — | Merge után próbafuttatás: új session, `/kovetkezo` (elvárt: terv egy konkrét feladatra, vagy a blokkoló `DONTESEK.md`-tétel megnevezése) | `F14_ORKESZTRATOR_BRIEF.md` |
+| 15 | Orkesztrátor-parancs (munkafolyamat) | a következő feladatot gép választja és futtatja; a chat csak döntéskor kap jelzést | ⏸ kész, draft PR merge-re vár (`claude/orkesztrator-14`) | — | Merge után próbafuttatás: új session, `/kovetkezo` (elvárt: terv egy konkrét feladatra, vagy a blokkoló `DONTESEK.md`-tétel megnevezése) | `F15_ORKESZTRATOR_BRIEF.md` |
 
 ## 2. fázis — render (csak az 1. fázis után)
 
