@@ -1,0 +1,68 @@
+# forras-URL: https://studybible.info/ ; https://ebible.org/ ; https://api.github.com/search/repositories ; https://github.com/kennethreitz/kjvstudy.org ; https://github.com/kaiserlik/kjv ; https://github.com/1John419/kjs ; https://github.com/luvlylavnder/bible-app-data ; https://github.com/RonTurrentine/KJV-Strongs-EBook ; https://github.com/Realbizdigital/scripture-intelligence-server
+# commit/verzio: lasd a soronkenti commit-megjegyzest
+# letoltes datuma: 2026-09-29
+# futtatasi parancs: python eszkozok/fj2/futtat.py --lepes meres
+forras	mero	ertek	megjegyzes
+studybible_info	http:https://studybible.info/KJV_Strongs/Genesis%201	HTTP 200	content-type: text/html; charset=utf-8; elso_blokk_bajt: 106495
+studybible_info	http:https://studybible.info/ASV_Strongs/Genesis%201	HTTP 200	content-type: text/html; charset=utf-8; elso_blokk_bajt: 93006
+ebible_org	http:https://ebible.org/Scriptures/eng-kjv_usfm.zip	HTTP 200	content-type: application/zip; elso_blokk_bajt: 200000
+ebible_org	usfm_meres:https://ebible.org/Scriptures/eng-kjv_usfm.zip	konyv=81 vers=36822 vers_strongos=31099 strong_cimke=349308	lefedettseg: USFM-bol merve
+ebible_org	http:https://ebible.org/Scriptures/engkjv_usfm.zip	HTTP 404	content-type: text/html; elso_blokk_bajt: 162
+ebible_org	http:https://ebible.org/Scriptures/eng-asv_usfm.zip	HTTP 200	content-type: application/zip; elso_blokk_bajt: 200000
+ebible_org	usfm_meres:https://ebible.org/Scriptures/eng-asv_usfm.zip	konyv=68 vers=31102 vers_strongos=30978 strong_cimke=705378	lefedettseg: USFM-bol merve
+ebible_org	http:https://ebible.org/Scriptures/engasv_usfm.zip	HTTP 404	content-type: text/html; elso_blokk_bajt: 162
+ebible_org	http:https://ebible.org/find/details.php?id=eng-kjv	HTTP 200	content-type: text/html; charset=UTF-8; elso_blokk_bajt: 6001
+ebible_org	http:https://ebible.org/find/details.php?id=eng-asv	HTTP 200	content-type: text/html; charset=UTF-8; elso_blokk_bajt: 5366
+github	kereses:kjv strongs	10 talalat	
+github	kereses:kjv strong numbers json	0 talalat	
+github	kereses:asv strongs	2 talalat	
+github	kereses:bible strongs word-level kjv tagged	0 talalat	
+github:1John419/kjs	repo_adatlap	star=16 meret_kb=45545 licenc=NOASSERTION frissitve=2026-03-17	King James with Strong Bible App
+github:Realbizdigital/scripture-intelligence-server	repo_adatlap	star=1 meret_kb=12987 licenc=MIT frissitve=2026-06-24	Bible MCP server with 54 tools for WEB, KJV and ASV Scripture search, verse lookup, passage analysis, theology, Hebrew and Greek study, sermons and devotionals.
+github:RonTurrentine/KJV-Strongs-EBook	repo_adatlap	star=1 meret_kb=32732 licenc=GPL-3.0 frissitve=2026-08-04	
+github:RonTurrentine/KJV-Strongs-Launcher	repo_adatlap	star=0 meret_kb=329 licenc=nincs_megadva frissitve=2026-07-26	Launcher project for the KJV-Strongs Bible Study application
+github:geiroffenberg/kjv_strongs_morph	repo_adatlap	star=0 meret_kb=6049 licenc=nincs_megadva frissitve=2026-04-25	
+github:jess7weatherby/bible-translations	repo_adatlap	star=0 meret_kb=4 licenc=nincs_megadva frissitve=2025-12-04	WEB and ASV .json files with strongs greek and red letter
+github:justonemoreukfan/KJV-1828-Strongs	repo_adatlap	star=0 meret_kb=17080 licenc=MIT frissitve=2026-09-24	Self-contained Scripture study workstation with the 1611 KJV, Noah Webster's 1828 Dictionary, and Strong's Hebrew & Greek Concordance.
+github:kaiserlik/kjv	repo_adatlap	star=17 meret_kb=26216 licenc=nincs_megadva frissitve=2023-01-23	King James Version (KJV) bible in json format. Includes Strong's Hebrew/Greek lexicon tags and italics. Analytics-friendly.
+github:kennethreitz/kjvstudy.org	repo_adatlap	star=37 meret_kb=99184 licenc=ISC frissitve=2026-07-08	A modern KJV Bible study platform with interlinear Hebrew/Greek, Strong's Concordance,   AI commentary, family trees, topical studies, and full-text search. Built with FastAPI and Tufte CSS.
+github:luvlylavnder/bible-app-data	repo_adatlap	star=2 meret_kb=30383 licenc=CC0-1.0 frissitve=2026-08-04	Public domain KJV, Strong’s Concordance data for my Bible study app
+github:mattatanner/kjv_strongs	repo_adatlap	star=0 meret_kb=2601 licenc=nincs_megadva frissitve=2026-02-01	
+github:stevej6x7/KJVBibleSite	repo_adatlap	star=0 meret_kb=12008 licenc=nincs_megadva frissitve=2016-07-08	generates web pages of KJV Bible with Hebrew Greek and Strong's
+github:kennethreitz/kjvstudy.org	elerheto	igen	commit 087e5a59d8d44c85ecff56743be57b604d3bb896
+github:kennethreitz/kjvstudy.org	strong_cimkek:kjvstudy_org/templates/index.html	nincs_mintaillesztes	lefedettseg=nem_merheto_automatikusan (kezi); genezis_1_1_pelda: In the beginning</span> <span class="sample-strongs">H7225</span> </div> <div class="sample-word"> <span class="sample-original hebrew">בָּרָא</span> <span class="sample-english">created</span> <span class="sample-strong
+github:kennethreitz/kjvstudy.org	strong_cimkek:kjvstudy_org/templates/interlinear_landing.html	nincs_mintaillesztes	lefedettseg=nem_merheto_automatikusan (kezi); genezis_1_1_pelda: In the beginning</span> <span class="sample-strongs">H7225</span> </div> <div class="sample-word"> <span class="sample-original hebrew">בָּרָא</span> <span class="sample-english">created</span> <span class="sample-strong
+github:kennethreitz/kjvstudy.org	strong_cimkek:kjvstudy_org/data/word_studies.json	nincs_mintaillesztes	lefedettseg=nem_merheto_automatikusan (kezi); genezis_1_1_pelda: In the beginning was the Word' (John 1:1).", "ot_strongs": [ "H1697" ], "nt_strongs": [ "G3056", "G4487" ] }, "church": { "nt_term": "ἐκκλησία", "nt_transliteration": "Ekklesia", "nt_meaning": "Assembly, church", "nt_not
+github:kennethreitz/kjvstudy.org	szo_szintu_strong_bizonyitek	igen	KJV/ASV nevu fajlokban talalt cimke-minta
+github:kennethreitz/kjvstudy.org	licenc_fajl	LICENSE	745 karakter
+github:kennethreitz/kjvstudy.org	licenc_fajl	README.md	6358 karakter
+github:kennethreitz/kjvstudy.org	licenc_fajl	tests/README.md	3566 karakter
+github:kennethreitz/kjvstudy.org	licenc_fajl	kjvstudy_org/data/README.md	22154 karakter
+github:kaiserlik/kjv	elerheto	igen	commit 323f79bc6f4c2749e77a23a71b7ca7772fad81a7
+github:kaiserlik/kjv	szo_szintu_strong_bizonyitek	nem	KJV/ASV nevu fajlokban talalt cimke-minta
+github:kaiserlik/kjv	licenc_fajl	README.md	224 karakter
+github:1John419/kjs	elerheto	igen	commit 402cf72c4abd2b6ab478a9098779a7f041cf2ff0
+github:1John419/kjs	szo_szintu_strong_bizonyitek	nem	KJV/ASV nevu fajlokban talalt cimke-minta
+github:1John419/kjs	licenc_fajl	LICENSE.md	620 karakter
+github:1John419/kjs	licenc_fajl	README.md	940 karakter
+github:luvlylavnder/bible-app-data	elerheto	igen	commit 1ad7e27fdaf4b1117164b5d422b6490d26d74806
+github:luvlylavnder/bible-app-data	strong_cimkek:Bible-Versions/KJV-Strongs/kjv_strongs.json	kapcsos_H_G=351804	lefedettseg=nem_merheto_automatikusan (kezi); genezis_1_1_pelda: In the beginning{H7225} God{H430} created{H1254}{(H8804)}{H853} the heaven{H8064} and{H853} the earth{H776}."},{"book_name":"Genesis","book":1,"chapter":1,"verse":2,"text":"And the earth{H776} was{H1961}{(H8804)} without
+github:luvlylavnder/bible-app-data	strong_cimkek:Bible-Versions/ASV-Strongs/asvs.json	kapcsos_H_G=348546	lefedettseg=nem_merheto_automatikusan (kezi); genezis_1_1_pelda: In the beginning{H7225} God{H430} created{H1254} the heavens{H8064} and{H853} the earth.{H776}"},{"book_name":"Genesis","book":1,"chapter":1,"verse":2,"text":"And the earth{H776} was{H1961} waste{H8414} and void;{H922} a
+github:luvlylavnder/bible-app-data	szo_szintu_strong_bizonyitek	igen	KJV/ASV nevu fajlokban talalt cimke-minta
+github:luvlylavnder/bible-app-data	licenc_fajl	LICENSE	7048 karakter
+github:luvlylavnder/bible-app-data	licenc_fajl	README.md	383 karakter
+github:luvlylavnder/bible-app-data	licenc_fajl	Bible-Versions/KJV/LICENSE	1066 karakter
+github:luvlylavnder/bible-app-data	licenc_fajl	Bible-Versions/KJV/README.md	211 karakter
+github:luvlylavnder/bible-app-data	licenc_fajl	Bible-Versions/NIV/LICENSE	1066 karakter
+github:luvlylavnder/bible-app-data	licenc_fajl	Bible-Versions/NIV/README.md	917 karakter
+github:RonTurrentine/KJV-Strongs-EBook	elerheto	igen	commit 1375286242c019da5ef3fe764dc78a5425790042
+github:RonTurrentine/KJV-Strongs-EBook	strong_cimkek:kjv.osis.xml	lemma_strong=355850	lefedettseg=nem_merheto_automatikusan (kezi); genezis_1_1_pelda: In the beginning</w> <w lemma="strong:H0430">God</w> <w morph="strongMorph:TH8804" lemma="strong:H0853 strong:H01254">created</w> <w lemma="strong:H08064">the heaven</w> <w lemma="strong:H0853">and</w> <w lemma="strong:H
+github:RonTurrentine/KJV-Strongs-EBook	strong_cimkek:.github/agents/kjv-strongs-converter.agent.md	lemma_strong=2	lefedettseg=nem_merheto_automatikusan (kezi); genezis_1_1_pelda: In the beginning [H7225] God [H430] created [H1254] [H853] the heaven [H8064] and [H853] the earth [H776]. ``` Where each [H####] or [G####] is a clickable hyperlink to a dictionary entry page. **Dictionary Entry Pages**
+github:RonTurrentine/KJV-Strongs-EBook	szo_szintu_strong_bizonyitek	igen	KJV/ASV nevu fajlokban talalt cimke-minta
+github:RonTurrentine/KJV-Strongs-EBook	licenc_fajl	LICENSE	35149 karakter
+github:RonTurrentine/KJV-Strongs-EBook	licenc_fajl	README.md	12669 karakter
+github:Realbizdigital/scripture-intelligence-server	elerheto	igen	commit 24be759113532bbf7b39b557ba0cc4019491ab03
+github:Realbizdigital/scripture-intelligence-server	szo_szintu_strong_bizonyitek	nem	KJV/ASV nevu fajlokban talalt cimke-minta
+github:Realbizdigital/scripture-intelligence-server	licenc_fajl	LICENSE	1086 karakter
+github:Realbizdigital/scripture-intelligence-server	licenc_fajl	README.md	13909 karakter
+github:scrollmapper/bible_databases	elerheto	nem	idokorlat (420 mp) a klonozasnal
