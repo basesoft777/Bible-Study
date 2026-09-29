@@ -1,10 +1,8 @@
 # F06_FORRASFELMERES_BRIEF.md 1. lepes -- forras-felmeres GitHub Actionsben.
 #
-# INDITAS. A vegleges trigger (brief 1. lepes): push a claude/f06-forrasfelmeres agra, ha az
-# eszkozok/fj2/**, ez a workflow-fajl vagy az eszkozok/fj2/futtatas.txt valtozott.
-# A brief 2. lepese (⛔) elott a trigger szandekosan szukebb volt (csak futtatas.txt, amely nem letezett).
-# A felhasznaloi valasz megerkezett; az F06.2 commit bovitette az utvonalakat, letrehozta a
-# kuszob.txt-t es a futtatas.txt-t. Ujrafuttatashoz az eszkozok/fj2/futtatas.txt-t modositsd.
+# INDITAS. Csak kezi (workflow_dispatch): GitHub -> Actions -> f06_forrasfelmeres -> Run workflow,
+# a claude/f06-forrasfelmeres agon. Push nem indit futast (az eszkozok/fj2/futtatas.txt torolve).
+# Korabbi push-trigger: l. F06.2 (a brief 1. lepese szerinti utvonalak).
 #
 # A GITHUB_TOKEN-nel vegzett push nem indit uj futast, ezert nincs hurok.
 # Az OPENROUTER_API_KEY csak a 'licenc' job env-jeben szerepel.
@@ -12,12 +10,7 @@
 name: f06_forrasfelmeres
 
 on:
-  push:
-    branches: [claude/f06-forrasfelmeres]
-    paths:
-      - 'eszkozok/fj2/**'
-      - '.github/workflows/f06_forrasfelmeres.yml'
-      - 'eszkozok/fj2/futtatas.txt'
+  workflow_dispatch:
 
 permissions:
   contents: write
