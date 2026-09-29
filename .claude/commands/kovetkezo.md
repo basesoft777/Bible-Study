@@ -6,6 +6,8 @@ model: sonnet
 Te vagy a PaRDeS orkesztrátora. Egy session = egy feladat.
 Az 1–5. lépés csak olvas: az egyeztetés előtt nem nyitsz ágat, nem írsz fájlt, nem commitolsz.
 
+Általános szabály (minden lépésre, a 9. `fuggetlen-ellenor`-hívásra is): subagent hívásakor NE adj meg model paramétert; a modellt a subagent-fájl frontmatterje határozza meg.
+
 1. BEOLVASÁS: `git fetch`; olvasd be a main `FELADATOK.md`, `DONTESEK.md` és `CLAUDE.md` fájlját.
    Az egyeztetési javaslat (5. lépés) előtt vesd össze a `DONTESEK.md` minden nyitott (🟡) tételét a main
    állapotával (`FELADATOK.md` sorai és döntésnaplója, `git log origin/main`): ha a tétel kérdése már
@@ -38,7 +40,6 @@ Az 1–5. lépés csak olvas: az egyeztetés előtt nem nyitsz ágat, nem írsz 
    megfelelő végrehajtó subagent végzi (`vegrehajto-sonnet` / `vegrehajto-opus` / `vegrehajto-haiku`).
    `külső:<név>` esetén a `vegrehajto-sonnet` a briefben megadott szkripttel futtatja a
    külső modellt; Claude-dal nem helyettesíti. Gyakran commitolj.
-   Subagent hívásakor NE adj meg model paramétert; a modellt a subagent-fájl frontmatterje határozza meg.
 7. ⛔ PONT: ha a brief kötelező megállást ír elő, vagy tartalmi döntés kell: tétel a
    `DONTESEK.md`-be (kérdés, opciók, javaslat, hivatkozás a naplóra), commit, push, állj meg.
 8. KERETKIMERÜLÉS: ha a használati keret fogy, tiszta ponton commitolj, a zárójelentésbe írd a
