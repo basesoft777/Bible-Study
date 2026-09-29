@@ -102,3 +102,41 @@ Az 1. kör alábbi találatai VÁLTOZATLANOK, a `9a3f883`/`340255f`/`55c407a` eg
 4. Kisebb pontatlanságok (a `cfa7d0d`/`4813588` commit-hivatkozás az E5-jelölésben, a D40 napló-nyom hiánya) — nem blokkolók.
 
 *A dokumentációs pontatlanságokat (H7121-példa, H1121b "kinsfolk" félrecímkézés), amelyeket ez a 2. kör talált, a hívó a `55c407a` commitban már javította, mielőtt ez a jelentés a fájlba került volna.*
+
+---
+
+# ELLENŐR — SZOTAR S1, 3. kör (F05b javítókör: `a134e54`, `0eeb885`, `79c4758`)
+Brief: `SZOTAR_BRIEF.md` v1.10 · teljes tartomány: `8f5a1eb..79c4758` · ebben a körben új: `55c407a..79c4758`
+*A `fuggetlen-ellenor` ügynök jelentése, 2026.09.29. A hívó a `88ddca8` commitban javította a legsúlyosabb (H2403-indoklás) és a további talált pontatlanságokat, mielőtt ez a jelentés a fájlba került volna.*
+
+**Az ügynök eltérései a parancskorláttól (mindegyik csak olvasott):** `cd … &&` előtag, `git diff`/`git log` kimenetének `cut`/`grep`/`awk`/`wc` szűrése, `futtat.py` végére `; echo "EXIT=$?"`. A feladatban megadott CI-parancs szó szerint nem futtatható volt Windows alatt (`Argument list too long`, a commit-üzenetek 38 KB-osak) — az ügynök ezt `--grep='TORLES-SZANDEKOS'`-szűrt üzenettel kerülte meg (funkcionálisan egyenértékű, mert az E5 csak erre a mintára keres).
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| A / K6: SEMA 2.18 létezik, a két tábla fejléce egyezik | OK | `adat/SEMA.md` 2.18 | Mindkét TSV fejléce a „Séma: adat/SEMA.md 2.18”-ra mutat, a mezőtáblák egyeznek a tényleges oszlopokkal. |
+| K6: SEMA 2.18 `minta`-leírás | ELTÉRÉS (kicsi, azóta javítva) | `adat/SEMA.md` 2.18 | A `minta` üresíthetőségét írta le, holott törlésnél a `csere` üres — javítva `88ddca8`-ban. |
+| K6: SEMA 2.16 „22 sor” → „24 sor” | OK | `adat/SEMA.md:739` | `kiejtes_szabalyok.tsv`: 24 adatsor. |
+| K6: BDB-README `allapot` | ELTÉRÉS (kicsi, azóta javítva) | `BDB_teljes_unabridged_README.md` | A `nyelvi_hatter` definíciója még a D41 előtti („első számozott jelentésig”) volt, és a H2403 indoklása hamis — mindkettő javítva `88ddca8`-ban. |
+| K6: `SZOTAR_BRIEF.md` S2.1 ellentmondás | ELTÉRÉS (maradék, azóta javítva) | `SZOTAR_BRIEF.md:163, 294` | A §7 2. menet promptja még „BDB-határokkal” számolt S2.1-nél, a 163. sor még „5 határ”-t írt — mindkettő javítva `88ddca8`-ban. |
+| B / K7: MCGED SHA | OK | `konkordancia/lexikonok_nyers/README.md:73` | A README és a `MCGED_teljes.tsv` fejléce azonos hash-t ad. |
+| K7: BDB SHA | NEM ELLENŐRIZHETŐ | `BDB_teljes_unabridged_README.md:15-16` | A hash újraszámolásához nem volt megengedett parancs. |
+| K7: LXX-párok bemenete | ELTÉRÉS (kicsi, azóta javítva) | `konkordancia/README.md` | Az `adat/elofordulasok.tsv`-t tévesen futásidejű bemenetként nevezte meg — a szkript valójában egy kódba égetett token-listát használ. Javítva `88ddca8`-ban. |
+| D / D41: kód = leírt szabály | OK | `eszkozok/bdb_etim_hatarok_import.py` | A `zero_melysegu_emdash()`/`hatar_keres()` pontosan a leírt zárójel-mélység-szabályt valósítja meg, 40%-os küszöbbel; a kézi javaslat elsőbbséget kap. |
+| D41: 14/6/6 = 26 | OK | `BDB_etimologia_kezi_hatarok.tsv` | Pontosan egyezik. Minden `gepi` határ a küszöb alatt (legmagasabb: H7585, 26,5%). |
+| D41: „a többi 11 változatlan” | OK | ua. | `git diff 0eeb885..79c4758`: csak H2403, H7121, H7451, H7585 sor változott. |
+| **D41 / H2403 kézi határ indoklása** | **ELTÉRÉS — legsúlyosabb, AZÓTA JAVÍTVA** | `BDB_teljes_unabridged_README.md`; `bdb_etim_hatarok_import.py`; `SZOTAR_BRIEF.md` D41 | Az eredeti indoklás („nincs korai em-dash”) hamis volt — a szócikkben VAN nulla mélységű em-dash az 5,8%-nál, de addig egy em-dash nélküli inflektált-alak-lista áll, ami nem etimológia (a D41-szabály ismert gyengesége). A kézi határ szövege maga helyes, csak az indoklás volt téves. Javítva `88ddca8`-ban, a hívó saját lekérdezésével megerősítve. |
+| 2. kérdés: a 6 korábban problémás token mindegyike most helyes határnál végződik | OK | `BDB_etimologia_kezi_hatarok.tsv` | H7121, H2416, H1121, H7843, H7585, H7043 — mindegyik a szócikkfejnél/etimológia-zárásnál ér véget, utána alakparadigma vagy használati lista következik, ami már nincs benne. |
+| 3. kérdés: az 5 korábbi jóváhagyott határ bájtra változatlan | OK | `git diff 02c8bfa..HEAD` | H0430, H0922, H3678, H8004, H8034 sora kontextussor, nem módosult. |
+| 4. kérdés: CI | OK (feltételes, a parancs javítva) | — | A dokumentált parancs Windows alatt túl hosszú volt; szűrt/fájlos commit-üzenettel EXIT=0, E2–E8/E10–E16 0, E9 4 JELENTÉS. |
+| 5. kérdés: N39–N44 mind felvéve | OK (N39 kis hiánnyal, azóta javítva) | `NYITOTT_FELADATOK.md` | Mind a hat tétel felvéve és nyitott; az N39-ből hiányzott a `w` (vav) említése — pótolva `88ddca8`-ban. |
+| A2: a NYITOTT fejléce | ELTÉRÉS (kicsi, azóta javítva) | `NYITOTT_FELADATOK.md:3` | „v1.9”-et írt „v1.10” helyett — javítva. |
+| Commit-fegyelem a javítókörben | megjegyzés | `git log e6257f9..HEAD` | A commit-üzenetek a brief saját szövegét követik szó szerint (a felhasználó explicit instrukciója), nem a szokásos tétel-azonosítós formát — szándékos eltérés, nem hiba. |
+| FELADATOK.md #5 sora | megjegyzés | `FELADATOK.md:15` | A javítókör idején még nem frissült — ez a brief E.5 lépése, ami ez után a kör után következik. |
+| A1/A3/A4/A5/A6 | OK | — | A diff nem érint tanulmány-/lexikon-/motívumforrást; E12–E15 0. |
+
+## Súlyossági összegzés (3. kör)
+
+1. **A H2403 kézi határ indoklása hamis volt** — a hívó saját lekérdezéssel megerősítette az ellenőr találatát, és javította a dokumentációt (a kézi határ szövege maga mindvégig helyes volt, csak az indoklás nem).
+2. Öt kisebb dokumentációs pontatlanság (SEMA 2.18 mező-leírás, BDB-README definíció, két S2.1-ellentmondás, LXX-bemenet leírása) — mind javítva.
+3. A CI-parancs Windows alatt hosszkorlátba ütközik nagy PR-nél; a `--commit-uzenet-fajl` (fájlból) alak ezt elkerüli — ezt a hívó már az 1–2. körben is használta.
+4. Nincs új adatréteg-hiba: a betű-utótag-javítás (D38), a BDB-határ (D41) és a K6/K7 pótlás mind megerősítve helyesnek bizonyult saját lekérdezéssel.
