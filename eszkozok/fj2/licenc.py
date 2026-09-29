@@ -101,7 +101,23 @@ def fut(parancs):
     osszes = 0.0
     response_format = True
     sorszam = 0
+    # ujrafuttatas: a korabbi, kapun atment iteleteket nem kerdezzuk ujra (nincs dupla koltseg);
+    # a korabbi hivasok koltsegsorai megmaradnak, az osszkoltseg mindet tartalmazza
+    korabbi = {}
+    lic_ut = os.path.join(kozos.NAPLOK, 'F06_licenc.tsv')
+    kol_ut = os.path.join(kozos.NAPLOK, 'F06_koltseg.tsv')
+    if os.path.exists(lic_ut) and os.path.exists(kol_ut):
+        for r in kozos.tsv_olvas(lic_ut)[1]:
+            if r[3] == 'javaslat_kapun_atment':
+                korabbi[(r[0], r[1])] = tuple(r)
+        for r in kozos.tsv_olvas(kol_ut)[1]:
+            koltseg_sorok.append(tuple(r))
+            osszes += float(r[7])
+            sorszam = max(sorszam, int(r[0]))
     for forras, mentett, eredeti, karakter in sorok:
+        if (forras, eredeti) in korabbi:
+            licenc_sorok.append(korabbi[(forras, eredeti)])
+            continue
         if not mentett:
             licenc_sorok.append((forras, eredeti, karakter, 'kezi_tul_nagy_fajl') + ('',) * 6)
             continue

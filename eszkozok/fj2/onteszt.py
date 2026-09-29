@@ -108,6 +108,18 @@ def teszt_bsb_futas(tmp):
     assert len(elt) == 1 and elt[0][0] == '1Móz 1:2'
 
 
+def teszt_kjv_asv(tmp):
+    import kjv_asv
+    usfm = [('a', '\\id GEN x\n\\c 1\n\\v 1 \\w In|strong="H7225"\\w* b\n\\v 2 nincs'),
+            ('b', '\\id TOB y\n\\c 1\n\\v 1 \\w x|strong="H1"\\w*')]
+    assert kjv_asv.usfm_meres(usfm) == (2, 3, 2, 2, 1, 2, 1), kjv_asv.usfm_meres(usfm)
+    ut = os.path.join(tmp, 'k.json')
+    with open(ut, 'w', encoding='utf-8') as f:
+        json.dump([{'book': 1, 'chapter': 1, 'verse': 1, 'text': 'In{H7225} x'},
+                   {'book': 1, 'chapter': 1, 'verse': 2, 'text': 'nincs'}], f)
+    assert kjv_asv.json_lefedettseg(ut) == (1, 2, 1)
+
+
 def main():
     kozos.SZARAZ = False
     teszt_kapu()
@@ -115,6 +127,7 @@ def main():
     with tempfile.TemporaryDirectory() as tmp:
         teszt_macula(tmp)
         teszt_bsb_futas(tmp)
+        teszt_kjv_asv(tmp)
     print('onteszt: rendben')
 
 

@@ -62,18 +62,52 @@ def http_proba(url):
 
 def usfm_meres(szovegek):
     """szovegek: [(fajlnev, szoveg)] -> (konyvek_db, versek, versek_strongal, strong_cimkek)"""
-    versek = strongos = cimkek = 0
-    konyvek = set()
+    versek = strongos = cimkek = kanoni_versek = kanoni_strongos = 0
+    konyvek, kanoni = set(), set()
     for fn, sz in szovegek:
         m = re.search(r'\\id\s+([A-Z0-9]{3})', sz)
         if m:
             konyvek.add(m.group(1))
+        kan = bool(m and m.group(1) in KANONI_USFM)
+        if kan:
+            kanoni.add(m.group(1))
         for v in re.split(r'\\v\s+\d+', sz)[1:]:
             versek += 1
             n = len(re.findall(r'strong="[HG]\d', v))
             cimkek += n
             strongos += 1 if n else 0
-    return len(konyvek), versek, strongos, cimkek
+            if kan:
+                kanoni_versek += 1
+                kanoni_strongos += 1 if n else 0
+    return len(konyvek), versek, strongos, cimkek, len(kanoni), kanoni_versek, kanoni_strongos
+
+
+KANONI_USFM = set('GEN EXO LEV NUM DEU JOS JDG RUT 1SA 2SA 1KI 2KI 1CH 2CH EZR NEH EST JOB PSA PRO ECC SNG ISA JER LAM EZK DAN HOS JOL AMO OBA JON MIC NAM HAB ZEP HAG ZEC MAL MAT MRK LUK JHN ACT ROM 1CO 2CO GAL EPH PHP COL 1TH 2TH 1TI 2TI TIT PHM HEB JAS 1PE 2PE 1JN 2JN 3JN JUD REV'.split())
+
+
+def json_lefedettseg(ut):
+    """JSON-bol (rekurziv) a book/chapter/verse/text dict-eket gyujti: (konyv, vers, vers_cimkevel) vagy None."""
+    try:
+        with open(ut, encoding='utf-8') as f:
+            adat = json.load(f)
+    except Exception:  # noqa: BLE001
+        return None
+    talalt = {}
+
+    def jar(x):
+        if isinstance(x, dict):
+            if all(k in x for k in ('book', 'chapter', 'verse', 'text')) and isinstance(x['text'], str):
+                talalt[(str(x['book']), str(x['chapter']), str(x['verse']))] = bool(re.search(r'\{[HG]\d', x['text']))
+            else:
+                for v in x.values():
+                    jar(v)
+        elif isinstance(x, list):
+            for v in x:
+                jar(v)
+    jar(adat)
+    if not talalt:
+        return None
+    return len({k[0] for k in talalt}), len(talalt), sum(1 for v in talalt.values() if v)
 
 
 def tag_meres(ut):
@@ -143,9 +177,11 @@ def fut(munka, parancs):
                             with open(os.path.join(kozos.LICENC_MAPPA, mentett), 'w', encoding='utf-8', newline='') as f:
                                 f.write(sz)
                             kozos.LICENC_SOROK.append((azon, mentett, url + '#' + n, len(sz)))
-                kdb, v, vs, c = usfm_meres(szovegek)
+                kdb, v, vs, c, kk, kv, kvs = usfm_meres(szovegek)
                 sorok.append((azon, 'usfm_meres:' + url, 'konyv=%d vers=%d vers_strongos=%d strong_cimke=%d' % (kdb, v, vs, c),
-                              'lefedettseg: USFM-bol merve'))
+                              'lefedettseg: USFM-bol merve (minden id-jelolt fajl, apokrifokkal egyutt)'))
+                sorok.append((azon, 'usfm_meres_kanoni66:' + url, 'konyv=%d vers=%d vers_strongos=%d' % (kk, kv, kvs),
+                              'csak a 66 kanoni konyv USFM-azonositoi'))
             except Exception as e:  # noqa: BLE001
                 sorok.append((azon, 'zip_feldolgozas', 'hiba', str(e)[:150]))
         if valasz is not None:
@@ -174,6 +210,10 @@ def fut(munka, parancs):
                 szamok, pelda = tag_meres(ut)
                 if any(szamok.values()) or pelda:
                     van_cimke = True
+                    jl = json_lefedettseg(ut) if fn.lower().endswith('.json') else None
+                    if jl:
+                        sorok.append((azon, 'json_lefedettseg:' + rel, 'konyv=%d vers=%d vers_strong_cimkevel=%d' % jl,
+                                      'JSON book/chapter/verse/text rekordokbol merve'))
                     sorok.append((azon, 'strong_cimkek:' + rel, ' '.join('%s=%d' % kv for kv in szamok.items() if kv[1]) or 'nincs_mintaillesztes',
                                   'lefedettseg=nem_merheto_automatikusan (kezi); genezis_1_1_pelda: %s' % pelda))
         sorok.append((azon, 'szo_szintu_strong_bizonyitek', 'igen' if van_cimke else 'nem', 'KJV/ASV nevu fajlokban talalt cimke-minta'))
