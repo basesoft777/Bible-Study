@@ -8,11 +8,11 @@ studybible_info	http:https://studybible.info/ASV_Strongs/Genesis%201	HTTP 200	co
 ebible_org	http:https://ebible.org/Scriptures/eng-kjv_usfm.zip	HTTP 200	content-type: application/zip; elso_blokk_bajt: 200000
 ebible_org	usfm_meres:https://ebible.org/Scriptures/eng-kjv_usfm.zip	konyv=81 vers=36822 vers_strongos=31099 strong_cimke=349308	lefedettseg: USFM-bol merve (minden id-jelolt fajl, apokrifokkal egyutt)
 ebible_org	usfm_meres_kanoni66:https://ebible.org/Scriptures/eng-kjv_usfm.zip	konyv=66 vers=31102 vers_strongos=31099	csak a 66 kanoni konyv USFM-azonositoi
-ebible_org	http:https://ebible.org/Scriptures/engkjv_usfm.zip	HTTP 404	content-type: text/html; elso_blokk_bajt: 162
+ebible_org	http:https://ebible.org/Scriptures/engkjv_usfm.zip	HTTP 404	content-type: text/html; charset=utf-8; elso_blokk_bajt: 162
 ebible_org	http:https://ebible.org/Scriptures/eng-asv_usfm.zip	HTTP 200	content-type: application/zip; elso_blokk_bajt: 200000
 ebible_org	usfm_meres:https://ebible.org/Scriptures/eng-asv_usfm.zip	konyv=68 vers=31102 vers_strongos=30978 strong_cimke=705378	lefedettseg: USFM-bol merve (minden id-jelolt fajl, apokrifokkal egyutt)
 ebible_org	usfm_meres_kanoni66:https://ebible.org/Scriptures/eng-asv_usfm.zip	konyv=66 vers=31102 vers_strongos=30978	csak a 66 kanoni konyv USFM-azonositoi
-ebible_org	http:https://ebible.org/Scriptures/engasv_usfm.zip	HTTP 404	content-type: text/html; elso_blokk_bajt: 162
+ebible_org	http:https://ebible.org/Scriptures/engasv_usfm.zip	HTTP 404	content-type: text/html; charset=utf-8; elso_blokk_bajt: 162
 ebible_org	http:https://ebible.org/find/details.php?id=eng-kjv	HTTP 200	content-type: text/html; charset=UTF-8; elso_blokk_bajt: 6001
 ebible_org	http:https://ebible.org/find/details.php?id=eng-asv	HTTP 200	content-type: text/html; charset=UTF-8; elso_blokk_bajt: 5366
 github	kereses:kjv strongs	10 talalat	
