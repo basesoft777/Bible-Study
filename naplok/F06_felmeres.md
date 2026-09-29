@@ -65,7 +65,7 @@ A brief kéri, hogy a felmérés rögzítse, mit találtam GitHubon. **A GitHub-
 
 ## 6. ⛔ Előfeltételek a felhasználótól (a brief 2. lépése)
 
-**Állapot: a válasz még nincs meg; mérés nem indult.**
+**Állapot a 0. lépés lezárásakor: a válasz még nem volt meg, mérés nem indult. (Azóta megérkezett; lásd alább a `## ⛔ Válasz` szakaszt.)**
 
 1. **BSB-küszöb (N30).** Javaslat, a mérés előtt rögzítendő:
    - *egyezés definíciója:* a vers TAHOT Strong-halmaza **része** a BSB Strong-halmazának, a 9000-es (és afeletti) STEPBible-prefixkódok nélkül;

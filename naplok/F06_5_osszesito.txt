@@ -9,6 +9,9 @@ MACULA 87 hely: sorok=87
   allapot x azonositas ('LXX_MEGFELELO', 'strong') = 37
   allapot x azonositas ('LXX_MEGFELELO', 'szoalak') = 2
   allapot x azonositas ('NINCS_VERS', '') = 2
+  GOROG_NELKUL bontas: osszes=38 ; van gorog szoalak (gorog Strong nincs)=27 ; nincs gorog szoalak sem=11
+  NINCS_A_VERSBEN: sorok=8 ; heber_kulcsszo == "—" (nem volt mit keresni)=8 ; heber_strong_munkalap ures=8
+  NINCS_VERS igehelyek: 4Móz 13:34, 4Móz 13:34
   egyedi igehely a LXX_MEGFELELO sorokban: 39
   megjegyzes kitoltve (tobb heber talalat, eltero gorog Strong): 0
 MACULA lefedettseg: konyv=39 ; lowfat-fajl osszesen=929
@@ -22,4 +25,5 @@ BSB elteresek: sorok=18 ; ok: {'tahot_nincs_a_bsb-ben': 18}
 LICENC: szovegek=32 ; allapot: {'javaslat_kapun_atment': 24, 'kezi_hosszu': 6, 'kezi_kapu': 2}
   licenc_tipus (kapun atment): {'nincs_adat': 11, 'MIT License': 4, 'MIT': 1, 'ISC License': 1, 'ISC': 1, 'GPL-3.0': 1, 'CC0 1.0 Universal': 1, 'CC0 1.0': 2, 'CC BY 4.0': 1, 'CC0/CC BY 4.0': 1}
   nem ures idezet (kapun atment): 13
+KOLTSEG fejlecsor: # osszkoltseg_usd=0.011926 hivasok=29 plafon=1.00
 KOLTSEG: hivasok=29 ; osszeg=0.011927 USD ; kiserlet=2 sorok=3 ; providerek=['CoreWeave', 'GMICloud', 'Minimax', 'ModelRun', 'SambaNova', 'StreamLake', 'Together']

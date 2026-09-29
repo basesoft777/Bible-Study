@@ -34,6 +34,21 @@ for k, v in sorted(Counter(x[i['allapot']] for x in r).items()):
     print('  allapot %s = %d' % (k, v))
 for k, v in sorted(Counter((x[i['allapot']], x[i['azonositas']]) for x in r).items()):
     print('  allapot x azonositas %s = %d' % (k, v))
+# a HEBER_SZO_GOROG_NELKUL bontasa: van-e gorog SZOALAK (csak a gorog Strong hianyzik) vagy tenyleg nincs gorog
+JEL_URES = ('', '-', '’’')   # ures, '-' vagy a '’’' helyorzo
+
+
+def van_gorog_szoalak(x):
+    return any(p not in JEL_URES for p in x[i['macula_gorog']].split('|'))
+
+
+g = [x for x in r if x[i['allapot']] == 'HEBER_SZO_GOROG_NELKUL']
+print('  GOROG_NELKUL bontas: osszes=%d ; van gorog szoalak (gorog Strong nincs)=%d ; nincs gorog szoalak sem=%d' % (
+    len(g), sum(1 for x in g if van_gorog_szoalak(x)), sum(1 for x in g if not van_gorog_szoalak(x))))
+n = [x for x in r if x[i['allapot']] == 'HEBER_SZO_NINCS_A_VERSBEN']
+print('  NINCS_A_VERSBEN: sorok=%d ; heber_kulcsszo == "—" (nem volt mit keresni)=%d ; heber_strong_munkalap ures=%d' % (
+    len(n), sum(1 for x in n if x[i['heber_kulcsszo']] == '—'), sum(1 for x in n if x[i['heber_strong_munkalap']] == '')))
+print('  NINCS_VERS igehelyek: %s' % ', '.join(x[i['igehely']] for x in r if x[i['allapot']] == 'NINCS_VERS'))
 print('  egyedi igehely a LXX_MEGFELELO sorokban: %d' % len({x[i['igehely']] for x in r if x[i['allapot']] == 'LXX_MEGFELELO'}))
 print('  megjegyzes kitoltve (tobb heber talalat, eltero gorog Strong): %d' % sum(1 for x in r if x[i['megjegyzes']].startswith('tobb')))
 
@@ -67,6 +82,8 @@ print('  licenc_tipus (kapun atment): %s' % dict(Counter(x[i['licenc_tipus']] fo
 print('  nem ures idezet (kapun atment): %d' % sum(1 for x in r if x[i['allapot']] == 'javaslat_kapun_atment' and x[i['idezet']]))
 f, r = olvas('F06_koltseg.tsv')
 i = {n: k for k, n in enumerate(f)}
+fejl = open(os.path.join(D, 'F06_koltseg.tsv'), encoding='utf-8').readline().strip()
+print('KOLTSEG fejlecsor: %s' % fejl)
 print('KOLTSEG: hivasok=%d ; osszeg=%.6f USD ; kiserlet=2 sorok=%d ; providerek=%s' % (
     len(r), sum(float(x[i['koltseg_usd']]) for x in r), sum(1 for x in r if x[i['kiserlet']] == '2'),
     sorted({x[i['provider']] for x in r})))
