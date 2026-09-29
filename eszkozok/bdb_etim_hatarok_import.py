@@ -90,7 +90,16 @@ NEM_TARGYALJA = {'H0779', 'H2555', 'H5303', 'H6093', 'H7496', 'H7497'}
 # A H0430-at kulon, utolagos vizsgalat utan hagyta jova a felhasznalo (a
 # hatarveg "Nes^l. c,)" a nyers BDB.lexicon HTML-lel igazolva -- nem
 # OCR-hiba/csonkolas). A H2403-at a D41-es javitokor soran hagyta jova,
-# kezi hatarral (a szocikknek nincs korai, nulla-melysegu em-dash-a).
+# kezi hatarral. FONTOS: a H2403-nal VAN nulla-melysegu em-dash (pozicio
+# 556, "...+ 40 t. suffix; -- 1 sin..."), a D41 szabaly tehat magat a
+# 40%-os kuszobot at is engedne (5.8%) -- DE addig a pontig egy hosszu,
+# em-dash nelkuli inflektalt-alak/citacios lista all (construct/suffix/
+# plural alakok versekkel), ami NEM etimologia. A D41 szabaly ISMERT
+# GYENGESEGE: csak az em-dash-hatarolt hasznalati/alak-blokkokat ismeri
+# fel, az em-dash nelkuli, vesszovel csatolt inflekcios listat nem --
+# ezert kellett kezi felulbiralas, nem azert, mert nincs automatikus
+# talalat.
+
 JOVAHAGYOTT = {'H0430', 'H0922', 'H2403', 'H3678', 'H8004', 'H8034'}
 
 # Kezi hatar-javaslatok -- a nyelvi_hatter szoveget a BDB_teljes_unabridged.tsv

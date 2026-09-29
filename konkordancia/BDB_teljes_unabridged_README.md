@@ -85,10 +85,10 @@ változatlanok maradtak, semmi nem lett törölve vagy felülírva.
 
 **Részben generált, részben kézi javaslat**
 (`eszkozok/bdb_etim_hatarok_import.py`). A `nyelvi_hatter` mező a szócikk
-fejének (címszó, szófaj, etimológia/rokon-nyelvi anyag) a szócikk első
-számozott jelentéséig tartó része — a héber lexikai nyelvi háttér
-szerepéhez (S9). Fejléc: `strong allapot nyelvi_hatter szocikk_hossz
-hatar_pozicio`.
+fejének (címszó, szófaj, etimológia/rokon-nyelvi anyag) az ELSŐ,
+zárójelen kívüli (nulla mélységű) em-dash-ig tartó része (D41) — a héber
+lexikai nyelvi háttér szerepéhez (S9). Fejléc: `strong allapot
+nyelvi_hatter szocikk_hossz hatar_pozicio`.
 
 `allapot` négy érték egyike:
 - **`gepi`** (14 token) — a `nyelvi_hatter` az ELSŐ, ZÁRÓJELEN KÍVÜLI
@@ -104,10 +104,17 @@ hatar_pozicio`.
 - **`jovahagyott`** (6 token: `H0430`, `H0922`, `H2403`, `H3678`, `H8004`,
   `H8034`) — mint a `javaslat`, de a kézi határt a felhasználó
   chat-döntéssel már jóváhagyta (2026.09.29, `naplok/
-  SZOTAR_S1_7_jelentes.md`; `H2403` a D41 javítókör során, mert a
-  szócikknek nincs korai em-dash-a — az „sin, sin-offering” után
-  egyenesen citáció következik); a szkript `JOVAHAGYOTT` halmaza dönti
-  el, hogy `javaslat` vagy `jovahagyott` legyen a kimeneti címke.
+  SZOTAR_S1_7_jelentes.md`). **`H2403` NEM a „nincs korai em-dash” eset**
+  — a szócikknek VAN nulla mélységű em-dash-a (a szócikk 5,8%-ánál, a
+  40%-os küszöbön messze belül), de addig a pontig egy hosszú, em-dash
+  nélküli, vesszővel csatolt inflektált-alak/citációs lista áll
+  (construct/suffix/plural alakok versekkel), ami NEM etimológia — ez a
+  D41-szabály egy ismert gyengesége: csak az em-dash-sel határolt
+  használati/alak-blokkokat ismeri fel, az em-dash nélkülit nem. A kézi
+  határ ezért éppen ott vágja el a szöveget, ahol az érdemi etimológia
+  ténylegesen véget ér („…sin, sin-offering” után). A szkript
+  `JOVAHAGYOTT` halmaza dönti el, hogy `javaslat` vagy `jovahagyott`
+  legyen a kimeneti címke.
 - **`nem_targyalja`** (6 token: `H0779`, `H2555`, `H5303`, `H6093`,
   `H7496`, `H7497`) — rövid szócikk, nincs külön etimológiai bekezdés;
   `nyelvi_hatter` üres. Ez **végleges állapot, nem pótlandó hiány** (D11).

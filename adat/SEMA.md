@@ -782,8 +782,8 @@ stílus), a görög `kiejtes_szabalyok.tsv` (2.16) mintájára, de külön tábl
 | Mező | Típus | Kötelező | Leírás |
 |---|---|---|---|
 | `sorszam` | egész szám | ✔ | Az alkalmazás sorrendje — kötelező betartani. |
-| `minta` | szabad szöveg | ✔ | A cserélendő literális OSHL-átiratos részstring (lehet üres, ha a csere törlés — l. az aleph/ajin-szabályt). |
-| `csere` | szabad szöveg | | A magyaros megfelelő; üres, ha a minta törlődik. |
+| `minta` | szabad szöveg | ✔ | A cserélendő literális OSHL-átiratos részstring — sosem üres (ez maga a keresett minta). |
+| `csere` | szabad szöveg | | A magyaros megfelelő; üres, ha a `minta` egyszerűen törlődik (l. az aleph/ajin-szabályt). |
 | `megjegyzes` | szabad szöveg | | A szabály indoklása, jellemző héber betű, igazoló példa. |
 
 **A begadkefat-spirantizáció (ב/כ/פ → v/ch/f, D34) NEM ebben a táblában

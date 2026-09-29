@@ -235,16 +235,21 @@ megerősítés (H7121 × G1941/G2564, a szűrés zajcsökkentő hatása) a
 
 **Licenc:** CC BY 4.0 (öröklődik a `LXX_OS`-től).
 
-**Bemenet-azonosítás (K7, F05b):** a tábla négy forrásból generálódik
-(`eszkozok/lxx_versszintu_import.py`): `konkordancia/LXX_OS/*.tsv` (a
-versszintű MT–LXX-párosítás, SHA a `konkordancia/LXX_OS/README.md`-ben,
-`verse_pairs.jsonl` alapján), `konkordancia/TAHOT_kivonat.tsv`,
-`adat/grammatikai_strongok.tsv` és `adat/elofordulasok.tsv` (a 26
-héber gerinc-token listája). Egyetlen, egyértelmű "a bemenet" fájl nincs
-— a `LXX_OS` a tartalmilag meghatározó forrás (ennek SHA-ja már
-dokumentált a saját README-jében), a másik három tábla saját SEMA-
-bejegyzéssel (2.4, 2.15 stb.) rendelkezik, külön SHA nélkül (nem
-verziózott külső letöltés, hanem a repó saját adata).
+**Bemenet-azonosítás (K7, F05b, pontosítva a `fuggetlen-ellenor` 3.
+köre után):** a tábla generálásához a szkript
+(`eszkozok/lxx_versszintu_import.py`) három fájlt olvas be futásidőben:
+`konkordancia/LXX_OS/*.tsv` (a versszintű MT–LXX-párosítás, SHA a
+`konkordancia/LXX_OS/README.md`-ben, `verse_pairs.jsonl` alapján),
+`konkordancia/TAHOT_kivonat.tsv` és `adat/grammatikai_strongok.tsv`. A
+26 héber gerinc-token listája **nem** az `adat/elofordulasok.tsv`-ből
+jön futásidőben — a szkript egy kódba égetett `HEBER_TOKENEK` konstans
+(az S1.4-es futtatáskor `adat/elofordulasok.tsv`-ből lekérdezve, l. a
+szkript fejcommentjét), amit a forrás nem olvas újra. Egyetlen,
+egyértelmű "a bemenet" fájl nincs — a `LXX_OS` a tartalmilag
+meghatározó forrás (ennek SHA-ja már dokumentált a saját README-jében),
+a másik két tábla saját SEMA-bejegyzéssel (2.4, 2.15) rendelkezik,
+külön SHA nélkül (nem verziózott külső letöltés, hanem a repó saját
+adata).
 
 ## SZOTAR S1.4 importok — index (SZOTAR_BRIEF.md, S1.6)
 

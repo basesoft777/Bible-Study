@@ -1,6 +1,6 @@
 # Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.09.29 (SZOTAR_BRIEF.md v1.9, S1 javítókör (F05b) —
+Utolsó frissítés: 2026.09.29 (SZOTAR_BRIEF.md v1.10, S1 javítókör (F05b) —
 N39–N44 új: héber `s`/`ś` átírás, H2403 lemma-választás, `spirantize()`
 geminációs hiba, `alap_strong` lemma-választási szabály (a `#9`
 előfeltétele), CI E5-jelölés globális hatóköre, commit-fegyelem.)
@@ -426,7 +426,10 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   döntés kell:** vezessünk-e be külön `ś`-szabályt (az OSHL-atirásban
   ez `ś` karakterként jelenik meg, ha a forrás egyáltalán megkülönbözteti),
   vagy maradjon az egységes `s`. Nem blokkolja a jelenlegi 26 jóváhagyott
-  jelöltet (egyik sem tartalmaz `ś`-t).
+  jelöltet (egyik sem tartalmaz `ś`-t). **Ugyanez a hiány a `w` (vav)
+  betűre is fennáll** — nincs külön szabály rá, a `naplok/
+  ELLENOR_SZOTAR_S1.md` 1. körének megfigyelése szerint (jelen jelöltek
+  egyike sem érintett, de a `w` az OSHL-atirásban is előfordulhat).
 - **N40 — a H2403 (חַטָּאָה/חַטָּאת) OSHL-homográf-választása indoklás
   nélküli.** *(ÚJ, SZOTAR S1 javítókör (F05b), 2026.09.29)* A
   `heber_kiejtes_jeloltek.py` a fájl-sorrend szerinti ELSŐ OSHL-sort
