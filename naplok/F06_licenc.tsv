@@ -30,3 +30,8 @@ github_RonTurrentine__KJV-Strongs-EBook	LICENSE	35149	kezi_hosszu
 github_RonTurrentine__KJV-Strongs-EBook	README.md	12669	kezi_hosszu						
 github_Realbizdigital__scripture-intelligence-server	LICENSE	1086	javaslat_kapun_atment	MIT License	igen	engedelyezett	igen	nincs	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software
 github_Realbizdigital__scripture-intelligence-server	README.md	13909	kezi_hosszu						
+bsb_data_output	LICENSE-CC-BY.md	1525	javaslat_kapun_atment	CC BY 4.0	igen	engedelyezett	igen	nincs	This license applies to the `output/index-cc-by/` directory which contains morphological data derived from the Open Scriptures Hebrew Bible (OSHB).
+bsb_data_output	LICENSE-CC0.md	1437	javaslat_kapun_atment	CC0 1.0	igen	engedelyezett	nem	A szerző a művet a jogszabályok által megengedett legteljesebb mértékben a közkinccsé (public domain) tette, minden jogáról lemondva.	You can copy, modify, distribute and perform the work, even for commercial purposes, all without asking permission.
+bsb_data_output	README.md	4786	javaslat_kapun_atment	CC0/CC BY 4.0	igen	engedelyezett	igen	nincs	| Directory | License | Attribution Required | |-----------|---------|---------------------| | `base/display/` | CC0 (Public Domain) | No | | `base/index-cc-by/` | CC-BY 4.0 | **Yes** |
+macula_hebrew	LICENSE.md	4037	kezi_kapu						
+macula_hebrew	README.md	2257	kezi_kapu						

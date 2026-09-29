@@ -1,4 +1,4 @@
-# osszkoltseg_usd=0.009014 hivasok=22 plafon=1.00
+# osszkoltseg_usd=0.011926 hivasok=29 plafon=1.00
 # letoltes datuma: 2026-09-29
 # futtatasi parancs: python eszkozok/fj2/futtat.py --lepes licenc
 sorszam	forras	fajl	modell	provider	prompt_tokens	completion_tokens	koltseg_usd	kiserlet	eredmeny
@@ -24,3 +24,10 @@ sorszam	forras	fajl	modell	provider	prompt_tokens	completion_tokens	koltseg_usd	
 20	github_luvlylavnder__bible-app-data	Bible-Versions/NIV/LICENSE	minimax/minimax-m3	StreamLake	811	121	0.000358	1	idezet_szo_szerint_megvan
 21	github_luvlylavnder__bible-app-data	Bible-Versions/NIV/README.md	minimax/minimax-m3	Minimax	821	77	0.000308	1	ures_idezet_nincs_adat
 22	github_Realbizdigital__scripture-intelligence-server	LICENSE	minimax/minimax-m3	ModelRun	805	130	0.000687	1	idezet_szo_szerint_megvan
+23	bsb_data_output	LICENSE-CC-BY.md	minimax/minimax-m3	GMICloud	880	92	0.000272	1	idezet_szo_szerint_megvan
+24	bsb_data_output	LICENSE-CC0.md	minimax/minimax-m3	StreamLake	868	130	0.000386	1	idezet_szo_szerint_megvan
+25	bsb_data_output	README.md	minimax/minimax-m3	StreamLake	1982	122	0.000710	1	idezet_szo_szerint_megvan
+26	macula_hebrew	LICENSE.md	minimax/minimax-m3	Together	1511	130	0.000579	1	kapu_bukott:idezet_nincs_a_bemenetben
+27	macula_hebrew	LICENSE.md	minimax/minimax-m3	Together	1511	166	0.000315	2	kapu_bukott:idezet_nincs_a_bemenetben
+28	macula_hebrew	README.md	minimax/minimax-m3	StreamLake	1094	112	0.000432	1	kapu_bukott:idezet_nincs_a_bemenetben
+29	macula_hebrew	README.md	minimax/minimax-m3	StreamLake	1094	114	0.000219	2	kapu_bukott:idezet_nincs_a_bemenetben
