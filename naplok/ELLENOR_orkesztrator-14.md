@@ -1,16 +1,15 @@
-# ELLENOR_orkesztrator-14 — F14_ORKESZTRATOR_BRIEF.md v1.3 · `main..claude/orkesztrator-14`
+# ELLENOR_orkesztrator-14 — F14_ORKESZTRATOR_BRIEF.md v1.3 · `origin/main..claude/orkesztrator-14` (2. kör, fej: 268a929)
 
-*A `fuggetlen-ellenor` jelentése 2754a82-re (1. kör), szerkesztés nélkül tömörítve; az ügynöknek nincs Write eszköze, a mentést az orkesztráló session végezte. A javítások az F14.2-ben készültek; az F14.3 a mainnel egyesített ágra új ellenőri kört kapott (l. lent).*
+*A `fuggetlen-ellenor` 2. körös jelentése a teljes PR-re, tömörítve; az ügynöknek nincs Write eszköze, a mentést az orkesztráló session végezte. 1. kör (2754a82): ELTÉRÉS: 6 tétel, javítva (F14.2–F14.3).*
 
-ELTÉRÉS: 6 tétel
+ELTÉRÉS: 5 tétel
 
-| # | Eltérés | Kezelés |
-|---|---|---|
-| 1 | `.claude/commands/kovetkezo.md` nem volt commitolva (`.gitignore` `.claude/*`) | F14.2: `!.claude/commands/` kivétel, fájl hozzáadva |
-| 2 | A `--valtozott` a 7 fájlból 3-ra futott; mind a 7-tel E16 HIBA (az ellenőrzőt érinti a PR) | a PR címe `[ELLENŐRZŐ]` előtagot kap |
-| 3 | A #14 sor „kész” állapota a zárás előtt nem volt igazolt | a zárás (jelentés, PR) F14.2-ben pótolva |
-| 4 | Zárójelentés hiányzott | `naplok/orkesztrator-14_zaras.md` |
-| 5 | D7–D12 a brief D6–D11 helyett (a D6 foglalt) | Egyeztetett eltérés a zárójelentésben |
-| 6 | #2 sor nem létezik a táblában; E17 az azonosítóban eltért (DT3) | eltérés a zárójelentésben; a DT3 kérdése „E17:”-tel kezdődik |
+| # | Súly | Eltérés | Kezelés |
+|---|---|---|---|
+| 1 | magas | DT1 elavult: a main-en a #7 döntése már megszületett (FP2-D13–D15), a `/kovetkezo` fantomtétellel blokkolná a #7-et | **nyitott** — felhasználói döntés (DT1 lezárása/törlése) |
+| 2 | közepes | 3.5: a frontmatter nincs a Claude Code dokumentációja szerint ellenőrizve (NEM ELLENŐRIZHETŐ) | **nyitott**, a zárójelentés jelzi |
+| 3 | közepes | a zárójelentés belső ellentmondásai (D7–D12/D8–D13; 3/4 tétel; ellenőri kör) | javítva F14.4-ben |
+| 4 | alacsony | elavult ELLENOR fájl | ez a fájl váltja fel |
+| 5 | alacsony | a `vegrehajto-*` fájlok az F14-brief pontszámozását (3. pont, 2. pont) rögzítik | nyitott, megjegyzés |
 
-Az OK-ként jelölt pontok (2. pont tiltásai, 3.2–3.4, 4.1, 4.3–4.4, 5., ellenőrzőlista 1, 2, 4, 5, A1–A6): a jelentés szerint mind OK / tárgytalan.
+Megjegyzések: a #7 „Függ ettől” mezője „#14 (kész)”, miközben a #14 táblasor ⏸ (a DT4 hatása). A zöld CI a PR címén múlik (`[ELLENŐRZŐ]` előtag, E16). Merge-feloldás: az FP2 tartalom nem veszett el, duplikátum nincs; a 2. pont tiltásai OK; D1–D13 mind egyszer szerepel. A PR tényleges címe a megengedett parancsokkal NEM ELLENŐRIZHETŐ.
