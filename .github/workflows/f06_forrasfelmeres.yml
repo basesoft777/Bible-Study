@@ -2,10 +2,8 @@
 #
 # INDITAS. A vegleges trigger (brief 1. lepes): push a claude/f06-forrasfelmeres agra, ha az
 # eszkozok/fj2/**, ez a workflow-fajl vagy az eszkozok/fj2/futtatas.txt valtozott.
-# A brief 2. lepese (⛔, felhasznaloi valasz: BSB-kuszob + OPENROUTER_API_KEY secret) ELOTT
-# a trigger SZANDEKOSAN szukebb: csak az eszkozok/fj2/futtatas.txt-re fut, amely a valasz
-# elott nem letezik -- igy a szkriptek pusholasa nem inditja el a merest.
-# A valasz utan egy kulon commit (F06.2) bovíti a trigger-utvonalakat, letrehozza a
+# A brief 2. lepese (⛔) elott a trigger szandekosan szukebb volt (csak futtatas.txt, amely nem letezett).
+# A felhasznaloi valasz megerkezett; az F06.2 commit bovitette az utvonalakat, letrehozta a
 # kuszob.txt-t es a futtatas.txt-t. Ujrafuttatashoz az eszkozok/fj2/futtatas.txt-t modositsd.
 #
 # A GITHUB_TOKEN-nel vegzett push nem indit uj futast, ezert nincs hurok.
@@ -17,6 +15,8 @@ on:
   push:
     branches: [claude/f06-forrasfelmeres]
     paths:
+      - 'eszkozok/fj2/**'
+      - '.github/workflows/f06_forrasfelmeres.yml'
       - 'eszkozok/fj2/futtatas.txt'
 
 permissions:

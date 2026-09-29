@@ -75,3 +75,14 @@ A brief kéri, hogy a felmérés rögzítse, mit találtam GitHubon. **A GitHub-
 2. **Secret:** az `OPENROUTER_API_KEY` repo-secret (Settings → Secrets and variables → Actions) beállítva-e.
 
 A válasz rögzítése ebben a fájlban, a `## ⛔ Válasz` szakaszban történik.
+
+## ⛔ Válasz
+
+*Rögzítve 2026.09.29-én, a mérés indítása előtt. A választ a felhasználó adta a chatben; az orkesztrátor közvetítette.*
+
+1. **BSB-küszöb (N30):** elfogadva a javasolt definíció és küszöb.
+   - egyezés: a vers TAHOT Strong-halmaza része a BSB Strong-halmazának, a 9000-es és afeletti prefixkódok nélkül;
+   - küszöb: **95%**;
+   - nevező: a TAHOT-tal rendelkező versek; a TAHOT-ból hiányzó versek külön listára kerülnek, nem eltérések. A nevezőt a felhasználó a javaslat részeként hagyta jóvá (kifejezetten nem vitatta).
+   - A küszöb a mérés előtt rögzítve (`eszkozok/fj2/kuszob.txt`), utólag nem módosul.
+2. **Secret:** az `OPENROUTER_API_KEY` repo-secret be van állítva (a felhasználó állítása).

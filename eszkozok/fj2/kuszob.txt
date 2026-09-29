@@ -1,0 +1,4 @@
+# F06 N30: a meres elott rogzitett kuszob (naplok/F06_felmeres.md, "## ⛔ Valasz")
+kuszob=95
+definicio=tahot_resze_bsb
+nevezo=tahot_lefedett_versek
