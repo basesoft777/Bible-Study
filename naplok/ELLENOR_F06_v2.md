@@ -43,3 +43,13 @@ Az eBible-, basokant- és elcafe7-idézetek szó szerint egyeznek (az elcafe7 `L
 ## Nem ellenőrizhető az ellenőrnek
 
 A PR #75 CI-állapota: az ellenőr helyi futtatása cím nélkül E16 HIBÁ-t, `[ELLENŐRZŐ]` előtagú címmel 0 találatot ad. (Az orkesztrátor a tényleges állapotot lekérte: `ellenorzes pass`.)
+
+## Javítás (F06.10)
+
+*Az ellenőri jelentés fenti része rögzített, nem módosult; ez a szakasz a három új eltérés javítását rögzíti.*
+
+1. **Görög szóalak száma:** az összesítő szűrője (`naplok/F06_5_osszesito.py`) most csak azt tekinti szóalaknak, ami görög betűt tartalmaz, és nem `{…}` alakú jelölő (az idézőjelek lecsípése után; a TSV-ben a jelölő `"{δ}"` alakban áll). Újraszámolva a `F06_macula_87_hely.tsv`-ből (38 `HEBER_SZO_GOROG_NELKUL` sor): **26 sorban van valódi görög szóalak, 12-ben nincs** (a kizárt értékek: `"{δ}"`, `-`, `’’`; a `{…}` jelölőt tartalmazó sor 1, az Ézs 26:19). A TSV-ben szóalak-szám nem tárolt, ezért az `F06_macula_87_hely.tsv` nem módosult. Frissítve: `F06_forras_jelentes.md`, `F06_zaras.md`, `F06_5_osszesito.txt`.
+2. **kennethreitz:** a jelentés leírása pontosítva: a `kjvstudy_org/` könyvtárnév miatt minősült KJV/ASV-nek; a `word_studies.json` mintapéldája Jn 1:1, a két HTML-sablon mintája Genezis 1:1. A következtetés (nincs tömeges címkézés) változatlan.
+3. **scrollmapper:** a címke „NEM MÉRT (időkorlát)”; a `F06_zaras.md` „Egyeztetett eltérés”-ként rögzíti.
+
+A mérés nem futott újra, a workflow nem indult (`eszkozok/fj2/**` és `futtatas.txt` érintetlen).

@@ -9,7 +9,9 @@ MACULA 87 hely: sorok=87
   allapot x azonositas ('LXX_MEGFELELO', 'strong') = 37
   allapot x azonositas ('LXX_MEGFELELO', 'szoalak') = 2
   allapot x azonositas ('NINCS_VERS', '') = 2
-  GOROG_NELKUL bontas: osszes=38 ; van gorog szoalak (gorog Strong nincs)=27 ; nincs gorog szoalak sem=11
+  GOROG_NELKUL bontas: osszes=38 ; van gorog szoalak (gorog Strong nincs)=26 ; nincs gorog szoalak sem=12
+  GOROG_NELKUL, nem szoalak-ertek (kizarva) a macula_gorog mezokben: ['"{δ}"', '-', '’’']
+  GOROG_NELKUL, {..} jelolot tartalmazo sorok: 1
   NINCS_A_VERSBEN: sorok=8 ; heber_kulcsszo == "—" (nem volt mit keresni)=8 ; heber_strong_munkalap ures=8
   NINCS_VERS igehelyek: 4Móz 13:34, 4Móz 13:34
   egyedi igehely a LXX_MEGFELELO sorokban: 39

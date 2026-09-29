@@ -8,6 +8,7 @@ Minden szam, amit a naplok/F06_forras_jelentes.md idez, ennek a szkriptnek a kim
     python naplok/F06_5_osszesito.py
 """
 import os
+import re
 import sys
 from collections import Counter
 
@@ -35,17 +36,25 @@ for k, v in sorted(Counter(x[i['allapot']] for x in r).items()):
 for k, v in sorted(Counter((x[i['allapot']], x[i['azonositas']]) for x in r).items()):
     print('  allapot x azonositas %s = %d' % (k, v))
 # a HEBER_SZO_GOROG_NELKUL bontasa: van-e gorog SZOALAK (csak a gorog Strong hianyzik) vagy tenyleg nincs gorog
-JEL_URES = ('', '-', '’’')   # ures, '-' vagy a '’’' helyorzo
+GOROG_BETU = re.compile('[\u0370-\u03ff\u1f00-\u1fff]')
+
+
+def gorog_szoalak_resz(p):
+    """Valodi gorog szoalak: van benne gorog betu, es nem '{...}' alaku jelolo (pl. '{d}')."""
+    p = p.strip().strip('"“”')   # a TSV-ben a jelolok idezojelben allhatnak
+    return bool(GOROG_BETU.search(p)) and not re.fullmatch(r'\{.*\}', p)
 
 
 def van_gorog_szoalak(x):
-    return any(p not in JEL_URES for p in x[i['macula_gorog']].split('|'))
+    return any(gorog_szoalak_resz(p) for p in x[i['macula_gorog']].split('|'))
 
 
 g = [x for x in r if x[i['allapot']] == 'HEBER_SZO_GOROG_NELKUL']
 print('  GOROG_NELKUL bontas: osszes=%d ; van gorog szoalak (gorog Strong nincs)=%d ; nincs gorog szoalak sem=%d' % (
     len(g), sum(1 for x in g if van_gorog_szoalak(x)), sum(1 for x in g if not van_gorog_szoalak(x))))
 n = [x for x in r if x[i['allapot']] == 'HEBER_SZO_NINCS_A_VERSBEN']
+print('  GOROG_NELKUL, nem szoalak-ertek (kizarva) a macula_gorog mezokben: %s' % sorted({p for x in g for p in x[i['macula_gorog']].split('|') if not gorog_szoalak_resz(p)}))
+print('  GOROG_NELKUL, {..} jelolot tartalmazo sorok: %d' % sum(1 for x in g if any(p.strip().strip('"').startswith('{') for p in x[i['macula_gorog']].split('|'))))
 print('  NINCS_A_VERSBEN: sorok=%d ; heber_kulcsszo == "—" (nem volt mit keresni)=%d ; heber_strong_munkalap ures=%d' % (
     len(n), sum(1 for x in n if x[i['heber_kulcsszo']] == '—'), sum(1 for x in n if x[i['heber_strong_munkalap']] == '')))
 print('  NINCS_VERS igehelyek: %s' % ', '.join(x[i['igehely']] for x in r if x[i['allapot']] == 'NINCS_VERS'))
