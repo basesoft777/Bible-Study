@@ -176,6 +176,8 @@ push csak kérésre.
 Minden menet utolsó commitja frissíti a `FELADATOK.md` saját sorát. Új feladat csak a
 chat jóváhagyásával kerül bele.
 
+A munkát a `/kovetkezo` parancs indítja. Egy session = egy feladat. Tartalmi döntésnél tétel a `DONTESEK.md`-be, majd megállás. Merge csak a felhasználótól. Új brief neve: `F<nn>_<NEV>_BRIEF.md`.
+
 A granularitás **tétel-szintű, nem fázis-szintű**: az `F3` nem egy commit, hanem `F3.0:`,
 `F3.1:`, `F3.2:` … külön-külön. Ok: a piszkozatot termelő lépéseknél a commit a validálás
 visszapontja, és a `git log --oneline` csak így marad olvasható.

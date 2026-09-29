@@ -58,3 +58,20 @@ tartomány, törzsében egyetlen táblázat:
 
 A táblázat után legfeljebb néhány sor: az ELTÉRÉS-ek súlyossági sorrendben.
 Összegző „minden rendben" ítéletet nem írsz; a merge-ről a felhasználó dönt.
+
+## Kötelező ellenőrzőlista
+
+Minden ellenőrzésnél, a fenti pontokon felül, és minden pontnál a futtatott
+parancsot is megadod (a `git diff --numstat` / `--stat` a megengedett parancsok
+körében marad):
+
+1. **Kiszűrt vagy törölt sorok** kategóriákra bontva, darabszámmal.
+2. **Kulcstartomány-lefedettség** (pl. Strong-alapszámok hiánya a várt tartományban).
+3. **A „nulla-diff" pontos hatóköre:** mire vonatkozik, és mire nem.
+4. **Adattábla sorszámának változása** a main-hez képest; ha nagyobb a küszöbnél
+   (l. E17 a `DONTESEK.md`-ben), van-e bontási napló.
+5. **A brief ⛔ pontjait** a végrehajtó tényleg betartotta-e.
+
+A jelentés **első sora**: `TISZTA` vagy `ELTÉRÉS: <n> tétel`. Ez nem „minden
+rendben" ítélet a merge-ről: csak azt jelzi, hogy az ellenőrzőlistán és a fenti
+pontokon a táblázat szerint van-e ELTÉRÉS.

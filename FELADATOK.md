@@ -1,6 +1,6 @@
 # FELADATOK.md — feladatkövető
 
-*v1 · 2026.09.28 · `main` = `47fca73` (a `claude/general-teremt002-datum` PR mergelése után frissítendő) · Ez az egyetlen fájl, amit a chat egy új beszélgetés elején elolvas. A részletek a briefekben és a `NYITOTT_FELADATOK.md`-ben vannak; ide csak az állapot, a függés és a következő lépés kerül.*
+*v1.1 · 2026.09.28 · `main` = `b92ce47` · Ez az egyetlen fájl, amit a chat egy új beszélgetés elején elolvas. A részletek a briefekben és a `NYITOTT_FELADATOK.md`-ben vannak; ide csak az állapot, a függés és a következő lépés kerül. Munkafolyamat: `/kovetkezo` orkesztrátor, döntések a `DONTESEK.md`-ben.*
 
 ## Alapelv: előbb az adatréteg, utána a render
 
@@ -33,16 +33,17 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 - A chatben készült briefek (#4, #7, #10, #11) commitolása a repó gyökerébe, hogy a chat onnan olvassa őket.
 - 72 távoli ág van, ebből kb. 60 régi (2026.09.02–09.11). Egyszeri átnézés, majd törlés.
 - E5: a `-` kezdetű törölt sorok (felsorolás) alulszámolása, 68eb348 óta (l. naplok/ELLENOR_CI_E5.md, 2. kör). Rövid CI-javítás külön ágon (D6), legkésőbb a 2. fázis előtt.
+- A meglévő briefek átnevezése `F<nn>_…_BRIEF.md` formára `git mv`-vel (a történet megmarad), a hivatkozások frissítésével (`FELADATOK.md` „Hol” oszlop, `CLAUDE.md`, más briefek, CI-konfiguráció, szkriptek: `grep -rn "_BRIEF.md"`). Feladathoz nem köthető brief nem kap számot. Modell: haiku.
 
 ## Munkamenet (tokentakarékos)
 
-1. **Új chat-beszélgetés:** csak ezt a fájlt olvasom be (raw URL, néhány KB). Nem töltöm le a teljes repót, és nem kell összefoglalnod, mi történt.
-2. **Egy feladat = egy brief = egy ág.** A brief a repóban van, a nyitó prompt benne. A brief fejléce hivatkozik a feladat számára (pl. „FELADATOK #5”).
-3. **Code-session:** a Code a menet utolsó commitjában frissíti ennek a fájlnak a saját sorát (állapot, ág, következő lépés). Más sort nem módosít.
-4. **Ellenőrzés:** a CI zöld, és a `fuggetlen-ellenor` ügynök jelentése (`naplok/ELLENOR_*.md`) elkészült. A chat csak ezt a kettőt olvassa. Teljes letöltés csak piros CI vagy ügynök által jelzett eltérés esetén.
-5. **Visszajelzés a chatnek:** elég annyi, hogy „#5 kész”, vagy a Code záró összefoglalója legfeljebb 20 sorban. Minden más a repóban van.
-6. **Merge:** te indítod. A merge-commit ennek a fájlnak a sorát ✅-ra állítja, és a sort a „Kész” listába mozgatja.
-7. **Hosszú chat helyett új chat:** ha egy beszélgetés hosszú, nyiss újat. A folytatáshoz ez a fájl elég.
+1. **Indítás és egyeztetés:** új Code-session, `/kovetkezo`. Egy session = egy feladat. A parancs javaslatot tesz a következő végrehajtható feladatra, és veled egyezteti (feladatválasztás, hatókör, modell). Addig semmit nem ír és nem indít; csak a kifejezett „mehet” után futtat.
+2. **Egy feladat = egy brief = egy ág.** A brief a repóban van. Neve a feladat kétjegyű számával kezdődik: `F<nn>_<NEV>_BRIEF.md` (pl. `F05_SZOTAR_BRIEF.md`). A fejlécében a feladat száma és a `Modell:` sor (`sonnet` | `opus` | `haiku` | `külső:<név>`). Brief nélkül a feladat nem indul.
+3. **Modellkiosztás:** orkesztrátor Sonnet; végrehajtás a brief szerint (szkript- és adatmunka Sonnet, kutatói ítélet Opus, takarítás Haiku, a Thayer-fordítás a rögzített külső modellel); ellenőr mindig Opus.
+4. **Ellenőrzés (gépi):** zöld CI és a `fuggetlen-ellenor` jelentése (`naplok/ELLENOR_*.md`) a kötelező ellenőrzőlistával. Második szem a chat helyett: friss Code-session vagy PR-review.
+5. **Döntés:** a ⛔ pontok és a hiányzó briefek a `DONTESEK.md`-be kerülnek. A chat csak ezt a fájlt kapja (raw link); rutinszerű „kész” jelentés nem megy a chatbe.
+6. **Merge:** te indítod, zöld CI és `TISZTA` ellenőri jelentés mellett a chat nélkül is. A merge-commit a sort ✅-ra állítja, és a „Kész” listába mozgatja.
+7. **Keret és hossz:** ha a keret fogy vagy a session hosszú, a parancs tiszta ponton megáll („Folytatási pont” a zárójelentésben); a következő `/kovetkezo` onnan folytatja.
 
 **A `CLAUDE.md`-be kerülő sor:** „Minden menet utolsó commitja frissíti a `FELADATOK.md` saját sorát. Új feladat csak a chat jóváhagyásával kerül bele.”
 
@@ -55,10 +56,12 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 - **SZOTAR S1/S2:** a szótári brief 1. (adat) és 2. (render) menete
 - **N-szám:** tétel a `NYITOTT_FELADATOK.md`-ben
 - **TBESG/TBESH:** STEP-szótárak (görög/héber alapjelentés); **UBS DBH/DNTG:** UBS héber/görög szótár; **LXX:** Septuaginta
+- **DONTESEK.md:** a nyitott döntések sora; 🟡 nyitott · 🟢 eldöntve · ✅ alkalmazva
 - **Szerepmátrix:** `adat/szotar_szerepek.tsv`, 10 szerep × 2 nyelv
 
 ## Kész (utolsó 2 hét)
 
+- Orkesztrátor-parancs (F15: `/kovetkezo`, `DONTESEK.md`, végrehajtó subagentek, ellenőrzőlista), PR #70, ✅ a merge-commitban (09.29); próbafuttatás merge után új sessionben: `/kovetkezo`
 - Thayer-stíluspróba (FP2): Gemini 3.1 Flash Lite, DeepSeek V4 Flash, MiniMax M3 összevetése, vak bírálat és költségbecslés, `naplok/FP2_jelentes.md`; döntés (FP2-D13): fő fordító Gemini 3.1 Flash Lite; ellenőrzés `naplok/ELLENOR_FP2.md`, merge `971d0f2` (PR #68, 09.28)
 - Fordítási próba (FP0–FP-KOR2.9): fordító eszközök és a próba eredményei, ellenőrzés naplok/ELLENOR_FP.md, merge `9eb43fe` (PR #62, 09.27)
 - Szkript-karbantartás (KARBANTARTAS KB0–KB4), K1–K10 teljesül (K10 öt körben, ágleltárral, nulla-kimenet-őrrel és három mutációs/hiba-próbával: `naplok/ELLENOR_KARB.md`), merge `b8a418a` (09.27); mérőszkript-vakfoltok és -őrök javítása, PR #60 (`8bd1e40`), PR #61
@@ -81,3 +84,9 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | D5 | A Thayer-fordítás (#7) a SZOTAR 1. menet után | terminológia és kiejtés nélkül utólagos csere-körök kellenének (ISTENTISZT-001 tanulsága) | a próba után azonnal |
 | D6 | CI-szabály hibáját külön ágon javítjuk, nem az érintett menetben | a PR ne írja át a saját ellenőrzését | javítás a #58-ban |
 | D7 | A v3 stílust és a MiniMaxot külön stíluspróba (#14) méri: Gemini 3.1 Flash Lite, DeepSeek V4 Flash és MiniMax M3, Claude vak bírálatával, költségbecsléssel | a #7 éles döntéséhez mért adat kell; a próba nem tesz adatot a kanonikus rétegbe, ezért nem vár az adatfázisra | Claude mint fordító (a kor2-ben 4.); a modellek egymást bírálják |
+| D8 | Orkesztrátor igen, de Claude Code-parancsként (`/kovetkezo`), döntési ponton megállva; a D2-t módosítja | a meglévő eszközökre épül (CLAUDE.md, subagentek, CI), az előfizetésen belül fut, egy session egy feladat, így nem hízik | külön ügynök-rendszer (API, karbantartás); teljes autonómia (a ⛔ pontok szakmai döntések, a hibák a kritikus úton halmozódnak) |
+| D9 | A chat csak döntéskor kap jelzést, a `DONTESEK.md`-n keresztül | a chat adat nélkül ellenőrizne: drága és gyenge (TBESH-szűrés tanulsága) | minden zárójelentés bemásolása a chatbe |
+| D10 | Második szem: `fuggetlen-ellenor` (Opus) kötelező ellenőrzőlistával, szükség esetén friss Code-session | tiszta kontextus, közvetlen adathozzáférés | a chat mint ellenőr; külső session-verziózó eszközök (Agent-Git, agit) |
+| D11 | A végrehajtó modellt a brief `Modell:` sora írja elő | a modellválasztás a felhasználónál marad; a költség oda megy, ahol szakmai ítélet kell | az orkesztrátor maga választ |
+| D12 | A brief neve a feladat számával kezdődik: `F<nn>_<NEV>_BRIEF.md` | a brief a fájllistában és az orkesztrátor számára is egyértelműen a feladathoz köthető | szám csak a brief fejlécében |
+| D13 | Az orkesztrátor futtatás előtt mindig egyeztet: javaslat → kérdés/módosítás → kifejezett „mehet”; az egyeztetésig csak olvas | a feladatválasztás és a hatókör a felhasználó döntése; az automatikus indulás rossz feladatot vagy rossz hatókört futtathat | a parancs automatikusan indul, csak a tervet írja ki |
