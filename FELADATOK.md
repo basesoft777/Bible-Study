@@ -16,7 +16,6 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | 6 | Új források 2. felmérése **helyi gépről** (FJ 2. menet) | döntés a Nave, a teljes KJV/ASV és a BSB importjáról; a Macula lefedettsége | ⬜ nincs brief | — (#5-tel párhuzamosan futhat) | Brief kell. Helyi gépen fusson, mert a cloud proxy blokkolt (N27, N29–N31) | `naplok/FORRAS_jelentes.md` (fejlécébe kell a „felülírva: N27–N29” megjegyzés) |
 | 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ nem futott | #3, #5 (terminológia, kiejtés), #14 (kész) | brief v3 (Gemini, természetes hű, FP2-D15 szabályai) | `FORDITAS_ELES_THAYER_BRIEF.md` v2 → v3, `naplok/FP2_jelentes.md` (FP2-D13–D15) |
 | 8 | LXX-fordítói döntések a 87 függő igehelyre | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ nem futott | #1, #6 (Macula-lefedettség) | Kutatói adatmunka; 58 gépi jelölt tájékoztatásul: `naplok/FORRAS_FJ1_lxx_jeloltek.tsv` | eredetileg a LEXIKON_LEZARAS 4c pontja |
-| 15 | Orkesztrátor-parancs (munkafolyamat) | a következő feladatot gép választja és futtatja; a chat csak döntéskor kap jelzést | ⏸ kész, draft PR merge-re vár (`claude/orkesztrator-14`) | — | Merge után próbafuttatás: új session, `/kovetkezo` (elvárt: terv egy konkrét feladatra, vagy a blokkoló `DONTESEK.md`-tétel megnevezése) | `F15_ORKESZTRATOR_BRIEF.md` |
 
 ## 2. fázis — render (csak az 1. fázis után)
 
@@ -62,6 +61,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 ## Kész (utolsó 2 hét)
 
+- Orkesztrátor-parancs (F15: `/kovetkezo`, `DONTESEK.md`, végrehajtó subagentek, ellenőrzőlista), PR #70, ✅ a merge-commitban (09.29); próbafuttatás merge után új sessionben: `/kovetkezo`
 - Thayer-stíluspróba (FP2): Gemini 3.1 Flash Lite, DeepSeek V4 Flash, MiniMax M3 összevetése, vak bírálat és költségbecslés, `naplok/FP2_jelentes.md`; döntés (FP2-D13): fő fordító Gemini 3.1 Flash Lite; ellenőrzés `naplok/ELLENOR_FP2.md`, merge `971d0f2` (PR #68, 09.28)
 - Fordítási próba (FP0–FP-KOR2.9): fordító eszközök és a próba eredményei, ellenőrzés naplok/ELLENOR_FP.md, merge `9eb43fe` (PR #62, 09.27)
 - Szkript-karbantartás (KARBANTARTAS KB0–KB4), K1–K10 teljesül (K10 öt körben, ágleltárral, nulla-kimenet-őrrel és három mutációs/hiba-próbával: `naplok/ELLENOR_KARB.md`), merge `b8a418a` (09.27); mérőszkript-vakfoltok és -őrök javítása, PR #60 (`8bd1e40`), PR #61
