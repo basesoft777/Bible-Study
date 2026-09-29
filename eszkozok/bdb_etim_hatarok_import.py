@@ -1,20 +1,29 @@
 """BDB_etimologia_kezi_hatarok.tsv -- a 26 heber gerinc-token (D28) BDB-
 szocikkeinek "nyelvi hatter" (etimologia/rokon-nyelvi anyag) hatar-
-besorolasa harom kategoriaba (S9, D21, D28/D29 kiegeszitve).
+besorolasa negy kategoriaba (S9, D21, D28/D29 kiegeszitve).
 
 - gepi: az em-dash + "1 " minta (regex) pontosan illeszkedik -- a
   hatarig tarto resz a nyelvi_hatter.
 - javaslat: van erdemi rokon-nyelvi/etimologiai tartalom, de a gepi minta
   nem illeszkedik (eltero szamozasi/tagolasi forma) -- KEZZEL kijelolt
-  hatar, JOVAHAGYASRA VAR (a menet vegi ⛔-nel).
+  hatar, JOVAHAGYASRA VAR.
+- jovahagyott: mint a `javaslat`, de a felhasznalo chat-dontessel mar
+  jovahagyta (2026.09.29, l. naplok/SZOTAR_S1_7_jelentes.md) -- a
+  JOVAHAGYOTT halmazban felsorolt Strongok. A H0430 -- a `Nes^l. c,)`
+  hatarvegre vonatkozo felhasznaloi ALLJ miatt -- MEG NEM jovahagyott,
+  `javaslat` marad (a raw BDB.lexicon HTML-forras alapjan igazolva, hogy
+  a hatar teljes, nem csonka -- l. a jelentesben), a vegso dontes a
+  felhasznaloe.
 - nem_targyalja: rovid szocikk, nincs kulon etimologiai/rokon-nyelvi
   bekezdes.
 
-A "javaslat" sorokat ez a szkript NEM szamitja ki automatikusan -- a
-JAVASLAT szoveget kezzel irt konstansok adjak (KEZI_JAVASLATOK), mert az
-automatikus hatarfelismeres itt eppen azert bukik, mert a forras nem
-kovetkezetes tagolasu; a kezi dontes indoklasat l. a SZOTAR_BRIEF.md §3
-S1.4 soraban es az S1.4 jelenteseben.
+A "javaslat"/"jovahagyott" sorokat ez a szkript NEM szamitja ki
+automatikusan -- a szoveget kezzel irt konstansok adjak (KEZI_JAVASLATOK),
+mert az automatikus hatarfelismeres itt eppen azert bukik, mert a forras
+nem kovetkezetes tagolasu; a kezi dontes indoklasat l. a SZOTAR_BRIEF.md
+§3 S1.4 soraban es az S1.4 jelenteseben. A JOVAHAGYOTT halmaz csak azt
+donti el, hogy a kimeneti allapot-cimke `javaslat` vagy `jovahagyott`
+legyen -- a szoveg forrasa mindkettonel a KEZI_JAVASLATOK.
 """
 
 import sys
@@ -36,6 +45,10 @@ BOUNDARY_RE = re.compile(r'—\s*1\s')  # em-dash + '1 '
 
 # D21 (a regi 24 tokenen) + D28/D29 (H8414 uj gepi, H0922 uj javaslat).
 NEM_TARGYALJA = {'H0779', 'H2555', 'H5303', 'H6093', 'H7496', 'H7497'}
+
+# Chat-dontessel jovahagyva 2026.09.29 (l. naplok/SZOTAR_S1_7_jelentes.md) --
+# a H0430 explicit ALLJ alatt marad, `javaslat` allapotban.
+JOVAHAGYOTT = {'H0922', 'H3678', 'H8004', 'H8034'}
 
 # Kezi hatar-javaslatok -- a nyelvi_hatter szoveget a BDB_teljes_unabridged.tsv
 # szocikkebol kezzel masoltuk ki, addig a pontig, ahol az erdemi etimologiai/
@@ -105,7 +118,8 @@ def run(heber_tokenek):
             continue
         if token in KEZI_JAVASLATOK:
             nyelvi_hatter = KEZI_JAVASLATOK[token]
-            sorok.append((token, 'javaslat', nyelvi_hatter, str(len(entry)), str(len(nyelvi_hatter))))
+            allapot = 'jovahagyott' if token in JOVAHAGYOTT else 'javaslat'
+            sorok.append((token, allapot, nyelvi_hatter, str(len(entry)), str(len(nyelvi_hatter))))
             continue
         raise SystemExit('HIBA -- %s: nincs gepi hatar, nincs kezi javaslat, nincs '
                           'nem_targyalja besorolas sem -- dontes hianyzik' % token)
@@ -114,14 +128,16 @@ def run(heber_tokenek):
     with open(KIMENET, 'w', encoding='utf-8', newline='\n') as f:
         f.write('# GENERÁLT (részben kézi javaslat) — eszkozok/bdb_etim_hatarok_import.py.\n')
         f.write('# allapot: gepi (regex-hatar) | javaslat (kezi, JOVAHAGYASRA VAR — l. menet '
-                'vegi ⛔) | nem_targyalja (nincs erdemi etimologia). Dok.: konkordancia/'
-                'BDB_teljes_unabridged_README.md\n')
+                'vegi ⛔) | jovahagyott (kezi, chat-dontessel jovahagyva, 2026.09.29 -- H0922, '
+                'H3678, H8004, H8034; a H0430 tovabbra is javaslat, l. naplok/'
+                'SZOTAR_S1_7_jelentes.md) | nem_targyalja (nincs erdemi etimologia). Dok.: '
+                'konkordancia/BDB_teljes_unabridged_README.md\n')
         f.write('\t'.join(header) + '\n')
         for row in sorok:
             f.write('\t'.join(row) + '\n')
 
     print('sorok: %d' % len(sorok))
-    for allapot in ('gepi', 'javaslat', 'nem_targyalja'):
+    for allapot in ('gepi', 'javaslat', 'jovahagyott', 'nem_targyalja'):
         n = sum(1 for r in sorok if r[1] == allapot)
         print('  %s: %d' % (allapot, n))
     print('irva: %s' % KIMENET)

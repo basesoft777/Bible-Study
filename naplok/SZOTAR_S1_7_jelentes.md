@@ -118,8 +118,103 @@ referenciát felhasznált.**
 **A 24 új jelölt helyessége emberi jóváhagyást igényel** — ez pontosan az
 S1.7-utáni ÁLLJ tárgya, nem gépi mérhető ezen a mintaméreten.
 
-## 5. Eredmény
+## 5. Eredmény (1. kör, 2026.09.28)
 
 `naplok/SZOTAR_S1_heber_jeloltek.tsv`: 26 sor, mind a 26 Stronghoz van
 OSHL-referencia (0 hiányzó), 2/2 egyezés a meglévő jóváhagyott
 mintákon, 0 eltérés.
+
+**A felhasználó az 1. kört NEM hagyta jóvá egyben** — l. a 7. szakaszt.
+
+## 6. H0430 BDB-etimológia-határ — vizsgálat (2026.09.29)
+
+A felhasználó ÁLLJ-t kért a `konkordancia/BDB_etimologia_kezi_hatarok.tsv`
+H0430-sorára: a határvég (`...compare also Nes^l. c,)`) csonkának vagy
+OCR-hibának tűnt. Ellenőrzés a nyers `konkordancia/lexikonok_nyers/
+BDB.lexicon` (SQLite) `Definition` HTML-mezőjén, közvetlenül a forrásból:
+
+```html
+... compare also <lookup onclick="bdbabb('Nes')">Nes<sup>l. c</sup></lookup>,)
+```
+
+Ez pontosan megfelel a tisztított TSV-ben látott `Nes^l. c,)` alaknak — a
+`^` a `<sup>` (superscript) jelölés konszolidált karaktere, ugyanaz a
+konvenció, mint minden más rövidítésnél a táblában (pl. `Jos^Ant.`,
+`Ba^ZMG`). A `Nes` egy kattintható BDB-rövidítés-hivatkozás (`Nes` =
+Nestle, bibliakutató neve), az `l. c` (*loco citato*, „a hivatkozott
+helyen”) a szokásos latin rövidítés, utána egyetlen vessző és a nyitó
+zárójel lezárása. **A raw HTML-ben sincs semmi a `,)` előtt vagy után,
+ami hiányzik a tisztított szövegből — a határ NEM csonka, NEM
+OCR-hiba.** A `)` a `(feminine 1Kin 11:33; ... compare also Nes^l. c,)`
+teljes zárójeles betoldást zárja le, közvetlenül utána a szócikk
+számozott (`1. plural in number...`) használati szakasza kezdődik — ez
+pontosan az a fajta határ, amit a `gepi` (em-dash + „1 ”) minta más
+szócikkeknél automatikusan megtalál, itt csak azért `javaslat`, mert
+nincs em-dash a forrásban.
+
+**Javaslat: a jelenlegi határ helyes, nincs jobb végpont.** A végső
+jóváhagyás a felhasználóé — a `konkordancia/BDB_etimologia_kezi_hatarok.tsv`
+H0430-sora egyelőre `javaslat` marad.
+
+## 7. 2. kör — szabályjavítás (D34–D37) és eredmény (2026.09.29)
+
+A felhasználó a chatben megadott, kézzel ellenőrzött 26-soros várt
+listával mérte az 1. kört, és 9 eltérést talált (mind a begadkefat-
+spirantizáció hiánya vagy a `ḥ→h` szabály miatt). Javítás:
+
+- **D34** — új `spirantize()` lépés (`eszkozok/heber_kiejtes_jeloltek.py`),
+  amely a pontozott `oshl_lemma` mezőben minden ב/כ/פ előfordulásnál
+  megnézi, van-e dagesh (a rákövetkező kombináló jelek közt `ּ`) vagy
+  szókezdő-e a betű — ha egyik sem, a megfelelő atirás-karaktert (b/k/p)
+  lágy alakra (v/ch/f) cseréli, MIELŐTT a szabálytábla lefutna. Igazolva:
+  sem a lemma, sem az atirás nem tartalmaz két különböző nyers alakot
+  (pl. `b` és a hozzá tartozó lemma-betű) ugyanabban a szóban átfedő
+  sorrendben — a pozíció-igazítás (a lemma ב/כ/פ-sorrendje = az atirás
+  b/k/p-sorrendje) mind a 26 szóra ellenőrizve helyes.
+- **D35** — `adat/kiejtes_heber_jeloltszabalyok.tsv` 6. sora `ḥ→h`-ról
+  `ḥ→ch`-ra javítva; a plain `h` (he) karaktert nem érinti (nincs rá
+  szabálysor, változatlan marad).
+- **D36** — új `adat/kiejtes_heber_kivetelek.tsv` (strong, ertek, indok,
+  datum): H2555 → „hámás” kézi felülbírálással, a szabályfuttatás UTÁN
+  alkalmazva. A jelentésben (`arany_egyezes` oszlop) „kivetel” jelölést
+  kap.
+- **D37** — az alef/ajin-elhagyás (már az 1. körben is így volt) explicit
+  megerősítve a H2403-ra is (nincs eltérő eset).
+
+**Újrafuttatva** (`python eszkozok/heber_kiejtes_jeloltek.py`): mind a 26
+sor **pontosan** egyezik a felhasználó által megadott várt listával.
+
+| Strong | 1. kör (hibás) | 2. kör (javított) | Várt | Egyezik |
+|---|---|---|---|---|
+| H0127 | adámá | adámá | adámá | ✔ (változatlan) |
+| H0430 | elóhím | elóhím | elóhím | ✔ (változatlan) |
+| H0779 | árar | árar | árar | ✔ (változatlan) |
+| H0922 | bóhú | bóhú | bóhú | ✔ (változatlan) |
+| H1121 | bén | bén | bén | ✔ (változatlan) |
+| H2403 | hattáá | **chattáá** | chattáá | ✔ (javítva, ḥ→ch) |
+| H2416 | haj | **chaj** | chaj | ✔ (javítva, ḥ→ch) |
+| H2555 | hámás | hámás | hámás | ✔ (kivétel, D36) |
+| H3548 | kóhén | kóhén | kóhén | ✔ (változatlan) |
+| H3678 | kissé | kissé | kissé | ✔ (változatlan) |
+| H4467 | mamláká | **mamláchá** | mamláchá | ✔ (javítva, begadkefat) |
+| H5303 | nepilím | **nefilím** | nefilím | ✔ (javítva, begadkefat) |
+| H5315 | nepes | **nefes** | nefes | ✔ (javítva, begadkefat) |
+| H6093 | iccábón | **iccávón** | iccávón | ✔ (javítva, begadkefat) |
+| H6975 | kóc | kóc | kóc | ✔ (változatlan) |
+| H7043 | kálal | kálal | kálal | ✔ (változatlan) |
+| H7121 | kárá | kárá | kárá | ✔ (jóváhagyott gold) |
+| H7451 | ra | ra | ra | ✔ (változatlan) |
+| H7496 | repáím | **refáím** | refáím | ✔ (javítva, begadkefat) |
+| H7497 | rápá | **ráfá** | ráfá | ✔ (javítva, begadkefat) |
+| H7585 | seól | seól | seól | ✔ (változatlan) |
+| H7843 | sáhat | **sáchat** | sáchat | ✔ (javítva, ḥ→ch) |
+| H8004 | sálém | sálém | sálém | ✔ (változatlan) |
+| H8034 | sém | sém | sém | ✔ (jóváhagyott gold) |
+| H8414 | tóhú | tóhú | tóhú | ✔ (változatlan) |
+| H8415 | tehóm | tehóm | tehóm | ✔ (változatlan) |
+
+**Eredmény: 26/26 egyezés — mind a 26 jelölt jóváhagyva (2026.09.29).**
+Nem íródott az `adat/kiejtes_kivetelek.tsv`-be (az S1 „nulla-diff” menet
+kimenetet nem változtat) — a formális rögzítés az S2.1 tétele. A
+`nulladiff.sh 8f5a1eb` a D31 két `--csere`-jével ezen a ponton lefutott:
+`exit 0`, üres diff.
