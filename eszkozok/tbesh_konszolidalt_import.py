@@ -11,10 +11,18 @@ Forrasok:
   - konkordancia/TBESH.txt: tobb alsor/Strong (pl. H7121G/H/I harom
     kulon-mikrojelentesenek roevid glosszaja, col7), a teljes, szamozott
     definicio (col8) azonban a legtobb esetben AZONOS az adott Strong
-    osszes alsoraban -- ezert Strongonkent egyetlen (dedupikalt) teljes
-    szoveget ad, plusz a roevid glosszak listajat.
+    osszes alsoraban -- ezert Strongonkent EGYETLEN (dedupikalt) teljes
+    szoveget ad, plusz a roevid glosszak listajat. FONTOS: "Strongonkent"
+    itt a STEP-forras sajat, betu-utotagos kulcsat jelenti (pl. "H7121a"),
+    NEM feltetlenul a 4-jegyu alapszamot -- egy alapszamnak tobb, kulon
+    betu-utotagos alszocikke is lehet (pl. H1121 "ben" csak "H1121a"/
+    "H1121b" alakban letezik a TBESH.txt-ben, sima "H1121" sosem), es
+    ezek KULON sorkent maradnak a kimenetben (F05, D-UT1) -- nem vonjuk
+    ossze oket az alapszamba, es nem is dobjuk el. Az `alap_strong`
+    oszlop koti vissza az utotagos sorokat az alapszamukhoz.
   - konkordancia/lexikonok_nyers/TBESH.lexicon (SQLite): egyetlen,
-    konszolidalt HTML-bejegyzes Strongonkent.
+    konszolidalt HTML-bejegyzes Strongonkent (ugyanez a betu-utotagos
+    konvencio, kis reszben nem-nullaval-toltott szamresszel).
 
 TSV-iras kizarolag '\\t'.join() (CLAUDE.md).
 """
@@ -39,35 +47,43 @@ KIMENET = os.path.join(KONKORDANCIA, 'TBESH_konszolidalt.tsv')
 
 TAG_RE = re.compile(r'<[^>]+>')
 WS_RE = re.compile(r'\s+')
-# Pontosan 4 szamjegy -- a projekt STRONG tipusa (SEMA 1.2). A korabbi
-# `^H\d+$` tulzottan tagul illesztett: a TBESH.lexicon-ban valodi, de
-# ervenytelen "H9"/"H90"/"H900" kulcsok is vannak (nem 4 jegyu, feltehetoen
-# a forras sajat prefix-index bejegyzesei, nem szotari tetelek).
-STRONG_H_RE = re.compile(r'^H\d{4}$')
+# 4 szamjegy, opcionalisan egy STEP-alszocikk-betuvel (F05, D-UT1). A
+# projekt STRONG tipusa (SEMA 1.2) maga 4 jegyu; a betu-utotag ("H7121G",
+# a raw sorban tobbnyire kisbetus "H7121a" alakban) a STEP-forrasok sajat
+# alszocikk-jeloleset adja at -- l. NYERS_KULCS_RE es alap_strong_szamol().
+STRONG_H_RE = re.compile(r'^H\d{4}[a-zA-Z]?$')
 # A H9xxx tartomany a TBESH.txt sajat fejleconek megfogalmazasa szerint is
 # ("prefixes, suffixes, personal pronoun endings and punctuation") nem
 # szotari tetel, hanem morfologiai komponens -- ugyanaz a konvencio, mint
-# az adat/grammatikai_strongok.tsv H9xxx-szures. Kiszurve.
+# az adat/grammatikai_strongok.tsv H9xxx-szures. Kiszurve. (Csak a 4-jegyu
+# ALAPSZAMRA illik -- betu-utotagos H9xxx nem fordul elo egyik forrasban
+# sem, ellenorizve.)
 H9XXX_RE = re.compile(r'^H9\d{3}$')
-# Nem-nullaval-toltott nyers kulcs (pl. "H122", "H9" a TBESH.lexicon-ban --
-# a TBESH.txt maga mindig 4 jegyre tolt). A naplok/S1_TBESH_kiszurt_elemzes.md
-# ellenorzese szerint a 999 "4 jegynel rovidebb" kulcs kozul 964 artalmatlan
-# duplikatum volt (a masik forrasban mar megvolt a toltott par -- tartalmilag
-# egyezik, pl. "H9" = "H0009"), 35 pedig egyedi, kizarolag a TBESH.lexicon-ban
-# letezo szocikk (toltott par nelkul), amit a szigoru `^H\d{4}$` szures
-# korabban csendben kidobott. A zfill(4) normalizalas mindket esetet helyesen
-# kezeli: a duplikatumok osszeolvadnak (a mar meglevo `konszolidal()`
-# hossz-alapu valasztassal), az egyedi 35 pedig bekerul a tablaba toltott
-# alakban.
-NYERS_SZAMJEGY_RE = re.compile(r'^H(\d+)$')
+# Nyers kulcs -- 1-4 szamjegy, opcionalis egy betu-utotaggal. A csoport(1)
+# a szamresz, a csoport(2) a betu-utotag (ures string, ha nincs).
+NYERS_KULCS_RE = re.compile(r'^H(\d{1,4})([a-zA-Z]?)$')
+# Az alapszam kinyerese egy mar-normalizalt (4-jegyu, opcionalis betus)
+# kulcsbol.
+ALAP_STRONG_RE = re.compile(r'^(H\d{4})[a-zA-Z]?$')
 
 
 def normalizal(strong):
-    """"H122" -> "H0122"; mar-4-jegyu vagy betu-utotagos kulcsot valtozatlanul hagy."""
-    m = NYERS_SZAMJEGY_RE.match(strong)
+    """"H122" -> "H0122"; "H122a" -> "H0122a" (F05, D-UT1: a betu-utotag
+    MEGMARAD, csak a szamresz tolt 4 jegyre); mar rendben levo vagy
+    felismerhetetlen kulcsot valtozatlanul hagy."""
+    m = NYERS_KULCS_RE.match(strong)
     if m:
-        return 'H' + m.group(1).zfill(4)
+        szam, betu = m.groups()
+        return 'H' + szam.zfill(4) + betu
     return strong
+
+
+def alap_strong_szamol(strong):
+    """"H0122a" -> "H0122"; "H0122" -> "H0122" (F05, D-UT1: a betu-utotagos
+    kulcs sajat sor marad, de ez az oszlop koti az alapszamahoz -- a
+    downstream kod, ha alapszam szerint illeszt, ezen keresztul tegye)."""
+    m = ALAP_STRONG_RE.match(strong)
+    return m.group(1) if m else strong
 
 
 def clean(s):
@@ -98,7 +114,7 @@ def txt_betolt(ut):
             if len(mezok) < 8:
                 continue
             strong = normalizal(mezok[0])
-            if not STRONG_H_RE.match(strong) or H9XXX_RE.match(strong):
+            if not STRONG_H_RE.match(strong) or H9XXX_RE.match(alap_strong_szamol(strong)):
                 continue
             lemma = mezok[3] if len(mezok) > 3 else ''
             atirat = mezok[4] if len(mezok) > 4 else ''
@@ -134,7 +150,7 @@ def lexicon_betolt(ut):
     kimenet = {}
     for topic, html in cur.fetchall():
         topic = normalizal(topic)
-        if not STRONG_H_RE.match(topic) or H9XXX_RE.match(topic):
+        if not STRONG_H_RE.match(topic) or H9XXX_RE.match(alap_strong_szamol(topic)):
             continue
         kimenet[topic] = clean(html)
     conn.close()
@@ -142,7 +158,11 @@ def lexicon_betolt(ut):
 
 
 def konszolidal(txt_adat, lex_adat):
-    strongok = sorted(set(txt_adat) | set(lex_adat), key=lambda s: int(s[1:]))
+    # A kulcs mar normalizalt (4 jegy + opcionalis 1 betu-utotag) -- a
+    # rendezes elsodlegesen a szamresz (s[1:5]), masodlagosan a betu-utotag
+    # (s[5:], ures string < barmilyen betu, tehat az alapszam a sajat
+    # utotagos alszocikkei elott all).
+    strongok = sorted(set(txt_adat) | set(lex_adat), key=lambda s: (int(s[1:5]), s[5:]))
     sorok = []
     szamlalo = {'txt': 0, 'lexicon': 0, 'egyenlo': 0, 'csak_txt': 0, 'csak_lexicon': 0}
     for strong in strongok:
@@ -179,7 +199,8 @@ def konszolidal(txt_adat, lex_adat):
         pos_kod = t['pos_kod'] if t else ''
         rovid_glosszak = t['rovid_glosszak'] if t else ''
 
-        sorok.append((strong, lemma, atirat, pos_kod, rovid_glosszak, teljes, forras,
+        sorok.append((strong, alap_strong_szamol(strong), lemma, atirat, pos_kod,
+                       rovid_glosszak, teljes, forras,
                        str(len(t['teljes_szoveg']) if t else 0),
                        str(len(l_szoveg) if l_szoveg is not None else 0)))
     return sorok, szamlalo
@@ -193,8 +214,8 @@ def run():
     txt_hash = sha_file(TXT_UT)
     lex_hash = sha_file(LEXICON_UT)
 
-    header = ['strong', 'lemma', 'atirat', 'pos_kod', 'rovid_glosszak', 'teljes_szoveg',
-              'forras', 'txt_hossz', 'lexicon_hossz']
+    header = ['strong', 'alap_strong', 'lemma', 'atirat', 'pos_kod', 'rovid_glosszak',
+              'teljes_szoveg', 'forras', 'txt_hossz', 'lexicon_hossz']
     with open(KIMENET, 'w', encoding='utf-8', newline='\n') as f:
         f.write('# GENERÁLT: eszkozok/tbesh_konszolidalt_import.py — kézzel nem szerkesztendő.\n')
         f.write('# forras: konkordancia/TBESH.txt (STEPBible.org CC BY) sha256=%s | '
@@ -202,6 +223,11 @@ def run():
                 % (txt_hash, lex_hash))
         f.write('# unio-szabaly: szocikkenkent a hosszabb tisztitott szoveg (forras=txt/lexicon), '
                 '+-5%% elteresnel forras=egyenlo. Dok.: konkordancia/TBESH_TBESG_README.md\n')
+        f.write('# strong: a STEP-forras sajat kulcsa, betu-utotaggal is lehet (pl. H7121G a '
+                'TBESH.txt-ben "H7121a" alakban -- STEP-alszocikk/mikro-jelentes, F05/D-UT1). '
+                'alap_strong: a 4-jegyu Strong-szam utotag nelkul -- ha a downstream kod '
+                'alapszam szerint illeszt, EZEN az oszlopon keresztul tegye, ne a strong '
+                'oszlopon (annak tobb sora is tartozhat egy alapszamhoz).\n')
         f.write('\t'.join(header) + '\n')
         for row in sorok:
             f.write('\t'.join(row) + '\n')

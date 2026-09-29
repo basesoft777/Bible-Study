@@ -91,21 +91,50 @@ Mindkét fájl tab-elválasztott (`\t`), UTF-8 kódolású szöveges fájl. A t�
 
 **Generált** (`eszkozok/tbesh_konszolidalt_import.py`, kézzel nem szerkesztendő):
 **unió, nem csere** — egyik forrás sem váltja ki a másikat, mert szócikkenként
-hol az egyik, hol a másik bővebb (§0 0.5 mérés). Fejléc: `strong lemma atirat
-pos_kod rovid_glosszak teljes_szoveg forras txt_hossz lexicon_hossz`.
+hol az egyik, hol a másik bővebb (§0 0.5 mérés). Fejléc: `strong alap_strong
+lemma atirat pos_kod rovid_glosszak teljes_szoveg forras txt_hossz
+lexicon_hossz`.
 
-- `teljes_szoveg` / `forras` — a `TBESH.txt` (a szócikk összes alsorának
-  dedupikált, HTML-mentesített definíciója) és a `konkordancia/lexikonok_nyers/
-  TBESH.lexicon` (SQLite, egyetlen konszolidált HTML-bejegyzés) közül a
-  **hosszabb tisztított szöveg** — `forras` jelzi, melyik (`txt` / `lexicon`
-  / `egyenlo`, ha a különbség ≤5%).
-- `rovid_glosszak` — csak a `.txt`-ben elérhető: az adott Strong-szám összes
+- `strong` — a STEP-forrás saját kulcsa; **betű-utótaggal is lehet** (pl.
+  `H7121a`), ha a forrás egy Strong-számot több alszócikkre/
+  mikro-jelentésre bont (l. lent, F05/D-UT1). A kulcs önmagában NEM mindig
+  a 4-jegyű alapszám.
+- `alap_strong` — a 4-jegyű Strong-szám, betű-utótag nélkül. Ha az
+  alapszámhoz több sor is tartozik (egy alaptétel + N alszócikk), a
+  downstream kód **ezen** az oszlopon keresztül illesszen, ha alapszám
+  szerint keres — nem a `strong` oszlopon, aminek nem minden alapszámhoz
+  van pontos (utótag nélküli) megfelelője.
+- `teljes_szoveg` / `forras` — a `TBESH.txt` (az adott **kulcs** — alapszám
+  vagy egy adott betű-utótag — összes alsorának dedupikált,
+  HTML-mentesített definíciója) és a `konkordancia/lexikonok_nyers/
+  TBESH.lexicon` (SQLite, egyetlen konszolidált HTML-bejegyzés ugyanerre a
+  kulcsra) közül a **hosszabb tisztított szöveg** — `forras` jelzi, melyik
+  (`txt` / `lexicon` / `egyenlo`, ha a különbség ≤5%).
+- `rovid_glosszak` — csak a `.txt`-ben elérhető: az adott kulcs összes
   alsorának rövid glosszája (7. mező), pontosvesszővel összefűzve — ez a
   szócikk mikro-jelentéseinek listája, amit a `.lexicon` nem tartalmaz
   külön.
 - `lemma` / `atirat` / `pos_kod` — a `.txt` 4./5./6. mezője; ha a szó csak a
   `.lexicon`-ban szerepel, ezek üresek (a `.lexicon` nem tartja külön ezeket
   a mezőket).
+
+**Betű-utótagos kulcsok (F05, D-UT1, 2026.09.29 — javítás egy független
+ellenőrzés nyomán):** mindkét forrás egy Strong-számot időnként több,
+betű-utótagos alszócikkre bont (pl. `H1121` "ben" a `TBESH.txt`-ben
+KIZÁRÓLAG `H1121a`/`H1121b` alakban létezik, sima `H1121` sosem — a szó
+"gyermek/fiú" és "kinsfolk" jelentése két külön alszócikk). A korábbi
+szigorú `^H\d{4}$` szűrő ezeket a kulcsokat egyáltalán nem ismerte fel
+Strong-kulcsként, és **szó nélkül eldobta** — 1424 nyers `.txt`-sor és a
+megfelelő `.lexicon`-bejegyzések vesztek el így, összesen **542 Strong-szám
+`.txt`-oldali tartalma** (ezek alapszáma máig is csak a `.lexicon`-ból
+adatosított, `forras=lexicon`), köztük **5 motívum-tokené** (`H1121`,
+`H2403`, `H2416`, `H7451`, `H7497`). A javítás: a szűrő (`STRONG_H_RE`)
+mostantól elfogadja az opcionális egybetűs utótagot is, a betű-utótagos
+kulcs **saját sorként marad meg** (nem olvad össze az alapszámmal — a
+tartalom nem egyesíthető félreértés nélkül), az `alap_strong` oszlop köti
+vissza az alapszámhoz. Ellenőrizve: mind az 1424 nyers `.txt`-sor
+importálódik, és mind az 542 érintett alapszámnál elérhető a `.txt`-tartalom
+(a saját, betű-utótagos sorában).
 
 **Kiszűrve: a `H9xxx` tartomány.** A `TBESH.txt` saját fejléce szerint az
 Extended Strongs a "prefixes, suffixes, personal pronoun endings and
@@ -126,12 +155,15 @@ teljesen hiányzó Strong-szám mentődött meg ezzel, és 509 már meglévő so
 tartalma frissült `txt`-ről `lexicon`-ra (mert korábban a lexikon-változat
 sosem jutott be az összehasonlításba).
 
-Mért értékek (2026.09.28, a `H9xxx`-kizárás és a nullával-töltés
-normalizálása után): **8 674 sor** (0 csak `.txt`, 542 csak `.lexicon`,
-3 006 mindkettő + `.txt` bővebb, 5 033 mindkettő + `.lexicon` bővebb, 93
-kb. egyenlő). A D28 hatókörébe tartozó 26 motívum-tokenre a bontás: 11
-`txt`, 13 `lexicon`, 2 `egyenlo` (eltér a §0 0.5 24-tokenes,
-kézi mérésétől — ez utóbbi új, teljes körű, automatizált mérés).
+Mért értékek (2026.09.29, a `H9xxx`-kizárás, a nullával-töltés
+normalizálása és a betű-utótag-javítás után): **9 838 sor** (1 csak
+`.txt`, 542 csak `.lexicon`, 3 404 mindkettő + `.txt` bővebb, 5 783
+mindkettő + `.lexicon` bővebb, 108 kb. egyenlő). A D28 hatókörébe tartozó
+26 motívum-token **alapszám-sorára** (a betű-utótagos alszócikkeket nem
+számolva) a bontás: **8 `txt`, 16 `lexicon`, 2 `egyenlo`** (eltér a §0 0.5
+24-tokenes, kézi mérésétől, és a korábban itt közölt 11/13/2 számtól is —
+ez utóbbi elavult volt, l. `naplok/ELLENOR_SZOTAR_S1.md`; ez a szám a
+jelenlegi, teljes körű, automatizált mérés).
 
 ## Attribúció
 
