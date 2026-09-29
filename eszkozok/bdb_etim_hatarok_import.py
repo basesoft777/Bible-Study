@@ -1,13 +1,14 @@
 """BDB_etimologia_kezi_hatarok.tsv -- a 26 heber gerinc-token (D28) BDB-
 szocikkeinek "nyelvi hatter" (etimologia/rokon-nyelvi anyag) hatar-
 besorolasa negy kategoriaba (S9, D21, D28/D29 kiegeszitve; a hatarfelismero
-regex F05b-ben javitva, l. lent a HATARJELOLTEK korul).
+szabaly F05b-ben javitva ketszer -- l. D41 es hatar_keres()).
 
-- gepi: a HATARJELOLTEK kozul a LEGKORABBAN illeszkedo minta hatarozza meg
-  a vagast, ES a hatar a szocikk hosszanak legfeljebb 40%-anal van
-  (BIZTONSAGI_KUSZOB). Ha egyik felteitel sem teljesul, a token NEM lehet
-  gepi (l. lent).
-- javaslat: nincs illeszkedo HATARJELOLT, VAGY a talalt hatar a szocikk
+- gepi: a nyelvi_hatter az ELSO ZARojelen KIVULI (nulla melysegu) em-dash
+  (—) ELOTT er veget (D41) -- a szocikk zarojel-melyseget karakterenkent
+  szamolva, az elso "—" karakter, amelynel a melyseg <=0. ES a hatar a
+  szocikk hosszanak legfeljebb 40%-anal van (BIZTONSAGI_KUSZOB). Ha
+  egyik feltetel sem teljesul, a token NEM lehet gepi (l. lent).
+- javaslat: nincs nulla-melysegu em-dash, VAGY a talalt hatar a szocikk
   40%-a utan van (tul bizonytalan ahhoz, hogy gepi legyen) -- KEZZEL
   kijelolt hatar, JOVAHAGYASRA VAR.
 - jovahagyott: mint a `javaslat`, de a felhasznalo chat-dontessel mar
@@ -36,57 +37,45 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 import os
-import re
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KONKORDANCIA = os.path.join(ROOT, 'konkordancia')
 BDB_UT = os.path.join(KONKORDANCIA, 'BDB_teljes_unabridged.tsv')
 KIMENET = os.path.join(KONKORDANCIA, 'BDB_etimologia_kezi_hatarok.tsv')
 
-# F05b (2026.09.29) -- a fuggetlen-ellenor kimutatta, hogy a regi
-# `—\s*1\s` minta (a) nem illeszkedik a "— 1." (pontos) alakra, ezert
-# tobb tokennel (pl. H7121) az ELSO "— 1 " egyezes egy MELYEN a szocikk
-# belsejeben levo, veletlenszeru "— 1 ..." reszre esett, nem a valodi
-# hatarra; (b) nem veszi figyelembe, hogy sok ige-szocikknel az
-# etimologia utan egy igealak-parad igma (Qal/Niph`al/Pi`el stb.) vagy
-# egy igehelyes hasznalati/alak-felsorolas (pl. "— absolute ׳בּ Gen
-# 4:25 +; construct ...") all, MIELOTT a szamozott "1." ertelem
-# elkezdodne -- ez a resz sem etimologia, de a regi minta benne hagyta.
-#
-# HATARJELOLTEK: harom minta, a LEGKORABBAN (legkisebb pozicioban)
-# illeszkedo szamit hatarnak, fuggetlenul attol, melyik minta talalta:
-#   1) szamozott ertelem kezdete -- "— 1" vagy "— 1." (a pont opcionalis)
-#   2) igealak-paradigma kezdete -- "— Qal" / "— Niph`al" / "— Pi`el" stb.
-#   3) igehelyes hasznalati/alak-felsorolas kezdete -- "— [absolute/
-#      construct] ׳X Gen ..." (a geresh-jelolt roevid Strong-utalas +
-#      konyv-rovidites + versszam mintaja)
-HATAR_SZAMOZOTT_RE = re.compile(r'—\s*1\.?\s')
-HATAR_BINYAN_RE = re.compile(
-    r'—\s*(?:Qal|Niph[`\']al|Pi[`\']el|Pu[`\']al|Hiph[`\']il|Hoph[`\']al|'
-    r'Hithpa[`\']el|Hithpo[`\']el|Poel|Pilel|Hithpalpel)\b'
-)
-HATAR_HASZNALATI_RE = re.compile(
-    r'—\s*(?:absolute\s+|construct\s+)?׳[֐-׿]{1,3}\s+[A-Z][a-z]{1,5}\.?\s*\d'
-)
-HATARJELOLTEK = (HATAR_SZAMOZOTT_RE, HATAR_BINYAN_RE, HATAR_HASZNALATI_RE)
-
-# A gepi hatar csak akkor fogadhato el, ha a szocikk hosszanak legfeljebb
-# ennyi szazalekanal van -- kulonben tul bizonytalan (pl. H7585-nel a
-# valodi etimologia-bekezdes maga is hosszu, DE meg a kuszob alatt marad;
-# ha egy jovobeli tokennel meg ez sem eleg, javaslat lesz belole, nem
-# gepi -- l. hatar_keres()).
+# D41 (F05b, 2026.09.29, felhasznaloi dontes a 0eeb885 reszleges
+# jovahagyasa utan): a korabbi harom-mintás (HATARJELOLTEK) megkozelites
+# tul specifikus volt -- a helyes altalanos szabaly egyszerubb: a
+# nyelvi_hatter az ELSO ZAROJELEN KIVULI (nulla melysegu) em-dash (—)
+# elott er veget. A legtobb BDB-szocikk etimologiaja egyetlen, esetleg
+# beagyazott zarojeleket tartalmazo "(...)" blokkban all; ami e blokk
+# UTAN, a legkulso zarojel-melysegen (0) all es "—"-sel kezdodik, az mar
+# nem etimologia (akar szamozott ertelem, akar igealak-paradigma, akar
+# igehelyes hasznalati lista). A regi `—\s*1\s` minta ezt csak
+# esetlegesen talalta el (l. a 0eeb885 commit indoklasat).
 BIZTONSAGI_KUSZOB_SZAZALEK = 40.0
 
 
+def zero_melysegu_emdash(entry):
+    """Az elso '—' (em-dash) pozicioja, amelynel a zarojel-melyseg <=0,
+    vagy None, ha nincs ilyen. A melyseg '(' -nal no, ')' -nal csokken."""
+    melyseg = 0
+    for i, ch in enumerate(entry):
+        if ch == '(':
+            melyseg += 1
+        elif ch == ')':
+            melyseg -= 1
+        elif ch == '—':  # em-dash
+            if melyseg <= 0:
+                return i
+    return None
+
+
 def hatar_keres(entry):
-    """(pozicio, 'gepi'|'tul_hosszu'|'nincs_illeszkedes') -- a legkorabban
-    illeszkedo HATARJELOLT pozicioja, es hogy a szocikk hosszanak
+    """(pozicio, 'gepi'|'tul_hosszu'|'nincs_illeszkedes') -- a D41 szerinti
+    elso nulla-melysegu em-dash pozicioja, es hogy a szocikk hosszanak
     BIZTONSAGI_KUSZOB_SZAZALEK-anal beluli-e."""
-    pozicio = None
-    for minta in HATARJELOLTEK:
-        m = minta.search(entry)
-        if m and (pozicio is None or m.start() < pozicio):
-            pozicio = m.start()
+    pozicio = zero_melysegu_emdash(entry)
     if pozicio is None:
         return None, 'nincs_illeszkedes'
     szazalek = 100.0 * pozicio / max(len(entry), 1)
@@ -100,8 +89,9 @@ NEM_TARGYALJA = {'H0779', 'H2555', 'H5303', 'H6093', 'H7496', 'H7497'}
 # Chat-dontessel jovahagyva 2026.09.29 (l. naplok/SZOTAR_S1_7_jelentes.md).
 # A H0430-at kulon, utolagos vizsgalat utan hagyta jova a felhasznalo (a
 # hatarveg "Nes^l. c,)" a nyers BDB.lexicon HTML-lel igazolva -- nem
-# OCR-hiba/csonkolas).
-JOVAHAGYOTT = {'H0430', 'H0922', 'H3678', 'H8004', 'H8034'}
+# OCR-hiba/csonkolas). A H2403-at a D41-es javitokor soran hagyta jova,
+# kezi hatarral (a szocikknek nincs korai, nulla-melysegu em-dash-a).
+JOVAHAGYOTT = {'H0430', 'H0922', 'H2403', 'H3678', 'H8004', 'H8034'}
 
 # Kezi hatar-javaslatok -- a nyelvi_hatter szoveget a BDB_teljes_unabridged.tsv
 # szocikkebol kezzel masoltuk ki, addig a pontig, ahol az erdemi etimologiai/
@@ -139,6 +129,10 @@ KEZI_JAVASLATOK = {
         '1 b Sta^§ 95, 198 a, on usage compare Lag^Or. ii. 60 f.) always '
         'with תֹּהוּ q. v.'
     ),
+    'H2403': (
+        "H2403. chatta 'ah חַטָּאת noun feminine^1Sam 14:38 (Gen 4:7 no "
+        'exception for רֹבֵץ is noun = crouching beast) sin, sin-offering'
+    ),
 }
 
 
@@ -164,15 +158,20 @@ def run(heber_tokenek):
         if token in NEM_TARGYALJA:
             sorok.append((token, 'nem_targyalja', '', str(len(entry)), '—'))
             continue
-        pozicio, minosites = hatar_keres(entry) if entry else (None, 'nincs_illeszkedes')
-        if minosites == 'gepi':
-            nyelvi_hatter = entry[:pozicio].strip()
-            sorok.append((token, 'gepi', nyelvi_hatter, str(len(entry)), str(pozicio)))
-            continue
+        # A kezi javaslat/jovahagyott tokeneknel a kezi hatar MINDIG elsobbseget
+        # elvez az automatikus felismeressel szemben -- ezeket eppen azert
+        # veszik fel a KEZI_JAVASLATOK-ba, mert a szocikk szerkezete miatt a
+        # gepi szabaly nem ad jo hatart (vagy adna valamit, de nem azt, amit a
+        # felhasznalo jovahagyott); az automatikus utat itt meg sem probaljuk.
         if token in KEZI_JAVASLATOK:
             nyelvi_hatter = KEZI_JAVASLATOK[token]
             allapot = 'jovahagyott' if token in JOVAHAGYOTT else 'javaslat'
             sorok.append((token, allapot, nyelvi_hatter, str(len(entry)), str(len(nyelvi_hatter))))
+            continue
+        pozicio, minosites = hatar_keres(entry) if entry else (None, 'nincs_illeszkedes')
+        if minosites == 'gepi':
+            nyelvi_hatter = entry[:pozicio].strip()
+            sorok.append((token, 'gepi', nyelvi_hatter, str(len(entry)), str(pozicio)))
             continue
         raise SystemExit(
             'HIBA -- %s: nincs biztonsagos gepi hatar (%s), nincs kezi javaslat a '
@@ -183,9 +182,10 @@ def run(heber_tokenek):
     header = ['strong', 'allapot', 'nyelvi_hatter', 'szocikk_hossz', 'hatar_pozicio']
     with open(KIMENET, 'w', encoding='utf-8', newline='\n') as f:
         f.write('# GENERÁLT (részben kézi javaslat) — eszkozok/bdb_etim_hatarok_import.py.\n')
-        f.write('# allapot: gepi (regex-hatar) | javaslat (kezi, JOVAHAGYASRA VAR — l. menet '
-                'vegi ⛔) | jovahagyott (kezi, chat-dontessel jovahagyva, 2026.09.29 -- H0922, '
-                'H3678, H8004, H8034, majd kulon vizsgalat utan H0430 is, l. naplok/'
+        f.write('# allapot: gepi (D41-hatar, l. eszkozok/bdb_etim_hatarok_import.py) | '
+                'javaslat (kezi, JOVAHAGYASRA VAR — l. menet vegi ⛔) | jovahagyott (kezi, '
+                'chat-dontessel jovahagyva, 2026.09.29 -- H0922, H3678, H8004, H8034, majd '
+                'kulon vizsgalat utan H0430, majd a D41 javitokor soran H2403 is, l. naplok/'
                 'SZOTAR_S1_7_jelentes.md) | nem_targyalja (nincs erdemi etimologia). Dok.: '
                 'konkordancia/BDB_teljes_unabridged_README.md\n')
         f.write('\t'.join(header) + '\n')

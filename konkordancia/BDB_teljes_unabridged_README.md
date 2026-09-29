@@ -91,18 +91,23 @@ szerepéhez (S9). Fejléc: `strong allapot nyelvi_hatter szocikk_hossz
 hatar_pozicio`.
 
 `allapot` négy érték egyike:
-- **`gepi`** (15 token) — az em-dash + „1 " minta (a BDB tipográfiájának
-  szócikkfej/1. jelentés határjelzője) pontosan illeszkedik; a `nyelvi_hatter`
-  automatikusan kivágott szöveg.
-- **`javaslat`** — van érdemi rokon-nyelvi/etimológiai tartalom, de a gépi
-  minta eltérő tagolás miatt nem illeszkedik; a `nyelvi_hatter` **kézzel
-  kijelölt** szöveg, a szkript `KEZI_JAVASLATOK` konstansában —
-  jóváhagyásra vár.
-- **`jovahagyott`** (5 token: `H0430`, `H3678`, `H8004`, `H8034`, `H0922`)
-  — mint a `javaslat`, de a kézi határt a felhasználó chat-döntéssel már
-  jóváhagyta (2026.09.29, `naplok/SZOTAR_S1_7_jelentes.md`); a szkript
-  `JOVAHAGYOTT` halmaza dönti el, hogy `javaslat` vagy `jovahagyott`
-  legyen a kimeneti címke.
+- **`gepi`** (14 token) — a `nyelvi_hatter` az ELSŐ, ZÁRÓJELEN KÍVÜLI
+  (nulla mélységű) em-dash (—) előtt ér véget (D41, F05b, 2026.09.29;
+  `eszkozok/bdb_etim_hatarok_import.py` `zero_melysegu_emdash()`), és a
+  határ a szócikk hosszának legfeljebb 40%-ánál van. A korábbi `—\s*1\s`
+  minta (csak a számozott „1.” értelem kezdetét kereste) hibás volt: nem
+  vette figyelembe az igealak-paradigmákat és a zárójelen belüli
+  véletlen „1”-eket — l. `naplok/ELLENOR_SZOTAR_S1.md`.
+- **`javaslat`** — nincs korai (a 40%-os küszöbön belüli), nulla mélységű
+  em-dash; a `nyelvi_hatter` **kézzel kijelölt** szöveg, a szkript
+  `KEZI_JAVASLATOK` konstansában — jóváhagyásra vár.
+- **`jovahagyott`** (6 token: `H0430`, `H0922`, `H2403`, `H3678`, `H8004`,
+  `H8034`) — mint a `javaslat`, de a kézi határt a felhasználó
+  chat-döntéssel már jóváhagyta (2026.09.29, `naplok/
+  SZOTAR_S1_7_jelentes.md`; `H2403` a D41 javítókör során, mert a
+  szócikknek nincs korai em-dash-a — az „sin, sin-offering” után
+  egyenesen citáció következik); a szkript `JOVAHAGYOTT` halmaza dönti
+  el, hogy `javaslat` vagy `jovahagyott` legyen a kimeneti címke.
 - **`nem_targyalja`** (6 token: `H0779`, `H2555`, `H5303`, `H6093`,
   `H7496`, `H7497`) — rövid szócikk, nincs külön etimológiai bekezdés;
   `nyelvi_hatter` üres. Ez **végleges állapot, nem pótlandó hiány** (D11).
