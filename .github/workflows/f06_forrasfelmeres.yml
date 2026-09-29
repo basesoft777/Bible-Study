@@ -1,0 +1,131 @@
+# F06_FORRASFELMERES_BRIEF.md 1. lepes -- forras-felmeres GitHub Actionsben.
+#
+# INDITAS. A vegleges trigger (brief 1. lepes): push a claude/f06-forrasfelmeres agra, ha az
+# eszkozok/fj2/**, ez a workflow-fajl vagy az eszkozok/fj2/futtatas.txt valtozott.
+# A brief 2. lepese (⛔, felhasznaloi valasz: BSB-kuszob + OPENROUTER_API_KEY secret) ELOTT
+# a trigger SZANDEKOSAN szukebb: csak az eszkozok/fj2/futtatas.txt-re fut, amely a valasz
+# elott nem letezik -- igy a szkriptek pusholasa nem inditja el a merest.
+# A valasz utan egy kulon commit (F06.2) bovíti a trigger-utvonalakat, letrehozza a
+# kuszob.txt-t es a futtatas.txt-t. Ujrafuttatashoz az eszkozok/fj2/futtatas.txt-t modositsd.
+#
+# A GITHUB_TOKEN-nel vegzett push nem indit uj futast, ezert nincs hurok.
+# Az OPENROUTER_API_KEY csak a 'licenc' job env-jeben szerepel.
+
+name: f06_forrasfelmeres
+
+on:
+  push:
+    branches: [claude/f06-forrasfelmeres]
+    paths:
+      - 'eszkozok/fj2/futtatas.txt'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: f06-forrasfelmeres
+  cancel-in-progress: false
+
+jobs:
+  meres:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Python telepitese
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fuggosegek
+        run: pip install requests
+
+      - name: Onteszt (halozat nelkul)
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python eszkozok/fj2/onteszt.py
+
+      - name: Meresek (nave, kjv_asv, bsb, macula)
+        env:
+          PYTHONIOENCODING: utf-8
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python eszkozok/fj2/futtat.py --lepes meres
+
+      - name: Meretkorlat es kulcs-ellenorzes
+        run: |
+          if find naplok -name 'F06_*' -type f -size +1000000c | grep .; then
+            echo "1 MB-nal nagyobb kimenet"; exit 1
+          fi
+          if grep -rIlE 'sk-or-[A-Za-z0-9_-]{16,}' naplok/F06_* eszkozok/fj2; then
+            echo "kulcs-szeru minta a kimenetben"; exit 1
+          fi
+
+      - name: Kimenetek commitolasa es pusholasa
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add naplok/F06_*
+          if git diff --cached --quiet; then
+            echo "nincs valtozas"; exit 0
+          fi
+          printf 'F06.3: mérések (GitHub Actions, futás %s)\n' "$GITHUB_RUN_ID" > commit_uzenet.txt
+          git -c i18n.commitEncoding=UTF-8 commit -F commit_uzenet.txt
+          rm commit_uzenet.txt
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+
+  licenc:
+    needs: meres
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+    steps:
+      - name: Checkout (a meres job commitja utan)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Python telepitese
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fuggosegek
+        run: pip install requests
+
+      - name: Licenc- es eredetelemzes (MiniMax M3)
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python eszkozok/fj2/futtat.py --lepes licenc
+
+      - name: Meretkorlat es kulcs-ellenorzes
+        run: |
+          if find naplok -name 'F06_*' -type f -size +1000000c | grep .; then
+            echo "1 MB-nal nagyobb kimenet"; exit 1
+          fi
+          if [ -n "$OPENROUTER_API_KEY" ] && grep -rIlF -e "$OPENROUTER_API_KEY" naplok/F06_* eszkozok/fj2 >/dev/null; then
+            echo "a kulcs megjelent a kimenetben"; exit 1
+          fi
+          if grep -rIlE 'sk-or-[A-Za-z0-9_-]{16,}' naplok/F06_* eszkozok/fj2; then
+            echo "kulcs-szeru minta a kimenetben"; exit 1
+          fi
+
+      - name: Kimenetek commitolasa es pusholasa
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add naplok/F06_licenc.tsv naplok/F06_koltseg.tsv
+          if git diff --cached --quiet; then
+            echo "nincs valtozas"; exit 0
+          fi
+          printf 'F06.4: licenc- és eredetelemzés, MiniMax M3 (GitHub Actions, futás %s)\n' "$GITHUB_RUN_ID" > commit_uzenet.txt
+          git -c i18n.commitEncoding=UTF-8 commit -F commit_uzenet.txt
+          rm commit_uzenet.txt
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
