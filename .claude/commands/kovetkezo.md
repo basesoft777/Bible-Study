@@ -38,6 +38,7 @@ Az 1–5. lépés csak olvas: az egyeztetés előtt nem nyitsz ágat, nem írsz 
    megfelelő végrehajtó subagent végzi (`vegrehajto-sonnet` / `vegrehajto-opus` / `vegrehajto-haiku`).
    `külső:<név>` esetén a `vegrehajto-sonnet` a briefben megadott szkripttel futtatja a
    külső modellt; Claude-dal nem helyettesíti. Gyakran commitolj.
+   Subagent hívásakor NE adj meg model paramétert; a modellt a subagent-fájl frontmatterje határozza meg.
 7. ⛔ PONT: ha a brief kötelező megállást ír elő, vagy tartalmi döntés kell: tétel a
    `DONTESEK.md`-be (kérdés, opciók, javaslat, hivatkozás a naplóra), commit, push, állj meg.
 8. KERETKIMERÜLÉS: ha a használati keret fogy, tiszta ponton commitolj, a zárójelentésbe írd a
