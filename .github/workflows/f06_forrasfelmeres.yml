@@ -57,6 +57,8 @@ jobs:
         run: python eszkozok/fj2/futtat.py --lepes meres
 
       - name: Meretkorlat es kulcs-ellenorzes
+        id: mero_ellenor
+        if: always()
         run: |
           if find naplok -name 'F06_*' -type f -size +1000000c | grep .; then
             echo "1 MB-nal nagyobb kimenet"; exit 1
@@ -65,7 +67,8 @@ jobs:
             echo "kulcs-szeru minta a kimenetben"; exit 1
           fi
 
-      - name: Kimenetek commitolasa es pusholasa
+      - name: Kimenetek commitolasa es pusholasa (reszleges futasnal is)
+        if: always() && steps.mero_ellenor.conclusion != 'failure'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

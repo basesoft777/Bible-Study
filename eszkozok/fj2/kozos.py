@@ -14,6 +14,7 @@ fogyasztoi a '#'-sorokat kihagyjak.
 
 import os
 import re
+import shutil
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -76,7 +77,7 @@ def futtat(parancs, cwd=None, idokorlat=900):
                           encoding='utf-8', timeout=idokorlat)
 
 
-def klonoz(url, cel, sparse=None):
+def klonoz(url, cel, sparse=None, klon_idokorlat=420):
     """git clone --depth 1 (opcionalisan sparse); (commit, hiba)."""
     if SZARAZ:
         return 'SZARAZ', None
@@ -86,7 +87,11 @@ def klonoz(url, cel, sparse=None):
     env_parancs = ['git', 'clone', '--depth', '1', '--quiet']
     if sparse:
         env_parancs += ['--filter=blob:none', '--sparse']
-    r = futtat(env_parancs + [url, cel])
+    try:
+        r = futtat(env_parancs + [url, cel], idokorlat=klon_idokorlat)
+    except subprocess.TimeoutExpired:
+        shutil.rmtree(cel, ignore_errors=True)
+        return None, 'idokorlat (%d mp) a klonozasnal' % klon_idokorlat
     if r.returncode != 0:
         return None, (r.stderr or r.stdout).strip()[:300]
     if sparse:

@@ -47,20 +47,25 @@ def main():
         kapu_ellenoriz()
     munka = a.munka or tempfile.mkdtemp(prefix='f06_')
     import nave, kjv_asv, bsb, macula, licenc
-    if a.lepes in ('meres', 'nave'):
-        nave.fut(munka, parancs)
-    if a.lepes in ('meres', 'kjv_asv'):
-        kjv_asv.fut(munka, parancs)
-    if a.lepes in ('meres', 'bsb'):
-        bsb.fut(munka, parancs)
-    if a.lepes in ('meres', 'macula'):
-        macula.fut(munka, parancs)
+    hibak = []
+    lepesek = [('nave', nave), ('kjv_asv', kjv_asv), ('bsb', bsb), ('macula', macula)]
+    for nev, modul in lepesek:
+        if a.lepes in ('meres', nev):
+            try:
+                modul.fut(munka, parancs)
+            except BaseException as e:  # noqa: BLE001 -- a tobbi forras meresa ettol meg lefut
+                if isinstance(e, KeyboardInterrupt):
+                    raise
+                hibak.append(nev)
+                print('HIBA a(z) %s lepesben: %s: %s' % (nev, type(e).__name__, str(e)[:300]), file=sys.stderr)
     if a.lepes != 'licenc':
         kozos.licenc_index_ir(parancs)
     if a.lepes == 'licenc':
         licenc.fut(parancs)
     if a.munka is None:
         shutil.rmtree(munka, ignore_errors=True)
+    if hibak:
+        raise SystemExit('HIBAS lepesek: ' + ', '.join(hibak))
 
 
 if __name__ == '__main__':
