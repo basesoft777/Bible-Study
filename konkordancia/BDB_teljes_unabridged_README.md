@@ -12,6 +12,8 @@
   adataival kereszt-ellenőrizve; Eliran Wong JSON-formázása
 - **Licenc:** közkincs (public domain) — az eredeti BDB szövege és annak digitalizált
   átirata is közkincs
+- **SHA-256** (`konkordancia/BDB_teljes_unabridged.tsv`, K7, F05b):
+  `1d28a84004817b8ee09eff92d762038ae2eac7351f24abd0a8b1cc5df380dfa5`
 
 ## Konverzió
 
@@ -88,15 +90,19 @@ számozott jelentéséig tartó része — a héber lexikai nyelvi háttér
 szerepéhez (S9). Fejléc: `strong allapot nyelvi_hatter szocikk_hossz
 hatar_pozicio`.
 
-`allapot` három érték egyike:
+`allapot` négy érték egyike:
 - **`gepi`** (15 token) — az em-dash + „1 " minta (a BDB tipográfiájának
   szócikkfej/1. jelentés határjelzője) pontosan illeszkedik; a `nyelvi_hatter`
   automatikusan kivágott szöveg.
-- **`javaslat`** (5 token: `H0430`, `H3678`, `H8004`, `H8034`, `H0922`) — van
-  érdemi rokon-nyelvi/etimológiai tartalom, de a gépi minta eltérő
-  tagolás miatt nem illeszkedik; a `nyelvi_hatter` **kézzel kijelölt**
-  szöveg, a szkript `KEZI_JAVASLATOK` konstansában — **jóváhagyásra vár**
-  (a menet végi ⛔-nél, `naplok/SZOTAR_S1_jelentes.md`).
+- **`javaslat`** — van érdemi rokon-nyelvi/etimológiai tartalom, de a gépi
+  minta eltérő tagolás miatt nem illeszkedik; a `nyelvi_hatter` **kézzel
+  kijelölt** szöveg, a szkript `KEZI_JAVASLATOK` konstansában —
+  jóváhagyásra vár.
+- **`jovahagyott`** (5 token: `H0430`, `H3678`, `H8004`, `H8034`, `H0922`)
+  — mint a `javaslat`, de a kézi határt a felhasználó chat-döntéssel már
+  jóváhagyta (2026.09.29, `naplok/SZOTAR_S1_7_jelentes.md`); a szkript
+  `JOVAHAGYOTT` halmaza dönti el, hogy `javaslat` vagy `jovahagyott`
+  legyen a kimeneti címke.
 - **`nem_targyalja`** (6 token: `H0779`, `H2555`, `H5303`, `H6093`,
   `H7496`, `H7497`) — rövid szócikk, nincs külön etimológiai bekezdés;
   `nyelvi_hatter` üres. Ez **végleges állapot, nem pótlandó hiány** (D11).

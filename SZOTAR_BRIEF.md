@@ -154,7 +154,8 @@ Eredmény: `naplok/SZOTAR_S0_jelentes.md` és 8 munkalap. A 7 kérdés válasza:
 
 ### 2. menet — kimenet-változtató, elvárt diffel
 
-- **S2.1** A jóváhagyott értékek rögzítése (26 héber lemma a `kiejtes_kivetelek.tsv`-be, D28; a BDB-határ `jovahagyott` sorai a S1.7/S9 szerinti végleges darabszámmal). Görög kiejtés a generált blokkokban (lemma és alak), a tisztított átírás-lista szerint; héber lemma a kivételtáblából. **A `torzscikk_general.py` kódbeli `KIEJT` táblája megszűnik.** Előfeltétel: 100%-os görög egyezés az aranykészleten.
+- **S2.1** A jóváhagyott értékek rögzítése (26 héber lemma a `kiejtes_kivetelek.tsv`-be, D28). Görög kiejtés a generált blokkokban (lemma és alak), a tisztított átírás-lista szerint; héber lemma a kivételtáblából. **A `torzscikk_general.py` kódbeli `KIEJT` táblája megszűnik.** Előfeltétel: 100%-os görög egyezés az aranykészleten.
+  **Pontosítás (F05b, 2026.09.29):** a BDB-etimológia-határ `jovahagyott` sorainak rögzítése — az eredeti tervvel ellentétben — MÁR MEGTÖRTÉNT az S1-ben (`konkordancia/BDB_etimologia_kezi_hatarok.tsv`, mind az 5 határ jóváhagyva, l. §8 D-jegyzék). Az S2.1-hez ezért csak a `kiejtes_kivetelek.tsv` formális rögzítése marad feladatként.
 - **S2.2** TBESH: átállás a konszolidált táblára (S4).
 - **S2.3** UBS DBH a lexikonoldalba és a törzscikkbe (S5, S10).
 - **S2.4** Mounce és SECE (S6); a Mounce angol glosszáinak fordítása a gyorsítótárból; a 2/b-ben meglévő 3 magyar glossza `kezi` sorként átkerül.
@@ -240,7 +241,7 @@ Eredmény: `naplok/SZOTAR_S0_jelentes.md` és 8 munkalap. A 7 kérdés válasza:
 **2. menet**
 | Üzenet | Fájlok |
 |---|---|
-| `S2.1: jóváhagyott kiejtések és BDB-határok; görög kiejtés a generált blokkokban` | `adat/kiejtes_kivetelek.tsv`, `konkordancia/BDB_etimologia_kezi_hatarok.tsv`, `eszkozok/lexikon_general.py`, `eszkozok/torzscikk_general.py`, `eszkozok/kiejtes.py`, `lexikon/*` |
+| `S2.1: jóváhagyott kiejtések rögzítése; görög kiejtés a generált blokkokban` (a BDB-határok már az S1-ben rögzültek, F05b) | `adat/kiejtes_kivetelek.tsv`, `eszkozok/lexikon_general.py`, `eszkozok/torzscikk_general.py`, `eszkozok/kiejtes.py`, `lexikon/*` |
 | `S2.2–S2.5: TBESH, UBS DBH, Mounce/SECE, teológiai szócikk, BDB-etimológia a renderben` | `eszkozok/lexikon_general.py`, `eszkozok/torzscikk_general.py`, `adat/forditasok.tsv`, `lexikon/*` |
 | `S2.6–S2.7: ISTENTISZT-001 2/b a tanulmányban, szerepmátrix, lábléc` | `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`, `adat/szotar_szerepek.tsv`, `eszkozok/*_general.py`, `lexikon/*` |
 | `S2.8–S2.9: diff-osztályozó és lezárás` | `eszkozok/render_diff_osztalyoz.py`, `naplok/SZOTAR_S2_diff.tsv`, `NYITOTT_FELADATOK.md`, `MUNKAMENET.md`, `FELADATOK.md` |

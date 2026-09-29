@@ -68,6 +68,10 @@ Fejléc: `strong gk_szam lemma_gorog atirat gyakorisag glossza`. A `gk_szam`
 a HTML-ben beágyazott `lex("gkG5####")` `onclick`-hivatkozásból kinyerve
 (a "gk" előtag levágva, `G5####` formában). 5 303 sor.
 
+**Bemenet SHA-256** (`konkordancia/lexikonok_nyers/MCGED.lexicon`, a
+generált `MCGED_teljes.tsv` fejlécében is szerepel):
+`8d3b4e9c22e86c6e690febacb6639e07f8bc1d6d1f8e2336a7229514e6e271bb`.
+
 **A `atirat` mező FONTOS eltérése a TBESG/TAGNT-konvenciótól:** a MCGED az
 upsilont `y`-nal írja át (pl. `κύριος` → `kyrios`), NEM `u`-val, ahogy a
 `TAGNT_kivonat.tsv`/`TBESG.txt` „Kiejtés” oszlopa (`kurios`) — két,

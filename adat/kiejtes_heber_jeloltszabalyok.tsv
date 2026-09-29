@@ -1,4 +1,4 @@
-# Heber kiejtes-jelolt szabalytabla (S3, S1.7, javitva a felhasznaloi ALLJ utan, D34-D37). Kulcs: sorszam. Séma: adat/SEMA.md 2.18 (S1.6-ban meg nem felvett -- S1.7 uj tabla, SEMA-bejegyzese kesobbi tetel).
+# Heber kiejtes-jelolt szabalytabla (S3, S1.7, javitva a felhasznaloi ALLJ utan, D34-D37). Kulcs: sorszam. Séma: adat/SEMA.md 2.18.
 # Bemenet: konkordancia/OSHL_lexikalis_index.tsv "atiras" mezoje (SBL Academic
 # stilusu, Unicode diakritikus jelekkel -- makron/cirkumflex hosszu maganhangzokra,
 # ʾ/ʿ a gutturalisokra, š/ṣ/ṭ/ḥ a pontozott massalhangzokra). NEM a nyers niqqud

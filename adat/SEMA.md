@@ -736,7 +736,7 @@ bennmaradó két bare `s`-t újra feldolgozná), és az αυ/ευ diftongusok
 `u`-ja (nem álló upsilon, nem válhat `ü`-vé — l. `καύχημα` → `kauchēma`
 → `kaukhéma`, nem `kaükhéma`).
 
-**Állapot (S1.3, validálva):** a 22 sor az `eszkozok/kiejtes.py
+**Állapot (S1.3, validálva):** a 24 sor az `eszkozok/kiejtes.py
 --ellenoriz` szerint mind a 26 tesztelhető „arany” görög párt (a 30
 egyedi párból 4 kontextus-függő kimaradt) hibátlanul adja vissza —
 `naplok/SZOTAR_S1_kiejtes_jelentes.md`. **D32:** az S1.2-es első
@@ -765,6 +765,47 @@ az EGYETLEN forrás — a render héber lemma-kiejtést sosem generál (S3).
 megmarad (nulla-diff, D30/D31); a kódbeli tábla kivezetése az S2.1 tétele.
 **A 26 héber lemma-kiejtés-jelölt (D28) az S1.7-ben készül, de csak az
 ÁLLJ-jóváhagyás után, az S2.1-ben kerül ide.**
+
+### 2.18 `kiejtes_heber_jeloltszabalyok.tsv` és `kiejtes_heber_kivetelek.tsv` — héber kiejtés-jelölt gépezet (SZOTAR_BRIEF.md S1.7, D34–D37)
+
+Két tábla, amelyek EGYÜTT állítják elő a `naplok/SZOTAR_S1_heber_jeloltek.tsv`
+JELÖLT-listát (`eszkozok/heber_kiejtes_jeloltek.py`) — egyik sem a végleges,
+render által olvasott `kiejtes_kivetelek.tsv` (2.17); abba csak kézi
+jóváhagyás után, az S2.1-ben kerülnek be a jóváhagyott jelöltek.
+
+**`kiejtes_heber_jeloltszabalyok.tsv`** — kulcs: `sorszam`. Szekvenciális,
+literális (nem regex) csereszabályok az OSHL `atiras` mezőn (SBL Academic
+stílus), a görög `kiejtes_szabalyok.tsv` (2.16) mintájára, de külön táblában
+(eltérő ábécé, eltérő szabályhalmaz — aleph/ajin elhagyás, š/ṣ/ṭ/ḥ/q/y
+átirata, hosszú/redukált magánhangzók).
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `sorszam` | egész szám | ✔ | Az alkalmazás sorrendje — kötelező betartani. |
+| `minta` | szabad szöveg | ✔ | A cserélendő literális OSHL-átiratos részstring (lehet üres, ha a csere törlés — l. az aleph/ajin-szabályt). |
+| `csere` | szabad szöveg | | A magyaros megfelelő; üres, ha a minta törlődik. |
+| `megjegyzes` | szabad szöveg | | A szabály indoklása, jellemző héber betű, igazoló példa. |
+
+**A begadkefat-spirantizáció (ב/כ/פ → v/ch/f, D34) NEM ebben a táblában
+van** — pozíciófüggő (dagesh/szókezdő helyzet), az OSHL `atiras` maga nem
+jelöli, ezért a pontozott `oshl_lemma` mezőt elemző `spirantize()` lépés
+(`eszkozok/heber_kiejtes_jeloltek.py`) végzi, a szabálytábla ELŐTT.
+
+**`kiejtes_heber_kivetelek.tsv`** — kulcs: `strong`. Kézi felülbírálás,
+amit a generátor a szabályfutás UTÁN alkalmaz (pl. H2555 → „hámás”, D36,
+a `ḥ→ch` szabály gépies eredménye helyett).
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `strong` | `STRONG` | ✔ | A felülbírált Strong-szám. |
+| `ertek` | szabad szöveg | ✔ | A jóváhagyott magyaros kiejtés-jelölt. |
+| `indok` | szabad szöveg | ✔ | Miért tér el a szabályszerű eredménytől. |
+| `datum` | `DATUM` | ✔ | A döntés dátuma. |
+
+**Ki írja, ki olvassa:** mindkét táblát kézzel bővíti a felhasználó (chat
+jóváhagyással); egyedül az `eszkozok/heber_kiejtes_jeloltek.py` olvassa
+őket. A render (`lexikon_general.py`/`torzscikk_general.py`) egyiket sem
+olvassa — az S1.7 jelölt-lépés, nem az S2 render-lépés tartozéka.
 
 ---
 

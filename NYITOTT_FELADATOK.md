@@ -1,6 +1,11 @@
 # Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.7, S1.5 — N38 felvéve és
+Utolsó frissítés: 2026.09.29 (SZOTAR_BRIEF.md v1.9, S1 javítókör (F05b) —
+N39–N44 új: héber `s`/`ś` átírás, H2403 lemma-választás, `spirantize()`
+geminációs hiba, `alap_strong` lemma-választási szabály (a `#9`
+előfeltétele), CI E5-jelölés globális hatóköre, commit-fegyelem.)
+
+Korábbi frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.7, S1.5 — N38 felvéve és
 lezárva ugyanabban a menetben: az `ellenoriz.py` 10. szabálya a megszűnt
 `forditas_ubs.tsv`-t olvasta, HIBA-val állt le S1.1 óta; javítva, és a
 13–14. szabály bevezetve, S1.5.)
@@ -411,6 +416,58 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   eltérést (miért N-tételként, nem élő KB5-ként fut). Ez a tétel maga NEM
   végzi el a konszolidációt (kívül esik az S1 hatókörén), csak jelzi;
   jövőbeli önálló karbantartás-menet tárgya.
+
+- **N39 — a héber kiejtés-jelölt szabálytáblában nincs szabály a számek
+  (`s`, ס) és a szin (`ś`, שׂ) megkülönböztetésére.** *(ÚJ, SZOTAR S1
+  javítókör (F05b), 2026.09.29, `naplok/ELLENOR_SZOTAR_S1.md`)* A görög
+  szabálytábla `s→sz`-t alkalmaz mindenre, a héber táblában ez a
+  megkülönböztetés hiányzik — pl. H3678 (כִּסֵּא) jelöltje „kissé”,
+  magyar ejtéssel [kiʃːeː], holott a szó tartalmaz szamek-et. **Felhasználói
+  döntés kell:** vezessünk-e be külön `ś`-szabályt (az OSHL-atirásban
+  ez `ś` karakterként jelenik meg, ha a forrás egyáltalán megkülönbözteti),
+  vagy maradjon az egységes `s`. Nem blokkolja a jelenlegi 26 jóváhagyott
+  jelöltet (egyik sem tartalmaz `ś`-t).
+- **N40 — a H2403 (חַטָּאָה/חַטָּאת) OSHL-homográf-választása indoklás
+  nélküli.** *(ÚJ, SZOTAR S1 javítókör (F05b), 2026.09.29)* A
+  `heber_kiejtes_jeloltek.py` a fájl-sorrend szerinti ELSŐ OSHL-sort
+  választja (חַטָּאָה, „chattáá”), de a gyakoribb címszó a חַטָּאת (a BDB
+  szócikk-feje is ezt adja). **Felhasználói döntés kell**, hogy ez a
+  választás maradjon-e, vagy a gyakoriság/BDB-cím alapján váltson.
+- **N41 — a `spirantize()` (héber begadkefat-átírás, D34) latens
+  geminációs hibája.** *(ÚJ, SZOTAR S1 javítókör (F05b), 2026.09.29)* A
+  függvény karakterenként lépked a döntéslistán; egy geminált
+  begadkefat-pár (pl. `bb`/`pp`/`kk`) második karaktere tévesen a
+  KÖVETKEZŐ ב/כ/פ döntését fogyasztaná el (példa: egy `rabbāb`-ból
+  `rabvāb` lenne). A jelenlegi 26 jóváhagyott jelölt között nincs ilyen
+  eset, de egy jövőbeli bővítésnél (pl. a #9 render vagy egy új
+  motívum-token) hibát okozhat. Javítás: a döntéslista indexelését a
+  betű saját pozíciójához kell kötni, nem sorrendi fogyasztáshoz.
+- **N42 — nincs rögzített lemma-választási szabály az `alap_strong`
+  szerint csoportosuló TBESH-sorokra.** *(ÚJ, SZOTAR S1 javítókör (F05b),
+  2026.09.29, `naplok/ELLENOR_SZOTAR_S1.md`)* A betű-utótag-javítás
+  (D38) után egy alapszámhoz (pl. H2416) akár öt különböző, saját lemmájú
+  betű-utótagos sor is tartozhat. Ma nincs downstream fogyasztó (a
+  generátor még nem olvassa a `TBESH_konszolidalt.tsv`-t), de **ez a
+  `#9` (SZOTAR S2, render) előfeltétele**: mielőtt a render alapszám
+  szerint lemmát/kiejtést jelenítene meg, dönteni kell, melyik
+  betű-utótagos sor lemmáját mutassa (vagy mindet, felsorolva).
+- **N43 — a CI E5-szabály `TÖRLÉS-SZÁNDÉKOS:` jelölése PR-szinten
+  globális, nem címsoronkénti.** *(ÚJ, SZOTAR S1 javítókör (F05b),
+  2026.09.29)* Egyetlen jelölés a PR összes törölt címsorát felmenti,
+  akkor is, ha a PR több, egymástól független szándékos törlést
+  tartalmaz. Ez CI-tervezési kérdés (`eszkozok/ellenorzes/szabalyok.py`
+  `SZANDEKOS_JELOLES_MINTA`), nem egy konkrét PR hibája — javaslat:
+  címsoronkénti vagy fájlonkénti jelölés bevezetése egy jövőbeli
+  karbantartás-menetben.
+- **N44 — commit-fegyelem: ékezet nélküli commit-üzenetek és WIP-commit
+  a SZOTAR S1 menetben (K8).** *(ÚJ, SZOTAR S1 javítókör (F05b),
+  2026.09.29, `naplok/ELLENOR_SZOTAR_S1.md`)* A `fuggetlen-ellenor`
+  mindkét körben jelezte, hogy a menet commitjai (a `cfa7d0d` WIP-pel
+  együtt) ékezet nélküliek — ez sérti a CLAUDE.md `git log --grep`
+  kereshetőségi elvét. A menet ezen a ponton már túl van a javításon
+  (a git history nem írható át visszamenőleg, l. a projekt szabálya, hogy
+  csak új commit készül, nem amend/rebase); a tétel a JÖVŐBELI menetekre
+  vonatkozó emlékeztető.
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 

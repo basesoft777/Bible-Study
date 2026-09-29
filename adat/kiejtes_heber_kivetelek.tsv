@@ -1,4 +1,4 @@
-# Heber kiejtes-jelolt kezi felulbiralasok (S1.7, D36). Kulcs: strong.
+# Heber kiejtes-jelolt kezi felulbiralasok (S1.7, D36). Kulcs: strong. Séma: adat/SEMA.md 2.18.
 # A szabalyfuttatas (adat/kiejtes_heber_jeloltszabalyok.tsv +
 # eszkozok/heber_kiejtes_jeloltek.py spirantize()) UTAN alkalmazott
 # felulbiralas -- csak a naplok/SZOTAR_S1_heber_jeloltek.tsv jelolt-listat
