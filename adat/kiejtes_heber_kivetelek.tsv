@@ -1,0 +1,9 @@
+# Heber kiejtes-jelolt kezi felulbiralasok (S1.7, D36). Kulcs: strong. Séma: adat/SEMA.md 2.18.
+# A szabalyfuttatas (adat/kiejtes_heber_jeloltszabalyok.tsv +
+# eszkozok/heber_kiejtes_jeloltek.py spirantize()) UTAN alkalmazott
+# felulbiralas -- csak a naplok/SZOTAR_S1_heber_jeloltek.tsv jelolt-listat
+# erinti, a kivetel-tablaba (adat/kiejtes_kivetelek.tsv) csak S2.1-ben,
+# kezi jovahagyas utan kerulhet be. A jelentesben az erintett sor
+# `arany_egyezes` mezoje "kivetel" jelolest kap.
+strong	ertek	indok	datum
+H2555	hámás	a ḥ->ch szabaly (D35) gepies alkalmazasa "chámás"-t adna, de a felhasznalo 2026.09.28-i dontese szerint ez a szo kivetel marad -- nem valtozik	2026.09.28

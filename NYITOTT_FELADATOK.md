@@ -1,6 +1,20 @@
 # Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.4, D30 — N32, N33 új: a
+Utolsó frissítés: 2026.09.29 (SZOTAR_BRIEF.md v1.10, S1 javítókör (F05b) —
+N39–N44 új: héber `s`/`ś` átírás, H2403 lemma-választás, `spirantize()`
+geminációs hiba, `alap_strong` lemma-választási szabály (a `#9`
+előfeltétele), CI E5-jelölés globális hatóköre, commit-fegyelem.)
+
+Korábbi frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.7, S1.5 — N38 felvéve és
+lezárva ugyanabban a menetben: az `ellenoriz.py` 10. szabálya a megszűnt
+`forditas_ubs.tsv`-t olvasta, HIBA-val állt le S1.1 óta; javítva, és a
+13–14. szabály bevezetve, S1.5.)
+
+Korábbi frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.7, S1.4 — N35–N37 új: a
+MCGED `y`-ág validálatlansága, a gold-készlet 12 csonkolt sora, nincs
+egységes Strong-normalizáló függvény.)
+
+Korábbi frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.4, D30 — N32, N33 új: a
 commitolt render-kimenet elavultsága és a CI generátor-lefedettsége.)
 
 Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: a rések tartalommal, kivonatok, `forras=lap` megszűnt, diff-osztályozó — RENDER lezárva. **Következő: `SZOTAR_BRIEF.md`.**)
@@ -356,6 +370,108 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   a `PARDES_DATUM` rögzítése is kellene, hogy a dátum-mező ne adjon hamis
   pirosat.
 
+- **N35 — a `kiejtes_szabalyok.tsv` `Y`/`y` szabálya (D33, MCGED-konvenció)
+  gold-párral még nincs igazolva.** *(ÚJ, SZOTAR S1.4, 2026.09.28)* Az
+  `U`/`u` ágat az S1.3 26/26 aranyparja validálta (TAGNT/TBESG-forrás); a
+  `Y`/`y` ág csak a `kiejtes.py --onteszt`-tel van ellenőrizve (egyetlen
+  kézi példa, `kyrios`→`kürion`... helyesebben `kyrios`→`küriosz`, nem
+  gold-készletből). Ha a `konkordancia/MCGED_teljes.tsv` `atirat` mezője
+  valaha render-be kerül (S2), előbb egy MCGED-specifikus arany
+  párkészletet kell összeállítani (hasonlóan a
+  `naplok/SZOTAR_S1_kiejtes_arany_sbl.tsv`-hez) és azzal validálni.
+
+- **N36 — a `naplok/SZOTAR_kiejtes_tesztkeszlet_tiszta.tsv` 12 görög
+  "arany" sora csonkolt (hiányzik az első, ékezetes/lehelet-jeles betű).**
+  *(ÚJ, SZOTAR S1.3 ellenőrzés, 2026.09.28)* Pl. `γκαλέω` `ἐγκαλέω`
+  helyett, `νομάζω` `ὀνομάζω` helyett — egy korábbi (S0-előtti)
+  másolási/kódolási hiba a tesztkészletben, nem az S1.3 vagy S1.4
+  bevezetése. A próbát nem érintette (a
+  `naplok/SZOTAR_S1_kiejtes_arany_sbl.tsv` a helyreállított alakot
+  használja, `megjegyzes` oszloppal jelölve, l. `naplok/
+  SZOTAR_S1_kiejtes_jelentes.md` 5. szakasza). **Javaslat, nem döntés:**
+  a gold-tábla saját maga javítható lenne, de más menetek (K10, RENDER)
+  saját mérési alapja is, ezért csak jelzésnek szánt tétel.
+
+- **N37 — nincs egységes Strong-kód-normalizáló függvény a projektben
+  (`#4/1d`).** *(ÚJ, SZOTAR S1.4 ellenőrzés, 2026.09.28, a felhasználó
+  kérésére, l. a #4/N21 kapcsán)* A `KARBANTARTAS_BRIEF.md` §3 saját
+  `1a`/`1b`/`1c` sorozatának (KB1 = `__main__`-őr+argparse, KB2 =
+  CRLF-tűrés, KB3 = `1c`, N21: a `Karoli_Strong_kivonat.tsv` nullázatlan
+  Strong-számainak javítása) **logikus folytatása — `1d`**: legalább 7
+  önálló Strong-normalizáló implementáció létezik: `eszkozok/
+  lxx_kivonat_fetch.py normalize_strong()`, `lxx_osszevetes.py
+  normalize_strong()`, `merge_karoli_szofaj.py normalize()`,
+  `oshl_index_import.py strong_from_attr()` (mind korábbi), és az S1.4
+  négy új szkriptje (`ubs_dbh_import.py`, `mcged_import.py`,
+  `lxx_versszintu_import.py`, `tw_import.py`) — mindegyik saját
+  logikával. Ugyanaz a hibaosztály, mint az N21: decentralizált
+  Strong-kezelés, ahol a padolási/csonkolási hiba könnyen észrevétlen
+  marad — pontosan ez történt a `tw_import.py` első verziójával
+  (`G00120` → tévesen `G0120`, l. `naplok/SZOTAR_S1_4_jelentes.md` 7.
+  szakasza), mielőtt a keresztellenőrzés kifogta. Javaslat: egy közös
+  `eszkozok/strong_util.py` (vagy hasonló) modul, amit minden import
+  átvesz. **A `#4` (KARBANTARTAS KB0–KB4) már lezárt és mergelt**
+  (`b8a418a`, 2026.09.27), ezért ez a tétel nem élesztette újra azt a
+  menetet — a `KARBANTARTAS_BRIEF.md` §5 döntésnaplója rögzíti az
+  eltérést (miért N-tételként, nem élő KB5-ként fut). Ez a tétel maga NEM
+  végzi el a konszolidációt (kívül esik az S1 hatókörén), csak jelzi;
+  jövőbeli önálló karbantartás-menet tárgya.
+
+- **N39 — a héber kiejtés-jelölt szabálytáblában nincs szabály a számek
+  (`s`, ס) és a szin (`ś`, שׂ) megkülönböztetésére.** *(ÚJ, SZOTAR S1
+  javítókör (F05b), 2026.09.29, `naplok/ELLENOR_SZOTAR_S1.md`)* A görög
+  szabálytábla `s→sz`-t alkalmaz mindenre, a héber táblában ez a
+  megkülönböztetés hiányzik — pl. H3678 (כִּסֵּא) jelöltje „kissé”,
+  magyar ejtéssel [kiʃːeː], holott a szó tartalmaz szamek-et. **Felhasználói
+  döntés kell:** vezessünk-e be külön `ś`-szabályt (az OSHL-atirásban
+  ez `ś` karakterként jelenik meg, ha a forrás egyáltalán megkülönbözteti),
+  vagy maradjon az egységes `s`. Nem blokkolja a jelenlegi 26 jóváhagyott
+  jelöltet (egyik sem tartalmaz `ś`-t). **Ugyanez a hiány a `w` (vav)
+  betűre is fennáll** — nincs külön szabály rá, a `naplok/
+  ELLENOR_SZOTAR_S1.md` 1. körének megfigyelése szerint (jelen jelöltek
+  egyike sem érintett, de a `w` az OSHL-atirásban is előfordulhat).
+- **N40 — a H2403 (חַטָּאָה/חַטָּאת) OSHL-homográf-választása indoklás
+  nélküli.** *(ÚJ, SZOTAR S1 javítókör (F05b), 2026.09.29)* A
+  `heber_kiejtes_jeloltek.py` a fájl-sorrend szerinti ELSŐ OSHL-sort
+  választja (חַטָּאָה, „chattáá”), de a gyakoribb címszó a חַטָּאת (a BDB
+  szócikk-feje is ezt adja). **Felhasználói döntés kell**, hogy ez a
+  választás maradjon-e, vagy a gyakoriság/BDB-cím alapján váltson.
+- **N41 — a `spirantize()` (héber begadkefat-átírás, D34) latens
+  geminációs hibája.** *(ÚJ, SZOTAR S1 javítókör (F05b), 2026.09.29)* A
+  függvény karakterenként lépked a döntéslistán; egy geminált
+  begadkefat-pár (pl. `bb`/`pp`/`kk`) második karaktere tévesen a
+  KÖVETKEZŐ ב/כ/פ döntését fogyasztaná el (példa: egy `rabbāb`-ból
+  `rabvāb` lenne). A jelenlegi 26 jóváhagyott jelölt között nincs ilyen
+  eset, de egy jövőbeli bővítésnél (pl. a #9 render vagy egy új
+  motívum-token) hibát okozhat. Javítás: a döntéslista indexelését a
+  betű saját pozíciójához kell kötni, nem sorrendi fogyasztáshoz.
+- **N42 — nincs rögzített lemma-választási szabály az `alap_strong`
+  szerint csoportosuló TBESH-sorokra.** *(ÚJ, SZOTAR S1 javítókör (F05b),
+  2026.09.29, `naplok/ELLENOR_SZOTAR_S1.md`)* A betű-utótag-javítás
+  (D38) után egy alapszámhoz (pl. H2416) akár öt különböző, saját lemmájú
+  betű-utótagos sor is tartozhat. Ma nincs downstream fogyasztó (a
+  generátor még nem olvassa a `TBESH_konszolidalt.tsv`-t), de **ez a
+  `#9` (SZOTAR S2, render) előfeltétele**: mielőtt a render alapszám
+  szerint lemmát/kiejtést jelenítene meg, dönteni kell, melyik
+  betű-utótagos sor lemmáját mutassa (vagy mindet, felsorolva).
+- **N43 — a CI E5-szabály `TÖRLÉS-SZÁNDÉKOS:` jelölése PR-szinten
+  globális, nem címsoronkénti.** *(ÚJ, SZOTAR S1 javítókör (F05b),
+  2026.09.29)* Egyetlen jelölés a PR összes törölt címsorát felmenti,
+  akkor is, ha a PR több, egymástól független szándékos törlést
+  tartalmaz. Ez CI-tervezési kérdés (`eszkozok/ellenorzes/szabalyok.py`
+  `SZANDEKOS_JELOLES_MINTA`), nem egy konkrét PR hibája — javaslat:
+  címsoronkénti vagy fájlonkénti jelölés bevezetése egy jövőbeli
+  karbantartás-menetben.
+- **N44 — commit-fegyelem: ékezet nélküli commit-üzenetek és WIP-commit
+  a SZOTAR S1 menetben (K8).** *(ÚJ, SZOTAR S1 javítókör (F05b),
+  2026.09.29, `naplok/ELLENOR_SZOTAR_S1.md`)* A `fuggetlen-ellenor`
+  mindkét körben jelezte, hogy a menet commitjai (a `cfa7d0d` WIP-pel
+  együtt) ékezet nélküliek — ez sérti a CLAUDE.md `git log --grep`
+  kereshetőségi elvét. A menet ezen a ponton már túl van a javításon
+  (a git history nem írható át visszamenőleg, l. a projekt szabálya, hogy
+  csak új commit készül, nem amend/rebase); a tétel a JÖVŐBELI menetekre
+  vonatkozó emlékeztető.
+
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá vált — belépő: `DONTESEK_INDEX.tsv`. A vers-szintű jelöltek nem ide, hanem az `adat/jeloltek.tsv`-be kerültek (16 sor, mind `dontes=nyitva`): HODIT-001 13 alacsony szavazatú TSK-jelölt, MENNY-001 Mt 24:38 + Luk 17:27, ANTROP-001 Fil 1:27. Az alábbiak a nem vers-szintű tételek:
@@ -423,6 +539,12 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 <!-- GENERÁLT-VÉGE: nyitott -->
 
 ## Lezárva
+
+### 2026.09.28 (SZOTAR_BRIEF.md S1.5 — N38 felvéve és lezárva):
+* N38 — az `eszkozok/ellenoriz.py` 10. szabálya (`forditas_ubs.tsv`) az S1.1 óta HIBA-val (kilépési kód 2) állt le minden futtatáskor, észrevétlenül. A `forditas_ubs.tsv` a SZOTAR S1.1-ben megszűnt (`adat/SEMA.md` 2.10, D31, 51-soros `adat/forditasok.tsv`-re költözött), de a 10. szabály (`LEXV2_2 tablak`) a régi fájlnevet feltétel nélkül olvasta be — a hiányzó fájl kivétele az egész szkriptet `HIBA`-val állította le, mielőtt bármi más lefuthatott volna. Mivel az S1.1–S1.4 közben egyetlen menet sem futtatta le az `ellenoriz.py`-t teljes egészében, ez a törés hetekig rejtve maradt volna a következő tényleges futtatásig. Javítva az S1.5-ben (ugyanaz a commit, amely a 13-14. szabályt bevezette): a `forditas_ubs.tsv`-részt a szabály RETIRED-ként kihagyja, ha a fájl hiányzik (a kulcs-/hash-ellenőrzést a 13. szabály veszi át); a `lxx_dontesek.tsv`-rész változatlan. `naplok/SZOTAR_S1_5_ellenoriz_jelentes.md`: RENDBEN 11, SÉRTÉS 0, KÉZI 2, JELENTÉS 3, kilépési kód 0.
+
+### 2026.09.28 (SZOTAR_BRIEF.md S1.1 — N34 lezárva):
+* N34 — a megszűnt `forditas_ubs.tsv` `megjegyzes` mezője (4 sor: G1311/88.266, G1944/33.475, G5351/88.266, G5590/9.20) pótolva: az `adat/forditasok.tsv` felvett egy opcionális `megjegyzes` oszlopot (`adat/SEMA.md` 2.14), a 4 sor jegyzete mindkét származó soron (`definicio_hu`, `glosszak_hu`) megőrizve. A `nulladiff.sh 8f5a1eb` a két D31-csere mellett továbbra is üres diffet ad.
 
 ### 2026.09.25 (CREMER_OCR_BRIEF.md v3 — lezárva):
 * A Cremer teljes szövegének javítása külső modellekkel (O-pipeline) lezárva, D22. Eredmény: a cremuoft-tétel azonosítása (görög betűs OCR), élőfej-alapú leképezés, módszertani tanulságok (D20–D21), ellenőrző csomag (`96c4c5d`). A Cremer a szótári rétegbe sem kerül be (SZOTAR D16).

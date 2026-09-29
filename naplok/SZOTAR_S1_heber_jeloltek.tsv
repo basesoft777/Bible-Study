@@ -1,0 +1,32 @@
+# S1.7 heber kiejtes-jeloltek (D28, 26 H-token, a 9 motivum (8 lexikon-motivum + TEREMT-002) elofordulasaibol).
+# JAVITVA a felhasznaloi ALLJ utan (D34-D37): begadkefat-
+# spirantizacio a pontozott lemmabol, h->ch, H2555 kezi kivetel.
+# JELOLT, NEM VEGLEGES -- kezi jovahagyas utan kerulhet az adat/kiejtes_kivetelek.tsv-be (S2.1). Nem ir a kivetel-tablaba.
+# scope=adat/elofordulasok.tsv (9 motivum, D28) + konkordancia/OSHL_lexikalis_index.tsv "atiras"/"lemma" mezo | forras=eszkozok/heber_kiejtes_jeloltek.py + adat/kiejtes_heber_jeloltszabalyok.tsv + adat/kiejtes_heber_kivetelek.tsv | ts=2026-09-29
+strong	motivumok	oshl_lemma	oshl_atiras	jelolt	arany_egyezes	megjegyzes
+H0127	HAMART-001	אֲדָמָה	ʾădāmâ	adámá	nincs_referencia	
+H0430	MENNY-001	אֱלֹהִים	ʾĕlōhîm	elóhím	nincs_referencia	
+H0779	HAMART-001	אָרַר	ʾārar	árar	nincs_referencia	
+H0922	TEREMT-002	בֹּהוּ	bōhû	bóhú	nincs_referencia	
+H1121	MENNY-001	בֵּן	bēn	bén	nincs_referencia	további OSHL-változat(ok), nem választva: בְּנוֹ/bĕnô
+H2403	HAMART-001	חַטָּאָה	ḥaṭṭāʾâ	chattáá	nincs_referencia	további OSHL-változat(ok), nem választva: חַטָּאת/ḥaṭṭāʾt
+H2416	ANTROP-001	חַי	ḥay	chaj	nincs_referencia	további OSHL-változat(ok), nem választva: חַי/ḥay; חַיָּה/ḥayyâ; חַיָּה/ḥayyâ; חַיִּים/ḥayyîm
+H2555	HAMART-001	חָמָס	ḥāmās	hámás	kivetel	adat/kiejtes_heber_kivetelek.tsv kezi felulbiralas (D36)
+H3548	KIRALY-001	כֹּהֵן	kōhēn	kóhén	nincs_referencia	
+H3678	KIRALY-001	כִּסֵּא	kissēʾ	kissé	nincs_referencia	
+H4467	KIRALY-001	מַמְלָכָה	mamlākâ	mamláchá	nincs_referencia	
+H5303	HODIT-001, MENNY-001	נְפִלִים	nĕpilîm	nefilím	nincs_referencia	
+H5315	ANTROP-001	נֶ֫פֶשׁ	nepeš	nefes	nincs_referencia	
+H6093	HAMART-001	עִצָּבוֹן	ʿiṣṣābôn	iccávón	nincs_referencia	
+H6975	HAMART-001	קוֹץ	qôṣ	kóc	nincs_referencia	
+H7043	HAMART-001	קָלַל	qālal	kálal	nincs_referencia	
+H7121	ISTENTISZT-001	קָרָא	qārāʾ	kárá	egyezik	adat/kiejtes_kivetelek.tsv jóváhagyott értékével egyezik
+H7451	HAMART-001	רַע	raʿ	ra	nincs_referencia	további OSHL-változat(ok), nem választva: רַע/raʿ; רָעָה/rāʿâ
+H7496	HODIT-001	רְפָאִים	rĕpāʾîm	refáím	nincs_referencia	
+H7497	HODIT-001	רָפָה	rāpâ	ráfá	nincs_referencia	további OSHL-változat(ok), nem választva: רְפָאִים/rĕpāʾîm
+H7585	ALVIL-001	שְׁאוֹל	šĕʾôl	seól	nincs_referencia	
+H7843	HAMART-001	שָׁחַת	šāḥat	sáchat	nincs_referencia	
+H8004	KIRALY-001	שָׁלֵם	šālēm	sálém	nincs_referencia	
+H8034	ISTENTISZT-001	שֵׁם	šēm	sém	egyezik	adat/kiejtes_kivetelek.tsv jóváhagyott értékével egyezik
+H8414	TEREMT-002	תֹּ֫הוּ	tōhû	tóhú	nincs_referencia	
+H8415	TEREMT-001	תְּהוֹם	tĕhôm	tehóm	nincs_referencia	

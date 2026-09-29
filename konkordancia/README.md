@@ -214,6 +214,64 @@ kiadás közt nem transzferálható közvetlenül. A főszövegen belüli (első
 mutatók kezdőlevele viszont pontosan egyeznek — a levél↔oldal leképezés önmagában
 helyesnek igazolt a `+12` és a `+15` szegmensen belül is.
 
+## `LXX_versszintu_parok.tsv` — versszintű együtt-előfordulás (SZOTAR_BRIEF.md S13)
+
+**Generált** (`eszkozok/lxx_versszintu_import.py`, kézzel nem szerkesztendő).
+A D28 hatókörébe tartozó 26 héber gerinc-token mindegyikének TAHOT-igehelyeit
+veti össze a `LXX_OS/*.tsv`-vel: minden versben az ott előforduló, a
+`adat/grammatikai_strongok.tsv` 31 G-sorával **grammatikailag szűrt**, egyedi
+görög Strong-kódokkal — **versszintű együtt-előfordulás, nem szóillesztés**
+(D14/D25 — a `LXX_OS` nem szóillesztett korpusz). Fejléc: `heber_strong
+igehely lxx_igehely gorog_strong proveniencia`. Egy héber token egy verséhez
+több sor tartozhat (egy-egy társ-görög Strong-kódonként); ha a szűrés után
+egy versben nem marad tartalmi görög kód, egy sor kerül be üres
+`gorog_strong` mezővel (a vers lefedettsége így is nyomon követhető).
+
+Mért értékek (2026.09.28-i futtatás): 99 356 sor, 26 héber token, 729
+TAHOT-igehely nem található meg a `LXX_OS`-ben (kihagyva — a `LXX_OS` nem
+fedi le a teljes ÓSZ-t, l. `naplok/FORRAS_jelentes.md`). A módszertani
+megerősítés (H7121 × G1941/G2564, a szűrés zajcsökkentő hatása) a
+`naplok/SZOTAR_S0b_jelentes.md` 5. szakaszában.
+
+**Licenc:** CC BY 4.0 (öröklődik a `LXX_OS`-től).
+
+**Bemenet-azonosítás (K7, F05b, pontosítva a `fuggetlen-ellenor` 3.
+köre után):** a tábla generálásához a szkript
+(`eszkozok/lxx_versszintu_import.py`) három fájlt olvas be futásidőben:
+`konkordancia/LXX_OS/*.tsv` (a versszintű MT–LXX-párosítás, SHA a
+`konkordancia/LXX_OS/README.md`-ben, `verse_pairs.jsonl` alapján),
+`konkordancia/TAHOT_kivonat.tsv` és `adat/grammatikai_strongok.tsv`. A
+26 héber gerinc-token listája **nem** az `adat/elofordulasok.tsv`-ből
+jön futásidőben — a szkript egy kódba égetett `HEBER_TOKENEK` konstans
+(az S1.4-es futtatáskor `adat/elofordulasok.tsv`-ből lekérdezve, l. a
+szkript fejcommentjét), amit a forrás nem olvas újra. Egyetlen,
+egyértelmű "a bemenet" fájl nincs — a `LXX_OS` a tartalmilag
+meghatározó forrás (ennek SHA-ja már dokumentált a saját README-jében),
+a másik két tábla saját SEMA-bejegyzéssel (2.4, 2.15) rendelkezik,
+külön SHA nélkül (nem verziózott külső letöltés, hanem a repó saját
+adata).
+
+## SZOTAR S1.4 importok — index (SZOTAR_BRIEF.md, S1.6)
+
+A szótári adatréteg 1. menetében (SZOTAR S1.4) importált 7 tábla mindegyike
+saját, dedikált README-ben dokumentált (forrás-URL, SHA, licenc, sor- és
+oszlopleírás) — ez a szakasz csak index, hogy melyik tábla melyik
+dokumentumban van:
+
+| Tábla | Dokumentáció | Import-szkript |
+|---|---|---|
+| `TBESH_konszolidalt.tsv` | `TBESH_TBESG_README.md` | `eszkozok/tbesh_konszolidalt_import.py` |
+| `UBS_DBH_jelentesek.tsv`, `UBS_DBH_referenciak.tsv`, `UBS_DBH_anomaliak.tsv` | `SDBH_SDGNT_README.md` | `eszkozok/ubs_dbh_import.py` |
+| `MCGED_teljes.tsv` | `lexikonok_nyers/README.md` | `eszkozok/mcged_import.py` |
+| `BDB_etimologia_kezi_hatarok.tsv` | `BDB_teljes_unabridged_README.md` | `eszkozok/bdb_etim_hatarok_import.py` |
+| `tW_szocikkek.tsv` | `tW_README.md` | `eszkozok/tw_import.py` |
+| `LXX_versszintu_parok.tsv` | l. feljebb, ebben a fájlban | `eszkozok/lxx_versszintu_import.py` |
+
+A generátor (`lexikon_general.py`/`torzscikk_general.py`) ezeket a
+táblákat még nem olvassa — ez a SZOTAR S2 (2. menet) tétele.
+`naplok/SZOTAR_S1_4_jelentes.md`: a teljes S1.4-jelentés, a mért sorszámok
+és a döntésnapló-hivatkozások (D33).
+
 ## CC BY-SA 4.0 licencű datasetek — SDBH, SDGNT
 
 A `SDBH_domenek.tsv`, a `SDGNT_domenek.tsv`, a `SDBH_SDGNT_domenfa.tsv` és a

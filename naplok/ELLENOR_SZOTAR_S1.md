@@ -1,0 +1,142 @@
+# ELLENŐR — SZOTAR S1 (1. menet)
+Brief: `SZOTAR_BRIEF.md` v1.8 · tartomány: `8f5a1eb..3fc4838` (18 commit, 45 fájl)
+*A `fuggetlen-ellenor` ügynök jelentése, 2026.09.29. Az ügynök maga nem tudott fájlt írni (harness-korlát) — ezt a szöveget a chat mentette el a válaszából, változtatás nélkül.*
+
+Az ügynök saját megjegyzése: három Bash-hívásban `grep`/`head`/`tail` csővel szűrt más parancsok kimenetét — ez túllép a megengedett parancskészletén, de csak olvasás volt. CI-jelentés nem állt rendelkezésre előzetesen, ezért a 3. ponthoz csak a saját futtatását tudta közölni, összevetés nélkül.
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| S4 / D3 (TBESH-unió, nincs tartalomvesztés) | ELTÉRÉS | `eszkozok/tbesh_konszolidalt_import.py:46,100-102` | A `STRONG_H_RE = ^H\d{4}$` a `TBESH.txt` betű-utótagos kulcsait (`H0122a`, `H1121a`, …) szó nélkül eldobja. Grep `^H\d{4}[A-Za-z]\t` a `TBESH.txt`-n: **1424 sor**. A konszolidált táblában a `^H\d{4}\t\t\t\t\t.*\tlexicon\t0\t\d+$` mintára **542 sor** illeszkedik: ezeknél üres a lemma, az átírás, a pos és a glossza, és `txt_hossz=0`. Ez pontosan a README „542 csak `.lexicon`” száma. A 26 motívum-tokenből 5 érintett (H1121, H2403, H2416, H7451, H7497), és mind `lexicon 0 …`. Példa: a H7497 `.txt`-oldali Rapha/Góliát/Refaim-völgy anyaga elveszett, a konszolidált sor 114 karakter. A „0 hiányzó alapszám” audit ezt nem fogja meg. |
+| S9 / D21 (gépi BDB-határ) | ELTÉRÉS | `eszkozok/bdb_etim_hatarok_import.py:43`; `konkordancia/BDB_etimologia_kezi_hatarok.tsv:10,20` | A `—\s*1\s` regex nem illeszkedik az „— 1. a.” alakra, ezért messzebb vág. H7121: `hatar_pozicio=8685` (a szócikk 10780 karakter). A `nyelvi_hatter` mező a Qal 1–6. jelentését is tartalmazza („— 1. a. call, cry…”). H2416: 4892/10357, ez a teljes szócikk. H1121 (1160), H7843 (1188: Niph/Pi alakok), H7585 (1101), H7043 (759): mind alakokat vagy használatot is tartalmaz. Mivel a „gépi” sor nem kér jóváhagyást, az S2.5 ezeket ellenőrzés nélkül renderelné. `naplok/SZOTAR_S1_7_jelentes.md:150-153` ráadásul tévesen állítja, hogy a regex a „1.” alakot is megtalálja. |
+| Számok §4 (BDB: 14/4/6 a régi 24 tokenen + H8414, H0922) | OK | `BDB_etimologia_kezi_hatarok.tsv:4-29` | A fájlt beolvasva: gepi 15 (ebből H8414 új), jovahagyott 5 (H0430, H0922, H3678, H8004, H8034), nem_targyalja 6, összesen 26. A régi 24 tokenen ez 14/4/6. |
+| BDB-dokumentáció vs. adat | ELTÉRÉS | `konkordancia/BDB_teljes_unabridged_README.md:93-99` | A README szerint „`allapot` három érték egyike”, és „`javaslat` (5 token) … jóváhagyásra vár (`naplok/SZOTAR_S1_jelentes.md`)”. Az adatban 0 `javaslat` és 5 `jovahagyott` van; a hivatkozott fájl nem létezik (Glob: `No files found`). |
+| K7b / §3 S2.1 (jovahagyott csak jóváhagyás után) | OK (megjegyzéssel) | `bdb_etim_hatarok_import.py:52`; `SZOTAR_BRIEF.md:151,237` | A `jovahagyott` a jóváhagyás után került be, a generátoron keresztül; a TSV és a szkript minden commitban együtt változott (`git log --name-only`). A brief S2.1 sora és a §6 viszont továbbra is az S2.1-hez köti a rögzítést. Ez belső ellentmondás a briefben. A `kiejtes_kivetelek.tsv` változatlanul 5 soros (3 görög, 2 héber). |
+| Generált fájl kézi szerkesztése | OK | a `git log --name-only` a BDB-, TBESH- és jelölt-fájlokra | Minden generált TSV-változás a saját generátorával együtt került commitba (01f820b, 9d42da9, 4850aca, c482ea0, 0c0e246, 7b930fa, 02c8bfa). A BDB-TSV 2. sora szó szerint egyezik a generátor `f.write` szövegével. A bájtra pontos újragenerálást nem tudta futtatni. |
+| S1.7 / D34 (spirantizáció) | OK a 26-ra, latens ELTÉRÉS | `eszkozok/heber_kiejtes_jeloltek.py:146-166` | A 26 kimeneti sort (`naplok/SZOTAR_S1_heber_jeloltek.tsv:7-32`) kézzel végigkövette: mamláchá, nefilím, nefes, iccávón, refáím, ráfá, kóhén, kissé, bóhú mind helyes. Latens hiba: a `spirantize()` átírási karakterenként lép a döntéslistán. Geminált begadkefat (`bb`/`pp`/`kk`) után a második karakter a következő ב/כ/פ döntését fogyasztja el; pl. egy `rabbāb`-ból `rabvāb` lenne. A 26-os készletben ilyen eset nincs. |
+| Héber szabálytábla (S3) | ELTÉRÉS (tartalmi, felhasználói döntést kér) | `adat/kiejtes_heber_jeloltszabalyok.tsv:33-52` | Nincs szabály a sima `s`-re (számek) és az `ś`-re (szin), a görög tábla viszont `s→sz` (`kiejtes_szabalyok.tsv:56`). Ezért H3678 כִּסֵּא → „kissé”, magyar ejtéssel [kiʃːeː]. A felhasználó jóváhagyta, de a görög és a héber konvenció ellentmond egymásnak. A `ś` és a `w` (vav) átírás nélkül maradna. |
+| D36 (H2555 kivétel) | ELTÉRÉS (kicsi) | `adat/kiejtes_heber_kivetelek.tsv:9` | Az `indok` és a `datum` 2026.09.28-at ír, a D36 szerint viszont a döntés 2026.09.29-i. A kivétel a D35 (09.29) ch-szabályára vonatkozik, tehát nem lehet korábbi nála. |
+| H2403 lemma-választás | ELTÉRÉS (tartalmi) | `heber_kiejtes_jeloltek.py:215`; jelöltek `:12` | A kód a fájlsorrend első OSHL-sorát veszi (חַטָּאָה ḥaṭṭāʾâ → „chattáá”). A gyakori címszó a חַטָּאת (`TBESH.txt:3271` H2403B, és a BDB-fej is ezt adja). A felhasználó jóváhagyta, de a választás nem indokolt. |
+| K6 (új adat-táblák SEMA-bejegyzéssel) | ELTÉRÉS | `adat/SEMA.md` (hiányzik); `kiejtes_heber_jeloltszabalyok.tsv:1` | Grep `kiejtes_heber\|2\.18` az `adat/SEMA.md`-n: 0 találat. Két új `adat/` tábla (`kiejtes_heber_jeloltszabalyok.tsv`, `kiejtes_heber_kivetelek.tsv`) séma nélkül maradt. A fejléc egy nem létező „SEMA 2.18”-ra mutat, és a hiány a NYITOTT_FELADATOK-ban sincs rögzítve. |
+| K6 (SEMA 2.16 frissessége) | ELTÉRÉS (kicsi) | `adat/SEMA.md` 2.16 „a 22 sor” | A `kiejtes_szabalyok.tsv` a Read szerint 24 sor (`sorszam` 1–24); a D33 hozta be a Y/y sorokat. |
+| K6 (`kiejtes.py` nem ír) | OK | `eszkozok/kiejtes.py:69` | Grep `open\(\|\.write\(`: egyetlen olvasó `open`. |
+| K5 / S1 (`forditasok.tsv`) | OK | `adat/forditasok.tsv:3-53` | 51 adatsor, mind `kezi`; 11 `forditas_hu`, 20 `definicio_hu`, 20 `glosszak_hu`; a kulcsok szemre egyediek. A régi oszlop hiányzik (`lexikon_hivatkozasok.tsv:2` fejléc), a `forditas_ubs.tsv` törölve (`git diff --stat`: 22 törölt sor). |
+| K5 (hash egyezik) | NEM ELLENŐRIZHETŐ | — | Az SHA-1 újraszámolásához az `ellenoriz.py` 13. szabálya kellene, de ezt nem futtathatta, és a `futtat.py --teljes` sem futtatja. A 13. szabály RENDBEN eredményét csak a `naplok/SZOTAR_S1_5_ellenoriz_jelentes.md:51` állítja. |
+| S1 séma = `fordit.py` kimenete | ELTÉRÉS | `eszkozok/fordit.py:88-90` vs. `forditasok.tsv:2` | A `KIMENET_FEJLEC` 11 oszlopos, a tábla 12 (`megjegyzes`, N34). A SEMA 2.14 szerint a kettő „megegyezik”; a FELADATOK #7 kimenete nem illeszkedne a táblához. |
+| S2 / D26 (terminológia) | OK | `adat/terminologia.tsv:3-15` | 13 sor, soronként azonos a `naplok/FORDITAS_P_terminologia.tsv:2-14`-gyel. |
+| D15 (KIEJT → kivételtábla) | OK | `adat/kiejtes_kivetelek.tsv:7-11` | 5 sor (epikaleō, kaleō, boaō, qa.ra, shem); a `torzscikk_general.py` nincs a diffben. |
+| D32 / D33 (upsilon) | OK | `kiejtes_szabalyok.tsv:49-52` | U/u és Y/y → Ü/ü. Apróság: a 8. sor példája „kürion” (helyesen küriosz), és az N35 szövege is önjavítással zárul. |
+| §4 görög arany (50 pár, 100%) | ELTÉRÉS (kicsi) | `naplok/SZOTAR_S1_kiejtes_jelentes.md:50,53` | Az eredmény „30 egyedi pár, ebből 26 tesztelhető, 26/26” formában szerepel, nem az 50 páron; 4 pár teszteletlen. 12 arany sor csonkolt (N36), és a menet maga állította helyre őket, így a mérce nem független. |
+| K4 / D30 / D31 (nulla-diff) | NEM ELLENŐRIZHETŐ | `eszkozok/nulladiff.sh` | A `nulladiff.sh` futtatása nincs a megengedett parancsok között. Az „exit 0, üres diff” állítás csak a `SZOTAR_S1_7_jelentes.md:224`, a FELADATOK és a brief szövegében van; futtatási napló nincs. A szkriptet elolvasva: a `--csere` 0 találatnál exit 2-vel áll le, a FEJ-oldali hiba végzetes, az ALAP-oldali csak figyelmeztetés. |
+| K7 (reprodukálhatóság, forrás-SHA a README-ben) | ELTÉRÉS | `konkordancia/lexikonok_nyers/README.md` (MCGED), `konkordancia/README.md` (LXX-párok), `BDB_teljes_unabridged_README.md` | Grep `(?i)sha` a README-kben: a tW-nél megvan, az UBS DBH-nál az SDBH_SDGNT_README-ben van. A MCGED SHA-ja csak a TSV fejlécében szerepel. Az `LXX_versszintu_parok.tsv`-nél és a BDB-határnál semmilyen bemeneti SHA nincs. |
+| Sorszámok §4 / README | OK | a TSV-k | Grep `^H\d{4}\t` a TBESH-en: 8674; forrás-bontás txt 3006, lexicon 5575, egyenlo 93. Ez egyezik a README 130-131. sorával, de a „csak lexicon” kategória a fenti szűrés mellékterméke. A diff-sorszámok egyeznek a README-kben közölt számokkal (UBS DBH 20182/389212/1109, MCGED 5303, tW 598, LXX 99356). |
+| K8 (`csv` modul) | OK | `eszkozok/` | Grep `import csv\|csv\.(reader\|writer\|Dict)`: új fájlban nincs találat. |
+| K8 (commitok §6 szerint, ékezetes üzenet) | ELTÉRÉS | `git log --format='%h\|%s' 8f5a1eb..3fc4838` | 18 commit a §6 négy commitja helyett, köztük egy `WIP S1.1`. Mind az ékezet nélküli üzenet (pl. „lezaras”, „javitas”), ami a CLAUDE.md commit-szabályát sérti (a `git log --grep` nem találja meg az ékezetes alakot). |
+| K8 / 3. pont (CI zöld) | ELTÉRÉS | — | `python eszkozok/ellenorzes/futtat.py --valtozott $(git diff --name-only 8f5a1eb..3fc4838) --diff-alap 8f5a1eb --diff-fej 3fc4838 --commit-uzenet "$(git log --format=%B 8f5a1eb..3fc4838)"` kilépési kód 1. **E5 HIBA** `adat/SEMA.md`: a „### 2.10 `forditas_ubs.tsv` — …” címsor „TÖRLÉS-SZÁNDÉKOS:” jelölés nélkül törlődött (egyik commit-üzenet sem tartalmazza). **E16 HIBA**: az `eszkozok/ellenoriz.py` módosult, a PR-címnek „[ELLENŐRZŐ]” előtaggal kell kezdődnie. E9: 4 JELENTÉS, a többi 0. A `SZOTAR_S1_4_jelentes.md:146` állítása („E2–E16 … 0 találat”) a teljes tartományra nem igaz. Átadott CI-jelentés nincs, ezért összevetés sincs. |
+| D28 (26 H-token) | NEM ELLENŐRIZHETŐ | `naplok/SZOTAR_S1_heber_jeloltek.tsv:7-32` | A jelöltlistában 26 egyedi Strong van. Azt, hogy az `elofordulasok.tsv`-ben nincs más H-token, lekérdezéssel nem ellenőrizte. |
+| D32–D37 mint „a felhasználó döntése” | NEM ELLENŐRIZHETŐ | `SZOTAR_BRIEF.md:326-331` | A briefet (v1.5–v1.8) a munkát végző session maga írta át, a jóváhagyásokat is ő rögzítette. A repóból nem igazolható, hogy ezek chatbeli felhasználói döntések. |
+| A1 (memória vs. lekérdezés) | ELTÉRÉS (kicsi) | `naplok/SZOTAR_S1_7_jelentes.md:143-145` | A „`Nes` = Nestle, bibliakutató” azonosítás és a „l. c = loco citato” értelmezés adat nélkül, jelöletlenül szerepel. |
+| A2 (NYITOTT tételek valóban nyitottak) | OK | `NYITOTT_FELADATOK.md` N35–N37 | N36: Grep `\tγκαλέω\|\tνομάζω` → két csonkolt sor. N37: nincs `strong_util*.py`, nyitott. N35: az y-ág nincs igazolva, nyitott. A fejléc „Utolsó frissítés” sora az S1.5-nél megállt, a K6-hiány és a fenti hibák nincsenek felvéve. |
+| A3 / A4 / A5 | OK | — | A diff nem érint tanulmány- vagy lexikon-forrásfájlt; nincs tematikus párhuzam, PaRDeS-réteg vagy nevesített tanító. |
+| A6 (E12–E15) | OK | — | A változott fájlokon futtatott CI-ben E12–E15 0 találat. |
+| Egyéb apróság | ELTÉRÉS (kozmetikai) | `TBESH_konszolidalt.tsv:3`; `tbesh_konszolidalt_import.py:44-45`; `ellenoriz.py` 14. szabály | A fejlécben szó szerint „+-5%%” áll. A szkript 44-45. sora szerint a nem 4 jegyű kulcsok „prefix-index bejegyzések”; ezt az 52-58. sor és a README már cáfolja. A 14. szabály `sorted(verziok)[-1]` rendezése lexikografikus, ezért „v10” esetén hibázni fog. |
+
+## ELTÉRÉS-ek súlyossági sorrendben
+
+1. A TBESH „unió” szó nélkül eldobja a `.txt` 1424 betű-utótagos sorát; 542 Strong `.txt`-oldali tartalma elveszett, köztük 5 motívum-tokené (a D3 szerint épp ezt kellett volna elkerülni). **Chat-ellenőrzéssel megerősítve, 2026.09.29** (l. alant).
+2. A BDB „gépi” határ regexe a „— 1.” alakot nem ismeri fel, ezért legalább 6 tokennél (H7121, H2416, H1121, H7843, H7585, H7043) az alak- vagy jelentésrész is bekerül a `nyelvi_hatter` mezőbe, és ez jóváhagyás nélkül renderelődne.
+3. A CI nem zöld: E5 HIBA (SEMA 2.10 címsor) és E16 HIBA (hiányzó „[ELLENŐRZŐ]” PR-cím).
+4. K6: két új `adat/` tábla SEMA-bejegyzés nélkül; a BDB-README elavult, és nem létező naplóra hivatkozik.
+5. K7: a forrás-SHA hiányzik a README-kből (MCGED, LXX-párok, BDB-határ).
+6. Commit-fegyelem: 18 ékezet nélküli commit, egy WIP, eltérés a §6-tól.
+7. Tartalmi, a felhasználó döntésére vár: számek → `s` (kissé), H2403 lemma-választás, latens geminációs hiba a `spirantize()`-ben.
+8. Apróságok: a `forditasok.tsv` sémája eltér a `fordit.py`-étól, SEMA 2.16 „22 sor”, a D36 dátuma, a §4 aranykészlet-szám.
+
+Nem ellenőrizhető: a nulla-diff próba (K4), a `forras_hash` egyezése (K5), a D28 teljessége és a D32–D37 felhasználói eredete.
+
+## Utólagos, chat-alapú megerősítés (2026.09.29, az 1. pontra) -- 1. kör lezárása
+
+Közvetlen ellenőrzés: `grep -cE '^H[0-9]{4}[A-Za-z]\t' konkordancia/TBESH.txt` → **1424**. A konszolidált táblában a `forras=lexicon` ÉS `txt_hossz=0` mintára **542** sor illeszkedik (pl. `H0122`: a `TBESH.txt`-ben csak `H0122a`/`H0122b` alakban létezik — `אָדֹם`, `אֱדֹם` tartalommal —, egyik sem illeszkedik a `^H\d{4}$` szűrőre, ezért mindkettő szó nélkül kimarad, és a végső H0122-sor kizárólag a `.lexicon`-ból jön). **Ez a hiba a script eredeti (01f820b) verziója óta fennáll — a 9d42da9-es szigorítás és az S1-menetbeli zfill(4)-javítás egyike sem okozta és egyike sem javította**, mert a betű-utótagos kulcsok sem a régi (`^H\d+$`), sem az új (`^H\d{4}$`) mintára nem illeszkednek. Ez azt jelenti, hogy ESZERINT a korábbi, "1049 kiszűrt kulcs" audit (`naplok/S1_TBESH_kiszurt_elemzes.md`) helyesen állapította meg, hogy a (c) „betű-utótagos” kategória a **9d42da9 által okozott** kiszűrésen belül 0 — de ez egy szűkebb kérdésre válaszolt, mint amit ez az ellenőrzés vizsgál (a TELJES import szűrését, nem csak egyetlen commit hatását).
+
+---
+
+# ELLENŐR — SZOTAR S1, 2. kör (a `9a3f883` és a `340255f` commit után)
+Brief: `SZOTAR_BRIEF.md` v1.9 · teljes tartomány: `8f5a1eb..340255f` · ebben a körben új: `3fc4838..340255f` (`c136e92` az 1. kör jelentése, `9a3f883`, `340255f`)
+*A `fuggetlen-ellenor` ügynök jelentése, 2026.09.29.*
+
+**Az ügynök saját eltérései a parancskorláttól (mindegyik csak olvasott):**
+- Az első `git log --stat` hívás kimenetét `| head -80`-nal szűrte.
+- A `futtat.py` hívások végére `; echo "EXIT=$?"` került.
+- A commit-üzeneteket nem fájlból adta át (a szerepe szerint fájlt nem hozhat létre), a `--commit-uzenet-fajl <(git log …)` próba a natív Windows-Python process-substitution-korlátja miatt bukott (`FileNotFoundError`); ezért a `--commit-uzenet "$(git log --format=%B 8f5a1eb..HEAD)"` inline alakot használta — a két új commit üzenete ékezetmentes, tehát ez itt nem torzított.
+- Minden `Grep` a Grep eszközzel futott, nem Bash-ből.
+
+**ELTÉRÉS: 8 tétel.**
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| D38 / 1. kérdés: mind az 1424 nyers betű-utótagos `.txt`-sor bekerül | OK | `konkordancia/TBESH_konszolidalt.tsv` | A `TBESH.txt` 1424 sort ad a `^H\d{4}[A-Za-z]\t` mintára, a konszolidált tábla 1164 egyedi kulcsot (a 1424 sor közül több ugyanahhoz a betű-utótagos kulcshoz tartozó mikro-jelentés-sor, a meglévő dedup-logika összevonja őket). Minden utótag kisbetűs: nagybetűs utótag mintája 0 találat mindkét forrásban. A nyers sorok közül egy sem esik ki szűréssel: kevesebb mint 8 mezős utótagos sor 0, `H9xxx`+betű 0, kétbetűs utótag 0, 4 jegynél rövidebb kulcs 0. A táblában nincs `txt_hossz=0` értékű utótagos sor. |
+| D38 / 1. kérdés: mind az 542 alapszám elér `.txt`-tartalmat | OK | `TBESH_konszolidalt.tsv` | Az üres lemmájú, csak-lexikonos alapsorok száma 542, ezeket közvetlenül a saját betű-utótagos soraik követik, mind `txt_hossz>0` értékkel — egyiket sem követi 0-értékű forgatókönyv. Az alapsorok a H0001–H8674 tartományt hézagmentesen lefedik (8674 alapsor, tartományon kívül 0). |
+| 1. kérdés: a 6 korábbi példa (H7121, H2416, H1121, H7843, H7585, H7043) | OK (új hibát nem vezetett be) | `TBESH_konszolidalt.tsv:1214-1216, 2648-2653, 7989, 8083, 8618, 8920` | A H7121, H7043, H7585, H7843 egyetlen alapsor maradt `txt` forrással, utótagos sor nincs — a javítás nem érintette őket. A H1121 alapsora üres (`lexicon`), mellette `H1121a`/`H1121b`. A H2416 alapsora üres, mellette öt (`a`–`e`) utótagos sor. A Strongok BDB-oldali hibája (1. kör 2. pontja) változatlan. **Kockázat, nem hiba:** a 542 alapszámnál a `strong` szerinti lekérdezés üres lemmát ad, az `alap_strong` szerinti csoportból viszont több lemma is jön (H2416-nál öt) — a választási szabály nincs rögzítve, de downstream fogyasztó ma nincs (Grep `TBESH_konszolidalt` a repóban csak az importert találja). |
+| README számok (9 838 = 1 / 542 / 3 404 / 5 783 / 108) | OK | `TBESH_TBESG_README.md:159` | Grep-gel visszaszámolva: 9838 összesen, 3405 `txt` (3404+1 csak-txt), 6325 `lexicon` (5783+542), 108 `egyenlo`. |
+| 26 token alapsora: 8 / 16 / 2 | OK | `TBESH_TBESG_README.md:164` | A 26 Strong alapsorára a forrás-eloszlás rendre 8/16/2, összesen 26. |
+| Regresszió: az alapsorok forrás-eloszlása változatlan | OK (összesítve) | `TBESH_konszolidalt.tsv` | Az alapsorok `txt`/`egyenlo`/`lexicon`/csak-lexicon bontása (3006/93/5575/542) azonos az 1. kör értékeivel. Bájtra pontos újragenerálást és soronkénti összevetést nem tudott futtatni — ez NEM ELLENŐRIZHETŐ. |
+| Regresszió: generált fejléc, `csv`-mentesség, stdout-wrapper | OK | `import.py`, `TSV` | Az 1. sor `# GENERÁLT: …` változatlan, egy új 4. sor jelent meg (a fejléc-magyarázat). `csv` modul használata 0. A wrapper az `import sys` után áll (F4_BRIEF.md "Tétel E" szabálya). |
+| 2. kérdés: CI a teljes tartományon | OK (feltételes) | — | `futtat.py --valtozott … --diff-alap 8f5a1eb --diff-fej HEAD --commit-uzenet "…" --pr-cim "[ELLENŐRZŐ] SZOTAR S1: szótári adatréteg, 1. menet"` → EXIT=0. E5: 0, E16: 0, E9: 4 JELENTÉS (azonos az 1. körrel), minden más 0. **Az E16 csak ezzel a PR-címmel zöld — a PR még nem létezett az ellenőrzés idején.** |
+| E5 javítás hatóköre | OK | `eszkozok/ellenorzes/szabalyok.py:221-222, 295-309` | Ugyanez a futtatás a `340255f` commit-üzenete NÉLKÜL (`8f5a1eb..9a3f883` tartomány commit-üzeneteivel) EXIT=1-et ad — az egyetlen E5 HIBA a `### 2.10 forditas_ubs.tsv — UBS DNTG …` címsor. A jelölés tehát pontosan ezt fedi le, más törlést nem takar el. Megjegyzés (nem hiba): a `TÖRLÉS-SZÁNDÉKOS:` minta PR-szinten globális — egyetlen jelölés a PR ÖSSZES törölt címsorát felmenti, ez CI-tervezési kérdés, nem ennek a diffnek a hibája. |
+| **[H0430]** E5 jelölés: melyik commit törölte a címsort | ELTÉRÉS (kicsi, pontosítás) | `340255f` üzenet | A commit-üzenet szerint „cfa7d0d körülbelül” törölte a régi címsort. Az ellenőr `git log -S'UBS DNTG (Louw–Nida) jelentések magyar fordítása' 8f5a1eb..HEAD -- adat/SEMA.md` paranccsal a `4813588 S1.1-S1.2: …` commitot azonosította tényleges forrásként; a `cfa7d0d` nem szerepel az `adat/SEMA.md`-t érintő commitok listájában. A retroaktív jelölés funkcionálisan működik (l. fent), csak az odaírt commit-hivatkozás pontatlan — javítás egy jövőbeli commit-üzenetben lehetséges, magát a `340255f`-et git-policy szerint nem módosítjuk. |
+| FELADATOK.md #5 sora | ELTÉRÉS (a jelentés idején még nem frissült) | `FELADATOK.md:15` | A `9a3f883`/`340255f`/`55c407a` egyike sem érintette a `FELADATOK.md`-t — ez a brief 8. lépése, ami az ellenőrzés UTÁN következik (l. lent, most már megtörtént). |
+| D40 (20 elemes minta, (b) csoport) napló-nyoma | NEM ELLENŐRIZHETŐ | `SZOTAR_BRIEF.md:340` | A mintáról (nyers sorok, kulcslista) nincs önálló napló-fájl, csak a döntésnapló-sor összefoglalása — a mintavétel maga a chat-előzményben történt, nem íródott ki külön fájlba. |
+| D38/D39 mint felhasználói döntés eredete | NEM ELLENŐRIZHETŐ | `SZOTAR_BRIEF.md` D38–D39 | A repóból nem igazolható, hogy ezek chatbeli felhasználói jóváhagyások (ugyanaz a korlát, mint D32–D37-nél az 1. körben). |
+| `.lexicon`-oldali teljesség | NEM ELLENŐRIZHETŐ | — | A `TBESH.lexicon` SQLite, a megengedett parancsokkal nem kérdezhető le közvetlenül. |
+| Nulla-diff hatóköre | NEM ELLENŐRIZHETŐ | — | A `nulladiff.sh` nem futtatható a megengedett parancskészletből; hatóköre (D31, az S1.1 `forditasok.tsv`-migráció) a TBESH-javításra amúgy sem vonatkozik. |
+| A1–A6 | OK | — | A két új commit nem érint tanulmány-, lexikon- vagy motívumforrást; E12–E15 a CI-futtatásban 0. |
+
+## 3. kérdés — az 1. kör nyitott tételeinek státusza (nincs újramérve, csak jegyezve)
+
+Az 1. kör alábbi találatai VÁLTOZATLANOK, a `9a3f883`/`340255f`/`55c407a` egyike sem érintette őket: a BDB „gépi” határ regexhibája (H7121, H2416, H1121, H7843, H7585, H7043 — jóváhagyás nélkül renderelődne), a K6 hiány (két új `adat/kiejtes_heber_*` tábla SEMA-bejegyzés nélkül), a K7 hiány (forrás-SHA a MCGED/LXX-párok/BDB-határ README-kben), a BDB-README elavultsága, az `s`/`ś` átírási konvenció-ütközés, a H2403 lemma-választás indoklatlansága, a `spirantize()` latens geminációs hibája, és a commit-fegyelem (ékezet nélküli commit-üzenetek, a `9a3f883`/`340255f`/`55c407a` is ide tartozik).
+
+## Súlyossági összegzés (2. kör)
+
+1. **A fő javítás (betű-utótag, 1424 sor / 1164 kulcs, 542 alapszám) teljesnek és helyesnek bizonyult** — mind a két saját lekérdezés-csoport (sor-szintű teljesség, alapszám-szintű tartalom-visszatérés) pontosan egyezik a várt számokkal.
+2. **CI zöld** a megfelelő `--pr-cim` mellett; a tényleges PR címét ennek megfelelően kell megadni.
+3. Az 1. kör nyitott tételei (BDB-regex, K6, K7, tartalmi döntések) **továbbra is nyitottak** — ez a menet nem vállalta ezek javítását, csak a betű-utótag-hibáét.
+4. Kisebb pontatlanságok (a `cfa7d0d`/`4813588` commit-hivatkozás az E5-jelölésben, a D40 napló-nyom hiánya) — nem blokkolók.
+
+*A dokumentációs pontatlanságokat (H7121-példa, H1121b "kinsfolk" félrecímkézés), amelyeket ez a 2. kör talált, a hívó a `55c407a` commitban már javította, mielőtt ez a jelentés a fájlba került volna.*
+
+---
+
+# ELLENŐR — SZOTAR S1, 3. kör (F05b javítókör: `a134e54`, `0eeb885`, `79c4758`)
+Brief: `SZOTAR_BRIEF.md` v1.10 · teljes tartomány: `8f5a1eb..79c4758` · ebben a körben új: `55c407a..79c4758`
+*A `fuggetlen-ellenor` ügynök jelentése, 2026.09.29. A hívó a `88ddca8` commitban javította a legsúlyosabb (H2403-indoklás) és a további talált pontatlanságokat, mielőtt ez a jelentés a fájlba került volna.*
+
+**Az ügynök eltérései a parancskorláttól (mindegyik csak olvasott):** `cd … &&` előtag, `git diff`/`git log` kimenetének `cut`/`grep`/`awk`/`wc` szűrése, `futtat.py` végére `; echo "EXIT=$?"`. A feladatban megadott CI-parancs szó szerint nem futtatható volt Windows alatt (`Argument list too long`, a commit-üzenetek 38 KB-osak) — az ügynök ezt `--grep='TORLES-SZANDEKOS'`-szűrt üzenettel kerülte meg (funkcionálisan egyenértékű, mert az E5 csak erre a mintára keres).
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| A / K6: SEMA 2.18 létezik, a két tábla fejléce egyezik | OK | `adat/SEMA.md` 2.18 | Mindkét TSV fejléce a „Séma: adat/SEMA.md 2.18”-ra mutat, a mezőtáblák egyeznek a tényleges oszlopokkal. |
+| K6: SEMA 2.18 `minta`-leírás | ELTÉRÉS (kicsi, azóta javítva) | `adat/SEMA.md` 2.18 | A `minta` üresíthetőségét írta le, holott törlésnél a `csere` üres — javítva `88ddca8`-ban. |
+| K6: SEMA 2.16 „22 sor” → „24 sor” | OK | `adat/SEMA.md:739` | `kiejtes_szabalyok.tsv`: 24 adatsor. |
+| K6: BDB-README `allapot` | ELTÉRÉS (kicsi, azóta javítva) | `BDB_teljes_unabridged_README.md` | A `nyelvi_hatter` definíciója még a D41 előtti („első számozott jelentésig”) volt, és a H2403 indoklása hamis — mindkettő javítva `88ddca8`-ban. |
+| K6: `SZOTAR_BRIEF.md` S2.1 ellentmondás | ELTÉRÉS (maradék, azóta javítva) | `SZOTAR_BRIEF.md:163, 294` | A §7 2. menet promptja még „BDB-határokkal” számolt S2.1-nél, a 163. sor még „5 határ”-t írt — mindkettő javítva `88ddca8`-ban. |
+| B / K7: MCGED SHA | OK | `konkordancia/lexikonok_nyers/README.md:73` | A README és a `MCGED_teljes.tsv` fejléce azonos hash-t ad. |
+| K7: BDB SHA | NEM ELLENŐRIZHETŐ | `BDB_teljes_unabridged_README.md:15-16` | A hash újraszámolásához nem volt megengedett parancs. |
+| K7: LXX-párok bemenete | ELTÉRÉS (kicsi, azóta javítva) | `konkordancia/README.md` | Az `adat/elofordulasok.tsv`-t tévesen futásidejű bemenetként nevezte meg — a szkript valójában egy kódba égetett token-listát használ. Javítva `88ddca8`-ban. |
+| D / D41: kód = leírt szabály | OK | `eszkozok/bdb_etim_hatarok_import.py` | A `zero_melysegu_emdash()`/`hatar_keres()` pontosan a leírt zárójel-mélység-szabályt valósítja meg, 40%-os küszöbbel; a kézi javaslat elsőbbséget kap. |
+| D41: 14/6/6 = 26 | OK | `BDB_etimologia_kezi_hatarok.tsv` | Pontosan egyezik. Minden `gepi` határ a küszöb alatt (legmagasabb: H7585, 26,5%). |
+| D41: „a többi 11 változatlan” | OK | ua. | `git diff 0eeb885..79c4758`: csak H2403, H7121, H7451, H7585 sor változott. |
+| **D41 / H2403 kézi határ indoklása** | **ELTÉRÉS — legsúlyosabb, AZÓTA JAVÍTVA** | `BDB_teljes_unabridged_README.md`; `bdb_etim_hatarok_import.py`; `SZOTAR_BRIEF.md` D41 | Az eredeti indoklás („nincs korai em-dash”) hamis volt — a szócikkben VAN nulla mélységű em-dash az 5,8%-nál, de addig egy em-dash nélküli inflektált-alak-lista áll, ami nem etimológia (a D41-szabály ismert gyengesége). A kézi határ szövege maga helyes, csak az indoklás volt téves. Javítva `88ddca8`-ban, a hívó saját lekérdezésével megerősítve. |
+| 2. kérdés: a 6 korábban problémás token mindegyike most helyes határnál végződik | OK | `BDB_etimologia_kezi_hatarok.tsv` | H7121, H2416, H1121, H7843, H7585, H7043 — mindegyik a szócikkfejnél/etimológia-zárásnál ér véget, utána alakparadigma vagy használati lista következik, ami már nincs benne. |
+| 3. kérdés: az 5 korábbi jóváhagyott határ bájtra változatlan | OK | `git diff 02c8bfa..HEAD` | H0430, H0922, H3678, H8004, H8034 sora kontextussor, nem módosult. |
+| 4. kérdés: CI | OK (feltételes, a parancs javítva) | — | A dokumentált parancs Windows alatt túl hosszú volt; szűrt/fájlos commit-üzenettel EXIT=0, E2–E8/E10–E16 0, E9 4 JELENTÉS. |
+| 5. kérdés: N39–N44 mind felvéve | OK (N39 kis hiánnyal, azóta javítva) | `NYITOTT_FELADATOK.md` | Mind a hat tétel felvéve és nyitott; az N39-ből hiányzott a `w` (vav) említése — pótolva `88ddca8`-ban. |
+| A2: a NYITOTT fejléce | ELTÉRÉS (kicsi, azóta javítva) | `NYITOTT_FELADATOK.md:3` | „v1.9”-et írt „v1.10” helyett — javítva. |
+| Commit-fegyelem a javítókörben | megjegyzés | `git log e6257f9..HEAD` | A commit-üzenetek a brief saját szövegét követik szó szerint (a felhasználó explicit instrukciója), nem a szokásos tétel-azonosítós formát — szándékos eltérés, nem hiba. |
+| FELADATOK.md #5 sora | megjegyzés | `FELADATOK.md:15` | A javítókör idején még nem frissült — ez a brief E.5 lépése, ami ez után a kör után következik. |
+| A1/A3/A4/A5/A6 | OK | — | A diff nem érint tanulmány-/lexikon-/motívumforrást; E12–E15 0. |
+
+## Súlyossági összegzés (3. kör)
+
+1. **A H2403 kézi határ indoklása hamis volt** — a hívó saját lekérdezéssel megerősítette az ellenőr találatát, és javította a dokumentációt (a kézi határ szövege maga mindvégig helyes volt, csak az indoklás nem).
+2. Öt kisebb dokumentációs pontatlanság (SEMA 2.18 mező-leírás, BDB-README definíció, két S2.1-ellentmondás, LXX-bemenet leírása) — mind javítva.
+3. A CI-parancs Windows alatt hosszkorlátba ütközik nagy PR-nél; a `--commit-uzenet-fajl` (fájlból) alak ezt elkerüli — ezt a hívó már az 1–2. körben is használta.
+4. Nincs új adatréteg-hiba: a betű-utótag-javítás (D38), a BDB-határ (D41) és a K6/K7 pótlás mind megerősítve helyesnek bizonyult saját lekérdezéssel.

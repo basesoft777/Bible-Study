@@ -58,3 +58,28 @@ text = re.sub('<[^>]+>', ' ', row[0])
 
 L. `konkordancia/Uj_lexikon_fajlok_2026-09-07.md` — teljes,
 fájlonkénti hasznossági rangsor.
+
+## `konkordancia/MCGED_teljes.tsv` — Mounce-import (SZOTAR_BRIEF.md S6)
+
+**Generált** (`eszkozok/mcged_import.py`, kézzel nem szerkesztendő) a
+`MCGED.lexicon` `G####` Strong-kulcsú sorai(ból — a `gkG5####` GK-kulcsú
+sorok kihagyva, mert ugyanazt a szöveget ismétlik meg más kulccsal).
+Fejléc: `strong gk_szam lemma_gorog atirat gyakorisag glossza`. A `gk_szam`
+a HTML-ben beágyazott `lex("gkG5####")` `onclick`-hivatkozásból kinyerve
+(a "gk" előtag levágva, `G5####` formában). 5 303 sor.
+
+**Bemenet SHA-256** (`konkordancia/lexikonok_nyers/MCGED.lexicon`, a
+generált `MCGED_teljes.tsv` fejlécében is szerepel):
+`8d3b4e9c22e86c6e690febacb6639e07f8bc1d6d1f8e2336a7229514e6e271bb`.
+
+**A `atirat` mező FONTOS eltérése a TBESG/TAGNT-konvenciótól:** a MCGED az
+upsilont `y`-nal írja át (pl. `κύριος` → `kyrios`), NEM `u`-val, ahogy a
+`TAGNT_kivonat.tsv`/`TBESG.txt` „Kiejtés” oszlopa (`kurios`) — két,
+egymástól független forrás-konvenció, felfedezve az S1.4 importja során
+(D33, `adat/kiejtes_szabalyok.tsv` fejléce). Ha ez a mező valaha a
+`eszkozok/kiejtes.py`-n megy át, mindkét szabály (`u`→`ü` ÉS `y`→`ü`)
+szükséges — mindkettő megvan a táblában, de a `y`→`ü` szabály **erre a
+mezőre még nincs gold-párral igazolva**.
+
+**Licenc:** © Mounce 1993, kötelező forrásmegjelöléssel
+(`www.teknia.com/greek-dictionary`) minden idézetnél (F6 D16).

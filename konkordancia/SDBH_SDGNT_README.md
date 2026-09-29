@@ -174,6 +174,54 @@ Fejléc: `entry_id lemma tipus nyers_ertek allapot`. 110 sor, mind
 bejegyzései (pl. `α`), javítás vagy kitalált kód nélkül (`CLAUDE.md` 3.
 szabálya).
 
+## UBS DBH (héber, SZOTAR_BRIEF.md S5, `eszkozok/ubs_dbh_import.py`)
+
+Ugyanaz a commit és forrás, mint a fenti SDBH-importé, a
+`dictionaries/hebrew/JSON/UBSHebrewDic-v0.9.2-en.JSON` fájlból, az
+`eszkozok/ubs_dntg_import.py` (fenti, görög) mintájára:
+
+```bash
+python eszkozok/ubs_dbh_import.py --letolt
+```
+
+| Fájl | Sor (fejléc nélkül) |
+|---|---|
+| `UBS_DBH_jelentesek.tsv` | 20 182 |
+| `UBS_DBH_referenciak.tsv` | 389 212 |
+| `UBS_DBH_anomaliak.tsv` | 1 109 |
+
+### `UBS_DBH_jelentesek.tsv`
+
+Fejléc: `strong strong_kod lemma main_id lexid entry_kod domen_kod domen definicio_rovid definicio_hosszu glosszak megjegyzes`
+
+Azonos szerkezet, mint a `UBS_DNTG_jelentesek.tsv`-é (a sor egysége
+`Strong × jelentés × domén`): 20 182 sor, 15 781 különböző `lexid`, 7 924
+különböző `strong`. Az `entry_kod` itt jellemzően `—` (a Louw–Nida-kódolás
+csak a görög DNTG-ben van).
+
+### `UBS_DBH_referenciak.tsv`
+
+Fejléc: `lexid strong igehely szopozicio ref_kod`
+
+A `LEXReferences` dekódolása azonos logikával, de a **könyvkód-tartomány az
+ÓSZ 39 könyvére szűkítve** (`001`–`039`, kanonikus sorrend, megfelel a
+`Konyv_normalizalo_tabla.tsv` első 39 sorának — a szkript saját
+`BOOK_CODES` táblája, nem megosztott a görög importéval, mert a két
+tartomány szám szerint diszjunkt: `001`–`039` OSZ, `040`–`066` ÚSZ).
+389 212 sor, 15 780 különböző `lexid`, 23 211 különböző `igehely`. **A
+tartományon kívüli kód nem fordult elő** — minden `LEXReferences`-bejegyzés
+sikeresen dekódolódott (0 `ref_dekodolas_sikertelen_vagy_osz_kivuli`
+anomália), tehát a héber szótár hivatkozásai kizárólag az ÓSZ-re mutatnak.
+
+### `UBS_DBH_anomaliak.tsv`
+
+Fejléc: `entry_id lemma tipus nyers_ertek allapot`. 1 109 sor: 666
+`ervenytelen_kod`, 413 `strong_nelkul`, 30 `jelentes_nelkul` — mind
+`AZONOSITVA, NEM JAVITVA` / `FORRASBAN_BEFEJEZETLEN`, javítás vagy
+kitalált kód nélkül. Az arány (kb. 5,5%) magasabb, mint a görög DNTG-nél
+(kb. 1,2%) — a héber szótár nagyobb szókincse (tulajdonnevek, ritka
+alakok) miatt várható, nem vizsgáltam tovább tételesen.
+
 ## Ismert korlátok
 
 - **A lefedettség kb. 90%.** Az SDBH még nem teljes szótár (a forrás README-je

@@ -10,10 +10,24 @@
 # pillanatfelvetelhez kepest -- l. a D30 dontesnaplo-bejegyzest.
 #
 # Hasznalat:
-#   eszkozok/nulladiff.sh <alap-commit> [PARDES_DATUM]
+#   eszkozok/nulladiff.sh <alap-commit> [PARDES_DATUM] [--csere 'regi=>uj' ...]
 #
 # PARDES_DATUM alapertelmezese: a mai nap (YYYY-MM-DD). Mindket oldal
 # ugyanazt a PARDES_DATUM erteket kapja.
+#
+# --csere 'regi=>uj' (SZOTAR_BRIEF.md D31, ismetelheto): elore megnevezett,
+# BAJTPONTOS (literalis, nem regex) szoveg-csere, amit a szkript a diff
+# ELOTT alkalmaz az ALAP oldal generalt lexikon/ fajljaira -- azert az ALAP
+# oldalra, mert egy S1-szeru menet altalaban egy adattabla atnevezeset/
+# megszunteteset vegzi (pl. adat/forditas_ubs.tsv -> adat/forditasok.tsv),
+# es a FEJ oldal render-logikaja mar az UJ nevet irja ki forras-idezetkent
+# -- ez var(t), nem hiba. A --csere EZT az elore jovahagyott, veges listat
+# engedi at a nulla-diff kapun; minden MAS eltrees tovabbra is ÁLLJ (a diff
+# kimenet nem ures marad). Minden --csere talalatszamat kiirja a stderr-re;
+# ha egy megadott csere 0 talalatot ad (a --csere elavult -- a szoveg mar
+# nem szerepel, vagy soha nem is szerepelt), a szkript VEGZETES hibaval
+# leall (exit 2) -- egy hatastalan engedely nem maradhat csendben a
+# listaban.
 #
 # A FEJ oldal NEM feltetlenul a HEAD commit -- ha a munkafan van commitolatlan
 # modositas (a S1 menet tipikus hasznalata: szerkesztes, majd nulla-diff-
@@ -53,13 +67,51 @@
 
 set -u
 
-if [ "${1:-}" = "" ]; then
-    echo "hasznalat: nulladiff.sh <alap-commit> [PARDES_DATUM]" >&2
+ALAP=""
+PARDES_DATUM=""
+CSEREK=()
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --csere)
+            shift
+            if [ $# -eq 0 ]; then
+                echo "hasznalat: --csere 'regi=>uj'" >&2
+                exit 2
+            fi
+            case "$1" in
+                *"=>"*) ;;
+                *)
+                    echo "ervenytelen --csere ertek (kell egy '=>' elvalaszto): $1" >&2
+                    exit 2
+                    ;;
+            esac
+            CSEREK+=("$1")
+            shift
+            ;;
+        --*)
+            echo "ismeretlen kapcsolo: $1" >&2
+            exit 2
+            ;;
+        *)
+            if [ -z "$ALAP" ]; then
+                ALAP="$1"
+            elif [ -z "$PARDES_DATUM" ]; then
+                PARDES_DATUM="$1"
+            else
+                echo "tul sok pozicionalis argumentum: $1" >&2
+                exit 2
+            fi
+            shift
+            ;;
+    esac
+done
+
+if [ -z "$ALAP" ]; then
+    echo "hasznalat: nulladiff.sh <alap-commit> [PARDES_DATUM] [--csere 'regi=>uj' ...]" >&2
     exit 2
 fi
-
-ALAP="$1"
-PARDES_DATUM="${2:-$(date +%Y-%m-%d)}"
+PARDES_DATUM="${PARDES_DATUM:-$(date +%Y-%m-%d)}"
 
 REPO_GYOKER="$(git rev-parse --show-toplevel)" || exit 2
 FEJ="$(git -C "$REPO_GYOKER" stash create 2>/dev/null)"
@@ -101,6 +153,42 @@ for OLDAL in alap fej; do
             exit 2
         fi
         echo "nulladiff: figyelmeztetes -- az ALAP oldal generalasa (lexikon es/vagy torzscikk) nem-nulla kileptekoddal zarult (l. a fejlec Korlat-megjegyzeset)" >&2
+    fi
+done
+
+csere_alkalmaz() {
+    # $1 = konyvtar, $2 = "regi=>uj" -- literalis (nem regex) csere minden
+    # .md fajlban a konyvtar alatt, rekurzivan; kiirja az osszes talalatot.
+    python - "$1" "$2" <<'PYEOF'
+import glob
+import os
+import sys
+
+konyvtar, csere = sys.argv[1], sys.argv[2]
+regi, uj = csere.split('=>', 1)
+osszesen = 0
+for path in glob.glob(os.path.join(konyvtar, '**', '*.md'), recursive=True):
+    # newline='' mindket iranyban: a sorveg (LF/CRLF) erintetlen marad,
+    # csak a `regi` reszstring cserelodik -- kulonben egy read()/write()
+    # kor onmagaban CRLF->LF normalizalna a teljes fajlt, hamis diffet
+    # okozva minden sorban.
+    with open(path, encoding='utf-8', newline='') as fh:
+        szoveg = fh.read()
+    n = szoveg.count(regi)
+    if n:
+        with open(path, 'w', encoding='utf-8', newline='') as fh:
+            fh.write(szoveg.replace(regi, uj))
+        osszesen += n
+print(osszesen)
+PYEOF
+}
+
+for CSERE in "${CSEREK[@]+"${CSEREK[@]}"}"; do
+    TALALAT="$(PYTHONIOENCODING=utf-8 csere_alkalmaz "$MUNKA/alap/lexikon" "$CSERE")"
+    echo "nulladiff: csere '$CSERE': $TALALAT találat (ALAP oldal)" >&2
+    if [ -z "$TALALAT" ] || [ "$TALALAT" -eq 0 ]; then
+        echo "nulladiff: VEGZETES -- a '$CSERE' csere 0 találatot adott (elavult engedély a --csere listában)" >&2
+        exit 2
     fi
 done
 

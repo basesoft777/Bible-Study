@@ -87,6 +87,87 @@ Mindkét fájl tab-elválasztott (`\t`), UTF-8 kódolású szöveges fájl. A t�
 - **TBESG appendix-tartalom:** a TBESG fájl elején (a 91. sor előtt) egy beágyazott, eltérő oszlopszámú példa-blokk található (személyek/helynevek jelölési konvenciójának bemutatására, pl. "Herod" család) — ez nem tartozik a fő G-tétel-listához, és `grep "^G####"` nem érinti.
 - **Nyelvtani elemek (TBESH vége felé, H9000+ tartomány):** ragok, névmási végződések, írásjelek önálló "Strong-számként" (pl. `H9020`–`H9049`) — ezek nem szótári tételek, hanem morfológiai komponensek.
 
+## `TBESH_konszolidalt.tsv` — a TBESH.txt és a TBESH.lexicon uniója (SZOTAR_BRIEF.md S4)
+
+**Generált** (`eszkozok/tbesh_konszolidalt_import.py`, kézzel nem szerkesztendő):
+**unió, nem csere** — egyik forrás sem váltja ki a másikat, mert szócikkenként
+hol az egyik, hol a másik bővebb (§0 0.5 mérés). Fejléc: `strong alap_strong
+lemma atirat pos_kod rovid_glosszak teljes_szoveg forras txt_hossz
+lexicon_hossz`.
+
+- `strong` — a STEP-forrás saját kulcsa; **betű-utótaggal is lehet** (pl.
+  `H7121a`), ha a forrás egy Strong-számot több alszócikkre/
+  mikro-jelentésre bont (l. lent, D38). A kulcs önmagában NEM mindig
+  a 4-jegyű alapszám.
+- `alap_strong` — a 4-jegyű Strong-szám, betű-utótag nélkül. Ha az
+  alapszámhoz több sor is tartozik (egy alaptétel + N alszócikk), a
+  downstream kód **ezen** az oszlopon keresztül illesszen, ha alapszám
+  szerint keres — nem a `strong` oszlopon, aminek nem minden alapszámhoz
+  van pontos (utótag nélküli) megfelelője.
+- `teljes_szoveg` / `forras` — a `TBESH.txt` (az adott **kulcs** — alapszám
+  vagy egy adott betű-utótag — összes alsorának dedupikált,
+  HTML-mentesített definíciója) és a `konkordancia/lexikonok_nyers/
+  TBESH.lexicon` (SQLite, egyetlen konszolidált HTML-bejegyzés ugyanerre a
+  kulcsra) közül a **hosszabb tisztított szöveg** — `forras` jelzi, melyik
+  (`txt` / `lexicon` / `egyenlo`, ha a különbség ≤5%).
+- `rovid_glosszak` — csak a `.txt`-ben elérhető: az adott kulcs összes
+  alsorának rövid glosszája (7. mező), pontosvesszővel összefűzve — ez a
+  szócikk mikro-jelentéseinek listája, amit a `.lexicon` nem tartalmaz
+  külön.
+- `lemma` / `atirat` / `pos_kod` — a `.txt` 4./5./6. mezője; ha a szó csak a
+  `.lexicon`-ban szerepel, ezek üresek (a `.lexicon` nem tartja külön ezeket
+  a mezőket).
+
+**Betű-utótagos kulcsok (D38, 2026.09.29 — javítás egy független
+ellenőrzés nyomán):** mindkét forrás egy Strong-számot időnként több,
+betű-utótagos alszócikkre bont (pl. `H1121` "ben" a `TBESH.txt`-ben
+KIZÁRÓLAG `H1121a`/`H1121b` alakban létezik, sima `H1121` sosem — a
+`H1121a` a "gyermek/fiú" köznévi jelentés (héberül בֵּן), a `H1121b` egy
+tulajdonnév, "Beno" (héberül בְּנוֹ, "his son", egy lévita neve) —
+két teljesen külön szócikk, nem ugyanannak a szónak két árnyalata). A
+korábbi
+szigorú `^H\d{4}$` szűrő ezeket a kulcsokat egyáltalán nem ismerte fel
+Strong-kulcsként, és **szó nélkül eldobta** — 1424 nyers `.txt`-sor és a
+megfelelő `.lexicon`-bejegyzések vesztek el így, összesen **542 Strong-szám
+`.txt`-oldali tartalma** (ezek alapszáma máig is csak a `.lexicon`-ból
+adatosított, `forras=lexicon`), köztük **5 motívum-tokené** (`H1121`,
+`H2403`, `H2416`, `H7451`, `H7497`). A javítás: a szűrő (`STRONG_H_RE`)
+mostantól elfogadja az opcionális egybetűs utótagot is, a betű-utótagos
+kulcs **saját sorként marad meg** (nem olvad össze az alapszámmal — a
+tartalom nem egyesíthető félreértés nélkül), az `alap_strong` oszlop köti
+vissza az alapszámhoz. Ellenőrizve: mind az 1424 nyers `.txt`-sor
+importálódik, és mind az 542 érintett alapszámnál elérhető a `.txt`-tartalom
+(a saját, betű-utótagos sorában).
+
+**Kiszűrve: a `H9xxx` tartomány.** A `TBESH.txt` saját fejléce szerint az
+Extended Strongs a "prefixes, suffixes, personal pronoun endings and
+punctuation" jelölésére is `H9xxx`-kódokat használ — ugyanaz a konvenció,
+mint az `adat/grammatikai_strongok.tsv` `H9xxx`-szűrése (SEMA 2.7.2) —,
+ezek nem szótári tételek.
+
+**Normalizálva, nem kiszűrve: a nem nullával töltött kulcsok.** A
+`TBESH.lexicon` egy részét (pl. `H9`, `H90`, `H900`, `H122`) nem 4 jegyű,
+nullával nem töltött alakban tárolja — ezek **valódi** Strong-kulcsok
+(pl. `H9` tartalma szó szerint egyezik a `TBESH.txt` `H0009` sorával), nem
+a forrás saját prefix-indexei, ahogy egy korábbi mérés feltételezte
+(l. `naplok/S1_TBESH_kiszurt_elemzes.md`). A szűrés előtt egy
+`normalizal()` lépés `zfill(4)`-gyel 4 jegyre tölti a csak-számjegyekből
+álló nyers kulcsot (`H122` → `H0122`), így ezek is bekerülnek a táblába,
+és a `konszolidal()` hossz-alapú forrásválasztásába is — 35 korábban
+teljesen hiányzó Strong-szám mentődött meg ezzel, és 509 már meglévő sor
+tartalma frissült `txt`-ről `lexicon`-ra (mert korábban a lexikon-változat
+sosem jutott be az összehasonlításba).
+
+Mért értékek (2026.09.29, a `H9xxx`-kizárás, a nullával-töltés
+normalizálása és a betű-utótag-javítás után): **9 838 sor** (1 csak
+`.txt`, 542 csak `.lexicon`, 3 404 mindkettő + `.txt` bővebb, 5 783
+mindkettő + `.lexicon` bővebb, 108 kb. egyenlő). A D28 hatókörébe tartozó
+26 motívum-token **alapszám-sorára** (a betű-utótagos alszócikkeket nem
+számolva) a bontás: **8 `txt`, 16 `lexicon`, 2 `egyenlo`** (eltér a §0 0.5
+24-tokenes, kézi mérésétől, és a korábban itt közölt 11/13/2 számtól is —
+ez utóbbi elavult volt, l. `naplok/ELLENOR_SZOTAR_S1.md`; ez a szám a
+jelenlegi, teljes körű, automatizált mérés).
+
 ## Attribúció
 
 Minden felhasználásnál (motívum-cikkben, tanulmányban, jegyzetben) fel kell tüntetni:

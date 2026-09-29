@@ -45,7 +45,7 @@ LEXIKON_HIVATKOZASOK_TSV = os.path.join(ADAT, 'lexikon_hivatkozasok.tsv')
 OSHL_TSV = os.path.join(KONKORDANCIA, 'OSHL_lexikalis_index.tsv')
 KAPCSOLATOK_TSV = os.path.join(ADAT, 'kapcsolatok.tsv')
 JELOLTEK_TSV = os.path.join(ADAT, 'jeloltek.tsv')
-FORDITAS_UBS_TSV = os.path.join(ADAT, 'forditas_ubs.tsv')
+FORDITASOK_TSV = os.path.join(ADAT, 'forditasok.tsv')
 LXX_DONTESEK_TSV = os.path.join(ADAT, 'lxx_dontesek.tsv')
 STRONG_SZOTAR_TSV = os.path.join(KONKORDANCIA, 'Strong_szotar.tsv')
 TBESG_TXT = os.path.join(KONKORDANCIA, 'TBESG.txt')
@@ -345,7 +345,7 @@ def blokk_jelmagyarazat(m):
 _ubs_ref_idx = None
 _ubs_jelentes_idx = None
 _ubs_definicio_idx = None
-_forditas_ubs_idx = None
+_forditasok_idx = None
 
 
 def ubs_indexek():
@@ -364,12 +364,19 @@ def ubs_indexek():
     return _ubs_ref_idx, _ubs_jelentes_idx, _ubs_definicio_idx
 
 
-def forditas_ubs_index():
-    global _forditas_ubs_idx
-    if _forditas_ubs_idx is None:
-        rows = L.read_tsv_skip_comments(FORDITAS_UBS_TSV)
-        _forditas_ubs_idx = {(r['strong'], r['entry_kod']): r for r in rows}
-    return _forditas_ubs_idx
+def forditasok_index():
+    """adat/forditasok.tsv (S1.1): kulcs szotar+strong+entry_id+jelentes_szam+mezo."""
+    global _forditasok_idx
+    if _forditasok_idx is None:
+        rows = L.read_tsv_skip_comments(FORDITASOK_TSV)
+        _forditasok_idx = {(r['szotar'], r['strong'], r['entry_id'], r['jelentes_szam'], r['mezo']): r
+                            for r in rows}
+    return _forditasok_idx
+
+
+def forditas_ehhez(szotar, strong, entry_id, jelentes_szam, mezo):
+    r = forditasok_index().get((szotar, strong, entry_id, jelentes_szam, mezo))
+    return r['forditas_hu'] if r else ''
 
 
 def ubs_jelentes_cella(sor_id, igehely, strong_field):
@@ -390,16 +397,15 @@ def ubs_jelentes_cella(sor_id, igehely, strong_field):
 
     ref_idx, jel_idx, definicio_idx = ubs_indexek()
     out_rows = UBS.hozzarendel([(sor_id, igehely, strong_field, versek)], ref_idx, jel_idx)
-    fud_idx = forditas_ubs_index()
 
     tokenenkent = {}
     for r in out_rows:
         _id, _ige, strong, lexid, entry_kod, glosszak, egyertelmu, _megjegyzes = r
         if not entry_kod:
             continue
-        fud = fud_idx.get((strong, entry_kod))
-        if fud and (fud.get('definicio_hu') or '').strip():
-            szoveg = fud['definicio_hu']
+        hu = forditas_ehhez('UBS_DNTG', strong, lexid, entry_kod, 'definicio_hu')
+        if hu:
+            szoveg = hu
         else:
             angol = definicio_idx.get((strong, lexid)) or glosszak
             szoveg = '%s *(fordítás függőben)*' % angol
@@ -518,7 +524,7 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
     blokk_szoveg = _lexikon_blokk(
         m['id'], 'elofordulasok',
         ['adat/elofordulasok.tsv', 'konkordancia/Karoli_1908.tsv', 'konkordancia/UBS_DNTG_referenciak.tsv',
-         'konkordancia/UBS_DNTG_jelentesek.tsv', 'adat/forditas_ubs.tsv'],
+         'konkordancia/UBS_DNTG_jelentesek.tsv', 'adat/forditasok.tsv'],
         ['projekt-adat', 'közkincs', 'CC BY-SA 4.0'],
         hatokor, torzs)
     forras_licenc_parok = [
@@ -526,7 +532,7 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
         ('konkordancia/Karoli_1908.tsv', 'közkincs'),
         ('konkordancia/UBS_DNTG_referenciak.tsv', 'CC BY-SA 4.0'),
         ('konkordancia/UBS_DNTG_jelentesek.tsv', 'CC BY-SA 4.0'),
-        ('adat/forditas_ubs.tsv', 'projekt-adat'),
+        ('adat/forditasok.tsv', 'projekt-adat'),
     ]
     return blokk_szoveg, forras_licenc_parok
 
@@ -684,8 +690,9 @@ def _epit_szotar_alszakasz(strong, szint_eltolas, fajl_licenc_kulcsok, fajl_lice
                 tisztazatlan_erintve = True
             alszakasz.append('%s %s %s — %s' % (sub_hash, r['szotar'], r['entry_id'], _jsz_cimke(r['jelentes_szam'])))
             alszakasz.append('> %s' % r['szoveg_en'])
-            if r['forditas_hu']:
-                alszakasz.append('**🇭🇺** %s' % r['forditas_hu'])
+            hu = forditas_ehhez(r['szotar'], r['strong'], r['entry_id'], r['jelentes_szam'], 'forditas_hu')
+            if hu:
+                alszakasz.append('**🇭🇺** %s' % hu)
             else:
                 alszakasz.append('*Fordítás függőben.*')
             alszakasz.append('*Forrás: %s*' % r['forrasfajl'])

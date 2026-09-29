@@ -332,13 +332,19 @@ Kulcs: `szotar` + `strong` + `entry_id` + `jelentes_szam`.
 | `entry_id` | szabad szöveg | ✔ | Szótáranként: BDB, LSJ, SECE → a konkordancia-fájl `Strong_padded` kulcsa; **Thayer** → a `Thayer_teljes.tsv` `Strong_eredeti` mezője (nullázatlan, pl. `G12`, nem `G0012` — LEXV2_2_BRIEF.md V2.3 döntés, eltér a többi szótár konvenciójától); MCGED → a `lexikonok_nyers/MCGED.lexicon` `G####` Strong-kulcsa (a `gkG5####` GK-kulcs nem használható, l. `lexikonok_nyers/README.md`); TBESH/TBESG → a fájl első oszlopa; SDBH/SDGNT → `entry_id` (`MainId`), a `jelentes_szam` pedig a `lexid`. |
 | `jelentes_szam` | union (l. 2.2.2) | ✔ | |
 | `szoveg_en` | szabad szöveg | ✔ | **Rövid kivonat, nem teljes szócikk** — a forrásfájl sorának szó szerinti részlete; a generált lexikon innen idéz. |
-| `forditas_hu` | szabad szöveg | | A jelentés hű magyar fordítása — jelentésenként egyszer. Csak azt mondja, amit a szótár: a rövidítések feloldva (bizonytalan feloldásnál változatlanul hagyva), a bibliai helyek Károli-rövidítéssel; a forrás héber/görög idézetei változatlanok; betoldás, kiemelés és formázás nincs, számozás csak ha a forrásban is van. Minden értelmezés a lexikon-oldal kézi szakaszaiba kerül. Az igehelyi alkalmazás az `elofordulasok.jelentes_hu` mezőben áll, nem itt. Ugyanez a szabály vonatkozik a lexikon-oldalak kézi szakaszaira: minden idegen nyelvű szótári idézet után hű magyar fordítás áll (`**🇭🇺 Magyarul (<szótár>):**` címkével). |
 | `forrasfajl` | fájlút | ✔ | Pl. `konkordancia/BDB_teljes_unabridged.tsv`. |
 
 A szótárankénti tényleges licenc a `konkordancia/lexikonok_nyers/README.md`-ben van
 rögzítve (Thayer, LSJ, SECE, MCGED); a generált lexikon-oldal minden szótárból idézhet,
 a forrás saját licencének jelölésével — az MCGED-nél kötelező szó szerinti
 forrásmegjelöléssel (F6 D16).
+
+**A `forditas_hu` oszlop 2026.09.28-tól (SZOTAR S1.1) megszűnt** — a jelentés
+magyar fordítása az `adat/forditasok.tsv`-be költözött (l. 2.14), kulcsban
+`mezo=forditas_hu`-val azonosítva; a lookupot a `lexikon_general.py`
+`forditas_ehhez()` függvénye végzi renderidőben. A fordítás tartalmi
+szabálya (rövidítés-feloldás, Károli-rövidítés, változatlan idegen idézet
+stb.) változatlanul érvényes, csak a tárolás helye más.
 
 ### 2.6 `datasetek.tsv`
 
@@ -567,25 +573,30 @@ részsztring — l. 3.8 indoklása). A `lexikai-scan` subagent a proveniencia-so
 amúgy is szó szerint adja vissza; a rögzítés a fő szál feladata, nem a
 subagenté.
 
-### 2.10 `forditas_ubs.tsv` — UBS DNTG (Louw–Nida) jelentések magyar fordítása (LEXV2_2_BRIEF.md V2.2)
+### 2.10 `forditas_ubs.tsv` — **megszűnt (SZOTAR S1.1, 2026.09.28)**
 
-Kulcs: `strong` + `entry_kod`. Kézzel bővítendő tábla — a lexikon-generátor
-(G3, LEXV2_2_BRIEF.md) ebből olvassa az ÚSZ-i Strong-tokenek UBS-jelentésének
-magyar fordítását, a `konkordancia/UBS_DNTG_jelentesek.tsv` logikáját
-(`eszkozok/ubs_hozzarendeles.py`) renderidőben újrafelhasználva, nem másolva.
+Ez a tábla 2026.09.28-tól nem létezik — a tartalma (UBS DNTG/Louw–Nida
+jelentések magyar fordítása) az `adat/forditasok.tsv`-be költözött (l.
+2.14), `szotar=UBS_DNTG`, `entry_id`=a régi `lexid`, `jelentes_szam`=a régi
+`entry_kod`, `mezo`=`definicio_hu` vagy `glosszak_hu`. A lookupot a
+`lexikon_general.py` `ubs_jelentes_cella()` végzi a `forditas_ehhez()`
+függvényen keresztül. Az alábbi (törölt) séma csak történeti hivatkozásul
+marad:
+
+Kulcs (volt): `strong` + `entry_kod`.
 
 | Mező | Típus | Kötelező | Leírás |
 |---|---|---|---|
 | `strong` | `STRONG` | ✔ | |
-| `entry_kod` | szabad szöveg | ✔ | Louw–Nida domén.alszám (pl. `33.176`). |
-| `lexid` | szabad szöveg | ✔ | A `UBS_DNTG_jelentesek.tsv` `lexid` mezője, a `strong`+`entry_kod` párral azonosítva. Ha ez a pár nem egyértelmű (több sor), a pontos `strong_kod`==`strong` egyezés dönt (a betűutótagos variánsok — pl. `G1944a` — kizárva); ha így is több vagy nulla sor marad, a tétel emberi döntést igényel, nem tölthető ki gépiesen. |
+| `entry_kod` | szabad szöveg | ✔ | Louw–Nida domén.alszám (pl. `33.176`) — ma az `adat/forditasok.tsv` `jelentes_szam` mezője. |
+| `lexid` | szabad szöveg | ✔ | A `UBS_DNTG_jelentesek.tsv` `lexid` mezője — ma az `adat/forditasok.tsv` `entry_id` mezője. |
 | `definicio_hu` | szabad szöveg | ✔ | A `definicio_rovid` hű magyar fordítása. |
 | `glosszak_hu` | szabad szöveg | ✔ | A `glosszak` hű magyar fordítása, pontosvesszővel elválasztva. |
-| `megjegyzes` | szabad szöveg | | Csak akkor töltött, ha a forrás UBS-definíció `{N:0..}` lábjegyzet-hivatkozást tartalmaz — ilyenkor `forrásban {N:001} lábjegyzet` (a lábjegyzet szövege nem kerül be a táblába, csak a generált oldal jelöli a hiányt). |
-| `proveniencia` | `PROVENIENCIA` | ✔ | `forras=UBS_DNTG_jelentesek.tsv \| forditas=chat-jovahagyas <dátum>`. |
+| `megjegyzes` | szabad szöveg | | Csak akkor töltött, ha a forrás UBS-definíció `{N:0..}` lábjegyzet-hivatkozást tartalmaz — ilyenkor `forrásban {N:001} lábjegyzet` (a lábjegyzet szövege nem kerül be a táblába, csak a generált oldal jelöli a hiányt). **Az `adat/forditasok.tsv` is felvette ezt a mezőt (l. 2.14) — a 4 érintett sor (G1311/88.266, G1944/33.475, G5351/88.266, G5590/9.20) jegyzete átkerült** (`NYITOTT_FELADATOK.md` N34, lezárva). |
+| `proveniencia` | `PROVENIENCIA` | ✔ | `forras=UBS_DNTG_jelentesek.tsv \| forditas=chat-jovahagyas <dátum>` — ma az `adat/forditasok.tsv` `datum` mezőjeként őrződik meg (a `forditas=chat-jovahagyas ` előtag nélkül). |
 
-Üres `forditas_hu`/hiányzó UBS-fordítás a generált lexikon-oldalon mindig
-`fordítás függőben` jelölést kap, sosem üres cellát.
+Üres UBS-fordítás a generált lexikon-oldalon mindig `fordítás függőben`
+jelölést kap, sosem üres cellát.
 
 ### 2.11 `lxx_dontesek.tsv` — kutatói LXX-fordítói döntések (LEXV2_2_BRIEF.md V2.2, G5)
 
@@ -647,10 +658,154 @@ adatosítva van-e a projektben.
 | `sorrend` | egész szám | ✔ | 1–10, a szerep-lista rögzített sorrendje (azonos mindkét nyelven). |
 | `szerep` | szabad szöveg | ✔ | A szerep megnevezése (pl. „Alapjelentés", „LXX-híd"). |
 | `forras` | szabad szöveg | ✔ | A szerepet ma (vagy célként) kitöltő forrás megnevezése. |
-| `allapot` | zárt | ✔ | `adatosítva` \| `nincs adatosítva` — a RENDER_BRIEF.md G6 záró bekezdése szerint: adatosítva a TBESG, TBESH, Thayer, BDB, UBS DNTG (a meglévő import), SDBH domének, LSJ és az LXX-híd (mindkét irány); a többi (Girdlestone, UBS DBH glossza+referencia, Mounce-kiegészítő önmagában, SECE, BDB-etimológia, kiejtés) a `SZOTAR_BRIEF.md` tárgya. |
+| `allapot` | zárt | ✔ | `adatosítva` \| `nincs adatosítva` \| `nincs forrás` (SZOTAR_BRIEF.md D27, S1.6) — a RENDER_BRIEF.md G6 záró bekezdése szerint: adatosítva a TBESG, TBESH, Thayer, BDB, UBS DNTG (a meglévő import), SDBH domének, LSJ és az LXX-híd (mindkét irány); a többi (Girdlestone, UBS DBH glossza+referencia, Mounce-kiegészítő önmagában, SECE, BDB-etimológia, kiejtés) a `SZOTAR_BRIEF.md` tárgya. **`nincs forrás`** (D27): a szerepnek az adott nyelven nincs a D17 forrásszabálynak megfelelő forrása — VÉGLEGES állapot, nem pótlandó hiány (szemben a `nincs adatosítva`-val, amely ígéretet sugallna); pl. a görög 3. szerep, ha a Translation Words elutasításra kerül (S0b.2 küszöbe alatt). |
 
 A törzscikk (`_TORZSCIKK.md`) 5. szakaszának szerep-mátrixa ebből a táblából
 épül; a lefedettségi mátrix (szavanként) a belső adatmodellből (G5).
+
+### 2.14 `forditasok.tsv` — fordítási gyorsítótár (SZOTAR_BRIEF.md S1, S1.1)
+
+Kulcs: `szotar` + `strong` + `entry_id` + `jelentes_szam` + `mezo`. Minden
+magyar szótári fordítás egyetlen helye — a `lexikon_hivatkozasok.tsv`
+`forditas_hu` oszlopát (l. 2.5) és a megszűnt `forditas_ubs.tsv`-t (l.
+2.10) váltja fel, egységes sémában, amely megegyezik az `eszkozok/fordit.py`
+`KIMENET_FEJLEC` kimenet-oszlopaival — a jövőbeli gépi fordítás (FELADATOK
+#7) ugyanide ír majd.
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `szotar` | szabad szöveg | ✔ | A 2.5 `szotar` zárt listája (BDB, TBESH, TBESG, Thayer, LSJ, …), **plusz** `UBS_DNTG` a megszűnt `forditas_ubs.tsv` soraihoz. |
+| `strong` | `STRONG` | ✔ | |
+| `entry_id` | szabad szöveg | ✔ | `szotar=UBS_DNTG` esetén a `UBS_DNTG_jelentesek.tsv` `lexid` mezője (a régi `forditas_ubs.lexid`); egyébként azonos a 2.5 `entry_id` értelmezésével. |
+| `jelentes_szam` | union (l. 2.2.2) | ✔ | `szotar=UBS_DNTG` esetén a Louw–Nida `entry_kod` (pl. `33.176`, a régi `forditas_ubs.entry_kod`); egyébként azonos a 2.5 `jelentes_szam` értelmezésével. |
+| `mezo` | zárt | ✔ | Melyik forrásmezőt fordítja ez a sor: `forditas_hu` (a 2.5 `szoveg_en`-jét), `definicio_hu` vagy `glosszak_hu` (a régi `forditas_ubs.tsv` két oszlopa). |
+| `forras_hash` | szabad szöveg | ✔ | A forrásszöveg (az eredeti nyelvű, EN) SHA-1 hexdigestje (`hashlib.sha1(szoveg).hexdigest()`), UTF-8 kódolásból. Eltérés a forrás-hash és az újraszámolt hash között `ellenoriz.py`-sértés (S1.5, 13. szabály). |
+| `forditas_hu` | szabad szöveg | ✔ | A fordítás szövege — ugyanaz a tartalmi szabály, mint a 2.5-ben leírt `forditas_hu`-nál. |
+| `allapot` | zárt | ✔ | `kezi` (a migrált, ember által korábban jóváhagyott sorok) \| `pilot` (az `eszkozok/fordit.py` próba-kimenete, l. `FORDITAS_PILOT_BRIEF.md`) \| `elavult` (a `forras_hash` már nem egyezik, `ellenoriz.py` javaslata). |
+| `modell` | szabad szöveg | | A fordító LLM modell-azonosítója (pl. `anthropic/claude-haiku-4.5`); üres, ha `allapot=kezi` (nem model-fordítás). |
+| `datum` | `DATUM` | ✔ | A migrált soroknál a forrás utolsó tartalmi módosításának git-dátuma (a `lexikon_hivatkozasok.tsv` soraira) vagy a korábbi `forditas_ubs.proveniencia` jóváhagyási dátuma (az UBS-soroknál); új soroknál a fordítás dátuma. |
+| `terminologia_verzio` | szabad szöveg | | A 2.15 `terminologia.tsv` verziója, amellyel a fordítás készült; üres a migrált (a terminológia-tábla előtti) soroknál. |
+| `megjegyzes` | szabad szöveg | | A megszűnt `forditas_ubs.tsv` `megjegyzes` oszlopának öröksége — lábjegyzet-hivatkozás vagy a fordítói döntés indoklása. A render nem olvassa (csak emberi/archív jegyzet); üres a legtöbb sornál. |
+
+**Migráció (S1.1, 51 sor):** 11 sor a `lexikon_hivatkozasok.tsv` akkor
+töltött `forditas_hu` celláiból (`mezo=forditas_hu`), 40 sor a megszűnt
+`forditas_ubs.tsv`-ből (20×`definicio_hu` + 20×`glosszak_hu`). A megszűnt
+`forditas_ubs.tsv` `megjegyzes` oszlopa (4 sor: G1311/88.266, G1944/33.475,
+G5351/88.266, G5590/9.20) a `megjegyzes` mezőben őrződik meg, mindkét
+származó soron (`definicio_hu` és `glosszak_hu`) — l. `NYITOTT_FELADATOK.md`
+N34 (lezárva).
+
+### 2.15 `terminologia.tsv` — fordítási terminológia (SZOTAR_BRIEF.md S2, D26)
+
+Kulcs: `angol` + `verzio`. Kézzel bővítendő tábla: angol szakkifejezések és
+rövidítés-feloldások rögzített magyar megfelelője, amelyet az
+`eszkozok/fordit.py` (és a jövőbeli élesített gépi fordítás, FELADATOK #7)
+a fordítói promptba fűz be, hogy a fordítás konzisztens maradjon szótárak
+és futások között.
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `angol` | szabad szöveg | ✔ | Az angol szakkifejezés vagy rövidítés, ahogy a forrásszótárban áll (pl. `cf.`, `spirit`). |
+| `magyar` | szabad szöveg | ✔ | A rögzített magyar megfelelő. |
+| `megjegyzes` | szabad szöveg | | A feloldás indoklása vagy eredete (pl. melyik próbafuttatásból igazolódott). |
+| `verzio` | `v<N>` | ✔ | A terminológia-tábla verziója; a `forditasok.tsv` `terminologia_verzio` mezője erre mutat. |
+
+**Induló tartalom (D26):** a `naplok/FORDITAS_P_terminologia.tsv` 13 sora,
+változatlanul, `v1` verzióval.
+
+### 2.16 `kiejtes_szabalyok.tsv` — görög átírási szabálytábla (SZOTAR_BRIEF.md S3)
+
+Kulcs: `sorszam`. **Generált célra szolgáló, de kézzel karbantartott** tábla:
+az `eszkozok/kiejtes.py` (S1.3) ebből olvassa a görög SBL-stílusú (Unicode
+makronos) akadémiai átirat → magyaros kiejtés szekvenciális, literális
+(nem regex) cseréinek rendezett listáját. A bemenet a `TAGNT_kivonat.tsv`/
+`TBESG.txt` „Kiejtés” oszlopa.
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `sorszam` | egész szám | ✔ | Az alkalmazás sorrendje — **kötelező betartani**, mert egyes szabályok csak egy másik szabály előtt/után helyesek (pl. a `z`→`dz` a `s`→`sz` előtt, az `ou`→`ú` a `u`→`ü` előtt). |
+| `minta` | szabad szöveg | ✔ | A cserélendő literális Latin (SBL-átiratos) részstring. |
+| `csere` | szabad szöveg | ✔ | A magyaros megfelelő. |
+| `megjegyzes` | szabad szöveg | | A szabály indoklása, jellemző görög betű/eset, és — ha van — egy igazoló példa a `naplok/SZOTAR_kiejtes_tesztkeszlet_tiszta.tsv` aranykészletéből. |
+
+**Két eset NEM szerepel a táblában, kódszinten (`eszkozok/kiejtes.py`
+`atir()`) van maszkolva, mert egy egyszerű szekvenciális csereként
+tévesen viselkedne:** a σσ (dupla szigma) → `ssz` (a magyar geminációs
+helyesírás miatt — a `s`→`sz` szabály a maszkolás nélkül a `ssz`-ben
+bennmaradó két bare `s`-t újra feldolgozná), és az αυ/ευ diftongusok
+`u`-ja (nem álló upsilon, nem válhat `ü`-vé — l. `καύχημα` → `kauchēma`
+→ `kaukhéma`, nem `kaükhéma`).
+
+**Állapot (S1.3, validálva):** a 24 sor az `eszkozok/kiejtes.py
+--ellenoriz` szerint mind a 26 tesztelhető „arany” görög párt (a 30
+egyedi párból 4 kontextus-függő kimaradt) hibátlanul adja vissza —
+`naplok/SZOTAR_S1_kiejtes_jelentes.md`. **D32:** az S1.2-es első
+változat tévesen `y`-t használt az upsilonra (ellenőrzés nélküli
+feltételezésből); a tényleges forrás (`TBESG.txt`/`TAGNT_kivonat.tsv`)
+sima `u`-t ad — javítva. A 100%-os egyezés önmagában nem elfogadási
+érv — l. a jelentés lefedettségi és kihagyásos (leave-one-out) részét.
+
+### 2.17 `kiejtes_kivetelek.tsv` — kiejtés-kivételek (SZOTAR_BRIEF.md S3, D15)
+
+Kulcs: `nyelv` + `alak`. Kézzel bővítendő/jóváhagyandó tábla, kettős
+szereppel: **görögül** felülírja/kiegészíti a `kiejtes_szabalyok.tsv`
+szabálytábla-alapú átirat egy-egy ismert, kivételes esetét; **héberül** ez
+az EGYETLEN forrás — a render héber lemma-kiejtést sosem generál (S3).
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `nyelv` | zárt | ✔ | `gorog` \| `heber`. |
+| `alak` | szabad szöveg | ✔ | A forrás (SBL-átiratos vagy OSHL-átiratos) lemma vagy szó szerinti alak, amelyre a kivétel vonatkozik. |
+| `kiejtes` | szabad szöveg | ✔ | A jóváhagyott magyaros kiejtés. |
+| `megjegyzes` | szabad szöveg | | Eredet/indoklás (pl. `KIEJT-migracio`, vagy — héber jelölteknél, S1.7/S2.1 után — az OSHL-jelöltlista hivatkozása és a jóváhagyás dátuma). |
+
+**Induló tartalom (S1.2):** az `eszkozok/torzscikk_general.py` kódbeli
+`KIEJT` szótárának 5 sora (3 görög: `epikaleō`, `kaleō`, `boaō`; 2 héber:
+`qa.ra`, `shem`) — a kódbeli `KIEJT` tábla ezzel párhuzamosan, változatlanul
+megmarad (nulla-diff, D30/D31); a kódbeli tábla kivezetése az S2.1 tétele.
+**A 26 héber lemma-kiejtés-jelölt (D28) az S1.7-ben készül, de csak az
+ÁLLJ-jóváhagyás után, az S2.1-ben kerül ide.**
+
+### 2.18 `kiejtes_heber_jeloltszabalyok.tsv` és `kiejtes_heber_kivetelek.tsv` — héber kiejtés-jelölt gépezet (SZOTAR_BRIEF.md S1.7, D34–D37)
+
+Két tábla, amelyek EGYÜTT állítják elő a `naplok/SZOTAR_S1_heber_jeloltek.tsv`
+JELÖLT-listát (`eszkozok/heber_kiejtes_jeloltek.py`) — egyik sem a végleges,
+render által olvasott `kiejtes_kivetelek.tsv` (2.17); abba csak kézi
+jóváhagyás után, az S2.1-ben kerülnek be a jóváhagyott jelöltek.
+
+**`kiejtes_heber_jeloltszabalyok.tsv`** — kulcs: `sorszam`. Szekvenciális,
+literális (nem regex) csereszabályok az OSHL `atiras` mezőn (SBL Academic
+stílus), a görög `kiejtes_szabalyok.tsv` (2.16) mintájára, de külön táblában
+(eltérő ábécé, eltérő szabályhalmaz — aleph/ajin elhagyás, š/ṣ/ṭ/ḥ/q/y
+átirata, hosszú/redukált magánhangzók).
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `sorszam` | egész szám | ✔ | Az alkalmazás sorrendje — kötelező betartani. |
+| `minta` | szabad szöveg | ✔ | A cserélendő literális OSHL-átiratos részstring — sosem üres (ez maga a keresett minta). |
+| `csere` | szabad szöveg | | A magyaros megfelelő; üres, ha a `minta` egyszerűen törlődik (l. az aleph/ajin-szabályt). |
+| `megjegyzes` | szabad szöveg | | A szabály indoklása, jellemző héber betű, igazoló példa. |
+
+**A begadkefat-spirantizáció (ב/כ/פ → v/ch/f, D34) NEM ebben a táblában
+van** — pozíciófüggő (dagesh/szókezdő helyzet), az OSHL `atiras` maga nem
+jelöli, ezért a pontozott `oshl_lemma` mezőt elemző `spirantize()` lépés
+(`eszkozok/heber_kiejtes_jeloltek.py`) végzi, a szabálytábla ELŐTT.
+
+**`kiejtes_heber_kivetelek.tsv`** — kulcs: `strong`. Kézi felülbírálás,
+amit a generátor a szabályfutás UTÁN alkalmaz (pl. H2555 → „hámás”, D36,
+a `ḥ→ch` szabály gépies eredménye helyett).
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `strong` | `STRONG` | ✔ | A felülbírált Strong-szám. |
+| `ertek` | szabad szöveg | ✔ | A jóváhagyott magyaros kiejtés-jelölt. |
+| `indok` | szabad szöveg | ✔ | Miért tér el a szabályszerű eredménytől. |
+| `datum` | `DATUM` | ✔ | A döntés dátuma. |
+
+**Ki írja, ki olvassa:** mindkét táblát kézzel bővíti a felhasználó (chat
+jóváhagyással); egyedül az `eszkozok/heber_kiejtes_jeloltek.py` olvassa
+őket. A render (`lexikon_general.py`/`torzscikk_general.py`) egyiket sem
+olvassa — az S1.7 jelölt-lépés, nem az S2 render-lépés tartozéka.
 
 ---
 

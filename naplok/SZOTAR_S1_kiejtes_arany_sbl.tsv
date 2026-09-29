@@ -1,0 +1,35 @@
+# S1.3 arany-proba bemenete: az SZOTAR_kiejtes_tesztkeszlet_tiszta.tsv 30
+# egyedi gorog "arany" parjabol 26 "tiszta" (kontextus-toldas nelkuli,
+# szo-/kifejezes-szintu) par SBL-Latin forrasa -- kezzel igazolva a
+# TBESG.txt/TAGNT_kivonat.tsv "Kiejtes" oszlopaval, vagy (ha a gold "szo"
+# oszlop csonkolt -- l. modszer=kezi_helyreallitva) a standard SBL-atirasi
+# konvenciobol visszaallitva. A 4 kihagyott par (kontextus-fuggo: hozzatett
+# nevelo/roviditesek) az eszkozok/kiejtes.py --ellenoriz jelenteseben
+# kulon soroltatik, nem itt.
+szo_gorog	sbl_forras	cel_kiejtes	modszer	megjegyzes
+Σήμ	Sēm	Szém	kezi_helyreallitva	tulajdonnev, nincs TBESG-sor
+βοάω	boaō	boaó	tbesg_lemma	G0994
+ἐγκαλέω	enkaleō	enkaleó	tbesg_lemma	gold "szo"=γκαλέω (csonkolt, hianyzik az ἐ)
+ἄγω	agō	agó	tbesg_lemma	gold "szo"=γω (csonkolt, hianyzik az ἄ)
+θρόνος	thronos	thronosz	tbesg_lemma	G2362
+καλέω	kaleō	kaleó	tbesg_lemma	G2564
+καλός	kalos	kalosz	tbesg_lemma	G2570
+καύχημα	kauchēma	kaukhéma	tbesg_lemma	G2745
+κηρύσσω	kērussō	kérüsszó	tbesg_lemma	G2784 (TBESG plain "u"-t hasznal upsilonra, nem "y"-t -- l. D32)
+κράζω	krazō	kradzó	tbesg_lemma	G2896
+ἀναβοάω	anaboaō	anaboaó	kezi_helyreallitva	gold "szo"=ναβοάω (csonkolt); TBESG-ben nincs kulon lemma-sor, az ἀνα- elotag + βοάω szabalyosan illeszkedik
+ἀναγγέλλω	anangellō	anangelló	tbesg_lemma	G0312; gold "szo"=ναγγέλλω (csonkolt)
+ἀναγινώσκω	anaginōskō	anaginószkó	tbesg_lemma	G0314; gold "szo"=ναγινώσκω (csonkolt)
+ἀνακράζω	anakrazō	anakradzó	kezi_helyreallitva	gold "szo"=νακράζω (csonkolt); az ἀνα- elotag + κράζω szabalyosan illeszkedik
+ἀνοίγω	anoigō	anoigó	tbesg_lemma	G0455; gold "szo"=νοίγω (csonkolt)
+ὀνομάζω	onomazō	onomadzó	tbesg_lemma	G3687; gold "szo"=νομάζω (csonkolt)
+παρακαλέω	parakaleō	parakaleó	tbesg_lemma	G3870
+ἐπικαλέω	epikaleō	epikaleó	tbesg_lemma	G1941; gold "szo"=πικαλέω (csonkolt)
+ἐπικαλέομαι	epikaleomai	epikaleomai	kezi_helyreallitva	gold "szo"=πικαλέομαι (csonkolt); mediopasszivum, rovid o, valtozatlan atirat
+προσκαλέομαι	proskaleomai	proszkaleomai	kezi_helyreallitva	mediopasszivum, rovid o
+φωνέω	phōneō	fóneó	tbesg_lemma	G5455
+ἐπικαλουμένους	epikaloumenous	epikalúmenúsz	kezi_helyreallitva	gold "szo"=πικαλουμένους (csonkolt); ragozott alak, TAGNT-ban nem kerestem kulon
+τόν κύριον	ton kurion	ton kürion	tbesg_lemma	κύριος TBESG-je "kurios" (plain "u"); 2 szavas kifejezes, szo szerinti atirat, toldas nelkul
+πρός τινα	pros tina	prosz tina	kezi_helyreallitva	2 szavas kifejezes, szo szerinti atirat, toldas nelkul
+ὄνομα καλεῖν τινα	onoma kalein tina	onoma kalein tina	kezi_helyreallitva	gold "szo"=νομα καλεῖν τινα (csonkolt); 3 szavas kifejezes, toldas nelkul
+ἐπικαλεῖται τό ὄνομα τίνος ἐπί τινα	epikaleitai to onoma tinos epi tina	epikaleitai to onoma tinosz epi tina	kezi_helyreallitva	gold "szo"=πικαλεῖται τό ὄνομα τίνος ἐπί τινα (csonkolt); 6 szavas kifejezes, toldas nelkul
