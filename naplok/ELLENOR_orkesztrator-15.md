@@ -1,15 +1,21 @@
-# ELLENOR_orkesztrator-15 — F14_ORKESZTRATOR_BRIEF.md v1.3 · `origin/main..claude/orkesztrator-14` (2. kör, fej: 268a929)
+# ELLENOR_orkesztrator-15 — F15_ORKESZTRATOR_BRIEF.md v1.3 · `origin/main..claude/orkesztrator-14`
 
-*A `fuggetlen-ellenor` 2. körös jelentése a teljes PR-re, tömörítve; az ügynöknek nincs Write eszköze, a mentést az orkesztráló session végezte. 1. kör (2754a82): ELTÉRÉS: 6 tétel, javítva (F14.2–F14.3).*
+*A `fuggetlen-ellenor` három köre, tömörítve; az ügynöknek nincs Write eszköze, a mentést az orkesztráló session végezte.*
 
-ELTÉRÉS: 5 tétel
+| kör | fej | első sor |
+|---|---|---|
+| 1 | 2754a82 | ELTÉRÉS: 6 tétel — javítva (F14.2–F14.3) |
+| 2 | 268a929 | ELTÉRÉS: 5 tétel — DT1 elavult, 3.5, zárójelentés-ellentmondások, elavult jelentés, `vegrehajto-*` pontszám-hivatkozás: javítva (F14.4–F14.5, DT1 ✅ felhasználói döntés) |
+| 3 | 75a1a54 | ELTÉRÉS: 5 tétel (lent) |
 
-| # | Súly | Eltérés | Kezelés |
-|---|---|---|---|
-| 1 | magas | DT1 elavult: a main-en a #7 döntése már megszületett (FP2-D13–D15), a `/kovetkezo` fantomtétellel blokkolná a #7-et | **nyitott** — felhasználói döntés (DT1 lezárása/törlése) |
-| 2 | közepes | 3.5: a frontmatter nincs a Claude Code dokumentációja szerint ellenőrizve (NEM ELLENŐRIZHETŐ) | **nyitott**, a zárójelentés jelzi |
-| 3 | közepes | a zárójelentés belső ellentmondásai (D7–D12/D8–D13; 3/4 tétel; ellenőri kör) | javítva F14.4-ben |
-| 4 | alacsony | elavult ELLENOR fájl | ez a fájl váltja fel |
-| 5 | alacsony | a `vegrehajto-*` fájlok az F14-brief pontszámozását (3. pont, 2. pont) rögzítik | nyitott, megjegyzés |
+## 3. kör (fej: 75a1a54)
 
-Megjegyzések: a #7 „Függ ettől” mezője „#14 (kész)”, miközben a #14 táblasor ⏸ (a DT4 hatása). A zöld CI a PR címén múlik (`[ELLENŐRZŐ]` előtag, E16). Merge-feloldás: az FP2 tartalom nem veszett el, duplikátum nincs; a 2. pont tiltásai OK; D1–D13 mind egyszer szerepel. A PR tényleges címe a megengedett parancsokkal NEM ELLENŐRIZHETŐ.
+1. Az ELLENOR fájl elavult (F14 név, 2. körös tartalom), a PR-cím „F14:” — javítva F14.6-ban (jelentés újraírva, PR-cím `F15`-re).
+2. A zárójelentésből hiányzott a DONTESEK-tételek darabszáma (6.2) — pótolva.
+3. A DT1/DT4 sorból hiányzott a Napló cella — pótolva.
+4. A zárójelentés „Egyeztetett eltérés” címe félrevezető volt — átnevezve „Nyitott technikai kérdés”.
+5. PR-cím számozása — l. 1.
+
+Minden más pont OK: a 2. pont tiltásai, 3.1–3.4, 4.1–4.5, 5., ellenőrzőlista 1–5, A1–A6, DT1/DT4 hivatkozásai (`bd4b32f`, `1ef61a3` a main ősében), `vegrehajto-*` önállósága, 3.5 jelölése, `futtat.py` mind a 12 fájllal és a PR-címmel 0 találat. NEM ELLENŐRIZHETŐ: a 3.5 dokumentáció-állításai, a tényleges PR-cím, a CI-jelentéssel való egyezés.
+
+Megjegyzés (nem e PR hibája): a #7 sor „Függ ettől” mezője a #3-ra és az FP2-re (#14) mutat, amelyek nincsenek táblasorként; a `/kovetkezo` 3. lépése ezeket nem biztos, hogy fel tudja oldani. A #15 sort a merge-commitnak ✅-ra kell állítania, különben jelöltként visszajön.

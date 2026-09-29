@@ -6,8 +6,8 @@
 
 **3.5 szintaxis (dokumentáció, `claude-code-guide`, források: code.claude.com/docs/en/skills.md, /sub-agents.md):** a `description` és `model` mező érvényes a parancs- és ágens-frontmatterben; `model` értéke `sonnet|opus|haiku|fable|inherit|teljes ID`, az ágensnél `name` és `description` kötelező. A `.claude/commands/` támogatott, a `/parancsnév` működik. Az ágens `tools` hiányának öröklése a dokumentációban nem explicit. Empirikusan nem teszteltem: a jelen session ágenslistája a session indításakor töltődött be, az új `vegrehajto-*` és a `/kovetkezo` csak új sessionben látszik (a merge utáni próbafuttatás ezt zárja).
 
-**Egyeztetett eltérés:** a hívásonkénti modellmegadás megléte ellentmondásos. Az ügynök válasza szerint nem támogatott, a modell-feloldási sorrendje mégis „hívásparaméter > ágens-definíció”; a jelen session Agent eszköze `model` paramétert kínál. A három `vegrehajto-*` fájl ezért biztonságos, de egyetlen fájl is elég lehet.
+**Nyitott technikai kérdés (nem hatókör-eltérés):** a hívásonkénti modellmegadás megléte ellentmondásos. Az ügynök válasza szerint nem támogatott, a modell-feloldási sorrendje mégis „hívásparaméter > ágens-definíció”; a jelen session Agent eszköze `model` paramétert kínál. A három `vegrehajto-*` fájl ezért biztonságos, de egyetlen fájl is elég lehet.
 
-**Nyitott:** DT2 (#10 L6/L7), DT3 (E17 küszöb). A #7 „#14 (kész)” függése az FP2-re mutat, az ütközés megszűnt.
+**DONTESEK.md tételei:** 4 (DT1 ✅, DT4 ✅, DT2 🟡, DT3 🟡). **Nyitott:** DT2 (#10 L6/L7), DT3 (E17 küszöb). A #7 „#14 (kész)” függése az FP2-re mutat, az ütközés megszűnt.
 
 **Ellenőrzés:** `naplok/ELLENOR_orkesztrator-15.md` (1–2. kör tömörítve, 3. kör: l. PR).
