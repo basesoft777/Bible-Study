@@ -1,0 +1,32 @@
+# modell: minimax/minimax-m3 (OpenRouter), hőmérséklet 0; a sorok a MiniMax JAVASLATAI, a licencdöntés a felhasználóé
+# letoltes datuma: 2026-09-29
+# futtatasi parancs: python eszkozok/fj2/futtat.py --lepes licenc
+# a szovegek forrasa: naplok/F06_licenc_szovegek/INDEX.tsv
+forras	fajl	karakter	allapot	licenc_tipus	kereskedelmi_hasznalat	szarmaztatott_mu	forrasmegjeloles_kell	kozkincs_allitas	idezet
+basokant_nave	README.md	1874	javaslat_kapun_atment	nincs_adat	nem_derul_ki	nem_derul_ki	nem_derul_ki	nincs	
+theonize_bible_database	LICENSE	35141	kezi_hosszu						
+theonize_bible_database	README.md	86	javaslat_kapun_atment	nincs_adat	nem_derul_ki	nem_derul_ki	nem_derul_ki	nincs	
+elcafe7_lex	LICENSE	1064	javaslat_kapun_atment	MIT License	igen	engedelyezett	igen	nincs	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software
+elcafe7_lex	README.md	8962	javaslat_kapun_atment	MIT	igen	engedelyezett	igen	nincs	Lex code is MIT licensed. Bible data and Lexicon content are subject to their respective upstream licenses.
+elcafe7_lex	npm/lex-cli/README.md	1745	javaslat_kapun_atment	nincs_adat	nem_derul_ki	nem_derul_ki	nem_derul_ki	nincs	
+elcafe7_lex	docs/LICENSING.md	2931	javaslat_kapun_atment	nincs_adat	nem_derul_ki	nem_derul_ki	nem_derul_ki	nincs	
+elcafe7_lex	docs/README.html	19196	kezi_hosszu						
+ebible_org	https://ebible.org/Scriptures/eng-kjv_usfm.zip#copr.htm	2775	javaslat_kapun_atment	nincs_adat	nem_derul_ki	nem_derul_ki	nem_derul_ki	nincs	
+ebible_org	https://ebible.org/Scriptures/eng-asv_usfm.zip#copr.htm	2276	javaslat_kapun_atment	nincs_adat	nem_derul_ki	nem_derul_ki	nem_derul_ki	nincs	
+github_kennethreitz__kjvstudy.org	LICENSE	745	javaslat_kapun_atment	ISC License	igen	engedelyezett	igen	nincs	Permission to use, copy, modify, and/or distribute this software for any purpose with or without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
+github_kennethreitz__kjvstudy.org	README.md	6358	javaslat_kapun_atment	ISC	nem_derul_ki	nem_derul_ki	nem_derul_ki	nincs	ISC License. See [LICENSE](LICENSE).
+github_kennethreitz__kjvstudy.org	tests/README.md	3566	javaslat_kapun_atment	nincs_adat	nem_derul_ki	nem_derul_ki	nem_derul_ki	nincs	
+github_kennethreitz__kjvstudy.org	kjvstudy_org/data/README.md	22154	kezi_hosszu						
+github_kaiserlik__kjv	README.md	224	javaslat_kapun_atment	nincs_adat	nem_derul_ki	nem_derul_ki	nem_derul_ki	nincs	
+github_1John419__kjs	LICENSE.md	620	javaslat_kapun_atment	GPL-3.0	igen	copyleft	igen	nincs	Copyright (c) 2017-2022 Clayton Carney This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+github_1John419__kjs	README.md	940	javaslat_kapun_atment	nincs_adat	nem_derul_ki	nem_derul_ki	nem_derul_ki	nincs	
+github_luvlylavnder__bible-app-data	LICENSE	7048	javaslat_kapun_atment	CC0 1.0 Universal	igen	engedelyezett	nem	Az Affirmer lemond minden szerzői és kapcsolódó jogáról, hogy a mű a lehető leg szabadabban felhasználható legyen, beleértve a kereskedelmi célokat is.	the person associating CC0 with a Work (the "Affirmer"), to the extent that he or she is an owner of Copyright and Related Rights in the Work, voluntarily elects to apply CC0 to the Work and publicly distribute the Work under its terms
+github_luvlylavnder__bible-app-data	README.md	383	javaslat_kapun_atment	CC0 1.0	igen	engedelyezett	nem	All data is in the public domain and licensed under CC0 1.0.	All data is in the public domain and licensed under [CC0 1.0](LICENSE).
+github_luvlylavnder__bible-app-data	Bible-Versions/KJV/LICENSE	1066	javaslat_kapun_atment	MIT License	igen	engedelyezett	igen	nincs	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software
+github_luvlylavnder__bible-app-data	Bible-Versions/KJV/README.md	211	javaslat_kapun_atment	nincs_adat	nem_derul_ki	nem_derul_ki	nem_derul_ki	nincs	
+github_luvlylavnder__bible-app-data	Bible-Versions/NIV/LICENSE	1066	javaslat_kapun_atment	MIT License	igen	engedelyezett	igen	nincs	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+github_luvlylavnder__bible-app-data	Bible-Versions/NIV/README.md	917	javaslat_kapun_atment	nincs_adat	nem_derul_ki	nem_derul_ki	nem_derul_ki	nincs	
+github_RonTurrentine__KJV-Strongs-EBook	LICENSE	35149	kezi_hosszu						
+github_RonTurrentine__KJV-Strongs-EBook	README.md	12669	kezi_hosszu						
+github_Realbizdigital__scripture-intelligence-server	LICENSE	1086	javaslat_kapun_atment	MIT License	igen	engedelyezett	igen	nincs	Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software
+github_Realbizdigital__scripture-intelligence-server	README.md	13909	kezi_hosszu						

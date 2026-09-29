@@ -1,0 +1,26 @@
+# osszkoltseg_usd=0.009014 hivasok=22 plafon=1.00
+# letoltes datuma: 2026-09-29
+# futtatasi parancs: python eszkozok/fj2/futtat.py --lepes licenc
+sorszam	forras	fajl	modell	provider	prompt_tokens	completion_tokens	koltseg_usd	kiserlet	eredmeny
+1	basokant_nave	README.md	minimax/minimax-m3	GMICloud	1039	76	0.000295	1	ures_idezet_nincs_adat
+2	theonize_bible_database	README.md	minimax/minimax-m3	GMICloud	582	77	0.000189	1	ures_idezet_nincs_adat
+3	elcafe7_lex	LICENSE	minimax/minimax-m3	ModelRun	805	130	0.000917	1	idezet_szo_szerint_megvan
+4	elcafe7_lex	README.md	minimax/minimax-m3	GMICloud	2811	91	0.000737	1	idezet_szo_szerint_megvan
+5	elcafe7_lex	npm/lex-cli/README.md	minimax/minimax-m3	Minimax	1021	77	0.000368	1	ures_idezet_nincs_adat
+6	elcafe7_lex	docs/LICENSING.md	minimax/minimax-m3	StreamLake	1195	77	0.000420	1	ures_idezet_nincs_adat
+7	ebible_org	https://ebible.org/Scriptures/eng-kjv_usfm.zip#copr.htm	minimax/minimax-m3	CoreWeave	1358	77	0.000386	1	ures_idezet_nincs_adat
+8	ebible_org	https://ebible.org/Scriptures/eng-asv_usfm.zip#copr.htm	minimax/minimax-m3	SambaNova	1253	1	0.000754	1	kapu_bukott:hianyzo_mezo
+9	ebible_org	https://ebible.org/Scriptures/eng-asv_usfm.zip#copr.htm	minimax/minimax-m3	GMICloud	1253	77	0.000350	2	ures_idezet_nincs_adat
+10	github_kennethreitz__kjvstudy.org	LICENSE	minimax/minimax-m3	StreamLake	735	100	0.000310	1	idezet_szo_szerint_megvan
+11	github_kennethreitz__kjvstudy.org	README.md	minimax/minimax-m3	GMICloud	2212	85	0.000588	1	idezet_szo_szerint_megvan
+12	github_kennethreitz__kjvstudy.org	tests/README.md	minimax/minimax-m3	GMICloud	1414	77	0.000389	1	ures_idezet_nincs_adat
+13	github_kaiserlik__kjv	README.md	minimax/minimax-m3	GMICloud	617	77	0.000197	1	ures_idezet_nincs_adat
+14	github_1John419__kjs	LICENSE.md	minimax/minimax-m3	GMICloud	694	124	0.000258	1	idezet_szo_szerint_megvan
+15	github_1John419__kjs	README.md	minimax/minimax-m3	GMICloud	809	76	0.000240	1	ures_idezet_nincs_adat
+16	github_luvlylavnder__bible-app-data	LICENSE	minimax/minimax-m3	CoreWeave	2032	165	0.000626	1	idezet_szo_szerint_megvan
+17	github_luvlylavnder__bible-app-data	README.md	minimax/minimax-m3	GMICloud	656	98	0.000252	1	idezet_szo_szerint_megvan
+18	github_luvlylavnder__bible-app-data	Bible-Versions/KJV/LICENSE	minimax/minimax-m3	CoreWeave	811	125	0.000237	1	idezet_szo_szerint_megvan
+19	github_luvlylavnder__bible-app-data	Bible-Versions/KJV/README.md	minimax/minimax-m3	CoreWeave	624	77	0.000148	1	ures_idezet_nincs_adat
+20	github_luvlylavnder__bible-app-data	Bible-Versions/NIV/LICENSE	minimax/minimax-m3	StreamLake	811	121	0.000358	1	idezet_szo_szerint_megvan
+21	github_luvlylavnder__bible-app-data	Bible-Versions/NIV/README.md	minimax/minimax-m3	Minimax	821	77	0.000308	1	ures_idezet_nincs_adat
+22	github_Realbizdigital__scripture-intelligence-server	LICENSE	minimax/minimax-m3	ModelRun	805	130	0.000687	1	idezet_szo_szerint_megvan
