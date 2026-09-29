@@ -1,6 +1,6 @@
 # ELLENOR_orkesztrator-14 — F14_ORKESZTRATOR_BRIEF.md v1.3 · `main..claude/orkesztrator-14`
 
-*A `fuggetlen-ellenor` jelentése 2754a82-re (1. kör), szerkesztés nélkül tömörítve; az ügynöknek nincs Write eszköze, a mentést az orkesztráló session végezte. A javítások a 2. körben (F14.2) készültek.*
+*A `fuggetlen-ellenor` jelentése 2754a82-re (1. kör), szerkesztés nélkül tömörítve; az ügynöknek nincs Write eszköze, a mentést az orkesztráló session végezte. A javítások az F14.2-ben készültek; az F14.3 a mainnel egyesített ágra új ellenőri kört kapott (l. lent).*
 
 ELTÉRÉS: 6 tétel
 

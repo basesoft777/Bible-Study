@@ -1,6 +1,6 @@
 # FELADATOK.md — feladatkövető
 
-*v1.1 · 2026.09.28 · `main` = `47fca73` (a `claude/general-teremt002-datum` PR mergelése után frissítendő) · Ez az egyetlen fájl, amit a chat egy új beszélgetés elején elolvas. A részletek a briefekben és a `NYITOTT_FELADATOK.md`-ben vannak; ide csak az állapot, a függés és a következő lépés kerül. Munkafolyamat: `/kovetkezo` orkesztrátor, döntések a `DONTESEK.md`-ben.*
+*v1.1 · 2026.09.28 · `main` = `b92ce47` · Ez az egyetlen fájl, amit a chat egy új beszélgetés elején elolvas. A részletek a briefekben és a `NYITOTT_FELADATOK.md`-ben vannak; ide csak az állapot, a függés és a következő lépés kerül. Munkafolyamat: `/kovetkezo` orkesztrátor, döntések a `DONTESEK.md`-ben.*
 
 ## Alapelv: előbb az adatréteg, utána a render
 
@@ -14,7 +14,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 |---|---|---|---|---|---|---|
 | 5 | Szótári adatréteg, 1. menet (SZOTAR S1) | a szerepmátrix hiányzó sorai adatként: fordítási gyorsítótár, terminológia, kiejtés-táblák, UBS DBH, TBESH, Mounce, Translation Words | ⬜ S0b kész, 1. menet S1.1-nél blokkolva volt, a blokk feloldva (D30) | #1, #2, #4 | Blokk feloldva: az 1. menet nulla-diff próbája (K4) `git status --porcelain lexikon/`-ról `eszkozok/nulladiff.sh`-ra vált (D30) — a `general.py --cel lexikon --ir` a TEREMT-002 hiányzó `res_forras.tsv` sora miatt szállt el (`main`-en is), és a `TS` mező a mai nap miatt sosem adott volna üres diffet. A `claude/general-teremt002-datum` PR mergelése után az S1.1 (`claude/szotar-s1-menet`) a SZOTAR_BRIEF.md v1.4 1. menet promptjának 1. lépésétől folytatódik, a `nulladiff.sh`-val. | `SZOTAR_BRIEF.md` v1.4, `naplok/SZOTAR_S0b_jelentes.md` |
 | 6 | Új források 2. felmérése **helyi gépről** (FJ 2. menet) | döntés a Nave, a teljes KJV/ASV és a BSB importjáról; a Macula lefedettsége | ⬜ nincs brief | — (#5-tel párhuzamosan futhat) | Brief kell. Helyi gépen fusson, mert a cloud proxy blokkolt (N27, N29–N31) | `naplok/FORRAS_jelentes.md` (fejlécébe kell a „felülírva: N27–N29” megjegyzés) |
-| 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ nem futott | #3, #5 (terminológia, kiejtés) | **Te:** döntés a v3-ról („természetes hű” stílus a promptban) + költség újraszámítása a teljes Thayer_teljes.tsv hosszeloszlásából (a P6 ~30 USD-ja nem vezethető le, naiv skálázással ~62 USD; ELLENOR_FP.md 1. eltérés) | `FORDITAS_ELES_THAYER_BRIEF.md` v2, csak chatben |
+| 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ nem futott | #3, #5 (terminológia, kiejtés), #14 (kész) | brief v3 (Gemini, természetes hű, FP2-D15 szabályai) | `FORDITAS_ELES_THAYER_BRIEF.md` v2 → v3, `naplok/FP2_jelentes.md` (FP2-D13–D15) |
 | 8 | LXX-fordítói döntések a 87 függő igehelyre | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ nem futott | #1, #6 (Macula-lefedettség) | Kutatói adatmunka; 58 gépi jelölt tájékoztatásul: `naplok/FORRAS_FJ1_lxx_jeloltek.tsv` | eredetileg a LEXIKON_LEZARAS 4c pontja |
 | 14 | Orkesztrátor-parancs (munkafolyamat) | a következő feladatot gép választja és futtatja; a chat csak döntéskor kap jelzést | ⏸ kész, draft PR merge-re vár (`claude/orkesztrator-14`) | — | Merge után próbafuttatás: új session, `/kovetkezo` (elvárt: terv egy konkrét feladatra, vagy a blokkoló `DONTESEK.md`-tétel megnevezése) | `F14_ORKESZTRATOR_BRIEF.md` |
 
@@ -62,9 +62,10 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 ## Kész (utolsó 2 hét)
 
+- Thayer-stíluspróba (FP2): Gemini 3.1 Flash Lite, DeepSeek V4 Flash, MiniMax M3 összevetése, vak bírálat és költségbecslés, `naplok/FP2_jelentes.md`; döntés (FP2-D13): fő fordító Gemini 3.1 Flash Lite; ellenőrzés `naplok/ELLENOR_FP2.md`, merge `971d0f2` (PR #68, 09.28)
 - Fordítási próba (FP0–FP-KOR2.9): fordító eszközök és a próba eredményei, ellenőrzés naplok/ELLENOR_FP.md, merge `9eb43fe` (PR #62, 09.27)
 - Szkript-karbantartás (KARBANTARTAS KB0–KB4), K1–K10 teljesül (K10 öt körben, ágleltárral, nulla-kimenet-őrrel és három mutációs/hiba-próbával: `naplok/ELLENOR_KARB.md`), merge `b8a418a` (09.27); mérőszkript-vakfoltok és -őrök javítása, PR #60 (`8bd1e40`), PR #61
-- Gépi ellenőrzés GitHubon (CI, #2), PR #57, merge `68eb348` (09.27); E5 javítás: PR #59; + E17 (sorszám-változás küszöb, lásd `DONTESEK.md`)
+- Gépi ellenőrzés GitHubon (CI, #2), PR #57, merge `68eb348` (09.27); E5 javítás: PR #59
 - Károli-versszámok javítása a görög Ószövetségben (KK0–KK7.5), merge `4b9ae49` (09.27)
 - Forrásjelöltek 1. menete (FJ0–FJ5), merge `ec7aebc`, zárás `72b200c` (09.25)
 - TEREMT-002 1–2. lépés, merge `15c338e` (09.25)
@@ -82,9 +83,10 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | D4 | Az LXX-döntések (#8) az adatfázisba kerülnek a LEXIKON_LEZARAS-ból | kutatói adat, nem render | a lexikonlezárással együtt |
 | D5 | A Thayer-fordítás (#7) a SZOTAR 1. menet után | terminológia és kiejtés nélkül utólagos csere-körök kellenének (ISTENTISZT-001 tanulsága) | a próba után azonnal |
 | D6 | CI-szabály hibáját külön ágon javítjuk, nem az érintett menetben | a PR ne írja át a saját ellenőrzését | javítás a #58-ban |
-| D7 | Orkesztrátor igen, de Claude Code-parancsként (`/kovetkezo`), döntési ponton megállva; a D2-t módosítja | a meglévő eszközökre épül (CLAUDE.md, subagentek, CI), az előfizetésen belül fut, egy session egy feladat, így nem hízik | külön ügynök-rendszer (API, karbantartás); teljes autonómia (a ⛔ pontok szakmai döntések, a hibák a kritikus úton halmozódnak) |
-| D8 | A chat csak döntéskor kap jelzést, a `DONTESEK.md`-n keresztül | a chat adat nélkül ellenőrizne: drága és gyenge (TBESH-szűrés tanulsága) | minden zárójelentés bemásolása a chatbe |
-| D9 | Második szem: `fuggetlen-ellenor` (Opus) kötelező ellenőrzőlistával, szükség esetén friss Code-session | tiszta kontextus, közvetlen adathozzáférés | a chat mint ellenőr; külső session-verziózó eszközök (Agent-Git, agit) |
-| D10 | A végrehajtó modellt a brief `Modell:` sora írja elő | a modellválasztás a felhasználónál marad; a költség oda megy, ahol szakmai ítélet kell | az orkesztrátor maga választ |
-| D11 | A brief neve a feladat számával kezdődik: `F<nn>_<NEV>_BRIEF.md` | a brief a fájllistában és az orkesztrátor számára is egyértelműen a feladathoz köthető | szám csak a brief fejlécében |
-| D12 | Az orkesztrátor futtatás előtt mindig egyeztet: javaslat → kérdés/módosítás → kifejezett „mehet”; az egyeztetésig csak olvas | a feladatválasztás és a hatókör a felhasználó döntése; az automatikus indulás rossz feladatot vagy rossz hatókört futtathat | a parancs automatikusan indul, csak a tervet írja ki |
+| D7 | A v3 stílust és a MiniMaxot külön stíluspróba (#14) méri: Gemini 3.1 Flash Lite, DeepSeek V4 Flash és MiniMax M3, Claude vak bírálatával, költségbecsléssel | a #7 éles döntéséhez mért adat kell; a próba nem tesz adatot a kanonikus rétegbe, ezért nem vár az adatfázisra | Claude mint fordító (a kor2-ben 4.); a modellek egymást bírálják |
+| D8 | Orkesztrátor igen, de Claude Code-parancsként (`/kovetkezo`), döntési ponton megállva; a D2-t módosítja | a meglévő eszközökre épül (CLAUDE.md, subagentek, CI), az előfizetésen belül fut, egy session egy feladat, így nem hízik | külön ügynök-rendszer (API, karbantartás); teljes autonómia (a ⛔ pontok szakmai döntések, a hibák a kritikus úton halmozódnak) |
+| D9 | A chat csak döntéskor kap jelzést, a `DONTESEK.md`-n keresztül | a chat adat nélkül ellenőrizne: drága és gyenge (TBESH-szűrés tanulsága) | minden zárójelentés bemásolása a chatbe |
+| D10 | Második szem: `fuggetlen-ellenor` (Opus) kötelező ellenőrzőlistával, szükség esetén friss Code-session | tiszta kontextus, közvetlen adathozzáférés | a chat mint ellenőr; külső session-verziózó eszközök (Agent-Git, agit) |
+| D11 | A végrehajtó modellt a brief `Modell:` sora írja elő | a modellválasztás a felhasználónál marad; a költség oda megy, ahol szakmai ítélet kell | az orkesztrátor maga választ |
+| D12 | A brief neve a feladat számával kezdődik: `F<nn>_<NEV>_BRIEF.md` | a brief a fájllistában és az orkesztrátor számára is egyértelműen a feladathoz köthető | szám csak a brief fejlécében |
+| D13 | Az orkesztrátor futtatás előtt mindig egyeztet: javaslat → kérdés/módosítás → kifejezett „mehet”; az egyeztetésig csak olvas | a feladatválasztás és a hatókör a felhasználó döntése; az automatikus indulás rossz feladatot vagy rossz hatókört futtathat | a parancs automatikusan indul, csak a tervet írja ki |

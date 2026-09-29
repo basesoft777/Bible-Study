@@ -1,0 +1,20 @@
+{
+ "strong": "G2672",
+ "model": "deepseek/deepseek-v4-flash",
+ "max_tokens": 8000,
+ "usage": {
+  "prompt_tokens": 4051,
+  "completion_tokens": 540,
+  "completion_tokens_details": {
+   "reasoning_tokens": 0
+  },
+  "cost": 0.00046179,
+  "koltseg_forras": "openrouter",
+  "kiserletek": 1
+ },
+ "eredmeny": {
+  "strong": "G2672",
+  "forditas_hu": "G2672 — καταράομαι καταρωμαι; (deponens közép alak a κατάρα szóból); 1. aorisztosz egyes szám 2. személy κατηράσω; (perfektum szenvedő melléknévi igenév κατηραμένος (l. alább)); Homérosztól kezdve; a Septuaginta többnyire a קִלֵּל és אָרַר szavakra; átkoz, kárhoztat, rosszat kíván: (a εὐλογεῖν ellentéte) absolut használatban, Róm 12:14; a tárgy részes esetével (mint a korábbi görög írásokban), Luk 6:28 Rec. (Báruk 6 (Jeremiás levele Jeremiás levele 1:65>) Báruk 6:66 ; (Josephus, contra Apion 1, 22, 16)); a tárgy tárgyesetével (mint gyakran a későbbi görög írásokban, pl. Plutarch, Cat. min. 32, 1 változat (Buttmann, § 133, 9; Winer, Grammatika, 222 (208))), Mt 5:44 Rec.; Luk 6:28 G L szöveg T Tr WH; Jak 3:9; egy fát, azaz elhervasztja átok által, Mk 11:21 (l. Zsid 6:8 a κατάρα címszó alatt). perfektum szenvedő melléknévi igenév κατηραμένος szenvedő értelemben, átkozott (Bölcs 12:11; (2Kir 9:34); Plutarch, Luc. 18; és κεκατηραμ. 5Móz 21:23; (Sir. 3:16)): Mt 25:41 (alkalmanként κεκαταρανται, 4Móz 22:6; 4Móz 24:9; (de Tdf. stb. κεκατήρανται; l. Veitch, a … címszó alatt.",
+  "bizonytalan_feloldasok": []
+ }
+}

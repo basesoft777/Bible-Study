@@ -1,0 +1,91 @@
+strong	cimke	pontossag	terminologia	magyar	formai	osszesen	termeszetesseg	hibak	megjegyzes
+G0002	A	3	2	3	2	10	8		hu, teljes
+G0002	B	3	2	3	2	10	8		hu, teljes
+G0002	C	0	0	0	0	0	0	kihagyas(kritikus)	nem forditotta le -- angolul maradt, serult gorog (Aarwn latin n-nel)
+G0004	A	3	2	3	2	10	8		hu, teljes
+G0004	B	3	2	3	2	10	7		hu, teljes, kisse redundans
+G0004	C	2	2	2	1	7	6	stilustores;formatumhiba	"tropikusan" anglicizmus; gorog szo latin a vegzodessel (eterhesa)
+G0012	A	3	2	3	2	10	8		hu, teljes
+G0012	B	3	2	3	2	10	7		hu, teljes
+G0012	C	0	1	2	0	3	3	kihagyas(kritikus)	kb 70% hianyzik, [...] jelekkel maga jelzi a csonkolast
+G0035	A	3	2	3	2	10	8		hu, teljes, R.V. idezet helyesen angolul hagyva
+G0035	B	3	2	3	2	10	8		hu, teljes, R.V. idezet helyesen angolul hagyva
+G0035	C	2	2	3	1	8	7	formatumhiba	az R.V. idezetet leforditotta (v2 3. szabaly sertese)
+G0086	A	3	2	3	2	10	8		hu, teljes, Winer/cimszo-alatt terminologia helyesen
+G0086	B	0	1	2	0	3	6	betoldas(kritikus)	atfogalmazott/bovitett parafrazis, nem hu forditas, tobb [...] jelzett hiannyal
+G0086	C	3	2	3	2	10	8		hu, teljes, Winer/cimszo-alatt terminologia helyesen
+G0282	A	3	2	3	2	10	8		hu, teljes ("305kk" termeszetes)
+G0282	B	3	2	3	1	9	7	formatumhiba	"ff" nem magyarositva ("305ff")
+G0282	C	2	2	2	1	7	6	formatumhiba	"Bleek on Heb. vol. ii." angolul hagyva, nem indokolt
+G0540	A	3	2	3	2	10	8		hu, teljes
+G0540	B	3	2	3	2	10	8		hu, teljes
+G0540	C	3	2	2	2	9	7		hu, teljes, kisse kevesbe termeszetes
+G0813	A	3	2	3	2	10	8		hu, teljes
+G0813	B	3	2	3	1	9	7		hu, teljes
+G0813	C	3	2	3	2	10	8		hu, teljes
+G0994	A	0	1	2	0	3	3	kihagyas(kritikus)	hianyzik a fejlec es sok resz, tobb [...] jellel
+G0994	B	3	2	3	2	10	8		hu, teljes
+G0994	C	3	2	3	2	10	8		hu, teljes
+G1311	A	3	2	3	2	10	8		hu, teljes, latin perdere/delere megtartva
+G1311	B	0	0	0	0	0	1	kihagyas(kritikus)	gyakorlatilag csak toredek ("... a gorog irodalomban Homerosztol kezdve; ...")
+G1311	C	3	2	3	2	10	8		hu, teljes
+G1941	A	3	2	3	2	10	8		hu, teljes, terminologia (aorisztosz, szenvedo es kozep alak stb.) kovetkezetes
+G1941	B	3	2	2	2	9	6	stilustores	"mellekneveztni" neologizmus, "hogynem" furcsa forditoi fordulat, "hogy megtartassek" ("to be reserved") homalyos
+G1941	C	0	0	1	0	1	1	kihagyas(kritikus)	sulyosan csonkolt (~70% hianyzik, [...] jelekkel), az ARANY-viszonyitasi cikk
+G1944	A	0	0	0	0	0	0	kihagyas(kritikus)	nem forditotta le -- a szoveg teljes egeszeben angolul maradt
+G1944	B	3	2	3	2	10	8		hu, teljes
+G1944	C	3	2	3	2	10	8		hu, teljes
+G2671	A	3	2	3	2	10	8		hu, teljes
+G2671	B	3	2	3	1	9	7		hu, teljes
+G2671	C	3	2	3	2	10	8		hu, teljes
+G2672	A	0	0	1	0	1	1	kihagyas(kritikus)	sulyosan csonkolt, csak toredek
+G2672	B	3	1	3	2	9	7	formatumhiba	"deponent" nem forditva "deponens"-re (terminologia v2 sertese)
+G2672	C	3	2	3	2	10	8		hu, teljes, "deponens" helyesen
+G3777	A	3	2	3	2	10	7		hu, teljes
+G3777	B	0	1	1	0	2	2	kihagyas(kritikus)	sulyosan csonkolt, hianyzik a fejlec is
+G3777	C	2	2	2	2	8	6	felreforditas	"Szoleczes modon" torz/ertelmetlen szo a "solecism" helyett (ismert kor2-mintazat)
+G4151	A	3	2	3	2	10	7		hu, teljes -- a legnagyobb szocikk, strukturalis jelek alapjan hianytalan (nincs ismetlodo fejlec, nincs [...] jel)
+G4151	B	0	0	1	0	1	1	kihagyas(kritikus)	sulyosan csonkolt: 29 [...] jel egyetlen 4200 karakteres valaszban (a forras 23700+ karakter)
+G4151	C	0	0	1	0	1	1	betoldas(kritikus)	sulyos kitalalt tartalom: 9-szer ujrakezdett fejlec, kitalalt "a szocikk 3/12. resze" szegmentalas es kitalalt gorog alaktani adatok, amik nincsenek a forrasban
+G5010	A	3	2	3	2	10	8		hu, teljes
+G5010	B	3	1	3	2	9	7		hu, teljes, "jellem, modi" kisse pontatlan
+G5010	C	0	0	1	0	1	0	kihagyas(kritikus)	sulyosan csonkolt (~90% hianyzik, csak a cikk vege maradt)
+G5351	A	3	2	3	2	10	8		hu, teljes
+G5351	B	3	2	3	1	9	7	formatumhiba	"ruin" (A.V. idezet melletti sajat angol szo) leforditva "romlas"-ra, a v2 3. szabaly szelleme ellen
+G5351	C	0	1	2	0	3	2	kihagyas(kritikus)	kb 60%-nal megszakad, [...] jellel
+G5356	A	3	2	3	2	10	8		hu, teljes
+G5356	B	2	2	3	2	9	7	felreforditas	Zsolt 103:4 (helyesen 102:4) -- hibas igehely-hivatkozas
+G5356	C	0	1	1	0	2	1	kihagyas(kritikus)	csak toredek, sok [...] jel
+G5590	A	0	1	1	0	2	1	kihagyas(kritikus)	sulyosan csonkolt (~15%), a vegen zavaros, duplikalt fejlec-ujrakezdessel
+G5590	B	2	2	2	1	7	7	formatumhiba	a forras fejlec-sora angolul, leforditatlanul duplikalva a valasz elejen, utana teljes es hu forditas
+G5590	C	3	2	3	2	10	8		hu, teljes, "pregnans" terminologia helyesen
+G0026	A	3	2	3	2	10	8		hu, teljes, "Szent Szellem" es "szeretetvendegsegek" terminologia helyesen
+G0026	B	0	1	2	0	3	3	betoldas(kritikus)	kritikus: a forrasban NEM szereplo kitalalt tudomanyos apparatus betoldasa (Trench, Schmidt, Tittmann, Cremer, Weiss, Holtzmann stb. hivatkozasok), szerkezeti osszeomlas
+G0026	C	1	1	2	1	5	4	kihagyas(kritikus)	jelentos kihagyas (~60%), de nem toldott be hamis tartalmat, a valodi vegen korrekt zarassal
+G0266	A	0	1	2	0	3	3	kihagyas(kritikus)	JAVITVA a fp2/szuroproba.md fuggetlen (chat-) pontozasa alapjan: a forras 58%-a hianyzik (arany=0.42, l. fp2/kapu_keresztellenorzes.py), a korabbi "mersekelt" minositas tulzottan elnezo volt
+G0266	B	3	2	3	2	10	8		hu, teljes, "romlottsag" terminologia helyesen
+G0266	C	0	1	1	0	2	2	betoldas(kritikus)	kritikus: kitalalt alfabetikus taxonomia (a-tol k-ig) es hamis igehelyek betoldasa, ismetlodo fejlecek
+G0993	A	3	2	3	2	10	8		hu, teljes
+G0993	B	3	2	3	2	10	7		hu, teljes
+G0993	C	2	2	3	1	8	7	formatumhiba	"Hebrew" es "Commentary on Mark" angolul hagyva, indokolatlanul
+G1106	A	2	2	3	1	8	7	felreforditas(kritikus)	"Filem 1:14" hibas hivatkozas (Fil/Filippi helyett Filemon)
+G1106	B	3	2	3	2	10	8		hu, teljes
+G1106	C	3	2	3	2	10	8		hu, teljes
+G1343	A	0	1	2	0	3	2	betoldas(kritikus)	kritikus: kitalalt tudomanyos apparatus (Tdf. Proleg., Grimm-Walther, Cremer kiadasszamok), ismetlodo fejlecek
+G1343	B	3	2	3	2	10	8		hu, teljes, "betudatik" terminologia ketszer helyesen alkalmazva
+G1343	C	1	2	2	1	6	6	kihagyas	mersekelt kihagyas, "keresztyenek" enyhe archaizmus
+G2105	A	3	2	3	2	10	8		hu, teljes
+G2105	B	3	2	3	2	10	8		hu, teljes
+G2105	C	3	2	3	2	10	8		hu, teljes
+G3687	A	3	2	3	2	10	8		hu, teljes
+G3687	B	3	2	3	2	10	8		hu, teljes
+G3687	C	3	2	3	2	10	8		hu, teljes
+G3782	A	3	2	3	2	10	8		hu, teljes
+G3782	B	3	2	3	1	9	7		"adok" a "dues" helyett -- elfogadhato, sot Karoli-konzisztens
+G3782	C	3	2	3	2	10	8		hu, teljes
+G5013	A	1	1	2	0	4	3	kihagyas(kritikus)	csonkolt (~40%, a beta/c resz nagy resze hianyzik)
+G5013	B	0	0	0	0	0	1	kihagyas(kritikus)	gyakorlatilag nem forditotta le -- a torzsszoveg angolul maradt, csak az igehely-roviditesek lettek magyarositva
+G5013	C	3	2	3	2	10	8		hu, teljes, "megalazza magat" terminologia helyesen
+G5298	A	3	2	3	2	10	8		hu, teljes
+G5298	B	3	2	3	2	10	8		hu, teljes
+G5298	C	3	2	3	2	10	8		hu, teljes
