@@ -24,8 +24,14 @@ begadkefat-spirantizáció (ב/כ/פ → v/ch/f) a pontozott lemmából (D34), a
 ḥ→ch javítás (D35), a H2555 kézi kivétel (D36) és az alef/ajin-elhagyás
 pontosítása (D37) után mind a 26 jelölt jóváhagyva. Mind az 5
 BDB-javaslat jóváhagyva — a H0430 külön vizsgálat (a határvég valódisága
-a nyers BDB.lexicon HTML-lel igazolva) után. **1. menet lezárva, ÁLLJ
-nincs; a `main`-be még nem került be.***
+a nyers BDB.lexicon HTML-lel igazolva) után. 1. menet lezárva, ÁLLJ
+nincs; a `main`-be még nem került be. **v1.9 — 2026.09.29: a
+`fuggetlen-ellenor` valódi hibát talált (`naplok/ELLENOR_SZOTAR_S1.md`)
+— a `tbesh_konszolidalt_import.py` a betű-utótagos STEP-kulcsokat
+mindig kiszűrte, 542 Strong `.txt`-tartalma (5 motívum-token) veszett
+el. Javítva: a kulcs saját sor marad, `alap_strong` oszlop köti az
+alapszámhoz (D38–D40). CI E5/E16 javítva. Ismételt `fuggetlen-ellenor`
+következik, majd draft PR a `main`-be.***
 
 **Cél.** A szerepmátrix (`adat/szotar_szerepek.tsv`, 10 szerep × 2 nyelv) minden cellája adatból
 töltődjön, és a szótári réteg rendezett legyen: fordítási gyorsítótár, terminológia, görög kiejtés,
@@ -329,6 +335,9 @@ Olvasd el a CLAUDE.md-t és a SZOTAR_BRIEF.md-t (a jóváhagyott verziót).
 | **D35** | **A ח (het) magyar jelöltje `ch`, nem `h` — javítás a S1.7 első köréhez képest.** A ה (he) változatlanul `h` marad, tehát a két betű elkülönül, és nincs ütközés a magyar „haj” szóval. | A felhasználó döntése, 2026.09.29: a mai kiejtésben a ח a spiráns כ (kaf dagesh nélkül) párja, ezért `ch`; az eredeti S1.7-es `ḥ→h` szabály (l. a régi `adat/kiejtes_heber_jeloltszabalyok.tsv`) egybeolvasztotta a ה-vel, ami félrevezető |
 | **D36** | **H2555 (חָמָס) kiejtése kézi kivételként *hámás* marad, nem a szabály szerinti *chámás*.** A kivétel az S1.7 **jelölt-generátorban** él: `eszkozok/heber_kiejtes_jeloltek.py` a `adat/kiejtes_heber_kivetelek.tsv` (strong, ertek, indok, datum) táblát a szabályfutás UTÁN alkalmazott felülbírálatként olvassa be, és ez csak a `naplok/SZOTAR_S1_heber_jeloltek.tsv` jelölt-listát érinti (a sor `kivetel` jelölést kap). **Ez NEM azonos a végleges, render által olvasott `adat/kiejtes_kivetelek.tsv` kivétel-táblával** — abba (S2.1, D28 nyomán, mind a 26 jóváhagyott lemmával együtt) csak az S2.1 tétel ír, jelen menet (S1) kimenetet nem változtat. | A felhasználó döntése, 2026.09.29 — a ch-szabály gépies alkalmazása helyett |
 | **D37** | **Az alef (א) és az ajin (ע) jel/aposztróf nélkül esik ki a héber kiejtés-jelöltekben, azonos magánhangzók között is (pl. H2403 ḥaṭṭāʾâ → chattáá).** Ez megegyezik a `naplok/SZOTAR_S1_kiejtes_arany_sbl.tsv`-től független, már jóváhagyott H7121 (*kárá*) és H8034 (*sém*) mintával. | A felhasználó döntése, 2026.09.29 — egységes a *seól*, *elóhím*, *refáím* alakokkal; az aposztróf-változat elvetve |
+| **D38** | **A `tbesh_konszolidalt_import.py`-ban a betű-utótagos STEP-kulcs (pl. `H1121a`) saját sorként marad meg, egy új `alap_strong` oszlop köti az alapszámhoz (`H0122a` → `H0122`); tartalmat nem vonunk össze, változatot nem dobunk el.** | A `fuggetlen-ellenor` (`naplok/ELLENOR_SZOTAR_S1.md`) 2026.09.29-i jelentése kimutatta: a korábbi szigorú `^H\d{4}$` szűrő a betű-utótagos kulcsokat (pl. `H7121G/H/I` a `TBESH.txt`-ben `H7121a` alakban) sosem ismerte fel — sem a régi, sem az új (9d42da9-es) regex —, ezért 1424 nyers `.txt`-sor és a megfelelő `.lexicon`-bejegyzések szó nélkül elvesztek, összesen 542 Strong `.txt`-oldali tartalma, köztük 5 motívum-tokené (H1121, H2403, H2416, H7451, H7497). Ez FÜGGETLEN a 9d42da9-es szigorítás hatásától (amit a `naplok/S1_TBESH_kiszurt_elemzes.md` már auditált, ott a "betű-utótagos" kategória helyesen 0, mert az a szűkebb kérdésre — mit változtatott az a EGY commit — válaszolt). Elvetett alternatívák: (B) a betű-utótagos tartalom összevonása az alapszám sorába (elveszne a mikro-jelentések közti különbség); (C) a jelenlegi állapot elfogadása, csak dokumentálva (ez maga a hiba, nem javítás) |
+| **D39** | **A javítás még az S1-ben (merge előtt) történik, nem külön menetben.** | Adatréteg-hiba a jóváhagyott menetben; a #9 (SZOTAR S2, render) előtt kell javítani, különben a hibás adatból induló render újragenerálást igényelne |
+| **D40** | **A (b) „rövid/érvénytelen” 999 kulcsos csoport mintavételezéssel (20 véletlen elem, nyers sorral) ellenőrizve — nincs kontamináció.** Mind a 20 minta valódi, egyedi (padding nélküli) Strong-szám a `TBESH.lexicon`-ból, betű-utótag, whitespace/BOM-szennyezés vagy egyéb félrefelismerés nélkül. | A `fuggetlen-ellenor` súlyos hibát talált egy MÁSIK kategóriában (betű-utótag, D38), ezért indokolt volt a (b) csoportot is újra megnézni, mielőtt a régi audit (`naplok/S1_TBESH_kiszurt_elemzes.md`) számait továbbra is érvényesnek tekintjük |
 
 *A v1.1 → v1.2 változásai:* fejléc, cél, előfeltétel; §0 újramérve, 0.12 pontosítva, 0.13–0.18 új/bővített; §1 `nincs forrás`; S1, S2, S8, S9, S11, S13 módosítva, S14 új; S0b új menet (S0 lezárva); S1.4b törölve; 1. menet ⛔ tárgya: kiejtés + BDB-határ (Girdlestone helyett); §4–§7 ennek megfelelően; D9, D12 visszavonva, D18–D27 új.
 
@@ -343,3 +352,5 @@ Olvasd el a CLAUDE.md-t és a SZOTAR_BRIEF.md-t (a jóváhagyott verziót).
 *A v1.6 → v1.7 változásai:* fejléc; §3 S1.4 sora „kész”-re frissítve (7 konkordancia-import, `naplok/SZOTAR_S1_4_jelentes.md`); **D33 új** (`kiejtes_szabalyok.tsv` `Y`/`y` szabály visszahozva a MCGED-eltérés miatt).
 
 *A v1.7 → v1.8 változásai:* fejléc; D13 megjelölve „felülírva: D28”; §3 S1.4/S1.5/S1.6/S1.7/ÁLLJ sora lezárva-státuszra frissítve (mind az 5 BDB-javaslat jóváhagyva, a H0430 külön vizsgálat után; a 26 héber jelölt jóváhagyva); D36 pontosítva (a H2555-kivétel a jelölt-generátorban él, nem azonos a végleges `kiejtes_kivetelek.tsv`-vel); **D34–D37 új** (begadkefat-spirantizáció a pontozott lemmából, ḥ→ch, H2555 kézi kivétel, alef/ajin egységes elhagyása). Az 1. menet ezzel lezárva, `main`-be még nem került — CI + `fuggetlen-ellenor` következik.
+
+*A v1.8 → v1.9 változásai:* fejléc; a `fuggetlen-ellenor` (`naplok/ELLENOR_SZOTAR_S1.md`, 2026.09.29) hibát talált: a `tbesh_konszolidalt_import.py` a betű-utótagos STEP-kulcsokat mindig kiszűrte, 542 Strong `.txt`-tartalma (5 motívum-token) veszett el — javítva, **D38–D40 új** (betű-utótag saját sor + `alap_strong` oszlop, a javítás még az S1-ben, a (b)-csoport mintavételes ellenőrzése). `TBESH_TBESG_README.md` frissítve (9 838 sor, a korábban itt közölt 11/13/2 elavult 26-tokenes bontás javítva 8/16/2-re). CI E5/E16 hiba javítva (E5: retroaktív `TÖRLÉS-SZÁNDÉKOS:` jelölés; E16: a PR-cím `[ELLENŐRZŐ]`-vel indul majd).
