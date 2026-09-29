@@ -1,4 +1,4 @@
-# Heber kiejtes-jelolt szabalytabla (S3, S1.7). Kulcs: sorszam. Séma: adat/SEMA.md 2.18 (S1.6-ban meg nem felvett -- S1.7 uj tabla, SEMA-bejegyzese kesobbi tetel).
+# Heber kiejtes-jelolt szabalytabla (S3, S1.7, javitva a felhasznaloi ALLJ utan, D34-D37). Kulcs: sorszam. Séma: adat/SEMA.md 2.18 (S1.6-ban meg nem felvett -- S1.7 uj tabla, SEMA-bejegyzese kesobbi tetel).
 # Bemenet: konkordancia/OSHL_lexikalis_index.tsv "atiras" mezoje (SBL Academic
 # stilusu, Unicode diakritikus jelekkel -- makron/cirkumflex hosszu maganhangzokra,
 # ʾ/ʿ a gutturalisokra, š/ṣ/ṭ/ḥ a pontozott massalhangzokra). NEM a nyers niqqud
@@ -10,23 +10,34 @@
 # literalis (nem regex) cserek -- tobb-karakteres kodpont-csereknel a sorrend
 # nem szamit (minden minta egyedi Unicode karakter, nem fedik at egymast).
 #
+# BEGADKEFAT-SPIRANTIZACIO (D34) -- NEM EBBEN A TABLABAN: a ב/כ/פ betuk
+# lagy (v/ch/f) vagy kemeny (b/k/p) ejtese pozicio-fuggo (dagesh es
+# szokezdo helyzet), az OSHL "atiras" mezo pedig MINDIG sima b/k/p-t ad,
+# nem kulonbozteti meg -- ezert ezt egy KULON, a pontozott `oshl_lemma`
+# mezot elemzo lepes vegzi, az eszkozok/heber_kiejtes_jeloltek.py
+# `spirantize()` fuggvenye, MIELOTT ez a tabla (soronkent literalis csere)
+# lefutna. A ג/ד/ת betukkel nem kell kulon foglalkozni, azok mindig
+# g/d/t maradnak (D34) -- csak a ב/כ/פ harmas erintett.
+#
 # JELOLT, NEM VEGLEGES: ez a tabla csak a S1.7 jelolt-listajat allitja elo
 # (naplok/SZOTAR_S1_heber_jeloltek.tsv); a kivetel-tablaba (adat/
 # kiejtes_kivetelek.tsv) csak kezi jovahagyas utan kerulhet be (S2.1).
+# A H2555 kivetel KULON tablaban van (adat/kiejtes_heber_kivetelek.tsv,
+# D36) -- a szabalyfuttatas UTAN alkalmazott felulbiralas, l. ott.
 #
 # Ket letezo, mar jovahagyott heber kivetel (adat/kiejtes_kivetelek.tsv,
 # KIEJT-migracio) igazolja a fo szabalyokat: H7121 קָרָא (OSHL "qārāʾ") ->
 # jovahagyott "kárá" (q->k, ā->á, vegzodo ʾ elesik); H8034 שֵׁם (OSHL "šēm") ->
-# jovahagyott "sém" (š->s, ē->é).
+# jovahagyott "sém" (š->s, ē->é, ḥ/ח nem erinti ezt a ket szot).
 sorszam	minta	csere	megjegyzes
-1	ʾ		aleph -- nema massalhangzo (glottal stop), a magyar atirasban elesik (a csere-mezo szandekosan ures); pl. qārāʾ -> kárá (a jovahagyott H7121-mintaval egyezik)
-2	ʿ		ayin -- nema massalhangzo (gegehang), a magyar atirasban elesik, ugyanaz a konvencio, mint az alephnel (a csere-mezo szandekosan ures)
+1	ʾ		aleph -- nema massalhangzo (glottal stop), a magyar atirasban elesik (a csere-mezo szandekosan ures), apostrof nelkul (D37); pl. qārāʾ -> kárá (a jovahagyott H7121-mintaval egyezik), ḥaṭṭāʾâ -> chattáá (D37, H2403-ra is vonatkozik)
+2	ʿ		ayin -- nema massalhangzo (gegehang), a magyar atirasban elesik, ugyanaz a konvencio, mint az alephnel (a csere-mezo szandekosan ures, D37)
 3	š	s	shin -- a magyar "s" hang; pl. šēm -> sém (a jovahagyott H8034-mintaval egyezik)
 4	ṣ	c	tsade -- a magyar "c" hang
 5	ṭ	t	tet (dagesh nelkuli/pontozott t) -- egybeolvad a sima tavval, ugyanugy "t"
-6	ḥ	h	het -- a magyar "h" hang, egybeolvad a he-vel (nincs kulon "kh")
+6	ḥ	ch	het (D35, javitva a korabbi "h"-rol) -- a mai kiejtesben ח a k spirans parja (mint a כ dagesh nelkul, l. D34), ezert "ch"; ELKULONUL a ה-tol (a plain "h" karakter, a he betu OSHL-atirasa, EBBEN A TABLABAN nincs erintve, tehat valtozatlanul "h" marad), es igy nincs utkozes a magyar "haj" szoval; pl. ḥay -> chaj, šāḥat -> sáchat
 7	q	k	qof -- a magyar "k" hang; pl. qārāʾ -> kárá (jovahagyott minta)
-8	y	j	yod massalhangzokent -- a magyar "j" hang (pl. ḥay -> haj)
+8	y	j	yod massalhangzokent -- a magyar "j" hang (pl. ḥay -> chaj)
 9	â	á	hosszu a (cirkumflex, tortenetileg matres lectionis-szal irt), hosszu maganhangzo
 10	ā	á	hosszu a (makron, "plene" hosszu)
 11	ă	a	rovid/redukalt a (hataf patah)
