@@ -11,3 +11,5 @@
 **DONTESEK.md tételei:** 4 (DT1 ✅, DT4 ✅, DT2 🟡, DT3 🟡). **Nyitott:** DT2 (#10 L6/L7), DT3 (E17 küszöb). A #7 „#14 (kész)” függése az FP2-re mutat, az ütközés megszűnt.
 
 **Ellenőrzés:** `naplok/ELLENOR_orkesztrator-15.md` (1–2. kör tömörítve, 3. kör: l. PR).
+
+**Utólagos (F15.1, ág `claude/kovetkezo-modell`):** a `/kovetkezo` lépései fölé általános szabály került (a 9. `fuggetlen-ellenor`-hívásra is vonatkozik): subagent hívásakor nincs `model` paraméter, a modellt a subagent-fájl frontmatterje adja. `claude plugin validate .claude/agents` → `✔ Validation passed` (kilépési kód 0). Ez a hívásonkénti modellmegadás nyitott kérdését gyakorlatban lezárja (a három `vegrehajto-*` fájl marad). Nem volt új ellenőri kör (egysoros változás, jóváhagyva).
