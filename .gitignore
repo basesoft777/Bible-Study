@@ -6,9 +6,10 @@ bovitmenyek/*.oxt
 # Python bytecode-gyorsitotar -- nem verziozzuk
 __pycache__/
 
-# .claude/ nincs verziozva (worktrees, lokalis allapot), kiveve az agent-definiciokat
+# .claude/ nincs verziozva (worktrees, lokalis allapot), kiveve az agent- es parancs-definiciokat
 .claude/*
 !.claude/agents/
+!.claude/commands/
 
 # CREMER_OCR_BRIEF.md O0.1 -- archive.org nyers fajlok (kb. 1.85 GB), nem verziozzuk;
 # a SHA-256-ok a konkordancia/README.md-ben
