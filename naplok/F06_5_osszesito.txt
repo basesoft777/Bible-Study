@@ -19,7 +19,7 @@ MACULA lefedettseg: konyv=39 ; lowfat-fajl osszesen=929
 BSB: versek=1533 ; allapot: {'egyezik': 1515, 'elter': 18}
 BSB elteresek: sorok=18 ; ok: {'tahot_nincs_a_bsb-ben': 18}
   elteresek, ahol a TAHOT 2895 (a BSB 2896): 7
-LICENC: szovegek=27 ; allapot: {'javaslat_kapun_atment': 21, 'kezi_hosszu': 6}
-  licenc_tipus (kapun atment): {'nincs_adat': 11, 'MIT License': 4, 'MIT': 1, 'ISC License': 1, 'ISC': 1, 'GPL-3.0': 1, 'CC0 1.0 Universal': 1, 'CC0 1.0': 1}
-  nem ures idezet (kapun atment): 10
-KOLTSEG: hivasok=22 ; osszeg=0.009014 USD ; kiserlet=2 sorok=1 ; providerek=['CoreWeave', 'GMICloud', 'Minimax', 'ModelRun', 'SambaNova', 'StreamLake']
+LICENC: szovegek=32 ; allapot: {'javaslat_kapun_atment': 24, 'kezi_hosszu': 6, 'kezi_kapu': 2}
+  licenc_tipus (kapun atment): {'nincs_adat': 11, 'MIT License': 4, 'MIT': 1, 'ISC License': 1, 'ISC': 1, 'GPL-3.0': 1, 'CC0 1.0 Universal': 1, 'CC0 1.0': 2, 'CC BY 4.0': 1, 'CC0/CC BY 4.0': 1}
+  nem ures idezet (kapun atment): 13
+KOLTSEG: hivasok=29 ; osszeg=0.011927 USD ; kiserlet=2 sorok=3 ; providerek=['CoreWeave', 'GMICloud', 'Minimax', 'ModelRun', 'SambaNova', 'StreamLake', 'Together']

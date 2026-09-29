@@ -1,5 +1,7 @@
 # FORRAS_jelentes.md — FJ5: összesítő jelentés
 
+*Felülírva: N27–N29; az aktuális állapot: `naplok/F06_forras_jelentes.md`.*
+
 *FORRASJELOLTEK_BRIEF.md v1 alapján, 1. menet (felmérés, nem import). Ág:
 `claude/peaceful-rubin-39uuzs`.*
 
