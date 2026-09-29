@@ -1,0 +1,37 @@
+# forras-URL: https://github.com/basokant/nave ; https://github.com/theonize/bible_database ; https://github.com/elcafe7/lex
+# commit/verzio: basokant_nave=4f35c7d4ffd4933f4db1b9d5182db90dc04bd235 ; theonize_bible_database=0df2f9928358926f94a6d0db5e823a3a73280339 ; elcafe7_lex=4e7773200f2f9d06a2acc9f2df24e9867d8aa80a
+# letoltes datuma: 2026-09-29
+# futtatasi parancs: python eszkozok/fj2/futtat.py --lepes meres
+forras	mero	ertek	megjegyzes
+basokant_nave	elerheto	igen	commit 4f35c7d4ffd4933f4db1b9d5182db90dc04bd235
+basokant_nave	fajlok_kiterjesztesenkent	.ts=15; .json=6; (nincs)=1; .html=1; .md=1; .example=1; .lock=1; .ico=1; .txt=1; .vue=1	
+basokant_nave	legnagyobb_fajlok	data/nave.txt=4565849; data/parsed-nave.json=4054793; bun.lock=128903; bin/parse.ts=6730; bin/scrape.ts=5262; public/favicon.ico=4286; bin/parse.test.ts=3322; src/db/schema.ts=2637	relativ ut=bajt
+basokant_nave	json_szerkezet:data/parsed-nave.json	list/5322	legfelso szintu tipus/elemszam
+basokant_nave	licenc_fajl	README.md	1874 karakter
+theonize_bible_database	elerheto	igen	commit 0df2f9928358926f94a6d0db5e823a3a73280339
+theonize_bible_database	topics_fejlec	TopicID|Topic|Subtopic	
+theonize_bible_database	topics_sorok	32253	Topics.csv adatsorai
+theonize_bible_database	temakor_egyedi_topic	4980	Topics.csv Topic-oszlop egyedi ertekei
+theonize_bible_database	mainindex_fejlec	BookID|Chapter|ParaID|SentID|VerseID|VerseNum|VersePos|WordID|Word|Punc|Italic|cParen|oParen|PlaceID|Syllables|YearNum|PersonID|RunCharLen	
+theonize_bible_database	vers_terkep_meret	31102	MainIndex.csv egyedi VerseID-i
+theonize_bible_database	topicindex_fejlec	TopicID|VerseID	
+theonize_bible_database	tema_vers_relaciok	92609	TopicIndex.csv adatsorai
+theonize_bible_database	verseid_minta	1693|4799|4800	az elso 3 VerseID nyersen
+theonize_bible_database	konyvkod_lekepezheto_relaciok	92609	Konyv_normalizalo_tabla.tsv-re (kanoni sorszam vagy nev alapjan)
+theonize_bible_database	konyvkod_nem_lekepezheto_relaciok	0	
+theonize_bible_database	nem_lekepezheto_kodok_top10		
+theonize_bible_database	licenc_fajl	LICENSE	35141 karakter
+theonize_bible_database	licenc_fajl	README.md	86 karakter
+elcafe7_lex	elerheto	igen	commit 4e7773200f2f9d06a2acc9f2df24e9867d8aa80a
+elcafe7_lex	sqlite_tablak	topics|sqlite_sequence|topics_fts|topics_fts_data|topics_fts_idx|topics_fts_docsize|topics_fts_config	
+elcafe7_lex	topics_oszlopok	id|section|subject|entry|subject_upper	
+elcafe7_lex	temakor_sorok	5319	topics tabla
+elcafe7_lex	tema_vers_relaciok_also_becsles	40089	csak a KOD fej:vers alaku horgonyok; a folytatolagos versek (pl. 21:4,10) nincsenek benne -- also korlat
+elcafe7_lex	konyvkod_lekepezheto_relaciok	40088	STEPBible-kodokra (kis-/nagybetu-fuggetlen)
+elcafe7_lex	konyvkod_nem_lekepezheto_relaciok	1	
+elcafe7_lex	nem_lekepezheto_kodok_top10	1JHN=1	
+elcafe7_lex	licenc_fajl	LICENSE	1064 karakter
+elcafe7_lex	licenc_fajl	README.md	8962 karakter
+elcafe7_lex	licenc_fajl	npm/lex-cli/README.md	1745 karakter
+elcafe7_lex	licenc_fajl	docs/LICENSING.md	2931 karakter
+elcafe7_lex	licenc_fajl	docs/README.html	19196 karakter

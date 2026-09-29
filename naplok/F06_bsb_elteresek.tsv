@@ -1,0 +1,24 @@
+# forras-URL: https://github.com/BSB-publishing/bsb-data-output + konkordancia/TAHOT_kivonat.tsv
+# commit/verzio: BSB commit a4a2c0558c26e0281ba4e3f0e5479398459e2183
+# letoltes datuma: 2026-09-29
+# futtatasi parancs: python eszkozok/fj2/futtat.py --lepes meres
+# rogzitett kuszob=95.0% definicio=tahot_resze_bsb nevezo=tahot_lefedett_versek (kuszob.txt, meres elott rogzitve)
+igehely	ok	tahot_nincs_a_bsb-ben	bsb_tobblet
+1Móz 1:4	tahot_nincs_a_bsb-ben	2895	2896
+1Móz 1:10	tahot_nincs_a_bsb-ben	2895	2896
+1Móz 1:12	tahot_nincs_a_bsb-ben	2895	2896
+1Móz 1:18	tahot_nincs_a_bsb-ben	2895	2896
+1Móz 1:21	tahot_nincs_a_bsb-ben	2895	2896
+1Móz 1:25	tahot_nincs_a_bsb-ben	2895	2896
+1Móz 4:8	tahot_nincs_a_bsb-ben	1980	
+1Móz 4:22	tahot_nincs_a_bsb-ben	2790	2794
+1Móz 24:33	tahot_nincs_a_bsb-ben	7760	3455
+1Móz 30:11	tahot_nincs_a_bsb-ben	1409	
+1Móz 32:28	tahot_nincs_a_bsb-ben	582	376
+1Móz 33:20	tahot_nincs_a_bsb-ben	3290	3478
+1Móz 36:5	tahot_nincs_a_bsb-ben	3266	3274
+1Móz 36:14	tahot_nincs_a_bsb-ben	3266	3274
+1Móz 39:20	tahot_nincs_a_bsb-ben	615	
+1Móz 40:13	tahot_nincs_a_bsb-ben	4941	4639
+1Móz 49:15	tahot_nincs_a_bsb-ben	2895	2896
+1Móz 49:26	tahot_nincs_a_bsb-ben	8379	8378

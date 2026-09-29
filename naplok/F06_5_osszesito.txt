@@ -1,0 +1,31 @@
+MACULA 87 hely: sorok=87
+  allapot HEBER_SZO_GOROG_NELKUL = 38
+  allapot HEBER_SZO_NINCS_A_VERSBEN = 8
+  allapot LXX_MEGFELELO = 39
+  allapot NINCS_VERS = 2
+  allapot x azonositas ('HEBER_SZO_GOROG_NELKUL', 'strong') = 26
+  allapot x azonositas ('HEBER_SZO_GOROG_NELKUL', 'szoalak') = 12
+  allapot x azonositas ('HEBER_SZO_NINCS_A_VERSBEN', '') = 8
+  allapot x azonositas ('LXX_MEGFELELO', 'strong') = 37
+  allapot x azonositas ('LXX_MEGFELELO', 'szoalak') = 2
+  allapot x azonositas ('NINCS_VERS', '') = 2
+  GOROG_NELKUL bontas: osszes=38 ; van gorog szoalak (gorog Strong nincs)=26 ; nincs gorog szoalak sem=12
+  GOROG_NELKUL, nem szoalak-ertek (kizarva) a macula_gorog mezokben: ['"{δ}"', '-', '’’']
+  GOROG_NELKUL, {..} jelolot tartalmazo sorok: 1
+  NINCS_A_VERSBEN: sorok=8 ; heber_kulcsszo == "—" (nem volt mit keresni)=8 ; heber_strong_munkalap ures=8
+  NINCS_VERS igehelyek: 4Móz 13:34, 4Móz 13:34
+  egyedi igehely a LXX_MEGFELELO sorokban: 39
+  megjegyzes kitoltve (tobb heber talalat, eltero gorog Strong): 0
+MACULA lefedettseg: konyv=39 ; lowfat-fajl osszesen=929
+  kiemelt 1Sam-2Kron: konyv=6 fajl=167 macula_versek=4807 tahot_versek=4806 kozos=4772
+  konyv 0 lowfat-fajllal: 0
+  osszes macula_versek=23213 tahot_versek=23179 kozos=23045
+  teljes egyezes (csak_macula=0 es csak_tahot=0) konyvek: 14
+BSB: versek=1533 ; allapot: {'egyezik': 1515, 'elter': 18}
+BSB elteresek: sorok=18 ; ok: {'tahot_nincs_a_bsb-ben': 18}
+  elteresek, ahol a TAHOT 2895 (a BSB 2896): 7
+LICENC: szovegek=32 ; allapot: {'javaslat_kapun_atment': 24, 'kezi_hosszu': 6, 'kezi_kapu': 2}
+  licenc_tipus (kapun atment): {'nincs_adat': 11, 'MIT License': 4, 'MIT': 1, 'ISC License': 1, 'ISC': 1, 'GPL-3.0': 1, 'CC0 1.0 Universal': 1, 'CC0 1.0': 2, 'CC BY 4.0': 1, 'CC0/CC BY 4.0': 1}
+  nem ures idezet (kapun atment): 13
+KOLTSEG fejlecsor: # osszkoltseg_usd=0.011926 hivasok=29 plafon=1.00
+KOLTSEG: hivasok=29 ; osszeg=0.011927 USD ; kiserlet=2 sorok=3 ; providerek=['CoreWeave', 'GMICloud', 'Minimax', 'ModelRun', 'SambaNova', 'StreamLake', 'Together']

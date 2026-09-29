@@ -1,0 +1,45 @@
+# forras-URL: https://github.com/Clear-Bible/macula-hebrew
+# commit/verzio: commit 47db250bd55d0d8577f2a94fba114ef16c35b23c
+# letoltes datuma: 2026-09-29
+# futtatasi parancs: python eszkozok/fj2/futtat.py --lepes meres
+# a fajlok_lowfat a WLC/lowfat konyvtarra vonatkozik; repo_fajl_osszesen a repo barmely konyvtaraban az NN- elotagu fajlok szama
+konyv	step_kod	sorszam	macula_fajlkod	fajlok_lowfat	macula_versek	tahot_versek	kozos_versek	csak_macula	csak_tahot	repo_fajl_osszesen	kiemelt_1Sam_2Kron
+1Móz	Gen	1	Gen	50	1533	1533	1532	1	1	151	nem
+2Móz	Exo	2	Exo	40	1213	1213	1208	5	5	121	nem
+3Móz	Lev	3	Lev	27	859	859	852	7	7	82	nem
+4Móz	Num	4	Num	36	1289	1288	1272	17	16	109	nem
+5Móz	Deu	5	Deu	34	959	959	956	3	3	103	nem
+Józs	Jos	6	Jos	24	658	658	658	0	0	73	nem
+Bír	Jdg	7	Jdg	21	618	618	618	0	0	64	nem
+Ruth	Rut	8	Rut	4	85	85	85	0	0	13	nem
+1Sám	1Sa	9	1Sa	31	811	811	810	1	1	94	igen
+2Sám	2Sa	10	2Sa	24	695	695	694	1	1	73	igen
+1Kir	1Ki	11	1Ki	22	817	817	803	14	14	67	igen
+2Kir	2Ki	12	2Ki	25	719	719	718	1	1	76	igen
+1Krón	1Ch	13	1Ch	29	943	942	927	16	15	88	igen
+2Krón	2Ch	14	2Ch	36	822	822	820	2	2	109	igen
+Ezsd	Ezr	15	Ezr	10	280	280	280	0	0	31	nem
+Neh	Neh	16	Neh	13	405	406	398	7	8	40	nem
+Eszt	Est	17	Est	10	167	167	167	0	0	31	nem
+Jób	Job	18	Job	42	1070	1036	1028	42	8	127	nem
+Zsolt	Psa	19	Psa	150	2527	2527	2527	0	0	451	nem
+Péld	Pro	20	Pro	31	915	915	915	0	0	94	nem
+Préd	Ecc	21	Ecc	12	222	222	219	3	3	37	nem
+Én	Sng	22	Sng	8	117	117	116	1	1	25	nem
+Ézs	Isa	23	Isa	66	1291	1292	1290	1	2	199	nem
+Jer	Jer	24	Jer	52	1364	1364	1363	1	1	157	nem
+Sir	Lam	25	Lam	5	154	154	154	0	0	16	nem
+Ez	Ezk	26	Ezk	48	1273	1273	1268	5	5	145	nem
+Dán	Dan	27	Dan	12	357	357	353	4	4	37	nem
+Hós	Hos	28	HOS	14	197	197	194	3	3	43	nem
+Jóel	Jol	29	Jol	4	73	73	52	21	21	13	nem
+Ámós	Amo	30	Amo	9	146	146	146	0	0	28	nem
+Abd	Oba	31	Oba	1	21	21	21	0	0	4	nem
+Jón	Jon	32	Jon	4	48	48	48	0	0	13	nem
+Mik	Mic	33	Mic	7	105	105	104	1	1	22	nem
+Náh	Nam	34	Nam	3	47	47	46	1	1	10	nem
+Hab	Hab	35	Hab	3	56	56	56	0	0	10	nem
+Sof	Zep	36	Zep	3	53	53	53	0	0	10	nem
+Hag	Hag	37	Hag	2	38	38	38	0	0	7	nem
+Zak	Zec	38	Zec	14	211	211	207	4	4	43	nem
+Mal	Mal	39	Mal	3	55	55	49	6	6	10	nem
