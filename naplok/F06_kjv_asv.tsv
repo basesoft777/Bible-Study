@@ -6,10 +6,12 @@ forras	mero	ertek	megjegyzes
 studybible_info	http:https://studybible.info/KJV_Strongs/Genesis%201	HTTP 200	content-type: text/html; charset=utf-8; elso_blokk_bajt: 106495
 studybible_info	http:https://studybible.info/ASV_Strongs/Genesis%201	HTTP 200	content-type: text/html; charset=utf-8; elso_blokk_bajt: 93006
 ebible_org	http:https://ebible.org/Scriptures/eng-kjv_usfm.zip	HTTP 200	content-type: application/zip; elso_blokk_bajt: 200000
-ebible_org	usfm_meres:https://ebible.org/Scriptures/eng-kjv_usfm.zip	konyv=81 vers=36822 vers_strongos=31099 strong_cimke=349308	lefedettseg: USFM-bol merve
+ebible_org	usfm_meres:https://ebible.org/Scriptures/eng-kjv_usfm.zip	konyv=81 vers=36822 vers_strongos=31099 strong_cimke=349308	lefedettseg: USFM-bol merve (minden id-jelolt fajl, apokrifokkal egyutt)
+ebible_org	usfm_meres_kanoni66:https://ebible.org/Scriptures/eng-kjv_usfm.zip	konyv=66 vers=31102 vers_strongos=31099	csak a 66 kanoni konyv USFM-azonositoi
 ebible_org	http:https://ebible.org/Scriptures/engkjv_usfm.zip	HTTP 404	content-type: text/html; elso_blokk_bajt: 162
 ebible_org	http:https://ebible.org/Scriptures/eng-asv_usfm.zip	HTTP 200	content-type: application/zip; elso_blokk_bajt: 200000
-ebible_org	usfm_meres:https://ebible.org/Scriptures/eng-asv_usfm.zip	konyv=68 vers=31102 vers_strongos=30978 strong_cimke=705378	lefedettseg: USFM-bol merve
+ebible_org	usfm_meres:https://ebible.org/Scriptures/eng-asv_usfm.zip	konyv=68 vers=31102 vers_strongos=30978 strong_cimke=705378	lefedettseg: USFM-bol merve (minden id-jelolt fajl, apokrifokkal egyutt)
+ebible_org	usfm_meres_kanoni66:https://ebible.org/Scriptures/eng-asv_usfm.zip	konyv=66 vers=31102 vers_strongos=30978	csak a 66 kanoni konyv USFM-azonositoi
 ebible_org	http:https://ebible.org/Scriptures/engasv_usfm.zip	HTTP 404	content-type: text/html; elso_blokk_bajt: 162
 ebible_org	http:https://ebible.org/find/details.php?id=eng-kjv	HTTP 200	content-type: text/html; charset=UTF-8; elso_blokk_bajt: 6001
 ebible_org	http:https://ebible.org/find/details.php?id=eng-asv	HTTP 200	content-type: text/html; charset=UTF-8; elso_blokk_bajt: 5366
@@ -46,7 +48,9 @@ github:1John419/kjs	szo_szintu_strong_bizonyitek	nem	KJV/ASV nevu fajlokban tala
 github:1John419/kjs	licenc_fajl	LICENSE.md	620 karakter
 github:1John419/kjs	licenc_fajl	README.md	940 karakter
 github:luvlylavnder/bible-app-data	elerheto	igen	commit 1ad7e27fdaf4b1117164b5d422b6490d26d74806
+github:luvlylavnder/bible-app-data	json_lefedettseg:Bible-Versions/KJV-Strongs/kjv_strongs.json	konyv=66 vers=31102 vers_strong_cimkevel=31102	JSON book/chapter/verse/text rekordokbol merve
 github:luvlylavnder/bible-app-data	strong_cimkek:Bible-Versions/KJV-Strongs/kjv_strongs.json	kapcsos_H_G=351804	lefedettseg=nem_merheto_automatikusan (kezi); genezis_1_1_pelda: In the beginning{H7225} God{H430} created{H1254}{(H8804)}{H853} the heaven{H8064} and{H853} the earth{H776}."},{"book_name":"Genesis","book":1,"chapter":1,"verse":2,"text":"And the earth{H776} was{H1961}{(H8804)} without
+github:luvlylavnder/bible-app-data	json_lefedettseg:Bible-Versions/ASV-Strongs/asvs.json	konyv=66 vers=31086 vers_strong_cimkevel=31086	JSON book/chapter/verse/text rekordokbol merve
 github:luvlylavnder/bible-app-data	strong_cimkek:Bible-Versions/ASV-Strongs/asvs.json	kapcsos_H_G=348546	lefedettseg=nem_merheto_automatikusan (kezi); genezis_1_1_pelda: In the beginning{H7225} God{H430} created{H1254} the heavens{H8064} and{H853} the earth.{H776}"},{"book_name":"Genesis","book":1,"chapter":1,"verse":2,"text":"And the earth{H776} was{H1961} waste{H8414} and void;{H922} a
 github:luvlylavnder/bible-app-data	szo_szintu_strong_bizonyitek	igen	KJV/ASV nevu fajlokban talalt cimke-minta
 github:luvlylavnder/bible-app-data	licenc_fajl	LICENSE	7048 karakter
