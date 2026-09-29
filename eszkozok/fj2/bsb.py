@@ -69,6 +69,7 @@ def fut(munka, parancs):
     if kozos.SZARAZ:
         print('bsb: szaraz futas, kuszob=%s definicio=%s nevezo=%s' % (kuszob, definicio, nevezo))
         return
+    licenc_fajlok = kozos.licenc_gyujt('bsb_data_output', cel)
     tahot = kozos.tahot_strongok()
     mappa = os.path.join(cel, 'base', 'display', 'GEN')
     fejezetek = sorted(int(m.group(1)) for fn in os.listdir(mappa) for m in [re.fullmatch(r'GEN(\d+)\.json', fn)] if m)
@@ -115,5 +116,6 @@ def fut(munka, parancs):
                  ['igehely', 'tahot_strongok_db', 'bsb_strongok_db', 'jaccard_szazalek', 'allapot', 'tahot_hianyzik_a_bsb-bol'], sorok)
     kozos.tsv_ir(os.path.join(kozos.NAPLOK, 'F06_bsb_elteresek.tsv'), fej_sorok[:4] + fej_sorok[4:5],
                  ['igehely', 'ok', 'tahot_nincs_a_bsb-ben', 'bsb_tobblet'], elteresek)
+    print('bsb: licenc-/README-fajlok: %d' % len(licenc_fajlok))
     for s in fej_sorok[-3:]:
         print(s)

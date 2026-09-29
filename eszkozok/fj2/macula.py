@@ -72,6 +72,7 @@ def fut(munka, parancs):
     if kozos.SZARAZ:
         print('macula: szaraz futas, munkalap-utvonal: %s' % os.path.exists(MUNKALAP))
         return
+    licenc_fajlok = kozos.licenc_gyujt('macula_hebrew', cel, max_melyseg=0)
     step_mag, mag_step = kozos.normalizalo()
     kanoni = list(step_mag.keys())            # STEP-kodok kanoni sorrendben
     kanoni_mag = [step_mag[k] for k in kanoni]
@@ -157,4 +158,4 @@ def fut(munka, parancs):
                  + ['sorok=%d ; %s' % (len(ki), ossz)],
                  ['motivum', 'igehely', 'heber_kulcsszo', 'heber_strong_munkalap', 'allapot', 'azonositas',
                   'macula_heber_szo', 'macula_gorog', 'macula_gorog_strong', 'megjegyzes'], ki)
-    print('macula: %d sor; %s' % (len(ki), ossz))
+    print('macula: %d sor; %s ; licenc-/README-fajlok: %d' % (len(ki), ossz, len(licenc_fajlok)))
