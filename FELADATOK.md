@@ -12,7 +12,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Következő lépés | Hol |
 |---|---|---|---|---|---|---|
-| 6 | Új források 2. felmérése **helyi gépről** (FJ 2. menet) | döntés a Nave, a teljes KJV/ASV és a BSB importjáról; a Macula lefedettsége | ⬜ nem futott | — (#5-tel párhuzamosan futhat) | Brief kész (F06). GitHub Actionsben fut, helyi gép nem kell (N27, N29–N31) | `naplok/FORRAS_jelentes.md` (fejlécébe kell a „felülírva: N27–N29” megjegyzés) |
+| 6 | Új források 2. felmérése **helyi gépről** (FJ 2. menet) | döntés a Nave, a teljes KJV/ASV és a BSB importjáról; a Macula lefedettsége | 🟡 kész, PR-re vár | — (#5-tel párhuzamosan futhat) | Ág `claude/f06-forrasfelmeres`, jelentés `naplok/F06_forras_jelentes.md`. **Te:** döntés a Nave/KJV-ASV/BSB importról (N27, N29–N31); a menet Actionsben futott, helyi gép nem kellett | `naplok/FORRAS_jelentes.md` (fejlécébe kell a „felülírva: N27–N29” megjegyzés) |
 | 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ nem futott | #3, #5 (terminológia, kiejtés), #14 (kész) | brief v3 (Gemini, természetes hű, FP2-D15 szabályai) | `FORDITAS_ELES_THAYER_BRIEF.md` v2 → v3, `naplok/FP2_jelentes.md` (FP2-D13–D15) |
 | 8 | LXX-fordítói döntések a 87 függő igehelyre | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ nem futott | #1, #6 (Macula-lefedettség) | Kutatói adatmunka; 58 gépi jelölt tájékoztatásul: `naplok/FORRAS_FJ1_lxx_jeloltek.tsv` | eredetileg a LEXIKON_LEZARAS 4c pontja |
 
