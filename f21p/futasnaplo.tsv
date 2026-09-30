@@ -1,0 +1,3 @@
+ts	futas	koteg	probalkozas	modell	gondolkodas_mod	igehely_db	kjv	bemenet_token	kimenet_token	gondolkodas_token	koltseg_usd	koltseg_forras	kapuhiba_db	http_kiserlet	idotartam_mp	finish_reason	prompt_sha256_12	futo_osszeg_usd
+2026-09-30T10:36:18+00:00	F1	1	1	google/gemini-3.1-flash-lite	kikapcsolva	10	igen	7127	1264	0	0.003678	openrouter	5	1	5.29	stop	053993cdccbf	0.003678
+2026-09-30T10:36:21+00:00	F1	1	2	google/gemini-3.1-flash-lite	kikapcsolva	5	igen	8724	731	0	0.001902	openrouter	0	1	2.87	stop	053993cdccbf	0.005580
