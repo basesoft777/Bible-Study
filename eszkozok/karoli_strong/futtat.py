@@ -447,11 +447,34 @@ def kuldes(ctx, modell_kulcs, uzenetek):
             raise
 
 
+# A gondolkodási (reasoning) token lehetséges helyei az usage-ban, sorrendben.
+# OpenRouter: usage.completion_tokens_details.reasoning_tokens (a completion_tokens
+# már tartalmazza); a másik két alak tartalék (Responses-stílusú / lapos mező).
+GONDOLKODAS_UTAK = (
+    ('completion_tokens_details', 'reasoning_tokens'),
+    ('output_tokens_details', 'reasoning_tokens'),
+    ('reasoning_tokens',),
+)
+
+
+def gondolkodas_token(usage):
+    """A válasz usage mezőjéből a gondolkodási token (az első nem nulla hely); 0, ha nincs."""
+    for ut in GONDOLKODAS_UTAK:
+        x = usage
+        for kulcs in ut:
+            x = x.get(kulcs) if isinstance(x, dict) else None
+        if isinstance(x, (int, float)) and not isinstance(x, bool) and x:
+            return int(x)
+    return 0
+
+
 def hivas(ctx, futas_id, koteg_no, probalkozas, uzenetek, igehelyek, kapuhiba_db_fn):
     """Egy modellhívás plafon-ellenőrzéssel és naplózással.
 
-    Visszaad: a válasz szövege. A kapuhiba_db_fn(szoveg) a kapu szerint hibás
-    versek számát adja (a naplóba kerül)."""
+    Visszaad: (a válasz szövege, hívásrekord). A hívásrekord (nyers usage,
+    a reasoning-szöveg hossza, finish_reason) a köteg-sorba, a jsonl-be kerül,
+    hogy a naplóoszlopok (pl. gondolkodas_token) utólag ellenőrizhetők legyenek.
+    A kapuhiba_db_fn(szoveg) a kapu szerint hibás versek számát adja (a naplóba kerül)."""
     spec = FUTASOK[futas_id]
     modell_kulcs = spec['modell']
     modell_id = MODELLEK[modell_kulcs]
@@ -467,7 +490,7 @@ def hivas(ctx, futas_id, koteg_no, probalkozas, uzenetek, igehelyek, kapuhiba_db
     usage = valasz.get('usage') or {}
     be = usage.get('prompt_tokens', 0) or 0
     ki = usage.get('completion_tokens', 0) or 0
-    gond = (usage.get('completion_tokens_details') or {}).get('reasoning_tokens', 0) or 0
+    gond = gondolkodas_token(usage)
     koltseg = usage.get('cost')
     if koltseg is None:
         ar_be, ar_ki = ARAK[modell_id]
@@ -491,7 +514,9 @@ def hivas(ctx, futas_id, koteg_no, probalkozas, uzenetek, igehelyek, kapuhiba_db
         'prompt_sha256_12': utasitas_sha12(futas_id),
         'futo_osszeg_usd': '%.6f' % (eddig + koltseg),
     })
-    return szoveg
+    rekord = {'probalkozas': probalkozas, 'usage': usage, 'finish_reason': finish,
+              'reasoning_szoveg_karakter': len(((valasz_elem.get('message') or {}).get('reasoning')) or '')}
+    return szoveg, rekord
 
 
 # ---------------------------------------------------------------------------
@@ -523,8 +548,9 @@ def koteg_feldolgoz(ctx, futas_id, koteg_no, igehelyek):
         return lambda szoveg: sum(1 for r in valasz_ellenoriz_futashoz(
             futas_id, szoveg, ig_lista, ctx.kimenet_dir).values() if not r['ok'])
 
-    szoveg1 = hivas(ctx, futas_id, koteg_no, 1, uzenetek, igehelyek, hibak_szama_fn(igehelyek))
+    szoveg1, rek1 = hivas(ctx, futas_id, koteg_no, 1, uzenetek, igehelyek, hibak_szama_fn(igehelyek))
     nyers.append(szoveg1)
+    hivasrekordok = [rek1]
     kapu1 = valasz_ellenoriz_futashoz(futas_id, szoveg1, igehelyek, ctx.kimenet_dir)
     versek = {}
     for ig in igehelyek:
@@ -536,8 +562,9 @@ def koteg_feldolgoz(ctx, futas_id, koteg_no, igehelyek):
         ujra = [{'role': 'user', 'content': uzenet},
                 {'role': 'assistant', 'content': szoveg1},
                 {'role': 'user', 'content': kapu.ujrakeres_uzenet({ig: kapu1[ig] for ig in rossz})}]
-        szoveg2 = hivas(ctx, futas_id, koteg_no, 2, ujra, rossz, hibak_szama_fn(rossz))
+        szoveg2, rek2 = hivas(ctx, futas_id, koteg_no, 2, ujra, rossz, hibak_szama_fn(rossz))
         nyers.append(szoveg2)
+        hivasrekordok.append(rek2)
         kapu2 = valasz_ellenoriz_futashoz(futas_id, szoveg2, rossz, ctx.kimenet_dir)
         for ig in rossz:
             r = kapu2[ig]
@@ -546,7 +573,7 @@ def koteg_feldolgoz(ctx, futas_id, koteg_no, igehelyek):
             else:
                 versek[ig] = {'allapot': 'kapuhiba', 'probalkozas': 2, 'hibak': r['hibak'], 'obj': None}
     sor = {'futas': futas_id, 'modell': MODELLEK[FUTASOK[futas_id]['modell']], 'koteg': koteg_no,
-           'igehelyek': igehelyek, 'nyers': nyers, 'versek': versek}
+           'igehelyek': igehelyek, 'nyers': nyers, 'hivasok': hivasrekordok, 'versek': versek}
     koteg_ment(futas_id, ctx.kimenet_dir, sor)
     return versek
 
@@ -828,8 +855,12 @@ class MockKuldo:
         be = sum(len(m['content']) for m in uzenetek) // 3
         ki = len(tartalom) // 3
         ar_be, ar_ki = ARAK[model_id]
-        usage = {'prompt_tokens': be, 'completion_tokens': ki + (200 if model_id == MODELLEK['C'] else 0),
-                 'completion_tokens_details': {'reasoning_tokens': 200 if model_id == MODELLEK['C'] else 0}}
+        gond = 200 if model_id == MODELLEK['C'] else 0
+        usage = {'prompt_tokens': be, 'completion_tokens': ki + gond}
+        if n % 2 == 0:
+            usage['output_tokens_details'] = {'reasoning_tokens': gond}     # tartalék alak
+        else:
+            usage['completion_tokens_details'] = {'reasoning_tokens': gond}  # OpenRouter alak
         if n % 3 != 0:
             usage['cost'] = (be / 1e6 * ar_be + usage['completion_tokens'] / 1e6 * ar_ki) * self.koltseg_szorzo
         return _MockValasz({'choices': [{'message': {'content': tartalom}, 'finish_reason': 'stop'}],
@@ -971,6 +1002,23 @@ def onteszt():
     ellen(any(s[NAPLO_FEJLEC.index('gondolkodas_mod')] == 'kotelezo_effort=low' for s in naplo[1:]),
           'a C gondolkodási mód nincs a naplóban')
     ellen(any(int(s[NAPLO_FEJLEC.index('kapuhiba_db')]) > 0 for s in naplo[1:]), 'kapuhiba nincs a naplóban')
+    i_gond = NAPLO_FEJLEC.index('gondolkodas_token')
+    i_modell = NAPLO_FEJLEC.index('modell')
+    c_sorok = [s for s in naplo[1:] if s[i_modell] == MODELLEK['C']]
+    ellen(c_sorok and all(int(s[i_gond]) == 200 for s in c_sorok),
+          'C: a napló gondolkodas_token oszlopa nem 200 minden C-hívásnál: %s' % [s[i_gond] for s in c_sorok])
+    ellen(all(int(s[i_gond]) == 0 for s in naplo[1:] if s[i_modell] != MODELLEK['C']), 'A/B: nem nulla gondolkodási token')
+    ellen(gondolkodas_token({'completion_tokens_details': {'reasoning_tokens': 7}}) == 7
+          and gondolkodas_token({'output_tokens_details': {'reasoning_tokens': 9}}) == 9
+          and gondolkodas_token({'reasoning_tokens': 3}) == 3 and gondolkodas_token({}) == 0
+          and gondolkodas_token({'completion_tokens_details': None}) == 0,
+          'gondolkodas_token: az usage-alakok értelmezése hibás')
+    f3_sorok = koteg_sorok('F3', mappa)
+    ellen(all(len(x['hivasok']) == len(x['nyers']) and all('usage' in h_ for h_ in x['hivasok']) for x in f3_sorok),
+          'a jsonl nem tárolja hívásonként a nyers usage-ot')
+    ellen(sum(gondolkodas_token(h_['usage']) for x in f3_sorok for h_ in x['hivasok'])
+          == sum(int(s[i_gond]) for s in c_sorok if s[NAPLO_FEJLEC.index('futas')] == 'F3'),
+          'a jsonl usage-ából visszaszámolt gondolkodási token nem egyezik a naplóéval')
     # kulcs nem szivárog
     szivarog = []
     for gyoker, _, fajlok in os.walk(mappa):
