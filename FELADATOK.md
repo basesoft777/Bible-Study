@@ -1,19 +1,23 @@
 # FELADATOK.md — feladatkövető
 
-*v1.1 · 2026.09.29 · `main` = `634d567` · Ez az egyetlen fájl, amit a chat egy új beszélgetés elején elolvas. A részletek a briefekben és a `NYITOTT_FELADATOK.md`-ben vannak; ide csak az állapot, a függés és a következő lépés kerül. Munkafolyamat: `/kovetkezo` orkesztrátor, döntések a `DONTESEK.md`-ben.*
+*v1.3 · 2026.09.30 · `main` = `29ada3c` (PR #76) + a csomagmód átvétele · Ez az egyetlen fájl, amit a chat egy új beszélgetés elején elolvas. A részletek a briefekben és a `NYITOTT_FELADATOK.md`-ben vannak; ide csak az állapot, a függés és a következő lépés kerül. Munkafolyamat: `/kovetkezo` orkesztrátor, döntések a `DONTESEK.md`-ben.*
 
 ## Alapelv: előbb az adatréteg, utána a render
 
 Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (lexikonoldal, törzscikk, migráció), mert a késői adat miatt mindent újra kellene generálni. Emiatt két fázis van, és a 2. fázis egyik feladata sem indul, amíg az 1. fázis el nem készül.
 
-**Kritikus út:** #1 és #2 → #4 → #5 → #7 → #9 → #10
+**Kritikus út:** #1 és #2 → #4 → #5 → #7 → #9 → #10; az LXX-ágon #6 → #17 → #8 → #10
 
 ## 1. fázis — adatréteg
 
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Következő lépés | Hol |
 |---|---|---|---|---|---|---|
-| 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ nem futott | #3, #5 (terminológia, kiejtés), #14 (kész) | brief v3 (Gemini, természetes hű, FP2-D15 szabályai) | `FORDITAS_ELES_THAYER_BRIEF.md` v2 → v3, `naplok/FP2_jelentes.md` (FP2-D13–D15) |
-| 8 | LXX-fordítói döntések a 87 függő igehelyre | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ nem futott | #1, #6 (Macula-lefedettség) | Kutatói adatmunka; 58 gépi jelölt tájékoztatásul: `naplok/FORRAS_FJ1_lxx_jeloltek.tsv` | eredetileg a LEXIKON_LEZARAS 4c pontja |
+| 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ nem futott | #3, #5 (terminológia, kiejtés), #14 (kész) | `/kovetkezo` csomag: #16–#19 és #7; külső modell, keret 15 USD | `F07_THAYER_ELES_BRIEF.md` v3 |
+| 8 | LXX-fordítói döntések a 87 függő igehelyre | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ nem futott | #1, #17 (Macula-import) | `/kovetkezo` a #17 merge-e után | `F08_LXX_DONTESEK_BRIEF.md` |
+| 16 | BSB-import, teljes Biblia (N30) | BSB minden könyvre, ahol a lefedettség ≥ 95% | ⬜ nem futott | #6 | `/kovetkezo` csomag: #16–#19 és #7 | `F16_BSB_IMPORT_BRIEF.md` |
+| 17 | Macula-import, héber és görög (N31) | Macula a Strong-számhoz és a KK-hoz kötve; a #8 fő forrása | ⬜ nem futott | #6 | `/kovetkezo` csomag: #16–#19 és #7 | `F17_MACULA_IMPORT_BRIEF.md` |
+| 18 | Nave-import, theonize (N27) | Nave-témák és -relációk, eredet-ellenőrzéssel mind a 4980 témán | ⬜ nem futott | #6 | `/kovetkezo` csomag: #16–#19 és #7; ⛔ ha a GPLv3 nem fér össze a repó licencével | `F18_NAVE_IMPORT_BRIEF.md` |
+| 19 | KJV/ASV-import, eBible (N29) | Strong-címkés KJV és ASV, a hiányok besorolásával | ⬜ nem futott | #6 | `/kovetkezo` csomag: #16–#19 és #7 | `F19_KJV_ASV_IMPORT_BRIEF.md` |
 
 ## 2. fázis — render (csak az 1. fázis után)
 
@@ -35,13 +39,14 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 ## Munkamenet (tokentakarékos)
 
-1. **Indítás és egyeztetés:** új Code-session, `/kovetkezo`. Egy session = egy feladat. A parancs javaslatot tesz a következő végrehajtható feladatra, és veled egyezteti (feladatválasztás, hatókör, modell). Addig semmit nem ír és nem indít; csak a kifejezett „mehet” után futtat.
+1. **Indítás és egyeztetés:** új Code-session, `/kovetkezo`. Egy session egy feladatot vagy egy csomagot futtat; a csomag egymástól független feladatokból áll (D20). A parancs javaslatot tesz a következő végrehajtható feladatra vagy csomagra, és veled egyezteti (feladatválasztás, hatókör, modell). Addig semmit nem ír és nem indít; csak a kifejezett „mehet” után futtat.
 2. **Egy feladat = egy brief = egy ág.** A brief a repóban van. Neve a feladat kétjegyű számával kezdődik: `F<nn>_<NEV>_BRIEF.md` (pl. `F05_SZOTAR_BRIEF.md`). A fejlécében a feladat száma és a `Modell:` sor (`sonnet` | `opus` | `haiku` | `külső:<név>`). Brief nélkül a feladat nem indul.
 3. **Modellkiosztás:** orkesztrátor Sonnet; végrehajtás a brief szerint (szkript- és adatmunka Sonnet, kutatói ítélet Opus, takarítás Haiku, a Thayer-fordítás a rögzített külső modellel); ellenőr mindig Opus.
 4. **Ellenőrzés (gépi):** zöld CI és a `fuggetlen-ellenor` jelentése (`naplok/ELLENOR_*.md`) a kötelező ellenőrzőlistával. Második szem a chat helyett: friss Code-session vagy PR-review.
 5. **Döntés:** a ⛔ pontok és a hiányzó briefek a `DONTESEK.md`-be kerülnek. A chat csak ezt a fájlt kapja (raw link); rutinszerű „kész” jelentés nem megy a chatbe.
 6. **Merge:** te indítod, zöld CI és `TISZTA` ellenőri jelentés mellett a chat nélkül is. A merge-commit a sort ✅-ra állítja, és a „Kész” listába mozgatja.
 7. **Keret és hossz:** ha a keret fogy vagy a session hosszú, a parancs tiszta ponton megáll („Folytatási pont” a zárójelentésben); a következő `/kovetkezo` onnan folytatja.
+8. **Párhuzamos futás (csomag):** a `/kovetkezo` a független feladatokat (jelenleg a #16–#19 és a #7) egy sessionben, párhuzamosan futtatja. Feladatonként külön worktree, ág, ellenőrzés és draft PR készül. Az ⛔ csak a saját feladatát állítja meg. A közös fájlokban mindegyik csak a saját sorait írja; a PR előtt rebase kell, ütközésnél mindkét oldal megmarad. A merge sorrendje tetszőleges.
 
 **A `CLAUDE.md`-be kerülő sor:** „Minden menet utolsó commitja frissíti a `FELADATOK.md` saját sorát. Új feladat csak a chat jóváhagyásával kerül bele.”
 
@@ -90,3 +95,10 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | D11 | A végrehajtó modellt a brief `Modell:` sora írja elő | a modellválasztás a felhasználónál marad; a költség oda megy, ahol szakmai ítélet kell | az orkesztrátor maga választ |
 | D12 | A brief neve a feladat számával kezdődik: `F<nn>_<NEV>_BRIEF.md` | a brief a fájllistában és az orkesztrátor számára is egyértelműen a feladathoz köthető | szám csak a brief fejlécében |
 | D13 | Az orkesztrátor futtatás előtt mindig egyeztet: javaslat → kérdés/módosítás → kifejezett „mehet”; az egyeztetésig csak olvas | a feladatválasztás és a hatókör a felhasználó döntése; az automatikus indulás rossz feladatot vagy rossz hatókört futtathat | a parancs automatikusan indul, csak a tervet írja ki |
+| D14 | A PR #75 utáni munka hat önálló feladatra bomlik: négy import (#16–#19), a Thayer (#7) és az LXX (#8); mindegyiket az orkesztrátor futtatja, a független feladatokat csomagban (D20) | az importok egymástól függetlenek, így párhuzamosan futhatnak; a Thayer és az LXX eltérő modellt és ítéletet kíván | egyetlen összevont menet; a #7 és a #8 egy menetben |
+| D15 | BSB: import a teljes Bibliára, könyvenként 95%-os küszöbbel | a teljes feldolgozás elve; az 1Mózesen mért 98,83% alapján a módszer működik | csak 1Mózes-hatókör |
+| D16 | Macula: teljes import (héber és görög), Strong-számhoz és KK-hoz kötve; a #8 fő forrása | a 87 helyből 39-re közvetlen megfelelőt ad | csak a 87 helyre szűkített import |
+| D17 | Nave: a theonize a fő forrás, a basokant az eredet-ellenőrzésre szolgál, az elcafe7 kimarad; az ellenőrzés mind a 4980 témán fut, a szkript utáni maradékot a Gemini 3.1 Flash Lite bírálja (2 USD-s ⛔ keret) | a theonize a legteljesebb forrás, de a Nave-eredetet nem mondja ki; az elcafe7 licence dokumentálatlan | 50 témás minta; az elcafe7 importja |
+| D18 | KJV/ASV: az eBible az importforrás, a luvlylavnder keresztellenőrzésre szolgál, a scrollmapper kimarad | az eBible szinte teljesen Strong-címkés; a luvlylavnder CC0; a scrollmapper nem volt mérhető | luvlylavnder mint fő forrás |
+| D19 | Menet közben csak a briefben felsorolt ⛔ pontoknál van megállás; a többi döntésre váró sor `javaslat` jelölést kap, és egy összesített `DONTESEK.md`-tételbe kerül a zárás előtt | nagyobb, egyben lefutó feladatok (Max-fiók); a jelölés miatt minden visszakereshető | megállás minden tartalmi döntésnél |
+| D20 | Csomagmód: a `/kovetkezo` a független feladatokat egy sessionben, párhuzamos subagentekkel futtatja, feladatonként külön worktree-ben, ágon, ellenőrzéssel és PR-rel. A D8 „egy session = egy feladat” szabályát módosítja | egy indítás és egy egyeztetés öt helyett; a worktree miatt az ágak nem akadnak össze; az ⛔ csak a saját feladatát állítja meg | feladatonként külön Code-session; egy közös ág több feladatra |
