@@ -5,9 +5,10 @@ kod: F19
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: fut
 ad: Strong-címkés KJV és ASV, a hiányok besorolásával
-kovetkezo: `/kovetkezo` csomag: #16–#19 és #7
+kovetkezo: végrehajtás fut (vegrehajto-sonnet)
+ag: claude/kjv-asv-import
 olvas: [konkordancia/KJV_Strongs_Genesis.tsv, konkordancia/ASV_Strongs_Genesis.tsv]
 ir: [naplok/F19_hianyok.tsv, konkordancia/KJV_Strongs_teljes.tsv, konkordancia/ASV_Strongs_teljes.tsv, NYITOTT_FELADATOK.md, DONTESEK.md]
 fugg: [6]
