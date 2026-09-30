@@ -8,6 +8,6 @@
 
 **Leletek:** Préd 9:10 igehely MT-számozású (Károli 9:12; DT7 (g)); HODIT-001 2Sám 21 / 1Krón 20: a TAHOT H7497, a H7498 csak Macula-állítás; LD010 Macula G0999 = βόθυνος; a G2672 (LD030/LD027) forrása az `LXX_OS`, a `LXX_kivonat`-ban Strong nélküli (az ellenőri 3. pont oka, DT23 (i)); Zsolt 76:3/88:11 `LXX_OS`-igehely rendben; a DT7 (a) nem hat ki.
 
-**Ellenőrzés:** `naplok/ELLENOR_F08.md` (1. kör: 8 eltérés, F8.5-ben kezelve; a 3. pontnál az értéket bizonyítékkal megtartottam, DT23 (i)).
+**Ellenőrzés:** `naplok/ELLENOR_F08.md` (1. kör: 8 eltérés, F8.5-ben kezelve; 2. kör: 1 alacsony eltérés, az `ir` listán kívüli módosítás, a felhasználó dönt, DT23 (d); a G2672 és a Zsolt-elcsúszás az 1. kör téves riasztása volt).
 
 **Nyitott (DONTESEK `DT23`, 🟡, (a)–(j)).**

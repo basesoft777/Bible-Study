@@ -5,10 +5,10 @@ kod: F08
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: fut
+allapot: lezarva
 ag: claude/lxx-dontesek
 ad: minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`); a 87 függő helyből 38 kap gépi LXX-megfelelőt (Macula, #17), 49 marad kutatói döntésre
-kovetkezo: `/kovetkezo` a #17 merge-e után; bemenet: 38 gépi LXX-megfelelő (F17), 49 hely kutatói döntésre
+kovetkezo: "a DT23 (a)–(j) döntései a felhasználóéi; a PR címe [ELLENŐRZŐ] előtagú (E16)"
 olvas: [adat/lxx_dontesek.tsv, naplok/FORRAS_FJ1_lxx_jeloltek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv]
 ir: [adat/lxx_dontesek.tsv, DONTESEK.md]
 fugg: [1, 17]

@@ -31,3 +31,15 @@
 ## Ellenőrző parancs (E2–E15)
 
 `python eszkozok/ellenorzes/futtat.py --valtozott <11 fájl> --diff-alap 5b18263 --diff-fej HEAD` → E2–E8, E10–E15: 0; E9: 2 JELENTES (`adat/SEMA.md:235-236`, változatlan sorok); **E16: HIBA** (PR-cím nélkül futtatva).
+
+---
+
+# 2. kör (head 87980ca) — eredmény: ELTÉRÉS 1 tétel (alacsony), tisztázva
+
+*A `fuggetlen-ellenor` 2. körös jelentésének összefoglalója; az orkesztrátor mentette.*
+
+- **Megoldva (saját lekérdezéssel igazolva):** 1. LD052 `nyitott` (Macula-felcserélés valódi), 2. LD050 `nyitott`, 4. `nem_alkalmazhato` egységes (SEMA 2.11, `ellenoriz.py` 10. szabály, generátor-szűrő; 61 biztos / 9 valószínű / 8 nyitott / 8 nem_alkalmazhato), 6. DT23 (f) H7497/H7498, 7. DT23 kiegészítése, 8. DT23 (a). Bontási napló, ⛔ (adatsor-csökkenés: nincs), A1, A2, A6 rendben.
+- **1. kör téves riasztásai:** a 3. pont (G2672): a Strong a `konkordancia/LXX_OS/genesis.tsv`-ben van (12:3 10. pozíció, 8:21 18. pozíció), az `lxx-hid` az `LXX_kivonat`-ot olvassa; az érték a repó adatából jön, a proveniencia a helyes datasetet nevezi. Szúrópróba 13 sor egyezik. A 7. pont Zsolt 76:3/88:11 része: nincs elcsúszás (`igehely_karoli` = MT = Károli, a KJV-mező eggyel kisebb).
+- **Nyitott (alacsony):** az `adat/SEMA.md`, `eszkozok/ellenoriz.py`, `eszkozok/lexikon_general.py` módosítása a brief `ir` listáján kívül esik, a DT23 (d) elfogadása előtt commitolva. A felhasználó dönt (DT23 (d)). Az E16 csak `[ELLENŐRZŐ]` előtagú PR-címmel zöld; a PR címe ezt viseli.
+- **Nem ellenőrizhető az ellenőr szerepével, az orkesztrátor futtatta:** lásd alább.
+- `python eszkozok/ellenoriz.py`: RENDBEN 11, SÉRTÉS 0, KÉZI 2, JELENTÉS 3; `python eszkozok/feladatok.py ellenoriz`: 50 brief, 0 hiba (orkesztrátor, head 87980ca).
