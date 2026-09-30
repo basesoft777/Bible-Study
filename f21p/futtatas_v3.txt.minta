@@ -3,14 +3,20 @@
 # atnevezese f21p/futtatas_v3.txt-re (vagy uj fajl ugyanezzel a tartalommal), commit es push a
 # claude/f21-regresszio-meres agra. A harom kulcs kotelezo (a koltsegvetesi kapu ellenorzi).
 # Felhasznaloi dontes: plafon_usd=2.90 (kumulativ napla-osszeg), kemeny plafon 3 USD, modell
-# anthropic/claude-sonnet-5.5, gondolkodas kikapcsolva, elobb kalibralo futas (koteg_max=1).
+# anthropic/claude-sonnet-5.5, gondolkodas kikapcsolva.
+# SORREND (felhasznaloi dontes): 1. kalibralo SONNETV3 (koteg_max=1); 2. a teljes SONNETV3; 3. az F3V3 (C)
+# CSAK akkor, ha a mert koltseg alapjan a kumulativ osszeg beleferi a 2.90-be; ha nem fer bele: megallas es jelentes.
 #
 # 1. lepes: kalibralo trigger, egy koteg (10 vers) a Sonnetbol:
 #   futasok=SONNETV3
 #   koteg_max=1
 #   plafon_usd=2.90
-# 2. lepes (a kalibralas utan, jovahagyassal): a C (F3V3) es a Sonnet 200 verse; a kesz koteg nem hiv ujra:
-#   futasok=F3V3,SONNETV3
+# 2. lepes (a kalibralas utan): a teljes Sonnet, 200 vers; a kesz koteg nem hiv ujra:
+#   futasok=SONNETV3
+#   koteg_max=mind
+#   plafon_usd=2.90
+# 3. lepes (csak ha a kumulativ osszeg a mert koltsegbol belefer a 2.90-be):
+#   futasok=F3V3
 #   koteg_max=mind
 #   plafon_usd=2.90
 futasok=SONNETV3
