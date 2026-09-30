@@ -486,7 +486,7 @@ def _hol(b):
 def _allapot_cella(b, main_all):
     st = statusz(b, main_all)
     if st == 'pr':
-        return '🔎 PR-ben'
+        return '🔀 PR-ben'
     return ALLAPOT_JEL[st]
 
 
@@ -640,7 +640,7 @@ def _allapot_visszafejt(cella):
         return 'megallt'
     if c.startswith('⬜'):
         return 'brief_kell' if 'brief kell' in c else 'nem_indult'
-    if c.startswith('🔎') or c.startswith('\U0001F50D'):
+    if c.startswith(('🔀', '\U0001F50E', '\U0001F50D')):  # a két nagyító a korábbi jel
         return 'lezarva'
     return None
 

@@ -18,7 +18,7 @@
 
 **Felfedezett hiba, kezelve:** a #7 csonk `olvas` listájában szereplő `adat/kiejtes_kivetelek.tsv`-t a #9 S2.1-je írja, ezért a #7 → #9 függés (kör a #9 → #7-tel) adódott. Megoldás: `nem_fugg: [9]` a #7 fejlécében (a v1.3-ban nincs ilyen függés).
 
-**Egyéb:** a „lezárva, még ágon” állapot jele `🔎` (a másik nagyító, U+1F50D az E2 szabályban „ellenőrizve” jelölés, a brief saját sorait is pirosra színezte). Idempotencia: a `general` kétszer futtatva „változatlan”.
+**Egyéb:** a „lezárva, még ágon” állapot jele `🔀` (a másik nagyító, U+1F50D az E2 szabályban „ellenőrizve” jelölés, a brief saját sorait is pirosra színezte). Idempotencia: a `general` kétszer futtatva „változatlan”.
 
 **Az ellenőri jelentés (ELLENOR_F20, 1. kör) utáni javítások:**
 - a `konkordancia/Karoli_versmegfeleltetes.tsv` proveniencia-komment sora változatlanul marad (a történeti proveniencia nem írható át; a `forras=KAROLI_KULCS_BRIEF.md` a régi név, a git-történetben megtalálható) — a K3 kivétele a `naplok/` mellett;

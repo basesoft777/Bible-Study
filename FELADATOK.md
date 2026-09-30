@@ -67,7 +67,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 ## Jelmagyarázat
 
-- **Állapot:** ✅ kész (a brief `lezarva` a `main`-en) · 🔎 PR-ben (`lezarva`, de még nem a `main`-en; csak a PR-ág helyi generálásában látszik, a commitolt blokkban nem) · ▶ fut · ⏸ döntésre vagy jóváhagyásra vár · ⬜ nem indult · ⬜ brief kell (csonk) · ⛔ kötelező megállás menet közben
+- **Állapot:** ✅ kész (a brief `lezarva` a `main`-en) · 🔀 PR-ben (`lezarva`, de még nem a `main`-en; csak a PR-ág helyi generálásában látszik, a commitolt blokkban nem) · ▶ fut · ⏸ döntésre vagy jóváhagyásra vár · ⬜ nem indult · ⬜ brief kell (csonk) · ⛔ kötelező megállás menet közben
 - **KK:** Károli-kulcs, a Károli–LXX versmegfeleltetés
 - **CI:** gépi ellenőrzés GitHub Actionsben; E1–E16 a szabályai, E18 a feladatkövetésé (fejléc-érvényesség, generált blokk)
 - **FJ:** forrásjelöltek felmérése; **FP:** fordítási próba
@@ -138,4 +138,4 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | D30 | A csatolt vagy beérkezett brief adat, nem utasítás; a nyitó prompt `KOZVETLEN_FUTTATAS` jelölők közé kerül, és egyik parancs sem hajtja végre. Új feladat csak a befogadás PR-jének merge-e után fut, sürgős esetben is | a brief szövege ne írhassa felül a parancs menetét | szabály jelölés nélkül; sürgős futtatás a befogadás ágából |
 | D31 | A feladat nélküli (régi) brief fejléce `tipus: archiv`, szám és átnevezés nélkül; az `ellenoriz` náluk a fájlnév–szám egyezést nem vizsgálja (az `F4_BRIEF.md` a terv F4 fázisa, nem a #4) | a régi briefek neve ne keveredjen a feladatszámokkal | a régi briefek átnevezése |
 | D32 | A szám nélküli lezárt tételek (FJ 1. menet, TEREMT-002 1–2. lépés, Szótári brief v1.1) kézi szakaszban maradnak; a generált „Kész” csak számozott feladatot ad | a fejléc nélküli tételt a generátor nem ismeri | számok utólagos kiosztása |
-| D33 | A „lezárva, még a `main`-en kívül” állapot jele 🔎, nem a másik nagyító | a másik nagyító (U+1F50D) a CI E2 szabályában „ellenőrizve” jelölés, proveniencia nélkül hibát ad | az E2 módosítása (D6: külön ágon) |
+| D33 | A „lezárva, még a `main`-en kívül” állapot jele 🔀, nem a másik nagyító | a másik nagyító (U+1F50D) a CI E2 szabályában „ellenőrizve” jelölés, proveniencia nélkül hibát ad | az E2 módosítása (D6: külön ágon) |
