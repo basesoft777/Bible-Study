@@ -30,7 +30,7 @@ E1 (hamis merge-hash): javítva (`-G '^allapot: lezarva$'`, csak merge-commit). 
 | a `lezarva_osszegzes` és a generált Kész-sor elavult ⛔-t tartalmazott a védett `main`-ről | javítva: „a main-t ruleset védi, az Action a pardes-feladatok GitHub App tokenjével ír” |
 | az `ELLENOR_F20.md` elavult, önellentmondó volt | újraírva (ez a fájl) |
 | a 🔎→🔀 csere történeti szövegeket is átírt (v1.3 napló, B4 napló, D33) | helyreállítva: a történeti mondatok a 🔎-t említik, a v1.4 és a D33 a cserét |
-| a zárás „a két nagyító az E2 jelölése” pontatlan | javítva: az E2 a 🔍-t figyeli |
+| a zárás „a két nagyító az E2 jelölése” pontatlan | javítva: az E2 a U+1F50D nagyító-t figyeli |
 | az `f06_forrasfelmeres.yml` push-lépései `contents: read` mellett | dokumentálva a workflow kommentjében (az F06 lezárva; újrafuttatásnál külön döntés) |
 
 ## Felhasználói döntések (rendezve)
