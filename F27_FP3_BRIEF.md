@@ -5,7 +5,8 @@ kod: FP3
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/fp3-opus-proba
 ad: mért adat a #7 modellválasztásához (A: Opus mindenre, B: vegyes hosszhatárral, vagy Gemini marad): minőség hosszkategóriánként, gépi kapuk, Max-keret fogyása és kivetítése a teljes Thayerre
 kovetkezo: /kovetkezo, helyi gépen; ⛔ a /usage leolvasásánál és a vak olvasásnál
 olvas: [konkordancia/Thayer_teljes.tsv, fp2/, adat/terminologia.tsv, eszkozok/fordit.py, naplok/FP2_jelentes.md, naplok/FORDITAS_P1_minta.tsv]
