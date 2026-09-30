@@ -55,7 +55,7 @@ A Strong-számok halmaza: az `adat/elofordulasok.tsv` G- és H-számai, meg az `
    1. Az igetörzsek neve változatlan (Qal, Niph., Pi., Pu., Hiph., Hoph., Hithp. és a ritkábbak), a sorrend a forrásé.
    2. A rokon nyelvek neve magyarul (arab, arámi, szír, asszír/akkád, etióp, föníciai); az idegen írású alakok változatlanok.
    3. A héber szöveg változatlan, a jobbról balra írással együtt.
-   4. *cf.* → vö.; *q.v.* → l. ott; *sense* → jelentés; a forrás- és kiadássziglák (Ges., Thes., Sam., MT stb.) változatlanok.
+   4. *cf.* → vö.; *q.v.* → l. ott; `sense` → jelentés; a forrás- és kiadássziglák (Ges., Thes., Sam., MT stb.) változatlanok.
 
    Példapárként a prompt végére az 1. melléklet G26-részlete kerül.
 
