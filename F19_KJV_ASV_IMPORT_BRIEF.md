@@ -5,12 +5,14 @@ kod: F19
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ad: Strong-címkés KJV és ASV, a hiányok besorolásával
-kovetkezo: végrehajtás fut (vegrehajto-sonnet)
+kovetkezo: DT19 döntése; az ASV-hez új forrás kell (N29 nyitva)
 ag: claude/kjv-asv-import
+pr: 94
+lezarva_osszegzes: "KJV/ASV-import (#19, eBible): KJV teljes (349 308 sor, javaslat); az ASV forráshibás (javaslat, nem használható), a hiányok besorolva; ellenőrzés naplok/ELLENOR_F19.md, nyitott DT19 és N29 (PR #94)"
 olvas: [konkordancia/KJV_Strongs_Genesis.tsv, konkordancia/ASV_Strongs_Genesis.tsv]
-ir: [naplok/F19_hianyok.tsv, konkordancia/KJV_Strongs_teljes.tsv, konkordancia/ASV_Strongs_teljes.tsv, NYITOTT_FELADATOK.md, DONTESEK.md]
+ir: [naplok/F19_hianyok.tsv, konkordancia/KJV_Strongs_teljes.tsv, konkordancia/ASV_Strongs_teljes.tsv, NYITOTT_FELADATOK.md, DONTESEK.md, eszkozok/f19_ebible_import.py, eszkozok/f19_ellenorzes.py, adat/szotar_szerepek.tsv, adat/datasetek.tsv, naplok/ELLENOR_F19.md, naplok/F19_zaras.md]
 fugg: [6]
 ---
 # F19 — KJV/ASV-import (eBible)
