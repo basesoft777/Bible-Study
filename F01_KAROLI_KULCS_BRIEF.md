@@ -229,8 +229,8 @@ Commit tételenként: `KK<n>: <rövid leírás>` (az 1b menetben `KK1b-<n>: …`
 Először írd ki: pwd, git branch --show-current, git log --oneline -1
 Válts a claude/karoli-kulcs-35158 ágra (git fetch; git checkout), és írd ki újra a git log --oneline -1-et.
 Olvasd el a CLAUDE.md-t, a konkordancia/LXX_OS/README.md 2. szakaszát és a naplok/KAROLI_KK1_jelentes.md-t.
-1. A csatolt F01_KAROLI_KULCS_BRIEF.md v1.1-et írd a repó gyökerében lévő v1 helyére, változtatás nélkül.
-   Commit: "KK: F01_KAROLI_KULCS_BRIEF.md v1.1".
+1. A csatolt KAROLI_KULCS_BRIEF.md v1.1-et írd a repó gyökerében lévő v1 helyére, változtatás nélkül.
+   Commit: "KK: KAROLI_KULCS_BRIEF.md v1.1".
 2. Hajtsd végre a KK1b-1…KK1b-5 tételeket a brief §3 szerint, a §0b, §1 és a G9–G11 szerint.
    Tételenként külön commit, és minden commit után push erre az ágra. A main-re ne pushold.
 3. A KK1b-5 után ellenőrizd a §4 K1–K6 és K8 feltételt; állapot csak RENDBEN vagy NEM TELJESÜL.
@@ -246,8 +246,8 @@ A KK4–KK6-ot ebben a sessionben NE kezdd el.
 ```
 Először írd ki: pwd, git branch --show-current, git log --oneline -1
 Olvasd el a CLAUDE.md-t és a konkordancia/LXX_OS/README.md 2. szakaszát.
-1. A csatolt F01_KAROLI_KULCS_BRIEF.md-t mentsd a repó gyökerébe, változtatás nélkül.
-   Commit: "KK: F01_KAROLI_KULCS_BRIEF.md v1".
+1. A csatolt KAROLI_KULCS_BRIEF.md-t mentsd a repó gyökerébe, változtatás nélkül.
+   Commit: "KK: KAROLI_KULCS_BRIEF.md v1".
 2. Hajtsd végre a KK0–KK3 tételeket a brief §3 szerint, a §1 mércéivel és a §2 döntéseivel.
    Tételenként külön commit, és minden commit után push a saját ágadra. A main-re ne pushold.
 3. A KK3 után ellenőrizd a §4 K1–K6-ot (az 1. menetre vonatkozó részt).

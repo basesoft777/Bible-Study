@@ -36,9 +36,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 ## Folyamat és eszközök
 
 <!-- GENERÁLT-KEZDET: feladatok.py --cel folyamat -->
-| # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Következő lépés | Hol |
-|---|---|---|---|---|---|---|
-| 20 | Brief-befogadás és generált feladatkövető (BEFOGADAS) | a chatekben készült briefeket a /befogad parancs fogadja be; a FELADATOK.md táblái a brief-fejlécekből generálódnak; a függést gép számolja | ▶ fut | — | futtatás közvetlen Code-sessionben (nem /kovetkezo-val, mert azt módosítja) | `F20_BEFOGADAS_BRIEF.md` |
+*(nincs nyitott feladat)*
 <!-- GENERÁLT-VÉGE: feladatok.py --cel folyamat -->
 
 ## Naplózás
@@ -69,7 +67,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 ## Jelmagyarázat
 
-- **Állapot:** ✅ kész (a brief `lezarva` a `main`-en) · 🔎 PR-ben (`lezarva`, de még nem a `main`-en) · ▶ fut · ⏸ döntésre vagy jóváhagyásra vár · ⬜ nem indult · ⬜ brief kell (csonk) · ⛔ kötelező megállás menet közben
+- **Állapot:** ✅ kész (a brief `lezarva` a `main`-en) · 🔎 PR-ben (`lezarva`, de még nem a `main`-en; csak a PR-ág helyi generálásában látszik, a commitolt blokkban nem) · ▶ fut · ⏸ döntésre vagy jóváhagyásra vár · ⬜ nem indult · ⬜ brief kell (csonk) · ⛔ kötelező megállás menet közben
 - **KK:** Károli-kulcs, a Károli–LXX versmegfeleltetés
 - **CI:** gépi ellenőrzés GitHub Actionsben; E1–E16 a szabályai, E18 a feladatkövetésé (fejléc-érvényesség, generált blokk)
 - **FJ:** forrásjelöltek felmérése; **FP:** fordítási próba
@@ -85,10 +83,11 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 ## Kész (utolsó 2 hét)
 
 <!-- GENERÁLT-KEZDET: feladatok.py --cel kesz -->
+- Brief-befogadás és generált feladatkövető (#20, BEFOGADAS): brief-befogadás (`/befogad`, csonk-kitöltéssel), a FELADATOK.md táblái a brief-fejlécekből generálva (`eszkozok/feladatok.py`), E18 CI-szabály és a main-re futó frissítő Action; ellenőrzés `naplok/ELLENOR_F20.md`; ⛔ a védett main miatt az Action push-a a beállítás módosításáig nem megy (merge `4ef806d`, 2026-09-30)
 - Orkesztrátor-parancs (#15, F15): `/kovetkezo`, `DONTESEK.md`, végrehajtó subagentek, ellenőrzőlista, PR #70, ✅ a merge-commitban (09.29); próbafuttatás merge után új sessionben: `/kovetkezo`
-- Thayer-stíluspróba (#14, FP2): Gemini 3.1 Flash Lite, DeepSeek V4 Flash, MiniMax M3 összevetése, vak bírálat és költségbecslés, `naplok/FP2_jelentes.md`; döntés (FP2-D13): fő fordító Gemini 3.1 Flash Lite; ellenőrzés `naplok/ELLENOR_FP2.md`, merge `971d0f2` (PR #68, 09.28)
 - Új források 2. felmérése (#6, F06): GitHub Actionsben futott, helyi gép nem kellett; BSB 1Móz 98,83% (küszöb 95%, mérés előtt rögzítve), Macula teljes letöltés és 39/87 függő helyre LXX-megfelelő (#8 bemenete), KJV/ASV, Nave és licenc-javaslatok (MiniMax-költség 0,011927 USD); jelentés `naplok/F06_forras_jelentes.md`, ellenőrzés `naplok/ELLENOR_F06.md`, `naplok/ELLENOR_F06_v2.md`, merge `634d567` (PR #75, 09.29). Az import-döntés (N27, N29–N31) a felhasználóé, nyitva.
 - Szótári adatréteg, 1. menet (#5, SZOTAR S1): fordítási gyorsítótár, terminológia/kiejtés-táblák, 7 konkordancia-import (TBESH, UBS DBH, MCGED, BDB-etimológia-határ, LXX-versszint, tW), `ellenoriz.py` 13–14. szabály, 26 héber kiejtés-jelölt + 6 BDB-etimológia-határ jóváhagyva; a `fuggetlen-ellenor` 3 körben talált és javított hibák (TBESH betű-utótag adatvesztés D38–D40, BDB-határ szabály D41), K6/K7 pótolva; ellenőrzés `naplok/ELLENOR_SZOTAR_S1.md`, merge `d0736aa` (PR #72, 09.29). Tartalmi döntést igénylő tételek N39–N44-ként nyitva (`NYITOTT_FELADATOK.md`).
+- Thayer-stíluspróba (#14, FP2): Gemini 3.1 Flash Lite, DeepSeek V4 Flash, MiniMax M3 összevetése, vak bírálat és költségbecslés, `naplok/FP2_jelentes.md`; döntés (FP2-D13): fő fordító Gemini 3.1 Flash Lite; ellenőrzés `naplok/ELLENOR_FP2.md`, merge `971d0f2` (PR #68, 09.28)
 - Szkript-karbantartás (#4, KARBANTARTAS KB0–KB4): K1–K10 teljesül (K10 öt körben, ágleltárral, nulla-kimenet-őrrel és három mutációs/hiba-próbával: `naplok/ELLENOR_KARB.md`), merge `b8a418a` (09.27); mérőszkript-vakfoltok és -őrök javítása, PR #60 (`8bd1e40`), PR #61
 - Fordítási próba (#3, FP0–FP-KOR2.9): fordító eszközök és a próba eredményei, ellenőrzés naplok/ELLENOR_FP.md, merge `9eb43fe` (PR #62, 09.27)
 - Gépi ellenőrzés GitHubon (#2, CI): PR #57, merge `68eb348` (09.27); E5 javítás: PR #59

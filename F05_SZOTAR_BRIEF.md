@@ -274,7 +274,7 @@ Eredmény: `naplok/SZOTAR_S0_jelentes.md` és 8 munkalap. A 7 kérdés válasza:
 **Frissítve:** innentől az S0b nyitó promptja (az S0 lezárva, l. feljebb).
 
 ```
-Olvasd el a CLAUDE.md-t, a FELADATOK.md-t és a F05_SZOTAR_BRIEF.md-t (v1.2) teljes egészében,
+Olvasd el a CLAUDE.md-t, a FELADATOK.md-t és a SZOTAR_BRIEF.md-t (v1.2) teljes egészében,
 valamint a naplok/SZOTAR_S0_jelentes.md-t.
 
 0. main = origin/main. Új ág a main-ről. Push a távoli ágra ugyanebben a lépésben.
@@ -288,7 +288,7 @@ valamint a naplok/SZOTAR_S0_jelentes.md-t.
 
 ### 1. menet
 ```
-Olvasd el a CLAUDE.md-t, a F05_SZOTAR_BRIEF.md-t (a jóváhagyott verziót) és a
+Olvasd el a CLAUDE.md-t, a SZOTAR_BRIEF.md-t (a jóváhagyott verziót) és a
 naplok/SZOTAR_S0b_jelentes.md-t.
 
 0. main = origin/main = <az S0b utáni hash>. Ha nem, ÁLLJ MEG. Push a távoli ágra.
@@ -302,7 +302,7 @@ naplok/SZOTAR_S0b_jelentes.md-t.
 
 ### 2. menet
 ```
-Olvasd el a CLAUDE.md-t és a F05_SZOTAR_BRIEF.md-t (a jóváhagyott verziót).
+Olvasd el a CLAUDE.md-t és a SZOTAR_BRIEF.md-t (a jóváhagyott verziót).
 
 0. main = origin/main = <az 1. menet utáni hash>. Ha nem, ÁLLJ MEG. Push a távoli ágra.
 1. S2.1 csak a jóváhagyott kiejtés-jelöltekkel (a BDB-határok már jóváhagyva

@@ -165,8 +165,8 @@ Commit tételenként: `FP<n>: <rövid leírás>`.
 ```
 Először írd ki: pwd, git branch --show-current, git log --oneline -1
 Olvasd el a CLAUDE.md-t.
-1. A csatolt F03_FORDITAS_PILOT_BRIEF.md-t mentsd a repó gyökerébe, változtatás nélkül.
-   Commit: "FP: F03_FORDITAS_PILOT_BRIEF.md v1".
+1. A csatolt FORDITAS_PILOT_BRIEF.md-t mentsd a repó gyökerébe, változtatás nélkül.
+   Commit: "FP: FORDITAS_PILOT_BRIEF.md v1".
 2. Hajtsd végre az FP0–FP4 tételeket a brief §3 szerint, a §1 mércéivel és a §2 döntéseivel.
    Az OPENROUTER_API_KEY értékét soha ne írd ki és ne mentsd. Tételenként külön commit.
 3. Az FP4 után ellenőrizd a §4 K1–K6-ot, majd pushold a saját ágadat. A main-re ne pushold.
@@ -176,7 +176,7 @@ Olvasd el a CLAUDE.md-t.
 **2. menet (helyi, Opus, ugyanazon az ágon):**
 ```
 Először írd ki: pwd, git branch --show-current, git log --oneline -1
-Olvasd el a CLAUDE.md-t és a F03_FORDITAS_PILOT_BRIEF.md-t. A csatolt, általam kitöltött
+Olvasd el a CLAUDE.md-t és a FORDITAS_PILOT_BRIEF.md-t. A csatolt, általam kitöltött
 FORDITAS_P4_minta_felhasznalo.md-t mentsd a naplok/ alá. Commit: "FP5: felhasználói minta".
 Hajtsd végre az FP5–FP6 tételeket. Az FP5 alatt a naplok/FORDITAS_P4_vak_kulcs.tsv-t ne nyisd meg.
 A végén ellenőrizd a K7-et, pushold a saját ágadat. ÁLLJ az FP6 után: javaslat a chatbe.

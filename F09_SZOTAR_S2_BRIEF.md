@@ -10,16 +10,16 @@ ad: az 1. fázis adatai megjelennek a 8 lexikonoldalon és a 8 törzscikkben
 kovetkezo: Ez javítja a törzscikkek elavult Cremer-sorát is (a CI E11 szabálya jelzi)
 fugg: [5, 6]
 olvas: [adat/forditasok.tsv, adat/terminologia.tsv, adat/kiejtes_kivetelek.tsv, konkordancia/, lexikon/]
-ir: [lexikon/, adat/kiejtes_kivetelek.tsv, adat/szotar_szerepek.tsv, eszkozok/torzscikk_general.py, eszkozok/lexikon_general.py, eszkozok/render_diff_osztalyoz.py, MUNKAMENET.md, NYITOTT_FELADATOK.md]
+ir: [lexikon/, adat/kiejtes_kivetelek.tsv, adat/szotar_szerepek.tsv, eszkozok/torzscikk_general.py, eszkozok/lexikon_general.py, eszkozok/render_diff_osztalyoz.py, MUNKAMENET.md, NYITOTT_FELADATOK.md, adat/forditasok.tsv, eszkozok/kiejtes.py]
 forras: F05_SZOTAR_BRIEF.md#2. menet
 ---
 
 # F09_SZOTAR_S2_BRIEF — csonk
 
-*FELADATOK #9 · csonk-brief (F20 B3): nem végrehajtható, csak a feladat fejlécét hordozza; a brief az `F05_SZOTAR_BRIEF.md` 2. menete.*
+*FELADATOK #9 · fejlécet hordozó brief (F20 B3): a tényleges leírás az `F05_SZOTAR_BRIEF.md` 2. menete (`forras`), a végrehajtás az ott leírt lépések szerint történik.*
 
 - **Mit ad, ha kész:** az 1. fázis adatai megjelennek a 8 lexikonoldalon és a 8 törzscikkben
 - **Következő lépés:** Ez javítja a törzscikkek elavult Cremer-sorát is (a CI E11 szabálya jelzi)
 - **Forrás:** `F05_SZOTAR_BRIEF.md#2. menet`
 
-A valódi briefet a `/befogad` csonk-kitöltése váltja fel, ugyanezen a számon és néven.
+A tartalmat az `F05_SZOTAR_BRIEF.md` 2. menete adja; ezt a fájlt a `/kovetkezo` a `forras` mező alapján olvassa.

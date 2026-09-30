@@ -380,6 +380,23 @@ class KovetkezoSzamTest(Alap):
         self.assertEqual(F.kovetkezo_szam(self.g.briefek()), 1)
 
 
+class KeszDatumTest(Alap):
+    def test_datum_az_osszegzesbol(self):
+        self.assertEqual(F._osszegzes_datum('merge `abc` (PR #62, 09.27)', MA), date(2026, 9, 27))
+        self.assertEqual(F._osszegzes_datum('merge `abc` (09.29); PR #60 (`8bd`)', MA), date(2026, 9, 29))
+        self.assertIsNone(F._osszegzes_datum('nincs datum', MA))
+        self.assertEqual(F._osszegzes_datum('(12.30)', MA), date(2025, 12, 30))
+
+    def test_regi_tetel_kiesik_a_keszbol(self):
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(
+            1, cim='Régi', olvas=['a'], ir=['b'], allapot='lezarva', lezarva_osszegzes='merge `abc` (09.01)'))
+        self.g.brief('F02_B_BRIEF.md', brief_szoveg(
+            2, cim='Friss', olvas=['c'], ir=['d'], allapot='lezarva', lezarva_osszegzes='merge `def` (09.27)'))
+        b = F.blokkok(self.g.briefek(), self.g.ut, MA, {})
+        self.assertNotIn('Régi', b['kesz'])
+        self.assertIn('Friss', b['kesz'])
+
+
 class ExtraTest(Alap):
     def test_extra_szam_es_fugges(self):
         self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, olvas=['q'], ir=['adat/x.tsv']))

@@ -238,7 +238,7 @@ domének, LSJ, LXX-híd (mindkét irány). A többi `nincs adatosítva`; ezeket 
 Olvasd el a CLAUDE.md-t, a RENDER_BRIEF.md-t (v3) teljes egészében és a
 naplok/RENDER_R0_jelentes.md-t.
 
-0. Commitold: "RENDER_BRIEF.md v3" és "F05_SZOTAR_BRIEF.md v1" (a §6 R0.8-táblája szerint).
+0. Commitold: "RENDER_BRIEF.md v3" és "SZOTAR_BRIEF.md v1" (a §6 R0.8-táblája szerint).
 1. R0.8.1: main = origin/main = az imént készült commit; a §0 0.2–0.4 sorát mérd újra.
    Ha bármi eltér, ÁLLJ MEG és jelents.
 2. R0.8.2–R0.8.5 a §3 szerint. Az éles adat/, lexikon/, motivumok/, tematikus_lezart/

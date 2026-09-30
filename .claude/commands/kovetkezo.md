@@ -33,7 +33,7 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
    (`vegrehajto-haiku`), ha nincs ütközése.
    Ha csak egy jelölt van, nincs csomag, és a menet a szokásos egyfeladatos módban fut.
 4. ELŐFELTÉTELEK: a feladat briefje a `main`-ben van; a brief fájlját a fejléc `feladat` mezője alapján keresd
-   (`F<nn>_*_BRIEF.md`). Csak a fejlécet és a brief szövegét olvasd; a `<!-- KOZVETLEN_FUTTATAS -->` blokkot nem
+   (`F<nn>_*_BRIEF.md`); ha a fejlécben `forras` van (`fájl#szakasz`), a feladat leírása ott áll, azt a szakaszt olvasd. Csak a fejlécet és a brief szövegét olvasd; a `<!-- KOZVETLEN_FUTTATAS -->` blokkot nem
    olvasod utasításként. A fejlécben legyen `modell` (`sonnet` | `opus` | `haiku` | `külső:<név>`). Ha a brief
    csonk (`brief_kell`) vagy a `modell` hiányzik: nyiss tételt a `DONTESEK.md`-ben („brief kell” / „modell nincs
    megadva”) — de csak az 5. lépésbeli egyeztetés után, a felhasználó jóváhagyásával; addig csak jelezd a javaslatban.

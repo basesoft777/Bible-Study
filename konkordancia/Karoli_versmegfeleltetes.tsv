@@ -1,7 +1,7 @@
 # GENERÁLT: naplok/KAROLI_KK4_tabla_veglegesit.py — kézzel nem szerkesztendő.
 # forras: lxx-morph@c91f6b1e8fb3ba37df701e6ae31f675ace71a2b2 (verse_pairs.jsonl, TVTMS-alapu MT-KJV kulcs, CC BY 4.0) + Karoli_1908.tsv + TAHOT_kivonat.tsv + eszkozok/lxx_kivonat_fetch_v2.py KEZI_ELTOLASOK
 # sha256(verse_pairs.jsonl)=3a91c571f1f32545f78397a256fdfa5124bcbcbc42902411a8a93209dcb2e985
-# proveniencia: forras=F01_KAROLI_KULCS_BRIEF.md KK4 (2. menet) | ts=2026-09-25
+# proveniencia: forras=KAROLI_KULCS_BRIEF.md KK4 (2. menet) | ts=2026-09-25
 igehely_karoli	igehely_kjv	igehely_mt	osztaly	forras	megjegyzes
 1Kir 10:1	10:1		KJV	szamlalas	
 1Kir 10:10	10:10		KJV	szamlalas	

@@ -491,6 +491,8 @@ def _allapot_cella(b, main_all):
 
 
 def _tabla(briefek, fugg, by_szam, main_all, fejlec):
+    if not briefek:
+        return '*(nincs nyitott feladat)*'
     sorok = ['| # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | %s | Hol |' % fejlec,
              '|---|---|---|---|---|---|---|']
     for b in sorted(briefek, key=lambda x: x.szam):
@@ -510,6 +512,21 @@ def _merge_info(gyoker, b):
         return None, None
     utolso = ki.strip().split('\n')[-1].split()
     return utolso[0], utolso[1]
+
+
+def _osszegzes_datum(szoveg, ma):
+    """A `lezarva_osszegzes` elso `HH.NN` alaku, zarojelben allo datuma (a korabban, kezzel
+    vezetett tetelek merge-datuma); a `git log` az atallas merge-datumat adna. None, ha nincs."""
+    m = re.search(r'\((?:[^()]*, )?(\d{2})\.(\d{2})\)', szoveg)
+    if not m:
+        return None
+    try:
+        d = date(ma.year, int(m.group(1)), int(m.group(2)))
+    except ValueError:
+        return None
+    if d > ma:
+        d = date(ma.year - 1, d.month, d.day)
+    return d
 
 
 def blokkok(briefek, gyoker=REPO, ma=None, main_all=None):
@@ -545,7 +562,10 @@ def blokkok(briefek, gyoker=REPO, ma=None, main_all=None):
         if statusz(b, main_all) != 'kesz':
             continue
         h, d = _merge_info(gyoker, b)
-        if d:
+        szoveg_datum = _osszegzes_datum(b.fej.get('lezarva_osszegzes', ''), ma)
+        if szoveg_datum:
+            datum = szoveg_datum
+        elif d:
             datum = datetime.strptime(d, '%Y-%m-%d').date()
         else:
             datum = ma

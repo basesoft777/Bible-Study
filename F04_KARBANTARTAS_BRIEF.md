@@ -168,9 +168,9 @@ A menet semmit nem akaszt meg. A mostani menetek (TEREMT-002, SZOTAR, render) eg
 Először írd ki: pwd, git branch --show-current, git log --oneline -1
 Olvasd el a CLAUDE.md-t és a FELADATOK.md-t.
 Ellenőrizd, hogy a main tartalmazza a 68eb348 commitot (#2 CI merge). Ha nem, ÁLLJ, és jelezd.
-1. A csatolt F04_KARBANTARTAS_BRIEF.md-t mentsd a repó gyökerébe, változtatás nélkül.
+1. A csatolt KARBANTARTAS_BRIEF.md-t mentsd a repó gyökerébe, változtatás nélkül.
    Ugyanebben a commitban a FELADATOK.md-ben a #2-es sort mozgasd a Kész listába (G5 a).
-   Commit: "KB: F04_KARBANTARTAS_BRIEF.md v3.1 (FELADATOK #4); #2 kész (68eb348)".
+   Commit: "KB: KARBANTARTAS_BRIEF.md v3.1 (FELADATOK #4); #2 kész (68eb348)".
 2. Hajtsd végre a KB0–KB4 tételeket a brief §3 szerint, a §1 mércéivel és a §2 döntéseivel.
    A szkripteket SOHA ne futtasd a munkapéldányban, csak ideiglenes másolatban (G4).
 3. Ellenőrizd a §4 K1–K8 feltételeit, majd pushold a saját ágadat, és nyiss PR-t a main felé
