@@ -8,7 +8,7 @@
 - **Költség:** a teljes pilot 1,605 USD (P3 0,7346 + P3b); plafon 3 USD, a 2 USD-s küszöb nem aktiválódott. P5 a teljes Bibliára: A 22,83, B 5,12, C 42,03, A+B 27,95, A+B+C 85,75 USD, 90%-os intervallummal.
 - **KJV (N29) a v2-adaton:** a `magas` pontosság +15,6 pp a közös halmazon (n=7 R1-vers), így az N29 VAGY-szabályának 1. mérőszáma formálisan teljesül; az A–B eltérés relatív csökkenése nem éri el a 20%-ot; nem végleges. A #19 függéséhez nem nyúltunk.
 - **Egyeztetett eltérések:** a DT21 lezárása visszavonva (DT22), a pilot folytatódott (P3b); a bootstrap egysége a köteg (DT21 f, nyitott); a C gondolkodása kötelező `minimal`, az A/B kikapcsolva (DT21 j); a #22 fejléce `dontesre_var` a felhasználó kifejezett utasítására.
-- **Nyitott (DT21, DT22):** a #22 sorsa (marad / módosított céllal indul / elhalasztva) és az a–j tételek; a döntések a felhasználóéi. A korrigált értékek csak „Opus-besorolás, nem mérés” jelöléssel szerepelnek.
+- **Nyitott (DT21, DT22):** a #22 sorsa (marad / módosított céllal indul / elhalasztva) és az a–k tételek; a döntések a felhasználóéi. A korrigált értékek csak „Opus-besorolás, nem mérés” jelöléssel szerepelnek.
 - **Ellenőrzés:** `naplok/ELLENOR_F21P.md`, `ELLENOR_F21P_2.md` (P3-ra), `ELLENOR_F21P_3.md` (P3b-re); CI: a PR-cím „[ELLENŐRZŐ]” előtagú (E16).
 - **Átvihető eszközök:** `eszkozok/karoli_strong/` (tokenek, kapu, futtat, meres, meres_p3b, c_diff, koltseg_vetit), `f21p/prompt_v1.md`, `prompt_v2.md`, `prompt_biro_v2.md`, `arany_opus_v2.jsonl` (befagyasztva, sha256).
 - **Megtanult korlátok:** TAHOT-sorrend 57 versben, X/Q(K) változatsorok, `[nem TR]`, összetett Strong, az A/B JSON-hibái (B első próbára 70,5% kapuhiba v2-vel), a C gondolkodási tokenje nem mérhető.
