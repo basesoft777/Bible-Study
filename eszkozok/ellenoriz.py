@@ -480,15 +480,19 @@ def szabaly10_v22_tablak(adat_dir):
     if lxx_fejlec != vart_lxx_fejlec:
         hibas.append('lxx_dontesek.tsv fejlec eltero: %r' % (lxx_fejlec,))
     LXX_DONTES_TIPUSOK = {'eltero_forditas', 'lxx_minusz', 'nincs_heber_kulcsszo'}
-    LXX_BIZONYOSSAGOK = {'', 'biztos', 'valoszinu', 'nyitott'}
+    LXX_BIZONYOSSAGOK = {'', 'biztos', 'valoszinu', 'nyitott', 'nem_alkalmazhato'}
     for sor in lxx_sorok:
         if not (sor.get('igehely') or '').strip():
             hibas.append('lxx_dontesek.tsv %s: igehely ures' % sor.get('id'))
         bizonyossag = (sor.get('bizonyossag') or '').strip()
         if bizonyossag not in LXX_BIZONYOSSAGOK:
-            hibas.append('lxx_dontesek.tsv %s: bizonyossag=%r nem eleme a {biztos, valoszinu, nyitott} halmaznak'
-                          % (sor.get('id'), bizonyossag))
+            hibas.append('lxx_dontesek.tsv %s: bizonyossag=%r nem eleme a {biztos, valoszinu, nyitott, '
+                          'nem_alkalmazhato} halmaznak' % (sor.get('id'), bizonyossag))
         tipus = (sor.get('tipus') or '').strip()
+        # F8.5: a `nincs_heber_kulcsszo` tipus es a `nem_alkalmazhato` bizonyossag csak egyutt allhat
+        if (tipus == 'nincs_heber_kulcsszo') != (bizonyossag == 'nem_alkalmazhato'):
+            hibas.append('lxx_dontesek.tsv %s: tipus=nincs_heber_kulcsszo csak bizonyossag=nem_alkalmazhato '
+                          'mellett allhat (es forditva)' % sor.get('id'))
         if bizonyossag == 'nyitott':
             if tipus or (sor.get('gorog_lemma') or '').strip():
                 hibas.append('lxx_dontesek.tsv %s: bizonyossag=nyitott, de tipus/gorog_lemma kitoltve'

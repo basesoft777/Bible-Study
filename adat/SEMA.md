@@ -620,7 +620,7 @@ a tábla adja. Automatikus héber→görög tippelés nincs (l. 0. Kiindulás:
 | `lxx_pozicio` | egész szám | | Az `LXX_OS` adott sorának `pozicio` mezője, ha a szóalak egyértelműen egy adott előfordulásra mutat. |
 | `tipus` | zárt | ✔ (`nyitott` sornál üres) | `eltero_forditas` (a LXX más görög szóval fordítja, mint amit a motívum ÚSZ-i G-tokenje várna) \| `lxx_minusz` (a héber tagmondatnak/szónak nincs görög megfelelője a LXX-ben — LXX-minusz) \| `nincs_heber_kulcsszo` (F08: az ige-tartományú előfordulás-sor e versében nem áll a motívum héber kulcsszava, vagy a sor tematikus; LXX-döntés tárgytalan). A generált lexikon-oldal 3. szakasza `lxx_minusz`-nál „nincs megfelelő a görögben (LXX-minusz)" szöveget ír a Görög megfelelő cellába (LEXV2_2_BRIEF.md V2.6a G6). |
 | `megjegyzes` | szabad szöveg | | Indoklás/forrás a döntéshez. |
-| `bizonyossag` | zárt | | F08 (F08_LXX_DONTESEK_BRIEF.md 3. lépés): `biztos` (két független forrás egyezik: a Macula szó-szintű illesztése és az `LXX_OS` KK-kötésű versében ugyanaz a lemma a héber szó helyén) \| `valoszinu` (egy forrás, ellentmondás nélkül) \| `nyitott` (nincs forrás, vagy a források ellentmondanak; `tipus` és `gorog_lemma` üres). Üres: az F08 előtti kutatói döntés (LD001–LD004), a skála nélkül. |
+| `bizonyossag` | zárt | | F08 (F08_LXX_DONTESEK_BRIEF.md 3. lépés): `biztos` (két független forrás egyezik: a Macula szó-szintű illesztése és az `LXX_OS` KK-kötésű versében ugyanaz a lemma a héber szó helyén) \| `valoszinu` (egy forrás, ellentmondás nélkül) \| `nyitott` (nincs forrás, vagy a források ellentmondanak — a munkalap-szóra vonatkozóan is, ha a Macula a verset csak részben illeszti; `tipus` és `gorog_lemma` üres) \| `nem_alkalmazhato` (csak és kizárólag `nincs_heber_kulcsszo` típusnál: a skála nem értelmezhető, mert nincs LXX-megfelelő, amit forrás igazolna). Üres: az F08 előtti kutatói döntés (LD001–LD004), a skála nélkül. |
 | `proveniencia` | `PROVENIENCIA` | ✔ | |
 
 Ebben a körben (V2.2) a tábla csak fejlécet tartalmaz — a tartalmi feltöltés
@@ -631,8 +631,10 @@ kapott (LD005–LD090; a 4Móz 13:34 a HODIT-001 és a MENNY-001 közös sora); 
 bemenet `naplok/F08_bemenet.txt`, a szkript `eszkozok/f08/f08_dontesek.py`.
 A generátor (`eszkozok/lexikon_general.py`, `lxx_dontesek_index`) csak az üres
 vagy `biztos` bizonyosságú, `eltero_forditas`/`lxx_minusz` típusú sorokat
-jeleníti meg; a `valoszinu`/`nyitott` sorok a DONTESEK.md összesített tételének
-döntéséig „kutatói azonosítás függőben” maradnak.
+jeleníti meg; a `valoszinu`/`nyitott`/`nem_alkalmazhato` sorok a DONTESEK.md
+összesített tételének (DT23) döntéséig „kutatói azonosítás függőben” maradnak.
+A szűrő a 3. (LXX) blokkon túl a „Rokon szavak” blokkot is érinti
+(`rokon_szavak_strongok` a megjelenő sorok `gorog_strong`-jait olvassa).
 
 ---
 

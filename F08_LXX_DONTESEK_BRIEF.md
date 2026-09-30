@@ -12,7 +12,7 @@ kovetkezo: `/kovetkezo` a #17 merge-e után; bemenet: 38 gépi LXX-megfelelő (F
 olvas: [adat/lxx_dontesek.tsv, naplok/FORRAS_FJ1_lxx_jeloltek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv]
 ir: [adat/lxx_dontesek.tsv, DONTESEK.md]
 fugg: [1, 17]
-lezarva_osszegzes: LXX-döntések (#8): a 87 függő hely 86 sora az `adat/lxx_dontesek.tsv`-ben (LD005–LD090), biztos 71 / valószínű 9 / nyitott 6; a Macula 38 gépi megfelelőjéből 36 megerősítve, 2 ellentmondó; SEMA 2.11 bővítve (`bizonyossag`, `nincs_heber_kulcsszo`), a generátor csak a biztos sorokat jeleníti meg; zárás `naplok/F08_zaras.md`; a valószínű/nyitott sorok, a Préd 9:10 igehely és a sémaeltérés DT23-ban nyitva
+lezarva_osszegzes: LXX-döntések (#8): a 87 függő hely 86 sora az `adat/lxx_dontesek.tsv`-ben (LD005–LD090), biztos 61 / valószínű 9 / nyitott 8 / nem_alkalmazhato 8; a Macula 38 gépi megfelelőjéből 36 megerősítve, 2 ellentmondó; SEMA 2.11 bővítve (`bizonyossag`, `nincs_heber_kulcsszo`), a generátor csak a biztos sorokat jeleníti meg; ellenőrzés `naplok/ELLENOR_F08.md` (F8.5 javítás); PR-cím `[ELLENŐRZŐ]` (E16); zárás `naplok/F08_zaras.md`; a valószínű/nyitott sorok, a Préd 9:10 igehely és a sémaeltérés DT23-ban nyitva
 ---
 # F08 — LXX-döntések mind a 87 függő igehelyre
 
