@@ -1,6 +1,8 @@
 # ELLENOR_E16_PUSH — független ellenőrzés (`fuggetlen-ellenor`), E16-javítás push-eseményre
 
-**Ítélet: az ellenőr 1. körben NEM TISZTA-t adott egyetlen enyhe eltérés miatt; az eltérést a menet kijavította, más hiba nincs.** Tartomány: `origin/main..HEAD` (`7bef679`..), ág `claude/e16-push-kihagyas`. Tételhez külön brief nincs; a mérce a felhasználó öt követelménye és az `F02_CI_ELLENORZES_BRIEF.md` D5, D6, D8, D14 pontja.
+**Ítélet (2. kör, megerősítés a 53ade74 állapoton): TISZTA.** Az 1. kör egyetlen enyhe eltérése (hiányzó összesített assert a push-tesztben) kijavult; új eltérés nincs. Az ellenőr a `python -m unittest` futtatását a szerepköre miatt nem tudta elvégezni (NEM ELLENŐRIZHETŐ, nem hiba); a menet saját futtatása: 47 teszt OK. Tartomány: `origin/main..HEAD` (`7bef679`..), ág `claude/e16-push-kihagyas`. Tételhez külön brief nincs; a mérce a felhasználó öt követelménye és az `F02_CI_ELLENORZES_BRIEF.md` D5, D6, D8, D14 pontja.
+
+*1. kör: NEM TISZTA volt egyetlen enyhe eltérés miatt (l. lent), a menet ezt javította.*
 
 | Pont | Eredmény |
 |---|---|
