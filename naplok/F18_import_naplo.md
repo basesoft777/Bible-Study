@@ -13,9 +13,9 @@
 | Soronként | 77 985 `vers` (64 150 egyes vers, 11 615 tartomány, 2 207 fejezet, 13 `ismeretlen_konyv`) · 4 368 `lasd` · 2 763 `szoveg` (hivatkozás nélküli egység) *(régi: 77 935 · 64 138 · 11 577)* |
 | Témák | 5 322 entry, 5 320 egyedi cím (`REVERENCE`, `SIN` kétszer) |
 | Károli-állapot (egyes versek, 64 150) | `azonos` 41 327 · `eltero` 270 · `a_tablaban_nincs_kjv_megfelelo` 145 · `nincs_a_tablaban` 582 · `ujszovetseg_nincs_tabla` 21 826 (a `Karoli_versmegfeleltetes.tsv` ÓSZ-i) *(régi: 41 330 · 270 · — · 727 · 21 811; a 727 = 582 + 145)* |
-| Gyanús sorok | 24 `gyanus_kijelzes` (20 lekaparási hiba, pl. „Azariah 2Ch 31:10” → `PrAzar.1.2`, + 4 egyfejezetes, versszám nélküli sor) *(régi: 20)*; 13 `ismeretlen_konyv` |
+| Gyanús sorok | **52 `gyanus_kijelzes`-sor, 54 jelölés-előfordulás** (F18.7 után; a 2 Abd 1:1-sor kétszer jelölt): 49 összeolvadt-töredékes (ebből 13 `ismeretlen_konyv`: 12 × `PrAzar.1.2`, 1 × `Wis.2`), 2 egyfejezetes versszám nélküli, 1 „Jeremiah 2” (valószínűleg helyes hivatkozás, csak a kijelzés szokatlan). *(F18.6 után: 24 jelölés = 20 + 4; az első változat: 20 — a 6 betűs névvel összeolvadt hibák jelöletlenek voltak, l. 2.6)*. A jelölt sorok `karoli_allapot`-a `nem_ertekelt` |
 
-Mellékhatás: a meglévő `adat/` és `konkordancia/` fájlokból egy sor sem változott, nem csökkent (a munkafa csak három új fájlt tartalmaz az import során).
+Mellékhatás: a meglévő `adat/` és `konkordancia/` fájlokból egy sor sem változott, nem csökkent, **kivéve az `adat/szotar_szerepek.tsv` +2 sorát** (a két 12. sorrendű Nave-szerepsor, l. DT18 (j)); a munkafa az import során ezen kívül három új fájlt, a napló- és licencfájlt, valamint a brief-fejlécet érintette.
 
 Nem committolt: a nyers `nave.txt` (4,5 MB); reprodukálás a commit-hash + sha256 alapján (`--forras`). *Javaslat:* maradjon így (a sha256 a letöltött fájl ellenőrzésére szolgál; a commit-hash a GitHubon rögzített, de a repó eltűnése esetén a fájl nem állítható vissza) — az összesítő tételben.
 
@@ -45,6 +45,23 @@ Nem committolt: a nyers `nave.txt` (4,5 MB); reprodukálás a commit-hash + sha2
 Nem javítható biztosan (4 sor, `gyanus_kijelzes:egyfejezetes_nincs_versszam`): a ref után nincs versszám. Mellékhatás: az `azonos` 41 330 → 41 327 (az 1:1 `azonos`-nak vett hamis hivatkozások kiestek).
 
 **2.5. Mit mér a „kijelzett szöveg ↔ `osisRef`” ellenőrzés.** A javítás után a nem egyfejezetes 77 685 `osisRef`-re: a kijelzett szöveg első fejezet:vers száma egyezik az `osisRef`-fel 77 673 esetben, 12 nem (a jelölt `PrAzar.1.2` hibák). Ez a forrás két mezőjének **belső** konzisztenciája; független kiadáshoz mért helyességet (l. 2.3, 5.) nem bizonyít.
+
+**2.6. Második ellenőri lelet és javítás (F18.7).** A `DISP_RE` (`[A-Za-z]{1,6}`) a legfeljebb 6 betűs könyvnevekkel (Micah, Ezra, Joel, Amos, Titus, Isaiah, Joshua, Jonah, Daniel, „So”) összeolvadt hibás kijelzést szabályosnak vette, így a hamis fejezet-hivatkozások (`Mik 2`, `Ezsd 1`, `Tit 2`, `Jóel 1`, … + `Wis.2`) jelöletlenek maradtak. Javítás: minden `osisRef`-nél, amelynek a `</ref>` utáni, szóköz nélküli szövege `Ch|Ki|Sa|Ti|Co|Th|Pe|Jn` + szám töredék, a sor `gyanus_kijelzes`-t, `toredek:`-ot és — ha a kijelzés számjegye az osisRef fejezetszámával (ismeretlen könyvnél: anélkül) egyezik és szám+betűk létező könyvrövidítés — `javaslat:`-ot kap (pl. `Mik 2` → `javaslat:2Krón 34:20`); az `igehely` nem íródik át (a forrás a rekonstrukciót nem bizonyítja). A töredék kikerül a következő hivatkozás `cimke`-jéből. Továbbá: (a) az egyfejezetes soroknál az `igehely_osis` szintetizált, az eredeti forrás-osisRef a `megjegyzes` `eredeti_osis:` eleme (296 sor); (b) minden jelölt sor `karoli_allapot=nem_ertekelt` (volt: 2 `azonos`, 2 `ujszovetseg_nincs_tabla`, 35 `fejezet`, 13 `n.a.`). Mért (nyers `nave.txt`, `scope=teljes | forras=eszkozok/nave_import.py | ts=2026-09-30`):
+
+| Mérőszám | F18.6 | F18.7 |
+|---|---|---|
+| adatsor / `vers` / `lasd` / `szoveg` / `tema_id` | 85 116 / 77 985 / 4 368 / 2 763 / 5 322 | változatlan |
+| `hely_tipus` (vers / tartomány / fejezet / ismeretlen_konyv) | 64 150 / 11 615 / 2 207 / 13 | változatlan |
+| `gyanus_kijelzes` **sor** | 22 (24 jelölésből; 2 Abd-sor kétszer) | **52** |
+| `gyanus_kijelzes` **jelölés-előfordulás** | 24 | **54** |
+| ebből `toredek:` / `javaslat:` | 0 / 0 | 49 / 49 |
+| `karoli_allapot` `azonos` / `ujszovetseg_nincs_tabla` | 41 327 / 21 826 | 41 325 / 21 824 |
+| `karoli_allapot` `fejezet` / `n.a.` / `nem_ertekelt` | 2 207 / 13 / 0 | 2 172 / 0 / 52 |
+| `tartomany` / `eltero` / `nincs_a_tablaban` / `a_tablaban_nincs_kjv_megfelelo` | 11 615 / 270 / 582 / 145 | változatlan |
+| `cimke` töredékkel (`Ch 6:6,51`-szerű) | 4 | 0 |
+| `eredeti_osis:` jelölt sor | — | 296 |
+
+Megjegyzés: az F18.6 „24 gyanus_kijelzes sor” a jelölés-előfordulás volt (22 sor); a mostani két szám mindkettőt külön adja. Nem bizonyított, hogy a töredék-szabály minden összeolvadás-osztályt megfog; a teljes független kiadás-összevetés hiányzik.
 
 ## 3. A 32254/4951/92610 (FJ4) ↔ 32253/4980/92609 (F06) eltérés oka
 

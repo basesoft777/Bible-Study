@@ -66,6 +66,11 @@ REF_RE = re.compile(r'<ref (osisRef|target)="([^"]*)">(.*?)</ref>', re.S)
 TAG_RE = re.compile(r'<[^>]+>')
 EGYFEJEZETES = {"Obad", "Phlm", "2John", "3John", "Jude"}
 EGYFEJ_RE = re.compile(r'^[0-9A-Za-z]+\.1\.1$')
+# a <ref> UTÁN közvetlenül (szóköz nélkül) álló hivatkozás-töredék: a lekaparás a névvel összeolvadt
+# kijelzésben ("Micah 2" + "Ch 34:20" = valójában 2Ch 34:20) a könyvnév számjegyét a kijelzett névhez
+# ragasztotta, a betűs rész a </ref> után maradt
+TOREDEK_RE = re.compile(r'(?:Ch|Ki|Sa|Ti|Co|Th|Pe|Jn)\s*\d+[\d:,\-–; ]*')
+TOREDEK_KONYV = {"Ch", "Ki", "Sa", "Ti", "Co", "Th", "Pe", "Jn"}
 # a <ref> után közvetlenül álló versszám-lista: ":7", ":8-13", ":9,10", ":4-6, 8"
 VERSSZAM_RE = re.compile(r'\s*:\s*(\d+(?:\s*[-–]\s*\d+)?(?:\s*,\s*\d+(?:\s*[-–]\s*\d+)?)*)')
 
@@ -161,6 +166,25 @@ def igehely_alak(osis, hu, vm):
     return "%s %s-%s" % (hu1, a, b), 'tartomany', 'tartomany', '', 'vegyes_veg(fejezet/vers)'
 
 
+def javaslat_hely(kij, ertek, toredek, hu):
+    """Az összeolvadt kijelzés + töredék alapján rekonstruált hely (csak javaslat), vagy ''.
+    Feltétel: a kijelzés számjegyre végződik, ez egyezik az osisRef fejezetszámával, és
+    szám+töredék-betűk = létező könyvrövidítés (pl. 2+Ch = 2Ch)."""
+    mk = re.search(r'(\d+)$', kij)
+    mo = OSIS_RE.match(ertek)
+    tm = re.match(r'([A-Za-z]+)\s*(\d+(?::\d+)?)', toredek)
+    if not (mk and mo and tm):
+        return ''
+    # ismert könyvnél az osisRef fejezetszáma egyezzen a kijelzés számjegyével; az ismeretlen
+    # (lekaparás-hibás) osisRef-nél (PrAzar.1.2, Wis.2) ez nem követelhető meg
+    if mo.group(1) in OSIS_STEP and mo.group(2) != mk.group(1):
+        return ''
+    step = mk.group(1) + tm.group(1)
+    if step not in hu:
+        return ''
+    return "%s %s" % (hu[step], tm.group(2))
+
+
 def bontas_egysegek(sor):
     """Egy sor -> [(tetel_nsz, szoveg)]: tetel 0 = a sor feje, 1..n = <item>-ek.
     Visszaad egy hibalistát is, ha <list> mellett bármi más szöveg áll."""
@@ -195,6 +219,19 @@ def parszol(szoveg):
             raise ValueError('hiányzó <def>: ' + cim)
         ent.append((cim.strip(), m.group(1)))
     return ent
+
+
+def gyanus_jeloles(megj, kij, ertek, toredek, hu):
+    """Hibás kijelzés jelölése (a megj listába); True, ha a hivatkozás megbízhatatlan."""
+    if DISP_RE.match(kij) and not toredek:
+        return False
+    megj.append('gyanus_kijelzes:' + kij)
+    if toredek:
+        megj.append('toredek:' + toredek)
+        j = javaslat_hely(kij, ertek, toredek, hu)
+        if j:
+            megj.append('javaslat:' + j)
+    return True
 
 
 def sorok_generalas(entk, hu, vm):
@@ -246,6 +283,12 @@ def sorok_generalas(entk, hu, vm):
                         if vm_:
                             vers_spec = re.sub(r'\s+', '', vm_.group(1)).replace('–', '-')
                             pos += vm_.end()
+                    toredek = ''
+                    if tipus == 'osisRef':
+                        tm_ = TOREDEK_RE.match(e[pos:])
+                        if tm_:
+                            toredek = tm_.group(0).strip(' ;,')
+                            pos += tm_.end()
                     utotag = ''
                     if i == len(refs) - 1:
                         utotag = tisztit(e[pos:]).strip(' ;,')
@@ -263,14 +306,15 @@ def sorok_generalas(entk, hu, vm):
                                 else:
                                     osisok.append("%s.1.%s" % (konyv, seg))
                             stat['egyfejezetes_ref_javitva'] += 1
-                            if not DISP_RE.match(kij):
-                                megj.append('gyanus_kijelzes:' + kij)
-                                stat['gyanus_kijelzes'] += 1
+                            megj.append('eredeti_osis:' + ertek)
+                            gyanus = gyanus_jeloles(megj, kij, ertek, toredek, hu)
                             if utotag:
                                 megj.append('utotag:' + utotag)
                             megj.append('egyfejezetes_versszam_a_ref_utan:' + vers_spec)
                             for osis_ in osisok:
                                 ig, ht, ka, ikar, m2 = igehely_alak(osis_, hu, vm)
+                                if gyanus:
+                                    ka = 'nem_ertekelt'
                                 mj = list(megj) + ([m2] if m2 else [])
                                 kimenet.append([tema_id, cim, str(sorszam), jel, str(tetel), cimke,
                                                 'vers', ig, osis_, ht, ka, ikar, '', ';'.join(mj)])
@@ -281,14 +325,14 @@ def sorok_generalas(entk, hu, vm):
                         ig, ht, ka, ikar, m2 = igehely_alak(ertek, hu, vm)
                         if m2:
                             megj.append(m2)
-                        if not DISP_RE.match(kij):
-                            megj.append('gyanus_kijelzes:' + kij)
-                            stat['gyanus_kijelzes'] += 1
+                        gyanus = gyanus_jeloles(megj, kij, ertek, toredek, hu)
                         if egyfej:
                             # egyfejezetes könyv, de a ref után nincs versszám: az X 1:1 alapérték nem megbízható
                             megj.append('gyanus_kijelzes:egyfejezetes_nincs_versszam')
-                            stat['gyanus_kijelzes'] += 1
+                            gyanus = True
                             stat['egyfejezetes_versszam_nelkul'] += 1
+                        if gyanus:
+                            ka = 'nem_ertekelt'
                         if utotag:
                             megj.append('utotag:' + utotag)
                         kimenet.append([tema_id, cim, str(sorszam), jel, str(tetel), cimke,
@@ -369,6 +413,11 @@ def main():
     ]
     ir(a.kimenet, fejlec, kimenet)
     uniq = len(set(c for c, _ in entk))
+    gy_sor = sum(1 for r in kimenet if 'gyanus_kijelzes:' in r[13])
+    gy_tag = sum(r[13].count('gyanus_kijelzes:') for r in kimenet)
+    print('gyanus_sor:', gy_sor, 'gyanus_tag (elofordulas):', gy_tag,
+          'javaslat_sor:', sum(1 for r in kimenet if 'javaslat:' in r[13]),
+          'toredek_sor:', sum(1 for r in kimenet if 'toredek:' in r[13]))
     print('entry:', len(entk), 'egyedi cim:', uniq, 'sor:', len(kimenet))
     for k, v in sorted(stat.items()):
         print(' ', k, v)
