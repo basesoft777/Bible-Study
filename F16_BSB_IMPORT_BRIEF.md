@@ -7,6 +7,7 @@ fazis: 1
 modell: sonnet
 allapot: lezarva
 ag: claude/bsb-import
+pr: 85
 ad: BSB minden könyvre, ahol a lefedettség ≥ 95%
 kovetkezo: `/kovetkezo` csomag: #16–#19 és #7
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv]
