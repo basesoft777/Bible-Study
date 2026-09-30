@@ -34,13 +34,46 @@ gondolkodas_mod oszlopában.
 Kulcs: csak az OPENROUTER_API_KEY környezeti változóból; soha nem kerül
 naplóba, fájlba vagy hibaüzenetbe (a kiírt hibákból kiszűrődik).
 
+F4 (döntőbíró, prompt_biro_v2.md): az A és B EGYEZŐ linkjei rögzítettek; a C csak a
+vitatott magyar szavakról dönt (és a kapuhibás maradt versek teljes párosításáról).
+A rögzítést gép kényszeríti (biro_kenyszer, hatodik kapupont): a C válaszában
+minden A–B-egyező link szerepel, és a nem vitatott magyar szavak állapota
+(linkjei, betoldás-e) változatlan; eltérésnél egy újrakérés hibaüzenettel,
+másodszor is eltérő válasznál a vers kapuhiba. A kimenet sémája ugyanaz, mint az
+A/B-é, és a C sem írhat Strong-számot (ötödik kapupont).
+
 Használat:
     python eszkozok/karoli_strong/futtat.py --szaraz            # becslés, hálózat nélkül
     python eszkozok/karoli_strong/futtat.py --onteszt           # MOCK küldővel
-    python eszkozok/karoli_strong/futtat.py --futas F1,F2,F3,F4,F5,F6   # éles (kulccsal)
+    python eszkozok/karoli_strong/futtat.py --vezerlo f21p/futtatas.txt   # éles (kulccsal)
+    python eszkozok/karoli_strong/futtat.py --futas F1 --koteg-max 1      # éles, kézi
+
+Nincs alapértelmezett futás: --szaraz, --onteszt, --vezerlo vagy --futas (és ez
+utóbbival --koteg-max) nélkül a szkript hibával (kilépési kód 2) áll meg.
+
+VEZÉRLŐFÁJL (f21p/futtatas.txt; a workflow ezt olvassa): egyszerű kulcs=érték sorok,
+a # kezdetű sor és az üres sor megjegyzés. KÖTELEZŐ kulcs mindkettő, alapérték
+nincs; ismeretlen, hiányzó vagy ismételt kulcs, hibás érték, hiányzó fájl esetén a
+futtatás 2-es kilépési kóddal áll meg, és semmit nem hív meg.
+    futasok=F1            # vesszővel elválasztva az F1..F6 közül, pl. F1,F2,F3,F5,F6;
+                          # az F4 csak egyedül (külön trigger: az F1 és F2 kész kell)
+    koteg_max=1           # futásonként legfeljebb ennyi ÚJ köteg (10 vers/köteg) fut;
+                          # pozitív egész, vagy 'mind' (a kész kötegek kimaradnak)
+Példák: az első trigger: futasok=F1, koteg_max=1 (10 vers); a második:
+futasok=F1,F2,F3,F5,F6, koteg_max=mind; a harmadik: futasok=F4, koteg_max=mind.
+A futások mindig az F1..F6 sorrendben futnak, akárhogy van felsorolva a fájlban.
+
+GONDOLKODÁSI MÓD ÉS A JELENTÉS (F21 P3 döntés): az A és B gondolkodása
+KIKAPCSOLVA fut, a C-é kötelező (nem kapcsolható ki), ezért minimal (400-nál low)
+szinten. A C költsége a gondolkodási tokennel együtt a valódi ár (a futasnaplo.tsv
+gondolkodas_token oszlopa külön vezeti, a koltseg_usd már tartalmazza). A
+mérés/jelentés (P4–P6) minden minőség- és költségösszevetésnél jelölje: az A/B és a
+C beállítása eltérő (kikapcsolva vs. minimal/low), tehát a C-vel való összevetés nem
+azonos beállítású; a gondolkodas_mod oszlop adja a tényleges szintet.
 
 Kilépési kódok: 0 rendben; 1 hiba (pl. hálózati hiba egy kötegnél, a többi
-kötegre mentve); 2 előfeltétel hiányzik (pl. F4 az F1/F2 előtt); 3 költségplafon.
+kötegre mentve); 2 előfeltétel hiányzik (pl. F4 az F1/F2 előtt) vagy hibás
+vezérlés/paraméter; 3 költségplafon.
 """
 
 import argparse
@@ -518,8 +551,11 @@ def koteg_feldolgoz(ctx, futas_id, koteg_no, igehelyek):
     return versek
 
 
-def futas(ctx, futas_id, minta):
-    """Egy futás összes kötege; visszaad: (kilépési_kód, összegzés_dict)."""
+def futas(ctx, futas_id, minta, koteg_max=None):
+    """Egy futás kötegei; visszaad: (kilépési_kód, összegzés_dict).
+
+    koteg_max: legfeljebb ennyi ÚJ köteg fut (a kész kötegek nem számítanak);
+    None = az összes."""
     versek = verslista(futas_id, minta, ctx.kimenet_dir)
     kotegek = bemenet.kotegek(versek, KOTEG_MERET)
     kesz = kesz_kotegek(futas_id, ctx.kimenet_dir)
@@ -527,9 +563,15 @@ def futas(ctx, futas_id, minta):
         futas_id, MODELLEK[FUTASOK[futas_id]['modell']], len(versek), len(kotegek),
         sum(1 for k in kotegek if tuple(k) in kesz)), flush=True)
     hibas_kotegek = 0
+    uj_kotegek = 0
     for no, k in enumerate(kotegek, 1):
         if tuple(k) in kesz:
             continue
+        if koteg_max is not None and uj_kotegek >= koteg_max:
+            print('  koteg_max (%d) elérve, a futás megáll; a többi köteg a következő triggerre marad'
+                  % koteg_max, flush=True)
+            break
+        uj_kotegek += 1
         try:
             v = koteg_feldolgoz(ctx, futas_id, no, k)
         except PlafonLeallas as e:
@@ -546,11 +588,11 @@ def futas(ctx, futas_id, minta):
                                           'hibas_kotegek': hibas_kotegek}
 
 
-def futasok_vegrehajt(ctx, futas_idk, minta):
+def futasok_vegrehajt(ctx, futas_idk, minta, koteg_max=None):
     kod = 0
     for f in futas_idk:
         try:
-            k, _ = futas(ctx, f, minta)
+            k, _ = futas(ctx, f, minta, koteg_max)
         except PlafonLeallas:
             return KILEPES_PLAFON
         except ElofeltetelHiany as e:
@@ -558,6 +600,71 @@ def futasok_vegrehajt(ctx, futas_idk, minta):
             return 2
         kod = max(kod, k)
     return kod
+
+
+# ---------------------------------------------------------------------------
+# vezérlőfájl (f21p/futtatas.txt)
+# ---------------------------------------------------------------------------
+
+VEZERLO_KULCSOK = ('futasok', 'koteg_max')
+
+
+class VezerloHiba(Exception):
+    pass
+
+
+def vezerlo_beolvas(ut):
+    """A vezérlőfájl értelmezése: {'futasok': [F-id, ...] (F1..F6 sorrendben),
+    'koteg_max': int|None}. Hiba esetén VezerloHiba (nincs alapérték)."""
+    if not os.path.exists(ut):
+        raise VezerloHiba('nincs vezérlőfájl: %s' % ut)
+    with open(ut, encoding='utf-8') as f:
+        sorok = [x.strip() for x in f.read().split('\n')]
+    ertekek = {}
+    for i, sor in enumerate(sorok, 1):
+        if not sor or sor.startswith('#'):
+            continue
+        if '=' not in sor:
+            raise VezerloHiba('%d. sor: nem kulcs=érték alakú: %r' % (i, sor))
+        kulcs, ertek = (x.strip() for x in sor.split('=', 1))
+        if kulcs not in VEZERLO_KULCSOK:
+            raise VezerloHiba('%d. sor: ismeretlen kulcs: %r (érvényes: %s)'
+                              % (i, kulcs, ', '.join(VEZERLO_KULCSOK)))
+        if kulcs in ertekek:
+            raise VezerloHiba('%d. sor: a(z) %s kulcs kétszer szerepel' % (i, kulcs))
+        ertekek[kulcs] = ertek
+    for kulcs in VEZERLO_KULCSOK:
+        if kulcs not in ertekek:
+            raise VezerloHiba('hiányzó kötelező kulcs: %s (nincs alapérték)' % kulcs)
+    idk = [x.strip() for x in ertekek['futasok'].split(',') if x.strip()]
+    if not idk:
+        raise VezerloHiba('a futasok üres')
+    for f in idk:
+        if f not in FUTASOK:
+            raise VezerloHiba('ismeretlen futás: %r (érvényes: %s)' % (f, ', '.join(FUTASOK)))
+    if len(set(idk)) != len(idk):
+        raise VezerloHiba('a futasok ismétlést tartalmaz: %s' % ertekek['futasok'])
+    if 'F4' in idk and len(idk) > 1:
+        raise VezerloHiba('az F4 külön triggerre való (az F1 és F2 kész kell), nem állhat más futással együtt')
+    km = ertekek['koteg_max']
+    if km == 'mind':
+        koteg_max = None
+    elif km.isdigit() and int(km) >= 1:
+        koteg_max = int(km)
+    else:
+        raise VezerloHiba('a koteg_max pozitív egész vagy "mind" lehet, nem %r' % km)
+    return {'futasok': [f for f in FUTASOK if f in idk], 'koteg_max': koteg_max}
+
+
+def vezerlo_futtat(ctx, vezerlo_ut, minta):
+    """A vezérlőfájl szerinti futtatás; hibás vezérlésnél 2, hívás nélkül."""
+    try:
+        v = vezerlo_beolvas(vezerlo_ut)
+    except VezerloHiba as e:
+        print('VEZÉRLŐFÁJL HIBA (%s): %s' % (vezerlo_ut, e), file=sys.stderr)
+        return 2
+    print('vezérlés: futások=%s, koteg_max=%s' % (','.join(v['futasok']), v['koteg_max'] or 'mind'), flush=True)
+    return futasok_vegrehajt(ctx, v['futasok'], minta, v['koteg_max'])
 
 
 # ---------------------------------------------------------------------------
@@ -729,6 +836,15 @@ class MockKuldo:
                             'usage': usage})
 
 
+def _hibas(fn):
+    """Igaz, ha fn() VezerloHibát dob."""
+    try:
+        fn()
+    except VezerloHiba:
+        return True
+    return False
+
+
 def hash_stabil(s):
     """Folyamatok között is stabil hash (a beépített hash() véletlenített)."""
     h = 0
@@ -898,7 +1014,65 @@ def onteszt():
     ellen(kod == 2, 'F4 előfeltétel nélkül a kilépési kód %d, várt 2' % kod)
 
     naplo_osszeg_onteszt = naplo_osszeg(mappa)
-    for m in (mappa, mappa2, mappa3):
+    # --- 5. vezérlőfájl és koteg_max -------------------------------------------
+    mappa4 = tempfile.mkdtemp(prefix='f21p_onteszt_vezerlo_')
+    vez = os.path.join(mappa4, 'futtatas.txt')
+
+    def vez_ir(tartalom):
+        with open(vez, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(tartalom)
+
+    def vez_hiba(tartalom):
+        vez_ir(tartalom)
+        try:
+            vezerlo_beolvas(vez)
+        except VezerloHiba:
+            return True
+        return False
+
+    vez_ir('# megjegyzés\nfutasok = F5, F1 ,F3\nkoteg_max=mind\n')
+    v = vezerlo_beolvas(vez)
+    ellen(v == {'futasok': ['F1', 'F3', 'F5'], 'koteg_max': None}, 'vezérlő: hibás értelmezés: %s' % v)
+    vez_ir('futasok=F1\nkoteg_max=1\n')
+    ellen(vezerlo_beolvas(vez) == {'futasok': ['F1'], 'koteg_max': 1}, 'vezérlő: a koteg_max=1 értelmezése hibás')
+    vez_ir('futasok=F4\nkoteg_max=mind\n')
+    ellen(vezerlo_beolvas(vez)['futasok'] == ['F4'], 'vezérlő: az egyedül álló F4 elutasítva')
+    ellen(vez_hiba(''), 'vezérlő: üres fájl elfogadva (nincs alapérték)')
+    ellen(vez_hiba('futasok=F1\n'), 'vezérlő: hiányzó koteg_max elfogadva')
+    ellen(vez_hiba('koteg_max=1\n'), 'vezérlő: hiányzó futasok elfogadva')
+    ellen(vez_hiba('futasok=F1\nkoteg_max=1\nmodell=A\n'), 'vezérlő: ismeretlen kulcs elfogadva')
+    ellen(vez_hiba('futasok=F1\nfutasok=F2\nkoteg_max=1\n'), 'vezérlő: ismételt kulcs elfogadva')
+    ellen(vez_hiba('futasok=F7\nkoteg_max=1\n'), 'vezérlő: ismeretlen futás elfogadva')
+    ellen(vez_hiba('futasok=F1,F1\nkoteg_max=1\n'), 'vezérlő: ismételt futás elfogadva')
+    ellen(vez_hiba('futasok=F1,F4\nkoteg_max=1\n'), 'vezérlő: az F4 más futással együtt elfogadva')
+    ellen(vez_hiba('futasok=F1\nkoteg_max=0\n'), 'vezérlő: koteg_max=0 elfogadva')
+    ellen(vez_hiba('futasok=F1\nkoteg_max=sok\n'), 'vezérlő: koteg_max=sok elfogadva')
+    ellen(vez_hiba('F1\n'), 'vezérlő: nem kulcs=érték sor elfogadva')
+    ellen(not os.path.exists(os.path.join(mappa4, 'nincs.txt')) and
+          _hibas(lambda: vezerlo_beolvas(os.path.join(mappa4, 'nincs.txt'))), 'vezérlő: a hiányzó fájl nem hiba')
+    # vezérlővel vezérelt futás: az első trigger egyetlen köteg (F1, 10 vers)
+    mappa5 = tempfile.mkdtemp(prefix='f21p_onteszt_koteg_')
+    mock5 = MockKuldo()
+    ctx5 = Kontextus(mock5, teszt_kulcs, mappa5)
+    vez_ir('futasok=F1\nkoteg_max=1\n')
+    kod = vezerlo_futtat(ctx5, vez, minta)
+    ellen(kod == 0 and len(mock5.hivasok) == 1 and len(eredmenyek_betolt('F1', mappa5)) == 10,
+          'koteg_max=1: nem pontosan egy köteg (10 vers) futott: hívások %d, versek %d'
+          % (len(mock5.hivasok), len(eredmenyek_betolt('F1', mappa5))))
+    ellen(eredmenyek_betolt('F2', mappa5) == {} and eredmenyek_betolt('F3', mappa5) == {},
+          'koteg_max=1: más futás is indult')
+    vez_ir('futasok=F1,F2\nkoteg_max=mind\n')
+    kod = vezerlo_futtat(ctx5, vez, minta)
+    ellen(kod == 0 and len(eredmenyek_betolt('F1', mappa5)) == 25 and len(eredmenyek_betolt('F2', mappa5)) == 25,
+          'mind: az F1/F2 nem teljes')
+    ellen(len(mock5.hivasok) == 1 + 2 + 3, 'mind: a kész köteg újra hívott (hívások: %d, várt 6)' % len(mock5.hivasok))
+    # hibás vezérlés: semmit nem hív
+    db = len(mock5.hivasok)
+    vez_ir('futasok=F3\n')
+    ellen(vezerlo_futtat(ctx5, vez, minta) == 2 and len(mock5.hivasok) == db,
+          'hibás vezérlő: nem 2-es kilépési kód, vagy hívás történt')
+
+    for m in (mappa, mappa2, mappa3, mappa4, mappa5):
         shutil.rmtree(m, ignore_errors=True)
     if hibak:
         print('ÖNTESZT HIBA:')
@@ -918,7 +1092,9 @@ def onteszt():
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('--futas', default='F1,F2,F3,F4,F5,F6', help='pl. F1,F2 (alap: mind, ebben a sorrendben)')
+    ap.add_argument('--vezerlo', default=None, help='vezérlőfájl (f21p/futtatas.txt): futasok=..., koteg_max=...')
+    ap.add_argument('--futas', default=None, help='pl. F1,F2 (nincs alapérték; --vezerlo helyett, kézi futtatáshoz)')
+    ap.add_argument('--koteg-max', default=None, help='--futas mellett: futásonként legfeljebb ennyi új köteg (pozitív egész vagy mind)')
     ap.add_argument('--szaraz', action='store_true', help='token- és költségbecslés, hálózat nélkül')
     ap.add_argument('--onteszt', action='store_true', help='MOCK küldős önellenőrzés, hálózat és kulcs nélkül')
     ap.add_argument('--eltero-arany', type=float, default=0.30, help='--szaraz: az F4 versei az F1–F2 eltérési aránya szerint')
@@ -933,17 +1109,41 @@ def main():
         szaraz_kiir(minta, args.eltero_arany)
         return 0
 
-    idk = [s.strip() for s in args.futas.split(',') if s.strip()]
-    for f in idk:
-        if f not in FUTASOK:
-            print('ismeretlen futás: %s' % f, file=sys.stderr)
+    if bool(args.vezerlo) == bool(args.futas):
+        print('HIBA: pontosan az egyik kell: --vezerlo <fájl> vagy --futas <lista> --koteg-max <n|mind> '
+              '(nincs alapértelmezett futás)', file=sys.stderr)
+        return 2
+    idk = None
+    koteg_max = None
+    if args.futas:
+        if args.koteg_max is None:
+            print('HIBA: a --futas mellé --koteg-max is kell (pozitív egész vagy mind)', file=sys.stderr)
+            return 2
+        idk = [x.strip() for x in args.futas.split(',') if x.strip()]
+        for f in idk:
+            if f not in FUTASOK:
+                print('ismeretlen futás: %s' % f, file=sys.stderr)
+                return 2
+        if args.koteg_max != 'mind':
+            if not args.koteg_max.isdigit() or int(args.koteg_max) < 1:
+                print('HIBA: a --koteg-max pozitív egész vagy mind', file=sys.stderr)
+                return 2
+            koteg_max = int(args.koteg_max)
+    else:
+        try:
+            vezerlo_beolvas(args.vezerlo)   # kulcs nélkül is hibára fusson, mielőtt bármi indul
+        except VezerloHiba as e:
+            print('VEZÉRLŐFÁJL HIBA (%s): %s' % (args.vezerlo, e), file=sys.stderr)
             return 2
     api_key = os.environ.get('OPENROUTER_API_KEY')
     if not api_key:
         print('HIBA: az OPENROUTER_API_KEY környezeti változó nincs beállítva', file=sys.stderr)
         return 2
     ctx = Kontextus(fordit._valodi_http_kuldo, api_key, args.kimenet_dir, plafon=args.plafon)
-    kod = futasok_vegrehajt(ctx, idk, minta)
+    if args.vezerlo:
+        kod = vezerlo_futtat(ctx, args.vezerlo, minta)
+    else:
+        kod = futasok_vegrehajt(ctx, idk, minta, koteg_max)
     print('kész; kilépési kód: %d; a napló összege: %.4f USD (plafon %.2f)'
           % (kod, naplo_osszeg(args.kimenet_dir), args.plafon), flush=True)
     return kod
