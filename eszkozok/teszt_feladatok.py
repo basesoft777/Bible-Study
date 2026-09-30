@@ -380,6 +380,27 @@ class KovetkezoSzamTest(Alap):
         self.assertEqual(F.kovetkezo_szam(self.g.briefek()), 1)
 
 
+class ExtraTest(Alap):
+    def test_extra_szam_es_fugges(self):
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, olvas=['q'], ir=['adat/x.tsv']))
+        ex = os.path.join(self.g.ut, 'kivul.md')
+        with open(ex, 'w', encoding='utf-8') as f:
+            f.write(brief_szoveg(None, tipus='feladat', olvas=['adat/x.tsv'], ir=['m']))
+        b = F.extra_hozzaad(self.g.briefek(), [ex])
+        self.assertEqual(b[-1].szam, 2)
+        fugg, _, _, _ = F.fuggesek(b, {})
+        self.assertIn(1, fugg[2])
+
+    def test_extra_csonk_felvaltja_a_szamot(self):
+        self.g.brief('F03_C_BRIEF.md', brief_szoveg(3, allapot='brief_kell'))
+        ex = os.path.join(self.g.ut, 'kivul.md')
+        with open(ex, 'w', encoding='utf-8') as f:
+            f.write(brief_szoveg(3, olvas=['a'], ir=['b']))
+        b = F.extra_hozzaad(self.g.briefek(), [ex])
+        self.assertEqual([x.szam for x in b].count(3), 1)
+        self.assertEqual(b[-1].allapot, 'nem_indult')
+
+
 class CliTest(Alap):
     def test_kilepesi_kodok(self):
         self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, olvas=['a'], ir=['b']))

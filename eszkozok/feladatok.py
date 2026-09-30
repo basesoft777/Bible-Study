@@ -708,6 +708,24 @@ def kovetkezo_szam(briefek):
     return (max(hasznalt) if hasznalt else 0) + 1
 
 
+def extra_hozzaad(briefek, utak):
+    """A befogadando brief(ek) javasolt fejlecet a szamitashoz hozzaadja (nem ir semmit).
+
+    Szam nelkuli fejlec a kovetkezo szabad szamot kapja (a tobb extra egymas utan)."""
+    briefek = list(briefek)
+    for ut in utak:
+        with open(ut, encoding='utf-8', newline='') as f:
+            fej, torzs, hibak = fejlec_elemez(f.read())
+        if not fej:
+            raise ValueError('az --extra fájlnak fejléc kell: %s (%s)' % (ut, '; '.join(hibak)))
+        if 'feladat' not in fej and fej.get('tipus', 'feladat') in ('feladat', 'naplozas'):
+            fej['feladat'] = kovetkezo_szam(briefek)
+        if 'feladat' in fej:  # csonk kitoltese: ugyanazon a szamon felvaltja a meglevot
+            briefek = [x for x in briefek if x.szam != fej['feladat']]
+        briefek.append(Brief(os.path.basename(ut), fej, torzs, hibak))
+    return briefek
+
+
 def pr_blokk_ellenorzes(gyoker, alap_ref):
     """E18: a generalt blokkot a PR nem modosithatja. Hibak listaja.
 
@@ -743,7 +761,10 @@ def main(argv=None):
     alp.add_parser('general', help='a FELADATOK.md jelölt blokkjainak újraírása')
     e = alp.add_parser('ellenoriz', help='fejlécek és blokkok ellenőrzése')
     e.add_argument('--pr-alap', help='az alap ref (pl. origin/main): a generált blokk nem változhat')
-    alp.add_parser('fuggesek', help='függések, ütközések, régi fejlécek')
+    f = alp.add_parser('fuggesek', help='függések, ütközések, régi fejlécek')
+    f.add_argument('--extra', action='append', default=[], metavar='FAJL',
+                   help='a befogadandó brief javasolt fejléce (a repón kívüli fájl); a számítás '
+                        'úgy veszi figyelembe, mintha a repóban lenne; szám nélkül a következő szabad számot kapja')
     a = alp.add_parser('atvetel', help='a FELADATOK.md táblájából a fejlécekbe')
     a.add_argument('--szaraz', action='store_true', help='csak kiírja a változásokat')
     alp.add_parser('kovetkezo_szam', help='a következő szabad feladatszám')
@@ -765,6 +786,7 @@ def main(argv=None):
             print('%d brief, %d hiba' % (len(briefek), len(hibak)))
             return 1 if hibak else 0
         if arg.parancs == 'fuggesek':
+            briefek = extra_hozzaad(briefek, arg.extra)
             sys.stdout.write(fuggesek_szoveg(briefek, main_allapotok(arg.gyoker)))
             return 0
         if arg.parancs == 'atvetel':

@@ -11,7 +11,7 @@ Te a PaRDeS briefjeinek befogadója vagy. A parancs csak befogad: **feladatot va
 2. BRIEFENKÉNT JAVASLAT:
    - a hiányzó fejlécmezők a brief szövegéből (`cim`, `kod`, `tipus`, `fazis`, `modell`, `ad`, `kovetkezo`, `olvas`, `ir`, `fugg`); amit a szövegből nem tudsz megállapítani, jelöld „[javaslat]”-tal, ne találd ki;
    - `python eszkozok/feladatok.py kovetkezo_szam` a következő szabad szám;
-   - a levezetett függés és ütközés (`fuggesek`), a lehetséges duplikátum (azonos `ir` cél vagy hasonló `cim`; a döntés a felhasználóé);
+   - a levezetett függés és ütközés: írd a javasolt fejlécet (`olvas`, `ir`, `fugg`) egy ideiglenes fájlba a repón kívül, és futtasd `python eszkozok/feladatok.py fuggesek --extra <fájl>` (a beérkező brief a fejléce nélkül a számításban nem látszik; szám nélküli fejléc a következő szabad számot kapja; a kimenet `FUGGES`, `UTKOZES`, `REGI` sorait idézd a javaslatban); a lehetséges duplikátum (azonos `ir` cél vagy hasonló `cim`; a döntés a felhasználóé);
    - ha a briefben van nyitó prompt és nincs jelölve: javasold a `KOZVETLEN_FUTTATAS` jelölést (a szöveg nem változik).
 2b. CSONK KITÖLTÉSE: ha a beérkező brief egy meglévő csonkhoz tartozik (`brief_kell` állapot; egyezés a fejléc `feladat` mezője, a szövegbeli „FELADATOK #<nn>” hivatkozás vagy az `F<nn>` fájlnév alapján), nem kap új számot: a csonk fájlját váltja fel ugyanazon a számon és néven, az `allapot` `nem_indult` lesz, és az egyeztetés „csonk kitöltése: #<nn>”-ként mutatja. Bizonytalan egyezésnél kérdez.
 3. TÍPUS SZERINT:
