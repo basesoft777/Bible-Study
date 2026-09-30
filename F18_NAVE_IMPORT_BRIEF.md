@@ -1,16 +1,19 @@
 ---
 feladat: 18
-cim: Nave-import, theonize (N27)
+cim: Nave-import, basokant (N27)
 kod: F18
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
-ad: Nave-témák és -relációk, eredet-ellenőrzéssel mind a 4980 témán
-kovetkezo: `/kovetkezo` csomag: #16–#19 és #7; ⛔ ha a GPLv3 nem fér össze a repó licencével
+allapot: lezarva
+ad: "Nave-témák és igehely-hivatkozások a basokant/nave nyers szövegéből (5 322 entry, DT5: a theonize nincs importálva); az eredet-ellenőrzés a 4980 témán nem futott"
+kovetkezo: "DT18 tételei a felhasználó döntésére várnak"
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv]
-ir: [konkordancia/Nave_theonize.tsv, NYITOTT_FELADATOK.md, DONTESEK.md]
+ir: [konkordancia/Nave_basokant.tsv, konkordancia/Nave_basokant_README.md, eszkozok/nave_import.py, adat/szotar_szerepek.tsv, naplok/F18_licenc.md, naplok/F18_import_naplo.md, naplok/ELLENOR_F18.md, naplok/F18_zaras.md, adat/SEMA.md, adat/datasetek.tsv, NYITOTT_FELADATOK.md, DONTESEK.md]
 fugg: [6]
+ag: claude/nave-import
+pr: 86
+lezarva_osszegzes: "basokant/nave saját parszolóval importálva (85 246 sor, 5 322 téma, javaslat-állapot; DT5: a theonize GPLv3 miatt kimaradt); licenc- és import-napló `naplok/F18_licenc.md`, `naplok/F18_import_naplo.md`, ellenőrzés `naplok/ELLENOR_F18.md`; eredet-ellenőrzés a 4980 témán és a Gemini-lépés nem futott; nyitott tételek DT18"
 ---
 # F18 — Nave-import (theonize), teljes eredet-ellenőrzéssel
 
