@@ -14,7 +14,7 @@ ir: [eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, eszkozok/, "*_BRIEF.md"
 helyi_gep: nem
 ag: claude/befogadas
 pr: #78
-lezarva_osszegzes: brief-befogadás (`/befogad`, csonk-kitöltéssel), a FELADATOK.md táblái a brief-fejlécekből generálva (`eszkozok/feladatok.py`), E18 CI-szabály és a main-re futó frissítő Action; ellenőrzés `naplok/ELLENOR_F20.md`; ⛔ a védett main miatt az Action push-a a beállítás módosításáig nem megy
+lezarva_osszegzes: brief-befogadás (`/befogad`, csonk-kitöltéssel), a FELADATOK.md táblái a brief-fejlécekből generálva (`eszkozok/feladatok.py`), E18 CI-szabály és a main-re futó frissítő Action; ellenőrzés `naplok/ELLENOR_F20.md`; a main-t ruleset védi, az Action a pardes-feladatok GitHub App tokenjével ír
 ---
 
 # F20_BEFOGADAS_BRIEF.md — Brief-befogadás és generált feladatkövető
@@ -189,7 +189,7 @@ Az új feladat a befogadás PR-jének merge-e után a `main`-ből futtatható. S
 ## Verzió-napló
 
 - **v1.4 (2026.09.30):** a „lezárva, még ágon” állapot jele `🔀` (a `🔎` helyett; generátor, jelmagyarázat, tesztek); B5a: a nyitó prompt jelölésének javaslata kötelező lépés (jelöletlen prompt vagy végrehajtásra felszólító szöveg esetén mindig), B7 (d) újrafuttatva; B6: a main-t ruleset védi (PR kötelező, kötelező checkek: `ellenorzes`, `feladatkovetes`, bypass csak a `pardes-feladatok` GitHub App), a klasszikus branch protection megszűnt; a `feladatok.yml` az App tokenjével (`actions/create-github-app-token`, pinelt) pushol, a workflow `GITHUB_TOKEN`-je `contents: read`, a többi workflow-ban sincs `contents: write` (a K8 ⛔-je megszűnt).
-- **v1.3 (2026.09.30):** B5a: csonk-kitöltési szabály (2b lépés): a beérkező brief a meglévő `brief_kell` csonkot váltja fel ugyanazon a számon és néven, `nem_indult` állapottal; B7: új (e) próbaeset; K5 (a–e); a feladatkövető CI-szabály neve E18 (az E17 a DT3-é); a „lezárva, még ágon” állapot jele `🔀` (a nagyítós másik jel az E2 „ellenőrizve” jelölése).
+- **v1.3 (2026.09.30):** B5a: csonk-kitöltési szabály (2b lépés): a beérkező brief a meglévő `brief_kell` csonkot váltja fel ugyanazon a számon és néven, `nem_indult` állapottal; B7: új (e) próbaeset; K5 (a–e); a feladatkövető CI-szabály neve E18 (az E17 a DT3-é); a „lezárva, még ágon” állapot jele `🔎` (a `🔍` az E2 „ellenőrizve” jelölése; a v1.4-ben `🔀`-ra cserélve).
 - **v1.2 (2026.09.30):** B5b: a `/kovetkezo` 6., 7. és 8. lépése is a saját brief fejlécét írja (`fut`, `megallt`/`dontesre_var`, folytatási pont a `kovetkezo` mezőben); a 4. lépés régi-név kitétele törlődik; K9 kiegészítve.
 - **v1.1 (2026.09.30):** a befogadás külön `/befogad` parancs (B5a), a `/kovetkezo` csak futtat (B5b); a csatolás az alapút; a `beerkezo/` kimarad a CI-ből; a nyitó prompt jelölése (`KOZVETLEN_FUTTATAS`); a naplózás nem a befogadás ágán fut, hanem számot kap és a `/kovetkezo` futtatja; B7 kiegészítve a (d) és a `/kovetkezo`-esettel; D22–D23 módosítva, D29–D30 új; B0-ban D-szám-ütközés ellenőrzése.
 - **v1 (2026.09.30):** első változat.

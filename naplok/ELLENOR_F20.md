@@ -1,44 +1,48 @@
-# ELLENOR_F20 — független ellenőrzés (`fuggetlen-ellenor`), F20_BEFOGADAS_BRIEF.md v1.3
+# ELLENOR_F20 — független ellenőrzés (`fuggetlen-ellenor`), F20_BEFOGADAS_BRIEF.md v1.4
 
-**Ítélet: NEM TISZTA** — a 2. kör javítható eltéréseit a menet javította (l. alább), de öt tétel felhasználói döntést igényel (U1–U5), ezért a K10 nem teljesül. A jelentéseket az ellenőr szerepköre nem tudta fájlba írni; az itt szereplő összefoglaló a két jelentés tartalma, a javítások a `F20.B8` és a zárócommitok szerint.
+**Ítélet (3. kör után): a 3. kör saját ítélete NEM TISZTA volt öt javítható eltérés miatt; ezeket a menet kijavította (l. 3. kör), nyitott felhasználói döntés nincs.** A javítás utáni ellenőri megerősítés (4. kör) a PR-on rögzítendő. A K1, K4, K5, K7 pontokat az ellenőr a szerepköre (csak olvasás, `git`, `futtat.py`) miatt nem tudta a saját lekérdezésével futtatni (NEM ELLENŐRIZHETŐ); a menet saját futtatása: `feladatok.py ellenoriz` 40 brief 0 hiba, 42 teszt OK, `general` kétszer változatlan, `futtat.py` E2–E16 0 HIBA, a mutációs próba (`naplok/F20_proba.md`) mindhárom esetet megfogja, a CI (`ellenorzes`, `feladatkovetes`) zöld.
 
-Tartomány: `origin/main..HEAD` (`51f9291`..). Az ellenőr a `feladatok.py`-t és a teszteket a szerepköre miatt nem futtathatta (K1, K4, K7 „NEM ELLENŐRIZHETŐ” a saját lekérdezéssel); a menet saját futtatása: `feladatok.py ellenoriz` 40 brief 0 hiba, 42 teszt OK, `general` kétszer változatlan, `futtat.py` E2–E16 0 HIBA, a mutációs próba (`naplok/F20_proba.md`) mindhárom esetet megfogja.
+Az ellenőr nem tud fájlba írni; ez a jelentés a háromkörös jelentés összefoglalója, a javítások a `F20.B8`, `F20.v1.4` és az azt követő commitok szerint.
 
-## 1. kör — 11 eltérés és a kezelésük
+## 1. kör (v1.3) — 11 eltérés
 
-| Eltérés | Állapot |
+| Eltérés | Kezelés |
 |---|---|
-| K8/D25: a `main` védett, az Action push-a elbukik; ⛔ jelzés hiányzik | **U1** (felhasználói döntés); a ⛔ a zárójelentésben és a brief `lezarva_osszegzes`-ében szerepel |
-| K7/D25: az E18 (`feladatkovetes`) nem kötelező check | **U2** (felhasználói döntés) |
-| D21: a #20 `ir` lista hiányos | javítva (`eszkozok/`, `konkordancia/`, `sablonok/`, `fp2/` … ) |
-| K5 (d): „jelölést javasol” nem teljesült, jóváhagyás nélkül | **U3** (felhasználói döntés) |
+| K8/D25: a `main` védett, az Action push-a elbukik | megoldva: ruleset + `pardes-feladatok` GitHub App (felhasználói beállítás), az Action az App tokenjével pushol (v1.4) |
+| K7/D25: az E18 nem kötelező check | megoldva: a ruleset kötelező checkjei `ellenorzes` és `feladatkovetes` (felhasználói beállítás) |
+| D21: a #20 `ir` lista hiányos | javítva |
+| K5 (d): a jelölés-javaslat nem teljesült | megoldva (v1.4): kötelező lépés a `befogad.md`-ben, a próba újrafuttatva, megfelelt |
 | K2: #12 „Hol” cella | dokumentálva a B4 naplóban (a v1.3-egyezés megtartva) |
-| D26: a Kész-dátumok a B3 dátumát kapták; a napló téves állítása | javítva: a dátum a `lezarva_osszegzes`-ből (teszt), a napló helyesbítve |
-| TSV proveniencia-sor átírva | visszaállítva (az `origin/main` változat) |
-| B3: címsorok átírása, nyitó prompt szövegében átírt brief-nevek | a blokkok visszaállítva (bájtra azonosak a régiekkel); a címsor-átírás (E5) a `TÖRLÉS-SZÁNDÉKOS:` jelöléssel fedett |
-| #9 `ir` lista hiányos | javítva (`adat/forditasok.tsv`, `eszkozok/kiejtes.py`, tematikus tanulmány) |
-| #9 csonk állapota ellentmond a szövegének | javítva: a törzs és a `kovetkezo.md` 4. lépése a `forras`-t olvassa |
-| commit-üzenet számolása | tényként marad (a történet nem írható át) |
+| D26: Kész-dátumok a B3 dátumát kapták | javítva: a dátum a `lezarva_osszegzes`-ből (teszt) |
+| TSV proveniencia-sor átírva | visszaállítva |
+| B3: nyitó prompt szövegében átírt brief-nevek; címsorok (E5) | blokkok visszaállítva; a címsor-átírás a `TÖRLÉS-SZÁNDÉKOS:` jelöléssel fedett |
+| #9 `ir` lista hiányos; #9 csonk állapota a szövegével ellentmond | javítva |
+| commit-üzenet számolása | tényként marad |
 
-## 2. kör — 14 eltérés (9 javítható, 5 felhasználói döntés)
+## 2. kör — 14 eltérés
 
-| # | Eltérés | Kezelés |
+E1 (hamis merge-hash): javítva (`-G '^allapot: lezarva$'`, csak merge-commit). E2 (zárás kerülőútja): javítva. E3 (címsorok, `TÖRLÉS-SZÁNDÉKOS`): a B8 commit üzenete megnevezi. E4 (lógó jelentés): ez a fájl. E5 (#12 `forras`): dokumentált. E6–E9 (`ir`-listák, horgony, RENDER történeti sora): javítva. E10 (két korai ékezetlen commit-üzenet): **elfogadott kivétel** (már pusholt). U1–U5: lásd alább.
+
+## 3. kör (v1.4) — 5 eltérés, javítva
+
+| Eltérés | Kezelés |
+|---|---|
+| a `lezarva_osszegzes` és a generált Kész-sor elavult ⛔-t tartalmazott a védett `main`-ről | javítva: „a main-t ruleset védi, az Action a pardes-feladatok GitHub App tokenjével ír” |
+| az `ELLENOR_F20.md` elavult, önellentmondó volt | újraírva (ez a fájl) |
+| a 🔎→🔀 csere történeti szövegeket is átírt (v1.3 napló, B4 napló, D33) | helyreállítva: a történeti mondatok a 🔎-t említik, a v1.4 és a D33 a cserét |
+| a zárás „a két nagyító az E2 jelölése” pontatlan | javítva: az E2 a 🔍-t figyeli |
+| az `f06_forrasfelmeres.yml` push-lépései `contents: read` mellett | dokumentálva a workflow kommentjében (az F06 lezárva; újrafuttatásnál külön döntés) |
+
+## Felhasználói döntések (rendezve)
+
+| # | Tétel | Állapot |
 |---|---|---|
-| E1 | a #20 Kész-sora „merge `4ef806d`” (nem merge-commit; a `-S` a brief törzsében lévő szövegre is illeszkedett); a sor a merge előtt már a Kész listában | javítva: a hash csak a fejlécsor (`-G '^allapot: lezarva$'`) bekerülésének first-parent **merge**-commitjából jön; PR-ágon nincs hash. A merge előtti Kész-megjelenés az átállási szabály (a `main`-nek még nincs fejléce a feladatról) következménye, a zárójelentés jelzi |
-| E2 | a zárás kerülőútja (`general` kézzel) az E18 miatt nem működik | javítva: a zárás a tényleges állapotot írja, a kerülőút kikerült |
-| E3 | 14 átírt címsor, a `TÖRLÉS-SZÁNDÉKOS:` csak két fájlt nevez meg | a zárócommit üzenete megnevezi az `adat/SEMA.md`-t és az `F01`–`F05` első címsorait |
-| E4 | lógó `ELLENOR_F20.md` hivatkozás | ez a fájl |
-| E5 | #12 `forras` szemantikája (csak a T1–T2-t írja le) | dokumentált (B4 napló); a `forras` háttér-hivatkozás, a cella-egyezés a v1.3-mal indokolja |
-| E6 | #9 `ir`: a S2.6–S2.7 célja hiányzott | javítva (tematikus tanulmány felvéve) |
-| E7 | F20 `ir`: `fp2/` hiányzott, `MUNKAMENET.md` fölösleges | javítva |
-| E8 | #9 `forras` horgony nem egyértelmű | javítva: `#2. menet — kimenet-változtató` |
-| E9 | RENDER történeti commit-táblája átírva | visszaállítva |
-| E10 | ékezetlen commit-üzenetek (két korai commit) | tényként marad; a CLAUDE.md-szabály ellenére (a push előtti átfogalmazás interaktív rebase-t kívánna, ami itt nem támogatott) |
-| U1 | K8/D25: az Action push-a a védett `main`-re | **felhasználói döntés** (ruleset-bypass a `github-actions` számára, vagy PR-t nyitó Action) |
-| U2 | K7: az E18 nem kötelező check | **felhasználói döntés** (felvétel a kötelező check-ek közé) |
-| U3 | K5 (d): a próba jelölés-elvárása | megoldva a v1.4-ben (kötelező jelölés-javaslat, a próba újrafuttatva: megfelelt) |
-| U4 | D28: a B2 jóváhagyása nincs a repóban | rögzítve a munkalap fejlécében (a chatbeli jóváhagyás szövege) |
-| U5 | a menet saját briefje v1.2 → v1.3 | Q11 (2b, (e)) és Q2 (E18) a felhasználó döntése; a 🔀 jel a menet javaslata (D33), **jóváhagyandó** |
+| U1 | az Action push-a a védett `main`-re | rendezve: ruleset, bypass csak a `pardes-feladatok` App |
+| U2 | az E18 kötelező check | rendezve: `feladatkovetes` kötelező |
+| U3 | (d) próba jelölés-elvárása | rendezve (v1.4) |
+| U4 | B2 jóváhagyás rögzítése | rögzítve a munkalap fejlécében |
+| U5 | a jel: 🔀 (a 🔎 helyett) | rendezve (v1.4, a felhasználó döntése) |
 
-## A felhasználónak
-U1–U3, U5 (🔀): döntést kér. A `naplok/F20_zaras.md` és a PR leírása ezt ismétli.
+## Elfogadott, nem javítható kivételek
+- két korai commit-üzenet ékezet nélkül (4ef806d, e733c86; már pusholt);
+- a régi brief-nevek a nyitó prompt blokkokban és a `konkordancia/Karoli_versmegfeleltetes.tsv` proveniencia-sorában maradtak (K3 kivétele a `naplok/` mellett).
