@@ -475,7 +475,7 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   (a git history nem írható át visszamenőleg, l. a projekt szabálya, hogy
   csak új commit készül, nem amend/rebase); a tétel a JÖVŐBELI menetekre
   vonatkozó emlékeztető.
-- **N45 — a Károli-kulcs (KK) 44 Károli-verse eltolódás-gyanús, a Macula-
+- **N46 — a Károli-kulcs (KK) 44 Károli-verse eltolódás-gyanús, a Macula-
   illesztésben üres `karoli` értékkel.** *(ÚJ, F17 (#17) 3. kör, F17.6,
   `naplok/F17_import_naplo.md`, `naplok/F17_illesztetlen.tsv`, `naplok/ELLENOR_F17.md`)*
   A `LXX_versificacios_terkep.tsv` `EGYIK_SEM` fejezeteinél az identitás
