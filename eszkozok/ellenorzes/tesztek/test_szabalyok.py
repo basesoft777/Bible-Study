@@ -437,6 +437,26 @@ class E16Teszt(unittest.TestCase):
         self.assertEqual(talalatok, [])
 
 
+class E5CimAtszamozasTeszt(unittest.TestCase):
+    """E5: a pontcimek atszamozasa (16.x -> 22.x) nem torles; a szoveg
+    valtozasa vagy a tenyleges torles az."""
+
+    def test_atszamozas_nem_torles(self):
+        self.assertEqual(SZ._tenylegesen_torolt_cimsorok(
+            ['### 16.0 Felmérés és előkészítés', '## A FELADATOK.md #16 sorának mezője'],
+            ['### 22.0 Felmérés és előkészítés', '## A FELADATOK.md #22 sorának mezője']), [])
+
+    def test_szovegvaltozas_torles(self):
+        self.assertEqual(SZ._tenylegesen_torolt_cimsorok(
+            ['### 16.1 Prompt és kapu'], ['### 22.1 Prompt']), ['### 16.1 Prompt és kapu'])
+
+    def test_szintvaltas_es_darabszam(self):
+        self.assertEqual(len(SZ._tenylegesen_torolt_cimsorok(
+            ['### 1 A', '### 2 A'], ['### 3 A'])), 1)
+        self.assertEqual(len(SZ._tenylegesen_torolt_cimsorok(
+            ['### 1 A'], ['## 1 A'])), 1)
+
+
 class D8DiffHatokorTeszt(unittest.TestCase):
     """D8: a HIBA csak a diff altal hozzaadott sorra vonatkozik, a fajl
     regi sorai csak JELENTES-t kapnak."""

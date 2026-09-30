@@ -9,12 +9,12 @@ allapot: nem_indult
 ad: mért adat arról, megéri-e a teljes Bibliát külső modellekkel Strong-számmal párosítani (minőség, költség, KJV-támpont haszna)
 kovetkezo: mérőpilot P0–P1, ⛔ a futtatás előtt (szúrópróba, küszöbök, secret)
 olvas: [konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/KJV_Strongs_Genesis.tsv]
-ir: [eszkozok/f16/, f16p/, naplok/F16P_jelentes.md, DONTESEK.md, .github/workflows/f16p_pilot.yml]
+ir: [eszkozok/karoli_strong/, f21p/, naplok/F21P_jelentes.md, DONTESEK.md, .github/workflows/f21p_pilot.yml]
 fugg: [6]
 ---
-# F16_KAROLI_STRONG_PILOT_BRIEF.md — Károli–Strong párosítás: mérőpilot (minőség és költség)
+# F21_KAROLI_STRONG_PILOT_BRIEF.md — Károli–Strong párosítás: mérőpilot (minőség és költség)
 
-*FELADATOK #16 · pilot · v1 · 2026.09.30 · Modell: sonnet (szkript, mérés) · aranyminta: opus (`vegrehajto-opus`) · Külső modellek (OpenRouter): `google/gemini-3.1-flash-lite` (A), `deepseek/deepseek-v4-flash` (B), `google/gemini-3.8-flash` (C) · Ág: `claude/f16-pilot` · Egy menet, egy ⛔ megállással*
+*FELADATOK #21 · pilot · v1 · 2026.09.30 · Modell: sonnet (szkript, mérés) · aranyminta: opus (`vegrehajto-opus`) · Külső modellek (OpenRouter): `google/gemini-3.1-flash-lite` (A), `deepseek/deepseek-v4-flash` (B), `google/gemini-3.8-flash` (C) · Ág: `claude/f21-pilot` · Egy menet, egy ⛔ megállással*
 
 ## Mit ad, ha kész
 
@@ -24,7 +24,7 @@ Mért adatot arról, hogy megéri-e a teljes Bibliát külső modellekkel páros
 2. **Költség:** mennyibe kerülne a teljes futás. A becslés a pilot mért token-felhasználásából és a teljes Biblia valódi vershosszaiból készül, nem naiv szorzással. (A Thayer-becslés tanulsága: a ~30 USD nem volt levezethető, `naplok/ELLENOR_FP.md`.)
 3. **A KJV-támpont haszna:** érdemes-e a teljes KJV-t importálni (N29), vagy a modellek nélküle is elég jók.
 
-A pilot **mérés, nem adatgyártás**. Nem kerül adat az `adat/` és a `konkordancia/` könyvtárba. A prompt, a kapu és az aranyminta viszont újrahasználható a teljes futáshoz (`F16_KAROLI_STRONG_BRIEF.md`), ezért annak 16.1–16.4 lépése a pilot után lerövidül.
+A pilot **mérés, nem adatgyártás**. Nem kerül adat az `adat/` és a `konkordancia/` könyvtárba. A prompt, a kapu és az aranyminta viszont újrahasználható a teljes futáshoz (`F22_KAROLI_STRONG_BRIEF.md`), ezért annak 22.1–22.4 lépése a pilot után lerövidül.
 
 ## Munkamegosztás
 
@@ -39,7 +39,7 @@ A pilot **mérés, nem adatgyártás**. Nem kerül adat az `adat/` és a `konkor
 
 ## Keretek
 
-- **A modell nem ír Strong-számot**, csak sorszámpárokat. A Strong-számot a mérőszkript veszi a TAHOT/TAGNT-ből (l. a fő brief 16.1 pontját).
+- **A modell nem ír Strong-számot**, csak sorszámpárokat. A Strong-számot a mérőszkript veszi a TAHOT/TAGNT-ből (l. a fő brief 22.1 pontját).
 - **Számadat** csak szkriptkimenetből kerülhet a jelentésbe.
 - **Kulcs:** `OPENROUTER_API_KEY` repo-secret, csak az Actions job `env`-jében; commit előtt kulcs-grep.
 - **HTTP-kliens:** az `eszkozok/fordit.py` `_valodi_http_kuldo` függvénye, újrahasználva. A költséget a válasz `usage` mezőjéből naplózd hívásonként (bemeneti, kimeneti és gondolkodási token, és a `cost`, ha a válasz tartalmazza).
@@ -51,8 +51,8 @@ A pilot **mérés, nem adatgyártás**. Nem kerül adat az `adat/` és a `konkor
 
 ### P0. Előkészítés
 
-1. **Tokenizálás:** `eszkozok/f16/tokenek.py` (Károli: Unicode betű- és számjegysorozat). Az eredeti szavak versen belüli sorszámát a TAHOT/TAGNT sorrendje adja; ellenőrizd a nyers fájl `#01, #02…` sorszámával (`konkordancia/TAHOT_TAGNT_README.md`).
-2. **Minta (rögzített véletlenmaggal):** `f16p/minta.tsv`, 200 vers, négy rétegben:
+1. **Tokenizálás:** `eszkozok/karoli_strong/tokenek.py` (Károli: Unicode betű- és számjegysorozat). Az eredeti szavak versen belüli sorszámát a TAHOT/TAGNT sorrendje adja; ellenőrizd a nyers fájl `#01, #02…` sorszámával (`konkordancia/TAHOT_TAGNT_README.md`).
+2. **Minta (rögzített véletlenmaggal):** `f21p/minta.tsv`, 200 vers, négy rétegben:
 
    | Réteg | Könyvek | Vers | KJV-támpont |
    |---|---|---|---|
@@ -62,24 +62,24 @@ A pilot **mérés, nem adatgyártás**. Nem kerül adat az `adat/` és a `konkor
    | R4 ÚSZ | evangéliumok 25, levelek 25 | 50 | nincs |
 
    Az R1 1Mózes-verseinek legalább fele olyan vers legyen, amelyhez van sor a `Karoli_Strong_kivonat.tsv`-ben (régi arany). A 61 + 30 versmegfeleltetési maradék verse nem kerülhet a mintába.
-3. **Prompt és kapu:** a fő brief 16.1 pontja szerint (bemenet, JSON-kimenet, H9xxx-szabály, `betoldas`, `forditatlan`, ötpontos kapu, egy újrakérés). A prompt: `f16p/prompt_v1.md`. Kötegméret: 10 vers / hívás.
+3. **Prompt és kapu:** a fő brief 22.1 pontja szerint (bemenet, JSON-kimenet, H9xxx-szabály, `betoldas`, `forditatlan`, ötpontos kapu, egy újrakérés). A prompt: `f21p/prompt_v1.md`. Kötegméret: 10 vers / hívás.
 4. **A régi arany:** a `Karoli_Strong_kivonat.tsv` mintába eső sorai `(igehely, Károli-szó, Strong)` hármasként, Károli-natív igehellyel és nullázott Strong-számmal, csak memóriában.
 
 ### P1. Aranyminta
 
-A `vegrehajto-opus` 60 versre teljes, szó-szintű párosítást készít a modellek JSON-formájában: R1-ből 20, R2 és R3 együtt 20, R4-ből 20 verset. A modellek válaszait nem láthatja; ezek ekkor még nem is léteznek. Kimenet: `f16p/arany_opus.jsonl`.
+A `vegrehajto-opus` 60 versre teljes, szó-szintű párosítást készít a modellek JSON-formájában: R1-ből 20, R2 és R3 együtt 20, R4-ből 20 verset. A modellek válaszait nem láthatja; ezek ekkor még nem is léteznek. Kimenet: `f21p/arany_opus.jsonl`.
 
 ### P2. ⛔ Megállás a futtatás előtt
 
 Nyiss tételt a `DONTESEK.md`-ben, és kérd:
 
-1. **Szúrópróba:** az Opus-aranyból 10 vers (rétegenként 2–3, a szkript választja), olvasható formában (`naplok/F16P_arany_szuroproba.md`: magyar szó → eredeti szó, Strong, angol glossza). A felhasználó jelzi a hibás linkeket. Ha a hibás linkek aránya 3% fölött van, az Opus javítja az aranyat, és a szúrópróba megismétlődik.
+1. **Szúrópróba:** az Opus-aranyból 10 vers (rétegenként 2–3, a szkript választja), olvasható formában (`naplok/F21P_arany_szuroproba.md`: magyar szó → eredeti szó, Strong, angol glossza). A felhasználó jelzi a hibás linkeket. Ha a hibás linkek aránya 3% fölött van, az Opus javítja az aranyat, és a szúrópróba megismétlődik.
 2. **A döntési küszöbök megerősítése** (lent, „Döntési szabály”). **A küszöbök a futtatás előtt rögzülnek, utána nem változnak.**
 3. **Secret:** az `OPENROUTER_API_KEY` repo-secret beállítva.
 
 ### P3. Futtatás (Actions)
 
-Workflow: `.github/workflows/f16p_pilot.yml`, indítás push-ra, ha az `f16p/futtatas.txt` változik.
+Workflow: `.github/workflows/f21p_pilot.yml`, indítás push-ra, ha az `f21p/futtatas.txt` változik.
 
 | Futás | Modell | Versek | Cél |
 |---|---|---|---|
@@ -90,11 +90,11 @@ Workflow: `.github/workflows/f16p_pilot.yml`, indítás push-ra, ha az `f16p/fut
 | F5 | A, KJV nélkül | R1, 100 | a KJV-támpont haszna |
 | F6 | B, KJV nélkül | R1, 100 | a KJV-támpont haszna |
 
-A nyers válaszok: `f16p/valaszok/<futás>.jsonl`. Futásnapló hívásonként: `f16p/futasnaplo.tsv`.
+A nyers válaszok: `f21p/valaszok/<futás>.jsonl`. Futásnapló hívásonként: `f21p/futasnaplo.tsv`.
 
 ### P4. Mérés
 
-`eszkozok/f16/meres.py` minden összeállításra (**A**, **B**, **C**, **A+B** egyezéses, **A+B+C** döntőbírós) és rétegenként külön számolja:
+`eszkozok/karoli_strong/meres.py` minden összeállításra (**A**, **B**, **C**, **A+B** egyezéses, **A+B+C** döntőbírós) és rétegenként külön számolja:
 
 | Mérőszám | Definíció |
 |---|---|
@@ -118,13 +118,13 @@ A becslés levezetése, lépésenként a jelentésbe írva:
 6. Bizonytalanság: bootstrap a pilot versein (1 000 újramintavétel), 90%-os intervallum.
 7. Ellenőrzés: a pilot saját tényleges költsége és a módszerrel a 200 versre vetített költség eltérése a jelentésbe kerül. Ha az eltérés 10% fölött van, a módszert javítani kell, mielőtt a vetítés bekerül.
 
-Kézimunka-vetítés: a teljes Bibliára várható `alacsony` linkek száma és a fő brief 16.7/3 szerinti átnézési sor mérete.
+Kézimunka-vetítés: a teljes Bibliára várható `alacsony` linkek száma és a fő brief 22.7/3 szerinti átnézési sor mérete.
 
 ### P6. Jelentés és zárás
 
-- `naplok/F16P_jelentes.md`: a mérőszámok összeállításonként és rétegenként, a költségvetítés levezetéssel és intervallummal, a KJV-hatás, a javaslat a döntési szabály szerint.
+- `naplok/F21P_jelentes.md`: a mérőszámok összeállításonként és rétegenként, a költségvetítés levezetéssel és intervallummal, a KJV-hatás, a javaslat a döntési szabály szerint.
 - Döntési tétel a `DONTESEK.md`-ben (a javaslattal).
-- `fuggetlen-ellenor` (`naplok/ELLENOR_F16P.md`), push, draft PR, a `FELADATOK.md` #16 sorának frissítése.
+- `fuggetlen-ellenor` (`naplok/ELLENOR_F21P.md`), push, draft PR, a `FELADATOK.md` #21 sorának frissítése.
 
 ## Döntési szabály (a P2 ⛔ pontnál rögzül)
 
@@ -153,17 +153,17 @@ Egy összeállítás **megfelel**, ha:
 - **P-K5** A költségvetítés levezetve, intervallummal, és a 200 versre visszaellenőrizve (≤ 10% eltérés).
 - **P-K6** A pilot összköltsége ≤ 3 USD, a futásnapló alapján.
 - **P-K7** Javaslat a döntési szabály szerint; a döntési tétel a `DONTESEK.md`-ben.
-- **P-K8** Kulcs-grep tiszta, `ELLENOR_F16P.md` TISZTA, CI zöld.
+- **P-K8** Kulcs-grep tiszta, `ELLENOR_F21P.md` TISZTA, CI zöld.
 
 <!-- KOZVETLEN_FUTTATAS -->
 ## Nyitó prompt (a Code-sessionhöz, `/kovetkezo` után)
 
-> A feladat: FELADATOK #16 mérőpilotja. A brief: `F16_KAROLI_STRONG_PILOT_BRIEF.md` a repó gyökerében; a prompt és a kapu leírása a fő briefben van (`F16_KAROLI_STRONG_BRIEF.md` 16.1). Futtasd a P0–P1 lépéseket, a P2 ⛔ pontján állj meg, és a tételt a `DONTESEK.md`-be írd. A „mehet” után P3–P6. Ág: `claude/f16-pilot`. Minden lépés után commit és push. A végén `fuggetlen-ellenor`, push, draft PR, a `FELADATOK.md` #16 sorának frissítése.
+> A feladat: FELADATOK #21 mérőpilotja. A brief: `F21_KAROLI_STRONG_PILOT_BRIEF.md` a repó gyökerében; a prompt és a kapu leírása a fő briefben van (`F22_KAROLI_STRONG_BRIEF.md` 22.1). Futtasd a P0–P1 lépéseket, a P2 ⛔ pontján állj meg, és a tételt a `DONTESEK.md`-be írd. A „mehet” után P3–P6. Ág: `claude/f21-pilot`. Minden lépés után commit és push. A végén `fuggetlen-ellenor`, push, draft PR, a `FELADATOK.md` #21 sorának frissítése.
 <!-- /KOZVETLEN_FUTTATAS -->
 
-## A FELADATOK.md #16 sorának „Következő lépés” mezője
+## A FELADATOK.md #21 sorának „Következő lépés” mezője
 
-> Mérőpilot (`F16_KAROLI_STRONG_PILOT_BRIEF.md`): minőség és költségvetítés 200 versen, ⛔ a futtatás előtt. A teljes futás csak a pilot megfelelő eredménye után.
+> Mérőpilot (`F21_KAROLI_STRONG_PILOT_BRIEF.md`): minőség és költségvetítés 200 versen, ⛔ a futtatás előtt. A teljes futás csak a pilot megfelelő eredménye után.
 
 ## Döntésnapló
 
