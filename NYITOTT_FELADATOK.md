@@ -327,9 +327,10 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   visszaadja; a cloud proxy okozhatta). A Nave-forrás felmérése helyi gépről ismétlendő, a
   `basokant/nave` adatforrásával együtt.
   **LEZÁRVA (F18, 2026.09.30, javaslat-állapotban):** DT5 szerint a `basokant/nave` nyers szövege
-  importálva saját parszolóval (`konkordancia/Nave_basokant.tsv`, 85 116 sor, 5 322 téma); a `theonize`
+  importálva saját parszolóval (`konkordancia/Nave_basokant.tsv`, 85 246 sor, 5 322 téma); a `theonize`
   nem került be. Napló: `naplok/F18_import_naplo.md`, `naplok/F18_licenc.md`. Nyitva marad: teljes
   független kiadás-összevetés (letöltés-engedéllyel) — l. DONTESEK DT18.
+- **N45 — Nave_basokant: maradék jelöletlen hivatkozás-töredékek.** *(ÚJ, F18 4. ellenőri kör, 2026.09.30)* Jelöletlen, számmal nyilvántartott maradék a `konkordancia/Nave_basokant.tsv`-ben: (a) `REVERENCEGe 35:5` (NAVE-4148): az 1Móz 35:5 nem lett sor, a töredék 153 sor `cimke` mezőjébe öröklődik; (b) 19 könyv nélküli folytató-hivatkozás `</ref>; N:N.` alakban (nyers forrás 20238 ×2, 20494 ×16, 21842), 22 sor `cimke`-je, egyik sem lett sor; (c) SATYR `utotag:34:14.` (Ézs 34:14); (d) 8 `with N` fejezetszám-folytatás (TSV-fájlsor 5263, 30166, 37102, 38336, 38737, 38741, 52628, 73970). Javaslat: külön javító menet; az import addig `javaslat`-állapotú. Napló: `naplok/ELLENOR_F18.md` 4. kör, DT18.
 
 - **N28 — az FJ2 versszámozási következtetései felülírva.** *(ÚJ, FJ-ellenőrzés, 2026.09.25)*
   A `F01_KAROLI_KULCS_BRIEF.md` 0. pontja szerint nem tartható: a Jón 2:3 → LXX 2:4 javaslat, a

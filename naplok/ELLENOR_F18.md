@@ -43,3 +43,19 @@ OK: `datasetek.tsv` 4 új sor (72 adatsor, 7 mező, nincs `mindig`/`felteteles`)
 Nem ellenőrzött: a fejezetszám-egyezés teljes összevetése (77 673/77 685), E17 (DT3 nyitott), ⛔ pontok (célzott kör).
 
 **Verdikt 3. körre: ELTÉRÉS: 7 tétel (2 helyesbítve, 1 áthelyezve, 4 nyitott DT18-ban). A PR-ben lévő adat `javaslat`-állapotú, teljes jelölési lefedettséget nem állít.**
+
+## 4. kör (F18.12 = `5ec2af1`, e641566..5ec2af1) — ELTÉRÉS: 3 tétel
+
+Számok Grep-pel igazolva: 85 246 sor (`vers` 78 124, `lasd` 4 368, `szoveg` 2 754), `gyanus_kijelzes` 57 sor (59 jelölés), `javaslat:` 54, `toredek:` 53, `nem_ertekelt` 57; a 85 116 → 85 246 bontás (+125, +14, −9; 174 kivett sor mind besorolható). CI-szabályok a merge-base-hez (`4525a63`): E2–E16 0, kivéve E9 (2) és E11 (1) régi, diffen kívüli sorokon. Sorcsökkenés 0; a generátorok csak az `adatosítva` értéket vizsgálják, a `javaslat` nem töri őket; DT18 8 cellás.
+
+**Az elfogadás (a 3. kör 7 tétele) a saját hatókörén teljesül:** csonkolt `javaslat` 0; jelöletlen `Col.8.x`/`Tit 2` 0 (8 sor `javitva`, 4 `Tit 2` gyanus); jelöletlen római számos hivatkozás 0; `with N:N` a `cimke`/`utotag` mezőben 0/0 (125 `with_folytato` sor, a `konyv_oroklve` mind a 80 ellenőrzött esetben az előző `osisRef` könyve); SEMA 2.13 és szerepmátrix összhang; `Jer 2` jelölt. Szúrópróba Károlival 19 helyen, 8/8 javított sor, `NAVE_ROV` leképezés egyezik.
+
+| # | lelet | súly | sorsa |
+|---|---|---|---|
+| 1 | Jelöletlen hivatkozás-töredék a `cimke`/`utotag` mezőben: `REVERENCEGe 35:5` (1 hivatkozás, 153 sor cimkéje); 19 könyv nélküli folytatás `</ref>; N:N.` (22 sor cimkéje); SATYR `utotag:34:14.` | közepes | **N45**, DT18 — a felhasználó szabálya szerint nem javítva |
+| 2 | Elavult „85 116” és „nincs adatosítva”: `datasetek.tsv` (4 sor), brief `lezarva_osszegzes`, `NYITOTT_FELADATOK.md` N27, `naplok/F18_zaras.md` | közepes | **javítva** a zárásban (dokumentációs számok; adat nem változott) |
+| 3 | A napló 2.8 a 8 `with N` sort eggyel kisebb fájlsorral hivatkozza | alacsony | N45-ben a helyes fájlsorok (5263 … 73970) |
+
+Nem ellenőrizhető: CI-jelentés egyezése, Gemini 0 USD, a generált `lexikon/` drift-ellenőrzése (nem futott újragenerálás).
+
+**Verdikt 4. körre: ELTÉRÉS: 3 tétel (1 helyesbítve, 1 N45-ként nyitva, 1 N45-ben rögzítve). A felhasználó szabálya szerint a javítás itt lezárul; az import `javaslat`-állapotú.**
