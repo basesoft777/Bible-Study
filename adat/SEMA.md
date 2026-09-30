@@ -349,12 +349,12 @@ stb.) változatlanul érvényes, csak a tárolás helye más.
 ### 2.6 `datasetek.tsv`
 
 Kulcs: `study_tipus` + `dataset`. A terv 4.3 mátrixa, négy study-típusra kifejtve
-(`bovitett`, `tematikus`, `melyelemzes`, `lexikon_oldal`), 19 dataset × 4 = 76 sor.
+(`bovitett`, `tematikus`, `melyelemzes`, `lexikon_oldal`), 21 dataset × 4 = 84 sor.
 
 | Mező | Értékkészlet |
 |---|---|
 | `study_tipus` | `bovitett` \| `tematikus` \| `melyelemzes` \| `lexikon_oldal` |
-| `dataset` | a dataset rövid neve (19 érték) |
+| `dataset` | a dataset rövid neve (21 érték) |
 | `fajl` | a dataset útvonala; glob is lehet (`konkordancia/LXX_kivonat_*.tsv`), üres, ha `allapot=hianyzik` |
 | `kotelezoseg` | `mindig` \| `felteteles` \| `ajanlott` \| `oroklott` |
 | `feltetel` | mikor válik kötelezővé a `felteteles` sor; `—`, ha nem feltételes |

@@ -1,0 +1,935 @@
+# GENERÁLT: eszkozok/f17/macula_futtat.py — kézzel nem szerkesztendő.
+# forras=https://github.com/Clear-Bible/macula-hebrew@commit 47db250bd55d0d8577f2a94fba114ef16c35b23c | licenc=CC BY 4.0 (Biblica, Inc); l. naplok/F17_import_naplo.md | ts=2026-09-30
+# proveniencia: scope=teljes import (F17, FELADATOK #17) | forras=https://github.com/Clear-Bible/macula-hebrew | ts=2026-09-30
+# futtatasi parancs: python eszkozok/f17/macula_futtat.py --heber <klon> --gorog <klon>
+# sorok: morfema-szint (lowfat <w>); ref = Macula (MT/WLC) szamozas; karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva
+# konyv=HAG (Aggeus) | sorok=928 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok a Macula-kanon sorrendjeben (HEBER_KONYV_FAJL, eszkozok/f17/macula_import.py) osszefuzve, a fejlecek nelkul a teljes tabla torzset adjak
+xml_id	ref	karoli	kk_mod	allapot	szo	lemma	strong	strong_x	strong_illesztes	morf	szofaj	gloss	gorog_lxx	gorog_strong
+o370010010011	HAG 1:1!1	Hag 1:1	identitas	javaslat:strong_funkcio_kod	בִּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o370010010012	HAG 1:1!1	Hag 1:1	identitas	rendben	שְׁנַ֤ת	שָׁנָה	H8141	8141	igen	Ncfsc	noun	year		
+o370010010021	HAG 1:1!2	Hag 1:1	identitas	rendben	שְׁתַּ֨יִם֙	שְׁנַיִם	H8147	8147	igen	Acfda	adjective	two		
+o370010010031	HAG 1:1!3	Hag 1:1	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	of	ἐπὶ	G1909
+o370010010032	HAG 1:1!3	Hag 1:1	identitas	rendben	דָרְיָ֣וֶשׁ	דָּרְיָוֶשׁ	H1867	1867	igen	Np	noun	Darius	δαρείου	
+o370010010041	HAG 1:1!4	Hag 1:1	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τοῦ	G3588
+o370010010042	HAG 1:1!4	Hag 1:1	identitas	rendben	מֶּ֔לֶךְ	מֶלֶךְ	H4428	4428	igen	Ncmsa	noun	king	βασιλέως	G0935
+o370010010051	HAG 1:1!5	Hag 1:1	identitas	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	in	ἐν	G1722
+o370010010051ה	HAG 1:1!5	Hag 1:1	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o370010010052	HAG 1:1!5	Hag 1:1	identitas	rendben	חֹ֨דֶשׁ֙	חֹדֶשׁ	H2320	2320	igen	Ncmsa	noun	month	μηνὶ	G3376
+o370010010061	HAG 1:1!6	Hag 1:1	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	τῷ	G3588
+o370010010062	HAG 1:1!6	Hag 1:1	identitas	rendben	שִּׁשִּׁ֔י	שִׁשִּׁי	H8345	8345	igen	Aomsa	adjective	sixth	ἕκτῳ	G1623
+o370010010071	HAG 1:1!7	Hag 1:1	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on		
+o370010010072	HAG 1:1!7	Hag 1:1	identitas	rendben	י֥וֹם	יוֹם	H3117	3117	igen	Ncmsa	noun	day		
+o370010010081	HAG 1:1!8	Hag 1:1	identitas	rendben	אֶחָ֖ד	אֶחָד	H0259	0259	igen	Acmsa	adjective	one	μιᾷ	G3391
+o370010010091	HAG 1:1!9	Hag 1:1	identitas	javaslat:strong_funkcio_kod	לַ	לְ		3807a	javaslat:funkcio_kod	Rd	preposition	of	τοῦ	G3588
+o370010010091ה	HAG 1:1!9	Hag 1:1	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o370010010092	HAG 1:1!9	Hag 1:1	identitas	rendben	חֹ֑דֶשׁ	חֹדֶשׁ	H2320	2320	igen	Ncmsa	noun	month	μηνὸς	G3376
+o370010010101	HAG 1:1!10	Hag 1:1	identitas	rendben	הָיָ֨ה	הָיָה	H1961	1961	igen	Vqp3ms	verb	it.came	ἐγένετο	G1096
+o370010010111	HAG 1:1!11	Hag 1:1	identitas	rendben	דְבַר	דָּבָר	H1697	1697	igen	Ncmsc	noun	the.word	λόγος	G3056
+o370010010121	HAG 1:1!12	Hag 1:1	identitas	rendben	יְהוָ֜ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριου	G2962
+o370010010131	HAG 1:1!13	Hag 1:1	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	by	ἐν	G1722
+o370010010132	HAG 1:1!13	Hag 1:1	identitas	rendben	יַד	יָד	H3027	3027	igen	Ncbsc	noun	the.hand	ξειρὶ	G5495
+o370010010141	HAG 1:1!14	Hag 1:1	identitas	rendben	חַגַּ֣י	חַגַּי	H2292	2292	igen	Np	noun	of.Haggai	αγγαιου	
+o370010010151	HAG 1:1!15	Hag 1:1	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τοῦ	G3588
+o370010010152	HAG 1:1!15	Hag 1:1	identitas	rendben	נָּבִ֗יא	נָבִיא	H5030	5030	igen	Ncmsa	noun	prophet	προφήτου	G4396
+o370010010161	HAG 1:1!16	Hag 1:1	identitas	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	πρὸς	G4314
+o370010010171	HAG 1:1!17	Hag 1:1	identitas	rendben	זְרֻבָּבֶ֤ל	זְרֻבָּבֶל	H2216	2216	igen	Np	noun	Zerubbabel	ζοροβαβελ	G2216
+o370010010181	HAG 1:1!18	Hag 1:1	identitas	rendben	בֶּן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son		
+o370010010191	HAG 1:1!19	Hag 1:1	identitas	rendben	שְׁאַלְתִּיאֵל֙	שְׁאַלְתִּיאֵל	H7597	7597	igen	Np	noun	of.Shealtiel	σαλαθιηλ	
+o370010010201	HAG 1:1!20	Hag 1:1	identitas	rendben	פַּחַ֣ת	פֶּחָה	H6346	6346	igen	Ncmsc	noun	the.governor	φυλῆς	G5443
+o370010010211	HAG 1:1!21	Hag 1:1	identitas	rendben	יְהוּדָ֔ה	יְהוּדָה	H3063	3063	igen	Np	noun	of.Judah	ιουδα	G2448
+o370010010221	HAG 1:1!22	Hag 1:1	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010010222	HAG 1:1!22	Hag 1:1	identitas	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	πρὸς	G4314
+o370010010231	HAG 1:1!23	Hag 1:1	identitas	rendben	יְהוֹשֻׁ֧עַ	יְהֹושֻׁעַ	H3091	3091	igen	Np	noun	Joshua	ἰησοῦν	G2424
+o370010010241	HAG 1:1!24	Hag 1:1	identitas	rendben	בֶּן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son		
+o370010010251	HAG 1:1!25	Hag 1:1	identitas	rendben	יְהוֹצָדָ֛ק	יְהוֹצָדָק	H3087	3087	igen	Np	noun	of.Jehozadak	ιωσεδεκ	
+o370010010261	HAG 1:1!26	Hag 1:1	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὸν	G3588
+o370010010262	HAG 1:1!26	Hag 1:1	identitas	rendben	כֹּהֵ֥ן	כֹּהֵן	H3548	3548	igen	Ncmsa	noun	priest	ἱερέα	G2409
+o370010010271	HAG 1:1!27	Hag 1:1	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	τὸν	G3588
+o370010010272	HAG 1:1!27	Hag 1:1	identitas	rendben	גָּד֖וֹל	גָּדוֹל	H1419	1419	igen	Aamsa	adjective	great	μέγαν	G3173
+o370010010281	HAG 1:1!28	Hag 1:1	identitas	javaslat:strong_funkcio_kod	לֵ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(cmp)		
+o370010010282	HAG 1:1!28	Hag 1:1	identitas	rendben	אמֹֽר	אָמַר	H0559	0559	igen	Vqc	verb		λέγων	G3004
+o370010020011	HAG 1:2!1	Hag 1:2	identitas	rendben	כֹּ֥ה	כֹּה	H3541	3541	igen	D	adverb	thus	τάδε	G3592
+o370010020021	HAG 1:2!2	Hag 1:2	identitas	rendben	אָמַ֛ר	אָמַר	H0559	0559	igen	Vqp3ms	verb	he.says	λέγει	G3004
+o370010020031	HAG 1:2!3	Hag 1:2	identitas	rendben	יְהוָ֥ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o370010020041	HAG 1:2!4	Hag 1:2	identitas	rendben	צְבָא֖וֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts	παντοκράτωρ	G3841
+o370010020051	HAG 1:2!5	Hag 1:2	identitas	javaslat:strong_funkcio_kod	לֵ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(cmp)		
+o370010020052	HAG 1:2!5	Hag 1:2	identitas	rendben	אמֹ֑ר	אָמַר	H0559	0559	igen	Vqc	verb		λέγων	G3004
+o370010020061	HAG 1:2!6	Hag 1:2	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ὁ	G3588
+o370010020062	HAG 1:2!6	Hag 1:2	identitas	rendben	עָ֤ם	עַם	H5971	5971	igen	Ncmsa	noun	people	λαὸς	G2992
+o370010020071	HAG 1:2!7	Hag 1:2	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370010020072	HAG 1:2!7	Hag 1:2	identitas	rendben	זֶּה֙	זֶה	H2088	2088	igen	Pdxms	pronoun	this	οὗτος	G3778
+o370010020081	HAG 1:2!8	Hag 1:2	identitas	rendben	אָֽמְר֔וּ	אָמַר	H0559	0559	igen	Vqp3cp	verb	they.have.said	λέγουσιν	G3004
+o370010020091	HAG 1:2!9	Hag 1:2	identitas	rendben	לֹ֥א	לֹא	H3808	3808	igen	Tn	particle	not	οὐξ	G3756
+o370010020101	HAG 1:2!10	Hag 1:2	identitas	rendben	עֶת	עֵת	H6256	6256	igen	Ncbsc	noun	a.time		
+o370010020111	HAG 1:2!11	Hag 1:2	identitas	rendben	בֹּ֛א	בּוֹא	H0935	0935	igen	Vqc	verb	to.come	ἥκει	G2240
+o370010020121	HAG 1:2!12	Hag 1:2	identitas	rendben	עֶת	עֵת	H6256	6256	igen	Ncbsc	noun	the.time	καιρὸς	G2540
+o370010020131	HAG 1:2!13	Hag 1:2	identitas	rendben	בֵּ֥ית	בַּיִת	H1004	1004	igen	Ncmsc	noun	of.the.house	οἶκον	G3624
+o370010020141	HAG 1:2!14	Hag 1:2	identitas	rendben	יְהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o370010020151	HAG 1:2!15	Hag 1:2	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to		
+o370010020152	HAG 1:2!15	Hag 1:2	identitas	rendben	הִבָּנֽוֹת	בָּנָה	H1129	1129	igen	VNc	verb	be.rebuilt		
+o370010030011	HAG 1:3!1	Hag 1:3	identitas	javaslat:strong_funkcio_kod	וַֽ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010030012	HAG 1:3!1	Hag 1:3	identitas	rendben	יְהִי֙	הָיָה	H1961	1961	igen	Vqw3ms	verb	it.came	ἐγένετο	G1096
+o370010030021	HAG 1:3!2	Hag 1:3	identitas	rendben	דְּבַר	דָּבָר	H1697	1697	igen	Ncmsc	noun	the.word	λόγος	G3056
+o370010030031	HAG 1:3!3	Hag 1:3	identitas	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o370010030041	HAG 1:3!4	Hag 1:3	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	by	ἐν	G1722
+o370010030042	HAG 1:3!4	Hag 1:3	identitas	rendben	יַד	יָד	H3027	3027	igen	Ncbsc	noun	the.hand	ξειρὶ	G5495
+o370010030051	HAG 1:3!5	Hag 1:3	identitas	rendben	חַגַּ֥י	חַגַּי	H2292	2292	igen	Np	noun	of.Haggai	αγγαιου	
+o370010030061	HAG 1:3!6	Hag 1:3	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τοῦ	G3588
+o370010030062	HAG 1:3!6	Hag 1:3	identitas	rendben	נָּבִ֖יא	נָבִיא	H5030	5030	igen	Ncmsa	noun	prophet	προφήτου	G4396
+o370010030071	HAG 1:3!7	Hag 1:3	identitas	javaslat:strong_funkcio_kod	לֵ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(cmp)		
+o370010030072	HAG 1:3!7	Hag 1:3	identitas	rendben	אמֹֽר	אָמַר	H0559	0559	igen	Vqc	verb		λέγων	G3004
+o370010040011	HAG 1:4!1	Hag 1:4	identitas	javaslat:strong_funkcio_kod	הַ	הֲ		1886b	javaslat:funkcio_kod	Ti	particle	[does].a	εἰ	G1487
+o370010040012	HAG 1:4!1	Hag 1:4	identitas	rendben	עֵ֤ת	עֵת	H6256	6256	igen	Ncbsa	noun	time?	καιρὸς	G2540
+o370010040021	HAG 1:4!2	Hag 1:4	identitas	javaslat:strong_funkcio_kod	לָ	לְ		3807a	javaslat:funkcio_kod	R	preposition	[belong].to		
+o370010040022	HAG 1:4!2	Hag 1:4	identitas	javaslat:strong_funkcio_kod	כֶם֙	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμῖν	G5213
+o370010040031	HAG 1:4!3	Hag 1:4	identitas	javaslat:strong_betu_alap	אַתֶּ֔ם	אַתֶּם	H0859	0859a	javaslat:betu_alap	Pp2mp	pronoun	you		
+o370010040041	HAG 1:4!4	Hag 1:4	identitas	javaslat:strong_funkcio_kod	לָ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τοῦ	G3588
+o370010040042	HAG 1:4!4	Hag 1:4	identitas	rendben	שֶׁ֖בֶת	יָשַׁב	H3427	3427	igen	Vqc	verb	dwell	οἰκεῖν	G3611
+o370010040051	HAG 1:4!5	Hag 1:4	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o370010040052	HAG 1:4!5	Hag 1:4	identitas	rendben	בָתֵּי	בַּיִת	H1004	1004	igen	Ncmpc	noun	houses	οἴκοις	G3624
+o370010040053	HAG 1:4!5	Hag 1:4	identitas	javaslat:strong_funkcio_kod	כֶ֣ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o370010040061	HAG 1:4!6	Hag 1:4	identitas	rendben	סְפוּנִ֑ים	סָפַן	H5603	5603	igen	Vqsmpa	verb	paneled	κοιλοστάθμοις	
+o370010040071	HAG 1:4!7	Hag 1:4	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	ὁ	G3588
+o370010040072	HAG 1:4!7	Hag 1:4	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	δὲ	G1161
+o370010040073	HAG 1:4!7	Hag 1:4	identitas	rendben	בַּ֥יִת	בַּיִת	H1004	1004	igen	Ncmsa	noun	house	οἶκος	G3624
+o370010040081	HAG 1:4!8	Hag 1:4	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370010040082	HAG 1:4!8	Hag 1:4	identitas	rendben	זֶּ֖ה	זֶה	H2088	2088	igen	Pdxms	pronoun	this	οὗτος	G3778
+o370010040091	HAG 1:4!9	Hag 1:4	identitas	rendben	חָרֵֽב	חָרֵב	H2720	2720	igen	Aamsa	adjective	[is].desolate	ἐχηρήμωται	
+o370010050011	HAG 1:5!1	Hag 1:5	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010050012	HAG 1:5!1	Hag 1:5	identitas	rendben	עַתָּ֕ה	עַתָּה	H6258	6258	igen	D	adverb	therefore	νῦν	G3568
+o370010050021	HAG 1:5!2	Hag 1:5	identitas	rendben	כֹּ֥ה	כֹּה	H3541	3541	igen	D	adverb	thus	τάδε	G3592
+o370010050031	HAG 1:5!3	Hag 1:5	identitas	rendben	אָמַ֖ר	אָמַר	H0559	0559	igen	Vqp3ms	verb	he.says	λέγει	G3004
+o370010050041	HAG 1:5!4	Hag 1:5	identitas	rendben	יְהוָ֣ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o370010050051	HAG 1:5!5	Hag 1:5	identitas	rendben	צְבָא֑וֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts	παντοκράτωρ	G3841
+o370010050061	HAG 1:5!6	Hag 1:5	identitas	rendben	שִׂ֥ימוּ	שׂים	H7760	7760	igen	Vqv2mp	verb	set	τάχατε	G5021
+o370010050071	HAG 1:5!7	Hag 1:5	identitas	rendben	לְבַבְ	לֵבָב	H3824	3824	igen	Ncmsc	noun	heart	καρδίας	G2588
+o370010050072	HAG 1:5!7	Hag 1:5	identitas	javaslat:strong_funkcio_kod	כֶ֖ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o370010050081	HAG 1:5!8	Hag 1:5	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	εἰς	G1519
+o370010050091	HAG 1:5!9	Hag 1:5	identitas	rendben	דַּרְכֵי	דֶּרֶךְ	H1870	1870	igen	Ncbpc	noun	ways	ὁδοὺς	G3598
+o370010050092	HAG 1:5!9	Hag 1:5	identitas	javaslat:strong_funkcio_kod	כֶֽם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o370010060011	HAG 1:6!1	Hag 1:6	identitas	rendben	זְרַעְתֶּ֨ם	זָרַע	H2232	2232	igen	Vqp2mp	verb	you.have.sown	ἐσπείρατε	
+o370010060021	HAG 1:6!2	Hag 1:6	identitas	javaslat:strong_betu_alap	הַרְבֵּ֜ה	רָבָה	H7235	7235b	javaslat:betu_alap	Vha	verb	much	πολλὰ	G4183
+o370010060031	HAG 1:6!3	Hag 1:6	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010060032	HAG 1:6!3	Hag 1:6	identitas	rendben	הָבֵ֣א	בּוֹא	H0935	0935	igen	Vha	verb	you.have.brought	εἰσηνέγκατε	G1533
+o370010060041	HAG 1:6!4	Hag 1:6	identitas	rendben	מְעָ֗ט	מְעַט	H4592	4592	igen	Aamsa	adjective	little	ὀλίγα	G3641
+o370010060051	HAG 1:6!5	Hag 1:6	identitas	rendben	אָכ֤וֹל	אָכַל	H0398	0398	igen	Vqa	verb	you.have.eaten	ἐφάγετε	G5315
+o370010060061	HAG 1:6!6	Hag 1:6	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010060062	HAG 1:6!6	Hag 1:6	identitas	rendben	אֵין	אַיִן	H0369	0369	igen	Tn	particle	not	οὐκ	G3756
+o370010060071	HAG 1:6!7	Hag 1:6	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	[it	εἰς	G1519
+o370010060072	HAG 1:6!7	Hag 1:6	identitas	rendben	שָׂבְעָה֙	שׇׂבְעָה	H7654	7654	igen	Ncfsa	noun	was].to.be.satisfied	πλησμονήν	G4140
+o370010060081	HAG 1:6!8	Hag 1:6	identitas	rendben	שָׁת֣וֹ	שָׁתָה	H8354	8354	igen	Vqa	verb	you.have.drunk	ἐπίετε	
+o370010060091	HAG 1:6!9	Hag 1:6	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010060092	HAG 1:6!9	Hag 1:6	identitas	rendben	אֵין	אַיִן	H0369	0369	igen	Tn	particle	not	οὐκ	G3756
+o370010060101	HAG 1:6!10	Hag 1:6	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	[it	εἰς	G1519
+o370010060102	HAG 1:6!10	Hag 1:6	identitas	rendben	שָׁכְרָ֔ה	שָׁכַר	H7937	7937	igen	Vqc	verb	was].to.become.drunk		
+o370010060111	HAG 1:6!11	Hag 1:6	identitas	rendben	לָב֖וֹשׁ	לָבֵשׁ	H3847	3847	igen	Vqa	verb	you.have.dressed	περιεβάλεσθε	
+o370010060121	HAG 1:6!12	Hag 1:6	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010060122	HAG 1:6!12	Hag 1:6	identitas	rendben	אֵין	אַיִן	H0369	0369	igen	Tn	particle	not	οὐκ	G3756
+o370010060131	HAG 1:6!13	Hag 1:6	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	[it		
+o370010060132	HAG 1:6!13	Hag 1:6	identitas	rendben	חֹ֣ם	חמם	H2552	2552	igen	Vqc	verb	was].to.be.warm	ἐθερμάνθητε	
+o370010060141	HAG 1:6!14	Hag 1:6	identitas	javaslat:strong_funkcio_kod	ל֑	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	ἐν	G1722
+o370010060142	HAG 1:6!14	Hag 1:6	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	him	αὐτοῖς	G0846
+o370010060151	HAG 1:6!15	Hag 1:6	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010060152	HAG 1:6!15	Hag 1:6	identitas	javaslat:strong_funkcio_kod	הַ֨	הַ		1886a	javaslat:funkcio_kod	Td	particle	the.[one	ὁ	G3588
+o370010060153	HAG 1:6!15	Hag 1:6	identitas	rendben	מִּשְׂתַּכֵּ֔ר	שָׂכַר	H7936	7936	igen	Vtrmsa	verb	who].earns.wages		
+o370010060161	HAG 1:6!16	Hag 1:6	identitas	rendben	מִשְׂתַּכֵּ֖ר	שָׂכַר	H7936	7936	igen	Vtrmsa	verb	[is].earning.wages	συνήγαγεν	G4863
+o370010060171	HAG 1:6!17	Hag 1:6	identitas	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	εἰς	G1519
+o370010060181	HAG 1:6!18	Hag 1:6	identitas	rendben	צְר֥וֹר	צְרוֹר	H6872	6872	igen	Ncmsa	noun	a.bag	δεσμὸν	G1199
+o370010060191	HAG 1:6!19	Hag 1:6	identitas	rendben	נָקֽוּב	נָקַב	H5344	5344	igen	Vqsmsa	verb	pierced	τετρυπημένον	
+o370010070011	HAG 1:7!1	Hag 1:7	identitas	rendben	כֹּ֥ה	כֹּה	H3541	3541	igen	D	adverb	thus	τάδε	G3592
+o370010070021	HAG 1:7!2	Hag 1:7	identitas	rendben	אָמַ֖ר	אָמַר	H0559	0559	igen	Vqp3ms	verb	he.says	λέγει	G3004
+o370010070031	HAG 1:7!3	Hag 1:7	identitas	rendben	יְהוָ֣ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o370010070041	HAG 1:7!4	Hag 1:7	identitas	rendben	צְבָא֑וֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts	παντοκράτωρ	G3841
+o370010070051	HAG 1:7!5	Hag 1:7	identitas	rendben	שִׂ֥ימוּ	שׂים	H7760	7760	igen	Vqv2mp	verb	set	θέσθε	G5087
+o370010070061	HAG 1:7!6	Hag 1:7	identitas	rendben	לְבַבְ	לֵבָב	H3824	3824	igen	Ncmsc	noun	heart	καρδίας	G2588
+o370010070062	HAG 1:7!6	Hag 1:7	identitas	javaslat:strong_funkcio_kod	כֶ֖ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o370010070071	HAG 1:7!7	Hag 1:7	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	εἰς	G1519
+o370010070081	HAG 1:7!8	Hag 1:7	identitas	rendben	דַּרְכֵי	דֶּרֶךְ	H1870	1870	igen	Ncbpc	noun	ways	ὁδοὺς	G3598
+o370010070082	HAG 1:7!8	Hag 1:7	identitas	javaslat:strong_funkcio_kod	כֶֽם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o370010080011	HAG 1:8!1	Hag 1:8	identitas	rendben	עֲל֥וּ	עָלָה	H5927	5927	igen	Vqv2mp	verb	go.up	ἀνάβητε	G0305
+o370010080021	HAG 1:8!2	Hag 1:8	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the.hill	τὸ	G3588
+o370010080022	HAG 1:8!2	Hag 1:8	identitas	rendben	הָ֛ר	הַר	H2022	2022	igen	Ncmsa	noun	country	ὄρος	G3735
+o370010080031	HAG 1:8!3	Hag 1:8	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010080032	HAG 1:8!3	Hag 1:8	identitas	rendben	הֲבֵאתֶ֥ם	בּוֹא	H0935	0935	igen	Vhq2mp	verb	you.will.bring	κόψατε	
+o370010080041	HAG 1:8!4	Hag 1:8	identitas	rendben	עֵ֖ץ	עֵץ	H6086	6086	igen	Ncmsa	noun	wood	χύλα	G3586
+o370010080051	HAG 1:8!5	Hag 1:8	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010080052	HAG 1:8!5	Hag 1:8	identitas	rendben	בְנ֣וּ	בָּנָה	H1129	1129	igen	Vqv2mp	verb	rebuild	οἰκοδομήσατε	G3618
+o370010080061	HAG 1:8!6	Hag 1:8	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὸν	G3588
+o370010080062	HAG 1:8!6	Hag 1:8	identitas	rendben	בָּ֑יִת	בַּיִת	H1004	1004	igen	Ncmsa	noun	house	οἶκον	G3624
+o370010080071	HAG 1:8!7	Hag 1:8	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	so	καὶ	G2532
+o370010080072	HAG 1:8!7	Hag 1:8	identitas	rendben	אֶרְצֶה	רָצָה	H7521	7521	igen	Vqi1cs	verb	that.I.may.take.pleasure	εὐδοκήσω	
+o370010080081	HAG 1:8!8	Hag 1:8	identitas	javaslat:strong_funkcio_kod	בּ֥	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o370010080082	HAG 1:8!8	Hag 1:8	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	it	αὐτῷ	G0846
+o370010080101	HAG 1:8!10	Hag 1:8	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010080102	HAG 1:8!10	Hag 1:8	identitas	rendben	אֶכָּבְדָ֖ה	כָּבֵד	H3513	3513	igen	VNh1cs	verb	so.that.I.may.be.honored	ἐνδοχασθήσομαι	
+o370010080111	HAG 1:8!11	Hag 1:8	identitas	rendben	אָמַ֥ר	אָמַר	H0559	0559	igen	Vqp3ms	verb	he.says	εἶπεν	G2036
+o370010080121	HAG 1:8!12	Hag 1:8	identitas	rendben	יְהוָֽה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o370010090011	HAG 1:9!1	Hag 1:9	identitas	rendben	פָּנֹ֤ה	פָּנָה	H6437	6437	igen	Vqa	verb	you.turned.to.look	ἐπεβλέψατε	
+o370010090021	HAG 1:9!2	Hag 1:9	identitas	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	εἰς	G1519
+o370010090031	HAG 1:9!3	Hag 1:9	identitas	javaslat:strong_betu_alap	הַרְבֵּה֙	רָבָה	H7235	7235b	javaslat:betu_alap	Vha	verb	much	πολλά	G4183
+o370010090041	HAG 1:9!4	Hag 1:9	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010090042	HAG 1:9!4	Hag 1:9	identitas	rendben	הִנֵּ֣ה	הִנֵּה	H2009	2009	igen	Tm	particle	there!	ἐγένετο	G1096
+o370010090051	HAG 1:9!5	Hag 1:9	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(into)		
+o370010090052	HAG 1:9!5	Hag 1:9	identitas	rendben	מְעָ֔ט	מְעַט	H4592	4592	igen	Aamsa	adjective	little	ὀλίγα	G3641
+o370010090061	HAG 1:9!6	Hag 1:9	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010090062	HAG 1:9!6	Hag 1:9	identitas	rendben	הֲבֵאתֶ֥ם	בּוֹא	H0935	0935	igen	Vhp2mp	verb	you.brought.[it]	εἰσηνέξθη	
+o370010090071	HAG 1:9!7	Hag 1:9	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὸν	G3588
+o370010090072	HAG 1:9!7	Hag 1:9	identitas	rendben	בַּ֖יִת	בַּיִת	H1004	1004	igen	Ncmsa	noun	house	οἶκον	G3624
+o370010090081	HAG 1:9!8	Hag 1:9	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010090082	HAG 1:9!8	Hag 1:9	identitas	rendben	נָפַ֣חְתִּי	נָפַח	H5301	5301	igen	Vqp1cs	verb	I.blew	ἐχεφύσησα	
+o370010090091	HAG 1:9!9	Hag 1:9	identitas	javaslat:strong_funkcio_kod	ב֑	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on		
+o370010090092	HAG 1:9!9	Hag 1:9	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	it	αὐτά	G0846
+o370010090101	HAG 1:9!10	Hag 1:9	identitas	rendben	יַ֣עַן	יַעַן	H3282	3282	igen	C	conjunction	because.of		
+o370010090111	HAG 1:9!11	Hag 1:9	identitas	rendben	מֶ֗ה	מָה	H4100	4100	igen	Ti	particle	what?	τάδε	G3592
+o370010090121	HAG 1:9!12	Hag 1:9	identitas	rendben	נְאֻם֙	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o370010090131	HAG 1:9!13	Hag 1:9	identitas	rendben	יְהוָ֣ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o370010090141	HAG 1:9!14	Hag 1:9	identitas	rendben	צְבָא֔וֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts	παντοκράτωρ	G3841
+o370010090151	HAG 1:9!15	Hag 1:9	identitas	rendben	יַ֗עַן	יַעַן	H3282	3282	igen	C	conjunction	because.of		
+o370010090161	HAG 1:9!16	Hag 1:9	identitas	rendben	בֵּיתִ	בַּיִת	H1004	1004	igen	Ncmsc	noun	house	οἶκός	G3624
+o370010090162	HAG 1:9!16	Hag 1:9	identitas	javaslat:strong_funkcio_kod	י֙	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μού	G3450
+o370010090171	HAG 1:9!17	Hag 1:9	identitas	rendben	אֲשֶׁר	אֲשֶׁר	H0834	0834	igen	Tr	particle	which		
+o370010090181	HAG 1:9!18	Hag 1:9	identitas	rendben	ה֣וּא	הוּא	H1931	1931	igen	Pp3ms	pronoun	it	ἐστιν	G2076
+o370010090191	HAG 1:9!19	Hag 1:9	identitas	rendben	חָרֵ֔ב	חָרֵב	H2720	2720	igen	Aamsa	adjective	[is].desolate	ἔρημος	G2048
+o370010090201	HAG 1:9!20	Hag 1:9	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	δὲ	G1161
+o370010090202	HAG 1:9!20	Hag 1:9	identitas	javaslat:strong_betu_alap	אַתֶּ֥ם	אַתֶּם	H0859	0859a	javaslat:betu_alap	Pp2mp	pronoun	you	ὑμεῖς	G5210
+o370010090211	HAG 1:9!21	Hag 1:9	identitas	rendben	רָצִ֖ים	רוּץ	H7323	7323	igen	Vqrmpa	verb	[are].running	διώκετε	G1377
+o370010090221	HAG 1:9!22	Hag 1:9	identitas	rendben	אִ֥ישׁ	אִישׁ	H0376	0376	igen	Ncmsa	noun	each	ἕκαστος	G1538
+o370010090231	HAG 1:9!23	Hag 1:9	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	εἰς	G1519
+o370010090232	HAG 1:9!23	Hag 1:9	identitas	rendben	בֵיתֽ	בַּיִת	H1004	1004	igen	Ncmsc	noun	his.own	οἶκον	G3624
+o370010090233	HAG 1:9!23	Hag 1:9	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	house	αὐτοῦ	G0846
+o370010100011	HAG 1:10!1	Hag 1:10	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	therefore	διὰ	G1223
+o370010100021	HAG 1:10!2	Hag 1:10	identitas	rendben	כֵּ֣ן	כֵּן	H3651	3651	igen	Tm	particle		τοῦτο	G5124
+o370010100031	HAG 1:10!3	Hag 1:10	identitas	rendben	עֲלֵי	עַל	H5921	5921	igen	R	preposition	on		
+o370010100032	HAG 1:10!3	Hag 1:10	identitas	javaslat:strong_funkcio_kod	כֶ֔ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you		
+o370010100041	HAG 1:10!4	Hag 1:10	identitas	rendben	כָּלְא֥וּ	כָּלָא	H3607	3607	igen	Vqp3cp	verb	they.have.withheld	ἀνέχει	G0430
+o370010100051	HAG 1:10!5	Hag 1:10	identitas	rendben	שָמַ֖יִם	שָׁמַיִם	H8064	8064	igen	Ncmpa	noun	[the].heavens	οὐρανὸς	G3772
+o370010100061	HAG 1:10!6	Hag 1:10	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from	ἀπὸ	G0575
+o370010100062	HAG 1:10!6	Hag 1:10	identitas	rendben	טָּ֑ל	טַל	H2919	2919	igen	Ncmsa	noun	dew	δρόσου	
+o370010100071	HAG 1:10!7	Hag 1:10	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010100072	HAG 1:10!7	Hag 1:10	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἡ	G3588
+o370010100073	HAG 1:10!7	Hag 1:10	identitas	rendben	אָ֖רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	land	γῆ	G1093
+o370010100081	HAG 1:10!8	Hag 1:10	identitas	rendben	כָּלְאָ֥ה	כָּלָא	H3607	3607	igen	Vqp3fs	verb	it.has.withheld	ὑποστελεῖται	
+o370010100091	HAG 1:10!9	Hag 1:10	identitas	rendben	יְבוּלָֽ	יְבוּל	H2981	2981	igen	Ncmsc	noun	produce		
+o370010100092	HAG 1:10!9	Hag 1:10	identitas	javaslat:strong_funkcio_kod	הּ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	its	τὰ	G3588
+o370010110011	HAG 1:11!1	Hag 1:11	identitas	javaslat:strong_funkcio_kod	וָ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010110012	HAG 1:11!1	Hag 1:11	identitas	rendben	אֶקְרָ֨א	קָרָא	H7121	7121	igen	Vqw1cs	verb	I.have.summoned	ἐπάχω	G1863
+o370010110021	HAG 1:11!2	Hag 1:11	identitas	rendben	חֹ֜רֶב	חֹרֶב	H2721	2721	igen	Ncmsa	noun	a.drought	ῥομφαίαν	G4501
+o370010110031	HAG 1:11!3	Hag 1:11	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o370010110041	HAG 1:11!4	Hag 1:11	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὴν	G3588
+o370010110042	HAG 1:11!4	Hag 1:11	identitas	rendben	אָ֣רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	land	γῆν	G1093
+o370010110051	HAG 1:11!5	Hag 1:11	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010110052	HAG 1:11!5	Hag 1:11	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o370010110061	HAG 1:11!6	Hag 1:11	identitas	javaslat:strong_funkcio_kod	הֶ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰ	G3588
+o370010110062	HAG 1:11!6	Hag 1:11	identitas	rendben	הָרִ֗ים	הַר	H2022	2022	igen	Ncmpa	noun	mountains	ὄρη	G3735
+o370010110071	HAG 1:11!7	Hag 1:11	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010110072	HAG 1:11!7	Hag 1:11	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o370010110081	HAG 1:11!8	Hag 1:11	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὸν	G3588
+o370010110082	HAG 1:11!8	Hag 1:11	identitas	rendben	דָּגָן֙	דָּגָן	H1715	1715	igen	Ncmsa	noun	grain	σῖτον	G4621
+o370010110091	HAG 1:11!9	Hag 1:11	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010110092	HAG 1:11!9	Hag 1:11	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o370010110101	HAG 1:11!10	Hag 1:11	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the.new	τὸν	G3588
+o370010110102	HAG 1:11!10	Hag 1:11	identitas	rendben	תִּיר֣וֹשׁ	תִּירוֹשׁ	H8492	8492	igen	Ncmsa	noun	wine	οἶνον	G3631
+o370010110111	HAG 1:11!11	Hag 1:11	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010110112	HAG 1:11!11	Hag 1:11	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o370010110121	HAG 1:11!12	Hag 1:11	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the.fresh	τὸ	G3588
+o370010110122	HAG 1:11!12	Hag 1:11	identitas	rendben	יִּצְהָ֔ר	יִצְהָר	H3323	3323	igen	Ncmsa	noun	oil	ἔλαιον	G1637
+o370010110131	HAG 1:11!13	Hag 1:11	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o370010110132	HAG 1:11!13	Hag 1:11	identitas	rendben	עַ֛ל	עַל	H5921	5921	igen	R	preposition	on	καὶ	G2532
+o370010110141	HAG 1:11!14	Hag 1:11	identitas	rendben	אֲשֶׁ֥ר	אֲשֶׁר	H0834	0834	igen	Tr	particle	[that].which	ὅσα	G3745
+o370010110151	HAG 1:11!15	Hag 1:11	identitas	rendben	תּוֹצִ֖יא	יָצָא	H3318	3318	igen	Vhi3fs	verb	it.will.bring.forth	ἐκφέρει	
+o370010110161	HAG 1:11!16	Hag 1:11	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἡ	G3588
+o370010110162	HAG 1:11!16	Hag 1:11	identitas	rendben	אֲדָמָ֑ה	אֲדָמָה	H0127	0127	igen	Ncfsa	noun	ground	γῆ	G1093
+o370010110171	HAG 1:11!17	Hag 1:11	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010110172	HAG 1:11!17	Hag 1:11	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o370010110181	HAG 1:11!18	Hag 1:11	identitas	javaslat:strong_funkcio_kod	הָֽ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	τοὺς	G3588
+o370010110182	HAG 1:11!18	Hag 1:11	identitas	rendben	אָדָם֙	אָדָם	H0120	0120	igen	Ncmsa	noun	humankind	ἀνθρώπους	G0444
+o370010110191	HAG 1:11!19	Hag 1:11	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010110192	HAG 1:11!19	Hag 1:11	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o370010110201	HAG 1:11!20	Hag 1:11	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰ	G3588
+o370010110202	HAG 1:11!20	Hag 1:11	identitas	rendben	בְּהֵמָ֔ה	בְּהֵמָה	H0929	0929	igen	Ncfsa	noun	livestock	κτήνη	G2934
+o370010110211	HAG 1:11!21	Hag 1:11	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010110212	HAG 1:11!21	Hag 1:11	identitas	rendben	עַ֖ל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o370010110221	HAG 1:11!22	Hag 1:11	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντας	G3956
+o370010110231	HAG 1:11!23	Hag 1:11	identitas	rendben	יְגִ֥יעַ	יְגִיעַ	H3018	3018	igen	Ncmsc	noun	[the].toil		
+o370010110241	HAG 1:11!24	Hag 1:11	identitas	rendben	כַּפָּֽיִם	כַּף	H3709	3709	igen	Ncfda	noun	of.hands		
+o370010120011	HAG 1:12!1	Hag 1:12	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010120012	HAG 1:12!1	Hag 1:12	identitas	rendben	יִּשְׁמַ֣ע	שָׁמַע	H8085	8085	igen	Vqw3ms	verb	he.listened	ἤκουσεν	G0191
+o370010120021	HAG 1:12!2	Hag 1:12	identitas	rendben	זְרֻבָּבֶ֣ל	זְרֻבָּבֶל	H2216	2216	igen	Np	noun	Zerubbabel	ζοροβαβελ	G2216
+o370010120031	HAG 1:12!3	Hag 1:12	identitas	rendben	בֶּֽן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son		
+o370010120041	HAG 1:12!4	Hag 1:12	identitas	rendben	שַׁלְתִּיאֵ֡ל	שְׁאַלְתִּיאֵל	H7597	7597	igen	Np	noun	of.Shealtiel	σαλαθιηλ	
+o370010120051	HAG 1:12!5	Hag 1:12	identitas	javaslat:strong_funkcio_kod	וִ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010120052	HAG 1:12!5	Hag 1:12	identitas	rendben	יהוֹשֻׁ֣עַ	יְהֹושֻׁעַ	H3091	3091	igen	Np	noun	Joshua	ἰησοῦς	G2424
+o370010120061	HAG 1:12!6	Hag 1:12	identitas	rendben	בֶּן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son		
+o370010120071	HAG 1:12!7	Hag 1:12	identitas	rendben	יְהוֹצָדָק֩	יְהוֹצָדָק	H3087	3087	igen	Np	noun	of.Jehozadak	ιωσεδεκ	
+o370010120081	HAG 1:12!8	Hag 1:12	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ὁ	G3588
+o370010120082	HAG 1:12!8	Hag 1:12	identitas	rendben	כֹּהֵ֨ן	כֹּהֵן	H3548	3548	igen	Ncmsa	noun	priest	ἱερεὺς	G2409
+o370010120091	HAG 1:12!9	Hag 1:12	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	ὁ	G3588
+o370010120092	HAG 1:12!9	Hag 1:12	identitas	rendben	גָּד֜וֹל	גָּדוֹל	H1419	1419	igen	Aamsa	adjective	great	μέγας	G3173
+o370010120101	HAG 1:12!10	Hag 1:12	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010120102	HAG 1:12!10	Hag 1:12	identitas	rendben	כֹ֣ל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντες	G3956
+o370010120111	HAG 1:12!11	Hag 1:12	identitas	rendben	שְׁאֵרִ֣ית	שְׁאֵרִית	H7611	7611	igen	Ncfsc	noun	the.remnant	κατάλοιποι	G2645
+o370010120121	HAG 1:12!12	Hag 1:12	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τοῦ	G3588
+o370010120122	HAG 1:12!12	Hag 1:12	identitas	rendben	עָ֗ם	עַם	H5971	5971	igen	Ncmsa	noun	the.people	λαοῦ	G2992
+o370010120131	HAG 1:12!13	Hag 1:12	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	to	τῆς	G3588
+o370010120132	HAG 1:12!13	Hag 1:12	identitas	rendben	קוֹל֙	קוֹל	H6963	6963	igen	Ncmsc	noun	the.voice	φωνῆς	G5456
+o370010120141	HAG 1:12!14	Hag 1:12	identitas	rendben	יְהוָ֣ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o370010120151	HAG 1:12!15	Hag 1:12	identitas	rendben	אֱלֹֽהֵי	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	God	θεοῦ	G2316
+o370010120152	HAG 1:12!15	Hag 1:12	identitas	javaslat:strong_funkcio_kod	הֶ֔ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o370010120161	HAG 1:12!16	Hag 1:12	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010120162	HAG 1:12!16	Hag 1:12	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	to	τῶν	G3588
+o370010120171	HAG 1:12!17	Hag 1:12	identitas	rendben	דִּבְרֵי֙	דָּבָר	H1697	1697	igen	Ncmpc	noun	the.words	λόγων	G3056
+o370010120181	HAG 1:12!18	Hag 1:12	identitas	rendben	חַגַּ֣י	חַגַּי	H2292	2292	igen	Np	noun	of.Haggai	αγγαιου	
+o370010120191	HAG 1:12!19	Hag 1:12	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τοῦ	G3588
+o370010120192	HAG 1:12!19	Hag 1:12	identitas	rendben	נָּבִ֔יא	נָבִיא	H5030	5030	igen	Ncmsa	noun	prophet	προφήτου	G4396
+o370010120201	HAG 1:12!20	Hag 1:12	identitas	javaslat:strong_funkcio_kod	כַּ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	just		
+o370010120202	HAG 1:12!20	Hag 1:12	identitas	rendben	אֲשֶׁ֥ר	אֲשֶׁר	H0834	0834	igen	Tr	particle	as	καθότι	G2530
+o370010120211	HAG 1:12!21	Hag 1:12	identitas	rendben	שְׁלָח֖	שָׁלַח	H7971	7971	igen	Vqp3ms	verb	he	ἐχαπέστειλεν	G1821
+o370010120212	HAG 1:12!21	Hag 1:12	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	had.sent.him	αὐτὸν	G0846
+o370010120221	HAG 1:12!22	Hag 1:12	identitas	rendben	יְהוָ֣ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o370010120231	HAG 1:12!23	Hag 1:12	identitas	rendben	אֱלֹהֵי	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	God	θεὸς	G2316
+o370010120232	HAG 1:12!23	Hag 1:12	identitas	javaslat:strong_funkcio_kod	הֶ֑ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o370010120241	HAG 1:12!24	Hag 1:12	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010120242	HAG 1:12!24	Hag 1:12	identitas	rendben	יִּֽירְא֥וּ	יָרֵא	H3372	3372	igen	Vqw3mp	verb	they.were.afraid	ἐφοβήθη	G5399
+o370010120251	HAG 1:12!25	Hag 1:12	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ὁ	G3588
+o370010120252	HAG 1:12!25	Hag 1:12	identitas	rendben	עָ֖ם	עַם	H5971	5971	igen	Ncmsa	noun	people	λαὸς	G2992
+o370010120261	HAG 1:12!26	Hag 1:12	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	of	ἀπὸ	G0575
+o370010120262	HAG 1:12!26	Hag 1:12	identitas	rendben	פְּנֵ֥י	פָּנֶה	H6440	6440	igen	Ncbpc	noun		προσώπου	G4383
+o370010120271	HAG 1:12!27	Hag 1:12	identitas	rendben	יְהוָֽה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κυρίου	G2962
+o370010130011	HAG 1:13!1	Hag 1:13	identitas	javaslat:strong_funkcio_kod	וַ֠	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010130012	HAG 1:13!1	Hag 1:13	identitas	rendben	יֹּאמֶר	אָמַר	H0559	0559	igen	Vqw3ms	verb	he.said	εἶπεν	G2036
+o370010130021	HAG 1:13!2	Hag 1:13	identitas	rendben	חַגַּ֞י	חַגַּי	H2292	2292	igen	Np	noun	Haggai	αγγαιος	
+o370010130031	HAG 1:13!3	Hag 1:13	identitas	rendben	מַלְאַ֧ךְ	מַלְאָךְ	H4397	4397	igen	Ncmsc	noun	the.messenger	ἄγγελος	G0032
+o370010130041	HAG 1:13!4	Hag 1:13	identitas	rendben	יְהוָ֛ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o370010130051	HAG 1:13!5	Hag 1:13	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	by		
+o370010130052	HAG 1:13!5	Hag 1:13	identitas	rendben	מַלְאֲכ֥וּת	מַלְאָכוּת	H4400	4400	igen	Ncfsc	noun	the.message		
+o370010130061	HAG 1:13!6	Hag 1:13	identitas	rendben	יְהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh		
+o370010130071	HAG 1:13!7	Hag 1:13	identitas	javaslat:strong_funkcio_kod	לָ	לְ		3807a	javaslat:funkcio_kod	Rd	preposition	to	τῷ	G3588
+o370010130071ה	HAG 1:13!7	Hag 1:13	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o370010130072	HAG 1:13!7	Hag 1:13	identitas	rendben	עָ֣ם	עַם	H5971	5971	igen	Ncmsa	noun	people	λαῷ	G2992
+o370010130081	HAG 1:13!8	Hag 1:13	identitas	javaslat:strong_funkcio_kod	לֵ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(cmp)		
+o370010130082	HAG 1:13!8	Hag 1:13	identitas	rendben	אמֹ֑ר	אָמַר	H0559	0559	igen	Vqc	verb			
+o370010130091	HAG 1:13!9	Hag 1:13	identitas	rendben	אֲנִ֥י	אֲנִי	H0589	0589	igen	Pp1cs	pronoun	I	ἐγώ	G1473
+o370010130101	HAG 1:13!10	Hag 1:13	identitas	rendben	אִתְּ	אֵת	H0854	0854	igen	R	preposition	[am].with		
+o370010130102	HAG 1:13!10	Hag 1:13	identitas	javaslat:strong_funkcio_kod	כֶ֖ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμῶν	G5216
+o370010130111	HAG 1:13!11	Hag 1:13	identitas	rendben	נְאֻם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o370010130121	HAG 1:13!12	Hag 1:13	identitas	rendben	יְהוָֽה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o370010140011	HAG 1:14!1	Hag 1:14	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010140012	HAG 1:14!1	Hag 1:14	identitas	rendben	יָּ֣עַר	עוּר	H5782	5782	igen	Vhw3ms	verb	he.stirred.up	ἐχήγειρεν	G1825
+o370010140021	HAG 1:14!2	Hag 1:14	identitas	rendben	יְהוָ֡ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o370010140031	HAG 1:14!3	Hag 1:14	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o370010140041	HAG 1:14!4	Hag 1:14	identitas	rendben	רוּחַ֩	רוּחַ	H7307	7307	igen	Ncbsc	noun	the.spirit	πνεῦμα	G4151
+o370010140051	HAG 1:14!5	Hag 1:14	identitas	rendben	זְרֻבָּבֶ֨ל	זְרֻבָּבֶל	H2216	2216	igen	Np	noun	of.Zerubbabel	ζοροβαβελ	G2216
+o370010140061	HAG 1:14!6	Hag 1:14	identitas	rendben	בֶּן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son	τοῦ	G3588
+o370010140071	HAG 1:14!7	Hag 1:14	identitas	rendben	שַׁלְתִּיאֵ֜ל	שְׁאַלְתִּיאֵל	H7597	7597	igen	Np	noun	of.Shealtiel	σαλαθιηλ	
+o370010140081	HAG 1:14!8	Hag 1:14	identitas	rendben	פַּחַ֣ת	פֶּחָה	H6346	6346	igen	Ncmsc	noun	the.governor	φυλῆς	G5443
+o370010140091	HAG 1:14!9	Hag 1:14	identitas	rendben	יְהוּדָ֗ה	יְהוּדָה	H3063	3063	igen	Np	noun	of.Judah	ιουδα	G2448
+o370010140101	HAG 1:14!10	Hag 1:14	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010140102	HAG 1:14!10	Hag 1:14	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o370010140111	HAG 1:14!11	Hag 1:14	identitas	rendben	ר֨וּחַ֙	רוּחַ	H7307	7307	igen	Ncbsc	noun	the.spirit	πνεῦμα	G4151
+o370010140121	HAG 1:14!12	Hag 1:14	identitas	rendben	יְהוֹשֻׁ֤עַ	יְהֹושֻׁעַ	H3091	3091	igen	Np	noun	of.Joshua	ἰησοῦ	G2424
+o370010140131	HAG 1:14!13	Hag 1:14	identitas	rendben	בֶּן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son	τοῦ	G3588
+o370010140141	HAG 1:14!14	Hag 1:14	identitas	rendben	יְהוֹצָדָק֙	יְהוֹצָדָק	H3087	3087	igen	Np	noun	of.Jehozadak	ιωσεδεκ	
+o370010140151	HAG 1:14!15	Hag 1:14	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τοῦ	G3588
+o370010140152	HAG 1:14!15	Hag 1:14	identitas	rendben	כֹּהֵ֣ן	כֹּהֵן	H3548	3548	igen	Ncmsa	noun	priest	ἱερέως	G2409
+o370010140161	HAG 1:14!16	Hag 1:14	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	τοῦ	G3588
+o370010140162	HAG 1:14!16	Hag 1:14	identitas	rendben	גָּד֔וֹל	גָּדוֹל	H1419	1419	igen	Aamsa	adjective	great	μεγάλου	G3173
+o370010140171	HAG 1:14!17	Hag 1:14	identitas	javaslat:strong_funkcio_kod	וְֽ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010140172	HAG 1:14!17	Hag 1:14	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o370010140181	HAG 1:14!18	Hag 1:14	identitas	rendben	ר֔וּחַ	רוּחַ	H7307	7307	igen	Ncbsc	noun	the.spirit	πνεῦμα	G4151
+o370010140191	HAG 1:14!19	Hag 1:14	identitas	rendben	כֹּ֖ל	כֹּל	H3605	3605	igen	Ncmsc	noun	of.all		
+o370010140201	HAG 1:14!20	Hag 1:14	identitas	rendben	שְׁאֵרִ֣ית	שְׁאֵרִית	H7611	7611	igen	Ncfsc	noun	the.remnant	καταλοίπων	
+o370010140211	HAG 1:14!21	Hag 1:14	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τοῦ	G3588
+o370010140212	HAG 1:14!21	Hag 1:14	identitas	rendben	עָ֑ם	עַם	H5971	5971	igen	Ncmsa	noun	the.people	λαοῦ	G2992
+o370010140221	HAG 1:14!22	Hag 1:14	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010140222	HAG 1:14!22	Hag 1:14	identitas	rendben	יָּבֹ֨אוּ֙	בּוֹא	H0935	0935	igen	Vqw3mp	verb	they.came	εἰσῆλθον	G1525
+o370010140231	HAG 1:14!23	Hag 1:14	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010140232	HAG 1:14!23	Hag 1:14	identitas	rendben	יַּעֲשׂ֣וּ	עָשָׂה	H6213	6213	igen	Vqw3mp	verb	they.did	ἐποίουν	G4160
+o370010140241	HAG 1:14!24	Hag 1:14	identitas	rendben	מְלָאכָ֔ה	מְלָאכָה	H4399	4399	igen	Ncfsa	noun	work	ἔργα	G2041
+o370010140251	HAG 1:14!25	Hag 1:14	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o370010140252	HAG 1:14!25	Hag 1:14	identitas	rendben	בֵית	בַּיִת	H1004	1004	igen	Ncmsc	noun	the.house	οἴκῳ	G3624
+o370010140261	HAG 1:14!26	Hag 1:14	identitas	rendben	יְהוָ֥ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o370010140271	HAG 1:14!27	Hag 1:14	identitas	rendben	צְבָא֖וֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts	παντοκράτορος	G3841
+o370010140281	HAG 1:14!28	Hag 1:14	identitas	rendben	אֱלֹהֵי	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	God	θεοῦ	G2316
+o370010140282	HAG 1:14!28	Hag 1:14	identitas	javaslat:strong_funkcio_kod	הֶֽם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their	αὐτῶν	G0846
+o370010150011	HAG 1:15!1	Hag 1:15	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on		
+o370010150012	HAG 1:15!1	Hag 1:15	terkep	rendben	י֨וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	day		
+o370010150021	HAG 1:15!2	Hag 1:15	terkep	rendben	עֶשְׂרִ֧ים	עֶשְׂרִים	H6242	6242	igen	Acbpa	adjective	twenty		
+o370010150031	HAG 1:15!3	Hag 1:15	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370010150032	HAG 1:15!3	Hag 1:15	terkep	rendben	אַרְבָּעָ֛ה	אַרְבַּע	H0702	0702	igen	Acmsa	adjective	four		
+o370010150041	HAG 1:15!4	Hag 1:15	terkep	javaslat:strong_funkcio_kod	לַ	לְ		3807a	javaslat:funkcio_kod	Rd	preposition	of	τοῦ	G3588
+o370010150041ה	HAG 1:15!4	Hag 1:15	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o370010150042	HAG 1:15!4	Hag 1:15	terkep	rendben	חֹ֖דֶשׁ	חֹדֶשׁ	H2320	2320	igen	Ncmsa	noun	month	μηνὸς	G3376
+o370010150051	HAG 1:15!5	Hag 1:15	terkep	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	in	τοῦ	G3588
+o370010150051ה	HAG 1:15!5	Hag 1:15	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the.sixth		
+o370010150052	HAG 1:15!5	Hag 1:15	terkep	rendben	שִּׁשִּׁ֑י	שִׁשִּׁי	H8345	8345	igen	Aomsa	adjective	[month]	ἕκτου	
+o370010150061	HAG 1:15!6	Hag 1:15	terkep	javaslat:strong_funkcio_kod	בִּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in		
+o370010150062	HAG 1:15!6	Hag 1:15	terkep	rendben	שְׁנַ֥ת	שָׁנָה	H8141	8141	igen	Ncfsc	noun	year	τῷ	G3588
+o370010150071	HAG 1:15!7	Hag 1:15	terkep	rendben	שְׁתַּ֖יִם	שְׁנַיִם	H8147	8147	igen	Acfda	adjective	two	δευτέρῳ	G1208
+o370010150081	HAG 1:15!8	Hag 1:15	terkep	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	of	ἐπὶ	G1909
+o370010150082	HAG 1:15!8	Hag 1:15	terkep	rendben	דָרְיָ֥וֶשׁ	דָּרְיָוֶשׁ	H1867	1867	igen	Np	noun	Darius	δαρείου	
+o370010150091	HAG 1:15!9	Hag 1:15	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τοῦ	G3588
+o370010150092	HAG 1:15!9	Hag 1:15	terkep	rendben	מֶּֽלֶךְ	מֶלֶךְ	H4428	4428	igen	Ncmsa	noun	king	βασιλέως	G0935
+o370020010011	HAG 2:1!1	Hag 2:1	terkep	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	in		
+o370020010011ה	HAG 2:1!1	Hag 2:1	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the.seventh		
+o370020010012	HAG 2:1!1	Hag 2:1	terkep	rendben	שְּׁבִיעִ֕י	שְׁבִיעִי	H7637	7637	igen	Aomsa	adjective	[month]		
+o370020010021	HAG 2:1!2	Hag 2:1	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on.[day]		
+o370020010022	HAG 2:1!2	Hag 2:1	terkep	rendben	עֶשְׂרִ֥ים	עֶשְׂרִים	H6242	6242	igen	Acbpa	adjective	twenty		
+o370020010031	HAG 2:1!3	Hag 2:1	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020010032	HAG 2:1!3	Hag 2:1	terkep	rendben	אֶחָ֖ד	אֶחָד	H0259	0259	igen	Acmsa	adjective	one	μιᾷ	G3391
+o370020010041	HAG 2:1!4	Hag 2:1	terkep	javaslat:strong_funkcio_kod	לַ	לְ		3807a	javaslat:funkcio_kod	Rd	preposition	of	τοῦ	G3588
+o370020010041ה	HAG 2:1!4	Hag 2:1	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o370020010042	HAG 2:1!4	Hag 2:1	terkep	rendben	חֹ֑דֶשׁ	חֹדֶשׁ	H2320	2320	igen	Ncmsa	noun	month	μηνὸς	G3376
+o370020010051	HAG 2:1!5	Hag 2:1	terkep	rendben	הָיָה֙	הָיָה	H1961	1961	igen	Vqp3ms	verb	it.came		
+o370020010061	HAG 2:1!6	Hag 2:1	terkep	rendben	דְּבַר	דָּבָר	H1697	1697	igen	Ncmsc	noun	the.word	ἐλάλησεν	G2980
+o370020010071	HAG 2:1!7	Hag 2:1	terkep	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o370020010081	HAG 2:1!8	Hag 2:1	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	by	ἐν	G1722
+o370020010082	HAG 2:1!8	Hag 2:1	terkep	rendben	יַד	יָד	H3027	3027	igen	Ncbsc	noun	the.hand	ξειρὶ	G5495
+o370020010091	HAG 2:1!9	Hag 2:1	terkep	rendben	חַגַּ֥י	חַגַּי	H2292	2292	igen	Np	noun	of.Haggai	αγγαιου	
+o370020010101	HAG 2:1!10	Hag 2:1	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τοῦ	G3588
+o370020010102	HAG 2:1!10	Hag 2:1	terkep	rendben	נָּבִ֖יא	נָבִיא	H5030	5030	igen	Ncmsa	noun	prophet	προφήτου	G4396
+o370020010111	HAG 2:1!11	Hag 2:1	terkep	javaslat:strong_funkcio_kod	לֵ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(cmp)		
+o370020010112	HAG 2:1!11	Hag 2:1	terkep	rendben	אמֹֽר	אָמַר	H0559	0559	igen	Vqc	verb		λέγων	G3004
+o370020020011	HAG 2:2!1	Hag 2:2	terkep	rendben	אֱמָר	אָמַר	H0559	0559	igen	Vqv2ms	verb	say	εἰπὸν	G2036
+o370020020021	HAG 2:2!2	Hag 2:2	terkep	rendben	נָ֗א	נָא	H4994	4994	igen	Te	particle	please	δὴ	G1211
+o370020020031	HAG 2:2!3	Hag 2:2	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	πρὸς	G4314
+o370020020041	HAG 2:2!4	Hag 2:2	terkep	rendben	זְרֻבָּבֶ֤ל	זְרֻבָּבֶל	H2216	2216	igen	Np	noun	Zerubbabel	ζοροβαβελ	G2216
+o370020020051	HAG 2:2!5	Hag 2:2	terkep	rendben	בֶּן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son		
+o370020020061	HAG 2:2!6	Hag 2:2	terkep	rendben	שַׁלְתִּיאֵל֙	שְׁאַלְתִּיאֵל	H7597	7597	igen	Np	noun	of.Shealtiel	σαλαθιηλ	
+o370020020071	HAG 2:2!7	Hag 2:2	terkep	rendben	פַּחַ֣ת	פֶּחָה	H6346	6346	igen	Ncmsc	noun	the.governor	φυλῆς	G5443
+o370020020081	HAG 2:2!8	Hag 2:2	terkep	rendben	יְהוּדָ֔ה	יְהוּדָה	H3063	3063	igen	Np	noun	of.Judah	ιουδα	G2448
+o370020020091	HAG 2:2!9	Hag 2:2	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020020092	HAG 2:2!9	Hag 2:2	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	πρὸς	G4314
+o370020020101	HAG 2:2!10	Hag 2:2	terkep	rendben	יְהוֹשֻׁ֥עַ	יְהֹושֻׁעַ	H3091	3091	igen	Np	noun	Joshua	ἰησοῦν	G2424
+o370020020111	HAG 2:2!11	Hag 2:2	terkep	rendben	בֶּן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son		
+o370020020121	HAG 2:2!12	Hag 2:2	terkep	rendben	יְהוֹצָדָ֖ק	יְהוֹצָדָק	H3087	3087	igen	Np	noun	of.Jehozadak	ιωσεδεκ	
+o370020020131	HAG 2:2!13	Hag 2:2	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὸν	G3588
+o370020020132	HAG 2:2!13	Hag 2:2	terkep	rendben	כֹּהֵ֣ן	כֹּהֵן	H3548	3548	igen	Ncmsa	noun	priest	ἱερέα	G2409
+o370020020141	HAG 2:2!14	Hag 2:2	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	τὸν	G3588
+o370020020142	HAG 2:2!14	Hag 2:2	terkep	rendben	גָּד֑וֹל	גָּדוֹל	H1419	1419	igen	Aamsa	adjective	great	μέγαν	G3173
+o370020020151	HAG 2:2!15	Hag 2:2	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020020152	HAG 2:2!15	Hag 2:2	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	πρὸς	G4314
+o370020020161	HAG 2:2!16	Hag 2:2	terkep	rendben	שְׁאֵרִ֥ית	שְׁאֵרִית	H7611	7611	igen	Ncfsc	noun	the.remnant		
+o370020020171	HAG 2:2!17	Hag 2:2	terkep	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τοῦ	G3588
+o370020020172	HAG 2:2!17	Hag 2:2	terkep	rendben	עָ֖ם	עַם	H5971	5971	igen	Ncmsa	noun	the.people	λαοῦ	G2992
+o370020020181	HAG 2:2!18	Hag 2:2	terkep	javaslat:strong_funkcio_kod	לֵ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(cmp)		
+o370020020182	HAG 2:2!18	Hag 2:2	terkep	rendben	אמֹֽר	אָמַר	H0559	0559	igen	Vqc	verb		λέγων	G3004
+o370020030011	HAG 2:3!1	Hag 2:3	terkep	rendben	מִ֤י	מִי	H4310	4310	igen	Ti	particle	who?	τίς	G5101
+o370020030021	HAG 2:3!2	Hag 2:3	terkep	javaslat:strong_funkcio_kod	בָ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	among	ἐχ	G1537
+o370020030022	HAG 2:3!2	Hag 2:3	terkep	javaslat:strong_funkcio_kod	כֶם֙	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμῶν	G5216
+o370020030031	HAG 2:3!3	Hag 2:3	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[is].the		
+o370020030032	HAG 2:3!3	Hag 2:3	terkep	rendben	נִּשְׁאָ֔ר	שָׁאַר	H7604	7604	igen	VNrmsa	verb	[one.who].remains		
+o370020030041	HAG 2:3!4	Hag 2:3	terkep	rendben	אֲשֶׁ֤ר	אֲשֶׁר	H0834	0834	igen	Tr	particle	who	ὃς	G3739
+o370020030051	HAG 2:3!5	Hag 2:3	terkep	rendben	רָאָה֙	רָאָה	H7200	7200	igen	Vqp3ms	verb	he.saw	εἶδεν	G1492
+o370020030061	HAG 2:3!6	Hag 2:3	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o370020030071	HAG 2:3!7	Hag 2:3	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὸν	G3588
+o370020030072	HAG 2:3!7	Hag 2:3	terkep	rendben	בַּ֣יִת	בַּיִת	H1004	1004	igen	Ncmsa	noun	house	οἶκον	G3624
+o370020030081	HAG 2:3!8	Hag 2:3	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370020030082	HAG 2:3!8	Hag 2:3	terkep	rendben	זֶּ֔ה	זֶה	H2088	2088	igen	Pdxms	pronoun	this	τοῦτον	G5126
+o370020030091	HAG 2:3!9	Hag 2:3	terkep	javaslat:strong_funkcio_kod	בִּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o370020030092	HAG 2:3!9	Hag 2:3	terkep	rendben	כְבוֹד֖	כָּבוֹד	H3519	3519	igen	Ncbsc	noun	splendor	δόχῃ	G1391
+o370020030093	HAG 2:3!9	Hag 2:3	terkep	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	its	αὐτοῦ	G0846
+o370020030101	HAG 2:3!10	Hag 2:3	terkep	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	τῇ	G3588
+o370020030102	HAG 2:3!10	Hag 2:3	terkep	rendben	רִאשׁ֑וֹן	רִאשׁוֹן	H7223	7223	igen	Aomsa	adjective	former	ἔμπροσθεν	G1715
+o370020030111	HAG 2:3!11	Hag 2:3	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020030112	HAG 2:3!11	Hag 2:3	terkep	rendben	מָ֨ה	מָה	H4100	4100	igen	Ti	particle	what?	πῶς	G4459
+o370020030121	HAG 2:3!12	Hag 2:3	terkep	javaslat:strong_betu_alap	אַתֶּ֜ם	אַתֶּם	H0859	0859a	javaslat:betu_alap	Pp2mp	pronoun	[are].you	ὑμεῖς	G5210
+o370020030131	HAG 2:3!13	Hag 2:3	terkep	rendben	רֹאִ֤ים	רָאָה	H7200	7200	igen	Vqrmpa	verb	seeing	βλέπετε	G0991
+o370020030141	HAG 2:3!14	Hag 2:3	terkep	rendben	אֹת	אֵת	H0853	0853	igen	To	particle			
+o370020030142	HAG 2:3!14	Hag 2:3	terkep	javaslat:strong_funkcio_kod	וֹ֙	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	it	αὐτὸν	G0846
+o370020030151	HAG 2:3!15	Hag 2:3	terkep	rendben	עַ֔תָּה	עַתָּה	H6258	6258	igen	D	adverb	now	νῦν	G3568
+o370020030161	HAG 2:3!16	Hag 2:3	terkep	javaslat:strong_funkcio_kod	הֲ	הֲ		1886b	javaslat:funkcio_kod	Ti	particle	?		
+o370020030162	HAG 2:3!16	Hag 2:3	terkep	rendben	ל֥וֹא	לֹא	H3808	3808	igen	Tn	particle	not		
+o370020030171	HAG 2:3!17	Hag 2:3	terkep	rendben	כָמֹ֛	כְּמוֹ	H3644	3644	igen	R	preposition	[is].as		
+o370020030172	HAG 2:3!17	Hag 2:3	terkep	javaslat:strong_funkcio_kod	הוּ	הוּא		1930a	javaslat:funkcio_kod	Sp3ms	suffix	it	καθὼς	G2531
+o370020030181	HAG 2:3!18	Hag 2:3	terkep	javaslat:strong_funkcio_kod	כְּ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	as	οὐξ	G3756
+o370020030182	HAG 2:3!18	Hag 2:3	terkep	rendben	אַ֖יִן	אַיִן	H0369	0369	igen	Tn	particle	nothing	ὑπάρξοντα	G5224
+o370020030191	HAG 2:3!19	Hag 2:3	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in		
+o370020030192	HAG 2:3!19	Hag 2:3	terkep	rendben	עֵינֵי	עַיִן	H5869	5869	igen	Ncbdc	noun	eyes		
+o370020030193	HAG 2:3!19	Hag 2:3	terkep	javaslat:strong_funkcio_kod	כֶֽם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o370020040011	HAG 2:4!1	Hag 2:4	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020040012	HAG 2:4!1	Hag 2:4	terkep	rendben	עַתָּ֣ה	עַתָּה	H6258	6258	igen	D	adverb	now	νῦν	G3568
+o370020040021	HAG 2:4!2	Hag 2:4	terkep	rendben	חֲזַ֣ק	חָזַק	H2388	2388	igen	Vqv2ms	verb	be.strong	κατίσξυε	
+o370020040031	HAG 2:4!3	Hag 2:4	terkep	rendben	זְרֻבָּבֶ֣ל	זְרֻבָּבֶל	H2216	2216	igen	Np	noun	O.Zerubbabel	ζοροβαβελ	G2216
+o370020040041	HAG 2:4!4	Hag 2:4	terkep	rendben	נְאֻם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o370020040051	HAG 2:4!5	Hag 2:4	terkep	rendben	יְהוָ֡ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o370020040061	HAG 2:4!6	Hag 2:4	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020040062	HAG 2:4!6	Hag 2:4	terkep	rendben	חֲזַ֣ק	חָזַק	H2388	2388	igen	Vqv2ms	verb	be.strong	κατίσξυε	
+o370020040071	HAG 2:4!7	Hag 2:4	terkep	rendben	יְהוֹשֻׁ֣עַ	יְהֹושֻׁעַ	H3091	3091	igen	Np	noun	O.Joshua	ἰησοῦ	G2424
+o370020040081	HAG 2:4!8	Hag 2:4	terkep	rendben	בֶּן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son		
+o370020040091	HAG 2:4!9	Hag 2:4	terkep	rendben	יְהוֹצָדָק֩	יְהוֹצָדָק	H3087	3087	igen	Np	noun	of.Jehozadak	ιωσεδεκ	
+o370020040101	HAG 2:4!10	Hag 2:4	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ὁ	G3588
+o370020040102	HAG 2:4!10	Hag 2:4	terkep	rendben	כֹּהֵ֨ן	כֹּהֵן	H3548	3548	igen	Ncmsa	noun	priest	ἱερεὺς	G2409
+o370020040111	HAG 2:4!11	Hag 2:4	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	ὁ	G3588
+o370020040112	HAG 2:4!11	Hag 2:4	terkep	rendben	גָּד֜וֹל	גָּדוֹל	H1419	1419	igen	Aamsa	adjective	great	μέγας	G3173
+o370020040121	HAG 2:4!12	Hag 2:4	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020040122	HAG 2:4!12	Hag 2:4	terkep	rendben	חֲזַ֨ק	חָזַק	H2388	2388	igen	Vqv2ms	verb	be.strong	κατισξυέτω	
+o370020040131	HAG 2:4!13	Hag 2:4	terkep	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	O.all	πᾶς	G3956
+o370020040141	HAG 2:4!14	Hag 2:4	terkep	rendben	עַ֥ם	עַם	H5971	5971	igen	Ncmsc	noun	the.people	λαὸς	G2992
+o370020040151	HAG 2:4!15	Hag 2:4	terkep	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τῆς	G3588
+o370020040152	HAG 2:4!15	Hag 2:4	terkep	rendben	אָ֛רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	the.land	γῆς	G1093
+o370020040161	HAG 2:4!16	Hag 2:4	terkep	rendben	נְאֻם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o370020040171	HAG 2:4!17	Hag 2:4	terkep	rendben	יְהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o370020040181	HAG 2:4!18	Hag 2:4	terkep	javaslat:strong_funkcio_kod	וַֽ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020040182	HAG 2:4!18	Hag 2:4	terkep	rendben	עֲשׂ֑וּ	עָשָׂה	H6213	6213	igen	Vqv2mp	verb	work	ποιεῖτε	G4160
+o370020040191	HAG 2:4!19	Hag 2:4	terkep	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o370020040201	HAG 2:4!20	Hag 2:4	terkep	rendben	אֲנִ֣י	אֲנִי	H0589	0589	igen	Pp1cs	pronoun	I	ἐγώ	G1473
+o370020040211	HAG 2:4!21	Hag 2:4	terkep	rendben	אִתְּ	אֵת	H0854	0854	igen	R	preposition	[am].with		
+o370020040212	HAG 2:4!21	Hag 2:4	terkep	javaslat:strong_funkcio_kod	כֶ֔ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you		
+o370020040221	HAG 2:4!22	Hag 2:4	terkep	rendben	נְאֻ֖ם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o370020040231	HAG 2:4!23	Hag 2:4	terkep	rendben	יְהוָ֥ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o370020040241	HAG 2:4!24	Hag 2:4	terkep	rendben	צְבָאֽוֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts	παντοκράτωρ	G3841
+o370020050011	HAG 2:5!1	Hag 2:5	terkep	rendben	אֶֽת	אֵת	H0853	0853	igen	To	particle	(et)		
+o370020050021	HAG 2:5!2	Hag 2:5	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o370020050022	HAG 2:5!2	Hag 2:5	terkep	rendben	דָּבָ֞ר	דָּבָר	H1697	1697	igen	Ncmsa	noun	word	’’	
+o370020050031	HAG 2:5!3	Hag 2:5	terkep	rendben	אֲשֶׁר	אֲשֶׁר	H0834	0834	igen	Tr	particle	which	’’	
+o370020050041	HAG 2:5!4	Hag 2:5	terkep	rendben	כָּרַ֤תִּי	כָּרַת	H3772	3772	igen	Vqp1cs	verb	I.cut	’’	
+o370020050051	HAG 2:5!5	Hag 2:5	terkep	rendben	אִתְּ	אֵת	H0854	0854	igen	R	preposition	with		
+o370020050052	HAG 2:5!5	Hag 2:5	terkep	javaslat:strong_funkcio_kod	כֶם֙	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	’’	
+o370020050061	HAG 2:5!6	Hag 2:5	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	when		
+o370020050062	HAG 2:5!6	Hag 2:5	terkep	rendben	צֵאתְ	יָצָא	H3318	3318	igen	Vqc	verb	you		
+o370020050063	HAG 2:5!6	Hag 2:5	terkep	javaslat:strong_funkcio_kod	כֶ֣ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	came.out		
+o370020050071	HAG 2:5!7	Hag 2:5	terkep	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from		
+o370020050072	HAG 2:5!7	Hag 2:5	terkep	rendben	מִּצְרַ֔יִם	מִצְרַיִם	H4714	4714	igen	Np	noun	Egypt	’’	
+o370020050081	HAG 2:5!8	Hag 2:5	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020050082	HAG 2:5!8	Hag 2:5	terkep	rendben	רוּחִ֖	רוּחַ	H7307	7307	igen	Ncbsc	noun	spirit	πνεῦμά	G4151
+o370020050083	HAG 2:5!8	Hag 2:5	terkep	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o370020050091	HAG 2:5!9	Hag 2:5	terkep	rendben	עֹמֶ֣דֶת	עָמַד	H5975	5975	igen	Vqrfsa	verb	[is].standing	ἐφέστηκεν	G2186
+o370020050101	HAG 2:5!10	Hag 2:5	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	among	ἐν	G1722
+o370020050102	HAG 2:5!10	Hag 2:5	terkep	rendben	תוֹכְ	תָּוֶךְ	H8432	8432	igen	Ncmsc	noun		μέσῳ	G3319
+o370020050103	HAG 2:5!10	Hag 2:5	terkep	javaslat:strong_funkcio_kod	כֶ֑ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμῶν	G5216
+o370020050111	HAG 2:5!11	Hag 2:5	terkep	rendben	אַל	אַל	H0408	0408	igen	Tn	particle	do.not		
+o370020050121	HAG 2:5!12	Hag 2:5	terkep	rendben	תִּירָֽאוּ	יָרֵא	H3372	3372	igen	Vqj2mp	verb	be.afraid	θαρσεῖτε	G2293
+o370020060011	HAG 2:6!1	Hag 2:6	terkep	rendben	כִּ֣י	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o370020060021	HAG 2:6!2	Hag 2:6	terkep	rendben	כֹ֤ה	כֹּה	H3541	3541	igen	D	adverb	thus	τάδε	G3592
+o370020060031	HAG 2:6!3	Hag 2:6	terkep	rendben	אָמַר֙	אָמַר	H0559	0559	igen	Vqp3ms	verb	he.says	λέγει	G3004
+o370020060041	HAG 2:6!4	Hag 2:6	terkep	rendben	יְהוָ֣ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o370020060051	HAG 2:6!5	Hag 2:6	terkep	rendben	צְבָא֔וֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts	παντοκράτωρ	G3841
+o370020060061	HAG 2:6!6	Hag 2:6	terkep	rendben	ע֥וֹד	עוֹד	H5750	5750	igen	D	adverb	yet	ἔτι	G2089
+o370020060071	HAG 2:6!7	Hag 2:6	terkep	rendben	אַחַ֖ת	אֶחָד	H0259	0259	igen	Acfsa	adjective	one.[time]		
+o370020060081	HAG 2:6!8	Hag 2:6	terkep	rendben	מְעַ֣ט	מְעַט	H4592	4592	igen	Ncmsa	noun	[is].a.little	ἅπαχ	G0530
+o370020060091	HAG 2:6!9	Hag 2:6	terkep	javaslat:strong_funkcio_kod	הִ֑יא	הִיא		1931a	javaslat:funkcio_kod	Pp3fs	pronoun	it		
+o370020060101	HAG 2:6!10	Hag 2:6	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o370020060102	HAG 2:6!10	Hag 2:6	terkep	rendben	אֲנִ֗י	אֲנִי	H0589	0589	igen	Pp1cs	pronoun	I	ἐγὼ	G1473
+o370020060111	HAG 2:6!11	Hag 2:6	terkep	rendben	מַרְעִישׁ֙	רָעַשׁ	H7493	7493	igen	Vhrmsa	verb	[am].about.to.shake	σείσω	G4579
+o370020060121	HAG 2:6!12	Hag 2:6	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o370020060131	HAG 2:6!13	Hag 2:6	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὸν	G3588
+o370020060132	HAG 2:6!13	Hag 2:6	terkep	rendben	שָּׁמַ֣יִם	שָׁמַיִם	H8064	8064	igen	Ncmpa	noun	heavens	οὐρανὸν	G3772
+o370020060141	HAG 2:6!14	Hag 2:6	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020060142	HAG 2:6!14	Hag 2:6	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o370020060151	HAG 2:6!15	Hag 2:6	terkep	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὴν	G3588
+o370020060152	HAG 2:6!15	Hag 2:6	terkep	rendben	אָ֔רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	earth	γῆν	G1093
+o370020060161	HAG 2:6!16	Hag 2:6	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020060162	HAG 2:6!16	Hag 2:6	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o370020060171	HAG 2:6!17	Hag 2:6	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὴν	G3588
+o370020060172	HAG 2:6!17	Hag 2:6	terkep	rendben	יָּ֖ם	יָם	H3220	3220	igen	Ncmsa	noun	sea	θάλασσαν	G2281
+o370020060181	HAG 2:6!18	Hag 2:6	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020060182	HAG 2:6!18	Hag 2:6	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o370020060191	HAG 2:6!19	Hag 2:6	terkep	javaslat:strong_funkcio_kod	הֶ	הַ		1886a	javaslat:funkcio_kod	R	preposition	the.dry	τὴν	G3588
+o370020060192	HAG 2:6!19	Hag 2:6	terkep	rendben	חָרָבָֽה	חָרָבָה	H2724	2724	igen	Ncfsa	noun	ground	χηράν	G3584
+o370020070011	HAG 2:7!1	Hag 2:7	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020070012	HAG 2:7!1	Hag 2:7	terkep	rendben	הִרְעַשְׁתִּי֙	רָעַשׁ	H7493	7493	igen	Vhp1cs	verb	I.will.shake	συσσείσω	
+o370020070021	HAG 2:7!2	Hag 2:7	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o370020070031	HAG 2:7!3	Hag 2:7	terkep	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντα	G3956
+o370020070041	HAG 2:7!4	Hag 2:7	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰ	G3588
+o370020070042	HAG 2:7!4	Hag 2:7	terkep	rendben	גּוֹיִ֔ם	גּוֹי	H1471	1471	igen	Ncmpa	noun	nations	ἔθνη	G1484
+o370020070051	HAG 2:7!5	Hag 2:7	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020070052	HAG 2:7!5	Hag 2:7	terkep	rendben	בָ֖אוּ	בּוֹא	H0935	0935	igen	Vqp3cp	verb	they.will.come	ἥχει	G2240
+o370020070061	HAG 2:7!6	Hag 2:7	terkep	rendben	חֶמְדַּ֣ת	חֶמְדָּה	H2532	2532	igen	Ncfsc	noun	the.precious.thing		
+o370020070071	HAG 2:7!7	Hag 2:7	terkep	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	of.all	πάντων	G3956
+o370020070081	HAG 2:7!8	Hag 2:7	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τῶν	G3588
+o370020070082	HAG 2:7!8	Hag 2:7	terkep	rendben	גּוֹיִ֑ם	גּוֹי	H1471	1471	igen	Ncmpa	noun	nations	ἐθνῶν	G1484
+o370020070091	HAG 2:7!9	Hag 2:7	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020070092	HAG 2:7!9	Hag 2:7	terkep	rendben	מִלֵּאתִ֞י	מָלֵא	H4390	4390	igen	Vpp1cs	verb	I.will.fill	πλήσω	
+o370020070101	HAG 2:7!10	Hag 2:7	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o370020070111	HAG 2:7!11	Hag 2:7	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὸν	G3588
+o370020070112	HAG 2:7!11	Hag 2:7	terkep	rendben	בַּ֤יִת	בַּיִת	H1004	1004	igen	Ncmsa	noun	house	οἶκον	G3624
+o370020070121	HAG 2:7!12	Hag 2:7	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370020070122	HAG 2:7!12	Hag 2:7	terkep	rendben	זֶּה֙	זֶה	H2088	2088	igen	Pdxms	pronoun	this	τοῦτον	G5126
+o370020070131	HAG 2:7!13	Hag 2:7	terkep	rendben	כָּב֔וֹד	כָּבוֹד	H3519	3519	igen	Ncbsa	noun	splendor	δόχης	G1391
+o370020070141	HAG 2:7!14	Hag 2:7	terkep	rendben	אָמַ֖ר	אָמַר	H0559	0559	igen	Vqp3ms	verb	he.says	λέγει	G3004
+o370020070151	HAG 2:7!15	Hag 2:7	terkep	rendben	יְהוָ֥ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o370020070161	HAG 2:7!16	Hag 2:7	terkep	rendben	צְבָאֽוֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts	παντοκράτωρ	G3841
+o370020080011	HAG 2:8!1	Hag 2:8	terkep	javaslat:strong_funkcio_kod	לִ֥	לְ		3807a	javaslat:funkcio_kod	R	preposition	[belongs].to		
+o370020080012	HAG 2:8!1	Hag 2:8	terkep	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	me	ἐμὸν	G1699
+o370020080021	HAG 2:8!2	Hag 2:8	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὸ	G3588
+o370020080022	HAG 2:8!2	Hag 2:8	terkep	rendben	כֶּ֖סֶף	כֶּסֶף	H3701	3701	igen	Ncmsa	noun	silver	ἀργύριον	G0694
+o370020080031	HAG 2:8!3	Hag 2:8	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and.[belongs]		
+o370020080032	HAG 2:8!3	Hag 2:8	terkep	javaslat:strong_funkcio_kod	לִ֣	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	καὶ	G2532
+o370020080033	HAG 2:8!3	Hag 2:8	terkep	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	me	ἐμὸν	G1699
+o370020080041	HAG 2:8!4	Hag 2:8	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὸ	G3588
+o370020080042	HAG 2:8!4	Hag 2:8	terkep	rendben	זָּהָ֑ב	זָהָב	H2091	2091	igen	Ncmsa	noun	gold	ξρυσίον	G5553
+o370020080051	HAG 2:8!5	Hag 2:8	terkep	rendben	נְאֻ֖ם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o370020080061	HAG 2:8!6	Hag 2:8	terkep	rendben	יְהוָ֥ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o370020080071	HAG 2:8!7	Hag 2:8	terkep	rendben	צְבָאֽוֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts	παντοκράτωρ	G3841
+o370020090011	HAG 2:9!1	Hag 2:9	terkep	rendben	גָּד֣וֹל	גָּדוֹל	H1419	1419	igen	Aamsa	adjective	great	μεγάλη	G3173
+o370020090021	HAG 2:9!2	Hag 2:9	terkep	rendben	יִֽהְיֶ֡ה	הָיָה	H1961	1961	igen	Vqi3ms	verb	it.will.be	ἔσται	G2071
+o370020090031	HAG 2:9!3	Hag 2:9	terkep	rendben	כְּבוֹד֩	כָּבוֹד	H3519	3519	igen	Ncbsc	noun	the.splendor	δόχα	G1391
+o370020090041	HAG 2:9!4	Hag 2:9	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τοῦ	G3588
+o370020090042	HAG 2:9!4	Hag 2:9	terkep	rendben	בַּ֨יִת	בַּיִת	H1004	1004	igen	Ncmsa	noun	the.house	οἴκου	G3624
+o370020090051	HAG 2:9!5	Hag 2:9	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370020090052	HAG 2:9!5	Hag 2:9	terkep	rendben	זֶּ֤ה	זֶה	H2088	2088	igen	Pdxms	pronoun	this	τούτου	G5127
+o370020090061	HAG 2:9!6	Hag 2:9	terkep	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	ἡ	G3588
+o370020090062	HAG 2:9!6	Hag 2:9	terkep	rendben	אַֽחֲרוֹן֙	אַחֲרוֹן	H0314	0314	igen	Aamsa	adjective	latter	ἐσξάτη	G2078
+o370020090071	HAG 2:9!7	Hag 2:9	terkep	rendben	מִן	מִן	H4480	4480	igen	R	preposition	more.than	ὑπὲρ	G5228
+o370020090081	HAG 2:9!8	Hag 2:9	terkep	javaslat:strong_funkcio_kod	הָ֣	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὴν	G3588
+o370020090082	HAG 2:9!8	Hag 2:9	terkep	rendben	רִאשׁ֔וֹן	רִאשׁוֹן	H7223	7223	igen	Aomsa	adjective	former	πρώτην	G4413
+o370020090091	HAG 2:9!9	Hag 2:9	terkep	rendben	אָמַ֖ר	אָמַר	H0559	0559	igen	Vqp3ms	verb	he.says	λέγει	G3004
+o370020090101	HAG 2:9!10	Hag 2:9	terkep	rendben	יְהוָ֣ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o370020090111	HAG 2:9!11	Hag 2:9	terkep	rendben	צְבָא֑וֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts	παντοκράτωρ	G3841
+o370020090121	HAG 2:9!12	Hag 2:9	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020090122	HAG 2:9!12	Hag 2:9	terkep	javaslat:strong_funkcio_kod	בַ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	in	ἐν	G1722
+o370020090122ה	HAG 2:9!12	Hag 2:9	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o370020090123	HAG 2:9!12	Hag 2:9	terkep	rendben	מָּק֤וֹם	מָקוֹם	H4725	4725	igen	Ncmsa	noun	place	τόπῳ	G5117
+o370020090131	HAG 2:9!13	Hag 2:9	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370020090132	HAG 2:9!13	Hag 2:9	terkep	rendben	זֶּה֙	זֶה	H2088	2088	igen	Pdxms	pronoun	this	τούτῳ	G5129
+o370020090141	HAG 2:9!14	Hag 2:9	terkep	rendben	אֶתֵּ֣ן	נָתַן	H5414	5414	igen	Vqi1cs	verb	I.will.give	δώσω	G1325
+o370020090151	HAG 2:9!15	Hag 2:9	terkep	rendben	שָׁל֔וֹם	שָׁלוֹם	H7965	7965	igen	Ncmsa	noun	peace	εἰρήνην	G1515
+o370020090161	HAG 2:9!16	Hag 2:9	terkep	rendben	נְאֻ֖ם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o370020090171	HAG 2:9!17	Hag 2:9	terkep	rendben	יְהוָ֥ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o370020090181	HAG 2:9!18	Hag 2:9	terkep	rendben	צְבָאֽוֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts	παντοκράτωρ	G3841
+o370020100011	HAG 2:10!1	Hag 2:10	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on.[day]		
+o370020100012	HAG 2:10!1	Hag 2:10	terkep	rendben	עֶשְׂרִ֤ים	עֶשְׂרִים	H6242	6242	igen	Acbpa	adjective	twenty		
+o370020100021	HAG 2:10!2	Hag 2:10	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020100022	HAG 2:10!2	Hag 2:10	terkep	rendben	אַרְבָּעָה֙	אַרְבַּע	H0702	0702	igen	Acmsa	adjective	four		
+o370020100031	HAG 2:10!3	Hag 2:10	terkep	javaslat:strong_funkcio_kod	לַ	לְ		3807a	javaslat:funkcio_kod	Rd	preposition	of		
+o370020100031ה	HAG 2:10!3	Hag 2:10	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the.ninth		
+o370020100032	HAG 2:10!3	Hag 2:10	terkep	rendben	תְּשִׁיעִ֔י	תְּשִׁיעִי	H8671	8671	igen	Aomsa	adjective	[month]	ἐνάτου	
+o370020100041	HAG 2:10!4	Hag 2:10	terkep	javaslat:strong_funkcio_kod	בִּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in		
+o370020100042	HAG 2:10!4	Hag 2:10	terkep	rendben	שְׁנַ֥ת	שָׁנָה	H8141	8141	igen	Ncfsc	noun	year	ἔτους	G2094
+o370020100051	HAG 2:10!5	Hag 2:10	terkep	rendben	שְׁתַּ֖יִם	שְׁנַיִם	H8147	8147	igen	Acfda	adjective	two	δευτέρου	G1208
+o370020100061	HAG 2:10!6	Hag 2:10	terkep	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	of	ἐπὶ	G1909
+o370020100062	HAG 2:10!6	Hag 2:10	terkep	rendben	דָרְיָ֑וֶשׁ	דָּרְיָוֶשׁ	H1867	1867	igen	Np	noun	Darius	δαρείου	
+o370020100071	HAG 2:10!7	Hag 2:10	terkep	rendben	הָיָה֙	הָיָה	H1961	1961	igen	Vqp3ms	verb	it.came	ἐγένετο	G1096
+o370020100081	HAG 2:10!8	Hag 2:10	terkep	rendben	דְּבַר	דָּבָר	H1697	1697	igen	Ncmsc	noun	the.word	λόγος	G3056
+o370020100091	HAG 2:10!9	Hag 2:10	terkep	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o370020100101	HAG 2:10!10	Hag 2:10	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	πρὸς	G4314
+o370020100111	HAG 2:10!11	Hag 2:10	terkep	rendben	חַגַּ֥י	חַגַּי	H2292	2292	igen	Np	noun	Haggai	αγγαιον	
+o370020100121	HAG 2:10!12	Hag 2:10	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὸν	G3588
+o370020100122	HAG 2:10!12	Hag 2:10	terkep	rendben	נָּבִ֖יא	נָבִיא	H5030	5030	igen	Ncmsa	noun	prophet	προφήτην	G4396
+o370020100131	HAG 2:10!13	Hag 2:10	terkep	javaslat:strong_funkcio_kod	לֵ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(cmp)		
+o370020100132	HAG 2:10!13	Hag 2:10	terkep	rendben	אמֹֽר	אָמַר	H0559	0559	igen	Vqc	verb		λέγων	G3004
+o370020110011	HAG 2:11!1	Hag 2:11	terkep	rendben	כֹּ֥ה	כֹּה	H3541	3541	igen	D	adverb	thus	τάδε	G3592
+o370020110021	HAG 2:11!2	Hag 2:11	terkep	rendben	אָמַ֖ר	אָמַר	H0559	0559	igen	Vqp3ms	verb	he.says	λέγει	G3004
+o370020110031	HAG 2:11!3	Hag 2:11	terkep	rendben	יְהוָ֣ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o370020110041	HAG 2:11!4	Hag 2:11	terkep	rendben	צְבָא֑וֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts	παντοκράτωρ	G3841
+o370020110051	HAG 2:11!5	Hag 2:11	terkep	rendben	שְׁאַל	שָׁאַל	H7592	7592	igen	Vqv2ms	verb	ask	ἐπερώτησον	G1905
+o370020110061	HAG 2:11!6	Hag 2:11	terkep	rendben	נָ֧א	נָא	H4994	4994	igen	Te	particle	please		
+o370020110071	HAG 2:11!7	Hag 2:11	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o370020110081	HAG 2:11!8	Hag 2:11	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τοὺς	G3588
+o370020110082	HAG 2:11!8	Hag 2:11	terkep	rendben	כֹּהֲנִ֛ים	כֹּהֵן	H3548	3548	igen	Ncmpa	noun	priests	ἱερεῖς	G2409
+o370020110091	HAG 2:11!9	Hag 2:11	terkep	rendben	תּוֹרָ֖ה	תּוֹרָה	H8451	8451	igen	Ncfsa	noun	instruction	νόμον	G3551
+o370020110101	HAG 2:11!10	Hag 2:11	terkep	javaslat:strong_funkcio_kod	לֵ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(cmp)		
+o370020110102	HAG 2:11!10	Hag 2:11	terkep	rendben	אמֹֽר	אָמַר	H0559	0559	igen	Vqc	verb		λέγων	G3004
+o370020120011	HAG 2:12!1	Hag 2:12	terkep	rendben	הֵ֣ן	הֵן	H2005	2005	igen	Tm	particle	there!	ἐὰν	G1437
+o370020120021	HAG 2:12!2	Hag 2:12	terkep	rendben	יִשָּׂא	נָשָׂא	H5375	5375	igen	Vqi3ms	verb	he.will.carry	λάβῃ	G2983
+o370020120031	HAG 2:12!3	Hag 2:12	terkep	rendben	אִ֨ישׁ	אִישׁ	H0376	0376	igen	Ncmsa	noun	someone	ἄνθρωπος	G0444
+o370020120041	HAG 2:12!4	Hag 2:12	terkep	rendben	בְּשַׂר	בָּשָׂר	H1320	1320	igen	Ncmsc	noun	flesh	κρέας	G2907
+o370020120051	HAG 2:12!5	Hag 2:12	terkep	rendben	קֹ֜דֶשׁ	קֹדֶשׁ	H6944	6944	igen	Ncmsa	noun	of.holiness	ἅγιον	G0040
+o370020120061	HAG 2:12!6	Hag 2:12	terkep	javaslat:strong_funkcio_kod	בִּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o370020120062	HAG 2:12!6	Hag 2:12	terkep	rendben	כְנַ֣ף	כָּנָף	H3671	3671	igen	Ncfsc	noun	the.skirt		
+o370020120071	HAG 2:12!7	Hag 2:12	terkep	rendben	בִּגְד֗	בֶּגֶד	H0899	0899	igen	Ncmsc	noun	his.garment	ἱματίου	G2440
+o370020120072	HAG 2:12!7	Hag 2:12	terkep	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o370020120081	HAG 2:12!8	Hag 2:12	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020120082	HAG 2:12!8	Hag 2:12	terkep	rendben	נָגַ֣ע	נָגַע	H5060	5060	igen	Vqp3ms	verb	he.will.touch	ἅψηται	G0680
+o370020120091	HAG 2:12!9	Hag 2:12	terkep	javaslat:strong_funkcio_kod	בִּ֠	בְּ		0871a	javaslat:funkcio_kod	R	preposition	with		
+o370020120092	HAG 2:12!9	Hag 2:12	terkep	rendben	כְנָפ	כָּנָף	H3671	3671	igen	Ncfsc	noun	skirt	ἄκρον	G0206
+o370020120093	HAG 2:12!9	Hag 2:12	terkep	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o370020120101	HAG 2:12!10	Hag 2:12	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	(to)		
+o370020120111	HAG 2:12!11	Hag 2:12	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370020120112	HAG 2:12!11	Hag 2:12	terkep	rendben	לֶּ֨חֶם	לֶחֶם	H3899	3899	igen	Ncbsa	noun	bread	ἄρτου	G0740
+o370020120121	HAG 2:12!12	Hag 2:12	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o370020120122	HAG 2:12!12	Hag 2:12	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	(to)		
+o370020120131	HAG 2:12!13	Hag 2:12	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the).cooked	ἢ	G2228
+o370020120132	HAG 2:12!13	Hag 2:12	terkep	rendben	נָּזִ֜יד	נָזִיד	H5138	5138	igen	Ncmsa	noun	food		
+o370020120141	HAG 2:12!14	Hag 2:12	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o370020120142	HAG 2:12!14	Hag 2:12	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	(to)		
+o370020120151	HAG 2:12!15	Hag 2:12	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	ἢ	G2228
+o370020120152	HAG 2:12!15	Hag 2:12	terkep	rendben	יַּ֧יִן	יַיִן	H3196	3196	igen	Ncmsa	noun	wine	οἴνου	G3631
+o370020120161	HAG 2:12!16	Hag 2:12	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o370020120162	HAG 2:12!16	Hag 2:12	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	(to)	ἢ	G2228
+o370020120171	HAG 2:12!17	Hag 2:12	terkep	rendben	שֶׁ֛מֶן	שֶׁמֶן	H8081	8081	igen	Ncmsa	noun	oil	ἐλαίου	G1637
+o370020120181	HAG 2:12!18	Hag 2:12	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o370020120182	HAG 2:12!18	Hag 2:12	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	(to)	ἢ	G2228
+o370020120191	HAG 2:12!19	Hag 2:12	terkep	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	every	παντὸς	G3956
+o370020120201	HAG 2:12!20	Hag 2:12	terkep	rendben	מַאֲכָ֖ל	מַאֲכָל	H3978	3978	igen	Ncmsa	noun	food	βρώματος	G1033
+o370020120211	HAG 2:12!21	Hag 2:12	terkep	javaslat:strong_funkcio_kod	הֲ	הֲ		1886b	javaslat:funkcio_kod	Ti	particle	will	εἰ	G1487
+o370020120212	HAG 2:12!21	Hag 2:12	terkep	rendben	יִקְדָּ֑שׁ	קָדַשׁ	H6942	6942	igen	Vqi3ms	verb	it.become.holy?	ἁγιασθήσεται	G0037
+o370020120221	HAG 2:12!22	Hag 2:12	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020120222	HAG 2:12!22	Hag 2:12	terkep	rendben	יַּעֲנ֧וּ	עָנָה	H6030	6030	igen	Vqw3mp	verb	they.answered	ἀπεκρίθησαν	G0611
+o370020120231	HAG 2:12!23	Hag 2:12	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	οἱ	G3588
+o370020120232	HAG 2:12!23	Hag 2:12	terkep	rendben	כֹּהֲנִ֛ים	כֹּהֵן	H3548	3548	igen	Ncmpa	noun	priests	ἱερεῖς	G2409
+o370020120241	HAG 2:12!24	Hag 2:12	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020120242	HAG 2:12!24	Hag 2:12	terkep	rendben	יֹּאמְר֖וּ	אָמַר	H0559	0559	igen	Vqw3mp	verb	they.said	εἶπαν	G2036
+o370020120251	HAG 2:12!25	Hag 2:12	terkep	rendben	לֹֽא	לֹא	H3808	3808	igen	Tn	particle	no	οὔ	G3756
+o370020130011	HAG 2:13!1	Hag 2:13	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020130012	HAG 2:13!1	Hag 2:13	terkep	rendben	יֹּ֣אמֶר	אָמַר	H0559	0559	igen	Vqw3ms	verb	he.said	εἶπεν	G2036
+o370020130021	HAG 2:13!2	Hag 2:13	terkep	rendben	חַגַּ֔י	חַגַּי	H2292	2292	igen	Np	noun	Haggai	αγγαιος	
+o370020130031	HAG 2:13!3	Hag 2:13	terkep	rendben	אִם	אִם	H0518	0518	igen	C	conjunction	if	ἐὰν	G1437
+o370020130041	HAG 2:13!4	Hag 2:13	terkep	rendben	יִגַּ֧ע	נָגַע	H5060	5060	igen	Vqi3ms	verb	he.will.touch	ἅψηται	G0680
+o370020130051	HAG 2:13!5	Hag 2:13	terkep	rendben	טְמֵא	טָמֵא	H2931	2931	igen	Aamsc	adjective	a.[person].unclean	μεμιαμμένος	G3392
+o370020130061	HAG 2:13!6	Hag 2:13	terkep	rendben	נֶ֛פֶשׁ	נֶפֶשׁ	H5315	5315	igen	Ncbsa	noun	of.a.corpse	ψυξῇ	G5590
+o370020130071	HAG 2:13!7	Hag 2:13	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	(in)	ἀπὸ	G0575
+o370020130072	HAG 2:13!7	Hag 2:13	terkep	rendben	כָל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	παντὸς	G3956
+o370020130081	HAG 2:13!8	Hag 2:13	terkep	rendben	אֵ֖לֶּה	אֵלֶּה	H0428	0428	igen	Pdxcp	pronoun	these.[things]	τούτων	G5130
+o370020130091	HAG 2:13!9	Hag 2:13	terkep	javaslat:strong_funkcio_kod	הֲ	הֲ		1886b	javaslat:funkcio_kod	Ti	particle	will	εἰ	G1487
+o370020130092	HAG 2:13!9	Hag 2:13	terkep	rendben	יִטְמָ֑א	טָמֵא	H2930	2930	igen	Vqi3ms	verb	it.become.unclean?	μιανθήσεται	
+o370020130101	HAG 2:13!10	Hag 2:13	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020130102	HAG 2:13!10	Hag 2:13	terkep	rendben	יַּעֲנ֧וּ	עָנָה	H6030	6030	igen	Vqw3mp	verb	they.answered	ἀπεκρίθησαν	G0611
+o370020130111	HAG 2:13!11	Hag 2:13	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	οἱ	G3588
+o370020130112	HAG 2:13!11	Hag 2:13	terkep	rendben	כֹּהֲנִ֛ים	כֹּהֵן	H3548	3548	igen	Ncmpa	noun	priests	ἱερεῖς	G2409
+o370020130121	HAG 2:13!12	Hag 2:13	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020130122	HAG 2:13!12	Hag 2:13	terkep	rendben	יֹּאמְר֖וּ	אָמַר	H0559	0559	igen	Vqw3mp	verb	they.said	εἶπαν	G2036
+o370020130131	HAG 2:13!13	Hag 2:13	terkep	rendben	יִטְמָֽא	טָמֵא	H2930	2930	igen	Vqi3ms	verb	it.will.become.unclean	μιανθήσεται	
+o370020140011	HAG 2:14!1	Hag 2:14	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020140012	HAG 2:14!1	Hag 2:14	terkep	rendben	יַּ֨עַן	עָנָה	H6030	6030	igen	Vqw3ms	verb	he.answered	ἀπεκρίθη	G0611
+o370020140021	HAG 2:14!2	Hag 2:14	terkep	rendben	חַגַּ֜י	חַגַּי	H2292	2292	igen	Np	noun	Haggai	αγγαιος	
+o370020140031	HAG 2:14!3	Hag 2:14	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020140032	HAG 2:14!3	Hag 2:14	terkep	rendben	יֹּ֗אמֶר	אָמַר	H0559	0559	igen	Vqw3ms	verb	he.said	εἶπεν	G2036
+o370020140041	HAG 2:14!4	Hag 2:14	terkep	rendben	כֵּ֣ן	כֵּן	H3651	3651	igen	Tm	particle	[is].thus	οὕτως	G3779
+o370020140051	HAG 2:14!5	Hag 2:14	terkep	javaslat:strong_funkcio_kod	הָֽ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ὁ	G3588
+o370020140052	HAG 2:14!5	Hag 2:14	terkep	rendben	עָם	עַם	H5971	5971	igen	Ncmsa	noun	people	λαὸς	G2992
+o370020140061	HAG 2:14!6	Hag 2:14	terkep	javaslat:strong_funkcio_kod	הַ֠	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370020140062	HAG 2:14!6	Hag 2:14	terkep	rendben	זֶּה	זֶה	H2088	2088	igen	Pdxms	pronoun	this	οὗτος	G3778
+o370020140071	HAG 2:14!7	Hag 2:14	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and.[is]	καὶ	G2532
+o370020140072	HAG 2:14!7	Hag 2:14	terkep	rendben	כֵן	כֵּן	H3651	3651	igen	Tm	particle	thus	οὕτως	G3779
+o370020140081	HAG 2:14!8	Hag 2:14	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὸ	G3588
+o370020140082	HAG 2:14!8	Hag 2:14	terkep	rendben	גּ֨וֹי	גּוֹי	H1471	1471	igen	Ncmsa	noun	nation	ἔθνος	G1484
+o370020140091	HAG 2:14!9	Hag 2:14	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370020140092	HAG 2:14!9	Hag 2:14	terkep	rendben	זֶּ֤ה	זֶה	H2088	2088	igen	Pdxms	pronoun	this	τοῦτο	G5124
+o370020140101	HAG 2:14!10	Hag 2:14	terkep	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	before		
+o370020140102	HAG 2:14!10	Hag 2:14	terkep	rendben	פָנַ	פָּנֶה	H6440	6440	igen	Ncbpc	noun			
+o370020140103	HAG 2:14!10	Hag 2:14	terkep	javaslat:strong_funkcio_kod	י֙	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	me	ἐμοῦ	G1700
+o370020140111	HAG 2:14!11	Hag 2:14	terkep	rendben	נְאֻם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o370020140121	HAG 2:14!12	Hag 2:14	terkep	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o370020140131	HAG 2:14!13	Hag 2:14	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and.[is]	καὶ	G2532
+o370020140132	HAG 2:14!13	Hag 2:14	terkep	rendben	כֵ֖ן	כֵּן	H3651	3651	igen	Tm	particle	thus	οὕτως	G3779
+o370020140141	HAG 2:14!14	Hag 2:14	terkep	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντα	G3956
+o370020140151	HAG 2:14!15	Hag 2:14	terkep	rendben	מַעֲשֵׂ֣ה	מַעֲשֶׂה	H4639	4639	igen	Ncmsc	noun	the.work	ἔργα	G2041
+o370020140161	HAG 2:14!16	Hag 2:14	terkep	rendben	יְדֵי	יָד	H3027	3027	igen	Ncbdc	noun	their.hands	ξειρῶν	G5495
+o370020140162	HAG 2:14!16	Hag 2:14	terkep	javaslat:strong_funkcio_kod	הֶ֑ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o370020140171	HAG 2:14!17	Hag 2:14	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and.[that]	καὶ	G2532
+o370020140172	HAG 2:14!17	Hag 2:14	terkep	rendben	אֲשֶׁ֥ר	אֲשֶׁר	H0834	0834	igen	Tr	particle	which	ὃς	G3739
+o370020140181	HAG 2:14!18	Hag 2:14	terkep	rendben	יַקְרִ֛יבוּ	קָרַב	H7126	7126	igen	Vhi3mp	verb	they.will.bring.near	ἐγγίσῃ	
+o370020140191	HAG 2:14!19	Hag 2:14	terkep	rendben	שָׁ֖ם	שָׁם	H8033	8033	igen	D	adverb	there	ἐκεῖ	G1563
+o370020140201	HAG 2:14!20	Hag 2:14	terkep	rendben	טָמֵ֥א	טָמֵא	H2931	2931	igen	Aamsa	adjective	[is].unclean		
+o370020140211	HAG 2:14!21	Hag 2:14	terkep	rendben	הֽוּא	הוּא	H1931	1931	igen	Pp3ms	pronoun	it	μιανθήσεται	
+o370020150011	HAG 2:15!1	Hag 2:15	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020150012	HAG 2:15!1	Hag 2:15	terkep	rendben	עַתָּה֙	עַתָּה	H6258	6258	igen	D	adverb	therefore	νῦν	G3568
+o370020150021	HAG 2:15!2	Hag 2:15	terkep	rendben	שִֽׂימוּ	שׂים	H7760	7760	igen	Vqv2mp	verb	set	θέσθε	G5087
+o370020150031	HAG 2:15!3	Hag 2:15	terkep	rendben	נָ֣א	נָא	H4994	4994	igen	Te	particle	please	δὴ	G1211
+o370020150041	HAG 2:15!4	Hag 2:15	terkep	rendben	לְבַבְ	לֵבָב	H3824	3824	igen	Ncmsc	noun	heart	καρδίας	G2588
+o370020150042	HAG 2:15!4	Hag 2:15	terkep	javaslat:strong_funkcio_kod	כֶ֔ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o370020150051	HAG 2:15!5	Hag 2:15	terkep	rendben	מִן	מִן	H4480	4480	igen	R	preposition	from	ἀπὸ	G0575
+o370020150061	HAG 2:15!6	Hag 2:15	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τῆς	G3588
+o370020150062	HAG 2:15!6	Hag 2:15	terkep	rendben	יּ֥וֹם	יוֹם	H3117	3117	igen	Ncmsa	noun	day	ἡμέρας	G2250
+o370020150071	HAG 2:15!7	Hag 2:15	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370020150072	HAG 2:15!7	Hag 2:15	terkep	rendben	זֶּ֖ה	זֶה	H2088	2088	igen	Pdxms	pronoun	this	ταύτης	G5026
+o370020150081	HAG 2:15!8	Hag 2:15	terkep	javaslat:strong_funkcio_kod	וָ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o370020150082	HAG 2:15!8	Hag 2:15	terkep	rendben	מָ֑עְלָ	מַעַל	H4605	4605	igen	D	adverb	upwards	καὶ	G2532
+o370020150083	HAG 2:15!8	Hag 2:15	terkep	javaslat:strong_funkcio_kod	ה	ה		1886c	javaslat:funkcio_kod	Sd	suffix		ὑπεράνω	G5231
+o370020150091	HAG 2:15!9	Hag 2:15	terkep	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from		
+o370020150092	HAG 2:15!9	Hag 2:15	terkep	rendben	טֶּ֧רֶם	טֶרֶם	H2962	2962	igen	D	adverb	before	πρὸ	G4253
+o370020150101	HAG 2:15!10	Hag 2:15	terkep	rendben	שֽׂוּם	שׂים	H7760	7760	igen	Vqc	verb	put	θεῖναι	G5087
+o370020150111	HAG 2:15!11	Hag 2:15	terkep	rendben	אֶ֛בֶן	אֶבֶן	H0068	0068	igen	Ncfsa	noun	a.stone	λίθον	G3037
+o370020150121	HAG 2:15!12	Hag 2:15	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	ἐπὶ	G1909
+o370020150131	HAG 2:15!13	Hag 2:15	terkep	rendben	אֶ֖בֶן	אֶבֶן	H0068	0068	igen	Ncfsa	noun	a.stone	λίθον	G3037
+o370020150141	HAG 2:15!14	Hag 2:15	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o370020150142	HAG 2:15!14	Hag 2:15	terkep	rendben	הֵיכַ֥ל	הֵיכָל	H1964	1964	igen	Ncmsc	noun	the.temple	ναῷ	G3485
+o370020150151	HAG 2:15!15	Hag 2:15	terkep	rendben	יְהוָֽה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o370020160011	HAG 2:16!1	Hag 2:16	terkep	rendben	מִֽ	מִן	H4480	4480	igen	R	preposition	from	τίνες	G5101
+o370020160012	HAG 2:16!1	Hag 2:16	terkep	rendben	הְיוֹתָ֥	הָיָה	H1961	1961	igen	Vqc	verb	when	ἦτε	G2258
+o370020160013	HAG 2:16!1	Hag 2:16	terkep	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	they.were	ὅτε	G3753
+o370020160021	HAG 2:16!2	Hag 2:16	terkep	rendben	בָּא֙	בּוֹא	H0935	0935	igen	Vqp3ms	verb	someone.came	ἐνεβάλλετε	G1684
+o370020160031	HAG 2:16!3	Hag 2:16	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	εἰς	G1519
+o370020160041	HAG 2:16!4	Hag 2:16	terkep	rendben	עֲרֵמַ֣ת	עֲרֵמָה	H6194	6194	igen	Ncfsc	noun	a.heap	κυψέλην	
+o370020160051	HAG 2:16!5	Hag 2:16	terkep	rendben	עֶשְׂרִ֔ים	עֶשְׂרִים	H6242	6242	igen	Acbpa	adjective	of.twenty.[measures]	εἴκοσι	G1501
+o370020160061	HAG 2:16!6	Hag 2:16	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020160062	HAG 2:16!6	Hag 2:16	terkep	rendben	הָיְתָ֖ה	הָיָה	H1961	1961	igen	Vqp3fs	verb	it.was	ἐγένετο	G1096
+o370020160071	HAG 2:16!7	Hag 2:16	terkep	rendben	עֲשָׂרָ֑ה	עֲשָׂרָה	H6235	6235	igen	Acmsa	adjective	ten	δέκα	G1176
+o370020160081	HAG 2:16!8	Hag 2:16	terkep	rendben	בָּ֣א	בּוֹא	H0935	0935	igen	Vqp3ms	verb	someone.came		
+o370020160091	HAG 2:16!9	Hag 2:16	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	εἰς	G1519
+o370020160101	HAG 2:16!10	Hag 2:16	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὸ	G3588
+o370020160102	HAG 2:16!10	Hag 2:16	terkep	rendben	יֶּ֗קֶב	יֶקֶב	H3342	3342	igen	Ncmsa	noun	wine-vat	ὑπολήνιον	G5276
+o370020160111	HAG 2:16!11	Hag 2:16	terkep	javaslat:strong_funkcio_kod	לַ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to		
+o370020160112	HAG 2:16!11	Hag 2:16	terkep	rendben	חְשֹׂף֙	חָשַׂף	H2834	2834	igen	Vqc	verb	draw	ἐχαντλῆσαι	
+o370020160121	HAG 2:16!12	Hag 2:16	terkep	rendben	חֲמִשִּׁ֣ים	חָמֵשׁ	H2572	2572	igen	Acbpa	adjective	fifty.[measures]	πεντήκοντα	G4004
+o370020160131	HAG 2:16!13	Hag 2:16	terkep	rendben	פּוּרָ֔ה	פּוּרָה	H6333	6333	igen	Ncfsa	noun	a.winepress	μετρητάς	
+o370020160141	HAG 2:16!14	Hag 2:16	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020160142	HAG 2:16!14	Hag 2:16	terkep	rendben	הָיְתָ֖ה	הָיָה	H1961	1961	igen	Vqp3fs	verb	it.was	ἐγένοντο	G1096
+o370020160151	HAG 2:16!15	Hag 2:16	terkep	rendben	עֶשְׂרִֽים	עֶשְׂרִים	H6242	6242	igen	Acbpa	adjective	twenty	εἴκοσι	G1501
+o370020170011	HAG 2:17!1	Hag 2:17	terkep	rendben	הִכֵּ֨יתִי	נָכָה	H5221	5221	igen	Vhp1cs	verb	I.struck	ἐπάταχα	
+o370020170021	HAG 2:17!2	Hag 2:17	terkep	rendben	אֶתְ	אֵת	H0853	0853	igen	To	particle			
+o370020170022	HAG 2:17!2	Hag 2:17	terkep	javaslat:strong_funkcio_kod	כֶ֜ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμᾶς	G5209
+o370020170031	HAG 2:17!3	Hag 2:17	terkep	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	with	ἐν	G1722
+o370020170031ה	HAG 2:17!3	Hag 2:17	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370020170032	HAG 2:17!3	Hag 2:17	terkep	javaslat:strong_betu_alap	שִּׁדָּפ֤וֹן	שִׁדָּפוֹן	H7711	7711a	javaslat:betu_alap	Ncmsa	noun	blight		
+o370020170041	HAG 2:17!4	Hag 2:17	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o370020170042	HAG 2:17!4	Hag 2:17	terkep	javaslat:strong_funkcio_kod	בַ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	with	ἐν	G1722
+o370020170042ה	HAG 2:17!4	Hag 2:17	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370020170043	HAG 2:17!4	Hag 2:17	terkep	rendben	יֵּֽרָקוֹן֙	יֵרָקוֹן	H3420	3420	igen	Ncmsa	noun	mildew		
+o370020170051	HAG 2:17!5	Hag 2:17	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020170052	HAG 2:17!5	Hag 2:17	terkep	javaslat:strong_funkcio_kod	בַ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	with		
+o370020170052ה	HAG 2:17!5	Hag 2:17	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370020170053	HAG 2:17!5	Hag 2:17	terkep	rendben	בָּרָ֔ד	בָּרָד	H1259	1259	igen	Ncmsa	noun	hail		
+o370020170061	HAG 2:17!6	Hag 2:17	terkep	rendben	אֵ֖ת	אֵת	H0853	0853	igen	To	particle	(et)		
+o370020170071	HAG 2:17!7	Hag 2:17	terkep	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντα	G3956
+o370020170081	HAG 2:17!8	Hag 2:17	terkep	rendben	מַעֲשֵׂ֣ה	מַעֲשֶׂה	H4639	4639	igen	Ncmsc	noun	the.work	ἔργα	G2041
+o370020170091	HAG 2:17!9	Hag 2:17	terkep	rendben	יְדֵי	יָד	H3027	3027	igen	Ncbdc	noun	your.hands	ξειρῶν	G5495
+o370020170092	HAG 2:17!9	Hag 2:17	terkep	javaslat:strong_funkcio_kod	כֶ֑ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o370020170101	HAG 2:17!10	Hag 2:17	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020170102	HAG 2:17!10	Hag 2:17	terkep	rendben	אֵין	אַיִן	H0369	0369	igen	Tn	particle	not	οὐκ	G3756
+o370020170111	HAG 2:17!11	Hag 2:17	terkep	rendben	אֶתְ	אֵת	H0853	0853	igen	To	particle			
+o370020170112	HAG 2:17!11	Hag 2:17	terkep	javaslat:strong_funkcio_kod	כֶ֥ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ἐπεστρέψατε	G1994
+o370020170121	HAG 2:17!12	Hag 2:17	terkep	rendben	אֵלַ֖	אֶל	H0413	0413	igen	R	preposition	[were].to	πρός	G4314
+o370020170122	HAG 2:17!12	Hag 2:17	terkep	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	me	με	G3165
+o370020170131	HAG 2:17!13	Hag 2:17	terkep	rendben	נְאֻם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o370020170141	HAG 2:17!14	Hag 2:17	terkep	rendben	יְהוָֽה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o370020180011	HAG 2:18!1	Hag 2:18	terkep	rendben	שִׂימוּ	שׂים	H7760	7760	igen	Vqv2mp	verb	set	ὑποτάχατε	G5293
+o370020180021	HAG 2:18!2	Hag 2:18	terkep	rendben	נָ֣א	נָא	H4994	4994	igen	Te	particle	please	δὴ	G1211
+o370020180031	HAG 2:18!3	Hag 2:18	terkep	rendben	לְבַבְ	לֵבָב	H3824	3824	igen	Ncmsc	noun	heart	καρδίας	G2588
+o370020180032	HAG 2:18!3	Hag 2:18	terkep	javaslat:strong_funkcio_kod	כֶ֔ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o370020180041	HAG 2:18!4	Hag 2:18	terkep	rendben	מִן	מִן	H4480	4480	igen	R	preposition	from	ἀπὸ	G0575
+o370020180051	HAG 2:18!5	Hag 2:18	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τῆς	G3588
+o370020180052	HAG 2:18!5	Hag 2:18	terkep	rendben	יּ֥וֹם	יוֹם	H3117	3117	igen	Ncmsa	noun	day	ἡμέρας	G2250
+o370020180061	HAG 2:18!6	Hag 2:18	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370020180062	HAG 2:18!6	Hag 2:18	terkep	rendben	זֶּ֖ה	זֶה	H2088	2088	igen	Pdxms	pronoun	this	ταύτης	G5026
+o370020180071	HAG 2:18!7	Hag 2:18	terkep	javaslat:strong_funkcio_kod	וָ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o370020180072	HAG 2:18!7	Hag 2:18	terkep	rendben	מָ֑עְלָ	מַעַל	H4605	4605	igen	D	adverb	upwards	καὶ	G2532
+o370020180073	HAG 2:18!7	Hag 2:18	terkep	javaslat:strong_funkcio_kod	ה	ה		1886c	javaslat:funkcio_kod	Sd	suffix		ἐπέκεινα	G1900
+o370020180081	HAG 2:18!8	Hag 2:18	terkep	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from	ἀπὸ	G0575
+o370020180082	HAG 2:18!8	Hag 2:18	terkep	rendben	יּוֹם֩	יוֹם	H3117	3117	igen	Ncmsc	noun	day	τῆς	G3588
+o370020180091	HAG 2:18!9	Hag 2:18	terkep	rendben	עֶשְׂרִ֨ים	עֶשְׂרִים	H6242	6242	igen	Acbpa	adjective	twenty	καὶ	G2532
+o370020180101	HAG 2:18!10	Hag 2:18	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	τετράδος	
+o370020180102	HAG 2:18!10	Hag 2:18	terkep	rendben	אַרְבָּעָ֜ה	אַרְבַּע	H0702	0702	igen	Acmsa	adjective	four	εἰκάδος	
+o370020180111	HAG 2:18!11	Hag 2:18	terkep	javaslat:strong_funkcio_kod	לַ	לְ		3807a	javaslat:funkcio_kod	Rd	preposition	of		
+o370020180111ה	HAG 2:18!11	Hag 2:18	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the.ninth		
+o370020180112	HAG 2:18!11	Hag 2:18	terkep	rendben	תְּשִׁיעִ֗י	תְּשִׁיעִי	H8671	8671	igen	Aomsa	adjective	[month]	ἐνάτου	
+o370020180121	HAG 2:18!12	Hag 2:18	terkep	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(to)	καὶ	G2532
+o370020180122	HAG 2:18!12	Hag 2:18	terkep	rendben	מִן	מִן	H4480	4480	igen	R	preposition	from	ἀπὸ	G0575
+o370020180131	HAG 2:18!13	Hag 2:18	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τῆς	G3588
+o370020180132	HAG 2:18!13	Hag 2:18	terkep	rendben	יּ֛וֹם	יוֹם	H3117	3117	igen	Ncmsa	noun	day	ἡμέρας	G2250
+o370020180141	HAG 2:18!14	Hag 2:18	terkep	rendben	אֲשֶׁר	אֲשֶׁר	H0834	0834	igen	Tr	particle	when	ἧς	G3739
+o370020180151	HAG 2:18!15	Hag 2:18	terkep	rendben	יֻסַּ֥ד	יָסַד	H3245	3245	igen	VPp3ms	verb	it.was.founded	ἐθεμελιώθη	
+o370020180161	HAG 2:18!16	Hag 2:18	terkep	rendben	הֵֽיכַל	הֵיכָל	H1964	1964	igen	Ncmsc	noun	the.temple	ναὸς	G3485
+o370020180171	HAG 2:18!17	Hag 2:18	terkep	rendben	יְהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o370020180181	HAG 2:18!18	Hag 2:18	terkep	rendben	שִׂ֥ימוּ	שׂים	H7760	7760	igen	Vqv2mp	verb	set	θέσθε	G5087
+o370020180191	HAG 2:18!19	Hag 2:18	terkep	rendben	לְבַבְ	לֵבָב	H3824	3824	igen	Ncmsc	noun	heart	καρδίαις	G2588
+o370020180192	HAG 2:18!19	Hag 2:18	terkep	javaslat:strong_funkcio_kod	כֶֽם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o370020190011	HAG 2:19!1	Hag 2:19	terkep	javaslat:strong_funkcio_kod	הַ	הֲ		1886b	javaslat:funkcio_kod	Ti	particle	?	εἰ	G1487
+o370020190012	HAG 2:19!1	Hag 2:19	terkep	rendben	ע֤וֹד	עוֹד	H5750	5750	igen	D	adverb	still	ἔτι	G2089
+o370020190021	HAG 2:19!2	Hag 2:19	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[is].the		
+o370020190022	HAG 2:19!2	Hag 2:19	terkep	rendben	זֶּ֨רַע֙	זֶרַע	H2233	2233	igen	Ncmsa	noun	seed	ἐπιγνωσθήσεται	
+o370020190031	HAG 2:19!3	Hag 2:19	terkep	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	in	ἐπὶ	G1909
+o370020190031ה	HAG 2:19!3	Hag 2:19	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o370020190032	HAG 2:19!3	Hag 2:19	terkep	rendben	מְּגוּרָ֔ה	מְגוּרָה	H4035	4035	igen	Ncfsa	noun	granary	ἅλω	G0257
+o370020190041	HAG 2:19!4	Hag 2:19	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020190042	HAG 2:19!4	Hag 2:19	terkep	rendben	עַד	עַד	H5704	5704	igen	R	preposition	to	ἔτι	G2089
+o370020190051	HAG 2:19!5	Hag 2:19	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἡ	G3588
+o370020190052	HAG 2:19!5	Hag 2:19	terkep	rendben	גֶּ֨פֶן	גֶּפֶן	H1612	1612	igen	Ncbsa	noun	vine	ἄμπελος	G0288
+o370020190061	HAG 2:19!6	Hag 2:19	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020190062	HAG 2:19!6	Hag 2:19	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the.fig	ἡ	G3588
+o370020190063	HAG 2:19!6	Hag 2:19	terkep	rendben	תְּאֵנָ֧ה	תְּאֵנָה	H8384	8384	igen	Ncfsa	noun	tree	συκῆ	G4808
+o370020190071	HAG 2:19!7	Hag 2:19	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020190072	HAG 2:19!7	Hag 2:19	terkep	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἡ	G3588
+o370020190073	HAG 2:19!7	Hag 2:19	terkep	rendben	רִמּ֛וֹן	רִמּוֹן	H7416	7416	igen	Ncmsa	noun	pomegranate	ῥόα	
+o370020190081	HAG 2:19!8	Hag 2:19	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020190082	HAG 2:19!8	Hag 2:19	terkep	rendben	עֵ֥ץ	עֵץ	H6086	6086	igen	Ncmsc	noun	the.tree	χύλα	G3586
+o370020190091	HAG 2:19!9	Hag 2:19	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τῆς	G3588
+o370020190092	HAG 2:19!9	Hag 2:19	terkep	rendben	זַּ֖יִת	זַיִת	H2132	2132	igen	Ncmsa	noun	the.olive	ἐλαίας	G1636
+o370020190101	HAG 2:19!10	Hag 2:19	terkep	rendben	לֹ֣א	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o370020190111	HAG 2:19!11	Hag 2:19	terkep	rendben	נָשָׂ֑א	נָשָׂא	H5375	5375	igen	Vqp3ms	verb	it.has.borne.[fruit]	φέροντα	
+o370020190121	HAG 2:19!12	Hag 2:19	terkep	rendben	מִן	מִן	H4480	4480	igen	R	preposition	from	ἀπὸ	G0575
+o370020190131	HAG 2:19!13	Hag 2:19	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τῆς	G3588
+o370020190132	HAG 2:19!13	Hag 2:19	terkep	rendben	יּ֥וֹם	יוֹם	H3117	3117	igen	Ncmsa	noun	day	ἡμέρας	G2250
+o370020190141	HAG 2:19!14	Hag 2:19	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370020190142	HAG 2:19!14	Hag 2:19	terkep	rendben	זֶּ֖ה	זֶה	H2088	2088	igen	Pdxms	pronoun	this	ταύτης	G5026
+o370020190151	HAG 2:19!15	Hag 2:19	terkep	rendben	אֲבָרֵֽךְ	בָּרַךְ	H1288	1288	igen	Vpi1cs	verb	I.will.bless	εὐλογήσω	G2127
+o370020200011	HAG 2:20!1	Hag 2:20	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020200012	HAG 2:20!1	Hag 2:20	terkep	rendben	יְהִ֨י	הָיָה	H1961	1961	igen	Vqw3ms	verb	it.came	ἐγένετο	G1096
+o370020200021	HAG 2:20!2	Hag 2:20	terkep	rendben	דְבַר	דָּבָר	H1697	1697	igen	Ncmsc	noun	the.word	λόγος	G3056
+o370020200031	HAG 2:20!3	Hag 2:20	terkep	rendben	יְהוָ֤ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o370020200041	HAG 2:20!4	Hag 2:20	terkep	rendben	שֵׁנִית֙	שֵׁנִי	H8145	8145	igen	Aofsa	adjective	a.second.[time]	δευτέρου	G1208
+o370020200051	HAG 2:20!5	Hag 2:20	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	πρὸς	G4314
+o370020200061	HAG 2:20!6	Hag 2:20	terkep	rendben	חַגַּ֔י	חַגַּי	H2292	2292	igen	Np	noun	Haggai	αγγαιον	
+o370020200071	HAG 2:20!7	Hag 2:20	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on.[day]		
+o370020200072	HAG 2:20!7	Hag 2:20	terkep	rendben	עֶשְׂרִ֧ים	עֶשְׂרִים	H6242	6242	igen	Acbpa	adjective	twenty		
+o370020200081	HAG 2:20!8	Hag 2:20	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020200082	HAG 2:20!8	Hag 2:20	terkep	rendben	אַרְבָּעָ֛ה	אַרְבַּע	H0702	0702	igen	Acmsa	adjective	four		
+o370020200091	HAG 2:20!9	Hag 2:20	terkep	javaslat:strong_funkcio_kod	לַ	לְ		3807a	javaslat:funkcio_kod	Rd	preposition	of	τοῦ	G3588
+o370020200091ה	HAG 2:20!9	Hag 2:20	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o370020200092	HAG 2:20!9	Hag 2:20	terkep	rendben	חֹ֖דֶשׁ	חֹדֶשׁ	H2320	2320	igen	Ncmsa	noun	month	μηνὸς	G3376
+o370020200101	HAG 2:20!10	Hag 2:20	terkep	javaslat:strong_funkcio_kod	לֵ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(cmp)		
+o370020200102	HAG 2:20!10	Hag 2:20	terkep	rendben	אמֹֽר	אָמַר	H0559	0559	igen	Vqc	verb		λέγων	G3004
+o370020210011	HAG 2:21!1	Hag 2:21	terkep	rendben	אֱמֹ֕ר	אָמַר	H0559	0559	igen	Vqv2ms	verb	say	εἰπὸν	G2036
+o370020210021	HAG 2:21!2	Hag 2:21	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	πρὸς	G4314
+o370020210031	HAG 2:21!3	Hag 2:21	terkep	rendben	זְרֻבָּבֶ֥ל	זְרֻבָּבֶל	H2216	2216	igen	Np	noun	Zerubbabel	ζοροβαβελ	G2216
+o370020210041	HAG 2:21!4	Hag 2:21	terkep	rendben	פַּֽחַת	פֶּחָה	H6346	6346	igen	Ncmsc	noun	the.governor	φυλῆς	G5443
+o370020210051	HAG 2:21!5	Hag 2:21	terkep	rendben	יְהוּדָ֖ה	יְהוּדָה	H3063	3063	igen	Np	noun	of.Judah	ιουδα	G2448
+o370020210061	HAG 2:21!6	Hag 2:21	terkep	javaslat:strong_funkcio_kod	לֵ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(cmp)		
+o370020210062	HAG 2:21!6	Hag 2:21	terkep	rendben	אמֹ֑ר	אָמַר	H0559	0559	igen	Vqc	verb		λέγων	G3004
+o370020210071	HAG 2:21!7	Hag 2:21	terkep	rendben	אֲנִ֣י	אֲנִי	H0589	0589	igen	Pp1cs	pronoun	I	ἐγὼ	G1473
+o370020210081	HAG 2:21!8	Hag 2:21	terkep	rendben	מַרְעִ֔ישׁ	רָעַשׁ	H7493	7493	igen	Vhrmsa	verb	[am].about.to.shake	σείω	
+o370020210091	HAG 2:21!9	Hag 2:21	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o370020210101	HAG 2:21!10	Hag 2:21	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὸν	G3588
+o370020210102	HAG 2:21!10	Hag 2:21	terkep	rendben	שָּׁמַ֖יִם	שָׁמַיִם	H8064	8064	igen	Ncmpa	noun	heavens	οὐρανὸν	G3772
+o370020210111	HAG 2:21!11	Hag 2:21	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020210112	HAG 2:21!11	Hag 2:21	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o370020210121	HAG 2:21!12	Hag 2:21	terkep	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὴν	G3588
+o370020210122	HAG 2:21!12	Hag 2:21	terkep	rendben	אָֽרֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	earth	γῆν	G1093
+o370020220011	HAG 2:22!1	Hag 2:22	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020220012	HAG 2:22!1	Hag 2:22	terkep	rendben	הָֽפַכְתִּי֙	הָפַךְ	H2015	2015	igen	Vqq1cs	verb	I.will.overthrow	καταστρέψω	
+o370020220021	HAG 2:22!2	Hag 2:22	terkep	rendben	כִּסֵּ֣א	כִּסֵּא	H3678	3678	igen	Ncmsc	noun	[the].throne	θρόνους	G2362
+o370020220031	HAG 2:22!3	Hag 2:22	terkep	rendben	מַמְלָכ֔וֹת	מַמְלָכָה	H4467	4467	igen	Ncfpa	noun	of.kingdoms	βασιλέων	G0935
+o370020220041	HAG 2:22!4	Hag 2:22	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020220042	HAG 2:22!4	Hag 2:22	terkep	rendben	הִ֨שְׁמַדְתִּ֔י	שָׁמַד	H8045	8045	igen	Vhq1cs	verb	I.will.destroy	ὀλεθρεύσω	
+o370020220051	HAG 2:22!5	Hag 2:22	terkep	rendben	חֹ֖זֶק	חֹזֶק	H2392	2392	igen	Ncmsc	noun	the.strength	δύναμιν	G1411
+o370020220061	HAG 2:22!6	Hag 2:22	terkep	rendben	מַמְלְכ֣וֹת	מַמְלָכָה	H4467	4467	igen	Ncfpc	noun	of.the.kingdoms	βασιλέων	G0935
+o370020220071	HAG 2:22!7	Hag 2:22	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τῶν	G3588
+o370020220072	HAG 2:22!7	Hag 2:22	terkep	rendben	גּוֹיִ֑ם	גּוֹי	H1471	1471	igen	Ncmpa	noun	the.nations	ἐθνῶν	G1484
+o370020220081	HAG 2:22!8	Hag 2:22	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020220082	HAG 2:22!8	Hag 2:22	terkep	rendben	הָפַכְתִּ֤י	הָפַךְ	H2015	2015	igen	Vqq1cs	verb	I.will.overthrow	καταστρέψω	
+o370020220091	HAG 2:22!9	Hag 2:22	terkep	rendben	מֶרְכָּבָה֙	מֶרְכָּבָה	H4818	4818	igen	Ncfsa	noun	chariotry	ἅρματα	G0716
+o370020220101	HAG 2:22!10	Hag 2:22	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o370020220102	HAG 2:22!10	Hag 2:22	terkep	rendben	רֹ֣כְבֶ֔י	רָכַב	H7392	7392	igen	Vqrmpc	verb	riders	καὶ	G2532
+o370020220103	HAG 2:22!10	Hag 2:22	terkep	javaslat:strong_funkcio_kod	הָ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	its	ἀναβάτας	
+o370020220111	HAG 2:22!11	Hag 2:22	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020220112	HAG 2:22!11	Hag 2:22	terkep	rendben	יָרְד֤וּ	יָרַד	H3381	3381	igen	Vqq3cp	verb	they.will.go.down	καταβήσονται	
+o370020220121	HAG 2:22!12	Hag 2:22	terkep	rendben	סוּסִים֙	סוּס	H5483	5483	igen	Ncmpa	noun	horses	ἵπποι	G2462
+o370020220131	HAG 2:22!13	Hag 2:22	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020220132	HAG 2:22!13	Hag 2:22	terkep	rendben	רֹ֣כְבֵי	רָכַב	H7392	7392	igen	Vqrmpc	verb	riders	ἀναβάται	
+o370020220133	HAG 2:22!13	Hag 2:22	terkep	javaslat:strong_funkcio_kod	הֶ֔ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their	αὐτῶν	G0846
+o370020220141	HAG 2:22!14	Hag 2:22	terkep	rendben	אִ֖ישׁ	אִישׁ	H0376	0376	igen	Ncmsa	noun	each	ἕκαστος	G1538
+o370020220151	HAG 2:22!15	Hag 2:22	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	by	ἐν	G1722
+o370020220152	HAG 2:22!15	Hag 2:22	terkep	rendben	חֶ֥רֶב	חֶרֶב	H2719	2719	igen	Ncfsc	noun	the.sword	ῥομφαίᾳ	G4501
+o370020220161	HAG 2:22!16	Hag 2:22	terkep	rendben	אָחִֽי	אָח	H0251	0251	igen	Ncmsc	noun	his.brother	ἀδελφὸν	G0080
+o370020220162	HAG 2:22!16	Hag 2:22	terkep	javaslat:strong_funkcio_kod	ו	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o370020230011	HAG 2:23!1	Hag 2:23	terkep	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	on	ἐν	G1722
+o370020230011ה	HAG 2:23!1	Hag 2:23	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o370020230012	HAG 2:23!1	Hag 2:23	terkep	rendben	יּ֣וֹם	יוֹם	H3117	3117	igen	Ncmsa	noun	day	ἡμέρᾳ	G2250
+o370020230021	HAG 2:23!2	Hag 2:23	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370020230022	HAG 2:23!2	Hag 2:23	terkep	rendben	ה֣וּא	הוּא	H1931	1931	igen	Pp3ms	pronoun	that	ἐκείνῃ	G1565
+o370020230031	HAG 2:23!3	Hag 2:23	terkep	rendben	נְאֻם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o370020230041	HAG 2:23!4	Hag 2:23	terkep	rendben	יְהוָ֣ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o370020230051	HAG 2:23!5	Hag 2:23	terkep	rendben	צְבָא֡וֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts	παντοκράτωρ	G3841
+o370020230061	HAG 2:23!6	Hag 2:23	terkep	rendben	אֶ֠קָּחֲ	לָקַח	H3947	3947	igen	Vqi1cs	verb	I	λήμψομαί	
+o370020230062	HAG 2:23!6	Hag 2:23	terkep	javaslat:strong_funkcio_kod	ךָ	הוּא		3509b	javaslat:funkcio_kod	Sp2ms	suffix	will.take.you	σε	G4571
+o370020230071	HAG 2:23!7	Hag 2:23	terkep	rendben	זְרֻבָּבֶ֨ל	זְרֻבָּבֶל	H2216	2216	igen	Np	noun	O.Zerubbabel	ζοροβαβελ	G2216
+o370020230081	HAG 2:23!8	Hag 2:23	terkep	rendben	בֶּן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son		
+o370020230091	HAG 2:23!9	Hag 2:23	terkep	rendben	שְׁאַלְתִּיאֵ֤ל	שְׁאַלְתִּיאֵל	H7597	7597	igen	Np	noun	of.Shealtiel	σαλαθιηλ	
+o370020230101	HAG 2:23!10	Hag 2:23	terkep	rendben	עַבְדִּ	עֶבֶד	H5650	5650	igen	Ncmsc	noun	servant		
+o370020230102	HAG 2:23!10	Hag 2:23	terkep	javaslat:strong_funkcio_kod	י֙	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o370020230111	HAG 2:23!11	Hag 2:23	terkep	rendben	נְאֻם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o370020230121	HAG 2:23!12	Hag 2:23	terkep	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o370020230131	HAG 2:23!13	Hag 2:23	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o370020230132	HAG 2:23!13	Hag 2:23	terkep	rendben	שַׂמְתִּ֖י	שׂים	H7760	7760	igen	Vqp1cs	verb	I	θήσομαί	
+o370020230133	HAG 2:23!13	Hag 2:23	terkep	javaslat:strong_funkcio_kod	ךָ	הוּא		3509b	javaslat:funkcio_kod	Sp2ms	suffix	will.make.you	σε	G4571
+o370020230141	HAG 2:23!14	Hag 2:23	terkep	javaslat:strong_funkcio_kod	כַּֽ	כְּ		3509a	javaslat:funkcio_kod	Rd	preposition	like	ὡς	G5613
+o370020230141ה	HAG 2:23!14	Hag 2:23	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o370020230142	HAG 2:23!14	Hag 2:23	terkep	rendben	חוֹתָ֑ם	חֹותָם	H2368	2368	igen	Ncmsa	noun	signet-ring	σφραγῖδα	G4973
+o370020230151	HAG 2:23!15	Hag 2:23	terkep	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o370020230161	HAG 2:23!16	Hag 2:23	terkep	javaslat:strong_funkcio_kod	בְ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	(in)		
+o370020230162	HAG 2:23!16	Hag 2:23	terkep	javaslat:strong_funkcio_kod	ךָ֣	הוּא		3509b	javaslat:funkcio_kod	Sp2ms	suffix	you	σὲ	G4571
+o370020230171	HAG 2:23!17	Hag 2:23	terkep	rendben	בָחַ֔רְתִּי	בָּחַר	H0977	0977	igen	Vqp1cs	verb	I.have.chosen	ᾑρέτισα	G0140
+o370020230181	HAG 2:23!18	Hag 2:23	terkep	rendben	נְאֻ֖ם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o370020230191	HAG 2:23!19	Hag 2:23	terkep	rendben	יְהוָ֥ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o370020230201	HAG 2:23!20	Hag 2:23	terkep	rendben	צְבָאֽוֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts	παντοκράτωρ	G3841
