@@ -13,7 +13,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 <!-- GENERÁLT-KEZDET: feladatok.py --cel fazis1 -->
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Következő lépés | Hol |
 |---|---|---|---|---|---|---|
-| 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ brief kell | #3 (kész), #5 (kész), #14 (kész), #28* | `/kovetkezo` csomag: #16–#19 és #7; külső modell, keret 15 USD | `F07_THAYER_ELES_BRIEF.md` |
+| 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ brief kell | #3 (kész), #5 (kész), #14 (kész), #28* | halasztva (D46): a teljes Thayer gépi fordítása akkor, ha lesz böngésző felhasználó; a lexikon szócikkeit a #28 fordítja | `F07_THAYER_ELES_BRIEF.md` |
 | 8 | LXX-fordítói döntések a 87 függő igehelyre (F08) | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ | #1 (kész), #17 | `/kovetkezo` a #17 merge-e után | `F08_LXX_DONTESEK_BRIEF.md` |
 | 16 | BSB-import, teljes Biblia (N30) (F16) | BSB minden könyvre, ahol a lefedettség ≥ 95% | ⬜ | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F16_BSB_IMPORT_BRIEF.md` |
 | 17 | Macula-import, héber és görög (N31) (F17) | Macula a Strong-számhoz és a KK-hoz kötve; a #8 fő forrása | ⬜ | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F17_MACULA_IMPORT_BRIEF.md` |
@@ -22,7 +22,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | 22 | Károli–Strong párosítás a teljes Bibliára (F22) | a Károli 1908 minden szavához Strong-szám bizonyossággal (két tábla, KJV-támponttal) | ⬜ | #21 | csak a #21 pilot megfelelő eredménye után | `F22_KAROLI_STRONG_BRIEF.md` |
 | 23 | Egyforrású motívumdokumentum: forrássablon és mélységi szintek (terv) (MOTIVUM_FORRAS) | a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül | ⬜ | #9*, #22*, #24*, #26* | /kovetkezo; ⛔ az M0 felmérés után | `F23_MOTIVUM_FORRAS_BRIEF.md` |
 | 24 | Forrásaink licencének átnézése (LICENC) | adatkészletenként egy licencsor (licenc, verzió, kereskedelmi felhasználás, share-alike, kötelező megjelölés) egyetlen táblában, amelyre a render és a nyilvános kiadás épít | ⬜ | #16*, #17*, #19*, #22* | /kovetkezo; külön ⛔ nincs, a tisztázatlan tételek összesítve a DONTESEK.md-be | `F24_LICENC_BRIEF.md` |
-| 27 | Thayer-fordítás: Opus és Gemini összevetése, Max-keret méréssel (FP3) | mért adat a #7 modellválasztásához (A: Opus mindenre, B: vegyes hosszhatárral, vagy Gemini marad): minőség hosszkategóriánként, gépi kapuk, Max-keret fogyása és kivetítése a teljes Thayerre | ⬜ | #28* | /kovetkezo, helyi gépen; ⛔ a /usage leolvasásánál és a vak olvasásnál | `F27_FP3_BRIEF.md` |
+| 27 | Thayer-fordítás: Opus és Gemini összevetése, Max-keret méréssel (FP3) | mért adat a #7 modellválasztásához (A: Opus mindenre, B: vegyes hosszhatárral, vagy Gemini marad): minőség hosszkategóriánként, gépi kapuk, Max-keret fogyása és kivetítése a teljes Thayerre | ⬜ | #28* | halasztva (D46): a gépi alap modellválasztásához kell, a #7-tel együtt veszi elő a felhasználó | `F27_FP3_BRIEF.md` |
 | 28 | A lexikon Thayer- és BDB-szócikkeinek Opus-fordítása, javítóréteggel és CI-őrrel (EMELES) | a lexikonba kerülő minden Strong-szám teljes Thayer- vagy BDB-szócikke magyarul (allapot opus, szúrópróbával kezi) az adat/forditasok.tsv-ben; közös javítóréteg és fordítási kapuk; CI-őr; az emelés mint munkafolyamat-lépés | ⬜ | — | /kovetkezo; ⛔ az első 5 szócikk után és a szúrópróbánál | `F28_EMELES_BRIEF.md` |
 <!-- GENERÁLT-VÉGE: feladatok.py --cel fazis1 -->
 
@@ -49,7 +49,6 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 <!-- GENERÁLT-KEZDET: feladatok.py --cel naplozas -->
 - #26 Egyforrású lánc (B) döntéseinek rögzítése és az érintett briefek fejléce — ⬜ — /kovetkezo, a MOTIVUM_FORRAS, LICENC és OLVASOI_HTML befogadása után (`F26_EGYFORRAS_NAPLO_BRIEF.md`)
-- #29 A szótárfordítás döntései, a #7 és az FP3 halasztása — ⬜ — /kovetkezo, az EMELES befogadása után (`F29_SZOTAR_FORD_NAPLO_BRIEF.md`)
 <!-- GENERÁLT-VÉGE: feladatok.py --cel naplozas -->
 
 ## Takarítás (bármikor, rövid)
@@ -91,6 +90,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 ## Kész (utolsó 2 hét)
 
 <!-- GENERÁLT-KEZDET: feladatok.py --cel kesz -->
+- A szótárfordítás döntései, a #7 és az FP3 halasztása (#29, SZOTAR_FORD_NAPLO): a D42–D50 a FELADATOK.md döntésnaplójában (#EM = #28); a #7 és az FP3 (#27) fejléce és a #7 csonk-törzse halasztott (D46); ellenőrzés `naplok/ELLENOR_F29.md` (merge `53b3eaa`, 2026-09-30)
 - Brief-befogadás és generált feladatkövető (#20, BEFOGADAS): brief-befogadás (`/befogad`, csonk-kitöltéssel), a FELADATOK.md táblái a brief-fejlécekből generálva (`eszkozok/feladatok.py`), E18 CI-szabály és a main-re futó frissítő Action; ellenőrzés `naplok/ELLENOR_F20.md`; a main-t ruleset védi, az Action a pardes-feladatok GitHub App tokenjével ír (merge `4fa1265`, 2026-09-30)
 - Nave-import, basokant (N27) (#18, F18): "basokant/nave saját parszolóval importálva (85 246 sor, 5 322 téma, javaslat-állapot; DT5: a theonize GPLv3 miatt kimaradt); licenc- és import-napló `naplok/F18_licenc.md`, `naplok/F18_import_naplo.md`, ellenőrzés `naplok/ELLENOR_F18.md`; eredet-ellenőrzés a 4980 témán és a Gemini-lépés nem futott; nyitott tételek DT18" (merge `7ec656f`, 2026-09-30)
 - Orkesztrátor-parancs (#15, F15): `/kovetkezo`, `DONTESEK.md`, végrehajtó subagentek, ellenőrzőlista, PR #70, ✅ a merge-commitban (09.29); próbafuttatás merge után új sessionben: `/kovetkezo`
