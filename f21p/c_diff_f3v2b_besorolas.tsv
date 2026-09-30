@@ -1,0 +1,47 @@
+igehely	reteg	irany	k_poz	e_poz	osztaly	konvencio_vagy_jegyzetpont	indok
+2Móz 20:25	R1	tobblet	13	13	b	6. szakasz táblázat: 2Móz 20:25	a mint -> כִּי: a jegyzet alternatívája (a az a tokenen)
+2Móz 20:25	R1	tobblet	14	13	b	6. szakasz táblázat: 2Móz 20:25	a mint -> כִּי: a jegyzet alternatívája
+2Móz 21:26	R1	tobblet	10	1	b	6. szakasz táblázat: 2Móz 21:26	az úgy a kezdő ve--hez kötve; nem a jegyzet alternatívája (az: Ha -> 1, 2)
+2Móz 25:40	R1	hianyzo	3	7	b	6. szakasz táblázat: 2Móz 25:40	a -ām a formára-n (mint az F3-nál); nem a jegyzet alternatívája
+2Móz 25:40	R1	tobblet	5	7	b	6. szakasz táblázat: 2Móz 25:40	mint fent
+2Móz 26:13	R1	tobblet	10	12	a	K2 kettéírt Károli-kötőszók / vonatkozó (2. szakasz 2.; prompt B)	a mi: az a is az igenévhez kötve (a K2 opciója, „mindkét szavát”)
+Péld 28:17	R1	tobblet	6	3	b	6. szakasz táblázat: Péld 28:17	vér -> 3, 4: a jegyzet alternatívája
+Péld 30:17	R1	hianyzo	6	5	a	K9 le nem fordított ve-/kai (2. szakasz 9.; prompt I)	a ve- (5) a vagy helyett az igéhez kötve (a prompt I szabálya ellenére)
+Péld 30:17	R1	hianyzo	13	11	a	K4 birtokos és névmási ragok (2. szakasz 4.; prompt D)	a tárgyi rag az igén nincs kötve (az F3-mal azonos besorolás; a tárgyrag nyitott kérdés, DT20 a)
+Péld 30:17	R1	hianyzo	17	14	a	K9 le nem fordított ve-/kai (2. szakasz 9.; prompt I)	a ve- (14) a vagy helyett az igéhez kötve
+Péld 30:17	R1	hianyzo	18	16	a	K4 birtokos és névmási ragok (2. szakasz 4.; prompt D)	mint a 13. szónál
+Péld 30:17	R1	tobblet	7	5	a	K9 le nem fordított ve-/kai (2. szakasz 9.; prompt I)	a ve- az igén (l. fent)
+Péld 30:17	R1	tobblet	18	14	a	K9 le nem fordított ve-/kai (2. szakasz 9.; prompt I)	a ve- az igén (l. fent)
+Péld 31:5	R1	hianyzo	11	1	c		a második ne a פֶּן-é; a C a ve--hez (6) köti
+Péld 31:5	R1	tobblet	6	3	b	6. szakasz táblázat: Péld 31:5	a ve- (3) az igén (mint az F3-nál); nem a jegyzet alternatívája
+Péld 31:5	R1	tobblet	11	6	c		a ne nem a ve- (6)
+Zsolt 18:1	R2	tobblet	12	14	a	K1 névelők (2. szakasz 1.; prompt A)	a névelő (הַ) az ének-en
+Zsolt 18:1	R2	tobblet	13	12	a	K3 tárgyjelölő névmási raggal (2. szakasz 3.; prompt C)	az 'et a szavait-hoz kötve; a K3 szerint forditatlan
+Zsolt 18:1	R2	tobblet	23	22	a	K3 tárgyjelölő névmási raggal (2. szakasz 3.; prompt C)	őt: az 'et is a névmáshoz kötve
+Zsolt 18:3	R2	tobblet	6	4	a	K9 le nem fordított ve-/kai (2. szakasz 9.; prompt I)	a וּ (4) a magyarban kötőszó nélkül; a C a váram-hoz köti
+Zsolt 18:3	R2	tobblet	21	19	a	K9 le nem fordított ve-/kai (2. szakasz 9.; prompt I)	a וְ (19) kötőszó nélkül; a C az idvességem-hez köti
+Zsolt 22:32	R2	hianyzo	9	8	b	6. szakasz táblázat: Zsolt 22:32	az utánok betoldas-ként: a jegyzet alternatívája (utánok való betoldas)
+Jer 51:3	R3	tobblet	2	2	b	3. szakasz (Jer 51:3, Ketiv) — a 6. táblázatba nem kerül be	a kézívesre a Ketiv kettőzött igéjével (F21.12: b)
+Jer 51:3	R3	tobblet	2	3	a	K1 névelők (2. szakasz 1.; prompt A)	a névelő (הַ) a kézívesre-n
+Jer 51:3	R3	tobblet	9	8	c		az a (a ki) nem az אֶל (az F3 ki -> 8 (c) esetének párja)
+Ez 16:57	R3	tobblet	6	7	c		a miképen nem az עֵת („idő”)
+Ez 33:31	R3	tobblet	15	5	b	6. szakasz táblázat: Ez 33:31	a mint -> כְּ (mint az F3-nál); védhető
+Ez 33:31	R3	tobblet	32	20	c		a pedig nem a 20. ve- (az a de-é)
+Ez 41:2	R3	tobblet	22	20	a	K9 le nem fordított ve-/kai (2. szakasz 9.; prompt I)	az is a ve--hez (20) is kötve; az arany a ve--t a megméré-hez köti (az I szabály az is-t is felsorolja)
+Ez 46:12	R3	tobblet	39	40	c		az azután Károli betoldása; a „kimegy” igéhez kötve (az F3 (c) esete)
+Mt 6:31	R4	hianyzo	5	1	c		a második ne a μή-é; a C a λέγοντες-hez köti [az arany döntése is vitatható; a jegyzetben nem szerepel]
+Mt 6:31	R4	tobblet	5	4	c		a ne nem a λέγοντες
+Mt 11:18	R4	tobblet	4	4	c		az a (a ki) nem a μήτε (az F3 (c) esete)
+Mt 11:18	R4	tobblet	5	4	c		a ki nem a μήτε (az F3 (c) esete)
+Mt 21:4	R4	hianyzo	3	5	c		azért ... hogy: az azért a ἵνα-é [az arany döntése is vitatható; a jegyzetben nem szerepel]
+Mt 21:4	R4	tobblet	3	4	c		az azért nem a γέγονεν
+Mt 21:4	R4	tobblet	9	7	a	K1 névelők (2. szakasz 1.; prompt A)	a névelő (τό) a mondása-n
+Mt 21:4	R4	tobblet	13	9	c		a διά („által”) nem a szólott
+Mk 3:18	R4	hianyzo	6	7	a	K9 le nem fordított ve-/kai (2. szakasz 9.; prompt I)	az és a καί helyén áll, a C betoldas-nak veszi (az I szabály ellenére)
+Jak 1:18	R4	hianyzo	2	1	c		az ő akarata -> βουληθείς (6. táblázat); a C az ő-t az αὐτοῦ-hoz (13) köti, ami az ő teremtményeinek-é: nem védhető
+Jak 1:18	R4	tobblet	2	13	c		mint fent
+Jak 3:4	R4	tobblet	18	17	a	K2 kettéírt Károli-kötőszók / vonatkozó (2. szakasz 2.; prompt B)	a hová: az a is az ἄν-hez kötve („mindkét szavát”)
+Jak 3:8	R4	tobblet	10	6	a	K5 különírt igekötő (2. szakasz 5.; prompt E)	az igekötő (meg) az ige mindkét eredetijéhez (δαμάσαι, δύναται) kötve
+1Pét 4:2	R4	tobblet	1	2	a	K1 névelők (2. szakasz 1.; prompt A)	a névelős főnévi igenév névelője (τό) a Hogy-on
+1Pét 4:11	R4	tobblet	22	27	c		az ἐστιν nem a dícsőíttessék
+1Pét 5:12	R4	tobblet	9	3	b	6. szakasz táblázat: 1Pét 5:12	ὑμῖν az atyátokfia -tok ragjához (mint az F3-nál); nem a jegyzet alternatívája
