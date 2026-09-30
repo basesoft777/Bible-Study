@@ -12,7 +12,7 @@ olvas: [konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordanc
 ir: [eszkozok/karoli_strong/, f21p/, naplok/F21P_jelentes.md, DONTESEK.md, .github/workflows/f21p_pilot.yml]
 ag: claude/f21-pilot
 pr: #92
-lezarva_osszegzes: Károli–Strong mérőpilot (F21, P3+P3b): az A+B és az A+B+C is mért, és egyik sem felel meg a rögzített döntési szabálynak (A+B: `magas` pontosság, lefedettség, régi arany, `alacsony` arány bukott; A+B+C: mind az öt feltétel bukott, vetített költség 85,75 USD [80–92]); az A, B és C egymodelles, a PD6 szerint nem minősíthető; C-vetítés 42 USD; a C két futásának eltérése ±0,5 pp; a pilot 1,605 USD; KJV (N29) a v2-adaton: +15,6 pp `magas` pontosság n=7 vers mellett, az eltérés-csökkenés nem teljesül, nem végleges; jelentés `naplok/F21P_jelentes.md`
+lezarva_osszegzes: Károli–Strong mérőpilot (F21, P3+P3b): az A+B és az A+B+C is mért, és egyik sem felel meg a rögzített döntési szabálynak (A+B: `magas` pontosság, lefedettség, régi arany, `alacsony` arány bukott; A+B+C: mind az öt feltétel bukott, vetített költség 85,75 USD [80–92]); az A, B és C egymodelles, a PD6 szerint nem minősíthető; C-vetítés 42 USD; a C két futásának eltérése −0,57 pp (pontosság) és +0,48 pp (lefedettség); a pilot 1,605 USD; KJV (N29) a v2-adaton: a `magas` pontosság +15,6 pp (n=7 vers), így az N29 VAGY-szabályának 1. mérőszáma formálisan teljesül, az A–B eltérés csökkenése (20%) nem; nem végleges; jelentés `naplok/F21P_jelentes.md`
 fugg: [6]
 ---
 # F21_KAROLI_STRONG_PILOT_BRIEF.md — Károli–Strong párosítás: mérőpilot (minőség és költség)
