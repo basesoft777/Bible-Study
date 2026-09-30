@@ -5,12 +5,13 @@ kod: F21
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: megallt
+allapot: lezarva
 ad: mért adat arról, megéri-e a teljes Bibliát külső modellekkel Strong-számmal párosítani (minőség, költség, KJV-támpont haszna)
-kovetkezo: Te: a DT5 (szúrópróba, küszöbök, secret) jóváhagyása, utána P3–P6
+kovetkezo: lezárva, nem felel meg; a #22 sorsa a felhasználó döntése (l. DT7)
 olvas: [konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/KJV_Strongs_Genesis.tsv]
 ir: [eszkozok/karoli_strong/, f21p/, naplok/F21P_jelentes.md, DONTESEK.md, .github/workflows/f21p_pilot.yml]
 ag: claude/f21-pilot
+lezarva_osszegzes: Károli–Strong mérőpilot (F21): egyik összeállítás sem felel meg a rögzített döntési szabálynak (az A+B `magas` pontossága és az A/B kapuhibája bukott, a C egymodelles szabály szerint nem minősíthető, rétegenként 91,7–95,6% pontosság a 98% ellen); C-vetítés 42 USD (90%: 38–47), a pilot 0,7346 USD; KJV (N29): a v1-adaton nem teljesül, n=8, nem végleges; jelentés `naplok/F21P_jelentes.md`
 fugg: [6]
 ---
 # F21_KAROLI_STRONG_PILOT_BRIEF.md — Károli–Strong párosítás: mérőpilot (minőség és költség)
