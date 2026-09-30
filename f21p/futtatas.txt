@@ -1,0 +1,3 @@
+# F21 P3 - 1. trigger: az eles ut proba (F1, egyetlen koteg, 10 vers)
+futasok=F1
+koteg_max=1
