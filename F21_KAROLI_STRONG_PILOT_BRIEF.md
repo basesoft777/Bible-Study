@@ -179,8 +179,12 @@ Egy összeállítás **megfelel**, ha:
 | PD5 | A küszöbök a futtatás előtt rögzülnek | a mérés utáni küszöbállítás torzít (az F06 BSB-mérés gyakorlata) | küszöb az eredmények láttán |
 | PD6 | Egymodelles összeállítás (A, B, C külön) csak mérésre; a teljes futásra rétegenként is csak A+B vagy A+B+C mehet | a G4 bizonyossági szintje két modell egyezésén alapul, egy modellnél nem értelmezhető | megengedő változat: minden link `magas`, az `alacsony` a kapuhibás versek aránya |
 | PD7 | `[nem TR]`: a „TR»N” és „TR«N” TR-nek számít (tokenek.py javítás), a „más helyen” versekre az alternatív arany; az „eltérő alak” három tokenje (Jak 3:4 #22, Jak 3:8 #8, 1Pét 5:12 #23) kimarad a pontossági mérésből | a modell-bemenet és az arany a TR-rel összhangban legyen; az eltérő alaknak nincs sora a kivonatban | jelölés a jelentésben; kizárás a mintából |
+| PD8 | Az A és a B kiesik, v2 nem lesz hozzájuk; az F4 nem fut | a kapun átment versekben is az A pontossága 81,2%, a B-é 65,1%; a 197/200 döntőbírós vers mellett az F4 nem ad új információt az F3-hoz képest | v2 az A-hoz és a B-hez; F4 a jelenlegi adattal |
+| PD9 | A régi arany egyezése halmazként mért (összetett Strong a `+` mentén bontva); a két hibás hármas (1Móz 6:17, 13:4) jelölve (`f21p/regi_arany_hibas.tsv`), nem javítva | a `meres.py` az összetett Strongot egész karakterláncként hasonlította: mérési műtermék | a régi arany javítása |
+| PD10 | Arany v2: csak a jegyzet konvenciójával ütköző esetek, a sértett konvenció számával; a 6. táblázat a futás előtt lezárult, nem bővül; a korrigált pontosság csak „az Opus besorolása, nem mérés” megjelöléssel szerepelhet, a küszöb szempontjából csak a mért érték számít | az arany ne igazodjon a mért modellhez | az arany szabad javítása a C-diff alapján |
 
 | Verzió | Dátum | Változás |
 |---|---|---|
 | v1 | 2026.09.30 | első változat |
 | v1.1 | 2026.09.30 | a P2 ⛔ döntései: a küszöbök rögzítve (PD5); egymodelles összeállítás csak mérésre, a teljes futásra csak A+B vagy A+B+C (PD6); a vegyes példa: R1 és R4 A+B-vel, R2–R3 A+B+C-vel; `[nem TR]` javítás és az „eltérő alak” tokenek kizárása a pontossági mérésből (PD7) |
+| v1.2 | 2026.09.30 | a P3/P4 utáni döntések: az A és a B kiesik (a kapun átment versekben is 81%, illetve 65% pontosság), v2 nem lesz hozzájuk, az F4 nem fut (PD8); a régi arany egyezése halmazként mért, a 2 hibás hármas jelölve (PD9); arany v2 csak a jegyzet konvenciójával ütköző esetekre, jóváhagyásig nem fagy be (PD10); KJV (N29): a v1-adaton nem teljesül, n=8, nem végleges |
