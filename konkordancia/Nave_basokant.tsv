@@ -171,7 +171,8 @@ NAVE-0025	ABIATHAR	1	szam:1	0	High priest. Called AHIMELECH in	vers	1Krón 24:6	
 NAVE-0025	ABIATHAR	1	szam:1	0	High priest. Called AHIMELECH in	vers	1Krón 24:31	1Chr.24.31	vers	azonos			
 NAVE-0025	ABIATHAR	1	szam:1	1	And ABIMELECH	vers	1Krón 18:16	1Chr.18.16	vers	azonos			
 NAVE-0025	ABIATHAR	1	szam:1	2	Son of Ahimelech	vers	1Sám 22:20	1Sam.22.20	vers	azonos			
-NAVE-0025	ABIATHAR	1	szam:1	3	Escapes to David from the vengeance of Saul, who slew the priests in the City of Nob	vers	1Sám 22:20-23	1Sam.22.20-1Sam.22.23	tartomany	tartomany			utotag:with 22:6-19
+NAVE-0025	ABIATHAR	1	szam:1	3	Escapes to David from the vengeance of Saul, who slew the priests in the City of Nob	vers	1Sám 22:20-23	1Sam.22.20-1Sam.22.23	tartomany	tartomany			
+NAVE-0025	ABIATHAR	1	szam:1	3	Escapes to David from the vengeance of Saul, who slew the priests in the City of Nob	vers	1Sám 22:6-19	1Sam.22.6-1Sam.22.19	tartomany	tartomany			with_folytato:with 22:6-19;konyv_oroklve:1Sam
 NAVE-0025	ABIATHAR	1	szam:1	4	Consults the ephod for David	vers	1Sám 22:9-12	1Sam.22.9-1Sam.22.12	tartomany	tartomany			
 NAVE-0025	ABIATHAR	1	szam:1	4	Consults the ephod for David	vers	1Sám 30:9-12	1Sam.30.9-1Sam.30.12	tartomany	tartomany			
 NAVE-0025	ABIATHAR	1	szam:1	5	Associate high priest with Zadok in the reign of David	vers	2Sám 15:35	2Sam.15.35	vers	azonos			
@@ -395,7 +396,8 @@ NAVE-0051	ABLUTION	14	→	0	FIGURATIVE	vers	Jel 22:14	Rev.22.14	vers	ujszovetseg
 NAVE-0051	ABLUTION	14	→	1	See	lasd						REGENERATION	
 NAVE-0052	ABNER	1	→	0	(Son of Ner)	szoveg							nincs_hivatkozas
 NAVE-0052	ABNER	2	→	0	Cousin of Saul	vers	1Sám 14:50	1Sam.14.50	vers	azonos			
-NAVE-0052	ABNER	2	→	0	Cousin of Saul	vers	1Sám 14:51	1Sam.14.51	vers	azonos			utotag:with 9:1
+NAVE-0052	ABNER	2	→	0	Cousin of Saul	vers	1Sám 14:51	1Sam.14.51	vers	azonos			
+NAVE-0052	ABNER	2	→	0	Cousin of Saul	vers	1Sám 9:1	1Sam.9.1	vers	azonos			with_folytato:with 9:1;konyv_oroklve:1Sam
 NAVE-0052	ABNER	3	→	0	Captain of the host	vers	1Sám 14:50	1Sam.14.50	vers	azonos			
 NAVE-0052	ABNER	3	→	0	Captain of the host	vers	1Sám 17:55	1Sam.17.55	vers	a_tablaban_nincs_kjv_megfelelo			
 NAVE-0052	ABNER	3	→	0	Captain of the host	vers	1Sám 26:5	1Sam.26.5	vers	azonos			
@@ -616,8 +618,11 @@ NAVE-0058	ABSTINENCE, TOTAL	1	→	0	FROM INTOXICATING BEVERAGES	vers	Luk 1:15	Lu
 NAVE-0058	ABSTINENCE, TOTAL	2	→	0	INSTANCES OF	szoveg							nincs_hivatkozas
 NAVE-0058	ABSTINENCE, TOTAL	2	→	1	Israelites in the wilderness	vers	5Móz 29:6	Deut.29.6	vers	azonos			
 NAVE-0058	ABSTINENCE, TOTAL	2	→	2	Samson	vers	Bír 16:17	Judg.16.17	vers	azonos			
-NAVE-0058	ABSTINENCE, TOTAL	2	→	2	with 13:3-5,13,14	vers	4Móz 6:3	Num.6.3	vers	azonos			
-NAVE-0058	ABSTINENCE, TOTAL	2	→	2	with 13:3-5,13,14	vers	4Móz 6:4	Num.6.4	vers	azonos			
+NAVE-0058	ABSTINENCE, TOTAL	2	→	2	Samson	vers	Bír 13:3-5	Judg.13.3-Judg.13.5	tartomany	tartomany			with_folytato:with 13:3-5,13,14;konyv_oroklve:Judg
+NAVE-0058	ABSTINENCE, TOTAL	2	→	2	Samson	vers	Bír 13:13	Judg.13.13	vers	azonos			with_folytato:with 13:3-5,13,14;konyv_oroklve:Judg
+NAVE-0058	ABSTINENCE, TOTAL	2	→	2	Samson	vers	Bír 13:14	Judg.13.14	vers	azonos			with_folytato:with 13:3-5,13,14;konyv_oroklve:Judg
+NAVE-0058	ABSTINENCE, TOTAL	2	→	2	Samson	vers	4Móz 6:3	Num.6.3	vers	azonos			
+NAVE-0058	ABSTINENCE, TOTAL	2	→	2	Samson	vers	4Móz 6:4	Num.6.4	vers	azonos			
 NAVE-0058	ABSTINENCE, TOTAL	2	→	3	Daniel	vers	Dán 1:8	Dan.1.8	vers	azonos			
 NAVE-0058	ABSTINENCE, TOTAL	2	→	3	Daniel	vers	Dán 1:12	Dan.1.12	vers	azonos			
 NAVE-0058	ABSTINENCE, TOTAL	2	→	4	Rechabites	vers	Jer 35:6-14	Jer.35.6-Jer.35.14	tartomany	tartomany			
@@ -2466,7 +2471,7 @@ NAVE-0151	AHAZ	1	szam:1	6	Prophets in the reign of	vers	Hós 1:1	Hos.1.1	vers	az
 NAVE-0151	AHAZ	1	szam:1	6	Prophets in the reign of	vers	Mik 1:1	Mic.1.1	vers	azonos			
 NAVE-0151	AHAZ	1	szam:1	7	Prophecies concerning	vers	Ézs 7:13-25	Isa.7.13-Isa.7.25	tartomany	tartomany			
 NAVE-0151	AHAZ	1	szam:1	8	Succeeded by Hezekiah	vers	2Kir 16:20	2Kgs.16.20	vers	azonos			
-NAVE-0151	AHAZ	2	szam:2	0	Son of	vers	Mik 1	Mic.1	fejezet	nem_ertekelt			gyanus_kijelzes:Micah 1;toredek:Ch 8:35; 9:41,42;javaslat:1Krón 8:35
+NAVE-0151	AHAZ	2	szam:2	0	Son of	vers	Mik 1	Mic.1	fejezet	nem_ertekelt			gyanus_kijelzes:Micah 1;toredek:Ch 8:35; 9:41,42;javaslat:1Krón 8:35; 9:41,42
 NAVE-0152	AHAZIAH	1	szam:1	0	King of Judah. Called AZARIAH and JEHOAHAZ	vers	2Krón 21:17	2Chr.21.17	vers	azonos			
 NAVE-0152	AHAZIAH	1	szam:1	0	King of Judah. Called AZARIAH and JEHOAHAZ	vers	2Krón 25:23	2Chr.25.23	vers	azonos			
 NAVE-0152	AHAZIAH	1	szam:1	1	History of	vers	2Kir 8:25-29	2Kgs.8.25-2Kgs.8.29	tartomany	tartomany			
@@ -2922,7 +2927,8 @@ NAVE-0226	ALTAR	17	→	2	Called ALTAR OF GOD	vers	Zsolt 43:4	Ps.43.4	vers	azonos
 NAVE-0226	ALTAR	17	→	3	Called ALTAR OF THE LORD	vers	Mal 2:13	Mal.2.13	vers	azonos			
 NAVE-0226	ALTAR	18	→	0	IN THE TABERNACLE	szoveg							nincs_hivatkozas
 NAVE-0226	ALTAR	18	→	1	Pattern of	vers	2Móz 27:1-8	Exod.27.1-Exod.27.8	tartomany	tartomany			
-NAVE-0226	ALTAR	18	→	2	Constructed by Bezaleel	vers	2Móz 38:1-7	Exod.38.1-Exod.38.7	tartomany	tartomany			utotag:with 37:1
+NAVE-0226	ALTAR	18	→	2	Constructed by Bezaleel	vers	2Móz 38:1-7	Exod.38.1-Exod.38.7	tartomany	tartomany			
+NAVE-0226	ALTAR	18	→	2	Constructed by Bezaleel	vers	2Móz 37:1	Exod.37.1	vers	azonos			with_folytato:with 37:1;konyv_oroklve:Exod
 NAVE-0226	ALTAR	18	→	3	Location of	vers	2Móz 40:6	Exod.40.6	vers	azonos			
 NAVE-0226	ALTAR	18	→	3	Location of	vers	2Móz 40:29	Exod.40.29	vers	azonos			
 NAVE-0226	ALTAR	18	→	3	Location of	vers	Ez 8:16	Ezek.8.16	vers	azonos			
@@ -3275,7 +3281,8 @@ NAVE-0262	AMMONITES	16	→	0	Prophecies concerning	vers	Ámós 1:13-15	Amos.1.13
 NAVE-0262	AMMONITES	16	→	0	Prophecies concerning	vers	Sof 2:8-11	Zeph.2.8-Zeph.2.11	tartomany	tartomany			
 NAVE-0263	AMNESTY	1	→	0	For political offenses	szoveg							nincs_hivatkozas
 NAVE-0263	AMNESTY	1	→	1	To Shimei	vers	2Sám 19:16-23	2Sam.19.16-2Sam.19.23	tartomany	tartomany			
-NAVE-0263	AMNESTY	1	→	2	To	vers	Ámós 2	Amos.2	fejezet	nem_ertekelt			gyanus_kijelzes:Amos 2;toredek:Sa 19:13;javaslat:2Sám 19:13;utotag:with 17:25
+NAVE-0263	AMNESTY	1	→	2	To	vers	Ámós 2	Amos.2	fejezet	nem_ertekelt			gyanus_kijelzes:Amos 2;toredek:Sa 19:13;javaslat:2Sám 19:13
+NAVE-0263	AMNESTY	1	→	2	To	vers	Ámós 17:25	Amos.17.25	vers	nem_ertekelt			with_folytato:with 17:25;konyv_oroklve:Amos;gyanus_kijelzes:with_folytato_bizonytalan_konyv;javaslat:2Sám 17:25
 NAVE-0264	AMNON	1	szam:1	0	Son of David	vers	2Sám 3:2	2Sam.3.2	vers	azonos			
 NAVE-0264	AMNON	1	szam:1	0	Son of David	vers	1Krón 3:1	1Chr.3.1	vers	azonos			
 NAVE-0264	AMNON	1	szam:1	1	Incest of, and death	vers	2Sám 13	2Sam.13	fejezet	fejezet			
@@ -4610,7 +4617,8 @@ NAVE-0316	ANTIOCH	1	szam:1	2	The congregation in	vers	ApCsel 13:1	Acts.13.1	vers
 NAVE-0316	ANTIOCH	1	szam:1	2	The congregation in	vers	ApCsel 14:26	Acts.14.26	vers	ujszovetseg_nincs_tabla			
 NAVE-0316	ANTIOCH	1	szam:1	2	The congregation in	vers	ApCsel 14:27	Acts.14.27	vers	ujszovetseg_nincs_tabla			
 NAVE-0316	ANTIOCH	1	szam:1	3	Barnabas and Paul make second visit to	vers	ApCsel 14:26-28	Acts.14.26-Acts.14.28	tartomany	tartomany			
-NAVE-0316	ANTIOCH	1	szam:1	4	Dissension within the congregation of	vers	ApCsel 15:22	Acts.15.22	vers	ujszovetseg_nincs_tabla			utotag:with 15:1-35
+NAVE-0316	ANTIOCH	1	szam:1	4	Dissension within the congregation of	vers	ApCsel 15:22	Acts.15.22	vers	ujszovetseg_nincs_tabla			
+NAVE-0316	ANTIOCH	1	szam:1	4	Dissension within the congregation of	vers	ApCsel 15:1-35	Acts.15.1-Acts.15.35	tartomany	tartomany			with_folytato:with 15:1-35;konyv_oroklve:Acts
 NAVE-0316	ANTIOCH	1	szam:1	5	Paul and Peter's controversy at	vers	Gal 2:11-15	Gal.2.11-Gal.2.15	tartomany	tartomany			
 NAVE-0316	ANTIOCH	2	szam:2	0	A city of Pisidia. Persecutes Paul	vers	ApCsel 13:14-52	Acts.13.14-Acts.13.52	tartomany	tartomany			
 NAVE-0316	ANTIOCH	2	szam:2	0	A city of Pisidia. Persecutes Paul	vers	2Tim 3:11	2Tim.3.11	vers	ujszovetseg_nincs_tabla			
@@ -7944,10 +7952,11 @@ NAVE-0680	BEN-GEBER (R. V.)	1	→	0	In R.V.	vers	1Kir 4:13	1Kgs.4.13	vers	azonos
 NAVE-0680	BEN-GEBER (R. V.)	2	→	0	See	lasd						GEBER	
 NAVE-0681	BEN-HADAD	1	szam:1	0	King of Syria	vers	1Kir 15:18-20	1Kgs.15.18-1Kgs.15.20	tartomany	tartomany			
 NAVE-0681	BEN-HADAD	1	szam:1	0	King of Syria	vers	2Krón 16:2-4	2Chr.16.2-2Chr.16.4	tartomany	tartomany			
-NAVE-0681	BEN-HADAD	2	szam:2	0	A king of Syria, who reigned during the time of Ahab, son of Ben-hadad I 1Ki 20	vers	2Kir 5	2Kgs.5	fejezet	fejezet			
-NAVE-0681	BEN-HADAD	2	szam:2	0	A king of Syria, who reigned during the time of Ahab, son of Ben-hadad I 1Ki 20	vers	2Kir 6	2Kgs.6	fejezet	fejezet			
-NAVE-0681	BEN-HADAD	2	szam:2	0	A king of Syria, who reigned during the time of Ahab, son of Ben-hadad I 1Ki 20	vers	2Kir 7	2Kgs.7	fejezet	fejezet			
-NAVE-0681	BEN-HADAD	2	szam:2	0	A king of Syria, who reigned during the time of Ahab, son of Ben-hadad I 1Ki 20	vers	2Kir 8:7-15	2Kgs.8.7-2Kgs.8.15	tartomany	tartomany			
+NAVE-0681	BEN-HADAD	2	szam:2	0	A king of Syria, who reigned during the time of Ahab, son of Ben-hadad I	vers	1Kir 20	1Kgs.20	fejezet	fejezet			ref_nelkuli_hivatkozas:1Ki 20
+NAVE-0681	BEN-HADAD	2	szam:2	0	A king of Syria, who reigned during the time of Ahab, son of Ben-hadad I	vers	2Kir 5	2Kgs.5	fejezet	fejezet			
+NAVE-0681	BEN-HADAD	2	szam:2	0	A king of Syria, who reigned during the time of Ahab, son of Ben-hadad I	vers	2Kir 6	2Kgs.6	fejezet	fejezet			
+NAVE-0681	BEN-HADAD	2	szam:2	0	A king of Syria, who reigned during the time of Ahab, son of Ben-hadad I	vers	2Kir 7	2Kgs.7	fejezet	fejezet			
+NAVE-0681	BEN-HADAD	2	szam:2	0	A king of Syria, who reigned during the time of Ahab, son of Ben-hadad I	vers	2Kir 8:7-15	2Kgs.8.7-2Kgs.8.15	tartomany	tartomany			
 NAVE-0681	BEN-HADAD	3	szam:3	0	Son of Hazael and king of Syria	vers	2Kir 13:3	2Kgs.13.3	vers	azonos			
 NAVE-0681	BEN-HADAD	3	szam:3	0	Son of Hazael and king of Syria	vers	2Kir 13:24	2Kgs.13.24	vers	azonos			
 NAVE-0681	BEN-HADAD	3	szam:3	0	Son of Hazael and king of Syria	vers	2Kir 13:25	2Kgs.13.25	vers	azonos			
@@ -8358,7 +8367,8 @@ NAVE-0736	BETH-EL	1	szam:1	3	The place where Jacob saw the vision of the ladder	
 NAVE-0736	BETH-EL	1	szam:1	3	The place where Jacob saw the vision of the ladder	vers	Hós 12:4	Hos.12.4	vers	azonos			
 NAVE-0736	BETH-EL	1	szam:1	4	And builds an altar at	vers	1Móz 35:1-15	Gen.35.1-Gen.35.15	tartomany	tartomany			
 NAVE-0736	BETH-EL	1	szam:1	5	Deborah dies at	vers	1Móz 35:8	Gen.35.8	vers	azonos			
-NAVE-0736	BETH-EL	1	szam:1	6	Conquered by Joshua	vers	Józs 8:17	Josh.8.17	vers	azonos			utotag:with 12:16
+NAVE-0736	BETH-EL	1	szam:1	6	Conquered by Joshua	vers	Józs 8:17	Josh.8.17	vers	azonos			
+NAVE-0736	BETH-EL	1	szam:1	6	Conquered by Joshua	vers	Józs 12:16	Josh.12.16	vers	azonos			with_folytato:with 12:16;konyv_oroklve:Josh
 NAVE-0736	BETH-EL	1	szam:1	7	Conquered by the household of Joseph	vers	Bír 1:22-26	Judg.1.22-Judg.1.26	tartomany	tartomany			
 NAVE-0736	BETH-EL	1	szam:1	8	Allotted to Benjamin	vers	Józs 18:13	Josh.18.13	vers	azonos			
 NAVE-0736	BETH-EL	1	szam:1	8	Allotted to Benjamin	vers	Józs 18:22	Josh.18.22	vers	azonos			
@@ -8555,7 +8565,8 @@ NAVE-0777	BETRAYAL	1	→	0	Of Jesus	vers	Ján 13:21	John.13.21	vers	ujszovetseg_
 NAVE-0777	BETRAYAL	2	→	0	Of others, foretold	vers	Mt 20:18	Matt.20.18	vers	ujszovetseg_nincs_tabla			
 NAVE-0777	BETRAYAL	2	→	0	Of others, foretold	vers	Mt 24:10	Matt.24.10	vers	ujszovetseg_nincs_tabla			
 NAVE-0777	BETRAYAL	3	→	0	Of David, by Doeg	vers	1Sám 22:9	1Sam.22.9	vers	azonos			
-NAVE-0777	BETRAYAL	3	→	0	Of David, by Doeg	vers	1Sám 22:10	1Sam.22.10	vers	azonos			utotag:with 21:1-10
+NAVE-0777	BETRAYAL	3	→	0	Of David, by Doeg	vers	1Sám 22:10	1Sam.22.10	vers	azonos			
+NAVE-0777	BETRAYAL	3	→	0	Of David, by Doeg	vers	1Sám 21:1-10	1Sam.21.1-1Sam.21.10	tartomany	tartomany			with_folytato:with 21:1-10;konyv_oroklve:1Sam
 NAVE-0777	BETRAYAL	4	→	0	Of cities	vers	Bír 1:24	Judg.1.24	vers	azonos			
 NAVE-0777	BETRAYAL	4	→	0	Of cities	vers	Bír 1:25	Judg.1.25	vers	azonos			
 NAVE-0777	BETRAYAL	5	→	0	See	lasd						CONFIDENCE BETRAYED	
@@ -8646,9 +8657,11 @@ NAVE-0790	BIGOTRY	5	folyt	3	Of John in forbidding the casting out of demons by o
 NAVE-0790	BIGOTRY	5	folyt	4	James and John in desiring to call down fire upon the Samaritans who would not receive Jesus	vers	Luk 9:51-56	Luke.9.51-Luke.9.56	tartomany	tartomany			
 NAVE-0790	BIGOTRY	5	folyt	5	Of Saul, in persecuting the Christians	vers	ApCsel 22:3	Acts.22.3	vers	ujszovetseg_nincs_tabla			
 NAVE-0790	BIGOTRY	5	folyt	5	Of Saul, in persecuting the Christians	vers	ApCsel 22:4	Acts.22.4	vers	ujszovetseg_nincs_tabla			
-NAVE-0790	BIGOTRY	5	folyt	5	with 9:1-5; 26:9	vers	Gal 1:13	Gal.1.13	vers	ujszovetseg_nincs_tabla			
-NAVE-0790	BIGOTRY	5	folyt	5	with 9:1-5; 26:9	vers	Gal 1:14	Gal.1.14	vers	ujszovetseg_nincs_tabla			
-NAVE-0790	BIGOTRY	5	folyt	5	with 9:1-5; 26:9	vers	Fil 3:6	Phil.3.6	vers	ujszovetseg_nincs_tabla			
+NAVE-0790	BIGOTRY	5	folyt	5	Of Saul, in persecuting the Christians	vers	ApCsel 9:1-5	Acts.9.1-Acts.9.5	tartomany	tartomany			with_folytato:with 9:1-5; 26:9;konyv_oroklve:Acts
+NAVE-0790	BIGOTRY	5	folyt	5	Of Saul, in persecuting the Christians	vers	ApCsel 26:9	Acts.26.9	vers	ujszovetseg_nincs_tabla			with_folytato:with 9:1-5; 26:9;konyv_oroklve:Acts
+NAVE-0790	BIGOTRY	5	folyt	5	Of Saul, in persecuting the Christians	vers	Gal 1:13	Gal.1.13	vers	ujszovetseg_nincs_tabla			
+NAVE-0790	BIGOTRY	5	folyt	5	Of Saul, in persecuting the Christians	vers	Gal 1:14	Gal.1.14	vers	ujszovetseg_nincs_tabla			
+NAVE-0790	BIGOTRY	5	folyt	5	Of Saul, in persecuting the Christians	vers	Fil 3:6	Phil.3.6	vers	ujszovetseg_nincs_tabla			
 NAVE-0790	BIGOTRY	5	folyt	6	See	lasd						INTOLERANCE	utotag:RELIGIOUS
 NAVE-0790	BIGOTRY	5	folyt	7	See	lasd						PERSECUTION	
 NAVE-0790	BIGOTRY	5	folyt	8	See	lasd						UNCHARITABLENESS	
@@ -8808,9 +8821,10 @@ NAVE-0808	BIRTHRIGHT	4	→	0	An honorable title	vers	Zsid 12:23	Heb.12.23	vers	u
 NAVE-0808	BIRTHRIGHT	4	→	0	An honorable title	vers	Jel 1:5	Rev.1.5	vers	ujszovetseg_nincs_tabla			
 NAVE-0808	BIRTHRIGHT	5	→	0	Sold by Esau	vers	1Móz 25:29-34	Gen.25.29-Gen.25.34	tartomany	tartomany			
 NAVE-0808	BIRTHRIGHT	5	→	0	Sold by Esau	vers	1Móz 27:36	Gen.27.36	vers	azonos			
-NAVE-0808	BIRTHRIGHT	5	→	0	with 25:33	vers	Zsid 12:16	Heb.12.16	vers	ujszovetseg_nincs_tabla			
-NAVE-0808	BIRTHRIGHT	5	→	0	with 25:33	vers	Róm 9:12	Rom.9.12	vers	ujszovetseg_nincs_tabla			
-NAVE-0808	BIRTHRIGHT	5	→	0	with 25:33	vers	Róm 9:13	Rom.9.13	vers	ujszovetseg_nincs_tabla			
+NAVE-0808	BIRTHRIGHT	5	→	0	Sold by Esau	vers	1Móz 25:33	Gen.25.33	vers	azonos			with_folytato:with 25:33;konyv_oroklve:Gen
+NAVE-0808	BIRTHRIGHT	5	→	0	Sold by Esau	vers	Zsid 12:16	Heb.12.16	vers	ujszovetseg_nincs_tabla			
+NAVE-0808	BIRTHRIGHT	5	→	0	Sold by Esau	vers	Róm 9:12	Rom.9.12	vers	ujszovetseg_nincs_tabla			
+NAVE-0808	BIRTHRIGHT	5	→	0	Sold by Esau	vers	Róm 9:13	Rom.9.13	vers	ujszovetseg_nincs_tabla			
 NAVE-0808	BIRTHRIGHT	6	→	0	Forfeited by Reuben	vers	1Krón 5:1	1Chr.5.1	vers	azonos			
 NAVE-0808	BIRTHRIGHT	6	→	0	Forfeited by Reuben	vers	1Krón 5:2	1Chr.5.2	vers	azonos			
 NAVE-0808	BIRTHRIGHT	7	→	0	Set aside	szoveg							nincs_hivatkozas
@@ -9828,7 +9842,8 @@ NAVE-0837	BOASTING	3	→	1	Goliath	vers	1Sám 17	1Sam.17	fejezet	fejezet
 NAVE-0837	BOASTING	3	→	2	Ben-hadad	vers	1Kir 20:10	1Kgs.20.10	vers	azonos			
 NAVE-0837	BOASTING	3	→	3	Sennacherib	vers	2Kir 18:19	2Kgs.18.19	vers	azonos			
 NAVE-0837	BOASTING	3	→	3	Sennacherib	vers	Ézs 10:8-15	Isa.10.8-Isa.10.15	tartomany	tartomany			
-NAVE-0837	BOASTING	3	→	4	The disciples	vers	Luk 10:17	Luke.10.17	vers	ujszovetseg_nincs_tabla			utotag:with 10:20
+NAVE-0837	BOASTING	3	→	4	The disciples	vers	Luk 10:17	Luke.10.17	vers	ujszovetseg_nincs_tabla			
+NAVE-0837	BOASTING	3	→	4	The disciples	vers	Luk 10:20	Luke.10.20	vers	ujszovetseg_nincs_tabla			with_folytato:with 10:20;konyv_oroklve:Luke
 NAVE-0837	BOASTING	4	→	0	SPIRITUAL	vers	Zsolt 49:6-9	Ps.49.6-Ps.49.9	tartomany	tartomany			
 NAVE-0837	BOASTING	4	→	0	SPIRITUAL	vers	Zsolt 52:1	Ps.52.1	vers	azonos			
 NAVE-0837	BOASTING	4	→	0	SPIRITUAL	vers	Zsolt 94:4	Ps.94.4	vers	azonos			
@@ -12310,7 +12325,9 @@ NAVE-1075	CHILDLESSNESS	1	→	0	A reproach	vers	Ézs 4:1	Isa.4.1	vers	nincs_a_ta
 NAVE-1075	CHILDLESSNESS	1	→	0	A reproach	vers	Luk 1:25	Luke.1.25	vers	ujszovetseg_nincs_tabla			
 NAVE-1075	CHILDLESSNESS	2	→	0	See	lasd						BARRENNESS	
 NAVE-1076	CHILDREN	1	→	0	In answer to prayer	szoveg							nincs_hivatkozas
-NAVE-1076	CHILDREN	1	→	1	To Abraham	vers	1Móz 15:2-5	Gen.15.2-Gen.15.5	tartomany	tartomany			utotag:with 21:1,2
+NAVE-1076	CHILDREN	1	→	1	To Abraham	vers	1Móz 15:2-5	Gen.15.2-Gen.15.5	tartomany	tartomany			
+NAVE-1076	CHILDREN	1	→	1	To Abraham	vers	1Móz 21:1	Gen.21.1	vers	azonos			with_folytato:with 21:1,2;konyv_oroklve:Gen
+NAVE-1076	CHILDREN	1	→	1	To Abraham	vers	1Móz 21:2	Gen.21.2	vers	azonos			with_folytato:with 21:1,2;konyv_oroklve:Gen
 NAVE-1076	CHILDREN	1	→	2	Isaac	vers	1Móz 25:21	Gen.25.21	vers	azonos			
 NAVE-1076	CHILDREN	1	→	3	Leah	vers	1Móz 30:17-22	Gen.30.17-Gen.30.22	tartomany	tartomany			
 NAVE-1076	CHILDREN	1	→	4	Rachel	vers	1Móz 30:22-24	Gen.30.22-Gen.30.24	tartomany	tartomany			
@@ -14318,7 +14335,8 @@ NAVE-1132	CLEANSING	1	→	0	See	lasd						ABLUTION
 NAVE-1133	CLEMENCY	1	→	0	Of David toward disloyal subjects	szoveg							nincs_hivatkozas
 NAVE-1133	CLEMENCY	1	→	1	Shimei	vers	2Sám 16:5-13	2Sam.16.5-2Sam.16.13	tartomany	tartomany			
 NAVE-1133	CLEMENCY	1	→	1	Shimei	vers	2Sám 19:16-23	2Sam.19.16-2Sam.19.23	tartomany	tartomany			
-NAVE-1133	CLEMENCY	1	→	2	Amasa	vers	2Sám 19:13	2Sam.19.13	vers	azonos			utotag:with 17:25
+NAVE-1133	CLEMENCY	1	→	2	Amasa	vers	2Sám 19:13	2Sam.19.13	vers	azonos			
+NAVE-1133	CLEMENCY	1	→	2	Amasa	vers	2Sám 17:25	2Sam.17.25	vers	azonos			with_folytato:with 17:25;konyv_oroklve:2Sam
 NAVE-1133	CLEMENCY	2	→	0	DIVINE	szoveg							nincs_hivatkozas
 NAVE-1133	CLEMENCY	2	→	1	See	lasd						GOD	utotag:LONGSUFFERING OF
 NAVE-1133	CLEMENCY	3	→	0	See	lasd						GOD	utotag:MERCY OF
@@ -16100,10 +16118,10 @@ NAVE-1233	CORINTH	2	→	1	By Paul	vers	2Kor 13:1	2Cor.13.1	vers	ujszovetseg_ninc
 NAVE-1233	CORINTH	2	→	1	with	vers	1Kor 16:5-7	1Cor.16.5-1Cor.16.7	tartomany	tartomany			
 NAVE-1233	CORINTH	2	→	2	And	vers	2Kor 1:16	2Cor.1.16	vers	ujszovetseg_nincs_tabla			
 NAVE-1233	CORINTH	2	→	3	By Apollos	vers	ApCsel 19:1	Acts.19.1	vers	ujszovetseg_nincs_tabla			
-NAVE-1233	CORINTH	2	→	4	By	vers	Tit 2	Titus.2	fejezet	fejezet			
-NAVE-1233	CORINTH	2	→	4	By	vers	Kol 8:16	Col.8.16	vers	ujszovetseg_nincs_tabla			
-NAVE-1233	CORINTH	2	→	4	By	vers	Kol 8:17	Col.8.17	vers	ujszovetseg_nincs_tabla			
-NAVE-1233	CORINTH	2	→	4	By	vers	Kol 12:18	Col.12.18	vers	ujszovetseg_nincs_tabla			
+NAVE-1233	CORINTH	2	→	4	By	vers	Tit 2	Titus.2	fejezet	nem_ertekelt			gyanus_kijelzes:Titus 2;toredek:Co 8:16;javaslat:2Kor 8:16
+NAVE-1233	CORINTH	2	→	4	By	vers	2Kor 8:16	2Cor.8.16	vers	ujszovetseg_nincs_tabla			javitva:eredeti_osis=Col.8.16
+NAVE-1233	CORINTH	2	→	4	By	vers	2Kor 8:17	2Cor.8.17	vers	ujszovetseg_nincs_tabla			javitva:eredeti_osis=Col.8.17
+NAVE-1233	CORINTH	2	→	4	By	vers	2Kor 12:18	2Cor.12.18	vers	ujszovetseg_nincs_tabla			javitva:eredeti_osis=Col.12.18
 NAVE-1233	CORINTH	3	→	0	By Erastus, a Christian of	vers	Róm 16:23	Rom.16.23	vers	ujszovetseg_nincs_tabla			
 NAVE-1233	CORINTH	3	→	0	By Erastus, a Christian of	vers	2Tim 4:20	2Tim.4.20	vers	ujszovetseg_nincs_tabla			
 NAVE-1233	CORINTH	4	→	0	THE CONGREGATION OF	szoveg							nincs_hivatkozas
@@ -16585,7 +16603,8 @@ NAVE-1254	COVENANT	23	→	0	THE SECOND COVENANT	vers	Zsid 12:18-24	Heb.12.18-Heb
 NAVE-1254	COVENANT	23	→	0	THE SECOND COVENANT	vers	Zsid 13:20	Heb.13.20	vers	ujszovetseg_nincs_tabla			
 NAVE-1254	COVENANT	24	→	0	OF MAN WITH GOD	szoveg							nincs_hivatkozas
 NAVE-1254	COVENANT	24	→	1	Jacob	vers	1Móz 28:20-22	Gen.28.20-Gen.28.22	tartomany	tartomany			
-NAVE-1254	COVENANT	24	→	2	Joshua	vers	Józs 24:25	Josh.24.25	vers	azonos			utotag:with 24:19-28
+NAVE-1254	COVENANT	24	→	2	Joshua	vers	Józs 24:25	Josh.24.25	vers	azonos			
+NAVE-1254	COVENANT	24	→	2	Joshua	vers	Józs 24:19-28	Josh.24.19-Josh.24.28	tartomany	tartomany			with_folytato:with 24:19-28;konyv_oroklve:Josh
 NAVE-1254	COVENANT	24	→	3	Absalom	vers	2Sám 15:7	2Sam.15.7	vers	azonos			
 NAVE-1254	COVENANT	24	→	3	Absalom	vers	2Sám 15:8	2Sam.15.8	vers	azonos			
 NAVE-1254	COVENANT	24	→	4	Jehoiada and Joash	vers	2Kir 11:17	2Kgs.11.17	vers	azonos			
@@ -18886,7 +18905,9 @@ NAVE-1359	DECISION	8	→	38	See	lasd						ZEAL	utotag:RELIGIOUS
 NAVE-1360	DECISION, VALLEY OF	1	→	0	General scriptures concerning	vers	Jóel 3:14	Joel.3.14	vers	azonos			
 NAVE-1361	DECREES	1	→	0	Of the Medes, irrevocable	vers	Dán 6:14	Dan.6.14	vers	azonos			
 NAVE-1361	DECREES	1	→	0	Of the Medes, irrevocable	vers	Dán 6:15	Dan.6.15	vers	azonos			
-NAVE-1361	DECREES	2	→	0	From the congregation in Jerusalem	vers	ApCsel 16:4	Acts.16.4	vers	ujszovetseg_nincs_tabla			utotag:with 15:28,29
+NAVE-1361	DECREES	2	→	0	From the congregation in Jerusalem	vers	ApCsel 16:4	Acts.16.4	vers	ujszovetseg_nincs_tabla			
+NAVE-1361	DECREES	2	→	0	From the congregation in Jerusalem	vers	ApCsel 15:28	Acts.15.28	vers	ujszovetseg_nincs_tabla			with_folytato:with 15:28,29;konyv_oroklve:Acts
+NAVE-1361	DECREES	2	→	0	From the congregation in Jerusalem	vers	ApCsel 15:29	Acts.15.29	vers	ujszovetseg_nincs_tabla			with_folytato:with 15:28,29;konyv_oroklve:Acts
 NAVE-1362	DECREES, DIVINE	1	→	0	See	lasd						PREDESTINATION	
 NAVE-1363	DEDAN	1	szam:1	0	Son of Raamah	vers	1Móz 10:7	Gen.10.7	vers	azonos			
 NAVE-1363	DEDAN	1	szam:1	0	Son of Raamah	vers	1Krón 1:9	1Chr.1.9	vers	azonos			
@@ -19515,8 +19536,8 @@ NAVE-1412	DILIGENCE	29	folyt	2	Nehemiah and his helpers	vers	Neh 4:6	Neh.4.6	ver
 NAVE-1412	DILIGENCE	29	folyt	3	Psalmist	vers	Zsolt 119:60	Ps.119.60	vers	azonos			
 NAVE-1412	DILIGENCE	29	folyt	4	Apostles	vers	ApCsel 5:42	Acts.5.42	vers	ujszovetseg_nincs_tabla			
 NAVE-1412	DILIGENCE	29	folyt	5	Apollos	vers	ApCsel 18:25	Acts.18.25	vers	ujszovetseg_nincs_tabla			
-NAVE-1412	DILIGENCE	29	folyt	6		vers	Tit 2	Titus.2	fejezet	fejezet			
-NAVE-1412	DILIGENCE	29	folyt	6		vers	Kol 8:22	Col.8.22	vers	ujszovetseg_nincs_tabla			
+NAVE-1412	DILIGENCE	29	folyt	6		vers	Tit 2	Titus.2	fejezet	nem_ertekelt			gyanus_kijelzes:Titus 2;toredek:Co 8:22;javaslat:2Kor 8:22
+NAVE-1412	DILIGENCE	29	folyt	6		vers	2Kor 8:22	2Cor.8.22	vers	ujszovetseg_nincs_tabla			javitva:eredeti_osis=Col.8.22
 NAVE-1412	DILIGENCE	29	folyt	7	Paul	vers	1Thessz 2:9	1Thess.2.9	vers	ujszovetseg_nincs_tabla			
 NAVE-1412	DILIGENCE	29	folyt	8	Onesiphorus	vers	2Tim 1:17	2Tim.1.17	vers	ujszovetseg_nincs_tabla			
 NAVE-1412	DILIGENCE	29	folyt	9	See	lasd						INDUSTRY	
@@ -22126,7 +22147,7 @@ NAVE-1706	ESHTEMOA	1	szam:1	1	A town of Canaan assigned to Judah	vers	Józs 15:5
 NAVE-1706	ESHTEMOA	1	szam:1	2	Allotted to the Aaronites	vers	Józs 21:14	Josh.21.14	vers	azonos			
 NAVE-1706	ESHTEMOA	1	szam:1	2	Allotted to the Aaronites	vers	1Krón 6:57	1Chr.6.57	vers	azonos			
 NAVE-1706	ESHTEMOA	1	szam:1	3	David shared plunder with	vers	1Sám 30:28	1Sam.30.28	vers	azonos			
-NAVE-1706	ESHTEMOA	2	szam:2	0	A descendant of	vers	Ezsd 1	Ezra.1	fejezet	nem_ertekelt			gyanus_kijelzes:Ezra 1;toredek:Ch 4:17,19;javaslat:1Krón 4:17
+NAVE-1706	ESHTEMOA	2	szam:2	0	A descendant of	vers	Ezsd 1	Ezra.1	fejezet	nem_ertekelt			gyanus_kijelzes:Ezra 1;toredek:Ch 4:17,19;javaslat:1Krón 4:17,19
 NAVE-1707	ESHTON	1	→	0	Son of Mehir	vers	1Krón 4:11	1Chr.4.11	vers	azonos			
 NAVE-1707	ESHTON	1	→	0	Son of Mehir	vers	1Krón 4:12	1Chr.4.12	vers	azonos			
 NAVE-1708	ESLI	1	→	0	An ancestor of Jesus	vers	Luk 3:25	Luke.3.25	vers	ujszovetseg_nincs_tabla			
@@ -24082,7 +24103,8 @@ NAVE-1797	FASTING	21	folyt	0	While interceding in prayer for his friends	vers	Zs
 NAVE-1797	FASTING	22	folyt	0	In his zeal for Zion	vers	Zsolt 69:10	Ps.69.10	vers	azonos			
 NAVE-1797	FASTING	23	folyt	0	In prayer for himself and his adversaries	vers	Zsolt 109:4	Ps.109.4	vers	azonos			
 NAVE-1797	FASTING	23	folyt	0	In prayer for himself and his adversaries	vers	Zsolt 109:24	Ps.109.24	vers	azonos			
-NAVE-1797	FASTING	23	folyt	1	Of Ahab, when Elijah prophesied the destruction of himself and his house	vers	1Kir 21:27	1Kgs.21.27	vers	azonos			utotag:with 20:29
+NAVE-1797	FASTING	23	folyt	1	Of Ahab, when Elijah prophesied the destruction of himself and his house	vers	1Kir 21:27	1Kgs.21.27	vers	azonos			
+NAVE-1797	FASTING	23	folyt	1	Of Ahab, when Elijah prophesied the destruction of himself and his house	vers	1Kir 20:29	1Kgs.20.29	vers	azonos			with_folytato:with 20:29;konyv_oroklve:1Kgs
 NAVE-1797	FASTING	23	folyt	2	Of Jehoshaphat, at the time of the invasion of the confederated armies of the Canaanites and Syrians	vers	2Krón 20:3	2Chr.20.3	vers	azonos			
 NAVE-1797	FASTING	23	folyt	3	Of Ezra, on account of the idolatrous marriages of the Jews	vers	Ezsd 10:6	Ezra.10.6	vers	azonos			
 NAVE-1797	FASTING	23	folyt	4	Of Nehemiah, on account of the desolation of Jerusalem and the temple	vers	Neh 1:4	Neh.1.4	vers	azonos			
@@ -24164,7 +24186,9 @@ NAVE-1809	FEASTS	1	→	1	Men alone present at	vers	Eszt 1:9	Esth.1.9	vers	azonos
 NAVE-1809	FEASTS	1	→	1	Men alone present at	vers	Mk 6:21	Mark.6.21	vers	ujszovetseg_nincs_tabla			
 NAVE-1809	FEASTS	1	→	1	Men alone present at	vers	Luk 14:24	Luke.14.24	vers	ujszovetseg_nincs_tabla			
 NAVE-1809	FEASTS	2	→	0	Men and women attend	vers	2Móz 32:6	Exod.32.6	vers	azonos			
-NAVE-1809	FEASTS	2	→	0	with 32:2,3	vers	Dán 5:1-3	Dan.5.1-Dan.5.3	tartomany	tartomany			
+NAVE-1809	FEASTS	2	→	0	Men and women attend	vers	2Móz 32:2	Exod.32.2	vers	azonos			with_folytato:with 32:2,3;konyv_oroklve:Exod
+NAVE-1809	FEASTS	2	→	0	Men and women attend	vers	2Móz 32:3	Exod.32.3	vers	azonos			with_folytato:with 32:2,3;konyv_oroklve:Exod
+NAVE-1809	FEASTS	2	→	0	Men and women attend	vers	Dán 5:1-3	Dan.5.1-Dan.5.3	tartomany	tartomany			
 NAVE-1809	FEASTS	3	→	0	Riddles propounded at	vers	Bír 14:12	Judg.14.12	vers	azonos			
 NAVE-1809	FEASTS	4	→	0	Marriage feasts provided by the bridegroom	vers	Bír 14:10	Judg.14.10	vers	azonos			
 NAVE-1809	FEASTS	4	→	0	Marriage feasts provided by the bridegroom	vers	Bír 14:17	Judg.14.17	vers	azonos			
@@ -24866,7 +24890,8 @@ NAVE-1848	FLATTERY	2	→	11	By the Herodians	vers	Luk 20:21	Luke.20.21	vers	ujsz
 NAVE-1848	FLATTERY	2	→	12	By Tyrians	vers	ApCsel 12:22	Acts.12.22	vers	ujszovetseg_nincs_tabla			
 NAVE-1848	FLATTERY	2	→	13	Tertullus flatters Felix	vers	ApCsel 24:2-4	Acts.24.2-Acts.24.4	tartomany	tartomany			
 NAVE-1848	FLATTERY	2	→	14	Paul correctly informs Felix	vers	ApCsel 24:10	Acts.24.10	vers	ujszovetseg_nincs_tabla			
-NAVE-1848	FLATTERY	2	→	15	By Herod Agrippa II Ac 26:2,3	szoveg							nincs_hivatkozas
+NAVE-1848	FLATTERY	2	→	15	By Herod Agrippa II	vers	ApCsel 26:2	Acts.26.2	vers	ujszovetseg_nincs_tabla			ref_nelkuli_hivatkozas:Ac 26:2,3
+NAVE-1848	FLATTERY	2	→	15	By Herod Agrippa II	vers	ApCsel 26:3	Acts.26.3	vers	ujszovetseg_nincs_tabla			ref_nelkuli_hivatkozas:Ac 26:2,3
 NAVE-1849	FLAX	1	→	0	In Egypt	vers	2Móz 9:31	Exod.9.31	vers	azonos			
 NAVE-1849	FLAX	2	→	0	In Palestine	vers	Józs 2:6	Josh.2.6	vers	azonos			
 NAVE-1849	FLAX	3	→	0	Linen made from	vers	Péld 31:13	Prov.31.13	vers	azonos			
@@ -26778,7 +26803,8 @@ NAVE-2034	GLORY	9	→	8	Eternal	vers	Zsolt 104:31	Ps.104.31	vers	azonos
 NAVE-2034	GLORY	9	→	9	Rich	vers	Ef 3:16	Eph.3.16	vers	ujszovetseg_nincs_tabla			
 NAVE-2034	GLORY	9	→	10	Highly exalted	vers	Zsolt 8:1	Ps.8.1	vers	azonos			
 NAVE-2034	GLORY	9	→	10	Highly exalted	vers	Zsolt 113:4	Ps.113.4	vers	azonos			
-NAVE-2034	GLORY	9	→	11	Exhibited to Moses	vers	2Móz 34:5-7	Exod.34.5-Exod.34.7	tartomany	tartomany			utotag:with 33:18-23
+NAVE-2034	GLORY	9	→	11	Exhibited to Moses	vers	2Móz 34:5-7	Exod.34.5-Exod.34.7	tartomany	tartomany			
+NAVE-2034	GLORY	9	→	11	Exhibited to Moses	vers	2Móz 33:18-23	Exod.33.18-Exod.33.23	tartomany	tartomany			with_folytato:with 33:18-23;konyv_oroklve:Exod
 NAVE-2034	GLORY	9	→	12	Stephen	vers	ApCsel 7:55	Acts.7.55	vers	ujszovetseg_nincs_tabla			
 NAVE-2034	GLORY	9	→	13	The people of God	vers	5Móz 5:24	Deut.5.24	vers	azonos			
 NAVE-2034	GLORY	9	→	13	The people of God	vers	Zsolt 102:16	Ps.102.16	vers	azonos			
@@ -29666,7 +29692,8 @@ NAVE-2042	GOD	86	folyt	0	on account of Samuel's intercession	vers	1Sám 7:7-10	1
 NAVE-2042	GOD	87	folyt	0	under David	vers	1Sám 17:45-49	1Sam.17.45-1Sam.17.49	tartomany	tartomany			
 NAVE-2042	GOD	88	folyt	0	Ahab	vers	1Kir 20	1Kgs.20	fejezet	fejezet			
 NAVE-2042	GOD	89	folyt	0	Delivering the kingdom of Israel from Syria	vers	2Sám 7	2Sam.7	fejezet	fejezet			
-NAVE-2042	GOD	90	folyt	0	delivering Israel by Jeroboam II 2Ki 14:26,27	szoveg							nincs_hivatkozas
+NAVE-2042	GOD	90	folyt	0	delivering Israel by Jeroboam II	vers	2Kir 14:26	2Kgs.14.26	vers	azonos			ref_nelkuli_hivatkozas:2Ki 14:26,27
+NAVE-2042	GOD	90	folyt	0	delivering Israel by Jeroboam II	vers	2Kir 14:27	2Kgs.14.27	vers	azonos			ref_nelkuli_hivatkozas:2Ki 14:26,27
 NAVE-2042	GOD	91	folyt	0	by Abijah	vers	2Krón 13:4-18	2Chr.13.4-2Chr.13.18	tartomany	tartomany			
 NAVE-2042	GOD	92	folyt	0	in delivering from the oppressions of the king of Syria	vers	2Kir 13:2-5	2Kgs.13.2-2Kgs.13.5	tartomany	tartomany			
 NAVE-2042	GOD	93	folyt	0	To the kingdom of Judah: in delivering from Egypt	vers	2Krón 12:2-12	2Chr.12.2-2Chr.12.12	tartomany	tartomany			
@@ -30745,26 +30772,38 @@ NAVE-2049	GOLD	8	→	10	Overlaying with	vers	2Móz 25:11	Exod.25.11	vers	azonos
 NAVE-2049	GOLD	8	→	10	Overlaying with	vers	2Móz 25:13	Exod.25.13	vers	azonos			
 NAVE-2049	GOLD	8	→	10	Overlaying with	vers	2Móz 25:24	Exod.25.24	vers	azonos			
 NAVE-2049	GOLD	8	→	10	Overlaying with	vers	2Móz 25:28	Exod.25.28	vers	azonos			
-NAVE-2049	GOLD	8	→	10	with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15	vers	1Kir 6:20-22	1Kgs.6.20-1Kgs.6.22	tartomany	tartomany			
-NAVE-2049	GOLD	8	→	10	with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15	vers	1Kir 6:28	1Kgs.6.28	vers	azonos			
-NAVE-2049	GOLD	8	→	10	with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15	vers	1Kir 6:30	1Kgs.6.30	vers	azonos			
-NAVE-2049	GOLD	8	→	10	with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15	vers	1Kir 6:32	1Kgs.6.32	vers	azonos			
-NAVE-2049	GOLD	8	→	10	with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15	vers	1Kir 6:35	1Kgs.6.35	vers	azonos			
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	2Móz 25:1-40	Exod.25.1-Exod.25.40	tartomany	tartomany			with_folytato:with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15;konyv_oroklve:Exod
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	2Móz 26:27	Exod.26.27	vers	azonos			with_folytato:with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15;konyv_oroklve:Exod
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	2Móz 26:29	Exod.26.29	vers	azonos			with_folytato:with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15;konyv_oroklve:Exod
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	2Móz 30:5	Exod.30.5	vers	azonos			with_folytato:with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15;konyv_oroklve:Exod
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	2Móz 36:34	Exod.36.34	vers	nincs_a_tablaban			with_folytato:with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15;konyv_oroklve:Exod
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	2Móz 36:36	Exod.36.36	vers	nincs_a_tablaban			with_folytato:with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15;konyv_oroklve:Exod
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	2Móz 36:38	Exod.36.38	vers	nincs_a_tablaban			with_folytato:with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15;konyv_oroklve:Exod
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	2Móz 37:2	Exod.37.2	vers	azonos			with_folytato:with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15;konyv_oroklve:Exod
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	2Móz 37:4	Exod.37.4	vers	azonos			with_folytato:with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15;konyv_oroklve:Exod
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	2Móz 37:11	Exod.37.11	vers	azonos			with_folytato:with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15;konyv_oroklve:Exod
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	2Móz 37:15	Exod.37.15	vers	azonos			with_folytato:with 25:1-40; 26:27,29; 30:5; 36:34,36,38; 37:2,4,11,15;konyv_oroklve:Exod
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	1Kir 6:20-22	1Kgs.6.20-1Kgs.6.22	tartomany	tartomany			
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	1Kir 6:28	1Kgs.6.28	vers	azonos			
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	1Kir 6:30	1Kgs.6.30	vers	azonos			
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	1Kir 6:32	1Kgs.6.32	vers	azonos			
+NAVE-2049	GOLD	8	→	10	Overlaying with	vers	1Kir 6:35	1Kgs.6.35	vers	azonos			
 NAVE-2049	GOLD	8	→	11	Bedsteads made of	vers	Eszt 1:6	Esth.1.6	vers	azonos			
 NAVE-2049	GOLD	9	→	0	Wedge of	vers	Józs 7:21	Josh.7.21	vers	azonos			
 NAVE-2049	GOLD	9	→	0	Wedge of	vers	Ézs 13:12	Isa.13.12	vers	azonos			
 NAVE-2049	GOLD	10	→	0	Used as money	vers	1Móz 44:8	Gen.44.8	vers	azonos			
-NAVE-2049	GOLD	10	→	0	with 44:1	vers	1Krón 21:25	1Chr.21.25	vers	azonos			
-NAVE-2049	GOLD	10	→	0	with 44:1	vers	Ezsd 8:25-28	Ezra.8.25-Ezra.8.28	tartomany	tartomany			
-NAVE-2049	GOLD	10	→	0	with 44:1	vers	Ézs 13:17	Isa.13.17	vers	azonos			
-NAVE-2049	GOLD	10	→	0	with 44:1	vers	Ézs 60:9	Isa.60.9	vers	azonos			
-NAVE-2049	GOLD	10	→	0	with 44:1	vers	Ez 7:19	Ezek.7.19	vers	azonos			
-NAVE-2049	GOLD	10	→	0	with 44:1	vers	Ez 28:4	Ezek.28.4	vers	azonos			
-NAVE-2049	GOLD	10	→	0	with 44:1	vers	Mt 2:11	Matt.2.11	vers	ujszovetseg_nincs_tabla			
-NAVE-2049	GOLD	10	→	0	with 44:1	vers	Mt 10:9	Matt.10.9	vers	ujszovetseg_nincs_tabla			
-NAVE-2049	GOLD	10	→	0	with 44:1	vers	ApCsel 3:6	Acts.3.6	vers	ujszovetseg_nincs_tabla			
-NAVE-2049	GOLD	10	→	0	with 44:1	vers	ApCsel 20:33	Acts.20.33	vers	ujszovetseg_nincs_tabla			
-NAVE-2049	GOLD	10	→	0	with 44:1	vers	1Pét 1:18	1Pet.1.18	vers	ujszovetseg_nincs_tabla			
+NAVE-2049	GOLD	10	→	0	Used as money	vers	1Móz 44:1	Gen.44.1	vers	azonos			with_folytato:with 44:1;konyv_oroklve:Gen
+NAVE-2049	GOLD	10	→	0	Used as money	vers	1Krón 21:25	1Chr.21.25	vers	azonos			
+NAVE-2049	GOLD	10	→	0	Used as money	vers	Ezsd 8:25-28	Ezra.8.25-Ezra.8.28	tartomany	tartomany			
+NAVE-2049	GOLD	10	→	0	Used as money	vers	Ézs 13:17	Isa.13.17	vers	azonos			
+NAVE-2049	GOLD	10	→	0	Used as money	vers	Ézs 60:9	Isa.60.9	vers	azonos			
+NAVE-2049	GOLD	10	→	0	Used as money	vers	Ez 7:19	Ezek.7.19	vers	azonos			
+NAVE-2049	GOLD	10	→	0	Used as money	vers	Ez 28:4	Ezek.28.4	vers	azonos			
+NAVE-2049	GOLD	10	→	0	Used as money	vers	Mt 2:11	Matt.2.11	vers	ujszovetseg_nincs_tabla			
+NAVE-2049	GOLD	10	→	0	Used as money	vers	Mt 10:9	Matt.10.9	vers	ujszovetseg_nincs_tabla			
+NAVE-2049	GOLD	10	→	0	Used as money	vers	ApCsel 3:6	Acts.3.6	vers	ujszovetseg_nincs_tabla			
+NAVE-2049	GOLD	10	→	0	Used as money	vers	ApCsel 20:33	Acts.20.33	vers	ujszovetseg_nincs_tabla			
+NAVE-2049	GOLD	10	→	0	Used as money	vers	1Pét 1:18	1Pet.1.18	vers	ujszovetseg_nincs_tabla			
 NAVE-2049	GOLD	11	→	0	Solomon rich in	vers	1Kir 10:2	1Kgs.10.2	vers	azonos			
 NAVE-2049	GOLD	11	→	0	Solomon rich in	vers	1Kir 10:14	1Kgs.10.14	vers	azonos			
 NAVE-2049	GOLD	11	→	0	Solomon rich in	vers	1Kir 10:21	1Kgs.10.21	vers	azonos			
@@ -31114,10 +31153,13 @@ NAVE-2068	GOVERNMENT	15	folyt	0	Accepted, and agreed to, the law given by Moses	
 NAVE-2068	GOVERNMENT	15	folyt	1	Refused to make conquest of Canaan	vers	4Móz 14:1-10	Num.14.1-Num.14.10	tartomany	tartomany			
 NAVE-2068	GOVERNMENT	15	folyt	2	Chose, or ratified, the chief ruler	vers	4Móz 27:18-23	Num.27.18-Num.27.23	tartomany	tartomany			
 NAVE-2068	GOVERNMENT	15	folyt	2	Chose, or ratified, the chief ruler	vers	1Sám 10:24	1Sam.10.24	vers	azonos			
-NAVE-2068	GOVERNMENT	15	folyt	2	with 8:4-22; 11:14,15	vers	2Sám 3:17-21	2Sam.3.17-2Sam.3.21	tartomany	tartomany			
-NAVE-2068	GOVERNMENT	15	folyt	2	with 8:4-22; 11:14,15	vers	2Sám 5:1-3	2Sam.5.1-2Sam.5.3	tartomany	tartomany			
-NAVE-2068	GOVERNMENT	15	folyt	2	with 8:4-22; 11:14,15	vers	1Krón 29:22	1Chr.29.22	vers	azonos			
-NAVE-2068	GOVERNMENT	15	folyt	2	with 8:4-22; 11:14,15	vers	2Krón 23:3	2Chr.23.3	vers	azonos			
+NAVE-2068	GOVERNMENT	15	folyt	2	Chose, or ratified, the chief ruler	vers	1Sám 8:4-22	1Sam.8.4-1Sam.8.22	tartomany	tartomany			with_folytato:with 8:4-22; 11:14,15;konyv_oroklve:1Sam
+NAVE-2068	GOVERNMENT	15	folyt	2	Chose, or ratified, the chief ruler	vers	1Sám 11:14	1Sam.11.14	vers	azonos			with_folytato:with 8:4-22; 11:14,15;konyv_oroklve:1Sam
+NAVE-2068	GOVERNMENT	15	folyt	2	Chose, or ratified, the chief ruler	vers	1Sám 11:15	1Sam.11.15	vers	azonos			with_folytato:with 8:4-22; 11:14,15;konyv_oroklve:1Sam
+NAVE-2068	GOVERNMENT	15	folyt	2	Chose, or ratified, the chief ruler	vers	2Sám 3:17-21	2Sam.3.17-2Sam.3.21	tartomany	tartomany			
+NAVE-2068	GOVERNMENT	15	folyt	2	Chose, or ratified, the chief ruler	vers	2Sám 5:1-3	2Sam.5.1-2Sam.5.3	tartomany	tartomany			
+NAVE-2068	GOVERNMENT	15	folyt	2	Chose, or ratified, the chief ruler	vers	1Krón 29:22	1Chr.29.22	vers	azonos			
+NAVE-2068	GOVERNMENT	15	folyt	2	Chose, or ratified, the chief ruler	vers	2Krón 23:3	2Chr.23.3	vers	azonos			
 NAVE-2068	GOVERNMENT	15	folyt	3	Possessed veto power over the king's purposes	vers	1Sám 14:44	1Sam.14.44	vers	azonos			
 NAVE-2068	GOVERNMENT	15	folyt	3	Possessed veto power over the king's purposes	vers	1Sám 14:45	1Sam.14.45	vers	azonos			
 NAVE-2068	GOVERNMENT	15	folyt	4	The court in certain capital cases	vers	4Móz 35:12	Num.35.12	vers	azonos			
@@ -31210,13 +31252,17 @@ NAVE-2068	GOVERNMENT	17	folyt	16	Corrupt	vers	1Kir 21:8-14	1Kgs.21.8-1Kgs.21.14	
 NAVE-2068	GOVERNMENT	17	folyt	16	Corrupt	vers	Ez 8:11	Ezek.8.11	vers	azonos			
 NAVE-2068	GOVERNMENT	17	folyt	16	Corrupt	vers	Ez 8:12	Ezek.8.12	vers	azonos			
 NAVE-2068	GOVERNMENT	17	folyt	16	Corrupt	vers	Mt 26:14	Matt.26.14	vers	ujszovetseg_nincs_tabla			
-NAVE-2068	GOVERNMENT	17	folyt	16	Corrupt	vers	Mt 26:15	Matt.26.15	vers	ujszovetseg_nincs_tabla			utotag:with 27:3,4
+NAVE-2068	GOVERNMENT	17	folyt	16	Corrupt	vers	Mt 26:15	Matt.26.15	vers	ujszovetseg_nincs_tabla			
+NAVE-2068	GOVERNMENT	17	folyt	16	Corrupt	vers	Mt 27:3	Matt.27.3	vers	ujszovetseg_nincs_tabla			with_folytato:with 27:3,4;konyv_oroklve:Matt
+NAVE-2068	GOVERNMENT	17	folyt	16	Corrupt	vers	Mt 27:4	Matt.27.4	vers	ujszovetseg_nincs_tabla			with_folytato:with 27:3,4;konyv_oroklve:Matt
 NAVE-2068	GOVERNMENT	17	folyt	17	A similar senate existed	szoveg							nincs_hivatkozas
 NAVE-2068	GOVERNMENT	18	folyt	0	Among the Egyptians	vers	1Móz 50:7	Gen.50.7	vers	azonos			
-NAVE-2068	GOVERNMENT	18	folyt	0	with 41:37,38	vers	2Móz 10:1	Exod.10.1	vers	azonos			
-NAVE-2068	GOVERNMENT	18	folyt	0	with 41:37,38	vers	2Móz 10:7	Exod.10.7	vers	azonos			
-NAVE-2068	GOVERNMENT	18	folyt	0	with 41:37,38	vers	2Móz 12:30	Exod.12.30	vers	azonos			
-NAVE-2068	GOVERNMENT	18	folyt	0	with 41:37,38	vers	2Móz 14:5	Exod.14.5	vers	azonos			
+NAVE-2068	GOVERNMENT	18	folyt	0	Among the Egyptians	vers	1Móz 41:37	Gen.41.37	vers	azonos			with_folytato:with 41:37,38;konyv_oroklve:Gen
+NAVE-2068	GOVERNMENT	18	folyt	0	Among the Egyptians	vers	1Móz 41:38	Gen.41.38	vers	azonos			with_folytato:with 41:37,38;konyv_oroklve:Gen
+NAVE-2068	GOVERNMENT	18	folyt	0	Among the Egyptians	vers	2Móz 10:1	Exod.10.1	vers	azonos			
+NAVE-2068	GOVERNMENT	18	folyt	0	Among the Egyptians	vers	2Móz 10:7	Exod.10.7	vers	azonos			
+NAVE-2068	GOVERNMENT	18	folyt	0	Among the Egyptians	vers	2Móz 12:30	Exod.12.30	vers	azonos			
+NAVE-2068	GOVERNMENT	18	folyt	0	Among the Egyptians	vers	2Móz 14:5	Exod.14.5	vers	azonos			
 NAVE-2068	GOVERNMENT	19	folyt	0	Among the Midianites and Moabites	vers	4Móz 22:4	Num.22.4	vers	azonos			
 NAVE-2068	GOVERNMENT	19	folyt	0	Among the Midianites and Moabites	vers	4Móz 22:7	Num.22.7	vers	azonos			
 NAVE-2068	GOVERNMENT	20	folyt	0	Among the Gibeonites	vers	Józs 9:11	Josh.9.11	vers	azonos			
@@ -32334,7 +32380,8 @@ NAVE-2197	HARP	7	→	0	Used in worship	vers	Zsolt 147:7	Ps.147.7	vers	azonos
 NAVE-2197	HARP	7	→	0	Used in worship	vers	Zsolt 149:3	Ps.149.3	vers	azonos			
 NAVE-2197	HARP	7	→	0	Used in worship	vers	Zsolt 150:3	Ps.150.3	vers	azonos			
 NAVE-2197	HARP	8	→	0	Used, in national jubilees, after the triumph over Goliath, (margin)	vers	1Sám 18:6	1Sam.18.6	vers	azonos			
-NAVE-2197	HARP	9	→	0	Over the armies of Ammon and Moab	vers	2Krón 20:28	2Chr.20.28	vers	azonos			utotag:with 20:20-29
+NAVE-2197	HARP	9	→	0	Over the armies of Ammon and Moab	vers	2Krón 20:28	2Chr.20.28	vers	azonos			
+NAVE-2197	HARP	9	→	0	Over the armies of Ammon and Moab	vers	2Krón 20:20-29	2Chr.20.20-2Chr.20.29	tartomany	tartomany			with_folytato:with 20:20-29;konyv_oroklve:2Chr
 NAVE-2197	HARP	10	→	0	When the new walls of Jerusalem were dedicated	vers	Neh 12:27	Neh.12.27	vers	azonos			
 NAVE-2197	HARP	10	→	0	When the new walls of Jerusalem were dedicated	vers	Neh 12:36	Neh.12.36	vers	azonos			
 NAVE-2197	HARP	11	→	0	Used in festivities	vers	1Móz 31:27	Gen.31.27	vers	azonos			
@@ -35657,7 +35704,8 @@ NAVE-2441	HYPOCRISY	4	→	7	Delilah, the wife of Samson	vers	Bír 16	Judg.16	fej
 NAVE-2441	HYPOCRISY	4	→	8	Jael	vers	Bír 4:8-21	Judg.4.8-Judg.4.21	tartomany	tartomany			
 NAVE-2441	HYPOCRISY	4	→	9	Ehud	vers	Bír 3:15-25	Judg.3.15-Judg.3.25	tartomany	tartomany			
 NAVE-2441	HYPOCRISY	4	→	10	Rabshakeh	vers	2Kir 18:17-37	2Kgs.18.17-2Kgs.18.37	tartomany	tartomany			
-NAVE-2441	HYPOCRISY	4	→	11	Ahaz	vers	Ézs 7:12	Isa.7.12	vers	azonos			utotag:with 7:17-25
+NAVE-2441	HYPOCRISY	4	→	11	Ahaz	vers	Ézs 7:12	Isa.7.12	vers	azonos			
+NAVE-2441	HYPOCRISY	4	→	11	Ahaz	vers	Ézs 7:17-25	Isa.7.17-Isa.7.25	tartomany	tartomany			with_folytato:with 7:17-25;konyv_oroklve:Isa
 NAVE-2441	HYPOCRISY	4	→	12	Johanan	vers	Jer 42:1-12	Jer.42.1-Jer.42.12	tartomany	tartomany			
 NAVE-2441	HYPOCRISY	4	→	12	Johanan	vers	Jer 42:20	Jer.42.20	vers	azonos			
 NAVE-2441	HYPOCRISY	4	→	12	Johanan	vers	Jer 42:22	Jer.42.22	vers	azonos			
@@ -36746,11 +36794,14 @@ NAVE-2494	INDECISION	5	→	5	Felix	vers	ApCsel 24:25	Acts.24.25	vers	ujszovetseg
 NAVE-2495	INDIA	1	→	0	Probably the eastern limit of the kingdom of Ahasuerus	vers	Eszt 1:1	Esth.1.1	vers	azonos			
 NAVE-2495	INDIA	1	→	0	Probably the eastern limit of the kingdom of Ahasuerus	vers	Eszt 8:9	Esth.8.9	vers	azonos			
 NAVE-2496	INDICTMENTS	1	→	0	INSTANCES OF	szoveg							nincs_hivatkozas
-NAVE-2496	INDICTMENTS	1	→	1	Naboth on the charge of blasphemy	vers	1Kir 21:13	1Kgs.21.13	vers	azonos			utotag:with 21:1-16
+NAVE-2496	INDICTMENTS	1	→	1	Naboth on the charge of blasphemy	vers	1Kir 21:13	1Kgs.21.13	vers	azonos			
+NAVE-2496	INDICTMENTS	1	→	1	Naboth on the charge of blasphemy	vers	1Kir 21:1-16	1Kgs.21.1-1Kgs.21.16	tartomany	tartomany			with_folytato:with 21:1-16;konyv_oroklve:1Kgs
 NAVE-2496	INDICTMENTS	1	→	2	Jeremiah of treasonable prophecy, but of which he was acquitted	vers	Jer 26:1-24	Jer.26.1-Jer.26.24	tartomany	tartomany			
 NAVE-2496	INDICTMENTS	1	→	3	A second indictment	vers	Jer 37:13-15	Jer.37.13-Jer.37.15	tartomany	tartomany			
-NAVE-2496	INDICTMENTS	1	→	4	Three Hebrew captives on the charge of defiance against authority	vers	Dán 3:12	Dan.3.12	vers	nincs_a_tablaban			utotag:with 3:1-28
-NAVE-2496	INDICTMENTS	1	→	5	Daniel, on the charge of defiance against authority	vers	Dán 6:13	Dan.6.13	vers	azonos			utotag:with 6:1-24
+NAVE-2496	INDICTMENTS	1	→	4	Three Hebrew captives on the charge of defiance against authority	vers	Dán 3:12	Dan.3.12	vers	nincs_a_tablaban			
+NAVE-2496	INDICTMENTS	1	→	4	Three Hebrew captives on the charge of defiance against authority	vers	Dán 3:1-28	Dan.3.1-Dan.3.28	tartomany	tartomany			with_folytato:with 3:1-28;konyv_oroklve:Dan
+NAVE-2496	INDICTMENTS	1	→	5	Daniel, on the charge of defiance against authority	vers	Dán 6:13	Dan.6.13	vers	azonos			
+NAVE-2496	INDICTMENTS	1	→	5	Daniel, on the charge of defiance against authority	vers	Dán 6:1-24	Dan.6.1-Dan.6.24	tartomany	tartomany			with_folytato:with 6:1-24;konyv_oroklve:Dan
 NAVE-2496	INDICTMENTS	1	→	6	Jesus, under two charges	szoveg							nincs_hivatkozas
 NAVE-2496	INDICTMENTS	2	folyt	0	First, of blasphemy	vers	Mt 26:61	Matt.26.61	vers	ujszovetseg_nincs_tabla			
 NAVE-2496	INDICTMENTS	2	folyt	0	First, of blasphemy	vers	Mk 14:58	Mark.14.58	vers	ujszovetseg_nincs_tabla			
@@ -37643,7 +37694,8 @@ NAVE-2528	INTEGRITY	8	→	9	Samuel, in exacting nothing from the people on accou
 NAVE-2528	INTEGRITY	8	→	10	David, in self-reproach for the cutting of Saul's robe	vers	1Sám 24:5	1Sam.24.5	vers	azonos			
 NAVE-2528	INTEGRITY	8	→	11	David, in preventing foraging by his insurgent forces	vers	1Sám 25:15	1Sam.25.15	vers	azonos			
 NAVE-2528	INTEGRITY	8	→	12	David, in his conduct while in refuge with the Philistines	vers	1Sám 29:6	1Sam.29.6	vers	azonos			
-NAVE-2528	INTEGRITY	8	→	12	David, in his conduct while in refuge with the Philistines	vers	1Sám 29:9	1Sam.29.9	vers	azonos			utotag:with 29:1-11
+NAVE-2528	INTEGRITY	8	→	12	David, in his conduct while in refuge with the Philistines	vers	1Sám 29:9	1Sam.29.9	vers	azonos			
+NAVE-2528	INTEGRITY	8	→	12	David, in his conduct while in refuge with the Philistines	vers	1Sám 29:1-11	1Sam.29.1-1Sam.29.11	tartomany	tartomany			with_folytato:with 29:1-11;konyv_oroklve:1Sam
 NAVE-2528	INTEGRITY	8	→	13	Workmen, who repaired the temple	vers	2Kir 12:15	2Kgs.12.15	vers	azonos			
 NAVE-2528	INTEGRITY	8	→	13	Workmen, who repaired the temple	vers	2Kir 22:7	2Kgs.22.7	vers	azonos			
 NAVE-2528	INTEGRITY	8	→	14	Joab, when ordered by David to count the military forces of Israel	vers	1Krón 21:6	1Chr.21.6	vers	azonos			
@@ -37670,7 +37722,8 @@ NAVE-2530	INTERCESSION	2	→	1	Reuben for Joseph	vers	1Móz 37:21	Gen.37.21	vers
 NAVE-2530	INTERCESSION	2	→	1	Reuben for Joseph	vers	1Móz 37:22	Gen.37.22	vers	azonos			
 NAVE-2530	INTERCESSION	2	→	2	Judah for Joseph	vers	1Móz 37:26	Gen.37.26	vers	azonos			
 NAVE-2530	INTERCESSION	2	→	2	Judah for Joseph	vers	1Móz 37:27	Gen.37.27	vers	azonos			
-NAVE-2530	INTERCESSION	2	→	3	Pharaoh's chief baker for Joseph	vers	1Móz 41:9-13	Gen.41.9-Gen.41.13	tartomany	tartomany			utotag:with 40:14
+NAVE-2530	INTERCESSION	2	→	3	Pharaoh's chief baker for Joseph	vers	1Móz 41:9-13	Gen.41.9-Gen.41.13	tartomany	tartomany			
+NAVE-2530	INTERCESSION	2	→	3	Pharaoh's chief baker for Joseph	vers	1Móz 40:14	Gen.40.14	vers	azonos			with_folytato:with 40:14;konyv_oroklve:Gen
 NAVE-2530	INTERCESSION	2	→	4	Jonathan for David	vers	1Sám 19:1-7	1Sam.19.1-1Sam.19.7	tartomany	tartomany			
 NAVE-2530	INTERCESSION	2	→	5	Abigail for Nabal	vers	1Sám 25:23-35	1Sam.25.23-1Sam.25.35	tartomany	tartomany			
 NAVE-2530	INTERCESSION	2	→	6	Joab for Absalom	vers	2Sám 14:1-24	2Sam.14.1-2Sam.14.24	tartomany	tartomany			
@@ -37879,7 +37932,7 @@ NAVE-2530	INTERCESSION	13	folyt	0	By Pharaoh, of Moses	vers	2Móz 12:32	Exod.12.
 NAVE-2530	INTERCESSION	14	folyt	0	And by the Israelites	vers	4Móz 21:7	Num.21.7	vers	azonos			
 NAVE-2530	INTERCESSION	14	folyt	1	By Israel, of Samuel	vers	1Sám 12:19	1Sam.12.19	vers	azonos			
 NAVE-2530	INTERCESSION	14	folyt	2	By Jeroboam, of a prophet	vers	1Kir 13:6	1Kgs.13.6	vers	azonos			
-NAVE-2530	INTERCESSION	14	folyt	3	By Hezekiah, of	vers	Ézs 2	Isa.2	fejezet	nem_ertekelt			gyanus_kijelzes:Isaiah 2;toredek:Ki 19:1-4;javaslat:2Kir 19:1
+NAVE-2530	INTERCESSION	14	folyt	3	By Hezekiah, of	vers	Ézs 2	Isa.2	fejezet	nem_ertekelt			gyanus_kijelzes:Isaiah 2;toredek:Ki 19:1-4;javaslat:2Kir 19:1-4
 NAVE-2530	INTERCESSION	14	folyt	4	By Zedekiah, of Jeremiah	vers	Jer 37:3	Jer.37.3	vers	azonos			
 NAVE-2530	INTERCESSION	14	folyt	5	And by Johanan	vers	Jer 42:1-6	Jer.42.1-Jer.42.6	tartomany	tartomany			
 NAVE-2530	INTERCESSION	14	folyt	6	By Daniel, of Shadrach, Meshach, and Abed-nego	vers	Dán 2:17	Dan.2.17	vers	azonos			
@@ -38016,7 +38069,7 @@ NAVE-2534	INTOLERANCE, RELIGIOUS	4	→	0	Of idolatrous religions, taught by Mose
 NAVE-2534	INTOLERANCE, RELIGIOUS	5	→	0	Exemplified by	szoveg							nincs_hivatkozas
 NAVE-2534	INTOLERANCE, RELIGIOUS	5	→	1	Elijah	vers	1Kir 18:40	1Kgs.18.40	vers	azonos			
 NAVE-2534	INTOLERANCE, RELIGIOUS	5	→	2	Jehu	vers	2Kir 10:18-31	2Kgs.10.18-2Kgs.10.31	tartomany	tartomany			
-NAVE-2534	INTOLERANCE, RELIGIOUS	5	→	3	Of idolatrous religions, taught by the Jews, at the time of the religious revival under the leadership of	vers	PrAzar.1.2	PrAzar.1.2	ismeretlen_konyv	nem_ertekelt			konyv_nincs_a_normalizalo_tablaban:PrAzar;gyanus_kijelzes:Azariah 2;toredek:Ch 15:12,13;javaslat:2Krón 15:12
+NAVE-2534	INTOLERANCE, RELIGIOUS	5	→	3	Of idolatrous religions, taught by the Jews, at the time of the religious revival under the leadership of	vers	PrAzar.1.2	PrAzar.1.2	ismeretlen_konyv	nem_ertekelt			konyv_nincs_a_normalizalo_tablaban:PrAzar;gyanus_kijelzes:Azariah 2;toredek:Ch 15:12,13;javaslat:2Krón 15:12,13
 NAVE-2534	INTOLERANCE, RELIGIOUS	6	→	0	See	lasd						PERSECUTION	
 NAVE-2535	INTOXICANTS	1	→	0	See	lasd						WINE	
 NAVE-2536	INTOXICATION	1	→	0	See	lasd						DRUNKENNESS	
@@ -39195,7 +39248,9 @@ NAVE-2583	ISSACHAR	2	szam:2	4	Places in the march and encampments	vers	4Móz 2:3
 NAVE-2583	ISSACHAR	2	szam:2	4	Places in the march and encampments	vers	4Móz 2:5	Num.2.5	vers	azonos			
 NAVE-2583	ISSACHAR	2	szam:2	4	Places in the march and encampments	vers	4Móz 10:14	Num.10.14	vers	azonos			
 NAVE-2583	ISSACHAR	2	szam:2	4	Places in the march and encampments	vers	4Móz 10:15	Num.10.15	vers	azonos			
-NAVE-2583	ISSACHAR	2	szam:2	5	Parts of Canaan allotted to	vers	Józs 19:17-23	Josh.19.17-Josh.19.23	tartomany	tartomany			utotag:with 17:10,11
+NAVE-2583	ISSACHAR	2	szam:2	5	Parts of Canaan allotted to	vers	Józs 19:17-23	Josh.19.17-Josh.19.23	tartomany	tartomany			
+NAVE-2583	ISSACHAR	2	szam:2	5	Parts of Canaan allotted to	vers	Józs 17:10	Josh.17.10	vers	azonos			with_folytato:with 17:10,11;konyv_oroklve:Josh
+NAVE-2583	ISSACHAR	2	szam:2	5	Parts of Canaan allotted to	vers	Józs 17:11	Josh.17.11	vers	azonos			with_folytato:with 17:10,11;konyv_oroklve:Josh
 NAVE-2583	ISSACHAR	2	szam:2	6	Join Deborah and Barak in war against Sisera	vers	Bír 5:15	Judg.5.15	vers	azonos			
 NAVE-2583	ISSACHAR	2	szam:2	7	Insurgents from, joined David	vers	1Krón 12:32	1Chr.12.32	vers	azonos			
 NAVE-2583	ISSACHAR	2	szam:2	7	Insurgents from, joined David	vers	1Krón 12:40	1Chr.12.40	vers	azonos			
@@ -40593,7 +40648,8 @@ NAVE-2779	JESUS, THE CHRIST	1	→	18	Disciples adhere to	vers	Ján 1:35-51	John.
 NAVE-2779	JESUS, THE CHRIST	1	→	19	Miracle at Cana of Galilee	vers	Ján 2:1-12	John.2.1-John.2.12	tartomany	tartomany			
 NAVE-2779	JESUS, THE CHRIST	1	→	20	Drives the money-changers from the temple (in Jerusalem)	vers	Ján 2:13-25	John.2.13-John.2.25	tartomany	tartomany			
 NAVE-2779	JESUS, THE CHRIST	1	→	21	Nicodemus comes to Jesus (in Jerusalem)	vers	Ján 3:1-21	John.3.1-John.3.21	tartomany	tartomany			
-NAVE-2779	JESUS, THE CHRIST	1	→	22	His disciples immerse some of the people (at Aenon)	vers	Ján 3:22	John.3.22	vers	ujszovetseg_nincs_tabla			utotag:with 4:2
+NAVE-2779	JESUS, THE CHRIST	1	→	22	His disciples immerse some of the people (at Aenon)	vers	Ján 3:22	John.3.22	vers	ujszovetseg_nincs_tabla			
+NAVE-2779	JESUS, THE CHRIST	1	→	22	His disciples immerse some of the people (at Aenon)	vers	Ján 4:2	John.4.2	vers	ujszovetseg_nincs_tabla			with_folytato:with 4:2;konyv_oroklve:John
 NAVE-2779	JESUS, THE CHRIST	1	→	23	Returns to Galilee	vers	Mt 4:12	Matt.4.12	vers	ujszovetseg_nincs_tabla			
 NAVE-2779	JESUS, THE CHRIST	1	→	23	Returns to Galilee	vers	Mk 1:14	Mark.1.14	vers	ujszovetseg_nincs_tabla			
 NAVE-2779	JESUS, THE CHRIST	1	→	23	Returns to Galilee	vers	Luk 4:14	Luke.4.14	vers	ujszovetseg_nincs_tabla			
@@ -41324,7 +41380,8 @@ NAVE-2779	JESUS, THE CHRIST	29	→	27	One with the Father	vers	Ján 10:38	John.1
 NAVE-2779	JESUS, THE CHRIST	29	→	27	One with the Father	vers	Ján 12:45	John.12.45	vers	ujszovetseg_nincs_tabla			
 NAVE-2779	JESUS, THE CHRIST	29	→	27	One with the Father	vers	Ján 14:7-10	John.14.7-John.14.10	tartomany	tartomany			
 NAVE-2779	JESUS, THE CHRIST	29	→	27	One with the Father	vers	Ján 17:10	John.17.10	vers	ujszovetseg_nincs_tabla			
-NAVE-2779	JESUS, THE CHRIST	29	→	28	As sending the Spirit equally with the Father	vers	Ján 14:16	John.14.16	vers	ujszovetseg_nincs_tabla			utotag:with 15:26
+NAVE-2779	JESUS, THE CHRIST	29	→	28	As sending the Spirit equally with the Father	vers	Ján 14:16	John.14.16	vers	ujszovetseg_nincs_tabla			
+NAVE-2779	JESUS, THE CHRIST	29	→	28	As sending the Spirit equally with the Father	vers	Ján 15:26	John.15.26	vers	ujszovetseg_nincs_tabla			with_folytato:with 15:26;konyv_oroklve:John
 NAVE-2779	JESUS, THE CHRIST	29	→	29	As unsearchable equally with the Father	vers	Péld 30:4	Prov.30.4	vers	azonos			
 NAVE-2779	JESUS, THE CHRIST	29	→	29	As unsearchable equally with the Father	vers	Mt 11:27	Matt.11.27	vers	ujszovetseg_nincs_tabla			
 NAVE-2779	JESUS, THE CHRIST	29	→	30	As Creator of all things	vers	Ézs 40:28	Isa.40.28	vers	azonos			
@@ -41334,11 +41391,14 @@ NAVE-2779	JESUS, THE CHRIST	29	→	31	Supporter and preserver of all things	vers
 NAVE-2779	JESUS, THE CHRIST	29	→	31	with	vers	Kol 1:17	Col.1.17	vers	ujszovetseg_nincs_tabla			
 NAVE-2779	JESUS, THE CHRIST	29	→	31	with	vers	Zsid 1:3	Heb.1.3	vers	ujszovetseg_nincs_tabla			
 NAVE-2779	JESUS, THE CHRIST	29	→	32	Acknowledged by Old Testament saints	vers	1Móz 17:1	Gen.17.1	vers	azonos			
-NAVE-2779	JESUS, THE CHRIST	29	→	32	with 48:15,16; 32:24-30; with	vers	Hós 12:3-5	Hos.12.3-Hos.12.5	tartomany	tartomany			
-NAVE-2779	JESUS, THE CHRIST	29	→	32	with 48:15,16; 32:24-30; with	vers	Bír 6:22-24	Judg.6.22-Judg.6.24	tartomany	tartomany			
-NAVE-2779	JESUS, THE CHRIST	29	→	32	with 48:15,16; 32:24-30; with	vers	Bír 13:21	Judg.13.21	vers	azonos			
-NAVE-2779	JESUS, THE CHRIST	29	→	32	with 48:15,16; 32:24-30; with	vers	Bír 13:22	Judg.13.22	vers	azonos			
-NAVE-2779	JESUS, THE CHRIST	29	→	32	with 48:15,16; 32:24-30; with	vers	Jób 19:25-27	Job.19.25-Job.19.27	tartomany	tartomany			
+NAVE-2779	JESUS, THE CHRIST	29	→	32	Acknowledged by Old Testament saints	vers	1Móz 48:15	Gen.48.15	vers	azonos			with_folytato:with 48:15,16; 32:24-30;konyv_oroklve:Gen
+NAVE-2779	JESUS, THE CHRIST	29	→	32	Acknowledged by Old Testament saints	vers	1Móz 48:16	Gen.48.16	vers	azonos			with_folytato:with 48:15,16; 32:24-30;konyv_oroklve:Gen
+NAVE-2779	JESUS, THE CHRIST	29	→	32	Acknowledged by Old Testament saints	vers	1Móz 32:24-30	Gen.32.24-Gen.32.30	tartomany	tartomany			with_folytato:with 48:15,16; 32:24-30;konyv_oroklve:Gen
+NAVE-2779	JESUS, THE CHRIST	29	→	32	with	vers	Hós 12:3-5	Hos.12.3-Hos.12.5	tartomany	tartomany			
+NAVE-2779	JESUS, THE CHRIST	29	→	32	with	vers	Bír 6:22-24	Judg.6.22-Judg.6.24	tartomany	tartomany			
+NAVE-2779	JESUS, THE CHRIST	29	→	32	with	vers	Bír 13:21	Judg.13.21	vers	azonos			
+NAVE-2779	JESUS, THE CHRIST	29	→	32	with	vers	Bír 13:22	Judg.13.22	vers	azonos			
+NAVE-2779	JESUS, THE CHRIST	29	→	32	with	vers	Jób 19:25-27	Job.19.25-Job.19.27	tartomany	tartomany			
 NAVE-2779	JESUS, THE CHRIST	30	→	0	UNCLASSIFIED SCRIPTURES RELATING TO THE DIVINITY OF	vers	1Móz 1:1-14	Gen.1.1-Gen.1.14	tartomany	tartomany			
 NAVE-2779	JESUS, THE CHRIST	30	→	0	UNCLASSIFIED SCRIPTURES RELATING TO THE DIVINITY OF	vers	2Móz 23:20	Exod.23.20	vers	azonos			
 NAVE-2779	JESUS, THE CHRIST	30	→	0	UNCLASSIFIED SCRIPTURES RELATING TO THE DIVINITY OF	vers	2Móz 23:21	Exod.23.21	vers	azonos			
@@ -45641,7 +45701,8 @@ NAVE-2863	JOY	4	→	16	When the wall of Jerusalem was dedicated	vers	Neh 12:43	N
 NAVE-2863	JOY	4	→	17	When the foundation of the second temple was laid	vers	Ezsd 3:11-13	Ezra.3.11-Ezra.3.13	tartomany	tartomany			
 NAVE-2863	JOY	4	→	18	Of David, over the offerings of the princes and people for the house of God	vers	1Krón 29:10-19	1Chr.29.10-1Chr.29.19	tartomany	tartomany			
 NAVE-2863	JOY	4	→	19	Jews, over the hanging of Haman	vers	Eszt 8:15	Esth.8.15	vers	azonos			
-NAVE-2863	JOY	4	→	19	Jews, over the hanging of Haman	vers	Eszt 8:16	Esth.8.16	vers	azonos			utotag:with 7:10
+NAVE-2863	JOY	4	→	19	Jews, over the hanging of Haman	vers	Eszt 8:16	Esth.8.16	vers	azonos			
+NAVE-2863	JOY	4	→	19	Jews, over the hanging of Haman	vers	Eszt 7:10	Esth.7.10	vers	azonos			with_folytato:with 7:10;konyv_oroklve:Esth
 NAVE-2863	JOY	4	→	20	Of Elisabeth, when Mary visited her	vers	Luk 1:5-44	Luke.1.5-Luke.1.44	tartomany	tartomany			
 NAVE-2863	JOY	4	→	21	Of Mary, when she visited Elisabeth	vers	Luk 1:46-56	Luke.1.46-Luke.1.56	tartomany	tartomany			
 NAVE-2863	JOY	4	→	22	Of Zecharias, when John the Baptist was born	vers	Luk 1:67-79	Luke.1.67-Luke.1.79	tartomany	tartomany			
@@ -45672,8 +45733,9 @@ NAVE-2863	JOY	5	folyt	0	.Of Barnabas, when he saw the success of the gospel at A
 NAVE-2863	JOY	5	folyt	1	Of Paul and the Corinthians, because the excommunicated member repented	vers	2Kor 1:24	2Cor.1.24	vers	ujszovetseg_nincs_tabla			
 NAVE-2863	JOY	5	folyt	1	Of Paul and the Corinthians, because the excommunicated member repented	vers	2Kor 2:3	2Cor.2.3	vers	ujszovetseg_nincs_tabla			
 NAVE-2863	JOY	5	folyt	2	Of Paul and Titus, because of the hospitality of the Corinthians	vers	2Kor 7:13	2Cor.7.13	vers	ujszovetseg_nincs_tabla			
-NAVE-2863	JOY	5	folyt	2	with 8:6	vers	Róm 15:32	Rom.15.32	vers	ujszovetseg_nincs_tabla			
-NAVE-2863	JOY	5	folyt	2	with 8:6	vers	1Kor 16:18	1Cor.16.18	vers	ujszovetseg_nincs_tabla			
+NAVE-2863	JOY	5	folyt	2	Of Paul and Titus, because of the hospitality of the Corinthians	vers	2Kor 8:6	2Cor.8.6	vers	ujszovetseg_nincs_tabla			with_folytato:with 8:6;konyv_oroklve:2Cor
+NAVE-2863	JOY	5	folyt	2	Of Paul and Titus, because of the hospitality of the Corinthians	vers	Róm 15:32	Rom.15.32	vers	ujszovetseg_nincs_tabla			
+NAVE-2863	JOY	5	folyt	2	Of Paul and Titus, because of the hospitality of the Corinthians	vers	1Kor 16:18	1Cor.16.18	vers	ujszovetseg_nincs_tabla			
 NAVE-2863	JOY	5	folyt	3	Of the Macedonian Christians, when they made a contribution for the Christians at Jerusalem	vers	2Kor 8:2	2Cor.8.2	vers	ujszovetseg_nincs_tabla			
 NAVE-2863	JOY	5	folyt	4	Of Paul, when he prayed for the Philippian Christians	vers	Fil 1:4	Phil.1.4	vers	ujszovetseg_nincs_tabla			
 NAVE-2863	JOY	5	folyt	5	Of Thessalonians, when they believed Paul's gospel	vers	1Thessz 1:6	1Thess.1.6	vers	ujszovetseg_nincs_tabla			
@@ -45741,7 +45803,8 @@ NAVE-2870	JUDAH	2	szam:2	6	Place of, in encampments and the march	vers	4Móz 2:9
 NAVE-2870	JUDAH	2	szam:2	6	Place of, in encampments and the march	vers	4Móz 10:14	Num.10.14	vers	azonos			
 NAVE-2870	JUDAH	2	szam:2	7	By whom commanded	vers	4Móz 2:3	Num.2.3	vers	azonos			
 NAVE-2870	JUDAH	2	szam:2	8	Moses' benediction upon	vers	5Móz 33:7	Deut.33.7	vers	azonos			
-NAVE-2870	JUDAH	2	szam:2	9	Commissioned by God to lead in the conquest of the promised land	vers	Bír 1:1-3	Judg.1.1-Judg.1.3	tartomany	tartomany			utotag:with 1:4-21
+NAVE-2870	JUDAH	2	szam:2	9	Commissioned by God to lead in the conquest of the promised land	vers	Bír 1:1-3	Judg.1.1-Judg.1.3	tartomany	tartomany			
+NAVE-2870	JUDAH	2	szam:2	9	Commissioned by God to lead in the conquest of the promised land	vers	Bír 1:4-21	Judg.1.4-Judg.1.21	tartomany	tartomany			with_folytato:with 1:4-21;konyv_oroklve:Judg
 NAVE-2870	JUDAH	2	szam:2	10	Make David king	vers	2Sám 2:1-11	2Sam.2.1-2Sam.2.11	tartomany	tartomany			
 NAVE-2870	JUDAH	2	szam:2	10	Make David king	vers	2Sám 5:4	2Sam.5.4	vers	azonos			
 NAVE-2870	JUDAH	2	szam:2	10	Make David king	vers	2Sám 5:5	2Sam.5.5	vers	azonos			
@@ -45898,7 +45961,8 @@ NAVE-2874	JUDGE	10	→	1	Eli's sons	vers	1Sám 2:22-25	1Sam.2.22-1Sam.2.25	tarto
 NAVE-2874	JUDGE	10	→	2	Samuel's sons	vers	1Sám 8:1-5	1Sam.8.1-1Sam.8.5	tartomany	tartomany			
 NAVE-2874	JUDGE	10	→	3	The judges of Jezreel	vers	1Kir 21:8-13	1Kgs.21.8-1Kgs.21.13	tartomany	tartomany			
 NAVE-2874	JUDGE	10	→	4	Pilate	vers	Mt 27:24	Matt.27.24	vers	ujszovetseg_nincs_tabla			
-NAVE-2874	JUDGE	10	→	4	Pilate	vers	Mk 15:15	Mark.15.15	vers	ujszovetseg_nincs_tabla			utotag:with 15:19-24
+NAVE-2874	JUDGE	10	→	4	Pilate	vers	Mk 15:15	Mark.15.15	vers	ujszovetseg_nincs_tabla			
+NAVE-2874	JUDGE	10	→	4	Pilate	vers	Mk 15:19-24	Mark.15.19-Mark.15.24	tartomany	tartomany			with_folytato:with 15:19-24;konyv_oroklve:Mark
 NAVE-2874	JUDGE	10	→	5	Felix	vers	ApCsel 24:26	Acts.24.26	vers	ujszovetseg_nincs_tabla			
 NAVE-2874	JUDGE	10	→	5	Felix	vers	ApCsel 24:27	Acts.24.27	vers	ujszovetseg_nincs_tabla			
 NAVE-2874	JUDGE	11	→	0	GOD AS	szoveg							nincs_hivatkozas
@@ -46143,7 +46207,8 @@ NAVE-2879	JUDGMENTS	16	→	0	Uzzah	vers	2Sám 6:7	2Sam.6.7	vers	azonos
 NAVE-2879	JUDGMENTS	17	→	0	Hananiah, the false prophet	vers	Jer 28:15	Jer.28.15	vers	azonos			
 NAVE-2879	JUDGMENTS	17	→	0	Hananiah, the false prophet	vers	Jer 28:16	Jer.28.16	vers	azonos			
 NAVE-2879	JUDGMENTS	17	→	0	Hananiah, the false prophet	vers	Jer 28:17	Jer.28.17	vers	azonos			
-NAVE-2879	JUDGMENTS	18	→	0	Eli's house	vers	1Sám 2:27-36	1Sam.2.27-1Sam.2.36	tartomany	tartomany			utotag:with 4:10-22
+NAVE-2879	JUDGMENTS	18	→	0	Eli's house	vers	1Sám 2:27-36	1Sam.2.27-1Sam.2.36	tartomany	tartomany			
+NAVE-2879	JUDGMENTS	18	→	0	Eli's house	vers	1Sám 4:10-22	1Sam.4.10-1Sam.4.22	tartomany	tartomany			with_folytato:with 4:10-22;konyv_oroklve:1Sam
 NAVE-2879	JUDGMENTS	19	→	0	The prophet of Judah, for disobedience	vers	1Kir 13:1-24	1Kgs.13.1-1Kgs.13.24	tartomany	tartomany			
 NAVE-2879	JUDGMENTS	20	→	0	Zimri	vers	1Kir 16:18	1Kgs.16.18	vers	azonos			
 NAVE-2879	JUDGMENTS	20	→	0	Zimri	vers	1Kir 16:19	1Kgs.16.19	vers	azonos			
@@ -46377,7 +46442,9 @@ NAVE-2893	KABZEEL	1	→	0	A city of the tribe of Judah	vers	1Krón 11:22	1Chr.11
 NAVE-2894	KADESH	1	→	0	Also called KADESH-BARNEA	szoveg							nincs_hivatkozas
 NAVE-2894	KADESH	2	→	0	A city on the southern boundary of Palestine	vers	Józs 15:3	Josh.15.3	vers	azonos			
 NAVE-2894	KADESH	3	→	0	Struck down by Chedorlaomer	vers	1Móz 14:7	Gen.14.7	vers	azonos			
-NAVE-2894	KADESH	4	→	0	Abraham lives beside the wells nearby	vers	1Móz 20:1	Gen.20.1	vers	azonos			utotag:with 14:7; 16:14
+NAVE-2894	KADESH	4	→	0	Abraham lives beside the wells nearby	vers	1Móz 20:1	Gen.20.1	vers	azonos			
+NAVE-2894	KADESH	4	→	0	Abraham lives beside the wells nearby	vers	1Móz 14:7	Gen.14.7	vers	azonos			with_folytato:with 14:7; 16:14;konyv_oroklve:Gen
+NAVE-2894	KADESH	4	→	0	Abraham lives beside the wells nearby	vers	1Móz 16:14	Gen.16.14	vers	azonos			with_folytato:with 14:7; 16:14;konyv_oroklve:Gen
 NAVE-2894	KADESH	5	→	0	Israel encamps at	vers	4Móz 12:16	Num.12.16	vers	nincs_a_tablaban			
 NAVE-2894	KADESH	5	→	0	Israel encamps at	vers	4Móz 13:26	Num.13.26	vers	eltero	4Móz 13:27		
 NAVE-2894	KADESH	5	→	0	Israel encamps at	vers	4Móz 20:1	Num.20.1	vers	azonos			
@@ -46867,11 +46934,13 @@ NAVE-2940	KIRJATH-ARBA	1	→	0	An early name of HEBRON	vers	Józs 14:15	Josh.14.
 NAVE-2940	KIRJATH-ARBA	1	→	0	An early name of HEBRON	vers	Bír 1:10	Judg.1.10	vers	azonos			
 NAVE-2941	KIRJATH-HUZOTH	1	→	0	A residence of Balak	vers	4Móz 22:39	Num.22.39	vers	azonos			
 NAVE-2942	KIRJATH-JEARIM	1	→	0	Also called BAALAH, one of the four cities of the Gibeonites	szoveg							nincs_hivatkozas
-NAVE-2942	KIRJATH-JEARIM	2	→	0	Inhabitants of, who were not struck down, on account of the covenant made by the Israelites with the Gibeonites, but put under servitude	vers	Józs 9:17	Josh.9.17	vers	azonos			utotag:with 9:3-27
+NAVE-2942	KIRJATH-JEARIM	2	→	0	Inhabitants of, who were not struck down, on account of the covenant made by the Israelites with the Gibeonites, but put under servitude	vers	Józs 9:17	Josh.9.17	vers	azonos			
+NAVE-2942	KIRJATH-JEARIM	2	→	0	Inhabitants of, who were not struck down, on account of the covenant made by the Israelites with the Gibeonites, but put under servitude	vers	Józs 9:3-27	Josh.9.3-Josh.9.27	tartomany	tartomany			with_folytato:with 9:3-27;konyv_oroklve:Josh
 NAVE-2942	KIRJATH-JEARIM	3	→	0	In the territory allotted to Judah	vers	Józs 15:9	Josh.15.9	vers	azonos			
 NAVE-2942	KIRJATH-JEARIM	3	→	0	In the territory allotted to Judah	vers	Józs 15:60	Josh.15.60	vers	azonos			
 NAVE-2942	KIRJATH-JEARIM	3	→	0	In the territory allotted to Judah	vers	Józs 18:14	Josh.18.14	vers	azonos			
-NAVE-2942	KIRJATH-JEARIM	4	→	0	The Philistines bring the ark of the covenant to	vers	1Sám 6:21	1Sam.6.21	vers	azonos			utotag:with 6:1-21
+NAVE-2942	KIRJATH-JEARIM	4	→	0	The Philistines bring the ark of the covenant to	vers	1Sám 6:21	1Sam.6.21	vers	azonos			
+NAVE-2942	KIRJATH-JEARIM	4	→	0	The Philistines bring the ark of the covenant to	vers	1Sám 6:1-21	1Sam.6.1-1Sam.6.21	tartomany	tartomany			with_folytato:with 6:1-21;konyv_oroklve:1Sam
 NAVE-2942	KIRJATH-JEARIM	5	→	0	The ark of the covenant remains for twenty years at	vers	1Sám 7:1	1Sam.7.1	vers	azonos			
 NAVE-2942	KIRJATH-JEARIM	5	→	0	The ark of the covenant remains for twenty years at	vers	1Sám 7:2	1Sam.7.2	vers	azonos			
 NAVE-2942	KIRJATH-JEARIM	5	→	0	The ark of the covenant remains for twenty years at	vers	1Krón 13:5	1Chr.13.5	vers	azonos			
@@ -47394,9 +47463,14 @@ NAVE-3005	LAW	6	→	2	Received by the disposition of angels	vers	Gal 3:19	Gal.3.
 NAVE-3005	LAW	6	→	2	Received by the disposition of angels	vers	Zsid 2:2	Heb.2.2	vers	ujszovetseg_nincs_tabla			
 NAVE-3005	LAW	6	→	3	Was given because of transgressions until the Messiah arrived	vers	Gal 3:19	Gal.3.19	vers	ujszovetseg_nincs_tabla			
 NAVE-3005	LAW	6	→	4	Engraved on stone	vers	2Móz 20:3-17	Exod.20.3-Exod.20.17	tartomany	tartomany			
-NAVE-3005	LAW	6	→	4	with 24:12; 31:18; 32:16; 34:29; 40:20	vers	5Móz 4:13	Deut.4.13	vers	azonos			
-NAVE-3005	LAW	6	→	4	with 24:12; 31:18; 32:16; 34:29; 40:20	vers	5Móz 5:4-22	Deut.5.4-Deut.5.22	tartomany	tartomany			
-NAVE-3005	LAW	6	→	4	with 24:12; 31:18; 32:16; 34:29; 40:20	vers	5Móz 9:10	Deut.9.10	vers	azonos			
+NAVE-3005	LAW	6	→	4	Engraved on stone	vers	2Móz 24:12	Exod.24.12	vers	azonos			with_folytato:with 24:12; 31:18; 32:16; 34:29; 40:20;konyv_oroklve:Exod
+NAVE-3005	LAW	6	→	4	Engraved on stone	vers	2Móz 31:18	Exod.31.18	vers	azonos			with_folytato:with 24:12; 31:18; 32:16; 34:29; 40:20;konyv_oroklve:Exod
+NAVE-3005	LAW	6	→	4	Engraved on stone	vers	2Móz 32:16	Exod.32.16	vers	azonos			with_folytato:with 24:12; 31:18; 32:16; 34:29; 40:20;konyv_oroklve:Exod
+NAVE-3005	LAW	6	→	4	Engraved on stone	vers	2Móz 34:29	Exod.34.29	vers	azonos			with_folytato:with 24:12; 31:18; 32:16; 34:29; 40:20;konyv_oroklve:Exod
+NAVE-3005	LAW	6	→	4	Engraved on stone	vers	2Móz 40:20	Exod.40.20	vers	azonos			with_folytato:with 24:12; 31:18; 32:16; 34:29; 40:20;konyv_oroklve:Exod
+NAVE-3005	LAW	6	→	4	Engraved on stone	vers	5Móz 4:13	Deut.4.13	vers	azonos			
+NAVE-3005	LAW	6	→	4	Engraved on stone	vers	5Móz 5:4-22	Deut.5.4-Deut.5.22	tartomany	tartomany			
+NAVE-3005	LAW	6	→	4	Engraved on stone	vers	5Móz 9:10	Deut.9.10	vers	azonos			
 NAVE-3005	LAW	6	→	5	See	lasd						TABLES	
 NAVE-3005	LAW	6	→	6	See	lasd						COMMANDMENTS	
 NAVE-3005	LAW	6	→	7	Preserved in the ark of the covenant	vers	2Móz 25:16	Exod.25.16	vers	azonos			
@@ -47425,7 +47499,12 @@ NAVE-3005	LAW	6	→	19	From city to city	vers	2Krón 17:7-10	2Chr.17.7-2Chr.17.1
 NAVE-3005	LAW	6	→	20	In synagogues	vers	Luk 4:16	Luke.4.16	vers	ujszovetseg_nincs_tabla			
 NAVE-3005	LAW	6	→	20	In synagogues	vers	Luk 4:32	Luke.4.32	vers	ujszovetseg_nincs_tabla			
 NAVE-3005	LAW	6	→	20	In synagogues	vers	ApCsel 13:14-52	Acts.13.14-Acts.13.52	tartomany	tartomany			
-NAVE-3005	LAW	6	→	20	In synagogues	vers	ApCsel 15:21	Acts.15.21	vers	ujszovetseg_nincs_tabla			utotag:with 9:20; 14:1; 17:1-3; 18:4,26
+NAVE-3005	LAW	6	→	20	In synagogues	vers	ApCsel 15:21	Acts.15.21	vers	ujszovetseg_nincs_tabla			
+NAVE-3005	LAW	6	→	20	In synagogues	vers	ApCsel 9:20	Acts.9.20	vers	ujszovetseg_nincs_tabla			with_folytato:with 9:20; 14:1; 17:1-3; 18:4,26;konyv_oroklve:Acts
+NAVE-3005	LAW	6	→	20	In synagogues	vers	ApCsel 14:1	Acts.14.1	vers	ujszovetseg_nincs_tabla			with_folytato:with 9:20; 14:1; 17:1-3; 18:4,26;konyv_oroklve:Acts
+NAVE-3005	LAW	6	→	20	In synagogues	vers	ApCsel 17:1-3	Acts.17.1-Acts.17.3	tartomany	tartomany			with_folytato:with 9:20; 14:1; 17:1-3; 18:4,26;konyv_oroklve:Acts
+NAVE-3005	LAW	6	→	20	In synagogues	vers	ApCsel 18:4	Acts.18.4	vers	ujszovetseg_nincs_tabla			with_folytato:with 9:20; 14:1; 17:1-3; 18:4,26;konyv_oroklve:Acts
+NAVE-3005	LAW	6	→	20	In synagogues	vers	ApCsel 18:26	Acts.18.26	vers	ujszovetseg_nincs_tabla			with_folytato:with 9:20; 14:1; 17:1-3; 18:4,26;konyv_oroklve:Acts
 NAVE-3005	LAW	6	→	21	Expounded to the assembled nation at the Feast of Tabernacles in the sabbatic year	vers	5Móz 31:10-13	Deut.31.10-Deut.31.13	tartomany	tartomany			
 NAVE-3005	LAW	6	→	22	Renewed by Moses	vers	5Móz 4:44-46	Deut.4.44-Deut.4.46	tartomany	tartomany			
 NAVE-3005	LAW	6	→	23	Curses of, responsively read by Levites and people at Mount Ebal and Mount Gerizim	vers	5Móz 27:12-26	Deut.27.12-Deut.27.26	tartomany	tartomany			
@@ -47802,7 +47881,9 @@ NAVE-3046	LEVITES	4	→	0	Religious zeal of	vers	5Móz 33:10	Deut.33.10	vers	azo
 NAVE-3046	LEVITES	4	→	0	Religious zeal of	vers	Mal 2:4	Mal.2.4	vers	azonos			
 NAVE-3046	LEVITES	4	→	0	Religious zeal of	vers	Mal 2:5	Mal.2.5	vers	azonos			
 NAVE-3046	LEVITES	5	→	0	Consecration of	vers	4Móz 8:6-21	Num.8.6-Num.8.21	tartomany	tartomany			
-NAVE-3046	LEVITES	6	→	0	Sedition among, led by Korah, Dathan, Abiram, and On, on account of jealousy toward Moses and Aaron	vers	4Móz 16	Num.16	fejezet	fejezet			utotag:with 4:19,20
+NAVE-3046	LEVITES	6	→	0	Sedition among, led by Korah, Dathan, Abiram, and On, on account of jealousy toward Moses and Aaron	vers	4Móz 16	Num.16	fejezet	fejezet			
+NAVE-3046	LEVITES	6	→	0	Sedition among, led by Korah, Dathan, Abiram, and On, on account of jealousy toward Moses and Aaron	vers	4Móz 4:19	Num.4.19	vers	azonos			with_folytato:with 4:19,20;konyv_oroklve:Num
+NAVE-3046	LEVITES	6	→	0	Sedition among, led by Korah, Dathan, Abiram, and On, on account of jealousy toward Moses and Aaron	vers	4Móz 4:20	Num.4.20	vers	azonos			with_folytato:with 4:19,20;konyv_oroklve:Num
 NAVE-3046	LEVITES	7	→	0	Three divisions of, each having the name of one of its progenitors-Gershon, Kohath, and Merari	vers	4Móz 3:17	Num.3.17	vers	azonos			
 NAVE-3046	LEVITES	8	→	0	Gershonites and their duties	vers	4Móz 3:18-26	Num.3.18-Num.3.26	tartomany	tartomany			
 NAVE-3046	LEVITES	8	→	0	Gershonites and their duties	vers	4Móz 4:23-26	Num.4.23-Num.4.26	tartomany	tartomany			
@@ -47915,7 +47996,8 @@ NAVE-3046	LEVITES	40	→	0	The list of those who returned from captivity	vers	Ne
 NAVE-3046	LEVITES	40	→	0	The list of those who returned from captivity	vers	Neh 12	Neh.12	fejezet	fejezet			
 NAVE-3046	LEVITES	41	→	0	Sealed the covenant with Nehemiah	vers	Neh 10:9-28	Neh.10.9-Neh.10.28	tartomany	tartomany			
 NAVE-3046	LEVITES	42	→	0	Profits from	szoveg							nincs_hivatkozas
-NAVE-3046	LEVITES	42	→	1	In lieu of landed inheritance, forty-eight cities with suburbs were assigned to them	vers	4Móz 35:2-8	Num.35.2-Num.35.8	tartomany	tartomany			utotag:with 18:24
+NAVE-3046	LEVITES	42	→	1	In lieu of landed inheritance, forty-eight cities with suburbs were assigned to them	vers	4Móz 35:2-8	Num.35.2-Num.35.8	tartomany	tartomany			
+NAVE-3046	LEVITES	42	→	1	In lieu of landed inheritance, forty-eight cities with suburbs were assigned to them	vers	4Móz 18:24	Num.18.24	vers	azonos			with_folytato:with 18:24;konyv_oroklve:Num
 NAVE-3046	LEVITES	42	→	2	And	vers	4Móz 26:62	Num.26.62	vers	azonos			
 NAVE-3046	LEVITES	42	→	2	And	vers	5Móz 10:9	Deut.10.9	vers	azonos			
 NAVE-3046	LEVITES	42	→	2	And	vers	5Móz 12:12	Deut.12.12	vers	azonos			
@@ -50274,7 +50356,7 @@ NAVE-3214	MARTYRDOM	3	→	0	INSTANCES OF	szoveg							nincs_hivatkozas
 NAVE-3214	MARTYRDOM	3	→	1	Abel	vers	1Móz 4:3-8	Gen.4.3-Gen.4.8	tartomany	tartomany			
 NAVE-3214	MARTYRDOM	3	→	2	Prophets killed by Jezebel	vers	1Kir 18:4	1Kgs.18.4	vers	azonos			
 NAVE-3214	MARTYRDOM	3	→	2	Prophets killed by Jezebel	vers	1Kir 18:13	1Kgs.18.13	vers	azonos			
-NAVE-3214	MARTYRDOM	3	→	3		vers	Zak 2	Zech.2	fejezet	nem_ertekelt			gyanus_kijelzes:Zechariah 2;toredek:Ch 24:21,22;javaslat:2Krón 24:21
+NAVE-3214	MARTYRDOM	3	→	3		vers	Zak 2	Zech.2	fejezet	nem_ertekelt			gyanus_kijelzes:Zechariah 2;toredek:Ch 24:21,22;javaslat:2Krón 24:21,22
 NAVE-3214	MARTYRDOM	3	→	4	John the Baptist	vers	Mk 6:18-28	Mark.6.18-Mark.6.28	tartomany	tartomany			
 NAVE-3214	MARTYRDOM	3	→	5	Jesus	szoveg							nincs_hivatkozas
 NAVE-3214	MARTYRDOM	3	→	6	See	lasd						JESUS	
@@ -50862,7 +50944,7 @@ NAVE-3277	MELCHIZEDEK	2	→	0	A priest and type of Christ	vers	Zsid 5:6	Heb.5.6	
 NAVE-3277	MELCHIZEDEK	2	→	0	A priest and type of Christ	vers	Zsid 5:10	Heb.5.10	vers	ujszovetseg_nincs_tabla			
 NAVE-3277	MELCHIZEDEK	2	→	0	A priest and type of Christ	vers	Zsid 6:20	Heb.6.20	vers	ujszovetseg_nincs_tabla			
 NAVE-3277	MELCHIZEDEK	2	→	0	A priest and type of Christ	vers	Zsid 7:1-21	Heb.7.1-Heb.7.21	tartomany	tartomany			
-NAVE-3278	MELECH	1	→	0	Son of	vers	Mik 1	Mic.1	fejezet	nem_ertekelt			gyanus_kijelzes:Micah 1;toredek:Ch 8:35; 9:41;javaslat:1Krón 8:35
+NAVE-3278	MELECH	1	→	0	Son of	vers	Mik 1	Mic.1	fejezet	nem_ertekelt			gyanus_kijelzes:Micah 1;toredek:Ch 8:35; 9:41;javaslat:1Krón 8:35; 9:41
 NAVE-3279	MELICU	1	→	0	A priest	vers	Neh 12:14	Neh.12.14	vers	azonos			
 NAVE-3280	MELITA (MALTA)	1	→	0	(An important island in the Mediterranean Sea)	szoveg							nincs_hivatkozas
 NAVE-3280	MELITA (MALTA)	2	→	0	Paul shipwrecked on the coast of	vers	ApCsel 28:1-10	Acts.28.1-Acts.28.10	tartomany	tartomany			
@@ -51025,7 +51107,7 @@ NAVE-3305	MERCY-SEAT	6	→	0	The shekinah upon	vers	Ézs 37:16	Isa.37.16	vers	az
 NAVE-3305	MERCY-SEAT	6	→	0	The shekinah upon	vers	Zsid 4:16	Heb.4.16	vers	ujszovetseg_nincs_tabla			
 NAVE-3305	MERCY-SEAT	7	→	0	In Solomon's temple	vers	1Krón 28:11	1Chr.28.11	vers	azonos			
 NAVE-3305	MERCY-SEAT	8	→	0	See	lasd						TABERNACLE	
-NAVE-3306	MERED	1	→	0	Son of	vers	Ezsd 1	Ezra.1	fejezet	nem_ertekelt			gyanus_kijelzes:Ezra 1;toredek:Ch 4:17,18;javaslat:1Krón 4:17
+NAVE-3306	MERED	1	→	0	Son of	vers	Ezsd 1	Ezra.1	fejezet	nem_ertekelt			gyanus_kijelzes:Ezra 1;toredek:Ch 4:17,18;javaslat:1Krón 4:17,18
 NAVE-3307	MEREMOTH	1	szam:1	0	A priest who was appointed to weigh and register gold and silver vessels brought to Jerusalem	vers	Ezsd 8:33	Ezra.8.33	vers	azonos			
 NAVE-3307	MEREMOTH	1	szam:1	0	A priest who was appointed to weigh and register gold and silver vessels brought to Jerusalem	vers	Neh 3:4	Neh.3.4	vers	azonos			
 NAVE-3307	MEREMOTH	1	szam:1	0	A priest who was appointed to weigh and register gold and silver vessels brought to Jerusalem	vers	Neh 3:21	Neh.3.21	vers	azonos			
@@ -51732,9 +51814,9 @@ NAVE-3379	MINISTER, CHRISTIAN	44	→	4	Barnabas and Mark	vers	ApCsel 15:37	Acts.
 NAVE-3379	MINISTER, CHRISTIAN	44	→	4	Barnabas and Mark	vers	ApCsel 15:39	Acts.15.39	vers	ujszovetseg_nincs_tabla			
 NAVE-3379	MINISTER, CHRISTIAN	44	→	5	Paul and Silas	vers	ApCsel 15:40	Acts.15.40	vers	ujszovetseg_nincs_tabla			
 NAVE-3379	MINISTER, CHRISTIAN	44	→	6	Paul and Timothy	vers	ApCsel 16:1-4	Acts.16.1-Acts.16.4	tartomany	tartomany			
-NAVE-3379	MINISTER, CHRISTIAN	44	→	7	Paul and	vers	Tit 2	Titus.2	fejezet	fejezet			
-NAVE-3379	MINISTER, CHRISTIAN	44	→	7	Paul and	vers	Kol 8:19	Col.8.19	vers	ujszovetseg_nincs_tabla			
-NAVE-3379	MINISTER, CHRISTIAN	44	→	7	Paul and	vers	Kol 8:23	Col.8.23	vers	ujszovetseg_nincs_tabla			
+NAVE-3379	MINISTER, CHRISTIAN	44	→	7	Paul and	vers	Tit 2	Titus.2	fejezet	nem_ertekelt			gyanus_kijelzes:Titus 2;toredek:Co 8:19;javaslat:2Kor 8:19
+NAVE-3379	MINISTER, CHRISTIAN	44	→	7	Paul and	vers	2Kor 8:19	2Cor.8.19	vers	ujszovetseg_nincs_tabla			javitva:eredeti_osis=Col.8.19
+NAVE-3379	MINISTER, CHRISTIAN	44	→	7	Paul and	vers	2Kor 8:23	2Cor.8.23	vers	ujszovetseg_nincs_tabla			javitva:eredeti_osis=Col.8.23
 NAVE-3379	MINISTER, CHRISTIAN	44	→	8	Timothy and Erastus	vers	ApCsel 19:22	Acts.19.22	vers	ujszovetseg_nincs_tabla			
 NAVE-3379	MINISTER, CHRISTIAN	44	→	9	Titus and a companion	vers	2Kor 12:18	2Cor.12.18	vers	ujszovetseg_nincs_tabla			
 NAVE-3379	MINISTER, CHRISTIAN	45	→	0	See MINISTER, TRIALS AND PERSECUTIONS OF, below	szoveg							nincs_hivatkozas
@@ -52122,7 +52204,7 @@ NAVE-3379	MINISTER, CHRISTIAN	53	→	2	Moses	vers	Zsid 3:2	Heb.3.2	vers	ujszovet
 NAVE-3379	MINISTER, CHRISTIAN	53	→	2	Moses	vers	Zsid 3:5	Heb.3.5	vers	ujszovetseg_nincs_tabla			
 NAVE-3379	MINISTER, CHRISTIAN	53	→	3	Micaiah	vers	2Krón 18:12	2Chr.18.12	vers	azonos			
 NAVE-3379	MINISTER, CHRISTIAN	53	→	3	Micaiah	vers	2Krón 18:13	2Chr.18.13	vers	azonos			
-NAVE-3379	MINISTER, CHRISTIAN	53	→	4		vers	PrAzar.1.2	PrAzar.1.2	ismeretlen_konyv	nem_ertekelt			konyv_nincs_a_normalizalo_tablaban:PrAzar;gyanus_kijelzes:Azariah 2;toredek:Ch 26:16-20;javaslat:2Krón 26:16
+NAVE-3379	MINISTER, CHRISTIAN	53	→	4		vers	PrAzar.1.2	PrAzar.1.2	ismeretlen_konyv	nem_ertekelt			konyv_nincs_a_normalizalo_tablaban:PrAzar;gyanus_kijelzes:Azariah 2;toredek:Ch 26:16-20;javaslat:2Krón 26:16-20
 NAVE-3379	MINISTER, CHRISTIAN	53	→	5	Balaam	vers	4Móz 22:18	Num.22.18	vers	azonos			
 NAVE-3379	MINISTER, CHRISTIAN	53	→	5	Balaam	vers	4Móz 22:38	Num.22.38	vers	azonos			
 NAVE-3379	MINISTER, CHRISTIAN	53	→	5	Balaam	vers	4Móz 23:8	Num.23.8	vers	azonos			
@@ -52497,7 +52579,7 @@ NAVE-3379	MINISTER, CHRISTIAN	63	→	2	See also	lasd						PERSECUTION
 NAVE-3379	MINISTER, CHRISTIAN	64	→	0	INSTANCES OF PERSECUTION	szoveg							nincs_hivatkozas
 NAVE-3379	MINISTER, CHRISTIAN	64	→	1	Micaiah	vers	1Kir 22:24-27	1Kgs.22.24-1Kgs.22.27	tartomany	tartomany			
 NAVE-3379	MINISTER, CHRISTIAN	64	→	2	Hanani	vers	2Krón 16:10	2Chr.16.10	vers	azonos			
-NAVE-3379	MINISTER, CHRISTIAN	64	→	3		vers	Zak 2	Zech.2	fejezet	nem_ertekelt			gyanus_kijelzes:Zechariah 2;toredek:Ch 24:20,21;javaslat:2Krón 24:20
+NAVE-3379	MINISTER, CHRISTIAN	64	→	3		vers	Zak 2	Zech.2	fejezet	nem_ertekelt			gyanus_kijelzes:Zechariah 2;toredek:Ch 24:20,21;javaslat:2Krón 24:20,21
 NAVE-3379	MINISTER, CHRISTIAN	64	→	4	The apostles	vers	ApCsel 5:17-42	Acts.5.17-Acts.5.42	tartomany	tartomany			
 NAVE-3379	MINISTER, CHRISTIAN	64	→	5	Peter	vers	ApCsel 12:3-19	Acts.12.3-Acts.12.19	tartomany	tartomany			
 NAVE-3379	MINISTER, CHRISTIAN	64	→	6	Paul	vers	ApCsel 9:23-25	Acts.9.23-Acts.9.25	tartomany	tartomany			
@@ -52525,9 +52607,9 @@ NAVE-3379	MINISTER, CHRISTIAN	64	→	6	Paul	vers	2Tim 4:17	2Tim.4.17	vers	ujszov
 NAVE-3379	MINISTER, CHRISTIAN	64	→	7	See	lasd						ELIJAH	
 NAVE-3379	MINISTER, CHRISTIAN	64	→	8	See	lasd						JEREMIAH	
 NAVE-3379	MINISTER, CHRISTIAN	65	→	0	ZEALOUS	szoveg							nincs_hivatkozas
-NAVE-3379	MINISTER, CHRISTIAN	65	→	1		vers	Tit 2	Titus.2	fejezet	fejezet			
-NAVE-3379	MINISTER, CHRISTIAN	65	→	1		vers	Kol 8:16	Col.8.16	vers	ujszovetseg_nincs_tabla			
-NAVE-3379	MINISTER, CHRISTIAN	65	→	1		vers	Kol 8:17	Col.8.17	vers	ujszovetseg_nincs_tabla			
+NAVE-3379	MINISTER, CHRISTIAN	65	→	1		vers	Tit 2	Titus.2	fejezet	nem_ertekelt			gyanus_kijelzes:Titus 2;toredek:Co 8:16;javaslat:2Kor 8:16
+NAVE-3379	MINISTER, CHRISTIAN	65	→	1		vers	2Kor 8:16	2Cor.8.16	vers	ujszovetseg_nincs_tabla			javitva:eredeti_osis=Col.8.16
+NAVE-3379	MINISTER, CHRISTIAN	65	→	1		vers	2Kor 8:17	2Cor.8.17	vers	ujszovetseg_nincs_tabla			javitva:eredeti_osis=Col.8.17
 NAVE-3379	MINISTER, CHRISTIAN	65	→	2	Epaphroditus	vers	Fil 2:25-30	Phil.2.25-Phil.2.30	tartomany	tartomany			
 NAVE-3379	MINISTER, CHRISTIAN	65	→	3	Epaphras	vers	Kol 4:12	Col.4.12	vers	ujszovetseg_nincs_tabla			
 NAVE-3379	MINISTER, CHRISTIAN	65	→	3	Epaphras	vers	Kol 4:13	Col.4.13	vers	ujszovetseg_nincs_tabla			
@@ -53345,18 +53427,19 @@ NAVE-3425	MONEY	1	→	0	Silver used as	vers	ApCsel 8:20	Acts.8.20	vers	ujszovets
 NAVE-3425	MONEY	2	→	0	Gold used as	vers	1Móz 13:2	Gen.13.2	vers	azonos			
 NAVE-3425	MONEY	2	→	0	Gold used as	vers	1Móz 24:35	Gen.24.35	vers	azonos			
 NAVE-3425	MONEY	2	→	0	Gold used as	vers	1Móz 44:8	Gen.44.8	vers	azonos			
-NAVE-3425	MONEY	2	→	0	with 44:1	vers	1Krón 21:25	1Chr.21.25	vers	azonos			
-NAVE-3425	MONEY	2	→	0	with 44:1	vers	Ezsd 8:25-27	Ezra.8.25-Ezra.8.27	tartomany	tartomany			
-NAVE-3425	MONEY	2	→	0	with 44:1	vers	Ézs 13:17	Isa.13.17	vers	azonos			
-NAVE-3425	MONEY	2	→	0	with 44:1	vers	Ézs 46:6	Isa.46.6	vers	azonos			
-NAVE-3425	MONEY	2	→	0	with 44:1	vers	Ézs 60:9	Isa.60.9	vers	azonos			
-NAVE-3425	MONEY	2	→	0	with 44:1	vers	Ez 7:19	Ezek.7.19	vers	azonos			
-NAVE-3425	MONEY	2	→	0	with 44:1	vers	Ez 28:4	Ezek.28.4	vers	azonos			
-NAVE-3425	MONEY	2	→	0	with 44:1	vers	Mt 2:11	Matt.2.11	vers	ujszovetseg_nincs_tabla			
-NAVE-3425	MONEY	2	→	0	with 44:1	vers	Mt 10:9	Matt.10.9	vers	ujszovetseg_nincs_tabla			
-NAVE-3425	MONEY	2	→	0	with 44:1	vers	ApCsel 3:6	Acts.3.6	vers	ujszovetseg_nincs_tabla			
-NAVE-3425	MONEY	2	→	0	with 44:1	vers	ApCsel 20:33	Acts.20.33	vers	ujszovetseg_nincs_tabla			
-NAVE-3425	MONEY	2	→	0	with 44:1	vers	1Pét 1:18	1Pet.1.18	vers	ujszovetseg_nincs_tabla			
+NAVE-3425	MONEY	2	→	0	Gold used as	vers	1Móz 44:1	Gen.44.1	vers	azonos			with_folytato:with 44:1;konyv_oroklve:Gen
+NAVE-3425	MONEY	2	→	0	Gold used as	vers	1Krón 21:25	1Chr.21.25	vers	azonos			
+NAVE-3425	MONEY	2	→	0	Gold used as	vers	Ezsd 8:25-27	Ezra.8.25-Ezra.8.27	tartomany	tartomany			
+NAVE-3425	MONEY	2	→	0	Gold used as	vers	Ézs 13:17	Isa.13.17	vers	azonos			
+NAVE-3425	MONEY	2	→	0	Gold used as	vers	Ézs 46:6	Isa.46.6	vers	azonos			
+NAVE-3425	MONEY	2	→	0	Gold used as	vers	Ézs 60:9	Isa.60.9	vers	azonos			
+NAVE-3425	MONEY	2	→	0	Gold used as	vers	Ez 7:19	Ezek.7.19	vers	azonos			
+NAVE-3425	MONEY	2	→	0	Gold used as	vers	Ez 28:4	Ezek.28.4	vers	azonos			
+NAVE-3425	MONEY	2	→	0	Gold used as	vers	Mt 2:11	Matt.2.11	vers	ujszovetseg_nincs_tabla			
+NAVE-3425	MONEY	2	→	0	Gold used as	vers	Mt 10:9	Matt.10.9	vers	ujszovetseg_nincs_tabla			
+NAVE-3425	MONEY	2	→	0	Gold used as	vers	ApCsel 3:6	Acts.3.6	vers	ujszovetseg_nincs_tabla			
+NAVE-3425	MONEY	2	→	0	Gold used as	vers	ApCsel 20:33	Acts.20.33	vers	ujszovetseg_nincs_tabla			
+NAVE-3425	MONEY	2	→	0	Gold used as	vers	1Pét 1:18	1Pet.1.18	vers	ujszovetseg_nincs_tabla			
 NAVE-3425	MONEY	3	→	0	Copper used as	vers	Mk 6:8	Mark.6.8	vers	ujszovetseg_nincs_tabla			
 NAVE-3425	MONEY	3	→	0	Copper used as	vers	Mk 12:41	Mark.12.41	vers	ujszovetseg_nincs_tabla			
 NAVE-3425	MONEY	4	→	0	Weighed	vers	1Móz 23:16	Gen.23.16	vers	azonos			
@@ -57333,7 +57416,8 @@ NAVE-3763	PAUL	86	→	0	His trial before Governor Felix	vers	ApCsel 24	Acts.24	f
 NAVE-3763	PAUL	87	→	0	Remains in custody for two years	vers	ApCsel 24:27	Acts.24.27	vers	ujszovetseg_nincs_tabla			
 NAVE-3763	PAUL	88	→	0	His trial before Governor Festus	vers	ApCsel 25:1-12	Acts.25.1-Acts.25.12	tartomany	tartomany			
 NAVE-3763	PAUL	89	→	0	Appeals to be heard by Caesar	vers	ApCsel 25:10-12	Acts.25.10-Acts.25.12	tartomany	tartomany			
-NAVE-3763	PAUL	90	→	0	His examination before Herod Agrippa II Ac 25:13-27; 26	szoveg							nincs_hivatkozas
+NAVE-3763	PAUL	90	→	0	His examination before Herod Agrippa II	vers	ApCsel 25:13-27	Acts.25.13-Acts.25.27	tartomany	tartomany			ref_nelkuli_hivatkozas:Ac 25:13-27; 26
+NAVE-3763	PAUL	90	→	0	His examination before Herod Agrippa II	vers	ApCsel 26	Acts.26	fejezet	fejezet			ref_nelkuli_hivatkozas:Ac 25:13-27; 26
 NAVE-3763	PAUL	91	→	0	Is taken to Rome in the custody of Julius, a centurion, and a detachment of soldiers; boards a ship, accompanied by other prisoners, and sails by way of the coasts of Asia; stops at Sidon, and at Myra	vers	ApCsel 27:1-5	Acts.27.1-Acts.27.5	tartomany	tartomany			
 NAVE-3763	PAUL	92	→	0	Transferred to a ship of Alexandria; sails by way of Cnidus, Crete, Salamis, and the Fair Havens	vers	ApCsel 27:6-8	Acts.27.6-Acts.27.8	tartomany	tartomany			
 NAVE-3763	PAUL	93	→	0	Predicts misfortune to the ship; his counsel not heeded, and the voyage resumes	vers	ApCsel 27:9-13	Acts.27.9-Acts.27.13	tartomany	tartomany			
@@ -58313,9 +58397,10 @@ NAVE-3812	PERSIA	10	→	1	Ahasuerus	vers	Eszt 1:3	Esth.1.3	vers	azonos
 NAVE-3812	PERSIA	11	→	0	Darius	vers	Dán 5:31	Dan.5.31	vers	azonos			
 NAVE-3812	PERSIA	11	→	0	Darius	vers	Dán 6	Dan.6	fejezet	fejezet			
 NAVE-3812	PERSIA	11	→	0	Darius	vers	Dán 9:1	Dan.9.1	vers	azonos			
-NAVE-3812	PERSIA	12	→	0	Artaxerxes I Ezr 4:7-24	szoveg							nincs_hivatkozas
-NAVE-3812	PERSIA	13	→	0	Artaxerxes II Ezr 7	vers	Neh 2	Neh.2	fejezet	fejezet			
-NAVE-3812	PERSIA	13	→	0	Artaxerxes II Ezr 7	vers	Neh 5:14	Neh.5.14	vers	azonos			
+NAVE-3812	PERSIA	12	→	0	Artaxerxes I	vers	Ezsd 4:7-24	Ezra.4.7-Ezra.4.24	tartomany	tartomany			ref_nelkuli_hivatkozas:Ezr 4:7-24
+NAVE-3812	PERSIA	13	→	0	Artaxerxes II	vers	Ezsd 7	Ezra.7	fejezet	fejezet			ref_nelkuli_hivatkozas:Ezr 7
+NAVE-3812	PERSIA	13	→	0	Artaxerxes II	vers	Neh 2	Neh.2	fejezet	fejezet			
+NAVE-3812	PERSIA	13	→	0	Artaxerxes II	vers	Neh 5:14	Neh.5.14	vers	azonos			
 NAVE-3812	PERSIA	14	→	0	Cyrus	vers	2Krón 36:22	2Chr.36.22	vers	azonos			
 NAVE-3812	PERSIA	14	→	0	Cyrus	vers	2Krón 36:23	2Chr.36.23	vers	azonos			
 NAVE-3812	PERSIA	14	→	0	Cyrus	vers	Ezsd 1	Ezra.1	fejezet	fejezet			
@@ -58681,8 +58766,8 @@ NAVE-3845	PHILISTINES	6	→	0	Lords of	vers	1Sám 29:2	1Sam.29.2	vers	azonos
 NAVE-3845	PHILISTINES	6	→	0	Lords of	vers	1Sám 29:6	1Sam.29.6	vers	azonos			
 NAVE-3845	PHILISTINES	6	→	0	Lords of	vers	1Sám 29:7	1Sam.29.7	vers	azonos			
 NAVE-3845	PHILISTINES	7	→	0	Kings of	szoveg							nincs_hivatkozas
-NAVE-3845	PHILISTINES	7	→	1	Abimelech I Ge 20	szoveg							nincs_hivatkozas
-NAVE-3845	PHILISTINES	7	→	2	Abimelech II Ge 26	szoveg							nincs_hivatkozas
+NAVE-3845	PHILISTINES	7	→	1	Abimelech I	vers	1Móz 20	Gen.20	fejezet	fejezet			ref_nelkuli_hivatkozas:Ge 20
+NAVE-3845	PHILISTINES	7	→	2	Abimelech II	vers	1Móz 26	Gen.26	fejezet	fejezet			ref_nelkuli_hivatkozas:Ge 26
 NAVE-3845	PHILISTINES	7	→	3	Achish	vers	1Sám 21:10-15	1Sam.21.10-1Sam.21.15	tartomany	tartomany			
 NAVE-3845	PHILISTINES	7	→	3	Achish	vers	1Sám 27:2-12	1Sam.27.2-1Sam.27.12	tartomany	tartomany			
 NAVE-3845	PHILISTINES	7	→	3	Achish	vers	1Sám 28:1	1Sam.28.1	vers	azonos			
@@ -58861,7 +58946,9 @@ NAVE-3869	PILLAR	4	→	0	Used to mark roads	vers	Jer 31:21	Jer.31.21	vers	azonos
 NAVE-3869	PILLAR	5	→	0	Pillar of salt, Lot's wife turned to	vers	1Móz 19:26	Gen.19.26	vers	azonos			
 NAVE-3869	PILLAR	5	→	0	Pillar of salt, Lot's wife turned to	vers	Luk 17:32	Luke.17.32	vers	ujszovetseg_nincs_tabla			
 NAVE-3869	PILLAR	6	→	0	Monuments erected to commemorate events	szoveg							nincs_hivatkozas
-NAVE-3869	PILLAR	6	→	1	By Jacob, his vision of angels	vers	1Móz 28:18	Gen.28.18	vers	azonos			utotag:with 31:13; 35:14
+NAVE-3869	PILLAR	6	→	1	By Jacob, his vision of angels	vers	1Móz 28:18	Gen.28.18	vers	azonos			
+NAVE-3869	PILLAR	6	→	1	By Jacob, his vision of angels	vers	1Móz 31:13	Gen.31.13	vers	azonos			with_folytato:with 31:13; 35:14;konyv_oroklve:Gen
+NAVE-3869	PILLAR	6	→	1	By Jacob, his vision of angels	vers	1Móz 35:14	Gen.35.14	vers	azonos			with_folytato:with 31:13; 35:14;konyv_oroklve:Gen
 NAVE-3869	PILLAR	7	→	0	By Jacob, his covenant with Laban	vers	1Móz 31:45	Gen.31.45	vers	azonos			
 NAVE-3869	PILLAR	8	→	0	By Moses, the covenant between Jehovah and Israel	vers	2Móz 24:4	Exod.24.4	vers	azonos			
 NAVE-3869	PILLAR	9	→	0	By Joshua, the crossing of the Jordan River	vers	Józs 4:1-9	Josh.4.1-Josh.4.9	tartomany	tartomany			
@@ -58871,7 +58958,8 @@ NAVE-3869	PILLAR	10	→	0	By Joshua, at Shechem	vers	Józs 24:25-27	Josh.24.25-J
 NAVE-3869	PILLAR	10	→	0	with	vers	Bír 9:6	Judg.9.6	vers	azonos			
 NAVE-3869	PILLAR	11	→	0	By Samuel, the defeat of the Philistines	vers	1Sám 7:12	1Sam.7.12	vers	azonos			
 NAVE-3869	PILLAR	12	→	0	By Absalom, to keep his name alive	vers	2Sám 18:18	2Sam.18.18	vers	azonos			
-NAVE-3869	PILLAR	13	→	0	As a boundary	vers	Józs 15:6	Josh.15.6	vers	azonos			utotag:with 18:17
+NAVE-3869	PILLAR	13	→	0	As a boundary	vers	Józs 15:6	Josh.15.6	vers	azonos			
+NAVE-3869	PILLAR	13	→	0	As a boundary	vers	Józs 18:17	Josh.18.17	vers	azonos			with_folytato:with 18:17;konyv_oroklve:Josh
 NAVE-3869	PILLAR	14	→	0	As a road sign	vers	1Sám 20:19	1Sam.20.19	vers	azonos			
 NAVE-3869	PILLAR	15	→	0	As a landmark	vers	2Sám 20:8	2Sam.20.8	vers	azonos			
 NAVE-3869	PILLAR	15	→	0	As a landmark	vers	1Kir 1:9	1Kgs.1.9	vers	azonos			
@@ -58961,7 +59049,7 @@ NAVE-3886	PITCH	5	→	0	See	lasd						BITUMEN
 NAVE-3887	PITCHER	1	→	0	Earthen	vers	Sir 4:2	Lam.4.2	vers	azonos			
 NAVE-3887	PITCHER	2	→	0	Used by Gideon in his battle with the Midianites	vers	Bír 7:10-20	Judg.7.10-Judg.7.20	tartomany	tartomany			
 NAVE-3888	PITHOM	1	→	0	A treasure city in lower Egypt	vers	2Móz 1:11	Exod.1.11	vers	azonos			
-NAVE-3889	PITHON	1	→	0	Son of	vers	Mik 1	Mic.1	fejezet	nem_ertekelt			gyanus_kijelzes:Micah 1;toredek:Ch 8:35; 9:41;javaslat:1Krón 8:35
+NAVE-3889	PITHON	1	→	0	Son of	vers	Mik 1	Mic.1	fejezet	nem_ertekelt			gyanus_kijelzes:Micah 1;toredek:Ch 8:35; 9:41;javaslat:1Krón 8:35; 9:41
 NAVE-3890	PITY	1	→	0	Of God	vers	Ézs 63:9	Isa.63.9	vers	azonos			
 NAVE-3890	PITY	1	→	0	Of God	vers	Jak 5:11	Jas.5.11	vers	ujszovetseg_nincs_tabla			
 NAVE-3890	PITY	2	→	0	Of Jesus	vers	Mk 6:34	Mark.6.34	vers	ujszovetseg_nincs_tabla			
@@ -60141,11 +60229,13 @@ NAVE-3934	PRAYER	1	→	30	However, see	vers	Ján 17:1-26	John.17.1-John.17.26	ta
 NAVE-3934	PRAYER	1	→	31	Answer to, withheld	szoveg							nincs_hivatkozas
 NAVE-3934	PRAYER	1	→	32	Of Balaam	vers	5Móz 23:5	Deut.23.5	vers	azonos			
 NAVE-3934	PRAYER	1	→	32	Of Balaam	vers	Józs 24:10	Josh.24.10	vers	azonos			
-NAVE-3934	PRAYER	1	→	33	Of Job	vers	Jób 30:20	Job.30.20	vers	azonos			utotag:with 42:12
+NAVE-3934	PRAYER	1	→	33	Of Job	vers	Jób 30:20	Job.30.20	vers	azonos			
+NAVE-3934	PRAYER	1	→	33	Of Job	vers	Jób 42:12	Job.42.12	vers	azonos			with_folytato:with 42:12;konyv_oroklve:Job
 NAVE-3934	PRAYER	1	→	34	Of the Israelites, when attacked by the Amorites	vers	5Móz 1:45	Deut.1.45	vers	azonos			
 NAVE-3934	PRAYER	1	→	35	The prayer of Jesus, &#8220;Let this cup pass away,&#8221	vers	Mt 26:39	Matt.26.39	vers	ujszovetseg_nincs_tabla			
 NAVE-3934	PRAYER	1	→	35	The prayer of Jesus, &#8220;Let this cup pass away,&#8221	vers	Mt 26:42	Matt.26.42	vers	ujszovetseg_nincs_tabla			
-NAVE-3934	PRAYER	1	→	35	The prayer of Jesus, &#8220;Let this cup pass away,&#8221	vers	Mt 26:44	Matt.26.44	vers	ujszovetseg_nincs_tabla			utotag:with 26:45-75
+NAVE-3934	PRAYER	1	→	35	The prayer of Jesus, &#8220;Let this cup pass away,&#8221	vers	Mt 26:44	Matt.26.44	vers	ujszovetseg_nincs_tabla			
+NAVE-3934	PRAYER	1	→	35	The prayer of Jesus, &#8220;Let this cup pass away,&#8221	vers	Mt 26:45-75	Matt.26.45-Matt.26.75	tartomany	tartomany			with_folytato:with 26:45-75;konyv_oroklve:Matt
 NAVE-3934	PRAYER	1	→	36	And	vers	Mt 27	Matt.27	fejezet	fejezet			
 NAVE-3934	PRAYER	1	→	37	Answer to, delayed	vers	Zsolt 22:1	Ps.22.1	vers	azonos			
 NAVE-3934	PRAYER	1	→	37	Answer to, delayed	vers	Zsolt 22:2	Ps.22.2	vers	azonos			
@@ -60158,7 +60248,8 @@ NAVE-3934	PRAYER	1	→	37	Answer to, delayed	vers	Luk 18:7	Luke.18.7	vers	ujszov
 NAVE-3934	PRAYER	1	→	38	Answer to, exceeds petition	szoveg							nincs_hivatkozas
 NAVE-3934	PRAYER	1	→	39	Solomon asked for wisdom; the answer included wisdom, riches, honour, and long life	vers	1Kir 3:7-14	1Kgs.3.7-1Kgs.3.14	tartomany	tartomany			
 NAVE-3934	PRAYER	1	→	39	Solomon asked for wisdom; the answer included wisdom, riches, honour, and long life	vers	2Krón 1:10-12	2Chr.1.10-2Chr.1.12	tartomany	tartomany			
-NAVE-3934	PRAYER	1	→	40	The disciples prayed for Peter; the answer included Peter's deliverance	vers	ApCsel 12:15	Acts.12.15	vers	ujszovetseg_nincs_tabla			utotag:with 12:5
+NAVE-3934	PRAYER	1	→	40	The disciples prayed for Peter; the answer included Peter's deliverance	vers	ApCsel 12:15	Acts.12.15	vers	ujszovetseg_nincs_tabla			
+NAVE-3934	PRAYER	1	→	40	The disciples prayed for Peter; the answer included Peter's deliverance	vers	ApCsel 12:5	Acts.12.5	vers	ujszovetseg_nincs_tabla			with_folytato:with 12:5;konyv_oroklve:Acts
 NAVE-3934	PRAYER	1	→	41	Answer to, different from the request	szoveg							nincs_hivatkozas
 NAVE-3934	PRAYER	1	→	42	Moses asked to be permitted to cross the Jordan River; the answer was permission to view the land of promise	vers	5Móz 3:23-27	Deut.3.23-Deut.3.27	tartomany	tartomany			
 NAVE-3934	PRAYER	1	→	43	The Israelites lusted for the fleshpots of Egypt; the answer gave them, flesh, but also leanness of soul	vers	Zsolt 106:14	Ps.106.14	vers	azonos			
@@ -60555,7 +60646,7 @@ NAVE-3934	PRAYER	4	→	23	Sisera	vers	Bír 4:24	Judg.4.24	vers	azonos
 NAVE-3934	PRAYER	4	→	23	Sisera	vers	1Sám 12:9-11	1Sam.12.9-1Sam.12.11	tartomany	tartomany			
 NAVE-3934	PRAYER	4	→	24	Ammon	vers	Bír 10:6-18	Judg.10.6-Judg.10.18	tartomany	tartomany			
 NAVE-3934	PRAYER	4	→	24	Ammon	vers	Bír 11:1-33	Judg.11.1-Judg.11.33	tartomany	tartomany			
-NAVE-3934	PRAYER	4	→	25	For God' s favor under the reproofs of	vers	PrAzar.1.2	PrAzar.1.2	ismeretlen_konyv	nem_ertekelt			konyv_nincs_a_normalizalo_tablaban:PrAzar;gyanus_kijelzes:Azariah 2;toredek:Ch 15:1-15;javaslat:2Krón 15:1
+NAVE-3934	PRAYER	4	→	25	For God' s favor under the reproofs of	vers	PrAzar.1.2	PrAzar.1.2	ismeretlen_konyv	nem_ertekelt			konyv_nincs_a_normalizalo_tablaban:PrAzar;gyanus_kijelzes:Azariah 2;toredek:Ch 15:1-15;javaslat:2Krón 15:1-15
 NAVE-3934	PRAYER	4	→	26	From Babylonian bondage	vers	Neh 9:27	Neh.9.27	vers	azonos			
 NAVE-3934	PRAYER	4	→	27	Gideon, asking for the token of dew	vers	Bír 6:36-40	Judg.6.36-Judg.6.40	tartomany	tartomany			
 NAVE-3934	PRAYER	4	→	28	Manoah, asking about Samson	vers	Bír 13:8	Judg.13.8	vers	azonos			
@@ -60885,7 +60976,7 @@ NAVE-3937	PREACHING	9	→	0	&#8220;The Gospel of the Kingdom of God,&#8221; the 
 NAVE-3937	PREACHING	9	→	0	&#8220;The Gospel of the Kingdom of God,&#8221; the subject of Christ' s	vers	Luk 8:1	Luke.8.1	vers	ujszovetseg_nincs_tabla			
 NAVE-3937	PREACHING	10	→	0	Christ crucified and risen, the burden of Paul' s	vers	ApCsel 17:3	Acts.17.3	vers	ujszovetseg_nincs_tabla			
 NAVE-3937	PREACHING	11	→	0	Effective	szoveg							nincs_hivatkozas
-NAVE-3937	PREACHING	11	→	1	By	vers	PrAzar.1.2	PrAzar.1.2	ismeretlen_konyv	nem_ertekelt			konyv_nincs_a_normalizalo_tablaban:PrAzar;gyanus_kijelzes:Azariah 2;toredek:Ch 15:1-15;javaslat:2Krón 15:1
+NAVE-3937	PREACHING	11	→	1	By	vers	PrAzar.1.2	PrAzar.1.2	ismeretlen_konyv	nem_ertekelt			konyv_nincs_a_normalizalo_tablaban:PrAzar;gyanus_kijelzes:Azariah 2;toredek:Ch 15:1-15;javaslat:2Krón 15:1-15
 NAVE-3937	PREACHING	11	→	2	By Jonah	vers	Jón 3	Jonah.3	fejezet	fejezet			
 NAVE-3937	PREACHING	11	→	3	By Peter and other apostles	vers	ApCsel 2:14-41	Acts.2.14-Acts.2.41	tartomany	tartomany			
 NAVE-3937	PREACHING	11	→	4	By Philip	vers	ApCsel 8:5-12	Acts.8.5-Acts.8.12	tartomany	tartomany			
@@ -61913,7 +62004,8 @@ NAVE-3958	PROBATION	2	→	0	Adam on	vers	1Móz 2:15-17	Gen.2.15-Gen.2.17	tartoma
 NAVE-3958	PROBATION	2	→	0	Adam on	vers	1Móz 3:3	Gen.3.3	vers	azonos			
 NAVE-3958	PROBATION	3	→	0	Amorites	vers	1Móz 15:16	Gen.15.16	vers	azonos			
 NAVE-3958	PROBATION	4	→	0	Solomon	vers	1Kir 3:14	1Kgs.3.14	vers	azonos			
-NAVE-3958	PROBATION	4	→	0	Solomon	vers	1Kir 9:4-9	1Kgs.9.4-1Kgs.9.9	tartomany	tartomany			utotag:with 11:9-12
+NAVE-3958	PROBATION	4	→	0	Solomon	vers	1Kir 9:4-9	1Kgs.9.4-1Kgs.9.9	tartomany	tartomany			
+NAVE-3958	PROBATION	4	→	0	Solomon	vers	1Kir 11:9-12	1Kgs.11.9-1Kgs.11.12	tartomany	tartomany			with_folytato:with 11:9-12;konyv_oroklve:1Kgs
 NAVE-3958	PROBATION	5	→	0	Taught in parables of the talents and pounds	vers	Mt 25:14-30	Matt.25.14-Matt.25.30	tartomany	tartomany			
 NAVE-3958	PROBATION	5	→	0	Taught in parables of the talents and pounds	vers	Luk 19:12-27	Luke.19.12-Luke.19.27	tartomany	tartomany			
 NAVE-3958	PROBATION	6	→	0	The fig tree	vers	Luk 13:6-9	Luke.13.6-Luke.13.9	tartomany	tartomany			
@@ -62442,7 +62534,8 @@ NAVE-3973	PROPHECY	8	→	15	Jezebel' s tragic death	vers	2Kir 9:10	2Kgs.9.10	ver
 NAVE-3973	PROPHECY	8	→	15	Jezebel' s tragic death	vers	2Kir 9:33-37	2Kgs.9.33-2Kgs.9.37	tartomany	tartomany			
 NAVE-3973	PROPHECY	8	→	16	The striking of Syria by Joash	vers	2Kir 13:16-25	2Kgs.13.16-2Kgs.13.25	tartomany	tartomany			
 NAVE-3973	PROPHECY	8	→	17	Conquests of Jeroboam	vers	2Kir 14:25-28	2Kgs.14.25-2Kgs.14.28	tartomany	tartomany			
-NAVE-3973	PROPHECY	8	→	18	Four generations of Jehu' s descendants to sit upon the throne of Israel	vers	2Kir 10:30	2Kgs.10.30	vers	azonos			utotag:with 15:12
+NAVE-3973	PROPHECY	8	→	18	Four generations of Jehu' s descendants to sit upon the throne of Israel	vers	2Kir 10:30	2Kgs.10.30	vers	azonos			
+NAVE-3973	PROPHECY	8	→	18	Four generations of Jehu' s descendants to sit upon the throne of Israel	vers	2Kir 15:12	2Kgs.15.12	vers	azonos			with_folytato:with 15:12;konyv_oroklve:2Kgs
 NAVE-3973	PROPHECY	8	→	19	Destruction of Sennacherib' s army, and his death	vers	2Kir 19:6	2Kgs.19.6	vers	azonos			
 NAVE-3973	PROPHECY	8	→	19	Destruction of Sennacherib' s army, and his death	vers	2Kir 19:7	2Kgs.19.7	vers	azonos			
 NAVE-3973	PROPHECY	8	→	19	Destruction of Sennacherib' s army, and his death	vers	2Kir 19:20-37	2Kgs.19.20-2Kgs.19.37	tartomany	tartomany			
@@ -62989,7 +63082,7 @@ NAVE-3984	PRUDENCE	5	→	21	In avoiding his enemies	vers	Mt 12:14-16	Matt.12.14-
 NAVE-3984	PRUDENCE	5	→	21	In avoiding his enemies	vers	Mk 3:7	Mark.3.7	vers	ujszovetseg_nincs_tabla			
 NAVE-3984	PRUDENCE	5	→	21	In avoiding his enemies	vers	Ján 11:47-54	John.11.47-John.11.54	tartomany	tartomany			
 NAVE-3984	PRUDENCE	5	→	22	Joseph, in his conduct toward Mary	vers	Mt 1:19	Matt.1.19	vers	ujszovetseg_nincs_tabla			
-NAVE-3984	PRUDENCE	5	→	23	Peter, in escaping from Herod Agrippa I Ac 12:17	szoveg							nincs_hivatkozas
+NAVE-3984	PRUDENCE	5	→	23	Peter, in escaping from Herod Agrippa I	vers	ApCsel 12:17	Acts.12.17	vers	ujszovetseg_nincs_tabla			ref_nelkuli_hivatkozas:Ac 12:17
 NAVE-3984	PRUDENCE	5	→	24	Paul	szoveg							nincs_hivatkozas
 NAVE-3984	PRUDENCE	5	→	25	In circumcising Timothy	vers	ApCsel 16:3	Acts.16.3	vers	ujszovetseg_nincs_tabla			
 NAVE-3984	PRUDENCE	5	→	26	In performing temple rites	vers	ApCsel 21:20-26	Acts.21.20-Acts.21.26	tartomany	tartomany			
@@ -64610,7 +64703,8 @@ NAVE-4062	RASHNESS	2	→	3	Jephthah' s vow	vers	Bír 11:31-39	Judg.11.31-Judg.11
 NAVE-4062	RASHNESS	2	→	4	Israel' s vow to destroy the Benjamites	vers	Bír 21:1-23	Judg.21.1-Judg.21.23	tartomany	tartomany			
 NAVE-4062	RASHNESS	2	→	5	Uzzah, in steadying the ark of the covenant	vers	2Sám 6:6	2Sam.6.6	vers	azonos			
 NAVE-4062	RASHNESS	2	→	5	Uzzah, in steadying the ark of the covenant	vers	2Sám 6:7	2Sam.6.7	vers	azonos			
-NAVE-4062	RASHNESS	2	→	6	David, in his generosity to Ziba	vers	2Sám 16:4	2Sam.16.4	vers	azonos			utotag:with 19:26-29
+NAVE-4062	RASHNESS	2	→	6	David, in his generosity to Ziba	vers	2Sám 16:4	2Sam.16.4	vers	azonos			
+NAVE-4062	RASHNESS	2	→	6	David, in his generosity to Ziba	vers	2Sám 19:26-29	2Sam.19.26-2Sam.19.29	tartomany	tartomany			with_folytato:with 19:26-29;konyv_oroklve:2Sam
 NAVE-4062	RASHNESS	2	→	7	Rehoboam, in forsaking the counsel of the old men	vers	1Kir 12:8-15	1Kgs.12.8-1Kgs.12.15	tartomany	tartomany			
 NAVE-4062	RASHNESS	2	→	8	Josiah, in fighting against Pharaoh-necho	vers	2Krón 35:20-24	2Chr.35.20-2Chr.35.24	tartomany	tartomany			
 NAVE-4062	RASHNESS	2	→	9	Naaman, in refusing to immerse (LXX: baptizo) himself in the Jordan River	vers	2Kir 5:11	2Kgs.5.11	vers	azonos			
@@ -65569,7 +65663,8 @@ NAVE-4115	REPENTANCE	8	→	1	Joseph' s brothers, of their maltreatment of Joseph
 NAVE-4115	REPENTANCE	8	→	2	Pharaoh, of his hardness of heart	vers	2Móz 9:27	Exod.9.27	vers	azonos			
 NAVE-4115	REPENTANCE	8	→	2	Pharaoh, of his hardness of heart	vers	2Móz 10:16	Exod.10.16	vers	azonos			
 NAVE-4115	REPENTANCE	8	→	2	Pharaoh, of his hardness of heart	vers	2Móz 10:17	Exod.10.17	vers	azonos			
-NAVE-4115	REPENTANCE	8	→	3	Balaam, of his spiritual blindness	vers	4Móz 22:34	Num.22.34	vers	azonos			utotag:with 22:24-35
+NAVE-4115	REPENTANCE	8	→	3	Balaam, of his spiritual blindness	vers	4Móz 22:34	Num.22.34	vers	azonos			
+NAVE-4115	REPENTANCE	8	→	3	Balaam, of his spiritual blindness	vers	4Móz 22:24-35	Num.22.24-Num.22.35	tartomany	tartomany			with_folytato:with 22:24-35;konyv_oroklve:Num
 NAVE-4115	REPENTANCE	8	→	4	Israelites	szoveg							nincs_hivatkozas
 NAVE-4115	REPENTANCE	8	→	5	Of worshiping the golden calf	vers	2Móz 33:3	Exod.33.3	vers	azonos			
 NAVE-4115	REPENTANCE	8	→	5	Of worshiping the golden calf	vers	2Móz 33:4	Exod.33.4	vers	azonos			
@@ -65578,19 +65673,22 @@ NAVE-4115	REPENTANCE	8	→	7	When rebuked by an angel for not expelling the Cana
 NAVE-4115	REPENTANCE	8	→	8	Of their idolatry, when afflicted by the Philistines	vers	Bír 10:6-16	Judg.10.6-Judg.10.16	tartomany	tartomany			
 NAVE-4115	REPENTANCE	8	→	8	Of their idolatry, when afflicted by the Philistines	vers	1Sám 7:3-6	1Sam.7.3-1Sam.7.6	tartomany	tartomany			
 NAVE-4115	REPENTANCE	8	→	9	In asking for a king	vers	1Sám 12:16-20	1Sam.12.16-1Sam.12.20	tartomany	tartomany			
-NAVE-4115	REPENTANCE	8	→	10	In the time of Asa, by the preaching of	vers	PrAzar.1.2	PrAzar.1.2	ismeretlen_konyv	nem_ertekelt			konyv_nincs_a_normalizalo_tablaban:PrAzar;gyanus_kijelzes:Azariah 2;toredek:Ch 15:1-15;javaslat:2Krón 15:1
+NAVE-4115	REPENTANCE	8	→	10	In the time of Asa, by the preaching of	vers	PrAzar.1.2	PrAzar.1.2	ismeretlen_konyv	nem_ertekelt			konyv_nincs_a_normalizalo_tablaban:PrAzar;gyanus_kijelzes:Azariah 2;toredek:Ch 15:1-15;javaslat:2Krón 15:1-15
 NAVE-4115	REPENTANCE	8	→	11	By the preaching of Oded	vers	2Krón 28:9-15	2Chr.28.9-2Chr.28.15	tartomany	tartomany			
 NAVE-4115	REPENTANCE	8	→	12	Under the influence of Hezekiah	vers	2Krón 30:11	2Chr.30.11	vers	azonos			
 NAVE-4115	REPENTANCE	8	→	13	Achan, because of his theft	vers	Józs 7:20	Josh.7.20	vers	azonos			
-NAVE-4115	REPENTANCE	8	→	14	Saul, at the rebuke of Samuel for not destroying the Amalekites	vers	1Sám 15:24	1Sam.15.24	vers	azonos			utotag:with 15:6-31
+NAVE-4115	REPENTANCE	8	→	14	Saul, at the rebuke of Samuel for not destroying the Amalekites	vers	1Sám 15:24	1Sam.15.24	vers	azonos			
+NAVE-4115	REPENTANCE	8	→	14	Saul, at the rebuke of Samuel for not destroying the Amalekites	vers	1Sám 15:6-31	1Sam.15.6-1Sam.15.31	tartomany	tartomany			with_folytato:with 15:6-31;konyv_oroklve:1Sam
 NAVE-4115	REPENTANCE	8	→	15	David, at the rebuke of Nathan, the prophet, for his sins of adultery and murder	vers	2Sám 12:11	2Sam.12.11	vers	azonos			
-NAVE-4115	REPENTANCE	8	→	15	David, at the rebuke of Nathan, the prophet, for his sins of adultery and murder	vers	2Sám 12:13	2Sam.12.13	vers	azonos			utotag:with 12:7-14
+NAVE-4115	REPENTANCE	8	→	15	David, at the rebuke of Nathan, the prophet, for his sins of adultery and murder	vers	2Sám 12:13	2Sam.12.13	vers	azonos			
+NAVE-4115	REPENTANCE	8	→	15	David, at the rebuke of Nathan, the prophet, for his sins of adultery and murder	vers	2Sám 12:7-14	2Sam.12.7-2Sam.12.14	tartomany	tartomany			with_folytato:with 12:7-14;konyv_oroklve:2Sam
 NAVE-4115	REPENTANCE	8	→	16	See	lasd						PSALMS	utotag:PENITENTIAL
 NAVE-4115	REPENTANCE	8	→	17	Rehoboam, when his kingdom was invaded, and Jerusalem was besieged	vers	2Krón 12:1-12	2Chr.12.1-2Chr.12.12	tartomany	tartomany			
 NAVE-4115	REPENTANCE	8	→	18	Hezekiah, at the time of his sickness	vers	2Krón 32:26	2Chr.32.26	vers	azonos			
 NAVE-4115	REPENTANCE	8	→	19	When reproved by the prophet Micah	vers	Jer 26:18	Jer.26.18	vers	azonos			
 NAVE-4115	REPENTANCE	8	→	19	When reproved by the prophet Micah	vers	Jer 26:19	Jer.26.19	vers	azonos			
-NAVE-4115	REPENTANCE	8	→	20	Ahab, when reproved by Elijah for Ahab' s idolatry	vers	1Kir 21:27	1Kgs.21.27	vers	azonos			utotag:with 21:17-29
+NAVE-4115	REPENTANCE	8	→	20	Ahab, when reproved by Elijah for Ahab' s idolatry	vers	1Kir 21:27	1Kgs.21.27	vers	azonos			
+NAVE-4115	REPENTANCE	8	→	20	Ahab, when reproved by Elijah for Ahab' s idolatry	vers	1Kir 21:17-29	1Kgs.21.17-1Kgs.21.29	tartomany	tartomany			with_folytato:with 21:17-29;konyv_oroklve:1Kgs
 NAVE-4115	REPENTANCE	8	→	21	Jehoahaz	vers	2Kir 13:4	2Kgs.13.4	vers	azonos			
 NAVE-4115	REPENTANCE	8	→	22	Josiah, when he heard the law of God which had been discovered in the temple by Hilkiah	vers	2Kir 22:11-20	2Kgs.22.11-2Kgs.22.20	tartomany	tartomany			
 NAVE-4115	REPENTANCE	8	→	23	Manasseh, when he was carried away captive to Babylon by the king of Assyria	vers	2Krón 33:12	2Chr.33.12	vers	azonos			
@@ -66006,8 +66104,10 @@ NAVE-4131	RESPONSIBILITY	1	→	0	Attempts to shift	szoveg							nincs_hivatkozas
 NAVE-4131	RESPONSIBILITY	1	→	1	Adam	vers	1Móz 3:12	Gen.3.12	vers	azonos			
 NAVE-4131	RESPONSIBILITY	1	→	1	Adam	vers	1Móz 3:13	Gen.3.13	vers	azonos			
 NAVE-4131	RESPONSIBILITY	1	→	2	Eve	vers	1Móz 3:13	Gen.3.13	vers	azonos			
-NAVE-4131	RESPONSIBILITY	1	→	3	Sarah	vers	1Móz 16:5	Gen.16.5	vers	azonos			utotag:with 16:2
-NAVE-4131	RESPONSIBILITY	1	→	4	Esau	vers	1Móz 27:36	Gen.27.36	vers	azonos			utotag:with 25:29-34
+NAVE-4131	RESPONSIBILITY	1	→	3	Sarah	vers	1Móz 16:5	Gen.16.5	vers	azonos			
+NAVE-4131	RESPONSIBILITY	1	→	3	Sarah	vers	1Móz 16:2	Gen.16.2	vers	azonos			with_folytato:with 16:2;konyv_oroklve:Gen
+NAVE-4131	RESPONSIBILITY	1	→	4	Esau	vers	1Móz 27:36	Gen.27.36	vers	azonos			
+NAVE-4131	RESPONSIBILITY	1	→	4	Esau	vers	1Móz 25:29-34	Gen.25.29-Gen.25.34	tartomany	tartomany			with_folytato:with 25:29-34;konyv_oroklve:Gen
 NAVE-4131	RESPONSIBILITY	1	→	5	Aaron	vers	2Móz 32:22-24	Exod.32.22-Exod.32.24	tartomany	tartomany			
 NAVE-4131	RESPONSIBILITY	1	→	6	Saul	vers	1Sám 15:20	1Sam.15.20	vers	azonos			
 NAVE-4131	RESPONSIBILITY	1	→	6	Saul	vers	1Sám 15:21	1Sam.15.21	vers	azonos			
@@ -66533,7 +66633,8 @@ NAVE-4148	REVERENCE	2	→	4	The midwives of Egypt, in refusing to take the lives
 NAVE-4148	REVERENCE	2	→	4	The midwives of Egypt, in refusing to take the lives of the Hebrew children	vers	2Móz 1:21	Exod.1.21	vers	azonos			
 NAVE-4148	REVERENCE	2	→	5	The Egyptians, at the time of the plague of thunder and hail and fire	vers	2Móz 9:20	Exod.9.20	vers	azonos			
 NAVE-4148	REVERENCE	2	→	6	The nine and one-half tribes of Israel west of the Jordan River	vers	Józs 22:15-20	Josh.22.15-Josh.22.20	tartomany	tartomany			
-NAVE-4148	REVERENCE	2	→	7	Phinehas, in turning away the anger of God at the time of the plague	vers	4Móz 25:11	Num.25.11	vers	azonos			utotag:with 25:6-15
+NAVE-4148	REVERENCE	2	→	7	Phinehas, in turning away the anger of God at the time of the plague	vers	4Móz 25:11	Num.25.11	vers	azonos			
+NAVE-4148	REVERENCE	2	→	7	Phinehas, in turning away the anger of God at the time of the plague	vers	4Móz 25:6-15	Num.25.6-Num.25.15	tartomany	tartomany			with_folytato:with 25:6-15;konyv_oroklve:Num
 NAVE-4148	REVERENCE	2	→	8	Obadiah, in sheltering one-hundred prophets against the wrath of Jezebel	vers	1Kir 18:3	1Kgs.18.3	vers	azonos			
 NAVE-4148	REVERENCE	2	→	8	Obadiah, in sheltering one-hundred prophets against the wrath of Jezebel	vers	1Kir 18:4	1Kgs.18.4	vers	azonos			
 NAVE-4148	REVERENCE	2	→	9	Jehoshaphat, in proclaiming a feast, when the land was about to be invaded by the armies of the Ammonites and Moabites	vers	2Krón 20:3	2Chr.20.3	vers	azonos			
@@ -68078,7 +68179,8 @@ NAVE-4199	RULERS	11	→	0	WICKED	vers	ApCsel 23:3	Acts.23.3	vers	ujszovetseg_nin
 NAVE-4199	RULERS	11	→	0	WICKED	vers	Jak 2:6	Jas.2.6	vers	ujszovetseg_nincs_tabla			
 NAVE-4199	RULERS	11	→	0	WICKED	vers	Jak 2:9	Jas.2.9	vers	ujszovetseg_nincs_tabla			
 NAVE-4199	RULERS	11	→	1	INSTANCES OF	szoveg							nincs_hivatkozas
-NAVE-4199	RULERS	11	→	2	Potiphar, putting Joseph into prison	vers	1Móz 39:20	Gen.39.20	vers	azonos			utotag:with 40:15
+NAVE-4199	RULERS	11	→	2	Potiphar, putting Joseph into prison	vers	1Móz 39:20	Gen.39.20	vers	azonos			
+NAVE-4199	RULERS	11	→	2	Potiphar, putting Joseph into prison	vers	1Móz 40:15	Gen.40.15	vers	azonos			with_folytato:with 40:15;konyv_oroklve:Gen
 NAVE-4199	RULERS	11	→	3	Pharaoh, oppressing the Israelites	vers	2Móz 1	Exod.1	fejezet	fejezet			
 NAVE-4199	RULERS	11	→	3	Pharaoh, oppressing the Israelites	vers	2Móz 2	Exod.2	fejezet	fejezet			
 NAVE-4199	RULERS	11	→	3	Pharaoh, oppressing the Israelites	vers	2Móz 3	Exod.3	fejezet	fejezet			
@@ -68169,7 +68271,7 @@ NAVE-4199	RULERS	11	→	44	Zedekiah, following the evil example of Jehoiakim	ver
 NAVE-4199	RULERS	11	→	44	Zedekiah, following the evil example of Jehoiakim	vers	2Krón 36:13	2Chr.36.13	vers	azonos			
 NAVE-4199	RULERS	11	→	45	And persecuting Jeremiah	vers	Jer 38:5	Jer.38.5	vers	azonos			
 NAVE-4199	RULERS	11	→	45	And persecuting Jeremiah	vers	Jer 38:6	Jer.38.6	vers	azonos			
-NAVE-4199	RULERS	11	→	46	Joash, killing	vers	Zak 2	Zech.2	fejezet	nem_ertekelt			gyanus_kijelzes:Zechariah 2;toredek:Ch 24:2,17-25;javaslat:2Krón 24:2
+NAVE-4199	RULERS	11	→	46	Joash, killing	vers	Zak 2	Zech.2	fejezet	nem_ertekelt			gyanus_kijelzes:Zechariah 2;toredek:Ch 24:2,17-25;javaslat:2Krón 24:2,17-25
 NAVE-4199	RULERS	11	→	47	Ahaziah, doing evil like the household of Ahab	vers	2Krón 22:1-9	2Chr.22.1-2Chr.22.9	tartomany	tartomany			
 NAVE-4199	RULERS	11	→	48	Amaziah, worshiping the gods of Seir	vers	2Krón 25:14	2Chr.25.14	vers	azonos			
 NAVE-4199	RULERS	11	→	49	Uzziah, invading the priest' s office	vers	2Krón 26:16	2Chr.26.16	vers	azonos			
@@ -68197,7 +68299,8 @@ NAVE-4200	RUMAH	1	→	0	(A city whose location has not been ascertained)	szoveg	
 NAVE-4200	RUMAH	2	→	0	The home of Jehoiakim' s mother	vers	2Kir 23:36	2Kgs.23.36	vers	azonos			
 NAVE-4201	RUTH	1	→	0	The daughter-in-law of Naomi	vers	Ruth 1:4	Ruth.1.4	vers	azonos			
 NAVE-4201	RUTH	2	→	0	Her devotion to Naomi	vers	Ruth 1:16	Ruth.1.16	vers	azonos			
-NAVE-4201	RUTH	2	→	0	Her devotion to Naomi	vers	Ruth 1:17	Ruth.1.17	vers	azonos			utotag:with 1:6-18
+NAVE-4201	RUTH	2	→	0	Her devotion to Naomi	vers	Ruth 1:17	Ruth.1.17	vers	azonos			
+NAVE-4201	RUTH	2	→	0	Her devotion to Naomi	vers	Ruth 1:6-18	Ruth.1.6-Ruth.1.18	tartomany	tartomany			with_folytato:with 1:6-18;konyv_oroklve:Ruth
 NAVE-4201	RUTH	3	→	0	Goes to Bethlehem	vers	Ruth 1:19	Ruth.1.19	vers	azonos			
 NAVE-4201	RUTH	3	→	0	Goes to Bethlehem	vers	Ruth 1:22	Ruth.1.22	vers	azonos			
 NAVE-4201	RUTH	4	→	0	Gleaned in the field of Boaz	vers	Ruth 2:3	Ruth.2.3	vers	azonos			
@@ -68348,7 +68451,8 @@ NAVE-4205	SABBATIC YEAR	6	→	0	Ordinances concerning instruction in the law dur
 NAVE-4205	SABBATIC YEAR	6	→	0	Ordinances concerning instruction in the law during	vers	Neh 8:18	Neh.8.18	vers	azonos			
 NAVE-4205	SABBATIC YEAR	7	→	0	Punishment to follow violation of the ordinances concerning	vers	3Móz 26:34	Lev.26.34	vers	azonos			
 NAVE-4205	SABBATIC YEAR	7	→	0	Punishment to follow violation of the ordinances concerning	vers	3Móz 26:35	Lev.26.35	vers	azonos			
-NAVE-4205	SABBATIC YEAR	7	→	0	with 26:32-41	vers	Jer 34:12-22	Jer.34.12-Jer.34.22	tartomany	tartomany			
+NAVE-4205	SABBATIC YEAR	7	→	0	Punishment to follow violation of the ordinances concerning	vers	3Móz 26:32-41	Lev.26.32-Lev.26.41	tartomany	tartomany			with_folytato:with 26:32-41;konyv_oroklve:Lev
+NAVE-4205	SABBATIC YEAR	7	→	0	Punishment to follow violation of the ordinances concerning	vers	Jer 34:12-22	Jer.34.12-Jer.34.22	tartomany	tartomany			
 NAVE-4205	SABBATIC YEAR	8	→	0	See	lasd						JUBILEE	
 NAVE-4206	SABEANS	1	→	0	A people who invaded the land of Uz	vers	Jób 1:15	Job.1.15	vers	azonos			
 NAVE-4206	SABEANS	1	→	0	A people who invaded the land of Uz	vers	Ézs 43:3	Isa.43.3	vers	azonos			
@@ -69451,7 +69555,8 @@ NAVE-4264	SATAN	23	→	0	UNCLASSIFIED SCRIPTURES RELATING TO	vers	Jel 20:7	Rev.2
 NAVE-4264	SATAN	23	→	0	UNCLASSIFIED SCRIPTURES RELATING TO	vers	Jel 20:8	Rev.20.8	vers	ujszovetseg_nincs_tabla			
 NAVE-4264	SATAN	23	→	0	UNCLASSIFIED SCRIPTURES RELATING TO	vers	Jel 20:10	Rev.20.10	vers	ujszovetseg_nincs_tabla			
 NAVE-4264	SATAN	23	→	1	See	lasd						DEMONS	
-NAVE-4265	SATIRE	1	→	0	Hannah' s song of exultation over Peninnah	vers	1Sám 2:1-10	1Sam.2.1-1Sam.2.10	tartomany	tartomany			utotag:with 1:5-10
+NAVE-4265	SATIRE	1	→	0	Hannah' s song of exultation over Peninnah	vers	1Sám 2:1-10	1Sam.2.1-1Sam.2.10	tartomany	tartomany			
+NAVE-4265	SATIRE	1	→	0	Hannah' s song of exultation over Peninnah	vers	1Sám 1:5-10	1Sam.1.5-1Sam.1.10	tartomany	tartomany			with_folytato:with 1:5-10;konyv_oroklve:1Sam
 NAVE-4265	SATIRE	2	→	0	Of Jesus against hypocrites	vers	Mt 23:2-33	Matt.23.2-Matt.23.33	tartomany	tartomany			
 NAVE-4265	SATIRE	2	→	0	Of Jesus against hypocrites	vers	Mk 12:13-40	Mark.12.13-Mark.12.40	tartomany	tartomany			
 NAVE-4265	SATIRE	2	→	0	Of Jesus against hypocrites	vers	Luk 11:39-54	Luke.11.39-Luke.11.54	tartomany	tartomany			
@@ -70242,7 +70347,8 @@ NAVE-4317	SELF-DENIAL	1	→	0	General scriptures concerning	vers	Jel 12:11	Rev.1
 NAVE-4317	SELF-DENIAL	2	→	0	See	lasd						CROSS	
 NAVE-4317	SELF-DENIAL	3	→	0	See	lasd						HUMILITY	
 NAVE-4317	SELF-DENIAL	4	→	0	INSTANCES OF	szoveg							nincs_hivatkozas
-NAVE-4317	SELF-DENIAL	4	→	1	Abraham, when he offered to Lot (his junior) his preference of the land of Canaan	vers	1Móz 13:9	Gen.13.9	vers	azonos			utotag:with 17:8
+NAVE-4317	SELF-DENIAL	4	→	1	Abraham, when he offered to Lot (his junior) his preference of the land of Canaan	vers	1Móz 13:9	Gen.13.9	vers	azonos			
+NAVE-4317	SELF-DENIAL	4	→	1	Abraham, when he offered to Lot (his junior) his preference of the land of Canaan	vers	1Móz 17:8	Gen.17.8	vers	azonos			with_folytato:with 17:8;konyv_oroklve:Gen
 NAVE-4317	SELF-DENIAL	4	→	2	Moses, in choosing rather to suffer affliction with the people of God than to enjoy the pleasures of sin for only a little while	vers	Zsid 11:25	Heb.11.25	vers	ujszovetseg_nincs_tabla			
 NAVE-4317	SELF-DENIAL	4	→	3	Moses, in taking no compensation from the Israelites for his services	vers	4Móz 16:15	Num.16.15	vers	azonos			
 NAVE-4317	SELF-DENIAL	4	→	4	Samuel, in his administration of justice	vers	1Sám 12:3	1Sam.12.3	vers	azonos			
@@ -70467,7 +70573,8 @@ NAVE-4323	SELF-WILL	5	→	5	Refusing to receive correction	vers	Jer 7:28	Jer.7.2
 NAVE-4323	SELF-WILL	5	→	6	Rebelling against God	vers	5Móz 31:27	Deut.31.27	vers	azonos			
 NAVE-4323	SELF-WILL	5	→	6	Rebelling against God	vers	Zsolt 78:8	Ps.78.8	vers	azonos			
 NAVE-4323	SELF-WILL	5	→	7	Resisting the Holy Spirit	vers	ApCsel 7:51	Acts.7.51	vers	ujszovetseg_nincs_tabla			
-NAVE-4323	SELF-WILL	5	→	8	Walking in the counsels of an evil heart	vers	Jer 7:24	Jer.7.24	vers	azonos			utotag:with 23:17
+NAVE-4323	SELF-WILL	5	→	8	Walking in the counsels of an evil heart	vers	Jer 7:24	Jer.7.24	vers	azonos			
+NAVE-4323	SELF-WILL	5	→	8	Walking in the counsels of an evil heart	vers	Jer 23:17	Jer.23.17	vers	azonos			with_folytato:with 23:17;konyv_oroklve:Jer
 NAVE-4323	SELF-WILL	5	→	9	Hardening the neck (metaphorically)	vers	Neh 9:16	Neh.9.16	vers	azonos			
 NAVE-4323	SELF-WILL	5	→	10	Hardening the heart	vers	2Krón 36:13	2Chr.36.13	vers	azonos			
 NAVE-4323	SELF-WILL	5	→	11	Going backward and not forward	vers	Jer 7:24	Jer.7.24	vers	azonos			
@@ -70859,7 +70966,9 @@ NAVE-4350	SERVANT	6	→	3	Zimri	vers	2Kir 9:31	2Kgs.9.31	vers	azonos
 NAVE-4350	SERVANT	6	→	4	Onesimus	vers	Filem 1:11	Phlm.1.11	vers	ujszovetseg_nincs_tabla			eredeti_osis:Phlm.1.1;egyfejezetes_versszam_a_ref_utan:11
 NAVE-4350	SERVANT	6	→	5	Of Abraham and Lot	vers	1Móz 13:7	Gen.13.7	vers	azonos			
 NAVE-4350	SERVANT	6	→	6	Of Abimelech	vers	1Móz 21:25	Gen.21.25	vers	azonos			
-NAVE-4350	SERVANT	6	→	7	Of Ziba	vers	2Sám 16:1-4	2Sam.16.1-2Sam.16.4	tartomany	tartomany			utotag:with 19:26,27
+NAVE-4350	SERVANT	6	→	7	Of Ziba	vers	2Sám 16:1-4	2Sam.16.1-2Sam.16.4	tartomany	tartomany			
+NAVE-4350	SERVANT	6	→	7	Of Ziba	vers	2Sám 19:26	2Sam.19.26	vers	azonos			with_folytato:with 19:26,27;konyv_oroklve:2Sam
+NAVE-4350	SERVANT	6	→	7	Of Ziba	vers	2Sám 19:27	2Sam.19.27	vers	azonos			with_folytato:with 19:26,27;konyv_oroklve:2Sam
 NAVE-4350	SERVANT	6	→	8	Of Absalom	vers	2Sám 13:28	2Sam.13.28	vers	azonos			
 NAVE-4350	SERVANT	6	→	8	Of Absalom	vers	2Sám 13:29	2Sam.13.29	vers	azonos			
 NAVE-4350	SERVANT	6	→	8	Of Absalom	vers	2Sám 14:30	2Sam.14.30	vers	azonos			
@@ -72179,7 +72288,7 @@ NAVE-4566	SIDON	2	szam:2	7	Solomon marries women of	vers	1Kir 11:1	1Kgs.11.1	ver
 NAVE-4566	SIDON	2	szam:2	8	Ahab marries a woman of	vers	1Kir 16:31	1Kgs.16.31	vers	azonos			
 NAVE-4566	SIDON	2	szam:2	9	People of, come to hear Jesus	vers	Mk 3:8	Mark.3.8	vers	ujszovetseg_nincs_tabla			
 NAVE-4566	SIDON	2	szam:2	9	People of, come to hear Jesus	vers	Luk 6:17	Luke.6.17	vers	ujszovetseg_nincs_tabla			
-NAVE-4566	SIDON	2	szam:2	10	Inhabitants of, offend Herod Agrippa I Ac 12:20-23	szoveg							nincs_hivatkozas
+NAVE-4566	SIDON	2	szam:2	10	Inhabitants of, offend Herod Agrippa I	vers	ApCsel 12:20-23	Acts.12.20-Acts.12.23	tartomany	tartomany			ref_nelkuli_hivatkozas:Ac 12:20-23
 NAVE-4566	SIDON	2	szam:2	11	Commerce of	vers	Ézs 23:2	Isa.23.2	vers	azonos			
 NAVE-4566	SIDON	2	szam:2	11	Commerce of	vers	Ézs 23:4	Isa.23.4	vers	azonos			
 NAVE-4566	SIDON	2	szam:2	11	Commerce of	vers	Ézs 23:12	Isa.23.12	vers	azonos			
@@ -72413,8 +72522,10 @@ NAVE-4581	SIMEON	2	szam:2	4	Inheritance allotted to	vers	Józs 19:1-9	Josh.19.1-
 NAVE-4581	SIMEON	2	szam:2	4	Inheritance allotted to	vers	Bír 1:3-17	Judg.1.3-Judg.1.17	tartomany	tartomany			
 NAVE-4581	SIMEON	2	szam:2	4	Inheritance allotted to	vers	1Krón 4:24-43	1Chr.4.24-1Chr.4.43	tartomany	tartomany			
 NAVE-4581	SIMEON	2	szam:2	5	Stood on Mount Gerizim to bless at the time of the recounting of the law of Moses	vers	5Móz 27:12	Deut.27.12	vers	azonos			
-NAVE-4581	SIMEON	2	szam:2	6	Joined with the people of Judah and Benjamin in the renewal of the Passover	vers	2Krón 15:9	2Chr.15.9	vers	azonos			utotag:with 15:1-15
-NAVE-4581	SIMEON	2	szam:2	7	Idolatry of	vers	2Krón 34:6	2Chr.34.6	vers	azonos			utotag:with 34:1-7
+NAVE-4581	SIMEON	2	szam:2	6	Joined with the people of Judah and Benjamin in the renewal of the Passover	vers	2Krón 15:9	2Chr.15.9	vers	azonos			
+NAVE-4581	SIMEON	2	szam:2	6	Joined with the people of Judah and Benjamin in the renewal of the Passover	vers	2Krón 15:1-15	2Chr.15.1-2Chr.15.15	tartomany	tartomany			with_folytato:with 15:1-15;konyv_oroklve:2Chr
+NAVE-4581	SIMEON	2	szam:2	7	Idolatry of	vers	2Krón 34:6	2Chr.34.6	vers	azonos			
+NAVE-4581	SIMEON	2	szam:2	7	Idolatry of	vers	2Krón 34:1-7	2Chr.34.1-2Chr.34.7	tartomany	tartomany			with_folytato:with 34:1-7;konyv_oroklve:2Chr
 NAVE-4581	SIMEON	2	szam:2	8	See	lasd						ISRAEL	
 NAVE-4581	SIMEON	3	szam:3	0	A devout man in Jerusalem	szoveg							nincs_hivatkozas
 NAVE-4581	SIMEON	3	szam:3	1	Blesses Jesus (when an infant) in the temple	vers	Luk 2:25-35	Luke.2.25-Luke.2.35	tartomany	tartomany			
@@ -73359,7 +73470,8 @@ NAVE-4611	SLANDER	34	folyt	2	That he had a demon	vers	Ján 10:20	John.10.20	vers
 NAVE-4611	SLANDER	34	folyt	3	That he was seditious	vers	Luk 22:65	Luke.22.65	vers	ujszovetseg_nincs_tabla			
 NAVE-4611	SLANDER	34	folyt	3	That he was seditious	vers	Luk 23:5	Luke.23.5	vers	ujszovetseg_nincs_tabla			
 NAVE-4611	SLANDER	34	folyt	4	That he was a king	vers	Luk 23:2	Luke.23.2	vers	ujszovetseg_nincs_tabla			
-NAVE-4611	SLANDER	34	folyt	4	That he was a king	vers	Ján 18:37	John.18.37	vers	ujszovetseg_nincs_tabla			utotag:with 19:1-5
+NAVE-4611	SLANDER	34	folyt	4	That he was a king	vers	Ján 18:37	John.18.37	vers	ujszovetseg_nincs_tabla			
+NAVE-4611	SLANDER	34	folyt	4	That he was a king	vers	Ján 19:1-5	John.19.1-John.19.5	tartomany	tartomany			with_folytato:with 19:1-5;konyv_oroklve:John
 NAVE-4611	SLANDER	34	folyt	5	Of Paul	szoveg							nincs_hivatkozas
 NAVE-4611	SLANDER	34	folyt	6	See	lasd						PAUL	
 NAVE-4611	SLANDER	34	folyt	7	See	lasd						ACCUSATION	utotag:FALSE
@@ -74488,7 +74600,8 @@ NAVE-4705	STOICISM	3	→	0	Jesus requires self-denial and &#8220;crosses,&#8221	
 NAVE-4705	STOICISM	4	→	0	The subordination of natural affection	vers	Mt 10:37	Matt.10.37	vers	ujszovetseg_nincs_tabla			
 NAVE-4705	STOICISM	4	→	0	The subordination of natural affection	vers	Luk 14:26	Luke.14.26	vers	ujszovetseg_nincs_tabla			
 NAVE-4705	STOICISM	5	→	0	Paul teaches	szoveg							nincs_hivatkozas
-NAVE-4705	STOICISM	5	→	1	That the &#8220;law of the mind&#8221; is at war with the &#8220;law of the members,&#8221	vers	Róm 7:23	Rom.7.23	vers	ujszovetseg_nincs_tabla			utotag:with 7:14-24
+NAVE-4705	STOICISM	5	→	1	That the &#8220;law of the mind&#8221; is at war with the &#8220;law of the members,&#8221	vers	Róm 7:23	Rom.7.23	vers	ujszovetseg_nincs_tabla			
+NAVE-4705	STOICISM	5	→	1	That the &#8220;law of the mind&#8221; is at war with the &#8220;law of the members,&#8221	vers	Róm 7:14-24	Rom.7.14-Rom.7.24	tartomany	tartomany			with_folytato:with 7:14-24;konyv_oroklve:Rom
 NAVE-4705	STOICISM	5	→	2	That the body must be kept under subjection	vers	1Kor 9:27	1Cor.9.27	vers	ujszovetseg_nincs_tabla			
 NAVE-4705	STOICISM	5	→	3	Celibacy	vers	1Kor 7:1-9	1Cor.7.1-1Cor.7.9	tartomany	tartomany			
 NAVE-4705	STOICISM	5	→	3	Celibacy	vers	1Kor 7:25	1Cor.7.25	vers	ujszovetseg_nincs_tabla			
@@ -74732,9 +74845,10 @@ NAVE-4717	STRATEGY	1	→	0	In war	vers	Józs 8:3-25	Josh.8.3-Josh.8.25	tartomany
 NAVE-4717	STRATEGY	1	→	0	In war	vers	Bír 7:16-23	Judg.7.16-Judg.7.23	tartomany	tartomany			
 NAVE-4717	STRATEGY	1	→	0	In war	vers	Bír 20:29-43	Judg.20.29-Judg.20.43	tartomany	tartomany			
 NAVE-4717	STRATEGY	1	→	0	In war	vers	2Sám 15:32-34	2Sam.15.32-2Sam.15.34	tartomany	tartomany			
-NAVE-4717	STRATEGY	1	→	0	with 17:7-14	vers	Neh 6	Neh.6	fejezet	fejezet			
-NAVE-4717	STRATEGY	1	→	0	with 17:7-14	vers	Ézs 15:1	Isa.15.1	vers	azonos			
-NAVE-4717	STRATEGY	1	→	0	with 17:7-14	vers	Jer 6:5	Jer.6.5	vers	azonos			
+NAVE-4717	STRATEGY	1	→	0	In war	vers	2Sám 17:7-14	2Sam.17.7-2Sam.17.14	tartomany	tartomany			with_folytato:with 17:7-14;konyv_oroklve:2Sam
+NAVE-4717	STRATEGY	1	→	0	In war	vers	Neh 6	Neh.6	fejezet	fejezet			
+NAVE-4717	STRATEGY	1	→	0	In war	vers	Ézs 15:1	Isa.15.1	vers	azonos			
+NAVE-4717	STRATEGY	1	→	0	In war	vers	Jer 6:5	Jer.6.5	vers	azonos			
 NAVE-4717	STRATEGY	2	→	0	See	lasd						AMBUSHES	
 NAVE-4717	STRATEGY	3	→	0	See	lasd						ARMIES	
 NAVE-4718	STRAW	1	→	0	Used for fodder	vers	1Móz 24:32	Gen.24.32	vers	azonos			
@@ -75138,7 +75252,9 @@ NAVE-4743	SUPERSCRIPTION (INSCRIPTION)	1	→	1	On the cross	vers	Luk 23:38	Luke.
 NAVE-4743	SUPERSCRIPTION (INSCRIPTION)	1	→	1	On the cross	vers	Ján 19:19	John.19.19	vers	ujszovetseg_nincs_tabla			
 NAVE-4744	SUPERSTITION	1	→	0	General scriptures concerning	vers	ApCsel 25:19	Acts.25.19	vers	ujszovetseg_nincs_tabla			
 NAVE-4744	SUPERSTITION	2	→	0	INSTANCES OF	szoveg							nincs_hivatkozas
-NAVE-4744	SUPERSTITION	2	→	1	Israelites, supposing that their defeat in battle with the Philistines was due to their not having brought with them the ark of the covenant	vers	1Sám 4:3	1Sam.4.3	vers	azonos			utotag:with 4:10,11
+NAVE-4744	SUPERSTITION	2	→	1	Israelites, supposing that their defeat in battle with the Philistines was due to their not having brought with them the ark of the covenant	vers	1Sám 4:3	1Sam.4.3	vers	azonos			
+NAVE-4744	SUPERSTITION	2	→	1	Israelites, supposing that their defeat in battle with the Philistines was due to their not having brought with them the ark of the covenant	vers	1Sám 4:10	1Sam.4.10	vers	azonos			with_folytato:with 4:10,11;konyv_oroklve:1Sam
+NAVE-4744	SUPERSTITION	2	→	1	Israelites, supposing that their defeat in battle with the Philistines was due to their not having brought with them the ark of the covenant	vers	1Sám 4:11	1Sam.4.11	vers	azonos			with_folytato:with 4:10,11;konyv_oroklve:1Sam
 NAVE-4744	SUPERSTITION	2	→	2	Philistines, refusing to step on the threshold of the temple of Dagon after the image of Dagon had repeatedly fallen upon it	vers	1Sám 5:5	1Sam.5.5	vers	azonos			
 NAVE-4744	SUPERSTITION	2	→	3	The belief of the Syrians concerning the help of the gods	vers	1Kir 20:23	1Kgs.20.23	vers	azonos			
 NAVE-4744	SUPERSTITION	2	→	4	Jews, attributing their calamities to having ceased offering sacrifices to the Queen of Heaven	vers	Jer 44:17-19	Jer.44.17-Jer.44.19	tartomany	tartomany			
@@ -75561,7 +75677,8 @@ NAVE-4771	SYRIA	2	→	0	Called ARAM, from the son of Shem	vers	1Móz 10:23	Gen.1
 NAVE-4771	SYRIA	2	→	0	Called ARAM, from the son of Shem	vers	4Móz 23:7	Num.23.7	vers	azonos			
 NAVE-4771	SYRIA	2	→	0	Called ARAM, from the son of Shem	vers	1Krón 1:17	1Chr.1.17	vers	azonos			
 NAVE-4771	SYRIA	2	→	0	Called ARAM, from the son of Shem	vers	1Krón 2:23	1Chr.2.23	vers	azonos			
-NAVE-4771	SYRIA	3	→	0	During the time of Abraham it seems to have embraced the region between the Tigris River and the Euphrates River	vers	1Móz 24:10	Gen.24.10	vers	azonos			utotag:with 25:20
+NAVE-4771	SYRIA	3	→	0	During the time of Abraham it seems to have embraced the region between the Tigris River and the Euphrates River	vers	1Móz 24:10	Gen.24.10	vers	azonos			
+NAVE-4771	SYRIA	3	→	0	During the time of Abraham it seems to have embraced the region between the Tigris River and the Euphrates River	vers	1Móz 25:20	Gen.25.20	vers	azonos			with_folytato:with 25:20;konyv_oroklve:Gen
 NAVE-4771	SYRIA	4	→	0	Including Padan-aram	vers	1Móz 25:20	Gen.25.20	vers	azonos			
 NAVE-4771	SYRIA	4	→	0	Including Padan-aram	vers	1Móz 28:5	Gen.28.5	vers	azonos			
 NAVE-4771	SYRIA	5	→	0	Minor kingdoms within the region	szoveg							nincs_hivatkozas
@@ -76561,7 +76678,8 @@ NAVE-4861	TEMPLE	4	→	5	Solomon' s Porch (portico)	vers	Ján 10:23	John.10.23	v
 NAVE-4861	TEMPLE	4	→	5	Solomon' s Porch (portico)	vers	ApCsel 3:11	Acts.3.11	vers	ujszovetseg_nincs_tabla			
 NAVE-4861	TEMPLE	4	→	5	Solomon' s Porch (portico)	vers	ApCsel 5:12	Acts.5.12	vers	ujszovetseg_nincs_tabla			
 NAVE-4861	TEMPLE	4	→	6	Treasury of	vers	Mk 12:41-44	Mark.12.41-Mark.12.44	tartomany	tartomany			
-NAVE-4861	TEMPLE	4	→	7	Zacharias, officiating priest in, has a vision of an angel; receives promise of a son	vers	Luk 1:5-23	Luke.1.5-Luke.1.23	tartomany	tartomany			utotag:with 1:57-64
+NAVE-4861	TEMPLE	4	→	7	Zacharias, officiating priest in, has a vision of an angel; receives promise of a son	vers	Luk 1:5-23	Luke.1.5-Luke.1.23	tartomany	tartomany			
+NAVE-4861	TEMPLE	4	→	7	Zacharias, officiating priest in, has a vision of an angel; receives promise of a son	vers	Luk 1:57-64	Luke.1.57-Luke.1.64	tartomany	tartomany			with_folytato:with 1:57-64;konyv_oroklve:Luke
 NAVE-4861	TEMPLE	4	→	8	Jesus brought to, according to the law and custom	vers	Luk 2:21-39	Luke.2.21-Luke.2.39	tartomany	tartomany			
 NAVE-4861	TEMPLE	4	→	9	Simeon blesses the infant Jesus in	vers	Luk 2:25-35	Luke.2.25-Luke.2.35	tartomany	tartomany			
 NAVE-4861	TEMPLE	4	→	10	Anna, the prophetess, lives in	vers	Luk 2:36	Luke.2.36	vers	ujszovetseg_nincs_tabla			
@@ -76875,7 +76993,8 @@ NAVE-4869	TERAPHIM	2	→	0	Used by Laban, stolen by Rachael (equivalent to a dee
 NAVE-4869	TERAPHIM	3	→	0	Used by Micah, stolen by the Danites	vers	Bír 17:5	Judg.17.5	vers	azonos			
 NAVE-4869	TERAPHIM	3	→	0	Used by Micah, stolen by the Danites	vers	Bír 18:14	Judg.18.14	vers	azonos			
 NAVE-4869	TERAPHIM	3	→	0	Used by Micah, stolen by the Danites	vers	Bír 18:17-20	Judg.18.17-Judg.18.20	tartomany	tartomany			
-NAVE-4869	TERAPHIM	4	→	0	Condemned and disposed of by Jacob	vers	1Móz 35:2-4	Gen.35.2-Gen.35.4	tartomany	tartomany			utotag:with 31:35-39
+NAVE-4869	TERAPHIM	4	→	0	Condemned and disposed of by Jacob	vers	1Móz 35:2-4	Gen.35.2-Gen.35.4	tartomany	tartomany			
+NAVE-4869	TERAPHIM	4	→	0	Condemned and disposed of by Jacob	vers	1Móz 31:35-39	Gen.31.35-Gen.31.39	tartomany	tartomany			with_folytato:with 31:35-39;konyv_oroklve:Gen
 NAVE-4869	TERAPHIM	5	→	0	Destroyed by Josiah	szoveg							nincs_hivatkozas
 NAVE-4869	TERAPHIM	5	→	1	See	lasd						IDOLS	
 NAVE-4870	TERESH	1	→	0	(A Persian chamberlain)	szoveg							nincs_hivatkozas
@@ -77506,7 +77625,7 @@ NAVE-4902	THRONE	3	→	0	Of Solomon	vers	1Kir 2:19	1Kgs.2.19	vers	azonos
 NAVE-4902	THRONE	3	→	0	Of Solomon	vers	2Krón 9:17-19	2Chr.9.17-2Chr.9.19	tartomany	tartomany			
 NAVE-4902	THRONE	4	→	0	Of ivory	vers	1Kir 10:18-20	1Kgs.10.18-1Kgs.10.20	tartomany	tartomany			
 NAVE-4902	THRONE	5	→	0	Of Solomon, called THE THRONE OF THE LORD	vers	1Krón 29:23	1Chr.29.23	vers	azonos			
-NAVE-4902	THRONE	6	→	0	Of Herod Agrippa I Ac 12:21	szoveg							nincs_hivatkozas
+NAVE-4902	THRONE	6	→	0	Of Herod Agrippa I	vers	ApCsel 12:21	Acts.12.21	vers	ujszovetseg_nincs_tabla			ref_nelkuli_hivatkozas:Ac 12:21
 NAVE-4902	THRONE	7	→	0	Of Israel	vers	1Kir 8:20	1Kgs.8.20	vers	azonos			
 NAVE-4902	THRONE	7	→	0	Of Israel	vers	1Kir 10:9	1Kgs.10.9	vers	azonos			
 NAVE-4902	THRONE	7	→	0	Of Israel	vers	2Krón 6:10	2Chr.6.10	vers	azonos			
@@ -78084,7 +78203,10 @@ NAVE-4986	TREASURE	1	szam:1	1	Money	vers	1Móz 42:25	Gen.42.25	vers	azonos
 NAVE-4986	TREASURE	1	szam:1	1	Money	vers	1Móz 42:27	Gen.42.27	vers	azonos			
 NAVE-4986	TREASURE	1	szam:1	1	Money	vers	1Móz 42:28	Gen.42.28	vers	azonos			
 NAVE-4986	TREASURE	1	szam:1	1	Money	vers	1Móz 42:35	Gen.42.35	vers	azonos			
-NAVE-4986	TREASURE	1	szam:1	1	Money	vers	1Móz 43:23	Gen.43.23	vers	azonos			utotag:with 43:18,21,22
+NAVE-4986	TREASURE	1	szam:1	1	Money	vers	1Móz 43:23	Gen.43.23	vers	azonos			
+NAVE-4986	TREASURE	1	szam:1	1	Money	vers	1Móz 43:18	Gen.43.18	vers	azonos			with_folytato:with 43:18,21,22;konyv_oroklve:Gen
+NAVE-4986	TREASURE	1	szam:1	1	Money	vers	1Móz 43:21	Gen.43.21	vers	azonos			with_folytato:with 43:18,21,22;konyv_oroklve:Gen
+NAVE-4986	TREASURE	1	szam:1	1	Money	vers	1Móz 43:22	Gen.43.22	vers	azonos			with_folytato:with 43:18,21,22;konyv_oroklve:Gen
 NAVE-4986	TREASURE	1	szam:1	2	Precious stones	vers	1Krón 29:8	1Chr.29.8	vers	azonos			
 NAVE-4986	TREASURE	1	szam:1	3	Jesus forbids the hoarding of	vers	Mt 6:19	Matt.6.19	vers	ujszovetseg_nincs_tabla			
 NAVE-4986	TREASURE	1	szam:1	3	Jesus forbids the hoarding of	vers	Mt 19:21	Matt.19.21	vers	ujszovetseg_nincs_tabla			
@@ -78148,7 +78270,8 @@ NAVE-4989	TREATY	1	→	1	Israelites and Gibeonites	vers	Józs 9:3-15	Josh.9.3-Jo
 NAVE-4989	TREATY	1	→	2	Judah and Syria	vers	1Kir 15:19	1Kgs.15.19	vers	azonos			
 NAVE-4989	TREATY	2	→	0	Ceding of the territory by	vers	1Kir 9:10-14	1Kgs.9.10-1Kgs.9.14	tartomany	tartomany			
 NAVE-4989	TREATY	2	→	0	Ceding of the territory by	vers	1Kir 20:34	1Kgs.20.34	vers	azonos			
-NAVE-4989	TREATY	3	→	0	Sacredness of	vers	Józs 9:16-21	Josh.9.16-Josh.9.21	tartomany	tartomany			utotag:with 2:8-21
+NAVE-4989	TREATY	3	→	0	Sacredness of	vers	Józs 9:16-21	Josh.9.16-Josh.9.21	tartomany	tartomany			
+NAVE-4989	TREATY	3	→	0	Sacredness of	vers	Józs 2:8-21	Josh.2.8-Josh.2.21	tartomany	tartomany			with_folytato:with 2:8-21;konyv_oroklve:Josh
 NAVE-4989	TREATY	4	→	0	Reciprocity	vers	1Kir 5:1-12	1Kgs.5.1-1Kgs.5.12	tartomany	tartomany			
 NAVE-4989	TREATY	5	→	0	With idolatrous nations forbidden	vers	2Móz 34:12	Exod.34.12	vers	azonos			
 NAVE-4989	TREATY	5	→	0	With idolatrous nations forbidden	vers	2Móz 34:15	Exod.34.15	vers	azonos			
@@ -78314,7 +78437,8 @@ NAVE-5000	TROUBLE	2	→	4	When Moses waited upon the mountain	vers	2Móz 32:1	Ex
 NAVE-5000	TROUBLE	2	→	5	When the spies brought their adverse report	vers	4Móz 13:28	Num.13.28	vers	eltero	4Móz 13:29		
 NAVE-5000	TROUBLE	2	→	5	When the spies brought their adverse report	vers	4Móz 13:29	Num.13.29	vers	eltero	4Móz 13:30		
 NAVE-5000	TROUBLE	2	→	5	When the spies brought their adverse report	vers	4Móz 13:31-33	Num.13.31-Num.13.33	tartomany	tartomany			
-NAVE-5000	TROUBLE	2	→	5	When the spies brought their adverse report	vers	4Móz 14:1-4	Num.14.1-Num.14.4	tartomany	tartomany			utotag:with 14:4-12
+NAVE-5000	TROUBLE	2	→	5	When the spies brought their adverse report	vers	4Móz 14:1-4	Num.14.1-Num.14.4	tartomany	tartomany			
+NAVE-5000	TROUBLE	2	→	5	When the spies brought their adverse report	vers	4Móz 14:4-12	Num.14.4-Num.14.12	tartomany	tartomany			with_folytato:with 14:4-12;konyv_oroklve:Num
 NAVE-5000	TROUBLE	2	→	6	Elijah, under the juniper tree and in the cave	vers	1Kir 19:4-15	1Kgs.19.4-1Kgs.19.15	tartomany	tartomany			
 NAVE-5000	TROUBLE	2	→	7	The disciples, as to how the multitude could be fed	vers	Mt 14:15	Matt.14.15	vers	ujszovetseg_nincs_tabla			
 NAVE-5000	TROUBLE	2	→	7	The disciples, as to how the multitude could be fed	vers	Mk 6:37	Mark.6.37	vers	ujszovetseg_nincs_tabla			
@@ -79841,7 +79965,8 @@ NAVE-5100	VOWS	9	→	0	Belonged to the priests	vers	4Móz 18:14	Num.18.14	vers	a
 NAVE-5100	VOWS	10	→	0	Rash	szoveg							nincs_hivatkozas
 NAVE-5100	VOWS	10	→	1	By Jephthah, in consecration of his daughter as a sacrafice, if his campaign against the Ammonites were successful	vers	Bír 11:29-40	Judg.11.29-Judg.11.40	tartomany	tartomany			
 NAVE-5100	VOWS	10	→	2	The Israelites, to destroy the Benjamites	vers	Bír 21:5	Judg.21.5	vers	azonos			
-NAVE-5100	VOWS	10	→	2	The Israelites, to destroy the Benjamites	vers	Bír 21:6	Judg.21.6	vers	azonos			utotag:with 20:21
+NAVE-5100	VOWS	10	→	2	The Israelites, to destroy the Benjamites	vers	Bír 21:6	Judg.21.6	vers	azonos			
+NAVE-5100	VOWS	10	→	2	The Israelites, to destroy the Benjamites	vers	Bír 20:21	Judg.20.21	vers	azonos			with_folytato:with 20:21;konyv_oroklve:Judg
 NAVE-5100	VOWS	11	→	0	Things forbidden to be offered in: Receipts of the whore and the price of a &#8220;dog&#8221; (male prostitute of a pagan shrine)	vers	5Móz 23:18	Deut.23.18	vers	azonos			
 NAVE-5100	VOWS	12	→	0	A minor, of himself	vers	Mk 7:11-13	Mark.7.11-Mark.7.13	tartomany	tartomany			
 NAVE-5100	VOWS	13	→	0	UNCLASSIFIED SCRIPTURES RELATING TO	vers	1Móz 28:20	Gen.28.20	vers	azonos			
@@ -79875,7 +80000,9 @@ NAVE-5100	VOWS	14	→	0	INSTANCES OF	szoveg							nincs_hivatkozas
 NAVE-5100	VOWS	14	→	1	Of Jacob, see above	vers	1Móz 28:20-22	Gen.28.20-Gen.28.22	tartomany	tartomany			
 NAVE-5100	VOWS	14	→	2	Of the mother of Micah, in the dedication of silver for the making of an idol	vers	Bír 17:2	Judg.17.2	vers	azonos			
 NAVE-5100	VOWS	14	→	2	Of the mother of Micah, in the dedication of silver for the making of an idol	vers	Bír 17:3	Judg.17.3	vers	azonos			
-NAVE-5100	VOWS	14	→	3	Of Hannah, to consecrate to the Lord the child for which she prayed	vers	1Sám 1:11	1Sam.1.11	vers	azonos			utotag:with 1:27,28
+NAVE-5100	VOWS	14	→	3	Of Hannah, to consecrate to the Lord the child for which she prayed	vers	1Sám 1:11	1Sam.1.11	vers	azonos			
+NAVE-5100	VOWS	14	→	3	Of Hannah, to consecrate to the Lord the child for which she prayed	vers	1Sám 1:27	1Sam.1.27	vers	azonos			with_folytato:with 1:27,28;konyv_oroklve:1Sam
+NAVE-5100	VOWS	14	→	3	Of Hannah, to consecrate to the Lord the child for which she prayed	vers	1Sám 1:28	1Sam.1.28	vers	azonos			with_folytato:with 1:27,28;konyv_oroklve:1Sam
 NAVE-5100	VOWS	14	→	4	Of Elkanah	vers	1Sám 1:21	1Sam.1.21	vers	azonos			
 NAVE-5100	VOWS	14	→	5	Of Absalom	vers	2Sám 15:7	2Sam.15.7	vers	azonos			
 NAVE-5100	VOWS	14	→	5	Of Absalom	vers	2Sám 15:8	2Sam.15.8	vers	azonos			
@@ -82760,7 +82887,8 @@ NAVE-5162	WOMEN	76	→	4	Silly and wayward	vers	2Tim 3:6	2Tim.3.6	vers	ujszovets
 NAVE-5162	WOMEN	77	→	0	INSTANCES OF	szoveg							nincs_hivatkozas
 NAVE-5162	WOMEN	77	→	1	Eve, in yielding to temptation and seducing her husband	vers	1Móz 3:6	Gen.3.6	vers	azonos			
 NAVE-5162	WOMEN	77	→	1	Eve, in yielding to temptation and seducing her husband	vers	1Tim 2:14	1Tim.2.14	vers	ujszovetseg_nincs_tabla			
-NAVE-5162	WOMEN	77	→	2	Sarah, in her jealousy and malice toward Hagar	vers	1Móz 21:9-11	Gen.21.9-Gen.21.11	tartomany	tartomany			utotag:with 21:12-21
+NAVE-5162	WOMEN	77	→	2	Sarah, in her jealousy and malice toward Hagar	vers	1Móz 21:9-11	Gen.21.9-Gen.21.11	tartomany	tartomany			
+NAVE-5162	WOMEN	77	→	2	Sarah, in her jealousy and malice toward Hagar	vers	1Móz 21:12-21	Gen.21.12-Gen.21.21	tartomany	tartomany			with_folytato:with 21:12-21;konyv_oroklve:Gen
 NAVE-5162	WOMEN	77	→	3	Lot' s wife, in her rebellion against her situation, and against the destruction of Sodom	vers	1Móz 19:26	Gen.19.26	vers	azonos			
 NAVE-5162	WOMEN	77	→	3	Lot' s wife, in her rebellion against her situation, and against the destruction of Sodom	vers	Luk 17:32	Luke.17.32	vers	ujszovetseg_nincs_tabla			
 NAVE-5162	WOMEN	77	→	4	The daughters of Lot, in their incestuous lust	vers	1Móz 19:31-38	Gen.19.31-Gen.19.38	tartomany	tartomany			
@@ -82793,7 +82921,8 @@ NAVE-5162	WOMEN	77	→	21	Jezebel, in her persecution and destruction of the pro
 NAVE-5162	WOMEN	77	→	21	Jezebel, in her persecution and destruction of the prophets of the Lord	vers	1Kir 18:13	1Kgs.18.13	vers	azonos			
 NAVE-5162	WOMEN	77	→	22	Jezebel, in her persecution of Elijah	vers	1Kir 19:2	1Kgs.19.2	vers	azonos			
 NAVE-5162	WOMEN	77	→	23	Jezebel, in her conspiracy against Naboth, to cheat him out of his vineyard	vers	1Kir 21:1-16	1Kgs.21.1-1Kgs.21.16	tartomany	tartomany			
-NAVE-5162	WOMEN	77	→	24	Jezebel, in her evil counsels to, and influence over, Ahab	vers	1Kir 21:25	1Kgs.21.25	vers	azonos			utotag:with 21:17-27
+NAVE-5162	WOMEN	77	→	24	Jezebel, in her evil counsels to, and influence over, Ahab	vers	1Kir 21:25	1Kgs.21.25	vers	azonos			
+NAVE-5162	WOMEN	77	→	24	Jezebel, in her evil counsels to, and influence over, Ahab	vers	1Kir 21:17-27	1Kgs.21.17-1Kgs.21.27	tartomany	tartomany			with_folytato:with 21:17-27;konyv_oroklve:1Kgs
 NAVE-5162	WOMEN	77	→	25	And	vers	2Kir 9:30-37	2Kgs.9.30-2Kgs.9.37	tartomany	tartomany			
 NAVE-5162	WOMEN	77	→	26	The cannibalistic mothers of Samaria	vers	2Kir 6:28	2Kgs.6.28	vers	azonos			
 NAVE-5162	WOMEN	77	→	26	The cannibalistic mothers of Samaria	vers	2Kir 6:29	2Kgs.6.29	vers	azonos			
@@ -84374,7 +84503,7 @@ NAVE-5223	ZEAL, RELIGIOUS	3	→	8	King David	vers	2Sám 7:2	2Sam.7.2	vers	azonos
 NAVE-5223	ZEAL, RELIGIOUS	3	→	8	King David	vers	2Sám 8:11	2Sam.8.11	vers	azonos			
 NAVE-5223	ZEAL, RELIGIOUS	3	→	8	King David	vers	2Sám 8:12	2Sam.8.12	vers	azonos			
 NAVE-5223	ZEAL, RELIGIOUS	3	→	9	Elijah	vers	1Kir 19:10	1Kgs.19.10	vers	azonos			
-NAVE-5223	ZEAL, RELIGIOUS	3	→	10		vers	Abd 1:1	Obad.1.1	vers	nem_ertekelt			gyanus_kijelzes:Obadiah 1;toredek:Ki 18:3,4;javaslat:1Kir 18:3;gyanus_kijelzes:egyfejezetes_nincs_versszam
+NAVE-5223	ZEAL, RELIGIOUS	3	→	10		vers	Abd 1:1	Obad.1.1	vers	nem_ertekelt			gyanus_kijelzes:Obadiah 1;toredek:Ki 18:3,4;javaslat:1Kir 18:3,4;gyanus_kijelzes:egyfejezetes_nincs_versszam
 NAVE-5223	ZEAL, RELIGIOUS	3	→	11	Jehoash	vers	2Kir 12:2-16	2Kgs.12.2-2Kgs.12.16	tartomany	tartomany			
 NAVE-5223	ZEAL, RELIGIOUS	3	→	12	Jehu	vers	2Kir 9	2Kgs.9	fejezet	fejezet			
 NAVE-5223	ZEAL, RELIGIOUS	3	→	12	Jehu	vers	2Kir 10	2Kgs.10	fejezet	fejezet			
@@ -84806,7 +84935,7 @@ NAVE-5254	ZERAH	4	szam:4	0	Son of Simeon	vers	1Krón 4:24	1Chr.4.24	vers	azonos
 NAVE-5254	ZERAH	5	szam:5	0	A Gershonite	vers	1Krón 6:21	1Chr.6.21	vers	azonos			
 NAVE-5254	ZERAH	6	szam:6	0	A Levite	vers	1Krón 6:41	1Chr.6.41	vers	azonos			
 NAVE-5254	ZERAH	7	szam:7	0	King of Ethiopia	vers	2Krón 14:9-15	2Chr.14.9-2Chr.14.15	tartomany	tartomany			
-NAVE-5255	ZERAHIAH	1	szam:1	0	An ancestor of	vers	Ezsd 1	Ezra.1	fejezet	nem_ertekelt			gyanus_kijelzes:Ezra 1;toredek:Ch 6:6,51;javaslat:1Krón 6:6
+NAVE-5255	ZERAHIAH	1	szam:1	0	An ancestor of	vers	Ezsd 1	Ezra.1	fejezet	nem_ertekelt			gyanus_kijelzes:Ezra 1;toredek:Ch 6:6,51;javaslat:1Krón 6:6,51
 NAVE-5255	ZERAHIAH	1	szam:1	0	An ancestor of	vers	Ezsd 7:4	Ezra.7.4	vers	azonos			
 NAVE-5255	ZERAHIAH	2	szam:2	0	Father of Elihoenai	vers	Ezsd 8:4	Ezra.8.4	vers	azonos			
 NAVE-5256	ZERED	1	→	0	See	lasd						ZARED	
@@ -84943,7 +85072,8 @@ NAVE-5290	ZION	5	→	1	Placed in	vers	1Krón 15:1	1Chr.15.1	vers	azonos
 NAVE-5290	ZION	5	→	1	Placed in	vers	1Krón 15:29	1Chr.15.29	vers	azonos			
 NAVE-5290	ZION	5	→	1	Placed in	vers	2Krón 5:2	2Chr.5.2	vers	azonos			
 NAVE-5290	ZION	5	→	2	Removed from, to Solomon' s temple on Mount Moriah	vers	1Kir 8:1	1Kgs.8.1	vers	azonos			
-NAVE-5290	ZION	5	→	2	Removed from, to Solomon' s temple on Mount Moriah	vers	2Krón 5:2	2Chr.5.2	vers	azonos			utotag:with 3:1
+NAVE-5290	ZION	5	→	2	Removed from, to Solomon' s temple on Mount Moriah	vers	2Krón 5:2	2Chr.5.2	vers	azonos			
+NAVE-5290	ZION	5	→	2	Removed from, to Solomon' s temple on Mount Moriah	vers	2Krón 3:1	2Chr.3.1	vers	azonos			with_folytato:with 3:1;konyv_oroklve:2Chr
 NAVE-5290	ZION	6	→	0	Collectively, the place, the forms, and the assemblies of Israelite worship	vers	2Kir 19:21	2Kgs.19.21	vers	azonos			
 NAVE-5290	ZION	6	→	0	Collectively, the place, the forms, and the assemblies of Israelite worship	vers	2Kir 19:31	2Kgs.19.31	vers	azonos			
 NAVE-5290	ZION	6	→	0	Collectively, the place, the forms, and the assemblies of Israelite worship	vers	Zsolt 9:11	Ps.9.11	vers	azonos			

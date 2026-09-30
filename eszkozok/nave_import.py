@@ -169,10 +169,12 @@ def igehely_alak(osis, hu, vm):
 def javaslat_hely(kij, ertek, toredek, hu):
     """Az összeolvadt kijelzés + töredék alapján rekonstruált hely (csak javaslat), vagy ''.
     Feltétel: a kijelzés számjegyre végződik, ez egyezik az osisRef fejezetszámával, és
-    szám+töredék-betűk = létező könyvrövidítés (pl. 2+Ch = 2Ch)."""
+    szám+töredék-betűk = létező könyvrövidítés (pl. 2+Ch = 2Ch). A töredék teljes hely-listája
+    megmarad (kezdő és záró vers, vesszős/pontosvesszős lista), nem csonkolódik az első versre
+    (F18.12)."""
     mk = re.search(r'(\d+)$', kij)
     mo = OSIS_RE.match(ertek)
-    tm = re.match(r'([A-Za-z]+)\s*(\d+(?::\d+)?)', toredek)
+    tm = re.match(r'([A-Za-z]+)\s*(\d[\d:,\-–; ]*)', toredek)
     if not (mk and mo and tm):
         return ''
     # ismert könyvnél az osisRef fejezetszáma egyezzen a kijelzés számjegyével; az ismeretlen
@@ -182,7 +184,8 @@ def javaslat_hely(kij, ertek, toredek, hu):
     step = mk.group(1) + tm.group(1)
     if step not in hu:
         return ''
-    return "%s %s" % (hu[step], tm.group(2))
+    hely = re.sub(r'\s+', ' ', tm.group(2).replace('–', '-')).strip(' ;,')
+    return "%s %s" % (hu[step], hely)
 
 
 def bontas_egysegek(sor):
@@ -234,12 +237,248 @@ def gyanus_jeloles(megj, kij, ertek, toredek, hu):
     return True
 
 
+# --- F18.12: önálló <ref>-es töredék, ref nélküli hivatkozások, „with N:N” folytatás -------------
+
+# a Nave-rövidítések (a forrás kijelzett alakjai) -> OSIS-könyv; a `Co` szándékosan hiányzik
+# (1Co/2Co előtag nélkül nem egyértelmű, a lekaparás `Col`-ra képezte), és a hosszú névalakok
+# (Micah, Titus …) sem tartoznak ide: az összeolvadt nevek külön osztály
+NAVE_ROV = {
+    "Ge": "Gen", "Ex": "Exod", "Le": "Lev", "Nu": "Num", "De": "Deut", "Jos": "Josh",
+    "Jud": "Judg", "Ru": "Ruth", "1Sa": "1Sam", "2Sa": "2Sam", "1Ki": "1Kgs", "2Ki": "2Kgs",
+    "1Ch": "1Chr", "2Ch": "2Chr", "Ezr": "Ezra", "Ne": "Neh", "Es": "Esth", "Job": "Job",
+    "Ps": "Ps", "Pr": "Prov", "Ec": "Eccl", "So": "Song", "Isa": "Isa", "Jer": "Jer",
+    "La": "Lam", "Eze": "Ezek", "Da": "Dan", "Ho": "Hos", "Joe": "Joel", "Am": "Amos",
+    "Ob": "Obad", "Jon": "Jonah", "Mic": "Mic", "Na": "Nah", "Hab": "Hab", "Zep": "Zeph",
+    "Hag": "Hag", "Zec": "Zech", "Mal": "Mal", "Mt": "Matt", "Mr": "Mark", "Lu": "Luke",
+    "Joh": "John", "Ac": "Acts", "Ro": "Rom", "1Co": "1Cor", "2Co": "2Cor", "Ga": "Gal",
+    "Eph": "Eph", "Php": "Phil", "Col": "Col", "1Th": "1Thess", "2Th": "2Thess",
+    "1Ti": "1Tim", "2Ti": "2Tim", "Tit": "Titus", "Phm": "Phlm", "Heb": "Heb", "Jas": "Jas",
+    "1Pe": "1Pet", "2Pe": "2Pet", "1Jo": "1John", "2Jo": "2John", "3Jo": "3John",
+    "Jude": "Jude", "Re": "Rev",
+}
+STEP_OSIS = {v: k for k, v in OSIS_STEP.items()}
+# római számos név után, <ref> nélkül álló hivatkozás: "Ben-hadad I 1Ki 20", "Herod Agrippa II Ac 26:2,3"
+ROMAN_RE = re.compile(
+    r'\b(?:I{1,3}|IV|VI{0,3}|IX|X)\s+((?:[123]\s?)?[A-Z][a-z]{1,3})\s+(\d+[\d:,\-–; ]*)')
+# „with N:N” folytató-hivatkozás: az előző hivatkozás könyvét örökli
+WITH_RE = re.compile(r'\bwith\s+(\d+:\d+[\d:,\-–; ]*)')
+SPEC_ELSO_RE = re.compile(r'(\d+)(?::(\d+))?(?:-(?:(\d+):)?(\d+))?$')
+SPEC_TOVABBI_RE = re.compile(r'(\d+)(?:-(\d+))?$')
+
+
+def spec_osisok(konyv, spec):
+    """Nave-hivatkozás-lista ("25:13-27; 26", "13:3-5,13,14") -> [osis, ...] (egy elem = egy sor),
+    vagy None, ha nem értelmezhető. A Nave-szokás: pontosvessző után fejezet[:vers], vessző után
+    vers (ha a csoport c:v-vel kezdődött) vagy fejezet."""
+    out = []
+    for csoport in spec.replace('–', '-').split(';'):
+        elso = True
+        versmod = False
+        cur = None
+        for p in csoport.split(','):
+            p = re.sub(r'\s+', '', p)
+            if not p:
+                continue
+            if elso or ':' in p:
+                m = SPEC_ELSO_RE.match(p)
+                if not m:
+                    return None
+                c, v, c2, e = m.groups()
+                if v is None:
+                    versmod = False
+                    if e is None:
+                        out.append("%s.%s" % (konyv, c))
+                    elif c2 is None:
+                        out.append("%s.%s-%s.%s" % (konyv, c, konyv, e))
+                    else:
+                        return None
+                else:
+                    versmod = True
+                    cur = c
+                    if e is None:
+                        out.append("%s.%s.%s" % (konyv, c, v))
+                    elif c2 is None:
+                        out.append("%s.%s.%s-%s.%s.%s" % (konyv, c, v, konyv, c, e))
+                    else:
+                        out.append("%s.%s.%s-%s.%s.%s" % (konyv, c, v, konyv, c2, e))
+                elso = False
+            else:
+                m = SPEC_TOVABBI_RE.match(p)
+                if not m:
+                    return None
+                a, b = m.groups()
+                if versmod:
+                    if b is None:
+                        out.append("%s.%s.%s" % (konyv, cur, a))
+                    else:
+                        out.append("%s.%s.%s-%s.%s.%s" % (konyv, cur, a, konyv, cur, b))
+                else:
+                    if b is None:
+                        out.append("%s.%s" % (konyv, a))
+                    else:
+                        out.append("%s.%s-%s.%s" % (konyv, a, konyv, b))
+    return out or None
+
+
+def extra_talalatok(szoveg):
+    """A <ref> nélküli hivatkozások a szövegben: [(kezdet, veg, fajta, konyv_osis|None, spec)]."""
+    t = []
+    for m in WITH_RE.finditer(szoveg):
+        t.append((m.start(), m.end(), 'with', None, m.group(1)))
+    for m in ROMAN_RE.finditer(szoveg):
+        abbr = m.group(1).replace(' ', '')
+        if abbr in NAVE_ROV:
+            t.append((m.start(1), m.end(), 'roman', NAVE_ROV[abbr], m.group(2)))
+    t.sort()
+    ki = []
+    veg = -1
+    for x in t:
+        if x[0] >= veg:
+            ki.append(x)
+            veg = x[1]
+    return ki
+
+
+def javaslat_konyv(megj, hu):
+    """A megjegyzés-lista `javaslat:<könyv> <hely>` eleméből a javasolt könyv OSIS-kódja, vagy None."""
+    for x in megj:
+        if x.startswith('javaslat:'):
+            nev = x[len('javaslat:'):].rsplit(' ', 1)[0]
+            for step, h in hu.items():
+                if h == nev:
+                    return STEP_OSIS.get(step)
+    return None
+
+
+def konyv_osis(osis):
+    """A hivatkozás (utolsó) könyve OSIS-ben, vagy None."""
+    m = OSIS_RE.match(osis)
+    if not m:
+        return None
+    return m.group(4) or m.group(1)
+
+
+def extrak(szoveg, cimke, last_book, alap, hu, vm, stat):
+    """A szöveg (hézag / utótag / hivatkozás nélküli egység) feldolgozása: a <ref> nélküli
+    hivatkozásokból sor lesz. Visszaad: (maradék szövegrészek, sorok, cimke, last_book).
+    Extra nélkül a maradék az egész szöveg (kerettel levágva), a cimke ezzel frissül — az F18.11
+    viselkedés."""
+    sorok = []
+    maradek = []
+    pos = 0
+    for (a, b, fajta, konyv, spec) in extra_talalatok(szoveg):
+        pre = szoveg[pos:a].strip(' ;,')
+        if pre:
+            cimke = pre
+            maradek.append(pre)
+        pos = b
+        raw = szoveg[a:b].strip(' ;,')
+        biztos = True
+        if fajta == 'with':
+            if last_book is None:
+                sorok.append(alap + [raw, 'szoveg', '', '', '', '', '', '',
+                                     'gyanus_kijelzes:with_folytato_nincs_elozo_konyv'])
+                stat['with_arva'] += 1
+                continue
+            konyv, biztos, jb = last_book
+            megj0 = ['with_folytato:' + raw, 'konyv_oroklve:' + konyv]
+        else:
+            megj0 = ['ref_nelkuli_hivatkozas:' + raw]
+        osisok = spec_osisok(konyv, spec) if konyv in OSIS_STEP else None
+        if osisok is None:
+            sorok.append(alap + [raw, 'szoveg', '', '', '', '', '', '',
+                                 'gyanus_kijelzes:%s_nem_ertelmezheto' % fajta])
+            stat[fajta + '_nem_ertelmezheto'] += 1
+            continue
+        for o in osisok:
+            ig, ht, ka, ikar, m2 = igehely_alak(o, hu, vm)
+            megj = list(megj0)
+            if not biztos:
+                megj.append('gyanus_kijelzes:with_folytato_bizonytalan_konyv')
+                if jb:
+                    # az előző hivatkozás összeolvadt töredékéből rekonstruált könyv: csak javaslat
+                    oj = spec_osisok(jb, spec)
+                    if oj and len(oj) == len(osisok):
+                        megj.append('javaslat:' + igehely_alak(oj[osisok.index(o)], hu, vm)[0])
+                ka = 'nem_ertekelt'
+                stat['with_bizonytalan'] += 1
+            if m2:
+                megj.append(m2)
+            sorok.append(alap + [cimke, 'vers', ig, o, ht, ka, ikar, '', ';'.join(megj)])
+            stat[fajta + '_sor'] += 1
+            stat['hely_tipus:' + ht] += 1
+            stat['karoli:' + ka] += 1
+        if fajta == 'roman':
+            last_book = (konyv, True, None)
+    tail = szoveg[pos:].strip(' ;,')
+    if tail:
+        cimke = tail
+        maradek.append(tail)
+    return maradek, sorok, cimke, last_book
+
+
+def onallo_toredek(refs, e, hu):
+    """Önálló <ref>-es töredék: `<ref osisRef="Titus.2">Titus 2</ref><ref osisRef="Col.8.16">Co 8:16</ref>`
+    (valójában „By Titus 2Co 8:16”). Az A ref kijelzése számjegyre végződik, közvetlenül utána B ref
+    kijelzése `Ch|Ki|Sa|Ti|Co|Th|Pe|Jn` + szám, és szám+betűk létező könyv (2+Co = 2Co).
+    Egyértelmű (javítható), ha: A osisRef-fejezete = a kijelzés számjegye; B osisRef c[:v] = a
+    kijelzett c[:v]. Ekkor B és a rá következő, betű nélküli kijelzésű, azonos (téves) könyvű
+    láncelemek könyve a helyes könyvre íródik át. Különben A, B és a lánc csak jelölt.
+    Visszaad: (javitas {ref_index: (uj_osis, eredeti_osis)}, toredek_a {ref_index: B_kijelzes},
+    bizonytalan {ref_index, ...})."""
+    javitas = {}
+    toredek_a = {}
+    bizonytalan = set()
+    for i in range(len(refs) - 1):
+        A, B = refs[i], refs[i + 1]
+        if A.group(1) != 'osisRef' or B.group(1) != 'osisRef':
+            continue
+        if e[A.end():B.start()].strip():
+            continue
+        kij_a, kij_b = tisztit(A.group(3)), tisztit(B.group(3))
+        ma = re.search(r'(\d+)$', kij_a)
+        mb = re.match(r'([A-Za-z]+)\s*(\d+)(?::(\d+))?', kij_b)
+        if not (ma and mb and mb.group(1) in TOREDEK_KONYV):
+            continue
+        oa, ob = OSIS_RE.match(A.group(2)), OSIS_RE.match(B.group(2))
+        step = ma.group(1) + mb.group(1)
+        egyertelmu = (step in hu and step in STEP_OSIS and oa is not None and ob is not None
+                      and (oa.group(1) not in OSIS_STEP or oa.group(2) == ma.group(1))
+                      and ob.group(2) == mb.group(2)
+                      and (mb.group(3) is None or ob.group(3) == mb.group(3)))
+        regi = ob.group(1) if ob else None
+        lanc = [i + 1]
+        j = i + 2
+        while j < len(refs):
+            if not re.fullmatch(r'[\s,;]*', e[refs[j - 1].end():refs[j].start()]):
+                break
+            r = refs[j]
+            oj = OSIS_RE.match(r.group(2))
+            if (r.group(1) == 'osisRef' and oj and oj.group(1) == regi
+                    and re.fullmatch(r'[\d:,\-–; ]+', tisztit(r.group(3)))):
+                lanc.append(j)
+                j += 1
+            else:
+                break
+        if egyertelmu:
+            uj = STEP_OSIS[step]
+            for k in lanc:
+                o = refs[k].group(2)
+                javitas[k] = ('-'.join(uj + p[len(regi):] if p.startswith(regi + '.') else p
+                                       for p in o.split('-')), o)
+            toredek_a[i] = kij_b
+        else:
+            bizonytalan.update([i] + lanc)
+    return javitas, toredek_a, bizonytalan
+
+
 def sorok_generalas(entk, hu, vm):
     kimenet = []
     stat = collections.Counter()
     for ei, (cim, torzs) in enumerate(entk, 1):
         tema_id = "NAVE-%04d" % ei
         sorszam = 0
+        last_book = None  # (OSIS-könyv, megbízható) — a „with N:N” folytatás az entry előző hivatkozásának könyvét örökli
         for nyers in torzs.split('\n'):
             if not nyers.strip():
                 continue
@@ -259,20 +498,38 @@ def sorok_generalas(entk, hu, vm):
             for tetel, e in egysegek:
                 cimke = ''
                 pos = 0
+                alap = [tema_id, cim, str(sorszam), jel, str(tetel)]
                 refs = list(REF_RE.finditer(e))
                 if not refs and tisztit(e):
-                    # hivatkozás nélküli egység: a szöveg megmarad (cimke), sor nélkül nem volna nyoma
-                    kimenet.append([tema_id, cim, str(sorszam), jel, str(tetel),
-                                    tisztit(e), 'szoveg', '', '', '', '', '', '', 'nincs_hivatkozas'])
-                    stat['szoveg_hivatkozas_nelkul'] += 1
+                    # hivatkozás nélküli egység: római számos név után álló hivatkozás sorrá lesz,
+                    # a többi szöveg megmarad (cimke), sor nélkül nem volna nyoma
+                    szoveg_e = tisztit(e)
+                    maradek, xs, _, last_book = extrak(szoveg_e, '', last_book, alap, hu, vm, stat)
+                    if xs:
+                        kimenet.extend(xs)
+                        stat['szoveg_hivatkozas_nelkul_felbontva'] += 1
+                        tail = szoveg_e[extra_talalatok(szoveg_e)[-1][1]:].strip(' ;,')
+                        if tail:
+                            kimenet.append(alap + [tail, 'szoveg', '', '', '', '', '', '', 'nincs_hivatkozas'])
+                            stat['szoveg_hivatkozas_nelkul'] += 1
+                    else:
+                        kimenet.append(alap + [szoveg_e, 'szoveg', '', '', '', '', '', '', 'nincs_hivatkozas'])
+                        stat['szoveg_hivatkozas_nelkul'] += 1
                     continue
+                javitas, toredek_a, bizonytalan = onallo_toredek(refs, e, hu)
                 for i, r in enumerate(refs):
                     gap = tisztit(e[pos:r.start()])
-                    gap_szoveg = gap.strip(' ;,')
-                    if gap_szoveg:
-                        cimke = gap_szoveg
+                    _, xs, cimke, last_book = extrak(gap, cimke, last_book, alap, hu, vm, stat)
+                    kimenet.extend(xs)
                     pos = r.end()
                     tipus, ertek, kij = r.group(1), r.group(2), tisztit(r.group(3))
+                    megj = []
+                    if i in javitas:
+                        # önálló <ref>-es töredék (egyértelmű): a könyv javítva, a karoli_allapot újraszámítva
+                        ertek_eredeti = ertek
+                        ertek = javitas[i][0]
+                        megj.append('javitva:eredeti_osis=' + ertek_eredeti)
+                        stat['onallo_toredek_javitva'] += 1
                     # egyfejezetes könyvek: a valódi versszám a <ref> UTÁN áll (":7", ":8-13", ":9,10"),
                     # az osisRef csak "X.1.1" (alapérték) — a versszámot innen vesszük
                     egyfej = (tipus == 'osisRef' and EGYFEJ_RE.match(ertek) is not None
@@ -289,10 +546,19 @@ def sorok_generalas(entk, hu, vm):
                         if tm_:
                             toredek = tm_.group(0).strip(' ;,')
                             pos += tm_.end()
+                        elif i in toredek_a:
+                            toredek = toredek_a[i]
                     utotag = ''
-                    if i == len(refs) - 1:
-                        utotag = tisztit(e[pos:]).strip(' ;,')
-                    megj = []
+                    xs_ut = []
+                    utolso = (i == len(refs) - 1)
+
+                    def utotag_feldolg(last_book_uj, cimke_):
+                        if not utolso:
+                            return '', [], last_book_uj, cimke_
+                        mar, xs_, cimke_uj, lb = extrak(tisztit(e[pos:]), cimke_, last_book_uj,
+                                                        alap, hu, vm, stat)
+                        return ' '.join(mar), xs_, lb, cimke_  # a sor saját cimkéje nem változik
+
                     if tipus == 'osisRef':
                         if vers_spec:
                             konyv = ertek.split('.')[0]
@@ -308,6 +574,11 @@ def sorok_generalas(entk, hu, vm):
                             stat['egyfejezetes_ref_javitva'] += 1
                             megj.append('eredeti_osis:' + ertek)
                             gyanus = gyanus_jeloles(megj, kij, ertek, toredek, hu)
+                            if i in bizonytalan:
+                                megj.append('gyanus_kijelzes:onallo_toredek_nem_egyertelmu')
+                                gyanus = True
+                            last_book = (konyv, not gyanus, None)
+                            utotag, xs_ut, last_book, cimke = utotag_feldolg(last_book, cimke)
                             if utotag:
                                 megj.append('utotag:' + utotag)
                             megj.append('egyfejezetes_versszam_a_ref_utan:' + vers_spec)
@@ -316,11 +587,11 @@ def sorok_generalas(entk, hu, vm):
                                 if gyanus:
                                     ka = 'nem_ertekelt'
                                 mj = list(megj) + ([m2] if m2 else [])
-                                kimenet.append([tema_id, cim, str(sorszam), jel, str(tetel), cimke,
-                                                'vers', ig, osis_, ht, ka, ikar, '', ';'.join(mj)])
+                                kimenet.append(alap + [cimke, 'vers', ig, osis_, ht, ka, ikar, '', ';'.join(mj)])
                                 stat['vers'] += 1
                                 stat['hely_tipus:' + ht] += 1
                                 stat['karoli:' + ka] += 1
+                            kimenet.extend(xs_ut)
                             continue
                         ig, ht, ka, ikar, m2 = igehely_alak(ertek, hu, vm)
                         if m2:
@@ -331,26 +602,34 @@ def sorok_generalas(entk, hu, vm):
                             megj.append('gyanus_kijelzes:egyfejezetes_nincs_versszam')
                             gyanus = True
                             stat['egyfejezetes_versszam_nelkul'] += 1
+                        if i in bizonytalan:
+                            megj.append('gyanus_kijelzes:onallo_toredek_nem_egyertelmu')
+                            gyanus = True
+                            stat['onallo_toredek_bizonytalan'] += 1
                         if gyanus:
                             ka = 'nem_ertekelt'
+                        kb = konyv_osis(ertek)
+                        last_book = (kb, (not gyanus) and kb in OSIS_STEP, javaslat_konyv(megj, hu)) if kb else last_book
+                        utotag, xs_ut, last_book, cimke = utotag_feldolg(last_book, cimke)
                         if utotag:
                             megj.append('utotag:' + utotag)
-                        kimenet.append([tema_id, cim, str(sorszam), jel, str(tetel), cimke,
-                                        'vers', ig, ertek, ht, ka, ikar, '', ';'.join(megj)])
+                        kimenet.append(alap + [cimke, 'vers', ig, ertek, ht, ka, ikar, '', ';'.join(megj)])
                         stat['vers'] += 1
                         stat['hely_tipus:' + ht] += 1
                         stat['karoli:' + ka] += 1
+                        kimenet.extend(xs_ut)
                     else:
                         cel = ertek[5:] if ertek.startswith('Nave:') else ertek
                         if not ertek.startswith('Nave:'):
                             megj.append('target_nem_Nave')
                         if kij != cel:
                             megj.append('kijelzett:' + kij)
+                        utotag, xs_ut, last_book, cimke = utotag_feldolg(last_book, cimke)
                         if utotag:
                             megj.append('utotag:' + utotag)
-                        kimenet.append([tema_id, cim, str(sorszam), jel, str(tetel), cimke,
-                                        'lasd', '', '', '', '', '', cel, ';'.join(megj)])
+                        kimenet.append(alap + [cimke, 'lasd', '', '', '', '', '', cel, ';'.join(megj)])
                         stat['lasd'] += 1
+                        kimenet.extend(xs_ut)
     return kimenet, stat
 
 
