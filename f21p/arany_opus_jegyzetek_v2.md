@@ -211,9 +211,14 @@ szakaszé; a K11 új.*
 **K7 v2 — Segédige (DT21 a: a jegyzet az irányadó, a prompt kivétele szűkül).** A 2.
 szakasz 7. pontja változatlan: a segédige (*vala, fog, fogunk, van, vannak, volna,
 lészen*), ha az eredetiben nincs külön ige (nincs הָיָה, εἰμί stb.), `betoldas`. A kivétel
-kizárólag a 7. pontban megnevezett eset: az egyetlen eredeti igealakot visszaadó
-többtagú magyar igei szerkezet, amelyben a segédige maga az igealak (idő, szenvedő alak)
-fordítása (Mt 4:4 *Meg van írva* ← γέγραπται: mindhárom token az egy eredeti igére).
+a 7. pontban megnevezett eset (Mt 4:4 *Meg van írva* ← γέγραπται: mindhárom token az egy
+eredeti igére), és az ebből levont típus: az egyetlen eredeti (szenvedő vagy tökéletes)
+igealakot visszaadó magyar segédigés-igenévi körülírás, amelyben a segédige maga az
+igealak (idő, szenvedő alak) fordítása. **Jelölés: általánosítás, a jegyzet csak az
+Mt 4:4-et írja** — a v1 7. pontja egyetlen példát nevez meg, a típus-megfogalmazás ebből
+az egy példából általánosít. A `prompt_v3.md` G szabálya ezt az általánosítást tartalmazza
+(„ha a magyar egyetlen eredeti igealakot többtagú igei szerkezettel ad vissza, és a
+segédige maga az igealak … fordítása”). Nyitott: 8.3 pont 5.
 Nem kivétel, tehát `betoldas`:
 - az ige mellé tett múlt idejű *vala* (*tudja vala*, *megy vala*, *kezdék vala*), a jövő
   idejű *fog/fogunk*, a feltételes *volna*;
@@ -234,7 +239,15 @@ körüli más szóhoz sem (*ezt mondja* ← נְאֻם: *ezt* `betoldas`, *mondj
 Változatlanul kötődik: az önálló eredeti névmáshoz (αὐτόν, ἡμᾶς), és — a K4 szerint — az
 igén vagy elöljárón álló névmási raghoz (H9030–H9040; *vigye őt* ← -ô, *támogassa őt*
 ← בּוֹ). Ez utóbbi olvasat a 8.3 pont 1. kérdése (a döntés szó szerinti szövege szűkebb is
-lehet).
+lehet). A felhasználó értelmezése (F21.44): „a névmás a ragra kötődik” (*'et* + rag esetén
+a magyar névmás a ragra megy, az *'et* `forditatlan`); a C szabály szövege ez az (A)
+olvasat marad.
+
+*Eltérés a törölt `claude/f21-regresszio` ág szövegétől (F21.R1, 0e97591; ágcsúcs
+b2f2da8, SHA-n visszanyerhető):* ott a C szabály szó szerinti olvasat (a magyar tárgyi
+vagy mutató névmás `betoldas`, ha nincs *'et* az eredetiben, akkor is, ha a rag az igén
+áll), itt nem; a két szöveg egyébként az orkesztrátor összevetése szerint egyezik (ezt
+az összevetést nem ismételtem meg).
 
 **K4 v2 — Birtokos és névmási ragok (DT21 e: a rag arra a magyar szóra megy, amelyik a
 megfelelő személyragot viseli).** A 2. szakasz 4. pontja pontosítva: a rag (H9020–H9040)
@@ -265,7 +278,7 @@ ponton nem változik.
 |---|---|---|---|
 | K3 | *'et* + rag: a névmás csak a ragra | + a névmás *'et* + rag (és más eredeti névmási elem) nélkül `betoldas`, nem az igéhez | b |
 | K4 | a birtokos személyragot viselő magyar szóhoz | a raggal azonos személyre utaló személyragot viselő szóhoz (birtokláncban a megfelelő szó) | e |
-| K7 | segédige `betoldas`, kivétel Mt 4:4 | változatlan; a kivétel kifejezetten szűk (nem: *vala*, *fog*, *volna*, határozószó, kötőszó) | a |
+| K7 | segédige `betoldas`, kivétel Mt 4:4 | változatlan; a kivétel kifejezetten szűk (nem: *vala*, *fog*, *volna*, határozószó, kötőszó); a kivétel típus-megfogalmazása (szenvedő vagy tökéletes igealak, egyetlen eredeti ige segédigés-igenévi körülírása) **általánosítás, a jegyzet csak az Mt 4:4-et írja**; a `prompt_v3` G szabálya ezt az általánosítást tartalmazza | a |
 | K11 | — | új: korrelatív *azt/azért … hogy*: a mutató névmás `betoldas`, a *hogy* a kötőszóra | c |
 | 6. táblázat | 23 sor | változatlan, nem bővül (a 2Móz 26:13 *is* sora marad) | d, PD10 |
 
@@ -290,6 +303,12 @@ döntését dokumentálja); a v3-javaslat a táblázat ott megnevezett alternat�
    az arany v2-ben hét magyar szó linkjét változtatná (2Móz 20:25 *azt* (19), 2Móz 21:6
    *őt* (3, 29), 2Móz 21:26 *azt* (16), 2Móz 26:13 *azt* (28), Zsolt 6:5 *engem* (9),
    Zsolt 16:11 *engem* (3); az elöljárós Péld 28:17 *őt* ← בּוֹ esettel nyolcét), és a DT20 a) (tárgyrag az igén) kérdését is érintené. Javaslat: (a).
+   **Állapot (F21.44):** a felhasználó értelmezése „a névmás a ragra kötődik” (*'et* + rag
+   esetén); a C szabály szövege az (a) olvasat marad. Az igén álló, *'et* nélküli rag
+   névmásának kérdése **nincs eldöntve**: a két változat az arany v3-ra a
+   `naplok/F21P_arany_v3_diff.md`-ben (A: `f21p/arany_opus_v3_javaslat.jsonl`, 3 link;
+   B: `f21p/arany_opus_v3_javaslat_B.jsonl`, A + 9 link 8 magyar szón, 5. szakasz); a
+   felhasználó választ.
 2. **DT20 c) — igei személyrag (Ez 39:13 *megdicsőítem*).** A K4 v2 a személyrag
    „megfelelő” voltát a birtokosra/személyre köti; hogy az igei személyrag (a
    *megdicsőítem* -em ragja) is megfelelő lehet-e a H9040 (*magamat*) mellett, a DT21 e
@@ -300,3 +319,10 @@ döntését dokumentálja); a v3-javaslat a táblázat ott megnevezett alternat�
    nevezi meg; az arany nem változik. Javaslat: marad (a 6. táblázat szerint).
 4. **DT20 a) és b)** (tárgyrag az igén külön névmás nélkül; a *való*): a DT21 a–e nem
    érinti, nyitott marad.
+5. **A K7 kivételének általánosítása.** **Általánosítás, a jegyzet csak az Mt 4:4-et
+   írja:** a kivétel típus-megfogalmazása (szenvedő vagy tökéletes igealak, egyetlen
+   eredeti ige magyar segédigés-igenévi körülírása) a v1 7. pontjának egyetlen példájából
+   általánosít, és a `prompt_v3` G szabálya ezt az általánosítást tartalmazza. Az arany v2
+   linkjeit nem érinti (a 60 versben a Mt 4:4 az egyetlen ilyen eset). Opció: (a) az
+   általánosítás marad (a prompt szövege szerint); (b) a kivétel csak a *meg van írva*
+   szerkezetre szól. Javaslat: (a), a jelölés megtartásával.
