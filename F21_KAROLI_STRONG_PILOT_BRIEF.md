@@ -5,13 +5,14 @@ kod: F21
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: dontesre_var
+allapot: lezarva
 ad: mért adat arról, megéri-e a teljes Bibliát külső modellekkel Strong-számmal párosítani (minőség, költség, KJV-támpont haszna)
-kovetkezo: P3b fut (F1v2, F2v2, F5v2, F6v2, F3V2b, F4v2, plafon 2 USD-nál megállás); a DT21 lezárása visszavonva (DT22)
+kovetkezo: lezárva (P3b kész); a #22 sorsa a felhasználó döntése (l. DT21, DT22)
 olvas: [konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/KJV_Strongs_Genesis.tsv]
 ir: [eszkozok/karoli_strong/, f21p/, naplok/F21P_jelentes.md, DONTESEK.md, .github/workflows/f21p_pilot.yml]
 ag: claude/f21-pilot
 pr: #92
+lezarva_osszegzes: Károli–Strong mérőpilot (F21, P3+P3b): az A+B és az A+B+C is mért, és egyik sem felel meg a rögzített döntési szabálynak (A+B: `magas` pontosság, lefedettség, régi arany, `alacsony` arány bukott; A+B+C: mind az öt feltétel bukott, vetített költség 85,75 USD [80–92]); az A, B és C egymodelles, a PD6 szerint nem minősíthető; C-vetítés 42 USD; a C két futásának eltérése ±0,5 pp; a pilot 1,605 USD; KJV (N29) a v2-adaton: +15,6 pp `magas` pontosság n=7 vers mellett, az eltérés-csökkenés nem teljesül, nem végleges; jelentés `naplok/F21P_jelentes.md`
 fugg: [6]
 ---
 # F21_KAROLI_STRONG_PILOT_BRIEF.md — Károli–Strong párosítás: mérőpilot (minőség és költség)
@@ -191,3 +192,4 @@ Egy összeállítás **megfelel**, ha:
 | v1.1 | 2026.09.30 | a P2 ⛔ döntései: a küszöbök rögzítve (PD5); egymodelles összeállítás csak mérésre, a teljes futásra csak A+B vagy A+B+C (PD6); a vegyes példa: R1 és R4 A+B-vel, R2–R3 A+B+C-vel; `[nem TR]` javítás és az „eltérő alak” tokenek kizárása a pontossági mérésből (PD7) |
 | v1.2 | 2026.09.30 | a P3/P4 utáni döntések: az A és a B kiesik (a kapun átment versekben is 81%, illetve 65% pontosság), v2 nem lesz hozzájuk, az F4 nem fut (PD8); a régi arany egyezése halmazként mért, a 2 hibás hármas jelölve (PD9); arany v2 csak a jegyzet konvenciójával ütköző esetekre, jóváhagyásig nem fagy be (PD10); KJV (N29): a v1-adaton nem teljesül, n=8, nem végleges |
 | v1.3 | 2026.09.30 | a DT21 lezárása visszavonva (DT22): a pilot folytatódik (P3b), minden összeállítás kimérve: F1v2 (A), F2v2 (B), F5v2/F6v2 (KJV nélkül, R1), F3V2b (a C második futása az ingadozáshoz), F4v2 (a C döntőbíróként); a `prompt_v2` és az arany v2 befagyasztva, az öt nyitott kérdés a jelentésbe kerül (PD11) |
+| v1.4 | 2026.09.30 | a P3b kész: minden összeállítás kimérve a `prompt_v2`-vel (F1V2, F2V2, F5V2, F6V2, F3V2b, F4V2, 1,605 USD kumulatív); az A+B és az A+B+C sem felel meg; a C két futásának eltérése az ingadozás becslése; a #22 sorsa a felhasználó döntése |
