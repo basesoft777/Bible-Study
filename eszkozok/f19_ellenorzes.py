@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-f19_ellenorzes.py -- F19.3: onallo lekerdezes a konkordancia/{KJV,ASV}_Strongs_teljes.tsv-en (nem az importer
+f19_ellenorzes.py -- F19.3: onallo lekerdezes a konkordancia/KJV_Strongs_teljes.tsv-en (az ASV_Strongs_teljes.tsv F19.7 ota
+nincs a repoban, forrashibas: DT19 (b); ha a fajl megvan, pl. a regi commitbol, ugyanazt merik rajta) (nem az importer
 parszolojat hasznalja): kulcs-Strong darabszamok, kulcsversek, egyezes a meglevo studybible-tablakkal
 (Genesis, Exodus, Proverbs) konyvenkent es vershalmazonkent, token-szintu egyezes a luvlylavnder-rel.
 
@@ -46,10 +47,14 @@ def main():
     ap.add_argument('--luv', default=None)
     a = ap.parse_args()
     ts = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
-    print('proveniencia: scope=konkordancia/{KJV,ASV}_Strongs_teljes.tsv onallo lekerdezes | forras=eszkozok/f19_ellenorzes.py | ts=%s' % ts)
+    print('proveniencia: scope=konkordancia/KJV_Strongs_teljes.tsv onallo lekerdezes | forras=eszkozok/f19_ellenorzes.py | ts=%s' % ts)
     tabla = {}
     for ver in ('KJV', 'ASV'):
-        d = olvas(os.path.join(KON, ver + '_Strongs_teljes.tsv'))
+        fp = os.path.join(KON, ver + '_Strongs_teljes.tsv')
+        if not os.path.exists(fp):
+            print('== %s: a tabla nincs a repoban (l. DT19 (b))' % ver)
+            continue
+        d = olvas(fp)
         tabla[ver] = d
         c = collections.Counter(s for v in d.values() for s, _ in v)
         tot = sum(c.values())
@@ -62,7 +67,7 @@ def main():
         frazis = sum(1 for v in d.values() for _, w in v if ' ' in w.strip())
         print('  tobbszavas (frazis) "Angol szo" mezo: %d' % frazis)
         print('  pelda frazis: %s' % [(ig, w) for ig, v in d.items() for _, w in v if ' ' in w.strip()][:3])
-    for ver in ('KJV', 'ASV'):
+    for ver in tabla:
         print('\n== %s vs meglevo studybible-tabla, vershalmazonkent' % ver)
         for nev, step in (('Genesis', 'Gen'), ('Exodus', 'Exo'), ('Proverbs', 'Pro')):
             regi = olvas(os.path.join(KON, '%s_Strongs_%s.tsv' % (ver, nev)))
@@ -77,6 +82,8 @@ def main():
         print('\n== token-szintu egyezes a luvlylavnder-rel (a token Strongja benne van-e a luv ugyanazon versenek Strong-halmazaban)')
         konyvek = [s.split('\t')[0] for s in open(os.path.join(KON, 'Konyv_normalizalo_tabla.tsv'), encoding='utf-8').read().split('\n')[1:] if s.strip()]
         for ver, alm, fj in (('KJV', 'KJV-Strongs', 'kjv_strongs.json'), ('ASV', 'ASV-Strongs', 'asvs.json')):
+            if ver not in tabla:
+                continue
             luv = json.load(open(os.path.join(a.luv, 'Bible-Versions', alm, fj), encoding='utf-8'))
             lsz = {}
             for r in luv['verses']:

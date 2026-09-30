@@ -9,7 +9,7 @@ Bemenet (--munka mappa):
   luv/                  a luvlylavnder/bible-app-data klonja (Bible-Versions/KJV-Strongs, ASV-Strongs)
 Kimenet:
   konkordancia/KJV_Strongs_teljes.tsv   Igehely | Szosorszam | Strong-szam | Angol szo | Morfologiai kod (ures)
-  konkordancia/ASV_Strongs_teljes.tsv   ugyanaz (az ASV-forras nem ad morfologiai kodot; az oszlop ures)
+  (az ASV_Strongs_teljes.tsv NEM keszul: az eBible-ASV cimkezese forrashibas, DT19 (b) dontes; az ASV csak merve/besorolva szerepel a naplokban)
   naplok/F19_hianyok.tsv                a cimke nelkuli versek besorolasa + a forras/licenc/meres fejlecsorai
 
 Szabalyok: csak az 5 oszlopos, a KJV_Strongs_*.tsv-vel azonos formatum; a Strong-szam nullak nelkul (H0430 -> H430,
@@ -331,7 +331,8 @@ def main():
                     '# Helyes ASV-Strong: a konkordancia/ASV_Strongs_{Genesis,Exodus,Proverbs}.tsv (studybible.info) vagy a luvlylavnder ASV-Strongs. Egyezés a meglévő táblákkal vershalmazonként (manual, mért 2026-09-30, eszkozok/f19_ellenorzes.py): 1Móz 49/1532, 2Móz 52/1211, Péld 89/915.']
         else:
             fej += ['# ÁLLAPOT: importált, javaslat. Mérés (manual, mért 2026-09-30, eszkozok/f19_ellenorzes.py; nem a generátor számolja): a meglévő KJV_Strongs_{Genesis,Exodus,Proverbs}.tsv-vel vershalmazonként 93,1% / 91,8% / 94,9% egyezik; a token-szintű egyezés a luvlylavnderrel 99,5%. A „Angol szó” néha frázis (pl. „man’s hand”); a Morfológiai kód üres.']
-        ir_teljes(ki, adat, konyvek, fej)
+        if VER == 'KJV':  # az ASV-tabla NEM kerul a repoba (forrashibas, DT19 (b) dontes); csak a merese/besorolasa marad
+            ir_teljes(ki, adat, konyvek, fej)
         stat[VER] = dict(zip_sha=sha(zp), sor_db=sor_db, vers_db=vers_kan, vers0=vers0, vers_cimkes=vers_cimkes, hidak=hidak,
                          anom=len(anom), koord=len(koord_kul), egyezik=egyezik, osszes=osszes, regi_egy=regi_egy, regi_ossz=regi_ossz,
                          luv_vers=sum(len(luv[s]) for s, _ in konyvek))
@@ -345,7 +346,7 @@ def main():
         fh.write('# futtatasi parancs: python eszkozok/f19_ebible_import.py --munka <mappa>  (kjv.zip, asv.zip, luv/ klon)\n')
         fh.write('# proveniencia: scope=66 kanonikus konyv, angol versszamozas (F19) | forras=eBible eng-kjv_usfm.zip, eng-asv_usfm.zip + luvlylavnder commit %s + Macula Hebrew (MT-szamozas, a versszamozasi-eltolas szabalyhoz) | ts=%s\n' % (luv_commit, ts))
         fh.write('# hatokor-kulonbseg az F06 merehez (naplok/F06_kjv_asv.tsv): az F06 a KJV-zipben 81 fajlt (apokrifokkal, 36822 vers), az ASV-zipben 68 fajlt merte (31102 vers); a Strong-cimkek szama (KJV 349308, ASV 705378) es a cimkes versek szama (31099, 30978) azonos, mert az apokrifok cimke nelkuliek; az F19 mindket forrasbol csak a 66 kanonikus konyvet importalja (31102 vers)\n')
-        fh.write('# ASV: a hianyok besorolasa mellekes, mert az eBible-ASV cimkezese egeszeben hibas (l. konkordancia/ASV_Strongs_teljes.tsv fejlece, DT19 (b)); versszamozasi_eltolas = az MT-fejezetszam-eltéressel erintett fejezetek verse (Macula/WLC szerint), a szomszed_versszamozasi_eltolas_gyanu sorok az eltolt versek cimkes szomszedai (gyanus Strong-cimkek); az NT-ben a szabaly: a vers nincs meg a Karoli-szovegben (pl. 2Kor 13:14); a megmarado 5 adathiany_ebible sor: KJV 3 (Mk 9:43, Lk 6:41, Lk 17:36 -- a Karoli-szovegben mind megvan), ASV 2 (2Sam 5:16, Rom 1:31)\n')
+        fh.write('# ASV: a hianyok besorolasa mellekes, mert az eBible-ASV cimkezese egeszeben hibas (az ASV_Strongs_teljes.tsv nem kerult a repoba: forrashibas, l. DONTESEK DT19 (b) es naplok/ELLENOR_F19.md); versszamozasi_eltolas = az MT-fejezetszam-eltéressel erintett fejezetek verse (Macula/WLC szerint), a szomszed_versszamozasi_eltolas_gyanu sorok az eltolt versek cimkes szomszedai (gyanus Strong-cimkek); az NT-ben a szabaly: a vers nincs meg a Karoli-szovegben (pl. 2Kor 13:14); a megmarado 5 adathiany_ebible sor: KJV 3 (Mk 9:43, Lk 6:41, Lk 17:36 -- a Karoli-szovegben mind megvan), ASV 2 (2Sam 5:16, Rom 1:31)\n')
         for VER in ('KJV', 'ASV'):
             s = stat[VER]
             fh.write('# %s: zip sha256=%s; teljes tabla sorai=%d; kanonikus versek (v>0)=%d, ebbol cimkes=%d, cimke nelkuli=%d; 0. versu helyek (zsoltarfeliratok; az ASV-ben ebbol csak a Hab 3:0 cimkes, a tobbi cimke nelkuli; ezek nincsenek a kanonikus versek kozott)=%d; luvlylavnder versei=%d; koordinata-eltéres=%d; vershidak=%d; parse-anomalia=%d\n'
