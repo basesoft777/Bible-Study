@@ -3,7 +3,7 @@
 # licenc: Public Domain (eBible copr.htm); l. naplok/F19_hianyok.tsv fejléce; kulcs-Strongok darabszáma: H430=0 H776=0 H1=0 H3068=51517 G746=0 G2316=2361
 # ÁLLAPOT: javaslat — FORRÁSHIBÁS, tartalmi keresésre NEM használható. Az eBible ASV USFM \w|strong= címkéi szisztematikusan hibásak
 # (a nyers USFM-ben H430/H776/H1/G746 = 0 előfordulás, 1Móz 1:1 „God”→H8064, függvényszavak a szomszéd címkéjét viselik); a parszoló hűen adja vissza a forrást (l. eszkozok/f19_ellenorzes.py, DONTESEK DT19 (b)).
-# Helyes ASV-Strong: a konkordancia/ASV_Strongs_{Genesis,Exodus,Proverbs}.tsv (studybible.info) vagy a luvlylavnder ASV-Strongs. Egyezés a meglévő táblákkal vershalmazonként: 1Móz 49/1532, 2Móz 52/1211, Péld 89/915.
+# Helyes ASV-Strong: a konkordancia/ASV_Strongs_{Genesis,Exodus,Proverbs}.tsv (studybible.info) vagy a luvlylavnder ASV-Strongs. Egyezés a meglévő táblákkal vershalmazonként (manual, mért 2026-09-30, eszkozok/f19_ellenorzes.py): 1Móz 49/1532, 2Móz 52/1211, Péld 89/915.
 Igehely	Szósorszám	Strong-szám	Angol szó	Morfológiai kód
 Gen.1.1	1	H8064	In	
 Gen.1.1	2	H1254	the	

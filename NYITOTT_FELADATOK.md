@@ -342,7 +342,7 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   Az FJ3 nem azt állapította meg, hogy nincs forrás, hanem hogy a cloud proxy blokkolta a
   studybible.info-t és az eBible.org-ot. Helyi gépről ismétlendő (a Károli-rokonsági híd miatt
   a teljes KJV elsődleges, a BSB kiegészítő — munkaterv M4).
-  **RÉSZBEN TELJESÜLT — NYITVA (F19, 2026.09.30; F19.3 javítva):** a teljes KJV importálva és használható
+  **RÉSZBEN TELJESÜLT — NYITVA (F19, 2026.09.30; F19.3 javítva):** a teljes KJV importálva (állapot: `importált, javaslat`)
   (`konkordancia/KJV_Strongs_teljes.tsv`, 349 308 sor, 31 099 címkés vers; vershalmazonként 91,8–94,9% egyezés a meglévő KJV-táblákkal, token-szinten 99,5% a luvlylavnderrel; Public Domain).
   Az eBible-ASV **forráshibás** (H430/H776/H1/G746 = 0 előfordulás, H3068 51 517; `ASV_Strongs_teljes.tsv`, `javaslat`, tartalmi keresésre nem használható), ezért a teljes Strong-címkés
   ASV továbbra sincs meg; a hiányzó forrás: luvlylavnder ASV-Strongs (31 086 vers) vagy studybible.info — külön feladat. A címke nélküli versek besorolása: `naplok/F19_hianyok.tsv`; nyitott kérdések: DONTESEK DT19.

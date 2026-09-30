@@ -165,11 +165,26 @@ def olvas_mt(konyvek):
     return mt
 
 
-def eltolt_fejezet(step, fej, versek, mt):
-    """Igaz, ha az OT-konyv fejezetenek MT-versszama (Macula/WLC) nem egyezik az angolet, vagy az MT-ben nincs ilyen fejezet.
-    versek: az angol {(fej, vers): rec}. NT-konyvre (a Maculaban nincs) hamis."""
+def olvas_karoli(konyvek):
+    """Karoli_1908.tsv: {(step, fejezet, vers)} -- az NT versszamozasi-eltolas szabalyahoz (a Maculaban nincs NT)."""
+    mag = {}
+    for l in open(os.path.join(REPO, 'konkordancia', 'Konyv_normalizalo_tabla.tsv'), encoding='utf-8').read().split('\n')[1:]:
+        if l.strip():
+            c = l.split('\t')
+            mag[c[1]] = c[0]
+    out = set()
+    for l in open(os.path.join(REPO, 'konkordancia', 'Karoli_1908.tsv'), encoding='utf-8').read().split('\n')[1:]:
+        m = re.match(r'^(\S+) ([0-9]+):([0-9]+)\t', l)
+        if m and m.group(1) in mag:
+            out.add((mag[m.group(1)], int(m.group(2)), int(m.group(3))))
+    return out
+
+
+def eltolt_fejezet(step, fej, vers, versek, mt, kar):
+    """OT: igaz, ha a fejezet MT-versszama (Macula/WLC) nem egyezik az angolet, vagy az MT-ben nincs ilyen fejezet.
+    NT (a Maculaban nincs): igaz, ha a Karoli-szovegben nincs ilyen vers (a nem-angol/gorog szamozas mas)."""
     if not any(k[0] == step for k in mt):
-        return False
+        return (step, fej, vers) not in kar
     en = set(v for (c, v) in versek if c == fej and v > 0)
     m = mt.get((step, fej))
     if m is None:
@@ -192,6 +207,7 @@ def main():
     stat = {}
     ts = datetime.date.today().isoformat()
     mt = olvas_mt(konyvek)
+    kar = olvas_karoli(konyvek)
     luv_commit = os.popen('git -C "%s" rev-parse HEAD' % os.path.join(M, 'luv')).read().strip()
     for ver, VER, luvdir, luvfile in (('kjv', 'KJV', 'KJV-Strongs', 'kjv_strongs.json'), ('asv', 'ASV', 'ASV-Strongs', 'asvs.json')):
         zp = os.path.join(M, ver + '.zip')
@@ -261,9 +277,9 @@ def main():
                     osz = 'szoveg_van_cimke_nincs_luv_vers_nincs'
                     ind = 'az eBible-ben van szoveg, cimke nincs; a luvlylavnder-ben a vers nincs (versszamozasi eltérés vagy a masik forras hiánya)'
                     allapot = 'javaslat'
-                elif hl[0] and eltolt_fejezet(s, f, adat[s], mt):
+                elif hl[0] and eltolt_fejezet(s, f, v, adat[s], mt, kar):
                     osz = 'versszamozasi_eltolas'
-                    ind = ('a vers a KJV/MT versszamozasi-eltéréssel érintett fejezetben van (a Macula/WLC-fejezet versszama != az angol; vagy az MT-ben nincs ilyen fejezet); '
+                    ind = ('a vers versszamozasi-eltéréssel érintett (OT: a Macula/WLC-fejezet versszama != az angol vagy az MT-ben nincs ilyen fejezet; NT: a vers a Károli-szovegben nincs meg); '
                            'az eBible-forras cimkezese itt a nem-angol (MT) szamozashoz igazodhat, a luvlylavnder ugyanazt az angol verset %d cimkevel tartalmazza; '
                            'nem adathiany, szabalyalapu; a szomszed versek Strong-cimkei gyanusak' % len(hl[0]))
                     allapot = 'szabaly'
@@ -312,9 +328,9 @@ def main():
         if VER == 'ASV':
             fej += ['# ÁLLAPOT: javaslat — FORRÁSHIBÁS, tartalmi keresésre NEM használható. Az eBible ASV USFM \\w|strong= címkéi szisztematikusan hibásak',
                     '# (a nyers USFM-ben H430/H776/H1/G746 = 0 előfordulás, 1Móz 1:1 „God”→H8064, függvényszavak a szomszéd címkéjét viselik); a parszoló hűen adja vissza a forrást (l. eszkozok/f19_ellenorzes.py, DONTESEK DT19 (b)).',
-                    '# Helyes ASV-Strong: a konkordancia/ASV_Strongs_{Genesis,Exodus,Proverbs}.tsv (studybible.info) vagy a luvlylavnder ASV-Strongs. Egyezés a meglévő táblákkal vershalmazonként: 1Móz 49/1532, 2Móz 52/1211, Péld 89/915.']
+                    '# Helyes ASV-Strong: a konkordancia/ASV_Strongs_{Genesis,Exodus,Proverbs}.tsv (studybible.info) vagy a luvlylavnder ASV-Strongs. Egyezés a meglévő táblákkal vershalmazonként (manual, mért 2026-09-30, eszkozok/f19_ellenorzes.py): 1Móz 49/1532, 2Móz 52/1211, Péld 89/915.']
         else:
-            fej += ['# ÁLLAPOT: importált, a meglévő KJV_Strongs_{Genesis,Exodus,Proverbs}.tsv-vel vershalmazonként 93,1% / 91,8% / 94,9% egyezik; a token-szintű egyezés a luvlylavnderrel 99,5%. A „Angol szó” néha frázis (pl. „man’s hand”); a Morfológiai kód üres.']
+            fej += ['# ÁLLAPOT: importált, javaslat. Mérés (manual, mért 2026-09-30, eszkozok/f19_ellenorzes.py; nem a generátor számolja): a meglévő KJV_Strongs_{Genesis,Exodus,Proverbs}.tsv-vel vershalmazonként 93,1% / 91,8% / 94,9% egyezik; a token-szintű egyezés a luvlylavnderrel 99,5%. A „Angol szó” néha frázis (pl. „man’s hand”); a Morfológiai kód üres.']
         ir_teljes(ki, adat, konyvek, fej)
         stat[VER] = dict(zip_sha=sha(zp), sor_db=sor_db, vers_db=vers_kan, vers0=vers0, vers_cimkes=vers_cimkes, hidak=hidak,
                          anom=len(anom), koord=len(koord_kul), egyezik=egyezik, osszes=osszes, regi_egy=regi_egy, regi_ossz=regi_ossz,
@@ -323,15 +339,16 @@ def main():
             print('ANOMALIA', VER, x)
     # F19_hianyok.tsv
     with open(os.path.join(REPO, 'naplok', 'F19_hianyok.tsv'), 'w', encoding='utf-8', newline='\n') as fh:
+        fh.write('# GENERÁLT: eszkozok/f19_ebible_import.py — kézzel nem szerkesztendő.\n')
         fh.write('# F19 hianyok: a Strong-cimke nelkuli (eBible) versek besorolasa. forras: https://ebible.org/Scriptures/eng-kjv_usfm.zip es eng-asv_usfm.zip (letoltve %s); keresztellenorzes: https://github.com/luvlylavnder/bible-app-data commit %s\n' % (ts, luv_commit))
         fh.write('# licenc: eBible KJV/ASV = Public Domain (copr.htm; a KJV-nel a brit korona-szabadalom csak az Egyesult Kiralysagbeli nyomtatasra vonatkozik); luvlylavnder = CC0 1.0 (gyoker LICENSE + README). Nincs licencutkozes; a scrollmapper kimarad (F19 4. lepes)\n')
         fh.write('# futtatasi parancs: python eszkozok/f19_ebible_import.py --munka <mappa>  (kjv.zip, asv.zip, luv/ klon)\n')
         fh.write('# proveniencia: scope=66 kanonikus konyv, angol versszamozas (F19) | forras=eBible eng-kjv_usfm.zip, eng-asv_usfm.zip + luvlylavnder commit %s + Macula Hebrew (MT-szamozas, a versszamozasi-eltolas szabalyhoz) | ts=%s\n' % (luv_commit, ts))
         fh.write('# hatokor-kulonbseg az F06 merehez (naplok/F06_kjv_asv.tsv): az F06 a KJV-zipben 81 fajlt (apokrifokkal, 36822 vers), az ASV-zipben 68 fajlt merte (31102 vers); a Strong-cimkek szama (KJV 349308, ASV 705378) es a cimkes versek szama (31099, 30978) azonos, mert az apokrifok cimke nelkuliek; az F19 mindket forrasbol csak a 66 kanonikus konyvet importalja (31102 vers)\n')
-        fh.write('# ASV: a hianyok besorolasa mellekes, mert az eBible-ASV cimkezese egeszeben hibas (l. konkordancia/ASV_Strongs_teljes.tsv fejlece, DT19 (b)); versszamozasi_eltolas = az MT-fejezetszam-eltéressel erintett fejezetek verse (Macula/WLC szerint), a szomszed_versszamozasi_eltolas_gyanu sorok az eltolt versek cimkes szomszedai (gyanus Strong-cimkek); a 6 megmarado adathiany_ebible sor NT-ben vagy egyezo versszamu fejezetben van (KJV 3, ASV 3: 2Sam 5:16, Rom 1:31, 2Kor 13:14)\n')
+        fh.write('# ASV: a hianyok besorolasa mellekes, mert az eBible-ASV cimkezese egeszeben hibas (l. konkordancia/ASV_Strongs_teljes.tsv fejlece, DT19 (b)); versszamozasi_eltolas = az MT-fejezetszam-eltéressel erintett fejezetek verse (Macula/WLC szerint), a szomszed_versszamozasi_eltolas_gyanu sorok az eltolt versek cimkes szomszedai (gyanus Strong-cimkek); az NT-ben a szabaly: a vers nincs meg a Karoli-szovegben (pl. 2Kor 13:14); a megmarado 5 adathiany_ebible sor: KJV 3 (Mk 9:43, Lk 6:41, Lk 17:36 -- a Karoli-szovegben mind megvan), ASV 2 (2Sam 5:16, Rom 1:31)\n')
         for VER in ('KJV', 'ASV'):
             s = stat[VER]
-            fh.write('# %s: zip sha256=%s; teljes tabla sorai=%d; kanonikus versek (v>0)=%d, ebbol cimkes=%d, cimke nelkuli=%d; zsoltarfelirat-versek (v=0)=%d; luvlylavnder versei=%d; koordinata-eltéres=%d; vershidak=%d; parse-anomalia=%d\n'
+            fh.write('# %s: zip sha256=%s; teljes tabla sorai=%d; kanonikus versek (v>0)=%d, ebbol cimkes=%d, cimke nelkuli=%d; 0. versu helyek (zsoltarfeliratok; az ASV-ben ebbol csak a Hab 3:0 cimkes, a tobbi cimke nelkuli; ezek nincsenek a kanonikus versek kozott)=%d; luvlylavnder versei=%d; koordinata-eltéres=%d; vershidak=%d; parse-anomalia=%d\n'
                      % (VER, s['zip_sha'], s['sor_db'], s['vers_db'], s['vers_cimkes'], s['vers_db'] - s['vers_cimkes'], s['vers0'], s['luv_vers'], s['koord'], s['hidak'], s['anom']))
             fh.write('# %s Strong-halmaz egyezes verseken: eBible=luvlylavnder %d/%d; eBible=meglevo studybible-tabla (Gen/Exo/Pro) %d/%d\n' % (VER, s['egyezik'], s['osszes'], s['regi_egy'], s['regi_ossz']))
         fh.write('\t'.join(['verzio', 'igehely', 'ebible_szo_db', 'ebible_szoveg_karakter', 'luv_van_vers', 'luv_strong_db', 'osztaly', 'indok', 'allapot']) + '\n')
