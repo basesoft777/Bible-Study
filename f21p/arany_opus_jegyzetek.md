@@ -81,6 +81,11 @@ két link `forditatlan`/`betoldas`-ra cserélése. Javaslat: (a), a jelentésben
 
 ## 4. A `[nem TR]` jelölés hibája (P0-hatás, nem az arany hibája)
 
+> **Lezárva (F21.6, a felhasználó döntése alapján):** a `tokenek.py` a „TR»N” / „TR«N”
+> tagot TR-nek számítja; a „más helyen” tokenek TR-helyes aranya átvezetve (a 7. pont
+> mutatja, régi → új); a három „eltérő alak” token az `f21p/meres_kizaras.tsv` szerint
+> kimarad a pontossági mérésből. Az alábbi szöveg az F21.4-es állapotot írja le.
+
 A `tokenek.betolt_eredeti` a `[nem TR]` jelzőt így számolja: `'TR' not in r[7].split('+')`.
 Ez két esetben téves:
 
@@ -161,3 +166,27 @@ Strongot adna.)
 | Jak 1:18 | *ő akarata* (2–3) → βουληθεὶς | *ő* `betoldas` |
 | 1Pét 5:12 | ὑμῖν (3) `forditatlan`; *hogy* → εἶναι | *hogy* `betoldas` |
 | Mk 2:23 | αὐτὸν (3) `forditatlan` | *megy* → 3 |
+
+## 7. F21.6 — a „TR-ben más helyen” tokenek átvezetése (régi → új)
+
+A felhasználó döntése: a `tokenek.py` javítása („TR»N” / „TR«N” TR-es), a TR-helyes arany
+átvétele a „más helyen” tokenekre, az „eltérő alak” tokenek kizárása a mérésből
+(`f21p/meres_kizaras.tsv`). Csak az alábbi négy vers sora változott az
+`f21p/arany_opus.jsonl`-ben; a másik 56 bájtra azonos. A Jak 3:4 és a Jak 3:8 „eltérő alak”
+tokenje (#22, ill. #8) változatlanul `forditatlan`, a hozzá tartozó magyar szó (*akarja*,
+ill. *fékezhetetlen*) változatlanul `betoldas`, ezért ezekben a versekben a 4. pont
+alternatívájának csak a „más helyen” része került át. Az 1Pét 5:12 nem változott (csak
+„eltérő alak” tokenje van).
+
+| Vers | Érintett eredeti token | Régi | Új |
+|---|---|---|---|
+| Mk 2:10 | #12 ἁμαρτίας | 13 *bűnöket* `betoldas`; 12 `forditatlan` | 13 *bűnöket* → [12] |
+| Mk 2:23 | #7 παραπορεύεσθαι | 8 *megy*, 10 *által* `betoldas`; 7 `forditatlan` | 8 *megy* → [7], 10 *által* → [7] |
+| Mk 2:23 | #15 ἤρξαντο | 18 *kezdék* `betoldas`; 15 `forditatlan` | 18 *kezdék* → [15] |
+| Jak 3:4 | #9 ἀνέμων | 10 *szelektől* → [8]; 9 `forditatlan` | 10 *szelektől* → [8, 9] |
+| Jak 3:8 | #5 δαμάσαι | 9 *szelidítheti* → [6]; 10 *meg* `betoldas`; 5 `forditatlan` | 9 *szelidítheti* → [5, 6]; 10 *meg* → [5] |
+
+A mérésből kizárt tokenek (`f21p/meres_kizaras.tsv`): Jak 3:4 #22, Jak 3:8 #8, 1Pét 5:12
+#23. A 60 versű aranyban más „eltérő alak” token nincs. A 200 verses minta további 12
+„eltérő alak” tokenje (Mk 13:21, Mk 14:44, Luk 1:75, Luk 9:27, Ján 10:12, Zsid 8:5, Zsid 9:6)
+az aranyon kívül esik; a kizárásba nem vettem fel őket.
