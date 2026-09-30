@@ -287,6 +287,30 @@ def c_ingadozas(adat, sorok):
             sorok.add('c_ingadozas', 'F3V2 vs F3V2B', r, 'link_egyezes [%s]' % halmaz, mm, uu, 'Σ|∩|/Σ|∪|')
 
 
+def hibatipusok_teljes(ad, f):
+    """Mint a meres.hibatipusok, de a döntőbírói futásnál (F4V2) az első próbálkozás nyers
+    válaszát a TELJES kapun ellenőrzi: az ötpontos kapu + a 6. pont (az A–B rögzítés,
+    futtat.biro_kenyszer, az A és B végleges válaszaiból számolt rögzítéssel), ahogy a
+    futtató a futáskor tette (futtat.valasz_ellenoriz_futashoz). F21.31."""
+    import futtat
+    if futtat.FUTASOK.get(f, {}).get('tipus') != 'biro':
+        return meres.hibatipusok(ad, f)
+    elso, vegleg = {}, {}
+    elso_h = set()
+    for sor in ad.kotegsorok[f]:
+        r1 = futtat.valasz_ellenoriz_futashoz(f, sor['nyers'][0], sor['igehelyek'], F21P)
+        for ig in sor['igehelyek']:
+            if not r1[ig]['ok']:
+                elso_h.add(ig)
+                for t in meres._tipusok(r1[ig]['hibak']):
+                    elso[t] = elso.get(t, 0) + 1
+            v = sor['versek'][ig]
+            if v['allapot'] != 'ok':
+                for t in meres._tipusok(v['hibak']):
+                    vegleg[t] = vegleg.get(t, 0) + 1
+    return elso, vegleg, elso_h
+
+
 def kapuhiba_v1_v2(sorok):
     """v1 (F1, F2, F3, F5, F6) és v2 (F1V2, F2V2, F3V2, F3V2B, F5V2, F6V2) kapuhibája és hibatípusai."""
     adat1 = meres.Adat()
@@ -297,7 +321,13 @@ def kapuhiba_v1_v2(sorok):
         for verzio, ad, f in (('v1', adat1, f1), ('v2', adat2, f2)):
             if f is None:
                 continue
-            elso, vegleg, elso_h = meres.hibatipusok(ad, f)
+            elso, vegleg, elso_h = hibatipusok_teljes(ad, f)
+            p2 = {ig for ig, r in ad.futas[f].items() if r['probalkozas'] == 2}
+            naplo_p1 = sum(int(r['kapuhiba_db']) for r in ad.naplo if r['futas'] == f and r['probalkozas'] == '1')
+            egyezik = elso_h == p2 and len(elso_h) == naplo_p1
+            sorok.add('kapuhiba_kereszt', '%s %s (%s)' % (nev, verzio, f), meres.OSSZES, 'keresztellenorzes_elso_probalkozas',
+                      len(elso_h), naplo_p1, 'újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (%d) = napló '
+                      'kapuhiba_db(probalkozas=1) összeg (%d): %s' % (len(p2), naplo_p1, 'EGYEZIK' if egyezik else 'ELTÉR'))
             for ret in RETEGEK:
                 vs = [ig for ig in ad.versek if ig in ad.futas[f] and _ret(ad, ig, ret)]
                 if not vs:
@@ -308,6 +338,16 @@ def kapuhiba_v1_v2(sorok):
             for p in sorted(set(elso) | set(vegleg)):
                 sorok.add('kapuhiba_tipus', '%s %s (%s)' % (nev, verzio, f), meres.OSSZES, 'kapupont_%s_elso' % p, elso.get(p, 0), n)
                 sorok.add('kapuhiba_tipus', '%s %s (%s)' % (nev, verzio, f), meres.OSSZES, 'kapupont_%s_vegleg' % p, vegleg.get(p, 0), n)
+
+
+def mentett_ellenorzes(sorok):
+    """A mentett (allapot=ok) válaszok újraellenőrzése a teljes kapun (futtat.mentett_valaszok_ellenoriz):
+    ötpontos kapu, az F4V2-nél a 6. pont (rögzítés) is."""
+    import futtat
+    for f in P3B:
+        h = futtat.mentett_valaszok_ellenoriz(f, F21P)
+        sorok.add('mentett_ellenorzes', f, meres.OSSZES, 'hibak', len(h), '',
+                  'futtat.mentett_valaszok_ellenoriz: %s' % ('0 hiba' if not h else '; '.join(h[:5])))
 
 
 def meglevo_merok(adat, sorok):
@@ -503,6 +543,17 @@ def kiir(sorok, ts):
         if s[0] == 'kapuhiba_tipus' and s[3] not in merok_t:
             merok_t.append(s[3])
     ki += tabla('kapuhiba_tipus', merok_t, oss_k)
+    ki += ['A döntőbírói futás (F4V2) első próbás kapuhibája a teljes kapun számolva: ötpontos kapu + 6. pont (az A–B '
+           'rögzítés, futtat.biro_kenyszer), ahogy a futtató a futáskor ellenőrizte.', '',
+           '| futás | keresztellenőrzés (első próbás hibás versek) |', '|---|---|']
+    for s_ in sorok.lista:
+        if s_[0] == 'kapuhiba_kereszt':
+            ki.append('| %s | %s |' % (s_[1], s_[6]))
+    ki += ['', '| futás | mentett válaszok újraellenőrzése (hibák) |', '|---|---|']
+    for s_ in sorok.lista:
+        if s_[0] == 'mentett_ellenorzes':
+            ki.append('| %s | %s — %s |' % (s_[1], s_[4], s_[6]))
+    ki.append('')
     with open(JELENTES_UT, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(ki) + '\n')
 
@@ -517,6 +568,7 @@ def fut():
     minosit(sorok)
     c_ingadozas(adat, sorok)
     kapuhiba_v1_v2(sorok)
+    mentett_ellenorzes(sorok)
     meglevo_merok(adat, sorok)
     kiir(sorok, tokenek.generalas_ts())
     print('kész: %d sor -> %s, %s' % (len(sorok.lista), EREDMENY_UT, JELENTES_UT))

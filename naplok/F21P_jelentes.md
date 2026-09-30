@@ -1,6 +1,6 @@
 # F21P_jelentes.md — Károli–Strong mérőpilot: záró jelentés (P6)
 
-<!-- GENERÁLT: eszkozok/karoli_strong/jelentes_f21p.py | scope=F21 mérőpilot, P6 záró jelentés (A, B, C, A+B, A+B+C; R1–R4) | forras=f21p/meres_eredmeny.tsv, f21p/meres_v2_eredmeny.tsv, f21p/koltseg_vetites.tsv, f21p/ingadozas.tsv, f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv, f21p/futasnaplo.tsv, f21p/minta.tsv, f21p/sorrend_eltero_versek.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/meres_p3b_eredmeny.tsv, f21p/koltseg_vetites_p3b.tsv, f21p/c_diff_f3v2b_besorolas.tsv | ts=2026-09-30T14:34:12+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
+<!-- GENERÁLT: eszkozok/karoli_strong/jelentes_f21p.py | scope=F21 mérőpilot, P6 záró jelentés (A, B, C, A+B, A+B+C; R1–R4) | forras=f21p/meres_eredmeny.tsv, f21p/meres_v2_eredmeny.tsv, f21p/koltseg_vetites.tsv, f21p/ingadozas.tsv, f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv, f21p/futasnaplo.tsv, f21p/minta.tsv, f21p/sorrend_eltero_versek.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/meres_p3b_eredmeny.tsv, f21p/koltseg_vetites_p3b.tsv, f21p/c_diff_f3v2b_besorolas.tsv | ts=2026-09-30T14:48:22+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
 
 A számok kizárólag szkriptkimenetből jönnek (a forrás soronként jelölve). A **korrigált** értékek kizárólag „**Opus-besorolás, nem mérés**” jelöléssel szerepelnek; a küszöb szempontjából csak a mért érték számít (PD10). A jelentés nem ajánl döntést a #22-ről.
 
@@ -148,9 +148,12 @@ Azonos linkhalmazú vers: 40.0% (24/60) az aranyon, 44.0% (88/200) a mintán; li
 | A KJV nélkül v2 (F5V2) | 72.0% (72/100) | 48.0% (48/100) | 50.0% (50/100) | 0.0% (0/100) |
 | B KJV nélkül v1 (F6) | 23.0% (23/100) | 13.0% (13/100) | nincs ilyen hiba | nincs ilyen hiba |
 | B KJV nélkül v2 (F6V2) | 57.0% (57/100) | 24.0% (24/100) | 50.0% (50/100) | 0.0% (0/100) |
-| C döntőbíró v2 (F4V2) | 14.0% (27/193) | 0.0% (0/193) | 10.4% (20/193) | 0.0% (0/193) |
+| C döntőbíró v2 (F4V2) | 21.2% (41/193) | 0.0% (0/193) | 10.4% (20/193) | 0.0% (0/193) |
 
-A döntőbíró (F4V2) versei: az F1V2/F2V2 eltérő vagy kapuhibás versei, 193; végleges kapuhiba 0.0% (0/193).
+A döntőbíró (F4V2) versei: az F1V2/F2V2 eltérő vagy kapuhibás versei, 193. Az első próbás kapuhibát a teljes kapun számoljuk (ötpontos kapu + 6. pont: az A–B rögzítés, futtat.biro_kenyszer, ahogy a futtató a futáskor ellenőrizte): első próbára 21.2% (41/193), végleg 0.0% (0/193). Kapupontonként első próbára: 1. pont 2.1% (4/193), 1-json 10.4% (20/193), 3. pont 1.0% (2/193), 4. pont 0.5% (1/193), 6. pont (rögzítés-sértés) 7.3% (14/193).
+**Megfigyelés (nem feltétel):** legalább 14 versben a C első válasza megsértette az A–B rögzítést; a 6. pontos kényszer és az egy újrakérés mindet javította (végleg 0/193).
+Keresztellenőrzés (az újraszámolt első próbás hibás versek = a jsonl probalkozas=2 versei = a futásnapló kapuhiba_db összege az első próbálkozásokon): A v1 (F1) 152 = 152: EGYEZIK; A v2 (F1V2) 160 = 160: EGYEZIK; B v1 (F2) 106 = 106: EGYEZIK; B v2 (F2V2) 141 = 141: EGYEZIK; C v1 (F3) 30 = 30: EGYEZIK; C v2 (F3V2) 19 = 19: EGYEZIK; C (2. futás) v2 (F3V2B) 28 = 28: EGYEZIK; A KJV nélkül v1 (F5) 75 = 75: EGYEZIK; A KJV nélkül v2 (F5V2) 72 = 72: EGYEZIK; B KJV nélkül v1 (F6) 23 = 23: EGYEZIK; B KJV nélkül v2 (F6V2) 57 = 57: EGYEZIK; C döntőbíró v2 (F4V2) 41 = 41: EGYEZIK.
+A mentett (kapun átment) válaszok újraellenőrzése a teljes kapun (futtat.mentett_valaszok_ellenoriz): F1V2: 0 hiba; F2V2: 0 hiba; F3V2: 0 hiba; F3V2B: 0 hiba; F4V2: 0 hiba; F5V2: 0 hiba; F6V2: 0 hiba.
 
 ### P5 minden összeállításra (teljes Biblia, 90%-os intervallum)
 
@@ -398,6 +401,8 @@ Az újrakérések cost-ja nem lineáris a tokenben (a megismételt előtag gyors
 3. **„azt … hogy” / „azért … hogy”:** az arany az előbbit betoldásnak veszi, az utóbbit (Mt 21:4) köti.
 4. **2Móz 26:13 *is*:** a K9 szerint a *ve-* az *is*-hez köthető volna; az arany v2 forditatlan-nak veszi (az F3V2-nél (b)).
 5. **D:** a birtokláncban (*szolgálójának szemét*) nem egyértelmű, melyik szó viseli a ragot.
+
+További nyitott tétel a P3b-ből (DT21 k): **k)** a G4 szerinti `alacsony` arány két olvasata az A+B+C-nél (szó szerinti: a kapuhibás maradt versben a C minden linkje alacsony; „alt”: a túlélő modellel egyező C-link `közepes`) és az A+B döntőbíró nélküli meghatározása (A∩B = `magas`, a többi link `alacsony`); a jelentés értelmezése, nem a briefé; az (5) feltétel egyik olvasattal sem teljesül.
 
 ### Az F22-re átvihető eszközök
 

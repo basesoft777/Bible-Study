@@ -1,6 +1,6 @@
 # F21P_meres_p3b.md — P4 a P3b-adaton (prompt_v2), minden összeállítás, arany v2
 
-<!-- GENERÁLT: eszkozok/karoli_strong/meres_p3b.py | scope=P3b (prompt_v2): A=F1V2, B=F2V2, C=F3V2 és F3V2B, A+B, A+B+C (F4V2), KJV nélkül F5V2/F6V2; arany v2 (60 vers), 200 verses minta | forras=f21p/valaszok/{F1V2,F2V2,F3V2,F3V2B,F4V2,F5V2,F6V2}.jsonl, f21p/valaszok/{F1,F2,F3,F5,F6}.jsonl (v1-kapuhiba), f21p/arany_opus_v2.jsonl (sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3b.tsv | ts=2026-09-30T14:28:47+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
+<!-- GENERÁLT: eszkozok/karoli_strong/meres_p3b.py | scope=P3b (prompt_v2): A=F1V2, B=F2V2, C=F3V2 és F3V2B, A+B, A+B+C (F4V2), KJV nélkül F5V2/F6V2; arany v2 (60 vers), 200 verses minta | forras=f21p/valaszok/{F1V2,F2V2,F3V2,F3V2B,F4V2,F5V2,F6V2}.jsonl, f21p/valaszok/{F1,F2,F3,F5,F6}.jsonl (v1-kapuhiba), f21p/arany_opus_v2.jsonl (sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3b.tsv | ts=2026-09-30T14:47:58+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
 
 Kizárólag szkriptkimenet. A G4 szabály szó szerint (F22 brief 22.6): magas = A∩B (a KJV-ellentmondás feltétele gépileg n.é.); kozepes = a C döntőbíró linkje A vagy B egyikében; alacsony = hármas eltérés, vagy a vers kapuhibás maradt (A vagy B végleg kapuhibás: a C válasza, minden link alacsony). Az A+B (döntőbíró nélkül): A∩B magas, minden más link alacsony — a jelentés értelmezése. Egymodelles összeállítás (A, B, C) nem minősíthető (PD6). Cellaforma: érték (számláló/nevező).
 
@@ -276,7 +276,7 @@ A két futás konfigurációja azonos (prompt_v2, C, 200 vers), ezért a külön
 | B KJV nélkül v1 (F6) | vegleg | 13.0% (13/100) | — | — | — | 13.0% (13/100) |
 | B KJV nélkül v2 (F6V2) | elso_probara | 57.0% (57/100) | — | — | — | 57.0% (57/100) |
 | B KJV nélkül v2 (F6V2) | vegleg | 24.0% (24/100) | — | — | — | 24.0% (24/100) |
-| C döntőbíró v2 (F4V2) | elso_probara | 16.8% (16/95) | 40.0% (10/25) | 0.0% (0/25) | 2.1% (1/48) | 14.0% (27/193) |
+| C döntőbíró v2 (F4V2) | elso_probara | 25.3% (24/95) | 48.0% (12/25) | 4.0% (1/25) | 8.3% (4/48) | 21.2% (41/193) |
 | C döntőbíró v2 (F4V2) | vegleg | 0.0% (0/95) | 0.0% (0/25) | 0.0% (0/25) | 0.0% (0/48) | 0.0% (0/193) |
 
 | összeállítás | mérőszám | R1 | R2 | R3 | R4 | Összes |
@@ -383,4 +383,33 @@ A két futás konfigurációja azonos (prompt_v2, C, 200 vers), ezért a külön
 | C döntőbíró v2 (F4V2) | kapupont_4_vegleg | — | — | — | — | 0.0% (0/193) |
 | C döntőbíró v2 (F4V2) | kapupont_1_elso | — | — | — | — | 2.1% (4/193) |
 | C döntőbíró v2 (F4V2) | kapupont_1_vegleg | — | — | — | — | 0.0% (0/193) |
+| C döntőbíró v2 (F4V2) | kapupont_6_elso | — | — | — | — | 7.3% (14/193) |
+| C döntőbíró v2 (F4V2) | kapupont_6_vegleg | — | — | — | — | 0.0% (0/193) |
+
+A döntőbírói futás (F4V2) első próbás kapuhibája a teljes kapun számolva: ötpontos kapu + 6. pont (az A–B rögzítés, futtat.biro_kenyszer), ahogy a futtató a futáskor ellenőrizte.
+
+| futás | keresztellenőrzés (első próbás hibás versek) |
+|---|---|
+| A v1 (F1) | újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (152) = napló kapuhiba_db(probalkozas=1) összeg (152): EGYEZIK |
+| A v2 (F1V2) | újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (160) = napló kapuhiba_db(probalkozas=1) összeg (160): EGYEZIK |
+| B v1 (F2) | újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (106) = napló kapuhiba_db(probalkozas=1) összeg (106): EGYEZIK |
+| B v2 (F2V2) | újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (141) = napló kapuhiba_db(probalkozas=1) összeg (141): EGYEZIK |
+| C v1 (F3) | újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (30) = napló kapuhiba_db(probalkozas=1) összeg (30): EGYEZIK |
+| C v2 (F3V2) | újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (19) = napló kapuhiba_db(probalkozas=1) összeg (19): EGYEZIK |
+| C (2. futás) v2 (F3V2B) | újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (28) = napló kapuhiba_db(probalkozas=1) összeg (28): EGYEZIK |
+| A KJV nélkül v1 (F5) | újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (75) = napló kapuhiba_db(probalkozas=1) összeg (75): EGYEZIK |
+| A KJV nélkül v2 (F5V2) | újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (72) = napló kapuhiba_db(probalkozas=1) összeg (72): EGYEZIK |
+| B KJV nélkül v1 (F6) | újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (23) = napló kapuhiba_db(probalkozas=1) összeg (23): EGYEZIK |
+| B KJV nélkül v2 (F6V2) | újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (57) = napló kapuhiba_db(probalkozas=1) összeg (57): EGYEZIK |
+| C döntőbíró v2 (F4V2) | újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (41) = napló kapuhiba_db(probalkozas=1) összeg (41): EGYEZIK |
+
+| futás | mentett válaszok újraellenőrzése (hibák) |
+|---|---|
+| F1V2 | 0 — futtat.mentett_valaszok_ellenoriz: 0 hiba |
+| F2V2 | 0 — futtat.mentett_valaszok_ellenoriz: 0 hiba |
+| F3V2 | 0 — futtat.mentett_valaszok_ellenoriz: 0 hiba |
+| F3V2B | 0 — futtat.mentett_valaszok_ellenoriz: 0 hiba |
+| F4V2 | 0 — futtat.mentett_valaszok_ellenoriz: 0 hiba |
+| F5V2 | 0 — futtat.mentett_valaszok_ellenoriz: 0 hiba |
+| F6V2 | 0 — futtat.mentett_valaszok_ellenoriz: 0 hiba |
 

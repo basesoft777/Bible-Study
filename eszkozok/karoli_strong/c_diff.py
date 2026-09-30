@@ -191,7 +191,8 @@ def lista(adat):
 
 def _tsv(ut, oszlopok):
     with open(ut, encoding='utf-8') as f:
-        sorok = [s.rstrip('\n').rstrip('\r') for s in f if s.strip()]
+        # a '#'-kezdetű sor proveniencia-megjegyzés (F21.31: a kézi besorolások MANUAL-fejléce), átugorjuk
+        sorok = [s.rstrip('\n').rstrip('\r') for s in f if s.strip() and not s.startswith('#')]
     fej = sorok[0].split('\t')
     if fej != oszlopok:
         raise SystemExit('%s: hibás fejléc: %s' % (ut, fej))

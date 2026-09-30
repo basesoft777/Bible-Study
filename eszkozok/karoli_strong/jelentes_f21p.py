@@ -192,8 +192,24 @@ def p3b_szakasz():
         except KeyError:
             je = jv = 'nincs ilyen hiba'
         ki.append('| %s | %s | %s | %s | %s |' % (o, g('kapuhiba', o, 'Összes', 'elso_probara'), g('kapuhiba', o, 'Összes', 'vegleg'), je, jv))
-    ki += ['', 'A döntőbíró (F4V2) versei: az F1V2/F2V2 eltérő vagy kapuhibás versei, %s; végleges kapuhiba %s.' % (
-        mp.get('kapuhiba', 'C döntőbíró v2 (F4V2)', 'Összes', 'vegleg')['nevezo'], g('kapuhiba', 'C döntőbíró v2 (F4V2)', 'Összes', 'vegleg')), '']
+    f4 = 'C döntőbíró v2 (F4V2)'
+    ki += ['', 'A döntőbíró (F4V2) versei: az F1V2/F2V2 eltérő vagy kapuhibás versei, %s. Az első próbás kapuhibát a teljes '
+           'kapun számoljuk (ötpontos kapu + 6. pont: az A–B rögzítés, futtat.biro_kenyszer, ahogy a futtató a futáskor '
+           'ellenőrizte): első próbára %s, végleg %s. Kapupontonként első próbára: 1. pont %s, 1-json %s, 3. pont %s, '
+           '4. pont %s, 6. pont (rögzítés-sértés) %s.' % (
+               mp.get('kapuhiba', f4, 'Összes', 'vegleg')['nevezo'], g('kapuhiba', f4, 'Összes', 'elso_probara'),
+               g('kapuhiba', f4, 'Összes', 'vegleg'), g('kapuhiba_tipus', f4, 'Összes', 'kapupont_1_elso'),
+               g('kapuhiba_tipus', f4, 'Összes', 'kapupont_1-json_elso'), g('kapuhiba_tipus', f4, 'Összes', 'kapupont_3_elso'),
+               g('kapuhiba_tipus', f4, 'Összes', 'kapupont_4_elso'), g('kapuhiba_tipus', f4, 'Összes', 'kapupont_6_elso')),
+           '**Megfigyelés (nem feltétel):** legalább %s versben a C első válasza megsértette az A–B rögzítést; a 6. pontos '
+           'kényszer és az egy újrakérés mindet javította (végleg %s).' % (
+               mp.get('kapuhiba_tipus', f4, 'Összes', 'kapupont_6_elso')['szamlalo'],
+               '%s/%s' % (mp.get('kapuhiba', f4, 'Összes', 'vegleg')['szamlalo'], mp.get('kapuhiba', f4, 'Összes', 'vegleg')['nevezo'])),
+           'Keresztellenőrzés (az újraszámolt első próbás hibás versek = a jsonl probalkozas=2 versei = a futásnapló '
+           'kapuhiba_db összege az első próbálkozásokon): %s.' % '; '.join(
+               '%s %s = %s: %s' % (r['osszeallitas'], r['szamlalo'], r['nevezo'], r['megjegyzes'].split(': ')[-1]) for r in mp.sorok if r['szakasz'] == 'kapuhiba_kereszt'),
+           'A mentett (kapun átment) válaszok újraellenőrzése a teljes kapun (futtat.mentett_valaszok_ellenoriz): %s.' % '; '.join(
+               '%s: %s hiba' % (r['osszeallitas'], r['szamlalo']) for r in mp.sorok if r['szakasz'] == 'mentett_ellenorzes'), '']
     # P5
     ki += ['### P5 minden összeállításra (teljes Biblia, 90%-os intervallum)', '',
            '**Eltérés a brieftől:** a bootstrap egysége a köteg, nem a vers (DT21 f, nyitott, nincs jóváhagyva). Az ár a '
@@ -471,6 +487,10 @@ def main():
            '3. **„azt … hogy” / „azért … hogy”:** az arany az előbbit betoldásnak veszi, az utóbbit (Mt 21:4) köti.',
            '4. **2Móz 26:13 *is*:** a K9 szerint a *ve-* az *is*-hez köthető volna; az arany v2 forditatlan-nak veszi (az F3V2-nél (b)).',
            '5. **D:** a birtokláncban (*szolgálójának szemét*) nem egyértelmű, melyik szó viseli a ragot.', '',
+           'További nyitott tétel a P3b-ből (DT21 k): **k)** a G4 szerinti `alacsony` arány két olvasata az A+B+C-nél '
+           '(szó szerinti: a kapuhibás maradt versben a C minden linkje alacsony; „alt”: a túlélő modellel egyező C-link '
+           '`közepes`) és az A+B döntőbíró nélküli meghatározása (A∩B = `magas`, a többi link `alacsony`); a jelentés '
+           'értelmezése, nem a briefé; az (5) feltétel egyik olvasattal sem teljesül.', '',
            '### Az F22-re átvihető eszközök', '',
            '- prompt: f21p/prompt_v1.md, f21p/prompt_v2.md (a tíz konvenció szabályként);',
            '- kapu: eszkozok/karoli_strong/kapu.py (ötpontos, újrakéréssel);',

@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_strong/meres_p3b.py | scope=P3b (prompt_v2): A=F1V2, B=F2V2, C=F3V2 és F3V2B, A+B, A+B+C (F4V2), KJV nélkül F5V2/F6V2; arany v2 (60 vers), 200 verses minta | forras=f21p/valaszok/{F1V2,F2V2,F3V2,F3V2B,F4V2,F5V2,F6V2}.jsonl, f21p/valaszok/{F1,F2,F3,F5,F6}.jsonl (v1-kapuhiba), f21p/arany_opus_v2.jsonl (sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3b.tsv | ts=2026-09-30T14:28:47+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos
+# GENERÁLT: eszkozok/karoli_strong/meres_p3b.py | scope=P3b (prompt_v2): A=F1V2, B=F2V2, C=F3V2 és F3V2B, A+B, A+B+C (F4V2), KJV nélkül F5V2/F6V2; arany v2 (60 vers), 200 verses minta | forras=f21p/valaszok/{F1V2,F2V2,F3V2,F3V2B,F4V2,F5V2,F6V2}.jsonl, f21p/valaszok/{F1,F2,F3,F5,F6}.jsonl (v1-kapuhiba), f21p/arany_opus_v2.jsonl (sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3b.tsv | ts=2026-09-30T14:47:58+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos
 szakasz	osszeallitas	reteg	mero	szamlalo	nevezo	megjegyzes
 feltetelek	A (F1V2)	R1	arany_versek_kapun_atment	12	20	
 feltetelek	A (F1V2)	R1	pontossag_osszes (tajekoztato, PD6)	118	138	
@@ -474,6 +474,7 @@ c_ingadozas	F3V2 vs F3V2B	Összes	azonos_linkhalmazu_versek [arany]	24	60
 c_ingadozas	F3V2 vs F3V2B	Összes	link_egyezes [arany]	1051	1141	Σ|∩|/Σ|∪|
 c_ingadozas	F3V2 vs F3V2B	Összes	azonos_linkhalmazu_versek [minta]	88	200	
 c_ingadozas	F3V2 vs F3V2B	Összes	link_egyezes [minta]	3462	3723	Σ|∩|/Σ|∪|
+kapuhiba_kereszt	A v1 (F1)	Összes	keresztellenorzes_elso_probalkozas	152	152	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (152) = napló kapuhiba_db(probalkozas=1) összeg (152): EGYEZIK
 kapuhiba	A v1 (F1)	R1	elso_probara	71	100	
 kapuhiba	A v1 (F1)	R1	vegleg	42	100	
 kapuhiba	A v1 (F1)	R2	elso_probara	19	25	
@@ -492,6 +493,7 @@ kapuhiba_tipus	A v1 (F1)	Összes	kapupont_3_elso	47	200
 kapuhiba_tipus	A v1 (F1)	Összes	kapupont_3_vegleg	65	200	
 kapuhiba_tipus	A v1 (F1)	Összes	kapupont_4_elso	15	200	
 kapuhiba_tipus	A v1 (F1)	Összes	kapupont_4_vegleg	37	200	
+kapuhiba_kereszt	A v2 (F1V2)	Összes	keresztellenorzes_elso_probalkozas	160	160	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (160) = napló kapuhiba_db(probalkozas=1) összeg (160): EGYEZIK
 kapuhiba	A v2 (F1V2)	R1	elso_probara	80	100	
 kapuhiba	A v2 (F1V2)	R1	vegleg	45	100	
 kapuhiba	A v2 (F1V2)	R2	elso_probara	22	25	
@@ -512,6 +514,7 @@ kapuhiba_tipus	A v2 (F1V2)	Összes	kapupont_3_elso	59	200
 kapuhiba_tipus	A v2 (F1V2)	Összes	kapupont_3_vegleg	57	200	
 kapuhiba_tipus	A v2 (F1V2)	Összes	kapupont_4_elso	32	200	
 kapuhiba_tipus	A v2 (F1V2)	Összes	kapupont_4_vegleg	42	200	
+kapuhiba_kereszt	B v1 (F2)	Összes	keresztellenorzes_elso_probalkozas	106	106	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (106) = napló kapuhiba_db(probalkozas=1) összeg (106): EGYEZIK
 kapuhiba	B v1 (F2)	R1	elso_probara	80	100	
 kapuhiba	B v1 (F2)	R1	vegleg	68	100	
 kapuhiba	B v1 (F2)	R2	elso_probara	2	25	
@@ -532,6 +535,7 @@ kapuhiba_tipus	B v1 (F2)	Összes	kapupont_3_elso	23	200
 kapuhiba_tipus	B v1 (F2)	Összes	kapupont_3_vegleg	20	200	
 kapuhiba_tipus	B v1 (F2)	Összes	kapupont_4_elso	18	200	
 kapuhiba_tipus	B v1 (F2)	Összes	kapupont_4_vegleg	12	200	
+kapuhiba_kereszt	B v2 (F2V2)	Összes	keresztellenorzes_elso_probalkozas	141	141	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (141) = napló kapuhiba_db(probalkozas=1) összeg (141): EGYEZIK
 kapuhiba	B v2 (F2V2)	R1	elso_probara	61	100	
 kapuhiba	B v2 (F2V2)	R1	vegleg	23	100	
 kapuhiba	B v2 (F2V2)	R2	elso_probara	15	25	
@@ -552,6 +556,7 @@ kapuhiba_tipus	B v2 (F2V2)	Összes	kapupont_3_elso	11	200
 kapuhiba_tipus	B v2 (F2V2)	Összes	kapupont_3_vegleg	13	200	
 kapuhiba_tipus	B v2 (F2V2)	Összes	kapupont_4_elso	9	200	
 kapuhiba_tipus	B v2 (F2V2)	Összes	kapupont_4_vegleg	13	200	
+kapuhiba_kereszt	C v1 (F3)	Összes	keresztellenorzes_elso_probalkozas	30	30	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (30) = napló kapuhiba_db(probalkozas=1) összeg (30): EGYEZIK
 kapuhiba	C v1 (F3)	R1	elso_probara	17	100	
 kapuhiba	C v1 (F3)	R1	vegleg	1	100	
 kapuhiba	C v1 (F3)	R2	elso_probara	0	25	
@@ -572,6 +577,7 @@ kapuhiba_tipus	C v1 (F3)	Összes	kapupont_3_elso	1	200
 kapuhiba_tipus	C v1 (F3)	Összes	kapupont_3_vegleg	0	200	
 kapuhiba_tipus	C v1 (F3)	Összes	kapupont_4_elso	5	200	
 kapuhiba_tipus	C v1 (F3)	Összes	kapupont_4_vegleg	1	200	
+kapuhiba_kereszt	C v2 (F3V2)	Összes	keresztellenorzes_elso_probalkozas	19	19	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (19) = napló kapuhiba_db(probalkozas=1) összeg (19): EGYEZIK
 kapuhiba	C v2 (F3V2)	R1	elso_probara	12	100	
 kapuhiba	C v2 (F3V2)	R1	vegleg	0	100	
 kapuhiba	C v2 (F3V2)	R2	elso_probara	0	25	
@@ -590,6 +596,7 @@ kapuhiba_tipus	C v2 (F3V2)	Összes	kapupont_3_elso	1	200
 kapuhiba_tipus	C v2 (F3V2)	Összes	kapupont_3_vegleg	0	200	
 kapuhiba_tipus	C v2 (F3V2)	Összes	kapupont_4_elso	4	200	
 kapuhiba_tipus	C v2 (F3V2)	Összes	kapupont_4_vegleg	0	200	
+kapuhiba_kereszt	C (2. futás) v2 (F3V2B)	Összes	keresztellenorzes_elso_probalkozas	28	28	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (28) = napló kapuhiba_db(probalkozas=1) összeg (28): EGYEZIK
 kapuhiba	C (2. futás) v2 (F3V2B)	R1	elso_probara	21	100	
 kapuhiba	C (2. futás) v2 (F3V2B)	R1	vegleg	0	100	
 kapuhiba	C (2. futás) v2 (F3V2B)	R2	elso_probara	5	25	
@@ -608,6 +615,7 @@ kapuhiba_tipus	C (2. futás) v2 (F3V2B)	Összes	kapupont_3_elso	1	200
 kapuhiba_tipus	C (2. futás) v2 (F3V2B)	Összes	kapupont_3_vegleg	0	200	
 kapuhiba_tipus	C (2. futás) v2 (F3V2B)	Összes	kapupont_4_elso	1	200	
 kapuhiba_tipus	C (2. futás) v2 (F3V2B)	Összes	kapupont_4_vegleg	0	200	
+kapuhiba_kereszt	A KJV nélkül v1 (F5)	Összes	keresztellenorzes_elso_probalkozas	75	75	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (75) = napló kapuhiba_db(probalkozas=1) összeg (75): EGYEZIK
 kapuhiba	A KJV nélkül v1 (F5)	R1	elso_probara	75	100	
 kapuhiba	A KJV nélkül v1 (F5)	R1	vegleg	31	100	
 kapuhiba	A KJV nélkül v1 (F5)	Összes	elso_probara	75	100	
@@ -622,6 +630,7 @@ kapuhiba_tipus	A KJV nélkül v1 (F5)	Összes	kapupont_3_elso	38	100
 kapuhiba_tipus	A KJV nélkül v1 (F5)	Összes	kapupont_3_vegleg	19	100	
 kapuhiba_tipus	A KJV nélkül v1 (F5)	Összes	kapupont_4_elso	20	100	
 kapuhiba_tipus	A KJV nélkül v1 (F5)	Összes	kapupont_4_vegleg	16	100	
+kapuhiba_kereszt	A KJV nélkül v2 (F5V2)	Összes	keresztellenorzes_elso_probalkozas	72	72	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (72) = napló kapuhiba_db(probalkozas=1) összeg (72): EGYEZIK
 kapuhiba	A KJV nélkül v2 (F5V2)	R1	elso_probara	72	100	
 kapuhiba	A KJV nélkül v2 (F5V2)	R1	vegleg	48	100	
 kapuhiba	A KJV nélkül v2 (F5V2)	Összes	elso_probara	72	100	
@@ -634,6 +643,7 @@ kapuhiba_tipus	A KJV nélkül v2 (F5V2)	Összes	kapupont_3_elso	18	100
 kapuhiba_tipus	A KJV nélkül v2 (F5V2)	Összes	kapupont_3_vegleg	42	100	
 kapuhiba_tipus	A KJV nélkül v2 (F5V2)	Összes	kapupont_4_elso	8	100	
 kapuhiba_tipus	A KJV nélkül v2 (F5V2)	Összes	kapupont_4_vegleg	20	100	
+kapuhiba_kereszt	B KJV nélkül v1 (F6)	Összes	keresztellenorzes_elso_probalkozas	23	23	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (23) = napló kapuhiba_db(probalkozas=1) összeg (23): EGYEZIK
 kapuhiba	B KJV nélkül v1 (F6)	R1	elso_probara	23	100	
 kapuhiba	B KJV nélkül v1 (F6)	R1	vegleg	13	100	
 kapuhiba	B KJV nélkül v1 (F6)	Összes	elso_probara	23	100	
@@ -644,6 +654,7 @@ kapuhiba_tipus	B KJV nélkül v1 (F6)	Összes	kapupont_3_elso	7	100
 kapuhiba_tipus	B KJV nélkül v1 (F6)	Összes	kapupont_3_vegleg	3	100	
 kapuhiba_tipus	B KJV nélkül v1 (F6)	Összes	kapupont_4_elso	11	100	
 kapuhiba_tipus	B KJV nélkül v1 (F6)	Összes	kapupont_4_vegleg	2	100	
+kapuhiba_kereszt	B KJV nélkül v2 (F6V2)	Összes	keresztellenorzes_elso_probalkozas	57	57	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (57) = napló kapuhiba_db(probalkozas=1) összeg (57): EGYEZIK
 kapuhiba	B KJV nélkül v2 (F6V2)	R1	elso_probara	57	100	
 kapuhiba	B KJV nélkül v2 (F6V2)	R1	vegleg	24	100	
 kapuhiba	B KJV nélkül v2 (F6V2)	Összes	elso_probara	57	100	
@@ -654,15 +665,16 @@ kapuhiba_tipus	B KJV nélkül v2 (F6V2)	Összes	kapupont_1-json_elso	50	100
 kapuhiba_tipus	B KJV nélkül v2 (F6V2)	Összes	kapupont_1-json_vegleg	0	100	
 kapuhiba_tipus	B KJV nélkül v2 (F6V2)	Összes	kapupont_4_elso	7	100	
 kapuhiba_tipus	B KJV nélkül v2 (F6V2)	Összes	kapupont_4_vegleg	4	100	
-kapuhiba	C döntőbíró v2 (F4V2)	R1	elso_probara	16	95	
+kapuhiba_kereszt	C döntőbíró v2 (F4V2)	Összes	keresztellenorzes_elso_probalkozas	41	41	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (41) = napló kapuhiba_db(probalkozas=1) összeg (41): EGYEZIK
+kapuhiba	C döntőbíró v2 (F4V2)	R1	elso_probara	24	95	
 kapuhiba	C döntőbíró v2 (F4V2)	R1	vegleg	0	95	
-kapuhiba	C döntőbíró v2 (F4V2)	R2	elso_probara	10	25	
+kapuhiba	C döntőbíró v2 (F4V2)	R2	elso_probara	12	25	
 kapuhiba	C döntőbíró v2 (F4V2)	R2	vegleg	0	25	
-kapuhiba	C döntőbíró v2 (F4V2)	R3	elso_probara	0	25	
+kapuhiba	C döntőbíró v2 (F4V2)	R3	elso_probara	1	25	
 kapuhiba	C döntőbíró v2 (F4V2)	R3	vegleg	0	25	
-kapuhiba	C döntőbíró v2 (F4V2)	R4	elso_probara	1	48	
+kapuhiba	C döntőbíró v2 (F4V2)	R4	elso_probara	4	48	
 kapuhiba	C döntőbíró v2 (F4V2)	R4	vegleg	0	48	
-kapuhiba	C döntőbíró v2 (F4V2)	Összes	elso_probara	27	193	
+kapuhiba	C döntőbíró v2 (F4V2)	Összes	elso_probara	41	193	
 kapuhiba	C döntőbíró v2 (F4V2)	Összes	vegleg	0	193	
 kapuhiba_tipus	C döntőbíró v2 (F4V2)	Összes	kapupont_1_elso	4	193	
 kapuhiba_tipus	C döntőbíró v2 (F4V2)	Összes	kapupont_1_vegleg	0	193	
@@ -672,6 +684,15 @@ kapuhiba_tipus	C döntőbíró v2 (F4V2)	Összes	kapupont_3_elso	2	193
 kapuhiba_tipus	C döntőbíró v2 (F4V2)	Összes	kapupont_3_vegleg	0	193	
 kapuhiba_tipus	C döntőbíró v2 (F4V2)	Összes	kapupont_4_elso	1	193	
 kapuhiba_tipus	C döntőbíró v2 (F4V2)	Összes	kapupont_4_vegleg	0	193	
+kapuhiba_tipus	C döntőbíró v2 (F4V2)	Összes	kapupont_6_elso	14	193	
+kapuhiba_tipus	C döntőbíró v2 (F4V2)	Összes	kapupont_6_vegleg	0	193	
+mentett_ellenorzes	F1V2	Összes	hibak	0		futtat.mentett_valaszok_ellenoriz: 0 hiba
+mentett_ellenorzes	F2V2	Összes	hibak	0		futtat.mentett_valaszok_ellenoriz: 0 hiba
+mentett_ellenorzes	F3V2	Összes	hibak	0		futtat.mentett_valaszok_ellenoriz: 0 hiba
+mentett_ellenorzes	F3V2B	Összes	hibak	0		futtat.mentett_valaszok_ellenoriz: 0 hiba
+mentett_ellenorzes	F4V2	Összes	hibak	0		futtat.mentett_valaszok_ellenoriz: 0 hiba
+mentett_ellenorzes	F5V2	Összes	hibak	0		futtat.mentett_valaszok_ellenoriz: 0 hiba
+mentett_ellenorzes	F6V2	Összes	hibak	0		futtat.mentett_valaszok_ellenoriz: 0 hiba
 p4_pontossag_lefedettseg	A	R1	arany_versek_kapun_atment	12	20	nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
 p4_pontossag_lefedettseg	A	R1	pontossag	118	138	a modell linkjeiből az aranyban
 p4_pontossag_lefedettseg	A	R1	lefedettseg	118	160	az arany linkjeiből a modellben

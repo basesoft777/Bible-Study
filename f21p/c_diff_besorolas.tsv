@@ -1,3 +1,4 @@
+# MANUAL: scope=f21p F3 (C, prompt v1) eltérései az Opus-arany v1-hez: (a)/(b)/(c)-besorolás (134 eltérés) | forras=f21p/valaszok/F3.jsonl, f21p/arany_opus.jsonl, f21p/arany_opus_jegyzetek.md, eszkozok/karoli_strong/c_diff.py --lista | ts=2026-09-30T13:49:57+02:00 (a kézi besorolás utolsó tartalmi commitjának ideje) | manual (Opus-besorolás, nem mérés) | az olvasók a #-kezdetű sort átugorják
 igehely	reteg	irany	k_poz	e_poz	osztaly	konvencio_vagy_jegyzetpont	indok
 2Móz 20:23	R1	hianyzo	4	5	a	K4 birtokos és névmási ragok (2. szakasz 4.)	a -י rag az arany szerint az én-hez és a mellém-hez is megy; a C csak az én-hez köti
 2Móz 20:25	R1	tobblet	9	10	a	K3 tárgyjelölő névmási raggal (2. szakasz 3.)	a C az 'et-et is a névmáshoz köti; az arany az 'et-et forditatlan-nak veszi

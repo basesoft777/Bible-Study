@@ -1,3 +1,4 @@
+# MANUAL: scope=f21p F3V2B (c)-besorolás (az F3V2-höz képest új 46 eltérés) | forras=f21p/c_diff_f3v2b_*.tsv, f21p/valaszok/F3V2B.jsonl, f21p/valaszok/F3V2.jsonl, f21p/arany_opus_v2.jsonl, eszkozok/karoli_strong/c_diff_f3v2b.py --lista | ts=2026-09-30T16:31:12+02:00 (a kézi besorolás utolsó tartalmi commitjának ideje) | manual (Opus-besorolás, nem mérés) | az olvasók a #-kezdetű sort átugorják
 igehely	reteg	irany	k_poz	e_poz	osztaly	konvencio_vagy_jegyzetpont	indok
 2Móz 20:25	R1	tobblet	13	13	b	6. szakasz táblázat: 2Móz 20:25	a mint -> כִּי: a jegyzet alternatívája (a az a tokenen)
 2Móz 20:25	R1	tobblet	14	13	b	6. szakasz táblázat: 2Móz 20:25	a mint -> כִּי: a jegyzet alternatívája
