@@ -1,0 +1,77 @@
+# forras-URL: https://github.com/BSB-publishing/bsb-data-output + konkordancia/TAHOT_kivonat.tsv (OSZ) + konkordancia/TAGNT_kivonat.tsv (USZ)
+# commit/verzio: BSB commit a4a2c0558c26e0281ba4e3f0e5479398459e2183
+# letoltes datuma: 2026-09-30
+# futtatasi parancs: python eszkozok/fj2/bsb_import.py --munka <mappa>
+# rogzitett kuszob=95% definicio=tahot_resze_bsb nevezo=tahot_lefedett_versek (kuszob.txt, F06-ban meres elott rogzitve); konyvenkenti alkalmazas: FELADATOK D15
+# licenc: base/display/ CC0 1.0 (README.md, ATTRIBUTION.md); a CC-BY index-cc-by/ nem importalt
+# nincs_forras_vers = a BSB-versek szama, amelyekhez a TAHOT/TAGNT-nak nincs sora (nem elteres, nem szamit a nevezobe); forras_vers_nincs_bsb = a forras verseinek szama, amelyek igehelye a BSB-ben nincs meg (verszamozas-elteres jele)
+# egyezes_na28_szurve: csak USZ; a TAGNT-nak csak a NA28-cimkes soraival szamolt egyezes, ugyanazzal a nevezovel (tajekoztato, nem a kuszob alapja)
+# egyezes_normalizalt: csak USZ; mindket oldal Strong-szamai a TBESG.txt Form/Spelling/Meaning of soraival a lemma szamara kepezve (168 szam); tajekoztato, nem a kuszob alapja
+# konyvek: 30 ELERI, 36 NEM_ERI_EL; importalt sorok: 224807
+konyv	bsb_kod	nyelv	versek_bsb	forras_lefedett_versek	egyezo	nincs_forras_vers	forras_vers_nincs_bsb	egyezes_szazalek	egyezes_na28_szurve	egyezes_normalizalt	kuszob	eredmeny	importalt_sorok
+1Móz	GEN	heber	1533	1533	1515	0	0	98.83			95	ELERI	20176
+2Móz	EXO	heber	1213	1213	1206	0	0	99.42			95	ELERI	16439
+3Móz	LEV	heber	859	859	856	0	0	99.65			95	ELERI	11724
+4Móz	NUM	heber	1288	1286	1232	2	2	95.80			95	ELERI	16151
+5Móz	DEU	heber	959	959	945	0	0	98.54			95	ELERI	13855
+Józs	JOS	heber	658	658	647	0	0	98.33			95	ELERI	9857
+Bír	JDG	heber	618	618	610	0	0	98.71			95	ELERI	9649
+Ruth	RUT	heber	85	85	83	0	0	97.65			95	ELERI	1240
+1Sám	1SA	heber	810	809	765	1	2	94.56			95	NEM_ERI_EL	0
+2Sám	2SA	heber	695	695	660	0	0	94.96			95	NEM_ERI_EL	0
+1Kir	1KI	heber	816	816	796	0	1	97.55			95	ELERI	12949
+2Kir	2KI	heber	719	719	703	0	0	97.77			95	ELERI	12136
+1Krón	1CH	heber	942	942	900	0	0	95.54			95	ELERI	10645
+2Krón	2CH	heber	822	822	801	0	0	97.45			95	ELERI	13137
+Ezsd	EZR	heber	280	280	265	0	0	94.64			95	NEM_ERI_EL	0
+Neh	NEH	heber	406	406	397	0	0	97.78			95	ELERI	5213
+Eszt	EST	heber	167	167	165	0	0	98.80			95	ELERI	2998
+Jób	JOB	heber	1070	1028	986	42	8	95.91			95	ELERI	8177
+Zsolt	PSA	heber	2345	2345	1400	0	182	59.70			95	NEM_ERI_EL	0
+Péld	PRO	heber	915	915	887	0	0	96.94			95	ELERI	6833
+Préd	ECC	heber	222	220	200	2	2	90.91			95	NEM_ERI_EL	0
+Én	SNG	heber	117	117	116	0	0	99.15			95	ELERI	1211
+Ézs	ISA	heber	1292	1290	1222	2	2	94.73			95	NEM_ERI_EL	0
+Jer	JER	heber	1364	1364	1323	0	0	96.99			95	ELERI	21452
+Sir	LAM	heber	154	154	150	0	0	97.40			95	ELERI	1502
+Ez	EZK	heber	1273	1273	1253	0	0	98.43			95	ELERI	18353
+Dán	DAN	heber	357	357	320	0	0	89.64			95	NEM_ERI_EL	0
+Hós	HOS	heber	197	196	176	1	1	89.80			95	NEM_ERI_EL	0
+Jóel	JOL	heber	73	73	72	0	0	98.63			95	ELERI	946
+Ámós	AMO	heber	146	146	144	0	0	98.63			95	ELERI	2017
+Abd	OBA	heber	21	21	21	0	0	100.00			95	ELERI	285
+Jón	JON	heber	48	47	37	1	1	78.72			95	NEM_ERI_EL	0
+Mik	MIC	heber	105	105	105	0	0	100.00			95	ELERI	1372
+Náh	NAM	heber	47	47	46	0	0	97.87			95	ELERI	556
+Hab	HAB	heber	56	56	55	0	0	98.21			95	ELERI	654
+Sof	ZEP	heber	53	53	52	0	0	98.11			95	ELERI	764
+Hag	HAG	heber	38	38	38	0	0	100.00			95	ELERI	593
+Zak	ZEC	heber	210	210	206	0	1	98.10			95	ELERI	3068
+Mal	MAL	heber	55	55	53	0	0	96.36			95	ELERI	855
+Mt	MAT	gorog	1068	1068	635	0	3	59.46	70.04	79.59	95	NEM_ERI_EL	0
+Mk	MRK	gorog	673	673	307	0	5	45.62	61.22	62.41	95	NEM_ERI_EL	0
+Luk	LUK	gorog	1149	1149	635	0	2	55.27	67.28	76.24	95	NEM_ERI_EL	0
+Ján	JHN	gorog	878	877	429	1	1	48.92	57.58	75.03	95	NEM_ERI_EL	0
+ApCsel	ACT	gorog	1003	1002	553	1	4	55.19	65.57	76.65	95	NEM_ERI_EL	0
+Róm	ROM	gorog	432	429	258	3	1	60.14	66.20	82.52	95	NEM_ERI_EL	0
+1Kor	1CO	gorog	437	437	252	0	0	57.67	67.28	79.63	95	NEM_ERI_EL	0
+2Kor	2CO	gorog	257	255	112	2	0	43.92	46.67	79.22	95	NEM_ERI_EL	0
+Gal	GAL	gorog	149	149	91	0	0	61.07	65.10	77.85	95	NEM_ERI_EL	0
+Ef	EPH	gorog	155	155	98	0	0	63.23	70.32	85.16	95	NEM_ERI_EL	0
+Fil	PHP	gorog	104	102	53	2	0	51.96	57.84	84.31	95	NEM_ERI_EL	0
+Kol	COL	gorog	95	95	60	0	0	63.16	73.68	80.00	95	NEM_ERI_EL	0
+1Thessz	1TH	gorog	89	89	34	0	0	38.20	40.45	77.53	95	NEM_ERI_EL	0
+2Thessz	2TH	gorog	47	47	18	0	0	38.30	44.68	76.60	95	NEM_ERI_EL	0
+1Tim	1TI	gorog	113	113	76	0	0	67.26	76.11	83.19	95	NEM_ERI_EL	0
+2Tim	2TI	gorog	83	83	40	0	0	48.19	54.22	87.95	95	NEM_ERI_EL	0
+Tit	TIT	gorog	46	46	19	0	0	41.30	43.48	80.43	95	NEM_ERI_EL	0
+Filem	PHM	gorog	25	25	8	0	0	32.00	36.00	84.00	95	NEM_ERI_EL	0
+Zsid	HEB	gorog	303	303	192	0	0	63.37	68.32	81.85	95	NEM_ERI_EL	0
+Jak	JAS	gorog	108	108	64	0	0	59.26	68.52	75.00	95	NEM_ERI_EL	0
+1Pét	1PE	gorog	105	105	72	0	0	68.57	84.76	79.05	95	NEM_ERI_EL	0
+2Pét	2PE	gorog	61	61	35	0	0	57.38	65.57	85.25	95	NEM_ERI_EL	0
+1Ján	1JN	gorog	105	105	47	0	0	44.76	54.29	83.81	95	NEM_ERI_EL	0
+2Ján	2JN	gorog	13	13	9	0	0	69.23	76.92	84.62	95	NEM_ERI_EL	0
+3Ján	3JN	gorog	14	14	7	0	0	50.00	57.14	92.86	95	NEM_ERI_EL	0
+Júd	JUD	gorog	25	25	15	0	0	60.00	60.00	76.00	95	NEM_ERI_EL	0
+Jel	REV	gorog	404	404	197	0	0	48.76	66.83	71.04	95	NEM_ERI_EL	0
