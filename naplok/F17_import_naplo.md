@@ -14,7 +14,7 @@ A számokat a `naplok/F17_import_stat.json` adja (a `eszkozok/f17/macula_futtat.
 | Verzió | commit `47db250bd55d0d8577f2a94fba114ef16c35b23c` (azonos az F06 mérésével) | commit `8423afe47b9e8f24b7772e808af45c7159a6fe7e` |
 | Bemenet | `WLC/lowfat/NN-Kod-FFF-lowfat.xml`, 929 fájl (a 930. `macula-hebrew-lowfat.xml` az egész Biblia összevont fájlja; nem olvasva, nehogy kétszer számoljon) | `Nestle1904/tsv/macula-greek-Nestle1904.tsv`, `SBLGNT/tsv/macula-greek-SBLGNT.tsv` |
 | Licenc | CC BY 4.0 © Biblica, Inc (`LICENSE.md` 3. sor) | CC BY 4.0 © Biblica, Inc (`LICENSE.md` 3. sor) |
-| Kimenet | `konkordancia/Macula_heber.tsv`: **475 911 sor** (= a lowfat `<w>` elemek száma; morféma-szint) | `konkordancia/Macula_gorog.tsv`: **275 520 sor** (N1904 137 779 + SBLGNT 137 741; szó-szint) |
+| Kimenet | `konkordancia/Macula_heber_<Konyv>.tsv` (39 fájl, F17.9; korábban egy `Macula_heber.tsv`): **475 911 sor** összesen (= a lowfat `<w>` elemek száma; morféma-szint) | `konkordancia/Macula_gorog.tsv`: **275 520 sor** (N1904 137 779 + SBLGNT 137 741; szó-szint) |
 
 ### Licenc-összevetés (brief 1. lépés) — nincs ütközés, ezért nincs ⛔
 
@@ -31,7 +31,7 @@ A számokat a `naplok/F17_import_stat.json` adja (a `eszkozok/f17/macula_futtat.
 
 ## 2. Mit importáltam (oszlopok)
 
-Héber (`Macula_heber.tsv`): `xml_id`, `ref` (Macula/MT-számozás, `GEN 1:1!1`), `karoli`, `kk_mod`, `allapot`, `szo`, `lemma`,
+Héber (`Macula_heber_<Konyv>.tsv`, 39 fájl): `xml_id`, `ref` (Macula/MT-számozás, `GEN 1:1!1`), `karoli`, `kk_mod`, `allapot`, `szo`, `lemma`,
 `strong`, `strong_x` (a Macula `strongnumberx` nyers értéke), `strong_illesztes`, `morf`, `szofaj`, `gloss`, `gorog_lxx`,
 `gorog_strong`. Görög (`Macula_gorog.tsv`): `kiadas` (N1904 | SBLGNT), `xml_id`, `ref`, `karoli`, `kk_mod`, `allapot`, `szo`,
 `lemma`, `strong`, `strong_x`, `strong_illesztes`, `morf`, `szofaj`, `gloss`, `english`.
@@ -40,8 +40,9 @@ Héber (`Macula_heber.tsv`): `xml_id`, `ref` (Macula/MT-számozás, `GEN 1:1!1`)
 (a `gloss` megvan), `frame`, `participantref`, `subjref`, `after`, nyelvtani jegyek (`gender`, `number`, `person`, `stem`,
 `state`) — a `morf` kód hordozza; görög `mandarin`, `after`, `normalized`, nyelvtani jegyek, `frame`, `subjref`, `referent`, `role`.
 
-**Fájlméret:** `Macula_heber.tsv` ≈ 65 millió bájt (~62 MiB; a repó eddigi legnagyobb tábla 26 MB). A GitHub 50 MB fölött
-figyelmeztet, 100 MB fölött tilt. Javaslat a DT-F17 (e) pontjában.
+**Fájlméret:** az egyetlen `Macula_heber.tsv` ≈ 65 millió bájt (~62 MiB; a repó eddigi legnagyobb tábla 26 MB) volt; a GitHub 50 MB
+fölött figyelmeztet, 100 MB fölött tilt. Az F17.9 (orkesztrátori utasítás) ezért könyvenként 39 fájlba bontotta (l. 9. szakasz;
+legnagyobb fájl: Genezis 4,4 MB). A `Macula_gorog.tsv` 32,6 MB (< 50 MB), ezért egy fájl marad.
 
 ## 3. A Károli-kulcshoz (KK) kötés
 
@@ -204,7 +205,7 @@ A fájl `allapot` oszlopa a gépi keresés kimenete (nem döntés); a `kk_mod` `
 - **`adat/szotar_szerepek.tsv`: nem módosítottam** (az F17.3-ban felvett `heber 11` és `gorog 11` sort F17.4 visszavonta): a SEMA 2.13
   10 szerep × 2 nyelv = 20 sort rögzít (sorrend 1–10); a Macula-szerep felvétele SEMA-bővítést igényel, a döntés a
   felhasználóé (DT-F17 (f)).
-- **`adat/datasetek.tsv`:** felvéve a `Macula_heber` és a `Macula_gorog` (mindkettő `ajanlott`, `elerheto`, négy study-típusra:
+- **`adat/datasetek.tsv`:** felvéve a `Macula_heber` (fájl: `Macula_heber_*.tsv`) és a `Macula_gorog` (mindkettő `ajanlott`, `elerheto`, négy study-típusra:
   +8 sor). A SEMA 2.6 „17 dataset × 4 = 68 sor” száma nem frissült (SEMA-módosítás kívül esik a hatókörön); a #16 ága is bővíti a
   táblát, rebase-nél mindkét oldal sorai maradnak.
 
@@ -214,3 +215,19 @@ A fájl `allapot` oszlopa a gépi keresés kimenete (nem döntés); a `kk_mod` `
 - 85 Károli-vers identitása (`javaslat:terkep_egyik_sem_identitas`) feltevés.
 - A Macula `greek`/`greekstrong` (LXX-megfelelő) szó-szintű, gépi; az FJ1 78,3%-osnak mérte (átvett szám).
 - A TAHOT_kivonat és a Macula közti verslista-eltérések oka (F06 5. pont) továbbra sincs vizsgálva.
+
+## 9. A héber tábla könyvenkénti bontása (F17.9)
+
+- **Miért:** a `Macula_heber.tsv` 65 051 446 bájt volt (a 50 MB-os GitHub-figyelmeztetési küszöb fölött); a görög 32 621 448 bájt, a küszöb alatt, ezért **nem** bontottam.
+- **Névadás:** `konkordancia/Macula_heber_<Konyv>.tsv`, a `LXX_kivonat_<Konyv>.tsv` ASCII magyar könyvnevei szerint (`Genezis`, `Kiralyok_1`,
+  `Enekek_Eneke`, `Zsoltarok` stb.; a `KJV_/ASV_Strongs_*` angol nevet használ, de csak 3 könyve van, a 39 könyvű `LXX_kivonat_*` a
+  közvetlen minta). 39 fájl, a Macula-kánon sorrendjében (`HEBER_KONYV_FAJL`, `eszkozok/f17/macula_import.py`).
+- **Fejléc:** minden fájl megkapja a teljes eredeti fejlécet (GENERÁLT-jelölés, `forras=… | licenc=CC BY 4.0 (Biblica, Inc)`, proveniencia,
+  futtatási parancs, oszlop-megjegyzés) + egy `konyv=<kód> (<fájlnév-tag>) | sorok=<db> | …` sort, majd az oszlopfejlécet.
+- **Eszközök:** `eszkozok/f17/macula_bont.py` (egyszeri bontás a régi fájlból, `--ellenoriz`-zel bájt-összevetés) és a `macula_futtat.py`
+  (a `tsv_ir_konyvenkent`-tel ugyanezt a kiírást adja, ezért újrafuttatás azonos kimenet). A `F17_import_stat.json` `heber.fajlok` kulcsa
+  fájlonként adja a sorszámot.
+- **Ellenőrzés:** a 39 fájl adatsorainak összege **475 911** (a fejlécsorokat és az oszlopfejlécet nem számolva) = a régi fájl adatsorai;
+  a törzs (fejlécek nélkül) sorrendben összefűzve **bájtra azonos** a régi fájl törzsével (65 050 734 bájt).
+- **Olvasók:** a `git grep Macula_heber` szerint nincs kódolvasó (`lekerdez.py`, `gate.py` stb. nem hivatkozza); az `adat/datasetek.tsv` négy héber
+  sora `konkordancia/Macula_heber_*.tsv` glob-ra váltott (mint a `KJV_Strongs_*.tsv`).
