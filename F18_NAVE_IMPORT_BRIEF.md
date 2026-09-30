@@ -13,7 +13,7 @@ ir: [konkordancia/Nave_basokant.tsv, konkordancia/Nave_basokant_README.md, eszko
 fugg: [6]
 ag: claude/nave-import
 pr: 86
-lezarva_osszegzes: "basokant/nave saját parszolóval importálva (85 246 sor, 5 322 téma, javaslat-állapot; DT5: a theonize GPLv3 miatt kimaradt); licenc- és import-napló `naplok/F18_licenc.md`, `naplok/F18_import_naplo.md`, ellenőrzés `naplok/ELLENOR_F18.md`; eredet-ellenőrzés a 4980 témán és a Gemini-lépés nem futott; nyitott tételek DT18"
+lezarva_osszegzes: "adat: javaslat, nyitva N45 + független kiadás-összevetés; basokant/nave saját parszolóval importálva (85 246 sor, 5 322 téma, javaslat-állapot; DT5: a theonize GPLv3 miatt kimaradt); licenc- és import-napló `naplok/F18_licenc.md`, `naplok/F18_import_naplo.md`, ellenőrzés `naplok/ELLENOR_F18.md`; eredet-ellenőrzés a 4980 témán és a Gemini-lépés nem futott; nyitott tételek DT18"
 ---
 # F18 — Nave-import (theonize), teljes eredet-ellenőrzéssel
 
