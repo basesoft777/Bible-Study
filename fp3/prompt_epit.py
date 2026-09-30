@@ -67,7 +67,7 @@ PELDA_CEL = (
     'és Jakab levele nem használja. Máté és Lukács evangéliumában egyszer-egyszer, a Zsidókhoz '
     'írt levélben és a Jelenések könyvében kétszer-kétszer fordul elő, Pál, János, Péter és '
     'Júdás írásaiban viszont gyakori.” (Bretschneider, Lexikon, a címszónál); (Philón, Deus '
-    'immut. 14. §). Jelentése az ἀγαπάω igét követi, eszerint:'
+    'immut. 14. §). Jelentése az ἀγαπάω igéét követi, eszerint:'
 )
 
 
