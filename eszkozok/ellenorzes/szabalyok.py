@@ -223,6 +223,35 @@ SZANDEKOS_JELOLES_MINTA = re.compile(
 )
 
 
+def _cimsor_szoveg_kulcs(cimsor):
+    """A cimsor osszehasonlitasi kulcsa: a szint (##/###) es a szoveg, a
+    szamok (pl. `16.0`, `#16`) nelkul. Igy a pontcimek atszamozasa nem
+    szamit torlesnek, csak a szoveg valtozasa."""
+    m = re.match(r'^(#{2,3})\s+(.*)$', cimsor.strip())
+    if not m:
+        return None
+    szoveg = re.sub(r'#?\d+(?:\.\d+)*', '', m.group(2))
+    return (m.group(1), ' '.join(szoveg.split()))
+
+
+def _tenylegesen_torolt_cimsorok(torolt, hozzaadott):
+    """A torolt cimsorok, amelyeknek nincs (szam nelkuli) megfeleloje a
+    ugyanabban a fajlban hozzaadott cimsorok kozott; a megfeleltetes
+    darabszamra pontos (egy hozzaadott cimsor egy torlest fedez)."""
+    szabad = {}
+    for c in hozzaadott:
+        k = _cimsor_szoveg_kulcs(c)
+        szabad[k] = szabad.get(k, 0) + 1
+    maradt = []
+    for c in torolt:
+        k = _cimsor_szoveg_kulcs(c)
+        if szabad.get(k, 0) > 0:
+            szabad[k] -= 1
+        else:
+            maradt.append(c)
+    return maradt
+
+
 def _study_fajlok_halmaza_ref(ref):
     """A study-fajlok halmaza egy adott git ref allapotabol (`git show
     ref:adat/motivumok.tsv`), NEM a munkakonyvtarbol -- ha a
@@ -296,14 +325,16 @@ def e5_tartalomvesztes_or(base_ref, head_ref, commit_uzenet=''):
     aktualis_fajl = None
     torolt_szam = 0
     torolt_cimsor = []
+    hozzaadott_cimsor = []
 
     def lezar():
         if aktualis_fajl is None:
             return
         if van_szandekos:
             return
-        if torolt_cimsor:
-            for c in torolt_cimsor:
+        torolt = _tenylegesen_torolt_cimsorok(torolt_cimsor, hozzaadott_cimsor)
+        if torolt:
+            for c in torolt:
                 talalatok.append(Talalat(
                     'E5', SZINT['E5'], aktualis_fajl, 0,
                     'torolt cimsor "TÖRLÉS-SZÁNDÉKOS:" jeloles nelkul: %s' % c
@@ -325,6 +356,11 @@ def e5_tartalomvesztes_or(base_ref, head_ref, commit_uzenet=''):
                 aktualis_fajl = None  # F20 B6: a beerkezo/ kimarad
             torolt_szam = 0
             torolt_cimsor = []
+            hozzaadott_cimsor = []
+            continue
+        if sor.startswith('+') and not sor.startswith('++'):
+            if CIMSOR_MINTA.match(sor[1:]):
+                hozzaadott_cimsor.append(sor[1:].strip())
             continue
         if sor.startswith('-') and not sor.startswith('--'):
             torolt_szam += 1
