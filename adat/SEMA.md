@@ -349,12 +349,12 @@ stb.) változatlanul érvényes, csak a tárolás helye más.
 ### 2.6 `datasetek.tsv`
 
 Kulcs: `study_tipus` + `dataset`. A terv 4.3 mátrixa, négy study-típusra kifejtve
-(`bovitett`, `tematikus`, `melyelemzes`, `lexikon_oldal`), 17 dataset × 4 = 68 sor.
+(`bovitett`, `tematikus`, `melyelemzes`, `lexikon_oldal`), 18 dataset × 4 = 72 sor.
 
 | Mező | Értékkészlet |
 |---|---|
 | `study_tipus` | `bovitett` \| `tematikus` \| `melyelemzes` \| `lexikon_oldal` |
-| `dataset` | a dataset rövid neve (17 érték) |
+| `dataset` | a dataset rövid neve (18 érték) |
 | `fajl` | a dataset útvonala; glob is lehet (`konkordancia/LXX_kivonat_*.tsv`), üres, ha `allapot=hianyzik` |
 | `kotelezoseg` | `mindig` \| `felteteles` \| `ajanlott` \| `oroklott` |
 | `feltetel` | mikor válik kötelezővé a `felteteles` sor; `—`, ha nem feltételes |
@@ -647,7 +647,7 @@ helyőrzős lexikonoldal mind a 49 rése `lap` forrású (RENDER_BRIEF.md G12); 
 
 ### 2.13 `szotar_szerepek.tsv` — szótári szerepmátrix (RENDER_BRIEF.md R1.5, G6)
 
-Kulcs: `nyelv` + `sorrend`. 10 szerep × 2 nyelv = 20 sor, statikus tábla (nem
+Kulcs: `nyelv` + `sorrend`. 11 szerep × 2 nyelv = 22 sor, statikus tábla (nem
 motívumonkénti): melyik szótári forrás felel meg egy adott „kérdéstípusnak"
 (pl. „Alapjelentés", „Mélységi szócikk") mindkét nyelven, és a forrás ma
 adatosítva van-e a projektben.
@@ -655,7 +655,7 @@ adatosítva van-e a projektben.
 | Mező | Típus | Kötelező | Leírás |
 |---|---|---|---|
 | `nyelv` | zárt | ✔ | `gorog` \| `heber`. |
-| `sorrend` | egész szám | ✔ | 1–10, a szerep-lista rögzített sorrendje (azonos mindkét nyelven). |
+| `sorrend` | egész szám | ✔ | 1–10 és 12, a szerep-lista rögzített sorrendje (azonos mindkét nyelven); a 11-es érték nincs kiosztva. A 12. a „Tematikus index” (Nave, F18, DT18 (j)); az első 10 az eredeti szerepkészlet. |
 | `szerep` | szabad szöveg | ✔ | A szerep megnevezése (pl. „Alapjelentés", „LXX-híd"). |
 | `forras` | szabad szöveg | ✔ | A szerepet ma (vagy célként) kitöltő forrás megnevezése. |
 | `allapot` | zárt | ✔ | `adatosítva` \| `nincs adatosítva` \| `nincs forrás` (F05_SZOTAR_BRIEF.md D27, S1.6) — a RENDER_BRIEF.md G6 záró bekezdése szerint: adatosítva a TBESG, TBESH, Thayer, BDB, UBS DNTG (a meglévő import), SDBH domének, LSJ és az LXX-híd (mindkét irány); a többi (Girdlestone, UBS DBH glossza+referencia, Mounce-kiegészítő önmagában, SECE, BDB-etimológia, kiejtés) a `F05_SZOTAR_BRIEF.md` tárgya. **`nincs forrás`** (D27): a szerepnek az adott nyelven nincs a D17 forrásszabálynak megfelelő forrása — VÉGLEGES állapot, nem pótlandó hiány (szemben a `nincs adatosítva`-val, amely ígéretet sugallna); pl. a görög 3. szerep, ha a Translation Words elutasításra kerül (S0b.2 küszöbe alatt). |

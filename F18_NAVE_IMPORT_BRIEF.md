@@ -9,7 +9,7 @@ allapot: lezarva
 ad: "Nave-témák és igehely-hivatkozások a basokant/nave nyers szövegéből (5 322 entry, DT5: a theonize nincs importálva); az eredet-ellenőrzés a 4980 témán nem futott"
 kovetkezo: "DT18 tételei a felhasználó döntésére várnak"
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv]
-ir: [konkordancia/Nave_basokant.tsv, konkordancia/Nave_basokant_README.md, eszkozok/nave_import.py, adat/szotar_szerepek.tsv, naplok/F18_licenc.md, naplok/F18_import_naplo.md, NYITOTT_FELADATOK.md, DONTESEK.md]
+ir: [konkordancia/Nave_basokant.tsv, konkordancia/Nave_basokant_README.md, eszkozok/nave_import.py, adat/szotar_szerepek.tsv, naplok/F18_licenc.md, naplok/F18_import_naplo.md, naplok/ELLENOR_F18.md, naplok/F18_zaras.md, adat/SEMA.md, adat/datasetek.tsv, NYITOTT_FELADATOK.md, DONTESEK.md]
 fugg: [6]
 ag: claude/nave-import
 pr: 86
