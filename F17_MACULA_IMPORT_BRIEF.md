@@ -5,13 +5,14 @@ kod: F17
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ad: Macula a Strong-számhoz és a KK-hoz kötve; a #8 fő forrása
 kovetkezo: `/kovetkezo` csomag: #16–#19 és #7
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv]
 ir: [naplok/F17_illesztetlen.tsv, konkordancia/Macula_heber.tsv, konkordancia/Macula_gorog.tsv, NYITOTT_FELADATOK.md, DONTESEK.md, adat/datasetek.tsv, naplok/F17_import_naplo.md, naplok/F17_87_hely.tsv, naplok/F17_import_stat.json, naplok/F17_kezi_fejezetek.tsv, eszkozok/f17/*]
 fugg: [6]
 ag: claude/macula-import
+lezarva_osszegzes: Macula-import (#17): héber 475 911 és görög 275 520 sor a KK-hoz kötve (CC BY 4.0, UBS-mezők nélkül), a 87 hely 38 LXX-megfelelővel (F06: 39, közös módszerhiba javítva); ellenőrzés `naplok/ELLENOR_F17.md`; a Dán 4, a szerepmátrix és a fájlméret DT-F17-ben nyitva
 ---
 # F17 — Macula-import, héber és görög
 
