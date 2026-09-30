@@ -35,6 +35,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import tokenek  # noqa: E402
 
 PROMPT_UT = os.path.join(tokenek.ROOT, 'f21p', 'prompt_v1.md')
+PROMPT_V2_UT = os.path.join(tokenek.ROOT, 'f21p', 'prompt_v2.md')   # F21.12, az F3V2 futáshoz
 KEZDET = '<!-- PROMPT-KEZDET -->'
 VEGE = '<!-- PROMPT-VÉGE -->'
 
@@ -78,9 +79,9 @@ def versblokk(igehely, kjv=True):
     return '\n'.join(sorok)
 
 
-def prompt_utasitas():
-    """Az utasításrész a prompt_v1.md jelölői között."""
-    with open(PROMPT_UT, encoding='utf-8') as f:
+def prompt_utasitas(prompt_ut=None):
+    """Az utasításrész a prompt-fájl jelölői között (alapértelmezés: prompt_v1.md)."""
+    with open(prompt_ut or PROMPT_UT, encoding='utf-8') as f:
         s = f.read()
     a = s.index(KEZDET) + len(KEZDET)
     b = s.index(VEGE)
@@ -90,8 +91,8 @@ def prompt_utasitas():
     return re.sub(r'\{\{VERSBLOKK:([^}]+)\}\}', lambda m: versblokk(m.group(1), kjv=True), szoveg)
 
 
-def prompt_sha256():
-    return hashlib.sha256(prompt_utasitas().encode('utf-8')).hexdigest()
+def prompt_sha256(prompt_ut=None):
+    return hashlib.sha256(prompt_utasitas(prompt_ut).encode('utf-8')).hexdigest()
 
 
 def kotegek(igehelyek, meret=10):
@@ -99,10 +100,10 @@ def kotegek(igehelyek, meret=10):
     return [igehelyek[i:i + meret] for i in range(0, len(igehelyek), meret)]
 
 
-def kotegszoveg(igehelyek, kjv=True):
+def kotegszoveg(igehelyek, kjv=True, prompt_ut=None):
     """Egy hívás teljes felhasználói üzenete: utasítás + versblokkok."""
     blokkok = '\n\n'.join(versblokk(ig, kjv) for ig in igehelyek)
-    return '%s\n\n=== A FELDOLGOZANDÓ VERSEK (%d) ===\n\n%s\n' % (prompt_utasitas(), len(igehelyek), blokkok)
+    return '%s\n\n=== A FELDOLGOZANDÓ VERSEK (%d) ===\n\n%s\n' % (prompt_utasitas(prompt_ut), len(igehelyek), blokkok)
 
 
 if __name__ == '__main__':

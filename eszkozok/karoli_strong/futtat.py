@@ -10,6 +10,9 @@ Futások (F21 brief P3):
       valamelyik kapuhibás maradt (a döntőbíró látja A és B válaszát)
   F5  A modell, KJV-támpont nélkül, az R1 100 verse
   F6  B modell, KJV-támpont nélkül, az R1 100 verse
+  F3V2 C modell, 200 vers, a prompt_v2.md-vel (F21.12: a tíz konvenció
+      szabályként); kimenet valaszok/F3V2.jsonl; ugyanaz a futasnaplo.tsv, a
+      plafon kumulatív. ELŐKÉSZÍTVE: a trigger (futtatas.txt) külön jóváhagyásra.
 
 Modellek: A google/gemini-3.1-flash-lite, B deepseek/deepseek-v4-flash,
 C google/gemini-3.8-flash. 10 vers / hívás; versenként az ötpontos kapu
@@ -55,7 +58,7 @@ VEZÉRLŐFÁJL (f21p/futtatas.txt; a workflow ezt olvassa): egyszerű kulcs=ért
 a # kezdetű sor és az üres sor megjegyzés. KÖTELEZŐ kulcs mindkettő, alapérték
 nincs; ismeretlen, hiányzó vagy ismételt kulcs, hibás érték, hiányzó fájl esetén a
 futtatás 2-es kilépési kóddal áll meg, és semmit nem hív meg.
-    futasok=F1            # vesszővel elválasztva az F1..F6 közül, pl. F1,F2,F3,F5,F6;
+    futasok=F1            # vesszővel elválasztva az F1..F6, F3V2 közül, pl. F1,F2,F3,F5,F6;
                           # az F4 csak egyedül (külön trigger: az F1 és F2 kész kell)
     koteg_max=1           # futásonként legfeljebb ennyi ÚJ köteg (10 vers/köteg) fut;
                           # pozitív egész, vagy 'mind' (a kész kötegek kimaradnak)
@@ -133,6 +136,8 @@ FUTASOK = {
     'F4': {'modell': 'C', 'tipus': 'biro', 'kjv': True, 'reteg': None, 'forras': ('F1', 'F2')},
     'F5': {'modell': 'A', 'tipus': 'parosit', 'kjv': False, 'reteg': 'R1'},
     'F6': {'modell': 'B', 'tipus': 'parosit', 'kjv': False, 'reteg': 'R1'},
+    # F21.12 (előkészítve, a trigger külön jóváhagyásra): C, 200 vers, prompt_v2
+    'F3V2': {'modell': 'C', 'tipus': 'parosit', 'kjv': True, 'reteg': None, 'prompt': bemenet.PROMPT_V2_UT},
 }
 
 NAPLO_FEJLEC = ['ts', 'futas', 'koteg', 'probalkozas', 'modell', 'gondolkodas_mod',
@@ -309,14 +314,14 @@ def kotegszoveg_futashoz(futas_id, igehelyek, kimenet_dir):
         a = eredmenyek_betolt(spec['forras'][0], kimenet_dir)
         b = eredmenyek_betolt(spec['forras'][1], kimenet_dir)
         return biro_kotegszoveg(igehelyek, a, b, spec['kjv'])
-    return bemenet.kotegszoveg(igehelyek, spec['kjv'])
+    return bemenet.kotegszoveg(igehelyek, spec['kjv'], spec.get('prompt'))
 
 
 def utasitas_sha12(futas_id):
     import hashlib
     if FUTASOK[futas_id]['tipus'] == 'biro':
         return biro_sha256()[:12]
-    return hashlib.sha256(bemenet.prompt_utasitas().encode('utf-8')).hexdigest()[:12]
+    return hashlib.sha256(bemenet.prompt_utasitas(FUTASOK[futas_id].get('prompt')).encode('utf-8')).hexdigest()[:12]
 
 
 # ---------------------------------------------------------------------------
@@ -708,7 +713,7 @@ def szaraz(minta, eltero_arany=0.30, gondolkodas_c=C_GONDOLKODAS_HIVASONKENT):
     (külön sor: +10% tartalék).
     """
     sorok = []
-    for f in ('F1', 'F2', 'F3', 'F4', 'F5', 'F6'):
+    for f in ('F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F3V2'):
         spec = FUTASOK[f]
         modell_id = MODELLEK[spec['modell']]
         ar_be, ar_ki = ARAK[modell_id]
@@ -723,7 +728,7 @@ def szaraz(minta, eltero_arany=0.30, gondolkodas_c=C_GONDOLKODAS_HIVASONKENT):
         be = ki = 0
         kotegek = bemenet.kotegek(versek, KOTEG_MERET)
         for k in kotegek:
-            szoveg_hossz = len(bemenet.kotegszoveg(k, spec['kjv']))
+            szoveg_hossz = len(bemenet.kotegszoveg(k, spec['kjv'], spec.get('prompt')))
             if spec['tipus'] == 'biro':
                 # a döntőbírói utasítás hosszabb, és versenként két válasz is jön
                 # (A és B, 150-150 token); a válasz-JSON karakterhossza ~ tokenszám * KAR_PER_TOKEN
@@ -744,11 +749,28 @@ def szaraz_kiir(minta, eltero_arany):
           % (KAR_PER_TOKEN, KIMENET_TOKEN_VERSENKENT, C_GONDOLKODAS_HIVASONKENT, eltero_arany * 100))
     print('%-4s %-32s %6s %7s %12s %12s %10s' % ('futás', 'modell', 'vers', 'hívás', 'bemenet_tok', 'kimenet_tok', 'USD'))
     ossz = 0.0
+    f3v2 = f3 = 0.0
     for f, m, n, k, be, ki, c in szaraz(minta, eltero_arany):
         print('%-5s %-32s %6d %7d %12d %12d %10.4f' % (f, m, n, k, be, ki, c))
-        ossz += c
-    print('ÖSSZESEN (újrakérés nélkül): %.4f USD; +10%% újrakérés-tartalékkal: %.4f USD; plafon: %.2f USD'
+        if f == 'F3V2':
+            f3v2 = c
+        else:
+            ossz += c
+        if f == 'F3':
+            f3 = c
+    print('ÖSSZESEN F1–F6 (újrakérés nélkül): %.4f USD; +10%% újrakérés-tartalékkal: %.4f USD; plafon: %.2f USD'
           % (ossz, ossz * 1.1, PLAFON_USD))
+    eddig = naplo_osszeg(F21P)
+    print('F3V2 (prompt_v2, előkészítve): becslés %.4f USD, +10%% tartalékkal %.4f USD; a futásnapló eddigi '
+          'összege %.4f USD; kumulatívan a F3V2 után ~%.4f USD (plafon %.2f USD, kumulatív)'
+          % (f3v2, f3v2 * 1.1, eddig, eddig + f3v2 * 1.1, PLAFON_USD))
+    # tényleges F3-költség arányosítva (a becslés F3V2/F3 aránya; újrakéréssel együtt, mert a tényleges tartalmazza)
+    ut = naplo_ut(F21P)
+    if os.path.exists(ut) and f3:
+        tenyl = sum(float(r['koltseg_usd']) for r in _tsv(ut) if r['futas'] == 'F3')
+        if tenyl:
+            print('F3V2 a tényleges F3-költségből arányosítva: %.4f USD × %.3f = %.4f USD (a tényleges F3 az '
+                  'újrakéréseket és a gondolkodási tokent is tartalmazza)' % (tenyl, f3v2 / f3, tenyl * f3v2 / f3))
     return ossz
 
 
@@ -915,7 +937,7 @@ def onteszt():
     minta = _onteszt_minta(minta_betolt())
     ellen(len(minta) == 25, 'az önteszt-minta nem 25 vers: %d' % len(minta))
     teszt_kulcs = 'sk-' + 'or-v1-TESZTKULCS0123456789abcdef0123456789'  # a forrásban nem kulcs-szerű
-    ossz_futas = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6']
+    ossz_futas = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F3V2']
 
     # --- 1. teljes menet hibaágakkal ---------------------------------------
     mappa = tempfile.mkdtemp(prefix='f21p_onteszt_')
@@ -991,6 +1013,49 @@ def onteszt():
     szoveg_nokjv = bemenet.kotegszoveg(r1[:2], False)
     ellen('KJV-TÁMPONT: ' in szoveg_kjv.split('=== A FELDOLGOZANDÓ')[1], 'F1: az R1-en nincs KJV-támpont')
     ellen('KJV-TÁMPONT: ' not in szoveg_nokjv.split('=== A FELDOLGOZANDÓ')[1], 'F5/F6: KJV-támpont maradt a bemenetben')
+    # F3V2 (F21.12): C, a teljes (önteszt-)minta, prompt_v2, külön kimenet
+    e3v2 = eredmenyek_betolt('F3V2', mappa)
+    ellen(len(e3v2) == 25 and all(r['allapot'] == 'ok' or ig in mindig_hibas for ig, r in e3v2.items())
+          and all(e3v2[ig]['allapot'] == 'kapuhiba' for ig in mindig_hibas),
+          'F3V2: a 25 vers állapota nem a várt (a tartós hibás vers kapuhiba, a többi rendben)')
+    ellen(os.path.exists(valasz_ut('F3V2', mappa)) and valasz_ut('F3V2', mappa).endswith(os.path.join('valaszok', 'F3V2.jsonl')),
+          'F3V2: nincs külön kimenet (valaszok/F3V2.jsonl)')
+    ellen(all(s_['modell'] == MODELLEK['C'] for s_ in koteg_sorok('F3V2', mappa)), 'F3V2: nem a C modell futott')
+    sha_v1 = bemenet.prompt_sha256()[:12]
+    sha_v2 = bemenet.prompt_sha256(bemenet.PROMPT_V2_UT)[:12]
+    ellen(sha_v1 != sha_v2, 'a prompt_v2 utasításrésze azonos a v1-ével')
+    ellen(utasitas_sha12('F3V2') == sha_v2 and utasitas_sha12('F3') == sha_v1,
+          'F3V2/F3: a napló prompt-azonosítója nem a v2 ill. v1 promptot jelöli')
+    ellen('Párosítási szabályok' in kotegszoveg_futashoz('F3V2', r1[:1], mappa)
+          and 'Párosítási szabályok' not in kotegszoveg_futashoz('F3', r1[:1], mappa),
+          'F3V2: a hívás szövege nem a prompt_v2 (vagy az F3 is azt kapja)')
+    pr2 = bemenet.prompt_utasitas(bemenet.PROMPT_V2_UT)
+    ellen('{{VERSBLOKK' not in pr2 and 'DÖNTŐBÍRÓI SZEREP' not in pr2, 'prompt_v2: helyőrző maradt, vagy döntőbírói jel van benne')
+    peldak_v2 = [json.loads(s_) for s_ in pr2.split('\n')
+                 if s_.startswith('{"vers":') and not s_.startswith('{"vers":"<')]   # a sémasor nem példa
+    ellen(len(peldak_v2) == 2 and all(bemenet.versblokk(o_['vers'], kjv=True) in pr2
+                                      and not kapu.vers_ellenoriz(o_, bemenet.vers_adat(o_['vers'])) for o_ in peldak_v2),
+          'prompt_v2: a két példa nincs meg, vagy nem megy át a kapun')
+    minta_ig = {s_['igehely'] for s_ in minta_betolt()}
+    ellen(not any(o_['vers'] in minta_ig for o_ in peldak_v2), 'prompt_v2: a példa a pilotmintából való')
+    naplo_f3v2 = []
+    with open(naplo_ut(mappa), encoding='utf-8') as f:
+        fej_ = f.readline().rstrip('\n').split('\t')
+        for s_ in f:
+            m_ = dict(zip(fej_, s_.rstrip('\n').split('\t')))
+            if m_['futas'] == 'F3V2':
+                naplo_f3v2.append(m_)
+    ellen(naplo_f3v2 and all(m_['prompt_sha256_12'] == sha_v2 for m_ in naplo_f3v2),
+          'F3V2: a futásnapló sorai nem a prompt_v2 sha-ját viselik')
+    # a plafon kumulatív: a korábbi futások naplóösszege az F3V2-t is korlátozza
+    mappa6 = tempfile.mkdtemp(prefix='f21p_onteszt_f3v2_plafon_')
+    ctx6 = Kontextus(MockKuldo(), teszt_kulcs, mappa6)
+    futasok_vegrehajt(ctx6, ['F1'], minta)
+    ctx6.plafon = naplo_osszeg(mappa6) + 0.00001
+    kod6 = futasok_vegrehajt(ctx6, ['F3V2'], minta)
+    ellen(kod6 == KILEPES_PLAFON and eredmenyek_betolt('F3V2', mappa6) == {},
+          'F3V2: a kumulatív plafon nem állította meg (kód %d)' % kod6)
+    shutil.rmtree(mappa6, ignore_errors=True)
     # C reasoning-visszalépés
     ellen(ctx.c_reasoning_index == 1, 'C: a 400-as effort=minimal után nem lépett vissza low-ra')
     # napló
