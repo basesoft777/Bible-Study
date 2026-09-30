@@ -1,0 +1,99 @@
+# F21 P3 -- a Karoli-Strong meropilot F1-F6 futtatasa (OpenRouter), GitHub Actionsben.
+#
+# INDITAS. Push a claude/f21-pilot agra, ha az f21p/futtatas.txt valtozik (a trigger-push
+# az orkesztratore), vagy kezzel (workflow_dispatch). A workflow sajat commitja nem nyul
+# az f21p/futtatas.txt-hez, es a GITHUB_TOKEN-nel vegzett push nem indit uj futast.
+#
+# MIT FUTTAT. Az F1, F2, F3, F4, F5, F6 futast ebben a sorrendben (az F4, a dontobiro az
+# F1-F2 eredmenyebol szamolja a versei; a sorrend ezt teljesiti). A koltsegplafon 3 USD
+# kumulativan (f21p/futasnaplo.tsv), minden hivas elott ellenorizve; plafonnal a futtato
+# kilepesi kodja 3, a job piros, de a kesz sorok ettol meg mentodnek. A futtatas
+# ujraindithato: a kesz koteg nem hiv ujra.
+#
+# JOGOSULTSAG. contents: write, kizarolag a meresi kimenet (f21p/valaszok/,
+# f21p/futasnaplo.tsv) visszacommitolasahoz a sajat agra (F20-tol ez az elso workflow,
+# amelynek irasi joga van: kulon jovahagyas targya). Az OPENROUTER_API_KEY csak a
+# futtato lepes env-jeben szerepel; commit elott kulcs-grep.
+# A FELADATOK.md generalt blokkjahoz a workflow nem nyul (E18).
+
+name: f21p_pilot
+
+on:
+  push:
+    branches: [claude/f21-pilot]
+    paths:
+      - 'f21p/futtatas.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: f21p-pilot
+  cancel-in-progress: false
+
+jobs:
+  futtatas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 0
+
+      - name: Python telepitese
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fuggosegek
+        run: pip install requests
+
+      - name: Onteszt (halozat es kulcs nelkul)
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python eszkozok/karoli_strong/kapu.py --onteszt
+          python eszkozok/karoli_strong/futtat.py --onteszt
+
+      - name: Szaraz becsles (halozat nelkul)
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python eszkozok/karoli_strong/futtat.py --szaraz
+
+      - name: Futtatas F1-F6 (OpenRouter)
+        id: futtat
+        env:
+          PYTHONIOENCODING: utf-8
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python eszkozok/karoli_strong/futtat.py --futas F1,F2,F3,F4,F5,F6
+
+      - name: Kulcs-ellenorzes (hibat ad, ha kulcsszeru karakterlanc van)
+        id: kulcs_grep
+        if: always()
+        run: |
+          if [ -e f21p/valaszok ] || [ -e f21p/futasnaplo.tsv ]; then
+            if grep -rIlE 'sk-or-[A-Za-z0-9_-]{16,}|sk-[A-Za-z0-9]{32,}|Bearer [A-Za-z0-9_-]{20,}' f21p/valaszok f21p/futasnaplo.tsv eszkozok/karoli_strong; then
+              echo "kulcs-szeru minta a kimenetben"; exit 1
+            fi
+          fi
+          echo "kulcs-grep tiszta"
+
+      - name: Kimenet commitolasa es pusholasa (reszleges futasnal, plafonnal is)
+        if: always() && steps.kulcs_grep.conclusion == 'success'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add f21p/valaszok f21p/futasnaplo.tsv
+          if git diff --cached --quiet; then
+            echo "nincs valtozas"; exit 0
+          fi
+          printf 'F21.8: a pilot F1–F6 futások kimenete (GitHub Actions, futás %s)\n' "$GITHUB_RUN_ID" > commit_uzenet.txt
+          git -c i18n.commitEncoding=UTF-8 commit -F commit_uzenet.txt
+          rm commit_uzenet.txt
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
