@@ -10,7 +10,7 @@ ag: claude/bsb-import
 ad: BSB minden könyvre, ahol a lefedettség ≥ 95%
 kovetkezo: `/kovetkezo` csomag: #16–#19 és #7
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv]
-ir: [naplok/F16_bsb_lefedettseg.tsv, konkordancia/BSB_Strongs.tsv, NYITOTT_FELADATOK.md, DONTESEK.md]
+ir: [naplok/F16_bsb_lefedettseg.tsv, naplok/F16_bsb_verseltolas_diagnozis.tsv, konkordancia/BSB_Strongs.tsv, konkordancia/README.md, adat/datasetek.tsv, adat/szotar_szerepek.tsv, eszkozok/fj2/bsb_import.py, eszkozok/fj2/bsb_verseltolas_diag.py, NYITOTT_FELADATOK.md, DONTESEK.md]
 fugg: [6]
 ---
 # F16 — BSB-import, teljes Biblia

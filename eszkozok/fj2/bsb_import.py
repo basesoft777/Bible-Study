@@ -31,6 +31,13 @@ import bsb  # noqa: E402
 
 URL = bsb.URL
 STRONG_MINTA = {'H': re.compile(r'H0*(\d+)'), 'G': re.compile(r'G0*(\d+)')}
+SZURT = {}  # kategoria -> darab: minden, ami a mereshez/importhoz nem kerul be, itt szamolodik
+
+
+def szur(kat, n=1):
+    SZURT[kat] = SZURT.get(kat, 0) + n
+
+
 FEJLEC_SOR = 'Igehely\tSzósorszám\tStrong-szám\tAngol szó\tMorfológiai kód\n'
 
 
@@ -84,6 +91,7 @@ def vers_strongok(adat, nyelv):
     ki = {}
     for vs, spanok in adat['eng'].items():
         if not str(vs).isdigit():
+            szur('nem_szamjegy_versszam_kulcs (meres)')
             continue
         h = set()
         for span in spanok:
@@ -95,19 +103,39 @@ def vers_strongok(adat, nyelv):
 
 
 def vers_sorok(adat, step, fej):
-    """A BSB import sorai egy fejezetbol: (Igehely, Szosorszam, Strong, Angol szo, Morf)."""
+    """A BSB import sorai egy fejezetbol: (Igehely, Szosorszam, Strong, Angol szo, Morf).
+    Minden kihagyott span kategoriankent szamolva (SZURT)."""
     ki = []
+    for v in adat['eng']:
+        if not str(v).isdigit():
+            szur('nem_szamjegy_versszam_kulcs (import)')
     for vs in sorted(int(v) for v in adat['eng'] if str(v).isdigit()):
         poz = 0
         for span in adat['eng'][str(vs)]:
-            if not (isinstance(span, (list, tuple)) and len(span) >= 2 and span[1]):
+            if not (isinstance(span, (list, tuple)) and len(span) >= 2):
+                szur('hibas_alaku_span')
+                continue
+            if not span[1]:
+                szur('strong_nelkuli_span_szoveggel' if re.search(r'\w', str(span[0])) else 'strong_nelkuli_span_csak_szokoz_irasjel')
                 continue
             jel = span[1]
             if not (isinstance(jel, str) and re.fullmatch(r'[HG]\d+[a-z]?', jel)):
                 raise ValueError('varatlan Strong-jeloles: %r (%s %s:%s)' % (jel, step, fej, vs))
             poz += 1
+            if len(span) > 2 and isinstance(span[2], dict) and span[2].get('elided'):
+                szur('bentmaradt_elided_span (nem szurt, csak jelolve)')
             ki.append(('%s.%d.%d' % (step, fej, vs), str(poz), jel, span[0], ''))
     return ki
+
+
+def text_only_sorok(cel, kod, fej):
+    """A base/text-only (CC0) fejezetfajl nemures sorainak szama = a BSB versszama (fuggetlen teljessegi ellenorzes)."""
+    ut = os.path.join(cel, 'base', 'text-only', '%s_%03d_BSB.txt' % (kod, fej))
+    if not os.path.exists(ut):
+        szur('nincs_text_only_fajl')
+        return 0
+    with open(ut, encoding='utf-8') as f:
+        return sum(1 for sor in f if sor.strip())
 
 
 def fut(munka, parancs):
@@ -132,12 +160,14 @@ def fut(munka, parancs):
                            for m in [re.fullmatch(kod + r'(\d+)\.json', fn)] if m)
         forras = halm[nyelv]
         bsb_versek = forras_van = egyezo = egyezo_na28 = egyezo_norm = 0
+        text_only_versek = 0
         bsb_ref = set()
         konyv_sorok = []
         for fej in fejezetek:
             with open(os.path.join(bmappa, '%s%d.json' % (kod, fej)), encoding='utf-8') as f:
                 adat = json.load(f)
             b = vers_strongok(adat, nyelv)
+            text_only_versek += text_only_sorok(cel, kod, fej)
             konyv_sorok += vers_sorok(adat, step, fej)
             for vs in sorted(b):
                 bsb_versek += 1
@@ -159,7 +189,8 @@ def fut(munka, parancs):
         eredmeny = 'ELERI' if szaz >= kuszob else 'NEM_ERI_EL'
         lefedettseg.append((mag, kod, 'heber' if nyelv == 'H' else 'gorog',
                             str(bsb_versek), str(forras_van), str(egyezo),
-                            str(bsb_versek - forras_van), str(forras_bsb_nelkul),
+                            str(bsb_versek - forras_van), str(forras_bsb_nelkul), str(text_only_versek),
+                            str(text_only_versek - bsb_versek),
                             '%.2f' % szaz,
                             ('%.2f' % (100.0 * egyezo_na28 / forras_van)) if nyelv == 'G' and forras_van else '',
                             ('%.2f' % (100.0 * egyezo_norm / forras_van)) if nyelv == 'G' and forras_van else '',
@@ -167,7 +198,7 @@ def fut(munka, parancs):
                             str(len(konyv_sorok)) if eredmeny == 'ELERI' else '0'))
         if eredmeny == 'ELERI':
             import_sorok += konyv_sorok
-    ered_db = sum(1 for s in lefedettseg if s[12] == 'ELERI')
+    ered_db = sum(1 for s in lefedettseg if s[14] == 'ELERI')
     fej = kozos.fejlec(URL + ' + konkordancia/TAHOT_kivonat.tsv (OSZ) + konkordancia/TAGNT_kivonat.tsv (USZ)',
                        'BSB commit ' + commit, parancs)
     fej += ['rogzitett kuszob=%g%% definicio=%s nevezo=%s (kuszob.txt, F06-ban meres elott rogzitve); konyvenkenti alkalmazas: FELADATOK D15' % (kuszob, definicio, nevezo),
@@ -175,10 +206,13 @@ def fut(munka, parancs):
             'nincs_forras_vers = a BSB-versek szama, amelyekhez a TAHOT/TAGNT-nak nincs sora (nem elteres, nem szamit a nevezobe); forras_vers_nincs_bsb = a forras verseinek szama, amelyek igehelye a BSB-ben nincs meg (verszamozas-elteres jele)',
             'egyezes_na28_szurve: csak USZ; a TAGNT-nak csak a NA28-cimkes soraival szamolt egyezes, ugyanazzal a nevezovel (tajekoztato, nem a kuszob alapja)',
             'egyezes_normalizalt: csak USZ; mindket oldal Strong-szamai a TBESG.txt Form/Spelling/Meaning of soraival a lemma szamara kepezve (%d szam); tajekoztato, nem a kuszob alapja' % len(norm),
+            'ELTERES AZ F06-MODSZERTOL: az F06 (bsb.py) csak az 1Mozest merte, TAHOT-tal; a 27 ujszovetsegi konyvre a forras a TAGNT (G-Strongok) -- ez uj, az F06-ban nem mert alkalmazas, a kuszob es az egyezes-definicio valtozatlan',
+            'text_only_versek = a base/text-only (CC0) nemures sorai; display_hianyzo_versek = text_only_versek - display-versek: az upstream display-JSON-bol hianyzo versek (masodlagos, fuggetlen ellenorzes)',
+            'szurt sorok kategoriankent: ' + '; '.join('%s=%d' % kv for kv in sorted(SZURT.items())),
             'konyvek: %d ELERI, %d NEM_ERI_EL; importalt sorok: %d' % (ered_db, 66 - ered_db, len(import_sorok))]
     kozos.tsv_ir(os.path.join(kozos.NAPLOK, 'F16_bsb_lefedettseg.tsv'), fej,
                  ['konyv', 'bsb_kod', 'nyelv', 'versek_bsb', 'forras_lefedett_versek', 'egyezo', 'nincs_forras_vers',
-                  'forras_vers_nincs_bsb', 'egyezes_szazalek', 'egyezes_na28_szurve', 'egyezes_normalizalt', 'kuszob', 'eredmeny', 'importalt_sorok'],
+                  'forras_vers_nincs_bsb', 'text_only_versek', 'display_hianyzo_versek', 'egyezes_szazalek', 'egyezes_na28_szurve', 'egyezes_normalizalt', 'kuszob', 'eredmeny', 'importalt_sorok'],
                  lefedettseg)
     # BSB_Strongs.tsv: nagy fajl (a kozos.tsv_ir 1 MB-os korlatja a naplokra vonatkozik); csv nelkul
     ut = os.path.join(kozos.KONKORDANCIA, 'BSB_Strongs.tsv')

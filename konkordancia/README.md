@@ -281,3 +281,13 @@ adat — beleértve a motívumlexikon domén-hivatkozásait — **ugyanilyen lic
 esik**. Ez eltér a mappa többi, közkincs vagy CC BY 4.0 licencű forrásától.
 Forrás-commit, ellenőrző összegek és a pontos forrásmegjelölés:
 `SDBH_SDGNT_README.md`.
+
+
+## `BSB_Strongs.tsv` — Berean Standard Bible, Strong-számozott angol híd (F16, FELADATOK #16)
+
+- **Forrás:** https://github.com/BSB-publishing/bsb-data-output, `base/display/` (commit `a4a2c0558c26e0281ba4e3f0e5479398459e2183`, letöltve 2026.09.30).
+- **Licenc:** CC0 1.0 (a repo README-je és ATTRIBUTION.md szerint a `base/display/`). A CC BY 4.0 `index-cc-by/` nem importált.
+- **Tartalom:** 224 807 adatsor, 30 ÓSZ-könyv (1Móz–Ruth, 1Kir, 2Kir, 1Krón, 2Krón, Neh, Eszt, Jób, Péld, Én, Jer, Sir, Ez, Jóel, Ámós, Abd, Mik, Náh, Hab, Sof, Hag, Zak, Mal). Az ÚSZ és a küszöb alatti 9 ÓSZ-könyv nincs benne (DONTESEK DT-F16).
+- **Formátum:** mint a `KJV_Strongs_*.tsv`: `Igehely` (STEP-alak, `Gen.1.1`), `Szósorszám` (a Strong-címkés szavaké), `Strong-szám`, `Angol szó`, `Morfológiai kód` (mindig üres). Strong-címke nélküli BSB-szavak nincsenek benne.
+- **Lefedettség:** a küszöb (95%, igehely-szintű, TAHOT ⊆ BSB) és a könyvenkénti mérés: `naplok/F16_bsb_lefedettseg.tsv`; a szkript: `eszkozok/fj2/bsb_import.py`.
+- **Ismert hiány:** a forrás display-JSON-ja néhány 1. verset nem tartalmaz (Zsolt 116 vers, Zak 12:1); a Zak 12:1 ezért nincs a fájlban.

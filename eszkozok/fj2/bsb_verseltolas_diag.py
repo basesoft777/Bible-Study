@@ -31,7 +31,7 @@ def fut(munka, parancs):
     commit = kozos.commit_sha(os.path.join(munka, 'bsb-data-output'))
     tahot = bi.forras_halmazok('H')
     fej, lef = kozos.tsv_olvas(os.path.join(kozos.NAPLOK, 'F16_bsb_lefedettseg.tsv'))
-    alatta = {s[0] for s in lef if s[2] == 'heber' and s[12] == 'NEM_ERI_EL'}
+    alatta = {s[0] for s in lef if s[2] == 'heber' and s[14] == 'NEM_ERI_EL'}
     sorok = []
     for step, mag, nyelv in bi.konyvek()[:39]:
         if mag not in alatta:
