@@ -1,5 +1,7 @@
 # ELLENŐR — F17 (Macula-import), merge-előkészítő kör (F17.9–F17.13), tömörítve
 
+*Megjegyzés: a jelentésekben szereplő `DT6` azóta **DT7** (a #86 merge-e után a #85 kapta a DT6-ot).*
+
 Ág: `claude/macula-import` (#87). Ellenőr: `fuggetlen-ellenor`; a jelentés az orkesztrátor által mentett tömörítés (az ellenőrnek nincs írási eszköze). A `naplok/ELLENOR_F17.md` az F17.1–F17.8 három körét rögzíti; ez a fájl az utána következő kört.
 
 **1. menet (F17.9–F17.12) — ELTÉRÉS 9.** Rendben: a 39 könyvfájl adatsorainak összege 475 911; minden fájl adatsora és a hat közös fejlécsor soronként azonos a régi fájllal (`f15fc91:konkordancia/Macula_heber.tsv`, blob-numstat mind a 39 fájlra); minden fájlban megvan a licenc-attribúció; szerepmátrix és SEMA változatlan; nincs main-beli sorcsökkenés; E2–E16 0 találat.

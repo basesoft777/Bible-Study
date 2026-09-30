@@ -6,7 +6,7 @@
 
 **Leletek:** a Macula betűs `strongnumberx` kódja funkció-morfémánál nem Strong-szám (170 429 sor üres `strong`, a nyers kód `strong_x`); a `LXX_versificacios_terkep.tsv` `EGYIK_SEM` sorai megbízhatatlanok; Dán 4 KJV≠MT (34 Károli-vers `javaslat`); 44 Károli-vers eltolódás-gyanúja (Préd 5, 4Móz 30, Zsolt 13 stb.) üres értékkel.
 
-**Nyitott (DONTESEK `DT6`, 🟡, (a)–(h)):** UBS-mezők (F24), funkció-morféma Strong leképezése, KK–terkep ütközés (1 048 vers), Dán 4, interpoláció, a héber fájl mérete (a 65 MB-os fájl az F17.9-ben 39 könyvfájlra bontva, a döntés (e) így is nyitott), szerepmátrix (SEMA 2.13) és `datasetek.tsv`, az `allapot`/Strong-jelzés külön oszlopa. Azonosító `DT6` (a `main` utolsó azonosítója DT4, a #85 DT-F16-ja DT5; a korábbi ideiglenes azonosító DT6-ra számozva, F17.12).
+**Nyitott (DONTESEK `DT7`, 🟡, (a)–(h)):** UBS-mezők (F24), funkció-morféma Strong leképezése, KK–terkep ütközés (1 048 vers), Dán 4, interpoláció, a héber fájl mérete (a 65 MB-os fájl az F17.9-ben 39 könyvfájlra bontva, a döntés (e) így is nyitott), szerepmátrix (SEMA 2.13) és `datasetek.tsv`, az `allapot`/Strong-jelzés külön oszlopa. Azonosító `DT7` (a `main` utolsó azonosítója DT4, a #85 DT-F16-ja DT5; a korábbi ideiglenes azonosító DT7-ra számozva, F17.12).
 
 **Figyelem:** a `datasetek.tsv` és a `DONTESEK.md` közös fájl a #16-tal (rebase-nél mindkét oldal sorai maradnak); a `SEMA.md` 2.6 dataset-száma (#16: 18) a Macula +2 dataset miatt tovább nő.
 

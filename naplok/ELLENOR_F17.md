@@ -1,5 +1,7 @@
 # ELLENŐR — F17 (Macula-import), 3 kör, tömörítve
 
+*Megjegyzés: a jelentésekben szereplő `DT6` azóta **DT7** (a #86 merge-e után a #85 kapta a DT6-ot).*
+
 Ág: `claude/macula-import`, base `origin/main` (4525a63). Ellenőr: `fuggetlen-ellenor`; a jelentés az orkesztrátor által mentett tömörítés (az ellenőrnek nincs írási eszköze).
 
 **1. kör — ELTÉRÉS 7:** (1) a KK `igehely_kjv` mezőjét a kód nem használta (KEZI sorok), ~2570 héber sor rossz Károli-verssel `rendben` állapotban (4Móz 13, Jób 39–40, Préd); (2) a 87 hely napló-indoklása („azonos számozás”) hamis, az F06-egyezés közös módszerhiba; (3) 169 081 Strong-illeszthetetlen sor `allapot=rendben`; (4) Strong-csapda 3 sorban (H1886 = Dothan) és `tobbes` sorokban; (5) a szerepmátrix 11. sora sérti a SEMA 2.13-at; (6) `ir:` hiányos; (7) DT6 forma.
