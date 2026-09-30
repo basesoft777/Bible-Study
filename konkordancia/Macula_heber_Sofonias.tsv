@@ -1,0 +1,1153 @@
+# GENERÁLT: eszkozok/f17/macula_futtat.py — kézzel nem szerkesztendő.
+# forras=https://github.com/Clear-Bible/macula-hebrew@commit 47db250bd55d0d8577f2a94fba114ef16c35b23c | licenc=CC BY 4.0 (Biblica, Inc); l. naplok/F17_import_naplo.md | ts=2026-09-30
+# proveniencia: scope=teljes import (F17, FELADATOK #17) | forras=https://github.com/Clear-Bible/macula-hebrew | ts=2026-09-30
+# futtatasi parancs: python eszkozok/f17/macula_futtat.py --heber <klon> --gorog <klon>
+# sorok: morfema-szint (lowfat <w>); ref = Macula (MT/WLC) szamozas; karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva
+# konyv=ZEP (Sofonias) | sorok=1146 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok a Macula-kanon sorrendjeben (HEBER_KONYV_FAJL, eszkozok/f17/macula_import.py) osszefuzve, a fejlecek nelkul a teljes tabla torzset adjak
+xml_id	ref	karoli	kk_mod	allapot	szo	lemma	strong	strong_x	strong_illesztes	morf	szofaj	gloss	gorog_lxx	gorog_strong
+o360010010011	ZEP 1:1!1	Sof 1:1	identitas	rendben	דְּבַר	דָּבָר	H1697	1697	igen	Ncmsc	noun	the.word	λόγος	G3056
+o360010010021	ZEP 1:1!2	Sof 1:1	identitas	rendben	יְהוָ֣ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o360010010031	ZEP 1:1!3	Sof 1:1	identitas	rendben	אֲשֶׁ֣ר	אֲשֶׁר	H0834	0834	igen	Tr	particle	which	ὃς	G3739
+o360010010041	ZEP 1:1!4	Sof 1:1	identitas	rendben	הָיָ֗ה	הָיָה	H1961	1961	igen	Vqp3ms	verb	it.came	ἐγενήθη	G1096
+o360010010051	ZEP 1:1!5	Sof 1:1	identitas	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	πρὸς	G4314
+o360010010061	ZEP 1:1!6	Sof 1:1	identitas	rendben	צְפַנְיָה֙	צְפַנְיָה	H6846	6846	igen	Np	noun	Zephaniah	σοφονιαν	
+o360010010071	ZEP 1:1!7	Sof 1:1	identitas	rendben	בֶּן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son		
+o360010010081	ZEP 1:1!8	Sof 1:1	identitas	rendben	כּוּשִׁ֣י	כּוּשִׁי	H3570	3570	igen	Np	noun	of.Cushi	ξουσι	
+o360010010091	ZEP 1:1!9	Sof 1:1	identitas	rendben	בֶן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son	υἱὸν	G5207
+o360010010101	ZEP 1:1!10	Sof 1:1	identitas	rendben	גְּדַלְיָ֔ה	גְּדַלְיָה	H1436	1436	igen	Np	noun	of.Gedaliah	γοδολιου	
+o360010010111	ZEP 1:1!11	Sof 1:1	identitas	rendben	בֶּן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son	τοῦ	G3588
+o360010010121	ZEP 1:1!12	Sof 1:1	identitas	rendben	אֲמַרְיָ֖ה	אֲמַרְיָה	H0568	0568	igen	Np	noun	of.Amariah	αμαριου	
+o360010010131	ZEP 1:1!13	Sof 1:1	identitas	rendben	בֶּן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son	τοῦ	G3588
+o360010010141	ZEP 1:1!14	Sof 1:1	identitas	rendben	חִזְקִיָּ֑ה	חִזְקִיָּה	H2396	2396	igen	Np	noun	of.Hezekiah	εζεκιου	
+o360010010151	ZEP 1:1!15	Sof 1:1	identitas	javaslat:strong_funkcio_kod	בִּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o360010010152	ZEP 1:1!15	Sof 1:1	identitas	rendben	ימֵ֛י	יוֹם	H3117	3117	igen	Ncmpc	noun	the.days	ἡμέραις	G2250
+o360010010161	ZEP 1:1!16	Sof 1:1	identitas	javaslat:strong_betu_alap	יֹאשִׁיָּ֥הוּ	יֹאשִׁיָּהוּ	H2977	2977a	javaslat:betu_alap	Np	noun	of.Josiah	ιωσιου	
+o360010010171	ZEP 1:1!17	Sof 1:1	identitas	rendben	בֶן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son	υἱοῦ	G5207
+o360010010181	ZEP 1:1!18	Sof 1:1	identitas	rendben	אָמ֖וֹן	אָמוֹן	H0526	0526	igen	Np	noun	of.Amon	αμων	
+o360010010191	ZEP 1:1!19	Sof 1:1	identitas	rendben	מֶ֥לֶךְ	מֶלֶךְ	H4428	4428	igen	Ncmsc	noun	the.king	βασιλέως	G0935
+o360010010201	ZEP 1:1!20	Sof 1:1	identitas	rendben	יְהוּדָֽה	יְהוּדָה	H3063	3063	igen	Np	noun	of.Judah	ιουδα	G2448
+o360010020011	ZEP 1:2!1	Sof 1:2	identitas	rendben	אָסֹ֨ף	אָסַף	H0622	0622	igen	Vqa	verb	utterly.(destroy)	ἐκλείψει	G1587
+o360010020021	ZEP 1:2!2	Sof 1:2	identitas	rendben	אָסֵ֜ף	אסף	H5486	5486	igen	Vhi1cs	verb	I.will.bring.to.an.end	ἐκλιπέτω	G1587
+o360010020031	ZEP 1:2!3	Sof 1:2	identitas	rendben	כֹּ֗ל	כֹּל	H3605	3605	igen	Ncmsa	noun	everything	πάντα	G3956
+o360010020041	ZEP 1:2!4	Sof 1:2	identitas	rendben	מֵ	מִן	H4480	4480	igen	R	preposition	from	ἀπὸ	G0575
+o360010020042	ZEP 1:2!4	Sof 1:2	identitas	rendben	עַ֛ל	עַל	H5921	5921	igen	R	preposition	on		
+o360010020051	ZEP 1:2!5	Sof 1:2	identitas	rendben	פְּנֵ֥י	פָּנֶה	H6440	6440	igen	Ncbpc	noun	the.surface	προσώπου	G4383
+o360010020061	ZEP 1:2!6	Sof 1:2	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τῆς	G3588
+o360010020062	ZEP 1:2!6	Sof 1:2	identitas	rendben	אֲדָמָ֖ה	אֲדָמָה	H0127	0127	igen	Ncfsa	noun	the.ground	γῆς	G1093
+o360010020071	ZEP 1:2!7	Sof 1:2	identitas	rendben	נְאֻם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o360010020081	ZEP 1:2!8	Sof 1:2	identitas	rendben	יְהוָֽה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o360010030011	ZEP 1:3!1	Sof 1:3	identitas	rendben	אָסֵ֨ף	אָסַף	H5486	5486	igen	Vhi1cs	verb	I.will.bring.to.an.end	ἐκλιπέτω	G1587
+o360010030021	ZEP 1:3!2	Sof 1:3	identitas	rendben	אָדָ֜ם	אָדָם	H0120	0120	igen	Ncmsa	noun	human.being	ἄνθρωπος	G0444
+o360010030031	ZEP 1:3!3	Sof 1:3	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010030032	ZEP 1:3!3	Sof 1:3	identitas	rendben	בְהֵמָ֗ה	בְּהֵמָה	H0929	0929	igen	Ncfsa	noun	animal	κτήνη	G2934
+o360010030041	ZEP 1:3!4	Sof 1:3	identitas	rendben	אָסֵ֤ף	אָסַף	H5486	5486	igen	Vhi1cs	verb	I.will.bring.to.an.end	ἐκλιπέτω	G1587
+o360010030051	ZEP 1:3!5	Sof 1:3	identitas	rendben	עוֹף	עוֹף	H5775	5775	igen	Ncmsc	noun	the.bird[s]	πετεινὰ	G4071
+o360010030061	ZEP 1:3!6	Sof 1:3	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τοῦ	G3588
+o360010030062	ZEP 1:3!6	Sof 1:3	identitas	rendben	שָּׁמַ֨יִם֙	שָׁמַיִם	H8064	8064	igen	Ncmpa	noun	the.heavens	οὐρανοῦ	G3772
+o360010030071	ZEP 1:3!7	Sof 1:3	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010030072	ZEP 1:3!7	Sof 1:3	identitas	rendben	דְגֵ֣י	דָּג	H1709	1709	igen	Ncmpc	noun	the.fish(es)	ἰξθύες	G2486
+o360010030081	ZEP 1:3!8	Sof 1:3	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τῆς	G3588
+o360010030082	ZEP 1:3!8	Sof 1:3	identitas	rendben	יָּ֔ם	יָם	H3220	3220	igen	Ncmsa	noun	the.sea	θαλάσσης	G2281
+o360010030091	ZEP 1:3!9	Sof 1:3	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o360010030092	ZEP 1:3!9	Sof 1:3	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360010030093	ZEP 1:3!9	Sof 1:3	identitas	rendben	מַּכְשֵׁל֖וֹת	מַכְשֵׁלָה	H4384	4384	igen	Ncfpa	noun	stumbling-blocks		
+o360010030101	ZEP 1:3!10	Sof 1:3	identitas	rendben	אֶת	אֵת	H0853	0853	igen	R	preposition	with		
+o360010030111	ZEP 1:3!11	Sof 1:3	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the.wicked		
+o360010030112	ZEP 1:3!11	Sof 1:3	identitas	rendben	רְשָׁעִ֑ים	רָשָׁע	H7563	7563	igen	Aampa	adjective	[people]		
+o360010030121	ZEP 1:3!12	Sof 1:3	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010030122	ZEP 1:3!12	Sof 1:3	identitas	rendben	הִכְרַתִּ֣י	כָּרַת	H3772	3772	igen	Vhq1cs	verb	I.will.cut.off	ἐχαρῶ	G1808
+o360010030131	ZEP 1:3!13	Sof 1:3	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360010030141	ZEP 1:3!14	Sof 1:3	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	τοὺς	G3588
+o360010030142	ZEP 1:3!14	Sof 1:3	identitas	rendben	אָדָ֗ם	אָדָם	H0120	0120	igen	Ncmsa	noun	humankind	ἀνθρώπους	G0444
+o360010030151	ZEP 1:3!15	Sof 1:3	identitas	rendben	מֵ	מִן	H4480	4480	igen	R	preposition	from	ἀπὸ	G0575
+o360010030152	ZEP 1:3!15	Sof 1:3	identitas	rendben	עַ֛ל	עַל	H5921	5921	igen	R	preposition	on		
+o360010030161	ZEP 1:3!16	Sof 1:3	identitas	rendben	פְּנֵ֥י	פָּנֶה	H6440	6440	igen	Ncbpc	noun	the.surface	προσώπου	G4383
+o360010030171	ZEP 1:3!17	Sof 1:3	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τῆς	G3588
+o360010030172	ZEP 1:3!17	Sof 1:3	identitas	rendben	אֲדָמָ֖ה	אֲדָמָה	H0127	0127	igen	Ncfsa	noun	the.ground	γῆς	G1093
+o360010030181	ZEP 1:3!18	Sof 1:3	identitas	rendben	נְאֻם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o360010030191	ZEP 1:3!19	Sof 1:3	identitas	rendben	יְהוָֽה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o360010040011	ZEP 1:4!1	Sof 1:4	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010040012	ZEP 1:4!1	Sof 1:4	identitas	rendben	נָטִ֤יתִי	נָטָה	H5186	5186	igen	Vqq1cs	verb	I.will.stretch.out	ἐκτενῶ	G1614
+o360010040021	ZEP 1:4!2	Sof 1:4	identitas	rendben	יָדִ	יָד	H3027	3027	igen	Ncbsc	noun	hand	ξεῖρά	G5495
+o360010040022	ZEP 1:4!2	Sof 1:4	identitas	javaslat:strong_funkcio_kod	י֙	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o360010040031	ZEP 1:4!3	Sof 1:4	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360010040041	ZEP 1:4!4	Sof 1:4	identitas	rendben	יְהוּדָ֔ה	יְהוּדָה	H3063	3063	igen	Np	noun	Judah	ιουδαν	G2448
+o360010040051	ZEP 1:4!5	Sof 1:4	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010040052	ZEP 1:4!5	Sof 1:4	identitas	rendben	עַ֖ל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360010040061	ZEP 1:4!6	Sof 1:4	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντας	G3956
+o360010040071	ZEP 1:4!7	Sof 1:4	identitas	rendben	יוֹשְׁבֵ֣י	יָשַׁב	H3427	3427	igen	Vqrmpc	verb	the.inhabitants	κατοικοῦντας	G2730
+o360010040081	ZEP 1:4!8	Sof 1:4	identitas	rendben	יְרוּשָׁלִָ֑ם	יְרוּשָׁלִַ͏ם	H3389	3389	igen	Np	noun	of.Jerusalem	ιερουσαλημ	G2414
+o360010040091	ZEP 1:4!9	Sof 1:4	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010040092	ZEP 1:4!9	Sof 1:4	identitas	rendben	הִכְרַתִּ֞י	כָּרַת	H3772	3772	igen	Vhq1cs	verb	I.will.cut.off	ἐχαρῶ	G1808
+o360010040101	ZEP 1:4!10	Sof 1:4	identitas	rendben	מִן	מִן	H4480	4480	igen	R	preposition	from	ἐκ	G1537
+o360010040111	ZEP 1:4!11	Sof 1:4	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τοῦ	G3588
+o360010040112	ZEP 1:4!11	Sof 1:4	identitas	rendben	מָּק֤וֹם	מָקוֹם	H4725	4725	igen	Ncmsa	noun	place	τόπου	G5117
+o360010040121	ZEP 1:4!12	Sof 1:4	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o360010040122	ZEP 1:4!12	Sof 1:4	identitas	rendben	זֶּה֙	זֶה	H2088	2088	igen	Pdxms	pronoun	this	τούτου	G5127
+o360010040131	ZEP 1:4!13	Sof 1:4	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360010040141	ZEP 1:4!14	Sof 1:4	identitas	rendben	שְׁאָ֣ר	שְׁאָר	H7605	7605	igen	Ncmsc	noun	the.remnant		
+o360010040151	ZEP 1:4!15	Sof 1:4	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of.(the)	τῆς	G3588
+o360010040152	ZEP 1:4!15	Sof 1:4	identitas	rendben	בַּ֔עַל	בַּעַל	H1168	1168	igen	Np	noun	Baal	βααλ	G0896
+o360010040161	ZEP 1:4!16	Sof 1:4	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360010040171	ZEP 1:4!17	Sof 1:4	identitas	rendben	שֵׁ֥ם	שֵׁם	H8034	8034	igen	Ncmsc	noun	the.name		
+o360010040181	ZEP 1:4!18	Sof 1:4	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of		
+o360010040182	ZEP 1:4!18	Sof 1:4	identitas	rendben	כְּמָרִ֖ים	כֹּמֶר	H3649	3649	igen	Ncmpa	noun	the.pagan.priests		
+o360010040191	ZEP 1:4!19	Sof 1:4	identitas	rendben	עִם	עִם	H5973	5973	igen	R	preposition	with		
+o360010040201	ZEP 1:4!20	Sof 1:4	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τῶν	G3588
+o360010040202	ZEP 1:4!20	Sof 1:4	identitas	rendben	כֹּהֲנִֽים	כֹּהֵן	H3548	3548	igen	Ncmpa	noun	priests	ἱερέων	G2409
+o360010050011	ZEP 1:5!1	Sof 1:5	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010050012	ZEP 1:5!1	Sof 1:5	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360010050021	ZEP 1:5!2	Sof 1:5	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[those	τοὺς	G3588
+o360010050022	ZEP 1:5!2	Sof 1:5	identitas	javaslat:strong_betu_alap	מִּשְׁתַּחֲוִ֥ים	חוה	H7812	7812a	javaslat:betu_alap	Vvrmpa	verb	who].bow.down	προσκυνοῦντας	G4352
+o360010050031	ZEP 1:5!3	Sof 1:5	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360010050041	ZEP 1:5!4	Sof 1:5	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰ	G3588
+o360010050042	ZEP 1:5!4	Sof 1:5	identitas	rendben	גַּגּ֖וֹת	גָּג	H1406	1406	igen	Ncmpa	noun	roofs	δώματα	
+o360010050051	ZEP 1:5!5	Sof 1:5	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τῇ	G3588
+o360010050052	ZEP 1:5!5	Sof 1:5	identitas	rendben	צְבָ֣א	צָבָא	H6635	6635	igen	Ncbsc	noun	the.host	στρατιᾷ	G4756
+o360010050061	ZEP 1:5!6	Sof 1:5	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τοῦ	G3588
+o360010050062	ZEP 1:5!6	Sof 1:5	identitas	rendben	שָּׁמָ֑יִם	שָׁמַיִם	H8064	8064	igen	Ncmpa	noun	the.heavens	οὐρανοῦ	G3772
+o360010050071	ZEP 1:5!7	Sof 1:5	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010050072	ZEP 1:5!7	Sof 1:5	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360010050081	ZEP 1:5!8	Sof 1:5	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[those		
+o360010050082	ZEP 1:5!8	Sof 1:5	identitas	javaslat:strong_betu_alap	מִּֽשְׁתַּחֲוִים֙	חוה	H7812	7812a	javaslat:betu_alap	Vvrmpa	verb	who].bow.down		
+o360010050091	ZEP 1:5!9	Sof 1:5	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[those	τοὺς	G3588
+o360010050092	ZEP 1:5!9	Sof 1:5	identitas	rendben	נִּשְׁבָּעִ֣ים	שָׁבַע	H7650	7650	igen	VNrmpa	verb	who].swear.an.oath	ὀμνύοντας	
+o360010050101	ZEP 1:5!10	Sof 1:5	identitas	javaslat:strong_funkcio_kod	לַֽ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to		
+o360010050102	ZEP 1:5!10	Sof 1:5	identitas	rendben	יהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	Yahweh		
+o360010050111	ZEP 1:5!11	Sof 1:5	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010050112	ZEP 1:5!11	Sof 1:5	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[those	τοὺς	G3588
+o360010050113	ZEP 1:5!11	Sof 1:5	identitas	rendben	נִּשְׁבָּעִ֖ים	שָׁבַע	H7650	7650	igen	VNrmpa	verb	who].swear.an.oath	ὀμνύοντας	
+o360010050121	ZEP 1:5!12	Sof 1:5	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	by		
+o360010050122	ZEP 1:5!12	Sof 1:5	identitas	javaslat:strong_funkcio_kod	מַלְכָּֽ	מִלכֹּם		4445a	javaslat:funkcio_kod	Ncmsc	noun	king	βασιλέως	G0935
+o360010050123	ZEP 1:5!12	Sof 1:5	identitas	javaslat:strong_funkcio_kod	ם	הוּא		4445a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360010060011	ZEP 1:6!1	Sof 1:6	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010060012	ZEP 1:6!1	Sof 1:6	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360010060021	ZEP 1:6!2	Sof 1:6	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[those	τοὺς	G3588
+o360010060022	ZEP 1:6!2	Sof 1:6	identitas	rendben	נְּסוֹגִ֖ים	סוּג	H5472	5472	igen	VNrmpa	verb	who.have].turned.back	ἐκκλίνοντας	
+o360010060031	ZEP 1:6!3	Sof 1:6	identitas	rendben	מֵ	מִן	H4480	4480	igen	R	preposition	from	ἀπὸ	G0575
+o360010060032	ZEP 1:6!3	Sof 1:6	identitas	rendben	אַחֲרֵ֣י	אַחַר	H0310	0310	igen	R	preposition	after		
+o360010060041	ZEP 1:6!4	Sof 1:6	identitas	rendben	יְהוָ֑ה	יהוה	H3068	3068	igen	Np	noun	Yahweh		
+o360010060051	ZEP 1:6!5	Sof 1:6	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and.[those]	καὶ	G2532
+o360010060052	ZEP 1:6!5	Sof 1:6	identitas	rendben	אֲשֶׁ֛ר	אֲשֶׁר	H0834	0834	igen	Tr	particle	who	τοὺς	G3588
+o360010060061	ZEP 1:6!6	Sof 1:6	identitas	rendben	לֹֽא	לֹא	H3808	3808	igen	Tn	particle	not	μὴ	G3361
+o360010060071	ZEP 1:6!7	Sof 1:6	identitas	rendben	בִקְשׁ֥וּ	בָּקַשׁ	H1245	1245	igen	Vpp3cp	verb	they.have.sought	ζητήσαντας	G2212
+o360010060081	ZEP 1:6!8	Sof 1:6	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360010060091	ZEP 1:6!9	Sof 1:6	identitas	rendben	יְהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	Yahweh		
+o360010060101	ZEP 1:6!10	Sof 1:6	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010060102	ZEP 1:6!10	Sof 1:6	identitas	rendben	לֹ֥א	לֹא	H3808	3808	igen	Tn	particle	not	μὴ	G3361
+o360010060111	ZEP 1:6!11	Sof 1:6	identitas	rendben	דְרָשֻֽׁ	דָּרַשׁ	H1875	1875	igen	Vqp3cp	verb	they		
+o360010060112	ZEP 1:6!11	Sof 1:6	identitas	javaslat:strong_funkcio_kod	הוּ	הוּא		1930a	javaslat:funkcio_kod	Sp3ms	suffix	have.sought.him		
+o360010070011	ZEP 1:7!1	Sof 1:7	identitas	javaslat:strong_funkcio_kod	הַ֕ס	הסה		2013a	javaslat:funkcio_kod	Tj	particle	hush!	εὐλαβεῖσθε	
+o360010070021	ZEP 1:7!2	Sof 1:7	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from	ἀπὸ	G0575
+o360010070022	ZEP 1:7!2	Sof 1:7	identitas	rendben	פְּנֵ֖י	פָּנֶה	H6440	6440	igen	Ncbpc	noun	before	προσώπου	G4383
+o360010070031	ZEP 1:7!3	Sof 1:7	identitas	rendben	אֲדֹנָ֣	אֲדֹנָי	H0136	0136	igen	Ncmpc	noun	Lord		
+o360010070032	ZEP 1:7!3	Sof 1:7	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	[the]	κυρίου	G2962
+o360010070041	ZEP 1:7!4	Sof 1:7	identitas	rendben	יְהוִ֑ה	יְהֹוִה	H3069	3069	igen	Np	noun	Yahweh	θεοῦ	G2316
+o360010070051	ZEP 1:7!5	Sof 1:7	identitas	rendben	כִּ֤י	כִּי	H3588	3588	igen	C	conjunction	(dm)	δίοτι	G1360
+o360010070061	ZEP 1:7!6	Sof 1:7	identitas	rendben	קָרוֹב֙	קָרֹוב	H7138	7138	igen	Aamsa	adjective	[is].near	ἐγγὺς	G1451
+o360010070071	ZEP 1:7!7	Sof 1:7	identitas	rendben	י֣וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	the.day	ἡμέρα	G2250
+o360010070081	ZEP 1:7!8	Sof 1:7	identitas	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh		
+o360010070091	ZEP 1:7!9	Sof 1:7	identitas	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o360010070101	ZEP 1:7!10	Sof 1:7	identitas	rendben	הֵכִ֧ין	כּוּן	H3559	3559	igen	Vhp3ms	verb	he.has.prepared	ἡτοίμακεν	
+o360010070111	ZEP 1:7!11	Sof 1:7	identitas	rendben	יְהוָ֛ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o360010070121	ZEP 1:7!12	Sof 1:7	identitas	rendben	זֶ֖בַח	זֶבַח	H2077	2077	igen	Ncmsa	noun	a.sacrifice	θυσίαν	G2378
+o360010070131	ZEP 1:7!13	Sof 1:7	identitas	rendben	הִקְדִּ֥ישׁ	קָדַשׁ	H6942	6942	igen	Vhp3ms	verb	he.has.consecrated	ἡγίακεν	
+o360010070141	ZEP 1:7!14	Sof 1:7	identitas	rendben	קְרֻאָֽי	קָרָא	H7121	7121	igen	Vqsmpc	verb	[those		
+o360010070142	ZEP 1:7!14	Sof 1:7	identitas	javaslat:strong_funkcio_kod	ו	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	who.were].invited.by.him	αὐτοῦ	G0846
+o360010080011	ZEP 1:8!1	Sof 1:8	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010080012	ZEP 1:8!1	Sof 1:8	identitas	rendben	הָיָ֗ה	הָיָה	H1961	1961	igen	Vqq3ms	verb	it.will.be	ἔσται	G2071
+o360010080021	ZEP 1:8!2	Sof 1:8	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on	ἐν	G1722
+o360010080022	ZEP 1:8!2	Sof 1:8	identitas	rendben	יוֹם֙	יוֹם	H3117	3117	igen	Ncmsc	noun	the.day	ἡμέρᾳ	G2250
+o360010080031	ZEP 1:8!3	Sof 1:8	identitas	rendben	זֶ֣בַח	זֶבַח	H2077	2077	igen	Ncmsc	noun	of.the.sacrifice	θυσίας	G2378
+o360010080041	ZEP 1:8!4	Sof 1:8	identitas	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o360010080051	ZEP 1:8!5	Sof 1:8	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010080052	ZEP 1:8!5	Sof 1:8	identitas	rendben	פָקַדְתִּ֥י	פָּקַד	H6485	6485	igen	Vqq1cs	verb	I.will.visit.[judgment]	ἐκδικήσω	G1556
+o360010080061	ZEP 1:8!6	Sof 1:8	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360010080071	ZEP 1:8!7	Sof 1:8	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τοὺς	G3588
+o360010080072	ZEP 1:8!7	Sof 1:8	identitas	rendben	שָּׂרִ֖ים	שַׂר	H8269	8269	igen	Ncmpa	noun	princes	ἄρξοντας	G0758
+o360010080081	ZEP 1:8!8	Sof 1:8	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010080082	ZEP 1:8!8	Sof 1:8	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360010080091	ZEP 1:8!9	Sof 1:8	identitas	rendben	בְּנֵ֣י	בֵּן	H1121	1121	igen	Ncmpc	noun	the.sons		
+o360010080101	ZEP 1:8!10	Sof 1:8	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τοῦ	G3588
+o360010080102	ZEP 1:8!10	Sof 1:8	identitas	rendben	מֶּ֑לֶךְ	מֶלֶךְ	H4428	4428	igen	Ncmsa	noun	the.king	βασιλέως	G0935
+o360010080111	ZEP 1:8!11	Sof 1:8	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010080112	ZEP 1:8!11	Sof 1:8	identitas	rendben	עַ֥ל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360010080121	ZEP 1:8!12	Sof 1:8	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντας	G3956
+o360010080131	ZEP 1:8!13	Sof 1:8	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[those	τοὺς	G3588
+o360010080132	ZEP 1:8!13	Sof 1:8	identitas	rendben	לֹּבְשִׁ֖ים	לָבֵשׁ	H3847	3847	igen	Vqrmpa	verb	who.are].clothed	ἐνδεδυμένους	
+o360010080141	ZEP 1:8!14	Sof 1:8	identitas	rendben	מַלְבּ֥וּשׁ	מַלְבּוּשׁ	H4403	4403	igen	Ncmsa	noun	clothing	ἐνδύματα	
+o360010080151	ZEP 1:8!15	Sof 1:8	identitas	rendben	נָכְרִֽי	נׇכְרִי	H5237	5237	igen	Aamsa	adjective	foreign	ἀλλότρια	G0245
+o360010090011	ZEP 1:9!1	Sof 1:9	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010090012	ZEP 1:9!1	Sof 1:9	identitas	rendben	פָקַדְתִּ֗י	פָּקַד	H6485	6485	igen	Vqq1cs	verb	I.will.visit.[judgment]	ἐκδικήσω	G1556
+o360010090021	ZEP 1:9!2	Sof 1:9	identitas	rendben	עַ֧ל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360010090031	ZEP 1:9!3	Sof 1:9	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	every	πάντας	G3956
+o360010090041	ZEP 1:9!4	Sof 1:9	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the).[one		
+o360010090042	ZEP 1:9!4	Sof 1:9	identitas	rendben	דּוֹלֵ֛ג	דָּלַג	H1801	1801	igen	Vqrmsa	verb	who].leaps	ἐμφανῶς	
+o360010090051	ZEP 1:9!5	Sof 1:9	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	over	ἐπὶ	G1909
+o360010090061	ZEP 1:9!6	Sof 1:9	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰ	G3588
+o360010090062	ZEP 1:9!6	Sof 1:9	identitas	rendben	מִּפְתָּ֖ן	מִפְתָּן	H4670	4670	igen	Ncmsa	noun	threshold	πρόπυλα	
+o360010090071	ZEP 1:9!7	Sof 1:9	identitas	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	on	ἐν	G1722
+o360010090071ה	ZEP 1:9!7	Sof 1:9	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360010090072	ZEP 1:9!7	Sof 1:9	identitas	rendben	יּ֣וֹם	יוֹם	H3117	3117	igen	Ncmsa	noun	day		
+o360010090081	ZEP 1:9!8	Sof 1:9	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o360010090082	ZEP 1:9!8	Sof 1:9	identitas	rendben	ה֑וּא	הוּא	H1931	1931	igen	Pp3ms	pronoun	that		
+o360010090091	ZEP 1:9!9	Sof 1:9	identitas	javaslat:strong_funkcio_kod	הַֽ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[those	τοὺς	G3588
+o360010090092	ZEP 1:9!9	Sof 1:9	identitas	rendben	מְמַלְאִ֛ים	מָלֵא	H4390	4390	igen	Vprmpa	verb	who].fill	πληροῦντας	G4137
+o360010090101	ZEP 1:9!10	Sof 1:9	identitas	rendben	בֵּ֥ית	בַּיִת	H1004	1004	igen	Ncmsc	noun	the.house	οἶκον	G3624
+o360010090111	ZEP 1:9!11	Sof 1:9	identitas	rendben	אֲדֹנֵי	אָדוֹן	H0113	0113	igen	Ncmpc	noun	their.lord(s)		
+o360010090112	ZEP 1:9!11	Sof 1:9	identitas	javaslat:strong_funkcio_kod	הֶ֖ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360010090121	ZEP 1:9!12	Sof 1:9	identitas	rendben	חָמָ֥ס	חָמָס	H2555	2555	igen	Ncmsa	noun	violence	ἀσεβείας	G0763
+o360010090131	ZEP 1:9!13	Sof 1:9	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010090132	ZEP 1:9!13	Sof 1:9	identitas	rendben	מִרְמָֽה	מִרְמָה	H4820	4820	igen	Ncfsa	noun	deceit	δόλου	G1388
+o360010100011	ZEP 1:10!1	Sof 1:10	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010100012	ZEP 1:10!1	Sof 1:10	identitas	rendben	הָיָה֩	הָיָה	H1961	1961	igen	Vqq3ms	verb	it.will.be	ἔσται	G2071
+o360010100021	ZEP 1:10!2	Sof 1:10	identitas	javaslat:strong_funkcio_kod	בַ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	on	ἐν	G1722
+o360010100021ה	ZEP 1:10!2	Sof 1:10	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360010100022	ZEP 1:10!2	Sof 1:10	identitas	rendben	יּ֨וֹם	יוֹם	H3117	3117	igen	Ncmsa	noun	day		
+o360010100031	ZEP 1:10!3	Sof 1:10	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o360010100032	ZEP 1:10!3	Sof 1:10	identitas	rendben	ה֜וּא	הוּא	H1931	1931	igen	Pp3ms	pronoun	that		
+o360010100041	ZEP 1:10!4	Sof 1:10	identitas	rendben	נְאֻם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o360010100051	ZEP 1:10!5	Sof 1:10	identitas	rendben	יְהוָ֗ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o360010100061	ZEP 1:10!6	Sof 1:10	identitas	rendben	ק֤וֹל	קוֹל	H6963	6963	igen	Ncmsc	noun	[the].sound	φωνὴ	G5456
+o360010100071	ZEP 1:10!7	Sof 1:10	identitas	rendben	צְעָקָה֙	צְעָקָה	H6818	6818	igen	Ncfsa	noun	of.a.cry.of.distress	κραυγῆς	G2906
+o360010100081	ZEP 1:10!8	Sof 1:10	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from	ἀπὸ	G0575
+o360010100082	ZEP 1:10!8	Sof 1:10	identitas	rendben	שַּׁ֣עַר	שַׁעַר	H8179	8179	igen	Ncmsc	noun	the.gate	πύλης	G4439
+o360010100091	ZEP 1:10!9	Sof 1:10	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of		
+o360010100092	ZEP 1:10!9	Sof 1:10	identitas	rendben	דָּגִ֔ים	דָּג	H1709	1709	igen	Ncmpa	noun	the.fish(es)	ἀποκεντούντων	
+o360010100101	ZEP 1:10!10	Sof 1:10	identitas	javaslat:strong_funkcio_kod	וִֽ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010100102	ZEP 1:10!10	Sof 1:10	identitas	rendben	ילָלָ֖ה	יְלָלָה	H3215	3215	igen	Ncfsa	noun	wailing	ὀλολυγμὸς	
+o360010100111	ZEP 1:10!11	Sof 1:10	identitas	rendben	מִן	מִן	H4480	4480	igen	R	preposition	from	ἀπὸ	G0575
+o360010100121	ZEP 1:10!12	Sof 1:10	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the.second	τῆς	G3588
+o360010100122	ZEP 1:10!12	Sof 1:10	identitas	rendben	מִּשְׁנֶ֑ה	מִשְׁנֶה	H4932	4932	igen	Ncmsa	noun	district	δευτέρας	G1208
+o360010100131	ZEP 1:10!13	Sof 1:10	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010100132	ZEP 1:10!13	Sof 1:10	identitas	rendben	שֶׁ֥בֶר	שֶׁבֶר	H7667	7667	igen	Ncmsa	noun	a.crashing	συντριμμὸς	
+o360010100141	ZEP 1:10!14	Sof 1:10	identitas	rendben	גָּד֖וֹל	גָּדוֹל	H1419	1419	igen	Aamsa	adjective	great	μέγας	G3173
+o360010100151	ZEP 1:10!15	Sof 1:10	identitas	rendben	מֵ	מִן	H4480	4480	igen	R	preposition	from	ἀπὸ	G0575
+o360010100152	ZEP 1:10!15	Sof 1:10	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τῶν	G3588
+o360010100153	ZEP 1:10!15	Sof 1:10	identitas	rendben	גְּבָעֽוֹת	גִּבְעָה	H1389	1389	igen	Ncfpa	noun	hills	βουνῶν	G1015
+o360010110011	ZEP 1:11!1	Sof 1:11	identitas	rendben	הֵילִ֖ילוּ	יָלַל	H3213	3213	igen	Vhv2mp	verb	wail	θρηνήσατε	
+o360010110021	ZEP 1:11!2	Sof 1:11	identitas	rendben	יֹשְׁבֵ֣י	יָשַׁב	H3427	3427	igen	Vqrmpc	verb	O.inhabitants	κατοικοῦντες	G2730
+o360010110031	ZEP 1:11!3	Sof 1:11	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τὴν	G3588
+o360010110032	ZEP 1:11!3	Sof 1:11	identitas	rendben	מַּכְתֵּ֑שׁ	מַכְתֵּשׁ	H4389	4389	igen	Ncmsa	noun	the.Mortar	κατακεκομμένην	
+o360010110041	ZEP 1:11!4	Sof 1:11	identitas	rendben	כִּ֤י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o360010110051	ZEP 1:11!5	Sof 1:11	identitas	rendben	נִדְמָה֙	דָּמָה	H1820	1820	igen	VNp3ms	verb	it.will.be.destroyed	ὡμοιώθη	G3666
+o360010110061	ZEP 1:11!6	Sof 1:11	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πᾶς	G3956
+o360010110071	ZEP 1:11!7	Sof 1:11	identitas	rendben	עַ֣ם	עַם	H5971	5971	igen	Ncmsc	noun	the.people	λαὸς	G2992
+o360010110081	ZEP 1:11!8	Sof 1:11	identitas	javaslat:strong_betu_alap	כְּנַ֔עַן	כְּנַעַן	H3667	3667a	javaslat:betu_alap	Np	noun	of.Canaan	ξανααν	G5477
+o360010110091	ZEP 1:11!9	Sof 1:11	identitas	rendben	נִכְרְת֖וּ	כָּרַת	H3772	3772	igen	VNp3cp	verb	they.will.be.cut.off	ἐχωλεθρεύθησαν	
+o360010110101	ZEP 1:11!10	Sof 1:11	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντες	G3956
+o360010110111	ZEP 1:11!11	Sof 1:11	identitas	rendben	נְטִ֥ילֵי	נָטִיל	H5187	5187	igen	Ncmpc	noun	[the].weighers	ἐπηρμένοι	
+o360010110121	ZEP 1:11!12	Sof 1:11	identitas	rendben	כָֽסֶף	כֶּסֶף	H3701	3701	igen	Ncmsa	noun	of.silver	ἀργυρίῳ	G0694
+o360010120011	ZEP 1:12!1	Sof 1:12	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010120012	ZEP 1:12!1	Sof 1:12	identitas	rendben	הָיָה֙	הָיָה	H1961	1961	igen	Vqq3ms	verb	it.will.be	ἔσται	G2071
+o360010120021	ZEP 1:12!2	Sof 1:12	identitas	javaslat:strong_funkcio_kod	בָּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	at	ἐν	G1722
+o360010120021ה	ZEP 1:12!2	Sof 1:12	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360010120022	ZEP 1:12!2	Sof 1:12	identitas	rendben	עֵ֣ת	עֵת	H6256	6256	igen	Ncbsa	noun	time		
+o360010120031	ZEP 1:12!3	Sof 1:12	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o360010120032	ZEP 1:12!3	Sof 1:12	identitas	javaslat:strong_funkcio_kod	הִ֔יא	הִיא		1931a	javaslat:funkcio_kod	Pp3fs	pronoun	that	{..^ἐκείνῃ	
+o360010120041	ZEP 1:12!4	Sof 1:12	identitas	rendben	אֲחַפֵּ֥שׂ	חָפַשׂ	H2664	2664	igen	Vpi1cs	verb	I.will.search	ἐχερευνήσω	
+o360010120051	ZEP 1:12!5	Sof 1:12	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360010120061	ZEP 1:12!6	Sof 1:12	identitas	rendben	יְרוּשָׁלִַ֖ם	יְרוּשָׁלִַ͏ם	H3389	3389	igen	Np	noun	Jerusalem	ιερουσαλημ	G2414
+o360010120071	ZEP 1:12!7	Sof 1:12	identitas	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	with	μετὰ	G3326
+o360010120071ה	ZEP 1:12!7	Sof 1:12	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o360010120072	ZEP 1:12!7	Sof 1:12	identitas	rendben	נֵּר֑וֹת	נֵר	H5216	5216	igen	Ncmpa	noun	lamps	λύξνου	G3088
+o360010120081	ZEP 1:12!8	Sof 1:12	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010120082	ZEP 1:12!8	Sof 1:12	identitas	rendben	פָקַדְתִּ֣י	פָּקַד	H6485	6485	igen	Vqq1cs	verb	I.will.visit.[judgment]	ἐκδικήσω	G1556
+o360010120091	ZEP 1:12!9	Sof 1:12	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360010120101	ZEP 1:12!10	Sof 1:12	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τοὺς	G3588
+o360010120102	ZEP 1:12!10	Sof 1:12	identitas	rendben	אֲנָשִׁ֗ים	אִישׁ	H0376	0376	igen	Ncmpa	noun	people	ἄνδρας	G0435
+o360010120111	ZEP 1:12!11	Sof 1:12	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[who	τοὺς	G3588
+o360010120112	ZEP 1:12!11	Sof 1:12	identitas	rendben	קֹּֽפְאִים֙	קָפָא	H7087	7087	igen	Vqrmpa	verb	are].thickening	καταφρονοῦντας	G2706
+o360010120121	ZEP 1:12!12	Sof 1:12	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360010120131	ZEP 1:12!13	Sof 1:12	identitas	rendben	שִׁמְרֵי	שֶׁמֶר	H8105	8105	igen	Ncmpc	noun	lees		
+o360010120132	ZEP 1:12!13	Sof 1:12	identitas	javaslat:strong_funkcio_kod	הֶ֔ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360010120141	ZEP 1:12!14	Sof 1:12	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[who	οἱ	G3588
+o360010120142	ZEP 1:12!14	Sof 1:12	identitas	rendben	אֹֽמְרִים֙	אָמַר	H0559	0559	igen	Vqrmpa	verb	are].saying	λέγοντες	G3004
+o360010120151	ZEP 1:12!15	Sof 1:12	identitas	javaslat:strong_funkcio_kod	בִּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o360010120152	ZEP 1:12!15	Sof 1:12	identitas	rendben	לְבָבָ֔	לֵבָב	H3824	3824	igen	Ncmsc	noun	heart	καρδίαις	G2588
+o360010120153	ZEP 1:12!15	Sof 1:12	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360010120161	ZEP 1:12!16	Sof 1:12	identitas	rendben	לֹֽא	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o360010120171	ZEP 1:12!17	Sof 1:12	identitas	rendben	יֵיטִ֥יב	יָטַב	H3190	3190	igen	Vhi3ms	verb	he.will.do.good	ἀγαθοποιήσῃ	G0015
+o360010120181	ZEP 1:12!18	Sof 1:12	identitas	rendben	יְהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o360010120191	ZEP 1:12!19	Sof 1:12	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o360010120192	ZEP 1:12!19	Sof 1:12	identitas	rendben	לֹ֥א	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o360010120201	ZEP 1:12!20	Sof 1:12	identitas	rendben	יָרֵֽעַ	רָעַע	H7489	7489	igen	Vhi3ms	verb	he.will.do.harm	κακώσῃ	
+o360010130011	ZEP 1:13!1	Sof 1:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010130012	ZEP 1:13!1	Sof 1:13	identitas	rendben	הָיָ֤ה	הָיָה	H1961	1961	igen	Vqq3ms	verb	it.will.become	ἔσται	G2071
+o360010130021	ZEP 1:13!2	Sof 1:13	identitas	rendben	חֵילָ	חַיִל	H2428	2428	igen	Ncmsc	noun	wealth	δύναμις	G1411
+o360010130022	ZEP 1:13!2	Sof 1:13	identitas	javaslat:strong_funkcio_kod	ם֙	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360010130031	ZEP 1:13!3	Sof 1:13	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(into)	εἰς	G1519
+o360010130032	ZEP 1:13!3	Sof 1:13	identitas	rendben	מְשִׁסָּ֔ה	מְשִׁסָּה	H4933	4933	igen	Ncfsa	noun	plunder	διαρπαγὴν	
+o360010130041	ZEP 1:13!4	Sof 1:13	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010130042	ZEP 1:13!4	Sof 1:13	identitas	rendben	בָתֵּי	בַּיִת	H1004	1004	igen	Ncmpc	noun	houses		
+o360010130043	ZEP 1:13!4	Sof 1:13	identitas	javaslat:strong_funkcio_kod	הֶ֖ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360010130051	ZEP 1:13!5	Sof 1:13	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(into).a	εἰς	G1519
+o360010130052	ZEP 1:13!5	Sof 1:13	identitas	rendben	שְׁמָמָ֑ה	שְׁמָמָה	H8077	8077	igen	Ncfsa	noun	desolation	ἀφανισμόν	G0854
+o360010130061	ZEP 1:13!6	Sof 1:13	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010130062	ZEP 1:13!6	Sof 1:13	identitas	rendben	בָנ֤וּ	בָּנָה	H1129	1129	igen	Vqq3cp	verb	they.will.build	οἰκοδομήσουσιν	G3618
+o360010130071	ZEP 1:13!7	Sof 1:13	identitas	rendben	בָתִּים֙	בַּיִת	H1004	1004	igen	Ncmpa	noun	houses	οἰκίας	G3614
+o360010130081	ZEP 1:13!8	Sof 1:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010130082	ZEP 1:13!8	Sof 1:13	identitas	rendben	לֹ֣א	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o360010130091	ZEP 1:13!9	Sof 1:13	identitas	rendben	יֵשֵׁ֔בוּ	יָשַׁב	H3427	3427	igen	Vqi3mp	verb	they.will.dwell.[in.them]	κατοικήσουσιν	
+o360010130101	ZEP 1:13!10	Sof 1:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010130102	ZEP 1:13!10	Sof 1:13	identitas	rendben	נָטְע֣וּ	נָטַע	H5193	5193	igen	Vqq3cp	verb	they.will.plant	καταφυτεύσουσιν	
+o360010130111	ZEP 1:13!11	Sof 1:13	identitas	rendben	כְרָמִ֔ים	כֶּרֶם	H3754	3754	igen	Ncbpa	noun	vineyards	ἀμπελῶνας	G0290
+o360010130121	ZEP 1:13!12	Sof 1:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010130122	ZEP 1:13!12	Sof 1:13	identitas	rendben	לֹ֥א	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o360010130131	ZEP 1:13!13	Sof 1:13	identitas	rendben	יִשְׁתּ֖וּ	שָׁתָה	H8354	8354	igen	Vqi3mp	verb	they.will.drink	πίωσιν	G4095
+o360010130141	ZEP 1:13!14	Sof 1:13	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360010130151	ZEP 1:13!15	Sof 1:13	identitas	rendben	יֵינָֽ	יַיִן	H3196	3196	igen	Ncmsc	noun	wine	οἶνον	G3631
+o360010130152	ZEP 1:13!15	Sof 1:13	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360010140011	ZEP 1:14!1	Sof 1:14	identitas	rendben	קָר֤וֹב	קָרֹוב	H7138	7138	igen	Aamsa	adjective	[is].near	ἐγγὺς	G1451
+o360010140021	ZEP 1:14!2	Sof 1:14	identitas	rendben	יוֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	the.day	ἡμέρα	G2250
+o360010140031	ZEP 1:14!3	Sof 1:14	identitas	rendben	יְהוָה֙	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o360010140041	ZEP 1:14!4	Sof 1:14	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	ἡ	G3588
+o360010140042	ZEP 1:14!4	Sof 1:14	identitas	rendben	גָּד֔וֹל	גָּדוֹל	H1419	1419	igen	Aamsa	adjective	great	μεγάλη	G3173
+o360010140051	ZEP 1:14!5	Sof 1:14	identitas	rendben	קָר֖וֹב	קָרֹב	H7138	7138	igen	Aamsa	adjective	near	ἐγγὺς	G1451
+o360010140061	ZEP 1:14!6	Sof 1:14	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010140062	ZEP 1:14!6	Sof 1:14	identitas	rendben	מַהֵ֣ר	מַהֵר	H4118	4118	igen	Aamsa	adjective	hurrying	ταξεῖα	
+o360010140071	ZEP 1:14!7	Sof 1:14	identitas	rendben	מְאֹ֑ד	מְאֹד	H3966	3966	igen	D	adverb	exceedingly	σφόδρα	G4970
+o360010140081	ZEP 1:14!8	Sof 1:14	identitas	rendben	ק֚וֹל	קוֹל	H6963	6963	igen	Ncmsc	noun	the.sound	φωνὴ	G5456
+o360010140091	ZEP 1:14!9	Sof 1:14	identitas	rendben	י֣וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	of.the.day	ἡμέρας	G2250
+o360010140101	ZEP 1:14!10	Sof 1:14	identitas	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o360010140111	ZEP 1:14!11	Sof 1:14	identitas	rendben	מַ֥ר	מַר	H4751	4751	igen	Aamsa	adjective	bitter	πικρὰ	
+o360010140121	ZEP 1:14!12	Sof 1:14	identitas	rendben	צֹרֵ֖חַ	צָרַח	H6873	6873	igen	Vqrmsa	verb	[is].shouting		
+o360010140131	ZEP 1:14!13	Sof 1:14	identitas	rendben	שָׁ֥ם	שָׁם	H8033	8033	igen	D	adverb	there	τέτακται	
+o360010140141	ZEP 1:14!14	Sof 1:14	identitas	rendben	גִּבּֽוֹר	גִּבּוֹר	H1368	1368	igen	Aamsa	adjective	a.warrior	δυνατή	
+o360010150011	ZEP 1:15!1	Sof 1:15	identitas	rendben	י֥וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	[will.be].a.day	ἡμέρα	G2250
+o360010150021	ZEP 1:15!2	Sof 1:15	identitas	rendben	עֶבְרָ֖ה	עֶבְרָה	H5678	5678	igen	Ncfsa	noun	of.fury	ὀργῆς	G3709
+o360010150031	ZEP 1:15!3	Sof 1:15	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἡ	G3588
+o360010150032	ZEP 1:15!3	Sof 1:15	identitas	rendben	יּ֣וֹם	יוֹם	H3117	3117	igen	Ncmsa	noun	day	ἡμέρα	G2250
+o360010150041	ZEP 1:15!4	Sof 1:15	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o360010150042	ZEP 1:15!4	Sof 1:15	identitas	rendben	ה֑וּא	הוּא	H1931	1931	igen	Pp3ms	pronoun	that	ἐκείνη	G1565
+o360010150051	ZEP 1:15!5	Sof 1:15	identitas	rendben	י֧וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	a.day	ἡμέρα	G2250
+o360010150061	ZEP 1:15!6	Sof 1:15	identitas	rendben	צָרָ֣ה	צָרָה	H6869	6869	igen	Ncfsa	noun	of.distress	θλίψεως	G2347
+o360010150071	ZEP 1:15!7	Sof 1:15	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010150072	ZEP 1:15!7	Sof 1:15	identitas	rendben	מְצוּקָ֗ה	מְצוּקָה	H4691	4691	igen	Ncfsa	noun	trouble	ἀνάγκης	G0318
+o360010150081	ZEP 1:15!8	Sof 1:15	identitas	rendben	י֤וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	a.day	ἡμέρα	G2250
+o360010150091	ZEP 1:15!9	Sof 1:15	identitas	javaslat:strong_betu_alap	שֹׁאָה֙	שׁוֹאָה	H7722	7722a	javaslat:betu_alap	Ncfsa	noun	of.devastation	ἀωρίας	
+o360010150101	ZEP 1:15!10	Sof 1:15	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010150102	ZEP 1:15!10	Sof 1:15	identitas	rendben	מְשׁוֹאָ֔ה	מְשׁוֹאָה	H4875	4875	igen	Ncfsa	noun	desolation	ἀφανισμοῦ	G0854
+o360010150111	ZEP 1:15!11	Sof 1:15	identitas	rendben	י֥וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	a.day	ἡμέρα	G2250
+o360010150121	ZEP 1:15!12	Sof 1:15	identitas	rendben	חֹ֨שֶׁךְ֙	חֹשֶׁךְ	H2822	2822	igen	Ncmsa	noun	of.darkness	σκότους	G4655
+o360010150131	ZEP 1:15!13	Sof 1:15	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010150132	ZEP 1:15!13	Sof 1:15	identitas	rendben	אֲפֵלָ֔ה	אֲפֵלָה	H0653	0653	igen	Ncfsa	noun	gloom	γνόφου	
+o360010150141	ZEP 1:15!14	Sof 1:15	identitas	rendben	י֥וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	a.day	ἡμέρα	G2250
+o360010150151	ZEP 1:15!15	Sof 1:15	identitas	rendben	עָנָ֖ן	עָנָן	H6051	6051	igen	Ncmsa	noun	of.cloud	νεφέλης	G3507
+o360010150161	ZEP 1:15!16	Sof 1:15	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010150162	ZEP 1:15!16	Sof 1:15	identitas	rendben	עֲרָפֶֽל	עֲרָפֶל	H6205	6205	igen	Ncmsa	noun	thick.darkness	ὁμίξλης	
+o360010160011	ZEP 1:16!1	Sof 1:16	identitas	rendben	י֥וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	a.day	ἡμέρα	G2250
+o360010160021	ZEP 1:16!2	Sof 1:16	identitas	rendben	שׁוֹפָ֖ר	שֹׁופָר	H7782	7782	igen	Ncmsa	noun	of.trumpet	σάλπιγγος	G4536
+o360010160031	ZEP 1:16!3	Sof 1:16	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010160032	ZEP 1:16!3	Sof 1:16	identitas	rendben	תְרוּעָ֑ה	תְּרוּעָה	H8643	8643	igen	Ncfsa	noun	battle-cry	κραυγῆς	G2906
+o360010160041	ZEP 1:16!4	Sof 1:16	identitas	rendben	עַ֚ל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360010160051	ZEP 1:16!5	Sof 1:16	identitas	javaslat:strong_funkcio_kod	הֶ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰς	G3588
+o360010160052	ZEP 1:16!5	Sof 1:16	identitas	rendben	עָרִ֣ים	עִיר	H5892	5892	igen	Ncfpa	noun	cities	πόλεις	G4172
+o360010160061	ZEP 1:16!6	Sof 1:16	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	τὰς	G3588
+o360010160062	ZEP 1:16!6	Sof 1:16	identitas	rendben	בְּצֻר֔וֹת	בָּצוּר	H1208	1208	igen	Aafpa	adjective	fortified	ὀξυρὰς	
+o360010160071	ZEP 1:16!7	Sof 1:16	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010160072	ZEP 1:16!7	Sof 1:16	identitas	rendben	עַ֖ל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360010160081	ZEP 1:16!8	Sof 1:16	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰς	G3588
+o360010160082	ZEP 1:16!8	Sof 1:16	identitas	rendben	פִּנּ֥וֹת	פִּנָּה	H6438	6438	igen	Ncfpa	noun	corners	γωνίας	G1137
+o360010160091	ZEP 1:16!9	Sof 1:16	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	τὰς	G3588
+o360010160092	ZEP 1:16!9	Sof 1:16	identitas	rendben	גְּבֹהֽוֹת	גָּבֹהַּ	H1364	1364	igen	Aafpa	adjective	high	ὑψηλάς	G5308
+o360010170011	ZEP 1:17!1	Sof 1:17	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010170012	ZEP 1:17!1	Sof 1:17	identitas	rendben	הֲצֵרֹ֣תִי	צָרַר	H6887	6887	igen	Vhq1cs	verb	I.will.cause.distress	ἐκθλίψω	
+o360010170021	ZEP 1:17!2	Sof 1:17	identitas	javaslat:strong_funkcio_kod	לָ	לְ		3807a	javaslat:funkcio_kod	Rd	preposition	to	τοὺς	G3588
+o360010170021ה	ZEP 1:17!2	Sof 1:17	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o360010170022	ZEP 1:17!2	Sof 1:17	identitas	rendben	אָדָ֗ם	אָדָם	H0120	0120	igen	Ncmsa	noun	humankind	ἀνθρώπους	G0444
+o360010170031	ZEP 1:17!3	Sof 1:17	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010170032	ZEP 1:17!3	Sof 1:17	identitas	rendben	הָֽלְכוּ֙	הָלַךְ	H1980	1980	igen	Vqq3cp	verb	they.will.walk	πορεύσονται	G4198
+o360010170041	ZEP 1:17!4	Sof 1:17	identitas	javaslat:strong_funkcio_kod	כַּֽ	כְּ		3509a	javaslat:funkcio_kod	Rd	preposition	like.(the)	ὡς	G5613
+o360010170041ה	ZEP 1:17!4	Sof 1:17	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	blind		
+o360010170042	ZEP 1:17!4	Sof 1:17	identitas	rendben	עִוְרִ֔ים	עִוֵּר	H5787	5787	igen	Aampa	adjective	[people]	τυφλοί	G5185
+o360010170051	ZEP 1:17!5	Sof 1:17	identitas	rendben	כִּ֥י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o360010170061	ZEP 1:17!6	Sof 1:17	identitas	javaslat:strong_funkcio_kod	לַֽ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τῷ	G3588
+o360010170062	ZEP 1:17!6	Sof 1:17	identitas	rendben	יהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κυρίῳ	G2962
+o360010170071	ZEP 1:17!7	Sof 1:17	identitas	rendben	חָטָ֑אוּ	חָטָא	H2398	2398	igen	Vqp3cp	verb	they.have.sinned	ἐχήμαρτον	
+o360010170081	ZEP 1:17!8	Sof 1:17	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010170082	ZEP 1:17!8	Sof 1:17	identitas	rendben	שֻׁפַּ֤ךְ	שָׁפַךְ	H8210	8210	igen	VQq3ms	verb	it.will.be.poured.out	ἐκξεεῖ	
+o360010170091	ZEP 1:17!9	Sof 1:17	identitas	rendben	דָּמָ	דָּם	H1818	1818	igen	Ncmsc	noun	blood	αἷμα	G0129
+o360010170092	ZEP 1:17!9	Sof 1:17	identitas	javaslat:strong_funkcio_kod	ם֙	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360010170101	ZEP 1:17!10	Sof 1:17	identitas	javaslat:strong_funkcio_kod	כֶּֽ	כְּ		3509a	javaslat:funkcio_kod	Rd	preposition	like	ὡς	G5613
+o360010170101ה	ZEP 1:17!10	Sof 1:17	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o360010170102	ZEP 1:17!10	Sof 1:17	identitas	rendben	עָפָ֔ר	עָפָר	H6083	6083	igen	Ncmsa	noun	dust	ξοῦν	G5522
+o360010170111	ZEP 1:17!11	Sof 1:17	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010170112	ZEP 1:17!11	Sof 1:17	identitas	rendben	לְחֻמָ֖	לְחוּם	H3894	3894	igen	Ncmsc	noun	bowel[s]		
+o360010170113	ZEP 1:17!11	Sof 1:17	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360010170121	ZEP 1:17!12	Sof 1:17	identitas	javaslat:strong_funkcio_kod	כַּ	כְּ		3509a	javaslat:funkcio_kod	Rd	preposition	like	ὡς	G5613
+o360010170121ה	ZEP 1:17!12	Sof 1:17	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o360010170122	ZEP 1:17!12	Sof 1:17	identitas	rendben	גְּלָלִֽים	גָּלָל	H1557	1557	igen	Ncmpa	noun	dung(s)	βόλβιτα	
+o360010180011	ZEP 1:18!1	Sof 1:18	identitas	rendben	גַּם	גַּם	H1571	1571	igen	Ta	particle	neither	καὶ	G2532
+o360010180021	ZEP 1:18!2	Sof 1:18	identitas	rendben	כַּסְפָּ֨	כֶּסֶף	H3701	3701	igen	Ncmsc	noun	silver	ἀργύριον	G0694
+o360010180022	ZEP 1:18!2	Sof 1:18	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360010180031	ZEP 1:18!3	Sof 1:18	identitas	rendben	גַּם	גַּם	H1571	1571	igen	Ta	particle	nor	καὶ	G2532
+o360010180041	ZEP 1:18!4	Sof 1:18	identitas	rendben	זְהָבָ֜	זָהָב	H2091	2091	igen	Ncmsc	noun	gold		
+o360010180042	ZEP 1:18!4	Sof 1:18	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360010180051	ZEP 1:18!5	Sof 1:18	identitas	rendben	לֹֽא	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o360010180061	ZEP 1:18!6	Sof 1:18	identitas	rendben	יוּכַ֣ל	יָכֹל	H3201	3201	igen	Vqi3ms	verb	it.will.be.able	δύνηται	G1410
+o360010180071	ZEP 1:18!7	Sof 1:18	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to		
+o360010180072	ZEP 1:18!7	Sof 1:18	identitas	rendben	הַצִּילָ֗	נָצַל	H5337	5337	igen	Vhc	verb	deliver	ἐχελέσθαι	G1807
+o360010180073	ZEP 1:18!7	Sof 1:18	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	them		
+o360010180081	ZEP 1:18!8	Sof 1:18	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on	ἐν	G1722
+o360010180082	ZEP 1:18!8	Sof 1:18	identitas	rendben	יוֹם֙	יוֹם	H3117	3117	igen	Ncmsc	noun	the.day	ἡμέρᾳ	G2250
+o360010180091	ZEP 1:18!9	Sof 1:18	identitas	rendben	עֶבְרַ֣ת	עֶבְרָה	H5678	5678	igen	Ncfsc	noun	of.the.fury	ὀργῆς	G3709
+o360010180101	ZEP 1:18!10	Sof 1:18	identitas	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o360010180111	ZEP 1:18!11	Sof 1:18	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360010180112	ZEP 1:18!11	Sof 1:18	identitas	javaslat:strong_funkcio_kod	בְ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o360010180113	ZEP 1:18!11	Sof 1:18	identitas	rendben	אֵשׁ֙	אֵשׁ	H0784	0784	igen	Ncbsc	noun	the.fire	πυρὶ	G4442
+o360010180121	ZEP 1:18!12	Sof 1:18	identitas	rendben	קִנְאָת֔	קִנְאָה	H7068	7068	igen	Ncfsc	noun	his.jealousy	ζήλους	
+o360010180122	ZEP 1:18!12	Sof 1:18	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o360010180131	ZEP 1:18!13	Sof 1:18	identitas	rendben	תֵּאָכֵ֖ל	אָכַל	H0398	0398	igen	VNi3fs	verb	it.will.be.consumed	καταναλωθήσεται	
+o360010180141	ZEP 1:18!14	Sof 1:18	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πᾶσα	G3956
+o360010180151	ZEP 1:18!15	Sof 1:18	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἡ	G3588
+o360010180152	ZEP 1:18!15	Sof 1:18	identitas	rendben	אָ֑רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	earth	γῆ	G1093
+o360010180161	ZEP 1:18!16	Sof 1:18	identitas	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o360010180171	ZEP 1:18!17	Sof 1:18	identitas	rendben	כָלָ֤ה	כָּלָה	H3617	3617	igen	Ncfsa	noun	complete.destruction	συντέλειαν	
+o360010180181	ZEP 1:18!18	Sof 1:18	identitas	rendben	אַךְ	אַךְ	H0389	0389	igen	Ta	particle	surely	καὶ	G2532
+o360010180191	ZEP 1:18!19	Sof 1:18	identitas	rendben	נִבְהָלָה֙	בָּהַל	H0926	0926	igen	VNsfsa	verb	[that.which.is].terrible	σπουδὴν	G4710
+o360010180201	ZEP 1:18!20	Sof 1:18	identitas	rendben	יַֽעֲשֶׂ֔ה	עָשָׂה	H6213	6213	igen	Vqi3ms	verb	he.will.make	ποιήσει	G4160
+o360010180211	ZEP 1:18!21	Sof 1:18	identitas	rendben	אֵ֥ת	אֵת	H0854	0854	igen	To	particle	with		
+o360010180221	ZEP 1:18!22	Sof 1:18	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντας	G3956
+o360010180231	ZEP 1:18!23	Sof 1:18	identitas	rendben	יֹשְׁבֵ֖י	יָשַׁב	H3427	3427	igen	Vqrmpc	verb	the.inhabitants	κατοικοῦντας	G2730
+o360010180241	ZEP 1:18!24	Sof 1:18	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τὴν	G3588
+o360010180242	ZEP 1:18!24	Sof 1:18	identitas	rendben	אָֽרֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	the.earth	γῆν	G1093
+o360020010011	ZEP 2:1!1	Sof 2:1	identitas	rendben	הִֽתְקוֹשְׁשׁ֖וּ	קָשַׁשׁ	H7197	7197	igen	Vrv2mp	verb	gather.yourselves.together	συνάξθητε	G4863
+o360020010021	ZEP 2:1!2	Sof 2:1	identitas	javaslat:strong_funkcio_kod	וָ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020010022	ZEP 2:1!2	Sof 2:1	identitas	rendben	ק֑וֹשּׁוּ	קָשַׁשׁ	H7197	7197	igen	Vqv2mp	verb	gather.together	συνδέθητε	
+o360020010031	ZEP 2:1!3	Sof 2:1	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	O	τὸ	G3588
+o360020010032	ZEP 2:1!3	Sof 2:1	identitas	rendben	גּ֖וֹי	גּוֹי	H1471	1471	igen	Ncmsa	noun	nation	ἔθνος	G1484
+o360020010041	ZEP 2:1!4	Sof 2:1	identitas	rendben	לֹ֥א	לֹא	H3808	3808	igen	Tn	particle	not	τὸ	G3588
+o360020010051	ZEP 2:1!5	Sof 2:1	identitas	rendben	נִכְסָֽף	כָּסַף	H3700	3700	igen	VNp3ms	verb	ashamed	ἀπαίδευτον	G0521
+o360020020011	ZEP 2:2!1	Sof 2:2	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	before		
+o360020020012	ZEP 2:2!1	Sof 2:2	identitas	rendben	טֶ֨רֶם֙	טֶרֶם	H2962	2962	igen	D	adverb		πρὸ	G4253
+o360020020021	ZEP 2:2!2	Sof 2:2	identitas	rendben	לֶ֣דֶת	יָלַד	H3205	3205	igen	Vqc	verb	brings.forth		
+o360020020031	ZEP 2:2!3	Sof 2:2	identitas	rendben	חֹ֔ק	חֹק	H2706	2706	igen	Ncmsa	noun	a.decree		
+o360020020041	ZEP 2:2!4	Sof 2:2	identitas	javaslat:strong_funkcio_kod	כְּ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	like	ὡς	G5613
+o360020020042	ZEP 2:2!4	Sof 2:2	identitas	rendben	מֹ֖ץ	מֹץ	H4671	4671	igen	Ncmsa	noun	chaff	ἄνθος	G0438
+o360020020051	ZEP 2:2!5	Sof 2:2	identitas	rendben	עָ֣בַר	עָבַר	H5674	5674	igen	Vqp3ms	verb	it.has.passed.away	παραπορευόμενον	G3899
+o360020020061	ZEP 2:2!6	Sof 2:2	identitas	rendben	י֑וֹם	יוֹם	H3117	3117	igen	Ncmsa	noun	a.day		
+o360020020071	ZEP 2:2!7	Sof 2:2	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	before		
+o360020020072	ZEP 2:2!7	Sof 2:2	identitas	rendben	טֶ֣רֶם	טֶרֶם	H2962	2962	igen	D	adverb		πρὸ	G4253
+o360020020081	ZEP 2:2!8	Sof 2:2	identitas	rendben	לֹא	לֹא	H3808	3808	igen	Tn	particle	not		
+o360020020091	ZEP 2:2!9	Sof 2:2	identitas	rendben	יָב֣וֹא	בּוֹא	H0935	0935	igen	Vqi3ms	verb	it.will.come		
+o360020020101	ZEP 2:2!10	Sof 2:2	identitas	rendben	עֲלֵי	עַל	H5921	5921	igen	R	preposition	on	ἐφ’	G1909
+o360020020102	ZEP 2:2!10	Sof 2:2	identitas	javaslat:strong_funkcio_kod	כֶ֗ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμᾶς	G5209
+o360020020111	ZEP 2:2!11	Sof 2:2	identitas	rendben	חֲרוֹן֙	חָרוֹן	H2740	2740	igen	Ncmsc	noun	the.burning	ὀργὴν	G3709
+o360020020121	ZEP 2:2!12	Sof 2:2	identitas	rendben	אַף	אַף	H0639	0639	igen	Ta	particle	of.the.anger		
+o360020020131	ZEP 2:2!13	Sof 2:2	identitas	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o360020020141	ZEP 2:2!14	Sof 2:2	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	before		
+o360020020142	ZEP 2:2!14	Sof 2:2	identitas	rendben	טֶ֨רֶם֙	טֶרֶם	H2962	2962	igen	D	adverb		πρὸ	G4253
+o360020020151	ZEP 2:2!15	Sof 2:2	identitas	rendben	לֹא	לֹא	H3808	3808	igen	Tn	particle	not		
+o360020020161	ZEP 2:2!16	Sof 2:2	identitas	rendben	יָב֣וֹא	בּוֹא	H0935	0935	igen	Vqi3ms	verb	it.will.come		
+o360020020171	ZEP 2:2!17	Sof 2:2	identitas	rendben	עֲלֵי	עַל	H5921	5921	igen	R	preposition	on	ἐφ’	G1909
+o360020020172	ZEP 2:2!17	Sof 2:2	identitas	javaslat:strong_funkcio_kod	כֶ֔ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμᾶς	G5209
+o360020020181	ZEP 2:2!18	Sof 2:2	identitas	rendben	י֖וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	the.day	ἡμέραν	G2250
+o360020020191	ZEP 2:2!19	Sof 2:2	identitas	rendben	אַף	אַף	H0639	0639	igen	Ta	particle	of.the.anger	θυμοῦ	G2372
+o360020020201	ZEP 2:2!20	Sof 2:2	identitas	rendben	יְהוָֽה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o360020030011	ZEP 2:3!1	Sof 2:3	identitas	rendben	בַּקְּשׁ֤וּ	בָּקַשׁ	H1245	1245	igen	Vpv2mp	verb	seek	ζητήσατε	G2212
+o360020030021	ZEP 2:3!2	Sof 2:3	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360020030031	ZEP 2:3!3	Sof 2:3	identitas	rendben	יְהוָה֙	יהוה	H3068	3068	igen	Np	noun	Yahweh		
+o360020030041	ZEP 2:3!4	Sof 2:3	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	O.all	πάντες	G3956
+o360020030051	ZEP 2:3!5	Sof 2:3	identitas	rendben	עַנְוֵ֣י	עָנָו	H6035	6035	igen	Aampc	adjective	the.humble.[people]	ταπεινοὶ	G5011
+o360020030061	ZEP 2:3!6	Sof 2:3	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of		
+o360020030062	ZEP 2:3!6	Sof 2:3	identitas	rendben	אָ֔רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	the.land	γῆς	G1093
+o360020030071	ZEP 2:3!7	Sof 2:3	identitas	rendben	אֲשֶׁ֥ר	אֲשֶׁר	H0834	0834	igen	Tr	particle	who		
+o360020030081	ZEP 2:3!8	Sof 2:3	identitas	rendben	מִשְׁפָּט֖	מִשְׁפָּט	H4941	4941	igen	Ncmsc	noun	judgment	κρίμα	G2917
+o360020030082	ZEP 2:3!8	Sof 2:3	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his		
+o360020030091	ZEP 2:3!9	Sof 2:3	identitas	rendben	פָּעָ֑לוּ	פָּעַל	H6466	6466	igen	Vqp3cp	verb	they.have.done	ἐργάζεσθε	G2038
+o360020030101	ZEP 2:3!10	Sof 2:3	identitas	rendben	בַּקְּשׁוּ	בָּקַשׁ	H1245	1245	igen	Vpv2mp	verb	seek	καὶ	G2532
+o360020030111	ZEP 2:3!11	Sof 2:3	identitas	rendben	צֶ֨דֶק֙	צֶדֶק	H6664	6664	igen	Ncmsa	noun	righteousness	δικαιοσύνην	G1343
+o360020030121	ZEP 2:3!12	Sof 2:3	identitas	rendben	בַּקְּשׁ֣וּ	בָּקַשׁ	H1245	1245	igen	Vpv2mp	verb	seek		
+o360020030131	ZEP 2:3!13	Sof 2:3	identitas	rendben	עֲנָוָ֔ה	עֲנָוָה	H6038	6038	igen	Ncfsa	noun	humility		
+o360020030141	ZEP 2:3!14	Sof 2:3	identitas	rendben	אוּלַי֙	אוּלַי	H0194	0194	igen	D	adverb	perhaps	ὅπως	G3704
+o360020030151	ZEP 2:3!15	Sof 2:3	identitas	rendben	תִּסָּ֣תְר֔וּ	סָתַר	H5641	5641	igen	VNi2mp	verb	you.will.be.hidden	σκεπασθῆτε	
+o360020030161	ZEP 2:3!16	Sof 2:3	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on	ἐν	G1722
+o360020030162	ZEP 2:3!16	Sof 2:3	identitas	rendben	י֖וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	the.day	ἡμέρᾳ	G2250
+o360020030171	ZEP 2:3!17	Sof 2:3	identitas	rendben	אַף	אַף	H0639	0639	igen	Ta	particle	of.the.anger	ὀργῆς	G3709
+o360020030181	ZEP 2:3!18	Sof 2:3	identitas	rendben	יְהוָֽה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o360020040011	ZEP 2:4!1	Sof 2:4	identitas	rendben	כִּ֤י	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o360020040021	ZEP 2:4!2	Sof 2:4	identitas	rendben	עַזָּה֙	עַזָּה	H5804	5804	igen	Np	noun	Gaza	γάζα	G1048
+o360020040031	ZEP 2:4!3	Sof 2:4	identitas	rendben	עֲזוּבָ֣ה	עָזַב	H5800	5800	igen	Vqsfsa	verb	abandoned	διηρπασμένη	
+o360020040041	ZEP 2:4!4	Sof 2:4	identitas	rendben	תִֽהְיֶ֔ה	הָיָה	H1961	1961	igen	Vqi3fs	verb	it.will.be	ἔσται	G2071
+o360020040051	ZEP 2:4!5	Sof 2:4	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020040052	ZEP 2:4!5	Sof 2:4	identitas	rendben	אַשְׁקְל֖וֹן	אַשְׁקְלוֹן	H0831	0831	igen	Np	noun	Ashkelon	ἀσκαλὼν	
+o360020040061	ZEP 2:4!6	Sof 2:4	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	[will	εἰς	G1519
+o360020040062	ZEP 2:4!6	Sof 2:4	identitas	rendben	שְׁמָמָ֑ה	שְׁמָמָה	H8077	8077	igen	Ncfsa	noun	become].(into).a.desolation	ἀφανισμόν	G0854
+o360020040071	ZEP 2:4!7	Sof 2:4	identitas	rendben	אַשְׁדּ֗וֹד	אַשְׁדּוֹד	H0795	0795	igen	Np	noun	Ashdod		
+o360020040081	ZEP 2:4!8	Sof 2:4	identitas	javaslat:strong_funkcio_kod	בַּֽ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	at		
+o360020040081ה	ZEP 2:4!8	Sof 2:4	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360020040082	ZEP 2:4!8	Sof 2:4	identitas	javaslat:strong_betu_alap	צָּהֳרַ֨יִם֙	צָהֳרַיִם	H6672	6672a	javaslat:betu_alap	Ncmpa	noun	noontide(s)	μεσημβρίας	
+o360020040091	ZEP 2:4!9	Sof 2:4	identitas	rendben	יְגָ֣רְשׁ֔וּ	גָּרַשׁ	H1644	1644	igen	Vpi3mp	verb	people		
+o360020040092	ZEP 2:4!9	Sof 2:4	identitas	javaslat:strong_funkcio_kod	הָ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	will.drive.it.out	ἐκριφήσεται	
+o360020040101	ZEP 2:4!10	Sof 2:4	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020040102	ZEP 2:4!10	Sof 2:4	identitas	rendben	עֶקְר֖וֹן	עֶקְרוֹן	H6138	6138	igen	Np	noun	Ekron	ακκαρων	
+o360020040111	ZEP 2:4!11	Sof 2:4	identitas	rendben	תֵּעָקֵֽר	עָקַר	H6131	6131	igen	VNi3fs	verb	it.will.be.plucked.up	ἐκριζωθήσεται	G1610
+o360020050011	ZEP 2:5!1	Sof 2:5	identitas	rendben	ה֗וֹי	הוֹי	H1945	1945	igen	Tj	particle	woe.to!	οὐαὶ	G3759
+o360020050021	ZEP 2:5!2	Sof 2:5	identitas	rendben	יֹֽשְׁבֵ֛י	יָשַׁב	H3427	3427	igen	Vqrmpc	verb	the.inhabitants	κατοικοῦντες	G2730
+o360020050031	ZEP 2:5!3	Sof 2:5	identitas	rendben	חֶ֥בֶל	חֶבֶל	H2256	2256	igen	Ncbsc	noun	of.the.region	σξοίνισμα	
+o360020050041	ZEP 2:5!4	Sof 2:5	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τῆς	G3588
+o360020050042	ZEP 2:5!4	Sof 2:5	identitas	rendben	יָּ֖ם	יָם	H3220	3220	igen	Ncmsa	noun	the.sea	θαλάσσης	G2281
+o360020050051	ZEP 2:5!5	Sof 2:5	identitas	rendben	גּ֣וֹי	גּוֹי	H1471	1471	igen	Ncmsc	noun	the.nation	πάροικοι	G3941
+o360020050061	ZEP 2:5!6	Sof 2:5	identitas	rendben	כְּרֵתִ֑ים	כְּרֵתִי	H3774	3774	igen	Ngmpa	noun	of.[the].Kerethites	κρητῶν	
+o360020050071	ZEP 2:5!7	Sof 2:5	identitas	rendben	דְּבַר	דָּבָר	H1697	1697	igen	Ncmsc	noun	the.word	λόγος	G3056
+o360020050081	ZEP 2:5!8	Sof 2:5	identitas	rendben	יְהוָ֣ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o360020050091	ZEP 2:5!9	Sof 2:5	identitas	rendben	עֲלֵי	עַל	H5921	5921	igen	R	preposition	[is].on	ἐφ’	G1909
+o360020050092	ZEP 2:5!9	Sof 2:5	identitas	javaslat:strong_funkcio_kod	כֶ֗ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμᾶς	G5209
+o360020050101	ZEP 2:5!10	Sof 2:5	identitas	rendben	כְּנַ֨עַן֙	כְּנַעַן	H3667	3667	igen	Np	noun	O.Canaan	ξανααν	G5477
+o360020050111	ZEP 2:5!11	Sof 2:5	identitas	rendben	אֶ֣רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsc	noun	the.land	γῆ	G1093
+o360020050121	ZEP 2:5!12	Sof 2:5	identitas	rendben	פְּלִשְׁתִּ֔ים	פְּלִשְׁתִּי	H6430	6430	igen	Ngmpa	noun	of.[the].Philistines	ἀλλοφύλων	G0246
+o360020050131	ZEP 2:5!13	Sof 2:5	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020050132	ZEP 2:5!13	Sof 2:5	identitas	rendben	הַאֲבַדְתִּ֖י	אָבַד	H0006	0006	igen	Vhq1cs	verb	I	ἀπολῶ	G0622
+o360020050133	ZEP 2:5!13	Sof 2:5	identitas	javaslat:strong_funkcio_kod	ךְ	הוּא		3509c	javaslat:funkcio_kod	Sp3fs	suffix	will.destroy.you	ὑμᾶς	G5209
+o360020050141	ZEP 2:5!14	Sof 2:5	identitas	rendben	מֵ	מִן	H4480	4480	igen	R	preposition	from		
+o360020050142	ZEP 2:5!14	Sof 2:5	identitas	rendben	אֵ֥ין	אַיִן	H0369	0369	igen	Tn	particle	not	ἐκ	G1537
+o360020050151	ZEP 2:5!15	Sof 2:5	identitas	rendben	יוֹשֵֽׁב	יָשַׁב	H3427	3427	igen	Vqrmsa	verb	an.inhabitant	κατοικίας	G2733
+o360020060011	ZEP 2:6!1	Sof 2:6	identitas	javaslat:strong_funkcio_kod	וְֽ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020060012	ZEP 2:6!1	Sof 2:6	identitas	rendben	הָיְתָ֞ה	הָיָה	H1961	1961	igen	Vqq3fs	verb	it.will.be	ἔσται	G2071
+o360020060021	ZEP 2:6!2	Sof 2:6	identitas	rendben	חֶ֣בֶל	חֶבֶל	H2256	2256	igen	Ncbsc	noun	the.region		
+o360020060031	ZEP 2:6!3	Sof 2:6	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of		
+o360020060032	ZEP 2:6!3	Sof 2:6	identitas	rendben	יָּ֗ם	יָם	H3220	3220	igen	Ncmsa	noun	the.sea		
+o360020060041	ZEP 2:6!4	Sof 2:6	identitas	rendben	נְוֺ֛ת	נָוֶה	H4999	4999	igen	Ncbpc	noun	pastures	κρήτη	
+o360020060051	ZEP 2:6!5	Sof 2:6	identitas	rendben	כְּרֹ֥ת	כָּרָה	H3741	3741	igen	Ncfpc	noun	of.meadows	νομὴ	
+o360020060061	ZEP 2:6!6	Sof 2:6	identitas	rendben	רֹעִ֖ים	רָעָה	H7473	7473	igen	Vqrmpa	verb	of.shepherds	ποιμνίων	
+o360020060071	ZEP 2:6!7	Sof 2:6	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020060072	ZEP 2:6!7	Sof 2:6	identitas	rendben	גִדְר֥וֹת	גְּדֵרָה	H1448	1448	igen	Ncfpc	noun	folds	μάνδρα	
+o360020060081	ZEP 2:6!8	Sof 2:6	identitas	rendben	צֹֽאן	צֹאן	H6629	6629	igen	Ncbsa	noun	of.sheep	προβάτων	G4263
+o360020070011	ZEP 2:7!1	Sof 2:7	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020070012	ZEP 2:7!1	Sof 2:7	identitas	rendben	הָ֣יָה	הָיָה	H1961	1961	igen	Vqq3ms	verb	it.will.belong	ἔσται	G2071
+o360020070021	ZEP 2:7!2	Sof 2:7	identitas	rendben	חֶ֗בֶל	חֶבֶל	H2256	2256	igen	Ncbsa	noun	[the].region	σξοίνισμα	
+o360020070031	ZEP 2:7!3	Sof 2:7	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τοῖς	G3588
+o360020070032	ZEP 2:7!3	Sof 2:7	identitas	rendben	שְׁאֵרִ֛ית	שְׁאֵרִית	H7611	7611	igen	Ncfsc	noun	the.remnant	καταλοίποις	
+o360020070041	ZEP 2:7!4	Sof 2:7	identitas	rendben	בֵּ֥ית	בַּיִת	H1004	1004	igen	Ncmsc	noun	of.the.house	οἴκου	G3624
+o360020070051	ZEP 2:7!5	Sof 2:7	identitas	rendben	יְהוּדָ֖ה	יְהוּדָה	H3063	3063	igen	Np	noun	of.Judah	ιουδα	G2448
+o360020070061	ZEP 2:7!6	Sof 2:7	identitas	rendben	עֲלֵי	עַל	H5921	5921	igen	R	preposition	on	ἐπ’	G1909
+o360020070062	ZEP 2:7!6	Sof 2:7	identitas	javaslat:strong_funkcio_kod	הֶ֣ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	them	αὐτοὺς	G0848
+o360020070071	ZEP 2:7!7	Sof 2:7	identitas	rendben	יִרְע֑וּ	רָעָה	H7462	7462	igen	Vqi3mp	verb	they		
+o360020070072	ZEP 2:7!7	Sof 2:7	identitas	javaslat:strong_funkcio_kod	ן	נ		4993b	javaslat:funkcio_kod	Sn	suffix	will.graze	νεμήσονται	
+o360020070081	ZEP 2:7!8	Sof 2:7	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o360020070082	ZEP 2:7!8	Sof 2:7	identitas	rendben	בָתֵּ֣י	בַּיִת	H1004	1004	igen	Ncmpc	noun	the.houses	οἴκοις	G3624
+o360020070091	ZEP 2:7!9	Sof 2:7	identitas	rendben	אַשְׁקְל֗וֹן	אַשְׁקְלוֹן	H0831	0831	igen	Np	noun	of.Ashkelon	ἀσκαλῶνος	
+o360020070101	ZEP 2:7!10	Sof 2:7	identitas	javaslat:strong_funkcio_kod	בָּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	in		
+o360020070101ה	ZEP 2:7!10	Sof 2:7	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360020070102	ZEP 2:7!10	Sof 2:7	identitas	rendben	עֶ֨רֶב֙	עֶרֶב	H6153	6153	igen	Ncmsa	noun	evening	δείλης	
+o360020070111	ZEP 2:7!11	Sof 2:7	identitas	rendben	יִרְבָּצ֔וּ	רָבַץ	H7257	7257	igen	Vqi3mp	verb	they		
+o360020070112	ZEP 2:7!11	Sof 2:7	identitas	javaslat:strong_funkcio_kod	ן	נ		4993b	javaslat:funkcio_kod	Sn	suffix	will.lie.down	καταλύσουσιν	
+o360020070121	ZEP 2:7!12	Sof 2:7	identitas	rendben	כִּ֧י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o360020070131	ZEP 2:7!13	Sof 2:7	identitas	rendben	יִפְקְדֵ֛	פָּקַד	H6485	6485	igen	Vqi3ms	verb	he	ἐπέσκεπται	
+o360020070132	ZEP 2:7!13	Sof 2:7	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	will.visit.them	αὐτοὺς	G0848
+o360020070141	ZEP 2:7!14	Sof 2:7	identitas	rendben	יְהוָ֥ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o360020070151	ZEP 2:7!15	Sof 2:7	identitas	rendben	אֱלֹהֵי	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	God	θεὸς	G2316
+o360020070152	ZEP 2:7!15	Sof 2:7	identitas	javaslat:strong_funkcio_kod	הֶ֖ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360020070161	ZEP 2:7!16	Sof 2:7	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020070162	ZEP 2:7!16	Sof 2:7	identitas	rendben	שָׁ֥ב	שׁוּב	H7725	7725	igen	Vqq3ms	verb	he.will.turn.back	ἀπέστρεψε	G0654
+o360020070181	ZEP 2:7!18	Sof 2:7	identitas	javaslat:strong_betu_alap	שְׁבִיתָֽ	שְׁבוּת	H7622	7622a	javaslat:betu_alap	Ncfsc	noun	captivity	αἰξμαλωσίαν	G0161
+o360020070182	ZEP 2:7!18	Sof 2:7	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360020080011	ZEP 2:8!1	Sof 2:8	identitas	rendben	שָׁמַ֨עְתִּי֙	שָׁמַע	H8085	8085	igen	Vqp1cs	verb	I.have.heard	ἤκουσα	G0191
+o360020080021	ZEP 2:8!2	Sof 2:8	identitas	rendben	חֶרְפַּ֣ת	חֶרְפָּה	H2781	2781	igen	Ncfsc	noun	the.reproach	ὀνειδισμοὺς	
+o360020080031	ZEP 2:8!3	Sof 2:8	identitas	rendben	מוֹאָ֔ב	מוֹאָב	H4124	4124	igen	Np	noun	of.Moab	μωαβ	
+o360020080041	ZEP 2:8!4	Sof 2:8	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020080042	ZEP 2:8!4	Sof 2:8	identitas	rendben	גִדּוּפֵ֖י	גִּדּוּף	H1421	1421	igen	Ncbpc	noun	the.reviling.words	κονδυλισμοὺς	
+o360020080051	ZEP 2:8!5	Sof 2:8	identitas	rendben	בְּנֵ֣י	בֵּן	H1121	1121	igen	Ncmpc	noun	of.the.people	υἱῶν	G5207
+o360020080061	ZEP 2:8!6	Sof 2:8	identitas	rendben	עַמּ֑וֹן	עַמּוֹן	H5983	5983	igen	Np	noun	of.Ammon	αμμων	
+o360020080071	ZEP 2:8!7	Sof 2:8	identitas	rendben	אֲשֶׁ֤ר	אֲשֶׁר	H0834	0834	igen	Tr	particle	who	οἷς	G3739
+o360020080081	ZEP 2:8!8	Sof 2:8	identitas	rendben	חֵֽרְפוּ֙	חָרַף	H2778	2778	igen	Vpp3cp	verb	they.have.reproached	ὠνείδιζον	G3679
+o360020080091	ZEP 2:8!9	Sof 2:8	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360020080101	ZEP 2:8!10	Sof 2:8	identitas	rendben	עַמִּ֔	עַם	H5971	5971	igen	Ncmsc	noun	people	λαόν	G2992
+o360020080102	ZEP 2:8!10	Sof 2:8	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o360020080111	ZEP 2:8!11	Sof 2:8	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020080112	ZEP 2:8!11	Sof 2:8	identitas	rendben	יַּגְדִּ֖ילוּ	גָּדַל	H1431	1431	igen	Vhw3mp	verb	they.have.magnified.themselves	ἐμεγαλύνοντο	
+o360020080121	ZEP 2:8!12	Sof 2:8	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360020080131	ZEP 2:8!13	Sof 2:8	identitas	rendben	גְּבוּלָֽ	גְּבוּל	H1366	1366	igen	Ncmsc	noun	territory		
+o360020080132	ZEP 2:8!13	Sof 2:8	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360020090011	ZEP 2:9!1	Sof 2:9	identitas	javaslat:strong_funkcio_kod	לָ	לָכֵן		3807a	javaslat:funkcio_kod	R	preposition	therefore	διὰ	G1223
+o360020090012	ZEP 2:9!1	Sof 2:9	identitas	rendben	כֵ֣ן	כֵּן	H3651	3651	igen	D	adverb		τοῦτο	G5124
+o360020090021	ZEP 2:9!2	Sof 2:9	identitas	rendben	חַי	חַי	H2416	2416	igen	Aamsa	adjective	[by].the.life	ζῶ	G2198
+o360020090031	ZEP 2:9!3	Sof 2:9	identitas	rendben	אָ֡נִי	אֲנִי	H0589	0589	igen	Pp1cs	pronoun	of.me	ἐγώ	G1473
+o360020090041	ZEP 2:9!4	Sof 2:9	identitas	rendben	נְאֻם֩	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o360020090051	ZEP 2:9!5	Sof 2:9	identitas	rendben	יְהוָ֨ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o360020090061	ZEP 2:9!6	Sof 2:9	identitas	rendben	צְבָא֜וֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts	δυνάμεων	G1411
+o360020090071	ZEP 2:9!7	Sof 2:9	identitas	rendben	אֱלֹהֵ֣י	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	the.God	θεὸς	G2316
+o360020090081	ZEP 2:9!8	Sof 2:9	identitas	rendben	יִשְׂרָאֵ֗ל	יִשְׂרָאֵל	H3478	3478	igen	Np	noun	of.Israel	ισραηλ	G2474
+o360020090091	ZEP 2:9!9	Sof 2:9	identitas	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o360020090101	ZEP 2:9!10	Sof 2:9	identitas	rendben	מוֹאָ֞ב	מוֹאָב	H4124	4124	igen	Np	noun	Moab	μωαβ	
+o360020090111	ZEP 2:9!11	Sof 2:9	identitas	javaslat:strong_funkcio_kod	כִּ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	like	ὡς	G5613
+o360020090112	ZEP 2:9!11	Sof 2:9	identitas	rendben	סְדֹ֤ם	סְדֹם	H5467	5467	igen	Np	noun	Sodom	σοδομα	G4670
+o360020090121	ZEP 2:9!12	Sof 2:9	identitas	rendben	תִּֽהְיֶה֙	הָיָה	H1961	1961	igen	Vqi3fs	verb	it.will.be	ἔσται	G2071
+o360020090131	ZEP 2:9!13	Sof 2:9	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020090132	ZEP 2:9!13	Sof 2:9	identitas	rendben	בְנֵ֤י	בֵּן	H1121	1121	igen	Ncmpc	noun	the.people	υἱοὶ	G5207
+o360020090141	ZEP 2:9!14	Sof 2:9	identitas	rendben	עַמּוֹן֙	עַמּוֹן	H5983	5983	igen	Np	noun	of.Ammon	αμμων	
+o360020090151	ZEP 2:9!15	Sof 2:9	identitas	javaslat:strong_funkcio_kod	כַּֽ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	like	ὡς	G5613
+o360020090152	ZEP 2:9!15	Sof 2:9	identitas	rendben	עֲמֹרָ֔ה	עֲמֹרָה	H6017	6017	igen	Np	noun	Gomorrah	γομορρα	G1116
+o360020090161	ZEP 2:9!16	Sof 2:9	identitas	rendben	מִמְשַׁ֥ק	מִמְשָׁק	H4476	4476	igen	Ncmsc	noun	a.place.possessed		
+o360020090171	ZEP 2:9!17	Sof 2:9	identitas	rendben	חָר֛וּל	חָרוּל	H2738	2738	igen	Ncmsa	noun	of.weed[s]	ἐκλελειμμένη	
+o360020090181	ZEP 2:9!18	Sof 2:9	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	ὡς	G5613
+o360020090182	ZEP 2:9!18	Sof 2:9	identitas	rendben	מִכְרֵה	מִכְרֶה	H4379	4379	igen	Ncmsc	noun	a.pit	θιμωνιὰ	
+o360020090191	ZEP 2:9!19	Sof 2:9	identitas	rendben	מֶ֥לַח	מֶלַח	H4417	4417	igen	Ncmsa	noun	of.salt	ἅλωνος	G0257
+o360020090201	ZEP 2:9!20	Sof 2:9	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020090202	ZEP 2:9!20	Sof 2:9	identitas	rendben	שְׁמָמָ֖ה	שְׁמָמָה	H8077	8077	igen	Ncfsa	noun	a.waste	ἠφανισμένη	
+o360020090211	ZEP 2:9!21	Sof 2:9	identitas	rendben	עַד	עַד	H5704	5704	igen	R	preposition	until	εἰς	G1519
+o360020090221	ZEP 2:9!22	Sof 2:9	identitas	rendben	עוֹלָ֑ם	עוֹלָם	H5769	5769	igen	Ncmsa	noun	perpetuity	αἰῶνα	G0165
+o360020090231	ZEP 2:9!23	Sof 2:9	identitas	rendben	שְׁאֵרִ֤ית	שְׁאֵרִית	H7611	7611	igen	Ncfsc	noun	the.remnant		
+o360020090241	ZEP 2:9!24	Sof 2:9	identitas	rendben	עַמִּ	עַם	H5971	5971	igen	Ncmsc	noun	my.people	λαοῦ	G2992
+o360020090242	ZEP 2:9!24	Sof 2:9	identitas	javaslat:strong_funkcio_kod	י֙	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o360020090251	ZEP 2:9!25	Sof 2:9	identitas	rendben	יְבָזּ֔וּ	בָּזַז	H0962	0962	igen	Vqi3mp	verb	they	διαρπῶνται	G1283
+o360020090252	ZEP 2:9!25	Sof 2:9	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	will.plunder.them	αὐτούς	G0848
+o360020090261	ZEP 2:9!26	Sof 2:9	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020090262	ZEP 2:9!26	Sof 2:9	identitas	rendben	יֶ֥תֶר	יֶתֶר	H3499	3499	igen	Ncmsc	noun	the.rest	κατάλοιποι	G2645
+o360020090281	ZEP 2:9!28	Sof 2:9	identitas	rendben	גּוֹיִ֖	גּוֹי	H1471	1471	igen	Ncmsc	noun	my.nation	ἔθνους	G1484
+o360020090282	ZEP 2:9!28	Sof 2:9	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o360020090291	ZEP 2:9!29	Sof 2:9	identitas	rendben	יִנְחָלֽוּ	נָחַל	H5157	5157	igen	Vqi3mp	verb	they	κληρονομήσουσιν	G2816
+o360020090292	ZEP 2:9!29	Sof 2:9	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	will.take.possession.of.them	αὐτούς	G0848
+o360020100011	ZEP 2:10!1	Sof 2:10	identitas	rendben	זֹ֥את	זֹאת	H2063	2063	igen	Pdxfs	pronoun	this	αὕτη	G3778
+o360020100021	ZEP 2:10!2	Sof 2:10	identitas	javaslat:strong_funkcio_kod	לָ	לְ		3807a	javaslat:funkcio_kod	R	preposition	[will		
+o360020100022	ZEP 2:10!2	Sof 2:10	identitas	javaslat:strong_funkcio_kod	הֶ֖ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	belong].to.them	αὐτοῖς	G0846
+o360020100031	ZEP 2:10!3	Sof 2:10	identitas	rendben	תַּ֣חַת	תַּחַת	H8478	8478	igen	R	preposition	in.place.of	ἀντὶ	G0473
+o360020100041	ZEP 2:10!4	Sof 2:10	identitas	rendben	גְּאוֹנָ֑	גָּאוֹן	H1347	1347	igen	Ncmsc	noun	pride		
+o360020100042	ZEP 2:10!4	Sof 2:10	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360020100051	ZEP 2:10!5	Sof 2:10	identitas	rendben	כִּ֤י	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o360020100061	ZEP 2:10!6	Sof 2:10	identitas	rendben	חֵֽרְפוּ֙	חָרַף	H2778	2778	igen	Vpp3cp	verb	they.reproached	ὠνείδισαν	
+o360020100071	ZEP 2:10!7	Sof 2:10	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020100072	ZEP 2:10!7	Sof 2:10	identitas	rendben	יַּגְדִּ֔לוּ	גָּדַל	H1431	1431	igen	Vhw3mp	verb	they.magnified.themselves	ἐμεγαλύνθησαν	
+o360020100081	ZEP 2:10!8	Sof 2:10	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360020100091	ZEP 2:10!9	Sof 2:10	identitas	rendben	עַ֖ם	עַם	H5971	5971	igen	Ncmsc	noun	the.people		
+o360020100101	ZEP 2:10!10	Sof 2:10	identitas	rendben	יְהוָ֥ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh		
+o360020100111	ZEP 2:10!11	Sof 2:10	identitas	rendben	צְבָאֽוֹת	צָבָא	H6635	6635	igen	Ncbpa	noun	of.hosts		
+o360020110011	ZEP 2:11!1	Sof 2:11	identitas	rendben	נוֹרָ֤א	יָרֵא	H3372	3372	igen	VNrmsa	verb	[will.be].awesome	ἐπιφανήσεται	
+o360020110021	ZEP 2:11!2	Sof 2:11	identitas	rendben	יְהוָה֙	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o360020110031	ZEP 2:11!3	Sof 2:11	identitas	rendben	עֲלֵי	עַל	H5921	5921	igen	R	preposition	on	ἐπ’	G1909
+o360020110032	ZEP 2:11!3	Sof 2:11	identitas	javaslat:strong_funkcio_kod	הֶ֔ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	them	αὐτοὺς	G0848
+o360020110041	ZEP 2:11!4	Sof 2:11	identitas	rendben	כִּ֣י	כִּי	H3588	3588	igen	C	conjunction	(dm)	καὶ	G2532
+o360020110051	ZEP 2:11!5	Sof 2:11	identitas	rendben	רָזָ֔ה	רָזָה	H7329	7329	igen	Vqp3ms	verb	he.will.make.lean	ἐχολεθρεύσει	G1842
+o360020110061	ZEP 2:11!6	Sof 2:11	identitas	rendben	אֵ֖ת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360020110071	ZEP 2:11!7	Sof 2:11	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντας	G3956
+o360020110081	ZEP 2:11!8	Sof 2:11	identitas	rendben	אֱלֹהֵ֣י	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	the.gods	θεοὺς	G2316
+o360020110091	ZEP 2:11!9	Sof 2:11	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τῆς	G3588
+o360020110092	ZEP 2:11!9	Sof 2:11	identitas	rendben	אָ֑רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	the.earth	γῆς	G1093
+o360020110101	ZEP 2:11!10	Sof 2:11	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020110102	ZEP 2:11!10	Sof 2:11	identitas	javaslat:strong_betu_alap	יִשְׁתַּֽחֲווּ	חוה	H7812	7812a	javaslat:betu_alap	Vvi3mp	verb	they.will.bow.down	προσκυνήσουσιν	G4352
+o360020110111	ZEP 2:11!11	Sof 2:11	identitas	javaslat:strong_funkcio_kod	ל	לְ		3807a	javaslat:funkcio_kod	R	preposition	to		
+o360020110112	ZEP 2:11!11	Sof 2:11	identitas	javaslat:strong_funkcio_kod	וֹ֙	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	him	αὐτῷ	G0846
+o360020110121	ZEP 2:11!12	Sof 2:11	identitas	rendben	אִ֣ישׁ	אִישׁ	H0376	0376	igen	Ncmsa	noun	everyone	ἕκαστος	G1538
+o360020110131	ZEP 2:11!13	Sof 2:11	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from		
+o360020110132	ZEP 2:11!13	Sof 2:11	identitas	rendben	מְּקוֹמ֔	מָקוֹם	H4725	4725	igen	Ncmsc	noun	his.own	τόπου	G5117
+o360020110133	ZEP 2:11!13	Sof 2:11	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	place	αὐτοῦ	G0846
+o360020110141	ZEP 2:11!14	Sof 2:11	identitas	rendben	כֹּ֖ל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πᾶσαι	G3956
+o360020110151	ZEP 2:11!15	Sof 2:11	identitas	rendben	אִיֵּ֥י	אִי	H0339	0339	igen	Ncmpc	noun	the.islands		
+o360020110161	ZEP 2:11!16	Sof 2:11	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τῶν	G3588
+o360020110162	ZEP 2:11!16	Sof 2:11	identitas	rendben	גּוֹיִֽם	גּוֹי	H1471	1471	igen	Ncmpa	noun	the.nations	ἐθνῶν	G1484
+o360020120011	ZEP 2:12!1	Sof 2:12	identitas	rendben	גַּם	גַּם	H1571	1571	igen	Ta	particle	also	καὶ	G2532
+o360020120021	ZEP 2:12!2	Sof 2:12	identitas	javaslat:strong_betu_alap	אַתֶּ֣ם	אַתֶּם	H0859	0859a	javaslat:betu_alap	Pp2mp	pronoun	you	ὑμεῖς	G5210
+o360020120031	ZEP 2:12!3	Sof 2:12	identitas	rendben	כּוּשִׁ֔ים	כֻּשִׁי	H3569	3569	igen	Ngmpa	noun	O.Cushites	αἰθίοπες	G0128
+o360020120041	ZEP 2:12!4	Sof 2:12	identitas	rendben	חַֽלְלֵ֥י	חָלָל	H2491	2491	igen	Aampc	adjective	[are.those].slain	τραυματίαι	
+o360020120051	ZEP 2:12!5	Sof 2:12	identitas	rendben	חַרְבִּ֖	חֶרֶב	H2719	2719	igen	Ncfsc	noun	my.sword	ῥομφαίας	G4501
+o360020120052	ZEP 2:12!5	Sof 2:12	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μού	G3450
+o360020120061	ZEP 2:12!6	Sof 2:12	identitas	rendben	הֵֽמָּה	הֵמָּה	H1992	1992	igen	Pp3mp	pronoun	they	ἐστε	G2075
+o360020130011	ZEP 2:13!1	Sof 2:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020130012	ZEP 2:13!1	Sof 2:13	identitas	rendben	יֵ֤ט	נָטָה	H5186	5186	igen	Vqj3ms	verb	he.will.stretch.out	ἐκτενεῖ	
+o360020130021	ZEP 2:13!2	Sof 2:13	identitas	rendben	יָד	יָד	H3027	3027	igen	Ncbsc	noun	hand	ξεῖρα	G5495
+o360020130022	ZEP 2:13!2	Sof 2:13	identitas	javaslat:strong_funkcio_kod	וֹ֙	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o360020130031	ZEP 2:13!3	Sof 2:13	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360020130041	ZEP 2:13!4	Sof 2:13	identitas	rendben	צָפ֔וֹן	צָפוֹן	H6828	6828	igen	Ncfsa	noun	[the].north	βορρᾶν	G1005
+o360020130051	ZEP 2:13!5	Sof 2:13	identitas	javaslat:strong_funkcio_kod	וִֽ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020130052	ZEP 2:13!5	Sof 2:13	identitas	rendben	יאַבֵּ֖ד	אָבַד	H0006	0006	igen	Vpi3ms	verb	he.will.destroy	ἀπολεῖ	G0622
+o360020130061	ZEP 2:13!6	Sof 2:13	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360020130071	ZEP 2:13!7	Sof 2:13	identitas	rendben	אַשּׁ֑וּר	אַשּׁוּר	H0804	0804	igen	Np	noun	Assyria		
+o360020130081	ZEP 2:13!8	Sof 2:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020130082	ZEP 2:13!8	Sof 2:13	identitas	rendben	יָשֵׂ֤ם	שׂים	H7760	7760	igen	Vqj3ms	verb	he.will.make	θήσει	G5087
+o360020130091	ZEP 2:13!9	Sof 2:13	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360020130101	ZEP 2:13!10	Sof 2:13	identitas	rendben	נִֽינְוֵה֙	נִינְוֵה	H5210	5210	igen	Np	noun	Nineveh	νινευη	
+o360020130111	ZEP 2:13!11	Sof 2:13	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(into).a	εἰς	G1519
+o360020130112	ZEP 2:13!11	Sof 2:13	identitas	rendben	שְׁמָמָ֔ה	שְׁמָמָה	H8077	8077	igen	Ncfsa	noun	waste	ἀφανισμὸν	G0854
+o360020130121	ZEP 2:13!12	Sof 2:13	identitas	rendben	צִיָּ֖ה	צִיָּה	H6723	6723	igen	Ncfsa	noun	a.dry.region	ἄνυδρον	G0504
+o360020130131	ZEP 2:13!13	Sof 2:13	identitas	javaslat:strong_funkcio_kod	כַּ	כְּ		3509a	javaslat:funkcio_kod	Rd	preposition	like	ὡς	G5613
+o360020130131ה	ZEP 2:13!13	Sof 2:13	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360020130132	ZEP 2:13!13	Sof 2:13	identitas	rendben	מִּדְבָּֽר	מִדְבָּר	H4057	4057	igen	Ncmsa	noun	wilderness	ἔρημον	G2048
+o360020140011	ZEP 2:14!1	Sof 2:14	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020140012	ZEP 2:14!1	Sof 2:14	identitas	rendben	רָבְצ֨וּ	רָבַץ	H7257	7257	igen	Vqq3cp	verb	they.will.lie.down	νεμήσονται	
+o360020140021	ZEP 2:14!2	Sof 2:14	identitas	javaslat:strong_funkcio_kod	בְ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o360020140022	ZEP 2:14!2	Sof 2:14	identitas	rendben	תוֹכָ֤	תָּוֶךְ	H8432	8432	igen	Ncmsc	noun	the.midst	μέσῳ	G3319
+o360020140023	ZEP 2:14!2	Sof 2:14	identitas	javaslat:strong_funkcio_kod	הּ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	of.it	αὐτῆς	G0846
+o360020140031	ZEP 2:14!3	Sof 2:14	identitas	rendben	עֲדָרִים֙	עֵדֶר	H5739	5739	igen	Ncmpa	noun	herds	ποίμνια	
+o360020140041	ZEP 2:14!4	Sof 2:14	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	every	πάντα	G3956
+o360020140051	ZEP 2:14!5	Sof 2:14	identitas	javaslat:strong_betu_alap	חַיְת	חַיָּה	H2416	2416c	javaslat:betu_alap	Ncfsc	noun	animal	τὰ	G3588
+o360020140052	ZEP 2:14!5	Sof 2:14	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	θηρία	G2342
+o360020140061	ZEP 2:14!6	Sof 2:14	identitas	rendben	ג֔וֹי	גּוֹי	H1471	1471	igen	Ncmsa	noun	of.a.nation	γῆς	G1093
+o360020140071	ZEP 2:14!7	Sof 2:14	identitas	rendben	גַּם	גַּם	H1571	1571	igen	Ta	particle	both	καὶ	G2532
+o360020140081	ZEP 2:14!8	Sof 2:14	identitas	rendben	קָאַת֙	קָאַת	H6893	6893	igen	Ncfsa	noun	desert.owl	ξαμαιλέοντες	
+o360020140091	ZEP 2:14!9	Sof 2:14	identitas	rendben	גַּם	גַּם	H1571	1571	igen	Ta	particle	as.well.as	καὶ	G2532
+o360020140101	ZEP 2:14!10	Sof 2:14	identitas	rendben	קִפֹּ֔ד	קִפֹּד	H7090	7090	igen	Ncmsa	noun	hedgehog	ἐξῖνοι	
+o360020140111	ZEP 2:14!11	Sof 2:14	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on	ἐν	G1722
+o360020140112	ZEP 2:14!11	Sof 2:14	identitas	rendben	כַפְתֹּרֶ֖י	כַּפְתּוֹר	H3730	3730	igen	Ncmpc	noun	capitals		
+o360020140113	ZEP 2:14!11	Sof 2:14	identitas	javaslat:strong_funkcio_kod	הָ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	its	τοῖς	G3588
+o360020140121	ZEP 2:14!12	Sof 2:14	identitas	javaslat:strong_betu_alap	יָלִ֑ינוּ	לין	H3885	3885a	javaslat:betu_alap	Vqi3mp	verb	they.will.spend.the.night	κοιτασθήσονται	
+o360020140131	ZEP 2:14!13	Sof 2:14	identitas	rendben	ק֠וֹל	קוֹל	H6963	6963	igen	Ncmsa	noun	a.sound		
+o360020140141	ZEP 2:14!14	Sof 2:14	identitas	rendben	יְשׁוֹרֵ֤ר	שִׁיר	H7891	7891	igen	Voi3ms	verb	it.will.sing	φωνήσει	G5455
+o360020140151	ZEP 2:14!15	Sof 2:14	identitas	javaslat:strong_funkcio_kod	בַּֽ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	in	ἐν	G1722
+o360020140151ה	ZEP 2:14!15	Sof 2:14	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360020140152	ZEP 2:14!15	Sof 2:14	identitas	rendben	חַלּוֹן֙	חַלּוֹן	H2474	2474	igen	Ncbsa	noun	window		
+o360020140161	ZEP 2:14!16	Sof 2:14	identitas	rendben	חֹ֣רֶב	חֹרֶב	H2721	2721	igen	Ncmsa	noun	desolation	κόρακες	
+o360020140171	ZEP 2:14!17	Sof 2:14	identitas	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	[will	ἐν	G1722
+o360020140171ה	ZEP 2:14!17	Sof 2:14	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	be]		
+o360020140172	ZEP 2:14!17	Sof 2:14	identitas	rendben	סַּ֔ף	סַף	H5592	5592	igen	Ncmsa	noun	on.the.threshold		
+o360020140181	ZEP 2:14!18	Sof 2:14	identitas	rendben	כִּ֥י	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o360020140191	ZEP 2:14!19	Sof 2:14	identitas	rendben	אַרְזָ֖ה	אַרְזָה	H0731	0731	igen	Ncfsa	noun	cedar-work	κέδρος	
+o360020140201	ZEP 2:14!20	Sof 2:14	identitas	rendben	עֵרָֽה	עָרָה	H6168	6168	igen	Vpp3ms	verb	he.will.lay.bare		
+o360020150011	ZEP 2:15!1	Sof 2:15	terkep	rendben	זֹ֞֠את	זֹאת	H2063	2063	igen	Pdxfs	pronoun	this	αὕτη	G3778
+o360020150021	ZEP 2:15!2	Sof 2:15	terkep	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[is].the	ἡ	G3588
+o360020150022	ZEP 2:15!2	Sof 2:15	terkep	rendben	עִ֤יר	עִיר	H5892	5892	igen	Ncfsa	noun	city	πόλις	G4172
+o360020150031	ZEP 2:15!3	Sof 2:15	terkep	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	ἡ	G3588
+o360020150032	ZEP 2:15!3	Sof 2:15	terkep	rendben	עַלִּיזָה֙	עַלִּיז	H5947	5947	igen	Aafsa	adjective	exultant	φαυλίστρια	
+o360020150041	ZEP 2:15!4	Sof 2:15	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[which]	ἡ	G3588
+o360020150042	ZEP 2:15!4	Sof 2:15	terkep	rendben	יּוֹשֶׁ֣בֶת	יָשַׁב	H3427	3427	igen	Vqrfsa	verb	dwelt	κατοικοῦσα	
+o360020150051	ZEP 2:15!5	Sof 2:15	terkep	javaslat:strong_funkcio_kod	לָ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	ἐπ’	G1909
+o360020150052	ZEP 2:15!5	Sof 2:15	terkep	rendben	בֶ֔טַח	בֶּטַח	H0983	0983	igen	Ncmsa	noun	security	ἐλπίδι	G1680
+o360020150061	ZEP 2:15!6	Sof 2:15	terkep	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[which]	ἡ	G3588
+o360020150062	ZEP 2:15!6	Sof 2:15	terkep	rendben	אֹֽמְרָה֙	אָמַר	H0559	0559	igen	Vqrfsa	verb	said	λέγουσα	G3004
+o360020150071	ZEP 2:15!7	Sof 2:15	terkep	javaslat:strong_funkcio_kod	בִּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o360020150072	ZEP 2:15!7	Sof 2:15	terkep	rendben	לְבָבָ֔	לֵבָב	H3824	3824	igen	Ncmsc	noun	heart	καρδίᾳ	G2588
+o360020150073	ZEP 2:15!7	Sof 2:15	terkep	javaslat:strong_funkcio_kod	הּ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	its	αὐτῆς	G0846
+o360020150081	ZEP 2:15!8	Sof 2:15	terkep	rendben	אֲנִ֖י	אֲנִי	H0589	0589	igen	Pp1cs	pronoun	I	ἐγώ	G1473
+o360020150091	ZEP 2:15!9	Sof 2:15	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360020150092	ZEP 2:15!9	Sof 2:15	terkep	rendben	אַפְסִ֣	אֶפֶס	H0657	0657	igen	Ncmsc	noun	only	οὐκ	G3756
+o360020150093	ZEP 2:15!9	Sof 2:15	terkep	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	I	ἐμὲ	G1691
+o360020150101	ZEP 2:15!10	Sof 2:15	terkep	rendben	ע֑וֹד	עוֹד	H5750	5750	igen	D	adverb	[am].yet	ἔτι	G2089
+o360020150111	ZEP 2:15!11	Sof 2:15	terkep	rendben	אֵ֣יךְ	אֵיךְ	H0349	0349	igen	Ti	particle	how!	πῶς	G4459
+o360020150121	ZEP 2:15!12	Sof 2:15	terkep	rendben	הָיְתָ֣ה	הָיָה	H1961	1961	igen	Vqp3fs	verb	it.has.become	ἐγενήθη	G1096
+o360020150131	ZEP 2:15!13	Sof 2:15	terkep	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(into).a	εἰς	G1519
+o360020150132	ZEP 2:15!13	Sof 2:15	terkep	rendben	שַׁמָּ֗ה	שַׁמָּה	H8047	8047	igen	Ncfsa	noun	waste	ἀφανισμόν	G0854
+o360020150141	ZEP 2:15!14	Sof 2:15	terkep	rendben	מַרְבֵּץ֙	מַרְבֵּץ	H4769	4769	igen	Ncmsa	noun	a.resting.place	νομὴ	
+o360020150151	ZEP 2:15!15	Sof 2:15	terkep	javaslat:strong_funkcio_kod	לַֽ	לְ		3807a	javaslat:funkcio_kod	Rd	preposition	for		
+o360020150151ה	ZEP 2:15!15	Sof 2:15	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o360020150152	ZEP 2:15!15	Sof 2:15	terkep	javaslat:strong_betu_alap	חַיָּ֔ה	חַיָּה	H2416	2416c	javaslat:betu_alap	Ncfsa	noun	animal[s]	θηρίων	G2342
+o360020150161	ZEP 2:15!16	Sof 2:15	terkep	rendben	כֹּ֚ל	כֹּל	H3605	3605	igen	Ncmsa	noun	every	πᾶς	G3956
+o360020150171	ZEP 2:15!17	Sof 2:15	terkep	rendben	עוֹבֵ֣ר	עָבַר	H5674	5674	igen	Vqrmsa	verb	[one.who].passes.by		
+o360020150181	ZEP 2:15!18	Sof 2:15	terkep	rendben	עָלֶ֔י	עַל	H5921	5921	igen	R	preposition	at	δῑ	G1223
+o360020150182	ZEP 2:15!18	Sof 2:15	terkep	javaslat:strong_funkcio_kod	הָ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	it	αὐτῆς	G0846
+o360020150191	ZEP 2:15!19	Sof 2:15	terkep	rendben	יִשְׁרֹ֖ק	שָׁרַק	H8319	8319	igen	Vqi3ms	verb	he.will.hiss	συριεῖ	
+o360020150201	ZEP 2:15!20	Sof 2:15	terkep	rendben	יָנִ֥יעַ	נוּעַ	H5128	5128	igen	Vhi3ms	verb	he.will.shake		
+o360020150211	ZEP 2:15!21	Sof 2:15	terkep	rendben	יָדֽ	יָד	H3027	3027	igen	Ncbsc	noun	hand	ξεῖρας	G5495
+o360020150212	ZEP 2:15!21	Sof 2:15	terkep	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o360030010011	ZEP 3:1!1	Sof 3:1	terkep	rendben	ה֥וֹי	הוֹי	H1945	1945	igen	Tj	particle	woe.to!	ὦ	G5599
+o360030010021	ZEP 3:1!2	Sof 3:1	terkep	rendben	מֹרְאָ֖ה	מָרָא	H4754	4754	igen	Vqrfsa	verb	[the.one.who.is].rebellious		
+o360030010031	ZEP 3:1!3	Sof 3:1	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030010032	ZEP 3:1!3	Sof 3:1	terkep	rendben	נִגְאָלָ֑ה	גָּאַל	H1351	1351	igen	VNsfsa	verb	[the.one.who.is].defiled	ἀπολελυτρωμένη	
+o360030010041	ZEP 3:1!4	Sof 3:1	terkep	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἡ	G3588
+o360030010042	ZEP 3:1!4	Sof 3:1	terkep	rendben	עִ֖יר	עִיר	H5892	5892	igen	Ncfsa	noun	city	πόλις	G4172
+o360030010051	ZEP 3:1!5	Sof 3:1	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[which]	ἡ	G3588
+o360030010052	ZEP 3:1!5	Sof 3:1	terkep	rendben	יּוֹנָֽה	יָנָה	H3238	3238	igen	Vqrfsa	verb	oppresses	περιστερά	
+o360030020011	ZEP 3:2!1	Sof 3:2	terkep	rendben	לֹ֤א	לֹא	H3808	3808	igen	Tn	particle	not	οὐκ	G3756
+o360030020021	ZEP 3:2!2	Sof 3:2	terkep	rendben	שָֽׁמְעָה֙	שָׁמַע	H8085	8085	igen	Vqp3fs	verb	it.has.listened	εἰσήκουσεν	G1522
+o360030020031	ZEP 3:2!3	Sof 3:2	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	to		
+o360030020032	ZEP 3:2!3	Sof 3:2	terkep	rendben	ק֔וֹל	קוֹל	H6963	6963	igen	Ncmsa	noun	a.voice	φωνῆς	G5456
+o360030020041	ZEP 3:2!4	Sof 3:2	terkep	rendben	לֹ֥א	לֹא	H3808	3808	igen	Tn	particle	not	οὐκ	G3756
+o360030020051	ZEP 3:2!5	Sof 3:2	terkep	rendben	לָקְחָ֖ה	לָקַח	H3947	3947	igen	Vqp3fs	verb	it.has.accepted	ἐδέχατο	G1209
+o360030020061	ZEP 3:2!6	Sof 3:2	terkep	rendben	מוּסָ֑ר	מוּסָר	H4148	4148	igen	Ncmsa	noun	correction	παιδείαν	G3809
+o360030020071	ZEP 3:2!7	Sof 3:2	terkep	javaslat:strong_funkcio_kod	בַּֽ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in		
+o360030020072	ZEP 3:2!7	Sof 3:2	terkep	rendben	יהוָה֙	יהוה	H3068	3068	igen	Np	noun	Yahweh		
+o360030020081	ZEP 3:2!8	Sof 3:2	terkep	rendben	לֹ֣א	לֹא	H3808	3808	igen	Tn	particle	not	οὐκ	G3756
+o360030020091	ZEP 3:2!9	Sof 3:2	terkep	rendben	בָטָ֔חָה	בָּטַח	H0982	0982	igen	Vqp3fs	verb	it.has.trusted	ἐπεποίθει	G3982
+o360030020101	ZEP 3:2!10	Sof 3:2	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	πρὸς	G4314
+o360030020111	ZEP 3:2!11	Sof 3:2	terkep	rendben	אֱלֹהֶ֖י	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	God	θεὸν	G2316
+o360030020112	ZEP 3:2!11	Sof 3:2	terkep	javaslat:strong_funkcio_kod	הָ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	its	τὸν	G3588
+o360030020121	ZEP 3:2!12	Sof 3:2	terkep	rendben	לֹ֥א	לֹא	H3808	3808	igen	Tn	particle	not	οὐκ	G3756
+o360030020131	ZEP 3:2!13	Sof 3:2	terkep	rendben	קָרֵֽבָה	קָרַב	H7126	7126	igen	Vqp3fs	verb	it.has.drawn.near	ἤγγισεν	G1448
+o360030030011	ZEP 3:3!1	Sof 3:3	identitas	rendben	שָׂרֶ֣י	שַׂר	H8269	8269	igen	Ncmpc	noun	officials	ἄρξοντες	G0758
+o360030030012	ZEP 3:3!1	Sof 3:3	identitas	javaslat:strong_funkcio_kod	הָ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	its	οἱ	G3588
+o360030030021	ZEP 3:3!2	Sof 3:3	identitas	javaslat:strong_funkcio_kod	בְ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o360030030022	ZEP 3:3!2	Sof 3:3	identitas	rendben	קִרְבָּ֔	קֶרֶב	H7130	7130	igen	Ncmsc	noun	midst		
+o360030030023	ZEP 3:3!2	Sof 3:3	identitas	javaslat:strong_funkcio_kod	הּ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	its	αὐτῇ	G0846
+o360030030031	ZEP 3:3!3	Sof 3:3	identitas	rendben	אֲרָי֖וֹת	אֲרִי	H0738	0738	igen	Ncmpa	noun	[are].lions	λέοντες	
+o360030030041	ZEP 3:3!4	Sof 3:3	identitas	rendben	שֹֽׁאֲגִ֑ים	שָׁאַג	H7580	7580	igen	Vqrmpa	verb	roaring	ὠρυόμενοι	
+o360030030051	ZEP 3:3!5	Sof 3:3	identitas	rendben	שֹׁפְטֶ֨י	שָׁפַט	H8199	8199	igen	Vqrmpc	verb	judges	κριταὶ	G2923
+o360030030052	ZEP 3:3!5	Sof 3:3	identitas	javaslat:strong_funkcio_kod	הָ֙	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	its	οἱ	G3588
+o360030030061	ZEP 3:3!6	Sof 3:3	identitas	rendben	זְאֵ֣בֵי	זְאֵב	H2061	2061	igen	Ncmpc	noun	[are].wolves	λύκοι	G3074
+o360030030071	ZEP 3:3!7	Sof 3:3	identitas	rendben	עֶ֔רֶב	עֶרֶב	H6153	6153	igen	Ncmsa	noun	of.[the].evening	ἀραβίας	
+o360030030081	ZEP 3:3!8	Sof 3:3	identitas	rendben	לֹ֥א	לֹא	H3808	3808	igen	Tn	particle	[which].not	οὐξ	G3756
+o360030030091	ZEP 3:3!9	Sof 3:3	identitas	javaslat:strong_betu_alap	גָרְמ֖וּ	גָּרַם	H1633	1633a	javaslat:betu_alap	Vqp3cp	verb	they.gnaw	ὑπελίποντο	G5275
+o360030030101	ZEP 3:3!10	Sof 3:3	identitas	javaslat:strong_funkcio_kod	לַ	לְ		3807a	javaslat:funkcio_kod	Rd	preposition	to	εἰς	G1519
+o360030030101ה	ZEP 3:3!10	Sof 3:3	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360030030102	ZEP 3:3!10	Sof 3:3	identitas	rendben	בֹּֽקֶר	בֹּקֶר	H1242	1242	igen	Ncmsa	noun	morning		
+o360030040011	ZEP 3:4!1	Sof 3:4	identitas	rendben	נְבִיאֶ֨י	נָבִיא	H5030	5030	igen	Ncmpc	noun	prophets	προφῆται	G4396
+o360030040012	ZEP 3:4!1	Sof 3:4	identitas	javaslat:strong_funkcio_kod	הָ֙	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	its	οἱ	G3588
+o360030040021	ZEP 3:4!2	Sof 3:4	identitas	rendben	פֹּֽחֲזִ֔ים	פָּחַז	H6348	6348	igen	Vqrmpa	verb	[are].insolent	πνευματοφόροι	
+o360030040031	ZEP 3:4!3	Sof 3:4	identitas	rendben	אַנְשֵׁ֖י	אִישׁ	H0376	0376	igen	Ncmpc	noun	men	ἄνδρες	G0435
+o360030040041	ZEP 3:4!4	Sof 3:4	identitas	rendben	בֹּֽגְד֑וֹת	בֹּגְדוֹת	H0900	0900	igen	Ncfpa	noun	of.treacheri(es)	καταφρονηταί	G2707
+o360030040051	ZEP 3:4!5	Sof 3:4	identitas	rendben	כֹּהֲנֶ֨י	כֹּהֵן	H3548	3548	igen	Ncmpc	noun	priests	ἱερεῖς	G2409
+o360030040052	ZEP 3:4!5	Sof 3:4	identitas	javaslat:strong_funkcio_kod	הָ֙	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	its	οἱ	G3588
+o360030040061	ZEP 3:4!6	Sof 3:4	identitas	rendben	חִלְּלוּ	חָלַל	H2490	2490	igen	Vpp3cp	verb	they.profane	βεβηλοῦσιν	G0953
+o360030040071	ZEP 3:4!7	Sof 3:4	identitas	rendben	קֹ֔דֶשׁ	קֹדֶשׁ	H6944	6944	igen	Ncmsa	noun	[the].sanctuary	ἅγια	G0039
+o360030040081	ZEP 3:4!8	Sof 3:4	identitas	rendben	חָמְס֖וּ	חָמַס	H2554	2554	igen	Vqp3cp	verb	they.treat.violently		
+o360030040091	ZEP 3:4!9	Sof 3:4	identitas	rendben	תּוֹרָֽה	תּוֹרָה	H8451	8451	igen	Ncfsa	noun	[the].law	νόμον	G3551
+o360030050011	ZEP 3:5!1	Sof 3:5	identitas	rendben	יְהוָ֤ה	יהוה	H3068	3068	igen	Np	noun	Yahweh		
+o360030050021	ZEP 3:5!2	Sof 3:5	identitas	rendben	צַדִּיק֙	צַדִּיק	H6662	6662	igen	Aamsa	adjective	[is].righteous	δίκαιος	G1342
+o360030050031	ZEP 3:5!3	Sof 3:5	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o360030050032	ZEP 3:5!3	Sof 3:5	identitas	rendben	קִרְבָּ֔	קֶרֶב	H7130	7130	igen	Ncmsc	noun	midst	μέσῳ	G3319
+o360030050033	ZEP 3:5!3	Sof 3:5	identitas	javaslat:strong_funkcio_kod	הּ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	its	αὐτῆς	G0846
+o360030050041	ZEP 3:5!4	Sof 3:5	identitas	rendben	לֹ֥א	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o360030050051	ZEP 3:5!5	Sof 3:5	identitas	rendben	יַעֲשֶׂ֖ה	עָשָׂה	H6213	6213	igen	Vqi3ms	verb	he.does	ποιήσῃ	G4160
+o360030050061	ZEP 3:5!6	Sof 3:5	identitas	javaslat:strong_betu_alap	עַוְלָ֑ה	עַוְלָה	H5766	5766a	javaslat:betu_alap	Ncbsa	noun	injustice	ἄδικον	G0094
+o360030050071	ZEP 3:5!7	Sof 3:5	identitas	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	in		
+o360030050071ה	ZEP 3:5!7	Sof 3:5	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360030050072	ZEP 3:5!7	Sof 3:5	identitas	rendben	בֹּ֨קֶר	בֹּקֶר	H1242	1242	igen	Ncmsa	noun	morning	πρωὶ	G5459
+o360030050081	ZEP 3:5!8	Sof 3:5	identitas	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	in		
+o360030050081ה	ZEP 3:5!8	Sof 3:5	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360030050082	ZEP 3:5!8	Sof 3:5	identitas	rendben	בֹּ֜קֶר	בֹּקֶר	H1242	1242	igen	Ncmsa	noun	morning	πρωὶ	G5459
+o360030050091	ZEP 3:5!9	Sof 3:5	identitas	rendben	מִשְׁפָּט֨	מִשְׁפָּט	H4941	4941	igen	Ncmsc	noun	judgment		
+o360030050092	ZEP 3:5!9	Sof 3:5	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	δώσει	G1325
+o360030050101	ZEP 3:5!10	Sof 3:5	identitas	rendben	יִתֵּ֤ן	נָתַן	H5414	5414	igen	Vqi3ms	verb	he.gives		
+o360030050111	ZEP 3:5!11	Sof 3:5	identitas	javaslat:strong_funkcio_kod	לָ	לְ		3807a	javaslat:funkcio_kod	Rd	preposition	to	εἰς	G1519
+o360030050111ה	ZEP 3:5!11	Sof 3:5	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360030050112	ZEP 3:5!11	Sof 3:5	identitas	rendben	אוֹר֙	אוֹר	H0216	0216	igen	Ncbsa	noun	light	φῶς	G5457
+o360030050121	ZEP 3:5!12	Sof 3:5	identitas	rendben	לֹ֣א	לֹא	H3808	3808	igen	Tn	particle	not	οὐκ	G3756
+o360030050131	ZEP 3:5!13	Sof 3:5	identitas	javaslat:strong_betu_alap	נֶעְדָּ֔ר	עָדַר	H5737	5737a	javaslat:betu_alap	VNp3ms	verb	he.is.missing	ἀπεκρύβη	
+o360030050141	ZEP 3:5!14	Sof 3:5	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030050142	ZEP 3:5!14	Sof 3:5	identitas	rendben	לֹֽא	לֹא	H3808	3808	igen	Tn	particle	not	οὐκ	G3756
+o360030050151	ZEP 3:5!15	Sof 3:5	identitas	rendben	יוֹדֵ֥עַ	יָדַע	H3045	3045	igen	Vqrmsa	verb	[is].knowing	ἔγνω	G1097
+o360030050161	ZEP 3:5!16	Sof 3:5	identitas	rendben	עַוָּ֖ל	עַוָּל	H5767	5767	igen	Ncmsa	noun	an.unjust.person	ἀδικίαν	G0093
+o360030050171	ZEP 3:5!17	Sof 3:5	identitas	rendben	בֹּֽשֶׁת	בֹּשֶׁת	H1322	1322	igen	Ncfsa	noun	shame		
+o360030060011	ZEP 3:6!1	Sof 3:6	identitas	rendben	הִכְרַ֣תִּי	כָּרַת	H3772	3772	igen	Vhp1cs	verb	I.have.cut.off	κατέσπασα	
+o360030060021	ZEP 3:6!2	Sof 3:6	identitas	rendben	גוֹיִ֗ם	גּוֹי	H1471	1471	igen	Ncmpa	noun	nations	ὑπερηφάνους	G5244
+o360030060031	ZEP 3:6!3	Sof 3:6	identitas	rendben	נָשַׁ֨מּוּ֙	שָׁמֵם	H8074	8074	igen	VNp3cp	verb	they.are.desolate	ἠφανίσθησαν	
+o360030060041	ZEP 3:6!4	Sof 3:6	identitas	rendben	פִּנּוֹתָ֔	פִּנָּה	H6438	6438	igen	Ncfpc	noun	corners	γωνίαι	
+o360030060042	ZEP 3:6!4	Sof 3:6	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their	αὐτῶν	G0846
+o360030060051	ZEP 3:6!5	Sof 3:6	identitas	rendben	הֶחֱרַ֥בְתִּי	חָרֵב	H2717	2717	igen	Vhp1cs	verb	I.have.made.desolate	ἐχερημώσω	
+o360030060061	ZEP 3:6!6	Sof 3:6	identitas	rendben	חֽוּצוֹתָ֖	חוּץ	H2351	2351	igen	Ncmpc	noun	streets		
+o360030060062	ZEP 3:6!6	Sof 3:6	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360030060071	ZEP 3:6!7	Sof 3:6	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from	τοῦ	G3588
+o360030060072	ZEP 3:6!7	Sof 3:6	identitas	rendben	בְּלִ֣י	בְּלִי	H1097	1097	igen	Ncmsc	noun	not	μὴ	G3361
+o360030060081	ZEP 3:6!8	Sof 3:6	identitas	rendben	עוֹבֵ֑ר	עָבַר	H5674	5674	igen	Vqrmsa	verb	[one.who].passes.by	διοδεύειν	G1353
+o360030060091	ZEP 3:6!9	Sof 3:6	identitas	javaslat:strong_betu_alap	נִצְדּ֧וּ	צָדָה	H6658	6658a	javaslat:betu_alap	VNp3cp	verb	they.have.been.laid.waste	ἐχέλιπον	G1587
+o360030060101	ZEP 3:6!10	Sof 3:6	identitas	rendben	עָרֵי	עִיר	H5892	5892	igen	Ncfpc	noun	cities	πόλεις	G4172
+o360030060102	ZEP 3:6!10	Sof 3:6	identitas	javaslat:strong_funkcio_kod	הֶ֛ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360030060111	ZEP 3:6!11	Sof 3:6	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from		
+o360030060112	ZEP 3:6!11	Sof 3:6	identitas	rendben	בְּלִי	בְּלִי	H1097	1097	igen	Ncmsc	noun	not		
+o360030060121	ZEP 3:6!12	Sof 3:6	identitas	rendben	אִ֖ישׁ	אִישׁ	H0376	0376	igen	Ncmsa	noun	anyone		
+o360030060131	ZEP 3:6!13	Sof 3:6	identitas	rendben	מֵ	מִן	H4480	4480	igen	R	preposition	from		
+o360030060132	ZEP 3:6!13	Sof 3:6	identitas	rendben	אֵ֥ין	אַיִן	H0369	0369	igen	Tn	particle	not	μηδὲ	G3366
+o360030060141	ZEP 3:6!14	Sof 3:6	identitas	rendben	יוֹשֵֽׁב	יָשַׁב	H3427	3427	igen	Vqrmsa	verb	an.inhabitant	κατοικεῖν	G2730
+o360030070011	ZEP 3:7!1	Sof 3:7	identitas	rendben	אָמַ֜רְתִּי	אָמַר	H0559	0559	igen	Vqp1cs	verb	I.said	εἶπα	G2036
+o360030070021	ZEP 3:7!2	Sof 3:7	identitas	rendben	אַךְ	אַךְ	H0389	0389	igen	Ta	particle	surely	πλὴν	G4133
+o360030070031	ZEP 3:7!3	Sof 3:7	identitas	rendben	תִּירְאִ֤י	יָרֵא	H3372	3372	igen	Vqi2fs	verb	you.will.fear	φοβεῖσθέ	
+o360030070041	ZEP 3:7!4	Sof 3:7	identitas	rendben	אוֹתִ	אֵת	H0853	0853	igen	To	particle			
+o360030070042	ZEP 3:7!4	Sof 3:7	identitas	javaslat:strong_funkcio_kod	י֙	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	me	με	G3165
+o360030070051	ZEP 3:7!5	Sof 3:7	identitas	rendben	תִּקְחִ֣י	לָקַח	H3947	3947	igen	Vqi2fs	verb	you.will.accept	δέχασθε	G1209
+o360030070061	ZEP 3:7!6	Sof 3:7	identitas	rendben	מוּסָ֔ר	מוּסָר	H4148	4148	igen	Ncmsa	noun	correction	παιδείαν	G3809
+o360030070071	ZEP 3:7!7	Sof 3:7	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030070072	ZEP 3:7!7	Sof 3:7	identitas	rendben	לֹֽא	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o360030070081	ZEP 3:7!8	Sof 3:7	identitas	rendben	יִכָּרֵ֣ת	כָּרַת	H3772	3772	igen	VNi3ms	verb	it.will.be.cut.off	ἐχολεθρευθῆτε	
+o360030070091	ZEP 3:7!9	Sof 3:7	identitas	rendben	מְעוֹנָ֔	מָעֹון	H4583	4583	igen	Ncbsc	noun	dwelling		
+o360030070092	ZEP 3:7!9	Sof 3:7	identitas	javaslat:strong_funkcio_kod	הּ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	its	αὐτῆς	G0846
+o360030070101	ZEP 3:7!10	Sof 3:7	identitas	rendben	כֹּ֥ל	כֹּל	H3605	3605	igen	Ncmsa	noun	all	πάντα	G3956
+o360030070111	ZEP 3:7!11	Sof 3:7	identitas	rendben	אֲשֶׁר	אֲשֶׁר	H0834	0834	igen	Tr	particle	that	ὅσα	G3745
+o360030070121	ZEP 3:7!12	Sof 3:7	identitas	rendben	פָּקַ֖דְתִּי	פָּקַד	H6485	6485	igen	Vqp1cs	verb	I.have.visited	ἐχεδίκησα	
+o360030070131	ZEP 3:7!13	Sof 3:7	identitas	rendben	עָלֶ֑י	עַל	H5921	5921	igen	R	preposition	on	ἐπ’	G1909
+o360030070132	ZEP 3:7!13	Sof 3:7	identitas	javaslat:strong_funkcio_kod	הָ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	it	αὐτήν	G0848
+o360030070141	ZEP 3:7!14	Sof 3:7	identitas	rendben	אָכֵן֙	אָכֵן	H0403	0403	igen	D	adverb	nevertheless	ἑτοιμάζου	
+o360030070151	ZEP 3:7!15	Sof 3:7	identitas	rendben	הִשְׁכִּ֣ימוּ	שָׁכַם	H7925	7925	igen	Vhp3cp	verb	they.rose.early	ὄρθρισον	
+o360030070161	ZEP 3:7!16	Sof 3:7	identitas	rendben	הִשְׁחִ֔יתוּ	שָׁחַת	H7843	7843	igen	Vhp3cp	verb	they.corrupted	διέφθαρται	G1311
+o360030070171	ZEP 3:7!17	Sof 3:7	identitas	rendben	כֹּ֖ל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πᾶσα	G3956
+o360030070181	ZEP 3:7!18	Sof 3:7	identitas	rendben	עֲלִילוֹתָֽ	עֲלִילָה	H5949	5949	igen	Ncfpc	noun	practices		
+o360030070182	ZEP 3:7!18	Sof 3:7	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360030080011	ZEP 3:8!1	Sof 3:8	identitas	javaslat:strong_funkcio_kod	לָ	לָכֵן		3807a	javaslat:funkcio_kod	R	preposition	therefore	διὰ	G1223
+o360030080012	ZEP 3:8!1	Sof 3:8	identitas	rendben	כֵ֤ן	כֵּן	H3651	3651	igen	D	adverb		τοῦτο	G5124
+o360030080021	ZEP 3:8!2	Sof 3:8	identitas	rendben	חַכּוּ	חָכָה	H2442	2442	igen	Vpv2mp	verb	wait	ὑπόμεινόν	
+o360030080031	ZEP 3:8!3	Sof 3:8	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	for		
+o360030080032	ZEP 3:8!3	Sof 3:8	identitas	javaslat:strong_funkcio_kod	י֙	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	me	με	G3165
+o360030080041	ZEP 3:8!4	Sof 3:8	identitas	rendben	נְאֻם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o360030080051	ZEP 3:8!5	Sof 3:8	identitas	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o360030080061	ZEP 3:8!6	Sof 3:8	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	for	εἰς	G1519
+o360030080062	ZEP 3:8!6	Sof 3:8	identitas	rendben	י֖וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	the.day	ἡμέραν	G2250
+o360030080071	ZEP 3:8!7	Sof 3:8	identitas	rendben	קוּמִ֣	קוּם	H6965	6965	igen	Vqc	verb	of	ἀναστάσεώς	G0386
+o360030080072	ZEP 3:8!7	Sof 3:8	identitas	javaslat:strong_funkcio_kod	י	הוּא		5204a	javaslat:funkcio_kod	Sp1cs	suffix	my.rising	μου	G3450
+o360030080081	ZEP 3:8!8	Sof 3:8	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	for	εἰς	G1519
+o360030080082	ZEP 3:8!8	Sof 3:8	identitas	rendben	עַ֑ד	עַד	H5706	5706	igen	Ncmsa	noun	booty	μαρτύριον	G3142
+o360030080091	ZEP 3:8!9	Sof 3:8	identitas	rendben	כִּ֣י	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o360030080101	ZEP 3:8!10	Sof 3:8	identitas	rendben	מִשְׁפָּטִ	מִשְׁפָּט	H4941	4941	igen	Ncmsc	noun	judgment	κρίμα	G2917
+o360030080102	ZEP 3:8!10	Sof 3:8	identitas	javaslat:strong_funkcio_kod	י֩	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o360030080111	ZEP 3:8!11	Sof 3:8	identitas	javaslat:strong_funkcio_kod	לֶ	לְ		3807a	javaslat:funkcio_kod	R	preposition	[is].to	εἰς	G1519
+o360030080112	ZEP 3:8!11	Sof 3:8	identitas	rendben	אֱסֹ֨ף	אָסַף	H0622	0622	igen	Vqc	verb	gather	συναγωγὰς	G4864
+o360030080121	ZEP 3:8!12	Sof 3:8	identitas	rendben	גּוֹיִ֜ם	גּוֹי	H1471	1471	igen	Ncmpa	noun	nations	ἐθνῶν	G1484
+o360030080131	ZEP 3:8!13	Sof 3:8	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	I		
+o360030080132	ZEP 3:8!13	Sof 3:8	identitas	rendben	קָבְצִ֣	קָבַץ	H6908	6908	igen	Vqc	verb	to		
+o360030080133	ZEP 3:8!13	Sof 3:8	identitas	javaslat:strong_funkcio_kod	י	הוּא		5204a	javaslat:funkcio_kod	Sp1cs	suffix	assemble		
+o360030080141	ZEP 3:8!14	Sof 3:8	identitas	rendben	מַמְלָכ֗וֹת	מַמְלָכָה	H4467	4467	igen	Ncfpa	noun	kingdoms	βασιλεῖς	G0935
+o360030080151	ZEP 3:8!15	Sof 3:8	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τοῦ	G3588
+o360030080152	ZEP 3:8!15	Sof 3:8	identitas	rendben	שְׁפֹּ֨ךְ	שָׁפַךְ	H8210	8210	igen	Vqc	verb	pour.out	ἐκξέαι	G1632
+o360030080161	ZEP 3:8!16	Sof 3:8	identitas	rendben	עֲלֵי	עַל	H5921	5921	igen	R	preposition	on	ἐπ’	G1909
+o360030080162	ZEP 3:8!16	Sof 3:8	identitas	javaslat:strong_funkcio_kod	הֶ֤ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	them	αὐτοὺς	G0848
+o360030080171	ZEP 3:8!17	Sof 3:8	identitas	rendben	זַעְמִ	זַעַם	H2195	2195	igen	Ncmsc	noun	indignation		
+o360030080172	ZEP 3:8!17	Sof 3:8	identitas	javaslat:strong_funkcio_kod	י֙	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my		
+o360030080181	ZEP 3:8!18	Sof 3:8	identitas	rendben	כֹּ֚ל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πᾶσαν	G3956
+o360030080191	ZEP 3:8!19	Sof 3:8	identitas	rendben	חֲר֣וֹן	חָרוֹן	H2740	2740	igen	Ncmsc	noun	the.burning	ὀργὴν	G3709
+o360030080201	ZEP 3:8!20	Sof 3:8	identitas	rendben	אַפִּ֔	אַף	H0639	0639	igen	Ncmsc	noun	my.anger	θυμοῦ	G2372
+o360030080202	ZEP 3:8!20	Sof 3:8	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o360030080211	ZEP 3:8!21	Sof 3:8	identitas	rendben	כִּ֚י	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o360030080221	ZEP 3:8!22	Sof 3:8	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o360030080222	ZEP 3:8!22	Sof 3:8	identitas	rendben	אֵ֣שׁ	אֵשׁ	H0784	0784	igen	Ncbsc	noun	the.fire	πυρὶ	G4442
+o360030080231	ZEP 3:8!23	Sof 3:8	identitas	rendben	קִנְאָתִ֔	קִנְאָה	H7068	7068	igen	Ncfsc	noun	my.jealousy	ζήλους	
+o360030080232	ZEP 3:8!23	Sof 3:8	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o360030080241	ZEP 3:8!24	Sof 3:8	identitas	rendben	תֵּאָכֵ֖ל	אָכַל	H0398	0398	igen	VNi3fs	verb	it.will.be.consumed	καταναλωθήσεται	
+o360030080251	ZEP 3:8!25	Sof 3:8	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πᾶσα	G3956
+o360030080261	ZEP 3:8!26	Sof 3:8	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἡ	G3588
+o360030080262	ZEP 3:8!26	Sof 3:8	identitas	rendben	אָֽרֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	earth	γῆ	G1093
+o360030090011	ZEP 3:9!1	Sof 3:9	identitas	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o360030090021	ZEP 3:9!2	Sof 3:9	identitas	rendben	אָ֛ז	אָז	H0227	0227	igen	D	adverb	then	τότε	G5119
+o360030090031	ZEP 3:9!3	Sof 3:9	identitas	rendben	אֶהְפֹּ֥ךְ	הָפַךְ	H2015	2015	igen	Vqi1cs	verb	I.will.restore	μεταστρέψω	
+o360030090041	ZEP 3:9!4	Sof 3:9	identitas	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	ἐπὶ	G1909
+o360030090051	ZEP 3:9!5	Sof 3:9	identitas	rendben	עַמִּ֖ים	עַם	H5971	5971	igen	Ncmpa	noun	peoples	λαοὺς	G2992
+o360030090061	ZEP 3:9!6	Sof 3:9	identitas	rendben	שָׂפָ֣ה	שָׂפָה	H8193	8193	igen	Ncfsa	noun	a.lip	γλῶσσαν	G1100
+o360030090071	ZEP 3:9!7	Sof 3:9	identitas	javaslat:strong_betu_alap	בְרוּרָ֑ה	בָּרוּר	H1305	1305b	javaslat:betu_alap	Aafsa	adjective	purified		
+o360030090081	ZEP 3:9!8	Sof 3:9	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τοῦ	G3588
+o360030090082	ZEP 3:9!8	Sof 3:9	identitas	rendben	קְרֹ֤א	קָרָא	H7121	7121	igen	Vqc	verb	call	ἐπικαλεῖσθαι	G1941
+o360030090091	ZEP 3:9!9	Sof 3:9	identitas	rendben	כֻלָּ	כֹּל	H3605	3605	igen	Ncmsc	noun	of.them	πάντας	G3956
+o360030090092	ZEP 3:9!9	Sof 3:9	identitas	javaslat:strong_funkcio_kod	ם֙	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	all		
+o360030090101	ZEP 3:9!10	Sof 3:9	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on	τὸ	G3588
+o360030090102	ZEP 3:9!10	Sof 3:9	identitas	rendben	שֵׁ֣ם	שֵׁם	H8034	8034	igen	Ncmsc	noun	the.name	ὄνομα	G3686
+o360030090111	ZEP 3:9!11	Sof 3:9	identitas	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o360030090121	ZEP 3:9!12	Sof 3:9	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τοῦ	G3588
+o360030090122	ZEP 3:9!12	Sof 3:9	identitas	rendben	עָבְד֖	עָבַד	H5647	5647	igen	Vqc	verb	serve	δουλεύειν	G1398
+o360030090123	ZEP 3:9!12	Sof 3:9	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	him	αὐτῷ	G0846
+o360030090131	ZEP 3:9!13	Sof 3:9	identitas	rendben	שְׁכֶ֥ם	שְׁכֶם	H7926	7926	igen	Ncmsa	noun	a.shoulder	ζυγὸν	G2218
+o360030090141	ZEP 3:9!14	Sof 3:9	identitas	rendben	אֶחָֽד	אֶחָד	H0259	0259	igen	Acmsa	adjective	one	ἕνα	G1520
+o360030100011	ZEP 3:10!1	Sof 3:10	identitas	rendben	מֵ	מִן	H4480	4480	igen	R	preposition	from.[the]	ἐκ	G1537
+o360030100012	ZEP 3:10!1	Sof 3:10	identitas	rendben	עֵ֖בֶר	עֵבֶר	H5676	5676	igen	Ncmsa	noun	other.side	περάτων	G4009
+o360030100021	ZEP 3:10!2	Sof 3:10	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	of		
+o360030100022	ZEP 3:10!2	Sof 3:10	identitas	rendben	נַֽהֲרֵי	נָהָר	H5104	5104	igen	Ncmpc	noun	the.rivers	ποταμῶν	G4215
+o360030100031	ZEP 3:10!3	Sof 3:10	identitas	javaslat:strong_betu_alap	כ֑וּשׁ	כּוּשׁ	H3568	3568a	javaslat:betu_alap	Np	noun	of.Cush	αἰθιοπίας	G0128
+o360030100041	ZEP 3:10!4	Sof 3:10	identitas	rendben	עֲתָרַ	עָתָר	H6282	6282	igen	Ncmpc	noun	worshippers		
+o360030100042	ZEP 3:10!4	Sof 3:10	identitas	javaslat:strong_funkcio_kod	י֙	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my		
+o360030100051	ZEP 3:10!5	Sof 3:10	identitas	rendben	בַּת	בַּת	H1323	1323	igen	Ncfsc	noun	the.daughter		
+o360030100061	ZEP 3:10!6	Sof 3:10	identitas	rendben	פוּצַ֔	פּוּצַי	H6327	6327	igen	Vqsmsc	verb	of		
+o360030100062	ZEP 3:10!6	Sof 3:10	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my.scattered.[ones]		
+o360030100071	ZEP 3:10!7	Sof 3:10	identitas	rendben	יוֹבִל֖וּ	יָבַל	H2986	2986	igen	Vhi3mp	verb	they		
+o360030100072	ZEP 3:10!7	Sof 3:10	identitas	javaslat:strong_funkcio_kod	ן	נ		4993b	javaslat:funkcio_kod	Sn	suffix	will.bring	οἴσουσιν	G5342
+o360030100081	ZEP 3:10!8	Sof 3:10	identitas	rendben	מִנְחָתִֽ	מִנְחָה	H4503	4503	igen	Ncfsc	noun	offering	θυσίας	G2378
+o360030100082	ZEP 3:10!8	Sof 3:10	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μοι	G3427
+o360030110011	ZEP 3:11!1	Sof 3:11	identitas	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	on	ἐν	G1722
+o360030110011ה	ZEP 3:11!1	Sof 3:11	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360030110012	ZEP 3:11!1	Sof 3:11	identitas	rendben	יּ֣וֹם	יוֹם	H3117	3117	igen	Ncmsa	noun	day	ἡμέρᾳ	G2250
+o360030110021	ZEP 3:11!2	Sof 3:11	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o360030110022	ZEP 3:11!2	Sof 3:11	identitas	rendben	ה֗וּא	הוּא	H1931	1931	igen	Pp3ms	pronoun	that	ἐκείνῃ	G1565
+o360030110031	ZEP 3:11!3	Sof 3:11	identitas	rendben	לֹ֤א	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o360030110041	ZEP 3:11!4	Sof 3:11	identitas	rendben	תֵב֨וֹשִׁי֙	בּוֹשׁ	H0954	0954	igen	Vqi2fs	verb	you.will.be.ashamed	καταισξυνθῇς	
+o360030110051	ZEP 3:11!5	Sof 3:11	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from	ἐκ	G1537
+o360030110052	ZEP 3:11!5	Sof 3:11	identitas	rendben	כֹּ֣ל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντων	G3956
+o360030110061	ZEP 3:11!6	Sof 3:11	identitas	rendben	עֲלִילֹתַ֔יִ	עֲלִילָה	H5949	5949	igen	Ncfpc	noun	practices		
+o360030110062	ZEP 3:11!6	Sof 3:11	identitas	javaslat:strong_funkcio_kod	ךְ	הוּא		3509c	javaslat:funkcio_kod	Sp2fs	suffix	your	σου	G4675
+o360030110071	ZEP 3:11!7	Sof 3:11	identitas	rendben	אֲשֶׁ֥ר	אֲשֶׁר	H0834	0834	igen	Tr	particle	which	ὧν	G3739
+o360030110081	ZEP 3:11!8	Sof 3:11	identitas	rendben	פָּשַׁ֖עַתְּ	פָּשַׁע	H6586	6586	igen	Vqp2fs	verb	you.have.transgressed	ἠσέβησας	
+o360030110091	ZEP 3:11!9	Sof 3:11	identitas	javaslat:strong_funkcio_kod	בִּ֑	בְּ		0871a	javaslat:funkcio_kod	R	preposition	against	εἰς	G1519
+o360030110092	ZEP 3:11!9	Sof 3:11	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	me	ἐμέ	G1691
+o360030110101	ZEP 3:11!10	Sof 3:11	identitas	rendben	כִּי	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o360030110111	ZEP 3:11!11	Sof 3:11	identitas	rendben	אָ֣ז	אָז	H0227	0227	igen	D	adverb	then	τότε	G5119
+o360030110121	ZEP 3:11!12	Sof 3:11	identitas	rendben	אָסִ֣יר	סוּר	H5493	5493	igen	Vhi1cs	verb	I.will.remove	περιελῶ	
+o360030110131	ZEP 3:11!13	Sof 3:11	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from	ἀπὸ	G0575
+o360030110132	ZEP 3:11!13	Sof 3:11	identitas	rendben	קִּרְבֵּ֗	קֶרֶב	H7130	7130	igen	Ncmsc	noun	midst		
+o360030110133	ZEP 3:11!13	Sof 3:11	identitas	javaslat:strong_funkcio_kod	ךְ	הוּא		3509c	javaslat:funkcio_kod	Sp2fs	suffix	your	σοῦ	G4675
+o360030110141	ZEP 3:11!14	Sof 3:11	identitas	rendben	עַלִּיזֵי֙	עַלִּיז	H5947	5947	igen	Aampc	adjective	the.exultant.[ones]		
+o360030110151	ZEP 3:11!15	Sof 3:11	identitas	rendben	גַּאֲוָתֵ֔	גַּאֲוָה	H1346	1346	igen	Ncfsc	noun	your.pride		
+o360030110152	ZEP 3:11!15	Sof 3:11	identitas	javaslat:strong_funkcio_kod	ךְ	הוּא		3509c	javaslat:funkcio_kod	Sp2fs	suffix	your	σου	G4675
+o360030110161	ZEP 3:11!16	Sof 3:11	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030110162	ZEP 3:11!16	Sof 3:11	identitas	rendben	לֹֽא	לֹא	H3808	3808	igen	Tn	particle	not	οὐκέτι	G3765
+o360030110171	ZEP 3:11!17	Sof 3:11	identitas	rendben	תוֹסִ֧פִי	יָסַף	H3254	3254	igen	Vhi2fs	verb	you.will.repeat	προσθῇς	
+o360030110181	ZEP 3:11!18	Sof 3:11	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τοῦ	G3588
+o360030110182	ZEP 3:11!18	Sof 3:11	identitas	rendben	גָבְהָ֛ה	גָּבַהּ	H1361	1361	igen	Vqc	verb	be.haughty	μεγαλαυξῆσαι	
+o360030110191	ZEP 3:11!19	Sof 3:11	identitas	rendben	ע֖וֹד	עוֹד	H5750	5750	igen	D	adverb	again		
+o360030110201	ZEP 3:11!20	Sof 3:11	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on		
+o360030110202	ZEP 3:11!20	Sof 3:11	identitas	rendben	הַ֥ר	הַר	H2022	2022	igen	Ncmsc	noun	the.mountain	ὄρος	G3735
+o360030110211	ZEP 3:11!21	Sof 3:11	identitas	rendben	קָדְשִֽׁ	קֹדֶשׁ	H6944	6944	igen	Ncmsc	noun	my.holiness	ἅγιόν	G0039
+o360030110212	ZEP 3:11!21	Sof 3:11	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o360030120011	ZEP 3:12!1	Sof 3:12	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030120012	ZEP 3:12!1	Sof 3:12	identitas	rendben	הִשְׁאַרְתִּ֣י	שָׁאַר	H7604	7604	igen	Vhq1cs	verb	I.will.leave	ὑπολείψομαι	
+o360030120021	ZEP 3:12!2	Sof 3:12	identitas	javaslat:strong_funkcio_kod	בְ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o360030120022	ZEP 3:12!2	Sof 3:12	identitas	rendben	קִרְבֵּ֔	קֶרֶב	H7130	7130	igen	Ncmsc	noun	midst		
+o360030120023	ZEP 3:12!2	Sof 3:12	identitas	javaslat:strong_funkcio_kod	ךְ	הוּא		3509c	javaslat:funkcio_kod	Sp2fs	suffix	your	σοὶ	G4671
+o360030120031	ZEP 3:12!3	Sof 3:12	identitas	rendben	עַ֥ם	עַם	H5971	5971	igen	Ncmsa	noun	a.people	λαὸν	G2992
+o360030120041	ZEP 3:12!4	Sof 3:12	identitas	rendben	עָנִ֖י	עָנִי	H6041	6041	igen	Aamsa	adjective	afflicted	πραῢν	
+o360030120051	ZEP 3:12!5	Sof 3:12	identitas	javaslat:strong_funkcio_kod	וָ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030120052	ZEP 3:12!5	Sof 3:12	identitas	rendben	דָ֑ל	דַּל	H1800	1800	igen	Aamsa	adjective	poor	ταπεινόν	
+o360030120061	ZEP 3:12!6	Sof 3:12	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030120062	ZEP 3:12!6	Sof 3:12	identitas	rendben	חָס֖וּ	חָסָה	H2620	2620	igen	Vqq3cp	verb	they.will.take.refuge	εὐλαβηθήσονται	
+o360030120071	ZEP 3:12!7	Sof 3:12	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in		
+o360030120072	ZEP 3:12!7	Sof 3:12	identitas	rendben	שֵׁ֥ם	שֵׁם	H8034	8034	igen	Ncmsc	noun	the.name		
+o360030120081	ZEP 3:12!8	Sof 3:12	identitas	rendben	יְהוָֽה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o360030130011	ZEP 3:13!1	Sof 3:13	identitas	rendben	שְׁאֵרִ֨ית	שְׁאֵרִית	H7611	7611	igen	Ncfsc	noun	the.remnant	κατάλοιποι	G2645
+o360030130021	ZEP 3:13!2	Sof 3:13	identitas	rendben	יִשְׂרָאֵ֜ל	יִשְׂרָאֵל	H3478	3478	igen	Np	noun	of.Israel	ισραηλ	G2474
+o360030130031	ZEP 3:13!3	Sof 3:13	identitas	rendben	לֹֽא	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o360030130041	ZEP 3:13!4	Sof 3:13	identitas	rendben	יַעֲשׂ֤וּ	עָשָׂה	H6213	6213	igen	Vqi3mp	verb	they.will.do	ποιήσουσιν	G4160
+o360030130051	ZEP 3:13!5	Sof 3:13	identitas	javaslat:strong_betu_alap	עַוְלָה֙	עַוְלָה	H5766	5766a	javaslat:betu_alap	Ncbsa	noun	injustice	ἀδικίαν	G0093
+o360030130061	ZEP 3:13!6	Sof 3:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030130062	ZEP 3:13!6	Sof 3:13	identitas	rendben	לֹא	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o360030130071	ZEP 3:13!7	Sof 3:13	identitas	rendben	יְדַבְּר֣וּ	דָבַר	H1696	1696	igen	Vpi3mp	verb	they.will.speak	λαλήσουσιν	G2980
+o360030130081	ZEP 3:13!8	Sof 3:13	identitas	rendben	כָזָ֔ב	כָּזָב	H3577	3577	igen	Ncmsa	noun	falsehood	μάταια	G3152
+o360030130091	ZEP 3:13!9	Sof 3:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030130092	ZEP 3:13!9	Sof 3:13	identitas	rendben	לֹֽא	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o360030130101	ZEP 3:13!10	Sof 3:13	identitas	rendben	יִמָּצֵ֥א	מָצָא	H4672	4672	igen	VNi3ms	verb	it.will.be.found	εὑρεθῇ	G2147
+o360030130111	ZEP 3:13!11	Sof 3:13	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o360030130112	ZEP 3:13!11	Sof 3:13	identitas	rendben	פִי	פֶּה	H6310	6310	igen	Ncmsc	noun	mouth	στόματι	G4750
+o360030130113	ZEP 3:13!11	Sof 3:13	identitas	javaslat:strong_funkcio_kod	הֶ֖ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o360030130121	ZEP 3:13!12	Sof 3:13	identitas	rendben	לְשׁ֣וֹן	לָשׁוֹן	H3956	3956	igen	Ncbsc	noun	a.tongue	γλῶσσα	G1100
+o360030130131	ZEP 3:13!13	Sof 3:13	identitas	rendben	תַּרְמִ֑ית	תׇּרְמִית	H8649	8649	igen	Ncfsa	noun	of.deceitfulness	δολία	
+o360030130141	ZEP 3:13!14	Sof 3:13	identitas	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o360030130151	ZEP 3:13!15	Sof 3:13	identitas	rendben	הֵ֛מָּה	הֵמָּה	H1992	1992	igen	Pp3mp	pronoun	they	αὐτοὶ	G0846
+o360030130161	ZEP 3:13!16	Sof 3:13	identitas	rendben	יִרְע֥וּ	רָעָה	H7462	7462	igen	Vqi3mp	verb	they.will.graze	νεμήσονται	
+o360030130171	ZEP 3:13!17	Sof 3:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030130172	ZEP 3:13!17	Sof 3:13	identitas	rendben	רָבְצ֖וּ	רָבַץ	H7257	7257	igen	Vqq3cp	verb	they.will.lie.down	κοιτασθήσονται	
+o360030130181	ZEP 3:13!18	Sof 3:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030130182	ZEP 3:13!18	Sof 3:13	identitas	rendben	אֵ֥ין	אַיִן	H0369	0369	igen	Tn	particle	there.[will].not.[be]	οὐκ	G3756
+o360030130191	ZEP 3:13!19	Sof 3:13	identitas	rendben	מַחֲרִֽיד	חָרַד	H2729	2729	igen	Vhrmsa	verb	[one.who].terrifies		
+o360030140011	ZEP 3:14!1	Sof 3:14	identitas	rendben	רָנִּי֙	רָנַן	H7442	7442	igen	Vqv2fs	verb	shout.for.joy	ξαῖρε	G5463
+o360030140021	ZEP 3:14!2	Sof 3:14	identitas	rendben	בַּת	בַּת	H1323	1323	igen	Ncfsc	noun	O.daughter	θύγατερ	G2364
+o360030140031	ZEP 3:14!3	Sof 3:14	identitas	rendben	צִיּ֔וֹן	צִיּוֹן	H6726	6726	igen	Np	noun	of.Zion	σιων	G4622
+o360030140041	ZEP 3:14!4	Sof 3:14	identitas	rendben	הָרִ֖יעוּ	רוּעַ	H7321	7321	igen	Vhv2mp	verb	shout	κήρυσσε	
+o360030140051	ZEP 3:14!5	Sof 3:14	identitas	rendben	יִשְׂרָאֵ֑ל	יִשְׂרָאֵל	H3478	3478	igen	Np	noun	O.Israel	ιερουσαλημ	G2414
+o360030140061	ZEP 3:14!6	Sof 3:14	identitas	rendben	שִׂמְחִ֤י	שָׂמַח	H8055	8055	igen	Vqv2fs	verb	rejoice	εὐφραίνου	G2165
+o360030140071	ZEP 3:14!7	Sof 3:14	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030140072	ZEP 3:14!7	Sof 3:14	identitas	rendben	עָלְזִי֙	עָלַז	H5937	5937	igen	Vqv2fs	verb	exult	κατατέρπου	
+o360030140081	ZEP 3:14!8	Sof 3:14	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	with	ἐχ	G1537
+o360030140082	ZEP 3:14!8	Sof 3:14	identitas	rendben	כָל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	ὅλης	G3650
+o360030140091	ZEP 3:14!9	Sof 3:14	identitas	rendben	לֵ֔ב	לֵב	H3820	3820	igen	Ncmsa	noun	[the].heart	καρδίας	G2588
+o360030140101	ZEP 3:14!10	Sof 3:14	identitas	rendben	בַּ֖ת	בַּת	H1323	1323	igen	Ncfsc	noun	O.daughter	θύγατερ	G2364
+o360030140111	ZEP 3:14!11	Sof 3:14	identitas	rendben	יְרוּשָׁלִָֽם	יְרוּשָׁלִַ͏ם	H3389	3389	igen	Np	noun	of.Jerusalem	ιερουσαλημ	G2414
+o360030150011	ZEP 3:15!1	Sof 3:15	identitas	rendben	הֵסִ֤יר	סוּר	H5493	5493	igen	Vhp3ms	verb	he.has.removed	περιεῖλεν	
+o360030150021	ZEP 3:15!2	Sof 3:15	identitas	rendben	יְהוָה֙	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o360030150031	ZEP 3:15!3	Sof 3:15	identitas	rendben	מִשְׁפָּטַ֔יִ	מִשְׁפָּט	H4941	4941	igen	Ncmpc	noun	judgments		
+o360030150032	ZEP 3:15!3	Sof 3:15	identitas	javaslat:strong_funkcio_kod	ךְ	הוּא		3509c	javaslat:funkcio_kod	Sp2fs	suffix	your	σου	G4675
+o360030150041	ZEP 3:15!4	Sof 3:15	identitas	rendben	פִּנָּ֖ה	פָּנָה	H6437	6437	igen	Vpp3ms	verb	he.has.cleared.away		
+o360030150051	ZEP 3:15!5	Sof 3:15	identitas	rendben	אֹֽיְבֵ֑	אָיַב	H0341	0341	igen	Vqrmsc	verb	enemy	ἐξθρῶν	G2190
+o360030150052	ZEP 3:15!5	Sof 3:15	identitas	javaslat:strong_funkcio_kod	ךְ	הוּא		3509c	javaslat:funkcio_kod	Sp2fs	suffix	your	σου	G4675
+o360030150061	ZEP 3:15!6	Sof 3:15	identitas	rendben	מֶ֣לֶךְ	מֶלֶךְ	H4428	4428	igen	Ncmsc	noun	the.king	βασιλεὺς	G0935
+o360030150071	ZEP 3:15!7	Sof 3:15	identitas	rendben	יִשְׂרָאֵ֤ל	יִשְׂרָאֵל	H3478	3478	igen	Np	noun	of.Israel	ισραηλ	G2474
+o360030150081	ZEP 3:15!8	Sof 3:15	identitas	rendben	יְהוָה֙	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o360030150091	ZEP 3:15!9	Sof 3:15	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	[is].in	ἐν	G1722
+o360030150092	ZEP 3:15!9	Sof 3:15	identitas	rendben	קִרְבֵּ֔	קֶרֶב	H7130	7130	igen	Ncmsc	noun	midst	μέσῳ	G3319
+o360030150093	ZEP 3:15!9	Sof 3:15	identitas	javaslat:strong_funkcio_kod	ךְ	הוּא		3509c	javaslat:funkcio_kod	Sp2fs	suffix	your	σου	G4675
+o360030150101	ZEP 3:15!10	Sof 3:15	identitas	rendben	לֹא	לֹא	H3808	3808	igen	Tn	particle	not	οὐκ	G3756
+o360030150111	ZEP 3:15!11	Sof 3:15	identitas	rendben	תִֽירְאִ֥י	יָרֵא	H3372	3372	igen	Vqi2fs	verb	you.will.fear	ὄψῃ	G3708
+o360030150121	ZEP 3:15!12	Sof 3:15	identitas	rendben	רָ֖ע	רַע	H7451	7451	igen	Aamsa	adjective	evil	κακὰ	G2556
+o360030150131	ZEP 3:15!13	Sof 3:15	identitas	rendben	עֽוֹד	עוֹד	H5750	5750	igen	D	adverb	again	οὐκέτι	G3765
+o360030160011	ZEP 3:16!1	Sof 3:16	identitas	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	on	ἐν	G1722
+o360030160011ה	ZEP 3:16!1	Sof 3:16	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360030160012	ZEP 3:16!1	Sof 3:16	identitas	rendben	יּ֣וֹם	יוֹם	H3117	3117	igen	Ncmsa	noun	day	καιρῷ	G2540
+o360030160021	ZEP 3:16!2	Sof 3:16	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o360030160022	ZEP 3:16!2	Sof 3:16	identitas	rendben	ה֔וּא	הוּא	H1931	1931	igen	Pp3ms	pronoun	that	ἐκείνῳ	G1565
+o360030160031	ZEP 3:16!3	Sof 3:16	identitas	rendben	יֵאָמֵ֥ר	אָמַר	H0559	0559	igen	VNi3ms	verb	it.will.be.said	ἐρεῖ	G2046
+o360030160041	ZEP 3:16!4	Sof 3:16	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τῇ	G3588
+o360030160042	ZEP 3:16!4	Sof 3:16	identitas	rendben	ירֽוּשָׁלִַ֖ם	יְרוּשָׁלִַ͏ם	H3389	3389	igen	Np	noun	Jerusalem	ιερουσαλημ	G2414
+o360030160051	ZEP 3:16!5	Sof 3:16	identitas	rendben	אַל	אַל	H0408	0408	igen	Tn	particle	do.not		
+o360030160061	ZEP 3:16!6	Sof 3:16	identitas	rendben	תִּירָ֑אִי	יָרֵא	H3372	3372	igen	Vqj2fs	verb	be.afraid	θάρσει	G2293
+o360030160071	ZEP 3:16!7	Sof 3:16	identitas	rendben	צִיּ֖וֹן	צִיּוֹן	H6726	6726	igen	Np	noun	O.Zion	σιων	G4622
+o360030160081	ZEP 3:16!8	Sof 3:16	identitas	rendben	אַל	אַל	H0408	0408	igen	Tn	particle	not	μὴ	G3361
+o360030160091	ZEP 3:16!9	Sof 3:16	identitas	rendben	יִרְפּ֥וּ	רָפָה	H7503	7503	igen	Vqj3mp	verb	let.them.drop	παρείσθωσαν	
+o360030160101	ZEP 3:16!10	Sof 3:16	identitas	rendben	יָדָֽיִ	יָד	H3027	3027	igen	Ncbdc	noun	hands		
+o360030160102	ZEP 3:16!10	Sof 3:16	identitas	javaslat:strong_funkcio_kod	ךְ	הוּא		3509c	javaslat:funkcio_kod	Sp2fs	suffix	your	σου	G4675
+o360030170011	ZEP 3:17!1	Sof 3:17	identitas	rendben	יְהוָ֧ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o360030170021	ZEP 3:17!2	Sof 3:17	identitas	rendben	אֱלֹהַ֛יִ	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	God	θεός	G2316
+o360030170022	ZEP 3:17!2	Sof 3:17	identitas	javaslat:strong_funkcio_kod	ךְ	הוּא		3509c	javaslat:funkcio_kod	Sp2fs	suffix	your	σου	G4675
+o360030170031	ZEP 3:17!3	Sof 3:17	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	[is].in	ἐν	G1722
+o360030170032	ZEP 3:17!3	Sof 3:17	identitas	rendben	קִרְבֵּ֖	קֶרֶב	H7130	7130	igen	Ncmsc	noun	midst		
+o360030170033	ZEP 3:17!3	Sof 3:17	identitas	javaslat:strong_funkcio_kod	ך	הוּא		3509c	javaslat:funkcio_kod	Sp2fs	suffix	your	σοί	G4671
+o360030170041	ZEP 3:17!4	Sof 3:17	identitas	rendben	גִּבּ֣וֹר	גִּבּוֹר	H1368	1368	igen	Aamsa	adjective	a.warrior	δυνατὸς	G1415
+o360030170051	ZEP 3:17!5	Sof 3:17	identitas	rendben	יוֹשִׁ֑יעַ	יָשַׁע	H3467	3467	igen	Vhi3ms	verb	[who].he.will.give.victory	σώσει	G4982
+o360030170061	ZEP 3:17!6	Sof 3:17	identitas	rendben	יָשִׂ֨ישׂ	שׂוּשׂ	H7797	7797	igen	Vqi3ms	verb	he.will.rejoice	ἐπάχει	
+o360030170071	ZEP 3:17!7	Sof 3:17	identitas	rendben	עָלַ֜יִ	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360030170072	ZEP 3:17!7	Sof 3:17	identitas	javaslat:strong_funkcio_kod	ךְ	הוּא		3509c	javaslat:funkcio_kod	Sp2fs	suffix	you	σὲ	G4571
+o360030170081	ZEP 3:17!8	Sof 3:17	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	with		
+o360030170082	ZEP 3:17!8	Sof 3:17	identitas	rendben	שִׂמְחָ֗ה	שִׂמְחָה	H8057	8057	igen	Ncfsa	noun	joy	εὐφροσύνην	G2167
+o360030170091	ZEP 3:17!9	Sof 3:17	identitas	javaslat:strong_betu_alap	יַחֲרִישׁ֙	חָרֵשׁ	H2790	2790a	javaslat:betu_alap	Vhi3ms	verb	he.will.be.silent		
+o360030170101	ZEP 3:17!10	Sof 3:17	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o360030170102	ZEP 3:17!10	Sof 3:17	identitas	rendben	אַ֣הֲבָת֔	אַהֲבָה	H0160	0160	igen	Ncfsc	noun	love	ἀγαπήσει	G0025
+o360030170103	ZEP 3:17!10	Sof 3:17	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o360030170111	ZEP 3:17!11	Sof 3:17	identitas	rendben	יָגִ֥יל	גִּיל	H1523	1523	igen	Vqi3ms	verb	he.will.be.glad		
+o360030170121	ZEP 3:17!12	Sof 3:17	identitas	rendben	עָלַ֖יִ	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o360030170122	ZEP 3:17!12	Sof 3:17	identitas	javaslat:strong_funkcio_kod	ךְ	הוּא		3509c	javaslat:funkcio_kod	Sp2fs	suffix	you	σὲ	G4571
+o360030170131	ZEP 3:17!13	Sof 3:17	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	with	ἐν	G1722
+o360030170132	ZEP 3:17!13	Sof 3:17	identitas	rendben	רִנָּֽה	רִנָּה	H7440	7440	igen	Ncfsa	noun	a.shout.of.joy	τέρψει	
+o360030180011	ZEP 3:18!1	Sof 3:18	identitas	rendben	נוּגֵ֧י	יָגָה	H3013	3013	igen	VNrmpc	verb	[those.who.are].grieved		
+o360030180021	ZEP 3:18!2	Sof 3:18	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from		
+o360030180022	ZEP 3:18!2	Sof 3:18	identitas	rendben	מּוֹעֵ֛ד	מוֹעֵד	H4150	4150	igen	Ncmsa	noun	an.appointed.feast	ἑορτῆς	G1859
+o360030180031	ZEP 3:18!3	Sof 3:18	identitas	rendben	אָסַ֖פְתִּי	אָסַף	H0622	0622	igen	Vqp1cs	verb	I.will.gather	συνάχω	G4863
+o360030180041	ZEP 3:18!4	Sof 3:18	identitas	rendben	מִמֵּ֣	מִן	H4480	4480	igen	R	preposition	from		
+o360030180042	ZEP 3:18!4	Sof 3:18	identitas	javaslat:strong_funkcio_kod	ךְ	הוּא		3509c	javaslat:funkcio_kod	Sp2fs	suffix	you		
+o360030180051	ZEP 3:18!5	Sof 3:18	identitas	rendben	הָי֑וּ	הָיָה	H1961	1961	igen	Vqp3cp	verb	they.were	οὐαί	G3759
+o360030180061	ZEP 3:18!6	Sof 3:18	identitas	rendben	מַשְׂאֵ֥ת	מַשְׂאֵת	H4864	4864	igen	Ncfsa	noun	tribute	ἔλαβεν	G2983
+o360030180071	ZEP 3:18!7	Sof 3:18	identitas	rendben	עָלֶ֖י	עַל	H5921	5921	igen	R	preposition	on	ἐπ’	G1909
+o360030180072	ZEP 3:18!7	Sof 3:18	identitas	javaslat:strong_funkcio_kod	הָ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	it	αὐτὴν	G0848
+o360030180081	ZEP 3:18!8	Sof 3:18	identitas	rendben	חֶרְפָּֽה	חֶרְפָּה	H2781	2781	igen	Ncfsa	noun	reproach	ὀνειδισμόν	
+o360030190011	ZEP 3:19!1	Sof 3:19	identitas	rendben	הִנְ	הִנֵּה	H2009	2009	igen	Tm	particle	here	ἰδοὺ	G2400
+o360030190012	ZEP 3:19!1	Sof 3:19	identitas	javaslat:strong_funkcio_kod	נִ֥י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	I	ἐγὼ	G1473
+o360030190021	ZEP 3:19!2	Sof 3:19	identitas	rendben	עֹשֶׂ֛ה	עָשָׂה	H6213	6213	igen	Vqrmsa	verb	[am].about.to.deal	ποιῶ	G4160
+o360030190031	ZEP 3:19!3	Sof 3:19	identitas	rendben	אֶת	אֵת	H0854	0854	igen	To	particle	with		
+o360030190041	ZEP 3:19!4	Sof 3:19	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all		
+o360030190051	ZEP 3:19!5	Sof 3:19	identitas	rendben	מְעַנַּ֖יִ	עָנָה	H6031	6031	igen	Vprmpc	verb	[those	ἕνεκεν	G1752
+o360030190052	ZEP 3:19!5	Sof 3:19	identitas	javaslat:strong_funkcio_kod	ךְ	הוּא		3509c	javaslat:funkcio_kod	Sp2fs	suffix	who].afflicted.you	σοῦ	G4675
+o360030190061	ZEP 3:19!6	Sof 3:19	identitas	javaslat:strong_funkcio_kod	בָּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	at	ἐν	G1722
+o360030190061ה	ZEP 3:19!6	Sof 3:19	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360030190062	ZEP 3:19!6	Sof 3:19	identitas	rendben	עֵ֣ת	עֵת	H6256	6256	igen	Ncbsa	noun	time	καιρῷ	G2540
+o360030190071	ZEP 3:19!7	Sof 3:19	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o360030190072	ZEP 3:19!7	Sof 3:19	identitas	javaslat:strong_funkcio_kod	הִ֑יא	הִיא		1931a	javaslat:funkcio_kod	Pp3fs	pronoun	that	ἐκείνῳ	G1565
+o360030190081	ZEP 3:19!8	Sof 3:19	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030190082	ZEP 3:19!8	Sof 3:19	identitas	rendben	הוֹשַׁעְתִּ֣י	יָשַׁע	H3467	3467	igen	Vhq1cs	verb	I.will.save	σώσω	G4982
+o360030190091	ZEP 3:19!9	Sof 3:19	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360030190101	ZEP 3:19!10	Sof 3:19	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the.[one	τὴν	G3588
+o360030190102	ZEP 3:19!10	Sof 3:19	identitas	rendben	צֹּלֵעָ֗ה	צָלַע	H6760	6760	igen	Vqrfsa	verb	who.is].lame		
+o360030190111	ZEP 3:19!11	Sof 3:19	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030190112	ZEP 3:19!11	Sof 3:19	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the.[one	τὴν	G3588
+o360030190113	ZEP 3:19!11	Sof 3:19	identitas	rendben	נִּדָּחָה֙	נָדַח	H5080	5080	igen	VNsfsa	verb	who.is].outcast	ἀπωσμένην	G0683
+o360030190121	ZEP 3:19!12	Sof 3:19	identitas	rendben	אֲקַבֵּ֔ץ	קָבַץ	H6908	6908	igen	Vpi1cs	verb	I.will.gather	εἰσδέχομαι	G1523
+o360030190131	ZEP 3:19!13	Sof 3:19	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030190132	ZEP 3:19!13	Sof 3:19	identitas	rendben	שַׂמְתִּי	שׂים	H7760	7760	igen	Vqq1cs	verb	I	θήσομαι	G5087
+o360030190133	ZEP 3:19!13	Sof 3:19	identitas	javaslat:strong_funkcio_kod	ם֙	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	will.make.them	αὐτοὺς	G0848
+o360030190141	ZEP 3:19!14	Sof 3:19	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(into)	εἰς	G1519
+o360030190142	ZEP 3:19!14	Sof 3:19	identitas	rendben	תְהִלָּ֣ה	תְּהִלָּה	H8416	8416	igen	Ncfsa	noun	praise	καύξημα	G2745
+o360030190151	ZEP 3:19!15	Sof 3:19	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and.(into)		
+o360030190152	ZEP 3:19!15	Sof 3:19	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	a	καὶ	G2532
+o360030190153	ZEP 3:19!15	Sof 3:19	identitas	rendben	שֵׁ֔ם	שֵׁם	H8034	8034	igen	Ncmsa	noun	name	ὀνομαστοὺς	
+o360030190161	ZEP 3:19!16	Sof 3:19	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	[was].in	ἐν	G1722
+o360030190162	ZEP 3:19!16	Sof 3:19	identitas	rendben	כָל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάσῃ	G3956
+o360030190171	ZEP 3:19!17	Sof 3:19	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τῇ	G3588
+o360030190172	ZEP 3:19!17	Sof 3:19	identitas	rendben	אָ֖רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	earth	γῇ	G1093
+o360030190181	ZEP 3:19!18	Sof 3:19	identitas	rendben	בָּשְׁתָּֽ	בֹּשֶׁת	H1322	1322	igen	Ncfsc	noun	shame	καὶ	G2532
+o360030190182	ZEP 3:19!18	Sof 3:19	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their	καταισξυνθήσονται	
+o360030200011	ZEP 3:20!1	Sof 3:20	identitas	javaslat:strong_funkcio_kod	בָּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	at	ἐν	G1722
+o360030200011ה	ZEP 3:20!1	Sof 3:20	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360030200012	ZEP 3:20!1	Sof 3:20	identitas	rendben	עֵ֤ת	עֵת	H6256	6256	igen	Ncbsa	noun	time	καιρῷ	G2540
+o360030200021	ZEP 3:20!2	Sof 3:20	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o360030200022	ZEP 3:20!2	Sof 3:20	identitas	javaslat:strong_funkcio_kod	הִיא֙	הִיא		1931a	javaslat:funkcio_kod	Pp3fs	pronoun	that	ἐκείνῳ	G1565
+o360030200031	ZEP 3:20!3	Sof 3:20	identitas	rendben	אָבִ֣יא	בּוֹא	H0935	0935	igen	Vhi1cs	verb	I.will.bring		
+o360030200041	ZEP 3:20!4	Sof 3:20	identitas	rendben	אֶתְ	אֵת	H0853	0853	igen	To	particle			
+o360030200042	ZEP 3:20!4	Sof 3:20	identitas	javaslat:strong_funkcio_kod	כֶ֔ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμῖν	G5213
+o360030200051	ZEP 3:20!5	Sof 3:20	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030200052	ZEP 3:20!5	Sof 3:20	identitas	javaslat:strong_funkcio_kod	בָ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	at	ἐν	G1722
+o360030200052ה	ZEP 3:20!5	Sof 3:20	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o360030200053	ZEP 3:20!5	Sof 3:20	identitas	rendben	עֵ֖ת	עֵת	H6256	6256	igen	Ncbsa	noun	time	καιρῷ	G2540
+o360030200061	ZEP 3:20!6	Sof 3:20	identitas	rendben	קַבְּצִ֣	קָבַץ	H6908	6908	igen	Vpc	verb	gather	ὅταν	G3752
+o360030200062	ZEP 3:20!6	Sof 3:20	identitas	javaslat:strong_funkcio_kod	י	הוּא		5204a	javaslat:funkcio_kod	Sp1cs	suffix	I	εἰσδέχωμαι	G1523
+o360030200071	ZEP 3:20!7	Sof 3:20	identitas	rendben	אֶתְ	אֵת	H0853	0853	igen	To	particle			
+o360030200072	ZEP 3:20!7	Sof 3:20	identitas	javaslat:strong_funkcio_kod	כֶ֑ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμᾶς	G5209
+o360030200081	ZEP 3:20!8	Sof 3:20	identitas	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o360030200091	ZEP 3:20!9	Sof 3:20	identitas	rendben	אֶתֵּ֨ן	נָתַן	H5414	5414	igen	Vqi1cs	verb	I.will.make	δώσω	G1325
+o360030200101	ZEP 3:20!10	Sof 3:20	identitas	rendben	אֶתְ	אֵת	H0853	0853	igen	To	particle			
+o360030200102	ZEP 3:20!10	Sof 3:20	identitas	javaslat:strong_funkcio_kod	כֶ֜ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμᾶς	G5209
+o360030200111	ZEP 3:20!11	Sof 3:20	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(into).a		
+o360030200112	ZEP 3:20!11	Sof 3:20	identitas	rendben	שֵׁ֣ם	שֵׁם	H8034	8034	igen	Ncmsa	noun	name	ὀνομαστοὺς	
+o360030200121	ZEP 3:20!12	Sof 3:20	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o360030200122	ZEP 3:20!12	Sof 3:20	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(into)	εἰς	G1519
+o360030200123	ZEP 3:20!12	Sof 3:20	identitas	rendben	תְהִלָּ֗ה	תְּהִלָּה	H8416	8416	igen	Ncfsa	noun	praise	καύξημα	G2745
+o360030200131	ZEP 3:20!13	Sof 3:20	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	among	ἐν	G1722
+o360030200132	ZEP 3:20!13	Sof 3:20	identitas	rendben	כֹל֙	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πᾶσιν	G3956
+o360030200141	ZEP 3:20!14	Sof 3:20	identitas	rendben	עַמֵּ֣י	עַם	H5971	5971	igen	Ncmpc	noun	the.peoples	λαοῖς	G2992
+o360030200151	ZEP 3:20!15	Sof 3:20	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τῆς	G3588
+o360030200152	ZEP 3:20!15	Sof 3:20	identitas	rendben	אָ֔רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	the.earth	γῆς	G1093
+o360030200161	ZEP 3:20!16	Sof 3:20	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	when	ἐν	G1722
+o360030200162	ZEP 3:20!16	Sof 3:20	identitas	rendben	שׁוּבִ֧	שׁוּב	H7725	7725	igen	Vqc	verb	I	ἐπιστρέφειν	G1994
+o360030200163	ZEP 3:20!16	Sof 3:20	identitas	javaslat:strong_funkcio_kod	י	הוּא		5204a	javaslat:funkcio_kod	Sp1cs	suffix	turn.back	με	G3165
+o360030200171	ZEP 3:20!17	Sof 3:20	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o360030200181	ZEP 3:20!18	Sof 3:20	identitas	rendben	שְׁבוּתֵי	שְׁבוּת	H7622	7622	igen	Ncfpc	noun	captiviti(es)		
+o360030200182	ZEP 3:20!18	Sof 3:20	identitas	javaslat:strong_funkcio_kod	כֶ֛ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o360030200191	ZEP 3:20!19	Sof 3:20	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to		
+o360030200192	ZEP 3:20!19	Sof 3:20	identitas	rendben	עֵינֵי	עַיִן	H5869	5869	igen	Ncbdc	noun	eyes		
+o360030200193	ZEP 3:20!19	Sof 3:20	identitas	javaslat:strong_funkcio_kod	כֶ֖ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o360030200201	ZEP 3:20!20	Sof 3:20	identitas	rendben	אָמַ֥ר	אָמַר	H0559	0559	igen	Vqp3ms	verb	he.says	λέγει	G3004
+o360030200211	ZEP 3:20!21	Sof 3:20	identitas	rendben	יְהוָֽה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962

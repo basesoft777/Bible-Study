@@ -1,0 +1,1535 @@
+# GENERÁLT: eszkozok/f17/macula_futtat.py — kézzel nem szerkesztendő.
+# proveniencia: scope=Macula heber+gorog import illesztetlen elemei | forras=https://github.com/Clear-Bible/macula-hebrew ; https://github.com/Clear-Bible/macula-greek | ts=2026-09-30
+# minden sor allapota: javaslat (D19); strong_nem_illesztheto: Strong-szamonkent osszesitve (sorok = elofordulasok)
+tipus	nyelv	igehely_macula	igehely_karoli	strong	sorok	ok	pelda	allapot
+macula_vers_nincs_karoli	heber	1Krón 12:5			10	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	1Sám 21:1			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:1			22	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:2			25	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:3			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:4			18	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:5			21	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:6			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:7			10	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:20			10	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:21			35	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:22			30	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:23			25	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:24			24	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:25			27	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:26			16	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:27			20	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:28			20	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:29			30	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:30			19	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:31			17	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:32			17	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:33			16	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:34			15	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 35:35			37	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 36:1			33	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 36:2			36	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 36:3			36	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 36:4			20	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 36:5			25	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 36:6			28	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 36:7			16	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 36:9			27	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	2Móz 36:38			22	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 25:19			5	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 26:1			14	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:1			13	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:2			18	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:3			27	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:4			17	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:5			35	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:6			35	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:7			20	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:8			25	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:9			33	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:10			14	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:11			14	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:12			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:13			35	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:14			18	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:15			37	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:16			14	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	4Móz 30:17			24	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:1			23	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:2			39	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:3			41	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:4			16	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:5			31	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:6			19	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:7			46	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:8			18	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:9			12	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:10			32	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:11			15	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:12			40	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:13			25	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:14			29	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:15			60	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:16			21	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:17			24	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:18			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:19			32	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:20			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:21			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:22			33	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:23			20	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:31			21	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:32			18	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 3:33			22	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:1			12	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:2			16	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:3			19	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:4			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:5			28	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:6			29	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:7			20	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:8			20	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:9			35	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:10			18	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:11			32	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:12			37	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:13			18	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:14			37	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:15			38	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:16			46	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:17			22	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:18			29	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:19			24	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:20			61	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:21			17	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:22			55	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:23			23	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:24			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:25			7	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:26			13	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:27			28	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:28			23	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:29			45	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:30			40	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:31			44	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:32			35	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:33			42	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Dán 4:34			29	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Eszt 3:14			24	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Eszt 3:15			29	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 2:25			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 12:1			20	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 13:1			15	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 13:2			30	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 13:3			22	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 13:4			19	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 13:5			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 13:6			14	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 13:7			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 13:8			21	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 13:9			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 13:10			23	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 13:11			12	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 13:12			6	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 13:13			16	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 13:14			22	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 13:15			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 14:1			18	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 14:2			12	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 14:3			22	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 14:4			23	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 14:5			12	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 14:6			17	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 14:7			17	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 14:8			17	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 14:9			22	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Hós 14:10			23	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:1			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:2			12	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:3			13	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:4			10	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:5			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:6			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:7			14	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:8			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:9			10	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:10			14	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:11			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:12			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:13			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:14			15	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:15			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 17:16			8	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Jób 37:1			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 4:17			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:1			34	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:2			13	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:3			21	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:4			10	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:5			34	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:6			14	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:7			27	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:8			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:9			16	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:10			18	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:11			23	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:12			15	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:13			18	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:14			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:15			22	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:16			16	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:17			39	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:18			36	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Préd 5:19			16	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:1			8	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:2			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:3			10	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:4			12	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:5			6	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:6			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:7			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:8			12	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:9			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:10			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:11			10	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:12			8	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:13			10	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:14			13	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:15			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:16			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:17			8	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:18			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:19			10	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:20			10	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:21			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:22			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:23			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:24			8	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:25			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:26			10	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:27			10	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Péld 12:28			9	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Zak 3:2			28	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Zsolt 13:1			6	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Zsolt 13:2			14	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Zsolt 13:3			19	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Zsolt 13:4			15	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Zsolt 13:5			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Zsolt 13:6			19	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:1			31	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:2			30	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:3			14	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:4			14	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:5			21	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:6			28	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:7			23	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:8			18	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:9			19	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:10			8	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:11			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:12			14	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:13			14	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:14			14	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:15			17	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 5:16			16	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 6:11			19	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 6:12			10	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Én 7:1			19	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Ézs 2:22			16	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Ézs 4:1			30	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Ézs 4:2			25	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Ézs 4:3			23	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Ézs 4:4			23	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Ézs 4:5			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Ézs 4:6			19	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Ézs 8:23			34	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+macula_vers_nincs_karoli	heber	Ézs 64:11			11	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
+karoli_vers_nincs_macula	heber	1Sám 20:43	1Sám 20:43		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_mt)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 26:1		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:1		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:2		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:3		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:4		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:5		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:6		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:7		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:8		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:9		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:10		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:11		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:12		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:13		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:14		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:15		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		4Móz 30:16		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:1		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:2		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:3		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:4		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:5		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:6		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:7		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:8		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:9		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:10		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:11		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:12		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:13		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:14		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:15		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:16		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:17		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:18		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:19		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:20		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:21		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:22		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:23		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:24		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:25		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:26		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:27		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:28		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:29		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:30		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:31		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:32		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:33		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Dán 4:34		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
+karoli_vers_nincs_macula	heber		Eszt 3:14		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (terkep: terkep_nincs_heber_vers)		javaslat
+karoli_vers_nincs_macula	heber		Eszt 3:15		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (terkep: terkep_nincs_heber_vers)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:1		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:2		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:3		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:4		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:5		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:6		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:7		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:8		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:9		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:10		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:11		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:12		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:13		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:14		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:15		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:16		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:17		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:18		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:19		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Préd 5:20		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Zak 3:2		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Zsolt 13:1		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Zsolt 13:2		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Zsolt 13:3		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Zsolt 13:4		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Zsolt 13:5		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber		Zsolt 13:6		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
+karoli_vers_nincs_macula	heber	Ézs 3:27	Ézs 3:27		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_mt)		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:1		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:2		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:3		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:4		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:5		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:6		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:7		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:20		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:21		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:22		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:23		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:24		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:25		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:26		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:27		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:28		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:29		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:30		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:31		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:32		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:33		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:34		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:35		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 35:36		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 36:1		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 36:2		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 36:3		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 36:4		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 36:5		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 36:6		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 36:7		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		2Móz 36:9		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Jób 17:1		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Jób 17:2		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Jób 17:3		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Jób 17:4		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Jób 17:5		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Jób 17:6		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Jób 17:7		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Jób 17:8		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Jób 17:9		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Jób 17:10		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Jób 17:11		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Jób 17:12		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Jób 17:13		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Jób 17:14		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Jób 17:15		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:1		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:2		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:3		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:4		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:5		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:6		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:7		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:8		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:9		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:10		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:11		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:12		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:13		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:14		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:15		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:16		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:17		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:18		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:19		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:20		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:21		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:22		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:23		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:24		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:25		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:26		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Péld 12:27		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:1		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:2		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:3		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:4		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:5		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:6		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:7		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:8		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:9		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:10		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:11		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:12		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:13		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:14		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:15		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:16		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:17		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:18		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Én 5:19		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Ézs 4:1		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Ézs 4:2		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Ézs 4:3		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Ézs 4:4		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Ézs 4:5		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Ézs 4:6		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Ézs 64:1		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:1		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:2		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:3		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:4		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:5		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:6		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:7		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:8		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:9		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:10		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:11		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:12		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:13		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:14		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:15		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:16		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:17		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:18		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:19		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:20		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:21		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:22		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:23		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:31		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:32		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Dán 3:33		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 13:1		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 13:2		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 13:3		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 13:4		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 13:5		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 13:6		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 13:7		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 13:8		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 13:9		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 13:10		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 13:11		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 13:12		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 13:13		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 13:14		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 13:15		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 14:1		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 14:2		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 14:3		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 14:4		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 14:5		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 14:6		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 14:7		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 14:8		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 14:9		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+karoli_vers_nincs_macula	heber		Hós 14:10		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
+macula_vers_nincs_karoli	gorog_N1904	1Kor 3:23			6	a Karoli-szovegben nincs ilyen vers		javaslat
+macula_vers_nincs_karoli	gorog_N1904	Mk 16:99			33	a Karoli-szovegben nincs ilyen vers		javaslat
+macula_vers_nincs_karoli	gorog_N1904	Róm 3:31			11	a Karoli-szovegben nincs ilyen vers		javaslat
+macula_vers_nincs_karoli	gorog_N1904	Róm 8:39			23	a Karoli-szovegben nincs ilyen vers		javaslat
+macula_vers_nincs_karoli	gorog_SBLGNT	1Kor 3:23			6	a Karoli-szovegben nincs ilyen vers		javaslat
+macula_vers_nincs_karoli	gorog_SBLGNT	Róm 3:31			11	a Karoli-szovegben nincs ilyen vers		javaslat
+macula_vers_nincs_karoli	gorog_SBLGNT	Róm 8:39			23	a Karoli-szovegben nincs ilyen vers		javaslat
+strong_nem_illesztheto	gorog_N1904	LUK 3:33!6		0	2	nincs_strong	noun | Ἀρνεὶ | of Arni	javaslat
+strong_nem_illesztheto	gorog_SBLGNT	LUK 3:33!6		0	2	nincs_strong	noun | Ἀρνὶ | of Arni	javaslat
+strong_nem_illesztheto	heber	GEN 23:2!4		-	35	nincs_strong	adjective | אַרְבַּ֛ע | Arba	javaslat
+strong_nem_illesztheto	heber	GEN 4:22!6		-	1654	nincs_strong	noun | תּ֣וּבַל | Tubal-Cain	javaslat
+strong_nem_illesztheto	heber	GEN 50:10!4		-	5	nincs_strong	particle | הָאָטָ֗ד | floor.of.Atad	javaslat
+strong_nem_illesztheto	heber	PSA 102:4!6		-	1	nincs_strong	pronoun | מוֹ |	javaslat
+strong_nem_illesztheto	heber	GEN 28:2!3		-	9	nincs_strong	suffix | ה | Paddan	javaslat
+strong_nem_illesztheto	heber	2SA 23:8!6		-	2	nincs_strong	verb | יֹשֵׁ֨ב | Josheb-Basshebeth	javaslat
+strong_nem_illesztheto	heber	EZK 36:5!16		0001a	1	funkcio_kod	suffix | א | all	javaslat
+strong_nem_illesztheto	heber	EZR 4:8!5		0001b	855	funkcio_kod	particle | א | scribe	javaslat
+strong_nem_illesztheto	heber	DAN 2:5!5		0001b	6	funkcio_kod	suffix | י | Chaldeans	javaslat
+strong_nem_illesztheto	heber	PRO 27:20!3		0010a	1	betu_alap	noun | אֲבַדּוֹ | Abaddon	javaslat
+strong_nem_illesztheto	heber	2KI 5:13!6		0015a	2	funkcio_kod	particle | אָבִי֙ | would.that!	javaslat
+strong_nem_illesztheto	heber	2CH 13:20!7		0029a	2	betu_alap	noun | אֲבִיָּ֑הוּ | of.Abijah	javaslat
+strong_nem_illesztheto	heber	NUM 3:35!8		0032a	4	betu_alap	noun | אֲבִיחָ֑יִל | of.Abihail	javaslat
+strong_nem_illesztheto	heber	1KI 15:2!9		0053a	2	betu_alap	noun | אֲבִישָׁלֽוֹם | of.Abishalom	javaslat
+strong_nem_illesztheto	heber	ISA 24:4!1		0056a	7	betu_alap	verb | אָבְלָ֤ה | it.has.dried.up	javaslat
+strong_nem_illesztheto	heber	JOS 3:16!11		0121a	1	betu_alap	noun | אָדָ֤ם | Adam	javaslat
+strong_nem_illesztheto	heber	1KI 1:8!16		0138a	19	betu_alap	noun | אֲדֹנִיָּֽהוּ | Adonijah	javaslat
+strong_nem_illesztheto	heber	JOS 15:3!15		0146a	1	betu_alap	noun | אַדָּ֔רָ | to	javaslat
+strong_nem_illesztheto	heber	2KI 19:37!7		0152a	2	betu_alap	noun | אַדְרַמֶּ֨לֶךְ | Adrammelech	javaslat
+strong_nem_illesztheto	heber	JOB 32:19!6		0178a	1	betu_alap	noun | אֹב֥וֹת | wineskins	javaslat
+strong_nem_illesztheto	heber	EZK 27:19!3		0187a	1	betu_alap	noun | אוּזָּ֔ל | Uzal	javaslat
+strong_nem_illesztheto	heber	DEU 26:14!3		0205a	2	betu_alap	noun | אֹנִ֜י | mourning	javaslat
+strong_nem_illesztheto	heber	1KI 9:28!2		0211a	11	betu_alap	noun | אוֹפִ֔ירָ | to	javaslat
+strong_nem_illesztheto	heber	GEN 11:28!9		0218a	4	betu_alap	noun | א֥וּר | Ur	javaslat
+strong_nem_illesztheto	heber	2KI 4:39!6		0219a	1	betu_alap	noun | אֹרֹת֒ | herbs	javaslat
+strong_nem_illesztheto	heber	JER 26:20!7		0223a	3	betu_alap	noun | אֽוּרִיָּ֨הוּ֙ | Uriah	javaslat
+strong_nem_illesztheto	heber	NUM 26:16!3		0244a	1	betu_alap	noun | אָזְנִ֑י | the.Oznite[s]	javaslat
+strong_nem_illesztheto	heber	2CH 9:18!7		0270a	2	betu_alap	verb | מָאֳחָזִ֔ים | [were].attached	javaslat
+strong_nem_illesztheto	heber	1KI 22:40!6		0274a	30	betu_alap	noun | אֲחַזְיָ֥הוּ | Ahaziah	javaslat
+strong_nem_illesztheto	heber	1KI 14:4!11		0281a	5	betu_alap	noun | אֲחִיָּ֨הוּ֙ | Ahijah	javaslat
+strong_nem_illesztheto	heber	ISA 19:3!11		0328a	1	betu_alap	noun | אִטִּ֔ים | of.the.dead	javaslat
+strong_nem_illesztheto	heber	DEU 1:12!1		0349a	17	funkcio_kod	particle | אֵיכָ֥ה | how?	javaslat
+strong_nem_illesztheto	heber	EST 8:6!2		0349b	4	funkcio_kod	particle | אֵיכָכָ֤ה | how?	javaslat
+strong_nem_illesztheto	heber	ISA 1:29!3		0352a	4	betu_alap	noun | אֵילִ֖ים | oaks	javaslat
+strong_nem_illesztheto	heber	1KI 6:31!8		0352b	22	betu_alap	noun | אַ֥יִל | pillar	javaslat
+strong_nem_illesztheto	heber	JOS 19:43!1		0356b	1	betu_alap	noun | אֵיל֥וֹן | Elon	javaslat
+strong_nem_illesztheto	heber	1KI 9:26!9		0359a	3	betu_alap	noun | אֵל֛וֹת | Elath	javaslat
+strong_nem_illesztheto	heber	ISA 46:8!3		0377a	1	betu_alap	verb | הִתְאֹשָׁ֑שׁוּ | pluck.up.courage	javaslat
+strong_nem_illesztheto	heber	PRO 20:20!7		0380a	1	betu_alap	noun | אֱשׁ֥וּן | a.time	javaslat
+strong_nem_illesztheto	heber	1KI 11:2!16		0403a	1	betu_alap	adverb | אָכֵן֙ | truly	javaslat
+strong_nem_illesztheto	heber	GEN 31:29!2		0410a	5	betu_alap	noun | אֵ֣ל | the.power	javaslat
+strong_nem_illesztheto	heber	PRO 2:17!2		0441a	5	betu_alap	adjective | אַלּ֣וּף | the.close.friend	javaslat
+strong_nem_illesztheto	heber	PSA 55:14!4		0441a	4	betu_alap	noun | אַ֝לּוּפִ֗ | friend	javaslat
+strong_nem_illesztheto	heber	1CH 3:23!3		0454a	7	betu_alap	noun | אֶלְיוֹעֵינַ֧י | [was].Elioenai	javaslat
+strong_nem_illesztheto	heber	EXO 6:22!4		0469a	2	betu_alap	noun | אֶלְצָפָ֖ן | Elzaphan	javaslat
+strong_nem_illesztheto	heber	GEN 37:7!3		0481a	1	betu_alap	verb | מְאַלְּמִ֤ים | [were].binding	javaslat
+strong_nem_illesztheto	heber	ISA 13:22!3		0488a	2	betu_alap	noun | אַלְמנוֹתָ֔י | palaces	javaslat
+strong_nem_illesztheto	heber	NUM 1:16!9		0505a	12	betu_alap	adjective | אַלְפֵ֥י | of.the.families	javaslat
+strong_nem_illesztheto	heber	JDG 6:15!10		0505a	1	betu_alap	noun | אַלְפִּ | family	javaslat
+strong_nem_illesztheto	heber	ISA 6:4!2		0520a	1	betu_alap	noun | אַמּ֣וֹת | the.foundations	javaslat
+strong_nem_illesztheto	heber	2SA 20:19!3		0529a	3	betu_alap	adjective | אֱמוּנֵ֣י | of.the.faithful.[ones]	javaslat
+strong_nem_illesztheto	heber	EZK 16:30!2		0535a	1	betu_alap	verb | אֲמֻלָה֙ | hot	javaslat
+strong_nem_illesztheto	heber	NUM 11:12!17		0539a	9	betu_alap	verb | אֹמֵן֙ | foster-father	javaslat
+strong_nem_illesztheto	heber	2KI 14:1!9		0558a	31	betu_alap	noun | אֲמַצְיָ֥הוּ | Amaziah	javaslat
+strong_nem_illesztheto	heber	PSA 94:4!4		0559a	2	betu_alap	verb | יִֽ֝תְאַמְּר֗וּ | they.boast	javaslat
+strong_nem_illesztheto	heber	GEN 49:21!5		0561a	1	betu_alap	noun | אִמְרֵי | words	javaslat
+strong_nem_illesztheto	heber	EZR 2:59!9		0564a	2	betu_alap	noun | אִמֵּ֑ר | Immer	javaslat
+strong_nem_illesztheto	heber	LAM 2:17!6		0565a	1	betu_alap	noun | אֶמְרָת | word	javaslat
+strong_nem_illesztheto	heber	1CH 24:23!3		0568a	3	betu_alap	noun | אֲמַרְיָ֨הוּ֙ | Amariah	javaslat
+strong_nem_illesztheto	heber	DAN 7:7!12		0574a	1	betu_alap	adjective | אֵֽימְתָנִ֨י | terrible	javaslat
+strong_nem_illesztheto	heber	JOB 34:6!4		0605a	8	betu_alap	adjective | אָנ֖וּשׁ | [is].incurable	javaslat
+strong_nem_illesztheto	heber	GEN 40:1!9		0644a	12	betu_alap	verb | אֹפֶ֑ה | baker	javaslat
+strong_nem_illesztheto	heber	JOB 12:21!6		0650a	1	betu_alap	noun | אֲפִיקִ֣ים | of.strong.people	javaslat
+strong_nem_illesztheto	heber	EZK 47:3!12		0657a	1	betu_alap	noun | אָפְסָֽיִם | of.ankles	javaslat
+strong_nem_illesztheto	heber	EZR 4:9!10		0671a	1	betu_alap	noun | אֲפַרְסַתְכָיֵ֞ | the	javaslat
+strong_nem_illesztheto	heber	1CH 2:19!7		0672a	1	betu_alap	noun | אֶפְרָ֔ת | Ephrath	javaslat
+strong_nem_illesztheto	heber	RUT 4:11!25		0672b	3	betu_alap	noun | אֶפְרָ֔תָה | Ephrathah	javaslat
+strong_nem_illesztheto	heber	1CH 2:50!8		0672c	2	betu_alap	noun | אֶפְרָ֑תָה | of.Ephrath	javaslat
+strong_nem_illesztheto	heber	EXO 24:11!2		0678a	1	betu_alap	noun | אֲצִילֵי֙ | the.nobles	javaslat
+strong_nem_illesztheto	heber	ZEC 14:5!9		0682a	1	betu_alap	noun | אָצַל֒ | Azal	javaslat
+strong_nem_illesztheto	heber	2KI 15:25!14		0709a	1	betu_alap	noun | אַרְגֹּ֣ב | Argob	javaslat
+strong_nem_illesztheto	heber	EZK 27:24!11		0729a	1	betu_alap	adjective | אֲרֻזִ֖ים | made.firm	javaslat
+strong_nem_illesztheto	heber	GEN 49:9!2		0738a	45	betu_alap	noun | אַרְיֵה֙ | of.a.lion	javaslat
+strong_nem_illesztheto	heber	EZR 8:16!3		0740a	1	betu_alap	noun | אֲרִיאֵ֡ל | Ariel	javaslat
+strong_nem_illesztheto	heber	DAN 2:14!6		0746a	5	betu_alap	noun | אַרְי֕וֹךְ | Arioch	javaslat
+strong_nem_illesztheto	heber	DAN 4:24!16		0754a	2	betu_alap	noun | אַרְכָ֖ה | a.prolonging	javaslat
+strong_nem_illesztheto	heber	EZR 4:8!11		0783a	6	betu_alap	noun | אַרְתַּחְשַׁ֥שְׂתְּא | Artaxerxes	javaslat
+strong_nem_illesztheto	heber	JER 50:15!8		0803a	1	betu_alap	noun | אָשְׁיוֹתֶ֔י | towers	javaslat
+strong_nem_illesztheto	heber	GEN 25:3!10		0805a	1	betu_alap	noun | אַשּׁוּרִ֥ם | Asshurites	javaslat
+strong_nem_illesztheto	heber	NUM 13:23!4		0812a	4	betu_alap	noun | אֶשְׁכֹּ֗ל | of.Eshcol	javaslat
+strong_nem_illesztheto	heber	GEN 30:13!5		0833a	9	betu_alap	verb | אִשְּׁר֖וּ | they	javaslat
+strong_nem_illesztheto	heber	DEU 33:29!1		0835a	44	betu_alap	noun | אַשְׁרֶ֨י | how	javaslat
+strong_nem_illesztheto	heber	JOS 21:14!6		0851a	3	betu_alap	noun | אֶשְׁתְּמֹ֖עַ | Eshtemoa	javaslat
+strong_nem_illesztheto	heber	1CH 4:17!15		0851b	2	betu_alap	noun | אֶשְׁתְּמֹֽעַ | of.Eshtemoa	javaslat
+strong_nem_illesztheto	heber	GEN 9:7!1		0859a	283	betu_alap	pronoun | אַתֶּ֖ם | you	javaslat
+strong_nem_illesztheto	heber	GEN 12:11!17		0859b	60	betu_alap	pronoun | אָֽתְּ | you	javaslat
+strong_nem_illesztheto	heber	GEN 31:6!1		0859c	5	betu_alap	pronoun | אַתֵּ֖נָה | you	javaslat
+strong_nem_illesztheto	heber	EZK 41:15!11		0862a	5	betu_alap	noun | אַתִּיקֶ֛י | galleries	javaslat
+strong_nem_illesztheto	heber	DAN 2:39!1		0870a	1	funkcio_kod	noun | בָתְרָ֗ | after	javaslat
+strong_nem_illesztheto	heber	DAN 7:6!1		0870a	2	funkcio_kod	preposition | בָּאתַ֨ר | after	javaslat
+strong_nem_illesztheto	heber	GEN 1:1!1		0871a	15539	funkcio_kod	preposition | בְּ | in	javaslat
+strong_nem_illesztheto	heber	EZR 4:10!10		0871b	226	funkcio_kod	preposition | בְּ | in	javaslat
+strong_nem_illesztheto	heber	ISA 24:16!16		0898a	2	betu_alap	noun | בֶ֥גֶד | treachery	javaslat
+strong_nem_illesztheto	heber	EXO 25:13!2		0905a	41	betu_alap	noun | בַדֵּ֖י | poles	javaslat
+strong_nem_illesztheto	heber	ISA 44:25!3		0907a	2	betu_alap	noun | בַּדִּ֔ים | of.empty.talkers	javaslat
+strong_nem_illesztheto	heber	ISA 1:25!9		0913a	1	betu_alap	noun | בְּדִילָֽיִ | slag(s)	javaslat
+strong_nem_illesztheto	heber	ISA 44:19!25		0944a	1	betu_alap	noun | ב֥וּל | a.product	javaslat
+strong_nem_illesztheto	heber	EXO 32:1!4		0954a	2	betu_alap	verb | בֹשֵׁ֥שׁ | he.delayed	javaslat
+strong_nem_illesztheto	heber	DAN 6:19!5		0956a	1	betu_alap	verb | בָ֣ת | he.passed.the.night	javaslat
+strong_nem_illesztheto	heber	ISA 23:13!13		0971a	1	betu_alap	noun | בַחוּנָ֗י | siege-towers	javaslat
+strong_nem_illesztheto	heber	NUM 11:28!7		0979a	1	betu_alap	noun | בְּחֻרָ֖י | youth(s)	javaslat
+strong_nem_illesztheto	heber	PRO 14:16!7		0982a	2	betu_alap	verb | בוֹטֵֽחַ | confident	javaslat
+strong_nem_illesztheto	heber	2KI 11:15!15		1004a	5	betu_alap	noun | בֵּ֣ית | between	javaslat
+strong_nem_illesztheto	heber	1CH 4:29!1		1090a	1	betu_alap	noun | בִלְהָ֥ה | Bilhah	javaslat
+strong_nem_illesztheto	heber	JDG 19:21!3		1101a	1	betu_alap	verb | יָּ֖בָול | he.fed	javaslat
+strong_nem_illesztheto	heber	JOB 37:20!9		1104a	7	betu_alap	verb | יְבֻלָּֽע | he.will.be.swallowed.up	javaslat
+strong_nem_illesztheto	heber	PSA 52:6!4		1105a	1	betu_alap	noun | בָ֗לַע | of.swallowing	javaslat
+strong_nem_illesztheto	heber	GEN 14:2!19		1106a	2	betu_alap	noun | בֶּ֖לַע | of.Bela	javaslat
+strong_nem_illesztheto	heber	1CH 6:55!9		1109a	1	betu_alap	noun | בִּלְעָ֖ם | Bileam	javaslat
+strong_nem_illesztheto	heber	2SA 8:18!1		1141a	31	betu_alap	noun | בְנָיָ֨הוּ֙ | Benaiah	javaslat
+strong_nem_illesztheto	heber	PRO 6:26!2		1157a	1	funkcio_kod	preposition | בְעַד | [the].price	javaslat
+strong_nem_illesztheto	heber	ISA 30:13!8		1158a	2	betu_alap	verb | נִבְעֶ֖ה | a.bulging	javaslat
+strong_nem_illesztheto	heber	1KI 7:21!21		1162a	2	betu_alap	noun | בֹּֽעַז | Boaz	javaslat
+strong_nem_illesztheto	heber	1CH 5:5!5		1168a	3	betu_alap	noun | בַּ֥עַל | [was].Baal	javaslat
+strong_nem_illesztheto	heber	1CH 4:33!8		1168b	1	betu_alap	noun | בָּ֑עַל | Baal	javaslat
+strong_nem_illesztheto	heber	EXO 22:4!2		1197a	29	betu_alap	verb | יַבְעֶר | he.will.cause.to.be.grazed.over	javaslat
+strong_nem_illesztheto	heber	PSA 94:8!2		1197b	7	betu_alap	verb | בֹּעֲרִ֣ים | O.stupid.[ones]	javaslat
+strong_nem_illesztheto	heber	ZEC 11:2!16		1210a	1	betu_alap	noun | בָּצִֽיר | inaccessible	javaslat
+strong_nem_illesztheto	heber	NEH 7:54!2		1213a	1	betu_alap	noun | בַצְלִ֥ית | of.Bazluth	javaslat
+strong_nem_illesztheto	heber	PSA 76:13!1		1219a	1	betu_alap	verb | יִ֭בְצֹר | he.humbles	javaslat
+strong_nem_illesztheto	heber	GEN 11:6!14		1219b	4	betu_alap	verb | יִבָּצֵ֣ר | it.will.be.withheld	javaslat
+strong_nem_illesztheto	heber	DEU 4:43!2		1221a	4	betu_alap	noun | בֶּ֧צֶר | Bezer	javaslat
+strong_nem_illesztheto	heber	PSA 9:10!7		1226a	3	betu_alap	noun | בַּצָּרָֽה | of.trouble	javaslat
+strong_nem_illesztheto	heber	HOS 10:1!2		1238a	1	betu_alap	verb | בּוֹקֵק֙ | luxuriant	javaslat
+strong_nem_illesztheto	heber	JOB 39:4!4		1250a	1	betu_alap	noun | בָּ֑ר | open	javaslat
+strong_nem_illesztheto	heber	1SA 2:29!12		1254a	1	betu_alap	verb | הַבְרִֽיאֲ | making	javaslat
+strong_nem_illesztheto	heber	JOS 17:15!11		1254b	5	betu_alap	verb | בֵרֵאתָ֤ | you.will.cut.[it].down	javaslat
+strong_nem_illesztheto	heber	GEN 16:14!12		1260a	1	betu_alap	noun | בָּֽרֶד | Bered	javaslat
+strong_nem_illesztheto	heber	1SA 17:8!18		1262a	1	betu_alap	verb | בְּרוּ | commission	javaslat
+strong_nem_illesztheto	heber	2SA 8:8!2		1268a	1	betu_alap	noun | בֵּֽרֹתַ֖י | Berothai	javaslat
+strong_nem_illesztheto	heber	GEN 24:11!1		1288a	3	betu_alap	verb | יַּבְרֵ֧ךְ | he.made.kneel	javaslat
+strong_nem_illesztheto	heber	DAN 2:19!10		1289a	4	betu_alap	verb | בָּרִ֖ךְ | he.blessed	javaslat
+strong_nem_illesztheto	heber	1CH 12:3!12		1294a	1	betu_alap	noun | בְרָכָ֕ה | Berachah	javaslat
+strong_nem_illesztheto	heber	1CH 6:24!8		1296a	4	betu_alap	noun | בֶּרֶכְיָ֖הוּ | of.Berekiah	javaslat
+strong_nem_illesztheto	heber	EZK 28:13!17		1304a	1	betu_alap	noun | בָרְקַ֖ת | beryl	javaslat
+strong_nem_illesztheto	heber	ISA 49:2!10		1305a	2	betu_alap	verb | בָּר֔וּר | polished	javaslat
+strong_nem_illesztheto	heber	JOB 33:3!6		1305b	2	betu_alap	adjective | בָּר֥וּר | purified	javaslat
+strong_nem_illesztheto	heber	1CH 4:30!1		1328a	1	betu_alap	noun | בְתוּאֵ֥ל | Bethuel	javaslat
+strong_nem_illesztheto	heber	ISA 63:4!6		1350a	1	betu_alap	noun | גְּאוּלַ֖ | my.redemption(s)	javaslat
+strong_nem_illesztheto	heber	JOB 13:12!4		1354a	2	betu_alap	noun | גַבֵּי | defenses	javaslat
+strong_nem_illesztheto	heber	1KI 6:9!8		1356a	1	betu_alap	noun | גֵּבִ֔ים | beams	javaslat
+strong_nem_illesztheto	heber	DEU 14:1!6		1413a	7	betu_alap	verb | תִתְגֹּֽדְד֗וּ | you.will.cut.yourselves	javaslat
+strong_nem_illesztheto	heber	JOB 21:32!5		1430a	1	betu_alap	noun | גָּדִ֥ישׁ | a.tomb	javaslat
+strong_nem_illesztheto	heber	2KI 25:22!13		1436a	26	betu_alap	noun | גְּדַלְיָ֖הוּ | Gedaliah	javaslat
+strong_nem_illesztheto	heber	JOS 15:58!4		1446a	3	betu_alap	noun | גְדֽוֹר | Gedor	javaslat
+strong_nem_illesztheto	heber	JOB 30:5!2		1460a	1	betu_alap	noun | גֵּ֥ו | [the].community	javaslat
+strong_nem_illesztheto	heber	AMO 7:1!7		1462a	2	betu_alap	noun | גֹּבַ֔י | locust[s]	javaslat
+strong_nem_illesztheto	heber	GEN 14:1!14		1471a	3	betu_alap	noun | גּוֹיִֽם | of.Goyim	javaslat
+strong_nem_illesztheto	heber	PSA 56:7!1		1481a	6	betu_alap	verb | יָג֤וּרוּ | they.stir.up.trouble	javaslat
+strong_nem_illesztheto	heber	NUM 22:3!1		1481b	10	betu_alap	verb | יָּ֨גָר | it.was.afraid	javaslat
+strong_nem_illesztheto	heber	ISA 9:19!1		1504a	1	betu_alap	verb | יִּגְזֹ֤ר | it.devoured	javaslat
+strong_nem_illesztheto	heber	2SA 14:7!23		1513a	2	betu_alap	noun | גַּֽחַלְתִּ | coal	javaslat
+strong_nem_illesztheto	heber	DAN 1:10!25		1524a	1	betu_alap	noun | גִֽילְ | age	javaslat
+strong_nem_illesztheto	heber	JOB 38:11!10		1530a	16	betu_alap	noun | גַּלֶּֽי | your.waves	javaslat
+strong_nem_illesztheto	heber	PSA 83:14!3		1534a	2	betu_alap	noun | גַּלְגַּ֑ל | dust	javaslat
+strong_nem_illesztheto	heber	HOS 1:3!4		1586a	1	betu_alap	noun | גֹּ֖מֶר | Gomer	javaslat
+strong_nem_illesztheto	heber	JER 36:10!10		1587a	4	betu_alap	noun | גְּמַרְיָהוּ֩ | of.Gemariah	javaslat
+strong_nem_illesztheto	heber	EZK 27:24!7		1595a	1	betu_alap	noun | גִנְזֵ֖י | blankets	javaslat
+strong_nem_illesztheto	heber	NEH 12:4!2		1599a	1	betu_alap	noun | גִנְּת֖וֹי | Ginnethoi	javaslat
+strong_nem_illesztheto	heber	EXO 21:3!2		1610a	3	betu_alap	noun | גַפּ֥ | body	javaslat
+strong_nem_illesztheto	heber	JER 31:39!9		1619a	1	betu_alap	noun | גָּרֵ֑ב | of.Gareb	javaslat
+strong_nem_illesztheto	heber	ZEP 3:3!9		1633a	1	betu_alap	verb | גָרְמ֖וּ | they.gnaw	javaslat
+strong_nem_illesztheto	heber	JOB 36:27!2		1639a	1	betu_alap	verb | יְגָרַ֣ע | he.draws.up	javaslat
+strong_nem_illesztheto	heber	ISA 57:20!3		1644a	3	betu_alap	verb | נִגְרָ֑שׁ | [which.is].tossed	javaslat
+strong_nem_illesztheto	heber	NEH 6:6!5		1654a	1	betu_alap	noun | גַשְׁמ֣וּ | Gashmu	javaslat
+strong_nem_illesztheto	heber	JOS 10:3!19		1688a	1	betu_alap	noun | דְּבִ֥יר | Debir	javaslat
+strong_nem_illesztheto	heber	2CH 22:10!9		1696a	6	betu_alap	verb | תְּדַבֵּ֛ר | she.destroyed	javaslat
+strong_nem_illesztheto	heber	JER 5:13!4		1699a	1	betu_alap	noun | דִּבֵּ֖ר | word	javaslat
+strong_nem_illesztheto	heber	PSA 20:6!5		1713a	3	betu_alap	verb | נִדְגֹּ֑ל | we.will.raise.a.banner	javaslat
+strong_nem_illesztheto	heber	PSA 84:11!10		1752a	1	betu_alap	verb | דּ֗וּר | than.to.dwell	javaslat
+strong_nem_illesztheto	heber	ISA 22:18!4		1754a	1	betu_alap	noun | כַּדּ֕וּר | a.ball	javaslat
+strong_nem_illesztheto	heber	ISA 38:12!1		1755a	1	betu_alap	noun | דּוֹרִ֗ | dwelling-place	javaslat
+strong_nem_illesztheto	heber	2SA 14:14!17		1760a	2	betu_alap	verb | יִדַּ֥ח | he.will.be.cast.out	javaslat
+strong_nem_illesztheto	heber	JOB 19:29!12		1779a	1	betu_alap	noun | דּֽוּן | judgment	javaslat
+strong_nem_illesztheto	heber	EZR 4:15!4		1799a	2	betu_alap	noun | דָּכְרָ֨נַיָּ֜ | of	javaslat
+strong_nem_illesztheto	heber	PSA 141:3!7		1800a	1	betu_alap	noun | דַּ֥ל | the.door	javaslat
+strong_nem_illesztheto	heber	PRO 26:7!1		1802a	1	betu_alap	verb | דַּלְי֣וּ | they.hang.down	javaslat
+strong_nem_illesztheto	heber	2KI 24:14!22		1803a	5	betu_alap	noun | דַּלַּ֥ת | the.poor.people	javaslat
+strong_nem_illesztheto	heber	1CH 24:18!1		1806a	3	betu_alap	noun | דְלָיָ֨הוּ֙ | Delaiah	javaslat
+strong_nem_illesztheto	heber	JOB 28:4!8		1809a	1	betu_alap	verb | דַּ֖לּוּ | they.hang.down	javaslat
+strong_nem_illesztheto	heber	PSA 49:13!7		1820a	12	betu_alap	verb | נִדְמֽוּ | [which].they.are.destroyed	javaslat
+strong_nem_illesztheto	heber	ISA 38:10!3		1824a	1	betu_alap	noun | דְמִ֥י | the.half	javaslat
+strong_nem_illesztheto	heber	ISA 23:2!1		1826a	1	betu_alap	verb | דֹּ֖מּוּ | be.silent	javaslat
+strong_nem_illesztheto	heber	JER 8:14!10		1826b	3	betu_alap	verb | נִדְּמָה | that.we.may.perish	javaslat
+strong_nem_illesztheto	heber	2KI 16:10!9		1834a	1	betu_alap	noun | דּוּמֶּ֔שֶׂק | Damascus	javaslat
+strong_nem_illesztheto	heber	2CH 16:2!17		1834b	4	betu_alap	noun | דַרְמֶ֖שֶׂק | Damascus	javaslat
+strong_nem_illesztheto	heber	PRO 29:7!8		1847a	1	betu_alap	noun | דָּֽעַת | knowledge	javaslat
+strong_nem_illesztheto	heber	ISA 53:11!5		1847b	1	betu_alap	noun | דַעְתּ֗ | knowledge	javaslat
+strong_nem_illesztheto	heber	EXO 30:23!7		1865a	1	betu_alap	noun | דְּרוֹר֙ | of.flowing	javaslat
+strong_nem_illesztheto	heber	GEN 1:1!5		1886a	30319	funkcio_kod	particle | הַ | the	javaslat
+strong_nem_illesztheto	heber	2SA 19:4!10		1886a	2	funkcio_kod	preposition | הַ | [who	javaslat
+strong_nem_illesztheto	heber	JDG 9:41!3		1886a|0725	1	funkcio_kod|tobbes	noun | ארוּמָ֑ה | Arumah	javaslat
+strong_nem_illesztheto	heber	1CH 2:52!7		1886a|7204a	1	funkcio_kod|tobbes	noun | הָרֹאֶ֖ה | Haroeh	javaslat
+strong_nem_illesztheto	heber	GEN 3:11!8		1886b	749	funkcio_kod	particle | הֲ | ?	javaslat
+strong_nem_illesztheto	heber	GEN 6:16!7		1886c	1089	funkcio_kod	suffix | ה |	javaslat
+strong_nem_illesztheto	heber	JDG 13:14!18		1886d	1	funkcio_kod	pronoun | הָ | commanded.her	javaslat
+strong_nem_illesztheto	heber	GEN 1:24!7		1886d	3115	funkcio_kod	suffix | הּ | its	javaslat
+strong_nem_illesztheto	heber	DAN 2:26!9		1886f	6	funkcio_kod	particle | הַֽ |	javaslat
+strong_nem_illesztheto	heber	EZR 6:6!12		1886g	1	funkcio_kod	particle | ה | river	javaslat
+strong_nem_illesztheto	heber	DAN 4:15!10		1886h	2	funkcio_kod	particle | א | interpretation	javaslat
+strong_nem_illesztheto	heber	EZR 5:3!1		1886h	159	funkcio_kod	suffix | הּ | it	javaslat
+strong_nem_illesztheto	heber	DAN 7:7!32		1886i	1	funkcio_kod	particle | הּ | it	javaslat
+strong_nem_illesztheto	heber	EZR 4:15!21		1886i	43	funkcio_kod	suffix | הּ | its	javaslat
+strong_nem_illesztheto	heber	GEN 11:3!5		1886j	427	funkcio_kod	suffix | ה |	javaslat
+strong_nem_illesztheto	heber	JDG 19:13!4		1886j|2050b	1	funkcio_kod|tobbes	conjunction | וְ | and	javaslat
+strong_nem_illesztheto	heber	DAN 2:43!18		1888a	1	funkcio_kod	particle | הֵֽא | here!	javaslat
+strong_nem_illesztheto	heber	NEH 11:14!11		1896b	1	betu_alap	adjective | גְּדוֹלִֽים | the.great.[ones]	javaslat
+strong_nem_illesztheto	heber	GEN 1:12!7		1930a	1064	funkcio_kod	suffix | הוּ | its	javaslat
+strong_nem_illesztheto	heber	GEN 2:12!3		1931a	484	funkcio_kod	pronoun | הִ֖וא | that	javaslat
+strong_nem_illesztheto	heber	JDG 21:24!6		1931a	1	funkcio_kod	suffix | הִ֔יא | that	javaslat
+strong_nem_illesztheto	heber	DAN 2:20!18		1931b	1	funkcio_kod	particle | הִֽיא | it	javaslat
+strong_nem_illesztheto	heber	EZR 6:15!10		1931b	6	funkcio_kod	pronoun | הִ֣יא | it	javaslat
+strong_nem_illesztheto	heber	GEN 27:29!7		1933a	5	betu_alap	verb | הֱוֵ֤ה | become	javaslat
+strong_nem_illesztheto	heber	JOB 6:2!6		1942a	13	betu_alap	noun | הַוָּתִ֗ | destruction	javaslat
+strong_nem_illesztheto	heber	EZR 4:9!8		1952a	63	funkcio_kod	suffix | ה֑וֹן | their.associates	javaslat
+strong_nem_illesztheto	heber	PSA 116:12!5		1958a	1	funkcio_kod	suffix | הִי | his	javaslat
+strong_nem_illesztheto	heber	EZR 4:11!6		1958b	76	funkcio_kod	suffix | הִי | him	javaslat
+strong_nem_illesztheto	heber	GEN 12:15!5		1984a	146	betu_alap	verb | יְהַֽלְל֥וּ | they.praised	javaslat
+strong_nem_illesztheto	heber	1SA 21:14!5		1984b	15	betu_alap	verb | יִּתְהֹלֵ֖ל | he.acted.like.a.madman	javaslat
+strong_nem_illesztheto	heber	JER 51:34!4		2000a	1	betu_alap	verb | הֲמָמַ֗ | he	javaslat
+strong_nem_illesztheto	heber	DAN 2:33!6		2004a	8	funkcio_kod	suffix | הֵין֙ | of.them	javaslat
+strong_nem_illesztheto	heber	NEH 8:11!6		2013a	4	funkcio_kod	particle | הַ֔סּוּ | hush!	javaslat
+strong_nem_illesztheto	heber	JDG 3:19!15		2013a	3	betu_alap	verb | הָ֔ס | hush!	javaslat
+strong_nem_illesztheto	heber	RUT 4:13!13		2032a	2	betu_alap	noun | הֵרָי֖וֹן | conception	javaslat
+strong_nem_illesztheto	heber	GEN 31:7!2		2048a	9	betu_alap	verb | הֵ֣תֶל | he.has.deceived	javaslat
+strong_nem_illesztheto	heber	PSA 62:4!3		2050a	1	funkcio_kod	verb | תְּהֽוֹתְת֣וּ | will.you.attack	javaslat
+strong_nem_illesztheto	heber	GEN 1:1!6		2050b	50267	funkcio_kod	conjunction | וְ | and	javaslat
+strong_nem_illesztheto	heber	ISA 1:5!10		2050b	5	funkcio_kod	preposition | וְ | and	javaslat
+strong_nem_illesztheto	heber	GEN 1:11!13		2050c	11950	funkcio_kod	suffix | וֹ | its	javaslat
+strong_nem_illesztheto	heber	EZR 4:8!4		2050d	731	funkcio_kod	conjunction | וְ | and	javaslat
+strong_nem_illesztheto	heber	1CH 26:2!7		2069a	3	betu_alap	noun | זְבַדְיָ֨הוּ֙ | [was].Zebadiah	javaslat
+strong_nem_illesztheto	heber	EXO 18:20!1		2094a	21	betu_alap	verb | הִזְהַרְתָּ֣ה | you.will.warn	javaslat
+strong_nem_illesztheto	heber	JER 5:8!2		2109a	1	betu_alap	verb | מְיֻזָּנִ֖ים | well.fed	javaslat
+strong_nem_illesztheto	heber	JOB 19:17!2		2114a	1	betu_alap	verb | זָ֣רָה | it.is.loathsome	javaslat
+strong_nem_illesztheto	heber	EXO 29:33!11		2114b	70	betu_alap	adjective | זָ֥ר | a.stranger	javaslat
+strong_nem_illesztheto	heber	JOB 32:6!14		2119a	1	betu_alap	verb | זָחַ֥לְתִּי | I.was.anxious	javaslat
+strong_nem_illesztheto	heber	ISA 66:11!9		2123a	1	betu_alap	noun | זִּ֥יז | the.nipple	javaslat
+strong_nem_illesztheto	heber	1CH 4:16!3		2128a	1	betu_alap	noun | זִ֣יף | [were].Ziph	javaslat
+strong_nem_illesztheto	heber	JOB 36:8!3		2131a	4	betu_alap	noun | זִּקִּ֑ים | fetters	javaslat
+strong_nem_illesztheto	heber	PRO 26:18!3		2131b	1	betu_alap	noun | זִקִּ֗ים | burning.arrows	javaslat
+strong_nem_illesztheto	heber	2SA 8:16!9		2142a	9	betu_alap	verb | מַזְכִּֽיר | [was].recorder	javaslat
+strong_nem_illesztheto	heber	EZR 5:1!5		2148a	2	betu_alap	noun | זְכַרְיָ֤ה | Zechariah	javaslat
+strong_nem_illesztheto	heber	2KI 15:8!9		2148b	16	betu_alap	noun | זְכַרְיָ֨הוּ | Zechariah	javaslat
+strong_nem_illesztheto	heber	ISA 63:19!16		2151a	2	betu_alap	verb | נָזֹֽלּוּ | they.shook	javaslat
+strong_nem_illesztheto	heber	JER 25:25!4		2174a	1	betu_alap	noun | זִמְרִ֗י | of.Zimri	javaslat
+strong_nem_illesztheto	heber	1CH 4:18!15		2182a	1	betu_alap	noun | זָנ֑וֹחַ | of.Zanoah	javaslat
+strong_nem_illesztheto	heber	ISA 19:6!1		2186a	1	betu_alap	verb | הֶאֶזְנִ֣יחוּ | they.will.stink	javaslat
+strong_nem_illesztheto	heber	GEN 40:6!8		2196a	2	betu_alap	verb | זֹעֲפִֽים | [were].looking.dejected	javaslat
+strong_nem_illesztheto	heber	PSA 139:3!3		2219a	1	betu_alap	verb | זֵרִ֑יתָ | you.sift	javaslat
+strong_nem_illesztheto	heber	PSA 77:18!1		2229a	1	betu_alap	verb | זֹ֤רְמוּ | they.poured.forth	javaslat
+strong_nem_illesztheto	heber	DAN 1:16!10		2235a	1	betu_alap	noun | זֵרְעֹנִֽים | vegetables	javaslat
+strong_nem_illesztheto	heber	2KI 4:35!11		2237a	1	betu_alap	verb | יְזוֹרֵ֤ר | he.sneezed	javaslat
+strong_nem_illesztheto	heber	NEH 1:7!1		2254a	12	betu_alap	verb | חֲבֹ֖ל | exceedingly.(corruptly)	javaslat
+strong_nem_illesztheto	heber	PSA 7:15!2		2254b	3	betu_alap	verb | יְחַבֶּל | he.is.in.labor.with	javaslat
+strong_nem_illesztheto	heber	1SA 10:5!15		2256a	2	betu_alap	noun | חֶ֤בֶל | a.company	javaslat
+strong_nem_illesztheto	heber	JOB 21:17!8		2256b	2	betu_alap	noun | חֲ֝בָלִ֗ים | pain(s)	javaslat
+strong_nem_illesztheto	heber	JOB 39:3!4		2256c	8	betu_alap	noun | חֶבְלֵי | labor-pains	javaslat
+strong_nem_illesztheto	heber	ZEC 11:7!17		2256d	2	betu_alap	noun | חֹֽבְלִ֔ים | Union	javaslat
+strong_nem_illesztheto	heber	EZK 18:7!4		2258a	1	betu_alap	noun | חֲבֹלָת֥ | pledge	javaslat
+strong_nem_illesztheto	heber	JOB 16:4!10		2266a	1	betu_alap	verb | אַחְבִּ֣ירָה | I.will.make.join	javaslat
+strong_nem_illesztheto	heber	EXO 6:18!5		2275a	9	betu_alap	noun | חֶבְר֖וֹן | Hebron	javaslat
+strong_nem_illesztheto	heber	GEN 3:7!13		2290a	5	betu_alap	noun | חֲגֹרֹֽת | loin.coverings	javaslat
+strong_nem_illesztheto	heber	EZR 5:1!2		2292a	2	betu_alap	noun | חַגַּ֣י | Haggai	javaslat
+strong_nem_illesztheto	heber	EXO 18:9!1		2302a	2	betu_alap	verb | יִּ֣חַדְּ | he.rejoiced	javaslat
+strong_nem_illesztheto	heber	DEU 2:25!17		2342a	45	betu_alap	verb | חָל֖וּ | they.will.be.in.anguish	javaslat
+strong_nem_illesztheto	heber	JOB 20:21!7		2342b	2	betu_alap	verb | יָחִ֥יל | it.will.endure	javaslat
+strong_nem_illesztheto	heber	ISA 19:9!6		2355a	1	betu_alap	noun | חוֹרָֽי | white.cloth	javaslat
+strong_nem_illesztheto	heber	JOB 20:2!5		2363a	3	betu_alap	verb | ח֣וּשִׁ | agitation	javaslat
+strong_nem_illesztheto	heber	GEN 46:23!3		2366a	1	betu_alap	noun | חֻשִֽׁים | Hushim	javaslat
+strong_nem_illesztheto	heber	ISA 28:15!10		2374a	1	betu_alap	noun | חֹזֶ֑ה | an.agreement	javaslat
+strong_nem_illesztheto	heber	2KI 16:20!11		2396a	74	betu_alap	noun | חִזְקִיָּ֥הוּ | Hezekiah	javaslat
+strong_nem_illesztheto	heber	NUM 15:28!6		2400a	1	betu_alap	noun | חֶטְאָ֥ה | sin	javaslat
+strong_nem_illesztheto	heber	GEN 1:20!7		2416a	118	betu_alap	adjective | חַיָּ֑ה | living	javaslat
+strong_nem_illesztheto	heber	1SA 18:18!8		2416b	1	betu_alap	noun | חַיַּ֔ | kinsfolk	javaslat
+strong_nem_illesztheto	heber	GEN 1:24!10		2416c	96	betu_alap	noun | חַֽיְתוֹ | animal[s]	javaslat
+strong_nem_illesztheto	heber	JOB 33:18!5		2416d	12	betu_alap	noun | חַיָּת֗ | life	javaslat
+strong_nem_illesztheto	heber	2SA 23:11!8		2416e	3	betu_alap	noun | חַיָּ֗ה | community	javaslat
+strong_nem_illesztheto	heber	EZR 6:10!8		2417a	2	betu_alap	noun | חַיֵּ֥י | the.life(s)	javaslat
+strong_nem_illesztheto	heber	JOB 6:10!5		2427a	1	betu_alap	noun | חִילָה | anguish	javaslat
+strong_nem_illesztheto	heber	EZK 27:11!3		2428a	1	betu_alap	noun | חֵילֵ֗ךְ | Helech	javaslat
+strong_nem_illesztheto	heber	EXO 32:11!1		2470a	16	betu_alap	verb | יְחַ֣ל | he.entreated	javaslat
+strong_nem_illesztheto	heber	PSA 10:10!8		2489a	1	betu_alap	adjective | כָּאִֽים | of.disheartened.[people]	javaslat
+strong_nem_illesztheto	heber	JOB 26:13!4		2490a	8	betu_alap	verb | חֹֽלֲלָ֥ה | it.pierced	javaslat
+strong_nem_illesztheto	heber	1KI 1:40!6		2490b	1	betu_alap	verb | מְחַלְּלִ֣ים | [were].playing.the.flute	javaslat
+strong_nem_illesztheto	heber	LEV 21:7!3		2491a	3	betu_alap	adjective | חֲלָלָה֙ | a.[woman].profaned	javaslat
+strong_nem_illesztheto	heber	GEN 28:12!1		2492a	27	betu_alap	verb | יַּחֲלֹ֗ם | he.dreamed	javaslat
+strong_nem_illesztheto	heber	JDG 5:26!12		2498a	2	betu_alap	verb | חָלְפָ֖ה | she.pierced	javaslat
+strong_nem_illesztheto	heber	NUM 31:3!6		2502a	21	betu_alap	verb | הֵחָלְצ֧וּ | be.equipped	javaslat
+strong_nem_illesztheto	heber	PSA 5:10!11		2505a	9	betu_alap	verb | יַחֲלִֽיקוּ | they	javaslat
+strong_nem_illesztheto	heber	PRO 7:21!4		2506a	1	betu_alap	noun | חֵ֥לֶק | the.seductiveness	javaslat
+strong_nem_illesztheto	heber	GEN 27:16!9		2513a	2	betu_alap	noun | חֶלְקַ֥ת | the.smooth.part	javaslat
+strong_nem_illesztheto	heber	2KI 18:18!8		2518a	19	betu_alap	noun | חִלְקִיָּ֖הוּ | of.Hilkiah	javaslat
+strong_nem_illesztheto	heber	EXO 17:13!1		2522a	2	betu_alap	verb | יַּחֲלֹ֧שׁ | he.defeated	javaslat
+strong_nem_illesztheto	heber	GEN 27:15!8		2530a	9	betu_alap	noun | חֲמֻדֹ֔ת | things	javaslat
+strong_nem_illesztheto	heber	JOB 36:18!2		2534a	1	betu_alap	noun | חֵ֭מָה | rage	javaslat
+strong_nem_illesztheto	heber	EZK 16:5!9		2551a	1	betu_alap	noun | חֻמְלָ֣ה | compassion	javaslat
+strong_nem_illesztheto	heber	PSA 71:4!7		2556a	1	betu_alap	verb | חוֹמֵץ | [one.who.is].ruthless	javaslat
+strong_nem_illesztheto	heber	ISA 63:1!5		2556c	1	betu_alap	verb | חֲמ֤וּץ | red	javaslat
+strong_nem_illesztheto	heber	EXO 12:19!10		2557a	2	betu_alap	verb | מַחְמֶ֗צֶת | a.thing.leavened	javaslat
+strong_nem_illesztheto	heber	JOB 16:16!3		2560a	1	betu_alap	verb | חֳ֭מַרְמְרוּ | they.are.reddened	javaslat
+strong_nem_illesztheto	heber	EXO 2:3!9		2560b	1	betu_alap	verb | תַּחְמְרָ֥ | she	javaslat
+strong_nem_illesztheto	heber	HAB 3:15!4		2563a	1	betu_alap	noun | חֹ֖מֶר | a.heap	javaslat
+strong_nem_illesztheto	heber	GEN 11:3!17		2563b	17	betu_alap	noun | חֹֽמֶר | mortar	javaslat
+strong_nem_illesztheto	heber	JDG 15:16!5		2565a	2	betu_alap	noun | חֲמ֖וֹר | a.heap	javaslat
+strong_nem_illesztheto	heber	1CH 2:55!12		2575a	1	betu_alap	noun | חַמַּ֖ת | Hammath	javaslat
+strong_nem_illesztheto	heber	GEN 4:17!17		2585a	1	betu_alap	noun | חֲנֽוֹךְ | Enoch	javaslat
+strong_nem_illesztheto	heber	SNG 2:13!2		2590a	1	betu_alap	verb | חָֽנְטָ֣ה | it.has.ripened	javaslat
+strong_nem_illesztheto	heber	GEN 50:3!9		2590b	1	betu_alap	noun | חֲנֻטִ֑ים | the.embalming(s)	javaslat
+strong_nem_illesztheto	heber	JOB 19:17!4		2603a	1	betu_alap	verb | חַנֹּתִ֗י | I.am.repulsive	javaslat
+strong_nem_illesztheto	heber	DAN 2:17!5		2608a	1	betu_alap	noun | חֲנַנְיָה | Hananiah	javaslat
+strong_nem_illesztheto	heber	1CH 25:23!3		2608b	3	betu_alap	noun | חֲנַנְיָ֔הוּ | Hananiah	javaslat
+strong_nem_illesztheto	heber	PRO 25:10!2		2616a	1	betu_alap	verb | יְחַסֶּדְ | he	javaslat
+strong_nem_illesztheto	heber	LEV 20:17!18		2617a	2	betu_alap	noun | חֶ֣סֶד | [is].a.shame	javaslat
+strong_nem_illesztheto	heber	JOS 19:29!10		2621a	1	betu_alap	noun | חֹסָ֔ה | Hosah	javaslat
+strong_nem_illesztheto	heber	JOB 40:17!1		2654a	1	betu_alap	verb | יַחְפֹּ֣ץ | it.stiffens	javaslat
+strong_nem_illesztheto	heber	JOS 12:17!5		2660a	2	betu_alap	noun | חֵ֖פֶר | of.Hepher	javaslat
+strong_nem_illesztheto	heber	PSA 29:7!3		2672a	1	betu_alap	verb | חֹצֵ֗ב | [is].striking	javaslat
+strong_nem_illesztheto	heber	1KI 5:29!9		2672b	8	betu_alap	verb | חֹצֵ֥ב | stonemason[s]	javaslat
+strong_nem_illesztheto	heber	1CH 2:52!9		2680a	2	betu_alap	noun | מְּנֻחֽוֹת | Menuchite[s]	javaslat
+strong_nem_illesztheto	heber	NUM 11:5!13		2682a	1	betu_alap	noun | חָצִ֥יר | leek[s]	javaslat
+strong_nem_illesztheto	heber	JOS 15:3!13		2696a	2	betu_alap	noun | חֶצְרוֹן֙ | Hezron	javaslat
+strong_nem_illesztheto	heber	1CH 6:60!2		2712a	1	betu_alap	noun | חוּקֹק֙ | Hukok	javaslat
+strong_nem_illesztheto	heber	2KI 3:23!4		2717a	4	betu_alap	verb | הָחֳרֵ֤ב | surely.(fight)	javaslat
+strong_nem_illesztheto	heber	DAN 9:25!20		2742a	1	betu_alap	noun | חָר֔וּץ | a.moat	javaslat
+strong_nem_illesztheto	heber	ISA 28:27!3		2742b	1	betu_alap	adjective | חָרוּץ֙ | sledge	javaslat
+strong_nem_illesztheto	heber	JOB 41:22!5		2742b	3	betu_alap	noun | חָר֣וּץ | a.threshing.sledge	javaslat
+strong_nem_illesztheto	heber	LEV 22:22!5		2742c	1	betu_alap	verb | חָר֣וּץ | a.mutilation	javaslat
+strong_nem_illesztheto	heber	JOL 4:14!4		2742d	2	betu_alap	noun | חָר֑וּץ | decision	javaslat
+strong_nem_illesztheto	heber	PRO 10:4!6		2742e	5	betu_alap	adjective | חָרוּצִ֣ים | of.diligent.[people]	javaslat
+strong_nem_illesztheto	heber	2SA 12:31!8		2757a	2	betu_alap	noun | חֲרִצֵ֨י | the.picks	javaslat
+strong_nem_illesztheto	heber	LEV 21:18!14		2763a	2	betu_alap	verb | חָרֻ֖ם | having.a.slit.nose	javaslat
+strong_nem_illesztheto	heber	ECC 7:26!10		2764a	9	betu_alap	noun | חֲרָמִ֛ים | nets	javaslat
+strong_nem_illesztheto	heber	GEN 11:31!27		2771a	10	betu_alap	noun | חָרָ֖ן | Haran	javaslat
+strong_nem_illesztheto	heber	JDG 14:18!9		2775a	2	betu_alap	noun | חַ֔רְסָ | the	javaslat
+strong_nem_illesztheto	heber	ISA 18:6!14		2778a	1	betu_alap	verb | תֶּחֱרָֽף | it.will.pass.the.winter	javaslat
+strong_nem_illesztheto	heber	LEV 19:20!10		2778b	1	betu_alap	verb | נֶחֱרֶ֣פֶת | intended	javaslat
+strong_nem_illesztheto	heber	2SA 5:24!10		2782a	1	betu_alap	verb | תֶּחֱרָ֑ץ | you.will.act.decisively	javaslat
+strong_nem_illesztheto	heber	PSA 69:4!3		2787a	1	betu_alap	verb | נִחַ֪ר | it.has.become.parched	javaslat
+strong_nem_illesztheto	heber	GEN 24:21!4		2790a	47	betu_alap	verb | מַחֲרִ֕ישׁ | [being].silent	javaslat
+strong_nem_illesztheto	heber	1SA 23:15!12		2793a	4	betu_alap	noun | חֹֽרְשָׁה | Horesh	javaslat
+strong_nem_illesztheto	heber	EXO 26:1!14		2803a	12	betu_alap	verb | חֹשֵׁ֖ב | of.a.skillful.worker	javaslat
+strong_nem_illesztheto	heber	1CH 25:3!7		2811a	3	betu_alap	noun | חֲשַׁבְיָ֨הוּ | Hashabiah	javaslat
+strong_nem_illesztheto	heber	EZR 6:9!2		2818a	1	betu_alap	noun | חַשְׁחָ֡ן | things.needed	javaslat
+strong_nem_illesztheto	heber	1SA 2:4!3		2844a	2	betu_alap	adjective | חַתִּ֑ים | [are].shattered	javaslat
+strong_nem_illesztheto	heber	EXO 3:1!7		2859a	21	betu_alap	verb | חֹתְנ֖ | father-in-law	javaslat
+strong_nem_illesztheto	heber	DEU 27:23!4		2859b	1	betu_alap	verb | חֹֽתַנְתּ֑ | mother-in-law	javaslat
+strong_nem_illesztheto	heber	ISA 7:6!11		2870a	1	betu_alap	noun | טָֽבְאַֽל | of.Tabeel	javaslat
+strong_nem_illesztheto	heber	PSA 89:45!2		2892a	1	betu_alap	noun | טְּהָר֑ | luster	javaslat
+strong_nem_illesztheto	heber	2KI 20:13!17		2896a	5	betu_alap	adjective | טּ֗וֹב | good	javaslat
+strong_nem_illesztheto	heber	GEN 44:4!23		2896b	67	betu_alap	adjective | טוֹבָֽה | good	javaslat
+strong_nem_illesztheto	heber	2CH 17:8!11		2900a	1	betu_alap	noun | טֽוֹבִיָּ֛הוּ | Tobijah	javaslat
+strong_nem_illesztheto	heber	ISA 44:18!6		2902a	1	betu_alap	verb | טַ֤ח | it.is.besmeared	javaslat
+strong_nem_illesztheto	heber	ECC 12:3!9		2912a	1	betu_alap	noun | טֹּֽחֲנוֹת֙ | grinders	javaslat
+strong_nem_illesztheto	heber	JOS 15:24!2		2928a	1	betu_alap	noun | טֶ֖לֶם | Telem	javaslat
+strong_nem_illesztheto	heber	LAM 2:22!14		2946a	1	betu_alap	verb | טִפַּ֥חְתִּי | I.had.given.birth	javaslat
+strong_nem_illesztheto	heber	PSA 39:6!2		2948a	1	betu_alap	noun | טְפָח֨וֹת | handbreadths	javaslat
+strong_nem_illesztheto	heber	1KI 7:9!13		2948b	1	betu_alap	noun | טְּפָח֔וֹת | stone	javaslat
+strong_nem_illesztheto	heber	GEN 2:23!6		2967a	7065	funkcio_kod	suffix | י | my	javaslat
+strong_nem_illesztheto	heber	EZR 4:18!7		2967b	70	funkcio_kod	suffix | י | me	javaslat
+strong_nem_illesztheto	heber	2KI 25:23!27		2970a	2	betu_alap	noun | יַֽאֲזַנְיָ֨הוּ֙ | Jaazaniah	javaslat
+strong_nem_illesztheto	heber	1SA 17:39!7		2974a	1	betu_alap	verb | יֹּ֣אֶל | he.undertook	javaslat
+strong_nem_illesztheto	heber	1KI 13:2!17		2977a	52	betu_alap	noun | יֹאשִׁיָּ֣הוּ | [will.be].Josiah	javaslat
+strong_nem_illesztheto	heber	EZK 40:15!5		2978a	1	betu_alap	noun | אִית֔וֹן | entrance	javaslat
+strong_nem_illesztheto	heber	1SA 11:1!11		3003a	9	betu_alap	noun | יָבֵישׁ֙ | of.Jabesh	javaslat
+strong_nem_illesztheto	heber	JER 50:14!8		3034a	3	betu_alap	verb | יְד֣וּ | shoot	javaslat
+strong_nem_illesztheto	heber	EZR 10:43!8		3035b	1	betu_alap	noun | יַדַּ֥י | Jaddai	javaslat
+strong_nem_illesztheto	heber	PSA 45:1!8		3039a	1	betu_alap	noun | יְדִידֹֽת | of.love(s)	javaslat
+strong_nem_illesztheto	heber	JOL 4:2!8		3092a	2	betu_alap	noun | יְהֽוֹשָׁפָ֑ט | of.Jehoshaphat	javaslat
+strong_nem_illesztheto	heber	JOB 30:25!5		3117a	1	betu_alap	noun | י֑וֹם | of.day	javaslat
+strong_nem_illesztheto	heber	EZR 5:2!8		3136a	1	betu_alap	noun | יֽוֹצָדָ֔ק | of.Jozadak	javaslat
+strong_nem_illesztheto	heber	1CH 12:3!8		3149a	1	betu_alap	noun | יזִיאֵ֥ל | Jeziel	javaslat
+strong_nem_illesztheto	heber	JER 40:8!19		3153a	1	betu_alap	noun | יזַנְיָ֨הוּ֙ | Jezaniah	javaslat
+strong_nem_illesztheto	heber	JOS 15:56!1		3157a	33	betu_alap	noun | יִזְרְעֶ֥אל | Jezreel	javaslat
+strong_nem_illesztheto	heber	1CH 7:34!7		3160a	1	betu_alap	noun | חֻבָּ֥ה | Hubbah	javaslat
+strong_nem_illesztheto	heber	GEN 13:6!6		3162a	96	betu_alap	adverb | יַחְדָּ֑ו | together	javaslat
+strong_nem_illesztheto	heber	2KI 20:10!2		3169a	41	betu_alap	noun | יְחִזְקִיָּ֔הוּ | Hezekiah	javaslat
+strong_nem_illesztheto	heber	2KI 15:2!14		3203a	1	betu_alap	noun | יְכָלְיָ֖הוּ | [was].Jecholiah	javaslat
+strong_nem_illesztheto	heber	JER 24:1!17		3204a	1	betu_alap	noun | יְכָנְיָ֣הוּ | Jeconiah	javaslat
+strong_nem_illesztheto	heber	2KI 19:3!19		3205a	4	betu_alap	noun | לֵדָֽה | giving.birth	javaslat
+strong_nem_illesztheto	heber	OBA 1:16!12		3216a	1	betu_alap	verb | לָע֔וּ | they.will.swallow	javaslat
+strong_nem_illesztheto	heber	JOS 15:53!2		3241a	1	betu_alap	noun | יָנ֥וּם | Janum	javaslat
+strong_nem_illesztheto	heber	GEN 35:8!3		3243a	4	betu_alap	noun | מֵינֶ֣קֶת | the.nurse	javaslat
+strong_nem_illesztheto	heber	GEN 24:59!6		3243a	2	betu_alap	verb | מֵנִקְתָּ֑ | nurse	javaslat
+strong_nem_illesztheto	heber	PSA 2:2!5		3245a	2	betu_alap	verb | נֽוֹסְדוּ | they.seat.themselves	javaslat
+strong_nem_illesztheto	heber	1CH 2:55!5		3258a	1	betu_alap	noun | יַעְבֵּ֔ץ | of.Jabez	javaslat
+strong_nem_illesztheto	heber	EZR 2:56!2		3279a	1	betu_alap	noun | יַעְלָ֥ה | of.Jaala	javaslat
+strong_nem_illesztheto	heber	DAN 9:21!12		3288a	1	betu_alap	noun | יעָ֔ף | weariness	javaslat
+strong_nem_illesztheto	heber	2SA 15:12!6		3289a	23	betu_alap	verb | יוֹעֵ֣ץ | the.counselor	javaslat
+strong_nem_illesztheto	heber	SNG 5:1!10		3293a	1	betu_alap	noun | יַעְרִ | honeycomb	javaslat
+strong_nem_illesztheto	heber	PSA 132:6!6		3293b	1	betu_alap	noun | יָֽעַר | of.Jaar	javaslat
+strong_nem_illesztheto	heber	1SA 14:27!16		3295a	1	betu_alap	noun | יַעְרַ֣ת | the.honeycomb	javaslat
+strong_nem_illesztheto	heber	JOS 19:12!14		3309a	1	betu_alap	noun | יָפִֽיעַ | Japhia	javaslat
+strong_nem_illesztheto	heber	JOS 15:43!1		3316a	1	betu_alap	noun | יִפְתָּ֥ח | Iphtah	javaslat
+strong_nem_illesztheto	heber	1KI 6:5!6		3326a	3	betu_alap	noun | יָצִ֨יעַ֙ | an.extension	javaslat
+strong_nem_illesztheto	heber	2SA 17:28!4		3335a	6	betu_alap	noun | יוֹצֵ֔ר | of.a.potter	javaslat
+strong_nem_illesztheto	heber	1CH 4:23!2		3335a	12	betu_alap	verb | יּ֣וֹצְרִ֔ים | potters	javaslat
+strong_nem_illesztheto	heber	ISA 30:14!14		3344a	1	betu_alap	noun | יָּק֔וּד | a.fireplace	javaslat
+strong_nem_illesztheto	heber	PRO 11:25!7		3384a	3	betu_alap	verb | יוֹרֶֽא | he.will.be.watered	javaslat
+strong_nem_illesztheto	heber	GEN 46:28!7		3384b	46	betu_alap	verb | הוֹרֹ֥ת | show	javaslat
+strong_nem_illesztheto	heber	1CH 10:3!10		3384c	2	betu_alap	verb | יּוֹרִֽים | archers	javaslat
+strong_nem_illesztheto	heber	1CH 23:19!3		3404a	2	betu_alap	noun | יְרִיָּ֤הוּ | [were].Jeriah	javaslat
+strong_nem_illesztheto	heber	1CH 7:8!8		3406a	6	betu_alap	noun | ירֵמ֣וֹת | Jeremoth	javaslat
+strong_nem_illesztheto	heber	2KI 23:31!15		3414a	129	betu_alap	noun | יִרְמְיָ֖הוּ | of.Jeremiah	javaslat
+strong_nem_illesztheto	heber	NEH 11:26!1		3442a	1	betu_alap	noun | יֵשׁ֥וּעַ | Jeshua	javaslat
+strong_nem_illesztheto	heber	1CH 12:7!2		3449a	1	betu_alap	noun | יִשִּׁיָּהוּ | Isshiah	javaslat
+strong_nem_illesztheto	heber	1CH 27:19!2		3460a	1	betu_alap	noun | יִֽשְׁמַֽעְיָ֖הוּ | Ishmaiah	javaslat
+strong_nem_illesztheto	heber	LEV 13:11!2		3462a	3	betu_alap	verb | נוֹשֶׁ֤נֶת | grown.old	javaslat
+strong_nem_illesztheto	heber	DEU 22:27!9		3467a	27	betu_alap	verb | מוֹשִׁ֖יעַ | a.deliverer	javaslat
+strong_nem_illesztheto	heber	2KI 19:2!15		3470a	35	betu_alap	noun | יְשַֽׁעְיָ֥הוּ | Isaiah	javaslat
+strong_nem_illesztheto	heber	JOS 10:13!14		3477a	2	betu_alap	adjective | יָּשָׁ֑ר | the.upright.[one]	javaslat
+strong_nem_illesztheto	heber	JDG 16:7!7		3499a	5	betu_alap	noun | יְתָרִ֥ים | cords	javaslat
+strong_nem_illesztheto	heber	GEN 1:26!6		3509a	2903	funkcio_kod	preposition | כִּ | according	javaslat
+strong_nem_illesztheto	heber	GEN 2:17!10		3509b	6970	funkcio_kod	suffix | ךָ֥ | you	javaslat
+strong_nem_illesztheto	heber	GEN 3:16!6		3509c	1373	funkcio_kod	suffix | ךְ | your	javaslat
+strong_nem_illesztheto	heber	EZR 4:14!2		3509d	26	funkcio_kod	conjunction | כָּ | as	javaslat
+strong_nem_illesztheto	heber	EZR 5:7!4		3509d	37	funkcio_kod	preposition | כִ | according	javaslat
+strong_nem_illesztheto	heber	DAN 4:22!16		3509e	1	funkcio_kod	particle | ךְ | you	javaslat
+strong_nem_illesztheto	heber	EZR 4:11!10		3509e	98	funkcio_kod	suffix | ךְ | your	javaslat
+strong_nem_illesztheto	heber	1SA 3:13!18		3543a	1	betu_alap	verb | כִהָ֖ה | he.rebuked	javaslat
+strong_nem_illesztheto	heber	EZR 5:3!17		3561a	15	funkcio_kod	suffix | כֹ֜ם | you	javaslat
+strong_nem_illesztheto	heber	2CH 31:12!10		3562a	3	betu_alap	noun | כָּֽנַנְיָ֣הוּ | Konaniah	javaslat
+strong_nem_illesztheto	heber	LEV 11:17!2		3563a	3	betu_alap	noun | כּ֥וֹס | owl	javaslat
+strong_nem_illesztheto	heber	GEN 2:13!10		3568a	23	betu_alap	noun | כּֽוּשׁ | of.Cush	javaslat
+strong_nem_illesztheto	heber	2KI 17:24!5		3575a	1	betu_alap	noun | כּוּ֠תָ |	javaslat
+strong_nem_illesztheto	heber	LEV 11:30!2		3581a	1	betu_alap	noun | כֹּ֖חַ | lizard	javaslat
+strong_nem_illesztheto	heber	EZR 10:35!4		3622a	1	betu_alap	noun | כְּלֽוּהוּ | Keluhi	javaslat
+strong_nem_illesztheto	heber	ISA 10:9!3		3641a	2	funkcio_kod	noun | כַּלְנ֑וֹ | [is].Calneh	javaslat
+strong_nem_illesztheto	heber	GEN 1:29!5		3641b	2651	funkcio_kod	suffix | כֶ֜ם | you	javaslat
+strong_nem_illesztheto	heber	GEN 42:11!6		3651a	12	betu_alap	adjective | כֵּנִ֣ים | [are].honest	javaslat
+strong_nem_illesztheto	heber	JOB 9:2!4		3651a	1	betu_alap	adverb | כֵ֑ן | thus	javaslat
+strong_nem_illesztheto	heber	EXO 10:29!3		3651a	9	funkcio_kod	particle | כֵּ֣ן | right	javaslat
+strong_nem_illesztheto	heber	GEN 40:13!10		3653a	6	betu_alap	noun | כַּנֶּ֑ | office	javaslat
+strong_nem_illesztheto	heber	GEN 31:5!7		3654a	19	funkcio_kod	suffix | כֶ֔ן | your	javaslat
+strong_nem_illesztheto	heber	EXO 8:13!13		3654b	2	funkcio_kod	noun | כִּנָּ֔ם | gnat[s]	javaslat
+strong_nem_illesztheto	heber	EZK 16:29!6		3667a	4	betu_alap	noun | כְּנַ֖עַן | of.merchant[s]	javaslat
+strong_nem_illesztheto	heber	ISA 23:8!10		3667b	1	betu_alap	noun | כִּנְעָנֶ֖י | merchants	javaslat
+strong_nem_illesztheto	heber	JOB 40:30!6		3669a	2	betu_alap	noun | כְּֽנַעֲנִֽים | merchants	javaslat
+strong_nem_illesztheto	heber	JOB 8:14!3		3689a	6	betu_alap	noun | כִּסְל֑ | confidence	javaslat
+strong_nem_illesztheto	heber	JOB 5:2!4		3708a	4	betu_alap	noun | כָּ֑עַשׂ | vexation	javaslat
+strong_nem_illesztheto	heber	EXO 16:14!11		3713a	3	betu_alap	noun | כְּפֹ֖ר | hoar-frost	javaslat
+strong_nem_illesztheto	heber	NEH 6:2!9		3715a	1	betu_alap	noun | כְּפִירִ֖ים | Kephirim	javaslat
+strong_nem_illesztheto	heber	GEN 6:14!14		3724a	1	betu_alap	noun | כֹּֽפֶר | pitch	javaslat
+strong_nem_illesztheto	heber	SNG 1:14!2		3724b	3	betu_alap	noun | כֹּ֤פֶר | henna.blossom	javaslat
+strong_nem_illesztheto	heber	EXO 21:30!2		3724c	13	betu_alap	noun | כֹּ֖פֶר | a.ransom	javaslat
+strong_nem_illesztheto	heber	PSA 37:20!7		3733a	3	betu_alap	noun | כָּרִ֑ים | of.pastures	javaslat
+strong_nem_illesztheto	heber	GEN 31:34!6		3733b	1	betu_alap	noun | כַ֥ר | the.saddlebag	javaslat
+strong_nem_illesztheto	heber	EZR 7:22!7		3734a	1	betu_alap	noun | כֹּרִ֣ין | cors	javaslat
+strong_nem_illesztheto	heber	2KI 6:23!1		3739a	1	betu_alap	verb | יִּכְרֶ֨ה | he.gave.a.feast	javaslat
+strong_nem_illesztheto	heber	LEV 2:14!10		3759a	3	betu_alap	noun | כַּרְמֶ֔ל | of.new.corn	javaslat
+strong_nem_illesztheto	heber	JOS 12:22!6		3760a	15	betu_alap	noun | כַּרְמֶ֖ל | Carmel	javaslat
+strong_nem_illesztheto	heber	JDG 20:43!1		3803a	4	betu_alap	verb | כִּתְּר֤וּ | they.surrounded	javaslat
+strong_nem_illesztheto	heber	PRO 14:18!5		3803b	1	betu_alap	verb | יַכְתִּ֥רוּ | they.surround	javaslat
+strong_nem_illesztheto	heber	PSA 88:1!8		3807a	2	funkcio_kod	conjunction | לְ | leannoth	javaslat
+strong_nem_illesztheto	heber	GEN 1:5!3		3807a	20376	funkcio_kod	preposition | לָ | (to)	javaslat
+strong_nem_illesztheto	heber	EZR 4:14!2		3807b	24	funkcio_kod	conjunction | ל | to	javaslat
+strong_nem_illesztheto	heber	EZR 4:14!18		3807b	40	funkcio_kod	particle | לְ | to	javaslat
+strong_nem_illesztheto	heber	EZR 4:8!11		3807b	314	funkcio_kod	preposition | לְ | to	javaslat
+strong_nem_illesztheto	heber	GEN 9:26!9		3807z	53	funkcio_kod	preposition | לָֽ |	javaslat
+strong_nem_illesztheto	heber	NUM 13:21!9		3820b	11	funkcio_kod	noun | לְבֹ֥א | Lebo	javaslat
+strong_nem_illesztheto	heber	1CH 5:9!4		3820b	2	funkcio_kod	preposition | לְ | [the]	javaslat
+strong_nem_illesztheto	heber	1CH 5:9!4		3820b	2	funkcio_kod	verb | ב֣וֹא | entrance	javaslat
+strong_nem_illesztheto	heber	2SA 13:6!15		3823a	2	betu_alap	verb | תְלַבֵּ֤ב | let.her.make.cakes	javaslat
+strong_nem_illesztheto	heber	EZK 23:6!1		3830a	3	betu_alap	adjective | לְבֻשֵׁ֤י | clothed	javaslat
+strong_nem_illesztheto	heber	1SA 17:5!8		3830a	12	betu_alap	verb | לָב֑וּשׁ | [was].clothed	javaslat
+strong_nem_illesztheto	heber	EZK 19:2!4		3833a	2	betu_alap	noun | לְבִיָּ֔א | a.lioness	javaslat
+strong_nem_illesztheto	heber	PSA 57:5!3		3833b	1	betu_alap	noun | לְבָאִם֮ | lions	javaslat
+strong_nem_illesztheto	heber	GEN 11:3!6		3835a	3	betu_alap	verb | נִלְבְּנָ֣ה | let.us.make.bricks	javaslat
+strong_nem_illesztheto	heber	DEU 1:1!19		3837a	1	betu_alap	noun | לָבָ֥ן | Laban	javaslat
+strong_nem_illesztheto	heber	GEN 47:13!9		3856a	1	betu_alap	verb | תֵּ֜לַהּ | it.languished	javaslat
+strong_nem_illesztheto	heber	PSA 57:5!5		3857a	1	betu_alap	verb | לֹ֫הֲטִ֥ים | [those.who].devour	javaslat
+strong_nem_illesztheto	heber	EXO 7:11!11		3858a	1	betu_alap	noun | לַהֲטֵי | enchantments	javaslat
+strong_nem_illesztheto	heber	EZR 5:12!1		3861a	7	funkcio_kod	conjunction | לָהֵ֗ן | but	javaslat
+strong_nem_illesztheto	heber	EXO 22:24!3		3867a	14	betu_alap	verb | תַּלְוֶ֣ה | you.will.lend.to	javaslat
+strong_nem_illesztheto	heber	NEH 3:12!6		3873a	2	betu_alap	noun | הַלּוֹחֵ֔שׁ | of.Hallohesh	javaslat
+strong_nem_illesztheto	heber	GEN 19:2!10		3885a	69	betu_alap	verb | לִ֨ינוּ֙ | stay.the.night	javaslat
+strong_nem_illesztheto	heber	JOB 6:3!9		3886a	2	betu_alap	verb | לָֽעוּ | they.have.been.rash	javaslat
+strong_nem_illesztheto	heber	PSA 1:1!13		3887a	16	betu_alap	adjective | לֵ֝צִ֗ים | of.mockers	javaslat
+strong_nem_illesztheto	heber	PSA 119:51!2		3887b	7	betu_alap	verb | הֱלִיצֻ֣ | they	javaslat
+strong_nem_illesztheto	heber	GEN 42:23!8		3887c	5	betu_alap	verb | מֵּלִ֖יץ | interpreter	javaslat
+strong_nem_illesztheto	heber	DEU 32:24!3		3898a	6	betu_alap	verb | לְחֻ֥מֵי | eaten	javaslat
+strong_nem_illesztheto	heber	EXO 12:42!1		3915a	6	betu_alap	noun | לֵ֣יל | [was].a.night	javaslat
+strong_nem_illesztheto	heber	JDG 18:7!5		3919a	4	betu_alap	noun | לָ֑יְשָׁ | to	javaslat
+strong_nem_illesztheto	heber	ISA 10:30!6		3919b	1	betu_alap	noun | לַ֖יְשָׁה | O.Laishah	javaslat
+strong_nem_illesztheto	heber	PSA 88:1!8		3939a	1	betu_alap	verb | עַנּ֑וֹת |	javaslat
+strong_nem_illesztheto	heber	1CH 21:3!7		3963a	2	funkcio_kod	pronoun | הֵם֙ | them	javaslat
+strong_nem_illesztheto	heber	GEN 1:17!2		3963a	7078	funkcio_kod	suffix | ם | them	javaslat
+strong_nem_illesztheto	heber	LEV 21:17!11		3971a	20	betu_alap	noun | מ֔וּם | a.blemish	javaslat
+strong_nem_illesztheto	heber	JOB 7:5!9		3988a	2	betu_alap	verb | יִּמָּאֵֽס | it.has.oozed	javaslat
+strong_nem_illesztheto	heber	JER 6:27!4		4013a	1	betu_alap	noun | מִבְצָ֑ר | fortification	javaslat
+strong_nem_illesztheto	heber	2SA 22:51!2		4024a	1	betu_alap	noun | מִגְדּ֖וֹל | the.tower	javaslat
+strong_nem_illesztheto	heber	SNG 4:3!4		4057a	1	betu_alap	noun | מִדְבָּרֵ֖י | mouth(s)	javaslat
+strong_nem_illesztheto	heber	NEH 5:4!6		4060a	1	betu_alap	noun | מִדַּ֣ת | the.tribute	javaslat
+strong_nem_illesztheto	heber	EZR 4:13!12		4061a	2	betu_alap	noun | מִנְדָּֽה | tribute	javaslat
+strong_nem_illesztheto	heber	1CH 2:49!4		4089a	1	betu_alap	noun | מַדְמַנָּ֔ה | of.Madmannah	javaslat
+strong_nem_illesztheto	heber	EST 3:1!10		4099a	5	betu_alap	noun | הַמְּדָ֛תָא | of.Hammedatha	javaslat
+strong_nem_illesztheto	heber	PSA 118:10!7		4135a	3	betu_alap	verb | אֲמִילַֽ | I	javaslat
+strong_nem_illesztheto	heber	JOB 39:5!5		4147a	8	betu_alap	noun | מֹסְר֥וֹת | fetters	javaslat
+strong_nem_illesztheto	heber	NUM 33:30!4		4149a	2	betu_alap	noun | מֹסֵרֽוֹת | Moseroth	javaslat
+strong_nem_illesztheto	heber	JOS 13:18!3		4158a	4	betu_alap	noun | מֵפָֽעַת | Mephaath	javaslat
+strong_nem_illesztheto	heber	ISA 16:4!12		4160a	1	betu_alap	noun | מֵּץ֙ | oppressor	javaslat
+strong_nem_illesztheto	heber	PSA 46:3!5		4171a	1	betu_alap	verb | הָמִ֣יר | changes	javaslat
+strong_nem_illesztheto	heber	PSA 84:7!9		4175a	3	betu_alap	noun | מוֹרֶֽה | early.rain	javaslat
+strong_nem_illesztheto	heber	JOB 36:22!7		4175b	4	betu_alap	noun | מוֹרֶֽה | [is].a.teacher	javaslat
+strong_nem_illesztheto	heber	JOB 17:11!5		4180a	1	betu_alap	noun | מ֖וֹרָשֵׁ֣י | the.wishes	javaslat
+strong_nem_illesztheto	heber	ISA 23:10!7		4206a	1	betu_alap	noun | מֵ֥זַח | a.restraint	javaslat
+strong_nem_illesztheto	heber	PSA 109:19!5		4206b	1	betu_alap	noun | מֵ֗זַח | a.waistband	javaslat
+strong_nem_illesztheto	heber	1SA 23:23!4		4224a	1	betu_alap	noun | מַּֽחֲבֹאִים֙ | places	javaslat
+strong_nem_illesztheto	heber	NUM 34:11!9		4229a	1	betu_alap	verb | מָחָ֛ה | it.will.reach	javaslat
+strong_nem_illesztheto	heber	ISA 25:6!13		4229b	1	betu_alap	verb | מְמֻ֣חָיִ֔ם | full.of.marrow	javaslat
+strong_nem_illesztheto	heber	2CH 21:15!4		4245a	2	betu_alap	noun | מַחֲלֵ֣ה | sickness	javaslat
+strong_nem_illesztheto	heber	2KI 16:18!3		4329a	1	betu_alap	noun | מוּסַ֨ךְ | the.covered.structure	javaslat
+strong_nem_illesztheto	heber	1SA 13:2!11		4363a	9	betu_alap	noun | מִכְמָשׂ֙ | Micmash	javaslat
+strong_nem_illesztheto	heber	NEH 12:14!2		4409b	1	betu_alap	noun | מְלִ֨יכוּ֙ | Mellichu	javaslat
+strong_nem_illesztheto	heber	EXO 30:35!7		4414a	4	betu_alap	verb | מְמֻלָּ֖ח | salted	javaslat
+strong_nem_illesztheto	heber	NEH 5:7!1		4427a	1	betu_alap	verb | יִּמָּלֵ֨ךְ | it.considered	javaslat
+strong_nem_illesztheto	heber	JER 38:6!8		4441a	1	betu_alap	noun | מַלְכִּיָּ֣הוּ | of.Malkijah	javaslat
+strong_nem_illesztheto	heber	1KI 11:5!8		4445a	6	funkcio_kod	noun | מִלְכֹּ֔ם | Milcom	javaslat
+strong_nem_illesztheto	heber	JER 49:1!15		4445a	3	funkcio_kod	suffix | ם֙ | their	javaslat
+strong_nem_illesztheto	heber	PRO 6:13!3		4448a	1	betu_alap	verb | מֹלֵ֣ל | [he.is].scraping	javaslat
+strong_nem_illesztheto	heber	JOB 14:2!3		4448b	6	betu_alap	verb | יִּמָּ֑ל | he.withered	javaslat
+strong_nem_illesztheto	heber	JOS 5:2!12		4448c	1	betu_alap	verb | מֹ֥ל | circumcise	javaslat
+strong_nem_illesztheto	heber	PSA 22:16!6		4455a	1	betu_alap	noun | מַלְקוֹחָ֑ | jaws	javaslat
+strong_nem_illesztheto	heber	GEN 13:18!6		4471a	8	betu_alap	noun | מַמְרֵ֖א | of.Mamre	javaslat
+strong_nem_illesztheto	heber	EXO 16:15!8		4478a	1	funkcio_kod	particle | מָ֣ן | what?	javaslat
+strong_nem_illesztheto	heber	PSA 68:24!8		4482a	1	betu_alap	noun | מִנֵּֽ | portion	javaslat
+strong_nem_illesztheto	heber	1CH 8:6!12		4506a	1	betu_alap	noun | מָנָֽחַת | Manahath	javaslat
+strong_nem_illesztheto	heber	JOB 37:12!2		4524a	1	betu_alap	noun | מְסִבּ֨וֹת | round.about	javaslat
+strong_nem_illesztheto	heber	2KI 24:14!18		4525a	4	betu_alap	noun | מַּסְגֵּ֑ר | smith	javaslat
+strong_nem_illesztheto	heber	JOB 9:23!5		4531a	1	betu_alap	noun | מַסַּ֖ת | despair	javaslat
+strong_nem_illesztheto	heber	ISA 25:7!10		4541a	2	betu_alap	noun | מַּסֵּכָ֥ה | stuff	javaslat
+strong_nem_illesztheto	heber	1KI 6:7!5		4551a	1	betu_alap	noun | מַסָּ֖ע | quarry	javaslat
+strong_nem_illesztheto	heber	JOS 2:7!7		4569a	8	betu_alap	noun | מַּעְבְּר֑וֹת | fords	javaslat
+strong_nem_illesztheto	heber	PSA 17:5!3		4570a	13	betu_alap	noun | מַעְגְּלוֹתֶ֑י | tracks	javaslat
+strong_nem_illesztheto	heber	JOS 15:55!1		4584a	6	betu_alap	noun | מָע֥וֹן | Maon	javaslat
+strong_nem_illesztheto	heber	1CH 24:18!4		4590a	1	betu_alap	noun | מַֽעַזְיָ֖הוּ | Maaziah	javaslat
+strong_nem_illesztheto	heber	EZK 21:20!15		4593a	1	betu_alap	adjective | מְעֻטָּ֥ה | [it.is].wrapped	javaslat
+strong_nem_illesztheto	heber	2SA 10:6!23		4601a	3	betu_alap	noun | מַֽעֲכָה֙ | of.Maacah	javaslat
+strong_nem_illesztheto	heber	JOS 13:13!11		4601b	1	betu_alap	noun | מַֽעֲכָת֙ | Maacah	javaslat
+strong_nem_illesztheto	heber	PRO 16:4!4		4617a	1	betu_alap	noun | מַּעֲנֵ֑ | purpose	javaslat
+strong_nem_illesztheto	heber	PSA 129:3!7		4618a	1	betu_alap	noun | מַעֲנִיתָֽ | furrows	javaslat
+strong_nem_illesztheto	heber	1CH 15:18!12		4641a	7	betu_alap	noun | מַֽעֲשֵׂיָ֡הוּ | Maaseiah	javaslat
+strong_nem_illesztheto	heber	ISA 17:1!9		4654a	1	betu_alap	noun | מַפָּלָֽה | of.a.ruin	javaslat
+strong_nem_illesztheto	heber	PSA 46:9!3		4659a	2	betu_alap	noun | מִפְעֲל֣וֹת | the.works	javaslat
+strong_nem_illesztheto	heber	ZEC 9:8!3		4675a	1	betu_alap	noun | מִצָּבָה֙ | a.guard	javaslat
+strong_nem_illesztheto	heber	ISA 6:13!11		4678a	2	betu_alap	noun | מַצֶּ֣בֶת | a.stump	javaslat
+strong_nem_illesztheto	heber	PRO 12:12!3		4685a	2	betu_alap	noun | מְצ֣וֹד | a.net	javaslat
+strong_nem_illesztheto	heber	1SA 22:4!12		4686a	18	betu_alap	noun | מְּצוּדָֽה | stronghold	javaslat
+strong_nem_illesztheto	heber	ECC 9:12!10		4686b	1	betu_alap	noun | מְצוֹדָ֣ה | a.net	javaslat
+strong_nem_illesztheto	heber	ISA 29:7!13		4686c	2	betu_alap	noun | מְצֹ֣דָתָ֔ | stronghold	javaslat
+strong_nem_illesztheto	heber	2CH 8:5!11		4692a	5	betu_alap	noun | מָצ֔וֹר | of.fortification	javaslat
+strong_nem_illesztheto	heber	GEN 1:10!5		4723a	3	betu_alap	noun | מִקְוֵ֥ה | place	javaslat
+strong_nem_illesztheto	heber	MAL 1:11!11		4729a	1	betu_alap	verb | מֻקְטָ֥ר | incense	javaslat
+strong_nem_illesztheto	heber	2CH 30:14!9		4729b	1	betu_alap	noun | מְקַטְּרוֹת֙ | altars	javaslat
+strong_nem_illesztheto	heber	JOB 39:18!3		4754a	1	betu_alap	verb | תַּמְרִ֑יא | it.flaps	javaslat
+strong_nem_illesztheto	heber	EXO 38:8!8		4759a	1	betu_alap	noun | מַרְאֹת֙ | the.mirrors	javaslat
+strong_nem_illesztheto	heber	JOS 15:44!3		4762a	6	betu_alap	noun | מָֽרֵאשָׁ֑ה | Mareshah	javaslat
+strong_nem_illesztheto	heber	PRO 14:30!4		4832a	2	betu_alap	noun | מַרְפֵּ֑א | of.health	javaslat
+strong_nem_illesztheto	heber	2KI 9:25!26		4853a	22	betu_alap	noun | מַּשָּׂ֖א | oracle	javaslat
+strong_nem_illesztheto	heber	LEV 7:35!2		4888a	3	betu_alap	noun | מִשְׁחַ֤ת | [is].the.share	javaslat
+strong_nem_illesztheto	heber	JOB 41:25!4		4915a	1	betu_alap	noun | מָשְׁל֑ | likeness	javaslat
+strong_nem_illesztheto	heber	EST 9:19!20		4916a	3	betu_alap	noun | מִשְׁל֥וֹחַ | sending	javaslat
+strong_nem_illesztheto	heber	1CH 26:1!4		4920a	3	betu_alap	noun | מְשֶֽׁלֶמְיָ֥הוּ | Meshelemiah	javaslat
+strong_nem_illesztheto	heber	NEH 8:10!5		4924a	1	betu_alap	noun | מַשְׁמַנִּ֜ים | fat.foods	javaslat
+strong_nem_illesztheto	heber	GEN 27:28!6		4924b	2	betu_alap	noun | שְׁמַנֵּ֖י | of.the.fatness(es)	javaslat
+strong_nem_illesztheto	heber	ISA 3:1!9		4937a	1	betu_alap	noun | מַשְׁעֵ֖ן | support	javaslat
+strong_nem_illesztheto	heber	EXO 21:19!6		4938a	11	betu_alap	noun | מִשְׁעַנְתּ֖ | staff	javaslat
+strong_nem_illesztheto	heber	1CH 25:4!5		4983a	3	betu_alap	noun | מַתַּנְיָ֡הוּ | Mattaniah	javaslat
+strong_nem_illesztheto	heber	1CH 15:18!13		4993a	4	funkcio_kod	noun | מַתִּתְיָהוּ֩ | Mattithiah	javaslat
+strong_nem_illesztheto	heber	GEN 3:3!15		4993b	310	funkcio_kod	suffix | ן | should.die	javaslat
+strong_nem_illesztheto	heber	GEN 30:38!16		4993c	36	funkcio_kod	suffix | ן | they	javaslat
+strong_nem_illesztheto	heber	EZR 4:12!10		4996b	10	funkcio_kod	suffix | נָא | us	javaslat
+strong_nem_illesztheto	heber	NEH 9:18!14		5007a	3	betu_alap	noun | נֶאָצ֖וֹת | blasphemies	javaslat
+strong_nem_illesztheto	heber	JOB 11:12!2		5014a	2	betu_alap	verb | נָ֭בוּב | hollow	javaslat
+strong_nem_illesztheto	heber	EZR 10:43!2		5015a	1	betu_alap	noun | נְב֑וֹ | of.Nebo	javaslat
+strong_nem_illesztheto	heber	NUM 32:3!8		5015b	11	betu_alap	noun | נְב֖וֹ | Nebo	javaslat
+strong_nem_illesztheto	heber	NUM 32:42!10		5025a	2	betu_alap	noun | נֹ֖בַח | Nobah	javaslat
+strong_nem_illesztheto	heber	DEU 32:15!10		5034a	5	betu_alap	verb | יְנַבֵּ֖ל | he.treated.with.contempt	javaslat
+strong_nem_illesztheto	heber	1SA 10:5!20		5035a	27	betu_alap	noun | נֵ֤בֶל | lyre	javaslat
+strong_nem_illesztheto	heber	DEU 19:5!8		5080a	3	betu_alap	verb | נִדְּחָ֨ה | it.will.be.impelled	javaslat
+strong_nem_illesztheto	heber	GEN 2:21!13		5089a	195	funkcio_kod	suffix | נָּה | place.of.it	javaslat
+strong_nem_illesztheto	heber	NAM 2:8!5		5090a	1	betu_alap	verb | מְנַֽהֲגוֹת֙ | [are].moaning	javaslat
+strong_nem_illesztheto	heber	1SA 7:2!12		5091a	1	betu_alap	verb | יִּנָּה֛וּ | they.mourned	javaslat
+strong_nem_illesztheto	heber	DAN 2:22!9		5094a	1	betu_alap	noun | נְהוֹרָ֖ | the	javaslat
+strong_nem_illesztheto	heber	DAN 5:11!11		5094b	2	betu_alap	noun | נַהִיר֧וּ | illumination	javaslat
+strong_nem_illesztheto	heber	JDG 1:30!9		5096a	1	betu_alap	noun | נַהֲלֹ֑ל | of.Nahalol	javaslat
+strong_nem_illesztheto	heber	PSA 34:6!3		5102a	3	betu_alap	verb | נָהָ֑רוּ | they.are.radiant	javaslat
+strong_nem_illesztheto	heber	GEN 1:26!5		5105a	1637	funkcio_kod	suffix | נוּ | our	javaslat
+strong_nem_illesztheto	heber	GEN 2:17!7		5105b	516	funkcio_kod	suffix | נּוּ | it	javaslat
+strong_nem_illesztheto	heber	EXO 15:2!9		5115a	1	betu_alap	verb | אַנְוֵ֔ | I	javaslat
+strong_nem_illesztheto	heber	1SA 19:18!21		5121b	6	betu_alap	noun | נָֽיוֹת | Naioth	javaslat
+strong_nem_illesztheto	heber	PSA 68:10!3		5130a	2	betu_alap	verb | תָּנִ֣יף | you.shed.abroad	javaslat
+strong_nem_illesztheto	heber	ISA 30:28!7		5130b	1	betu_alap	noun | הֲנָפָ֥ה | shaking	javaslat
+strong_nem_illesztheto	heber	EXO 15:8!8		5140a	5	betu_alap	verb | נֹזְלִ֑ים | streams	javaslat
+strong_nem_illesztheto	heber	EZK 47:19!9		5158a	2	betu_alap	noun | נַחֲלָ֖ה | [the].wadi	javaslat
+strong_nem_illesztheto	heber	JER 8:16!3		5170a	1	betu_alap	noun | נַחְרַ֣ת | the.snorting	javaslat
+strong_nem_illesztheto	heber	EZK 16:36!7		5178a	1	betu_alap	noun | נְחֻשְׁתֵּ | lust	javaslat
+strong_nem_illesztheto	heber	JOB 36:16!9		5183a	6	betu_alap	noun | נַ֥חַת | the.quietness	javaslat
+strong_nem_illesztheto	heber	JOB 36:27!3		5198a	1	betu_alap	noun | נִטְפֵי | drops	javaslat
+strong_nem_illesztheto	heber	GEN 3:13!11		5204a	1169	funkcio_kod	suffix | נִי | deceived.me	javaslat
+strong_nem_illesztheto	heber	DAN 2:5!11		5204b	18	funkcio_kod	suffix | נִי֙ | will.make.known.to.me	javaslat
+strong_nem_illesztheto	heber	PRO 15:13!8		5218a	3	betu_alap	adjective | נְכֵאָֽה | [is].stricken	javaslat
+strong_nem_illesztheto	heber	GEN 42:7!6		5234a	6	betu_alap	verb | יִּתְנַכֵּ֨ר | he.acted.as.a.stranger	javaslat
+strong_nem_illesztheto	heber	JOS 13:21!29		5257a	4	betu_alap	noun | נְסִיכֵ֣י | the.princes	javaslat
+strong_nem_illesztheto	heber	ISA 41:29!8		5262a	4	betu_alap	noun | נִסְכֵּי | images	javaslat
+strong_nem_illesztheto	heber	JER 32:30!11		5271a	1	betu_alap	noun | נְּעֻרֹֽתֵי | youth(s)	javaslat
+strong_nem_illesztheto	heber	2CH 28:15!14		5274a	2	betu_alap	verb | יַּנְעִלוּ | they	javaslat
+strong_nem_illesztheto	heber	JOS 15:41!4		5279a	1	betu_alap	noun | נַעֲמָ֖ה | Naamah	javaslat
+strong_nem_illesztheto	heber	JOS 16:7!4		5292a	1	betu_alap	noun | נַעֲרָ֑תָ | to	javaslat
+strong_nem_illesztheto	heber	ISA 30:28!9		5299a	1	betu_alap	noun | נָ֣פַת | a.sieve	javaslat
+strong_nem_illesztheto	heber	GEN 9:19!6		5310a	3	betu_alap	verb | נָֽפְצָ֥ה | it.dispersed	javaslat
+strong_nem_illesztheto	heber	LEV 11:16!9		5322a	3	betu_alap	noun | נֵּ֖ץ | falcon	javaslat
+strong_nem_illesztheto	heber	ZEC 11:16!16		5324a	1	betu_alap	verb | נִּצָּבָה֙ | which].stands.firm	javaslat
+strong_nem_illesztheto	heber	2KI 19:25!14		5327a	6	betu_alap	verb | נִצִּ֖ים | ruined	javaslat
+strong_nem_illesztheto	heber	ECC 12:5!6		5340a	3	betu_alap	verb | יָנֵ֤אץ | it.will.bloom	javaslat
+strong_nem_illesztheto	heber	LEV 24:11!1		5344a	3	betu_alap	verb | יִּקֹּב | he.slandered	javaslat
+strong_nem_illesztheto	heber	JOS 6:3!7		5362a	16	betu_alap	verb | הַקֵּ֥יף | you.will.encircle	javaslat
+strong_nem_illesztheto	heber	JER 36:14!27		5374a	3	betu_alap	noun | נֵרִיָּ֤הוּ | of.Neriah	javaslat
+strong_nem_illesztheto	heber	PSA 135:7!2		5387a	4	betu_alap	noun | נְשִׂאִים֮ | clouds	javaslat
+strong_nem_illesztheto	heber	DEU 23:20!2		5391a	5	betu_alap	verb | תַשִּׁ֣יךְ | you.will.charge.interest	javaslat
+strong_nem_illesztheto	heber	1CH 12:2!1		5401a	3	betu_alap	verb | נֹ֣שְׁקֵי | [they.were].equipped	javaslat
+strong_nem_illesztheto	heber	JOB 18:10!6		5410a	5	betu_alap	noun | נָתִֽיב | [the].path	javaslat
+strong_nem_illesztheto	heber	NUM 3:9!6		5414a	2	betu_alap	verb | נְתוּנִ֨ם | [are].assigned	javaslat
+strong_nem_illesztheto	heber	1CH 25:12!2		5418a	5	betu_alap	noun | נְתַנְיָ֔הוּ | Nethaniah	javaslat
+strong_nem_illesztheto	heber	LEV 11:21!17		5425a	4	betu_alap	verb | נַתֵּ֥ר | hop	javaslat
+strong_nem_illesztheto	heber	PSA 105:20!3		5425b	3	betu_alap	verb | יַּתִּירֵ֑ | he	javaslat
+strong_nem_illesztheto	heber	EZK 23:42!11		5433a	1	betu_alap	noun | סָבָאִ֖ים | Sabeans	javaslat
+strong_nem_illesztheto	heber	1KI 6:20!14		5458a	9	betu_alap	noun | סָג֑וּר | pure.gold	javaslat
+strong_nem_illesztheto	heber	PSA 35:3!3		5462a	1	betu_alap	verb | סְגֹר | lance	javaslat
+strong_nem_illesztheto	heber	ISA 9:10!9		5480a	2	betu_alap	verb | יְסַכְסֵֽךְ | he.provoked	javaslat
+strong_nem_illesztheto	heber	ISA 38:14!1		5483a	1	betu_alap	noun | ס֤וּס | a.swallow	javaslat
+strong_nem_illesztheto	heber	JER 8:7!8		5483b	1	betu_alap	noun | סִיס֙ | a.swift	javaslat
+strong_nem_illesztheto	heber	NUM 21:14!9		5492a	1	betu_alap	noun | סוּפָ֔ה | Suphah	javaslat
+strong_nem_illesztheto	heber	EXO 16:1!10		5512a	4	betu_alap	noun | סִ֔ין | of.Sin	javaslat
+strong_nem_illesztheto	heber	ECC 7:6!3		5518a	5	betu_alap	noun | סִּירִים֙ | thorns	javaslat
+strong_nem_illesztheto	heber	JOB 10:11!6		5526a	2	betu_alap	verb | תְּסֹכְכֵֽ | did	javaslat
+strong_nem_illesztheto	heber	JDG 3:24!12		5526b	2	betu_alap	verb | מֵסִ֥יךְ | [is].covering	javaslat
+strong_nem_illesztheto	heber	NAM 2:6!9		5526c	1	betu_alap	noun | סֹּכֵֽךְ | cover	javaslat
+strong_nem_illesztheto	heber	1KI 1:2!14		5532a	3	betu_alap	verb | סֹכֶ֑נֶת | a.nurse	javaslat
+strong_nem_illesztheto	heber	ISA 40:20!1		5533b	1	betu_alap	verb | מְסֻכָּ֣ן | [person]	javaslat
+strong_nem_illesztheto	heber	ISA 19:4!1		5534a	1	betu_alap	verb | סִכַּרְתִּי֙ | I.will.hand.over	javaslat
+strong_nem_illesztheto	heber	JOB 28:16!2		5541a	2	betu_alap	verb | תְ֭סֻלֶּה | it.will.be.paid	javaslat
+strong_nem_illesztheto	heber	NUM 25:14!11		5543a	1	betu_alap	noun | סָל֑וּא | of.Salu	javaslat
+strong_nem_illesztheto	heber	NEH 11:8!3		5543b	2	betu_alap	noun | סַלָּ֑י | Sallai	javaslat
+strong_nem_illesztheto	heber	1CH 9:7!4		5543c	2	betu_alap	noun | סַלּוּא֙ | Sallu	javaslat
+strong_nem_illesztheto	heber	PSA 139:8!2		5559a	1	betu_alap	verb | אֶסַּ֣ק | I.will.ascend	javaslat
+strong_nem_illesztheto	heber	NEH 3:3!6		5570a	1	betu_alap	noun | סְּנָאָ֑ה | Senaah	javaslat
+strong_nem_illesztheto	heber	1CH 9:7!10		5574a	2	betu_alap	noun | סְּנֻאָֽה | Hassenuah	javaslat
+strong_nem_illesztheto	heber	JDG 15:8!10		5585a	4	betu_alap	noun | סְעִ֖יף | the.cleft	javaslat
+strong_nem_illesztheto	heber	JOB 4:13!1		5587a	2	betu_alap	noun | שְׂעִפִּים | disquieting.thoughts	javaslat
+strong_nem_illesztheto	heber	2KI 2:1!6		5591a	16	betu_alap	noun | סְעָרָ֖ה | whirlwind	javaslat
+strong_nem_illesztheto	heber	EXO 12:22!7		5592a	7	betu_alap	noun | סַּף֒ | basin	javaslat
+strong_nem_illesztheto	heber	HAB 2:15!4		5596a	1	betu_alap	verb | מְסַפֵּ֥חַ | [one.who].mixes	javaslat
+strong_nem_illesztheto	heber	ISA 3:17!1		5596b	1	betu_alap	verb | שִׂפַּ֣ח | he.will.make.scabby	javaslat
+strong_nem_illesztheto	heber	LEV 25:5!2		5599a	4	betu_alap	noun | סְפִ֤יחַ | the.self-sown.grain	javaslat
+strong_nem_illesztheto	heber	JER 48:26!6		5606a	1	betu_alap	verb | סָפַ֤ק | it.will.splash	javaslat
+strong_nem_illesztheto	heber	JOB 27:23!1		5606b	2	betu_alap	verb | יִשְׂפֹּ֣ק | someone.will.clap	javaslat
+strong_nem_illesztheto	heber	1KI 20:10!13		5606c	1	betu_alap	verb | יִשְׂפֹּק֙ | it.will.suffice	javaslat
+strong_nem_illesztheto	heber	JDG 5:14!15		5608a	54	betu_alap	noun | סֹפֵֽר | of.a.muster-officer	javaslat
+strong_nem_illesztheto	heber	ISA 33:18!5		5608a	2	betu_alap	verb | סֹפֵר֙ | [is.one.who].counted	javaslat
+strong_nem_illesztheto	heber	PSA 56:9!8		5612a	1	betu_alap	noun | סִפְרָתֶֽ | it]	javaslat
+strong_nem_illesztheto	heber	EZR 2:55!7		5618b	1	betu_alap	noun | סֹּפֶ֖רֶת | Hassophereth	javaslat
+strong_nem_illesztheto	heber	DEU 13:6!10		5627a	7	betu_alap	noun | סָ֠רָה | rebellion	javaslat
+strong_nem_illesztheto	heber	EXO 26:12!8		5628a	3	betu_alap	verb | תִּסְרַ֕ח | it.will.overhang	javaslat
+strong_nem_illesztheto	heber	JER 49:7!13		5628b	1	betu_alap	verb | נִסְרְחָ֖ה | has.it.been.corrupted?	javaslat
+strong_nem_illesztheto	heber	1KI 7:30!6		5633a	1	betu_alap	noun | סַרְנֵ֣י | axles	javaslat
+strong_nem_illesztheto	heber	LAM 3:8!5		5640a	1	betu_alap	verb | שָׂתַ֖ם | he.has.shut.out	javaslat
+strong_nem_illesztheto	heber	EZR 5:12!18		5642a	1	betu_alap	verb | סַתְרֵ֔ | he	javaslat
+strong_nem_illesztheto	heber	DEU 32:38!12		5643a	1	betu_alap	noun | סִתְרָֽה | a.shelter	javaslat
+strong_nem_illesztheto	heber	JOS 21:30!8		5658a	2	betu_alap	noun | עַבְדּ֖וֹן | Abdon	javaslat
+strong_nem_illesztheto	heber	1KI 18:3!4		5662a	9	betu_alap	noun | עֹבַדְיָ֖הוּ | Obadiah	javaslat
+strong_nem_illesztheto	heber	JOL 2:7!11		5670a	1	betu_alap	verb | יְעַבְּט֖וּ | they	javaslat
+strong_nem_illesztheto	heber	DEU 3:26!1		5674a	8	betu_alap	verb | יִּתְעַבֵּ֨ר | he.was.furious	javaslat
+strong_nem_illesztheto	heber	EZK 19:11!12		5687a	4	betu_alap	noun | עֲבֹתִ֑ים | branches	javaslat
+strong_nem_illesztheto	heber	JOS 10:3!21		5700a	8	betu_alap	noun | עֶגְל֖וֹן | of.Eglon	javaslat
+strong_nem_illesztheto	heber	ISA 64:5!5		5708a	1	betu_alap	noun | עִדִּ֖ים | of.menstruation(s)	javaslat
+strong_nem_illesztheto	heber	JOB 40:10!1		5710a	8	betu_alap	verb | עֲדֵ֥ה | adorn.yourself	javaslat
+strong_nem_illesztheto	heber	NEH 12:4!1		5714a	3	betu_alap	noun | עִדּ֥וֹא | Iddo	javaslat
+strong_nem_illesztheto	heber	EZR 5:1!7		5714b	2	betu_alap	noun | עִדּוֹא֙ | of.Iddo	javaslat
+strong_nem_illesztheto	heber	1KI 4:14!3		5714d	1	betu_alap	noun | עִדֹּ֖א | of.Iddo	javaslat
+strong_nem_illesztheto	heber	2CH 23:1!21		5718a	1	betu_alap	noun | עֲדָיָ֛הוּ | of.Adaiah	javaslat
+strong_nem_illesztheto	heber	GEN 18:12!9		5730a	1	betu_alap	noun | עֶדְנָ֔ה | pleasure	javaslat
+strong_nem_illesztheto	heber	2CH 29:12!26		5731a	2	betu_alap	noun | עֵ֖דֶן | Eden	javaslat
+strong_nem_illesztheto	heber	1CH 12:21!7		5734a	1	betu_alap	noun | עַ֠דְנַח | Adnach	javaslat
+strong_nem_illesztheto	heber	1SA 30:19!2		5737a	7	betu_alap	verb | נֶעְדַּר | it.was.missing	javaslat
+strong_nem_illesztheto	heber	1CH 12:34!11		5737b	2	betu_alap	verb | עֲדֹ֖ר | help	javaslat
+strong_nem_illesztheto	heber	JOS 15:21!12		5740a	1	betu_alap	noun | עֵ֖דֶר | Eder	javaslat
+strong_nem_illesztheto	heber	GEN 43:3!5		5749a	40	betu_alap	verb | הָעֵ֣ד | solemnly.(warn)	javaslat
+strong_nem_illesztheto	heber	2KI 17:24!6		5755a	1	betu_alap	noun | עַוָּ֤א | Avva	javaslat
+strong_nem_illesztheto	heber	2SA 3:34!11		5766a	33	betu_alap	noun | עַוְלָ֖ה | of.injustice	javaslat
+strong_nem_illesztheto	heber	1SA 18:9!4		5770a	1	betu_alap	verb | עוֹיֵ֣ן | looking.suspiciously.at	javaslat
+strong_nem_illesztheto	heber	EXO 21:10!7		5772a	1	betu_alap	noun | עֹנָתָ֖ | her.right	javaslat
+strong_nem_illesztheto	heber	JOB 11:17!4		5774a	1	betu_alap	verb | תָּ֝עֻ֗פָ | it	javaslat
+strong_nem_illesztheto	heber	JOB 1:1!4		5780a	3	betu_alap	noun | ע֖וּץ | of.Uz	javaslat
+strong_nem_illesztheto	heber	LEV 22:22!1		5788a	1	betu_alap	noun | עַוֶּרֶת֩ | blindness	javaslat
+strong_nem_illesztheto	heber	2SA 6:7!4		5798a	3	betu_alap	noun | עֻזָּ֔ה | Uzzah	javaslat
+strong_nem_illesztheto	heber	EXO 23:5!9		5800a	5	betu_alap	verb | עֲזֹ֣ב | leaving	javaslat
+strong_nem_illesztheto	heber	2KI 15:32!11		5818a	19	betu_alap	noun | עֻזִיָּ֖הוּ | of.Uzziah	javaslat
+strong_nem_illesztheto	heber	EZR 2:24!2		5820a	2	betu_alap	noun | עַזְמָ֖וֶת | of.Azmaveth	javaslat
+strong_nem_illesztheto	heber	1KI 4:2!5		5838a	16	betu_alap	noun | עֲזַרְיָ֥הוּ | Azariah	javaslat
+strong_nem_illesztheto	heber	ISA 22:17!6		5844a	4	betu_alap	verb | עֹטְ | [he	javaslat
+strong_nem_illesztheto	heber	GEN 30:42!1		5848a	11	betu_alap	verb | הַעֲטִ֥יף | was.feeble	javaslat
+strong_nem_illesztheto	heber	GEN 30:42!6		5848b	2	betu_alap	verb | עֲטֻפִים֙ | ones	javaslat
+strong_nem_illesztheto	heber	1CH 7:28!14		5857a	2	betu_alap	noun | עַיָּ֖ה | Ayyah	javaslat
+strong_nem_illesztheto	heber	ISA 10:28!3		5857b	1	betu_alap	noun | עַיַּ֖ת | Aiath	javaslat
+strong_nem_illesztheto	heber	GEN 36:23!6		5858a	3	betu_alap	noun | עֵיבָ֑ל | Ebal	javaslat
+strong_nem_illesztheto	heber	GEN 10:22!3		5867a	13	betu_alap	noun | עֵילָ֣ם | [were].Elam	javaslat
+strong_nem_illesztheto	heber	JOS 15:34!5		5879a	1	betu_alap	noun | עֵינָֽם | Enam	javaslat
+strong_nem_illesztheto	heber	JER 15:8!16		5892a	2	betu_alap	noun | עִ֖יר | anguish	javaslat
+strong_nem_illesztheto	heber	2KI 19:13!7		5892b	2	betu_alap	noun | לָעִ֣יר | of.Lair	javaslat
+strong_nem_illesztheto	heber	ZEC 2:13!6		5921|3963a	1	funkcio_kod|tobbes	preposition | עֲלֵי | on	javaslat
+strong_nem_illesztheto	heber	ZEC 2:13!6		5921|3963a	1	funkcio_kod|tobbes	suffix | הֶ֔ם | them	javaslat
+strong_nem_illesztheto	heber	GEN 14:18!11		5945a	31	betu_alap	adjective | עֶלְיֽוֹן | Most.High	javaslat
+strong_nem_illesztheto	heber	JOB 16:15!5		5953a	1	betu_alap	verb | עֹלַ֖לְתִּי | I.have.inserted	javaslat
+strong_nem_illesztheto	heber	ISA 3:12!3		5953b	1	betu_alap	verb | מְעוֹלֵ֔ל | [is].acting.like.children	javaslat
+strong_nem_illesztheto	heber	1CH 6:45!8		5964a	1	betu_alap	noun | עָלֶ֣מֶת | Alemeth	javaslat
+strong_nem_illesztheto	heber	GEN 17:14!12		5971a	33	betu_alap	noun | עַמֶּ֑י | kinspeople(s)	javaslat
+strong_nem_illesztheto	heber	ECC 2:18!7		6001a	5	betu_alap	adjective | עָמֵ֖ל | [was].toiling	javaslat
+strong_nem_illesztheto	heber	EZK 31:8!3		6004a	1	betu_alap	verb | עֲמָמֻ | they	javaslat
+strong_nem_illesztheto	heber	DEU 21:14!13		6014a	2	betu_alap	verb | תִתְעַמֵּ֣ר | you.will.treat.as.a.slave	javaslat
+strong_nem_illesztheto	heber	EXO 16:16!11		6016a	6	betu_alap	noun | עֹ֣מֶר | an.omer	javaslat
+strong_nem_illesztheto	heber	ECC 1:13!20		6031a	3	betu_alap	verb | עֲנ֥וֹת | be.busy	javaslat
+strong_nem_illesztheto	heber	EXO 15:21!1		6031b	15	betu_alap	verb | תַּ֥עַן | she.sang	javaslat
+strong_nem_illesztheto	heber	GEN 9:14!2		6049a	1	betu_alap	verb | עַֽנְנִ֥ | I	javaslat
+strong_nem_illesztheto	heber	NEH 11:32!3		6055a	1	betu_alap	noun | עֲנָֽנְיָֽה | Ananiah	javaslat
+strong_nem_illesztheto	heber	1CH 6:55!5		6063a	1	betu_alap	noun | עָנֵר֙ | Aner	javaslat
+strong_nem_illesztheto	heber	AMO 2:8!9		6064a	1	betu_alap	noun | עֲנוּשִׁים֙ | of.fines	javaslat
+strong_nem_illesztheto	heber	JOS 21:18!2		6068a	13	betu_alap	noun | עֲנָתוֹת֙ | Anathoth	javaslat
+strong_nem_illesztheto	heber	2KI 5:24!3		6076a	3	betu_alap	noun | עֹ֔פֶל | hill	javaslat
+strong_nem_illesztheto	heber	JOS 18:23!3		6084a	7	betu_alap	noun | עָפְרָֽה | Ophrah	javaslat
+strong_nem_illesztheto	heber	JOS 15:9!13		6085a	1	betu_alap	noun | עֶפְר֑וֹן | of.Ephron	javaslat
+strong_nem_illesztheto	heber	2CH 13:19!19		6085b	1	betu_alap	noun | עֶפְרַ֖יִן | Ephrayin	javaslat
+strong_nem_illesztheto	heber	GEN 6:6!8		6087a	15	betu_alap	verb | יִּתְעַצֵּ֖ב | he.was.grieved	javaslat
+strong_nem_illesztheto	heber	GEN 3:16!8		6089a	6	betu_alap	noun | עֶ֖צֶב | pain	javaslat
+strong_nem_illesztheto	heber	1CH 4:9!12		6090a	3	betu_alap	noun | עֹֽצֶב | pain	javaslat
+strong_nem_illesztheto	heber	PSA 13:3!4		6098a	2	betu_alap	noun | עֵצ֡וֹת | counsel(s)	javaslat
+strong_nem_illesztheto	heber	ECC 10:18!1		6103a	1	betu_alap	noun | עֲצַלְתַּ֖יִם | laziness(es)	javaslat
+strong_nem_illesztheto	heber	ISA 29:10!7		6105a	2	betu_alap	verb | יְעַצֵּ֖ם | he.has.shut	javaslat
+strong_nem_illesztheto	heber	JER 50:17!12		6105b	1	betu_alap	verb | עִצְּמ֔ | he	javaslat
+strong_nem_illesztheto	heber	PSA 139:15!3		6108a	1	betu_alap	noun | עָצְמִ֗ | bone[s]	javaslat
+strong_nem_illesztheto	heber	2SA 23:8!14		6112a	1	betu_alap	noun | עֶצְנִ֔י | Eznite	javaslat
+strong_nem_illesztheto	heber	JER 17:9!1		6121a	1	betu_alap	adjective | עָקֹ֥ב | [is].deceitful	javaslat
+strong_nem_illesztheto	heber	ISA 40:4!9		6121a	1	betu_alap	noun | עָקֹב֙ | [place]	javaslat
+strong_nem_illesztheto	heber	EZR 9:2!6		6148a	5	betu_alap	verb | הִתְעָֽרְבוּ֙ | they.have.mixed.themselves	javaslat
+strong_nem_illesztheto	heber	EXO 12:38!2		6154a	6	betu_alap	noun | עֵ֥רֶב | a.mixed.company	javaslat
+strong_nem_illesztheto	heber	ISA 13:20!12		6163a	2	betu_alap	noun | עֲרָבִ֔י | an.Arab	javaslat
+strong_nem_illesztheto	heber	NUM 21:1!4		6166a	4	betu_alap	noun | עֲרָד֙ | of.Arad	javaslat
+strong_nem_illesztheto	heber	HOS 5:12!2		6211a	1	betu_alap	noun | עָ֖שׁ | moth	javaslat
+strong_nem_illesztheto	heber	JOB 9:9!2		6211b	1	betu_alap	noun | עָ֭שׁ | [the].Bear	javaslat
+strong_nem_illesztheto	heber	DAN 4:12!19		6212a	5	betu_alap	noun | עֲשַׂ֥ב | the.grass	javaslat
+strong_nem_illesztheto	heber	EZK 23:3!9		6213a	3	betu_alap	verb | עִשּׂ֔וּ | people.squeezed	javaslat
+strong_nem_illesztheto	heber	JER 5:28!2		6245a	1	betu_alap	verb | עָשְׁת֗וּ | they.have.become.smooth	javaslat
+strong_nem_illesztheto	heber	2KI 8:26!13		6271a	10	betu_alap	noun | עֲתַלְיָ֔הוּ | [was].Athaliah	javaslat
+strong_nem_illesztheto	heber	EZK 8:11!16		6282a	1	betu_alap	noun | עֲתַ֥ר | the.fragrance	javaslat
+strong_nem_illesztheto	heber	DEU 24:20!5		6286a	1	betu_alap	verb | תְפָאֵ֖ר | you.will.go.over.the.branches	javaslat
+strong_nem_illesztheto	heber	ISA 10:33!6		6288a	1	betu_alap	noun | פֻּארָ֖ה | bough[s]	javaslat
+strong_nem_illesztheto	heber	1CH 27:20!11		6305a	1	betu_alap	noun | פְּדָיָֽהוּ | of.Pedaiah	javaslat
+strong_nem_illesztheto	heber	EXO 21:30!6		6306a	2	betu_alap	noun | פִּדְיֹ֣ן | the.ransom	javaslat
+strong_nem_illesztheto	heber	1SA 13:21!3		6310a	1	betu_alap	noun | פִ֗ים | two.thirds.of.a.shekel	javaslat
+strong_nem_illesztheto	heber	PSA 10:5!11		6315a	10	betu_alap	verb | יָפִ֥יחַ | he.breathes.out	javaslat
+strong_nem_illesztheto	heber	ISA 66:19!10		6322a	1	betu_alap	noun | פּ֥וּל | Pul	javaslat
+strong_nem_illesztheto	heber	JOB 16:12!6		6327a	3	betu_alap	verb | יְפַצְפְּצֵ֑ | he	javaslat
+strong_nem_illesztheto	heber	EXO 39:3!3		6341a	2	betu_alap	noun | פַּחֵ֣י | the.thin.plates	javaslat
+strong_nem_illesztheto	heber	NUM 8:16!10		6363a	1	betu_alap	noun | פִּטְרַ֨ת | [the].firstborn	javaslat
+strong_nem_illesztheto	heber	EZK 11:1!26		6410a	2	betu_alap	noun | פְּלַטְיָ֥הוּ | Pelatiah	javaslat
+strong_nem_illesztheto	heber	NEH 8:7!13		6411a	2	betu_alap	noun | פְּלָאיָה֙ | Pelaiah	javaslat
+strong_nem_illesztheto	heber	NUM 21:29!9		6412a	5	betu_alap	noun | פְּלֵיטִם֙ | fugitives	javaslat
+strong_nem_illesztheto	heber	NEH 3:9!9		6418a	8	betu_alap	noun | פֶּ֥לֶךְ | of.the.district	javaslat
+strong_nem_illesztheto	heber	PSA 58:3!8		6424a	4	betu_alap	verb | תְּפַלֵּֽסֽוּ | you	javaslat
+strong_nem_illesztheto	heber	GEN 32:32!7		6439a	6	betu_alap	noun | פְּנוּאֵ֑ל | Penuel	javaslat
+strong_nem_illesztheto	heber	GEN 32:31!5		6439c	1	betu_alap	noun | פְּנִיאֵ֑ל | Peniel	javaslat
+strong_nem_illesztheto	heber	2SA 4:4!23		6452a	3	betu_alap	verb | יִּפָּסֵ֖חַ | he.became.lame	javaslat
+strong_nem_illesztheto	heber	1CH 1:50!9		6464a	1	betu_alap	noun | פָּ֑עִי | [was].Pai	javaslat
+strong_nem_illesztheto	heber	MIC 3:3!10		6476a	1	betu_alap	verb | פִּצֵּ֑חוּ | they.have.broken.in.pieces	javaslat
+strong_nem_illesztheto	heber	1CH 24:15!4		6483a	1	betu_alap	noun | פִּצֵּ֖ץ | Happizzez	javaslat
+strong_nem_illesztheto	heber	EZK 13:20!15		6524a	2	betu_alap	verb | פֹ֣רְח֔וֹת | birds	javaslat
+strong_nem_illesztheto	heber	DAN 5:25!8		6537a	2	betu_alap	noun | פַרְסִֽין | pharsin	javaslat
+strong_nem_illesztheto	heber	JDG 5:2!1		6544a	1	betu_alap	verb | פְרֹ֤עַ | acted.as.leaders	javaslat
+strong_nem_illesztheto	heber	JER 44:30!8		6548a	1	betu_alap	noun | חָפְרַ֤ע | Hophra	javaslat
+strong_nem_illesztheto	heber	JOB 16:12!3		6565a	4	betu_alap	verb | יְפַרְפְּרֵ֗ | he	javaslat
+strong_nem_illesztheto	heber	PRO 23:32!5		6567a	1	betu_alap	verb | יַפְרִֽשׁ | it.will.sting	javaslat
+strong_nem_illesztheto	heber	GEN 9:27!1		6601a	1	betu_alap	verb | יַ֤פְתְּ | may.he.make.spacious	javaslat
+strong_nem_illesztheto	heber	EXO 28:9!6		6605a	9	betu_alap	verb | פִתַּחְתָּ֣ | you.will.engrave	javaslat
+strong_nem_illesztheto	heber	PRO 1:22!5		6612a	3	betu_alap	noun | פֶ֥תִי | naiveté	javaslat
+strong_nem_illesztheto	heber	LEV 11:29!10		6632a	1	betu_alap	noun | צָּ֥ב | lizard	javaslat
+strong_nem_illesztheto	heber	DEU 12:15!19		6643a	12	betu_alap	noun | צְּבִ֖י | gazelle	javaslat
+strong_nem_illesztheto	heber	ZEP 3:6!9		6658a	1	betu_alap	verb | נִצְדּ֧וּ | they.have.been.laid.waste	javaslat
+strong_nem_illesztheto	heber	1KI 22:24!2		6667a	56	betu_alap	noun | צִדְקִיָּ֣הוּ | Zedekiah	javaslat
+strong_nem_illesztheto	heber	PSA 104:15!5		6670a	1	betu_alap	verb | הַצְהִ֣יל | make.shine	javaslat
+strong_nem_illesztheto	heber	GEN 43:16!21		6672a	23	betu_alap	noun | צָּהֳרָֽיִם | noon(s)	javaslat
+strong_nem_illesztheto	heber	SNG 4:9!10		6677a	1	betu_alap	noun | צַּוְּרֹנָֽיִ | necklaces	javaslat
+strong_nem_illesztheto	heber	1CH 6:11!5		6689b	1	betu_alap	noun | צוֹפַ֥י | Zophai	javaslat
+strong_nem_illesztheto	heber	SNG 2:9!15		6692a	1	betu_alap	verb | מֵצִ֖יץ | [he.is].peering	javaslat
+strong_nem_illesztheto	heber	DAN 9:25!21		6695a	1	betu_alap	noun | צ֖וֹק | the.distress	javaslat
+strong_nem_illesztheto	heber	EXO 23:22!13		6696a	4	betu_alap	verb | צַרְתִּ֖י | I.will.treat.as.a.foe	javaslat
+strong_nem_illesztheto	heber	EXO 32:4!3		6696b	2	betu_alap	verb | יָּ֤צַר | he.fashioned	javaslat
+strong_nem_illesztheto	heber	JOS 5:2!10		6697a	3	betu_alap	noun | צֻרִ֑ים | of.flint(s)	javaslat
+strong_nem_illesztheto	heber	PSA 49:15!11		6697b	1	betu_alap	noun | צוּרָ | form	javaslat
+strong_nem_illesztheto	heber	JOS 9:5!10		6718a	5	betu_alap	noun | צֵידָ֔ | their.sustenance	javaslat
+strong_nem_illesztheto	heber	JOS 9:4!6		6718b	2	betu_alap	verb | יִּצְטַיָּ֑רוּ | they.acted.as.ambassadors	javaslat
+strong_nem_illesztheto	heber	PSA 72:9!3		6728a	6	betu_alap	noun | צִיִּ֑ים | desert-dwellers	javaslat
+strong_nem_illesztheto	heber	JER 48:9!2		6731a	1	betu_alap	noun | צִ֣יץ | salt	javaslat
+strong_nem_illesztheto	heber	PRO 13:17!5		6735a	6	betu_alap	noun | צִ֖יר | an.envoy	javaslat
+strong_nem_illesztheto	heber	1SA 4:19!21		6735b	5	betu_alap	noun | צִרֶֽי | pangs	javaslat
+strong_nem_illesztheto	heber	JDG 14:6!1		6743a	10	betu_alap	verb | תִּצְלַ֨ח | it.rushed	javaslat
+strong_nem_illesztheto	heber	PSA 39:7!2		6754a	2	betu_alap	noun | צֶ֤לֶם | image	javaslat
+strong_nem_illesztheto	heber	JDG 9:48!4		6756a	2	betu_alap	noun | צַלְמ֗וֹן | of.Zalmon	javaslat
+strong_nem_illesztheto	heber	ISA 18:1!3		6767a	1	betu_alap	noun | צִלְצַ֣ל | of.whirring	javaslat
+strong_nem_illesztheto	heber	JOB 40:31!4		6767b	1	betu_alap	noun | צִלְצַ֖ל | a.spear	javaslat
+strong_nem_illesztheto	heber	2SA 6:5!15		6767c	3	betu_alap	noun | צֶלְצֶלִֽים | cymbals	javaslat
+strong_nem_illesztheto	heber	NUM 19:15!6		6781a	1	betu_alap	noun | צָמִ֥יד | a.cover	javaslat
+strong_nem_illesztheto	heber	1SA 17:7!13		6793a	20	betu_alap	noun | צִּנָּ֖ה | the.body.shield	javaslat
+strong_nem_illesztheto	heber	PRO 11:2!6		6800a	1	betu_alap	adjective | צְנוּעִ֥ים | modest.[people]	javaslat
+strong_nem_illesztheto	heber	ISA 3:20!2		6807a	1	betu_alap	noun | צְּעָדוֹת֙ | chains	javaslat
+strong_nem_illesztheto	heber	EZK 4:15!8		6832a	1	betu_alap	noun | צְפִיעֵ֣י | the.dung(s)	javaslat
+strong_nem_illesztheto	heber	2KI 25:18!9		6846a	2	betu_alap	noun | צְפַנְיָ֖הוּ | Zephaniah	javaslat
+strong_nem_illesztheto	heber	PRO 23:32!4		6848a	4	betu_alap	noun | צִפְעֹנִ֥י | a.viper	javaslat
+strong_nem_illesztheto	heber	GEN 14:20!6		6862a	70	betu_alap	noun | צָרֶ֖י | foes	javaslat
+strong_nem_illesztheto	heber	ISA 5:28!9		6862b	1	betu_alap	noun | צַּ֣ר | flint	javaslat
+strong_nem_illesztheto	heber	PRO 16:27!9		6866a	1	betu_alap	adjective | צָרָֽבֶת | scorching	javaslat
+strong_nem_illesztheto	heber	1SA 1:6!2		6869a	1	betu_alap	noun | צָֽרָתָ | rival	javaslat
+strong_nem_illesztheto	heber	2SA 17:13!22		6872a	2	betu_alap	noun | צְרֽוֹר | a.pebble	javaslat
+strong_nem_illesztheto	heber	1SA 9:1!11		6872b	1	betu_alap	noun | צְר֧וֹר | of.Zeror	javaslat
+strong_nem_illesztheto	heber	1CH 2:53!10		6882a	2	betu_alap	noun | צָּ֣רְעָתִ֔י | Zorathite[s]	javaslat
+strong_nem_illesztheto	heber	EXO 23:22!15		6887a	25	betu_alap	verb | צֹרְרֶֽי | foes	javaslat
+strong_nem_illesztheto	heber	LEV 18:18!6		6887b	1	betu_alap	verb | צְרֹ֗ר | make.[her].a.rival.wife	javaslat
+strong_nem_illesztheto	heber	LEV 1:16!9		6924a	2	betu_alap	adverb | קֵ֔דְמָ | eastward	javaslat
+strong_nem_illesztheto	heber	GEN 13:14!20		6924a	25	betu_alap	noun | קֵ֥דְמָ | eastward	javaslat
+strong_nem_illesztheto	heber	ISA 18:2!23		6957a	4	betu_alap	noun | קַו | of.strength	javaslat
+strong_nem_illesztheto	heber	ISA 28:10!6		6957b	8	betu_alap	noun | קַ֥ו | line	javaslat
+strong_nem_illesztheto	heber	GEN 1:9!3		6960a	2	betu_alap	verb | יִקָּו֨וּ | let.them.be.gathered	javaslat
+strong_nem_illesztheto	heber	1KI 10:28!6		6961a	4	betu_alap	noun | קְוֵ֕ה | Que	javaslat
+strong_nem_illesztheto	heber	JER 3:9!2		6963a	1	betu_alap	noun | קֹּ֣ל | the.lightness	javaslat
+strong_nem_illesztheto	heber	ISA 18:6!7		6972a	1	betu_alap	verb | קָ֤ץ | it.will.pass.the.summer	javaslat
+strong_nem_illesztheto	heber	1SA 26:12!17		6974a	22	betu_alap	verb | מֵקִ֗יץ | [one.who].awoke	javaslat
+strong_nem_illesztheto	heber	1CH 24:10!1		6976a	5	betu_alap	noun | הַקּוֹץ֙ | Hakkoz	javaslat
+strong_nem_illesztheto	heber	NUM 24:17!16		6979a	2	betu_alap	verb | קַרְקַ֖ר | it.will.destroy	javaslat
+strong_nem_illesztheto	heber	JER 6:7!1		6979b	2	betu_alap	verb | הָקִ֥יר | keeps.cool	javaslat
+strong_nem_illesztheto	heber	GEN 1:16!14		6996a	54	betu_alap	adjective | קָּטֹן֙ | small	javaslat
+strong_nem_illesztheto	heber	EZR 8:12!5		6997a	1	betu_alap	noun | קָּטָ֑ן | Hakkatan	javaslat
+strong_nem_illesztheto	heber	ISA 19:14!13		7006a	3	betu_alap	noun | קִיאֽ | vomit	javaslat
+strong_nem_illesztheto	heber	NUM 24:22!5		7014a	2	betu_alap	noun | קָ֑יִן | [the].Kenite[s]	javaslat
+strong_nem_illesztheto	heber	JOS 15:57!1		7014b	1	betu_alap	noun | קַּ֖יִן | Kain	javaslat
+strong_nem_illesztheto	heber	1KI 6:29!6		7049a	3	betu_alap	verb | קָלַ֗ע | he.carved	javaslat
+strong_nem_illesztheto	heber	EXO 27:9!8		7050a	16	betu_alap	noun | קְלָעִ֨ים | curtains	javaslat
+strong_nem_illesztheto	heber	GEN 4:1!11		7069a	6	betu_alap	verb | קָנִ֥יתִי | I.have.acquired	javaslat
+strong_nem_illesztheto	heber	ZEC 14:6!9		7087a	1	betu_alap	noun | קִפָּאֽוֹן | frost	javaslat
+strong_nem_illesztheto	heber	ISA 2:7!6		7097a	5	betu_alap	noun | קֵ֖צֶה | an.end	javaslat
+strong_nem_illesztheto	heber	JOB 14:9!5		7105a	5	betu_alap	noun | קָצִ֣יר | branch[es]	javaslat
+strong_nem_illesztheto	heber	EXO 26:23!4		7106a	3	betu_alap	verb | מְקֻצְעֹ֖ת | the.corners	javaslat
+strong_nem_illesztheto	heber	HOS 10:7!4		7110a	1	betu_alap	noun | קֶ֖צֶף | a.twig	javaslat
+strong_nem_illesztheto	heber	NUM 11:23!7		7114a	14	betu_alap	verb | תִּקְצָ֑ר | is.it.short	javaslat
+strong_nem_illesztheto	heber	EZK 42:5!3		7114b	1	betu_alap	verb | קְצֻר֑וֹת | [were].short	javaslat
+strong_nem_illesztheto	heber	NEH 10:35!4		7133a	2	betu_alap	noun | קֻרְבַּ֣ן | the.offering	javaslat
+strong_nem_illesztheto	heber	2CH 34:11!9		7136a	5	betu_alap	verb | קָרוֹת֙ | make.beams.for	javaslat
+strong_nem_illesztheto	heber	JOS 18:28!7		7151a	1	betu_alap	noun | קִרְיַ֔ת | Kiriath	javaslat
+strong_nem_illesztheto	heber	AMO 6:13!9		7161a	1	betu_alap	noun | קַרְנָֽיִם | Karnaim	javaslat
+strong_nem_illesztheto	heber	2CH 6:40!8		7183a	3	betu_alap	adjective | קַשֻּׁב֑וֹת | attentive	javaslat
+strong_nem_illesztheto	heber	PSA 60:6!6		7189a	1	betu_alap	noun | קֹ֣שֶׁט | [the].bow	javaslat
+strong_nem_illesztheto	heber	ISA 28:7!18		7203a	1	betu_alap	noun | רֹאֶ֔ה | vision	javaslat
+strong_nem_illesztheto	heber	2KI 25:8!16		7227a	29	betu_alap	noun | רַב | [the].chief	javaslat
+strong_nem_illesztheto	heber	GEN 21:20!9		7235a	1	betu_alap	verb | רֹבֶ֥ה | a.shooter	javaslat
+strong_nem_illesztheto	heber	GEN 15:1!18		7235b	50	betu_alap	verb | הַרְבֵּ֥ה | [will.be].great	javaslat
+strong_nem_illesztheto	heber	NUM 23:10!7		7255a	1	betu_alap	noun | רֹ֣בַע | the.fourth.part	javaslat
+strong_nem_illesztheto	heber	PSA 64:3!4		7285a	1	betu_alap	noun | רִגְשַׁ֗ת | unrest	javaslat
+strong_nem_illesztheto	heber	JDG 14:9!1		7287a	2	betu_alap	verb | יִּרְדֵּ֣ | he	javaslat
+strong_nem_illesztheto	heber	ISA 44:8!4		7297a	1	betu_alap	verb | תִּרְה֔וּ | fear	javaslat
+strong_nem_illesztheto	heber	SNG 7:6!9		7298a	1	betu_alap	noun | רְהָטִֽים | tresses	javaslat
+strong_nem_illesztheto	heber	1CH 7:34!5		7303a	1	betu_alap	noun | רָהְגָּ֖ה | Rohgah	javaslat
+strong_nem_illesztheto	heber	GEN 8:21!1		7306a	11	betu_alap	verb | יָּ֣רַח | he.smelled	javaslat
+strong_nem_illesztheto	heber	JOB 26:11!3		7322a	1	betu_alap	verb | יְרוֹפָ֑פוּ | they.shake	javaslat
+strong_nem_illesztheto	heber	GEN 14:14!6		7324a	19	betu_alap	verb | יָּ֨רֶק | he.drew.out	javaslat
+strong_nem_illesztheto	heber	LEV 15:3!5		7325a	1	betu_alap	verb | רָ֣ר | it.has.secreted	javaslat
+strong_nem_illesztheto	heber	NUM 13:21!8		7340a	7	betu_alap	noun | רְחֹ֖ב | Rehob	javaslat
+strong_nem_illesztheto	heber	1CH 24:21!1		7345a	3	betu_alap	noun | רְחַבְיָ֑הוּ | Rehabiah	javaslat
+strong_nem_illesztheto	heber	EZR 4:8!1		7348a	4	betu_alap	noun | רְח֣וּם | Rehum	javaslat
+strong_nem_illesztheto	heber	1CH 1:6!4		7384a	1	betu_alap	noun | דִיפַ֖ת | Diphath	javaslat
+strong_nem_illesztheto	heber	JER 35:2!4		7397a	4	betu_alap	noun | רֵכָבִים֒ | the.Rechabites	javaslat
+strong_nem_illesztheto	heber	GEN 29:25!18		7411a	8	betu_alap	verb | רִמִּיתָֽ | have	javaslat
+strong_nem_illesztheto	heber	EZR 10:29!9		7414a	1	betu_alap	noun | רָמֽוֹת | Ramoth	javaslat
+strong_nem_illesztheto	heber	JOS 15:32!4		7417a	9	betu_alap	noun | רִמּ֑וֹן | Rimmon	javaslat
+strong_nem_illesztheto	heber	2KI 5:18!9		7417b	3	betu_alap	noun | רִמּוֹן֩ | of.Rimmon	javaslat
+strong_nem_illesztheto	heber	1CH 6:62!7		7417c	1	betu_alap	noun | רִמּוֹנ֖וֹ | Rimmono	javaslat
+strong_nem_illesztheto	heber	JOB 13:7!6		7423a	9	betu_alap	noun | רְמִיָּֽה | deceit	javaslat
+strong_nem_illesztheto	heber	EXO 16:20!10		7426a	1	betu_alap	verb | יָּ֥רֻם | it.became.rotten	javaslat
+strong_nem_illesztheto	heber	PSA 78:65!5		7442a	1	betu_alap	verb | מִתְרוֹנֵ֥ן | overcome	javaslat
+strong_nem_illesztheto	heber	AMO 6:11!8		7447a	1	betu_alap	noun | רְסִיסִ֑ים | fragments	javaslat
+strong_nem_illesztheto	heber	GEN 37:33!6		7451b	4	betu_alap	adjective | רָעָ֖ה | wild	javaslat
+strong_nem_illesztheto	heber	GEN 6:5!5		7451b	305	betu_alap	noun | רָעַ֥ת | the.evil	javaslat
+strong_nem_illesztheto	heber	JOB 4:14!3		7461a	4	betu_alap	noun | רְעָדָ֑ה | trembling	javaslat
+strong_nem_illesztheto	heber	JDG 14:20!6		7462a	5	betu_alap	verb | רֵעָ֖ה | he.was.a.special.friend	javaslat
+strong_nem_illesztheto	heber	EZR 5:17!27		7470a	2	betu_alap	noun | רְע֥וּת | the.will	javaslat
+strong_nem_illesztheto	heber	1SA 1:6!6		7481a	2	betu_alap	verb | הַרְּעִמָ֑ | to	javaslat
+strong_nem_illesztheto	heber	JOB 15:32!6		7488a	1	betu_alap	verb | רַעֲנָֽנָה | it.will.grow.luxuriant	javaslat
+strong_nem_illesztheto	heber	JOB 34:24!1		7489a	7	betu_alap	verb | יָרֹ֣עַ | he.breaks	javaslat
+strong_nem_illesztheto	heber	JOS 15:8!26		7497a	8	betu_alap	noun | רְפָאִ֖ים | of.Rephaim	javaslat
+strong_nem_illesztheto	heber	1CH 8:37!5		7498a	1	betu_alap	noun | רָפָ֥ה | Raphah	javaslat
+strong_nem_illesztheto	heber	2SA 21:16!6		7498b	4	betu_alap	noun | רָפָ֗ה | the.Raphah	javaslat
+strong_nem_illesztheto	heber	LEV 26:34!2		7521a	8	betu_alap	verb | תִּרְצֶ֨ה | it.will.accept	javaslat
+strong_nem_illesztheto	heber	ISA 6:6!7		7531a	1	betu_alap	noun | רִצְפָּ֑ה | a.live.coal	javaslat
+strong_nem_illesztheto	heber	JOS 18:27!1		7552a	1	betu_alap	noun | רֶ֥קֶם | Rekem	javaslat
+strong_nem_illesztheto	heber	GEN 6:3!8		7578a	139	funkcio_kod	particle | שַׁ | that	javaslat
+strong_nem_illesztheto	heber	ISA 17:12!13		7582a	2	betu_alap	verb | יִשָּׁאֽוּ | they	javaslat
+strong_nem_illesztheto	heber	ISA 7:11!8		7585a	1	betu_alap	verb | שְׁאָ֔לָה | a.request	javaslat
+strong_nem_illesztheto	heber	PSA 40:3!3		7588a	1	betu_alap	noun | שָׁאוֹן֮ | of.roaring	javaslat
+strong_nem_illesztheto	heber	EZK 16:57!13		7590a	3	betu_alap	verb | שָּׁאט֥וֹת | despise	javaslat
+strong_nem_illesztheto	heber	1SA 1:17!10		7596a	1	betu_alap	noun | שֵׁ֣לָתֵ֔ | petition	javaslat
+strong_nem_illesztheto	heber	PSA 56:2!4		7602a	6	betu_alap	verb | שְׁאָפַ֣ | he	javaslat
+strong_nem_illesztheto	heber	LEV 13:2!6		7613a	7	betu_alap	noun | שְׂאֵ֤ת | a.swelling	javaslat
+strong_nem_illesztheto	heber	1CH 24:20!6		7619a	3	betu_alap	noun | שֽׁוּבָאֵ֔ל | Shubael	javaslat
+strong_nem_illesztheto	heber	NUM 21:29!11		7622a	5	betu_alap	noun | שְּׁבִ֔ית | captivity	javaslat
+strong_nem_illesztheto	heber	PSA 65:8!1		7623a	3	betu_alap	verb | מַשְׁבִּ֤יחַ | [who].calms	javaslat
+strong_nem_illesztheto	heber	ISA 52:2!10		7628a	1	betu_alap	adjective | שְׁבִיָּ֖ה | O.captive.[one]	javaslat
+strong_nem_illesztheto	heber	1CH 8:10!4		7634a	1	betu_alap	noun | שָֽׂכְיָ֖ה | Sakia	javaslat
+strong_nem_illesztheto	heber	PSA 69:3!9		7641a	3	betu_alap	noun | שִׁבֹּ֥לֶת | a.flood	javaslat
+strong_nem_illesztheto	heber	NUM 32:3!7		7643a	1	betu_alap	noun | שְׂבָ֥ם | Sebam	javaslat
+strong_nem_illesztheto	heber	1CH 15:24!1		7645a	1	betu_alap	noun | שְׁבַנְיָ֡הוּ | Shebaniah	javaslat
+strong_nem_illesztheto	heber	JOS 19:2!6		7652a	1	betu_alap	adjective | שֶׁ֖בַע | Sheba	javaslat
+strong_nem_illesztheto	heber	NEH 2:13!13		7663a	2	betu_alap	verb | שֹׂבֵ֜ר | examining	javaslat
+strong_nem_illesztheto	heber	LEV 22:22!3		7665a	1	betu_alap	noun | שָׁב֜וּר | a.fracture	javaslat
+strong_nem_illesztheto	heber	DEU 32:13!8		7704a	13	betu_alap	noun | שָׂדָ֑י | of.[the].field	javaslat
+strong_nem_illesztheto	heber	DEU 28:22!8		7711a	5	betu_alap	noun | שִּׁדָּפ֖וֹן | blight	javaslat
+strong_nem_illesztheto	heber	JOB 30:3!7		7722a	12	betu_alap	noun | שׁוֹאָ֥ה | devastation	javaslat
+strong_nem_illesztheto	heber	PSA 55:16!2		7722b	2	betu_alap	verb | יַשִּׁ֤י | may.it.deceive	javaslat
+strong_nem_illesztheto	heber	2SA 22:34!1		7737a	7	betu_alap	verb | מְשַׁוֶּ֥ה | [he.is].making	javaslat
+strong_nem_illesztheto	heber	PSA 101:3!8		7750a	1	betu_alap	noun | סֵטִ֥ים | of.swerving.deeds	javaslat
+strong_nem_illesztheto	heber	JDG 9:48!16		7754a	1	betu_alap	noun | שׂוֹכַ֣ת | a.branch	javaslat
+strong_nem_illesztheto	heber	1CH 4:18!11		7755a	3	betu_alap	noun | שׂוֹכ֔וֹ | of.Socoh	javaslat
+strong_nem_illesztheto	heber	2SA 13:32!26		7760b	1	betu_alap	verb | שׂוּמָ֔ה | determined	javaslat
+strong_nem_illesztheto	heber	JOB 36:19!2		7769a	1	betu_alap	noun | שׁ֭וּעֲ | opulence	javaslat
+strong_nem_illesztheto	heber	ISA 22:5!13		7771a	1	betu_alap	noun | שׁ֥וֹעַ | crying.out	javaslat
+strong_nem_illesztheto	heber	1CH 7:36!5		7777a	1	betu_alap	noun | שׁוּעָ֖ל | Shual	javaslat
+strong_nem_illesztheto	heber	JOB 24:11!2		7791a	1	betu_alap	noun | שׁוּרֹתָ֥ | rows	javaslat
+strong_nem_illesztheto	heber	GEN 18:2!14		7812a	170	betu_alap	verb | יִּשְׁתַּ֖חוּ | he.bowed.down	javaslat
+strong_nem_illesztheto	heber	PSA 42:6!2		7817a	5	betu_alap	verb | תִּשְׁתּ֬וֹחֲחִ֨י | are.you.bowed.down	javaslat
+strong_nem_illesztheto	heber	HOS 5:2!1		7821a	1	betu_alap	noun | שַׁחֲטָ֥ה | slaughtering	javaslat
+strong_nem_illesztheto	heber	JOS 19:22!5		7831a	1	betu_alap	noun | שַׁחֲצִ֨ימָ | to	javaslat
+strong_nem_illesztheto	heber	ISA 47:11!6		7836a	1	betu_alap	verb | שַׁחְרָ֔ | to	javaslat
+strong_nem_illesztheto	heber	1CH 27:29!6		7861a	1	betu_alap	noun | שִׁרְטַ֖י | Shirtai	javaslat
+strong_nem_illesztheto	heber	EXO 15:1!7		7892a	13	betu_alap	noun | שִּׁירָ֤ה | song	javaslat
+strong_nem_illesztheto	heber	ISA 49:21!9		7909a	1	betu_alap	adjective | שְׁכוּלָ֖ה | [was].bereaved	javaslat
+strong_nem_illesztheto	heber	GEN 48:14!16		7919a	1	betu_alap	verb | שִׂכֵּל֙ | he.laid.cross-wise	javaslat
+strong_nem_illesztheto	heber	GEN 12:6!6		7927a	45	betu_alap	noun | שְׁכֶ֔ם | of.Shechem	javaslat
+strong_nem_illesztheto	heber	1CH 24:11!3		7935a	2	betu_alap	noun | שְׁכַנְיָ֖הוּ | Shecaniah	javaslat
+strong_nem_illesztheto	heber	EZR 4:5!1		7936a	1	betu_alap	verb | סֹכְרִ֧ים | [they.were].hiring	javaslat
+strong_nem_illesztheto	heber	ISA 51:21!6		7937a	1	betu_alap	adjective | שְׁכֻרַ֖ת | O.drunken.[one]	javaslat
+strong_nem_illesztheto	heber	SNG 8:6!18		7957a	2	betu_alap	noun | שַׁלְהֶ֥בֶתְ | a	javaslat
+strong_nem_illesztheto	heber	GEN 38:24!2		7969a	1	funkcio_kod	adjective | שְׁלֹ֣שׁ | three	javaslat
+strong_nem_illesztheto	heber	GEN 38:24!2		7969a	1	funkcio_kod	preposition | מִ |	javaslat
+strong_nem_illesztheto	heber	JOB 33:18!7		7973a	2	betu_alap	noun | שָּֽׁלַח | missile	javaslat
+strong_nem_illesztheto	heber	SNG 4:13!1		7973b	1	betu_alap	noun | שְׁלָחַ֨יִ | shoots	javaslat
+strong_nem_illesztheto	heber	ISA 8:6!8		7975a	1	betu_alap	noun | שִּׁלֹ֔חַ | Shiloah	javaslat
+strong_nem_illesztheto	heber	PSA 80:6!6		7991a	2	betu_alap	noun | שָׁלִֽישׁ | a.third.of.a.measure	javaslat
+strong_nem_illesztheto	heber	1SA 18:6!21		7991b	1	betu_alap	noun | שָׁלִשִֽׁים | three-stringed.instruments	javaslat
+strong_nem_illesztheto	heber	RUT 2:16!2		7997a	2	betu_alap	verb | שֹׁל | indeed.(pull.out)	javaslat
+strong_nem_illesztheto	heber	1CH 26:14!4		8018a	5	betu_alap	noun | שֶֽׁלֶמְיָ֑הוּ | Shelemiah	javaslat
+strong_nem_illesztheto	heber	LEV 24:11!14		8019a	2	betu_alap	noun | שְׁלֹמִ֥ית | [was].Shelomith	javaslat
+strong_nem_illesztheto	heber	JER 17:1!7		8068a	3	betu_alap	noun | שָׁמִ֑יר | of.diamond	javaslat
+strong_nem_illesztheto	heber	JOS 15:48!2		8069a	3	betu_alap	noun | שָׁמִ֥יר | Shamir	javaslat
+strong_nem_illesztheto	heber	EZK 35:7!5		8077a	1	betu_alap	noun | שִֽׁמְמָ֖ה | a.desolation	javaslat
+strong_nem_illesztheto	heber	PSA 150:5!3		8088a	1	betu_alap	noun | שָׁ֑מַע | of.sound	javaslat
+strong_nem_illesztheto	heber	2CH 11:2!5		8098a	7	betu_alap	noun | שְׁמַֽעְיָ֥הוּ | Shemaiah	javaslat
+strong_nem_illesztheto	heber	1CH 8:12!5		8106a	1	betu_alap	noun | שָׁ֑מֶד | Shemed	javaslat
+strong_nem_illesztheto	heber	JOS 11:1!13		8110a	2	betu_alap	noun | שִׁמְר֖וֹן | of.Shimron	javaslat
+strong_nem_illesztheto	heber	1CH 12:6!4		8114a	1	betu_alap	noun | שְׁמַרְיָ֔הוּ | Shemariah	javaslat
+strong_nem_illesztheto	heber	GEN 41:32!2		8138a	9	betu_alap	verb | הִשָּׁנ֧וֹת | the.being.repeated	javaslat
+strong_nem_illesztheto	heber	PSA 127:2!13		8142a	1	betu_alap	noun | שֵׁנָֽא | sleep	javaslat
+strong_nem_illesztheto	heber	DEU 6:7!1		8150a	1	betu_alap	verb | שִׁנַּנְתָּ֣ | you	javaslat
+strong_nem_illesztheto	heber	GEN 37:31!6		8163a	54	betu_alap	noun | שְׂעִ֣יר | a.male.goat	javaslat
+strong_nem_illesztheto	heber	LEV 17:7!6		8163b	2	betu_alap	noun | שְּׂעִירִ֕ם | idols	javaslat
+strong_nem_illesztheto	heber	JOS 15:10!7		8165a	1	betu_alap	noun | שֵׂעִ֔יר | of.Seir	javaslat
+strong_nem_illesztheto	heber	GEN 36:20!3		8165b	3	betu_alap	noun | שֵׂעִיר֙ | of.Seir	javaslat
+strong_nem_illesztheto	heber	JOS 19:42!1		8169a	1	betu_alap	noun | שַֽׁעֲלַבִּ֥ין | Shaalabbin	javaslat
+strong_nem_illesztheto	heber	PSA 94:19!5		8173a	6	betu_alap	verb | יְֽשַׁעַשְׁע֥וּ | they.delighted	javaslat
+strong_nem_illesztheto	heber	JOB 27:21!4		8175a	4	betu_alap	verb | ישָׂעֲרֵ֗ | it	javaslat
+strong_nem_illesztheto	heber	DEU 32:17!12		8175b	1	betu_alap	verb | שְׂעָר֖וּ | they	javaslat
+strong_nem_illesztheto	heber	ISA 28:2!7		8178a	1	betu_alap	noun | שַׂ֣עַר | a.tempest	javaslat
+strong_nem_illesztheto	heber	HOS 6:10!5		8186a	1	betu_alap	adjective | שַׁעֲרֽוּרִיָּ֑ה | a.horrible.[thing]	javaslat
+strong_nem_illesztheto	heber	JER 18:13!11		8186a	1	betu_alap	noun | שַֽׁעֲרֻרִת֙ | a.horrible.[thing]	javaslat
+strong_nem_illesztheto	heber	1CH 1:40!6		8195a	1	betu_alap	noun | שְׁפִ֣י | Shephi	javaslat
+strong_nem_illesztheto	heber	1CH 8:5!2		8197a	1	betu_alap	noun | שְׁפוּפָ֖ן | Shephuphan	javaslat
+strong_nem_illesztheto	heber	1CH 12:6!5		8203a	3	betu_alap	noun | שְׁפַטְיָ֖הוּ | Shephatiah	javaslat
+strong_nem_illesztheto	heber	2KI 22:3!10		8227a	30	betu_alap	noun | שָׁפָ֨ן | Shaphan	javaslat
+strong_nem_illesztheto	heber	JOB 20:22!2		8230b	1	betu_alap	noun | שִׂ֭פְק | sufficiency	javaslat
+strong_nem_illesztheto	heber	EZK 40:43!1		8240a	1	betu_alap	noun | שְׁפַתַּ֗יִם | hooks	javaslat
+strong_nem_illesztheto	heber	PSA 107:9!4		8264a	2	betu_alap	verb | שֹׁקֵקָ֑ה | longing	javaslat
+strong_nem_illesztheto	heber	LEV 21:5!13		8296a	1	betu_alap	noun | שָׂרָֽטֶת | cut[s]	javaslat
+strong_nem_illesztheto	heber	1SA 17:5!5		8302a	8	betu_alap	noun | שִׁרְי֥וֹן | body.armor	javaslat
+strong_nem_illesztheto	heber	JER 36:26!8		8304a	1	betu_alap	noun | שְׂרָיָ֣הוּ | Seraiah	javaslat
+strong_nem_illesztheto	heber	GEN 49:11!5		8321a	1	betu_alap	noun | שֹּׂרֵקָ֖ה | vine	javaslat
+strong_nem_illesztheto	heber	EZR 7:26!21		8332a	1	betu_alap	noun | שְׁרֹשִׁ֔י | banishment	javaslat
+strong_nem_illesztheto	heber	EST 1:6!12		8336a	3	betu_alap	adjective | שֵׁ֑שׁ | of.marble	javaslat
+strong_nem_illesztheto	heber	1SA 25:22!15		8366a	6	betu_alap	verb | מַשְׁתִּ֥ין | [one.who].urinates	javaslat
+strong_nem_illesztheto	heber	JDG 14:4!9		8385a	1	betu_alap	noun | תֹאֲנָ֥ה | an.occasion	javaslat
+strong_nem_illesztheto	heber	ISA 44:13!5		8388a	2	betu_alap	verb | יְתָאֲרֵ֣ | he	javaslat
+strong_nem_illesztheto	heber	EZK 27:6!9		8391a	1	betu_alap	noun | אֲשֻׁרִ֔ים | of.Assyrians	javaslat
+strong_nem_illesztheto	heber	JOB 13:6!3		8433a	24	betu_alap	noun | תוֹכַחְתִּ֑ | argument	javaslat
+strong_nem_illesztheto	heber	ISA 1:18!14		8438b	2	betu_alap	noun | תּוֹלָ֖ע | crimson	javaslat
+strong_nem_illesztheto	heber	NUM 33:26!4		8480a	2	betu_alap	noun | תָֽחַת | Tahath	javaslat
+strong_nem_illesztheto	heber	EZK 17:22!20		8524a	1	betu_alap	adjective | תָלֽוּל | lofty	javaslat
+strong_nem_illesztheto	heber	EZK 47:19!4		8559a	2	betu_alap	noun | תָּמָ֗ר | be].from.Tamar	javaslat
+strong_nem_illesztheto	heber	JER 10:5!1		8560a	1	betu_alap	noun | תֹ֨מֶר | a.scarecrow	javaslat
+strong_nem_illesztheto	heber	LEV 11:18!2		8580a	2	betu_alap	noun | תִּנְשֶׁ֥מֶת | owl	javaslat
+strong_nem_illesztheto	heber	JER 30:13!6		8585a	2	betu_alap	noun | תְּעָלָ֖ה | healing	javaslat
+strong_nem_illesztheto	heber	EZK 28:13!20		8596a	1	betu_alap	noun | תֻּפֶּ֤י | your.tambourines	javaslat
+strong_nem_illesztheto	heber	1CH 2:43!4		8599a	1	betu_alap	noun | תַפֻּ֖חַ | Tappuah	javaslat
+strong_nem_illesztheto	heber	JOB 6:6!2		8602a	2	betu_alap	adjective | תָּ֭פֵל | tasteless.[food]	javaslat
+strong_nem_illesztheto	heber	JOS 2:18!6		8615a	2	betu_alap	noun | תִּקְוַ֡ת | the.cord	javaslat
+strong_nem_illesztheto	heber	2CH 34:22!12		8616a	1	betu_alap	noun | תָּקְהַ֗ת | of.Tokhath	javaslat
+strong_nem_illesztheto	heber	DAN 5:25!7		8625a	2	betu_alap	noun | תְּקֵ֥ל | teqel	javaslat
+strong_nem_illesztheto	heber	DAN 4:27!14		8632a	1	betu_alap	noun | תְקַ֥ף | the.strength	javaslat
+strong_nem_illesztheto	heber	NUM 33:27!4		8646a	2	betu_alap	noun | תָֽרַח | Tarah	javaslat
+strong_nem_illesztheto	heber	JDG 9:31!5		8649b	1	betu_alap	noun | תָרְמָ֣ה | treachery	javaslat
+strong_nem_illesztheto	heber	NUM 26:33!18		8656a	4	betu_alap	noun | תִרְצָֽה | Tirzah	javaslat
+strong_nem_illesztheto	heber	GEN 10:4!4		8659a	4	betu_alap	noun | תַרְשִׁ֑ישׁ | Tarshish	javaslat
+karoli_vers_nincs_macula	gorog_N1904		Mt 17:21		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		Mt 17:21		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_N1904		Mt 18:11		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		Mt 18:11		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_N1904		Mt 23:14		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		Mt 23:14		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_N1904		Mk 7:16		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		Mk 7:16		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_N1904		Mk 9:44		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		Mk 9:44		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_N1904		Mk 9:46		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		Mk 9:46		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_N1904		Mk 11:26		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		Mk 11:26		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_N1904		Mk 15:28		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		Mk 15:28		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_N1904		Luk 17:36		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		Luk 17:36		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_N1904		Luk 23:17		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		Luk 23:17		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		Ján 5:4		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_N1904		ApCsel 8:37		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		ApCsel 8:37		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_N1904		ApCsel 15:34		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		ApCsel 15:34		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_N1904		ApCsel 24:7		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		ApCsel 24:7		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_N1904		ApCsel 28:29		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		ApCsel 28:29		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_N1904		Róm 16:24		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		Róm 16:25		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		Róm 16:26		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat
+karoli_vers_nincs_macula	gorog_SBLGNT		Róm 16:27		0	a Karoli-vers nincs a Macula-kiadasban (azonos szamozassal)		javaslat

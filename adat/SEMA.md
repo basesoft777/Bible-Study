@@ -349,12 +349,12 @@ stb.) változatlanul érvényes, csak a tárolás helye más.
 ### 2.6 `datasetek.tsv`
 
 Kulcs: `study_tipus` + `dataset`. A terv 4.3 mátrixa, négy study-típusra kifejtve
-(`bovitett`, `tematikus`, `melyelemzes`, `lexikon_oldal`), 18 dataset × 4 = 72 sor.
+(`bovitett`, `tematikus`, `melyelemzes`, `lexikon_oldal`), 21 dataset × 4 = 84 sor.
 
 | Mező | Értékkészlet |
 |---|---|
 | `study_tipus` | `bovitett` \| `tematikus` \| `melyelemzes` \| `lexikon_oldal` |
-| `dataset` | a dataset rövid neve (18 érték) |
+| `dataset` | a dataset rövid neve (21 érték) |
 | `fajl` | a dataset útvonala; glob is lehet (`konkordancia/LXX_kivonat_*.tsv`), üres, ha `allapot=hianyzik` |
 | `kotelezoseg` | `mindig` \| `felteteles` \| `ajanlott` \| `oroklott` |
 | `feltetel` | mikor válik kötelezővé a `felteteles` sor; `—`, ha nem feltételes |
@@ -368,6 +368,9 @@ Kulcs: `study_tipus` + `dataset`. A terv 4.3 mátrixa, négy study-típusra kife
   marad a még nem importált datasetek számára.
 - `korlatos` — a `KJV_ASV_Strongs` **csak Genezis, Exodus és Példabeszédek** könyvekre áll
   rendelkezésre. Bármely más könyvre hivatkozó „ellenőrizve" állítás ezen a dataseten hamis.
+  Ugyanígy `korlatos` a `BSB_Strongs` (F16): csak a 95%-os küszöböt elérő 31 ÓSZ-könyv, ÚSZ szándékosan nincs (a görög réteg forrása a Macula, #87);
+  a Zak 12:1 és a 116 feliratos zsoltár 1. versének érdemi szövege a display-forrásból hiányzik (a text-only megvan);
+  a Zsolt-sorok MT-számozásúak (a Zsolt 13 illesztetlen, kimarad), a többi könyv BSB/angol számozású.
 
 *Licenc-következmény, rögzítve a `konkordancia/README.md` licenc-szakaszában és a
 `konkordancia/SDBH_SDGNT_README.md`-ben:* a CC BY-SA 4.0

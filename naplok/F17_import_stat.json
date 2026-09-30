@@ -1,0 +1,135 @@
+{
+ "gorog": {
+  "N1904": {
+   "allapot": {
+    "javaslat": 75,
+    "rendben": 137704
+   },
+   "karoli_versek_macula_nelkul": 15,
+   "ref_hiba": 0,
+   "sorok": 137779,
+   "strong_illesztes": {
+    "igen": 137777,
+    "javaslat:nincs_strong": 2
+   },
+   "versek": 7943
+  },
+  "SBLGNT": {
+   "allapot": {
+    "javaslat": 42,
+    "rendben": 137699
+   },
+   "karoli_versek_macula_nelkul": 18,
+   "ref_hiba": 0,
+   "sorok": 137741,
+   "strong_illesztes": {
+    "igen": 137739,
+    "javaslat:nincs_strong": 2
+   },
+   "versek": 7939
+  }
+ },
+ "gorog_commit": "8423afe47b9e8f24b7772e808af45c7159a6fe7e",
+ "heber": {
+  "allapot": {
+   "javaslat": 182103,
+   "rendben": 293808
+  },
+  "allapot_csak_kk": {
+   "javaslat": 6705,
+   "rendben": 469206
+  },
+  "commit": "47db250bd55d0d8577f2a94fba114ef16c35b23c",
+  "fajlok": {
+   "Macula_heber_Abdias.tsv": 440,
+   "Macula_heber_Aggeus.tsv": 928,
+   "Macula_heber_Amos.tsv": 3057,
+   "Macula_heber_Birak.tsv": 15541,
+   "Macula_heber_Daniel.tsv": 9587,
+   "Macula_heber_Deuteronomium.tsv": 23175,
+   "Macula_heber_Enekek_Eneke.tsv": 2022,
+   "Macula_heber_Eszter.tsv": 4917,
+   "Macula_heber_Exodus.tsv": 26102,
+   "Macula_heber_Ezekiel.tsv": 29882,
+   "Macula_heber_Ezsaias.tsv": 25697,
+   "Macula_heber_Ezsdras.tsv": 5856,
+   "Macula_heber_Genezis.tsv": 32365,
+   "Macula_heber_Habakuk.tsv": 1018,
+   "Macula_heber_Hoseas.tsv": 3641,
+   "Macula_heber_Jeremias.tsv": 33016,
+   "Macula_heber_Job.tsv": 12660,
+   "Macula_heber_Joel.tsv": 1459,
+   "Macula_heber_Jonas.tsv": 1089,
+   "Macula_heber_Jozsue.tsv": 15953,
+   "Macula_heber_Kiralyok_1.tsv": 20429,
+   "Macula_heber_Kiralyok_2.tsv": 18831,
+   "Macula_heber_Kronikak_1.tsv": 16739,
+   "Macula_heber_Kronikak_2.tsv": 21400,
+   "Macula_heber_Leviticus.tsv": 18912,
+   "Macula_heber_Malakias.tsv": 1323,
+   "Macula_heber_Mikeas.tsv": 2134,
+   "Macula_heber_Nahum.tsv": 849,
+   "Macula_heber_Nehemias.tsv": 8557,
+   "Macula_heber_Numeri.tsv": 25253,
+   "Macula_heber_Peldabeszedek.tsv": 9834,
+   "Macula_heber_Predikator.tsv": 4542,
+   "Macula_heber_Ruth.tsv": 2041,
+   "Macula_heber_Samuel_1.tsv": 20892,
+   "Macula_heber_Samuel_2.tsv": 17155,
+   "Macula_heber_Siralmak.tsv": 2303,
+   "Macula_heber_Sofonias.tsv": 1146,
+   "Macula_heber_Zakarias.tsv": 4867,
+   "Macula_heber_Zsoltarok.tsv": 30299
+  },
+  "karoli_versek_kk_nelkul": 151,
+  "karoli_versek_kk_szerint": 23053,
+  "karoli_versek_macula_nelkul": 82,
+  "konyvkod_elteres": 0,
+  "lowfat_w": 475911,
+  "macula_versek": 23213,
+  "macula_versek_karolival": 22971,
+  "ref_hiba": 0,
+  "sorok": 475911,
+  "strong_illesztes": {
+   "igen": 297981,
+   "javaslat:betu_alap": 5790,
+   "javaslat:funkcio_kod": 170429,
+   "javaslat:funkcio_kod|tobbes": 5,
+   "javaslat:nincs_strong": 1706
+  }
+ },
+ "hely87": {
+  "allapot": {
+   "HEBER_SZO_GOROG_NELKUL": 40,
+   "HEBER_SZO_NINCS_A_VERSBEN": 9,
+   "LXX_MEGFELELO": 38
+  },
+  "f06_eltero_sor": 3,
+  "sorok": 87
+ },
+ "illesztetlen": {
+  "karoli_vers_nincs_macula|gorog_N1904": 15,
+  "karoli_vers_nincs_macula|gorog_SBLGNT": 18,
+  "karoli_vers_nincs_macula|heber": 233,
+  "macula_vers_nincs_karoli|gorog_N1904": 4,
+  "macula_vers_nincs_karoli|gorog_SBLGNT": 3,
+  "macula_vers_nincs_karoli|heber": 242,
+  "strong_nem_illesztheto|gorog_N1904": 1,
+  "strong_nem_illesztheto|gorog_SBLGNT": 1,
+  "strong_nem_illesztheto|heber": 1014
+ },
+ "kk": {
+  "identitas": 17235,
+  "identitas_terkep_egyik_sem": 41,
+  "kezi_interpolalt": 40,
+  "kk_kjv": 249,
+  "kk_kjv_nem_igazolt": 34,
+  "kk_mt": 1713,
+  "particio_osszeg": 23053,
+  "tekintely_visszavont": 0,
+  "terkep": 3697,
+  "terkep_egyik_sem_eltolodas_gyanu": 44,
+  "terkep_kk_utkozes": 1048
+ },
+ "kk_terkep_kk_eltérés": 1048
+}

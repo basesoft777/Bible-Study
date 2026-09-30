@@ -1,0 +1,44 @@
+# forras-URL: https://github.com/BSB-publishing/bsb-data-output + konkordancia/TAHOT_kivonat.tsv
+# commit/verzio: BSB commit a4a2c0558c26e0281ba4e3f0e5479398459e2183
+# letoltes datuma: 2026-09-30
+# futtatasi parancs: python eszkozok/fj2/bsb_import.py --munka <mappa>
+# a Zsoltar-meres (egyezes_szazalek) nevezojebe eso, de NEM egyezo versek (a TAHOT-Strong-halmaz nem resze a BSB-versnek); az illesztetlen fejezetek (Zsolt 13) nincsenek benne
+# tahot_strong_szam/bsb_strong_szam = a halmazok merete; tahot_nincs_bsbben = a TAHOT-nak azok a Strongjai, amelyek a BSB-versben nincsenek (ez okozza a nem-egyezest); bsb_tobblet = a BSB-vers Strongjai, amelyek a TAHOT-versben nincsenek (tajekoztato)
+zsoltar	bsb_vers	mt_vers	tahot_strong_szam	bsb_strong_szam	tahot_nincs_bsbben	bsb_tobblet
+2	12	12	13	13	H1121	H1248
+9	12	13	9	9	H6035	H6041
+9	18	19	9	9	H6041	H6035
+10	10	10	6	5	H2428 H3512	H2489
+10	12	12	8	8	H6035	H6041
+17	14	14	14	14	H6845	H6840
+18	25	26	6	6	H1399	H1397
+21	2	3	8	8	H8378	H3966
+25	21	21	6	5	H3068	
+34	8	9	8	8	H2895	H2896
+49	5	6	7	7	H6119	H6120
+49	14	15	11	11	H6697	H6736
+52	9	11	9	9	H2895	H2896
+54	6	8	7	7	H2895	H2896
+55	15	16	10	9	H4194 H5377	H3451
+55	23	24	13	13	H582	H376
+56	7	8	8	7	H369	
+59	2	3	6	6	H582	H376
+65	9	10	13	13	H4390	H4392
+71	12	12	6	6	H2363	H2439
+74	11	11	7	7	H2436	H2706
+74	20	20	8	8	H4999	H5116
+76	5	6	11	11	H582	H376
+77	10	11	6	6	H8141	H8138
+79	8	8	10	10	H4116	H4118
+87	7	7	4	4	H2490	H2342
+102	2	3	12	12	H4116	H4118
+106	1	1	8	7	H2895 H3050	H2896
+107	1	1	6	6	H2895	H2896
+118	1	1	6	6	H2895	H2896
+118	29	29	6	6	H2895	H2896
+119	84	84	7	7	H4941	H4639
+123	4	4	8	7	H1343 H3238	H1349
+128	2	2	6	6	H2895	H2896
+143	7	7	13	13	H4116	H4118
+145	13	13	10	5	H539 H1697 H2623 H3068 H4639	
+149	6	6	6	6	H6374	H6366

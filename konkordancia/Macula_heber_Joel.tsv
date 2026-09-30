@@ -1,0 +1,1466 @@
+# GENERÁLT: eszkozok/f17/macula_futtat.py — kézzel nem szerkesztendő.
+# forras=https://github.com/Clear-Bible/macula-hebrew@commit 47db250bd55d0d8577f2a94fba114ef16c35b23c | licenc=CC BY 4.0 (Biblica, Inc); l. naplok/F17_import_naplo.md | ts=2026-09-30
+# proveniencia: scope=teljes import (F17, FELADATOK #17) | forras=https://github.com/Clear-Bible/macula-hebrew | ts=2026-09-30
+# futtatasi parancs: python eszkozok/f17/macula_futtat.py --heber <klon> --gorog <klon>
+# sorok: morfema-szint (lowfat <w>); ref = Macula (MT/WLC) szamozas; karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva
+# konyv=JOL (Joel) | sorok=1459 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok a Macula-kanon sorrendjeben (HEBER_KONYV_FAJL, eszkozok/f17/macula_import.py) osszefuzve, a fejlecek nelkul a teljes tabla torzset adjak
+xml_id	ref	karoli	kk_mod	allapot	szo	lemma	strong	strong_x	strong_illesztes	morf	szofaj	gloss	gorog_lxx	gorog_strong
+o290010010011	JOL 1:1!1	Jóel 1:1	identitas	rendben	דְּבַר	דָּבָר	H1697	1697	igen	Ncmsc	noun	the.word	λόγος	G3056
+o290010010021	JOL 1:1!2	Jóel 1:1	identitas	rendben	יְהוָה֙	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o290010010031	JOL 1:1!3	Jóel 1:1	identitas	rendben	אֲשֶׁ֣ר	אֲשֶׁר	H0834	0834	igen	Tr	particle	which	ὃς	G3739
+o290010010041	JOL 1:1!4	Jóel 1:1	identitas	rendben	הָיָ֔ה	הָיָה	H1961	1961	igen	Vqp3ms	verb	it.came	ἐγενήθη	G1096
+o290010010051	JOL 1:1!5	Jóel 1:1	identitas	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	πρὸς	G4314
+o290010010061	JOL 1:1!6	Jóel 1:1	identitas	rendben	יוֹאֵ֖ל	יוֹאֵל	H3100	3100	igen	Np	noun	Joel	ιωηλ	
+o290010010071	JOL 1:1!7	Jóel 1:1	identitas	rendben	בֶּן	בֵּן	H1121	1121	igen	Ncmsc	noun	the.son		
+o290010010081	JOL 1:1!8	Jóel 1:1	identitas	rendben	פְּתוּאֵֽל	פְּתוּאֵל	H6602	6602	igen	Np	noun	of.Pethuel	βαθουηλ	
+o290010020011	JOL 1:2!1	Jóel 1:2	identitas	rendben	שִׁמְעוּ	שָׁמַע	H8085	8085	igen	Vqv2mp	verb	hear	ἀκούσατε	G0191
+o290010020021	JOL 1:2!2	Jóel 1:2	identitas	rendben	זֹאת֙	זֹאת	H2063	2063	igen	Pdxfs	pronoun	this	ταῦτα	G5023
+o290010020031	JOL 1:2!3	Jóel 1:2	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	O	οἱ	G3588
+o290010020032	JOL 1:2!3	Jóel 1:2	identitas	rendben	זְּקֵנִ֔ים	זָקֵן	H2205	2205	igen	Aampa	adjective	elders	πρεσβύτεροι	G4245
+o290010020041	JOL 1:2!4	Jóel 1:2	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010020042	JOL 1:2!4	Jóel 1:2	identitas	rendben	הַֽאֲזִ֔ינוּ	אָזַן	H0238	0238	igen	Vhv2mp	verb	give.ear	ἐνωτίσασθε	G1801
+o290010020051	JOL 1:2!5	Jóel 1:2	identitas	rendben	כֹּ֖ל	כֹּל	H3605	3605	igen	Ncmsc	noun	O.all	πάντες	G3956
+o290010020061	JOL 1:2!6	Jóel 1:2	identitas	rendben	יוֹשְׁבֵ֣י	יָשַׁב	H3427	3427	igen	Vqrmpc	verb	the.inhabitants	κατοικοῦντες	G2730
+o290010020071	JOL 1:2!7	Jóel 1:2	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τὴν	G3588
+o290010020072	JOL 1:2!7	Jóel 1:2	identitas	rendben	אָ֑רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	the.land	γῆν	G1093
+o290010020081	JOL 1:2!8	Jóel 1:2	identitas	javaslat:strong_funkcio_kod	הֶ	הַ		1886b	javaslat:funkcio_kod	Ti	particle	has	εἰ	G1487
+o290010020082	JOL 1:2!8	Jóel 1:2	identitas	rendben	הָ֤יְתָה	הָיָה	H1961	1961	igen	Vqp3fs	verb	it.happened?	γέγονεν	G1096
+o290010020091	JOL 1:2!9	Jóel 1:2	identitas	rendben	זֹּאת֙	זֹאת	H2063	2063	igen	Pdxfs	pronoun	this	τοιαῦτα	G5108
+o290010020101	JOL 1:2!10	Jóel 1:2	identitas	javaslat:strong_funkcio_kod	בִּֽ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o290010020102	JOL 1:2!10	Jóel 1:2	identitas	rendben	ימֵי	יוֹם	H3117	3117	igen	Ncmpc	noun	days	ἡμέραις	G2250
+o290010020103	JOL 1:2!10	Jóel 1:2	identitas	javaslat:strong_funkcio_kod	כֶ֔ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290010020111	JOL 1:2!11	Jóel 1:2	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o290010020112	JOL 1:2!11	Jóel 1:2	identitas	rendben	אִ֖ם	אִם	H0518	0518	igen	C	conjunction	or?	ἢ	G2228
+o290010020121	JOL 1:2!12	Jóel 1:2	identitas	javaslat:strong_funkcio_kod	בִּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o290010020122	JOL 1:2!12	Jóel 1:2	identitas	rendben	ימֵ֥י	יוֹם	H3117	3117	igen	Ncmpc	noun	the.days	ἡμέραις	G2250
+o290010020131	JOL 1:2!13	Jóel 1:2	identitas	rendben	אֲבֹֽתֵי	אָב	H0001	0001	igen	Ncmpc	noun	your.ancestors	πατέρων	G3962
+o290010020132	JOL 1:2!13	Jóel 1:2	identitas	javaslat:strong_funkcio_kod	כֶֽם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290010030011	JOL 1:3!1	Jóel 1:3	identitas	rendben	עָלֶ֖	עַל	H5921	5921	igen	R	preposition	on	ὑπὲρ	G5228
+o290010030012	JOL 1:3!1	Jóel 1:3	identitas	javaslat:strong_funkcio_kod	יהָ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	it	αὐτῶν	G0846
+o290010030021	JOL 1:3!2	Jóel 1:3	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τοῖς	G3588
+o290010030022	JOL 1:3!2	Jóel 1:3	identitas	rendben	בְנֵי	בֵּן	H1121	1121	igen	Ncmpc	noun	children	τέκνοις	G5043
+o290010030023	JOL 1:3!2	Jóel 1:3	identitas	javaslat:strong_funkcio_kod	כֶ֣ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290010030031	JOL 1:3!3	Jóel 1:3	identitas	rendben	סַפֵּ֑רוּ	סָפַר	H5608	5608	igen	Vpv2mp	verb	recount	διηγήσασθε	
+o290010030041	JOL 1:3!4	Jóel 1:3	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010030042	JOL 1:3!4	Jóel 1:3	identitas	rendben	בְנֵי	בֵּן	H1121	1121	igen	Ncmpc	noun	children		
+o290010030043	JOL 1:3!4	Jóel 1:3	identitas	javaslat:strong_funkcio_kod	כֶם֙	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290010030051	JOL 1:3!5	Jóel 1:3	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τοῖς	G3588
+o290010030052	JOL 1:3!5	Jóel 1:3	identitas	rendben	בְנֵי	בֵּן	H1121	1121	igen	Ncmpc	noun	children	τέκνοις	G5043
+o290010030053	JOL 1:3!5	Jóel 1:3	identitas	javaslat:strong_funkcio_kod	הֶ֔ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their	αὐτῶν	G0846
+o290010030061	JOL 1:3!6	Jóel 1:3	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010030062	JOL 1:3!6	Jóel 1:3	identitas	rendben	בְנֵי	בֵּן	H1121	1121	igen	Ncmpc	noun	children		
+o290010030063	JOL 1:3!6	Jóel 1:3	identitas	javaslat:strong_funkcio_kod	הֶ֖ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o290010030071	JOL 1:3!7	Jóel 1:3	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	εἰς	G1519
+o290010030072	JOL 1:3!7	Jóel 1:3	identitas	rendben	ד֥וֹר	דּוֹר	H1755	1755	igen	Ncmsa	noun	a.generation	γενεὰν	G1074
+o290010030081	JOL 1:3!8	Jóel 1:3	identitas	rendben	אַחֵֽר	אַחֵר	H0312	0312	igen	Aamsa	adjective	another	ἑτέραν	G2087
+o290010040011	JOL 1:4!1	Jóel 1:4	identitas	rendben	יֶ֤תֶר	יֶתֶר	H3499	3499	igen	Ncmsc	noun	the.remainder		
+o290010040021	JOL 1:4!2	Jóel 1:4	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τῆς	G3588
+o290010040022	JOL 1:4!2	Jóel 1:4	identitas	rendben	גָּזָם֙	גָּזָם	H1501	1501	igen	Ncmsa	noun	the.locust[s]	κάμπης	
+o290010040031	JOL 1:4!3	Jóel 1:4	identitas	rendben	אָכַ֣ל	אָכַל	H0398	0398	igen	Vqp3ms	verb	it.has.eaten	κατέφαγεν	G2719
+o290010040041	JOL 1:4!4	Jóel 1:4	identitas	javaslat:strong_funkcio_kod	הָֽ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἡ	G3588
+o290010040042	JOL 1:4!4	Jóel 1:4	identitas	rendben	אַרְבֶּ֔ה	אַרְבֶּה	H0697	0697	igen	Ncmsa	noun	locust[s]	ἀκρίς	G0200
+o290010040051	JOL 1:4!5	Jóel 1:4	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010040052	JOL 1:4!5	Jóel 1:4	identitas	rendben	יֶ֥תֶר	יֶתֶר	H3499	3499	igen	Ncmsc	noun	the.remainder		
+o290010040061	JOL 1:4!6	Jóel 1:4	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τῆς	G3588
+o290010040062	JOL 1:4!6	Jóel 1:4	identitas	rendben	אַרְבֶּ֖ה	אַרְבֶּה	H0697	0697	igen	Ncmsa	noun	the.locust[s]	ἀκρίδος	G0200
+o290010040071	JOL 1:4!7	Jóel 1:4	identitas	rendben	אָכַ֣ל	אָכַל	H0398	0398	igen	Vqp3ms	verb	it.has.eaten	κατέφαγεν	G2719
+o290010040081	JOL 1:4!8	Jóel 1:4	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ὁ	G3588
+o290010040082	JOL 1:4!8	Jóel 1:4	identitas	rendben	יָּ֑לֶק	יֶלֶק	H3218	3218	igen	Ncmsa	noun	locust[s]	βροῦξος	
+o290010040091	JOL 1:4!9	Jóel 1:4	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010040092	JOL 1:4!9	Jóel 1:4	identitas	rendben	יֶ֣תֶר	יֶתֶר	H3499	3499	igen	Ncmsc	noun	the.remainder		
+o290010040101	JOL 1:4!10	Jóel 1:4	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τοῦ	G3588
+o290010040102	JOL 1:4!10	Jóel 1:4	identitas	rendben	יֶּ֔לֶק	יֶלֶק	H3218	3218	igen	Ncmsa	noun	the.locust[s]	βρούξου	
+o290010040111	JOL 1:4!11	Jóel 1:4	identitas	rendben	אָכַ֖ל	אָכַל	H0398	0398	igen	Vqp3ms	verb	it.has.eaten	κατέφαγεν	G2719
+o290010040121	JOL 1:4!12	Jóel 1:4	identitas	javaslat:strong_funkcio_kod	הֶ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἡ	G3588
+o290010040122	JOL 1:4!12	Jóel 1:4	identitas	rendben	חָסִֽיל	חָסִיל	H2625	2625	igen	Ncmsa	noun	locust[s]	ἐρυσίβη	
+o290010050011	JOL 1:5!1	Jóel 1:5	identitas	javaslat:strong_betu_alap	הָקִ֤יצוּ	קִיץ	H6974	6974a	javaslat:betu_alap	Vhv2mp	verb	awake	ἐκνήψατε	G1594
+o290010050021	JOL 1:5!2	Jóel 1:5	identitas	rendben	שִׁכּוֹרִים֙	שִׁכֹּור	H7910	7910	igen	Aampa	adjective	O.drunkards	μεθύοντες	
+o290010050031	JOL 1:5!3	Jóel 1:5	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010050032	JOL 1:5!3	Jóel 1:5	identitas	rendben	בְכ֔וּ	בָּכָה	H1058	1058	igen	Vqv2mp	verb	weep	κλαύσατε	G2799
+o290010050041	JOL 1:5!4	Jóel 1:5	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o290010050051	JOL 1:5!5	Jóel 1:5	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	O.all	πάντες	G3956
+o290010050061	JOL 1:5!6	Jóel 1:5	identitas	rendben	שֹׁ֣תֵי	שָׁתָה	H8354	8354	igen	Vqrmpc	verb	[you.who].drink	πίνοντες	G4095
+o290010050071	JOL 1:5!7	Jóel 1:5	identitas	rendben	יָ֑יִן	יַיִן	H3196	3196	igen	Ncmsa	noun	(of).wine	οἶνον	G3631
+o290010050042	JOL 1:5!4	Jóel 1:5	identitas	rendben	הֵילִ֖לוּ	יָלַל	H3213	3213	igen	Vhv2mp	verb	wail	θρηνήσατε	
+o290010050081	JOL 1:5!8	Jóel 1:5	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	εἰς	G1519
+o290010050091	JOL 1:5!9	Jóel 1:5	identitas	rendben	עָסִ֕יס	עָסִיס	H6071	6071	igen	Ncmsa	noun	sweet.wine	μέθην	
+o290010050101	JOL 1:5!10	Jóel 1:5	identitas	rendben	כִּ֥י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290010050111	JOL 1:5!11	Jóel 1:5	identitas	rendben	נִכְרַ֖ת	כָּרַת	H3772	3772	igen	VNp3ms	verb	it.has.been.cut.off	ἐχῆρται	
+o290010050121	JOL 1:5!12	Jóel 1:5	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from	ἐκ	G1537
+o290010050122	JOL 1:5!12	Jóel 1:5	identitas	rendben	פִּי	פֶּה	H6310	6310	igen	Ncmsc	noun	mouth	στόματος	G4750
+o290010050123	JOL 1:5!12	Jóel 1:5	identitas	javaslat:strong_funkcio_kod	כֶֽם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290010060011	JOL 1:6!1	Jóel 1:6	identitas	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290010060021	JOL 1:6!2	Jóel 1:6	identitas	rendben	גוֹי֙	גּוֹי	H1471	1471	igen	Ncmsa	noun	a.nation	ἔθνος	G1484
+o290010060031	JOL 1:6!3	Jóel 1:6	identitas	rendben	עָלָ֣ה	עָלָה	H5927	5927	igen	Vqp3ms	verb	it.has.come.up	ἀνέβη	G0305
+o290010060041	JOL 1:6!4	Jóel 1:6	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o290010060051	JOL 1:6!5	Jóel 1:6	identitas	rendben	אַרְצִ֔	אֶרֶץ	H0776	0776	igen	Ncbsc	noun	land	γῆν	G1093
+o290010060052	JOL 1:6!5	Jóel 1:6	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o290010060061	JOL 1:6!6	Jóel 1:6	identitas	rendben	עָצ֖וּם	עָצוּם	H6099	6099	igen	Aamsa	adjective	[it.is].mighty	ἰσξυρὸν	G2478
+o290010060071	JOL 1:6!7	Jóel 1:6	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o290010060072	JOL 1:6!7	Jóel 1:6	identitas	rendben	אֵ֣ין	אַיִן	H0369	0369	igen	Tn	particle	there.[is].not	καὶ	G2532
+o290010060081	JOL 1:6!8	Jóel 1:6	identitas	rendben	מִסְפָּ֑ר	מִסְפָּר	H4557	4557	igen	Ncmsa	noun	number	ἀναρίθμητον	G0382
+o290010060091	JOL 1:6!9	Jóel 1:6	identitas	rendben	שִׁנָּי	שֵׁן	H8127	8127	igen	Ncbdc	noun	teeth		
+o290010060092	JOL 1:6!9	Jóel 1:6	identitas	javaslat:strong_funkcio_kod	ו֙	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	its	αὐτοῦ	G0846
+o290010060101	JOL 1:6!10	Jóel 1:6	identitas	rendben	שִׁנֵּ֣י	שֵׁן	H8127	8127	igen	Ncbdc	noun	[are.the].teeth	ὀδόντες	G3599
+o290010060111	JOL 1:6!11	Jóel 1:6	identitas	javaslat:strong_betu_alap	אַרְיֵ֔ה	אַרְיֵה	H0738	0738a	javaslat:betu_alap	Ncmsa	noun	of.a.lion	λέοντος	G3023
+o290010060121	JOL 1:6!12	Jóel 1:6	identitas	javaslat:strong_funkcio_kod	וּֽ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010060122	JOL 1:6!12	Jóel 1:6	identitas	rendben	מְתַלְּע֥וֹת	מְתַלְּעוֹת	H4973	4973	igen	Ncfpc	noun	the.fangs		
+o290010060131	JOL 1:6!13	Jóel 1:6	identitas	rendben	לָבִ֖יא	לָבִיא	H3833	3833	igen	Ncbsa	noun	of.a.lion	σκύμνου	
+o290010060141	JOL 1:6!14	Jóel 1:6	identitas	javaslat:strong_funkcio_kod	לֽ	לְ		3807a	javaslat:funkcio_kod	R	preposition	[belong].to		
+o290010060142	JOL 1:6!14	Jóel 1:6	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	it		
+o290010070011	JOL 1:7!1	Jóel 1:7	identitas	rendben	שָׂ֤ם	שׂים	H7760	7760	igen	Vqp3ms	verb	it.has.made	ἔθετο	G5087
+o290010070021	JOL 1:7!2	Jóel 1:7	identitas	rendben	גַּפְנִ	גֶּפֶן	H1612	1612	igen	Ncbsc	noun	vine[s]		
+o290010070022	JOL 1:7!2	Jóel 1:7	identitas	javaslat:strong_funkcio_kod	י֙	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o290010070031	JOL 1:7!3	Jóel 1:7	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	into	εἰς	G1519
+o290010070032	JOL 1:7!3	Jóel 1:7	identitas	rendben	שַׁמָּ֔ה	שַׁמָּה	H8047	8047	igen	Ncfsa	noun	a.waste	ἀφανισμὸν	G0854
+o290010070041	JOL 1:7!4	Jóel 1:7	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010070042	JOL 1:7!4	Jóel 1:7	identitas	rendben	תְאֵנָתִ֖	תְּאֵנָה	H8384	8384	igen	Ncfsc	noun	my.fig		
+o290010070043	JOL 1:7!4	Jóel 1:7	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	tree[s]	μου	G3450
+o290010070051	JOL 1:7!5	Jóel 1:7	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	into	εἰς	G1519
+o290010070052	JOL 1:7!5	Jóel 1:7	identitas	rendben	קְצָפָ֑ה	קְצָפָה	H7111	7111	igen	Ncfsa	noun	a.stump	συγκλασμόν	
+o290010070061	JOL 1:7!6	Jóel 1:7	identitas	rendben	חָשֹׂ֤ף	חָשַׂף	H2834	2834	igen	Vqa	verb	completely.(strip.bare)	ἐρευνῶν	
+o290010070071	JOL 1:7!7	Jóel 1:7	identitas	rendben	חֲשָׂפָ	חָשַׂף	H2834	2834	igen	Vqp3ms	verb	it	ἐχηρεύνησεν	
+o290010070072	JOL 1:7!7	Jóel 1:7	identitas	javaslat:strong_funkcio_kod	הּ֙	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	has.stripped.it.bare	αὐτὴν	G0848
+o290010070081	JOL 1:7!8	Jóel 1:7	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010070082	JOL 1:7!8	Jóel 1:7	identitas	rendben	הִשְׁלִ֔יךְ	שָׁלַךְ	H7993	7993	igen	Vhp3ms	verb	it.has.thrown.[it].away	ἔρριψεν	G4496
+o290010070091	JOL 1:7!9	Jóel 1:7	identitas	rendben	הִלְבִּ֖ינוּ	לָבֵן	H3835	3835	igen	Vhp3cp	verb	they.have.become.white	ἐλεύκανεν	
+o290010070101	JOL 1:7!10	Jóel 1:7	identitas	rendben	שָׂרִיגֶֽי	שָׂרִיג	H8299	8299	igen	Ncmpc	noun	branches	κλήματα	G2814
+o290010070102	JOL 1:7!10	Jóel 1:7	identitas	javaslat:strong_funkcio_kod	הָ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	its	αὐτῆς	G0846
+o290010080011	JOL 1:8!1	Jóel 1:8	identitas	rendben	אֱלִ֕י	אָלָה	H0421	0421	igen	Vqv2fs	verb	wail		
+o290010080021	JOL 1:8!2	Jóel 1:8	identitas	javaslat:strong_funkcio_kod	כִּ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	like	ὑπὲρ	G5228
+o290010080022	JOL 1:8!2	Jóel 1:8	identitas	rendben	בְתוּלָ֥ה	בְּתוּלָה	H1330	1330	igen	Ncfsa	noun	a.virgin	νύμφην	G3565
+o290010080031	JOL 1:8!3	Jóel 1:8	identitas	rendben	חֲגֻֽרַת	חָגַר	H2296	2296	igen	Vqsfsc	verb	girded	περιεζωσμένην	
+o290010080041	JOL 1:8!4	Jóel 1:8	identitas	rendben	שַׂ֖ק	שַׂק	H8242	8242	igen	Ncmsa	noun	of.sackcloth	σάκκον	G4526
+o290010080051	JOL 1:8!5	Jóel 1:8	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o290010080061	JOL 1:8!6	Jóel 1:8	identitas	rendben	בַּ֥עַל	בַּעַל	H1167	1167	igen	Ncmsc	noun	the.husband	ἄνδρα	G0435
+o290010080071	JOL 1:8!7	Jóel 1:8	identitas	rendben	נְעוּרֶֽי	נְעוּרִים	H5271	5271	igen	Ncbpc	noun	her.youth(s)		
+o290010080072	JOL 1:8!7	Jóel 1:8	identitas	javaslat:strong_funkcio_kod	הָ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	her	αὐτῆς	G0846
+o290010090011	JOL 1:9!1	Jóel 1:9	identitas	rendben	הָכְרַ֥ת	כָּרַת	H3772	3772	igen	VHp3ms	verb	it.has.been.cut.off	ἐχῆρται	
+o290010090021	JOL 1:9!2	Jóel 1:9	identitas	rendben	מִנְחָ֛ה	מִנְחָה	H4503	4503	igen	Ncfsa	noun	grain.offering	θυσία	G2378
+o290010090031	JOL 1:9!3	Jóel 1:9	identitas	javaslat:strong_funkcio_kod	וָ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010090032	JOL 1:9!3	Jóel 1:9	identitas	rendben	נֶ֖סֶךְ	נֶסֶךְ	H5262	5262	igen	Ncmsa	noun	drink.offering	σπονδὴ	
+o290010090041	JOL 1:9!4	Jóel 1:9	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from	ἐχ	G1537
+o290010090042	JOL 1:9!4	Jóel 1:9	identitas	rendben	בֵּ֣ית	בַּיִת	H1004	1004	igen	Ncmsc	noun	the.house	οἴκου	G3624
+o290010090051	JOL 1:9!5	Jóel 1:9	identitas	rendben	יְהוָ֑ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o290010090061	JOL 1:9!6	Jóel 1:9	identitas	rendben	אָֽבְלוּ֙	אָבַל	H0056	0056	igen	Vqp3cp	verb	they.are.in.mourning	πενθεῖτε	
+o290010090071	JOL 1:9!7	Jóel 1:9	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	οἱ	G3588
+o290010090072	JOL 1:9!7	Jóel 1:9	identitas	rendben	כֹּ֣הֲנִ֔ים	כֹּהֵן	H3548	3548	igen	Ncmpa	noun	priests	ἱερεῖς	G2409
+o290010090081	JOL 1:9!8	Jóel 1:9	identitas	rendben	מְשָׁרְתֵ֖י	שָׁרַת	H8334	8334	igen	Vprmpc	verb	[who].serve	λειτουργοῦντες	
+o290010090091	JOL 1:9!9	Jóel 1:9	identitas	rendben	יְהוָֽה	יהוה	H3068	3068	igen	Np	noun	(of).Yahweh	θυσιαστηρίῳ	G2379
+o290010100011	JOL 1:10!1	Jóel 1:10	identitas	rendben	שֻׁדַּ֣ד	שָׁדַד	H7703	7703	igen	VPp3ms	verb	it.is.devastated	τεταλαιπώρηκεν	
+o290010100021	JOL 1:10!2	Jóel 1:10	identitas	rendben	שָׂדֶ֔ה	שָׂדֶה	H7704	7704	igen	Ncmsa	noun	[the].field[s]		
+o290010100031	JOL 1:10!3	Jóel 1:10	identitas	javaslat:strong_betu_alap	אָבְלָ֖ה	אָבַל	H0056	0056a	javaslat:betu_alap	Vqp3fs	verb	it.is.dried.up	πενθείτω	
+o290010100041	JOL 1:10!4	Jóel 1:10	identitas	rendben	אֲדָמָ֑ה	אֲדָמָה	H0127	0127	igen	Ncfsa	noun	[the].ground	γῆ	G1093
+o290010100051	JOL 1:10!5	Jóel 1:10	identitas	rendben	כִּ֚י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290010100061	JOL 1:10!6	Jóel 1:10	identitas	rendben	שֻׁדַּ֣ד	שָׁדַד	H7703	7703	igen	VPp3ms	verb	it.is.devastated	τεταλαιπώρηκεν	
+o290010100071	JOL 1:10!7	Jóel 1:10	identitas	rendben	דָּגָ֔ן	דָּגָן	H1715	1715	igen	Ncmsa	noun	[the].grain	σῖτος	
+o290010100081	JOL 1:10!8	Jóel 1:10	identitas	rendben	הוֹבִ֥ישׁ	יָבֵשׁ	H3001	3001	igen	Vhp3ms	verb	it.has.dried.up	ἐχηράνθη	G3583
+o290010100091	JOL 1:10!9	Jóel 1:10	identitas	rendben	תִּיר֖וֹשׁ	תִּירוֹשׁ	H8492	8492	igen	Ncmsa	noun	[the].new.wine	οἶνος	G3631
+o290010100101	JOL 1:10!10	Jóel 1:10	identitas	rendben	אֻמְלַ֥ל	אָמַל	H0535	0535	igen	VKp3ms	verb	it.has.languished	ὠλιγώθη	
+o290010100111	JOL 1:10!11	Jóel 1:10	identitas	rendben	יִצְהָֽר	יִצְהָר	H3323	3323	igen	Ncmsa	noun	[the].fresh.oil	ἔλαιον	G1637
+o290010110011	JOL 1:11!1	Jóel 1:11	identitas	rendben	הֹבִ֣ישׁוּ	יבשׁ	H0954	0954	igen	Vhv2mp	verb	be.ashamed	ἐχηράνθησαν	
+o290010110021	JOL 1:11!2	Jóel 1:11	identitas	rendben	אִכָּרִ֗ים	אִכָּר	H0406	0406	igen	Ncmpa	noun	O.farmers	γεωργοί	
+o290010110041	JOL 1:11!4	Jóel 1:11	identitas	rendben	כֹּֽרְמִ֔ים	כָּרַם	H3755	3755	igen	Ncmpa	noun	O.vinedressers	κτήματα	G2933
+o290010110031	JOL 1:11!3	Jóel 1:11	identitas	rendben	הֵילִ֨ילוּ֙	יָלַל	H3213	3213	igen	Vhv2mp	verb	wail	θρηνεῖτε	
+o290010110051	JOL 1:11!5	Jóel 1:11	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ὑπὲρ	G5228
+o290010110061	JOL 1:11!6	Jóel 1:11	identitas	rendben	חִטָּ֖ה	חִטָּה	H2406	2406	igen	Ncfsa	noun	[the].wheat	πυροῦ	
+o290010110071	JOL 1:11!7	Jóel 1:11	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010110072	JOL 1:11!7	Jóel 1:11	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on		
+o290010110081	JOL 1:11!8	Jóel 1:11	identitas	rendben	שְׂעֹרָ֑ה	שְׂעֹרָה	H8184	8184	igen	Ncfsa	noun	[the].barley	κριθῆς	
+o290010110091	JOL 1:11!9	Jóel 1:11	identitas	rendben	כִּ֥י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290010110101	JOL 1:11!10	Jóel 1:11	identitas	rendben	אָבַ֖ד	אָבַד	H0006	0006	igen	Vqp3ms	verb	it.has.perished	ἀπόλωλεν	G0622
+o290010110111	JOL 1:11!11	Jóel 1:11	identitas	rendben	קְצִ֥יר	קָצִיר	H7105	7105	igen	Ncmsc	noun	[the].harvest	τρυγητὸς	
+o290010110121	JOL 1:11!12	Jóel 1:11	identitas	rendben	שָׂדֶֽה	שָׂדֶה	H7704	7704	igen	Ncmsa	noun	of.[the].field	ἀγροῦ	G0068
+o290010120011	JOL 1:12!1	Jóel 1:12	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἡ	G3588
+o290010120012	JOL 1:12!1	Jóel 1:12	identitas	rendben	גֶּ֣פֶן	גֶּפֶן	H1612	1612	igen	Ncbsa	noun	vine	ἄμπελος	G0288
+o290010120021	JOL 1:12!2	Jóel 1:12	identitas	rendben	הוֹבִ֔ישָׁה	יָבֵשׁ	H3001	3001	igen	Vhp3fs	verb	it.has.dried.up	ἐχηράνθη	G3583
+o290010120031	JOL 1:12!3	Jóel 1:12	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010120032	JOL 1:12!3	Jóel 1:12	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the.fig	αἱ	G3588
+o290010120033	JOL 1:12!3	Jóel 1:12	identitas	rendben	תְּאֵנָ֖ה	תְּאֵנָה	H8384	8384	igen	Ncfsa	noun	tree	συκαῖ	
+o290010120041	JOL 1:12!4	Jóel 1:12	identitas	rendben	אֻמְלָ֑לָה	אָמַל	H0535	0535	igen	VKp3fs	verb	it.has.languished	ὠλιγώθησαν	
+o290010120051	JOL 1:12!5	Jóel 1:12	identitas	rendben	רִמּ֞וֹן	רִמּוֹן	H7416	7416	igen	Ncmsa	noun	[the].pomegranate.tree	ῥόα	
+o290010120061	JOL 1:12!6	Jóel 1:12	identitas	rendben	גַּם	גַּם	H1571	1571	igen	Ta	particle	also	καὶ	G2532
+o290010120071	JOL 1:12!7	Jóel 1:12	identitas	rendben	תָּמָ֣ר	תָּמָר	H8558	8558	igen	Ncmsa	noun	[the].palm.tree	φοῖνιχ	
+o290010120081	JOL 1:12!8	Jóel 1:12	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and.[the]	καὶ	G2532
+o290010120082	JOL 1:12!8	Jóel 1:12	identitas	rendben	תַפּ֗וּחַ	תַּפּוּחַ	H8598	8598	igen	Ncmsa	noun	apple.tree	μῆλον	
+o290010120091	JOL 1:12!9	Jóel 1:12	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντα	G3956
+o290010120101	JOL 1:12!10	Jóel 1:12	identitas	rendben	עֲצֵ֤י	עֵץ	H6086	6086	igen	Ncmpc	noun	the.trees	χύλα	G3586
+o290010120111	JOL 1:12!11	Jóel 1:12	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τοῦ	G3588
+o290010120112	JOL 1:12!11	Jóel 1:12	identitas	rendben	שָּׂדֶה֙	שָׂדֶה	H7704	7704	igen	Ncmsa	noun	the.field	ἀγροῦ	G0068
+o290010120121	JOL 1:12!12	Jóel 1:12	identitas	rendben	יָבֵ֔שׁוּ	יָבֵשׁ	H3001	3001	igen	Vqp3cp	verb	they.have.dried.up	ἐχηράνθησαν	
+o290010120131	JOL 1:12!13	Jóel 1:12	identitas	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290010120141	JOL 1:12!14	Jóel 1:12	identitas	rendben	הֹבִ֥ישׁ	יָבֵשׁ	H0954	0954	igen	Vhp3ms	verb	it.has.been.ashamed	ᾔσξυναν	
+o290010120151	JOL 1:12!15	Jóel 1:12	identitas	rendben	שָׂשׂ֖וֹן	שָׂשׂוֹן	H8342	8342	igen	Ncmsa	noun	joy	ξαρὰν	G5479
+o290010120161	JOL 1:12!16	Jóel 1:12	identitas	rendben	מִן	מִן	H4480	4480	igen	R	preposition	from		
+o290010120171	JOL 1:12!17	Jóel 1:12	identitas	rendben	בְּנֵ֥י	בֵּן	H1121	1121	igen	Ncmpc	noun	the.children	υἱοὶ	G5207
+o290010120181	JOL 1:12!18	Jóel 1:12	identitas	rendben	אָדָֽם	אָדָם	H0120	0120	igen	Ncmsa	noun	of.humankind	ἀνθρώπων	G0444
+o290010130011	JOL 1:13!1	Jóel 1:13	identitas	rendben	חִגְר֨וּ	חָגַר	H2296	2296	igen	Vqv2mp	verb	gird.yourselves	περιζώσασθε	
+o290010130021	JOL 1:13!2	Jóel 1:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010130022	JOL 1:13!2	Jóel 1:13	identitas	rendben	סִפְד֜וּ	סָפַד	H5594	5594	igen	Vqv2mp	verb	lament	κόπτεσθε	
+o290010130031	JOL 1:13!3	Jóel 1:13	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	O	οἱ	G3588
+o290010130032	JOL 1:13!3	Jóel 1:13	identitas	rendben	כֹּהֲנִ֗ים	כֹּהֵן	H3548	3548	igen	Ncmpa	noun	priests	ἱερεῖς	G2409
+o290010130041	JOL 1:13!4	Jóel 1:13	identitas	rendben	הֵילִ֨ילוּ֙	יָלַל	H3213	3213	igen	Vhv2mp	verb	wail	θρηνεῖτε	
+o290010130051	JOL 1:13!5	Jóel 1:13	identitas	rendben	מְשָׁרְתֵ֣י	שָׁרַת	H8334	8334	igen	Vprmpc	verb	O.[you.who].serve	λειτουργοῦντες	
+o290010130061	JOL 1:13!6	Jóel 1:13	identitas	rendben	מִזְבֵּ֔חַ	מִזְבֵּחַ	H4196	4196	igen	Ncmsa	noun	(of).[the].altar	θυσιαστηρίῳ	G2379
+o290010130071	JOL 1:13!7	Jóel 1:13	identitas	rendben	בֹּ֚אוּ	בּוֹא	H0935	0935	igen	Vqv2mp	verb	come	εἰσέλθατε	G1525
+o290010130081	JOL 1:13!8	Jóel 1:13	identitas	javaslat:strong_betu_alap	לִ֣ינוּ	לין	H3885	3885a	javaslat:betu_alap	Vqv2mp	verb	spend.the.night	ὑπνώσατε	
+o290010130091	JOL 1:13!9	Jóel 1:13	identitas	javaslat:strong_funkcio_kod	בַ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	in	ἐν	G1722
+o290010130091ה	JOL 1:13!9	Jóel 1:13	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o290010130092	JOL 1:13!9	Jóel 1:13	identitas	rendben	שַּׂקִּ֔ים	שַׂק	H8242	8242	igen	Ncmpa	noun	sackcloth(s)	σάκκοις	G4526
+o290010130101	JOL 1:13!10	Jóel 1:13	identitas	rendben	מְשָׁרְתֵ֖י	שָׁרַת	H8334	8334	igen	Vprmpc	verb	O.[you.who].serve	λειτουργοῦντες	
+o290010130111	JOL 1:13!11	Jóel 1:13	identitas	rendben	אֱלֹהָ֑	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	God	θεῷ	G2316
+o290010130112	JOL 1:13!11	Jóel 1:13	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	(of).my		
+o290010130121	JOL 1:13!12	Jóel 1:13	identitas	rendben	כִּ֥י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290010130131	JOL 1:13!13	Jóel 1:13	identitas	rendben	נִמְנַ֛ע	מָנַע	H4513	4513	igen	VNp3ms	verb	it.has.been.withheld	ἀπέσξηκεν	G0567
+o290010130141	JOL 1:13!14	Jóel 1:13	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from	ἐχ	G1537
+o290010130142	JOL 1:13!14	Jóel 1:13	identitas	rendben	בֵּ֥ית	בַּיִת	H1004	1004	igen	Ncmsc	noun	the.house	οἴκου	G3624
+o290010130151	JOL 1:13!15	Jóel 1:13	identitas	rendben	אֱלֹהֵי	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	your.God	θεοῦ	G2316
+o290010130152	JOL 1:13!15	Jóel 1:13	identitas	javaslat:strong_funkcio_kod	כֶ֖ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290010130161	JOL 1:13!16	Jóel 1:13	identitas	rendben	מִנְחָ֥ה	מִנְחָה	H4503	4503	igen	Ncfsa	noun	grain.offering	θυσία	G2378
+o290010130171	JOL 1:13!17	Jóel 1:13	identitas	javaslat:strong_funkcio_kod	וָ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010130172	JOL 1:13!17	Jóel 1:13	identitas	rendben	נָֽסֶךְ	נֶסֶךְ	H5262	5262	igen	Ncmsa	noun	drink.offering	σπονδή	
+o290010140011	JOL 1:14!1	Jóel 1:14	identitas	rendben	קַדְּשׁוּ	קָדַשׁ	H6942	6942	igen	Vpv2mp	verb	consecrate	ἁγιάσατε	G0037
+o290010140021	JOL 1:14!2	Jóel 1:14	identitas	rendben	צוֹם֙	צוֹם	H6685	6685	igen	Ncmsa	noun	a.fast	νηστείαν	G3521
+o290010140031	JOL 1:14!3	Jóel 1:14	identitas	rendben	קִרְא֣וּ	קָרָא	H7121	7121	igen	Vqv2mp	verb	call	κηρύχατε	G2784
+o290010140041	JOL 1:14!4	Jóel 1:14	identitas	rendben	עֲצָרָ֔ה	עֲצָרָה	H6116	6116	igen	Ncfsa	noun	an.assembly	θεραπείαν	G2322
+o290010140051	JOL 1:14!5	Jóel 1:14	identitas	rendben	אִסְפ֣וּ	אָסַף	H0622	0622	igen	Vqv2mp	verb	gather	συναγάγετε	G4863
+o290010140061	JOL 1:14!6	Jóel 1:14	identitas	rendben	זְקֵנִ֗ים	זָקֵן	H2205	2205	igen	Aampa	adjective	[the].elders	πρεσβυτέρους	G4245
+o290010140071	JOL 1:14!7	Jóel 1:14	identitas	rendben	כֹּ֚ל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντας	G3956
+o290010140081	JOL 1:14!8	Jóel 1:14	identitas	rendben	יֹשְׁבֵ֣י	יָשַׁב	H3427	3427	igen	Vqrmpc	verb	the.inhabitants	κατοικοῦντας	G2730
+o290010140091	JOL 1:14!9	Jóel 1:14	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of		
+o290010140092	JOL 1:14!9	Jóel 1:14	identitas	rendben	אָ֔רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	the.land	γῆν	G1093
+o290010140101	JOL 1:14!10	Jóel 1:14	identitas	rendben	בֵּ֖ית	בַּיִת	H1004	1004	igen	Ncmsc	noun	the.house	οἶκον	G3624
+o290010140111	JOL 1:14!11	Jóel 1:14	identitas	rendben	יְהוָ֣ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh		
+o290010140121	JOL 1:14!12	Jóel 1:14	identitas	rendben	אֱלֹהֵי	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	God	θεοῦ	G2316
+o290010140122	JOL 1:14!12	Jóel 1:14	identitas	javaslat:strong_funkcio_kod	כֶ֑ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290010140131	JOL 1:14!13	Jóel 1:14	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010140132	JOL 1:14!13	Jóel 1:14	identitas	rendben	זַעֲק֖וּ	זָעַק	H2199	2199	igen	Vqv2mp	verb	cry.out	κεκράχατε	
+o290010140141	JOL 1:14!14	Jóel 1:14	identitas	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	πρὸς	G4314
+o290010140151	JOL 1:14!15	Jóel 1:14	identitas	rendben	יְהוָֽה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριον	G2962
+o290010150011	JOL 1:15!1	Jóel 1:15	identitas	rendben	אֲהָ֖הּ	אֲהָהּ	H0162	0162	igen	Tj	particle	alas!	οἴμμοι	
+o290010150021	JOL 1:15!2	Jóel 1:15	identitas	javaslat:strong_funkcio_kod	לַ	לְ		3807a	javaslat:funkcio_kod	Rd	preposition	for		
+o290010150021ה	JOL 1:15!2	Jóel 1:15	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290010150022	JOL 1:15!2	Jóel 1:15	identitas	rendben	יּ֑וֹם	יוֹם	H3117	3117	igen	Ncmsa	noun	day	ἡμέραν	G2250
+o290010150031	JOL 1:15!3	Jóel 1:15	identitas	rendben	כִּ֤י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290010150041	JOL 1:15!4	Jóel 1:15	identitas	rendben	קָרוֹב֙	קָרֹוב	H7138	7138	igen	Aamsa	adjective	[is].near	ἐγγὺς	G1451
+o290010150051	JOL 1:15!5	Jóel 1:15	identitas	rendben	י֣וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	the.day	ἡμέρα	G2250
+o290010150061	JOL 1:15!6	Jóel 1:15	identitas	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o290010150071	JOL 1:15!7	Jóel 1:15	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010150072	JOL 1:15!7	Jóel 1:15	identitas	javaslat:strong_funkcio_kod	כְ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	like	ὡς	G5613
+o290010150073	JOL 1:15!7	Jóel 1:15	identitas	rendben	שֹׁ֖ד	שֹׁד	H7701	7701	igen	Ncmsa	noun	devastation	ταλαιπωρία	G5004
+o290010150081	JOL 1:15!8	Jóel 1:15	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from.[the]	ἐκ	G1537
+o290010150082	JOL 1:15!8	Jóel 1:15	identitas	rendben	שַׁדַּ֥י	שַׁדַּי	H7706	7706	igen	Np	noun	Almighty	ταλαιπωρίας	
+o290010150091	JOL 1:15!9	Jóel 1:15	identitas	rendben	יָבֽוֹא	בּוֹא	H0935	0935	igen	Vqi3ms	verb	it.will.come	ἥχει	G2240
+o290010160011	JOL 1:16!1	Jóel 1:16	identitas	javaslat:strong_funkcio_kod	הֲ	הֲ		1886b	javaslat:funkcio_kod	Ti	particle	?		
+o290010160012	JOL 1:16!1	Jóel 1:16	identitas	rendben	ל֛וֹא	לֹא	H3808	3808	igen	Tn	particle	not		
+o290010160021	JOL 1:16!2	Jóel 1:16	identitas	rendben	נֶ֥גֶד	נֶגֶד	H5048	5048	igen	R	preposition	before	κατέναντι	G2713
+o290010160031	JOL 1:16!3	Jóel 1:16	identitas	rendben	עֵינֵ֖י	עַיִן	H5869	5869	igen	Ncbdc	noun	eyes	ὀφθαλμῶν	G3788
+o290010160032	JOL 1:16!3	Jóel 1:16	identitas	javaslat:strong_funkcio_kod	נוּ	הוּא		5105a	javaslat:funkcio_kod	Sp1cp	suffix	our		
+o290010160041	JOL 1:16!4	Jóel 1:16	identitas	rendben	אֹ֣כֶל	אֹכֶל	H0400	0400	igen	Ncmsa	noun	food	βρώματα	G1033
+o290010160051	JOL 1:16!5	Jóel 1:16	identitas	rendben	נִכְרָ֑ת	כָּרַת	H3772	3772	igen	VNp3ms	verb	has.it.been.cut.off	ἐχωλεθρεύθη	
+o290010160061	JOL 1:16!6	Jóel 1:16	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from	ἐχ	G1537
+o290010160062	JOL 1:16!6	Jóel 1:16	identitas	rendben	בֵּ֥ית	בַּיִת	H1004	1004	igen	Ncmsc	noun	the.house	οἴκου	G3624
+o290010160071	JOL 1:16!7	Jóel 1:16	identitas	rendben	אֱלֹהֵ֖י	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	our.God	θεοῦ	G2316
+o290010160072	JOL 1:16!7	Jóel 1:16	identitas	javaslat:strong_funkcio_kod	נוּ	הוּא		5105a	javaslat:funkcio_kod	Sp1cp	suffix	our	ὑμῶν	G5216
+o290010160081	JOL 1:16!8	Jóel 1:16	identitas	rendben	שִׂמְחָ֥ה	שִׂמְחָה	H8057	8057	igen	Ncfsa	noun	joy	εὐφροσύνη	G2167
+o290010160091	JOL 1:16!9	Jóel 1:16	identitas	javaslat:strong_funkcio_kod	וָ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010160092	JOL 1:16!9	Jóel 1:16	identitas	rendben	גִֽיל	גִּיל	H1524	1524	igen	Ncmsa	noun	rejoicing	ξαρά	G5479
+o290010170011	JOL 1:17!1	Jóel 1:17	identitas	rendben	עָבְשׁ֣וּ	עָבַשׁ	H5685	5685	igen	Vqp3cp	verb	they.have.shriveled	ἐσκίρτησαν	
+o290010170021	JOL 1:17!2	Jóel 1:17	identitas	rendben	פְרֻד֗וֹת	פְּרֻדֹות	H6507	6507	igen	Ncfpa	noun	[the].seeds	δαμάλεις	G1151
+o290010170031	JOL 1:17!3	Jóel 1:17	identitas	rendben	תַּ֚חַת	תַּחַת	H8478	8478	igen	R	preposition	under	ἐπὶ	G1909
+o290010170041	JOL 1:17!4	Jóel 1:17	identitas	rendben	מֶגְרְפֹ֣תֵי	מֶגְרָפָה	H4053	4053	igen	Ncfpc	noun	shovels		
+o290010170042	JOL 1:17!4	Jóel 1:17	identitas	javaslat:strong_funkcio_kod	הֶ֔ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o290010170051	JOL 1:17!5	Jóel 1:17	identitas	rendben	נָשַׁ֨מּוּ֙	שָׁמֵם	H8074	8074	igen	VNp3cp	verb	they.are.desolate	ἠφανίσθησαν	
+o290010170061	JOL 1:17!6	Jóel 1:17	identitas	rendben	אֹֽצָר֔וֹת	אוֹצָר	H0214	0214	igen	Ncmpa	noun	[the].storehouses	θησαυροί	
+o290010170071	JOL 1:17!7	Jóel 1:17	identitas	rendben	נֶהֶרְס֖וּ	הָרַס	H2040	2040	igen	VNp3cp	verb	they.have.been.torn.down	κατεσκάφησαν	
+o290010170081	JOL 1:17!8	Jóel 1:17	identitas	rendben	מַמְּגֻר֑וֹת	מַמְּגֻרָה	H4460	4460	igen	Ncfpa	noun	[the].granaries	ληνοί	
+o290010170091	JOL 1:17!9	Jóel 1:17	identitas	rendben	כִּ֥י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290010170101	JOL 1:17!10	Jóel 1:17	identitas	rendben	הֹבִ֖ישׁ	יָבֵשׁ	H3001	3001	igen	Vhp3ms	verb	it.has.dried.up	ἐχηράνθη	G3583
+o290010170111	JOL 1:17!11	Jóel 1:17	identitas	rendben	דָּגָֽן	דָּגָן	H1715	1715	igen	Ncmsa	noun	[the].grain	σῖτος	
+o290010180011	JOL 1:18!1	Jóel 1:18	identitas	rendben	מַה	מָה	H4100	4100	igen	Ti	particle	how!	τί	G5101
+o290010180021	JOL 1:18!2	Jóel 1:18	identitas	rendben	נֶּאֶנְחָ֣ה	אָנַח	H0584	0584	igen	VNp3fs	verb	it.has.groaned	ἀποθήσομεν	G0659
+o290010180031	JOL 1:18!3	Jóel 1:18	identitas	rendben	בְהֵמָ֗ה	בְּהֵמָה	H0929	0929	igen	Ncfsa	noun	[the].livestock	ἑαυτοῖς	G1438
+o290010180041	JOL 1:18!4	Jóel 1:18	identitas	rendben	נָבֹ֨כוּ֙	בּוּךְ	H0943	0943	igen	VNp3cp	verb	they.have.wandered.in.confusion	ἔκλαυσαν	G2799
+o290010180051	JOL 1:18!5	Jóel 1:18	identitas	rendben	עֶדְרֵ֣י	עֵדֶר	H5739	5739	igen	Ncmpc	noun	[the].herds	βουκόλια	
+o290010180061	JOL 1:18!6	Jóel 1:18	identitas	rendben	בָקָ֔ר	בָּקָר	H1241	1241	igen	Ncbsa	noun	of.cattle	βοῶν	G1016
+o290010180071	JOL 1:18!7	Jóel 1:18	identitas	rendben	כִּ֛י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290010180081	JOL 1:18!8	Jóel 1:18	identitas	rendben	אֵ֥ין	אַיִן	H0369	0369	igen	Tn	particle	there.[is].not	οὐξ	G3756
+o290010180091	JOL 1:18!9	Jóel 1:18	identitas	rendben	מִרְעֶ֖ה	מִרְעֶה	H4829	4829	igen	Ncmsa	noun	pasture	νομὴ	
+o290010180101	JOL 1:18!10	Jóel 1:18	identitas	javaslat:strong_funkcio_kod	לָ	לְ		3807a	javaslat:funkcio_kod	R	preposition	for		
+o290010180102	JOL 1:18!10	Jóel 1:18	identitas	javaslat:strong_funkcio_kod	הֶ֑ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	them	αὐτοῖς	G0846
+o290010180111	JOL 1:18!11	Jóel 1:18	identitas	rendben	גַּם	גַּם	H1571	1571	igen	Ta	particle	also	καὶ	G2532
+o290010180121	JOL 1:18!12	Jóel 1:18	identitas	rendben	עֶדְרֵ֥י	עֵדֶר	H5739	5739	igen	Ncmpc	noun	the.flocks		
+o290010180131	JOL 1:18!13	Jóel 1:18	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of.(the)	τῶν	G3588
+o290010180132	JOL 1:18!13	Jóel 1:18	identitas	rendben	צֹּ֖אן	צֹאן	H6629	6629	igen	Ncbsa	noun	sheep	προβάτων	G4263
+o290010180141	JOL 1:18!14	Jóel 1:18	identitas	rendben	נֶאְשָֽׁמוּ	אָשַׁם	H0816	0816	igen	VNp3cp	verb	they.have.suffered	ἠφανίσθησαν	
+o290010190021	JOL 1:19!2	Jóel 1:19	identitas	rendben	יְהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	O.Yahweh	κύριε	G2962
+o290010190011	JOL 1:19!1	Jóel 1:19	identitas	rendben	אֵלֶ֥י	אֶל	H0413	0413	igen	R	preposition	to	πρὸς	G4314
+o290010190012	JOL 1:19!1	Jóel 1:19	identitas	javaslat:strong_funkcio_kod	ךָ	הוּא		3509b	javaslat:funkcio_kod	Sp2ms	suffix	you	σέ	G4571
+o290010190031	JOL 1:19!3	Jóel 1:19	identitas	rendben	אֶקְרָ֑א	קָרָא	H7121	7121	igen	Vqi1cs	verb	I.call	βοήσομαι	G0994
+o290010190041	JOL 1:19!4	Jóel 1:19	identitas	rendben	כִּ֣י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290010190051	JOL 1:19!5	Jóel 1:19	identitas	rendben	אֵ֗שׁ	אֵשׁ	H0784	0784	igen	Ncbsa	noun	fire	πῦρ	G4442
+o290010190061	JOL 1:19!6	Jóel 1:19	identitas	rendben	אָֽכְלָה֙	אָכַל	H0398	0398	igen	Vqp3fs	verb	it.has.consumed	ἀνήλωσεν	G0355
+o290010190071	JOL 1:19!7	Jóel 1:19	identitas	rendben	נְא֣וֹת	נָוָה	H4999	4999	igen	Ncfpc	noun	[the].pastures		
+o290010190081	JOL 1:19!8	Jóel 1:19	identitas	rendben	מִדְבָּ֔ר	מִדְבָּר	H4057	4057	igen	Ncmsa	noun	of.[the].wilderness	ἐρήμου	G2048
+o290010190091	JOL 1:19!9	Jóel 1:19	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010190092	JOL 1:19!9	Jóel 1:19	identitas	rendben	לֶ֣הָבָ֔ה	לֶהָבָה	H3852	3852	igen	Ncfsa	noun	a.flame	φλὸχ	G5395
+o290010190101	JOL 1:19!10	Jóel 1:19	identitas	rendben	לִהֲטָ֖ה	לָהַט	H3857	3857	igen	Vpp3fs	verb	it.has.set.ablaze	ἀνῆψεν	
+o290010190111	JOL 1:19!11	Jóel 1:19	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντα	G3956
+o290010190121	JOL 1:19!12	Jóel 1:19	identitas	rendben	עֲצֵ֥י	עֵץ	H6086	6086	igen	Ncmpc	noun	the.trees	χύλα	G3586
+o290010190131	JOL 1:19!13	Jóel 1:19	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τοῦ	G3588
+o290010190132	JOL 1:19!13	Jóel 1:19	identitas	rendben	שָּׂדֶֽה	שָׂדֶה	H7704	7704	igen	Ncmsa	noun	the.field	ἀγροῦ	G0068
+o290010200011	JOL 1:20!1	Jóel 1:20	identitas	rendben	גַּם	גַּם	H1571	1571	igen	Ta	particle	also	καὶ	G2532
+o290010200021	JOL 1:20!2	Jóel 1:20	identitas	rendben	בַּהֲמ֥וֹת	בְּהֵמָה	H0929	0929	igen	Ncfpc	noun	[the].animals	κτήνη	G2934
+o290010200031	JOL 1:20!3	Jóel 1:20	identitas	rendben	שָׂדֶ֖ה	שָׂדֶה	H7704	7704	igen	Ncmsa	noun	of.[the].field		
+o290010200041	JOL 1:20!4	Jóel 1:20	identitas	rendben	תַּעֲר֣וֹג	עָרַג	H6165	6165	igen	Vqi3fs	verb	it.pants	ἀνέβλεψαν	G0308
+o290010200051	JOL 1:20!5	Jóel 1:20	identitas	rendben	אֵלֶ֑י	אֶל	H0413	0413	igen	R	preposition	to	πρὸς	G4314
+o290010200052	JOL 1:20!5	Jóel 1:20	identitas	javaslat:strong_funkcio_kod	ךָ	הוּא		3509b	javaslat:funkcio_kod	Sp2ms	suffix	you	σέ	G4571
+o290010200061	JOL 1:20!6	Jóel 1:20	identitas	rendben	כִּ֤י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290010200071	JOL 1:20!7	Jóel 1:20	identitas	rendben	יָֽבְשׁוּ֙	יָבֵשׁ	H3001	3001	igen	Vqp3cp	verb	they.have.dried.up	ἐχηράνθησαν	
+o290010200081	JOL 1:20!8	Jóel 1:20	identitas	rendben	אֲפִ֣יקֵי	אָפִיק	H0650	0650	igen	Ncmpc	noun	[the].channels	ἀφέσεις	
+o290010200091	JOL 1:20!9	Jóel 1:20	identitas	rendben	מָ֔יִם	מַיִם	H4325	4325	igen	Ncmpa	noun	of.water	ὑδάτων	G5204
+o290010200101	JOL 1:20!10	Jóel 1:20	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290010200102	JOL 1:20!10	Jóel 1:20	identitas	rendben	אֵ֕שׁ	אֵשׁ	H0784	0784	igen	Ncbsa	noun	fire	πῦρ	G4442
+o290010200111	JOL 1:20!11	Jóel 1:20	identitas	rendben	אָכְלָ֖ה	אָכַל	H0398	0398	igen	Vqp3fs	verb	it.has.consumed	κατέφαγεν	G2719
+o290010200121	JOL 1:20!12	Jóel 1:20	identitas	rendben	נְא֥וֹת	נָוָה	H4999	4999	igen	Ncfpc	noun	the.pastures		
+o290010200131	JOL 1:20!13	Jóel 1:20	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τῆς	G3588
+o290010200132	JOL 1:20!13	Jóel 1:20	identitas	rendben	מִּדְבָּֽר	מִדְבָּר	H4057	4057	igen	Ncmsa	noun	the.wilderness	ἐρήμου	G2048
+o290020010011	JOL 2:1!1	Jóel 2:1	identitas	rendben	תִּקְע֨וּ	תָּקַע	H8628	8628	igen	Vqv2mp	verb	give.a.blast.on	σαλπίσατε	
+o290020010021	JOL 2:1!2	Jóel 2:1	identitas	rendben	שׁוֹפָ֜ר	שֹׁופָר	H7782	7782	igen	Ncmsa	noun	a.ram's.horn	σάλπιγγι	G4536
+o290020010031	JOL 2:1!3	Jóel 2:1	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o290020010032	JOL 2:1!3	Jóel 2:1	identitas	rendben	צִיּ֗וֹן	צִיּוֹן	H6726	6726	igen	Np	noun	Zion	σιων	G4622
+o290020010041	JOL 2:1!4	Jóel 2:1	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o290020010042	JOL 2:1!4	Jóel 2:1	identitas	rendben	הָרִ֨יעוּ֙	רוּעַ	H7321	7321	igen	Vhv2mp	verb	sound.a.battle.signal	κηρύχατε	G2784
+o290020010051	JOL 2:1!5	Jóel 2:1	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on	ἐν	G1722
+o290020010052	JOL 2:1!5	Jóel 2:1	identitas	rendben	הַ֣ר	הַר	H2022	2022	igen	Ncmsc	noun	the.mountain	ὄρει	G3735
+o290020010061	JOL 2:1!6	Jóel 2:1	identitas	rendben	קָדְשִׁ֔	קֹדֶשׁ	H6944	6944	igen	Ncmsc	noun	my.holiness	ἁγίῳ	G0040
+o290020010062	JOL 2:1!6	Jóel 2:1	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o290020010071	JOL 2:1!7	Jóel 2:1	identitas	rendben	יִרְגְּז֕וּ	רָגַז	H7264	7264	igen	Vqj3mp	verb	let.them.tremble		
+o290020010081	JOL 2:1!8	Jóel 2:1	identitas	rendben	כֹּ֖ל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντες	G3956
+o290020010091	JOL 2:1!9	Jóel 2:1	identitas	rendben	יֹשְׁבֵ֣י	יָשַׁב	H3427	3427	igen	Vqrmpc	verb	the.inhabitants	κατοικοῦντες	G2730
+o290020010101	JOL 2:1!10	Jóel 2:1	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τὴν	G3588
+o290020010102	JOL 2:1!10	Jóel 2:1	identitas	rendben	אָ֑רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	the.land	γῆν	G1093
+o290020010111	JOL 2:1!11	Jóel 2:1	identitas	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o290020010121	JOL 2:1!12	Jóel 2:1	identitas	rendben	בָ֥א	בּוֹא	H0935	0935	igen	Vqrmsa	verb	[is].about.to.come	πάρεστιν	G3918
+o290020010131	JOL 2:1!13	Jóel 2:1	identitas	rendben	יוֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	the.day	ἡμέρα	G2250
+o290020010141	JOL 2:1!14	Jóel 2:1	identitas	rendben	יְהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o290020010151	JOL 2:1!15	Jóel 2:1	identitas	rendben	כִּ֥י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290020010161	JOL 2:1!16	Jóel 2:1	identitas	rendben	קָרֽוֹב	קָרֹוב	H7138	7138	igen	Aamsa	adjective	[it.is].near	ἐγγύς	G1451
+o290020020011	JOL 2:2!1	Jóel 2:2	identitas	rendben	י֧וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	a.day	ἡμέρα	G2250
+o290020020021	JOL 2:2!2	Jóel 2:2	identitas	rendben	חֹ֣שֶׁךְ	חֹשֶׁךְ	H2822	2822	igen	Ncmsa	noun	of.darkness	σκότους	G4655
+o290020020031	JOL 2:2!3	Jóel 2:2	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020020032	JOL 2:2!3	Jóel 2:2	identitas	rendben	אֲפֵלָ֗ה	אֲפֵלָה	H0653	0653	igen	Ncfsa	noun	gloom	γνόφου	
+o290020020041	JOL 2:2!4	Jóel 2:2	identitas	rendben	י֤וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	a.day	ἡμέρα	G2250
+o290020020051	JOL 2:2!5	Jóel 2:2	identitas	rendben	עָנָן֙	עָנָן	H6051	6051	igen	Ncmsa	noun	of.cloud	νεφέλης	G3507
+o290020020061	JOL 2:2!6	Jóel 2:2	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020020062	JOL 2:2!6	Jóel 2:2	identitas	rendben	עֲרָפֶ֔ל	עֲרָפֶל	H6205	6205	igen	Ncmsa	noun	thick.darkness	ὁμίξλης	
+o290020020071	JOL 2:2!7	Jóel 2:2	identitas	javaslat:strong_funkcio_kod	כְּ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	like	ὡς	G5613
+o290020020072	JOL 2:2!7	Jóel 2:2	identitas	rendben	שַׁ֖חַר	שַׁחַר	H7837	7837	igen	Ncmsa	noun	dawn	ὄρθρος	
+o290020020081	JOL 2:2!8	Jóel 2:2	identitas	rendben	פָּרֻ֣שׂ	פָּרַשׂ	H6566	6566	igen	Vqsmsa	verb	spread.out	ξυθήσεται	
+o290020020091	JOL 2:2!9	Jóel 2:2	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	over	ἐπὶ	G1909
+o290020020101	JOL 2:2!10	Jóel 2:2	identitas	javaslat:strong_funkcio_kod	הֶֽ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰ	G3588
+o290020020102	JOL 2:2!10	Jóel 2:2	identitas	rendben	הָרִ֑ים	הַר	H2022	2022	igen	Ncmpa	noun	mountains	ὄρη	G3735
+o290020020111	JOL 2:2!11	Jóel 2:2	identitas	rendben	עַ֚ם	עַם	H5971	5971	igen	Ncmsa	noun	a.people	λαὸς	G2992
+o290020020121	JOL 2:2!12	Jóel 2:2	identitas	rendben	רַ֣ב	רַב	H7227	7227	igen	Aamsa	adjective	numerous	πολὺς	G4183
+o290020020131	JOL 2:2!13	Jóel 2:2	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020020132	JOL 2:2!13	Jóel 2:2	identitas	rendben	עָצ֔וּם	עָצוּם	H6099	6099	igen	Aamsa	adjective	mighty	ἰσξυρός	G2478
+o290020020141	JOL 2:2!14	Jóel 2:2	identitas	rendben	כָּמֹ֗	כְּמוֹ	H3644	3644	igen	R	preposition	like	ὅμοιος	G3664
+o290020020142	JOL 2:2!14	Jóel 2:2	identitas	javaslat:strong_funkcio_kod	הוּ	הוּא		1930a	javaslat:funkcio_kod	Sp3ms	suffix	it	αὐτῷ	G0846
+o290020020151	JOL 2:2!15	Jóel 2:2	identitas	rendben	לֹ֤א	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o290020020161	JOL 2:2!16	Jóel 2:2	identitas	rendben	נִֽהְיָה֙	הָיָה	H1961	1961	igen	VNp3ms	verb	it.has.occurred	γέγονεν	G1096
+o290020020171	JOL 2:2!17	Jóel 2:2	identitas	rendben	מִן	מִן	H4480	4480	igen	R	preposition	since	ἀπὸ	G0575
+o290020020181	JOL 2:2!18	Jóel 2:2	identitas	javaslat:strong_funkcio_kod	הָ֣	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	τοῦ	G3588
+o290020020182	JOL 2:2!18	Jóel 2:2	identitas	rendben	עוֹלָ֔ם	עוֹלָם	H5769	5769	igen	Ncmsa	noun	antiquity	αἰῶνος	G0165
+o290020020191	JOL 2:2!19	Jóel 2:2	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020020192	JOL 2:2!19	Jóel 2:2	identitas	rendben	אַֽחֲרָי	אַחַר	H0310	0310	igen	R	preposition	after	μετ’	G3326
+o290020020193	JOL 2:2!19	Jóel 2:2	identitas	javaslat:strong_funkcio_kod	ו֙	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	it	αὐτὸν	G0846
+o290020020201	JOL 2:2!20	Jóel 2:2	identitas	rendben	לֹ֣א	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o290020020211	JOL 2:2!21	Jóel 2:2	identitas	rendben	יוֹסֵ֔ף	יָסַף	H3254	3254	igen	Vhi3ms	verb	it.will.repeat	προστεθήσεται	G4369
+o290020020221	JOL 2:2!22	Jóel 2:2	identitas	rendben	עַד	עַד	H5704	5704	igen	R	preposition	until	ἕως	G2193
+o290020020231	JOL 2:2!23	Jóel 2:2	identitas	rendben	שְׁנֵ֖י	שָׁנָה	H8141	8141	igen	Acmdc	adjective	years	ἐτῶν	G2094
+o290020020241	JOL 2:2!24	Jóel 2:2	identitas	rendben	דּ֥וֹר	דּוֹר	H1755	1755	igen	Ncmsa	noun	of.a.generation	γενεὰς	G1074
+o290020020251	JOL 2:2!25	Jóel 2:2	identitas	javaslat:strong_funkcio_kod	וָ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o290020020252	JOL 2:2!25	Jóel 2:2	identitas	rendben	דֽוֹר	דּוֹר	H1755	1755	igen	Ncmsa	noun	a.generation	γενεῶν	G1074
+o290020030011	JOL 2:3!1	Jóel 2:3	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	before	τὰ	G3588
+o290020030012	JOL 2:3!1	Jóel 2:3	identitas	rendben	פָנָי	פָּנֶה	H6440	6440	igen	Ncbpc	noun		ἔμπροσθεν	G1715
+o290020030013	JOL 2:3!1	Jóel 2:3	identitas	javaslat:strong_funkcio_kod	ו֙	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	it	καὶ	G2532
+o290020030021	JOL 2:3!2	Jóel 2:3	identitas	rendben	אָ֣כְלָה	אָכַל	H0398	0398	igen	Vqp3fs	verb	it.has.consumed	ἀναπτομένη	G0381
+o290020030031	JOL 2:3!3	Jóel 2:3	identitas	rendben	אֵ֔שׁ	אֵשׁ	H0784	0784	igen	Ncbsa	noun	fire		
+o290020030041	JOL 2:3!4	Jóel 2:3	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	φλόχ	G5395
+o290020030042	JOL 2:3!4	Jóel 2:3	identitas	rendben	אַחֲרָ֖י	אַחַר	H0310	0310	igen	R	preposition	after		
+o290020030043	JOL 2:3!4	Jóel 2:3	identitas	javaslat:strong_funkcio_kod	ו	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	it	αὐτοῦ	G0846
+o290020030051	JOL 2:3!5	Jóel 2:3	identitas	rendben	תְּלַהֵ֣ט	לָהַט	H3857	3857	igen	Vpi3fs	verb	it.sets.ablaze		
+o290020030061	JOL 2:3!6	Jóel 2:3	identitas	rendben	לֶֽהָבָ֑ה	לֶהָבָה	H3852	3852	igen	Ncfsa	noun	a.flame		
+o290020030071	JOL 2:3!7	Jóel 2:3	identitas	javaslat:strong_funkcio_kod	כְּ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	[is].like	αὐτοῦ	G0846
+o290020030072	JOL 2:3!7	Jóel 2:3	identitas	rendben	גַן	גַּן	H1588	1588	igen	Ncbsc	noun	the.garden	πεδίον	
+o290020030081	JOL 2:3!8	Jóel 2:3	identitas	rendben	עֵ֨דֶן	עֵדֶן	H5731	5731	igen	Np	noun	of.Eden		
+o290020030091	JOL 2:3!9	Jóel 2:3	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἀφανισμοῦ	G0854
+o290020030092	JOL 2:3!9	Jóel 2:3	identitas	rendben	אָ֜רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	land	καὶ	G2532
+o290020030101	JOL 2:3!10	Jóel 2:3	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	before		
+o290020030102	JOL 2:3!10	Jóel 2:3	identitas	rendben	פָנָ֗י	פָּנֶה	H6440	6440	igen	Ncbpc	noun			
+o290020030103	JOL 2:3!10	Jóel 2:3	identitas	javaslat:strong_funkcio_kod	ו	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	it		
+o290020030111	JOL 2:3!11	Jóel 2:3	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	οὐκ	G3756
+o290020030112	JOL 2:3!11	Jóel 2:3	identitas	rendben	אַֽחֲרָי	אַחַר	H0310	0310	igen	R	preposition	after	ἔσται	G2071
+o290020030113	JOL 2:3!11	Jóel 2:3	identitas	javaslat:strong_funkcio_kod	ו֙	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	it	αὐτῷ	G0846
+o290020030121	JOL 2:3!12	Jóel 2:3	identitas	rendben	מִדְבַּ֣ר	מִדְבָּר	H4057	4057	igen	Ncmsc	noun	a.wilderness		
+o290020030131	JOL 2:3!13	Jóel 2:3	identitas	rendben	שְׁמָמָ֔ה	שְׁמָמָה	H8077	8077	igen	Ncfsa	noun	of.desolation		
+o290020030141	JOL 2:3!14	Jóel 2:3	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o290020030142	JOL 2:3!14	Jóel 2:3	identitas	rendben	גַם	גַּם	H1571	1571	igen	Ta	particle	also		
+o290020030151	JOL 2:3!15	Jóel 2:3	identitas	rendben	פְּלֵיטָ֖ה	פְּלֵיטָה	H6413	6413	igen	Ncfsa	noun	escape		
+o290020030161	JOL 2:3!16	Jóel 2:3	identitas	rendben	לֹא	לֹא	H3808	3808	igen	Tn	particle	not		
+o290020030171	JOL 2:3!17	Jóel 2:3	identitas	rendben	הָ֥יְתָה	הָיָה	H1961	1961	igen	Vqp3fs	verb	it.belongs		
+o290020030181	JOL 2:3!18	Jóel 2:3	identitas	javaslat:strong_funkcio_kod	לּֽ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to		
+o290020030182	JOL 2:3!18	Jóel 2:3	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	it		
+o290020040011	JOL 2:4!1	Jóel 2:4	identitas	javaslat:strong_funkcio_kod	כְּ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	[is].like.[the]	ὡς	G5613
+o290020040012	JOL 2:4!1	Jóel 2:4	identitas	rendben	מַרְאֵ֥ה	מַרְאֶה	H4758	4758	igen	Ncmsc	noun	appearance	ὅρασις	G3706
+o290020040021	JOL 2:4!2	Jóel 2:4	identitas	rendben	סוּסִ֖ים	סוּס	H5483	5483	igen	Ncmpa	noun	of.horses	ἵππων	G2462
+o290020040031	JOL 2:4!3	Jóel 2:4	identitas	rendben	מַרְאֵ֑	מַרְאֶה	H4758	4758	igen	Ncmsc	noun	appearance	ὄψις	G3799
+o290020040032	JOL 2:4!3	Jóel 2:4	identitas	javaslat:strong_funkcio_kod	הוּ	הוּא		1930a	javaslat:funkcio_kod	Sp3ms	suffix	its		
+o290020040041	JOL 2:4!4	Jóel 2:4	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020040042	JOL 2:4!4	Jóel 2:4	identitas	javaslat:strong_funkcio_kod	כְ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	like	ὡς	G5613
+o290020040043	JOL 2:4!4	Jóel 2:4	identitas	rendben	פָרָשִׁ֖ים	פָּרָשׁ	H6571	6571	igen	Ncmpa	noun	horsemen	ἱππεῖς	G2460
+o290020040051	JOL 2:4!5	Jóel 2:4	identitas	rendben	כֵּ֥ן	כֵּן	H3651	3651	igen	Tm	particle	so	οὕτως	G3779
+o290020040061	JOL 2:4!6	Jóel 2:4	identitas	rendben	יְרוּצֽוּ	רוּץ	H7323	7323	igen	Vqi3mp	verb	they		
+o290020040062	JOL 2:4!6	Jóel 2:4	identitas	javaslat:strong_funkcio_kod	ן	נ		4993b	javaslat:funkcio_kod	Sn	suffix	run	καταδιώχονται	
+o290020050011	JOL 2:5!1	Jóel 2:5	identitas	javaslat:strong_funkcio_kod	כְּ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	like.[the]	ὡς	G5613
+o290020050012	JOL 2:5!1	Jóel 2:5	identitas	rendben	ק֣וֹל	קוֹל	H6963	6963	igen	Ncmsc	noun	sound	φωνὴ	G5456
+o290020050021	JOL 2:5!2	Jóel 2:5	identitas	rendben	מַרְכָּב֗וֹת	מֶרְכָּבָה	H4818	4818	igen	Ncfpa	noun	of.chariots	ἁρμάτων	G0716
+o290020050031	JOL 2:5!3	Jóel 2:5	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	over	ἐπὶ	G1909
+o290020050041	JOL 2:5!4	Jóel 2:5	identitas	rendben	רָאשֵׁ֤י	רֹאשׁ	H7218	7218	igen	Ncmpc	noun	the.tops		
+o290020050051	JOL 2:5!5	Jóel 2:5	identitas	javaslat:strong_funkcio_kod	הֶֽ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τῶν	G3588
+o290020050052	JOL 2:5!5	Jóel 2:5	identitas	rendben	הָרִים֙	הַר	H2022	2022	igen	Ncmpa	noun	the.mountains	ὀρέων	G3735
+o290020050061	JOL 2:5!6	Jóel 2:5	identitas	rendben	יְרַקֵּד֔וּ	רָקַד	H7540	7540	igen	Vpi3mp	verb	they		
+o290020050062	JOL 2:5!6	Jóel 2:5	identitas	javaslat:strong_funkcio_kod	ן	נ		4993b	javaslat:funkcio_kod	Sn	suffix	leap	ἐχαλοῦνται	
+o290020050071	JOL 2:5!7	Jóel 2:5	identitas	javaslat:strong_funkcio_kod	כְּ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	like.[the]	ὡς	G5613
+o290020050072	JOL 2:5!7	Jóel 2:5	identitas	rendben	קוֹל֙	קוֹל	H6963	6963	igen	Ncmsc	noun	sound	φωνὴ	G5456
+o290020050081	JOL 2:5!8	Jóel 2:5	identitas	rendben	לַ֣הַב	לַהַב	H3851	3851	igen	Ncmsc	noun	of.a.flame	φλογὸς	
+o290020050091	JOL 2:5!9	Jóel 2:5	identitas	rendben	אֵ֔שׁ	אֵשׁ	H0784	0784	igen	Ncbsa	noun	of.fire	πυρὸς	G4442
+o290020050101	JOL 2:5!10	Jóel 2:5	identitas	rendben	אֹכְלָ֖ה	אָכַל	H0398	0398	igen	Vqrfsa	verb	[which].consumes	κατεσθιούσης	
+o290020050111	JOL 2:5!11	Jóel 2:5	identitas	rendben	קָ֑שׁ	קַשׁ	H7179	7179	igen	Ncmsa	noun	stubble	καλάμην	G2562
+o290020050121	JOL 2:5!12	Jóel 2:5	identitas	javaslat:strong_funkcio_kod	כְּ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	like	ὡς	G5613
+o290020050122	JOL 2:5!12	Jóel 2:5	identitas	rendben	עַ֣ם	עַם	H5971	5971	igen	Ncmsa	noun	a.people	λαὸς	G2992
+o290020050131	JOL 2:5!13	Jóel 2:5	identitas	rendben	עָצ֔וּם	עָצוּם	H6099	6099	igen	Aamsa	adjective	mighty	ἰσξυρὸς	G2478
+o290020050141	JOL 2:5!14	Jóel 2:5	identitas	rendben	עֱר֖וּךְ	עָרַךְ	H6186	6186	igen	Vqsmsc	verb	deployed	παρατασσόμενος	
+o290020050151	JOL 2:5!15	Jóel 2:5	identitas	rendben	מִלְחָמָֽה	מִלְחָמָה	H4421	4421	igen	Ncfsa	noun	of.battle	πόλεμον	G4171
+o290020060011	JOL 2:6!1	Jóel 2:6	identitas	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from	ἀπὸ	G0575
+o290020060012	JOL 2:6!1	Jóel 2:6	identitas	rendben	פָּנָ֖י	פָּנֶה	H6440	6440	igen	Ncbpc	noun	before	προσώπου	G4383
+o290020060013	JOL 2:6!1	Jóel 2:6	identitas	javaslat:strong_funkcio_kod	ו	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	it	αὐτοῦ	G0846
+o290020060021	JOL 2:6!2	Jóel 2:6	identitas	javaslat:strong_betu_alap	יָחִ֣ילוּ	חיל	H2342	2342a	javaslat:betu_alap	Vqi3mp	verb	they.are.in.anguish	συντριβήσονται	
+o290020060031	JOL 2:6!3	Jóel 2:6	identitas	rendben	עַמִּ֑ים	עַם	H5971	5971	igen	Ncmpa	noun	peoples	λαοί	G2992
+o290020060041	JOL 2:6!4	Jóel 2:6	identitas	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πᾶν	G3956
+o290020060051	JOL 2:6!5	Jóel 2:6	identitas	rendben	פָּנִ֖ים	פָּנֶה	H6440	6440	igen	Ncbpa	noun	faces	πρόσωπον	G4383
+o290020060061	JOL 2:6!6	Jóel 2:6	identitas	rendben	קִבְּצ֥וּ	קָבַץ	H6908	6908	igen	Vpp3cp	verb	they.gather		
+o290020060071	JOL 2:6!7	Jóel 2:6	identitas	rendben	פָארֽוּר	פָּארוּר	H6289	6289	igen	Ncmsa	noun	a.glow	ξύτρας	
+o290020070011	JOL 2:7!1	Jóel 2:7	identitas	javaslat:strong_funkcio_kod	כְּ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	like	ὡς	G5613
+o290020070012	JOL 2:7!1	Jóel 2:7	identitas	rendben	גִבּוֹרִ֣ים	גִּבּוֹר	H1368	1368	igen	Aampa	adjective	warriors	μαξηταὶ	
+o290020070021	JOL 2:7!2	Jóel 2:7	identitas	rendben	יְרֻצ֔וּ	רוּץ	H7323	7323	igen	Vqi3mp	verb	they		
+o290020070022	JOL 2:7!2	Jóel 2:7	identitas	javaslat:strong_funkcio_kod	ן	נ		4993b	javaslat:funkcio_kod	Sn	suffix	run	δραμοῦνται	
+o290020070031	JOL 2:7!3	Jóel 2:7	identitas	javaslat:strong_funkcio_kod	כְּ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	like	ὡς	G5613
+o290020070032	JOL 2:7!3	Jóel 2:7	identitas	rendben	אַנְשֵׁ֥י	אִישׁ	H0376	0376	igen	Ncmpc	noun	men	ἄνδρες	G0435
+o290020070041	JOL 2:7!4	Jóel 2:7	identitas	rendben	מִלְחָמָ֖ה	מִלְחָמָה	H4421	4421	igen	Ncfsa	noun	of.war	πολεμισταὶ	
+o290020070051	JOL 2:7!5	Jóel 2:7	identitas	rendben	יַעֲל֣וּ	עָלָה	H5927	5927	igen	Vqi3mp	verb	they.go.up	ἀναβήσονται	G0305
+o290020070061	JOL 2:7!6	Jóel 2:7	identitas	rendben	חוֹמָ֑ה	חוֹמָה	H2346	2346	igen	Ncfsa	noun	a.wall	τείξη	G5038
+o290020070071	JOL 2:7!7	Jóel 2:7	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020070072	JOL 2:7!7	Jóel 2:7	identitas	rendben	אִ֤ישׁ	אִישׁ	H0376	0376	igen	Ncmsa	noun	each	ἕκαστος	G1538
+o290020070081	JOL 2:7!8	Jóel 2:7	identitas	javaslat:strong_funkcio_kod	בִּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on	ἐν	G1722
+o290020070082	JOL 2:7!8	Jóel 2:7	identitas	rendben	דְרָכָי	דֶּרֶךְ	H1870	1870	igen	Ncbpc	noun	ways	ὁδῷ	G3598
+o290020070083	JOL 2:7!8	Jóel 2:7	identitas	javaslat:strong_funkcio_kod	ו֙	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	its	αὐτοῦ	G0846
+o290020070091	JOL 2:7!9	Jóel 2:7	identitas	rendben	יֵֽלֵכ֔וּ	הלך	H1980	1980	igen	Vqi3mp	verb	they		
+o290020070092	JOL 2:7!9	Jóel 2:7	identitas	javaslat:strong_funkcio_kod	ן	נ		4993b	javaslat:funkcio_kod	Sn	suffix	go	πορεύσεται	G4198
+o290020070101	JOL 2:7!10	Jóel 2:7	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020070102	JOL 2:7!10	Jóel 2:7	identitas	rendben	לֹ֥א	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o290020070111	JOL 2:7!11	Jóel 2:7	identitas	javaslat:strong_betu_alap	יְעַבְּט֖וּ	עָבַט	H5670	5670a	javaslat:betu_alap	Vpi3mp	verb	they		
+o290020070112	JOL 2:7!11	Jóel 2:7	identitas	javaslat:strong_funkcio_kod	ן	נ		4993b	javaslat:funkcio_kod	Sn	suffix	exchange	ἐκκλίνωσιν	
+o290020070121	JOL 2:7!12	Jóel 2:7	identitas	rendben	אֹרְחוֹתָֽ	אֹרַח	H0734	0734	igen	Ncbpc	noun	paths	τρίβους	G5147
+o290020070122	JOL 2:7!12	Jóel 2:7	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o290020080011	JOL 2:8!1	Jóel 2:8	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020080012	JOL 2:8!1	Jóel 2:8	identitas	rendben	אִ֤ישׁ	אִישׁ	H0376	0376	igen	Ncmsa	noun	each	ἕκαστος	G1538
+o290020080021	JOL 2:8!2	Jóel 2:8	identitas	rendben	אָחִי	אָח	H0251	0251	igen	Ncmsc	noun	brother	ἀδελφοῦ	G0080
+o290020080022	JOL 2:8!2	Jóel 2:8	identitas	javaslat:strong_funkcio_kod	ו֙	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	its	αὐτοῦ	G0846
+o290020080031	JOL 2:8!3	Jóel 2:8	identitas	rendben	לֹ֣א	לֹא	H3808	3808	igen	Tn	particle	not	οὐκ	G3756
+o290020080041	JOL 2:8!4	Jóel 2:8	identitas	rendben	יִדְחָק֔וּ	דָּחַק	H1766	1766	igen	Vqi3mp	verb	they		
+o290020080042	JOL 2:8!4	Jóel 2:8	identitas	javaslat:strong_funkcio_kod	ן	נ		4993b	javaslat:funkcio_kod	Sn	suffix	thrust	ἀφέχεται	
+o290020080051	JOL 2:8!5	Jóel 2:8	identitas	rendben	גֶּ֥בֶר	גֶּבֶר	H1397	1397	igen	Ncmsa	noun	a.man	καταβαρυνόμενοι	G0916
+o290020080061	JOL 2:8!6	Jóel 2:8	identitas	javaslat:strong_funkcio_kod	בִּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on	ἐν	G1722
+o290020080062	JOL 2:8!6	Jóel 2:8	identitas	rendben	מְסִלָּת֖	מְסִלָּה	H4546	4546	igen	Ncfsc	noun	track		
+o290020080063	JOL 2:8!6	Jóel 2:8	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	its		
+o290020080071	JOL 2:8!7	Jóel 2:8	identitas	rendben	יֵֽלֵכ֑וּ	הלך	H1980	1980	igen	Vqi3mp	verb	they		
+o290020080072	JOL 2:8!7	Jóel 2:8	identitas	javaslat:strong_funkcio_kod	ן	נ		4993b	javaslat:funkcio_kod	Sn	suffix	go	πορεύσονται	G4198
+o290020080081	JOL 2:8!8	Jóel 2:8	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020080082	JOL 2:8!8	Jóel 2:8	identitas	rendben	בְעַ֥ד	בַּעַד	H1157	1157	igen	R	preposition	through	ἐν	G1722
+o290020080091	JOL 2:8!9	Jóel 2:8	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τοῖς	G3588
+o290020080092	JOL 2:8!9	Jóel 2:8	identitas	rendben	שֶּׁ֛לַח	שֶׁלַח	H7973	7973	igen	Ncmsa	noun	weapon[s]		
+o290020080101	JOL 2:8!10	Jóel 2:8	identitas	rendben	יִפֹּ֖לוּ	נָפַל	H5307	5307	igen	Vqi3mp	verb	they.fall	πεσοῦνται	G4098
+o290020080111	JOL 2:8!11	Jóel 2:8	identitas	rendben	לֹ֥א	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o290020080121	JOL 2:8!12	Jóel 2:8	identitas	rendben	יִבְצָֽעוּ	בָּצַע	H1214	1214	igen	Vqi3mp	verb	they.stop	συντελεσθῶσιν	G4931
+o290020090011	JOL 2:9!1	Jóel 2:9	identitas	javaslat:strong_funkcio_kod	בָּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	on	τῆς	G3588
+o290020090011ה	JOL 2:9!1	Jóel 2:9	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290020090012	JOL 2:9!1	Jóel 2:9	identitas	rendben	עִ֣יר	עִיר	H5892	5892	igen	Ncfsa	noun	city	πόλεως	G4172
+o290020090021	JOL 2:9!2	Jóel 2:9	identitas	rendben	יָשֹׁ֗קּוּ	שָׁקַק	H8264	8264	igen	Vqi3mp	verb	they.rush	ἐπιλήμψονται	
+o290020090031	JOL 2:9!3	Jóel 2:9	identitas	javaslat:strong_funkcio_kod	בַּֽ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	on		
+o290020090031ה	JOL 2:9!3	Jóel 2:9	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290020090032	JOL 2:9!3	Jóel 2:9	identitas	rendben	חוֹמָה֙	חוֹמָה	H2346	2346	igen	Ncfsa	noun	wall		
+o290020090041	JOL 2:9!4	Jóel 2:9	identitas	rendben	יְרֻצ֔וּ	רוּץ	H7323	7323	igen	Vqi3mp	verb	they		
+o290020090042	JOL 2:9!4	Jóel 2:9	identitas	javaslat:strong_funkcio_kod	ן	נ		4993b	javaslat:funkcio_kod	Sn	suffix	run	δραμοῦνται	
+o290020090051	JOL 2:9!5	Jóel 2:9	identitas	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	in		
+o290020090051ה	JOL 2:9!5	Jóel 2:9	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290020090052	JOL 2:9!5	Jóel 2:9	identitas	rendben	בָּתִּ֖ים	בַּיִת	H1004	1004	igen	Ncmpa	noun	houses	οἰκίας	G3614
+o290020090061	JOL 2:9!6	Jóel 2:9	identitas	rendben	יַעֲל֑וּ	עָלָה	H5927	5927	igen	Vqi3mp	verb	they.go.up	ἀναβήσονται	G0305
+o290020090071	JOL 2:9!7	Jóel 2:9	identitas	rendben	בְּעַ֧ד	בַּעַד	H1157	1157	igen	R	preposition	through	διὰ	G1223
+o290020090081	JOL 2:9!8	Jóel 2:9	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290020090082	JOL 2:9!8	Jóel 2:9	identitas	rendben	חַלּוֹנִ֛ים	חַלּוֹן	H2474	2474	igen	Ncbpa	noun	windows	θυρίδων	
+o290020090091	JOL 2:9!9	Jóel 2:9	identitas	rendben	יָבֹ֖אוּ	בּוֹא	H0935	0935	igen	Vqi3mp	verb	they.go	εἰσελεύσονται	G1525
+o290020090101	JOL 2:9!10	Jóel 2:9	identitas	javaslat:strong_funkcio_kod	כַּ	כְּ		3509a	javaslat:funkcio_kod	Rd	preposition	like	ὡς	G5613
+o290020090101ה	JOL 2:9!10	Jóel 2:9	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o290020090102	JOL 2:9!10	Jóel 2:9	identitas	rendben	גַּנָּֽב	גַּנָּב	H1590	1590	igen	Ncmsa	noun	thief	κλέπται	G2812
+o290020100011	JOL 2:10!1	Jóel 2:10	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	before	πρὸ	G4253
+o290020100012	JOL 2:10!1	Jóel 2:10	identitas	rendben	פָנָי	פָּנֶה	H6440	6440	igen	Ncbpc	noun		προσώπου	G4383
+o290020100013	JOL 2:10!1	Jóel 2:10	identitas	javaslat:strong_funkcio_kod	ו֙	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	it	αὐτῶν	G0846
+o290020100021	JOL 2:10!2	Jóel 2:10	identitas	rendben	רָ֣גְזָה	רָגַז	H7264	7264	igen	Vqp3fs	verb	it.trembles	συγξυθήσεται	
+o290020100031	JOL 2:10!3	Jóel 2:10	identitas	rendben	אֶ֔רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	[the].earth	γῆ	G1093
+o290020100041	JOL 2:10!4	Jóel 2:10	identitas	rendben	רָעֲשׁ֖וּ	רָעַשׁ	H7493	7493	igen	Vqp3cp	verb	they.shake		
+o290020100051	JOL 2:10!5	Jóel 2:10	identitas	rendben	שָׁמָ֑יִם	שָׁמַיִם	H8064	8064	igen	Ncmpa	noun	[the].heavens	οὐρανός	G3772
+o290020100061	JOL 2:10!6	Jóel 2:10	identitas	rendben	שֶׁ֤מֶשׁ	שֶׁמֶשׁ	H8121	8121	igen	Ncbsa	noun	sun	ἥλιος	G2246
+o290020100071	JOL 2:10!7	Jóel 2:10	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020100072	JOL 2:10!7	Jóel 2:10	identitas	rendben	יָרֵ֨חַ֙	יָרֵחַ	H3394	3394	igen	Ncmsa	noun	moon		
+o290020100081	JOL 2:10!8	Jóel 2:10	identitas	rendben	קָדָ֔רוּ	קָדַר	H6937	6937	igen	Vqp3cp	verb	they.become.dark	συσκοτάσουσιν	
+o290020100091	JOL 2:10!9	Jóel 2:10	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and.[the]	καὶ	G2532
+o290020100092	JOL 2:10!9	Jóel 2:10	identitas	rendben	כוֹכָבִ֖ים	כּוֹכָב	H3556	3556	igen	Ncmpa	noun	stars	ἄστρα	G0798
+o290020100101	JOL 2:10!10	Jóel 2:10	identitas	rendben	אָסְפ֥וּ	אָסַף	H0622	0622	igen	Vqp3cp	verb	they.withdraw	δύσουσιν	
+o290020100111	JOL 2:10!11	Jóel 2:10	identitas	rendben	נָגְהָֽ	נֹגַהּ	H5051	5051	igen	Ncfsc	noun	brightness		
+o290020100112	JOL 2:10!11	Jóel 2:10	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o290020110011	JOL 2:11!1	Jóel 2:11	identitas	javaslat:strong_funkcio_kod	וַֽ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020110012	JOL 2:11!1	Jóel 2:11	identitas	rendben	יהוָ֗ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o290020110021	JOL 2:11!2	Jóel 2:11	identitas	rendben	נָתַ֤ן	נָתַן	H5414	5414	igen	Vqp3ms	verb	he.gives.forth	δώσει	G1325
+o290020110031	JOL 2:11!3	Jóel 2:11	identitas	rendben	קוֹל	קוֹל	H6963	6963	igen	Ncmsc	noun	voice	φωνὴν	G5456
+o290020110032	JOL 2:11!3	Jóel 2:11	identitas	javaslat:strong_funkcio_kod	וֹ֙	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o290020110041	JOL 2:11!4	Jóel 2:11	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	before	πρὸ	G4253
+o290020110042	JOL 2:11!4	Jóel 2:11	identitas	rendben	פְנֵ֣י	פָּנֶה	H6440	6440	igen	Ncbpc	noun		προσώπου	G4383
+o290020110051	JOL 2:11!5	Jóel 2:11	identitas	rendben	חֵיל֔	חַיִל	H2428	2428	igen	Ncmsc	noun	army	δυνάμεως	G1411
+o290020110052	JOL 2:11!5	Jóel 2:11	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o290020110061	JOL 2:11!6	Jóel 2:11	identitas	rendben	כִּ֣י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290020110071	JOL 2:11!7	Jóel 2:11	identitas	rendben	רַ֤ב	רַב	H7227	7227	igen	Aamsa	adjective	[is].great	πολλή	G4183
+o290020110081	JOL 2:11!8	Jóel 2:11	identitas	rendben	מְאֹד֙	מְאֹד	H3966	3966	igen	D	adverb	very	σφόδρα	G4970
+o290020110091	JOL 2:11!9	Jóel 2:11	identitas	rendben	מַחֲנֵ֔	מַחֲנֶה	H4264	4264	igen	Ncbsc	noun	camp	παρεμβολὴ	
+o290020110092	JOL 2:11!9	Jóel 2:11	identitas	javaslat:strong_funkcio_kod	הוּ	הוּא		1930a	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o290020110101	JOL 2:11!10	Jóel 2:11	identitas	rendben	כִּ֥י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290020110111	JOL 2:11!11	Jóel 2:11	identitas	rendben	עָצ֖וּם	עָצוּם	H6099	6099	igen	Aamsa	adjective	[is].mighty	ἰσξυρὰ	G2478
+o290020110121	JOL 2:11!12	Jóel 2:11	identitas	rendben	עֹשֵׂ֣ה	עָשָׂה	H6213	6213	igen	Vqrmsc	verb	the.[one.who].does	ἔργα	G2041
+o290020110131	JOL 2:11!13	Jóel 2:11	identitas	rendben	דְבָר֑	דָּבָר	H1697	1697	igen	Ncmsc	noun	word	λόγων	G3056
+o290020110132	JOL 2:11!13	Jóel 2:11	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	(of).his	αὐτοῦ	G0846
+o290020110141	JOL 2:11!14	Jóel 2:11	identitas	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o290020110161	JOL 2:11!16	Jóel 2:11	identitas	rendben	יוֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	the.day	ἡμέρα	G2250
+o290020110171	JOL 2:11!17	Jóel 2:11	identitas	rendben	יְהוָ֛ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh		
+o290020110151	JOL 2:11!15	Jóel 2:11	identitas	rendben	גָד֧וֹל	גָּדוֹל	H1419	1419	igen	Aamsa	adjective	[is].great	μεγάλη	G3173
+o290020110181	JOL 2:11!18	Jóel 2:11	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020110182	JOL 2:11!18	Jóel 2:11	identitas	rendben	נוֹרָ֥א	יָרֵא	H3372	3372	igen	VNrmsa	verb	awesome	ἐπιφανὴς	
+o290020110191	JOL 2:11!19	Jóel 2:11	identitas	rendben	מְאֹ֖ד	מְאֹד	H3966	3966	igen	D	adverb	exceedingly	σφόδρα	G4970
+o290020110201	JOL 2:11!20	Jóel 2:11	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020110202	JOL 2:11!20	Jóel 2:11	identitas	rendben	מִ֥י	מִי	H4310	4310	igen	Ti	particle	who?	τίς	G5101
+o290020110211	JOL 2:11!21	Jóel 2:11	identitas	rendben	יְכִילֶֽ	כּוּל	H3557	3557	igen	Vhi3ms	verb	will		
+o290020110212	JOL 2:11!21	Jóel 2:11	identitas	javaslat:strong_funkcio_kod	נּוּ	הוּא		5105b	javaslat:funkcio_kod	Sp3ms	suffix	he.endure.it		
+o290020120011	JOL 2:12!1	Jóel 2:12	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020120012	JOL 2:12!1	Jóel 2:12	identitas	rendben	גַם	גַּם	H1571	1571	igen	Ta	particle	also		
+o290020120021	JOL 2:12!2	Jóel 2:12	identitas	rendben	עַתָּה֙	עַתָּה	H6258	6258	igen	D	adverb	now	νῦν	G3568
+o290020120031	JOL 2:12!3	Jóel 2:12	identitas	rendben	נְאֻם	נְאֻם	H5002	5002	igen	Ncmsc	noun	the.utterance	λέγει	G3004
+o290020120041	JOL 2:12!4	Jóel 2:12	identitas	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κύριος	G2962
+o290020120051	JOL 2:12!5	Jóel 2:12	identitas	rendben	שֻׁ֥בוּ	שׁוּב	H7725	7725	igen	Vqv2mp	verb	return	ἐπιστράφητε	
+o290020120061	JOL 2:12!6	Jóel 2:12	identitas	rendben	עָדַ֖	עַד	H5704	5704	igen	R	preposition	to	πρός	G4314
+o290020120062	JOL 2:12!6	Jóel 2:12	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	me	με	G3165
+o290020120071	JOL 2:12!7	Jóel 2:12	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	with	ἐχ	G1537
+o290020120072	JOL 2:12!7	Jóel 2:12	identitas	rendben	כָל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	ὅλης	G3650
+o290020120081	JOL 2:12!8	Jóel 2:12	identitas	rendben	לְבַבְ	לֵבָב	H3824	3824	igen	Ncmsc	noun	heart	καρδίας	G2588
+o290020120082	JOL 2:12!8	Jóel 2:12	identitas	javaslat:strong_funkcio_kod	כֶ֑ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290020120091	JOL 2:12!9	Jóel 2:12	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020120092	JOL 2:12!9	Jóel 2:12	identitas	javaslat:strong_funkcio_kod	בְ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	with	ἐν	G1722
+o290020120093	JOL 2:12!9	Jóel 2:12	identitas	rendben	צ֥וֹם	צוֹם	H6685	6685	igen	Ncmsa	noun	fasting	νηστείᾳ	
+o290020120101	JOL 2:12!10	Jóel 2:12	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020120102	JOL 2:12!10	Jóel 2:12	identitas	javaslat:strong_funkcio_kod	בְ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	with	ἐν	G1722
+o290020120103	JOL 2:12!10	Jóel 2:12	identitas	rendben	בְכִ֖י	בְּכִי	H1065	1065	igen	Ncmsa	noun	weeping	κλαυθμῷ	G2805
+o290020120111	JOL 2:12!11	Jóel 2:12	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020120112	JOL 2:12!11	Jóel 2:12	identitas	javaslat:strong_funkcio_kod	בְ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	with	ἐν	G1722
+o290020120113	JOL 2:12!11	Jóel 2:12	identitas	rendben	מִסְפֵּֽד	מִסְפֵּד	H4553	4553	igen	Ncmsa	noun	wailing	κοπετῷ	
+o290020130011	JOL 2:13!1	Jóel 2:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020130012	JOL 2:13!1	Jóel 2:13	identitas	rendben	קִרְע֤וּ	קָרַע	H7167	7167	igen	Vqv2mp	verb	tear	διαρρήχατε	G1284
+o290020130021	JOL 2:13!2	Jóel 2:13	identitas	rendben	לְבַבְ	לֵבָב	H3824	3824	igen	Ncmsc	noun	heart	καρδίας	G2588
+o290020130022	JOL 2:13!2	Jóel 2:13	identitas	javaslat:strong_funkcio_kod	כֶם֙	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290020130031	JOL 2:13!3	Jóel 2:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020130032	JOL 2:13!3	Jóel 2:13	identitas	rendben	אַל	אַל	H0408	0408	igen	Tn	particle	not	μὴ	G3361
+o290020130041	JOL 2:13!4	Jóel 2:13	identitas	rendben	בִּגְדֵי	בֶּגֶד	H0899	0899	igen	Ncmpc	noun	garments	ἱμάτια	G2440
+o290020130042	JOL 2:13!4	Jóel 2:13	identitas	javaslat:strong_funkcio_kod	כֶ֔ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290020130051	JOL 2:13!5	Jóel 2:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020130052	JOL 2:13!5	Jóel 2:13	identitas	rendben	שׁ֖וּבוּ	שׁוּב	H7725	7725	igen	Vqv2mp	verb	return	ἐπιστράφητε	
+o290020130061	JOL 2:13!6	Jóel 2:13	identitas	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	πρὸς	G4314
+o290020130071	JOL 2:13!7	Jóel 2:13	identitas	rendben	יְהוָ֣ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριον	G2962
+o290020130081	JOL 2:13!8	Jóel 2:13	identitas	rendben	אֱלֹֽהֵי	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	God	θεὸν	G2316
+o290020130082	JOL 2:13!8	Jóel 2:13	identitas	javaslat:strong_funkcio_kod	כֶ֑ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290020130091	JOL 2:13!9	Jóel 2:13	identitas	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290020130101	JOL 2:13!10	Jóel 2:13	identitas	rendben	חַנּ֤וּן	חַנּוּן	H2587	2587	igen	Aamsa	adjective	[is].gracious	ἐλεήμων	G1655
+o290020130111	JOL 2:13!11	Jóel 2:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020130112	JOL 2:13!11	Jóel 2:13	identitas	rendben	רַחוּם֙	רַחוּם	H7349	7349	igen	Aamsa	adjective	compassionate	οἰκτίρμων	G3629
+o290020130121	JOL 2:13!12	Jóel 2:13	identitas	rendben	ה֔וּא	הוּא	H1931	1931	igen	Pp3ms	pronoun	he	ἐστίν	G2076
+o290020130131	JOL 2:13!13	Jóel 2:13	identitas	rendben	אֶ֤רֶךְ	אָרֵךְ	H0750	0750	igen	Aamsc	adjective	[he.is].long		
+o290020130141	JOL 2:13!14	Jóel 2:13	identitas	rendben	אַפַּ֨יִם֙	אַף	H0639	0639	igen	Ncmda	noun	of.anger(s)	μακρόθυμος	
+o290020130151	JOL 2:13!15	Jóel 2:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o290020130152	JOL 2:13!15	Jóel 2:13	identitas	rendben	רַב	רַב	H7227	7227	igen	Aamsc	adjective	great	καὶ	G2532
+o290020130161	JOL 2:13!16	Jóel 2:13	identitas	rendben	חֶ֔סֶד	חֶסֶד	H2617	2617	igen	Ncmsa	noun	of.covenant.loyalty	πολυέλεος	
+o290020130171	JOL 2:13!17	Jóel 2:13	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020130172	JOL 2:13!17	Jóel 2:13	identitas	rendben	נִחָ֖ם	נָחַם	H5162	5162	igen	VNrmsa	verb	[he.is].relenting	μετανοῶν	
+o290020130181	JOL 2:13!18	Jóel 2:13	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o290020130191	JOL 2:13!19	Jóel 2:13	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	ταῖς	G3588
+o290020130192	JOL 2:13!19	Jóel 2:13	identitas	javaslat:strong_betu_alap	רָעָֽה	רָעָה	H7451	7451b	javaslat:betu_alap	Ncfsa	noun	harm	κακίαις	G2549
+o290020140011	JOL 2:14!1	Jóel 2:14	identitas	rendben	מִ֥י	מִי	H4310	4310	igen	Ti	particle	who?	τίς	G5101
+o290020140021	JOL 2:14!2	Jóel 2:14	identitas	rendben	יוֹדֵ֖עַ	יָדַע	H3045	3045	igen	Vqrmsa	verb	[is].knowing	οἶδεν	G1492
+o290020140031	JOL 2:14!3	Jóel 2:14	identitas	rendben	יָשׁ֣וּב	שׁוּב	H7725	7725	igen	Vqi3ms	verb	he.will.turn	ἐπιστρέψει	G1994
+o290020140041	JOL 2:14!4	Jóel 2:14	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020140042	JOL 2:14!4	Jóel 2:14	identitas	rendben	נִחָ֑ם	נָחַם	H5162	5162	igen	VNq3ms	verb	he.will.relent	μετανοήσει	
+o290020140051	JOL 2:14!5	Jóel 2:14	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020140052	JOL 2:14!5	Jóel 2:14	identitas	rendben	הִשְׁאִ֤יר	שָׁאַר	H7604	7604	igen	Vhq3ms	verb	he.will.leave	ὑπολείψεται	
+o290020140061	JOL 2:14!6	Jóel 2:14	identitas	rendben	אַֽחֲרָי	אַחַר	H0310	0310	igen	R	preposition	behind	ὀπίσω	G3694
+o290020140062	JOL 2:14!6	Jóel 2:14	identitas	javaslat:strong_funkcio_kod	ו֙	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	him	αὐτοῦ	G0846
+o290020140071	JOL 2:14!7	Jóel 2:14	identitas	rendben	בְּרָכָ֔ה	בְּרָכָה	H1293	1293	igen	Ncfsa	noun	a.blessing	εὐλογίαν	G2129
+o290020140081	JOL 2:14!8	Jóel 2:14	identitas	rendben	מִנְחָ֣ה	מִנְחָה	H4503	4503	igen	Ncfsa	noun	a.grain.offering	θυσίαν	G2378
+o290020140091	JOL 2:14!9	Jóel 2:14	identitas	javaslat:strong_funkcio_kod	וָ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020140092	JOL 2:14!9	Jóel 2:14	identitas	rendben	נֶ֔סֶךְ	נֶסֶךְ	H5262	5262	igen	Ncmsa	noun	a.drink.offering	σπονδὴν	
+o290020140101	JOL 2:14!10	Jóel 2:14	identitas	javaslat:strong_funkcio_kod	לַ	לְ		3807a	javaslat:funkcio_kod	R	preposition	for		
+o290020140102	JOL 2:14!10	Jóel 2:14	identitas	rendben	יהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κυρίῳ	G2962
+o290020140111	JOL 2:14!11	Jóel 2:14	identitas	rendben	אֱלֹהֵי	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	God	θεῷ	G2316
+o290020140112	JOL 2:14!11	Jóel 2:14	identitas	javaslat:strong_funkcio_kod	כֶֽם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ἡμῶν	G2257
+o290020150011	JOL 2:15!1	Jóel 2:15	identitas	rendben	תִּקְע֥וּ	תָּקַע	H8628	8628	igen	Vqv2mp	verb	give.a.blast.on	σαλπίσατε	
+o290020150021	JOL 2:15!2	Jóel 2:15	identitas	rendben	שׁוֹפָ֖ר	שֹׁופָר	H7782	7782	igen	Ncmsa	noun	a.ram's.horn	σάλπιγγι	G4536
+o290020150031	JOL 2:15!3	Jóel 2:15	identitas	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o290020150032	JOL 2:15!3	Jóel 2:15	identitas	rendben	צִיּ֑וֹן	צִיּוֹן	H6726	6726	igen	Np	noun	Zion	σιων	G4622
+o290020150041	JOL 2:15!4	Jóel 2:15	identitas	rendben	קַדְּשׁוּ	קָדַשׁ	H6942	6942	igen	Vpv2mp	verb	consecrate	ἁγιάσατε	G0037
+o290020150051	JOL 2:15!5	Jóel 2:15	identitas	rendben	צ֖וֹם	צוֹם	H6685	6685	igen	Ncmsa	noun	a.fast	νηστείαν	G3521
+o290020150061	JOL 2:15!6	Jóel 2:15	identitas	rendben	קִרְא֥וּ	קָרָא	H7121	7121	igen	Vqv2mp	verb	call	κηρύχατε	G2784
+o290020150071	JOL 2:15!7	Jóel 2:15	identitas	rendben	עֲצָרָֽה	עֲצָרָה	H6116	6116	igen	Ncfsa	noun	an.assembly	θεραπείαν	G2322
+o290020160011	JOL 2:16!1	Jóel 2:16	identitas	rendben	אִסְפוּ	אָסַף	H0622	0622	igen	Vqv2mp	verb	gather	συναγάγετε	G4863
+o290020160021	JOL 2:16!2	Jóel 2:16	identitas	rendben	עָ֞ם	עַם	H5971	5971	igen	Ncmsa	noun	[the].people	λαόν	G2992
+o290020160031	JOL 2:16!3	Jóel 2:16	identitas	rendben	קַדְּשׁ֤וּ	קָדַשׁ	H6942	6942	igen	Vpv2mp	verb	consecrate	ἁγιάσατε	G0037
+o290020160041	JOL 2:16!4	Jóel 2:16	identitas	rendben	קָהָל֙	קָהָל	H6951	6951	igen	Ncmsa	noun	an.assembly	ἐκκλησίαν	G1577
+o290020160051	JOL 2:16!5	Jóel 2:16	identitas	rendben	קִבְצ֣וּ	קָבַץ	H6908	6908	igen	Vqv2mp	verb	gather	ἐκλέχασθε	
+o290020160061	JOL 2:16!6	Jóel 2:16	identitas	rendben	זְקֵנִ֔ים	זָקֵן	H2205	2205	igen	Aampa	adjective	[the].elders	πρεσβυτέρους	G4245
+o290020160071	JOL 2:16!7	Jóel 2:16	identitas	rendben	אִסְפוּ֙	אָסַף	H0622	0622	igen	Vqv2mp	verb	gather	συναγάγετε	G4863
+o290020160081	JOL 2:16!8	Jóel 2:16	identitas	rendben	עֽוֹלָלִ֔ים	עוֹלֵל	H5768	5768	igen	Ncmpa	noun	children	νήπια	
+o290020160091	JOL 2:16!9	Jóel 2:16	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o290020160092	JOL 2:16!9	Jóel 2:16	identitas	rendben	יֹנְקֵ֖י	יָנַק	H3126	3126	igen	Vqrmpc	verb	sucking.children	θηλάζοντα	
+o290020160101	JOL 2:16!10	Jóel 2:16	identitas	rendben	שָׁדָ֑יִם	שַׁד	H7699	7699	igen	Ncmda	noun	of.breasts	μαστούς	G3149
+o290020160111	JOL 2:16!11	Jóel 2:16	identitas	rendben	יֵצֵ֤א	יָצָא	H3318	3318	igen	Vqj3ms	verb	let.him.go.out	ἐχελθάτω	
+o290020160121	JOL 2:16!12	Jóel 2:16	identitas	rendben	חָתָן֙	חָתָן	H2860	2860	igen	Ncmsa	noun	[the].bridegroom	νυμφίος	G3566
+o290020160131	JOL 2:16!13	Jóel 2:16	identitas	rendben	מֵֽ	מִן	H4480	4480	igen	R	preposition	from		
+o290020160132	JOL 2:16!13	Jóel 2:16	identitas	rendben	חֶדְר֔	חֶדֶר	H2315	2315	igen	Ncmsc	noun	room	κοιτῶνος	G2846
+o290020160133	JOL 2:16!13	Jóel 2:16	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o290020160141	JOL 2:16!14	Jóel 2:16	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and.[the]	καὶ	G2532
+o290020160142	JOL 2:16!14	Jóel 2:16	identitas	rendben	כַלָּ֖ה	כַּלָּה	H3618	3618	igen	Ncfsa	noun	bride	νύμφη	G3565
+o290020160151	JOL 2:16!15	Jóel 2:16	identitas	rendben	מֵ	מִן	H4480	4480	igen	R	preposition	from		
+o290020160152	JOL 2:16!15	Jóel 2:16	identitas	rendben	חֻפָּתָֽ	חֻפָּה	H2646	2646	igen	Ncfsc	noun	chamber		
+o290020160153	JOL 2:16!15	Jóel 2:16	identitas	javaslat:strong_funkcio_kod	הּ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	her	τοῦ	G3588
+o290020170011	JOL 2:17!1	Jóel 2:17	identitas	rendben	בֵּ֤ין	בֵּין	H0996	0996	igen	R	preposition	between	μέσον	G3319
+o290020170021	JOL 2:17!2	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τῆς	G3588
+o290020170022	JOL 2:17!2	Jóel 2:17	identitas	rendben	אוּלָם֙	אֵילָם	H0361	0361	igen	Ncmsa	noun	porch	κρηπῖδος	
+o290020170031	JOL 2:17!3	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o290020170032	JOL 2:17!3	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	לַ	לְ		3807a	javaslat:funkcio_kod	Rd	preposition	the	τοῦ	G3588
+o290020170032ה	JOL 2:17!3	Jóel 2:17	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle			
+o290020170033	JOL 2:17!3	Jóel 2:17	identitas	rendben	מִּזְבֵּ֔חַ	מִזְבֵּחַ	H4196	4196	igen	Ncmsa	noun	altar	θυσιαστηρίου	G2379
+o290020170041	JOL 2:17!4	Jóel 2:17	identitas	rendben	יִבְכּוּ֙	בָּכָה	H1058	1058	igen	Vqj3mp	verb	let.them.weep	κλαύσονται	
+o290020170051	JOL 2:17!5	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	οἱ	G3588
+o290020170052	JOL 2:17!5	Jóel 2:17	identitas	rendben	כֹּ֣הֲנִ֔ים	כֹּהֵן	H3548	3548	igen	Ncmpa	noun	priests	ἱερεῖς	G2409
+o290020170061	JOL 2:17!6	Jóel 2:17	identitas	rendben	מְשָׁרְתֵ֖י	שָׁרַת	H8334	8334	igen	Vprmpc	verb	[who].serve	λειτουργοῦντες	
+o290020170071	JOL 2:17!7	Jóel 2:17	identitas	rendben	יְהוָ֑ה	יהוה	H3068	3068	igen	Np	noun	(of).Yahweh	κυρίῳ	G2962
+o290020170081	JOL 2:17!8	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	וְֽ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020170082	JOL 2:17!8	Jóel 2:17	identitas	rendben	יֹאמְר֞וּ	אָמַר	H0559	0559	igen	Vqi3mp	verb	let.them.say	ἐροῦσιν	G2046
+o290020170101	JOL 2:17!10	Jóel 2:17	identitas	rendben	יְהוָ֣ה	יהוה	H3068	3068	igen	Np	noun	O.Yahweh	κύριε	G2962
+o290020170091	JOL 2:17!9	Jóel 2:17	identitas	rendben	ח֧וּסָ	חוּס	H2347	2347	igen	Vqv2ms	verb	have		
+o290020170092	JOL 2:17!9	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	ה	ה		1886j	javaslat:funkcio_kod	Sh	suffix	compassion	φεῖσαι	
+o290020170111	JOL 2:17!11	Jóel 2:17	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	τοῦ	G3588
+o290020170121	JOL 2:17!12	Jóel 2:17	identitas	rendben	עַמֶּ֗	עַם	H5971	5971	igen	Ncmsc	noun	people	λαοῦ	G2992
+o290020170122	JOL 2:17!12	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	ךָ	הוּא		3509b	javaslat:funkcio_kod	Sp2ms	suffix	your	σου	G4675
+o290020170131	JOL 2:17!13	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020170132	JOL 2:17!13	Jóel 2:17	identitas	rendben	אַל	אַל	H0408	0408	igen	Tn	particle	do.not	μὴ	G3361
+o290020170141	JOL 2:17!14	Jóel 2:17	identitas	rendben	תִּתֵּ֨ן	נָתַן	H5414	5414	igen	Vqj2ms	verb	make	δῷς	G1325
+o290020170151	JOL 2:17!15	Jóel 2:17	identitas	rendben	נַחֲלָתְ	נַחֲלָה	H5159	5159	igen	Ncfsc	noun	inheritance	κληρονομίαν	G2817
+o290020170152	JOL 2:17!15	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	ךָ֤	הוּא		3509b	javaslat:funkcio_kod	Sp2ms	suffix	your	σου	G4675
+o290020170161	JOL 2:17!16	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	into	εἰς	G1519
+o290020170162	JOL 2:17!16	Jóel 2:17	identitas	rendben	חֶרְפָּה֙	חֶרְפָּה	H2781	2781	igen	Ncfsa	noun	a.reproach	ὄνειδος	G3681
+o290020170171	JOL 2:17!17	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τοῦ	G3588
+o290020170172	JOL 2:17!17	Jóel 2:17	identitas	rendben	מְשָׁל	מָשַׁל	H4912	4912	igen	Vqc	verb	mock	κατάρχαι	
+o290020170181	JOL 2:17!18	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	בָּ֣	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on		
+o290020170182	JOL 2:17!18	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	them	αὐτῶν	G0846
+o290020170191	JOL 2:17!19	Jóel 2:17	identitas	rendben	גּוֹיִ֔ם	גּוֹי	H1471	1471	igen	Ncmpa	noun	nations	ἔθνη	G1484
+o290020170201	JOL 2:17!20	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	לָ֚	לָמָה		3807a	javaslat:funkcio_kod	R	preposition		ὅπως	G3704
+o290020170202	JOL 2:17!20	Jóel 2:17	identitas	rendben	מָּה	מָה	H4100	4100	igen	Ti	particle	why?	μὴ	G3361
+o290020170211	JOL 2:17!21	Jóel 2:17	identitas	rendben	יֹאמְר֣וּ	אָמַר	H0559	0559	igen	Vqi3mp	verb	will.people.say	εἴπωσιν	G2036
+o290020170221	JOL 2:17!22	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	בָֽ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	among	ἐν	G1722
+o290020170221ה	JOL 2:17!22	Jóel 2:17	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290020170222	JOL 2:17!22	Jóel 2:17	identitas	rendben	עַמִּ֔ים	עַם	H5971	5971	igen	Ncmpa	noun	peoples	ἔθνεσιν	G1484
+o290020170231	JOL 2:17!23	Jóel 2:17	identitas	rendben	אַיֵּ֖ה	אַיֵּה	H0346	0346	igen	Ti	particle	where?	ποῦ	G4226
+o290020170241	JOL 2:17!24	Jóel 2:17	identitas	rendben	אֱלֹהֵי	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	God	θεὸς	G2316
+o290020170242	JOL 2:17!24	Jóel 2:17	identitas	javaslat:strong_funkcio_kod	הֶֽם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	[is].their		
+o290020180011	JOL 2:18!1	Jóel 2:18	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020180012	JOL 2:18!1	Jóel 2:18	identitas	rendben	יְקַנֵּ֥א	קָנָא	H7065	7065	igen	Vpw3ms	verb	he.became.jealous	ἐζήλωσεν	
+o290020180021	JOL 2:18!2	Jóel 2:18	identitas	rendben	יְהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o290020180031	JOL 2:18!3	Jóel 2:18	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	for	τὴν	G3588
+o290020180032	JOL 2:18!3	Jóel 2:18	identitas	rendben	אַרְצ֑	אֶרֶץ	H0776	0776	igen	Ncbsc	noun	land	γῆν	G1093
+o290020180033	JOL 2:18!3	Jóel 2:18	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o290020180041	JOL 2:18!4	Jóel 2:18	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020180042	JOL 2:18!4	Jóel 2:18	identitas	rendben	יַּחְמֹ֖ל	חָמַל	H2550	2550	igen	Vqw3ms	verb	he.had.compassion	ἐφείσατο	G5339
+o290020180051	JOL 2:18!5	Jóel 2:18	identitas	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	τοῦ	G3588
+o290020180061	JOL 2:18!6	Jóel 2:18	identitas	rendben	עַמּֽ	עַם	H5971	5971	igen	Ncmsc	noun	people	λαοῦ	G2992
+o290020180062	JOL 2:18!6	Jóel 2:18	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o290020190011	JOL 2:19!1	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020190012	JOL 2:19!1	Jóel 2:19	identitas	rendben	יַּ֨עַן	עָנָה	H6030	6030	igen	Vqw3ms	verb	he.answered	ἀπεκρίθη	G0611
+o290020190021	JOL 2:19!2	Jóel 2:19	identitas	rendben	יְהוָ֜ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o290020190031	JOL 2:19!3	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020190032	JOL 2:19!3	Jóel 2:19	identitas	rendben	יֹּ֣אמֶר	אָמַר	H0559	0559	igen	Vqw3ms	verb	he.said	εἶπεν	G2036
+o290020190041	JOL 2:19!4	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τῷ	G3588
+o290020190042	JOL 2:19!4	Jóel 2:19	identitas	rendben	עַמּ֗	עַם	H5971	5971	igen	Ncmsc	noun	people	λαῷ	G2992
+o290020190043	JOL 2:19!4	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o290020190051	JOL 2:19!5	Jóel 2:19	identitas	rendben	הִנְ	הִנֵּה	H2009	2009	igen	Tm	particle	here	ἰδοὺ	G2400
+o290020190052	JOL 2:19!5	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	נִ֨י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	I	ἐγὼ	G1473
+o290020190061	JOL 2:19!6	Jóel 2:19	identitas	rendben	שֹׁלֵ֤חַ	שָׁלַח	H7971	7971	igen	Vqrmsa	verb	[am].about.to.send	ἐχαποστέλλω	G1821
+o290020190071	JOL 2:19!7	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	לָ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to		
+o290020190072	JOL 2:19!7	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	כֶם֙	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμῖν	G5213
+o290020190081	JOL 2:19!8	Jóel 2:19	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o290020190091	JOL 2:19!9	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	τὸν	G3588
+o290020190092	JOL 2:19!9	Jóel 2:19	identitas	rendben	דָּגָן֙	דָּגָן	H1715	1715	igen	Ncmsa	noun	grain	σῖτον	G4621
+o290020190101	JOL 2:19!10	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and.(the)	καὶ	G2532
+o290020190102	JOL 2:19!10	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	new	τὸν	G3588
+o290020190103	JOL 2:19!10	Jóel 2:19	identitas	rendben	תִּיר֣וֹשׁ	תִּירוֹשׁ	H8492	8492	igen	Ncmsa	noun	wine	οἶνον	G3631
+o290020190111	JOL 2:19!11	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and.(the)	καὶ	G2532
+o290020190112	JOL 2:19!11	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	fresh	τὸ	G3588
+o290020190113	JOL 2:19!11	Jóel 2:19	identitas	rendben	יִּצְהָ֔ר	יִצְהָר	H3323	3323	igen	Ncmsa	noun	oil	ἔλαιον	G1637
+o290020190121	JOL 2:19!12	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020190122	JOL 2:19!12	Jóel 2:19	identitas	rendben	שְׂבַעְתֶּ֖ם	שָׂבֵעַ	H7646	7646	igen	Vqq2mp	verb	you.will.be.satisfied	ἐμπλησθήσεσθε	
+o290020190131	JOL 2:19!13	Jóel 2:19	identitas	rendben	אֹת֑	אֵת	H0853	0853	igen	To	particle			
+o290020190132	JOL 2:19!13	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	it	αὐτῶν	G0846
+o290020190141	JOL 2:19!14	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020190142	JOL 2:19!14	Jóel 2:19	identitas	rendben	לֹא	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o290020190151	JOL 2:19!15	Jóel 2:19	identitas	rendben	אֶתֵּ֨ן	נָתַן	H5414	5414	igen	Vqi1cs	verb	I.will.make	δώσω	G1325
+o290020190161	JOL 2:19!16	Jóel 2:19	identitas	rendben	אֶתְ	אֵת	H0853	0853	igen	To	particle			
+o290020190162	JOL 2:19!16	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	כֶ֥ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμᾶς	G5209
+o290020190171	JOL 2:19!17	Jóel 2:19	identitas	rendben	ע֛וֹד	עוֹד	H5750	5750	igen	D	adverb	again	οὐκέτι	G3765
+o290020190181	JOL 2:19!18	Jóel 2:19	identitas	rendben	חֶרְפָּ֖ה	חֶרְפָּה	H2781	2781	igen	Ncfsa	noun	a.reproach	ὀνειδισμὸν	G3680
+o290020190191	JOL 2:19!19	Jóel 2:19	identitas	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	among	ἐν	G1722
+o290020190191ה	JOL 2:19!19	Jóel 2:19	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290020190192	JOL 2:19!19	Jóel 2:19	identitas	rendben	גּוֹיִֽם	גּוֹי	H1471	1471	igen	Ncmpa	noun	nations	ἔθνεσι	G1484
+o290020200011	JOL 2:20!1	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	וְֽ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020200012	JOL 2:20!1	Jóel 2:20	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o290020200021	JOL 2:20!2	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὸν	G3588
+o290020200022	JOL 2:20!2	Jóel 2:20	identitas	rendben	צְּפוֹנִ֞י	צְפוֹנִי	H6830	6830	igen	Aamsa	adjective	northerner[s]		
+o290020200031	JOL 2:20!3	Jóel 2:20	identitas	rendben	אַרְחִ֣יק	רָחַק	H7368	7368	igen	Vhi1cs	verb	I.will.remove.far.away	ἐκδιώχω	
+o290020200041	JOL 2:20!4	Jóel 2:20	identitas	rendben	מֵ	מִן	H4480	4480	igen	R	preposition	from		
+o290020200042	JOL 2:20!4	Jóel 2:20	identitas	rendben	עֲלֵי	עַל	H5921	5921	igen	R	preposition	with		
+o290020200043	JOL 2:20!4	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	כֶ֗ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμῶν	G5216
+o290020200051	JOL 2:20!5	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020200052	JOL 2:20!5	Jóel 2:20	identitas	rendben	הִדַּחְתִּי	נָדַח	H5080	5080	igen	Vhq1cs	verb	I	ἐχώσω	
+o290020200053	JOL 2:20!5	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	ו֮	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	will.drive.it.away	αὐτὸν	G0846
+o290020200061	JOL 2:20!6	Jóel 2:20	identitas	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	into	εἰς	G1519
+o290020200071	JOL 2:20!7	Jóel 2:20	identitas	rendben	אֶ֣רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	a.land	γῆν	G1093
+o290020200081	JOL 2:20!8	Jóel 2:20	identitas	rendben	צִיָּ֣ה	צִיָּה	H6723	6723	igen	Aafsa	adjective	of.dryness	ἄνυδρον	G0504
+o290020200091	JOL 2:20!9	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020200092	JOL 2:20!9	Jóel 2:20	identitas	rendben	שְׁמָמָה֒	שְׁמָמָה	H8077	8077	igen	Ncfsa	noun	desolation	ἀφανιῶ	G0853
+o290020200101	JOL 2:20!10	Jóel 2:20	identitas	rendben	אֶת	אֵת	H0853	0853	igen	R	preposition	(et)		
+o290020200111	JOL 2:20!11	Jóel 2:20	identitas	rendben	פָּנָ֗י	פָּנֶה	H6440	6440	igen	Ncbpc	noun	face	πρόσωπον	G4383
+o290020200112	JOL 2:20!11	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	ו	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	its	αὐτοῦ	G0846
+o290020200121	JOL 2:20!12	Jóel 2:20	identitas	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	into	εἰς	G1519
+o290020200131	JOL 2:20!13	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὴν	G3588
+o290020200132	JOL 2:20!13	Jóel 2:20	identitas	rendben	יָּם֙	יָם	H3220	3220	igen	Ncmsa	noun	sea	θάλασσαν	G2281
+o290020200141	JOL 2:20!14	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	τὴν	G3588
+o290020200142	JOL 2:20!14	Jóel 2:20	identitas	rendben	קַּדְמֹנִ֔י	קַדְמֹנִי	H6931	6931	igen	Aamsa	adjective	eastern	πρώτην	G4413
+o290020200151	JOL 2:20!15	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020200152	JOL 2:20!15	Jóel 2:20	identitas	rendben	סֹפ֖	סוֹף	H5490	5490	igen	Ncmsc	noun	end		
+o290020200153	JOL 2:20!15	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	its	αὐτοῦ	G0846
+o290020200161	JOL 2:20!16	Jóel 2:20	identitas	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	into	εἰς	G1519
+o290020200171	JOL 2:20!17	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὴν	G3588
+o290020200172	JOL 2:20!17	Jóel 2:20	identitas	rendben	יָּ֣ם	יָם	H3220	3220	igen	Ncmsa	noun	sea	θάλασσαν	G2281
+o290020200181	JOL 2:20!18	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	τὴν	G3588
+o290020200182	JOL 2:20!18	Jóel 2:20	identitas	rendben	אַֽחֲר֑וֹן	אַחֲרוֹן	H0314	0314	igen	Aamsa	adjective	western	ἐσξάτην	
+o290020200191	JOL 2:20!19	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020200192	JOL 2:20!19	Jóel 2:20	identitas	rendben	עָלָ֣ה	עָלָה	H5927	5927	igen	Vqq3ms	verb	it.will.go.up	ἀναβήσεται	G0305
+o290020200201	JOL 2:20!20	Jóel 2:20	identitas	rendben	בָאְשׁ֗	בְּאֹשׁ	H0889	0889	igen	Ncmsc	noun	stench		
+o290020200202	JOL 2:20!20	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	its	αὐτοῦ	G0846
+o290020200211	JOL 2:20!21	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020200212	JOL 2:20!21	Jóel 2:20	identitas	rendben	תַ֨עַל֙	עָלָה	H5927	5927	igen	Vqi3fs	verb	it.will.go.up	ἀναβήσεται	G0305
+o290020200221	JOL 2:20!22	Jóel 2:20	identitas	rendben	צַחֲנָת֔	צַחֲנָה	H6709	6709	igen	Ncfsc	noun	smell		
+o290020200222	JOL 2:20!22	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	its.foul	αὐτοῦ	G0846
+o290020200231	JOL 2:20!23	Jóel 2:20	identitas	rendben	כִּ֥י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290020200241	JOL 2:20!24	Jóel 2:20	identitas	rendben	הִגְדִּ֖יל	גָּדַל	H1431	1431	igen	Vhp3ms	verb	he.has.made.great	ἐμεγάλυνεν	G3170
+o290020200251	JOL 2:20!25	Jóel 2:20	identitas	javaslat:strong_funkcio_kod	לַ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to		
+o290020200252	JOL 2:20!25	Jóel 2:20	identitas	rendben	עֲשֽׂוֹת	עָשָׂה	H6213	6213	igen	Vqc	verb	do	ἔργα	G2041
+o290020210011	JOL 2:21!1	Jóel 2:21	identitas	rendben	אַל	אַל	H0408	0408	igen	Tn	particle	do.not		
+o290020210021	JOL 2:21!2	Jóel 2:21	identitas	rendben	תִּֽירְאִ֖י	יָרֵא	H3372	3372	igen	Vqj2fs	verb	fear	θάρσει	G2293
+o290020210031	JOL 2:21!3	Jóel 2:21	identitas	rendben	אֲדָמָ֑ה	אֲדָמָה	H0127	0127	igen	Ncfsa	noun	O.land	γῆ	G1093
+o290020210041	JOL 2:21!4	Jóel 2:21	identitas	rendben	גִּ֣ילִי	גִּיל	H1523	1523	igen	Vqv2fs	verb	be.glad	ξαῖρε	G5463
+o290020210051	JOL 2:21!5	Jóel 2:21	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020210052	JOL 2:21!5	Jóel 2:21	identitas	rendben	שְׂמָ֔חִי	שָׂמַח	H8055	8055	igen	Vqv2fs	verb	rejoice	εὐφραίνου	G2165
+o290020210061	JOL 2:21!6	Jóel 2:21	identitas	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290020210071	JOL 2:21!7	Jóel 2:21	identitas	rendben	הִגְדִּ֥יל	גָּדַל	H1431	1431	igen	Vhp3ms	verb	he.has.made.great	ἐμεγάλυνεν	G3170
+o290020210081	JOL 2:21!8	Jóel 2:21	identitas	rendben	יְהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o290020210091	JOL 2:21!9	Jóel 2:21	identitas	javaslat:strong_funkcio_kod	לַ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τοῦ	G3588
+o290020210092	JOL 2:21!9	Jóel 2:21	identitas	rendben	עֲשֽׂוֹת	עָשָׂה	H6213	6213	igen	Vqc	verb	do	ποιῆσαι	G4160
+o290020220011	JOL 2:22!1	Jóel 2:22	identitas	rendben	אַל	אַל	H0408	0408	igen	Tn	particle	do.not	ἔδωκαν	G1325
+o290020220021	JOL 2:22!2	Jóel 2:22	identitas	rendben	תִּֽירְאוּ֙	יָרֵא	H3372	3372	igen	Vqj2mp	verb	fear	θαρσεῖτε	G2293
+o290020220031	JOL 2:22!3	Jóel 2:22	identitas	rendben	בַּהֲמ֣וֹת	בְּהֵמָה	H0929	0929	igen	Ncfpc	noun	O.animals	κτήνη	G2934
+o290020220041	JOL 2:22!4	Jóel 2:22	identitas	javaslat:strong_betu_alap	שָׂדַ֔י	שָׂדַי	H7704	7704a	javaslat:betu_alap	Ncmsa	noun	of.[the].field		
+o290020220051	JOL 2:22!5	Jóel 2:22	identitas	rendben	כִּ֥י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290020220061	JOL 2:22!6	Jóel 2:22	identitas	rendben	דָשְׁא֖וּ	דָּשָׁא	H1876	1876	igen	Vqp3cp	verb	they.are.green	βεβλάστηκεν	G0985
+o290020220071	JOL 2:22!7	Jóel 2:22	identitas	rendben	נְא֣וֹת	נָוָה	H4999	4999	igen	Ncfpc	noun	[the].pastures	πεδία	
+o290020220081	JOL 2:22!8	Jóel 2:22	identitas	rendben	מִדְבָּ֑ר	מִדְבָּר	H4057	4057	igen	Ncmsa	noun	of.[the].wilderness	ἐρήμου	G2048
+o290020220091	JOL 2:22!9	Jóel 2:22	identitas	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290020220101	JOL 2:22!10	Jóel 2:22	identitas	rendben	עֵץ֙	עֵץ	H6086	6086	igen	Ncmsa	noun	[the].tree[s]	χύλον	G3586
+o290020220111	JOL 2:22!11	Jóel 2:22	identitas	rendben	נָשָׂ֣א	נָשָׂא	H5375	5375	igen	Vqp3ms	verb	it.has.borne	ἤνεγκεν	G5342
+o290020220121	JOL 2:22!12	Jóel 2:22	identitas	rendben	פִרְי֔	פְּרִי	H6529	6529	igen	Ncmsc	noun	fruit	καρπὸν	G2590
+o290020220122	JOL 2:22!12	Jóel 2:22	identitas	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	its	αὐτοῦ	G0846
+o290020220131	JOL 2:22!13	Jóel 2:22	identitas	rendben	תְּאֵנָ֥ה	תְּאֵנָה	H8384	8384	igen	Ncfsa	noun	[the].fig.tree		
+o290020220141	JOL 2:22!14	Jóel 2:22	identitas	javaslat:strong_funkcio_kod	וָ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and.[the]	ἄμπελος	G0288
+o290020220142	JOL 2:22!14	Jóel 2:22	identitas	rendben	גֶ֖פֶן	גֶּפֶן	H1612	1612	igen	Ncbsa	noun	vine		
+o290020220151	JOL 2:22!15	Jóel 2:22	identitas	rendben	נָתְנ֥וּ	נָתַן	H5414	5414	igen	Vqp3cp	verb	they.have.given		
+o290020220161	JOL 2:22!16	Jóel 2:22	identitas	rendben	חֵילָֽ	חַיִל	H2428	2428	igen	Ncmsc	noun	strength		
+o290020220162	JOL 2:22!16	Jóel 2:22	identitas	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o290020230011	JOL 2:23!1	Jóel 2:23	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020230012	JOL 2:23!1	Jóel 2:23	identitas	rendben	בְנֵ֣י	בֵּן	H1121	1121	igen	Ncmpc	noun	O.people		
+o290020230021	JOL 2:23!2	Jóel 2:23	identitas	rendben	צִיּ֗וֹן	צִיּוֹן	H6726	6726	igen	Np	noun	of.Zion	σιων	G4622
+o290020230031	JOL 2:23!3	Jóel 2:23	identitas	rendben	גִּ֤ילוּ	גִּיל	H1523	1523	igen	Vqv2mp	verb	be.glad	ξαίρετε	G5463
+o290020230041	JOL 2:23!4	Jóel 2:23	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020230042	JOL 2:23!4	Jóel 2:23	identitas	rendben	שִׂמְחוּ֙	שָׂמַח	H8055	8055	igen	Vqv2mp	verb	rejoice	εὐφραίνεσθε	G2165
+o290020230051	JOL 2:23!5	Jóel 2:23	identitas	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in		
+o290020230052	JOL 2:23!5	Jóel 2:23	identitas	rendben	יהוָ֣ה	יהוה	H3068	3068	igen	Np	noun	Yahweh		
+o290020230061	JOL 2:23!6	Jóel 2:23	identitas	rendben	אֱלֹֽהֵי	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	God	θεῷ	G2316
+o290020230062	JOL 2:23!6	Jóel 2:23	identitas	javaslat:strong_funkcio_kod	כֶ֔ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290020230071	JOL 2:23!7	Jóel 2:23	identitas	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o290020230081	JOL 2:23!8	Jóel 2:23	identitas	rendben	נָתַ֥ן	נָתַן	H5414	5414	igen	Vqp3ms	verb	he.has.given	ἔδωκεν	G1325
+o290020230091	JOL 2:23!9	Jóel 2:23	identitas	javaslat:strong_funkcio_kod	לָ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to		
+o290020230092	JOL 2:23!9	Jóel 2:23	identitas	javaslat:strong_funkcio_kod	כֶ֛ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμῖν	G5213
+o290020230101	JOL 2:23!10	Jóel 2:23	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o290020230111	JOL 2:23!11	Jóel 2:23	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the.early	τὰ	G3588
+o290020230112	JOL 2:23!11	Jóel 2:23	identitas	javaslat:strong_betu_alap	מּוֹרֶ֖ה	מוֹרֶה	H4175	4175a	javaslat:betu_alap	Ncmsa	noun	rain	βρώματα	G1033
+o290020230121	JOL 2:23!12	Jóel 2:23	identitas	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	for	εἰς	G1519
+o290020230122	JOL 2:23!12	Jóel 2:23	identitas	rendben	צְדָקָ֑ה	צְדָקָה	H6666	6666	igen	Ncfsa	noun	righteousness	δικαιοσύνην	G1343
+o290020230131	JOL 2:23!13	Jóel 2:23	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020230132	JOL 2:23!13	Jóel 2:23	identitas	rendben	יּ֣וֹרֶד	יָרַד	H3381	3381	igen	Vhw3ms	verb	he.has.sent.down	βρέχει	G1026
+o290020230141	JOL 2:23!14	Jóel 2:23	identitas	javaslat:strong_funkcio_kod	לָ	לְ		3807a	javaslat:funkcio_kod	R	preposition	for		
+o290020230142	JOL 2:23!14	Jóel 2:23	identitas	javaslat:strong_funkcio_kod	כֶ֗ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμῖν	G5213
+o290020230151	JOL 2:23!15	Jóel 2:23	identitas	rendben	גֶּ֛שֶׁם	גֶּשֶׁם	H1653	1653	igen	Ncmsa	noun	rain	ὑετὸν	G5205
+o290020230161	JOL 2:23!16	Jóel 2:23	identitas	javaslat:strong_betu_alap	מוֹרֶ֥ה	מוֹרֶה	H4175	4175a	javaslat:betu_alap	Ncmsa	noun	early.rain	πρόιμον	
+o290020230171	JOL 2:23!17	Jóel 2:23	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020230172	JOL 2:23!17	Jóel 2:23	identitas	rendben	מַלְק֖וֹשׁ	מַלְקוֹשׁ	H4456	4456	igen	Ncmsa	noun	spring.rain	ὄψιμον	G3797
+o290020230181	JOL 2:23!18	Jóel 2:23	identitas	javaslat:strong_funkcio_kod	בָּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	in	καθὼς	G2531
+o290020230181ה	JOL 2:23!18	Jóel 2:23	identitas	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the.first		
+o290020230182	JOL 2:23!18	Jóel 2:23	identitas	rendben	רִאשֽׁוֹן	רִאשׁוֹן	H7223	7223	igen	Aamsa	adjective	[month]	ἔμπροσθεν	G1715
+o290020240011	JOL 2:24!1	Jóel 2:24	identitas	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020240012	JOL 2:24!1	Jóel 2:24	identitas	rendben	מָלְא֥וּ	מָלֵא	H4390	4390	igen	Vqp3cp	verb	they.will.be.full	πλησθήσονται	G4130
+o290020240021	JOL 2:24!2	Jóel 2:24	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the.threshing	αἱ	G3588
+o290020240022	JOL 2:24!2	Jóel 2:24	identitas	rendben	גֳּרָנ֖וֹת	גֹּרֶן	H1637	1637	igen	Ncbpa	noun	floors	ἅλωνες	G0257
+o290020240031	JOL 2:24!3	Jóel 2:24	identitas	rendben	בָּ֑ר	בַּר	H1250	1250	igen	Ncmsa	noun	grain	σίτου	G4621
+o290020240041	JOL 2:24!4	Jóel 2:24	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020240042	JOL 2:24!4	Jóel 2:24	identitas	rendben	הֵשִׁ֥יקוּ	שׁוּק	H7783	7783	igen	Vhp3cp	verb	they.will.overflow	ὑπερεκξυθήσονται	
+o290020240051	JOL 2:24!5	Jóel 2:24	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	αἱ	G3588
+o290020240052	JOL 2:24!5	Jóel 2:24	identitas	rendben	יְקָבִ֖ים	יֶקֶב	H3342	3342	igen	Ncmpa	noun	wine-vats	ληνοὶ	
+o290020240061	JOL 2:24!6	Jóel 2:24	identitas	rendben	תִּיר֥וֹשׁ	תִּירוֹשׁ	H8492	8492	igen	Ncmsa	noun	new.wine	οἴνου	G3631
+o290020240071	JOL 2:24!7	Jóel 2:24	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020240072	JOL 2:24!7	Jóel 2:24	identitas	rendben	יִצְהָֽר	יִצְהָר	H3323	3323	igen	Ncmsa	noun	fresh.oil	ἐλαίου	G1637
+o290020250011	JOL 2:25!1	Jóel 2:25	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020250012	JOL 2:25!1	Jóel 2:25	identitas	rendben	שִׁלַּמְתִּ֤י	שָׁלֵם	H7999	7999	igen	Vpq1cs	verb	I.will.restore	ἀνταποδώσω	G0467
+o290020250021	JOL 2:25!2	Jóel 2:25	identitas	javaslat:strong_funkcio_kod	לָ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to		
+o290020250022	JOL 2:25!2	Jóel 2:25	identitas	javaslat:strong_funkcio_kod	כֶם֙	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμῖν	G5213
+o290020250031	JOL 2:25!3	Jóel 2:25	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o290020250041	JOL 2:25!4	Jóel 2:25	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τῶν	G3588
+o290020250042	JOL 2:25!4	Jóel 2:25	identitas	rendben	שָּׁנִ֔ים	שָׁנָה	H8141	8141	igen	Ncfpa	noun	years	ἐτῶν	G2094
+o290020250051	JOL 2:25!5	Jóel 2:25	identitas	rendben	אֲשֶׁר֙	אֲשֶׁר	H0834	0834	igen	Tr	particle	which	ὧν	G3739
+o290020250061	JOL 2:25!6	Jóel 2:25	identitas	rendben	אָכַ֣ל	אָכַל	H0398	0398	igen	Vqp3ms	verb	it.has.eaten	κατέφαγεν	G2719
+o290020250071	JOL 2:25!7	Jóel 2:25	identitas	javaslat:strong_funkcio_kod	הָֽ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἡ	G3588
+o290020250072	JOL 2:25!7	Jóel 2:25	identitas	rendben	אַרְבֶּ֔ה	אַרְבֶּה	H0697	0697	igen	Ncmsa	noun	locust[s]	ἀκρὶς	G0200
+o290020250081	JOL 2:25!8	Jóel 2:25	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ὁ	G3588
+o290020250082	JOL 2:25!8	Jóel 2:25	identitas	rendben	יֶּ֖לֶק	יֶלֶק	H3218	3218	igen	Ncmsa	noun	locust[s]		
+o290020250091	JOL 2:25!9	Jóel 2:25	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020250092	JOL 2:25!9	Jóel 2:25	identitas	javaslat:strong_funkcio_kod	הֶ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἡ	G3588
+o290020250093	JOL 2:25!9	Jóel 2:25	identitas	rendben	חָסִ֣יל	חָסִיל	H2625	2625	igen	Ncmsa	noun	locust[s]	ἐρυσίβη	
+o290020250101	JOL 2:25!10	Jóel 2:25	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020250102	JOL 2:25!10	Jóel 2:25	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἡ	G3588
+o290020250103	JOL 2:25!10	Jóel 2:25	identitas	rendben	גָּזָ֑ם	גָּזָם	H1501	1501	igen	Ncmsa	noun	locust[s]	κάμπη	
+o290020250111	JOL 2:25!11	Jóel 2:25	identitas	rendben	חֵילִ	חַיִל	H2428	2428	igen	Ncmsc	noun	army		
+o290020250112	JOL 2:25!11	Jóel 2:25	identitas	javaslat:strong_funkcio_kod	י֙	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o290020250121	JOL 2:25!12	Jóel 2:25	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	ἡ	G3588
+o290020250122	JOL 2:25!12	Jóel 2:25	identitas	rendben	גָּד֔וֹל	גָּדוֹל	H1419	1419	igen	Aamsa	adjective	great	μεγάλη	G3173
+o290020250131	JOL 2:25!13	Jóel 2:25	identitas	rendben	אֲשֶׁ֥ר	אֲשֶׁר	H0834	0834	igen	Tr	particle	which	ἣν	G3739
+o290020250141	JOL 2:25!14	Jóel 2:25	identitas	rendben	שִׁלַּ֖חְתִּי	שָׁלַח	H7971	7971	igen	Vpp1cs	verb	I.sent	ἐχαπέστειλα	G1821
+o290020250151	JOL 2:25!15	Jóel 2:25	identitas	javaslat:strong_funkcio_kod	בָּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	among	εἰς	G1519
+o290020250152	JOL 2:25!15	Jóel 2:25	identitas	javaslat:strong_funkcio_kod	כֶֽם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμᾶς	G5209
+o290020260011	JOL 2:26!1	Jóel 2:26	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020260012	JOL 2:26!1	Jóel 2:26	identitas	rendben	אֲכַלְתֶּ֤ם	אָכַל	H0398	0398	igen	Vqq2mp	verb	you.will.eat	φάγεσθε	G2068
+o290020260021	JOL 2:26!2	Jóel 2:26	identitas	rendben	אָכוֹל֙	אָכַל	H0398	0398	igen	Vqa	verb	eating	ἐσθίοντες	G2068
+o290020260031	JOL 2:26!3	Jóel 2:26	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020260032	JOL 2:26!3	Jóel 2:26	identitas	rendben	שָׂב֔וֹעַ	שָׂבֵעַ	H7646	7646	igen	Vqa	verb	being.satisfied	ἐμπλησθήσεσθε	
+o290020260041	JOL 2:26!4	Jóel 2:26	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020260042	JOL 2:26!4	Jóel 2:26	identitas	javaslat:strong_betu_alap	הִלַּלְתֶּ֗ם	הָלַל	H1984	1984a	javaslat:betu_alap	Vpq2mp	verb	you.will.praise	αἰνέσετε	G0133
+o290020260051	JOL 2:26!5	Jóel 2:26	identitas	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o290020260061	JOL 2:26!6	Jóel 2:26	identitas	rendben	שֵׁ֤ם	שֵׁם	H8034	8034	igen	Ncmsc	noun	the.name	ὄνομα	G3686
+o290020260071	JOL 2:26!7	Jóel 2:26	identitas	rendben	יְהוָה֙	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o290020260081	JOL 2:26!8	Jóel 2:26	identitas	rendben	אֱלֹ֣הֵי	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	God	θεοῦ	G2316
+o290020260082	JOL 2:26!8	Jóel 2:26	identitas	javaslat:strong_funkcio_kod	כֶ֔ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290020260091	JOL 2:26!9	Jóel 2:26	identitas	rendben	אֲשֶׁר	אֲשֶׁר	H0834	0834	igen	Tr	particle	who	ἃ	G3739
+o290020260101	JOL 2:26!10	Jóel 2:26	identitas	rendben	עָשָׂ֥ה	עָשָׂה	H6213	6213	igen	Vqp3ms	verb	he.has.dealt	ἐποίησεν	G4160
+o290020260111	JOL 2:26!11	Jóel 2:26	identitas	rendben	עִמָּ	עִם	H5973	5973	igen	R	preposition	with	μεθ’	G3326
+o290020260112	JOL 2:26!11	Jóel 2:26	identitas	javaslat:strong_funkcio_kod	כֶ֖ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	you	ὑμῶν	G5216
+o290020260121	JOL 2:26!12	Jóel 2:26	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	by	εἰς	G1519
+o290020260122	JOL 2:26!12	Jóel 2:26	identitas	rendben	הַפְלִ֑יא	פָּלָא	H6381	6381	igen	Vhc	verb	doing.wonderfully	θαυμάσια	G2297
+o290020260131	JOL 2:26!13	Jóel 2:26	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020260132	JOL 2:26!13	Jóel 2:26	identitas	rendben	לֹא	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o290020260141	JOL 2:26!14	Jóel 2:26	identitas	rendben	יֵבֹ֥שׁוּ	בּוֹשׁ	H0954	0954	igen	Vqi3mp	verb	they.will.be.ashamed	καταισξυνθῇ	G2617
+o290020260151	JOL 2:26!15	Jóel 2:26	identitas	rendben	עַמִּ֖	עַם	H5971	5971	igen	Ncmsc	noun	people	λαός	G2992
+o290020260152	JOL 2:26!15	Jóel 2:26	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o290020260161	JOL 2:26!16	Jóel 2:26	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	forever	εἰς	G1519
+o290020260162	JOL 2:26!16	Jóel 2:26	identitas	rendben	עוֹלָֽם	עוֹלָם	H5769	5769	igen	Ncmsa	noun	of.perpetuity	αἰῶνα	G0165
+o290020270011	JOL 2:27!1	Jóel 2:27	identitas	javaslat:strong_funkcio_kod	וִ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020270012	JOL 2:27!1	Jóel 2:27	identitas	rendben	ידַעְתֶּ֗ם	יָדַע	H3045	3045	igen	Vqq2mp	verb	you.will.know	ἐπιγνώσεσθε	G1921
+o290020270021	JOL 2:27!2	Jóel 2:27	identitas	rendben	כִּ֣י	כִּי	H3588	3588	igen	C	conjunction	(dm).that	ὅτι	G3754
+o290020270031	JOL 2:27!3	Jóel 2:27	identitas	javaslat:strong_funkcio_kod	בְ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	[am].in	ἐν	G1722
+o290020270032	JOL 2:27!3	Jóel 2:27	identitas	rendben	קֶ֤רֶב	קֶרֶב	H7130	7130	igen	Ncmsc	noun	the.midst	μέσῳ	G3319
+o290020270041	JOL 2:27!4	Jóel 2:27	identitas	rendben	יִשְׂרָאֵל֙	יִשְׂרָאֵל	H3478	3478	igen	Np	noun	of.Israel	ισραηλ	G2474
+o290020270051	JOL 2:27!5	Jóel 2:27	identitas	rendben	אָ֔נִי	אֲנִי	H0589	0589	igen	Pp1cs	pronoun	I	ἐγώ	G1473
+o290020270061	JOL 2:27!6	Jóel 2:27	identitas	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020270062	JOL 2:27!6	Jóel 2:27	identitas	rendben	אֲנִ֛י	אֲנִי	H0589	0589	igen	Pp1cs	pronoun	I	ἐγὼ	G1473
+o290020270071	JOL 2:27!7	Jóel 2:27	identitas	rendben	יְהוָ֥ה	יהוה	H3068	3068	igen	Np	noun	[am].Yahweh	κύριος	G2962
+o290020270081	JOL 2:27!8	Jóel 2:27	identitas	rendben	אֱלֹהֵי	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	God	θεὸς	G2316
+o290020270082	JOL 2:27!8	Jóel 2:27	identitas	javaslat:strong_funkcio_kod	כֶ֖ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290020270091	JOL 2:27!9	Jóel 2:27	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020270092	JOL 2:27!9	Jóel 2:27	identitas	rendben	אֵ֣ין	אַיִן	H0369	0369	igen	Tn	particle	there.[is].not	οὐκ	G3756
+o290020270101	JOL 2:27!10	Jóel 2:27	identitas	rendben	ע֑וֹד	עוֹד	H5750	5750	igen	D	adverb	yet	ἔτι	G2089
+o290020270111	JOL 2:27!11	Jóel 2:27	identitas	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290020270112	JOL 2:27!11	Jóel 2:27	identitas	rendben	לֹא	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o290020270121	JOL 2:27!12	Jóel 2:27	identitas	rendben	יֵבֹ֥שׁוּ	בּוֹשׁ	H0954	0954	igen	Vqi3mp	verb	they.will.be.ashamed	καταισξυνθῶσιν	G2617
+o290020270131	JOL 2:27!13	Jóel 2:27	identitas	rendben	עַמִּ֖	עַם	H5971	5971	igen	Ncmsc	noun	people	λαός	G2992
+o290020270132	JOL 2:27!13	Jóel 2:27	identitas	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o290020270141	JOL 2:27!14	Jóel 2:27	identitas	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	forever	εἰς	G1519
+o290020270142	JOL 2:27!14	Jóel 2:27	identitas	rendben	עוֹלָֽם	עוֹלָם	H5769	5769	igen	Ncmsa	noun	of.perpetuity	αἰῶνα	G0165
+o290030010011	JOL 3:1!1	Jóel 2:28	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290030010012	JOL 3:1!1	Jóel 2:28	terkep	rendben	הָיָ֣ה	הָיָה	H1961	1961	igen	Vqq3ms	verb	it.will.be	ἔσται	G2071
+o290030010021	JOL 3:1!2	Jóel 2:28	terkep	rendben	אַֽחֲרֵי	אַחַר	H0310	0310	igen	R	preposition	after	μετὰ	G3326
+o290030010031	JOL 3:1!3	Jóel 2:28	terkep	rendben	כֵ֗ן	כֵּן	H3651	3651	igen	D	adverb	thus	ταῦτα	G5023
+o290030010041	JOL 3:1!4	Jóel 2:28	terkep	rendben	אֶשְׁפּ֤וֹךְ	שָׁפַךְ	H8210	8210	igen	Vqi1cs	verb	I.will.pour.out	ἐκξεῶ	G1632
+o290030010051	JOL 3:1!5	Jóel 2:28	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o290030010061	JOL 3:1!6	Jóel 2:28	terkep	rendben	רוּחִ	רוּחַ	H7307	7307	igen	Ncbsc	noun	spirit	πνεύματός	G4151
+o290030010062	JOL 3:1!6	Jóel 2:28	terkep	javaslat:strong_funkcio_kod	י֙	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o290030010071	JOL 3:1!7	Jóel 2:28	terkep	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o290030010081	JOL 3:1!8	Jóel 2:28	terkep	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πᾶσαν	G3956
+o290030010091	JOL 3:1!9	Jóel 2:28	terkep	rendben	בָּשָׂ֔ר	בָּשָׂר	H1320	1320	igen	Ncmsa	noun	flesh	σάρκα	G4561
+o290030010101	JOL 3:1!10	Jóel 2:28	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290030010102	JOL 3:1!10	Jóel 2:28	terkep	rendben	נִבְּא֖וּ	נָבָא	H5012	5012	igen	VNq3cp	verb	they.will.prophesy	προφητεύσουσιν	G4395
+o290030010111	JOL 3:1!11	Jóel 2:28	terkep	rendben	בְּנֵי	בֵּן	H1121	1121	igen	Ncmpc	noun	sons	υἱοὶ	G5207
+o290030010112	JOL 3:1!11	Jóel 2:28	terkep	javaslat:strong_funkcio_kod	כֶ֣ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290030010121	JOL 3:1!12	Jóel 2:28	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290030010122	JOL 3:1!12	Jóel 2:28	terkep	rendben	בְנֽוֹתֵי	בַּת	H1323	1323	igen	Ncfpc	noun	daughters	θυγατέρες	G2364
+o290030010123	JOL 3:1!12	Jóel 2:28	terkep	javaslat:strong_funkcio_kod	כֶ֑ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290030010131	JOL 3:1!13	Jóel 2:28	terkep	rendben	זִקְנֵי	זָקֵן	H2205	2205	igen	Aampc	adjective	your.old		
+o290030010132	JOL 3:1!13	Jóel 2:28	terkep	javaslat:strong_funkcio_kod	כֶם֙	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	[men]	ὑμῶν	G5216
+o290030010141	JOL 3:1!14	Jóel 2:28	terkep	rendben	חֲלֹמ֣וֹת	חֲלוֹם	H2472	2472	igen	Ncmpa	noun	dreams	ἐνύπνια	
+o290030010151	JOL 3:1!15	Jóel 2:28	terkep	javaslat:strong_betu_alap	יַחֲלֹמ֔וּ	חָלַם	H2492	2492a	javaslat:betu_alap	Vqi3mp	verb	they	ἐνυπνιασθήσονται	G1797
+o290030010152	JOL 3:1!15	Jóel 2:28	terkep	javaslat:strong_funkcio_kod	ן	נ		4993b	javaslat:funkcio_kod	Sn	suffix	will.dream		
+o290030010161	JOL 3:1!16	Jóel 2:28	terkep	rendben	בַּח֣וּרֵי	בָּחוּר	H0970	0970	igen	Ncmpc	noun	men	νεανίσκοι	G3495
+o290030010162	JOL 3:1!16	Jóel 2:28	terkep	javaslat:strong_funkcio_kod	כֶ֔ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your.young	ὑμῶν	G5216
+o290030010171	JOL 3:1!17	Jóel 2:28	terkep	rendben	חֶזְיֹנ֖וֹת	חִזָּיוֹן	H2384	2384	igen	Ncmpa	noun	visions	ὁράσεις	G3706
+o290030010181	JOL 3:1!18	Jóel 2:28	terkep	rendben	יִרְאֽוּ	רָאָה	H7200	7200	igen	Vqi3mp	verb	they.will.see	ὄψονται	G3700
+o290030020011	JOL 3:2!1	Jóel 2:29	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290030020012	JOL 3:2!1	Jóel 2:29	terkep	rendben	גַ֥ם	גַּם	H1571	1571	igen	Ta	particle	also		
+o290030020021	JOL 3:2!2	Jóel 2:29	terkep	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o290030020031	JOL 3:2!3	Jóel 2:29	terkep	javaslat:strong_funkcio_kod	הָֽ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the.[male]	τοὺς	G3588
+o290030020032	JOL 3:2!3	Jóel 2:29	terkep	rendben	עֲבָדִ֖ים	עֶבֶד	H5650	5650	igen	Ncmpa	noun	servants	δούλους	G1401
+o290030020041	JOL 3:2!4	Jóel 2:29	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290030020042	JOL 3:2!4	Jóel 2:29	terkep	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ἐπὶ	G1909
+o290030020051	JOL 3:2!5	Jóel 2:29	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the.female	τὰς	G3588
+o290030020052	JOL 3:2!5	Jóel 2:29	terkep	rendben	שְּׁפָח֑וֹת	שִׁפְחָה	H8198	8198	igen	Ncfpa	noun	servants	δούλας	G1399
+o290030020061	JOL 3:2!6	Jóel 2:29	terkep	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	in	ἐν	G1722
+o290030020061ה	JOL 3:2!6	Jóel 2:29	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290030020062	JOL 3:2!6	Jóel 2:29	terkep	rendben	יָּמִ֣ים	יוֹם	H3117	3117	igen	Ncmpa	noun	days		
+o290030020071	JOL 3:2!7	Jóel 2:29	terkep	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o290030020072	JOL 3:2!7	Jóel 2:29	terkep	rendben	הֵ֔מָּה	הֵמָּה	H1992	1992	igen	Pdxmp	pronoun	those	ἐκείναις	G1565
+o290030020081	JOL 3:2!8	Jóel 2:29	terkep	rendben	אֶשְׁפּ֖וֹךְ	שָׁפַךְ	H8210	8210	igen	Vqi1cs	verb	I.will.pour.out	ἐκξεῶ	G1632
+o290030020091	JOL 3:2!9	Jóel 2:29	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o290030020101	JOL 3:2!10	Jóel 2:29	terkep	rendben	רוּחִֽ	רוּחַ	H7307	7307	igen	Ncbsc	noun	spirit	πνεύματός	G4151
+o290030020102	JOL 3:2!10	Jóel 2:29	terkep	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o290030030011	JOL 3:3!1	Jóel 2:30	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290030030012	JOL 3:3!1	Jóel 2:30	terkep	rendben	נָֽתַתִּי֙	נָתַן	H5414	5414	igen	Vqq1cs	verb	I.will.put	δώσω	G1325
+o290030030021	JOL 3:3!2	Jóel 2:30	terkep	rendben	מֽוֹפְתִ֔ים	מוֹפֵת	H4159	4159	igen	Ncmpa	noun	wonders	τέρατα	G5059
+o290030030031	JOL 3:3!3	Jóel 2:30	terkep	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	in	ἐν	G1722
+o290030030031ה	JOL 3:3!3	Jóel 2:30	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290030030032	JOL 3:3!3	Jóel 2:30	terkep	rendben	שָּׁמַ֖יִם	שָׁמַיִם	H8064	8064	igen	Ncmpa	noun	heavens	οὐρανῷ	G3772
+o290030030041	JOL 3:3!4	Jóel 2:30	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290030030042	JOL 3:3!4	Jóel 2:30	terkep	javaslat:strong_funkcio_kod	בָ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	on		
+o290030030042ה	JOL 3:3!4	Jóel 2:30	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290030030043	JOL 3:3!4	Jóel 2:30	terkep	rendben	אָ֑רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	earth	γῆς	G1093
+o290030030051	JOL 3:3!5	Jóel 2:30	terkep	rendben	דָּ֣ם	דָּם	H1818	1818	igen	Ncmsa	noun	blood	αἷμα	G0129
+o290030030061	JOL 3:3!6	Jóel 2:30	terkep	javaslat:strong_funkcio_kod	וָ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290030030062	JOL 3:3!6	Jóel 2:30	terkep	rendben	אֵ֔שׁ	אֵשׁ	H0784	0784	igen	Ncbsa	noun	fire	πῦρ	G4442
+o290030030071	JOL 3:3!7	Jóel 2:30	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290030030072	JOL 3:3!7	Jóel 2:30	terkep	rendben	תִֽימֲר֖וֹת	תִּימָרָה	H8490	8490	igen	Ncfpc	noun	columns	ἀτμίδα	G0822
+o290030030081	JOL 3:3!8	Jóel 2:30	terkep	rendben	עָשָֽׁן	עָשָׁן	H6227	6227	igen	Ncmsa	noun	of.smoke	καπνοῦ	G2586
+o290030040011	JOL 3:4!1	Jóel 2:31	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ὁ	G3588
+o290030040012	JOL 3:4!1	Jóel 2:31	terkep	rendben	שֶּׁ֨מֶשׁ֙	שֶׁמֶשׁ	H8121	8121	igen	Ncbsa	noun	sun	ἥλιος	G2246
+o290030040021	JOL 3:4!2	Jóel 2:31	terkep	rendben	יֵהָפֵ֣ךְ	הָפַךְ	H2015	2015	igen	VNi3ms	verb	it.will.be.changed	μεταστραφήσεται	G3344
+o290030040031	JOL 3:4!3	Jóel 2:31	terkep	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	into	εἰς	G1519
+o290030040032	JOL 3:4!3	Jóel 2:31	terkep	rendben	חֹ֔שֶׁךְ	חֹשֶׁךְ	H2822	2822	igen	Ncmsa	noun	darkness	σκότος	G4655
+o290030040041	JOL 3:4!4	Jóel 2:31	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290030040042	JOL 3:4!4	Jóel 2:31	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	ἡ	G3588
+o290030040043	JOL 3:4!4	Jóel 2:31	terkep	rendben	יָּרֵ֖חַ	יָרֵחַ	H3394	3394	igen	Ncmsa	noun	moon	σελήνη	G4582
+o290030040051	JOL 3:4!5	Jóel 2:31	terkep	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	into	εἰς	G1519
+o290030040052	JOL 3:4!5	Jóel 2:31	terkep	rendben	דָ֑ם	דָּם	H1818	1818	igen	Ncmsa	noun	blood	αἷμα	G0129
+o290030040061	JOL 3:4!6	Jóel 2:31	terkep	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	before		
+o290030040062	JOL 3:4!6	Jóel 2:31	terkep	rendben	פְנֵ֗י	פָּנֶה	H6440	6440	igen	Ncbpc	noun		πρὶν	G4250
+o290030040071	JOL 3:4!7	Jóel 2:31	terkep	rendben	בּ֚וֹא	בּוֹא	H0935	0935	igen	Vqc	verb	comes	ἐλθεῖν	G2064
+o290030040081	JOL 3:4!8	Jóel 2:31	terkep	rendben	י֣וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	the.day	ἡμέραν	G2250
+o290030040091	JOL 3:4!9	Jóel 2:31	terkep	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o290030040101	JOL 3:4!10	Jóel 2:31	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	τὴν	G3588
+o290030040102	JOL 3:4!10	Jóel 2:31	terkep	rendben	גָּד֖וֹל	גָּדוֹל	H1419	1419	igen	Aamsa	adjective	great	μεγάλην	G3173
+o290030040111	JOL 3:4!11	Jóel 2:31	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o290030040112	JOL 3:4!11	Jóel 2:31	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	καὶ	G2532
+o290030040113	JOL 3:4!11	Jóel 2:31	terkep	rendben	נּוֹרָֽא	יָרֵא	H3372	3372	igen	VNrmsa	verb	awesome	ἐπιφανῆ	G2016
+o290030050011	JOL 3:5!1	Jóel 2:32	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290030050012	JOL 3:5!1	Jóel 2:32	terkep	rendben	הָיָ֗ה	הָיָה	H1961	1961	igen	Vqq3ms	verb	it.will.be	ἔσται	G2071
+o290030050021	JOL 3:5!2	Jóel 2:32	terkep	rendben	כֹּ֧ל	כֹּל	H3605	3605	igen	Ncmsa	noun	every	πᾶς	G3956
+o290030050031	JOL 3:5!3	Jóel 2:32	terkep	rendben	אֲשֶׁר	אֲשֶׁר	H0834	0834	igen	Tr	particle	[one].who	ὃς	G3739
+o290030050041	JOL 3:5!4	Jóel 2:32	terkep	rendben	יִקְרָ֛א	קָרָא	H7121	7121	igen	Vqi3ms	verb	he.will.call	ἐπικαλέσηται	G1941
+o290030050051	JOL 3:5!5	Jóel 2:32	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on	τὸ	G3588
+o290030050052	JOL 3:5!5	Jóel 2:32	terkep	rendben	שֵׁ֥ם	שֵׁם	H8034	8034	igen	Ncmsc	noun	the.name	ὄνομα	G3686
+o290030050061	JOL 3:5!6	Jóel 2:32	terkep	rendben	יְהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o290030050071	JOL 3:5!7	Jóel 2:32	terkep	rendben	יִמָּלֵ֑ט	מָלַט	H4422	4422	igen	VNi3ms	verb	he.will.escape	σωθήσεται	G4982
+o290030050081	JOL 3:5!8	Jóel 2:32	terkep	rendben	כִּ֠י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290030050091	JOL 3:5!9	Jóel 2:32	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on	ἐν	G1722
+o290030050092	JOL 3:5!9	Jóel 2:32	terkep	rendben	הַר	הַר	H2022	2022	igen	Ncmsc	noun	the.mountain	ὄρει	G3735
+o290030050101	JOL 3:5!10	Jóel 2:32	terkep	rendben	צִיּ֨וֹן	צִיּוֹן	H6726	6726	igen	Np	noun	of.Zion	σιων	G4622
+o290030050111	JOL 3:5!11	Jóel 2:32	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290030050112	JOL 3:5!11	Jóel 2:32	terkep	javaslat:strong_funkcio_kod	בִ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o290030050113	JOL 3:5!11	Jóel 2:32	terkep	rendben	ירוּשָׁלִַ֜ם	יְרוּשָׁלִַ͏ם	H3389	3389	igen	Np	noun	Jerusalem	ιερουσαλημ	G2414
+o290030050121	JOL 3:5!12	Jóel 2:32	terkep	rendben	תִּֽהְיֶ֣ה	הָיָה	H1961	1961	igen	Vqi3fs	verb	it.will.be	ἔσται	G2071
+o290030050131	JOL 3:5!13	Jóel 2:32	terkep	rendben	פְלֵיטָ֗ה	פְּלֵיטָה	H6413	6413	igen	Ncfsa	noun	an.escaped.remnant	ἀνασῳζόμενος	G0037
+o290030050141	JOL 3:5!14	Jóel 2:32	terkep	javaslat:strong_funkcio_kod	כַּֽ	כְּ		3509a	javaslat:funkcio_kod	R	preposition	just		
+o290030050142	JOL 3:5!14	Jóel 2:32	terkep	rendben	אֲשֶׁר֙	אֲשֶׁר	H0834	0834	igen	Tr	particle	as	καθότι	G2530
+o290030050151	JOL 3:5!15	Jóel 2:32	terkep	rendben	אָמַ֣ר	אָמַר	H0559	0559	igen	Vqp3ms	verb	he.has.said	εἶπεν	G2036
+o290030050161	JOL 3:5!16	Jóel 2:32	terkep	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o290030050171	JOL 3:5!17	Jóel 2:32	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o290030050172	JOL 3:5!17	Jóel 2:32	terkep	javaslat:strong_funkcio_kod	בַ֨	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	[will	καὶ	G2532
+o290030050172ה	JOL 3:5!17	Jóel 2:32	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	be]		
+o290030050173	JOL 3:5!17	Jóel 2:32	terkep	rendben	שְּׂרִידִ֔ים	שָׂרִיד	H8300	8300	igen	Ncmpa	noun	among.the.survivors	εὐαγγελιζόμενοι	G2097
+o290030050181	JOL 3:5!18	Jóel 2:32	terkep	rendben	אֲשֶׁ֥ר	אֲשֶׁר	H0834	0834	igen	Tr	particle	[those].whom	οὓς	G3739
+o290030050191	JOL 3:5!19	Jóel 2:32	terkep	rendben	יְהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o290030050201	JOL 3:5!20	Jóel 2:32	terkep	rendben	קֹרֵֽא	קָרָא	H7121	7121	igen	Vqrmsa	verb	[will.be].calling	προσκέκληται	G4341
+o290040010011	JOL 4:1!1	Jóel 3:1	terkep	rendben	כִּ֗י	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o290040010021	JOL 4:1!2	Jóel 3:1	terkep	rendben	הִנֵּ֛ה	הִנֵּה	H2009	2009	igen	Tm	particle	there!	ἰδοὺ	G2400
+o290040010031	JOL 4:1!3	Jóel 3:1	terkep	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	in	ἐν	G1722
+o290040010031ה	JOL 4:1!3	Jóel 3:1	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290040010032	JOL 4:1!3	Jóel 3:1	terkep	rendben	יָּמִ֥ים	יוֹם	H3117	3117	igen	Ncmpa	noun	days		
+o290040010041	JOL 4:1!4	Jóel 3:1	terkep	javaslat:strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o290040010042	JOL 4:1!4	Jóel 3:1	terkep	rendben	הֵ֖מָּה	הֵמָּה	H1992	1992	igen	Pdxmp	pronoun	those	ἐκείναις	G1565
+o290040010051	JOL 4:1!5	Jóel 3:1	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040010052	JOL 4:1!5	Jóel 3:1	terkep	javaslat:strong_funkcio_kod	בָ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	at	ἐν	G1722
+o290040010052ה	JOL 4:1!5	Jóel 3:1	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290040010053	JOL 4:1!5	Jóel 3:1	terkep	rendben	עֵ֣ת	עֵת	H6256	6256	igen	Ncbsa	noun	time	καιρῷ	G2540
+o290040010061	JOL 4:1!6	Jóel 3:1	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o290040010062	JOL 4:1!6	Jóel 3:1	terkep	javaslat:strong_funkcio_kod	הִ֑יא	הִיא		1931a	javaslat:funkcio_kod	Pp3fs	pronoun	that	ἐκείνῳ	G1565
+o290040010071	JOL 4:1!7	Jóel 3:1	terkep	rendben	אֲשֶׁ֥ר	אֲשֶׁר	H0834	0834	igen	Tr	particle	when	ὅταν	G3752
+o290040010091	JOL 4:1!9	Jóel 3:1	terkep	rendben	אָשִׁ֛יב	שׁוּב	H7725	7725	igen	Vhi1cs	verb	I.will.turn.back	ἐπιστρέψω	G1994
+o290040010101	JOL 4:1!10	Jóel 3:1	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o290040010111	JOL 4:1!11	Jóel 3:1	terkep	rendben	שְׁב֥וּת	שְׁבוּת	H7622	7622	igen	Ncfsc	noun	the.captivity	αἰξμαλωσίαν	G0161
+o290040010121	JOL 4:1!12	Jóel 3:1	terkep	rendben	יְהוּדָ֖ה	יְהוּדָה	H3063	3063	igen	Np	noun	of.Judah	ιουδα	G2448
+o290040010131	JOL 4:1!13	Jóel 3:1	terkep	javaslat:strong_funkcio_kod	וִ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040010132	JOL 4:1!13	Jóel 3:1	terkep	rendben	ירוּשָׁלִָֽם	יְרוּשָׁלִַ͏ם	H3389	3389	igen	Np	noun	Jerusalem	ιερουσαλημ	G2414
+o290040020011	JOL 4:2!1	Jóel 3:2	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040020012	JOL 4:2!1	Jóel 3:2	terkep	rendben	קִבַּצְתִּי֙	קָבַץ	H6908	6908	igen	Vpq1cs	verb	I.will.gather	συνάχω	G4863
+o290040020021	JOL 4:2!2	Jóel 3:2	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o290040020031	JOL 4:2!3	Jóel 3:2	terkep	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντα	G3956
+o290040020041	JOL 4:2!4	Jóel 3:2	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰ	G3588
+o290040020042	JOL 4:2!4	Jóel 3:2	terkep	rendben	גּוֹיִ֔ם	גּוֹי	H1471	1471	igen	Ncmpa	noun	nations	ἔθνη	G1484
+o290040020051	JOL 4:2!5	Jóel 3:2	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040020052	JOL 4:2!5	Jóel 3:2	terkep	rendben	ה֣וֹרַדְתִּ֔י	יָרַד	H3381	3381	igen	Vhp1cs	verb	I	κατάχω	
+o290040020053	JOL 4:2!5	Jóel 3:2	terkep	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	will.bring.them.down	αὐτὰ	G0846
+o290040020061	JOL 4:2!6	Jóel 3:2	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	εἰς	G1519
+o290040020071	JOL 4:2!7	Jóel 3:2	terkep	rendben	עֵ֖מֶק	עֵמֶק	H6010	6010	igen	Ncmsc	noun	the.valley		
+o290040020081	JOL 4:2!8	Jóel 3:2	terkep	javaslat:strong_betu_alap	יְהֽוֹשָׁפָ֑ט	יְהוֹשָׁפָט	H3092	3092a	javaslat:betu_alap	Np	noun	of.Jehoshaphat	ιωσαφατ	G2498
+o290040020091	JOL 4:2!9	Jóel 3:2	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040020092	JOL 4:2!9	Jóel 3:2	terkep	rendben	נִשְׁפַּטְתִּ֨י	שָׁפַט	H8199	8199	igen	VNp1cs	verb	I.will.enter.into.judgment	διακριθήσομαι	G1252
+o290040020101	JOL 4:2!10	Jóel 3:2	terkep	rendben	עִמָּ֜	עִם	H5973	5973	igen	R	preposition	with	πρὸς	G4314
+o290040020102	JOL 4:2!10	Jóel 3:2	terkep	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	them	αὐτοὺς	G0848
+o290040020111	JOL 4:2!11	Jóel 3:2	terkep	rendben	שָׁ֗ם	שָׁם	H8033	8033	igen	D	adverb	there	ἐκεῖ	G1563
+o290040020121	JOL 4:2!12	Jóel 3:2	terkep	rendben	עַל	עַל	H5921	5921	igen	R	preposition	on	ὑπὲρ	G5228
+o290040020131	JOL 4:2!13	Jóel 3:2	terkep	rendben	עַמִּ֨	עַם	H5971	5971	igen	Ncmsc	noun	people	λαοῦ	G2992
+o290040020132	JOL 4:2!13	Jóel 3:2	terkep	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o290040020141	JOL 4:2!14	Jóel 3:2	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040020142	JOL 4:2!14	Jóel 3:2	terkep	rendben	נַחֲלָתִ֤	נַחֲלָה	H5159	5159	igen	Ncfsc	noun	inheritance	κληρονομίας	G2817
+o290040020143	JOL 4:2!14	Jóel 3:2	terkep	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o290040020151	JOL 4:2!15	Jóel 3:2	terkep	rendben	יִשְׂרָאֵל֙	יִשְׂרָאֵל	H3478	3478	igen	Np	noun	Israel	ισραηλ	G2474
+o290040020161	JOL 4:2!16	Jóel 3:2	terkep	rendben	אֲשֶׁ֣ר	אֲשֶׁר	H0834	0834	igen	Tr	particle	which	οἳ	G3739
+o290040020171	JOL 4:2!17	Jóel 3:2	terkep	rendben	פִּזְּר֣וּ	פָּזַר	H6340	6340	igen	Vpp3cp	verb	they.have.scattered	διεσπάρησαν	G1289
+o290040020181	JOL 4:2!18	Jóel 3:2	terkep	javaslat:strong_funkcio_kod	בַ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	among	ἐν	G1722
+o290040020181ה	JOL 4:2!18	Jóel 3:2	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290040020182	JOL 4:2!18	Jóel 3:2	terkep	rendben	גּוֹיִ֔ם	גּוֹי	H1471	1471	igen	Ncmpa	noun	nations	ἔθνεσιν	G1484
+o290040020191	JOL 4:2!19	Jóel 3:2	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040020192	JOL 4:2!19	Jóel 3:2	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o290040020201	JOL 4:2!20	Jóel 3:2	terkep	rendben	אַרְצִ֖	אֶרֶץ	H0776	0776	igen	Ncbsc	noun	land	γῆν	G1093
+o290040020202	JOL 4:2!20	Jóel 3:2	terkep	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o290040020211	JOL 4:2!21	Jóel 3:2	terkep	rendben	חִלֵּֽקוּ	חָלַק	H2505	2505	igen	Vpp3cp	verb	they.have.divided.up	καταδιείλαντο	
+o290040030011	JOL 4:3!1	Jóel 3:3	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040030012	JOL 4:3!1	Jóel 3:3	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	ἐπὶ	G1909
+o290040030021	JOL 4:3!2	Jóel 3:3	terkep	rendben	עַמִּ֖	עַם	H5971	5971	igen	Ncmsc	noun	people	λαόν	G2992
+o290040030022	JOL 4:3!2	Jóel 3:3	terkep	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o290040030031	JOL 4:3!3	Jóel 3:3	terkep	rendben	יַדּ֣וּ	יָדַד	H3032	3032	igen	Vqp3cp	verb	they.have.cast	ἔβαλον	G0906
+o290040030041	JOL 4:3!4	Jóel 3:3	terkep	rendben	גוֹרָ֑ל	גּוֹרָל	H1486	1486	igen	Ncmsa	noun	a.lot	κλήρους	G2819
+o290040030051	JOL 4:3!5	Jóel 3:3	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040030052	JOL 4:3!5	Jóel 3:3	terkep	rendben	יִּתְּנ֤וּ	נָתַן	H5414	5414	igen	Vqw3mp	verb	they.have.exchanged	ἔδωκαν	G1325
+o290040030061	JOL 4:3!6	Jóel 3:3	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰ	G3588
+o290040030062	JOL 4:3!6	Jóel 3:3	terkep	rendben	יֶּ֨לֶד֙	יֶלֶד	H3206	3206	igen	Ncmsa	noun	boy	παιδάρια	
+o290040030071	JOL 4:3!7	Jóel 3:3	terkep	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	for		
+o290040030071ה	JOL 4:3!7	Jóel 3:3	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290040030072	JOL 4:3!7	Jóel 3:3	terkep	rendben	זּוֹנָ֔ה	זָנָה	H2185	2185	igen	Ncfsa	noun	prostitute	πόρναις	
+o290040030081	JOL 4:3!8	Jóel 3:3	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040030082	JOL 4:3!8	Jóel 3:3	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰ	G3588
+o290040030083	JOL 4:3!8	Jóel 3:3	terkep	rendben	יַּלְדָּ֛ה	יַלְדָּה	H3207	3207	igen	Ncfsa	noun	girl	κοράσια	
+o290040030091	JOL 4:3!9	Jóel 3:3	terkep	rendben	מָכְר֥וּ	מָכַר	H4376	4376	igen	Vqp3cp	verb	they.have.sold	ἐπώλουν	G4453
+o290040030101	JOL 4:3!10	Jóel 3:3	terkep	javaslat:strong_funkcio_kod	בַ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	for	ἀντὶ	G0473
+o290040030101ה	JOL 4:3!10	Jóel 3:3	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o290040030102	JOL 4:3!10	Jóel 3:3	terkep	rendben	יַּ֖יִן	יַיִן	H3196	3196	igen	Ncmsa	noun	wine	οἴνου	G3631
+o290040030111	JOL 4:3!11	Jóel 3:3	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040030112	JOL 4:3!11	Jóel 3:3	terkep	rendben	יִּשְׁתּֽוּ	שָׁתָה	H8354	8354	igen	Vqw3mp	verb	they.have.drunk	ἔπινον	G4095
+o290040040011	JOL 4:4!1	Jóel 3:4	terkep	javaslat:strong_funkcio_kod	וְ֠	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040040012	JOL 4:4!1	Jóel 3:4	terkep	rendben	גַם	גַּם	H1571	1571	igen	Ta	particle	also		
+o290040040021	JOL 4:4!2	Jóel 3:4	terkep	rendben	מָה	מָה	H4100	4100	igen	Ti	particle	what?	τί	G5101
+o290040040031	JOL 4:4!3	Jóel 3:4	terkep	javaslat:strong_betu_alap	אַתֶּ֥ם	אַתֶּם	H0859	0859a	javaslat:betu_alap	Pp2mp	pronoun	[are].you	ὑμεῖς	G5210
+o290040040041	JOL 4:4!4	Jóel 3:4	terkep	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to		
+o290040040042	JOL 4:4!4	Jóel 3:4	terkep	javaslat:strong_funkcio_kod	י֙	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	me	ἐμοί	G1698
+o290040040051	JOL 4:4!5	Jóel 3:4	terkep	rendben	צֹ֣ר	צֹר	H6865	6865	igen	Np	noun	O.Tyre	τύρος	
+o290040040061	JOL 4:4!6	Jóel 3:4	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040040062	JOL 4:4!6	Jóel 3:4	terkep	rendben	צִיד֔וֹן	צִידוֹן	H6721	6721	igen	Np	noun	Sidon	σιδὼν	
+o290040040071	JOL 4:4!7	Jóel 3:4	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040040072	JOL 4:4!7	Jóel 3:4	terkep	rendben	כֹ֖ל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πᾶσα	G3956
+o290040040081	JOL 4:4!8	Jóel 3:4	terkep	rendben	גְּלִיל֣וֹת	גְלִילָה	H1552	1552	igen	Ncfpc	noun	the.territories	γαλιλαία	G1056
+o290040040091	JOL 4:4!9	Jóel 3:4	terkep	rendben	פְּלָ֑שֶׁת	פְּלֶשֶׁת	H6429	6429	igen	Np	noun	of.Philistia	ἀλλοφύλων	G0246
+o290040040101	JOL 4:4!10	Jóel 3:4	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886b	javaslat:funkcio_kod	Ti	particle	?	μὴ	G3361
+o290040040102	JOL 4:4!10	Jóel 3:4	terkep	rendben	גְּמ֗וּל	גְּמוּל	H1576	1576	igen	Ncmsa	noun	recompense	ἀνταπόδομα	G0468
+o290040040111	JOL 4:4!11	Jóel 3:4	terkep	javaslat:strong_betu_alap	אַתֶּם֙	אַתֶּם	H0859	0859a	javaslat:betu_alap	Pp2mp	pronoun	[are].you	ὑμεῖς	G5210
+o290040040121	JOL 4:4!12	Jóel 3:4	terkep	rendben	מְשַׁלְּמִ֣ים	שָׁלֵם	H7999	7999	igen	Vprmpa	verb	repaying	ἀνταποδίδοτέ	G0467
+o290040040131	JOL 4:4!13	Jóel 3:4	terkep	rendben	עָלָ֔	עַל	H5921	5921	igen	R	preposition	to		
+o290040040132	JOL 4:4!13	Jóel 3:4	terkep	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	me	μοι	G3427
+o290040040141	JOL 4:4!14	Jóel 3:4	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o290040040142	JOL 4:4!14	Jóel 3:4	terkep	rendben	אִם	אִם	H0518	0518	igen	C	conjunction	or?	ἢ	G2228
+o290040040151	JOL 4:4!15	Jóel 3:4	terkep	rendben	גֹּמְלִ֤ים	גָּמַל	H1580	1580	igen	Vqrmpa	verb	making.recompense	μνησικακεῖτε	
+o290040040161	JOL 4:4!16	Jóel 3:4	terkep	javaslat:strong_betu_alap	אַתֶּם֙	אַתֶּם	H0859	0859a	javaslat:betu_alap	Pp2mp	pronoun	[are].you	ὑμεῖς	G5210
+o290040040171	JOL 4:4!17	Jóel 3:4	terkep	rendben	עָלַ֔	עַל	H5921	5921	igen	R	preposition	to	ἐπ’	G1909
+o290040040172	JOL 4:4!17	Jóel 3:4	terkep	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	me	ἐμοὶ	G1698
+o290040040181	JOL 4:4!18	Jóel 3:4	terkep	rendben	קַ֣ל	קַל	H7031	7031	igen	Aamsa	adjective	swift	ὀχέως	
+o290040040191	JOL 4:4!19	Jóel 3:4	terkep	rendben	מְהֵרָ֔ה	מְהֵרָה	H4120	4120	igen	Ncfsa	noun	quickly	ταξέως	G5030
+o290040040201	JOL 4:4!20	Jóel 3:4	terkep	rendben	אָשִׁ֥יב	שׁוּב	H7725	7725	igen	Vhi1cs	verb	I.will.return	ἀνταποδώσω	G0467
+o290040040211	JOL 4:4!21	Jóel 3:4	terkep	rendben	גְּמֻלְ	גְּמוּל	H1576	1576	igen	Ncmsc	noun	recompense	ἀνταπόδομα	G0468
+o290040040212	JOL 4:4!21	Jóel 3:4	terkep	javaslat:strong_funkcio_kod	כֶ֖ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290040040221	JOL 4:4!22	Jóel 3:4	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on	εἰς	G1519
+o290040040222	JOL 4:4!22	Jóel 3:4	terkep	rendben	רֹאשְׁ	רֹאשׁ	H7218	7218	igen	Ncmsc	noun	head	κεφαλὰς	G2776
+o290040040223	JOL 4:4!22	Jóel 3:4	terkep	javaslat:strong_funkcio_kod	כֶֽם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290040050011	JOL 4:5!1	Jóel 3:5	terkep	rendben	אֲשֶׁר	אֲשֶׁר	H0834	0834	igen	Tr	particle	that	ὧν	G3739
+o290040050021	JOL 4:5!2	Jóel 3:5	terkep	rendben	כַּסְפִּ֥	כֶּסֶף	H3701	3701	igen	Ncmsc	noun	silver	ἀργύριόν	G0694
+o290040050022	JOL 4:5!2	Jóel 3:5	terkep	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o290040050031	JOL 4:5!3	Jóel 3:5	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040050032	JOL 4:5!3	Jóel 3:5	terkep	rendben	זְהָבִ֖	זָהָב	H2091	2091	igen	Ncmsc	noun	gold		
+o290040050033	JOL 4:5!3	Jóel 3:5	terkep	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o290040050041	JOL 4:5!4	Jóel 3:5	terkep	rendben	לְקַחְתֶּ֑ם	לָקַח	H3947	3947	igen	Vqp2mp	verb	you.took	ἐλάβετε	G2983
+o290040050051	JOL 4:5!5	Jóel 3:5	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040050052	JOL 4:5!5	Jóel 3:5	terkep	rendben	מַֽחֲמַדַּ	מַחְמָד	H4261	4261	igen	Ncmpc	noun	my.desirable		
+o290040050053	JOL 4:5!5	Jóel 3:5	terkep	javaslat:strong_funkcio_kod	י֙	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	things	μου	G3450
+o290040050061	JOL 4:5!6	Jóel 3:5	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)	τὰ	G3588
+o290040050062	JOL 4:5!6	Jóel 3:5	terkep	rendben	טֹּבִ֔ים	טוֹב	H2896	2896	igen	Aampa	adjective	good	καλὰ	G2570
+o290040050071	JOL 4:5!7	Jóel 3:5	terkep	rendben	הֲבֵאתֶ֖ם	בּוֹא	H0935	0935	igen	Vhp2mp	verb	you.took	εἰσηνέγκατε	G1533
+o290040050081	JOL 4:5!8	Jóel 3:5	terkep	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	εἰς	G1519
+o290040050082	JOL 4:5!8	Jóel 3:5	terkep	rendben	הֵיכְלֵי	הֵיכָל	H1964	1964	igen	Ncmpc	noun	your.own	ναοὺς	G3485
+o290040050083	JOL 4:5!8	Jóel 3:5	terkep	javaslat:strong_funkcio_kod	כֶֽם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	temples	ὑμῶν	G5216
+o290040060011	JOL 4:6!1	Jóel 3:6	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040060012	JOL 4:6!1	Jóel 3:6	terkep	rendben	בְנֵ֤י	בֵּן	H1121	1121	igen	Ncmpc	noun	the.people	υἱοὺς	G5207
+o290040060021	JOL 4:6!2	Jóel 3:6	terkep	rendben	יְהוּדָה֙	יְהוּדָה	H3063	3063	igen	Np	noun	of.Judah	ιουδα	G2448
+o290040060031	JOL 4:6!3	Jóel 3:6	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040060032	JOL 4:6!3	Jóel 3:6	terkep	rendben	בְנֵ֣י	בֵּן	H1121	1121	igen	Ncmpc	noun	the.people	υἱοὺς	G5207
+o290040060041	JOL 4:6!4	Jóel 3:6	terkep	rendben	יְרוּשָׁלִַ֔ם	יְרוּשָׁלִַ͏ם	H3389	3389	igen	Np	noun	of.Jerusalem	ιερουσαλημ	G2414
+o290040060051	JOL 4:6!5	Jóel 3:6	terkep	rendben	מְכַרְתֶּ֖ם	מָכַר	H4376	4376	igen	Vqp2mp	verb	you.sold	ἀπέδοσθε	G0591
+o290040060061	JOL 4:6!6	Jóel 3:6	terkep	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τοῖς	G3588
+o290040060062	JOL 4:6!6	Jóel 3:6	terkep	rendben	בְנֵ֣י	בֵּן	H1121	1121	igen	Ncmpc	noun	the.people	υἱοῖς	G5207
+o290040060071	JOL 4:6!7	Jóel 3:6	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of	τῶν	G3588
+o290040060072	JOL 4:6!7	Jóel 3:6	terkep	rendben	יְּוָנִ֑ים	יְוָנִי	H3125	3125	igen	Ngmpa	noun	the.Greeks	ἑλλήνων	G1672
+o290040060081	JOL 4:6!8	Jóel 3:6	terkep	rendben	לְמַ֥עַן	לְמַעַן	H4616	4616	igen	R	preposition	so.as	ὅπως	G3704
+o290040060091	JOL 4:6!9	Jóel 3:6	terkep	rendben	הַרְחִיקָ֖	רָחַק	H7368	7368	igen	Vhc	verb	to	ἐχώσητε	
+o290040060092	JOL 4:6!9	Jóel 3:6	terkep	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	remove.them.far.away	αὐτοὺς	G0848
+o290040060101	JOL 4:6!10	Jóel 3:6	terkep	rendben	מֵ	מִן	H4480	4480	igen	R	preposition	from		
+o290040060102	JOL 4:6!10	Jóel 3:6	terkep	rendben	עַ֥ל	עַל	H5921	5921	igen	R	preposition	on	ἐκ	G1537
+o290040060111	JOL 4:6!11	Jóel 3:6	terkep	rendben	גְּבוּלָֽ	גְּבוּל	H1366	1366	igen	Ncmsc	noun	territory		
+o290040060112	JOL 4:6!11	Jóel 3:6	terkep	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their.own		
+o290040070011	JOL 4:7!1	Jóel 3:7	terkep	rendben	הִנְ	הִנֵּה	H2009	2009	igen	Tm	particle	here	ἰδοὺ	G2400
+o290040070012	JOL 4:7!1	Jóel 3:7	terkep	javaslat:strong_funkcio_kod	נִ֣י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	I	ἐγὼ	G1473
+o290040070021	JOL 4:7!2	Jóel 3:7	terkep	rendben	מְעִירָ֔	עוּר	H5782	5782	igen	Vhrmsc	verb	[am].about	ἐχεγείρω	
+o290040070022	JOL 4:7!2	Jóel 3:7	terkep	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	to.rouse.them	αὐτοὺς	G0848
+o290040070031	JOL 4:7!3	Jóel 3:7	terkep	rendben	מִן	מִן	H4480	4480	igen	R	preposition	from	ἐκ	G1537
+o290040070041	JOL 4:7!4	Jóel 3:7	terkep	javaslat:strong_funkcio_kod	הַ֨	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τοῦ	G3588
+o290040070042	JOL 4:7!4	Jóel 3:7	terkep	rendben	מָּק֔וֹם	מָקוֹם	H4725	4725	igen	Ncmsa	noun	place	τόπου	G5117
+o290040070051	JOL 4:7!5	Jóel 3:7	terkep	rendben	אֲשֶׁר	אֲשֶׁר	H0834	0834	igen	Tr	particle	where	οὗ	G3739
+o290040070061	JOL 4:7!6	Jóel 3:7	terkep	rendben	מְכַרְתֶּ֥ם	מָכַר	H4376	4376	igen	Vqp2mp	verb	you.sold	ἀπέδοσθε	G0591
+o290040070071	JOL 4:7!7	Jóel 3:7	terkep	rendben	אֹתָ֖	אֵת	H0853	0853	igen	To	particle			
+o290040070072	JOL 4:7!7	Jóel 3:7	terkep	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	them	αὐτοὺς	G0848
+o290040070081	JOL 4:7!8	Jóel 3:7	terkep	rendben	שָׁ֑מָּ	שָׁם	H8033	8033	igen	D	adverb	there	ἐκεῖ	G1563
+o290040070082	JOL 4:7!8	Jóel 3:7	terkep	javaslat:strong_funkcio_kod	ה	ה		1886c	javaslat:funkcio_kod	Sd	suffix	(to)		
+o290040070091	JOL 4:7!9	Jóel 3:7	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040070092	JOL 4:7!9	Jóel 3:7	terkep	rendben	הֲשִׁבֹתִ֥י	שׁוּב	H7725	7725	igen	Vhq1cs	verb	I.will.return	ἀνταποδώσω	G0467
+o290040070101	JOL 4:7!10	Jóel 3:7	terkep	rendben	גְמֻלְ	גְּמוּל	H1576	1576	igen	Ncmsc	noun	recompense	ἀνταπόδομα	G0468
+o290040070102	JOL 4:7!10	Jóel 3:7	terkep	javaslat:strong_funkcio_kod	כֶ֖ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290040070111	JOL 4:7!11	Jóel 3:7	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	on	εἰς	G1519
+o290040070112	JOL 4:7!11	Jóel 3:7	terkep	rendben	רֹאשְׁ	רֹאשׁ	H7218	7218	igen	Ncmsc	noun	head	κεφαλὰς	G2776
+o290040070113	JOL 4:7!11	Jóel 3:7	terkep	javaslat:strong_funkcio_kod	כֶֽם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290040080011	JOL 4:8!1	Jóel 3:8	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040080012	JOL 4:8!1	Jóel 3:8	terkep	rendben	מָכַרְתִּ֞י	מָכַר	H4376	4376	igen	Vqq1cs	verb	I.will.sell	ἀποδώσομαι	G0591
+o290040080021	JOL 4:8!2	Jóel 3:8	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o290040080031	JOL 4:8!3	Jóel 3:8	terkep	rendben	בְּנֵי	בֵּן	H1121	1121	igen	Ncmpc	noun	sons	υἱοὺς	G5207
+o290040080032	JOL 4:8!3	Jóel 3:8	terkep	javaslat:strong_funkcio_kod	כֶ֣ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290040080041	JOL 4:8!4	Jóel 3:8	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040080042	JOL 4:8!4	Jóel 3:8	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o290040080051	JOL 4:8!5	Jóel 3:8	terkep	rendben	בְּנֽוֹתֵי	בַּת	H1323	1323	igen	Ncfpc	noun	daughters	θυγατέρας	G2364
+o290040080052	JOL 4:8!5	Jóel 3:8	terkep	javaslat:strong_funkcio_kod	כֶ֗ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290040080061	JOL 4:8!6	Jóel 3:8	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	εἰς	G1519
+o290040080062	JOL 4:8!6	Jóel 3:8	terkep	rendben	יַד֙	יָד	H3027	3027	igen	Ncbsc	noun	the.hand	ξεῖρας	G5495
+o290040080071	JOL 4:8!7	Jóel 3:8	terkep	rendben	בְּנֵ֣י	בֵּן	H1121	1121	igen	Ncmpc	noun	of.the.people	υἱῶν	G5207
+o290040080081	JOL 4:8!8	Jóel 3:8	terkep	rendben	יְהוּדָ֔ה	יְהוּדָה	H3063	3063	igen	Np	noun	of.Judah	ιουδα	G2448
+o290040080091	JOL 4:8!9	Jóel 3:8	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040080092	JOL 4:8!9	Jóel 3:8	terkep	rendben	מְכָר֥וּ	מָכַר	H4376	4376	igen	Vqq3cp	verb	they	ἀποδώσονται	G0591
+o290040080093	JOL 4:8!9	Jóel 3:8	terkep	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	will.sell.them	αὐτοὺς	G0848
+o290040080101	JOL 4:8!10	Jóel 3:8	terkep	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to.[the]	εἰς	G1519
+o290040080102	JOL 4:8!10	Jóel 3:8	terkep	rendben	שְׁבָאיִ֖ם	שְׁבָאִים	H7615	7615	igen	Ngmpa	noun	Sabeans	αἰξμαλωσίαν	G0161
+o290040080111	JOL 4:8!11	Jóel 3:8	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	εἰς	G1519
+o290040080121	JOL 4:8!12	Jóel 3:8	terkep	rendben	גּ֣וֹי	גּוֹי	H1471	1471	igen	Ncmsa	noun	a.nation	ἔθνος	G1484
+o290040080131	JOL 4:8!13	Jóel 3:8	terkep	rendben	רָח֑וֹק	רָחֹוק	H7350	7350	igen	Aamsa	adjective	distant	μακρὰν	G3112
+o290040080141	JOL 4:8!14	Jóel 3:8	terkep	rendben	כִּ֥י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290040080151	JOL 4:8!15	Jóel 3:8	terkep	rendben	יְהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o290040080161	JOL 4:8!16	Jóel 3:8	terkep	rendben	דִּבֵּֽר	דָבַר	H1696	1696	igen	Vpp3ms	verb	he.has.spoken	ἐλάλησεν	G2980
+o290040090011	JOL 4:9!1	Jóel 3:9	terkep	rendben	קִרְאוּ	קָרָא	H7121	7121	igen	Vqv2mp	verb	proclaim	κηρύχατε	G2784
+o290040090021	JOL 4:9!2	Jóel 3:9	terkep	rendben	זֹאת֙	זֹאת	H2063	2063	igen	Pdxfs	pronoun	this	ταῦτα	G5023
+o290040090031	JOL 4:9!3	Jóel 3:9	terkep	javaslat:strong_funkcio_kod	בַּ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	among	ἐν	G1722
+o290040090031ה	JOL 4:9!3	Jóel 3:9	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290040090032	JOL 4:9!3	Jóel 3:9	terkep	rendben	גּוֹיִ֔ם	גּוֹי	H1471	1471	igen	Ncmpa	noun	nations	ἔθνεσιν	G1484
+o290040090041	JOL 4:9!4	Jóel 3:9	terkep	rendben	קַדְּשׁ֖וּ	קָדַשׁ	H6942	6942	igen	Vpv2mp	verb	consecrate	ἁγιάσατε	G0037
+o290040090051	JOL 4:9!5	Jóel 3:9	terkep	rendben	מִלְחָמָ֑ה	מִלְחָמָה	H4421	4421	igen	Ncfsa	noun	a.war	πόλεμον	G4171
+o290040090061	JOL 4:9!6	Jóel 3:9	terkep	rendben	הָעִ֨ירוּ֙	עוּר	H5782	5782	igen	Vhv2mp	verb	rouse	ἐχεγείρατε	
+o290040090071	JOL 4:9!7	Jóel 3:9	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τοὺς	G3588
+o290040090072	JOL 4:9!7	Jóel 3:9	terkep	rendben	גִּבּוֹרִ֔ים	גִּבּוֹר	H1368	1368	igen	Aampa	adjective	warriors	μαξητάς	
+o290040090081	JOL 4:9!8	Jóel 3:9	terkep	rendben	יִגְּשׁ֣וּ	נָגַשׁ	H5066	5066	igen	Vqj3mp	verb	let.them.draw.near	προσαγάγετε	
+o290040090091	JOL 4:9!9	Jóel 3:9	terkep	rendben	יַֽעֲל֔וּ	עָלָה	H5927	5927	igen	Vqj3mp	verb	let.them.go.up		
+o290040090101	JOL 4:9!10	Jóel 3:9	terkep	rendben	כֹּ֖ל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντες	G3956
+o290040090111	JOL 4:9!11	Jóel 3:9	terkep	rendben	אַנְשֵׁ֥י	אִישׁ	H0376	0376	igen	Ncmpc	noun	the.men	ἄνδρες	G0435
+o290040090121	JOL 4:9!12	Jóel 3:9	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of.(the)		
+o290040090122	JOL 4:9!12	Jóel 3:9	terkep	rendben	מִּלְחָמָֽה	מִלְחָמָה	H4421	4421	igen	Ncfsa	noun	war	πολεμισταί	
+o290040100011	JOL 4:10!1	Jóel 3:10	terkep	rendben	כֹּ֤תּוּ	כָּתַת	H3807	3807	igen	Vqv2mp	verb	beat	συγκόψατε	
+o290040100021	JOL 4:10!2	Jóel 3:10	terkep	rendben	אִתֵּי	אֵת	H0855	0855	igen	Ncmpc	noun	plowshares		
+o290040100022	JOL 4:10!2	Jóel 3:10	terkep	javaslat:strong_funkcio_kod	כֶם֙	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290040100031	JOL 4:10!3	Jóel 3:10	terkep	javaslat:strong_funkcio_kod	לַֽ	לְ		3807a	javaslat:funkcio_kod	R	preposition	into	εἰς	G1519
+o290040100032	JOL 4:10!3	Jóel 3:10	terkep	rendben	חֲרָב֔וֹת	חֶרֶב	H2719	2719	igen	Ncfpa	noun	swords	ῥομφαίας	G4501
+o290040100041	JOL 4:10!4	Jóel 3:10	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040100042	JOL 4:10!4	Jóel 3:10	terkep	rendben	מַזְמְרֹֽתֵי	מַזְמֵרָה	H4211	4211	igen	Ncfpc	noun	your.pruning		
+o290040100043	JOL 4:10!4	Jóel 3:10	terkep	javaslat:strong_funkcio_kod	כֶ֖ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	knives	ὑμῶν	G5216
+o290040100051	JOL 4:10!5	Jóel 3:10	terkep	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	into	εἰς	G1519
+o290040100052	JOL 4:10!5	Jóel 3:10	terkep	rendben	רְמָחִ֑ים	רֹמַח	H7420	7420	igen	Ncmpa	noun	spears	σειρομάστας	
+o290040100061	JOL 4:10!6	Jóel 3:10	terkep	javaslat:strong_funkcio_kod	הַֽ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the.weak	ὁ	G3588
+o290040100062	JOL 4:10!6	Jóel 3:10	terkep	rendben	חַלָּ֔שׁ	חַלָּשׁ	H2523	2523	igen	Aamsa	adjective	[man]	ἀδύνατος	G0102
+o290040100071	JOL 4:10!7	Jóel 3:10	terkep	rendben	יֹאמַ֖ר	אָמַר	H0559	0559	igen	Vqj3ms	verb	let.him.say	λεγέτω	G3004
+o290040100081	JOL 4:10!8	Jóel 3:10	terkep	rendben	גִּבּ֥וֹר	גִּבּוֹר	H1368	1368	igen	Aamsa	adjective	[am].a.warrior	ἰσξύω	G2480
+o290040100091	JOL 4:10!9	Jóel 3:10	terkep	rendben	אָֽנִי	אֲנִי	H0589	0589	igen	Pp1cs	pronoun	I	ἐγώ	G1473
+o290040110011	JOL 4:11!1	Jóel 3:11	terkep	rendben	ע֣וּשׁוּ	עוּשׁ	H5789	5789	igen	Vqv2mp	verb	hurry	συναθροίζεσθε	
+o290040110021	JOL 4:11!2	Jóel 3:11	terkep	javaslat:strong_funkcio_kod	וָ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040110022	JOL 4:11!2	Jóel 3:11	terkep	rendben	בֹ֧אוּ	בּוֹא	H0935	0935	igen	Vqv2mp	verb	come	εἰσπορεύεσθε	G1531
+o290040110031	JOL 4:11!3	Jóel 3:11	terkep	rendben	כָֽל	כֹּל	H3605	3605	igen	Ncmsc	noun	O.all	πάντα	G3956
+o290040110041	JOL 4:11!4	Jóel 3:11	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰ	G3588
+o290040110042	JOL 4:11!4	Jóel 3:11	terkep	rendben	גּוֹיִ֛ם	גּוֹי	H1471	1471	igen	Ncmpa	noun	nations	ἔθνη	G1484
+o290040110051	JOL 4:11!5	Jóel 3:11	terkep	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from		
+o290040110052	JOL 4:11!5	Jóel 3:11	terkep	rendben	סָּבִ֖יב	סָבִיב	H5439	5439	igen	Ncbsa	noun	round.about	κυκλόθεν	G2943
+o290040110061	JOL 4:11!6	Jóel 3:11	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040110062	JOL 4:11!6	Jóel 3:11	terkep	rendben	נִקְבָּ֑צוּ	קָבַץ	H6908	6908	igen	VNq3cp	verb	they.will.gather	συνάξθητε	G4863
+o290040110091	JOL 4:11!9	Jóel 3:11	terkep	rendben	יְהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	O.Yahweh	ἔστω	G2077
+o290040110071	JOL 4:11!7	Jóel 3:11	terkep	rendben	שָׁ֕מָּ	שָׁם	H8033	8033	igen	D	adverb	there	ἐκεῖ	G1563
+o290040110072	JOL 4:11!7	Jóel 3:11	terkep	javaslat:strong_funkcio_kod	ה	ה		1886c	javaslat:funkcio_kod	Sd	suffix	(to)		
+o290040110081	JOL 4:11!8	Jóel 3:11	terkep	rendben	הַֽנְחַ֥ת	נָחֵת	H5181	5181	igen	Vhv2ms	verb	bring.down		
+o290040110101	JOL 4:11!10	Jóel 3:11	terkep	rendben	גִּבּוֹרֶֽי	גִּבּוֹר	H1368	1368	igen	Aampc	adjective	your		
+o290040110102	JOL 4:11!10	Jóel 3:11	terkep	javaslat:strong_funkcio_kod	ךָ	הוּא		3509b	javaslat:funkcio_kod	Sp2ms	suffix	warriors	μαξητής	
+o290040120011	JOL 4:12!1	Jóel 3:12	terkep	rendben	יֵע֨וֹרוּ֙	עוּר	H5782	5782	igen	VNj3mp	verb	let.them.be.roused	ἐχεγειρέσθωσαν	
+o290040120021	JOL 4:12!2	Jóel 3:12	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040120022	JOL 4:12!2	Jóel 3:12	terkep	rendben	יַעֲל֣וּ	עָלָה	H5927	5927	igen	Vqj3mp	verb	let.them.go.up	ἀναβαινέτωσαν	G0305
+o290040120031	JOL 4:12!3	Jóel 3:12	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰ	G3588
+o290040120032	JOL 4:12!3	Jóel 3:12	terkep	rendben	גּוֹיִ֔ם	גּוֹי	H1471	1471	igen	Ncmpa	noun	nations	ἔθνη	G1484
+o290040120041	JOL 4:12!4	Jóel 3:12	terkep	rendben	אֶל	אֶל	H0413	0413	igen	R	preposition	to	εἰς	G1519
+o290040120051	JOL 4:12!5	Jóel 3:12	terkep	rendben	עֵ֖מֶק	עֵמֶק	H6010	6010	igen	Ncmsc	noun	the.valley		
+o290040120061	JOL 4:12!6	Jóel 3:12	terkep	javaslat:strong_betu_alap	יְהֽוֹשָׁפָ֑ט	יְהוֹשָׁפָט	H3092	3092a	javaslat:betu_alap	Np	noun	of.Jehoshaphat	ιωσαφατ	G2498
+o290040120071	JOL 4:12!7	Jóel 3:12	terkep	rendben	כִּ֣י	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o290040120081	JOL 4:12!8	Jóel 3:12	terkep	rendben	שָׁ֗ם	שָׁם	H8033	8033	igen	D	adverb	there	ἐκεῖ	G1563
+o290040120091	JOL 4:12!9	Jóel 3:12	terkep	rendben	אֵשֵׁ֛ב	יָשַׁב	H3427	3427	igen	Vqi1cs	verb	I.will.sit	καθιῶ	
+o290040120101	JOL 4:12!10	Jóel 3:12	terkep	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	τοῦ	G3588
+o290040120102	JOL 4:12!10	Jóel 3:12	terkep	rendben	שְׁפֹּ֥ט	שָׁפַט	H8199	8199	igen	Vqc	verb	judge	διακρῖναι	G1252
+o290040120111	JOL 4:12!11	Jóel 3:12	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o290040120121	JOL 4:12!12	Jóel 3:12	terkep	rendben	כָּל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πάντα	G3956
+o290040120131	JOL 4:12!13	Jóel 3:12	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰ	G3588
+o290040120132	JOL 4:12!13	Jóel 3:12	terkep	rendben	גּוֹיִ֖ם	גּוֹי	H1471	1471	igen	Ncmpa	noun	nations	ἔθνη	G1484
+o290040120141	JOL 4:12!14	Jóel 3:12	terkep	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from		
+o290040120142	JOL 4:12!14	Jóel 3:12	terkep	rendben	סָּבִֽיב	סָבִיב	H5439	5439	igen	Ncbsa	noun	round.about	κυκλόθεν	G2943
+o290040130011	JOL 4:13!1	Jóel 3:13	terkep	rendben	שִׁלְח֣וּ	שָׁלַח	H7971	7971	igen	Vqv2mp	verb	send.out	ἐχαποστείλατε	
+o290040130021	JOL 4:13!2	Jóel 3:13	terkep	rendben	מַגָּ֔ל	מַגָּל	H4038	4038	igen	Ncmsa	noun	[the].sickle	δρέπανα	
+o290040130031	JOL 4:13!3	Jóel 3:13	terkep	rendben	כִּ֥י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290040130041	JOL 4:13!4	Jóel 3:13	terkep	rendben	בָשַׁ֖ל	בָּשַׁל	H1310	1310	igen	Vqp3ms	verb	it.has.grown.ripe	παρέστηκεν	G3936
+o290040130051	JOL 4:13!5	Jóel 3:13	terkep	rendben	קָצִ֑יר	קָצִיר	H7105	7105	igen	Ncmsa	noun	[the].harvest	τρύγητος	
+o290040130061	JOL 4:13!6	Jóel 3:13	terkep	rendben	בֹּ֤אֽוּ	בּוֹא	H0935	0935	igen	Vqv2mp	verb	come	εἰσπορεύεσθε	G1531
+o290040130071	JOL 4:13!7	Jóel 3:13	terkep	rendben	רְדוּ֙	רדה	H7287	7287	igen	Vqv2mp	verb	tread	πατεῖτε	
+o290040130081	JOL 4:13!8	Jóel 3:13	terkep	rendben	כִּֽי	כִּי	H3588	3588	igen	C	conjunction	(dm)	διότι	G1360
+o290040130091	JOL 4:13!9	Jóel 3:13	terkep	rendben	מָ֣לְאָה	מָלֵא	H4390	4390	igen	Vqp3fs	verb	it.is.full	πλήρης	G4134
+o290040130101	JOL 4:13!10	Jóel 3:13	terkep	rendben	גַּ֔ת	גַּת	H1660	1660	igen	Ncfsa	noun	[the].winepress		
+o290040130111	JOL 4:13!11	Jóel 3:13	terkep	rendben	הֵשִׁ֨יקוּ֙	שׁוּק	H7783	7783	igen	Vhp3cp	verb	they.are.overflowing	ὑπερεκξεῖται	
+o290040130121	JOL 4:13!12	Jóel 3:13	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰ	G3588
+o290040130122	JOL 4:13!12	Jóel 3:13	terkep	rendben	יְקָבִ֔ים	יֶקֶב	H3342	3342	igen	Ncmpa	noun	wine-vats	ὑπολήνια	
+o290040130131	JOL 4:13!13	Jóel 3:13	terkep	rendben	כִּ֥י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290040130141	JOL 4:13!14	Jóel 3:13	terkep	rendben	רַבָּ֖ה	רַב	H7227	7227	igen	Aafsa	adjective	[is].great	πεπλήθυνται	
+o290040130151	JOL 4:13!15	Jóel 3:13	terkep	javaslat:strong_betu_alap	רָעָתָֽ	רָעָה	H7451	7451b	javaslat:betu_alap	Ncfsc	noun	evil	κακὰ	G2556
+o290040130152	JOL 4:13!15	Jóel 3:13	terkep	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o290040140011	JOL 4:14!1	Jóel 3:14	terkep	rendben	הֲמוֹנִ֣ים	הָמוֹן	H1995	1995	igen	Ncmpa	noun	multitudes	ἦξοι	
+o290040140021	JOL 4:14!2	Jóel 3:14	terkep	rendben	הֲמוֹנִ֔ים	הָמוֹן	H1995	1995	igen	Ncmpa	noun	multitudes	ἐχήξησαν	
+o290040140031	JOL 4:14!3	Jóel 3:14	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	[are].in	ἐν	G1722
+o290040140032	JOL 4:14!3	Jóel 3:14	terkep	rendben	עֵ֖מֶק	עֵמֶק	H6010	6010	igen	Ncmsc	noun	the.valley		
+o290040140041	JOL 4:14!4	Jóel 3:14	terkep	javaslat:strong_funkcio_kod	הֶֽ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of.(the)	τῆς	G3588
+o290040140042	JOL 4:14!4	Jóel 3:14	terkep	javaslat:strong_betu_alap	חָר֑וּץ	חרץ	H2742	2742d	javaslat:betu_alap	Np	noun	decision	δίκης	G1349
+o290040140051	JOL 4:14!5	Jóel 3:14	terkep	rendben	כִּ֤י	כִּי	H3588	3588	igen	C	conjunction	(dm)	ὅτι	G3754
+o290040140061	JOL 4:14!6	Jóel 3:14	terkep	rendben	קָרוֹב֙	קָרֹוב	H7138	7138	igen	Aamsa	adjective	[is].near	ἐγγὺς	G1451
+o290040140071	JOL 4:14!7	Jóel 3:14	terkep	rendben	י֣וֹם	יוֹם	H3117	3117	igen	Ncmsc	noun	the.day	ἡμέρα	G2250
+o290040140081	JOL 4:14!8	Jóel 3:14	terkep	rendben	יְהוָ֔ה	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o290040140091	JOL 4:14!9	Jóel 3:14	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o290040140092	JOL 4:14!9	Jóel 3:14	terkep	rendben	עֵ֖מֶק	עֵמֶק	H6010	6010	igen	Ncmsc	noun	the.valley		
+o290040140101	JOL 4:14!10	Jóel 3:14	terkep	javaslat:strong_funkcio_kod	הֶ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of.(the)	τῆς	G3588
+o290040140102	JOL 4:14!10	Jóel 3:14	terkep	javaslat:strong_betu_alap	חָרֽוּץ	חרץ	H2742	2742d	javaslat:betu_alap	Np	noun	decision	δίκης	G1349
+o290040150011	JOL 4:15!1	Jóel 3:15	terkep	rendben	שֶׁ֥מֶשׁ	שֶׁמֶשׁ	H8121	8121	igen	Ncbsa	noun	sun	ἥλιος	G2246
+o290040150021	JOL 4:15!2	Jóel 3:15	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040150022	JOL 4:15!2	Jóel 3:15	terkep	rendben	יָרֵ֖חַ	יָרֵחַ	H3394	3394	igen	Ncmsa	noun	moon		
+o290040150031	JOL 4:15!3	Jóel 3:15	terkep	rendben	קָדָ֑רוּ	קָדַר	H6937	6937	igen	Vqp3cp	verb	they.have.become.dark	συσκοτάσουσιν	
+o290040150041	JOL 4:15!4	Jóel 3:15	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and.[the]	καὶ	G2532
+o290040150042	JOL 4:15!4	Jóel 3:15	terkep	rendben	כוֹכָבִ֖ים	כּוֹכָב	H3556	3556	igen	Ncmpa	noun	stars	ἀστέρες	G0792
+o290040150051	JOL 4:15!5	Jóel 3:15	terkep	rendben	אָסְפ֥וּ	אָסַף	H0622	0622	igen	Vqp3cp	verb	they.have.withdrawn	δύσουσιν	
+o290040150061	JOL 4:15!6	Jóel 3:15	terkep	rendben	נָגְהָֽ	נֹגַהּ	H5051	5051	igen	Ncfsc	noun	brightness	φέγγος	G5338
+o290040150062	JOL 4:15!6	Jóel 3:15	terkep	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their	αὐτῶν	G0846
+o290040160011	JOL 4:16!1	Jóel 3:16	terkep	javaslat:strong_funkcio_kod	וַ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	δὲ	G1161
+o290040160012	JOL 4:16!1	Jóel 3:16	terkep	rendben	יהוָ֞ה	יהוה	H3068	3068	igen	Np	noun	Yahweh		
+o290040160021	JOL 4:16!2	Jóel 3:16	terkep	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from	ἐκ	G1537
+o290040160022	JOL 4:16!2	Jóel 3:16	terkep	rendben	צִּיּ֣וֹן	צִיּוֹן	H6726	6726	igen	Np	noun	Zion	σιων	G4622
+o290040160031	JOL 4:16!3	Jóel 3:16	terkep	rendben	יִשְׁאָ֗ג	שָׁאַג	H7580	7580	igen	Vqi3ms	verb	he.will.roar	ἀνακεκράχεται	G0349
+o290040160041	JOL 4:16!4	Jóel 3:16	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040160042	JOL 4:16!4	Jóel 3:16	terkep	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from	ἐχ	G1537
+o290040160043	JOL 4:16!4	Jóel 3:16	terkep	rendben	ירוּשָׁלִַ֨ם֙	יְרוּשָׁלִַ͏ם	H3389	3389	igen	Np	noun	Jerusalem	ιερουσαλημ	G2414
+o290040160051	JOL 4:16!5	Jóel 3:16	terkep	rendben	יִתֵּ֣ן	נָתַן	H5414	5414	igen	Vqi3ms	verb	he.will.give.forth	δώσει	G1325
+o290040160061	JOL 4:16!6	Jóel 3:16	terkep	rendben	קוֹל֔	קוֹל	H6963	6963	igen	Ncmsc	noun	voice	φωνὴν	G5456
+o290040160062	JOL 4:16!6	Jóel 3:16	terkep	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o290040160071	JOL 4:16!7	Jóel 3:16	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040160072	JOL 4:16!7	Jóel 3:16	terkep	rendben	רָעֲשׁ֖וּ	רָעַשׁ	H7493	7493	igen	Vqq3cp	verb	they.will.shake	σεισθήσεται	
+o290040160081	JOL 4:16!8	Jóel 3:16	terkep	rendben	שָׁמַ֣יִם	שָׁמַיִם	H8064	8064	igen	Ncmpa	noun	heaven	οὐρανὸς	G3772
+o290040160091	JOL 4:16!9	Jóel 3:16	terkep	javaslat:strong_funkcio_kod	וָ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040160092	JOL 4:16!9	Jóel 3:16	terkep	rendben	אָ֑רֶץ	אֶרֶץ	H0776	0776	igen	Ncbsa	noun	earth	γῆ	G1093
+o290040160101	JOL 4:16!10	Jóel 3:16	terkep	javaslat:strong_funkcio_kod	וַֽ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	δὲ	G1161
+o290040160102	JOL 4:16!10	Jóel 3:16	terkep	rendben	יהוָה֙	יהוה	H3068	3068	igen	Np	noun	Yahweh		
+o290040160111	JOL 4:16!11	Jóel 3:16	terkep	rendben	מַֽחֲסֶ֣ה	מַחְסֶּה	H4268	4268	igen	Ncmsa	noun	[will.be].a.refuge	φείσεται	G5339
+o290040160121	JOL 4:16!12	Jóel 3:16	terkep	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	for	τοῦ	G3588
+o290040160122	JOL 4:16!12	Jóel 3:16	terkep	rendben	עַמּ֔	עַם	H5971	5971	igen	Ncmsc	noun	people	λαοῦ	G2992
+o290040160123	JOL 4:16!12	Jóel 3:16	terkep	javaslat:strong_funkcio_kod	וֹ	הוּא		2050c	javaslat:funkcio_kod	Sp3ms	suffix	his	αὐτοῦ	G0846
+o290040160131	JOL 4:16!13	Jóel 3:16	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040160132	JOL 4:16!13	Jóel 3:16	terkep	rendben	מָע֖וֹז	מָעוֹז	H4581	4581	igen	Ncmsa	noun	a.stronghold	ἐνισξύσει	
+o290040160141	JOL 4:16!14	Jóel 3:16	terkep	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	for	τοὺς	G3588
+o290040160142	JOL 4:16!14	Jóel 3:16	terkep	rendben	בְנֵ֥י	בֵּן	H1121	1121	igen	Ncmpc	noun	the.people	υἱοὺς	G5207
+o290040160151	JOL 4:16!15	Jóel 3:16	terkep	rendben	יִשְׂרָאֵֽל	יִשְׂרָאֵל	H3478	3478	igen	Np	noun	of.Israel	ισραηλ	G2474
+o290040170011	JOL 4:17!1	Jóel 3:17	terkep	javaslat:strong_funkcio_kod	וִֽ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040170012	JOL 4:17!1	Jóel 3:17	terkep	rendben	ידַעְתֶּ֗ם	יָדַע	H3045	3045	igen	Vqq2mp	verb	you.will.know	ἐπιγνώσεσθε	G1921
+o290040170021	JOL 4:17!2	Jóel 3:17	terkep	rendben	כִּ֣י	כִּי	H3588	3588	igen	C	conjunction	(dm).that	διότι	G1360
+o290040170031	JOL 4:17!3	Jóel 3:17	terkep	rendben	אֲנִ֤י	אֲנִי	H0589	0589	igen	Pp1cs	pronoun	I	ἐγὼ	G1473
+o290040170041	JOL 4:17!4	Jóel 3:17	terkep	rendben	יְהוָה֙	יהוה	H3068	3068	igen	Np	noun	[am].Yahweh	κύριος	G2962
+o290040170051	JOL 4:17!5	Jóel 3:17	terkep	rendben	אֱלֹ֣הֵי	אֱלֹהִים	H0430	0430	igen	Ncmpc	noun	God	θεὸς	G2316
+o290040170052	JOL 4:17!5	Jóel 3:17	terkep	javaslat:strong_funkcio_kod	כֶ֔ם	הוּא		3641b	javaslat:funkcio_kod	Sp2mp	suffix	your	ὑμῶν	G5216
+o290040170061	JOL 4:17!6	Jóel 3:17	terkep	rendben	שֹׁכֵ֖ן	שָׁכַן	H7931	7931	igen	Vqrmsa	verb	[who].dwells		
+o290040170071	JOL 4:17!7	Jóel 3:17	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o290040170072	JOL 4:17!7	Jóel 3:17	terkep	rendben	צִיּ֣וֹן	צִיּוֹן	H6726	6726	igen	Np	noun	Zion	σιων	G4622
+o290040170081	JOL 4:17!8	Jóel 3:17	terkep	rendben	הַר	הַר	H2022	2022	igen	Ncmsc	noun	the.mountain	ὄρει	G3735
+o290040170091	JOL 4:17!9	Jóel 3:17	terkep	rendben	קָדְשִׁ֑	קֹדֶשׁ	H6944	6944	igen	Ncmsc	noun	my.holiness	ἁγίῳ	G0040
+o290040170092	JOL 4:17!9	Jóel 3:17	terkep	javaslat:strong_funkcio_kod	י	הוּא		2967a	javaslat:funkcio_kod	Sp1cs	suffix	my	μου	G3450
+o290040170101	JOL 4:17!10	Jóel 3:17	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040170102	JOL 4:17!10	Jóel 3:17	terkep	rendben	הָיְתָ֤ה	הָיָה	H1961	1961	igen	Vqq3fs	verb	it.will.be	ἔσται	G2071
+o290040170111	JOL 4:17!11	Jóel 3:17	terkep	rendben	יְרוּשָׁלִַ֨ם֙	יְרוּשָׁלִַ͏ם	H3389	3389	igen	Np	noun	Jerusalem	ιερουσαλημ	G2414
+o290040170121	JOL 4:17!12	Jóel 3:17	terkep	rendben	קֹ֔דֶשׁ	קֹדֶשׁ	H6944	6944	igen	Ncmsa	noun	a.holy.place	ἁγία	G0040
+o290040170131	JOL 4:17!13	Jóel 3:17	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040170132	JOL 4:17!13	Jóel 3:17	terkep	javaslat:strong_betu_alap	זָרִ֥ים	זָר	H2114	2114b	javaslat:betu_alap	Aampa	adjective	strangers	ἀλλογενεῖς	G0241
+o290040170141	JOL 4:17!14	Jóel 3:17	terkep	rendben	לֹא	לֹא	H3808	3808	igen	Tn	particle	not	οὐ	G3756
+o290040170151	JOL 4:17!15	Jóel 3:17	terkep	rendben	יַֽעַבְרוּ	עָבַר	H5674	5674	igen	Vqi3mp	verb	they.will.pass	διελεύσονται	G1330
+o290040170161	JOL 4:17!16	Jóel 3:17	terkep	javaslat:strong_funkcio_kod	בָ֖	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	δῑ	G1223
+o290040170162	JOL 4:17!16	Jóel 3:17	terkep	javaslat:strong_funkcio_kod	הּ	הוּא		1886d	javaslat:funkcio_kod	Sp3fs	suffix	it	αὐτῆς	G0846
+o290040170171	JOL 4:17!17	Jóel 3:17	terkep	rendben	עֽוֹד	עוֹד	H5750	5750	igen	D	adverb	again	οὐκέτι	G3765
+o290040180011	JOL 4:18!1	Jóel 3:18	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040180012	JOL 4:18!1	Jóel 3:18	terkep	rendben	הָיָה֩	הָיָה	H1961	1961	igen	Vqq3ms	verb	it.will.be	ἔσται	G2071
+o290040180021	JOL 4:18!2	Jóel 3:18	terkep	javaslat:strong_funkcio_kod	בַ	בְּ		0871a	javaslat:funkcio_kod	Rd	preposition	on	ἐν	G1722
+o290040180021ה	JOL 4:18!2	Jóel 3:18	terkep	javaslat:strong_funkcio_kod		הַ		1886a	javaslat:funkcio_kod	Td	particle	the		
+o290040180022	JOL 4:18!2	Jóel 3:18	terkep	rendben	יּ֨וֹם	יוֹם	H3117	3117	igen	Ncmsa	noun	day	ἡμέρᾳ	G2250
+o290040180031	JOL 4:18!3	Jóel 3:18	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	(the)		
+o290040180032	JOL 4:18!3	Jóel 3:18	terkep	rendben	ה֜וּא	הוּא	H1931	1931	igen	Pp3ms	pronoun	that	ἐκείνῃ	G1565
+o290040180041	JOL 4:18!4	Jóel 3:18	terkep	rendben	יִטְּפ֧וּ	נָטַף	H5197	5197	igen	Vqi3mp	verb	they.will.drip	ἀποσταλάχει	
+o290040180051	JOL 4:18!5	Jóel 3:18	terkep	javaslat:strong_funkcio_kod	הֶ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	τὰ	G3588
+o290040180052	JOL 4:18!5	Jóel 3:18	terkep	rendben	הָרִ֣ים	הַר	H2022	2022	igen	Ncmpa	noun	mountains	ὄρη	G3735
+o290040180061	JOL 4:18!6	Jóel 3:18	terkep	rendben	עָסִ֗יס	עָסִיס	H6071	6071	igen	Ncmsa	noun	sweet.wine	γλυκασμόν	
+o290040180071	JOL 4:18!7	Jóel 3:18	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040180072	JOL 4:18!7	Jóel 3:18	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	the	οἱ	G3588
+o290040180073	JOL 4:18!7	Jóel 3:18	terkep	rendben	גְּבָעוֹת֙	גִּבְעָה	H1389	1389	igen	Ncfpa	noun	hills	βουνοὶ	G1015
+o290040180081	JOL 4:18!8	Jóel 3:18	terkep	rendben	תֵּלַ֣כְנָה	הלך	H1980	1980	igen	Vqi3fp	verb	they.will.go	ῥυήσονται	
+o290040180091	JOL 4:18!9	Jóel 3:18	terkep	rendben	חָלָ֔ב	חָלָב	H2461	2461	igen	Ncmsa	noun	milk	γάλα	G1051
+o290040180101	JOL 4:18!10	Jóel 3:18	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040180102	JOL 4:18!10	Jóel 3:18	terkep	rendben	כָל	כֹּל	H3605	3605	igen	Ncmsc	noun	all	πᾶσαι	G3956
+o290040180111	JOL 4:18!11	Jóel 3:18	terkep	rendben	אֲפִיקֵ֥י	אָפִיק	H0650	0650	igen	Ncmpc	noun	the.ravines		
+o290040180121	JOL 4:18!12	Jóel 3:18	terkep	rendben	יְהוּדָ֖ה	יְהוּדָה	H3063	3063	igen	Np	noun	of.Judah	ιουδα	G2448
+o290040180131	JOL 4:18!13	Jóel 3:18	terkep	rendben	יֵ֣לְכוּ	הלך	H1980	1980	igen	Vqi3mp	verb	they.will.go	ῥυήσονται	
+o290040180141	JOL 4:18!14	Jóel 3:18	terkep	rendben	מָ֑יִם	מַיִם	H4325	4325	igen	Ncmpa	noun	water	ὕδατα	G5204
+o290040180151	JOL 4:18!15	Jóel 3:18	terkep	javaslat:strong_funkcio_kod	וּ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040180152	JOL 4:18!15	Jóel 3:18	terkep	rendben	מַעְיָ֗ן	מַעְיָן	H4599	4599	igen	Ncmsa	noun	a.spring	πηγὴ	G4077
+o290040180161	JOL 4:18!16	Jóel 3:18	terkep	rendben	מִ	מִן	H4480	4480	igen	R	preposition	from	ἐχ	G1537
+o290040180162	JOL 4:18!16	Jóel 3:18	terkep	rendben	בֵּ֤ית	בַּיִת	H1004	1004	igen	Ncmsc	noun	the.house	οἴκου	G3624
+o290040180171	JOL 4:18!17	Jóel 3:18	terkep	rendben	יְהוָה֙	יהוה	H3068	3068	igen	Np	noun	of.Yahweh	κυρίου	G2962
+o290040180181	JOL 4:18!18	Jóel 3:18	terkep	rendben	יֵצֵ֔א	יָצָא	H3318	3318	igen	Vqi3ms	verb	it.will.go.forth	ἐχελεύσεται	G1831
+o290040180191	JOL 4:18!19	Jóel 3:18	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040180192	JOL 4:18!19	Jóel 3:18	terkep	rendben	הִשְׁקָ֖ה	שָׁקָה	H8248	8248	igen	Vhq3ms	verb	it.will.water	ποτιεῖ	
+o290040180201	JOL 4:18!20	Jóel 3:18	terkep	rendben	אֶת	אֵת	H0853	0853	igen	To	particle	(et)		
+o290040180211	JOL 4:18!21	Jóel 3:18	terkep	rendben	נַ֥חַל	נַחַל	H5158	5158	igen	Ncmsc	noun	the.wadi		
+o290040180221	JOL 4:18!22	Jóel 3:18	terkep	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of.(the)	τῶν	G3588
+o290040180222	JOL 4:18!22	Jóel 3:18	terkep	rendben	שִּׁטִּֽים	שִׁטִּים	H7851	7851	igen	Np	noun	Shittim	σξοίνων	
+o290040190011	JOL 4:19!1	Jóel 3:19	terkep	rendben	מִצְרַ֨יִם֙	מִצְרַיִם	H4714	4714	igen	Np	noun	Egypt	αἴγυπτος	G0125
+o290040190021	JOL 4:19!2	Jóel 3:19	terkep	javaslat:strong_funkcio_kod	לִ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(into).a	εἰς	G1519
+o290040190022	JOL 4:19!2	Jóel 3:19	terkep	rendben	שְׁמָמָ֣ה	שְׁמָמָה	H8077	8077	igen	Ncfsa	noun	desolation	ἀφανισμὸν	G0854
+o290040190031	JOL 4:19!3	Jóel 3:19	terkep	rendben	תִֽהְיֶ֔ה	הָיָה	H1961	1961	igen	Vqi3fs	verb	it.will.become	ἔσται	G2071
+o290040190041	JOL 4:19!4	Jóel 3:19	terkep	javaslat:strong_funkcio_kod	וֶ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040190042	JOL 4:19!4	Jóel 3:19	terkep	rendben	אֱד֕וֹם	אֱדוֹם	H0123	0123	igen	Np	noun	Edom		
+o290040190051	JOL 4:19!5	Jóel 3:19	terkep	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	(into).a	εἰς	G1519
+o290040190052	JOL 4:19!5	Jóel 3:19	terkep	rendben	מִדְבַּ֥ר	מִדְבָּר	H4057	4057	igen	Ncmsc	noun	wilderness	πεδίον	
+o290040190061	JOL 4:19!6	Jóel 3:19	terkep	rendben	שְׁמָמָ֖ה	שְׁמָמָה	H8077	8077	igen	Ncfsa	noun	of.desolation	ἀφανισμοῦ	G0854
+o290040190071	JOL 4:19!7	Jóel 3:19	terkep	rendben	תִּֽהְיֶ֑ה	הָיָה	H1961	1961	igen	Vqi3fs	verb	it.will.become	ἔσται	G2071
+o290040190081	JOL 4:19!8	Jóel 3:19	terkep	rendben	מֵֽ	מִן	H4480	4480	igen	R	preposition	from	ἐχ	G1537
+o290040190082	JOL 4:19!8	Jóel 3:19	terkep	rendben	חֲמַס֙	חָמָס	H2555	2555	igen	Ncmsc	noun	the.violence	ἀδικιῶν	G0094
+o290040190091	JOL 4:19!9	Jóel 3:19	terkep	rendben	בְּנֵ֣י	בֵּן	H1121	1121	igen	Ncmpc	noun	of.the.people	υἱῶν	G5207
+o290040190101	JOL 4:19!10	Jóel 3:19	terkep	rendben	יְהוּדָ֔ה	יְהוּדָה	H3063	3063	igen	Np	noun	of.Judah	ιουδα	G2448
+o290040190111	JOL 4:19!11	Jóel 3:19	terkep	rendben	אֲשֶׁר	אֲשֶׁר	H0834	0834	igen	Tr	particle	whom	ὧν	G3739
+o290040190121	JOL 4:19!12	Jóel 3:19	terkep	rendben	שָׁפְכ֥וּ	שָׁפַךְ	H8210	8210	igen	Vqp3cp	verb	they.shed	ἐχέξεαν	G1632
+o290040190131	JOL 4:19!13	Jóel 3:19	terkep	rendben	דָם	דָּם	H1818	1818	igen	Ncmsa	noun	blood	αἷμα	G0129
+o290040190141	JOL 4:19!14	Jóel 3:19	terkep	rendben	נָקִ֖יא	נָקִי	H5355	5355	igen	Aamsa	adjective	innocent	δίκαιον	G1342
+o290040190151	JOL 4:19!15	Jóel 3:19	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o290040190152	JOL 4:19!15	Jóel 3:19	terkep	rendben	אַרְצָֽ	אֶרֶץ	H0776	0776	igen	Ncbsc	noun	land	γῇ	G1093
+o290040190153	JOL 4:19!15	Jóel 3:19	terkep	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o290040200011	JOL 4:20!1	Jóel 3:20	terkep	javaslat:strong_funkcio_kod	וִ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	δὲ	G1161
+o290040200012	JOL 4:20!1	Jóel 3:20	terkep	rendben	יהוּדָ֖ה	יְהוּדָה	H3063	3063	igen	Np	noun	Judah		
+o290040200021	JOL 4:20!2	Jóel 3:20	terkep	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	forever	εἰς	G1519
+o290040200022	JOL 4:20!2	Jóel 3:20	terkep	rendben	עוֹלָ֣ם	עוֹלָם	H5769	5769	igen	Ncmsa	noun	of.perpetuity	αἰῶνα	G0165
+o290040200031	JOL 4:20!3	Jóel 3:20	terkep	rendben	תֵּשֵׁ֑ב	יָשַׁב	H3427	3427	igen	Vqi3fs	verb	it.will.remain	κατοικηθήσεται	
+o290040200041	JOL 4:20!4	Jóel 3:20	terkep	javaslat:strong_funkcio_kod	וִ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040200042	JOL 4:20!4	Jóel 3:20	terkep	rendben	ירוּשָׁלִַ֖ם	יְרוּשָׁלִַ͏ם	H3389	3389	igen	Np	noun	Jerusalem	ιερουσαλημ	G2414
+o290040200051	JOL 4:20!5	Jóel 3:20	terkep	javaslat:strong_funkcio_kod	לְ	לְ		3807a	javaslat:funkcio_kod	R	preposition	to	εἰς	G1519
+o290040200052	JOL 4:20!5	Jóel 3:20	terkep	rendben	ד֥וֹר	דּוֹר	H1755	1755	igen	Ncmsa	noun	a.generation	γενεὰς	G1074
+o290040200061	JOL 4:20!6	Jóel 3:20	terkep	javaslat:strong_funkcio_kod	וָ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and		
+o290040200062	JOL 4:20!6	Jóel 3:20	terkep	rendben	דֽוֹר	דּוֹר	H1755	1755	igen	Ncmsa	noun	a.generation	γενεῶν	G1074
+o290040210011	JOL 4:21!1	Jóel 3:21	terkep	javaslat:strong_funkcio_kod	וְ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040210012	JOL 4:21!1	Jóel 3:21	terkep	rendben	נִקֵּ֖יתִי	נָקָה	H5352	5352	igen	Vpq1cs	verb	I.will.leave.unpunished	ἐκδικήσω	G1556
+o290040210021	JOL 4:21!2	Jóel 3:21	terkep	rendben	דָּמָ֣	דָּם	H1818	1818	igen	Ncmsc	noun	blood	αἷμα	G0129
+o290040210022	JOL 4:21!2	Jóel 3:21	terkep	javaslat:strong_funkcio_kod	ם	הוּא		3963a	javaslat:funkcio_kod	Sp3mp	suffix	their		
+o290040210031	JOL 4:21!3	Jóel 3:21	terkep	rendben	לֹֽא	לֹא	H3808	3808	igen	Tn	particle	[which].not	οὐ	G3756
+o290040210041	JOL 4:21!4	Jóel 3:21	terkep	rendben	נִקֵּ֑יתִי	נָקָה	H5352	5352	igen	Vpp1cs	verb	I.left.unpunished	ἀθῳώσω	
+o290040210051	JOL 4:21!5	Jóel 3:21	terkep	javaslat:strong_funkcio_kod	וַֽ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
+o290040210052	JOL 4:21!5	Jóel 3:21	terkep	rendben	יהוָ֖ה	יהוה	H3068	3068	igen	Np	noun	Yahweh	κύριος	G2962
+o290040210061	JOL 4:21!6	Jóel 3:21	terkep	rendben	שֹׁכֵ֥ן	שָׁכַן	H7931	7931	igen	Vqrmsa	verb	[is].dwelling	κατασκηνώσει	G2681
+o290040210071	JOL 4:21!7	Jóel 3:21	terkep	javaslat:strong_funkcio_kod	בְּ	בְּ		0871a	javaslat:funkcio_kod	R	preposition	in	ἐν	G1722
+o290040210072	JOL 4:21!7	Jóel 3:21	terkep	rendben	צִיּֽוֹן	צִיּוֹן	H6726	6726	igen	Np	noun	Zion	σιων	G4622
