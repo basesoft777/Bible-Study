@@ -481,6 +481,7 @@ class E16EsemenyTest(unittest.TestCase):
         self.assertEqual([t for t in eredmeny['E16'] if t.szint == 'HIBA'], [])
         szoveg, hiba_van = FU.jelentes_szoveg(eredmeny, False, 3, 'push')
         self.assertIn('E16: push-esemény, nem értelmezett (a PR-en fut)', szoveg)
+        self.assertFalse(hiba_van)  # az összesített jelentés sem piros
 
     def test_pr_cim_nelkul_piros(self):
         eredmeny, _ = self._hiba(pr_cim='', esemeny='pull_request')
