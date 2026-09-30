@@ -835,6 +835,28 @@ def vezerlo_futtat(ctx, vezerlo_ut, minta):
 # --szaraz: becslés hálózat nélkül
 # ---------------------------------------------------------------------------
 
+def _tokenbecsles(f, versek, gondolkodas_c=C_GONDOLKODAS_HIVASONKENT):
+    """Egy futás (f) bemeneti és kimeneti token-becslése a megadott versekre, a valódi
+    kötegszövegekből (a futás saját promptjával). Visszaad: (kötegek, bemenet, kimenet)."""
+    spec = FUTASOK[f]
+    alap = spec.get('prompt')
+    kotegek = bemenet.kotegek(versek, KOTEG_MERET)
+    be = ki = 0
+    for k in kotegek:
+        szoveg_hossz = len(bemenet.kotegszoveg(k, spec['kjv'], alap))
+        if spec['tipus'] == 'biro':
+            # a döntőbírói utasítás hosszabb, és versenként két válasz is jön (A és B,
+            # 150-150 token) + a rögzítés-sorok (kb. 40 token/vers); a válasz-JSON
+            # karakterhossza ~ tokenszám * KAR_PER_TOKEN
+            szoveg_hossz += len(biro_utasitas(alap)) - len(bemenet.prompt_utasitas(alap))
+            szoveg_hossz += int((2 * KIMENET_TOKEN_VERSENKENT + 40) * KAR_PER_TOKEN * len(k))
+        be += szoveg_hossz / KAR_PER_TOKEN
+        ki += KIMENET_TOKEN_VERSENKENT * len(k)
+        if spec['modell'] == 'C':
+            ki += gondolkodas_c
+    return kotegek, be, ki
+
+
 def szaraz(minta, eltero_arany=0.30, gondolkodas_c=C_GONDOLKODAS_HIVASONKENT):
     """Token- és költségbecslés az F1–F6-ra a valódi kötegszövegekből.
 
@@ -857,19 +879,7 @@ def szaraz(minta, eltero_arany=0.30, gondolkodas_c=C_GONDOLKODAS_HIVASONKENT):
             versek = versek[::lepes][:n]
         else:
             versek = [s['igehely'] for s in minta if spec['reteg'] is None or s['reteg'] == spec['reteg']]
-        be = ki = 0
-        kotegek = bemenet.kotegek(versek, KOTEG_MERET)
-        for k in kotegek:
-            szoveg_hossz = len(bemenet.kotegszoveg(k, spec['kjv'], spec.get('prompt')))
-            if spec['tipus'] == 'biro':
-                # a döntőbírói utasítás hosszabb, és versenként két válasz is jön
-                # (A és B, 150-150 token); a válasz-JSON karakterhossza ~ tokenszám * KAR_PER_TOKEN
-                szoveg_hossz += len(biro_utasitas()) - len(bemenet.prompt_utasitas())
-                szoveg_hossz += int(2 * KIMENET_TOKEN_VERSENKENT * KAR_PER_TOKEN * len(k))
-            be += szoveg_hossz / KAR_PER_TOKEN
-            ki += KIMENET_TOKEN_VERSENKENT * len(k)
-            if spec['modell'] == 'C':
-                ki += gondolkodas_c
+        kotegek, be, ki = _tokenbecsles(f, versek, gondolkodas_c)
         koltseg = be / 1e6 * ar_be + ki / 1e6 * ar_ki
         sorok.append((f, modell_id, len(versek), len(kotegek), be, ki, koltseg))
     return sorok
@@ -906,6 +916,91 @@ def szaraz_kiir(minta, eltero_arany):
     return ossz
 
 
+P3B_FUTASOK = ('F1V2', 'F2V2', 'F5V2', 'F6V2', 'F3V2B', 'F4V2')
+P3B_FORRAS = {'F1V2': 'F1', 'F2V2': 'F2', 'F5V2': 'F5', 'F6V2': 'F6', 'F3V2B': 'F3V2'}   # a tényleges költség forrása
+P3B_V1 = {'F1V2': 'F1', 'F2V2': 'F2', 'F5V2': 'F5', 'F6V2': 'F6'}    # a v1 megfelelő (a skálázáshoz)
+P3B_PLAFON_KUMULATIV = 2.0
+
+
+def p3b_becsles(minta, kimenet_dir=None):
+    """A P3b becslése. Visszaad: dict a sorokkal és az eddigi napló-összeggel (hálózat nélkül).
+
+    Két módszer futásonként: (a) képlet: a valódi kötegszövegek karaktere / KAR_PER_TOKEN,
+    150 token/vers kimenet, a C-nél +500 token/hívás gondolkodás; (b) a megfelelő, már
+    lefutott futás tényleges költsége (újrakérésekkel és gondolkodással együtt),
+    felszorozva a v2- és a v1-prompt képlet szerinti arányával (az F3V2B-nél a F3V2
+    tényleges költsége, ugyanaz a konfiguráció). Az F4V2 versszáma: (i) a meglévő F1/F2 (v1)
+    mért eltérési aránya (link-szint vagy kapuhibás), (ii) a megengedő felső eset (a minta
+    összes verse); az F4V2-nek nincs tényleges költségű megfelelője."""
+    kimenet_dir = kimenet_dir or F21P
+    ig_all = [s_['igehely'] for s_ in minta]
+    arany = None
+    try:
+        a1 = eredmenyek_betolt('F1', kimenet_dir)
+        a2 = eredmenyek_betolt('F2', kimenet_dir)
+        if all(ig in a1 and ig in a2 for ig in ig_all):
+            arany = (sum(1 for ig in ig_all if elter(a1[ig], a2[ig])), len(ig_all))
+    except (OSError, ValueError, KeyError):
+        arany = None
+    naplo = _tsv(naplo_ut(kimenet_dir)) if os.path.exists(naplo_ut(kimenet_dir)) else []
+
+    def tenyleges(futas_id):
+        return sum(float(r['koltseg_usd']) for r in naplo if r['futas'] == futas_id)
+
+    sorok = []
+    for f in P3B_FUTASOK:
+        spec = FUTASOK[f]
+        ar_be, ar_ki = ARAK[MODELLEK[spec['modell']]]
+        if spec['tipus'] == 'biro':
+            for cimke, n in (('F4V2 (mért v1-arány)', arany[0] if arany else len(ig_all)),
+                             ('F4V2 (felső eset: mind a %d vers)' % len(ig_all), len(ig_all))):
+                kotegek, be, ki = _tokenbecsles(f, ig_all[:n])
+                sorok.append({'futas': cimke, 'versek': n, 'hivasok': len(kotegek), 'be': be, 'ki': ki,
+                              'kepletes': be / 1e6 * ar_be + ki / 1e6 * ar_ki, 'skalazott': None, 'f4': True})
+            continue
+        versek = [s_['igehely'] for s_ in minta if spec['reteg'] is None or s_['reteg'] == spec['reteg']]
+        kotegek, be, ki = _tokenbecsles(f, versek)
+        kepletes = be / 1e6 * ar_be + ki / 1e6 * ar_ki
+        skalazott = None
+        t = tenyleges(P3B_FORRAS[f])
+        if t:
+            if f == 'F3V2B':
+                skalazott = t                    # ugyanaz a konfiguráció: a F3V2 tényleges költsége
+            else:
+                _, be1, ki1 = _tokenbecsles(P3B_V1[f], versek)
+                ar1 = be1 / 1e6 * ar_be + ki1 / 1e6 * ar_ki
+                skalazott = t * (kepletes / ar1) if ar1 else None
+        sorok.append({'futas': f, 'versek': len(versek), 'hivasok': len(kotegek), 'be': be, 'ki': ki,
+                      'kepletes': kepletes, 'skalazott': skalazott, 'f4': False})
+    return {'sorok': sorok, 'arany': arany, 'eddig': naplo_osszeg(kimenet_dir)}
+
+
+def p3b_kiir(minta):
+    r = p3b_becsles(minta)
+    print()
+    print('P3b SZÁRAZ BECSLÉS (F1V2, F2V2, F5V2, F6V2, F3V2B, F4V2; mind prompt_v2; hálózat nélkül)')
+    if r['arany']:
+        print('  a v1 F1/F2 mért eltérési aránya (link-szinten eltér vagy kapuhibás): %d/%d = %.1f%%'
+              % (r['arany'][0], r['arany'][1], 100 * r['arany'][0] / r['arany'][1]))
+    print('  %-34s %6s %7s %12s %12s %12s %14s' % ('futás', 'vers', 'hívás', 'bemenet_tok', 'kimenet_tok', 'képlet USD', 'skálázott USD'))
+    for x in r['sorok']:
+        print('  %-34s %6d %7d %12d %12d %12.4f %14s' % (
+            x['futas'], x['versek'], x['hivasok'], x['be'], x['ki'], x['kepletes'],
+            '%.4f' % x['skalazott'] if x['skalazott'] is not None else '—'))
+    nem_f4 = [x for x in r['sorok'] if not x['f4']]
+    for f4x in [x for x in r['sorok'] if x['f4']]:
+        kep = sum(x['kepletes'] for x in nem_f4) + f4x['kepletes']
+        ska = sum((x['skalazott'] if x['skalazott'] is not None else x['kepletes']) for x in nem_f4) + f4x['kepletes']
+        for nev, osszeg in (('képlet', kep), ('skálázott (az F4V2: képlet)', ska)):
+            tart = osszeg * 1.1
+            kum = r['eddig'] + tart
+            print('  ÖSSZESEN [%s; %s]: %.4f USD, +10%% újrakérés-tartalékkal %.4f USD; a napló eddigi összege %.4f USD; '
+                  'kumulatívan ~%.4f USD (megállási küszöb: %.1f USD kumulatív, kemény korlát %.1f USD)%s'
+                  % (f4x['futas'], nev, osszeg, tart, r['eddig'], kum, P3B_PLAFON_KUMULATIV, PLAFON_USD,
+                     '  >>> MEGHALADJA a %.1f USD-t' % P3B_PLAFON_KUMULATIV if kum > P3B_PLAFON_KUMULATIV else ''))
+    return r
+
+
 # ---------------------------------------------------------------------------
 # --onteszt: MOCK küldővel, hálózat és kulcs nélkül
 # ---------------------------------------------------------------------------
@@ -937,7 +1032,17 @@ class MockKuldo:
     """
 
     def __init__(self, hibas_elso=(), hibas_mindig=(), nem_json_hivas=(), c_minimal_400=True,
-                 koltseg_szorzo=1.0, biro_rossz_elso=(), biro_rossz_mindig=()):
+                 koltseg_szorzo=1.0, biro_rossz_elso=(), biro_rossz_mindig=(),
+                 egyedi_hibas_mindig=(), biro_strong_elso=(), biro_strong_mindig=(), b_variacio=None):
+        # b_variacio: azok a versek, ahol a B eltér az A-tól (None: az igehely hash%4==0 szabálya)
+        self.b_variacio = None if b_variacio is None else set(b_variacio)
+        # egyedi_hibas_mindig: {(modell_id, igehely)} - csak az adott modell (és csak nem
+        # döntőbírói hívásban) ad mindig Strong-mintás (kapun elbukó) választ az igehelyre;
+        # biro_strong_*: a döntőbíró az első / minden próbálkozásra Strong-számot ír (5. pont)
+        self.egyedi_hibas_mindig = set(egyedi_hibas_mindig)
+        self.biro_strong_elso = set(biro_strong_elso)
+        self.biro_strong_mindig = set(biro_strong_mindig)
+        self.szovegek = []         # (modell_id, az első felhasználói üzenet szövege)
         # biro_rossz_*: a döntőbíró (F4) az első / minden próbálkozásra megsérti a
         # rögzítést (a nem vitatott 2. magyar szóhoz új linket ad; a kapun átmegy)
         self.biro_rossz_elso = set(biro_rossz_elso)
@@ -982,11 +1087,13 @@ class MockKuldo:
     def _valasz_versekre(self, modell_id, igehelyek, masodik, biro=False):
         elemek = []
         for ig in igehelyek:
-            if ig in self.hibas_mindig or (ig in self.hibas_elso and not masodik):
+            if (ig in self.hibas_mindig or (ig in self.hibas_elso and not masodik)
+                    or (not biro and (modell_id, ig) in self.egyedi_hibas_mindig)
+                    or (biro and (ig in self.biro_strong_mindig or (ig in self.biro_strong_elso and not masodik)))):
                 obj = self._helyes(ig, False)
                 obj['megjegyzes'] = 'H1234'   # Strong-minta: az 5. kapupont fogja
             else:
-                variacio = (modell_id == MODELLEK['B'] and (hash_stabil(ig) % 4 == 0))
+                variacio = (modell_id == MODELLEK['B'] and ((hash_stabil(ig) % 4 == 0) if self.b_variacio is None else ig in self.b_variacio))
                 obj = self._helyes(ig, variacio)
                 if biro and (ig in self.biro_rossz_mindig or (ig in self.biro_rossz_elso and not masodik)):
                     obj = self._rontas(obj)
@@ -1001,6 +1108,7 @@ class MockKuldo:
         van_assistant = any(m['role'] == 'assistant' for m in uzenetek)
         igehelyek = self._versek(uzenetek[-1]['content'])
         self.hivasok.append((model_id, list(igehelyek), van_assistant))
+        self.szovegek.append((model_id, uzenetek[0]['content']))
         if (model_id, n) in self.nem_json_hivas:
             tartalom = 'Elnézést, itt a megoldás: ez nem JSON.'
         else:
@@ -1049,6 +1157,305 @@ def _onteszt_minta(minta):
             szam[r] += 1
             ki.append(s)
     return ki
+
+
+def _blokkok(szoveg):
+    """{igehely: [sorok]} a hívás szövegének versblokkjaiból (a '=== A FELDOLGOZANDÓ' jel után)."""
+    jel = '=== A FELDOLGOZANDÓ VERSEK'
+    ki = {}
+    for blokk in szoveg.split(jel, 1)[1].split('\n\n'):
+        sorok = blokk.strip('\n').split('\n')
+        for x in sorok:
+            if x.startswith('VERS: '):
+                ki[x[len('VERS: '):].strip()] = sorok
+                break
+    return ki
+
+
+def _fuggetlen_rogzites(a_obj, b_obj):
+    """A rögzítés függetlenül (nem a biro_rogzites kódjával) számolva, az onteszt bizonyításához."""
+    def kmap(o):
+        d = {}
+        for k, es in o['parok']:
+            d.setdefault(k, set()).update(es)
+        for k in o['betoldas']:
+            d.setdefault(k, set())
+        return d, set(o['betoldas'])
+    (ma, ba), (mb, bb) = kmap(a_obj), kmap(b_obj)
+    la = {(k, e) for k, es in ma.items() for e in es}
+    lb = {(k, e) for k, es in mb.items() for e in es}
+    vit = sorted(k for k in set(ma) | set(mb)
+                 if ma.get(k) != mb.get(k) or ((k in ba) != (k in bb)))
+    return sorted(la & lb), vit
+
+
+def onteszt_p3b(ellen, minta, teszt_kulcs, kimenet):
+    """A P3b (F1V2, F2V2, F5V2, F6V2, F3V2B, F4V2) önteszt-ágai MOCK küldővel.
+
+    kimenet: lista, amelybe a bizonyító sorok kerülnek (az önteszt végén kiírva).
+    Visszaad: a létrehozott ideiglenes könyvtárak listája."""
+    import hashlib
+    import re
+    mappak = []
+    sorrend = ['F1V2', 'F2V2', 'F5V2', 'F6V2', 'F3V2B', 'F4V2']
+    ig_all = [s_['igehely'] for s_ in minta]
+    r1 = [s_['igehely'] for s_ in minta if s_['reteg'] == 'R1']
+    A, B, C = MODELLEK['A'], MODELLEK['B'], MODELLEK['C']
+
+    def mérete(ig):
+        d_ = bemenet.vers_adat(ig)
+        return len(d_['karoli_tokenek']), len(d_['eredeti'])
+
+    # a B-eltérő (hash%4==0) versek közül a döntőbírói ágakhoz; az A/B-hibás versek NEM ezek közül
+    hash4 = [ig for ig in ig_all if min(mérete(ig)) >= 3][::3][:6]     # ezeken a B eltér az A-tól
+    ellen(len(hash4) >= 4, 'P3b önteszt-minta: nincs 4 B-eltérő vers a döntőbírói ágakhoz (%d)' % len(hash4))
+    rossz_elso, rossz_mindig, strong_elso, strong_mindig = hash4[:4]
+    semleges = [ig for ig in ig_all if ig not in hash4 and ig in r1 and min(mérete(ig)) >= 3]
+    a_hiba, mind_hiba = semleges[2], semleges[5]          # A egyedül / A és B is kapuhibás marad
+    mock = MockKuldo(egyedi_hibas_mindig={(A, a_hiba), (A, mind_hiba), (B, mind_hiba)}, b_variacio=hash4,
+                     biro_rossz_elso={rossz_elso}, biro_rossz_mindig={rossz_mindig},
+                     biro_strong_elso={strong_elso}, biro_strong_mindig={strong_mindig})
+    mappa = tempfile.mkdtemp(prefix='f21p_onteszt_p3b_')
+    mappak.append(mappa)
+    ctx = Kontextus(mock, teszt_kulcs, mappa)
+    vez = os.path.join(mappa, 'futtatas_teszt.txt')
+
+    def vez_ir(tartalom):
+        with open(vez, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(tartalom)
+
+    # --- a vezérlő: az új azonosítók, a sorrend, az F4/F4V2 szabályai, a plafon_usd ---
+    vez_ir('futasok=F4V2,F1V2,F5V2,F6V2,F3V2B,F2V2\nkoteg_max=mind\nplafon_usd=2\n')
+    v = vezerlo_beolvas(vez)
+    ellen(v['futasok'] == sorrend and v['plafon_usd'] == 2.0 and v['koteg_max'] is None,
+          'vezérlő: a P3b sorrendje/értelmezése hibás: %s' % (v,))
+    vez_ir('futasok=F1V2,F2V2,F5V2,F6V2,F3V2B\nkoteg_max=mind\n')
+    ellen(vezerlo_beolvas(vez)['futasok'] == sorrend[:5] and vezerlo_beolvas(vez)['plafon_usd'] is None,
+          'vezérlő: a F4V2 nélküli sor értelmezése hibás')
+    vez_ir('futasok=F4V2\nkoteg_max=mind\n')
+    ellen(vezerlo_beolvas(vez)['futasok'] == ['F4V2'], 'vezérlő: az egyedül álló F4V2 elutasítva')
+    vez_ir('futasok=F1,F4\nkoteg_max=mind\n')
+    ellen(_hibas(lambda: vezerlo_beolvas(vez)), 'vezérlő: a régi F4 más futással együtt elfogadva')
+    for jo in ('2', '2.0', '3', '3.0', '0.5'):
+        vez_ir('futasok=F1V2\nkoteg_max=1\nplafon_usd=%s\n' % jo)
+        ellen(vezerlo_beolvas(vez)['plafon_usd'] == float(jo), 'plafon_usd=%s elutasítva' % jo)
+    for rossz in ('x', '0', '-1', '3.01', '10', 'nan', 'inf', '', '1,5'):
+        vez_ir('futasok=F1V2\nkoteg_max=1\nplafon_usd=%s\n' % rossz)
+        ellen(_hibas(lambda: vezerlo_beolvas(vez)), 'plafon_usd=%r elfogadva' % rossz)
+    ctx_p = Kontextus(MockKuldo(), teszt_kulcs, mappa)
+    vez_ir('futasok=F1V2\nkoteg_max=1\nplafon_usd=0.5\n')
+    mappa_p = tempfile.mkdtemp(prefix='f21p_onteszt_p3b_plafonkulcs_')
+    mappak.append(mappa_p)
+    ctx_p = Kontextus(MockKuldo(), teszt_kulcs, mappa_p)
+    vezerlo_futtat(ctx_p, vez, minta)
+    ellen(ctx_p.plafon == 0.5, 'a plafon_usd nem érvényesült a kontextusban: %s' % ctx_p.plafon)
+    vez_ir('futasok=F1V2\nkoteg_max=1\n')
+    ctx_q = Kontextus(MockKuldo(), teszt_kulcs, mappa_p)
+    vezerlo_futtat(ctx_q, vez, minta)
+    ellen(ctx_q.plafon == PLAFON_USD, 'plafon_usd nélkül a plafon nem a 3.0 kemény korlát: %s' % ctx_q.plafon)
+
+    # --- a teljes P3b egy triggerben, rendezetlenül felsorolva, plafon_usd=2 ------------------
+    vez_ir('futasok=F4V2,F1V2,F5V2,F6V2,F3V2B,F2V2\nkoteg_max=mind\nplafon_usd=2\n')
+    kod = vezerlo_futtat(ctx, vez, minta)
+    ellen(kod == 0 and ctx.plafon == 2.0, 'P3b: kilépési kód %d, plafon %s' % (kod, ctx.plafon))
+    with open(naplo_ut(mappa), encoding='utf-8') as f:
+        naplo = [dict(zip(NAPLO_FEJLEC, x.rstrip('\n').split('\t'))) for x in list(f)[1:] if x.strip()]
+    elso_sor = {}
+    for i, r in enumerate(naplo):
+        elso_sor.setdefault(r['futas'], i)
+    ellen([f_ for f_ in sorted(elso_sor, key=elso_sor.get)] == sorrend,
+          'P3b: a futási sorrend a naplóban nem %s: %s' % (sorrend, sorted(elso_sor, key=elso_sor.get)))
+    for f_ in sorrend:
+        ellen(os.path.exists(valasz_ut(f_, mappa)), 'P3b: nincs kimenet: %s' % f_)
+    # prompt-azonosítók a naplóban
+    sha_v2 = bemenet.prompt_sha256(bemenet.PROMPT_V2_UT)[:12]
+    sha_v1 = bemenet.prompt_sha256()[:12]
+    sha_biro_v2 = biro_sha256(bemenet.PROMPT_V2_UT)[:12]
+    sha_biro_v1 = biro_sha256()[:12]
+    ellen(len({sha_v1, sha_v2, sha_biro_v1, sha_biro_v2}) == 4, 'a prompt-azonosítók nem különböznek')
+    ellen(all(r['prompt_sha256_12'] == sha_v2 for r in naplo if r['futas'] != 'F4V2'), 'a V2 futások naplója nem a v2 sha-t viseli')
+    ellen(all(r['prompt_sha256_12'] == sha_biro_v2 for r in naplo if r['futas'] == 'F4V2'),
+          'F4V2: a napló nem a v2-alapú döntőbírói sha-t viseli')
+    # F3V2B: a F3V2 2. futása, jelölve; ugyanazok a kötegek
+    f3b = koteg_sorok('F3V2B', mappa)
+    ellen(f3b and all(x.get('ismetles_of') == 'F3V2' for x in f3b), 'F3V2B: hiányzik az ismetles_of jelölés')
+    ellen([x['igehelyek'] for x in f3b] == bemenet.kotegek(ig_all, KOTEG_MERET), 'F3V2B: nem ugyanazok a kötegek, mint a F3V2-é lenne')
+    ellen(all(x['modell'] == C for x in f3b), 'F3V2B: nem a C modell')
+    # F5V2/F6V2: csak az R1, KJV nélkül; F1V2/F2V2: 25 vers
+    ellen(set(eredmenyek_betolt('F5V2', mappa)) == set(r1) and set(eredmenyek_betolt('F6V2', mappa)) == set(r1),
+          'F5V2/F6V2: nem pontosan az R1')
+    ellen('KJV-TÁMPONT: ' not in kotegszoveg_futashoz('F5V2', r1[:2], mappa).split('=== A FELDOLGOZANDÓ')[1]
+          and 'KJV-TÁMPONT: ' in kotegszoveg_futashoz('F1V2', r1[:2], mappa).split('=== A FELDOLGOZANDÓ')[1],
+          'F5V2 KJV nélkül / F1V2 KJV-val hibás')
+    ellen(len(eredmenyek_betolt('F1V2', mappa)) == 25 and len(eredmenyek_betolt('F2V2', mappa)) == 25, 'F1V2/F2V2 nem teljes')
+
+    e1, e2, e4 = (eredmenyek_betolt(f_, mappa) for f_ in ('F1V2', 'F2V2', 'F4V2'))
+    v4 = verslista('F4V2', minta, mappa)
+    ellen(v4 == [ig for ig in ig_all if elter(e1[ig], e2[ig])] and a_hiba in v4 and mind_hiba in v4,
+          'F4V2: a versek nem az eltérő/kapuhibás versek')
+    ellen(set(e4) == set(v4), 'F4V2: a mentett versek nem egyeznek a versekkel')
+    kimenet.append('F4V2 versei: %d/25 (eltérő linkű vagy kapuhibás A/B); ebből A és B is kapun átment: %d, csak egyik ment át: %d, egyik sem: %d'
+                   % (len(v4), sum(1 for ig in v4 if e1[ig]['allapot'] == 'ok' and e2[ig]['allapot'] == 'ok'),
+                      sum(1 for ig in v4 if (e1[ig]['allapot'] == 'ok') != (e2[ig]['allapot'] == 'ok')),
+                      sum(1 for ig in v4 if e1[ig]['allapot'] != 'ok' and e2[ig]['allapot'] != 'ok')))
+
+    # --- (1) RÖGZÍTETT LINKEK = A∩B, a 6. kapupont -------------------------------------------
+    c_szovegek = [t for m_, t in mock.szovegek if m_ == C and 'DÖNTŐBÍRÓI SZEREP' in t]
+    ellen(c_szovegek, 'F4V2: nem volt döntőbírói hívás')
+    ellen(all('Párosítási szabályok' in t for t in c_szovegek), 'F4V2: a C bemenete nem a prompt_v2 alapú (hiányzik a Párosítási szabályok)')
+    ellen(all(bemenet.prompt_utasitas(bemenet.PROMPT_V2_UT) in t for t in c_szovegek),
+          'F4V2: a C bemenete nem tartalmazza szó szerint a prompt_v2 utasításrészét')
+    kiegeszites = biro_utasitas(bemenet.PROMPT_V2_UT)[len(bemenet.prompt_utasitas(bemenet.PROMPT_V2_UT)):]
+    with open(BIRO_PROMPT_UT, encoding='utf-8') as f:
+        biro_fajl = f.read()
+    ellen(kiegeszites.strip() in biro_fajl.replace('\r\n', '\n'), 'F4V2: a döntőbírói kiegészítés nem a prompt_biro_v2.md tartalma')
+    blokk_szerint = {}
+    for t in c_szovegek:
+        for ig, sorok in _blokkok(t).items():
+            blokk_szerint.setdefault(ig, sorok)
+    ellen(set(blokk_szerint) == set(v4), 'F4V2: a C bemenetében nem pontosan az F4V2 versei vannak')
+    egyezo_db = 0
+    for ig in v4:
+        sorok = blokk_szerint[ig]
+        if e1[ig]['allapot'] == 'ok' and e2[ig]['allapot'] == 'ok':
+            fix_l, vit = _fuggetlen_rogzites(e1[ig]['obj'], e2[ig]['obj'])
+            s_link = [x for x in sorok if x.startswith('RÖGZÍTETT LINKEK (')]
+            s_vit = [x for x in sorok if x.startswith('VITATOTT MAGYAR SZAVAK')]
+            ok_l = bool(s_link) and sorted(tuple(x) for x in json.loads(s_link[0].split('): ', 1)[1])) == fix_l
+            ok_v = bool(s_vit) and json.loads(s_vit[0].split('): ', 1)[1]) == vit
+            ellen(ok_l and ok_v, 'F4V2 (1): %s: a RÖGZÍTETT LINKEK nem az A∩B / a VITATOTT nem a független számítás (%s)' % (ig, sorok))
+            egyezo_db += 1
+            if egyezo_db == 1:
+                kimenet.append('(1) példa %s: A∩B független számítása = %s; a C bemenetében: %s; vitatott magyar szavak: %s'
+                               % (ig, fix_l, s_link[0].split('): ', 1)[1], vit))
+    ellen(egyezo_db > 0, 'F4V2: nincs olyan vers, ahol A és B is átment')
+    # a 6. pont eltérésnél hibát ad: a mock-beli sértő válasz első próbája, a nyers válaszból újraellenőrizve
+    sor_rossz = next(x for x in koteg_sorok('F4V2', mappa) if rossz_elso in x['igehelyek'])
+    r_elso = valasz_ellenoriz_futashoz('F4V2', sor_rossz['nyers'][0], sor_rossz['igehelyek'], mappa)
+    ellen(not r_elso[rossz_elso]['ok'] and r_elso[rossz_elso]['hibak']
+          and r_elso[rossz_elso]['hibak'][0].startswith('6. ezeknek a nem vitatott'),
+          'F4V2 (1): a nem vitatott szó megváltoztatása nem kapott 6. pontos hibát: %s' % (r_elso[rossz_elso]['hibak'],))
+    ellen(e4[rossz_elso]['allapot'] == 'ok' and e4[rossz_elso]['probalkozas'] == 2, 'F4V2: a sértő válasz újrakérése nem javított')
+    ellen(e4[rossz_mindig]['allapot'] == 'kapuhiba' and e4[rossz_mindig]['probalkozas'] == 2
+          and e4[rossz_mindig]['hibak'][0].startswith('6.') and e4[rossz_mindig]['obj'] is None,
+          'F4V2 (1): a tartósan sértő válasz nem maradt 6. pontos kapuhiba')
+    kimenet.append('(1) 6. pont, a nem vitatott szó átkötése (%s, 1. próba): %s' % (rossz_elso, r_elso[rossz_elso]['hibak'][0][:120]))
+    kimenet.append('(1) tartós sértés (%s): állapot=%s, próbálkozás=%d, hiba: %s'
+                   % (rossz_mindig, e4[rossz_mindig]['allapot'], e4[rossz_mindig]['probalkozas'], e4[rossz_mindig]['hibak'][0][:100]))
+    # a rögzített link elvétele is hibát ad (egységpróba a valódi A/B rekordokon)
+    kozos = next(ig for ig in v4 if e1[ig]['allapot'] == 'ok' and e2[ig]['allapot'] == 'ok')
+    c_jo = json.loads(json.dumps(e1[kozos]['obj']))
+    ellen(biro_kenyszer(c_jo, e1[kozos], e2[kozos]) == [], 'F4V2 (1): az A válasza nem felel meg a rögzítésnek')
+    rog_l, _, vit_k = biro_rogzites(e1[kozos], e2[kozos])
+    k_fix = next(k for k, _ in rog_l if k not in vit_k)
+    c_rossz = json.loads(json.dumps(c_jo))
+    c_rossz['parok'] = [p_ for p_ in c_rossz['parok'] if p_[0] != k_fix]
+    c_rossz['betoldas'] = sorted(c_rossz['betoldas'] + [k_fix])
+    h_l = biro_kenyszer(c_rossz, e1[kozos], e2[kozos])
+    ellen(any(x.startswith('6. rögzített') for x in h_l), 'F4V2 (1): az elvett rögzített link nem kapott 6. pontos hibát')
+    kimenet.append('(1) 6. pont, elvett rögzített link (%s, k=%d): %s' % (kozos, k_fix, h_l[0][:110]))
+
+    # --- (2) ugyanaz a kapu és séma -------------------------------------------------------------
+    ellen(mentett_valaszok_ellenoriz('F4V2', mappa) == [], 'F4V2 (2): a mentett válaszok nem mennek át az ötpontos kapun és a 6. ponton')
+    ok4 = [ig for ig in e4 if e4[ig]['allapot'] == 'ok']
+    ellen(ok4 and all(set(e4[ig]['obj']) == {'vers', 'parok', 'betoldas', 'forditatlan'} for ig in ok4)
+          and all(set(e1[ig]['obj']) == set(e4[ok4[0]]['obj']) for ig in e1 if e1[ig]['allapot'] == 'ok'),
+          'F4V2 (2): a séma nem azonos az A/B válaszáéval')
+    ellen(all(not kapu.vers_ellenoriz(e4[ig]['obj'], bemenet.vers_adat(ig)) for ig in ok4),
+          'F4V2 (2): van mentett válasz, amely a kapu.vers_ellenoriz-en elbukik')
+    kimenet.append('(2) %d mentett F4V2-válasz átmegy a kapu.vers_ellenoriz-en (5 pont) és a biro_kenyszer-en (6. pont); '
+                   'mezők: vers, parok, betoldas, forditatlan (mint az A/B-é)' % len(ok4))
+
+    # --- (3) K5: nincs Strong-szám -------------------------------------------------------------------
+    sor_strong = next(x for x in koteg_sorok('F4V2', mappa) if strong_elso in x['igehelyek'])
+    r_s = valasz_ellenoriz_futashoz('F4V2', sor_strong['nyers'][0], sor_strong['igehelyek'], mappa)
+    ellen(not r_s[strong_elso]['ok'] and any(x.startswith('5.') for x in r_s[strong_elso]['hibak']),
+          'F4V2 (3): a Strong-számot író C-válasz nem kapott 5. pontos hibát')
+    ellen(e4[strong_elso]['allapot'] == 'ok' and e4[strong_elso]['probalkozas'] == 2, 'F4V2 (3): a Strong-számos válasz újrakérése nem javított')
+    ellen(e4[strong_mindig]['allapot'] == 'kapuhiba' and any(x.startswith('5.') for x in e4[strong_mindig]['hibak'])
+          and e4[strong_mindig]['obj'] is None, 'F4V2 (3): a tartósan Strong-számos válasz nem maradt kapuhiba')
+    minta_strong = re.compile(r'[HG]\d{3,4}')
+    ellen(all(not minta_strong.search(json.dumps(e4[ig]['obj'], ensure_ascii=False)) for ig in ok4),
+          'F4V2 (3): mentett válaszban Strong-szám van')
+    # a mentett válaszok újraellenőrzése észleli a beírt Strong-számot (manipulált másolaton)
+    mappa_t = tempfile.mkdtemp(prefix='f21p_onteszt_p3b_mentett_')
+    mappak.append(mappa_t)
+    os.makedirs(os.path.join(mappa_t, 'valaszok'))
+    for f_ in ('F1V2', 'F2V2', 'F4V2'):
+        shutil.copy(valasz_ut(f_, mappa), valasz_ut(f_, mappa_t))
+    sorok_t = koteg_sorok('F4V2', mappa_t)
+    jel_ig = next(ig for ig in sorok_t[0]['igehelyek'] if sorok_t[0]['versek'][ig]['allapot'] == 'ok')
+    sorok_t[0]['versek'][jel_ig]['obj']['megjegyzes'] = 'G1234'
+    with open(valasz_ut('F4V2', mappa_t), 'w', encoding='utf-8', newline='\n') as f:
+        for x in sorok_t:
+            f.write(json.dumps(x, ensure_ascii=False) + '\n')
+    h_t = mentett_valaszok_ellenoriz('F4V2', mappa_t)
+    ellen(any('5.' in x and jel_ig in x for x in h_t), 'F4V2 (3): a mentett válaszok újraellenőrzése nem vette észre a beírt Strong-számot: %s' % h_t)
+    kimenet.append('(3) K5: a Strong-számot író C-válasz 1. próbája: %s; 2. próbán javul (%s), tartós esetben kapuhiba (%s); '
+                   'a mentett válaszok újraellenőrzése a manipulált másolatban jelzi: %s'
+                   % (r_s[strong_elso]['hibak'][0][:70], strong_elso, strong_mindig, h_t[0][:80]))
+
+    # --- az A vagy B kapuhibás maradt versek: nincs mit rögzíteni ---------------------------------
+    for ig, nev in ((a_hiba, 'csak az A kapuhibás'), (mind_hiba, 'A és B is kapuhibás')):
+        ellen(biro_rogzites(e1[ig], e2[ig]) is None, 'F4V2: %s: van rögzítés' % nev)
+        ellen('RÖGZÍTETT: nincs' in '\n'.join(blokk_szerint[ig]) and 'RÖGZÍTETT LINKEK' not in '\n'.join(blokk_szerint[ig]),
+              'F4V2: %s: a C bemenetében nincs „RÖGZÍTETT: nincs” sor' % nev)
+        ellen(e4[ig]['allapot'] == 'ok' and e4[ig]['probalkozas'] == 1, 'F4V2: %s: a C teljes párosítása nem ment át' % nev)
+        ellen(biro_kenyszer(e4[ig]['obj'], e1[ig], e2[ig]) == [], 'F4V2: %s: a 6. pont mégis hibát ad' % nev)
+        kimenet.append('kapuhibás A/B (%s, %s): rögzítés = None, C teljes párosítást ad (állapot=%s, próbálkozás=%d); a 6. pont nem kényszerít'
+                       % (ig, nev, e4[ig]['allapot'], e4[ig]['probalkozas']))
+
+    # --- újraindítás, plafon_usd=2 leállás, folytatás -----------------------------------------------
+    db = len(mock.hivasok)
+    kod = vezerlo_futtat(ctx, vez, minta)
+    ellen(kod == 0 and len(mock.hivasok) == db, 'P3b újraindítás: új hívás történt (%d)' % (len(mock.hivasok) - db))
+    mappa_l = tempfile.mkdtemp(prefix='f21p_onteszt_p3b_plafon_')
+    mappak.append(mappa_l)
+    ctx_l = Kontextus(MockKuldo(), teszt_kulcs, mappa_l)
+    vez_ir('futasok=F1V2,F2V2,F5V2,F6V2,F3V2B,F4V2\nkoteg_max=mind\nplafon_usd=0.004\n')
+    kod = vezerlo_futtat(ctx_l, vez, minta)
+    ossz_l = naplo_osszeg(mappa_l)
+    ellen(kod == KILEPES_PLAFON and 0 < ossz_l <= 0.004, 'P3b plafon_usd: kilépési kód %d, napló-összeg %.6f' % (kod, ossz_l))
+    kesz_l = sum(len(eredmenyek_betolt(f_, mappa_l)) for f_ in sorrend)
+    ellen(kesz_l > 0, 'P3b plafon_usd: nincs mentett sor a leállás előtt')
+    vez_ir('futasok=F1V2,F2V2,F5V2,F6V2,F3V2B,F4V2\nkoteg_max=mind\nplafon_usd=2\n')
+    ctx_l = Kontextus(MockKuldo(), teszt_kulcs, mappa_l)   # új folyamat: új kontextus
+    kod = vezerlo_futtat(ctx_l, vez, minta)
+    ellen(kod == 0 and len(eredmenyek_betolt('F4V2', mappa_l)) > 0, 'P3b plafon_usd: a folytatás nem fejeződött be (kód %d)' % kod)
+    ellen(all(len({tuple(x['igehelyek']) for x in koteg_sorok(f_, mappa_l)}) == len(koteg_sorok(f_, mappa_l)) for f_ in sorrend),
+          'P3b plafon_usd: duplikált köteg a folytatás után')
+    kimenet.append('plafon_usd: 0.004 USD-nél leállás (kilépési kód %d, napló %.6f USD, %d kész sor), 2 USD-vel folytatás rendben, nincs duplikált köteg'
+                   % (KILEPES_PLAFON, ossz_l, kesz_l))
+
+    # --- F4V2 előfeltétele ---------------------------------------------------------------------------
+    mappa_e = tempfile.mkdtemp(prefix='f21p_onteszt_p3b_elofeltetel_')
+    mappak.append(mappa_e)
+    ctx_e = Kontextus(MockKuldo(), teszt_kulcs, mappa_e)
+    vez_ir('futasok=F4V2\nkoteg_max=mind\n')
+    ellen(vezerlo_futtat(ctx_e, vez, minta) == 2 and not os.path.exists(valasz_ut('F4V2', mappa_e)),
+          'F4V2 előfeltétel nélkül nem 2-es kód')
+    vez_ir('futasok=F1V2,F2V2,F4V2\nkoteg_max=1\n')
+    kod = vezerlo_futtat(ctx_e, vez, minta)
+    ellen(kod == 2 and len(eredmenyek_betolt('F1V2', mappa_e)) == 10 and len(eredmenyek_betolt('F2V2', mappa_e)) == 10
+          and not os.path.exists(valasz_ut('F4V2', mappa_e)),
+          'F4V2 részleges F1V2/F2V2 mellett: kód %d, F4V2 kimenet van: %s' % (kod, os.path.exists(valasz_ut('F4V2', mappa_e))))
+    kimenet.append('F4V2 előfeltétel: F1V2/F2V2 nélkül és részleges (koteg_max=1) F1V2/F2V2 mellett kilépési kód 2, F4V2 nem hív')
+
+    # --- befagyasztás -------------------------------------------------------------------------------
+    ellen(befagyasztas_ellenoriz() == [], 'a befagyasztott bemenetek ellenőrzése hibát ad: %s' % befagyasztas_ellenoriz())
+    mappa_f = tempfile.mkdtemp(prefix='f21p_onteszt_p3b_fagy_')
+    mappak.append(mappa_f)
+    os.makedirs(os.path.join(mappa_f, 'f21p'))
+    for rel in BEFAGYASZTOTT:
+        shutil.copy(os.path.join(tokenek.ROOT, *rel.split('/')), os.path.join(mappa_f, *rel.split('/')))
+    ellen(befagyasztas_ellenoriz(gyoker=mappa_f, arany=False) == [], 'befagyasztás: az eredeti másolat hibás')
+    ut_v2 = os.path.join(mappa_f, 'f21p', 'prompt_v2.md')
+    with open(ut_v2, 'a', encoding='utf-8') as f:
+        f.write('\nmódosítás\n')
+    ellen(any('prompt_v2.md' in x for x in befagyasztas_ellenoriz(gyoker=mappa_f, arany=False)),
+          'befagyasztás: a módosított prompt_v2.md-t nem vette észre')
+    kimenet.append('befagyasztás: prompt_v1/v2/biro_v2 és arany v2 sha256 egyezik; a módosított prompt_v2 másolatot észreveszi')
+    return mappak
 
 
 def onteszt():
@@ -1325,7 +1732,9 @@ def onteszt():
     ellen(vezerlo_futtat(ctx5, vez, minta) == 2 and len(mock5.hivasok) == db,
           'hibás vezérlő: nem 2-es kilépési kód, vagy hívás történt')
 
-    for m in (mappa, mappa2, mappa3, mappa4, mappa5):
+    p3b_kimenet = []
+    p3b_mappak = onteszt_p3b(ellen, minta, teszt_kulcs, p3b_kimenet)
+    for m in [mappa, mappa2, mappa3, mappa4, mappa5] + p3b_mappak:
         shutil.rmtree(m, ignore_errors=True)
     if hibak:
         print('ÖNTESZT HIBA:')
@@ -1336,6 +1745,9 @@ def onteszt():
     print('önteszt rendben: %d mock-hívás az 1. menetben (naplósor: %d, napló-összeg %.6f USD), '
           'F4 versei: %d/25, plafon-leállás összege %.6f USD (plafon 0.004), kész sorok a leállás előtt: %d'
           % (len(mock.hivasok), hivas_db, naplo_osszeg_onteszt, len(v4), ossz, kesz_elotte))
+    print('P3b önteszt (F1V2, F2V2, F5V2, F6V2, F3V2B, F4V2) rendben; bizonyító kimenet:')
+    for x in p3b_kimenet:
+        print('  - ' + x)
     return 0
 
 
@@ -1374,6 +1786,7 @@ def main():
     minta = minta_betolt()
     if args.szaraz:
         szaraz_kiir(minta, args.eltero_arany)
+        p3b_kiir(minta)
         return 0
 
     if bool(args.vezerlo) == bool(args.futas):

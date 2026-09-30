@@ -9,6 +9,14 @@
 # megjegyzes; MINDKET kulcs kotelezo, alapertek nincs):
 #     futasok=F1            # vesszovel: az F1..F6 kozul, pl. F1,F2,F3,F5,F6; az F4 csak egyedul
 #     koteg_max=1           # futasonkent legfeljebb ennyi UJ koteg (10 vers/koteg); pozitiv egesz vagy 'mind'
+#     plafon_usd=2          # OPCIONALIS: kumulativ (a futasnaplo.tsv osszeg) koltsegplafon USD-ben, 0 < x <= 3;
+#                           # hianyaban 3.0 (kemeny korlat). Nem szam, <= 0 vagy > 3: hiba (kilepesi kod 2).
+#                           # A futtato olvassa a --vezerlo fajlbol; a workflow nem ad at kulon parametert.
+# A futasok (F21.25, P3b): F1..F6, F3V2, F1V2, F2V2, F5V2, F6V2, F3V2B, F4V2. A regi F4 csak egyedul allhat;
+# az F4V2 mas futassal egy sorban is (az F1V2 es F2V2 kesz kell, kulonben kilepesi kod 2). P3b egy triggerben:
+#     futasok=F1V2,F2V2,F5V2,F6V2,F3V2B,F4V2   koteg_max=mind   plafon_usd=2
+# Plafonnal (kilepesi kod 3) a job piros, de a kesz koteg-sorok es a naplo visszacommitolodnak; a futas
+# ujraindithato (uj trigger). Indulaskor a futtato ellenorzi a befagyasztott promptok es az arany v2 sha256-jat.
 # Az elso trigger: futasok=F1, koteg_max=1 (10 vers). A masodik: futasok=F1,F2,F3,F5,F6 es
 # koteg_max=mind. A harmadik (kulon trigger): futasok=F4, koteg_max=mind (az F1 es F2 kesz kell).
 # Hianyzo/ismeretlen/ismetelt kulcs, hibas ertek, hianyzo fajl: a futtato 2-es kilepesi
