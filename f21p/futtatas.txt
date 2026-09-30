@@ -1,0 +1,4 @@
+# F21 P3b - mind a prompt_v2-vel; plafon: 2 USD kumulativ koltsegnel megallas es jelentes (kemeny plafon 3 USD)
+futasok=F1V2,F2V2,F5V2,F6V2,F3V2B,F4V2
+koteg_max=mind
+plafon_usd=2

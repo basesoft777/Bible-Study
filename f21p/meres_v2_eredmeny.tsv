@@ -1,0 +1,84 @@
+# GENERÁLT: eszkozok/karoli_strong/meres_v2.py | scope=f21p F3, F3V2 (arany v1/v2) | forras=f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, f21p/arany_opus.jsonl, f21p/arany_opus_v2.jsonl, f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, f21p/minta.tsv, f21p/futasnaplo.tsv | ts=2026-09-30T15:20:40+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos
+szakasz	osszeallitas	reteg	mero	szamlalo	nevezo
+pontossag_lefedettseg	F3 × arany v1	R1	pontossag	294	312
+pontossag_lefedettseg	F3 × arany v1	R1	lefedettseg	294	317
+pontossag_lefedettseg	F3 × arany v1	R2	pontossag	146	155
+pontossag_lefedettseg	F3 × arany v1	R2	lefedettseg	146	153
+pontossag_lefedettseg	F3 × arany v1	R3	pontossag	250	272
+pontossag_lefedettseg	F3 × arany v1	R3	lefedettseg	250	266
+pontossag_lefedettseg	F3 × arany v1	R4	pontossag	299	322
+pontossag_lefedettseg	F3 × arany v1	R4	lefedettseg	299	315
+pontossag_lefedettseg	F3 × arany v1	Összes	pontossag	989	1061
+pontossag_lefedettseg	F3 × arany v1	Összes	lefedettseg	989	1051
+pontossag_lefedettseg	F3 × arany v2	R1	pontossag	295	312
+pontossag_lefedettseg	F3 × arany v2	R1	lefedettseg	295	317
+pontossag_lefedettseg	F3 × arany v2	R2	pontossag	146	155
+pontossag_lefedettseg	F3 × arany v2	R2	lefedettseg	146	153
+pontossag_lefedettseg	F3 × arany v2	R3	pontossag	250	272
+pontossag_lefedettseg	F3 × arany v2	R3	lefedettseg	250	266
+pontossag_lefedettseg	F3 × arany v2	R4	pontossag	299	322
+pontossag_lefedettseg	F3 × arany v2	R4	lefedettseg	299	315
+pontossag_lefedettseg	F3 × arany v2	Összes	pontossag	990	1061
+pontossag_lefedettseg	F3 × arany v2	Összes	lefedettseg	990	1051
+pontossag_lefedettseg	F3V2 × arany v2	R1	pontossag	299	318
+pontossag_lefedettseg	F3V2 × arany v2	R1	lefedettseg	299	317
+pontossag_lefedettseg	F3V2 × arany v2	R2	pontossag	153	160
+pontossag_lefedettseg	F3V2 × arany v2	R2	lefedettseg	153	153
+pontossag_lefedettseg	F3V2 × arany v2	R3	pontossag	259	275
+pontossag_lefedettseg	F3V2 × arany v2	R3	lefedettseg	259	266
+pontossag_lefedettseg	F3V2 × arany v2	R4	pontossag	309	337
+pontossag_lefedettseg	F3V2 × arany v2	R4	lefedettseg	309	315
+pontossag_lefedettseg	F3V2 × arany v2	Összes	pontossag	1020	1090
+pontossag_lefedettseg	F3V2 × arany v2	Összes	lefedettseg	1020	1051
+regi_arany	F3	R1	egyezes	30	32
+regi_arany	F3	R1	egyezes_hibas_kizarva_tajekoztato	30	31
+regi_arany	F3	R2	egyezes	0	0
+regi_arany	F3	R2	egyezes_hibas_kizarva_tajekoztato	0	0
+regi_arany	F3	R3	egyezes	0	0
+regi_arany	F3	R3	egyezes_hibas_kizarva_tajekoztato	0	0
+regi_arany	F3	R4	egyezes	0	0
+regi_arany	F3	R4	egyezes_hibas_kizarva_tajekoztato	0	0
+regi_arany	F3	Összes	egyezes	30	32
+regi_arany	F3	Összes	egyezes_hibas_kizarva_tajekoztato	30	31
+regi_arany	F3V2	R1	egyezes	30	32
+regi_arany	F3V2	R1	egyezes_hibas_kizarva_tajekoztato	30	31
+regi_arany	F3V2	R2	egyezes	0	0
+regi_arany	F3V2	R2	egyezes_hibas_kizarva_tajekoztato	0	0
+regi_arany	F3V2	R3	egyezes	0	0
+regi_arany	F3V2	R3	egyezes_hibas_kizarva_tajekoztato	0	0
+regi_arany	F3V2	R4	egyezes	0	0
+regi_arany	F3V2	R4	egyezes_hibas_kizarva_tajekoztato	0	0
+regi_arany	F3V2	Összes	egyezes	30	32
+regi_arany	F3V2	Összes	egyezes_hibas_kizarva_tajekoztato	30	31
+kapuhiba	F3	R1	elso_probara	17	100
+kapuhiba	F3	R1	vegleg	1	100
+kapuhiba	F3	R2	elso_probara	0	25
+kapuhiba	F3	R2	vegleg	0	25
+kapuhiba	F3	R3	elso_probara	5	25
+kapuhiba	F3	R3	vegleg	0	25
+kapuhiba	F3	R4	elso_probara	8	50
+kapuhiba	F3	R4	vegleg	0	50
+kapuhiba	F3	Összes	elso_probara	30	200
+kapuhiba	F3	Összes	vegleg	1	200
+kapuhiba	F3V2	R1	elso_probara	12	100
+kapuhiba	F3V2	R1	vegleg	0	100
+kapuhiba	F3V2	R2	elso_probara	0	25
+kapuhiba	F3V2	R2	vegleg	0	25
+kapuhiba	F3V2	R3	elso_probara	2	25
+kapuhiba	F3V2	R3	vegleg	0	25
+kapuhiba	F3V2	R4	elso_probara	5	50
+kapuhiba	F3V2	R4	vegleg	0	50
+kapuhiba	F3V2	Összes	elso_probara	19	200
+kapuhiba	F3V2	Összes	vegleg	0	200
+koltseg	F3	-	hivas	27	
+koltseg	F3	-	bemenet	196498	
+koltseg	F3	-	kimenet	30770	
+koltseg	F3	-	gond_naplo	0	
+koltseg	F3	-	gond_usage	None	
+koltseg	F3	-	cost	0.257251	
+koltseg	F3V2	-	hivas	26	
+koltseg	F3V2	-	bemenet	216985	
+koltseg	F3V2	-	kimenet	29470	
+koltseg	F3V2	-	gond_naplo	0	
+koltseg	F3V2	-	gond_usage	0	
+koltseg	F3V2	-	cost	0.256731	

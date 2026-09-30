@@ -5,9 +5,9 @@ kod: F22
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: dontesre_var
 ad: a Károli 1908 minden szavához Strong-szám bizonyossággal (két tábla, KJV-támponttal)
-kovetkezo: csak a #21 pilot megfelelő eredménye után
+kovetkezo: Te: a pilot (#21) nem felel meg; döntés: marad, módosított céllal indul, vagy elhalasztva (l. DT21, naplok/F21P_jelentes.md)
 olvas: [konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv]
 ir: [konkordancia/Karoli_Strong_OSZ.tsv, konkordancia/Karoli_Strong_USZ.tsv, adat/karoli_strong_kezi.tsv, adat/datasetek.tsv, adat/SEMA.md, eszkozok/karoli_strong/, f22/, .github/workflows/f22_parositas.yml]
 fugg: [21]
