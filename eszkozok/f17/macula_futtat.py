@@ -57,6 +57,7 @@ def fut(args):
     # ---------- HEBER ----------
     hsha = M.git_sha(args.heber)
     lista = M.heber_sorok(os.path.join(args.heber, 'WLC', 'lowfat'), usfm_mag)
+    funkcio_alapok = M.funkcio_alapok_gyujt(lista)
     heber = []
     konyv_elteres = 0
     hiba_ref = 0
@@ -64,6 +65,7 @@ def fut(args):
     strong_db = Counter()
     strong_pelda = {}
     allapot_db = Counter()
+    allapot_kk_db = Counter()
     sill_db = Counter()
     fedett_karoli = set()
     szavak_vers = defaultdict(list)     # (mag, fej, v) -> [(strong_szam, szo, gorog, gorog_strong)]
@@ -81,8 +83,10 @@ def fut(args):
         karoli, mod, allapot = M.kk_ertek(inv.get(mtk))
         for kk, e in inv.get(mtk, []):
             fedett_karoli.add(kk)
-        strong, sill = M.strong_feldolgoz(a.get('strongnumberx', ''), 'H', a.get('pos', ''), szotar, True)
+        strong, sill = M.strong_feldolgoz(a.get('strongnumberx', ''), 'H', a.get('pos', ''), szotar, True, funkcio_alapok)
         sill_db[sill] += 1
+        allapot_kk_db[allapot.split(':')[0]] += 1
+        allapot = M.allapot_strong_szerint(allapot, sill)
         if sill != 'igen':
             kulcs = ('heber', a.get('strongnumberx', '') or '-', a.get('pos', ''), sill)
             strong_db[kulcs] += 1
@@ -116,7 +120,7 @@ def fut(args):
                           PARANCS, 'sorok: morfema-szint (lowfat <w>); ref = Macula (MT/WLC) szamozas; '
                           'karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva')
     M.tsv_ir(os.path.join(K.KONK, 'Macula_heber.tsv'), fejl, M.HEBER_OSZLOP, heber)
-    stat['heber'] = {'sorok': len(heber), 'lowfat_w': len(lista), 'commit': hsha, 'allapot': dict(allapot_db),
+    stat['heber'] = {'sorok': len(heber), 'lowfat_w': len(lista), 'commit': hsha, 'allapot': dict(allapot_db), 'allapot_csak_kk': dict(allapot_kk_db),
                      'strong_illesztes': dict(sill_db), 'macula_versek': len(versek_macula),
                      'macula_versek_karolival': sum(1 for k in versek_macula if inv.get(k)),
                      'karoli_versek_kk_szerint': len(ki_kk), 'karoli_versek_macula_nelkul': len(ki_kk) - len(fedett_karoli),
@@ -164,6 +168,7 @@ def fut(args):
                 gfedett[kiadas].add(cel)
             strong, sill = M.strong_feldolgoz(s[ix['strong']], 'G', s[ix['class']], szotar, False)
             sill_g[sill] += 1
+            allapot = M.allapot_strong_szerint(allapot, sill)
             allapot_g[allapot.split(':')[0]] += 1
             if sill != 'igen':
                 kulcs = ('gorog_' + kiadas, s[ix['strong']] or '-', s[ix['class']], sill)
@@ -274,7 +279,7 @@ def fut(args):
              ['GENERÁLT: eszkozok/f17/macula_futtat.py — kézzel nem szerkesztendő.',
               'proveniencia: scope=87 fuggo LXX-hely (naplok/FORRAS_FJ1_lxx_jeloltek.tsv) | forras=%s@%s | ts=%s' % (
                   M.HEBER_URL, hsha, M.ma()),
-              'a Karoli-szamozasu igehely -> MT-vers a KK alapjan (F06-ban ez a lepes hianyzott); allapot = javaslat, kezi megerosites kell',
+              'a Karoli-szamozasu igehely -> MT-vers a KK alapjan (igehely_mt, KEZI osztalynal igehely_kjv; F06-ban ez a lepes hianyzott). Az `allapot` oszlop a gepi kereses kimenete (nem dontes): a LXX_MEGFELELO sorok gepi javaslatok, kezi megerositest kernek (az F06 szerint a Macula szo-szintu illesztese 78,3%). A `kk_mod` `:`-os utotagja a KK-kotes bizonytalansaga.',
               'sorok=%d ; %s' % (len(ki87), ', '.join('%s=%d' % kv for kv in sorted(all87.items())))],
              ['motivum', 'igehely_karoli', 'igehely_mt', 'kk_mod', 'heber_kulcsszo', 'heber_strong_munkalap', 'allapot',
               'azonositas', 'macula_heber_szo', 'macula_gorog', 'macula_gorog_strong', 'f06_allapot', 'egyezik_f06',

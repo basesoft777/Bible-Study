@@ -1,12 +1,12 @@
 # GENERÁLT: eszkozok/f17/macula_futtat.py — kézzel nem szerkesztendő.
 # proveniencia: scope=87 fuggo LXX-hely (naplok/FORRAS_FJ1_lxx_jeloltek.tsv) | forras=https://github.com/Clear-Bible/macula-hebrew@47db250bd55d0d8577f2a94fba114ef16c35b23c | ts=2026-09-30
-# a Karoli-szamozasu igehely -> MT-vers a KK alapjan (F06-ban ez a lepes hianyzott); allapot = javaslat, kezi megerosites kell
-# sorok=87 ; HEBER_SZO_GOROG_NELKUL=38, HEBER_SZO_NINCS_A_VERSBEN=8, LXX_MEGFELELO=39, NINCS_VERS=2
+# a Karoli-szamozasu igehely -> MT-vers a KK alapjan (igehely_mt, KEZI osztalynal igehely_kjv; F06-ban ez a lepes hianyzott). Az `allapot` oszlop a gepi kereses kimenete (nem dontes): a LXX_MEGFELELO sorok gepi javaslatok, kezi megerositest kernek (az F06 szerint a Macula szo-szintu illesztese 78,3%). A `kk_mod` `:`-os utotagja a KK-kotes bizonytalansaga.
+# sorok=87 ; HEBER_SZO_GOROG_NELKUL=40, HEBER_SZO_NINCS_A_VERSBEN=9, LXX_MEGFELELO=38
 motivum	igehely_karoli	igehely_mt	kk_mod	heber_kulcsszo	heber_strong_munkalap	allapot	azonositas	macula_heber_szo	macula_gorog	macula_gorog_strong	f06_allapot	egyezik_f06	megjegyzes
 ALVIL-001	2Sám 22:6	22:6	identitas	שְׁא֖וֹל (she.'ol)		LXX_MEGFELELO	szoalak	שְׁא֖וֹל	θανάτου	2288	LXX_MEGFELELO	igen	
 ALVIL-001	Jób 24:19	24:19	identitas	שְׁא֣וֹל (she.'ol)	H7585	HEBER_SZO_GOROG_NELKUL	strong	שְׁא֣וֹל	’’	-	HEBER_SZO_GOROG_NELKUL	igen	
 ALVIL-001	Péld 23:14	23:14	identitas	שְּׁא֥וֹל (she.'ol)	H7585	LXX_MEGFELELO	strong	שְּׁא֥וֹל	θανάτου	2288	LXX_MEGFELELO	igen	
-ALVIL-001	Préd 9:10	9:10	identitas	שְׁא֕וֹל (sh.'ol)	H7585	LXX_MEGFELELO	strong	שְׁא֕וֹל	ἅδη	86	LXX_MEGFELELO	igen	
+ALVIL-001	Préd 9:10	9:8	kk_kjv	שְׁא֕וֹל (sh.'ol)	H7585	HEBER_SZO_NINCS_A_VERSBEN					LXX_MEGFELELO	nem	
 ALVIL-001	Ézs 7:11	7:11	identitas	שְׁאָ֔לָה (she.'A.lah)	H7585a	HEBER_SZO_GOROG_NELKUL	strong	שְׁאָ֔לָה	-	-	HEBER_SZO_GOROG_NELKUL	igen	
 ALVIL-001	Ez 32:21	32:21	identitas	שְׁא֖וֹל (she.'ol)	H7585	LXX_MEGFELELO	strong	שְׁא֖וֹל	βόθρου	999	LXX_MEGFELELO	igen	
 HAMART-001	1Móz 3:16	3:16	identitas	עִצְּבוֹנֵ֣ (i.tze.vo.Ne)	H6093	LXX_MEGFELELO	strong	עִצְּבוֹנֵ֣	λύπας	3077	LXX_MEGFELELO	igen	
@@ -48,7 +48,7 @@ HAMART-001	Hós 4:2	4:2	identitas	—		HEBER_SZO_NINCS_A_VERSBEN					HEBER_SZO_N
 HAMART-001	Hós 4:3	4:3	identitas	—		HEBER_SZO_NINCS_A_VERSBEN					HEBER_SZO_NINCS_A_VERSBEN	igen	
 HODIT-001	1Móz 14:5	14:5	identitas	רְפָאִים֙ (re.fa.'Im)	H7497	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִים֙	-	-	HEBER_SZO_GOROG_NELKUL	igen	
 HODIT-001	1Móz 15:20	15:20	identitas	רְפָאִֽים (re.fa.'Im)	H7497	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִֽים	ραφαϊν	-	HEBER_SZO_GOROG_NELKUL	igen	
-HODIT-001	4Móz 13:34	13:34	identitas	נְּפִלִ֑ים (ne.fi.Lim)		NINCS_VERS					NINCS_VERS	igen	az MT-vers nincs a Maculaban
+HODIT-001	4Móz 13:34	13:33	kk_kjv	נְּפִלִ֑ים (ne.fi.Lim)		HEBER_SZO_GOROG_NELKUL	szoalak	נְּפִלִ֑ים	’’	-	NINCS_VERS	nem	
 HODIT-001	5Móz 2:11	2:11	identitas	רְפָאִ֛ים (re.fa.'Im)	H7497	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִ֛ים	ραφαϊν	-	HEBER_SZO_GOROG_NELKUL	igen	
 HODIT-001	5Móz 2:20	2:20	identitas	רְפָאִ֤ים (re.fa.'Im)	H7497	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִ֥ים|רְפָאִ֤ים	ραφαϊν|κατῴκουν	-|-	HEBER_SZO_GOROG_NELKUL	igen	
 HODIT-001	5Móz 3:11	3:11	identitas	רְפָאִים֒ (re.fa.'Im)	H7497	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִים֒	ραφαϊν	-	HEBER_SZO_GOROG_NELKUL	igen	
@@ -84,7 +84,7 @@ MENNY-001	1Móz 6:2	6:2	identitas	בְנֵי (ve.nei-)		LXX_MEGFELELO	szoalak	ב
 MENNY-001	1Móz 6:4	6:4	identitas	נְּפִלִ֞ים (ne.fi.Lim)	H5303	HEBER_SZO_GOROG_NELKUL	strong	נְּפִלִ֞ים	γίγαντες	-	HEBER_SZO_GOROG_NELKUL	igen	
 MENNY-001	Jób 1:6	1:6	identitas	בְּנֵ֣י (be.Nei)	H1121	LXX_MEGFELELO	strong	בְּנֵ֣י	ἄγγελοι	32	LXX_MEGFELELO	igen	
 MENNY-001	Jób 2:1	2:1	identitas	בְּנֵ֣י (be.Nei)	H1121	LXX_MEGFELELO	strong	בְּנֵ֣י	ἄγγελοι	32	LXX_MEGFELELO	igen	
-MENNY-001	4Móz 13:34	13:34	identitas	נְּפִלִ֑ים (ne.fi.Lim)		NINCS_VERS					NINCS_VERS	igen	az MT-vers nincs a Maculaban
+MENNY-001	4Móz 13:34	13:33	kk_kjv	נְּפִלִ֑ים (ne.fi.Lim)		HEBER_SZO_GOROG_NELKUL	szoalak	נְּפִלִ֑ים	’’	-	NINCS_VERS	nem	
 TEREMT-001	1Móz 49:25	49:25	identitas	תְּה֖וֹם (te.Hom)	H8415	LXX_MEGFELELO	strong	תְּה֖וֹם	γῆς	1093	LXX_MEGFELELO	igen	
 TEREMT-001	2Móz 15:5	15:5	identitas	תְּהֹמֹ֖ת (te.ho.Mot)	H8415	HEBER_SZO_GOROG_NELKUL	strong	תְּהֹמֹ֖ת	πόντῳ	-	HEBER_SZO_GOROG_NELKUL	igen	
 TEREMT-001	2Móz 15:8	15:8	identitas	תְהֹמֹ֖ת (te.ho.Mot)	H8415	HEBER_SZO_GOROG_NELKUL	strong	תְהֹמֹ֖ת	-	-	HEBER_SZO_GOROG_NELKUL	igen	

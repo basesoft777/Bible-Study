@@ -67,9 +67,20 @@ def strong_ertek(nyers, elotag):
 
 
 TARTALMI_POS = ('noun', 'verb', 'adjective', 'adverb', 'pronoun')
+FUNKCIO_POS = ('conjunction', 'suffix', 'preposition')
 
 
-def strong_feldolgoz(nyers, elotag, pos, szotar, heber):
+def funkcio_alapok_gyujt(lista):
+    """Azok a szamok, amelyek betujeles kodja valahol elo-/utotag/kotoszo szerepu (Macula-azonosito-csalad)."""
+    ki = set()
+    for nn, fn, a in lista:
+        m = re.match(r'^(\d+)[a-z]+$', a.get('strongnumberx', '') or '')
+        if m and a.get('pos') in FUNKCIO_POS:
+            ki.add(int(m.group(1)))
+    return ki
+
+
+def strong_feldolgoz(nyers, elotag, pos, szotar, heber, funkcio_alapok=frozenset()):
     """(strong, illesztes). A Macula heber `strongnumberx` erteke NEM mindig Strong-szam:
     a betujeles kod funkcio-morfemanal (elo-/utotag, kotoszo, nevelo) Macula-azonosito
     (pl. 0871a = a `be-` elo-tag, nem a H0871 Atharim). Szabaly:
@@ -77,7 +88,8 @@ def strong_feldolgoz(nyers, elotag, pos, szotar, heber):
       - betujeles + tartalmi szofaj -> az alap-szam, `javaslat:betu_alap` (a betu nincs feloldva)
       - betujeles + funkcio-morfema -> nincs Strong, `javaslat:funkcio_kod` (strong_x megorzi)
       - nincs a szotarban -> `javaslat:nincs_szotarban`; nulla/ures -> `javaslat:nincs_strong`
-      - '|' (heber) tobb kod egy elemen -> `tobbes` jelzes"""
+      - '|' (heber) tobb kod egy elemen -> `tobbes` jelzes; ilyenkor a betujeles resz mindig funkcio_kod,
+        es ha barmelyik resz nem illeszthetö, a `strong` ures (strong_x orzi)"""
     nyers = (nyers or '').strip()
     if not nyers:
         return '', 'javaslat:nincs_strong'
@@ -95,8 +107,11 @@ def strong_feldolgoz(nyers, elotag, pos, szotar, heber):
             okok.add('nincs_strong')
             continue
         betu = m.group(2)
-        if betu and (not heber or pos not in TARTALMI_POS):
+        if betu and (not heber or len(reszek) > 1 or pos not in TARTALMI_POS):
             okok.add('funkcio_kod')
+            continue
+        if betu and n in funkcio_alapok:
+            okok.add('funkcio_kod')   # a szamcsalad mas elemei funkcio-morfemak (pl. 1886a/c/d)
             continue
         h = '%s%04d' % (elotag, n)
         if h not in szotar:
@@ -105,7 +120,19 @@ def strong_feldolgoz(nyers, elotag, pos, szotar, heber):
         if betu:
             okok.add('betu_alap')
         acc.append(h)
+    if 'tobbes' in okok and len(okok) > 1:
+        acc = []   # tobb kod egy elemen es valamelyik nem Strong: nem talalgatunk, strong ures (strong_x orzi)
     return '+'.join(acc), ('igen' if not okok else 'javaslat:' + '|'.join(sorted(okok)))
+
+
+def allapot_strong_szerint(allapot, sill):
+    """Ha a Strong nem illesztheto (sill != 'igen'), a sor allapota javaslat (brief 2. lepes)."""
+    if sill == 'igen':
+        return allapot
+    ok = 'strong_' + sill.replace('javaslat:', '').replace('|', '+')
+    if allapot == 'rendben':
+        return 'javaslat:' + ok
+    return allapot + '|' + ok
 
 
 def szotar_strongok():
