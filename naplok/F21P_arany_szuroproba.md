@@ -274,6 +274,8 @@ Károli: És lőn, hogy szombatnapon a vetések közt megy vala által, és az �
 | 4 | szombatnapon | -> | σάββασιν (#6) | G4521 | Sabbaths |
 | 6 | vetések | -> | σπορίμων, (#10) | G4702 | grainfields, |
 | 7 | közt | -> | διὰ (#8) | G1223 | through |
+| 8 | megy | -> | παραπορεύεσθαι (#7) | G3899 | passing through |
+| 10 | által | -> | παραπορεύεσθαι (#7) | G3899 | passing through |
 | 11 | és | -> | καὶ (#11) | G2532 | and |
 | 13 | ő | -> | αὐτοῦ (#14) | G0846 | of Him |
 | 14 | tanítványai | -> | μαθηταὶ (#13) | G3101 | disciples |
@@ -281,8 +283,9 @@ Károli: És lőn, hogy szombatnapon a vetések közt megy vala által, és az �
 | 15 | mentökben | -> | ὁδὸν (#16) | G3598 | [their] way |
 | 15 | mentökben | -> | ποιεῖν (#17) | G4160 | to make |
 | 17 | kalászokat | -> | στάχυας. (#20) | G4719 | heads of grain. |
+| 18 | kezdék | -> | ἤρξαντο (#15) | G0757 | began |
 | 20 | szaggatni | -> | τίλλοντες (#18) | G5089 | plucking |
 
-betoldas: [3, 5, 8, 9, 10, 12, 16, 18, 19] · forditatlan: [3, 5, 7, 9, 12, 15, 19]
+betoldas: [3, 5, 9, 12, 16, 19] · forditatlan: [3, 5, 9, 12, 19]
 
-Összes link a szúrópróbában: 193
+Összes link a szúrópróbában: 196
