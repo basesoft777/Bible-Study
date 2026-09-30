@@ -5,12 +5,13 @@ kod: F18
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: fut
 ad: Nave-témák és -relációk, eredet-ellenőrzéssel mind a 4980 témán
 kovetkezo: `/kovetkezo` csomag: #16–#19 és #7; ⛔ ha a GPLv3 nem fér össze a repó licencével
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv]
 ir: [konkordancia/Nave_theonize.tsv, NYITOTT_FELADATOK.md, DONTESEK.md]
 fugg: [6]
+ag: claude/nave-import
 ---
 # F18 — Nave-import (theonize), teljes eredet-ellenőrzéssel
 
