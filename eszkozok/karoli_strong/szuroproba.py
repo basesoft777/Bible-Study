@@ -52,7 +52,10 @@ def main():
         valasztott += rng.sample(jel, min(n, len(jel)))
     karoli = tokenek.betolt_karoli()
     ered = tokenek.betolt_eredeti()
-    sorok = ['# F21P arany — szúrópróba (10 vers)', '',
+    fejlec = ('<!-- GENERÁLT: eszkozok/karoli_strong/szuroproba.py | scope=f21p 10 vers, mag %d, rétegenként 3/2/2/3 | '
+              'forras=f21p/arany_opus.jsonl, f21p/minta.tsv, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv | '
+              'ts=%s -->' % (MAG, tokenek.generalas_ts()))
+    sorok = [fejlec, '', '# F21P arany — szúrópróba (10 vers)', '',
              'Jelezd a hibás linkeket (vers + magyar szó sorszáma). A Strong-szám a TAHOT/TAGNT-ből jön.', '']
     osszes = 0
     for a in valasztott:

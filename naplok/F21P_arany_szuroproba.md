@@ -1,3 +1,5 @@
+<!-- GENERÁLT: eszkozok/karoli_strong/szuroproba.py | scope=f21p 10 vers, mag 20260930, rétegenként 3/2/2/3 | forras=f21p/arany_opus.jsonl, f21p/minta.tsv, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv | ts=2026-09-30T13:20:31+00:00 -->
+
 # F21P arany — szúrópróba (10 vers)
 
 Jelezd a hibás linkeket (vers + magyar szó sorszáma). A Strong-szám a TAHOT/TAGNT-ből jön.
