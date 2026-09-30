@@ -17,7 +17,8 @@ Tájékoztató (nem hiba, a kézi átnézéshez): a párosított önálló magya
 csak névmási (vonatkozó) használatban párosulnak.
 
 Kilépési kód 1, ha bármelyik ellenőrzés elbukik. Futtatás a repó gyökeréből:
-    python eszkozok/karoli_strong/arany_ellenoriz.py
+    python eszkozok/karoli_strong/arany_ellenoriz.py [--arany f21p/arany_opus_v2.jsonl]
+(alapértelmezés: f21p/arany_opus.jsonl, a v1)
 """
 
 import json
@@ -42,7 +43,11 @@ def main():
     hibak = []
     vart = [r[1] for r in tokenek._sorok(KIVALASZTAS)]
     reteg = {r[1]: r[5] for r in tokenek._sorok(KIVALASZTAS)}
-    with open(ARANY, encoding='utf-8') as f:
+    arany_ut = ARANY
+    if '--arany' in sys.argv:
+        arany_ut = os.path.join(tokenek.ROOT, sys.argv[sys.argv.index('--arany') + 1])
+    print('arany: %s' % os.path.relpath(arany_ut, tokenek.ROOT).replace(os.sep, '/'))
+    with open(arany_ut, encoding='utf-8') as f:
         sorok = [s.rstrip('\n').rstrip('\r') for s in f if s.strip()]
     objektumok = []
     for i, s in enumerate(sorok, 1):
