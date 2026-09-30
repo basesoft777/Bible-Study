@@ -1,6 +1,6 @@
 # ELLENOR_F20 — független ellenőrzés (`fuggetlen-ellenor`), F20_BEFOGADAS_BRIEF.md v1.4
 
-**Ítélet (3. kör után): a 3. kör saját ítélete NEM TISZTA volt öt javítható eltérés miatt; ezeket a menet kijavította (l. 3. kör), nyitott felhasználói döntés nincs.** A javítás utáni ellenőri megerősítés (4. kör) a PR-on rögzítendő. A K1, K4, K5, K7 pontokat az ellenőr a szerepköre (csak olvasás, `git`, `futtat.py`) miatt nem tudta a saját lekérdezésével futtatni (NEM ELLENŐRIZHETŐ); a menet saját futtatása: `feladatok.py ellenoriz` 40 brief 0 hiba, 42 teszt OK, `general` kétszer változatlan, `futtat.py` E2–E16 0 HIBA, a mutációs próba (`naplok/F20_proba.md`) mindhárom esetet megfogja, a CI (`ellenorzes`, `feladatkovetes`) zöld.
+**Ítélet (4. kör, megerősítés a 9a24378 állapoton): TISZTA.** Eltérés nincs; az előző körök (1–3.) eltéréseit a menet kijavította (l. alább), nyitott felhasználói döntés nincs. A 3. kör saját ítélete NEM TISZTA volt öt javítható eltérés miatt; a 4. kör ezek javítását megerősítette. Az ellenőr a K1, K4, K5, K7 pontokat és a nulla-diff hatókörét a szerepköre (csak olvasás, `git`, `futtat.py`) miatt nem tudta futtatni (NEM ELLENŐRIZHETŐ, nem hiba); a menet saját futtatása: `feladatok.py ellenoriz` 40 brief 0 hiba, 42 teszt OK, `general` kétszer változatlan, `futtat.py` E2–E16 0 HIBA, a mutációs próba mindhárom esetet megfogja, a CI (`ellenorzes`, `feladatkovetes`) zöld.
 
 Az ellenőr nem tud fájlba írni; ez a jelentés a háromkörös jelentés összefoglalója, a javítások a `F20.B8`, `F20.v1.4` és az azt követő commitok szerint.
 

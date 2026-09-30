@@ -4,8 +4,8 @@
 # a claude/f06-forrasfelmeres agon. Push nem indit futast (az eszkozok/fj2/futtatas.txt torolve).
 # Korabbi push-trigger: l. F06.2 (a brief 1. lepese szerinti utvonalak).
 #
-# F20 (v1.4): a jogosultsag `contents: read` (a main vedelme miatt sehol nincs `write`); az F06 lezarva.
-# Ujrafuttatasnal a lenti push-lepesekhez (sajat agra) ideiglenesen `contents: write` kell, ez kulon dontes.
+# F20 (v1.4): a jogosultsag csak olvasas (a workflow-kban sehol nincs irasi jog); az F06 lezarva.
+# Ujrafuttatasnal a lenti push-lepesekhez (sajat agra) ideiglenesen irasi jog kell, ez kulon dontes.
 # Az OPENROUTER_API_KEY csak a 'licenc' job env-jeben szerepel.
 
 name: f06_forrasfelmeres
