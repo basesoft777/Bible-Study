@@ -29,3 +29,13 @@
 
 - Az FJ4-hez képesti számeltérés (32254/4951/92610 vs. 32253/4980/92609) oka tisztázatlan (F06: a mostani mérés az irányadó); a friss klón `Topics.csv`/`TopicIndex.csv` sorszámai az F06-tal egyeznek-e, itt nem mértük újra.
 - Folytatási pont: a döntés után a 2. lépés (import) vagy, az 1. opciónál, a basokant parszolása.
+
+---
+
+## Frissítés — DT5 eldöntve (1. opció), 2026.09.30
+
+- **Döntés:** a `theonize/bible_database` (GPLv3) **nem kerül a repóba, és helyi elemzésre sem használjuk**; a helyi klónt törölték (`AppData\Local\Temp\nave\th`). Forrás: `basokant/nave`, csak a Nave-szöveg (`data/nave.txt`), **saját parszolóval**; a basokant szkriptjeit nem vesszük át.
+- **Rögzített commit:** `basokant/nave` = `4f35c7d4ffd4933f4db1b9d5182db90dc04bd235` (ellenőrizve: a helyi klón `git log -1` azonos, és egyezik az F06 mérésével). A felhasznált fájl: `data/nave.txt`, sha256 `560dcb1a9cdaccd8df50ed0b714f9d380203795970de8ef79b47d1819052f43a`.
+- **Licenc-állapot:** *közkincs a README szerint, licencfájl nincs.* A README 9. sora („It also happens to be in the public domain.”) a műre (Nave, 1897) vonatkozik; a repó adatfájljaira külön licenc nincs deklarálva. A szöveg a `naves-topical-bible.com` lekaparásából ered (az oldal feltételeit nem vizsgáltuk). Ez a ⛔-feltétel (valódi licenc a basokant szövegén) **nem következett be**: licencfájl nem volt, tehát nincs ütköző licenc.
+- **Független közkincs kiadás:** a Nave-mű közkincs-státuszát a mű kora (1897) és az elérhető kiadások (Christian Classics Ethereal Library, Internet Archive) támasztják alá; ezek teljes szövegét a rendelkezésre álló eszközökkel nem tudtam lekérdezni (JS-renderelt/csonkolt oldalak). Szúrópróbát a `biblestudytools.com` témánkénti Nave-oldalaival végeztem: 12 téma igehely-halmaza **12/12 egyezik** (részletek és korlát: `naplok/F18_import_naplo.md` 2.3). Ez nem elsődleges kiadás-összevetés.
+- **Nyitott:** a `naves-topical-bible.com` lekaparásának feltételei és a teljes független kiadás-összevetés (F24 és a felhasználó engedélye a letöltéshez).

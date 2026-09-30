@@ -7,7 +7,7 @@ fazis: 1
 modell: sonnet
 allapot: fut
 ad: Nave-témák és -relációk, eredet-ellenőrzéssel mind a 4980 témán
-kovetkezo: "DT5 eldöntve (1. opció, basokant saját parszolóval); folytatás: parszolás, import, eredet-ellenőrzés"
+kovetkezo: "Import és napló kész (javaslat-állapot); hátra: fuggetlen-ellenor, zárójelentés, draft PR (orkesztrátor); DONTESEK DT18"
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv]
 ir: [konkordancia/Nave_theonize.tsv, NYITOTT_FELADATOK.md, DONTESEK.md]
 fugg: [6]
