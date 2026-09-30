@@ -141,7 +141,108 @@ def ellenoriz(gepi, ut, szigoru=False):
     return hibak
 
 
-def jelentes(adat, gepi, ut_osszevetes, ut):
+PELDAK = [   # jellemző példák (kulcs, állapot) — kézi válogatás; az új és a megszűnt (c) esetek mind listázódnak
+    (('Jer 46:21', 'hianyzo', 2, 3), 'megszunt'),
+    (('Ez 46:12', 'tobblet', 25, 27), 'megszunt'),
+    (('Mt 11:18', 'tobblet', 4, 5), 'uj'),
+    (('Péld 23:19', 'hianyzo', 3, 4), 'maradt'),
+    (('2Móz 21:26', 'hianyzo', 8, 13), 'uj'),
+    (('2Móz 26:13', 'tobblet', 23, 26), 'uj'),
+    (('Péld 25:24', 'tobblet', 4, 4), 'uj'),
+    (('Mt 5:34', 'tobblet', 3, 3), 'uj'),
+    (('Mt 27:18', 'tobblet', 4, 1), 'uj'),
+    (('Zsolt 18:3', 'tobblet', 7, 4), 'uj'),
+    (('1Pét 5:12', 'tobblet', 22, 21), 'uj'),
+    (('2Móz 21:6', 'hianyzo', 6, 5), 'oroklott'),
+    (('Jer 51:3', 'tobblet', 2, 4), 'uj'),
+]
+HATAS = [('segített (v1 (c) megszűnt)', 'megszunt', None), ('nem segített (v1 (c) maradt)', 'maradt', 'c'),
+         ('ártott (új (c))', 'uj', 'c'), ('új (a)', 'uj', 'a'), ('új (b)', 'uj', 'b')]
+
+
+def _sor(adat, kk, st, r):
+    return '| %s | %s | %s | %s | %s | %s | %s | %s | %s |' % (
+        kk[0], kk[1], c_diff._magyar(adat, kk[0], kk[2]), c_diff._eredeti(adat, kk[0], kk[3]), st,
+        r.get('f3v2_osztaly') or '—', r.get('konvencio_vagy_jegyzetpont') or '—',
+        r.get('valtozas_konvencio') or '—', r.get('indok') or '—')
+
+
+def zaro_szakasz(adat, g, gepi, kezi):
+    """A kitöltött (szigorúan ellenőrzött) összevetés összegző szakaszai (F21.16)."""
+    ret_lista = meres.RETEGEK + [meres.OSSZES]
+    f3b = f3_besorolas()
+
+    def van(ret, r):
+        return ret == meres.OSSZES or r == ret
+
+    ki = ['## A (c) hibák: F3 (v1 prompt) és F3V2 (prompt v2), az arany v2-höz', '',
+          'A mért értékek (pontosság, lefedettség, küszöb-viszony) a naplok/F21P_meres_v2.md a)–e) pontjában; a küszöb '
+          'szempontjából csak azok számítanak. Az alábbi osztályok és a korrigált értékek **az Opus besorolása, nem mérés**.', '',
+          '| réteg | F3 (c) | F3V2 (c) | ebből maradt | ebből új | F3 megszűnt (c) | F3V2 (a) | F3V2 (b) |',
+          '|---|---|---|---|---|---|---|---|']
+    el3 = elteresek(adat, 'F3', g['v2'])
+    for ret in ret_lista:
+        f3c = sum(1 for kk, r in el3.items() if van(ret, r) and f3b[kk]['osztaly'] == 'c')
+        c2 = [(kk, r, st) for kk, r, st, _ in gepi if van(ret, r) and st in ('maradt', 'uj', 'oroklott')]
+        n = {o: sum(1 for kk, r, st in c2 if kezi[(kk, st)]['f3v2_osztaly'] == o) for o in ('a', 'b', 'c')}
+        mar = sum(1 for kk, r, st in c2 if st == 'maradt')
+        uj = sum(1 for kk, r, st in c2 if st == 'uj' and kezi[(kk, st)]['f3v2_osztaly'] == 'c')
+        megsz = sum(1 for kk, r, st, _ in gepi if van(ret, r) and st == 'megszunt')
+        ki.append('| %s | %d | %d | %d | %d | %d | %d | %d |' % (ret, f3c, n['c'], mar, uj, megsz, n['a'], n['b']))
+    ki += ['', '### Korrigált pontosság és lefedettség — az Opus besorolása, nem mérés', '',
+           'Az (a) és (b) eltérést nem-hibának véve (F3: a v1-besorolás öröklődik; F3V2: a fenti kézi besorolás). A küszöb '
+           'szempontjából csak a mért érték számít.', '',
+           '| réteg | mérőszám | F3 × v2 mért | F3 × v2 korrigált (Opus, nem mérés) | F3V2 × v2 mért | F3V2 × v2 korrigált (Opus, nem mérés) |',
+           '|---|---|---|---|---|---|']
+    el32 = {(kk, st): r for kk, r, st, _ in gepi if st in ('maradt', 'uj', 'oroklott')}
+    for ret in ret_lista:
+        vals = []
+        for f, oszt in (('F3', lambda kk: f3b[kk]['osztaly']), ('F3V2', None)):
+            p = meres_v2.pont_lef(adat, f, g['v2'], ret)
+            if f == 'F3':
+                tab = sum(1 for kk, r in el3.items() if van(ret, r) and kk[1] == 'tobblet' and oszt(kk) in ('a', 'b'))
+                hab = sum(1 for kk, r in el3.items() if van(ret, r) and kk[1] == 'hianyzo' and oszt(kk) in ('a', 'b'))
+            else:
+                tab = sum(1 for (kk, st), r in el32.items() if van(ret, r) and kk[1] == 'tobblet'
+                          and kezi[(kk, st)]['f3v2_osztaly'] in ('a', 'b'))
+                hab = sum(1 for (kk, st), r in el32.items() if van(ret, r) and kk[1] == 'hianyzo'
+                          and kezi[(kk, st)]['f3v2_osztaly'] in ('a', 'b'))
+            vals.append((p, tab, hab))
+        (p3, t3, h3), (p32, t32, h32) = vals
+        ki.append('| %s | pontosság | %s | %s | %s | %s |' % (
+            ret, meres_v2._pct(p3['talalat'], p3['modell']), meres_v2._pct(p3['talalat'] + t3, p3['modell']),
+            meres_v2._pct(p32['talalat'], p32['modell']), meres_v2._pct(p32['talalat'] + t32, p32['modell'])))
+        ki.append('| %s | lefedettség | %s | %s | %s | %s |' % (
+            ret, meres_v2._pct(p3['talalat'], p3['arany']), meres_v2._pct(p3['talalat'] + h3, p3['arany']),
+            meres_v2._pct(p32['talalat'], p32['arany']), meres_v2._pct(p32['talalat'] + h32, p32['arany'])))
+    ki += ['', '## A változás konvenciónként (kézi besorolás)', '',
+           'segített = a v1 (c) eset megszűnt, és a megnevezett konvenció (prompt-szabály) magyarázza; nem segített = a v1 (c) '
+           'eset maradt, pedig a konvenció rá vonatkozik; ártott = új (c) eset, amelyet a konvenció szabálya váltott ki; '
+           'új (a)/(b) = új konvenciókülönbség vagy az arany vitatható döntése. „nincs” = nem konvenció, modell-ingadozás.', '',
+           '| konvenció | ' + ' | '.join(h for h, _, _ in HATAS) + ' |', '|---|' + '---|' * len(HATAS)]
+    konvok = sorted({r['valtozas_konvencio'] for r in kezi.values() if r['valtozas_konvencio']},
+                    key=lambda x: (x == 'nincs', int(x[1:]) if x != 'nincs' else 0))
+    for kv in konvok:
+        cell = []
+        for _, st, o in HATAS:
+            cell.append(str(sum(1 for (kk, s), r in kezi.items() if s == st and r['valtozas_konvencio'] == kv
+                                and (o is None or r['f3v2_osztaly'] == o))))
+        ki.append('| %s | %s |' % (kv, ' | '.join(cell)))
+    fej = ['| vers | irány | magyar szó | eredeti szó | állapot | F3V2-osztály | konvenció / jegyzetpont | változás-konvenció | indok (kézi) |',
+           '|---|---|---|---|---|---|---|---|---|']
+    ki += ['', '## Jellemző példák (kézi válogatás)', ''] + fej
+    ki += [_sor(adat, kk, st, kezi[(kk, st)]) for kk, st in PELDAK if (kk, st) in kezi]
+    ki += ['', '## Minden új (c) eset', ''] + fej
+    ki += [_sor(adat, kk, st, kezi[(kk, st)]) for kk, r, st, _ in gepi if st == 'uj' and kezi[(kk, st)]['f3v2_osztaly'] == 'c']
+    ki += ['', '## Minden megszűnt (c) eset (a v1 F3 (c) hibái, amelyek az F3V2-nél nem eltérések)', ''] + fej
+    ki += [_sor(adat, kk, st, kezi[(kk, st)]) for kk, r, st, _ in gepi if st == 'megszunt']
+    ki += ['', '## Minden maradt (c) eset', ''] + fej
+    ki += [_sor(adat, kk, st, kezi[(kk, st)]) for kk, r, st, _ in gepi if st == 'maradt']
+    ki.append('')
+    return ki
+
+
+def jelentes(adat, gepi, ut_osszevetes, ut, g=None):
     kezi = {}
     if os.path.exists(ut_osszevetes):
         for r in c_diff._tsv(ut_osszevetes, OSZLOPOK):
@@ -156,7 +257,11 @@ def jelentes(adat, gepi, ut_osszevetes, ut):
     for ret in meres.RETEGEK + [meres.OSSZES]:
         cell = [sum(1 for kk, r, st, _ in gepi if st == s and (ret == meres.OSSZES or r == ret)) for s in STATUSZOK]
         ki.append('| %s | %s |' % (ret, ' | '.join(map(str, cell))))
-    ki += ['', '| vers | irány | magyar szó | eredeti szó | állapot | F3-osztály | F3V2-osztály (kézi) | '
+    ki.append('')
+    if g is not None and kezi and not ellenoriz(gepi, ut_osszevetes, szigoru=True):
+        ki += zaro_szakasz(adat, g, gepi, kezi)
+    ki += ['## Minden eltérés (gépi állapot, kézi besorolás)', '',
+           '| vers | irány | magyar szó | eredeti szó | állapot | F3-osztály | F3V2-osztály (kézi) | '
            'konvenció / jegyzetpont (kézi) | változás-konvenció (kézi) | indok (kézi) |',
            '|---|---|---|---|---|---|---|---|---|---|']
     for kk, ret, st, o in gepi:
@@ -188,7 +293,7 @@ def fut(forras_dir=None, osszevetes=OSSZEVETES_UT, jelentes_ut=JELENTES_UT, sabl
         for h in hibak:
             print('  ' + h)
         return 1, gepi
-    jelentes(adat, gepi, osszevetes, jelentes_ut)
+    jelentes(adat, gepi, osszevetes, jelentes_ut, g)
     print('F3V2-összevetés: %s -> %s' % (', '.join('%s %d' % (s, sum(1 for x in gepi if x[2] == s)) for s in STATUSZOK),
                                          jelentes_ut))
     return 0, gepi

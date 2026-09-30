@@ -119,7 +119,8 @@ class Adat:
                 for ig, r in sor['versek'].items():
                     d[ig] = dict(r, koteg=sor)
             self.futas[f] = d
-        self.naplo = _tsv(self.naplo_ut)
+        # csak a betöltött futások naplósorai (F21.16: a későbbi F3V2-sorok ne kerüljenek a v1-es P4-összesítőbe)
+        self.naplo = [r for r in _tsv(self.naplo_ut) if r['futas'] in (futasok or FUTASOK)]
 
     def ok(self, f, ig):
         r = self.futas[f].get(ig)
