@@ -14,11 +14,11 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Következő lépés | Hol |
 |---|---|---|---|---|---|---|
 | 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ brief kell | #3 (kész), #5 (kész), #14 (kész) | `/kovetkezo` csomag: #16–#19 és #7; külső modell, keret 15 USD | `F07_THAYER_ELES_BRIEF.md` |
-| 8 | LXX-fordítói döntések a 87 függő igehelyre | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ brief kell | #1 (kész), #17 | `/kovetkezo` a #17 merge-e után | `F08_LXX_DONTESEK_BRIEF.md` |
-| 16 | BSB-import, teljes Biblia (N30) | BSB minden könyvre, ahol a lefedettség ≥ 95% | ⬜ brief kell | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F16_BSB_IMPORT_BRIEF.md` |
-| 17 | Macula-import, héber és görög (N31) | Macula a Strong-számhoz és a KK-hoz kötve; a #8 fő forrása | ⬜ brief kell | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F17_MACULA_IMPORT_BRIEF.md` |
-| 18 | Nave-import, theonize (N27) | Nave-témák és -relációk, eredet-ellenőrzéssel mind a 4980 témán | ⬜ brief kell | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7; ⛔ ha a GPLv3 nem fér össze a repó licencével | `F18_NAVE_IMPORT_BRIEF.md` |
-| 19 | KJV/ASV-import, eBible (N29) | Strong-címkés KJV és ASV, a hiányok besorolásával | ⬜ brief kell | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F19_KJV_ASV_IMPORT_BRIEF.md` |
+| 8 | LXX-fordítói döntések a 87 függő igehelyre (F08) | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ | #1 (kész), #17 | `/kovetkezo` a #17 merge-e után | `F08_LXX_DONTESEK_BRIEF.md` |
+| 16 | BSB-import, teljes Biblia (N30) (F16) | BSB minden könyvre, ahol a lefedettség ≥ 95% | ⬜ | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F16_BSB_IMPORT_BRIEF.md` |
+| 17 | Macula-import, héber és görög (N31) (F17) | Macula a Strong-számhoz és a KK-hoz kötve; a #8 fő forrása | ⬜ | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F17_MACULA_IMPORT_BRIEF.md` |
+| 18 | Nave-import, theonize (N27) (F18) | Nave-témák és -relációk, eredet-ellenőrzéssel mind a 4980 témán | ⬜ | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7; ⛔ ha a GPLv3 nem fér össze a repó licencével | `F18_NAVE_IMPORT_BRIEF.md` |
+| 19 | KJV/ASV-import, eBible (N29) (F19) | Strong-címkés KJV és ASV, a hiányok besorolásával | ⬜ | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F19_KJV_ASV_IMPORT_BRIEF.md` |
 | 21 | Károli–Strong mérőpilot (minőség és költség) (F21) | mért adat arról, megéri-e a teljes Bibliát külső modellekkel Strong-számmal párosítani (minőség, költség, KJV-támpont haszna) | ⬜ | #6 (kész) | mérőpilot P0–P1, ⛔ a futtatás előtt (szúrópróba, küszöbök, secret) | `F21_KAROLI_STRONG_PILOT_BRIEF.md` |
 | 22 | Károli–Strong párosítás a teljes Bibliára (F22) | a Károli 1908 minden szavához Strong-szám bizonyossággal (két tábla, KJV-támponttal) | ⬜ | #21 | csak a #21 pilot megfelelő eredménye után | `F22_KAROLI_STRONG_BRIEF.md` |
 <!-- GENERÁLT-VÉGE: feladatok.py --cel fazis1 -->
@@ -28,7 +28,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 <!-- GENERÁLT-KEZDET: feladatok.py --cel fazis2 -->
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Megjegyzés | Hol |
 |---|---|---|---|---|---|---|
-| 9 | Szótári adatréteg, 2. menet (SZOTAR S2) | az 1. fázis adatai megjelennek a 8 lexikonoldalon és a 8 törzscikkben | ⬜ | #5 (kész), #6 (kész), #7*, #22* | Ez javítja a törzscikkek elavult Cremer-sorát is (a CI E11 szabálya jelzi) | `F05_SZOTAR_BRIEF.md#2. menet — kimenet-változtató` |
+| 9 | Szótári adatréteg, 2. menet (SZOTAR S2) | az 1. fázis adatai megjelennek a 8 lexikonoldalon és a 8 törzscikkben | ⬜ | #5 (kész), #6 (kész), #7*, #16*, #17*, #18*, #19*, #22* | Ez javítja a törzscikkek elavult Cremer-sorát is (a CI E11 szabálya jelzi) | `F05_SZOTAR_BRIEF.md#2. menet — kimenet-változtató` |
 | 10 | 8 lexikonoldal lezárása (LEXIKON_LEZARAS) | mérhetően kész oldalak (L1–L7) | ⬜ brief kell | #8, #9 | **Te:** döntés az L6 és L7 feltételről. Ide tartozik N18, N19 | `F10_LEXIKON_LEZARAS_BRIEF.md` |
 | 11 | Migráció: egy forrásból renderelés (MIGRACIO) | minden motívum a forrásrétegből renderel | ⬜ brief kell | #9 | Az M0 felmérés csak olvas, de az eredménye itt kell | `F11_MIGRACIO_BRIEF.md` |
 | 12 | TEREMT-002 3. lépés (próza, lexikonoldal) | az első natív egyforrású motívum kész | ⬜ brief kell | #11 | A tohu/bohu szótári adata az S1-ben készül (SZOTAR-D29). | `TEREMT002_KUTATAS_BRIEF.md` |
