@@ -20,7 +20,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | 18 | Nave-import, theonize (N27) | Nave-témák és -relációk, eredet-ellenőrzéssel mind a 4980 témán | ⬜ brief kell | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7; ⛔ ha a GPLv3 nem fér össze a repó licencével | `F18_NAVE_IMPORT_BRIEF.md` |
 | 19 | KJV/ASV-import, eBible (N29) | Strong-címkés KJV és ASV, a hiányok besorolásával | ⬜ brief kell | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F19_KJV_ASV_IMPORT_BRIEF.md` |
 | 21 | Károli–Strong mérőpilot (minőség és költség) (F21) | mért adat arról, megéri-e a teljes Bibliát külső modellekkel Strong-számmal párosítani (minőség, költség, KJV-támpont haszna) | ⬜ | #6 (kész) | mérőpilot P0–P1, ⛔ a futtatás előtt (szúrópróba, küszöbök, secret) | `F21_KAROLI_STRONG_PILOT_BRIEF.md` |
-| 22 | Károli–Strong párosítás a teljes Bibliára (F22) | a Károli 1908 minden szavához Strong-szám bizonyossággal (két tábla, KJV-támponttal) | ⬜ | #19, #21 | csak a #21 pilot megfelelő eredménye után | `F22_KAROLI_STRONG_BRIEF.md` |
+| 22 | Károli–Strong párosítás a teljes Bibliára (F22) | a Károli 1908 minden szavához Strong-szám bizonyossággal (két tábla, KJV-támponttal) | ⬜ | #21 | csak a #21 pilot megfelelő eredménye után | `F22_KAROLI_STRONG_BRIEF.md` |
 <!-- GENERÁLT-VÉGE: feladatok.py --cel fazis1 -->
 
 ## 2. fázis — render (csak az 1. fázis után)
