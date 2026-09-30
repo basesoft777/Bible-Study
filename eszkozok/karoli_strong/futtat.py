@@ -1038,6 +1038,14 @@ def onteszt():
           'prompt_v2: a két példa nincs meg, vagy nem megy át a kapun')
     minta_ig = {s_['igehely'] for s_ in minta_betolt()}
     ellen(not any(o_['vers'] in minta_ig for o_ in peldak_v2), 'prompt_v2: a példa a pilotmintából való')
+    # F21.14: a példaversekben nincs konvenció nélküli jelenség (való, [nem TR], tárgyrag az igén)
+    ellen([o_['vers'] for o_ in peldak_v2] == ['1Móz 1:1', 'Ján 1:1'], 'prompt_v2: a példaversek nem 1Móz 1:1 és Ján 1:1')
+    os_sorok = {ig_ for ig_ in (o_['vers'] for o_ in peldak_v2)
+                for r_ in tokenek._sorok(tokenek.TAHOT) if r_[0] == ig_ and r_[4].startswith('Os')}
+    ellen(not any('való' in [t_.lower() for t_ in bemenet.vers_adat(o_['vers'])['karoli_tokenek']]
+                  or any(w_['nem_tr'] for w_ in bemenet.vers_adat(o_['vers'])['eredeti']) for o_ in peldak_v2)
+          and not os_sorok,
+          'prompt_v2: a példaversben „való”, [nem TR] token vagy tárgyi rag van')
     naplo_f3v2 = []
     with open(naplo_ut(mappa), encoding='utf-8') as f:
         fej_ = f.readline().rstrip('\n').split('\t')

@@ -6,15 +6,20 @@ versblokkok az utasítás után, hívásonként 10 vers. Használja: a `futtat.p
 futása (C modell, 200 vers, kimenet `f21p/valaszok/F3V2.jsonl`). A futás indítása
 külön jóváhagyásra vár (a workflow és a `f21p/futtatas.txt` változatlan).
 
-- Tervezés: F21.12 felhasználói döntés. A v1 szerkezete megmarad (bemenet, feladat,
-  kötelező szabályok, kimenet, két példa); új a „Párosítási szabályok” szakasz: a
-  `f21p/arany_opus_jegyzetek.md` 2. szakaszának tíz konvenciója szabályként
-  (K1–K10 sorrendben, a prompt A–J pontja; a K pont a v1 TR-szabálya). A konvenciók szabályként, nem példa-túltöltéssel; az
-  illusztráló magyar szerkezetek általánosak, a pilotmintából (`f21p/minta.tsv`) nem
-  vett példa nincs benne.
-- A két példa (1Móz 1:1, Mt 1:1) ugyanaz, mint a v1-ben; nincs a `f21p/minta.tsv`-ben,
-  és a kimenetük a tíz szabálynak is megfelel. A `{{VERSBLOKK:<igehely>}}` helyőrző
-  helyére a `bemenet.versblokk` kimenete kerül.
+- Tervezés: F21.12 és F21.14 felhasználói döntés. A v1 szerkezete és a v1 1–4. pontja
+  szó szerint megmarad (bemenet, feladat, kötelező szabályok, kimenet, két példa); új
+  a „Párosítási szabályok” szakasz: a `f21p/arany_opus_jegyzetek.md` 2. szakaszának
+  tíz konvenciója szabályként (K1–K10 = a prompt A–J pontja; a K pont a v1 5. pontja,
+  a TR-szabály). Új szabály ezeken kívül nincs. A konvenciók szabályként, nem
+  példa-túltöltéssel; az illusztráló magyar szerkezetek általánosak, a pilotmintából
+  (`f21p/minta.tsv`) vett példa nincs benne.
+- A két példa: 1Móz 1:1 (a v1-é) és Ján 1:1 (F21.14: a v1 Mt 1:1-es példája
+  helyett, mert abban a konvenció nélküli „való” szerepel). Egyik sincs a
+  `f21p/minta.tsv`-ben; nincs bennük Qere/Ketiv, X-sor, `[nem TR]` token, tárgyrag
+  az igén külön névmás nélkül, „való”, sem más nyitott (a jegyzet konvencióin
+  kívüli) jelenség; a példa-JSON átmegy a kapun (a `futtat.py --onteszt`
+  ellenőrzi). A `{{VERSBLOKK:<igehely>}}` helyőrző helyére a `bemenet.versblokk`
+  kimenete kerül.
 - A prompt változtatása új fájl (`prompt_v3.md`), nem a v2 módosítása: a futásnapló a
   prompt sha256-ját rögzíti.
 
@@ -31,9 +36,13 @@ A Strong-számok a bemenetben csak tájékoztatásul állnak. A kimenetedben SEM
 
 Amit versenként meg kell adnod:
 
-1. `parok`: a magyar szó sorszáma és a hozzá tartozó eredeti sorszámok listája: `[magyar, [eredeti, eredeti, ...]]`. Egy magyar szó több eredeti szóhoz, egy eredeti szó több magyar szóhoz is tartozhat (ilyenkor az eredeti sorszám több párban szerepel). A sorszám a szó helye a versen belül.
-2. `betoldas`: az olyan magyar szavak sorszámai, amelyeknek nincs eredeti megfelelőjük.
-3. `forditatlan`: az olyan eredeti szavak sorszámai, amelyeknek nincs magyar megfelelőjük.
+1. `parok`: a magyar szó sorszáma és a hozzá tartozó eredeti sorszámok listája: `[magyar, [eredeti, eredeti, ...]]`.
+   - Egy magyar szó több eredeti szóhoz is tartozhat (pl. a *Kezdetben* az elöljáró és a főnév együtt).
+   - Egy eredeti szó több magyar szóhoz is tartozhat (ha a magyar két szóval fordítja). Ilyenkor az eredeti sorszám több párban is szerepel.
+   - A magyar és az eredeti szórend eltérhet; a sorszám a szó helye a versen belül, nem a fontossága.
+2. Nyelvtani előtagok és toldalékok (H9xxx): ha a magyarban raggal, névutóval vagy kötőszóval jelennek meg, ahhoz a magyar szóhoz tartoznak, amelyiken a rag áll, vagy amelyik a kötőszó (az *és* a héber *ve-* előtaggal párosul). Ha a magyarban nincs nyoma, `forditatlan`.
+3. `betoldas`: az olyan magyar szavak sorszámai, amelyeknek nincs eredeti megfelelőjük: az önálló magyar névelő (*a*, *az*), a segédige (pl. *vala*, *lőn*, ha az eredetiben nincs külön szó), a Károli magyarázó betoldása.
+4. `forditatlan`: az olyan eredeti szavak sorszámai, amelyeknek nincs magyar megfelelőjük: pl. a tárgyjelölő *'et* (H0853), a héber határozott névelő (H9009) és a görög névelő, ha a magyar önálló névelője `betoldas`-ba került, vagy ha a magyarban nincs névelő. Ha az eredeti névelő névmásként áll (pl. *aki*, *a ki*), kösd a megfelelő magyar szóhoz.
 
 Párosítási szabályok (ezek döntik el a vitás eseteket):
 
@@ -72,9 +81,9 @@ Első példa (kimenet):
 
 Második példa (bemenet):
 
-{{VERSBLOKK:Mt 1:1}}
+{{VERSBLOKK:Ján 1:1}}
 
 Második példa (kimenet):
 
-{"vers":"Mt 1:1","parok":[[1,[3]],[2,[4]],[3,[6]],[4,[5]],[5,[8]],[6,[7]],[7,[2]],[9,[1]]],"betoldas":[8],"forditatlan":[]}
+{"vers":"Ján 1:1","parok":[[1,[1,2]],[2,[3]],[4,[5]],[5,[6]],[7,[8]],[8,[9]],[10,[10,12]],[11,[13]],[12,[14]],[13,[15]],[15,[17]]],"betoldas":[3,6,9,14],"forditatlan":[4,7,11,16]}
 <!-- PROMPT-VÉGE -->
