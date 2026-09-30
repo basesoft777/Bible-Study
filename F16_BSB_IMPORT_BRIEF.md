@@ -5,7 +5,8 @@ kod: F16
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/bsb-import
 ad: BSB minden könyvre, ahol a lefedettség ≥ 95%
 kovetkezo: `/kovetkezo` csomag: #16–#19 és #7
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv]
