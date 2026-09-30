@@ -18,7 +18,7 @@ base/text-only sorai); k csak 0..2 lehet (kulonben megall). A meres es a Zsolt-i
 BELSO VERSOSZTAS (F16.11): ahol egy BSB-vers a v+k MT-versre nem illeszkedik, de a szomszedos MT-versre igen (vagy az MT-vers
 a ket szomszedos BSB-vers unioja), a fejezet nem igazolhato (Zsolt 13): kimarad a merestol es az importbol.
 A nem-zsoltar konyvek (1Sam 24, Pred 12, Ezs 3/9, Hos 12, Jon 2 ...) hasonlo eltolasat ez a szkript NEM
-javitja (l. DT5); azokra a F06-modszer (eltolas nelkul) marad.
+javitja (l. DT6); azokra a F06-modszer (eltolas nelkul) marad.
 UJSZOVETSEG: a BSB-import az Ószovetseg miatt keszult (a gorog reteg forrasa a Macula, #87): a 27 USZ-konyv
 merese tajekoztato, az importbol szandekosan kimarad (eredmeny=USZ_KIHAGYVA, nem kuszob alatti hiba).
 A kuszobot elero OSZ-konyveket importalja: konkordancia/BSB_Strongs.tsv (a KJV_Strongs_*.tsv
