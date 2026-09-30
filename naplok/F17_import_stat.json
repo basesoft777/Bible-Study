@@ -32,21 +32,21 @@
  "gorog_commit": "8423afe47b9e8f24b7772e808af45c7159a6fe7e",
  "heber": {
   "allapot": {
-   "javaslat": 181582,
-   "rendben": 294329
+   "javaslat": 182103,
+   "rendben": 293808
   },
   "allapot_csak_kk": {
-   "javaslat": 5797,
-   "rendben": 470114
+   "javaslat": 6705,
+   "rendben": 469206
   },
   "commit": "47db250bd55d0d8577f2a94fba114ef16c35b23c",
-  "karoli_versek_kk_nelkul": 179,
-  "karoli_versek_kk_szerint": 23025,
-  "karoli_versek_macula_nelkul": 16,
+  "karoli_versek_kk_nelkul": 151,
+  "karoli_versek_kk_szerint": 23053,
+  "karoli_versek_macula_nelkul": 39,
   "konyvkod_elteres": 0,
   "lowfat_w": 475911,
   "macula_versek": 23213,
-  "macula_versek_karolival": 23004,
+  "macula_versek_karolival": 23014,
   "ref_hiba": 0,
   "sorok": 475911,
   "strong_illesztes": {
@@ -69,10 +69,10 @@
  "illesztetlen": {
   "karoli_vers_nincs_macula|gorog_N1904": 15,
   "karoli_vers_nincs_macula|gorog_SBLGNT": 18,
-  "karoli_vers_nincs_macula|heber": 195,
+  "karoli_vers_nincs_macula|heber": 190,
   "macula_vers_nincs_karoli|gorog_N1904": 4,
   "macula_vers_nincs_karoli|gorog_SBLGNT": 3,
-  "macula_vers_nincs_karoli|heber": 209,
+  "macula_vers_nincs_karoli|heber": 199,
   "strong_nem_illesztheto|gorog_N1904": 1,
   "strong_nem_illesztheto|gorog_SBLGNT": 1,
   "strong_nem_illesztheto|heber": 1014
@@ -80,10 +80,12 @@
  "kk": {
   "identitas": 17243,
   "identitas_terkep_egyik_sem": 85,
-  "kk_kjv": 283,
+  "kezi_interpolalt": 40,
+  "kk_kjv": 249,
+  "kk_kjv_nem_igazolt": 34,
   "kk_mt": 1713,
   "terkep": 3701,
-  "terkep_kk_utkozes": 1160
+  "terkep_kk_utkozes": 1048
  },
- "kk_terkep_kk_eltérés": 1160
+ "kk_terkep_kk_eltérés": 1048
 }

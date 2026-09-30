@@ -48,15 +48,21 @@ def strong_szam(x):
 def fut(args):
     usfm_mag, usfm_step, mag_usfm, kanoni = K.konyvtablak()
     szotar = M.szotar_strongok()
-    ki_kk, kk_stat, kk_utk = macula_kk.karoli_mt_terkep()
-    inv = macula_kk.mt_karoli_index(ki_kk)
     karoli_v = K.karoli_versek()
     illesztetlen = []
-    stat = {'kk': kk_stat, 'kk_terkep_kk_eltérés': len(kk_utk)}
 
     # ---------- HEBER ----------
     hsha = M.git_sha(args.heber)
     lista = M.heber_sorok(os.path.join(args.heber, 'WLC', 'lowfat'), usfm_mag)
+    mt_versek = {}
+    for nn_, fn_, a_ in lista:
+        m_ = M.REF_RE.match(a_.get('ref', ''))
+        if m_:
+            mt_versek.setdefault(usfm_mag[K.USFM_OSZ[nn_ - 1]], set()).add((int(m_.group(2)), int(m_.group(3))))
+    ki_kk, kk_stat, kk_utk = macula_kk.karoli_mt_terkep(mt_versek)
+    inv = macula_kk.mt_karoli_index(ki_kk)
+    kezi_fej = kk_stat.pop('kezi_fejezetek', [])
+    stat = {'kk': kk_stat, 'kk_terkep_kk_eltérés': len(kk_utk)}
     funkcio_alapok = M.funkcio_alapok_gyujt(lista)
     heber = []
     konyv_elteres = 0
@@ -108,7 +114,7 @@ def fut(args):
             illesztetlen.append(('karoli_vers_nincs_macula', 'heber',
                                  ';'.join('%s %d:%d' % (kulcs[0], f, v) for f, v in e['mt']),
                                  M.karoli_cimke(kulcs), '', 0,
-                                 'a KK szerinti MT-vers nincs a Maculaban (%s)' % e['forras'], ''))
+                                 'a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (%s%s)' % (e['forras'], (': ' + e['ok']) if e['ok'] else ''), ''))
     kk_nelkuli = 0
     for konyv in kanoni[:39]:
         for (fej, v) in sorted(karoli_v.get(konyv, ())):
@@ -126,6 +132,14 @@ def fut(args):
                      'karoli_versek_kk_szerint': len(ki_kk), 'karoli_versek_macula_nelkul': len(ki_kk) - len(fedett_karoli),
                      'karoli_versek_kk_nelkul': kk_nelkuli,
                      'konyvkod_elteres': konyv_elteres, 'ref_hiba': hiba_ref}
+
+    M.tsv_ir(os.path.join(K.REPO, 'naplok', 'F17_kezi_fejezetek.tsv'),
+             ['GENERÁLT: eszkozok/f17/macula_futtat.py — kézzel nem szerkesztendő.',
+              'proveniencia: scope=a KK KEZI-osztalyu sorai altal erintett KJV-fejezetek | forras=konkordancia/Karoli_versmegfeleltetes.tsv, naplok/KAROLI_KK1b_fejezetosztaly.tsv (kjv_max), Macula heber (MT-versszam) | ts=%s' % M.ma(),
+              'a kk_kjv kotes csak ott iranyado, ahol az elozo fejezet KJV- es MT-versszama azonos (elozo_kulonbseg=0) es a vers mindket oldalon letezik; egyebkent javaslat (nincs MT-megfelelo)'],
+             ['konyv', 'kjv_fejezet', 'kjv_versszam', 'mt_versszam', 'elozo_fejezet_kulonbseg', 'kezi_sor_db',
+              'igazolt_vers_db', 'nem_igazolt_vers_db', 'allapot'],
+             [[r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7], 'igazolt' if r[7] == 0 else 'javaslat'] for r in kezi_fej])
 
     # ---------- GOROG ----------
     vt_fej, vt_sorok = K.tsv_olvas(os.path.join(K.KONK, 'Verzifikacios_elteres_tabla.tsv'))
