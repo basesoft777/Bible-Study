@@ -1,0 +1,42 @@
+# GENERÁLT: eszkozok/karoli_strong/ingadozas.py | scope=F3 vs F3V2 az arany v2-n (60 aranyvers; kapuhiba: 200 vers) | forras=f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, f21p/arany_opus.jsonl, f21p/arany_opus_v2.jsonl, f21p/meres_kizaras.tsv, f21p/minta.tsv | ts=2026-09-30T13:13:11+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | mag=20260930, bootstrap=1000 | Δ = prompthatás + futásközi ingadozás, szét nem választható | kézzel szerkeszteni tilos
+szakasz	reteg	mero	F3	F3V2	delta	delta_also90	delta_felso90	abs_delta_felso95	n	megjegyzes
+arany_v2	R1	pontossag	0.9455	0.9403	-0.0053	-0.0273	0.0156	0.0275	20	aranyversek (mindkét futásban kapun átment)
+arany_v2	R1	lefedettseg	0.9306	0.9432	0.0126	-0.0101	0.0368	0.0368	20	aranyversek (mindkét futásban kapun átment)
+kapu	R1	kapuhiba_elso_probara	0.1700	0.1200	-0.0500	-0.1000	0.0000	0.1000	100	a 200 verses minta
+kapu	R1	kapuhiba_vegleg	0.0100	0.0000	-0.0100	-0.0300	0.0000	0.0300	100	a 200 verses minta
+arany_v2	R2	pontossag	0.9419	0.9563	0.0143	-0.0303	0.0476	0.0483	10	aranyversek (mindkét futásban kapun átment)
+arany_v2	R2	lefedettseg	0.9542	1.0000	0.0458	0.0065	0.0879	0.0879	10	aranyversek (mindkét futásban kapun átment)
+kapu	R2	kapuhiba_elso_probara	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	25	a 200 verses minta
+kapu	R2	kapuhiba_vegleg	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	25	a 200 verses minta
+arany_v2	R3	pontossag	0.9191	0.9418	0.0227	0.0071	0.0402	0.0402	10	aranyversek (mindkét futásban kapun átment)
+arany_v2	R3	lefedettseg	0.9398	0.9737	0.0338	0.0182	0.0513	0.0513	10	aranyversek (mindkét futásban kapun átment)
+kapu	R3	kapuhiba_elso_probara	0.2000	0.0800	-0.1200	-0.2800	0.0000	0.2800	25	a 200 verses minta
+kapu	R3	kapuhiba_vegleg	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	25	a 200 verses minta
+arany_v2	R4	pontossag	0.9286	0.9169	-0.0117	-0.0422	0.0153	0.0422	20	aranyversek (mindkét futásban kapun átment)
+arany_v2	R4	lefedettseg	0.9492	0.9810	0.0317	0.0163	0.0492	0.0492	20	aranyversek (mindkét futásban kapun átment)
+kapu	R4	kapuhiba_elso_probara	0.1600	0.1000	-0.0600	-0.1200	-0.0200	0.1200	50	a 200 verses minta
+kapu	R4	kapuhiba_vegleg	0.0000	0.0000	0.0000	0.0000	0.0000	0.0000	50	a 200 verses minta
+arany_v2	Összes	pontossag	0.9331	0.9358	0.0027	-0.0103	0.0161	0.0166	60	aranyversek (mindkét futásban kapun átment)
+arany_v2	Összes	lefedettseg	0.9420	0.9705	0.0285	0.0169	0.0403	0.0403	60	aranyversek (mindkét futásban kapun átment)
+kapu	Összes	kapuhiba_elso_probara	0.1500	0.0950	-0.0550	-0.0900	-0.0200	0.0900	200	a 200 verses minta
+kapu	Összes	kapuhiba_vegleg	0.0050	0.0000	-0.0050	-0.0150	0.0000	0.0150	200	a 200 verses minta
+linkhalmaz	R1	azonos_linkhalmazu_versek [arany (60)]			7				20	F3 és F3V2 linkhalmaza azonos (a kizárásokkal)
+linkhalmaz	R1	link_egyezes Σ|∩|/Σ|∪| [arany (60)]			0.8976				20	298/332
+linkhalmaz	R2	azonos_linkhalmazu_versek [arany (60)]			6				10	F3 és F3V2 linkhalmaza azonos (a kizárásokkal)
+linkhalmaz	R2	link_egyezes Σ|∩|/Σ|∪| [arany (60)]			0.9091				10	150/165
+linkhalmaz	R3	azonos_linkhalmazu_versek [arany (60)]			2				10	F3 és F3V2 linkhalmaza azonos (a kizárásokkal)
+linkhalmaz	R3	link_egyezes Σ|∩|/Σ|∪| [arany (60)]			0.8993				10	259/288
+linkhalmaz	R4	azonos_linkhalmazu_versek [arany (60)]			5				20	F3 és F3V2 linkhalmaza azonos (a kizárásokkal)
+linkhalmaz	R4	link_egyezes Σ|∩|/Σ|∪| [arany (60)]			0.8669				20	306/353
+linkhalmaz	Összes	azonos_linkhalmazu_versek [arany (60)]			20				60	F3 és F3V2 linkhalmaza azonos (a kizárásokkal)
+linkhalmaz	Összes	link_egyezes Σ|∩|/Σ|∪| [arany (60)]			0.8902				60	1013/1138
+linkhalmaz	R1	azonos_linkhalmazu_versek [minta (200)]			32				99	F3 és F3V2 linkhalmaza azonos (a kizárásokkal)
+linkhalmaz	R1	link_egyezes Σ|∩|/Σ|∪| [minta (200)]			0.8915				99	1618/1815
+linkhalmaz	R2	azonos_linkhalmazu_versek [minta (200)]			12				25	F3 és F3V2 linkhalmaza azonos (a kizárásokkal)
+linkhalmaz	R2	link_egyezes Σ|∩|/Σ|∪| [minta (200)]			0.9158				25	337/368
+linkhalmaz	R3	azonos_linkhalmazu_versek [minta (200)]			7				25	F3 és F3V2 linkhalmaza azonos (a kizárásokkal)
+linkhalmaz	R3	link_egyezes Σ|∩|/Σ|∪| [minta (200)]			0.9037				25	591/654
+linkhalmaz	R4	azonos_linkhalmazu_versek [minta (200)]			18				50	F3 és F3V2 linkhalmaza azonos (a kizárásokkal)
+linkhalmaz	R4	link_egyezes Σ|∩|/Σ|∪| [minta (200)]			0.9001				50	775/861
+linkhalmaz	Összes	azonos_linkhalmazu_versek [minta (200)]			69				199	F3 és F3V2 linkhalmaza azonos (a kizárásokkal)
+linkhalmaz	Összes	link_egyezes Σ|∩|/Σ|∪| [minta (200)]			0.8981				199	3321/3698

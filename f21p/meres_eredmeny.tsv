@@ -1,0 +1,427 @@
+# GENERÁLT: eszkozok/karoli_strong/meres.py | scope=f21p (F1,F2,F3,F5,F6; F4 nélkül) | forras=f21p/valaszok/*.jsonl, f21p/arany_opus.jsonl, f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, f21p/futasnaplo.tsv | ts=2026-09-30T11:16:32+00:00 (a futásnapló utolsó sora) | kézzel szerkeszteni tilos
+szakasz	osszeallitas	reteg	mero	szamlalo	nevezo	ertek	wilson90_alsó	wilson90_felső	megjegyzes
+pontossag_lefedettseg	A	R1	arany_versek_kapun_atment	13	20	0.65			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	A	R1	pontossag	129	161	0.801242	0.7447	0.8478	a modell linkjeiből az aranyban
+pontossag_lefedettseg	A	R1	lefedettseg	129	171	0.754386	0.6966	0.8043	az arany linkjeiből a modellben
+pontossag_lefedettseg	A	R2	arany_versek_kapun_atment	6	10	0.6			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	A	R2	pontossag	64	69	0.927536	0.8585	0.9643	a modell linkjeiből az aranyban
+pontossag_lefedettseg	A	R2	lefedettseg	64	73	0.876712	0.7996	0.9268	az arany linkjeiből a modellben
+pontossag_lefedettseg	A	R3	arany_versek_kapun_atment	8	10	0.8			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	A	R3	pontossag	190	250	0.76	0.7129	0.8015	a modell linkjeiből az aranyban
+pontossag_lefedettseg	A	R3	lefedettseg	190	227	0.837004	0.7927	0.8733	az arany linkjeiből a modellben
+pontossag_lefedettseg	A	R4	arany_versek_kapun_atment	12	20	0.6			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	A	R4	pontossag	145	170	0.852941	0.8027	0.8921	a modell linkjeiből az aranyban
+pontossag_lefedettseg	A	R4	lefedettseg	145	177	0.819209	0.7669	0.8619	az arany linkjeiből a modellben
+pontossag_lefedettseg	A	Összes	arany_versek_kapun_atment	39	60	0.65			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	A	Összes	pontossag	528	650	0.812308	0.7858	0.8362	a modell linkjeiből az aranyban
+pontossag_lefedettseg	A	Összes	lefedettseg	528	648	0.814815	0.7884	0.8386	az arany linkjeiből a modellben
+pontossag_lefedettseg	B	R1	arany_versek_kapun_atment	17	20	0.85			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	B	R1	pontossag	156	269	0.579926	0.5299	0.6284	a modell linkjeiből az aranyban
+pontossag_lefedettseg	B	R1	lefedettseg	156	261	0.597701	0.5470	0.6464	az arany linkjeiből a modellben
+pontossag_lefedettseg	B	R2	arany_versek_kapun_atment	10	10	1			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	B	R2	pontossag	140	194	0.721649	0.6659	0.7713	a modell linkjeiből az aranyban
+pontossag_lefedettseg	B	R2	lefedettseg	140	153	0.915033	0.8704	0.9453	az arany linkjeiből a modellben
+pontossag_lefedettseg	B	R3	arany_versek_kapun_atment	10	10	1			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	B	R3	pontossag	244	429	0.568765	0.5291	0.6075	a modell linkjeiből az aranyban
+pontossag_lefedettseg	B	R3	lefedettseg	244	266	0.917293	0.8851	0.9410	az arany linkjeiből a modellben
+pontossag_lefedettseg	B	R4	arany_versek_kapun_atment	15	20	0.75			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	B	R4	pontossag	202	248	0.814516	0.7706	0.8516	a modell linkjeiből az aranyban
+pontossag_lefedettseg	B	R4	lefedettseg	202	257	0.785992	0.7410	0.8250	az arany linkjeiből a modellben
+pontossag_lefedettseg	B	Összes	arany_versek_kapun_atment	52	60	0.866667			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	B	Összes	pontossag	742	1140	0.650877	0.6273	0.6737	a modell linkjeiből az aranyban
+pontossag_lefedettseg	B	Összes	lefedettseg	742	937	0.791889	0.7692	0.8128	az arany linkjeiből a modellben
+pontossag_lefedettseg	C	R1	arany_versek_kapun_atment	20	20	1			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	C	R1	pontossag	294	312	0.942308	0.9166	0.9605	a modell linkjeiből az aranyban
+pontossag_lefedettseg	C	R1	lefedettseg	294	317	0.927445	0.8997	0.9480	az arany linkjeiből a modellben
+pontossag_lefedettseg	C	R2	arany_versek_kapun_atment	10	10	1			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	C	R2	pontossag	146	155	0.941935	0.9028	0.9659	a modell linkjeiből az aranyban
+pontossag_lefedettseg	C	R2	lefedettseg	146	153	0.954248	0.9177	0.9750	az arany linkjeiből a modellben
+pontossag_lefedettseg	C	R3	arany_versek_kapun_atment	10	10	1			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	C	R3	pontossag	250	272	0.919118	0.8876	0.9424	a modell linkjeiből az aranyban
+pontossag_lefedettseg	C	R3	lefedettseg	250	266	0.93985	0.9112	0.9597	az arany linkjeiből a modellben
+pontossag_lefedettseg	C	R4	arany_versek_kapun_atment	20	20	1			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	C	R4	pontossag	299	322	0.928571	0.9012	0.9488	a modell linkjeiből az aranyban
+pontossag_lefedettseg	C	R4	lefedettseg	299	315	0.949206	0.9248	0.9660	az arany linkjeiből a modellben
+pontossag_lefedettseg	C	Összes	arany_versek_kapun_atment	60	60	1			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	C	Összes	pontossag	989	1061	0.932139	0.9183	0.9438	a modell linkjeiből az aranyban
+pontossag_lefedettseg	C	Összes	lefedettseg	989	1051	0.941009	0.9279	0.9519	az arany linkjeiből a modellben
+pontossag_lefedettseg	A+B magas (A∩B)	R1	arany_versek_kapun_atment	11	20	0.55			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	A+B magas (A∩B)	R1	pontossag	52	61	0.852459	0.7629	0.9121	a modell linkjeiből az aranyban
+pontossag_lefedettseg	A+B magas (A∩B)	R1	lefedettseg	52	146	0.356164	0.2941	0.4234	az arany linkjeiből a modellben
+pontossag_lefedettseg	A+B magas (A∩B)	R2	arany_versek_kapun_atment	6	10	0.6			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	A+B magas (A∩B)	R2	pontossag	61	62	0.983871	0.9309	0.9964	a modell linkjeiből az aranyban
+pontossag_lefedettseg	A+B magas (A∩B)	R2	lefedettseg	61	73	0.835616	0.7525	0.8947	az arany linkjeiből a modellben
+pontossag_lefedettseg	A+B magas (A∩B)	R3	arany_versek_kapun_atment	8	10	0.8			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	A+B magas (A∩B)	R3	pontossag	179	195	0.917949	0.8796	0.9448	a modell linkjeiből az aranyban
+pontossag_lefedettseg	A+B magas (A∩B)	R3	lefedettseg	179	227	0.788546	0.7407	0.8296	az arany linkjeiből a modellben
+pontossag_lefedettseg	A+B magas (A∩B)	R4	arany_versek_kapun_atment	7	20	0.35			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	A+B magas (A∩B)	R4	pontossag	77	84	0.916667	0.8531	0.9542	a modell linkjeiből az aranyban
+pontossag_lefedettseg	A+B magas (A∩B)	R4	lefedettseg	77	119	0.647059	0.5725	0.7151	az arany linkjeiből a modellben
+pontossag_lefedettseg	A+B magas (A∩B)	Összes	arany_versek_kapun_atment	32	60	0.533333			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	A+B magas (A∩B)	Összes	pontossag	369	402	0.91791	0.8925	0.9377	a modell linkjeiből az aranyban
+pontossag_lefedettseg	A+B magas (A∩B)	Összes	lefedettseg	369	565	0.653097	0.6195	0.6852	az arany linkjeiből a modellben
+pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	R1	arany_versek_kapun_atment	11	20	0.55			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	R1	pontossag	120	216	0.555556	0.4996	0.6101	a modell linkjeiből az aranyban
+pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	R1	lefedettseg	120	146	0.821918	0.7641	0.8680	az arany linkjeiből a modellben
+pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	R2	arany_versek_kapun_atment	6	10	0.6			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	R2	pontossag	72	96	0.75	0.6711	0.8152	a modell linkjeiből az aranyban
+pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	R2	lefedettseg	72	73	0.986301	0.9409	0.9969	az arany linkjeiből a modellben
+pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	R3	arany_versek_kapun_atment	8	10	0.8			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	R3	pontossag	216	403	0.53598	0.4950	0.5765	a modell linkjeiből az aranyban
+pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	R3	lefedettseg	216	227	0.951542	0.9223	0.9701	az arany linkjeiből a modellben
+pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	R4	arany_versek_kapun_atment	7	20	0.35			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	R4	pontossag	101	142	0.711268	0.6452	0.7694	a modell linkjeiből az aranyban
+pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	R4	lefedettseg	101	119	0.848739	0.7870	0.8950	az arany linkjeiből a modellben
+pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	Összes	arany_versek_kapun_atment	32	60	0.533333			nevező: az aranyba eső versek a rétegben; számláló: ebből kapun átment
+pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	Összes	pontossag	509	857	0.593932	0.5661	0.6212	a modell linkjeiből az aranyban
+pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	Összes	lefedettseg	509	565	0.900885	0.8783	0.9197	az arany linkjeiből a modellben
+regi_arany	A	R1	hármasok_kapun_atment_versekben	24		24			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	A	R1	nem_talalhato_karoli_szo	0	24	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	A	R1	egyezes_korabbi_osszetett_strong_nelkul	15	24	0.625	0.4577	0.7670	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	A	R1	egyezes	20	24	0.833333	0.6762	0.9229	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A	R1	hibas_regi_hármas_kizarva	1	24	0.0416667			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A	R1	egyezes_hibas_kizarva_tajekoztato	20	23	0.869565	0.7147	0.9466	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	A	R2	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	A	R2	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	A	R2	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	A	R2	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A	R2	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A	R2	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	A	R3	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	A	R3	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	A	R3	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	A	R3	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A	R3	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A	R3	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	A	R4	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	A	R4	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	A	R4	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	A	R4	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A	R4	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A	R4	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	A	Összes	hármasok_kapun_atment_versekben	24		24			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	A	Összes	nem_talalhato_karoli_szo	0	24	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	A	Összes	egyezes_korabbi_osszetett_strong_nelkul	15	24	0.625	0.4577	0.7670	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	A	Összes	egyezes	20	24	0.833333	0.6762	0.9229	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A	Összes	hibas_regi_hármas_kizarva	1	24	0.0416667			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A	Összes	egyezes_hibas_kizarva_tajekoztato	20	23	0.869565	0.7147	0.9466	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	B	R1	hármasok_kapun_atment_versekben	6		6			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	B	R1	nem_talalhato_karoli_szo	0	6	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	B	R1	egyezes_korabbi_osszetett_strong_nelkul	4	6	0.666667	0.3470	0.8827	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	B	R1	egyezes	4	6	0.666667	0.3470	0.8827	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	B	R1	hibas_regi_hármas_kizarva	0	6	0			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	B	R1	egyezes_hibas_kizarva_tajekoztato	4	6	0.666667	0.3470	0.8827	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	B	R2	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	B	R2	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	B	R2	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	B	R2	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	B	R2	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	B	R2	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	B	R3	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	B	R3	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	B	R3	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	B	R3	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	B	R3	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	B	R3	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	B	R4	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	B	R4	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	B	R4	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	B	R4	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	B	R4	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	B	R4	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	B	Összes	hármasok_kapun_atment_versekben	6		6			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	B	Összes	nem_talalhato_karoli_szo	0	6	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	B	Összes	egyezes_korabbi_osszetett_strong_nelkul	4	6	0.666667	0.3470	0.8827	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	B	Összes	egyezes	4	6	0.666667	0.3470	0.8827	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	B	Összes	hibas_regi_hármas_kizarva	0	6	0			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	B	Összes	egyezes_hibas_kizarva_tajekoztato	4	6	0.666667	0.3470	0.8827	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	C	R1	hármasok_kapun_atment_versekben	32		32			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	C	R1	nem_talalhato_karoli_szo	0	32	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	C	R1	egyezes_korabbi_osszetett_strong_nelkul	24	32	0.75	0.6080	0.8530	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	C	R1	egyezes	30	32	0.9375	0.8277	0.9791	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	C	R1	hibas_regi_hármas_kizarva	1	32	0.03125			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	C	R1	egyezes_hibas_kizarva_tajekoztato	30	31	0.967742	0.8676	0.9928	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	C	R2	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	C	R2	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	C	R2	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	C	R2	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	C	R2	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	C	R2	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	C	R3	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	C	R3	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	C	R3	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	C	R3	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	C	R3	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	C	R3	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	C	R4	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	C	R4	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	C	R4	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	C	R4	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	C	R4	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	C	R4	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	C	Összes	hármasok_kapun_atment_versekben	32		32			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	C	Összes	nem_talalhato_karoli_szo	0	32	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	C	Összes	egyezes_korabbi_osszetett_strong_nelkul	24	32	0.75	0.6080	0.8530	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	C	Összes	egyezes	30	32	0.9375	0.8277	0.9791	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	C	Összes	hibas_regi_hármas_kizarva	1	32	0.03125			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	C	Összes	egyezes_hibas_kizarva_tajekoztato	30	31	0.967742	0.8676	0.9928	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	A+B magas (A∩B)	R1	hármasok_kapun_atment_versekben	5		5			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	A+B magas (A∩B)	R1	nem_talalhato_karoli_szo	0	5	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	A+B magas (A∩B)	R1	egyezes_korabbi_osszetett_strong_nelkul	3	5	0.6	0.2725	0.8573	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	A+B magas (A∩B)	R1	egyezes	3	5	0.6	0.2725	0.8573	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A+B magas (A∩B)	R1	hibas_regi_hármas_kizarva	0	5	0			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A+B magas (A∩B)	R1	egyezes_hibas_kizarva_tajekoztato	3	5	0.6	0.2725	0.8573	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	A+B magas (A∩B)	R2	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	A+B magas (A∩B)	R2	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	A+B magas (A∩B)	R2	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	A+B magas (A∩B)	R2	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A+B magas (A∩B)	R2	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A+B magas (A∩B)	R2	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	A+B magas (A∩B)	R3	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	A+B magas (A∩B)	R3	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	A+B magas (A∩B)	R3	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	A+B magas (A∩B)	R3	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A+B magas (A∩B)	R3	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A+B magas (A∩B)	R3	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	A+B magas (A∩B)	R4	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	A+B magas (A∩B)	R4	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	A+B magas (A∩B)	R4	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	A+B magas (A∩B)	R4	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A+B magas (A∩B)	R4	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A+B magas (A∩B)	R4	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+regi_arany	A+B magas (A∩B)	Összes	hármasok_kapun_atment_versekben	5		5			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
+regi_arany	A+B magas (A∩B)	Összes	nem_talalhato_karoli_szo	0	5	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
+regi_arany	A+B magas (A∩B)	Összes	egyezes_korabbi_osszetett_strong_nelkul	3	5	0.6	0.2725	0.8573	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
+regi_arany	A+B magas (A∩B)	Összes	egyezes	3	5	0.6	0.2725	0.8573	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A+B magas (A∩B)	Összes	hibas_regi_hármas_kizarva	0	5	0			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A+B magas (A∩B)	Összes	egyezes_hibas_kizarva_tajekoztato	3	5	0.6	0.2725	0.8573	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
+ab_egyezes	A–B	R1	versek_mindketto_atment	15	100	0.15			nevező: a rétegben futott versek
+ab_egyezes	A–B	R1	link_egyezes (uniós arány)	93	286	0.325175	0.2814	0.3722	Σ|A∩B| / Σ|A∪B|, csak ahol mindkettő átment
+ab_egyezes	A–B	R1	azonos_linkhalmazu_versek	2	15	0.133333			vers-szintű egyezés
+ab_egyezes	A–B	R2	versek_mindketto_atment	17	25	0.68			nevező: a rétegben futott versek
+ab_egyezes	A–B	R2	link_egyezes (uniós arány)	149	249	0.598394	0.5465	0.6482	Σ|A∩B| / Σ|A∪B|, csak ahol mindkettő átment
+ab_egyezes	A–B	R2	azonos_linkhalmazu_versek	0	17	0			vers-szintű egyezés
+ab_egyezes	A–B	R3	versek_mindketto_atment	10	25	0.4			nevező: a rétegben futott versek
+ab_egyezes	A–B	R3	link_egyezes (uniós arány)	219	453	0.483444	0.4450	0.5221	Σ|A∩B| / Σ|A∪B|, csak ahol mindkettő átment
+ab_egyezes	A–B	R3	azonos_linkhalmazu_versek	0	10	0			vers-szintű egyezés
+ab_egyezes	A–B	R4	versek_mindketto_atment	23	50	0.46			nevező: a rétegben futott versek
+ab_egyezes	A–B	R4	link_egyezes (uniós arány)	287	425	0.675294	0.6369	0.7114	Σ|A∩B| / Σ|A∪B|, csak ahol mindkettő átment
+ab_egyezes	A–B	R4	azonos_linkhalmazu_versek	1	23	0.0434783			vers-szintű egyezés
+ab_egyezes	A–B	Összes	versek_mindketto_atment	65	200	0.325			nevező: a rétegben futott versek
+ab_egyezes	A–B	Összes	link_egyezes (uniós arány)	748	1413	0.52937	0.5075	0.5511	Σ|A∩B| / Σ|A∪B|, csak ahol mindkettő átment
+ab_egyezes	A–B	Összes	azonos_linkhalmazu_versek	3	65	0.0461538			vers-szintű egyezés
+kapuhiba	F1 (A)	R1	kapuhiba_elso_probara	71	100	0.71	0.6306	0.7783	első nyers válasz kapuja, újraszámolva
+kapuhiba	F1 (A)	R1	kapuhiba_vegleg	42	100	0.42	0.3420	0.5022	egy újrakérés után is hibás
+kapuhiba	F1 (A)	R2	kapuhiba_elso_probara	19	25	0.76	0.5987	0.8705	első nyers válasz kapuja, újraszámolva
+kapuhiba	F1 (A)	R2	kapuhiba_vegleg	8	25	0.32	0.1907	0.4844	egy újrakérés után is hibás
+kapuhiba	F1 (A)	R3	kapuhiba_elso_probara	24	25	0.96	0.8391	0.9910	első nyers válasz kapuja, újraszámolva
+kapuhiba	F1 (A)	R3	kapuhiba_vegleg	10	25	0.4	0.2564	0.5632	egy újrakérés után is hibás
+kapuhiba	F1 (A)	R4	kapuhiba_elso_probara	38	50	0.76	0.6490	0.8443	első nyers válasz kapuja, újraszámolva
+kapuhiba	F1 (A)	R4	kapuhiba_vegleg	22	50	0.44	0.3306	0.5556	egy újrakérés után is hibás
+kapuhiba	F1 (A)	Összes	kapuhiba_elso_probara	152	200	0.76	0.7071	0.8060	első nyers válasz kapuja, újraszámolva
+kapuhiba	F1 (A)	Összes	kapuhiba_vegleg	82	200	0.41	0.3544	0.4680	egy újrakérés után is hibás
+kapuhiba	F1 (A)	-	keresztellenorzes_elso_probalkozas	152	152	1			újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek = napló kapuhiba_db(probalkozas=1) összeg: EGYEZIK
+kapuhiba_tipus	F1 (A)	Összes	kapupont_1-json_elso_probara	100	200	0.5			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F1 (A)	Összes	kapupont_1-json_vegleg	0	200	0			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F1 (A)	Összes	kapupont_2_elso_probara	3	200	0.015			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F1 (A)	Összes	kapupont_2_vegleg	13	200	0.065			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F1 (A)	Összes	kapupont_3_elso_probara	47	200	0.235			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F1 (A)	Összes	kapupont_3_vegleg	65	200	0.325			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F1 (A)	Összes	kapupont_4_elso_probara	15	200	0.075			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F1 (A)	Összes	kapupont_4_vegleg	37	200	0.185			a végleg hibás versek kapuponttal
+kapuhiba	F2 (B)	R1	kapuhiba_elso_probara	80	100	0.8	0.7267	0.8575	első nyers válasz kapuja, újraszámolva
+kapuhiba	F2 (B)	R1	kapuhiba_vegleg	68	100	0.68	0.5994	0.7511	egy újrakérés után is hibás
+kapuhiba	F2 (B)	R2	kapuhiba_elso_probara	2	25	0.08	0.0268	0.2152	első nyers válasz kapuja, újraszámolva
+kapuhiba	F2 (B)	R2	kapuhiba_vegleg	0	25	0	0.0000	0.0977	egy újrakérés után is hibás
+kapuhiba	F2 (B)	R3	kapuhiba_elso_probara	13	25	0.52	0.3619	0.6742	első nyers válasz kapuja, újraszámolva
+kapuhiba	F2 (B)	R3	kapuhiba_vegleg	9	25	0.36	0.2230	0.5243	egy újrakérés után is hibás
+kapuhiba	F2 (B)	R4	kapuhiba_elso_probara	11	50	0.22	0.1394	0.3293	első nyers válasz kapuja, újraszámolva
+kapuhiba	F2 (B)	R4	kapuhiba_vegleg	5	50	0.1	0.0495	0.1915	egy újrakérés után is hibás
+kapuhiba	F2 (B)	Összes	kapuhiba_elso_probara	106	200	0.53	0.4719	0.5873	első nyers válasz kapuja, újraszámolva
+kapuhiba	F2 (B)	Összes	kapuhiba_vegleg	82	200	0.41	0.3544	0.4680	egy újrakérés után is hibás
+kapuhiba	F2 (B)	-	keresztellenorzes_elso_probalkozas	106	106	1			újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek = napló kapuhiba_db(probalkozas=1) összeg: EGYEZIK
+kapuhiba_tipus	F2 (B)	Összes	kapupont_1-hianyzo_vers_elso_probara	18	200	0.09			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F2 (B)	Összes	kapupont_1-hianyzo_vers_vegleg	0	200	0			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F2 (B)	Összes	kapupont_1-json_elso_probara	40	200	0.2			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F2 (B)	Összes	kapupont_1-json_vegleg	40	200	0.2			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F2 (B)	Összes	kapupont_2_elso_probara	10	200	0.05			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F2 (B)	Összes	kapupont_2_vegleg	13	200	0.065			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F2 (B)	Összes	kapupont_3_elso_probara	23	200	0.115			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F2 (B)	Összes	kapupont_3_vegleg	20	200	0.1			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F2 (B)	Összes	kapupont_4_elso_probara	18	200	0.09			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F2 (B)	Összes	kapupont_4_vegleg	12	200	0.06			a végleg hibás versek kapuponttal
+kapuhiba	F3 (C)	R1	kapuhiba_elso_probara	17	100	0.17	0.1171	0.2403	első nyers válasz kapuja, újraszámolva
+kapuhiba	F3 (C)	R1	kapuhiba_vegleg	1	100	0.01	0.0022	0.0436	egy újrakérés után is hibás
+kapuhiba	F3 (C)	R2	kapuhiba_elso_probara	0	25	0	0.0000	0.0977	első nyers válasz kapuja, újraszámolva
+kapuhiba	F3 (C)	R2	kapuhiba_vegleg	0	25	0	0.0000	0.0977	egy újrakérés után is hibás
+kapuhiba	F3 (C)	R3	kapuhiba_elso_probara	5	25	0.2	0.1009	0.3577	első nyers válasz kapuja, újraszámolva
+kapuhiba	F3 (C)	R3	kapuhiba_vegleg	0	25	0	0.0000	0.0977	egy újrakérés után is hibás
+kapuhiba	F3 (C)	R4	kapuhiba_elso_probara	8	50	0.16	0.0926	0.2623	első nyers válasz kapuja, újraszámolva
+kapuhiba	F3 (C)	R4	kapuhiba_vegleg	0	50	0	0.0000	0.0513	egy újrakérés után is hibás
+kapuhiba	F3 (C)	Összes	kapuhiba_elso_probara	30	200	0.15	0.1132	0.1962	első nyers válasz kapuja, újraszámolva
+kapuhiba	F3 (C)	Összes	kapuhiba_vegleg	1	200	0.005	0.0011	0.0221	egy újrakérés után is hibás
+kapuhiba	F3 (C)	-	keresztellenorzes_elso_probalkozas	30	30	1			újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek = napló kapuhiba_db(probalkozas=1) összeg: EGYEZIK
+kapuhiba_tipus	F3 (C)	Összes	kapupont_1_elso_probara	15	200	0.075			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F3 (C)	Összes	kapupont_1_vegleg	0	200	0			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F3 (C)	Összes	kapupont_1-json_elso_probara	10	200	0.05			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F3 (C)	Összes	kapupont_1-json_vegleg	0	200	0			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F3 (C)	Összes	kapupont_2_elso_probara	1	200	0.005			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F3 (C)	Összes	kapupont_2_vegleg	0	200	0			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F3 (C)	Összes	kapupont_3_elso_probara	1	200	0.005			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F3 (C)	Összes	kapupont_3_vegleg	0	200	0			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F3 (C)	Összes	kapupont_4_elso_probara	5	200	0.025			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F3 (C)	Összes	kapupont_4_vegleg	1	200	0.005			a végleg hibás versek kapuponttal
+kapuhiba	F5 (A (KJV nélkül))	R1	kapuhiba_elso_probara	75	100	0.75	0.6728	0.8140	első nyers válasz kapuja, újraszámolva
+kapuhiba	F5 (A (KJV nélkül))	R1	kapuhiba_vegleg	31	100	0.31	0.2398	0.3902	egy újrakérés után is hibás
+kapuhiba	F5 (A (KJV nélkül))	Összes	kapuhiba_elso_probara	75	100	0.75	0.6728	0.8140	első nyers válasz kapuja, újraszámolva
+kapuhiba	F5 (A (KJV nélkül))	Összes	kapuhiba_vegleg	31	100	0.31	0.2398	0.3902	egy újrakérés után is hibás
+kapuhiba	F5 (A (KJV nélkül))	-	keresztellenorzes_elso_probalkozas	75	75	1			újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek = napló kapuhiba_db(probalkozas=1) összeg: EGYEZIK
+kapuhiba_tipus	F5 (A (KJV nélkül))	Összes	kapupont_1_elso_probara	0	100	0			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F5 (A (KJV nélkül))	Összes	kapupont_1_vegleg	2	100	0.02			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F5 (A (KJV nélkül))	Összes	kapupont_1-json_elso_probara	30	100	0.3			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F5 (A (KJV nélkül))	Összes	kapupont_1-json_vegleg	0	100	0			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F5 (A (KJV nélkül))	Összes	kapupont_2_elso_probara	5	100	0.05			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F5 (A (KJV nélkül))	Összes	kapupont_2_vegleg	9	100	0.09			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F5 (A (KJV nélkül))	Összes	kapupont_3_elso_probara	38	100	0.38			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F5 (A (KJV nélkül))	Összes	kapupont_3_vegleg	19	100	0.19			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F5 (A (KJV nélkül))	Összes	kapupont_4_elso_probara	20	100	0.2			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F5 (A (KJV nélkül))	Összes	kapupont_4_vegleg	16	100	0.16			a végleg hibás versek kapuponttal
+kapuhiba	F6 (B (KJV nélkül))	R1	kapuhiba_elso_probara	23	100	0.23	0.1684	0.3058	első nyers válasz kapuja, újraszámolva
+kapuhiba	F6 (B (KJV nélkül))	R1	kapuhiba_vegleg	13	100	0.13	0.0843	0.1952	egy újrakérés után is hibás
+kapuhiba	F6 (B (KJV nélkül))	Összes	kapuhiba_elso_probara	23	100	0.23	0.1684	0.3058	első nyers válasz kapuja, újraszámolva
+kapuhiba	F6 (B (KJV nélkül))	Összes	kapuhiba_vegleg	13	100	0.13	0.0843	0.1952	egy újrakérés után is hibás
+kapuhiba	F6 (B (KJV nélkül))	-	keresztellenorzes_elso_probalkozas	23	23	1			újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek = napló kapuhiba_db(probalkozas=1) összeg: EGYEZIK
+kapuhiba_tipus	F6 (B (KJV nélkül))	Összes	kapupont_1_elso_probara	8	100	0.08			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F6 (B (KJV nélkül))	Összes	kapupont_1_vegleg	8	100	0.08			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F6 (B (KJV nélkül))	Összes	kapupont_3_elso_probara	7	100	0.07			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F6 (B (KJV nélkül))	Összes	kapupont_3_vegleg	3	100	0.03			a végleg hibás versek kapuponttal
+kapuhiba_tipus	F6 (B (KJV nélkül))	Összes	kapupont_4_elso_probara	11	100	0.11			hibás versek száma ezzel a kapuponttal (egy vers több ponton is hibázhat)
+kapuhiba_tipus	F6 (B (KJV nélkül))	Összes	kapupont_4_vegleg	2	100	0.02			a végleg hibás versek kapuponttal
+ab_osszeallitas	A+B	R1	mindketto_atment_azonos_linkekkel	2	100	0.02			
+ab_osszeallitas	A+B	R1	mindketto_atment_eltero_linkekkel	13	100	0.13			
+ab_osszeallitas	A+B	R1	csak_A_atment	43	100	0.43			
+ab_osszeallitas	A+B	R1	csak_B_atment	17	100	0.17			
+ab_osszeallitas	A+B	R1	egyik_sem_atment	25	100	0.25			
+ab_osszeallitas	A+B	R1	dontobirohoz_menne (eltero + csak egyik + egyik sem)	98	100	0.98	0.9413	0.9934	F4 nélküli pontos darabszám: nem azonos linkhalmazú vagy kapuhibás vers
+ab_osszeallitas	A+B	R1	alacsony_arany	n.é.		n.é.			egymodelles futásra nem értelmezett (PD6, G4); az A+B alacsony aránya a C döntésétől függ (F4 nélkül nem számolható)
+ab_osszeallitas	A+B	R2	mindketto_atment_azonos_linkekkel	0	25	0			
+ab_osszeallitas	A+B	R2	mindketto_atment_eltero_linkekkel	17	25	0.68			
+ab_osszeallitas	A+B	R2	csak_A_atment	0	25	0			
+ab_osszeallitas	A+B	R2	csak_B_atment	8	25	0.32			
+ab_osszeallitas	A+B	R2	egyik_sem_atment	0	25	0			
+ab_osszeallitas	A+B	R2	dontobirohoz_menne (eltero + csak egyik + egyik sem)	25	25	1	0.9023	1.0000	F4 nélküli pontos darabszám: nem azonos linkhalmazú vagy kapuhibás vers
+ab_osszeallitas	A+B	R2	alacsony_arany	n.é.		n.é.			egymodelles futásra nem értelmezett (PD6, G4); az A+B alacsony aránya a C döntésétől függ (F4 nélkül nem számolható)
+ab_osszeallitas	A+B	R3	mindketto_atment_azonos_linkekkel	0	25	0			
+ab_osszeallitas	A+B	R3	mindketto_atment_eltero_linkekkel	10	25	0.4			
+ab_osszeallitas	A+B	R3	csak_A_atment	5	25	0.2			
+ab_osszeallitas	A+B	R3	csak_B_atment	6	25	0.24			
+ab_osszeallitas	A+B	R3	egyik_sem_atment	4	25	0.16			
+ab_osszeallitas	A+B	R3	dontobirohoz_menne (eltero + csak egyik + egyik sem)	25	25	1	0.9023	1.0000	F4 nélküli pontos darabszám: nem azonos linkhalmazú vagy kapuhibás vers
+ab_osszeallitas	A+B	R3	alacsony_arany	n.é.		n.é.			egymodelles futásra nem értelmezett (PD6, G4); az A+B alacsony aránya a C döntésétől függ (F4 nélkül nem számolható)
+ab_osszeallitas	A+B	R4	mindketto_atment_azonos_linkekkel	1	50	0.02			
+ab_osszeallitas	A+B	R4	mindketto_atment_eltero_linkekkel	22	50	0.44			
+ab_osszeallitas	A+B	R4	csak_A_atment	5	50	0.1			
+ab_osszeallitas	A+B	R4	csak_B_atment	22	50	0.44			
+ab_osszeallitas	A+B	R4	egyik_sem_atment	0	50	0			
+ab_osszeallitas	A+B	R4	dontobirohoz_menne (eltero + csak egyik + egyik sem)	49	50	0.98	0.9152	0.9955	F4 nélküli pontos darabszám: nem azonos linkhalmazú vagy kapuhibás vers
+ab_osszeallitas	A+B	R4	alacsony_arany	n.é.		n.é.			egymodelles futásra nem értelmezett (PD6, G4); az A+B alacsony aránya a C döntésétől függ (F4 nélkül nem számolható)
+ab_osszeallitas	A+B	Összes	mindketto_atment_azonos_linkekkel	3	200	0.015			
+ab_osszeallitas	A+B	Összes	mindketto_atment_eltero_linkekkel	62	200	0.31			
+ab_osszeallitas	A+B	Összes	csak_A_atment	53	200	0.265			
+ab_osszeallitas	A+B	Összes	csak_B_atment	53	200	0.265			
+ab_osszeallitas	A+B	Összes	egyik_sem_atment	29	200	0.145			
+ab_osszeallitas	A+B	Összes	dontobirohoz_menne (eltero + csak egyik + egyik sem)	197	200	0.985	0.9631	0.9940	F4 nélküli pontos darabszám: nem azonos linkhalmazú vagy kapuhibás vers
+ab_osszeallitas	A+B	Összes	alacsony_arany	n.é.		n.é.			egymodelles futásra nem értelmezett (PD6, G4); az A+B alacsony aránya a C döntésétől függ (F4 nélkül nem számolható)
+ab_osszeallitas	A+B	R1	nem_egyezo_link_arany (1 − A∩B/A∪B)	193	286	0.674825			csak ahol mindkettő átment; ez a link-szintű „nem magas” felső becslés, F4 nélkül
+ab_osszeallitas	A+B	R2	nem_egyezo_link_arany (1 − A∩B/A∪B)	100	249	0.401606			csak ahol mindkettő átment; ez a link-szintű „nem magas” felső becslés, F4 nélkül
+ab_osszeallitas	A+B	R3	nem_egyezo_link_arany (1 − A∩B/A∪B)	234	453	0.516556			csak ahol mindkettő átment; ez a link-szintű „nem magas” felső becslés, F4 nélkül
+ab_osszeallitas	A+B	R4	nem_egyezo_link_arany (1 − A∩B/A∪B)	138	425	0.324706			csak ahol mindkettő átment; ez a link-szintű „nem magas” felső becslés, F4 nélkül
+ab_osszeallitas	A+B	Összes	nem_egyezo_link_arany (1 − A∩B/A∪B)	665	1413	0.47063			csak ahol mindkettő átment; ez a link-szintű „nem magas” felső becslés, F4 nélkül
+kjv_hatas	KJV-val (F1/F2) A	R1	kapuhiba_vegleg	42	100	0.42	0.3420	0.5022	R1 összes verse
+kjv_hatas	KJV-val (F1/F2) A	R1	kapuhiba_elso_probara	71	100	0.71	0.6306	0.7783	R1 összes verse
+kjv_hatas	KJV-val (F1/F2) B	R1	kapuhiba_vegleg	68	100	0.68	0.5994	0.7511	R1 összes verse
+kjv_hatas	KJV-val (F1/F2) B	R1	kapuhiba_elso_probara	80	100	0.8	0.7267	0.8575	R1 összes verse
+kjv_hatas	KJV nélkül (F5/F6) A (KJV nélkül)	R1	kapuhiba_vegleg	31	100	0.31	0.2398	0.3902	R1 összes verse
+kjv_hatas	KJV nélkül (F5/F6) A (KJV nélkül)	R1	kapuhiba_elso_probara	75	100	0.75	0.6728	0.8140	R1 összes verse
+kjv_hatas	KJV nélkül (F5/F6) B (KJV nélkül)	R1	kapuhiba_vegleg	13	100	0.13	0.0843	0.1952	R1 összes verse
+kjv_hatas	KJV nélkül (F5/F6) B (KJV nélkül)	R1	kapuhiba_elso_probara	23	100	0.23	0.1684	0.3058	R1 összes verse
+kjv_hatas	A KJV-val	R1	arany_versek [saját halmaz (kapun átment)]	13	20	0.65			
+kjv_hatas	A KJV-val	R1	pontossag [saját halmaz (kapun átment)]	129	161	0.801242	0.7447	0.8478	
+kjv_hatas	A KJV-val	R1	lefedettseg [saját halmaz (kapun átment)]	129	171	0.754386	0.6966	0.8043	
+kjv_hatas	A KJV-val	R1	arany_versek [közös halmaz (mindkét feltételben átment)]	11	20	0.55			
+kjv_hatas	A KJV-val	R1	pontossag [közös halmaz (mindkét feltételben átment)]	107	131	0.816794	0.7550	0.8658	
+kjv_hatas	A KJV-val	R1	lefedettseg [közös halmaz (mindkét feltételben átment)]	107	140	0.764286	0.7006	0.8179	
+kjv_hatas	A KJV nélkül	R1	arany_versek [saját halmaz (kapun átment)]	15	20	0.75			
+kjv_hatas	A KJV nélkül	R1	pontossag [saját halmaz (kapun átment)]	185	237	0.780591	0.7333	0.8215	
+kjv_hatas	A KJV nélkül	R1	lefedettseg [saját halmaz (kapun átment)]	185	215	0.860465	0.8171	0.8949	
+kjv_hatas	A KJV nélkül	R1	arany_versek [közös halmaz (mindkét feltételben átment)]	11	20	0.55			
+kjv_hatas	A KJV nélkül	R1	pontossag [közös halmaz (mindkét feltételben átment)]	119	149	0.798658	0.7395	0.8472	
+kjv_hatas	A KJV nélkül	R1	lefedettseg [közös halmaz (mindkét feltételben átment)]	119	140	0.85	0.7937	0.8930	
+kjv_hatas	B KJV-val	R1	arany_versek [saját halmaz (kapun átment)]	17	20	0.85			
+kjv_hatas	B KJV-val	R1	pontossag [saját halmaz (kapun átment)]	156	269	0.579926	0.5299	0.6284	
+kjv_hatas	B KJV-val	R1	lefedettseg [saját halmaz (kapun átment)]	156	261	0.597701	0.5470	0.6464	
+kjv_hatas	B KJV-val	R1	arany_versek [közös halmaz (mindkét feltételben átment)]	16	20	0.8			
+kjv_hatas	B KJV-val	R1	pontossag [közös halmaz (mindkét feltételben átment)]	154	258	0.596899	0.5459	0.6459	
+kjv_hatas	B KJV-val	R1	lefedettseg [közös halmaz (mindkét feltételben átment)]	154	247	0.623482	0.5717	0.6726	
+kjv_hatas	B KJV nélkül	R1	arany_versek [saját halmaz (kapun átment)]	17	20	0.85			
+kjv_hatas	B KJV nélkül	R1	pontossag [saját halmaz (kapun átment)]	172	254	0.677165	0.6273	0.7233	
+kjv_hatas	B KJV nélkül	R1	lefedettseg [saját halmaz (kapun átment)]	172	278	0.618705	0.5699	0.6653	
+kjv_hatas	B KJV nélkül	R1	arany_versek [közös halmaz (mindkét feltételben átment)]	16	20	0.8			
+kjv_hatas	B KJV nélkül	R1	pontossag [közös halmaz (mindkét feltételben átment)]	149	224	0.665179	0.6116	0.7148	
+kjv_hatas	B KJV nélkül	R1	lefedettseg [közös halmaz (mindkét feltételben átment)]	149	247	0.603239	0.5512	0.6531	
+kjv_hatas	KJV-val (F1/F2)	R1	A–B_versek [saját halmaz (A és B átment)]	15	100	0.15			nevező: R1 versei
+kjv_hatas	KJV-val (F1/F2)	R1	A–B_egyezes [saját halmaz (A és B átment)]	93	286	0.325175	0.2814	0.3722	Σ|A∩B| / Σ|A∪B|
+kjv_hatas	KJV-val (F1/F2)	R1	A–B_versek [közös halmaz (mind a négy átment)]	10	100	0.1			nevező: R1 versei
+kjv_hatas	KJV-val (F1/F2)	R1	A–B_egyezes [közös halmaz (mind a négy átment)]	77	167	0.461078	0.3987	0.5246	Σ|A∩B| / Σ|A∪B|
+kjv_hatas	KJV nélkül (F5/F6)	R1	A–B_versek [saját halmaz (A és B átment)]	60	100	0.6			nevező: R1 versei
+kjv_hatas	KJV nélkül (F5/F6)	R1	A–B_egyezes [saját halmaz (A és B átment)]	651	1157	0.562662	0.5386	0.5865	Σ|A∩B| / Σ|A∪B|
+kjv_hatas	KJV nélkül (F5/F6)	R1	A–B_versek [közös halmaz (mind a négy átment)]	10	100	0.1			nevező: R1 versei
+kjv_hatas	KJV nélkül (F5/F6)	R1	A–B_egyezes [közös halmaz (mind a négy átment)]	84	165	0.509091	0.4454	0.5724	Σ|A∩B| / Σ|A∪B|
+kjv_hatas	KJV-val (F1/F2)	R1	magas (A∩B) arany_versek [közös halmaz]	8	20	0.4			
+kjv_hatas	KJV-val (F1/F2)	R1	magas (A∩B) pontossag [közös halmaz]	51	59	0.864407	0.7750	0.9219	
+kjv_hatas	KJV-val (F1/F2)	R1	magas (A∩B) lefedettseg [közös halmaz]	51	101	0.50495	0.4241	0.5856	
+kjv_hatas	KJV nélkül (F5/F6)	R1	magas (A∩B) arany_versek [közös halmaz]	8	20	0.4			
+kjv_hatas	KJV nélkül (F5/F6)	R1	magas (A∩B) pontossag [közös halmaz]	56	61	0.918033	0.8410	0.9595	
+kjv_hatas	KJV nélkül (F5/F6)	R1	magas (A∩B) lefedettseg [közös halmaz]	56	101	0.554455	0.4727	0.6333	
+kjv_hatas	KJV-val − KJV nélkül	R1	delta_magas_pontossag_szazalekpont [közös halmaz]	-5.36		-5.36			küszöb-mérőszám 1 (a brief szerint ≥ +1 pp); n: 59 ill. 61 link
+kjv_hatas	KJV-val vs KJV nélkül	R1	A–B_eltérés_relativ_csokkenes [közös halmaz (mind a négy átment)]	-9.78		-9.78			küszöb-mérőszám 2 (a brief szerint ≥ 20%); eltérés KJV nélkül 81/165, KJV-val 90/167
+kjv_hatas	KJV-val vs KJV nélkül	R1	A–B_eltérés_relativ_csokkenes [saját halmaz (A és B átment)]	-54.3		-54.3			küszöb-mérőszám 2 (a brief szerint ≥ 20%); eltérés KJV nélkül 506/1157, KJV-val 193/286
+koltseg	F1 (A)	-	hivasok_osszes	40		40			próbálkozás=1: 20, próbálkozás=2: 20
+koltseg	F1 (A)	-	bemeneti_token	304043		304043			
+koltseg	F1 (A)	-	kimeneti_token (a completion_tokens, a gondolkodást is tartalmazhatja)	50025		50025			
+koltseg	F1 (A)	-	gondolkodasi_token (napló gondolkodas_token oszlopa)	0		0			
+koltseg	F1 (A)	-	koltseg_usd (OpenRouter cost mező)	0.132718		0.132718			koltseg_forras: openrouter
+koltseg	F1 (A)	-	gondolkodasi_mod	kikapcsolva		kikapcsolva			
+koltseg	F2 (B)	-	hivasok_osszes	37		37			próbálkozás=1: 20, próbálkozás=2: 17
+koltseg	F2 (B)	-	bemeneti_token	253328		253328			
+koltseg	F2 (B)	-	kimeneti_token (a completion_tokens, a gondolkodást is tartalmazhatja)	34727		34727			
+koltseg	F2 (B)	-	gondolkodasi_token (napló gondolkodas_token oszlopa)	0		0			
+koltseg	F2 (B)	-	koltseg_usd (OpenRouter cost mező)	0.017725		0.017725			koltseg_forras: openrouter
+koltseg	F2 (B)	-	gondolkodasi_mod	kikapcsolva		kikapcsolva			
+koltseg	F3 (C)	-	hivasok_osszes	27		27			próbálkozás=1: 20, próbálkozás=2: 7
+koltseg	F3 (C)	-	bemeneti_token	196498		196498			
+koltseg	F3 (C)	-	kimeneti_token (a completion_tokens, a gondolkodást is tartalmazhatja)	30770		30770			
+koltseg	F3 (C)	-	gondolkodasi_token (napló gondolkodas_token oszlopa)	0		0			FIGYELEM: a C-nél a napló 0-t ír; a nyers usage nem maradt meg, a múltbeli érték nem rekonstruálható
+koltseg	F3 (C)	-	koltseg_usd (OpenRouter cost mező)	0.257251		0.257251			koltseg_forras: openrouter
+koltseg	F3 (C)	-	gondolkodasi_mod	kotelezo_effort=minimal		kotelezo_effort=minimal			
+koltseg	F5 (A (KJV nélkül))	-	hivasok_osszes	20		20			próbálkozás=1: 10, próbálkozás=2: 10
+koltseg	F5 (A (KJV nélkül))	-	bemeneti_token	142979		142979			
+koltseg	F5 (A (KJV nélkül))	-	kimeneti_token (a completion_tokens, a gondolkodást is tartalmazhatja)	23946		23946			
+koltseg	F5 (A (KJV nélkül))	-	gondolkodasi_token (napló gondolkodas_token oszlopa)	0		0			
+koltseg	F5 (A (KJV nélkül))	-	koltseg_usd (OpenRouter cost mező)	0.060663		0.060663			koltseg_forras: openrouter
+koltseg	F5 (A (KJV nélkül))	-	gondolkodasi_mod	kikapcsolva		kikapcsolva			
+koltseg	F6 (B (KJV nélkül))	-	hivasok_osszes	18		18			próbálkozás=1: 10, próbálkozás=2: 8
+koltseg	F6 (B (KJV nélkül))	-	bemeneti_token	120895		120895			
+koltseg	F6 (B (KJV nélkül))	-	kimeneti_token (a completion_tokens, a gondolkodást is tartalmazhatja)	16819		16819			
+koltseg	F6 (B (KJV nélkül))	-	gondolkodasi_token (napló gondolkodas_token oszlopa)	0		0			
+koltseg	F6 (B (KJV nélkül))	-	koltseg_usd (OpenRouter cost mező)	0.009506		0.009506			koltseg_forras: openrouter
+koltseg	F6 (B (KJV nélkül))	-	gondolkodasi_mod	kikapcsolva		kikapcsolva			
+koltseg	-- összesen	-	hivasok_osszes	142		142			próbálkozás=1: 80, próbálkozás=2: 62
+koltseg	-- összesen	-	bemeneti_token	1017743		1017743			
+koltseg	-- összesen	-	kimeneti_token (a completion_tokens, a gondolkodást is tartalmazhatja)	156287		156287			
+koltseg	-- összesen	-	gondolkodasi_token (napló gondolkodas_token oszlopa)	0		0			FIGYELEM: a C-nél a napló 0-t ír; a nyers usage nem maradt meg, a múltbeli érték nem rekonstruálható
+koltseg	-- összesen	-	koltseg_usd (OpenRouter cost mező)	0.477863		0.477863			koltseg_forras: openrouter
+koltseg	-- összesen	-	gondolkodasi_mod	kikapcsolva; kotelezo_effort=minimal		kikapcsolva; kotelezo_effort=minimal			
+koltseg_tablaar	google/gemini-3.1-flash-lite	-	cost / (bemenet·ár + kimenet·ár)	0.193381	0.222712	0.868301			táblaár 0.250/1.500 USD/1M (futtat.ARAK); az érték a tényleges/táblaár arány; nem a gondolkodási token mérése
+koltseg_tablaar	deepseek/deepseek-v4-flash	-	cost / (bemenet·ár + kimenet·ár)	0.027231	0.066824	0.407503			táblaár 0.140/0.280 USD/1M (futtat.ARAK); az érték a tényleges/táblaár arány; nem a gondolkodási token mérése
+koltseg_tablaar	google/gemini-3.8-flash	-	cost / (bemenet·ár + kimenet·ár)	0.257251	0.262761	0.97903			táblaár 0.750/3.750 USD/1M (futtat.ARAK); az érték a tényleges/táblaár arány; nem a gondolkodási token mérése

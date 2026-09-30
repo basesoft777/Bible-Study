@@ -1,0 +1,223 @@
+# GENERÁLT: eszkozok/karoli_strong/koltseg_vetit_p3b.py | scope=P5 minden összeállításra (A, B, C, A+B, A+B+C), P3b-adat (prompt_v2), teljes Biblia 31 158 vers, F22 műfaji öt réteg (DT21 h), mellette a korábbi pilot-4-réteges besorolás tájékoztató sorai | forras=f21p/futasnaplo.tsv, f21p/valaszok/{F1V2,F2V2,F3V2,F3V2B,F4V2}.jsonl, f21p/minta.tsv, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/KJV_Strongs_*.tsv, f21p/arany_opus_v2.jsonl | ts=2026-09-30T15:21:21+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | mag=20260930 | kézzel szerkeszteni tilos
+szakasz	osszeallitas	reteg	mero	ertek	also90	felso90	megjegyzes
+illesztes	F1V2	-	bemenet_a_b_c	2939.37 / 12.0799 / 4.6521			20 első próbálkozású hívás
+illesztes	F1V2	-	kimenet_a_b	-80.54 / 4.0880			
+ar	F1V2	-	cost1_per_tablaar_s	1.000013			táblaár google/gemini-3.1-flash-lite: 0.25/1.50 USD/1M
+ar	F1V2	-	ujrakeres_szorzo_M	1.744426			hívás/köteg = 2.00
+ellenorzes	F1V2	-	pilot_vetitett_usd	0.137698			mintán belül
+ellenorzes	F1V2	-	pilot_tenyleges_usd	0.137698			futasnaplo.tsv
+ellenorzes	F1V2	-	elteres_szazalek	0.0			mintán belül, küszöb ≤ 10%
+ellenorzes	F1V2	-	loo_elteres_szazalek	-0.111			leave-one-out, küszöb ≤ 10%
+ellenorzes	F1V2	-	szamito_elteres_szazalek	-0.111			DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: leave-one-out; küszöb ≤ 10%: teljesül
+illesztes	F2V2	-	bemenet_a_b_c	3264.97 / 10.3785 / 3.4867			20 első próbálkozású hívás
+illesztes	F2V2	-	kimenet_a_b	510.12 / 1.9513			
+ar	F2V2	-	cost1_per_tablaar_s	0.65627			táblaár deepseek/deepseek-v4-flash: 0.14/0.28 USD/1M
+ar	F2V2	-	ujrakeres_szorzo_M	1.800281			hívás/köteg = 1.90
+ellenorzes	F2V2	-	pilot_vetitett_usd	0.032072			mintán belül
+ellenorzes	F2V2	-	pilot_tenyleges_usd	0.032072			futasnaplo.tsv
+ellenorzes	F2V2	-	elteres_szazalek	0.0			mintán belül, küszöb ≤ 10%
+ellenorzes	F2V2	-	loo_elteres_szazalek	-0.276			leave-one-out, küszöb ≤ 10%
+ellenorzes	F2V2	-	szamito_elteres_szazalek	-0.276			DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: leave-one-out; küszöb ≤ 10%: teljesül
+illesztes	F3V2	-	bemenet_a_b_c	2939.52 / 12.0797 / 4.6518			20 első próbálkozású hívás
+illesztes	F3V2	-	kimenet_a_b	117.52 / 3.4544			
+ar	F3V2	-	cost1_per_tablaar_s	0.999999			táblaár google/gemini-3.8-flash: 0.75/3.75 USD/1M
+ar	F3V2	-	ujrakeres_szorzo_M	1.194298			hívás/köteg = 1.30
+ellenorzes	F3V2	-	pilot_vetitett_usd	0.256731			mintán belül
+ellenorzes	F3V2	-	pilot_tenyleges_usd	0.256731			futasnaplo.tsv
+ellenorzes	F3V2	-	elteres_szazalek	0.0			mintán belül, küszöb ≤ 10%
+ellenorzes	F3V2	-	loo_elteres_szazalek	-0.148			leave-one-out, küszöb ≤ 10%
+ellenorzes	F3V2	-	szamito_elteres_szazalek	-0.148			DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: leave-one-out; küszöb ≤ 10%: teljesül
+illesztes	F3V2B	-	bemenet_a_b_c	2939.37 / 12.0799 / 4.6521			20 első próbálkozású hívás
+illesztes	F3V2B	-	kimenet_a_b	64.77 / 3.6737			
+ar	F3V2B	-	cost1_per_tablaar_s	0.99999			táblaár google/gemini-3.8-flash: 0.75/3.75 USD/1M
+ar	F3V2B	-	ujrakeres_szorzo_M	1.181673			hívás/köteg = 1.30
+ellenorzes	F3V2B	-	pilot_vetitett_usd	0.25611			mintán belül
+ellenorzes	F3V2B	-	pilot_tenyleges_usd	0.25611			futasnaplo.tsv
+ellenorzes	F3V2B	-	elteres_szazalek	0.0			mintán belül, küszöb ≤ 10%
+ellenorzes	F3V2B	-	loo_elteres_szazalek	-0.077			leave-one-out, küszöb ≤ 10%
+ellenorzes	F3V2B	-	szamito_elteres_szazalek	-0.077			DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: leave-one-out; küszöb ≤ 10%: teljesül
+illesztes	F4V2	-	bemenet_a_b_c	5021.90 / 16.2346 / 4.2604			20 első próbálkozású hívás
+illesztes	F4V2	-	kimenet_a_b	102.53 / 3.4872			
+ar	F4V2	-	cost1_per_tablaar_s	1.000001			táblaár google/gemini-3.8-flash: 0.75/3.75 USD/1M
+ar	F4V2	-	ujrakeres_szorzo_M	1.366257			hívás/köteg = 1.70
+ellenorzes	F4V2	-	pilot_vetitett_usd	0.359316			mintán belül
+ellenorzes	F4V2	-	pilot_tenyleges_usd	0.359316			futasnaplo.tsv
+ellenorzes	F4V2	-	elteres_szazalek	0.0			mintán belül, küszöb ≤ 10%
+ellenorzes	F4V2	-	loo_elteres_szazalek	0.321			leave-one-out, küszöb ≤ 10%
+ellenorzes	F4V2	-	szamito_elteres_szazalek	0.321			DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: leave-one-out; küszöb ≤ 10%: teljesül
+dontobiro	F4V2	ÓSZ-próza	dontobirohoz_meno_versek_aranya	0.9714			68/70 vers (a minta versei könyv szerint az F22-rétegre képezve)
+dontobiro	F4V2	költészet	dontobirohoz_meno_versek_aranya	0.9455			52/55 vers (a minta versei könyv szerint az F22-rétegre képezve)
+dontobiro	F4V2	próféta	dontobirohoz_meno_versek_aranya	1.0			25/25 vers (a minta versei könyv szerint az F22-rétegre képezve)
+dontobiro	F4V2	evangélium+ApCsel	dontobirohoz_meno_versek_aranya	0.92			23/25 vers (a minta versei könyv szerint az F22-rétegre képezve)
+dontobiro	F4V2	levél+Jel	dontobirohoz_meno_versek_aranya	1.0			25/25 vers (a minta versei könyv szerint az F22-rétegre képezve)
+dontobiro_pilot4_tajekoztato	F4V2	R1	dontobirohoz_meno_versek_aranya	0.95			TÁJÉKOZTATÓ: 95/100 vers (pilot-réteg)
+dontobiro_pilot4_tajekoztato	F4V2	R2	dontobirohoz_meno_versek_aranya	1.0			TÁJÉKOZTATÓ: 25/25 vers (pilot-réteg)
+dontobiro_pilot4_tajekoztato	F4V2	R3	dontobirohoz_meno_versek_aranya	1.0			TÁJÉKOZTATÓ: 25/25 vers (pilot-réteg)
+dontobiro_pilot4_tajekoztato	F4V2	R4	dontobirohoz_meno_versek_aranya	0.96			TÁJÉKOZTATÓ: 48/50 vers (pilot-réteg)
+ellenorzes	A+B+C	-	elteres_szazalek	0.0			F1V2+F2V2+F4V2 a pilot kötegein: 0.529086 vs 0.529086 USD (mintán belül; futásonként a leave-one-out is fent)
+vetites	A (F1V2)	ÓSZ-próza	koltseg_usd	10.5772	10.1633	10.9407	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A (F1V2)	költészet	koltseg_usd	2.584	2.4804	2.6958	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A (F1V2)	próféta	koltseg_usd	4.285	4.1149	4.4344	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A (F1V2)	evangélium+ApCsel	koltseg_usd	3.2495	3.1405	3.3612	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A (F1V2)	levél+Jel	koltseg_usd	2.1403	2.0691	2.214	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A (F1V2)	Összes	koltseg_usd	22.8359	22.0403	23.6158	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	B (F2V2)	ÓSZ-próza	koltseg_usd	2.2947	1.9029	2.7044	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	B (F2V2)	költészet	koltseg_usd	0.6623	0.5586	0.7829	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	B (F2V2)	próféta	koltseg_usd	0.9279	0.7696	1.0945	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	B (F2V2)	evangélium+ApCsel	koltseg_usd	0.7444	0.6232	0.8733	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	B (F2V2)	levél+Jel	koltseg_usd	0.4911	0.4115	0.5759	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	B (F2V2)	Összes	koltseg_usd	5.1204	4.2687	6.0138	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C (F3V2)	ÓSZ-próza	koltseg_usd	19.2778	17.4733	21.2438	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C (F3V2)	költészet	koltseg_usd	4.9671	4.536	5.4531	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C (F3V2)	próféta	koltseg_usd	7.8015	7.0728	8.6014	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C (F3V2)	evangélium+ApCsel	koltseg_usd	6.0195	5.4711	6.6193	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C (F3V2)	levél+Jel	koltseg_usd	3.967	3.6058	4.3622	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C (F3V2)	Összes	koltseg_usd	42.0329	38.1616	46.2746	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C (F3V2B)	ÓSZ-próza	koltseg_usd	19.3234	17.4457	21.4833	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C (F3V2B)	költészet	koltseg_usd	4.9202	4.52	5.3712	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C (F3V2B)	próféta	koltseg_usd	7.8202	7.0559	8.6867	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C (F3V2B)	evangélium+ApCsel	koltseg_usd	6.0105	5.457	6.636	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C (F3V2B)	levél+Jel	koltseg_usd	3.9605	3.5968	4.3713	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C (F3V2B)	Összes	koltseg_usd	42.0348	38.057	46.494	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A+B	ÓSZ-próza	koltseg_usd	12.8718	12.2818	13.4151	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A+B	költészet	koltseg_usd	3.2463	3.0919	3.4163	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A+B	próféta	koltseg_usd	5.2128	4.9741	5.4321	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A+B	evangélium+ApCsel	koltseg_usd	3.9939	3.8194	4.1659	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A+B	levél+Jel	koltseg_usd	2.6315	2.5168	2.7445	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A+B	Összes	koltseg_usd	27.9563	26.7382	29.1534	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A+B+C	ÓSZ-próza	koltseg_usd	39.2741	36.4125	42.2582	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A+B+C	költészet	koltseg_usd	10.1116	9.3219	11.1173	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A+B+C	próféta	koltseg_usd	16.2654	15.0646	17.5362	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A+B+C	evangélium+ApCsel	koltseg_usd	11.9354	10.7866	13.1005	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A+B+C	levél+Jel	koltseg_usd	8.3209	7.7147	8.9708	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	A+B+C	Összes	koltseg_usd	85.9074	79.5981	92.6267	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C döntőbíró rész	ÓSZ-próza	koltseg_usd	26.4022	23.6316	29.4579	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C döntőbíró rész	költészet	koltseg_usd	6.8653	6.1057	7.8284	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C döntőbíró rész	próféta	koltseg_usd	11.0525	9.8629	12.2769	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C döntőbíró rész	evangélium+ApCsel	koltseg_usd	7.9416	6.7883	9.073	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C döntőbíró rész	levél+Jel	koltseg_usd	5.6895	5.1116	6.3191	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites	C döntőbíró rész	Összes	koltseg_usd	57.9511	51.9552	64.4589	F22 műfaji réteg; bootstrap 1000 (köteg-egység: DT21 f, elfogadva — felhasználói döntés)
+vetites_pilot4_tajekoztato	A (F1V2)	R1	koltseg_usd	11.2206	10.7962	11.6113	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	A (F1V2)	R2	koltseg_usd	1.851	1.7736	1.9335	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	A (F1V2)	R3	koltseg_usd	4.3735	4.2019	4.5258	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	A (F1V2)	R4	koltseg_usd	5.3898	5.2096	5.5752	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	A (F1V2)	Összes	koltseg_usd	22.8348	22.0394	23.6148	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	B (F2V2)	R1	koltseg_usd	2.4564	2.0425	2.8923	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	B (F2V2)	R2	koltseg_usd	0.4786	0.4031	0.5668	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	B (F2V2)	R3	koltseg_usd	0.9492	0.7875	1.1194	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	B (F2V2)	R4	koltseg_usd	1.2355	1.0347	1.4489	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	B (F2V2)	Összes	koltseg_usd	5.1197	4.2679	6.0131	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	C (F3V2)	R1	koltseg_usd	20.5079	18.6004	22.5908	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	C (F3V2)	R2	koltseg_usd	3.5672	3.2585	3.9147	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	C (F3V2)	R3	koltseg_usd	7.9682	7.2246	8.7845	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	C (F3V2)	R4	koltseg_usd	9.9865	9.0769	10.9815	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	C (F3V2)	Összes	koltseg_usd	42.0298	38.1586	46.2713	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	C (F3V2B)	R1	koltseg_usd	20.544	18.5624	22.8045	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	C (F3V2B)	R2	koltseg_usd	3.5309	3.2443	3.8467	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	C (F3V2B)	R3	koltseg_usd	7.986	7.2059	8.87	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	C (F3V2B)	R4	koltseg_usd	9.971	9.054	11.0073	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	C (F3V2B)	Összes	koltseg_usd	42.0319	38.0541	46.491	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	A+B	R1	koltseg_usd	13.6769	13.0599	14.2572	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	A+B	R2	koltseg_usd	2.3295	2.2175	2.4531	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	A+B	R3	koltseg_usd	5.3227	5.0794	5.5464	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	A+B	R4	koltseg_usd	6.6253	6.3372	6.9104	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	A+B	Összes	koltseg_usd	27.9545	26.7362	29.1517	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	A+B+C	R1	koltseg_usd	41.1791	38.2149	44.3132	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	A+B+C	R2	koltseg_usd	7.5782	7.0117	8.3013	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	A+B+C	R3	koltseg_usd	16.6169	15.3948	17.9057	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	A+B+C	R4	koltseg_usd	20.3713	18.7513	22.1013	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	A+B+C	Összes	koltseg_usd	85.7455	79.6322	92.3303	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	C döntőbíró rész	R1	koltseg_usd	27.5022	24.6275	30.6357	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	C döntőbíró rész	R2	koltseg_usd	5.2487	4.6821	5.9345	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	C döntőbíró rész	R3	koltseg_usd	11.2942	10.0794	12.5528	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	C döntőbíró rész	R4	koltseg_usd	13.7459	12.1933	15.4553	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+vetites_pilot4_tajekoztato	C döntőbíró rész	Összes	koltseg_usd	57.791	51.8778	64.2355	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap 1000
+besorolas_kulonbseg_tajekoztato	A (F1V2)	Összes	f22_minus_pilot4_usd	0.001071			TÁJÉKOZTATÓ: F22 műfaji 5 réteg − korábbi pilot-4 réteg (pont-becslés)
+besorolas_kulonbseg_tajekoztato	A (F1V2)	Összes	f22_minus_pilot4_szazalek	0.0047			TÁJÉKOZTATÓ: a pilot-4-réteges érték százalékában
+besorolas_kulonbseg_tajekoztato	B (F2V2)	Összes	f22_minus_pilot4_usd	0.000709			TÁJÉKOZTATÓ: F22 műfaji 5 réteg − korábbi pilot-4 réteg (pont-becslés)
+besorolas_kulonbseg_tajekoztato	B (F2V2)	Összes	f22_minus_pilot4_szazalek	0.0138			TÁJÉKOZTATÓ: a pilot-4-réteges érték százalékában
+besorolas_kulonbseg_tajekoztato	C (F3V2)	Összes	f22_minus_pilot4_usd	0.003159			TÁJÉKOZTATÓ: F22 műfaji 5 réteg − korábbi pilot-4 réteg (pont-becslés)
+besorolas_kulonbseg_tajekoztato	C (F3V2)	Összes	f22_minus_pilot4_szazalek	0.0075			TÁJÉKOZTATÓ: a pilot-4-réteges érték százalékában
+besorolas_kulonbseg_tajekoztato	C (F3V2B)	Összes	f22_minus_pilot4_usd	0.002892			TÁJÉKOZTATÓ: F22 műfaji 5 réteg − korábbi pilot-4 réteg (pont-becslés)
+besorolas_kulonbseg_tajekoztato	C (F3V2B)	Összes	f22_minus_pilot4_szazalek	0.0069			TÁJÉKOZTATÓ: a pilot-4-réteges érték százalékában
+besorolas_kulonbseg_tajekoztato	A+B	Összes	f22_minus_pilot4_usd	0.00178			TÁJÉKOZTATÓ: F22 műfaji 5 réteg − korábbi pilot-4 réteg (pont-becslés)
+besorolas_kulonbseg_tajekoztato	A+B	Összes	f22_minus_pilot4_szazalek	0.0064			TÁJÉKOZTATÓ: a pilot-4-réteges érték százalékában
+besorolas_kulonbseg_tajekoztato	A+B+C	Összes	f22_minus_pilot4_usd	0.161913			TÁJÉKOZTATÓ: F22 műfaji 5 réteg − korábbi pilot-4 réteg (pont-becslés)
+besorolas_kulonbseg_tajekoztato	A+B+C	Összes	f22_minus_pilot4_szazalek	0.1888			TÁJÉKOZTATÓ: a pilot-4-réteges érték százalékában
+besorolas_kulonbseg_tajekoztato	C döntőbíró rész	Összes	f22_minus_pilot4_usd	0.160133			TÁJÉKOZTATÓ: F22 műfaji 5 réteg − korábbi pilot-4 réteg (pont-becslés)
+besorolas_kulonbseg_tajekoztato	C döntőbíró rész	Összes	f22_minus_pilot4_szazalek	0.2771			TÁJÉKOZTATÓ: a pilot-4-réteges érték százalékában
+kezimunka	A+B+C	ÓSZ-próza	alacsony_link_per_vers	13.0429			mért, 70 vers (könyv szerint F22-rétegre képezve)
+kezimunka	A+B+C	ÓSZ-próza	vetitett_alacsony_link_biblia	167875			× 12871 vers
+kezimunka	A+B+C	ÓSZ-próza	elteres_per_vers_arany_v2	2.3			mért, 10 aranyvers
+kezimunka	A+B+C	ÓSZ-próza	vetitett_elteres_biblia	29603			× 12871 vers (kis n)
+kezimunka	A+B+C	költészet	alacsony_link_per_vers	3.1636			mért, 55 vers (könyv szerint F22-rétegre képezve)
+kezimunka	A+B+C	költészet	vetitett_alacsony_link_biblia	15821			× 5001 vers
+kezimunka	A+B+C	költészet	elteres_per_vers_arany_v2	2.2			mért, 20 aranyvers
+kezimunka	A+B+C	költészet	vetitett_elteres_biblia	11002			× 5001 vers (kis n)
+kezimunka	A+B+C	próféta	alacsony_link_per_vers	18.76			mért, 25 vers (könyv szerint F22-rétegre képezve)
+kezimunka	A+B+C	próféta	vetitett_alacsony_link_biblia	100028			× 5332 vers
+kezimunka	A+B+C	próféta	elteres_per_vers_arany_v2	3.1			mért, 10 aranyvers
+kezimunka	A+B+C	próféta	vetitett_elteres_biblia	16529			× 5332 vers (kis n)
+kezimunka	A+B+C	evangélium+ApCsel	alacsony_link_per_vers	5.36			mért, 25 vers (könyv szerint F22-rétegre képezve)
+kezimunka	A+B+C	evangélium+ApCsel	vetitett_alacsony_link_biblia	25648			× 4785 vers
+kezimunka	A+B+C	evangélium+ApCsel	elteres_per_vers_arany_v2	2.4			mért, 10 aranyvers
+kezimunka	A+B+C	evangélium+ApCsel	vetitett_elteres_biblia	11484			× 4785 vers (kis n)
+kezimunka	A+B+C	levél+Jel	alacsony_link_per_vers	15.84			mért, 25 vers (könyv szerint F22-rétegre képezve)
+kezimunka	A+B+C	levél+Jel	vetitett_alacsony_link_biblia	50197			× 3169 vers
+kezimunka	A+B+C	levél+Jel	elteres_per_vers_arany_v2	1.5			mért, 10 aranyvers
+kezimunka	A+B+C	levél+Jel	vetitett_elteres_biblia	4754			× 3169 vers (kis n)
+kezimunka	A+B+C	Összes	vetitett_alacsony_link_biblia	359569			F22-rétegenként vetítve
+kezimunka	A+B+C	Összes	vetitett_elteres_biblia	73372			F22-rétegenként vetítve
+kezimunka	A+B+C	Összes	c_hiba_per_vers	n.é.			az A+B(+C) eltérései nincsenek (a)/(b)/(c)-re besorolva
+kezimunka_pilot4_tajekoztato	A+B+C	Összes	vetitett_alacsony_link_biblia	340519			TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolással vetítve
+kezimunka_pilot4_tajekoztato	A+B+C	Összes	vetitett_elteres_biblia	74830			TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolással vetítve
+kezimunka	A+B+C (alt)	ÓSZ-próza	alacsony_link_per_vers	7.5143			mért, 70 vers (könyv szerint F22-rétegre képezve)
+kezimunka	A+B+C (alt)	ÓSZ-próza	vetitett_alacsony_link_biblia	96716			× 12871 vers
+kezimunka	A+B+C (alt)	ÓSZ-próza	elteres_per_vers_arany_v2	2.3			mért, 10 aranyvers
+kezimunka	A+B+C (alt)	ÓSZ-próza	vetitett_elteres_biblia	29603			× 12871 vers (kis n)
+kezimunka	A+B+C (alt)	költészet	alacsony_link_per_vers	0.9818			mért, 55 vers (könyv szerint F22-rétegre képezve)
+kezimunka	A+B+C (alt)	költészet	vetitett_alacsony_link_biblia	4910			× 5001 vers
+kezimunka	A+B+C (alt)	költészet	elteres_per_vers_arany_v2	2.2			mért, 20 aranyvers
+kezimunka	A+B+C (alt)	költészet	vetitett_elteres_biblia	11002			× 5001 vers (kis n)
+kezimunka	A+B+C (alt)	próféta	alacsony_link_per_vers	4.96			mért, 25 vers (könyv szerint F22-rétegre képezve)
+kezimunka	A+B+C (alt)	próféta	vetitett_alacsony_link_biblia	26447			× 5332 vers
+kezimunka	A+B+C (alt)	próféta	elteres_per_vers_arany_v2	3.1			mért, 10 aranyvers
+kezimunka	A+B+C (alt)	próféta	vetitett_elteres_biblia	16529			× 5332 vers (kis n)
+kezimunka	A+B+C (alt)	evangélium+ApCsel	alacsony_link_per_vers	1.8			mért, 25 vers (könyv szerint F22-rétegre képezve)
+kezimunka	A+B+C (alt)	evangélium+ApCsel	vetitett_alacsony_link_biblia	8613			× 4785 vers
+kezimunka	A+B+C (alt)	evangélium+ApCsel	elteres_per_vers_arany_v2	2.4			mért, 10 aranyvers
+kezimunka	A+B+C (alt)	evangélium+ApCsel	vetitett_elteres_biblia	11484			× 4785 vers (kis n)
+kezimunka	A+B+C (alt)	levél+Jel	alacsony_link_per_vers	9.08			mért, 25 vers (könyv szerint F22-rétegre képezve)
+kezimunka	A+B+C (alt)	levél+Jel	vetitett_alacsony_link_biblia	28775			× 3169 vers
+kezimunka	A+B+C (alt)	levél+Jel	elteres_per_vers_arany_v2	1.5			mért, 10 aranyvers
+kezimunka	A+B+C (alt)	levél+Jel	vetitett_elteres_biblia	4754			× 3169 vers (kis n)
+kezimunka	A+B+C (alt)	Összes	vetitett_alacsony_link_biblia	165461			F22-rétegenként vetítve
+kezimunka	A+B+C (alt)	Összes	vetitett_elteres_biblia	73372			F22-rétegenként vetítve
+kezimunka	A+B+C (alt)	Összes	c_hiba_per_vers	n.é.			az A+B(+C) eltérései nincsenek (a)/(b)/(c)-re besorolva
+kezimunka_pilot4_tajekoztato	A+B+C (alt)	Összes	vetitett_alacsony_link_biblia	152119			TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolással vetítve
+kezimunka_pilot4_tajekoztato	A+B+C (alt)	Összes	vetitett_elteres_biblia	74830			TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolással vetítve
+kezimunka	A+B	ÓSZ-próza	alacsony_link_per_vers	14.6			mért, 70 vers (könyv szerint F22-rétegre képezve)
+kezimunka	A+B	ÓSZ-próza	vetitett_alacsony_link_biblia	187917			× 12871 vers
+kezimunka	A+B	ÓSZ-próza	elteres_per_vers_arany_v2	16.4			mért, 10 aranyvers
+kezimunka	A+B	ÓSZ-próza	vetitett_elteres_biblia	211084			× 12871 vers (kis n)
+kezimunka	A+B	költészet	alacsony_link_per_vers	8.4182			mért, 55 vers (könyv szerint F22-rétegre képezve)
+kezimunka	A+B	költészet	vetitett_alacsony_link_biblia	42099			× 5001 vers
+kezimunka	A+B	költészet	elteres_per_vers_arany_v2	8.45			mért, 20 aranyvers
+kezimunka	A+B	költészet	vetitett_elteres_biblia	42258			× 5001 vers (kis n)
+kezimunka	A+B	próféta	alacsony_link_per_vers	28.04			mért, 25 vers (könyv szerint F22-rétegre képezve)
+kezimunka	A+B	próféta	vetitett_alacsony_link_biblia	149509			× 5332 vers
+kezimunka	A+B	próféta	elteres_per_vers_arany_v2	27.5			mért, 10 aranyvers
+kezimunka	A+B	próféta	vetitett_elteres_biblia	146630			× 5332 vers (kis n)
+kezimunka	A+B	evangélium+ApCsel	alacsony_link_per_vers	8.4			mért, 25 vers (könyv szerint F22-rétegre képezve)
+kezimunka	A+B	evangélium+ApCsel	vetitett_alacsony_link_biblia	40194			× 4785 vers
+kezimunka	A+B	evangélium+ApCsel	elteres_per_vers_arany_v2	7.4			mért, 10 aranyvers
+kezimunka	A+B	evangélium+ApCsel	vetitett_elteres_biblia	35409			× 4785 vers (kis n)
+kezimunka	A+B	levél+Jel	alacsony_link_per_vers	8.84			mért, 25 vers (könyv szerint F22-rétegre képezve)
+kezimunka	A+B	levél+Jel	vetitett_alacsony_link_biblia	28014			× 3169 vers
+kezimunka	A+B	levél+Jel	elteres_per_vers_arany_v2	15.2			mért, 10 aranyvers
+kezimunka	A+B	levél+Jel	vetitett_elteres_biblia	48169			× 3169 vers (kis n)
+kezimunka	A+B	Összes	vetitett_alacsony_link_biblia	447733			F22-rétegenként vetítve
+kezimunka	A+B	Összes	vetitett_elteres_biblia	483551			F22-rétegenként vetítve
+kezimunka	A+B	Összes	c_hiba_per_vers	n.é.			az A+B(+C) eltérései nincsenek (a)/(b)/(c)-re besorolva
+kezimunka_pilot4_tajekoztato	A+B	Összes	vetitett_alacsony_link_biblia	432317			TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolással vetítve
+kezimunka_pilot4_tajekoztato	A+B	Összes	vetitett_elteres_biblia	448934			TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolással vetítve

@@ -5,11 +5,14 @@ kod: F21
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
 ad: mért adat arról, megéri-e a teljes Bibliát külső modellekkel Strong-számmal párosítani (minőség, költség, KJV-támpont haszna)
-kovetkezo: mérőpilot P0–P1, ⛔ a futtatás előtt (szúrópróba, küszöbök, secret)
+kovetkezo: lezárva (P3b kész); a #22 sorsa a felhasználó döntése (l. DT21, DT22)
 olvas: [konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/KJV_Strongs_Genesis.tsv]
 ir: [eszkozok/karoli_strong/, f21p/, naplok/F21P_jelentes.md, DONTESEK.md, .github/workflows/f21p_pilot.yml]
+ag: claude/f21-pilot
+pr: #92
+lezarva_osszegzes: Károli–Strong mérőpilot (F21, P3+P3b): az A+B és az A+B+C is mért, és egyik sem felel meg a rögzített döntési szabálynak (A+B: `magas` pontosság, lefedettség, régi arany, `alacsony` arány bukott; A+B+C: mind az öt feltétel bukott, vetített költség 85,91 USD [79,60–92,63]); az A, B és C egymodelles, a PD6 szerint nem minősíthető; C-vetítés 42 USD; a C két futásának eltérése −0,57 pp (pontosság) és +0,48 pp (lefedettség); a pilot 1,605 USD; KJV (N29) a v2-adaton: a `magas` pontosság +15,6 pp (n=7 vers), így az N29 VAGY-szabályának 1. mérőszáma formálisan teljesül, az A–B eltérés csökkenése (20%) nem; nem végleges; jelentés `naplok/F21P_jelentes.md`
 fugg: [6]
 ---
 # F21_KAROLI_STRONG_PILOT_BRIEF.md — Károli–Strong párosítás: mérőpilot (minőség és költség)
@@ -139,8 +142,10 @@ Egy összeállítás **megfelel**, ha:
 **Javaslat:**
 
 - ha van megfelelő összeállítás, a legolcsóbb megfelelő;
-- ha csak egyes rétegekben felel meg, vegyes összeállítás rétegenként (pl. R2–R3 a C modellel);
+- ha csak egyes rétegekben felel meg, vegyes összeállítás rétegenként (pl. R1 és R4 A+B-vel, R2–R3 A+B+C-vel);
 - ha egyik sem felel meg, a teljes futás nem indul, és a jelentés megnevezi, mi bukott el (pontosság, költség vagy kézimunka).
+
+**Egymodelles összeállítás (A, B, C külön; rögzítve 2026.09.30, PD6):** a P4 ezeket is méri (összpontosság, lefedettség, régi arany egyezés, költség), és a C egyedül versenyez az A+B+C-vel (PD2), de csak a jelentés kedvéért. Egymodelles összeállításhoz a G4 szerinti `magas` / `alacsony` szint nem értelmezhető (az A és a B egyezésén alapul), ezért az ilyen összeállítás nem kaphat megfelelt minősítést, és a teljes futásra, rétegenként sem, mehet. **A teljes futásra, rétegenként is, csak az A+B vagy az A+B+C mehet.** A G4 nem változik.
 
 **KJV-import (N29):** érdemes, ha a KJV-támpont az R1-en legalább 1 százalékponttal növeli a `magas` pontosságot, vagy legalább 20%-kal (relatívan) csökkenti az A–B eltérést.
 
@@ -174,7 +179,19 @@ Egy összeállítás **megfelel**, ha:
 | PD3 | KJV-támpont az R1-en, kikapcsolt változattal is | az N29 importdöntéséhez mért adat kell; az R1 könyveihez már van KJV-tábla, import nélkül | a KJV importja a mérés előtt |
 | PD4 | Költségvetítés illesztéssel a valódi vershosszakra, bootstrap-intervallummal és visszaellenőrzéssel | a naiv szorzás a Thayer-becslésnél nem volt levezethető | átlagköltség × versszám |
 | PD5 | A küszöbök a futtatás előtt rögzülnek | a mérés utáni küszöbállítás torzít (az F06 BSB-mérés gyakorlata) | küszöb az eredmények láttán |
+| PD6 | Egymodelles összeállítás (A, B, C külön) csak mérésre; a teljes futásra rétegenként is csak A+B vagy A+B+C mehet | a G4 bizonyossági szintje két modell egyezésén alapul, egy modellnél nem értelmezhető | megengedő változat: minden link `magas`, az `alacsony` a kapuhibás versek aránya |
+| PD7 | `[nem TR]`: a „TR»N” és „TR«N” TR-nek számít (tokenek.py javítás), a „más helyen” versekre az alternatív arany; az „eltérő alak” három tokenje (Jak 3:4 #22, Jak 3:8 #8, 1Pét 5:12 #23) kimarad a pontossági mérésből | a modell-bemenet és az arany a TR-rel összhangban legyen; az eltérő alaknak nincs sora a kivonatban | jelölés a jelentésben; kizárás a mintából |
+| PD8 | Az A és a B kiesik, v2 nem lesz hozzájuk; az F4 nem fut | a kapun átment versekben is az A pontossága 81,2%, a B-é 65,1%; a 197/200 döntőbírós vers mellett az F4 nem ad új információt az F3-hoz képest | v2 az A-hoz és a B-hez; F4 a jelenlegi adattal |
+| PD9 | A régi arany egyezése halmazként mért (összetett Strong a `+` mentén bontva); a két hibás hármas (1Móz 6:17, 13:4) jelölve (`f21p/regi_arany_hibas.tsv`), nem javítva | a `meres.py` az összetett Strongot egész karakterláncként hasonlította: mérési műtermék | a régi arany javítása |
+| PD10 | Arany v2: csak a jegyzet konvenciójával ütköző esetek, a sértett konvenció számával; a 6. táblázat a futás előtt lezárult, nem bővül; a korrigált pontosság csak „az Opus besorolása, nem mérés” megjelöléssel szerepelhet, a küszöb szempontjából csak a mért érték számít | az arany ne igazodjon a mért modellhez | az arany szabad javítása a C-diff alapján |
+| PD11 | A DT21 lezárása visszavonva, a pilot folytatódik (P3b): minden összeállítás kimérve a `prompt_v2`-vel, a C második futásával az ingadozás mérésére; az F4v2 csak akkor fut, ha a döntőbírói prompt teljesíti a rögzített feltételeket (az A–B egyező linkek rögzítettek, a séma és a kapu ugyanaz, nincs modell által írt Strong-szám, K5); plafon 3 USD, 2 USD kumulatív költségnél megállás és jelentés | az A és a B nem volt mérve a `prompt_v2`-vel, az A+B+C (F4) egyszer sem futott, a két C-futás nélkül a futások közti ingadozás nem választható el a prompthatástól (a 97%-os és 98%-os mért érték nem hasonlítható) | a pilot lezárása a meglévő adattal (DT21) |
+| PD12 | A DT21 döntései: a mért régi arany érték a kizárás nélküli (C 93,8%, 30/32), a kizárás csak tájékoztatás; az 1Móz 13:4 „hibás” jelölése visszavonva, csak az 1Móz 6:17 marad (a PD9 ennek megfelelően módosul); a P5 teljes-Biblia rétegbesorolása az F22 brief szerinti, műfaji (Préd, Sir → költészet, Dán → próféta, Ruth, Eszt → ÓSZ-próza); a köteg mint bootstrap-egység elfogadva; a költség-ellenőrzésnél a konzervatívabb (leave-one-out) számít; az `alacsony` arányt az A+B+C-nél a szó szerinti G4-olvasat adja (59,7%), az A+B definíciója elfogadva; a gondolkodási mód eltérése (A és B kikapcsolva, C `minimal`) a pilot idején elfogadva; az a–e tételek regressziós mérésre átvéve; a #22 döntése elhalasztva a regressziós futás utánra | a mért érték ne függjön utólagos kizárástól; a rétegbesorolás egységes az F22-vel | a kizárásos érték mint mért érték |
 
 | Verzió | Dátum | Változás |
 |---|---|---|
 | v1 | 2026.09.30 | első változat |
+| v1.1 | 2026.09.30 | a P2 ⛔ döntései: a küszöbök rögzítve (PD5); egymodelles összeállítás csak mérésre, a teljes futásra csak A+B vagy A+B+C (PD6); a vegyes példa: R1 és R4 A+B-vel, R2–R3 A+B+C-vel; `[nem TR]` javítás és az „eltérő alak” tokenek kizárása a pontossági mérésből (PD7) |
+| v1.2 | 2026.09.30 | a P3/P4 utáni döntések: az A és a B kiesik (a kapun átment versekben is 81%, illetve 65% pontosság), v2 nem lesz hozzájuk, az F4 nem fut (PD8); a régi arany egyezése halmazként mért, a 2 hibás hármas jelölve (PD9); arany v2 csak a jegyzet konvenciójával ütköző esetekre, jóváhagyásig nem fagy be (PD10); KJV (N29): a v1-adaton nem teljesül, n=8, nem végleges |
+| v1.3 | 2026.09.30 | a DT21 lezárása visszavonva (DT22): a pilot folytatódik (P3b), minden összeállítás kimérve: F1v2 (A), F2v2 (B), F5v2/F6v2 (KJV nélkül, R1), F3V2b (a C második futása az ingadozáshoz), F4v2 (a C döntőbíróként); a `prompt_v2` és az arany v2 befagyasztva, az öt nyitott kérdés a jelentésbe kerül (PD11) |
+| v1.4 | 2026.09.30 | a P3b kész: minden összeállítás kimérve a `prompt_v2`-vel (F1V2, F2V2, F5V2, F6V2, F3V2b, F4V2, 1,605 USD kumulatív); az A+B és az A+B+C sem felel meg; a C két futásának eltérése az ingadozás becslése; a #22 sorsa a felhasználó döntése |
+| v1.5 | 2026.09.30 | a DT21 döntései (PD12): a mért régi arany érték a kizárás nélküli (C: 93,8%), a kizárás csak tájékoztatás, az 1Móz 13:4 „hibás” jelölése visszavonva (csak az 1Móz 6:17 marad); a P5 rétegbesorolása az F22 brief szerinti, műfaji (Préd, Sir → költészet, Dán → próféta, Ruth, Eszt → ÓSZ-próza); a köteg mint bootstrap-egység elfogadva; a konzervatívabb (leave-one-out) költség-ellenőrzés számít; az a–e tételek regressziós mérésre átvéve; a #22 döntése elhalasztva |
