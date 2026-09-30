@@ -5,9 +5,9 @@ kod: F18
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: megallt
+allapot: fut
 ad: Nave-témák és -relációk, eredet-ellenőrzéssel mind a 4980 témán
-kovetkezo: "Te: licencdöntés (DT5) — a theonize GPLv3 ütközik a playbook publikus-repó szabályával"
+kovetkezo: "DT5 eldöntve (1. opció, basokant saját parszolóval); folytatás: parszolás, import, eredet-ellenőrzés"
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv]
 ir: [konkordancia/Nave_theonize.tsv, NYITOTT_FELADATOK.md, DONTESEK.md]
 fugg: [6]
