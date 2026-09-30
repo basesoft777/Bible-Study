@@ -4,6 +4,7 @@
 
 Bemenet:  f21p/valaszok/F{1,2,3,5,6}.jsonl, f21p/arany_opus.jsonl (60 vers),
           f21p/meres_kizaras.tsv, f21p/minta.tsv, a régi arany (tokenek.regi_arany),
+          f21p/regi_arany_hibas.tsv (a régi arany hibásnak jelölt hármasai),
           f21p/futasnaplo.tsv (költség, próbálkozás).
 Kimenet:  f21p/meres_eredmeny.tsv (gépi, hosszú alak) és
           naplok/F21P_meres_v1.md (olvasható), kizárólag a szkript számaiból.
@@ -21,11 +22,19 @@ Definíciók (F21 brief P4, a v1.1 döntésekkel):
     linkjeiből hány van a modellben — csak a kapun átment (allapot=ok) versekre,
     azon belül csak az aranyba eső 60 versre. A+B `magas` = az A és B egyező
     linkjei (A∩B), csak azokon a verseken, ahol A ÉS B is átment.
-  * régi arany egyezés: a (vers, Károli-szó, Strong) hármas egyezik, ha a Károli-szó
-    (vagy többszavas kifejezés, folytonos tokensorozat) valamelyik előfordulásához
-    linkelt eredeti szavak között ott a Strong-szám. A kapun átment versekre, a
-    teljes 200 verses mintában (nem csak az aranyban). Ha a szó nem található a
-    vers tokenjei között, külön soron (nem_talalhato) szerepel, a nevezőben is.
+  * régi arany egyezés (F21.12, halmaz-definíció): a (vers, Károli-szó, Strong)
+    hármas Strong mezőjét '+' mentén összetevőkre bontjuk (a régi arany
+    összetett Strongja, pl. 'H5128+H5110'); a hármas egyezik, ha a Károli-szó
+    (vagy többszavas kifejezés, folytonos tokensorozat) valamelyik
+    előfordulásának tokenjeihez linkelt eredeti szavak Strong-halmaza MINDEN
+    összetevőt tartalmaz. Egytagú Strongra ez azonos a korábbi definícióval.
+    A kapun átment versekre, a teljes 200 verses mintában (nem csak az
+    aranyban). Ha a szó nem található a vers tokenjei között, külön soron
+    (nem_talalhato) szerepel, a nevezőben is.
+    Kontrollként megmarad a korábbi érték (egyezes_korabbi_osszetett_strong_nelkul:
+    a Strong mezőt egész karakterláncként hasonlítja, így összetett Strong soha
+    nem egyezhet), és külön sor a f21p/regi_arany_hibas.tsv-ben hibásnak jelölt
+    hármasok kizárásával (egyezes_hibas_kizarva; a nevezőből is kimaradnak).
   * A–B egyezés = Σ|A∩B| / Σ|A∪B| a linkeken, csak ahol A és B is átment.
   * kapuhiba: első próbálkozásra = az első nyers válasz kapuja (újraszámolva a
     `nyers[0]`-ból; keresztellenőrzés: egyezik a jsonl `probalkozas=2` verseivel és a
@@ -223,32 +232,82 @@ def _kifejezes_helyek(tokenek_lista, kif):
     return [i for i in range(len(tl) - n + 1) if tl[i:i + n] == kif]
 
 
+REGI_HIBAS_UT = os.path.join(F21P, 'regi_arany_hibas.tsv')
+
+
+def regi_hibas():
+    """A régi arany hibásnak jelölt hármasai: {(igehely, karoli_szo, strong): ok}."""
+    if not os.path.exists(REGI_HIBAS_UT):
+        return {}
+    return {(r['igehely'], r['karoli_szo'], r['strong']): r['ok'] for r in _tsv(REGI_HIBAS_UT)}
+
+
+def regi_egyezik(adat, ig, szo, strong, links, halmaz=True):
+    """(talalhato, egyezik) egy régi-arany-hármasra a megadott linkhalmazzal.
+
+    halmaz=True: a Strong '+' mentén összetevőkre bontva; egyezik, ha egy
+    előfordulás tokenjeihez linkelt eredeti Strongok halmaza minden összetevőt
+    tartalmaz. halmaz=False: a korábbi (F21.10) definíció, a Strong mező egész
+    karakterláncként, tokenenként.
+    """
+    tl = tokenek.tokenizal(adat.karoli[ig])
+    kif = tokenek.tokenizal(szo)
+    helyek = _kifejezes_helyek(tl, kif)
+    if not helyek:
+        return False, False
+    kszavak = _hivatkozas_szavak(adat, ig, links)
+    if not halmaz:
+        return True, any(strong in kszavak.get(i + j + 1, set()) for i in helyek for j in range(len(kif)))
+    osszetevok = set(strong.split('+'))
+    for i in helyek:
+        linkelt = set()
+        for j in range(len(kif)):
+            linkelt |= kszavak.get(i + j + 1, set())
+        if osszetevok <= linkelt:
+            return True, True
+    return True, False
+
+
 def regi_arany(adat, sorok):
+    hibas = regi_hibas()
     for nev, (ok, lk) in osszeallitasok(adat).items():
         if nev.startswith('A∪B'):
             continue
         for ret in RETEGEK + [OSSZES]:
-            hb = egyezik = nincs = 0
+            hb = egyezik = nincs = korabbi = 0
+            hb_k = egyezik_k = kizart = 0
             for ig, szo, strong in adat.regi:
                 if ret != OSSZES and adat.reteg[ig] != ret:
                     continue
                 if not ok(ig):
                     continue
                 hb += 1
-                tl = tokenek.tokenizal(adat.karoli[ig])
-                kif = tokenek.tokenizal(szo)
-                helyek = _kifejezes_helyek(tl, kif)
-                if not helyek:
+                links = lk(ig)
+                talalhato, e = regi_egyezik(adat, ig, szo, strong, links)
+                _, e_regi = regi_egyezik(adat, ig, szo, strong, links, halmaz=False)
+                if not talalhato:
                     nincs += 1
-                    continue
-                kszavak = _hivatkozas_szavak(adat, ig, lk(ig))
-                if any(strong in kszavak.get(i + j + 1, set()) for i in helyek for j in range(len(kif))):
-                    egyezik += 1
+                egyezik += e
+                korabbi += e_regi
+                if (ig, szo, strong) in hibas:
+                    kizart += 1
+                else:
+                    hb_k += 1
+                    egyezik_k += e
             sorok.add('regi_arany', nev, ret, 'hármasok_kapun_atment_versekben', hb, None,
                       'nevező: régi arany hármasok a rétegben, ahol a vers kapun átment')
             sorok.add('regi_arany', nev, ret, 'nem_talalhato_karoli_szo', nincs, hb,
                       'a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)')
-            sorok.add('regi_arany', nev, ret, 'egyezes', egyezik, hb, 'azonos vers+Károli-szó, a Strong a linkelt eredeti szavak között',
+            sorok.add('regi_arany', nev, ret, 'egyezes_korabbi_osszetett_strong_nelkul', korabbi, hb,
+                      'KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik',
+                      intervallum=True)
+            sorok.add('regi_arany', nev, ret, 'egyezes', egyezik, hb,
+                      'halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül',
+                      intervallum=True)
+            sorok.add('regi_arany', nev, ret, 'hibas_regi_hármas_kizarva', kizart, hb,
+                      'f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai')
+            sorok.add('regi_arany', nev, ret, 'egyezes_hibas_kizarva', egyezik_k, hb_k,
+                      'halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)',
                       intervallum=True)
 
 
@@ -488,7 +547,7 @@ def _fmt(v):
 
 def tsv_ir(sorok, adat_ts):
     fej = ('# GENERÁLT: eszkozok/karoli_strong/meres.py | scope=f21p (F1,F2,F3,F5,F6; F4 nélkül) | '
-           'forras=f21p/valaszok/*.jsonl, f21p/arany_opus.jsonl, f21p/meres_kizaras.tsv, f21p/futasnaplo.tsv | '
+           'forras=f21p/valaszok/*.jsonl, f21p/arany_opus.jsonl, f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, f21p/futasnaplo.tsv | '
            'ts=%s (a futásnapló utolsó sora) | kézzel szerkeszteni tilos' % adat_ts)
     with open(EREDMENY_UT, 'w', encoding='utf-8', newline='\n') as f:
         f.write(fej + '\n')
@@ -522,12 +581,19 @@ def md_ir(sorok, adat_ts):
     }
     ki = ['# F21P_meres_v1.md — P4 mérés a v1-adaton (F1, F2, F3, F5, F6; F4 nélkül)', '',
           '<!-- GENERÁLT: eszkozok/karoli_strong/meres.py | scope=f21p | forras=f21p/valaszok/*.jsonl, '
-          'f21p/arany_opus.jsonl, f21p/meres_kizaras.tsv, f21p/futasnaplo.tsv | ts=%s | '
+          'f21p/arany_opus.jsonl, f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, f21p/futasnaplo.tsv | ts=%s | '
           'kézzel szerkeszteni tilos; a számok forrása f21p/meres_eredmeny.tsv -->' % adat_ts, '',
           'Kizárólag szkriptkimenet; értelmezés és küszöb-minősítés nincs benne. Cellaforma: érték% (számláló/nevező)'
           ' [90%-os Wilson-intervallum, linkszintű, optimista]. Az arany 60 vers (R1 20, R2 10, R3 10, R4 20), ezért '
           'a rétegenkénti értékek megbízhatósága korlátozott: a nevezőt mindig nézd. `alacsony` arány: egymodelles '
-          'futásokra n.é. (PD6, G4).', '']
+          'futásokra n.é. (PD6, G4).', '',
+          'Régi arany (b) pont, F21.12: az `egyezes` a halmaz-definíció — a régi Strong mező \'+\' mentén '
+          'összetevőkre bontva, a hármas akkor egyezik, ha a Károli-szó (kifejezés) valamelyik előfordulásához '
+          'linkelt eredeti szavak Strongjai között MINDEN összetevő ott van. Az '
+          '`egyezes_korabbi_osszetett_strong_nelkul` a korábbi (F21.10) érték kontrollként (a Strong mező egész '
+          'karakterláncként; összetett Strong sosem egyezhetett). A `hibas_regi_hármas_kizarva` a '
+          'f21p/regi_arany_hibas.tsv-ben hibásnak jelölt hármasok száma („N hármas kizárva: a régi arany '
+          'hibás”); az `egyezes_hibas_kizarva` ezek nélkül számol, a nevezőből is kihagyva.', '']
     szakaszok = []
     for r in sorok.lista:
         if r['szakasz'] not in szakaszok:
