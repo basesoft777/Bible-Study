@@ -23,6 +23,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | 22 | Károli–Strong párosítás a teljes Bibliára (F22) | a Károli 1908 minden szavához Strong-szám bizonyossággal (két tábla, KJV-támponttal) | ⬜ | #21 | csak a #21 pilot megfelelő eredménye után | `F22_KAROLI_STRONG_BRIEF.md` |
 | 23 | Egyforrású motívumdokumentum: forrássablon és mélységi szintek (terv) (MOTIVUM_FORRAS) | a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül | ⬜ | #9*, #22*, #24*, #26* | /kovetkezo; ⛔ az M0 felmérés után | `F23_MOTIVUM_FORRAS_BRIEF.md` |
 | 24 | Forrásaink licencének átnézése (LICENC) | adatkészletenként egy licencsor (licenc, verzió, kereskedelmi felhasználás, share-alike, kötelező megjelölés) egyetlen táblában, amelyre a render és a nyilvános kiadás épít | ⬜ | #16*, #17*, #18*, #19*, #22* | /kovetkezo; külön ⛔ nincs, a tisztázatlan tételek összesítve a DONTESEK.md-be | `F24_LICENC_BRIEF.md` |
+| 27 | Thayer-fordítás: Opus és Gemini összevetése, Max-keret méréssel (FP3) | mért adat a #7 modellválasztásához (A: Opus mindenre, B: vegyes hosszhatárral, vagy Gemini marad): minőség hosszkategóriánként, gépi kapuk, Max-keret fogyása és kivetítése a teljes Thayerre | ⬜ | — | /kovetkezo, helyi gépen; ⛔ a /usage leolvasásánál és a vak olvasásnál | `F27_FP3_BRIEF.md` |
 <!-- GENERÁLT-VÉGE: feladatok.py --cel fazis1 -->
 
 ## 2. fázis — render (csak az 1. fázis után)
