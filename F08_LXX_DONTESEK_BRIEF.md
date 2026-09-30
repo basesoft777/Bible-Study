@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 1
 modell: opus
 allapot: lezarva
+pr: 96
 ag: claude/lxx-dontesek
 ad: minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`); a 87 függő helyből 38 kap gépi LXX-megfelelőt (Macula, #17), 49 marad kutatói döntésre
 kovetkezo: "a DT23 (a)–(j) döntései a felhasználóéi; a PR címe [ELLENŐRZŐ] előtagú (E16)"
