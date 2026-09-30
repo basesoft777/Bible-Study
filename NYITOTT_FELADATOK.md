@@ -475,6 +475,19 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   (a git history nem írható át visszamenőleg, l. a projekt szabálya, hogy
   csak új commit készül, nem amend/rebase); a tétel a JÖVŐBELI menetekre
   vonatkozó emlékeztető.
+- **N46 — a Károli-kulcs (KK) 44 Károli-verse eltolódás-gyanús, a Macula-
+  illesztésben üres `karoli` értékkel.** *(ÚJ, F17 (#17) 3. kör, F17.6,
+  `naplok/F17_import_naplo.md`, `naplok/F17_illesztetlen.tsv`, `naplok/ELLENOR_F17.md`)*
+  A `LXX_versificacios_terkep.tsv` `EGYIK_SEM` fejezeteinél az identitás
+  egy verssel elcsúszott értéket adott volna (pl. `karoli "Préd 5:1"` = MT 4:17,
+  `karoli "4Móz 30:1"` = MT 30:2), ezért a `karoli` mező üres, a sor
+  `javaslat:terkep_egyik_sem_eltolodas_gyanu`. Érintett: Préd 5:1–20,
+  4Móz 30:1–16, Zsolt 13:1–6, 4Móz 26:1, Zak 3:1 (44 Károli-vers; az MT-oldalon
+  megfelelő Károli-vers nélkül maradnak). A Károli-kulcs (`konkordancia/
+  Karoli_versmegfeleltetes.tsv`) sorait kell rájuk kiegészíteni vagy
+  igazolni (KEZI-osztály, fejezetenkénti KJV=MT ellenőrzéssel, mint az
+  `naplok/F17_kezi_fejezetek.tsv`-ben). A felvételt a chat jóváhagyta
+  (2026.09.30).
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
