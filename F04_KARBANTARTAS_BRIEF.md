@@ -1,7 +1,7 @@
 ---
 feladat: 4
 cim: Szkript-karbantartás
-kod: KB
+kod: KARBANTARTAS KB0–KB4
 tipus: feladat
 fazis: 1
 modell: sonnet

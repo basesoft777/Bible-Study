@@ -1,7 +1,7 @@
 ---
 feladat: 3
 cim: Fordítási próba
-kod: FP
+kod: FP0–FP-KOR2.9
 tipus: feladat
 fazis: 1
 modell: sonnet

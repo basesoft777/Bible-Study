@@ -1,7 +1,7 @@
 ---
 feladat: 1
 cim: Károli-versszámok javítása a görög Ószövetségben
-kod: KK
+kod: KK0–KK7.5
 tipus: feladat
 fazis: 1
 modell: sonnet

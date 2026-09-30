@@ -8,6 +8,7 @@ allapot: brief_kell
 ad: a görög mélységi szócikk magyarul, adatként
 kovetkezo: `/kovetkezo` csomag: #16–#19 és #7; külső modell, keret 15 USD
 fugg: [3, 5, 14]
+nem_fugg: [9]
 olvas: [adat/terminologia.tsv, adat/kiejtes_kivetelek.tsv, konkordancia/Thayer_teljes.tsv]
 ir: [adat/forditasok.tsv]
 ---
