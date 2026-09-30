@@ -6,7 +6,7 @@ fazis: 1
 modell: külső:gemini-3.1-flash-lite
 allapot: brief_kell
 ad: a görög mélységi szócikk magyarul, adatként
-kovetkezo: `/kovetkezo` csomag: #16–#19 és #7; külső modell, keret 15 USD
+kovetkezo: "halasztva (D46): a teljes Thayer gépi fordítása akkor, ha lesz böngésző felhasználó; a lexikon szócikkeit a #28 fordítja"
 fugg: [3, 5, 14]
 nem_fugg: [9]
 olvas: [adat/terminologia.tsv, adat/kiejtes_kivetelek.tsv, konkordancia/Thayer_teljes.tsv]
