@@ -1,0 +1,92 @@
+# GENERÁLT: eszkozok/f17/macula_futtat.py — kézzel nem szerkesztendő.
+# proveniencia: scope=87 fuggo LXX-hely (naplok/FORRAS_FJ1_lxx_jeloltek.tsv) | forras=https://github.com/Clear-Bible/macula-hebrew@47db250bd55d0d8577f2a94fba114ef16c35b23c | ts=2026-09-30
+# a Karoli-szamozasu igehely -> MT-vers a KK alapjan (F06-ban ez a lepes hianyzott); allapot = javaslat, kezi megerosites kell
+# sorok=87 ; HEBER_SZO_GOROG_NELKUL=38, HEBER_SZO_NINCS_A_VERSBEN=8, LXX_MEGFELELO=39, NINCS_VERS=2
+motivum	igehely_karoli	igehely_mt	kk_mod	heber_kulcsszo	heber_strong_munkalap	allapot	azonositas	macula_heber_szo	macula_gorog	macula_gorog_strong	f06_allapot	egyezik_f06	megjegyzes
+ALVIL-001	2Sám 22:6	22:6	identitas	שְׁא֖וֹל (she.'ol)		LXX_MEGFELELO	szoalak	שְׁא֖וֹל	θανάτου	2288	LXX_MEGFELELO	igen	
+ALVIL-001	Jób 24:19	24:19	identitas	שְׁא֣וֹל (she.'ol)	H7585	HEBER_SZO_GOROG_NELKUL	strong	שְׁא֣וֹל	’’	-	HEBER_SZO_GOROG_NELKUL	igen	
+ALVIL-001	Péld 23:14	23:14	identitas	שְּׁא֥וֹל (she.'ol)	H7585	LXX_MEGFELELO	strong	שְּׁא֥וֹל	θανάτου	2288	LXX_MEGFELELO	igen	
+ALVIL-001	Préd 9:10	9:10	identitas	שְׁא֕וֹל (sh.'ol)	H7585	LXX_MEGFELELO	strong	שְׁא֕וֹל	ἅδη	86	LXX_MEGFELELO	igen	
+ALVIL-001	Ézs 7:11	7:11	identitas	שְׁאָ֔לָה (she.'A.lah)	H7585a	HEBER_SZO_GOROG_NELKUL	strong	שְׁאָ֔לָה	-	-	HEBER_SZO_GOROG_NELKUL	igen	
+ALVIL-001	Ez 32:21	32:21	identitas	שְׁא֖וֹל (she.'ol)	H7585	LXX_MEGFELELO	strong	שְׁא֖וֹל	βόθρου	999	LXX_MEGFELELO	igen	
+HAMART-001	1Móz 3:16	3:16	identitas	עִצְּבוֹנֵ֣ (i.tze.vo.Ne)	H6093	LXX_MEGFELELO	strong	עִצְּבוֹנֵ֣	λύπας	3077	LXX_MEGFELELO	igen	
+HAMART-001	1Móz 3:18	3:18	identitas	ק֥וֹץ (Kotz)	H6975	LXX_MEGFELELO	strong	ק֥וֹץ	ἀκάνθας	173	LXX_MEGFELELO	igen	
+HAMART-001	1Móz 3:19	3:19	identitas	אֲדָמָ֔ה ('a.da.Mah)	H0127	LXX_MEGFELELO	strong	אֲדָמָ֔ה	γῆν	1093	LXX_MEGFELELO	igen	
+HAMART-001	1Móz 3:23	3:23	identitas	אֲדָמָ֔ה ('a.da.Mah)	H0127	LXX_MEGFELELO	strong	אֲדָמָ֔ה	γῆν	1093	LXX_MEGFELELO	igen	
+HAMART-001	1Móz 4:2	4:2	identitas	אֲדָמָֽה ('a.da.Mah)	H0127	LXX_MEGFELELO	strong	אֲדָמָֽה	γῆν	1093	LXX_MEGFELELO	igen	
+HAMART-001	1Móz 4:3	4:3	identitas	אֲדָמָ֛ה ('a.da.Mah)	H0127	LXX_MEGFELELO	strong	אֲדָמָ֛ה	γῆς	1093	LXX_MEGFELELO	igen	
+HAMART-001	1Móz 4:7	4:7	identitas	חַטָּ֣את (cha.Tat)	H2403	LXX_MEGFELELO	strong	חַטָּ֣את	ἥμαρτες	264	LXX_MEGFELELO	igen	
+HAMART-001	1Móz 4:10	4:10	identitas	—		HEBER_SZO_NINCS_A_VERSBEN					HEBER_SZO_NINCS_A_VERSBEN	igen	
+HAMART-001	1Móz 4:12	4:12	identitas	אֲדָמָ֔ה ('a.da.Mah)	H0127	LXX_MEGFELELO	strong	אֲדָמָ֔ה	γῆν	1093	LXX_MEGFELELO	igen	
+HAMART-001	1Móz 4:14	4:14	identitas	אֲדָמָ֔ה ('a.da.Mah)	H0127	LXX_MEGFELELO	strong	אֲדָמָ֔ה	γῆς	1093	LXX_MEGFELELO	igen	
+HAMART-001	1Móz 5:29	5:29	identitas	עִצְּב֣וֹן ('i.tze.Von)	H6093	HEBER_SZO_GOROG_NELKUL	strong	עִצְּב֣וֹן	-	-	HEBER_SZO_GOROG_NELKUL	igen	
+HAMART-001	1Móz 6:5	6:5	identitas	רַ֖ע (ra')	H7451	LXX_MEGFELELO	strong	רָעַ֥ת|רַ֖ע	-|πονηρὰ	-|4190	LXX_MEGFELELO	igen	
+HAMART-001	1Móz 6:7	6:7	identitas	אֲדָמָ֔ה ('a.da.Mah)	H0127	LXX_MEGFELELO	strong	אֲדָמָ֔ה	γῆς	1093	LXX_MEGFELELO	igen	
+HAMART-001	1Móz 6:12	6:12	identitas	הִשְׁחִ֧ית (hish.Chit)	H7843	HEBER_SZO_GOROG_NELKUL	strong	נִשְׁחָ֑תָה|הִשְׁחִ֧ית	κατεφθαρμένη|κατέφθειρεν	-|-	HEBER_SZO_GOROG_NELKUL	igen	
+HAMART-001	1Móz 6:13	6:13	identitas	חָמָ֖ס (cha.Mas)	H2555	LXX_MEGFELELO	strong	חָמָ֖ס	ἀδικίας	93	LXX_MEGFELELO	igen	
+HAMART-001	1Móz 6:17	6:17	identitas	שַׁחֵ֣ת (sha.Chet)	H7843	HEBER_SZO_GOROG_NELKUL	strong	שַׁחֵ֣ת	καταφθεῖραι	-	HEBER_SZO_GOROG_NELKUL	igen	
+HAMART-001	1Móz 8:21	8:21	identitas	קַלֵּ֨ל (ka.Lel)	H7043	LXX_MEGFELELO	strong	קַלֵּ֨ל	ἔτι	2089	LXX_MEGFELELO	igen	
+HAMART-001	1Móz 9:11	9:11	identitas	שַׁחֵ֥ת (sha.Chet)	H7843	HEBER_SZO_GOROG_NELKUL	strong	שַׁחֵ֥ת	καταφθεῖραι	-	HEBER_SZO_GOROG_NELKUL	igen	
+HAMART-001	1Móz 9:15	9:15	identitas	שַׁחֵ֖ת (sha.Chet)	H7843	HEBER_SZO_GOROG_NELKUL	strong	שַׁחֵ֖ת	ἐχαλεῖψαι	-	HEBER_SZO_GOROG_NELKUL	igen	
+HAMART-001	1Móz 12:3	12:3	identitas	אָאֹ֑ר ('a.'Or)	H0779	HEBER_SZO_GOROG_NELKUL	strong	אָאֹ֑ר	καταράσομαι	-	HEBER_SZO_GOROG_NELKUL	igen	
+HAMART-001	Ez 7:23	7:23	identitas	חָמָֽס (cha.Mas)	H2555	LXX_MEGFELELO	strong	חָמָֽס	ἀνομίας	458	LXX_MEGFELELO	igen	
+HAMART-001	Ez 8:17	8:17	identitas	חָמָ֗ס (cha.Mas)	H2555	LXX_MEGFELELO	strong	חָמָ֗ס	ἀνομίας	458	LXX_MEGFELELO	igen	
+HAMART-001	Ez 28:16	28:16	identitas	חָמָ֖ס (cha.Mas)	H2555	LXX_MEGFELELO	strong	חָמָ֖ס	ἀνομίας	458	LXX_MEGFELELO	igen	
+HAMART-001	Zsolt 74:20	74:20	terkep	חָמָֽס (cha.Mas)	H2555	LXX_MEGFELELO	strong	חָמָֽס	ἀνομιῶν	458	LXX_MEGFELELO	igen	
+HAMART-001	Mik 6:12	6:12	identitas	חָמָ֔ס (cha.Mas)	H2555	LXX_MEGFELELO	strong	חָמָ֔ס	ἔπλησαν	4130	LXX_MEGFELELO	igen	
+HAMART-001	Sof 1:9	1:9	identitas	חָמָ֥ס (cha.Mas)	H2555	LXX_MEGFELELO	strong	חָמָ֥ס	ἀσεβείας	763	LXX_MEGFELELO	igen	
+HAMART-001	Hab 2:8	2:8	identitas	חֲמַס (cha.mas-)	H2555	LXX_MEGFELELO	strong	חֲמַס	ἀσεβείας	763	LXX_MEGFELELO	igen	
+HAMART-001	Hab 2:17	2:17	identitas	חֲמַס (cha.mas-)	H2555	LXX_MEGFELELO	strong	חֲמַ֤ס|חֲמַס	ἀσέβεια|ἀσεβείας	763|763	LXX_MEGFELELO	igen	
+HAMART-001	Jón 3:8	3:8	identitas	חָמָ֖ס (cha.Mas)	H2555	LXX_MEGFELELO	strong	חָמָ֖ס	ἀδικίας	93	LXX_MEGFELELO	igen	
+HAMART-001	Ézs 60:18	60:18	identitas	חָמָס֙ (cha.Mas)	H2555	LXX_MEGFELELO	strong	חָמָס֙	ἀδικία	93	LXX_MEGFELELO	igen	
+HAMART-001	Jer 6:7	6:7	identitas	חָמָ֣ס (cha.Mas)	H2555	LXX_MEGFELELO	strong	חָמָ֣ס	ἀσέβεια	763	LXX_MEGFELELO	igen	
+HAMART-001	Hab 1:2	1:2	identitas	חָמָ֖ס (cha.Mas)	H2555	LXX_MEGFELELO	strong	חָמָ֖ס	ἀδικούμενος	91	LXX_MEGFELELO	igen	
+HAMART-001	Ézs 24:5	24:5	identitas	—		HEBER_SZO_NINCS_A_VERSBEN					HEBER_SZO_NINCS_A_VERSBEN	igen	
+HAMART-001	Ézs 24:6	24:6	identitas	—		HEBER_SZO_NINCS_A_VERSBEN					HEBER_SZO_NINCS_A_VERSBEN	igen	
+HAMART-001	Hós 4:1	4:1	identitas	—		HEBER_SZO_NINCS_A_VERSBEN					HEBER_SZO_NINCS_A_VERSBEN	igen	
+HAMART-001	Hós 4:2	4:2	identitas	—		HEBER_SZO_NINCS_A_VERSBEN					HEBER_SZO_NINCS_A_VERSBEN	igen	
+HAMART-001	Hós 4:3	4:3	identitas	—		HEBER_SZO_NINCS_A_VERSBEN					HEBER_SZO_NINCS_A_VERSBEN	igen	
+HODIT-001	1Móz 14:5	14:5	identitas	רְפָאִים֙ (re.fa.'Im)	H7497	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִים֙	-	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	1Móz 15:20	15:20	identitas	רְפָאִֽים (re.fa.'Im)	H7497	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִֽים	ραφαϊν	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	4Móz 13:34	13:34	identitas	נְּפִלִ֑ים (ne.fi.Lim)		NINCS_VERS					NINCS_VERS	igen	az MT-vers nincs a Maculaban
+HODIT-001	5Móz 2:11	2:11	identitas	רְפָאִ֛ים (re.fa.'Im)	H7497	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִ֛ים	ραφαϊν	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	5Móz 2:20	2:20	identitas	רְפָאִ֤ים (re.fa.'Im)	H7497	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִ֥ים|רְפָאִ֤ים	ραφαϊν|κατῴκουν	-|-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	5Móz 3:11	3:11	identitas	רְפָאִים֒ (re.fa.'Im)	H7497	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִים֒	ραφαϊν	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	5Móz 3:13	3:13	identitas	רְפָאִֽים (re.fa.'Im)	H7497	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִֽים	ραφαϊν	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	2Sám 21:16	21:16	identitas	רָפָ֗ה (ra.Fah)		HEBER_SZO_GOROG_NELKUL	szoalak	רָפָ֗ה	-	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	2Sám 21:18	21:18	identitas	רָפָֽה (ra.Fah)		HEBER_SZO_GOROG_NELKUL	szoalak	רָפָֽה	ραφα	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	2Sám 21:20	21:20	identitas	רָפָֽה (ra.Fah)		HEBER_SZO_GOROG_NELKUL	szoalak	רָפָֽה	-	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	2Sám 21:22	21:22	identitas	רָפָ֖ה (ra.Fah)		HEBER_SZO_GOROG_NELKUL	szoalak	רָפָ֖ה	-	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	1Krón 20:4	20:4	identitas	רְפָאִ֖ים (re.fa.'Im)		HEBER_SZO_GOROG_NELKUL	szoalak	רְפָאִ֖ים	γιγάντων	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	1Krón 20:6	20:6	identitas	רָפָֽא (ra.Fa')		HEBER_SZO_GOROG_NELKUL	szoalak	רָפָֽא	-	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	1Krón 20:8	20:8	terkep	רָפָ֖א (ra.Fa')		HEBER_SZO_GOROG_NELKUL	szoalak	רָפָ֖א	-	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	Jób 26:5	26:5	identitas	רְפָאִ֥ים (re.fa.'Im)	H7496	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִ֥ים	γίγαντες	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	Zsolt 88:11	88:11	kk_mt	רְ֝פָאִ֗ים (re.fa.'Im)	H7496	HEBER_SZO_GOROG_NELKUL	strong	רְ֝פָאִ֗ים	ἰατροὶ	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	Péld 2:18	2:18	identitas	רְ֝פָאִ֗ים (re.fa.'Im)	H7496	HEBER_SZO_GOROG_NELKUL	strong	רְ֝פָאִ֗ים	-	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	Péld 9:18	9:18	identitas	רְפָאִ֣ים (re.fa.'Im)	H7496	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִ֣ים	γηγενεῖς	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	Péld 21:16	21:16	identitas	רְפָאִ֣ים (re.fa.'Im)	H7496	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִ֣ים	γιγάντων	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	Ézs 14:9	14:9	identitas	רְפָאִים֙ (re.fa.'Im)	H7496	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִים֙	γίγαντες	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	Ézs 26:14	26:14	identitas	רְפָאִ֖ים (re.fa.'Im)	H7496	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִ֖ים	ἰατροὶ	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	Ézs 26:19	26:19	identitas	רְפָאִ֥ים (re.fa.'Im)	H7496	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִ֥ים	"{δ}"	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	2Sám 5:18	5:18	identitas	רְפָאִֽים (re.fa.'Im)		HEBER_SZO_GOROG_NELKUL	szoalak	רְפָאִֽים	τιτάνων	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	2Sám 5:22	5:22	identitas	רְפָאִֽים (re.fa.'Im)		HEBER_SZO_GOROG_NELKUL	szoalak	רְפָאִֽים	τιτάνων	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	2Sám 23:13	23:13	identitas	רְפָאִֽים (re.fa.'Im)		HEBER_SZO_GOROG_NELKUL	szoalak	רְפָאִֽים	ραφαϊμ	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	1Krón 11:15	11:15	identitas	רְפָאִֽים (re.fa.'Im)		HEBER_SZO_GOROG_NELKUL	szoalak	רְפָאִֽים	γιγάντων	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	1Krón 14:9	14:9	identitas	רְפָאִֽים (re.fa.'Im)		HEBER_SZO_GOROG_NELKUL	szoalak	רְפָאִֽים	γιγάντων	-	HEBER_SZO_GOROG_NELKUL	igen	
+HODIT-001	Ézs 17:5	17:5	identitas	רְפָאִֽים (re.fa.'Im)	H7497a	HEBER_SZO_GOROG_NELKUL	strong	רְפָאִֽים	στερεᾷ	-	HEBER_SZO_GOROG_NELKUL	igen	
+KIRALY-001	1Móz 14:18	14:18	identitas	כֹהֵ֖ן (kho.Hen)	H3548	LXX_MEGFELELO	strong	כֹהֵ֖ן	ἱερεὺς	2409	LXX_MEGFELELO	igen	
+KIRALY-001	1Móz 14:19	14:19	identitas	—		HEBER_SZO_NINCS_A_VERSBEN					HEBER_SZO_NINCS_A_VERSBEN	igen	
+KIRALY-001	1Móz 14:20	14:20	identitas	—		HEBER_SZO_NINCS_A_VERSBEN					HEBER_SZO_NINCS_A_VERSBEN	igen	
+KIRALY-001	Zsolt 76:3	76:3	kk_mt	שָׁלֵ֣ם (sha.Lem)	H8004	LXX_MEGFELELO	strong	שָׁלֵ֣ם	εἰρήνῃ	1515	LXX_MEGFELELO	igen	
+KIRALY-001	2Móz 19:6	19:6	identitas	כֹּהֲנִ֖ים (ko.ha.Nim)	H3548	LXX_MEGFELELO	strong	כֹּהֲנִ֖ים	ἱεράτευμα	2406	LXX_MEGFELELO	igen	
+KIRALY-001	Zak 6:13	6:13	identitas	כֹהֵן֙ (kho.Hen)	H3548	LXX_MEGFELELO	strong	כֹהֵן֙	ἱερεὺς	2409	LXX_MEGFELELO	igen	
+MENNY-001	1Móz 6:2	6:2	identitas	בְנֵי (ve.nei-)		LXX_MEGFELELO	szoalak	בְנֵי	υἱοὶ	5207	LXX_MEGFELELO	igen	
+MENNY-001	1Móz 6:4	6:4	identitas	נְּפִלִ֞ים (ne.fi.Lim)	H5303	HEBER_SZO_GOROG_NELKUL	strong	נְּפִלִ֞ים	γίγαντες	-	HEBER_SZO_GOROG_NELKUL	igen	
+MENNY-001	Jób 1:6	1:6	identitas	בְּנֵ֣י (be.Nei)	H1121	LXX_MEGFELELO	strong	בְּנֵ֣י	ἄγγελοι	32	LXX_MEGFELELO	igen	
+MENNY-001	Jób 2:1	2:1	identitas	בְּנֵ֣י (be.Nei)	H1121	LXX_MEGFELELO	strong	בְּנֵ֣י	ἄγγελοι	32	LXX_MEGFELELO	igen	
+MENNY-001	4Móz 13:34	13:34	identitas	נְּפִלִ֑ים (ne.fi.Lim)		NINCS_VERS					NINCS_VERS	igen	az MT-vers nincs a Maculaban
+TEREMT-001	1Móz 49:25	49:25	identitas	תְּה֖וֹם (te.Hom)	H8415	LXX_MEGFELELO	strong	תְּה֖וֹם	γῆς	1093	LXX_MEGFELELO	igen	
+TEREMT-001	2Móz 15:5	15:5	identitas	תְּהֹמֹ֖ת (te.ho.Mot)	H8415	HEBER_SZO_GOROG_NELKUL	strong	תְּהֹמֹ֖ת	πόντῳ	-	HEBER_SZO_GOROG_NELKUL	igen	
+TEREMT-001	2Móz 15:8	15:8	identitas	תְהֹמֹ֖ת (te.ho.Mot)	H8415	HEBER_SZO_GOROG_NELKUL	strong	תְהֹמֹ֖ת	-	-	HEBER_SZO_GOROG_NELKUL	igen	
+TEREMT-001	Péld 8:27	8:27	identitas	תְהֽוֹם (te.Hom)	H8415	LXX_MEGFELELO	strong	תְהֽוֹם	ἀνέμων	417	LXX_MEGFELELO	igen	
+TEREMT-001	Péld 8:28	8:28	identitas	תְּהוֹם (te.hom)	H8415	LXX_MEGFELELO	strong	תְּהוֹם	οὐρανὸν	3772	LXX_MEGFELELO	igen	
