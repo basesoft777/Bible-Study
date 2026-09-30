@@ -9,12 +9,12 @@ allapot: nem_indult
 ad: a Károli 1908 minden szavához Strong-szám bizonyossággal (két tábla, KJV-támponttal)
 kovetkezo: csak a #21 pilot megfelelő eredménye után
 olvas: [konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv]
-ir: [konkordancia/Karoli_Strong_OSZ.tsv, konkordancia/Karoli_Strong_USZ.tsv, konkordancia/KJV_Strongs_teljes.tsv, adat/karoli_strong_kezi.tsv, adat/datasetek.tsv, adat/SEMA.md, eszkozok/f16/, f16/, .github/workflows/f16_parositas.yml]
-fugg: [19, 21]
+ir: [konkordancia/Karoli_Strong_OSZ.tsv, konkordancia/Karoli_Strong_USZ.tsv, konkordancia/KJV_Strongs_teljes.tsv, adat/karoli_strong_kezi.tsv, adat/datasetek.tsv, adat/SEMA.md, eszkozok/karoli_strong/, f22/, .github/workflows/f22_parositas.yml]
+fugg: [21]
 ---
-# F16_KAROLI_STRONG_BRIEF.md — Károli–Strong párosítás a teljes Bibliára
+# F22_KAROLI_STRONG_BRIEF.md — Károli–Strong párosítás a teljes Bibliára
 
-*FELADATOK #16 · v1 · 2026.09.30 · Modell: sonnet (szkript és adatmunka) · aranyminta: opus (`vegrehajto-opus`) · Külső modellek (OpenRouter): `google/gemini-3.1-flash-lite` (A), `deepseek/deepseek-v4-flash` (B), döntőbíró `google/gemini-3.8-flash` (C, csak eltérésnél) · Ág: `claude/f16-karoli-strong` · Két menet, köztük egy ⛔ megállás*
+*FELADATOK #22 · v1 · 2026.09.30 · Modell: sonnet (szkript és adatmunka) · aranyminta: opus (`vegrehajto-opus`) · Külső modellek (OpenRouter): `google/gemini-3.1-flash-lite` (A), `deepseek/deepseek-v4-flash` (B), döntőbíró `google/gemini-3.8-flash` (C, csak eltérésnél) · Ág: `claude/f22-karoli-strong` · Két menet, köztük egy ⛔ megállás*
 
 ## Mit ad, ha kész
 
@@ -62,7 +62,7 @@ A 0. lépés ezeket újra lekérdezi. Eltérés esetén a friss szám érvényes
 | Aranyminta szúrópróbája (20 vers) | te, a ⛔ pontnál |
 | Párosítás (pilot és teljes futás) | A és B modell a GitHub Actionsben, C csak az eltérő versekre |
 | Ellenőrzés | CI és `fuggetlen-ellenor` |
-| Alacsony bizonyosságú sorok átnézése | te, később, a `naplok/F16_atnezes.tsv` alapján; a merge nem vár rá |
+| Alacsony bizonyosságú sorok átnézése | te, később, a `naplok/F22_atnezes.tsv` alapján; a merge nem vár rá |
 
 ## Keretek
 
@@ -78,16 +78,16 @@ A 0. lépés ezeket újra lekérdezi. Eltérés esetén a friss szám érvényes
 
 ## 1. menet — előkészítés, aranyminta, pilot
 
-### 16.0 Felmérés és előkészítés
+### 22.0 Felmérés és előkészítés
 
-1. Kérdezd le újra a „Kiinduló számok” táblát, és rögzítsd a `naplok/F16_felmeres.md`-ben.
+1. Kérdezd le újra a „Kiinduló számok” táblát, és rögzítsd a `naplok/F22_felmeres.md`-ben.
 2. **A 61 + 30 versmegfeleltetési maradék:** listázd ki, és osztályozd őket (összevont vers, osztott vers, TAHOT/Károli fejezethatár, Károliban hiányzó vers). Az összevont és osztott eseteknél a modell a verspárt együtt kapja meg. Ami nem osztályozható, `kezi` jelölést kap, és a pilotból kimarad.
 3. **Sorrend-ellenőrzés:** ellenőrizd, hogy a TAHOT/TAGNT sorok egy versen belül a szórendben állnak (a nyers fájl `#01, #02…` sorszámával, `konkordancia/TAHOT_TAGNT_README.md`). Ha igen, a versen belüli sorszám a sorrendből származtatható. Ha nem, állj meg és jelezd.
-4. **Károli-tokenizálás:** determinisztikus függvény (`eszkozok/f16/tokenek.py`): token = Unicode betű- és számjegysorozat, az írásjel nem token. Ugyanaz a függvény dolgozik a promptnál, a kapunál és az építésnél. Egységteszt a 383 arany sor szavaira: mindegyik szó megtalálható az adott vers tokenjei között. Ha nem, listázd.
+4. **Károli-tokenizálás:** determinisztikus függvény (`eszkozok/karoli_strong/tokenek.py`): token = Unicode betű- és számjegysorozat, az írásjel nem token. Ugyanaz a függvény dolgozik a promptnál, a kapunál és az építésnél. Egységteszt a 383 arany sor szavaira: mindegyik szó megtalálható az adott vers tokenjei között. Ha nem, listázd.
 5. **KJV-import (N29):** az eBible.org `eng-kjv_usfm.zip` szó-szintű Strong-címkéiből `konkordancia/KJV_Strongs_teljes.tsv` (a meglévő `KJV_Strongs_*.tsv` oszlopaival: `Igehely | Szósorszám | Strong-szám | Angol szó | Morfológiai kód`), Strong nullázva. A letöltés az Actionsben fut (a cloud proxy blokkolhat). Proveniencia-fejléc: URL, sha256, dátum. Ellenőrzés: a meglévő 1Móz/2Móz/Péld táblákkal soronkénti egyezés, az eltérések száma a jelentésbe.
 6. **Az arany sorok előkészítése:** a `Karoli_Strong_kivonat.tsv` sorait `(igehely, Károli-szó, Strong)` hármassá alakítsd a Károli-natív igehellyel és nullázott Strong-számmal, csak memóriában, a fájl módosítása nélkül. Az ismert eltéréseket (N21, F4.0d szófaj-drift) nem kell javítani, mert a szófaj- és gyökoszlop az aranymintában nem játszik szerepet.
 
-### 16.1 Prompt és kapu
+### 22.1 Prompt és kapu
 
 **A modell bemenete versenként:**
 
@@ -114,7 +114,7 @@ KJV-TÁMPONT: In the beginning{H7225} God{H430} created{H1254} the heaven{H8064}
 - `betoldas`: magyar szó eredeti megfelelő nélkül (névelő, segédige, Károli betoldása).
 - `forditatlan`: eredeti szó magyar megfelelő nélkül (pl. a tárgyjelölő אֵת, H0853).
 
-**Gépi kapu (`eszkozok/f16/kapu.py`), versenként:**
+**Gépi kapu (`eszkozok/karoli_strong/kapu.py`), versenként:**
 
 1. érvényes JSON, a `vers` mező egyezik;
 2. minden hivatkozott sorszám létezik;
@@ -124,21 +124,24 @@ KJV-TÁMPONT: In the beginning{H7225} God{H430} created{H1254} the heaven{H8064}
 
 Hibás válasz esetén egy újrakérés a hibaüzenettel. Ha másodszor is hibás, a vers „kapuhiba” jelölést kap, és a C modellhez megy.
 
-### 16.2 Aranyminta
+### 22.2 Aranyminta
+*Helyette a #21.*
 
-1. **Pilotminta: 300 vers**, rögzített véletlenmaggal, rétegzetten: 60 ÓSZ-próza, 60 költészet (Zsolt, Jób, Péld, Én), 60 próféta, 60 evangélium + ApCsel, 60 levél + Jel. A 383 arany sor verseinek legalább fele benne van. A minta: `f16/pilot_minta.tsv`.
-2. **Opus-arany:** a pilotminta 100 versére (minden rétegből 20) a `vegrehajto-opus` teljes, szó-szintű párosítást készít ugyanabban a JSON-formában, a modellekétől függetlenül, a modellválaszok ismerete nélkül. Kimenet: `f16/arany_opus.jsonl`.
-3. **A régi arany:** a 16.0/6 hármasai, a pilotminta verseire szűrve.
+1. **Pilotminta: 300 vers**, rögzített véletlenmaggal, rétegzetten: 60 ÓSZ-próza, 60 költészet (Zsolt, Jób, Péld, Én), 60 próféta, 60 evangélium + ApCsel, 60 levél + Jel. A 383 arany sor verseinek legalább fele benne van. A minta: `f22/pilot_minta.tsv`.
+2. **Opus-arany:** a pilotminta 100 versére (minden rétegből 20) a `vegrehajto-opus` teljes, szó-szintű párosítást készít ugyanabban a JSON-formában, a modellekétől függetlenül, a modellválaszok ismerete nélkül. Kimenet: `f22/arany_opus.jsonl`.
+3. **A régi arany:** a 22.0/6 hármasai, a pilotminta verseire szűrve.
 
-### 16.3 Pilot futtatása (Actions)
+### 22.3 Pilot futtatása (Actions)
+*Helyette a #21.*
 
-- Workflow: `.github/workflows/f16_parositas.yml`, indítás push-ra, ha az `f16/futtatas.txt` változik. Paraméter: `--minta pilot` vagy `--konyv <könyv>`.
+- Workflow: `.github/workflows/f22_parositas.yml`, indítás push-ra, ha az `f22/futtatas.txt` változik. Paraméter: `--minta pilot` vagy `--konyv <könyv>`.
 - Az A és a B modell a 300 versen, egymástól függetlenül. Utána a C modell csak azokon a verseken, ahol A és B link-szinten eltér, vagy ahol kapuhiba volt; C látja A és B válaszát, és egyik mellett dönt, vagy saját választ ad.
-- A nyers válaszok helye: `f16/valaszok/<modell>/<könyv>.jsonl.gz`.
+- A nyers válaszok helye: `f22/valaszok/<modell>/<könyv>.jsonl.gz`.
 
-### 16.4 Mérés és ⛔ megállás
+### 22.4 Mérés és ⛔ megállás
+*Helyette a #21.*
 
-A `eszkozok/f16/meres.py` kiszámolja, a `naplok/F16_pilot_jelentes.md` rögzíti:
+A `eszkozok/karoli_strong/meres.py` kiszámolja, a `naplok/F22_pilot_jelentes.md` rögzíti:
 
 | Mérőszám | Definíció |
 |---|---|
@@ -149,7 +152,7 @@ A `eszkozok/f16/meres.py` kiszámolja, a `naplok/F16_pilot_jelentes.md` rögzít
 | Kapuhiba-arány | modellenként, első és második próbálkozás után |
 | Bizonyossági eloszlás | magas / közepes / alacsony arány |
 | Költség | USD/vers modellenként, a futásnaplóból, és a teljes Bibliára vetítve |
-| Átnézési sor várható mérete | a 16.7 szabályai szerint, a teljes Bibliára vetítve |
+| Átnézési sor várható mérete | a 22.7 szabályai szerint, a teljes Bibliára vetítve |
 
 **⛔ Állj meg.** Nyiss tételt a `DONTESEK.md`-ben a mérőszámokkal, és kérd:
 
@@ -163,15 +166,15 @@ A menet zárása: ellenőr, push, draft PR (a pilot kimenetei nem kerülnek az `
 
 Csak a ⛔ pont „mehet” döntése után.
 
-### 16.5 Teljes futás
+### 22.5 Teljes futás
 
 - Az Actions mátrix könyvenként fut (66 job, egyszerre legfeljebb 6), a pilot promptjával és modelljeivel.
 - A pilotban már megválaszolt versek nem futnak újra.
 - A költségplafont a futásnapló alapján minden köteg előtt ellenőrzi. Elérésekor megáll, és a zárójelentésben „Folytatási pont” szerepel.
 
-### 16.6 Építés
+### 22.6 Építés
 
-`eszkozok/f16/epit.py` a nyers válaszokból és a felülíró táblából építi:
+`eszkozok/karoli_strong/epit.py` a nyers válaszokból és a felülíró táblából építi:
 
 **`konkordancia/Karoli_Strong_OSZ.tsv` és `konkordancia/Karoli_Strong_USZ.tsv`** (a méret miatt két fájl), GENERÁLT-fejléccel és proveniencia-sorral:
 
@@ -197,21 +200,21 @@ Bizonyossági szabály (G4):
 
 Regisztráció: új sorok az `adat/datasetek.tsv`-ben, új szakasz az `adat/SEMA.md`-ben (a következő szabad 2.x szám), `CLAUDE.md` hivatkozó sor.
 
-### 16.7 Ellenőrzések és átnézési sor
+### 22.7 Ellenőrzések és átnézési sor
 
 1. **Lefedettség:** minden Károli-token és minden eredeti token szerepel a táblában. Hiány esetén a menet nem zárható.
 2. **Új `ellenoriz.py` szabály:** minden `elofordulasok.tsv`-sorra ellenőrzi, hogy a `karoli_szo` az adott versben ugyanahhoz a Strong-számhoz kapcsolódik-e a teljes táblában. Eltérésnél **jelez, nem bukik** (a döntés tartalmi).
-3. **`naplok/F16_atnezes.tsv`** (a felhasználónak, később):
+3. **`naplok/F22_atnezes.tsv`** (a felhasználónak, később):
    - minden eltérés a régi arannyal és az `elofordulasok.tsv`-vel;
    - minden `alacsony` sor az `elofordulasok.tsv` igehelyein;
    - 1%-os rögzített magú véletlenminta az `alacsony` sorokból.
 
    A többi `alacsony` sor a táblában marad a jelölésével; a felhasználás során a bizonyosság látszik.
-4. **Összesítő:** `naplok/F16_jelentes.md` a teljes futás mérőszámaival (bizonyossági eloszlás könyvenként, költség, kapuhibák, átnézési sor mérete).
+4. **Összesítő:** `naplok/F22_jelentes.md` a teljes futás mérőszámaival (bizonyossági eloszlás könyvenként, költség, kapuhibák, átnézési sor mérete).
 
-### 16.8 Zárás
+### 22.8 Zárás
 
-`fuggetlen-ellenor` (`naplok/ELLENOR_F16.md`), push, draft PR, a `FELADATOK.md` #16 sorának frissítése. A záró összefoglaló első sora a PR linkje és a CI állapota.
+`fuggetlen-ellenor` (`naplok/ELLENOR_F22.md`), push, draft PR, a `FELADATOK.md` #22 sorának frissítése. A záró összefoglaló első sora a PR linkje és a CI állapota.
 
 ## Döntések (jóváhagyásra)
 
@@ -226,7 +229,7 @@ Regisztráció: új sorok az `adat/datasetek.tsv`-ben, új szakasz az `adat/SEMA
 | G7 | Pilot-küszöb | a `magas` linkek pontossága az Opus-aranyhoz ≥ 98%, az összes link lefedettsége ≥ 95%, a régi arany egyezése ≥ 95%. **A küszöb mérés előtt rögzített, mérés után nem változik** | egyetlen összesített pontosság (elfedi, hogy a `magas` jelölés megbízható-e) |
 | G8 | Aranyminta | Opus 100 vers + a 383 régi sor + 20 vers felhasználói szúrópróba | 200 vers teljes kézi arany (kb. 3 800 link kézi munkája) |
 | G9 | KJV | az eBible.org teljes KJV importja ennek a feladatnak a 0. lépése (N29 lezárul) | külön importfeladat; BSB mint támpont (csak az 1Mózes mért, a teljes lefedettség nem ismert) |
-| G10 | Kézi átnézés | csak a 16.7/3 sor; a merge nem vár rá | minden `alacsony` sor átnézése a merge előtt (a pilot előtt a mérete nem ismert, a teljes feladatot blokkolná) |
+| G10 | Kézi átnézés | csak a 22.7/3 sor; a merge nem vár rá | minden `alacsony` sor átnézése a merge előtt (a pilot előtt a mérete nem ismert, a teljes feladatot blokkolná) |
 | G11 | A régi kivonat | változatlan marad, generált nézet; az új tábla ellenőrzi | a régi kivonat kiváltása az új táblával (a motívum-kulcsszó kiválasztása tartalmi döntés, nem a teljes tábla dolga) |
 
 ## Költségbecslés (a pilot pontosítja)
@@ -248,28 +251,28 @@ A díjat a `fp2/koltsegbecsles.py` modelláraiból kell számolni, a pilot mért
 - **K4** A két tábla lefedi az összes Károli-tokent és eredeti tokent.
 - **K5** Egyetlen sorban sincs a modell által írt Strong-szám (minden `strong` a TAHOT/TAGNT-ből levezethető, gépi ellenőrzéssel).
 - **K6** Az `ellenoriz.py` új szabálya fut, és jelzi az `elofordulasok.tsv`-eltéréseket.
-- **K7** `naplok/F16_atnezes.tsv` elkészült.
+- **K7** `naplok/F22_atnezes.tsv` elkészült.
 - **K8** A költség a plafon alatt, a futásnapló alapján.
 - **K9** Kulcs-grep tiszta, a nyers válaszok commitolva, az újraépítés (`epit.py`) API-hívás nélkül ugyanazt a táblát adja.
-- **K10** `ELLENOR_F16.md` TISZTA, CI zöld.
+- **K10** `ELLENOR_F22.md` TISZTA, CI zöld.
 
 <!-- KOZVETLEN_FUTTATAS -->
 ## Nyitó prompt (a Code-sessionhöz, `/kovetkezo` után)
 
-> A feladat: FELADATOK #16, Károli–Strong párosítás a teljes Bibliára. A brief: `F16_KAROLI_STRONG_BRIEF.md` a repó gyökerében. Az 1. menetet futtasd (16.0–16.4), a 16.4 ⛔ pontján állj meg, és a döntési tételt a `DONTESEK.md`-be írd. Ág: `claude/f16-karoli-strong`. Minden lépés után commit és push. A menet végén `fuggetlen-ellenor`, push, draft PR, a `FELADATOK.md` #16 sorának frissítése.
+> A feladat: FELADATOK #22, Károli–Strong párosítás a teljes Bibliára. A brief: `F22_KAROLI_STRONG_BRIEF.md` a repó gyökerében. Az 1. menetet futtasd (22.0–22.4), a 22.4 ⛔ pontján állj meg, és a döntési tételt a `DONTESEK.md`-be írd. Ág: `claude/f22-karoli-strong`. Minden lépés után commit és push. A menet végén `fuggetlen-ellenor`, push, draft PR, a `FELADATOK.md` #22 sorának frissítése.
 <!-- /KOZVETLEN_FUTTATAS -->
 
 ## A FELADATOK.md-be kerülő sor (az 1. menet első commitjában)
 
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Következő lépés | Hol |
 |---|---|---|---|---|---|---|
-| 16 | Károli–Strong párosítás a teljes Bibliára | minden Károli-szóhoz Strong-szám bizonyossággal; magyar oldali keresés, fordítási térkép, a Károli-kulcsszó oszlop gépi alapja | ⬜ nem futott | — (#7-tel párhuzamosan futhat) | 1. menet: előkészítés, aranyminta, pilot ⛔ | `F16_KAROLI_STRONG_BRIEF.md` |
+| 22 | Károli–Strong párosítás a teljes Bibliára | minden Károli-szóhoz Strong-szám bizonyossággal; magyar oldali keresés, fordítási térkép, a Károli-kulcsszó oszlop gépi alapja | ⬜ nem futott | — (#7-tel párhuzamosan futhat) | 1. menet: előkészítés, aranyminta, pilot ⛔ | `F22_KAROLI_STRONG_BRIEF.md` |
 
-A #9 „Függ ettől” oszlopába kerül: #16.
+A #9 „Függ ettől” oszlopába kerül: #22.
 
 Döntésnapló-sor:
 
-| D14 | A Károli–Strong párosítás a teljes Bibliára külső modellekkel, az adatfázisban (#16); a #9 függ tőle | a lexikonoldalak Károli-oszlopa és a magyar oldali keresés erre épül; ha a render előtte készül, újra kell renderelni (D1) | csak a motívumok igehelyei; a tanulmányvezérelt, kumulatív join-tábla folytatása |
+| D14 | A Károli–Strong párosítás a teljes Bibliára külső modellekkel, az adatfázisban (#22); a #9 függ tőle | a lexikonoldalak Károli-oszlopa és a magyar oldali keresés erre épül; ha a render előtte készül, újra kell renderelni (D1) | csak a motívumok igehelyei; a tanulmányvezérelt, kumulatív join-tábla folytatása |
 
 ## Döntésnapló (a brief verziói)
 
