@@ -13,6 +13,7 @@ olvas: [FELADATOK.md, DONTESEK.md, CLAUDE.md, NYITOTT_FELADATOK.md, "*_BRIEF.md"
 ir: [eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, eszkozok/, "*_BRIEF.md", BRIEF_SABLON.md, beerkezo/, FELADATOK.md, CLAUDE.md, adat/SEMA.md, konkordancia/, sablonok/, fp2/, GitHub_feltoltesi_workflow.md, .claude/commands/, .claude/agents/, .github/workflows/]
 helyi_gep: nem
 ag: claude/befogadas
+pr: #78
 lezarva_osszegzes: brief-befogadás (`/befogad`, csonk-kitöltéssel), a FELADATOK.md táblái a brief-fejlécekből generálva (`eszkozok/feladatok.py`), E18 CI-szabály és a main-re futó frissítő Action; ellenőrzés `naplok/ELLENOR_F20.md`; ⛔ a védett main miatt az Action push-a a beállítás módosításáig nem megy
 ---
 
