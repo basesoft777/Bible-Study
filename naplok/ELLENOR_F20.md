@@ -36,7 +36,7 @@ Tartomány: `origin/main..HEAD` (`51f9291`..). Az ellenőr a `feladatok.py`-t é
 | E10 | ékezetlen commit-üzenetek (két korai commit) | tényként marad; a CLAUDE.md-szabály ellenére (a push előtti átfogalmazás interaktív rebase-t kívánna, ami itt nem támogatott) |
 | U1 | K8/D25: az Action push-a a védett `main`-re | **felhasználói döntés** (ruleset-bypass a `github-actions` számára, vagy PR-t nyitó Action) |
 | U2 | K7: az E18 nem kötelező check | **felhasználói döntés** (felvétel a kötelező check-ek közé) |
-| U3 | K5 (d): a próba jelölés-elvárása | **felhasználói döntés** (a romboló prompt jelölés-mentes kezelése ésszerű; a brief szó szerinti elvárása nem teljesült) |
+| U3 | K5 (d): a próba jelölés-elvárása | megoldva a v1.4-ben (kötelező jelölés-javaslat, a próba újrafuttatva: megfelelt) |
 | U4 | D28: a B2 jóváhagyása nincs a repóban | rögzítve a munkalap fejlécében (a chatbeli jóváhagyás szövege) |
 | U5 | a menet saját briefje v1.2 → v1.3 | Q11 (2b, (e)) és Q2 (E18) a felhasználó döntése; a 🔀 jel a menet javaslata (D33), **jóváhagyandó** |
 
