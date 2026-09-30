@@ -9,7 +9,7 @@
 # egyezes_normalizalt: csak USZ; mindket oldal Strong-szamai a TBESG.txt Form/Spelling/Meaning of soraival a lemma szamara kepezve (168 szam); tajekoztato, nem a kuszob alapja
 # ELTERES AZ F06-MODSZERTOL: az F06 (bsb.py) csak az 1Mozest merte, TAHOT-tal; a 27 ujszovetsegi konyvre a forras a TAGNT (G-Strongok) -- ez uj, az F06-ban nem mert alkalmazas, a kuszob es az egyezes-definicio valtozatlan
 # text_only_versek = a base/text-only (CC0) nemures sorai; display_hianyzo_versek = text_only_versek - display-versek: az upstream display-JSON-bol hianyzo versek (masodlagos, fuggetlen ellenorzes)
-# szurt sorok kategoriankent: bentmaradt_elided_span (nem szurt, csak jelolve)=55588; strong_nelkuli_span_csak_szokoz_irasjel=381138; strong_nelkuli_span_szoveggel=4102
+# szurt sorok kategoriankent (MIND A 66 KONYVRE, az importalt es a nem importalt konyvekre egyarant; a nem_szamjegy_versszam_kulcs kulcsok 0 ertekkel is szerepelnek; az elided_span_* nem szurt: az adatsorban bent van, ures Angol szo-val, jeloles nelkul): elided_span_bent_ures_Angol_szo_jeloles_nelkul=55588; nem_szamjegy_versszam_kulcs (import)=0; nem_szamjegy_versszam_kulcs (meres)=0; strong_nelkuli_span_csak_szokoz_irasjel=381138; strong_nelkuli_span_szoveggel=4102
 # konyvek: 30 ELERI, 36 NEM_ERI_EL; importalt sorok: 224807
 konyv	bsb_kod	nyelv	versek_bsb	forras_lefedett_versek	egyezo	nincs_forras_vers	forras_vers_nincs_bsb	text_only_versek	display_hianyzo_versek	egyezes_szazalek	egyezes_na28_szurve	egyezes_normalizalt	kuszob	eredmeny	importalt_sorok
 1Móz	GEN	heber	1533	1533	1515	0	0	1533	0	98.83			95	ELERI	20176

@@ -31,7 +31,7 @@ import bsb  # noqa: E402
 
 URL = bsb.URL
 STRONG_MINTA = {'H': re.compile(r'H0*(\d+)'), 'G': re.compile(r'G0*(\d+)')}
-SZURT = {}  # kategoria -> darab: minden, ami a mereshez/importhoz nem kerul be, itt szamolodik
+SZURT = {'nem_szamjegy_versszam_kulcs (meres)': 0, 'nem_szamjegy_versszam_kulcs (import)': 0}  # kategoria -> darab: minden, ami a mereshez/importhoz nem kerul be, itt szamolodik
 
 
 def szur(kat, n=1):
@@ -123,7 +123,7 @@ def vers_sorok(adat, step, fej):
                 raise ValueError('varatlan Strong-jeloles: %r (%s %s:%s)' % (jel, step, fej, vs))
             poz += 1
             if len(span) > 2 and isinstance(span[2], dict) and span[2].get('elided'):
-                szur('bentmaradt_elided_span (nem szurt, csak jelolve)')
+                szur('elided_span_bent_ures_Angol_szo_jeloles_nelkul')
             ki.append(('%s.%d.%d' % (step, fej, vs), str(poz), jel, span[0], ''))
     return ki
 
@@ -208,7 +208,7 @@ def fut(munka, parancs):
             'egyezes_normalizalt: csak USZ; mindket oldal Strong-szamai a TBESG.txt Form/Spelling/Meaning of soraival a lemma szamara kepezve (%d szam); tajekoztato, nem a kuszob alapja' % len(norm),
             'ELTERES AZ F06-MODSZERTOL: az F06 (bsb.py) csak az 1Mozest merte, TAHOT-tal; a 27 ujszovetsegi konyvre a forras a TAGNT (G-Strongok) -- ez uj, az F06-ban nem mert alkalmazas, a kuszob es az egyezes-definicio valtozatlan',
             'text_only_versek = a base/text-only (CC0) nemures sorai; display_hianyzo_versek = text_only_versek - display-versek: az upstream display-JSON-bol hianyzo versek (masodlagos, fuggetlen ellenorzes)',
-            'szurt sorok kategoriankent: ' + '; '.join('%s=%d' % kv for kv in sorted(SZURT.items())),
+            'szurt sorok kategoriankent (MIND A 66 KONYVRE, az importalt es a nem importalt konyvekre egyarant; a nem_szamjegy_versszam_kulcs kulcsok 0 ertekkel is szerepelnek; az elided_span_* nem szurt: az adatsorban bent van, ures Angol szo-val, jeloles nelkul): ' + '; '.join('%s=%d' % kv for kv in sorted(SZURT.items())),
             'konyvek: %d ELERI, %d NEM_ERI_EL; importalt sorok: %d' % (ered_db, 66 - ered_db, len(import_sorok))]
     kozos.tsv_ir(os.path.join(kozos.NAPLOK, 'F16_bsb_lefedettseg.tsv'), fej,
                  ['konyv', 'bsb_kod', 'nyelv', 'versek_bsb', 'forras_lefedett_versek', 'egyezo', 'nincs_forras_vers',

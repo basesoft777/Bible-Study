@@ -368,6 +368,8 @@ Kulcs: `study_tipus` + `dataset`. A terv 4.3 mátrixa, négy study-típusra kife
   marad a még nem importált datasetek számára.
 - `korlatos` — a `KJV_ASV_Strongs` **csak Genezis, Exodus és Példabeszédek** könyvekre áll
   rendelkezésre. Bármely más könyvre hivatkozó „ellenőrizve" állítás ezen a dataseten hamis.
+  Ugyanígy `korlatos` a `BSB_Strongs` (F16): csak a 95%-os küszöböt elérő 30 ÓSZ-könyv, ÚSZ nincs;
+  a Zak 12:1 a forrásból hiányzik.
 
 *Licenc-következmény, rögzítve a `konkordancia/README.md` licenc-szakaszában és a
 `konkordancia/SDBH_SDGNT_README.md`-ben:* a CC BY-SA 4.0
