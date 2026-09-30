@@ -5,7 +5,8 @@ kod: F08
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/lxx-dontesek
 ad: minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`); a 87 függő helyből 38 kap gépi LXX-megfelelőt (Macula, #17), 49 marad kutatói döntésre
 kovetkezo: `/kovetkezo` a #17 merge-e után; bemenet: 38 gépi LXX-megfelelő (F17), 49 hely kutatói döntésre
 olvas: [adat/lxx_dontesek.tsv, naplok/FORRAS_FJ1_lxx_jeloltek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv]
