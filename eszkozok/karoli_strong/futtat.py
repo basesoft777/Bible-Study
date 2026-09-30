@@ -67,7 +67,7 @@ import tokenek  # noqa: E402
 
 F21P = os.path.join(tokenek.ROOT, 'f21p')
 MINTA_UT = os.path.join(F21P, 'minta.tsv')
-BIRO_PROMPT_UT = os.path.join(F21P, 'prompt_biro_v1.md')
+BIRO_PROMPT_UT = os.path.join(F21P, 'prompt_biro_v2.md')   # a v1 megmarad, nem használt
 
 PLAFON_USD = 3.0
 KOTEG_MERET = 10
@@ -185,8 +185,70 @@ def _kompakt(obj):
     return json.dumps(obj, ensure_ascii=False, separators=(',', ':'))
 
 
+def biro_allapot(obj):
+    """Egy válasz magyar szavankénti állapota: {k: (frozenset(eredeti sorszámok), betoldás-e)}."""
+    all_ = {}
+    for k, es in obj['parok']:
+        all_.setdefault(k, [set(), False])[0].update(es)
+    for k in obj['betoldas']:
+        all_.setdefault(k, [set(), False])[1] = True
+    return {k: (frozenset(v[0]), v[1]) for k, v in all_.items()}
+
+
+def biro_rogzites(a_rek, b_rek):
+    """Az F4 rögzített része az A és B (mindkettő kapun átment) válaszából.
+
+    Visszaad: (rogzitett_linkek, rogzitett_betoldas, vitatott_k), mind rendezett
+    lista; vagy None, ha A vagy B kapuhibás (nincs mit rögzíteni).
+
+    * rögzített link: (k, e), amely A-ban is és B-ben is szerepel;
+    * vitatott magyar szó: amelynek állapota (linkjei, betoldás-e) A-ban és
+      B-ben különbözik; a nem vitatott magyar szó állapota rögzített;
+    * rögzített betoldás: a nem vitatott, mindkettőben betoldott magyar szavak.
+    """
+    if a_rek['allapot'] != 'ok' or b_rek['allapot'] != 'ok' or not a_rek['obj'] or not b_rek['obj']:
+        return None
+    sa, sb = biro_allapot(a_rek['obj']), biro_allapot(b_rek['obj'])
+    la = {(k, e) for k, (es, _) in sa.items() for e in es}
+    lb = {(k, e) for k, (es, _) in sb.items() for e in es}
+    vitatott = sorted(k for k in set(sa) | set(sb) if sa.get(k) != sb.get(k))
+    betoldas = sorted(k for k in sa if k not in vitatott and sa[k][1])
+    return sorted(la & lb), betoldas, vitatott
+
+
+def biro_kenyszer(c_obj, a_rek, b_rek):
+    """A döntőbíró válaszának ellenőrzése az F4 rögzítése ellen (hatodik kapupont).
+
+    Hibaüzenetek listája (üres = rendben). Szabályok, ha A és B is kapun átment:
+      6a. minden A–B-egyező link szerepel a C válaszában;
+      6b. minden nem vitatott magyar szó állapota (linkjei, betoldás-e) azonos
+          az A–B-egyezővel (nem törölhető, nem kap új linket, nem lesz
+          betoldás / betoldásból link).
+    Ha A vagy B kapuhibás, nincs rögzítés, a teljes párosítás szabad.
+    """
+    r = biro_rogzites(a_rek, b_rek)
+    if r is None:
+        return []
+    linkek_r, _, vitatott = r
+    sc = biro_allapot(c_obj)
+    sa = biro_allapot(a_rek['obj'])
+    lc = {(k, e) for k, (es, _) in sc.items() for e in es}
+    hibak = []
+    hianyzo = sorted(set(linkek_r) - lc)
+    if hianyzo:
+        hibak.append('6. rögzített (A és B által egyezően adott) link hiányzik a válaszodból: %s; '
+                     'a rögzített linkeket változatlanul meg kell tartanod' % json.dumps(hianyzo))
+    valtozott = sorted(k for k in sa if k not in vitatott and sc.get(k) != sa[k])
+    if valtozott:
+        hibak.append('6. ezeknek a nem vitatott magyar szavaknak a párosítása (vagy betoldás-jelölése) '
+                     'megváltozott, pedig rögzített: %s; csak a vitatott magyar szavakról '
+                     'dönthetsz' % valtozott)
+    return hibak
+
+
 def biro_kotegszoveg(igehelyek, a_eredmenyek, b_eredmenyek, kjv=True):
-    """A döntőbíró hívásának üzenete: utasítás + versblokkok + A és B válasza."""
+    """A döntőbíró hívásának üzenete: utasítás + versblokkok + A és B válasza
+    + a gép által kiszámolt rögzítés és vitatott szavak."""
     blokkok = []
     for ig in igehelyek:
         sorok = [bemenet.versblokk(ig, kjv)]
@@ -194,6 +256,15 @@ def biro_kotegszoveg(igehelyek, a_eredmenyek, b_eredmenyek, kjv=True):
             r = er[ig]
             sorok.append('%s MODELL VÁLASZA: %s' % (
                 cimke, _kompakt(r['obj']) if r['allapot'] == 'ok' and r['obj'] else 'KAPUHIBA'))
+        rog = biro_rogzites(a_eredmenyek[ig], b_eredmenyek[ig])
+        if rog is None:
+            sorok.append('RÖGZÍTETT: nincs (legalább az egyik modell válasza kapuhibás maradt); '
+                         'add meg a teljes párosítást.')
+        else:
+            sorok.append('RÖGZÍTETT LINKEK (A és B egyezik; változatlanul szerepelniük kell): %s'
+                         % _kompakt([list(x) for x in rog[0]]))
+            sorok.append('RÖGZÍTETT BETOLDÁS (A és B egyezik): %s' % _kompakt(rog[1]))
+            sorok.append('VITATOTT MAGYAR SZAVAK (csak ezekről döntesz): %s' % _kompakt(rog[2]))
         blokkok.append('\n'.join(sorok))
     return '%s\n\n=== A FELDOLGOZANDÓ VERSEK (%d) ===\n\n%s\n' % (
         biro_utasitas(), len(igehelyek), '\n\n'.join(blokkok))
@@ -394,6 +465,21 @@ def hivas(ctx, futas_id, koteg_no, probalkozas, uzenetek, igehelyek, kapuhiba_db
 # köteg és futás
 # ---------------------------------------------------------------------------
 
+def valasz_ellenoriz_futashoz(futas_id, szoveg, igehelyek, kimenet_dir):
+    """A kapu (5 pont) + F4-nél a rögzítés kényszerítése (6. pont)."""
+    r = kapu.valasz_ellenoriz(szoveg, igehelyek)
+    if FUTASOK[futas_id]['tipus'] == 'biro':
+        forras = FUTASOK[futas_id]['forras']
+        a = eredmenyek_betolt(forras[0], kimenet_dir)
+        b = eredmenyek_betolt(forras[1], kimenet_dir)
+        for ig in igehelyek:
+            if r[ig]['ok']:
+                h = biro_kenyszer(r[ig]['obj'], a[ig], b[ig])
+                if h:
+                    r[ig] = {'ok': False, 'hibak': h, 'obj': r[ig]['obj']}
+    return r
+
+
 def koteg_feldolgoz(ctx, futas_id, koteg_no, igehelyek):
     """Egy köteg: hívás, kapu, egy újrakérés; a köteg-sor mentése."""
     uzenet = kotegszoveg_futashoz(futas_id, igehelyek, ctx.kimenet_dir)
@@ -401,11 +487,12 @@ def koteg_feldolgoz(ctx, futas_id, koteg_no, igehelyek):
     nyers = []
 
     def hibak_szama_fn(ig_lista):
-        return lambda szoveg: sum(1 for r in kapu.valasz_ellenoriz(szoveg, ig_lista).values() if not r['ok'])
+        return lambda szoveg: sum(1 for r in valasz_ellenoriz_futashoz(
+            futas_id, szoveg, ig_lista, ctx.kimenet_dir).values() if not r['ok'])
 
     szoveg1 = hivas(ctx, futas_id, koteg_no, 1, uzenetek, igehelyek, hibak_szama_fn(igehelyek))
     nyers.append(szoveg1)
-    kapu1 = kapu.valasz_ellenoriz(szoveg1, igehelyek)
+    kapu1 = valasz_ellenoriz_futashoz(futas_id, szoveg1, igehelyek, ctx.kimenet_dir)
     versek = {}
     for ig in igehelyek:
         r = kapu1[ig]
@@ -418,7 +505,7 @@ def koteg_feldolgoz(ctx, futas_id, koteg_no, igehelyek):
                 {'role': 'user', 'content': kapu.ujrakeres_uzenet({ig: kapu1[ig] for ig in rossz})}]
         szoveg2 = hivas(ctx, futas_id, koteg_no, 2, ujra, rossz, hibak_szama_fn(rossz))
         nyers.append(szoveg2)
-        kapu2 = kapu.valasz_ellenoriz(szoveg2, rossz)
+        kapu2 = valasz_ellenoriz_futashoz(futas_id, szoveg2, rossz, ctx.kimenet_dir)
         for ig in rossz:
             r = kapu2[ig]
             if r['ok']:
@@ -562,7 +649,11 @@ class MockKuldo:
     """
 
     def __init__(self, hibas_elso=(), hibas_mindig=(), nem_json_hivas=(), c_minimal_400=True,
-                 koltseg_szorzo=1.0):
+                 koltseg_szorzo=1.0, biro_rossz_elso=(), biro_rossz_mindig=()):
+        # biro_rossz_*: a döntőbíró (F4) az első / minden próbálkozásra megsérti a
+        # rögzítést (a nem vitatott 2. magyar szóhoz új linket ad; a kapun átmegy)
+        self.biro_rossz_elso = set(biro_rossz_elso)
+        self.biro_rossz_mindig = set(biro_rossz_mindig)
         self.hibas_elso = set(hibas_elso)
         self.hibas_mindig = set(hibas_mindig)
         self.nem_json_hivas = set(nem_json_hivas)   # {(modell_id, hivas_sorszam)}
@@ -591,7 +682,16 @@ class MockKuldo:
         return {'vers': ig, 'parok': parok, 'betoldas': [],
                 'forditatlan': sorted(set(range(1, ne + 1)) - fedett)}
 
-    def _valasz_versekre(self, modell_id, igehelyek, masodik):
+    @staticmethod
+    def _rontas(obj):
+        """A nem vitatott 2. magyar szóhoz új linket ad (kapun átmegy, a rögzítést sérti)."""
+        es = obj['parok'][1][1]
+        uj = next(e for e in (1, 3, 2) if e not in es)
+        obj['parok'][1] = [obj['parok'][1][0], sorted(es + [uj])]
+        obj['forditatlan'] = [e for e in obj['forditatlan'] if e != uj]
+        return obj
+
+    def _valasz_versekre(self, modell_id, igehelyek, masodik, biro=False):
         elemek = []
         for ig in igehelyek:
             if ig in self.hibas_mindig or (ig in self.hibas_elso and not masodik):
@@ -600,6 +700,8 @@ class MockKuldo:
             else:
                 variacio = (modell_id == MODELLEK['B'] and (hash_stabil(ig) % 4 == 0))
                 obj = self._helyes(ig, variacio)
+                if biro and (ig in self.biro_rossz_mindig or (ig in self.biro_rossz_elso and not masodik)):
+                    obj = self._rontas(obj)
             elemek.append(obj)
         return json.dumps(elemek, ensure_ascii=False)
 
@@ -614,7 +716,8 @@ class MockKuldo:
         if (model_id, n) in self.nem_json_hivas:
             tartalom = 'Elnézést, itt a megoldás: ez nem JSON.'
         else:
-            tartalom = self._valasz_versekre(model_id, igehelyek, van_assistant)
+            tartalom = self._valasz_versekre(model_id, igehelyek, van_assistant,
+                                             biro='DÖNTŐBÍRÓI SZEREP' in uzenetek[0]['content'])
         be = sum(len(m['content']) for m in uzenetek) // 3
         ki = len(tartalom) // 3
         ar_be, ar_ki = ARAK[model_id]
@@ -672,8 +775,13 @@ def onteszt():
     r1 = [s['igehely'] for s in minta if s['reteg'] == 'R1']
     elso_hibas = {r1[1], r1[12]}                 # 1. próbálkozásra Strong-mintás -> újrakérés sikeres
     mindig_hibas = {r1[3]}                       # a másodikra is -> kapuhiba marad
+    # F4-ágak: a B 4. verse (hash) eltér, ezek közül kettőnél a döntőbíró megsérti a rögzítést
+    jeloltek = [ig for ig in r1 if hash_stabil(ig) % 4 == 0 and ig not in elso_hibas | mindig_hibas]
+    ellen(len(jeloltek) >= 2, 'önteszt-minta: nincs két B-eltérő R1 vers az F4-ágakhoz')
+    biro_elso, biro_mindig = jeloltek[0], jeloltek[1]
     mock = MockKuldo(hibas_elso=elso_hibas, hibas_mindig=mindig_hibas,
-                     nem_json_hivas={(MODELLEK['B'], 3)})
+                     nem_json_hivas={(MODELLEK['B'], 3)},
+                     biro_rossz_elso={biro_elso}, biro_rossz_mindig={biro_mindig})
     ctx = Kontextus(mock, teszt_kulcs, mappa, plafon=PLAFON_USD)
     kod = futasok_vegrehajt(ctx, ossz_futas, minta)
     ellen(kod == 0, '1. menet kilépési kódja %d, várt 0' % kod)
@@ -694,6 +802,41 @@ def onteszt():
     ellen(v4 == varhato and len(v4) > 0, 'F4: az eltérő versek nem egyeznek (%d vs %d)' % (len(v4), len(varhato)))
     ellen(set(eredmenyek_betolt('F4', mappa)) == set(v4), 'F4: a döntőbírói válasz versei hiányosak')
     ellen(r1[3] in v4, 'F4: a kapuhibás vers nem került a döntőbíróhoz')
+    # F4: a rögzítés gépi kényszerítése
+    e4 = eredmenyek_betolt('F4', mappa)
+    ellen(e4[biro_elso]['allapot'] == 'ok' and e4[biro_elso]['probalkozas'] == 2,
+          'F4: a rögzítést sértő döntőbírói válasz újrakérése nem javított')
+    ellen(e4[biro_mindig]['allapot'] == 'kapuhiba' and e4[biro_mindig]['probalkozas'] == 2
+          and e4[biro_mindig]['hibak'] and e4[biro_mindig]['hibak'][0].startswith('6.'),
+          'F4: a tartósan rögzítést sértő válasz nem maradt kapuhiba 6. ponttal')
+    ok_v4 = [ig for ig in v4 if e4[ig]['allapot'] == 'ok']
+    ellen(all(not biro_kenyszer(e4[ig]['obj'], e1[ig], e2[ig]) for ig in ok_v4),
+          'F4: a mentett döntőbírói válaszok nem mind felelnek meg a rögzítésnek')
+    # biro_rogzites / biro_kenyszer egységpróbák valódi (mock) rekordokon
+    kozos = next(ig for ig in v4 if e1[ig]['allapot'] == 'ok' and e2[ig]['allapot'] == 'ok')
+    rog = biro_rogzites(e1[kozos], e2[kozos])
+    ellen(rog is not None and rog[2] == [1], 'biro_rogzites: a vitatott szavak nem [1]: %s' % (rog,))
+    ellen(biro_kenyszer(e1[kozos]['obj'], e1[kozos], e2[kozos]) == [], 'biro_kenyszer: az A válasza nem felel meg')
+    ossz = json.loads(json.dumps(e1[kozos]['obj']))
+    ossz['parok'][2] = [ossz['parok'][2][0], [e_ + 100 for e_ in ossz['parok'][2][1]]]   # egy rögzített link módosítva
+    ellen(any(h.startswith('6.') for h in biro_kenyszer(ossz, e1[kozos], e2[kozos])),
+          'biro_kenyszer: a módosított rögzített linket nem fogta meg')
+    tort = json.loads(json.dumps(e1[kozos]['obj']))
+    tort['parok'] = [p_ for p_ in tort['parok'] if p_[0] != 2]
+    tort['betoldas'] = sorted(tort['betoldas'] + [2])
+    ellen(any(h.startswith('6.') for h in biro_kenyszer(tort, e1[kozos], e2[kozos])),
+          'biro_kenyszer: a rögzített szó betoldássá tételét nem fogta meg')
+    szabad = json.loads(json.dumps(e1[kozos]['obj']))   # a vitatott 1. szó átkötése megengedett
+    szabad['parok'][0] = e2[kozos]['obj']['parok'][0]
+    szabad['forditatlan'] = e2[kozos]['obj']['forditatlan']
+    ellen(biro_kenyszer(szabad, e1[kozos], e2[kozos]) == [],
+          'biro_kenyszer: a vitatott szó átkötése tiltott lett: %s' % biro_kenyszer(szabad, e1[kozos], e2[kozos]))
+    ellen(biro_kenyszer(tort, e1[r1[3]], e2[r1[3]]) == [], 'biro_kenyszer: kapuhibás A/B mellett is kényszerít')
+    szoveg_biro = biro_kotegszoveg([kozos, r1[3]], e1, e2, True)
+    ellen('RÖGZÍTETT LINKEK (A és B egyezik' in szoveg_biro and 'VITATOTT MAGYAR SZAVAK (csak ezekről döntesz): [1]' in szoveg_biro,
+          'a döntőbírói bemenetben nincs rögzítés / vitatott sor')
+    ellen('RÖGZÍTETT: nincs (legalább az egyik modell' in szoveg_biro, 'a kapuhibás versnél nincs "nincs rögzítés" sor')
+    ellen('DÖNTŐBÍRÓI SZEREP' in biro_utasitas() and 'RÖGZÍTETT LINKEK' in biro_utasitas(), 'a v2 prompt nincs betöltve')
     # F5/F6: csak az R1, KJV nélkül
     ellen(set(eredmenyek_betolt('F5', mappa)) == set(r1), 'F5: nem pontosan az R1 versei')
     ellen(set(eredmenyek_betolt('F6', mappa)) == set(r1), 'F6: nem pontosan az R1 versei')
