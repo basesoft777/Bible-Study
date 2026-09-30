@@ -11,7 +11,7 @@ kovetkezo: lezárva, nem felel meg; a #22 sorsa a felhasználó döntése (l. DT
 olvas: [konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/KJV_Strongs_Genesis.tsv]
 ir: [eszkozok/karoli_strong/, f21p/, naplok/F21P_jelentes.md, DONTESEK.md, .github/workflows/f21p_pilot.yml]
 ag: claude/f21-pilot
-lezarva_osszegzes: Károli–Strong mérőpilot (F21): egyik összeállítás sem felel meg a rögzített döntési szabálynak (az A+B `magas` pontossága és az A/B kapuhibája bukott, a C egymodelles szabály szerint nem minősíthető, rétegenként 91,7–95,6% pontosság a 98% ellen); C-vetítés 42 USD (90%: 38–47), a pilot 0,7346 USD; KJV (N29): a v1-adaton nem teljesül, n=8, nem végleges; jelentés `naplok/F21P_jelentes.md`
+lezarva_osszegzes: Károli–Strong mérőpilot (F21): egyik mért összeállítás sem felel meg; az A+B+C nem mért (PD8, az F4 nem futott). Az A+B a `magas` pontosságon (R1 85,2%, R3 91,8%, R4 91,7% a 98% ellen) és a régi arany egyezésén (60%, 3/5) bukott; az A és a B kapuhibája (41–41% végleg) megfigyelés, nem feltétel. A C egymodelles, a PD6 szerint nem minősíthető (pontosság rétegenként 91,7–95,6% az arany v2-n; régi arany kizárás nélkül 93,8%, a PD9 szerinti kizárással 100%). C-vetítés a teljes Bibliára: F3 42 USD (90%: 38–47), F3V2 42 USD (90%: 38–46); a pilot 0,7346 USD; KJV (N29): a v1-adaton nem teljesül, n=8, nem végleges; jelentés `naplok/F21P_jelentes.md`
 fugg: [6]
 ---
 # F21_KAROLI_STRONG_PILOT_BRIEF.md — Károli–Strong párosítás: mérőpilot (minőség és költség)
