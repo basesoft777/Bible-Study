@@ -61,7 +61,7 @@ def _szint_diff_szerint(talalat, alap_szint, hozzaadott_cache, diff_alap, diff_f
     return 'JELENTES'
 
 
-def fut(valtozott_fajlok, teljes, diff_alap=None, diff_fej=None, pr_cim='', commit_uzenet=''):
+def fut(valtozott_fajlok, teljes, diff_alap=None, diff_fej=None, pr_cim='', commit_uzenet='', esemeny=''):
     """Visszaad: {szabaly: [Talalat, ...]} -- a Talalat.szint mar a vegleges
     (D8-cal leminositett) szint."""
     valtozott_fajlok = [f for f in valtozott_fajlok if not kizart_e(f)]  # D14
@@ -76,7 +76,11 @@ def fut(valtozott_fajlok, teljes, diff_alap=None, diff_fej=None, pr_cim='', comm
             nyers[nev] = fv(fajlok_a_szabalyoknak)
 
     nyers['E5'] = SZ.e5_tartalomvesztes_or(diff_alap, diff_fej, commit_uzenet)
-    nyers['E16'] = SZ.e16_ellenorzo_onmodositas(valtozott_fajlok if not teljes else [], pr_cim)
+    # E16: push-esemenynel nincs PR-cim, ezert nem ertelmezett (a PR-en fut)
+    if esemeny == 'push':
+        nyers['E16'] = []
+    else:
+        nyers['E16'] = SZ.e16_ellenorzo_onmodositas(valtozott_fajlok if not teljes else [], pr_cim)
 
     hozzaadott_cache = {}
     eredmeny = {}
@@ -93,7 +97,10 @@ def fut(valtozott_fajlok, teljes, diff_alap=None, diff_fej=None, pr_cim='', comm
     return eredmeny
 
 
-def jelentes_szoveg(eredmeny, teljes, minta_db=3):
+E16_PUSH_MEGJEGYZES = 'E16: push-esemény, nem értelmezett (a PR-en fut)'
+
+
+def jelentes_szoveg(eredmeny, teljes, minta_db=3, esemeny=''):
     sorok = []
     sorok.append('# Ellenorzes jelentes (%s)' % ('teljes repo' if teljes else 'valtozott fajlok'))
     sorok.append('')
@@ -110,6 +117,8 @@ def jelentes_szoveg(eredmeny, teljes, minta_db=3):
         if not cim_reszek:
             cim_reszek.append('0 talalat')
         sorok.append('## %s (%s)' % (nev, ', '.join(cim_reszek)))
+        if nev == 'E16' and esemeny == 'push':
+            sorok.append('- %s' % E16_PUSH_MEGJEGYZES)
         for t in talalatok[:minta_db]:
             sorok.append('- `%s` `%s:%s` -- %s' % (t.szint, t.fajl, t.sor, t.reszlet))
         if len(talalatok) > minta_db:
@@ -127,6 +136,8 @@ def main():
     ap.add_argument('--diff-alap', default=None)
     ap.add_argument('--diff-fej', default=None)
     ap.add_argument('--pr-cim', default='')
+    ap.add_argument('--esemeny', default='',
+                    help='a GitHub-esemeny neve (pl. push, pull_request); push-esemenynel az E16 nem ertelmezett')
     ap.add_argument('--commit-uzenet', default='')
     ap.add_argument(
         '--commit-uzenet-fajl', default=None,
@@ -158,9 +169,9 @@ def main():
     eredmeny = fut(
         valtozott_relativ, args.teljes,
         diff_alap=args.diff_alap, diff_fej=args.diff_fej,
-        pr_cim=args.pr_cim, commit_uzenet=commit_uzenet,
+        pr_cim=args.pr_cim, commit_uzenet=commit_uzenet, esemeny=args.esemeny,
     )
-    szoveg, hiba_van = jelentes_szoveg(eredmeny, args.teljes, args.minta)
+    szoveg, hiba_van = jelentes_szoveg(eredmeny, args.teljes, args.minta, args.esemeny)
     print(szoveg)
     return 1 if hiba_van else 0
 

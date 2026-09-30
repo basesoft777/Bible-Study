@@ -66,6 +66,7 @@ jobs:
           DIFF_ALAP: ${{ steps.diff.outputs.base }}
           DIFF_FEJ: ${{ steps.diff.outputs.head }}
           PR_CIM: ${{ github.event.pull_request.title }}
+          EVENT_NEV: ${{ github.event_name }}
         run: |
           set +e
           if [ -s valtozott_fajlok.txt ]; then
@@ -74,6 +75,7 @@ jobs:
               --diff-alap "$DIFF_ALAP" \
               --diff-fej "$DIFF_FEJ" \
               --pr-cim "$PR_CIM" \
+              --esemeny "$EVENT_NEV" \
               --commit-uzenet-fajl commit_uzenetek.txt \
               > e2e16_jelentes.md
             KILEPES=$?
