@@ -45,6 +45,7 @@ Definíciók (F21 brief P4, a v1.1 döntésekkel):
   * KJV-hatás: az F1/F2 R1-es részhalmaza (100 vers) az F5/F6-tal szemben.
 
 Használat:  python eszkozok/karoli_strong/meres.py
+            python eszkozok/karoli_strong/meres.py --v2 [--onteszt]   (F21.14: F3/F3V2 × arany v1/v2, meres_v2.py)
 """
 
 import json
@@ -95,7 +96,10 @@ def _jsonl(ut):
 
 
 class Adat:
-    def __init__(self):
+    def __init__(self, futasok=None, forras_dir=None):
+        """futasok: a betöltendő futások (alap: FUTASOK); forras_dir: a valaszok/ és
+        a futasnaplo.tsv könyvtára (alap: f21p/; a v2-váz önteszt ideiglenes mappát ad)."""
+        forras_dir = forras_dir or F21P
         self.minta = _tsv(MINTA_UT)
         self.reteg = {m['igehely']: m['reteg'] for m in self.minta}
         self.versek = [m['igehely'] for m in self.minta]
@@ -106,15 +110,16 @@ class Adat:
         self.regi = tokenek.regi_arany(set(self.versek))
         self.futas = {}        # F -> {igehely: rekord + 'koteg': sor}
         self.kotegsorok = {}   # F -> [köteg-sorok]
-        for f in FUTASOK:
-            sorok = _jsonl(os.path.join(F21P, 'valaszok', '%s.jsonl' % f))
+        self.naplo_ut = os.path.join(forras_dir, 'futasnaplo.tsv')
+        for f in (futasok or FUTASOK):
+            sorok = _jsonl(os.path.join(forras_dir, 'valaszok', '%s.jsonl' % f))
             self.kotegsorok[f] = sorok
             d = {}
             for sor in sorok:
                 for ig, r in sor['versek'].items():
                     d[ig] = dict(r, koteg=sor)
             self.futas[f] = d
-        self.naplo = _tsv(NAPLO_UT)
+        self.naplo = _tsv(self.naplo_ut)
 
     def ok(self, f, ig):
         r = self.futas[f].get(ig)
@@ -631,6 +636,10 @@ def md_ir(sorok, adat_ts):
 
 
 def main():
+    if '--v2' in sys.argv:
+        # F21.14: az F3 és az F3V2 az arany v1/v2-höz (meres_v2.py; a v2 befagyasztott, sha256-ellenőrzéssel)
+        import meres_v2
+        return meres_v2.onteszt() if '--onteszt' in sys.argv else meres_v2.fut()[0]
     adat = Adat()
     sorok = Sorok()
     pontossag(adat, sorok)
