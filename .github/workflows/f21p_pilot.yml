@@ -1,20 +1,31 @@
-# F21 P3 -- a Karoli-Strong meropilot F1-F6 futtatasa (OpenRouter), GitHub Actionsben.
+# F21 P3 -- a Karoli-Strong meropilot futtatasa (OpenRouter), GitHub Actionsben.
 #
-# INDITAS. Push a claude/f21-pilot agra, ha az f21p/futtatas.txt valtozik (a trigger-push
-# az orkesztratore), vagy kezzel (workflow_dispatch). A workflow sajat commitja nem nyul
-# az f21p/futtatas.txt-hez, es a GITHUB_TOKEN-nel vegzett push nem indit uj futast.
+# INDITAS. Kizarolag push-ra: a claude/f21-pilot agon, ha az f21p/futtatas.txt valtozik
+# (a trigger-push az orkesztratore). Nincs workflow_dispatch. A workflow sajat commitja
+# nem nyul az f21p/futtatas.txt-hez, es a GITHUB_TOKEN-nel vegzett push nem indit uj
+# futast.
 #
-# MIT FUTTAT. Az F1, F2, F3, F4, F5, F6 futast ebben a sorrendben (az F4, a dontobiro az
-# F1-F2 eredmenyebol szamolja a versei; a sorrend ezt teljesiti). A koltsegplafon 3 USD
-# kumulativan (f21p/futasnaplo.tsv), minden hivas elott ellenorizve; plafonnal a futtato
-# kilepesi kodja 3, a job piros, de a kesz sorok ettol meg mentodnek. A futtatas
+# VEZERLES. Az f21p/futtatas.txt adja, mi fusson (egyszeru kulcs=ertek sorok, a # sor
+# megjegyzes; MINDKET kulcs kotelezo, alapertek nincs):
+#     futasok=F1            # vesszovel: az F1..F6 kozul, pl. F1,F2,F3,F5,F6; az F4 csak egyedul
+#     koteg_max=1           # futasonkent legfeljebb ennyi UJ koteg (10 vers/koteg); pozitiv egesz vagy 'mind'
+# Az elso trigger: futasok=F1, koteg_max=1 (10 vers). A masodik: futasok=F1,F2,F3,F5,F6 es
+# koteg_max=mind. A harmadik (kulon trigger): futasok=F4, koteg_max=mind (az F1 es F2 kesz kell).
+# Hianyzo/ismeretlen/ismetelt kulcs, hibas ertek, hianyzo fajl: a futtato 2-es kilepesi
+# kodot ad, nem hiv meg semmit, a workflow hibaval all meg (nem fut semmit alapertelmezetten).
+# A formatum reszletei: eszkozok/karoli_strong/futtat.py docstringje.
+#
+# KOLTSEGPLAFON. 3 USD kumulativan (f21p/futasnaplo.tsv), minden hivas elott ellenorizve;
+# plafonnal a futtato kilepesi kodja 3, a job piros, de a kesz sorok mentodnek. A futtatas
 # ujraindithato: a kesz koteg nem hiv ujra.
 #
-# JOGOSULTSAG. contents: write, kizarolag a meresi kimenet (f21p/valaszok/,
-# f21p/futasnaplo.tsv) visszacommitolasahoz a sajat agra (F20-tol ez az elso workflow,
-# amelynek irasi joga van: kulon jovahagyas targya). Az OPENROUTER_API_KEY csak a
-# futtato lepes env-jeben szerepel; commit elott kulcs-grep.
-# A FELADATOK.md generalt blokkjahoz a workflow nem nyul (E18).
+# JOGOSULTSAG ES ISRAS. contents: write csak a 'futtatas' jobnal, kizarolag a meresi kimenet
+# visszacommitolasahoz (F20 ota ez az elso workflow, amelynek irasi joga van: kulon
+# jovahagyas targya). A push csak a claude/f21-pilot agra mehet (a job `if`-je es a push-lepes
+# is ellenorzi a github.ref-et; explicit refspec, main-re soha), es csak az f21p/ ala
+# irhat: git add csak az f21p/valaszok es az f21p/futasnaplo.tsv; commit elott ellenorzes,
+# hogy minden valtozas f21p/ alatt van, kulonben hiba. Az OPENROUTER_API_KEY csak a futtato
+# lepes env-jeben szerepel. A FELADATOK.md generalt blokkjahoz a workflow nem nyul (E18).
 
 name: f21p_pilot
 
@@ -23,7 +34,6 @@ on:
     branches: [claude/f21-pilot]
     paths:
       - 'f21p/futtatas.txt'
-  workflow_dispatch:
 
 permissions:
   contents: read
@@ -32,17 +42,20 @@ concurrency:
   group: f21p-pilot
   cancel-in-progress: false
 
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+
 jobs:
   futtatas:
+    if: github.ref == 'refs/heads/claude/f21-pilot'
     runs-on: ubuntu-latest
     timeout-minutes: 300
     permissions:
       contents: write
     steps:
-      - name: Checkout
+      - name: Checkout (a trigger-commit, hogy a futtatas.txt az indito tartalom legyen)
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
           fetch-depth: 0
 
       - name: Python telepitese
@@ -65,12 +78,12 @@ jobs:
           PYTHONIOENCODING: utf-8
         run: python eszkozok/karoli_strong/futtat.py --szaraz
 
-      - name: Futtatas F1-F6 (OpenRouter)
+      - name: Futtatas az f21p/futtatas.txt szerint (OpenRouter)
         id: futtat
         env:
           PYTHONIOENCODING: utf-8
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        run: python eszkozok/karoli_strong/futtat.py --futas F1,F2,F3,F4,F5,F6
+        run: python eszkozok/karoli_strong/futtat.py --vezerlo f21p/futtatas.txt
 
       - name: Kulcs-ellenorzes (hibat ad, ha kulcsszeru karakterlanc van)
         id: kulcs_grep
@@ -83,17 +96,29 @@ jobs:
           fi
           echo "kulcs-grep tiszta"
 
-      - name: Kimenet commitolasa es pusholasa (reszleges futasnal, plafonnal is)
+      - name: Kimenet commitolasa es pusholasa (csak f21p/, csak a claude/f21-pilot agra)
         if: always() && steps.kulcs_grep.conclusion == 'success'
         run: |
+          if [ "$GITHUB_REF" != "refs/heads/claude/f21-pilot" ]; then
+            echo "nem a claude/f21-pilot agon futunk: $GITHUB_REF"; exit 1
+          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add f21p/valaszok f21p/futasnaplo.tsv
+          for ut in f21p/valaszok f21p/futasnaplo.tsv; do
+            if [ -e "$ut" ]; then git add -- "$ut"; fi
+          done
+          # minden valtozas f21p/ alatt legyen: a staged es a nem staged (kovetett) valtozasok is
+          if git diff --cached --name-only | grep -v '^f21p/'; then
+            echo "az f21p/ alatti kimeneten kivuli valtozas van a staged allapotban"; exit 1
+          fi
+          if git diff --name-only | grep .; then
+            echo "nem staged, kovetett fajl valtozott (a kimenetnek csak az f21p/valaszok es f21p/futasnaplo.tsv lehet)"; exit 1
+          fi
           if git diff --cached --quiet; then
             echo "nincs valtozas"; exit 0
           fi
-          printf 'F21.8: a pilot F1–F6 futások kimenete (GitHub Actions, futás %s)\n' "$GITHUB_RUN_ID" > commit_uzenet.txt
-          git -c i18n.commitEncoding=UTF-8 commit -F commit_uzenet.txt
-          rm commit_uzenet.txt
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+          printf 'F21.9: a pilot futások kimenete (GitHub Actions, futás %s)\n' "$GITHUB_RUN_ID" > "$RUNNER_TEMP/commit_uzenet.txt"
+          git -c i18n.commitEncoding=UTF-8 commit -F "$RUNNER_TEMP/commit_uzenet.txt"
+          git fetch origin refs/heads/claude/f21-pilot
+          git rebase FETCH_HEAD
+          git push origin HEAD:refs/heads/claude/f21-pilot
