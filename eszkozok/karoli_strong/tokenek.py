@@ -44,6 +44,8 @@ KJV_FAJLOK = {
 
 _TOKEN = re.compile(r'[^\W_]+', re.UNICODE)
 _IGEHELY = re.compile(r'^(.+) (\d+):(\d+)$')
+_TR_KIADAS = re.compile(r'^TR(?:[»«]\d+)?$')
+MERES_KIZARAS = os.path.join(ROOT, 'f21p', 'meres_kizaras.tsv')
 
 
 def tokenizal(szoveg):
@@ -95,6 +97,12 @@ def betolt_eredeti():
 
     Kulcsok: sorsz, strong, alak, tukor, nem_tr (ÚSZ: nem TR-es sor).
     A TAHOT és a TAGNT Igehely mezője már Károli-natív.
+
+    TR-es a sor, ha a Kritikai kiadás mezőben `TR`, `TR»N` vagy `TR«N` áll
+    (a »/« a TR-beli eltérő szórendet jelöli: a szó a TR-ben is megvan, csak
+    más helyen; F21.6). Ha a TR eltérő alakot olvas, annak nincs sora a
+    kivonatban; ezeket a meres_kizaras() zárja ki a mérésből, itt nincs rájuk
+    külön logika.
     """
     ered = {}
     for ut, nt in ((TAHOT, False), (TAGNT, True)):
@@ -103,7 +111,7 @@ def betolt_eredeti():
             nem_tr = False
             if nt:
                 kiadasok = r[7].split('+') if len(r) > 7 else []
-                nem_tr = 'TR' not in kiadasok
+                nem_tr = not any(_TR_KIADAS.match(k) for k in kiadasok)
             lista.append({
                 'sorsz': len(lista) + 1,
                 'strong': r[1],
@@ -198,6 +206,18 @@ def regi_arany(versek=None):
             continue
         ki.append((ig, r[2], r[1]))
     return ki
+
+
+def meres_kizaras():
+    """A pontossági mérésből kizárt eredeti tokenek (f21p/meres_kizaras.tsv).
+
+    Visszaad: {(igehely, eredeti_sorsz): ok}. Oszlopok: igehely,
+    eredeti_sorsz, ok (fejléccel; csak split('\\t')). Ha a fájl nincs meg,
+    üres szótár.
+    """
+    if not os.path.exists(MERES_KIZARAS):
+        return {}
+    return {(r[0], int(r[1])): r[2] for r in _sorok(MERES_KIZARAS)}
 
 
 def konyv_rovid(igehely):
