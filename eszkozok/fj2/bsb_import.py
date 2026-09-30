@@ -229,7 +229,7 @@ def fut(munka, parancs):
     norm = tbesg_normalizalo()
     kep = lambda halmaz: {norm.get(x, x) for x in halmaz}  # noqa: E731
     mappa = os.path.join(cel, 'base', 'display')
-    lefedettseg, import_sorok, zsolt_sorok = [], [], []
+    lefedettseg, import_sorok, zsolt_sorok, nem_egyezo = [], [], [], []
     for step, mag, nyelv in konyvek():
         kod = step.upper()
         bmappa = os.path.join(mappa, kod)
@@ -291,6 +291,10 @@ def fut(munka, parancs):
                 forras_van += 1
                 if t <= b[vs]:
                     egyezo += 1
+                elif mag in MT_ELTOLASOS_KONYVEK:
+                    nem_egyezo.append((str(fej), str(vs), str(vs + k), str(len(t)), str(len(b[vs])),
+                                       ' '.join('H%d' % x for x in sorted(t - b[vs])),
+                                       ' '.join('H%d' % x for x in sorted(b[vs] - t))))
                 if nyelv == 'G' and kep(t) <= kep(b[vs]):
                     egyezo_norm += 1
                 if nyelv == 'G' and halm_na28.get(ref, set()) <= b[vs]:
@@ -343,6 +347,12 @@ def fut(munka, parancs):
                     'k = kk_mt_max - bsb_versszam: a BSB-vers v az MT-vers v+k (k>0: az MT a feliratot sajat versszamon szamozza); allapot = illesztetlen, ha a fejezetenkent allando k belso versosztas-eltereses miatt nem igazolhato (l. belso_osztas_eltereses a szkriptben): a fejezet nincs a meresben es az importban'],
                  ['zsoltar', 'bsb_versszam', 'display_versek', 'display_elso_vers', 'bsb_d_cim', 'kk_mt_max', 'tahot_max', 'k', 'allapot', 'illesztetlen_ok'],
                  zsolt_sorok)
+    kozos.tsv_ir(os.path.join(kozos.NAPLOK, 'F16_zsolt_nem_egyezo_versek.tsv'),
+                 kozos.fejlec(URL + ' + konkordancia/TAHOT_kivonat.tsv', 'BSB commit ' + commit, parancs)
+                 + ['a Zsoltar-meres (egyezes_szazalek) nevezojebe eso, de NEM egyezo versek (a TAHOT-Strong-halmaz nem resze a BSB-versnek); az illesztetlen fejezetek (Zsolt 13) nincsenek benne',
+                    'tahot_strong_szam/bsb_strong_szam = a halmazok merete; tahot_nincs_bsbben = a TAHOT-nak azok a Strongjai, amelyek a BSB-versben nincsenek (ez okozza a nem-egyezest); bsb_tobblet = a BSB-vers Strongjai, amelyek a TAHOT-versben nincsenek (tajekoztato)'],
+                 ['zsoltar', 'bsb_vers', 'mt_vers', 'tahot_strong_szam', 'bsb_strong_szam', 'tahot_nincs_bsbben', 'bsb_tobblet'],
+                 nem_egyezo)
     # BSB_Strongs.tsv: nagy fajl (a kozos.tsv_ir 1 MB-os korlatja a naplokra vonatkozik); csv nelkul
     ut = os.path.join(kozos.KONKORDANCIA, 'BSB_Strongs.tsv')
     with open(ut, 'w', encoding='utf-8', newline='\n') as f:

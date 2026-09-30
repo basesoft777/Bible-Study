@@ -43,7 +43,7 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
      CenterBLC/MT-LXX 78,9% és Macula Hebrew 78,3% az aranykészleten — mindkettő a 90%-os küszöb alatt,
      a D14 marad (versszintű S13); a CenterBLC-nek nincs licence, a Macula Hebrew CC BY 4.0. A 87 függő
      LXX-helyre 58 gépi jelölt készült (`naplok/FORRAS_FJ1_lxx_jeloltek.tsv`), küszöb alatti forrásból,
-     ezért csak tájékoztató. BSB (`bsb-data-output`, CC0, 66 könyv): importjelölt, feltétele az N30.
+     ezért csak tájékoztató. BSB (`bsb-data-output`, CC0, 66 könyv): N30 lezárva, a BSB importálva: 31 ÓSZ-könyv, l. `konkordancia/README.md`.
      Nave: `theonize/bible_database` feltétellel (GPLv3, a Nave-tartalom licenclánca tisztázatlan),
      `elcafe7/lex` gyengébb. Nyitott utómunka: N27–N31.
 

@@ -11,7 +11,7 @@ pr: 85
 ad: BSB minden könyvre, ahol a lefedettség ≥ 95%
 kovetkezo: `/kovetkezo` csomag: #16–#19 és #7
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv]
-ir: [naplok/F16_bsb_lefedettseg.tsv, naplok/F16_bsb_verseltolas_diagnozis.tsv, konkordancia/BSB_Strongs.tsv, konkordancia/README.md, adat/datasetek.tsv, adat/SEMA.md, adat/szotar_szerepek.tsv, eszkozok/fj2/bsb_import.py, eszkozok/fj2/bsb_verseltolas_diag.py, NYITOTT_FELADATOK.md, DONTESEK.md]
+ir: [naplok/F16_bsb_lefedettseg.tsv, naplok/F16_bsb_verseltolas_diagnozis.tsv, naplok/F16_bsb_zsolt_megfeleltetes.tsv, naplok/F16_zsolt_nem_egyezo_versek.tsv, konkordancia/BSB_Strongs.tsv, konkordancia/README.md, adat/datasetek.tsv, adat/SEMA.md, adat/szotar_szerepek.tsv, eszkozok/fj2/bsb_import.py, eszkozok/fj2/bsb_verseltolas_diag.py, NYITOTT_FELADATOK.md, DONTESEK.md]
 fugg: [6]
 lezarva_osszegzes: BSB-import (#16): 31 ÓSZ-könyv (242 597 sor, CC0) importálva, mind a 66 könyv lefedettsége mérve (8 ÓSZ küszöb alatt; az ÚSZ szándékosan kimarad), ellenőrzés `naplok/ELLENOR_F16.md`; a küszöb alatti könyvek és a hiányzó 117 első vers (116 feliratos zsoltár és Zak 12:1; a fejezet 1. versének érdemi szövege) DT5-ban nyitva
 ---
