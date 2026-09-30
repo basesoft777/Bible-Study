@@ -21,6 +21,8 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | 19 | KJV/ASV-import, eBible (N29) (F19) | Strong-címkés KJV és ASV, a hiányok besorolásával | ⬜ | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F19_KJV_ASV_IMPORT_BRIEF.md` |
 | 21 | Károli–Strong mérőpilot (minőség és költség) (F21) | mért adat arról, megéri-e a teljes Bibliát külső modellekkel Strong-számmal párosítani (minőség, költség, KJV-támpont haszna) | ⬜ | #6 (kész) | mérőpilot P0–P1, ⛔ a futtatás előtt (szúrópróba, küszöbök, secret) | `F21_KAROLI_STRONG_PILOT_BRIEF.md` |
 | 22 | Károli–Strong párosítás a teljes Bibliára (F22) | a Károli 1908 minden szavához Strong-szám bizonyossággal (két tábla, KJV-támponttal) | ⬜ | #21 | csak a #21 pilot megfelelő eredménye után | `F22_KAROLI_STRONG_BRIEF.md` |
+| 23 | Egyforrású motívumdokumentum: forrássablon és mélységi szintek (terv) (MOTIVUM_FORRAS) | a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül | ⬜ | #9*, #22*, #24*, #26* | /kovetkezo; ⛔ az M0 felmérés után | `F23_MOTIVUM_FORRAS_BRIEF.md` |
+| 24 | Forrásaink licencének átnézése (LICENC) | adatkészletenként egy licencsor (licenc, verzió, kereskedelmi felhasználás, share-alike, kötelező megjelölés) egyetlen táblában, amelyre a render és a nyilvános kiadás épít | ⬜ | #16*, #17*, #18*, #19*, #22* | /kovetkezo; külön ⛔ nincs, a tisztázatlan tételek összesítve a DONTESEK.md-be | `F24_LICENC_BRIEF.md` |
 <!-- GENERÁLT-VÉGE: feladatok.py --cel fazis1 -->
 
 ## 2. fázis — render (csak az 1. fázis után)
@@ -33,6 +35,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | 11 | Migráció: egy forrásból renderelés (MIGRACIO) | minden motívum a forrásrétegből renderel | ⬜ brief kell | #9 | Az M0 felmérés csak olvas, de az eredménye itt kell | `F11_MIGRACIO_BRIEF.md` |
 | 12 | TEREMT-002 3. lépés (próza, lexikonoldal) | az első natív egyforrású motívum kész | ⬜ brief kell | #11 | A tohu/bohu szótári adata az S1-ben készül (SZOTAR-D29). | `TEREMT002_KUTATAS_BRIEF.md` |
 | 13 | 1Móz 17-től a tanulmányok és a 6 betöltetlen motívum | a Genezis-kiadás tartalma | ⬜ brief kell | #10 | döntés 2026.09.21: a lexikonoldalak lezárása után | `F13_GENEZIS_KIADAS_BRIEF.md` |
+| 25 | Olvasói felület: statikus HTML állítható mélységgel (OLVASOI_HTML) | a motívumforrásból generált statikus HTML-oldalak (Netlify), lenyitható apparátussal és mélységi szintekkel; később PWA | ⬜ brief kell | #11, #12, #23 | brief a #11 1. lépcsője (ISTENTISZT-001) után, a MOTIVUM_FORRAS szintjelölésére építve | `F25_OLVASOI_HTML_BRIEF.md` |
 <!-- GENERÁLT-VÉGE: feladatok.py --cel fazis2 -->
 
 ## Folyamat és eszközök
@@ -44,7 +47,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 ## Naplózás
 
 <!-- GENERÁLT-KEZDET: feladatok.py --cel naplozas -->
-*(nincs nyitott naplózás)*
+- #26 Egyforrású lánc (B) döntéseinek rögzítése és az érintett briefek fejléce — ⬜ — /kovetkezo, a MOTIVUM_FORRAS, LICENC és OLVASOI_HTML befogadása után (`F26_EGYFORRAS_NAPLO_BRIEF.md`)
 <!-- GENERÁLT-VÉGE: feladatok.py --cel naplozas -->
 
 ## Takarítás (bármikor, rövid)
