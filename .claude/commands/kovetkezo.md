@@ -1,9 +1,9 @@
 ---
-description: A FELADATOK.md következő végrehajtható feladatának futtatása, ellenőrzéssel, döntési pontnál megállva
+description: A FELADATOK.md következő végrehajtható feladatának, vagy független feladatok csomagjának futtatása, ellenőrzéssel, döntési pontnál megállva
 model: sonnet
 ---
 
-Te vagy a PaRDeS orkesztrátora. Egy session = egy feladat.
+Te vagy a PaRDeS orkesztrátora. Egy session egy feladatot vagy egy csomagot futtat. A csomag egymástól független feladatokból áll, amelyek párhuzamosan futnak (3b és 6b lépés).
 Az 1–5. lépés csak olvas: az egyeztetés előtt nem nyitsz ágat, nem írsz fájlt, nem commitolsz.
 
 Általános szabály (minden lépésre, a 9. `fuggetlen-ellenor`-hívásra is): subagent hívásakor NE adj meg model paramétert; a modellt a subagent-fájl frontmatterje határozza meg.
@@ -20,15 +20,19 @@ Az 1–5. lépés csak olvas: az egyeztetés előtt nem nyitsz ágat, nem írsz 
    - minden „Függ ettől” feladat ✅ (a main-ben);
    - nincs rá nyitott tétel a `DONTESEK.md`-ben;
    - elsőbbség: a kritikus út sorrendje, utána a táblázat sorrendje.
-   Helyi gépet igénylő feladatot (pl. #6) nem indítasz: jelzed, és továbblépsz.
+   Helyi gépet igénylő feladatot nem indítasz: jelzed, és továbblépsz.
+3b. CSOMAG: az első jelölt mellé gyűjtsd össze azokat a további jelölteket, amelyek szintén megfelelnek
+   a 3. lépés feltételeinek, és egyikük sem függ a csomag egy másik tagjától. Legfeljebb 5 feladat.
+   Ha csak egy jelölt van, nincs csomag, és a menet a szokásos egyfeladatos módban fut.
 4. ELŐFELTÉTELEK: a feladat briefje a repóban van (`F<nn>_*_BRIEF.md`; ha még régi néven van, a „Hol” oszlop szerint keresd), és a fejlécében van `Modell:` sor
    (`sonnet` | `opus` | `haiku` | `külső:<név>`). Ha bármelyik hiányzik: nyiss tételt a
    `DONTESEK.md`-ben („brief kell” / „modell nincs megadva”) — de csak az 5. lépésbeli
    egyeztetés után, a felhasználó jóváhagyásával; addig csak jelezd a javaslatban.
 5. EGYEZTETÉS (kötelező, soha nem hagyod ki):
-   a) Javaslat, legfeljebb 10 sorban: a javasolt feladat és miért ez; brief; modell; ág;
-      a brief ⛔ pontjai; hiányzó előfeltétel; legfeljebb 2 alternatív jelölt; a kihagyott
-      feladatok és az okuk egy sorban.
+   a) Javaslat, legfeljebb 10 sorban (csomagnál legfeljebb 15 sorban, feladatonként egy sor):
+      a javasolt feladat vagy csomag és miért ez; brief; modell; ág; a brief ⛔ pontjai;
+      hiányzó előfeltétel; legfeljebb 2 alternatív jelölt; a kihagyott feladatok és az okuk egy sorban.
+      Csomagnál a felhasználó tagot vehet ki, vagy kérheti az egyfeladatos futást.
    b) Várj. A felhasználó kérdezhet, más feladatot választhat, szűkítheti vagy módosíthatja
       a hatókört, vagy leállíthatja a menetet. Kérdésre válaszolj, módosításnál írd ki az
       új tervet, és várj újra.
@@ -40,12 +44,29 @@ Az 1–5. lépés csak olvas: az egyeztetés előtt nem nyitsz ágat, nem írsz 
    megfelelő végrehajtó subagent végzi (`vegrehajto-sonnet` / `vegrehajto-opus` / `vegrehajto-haiku`).
    `külső:<név>` esetén a `vegrehajto-sonnet` a briefben megadott szkripttel futtatja a
    külső modellt; Claude-dal nem helyettesíti. Gyakran commitolj.
+6b. CSOMAG VÉGREHAJTÁSA:
+   - Feladatonként külön munkakönyvtár a main-ből:
+     `git worktree add ../wt-<feladat-slug> -b claude/<feladat-slug> origin/main`.
+   - A végrehajtó subagenteket egyetlen üzenetben, párhuzamosan indítsd, a brief modellje szerint.
+   - Minden subagent kapja meg a saját worktree-je abszolút útvonalát, azzal a szabállyal, hogy
+     minden parancsot `cd <worktree> && …` formában futtat, fájlt csak ott ír, és csak a saját
+     ágára commitol és pushol.
+   - Közös fájlban (`FELADATOK.md`, `DONTESEK.md`, `NYITOTT_FELADATOK.md`, szerepmátrix) csak a
+     saját sorait írja. A PR előtt `git rebase origin/main`; ütközésnél mindkét oldal sorai maradnak.
 7. ⛔ PONT: ha a brief kötelező megállást ír elő, vagy tartalmi döntés kell: tétel a
    `DONTESEK.md`-be (kérdés, opciók, javaslat, hivatkozás a naplóra), commit, push, állj meg.
+   Ha a brief a döntésre váró sorokat `javaslat` jelöléssel a menet végére gyűjteti, az nem
+   megállási ok: a tétel a zárás előtt, összesítve kerül a `DONTESEK.md`-be.
+   Csomagnál a ⛔ csak az érintett feladatot állítja meg; a többi fut tovább.
 8. KERETKIMERÜLÉS: ha a használati keret fogy, tiszta ponton commitolj, a zárójelentésbe írd a
    „Folytatási pont” szakaszt, és állj meg. A következő `/kovetkezo` onnan folytatja.
+   Csomagnál minden feladat a saját ágán, a saját zárójelentésében kap folytatási pontot.
 9. ELLENŐRZÉS: futtasd a `fuggetlen-ellenor` subagentet; jelentése: `naplok/ELLENOR_<feladat>.md`.
+   Csomagnál feladatonként külön, a saját worktree-jében; az ellenőrök párhuzamosan futhatnak.
 10. ZÁRÁS (CLAUDE.md menetzárás): zárójelentés `naplok/<feladat>_zaras.md` (≤20 sor),
     a `FELADATOK.md` saját sorának frissítése, push, draft PR a main-be.
     A felhasználónak adott válasz első sora: PR-link + CI-állapot; utána legfeljebb 5 sor.
+    Csomagnál: feladatonként külön zárójelentés és draft PR. A válaszban feladatonként egy sor
+    (PR-link, CI, ⛔ vagy nyitott tétel), utána legfeljebb 5 sor összesítés.
+    A push után a worktree-ket távolítsd el (`git worktree remove`); az ágak maradnak.
 11. SOHA: merge, ágtörlés, más feladatsor módosítása, új feladat felvétele, tartalmi döntés.
