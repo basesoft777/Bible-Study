@@ -15,11 +15,11 @@ forrásokra szűkítve) az egyetlen pont, ahol a pilot-diff megengedett (K9).
 
 A kiejtés-transzliteráció (SBL-stílus -> magyaros, pl. epikaleō -> epikaleó)
 NEM a RENDER tárgya (l. CLAUDE.md/RENDER_BRIEF.md "Nincs benne" -- a
-`kiejtes.py` a SZOTAR_BRIEF.md dolga); a pilot KIEJT táblája ISMÉRT,
+`kiejtes.py` a F05_SZOTAR_BRIEF.md dolga); a pilot KIEJT táblája ISMÉRT,
 ISTENTISZT-001-specifikus javításokat tartalmazott -- ez itt megmarad
 (a K9 pilot-diff ezekre a szavakra épp emiatt nem térhet el), de a többi
 motívum egyéb szavaira NEM terjed ki: azok nyers (SBL-stílusú) alakban
-jelennek meg, amíg a SZOTAR_BRIEF kiejtes.py-ja nem old meg egy általános
+jelennek meg, amíg a F05_SZOTAR_BRIEF kiejtes.py-ja nem old meg egy általános
 átírást.
 
 TSV-olvasás kizárólag split('\\t') / '\\t'.join() (CLAUDE.md).

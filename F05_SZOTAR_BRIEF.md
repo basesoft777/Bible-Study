@@ -1,4 +1,17 @@
-# SZOTAR_BRIEF.md — szótári adatréteg: szerepmátrix-források, fordítási gyorsítótár, kiejtés
+---
+feladat: 5
+cim: Szótári adatréteg, 1. menet
+kod: SZOTAR S1
+tipus: feladat
+fazis: 1
+modell: sonnet
+allapot: lezarva
+ad: fordítási gyorsítótár, terminológia- és kiejtés-táblák, konkordancia-importok
+kovetkezo: lezárva
+fugg: [1, 2, 3, 4]
+lezarva_osszegzes: fordítási gyorsítótár, terminológia/kiejtés-táblák, 7 konkordancia-import (TBESH, UBS DBH, MCGED, BDB-etimológia-határ, LXX-versszint, tW), `ellenoriz.py` 13–14. szabály, 26 héber kiejtés-jelölt + 6 BDB-etimológia-határ jóváhagyva; a `fuggetlen-ellenor` 3 körben talált és javított hibák (TBESH betű-utótag adatvesztés D38–D40, BDB-határ szabály D41), K6/K7 pótolva; ellenőrzés `naplok/ELLENOR_SZOTAR_S1.md`, merge `d0736aa` (PR #72, 09.29). Tartalmi döntést igénylő tételek N39–N44-ként nyitva (`NYITOTT_FELADATOK.md`).
+---
+# F05_SZOTAR_BRIEF.md — szótári adatréteg: szerepmátrix-források, fordítási gyorsítótár, kiejtés
 
 *FELADATOK #5 (és a #9 előkészítése) · v1 — 2026.09.23 · a `RENDER_BRIEF.md` v3 kettéválásából (ott D13); OCR-kezelés (D12), héber kiejtés-jelöltek (D13), LXX-korpuszszint (D14) · KIEJT-kiváltás (D15) · v1.1 — 2026.09.25: a Cremer kivezetve (D16); forrásszabály (D17) · **v1.2 — 2026.09.27: a Girdlestone kivezetve (D18); a TWOT-szám marad a héber 3. szerepben (D19); a 3. szerep új jelöltje az unfoldingWord Translation Words (S14, D20); az S0 kérdései lezárva (D21–D24); FJ-eredmény: a Macula küszöb alatt, az S13 versszintű marad (D25); a pilot terminológiája a kiinduló tábla (D26); új `allapot`-érték: `nincs forrás` (D27). Az S0 lefutott (`1046834`); új, rövid S0b-mérés ⛔. **v1.3 — 2026.09.27: az
 S0b.1 megállt, majd a felhasználó jóváhagyta a hatókör-bővítést — a T2.2
@@ -253,6 +266,7 @@ Eredmény: `naplok/SZOTAR_S0_jelentes.md` és 8 munkalap. A 7 kérdés válasza:
 
 ---
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 7. Nyitó promptok *(Sonnet)*
 
 ### S0
@@ -298,6 +312,7 @@ Olvasd el a CLAUDE.md-t és a SZOTAR_BRIEF.md-t (a jóváhagyott verziót).
 3. S2.9. K9–K14. Commitok a §6 2. menet-táblája szerint; a FELADATOK.md #5 és #9 sora.
 4. ÁLLJ.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ---
 

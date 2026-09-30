@@ -1,6 +1,6 @@
 """Mounce Concise Greek-English Dictionary (MCGED) import.
 
-SZOTAR_BRIEF.md S6. Forras: konkordancia/lexikonok_nyers/MCGED.lexicon
+F05_SZOTAR_BRIEF.md S6. Forras: konkordancia/lexikonok_nyers/MCGED.lexicon
 (SQLite, biblematedata-csomag, l. konkordancia/lexikonok_nyers/README.md).
 Csak a `G####` Strong-kulcsu sorokat hasznalja (a `gkG5####`
 Goodrick-Kohlenberger-kulcs UGYANAZT a szoveget ismetli meg mas kulcs

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# nulladiff.sh -- SZOTAR_BRIEF.md D30: A/B nulla-diff proba.
+# nulladiff.sh -- F05_SZOTAR_BRIEF.md D30: A/B nulla-diff proba.
 #
 # A "nulla-diff" a HEAD es egy masik commit generalt lexikon/ kimenetet
 # hasonlitja ossze -- KULON git worktree-ben, KULON-KULON legeneralva,
@@ -15,7 +15,7 @@
 # PARDES_DATUM alapertelmezese: a mai nap (YYYY-MM-DD). Mindket oldal
 # ugyanazt a PARDES_DATUM erteket kapja.
 #
-# --csere 'regi=>uj' (SZOTAR_BRIEF.md D31, ismetelheto): elore megnevezett,
+# --csere 'regi=>uj' (F05_SZOTAR_BRIEF.md D31, ismetelheto): elore megnevezett,
 # BAJTPONTOS (literalis, nem regex) szoveg-csere, amit a szkript a diff
 # ELOTT alkalmaz az ALAP oldal generalt lexikon/ fajljaira -- azert az ALAP
 # oldalra, mert egy S1-szeru menet altalaban egy adattabla atnevezeset/

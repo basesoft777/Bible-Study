@@ -1,0 +1,66 @@
+name: feladatok-frissites
+
+# F20 B6 (D25): a FELADATOK.md generalt blokkjat csak ez a main-re futo
+# Action irja; PR nem szerkesztheti (E18). A main-t ruleset vedi (PR kotelezo,
+# kotelezo checkek), az egyetlen bypass a `pardes-feladatok` GitHub App
+# (Contents: read and write, csak erre a repora telepitve). A push ennek az
+# App-nak a tokenjevel megy; a workflow sajat GITHUB_TOKEN-je csak olvas.
+# Titkok: FELADATOK_APP_ID, FELADATOK_APP_KEY.
+#
+# Az App-tokennel vegzett push uj futast indit (a GITHUB_TOKEN-nel nem), ezert a
+# gep sajat commitjanak futasa a `[bot]` actor miatt kimarad; ha mégis lefutna,
+# a general idempotens (nincs diff -> nincs commit), tehat nincs vegtelen hurok.
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: feladatok-frissites
+  cancel-in-progress: false
+
+jobs:
+  generalas:
+    if: ${{ !endsWith(github.actor, '[bot]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: App-token (pardes-feladatok)
+        id: app
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ secrets.FELADATOK_APP_ID }}
+          private-key: ${{ secrets.FELADATOK_APP_KEY }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ steps.app.outputs.token }}
+
+      - name: Python telepitese
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fejlecek ellenorzese
+        run: python eszkozok/feladatok.py ellenoriz
+
+      - name: FELADATOK.md generalasa
+        run: python eszkozok/feladatok.py general
+
+      - name: Gepi commit, ha van valtozas
+        run: |
+          if git diff --quiet -- FELADATOK.md; then
+            echo "FELADATOK.md valtozatlan."
+            exit 0
+          fi
+          git config user.name "pardes-feladatok[bot]"
+          git config user.email "pardes-feladatok[bot]@users.noreply.github.com"
+          git add FELADATOK.md
+          printf 'FELADATOK.md frissítés (gép)\n' > commit_uzenet.txt
+          git -c i18n.commitEncoding=UTF-8 commit -F commit_uzenet.txt
+          git pull --rebase origin main
+          git push origin HEAD:main

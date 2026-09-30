@@ -1,3 +1,9 @@
+---
+cim: F8: hiányzó eszközök, az üzemmenet kiegészítése
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # F8 — Hiányzó eszközök: az üzemmenet kiegészítése
 
 *Készítette: chat-menet (Opus 5), 2026-09-21, **v4** — a §2 G1–G10 döntései jóváhagyva; az 1. és a 2. menet lefutott és pusholva (`42950ab`, `d919819`); ez a verzió a 3. menetet részletezi.*
@@ -283,6 +289,7 @@ Az F8.0 nem commitol. **Push csak külön kérésre.**
 
 ---
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 7. Nyitó prompt — 1. menet *(Sonnet)*
 
 ```
@@ -301,9 +308,11 @@ Push nincs. Zárójelentés: hash-ek, K1-K6 kritériumonként, külön sorban,
 kihagyás nélkül, és minden eltérés — külön kiemelve a hiányzó és a plusz
 fájlokat a §6 táblájához képest.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ---
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 7b. Nyitó prompt — 2. menet *(Sonnet)*
 
 ```
@@ -328,7 +337,9 @@ kihagyás nélkül; az ellenoriz.py alapjelentésének összesítő sora (hány
 szabály RENDBEN / SÉRTÉS / KÉZI); és minden eltérés — külön kiemelve a
 hiányzó és a plusz fájlokat a §6 táblájához képest.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 7c. Nyitó prompt — 3. menet *(Sonnet)*
 
 ```
@@ -354,6 +365,7 @@ kihagyás nélkül, mért értékekkel; az ellenoriz.py új összesítő sora;
 és minden eltérés — külön kiemelve a hiányzó és a plusz fájlokat a §6
 táblájához képest.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ---
 

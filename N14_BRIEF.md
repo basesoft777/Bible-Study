@@ -1,3 +1,9 @@
+---
+cim: A HAMART-001 betöltése az `adat/`-ba (N14)
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # N14 — A HAMART-001 betöltése az `adat/`-ba
 
 *Készítette: chat-menet (Opus 5), 2026-09-21, **v2** — az 1. menet lefutott (`ac3eef4`, `d7a58a6`); a független ellenőrzés két elemzési hibát és egy formai eltérést talált → N14.1a a 2. menet elején. A §2 G1–G6 és a §5 jóváhagyva (2026-09-21).*
@@ -188,6 +194,7 @@ A számok a study táblájának a G2–G4 szerinti előzetes feldolgozásából 
 
 ---
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 8. Nyitó promptok *(Sonnet)*
 
 ### 1. menet
@@ -228,6 +235,7 @@ Minden K-kritériumot mért értékkel igazolj. Push nincs.
 Zárójelentés: hash-ek, K6a és K7–K12 külön sorban; az ellenoriz.py új összesítő
 sora; minden eltérés, külön kiemelve a hiányzó és a plusz fájlokat a §7-hez képest.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ---
 

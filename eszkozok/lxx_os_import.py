@@ -373,7 +373,7 @@ def build_dup_kjv_terkep(vp_for_book):
 def resolve_karoli(karoli_book, book_key, fejezet, vers, mt_refs, method, kezi_fn,
                     karoli_max_idx, kjv_max_idx, dup_kjv_terkep,
                     mt_max_idx=None, kezi_aktiv_fejezetek=None):
-    """V1.3b (KAROLI_KULCS_BRIEF.md KK4, G4). Két javítás a régi (V1.3a)
+    """V1.3b (F01_KAROLI_KULCS_BRIEF.md KK4, G4). Két javítás a régi (V1.3a)
     algoritmushoz képest, a KK1/KK1b-menet által feltárt H1/H2 okokra:
 
     (1) H1 javítás — a `KEZI_ELTOLASOK`-függvény `None`-ja a ténylegesen
@@ -404,7 +404,7 @@ def resolve_karoli(karoli_book, book_key, fejezet, vers, mt_refs, method, kezi_f
     A régi fejezet-szintű versszám-egyezés (d==0) és a régi, szűkebb
     Zsoltár-cím-eltolás-ág (csak biztonsági tartalékként, gyakorlatilag
     sosem aktiválódik, mert az új, általános MT-ág korábban lefedi)
-    megmarad. A `KAROLI_KULCS_BRIEF.md` F3 szerint az `EGYIK_SEM`-osztályú
+    megmarad. A `F01_KAROLI_KULCS_BRIEF.md` F3 szerint az `EGYIK_SEM`-osztályú
     fejezetek (nincs sem KJV-, sem MT-, sem KEZI-egyezés) szándékosan
     `szamozas_elteres` maradnak. A régi `LXX_versificacios_terkep.tsv`-t
     (studybible.info-számozásra épült) ez a menet NEM használja (l.

@@ -3,7 +3,7 @@
 """
 pr_komment.py -- CI.2: az ellenorzes jelentesenek kiirasa PR-kommentkent.
 Kizarolag a standard library-t hasznalja (urllib), nem harmadik feles
-csomagot -- l. CI_ELLENORZES_BRIEF.md "Alapelvek": "csak a standard
+csomagot -- l. F02_CI_ELLENORZES_BRIEF.md "Alapelvek": "csak a standard
 library-t es a repo sajat szkriptjeit hasznalja, kulso szolgaltatast nem
 hiv" (a GitHub sajat REST API-ja nem "kulso szolgaltatas" ebben az
 ertelemben -- ez maga a plattform, amelyen a workflow fut).

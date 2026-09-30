@@ -214,7 +214,7 @@ kiadás közt nem transzferálható közvetlenül. A főszövegen belüli (első
 mutatók kezdőlevele viszont pontosan egyeznek — a levél↔oldal leképezés önmagában
 helyesnek igazolt a `+12` és a `+15` szegmensen belül is.
 
-## `LXX_versszintu_parok.tsv` — versszintű együtt-előfordulás (SZOTAR_BRIEF.md S13)
+## `LXX_versszintu_parok.tsv` — versszintű együtt-előfordulás (F05_SZOTAR_BRIEF.md S13)
 
 **Generált** (`eszkozok/lxx_versszintu_import.py`, kézzel nem szerkesztendő).
 A D28 hatókörébe tartozó 26 héber gerinc-token mindegyikének TAHOT-igehelyeit
@@ -251,7 +251,7 @@ a másik két tábla saját SEMA-bejegyzéssel (2.4, 2.15) rendelkezik,
 külön SHA nélkül (nem verziózott külső letöltés, hanem a repó saját
 adata).
 
-## SZOTAR S1.4 importok — index (SZOTAR_BRIEF.md, S1.6)
+## SZOTAR S1.4 importok — index (F05_SZOTAR_BRIEF.md, S1.6)
 
 A szótári adatréteg 1. menetében (SZOTAR S1.4) importált 7 tábla mindegyike
 saját, dedikált README-ben dokumentált (forrás-URL, SHA, licenc, sor- és

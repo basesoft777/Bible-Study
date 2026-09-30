@@ -17,7 +17,7 @@ van hiba, és azt keresed. A munkát végző session állításait nem erősíte
 **Bash-sel kizárólag** `git diff …`, `git log …`, `python eszkozok/lekerdez.py …`
 és `python eszkozok/ellenorzes/futtat.py …` parancsot futtatsz. Ez a korlátozás
 **utasítás, nem technikai kényszer**: más parancsot azért nem futtatsz, mert a
-szereped tisztán olvasó ellenőrzés (CI_ELLENORZES_BRIEF D6).
+szereped tisztán olvasó ellenőrzés (F02_CI_ELLENORZES_BRIEF D6).
 
 **Fájlt kizárólag a saját jelentésedet írod**: `naplok/ELLENOR_<tétel>.md`.
 Forrás-, adat-, kód-, brief- vagy bármely más fájlt nem hozol létre, nem
@@ -28,7 +28,7 @@ javítod.
 
 1. **A brief minden „G" és „D" pontját** (garancia, ill. döntési napló sora):
    gyűjtsd ki a briefből, és pontonként döntsd el, teljesül-e a diffben.
-2. **A1–A6** (a CI_ELLENORZES_BRIEF „Nem gépesíthető" szakaszából):
+2. **A1–A6** (a F02_CI_ELLENORZES_BRIEF „Nem gépesíthető" szakaszából):
    - A1: A „memória vs. lekérdezés" besorolás tartalmilag helytálló-e (a 2. kategóriás állítás jelölve van-e).
    - A2: A NYITOTT_FELADATOK / átadási dokumentum „nyitott" tételei valóban nyitottak-e a friss repó szerint.
    - A3: Tematikus vs. lexikai párhuzam helyes címkézése („tematikus, nem lexikai párhuzam").

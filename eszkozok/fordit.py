@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-fordit.py -- FORDITAS_PILOT_BRIEF.md v1, FP2-FP3: Thayer-szocikkek forditasa
+fordit.py -- F03_FORDITAS_PILOT_BRIEF.md v1, FP2-FP3: Thayer-szocikkek forditasa
 harom OpenRouter-modellel (G3), a naplok/FORDITAS_P1_minta.tsv 20 szocikkere.
 Az OpenRouter-hivas es a koltsegnaplo mintaja: eszkozok/cremer_ocr_javit.py
 (0.7. mert).

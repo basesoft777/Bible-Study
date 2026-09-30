@@ -1,6 +1,6 @@
 """UBS Dictionary of Biblical Hebrew import -- jelentesek es igehely-hivatkozasok.
 
-Az eszkozok/ubs_dntg_import.py mintajara (SZOTAR_BRIEF.md S5). Forras:
+Az eszkozok/ubs_dntg_import.py mintajara (F05_SZOTAR_BRIEF.md S5). Forras:
 ubsicap/ubs-open-license (CC BY-SA 4.0), ugyanaz a commit, mint a
 konkordancia/SDBH_SDGNT_README.md-ben rogzitett SDBH/SDGNT-importe.
 """

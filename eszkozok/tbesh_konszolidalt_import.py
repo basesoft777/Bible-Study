@@ -1,6 +1,6 @@
 """TBESH_konszolidalt.tsv -- a TBESH.txt es TBESH.lexicon uniojja.
 
-SZOTAR_BRIEF.md S4: "unio, nem csere" -- egyik forras sem valtja ki a
+F05_SZOTAR_BRIEF.md S4: "unio, nem csere" -- egyik forras sem valtja ki a
 masikat, mert 9-nel a .txt, 13-nal a .lexicon bovebb (a 26 motivum-token
 mereten, l. §0 0.5). Ez a szkript az ELJES heber Strong-keszletre
 altalanositja ugyanezt a dontesi szabalyt: szocikkenkent a hosszabb

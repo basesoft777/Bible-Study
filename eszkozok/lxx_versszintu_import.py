@@ -1,7 +1,7 @@
 """LXX_versszintu_parok.tsv -- a S0b.3 (naplok/SZOTAR_S0b_lxx_versszint_szkript.py,
 csak H7121-re) altalanositasa mind a 26 heber gerinc-tokenre (D28 hatokor).
 
-SZOTAR_BRIEF.md S13: a motivum sajat heber Strong-tokenjenek Karoli-
+F05_SZOTAR_BRIEF.md S13: a motivum sajat heber Strong-tokenjenek Karoli-
 igehelyeit a konkordancia/LXX_OS/*.tsv-ben megtalalva, versenkent
 egyedi, grammatikailag szurt (adat/grammatikai_strongok.tsv 31 G-sora)
 gorog Strong-kodokkal parositva -- "versszintu egyutt-eloforduls, nem

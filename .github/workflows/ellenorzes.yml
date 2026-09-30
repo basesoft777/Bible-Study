@@ -125,3 +125,32 @@ jobs:
             exit 1
           fi
           echo "Minden ellenorzes RENDBEN."
+
+  # F20 B6: a feladatkovetes szabalya (E18) -- kulon job, a fenti lepeseket
+  # nem modositja (D6). A beerkezo/ mappa nincs a hatokoren.
+  feladatkovetes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Python telepitese
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: E18 -- fejlecek ervenyessege, a generalt blokkot a PR nem modositja
+        env:
+          EVENT_NEV: ${{ github.event_name }}
+          PR_ALAP_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if [ "$EVENT_NEV" = "pull_request" ]; then
+            python eszkozok/feladatok.py ellenoriz --pr-alap "$PR_ALAP_SHA"
+          else
+            python eszkozok/feladatok.py ellenoriz
+          fi
+
+      - name: feladatok.py tesztek
+        run: python eszkozok/teszt_feladatok.py

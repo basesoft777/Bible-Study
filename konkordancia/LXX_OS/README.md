@@ -67,7 +67,7 @@ Károli-célt adott (pl. LXX(Zsolt) 50:3 → hibásan "Zsolt 50:3" a helyes
 "Zsolt 51:3" helyett). A térkép ezért **teljesen kikerült** az
 `igehely_karoli` számításából (l. `LEXV2_1_BRIEF.md` döntésnapló v4).
 
-**V1.3b (2026.09.25, `KAROLI_KULCS_BRIEF.md` KK4) — a KK1/KK1b-menet
+**V1.3b (2026.09.25, `F01_KAROLI_KULCS_BRIEF.md` KK4) — a KK1/KK1b-menet
 (`claude/karoli-kulcs-35158` ág) feltárta, hogy a V1.3a algoritmus két
 ponton rendszeresen elvesztette a valódi Károli-célt** (l.
 `naplok/KAROLI_KK1_jelentes.md`, `naplok/KAROLI_KK1b_hatas.md`):

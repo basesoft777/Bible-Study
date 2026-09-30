@@ -1,3 +1,9 @@
+---
+cim: Károli-kulcs javító menet: tartalmi próba, a H2-eltolás hibájának javítása (KK7)
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # KAROLI_KULCS_KK7_BRIEF.md — Károli-kulcs javító menet: tartalmi próba, a H2-eltolás hibájának javítása
 
 *v1 — 2026.09.25 · a `claude/karoli-kulcs-35158` ág (`bcd88e9`, KK4–KK6) chat-ellenőrzése után ·
@@ -69,7 +75,7 @@ helyes kulccsal „egyező”: az LXX 63:13-ban ott a διὰ τῆς ἀβύσ�
 | G2 | A javítás **adatvezérelt**: a fejezetdöntések (könyv, fejezet, elfogadott eltolás vagy „üres”, a korrelációk, a horgony) generált táblába kerülnek, és az importer ezt olvassa. Heurisztikus új ág a `resolve_karoli`-ban nem elég. |
 | G3 | A KK7.0 először a `main`-t (`72b200c`) mergeli az ágba, hogy a végső újragenerálás a `main` mai adatán fusson (a TEREMT-002 adatai is ott vannak). Ütközés nem várható, mert a két oldal nem érint közös fájlt. |
 | G4 | A KK6 „javult” besorolásai (Jób 38:16, 38:30, Jón 2:3, 2:6) is átmennek a tartalmi próbán; ami nem megy át, az is G1 szerint üres lesz. |
-| G5 | A K-feltételek állapota csak RENDBEN vagy NEM TELJESÜL lehet (a KAROLI_KULCS_BRIEF G11-e). |
+| G5 | A K-feltételek állapota csak RENDBEN vagy NEM TELJESÜL lehet (a F01_KAROLI_KULCS_BRIEF G11-e). |
 
 ---
 
@@ -128,6 +134,7 @@ Commit tételenként: `KK7.<n>: <rövid leírás>`.
 
 ---
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 6. Nyitó prompt (cloud session a `claude/karoli-kulcs-35158` ágon; a briefet csatold)
 
 ```
@@ -139,3 +146,4 @@ Olvasd el a CLAUDE.md-t és a csatolt KAROLI_KULCS_KK7_BRIEF.md-t.
 ÁLLJ a KK7.4 után: jelentés a chatbe (commitlista, a K1–K8 állapota, az Egyezés-bontás előtte/utána,
 a fejezetdöntések összesítője).
 ```
+<!-- /KOZVETLEN_FUTTATAS -->

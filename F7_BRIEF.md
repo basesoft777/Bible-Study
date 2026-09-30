@@ -1,3 +1,9 @@
+---
+cim: F7: üzemmenet, a munkamenet rögzítése
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # F7 — Üzemmenet: a munkamenet rögzítése
 
 *Készítette: chat-menet (Opus 5), 2026-09-20, **v1**.*
@@ -142,6 +148,7 @@ Az F7.0 nem commitol. A brief saját commitot kap tétel-azonosító nélkül (`
 
 ---
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 7. Nyitó prompt *(Sonnet)*
 
 ```
@@ -164,6 +171,7 @@ Push nincs. Zárójelentés: hash-ek, K1-K11 kritériumonként (mindegyik külö
 sorban, kihagyás nélkül), és minden eltérés — külön kiemelve a hiányzó és
 a plusz fájlokat a §6 táblájához képest.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ---
 

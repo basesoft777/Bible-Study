@@ -1,3 +1,9 @@
+---
+cim: A Cremer teljes szövegének javítása külső képolvasó modellekkel
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # CREMER_OCR_BRIEF.md — a Cremer teljes szövegének javítása külső képolvasó modellekkel
 
 *v2 — 2026.09.24 · a v1 jóváhagyva és az O0 kész; a v2 a C1–C4, C6, C7, O1.2 módosításait és az O0.4 tételt hozza (D8–D13); v2.1: összehasonlító pilot a tartalék m2-vel (D14); v2.2: elemszintű validálás (D15); v2.3: tömör azonosítók és kimeneti kulcsok, laponkénti naplóírás (D16); v2.4: `valtozatlan` döntés, Qwen-zaj elkülönítése (D17); v2.5: jelölt m1 (GPT-5 Mini) és próbafutás, döntési szabály pontosítása, max_tokens (D18); v2.6: O0.6 forrásmérés a cremuoft-tételen, a pilot felfüggesztve (D19); **v3: LEZÁRVA 2026.09.25 — az O-pipeline nem folytatódik (D20–D22)***
@@ -8,7 +14,7 @@ alá, szócikkekre bontva, Strong-számmal. Az angol szöveg a hOCR-ből jön; a
 görög szavakat két független, olcsó képolvasó modell állítja vissza a lapképről, OpenRouteren
 keresztül.
 
-**Viszony a `SZOTAR_BRIEF.md`-hez.** Független tőle: csak a `konkordancia/_nyers/cremer/` alól
+**Viszony a `F05_SZOTAR_BRIEF.md`-hez.** Független tőle: csak a `konkordancia/_nyers/cremer/` alól
 olvas, és csak új `konkordancia/Cremer_*` táblákat ír; a `lexikon/` kimenetet nem érinti.
 Futhat a SZOTAR 1. menete előtt, alatt vagy után. Az eredményét a SZOTAR S2.5 használja (ott D28).
 
@@ -178,6 +184,7 @@ változóval. **A kulcs soha nem kerül a repóba, naplóba vagy commit-üzenetb
 
 ---
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 7. Nyitó prompt *(Sonnet)*
 
 ```
@@ -190,6 +197,7 @@ Olvasd el a CLAUDE.md-t és a CREMER_OCR_BRIEF.md-t teljes egészében.
 2. (Folytatáskor) O1: pilot, ellenőrző csomag, jelentés. ÁLLJ.
 Az OPENROUTER_API_KEY-t csak környezeti változóból olvasd; soha ne írd ki, ne naplózd.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ---
 

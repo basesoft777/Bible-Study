@@ -1,6 +1,6 @@
 """unfoldingWord Translation Words (tW) import -- teljes kt+other allomany.
 
-SZOTAR_BRIEF.md S14 (D20, S0b.2 elfogadva mindket nyelven). Forras:
+F05_SZOTAR_BRIEF.md S14 (D20, S0b.2 elfogadva mindket nyelven). Forras:
 git.door43.org/unfoldingWord/en_tw, tag v91, commit
 ff5b3852c27c3a0d01b109e482eb26047dcd20e2. CC BY-SA 4.0 -- a szarmazekos
 munkabol az unfoldingWord(R) vedjegyet el kell hagyni, a modositast

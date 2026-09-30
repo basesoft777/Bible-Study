@@ -88,7 +88,7 @@ Ugyanez a konvenció ajánlott a `Lezart_tematikus_tanulmanyok_index.md` frissí
 
 ---
 
-## CI.4 — a chat-oldali ellenőrzés olcsó lekérdezése (CI_ELLENORZES_BRIEF.md)
+## CI.4 — a chat-oldali ellenőrzés olcsó lekérdezése (F02_CI_ELLENORZES_BRIEF.md)
 
 A CI.0–CI.3 bevezetése óta a merge előtti független ellenőrzés nem a
 teljes repó tarballjának letöltéséből áll, hanem két olcsó lekérdezésből:

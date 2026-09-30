@@ -1,6 +1,12 @@
+---
+cim: Render-átállás: a lexikonoldal és a törzscikk a tematikus tanulmányból
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # RENDER_BRIEF.md — render-átállás: a lexikonoldal és a törzscikk a tematikus tanulmányból
 
-*v5 — 2026.09.23 · jóváhagyva: a §2 G-döntései és a §0/§4 számai · v2 → v3: a rések forrása a tematikus tanulmány (D12); a szótári adatréteg külön briefbe került (`SZOTAR_BRIEF.md`, D13); új szerepmátrix (D14), benne az LXX-híd (D19) és a kiejtés (D20) · v3 → v4: az R0.8 jóváhagyott döntései (G14–G16, D21–D27) · v4 → v5: az R2.6 diff-osztályozó kategórialistája kiegészül (D28)*
+*v5 — 2026.09.23 · jóváhagyva: a §2 G-döntései és a §0/§4 számai · v2 → v3: a rések forrása a tematikus tanulmány (D12); a szótári adatréteg külön briefbe került (`F05_SZOTAR_BRIEF.md`, D13); új szerepmátrix (D14), benne az LXX-híd (D19) és a kiejtés (D20) · v3 → v4: az R0.8 jóváhagyott döntései (G14–G16, D21–D27) · v4 → v5: az R2.6 diff-osztályozó kategórialistája kiegészül (D28)*
 
 **Cél.** A render-elv végrehajtása a 8 kész motívumon: minden a tematikus tanulmányban
 készül, a lexikonoldal (`_TUDOMANYOS.md`) és a kereszthivatkozási törzscikk
@@ -14,7 +20,7 @@ lexikonoldal helyőrző nélküli, és a 8 törzscikk elkészült.
 
 **Modell:** Sonnet. **Push csak külön kérésre.**
 
-**Nincs benne** (→ `SZOTAR_BRIEF.md`, a RENDER lezárása után): fordítási gyorsítótár,
+**Nincs benne** (→ `F05_SZOTAR_BRIEF.md`, a RENDER lezárása után): fordítási gyorsítótár,
 terminológia, kiejtés és átírás, TBESH, UBS DBH-import, Mounce/SECE, Cremer, Girdlestone,
 BDB-etimológia, az ISTENTISZT-001 2/b Mounce/SECE-tábláinak kiváltása. Továbbra sincs
 benne: fordítási pipeline, BDB SQLite-csere, héber gépi kiejtés, a LEXV2_3 többi tétele.
@@ -24,7 +30,7 @@ benne: fordítási pipeline, BDB SQLite-csere, héber gépi kiejtés, a LEXV2_3 
 ## 0. Kiindulás *(az R0.8.1 újraméri; eltérésnél ÁLLJ)*
 
 Az R0 (R0.1–R0.7) lefutott, élő adatba nem írt (K3). A 0.7, 0.8, 0.10–0.12 sor a
-`SZOTAR_BRIEF.md` §0-jába került.
+`F05_SZOTAR_BRIEF.md` §0-jába került.
 
 | # | Mérés | Érték |
 |---|---|---|
@@ -141,7 +147,7 @@ domének, LSJ, LXX-híd (mindkét irány). A többi `nincs adatosítva`; ezeket 
 - **R2.4** Az ISTENTISZT-001 study-frissítési NAPLO-blokkjának lezárása (G13).
 - **R2.5** A lexikonoldal első sora elé gépi jelölés: `<!-- GENERÁLT: general.py --cel lexikon | rések: [forras_study] -->`.
 - **R2.6** Újragenerálás (`lexikon` és `torzscikk`), majd diff-osztályozó (`eszkozok/render_diff_osztalyoz.py`): minden változott sor egy kategóriába esik — `tanulmany`, `kivonat`, `fejlec`, `naplo`, `jeloles`, `torzscikk_res`, `adat_res` (D28). Ismeretlen kategória: **ÁLLJ**; `adat_res` esetén pontosan 7 sor várt (motívumonként egy, mind `alatamasztas`), eltérésnél **ÁLLJ**.
-- **R2.7** Lezárás: `NYITOTT_FELADATOK.md` (következő: `SZOTAR_BRIEF.md`), `MUNKAMENET.md`.
+- **R2.7** Lezárás: `NYITOTT_FELADATOK.md` (következő: `F05_SZOTAR_BRIEF.md`), `MUNKAMENET.md`.
 
 ---
 
@@ -201,7 +207,7 @@ domének, LSJ, LXX-híd (mindkét irány). A többi `nincs adatosítva`; ezeket 
 | Üzenet | Fájlok |
 |---|---|
 | `RENDER_BRIEF.md v3` | `RENDER_BRIEF.md` |
-| `SZOTAR_BRIEF.md v1` | `SZOTAR_BRIEF.md` |
+| `SZOTAR_BRIEF.md v1` | `F05_SZOTAR_BRIEF.md` |
 | `R0.8: tanulmány-leltár, megfeleltetés, elavult számok, visszaírási terv` | `naplok/RENDER_R08_*.tsv`, `naplok/RENDER_R08_jelentes.md` |
 
 **1. menet**
@@ -224,6 +230,7 @@ domének, LSJ, LXX-híd (mindkét irány). A többi `nincs adatosítva`; ezeket 
 
 ---
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 7. Nyitó promptok *(Sonnet)*
 
 ### R0.8
@@ -266,6 +273,7 @@ Olvasd el a CLAUDE.md-t és a RENDER_BRIEF.md-t (v4).
 4. R2.7. K12–K16. Commitok a §6 2. menet-táblája szerint.
 5. ÁLLJ.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ---
 
@@ -285,7 +293,7 @@ Olvasd el a CLAUDE.md-t és a RENDER_BRIEF.md-t (v4).
 | D10 | A törzscikk-pilot a v2-vel verzióba került (`motivumlog/lexikon_pilot/`) | chatben készült artifact csak commit után hivatkozható |
 | D11 | A rés-mérés blokkhatár-pontos, nem soronkénti | a soronkénti mérés a 0.5-nél 9 karakterrel tévedett |
 | D12 | **v3: a rések forrása a tematikus tanulmány**, jelölők közt; a v2 `motivumok/lexikon/` rétege elvetve | a render-elv (minden a tanulmányban készül); a 8 motívum tanulmánya kész, 1:1; harmadik kézi réteg ellentmondana az elvnek |
-| D13 | **v3: kettéválás** — a szótári adatréteg a `SZOTAR_BRIEF.md`-be került (v2 G6–G8, G11, G12, R1.4–R1.6, az ellenőrző 12–13. szakasza, R2.1–R2.4) | a 8 oldal gyors lezárása; a TBESH-átállás feltétele nem teljesült (R0 jelentés, 7.1), ez nem tarthatja fel a lezárást |
+| D13 | **v3: kettéválás** — a szótári adatréteg a `F05_SZOTAR_BRIEF.md`-be került (v2 G6–G8, G11, G12, R1.4–R1.6, az ellenőrző 12–13. szakasza, R2.1–R2.4) | a 8 oldal gyors lezárása; a TBESH-átállás feltétele nem teljesült (R0 jelentés, 7.1), ez nem tarthatja fel a lezárást |
 | D14 | **v3: új, kétoldalú szerepmátrix** (G6); a pilot D6-ja felváltva | minden szerepnek görög és héber forrása van: TBESG/TBESH, Thayer/BDB, Cremer/Girdlestone, UBS DNTG/UBS DBH, LSJ/BDB-etimológia; a TAHOT és az OSHL kiesett |
 | D15 | **v3: az ISTENTISZT-001 lexikonrései felváltják a tanulmány megfeleltetett szakaszait** | a lexikonoldal az újabb (22/18); ez teljesíti a G13-as study-frissítést |
 | D16 | **v3: a kivonatokat a 2. menet írja, jóváhagyással** | egyik tanulmányban sincs kivonat; a tartalom a tanulmányból adott, a kivonat szerkesztői munka |

@@ -1,7 +1,20 @@
-# CI_ELLENORZES_BRIEF — független, gépi ellenőrzés a chatbeli tarball-ellenőrzés helyett
+---
+feladat: 2
+cim: Gépi ellenőrzés GitHubon
+kod: CI
+tipus: feladat
+fazis: 1
+modell: sonnet
+allapot: lezarva
+ad: gépi ellenőrzés (E1–E16) GitHub Actionsben
+kovetkezo: lezárva
+lezarva_osszegzes: PR #57, merge `68eb348` (09.27); E5 javítás: PR #59
+---
+# F02_CI_ELLENORZES_BRIEF — független, gépi ellenőrzés a chatbeli tarball-ellenőrzés helyett
 
 *Verzió: v1 · 2026.09.26 · Tétel-azonosító előtag: `CI.`*
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## Nyitó prompt (Claude Code-nak)
 
 > Olvasd el ezt a briefet, a `CLAUDE.md`-t és az `eszkozok/ellenoriz.py` fejlécét.
@@ -11,6 +24,7 @@
 > A `main`-re ne merge-elj. A CI.0 kimenetét (alapállapot-számok) írd a
 > `naplok/CI_alapallapot.md` fájlba, és a CI.2 előtt állj meg jóváhagyásra.
 > Modell: CI.0–CI.4 Sonnet, CI.5 (ügynök-prompt) Opus.
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ## Cél
 
@@ -108,7 +122,7 @@ A `method-learnings` kettős megerősítési szabálya így módosul: „függet
 | D13 | E12, E13 FIGYELMEZTETÉS marad, hatókör szűkítve: `tematikus_lezart/`, `genezis/`, `ujszovetseg/`, `melyelemzesek/`, `motivumlog/`, `lexikon/`. E13-nál a zárójelen belül vessző után álló átírás és a STEP-pontozott átírás (pl. `te.hom`) is elfogadott | A CI.0 4087/3837 találata jórészt a hatókörön kívüli brief-/tervdokumentumokból jött; a szűkített hatókör a study-rétegre koncentrál | E12/E13 HIBA szintre emelése (a brief D4-e szerint még korai) |
 | D14 | `naplok/CI_*.md` és `naplok/ELLENOR_*.md` minden szabály alól kizárva | Ezek maguk az ellenőrzés kimenetei/naplói, tartalmuk (pl. mintasorok, dátumok) ne generáljon önhivatkozó találatot | Nincs kizárás (az ellenőrző saját jelentése magát jelentené) |
 | D15 | E14, E15: a CI.1 pozitív fixture-je bizonyítsa, hogy a szabály egyáltalán talál | A CI.0-ban mindkettő 0 találatot adott a teljes repón — teszt nélkül nem tudni, hogy a minta valaha is illeszkedik-e | Változatlanul hagyni bizonyíték nélkül |
-| D16 | E8: a backtickes inline kód (`` `…` ``) és a kódblokk kizárva | A saját PR-diffre futtatva a `CI_ELLENORZES_BRIEF.md` szabályleíró sora (a tiltott mintákat backtickben idézve) hamis találatot adott — a szabály saját dokumentációja, nem study-szöveg | Nincs kizárás (minden PR, amely a briefet módosítja, elbukna) |
-| D17 | E10 hatóköre a szótári fordítás tényleges helyére szűkítve: `adat/` (pl. `forditas_ubs.tsv`, `lexikon_hivatkozasok.tsv`, a jövőbeli SZOTAR S1 `terminologia.tsv`/`forditasok.tsv`) és `lexikon/` (a render); a gyökér brief-/tervfájlok (pl. `SZOTAR_BRIEF.md`) nem. Inline kód és idézőjeles példa kizárva | Ugyanaz a fajta önhivatkozó hamis találat, mint D11/D12-nél: a `SZOTAR_BRIEF.md` saját magát dokumentálja ("spirit = szellem, ... soul = lélek"), ez nem tényleges fordítási sértés | E10 teljes repóra (túl sok hamis találat a brief-dokumentumokban) |
+| D16 | E8: a backtickes inline kód (`` `…` ``) és a kódblokk kizárva | A saját PR-diffre futtatva a `F02_CI_ELLENORZES_BRIEF.md` szabályleíró sora (a tiltott mintákat backtickben idézve) hamis találatot adott — a szabály saját dokumentációja, nem study-szöveg | Nincs kizárás (minden PR, amely a briefet módosítja, elbukna) |
+| D17 | E10 hatóköre a szótári fordítás tényleges helyére szűkítve: `adat/` (pl. `forditas_ubs.tsv`, `lexikon_hivatkozasok.tsv`, a jövőbeli SZOTAR S1 `terminologia.tsv`/`forditasok.tsv`) és `lexikon/` (a render); a gyökér brief-/tervfájlok (pl. `F05_SZOTAR_BRIEF.md`) nem. Inline kód és idézőjeles példa kizárva | Ugyanaz a fajta önhivatkozó hamis találat, mint D11/D12-nél: a `F05_SZOTAR_BRIEF.md` saját magát dokumentálja ("spirit = szellem, ... soul = lélek"), ez nem tényleges fordítási sértés | E10 teljes repóra (túl sok hamis találat a brief-dokumentumokban) |
 | D18 | Rögzítve: E4, E5, E16 a D8 fájlszintű kivételéhez tartozik, E6/E7 mellett | E4 a `jeloltek.tsv`/`auditok.tsv` motívum-szintű állapotát nézi, nem egy konkrét sorhoz köthető; E5 maga diff-alapú (a törölt sorokat vizsgálja, nem a hozzáadottakat); E16 fájl-létezés (érinti-e a PR az ellenőrzőt), nem egy konkrét tartalmi sor — egyiknél sincs értelmezhető "hozzáadott sor", amire a D8 diff-szűrését alkalmazni lehetne | A D8-at kivétel nélkül minden szabályra alkalmazni (ez E4/E5/E16-nál értelmezhetetlen lenne) |
 | D17a | E10-ből visszavonva az idézőjel- és a blockquote-kizárás; csak az inline kód (`` `…` ``) marad kizárva | A D17 hatókör-szűkítése (`adat/`, `lexikon/`) már megszüntette az önhivatkozó hamis találatot; az idézőjel-/blockquote-kizárás viszont a hatókörön belül épp a célpontot rejtette volna el — a lexikon a magyar glosszát idézőjelben adja (`„lélek"`), a Thayer-fordítás (#7) pedig blockquote-ban renderel. Angol forrásidézetben nincs "lélek/lelki", tehát a blockquote önmagában nem ad hamis találatot | D17 eredeti (idézőjel+blockquote is kizárva) — ez a lexikon/Thayer valódi sértéseit is elrejtette volna |

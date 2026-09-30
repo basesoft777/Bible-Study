@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 test_szabalyok.py -- CI.1: minden E2-E16 szabalyhoz legalabb egy pozitiv es
-egy negativ tesztfixture, a CI_ELLENORZES_BRIEF.md-ben hivatkozott
+egy negativ tesztfixture, a F02_CI_ELLENORZES_BRIEF.md-ben hivatkozott
 incidensek rekonstrualt mintaival.
 
 A tesztek egy ideiglenes konyvtarba irjak a fixture-fajlokat (nem az eles
@@ -216,10 +216,10 @@ class E8Teszt(unittest.TestCase):
             self.assertEqual(talalatok, [])
 
     def test_negativ_backtickes_szabalyleiro_sor_d16(self):
-        """D16: a CI_ELLENORZES_BRIEF.md-fele szabalyleiro sor, ahol a
+        """D16: a F02_CI_ELLENORZES_BRIEF.md-fele szabalyleiro sor, ahol a
         tiltott minta csak peldakent, backtickben szerepel, nem talalat."""
         with _IdeiglenesGyoker() as gy:
-            rel = _ir(gy, 'CI_ELLENORZES_BRIEF.md', (
+            rel = _ir(gy, 'F02_CI_ELLENORZES_BRIEF.md', (
                 "| E8 | Igehely-formátum: `1 Móz`, `1. Móz`, `ApCsel. ` stb. "
                 "tiltott; helyes: `1Móz 2:7` | study-rules | HIBA |\n"
             ))
@@ -270,10 +270,10 @@ class E10Teszt(unittest.TestCase):
             self.assertEqual(talalatok, [])
 
     def test_negativ_hatokoron_kivul_d17(self):
-        """A gyoker SZOTAR_BRIEF.md-fele sor, ahol a szabaly sajat magat
+        """A gyoker F05_SZOTAR_BRIEF.md-fele sor, ahol a szabaly sajat magat
         dokumentalja, nincs a D17 hatokorben."""
         with _IdeiglenesGyoker() as gy:
-            rel = _ir(gy, 'SZOTAR_BRIEF.md', (
+            rel = _ir(gy, 'F05_SZOTAR_BRIEF.md', (
                 "induló sorok: spirit = szellem, spiritual = szellemi, soul = lélek.\n"
             ))
             talalatok = SZ.e10_spirit_lelek([rel])
@@ -464,6 +464,15 @@ class D8DiffHatokorTeszt(unittest.TestCase):
             self.assertEqual(sorok, {2})
         finally:
             shutil.rmtree(gy, ignore_errors=True)
+
+
+class BeerkezoKizarasTest(unittest.TestCase):
+    """F20 B6: a beerkezo/ minden szabalybol kimarad."""
+
+    def test_kizart_e(self):
+        self.assertTrue(K.kizart_e('beerkezo/valami_BRIEF.md'))
+        self.assertTrue(K.kizart_e('beerkezo/README.md'))
+        self.assertFalse(K.kizart_e('F20_BEFOGADAS_BRIEF.md'))
 
 
 if __name__ == '__main__':

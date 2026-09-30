@@ -1,3 +1,9 @@
+---
+cim: F4: a generátorok (`general.py`)
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # F4 brief — a generátorok (`general.py`)
 
 *Készítette: chat-menet (Opus 5), 2026-09-15, **v5** (v1: első kiadás; v2: a G0 három kérdése eldöntve, a D3 lecserélve; v3: a `fo_elofordulas` csoportkulccsá vált, az 1. menet lefutott, három lelet kritériumként felvéve; v4: a 2. menet lefutott, a könyvnév-normalizálás a táblába kerül (K15/D14); v5: a 3. menet lefutott és élesített, a forrásréteg archív-szakaszai jelölendők (K16/D15), a sorvég-flip ellenőrzendő (K17), záró 4. menet felvéve). Kiindulási állapot: `main` = `origin/main` = **`3728e76`** (F4-0 … F4.5 lezárva, a generált blokkok élesítve).*
@@ -735,6 +741,7 @@ beírása).
 **A G0/a-c döntés megszületett** (2026-09-14, l. döntésnapló); a G0/d az 1.
 menet első tétele, mert a renderelők a két új mezőre épülnek.
 
+<!-- KOZVETLEN_FUTTATAS -->
 ### 6.3 Az 1. menet nyitó promptja
 
 ```
@@ -784,7 +791,9 @@ A jelentésbe kerüljön: a K1-K8, a K11 és a K12 mért értéke, a G0/d után 
 mérettel, a `git status` a futtatások után (tisztának kell lennie a
 generalt_proba/-n kívül), és a git log --oneline -5.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
+<!-- KOZVETLEN_FUTTATAS -->
 ### 6.4 A 2. menet nyitó promptja
 
 ```
@@ -840,7 +849,9 @@ A jelentésbe kerüljön: a K12', a K13 és a K14 mért eredménye (a K13-hoz a
 könyv-index első öt könyve szó szerint), a K9, és ID-nként a próba-kimenet
 sorszáma a mai study-k 1. pontjának sorszámához hasonlítva.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
+<!-- KOZVETLEN_FUTTATAS -->
 ### 6.5 A 3. menet nyitó promptja *(Opus)*
 
 ```
@@ -895,7 +906,9 @@ A jelentésbe kerüljön: a K15 (a 13 javított sor, és hogy KONYV_ALIAS nélk�
 0 a hianyzo_konyvek), a K9' (24 + 32 blokk), a K10, a --ellenoriz kimenete
 blokkonként, és a sorvég-mérés élesítés előtt/után.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
+<!-- KOZVETLEN_FUTTATAS -->
 ### 6.6 A 4. menet nyitó promptja *(záró)*
 
 ```
@@ -934,6 +947,7 @@ A commit-üzeneteket UTF-8 fájlból add át, majd push origin main.
 A jelentésbe kerüljön: a K17 három parancsának kimenete szó szerint, a K16
 (7 fájl × 3 fejléc), és a --ellenoriz blokkonként mindhárom fájlra.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ### 6.7 A menetek közé
 

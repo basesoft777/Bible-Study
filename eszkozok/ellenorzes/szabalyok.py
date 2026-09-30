@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-szabalyok.py -- CI.0: az E2-E16 ellenorzesek (CI_ELLENORZES_BRIEF.md
+szabalyok.py -- CI.0: az E2-E16 ellenorzesek (F02_CI_ELLENORZES_BRIEF.md
 "Ellenorzolista" tablazata). Egy szabaly = egy fuggveny, mind
 `(fajllista) -> [Talalat, ...]` alaku (E16 kivetel: PR-metaadatot is kap;
 E5 kivetel: git diff-et is kap -- l. az egyes fuggvenyek docstringjet).
@@ -261,7 +261,7 @@ def _study_fajlok_halmaza_ref(ref):
 
 
 def _study_vagy_sablon_fajl(fajl, study_halmaz):
-    """CI_ELLENORZES_BRIEF.md E5: a >30-sor-torles ag csak study- es
+    """F02_CI_ELLENORZES_BRIEF.md E5: a >30-sor-torles ag csak study- es
     sablonfajlokra vonatkozik. A study-fajlok kanonikus halmaza az
     `adat/motivumok.tsv` `forras_study` oszlopa; a sablonfajlok a
     `sablonok/` konyvtar alatt vannak."""
@@ -321,6 +321,8 @@ def e5_tartalomvesztes_or(base_ref, head_ref, commit_uzenet=''):
             lezar()
             m = re.search(r' b/(\S+)$', sor)
             aktualis_fajl = m.group(1) if m else None
+            if aktualis_fajl and aktualis_fajl.startswith('beerkezo/'):
+                aktualis_fajl = None  # F20 B6: a beerkezo/ kimarad
             torolt_szam = 0
             torolt_cimsor = []
             continue
@@ -526,7 +528,7 @@ def _e10_hatokorben_e(relut):
     """D17: E10 hatokore a szotari forditas tenyleges helye -- adat/ (pl.
     `forditas_ubs.tsv`, `lexikon_hivatkozasok.tsv`, a jovobeli SZOTAR S1
     `terminologia.tsv`/`forditasok.tsv`) es lexikon/ (a render). A gyoker
-    brief-/tervfajlok (pl. `SZOTAR_BRIEF.md`, `CI_ELLENORZES_BRIEF.md`), ahol
+    brief-/tervfajlok (pl. `F05_SZOTAR_BRIEF.md`, `F02_CI_ELLENORZES_BRIEF.md`), ahol
     a szabaly sajat magat dokumentalja peldakent, nem tartoznak ide."""
     return relut.startswith('adat/') or relut.startswith('lexikon/')
 

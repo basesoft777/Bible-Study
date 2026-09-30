@@ -91,6 +91,6 @@ tömör mátrixra egyszerűsödnek).
 A törzscikk a lexikonoldalról öröklött, SBL-stílusú átírásokat (pl.
 *epikaleō*) NEM alakítja át magyaros kiejtésre — ez a RENDER_BRIEF.md
 hatályán kívül esik (l. "Nincs benne": kiejtés és átírás), a
-`SZOTAR_BRIEF.md` S3 tétele oldja meg. A pilot néhány, ISTENTISZT-001-nél
+`F05_SZOTAR_BRIEF.md` S3 tétele oldja meg. A pilot néhány, ISTENTISZT-001-nél
 ismert javítást (pl. *epikaleō* → *epikaleó*) megőriz (`torzscikk_general.py`
 `KIEJT` táblája), de ez nem általános megoldás.

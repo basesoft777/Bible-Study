@@ -1,3 +1,9 @@
+---
+cim: Lexikon-oldal v2, 2. menet: generátor és sablon
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # LEXV2_2_BRIEF.md — v1
 
 Lexikon-oldal v2, 2. menet: generátor és sablon. Az új oldalszerkezet, az `LXX_OS` bekötése, a Thayer- és az UBS-szótár kirakása. Két végrehajtási kör, ⛔ emberi megállással: **1. kör** (V2.0–V2.6) csak a `generalt_proba/lexikon/` alá termel; **2. kör** (V2.7–V2.9) élesít.

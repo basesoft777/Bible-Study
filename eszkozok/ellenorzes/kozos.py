@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 kozos.py -- CI.0: kozos segedfuggvenyek az eszkozok/ellenorzes/* szabalyokhoz
-(l. naplok/../CI_ELLENORZES_BRIEF.md tetellista). Egy fuggveny = egy Talalat
+(l. naplok/../F02_CI_ELLENORZES_BRIEF.md tetellista). Egy fuggveny = egy Talalat
 tipus, egy fajl-felderito, es a tsv-olvasas (split('\\t'), a `csv` modul
 tilos -- CLAUDE.md "TSV-olvasas" szakasz).
 
@@ -168,6 +168,9 @@ def git_diff_hozzaadott_sorok(base_ref, head_ref, relut):
 
 def kizart_e(relut):
     relut = relut.replace('\\', '/')
+    # F20 B6: a beerkezo/ (befogadásra váró, még fejléc nélküli briefek) minden szabályból kimarad
+    if relut.startswith('beerkezo/'):
+        return True
     alap = os.path.basename(relut)
     if alap in KIZART_FAJLOK:
         return True
