@@ -187,7 +187,7 @@ def briefek_beolvas(gyoker=REPO):
 # ellenorzes
 # ---------------------------------------------------------------------------
 
-MODELL_SOR = re.compile(r'Modell:?\*{0,2}:?\s*([^\n]*)', re.IGNORECASE)
+MODELL_SOR = re.compile(r'Modell:\*{0,2}\s*([^\n]*)', re.IGNORECASE)
 MODELL_SZO = re.compile(r'(sonnet|opus|haiku|külső:[\w./-]+)', re.IGNORECASE)
 
 
