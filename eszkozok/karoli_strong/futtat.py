@@ -49,7 +49,8 @@ P3c (F21.42, PD13; regressziós mérés a prompt_v3-mal; kimenet valaszok/<futas
   az egyes azonosítókat is elfogadja; a plafon_usd és a 3 USD kemény plafon érvényes. A
   hívás előtti költségbecslés a SONNETV3-nál a Sonnet árával és a Sonnet tokenizálójára
   konzervatívan hangolt (KAR_PER_TOKEN_MODELL, KIMENET_TOKEN_VERSENKENT_MODELL) értékekkel
-  számol (a Gemini mért 1,96 karakter/tokenjének 1,3-szoros tokenszorzója).
+  számol (a Gemini mért 1,96 karakter/tokenje a szárazbecslés felső, 1,5-ös tokenszorzójával).
+  A futások a FUTASOK sorrendjében futnak: egy triggerben a SONNETV3 az F3V3 előtt.
 
 Modellek: A google/gemini-3.1-flash-lite, B deepseek/deepseek-v4-flash,
 C google/gemini-3.8-flash, S anthropic/claude-sonnet-5.5 (csak P3c). 10 vers / hívás; versenként az ötpontos kapu
@@ -188,10 +189,11 @@ ARAK = {
 # A hívás előtti (plafon-) költségbecslés modellenkénti hangolása (F21.42). Az alapértékek
 # (KAR_PER_TOKEN, KIMENET_TOKEN_VERSENKENT) az A/B/C-re maradnak. A Sonnet tokenizálója
 # ismeretlen: a C (Gemini) mért 1,96 karakter/tokenjét (a kötegszöveg karaktere / az első
-# próbálkozású hívások mért bemeneti tokenje, F3V2) 1,3-as tokenszorzóval tekintjük
-# (1,96 / 1,3 ≈ 1,5), a kimenetet a C mért 132 token/versének 1,3-szorosával (~180).
-KAR_PER_TOKEN_MODELL = {MODELLEK['S']: 1.5}
-KIMENET_TOKEN_VERSENKENT_MODELL = {MODELLEK['S']: 180}
+# próbálkozású hívások mért bemeneti tokenje, F3V2) a szárazbecslés felső, 1,5-ös
+# tokenszorzójával vesszük (1,96 / 1,5 ≈ 1,3 karakter/token), a kimenetet a C
+# mért 132 token/versének 1,5-szörösével (~200). A plafon-őr így a legrosszabb szcenárióval számol.
+KAR_PER_TOKEN_MODELL = {MODELLEK['S']: 1.3}
+KIMENET_TOKEN_VERSENKENT_MODELL = {MODELLEK['S']: 200}
 
 # A C modell kötelező gondolkodásának szintjei, a legalacsonyabbtól; 400-as
 # elutasításnál a következő. A sikeres szint a folyamat hátralevő részére marad.
@@ -216,8 +218,9 @@ FUTASOK = {
     'F4V2': {'modell': 'C', 'tipus': 'biro', 'kjv': True, 'reteg': None, 'forras': ('F1V2', 'F2V2'),
              'prompt': bemenet.PROMPT_V2_UT},
     # F21.42 (P3c, PD13): regressziós mérés a prompt_v3-mal; a trigger külön jóváhagyásra
-    'F3V3': {'modell': 'C', 'tipus': 'parosit', 'kjv': True, 'reteg': None, 'prompt': bemenet.PROMPT_V3_UT},
+    # a sorrend a felhasználói döntés szerinti: a Sonnet előbb, az F3V3 (C) utána (egy triggerben is)
     'SONNETV3': {'modell': 'S', 'tipus': 'parosit', 'kjv': True, 'reteg': None, 'prompt': bemenet.PROMPT_V3_UT},
+    'F3V3': {'modell': 'C', 'tipus': 'parosit', 'kjv': True, 'reteg': None, 'prompt': bemenet.PROMPT_V3_UT},
 }
 
 # A prompt_v3-at használó futások: indítás előtt a prompt_v3 és a legfrissebb arany befagyasztása
@@ -1079,34 +1082,41 @@ def p3b_kiir(minta):
 # ---------------------------------------------------------------------------
 
 P3C_C_MERT = ('F3V2', 'F3V2B')                 # a C két mért futása (prompt_v2): a becslés alapja
-P3C_TOKENSZORZOK = (1.0, 1.15, 1.3)            # a Sonnet tokenizálójának eltérése (bizonytalanság)
+P3C_TOKENSZORZOK = (1.00, 1.25, 1.50)          # a Claude tokenizálója héber/görög/magyar szövegen többet adhat
 P3C_UJRAKERES_TARTALEK = 0.10                  # +10% újrakérés-tartalék
 P3C_PROMPT_TARTALEK_TOKEN = 1000               # ha a prompt_v3.md még nincs meg: a v2 hossza + 1000 token/hívás
+P3C_FELHASZNALOI_PLAFON = 2.90                 # a felhasználói döntés: plafon_usd (kumulatív); a kemény korlát PLAFON_USD
 
 
-def p3c_prompt_delta(kar_per_token):
-    """A prompt_v3 és a prompt_v2 utasításrészének hosszeltérése, tokenben hívásonként.
-
-    Ha a f21p/prompt_v3.md létezik: (v3 − v2 karakter) / kar_per_token; ha nincs: 1000 token
-    (becslés). Visszaad: (token_hivasonkent, forras_szoveg)."""
+def p3c_kotegszoveg_arany(ig_all, kar_per_token):
+    """A prompt_v3 / prompt_v2 kötegszöveg-arány, MÉRVE: a 10-es kötegek teljes kötegszövegének
+    (utasítás + versblokkok, KJV-val) összkaraktere a két prompttal. Visszaad: (arány, forrás).
+    Ha a prompt_v3.md még nincs meg: a v2 + 1000 token/hívás becslése (karakterre a mért
+    karakter/tokennel váltva)."""
+    kotegek = bemenet.kotegek(ig_all, KOTEG_MERET)
+    h2 = sum(len(bemenet.kotegszoveg(k, True, bemenet.PROMPT_V2_UT)) for k in kotegek)
     if os.path.exists(bemenet.PROMPT_V3_UT):
-        d = (len(bemenet.prompt_utasitas(bemenet.PROMPT_V3_UT)) -
-             len(bemenet.prompt_utasitas(bemenet.PROMPT_V2_UT)))
-        return d / kar_per_token, 'a prompt_v3.md megvan: a v3 − v2 utasításrész %+d karakter' % d
-    return float(P3C_PROMPT_TARTALEK_TOKEN), 'a prompt_v3.md még nincs meg: +%d token/hívás becslés' % P3C_PROMPT_TARTALEK_TOKEN
+        h3 = sum(len(bemenet.kotegszoveg(k, True, bemenet.PROMPT_V3_UT)) for k in kotegek)
+        return h3 / h2, 'mért: a %d köteg kötegszövege %d (v3) / %d (v2) karakter' % (len(kotegek), h3, h2)
+    h3 = h2 + P3C_PROMPT_TARTALEK_TOKEN * kar_per_token * len(kotegek)
+    return h3 / h2, 'BECSLÉS (a prompt_v3.md még nincs meg): +%d token/hívás' % P3C_PROMPT_TARTALEK_TOKEN
 
 
 def p3c_becsles(minta, kimenet_dir=None):
     """A P3c szárazbecslése (hálózat nélkül). Visszaad: dict.
 
-    F3V3: (a) képlet: a valódi kötegszövegek (a prompt_v3, vagy ha még nincs: a prompt_v2 + 1000
-    token/hívás) karaktere / KAR_PER_TOKEN, 150 token/vers kimenet + 500 gondolkodási token/hívás,
-    C-ár; (b) a C két mért futása (F3V2, F3V2B: bemeneti/kimeneti token és cost, az újrakérésekkel
-    együtt) + a prompt-eltérés × a mért hívásszám, C-ár.
-    SONNETV3: a C két mért futásának tokenje (a gondolkodási token a kimenetben benne van: felső
-    korlát, mert a Sonnet gondolkodás nélkül fut) × tokenszorzó (1.0 / 1.15 / 1.3), a Sonnet
-    árával, + 10% újrakérés-tartalék; kumulatív: a napló eddigi összege + az F3V3 konzervatív
-    becslése (a módszerek maximuma + 10%) + a Sonnet."""
+    Alap: a C két mért futása (F3V2, F3V2B; bemeneti/kimeneti token és cost az újrakérésekkel
+    együtt, a napló szerint). A prompt_v3 hosszabb: a bemenet × R, R = a mért prompt_v3/prompt_v2
+    kötegszöveg-karakterarány a 20 kötegre.
+    F3V3 (C, Gemini-token, nincs tokenszorzó): (a) képlet (a valódi v3-kötegszövegek karaktere /
+    KAR_PER_TOKEN, 150 token/vers + 500 gondolkodási token/hívás, C-ár); (b) a mért futásokból:
+    cost + (R − 1) · bemenet · C-bemeneti ár; +10% újrakérés-tartalék.
+    SONNETV3: a mért Gemini-token (bemenet × R, kimenet) × tokenszorzó (1.00 / 1.25 / 1.50, a
+    bemenetre és a kimenetre is), a Sonnet árával (a Sonnetnél nincs gondolkodási token: a C
+    kimenete, amely a gondolkodást is tartalmazza, felső korlát); +10% újrakérés-tartalék.
+    Kumulatív: a napló eddigi összege + az F3V3 konzervatív becslése + a Sonnet. A kalibráló
+    trigger (SONNETV3, koteg_max=1): egy köteg költsége (a mért köteg-átlag és a legdrágább mért
+    köteg alapján)."""
     kimenet_dir = kimenet_dir or F21P
     naplo = _tsv(naplo_ut(kimenet_dir)) if os.path.exists(naplo_ut(kimenet_dir)) else []
     eddig = naplo_osszeg(kimenet_dir)
@@ -1121,15 +1131,23 @@ def p3c_becsles(minta, kimenet_dir=None):
         if not rs:
             continue
         p1 = [r for r in rs if r['probalkozas'] == '1']
+        kot_koltseg = {}
+        for r in rs:
+            kot_koltseg[r['koteg']] = kot_koltseg.get(r['koteg'], 0.0) + float(r['koltseg_usd'])
+        be_kot, ki_kot = {}, {}
+        for r in rs:
+            be_kot[r['koteg']] = be_kot.get(r['koteg'], 0) + int(r['bemenet_token'])
+            ki_kot[r['koteg']] = ki_kot.get(r['koteg'], 0) + int(r['kimenet_token'])
         mert[f] = {'hivas': len(rs), 'be': sum(int(r['bemenet_token']) for r in rs),
                    'ki': sum(int(r['kimenet_token']) for r in rs),
                    'cost': sum(float(r['koltseg_usd']) for r in rs),
-                   'be_p1': sum(int(r['bemenet_token']) for r in p1)}
-    # a Gemini mért karakter/token aránya: a v2-kötegszövegek karaktere / az első hívások tokenje
+                   'be_p1': sum(int(r['bemenet_token']) for r in p1),
+                   'kotegek': len(kot_koltseg), 'be_kot': be_kot, 'ki_kot': ki_kot, 'kot_koltseg': kot_koltseg}
+    # a Gemini mért karakter/tokenje: a v2-kötegszövegek karaktere / az első hívások tokenje
     kar_v2 = sum(len(bemenet.kotegszoveg(k, True, bemenet.PROMPT_V2_UT)) for k in kotegek_v2)
     mert_p1 = [m_['be_p1'] for m_ in mert.values()]
     c_kpt = kar_v2 / (sum(mert_p1) / len(mert_p1)) if mert_p1 else KAR_PER_TOKEN
-    delta_tok, delta_forras = p3c_prompt_delta(c_kpt)
+    R, r_forras = p3c_kotegszoveg_arany(ig_all, c_kpt)
 
     # F3V3 képlet
     v3_van = os.path.exists(bemenet.PROMPT_V3_UT)
@@ -1137,14 +1155,12 @@ def p3c_becsles(minta, kimenet_dir=None):
         kot, be, ki = _tokenbecsles('F3V3', ig_all)
     else:
         kot, be, ki = _tokenbecsles('F3V2', ig_all)
-        be += delta_tok * len(kot)
+        be *= R
     f3v3 = [{'nev': 'képlet (%d hívás, újrakérés nélkül)' % len(kot), 'be': be, 'ki': ki,
              'cost': be / 1e6 * c_ar[0] + ki / 1e6 * c_ar[1], 'hivas': len(kot)}]
     for f, m_ in mert.items():
-        be_m = m_['be'] + delta_tok * m_['hivas']
-        f3v3.append({'nev': 'a %s mért tokenjeiből (%d hívás, újrakérésekkel)' % (f, m_['hivas']), 'be': be_m,
-                     'ki': m_['ki'], 'cost': m_['cost'] + delta_tok * m_['hivas'] * c_ar[0] / 1e6,
-                     'hivas': m_['hivas']})
+        f3v3.append({'nev': 'a %s mért tokenjeiből (%d hívás, újrakérésekkel)' % (f, m_['hivas']), 'be': m_['be'] * R,
+                     'ki': m_['ki'], 'cost': m_['cost'] + (R - 1) * m_['be'] * c_ar[0] / 1e6, 'hivas': m_['hivas']})
     for x in f3v3:
         x['tartalekkal'] = x['cost'] * (1 + P3C_UJRAKERES_TARTALEK)
     f3v3_kons = max(x['tartalekkal'] for x in f3v3)
@@ -1152,49 +1168,82 @@ def p3c_becsles(minta, kimenet_dir=None):
     sonnet = []
     for f, m_ in mert.items():
         for sz in P3C_TOKENSZORZOK:
-            be_s = (m_['be'] + delta_tok * m_['hivas']) * sz
+            be_s = m_['be'] * R * sz
             ki_s = m_['ki'] * sz
             c = be_s / 1e6 * s_ar[0] + ki_s / 1e6 * s_ar[1]
             t = c * (1 + P3C_UJRAKERES_TARTALEK)
             sonnet.append({'alap': f, 'szorzo': sz, 'be': be_s, 'ki': ki_s, 'cost': c, 'tartalekkal': t,
-                           'kumulativ': eddig + f3v3_kons + t, 'csak_sonnet_kumulativ': eddig + t})
-    return {'eddig': eddig, 'mert': mert, 'c_kar_per_token': c_kpt, 'delta_tok': delta_tok,
-            'delta_forras': delta_forras, 'f3v3': f3v3, 'f3v3_kons': f3v3_kons, 'sonnet': sonnet,
-            'v3_van': v3_van}
+                           'kumulativ': eddig + f3v3_kons + t, 'csak_sonnet_kumulativ': eddig + t,
+                           'kumulativ_tartalek_nelkul': eddig + max(x['cost'] for x in f3v3) + c})
+    # kalibráló trigger: egy köteg (koteg_max=1) a Sonnetből
+    kalibralo = []
+    for f, m_ in mert.items():
+        for sz in P3C_TOKENSZORZOK:
+            def kot_cost(be_k, ki_k):
+                return (be_k * R * sz / 1e6 * s_ar[0] + ki_k * sz / 1e6 * s_ar[1]) * (1 + P3C_UJRAKERES_TARTALEK)
+            atlag = (m_['be'] / m_['kotegek'], m_['ki'] / m_['kotegek'])
+            legdragabb = max(m_['be_kot'], key=lambda k: m_['be_kot'][k] * R * s_ar[0] + m_['ki_kot'][k] * s_ar[1])
+            kalibralo.append({'alap': f, 'szorzo': sz,
+                              'atlag': kot_cost(*atlag),
+                              'legdragabb': kot_cost(m_['be_kot'][legdragabb], m_['ki_kot'][legdragabb]),
+                              'kumulativ_legdragabb': eddig + kot_cost(m_['be_kot'][legdragabb], m_['ki_kot'][legdragabb])})
+    return {'eddig': eddig, 'mert': mert, 'c_kar_per_token': c_kpt, 'arany': R, 'arany_forras': r_forras,
+            'f3v3': f3v3, 'f3v3_kons': f3v3_kons, 'sonnet': sonnet, 'kalibralo': kalibralo, 'v3_van': v3_van}
+
+
+def p3c_jelzes(kum):
+    """A kumulatív összeg jelzése a felhasználói (2,90) és a kemény (3,0) plafonhoz."""
+    if kum > PLAFON_USD:
+        return '>> MEGHALADJA a %.1f USD kemény plafont' % PLAFON_USD
+    if kum > P3C_FELHASZNALOI_PLAFON:
+        return '>> meghaladja a %.2f USD (plafon_usd) plafont' % P3C_FELHASZNALOI_PLAFON
+    return 'belefér'
 
 
 def p3c_kiir(minta):
     r = p3c_becsles(minta)
     print()
-    print('P3c SZÁRAZ BECSLÉS (F3V3: C, prompt_v3; SONNETV3: %s, prompt_v3; 200 vers, hálózat nélkül)' % MODELLEK['S'])
+    print('P3c SZÁRAZ BECSLÉS (F3V3: C, prompt_v3; SONNETV3: %s, prompt_v3, gondolkodás kikapcsolva; 200 vers, hálózat nélkül)' % MODELLEK['S'])
     print('  árak (USD/1M token, bemenet/kimenet): C %.2f/%.2f; Sonnet %.2f/%.2f' % (
         *ARAK[MODELLEK['C']], *ARAK[MODELLEK['S']]))
     print('  a C mért karakter/tokenje (v2-kötegszöveg karaktere / az első hívások tokenje): %.3f' % r['c_kar_per_token'])
-    print('  prompt-eltérés (v3 − v2): %.0f token/hívás (%s)' % (r['delta_tok'], r['delta_forras']))
+    print('  prompt_v3 / prompt_v2 kötegszöveg-arány R = %.4f (%s)' % (r['arany'], r['arany_forras']))
     for f, m_ in r['mert'].items():
         print('  mért %s: bemenet %d, kimenet %d token (gondolkodással), %d hívás, cost %.4f USD' % (
             f, m_['be'], m_['ki'], m_['hivas'], m_['cost']))
-    print('  F3V3 (C):')
+    print('  F3V3 (C, Gemini-token; a bemenet × R):')
     print('    %-56s %11s %11s %9s %10s' % ('módszer', 'bemenet_tok', 'kimenet_tok', 'USD', '+10% USD'))
     for x in r['f3v3']:
         print('    %-56s %11d %11d %9.4f %10.4f' % (x['nev'], x['be'], x['ki'], x['cost'], x['tartalekkal']))
     print('    az F3V3 konzervatív becslése (a legnagyobb +10%%-os érték): %.4f USD' % r['f3v3_kons'])
-    print('  SONNETV3 (a C két futásának mért tokenjei × tokenszorzó, a Sonnet árával, +%d%% újrakérés-tartalék; '
+    print('  SONNETV3 (a mért Gemini-token: bemenet × R, kimenet; × tokenszorzó mindkettőre; a Sonnet árával; +%d%% újrakérés-tartalék; '
           'a kimenet a C gondolkodási tokenjeit is tartalmazza: felső korlát):' % round(100 * P3C_UJRAKERES_TARTALEK))
-    print('    %-8s %7s %11s %11s %9s %9s %14s %18s' % ('alap', 'szorzó', 'bemenet_tok', 'kimenet_tok', 'USD',
-                                                       '+10% USD', 'kumulatív (S)', 'kumulatív (F3V3+S)'))
-    tullep = []
+    print('    %-7s %6s %11s %11s %8s %9s %12s %16s  %s' % ('alap', 'szorzó', 'bemenet_tok', 'kimenet_tok', 'USD', '+10% USD',
+                                                           'kum. (csak S)', 'kum. (F3V3+S)', 'jelzés (F3V3+S, +10%)'))
     for x in r['sonnet']:
-        jel = ''
-        if x['kumulativ'] > PLAFON_USD or x['csak_sonnet_kumulativ'] > PLAFON_USD:
-            jel = '  >>> MEGHALADJA a %.1f USD-t' % PLAFON_USD
-            tullep.append(x)
-        print('    %-8s %7.2f %11d %11d %9.4f %9.4f %14.4f %18.4f%s' % (
-            x['alap'], x['szorzo'], x['be'], x['ki'], x['cost'], x['tartalekkal'],
-            x['csak_sonnet_kumulativ'], x['kumulativ'], jel))
-    print('  a futásnapló eddigi összege: %.6f USD; kemény plafon %.1f USD (kumulatív)' % (r['eddig'], PLAFON_USD))
-    print('  %s' % ('>>> LEGALÁBB EGY SZCENÁRIÓ MEGHALADJA a %.1f USD kumulatív plafont' % PLAFON_USD if tullep
-                    else 'minden szcenárió a %.1f USD kumulatív plafon alatt marad' % PLAFON_USD))
+        print('    %-7s %6.2f %11d %11d %8.4f %9.4f %12.4f %16.4f  %s' % (
+            x['alap'], x['szorzo'], x['be'], x['ki'], x['cost'], x['tartalekkal'], x['csak_sonnet_kumulativ'],
+            x['kumulativ'], p3c_jelzes(x['kumulativ'])))
+    print('  kalibráló trigger (SONNETV3, koteg_max=1; egy köteg, +10% tartalékkal; a mért köteg-átlag és a legdrágább mért köteg alapján):')
+    print('    %-7s %6s %10s %12s %22s' % ('alap', 'szorzó', 'átlag USD', 'legdrágább', 'kumulatív (legdrágább)'))
+    for x in r['kalibralo']:
+        print('    %-7s %6.2f %10.4f %12.4f %22.4f' % (x['alap'], x['szorzo'], x['atlag'],
+                                                      x['legdragabb'], x['kumulativ_legdragabb']))
+    print('  a futásnapló eddigi összege: %.6f USD; felhasználói plafon_usd %.2f, kemény plafon %.1f USD (kumulatív)' % (
+        r['eddig'], P3C_FELHASZNALOI_PLAFON, PLAFON_USD))
+    # összegző tábla: szorzónként a két mért alap közül a nagyobb (konzervatív) Sonnet-érték
+    print('  ÖSSZEGZŐ TÁBLA (tokenszorzónként a két mért alap közül a nagyobb; +10% tartalékkal; kumulatív = napló + F3V3 + Sonnet):')
+    print('    %6s %14s %14s %14s  %s' % ('szorzó', 'Sonnet teljes', 'F3V3 (C)', 'kumulatív', 'jelzés'))
+    tullep = []
+    for sz in P3C_TOKENSZORZOK:
+        xs = [x for x in r['sonnet'] if x['szorzo'] == sz]
+        x = max(xs, key=lambda q: q['tartalekkal'])
+        jel = p3c_jelzes(x['kumulativ'])
+        if jel != 'belefér':
+            tullep.append((sz, jel))
+        print('    %6.2f %14.4f %14.4f %14.4f  %s' % (sz, x['tartalekkal'], r['f3v3_kons'], x['kumulativ'], jel))
+    print('  %s' % ('>>> LEGALÁBB EGY SZCENÁRIÓ átlépi a plafont: %s' % '; '.join('%.2f: %s' % t for t in tullep) if tullep
+                    else 'minden szcenárió belefér a %.2f USD plafonba' % P3C_FELHASZNALOI_PLAFON))
     return r
 
 
@@ -1675,7 +1724,7 @@ def onteszt_p3c(ellen, minta, teszt_kulcs, kimenet):
 
     # --- az új azonosítók és beállítások (a régiek érintetlenek) ---------------------------------
     regi_idk = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F3V2', 'F1V2', 'F2V2', 'F5V2', 'F6V2', 'F3V2B', 'F4V2']
-    ellen(list(FUTASOK) == regi_idk + ['F3V3', 'SONNETV3'], 'P3c: a FUTASOK sorrendje/tartalma nem a régiek + F3V3, SONNETV3: %s' % list(FUTASOK))
+    ellen(list(FUTASOK) == regi_idk + ['SONNETV3', 'F3V3'], 'P3c: a FUTASOK sorrendje/tartalma nem a régiek + SONNETV3, F3V3: %s' % list(FUTASOK))
     ellen(S == 'anthropic/claude-sonnet-5.5' and ARAK[S] == (2.0, 10.0),
           'P3c: a Sonnet azonosítója/ára nem anthropic/claude-sonnet-5.5, 2.0/10.0: %s %s' % (S, ARAK.get(S)))
     ellen(ARAK[C] == (0.75, 3.75) and ARAK[MODELLEK['A']] == (0.25, 1.50) and ARAK[MODELLEK['B']] == (0.14, 0.28),
@@ -1712,15 +1761,15 @@ def onteszt_p3c(ellen, minta, teszt_kulcs, kimenet):
             with open(vez, 'w', encoding='utf-8', newline='\n') as f:
                 f.write(tartalom)
 
-        vez_ir('futasok=SONNETV3,F3V3\nkoteg_max=mind\nplafon_usd=2\n')
+        vez_ir('futasok=F3V3,SONNETV3\nkoteg_max=mind\nplafon_usd=2\n')
         v = vezerlo_beolvas(vez)
-        ellen(v['futasok'] == ['F3V3', 'SONNETV3'] and v['plafon_usd'] == 2.0 and v['koteg_max'] is None,
-              'P3c vezérlő: az F3V3,SONNETV3 sor értelmezése hibás: %s' % (v,))
+        ellen(v['futasok'] == ['SONNETV3', 'F3V3'] and v['plafon_usd'] == 2.0 and v['koteg_max'] is None,
+              'P3c vezérlő: az F3V3,SONNETV3 sor értelmezése hibás (a futási sorrend: SONNETV3, F3V3): %s' % (v,))
         for egy in ('F3V3', 'SONNETV3'):
             vez_ir('futasok=%s\nkoteg_max=1\n' % egy)
             ellen(vezerlo_beolvas(vez)['futasok'] == [egy], 'P3c vezérlő: az egyenként álló %s elutasítva' % egy)
         vez_ir('futasok=F3V3,F3V2B,F1,SONNETV3\nkoteg_max=mind\n')
-        ellen(vezerlo_beolvas(vez)['futasok'] == ['F1', 'F3V2B', 'F3V3', 'SONNETV3'],
+        ellen(vezerlo_beolvas(vez)['futasok'] == ['F1', 'F3V2B', 'SONNETV3', 'F3V3'],
               'P3c vezérlő: a régi és új azonosítók vegyes sora rosszul rendeződik')
         vez_ir('futasok=F4,F3V3\nkoteg_max=mind\n')
         ellen(_hibas(lambda: vezerlo_beolvas(vez)), 'P3c vezérlő: a régi F4 az F3V3-mal együtt elfogadva')
@@ -1732,6 +1781,36 @@ def onteszt_p3c(ellen, minta, teszt_kulcs, kimenet):
         ellen(vezerlo_beolvas(vez)['futasok'] == ['F1V2', 'F2V2', 'F5V2', 'F6V2', 'F3V2B', 'F4V2'],
               'P3c vezérlő: a P3b-sor értelmezése megváltozott')
 
+        # --- a workflow (f21r_regresszio.yml) formátuma: megjegyzések, három kulcs; koteg_max=1 = 1 köteg/futás ---
+        vez_ir('# megjegyzés\nfutasok=F3V3,SONNETV3\nkoteg_max=1\nplafon_usd=2.90\n')
+        vw = vezerlo_beolvas(vez)
+        ellen(vw == {'futasok': ['SONNETV3', 'F3V3'], 'koteg_max': 1, 'plafon_usd': 2.9},
+              'P3c vezérlő: a workflow-formátum értelmezése hibás: %s' % (vw,))
+        mappa_w = tempfile.mkdtemp(prefix='f21p_onteszt_p3c_wf_')
+        mappak.append(mappa_w)
+        mock_w = MockKuldo()
+        ctx_w = Kontextus(mock_w, teszt_kulcs, mappa_w)
+        kod_w = vezerlo_futtat(ctx_w, vez, minta)
+        ellen(kod_w == 0 and ctx_w.plafon == 2.9 and len(eredmenyek_betolt('SONNETV3', mappa_w)) == 10
+              and len(eredmenyek_betolt('F3V3', mappa_w)) == 10 and len(mock_w.hivasok) == 2
+              and [m_ for m_, _, _ in mock_w.hivasok] == [S, C],
+              'P3c vezérlő: koteg_max=1 nem futásonként 1 köteg (10 vers), vagy a sorrend nem Sonnet, C (hívások: %d)'
+              % len(mock_w.hivasok))
+        for egy in ('SONNETV3', 'F3V3'):
+            vez_ir('futasok=%s\nkoteg_max=1\nplafon_usd=2.90\n' % egy)
+            mappa_e1 = tempfile.mkdtemp(prefix='f21p_onteszt_p3c_egy_')
+            mappak.append(mappa_e1)
+            mock_e1 = MockKuldo()
+            kod_e1 = vezerlo_futtat(Kontextus(mock_e1, teszt_kulcs, mappa_e1), vez, minta)
+            ellen(kod_e1 == 0 and len(mock_e1.hivasok) == 1 and len(eredmenyek_betolt(egy, mappa_e1)) == 10,
+                  'P3c vezérlő: a %s egyedül, koteg_max=1 nem pontosan egy hívás / 10 vers' % egy)
+        sablon_ut = os.path.join(tokenek.ROOT, 'f21p', 'futtatas_v3.txt.minta')
+        if os.path.exists(sablon_ut):
+            vs_ = vezerlo_beolvas(sablon_ut)
+            ellen(bool(vs_['futasok']) and set(vs_['futasok']) <= set(V3_FUTASOK) and vs_['plafon_usd'] is not None
+                  and 0 < vs_['plafon_usd'] <= PLAFON_USD,
+                  'P3c vezérlő: a trigger-sablon (f21p/futtatas_v3.txt.minta) nem érvényes vezérlő: %s' % (vs_,))
+
         # --- a teljes P3c egy triggerben, plafon_usd=2 ---------------------------------------------
         rec = []
         mock = MockKuldo()
@@ -1741,7 +1820,7 @@ def onteszt_p3c(ellen, minta, teszt_kulcs, kimenet):
             return mock(model_id, uzenetek, api_key, extra)
 
         ctx = Kontextus(kuldo, teszt_kulcs, mappa)
-        vez_ir('futasok=SONNETV3,F3V3\nkoteg_max=mind\nplafon_usd=2\n')
+        vez_ir('futasok=F3V3,SONNETV3\nkoteg_max=mind\nplafon_usd=2\n')
         kod = vezerlo_futtat(ctx, vez, minta)
         ellen(kod == 0 and ctx.plafon == 2.0, 'P3c: kilépési kód %d, plafon %s' % (kod, ctx.plafon))
         with open(naplo_ut(mappa), encoding='utf-8') as f:
@@ -1749,8 +1828,8 @@ def onteszt_p3c(ellen, minta, teszt_kulcs, kimenet):
         elso = {}
         for i, r in enumerate(naplo):
             elso.setdefault(r['futas'], i)
-        ellen(sorted(elso, key=elso.get) == ['F3V3', 'SONNETV3'],
-              'P3c: a futási sorrend a naplóban nem F3V3, SONNETV3: %s' % sorted(elso, key=elso.get))
+        ellen(sorted(elso, key=elso.get) == ['SONNETV3', 'F3V3'],
+              'P3c: a futási sorrend a naplóban nem SONNETV3, F3V3: %s' % sorted(elso, key=elso.get))
         for f_, modell in (('F3V3', C), ('SONNETV3', S)):
             ellen(os.path.exists(valasz_ut(f_, mappa)) and valasz_ut(f_, mappa).endswith(os.path.join('valaszok', '%s.jsonl' % f_)),
                   'P3c: nincs külön kimenet: %s' % f_)
@@ -1829,7 +1908,7 @@ def onteszt_p3c(ellen, minta, teszt_kulcs, kimenet):
         uz_s = [{'role': 'user', 'content': kotegszoveg_futashoz('SONNETV3', ig_all[:10], mappa)}]
         becs_s = becsult_koltseg(S, uz_s, 10)
         becs_c = becsult_koltseg(C, uz_s, 10)
-        varhato_s = len(uz_s[0]['content']) / 1.5 / 1e6 * 2.0 + 180 * 10 / 1e6 * 10.0
+        varhato_s = len(uz_s[0]['content']) / 1.3 / 1e6 * 2.0 + 200 * 10 / 1e6 * 10.0
         ellen(abs(becs_s - varhato_s) < 1e-12 and becs_s > 2 * becs_c,
               'P3c: a Sonnet hívás előtti becslése nem a Sonnet árával számol (%.6f vs %.6f, C %.6f)' % (becs_s, varhato_s, becs_c))
         mappa_p = tempfile.mkdtemp(prefix='f21p_onteszt_p3c_plafon_')
