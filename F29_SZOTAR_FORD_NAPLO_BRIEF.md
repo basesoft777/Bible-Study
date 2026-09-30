@@ -4,13 +4,15 @@ cim: A szótárfordítás döntései, a #7 és az FP3 halasztása
 kod: SZOTAR_FORD_NAPLO
 tipus: naplozas
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ag: claude/f29-szotar-ford-naplo
 ad: a D42–D50 a FELADATOK.md döntésnaplójában; a #7 és az FP3 (#27) fejléce halasztott állapotra igazítva
 kovetkezo: /kovetkezo, az EMELES befogadása után
 olvas: [FELADATOK.md, "F*_BRIEF.md"]
-ir: [F07_THAYER_ELES_BRIEF.md, F27_FP3_BRIEF.md]
+ir: [F07_THAYER_ELES_BRIEF.md, F27_FP3_BRIEF.md, FELADATOK.md]
 fugg: []
+pr: "#PR"
+lezarva_osszegzes: a D42–D50 a FELADATOK.md döntésnaplójában (#EM = #28); a #7 és az FP3 (#27) fejléce és a #7 csonk-törzse halasztott (D46); ellenőrzés `naplok/ELLENOR_F29.md`
 ---
 
 # F<nn>_SZOTAR_FORD_NAPLO_BRIEF.md — A szótárfordítás döntései

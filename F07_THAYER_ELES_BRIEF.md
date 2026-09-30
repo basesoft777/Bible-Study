@@ -6,7 +6,7 @@ fazis: 1
 modell: külső:gemini-3.1-flash-lite
 allapot: brief_kell
 ad: a görög mélységi szócikk magyarul, adatként
-kovetkezo: "halasztva (D46): a teljes Thayer gépi fordítása akkor, ha lesz böngésző felhasználó; a lexikon szócikkeit a #28 fordítja"
+kovetkezo: halasztva (D46): a teljes Thayer gépi fordítása akkor, ha lesz böngésző felhasználó; a lexikon szócikkeit a #28 fordítja
 fugg: [3, 5, 14]
 nem_fugg: [9]
 olvas: [adat/terminologia.tsv, adat/kiejtes_kivetelek.tsv, konkordancia/Thayer_teljes.tsv]
@@ -18,6 +18,6 @@ ir: [adat/forditasok.tsv]
 *FELADATOK #7 · csonk-brief (F20 B3): nem végrehajtható, csak a feladat fejlécét hordozza; v3; a brief csak chatben van (FP2-D13–D15, `naplok/FP2_jelentes.md`).*
 
 - **Mit ad, ha kész:** a görög mélységi szócikk magyarul, adatként
-- **Következő lépés:** `/kovetkezo` csomag: #16–#19 és #7; külső modell, keret 15 USD
+- **Következő lépés:** halasztva (D46): a teljes Thayer gépi fordítása akkor, ha lesz böngésző felhasználó; a lexikon szócikkeit a #28 fordítja
 
 A valódi briefet a `/befogad` csonk-kitöltése váltja fel, ugyanezen a számon és néven.
