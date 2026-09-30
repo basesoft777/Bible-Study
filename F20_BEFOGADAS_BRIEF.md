@@ -10,7 +10,7 @@ ad: a chatekben készült briefeket a /befogad parancs fogadja be; a FELADATOK.m
 kovetkezo: lezárva
 fugg: []
 olvas: [FELADATOK.md, DONTESEK.md, CLAUDE.md, NYITOTT_FELADATOK.md, "*_BRIEF.md", .claude/commands/, .github/workflows/]
-ir: [eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, eszkozok/, "*_BRIEF.md", BRIEF_SABLON.md, beerkezo/, FELADATOK.md, CLAUDE.md, MUNKAMENET.md, adat/SEMA.md, konkordancia/, sablonok/, GitHub_feltoltesi_workflow.md, .claude/commands/, .claude/agents/, .github/workflows/]
+ir: [eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, eszkozok/, "*_BRIEF.md", BRIEF_SABLON.md, beerkezo/, FELADATOK.md, CLAUDE.md, adat/SEMA.md, konkordancia/, sablonok/, fp2/, GitHub_feltoltesi_workflow.md, .claude/commands/, .claude/agents/, .github/workflows/]
 helyi_gep: nem
 ag: claude/befogadas
 lezarva_osszegzes: brief-befogadás (`/befogad`, csonk-kitöltéssel), a FELADATOK.md táblái a brief-fejlécekből generálva (`eszkozok/feladatok.py`), E18 CI-szabály és a main-re futó frissítő Action; ellenőrzés `naplok/ELLENOR_F20.md`; ⛔ a védett main miatt az Action push-a a beállítás módosításáig nem megy

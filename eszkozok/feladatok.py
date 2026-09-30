@@ -505,8 +505,8 @@ def _tabla(briefek, fugg, by_szam, main_all, fejlec):
 
 
 def _merge_info(gyoker, b):
-    """(rovid_hash, datum) az `allapot: lezarva` bekerulesenek first-parent commitjabol."""
-    ki = _git(gyoker, 'log', '--first-parent', '-S', 'allapot: lezarva',
+    """(rovid_hash, datum) az `allapot: lezarva` fejlecsor bekerulesenek first-parent MERGE-commitjabol."""
+    ki = _git(gyoker, 'log', '--first-parent', '--merges', '-G', '^allapot: lezarva$',
               '--format=%h %cs', '--', b.fajl)
     if not ki or not ki.strip():
         return None, None

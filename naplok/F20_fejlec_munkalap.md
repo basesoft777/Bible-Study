@@ -1,4 +1,4 @@
-# F20 B2 — fejléc-munkalap ⛔ (jóváhagyásra vár) — v2, a FELADATOK v1.3 alapján
+# F20 B2 — fejléc-munkalap (jóváhagyva 2026.09.30, chat: „B2 jóváhagyva, mehet a B3” — Q8–Q12 döntésekkel) — v2, a FELADATOK v1.3 alapján
 
 *2026.09.30 · alap: `origin/main` = `51f9291` (PR #77: v1.3 + csomagos `/kovetkezo`) · forrás: a briefek szövege, a B0 v2 felmérés, a FELADATOK v1.3 táblái, „Kész” listája és D14–D20. **Semmi nincs fejlécbe commitolva, semmi nincs átnevezve.***
 

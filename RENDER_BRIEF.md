@@ -207,7 +207,7 @@ domének, LSJ, LXX-híd (mindkét irány). A többi `nincs adatosítva`; ezeket 
 | Üzenet | Fájlok |
 |---|---|
 | `RENDER_BRIEF.md v3` | `RENDER_BRIEF.md` |
-| `F05_SZOTAR_BRIEF.md v1` | `F05_SZOTAR_BRIEF.md` |
+| `SZOTAR_BRIEF.md v1` | `F05_SZOTAR_BRIEF.md` |
 | `R0.8: tanulmány-leltár, megfeleltetés, elavult számok, visszaírási terv` | `naplok/RENDER_R08_*.tsv`, `naplok/RENDER_R08_jelentes.md` |
 
 **1. menet**

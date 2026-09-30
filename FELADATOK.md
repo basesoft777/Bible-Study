@@ -26,7 +26,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 <!-- GENERÁLT-KEZDET: feladatok.py --cel fazis2 -->
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Megjegyzés | Hol |
 |---|---|---|---|---|---|---|
-| 9 | Szótári adatréteg, 2. menet (SZOTAR S2) | az 1. fázis adatai megjelennek a 8 lexikonoldalon és a 8 törzscikkben | ⬜ | #5 (kész), #6 (kész), #7* | Ez javítja a törzscikkek elavult Cremer-sorát is (a CI E11 szabálya jelzi) | `F05_SZOTAR_BRIEF.md#2. menet` |
+| 9 | Szótári adatréteg, 2. menet (SZOTAR S2) | az 1. fázis adatai megjelennek a 8 lexikonoldalon és a 8 törzscikkben | ⬜ | #5 (kész), #6 (kész), #7* | Ez javítja a törzscikkek elavult Cremer-sorát is (a CI E11 szabálya jelzi) | `F05_SZOTAR_BRIEF.md#2. menet — kimenet-változtató` |
 | 10 | 8 lexikonoldal lezárása (LEXIKON_LEZARAS) | mérhetően kész oldalak (L1–L7) | ⬜ brief kell | #8, #9 | **Te:** döntés az L6 és L7 feltételről. Ide tartozik N18, N19 | `F10_LEXIKON_LEZARAS_BRIEF.md` |
 | 11 | Migráció: egy forrásból renderelés (MIGRACIO) | minden motívum a forrásrétegből renderel | ⬜ brief kell | #9 | Az M0 felmérés csak olvas, de az eredménye itt kell | `F11_MIGRACIO_BRIEF.md` |
 | 12 | TEREMT-002 3. lépés (próza, lexikonoldal) | az első natív egyforrású motívum kész | ⬜ brief kell | #11 | A tohu/bohu szótári adata az S1-ben készül (SZOTAR-D29). | `TEREMT002_KUTATAS_BRIEF.md` |
@@ -83,7 +83,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 ## Kész (utolsó 2 hét)
 
 <!-- GENERÁLT-KEZDET: feladatok.py --cel kesz -->
-- Brief-befogadás és generált feladatkövető (#20, BEFOGADAS): brief-befogadás (`/befogad`, csonk-kitöltéssel), a FELADATOK.md táblái a brief-fejlécekből generálva (`eszkozok/feladatok.py`), E18 CI-szabály és a main-re futó frissítő Action; ellenőrzés `naplok/ELLENOR_F20.md`; ⛔ a védett main miatt az Action push-a a beállítás módosításáig nem megy (merge `4ef806d`, 2026-09-30)
+- Brief-befogadás és generált feladatkövető (#20, BEFOGADAS): brief-befogadás (`/befogad`, csonk-kitöltéssel), a FELADATOK.md táblái a brief-fejlécekből generálva (`eszkozok/feladatok.py`), E18 CI-szabály és a main-re futó frissítő Action; ellenőrzés `naplok/ELLENOR_F20.md`; ⛔ a védett main miatt az Action push-a a beállítás módosításáig nem megy
 - Orkesztrátor-parancs (#15, F15): `/kovetkezo`, `DONTESEK.md`, végrehajtó subagentek, ellenőrzőlista, PR #70, ✅ a merge-commitban (09.29); próbafuttatás merge után új sessionben: `/kovetkezo`
 - Új források 2. felmérése (#6, F06): GitHub Actionsben futott, helyi gép nem kellett; BSB 1Móz 98,83% (küszöb 95%, mérés előtt rögzítve), Macula teljes letöltés és 39/87 függő helyre LXX-megfelelő (#8 bemenete), KJV/ASV, Nave és licenc-javaslatok (MiniMax-költség 0,011927 USD); jelentés `naplok/F06_forras_jelentes.md`, ellenőrzés `naplok/ELLENOR_F06.md`, `naplok/ELLENOR_F06_v2.md`, merge `634d567` (PR #75, 09.29). Az import-döntés (N27, N29–N31) a felhasználóé, nyitva.
 - Szótári adatréteg, 1. menet (#5, SZOTAR S1): fordítási gyorsítótár, terminológia/kiejtés-táblák, 7 konkordancia-import (TBESH, UBS DBH, MCGED, BDB-etimológia-határ, LXX-versszint, tW), `ellenoriz.py` 13–14. szabály, 26 héber kiejtés-jelölt + 6 BDB-etimológia-határ jóváhagyva; a `fuggetlen-ellenor` 3 körben talált és javított hibák (TBESH betű-utótag adatvesztés D38–D40, BDB-határ szabály D41), K6/K7 pótolva; ellenőrzés `naplok/ELLENOR_SZOTAR_S1.md`, merge `d0736aa` (PR #72, 09.29). Tartalmi döntést igénylő tételek N39–N44-ként nyitva (`NYITOTT_FELADATOK.md`).
