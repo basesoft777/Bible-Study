@@ -65,6 +65,13 @@ változatlan).
 - **Letöltő/feldolgozó módszer:** oldalankénti HTML-letöltés (`fetch`), majd szavankénti kinyerés a forrás `<span class="unit">` szerkezetéből (Strong-szám-hivatkozás + angol szórész; a `[H####]` formátumú, zárójeles hivatkozások morfológiai kódként lettek a megelőző szóhoz rendelve, nem önálló szóként számolva). A 2Mózes-feldolgozásnál (80 oldal: 40 fejezet × KJV+ASV) ugyanez a parszolási logika egy erre a célra írt Node.js-szkriptbe került (programozott letöltés + kinyerés a fenti `span.unit` szerkezet szerint), a korábbi két könyvnél alkalmazott, munkamenetenkénti kézi HTML-beolvasás helyett — a kinyerési szabályok (versszám-span vs. szó-span megkülönböztetése, zárójeles morfológiai kódok hozzárendelése) változatlanok maradtak.
 - **Ismert parszolási buktató (a Példabeszédek-körben derült ki, az 1Mózes-feldolgozás ugyanezt a javított logikát használta):** a versszám-jelölő span class-neve `"ref english"`, a szó-span-oké `"english"` — ha a parszoló ezt nem különbözteti meg explicit, hanem pozíció alapján (pl. "hagyd ki az első egységet") próbálja kiszűrni a versszámot, minden vers **első valódi szava is kimarad**, mert a versszám-span technikailag sosem illeszkedik a szó-mintára. A helyes megoldás: ne legyen semmilyen "hagyd ki az elsőt" logika — a versszám-span emiatt magától sosem kerül be az eredménybe.
 
+## `KJV_Strongs_teljes.tsv` — teljes KJV, Strong-címkés (F19, FELADATOK #19)
+
+- **Állapot:** `importált, javaslat`. Forrás: eBible `eng-kjv_usfm.zip` (Public Domain), 66 kanonikus könyv, angol versszámozás, 349 308 sor, 31 099 címkés vers; a fejléc (`#` sorok) a proveniencia-sort és a mérést (`manual`, mért dátummal) tartalmazza.
+- **Formátum:** mint a `KJV_Strongs_*.tsv` (`Igehely`, `Szósorszám`, `Strong-szám` vezető nulla nélkül, `Angol szó` — gyakran frázis —, `Morfológiai kód` üres). A zsoltárfelirat a 0. versen áll.
+- **Hiányok:** `naplok/F19_hianyok.tsv` (3 címke nélküli KJV-vers: Mk 9:43, Lk 6:41, Lk 17:36; nem töltjük ki).
+- **ASV:** az `ASV_Strongs_teljes.tsv` **nincs a repóban**, mert az eBible-ASV Strong-címkéi forráshibásak (H430/H776/H1/G746 = 0 előfordulás); l. DONTESEK DT19 és `naplok/ELLENOR_F19.md`.
+
 ## Licenc / eredet
 
 - **Alapszöveg (KJV, ASV):** közkincs (public domain). A KJV brit "Crown copyright"-szabálya kizárólag a kereskedelmi nyomtatásra vonatkozik az Egyesült Királyságban; nem-kereskedelmi/kutatási felhasználásra és a világ többi részén szabadon felhasználható.
