@@ -535,6 +535,10 @@ NEM_JAVITOTT = [
 
 
 def main():
+    if '--f3v2' in sys.argv:
+        # F21.14: az F3V2 diffje az arany v2-höz és a (c) esetek összevetése az F3-mal (c_diff_f3v2.py)
+        import c_diff_f3v2
+        return c_diff_f3v2.main()
     adat = meres.Adat()
     if '--lista' in sys.argv:
         lista(adat)

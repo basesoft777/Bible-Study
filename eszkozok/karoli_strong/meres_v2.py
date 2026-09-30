@@ -272,11 +272,11 @@ MOCK_KAPUHIBA_VERS = None  # egy nem-arany vers (a mock kapuhibásnak jelöli)
 MOCK_GOND = 100            # mock gondolkodási token hívásonként
 
 
-def mock_forras(mappa):
+def mock_forras(mappa, elkerul=()):
     """Ideiglenes forrás: a valódi F3 (jsonl + napló-sorok) és egy mock F3V2.
 
-    A mock F3V2 = az arany v2 minden aranyversre (egy link elhagyásával az első
-    R1-es aranyversben), a többi versre a valódi F3 kapun átment válasza; egy
+    A mock F3V2 = az arany v2 minden aranyversre (egy link elhagyásával az R1-es
+    aranyversek közül, az `elkerul` kulcsokat kerülve), a többi versre a valódi F3 kapun átment válasza; egy
     nem-arany vers végleges kapuhiba (első és második próba is hibás). Visszaad:
     {'hianyzo': (ig, k, e), 'kapuhiba': ig, 'hivas': n, 'cost': x}."""
     tokenek.arany_v2_befagyasztas_ellenoriz()
@@ -292,11 +292,14 @@ def mock_forras(mappa):
     f3 = {}
     for s in meres._jsonl(os.path.join(meres.F21P, 'valaszok', 'F3.jsonl')):
         f3.update(s['versek'])
-    hianyzo_ig = next(m['igehely'] for m in minta if m['reteg'] == 'R1' and m['igehely'] in v2)
+    # az elhagyandó link: az első R1-es aranyvers első többelemű párjának utolsó eleme,
+    # amely nincs az `elkerul` kulcsok között ((igehely, 'hianyzo', k, e))
+    hianyzo = next((m['igehely'], p[0], p[1][-1]) for m in minta if m['reteg'] == 'R1' and m['igehely'] in v2
+                   for p in v2[m['igehely']]['parok']
+                   if len(p[1]) >= 2 and (m['igehely'], 'hianyzo', p[0], p[1][-1]) not in set(elkerul))
     kapuhiba_ig = next(m['igehely'] for m in minta if m['igehely'] not in v2 and f3[m['igehely']]['allapot'] == 'ok')
     ki_sorok = []
     uj_naplo = []
-    hianyzo = None
     osszcost = 0.0
     for kno, i in enumerate(range(0, len(minta), 10), 1):
         igk = [m['igehely'] for m in minta[i:i + 10]]
@@ -305,11 +308,10 @@ def mock_forras(mappa):
         for ig in igk:
             if ig in v2:
                 o = json.loads(json.dumps(v2[ig]))
-                if ig == hianyzo_ig:
+                if ig == hianyzo[0]:
                     for p in o['parok']:
-                        if len(p[1]) >= 2:
+                        if p[0] == hianyzo[1] and p[1] and p[1][-1] == hianyzo[2] and len(p[1]) >= 2:
                             e = p[1].pop()
-                            hianyzo = (ig, p[0], e)
                             if not any(e in q[1] for q in o['parok']):
                                 o['forditatlan'] = sorted(o['forditatlan'] + [e])
                             break
