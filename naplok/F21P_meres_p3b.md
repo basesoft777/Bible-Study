@@ -1,6 +1,6 @@
 # F21P_meres_p3b.md — P4 a P3b-adaton (prompt_v2), minden összeállítás, arany v2
 
-<!-- GENERÁLT: eszkozok/karoli_strong/meres_p3b.py | scope=P3b (prompt_v2): A=F1V2, B=F2V2, C=F3V2 és F3V2B, A+B, A+B+C (F4V2), KJV nélkül F5V2/F6V2; arany v2 (60 vers), 200 verses minta | forras=f21p/valaszok/{F1V2,F2V2,F3V2,F3V2B,F4V2,F5V2,F6V2}.jsonl, f21p/valaszok/{F1,F2,F3,F5,F6}.jsonl (v1-kapuhiba), f21p/arany_opus_v2.jsonl (sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3b.tsv | ts=2026-09-30T14:47:58+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
+<!-- GENERÁLT: eszkozok/karoli_strong/meres_p3b.py | scope=P3b (prompt_v2): A=F1V2, B=F2V2, C=F3V2 és F3V2B, A+B, A+B+C (F4V2), KJV nélkül F5V2/F6V2; arany v2 (60 vers), 200 verses minta | forras=f21p/valaszok/{F1V2,F2V2,F3V2,F3V2B,F4V2,F5V2,F6V2}.jsonl, f21p/valaszok/{F1,F2,F3,F5,F6}.jsonl (v1-kapuhiba), f21p/arany_opus_v2.jsonl (sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3b.tsv | ts=2026-09-30T15:21:36+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
 
 Kizárólag szkriptkimenet. A G4 szabály szó szerint (F22 brief 22.6): magas = A∩B (a KJV-ellentmondás feltétele gépileg n.é.); kozepes = a C döntőbíró linkje A vagy B egyikében; alacsony = hármas eltérés, vagy a vers kapuhibás maradt (A vagy B végleg kapuhibás: a C válasza, minden link alacsony). Az A+B (döntőbíró nélkül): A∩B magas, minden más link alacsony — a jelentés értelmezése. Egymodelles összeállítás (A, B, C) nem minősíthető (PD6). Cellaforma: érték (számláló/nevező).
 
@@ -13,35 +13,35 @@ Kizárólag szkriptkimenet. A G4 szabály szó szerint (F22 brief 22.6): magas =
 | A (F1V2) | pontossag_osszes (tajekoztato, PD6) | 85.5% (118/138) | 81.7% (103/126) | 79.5% (58/73) | 81.2% (121/149) | 82.3% (400/486) |
 | A (F1V2) | lefedettseg | 73.8% (118/160) | 81.7% (103/126) | 87.9% (58/66) | 80.7% (121/150) | 79.7% (400/502) |
 | A (F1V2) | regi_arany_kizaras_nelkul | 71.4% (10/14) | — (0/0) | — (0/0) | — (0/0) | 71.4% (10/14) |
-| A (F1V2) | regi_arany_pd9_kizarassal | 76.9% (10/13) | — (0/0) | — (0/0) | — (0/0) | 76.9% (10/13) |
+| A (F1V2) | regi_arany_kizarassal_tajekoztato | 76.9% (10/13) | — (0/0) | — (0/0) | — (0/0) | 76.9% (10/13) |
 | A (F1V2) | alacsony_arany | n.é. | n.é. | n.é. | n.é. | n.é. |
 | B (F2V2) | arany_versek_kapun_atment | 50.0% (10/20) | 90.0% (9/10) | 100.0% (10/10) | 50.0% (10/20) | 65.0% (39/60) |
 | B (F2V2) | magas_pontossag | n.é. | n.é. | n.é. | n.é. | n.é. |
 | B (F2V2) | pontossag_osszes (tajekoztato, PD6) | 61.3% (111/181) | 79.1% (121/153) | 50.0% (255/510) | 77.2% (129/167) | 60.9% (616/1011) |
 | B (F2V2) | lefedettseg | 87.4% (111/127) | 96.0% (121/126) | 95.9% (255/266) | 90.8% (129/142) | 93.2% (616/661) |
 | B (F2V2) | regi_arany_kizaras_nelkul | 84.2% (16/19) | — (0/0) | — (0/0) | — (0/0) | 84.2% (16/19) |
-| B (F2V2) | regi_arany_pd9_kizarassal | 88.9% (16/18) | — (0/0) | — (0/0) | — (0/0) | 88.9% (16/18) |
+| B (F2V2) | regi_arany_kizarassal_tajekoztato | 88.9% (16/18) | — (0/0) | — (0/0) | — (0/0) | 88.9% (16/18) |
 | B (F2V2) | alacsony_arany | n.é. | n.é. | n.é. | n.é. | n.é. |
 | C (F3V2) | arany_versek_kapun_atment | 100.0% (20/20) | 100.0% (10/10) | 100.0% (10/10) | 100.0% (20/20) | 100.0% (60/60) |
 | C (F3V2) | magas_pontossag | n.é. | n.é. | n.é. | n.é. | n.é. |
 | C (F3V2) | pontossag_osszes (tajekoztato, PD6) | 94.0% (299/318) | 95.6% (153/160) | 94.2% (259/275) | 91.7% (309/337) | 93.6% (1020/1090) |
 | C (F3V2) | lefedettseg | 94.3% (299/317) | 100.0% (153/153) | 97.4% (259/266) | 98.1% (309/315) | 97.1% (1020/1051) |
 | C (F3V2) | regi_arany_kizaras_nelkul | 93.8% (30/32) | — (0/0) | — (0/0) | — (0/0) | 93.8% (30/32) |
-| C (F3V2) | regi_arany_pd9_kizarassal | 100.0% (30/30) | — (0/0) | — (0/0) | — (0/0) | 100.0% (30/30) |
+| C (F3V2) | regi_arany_kizarassal_tajekoztato | 96.8% (30/31) | — (0/0) | — (0/0) | — (0/0) | 96.8% (30/31) |
 | C (F3V2) | alacsony_arany | n.é. | n.é. | n.é. | n.é. | n.é. |
 | C (F3V2B) | arany_versek_kapun_atment | 100.0% (20/20) | 100.0% (10/10) | 100.0% (10/10) | 100.0% (20/20) | 100.0% (60/60) |
 | C (F3V2B) | magas_pontossag | n.é. | n.é. | n.é. | n.é. | n.é. |
 | C (F3V2B) | pontossag_osszes (tajekoztato, PD6) | 93.8% (304/324) | 95.6% (152/159) | 93.9% (263/280) | 90.3% (306/339) | 93.0% (1025/1102) |
 | C (F3V2B) | lefedettseg | 95.9% (304/317) | 99.3% (152/153) | 98.9% (263/266) | 97.1% (306/315) | 97.5% (1025/1051) |
 | C (F3V2B) | regi_arany_kizaras_nelkul | 93.8% (30/32) | — (0/0) | — (0/0) | — (0/0) | 93.8% (30/32) |
-| C (F3V2B) | regi_arany_pd9_kizarassal | 100.0% (30/30) | — (0/0) | — (0/0) | — (0/0) | 100.0% (30/30) |
+| C (F3V2B) | regi_arany_kizarassal_tajekoztato | 96.8% (30/31) | — (0/0) | — (0/0) | — (0/0) | 96.8% (30/31) |
 | C (F3V2B) | alacsony_arany | n.é. | n.é. | n.é. | n.é. | n.é. |
 | A+B | arany_versek | 100.0% (20/20) | 100.0% (10/10) | 100.0% (10/10) | 100.0% (20/20) | 100.0% (60/60) |
 | A+B | magas_pontossag | 95.4% (83/87) | 93.4% (99/106) | 90.6% (58/64) | 97.0% (98/101) | 94.4% (338/358) |
 | A+B | pontossag_osszes (tajekoztato) | 62.9% (146/232) | 72.3% (125/173) | 49.1% (255/519) | 70.7% (152/215) | 59.5% (678/1139) |
 | A+B | lefedettseg | 46.1% (146/317) | 81.7% (125/153) | 95.9% (255/266) | 48.3% (152/315) | 64.5% (678/1051) |
 | A+B | regi_arany_kizaras_nelkul | 56.2% (18/32) | — (0/0) | — (0/0) | — (0/0) | 56.2% (18/32) |
-| A+B | regi_arany_pd9_kizarassal | 60.0% (18/30) | — (0/0) | — (0/0) | — (0/0) | 60.0% (18/30) |
+| A+B | regi_arany_kizarassal_tajekoztato | 58.1% (18/31) | — (0/0) | — (0/0) | — (0/0) | 58.1% (18/31) |
 | A+B | alacsony_arany [200 vers] | 68.9% (1255/1822) | 55.0% (230/418) | 84.0% (701/835) | 63.5% (431/679) | 69.7% (2617/3754) |
 | A+B | alacsony_arany [arany] | 62.5% (145/232) | 38.7% (67/173) | 87.7% (455/519) | 53.0% (114/215) | 68.6% (781/1139) |
 | A+B+C | arany_versek | 100.0% (20/20) | 100.0% (10/10) | 100.0% (10/10) | 100.0% (20/20) | 100.0% (60/60) |
@@ -49,18 +49,18 @@ Kizárólag szkriptkimenet. A G4 szabály szó szerint (F22 brief 22.6): magas =
 | A+B+C | pontossag_osszes (tajekoztato) | 93.7% (283/302) | 92.6% (151/163) | 92.4% (256/277) | 92.9% (299/322) | 93.0% (989/1064) |
 | A+B+C | lefedettseg | 89.3% (283/317) | 98.7% (151/153) | 96.2% (256/266) | 94.9% (299/315) | 94.1% (989/1051) |
 | A+B+C | regi_arany_kizaras_nelkul | 87.5% (28/32) | — (0/0) | — (0/0) | — (0/0) | 87.5% (28/32) |
-| A+B+C | regi_arany_pd9_kizarassal | 93.3% (28/30) | — (0/0) | — (0/0) | — (0/0) | 93.3% (28/30) |
+| A+B+C | regi_arany_kizarassal_tajekoztato | 90.3% (28/31) | — (0/0) | — (0/0) | — (0/0) | 90.3% (28/31) |
 | A+B+C | alacsony_arany [200 vers] | 57.4% (963/1677) | 34.0% (124/365) | 75.3% (469/623) | 64.0% (530/828) | 59.7% (2086/3493) |
 | A+B+C | alacsony_arany [arany] | 62.3% (188/302) | 17.2% (28/163) | 74.0% (205/277) | 60.6% (195/322) | 57.9% (616/1064) |
 
-(4) vetített költség, teljes Biblia (f21p/koltseg_vetites_p3b.tsv, 90%; a bootstrap egysége a köteg — DT21 f, nyitott):
+(4) vetített költség, teljes Biblia (f21p/koltseg_vetites_p3b.tsv, 90%; a bootstrap egysége a köteg — DT21 f: elfogadva, felhasználói döntés):
 
-- A (F1V2): 22.83 USD [22.04–23.61]
+- A (F1V2): 22.84 USD [22.04–23.62]
 - B (F2V2): 5.12 USD [4.27–6.01]
 - C (F3V2): 42.03 USD [38.16–46.27]
-- C (F3V2B): 42.03 USD [38.05–46.49]
-- A+B: 27.95 USD [26.74–29.15]
-- A+B+C: 85.75 USD [79.63–92.33]
+- C (F3V2B): 42.03 USD [38.06–46.49]
+- A+B: 27.96 USD [26.74–29.15]
+- A+B+C: 85.91 USD [79.60–92.63]
 
 ## b) Minősítés (csak A+B és A+B+C; a többi PD6 szerint nem minősíthető)
 
@@ -69,19 +69,19 @@ Kizárólag szkriptkimenet. A G4 szabály szó szerint (F22 brief 22.6): magas =
 | A+B | feltetel_1 | nem teljesül |  |
 | A+B | feltetel_2 | nem teljesül |  |
 | A+B | feltetel_3 | nem teljesül |  |
-| A+B | feltetel_3_pd9 | nem teljesül |  |
+| A+B | feltetel_3_tajekoztato | nem teljesül |  |
 | A+B | feltetel_4 | teljesül |  |
 | A+B | feltetel_5 | nem teljesül |  |
 | A+B | minosites (kizárás nélküli régi arannyal) | nem felel meg | bukott feltétel: 1, 2, 3, 5; nem mért: — |
-| A+B | minosites (PD9 szerinti kizárással) | nem felel meg | bukott feltétel: 1, 2, 3_pd9, 5; nem mért: — |
+| A+B | minosites (tájékoztató: 1Móz 6:17 kizárva) | nem felel meg | bukott feltétel: 1, 2, 3_tajekoztato, 5; nem mért: — |
 | A+B+C | feltetel_1 | nem teljesül |  |
 | A+B+C | feltetel_2 | nem teljesül |  |
 | A+B+C | feltetel_3 | nem teljesül |  |
-| A+B+C | feltetel_3_pd9 | nem teljesül |  |
+| A+B+C | feltetel_3_tajekoztato | nem teljesül |  |
 | A+B+C | feltetel_4 | nem teljesül |  |
 | A+B+C | feltetel_5 | nem teljesül |  |
 | A+B+C | minosites (kizárás nélküli régi arannyal) | nem felel meg | bukott feltétel: 1, 2, 3, 4, 5; nem mért: — |
-| A+B+C | minosites (PD9 szerinti kizárással) | nem felel meg | bukott feltétel: 1, 2, 3_pd9, 4, 5; nem mért: — |
+| A+B+C | minosites (tájékoztató: 1Móz 6:17 kizárva) | nem felel meg | bukott feltétel: 1, 2, 3_tajekoztato, 4, 5; nem mért: — |
 
 | összeállítás | réteg | rétegfeltételek (1, 2, 3, 5) | megjegyzés |
 |---|---|---|---|

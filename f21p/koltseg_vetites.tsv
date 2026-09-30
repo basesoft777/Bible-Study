@@ -1,26 +1,39 @@
-# GENERÁLT: eszkozok/karoli_strong/koltseg_vetit.py | scope=C (F3, F3V2), P5 teljes Biblia (31 158 vers) | forras=f21p/futasnaplo.tsv, f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/KJV_Strongs_*.tsv, f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv | ts=2026-09-30T13:13:03+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | mag=20260930 | kézzel szerkeszteni tilos
+# GENERÁLT: eszkozok/karoli_strong/koltseg_vetit.py | scope=C (F3, F3V2), P5 teljes Biblia (31 158 vers), F22 műfaji öt réteg (DT21 h), mellette a korábbi pilot-4-réteges besorolás tájékoztató sorai | forras=f21p/futasnaplo.tsv, f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/KJV_Strongs_*.tsv, f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv | ts=2026-09-30T15:21:11+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | mag=20260930 | kézzel szerkeszteni tilos
 szakasz	futas	reteg	mero	ertek	also90	felso90	megjegyzes
-reteg_besorolas	-	R1	konyvek	1Móz 2Móz 3Móz 4Móz 5Móz Józs Bír Ruth 1Sám 2Sám 1Kir 2Kir 1Krón 2Krón Ezsd Neh Eszt Péld Préd			műfaj és kánonrész szerint, a minta rétegeivel összhangban
-biblia	-	R1	versek	14006			Károli-versek
-biblia	-	R1	x_osszeg	597234			Σ(eredeti szavak + Károli-szavak)
-biblia	-	R1	kjv_szavak	91180			KJV-támpont szavai (csak 1Móz/2Móz/Péld, 1:1 versmegfeleltetéssel)
-biblia	-	R1	eredeti_nelkuli_versek	6			x csak a Károli-szavakból (a 61 maradék)
-reteg_besorolas	-	R2	konyvek	Jób Zsolt Én			műfaj és kánonrész szerint, a minta rétegeivel összhangban
-biblia	-	R2	versek	3712			Károli-versek
-biblia	-	R2	x_osszeg	90979			Σ(eredeti szavak + Károli-szavak)
-biblia	-	R2	kjv_szavak	0			KJV-támpont szavai (csak 1Móz/2Móz/Péld, 1:1 versmegfeleltetéssel)
-biblia	-	R2	eredeti_nelkuli_versek	42			x csak a Károli-szavakból (a 61 maradék)
-reteg_besorolas	-	R3	konyvek	Ézs Jer Sir Ez Dán Hós Jóel Ámós Abd Jón Mik Náh Hab Sof Hag Zak Mal			műfaj és kánonrész szerint, a minta rétegeivel összhangban
-biblia	-	R3	versek	5486			Károli-versek
-biblia	-	R3	x_osszeg	237107			Σ(eredeti szavak + Károli-szavak)
-biblia	-	R3	kjv_szavak	0			KJV-támpont szavai (csak 1Móz/2Móz/Péld, 1:1 versmegfeleltetéssel)
-biblia	-	R3	eredeti_nelkuli_versek	4			x csak a Károli-szavakból (a 61 maradék)
-reteg_besorolas	-	R4	konyvek	Mt Mk Luk Ján ApCsel Róm 1Kor 2Kor Gal Ef Fil Kol 1Thessz 2Thessz 1Tim 2Tim Tit Filem Zsid Jak 1Pét 2Pét 1Ján 2Ján 3Ján Júd Jel			műfaj és kánonrész szerint, a minta rétegeivel összhangban
-biblia	-	R4	versek	7954			Károli-versek
-biblia	-	R4	x_osszeg	284194			Σ(eredeti szavak + Károli-szavak)
-biblia	-	R4	kjv_szavak	0			KJV-támpont szavai (csak 1Móz/2Móz/Péld, 1:1 versmegfeleltetéssel)
-biblia	-	R4	eredeti_nelkuli_versek	9			x csak a Károli-szavakból (a 61 maradék)
+reteg_besorolas	-	ÓSZ-próza	konyvek	1Móz 2Móz 3Móz 4Móz 5Móz Józs Bír Ruth 1Sám 2Sám 1Kir 2Kir 1Krón 2Krón Ezsd Neh Eszt			F22 brief 22.2, műfaji (nem kánon szerinti) besorolás, DT21 h); a 22.2 szövegén túl, felhasználói döntéssel: Ruth, Eszt
+biblia	-	ÓSZ-próza	versek	12871			Károli-versek
+biblia	-	ÓSZ-próza	x_osszeg	566494			Σ(eredeti szavak + Károli-szavak)
+biblia	-	ÓSZ-próza	kjv_szavak	75607			KJV-támpont szavai (csak 1Móz/2Móz/Péld, 1:1 versmegfeleltetéssel)
+biblia	-	ÓSZ-próza	eredeti_nelkuli_versek	1			x csak a Károli-szavakból (a 61 maradék)
+reteg_besorolas	-	költészet	konyvek	Jób Zsolt Péld Préd Én Sir			F22 brief 22.2, műfaji (nem kánon szerinti) besorolás, DT21 h); a 22.2 szövegén túl, felhasználói döntéssel: Préd, Sir
+biblia	-	költészet	versek	5001			Károli-versek
+biblia	-	költészet	x_osszeg	126258			Σ(eredeti szavak + Károli-szavak)
+biblia	-	költészet	kjv_szavak	15573			KJV-támpont szavai (csak 1Móz/2Móz/Péld, 1:1 versmegfeleltetéssel)
+biblia	-	költészet	eredeti_nelkuli_versek	47			x csak a Károli-szavakból (a 61 maradék)
+reteg_besorolas	-	próféta	konyvek	Ézs Jer Ez Dán Hós Jóel Ámós Abd Jón Mik Náh Hab Sof Hag Zak Mal			F22 brief 22.2, műfaji (nem kánon szerinti) besorolás, DT21 h); a 22.2 szövegén túl, felhasználói döntéssel: Dán
+biblia	-	próféta	versek	5332			Károli-versek
+biblia	-	próféta	x_osszeg	232568			Σ(eredeti szavak + Károli-szavak)
+biblia	-	próféta	kjv_szavak	0			KJV-támpont szavai (csak 1Móz/2Móz/Péld, 1:1 versmegfeleltetéssel)
+biblia	-	próféta	eredeti_nelkuli_versek	4			x csak a Károli-szavakból (a 61 maradék)
+reteg_besorolas	-	evangélium+ApCsel	konyvek	Mt Mk Luk Ján ApCsel			F22 brief 22.2, műfaji (nem kánon szerinti) besorolás, DT21 h)
+biblia	-	evangélium+ApCsel	versek	4785			Károli-versek
+biblia	-	evangélium+ApCsel	x_osszeg	171399			Σ(eredeti szavak + Károli-szavak)
+biblia	-	evangélium+ApCsel	kjv_szavak	0			KJV-támpont szavai (csak 1Móz/2Móz/Péld, 1:1 versmegfeleltetéssel)
+biblia	-	evangélium+ApCsel	eredeti_nelkuli_versek	1			x csak a Károli-szavakból (a 61 maradék)
+reteg_besorolas	-	levél+Jel	konyvek	Róm 1Kor 2Kor Gal Ef Fil Kol 1Thessz 2Thessz 1Tim 2Tim Tit Filem Zsid Jak 1Pét 2Pét 1Ján 2Ján 3Ján Júd Jel			F22 brief 22.2, műfaji (nem kánon szerinti) besorolás, DT21 h)
+biblia	-	levél+Jel	versek	3169			Károli-versek
+biblia	-	levél+Jel	x_osszeg	112795			Σ(eredeti szavak + Károli-szavak)
+biblia	-	levél+Jel	kjv_szavak	0			KJV-támpont szavai (csak 1Móz/2Móz/Péld, 1:1 versmegfeleltetéssel)
+biblia	-	levél+Jel	eredeti_nelkuli_versek	8			x csak a Károli-szavakból (a 61 maradék)
 biblia	-	Összes	versek	31158			
+reteg_besorolas_pilot4_tajekoztato	-	R1	konyvek	1Móz 2Móz 3Móz 4Móz 5Móz Józs Bír Ruth 1Sám 2Sám 1Kir 2Kir 1Krón 2Krón Ezsd Neh Eszt Péld Préd			TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolás (műfaj és kánonrész, a minta rétegeivel összhangban)
+biblia_pilot4_tajekoztato	-	R1	versek	14006			Károli-versek
+reteg_besorolas_pilot4_tajekoztato	-	R2	konyvek	Jób Zsolt Én			TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolás (műfaj és kánonrész, a minta rétegeivel összhangban)
+biblia_pilot4_tajekoztato	-	R2	versek	3712			Károli-versek
+reteg_besorolas_pilot4_tajekoztato	-	R3	konyvek	Ézs Jer Sir Ez Dán Hós Jóel Ámós Abd Jón Mik Náh Hab Sof Hag Zak Mal			TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolás (műfaj és kánonrész, a minta rétegeivel összhangban)
+biblia_pilot4_tajekoztato	-	R3	versek	5486			Károli-versek
+reteg_besorolas_pilot4_tajekoztato	-	R4	konyvek	Mt Mk Luk Ján ApCsel Róm 1Kor 2Kor Gal Ef Fil Kol 1Thessz 2Thessz 1Tim 2Tim Tit Filem Zsid Jak 1Pét 2Pét 1Ján 2Ján 3Ján Júd Jel			TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolás (műfaj és kánonrész, a minta rétegeivel összhangban)
+biblia_pilot4_tajekoztato	-	R4	versek	7954			Károli-versek
 illesztes	F3	-	bemenet_a_b_c	1898.37 / 12.0799 / 4.6521			bemenet = a + b·x + c·k, 20 első próbálkozású hívás
 illesztes	F3	-	kimenet_a_b	135.08 / 3.3741			kimenet = a + b·x
 illesztes	F3	-	gondolkodasi_token	0			napló; nyers usage: n.é. (nem tárolt)
@@ -31,11 +44,20 @@ ellenorzes	F3	-	pilot_200_tenyleges_usd	0.257251			futasnaplo.tsv
 ellenorzes	F3	-	elteres_szazalek	0.001			küszöb a brief szerint: ≤ 10%; mintán belüli (az illesztés ugyanezeken a hívásokon), ezért közel 0
 ellenorzes	F3	-	pilot_200_loo_vetitett_usd	0.256866			leave-one-out: minden köteg a többi 19-ből illesztve és vetítve
 ellenorzes	F3	-	loo_elteres_szazalek	-0.149			mintán kívüli eltérés a pilot tényleges költségétől (küszöb: ≤ 10%)
-vetites	F3	R1	koltseg_usd	20.7157	18.4867	23.0838	kötegek: 1401; bemenet 10298308, kimenet 2204357 token (első próba); ×M; bootstrap 1000
-vetites	F3	R2	koltseg_usd	3.4895	3.1504	3.8685	kötegek: 372; bemenet 1805208, kimenet 357219 token (első próba); ×M; bootstrap 1000
-vetites	F3	R3	koltseg_usd	8.0427	7.1768	8.9604	kötegek: 549; bemenet 3906427, kimenet 874175 token (első próba); ×M; bootstrap 1000
-vetites	F3	R4	koltseg_usd	9.9849	8.9596	11.1123	kötegek: 796; bemenet 4944129, kimenet 1066414 token (első próba); ×M; bootstrap 1000
-vetites	F3	Összes	koltseg_usd	42.2328	37.782	47.0314	kötegek: 3118; bemenet 20954073, kimenet 4502165 token (első próba); ×M; bootstrap 1000
+ellenorzes	F3	-	szamito_elteres_szazalek	-0.149			DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: leave-one-out; küszöb ≤ 10%: teljesül
+vetites	F3	ÓSZ-próza	koltseg_usd	19.498	17.3915	21.7333	F22 műfaji réteg; kötegek: 1288; bemenet 9640010, kimenet 2085374 token (első próba); ×M; bootstrap 1000
+vetites	F3	költészet	koltseg_usd	4.8749	4.3993	5.4167	F22 műfaji réteg; kötegek: 501; bemenet 2548711, kimenet 493678 token (első próba); ×M; bootstrap 1000
+vetites	F3	próféta	koltseg_usd	7.8775	7.0293	8.7774	F22 műfaji réteg; kötegek: 534; bemenet 3823121, kimenet 856834 token (első próba); ×M; bootstrap 1000
+vetites	F3	evangélium+ApCsel	koltseg_usd	6.0193	5.4011	6.6994	F22 műfaji réteg; kötegek: 479; bemenet 2979797, kimenet 643016 token (első próba); ×M; bootstrap 1000
+vetites	F3	levél+Jel	koltseg_usd	3.9656	3.5585	4.4128	F22 műfaji réteg; kötegek: 317; bemenet 1964332, kimenet 423399 token (első próba); ×M; bootstrap 1000
+vetites	F3	Összes	koltseg_usd	42.2353	37.7848	47.034	F22 műfaji réteg; kötegek: 3119; bemenet 20955971, kimenet 4502300 token (első próba); ×M; bootstrap 1000
+vetites_pilot4_tajekoztato	F3	R1	koltseg_usd	20.7157	18.4867	23.0838	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; kötegek: 1401; bootstrap 1000
+vetites_pilot4_tajekoztato	F3	R2	koltseg_usd	3.4895	3.1504	3.8685	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; kötegek: 372; bootstrap 1000
+vetites_pilot4_tajekoztato	F3	R3	koltseg_usd	8.0427	7.1768	8.9604	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; kötegek: 549; bootstrap 1000
+vetites_pilot4_tajekoztato	F3	R4	koltseg_usd	9.9849	8.9596	11.1123	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; kötegek: 796; bootstrap 1000
+vetites_pilot4_tajekoztato	F3	Összes	koltseg_usd	42.2328	37.782	47.0314	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; kötegek: 3118; bootstrap 1000
+besorolas_kulonbseg_tajekoztato	F3	Összes	f22_minus_pilot4_usd	0.002501			TÁJÉKOZTATÓ: F22 műfaji 5 réteg − korábbi pilot-4 réteg; kötegszám 3119 vs 3118 (a különbség a rétegenkénti ceil(N/10) kerekítéséből jön; az illesztés rétegfüggetlen)
+besorolas_kulonbseg_tajekoztato	F3	Összes	f22_minus_pilot4_szazalek	0.0059			TÁJÉKOZTATÓ: a pilot-4-réteges érték százalékában
 illesztes	F3V2	-	bemenet_a_b_c	2939.52 / 12.0797 / 4.6518			bemenet = a + b·x + c·k, 20 első próbálkozású hívás
 illesztes	F3V2	-	kimenet_a_b	117.52 / 3.4544			kimenet = a + b·x
 illesztes	F3V2	-	gondolkodasi_token	0			napló; nyers usage: 0
@@ -46,50 +68,71 @@ ellenorzes	F3V2	-	pilot_200_tenyleges_usd	0.256731			futasnaplo.tsv
 ellenorzes	F3V2	-	elteres_szazalek	0.0			küszöb a brief szerint: ≤ 10%; mintán belüli (az illesztés ugyanezeken a hívásokon), ezért közel 0
 ellenorzes	F3V2	-	pilot_200_loo_vetitett_usd	0.256352			leave-one-out: minden köteg a többi 19-ből illesztve és vetítve
 ellenorzes	F3V2	-	loo_elteres_szazalek	-0.148			mintán kívüli eltérés a pilot tényleges költségétől (küszöb: ≤ 10%)
-vetites	F3V2	R1	koltseg_usd	20.5079	18.4766	22.515	kötegek: 1401; bemenet 11756834, kimenet 2227705 token (első próba); ×M; bootstrap 1000
-vetites	F3V2	R2	koltseg_usd	3.5672	3.2356	3.9119	kötegek: 372; bemenet 2192501, kimenet 357991 token (első próba); ×M; bootstrap 1000
-vetites	F3V2	R3	koltseg_usd	7.9682	7.1701	8.7547	kötegek: 549; bemenet 4477982, kimenet 883571 token (első próba); ×M; bootstrap 1000
-vetites	F3V2	R4	koltseg_usd	9.9865	9.0298	10.9656	kötegek: 796; bemenet 5772840, kimenet 1075254 token (első próba); ×M; bootstrap 1000
-vetites	F3V2	Összes	koltseg_usd	42.0298	37.9494	46.1468	kötegek: 3118; bemenet 24200156, kimenet 4544521 token (első próba); ×M; bootstrap 1000
-kezimunka	F3	R1	elteres_per_vers_arany_v2	1.95			mért: hiányzó+többlet link az arany v2-höz, 39/20 aranyvers
-kezimunka	F3	R1	c_hiba_per_vers	0.2			az Opus besorolása, nem mérés: 4 (c) / 20 aranyvers
-kezimunka	F3	R1	vetitett_elteres_biblia	27312			eltérés/vers × 14006 vers (kis n: 20 aranyvers)
-kezimunka	F3	R1	vetitett_c_hiba_biblia	2801			Opus-besorolás, nem mérés; × 14006 vers
-kezimunka	F3	R2	elteres_per_vers_arany_v2	1.6			mért: hiányzó+többlet link az arany v2-höz, 16/10 aranyvers
-kezimunka	F3	R2	c_hiba_per_vers	0.0			az Opus besorolása, nem mérés: 0 (c) / 10 aranyvers
-kezimunka	F3	R2	vetitett_elteres_biblia	5939			eltérés/vers × 3712 vers (kis n: 10 aranyvers)
-kezimunka	F3	R2	vetitett_c_hiba_biblia	0			Opus-besorolás, nem mérés; × 3712 vers
-kezimunka	F3	R3	elteres_per_vers_arany_v2	3.8			mért: hiányzó+többlet link az arany v2-höz, 38/10 aranyvers
-kezimunka	F3	R3	c_hiba_per_vers	1.6			az Opus besorolása, nem mérés: 16 (c) / 10 aranyvers
-kezimunka	F3	R3	vetitett_elteres_biblia	20847			eltérés/vers × 5486 vers (kis n: 10 aranyvers)
-kezimunka	F3	R3	vetitett_c_hiba_biblia	8778			Opus-besorolás, nem mérés; × 5486 vers
-kezimunka	F3	R4	elteres_per_vers_arany_v2	1.95			mért: hiányzó+többlet link az arany v2-höz, 39/20 aranyvers
-kezimunka	F3	R4	c_hiba_per_vers	0.85			az Opus besorolása, nem mérés: 17 (c) / 20 aranyvers
-kezimunka	F3	R4	vetitett_elteres_biblia	15510			eltérés/vers × 7954 vers (kis n: 20 aranyvers)
-kezimunka	F3	R4	vetitett_c_hiba_biblia	6761			Opus-besorolás, nem mérés; × 7954 vers
-kezimunka	F3	Összes	elteres_per_vers_arany_v2	2.2			mért: hiányzó+többlet link az arany v2-höz, 132/60 aranyvers
+ellenorzes	F3V2	-	szamito_elteres_szazalek	-0.148			DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: leave-one-out; küszöb ≤ 10%: teljesül
+vetites	F3V2	ÓSZ-próza	koltseg_usd	19.2778	17.3559	21.171	F22 műfaji réteg; kötegek: 1288; bemenet 10980895, kimenet 2108239 token (első próba); ×M; bootstrap 1000
+vetites	F3V2	költészet	koltseg_usd	4.9671	4.5063	5.4401	F22 műfaji réteg; kötegek: 501; bemenet 3070301, kimenet 495018 token (első próba); ×M; bootstrap 1000
+vetites	F3V2	próféta	koltseg_usd	7.8015	7.0186	8.571	F22 műfaji réteg; kötegek: 534; bemenet 4379059, kimenet 866129 token (első próba); ×M; bootstrap 1000
+vetites	F3V2	evangélium+ApCsel	koltseg_usd	6.0195	5.4425	6.6098	F22 műfaji réteg; kötegek: 479; bemenet 3478481, kimenet 648366 token (első próba); ×M; bootstrap 1000
+vetites	F3V2	levél+Jel	koltseg_usd	3.967	3.5873	4.3558	F22 műfaji réteg; kötegek: 317; bemenet 2294359, kimenet 426888 token (első próba); ×M; bootstrap 1000
+vetites	F3V2	Összes	koltseg_usd	42.033	37.9527	46.1502	F22 műfaji réteg; kötegek: 3119; bemenet 24203096, kimenet 4544639 token (első próba); ×M; bootstrap 1000
+vetites_pilot4_tajekoztato	F3V2	R1	koltseg_usd	20.5079	18.4766	22.515	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; kötegek: 1401; bootstrap 1000
+vetites_pilot4_tajekoztato	F3V2	R2	koltseg_usd	3.5672	3.2356	3.9119	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; kötegek: 372; bootstrap 1000
+vetites_pilot4_tajekoztato	F3V2	R3	koltseg_usd	7.9682	7.1701	8.7547	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; kötegek: 549; bootstrap 1000
+vetites_pilot4_tajekoztato	F3V2	R4	koltseg_usd	9.9865	9.0298	10.9656	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; kötegek: 796; bootstrap 1000
+vetites_pilot4_tajekoztato	F3V2	Összes	koltseg_usd	42.0298	37.9494	46.1468	TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; kötegek: 3118; bootstrap 1000
+besorolas_kulonbseg_tajekoztato	F3V2	Összes	f22_minus_pilot4_usd	0.003159			TÁJÉKOZTATÓ: F22 műfaji 5 réteg − korábbi pilot-4 réteg; kötegszám 3119 vs 3118 (a különbség a rétegenkénti ceil(N/10) kerekítéséből jön; az illesztés rétegfüggetlen)
+besorolas_kulonbseg_tajekoztato	F3V2	Összes	f22_minus_pilot4_szazalek	0.0075			TÁJÉKOZTATÓ: a pilot-4-réteges érték százalékában
+kezimunka	F3	ÓSZ-próza	elteres_per_vers_arany_v2	2.4			mért: hiányzó+többlet link az arany v2-höz, 24/10 aranyvers (a minta versei könyv szerint az F22-rétegre képezve)
+kezimunka	F3	ÓSZ-próza	c_hiba_per_vers	0.0			az Opus besorolása, nem mérés: 0 (c) / 10 aranyvers
+kezimunka	F3	ÓSZ-próza	vetitett_elteres_biblia	30890			eltérés/vers × 12871 vers (kis n: 10 aranyvers)
+kezimunka	F3	ÓSZ-próza	vetitett_c_hiba_biblia	0			Opus-besorolás, nem mérés; × 12871 vers
+kezimunka	F3	költészet	elteres_per_vers_arany_v2	1.55			mért: hiányzó+többlet link az arany v2-höz, 31/20 aranyvers (a minta versei könyv szerint az F22-rétegre képezve)
+kezimunka	F3	költészet	c_hiba_per_vers	0.2			az Opus besorolása, nem mérés: 4 (c) / 20 aranyvers
+kezimunka	F3	költészet	vetitett_elteres_biblia	7752			eltérés/vers × 5001 vers (kis n: 20 aranyvers)
+kezimunka	F3	költészet	vetitett_c_hiba_biblia	1000			Opus-besorolás, nem mérés; × 5001 vers
+kezimunka	F3	próféta	elteres_per_vers_arany_v2	3.8			mért: hiányzó+többlet link az arany v2-höz, 38/10 aranyvers (a minta versei könyv szerint az F22-rétegre képezve)
+kezimunka	F3	próféta	c_hiba_per_vers	1.6			az Opus besorolása, nem mérés: 16 (c) / 10 aranyvers
+kezimunka	F3	próféta	vetitett_elteres_biblia	20262			eltérés/vers × 5332 vers (kis n: 10 aranyvers)
+kezimunka	F3	próféta	vetitett_c_hiba_biblia	8531			Opus-besorolás, nem mérés; × 5332 vers
+kezimunka	F3	evangélium+ApCsel	elteres_per_vers_arany_v2	1.3			mért: hiányzó+többlet link az arany v2-höz, 13/10 aranyvers (a minta versei könyv szerint az F22-rétegre képezve)
+kezimunka	F3	evangélium+ApCsel	c_hiba_per_vers	0.6			az Opus besorolása, nem mérés: 6 (c) / 10 aranyvers
+kezimunka	F3	evangélium+ApCsel	vetitett_elteres_biblia	6220			eltérés/vers × 4785 vers (kis n: 10 aranyvers)
+kezimunka	F3	evangélium+ApCsel	vetitett_c_hiba_biblia	2871			Opus-besorolás, nem mérés; × 4785 vers
+kezimunka	F3	levél+Jel	elteres_per_vers_arany_v2	2.6			mért: hiányzó+többlet link az arany v2-höz, 26/10 aranyvers (a minta versei könyv szerint az F22-rétegre képezve)
+kezimunka	F3	levél+Jel	c_hiba_per_vers	1.1			az Opus besorolása, nem mérés: 11 (c) / 10 aranyvers
+kezimunka	F3	levél+Jel	vetitett_elteres_biblia	8239			eltérés/vers × 3169 vers (kis n: 10 aranyvers)
+kezimunka	F3	levél+Jel	vetitett_c_hiba_biblia	3486			Opus-besorolás, nem mérés; × 3169 vers
+kezimunka	F3	Összes	elteres_per_vers_arany_v2	2.2			mért: hiányzó+többlet link az arany v2-höz, 132/60 aranyvers (a minta versei könyv szerint az F22-rétegre képezve)
 kezimunka	F3	Összes	c_hiba_per_vers	0.6167			az Opus besorolása, nem mérés: 37 (c) / 60 aranyvers
-kezimunka	F3	Összes	vetitett_elteres_biblia	69608			rétegenként vetítve, összegezve
-kezimunka	F3	Összes	vetitett_c_hiba_biblia	18340			Opus-besorolás, nem mérés; rétegenként vetítve
+kezimunka	F3	Összes	vetitett_elteres_biblia	73363			F22-rétegenként vetítve, összegezve
+kezimunka	F3	Összes	vetitett_c_hiba_biblia	15888			Opus-besorolás, nem mérés; F22-rétegenként vetítve
 kezimunka	F3	Összes	alacsony_arany	n.é.			egymodelles összeállításra nem értelmezett (PD6, G4)
-kezimunka	F3V2	R1	elteres_per_vers_arany_v2	1.85			mért: hiányzó+többlet link az arany v2-höz, 37/20 aranyvers
-kezimunka	F3V2	R1	c_hiba_per_vers	0.65			az Opus besorolása, nem mérés: 13 (c) / 20 aranyvers
-kezimunka	F3V2	R1	vetitett_elteres_biblia	25911			eltérés/vers × 14006 vers (kis n: 20 aranyvers)
-kezimunka	F3V2	R1	vetitett_c_hiba_biblia	9104			Opus-besorolás, nem mérés; × 14006 vers
-kezimunka	F3V2	R2	elteres_per_vers_arany_v2	0.7			mért: hiányzó+többlet link az arany v2-höz, 7/10 aranyvers
-kezimunka	F3V2	R2	c_hiba_per_vers	0.1			az Opus besorolása, nem mérés: 1 (c) / 10 aranyvers
-kezimunka	F3V2	R2	vetitett_elteres_biblia	2598			eltérés/vers × 3712 vers (kis n: 10 aranyvers)
-kezimunka	F3V2	R2	vetitett_c_hiba_biblia	371			Opus-besorolás, nem mérés; × 3712 vers
-kezimunka	F3V2	R3	elteres_per_vers_arany_v2	2.3			mért: hiányzó+többlet link az arany v2-höz, 23/10 aranyvers
-kezimunka	F3V2	R3	c_hiba_per_vers	0.8			az Opus besorolása, nem mérés: 8 (c) / 10 aranyvers
-kezimunka	F3V2	R3	vetitett_elteres_biblia	12618			eltérés/vers × 5486 vers (kis n: 10 aranyvers)
-kezimunka	F3V2	R3	vetitett_c_hiba_biblia	4389			Opus-besorolás, nem mérés; × 5486 vers
-kezimunka	F3V2	R4	elteres_per_vers_arany_v2	1.7			mért: hiányzó+többlet link az arany v2-höz, 34/20 aranyvers
-kezimunka	F3V2	R4	c_hiba_per_vers	0.85			az Opus besorolása, nem mérés: 17 (c) / 20 aranyvers
-kezimunka	F3V2	R4	vetitett_elteres_biblia	13522			eltérés/vers × 7954 vers (kis n: 20 aranyvers)
-kezimunka	F3V2	R4	vetitett_c_hiba_biblia	6761			Opus-besorolás, nem mérés; × 7954 vers
-kezimunka	F3V2	Összes	elteres_per_vers_arany_v2	1.6833			mért: hiányzó+többlet link az arany v2-höz, 101/60 aranyvers
+kezimunka_pilot4_tajekoztato	F3	Összes	vetitett_elteres_biblia	69608			TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolással vetítve
+kezimunka_pilot4_tajekoztato	F3	Összes	vetitett_c_hiba_biblia	18340			TÁJÉKOZTATÓ; Opus-besorolás, nem mérés; pilot-4-réteges besorolással
+kezimunka	F3V2	ÓSZ-próza	elteres_per_vers_arany_v2	2.3			mért: hiányzó+többlet link az arany v2-höz, 23/10 aranyvers (a minta versei könyv szerint az F22-rétegre képezve)
+kezimunka	F3V2	ÓSZ-próza	c_hiba_per_vers	0.5			az Opus besorolása, nem mérés: 5 (c) / 10 aranyvers
+kezimunka	F3V2	ÓSZ-próza	vetitett_elteres_biblia	29603			eltérés/vers × 12871 vers (kis n: 10 aranyvers)
+kezimunka	F3V2	ÓSZ-próza	vetitett_c_hiba_biblia	6436			Opus-besorolás, nem mérés; × 12871 vers
+kezimunka	F3V2	költészet	elteres_per_vers_arany_v2	1.05			mért: hiányzó+többlet link az arany v2-höz, 21/20 aranyvers (a minta versei könyv szerint az F22-rétegre képezve)
+kezimunka	F3V2	költészet	c_hiba_per_vers	0.45			az Opus besorolása, nem mérés: 9 (c) / 20 aranyvers
+kezimunka	F3V2	költészet	vetitett_elteres_biblia	5251			eltérés/vers × 5001 vers (kis n: 20 aranyvers)
+kezimunka	F3V2	költészet	vetitett_c_hiba_biblia	2250			Opus-besorolás, nem mérés; × 5001 vers
+kezimunka	F3V2	próféta	elteres_per_vers_arany_v2	2.3			mért: hiányzó+többlet link az arany v2-höz, 23/10 aranyvers (a minta versei könyv szerint az F22-rétegre képezve)
+kezimunka	F3V2	próféta	c_hiba_per_vers	0.8			az Opus besorolása, nem mérés: 8 (c) / 10 aranyvers
+kezimunka	F3V2	próféta	vetitett_elteres_biblia	12264			eltérés/vers × 5332 vers (kis n: 10 aranyvers)
+kezimunka	F3V2	próféta	vetitett_c_hiba_biblia	4266			Opus-besorolás, nem mérés; × 5332 vers
+kezimunka	F3V2	evangélium+ApCsel	elteres_per_vers_arany_v2	1.6			mért: hiányzó+többlet link az arany v2-höz, 16/10 aranyvers (a minta versei könyv szerint az F22-rétegre képezve)
+kezimunka	F3V2	evangélium+ApCsel	c_hiba_per_vers	0.6			az Opus besorolása, nem mérés: 6 (c) / 10 aranyvers
+kezimunka	F3V2	evangélium+ApCsel	vetitett_elteres_biblia	7656			eltérés/vers × 4785 vers (kis n: 10 aranyvers)
+kezimunka	F3V2	evangélium+ApCsel	vetitett_c_hiba_biblia	2871			Opus-besorolás, nem mérés; × 4785 vers
+kezimunka	F3V2	levél+Jel	elteres_per_vers_arany_v2	1.8			mért: hiányzó+többlet link az arany v2-höz, 18/10 aranyvers (a minta versei könyv szerint az F22-rétegre képezve)
+kezimunka	F3V2	levél+Jel	c_hiba_per_vers	1.1			az Opus besorolása, nem mérés: 11 (c) / 10 aranyvers
+kezimunka	F3V2	levél+Jel	vetitett_elteres_biblia	5704			eltérés/vers × 3169 vers (kis n: 10 aranyvers)
+kezimunka	F3V2	levél+Jel	vetitett_c_hiba_biblia	3486			Opus-besorolás, nem mérés; × 3169 vers
+kezimunka	F3V2	Összes	elteres_per_vers_arany_v2	1.6833			mért: hiányzó+többlet link az arany v2-höz, 101/60 aranyvers (a minta versei könyv szerint az F22-rétegre képezve)
 kezimunka	F3V2	Összes	c_hiba_per_vers	0.65			az Opus besorolása, nem mérés: 39 (c) / 60 aranyvers
-kezimunka	F3V2	Összes	vetitett_elteres_biblia	54649			rétegenként vetítve, összegezve
-kezimunka	F3V2	Összes	vetitett_c_hiba_biblia	20625			Opus-besorolás, nem mérés; rétegenként vetítve
+kezimunka	F3V2	Összes	vetitett_elteres_biblia	60478			F22-rétegenként vetítve, összegezve
+kezimunka	F3V2	Összes	vetitett_c_hiba_biblia	19308			Opus-besorolás, nem mérés; F22-rétegenként vetítve
 kezimunka	F3V2	Összes	alacsony_arany	n.é.			egymodelles összeállításra nem értelmezett (PD6, G4)
+kezimunka_pilot4_tajekoztato	F3V2	Összes	vetitett_elteres_biblia	54649			TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolással vetítve
+kezimunka_pilot4_tajekoztato	F3V2	Összes	vetitett_c_hiba_biblia	20625			TÁJÉKOZTATÓ; Opus-besorolás, nem mérés; pilot-4-réteges besorolással

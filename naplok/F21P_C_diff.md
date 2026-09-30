@@ -1,6 +1,6 @@
 # F21P_C_diff.md — a C (F3) eltérései az Opus-aranytól és a régi aranytól
 
-<!-- GENERÁLT: eszkozok/karoli_strong/c_diff.py | scope=f21p F3, a kapun átment aranyversek (60) és a C régi-arany-hármasai | forras=f21p/valaszok/F3.jsonl, f21p/arany_opus.jsonl, f21p/meres_kizaras.tsv, f21p/c_diff_besorolas.tsv, f21p/c_regi_arany_besorolas.tsv, f21p/arany_opus_v2.jsonl, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv | ts=2026-09-30T13:12:52+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
+<!-- GENERÁLT: eszkozok/karoli_strong/c_diff.py | scope=f21p F3, a kapun átment aranyversek (60) és a C régi-arany-hármasai | forras=f21p/valaszok/F3.jsonl, f21p/arany_opus.jsonl, f21p/meres_kizaras.tsv, f21p/c_diff_besorolas.tsv, f21p/c_regi_arany_besorolas.tsv, f21p/arany_opus_v2.jsonl, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv | ts=2026-09-30T15:23:13+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
 
 **A számok a szkript kimenetei** (a meres.py definícióival: link = (magyar sorszám, eredeti sorszám), a f21p/meres_kizaras.tsv tokenjei nélkül). **Az osztályba sorolás kézi ítélet (Opus, F21.11), nem mérés.** Osztályok: (a) konvenciókülönbség — a f21p/arany_opus_jegyzetek.md 2. szakaszának tíz konvenciója; (b) az arany vitatható döntése — a jegyzet 6. szakaszának táblázata; (c) a C valódi hibája az arany szerint; a régi aranynál (d) a régi arany hibás, (e) mérési műtermék (a megadott felosztáson túli osztály, l. 6. pont).
 
@@ -131,26 +131,26 @@ A **P4** sor a meres.py definíciója (a f21p/meres_eredmeny.tsv C-sorával azon
 | mérőszám | érték |
 |---|---|
 | egyezés — korábbi, összetett Strong nélkül (kontroll) | 75.0% (24/32) |
-| egyezés — halmaz-definíció, kizárás nélkül | 93.8% (30/32) |
-| kizárva: a régi arany hibás (f21p/regi_arany_hibas.tsv) | 2 hármas |
-| egyezés — halmaz-definíció, a hibás hármasok nélkül | 100.0% (30/30) |
+| **egyezés — halmaz-definíció, kizárás nélkül (MÉRT, DT21 i; a küszöb ehhez viszonyít)** | 93.8% (30/32) |
+| hibásnak jelölt (f21p/regi_arany_hibas.tsv; DT21 i óta csak az 1Móz 6:17) | 1 hármas |
+| egyezés — halmaz-definíció, a hibásnak jelölt hármas nélkül (TÁJÉKOZTATÓ, nem minősít) | 96.8% (30/31) |
 
-A korábbi definíció szerint nem egyező 8 hármas (kontroll). Az osztály kézi ítélet; (d) = a régi arany (konkordancia/Karoli_Strong_kivonat.tsv) maga a hibás.
+A korábbi definíció szerint nem egyező 8 hármas (kontroll). Az osztály kézi ítélet (Opus-besorolás, nem mérés); (d) = a régi arany (konkordancia/Karoli_Strong_kivonat.tsv) maga a hibás; (b) = vitatható: a régi arany ítélete nem hibás, a C megoldása más. **DT21 i) (felhasználói döntés):** az 1Móz 13:4 „segítségűl hívá” H7121+H3068 korábbi (d)-jelölése visszavonva; osztálya (b), a hármas nem kizárt, a mért értékben nem-egyezésként számít.
 
 | vers | Károli-szó | régi Strong | a C linkje(i) ehhez a szóhoz | halmaz-definíció | hibás-jelölés | osztály | indok (kézi) |
 |---|---|---|---|---|---|---|---|
 | 1Móz 4:12 | bujdosó és vándorló | H5128+H5110 | 14 bujdosó -> 13 נָ֥ע H5128 [a wanderer]; 15 és -> 14 וָ H9002 [and]; 16 vándorló -> 15 נָ֖ד H5110 [a fugitive] | egyezik | — | e | mérési műtermék: a régi arany összetett Strongot ad (+), a meres.py korábban (F21.10) a teljes karakterláncot hasonlította, így ez sosem egyezhetett (F21.12-ben javítva); mindkét összetevő a C linkjei között van |
-| 1Móz 6:17 | élő lélek | H5315+H2416 | 14 élő -> 21 חַיִּ֔ים H2416 [life]; 15 lélek -> 20 ר֣וּחַ H7307 [[the] breath of] | nem egyezik | kizárva (hibás) | d | a régi arany hibás: a versben nincs H5315 (a héber רוּחַ חַיִּים, H7307 + H2416); a C lélek -> H7307 linkje helyes. Összetett Strong is (l. e) |
+| 1Móz 6:17 | élő lélek | H5315+H2416 | 14 élő -> 21 חַיִּ֔ים H2416 [life]; 15 lélek -> 20 ר֣וּחַ H7307 [[the] breath of] | nem egyezik | hibásnak jelölt (tájékoztató kizárás) | d | a régi arany hibás: a versben nincs H5315 (a héber רוּחַ חַיִּים, H7307 + H2416); a C lélek -> H7307 linkje helyes. Összetett Strong is (l. e) |
 | 1Móz 7:23 | és csak Noé marada meg | H7604+H0389 | 29 és -> 28 וַ H9001 [and]; 30 csak -> 30 אַךְ H0389 [only]; 31 Noé -> 31 נֹ֛חַ H5146 [Noah]; 32 marada -> 29 יִשָּׁ֧אֶר H7604 [he was left]; 33 meg -> 29 יִשָּׁ֧אֶר H7604 [he was left] | egyezik | — | e | mérési műtermék (összetett Strong); mindkét összetevő a C linkjei között van |
 | 1Móz 12:8 | segítségűl hívá az Úr nevét | H7121+H8034 | 25 segítségűl -> 33 יִּקְרָ֖א H7121 [he called]; 26 hívá -> 33 יִּקְרָ֖א H7121 [he called]; 27 az -> —; 28 Úr -> 36 יְהוָֽה H3068 [Yahweh]; 29 nevét -> 34 בְּ H9003 [on], 35 שֵׁ֥ם H8034 [[the] name of] | egyezik | — | e | mérési műtermék (összetett Strong); mindkét összetevő a C linkjei között van |
 | 1Móz 12:17 | nagy csapásokkal | H5061+H1419 | 11 nagy -> 7 גְּדֹלִ֖ים H1419 [great]; 12 csapásokkal -> 6 נְגָעִ֥ים H5061 [plagues] | egyezik | — | e | mérési műtermék (összetett Strong); mindkét összetevő a C linkjei között van |
-| 1Móz 13:4 | segítségűl hívá | H7121+H3068 | 11 segítségűl -> 11 יִּקְרָ֥א H7121 [he called]; 12 hívá -> 11 יִּקְרָ֥א H7121 [he called] | nem egyezik | kizárva (hibás) | d | a régi arany vitatható: a segítségűl hívá kifejezésben nincs YHWH (az a versben az Úrnak szó, a C ott köti); a H7121 a C linkjei között van. Összetett Strong is (l. e) |
+| 1Móz 13:4 | segítségűl hívá | H7121+H3068 | 11 segítségűl -> 11 יִּקְרָ֥א H7121 [he called]; 12 hívá -> 11 יִּקְרָ֥א H7121 [he called] | nem egyezik | — | b | VISSZAVONT (d)-jelölés (DT21 i, felhasználói döntés): vitatható — a régi arany ítélete nem hibás (a H3068 a versben van, a régi arany a kifejezéshez köti), a C megoldása más: a segítségűl hívá kifejezéshez csak a H7121-et köti, a YHWH-t az Úrnak szóhoz; a hármas nem kizárt, a mért (kizárás nélküli) értékben nem-egyezésként számít. Összetett Strong is (l. e) |
 | 1Móz 13:14 | Emeld fel szemeidet | H5375+H5869 | 10 Emeld -> 12 שָׂ֣א H5375 [lift up]; 11 fel -> 12 שָׂ֣א H5375 [lift up]; 12 szemeidet -> 14 עֵינֶ֙י H5869 [eyes], 15 ךָ֙ H9021 [your] | egyezik | — | e | mérési műtermék (összetett Strong); mindkét összetevő a C linkjei között van |
 | 1Móz 13:4 | segítségűl hívá ott Ábrám az Úrnak nevét | H7121+H8034 | 11 segítségűl -> 11 יִּקְרָ֥א H7121 [he called]; 12 hívá -> 11 יִּקְרָ֥א H7121 [he called]; 13 ott -> 12 שָׁ֛ם H8033 [there]; 14 Ábrám -> 13 אַבְרָ֖ם H0087 [Abram]; 15 az -> —; 16 Úrnak -> 16 יְהוָֽה H3068 [Yahweh]; 17 nevét -> 14 בְּ H9003 [on], 15 שֵׁ֥ם H8034 [[the] name of] | egyezik | — | e | mérési műtermék (összetett Strong); mindkét összetevő a C linkjei között van |
 
 (e) = mérési műtermék (F21.12-ben elfogadva, a meres.py-ban javítva): a Karoli_Strong_kivonat.tsv összetett Strongja („H5128+H5110”) a korábbi egyezésvizsgálatban egész karakterláncként szerepelt. A halmaz-definícióval mind a 6 (e) hármas egyezik.
 
-Osztályonként (kézi): (a) 0, (b) 0, (c) 0, (d) 2, (e) 6.
+Osztályonként (kézi): (a) 0, (b) 1, (c) 0, (d) 1, (e) 6.
 
 ## 7. A C diffje az arany v2-höz (f21p/arany_opus_v2.jsonl; jóváhagyásig nem befagyasztott)
 

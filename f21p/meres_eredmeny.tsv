@@ -78,123 +78,123 @@ pontossag_lefedettseg	A∪B (döntőbíró előtti felső korlát)	Összes	lefed
 regi_arany	A	R1	hármasok_kapun_atment_versekben	24		24			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	A	R1	nem_talalhato_karoli_szo	0	24	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	A	R1	egyezes_korabbi_osszetett_strong_nelkul	15	24	0.625	0.4577	0.7670	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	A	R1	egyezes	20	24	0.833333	0.6762	0.9229	halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	A	R1	hibas_regi_hármas_kizarva	2	24	0.0833333			f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	A	R1	egyezes_hibas_kizarva	20	22	0.909091	0.7591	0.9694	halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	A	R1	egyezes	20	24	0.833333	0.6762	0.9229	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A	R1	hibas_regi_hármas_kizarva	1	24	0.0416667			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A	R1	egyezes_hibas_kizarva_tajekoztato	20	23	0.869565	0.7147	0.9466	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	A	R2	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	A	R2	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	A	R2	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	A	R2	egyezes	0	0				halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	A	R2	hibas_regi_hármas_kizarva	0	0				f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	A	R2	egyezes_hibas_kizarva	0	0				halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	A	R2	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A	R2	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A	R2	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	A	R3	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	A	R3	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	A	R3	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	A	R3	egyezes	0	0				halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	A	R3	hibas_regi_hármas_kizarva	0	0				f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	A	R3	egyezes_hibas_kizarva	0	0				halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	A	R3	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A	R3	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A	R3	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	A	R4	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	A	R4	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	A	R4	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	A	R4	egyezes	0	0				halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	A	R4	hibas_regi_hármas_kizarva	0	0				f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	A	R4	egyezes_hibas_kizarva	0	0				halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	A	R4	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A	R4	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A	R4	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	A	Összes	hármasok_kapun_atment_versekben	24		24			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	A	Összes	nem_talalhato_karoli_szo	0	24	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	A	Összes	egyezes_korabbi_osszetett_strong_nelkul	15	24	0.625	0.4577	0.7670	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	A	Összes	egyezes	20	24	0.833333	0.6762	0.9229	halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	A	Összes	hibas_regi_hármas_kizarva	2	24	0.0833333			f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	A	Összes	egyezes_hibas_kizarva	20	22	0.909091	0.7591	0.9694	halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	A	Összes	egyezes	20	24	0.833333	0.6762	0.9229	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A	Összes	hibas_regi_hármas_kizarva	1	24	0.0416667			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A	Összes	egyezes_hibas_kizarva_tajekoztato	20	23	0.869565	0.7147	0.9466	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	B	R1	hármasok_kapun_atment_versekben	6		6			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	B	R1	nem_talalhato_karoli_szo	0	6	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	B	R1	egyezes_korabbi_osszetett_strong_nelkul	4	6	0.666667	0.3470	0.8827	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	B	R1	egyezes	4	6	0.666667	0.3470	0.8827	halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	B	R1	hibas_regi_hármas_kizarva	0	6	0			f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	B	R1	egyezes_hibas_kizarva	4	6	0.666667	0.3470	0.8827	halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	B	R1	egyezes	4	6	0.666667	0.3470	0.8827	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	B	R1	hibas_regi_hármas_kizarva	0	6	0			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	B	R1	egyezes_hibas_kizarva_tajekoztato	4	6	0.666667	0.3470	0.8827	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	B	R2	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	B	R2	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	B	R2	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	B	R2	egyezes	0	0				halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	B	R2	hibas_regi_hármas_kizarva	0	0				f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	B	R2	egyezes_hibas_kizarva	0	0				halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	B	R2	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	B	R2	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	B	R2	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	B	R3	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	B	R3	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	B	R3	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	B	R3	egyezes	0	0				halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	B	R3	hibas_regi_hármas_kizarva	0	0				f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	B	R3	egyezes_hibas_kizarva	0	0				halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	B	R3	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	B	R3	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	B	R3	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	B	R4	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	B	R4	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	B	R4	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	B	R4	egyezes	0	0				halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	B	R4	hibas_regi_hármas_kizarva	0	0				f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	B	R4	egyezes_hibas_kizarva	0	0				halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	B	R4	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	B	R4	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	B	R4	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	B	Összes	hármasok_kapun_atment_versekben	6		6			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	B	Összes	nem_talalhato_karoli_szo	0	6	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	B	Összes	egyezes_korabbi_osszetett_strong_nelkul	4	6	0.666667	0.3470	0.8827	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	B	Összes	egyezes	4	6	0.666667	0.3470	0.8827	halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	B	Összes	hibas_regi_hármas_kizarva	0	6	0			f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	B	Összes	egyezes_hibas_kizarva	4	6	0.666667	0.3470	0.8827	halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	B	Összes	egyezes	4	6	0.666667	0.3470	0.8827	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	B	Összes	hibas_regi_hármas_kizarva	0	6	0			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	B	Összes	egyezes_hibas_kizarva_tajekoztato	4	6	0.666667	0.3470	0.8827	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	C	R1	hármasok_kapun_atment_versekben	32		32			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	C	R1	nem_talalhato_karoli_szo	0	32	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	C	R1	egyezes_korabbi_osszetett_strong_nelkul	24	32	0.75	0.6080	0.8530	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	C	R1	egyezes	30	32	0.9375	0.8277	0.9791	halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	C	R1	hibas_regi_hármas_kizarva	2	32	0.0625			f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	C	R1	egyezes_hibas_kizarva	30	30	1	0.9173	1.0000	halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	C	R1	egyezes	30	32	0.9375	0.8277	0.9791	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	C	R1	hibas_regi_hármas_kizarva	1	32	0.03125			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	C	R1	egyezes_hibas_kizarva_tajekoztato	30	31	0.967742	0.8676	0.9928	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	C	R2	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	C	R2	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	C	R2	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	C	R2	egyezes	0	0				halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	C	R2	hibas_regi_hármas_kizarva	0	0				f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	C	R2	egyezes_hibas_kizarva	0	0				halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	C	R2	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	C	R2	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	C	R2	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	C	R3	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	C	R3	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	C	R3	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	C	R3	egyezes	0	0				halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	C	R3	hibas_regi_hármas_kizarva	0	0				f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	C	R3	egyezes_hibas_kizarva	0	0				halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	C	R3	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	C	R3	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	C	R3	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	C	R4	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	C	R4	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	C	R4	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	C	R4	egyezes	0	0				halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	C	R4	hibas_regi_hármas_kizarva	0	0				f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	C	R4	egyezes_hibas_kizarva	0	0				halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	C	R4	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	C	R4	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	C	R4	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	C	Összes	hármasok_kapun_atment_versekben	32		32			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	C	Összes	nem_talalhato_karoli_szo	0	32	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	C	Összes	egyezes_korabbi_osszetett_strong_nelkul	24	32	0.75	0.6080	0.8530	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	C	Összes	egyezes	30	32	0.9375	0.8277	0.9791	halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	C	Összes	hibas_regi_hármas_kizarva	2	32	0.0625			f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	C	Összes	egyezes_hibas_kizarva	30	30	1	0.9173	1.0000	halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	C	Összes	egyezes	30	32	0.9375	0.8277	0.9791	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	C	Összes	hibas_regi_hármas_kizarva	1	32	0.03125			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	C	Összes	egyezes_hibas_kizarva_tajekoztato	30	31	0.967742	0.8676	0.9928	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	A+B magas (A∩B)	R1	hármasok_kapun_atment_versekben	5		5			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	A+B magas (A∩B)	R1	nem_talalhato_karoli_szo	0	5	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	A+B magas (A∩B)	R1	egyezes_korabbi_osszetett_strong_nelkul	3	5	0.6	0.2725	0.8573	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	A+B magas (A∩B)	R1	egyezes	3	5	0.6	0.2725	0.8573	halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	A+B magas (A∩B)	R1	hibas_regi_hármas_kizarva	0	5	0			f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	A+B magas (A∩B)	R1	egyezes_hibas_kizarva	3	5	0.6	0.2725	0.8573	halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	A+B magas (A∩B)	R1	egyezes	3	5	0.6	0.2725	0.8573	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A+B magas (A∩B)	R1	hibas_regi_hármas_kizarva	0	5	0			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A+B magas (A∩B)	R1	egyezes_hibas_kizarva_tajekoztato	3	5	0.6	0.2725	0.8573	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	A+B magas (A∩B)	R2	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	A+B magas (A∩B)	R2	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	A+B magas (A∩B)	R2	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	A+B magas (A∩B)	R2	egyezes	0	0				halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	A+B magas (A∩B)	R2	hibas_regi_hármas_kizarva	0	0				f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	A+B magas (A∩B)	R2	egyezes_hibas_kizarva	0	0				halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	A+B magas (A∩B)	R2	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A+B magas (A∩B)	R2	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A+B magas (A∩B)	R2	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	A+B magas (A∩B)	R3	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	A+B magas (A∩B)	R3	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	A+B magas (A∩B)	R3	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	A+B magas (A∩B)	R3	egyezes	0	0				halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	A+B magas (A∩B)	R3	hibas_regi_hármas_kizarva	0	0				f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	A+B magas (A∩B)	R3	egyezes_hibas_kizarva	0	0				halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	A+B magas (A∩B)	R3	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A+B magas (A∩B)	R3	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A+B magas (A∩B)	R3	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	A+B magas (A∩B)	R4	hármasok_kapun_atment_versekben	0		0			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	A+B magas (A∩B)	R4	nem_talalhato_karoli_szo	0	0				a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	A+B magas (A∩B)	R4	egyezes_korabbi_osszetett_strong_nelkul	0	0				KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	A+B magas (A∩B)	R4	egyezes	0	0				halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	A+B magas (A∩B)	R4	hibas_regi_hármas_kizarva	0	0				f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	A+B magas (A∩B)	R4	egyezes_hibas_kizarva	0	0				halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	A+B magas (A∩B)	R4	egyezes	0	0				MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A+B magas (A∩B)	R4	hibas_regi_hármas_kizarva	0	0				TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A+B magas (A∩B)	R4	egyezes_hibas_kizarva_tajekoztato	0	0				TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 regi_arany	A+B magas (A∩B)	Összes	hármasok_kapun_atment_versekben	5		5			nevező: régi arany hármasok a rétegben, ahol a vers kapun átment
 regi_arany	A+B magas (A∩B)	Összes	nem_talalhato_karoli_szo	0	5	0			a Károli-szó/kifejezés nincs a vers tokenjei között (a nevezőben benne van)
 regi_arany	A+B magas (A∩B)	Összes	egyezes_korabbi_osszetett_strong_nelkul	3	5	0.6	0.2725	0.8573	KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik
-regi_arany	A+B magas (A∩B)	Összes	egyezes	3	5	0.6	0.2725	0.8573	halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül
-regi_arany	A+B magas (A∩B)	Összes	hibas_regi_hármas_kizarva	0	5	0			f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai
-regi_arany	A+B magas (A∩B)	Összes	egyezes_hibas_kizarva	3	5	0.6	0.2725	0.8573	halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)
+regi_arany	A+B magas (A∩B)	Összes	egyezes	3	5	0.6	0.2725	0.8573	MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít
+regi_arany	A+B magas (A∩B)	Összes	hibas_regi_hármas_kizarva	0	5	0			TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)
+regi_arany	A+B magas (A∩B)	Összes	egyezes_hibas_kizarva_tajekoztato	3	5	0.6	0.2725	0.8573	TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható
 ab_egyezes	A–B	R1	versek_mindketto_atment	15	100	0.15			nevező: a rétegben futott versek
 ab_egyezes	A–B	R1	link_egyezes (uniós arány)	93	286	0.325175	0.2814	0.3722	Σ|A∩B| / Σ|A∪B|, csak ahol mindkettő átment
 ab_egyezes	A–B	R1	azonos_linkhalmazu_versek	2	15	0.133333			vers-szintű egyezés

@@ -34,7 +34,10 @@ Definíciók (F21 brief P4, a v1.1 döntésekkel):
     Kontrollként megmarad a korábbi érték (egyezes_korabbi_osszetett_strong_nelkul:
     a Strong mezőt egész karakterláncként hasonlítja, így összetett Strong soha
     nem egyezhet), és külön sor a f21p/regi_arany_hibas.tsv-ben hibásnak jelölt
-    hármasok kizárásával (egyezes_hibas_kizarva; a nevezőből is kimaradnak).
+    hármasok kizárásával (egyezes_hibas_kizarva_tajekoztato; a nevezőből is kimaradnak).
+    DT21 i): a MÉRT (elsődleges) érték a kizárás nélküli `egyezes`; a küszöb
+    (95%) ehhez viszonyít. A kizárásos érték csak tájékoztató. A hibás-lista
+    DT21 i) óta csak az 1Móz 6:17-et tartalmazza (a 13:4 visszavonva).
   * A–B egyezés = Σ|A∩B| / Σ|A∪B| a linkeken, csak ahol A és B is átment.
   * kapuhiba: első próbálkozásra = az első nyers válasz kapuja (újraszámolva a
     `nyers[0]`-ból; keresztellenőrzés: egyezik a jsonl `probalkozas=2` verseivel és a
@@ -245,7 +248,12 @@ def regi_hibas():
     """A régi arany hibásnak jelölt hármasai: {(igehely, karoli_szo, strong): ok}."""
     if not os.path.exists(REGI_HIBAS_UT):
         return {}
-    return {(r['igehely'], r['karoli_szo'], r['strong']): r['ok'] for r in _tsv(REGI_HIBAS_UT)}
+    # a '#'-kezdetű sor MANUAL-proveniencia (DT21 i: az 1Móz 13:4 visszavonása), átugorjuk
+    with open(REGI_HIBAS_UT, encoding='utf-8') as f:
+        sorok = [s.rstrip('\n').rstrip('\r') for s in f if s.strip() and not s.startswith('#')]
+    fej = sorok[0].split('\t')
+    return {(r['igehely'], r['karoli_szo'], r['strong']): r['ok']
+            for r in (dict(zip(fej, s.split('\t'))) for s in sorok[1:])}
 
 
 def regi_egyezik(adat, ig, szo, strong, links, halmaz=True):
@@ -308,12 +316,12 @@ def regi_arany(adat, sorok):
                       'KONTROLL, korábbi (F21.10) definíció: a Strong mező egész karakterláncként; összetett Strong sosem egyezik',
                       intervallum=True)
             sorok.add('regi_arany', nev, ret, 'egyezes', egyezik, hb,
-                      'halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül',
+                      'MÉRT (elsődleges, DT21 i): halmaz-definíció (F21.12): az összetett Strong minden összetevője a Károli-szóhoz linkelt eredeti Strongok között; kizárás nélkül; a küszöb ehhez viszonyít',
                       intervallum=True)
             sorok.add('regi_arany', nev, ret, 'hibas_regi_hármas_kizarva', kizart, hb,
-                      'f21p/regi_arany_hibas.tsv: a régi arany hibás hármasai')
-            sorok.add('regi_arany', nev, ret, 'egyezes_hibas_kizarva', egyezik_k, hb_k,
-                      'halmaz-definíció, a hibás régi hármasok nélkül (a nevezőből is kimaradnak)',
+                      'TÁJÉKOZTATÓ: f21p/regi_arany_hibas.tsv: a régi arany hibásnak jelölt hármasai (DT21 i óta csak az 1Móz 6:17; a 13:4 visszavonva)')
+            sorok.add('regi_arany', nev, ret, 'egyezes_hibas_kizarva_tajekoztato', egyezik_k, hb_k,
+                      'TÁJÉKOZTATÓ (DT21 i): halmaz-definíció, a hibásnak jelölt régi hármas(ok) nélkül (a nevezőből is kimarad); küszöb-viszonyításra nem használható',
                       intervallum=True)
 
 
@@ -599,7 +607,10 @@ def md_ir(sorok, adat_ts):
           '`egyezes_korabbi_osszetett_strong_nelkul` a korábbi (F21.10) érték kontrollként (a Strong mező egész '
           'karakterláncként; összetett Strong sosem egyezhetett). A `hibas_regi_hármas_kizarva` a '
           'f21p/regi_arany_hibas.tsv-ben hibásnak jelölt hármasok száma („N hármas kizárva: a régi arany '
-          'hibás”); az `egyezes_hibas_kizarva` ezek nélkül számol, a nevezőből is kihagyva.', '']
+          'hibás”); az `egyezes_hibas_kizarva_tajekoztato` ezek nélkül számol, a nevezőből is kihagyva. '
+          'DT21 i): a MÉRT (elsődleges) érték a kizárás nélküli `egyezes`, a küszöb ehhez viszonyít; a '
+          'kizárásos érték csak TÁJÉKOZTATÓ. A hibás-lista csak az 1Móz 6:17-et tartalmazza (az 1Móz 13:4 '
+          'jelölése a felhasználó döntése szerint visszavonva).', '']
     szakaszok = []
     for r in sorok.lista:
         if r['szakasz'] not in szakaszok:

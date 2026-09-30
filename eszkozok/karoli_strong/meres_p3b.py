@@ -28,7 +28,8 @@ Nincs API-hívás. Az arany v2 befagyasztott (sha256-ellenőrzés).
 
 Az öt rögzített feltétel (Döntési szabály): (1) magas pontosság ≥ 98% minden
 rétegben; (2) összes link lefedettsége ≥ 95%; (3) régi arany ≥ 95% (halmaz-
-definíció; kizárás nélkül ÉS a PD9 szerinti kizárással); (4) a vetített költség
+definíció; a MÉRT érték a kizárás nélküli, DT21 i; a kizárásos — csak az 1Móz
+6:17 — TÁJÉKOZTATÓ, nem minősít); (4) a vetített költség
 90%-os felső széle ≤ 60 USD (f21p/koltseg_vetites_p3b.tsv); (5) a vetített
 alacsony arány ≤ 10% (link-arány a végső kimenetben; a 200 versen és az aranyon).
 Minősítés (megfelel / nem felel meg) csak az A+B-re és az A+B+C-re.
@@ -190,8 +191,9 @@ def egymodell(adat, sorok, nev, f):
         sorok.add('feltetelek', nev, ret, 'lefedettseg', t, g, 'a kapun átment aranyverseken')
         ok_v = {ig for ig in adat.versek if adat.ok(f, ig)}
         hb, e, hbk, ek = regi_osszeallitas(adat, lambda ig: adat.linkek(f, ig), ret, ok_v)
-        sorok.add('feltetelek', nev, ret, 'regi_arany_kizaras_nelkul', e, hb, 'kapun átment versek')
-        sorok.add('feltetelek', nev, ret, 'regi_arany_pd9_kizarassal', ek, hbk, 'kapun átment versek')
+        sorok.add('feltetelek', nev, ret, 'regi_arany_kizaras_nelkul', e, hb, 'MÉRT (DT21 i); kapun átment versek')
+        sorok.add('feltetelek', nev, ret, 'regi_arany_kizarassal_tajekoztato', ek, hbk,
+                  'TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek')
         sorok.add('feltetelek', nev, ret, 'magas_pontossag', 'n.é.', '', 'egymodelles (PD6)')
         sorok.add('feltetelek', nev, ret, 'alacsony_arany', 'n.é.', '', 'egymodelles (PD6)')
 
@@ -220,8 +222,9 @@ def tobbmodell(adat, sorok, kimenet):
             sorok.add('feltetelek', oss, ret, 'pontossag_osszes (tajekoztato)', t, c)
             sorok.add('feltetelek', oss, ret, 'lefedettseg', t, g, 'minden aranyvers')
             hb, e, hbk, ek = regi_osszeallitas(adat, lambda ig: set(kimenet[ig][oss]), ret)
-            sorok.add('feltetelek', oss, ret, 'regi_arany_kizaras_nelkul', e, hb, 'a végső kimeneten, 200 vers')
-            sorok.add('feltetelek', oss, ret, 'regi_arany_pd9_kizarassal', ek, hbk, 'a végső kimeneten, 200 vers')
+            sorok.add('feltetelek', oss, ret, 'regi_arany_kizaras_nelkul', e, hb, 'MÉRT (DT21 i); a végső kimeneten, 200 vers')
+            sorok.add('feltetelek', oss, ret, 'regi_arany_kizarassal_tajekoztato', ek, hbk,
+                      'TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers')
             for halmaz, vs in (('200 vers', [ig for ig in adat.versek if _ret(adat, ig, ret)]), ('arany', arany_v)):
                 osz = sum(len(kimenet[ig][oss]) for ig in vs)
                 ala = sum(1 for ig in vs for s in kimenet[ig][oss].values() if s == 'alacsony')
@@ -401,16 +404,16 @@ def minosit(sorok):
         lf = _arany(sorok, oss, meres.OSSZES, 'lefedettseg')
         feltetel['2'] = bool(lf) and lf[0] / lf[1] >= 0.95
         r0 = _arany(sorok, oss, meres.OSSZES, 'regi_arany_kizaras_nelkul')
-        rk = _arany(sorok, oss, meres.OSSZES, 'regi_arany_pd9_kizarassal')
+        rk = _arany(sorok, oss, meres.OSSZES, 'regi_arany_kizarassal_tajekoztato')
         feltetel['3'] = bool(r0) and r0[0] / r0[1] >= 0.95
-        feltetel['3_pd9'] = bool(rk) and rk[0] / rk[1] >= 0.95
+        feltetel['3_tajekoztato'] = bool(rk) and rk[0] / rk[1] >= 0.95
         feltetel['4'] = (kf[oss][2] <= 60.0) if oss in kf else None
         al = _arany(sorok, oss, meres.OSSZES, 'alacsony_arany [200 vers]')
         feltetel['5'] = bool(al) and al[0] / al[1] <= 0.10
         for k, v in feltetel.items():
             sorok.add('minosites', oss, meres.OSSZES, 'feltetel_%s' % k, {True: 'teljesül', False: 'nem teljesül', None: 'nem mért'}[v])
         for cimke, kulcsok in (('minosites (kizárás nélküli régi arannyal)', ('1', '2', '3', '4', '5')),
-                               ('minosites (PD9 szerinti kizárással)', ('1', '2', '3_pd9', '4', '5'))):
+                               ('minosites (tájékoztató: 1Móz 6:17 kizárva)', ('1', '2', '3_tajekoztato', '4', '5'))):
             bukott = [k for k in kulcsok if feltetel[k] is False]
             nem_mert = [k for k in kulcsok if feltetel[k] is None]
             if bukott:
@@ -488,10 +491,10 @@ def kiir(sorok, ts):
     ki += ['## a) Az öt feltétel összeállításonként és rétegenként', '']
     ki += tabla('feltetelek', ['arany_versek_kapun_atment', 'arany_versek', 'magas_pontossag', 'pontossag_osszes (tajekoztato, PD6)',
                                'pontossag_osszes (tajekoztato)', 'lefedettseg', 'regi_arany_kizaras_nelkul',
-                               'regi_arany_pd9_kizarassal', 'alacsony_arany', 'alacsony_arany [200 vers]', 'alacsony_arany [arany]'],
+                               'regi_arany_kizarassal_tajekoztato', 'alacsony_arany', 'alacsony_arany [200 vers]', 'alacsony_arany [arany]'],
                 OSSZEALLITASOK)
     kf = koltseg_felso()
-    ki += ['(4) vetített költség, teljes Biblia (f21p/koltseg_vetites_p3b.tsv, 90%; a bootstrap egysége a köteg — DT21 f, nyitott):', '']
+    ki += ['(4) vetített költség, teljes Biblia (f21p/koltseg_vetites_p3b.tsv, 90%; a bootstrap egysége a köteg — DT21 f: elfogadva, felhasználói döntés):', '']
     for o in OSSZEALLITASOK:
         if o in kf:
             ki.append('- %s: %.2f USD [%.2f–%.2f]' % (o, *kf[o]))
@@ -611,7 +614,7 @@ def onteszt():
             s.add('feltetelek', oss, r, 'magas_pontossag', 99, 100)
             s.add('feltetelek', oss, r, 'lefedettseg', 96, 100)
             s.add('feltetelek', oss, r, 'regi_arany_kizaras_nelkul', 30, 32)
-            s.add('feltetelek', oss, r, 'regi_arany_pd9_kizarassal', 30, 30)
+            s.add('feltetelek', oss, r, 'regi_arany_kizarassal_tajekoztato', 30, 30)
             s.add('feltetelek', oss, r, 'alacsony_arany [200 vers]', 5, 100)
     minosit(s)
     m = {(x[1], x[3]): x[4] for x in s.lista if x[0] == 'minosites'}

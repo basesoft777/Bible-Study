@@ -248,12 +248,14 @@ def ellenoriz(adat):
     for p in PELDAK:
         if p not in kezi:
             hibak.append('a példa nem gépi eltérés: %s' % (p,))
-    # a halmaz-definíció szerint nem egyező hármas (d) osztályú és hibás-jelölt
-    # kell legyen; minden hibás-jelölt hármas (d)
+    # a halmaz-definíció szerint nem egyező hármas vagy (d) osztályú és hibás-jelölt,
+    # vagy (b) vitatható és NEM hibás-jelölt (DT21 i: az 1Móz 13:4 visszavont (d)-jelölése);
+    # minden hibás-jelölt hármas (d)
     for x in regi_elteresek(adat):
         kulcs, e_halmaz, hibas_ok = x[:3], x[4], x[5]
-        if not e_halmaz and (kulcs not in rkezi or rkezi[kulcs]['osztaly'] != 'd' or not hibas_ok):
-            hibak.append('régi arany: a halmaz-definíció szerint nem egyező hármas nem (d)/hibás-jelölt: %s' % (kulcs,))
+        oszt = rkezi[kulcs]['osztaly'] if kulcs in rkezi else None
+        if not e_halmaz and not ((oszt == 'd' and hibas_ok) or (oszt == 'b' and not hibas_ok)):
+            hibak.append('régi arany: a halmaz-definíció szerint nem egyező hármas se nem (d)+hibás-jelölt, se nem (b) vitatható: %s' % (kulcs,))
         if hibas_ok and (kulcs not in rkezi or rkezi[kulcs]['osztaly'] != 'd'):
             hibak.append('régi arany: hibás-jelölt hármas nem (d) osztályú: %s' % (kulcs,))
     # v2: a v2-höz mért eltérés vagy örökli a v1-besorolást, vagy a v2_uj fájlban van
@@ -392,12 +394,15 @@ def jelentes(adat, el, kezi, regi, rkezi, el_v2=None, kezi_v2=None, v2=None):
            'az itt csak kontroll.', '',
            '| mérőszám | érték |', '|---|---|',
            '| egyezés — korábbi, összetett Strong nélkül (kontroll) | %s |' % _pct(korabbi_ok, n_regi),
-           '| egyezés — halmaz-definíció, kizárás nélkül | %s |' % _pct(halmaz_ok, n_regi),
-           '| kizárva: a régi arany hibás (f21p/regi_arany_hibas.tsv) | %d hármas |' % hibas_n,
-           '| egyezés — halmaz-definíció, a hibás hármasok nélkül | %s |' % _pct(halmaz_ok_k, n_regi - hibas_n),
+           '| **egyezés — halmaz-definíció, kizárás nélkül (MÉRT, DT21 i; a küszöb ehhez viszonyít)** | %s |' % _pct(halmaz_ok, n_regi),
+           '| hibásnak jelölt (f21p/regi_arany_hibas.tsv; DT21 i óta csak az 1Móz 6:17) | %d hármas |' % hibas_n,
+           '| egyezés — halmaz-definíció, a hibásnak jelölt hármas nélkül (TÁJÉKOZTATÓ, nem minősít) | %s |' % _pct(halmaz_ok_k, n_regi - hibas_n),
            '',
-           'A korábbi definíció szerint nem egyező %d hármas (kontroll). Az osztály kézi ítélet; '
-           '(d) = a régi arany (konkordancia/Karoli_Strong_kivonat.tsv) maga a hibás.' % len(regi), '',
+           'A korábbi definíció szerint nem egyező %d hármas (kontroll). Az osztály kézi ítélet (Opus-besorolás, nem '
+           'mérés); (d) = a régi arany (konkordancia/Karoli_Strong_kivonat.tsv) maga a hibás; (b) = vitatható: a régi '
+           'arany ítélete nem hibás, a C megoldása más. **DT21 i) (felhasználói döntés):** az 1Móz 13:4 '
+           '„segítségűl hívá” H7121+H3068 korábbi (d)-jelölése visszavonva; osztálya (b), a hármas nem kizárt, a mért '
+           'értékben nem-egyezésként számít.' % len(regi), '',
            '| vers | Károli-szó | régi Strong | a C linkje(i) ehhez a szóhoz | halmaz-definíció | hibás-jelölés | osztály | indok (kézi) |',
            '|---|---|---|---|---|---|---|---|']
     for ig, szo, strong, _, e_halmaz, hibas_ok, c_szavak in regi:
@@ -406,7 +411,7 @@ def jelentes(adat, el, kezi, regi, rkezi, el_v2=None, kezi_v2=None, v2=None):
                           for p, es in c_szavak.items())
         ki.append('| %s | %s | %s | %s | %s | %s | %s | %s |' % (
             ig, szo, strong, clink, 'egyezik' if e_halmaz else 'nem egyezik',
-            'kizárva (hibás)' if hibas_ok else '—', r['osztaly'], r['indok']))
+            'hibásnak jelölt (tájékoztató kizárás)' if hibas_ok else '—', r['osztaly'], r['indok']))
     rsz = {}
     for r in rkezi.values():
         rsz[r['osztaly']] = rsz.get(r['osztaly'], 0) + 1

@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_strong/meres_v2.py | scope=f21p F3, F3V2 (arany v1/v2) | forras=f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, f21p/arany_opus.jsonl, f21p/arany_opus_v2.jsonl, f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, f21p/minta.tsv, f21p/futasnaplo.tsv | ts=2026-09-30T13:14:36+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos
+# GENERÁLT: eszkozok/karoli_strong/meres_v2.py | scope=f21p F3, F3V2 (arany v1/v2) | forras=f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, f21p/arany_opus.jsonl, f21p/arany_opus_v2.jsonl, f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, f21p/minta.tsv, f21p/futasnaplo.tsv | ts=2026-09-30T15:20:40+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos
 szakasz	osszeallitas	reteg	mero	szamlalo	nevezo
 pontossag_lefedettseg	F3 × arany v1	R1	pontossag	294	312
 pontossag_lefedettseg	F3 × arany v1	R1	lefedettseg	294	317
@@ -31,25 +31,25 @@ pontossag_lefedettseg	F3V2 × arany v2	R4	lefedettseg	309	315
 pontossag_lefedettseg	F3V2 × arany v2	Összes	pontossag	1020	1090
 pontossag_lefedettseg	F3V2 × arany v2	Összes	lefedettseg	1020	1051
 regi_arany	F3	R1	egyezes	30	32
-regi_arany	F3	R1	egyezes_hibas_kizarva	30	30
+regi_arany	F3	R1	egyezes_hibas_kizarva_tajekoztato	30	31
 regi_arany	F3	R2	egyezes	0	0
-regi_arany	F3	R2	egyezes_hibas_kizarva	0	0
+regi_arany	F3	R2	egyezes_hibas_kizarva_tajekoztato	0	0
 regi_arany	F3	R3	egyezes	0	0
-regi_arany	F3	R3	egyezes_hibas_kizarva	0	0
+regi_arany	F3	R3	egyezes_hibas_kizarva_tajekoztato	0	0
 regi_arany	F3	R4	egyezes	0	0
-regi_arany	F3	R4	egyezes_hibas_kizarva	0	0
+regi_arany	F3	R4	egyezes_hibas_kizarva_tajekoztato	0	0
 regi_arany	F3	Összes	egyezes	30	32
-regi_arany	F3	Összes	egyezes_hibas_kizarva	30	30
+regi_arany	F3	Összes	egyezes_hibas_kizarva_tajekoztato	30	31
 regi_arany	F3V2	R1	egyezes	30	32
-regi_arany	F3V2	R1	egyezes_hibas_kizarva	30	30
+regi_arany	F3V2	R1	egyezes_hibas_kizarva_tajekoztato	30	31
 regi_arany	F3V2	R2	egyezes	0	0
-regi_arany	F3V2	R2	egyezes_hibas_kizarva	0	0
+regi_arany	F3V2	R2	egyezes_hibas_kizarva_tajekoztato	0	0
 regi_arany	F3V2	R3	egyezes	0	0
-regi_arany	F3V2	R3	egyezes_hibas_kizarva	0	0
+regi_arany	F3V2	R3	egyezes_hibas_kizarva_tajekoztato	0	0
 regi_arany	F3V2	R4	egyezes	0	0
-regi_arany	F3V2	R4	egyezes_hibas_kizarva	0	0
+regi_arany	F3V2	R4	egyezes_hibas_kizarva_tajekoztato	0	0
 regi_arany	F3V2	Összes	egyezes	30	32
-regi_arany	F3V2	Összes	egyezes_hibas_kizarva	30	30
+regi_arany	F3V2	Összes	egyezes_hibas_kizarva_tajekoztato	30	31
 kapuhiba	F3	R1	elso_probara	17	100
 kapuhiba	F3	R1	vegleg	1	100
 kapuhiba	F3	R2	elso_probara	0	25

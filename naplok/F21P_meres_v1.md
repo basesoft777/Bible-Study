@@ -4,7 +4,7 @@
 
 Kizárólag szkriptkimenet; értelmezés és küszöb-minősítés nincs benne. Cellaforma: érték% (számláló/nevező) [90%-os Wilson-intervallum, linkszintű, optimista]. Az arany 60 vers (R1 20, R2 10, R3 10, R4 20), ezért a rétegenkénti értékek megbízhatósága korlátozott: a nevezőt mindig nézd. `alacsony` arány: egymodelles futásokra n.é. (PD6, G4).
 
-Régi arany (b) pont, F21.12: az `egyezes` a halmaz-definíció — a régi Strong mező '+' mentén összetevőkre bontva, a hármas akkor egyezik, ha a Károli-szó (kifejezés) valamelyik előfordulásához linkelt eredeti szavak Strongjai között MINDEN összetevő ott van. Az `egyezes_korabbi_osszetett_strong_nelkul` a korábbi (F21.10) érték kontrollként (a Strong mező egész karakterláncként; összetett Strong sosem egyezhetett). A `hibas_regi_hármas_kizarva` a f21p/regi_arany_hibas.tsv-ben hibásnak jelölt hármasok száma („N hármas kizárva: a régi arany hibás”); az `egyezes_hibas_kizarva` ezek nélkül számol, a nevezőből is kihagyva.
+Régi arany (b) pont, F21.12: az `egyezes` a halmaz-definíció — a régi Strong mező '+' mentén összetevőkre bontva, a hármas akkor egyezik, ha a Károli-szó (kifejezés) valamelyik előfordulásához linkelt eredeti szavak Strongjai között MINDEN összetevő ott van. Az `egyezes_korabbi_osszetett_strong_nelkul` a korábbi (F21.10) érték kontrollként (a Strong mező egész karakterláncként; összetett Strong sosem egyezhetett). A `hibas_regi_hármas_kizarva` a f21p/regi_arany_hibas.tsv-ben hibásnak jelölt hármasok száma („N hármas kizárva: a régi arany hibás”); az `egyezes_hibas_kizarva_tajekoztato` ezek nélkül számol, a nevezőből is kihagyva. DT21 i): a MÉRT (elsődleges) érték a kizárás nélküli `egyezes`, a küszöb ehhez viszonyít; a kizárásos érték csak TÁJÉKOZTATÓ. A hibás-lista csak az 1Móz 6:17-et tartalmazza (az 1Móz 13:4 jelölése a felhasználó döntése szerint visszavonva).
 
 ## a) Pontosság és lefedettség az Opus-aranyhoz (csak kapun átment, aranyba eső versek)
 
@@ -34,26 +34,26 @@ Régi arany (b) pont, F21.12: az `egyezes` a halmaz-definíció — a régi Stro
 | A | nem_talalhato_karoli_szo | 0.0% (0/24) | — (0/0) | — (0/0) | — (0/0) | 0.0% (0/24) |
 | A | egyezes_korabbi_osszetett_strong_nelkul | 62.5% (15/24) [46–77] | — (0/0) | — (0/0) | — (0/0) | 62.5% (15/24) [46–77] |
 | A | egyezes | 83.3% (20/24) [68–92] | — (0/0) | — (0/0) | — (0/0) | 83.3% (20/24) [68–92] |
-| A | hibas_regi_hármas_kizarva | 8.3% (2/24) | — (0/0) | — (0/0) | — (0/0) | 8.3% (2/24) |
-| A | egyezes_hibas_kizarva | 90.9% (20/22) [76–97] | — (0/0) | — (0/0) | — (0/0) | 90.9% (20/22) [76–97] |
+| A | hibas_regi_hármas_kizarva | 4.2% (1/24) | — (0/0) | — (0/0) | — (0/0) | 4.2% (1/24) |
+| A | egyezes_hibas_kizarva_tajekoztato | 87.0% (20/23) [71–95] | — (0/0) | — (0/0) | — (0/0) | 87.0% (20/23) [71–95] |
 | B | hármasok_kapun_atment_versekben | 6 | 0 | 0 | 0 | 6 |
 | B | nem_talalhato_karoli_szo | 0.0% (0/6) | — (0/0) | — (0/0) | — (0/0) | 0.0% (0/6) |
 | B | egyezes_korabbi_osszetett_strong_nelkul | 66.7% (4/6) [35–88] | — (0/0) | — (0/0) | — (0/0) | 66.7% (4/6) [35–88] |
 | B | egyezes | 66.7% (4/6) [35–88] | — (0/0) | — (0/0) | — (0/0) | 66.7% (4/6) [35–88] |
 | B | hibas_regi_hármas_kizarva | 0.0% (0/6) | — (0/0) | — (0/0) | — (0/0) | 0.0% (0/6) |
-| B | egyezes_hibas_kizarva | 66.7% (4/6) [35–88] | — (0/0) | — (0/0) | — (0/0) | 66.7% (4/6) [35–88] |
+| B | egyezes_hibas_kizarva_tajekoztato | 66.7% (4/6) [35–88] | — (0/0) | — (0/0) | — (0/0) | 66.7% (4/6) [35–88] |
 | C | hármasok_kapun_atment_versekben | 32 | 0 | 0 | 0 | 32 |
 | C | nem_talalhato_karoli_szo | 0.0% (0/32) | — (0/0) | — (0/0) | — (0/0) | 0.0% (0/32) |
 | C | egyezes_korabbi_osszetett_strong_nelkul | 75.0% (24/32) [61–85] | — (0/0) | — (0/0) | — (0/0) | 75.0% (24/32) [61–85] |
 | C | egyezes | 93.8% (30/32) [83–98] | — (0/0) | — (0/0) | — (0/0) | 93.8% (30/32) [83–98] |
-| C | hibas_regi_hármas_kizarva | 6.2% (2/32) | — (0/0) | — (0/0) | — (0/0) | 6.2% (2/32) |
-| C | egyezes_hibas_kizarva | 100.0% (30/30) [92–100] | — (0/0) | — (0/0) | — (0/0) | 100.0% (30/30) [92–100] |
+| C | hibas_regi_hármas_kizarva | 3.1% (1/32) | — (0/0) | — (0/0) | — (0/0) | 3.1% (1/32) |
+| C | egyezes_hibas_kizarva_tajekoztato | 96.8% (30/31) [87–99] | — (0/0) | — (0/0) | — (0/0) | 96.8% (30/31) [87–99] |
 | A+B magas (A∩B) | hármasok_kapun_atment_versekben | 5 | 0 | 0 | 0 | 5 |
 | A+B magas (A∩B) | nem_talalhato_karoli_szo | 0.0% (0/5) | — (0/0) | — (0/0) | — (0/0) | 0.0% (0/5) |
 | A+B magas (A∩B) | egyezes_korabbi_osszetett_strong_nelkul | 60.0% (3/5) [27–86] | — (0/0) | — (0/0) | — (0/0) | 60.0% (3/5) [27–86] |
 | A+B magas (A∩B) | egyezes | 60.0% (3/5) [27–86] | — (0/0) | — (0/0) | — (0/0) | 60.0% (3/5) [27–86] |
 | A+B magas (A∩B) | hibas_regi_hármas_kizarva | 0.0% (0/5) | — (0/0) | — (0/0) | — (0/0) | 0.0% (0/5) |
-| A+B magas (A∩B) | egyezes_hibas_kizarva | 60.0% (3/5) [27–86] | — (0/0) | — (0/0) | — (0/0) | 60.0% (3/5) [27–86] |
+| A+B magas (A∩B) | egyezes_hibas_kizarva_tajekoztato | 60.0% (3/5) [27–86] | — (0/0) | — (0/0) | — (0/0) | 60.0% (3/5) [27–86] |
 
 ## c) A–B egyezés (csak ahol A és B is átment a kapun)
 

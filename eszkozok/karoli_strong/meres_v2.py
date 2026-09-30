@@ -192,16 +192,17 @@ def md_ir(ki, ut=JELENTES_UT):
         ki_s.append('| %s | lefedettség vs küszöb 95%% | %s |' % (ret, ' | '.join(_viszony(x['talalat'], x['arany'], KUSZOB_LEFEDETTSEG) for x in p)))
     ki_s.append('')
     ki_s += ['## b) Régi arany egyezés (halmaz-definíció; kapun átment versek, 200 verses minta)', '',
-             'A PD9 szerinti kizárás (f21p/regi_arany_hibas.tsv, 2 hármas) a futás után, a C két nem-egyezése alapján '
-             'történt, és a C-nél a küszöb átlépését fordítja meg; ezért mindkét érték és mindkét küszöb-viszony látszik. '
-             'Az 1Móz 13:4 a besorolásban vitatható, a hibas.tsv-ben hibás.', '',
+             'DT21 i) (felhasználói döntés): a MÉRT (elsődleges) érték a kizárás nélküli; a küszöb-viszonyítás (95%) '
+             'ehhez történik. A kizárásos érték csak TÁJÉKOZTATÓ: a f21p/regi_arany_hibas.tsv DT21 i) óta egyetlen '
+             'hármast tartalmaz (1Móz 6:17); az 1Móz 13:4 hibás-jelölése a felhasználó döntése szerint visszavonva, '
+             'a hármas a mérésben újra számít.', '',
              '| réteg | mérőszám | ' + ' | '.join(n for n, _ in FUTAS_OSZLOPOK) + ' |', '|---|---|' + '---|' * len(FUTAS_OSZLOPOK)]
     for ret in RETEGEK:
         r = [ki['regi'][(f, ret)] for _, f in FUTAS_OSZLOPOK]
-        ki_s.append('| %s | egyezés, kizárás nélkül | %s |' % (ret, ' | '.join(_pct(x['egyezik'], x['hb'], True) for x in r)))
-        ki_s.append('| %s | egyezés, a hibás hármasok nélkül | %s |' % (ret, ' | '.join(_pct(x['egyezik_k'], x['hb_k'], True) for x in r)))
-        ki_s.append('| %s | (kizárás nélkül) vs küszöb 95%% | %s |' % (ret, ' | '.join(_viszony(x['egyezik'], x['hb'], KUSZOB_REGI) for x in r)))
-        ki_s.append('| %s | (hibás nélkül, PD9 szerinti kizárással) vs küszöb 95%% | %s |' % (ret, ' | '.join(_viszony(x['egyezik_k'], x['hb_k'], KUSZOB_REGI) for x in r)))
+        ki_s.append('| %s | egyezés, kizárás nélkül (MÉRT) | %s |' % (ret, ' | '.join(_pct(x['egyezik'], x['hb'], True) for x in r)))
+        ki_s.append('| %s | egyezés, 1Móz 6:17 nélkül (TÁJÉKOZTATÓ) | %s |' % (ret, ' | '.join(_pct(x['egyezik_k'], x['hb_k'], True) for x in r)))
+        ki_s.append('| %s | MÉRT (kizárás nélkül) vs küszöb 95%% | %s |' % (ret, ' | '.join(_viszony(x['egyezik'], x['hb'], KUSZOB_REGI) for x in r)))
+        ki_s.append('| %s | tájékoztató (1Móz 6:17 nélkül) vs küszöb 95%% — nem minősít | %s |' % (ret, ' | '.join(_viszony(x['egyezik_k'], x['hb_k'], KUSZOB_REGI) for x in r)))
     ki_s.append('')
     ki_s += ['## c) Kapuhiba-arány', '',
              '| réteg | mérőszám | ' + ' | '.join(n for n, _ in FUTAS_OSZLOPOK) + ' |', '|---|---|' + '---|' * len(FUTAS_OSZLOPOK)]
@@ -247,7 +248,7 @@ def tsv_ir(ki, ut=EREDMENY_UT):
                   '\t'.join(['pontossag_lefedettseg', n, ret, 'lefedettseg', str(x['talalat']), str(x['arany'])])]
     for (f, ret), x in ki['regi'].items():
         sorok += ['\t'.join(['regi_arany', f, ret, 'egyezes', str(x['egyezik']), str(x['hb'])]),
-                  '\t'.join(['regi_arany', f, ret, 'egyezes_hibas_kizarva', str(x['egyezik_k']), str(x['hb_k'])])]
+                  '\t'.join(['regi_arany', f, ret, 'egyezes_hibas_kizarva_tajekoztato', str(x['egyezik_k']), str(x['hb_k'])])]
     for (f, ret), x in ki['kapu'].items():
         sorok += ['\t'.join(['kapuhiba', f, ret, 'elso_probara', str(x['elso']), str(x['versek'])]),
                   '\t'.join(['kapuhiba', f, ret, 'vegleg', str(x['vegleg']), str(x['versek'])])]
@@ -392,8 +393,9 @@ def onteszt():
             if ki['koltseg']['F3']['gond_usage'] is not None:
                 hibak.append('F3: a régi futás usage-a nem n.é.')
             r = ki['regi'][('F3', meres.OSSZES)]
-            if (r['egyezik'], r['hb'], r['egyezik_k'], r['hb_k']) != (30, 32, 30, 30):
-                hibak.append('F3 régi arany nem 30/32 és 30/30: %s' % r)
+            # DT21 i) (F21.34): a hibás-lista csak az 1Móz 6:17; a tájékoztató érték 30/31 (korábban 30/30)
+            if (r['egyezik'], r['hb'], r['egyezik_k'], r['hb_k']) != (30, 32, 30, 31):
+                hibak.append('F3 régi arany nem 30/32 (mért) és 30/31 (tájékoztató): %s' % r)
             with open(os.path.join(mappa, 'v2.md'), encoding='utf-8') as fh:
                 md = fh.read()
             if 'megfelelt' in md.replace('„megfelelt”', ''):

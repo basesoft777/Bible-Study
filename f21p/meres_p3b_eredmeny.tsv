@@ -1,143 +1,143 @@
-# GENERÁLT: eszkozok/karoli_strong/meres_p3b.py | scope=P3b (prompt_v2): A=F1V2, B=F2V2, C=F3V2 és F3V2B, A+B, A+B+C (F4V2), KJV nélkül F5V2/F6V2; arany v2 (60 vers), 200 verses minta | forras=f21p/valaszok/{F1V2,F2V2,F3V2,F3V2B,F4V2,F5V2,F6V2}.jsonl, f21p/valaszok/{F1,F2,F3,F5,F6}.jsonl (v1-kapuhiba), f21p/arany_opus_v2.jsonl (sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3b.tsv | ts=2026-09-30T14:47:58+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos
+# GENERÁLT: eszkozok/karoli_strong/meres_p3b.py | scope=P3b (prompt_v2): A=F1V2, B=F2V2, C=F3V2 és F3V2B, A+B, A+B+C (F4V2), KJV nélkül F5V2/F6V2; arany v2 (60 vers), 200 verses minta | forras=f21p/valaszok/{F1V2,F2V2,F3V2,F3V2B,F4V2,F5V2,F6V2}.jsonl, f21p/valaszok/{F1,F2,F3,F5,F6}.jsonl (v1-kapuhiba), f21p/arany_opus_v2.jsonl (sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3b.tsv | ts=2026-09-30T15:21:36+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos
 szakasz	osszeallitas	reteg	mero	szamlalo	nevezo	megjegyzes
 feltetelek	A (F1V2)	R1	arany_versek_kapun_atment	12	20	
 feltetelek	A (F1V2)	R1	pontossag_osszes (tajekoztato, PD6)	118	138	
 feltetelek	A (F1V2)	R1	lefedettseg	118	160	a kapun átment aranyverseken
-feltetelek	A (F1V2)	R1	regi_arany_kizaras_nelkul	10	14	kapun átment versek
-feltetelek	A (F1V2)	R1	regi_arany_pd9_kizarassal	10	13	kapun átment versek
+feltetelek	A (F1V2)	R1	regi_arany_kizaras_nelkul	10	14	MÉRT (DT21 i); kapun átment versek
+feltetelek	A (F1V2)	R1	regi_arany_kizarassal_tajekoztato	10	13	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	A (F1V2)	R1	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	A (F1V2)	R1	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	A (F1V2)	R2	arany_versek_kapun_atment	9	10	
 feltetelek	A (F1V2)	R2	pontossag_osszes (tajekoztato, PD6)	103	126	
 feltetelek	A (F1V2)	R2	lefedettseg	103	126	a kapun átment aranyverseken
-feltetelek	A (F1V2)	R2	regi_arany_kizaras_nelkul	0	0	kapun átment versek
-feltetelek	A (F1V2)	R2	regi_arany_pd9_kizarassal	0	0	kapun átment versek
+feltetelek	A (F1V2)	R2	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	A (F1V2)	R2	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	A (F1V2)	R2	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	A (F1V2)	R2	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	A (F1V2)	R3	arany_versek_kapun_atment	3	10	
 feltetelek	A (F1V2)	R3	pontossag_osszes (tajekoztato, PD6)	58	73	
 feltetelek	A (F1V2)	R3	lefedettseg	58	66	a kapun átment aranyverseken
-feltetelek	A (F1V2)	R3	regi_arany_kizaras_nelkul	0	0	kapun átment versek
-feltetelek	A (F1V2)	R3	regi_arany_pd9_kizarassal	0	0	kapun átment versek
+feltetelek	A (F1V2)	R3	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	A (F1V2)	R3	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	A (F1V2)	R3	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	A (F1V2)	R3	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	A (F1V2)	R4	arany_versek_kapun_atment	11	20	
 feltetelek	A (F1V2)	R4	pontossag_osszes (tajekoztato, PD6)	121	149	
 feltetelek	A (F1V2)	R4	lefedettseg	121	150	a kapun átment aranyverseken
-feltetelek	A (F1V2)	R4	regi_arany_kizaras_nelkul	0	0	kapun átment versek
-feltetelek	A (F1V2)	R4	regi_arany_pd9_kizarassal	0	0	kapun átment versek
+feltetelek	A (F1V2)	R4	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	A (F1V2)	R4	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	A (F1V2)	R4	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	A (F1V2)	R4	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	A (F1V2)	Összes	arany_versek_kapun_atment	35	60	
 feltetelek	A (F1V2)	Összes	pontossag_osszes (tajekoztato, PD6)	400	486	
 feltetelek	A (F1V2)	Összes	lefedettseg	400	502	a kapun átment aranyverseken
-feltetelek	A (F1V2)	Összes	regi_arany_kizaras_nelkul	10	14	kapun átment versek
-feltetelek	A (F1V2)	Összes	regi_arany_pd9_kizarassal	10	13	kapun átment versek
+feltetelek	A (F1V2)	Összes	regi_arany_kizaras_nelkul	10	14	MÉRT (DT21 i); kapun átment versek
+feltetelek	A (F1V2)	Összes	regi_arany_kizarassal_tajekoztato	10	13	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	A (F1V2)	Összes	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	A (F1V2)	Összes	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	B (F2V2)	R1	arany_versek_kapun_atment	10	20	
 feltetelek	B (F2V2)	R1	pontossag_osszes (tajekoztato, PD6)	111	181	
 feltetelek	B (F2V2)	R1	lefedettseg	111	127	a kapun átment aranyverseken
-feltetelek	B (F2V2)	R1	regi_arany_kizaras_nelkul	16	19	kapun átment versek
-feltetelek	B (F2V2)	R1	regi_arany_pd9_kizarassal	16	18	kapun átment versek
+feltetelek	B (F2V2)	R1	regi_arany_kizaras_nelkul	16	19	MÉRT (DT21 i); kapun átment versek
+feltetelek	B (F2V2)	R1	regi_arany_kizarassal_tajekoztato	16	18	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	B (F2V2)	R1	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	B (F2V2)	R1	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	B (F2V2)	R2	arany_versek_kapun_atment	9	10	
 feltetelek	B (F2V2)	R2	pontossag_osszes (tajekoztato, PD6)	121	153	
 feltetelek	B (F2V2)	R2	lefedettseg	121	126	a kapun átment aranyverseken
-feltetelek	B (F2V2)	R2	regi_arany_kizaras_nelkul	0	0	kapun átment versek
-feltetelek	B (F2V2)	R2	regi_arany_pd9_kizarassal	0	0	kapun átment versek
+feltetelek	B (F2V2)	R2	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	B (F2V2)	R2	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	B (F2V2)	R2	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	B (F2V2)	R2	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	B (F2V2)	R3	arany_versek_kapun_atment	10	10	
 feltetelek	B (F2V2)	R3	pontossag_osszes (tajekoztato, PD6)	255	510	
 feltetelek	B (F2V2)	R3	lefedettseg	255	266	a kapun átment aranyverseken
-feltetelek	B (F2V2)	R3	regi_arany_kizaras_nelkul	0	0	kapun átment versek
-feltetelek	B (F2V2)	R3	regi_arany_pd9_kizarassal	0	0	kapun átment versek
+feltetelek	B (F2V2)	R3	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	B (F2V2)	R3	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	B (F2V2)	R3	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	B (F2V2)	R3	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	B (F2V2)	R4	arany_versek_kapun_atment	10	20	
 feltetelek	B (F2V2)	R4	pontossag_osszes (tajekoztato, PD6)	129	167	
 feltetelek	B (F2V2)	R4	lefedettseg	129	142	a kapun átment aranyverseken
-feltetelek	B (F2V2)	R4	regi_arany_kizaras_nelkul	0	0	kapun átment versek
-feltetelek	B (F2V2)	R4	regi_arany_pd9_kizarassal	0	0	kapun átment versek
+feltetelek	B (F2V2)	R4	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	B (F2V2)	R4	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	B (F2V2)	R4	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	B (F2V2)	R4	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	B (F2V2)	Összes	arany_versek_kapun_atment	39	60	
 feltetelek	B (F2V2)	Összes	pontossag_osszes (tajekoztato, PD6)	616	1011	
 feltetelek	B (F2V2)	Összes	lefedettseg	616	661	a kapun átment aranyverseken
-feltetelek	B (F2V2)	Összes	regi_arany_kizaras_nelkul	16	19	kapun átment versek
-feltetelek	B (F2V2)	Összes	regi_arany_pd9_kizarassal	16	18	kapun átment versek
+feltetelek	B (F2V2)	Összes	regi_arany_kizaras_nelkul	16	19	MÉRT (DT21 i); kapun átment versek
+feltetelek	B (F2V2)	Összes	regi_arany_kizarassal_tajekoztato	16	18	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	B (F2V2)	Összes	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	B (F2V2)	Összes	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2)	R1	arany_versek_kapun_atment	20	20	
 feltetelek	C (F3V2)	R1	pontossag_osszes (tajekoztato, PD6)	299	318	
 feltetelek	C (F3V2)	R1	lefedettseg	299	317	a kapun átment aranyverseken
-feltetelek	C (F3V2)	R1	regi_arany_kizaras_nelkul	30	32	kapun átment versek
-feltetelek	C (F3V2)	R1	regi_arany_pd9_kizarassal	30	30	kapun átment versek
+feltetelek	C (F3V2)	R1	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2)	R1	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	C (F3V2)	R1	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2)	R1	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2)	R2	arany_versek_kapun_atment	10	10	
 feltetelek	C (F3V2)	R2	pontossag_osszes (tajekoztato, PD6)	153	160	
 feltetelek	C (F3V2)	R2	lefedettseg	153	153	a kapun átment aranyverseken
-feltetelek	C (F3V2)	R2	regi_arany_kizaras_nelkul	0	0	kapun átment versek
-feltetelek	C (F3V2)	R2	regi_arany_pd9_kizarassal	0	0	kapun átment versek
+feltetelek	C (F3V2)	R2	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2)	R2	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	C (F3V2)	R2	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2)	R2	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2)	R3	arany_versek_kapun_atment	10	10	
 feltetelek	C (F3V2)	R3	pontossag_osszes (tajekoztato, PD6)	259	275	
 feltetelek	C (F3V2)	R3	lefedettseg	259	266	a kapun átment aranyverseken
-feltetelek	C (F3V2)	R3	regi_arany_kizaras_nelkul	0	0	kapun átment versek
-feltetelek	C (F3V2)	R3	regi_arany_pd9_kizarassal	0	0	kapun átment versek
+feltetelek	C (F3V2)	R3	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2)	R3	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	C (F3V2)	R3	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2)	R3	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2)	R4	arany_versek_kapun_atment	20	20	
 feltetelek	C (F3V2)	R4	pontossag_osszes (tajekoztato, PD6)	309	337	
 feltetelek	C (F3V2)	R4	lefedettseg	309	315	a kapun átment aranyverseken
-feltetelek	C (F3V2)	R4	regi_arany_kizaras_nelkul	0	0	kapun átment versek
-feltetelek	C (F3V2)	R4	regi_arany_pd9_kizarassal	0	0	kapun átment versek
+feltetelek	C (F3V2)	R4	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2)	R4	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	C (F3V2)	R4	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2)	R4	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2)	Összes	arany_versek_kapun_atment	60	60	
 feltetelek	C (F3V2)	Összes	pontossag_osszes (tajekoztato, PD6)	1020	1090	
 feltetelek	C (F3V2)	Összes	lefedettseg	1020	1051	a kapun átment aranyverseken
-feltetelek	C (F3V2)	Összes	regi_arany_kizaras_nelkul	30	32	kapun átment versek
-feltetelek	C (F3V2)	Összes	regi_arany_pd9_kizarassal	30	30	kapun átment versek
+feltetelek	C (F3V2)	Összes	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2)	Összes	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	C (F3V2)	Összes	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2)	Összes	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2B)	R1	arany_versek_kapun_atment	20	20	
 feltetelek	C (F3V2B)	R1	pontossag_osszes (tajekoztato, PD6)	304	324	
 feltetelek	C (F3V2B)	R1	lefedettseg	304	317	a kapun átment aranyverseken
-feltetelek	C (F3V2B)	R1	regi_arany_kizaras_nelkul	30	32	kapun átment versek
-feltetelek	C (F3V2B)	R1	regi_arany_pd9_kizarassal	30	30	kapun átment versek
+feltetelek	C (F3V2B)	R1	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2B)	R1	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	C (F3V2B)	R1	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2B)	R1	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2B)	R2	arany_versek_kapun_atment	10	10	
 feltetelek	C (F3V2B)	R2	pontossag_osszes (tajekoztato, PD6)	152	159	
 feltetelek	C (F3V2B)	R2	lefedettseg	152	153	a kapun átment aranyverseken
-feltetelek	C (F3V2B)	R2	regi_arany_kizaras_nelkul	0	0	kapun átment versek
-feltetelek	C (F3V2B)	R2	regi_arany_pd9_kizarassal	0	0	kapun átment versek
+feltetelek	C (F3V2B)	R2	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2B)	R2	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	C (F3V2B)	R2	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2B)	R2	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2B)	R3	arany_versek_kapun_atment	10	10	
 feltetelek	C (F3V2B)	R3	pontossag_osszes (tajekoztato, PD6)	263	280	
 feltetelek	C (F3V2B)	R3	lefedettseg	263	266	a kapun átment aranyverseken
-feltetelek	C (F3V2B)	R3	regi_arany_kizaras_nelkul	0	0	kapun átment versek
-feltetelek	C (F3V2B)	R3	regi_arany_pd9_kizarassal	0	0	kapun átment versek
+feltetelek	C (F3V2B)	R3	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2B)	R3	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	C (F3V2B)	R3	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2B)	R3	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2B)	R4	arany_versek_kapun_atment	20	20	
 feltetelek	C (F3V2B)	R4	pontossag_osszes (tajekoztato, PD6)	306	339	
 feltetelek	C (F3V2B)	R4	lefedettseg	306	315	a kapun átment aranyverseken
-feltetelek	C (F3V2B)	R4	regi_arany_kizaras_nelkul	0	0	kapun átment versek
-feltetelek	C (F3V2B)	R4	regi_arany_pd9_kizarassal	0	0	kapun átment versek
+feltetelek	C (F3V2B)	R4	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2B)	R4	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	C (F3V2B)	R4	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2B)	R4	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2B)	Összes	arany_versek_kapun_atment	60	60	
 feltetelek	C (F3V2B)	Összes	pontossag_osszes (tajekoztato, PD6)	1025	1102	
 feltetelek	C (F3V2B)	Összes	lefedettseg	1025	1051	a kapun átment aranyverseken
-feltetelek	C (F3V2B)	Összes	regi_arany_kizaras_nelkul	30	32	kapun átment versek
-feltetelek	C (F3V2B)	Összes	regi_arany_pd9_kizarassal	30	30	kapun átment versek
+feltetelek	C (F3V2B)	Összes	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2B)	Összes	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
 feltetelek	C (F3V2B)	Összes	magas_pontossag	n.é.		egymodelles (PD6)
 feltetelek	C (F3V2B)	Összes	alacsony_arany	n.é.		egymodelles (PD6)
 feltetelek	A+B	R1	arany_versek	20	20	minden aranyvers (a végső kimenet üres is lehet)
@@ -146,8 +146,8 @@ szintek	A+B	R1	kozepes_pontossag	0	0
 szintek	A+B	R1	alacsony_pontossag	63	145	
 feltetelek	A+B	R1	pontossag_osszes (tajekoztato)	146	232	
 feltetelek	A+B	R1	lefedettseg	146	317	minden aranyvers
-feltetelek	A+B	R1	regi_arany_kizaras_nelkul	18	32	a végső kimeneten, 200 vers
-feltetelek	A+B	R1	regi_arany_pd9_kizarassal	18	30	a végső kimeneten, 200 vers
+feltetelek	A+B	R1	regi_arany_kizaras_nelkul	18	32	MÉRT (DT21 i); a végső kimeneten, 200 vers
+feltetelek	A+B	R1	regi_arany_kizarassal_tajekoztato	18	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers
 feltetelek	A+B	R1	alacsony_arany [200 vers]	1255	1822	link-arány a végső kimenetben
 szintek	A+B	R1	eloszlas_magas [200 vers]	567	1822	
 szintek	A+B	R1	eloszlas_kozepes [200 vers]	0	1822	
@@ -164,8 +164,8 @@ szintek	A+B	R2	kozepes_pontossag	0	0
 szintek	A+B	R2	alacsony_pontossag	26	67	
 feltetelek	A+B	R2	pontossag_osszes (tajekoztato)	125	173	
 feltetelek	A+B	R2	lefedettseg	125	153	minden aranyvers
-feltetelek	A+B	R2	regi_arany_kizaras_nelkul	0	0	a végső kimeneten, 200 vers
-feltetelek	A+B	R2	regi_arany_pd9_kizarassal	0	0	a végső kimeneten, 200 vers
+feltetelek	A+B	R2	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); a végső kimeneten, 200 vers
+feltetelek	A+B	R2	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers
 feltetelek	A+B	R2	alacsony_arany [200 vers]	230	418	link-arány a végső kimenetben
 szintek	A+B	R2	eloszlas_magas [200 vers]	188	418	
 szintek	A+B	R2	eloszlas_kozepes [200 vers]	0	418	
@@ -182,8 +182,8 @@ szintek	A+B	R3	kozepes_pontossag	0	0
 szintek	A+B	R3	alacsony_pontossag	197	455	
 feltetelek	A+B	R3	pontossag_osszes (tajekoztato)	255	519	
 feltetelek	A+B	R3	lefedettseg	255	266	minden aranyvers
-feltetelek	A+B	R3	regi_arany_kizaras_nelkul	0	0	a végső kimeneten, 200 vers
-feltetelek	A+B	R3	regi_arany_pd9_kizarassal	0	0	a végső kimeneten, 200 vers
+feltetelek	A+B	R3	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); a végső kimeneten, 200 vers
+feltetelek	A+B	R3	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers
 feltetelek	A+B	R3	alacsony_arany [200 vers]	701	835	link-arány a végső kimenetben
 szintek	A+B	R3	eloszlas_magas [200 vers]	134	835	
 szintek	A+B	R3	eloszlas_kozepes [200 vers]	0	835	
@@ -200,8 +200,8 @@ szintek	A+B	R4	kozepes_pontossag	0	0
 szintek	A+B	R4	alacsony_pontossag	54	114	
 feltetelek	A+B	R4	pontossag_osszes (tajekoztato)	152	215	
 feltetelek	A+B	R4	lefedettseg	152	315	minden aranyvers
-feltetelek	A+B	R4	regi_arany_kizaras_nelkul	0	0	a végső kimeneten, 200 vers
-feltetelek	A+B	R4	regi_arany_pd9_kizarassal	0	0	a végső kimeneten, 200 vers
+feltetelek	A+B	R4	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); a végső kimeneten, 200 vers
+feltetelek	A+B	R4	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers
 feltetelek	A+B	R4	alacsony_arany [200 vers]	431	679	link-arány a végső kimenetben
 szintek	A+B	R4	eloszlas_magas [200 vers]	248	679	
 szintek	A+B	R4	eloszlas_kozepes [200 vers]	0	679	
@@ -218,8 +218,8 @@ szintek	A+B	Összes	kozepes_pontossag	0	0
 szintek	A+B	Összes	alacsony_pontossag	340	781	
 feltetelek	A+B	Összes	pontossag_osszes (tajekoztato)	678	1139	
 feltetelek	A+B	Összes	lefedettseg	678	1051	minden aranyvers
-feltetelek	A+B	Összes	regi_arany_kizaras_nelkul	18	32	a végső kimeneten, 200 vers
-feltetelek	A+B	Összes	regi_arany_pd9_kizarassal	18	30	a végső kimeneten, 200 vers
+feltetelek	A+B	Összes	regi_arany_kizaras_nelkul	18	32	MÉRT (DT21 i); a végső kimeneten, 200 vers
+feltetelek	A+B	Összes	regi_arany_kizarassal_tajekoztato	18	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers
 feltetelek	A+B	Összes	alacsony_arany [200 vers]	2617	3754	link-arány a végső kimenetben
 szintek	A+B	Összes	eloszlas_magas [200 vers]	1137	3754	
 szintek	A+B	Összes	eloszlas_kozepes [200 vers]	0	3754	
@@ -236,8 +236,8 @@ szintek	A+B+C	R1	kozepes_pontossag	22	27
 szintek	A+B+C	R1	alacsony_pontossag	178	188	
 feltetelek	A+B+C	R1	pontossag_osszes (tajekoztato)	283	302	
 feltetelek	A+B+C	R1	lefedettseg	283	317	minden aranyvers
-feltetelek	A+B+C	R1	regi_arany_kizaras_nelkul	28	32	a végső kimeneten, 200 vers
-feltetelek	A+B+C	R1	regi_arany_pd9_kizarassal	28	30	a végső kimeneten, 200 vers
+feltetelek	A+B+C	R1	regi_arany_kizaras_nelkul	28	32	MÉRT (DT21 i); a végső kimeneten, 200 vers
+feltetelek	A+B+C	R1	regi_arany_kizarassal_tajekoztato	28	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers
 feltetelek	A+B+C	R1	alacsony_arany [200 vers]	963	1677	link-arány a végső kimenetben
 szintek	A+B+C	R1	eloszlas_magas [200 vers]	567	1677	
 szintek	A+B+C	R1	eloszlas_kozepes [200 vers]	147	1677	
@@ -254,8 +254,8 @@ szintek	A+B+C	R2	kozepes_pontossag	25	29
 szintek	A+B+C	R2	alacsony_pontossag	27	28	
 feltetelek	A+B+C	R2	pontossag_osszes (tajekoztato)	151	163	
 feltetelek	A+B+C	R2	lefedettseg	151	153	minden aranyvers
-feltetelek	A+B+C	R2	regi_arany_kizaras_nelkul	0	0	a végső kimeneten, 200 vers
-feltetelek	A+B+C	R2	regi_arany_pd9_kizarassal	0	0	a végső kimeneten, 200 vers
+feltetelek	A+B+C	R2	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); a végső kimeneten, 200 vers
+feltetelek	A+B+C	R2	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers
 feltetelek	A+B+C	R2	alacsony_arany [200 vers]	124	365	link-arány a végső kimenetben
 szintek	A+B+C	R2	eloszlas_magas [200 vers]	188	365	
 szintek	A+B+C	R2	eloszlas_kozepes [200 vers]	53	365	
@@ -272,8 +272,8 @@ szintek	A+B+C	R3	kozepes_pontossag	5	8
 szintek	A+B+C	R3	alacsony_pontossag	193	205	
 feltetelek	A+B+C	R3	pontossag_osszes (tajekoztato)	256	277	
 feltetelek	A+B+C	R3	lefedettseg	256	266	minden aranyvers
-feltetelek	A+B+C	R3	regi_arany_kizaras_nelkul	0	0	a végső kimeneten, 200 vers
-feltetelek	A+B+C	R3	regi_arany_pd9_kizarassal	0	0	a végső kimeneten, 200 vers
+feltetelek	A+B+C	R3	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); a végső kimeneten, 200 vers
+feltetelek	A+B+C	R3	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers
 feltetelek	A+B+C	R3	alacsony_arany [200 vers]	469	623	link-arány a végső kimenetben
 szintek	A+B+C	R3	eloszlas_magas [200 vers]	134	623	
 szintek	A+B+C	R3	eloszlas_kozepes [200 vers]	20	623	
@@ -290,8 +290,8 @@ szintek	A+B+C	R4	kozepes_pontossag	18	26
 szintek	A+B+C	R4	alacsony_pontossag	183	195	
 feltetelek	A+B+C	R4	pontossag_osszes (tajekoztato)	299	322	
 feltetelek	A+B+C	R4	lefedettseg	299	315	minden aranyvers
-feltetelek	A+B+C	R4	regi_arany_kizaras_nelkul	0	0	a végső kimeneten, 200 vers
-feltetelek	A+B+C	R4	regi_arany_pd9_kizarassal	0	0	a végső kimeneten, 200 vers
+feltetelek	A+B+C	R4	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); a végső kimeneten, 200 vers
+feltetelek	A+B+C	R4	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers
 feltetelek	A+B+C	R4	alacsony_arany [200 vers]	530	828	link-arány a végső kimenetben
 szintek	A+B+C	R4	eloszlas_magas [200 vers]	248	828	
 szintek	A+B+C	R4	eloszlas_kozepes [200 vers]	50	828	
@@ -308,8 +308,8 @@ szintek	A+B+C	Összes	kozepes_pontossag	70	90
 szintek	A+B+C	Összes	alacsony_pontossag	581	616	
 feltetelek	A+B+C	Összes	pontossag_osszes (tajekoztato)	989	1064	
 feltetelek	A+B+C	Összes	lefedettseg	989	1051	minden aranyvers
-feltetelek	A+B+C	Összes	regi_arany_kizaras_nelkul	28	32	a végső kimeneten, 200 vers
-feltetelek	A+B+C	Összes	regi_arany_pd9_kizarassal	28	30	a végső kimeneten, 200 vers
+feltetelek	A+B+C	Összes	regi_arany_kizaras_nelkul	28	32	MÉRT (DT21 i); a végső kimeneten, 200 vers
+feltetelek	A+B+C	Összes	regi_arany_kizarassal_tajekoztato	28	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers
 feltetelek	A+B+C	Összes	alacsony_arany [200 vers]	2086	3493	link-arány a végső kimenetben
 szintek	A+B+C	Összes	eloszlas_magas [200 vers]	1137	3493	
 szintek	A+B+C	Összes	eloszlas_kozepes [200 vers]	270	3493	
@@ -326,8 +326,8 @@ szintek	A+B+C (alt)	R1	kozepes_pontossag	50	55
 szintek	A+B+C (alt)	R1	alacsony_pontossag	150	160	
 feltetelek	A+B+C (alt)	R1	pontossag_osszes (tajekoztato)	283	302	
 feltetelek	A+B+C (alt)	R1	lefedettseg	283	317	minden aranyvers
-feltetelek	A+B+C (alt)	R1	regi_arany_kizaras_nelkul	28	32	a végső kimeneten, 200 vers
-feltetelek	A+B+C (alt)	R1	regi_arany_pd9_kizarassal	28	30	a végső kimeneten, 200 vers
+feltetelek	A+B+C (alt)	R1	regi_arany_kizaras_nelkul	28	32	MÉRT (DT21 i); a végső kimeneten, 200 vers
+feltetelek	A+B+C (alt)	R1	regi_arany_kizarassal_tajekoztato	28	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers
 feltetelek	A+B+C (alt)	R1	alacsony_arany [200 vers]	532	1677	link-arány a végső kimenetben
 szintek	A+B+C (alt)	R1	eloszlas_magas [200 vers]	567	1677	
 szintek	A+B+C (alt)	R1	eloszlas_kozepes [200 vers]	578	1677	
@@ -344,8 +344,8 @@ szintek	A+B+C (alt)	R2	kozepes_pontossag	25	29
 szintek	A+B+C (alt)	R2	alacsony_pontossag	27	28	
 feltetelek	A+B+C (alt)	R2	pontossag_osszes (tajekoztato)	151	163	
 feltetelek	A+B+C (alt)	R2	lefedettseg	151	153	minden aranyvers
-feltetelek	A+B+C (alt)	R2	regi_arany_kizaras_nelkul	0	0	a végső kimeneten, 200 vers
-feltetelek	A+B+C (alt)	R2	regi_arany_pd9_kizarassal	0	0	a végső kimeneten, 200 vers
+feltetelek	A+B+C (alt)	R2	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); a végső kimeneten, 200 vers
+feltetelek	A+B+C (alt)	R2	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers
 feltetelek	A+B+C (alt)	R2	alacsony_arany [200 vers]	48	365	link-arány a végső kimenetben
 szintek	A+B+C (alt)	R2	eloszlas_magas [200 vers]	188	365	
 szintek	A+B+C (alt)	R2	eloszlas_kozepes [200 vers]	129	365	
@@ -362,8 +362,8 @@ szintek	A+B+C (alt)	R3	kozepes_pontossag	190	204
 szintek	A+B+C (alt)	R3	alacsony_pontossag	8	9	
 feltetelek	A+B+C (alt)	R3	pontossag_osszes (tajekoztato)	256	277	
 feltetelek	A+B+C (alt)	R3	lefedettseg	256	266	minden aranyvers
-feltetelek	A+B+C (alt)	R3	regi_arany_kizaras_nelkul	0	0	a végső kimeneten, 200 vers
-feltetelek	A+B+C (alt)	R3	regi_arany_pd9_kizarassal	0	0	a végső kimeneten, 200 vers
+feltetelek	A+B+C (alt)	R3	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); a végső kimeneten, 200 vers
+feltetelek	A+B+C (alt)	R3	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers
 feltetelek	A+B+C (alt)	R3	alacsony_arany [200 vers]	124	623	link-arány a végső kimenetben
 szintek	A+B+C (alt)	R3	eloszlas_magas [200 vers]	134	623	
 szintek	A+B+C (alt)	R3	eloszlas_kozepes [200 vers]	365	623	
@@ -380,8 +380,8 @@ szintek	A+B+C (alt)	R4	kozepes_pontossag	52	62
 szintek	A+B+C (alt)	R4	alacsony_pontossag	149	159	
 feltetelek	A+B+C (alt)	R4	pontossag_osszes (tajekoztato)	299	322	
 feltetelek	A+B+C (alt)	R4	lefedettseg	299	315	minden aranyvers
-feltetelek	A+B+C (alt)	R4	regi_arany_kizaras_nelkul	0	0	a végső kimeneten, 200 vers
-feltetelek	A+B+C (alt)	R4	regi_arany_pd9_kizarassal	0	0	a végső kimeneten, 200 vers
+feltetelek	A+B+C (alt)	R4	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); a végső kimeneten, 200 vers
+feltetelek	A+B+C (alt)	R4	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers
 feltetelek	A+B+C (alt)	R4	alacsony_arany [200 vers]	272	828	link-arány a végső kimenetben
 szintek	A+B+C (alt)	R4	eloszlas_magas [200 vers]	248	828	
 szintek	A+B+C (alt)	R4	eloszlas_kozepes [200 vers]	308	828	
@@ -398,8 +398,8 @@ szintek	A+B+C (alt)	Összes	kozepes_pontossag	317	350
 szintek	A+B+C (alt)	Összes	alacsony_pontossag	334	356	
 feltetelek	A+B+C (alt)	Összes	pontossag_osszes (tajekoztato)	989	1064	
 feltetelek	A+B+C (alt)	Összes	lefedettseg	989	1051	minden aranyvers
-feltetelek	A+B+C (alt)	Összes	regi_arany_kizaras_nelkul	28	32	a végső kimeneten, 200 vers
-feltetelek	A+B+C (alt)	Összes	regi_arany_pd9_kizarassal	28	30	a végső kimeneten, 200 vers
+feltetelek	A+B+C (alt)	Összes	regi_arany_kizaras_nelkul	28	32	MÉRT (DT21 i); a végső kimeneten, 200 vers
+feltetelek	A+B+C (alt)	Összes	regi_arany_kizarassal_tajekoztato	28	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; a végső kimeneten, 200 vers
 feltetelek	A+B+C (alt)	Összes	alacsony_arany [200 vers]	976	3493	link-arány a végső kimenetben
 szintek	A+B+C (alt)	Összes	eloszlas_magas [200 vers]	1137	3493	
 szintek	A+B+C (alt)	Összes	eloszlas_kozepes [200 vers]	1380	3493	
@@ -413,11 +413,11 @@ szintek	A+B+C (alt)	Összes	kimenet_nelkuli_versek [arany]	0	60
 minosites	A+B	Összes	feltetel_1	nem teljesül		
 minosites	A+B	Összes	feltetel_2	nem teljesül		
 minosites	A+B	Összes	feltetel_3	nem teljesül		
-minosites	A+B	Összes	feltetel_3_pd9	nem teljesül		
+minosites	A+B	Összes	feltetel_3_tajekoztato	nem teljesül		
 minosites	A+B	Összes	feltetel_4	teljesül		
 minosites	A+B	Összes	feltetel_5	nem teljesül		
 minosites	A+B	Összes	minosites (kizárás nélküli régi arannyal)	nem felel meg		bukott feltétel: 1, 2, 3, 5; nem mért: —
-minosites	A+B	Összes	minosites (PD9 szerinti kizárással)	nem felel meg		bukott feltétel: 1, 2, 3_pd9, 5; nem mért: —
+minosites	A+B	Összes	minosites (tájékoztató: 1Móz 6:17 kizárva)	nem felel meg		bukott feltétel: 1, 2, 3_tajekoztato, 5; nem mért: —
 minosites_reteg	A+B	R1	reteg_feltetelek (1,2,3,5; a 4. összesen)	nem teljesül		bukott: 1, 2, 3, 5; (3) mért
 minosites_reteg	A+B	R2	reteg_feltetelek (1,2,3,5; a 4. összesen)	nem teljesül		bukott: 1, 2, 5; (3) n.é. (nincs régi arany a rétegben)
 minosites_reteg	A+B	R3	reteg_feltetelek (1,2,3,5; a 4. összesen)	nem teljesül		bukott: 1, 5; (3) n.é. (nincs régi arany a rétegben)
@@ -425,11 +425,11 @@ minosites_reteg	A+B	R4	reteg_feltetelek (1,2,3,5; a 4. összesen)	nem teljesül	
 minosites	A+B+C	Összes	feltetel_1	nem teljesül		
 minosites	A+B+C	Összes	feltetel_2	nem teljesül		
 minosites	A+B+C	Összes	feltetel_3	nem teljesül		
-minosites	A+B+C	Összes	feltetel_3_pd9	nem teljesül		
+minosites	A+B+C	Összes	feltetel_3_tajekoztato	nem teljesül		
 minosites	A+B+C	Összes	feltetel_4	nem teljesül		
 minosites	A+B+C	Összes	feltetel_5	nem teljesül		
 minosites	A+B+C	Összes	minosites (kizárás nélküli régi arannyal)	nem felel meg		bukott feltétel: 1, 2, 3, 4, 5; nem mért: —
-minosites	A+B+C	Összes	minosites (PD9 szerinti kizárással)	nem felel meg		bukott feltétel: 1, 2, 3_pd9, 4, 5; nem mért: —
+minosites	A+B+C	Összes	minosites (tájékoztató: 1Móz 6:17 kizárva)	nem felel meg		bukott feltétel: 1, 2, 3_tajekoztato, 4, 5; nem mért: —
 minosites_reteg	A+B+C	R1	reteg_feltetelek (1,2,3,5; a 4. összesen)	nem teljesül		bukott: 1, 2, 3, 5; (3) mért
 minosites_reteg	A+B+C	R2	reteg_feltetelek (1,2,3,5; a 4. összesen)	nem teljesül		bukott: 1, 5; (3) n.é. (nincs régi arany a rétegben)
 minosites_reteg	A+B+C	R3	reteg_feltetelek (1,2,3,5; a 4. összesen)	nem teljesül		bukott: 1, 5; (3) n.é. (nincs régi arany a rétegben)

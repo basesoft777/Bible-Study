@@ -14,8 +14,15 @@ A pilot-brief P5 lépései:
      usage-ában (completion_tokens_details.reasoning_tokens) is 0 — a kimeneti
      token tartalmazná, külön tag nincs.
   3. Alkalmazás a teljes Biblia valódi vershosszaira (31 158 Károli-vers;
-     Karoli_1908.tsv + TAHOT_kivonat.tsv + TAGNT_kivonat.tsv), rétegenként
-     (RETEG_KONYVEK), rétegenként ceil(N/10) köteggel.
+     Karoli_1908.tsv + TAHOT_kivonat.tsv + TAGNT_kivonat.tsv), rétegenként,
+     rétegenként ceil(N/10) köteggel. DT21 h) (F21.34): az irányadó besorolás az
+     F22 brief 22.2 műfaji öt rétege (F22_RETEG_KONYVEK; a nem egyértelmű
+     könyveké a felhasználó döntése: Préd, Sir → költészet, Dán → próféta, Ruth,
+     Eszt → ÓSZ-próza). Ez műfaji, nem kánon szerinti besorolás. A korábbi
+     pilot-4-réteges besorolás (RETEG_KONYVEK, R1–R4) tájékoztató sorokban marad
+     (szakasz: *_pilot4_tajekoztato), a két változat különbségével együtt. A
+     pilot mérési rétegei (R1–R4, minta.tsv) NEM változnak: a kézimunka-vetítés
+     a minta verseit könyv szerint képezi le az F22-rétegekre.
   4. Ár: a cost mező. Az első próbálkozású hívásoknál a cost a táblaárral
      lineáris (az F3V2 nyers usage cost_details-e szerint pontosan bemenet·0,75 +
      kimenet·3,75 USD/1M); a szkript ezt ellenőrzi (cost / táblaár-arány). Az
@@ -29,7 +36,9 @@ A pilot-brief P5 lépései:
      10 versre ismert; a köteg a legkisebb mért egység) — minden
      újramintavételnél új illesztés és új M; 90%-os percentilis-intervallum.
   7. Ellenőrzés: a módszerrel a 200 pilot-versre vetített költség vs. a pilot
-     tényleges költsége (≤ 10%).
+     tényleges költsége (≤ 10%), mintán belül és leave-one-out. DT21 g): a kettő
+     közül a konzervatívabb (nagyobb abszolút eltérésű) számít a küszöbhöz
+     (ellenorzes/szamito_elteres_szazalek, a megjegyzésben, melyik).
 Kézimunka-vetítés: a pilot aranyán (60 vers) mért eltérés/vers (hiányzó +
 többlet link, az arany v2-höz), és a (c)-hiba/vers arány — ez utóbbi az Opus
 besorolása, nem mérés — rétegenként a teljes Bibliára. `alacsony` arány:
@@ -79,6 +88,26 @@ RETEG_KONYVEK = {
 }
 RETEGEK = ['R1', 'R2', 'R3', 'R4']
 
+# DT21 h) (F21.34): az F22 brief 22.2 műfaji öt rétege az irányadó a teljes Biblia
+# vetítéséhez. A 22.2 szövege: ÓSZ-próza; költészet (Zsolt, Jób, Péld, Én); próféta;
+# evangélium + ApCsel; levél + Jel. A 22.2 által meg nem nevezett könyvek
+# besorolása a felhasználó döntése (koordinátori közlés, F21.34): Préd és Sir →
+# költészet, Dán → próféta, Ruth és Eszt → ÓSZ-próza. Műfaji, nem kánon szerinti.
+F22_RETEG_KONYVEK = {
+    'ÓSZ-próza': ['1Móz', '2Móz', '3Móz', '4Móz', '5Móz', 'Józs', 'Bír', 'Ruth', '1Sám', '2Sám', '1Kir', '2Kir',
+                  '1Krón', '2Krón', 'Ezsd', 'Neh', 'Eszt'],
+    'költészet': ['Jób', 'Zsolt', 'Péld', 'Préd', 'Én', 'Sir'],
+    'próféta': ['Ézs', 'Jer', 'Ez', 'Dán', 'Hós', 'Jóel', 'Ámós', 'Abd', 'Jón', 'Mik', 'Náh', 'Hab', 'Sof',
+                'Hag', 'Zak', 'Mal'],
+    'evangélium+ApCsel': ['Mt', 'Mk', 'Luk', 'Ján', 'ApCsel'],
+    'levél+Jel': ['Róm', '1Kor', '2Kor', 'Gal', 'Ef', 'Fil', 'Kol', '1Thessz', '2Thessz', '1Tim', '2Tim', 'Tit',
+                  'Filem', 'Zsid', 'Jak', '1Pét', '2Pét', '1Ján', '2Ján', '3Ján', 'Júd', 'Jel'],
+}
+F22_RETEGEK = list(F22_RETEG_KONYVEK)
+# A 22.2 szövegén túli (felhasználói döntéssel rögzített) besorolások — a jelentés jelöli
+F22_FELHASZNALOI_BESOROLAS = {'Préd': 'költészet', 'Sir': 'költészet', 'Dán': 'próféta',
+                              'Ruth': 'ÓSZ-próza', 'Eszt': 'ÓSZ-próza'}
+
 
 def _tsv(ut):
     with open(ut, encoding='utf-8') as f:
@@ -87,12 +116,24 @@ def _tsv(ut):
     return [dict(zip(fej, s.split('\t'))) for s in sorok[1:]]
 
 
-def konyv_reteg():
+def konyv_reteg(konyvek=None):
     d = {}
-    for r, ks in RETEG_KONYVEK.items():
+    for r, ks in (konyvek or RETEG_KONYVEK).items():
         for k in ks:
+            assert k not in d, k
             d[k] = r
     return d
+
+
+_F22 = None
+
+
+def f22_reteg(ig):
+    """Az igehely F22-rétege (könyv szerint; a pilot mérési rétegét nem érinti)."""
+    global _F22
+    if _F22 is None:
+        _F22 = konyv_reteg(F22_RETEG_KONYVEK)
+    return _F22[tokenek.konyv_rovid(ig)]
 
 
 class Versadat:
@@ -165,9 +206,9 @@ def koltseg_koteg(cin, cout, x, k, nkoteg=1):
     return be, ki, (be * AR[0] + ki * AR[1]) / 1e6
 
 
-def biblia(vd):
-    kr = konyv_reteg()
-    d = {r: {'n': 0, 'x': 0, 'k': 0, 'eredeti_nelkul': 0} for r in RETEGEK}
+def biblia(vd, konyvek=None):
+    kr = konyv_reteg(konyvek)
+    d = {r: {'n': 0, 'x': 0, 'k': 0, 'eredeti_nelkul': 0} for r in (konyvek or RETEG_KONYVEK)}
     for ig in vd.karoli:
         r = kr[tokenek.konyv_rovid(ig)]
         d[r]['n'] += 1
@@ -179,20 +220,33 @@ def biblia(vd):
 
 def vetit(cin, cout, M, bib):
     ki = {}
-    for r in RETEGEK:
+    for r in bib:
         nk = math.ceil(bib[r]['n'] / KOTEG)
         be, kim, c = koltseg_koteg(cin, cout, bib[r]['x'], bib[r]['k'], nk)
         ki[r] = {'kotegek': nk, 'bemenet': be, 'kimenet': kim, 'cost1': c, 'cost': c * M}
-    ki['Összes'] = {kk: sum(ki[r][kk] for r in RETEGEK) for kk in ('kotegek', 'bemenet', 'kimenet', 'cost1', 'cost')}
+    ki['Összes'] = {kk: sum(ki[r][kk] for r in bib) for kk in ('kotegek', 'bemenet', 'kimenet', 'cost1', 'cost')}
     return ki
 
 
-def kezimunka():
-    """{(futas, reteg): (eltérés, (c), versek)} az aranyon (60 vers, arany v2)."""
+def szamito_ellenorzes(bent, loo):
+    """DT21 g): a mintán belüli és a leave-one-out eltérés (%) közül a konzervatívabb
+    (nagyobb abszolút értékű) számít; (érték, melyik)."""
+    return (loo, 'leave-one-out') if abs(loo) >= abs(bent) else (bent, 'mintán belüli')
+
+
+def kezimunka(reteg_fn=None, retegek=None):
+    """{(futas, reteg): (eltérés, (c), versek)} az aranyon (60 vers, arany v2).
+
+    reteg_fn: igehely -> réteg (alapérték: a pilot mérési rétege, adat.reteg);
+    az F22-vetítéshez f22_reteg (a minta verseinek könyv szerinti leképezése)."""
     import c_diff
     import c_diff_f3v2 as cf
     import meres_v2
     adat, g = meres_v2.betolt()
+    if reteg_fn is None:
+        def reteg_fn(ig):
+            return adat.reteg[ig]
+    retegek = retegek or RETEGEK
     f3b = cf.f3_besorolas()
     kezi = {}
     for r in c_diff._tsv(cf.OSSZEVETES_UT, cf.OSZLOPOK):
@@ -200,9 +254,9 @@ def kezimunka():
     ki = {}
     for f in FUTASOK:
         el = cf.elteresek(adat, f, g['v2'])
-        for ret in RETEGEK + ['Összes']:
-            vs = [ig for ig in adat.versek if ig in adat.arany and adat.ok(f, ig) and (ret == 'Összes' or adat.reteg[ig] == ret)]
-            e = [kk for kk, r in el.items() if ret == 'Összes' or r == ret]
+        for ret in retegek + ['Összes']:
+            vs = [ig for ig in adat.versek if ig in adat.arany and adat.ok(f, ig) and (ret == 'Összes' or reteg_fn(ig) == ret)]
+            e = [kk for kk in el if ret == 'Összes' or reteg_fn(kk[0]) == ret]
             if f == 'F3':
                 c = sum(1 for kk in e if f3b[kk]['osztaly'] == 'c')
             else:
@@ -214,22 +268,30 @@ def kezimunka():
 
 def main():
     vd = Versadat()
-    bib = biblia(vd)
+    bib = biblia(vd, F22_RETEG_KONYVEK)      # irányadó: F22 műfaji öt réteg (DT21 h)
+    bib4 = biblia(vd)                        # tájékoztató: a korábbi pilot-4-réteges besorolás
     rnd = random.Random(MAG)
     sorok = [['szakasz', 'futas', 'reteg', 'mero', 'ertek', 'also90', 'felso90', 'megjegyzes']]
 
     def add(*m):
         sorok.append([str(x) for x in m])
 
-    for r in RETEGEK:
-        add('reteg_besorolas', '-', r, 'konyvek', ' '.join(RETEG_KONYVEK[r]), '', '',
-            'műfaj és kánonrész szerint, a minta rétegeivel összhangban')
+    for r in F22_RETEGEK:
+        fh = [k for k in F22_RETEG_KONYVEK[r] if k in F22_FELHASZNALOI_BESOROLAS]
+        add('reteg_besorolas', '-', r, 'konyvek', ' '.join(F22_RETEG_KONYVEK[r]), '', '',
+            'F22 brief 22.2, műfaji (nem kánon szerinti) besorolás, DT21 h)%s' % (
+                '; a 22.2 szövegén túl, felhasználói döntéssel: %s' % ', '.join(fh) if fh else ''))
         add('biblia', '-', r, 'versek', bib[r]['n'], '', '', 'Károli-versek')
         add('biblia', '-', r, 'x_osszeg', bib[r]['x'], '', '', 'Σ(eredeti szavak + Károli-szavak)')
         add('biblia', '-', r, 'kjv_szavak', bib[r]['k'], '', '', 'KJV-támpont szavai (csak 1Móz/2Móz/Péld, 1:1 versmegfeleltetéssel)')
         add('biblia', '-', r, 'eredeti_nelkuli_versek', bib[r]['eredeti_nelkul'], '', '', 'x csak a Károli-szavakból (a 61 maradék)')
-    add('biblia', '-', 'Összes', 'versek', sum(bib[r]['n'] for r in RETEGEK), '', '', '')
-    print('Biblia: %d vers' % sum(bib[r]['n'] for r in RETEGEK))
+    add('biblia', '-', 'Összes', 'versek', sum(bib[r]['n'] for r in F22_RETEGEK), '', '', '')
+    for r in RETEGEK:
+        add('reteg_besorolas_pilot4_tajekoztato', '-', r, 'konyvek', ' '.join(RETEG_KONYVEK[r]), '', '',
+            'TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolás (műfaj és kánonrész, a minta rétegeivel összhangban)')
+        add('biblia_pilot4_tajekoztato', '-', r, 'versek', bib4[r]['n'], '', '', 'Károli-versek')
+    assert sum(bib[r]['n'] for r in F22_RETEGEK) == sum(bib4[r]['n'] for r in RETEGEK)
+    print('Biblia: %d vers' % sum(bib[r]['n'] for r in F22_RETEGEK))
     for f in FUTASOK:
         kk = kotegek(f, vd)
         cin, cout, M = illeszt(kk)
@@ -248,9 +310,10 @@ def main():
         # ellenőrzés: a módszer a 200 pilot-versre
         pred = sum(koltseg_koteg(cin, cout, q['x'], q['k'])[2] for q in kk) * M
         tenyl = sum(q['cost_ossz'] for q in kk)
+        bent = 100 * (pred - tenyl) / tenyl
         add('ellenorzes', f, '-', 'pilot_200_vetitett_usd', round(pred, 6), '', '', 'a módszerrel, a pilot kötegeire')
         add('ellenorzes', f, '-', 'pilot_200_tenyleges_usd', round(tenyl, 6), '', '', 'futasnaplo.tsv')
-        add('ellenorzes', f, '-', 'elteres_szazalek', round(100 * (pred - tenyl) / tenyl, 3), '', '',
+        add('ellenorzes', f, '-', 'elteres_szazalek', round(bent, 3), '', '',
             'küszöb a brief szerint: ≤ 10%; mintán belüli (az illesztés ugyanezeken a hívásokon), ezért közel 0')
         # mintán kívüli ellenőrzés: leave-one-out a kötegek felett
         loo = 0.0
@@ -258,50 +321,83 @@ def main():
             tobbi = kk[:i] + kk[i + 1:]
             ci, co, Mi = illeszt(tobbi)
             loo += koltseg_koteg(ci, co, kk[i]['x'], kk[i]['k'])[2] * Mi
+        loo_sz = 100 * (loo - tenyl) / tenyl
         add('ellenorzes', f, '-', 'pilot_200_loo_vetitett_usd', round(loo, 6), '', '',
             'leave-one-out: minden köteg a többi 19-ből illesztve és vetítve')
-        add('ellenorzes', f, '-', 'loo_elteres_szazalek', round(100 * (loo - tenyl) / tenyl, 3), '', '',
+        add('ellenorzes', f, '-', 'loo_elteres_szazalek', round(loo_sz, 3), '', '',
             'mintán kívüli eltérés a pilot tényleges költségétől (küszöb: ≤ 10%)')
+        sz, melyik = szamito_ellenorzes(bent, loo_sz)
+        add('ellenorzes', f, '-', 'szamito_elteres_szazalek', round(sz, 3), '', '',
+            'DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: %s; küszöb ≤ 10%%: %s' % (
+                melyik, 'teljesül' if abs(sz) <= 10 else 'nem teljesül'))
         v = vetit(cin, cout, M, bib)
-        # bootstrap a kötegek felett
-        boot = {r: [] for r in RETEGEK + ['Összes']}
+        v4 = vetit(cin, cout, M, bib4)
+        # bootstrap a kötegek felett (ugyanaz az újramintavétel mindkét besoroláshoz)
+        boot = {r: [] for r in F22_RETEGEK + ['Összes']}
+        boot4 = {r: [] for r in RETEGEK + ['Összes']}
         for _ in range(N_BOOT):
             minta = [kk[rnd.randrange(len(kk))] for _ in kk]
             try:
-                b = vetit(*illeszt(minta), bib)
+                p = illeszt(minta)
+                b = vetit(*p, bib)
+                b4 = vetit(*p, bib4)
             except ZeroDivisionError:
                 continue
             for r in boot:
                 boot[r].append(b[r]['cost'])
-        for r in RETEGEK + ['Összes']:
-            bs = sorted(boot[r])
-            lo, hi = bs[int(0.05 * len(bs))], bs[int(0.95 * len(bs)) - 1]
+            for r in boot4:
+                boot4[r].append(b4[r]['cost'])
+
+        def hatar(bs):
+            bs = sorted(bs)
+            return bs[int(0.05 * len(bs))], bs[int(0.95 * len(bs)) - 1], len(bs)
+
+        for r in F22_RETEGEK + ['Összes']:
+            lo, hi, nb = hatar(boot[r])
             add('vetites', f, r, 'koltseg_usd', round(v[r]['cost'], 4), round(lo, 4), round(hi, 4),
-                'kötegek: %d; bemenet %.0f, kimenet %.0f token (első próba); ×M; bootstrap %d' % (
-                    v[r]['kotegek'], v[r]['bemenet'], v[r]['kimenet'], len(bs)))
-        print('%s: teljes Biblia %.4f USD [%.4f–%.4f]; ellenőrzés 200 versen: %.6f vs %.6f (%.3f%%)' % (
-            f, v['Összes']['cost'], sorted(boot['Összes'])[int(0.05 * len(boot['Összes']))],
-            sorted(boot['Összes'])[int(0.95 * len(boot['Összes'])) - 1], pred, tenyl, 100 * (pred - tenyl) / tenyl))
-    km = kezimunka()
-    for f in FUTASOK:
+                'F22 műfaji réteg; kötegek: %d; bemenet %.0f, kimenet %.0f token (első próba); ×M; bootstrap %d' % (
+                    v[r]['kotegek'], v[r]['bemenet'], v[r]['kimenet'], nb))
         for r in RETEGEK + ['Összes']:
+            lo, hi, nb = hatar(boot4[r])
+            add('vetites_pilot4_tajekoztato', f, r, 'koltseg_usd', round(v4[r]['cost'], 4), round(lo, 4), round(hi, 4),
+                'TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; kötegek: %d; bootstrap %d' % (v4[r]['kotegek'], nb))
+        d = v['Összes']['cost'] - v4['Összes']['cost']
+        add('besorolas_kulonbseg_tajekoztato', f, 'Összes', 'f22_minus_pilot4_usd', round(d, 6), '', '',
+            'TÁJÉKOZTATÓ: F22 műfaji 5 réteg − korábbi pilot-4 réteg; kötegszám %d vs %d (a különbség a rétegenkénti '
+            'ceil(N/10) kerekítéséből jön; az illesztés rétegfüggetlen)' % (v['Összes']['kotegek'], v4['Összes']['kotegek']))
+        add('besorolas_kulonbseg_tajekoztato', f, 'Összes', 'f22_minus_pilot4_szazalek', round(100 * d / v4['Összes']['cost'], 4), '', '',
+            'TÁJÉKOZTATÓ: a pilot-4-réteges érték százalékában')
+        lo, hi, _ = hatar(boot['Összes'])
+        print('%s: teljes Biblia (F22) %.4f USD [%.4f–%.4f]; pilot-4: %.4f; ellenőrzés 200 versen: %.6f vs %.6f (%.3f%%), LOO %.3f%%' % (
+            f, v['Összes']['cost'], lo, hi, v4['Összes']['cost'], pred, tenyl, bent, loo_sz))
+    km = kezimunka(f22_reteg, F22_RETEGEK)
+    km4 = kezimunka()
+    for f in FUTASOK:
+        for r in F22_RETEGEK + ['Összes']:
             e, c, n = km[(f, r)]
-            nb = sum(bib[x]['n'] for x in RETEGEK) if r == 'Összes' else bib[r]['n']
+            nb = sum(bib[x]['n'] for x in F22_RETEGEK) if r == 'Összes' else bib[r]['n']
             add('kezimunka', f, r, 'elteres_per_vers_arany_v2', round(e / n, 4) if n else '', '', '',
-                'mért: hiányzó+többlet link az arany v2-höz, %d/%d aranyvers' % (e, n))
+                'mért: hiányzó+többlet link az arany v2-höz, %d/%d aranyvers (a minta versei könyv szerint az F22-rétegre képezve)' % (e, n))
             add('kezimunka', f, r, 'c_hiba_per_vers', round(c / n, 4) if n else '', '', '',
                 'az Opus besorolása, nem mérés: %d (c) / %d aranyvers' % (c, n))
             if r != 'Összes' and n:
                 add('kezimunka', f, r, 'vetitett_elteres_biblia', round(e / n * nb), '', '', 'eltérés/vers × %d vers (kis n: %d aranyvers)' % (nb, n))
                 add('kezimunka', f, r, 'vetitett_c_hiba_biblia', round(c / n * nb), '', '', 'Opus-besorolás, nem mérés; × %d vers' % nb)
-        tot_e = sum(km[(f, r)][0] / km[(f, r)][2] * bib[r]['n'] for r in RETEGEK)
-        tot_c = sum(km[(f, r)][1] / km[(f, r)][2] * bib[r]['n'] for r in RETEGEK)
-        add('kezimunka', f, 'Összes', 'vetitett_elteres_biblia', round(tot_e), '', '', 'rétegenként vetítve, összegezve')
-        add('kezimunka', f, 'Összes', 'vetitett_c_hiba_biblia', round(tot_c), '', '', 'Opus-besorolás, nem mérés; rétegenként vetítve')
+        tot_e = sum(km[(f, r)][0] / km[(f, r)][2] * bib[r]['n'] for r in F22_RETEGEK)
+        tot_c = sum(km[(f, r)][1] / km[(f, r)][2] * bib[r]['n'] for r in F22_RETEGEK)
+        add('kezimunka', f, 'Összes', 'vetitett_elteres_biblia', round(tot_e), '', '', 'F22-rétegenként vetítve, összegezve')
+        add('kezimunka', f, 'Összes', 'vetitett_c_hiba_biblia', round(tot_c), '', '', 'Opus-besorolás, nem mérés; F22-rétegenként vetítve')
         add('kezimunka', f, 'Összes', 'alacsony_arany', 'n.é.', '', '', 'egymodelles összeállításra nem értelmezett (PD6, G4)')
+        t4e = sum(km4[(f, r)][0] / km4[(f, r)][2] * bib4[r]['n'] for r in RETEGEK)
+        t4c = sum(km4[(f, r)][1] / km4[(f, r)][2] * bib4[r]['n'] for r in RETEGEK)
+        add('kezimunka_pilot4_tajekoztato', f, 'Összes', 'vetitett_elteres_biblia', round(t4e), '', '',
+            'TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolással vetítve')
+        add('kezimunka_pilot4_tajekoztato', f, 'Összes', 'vetitett_c_hiba_biblia', round(t4c), '', '',
+            'TÁJÉKOZTATÓ; Opus-besorolás, nem mérés; pilot-4-réteges besorolással')
     with open(KIMENET, 'w', encoding='utf-8', newline='\n') as fh:
         fh.write('# GENERÁLT: eszkozok/karoli_strong/koltseg_vetit.py | scope=C (F3, F3V2), P5 teljes Biblia '
-                 '(31 158 vers) | forras=f21p/futasnaplo.tsv, f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, '
+                 '(31 158 vers), F22 műfaji öt réteg (DT21 h), mellette a korábbi pilot-4-réteges besorolás tájékoztató sorai '
+                 '| forras=f21p/futasnaplo.tsv, f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, '
                  'konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, '
                  'konkordancia/KJV_Strongs_*.tsv, f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv | '
                  'ts=%s (a generálás ideje; ismételt futáskor csak ez a sor tér el) | mag=%d | kézzel szerkeszteni tilos\n' % (tokenek.generalas_ts(), MAG))

@@ -1,6 +1,6 @@
 # F21P_meres_v2.md — F3 (prompt v1) és F3V2 (prompt v2) az arany v1/v2-höz
 
-<!-- GENERÁLT: eszkozok/karoli_strong/meres_v2.py (meres.py --v2) | scope=f21p F3, F3V2 | forras=f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, f21p/arany_opus.jsonl, f21p/arany_opus_v2.jsonl (befagyasztva, sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, f21p/minta.tsv, f21p/futasnaplo.tsv | ts=2026-09-30T13:14:36+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
+<!-- GENERÁLT: eszkozok/karoli_strong/meres_v2.py (meres.py --v2) | scope=f21p F3, F3V2 | forras=f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, f21p/arany_opus.jsonl, f21p/arany_opus_v2.jsonl (befagyasztva, sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, f21p/minta.tsv, f21p/futasnaplo.tsv | ts=2026-09-30T15:20:40+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
 
 Kizárólag szkriptkimenet, a meres.py definícióival. **Egymodelles összeállítás (a C egyedül) nem kaphat „megfelelt” minősítést (PD6):** a táblák a mért számot és a rögzített küszöbhöz való viszonyát adják, minősítést nem. A `magas` pontosság (≥ 98%) egymodelles összeállításra nem értelmezhető; az összpontosság a 98% mellett csak tájékoztató. A korrigált (Opus-besorolásos) érték nem része ennek a jelentésnek (l. naplok/F21P_C_diff.md; az „az Opus besorolása, nem mérés”).
 
@@ -31,30 +31,30 @@ Kizárólag szkriptkimenet, a meres.py definícióival. **Egymodelles összeáll
 
 ## b) Régi arany egyezés (halmaz-definíció; kapun átment versek, 200 verses minta)
 
-A PD9 szerinti kizárás (f21p/regi_arany_hibas.tsv, 2 hármas) a futás után, a C két nem-egyezése alapján történt, és a C-nél a küszöb átlépését fordítja meg; ezért mindkét érték és mindkét küszöb-viszony látszik. Az 1Móz 13:4 a besorolásban vitatható, a hibas.tsv-ben hibás.
+DT21 i) (felhasználói döntés): a MÉRT (elsődleges) érték a kizárás nélküli; a küszöb-viszonyítás (95%) ehhez történik. A kizárásos érték csak TÁJÉKOZTATÓ: a f21p/regi_arany_hibas.tsv DT21 i) óta egyetlen hármast tartalmaz (1Móz 6:17); az 1Móz 13:4 hibás-jelölése a felhasználó döntése szerint visszavonva, a hármas a mérésben újra számít.
 
 | réteg | mérőszám | F3 (prompt v1) | F3V2 (prompt v2) |
 |---|---|---|---|
-| R1 | egyezés, kizárás nélkül | 93.8% (30/32) [83–98] | 93.8% (30/32) [83–98] |
-| R1 | egyezés, a hibás hármasok nélkül | 100.0% (30/30) [92–100] | 100.0% (30/30) [92–100] |
-| R1 | (kizárás nélkül) vs küszöb 95% | küszöb alatt (< 95%) | küszöb alatt (< 95%) |
-| R1 | (hibás nélkül, PD9 szerinti kizárással) vs küszöb 95% | elérve (≥ 95%) | elérve (≥ 95%) |
-| R2 | egyezés, kizárás nélkül | — (0/0) | — (0/0) |
-| R2 | egyezés, a hibás hármasok nélkül | — (0/0) | — (0/0) |
-| R2 | (kizárás nélkül) vs küszöb 95% | n.é. | n.é. |
-| R2 | (hibás nélkül, PD9 szerinti kizárással) vs küszöb 95% | n.é. | n.é. |
-| R3 | egyezés, kizárás nélkül | — (0/0) | — (0/0) |
-| R3 | egyezés, a hibás hármasok nélkül | — (0/0) | — (0/0) |
-| R3 | (kizárás nélkül) vs küszöb 95% | n.é. | n.é. |
-| R3 | (hibás nélkül, PD9 szerinti kizárással) vs küszöb 95% | n.é. | n.é. |
-| R4 | egyezés, kizárás nélkül | — (0/0) | — (0/0) |
-| R4 | egyezés, a hibás hármasok nélkül | — (0/0) | — (0/0) |
-| R4 | (kizárás nélkül) vs küszöb 95% | n.é. | n.é. |
-| R4 | (hibás nélkül, PD9 szerinti kizárással) vs küszöb 95% | n.é. | n.é. |
-| Összes | egyezés, kizárás nélkül | 93.8% (30/32) [83–98] | 93.8% (30/32) [83–98] |
-| Összes | egyezés, a hibás hármasok nélkül | 100.0% (30/30) [92–100] | 100.0% (30/30) [92–100] |
-| Összes | (kizárás nélkül) vs küszöb 95% | küszöb alatt (< 95%) | küszöb alatt (< 95%) |
-| Összes | (hibás nélkül, PD9 szerinti kizárással) vs küszöb 95% | elérve (≥ 95%) | elérve (≥ 95%) |
+| R1 | egyezés, kizárás nélkül (MÉRT) | 93.8% (30/32) [83–98] | 93.8% (30/32) [83–98] |
+| R1 | egyezés, 1Móz 6:17 nélkül (TÁJÉKOZTATÓ) | 96.8% (30/31) [87–99] | 96.8% (30/31) [87–99] |
+| R1 | MÉRT (kizárás nélkül) vs küszöb 95% | küszöb alatt (< 95%) | küszöb alatt (< 95%) |
+| R1 | tájékoztató (1Móz 6:17 nélkül) vs küszöb 95% — nem minősít | elérve (≥ 95%) | elérve (≥ 95%) |
+| R2 | egyezés, kizárás nélkül (MÉRT) | — (0/0) | — (0/0) |
+| R2 | egyezés, 1Móz 6:17 nélkül (TÁJÉKOZTATÓ) | — (0/0) | — (0/0) |
+| R2 | MÉRT (kizárás nélkül) vs küszöb 95% | n.é. | n.é. |
+| R2 | tájékoztató (1Móz 6:17 nélkül) vs küszöb 95% — nem minősít | n.é. | n.é. |
+| R3 | egyezés, kizárás nélkül (MÉRT) | — (0/0) | — (0/0) |
+| R3 | egyezés, 1Móz 6:17 nélkül (TÁJÉKOZTATÓ) | — (0/0) | — (0/0) |
+| R3 | MÉRT (kizárás nélkül) vs küszöb 95% | n.é. | n.é. |
+| R3 | tájékoztató (1Móz 6:17 nélkül) vs küszöb 95% — nem minősít | n.é. | n.é. |
+| R4 | egyezés, kizárás nélkül (MÉRT) | — (0/0) | — (0/0) |
+| R4 | egyezés, 1Móz 6:17 nélkül (TÁJÉKOZTATÓ) | — (0/0) | — (0/0) |
+| R4 | MÉRT (kizárás nélkül) vs küszöb 95% | n.é. | n.é. |
+| R4 | tájékoztató (1Móz 6:17 nélkül) vs küszöb 95% — nem minősít | n.é. | n.é. |
+| Összes | egyezés, kizárás nélkül (MÉRT) | 93.8% (30/32) [83–98] | 93.8% (30/32) [83–98] |
+| Összes | egyezés, 1Móz 6:17 nélkül (TÁJÉKOZTATÓ) | 96.8% (30/31) [87–99] | 96.8% (30/31) [87–99] |
+| Összes | MÉRT (kizárás nélkül) vs küszöb 95% | küszöb alatt (< 95%) | küszöb alatt (< 95%) |
+| Összes | tájékoztató (1Móz 6:17 nélkül) vs küszöb 95% — nem minősít | elérve (≥ 95%) | elérve (≥ 95%) |
 
 ## c) Kapuhiba-arány
 

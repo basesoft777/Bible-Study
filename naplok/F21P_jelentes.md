@@ -1,6 +1,6 @@
 # F21P_jelentes.md — Károli–Strong mérőpilot: záró jelentés (P6)
 
-<!-- GENERÁLT: eszkozok/karoli_strong/jelentes_f21p.py | scope=F21 mérőpilot, P6 záró jelentés (A, B, C, A+B, A+B+C; R1–R4) | forras=f21p/meres_eredmeny.tsv, f21p/meres_v2_eredmeny.tsv, f21p/koltseg_vetites.tsv, f21p/ingadozas.tsv, f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv, f21p/futasnaplo.tsv, f21p/minta.tsv, f21p/sorrend_eltero_versek.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/meres_p3b_eredmeny.tsv, f21p/koltseg_vetites_p3b.tsv, f21p/c_diff_f3v2b_besorolas.tsv | ts=2026-09-30T14:48:22+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
+<!-- GENERÁLT: eszkozok/karoli_strong/jelentes_f21p.py | scope=F21 mérőpilot, P6 záró jelentés (A, B, C, A+B, A+B+C; R1–R4) | forras=f21p/meres_eredmeny.tsv, f21p/meres_v2_eredmeny.tsv, f21p/koltseg_vetites.tsv, f21p/ingadozas.tsv, f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv, f21p/futasnaplo.tsv, f21p/minta.tsv, f21p/sorrend_eltero_versek.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/meres_p3b_eredmeny.tsv, f21p/koltseg_vetites_p3b.tsv, f21p/c_diff_f3v2b_besorolas.tsv | ts=2026-09-30T15:23:53+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
 
 A számok kizárólag szkriptkimenetből jönnek (a forrás soronként jelölve). A **korrigált** értékek kizárólag „**Opus-besorolás, nem mérés**” jelöléssel szerepelnek; a küszöb szempontjából csak a mért érték számít (PD10). A jelentés nem ajánl döntést a #22-ről.
 
@@ -10,47 +10,47 @@ Futások: A = F1V2, B = F2V2, C = F3V2 és F3V2B (két futás), A+B+C döntőbí
 
 ### Összefoglaló (P3b)
 
-- **A+B: nem felel meg** (bukott feltétel: 1, 2, 3, 5; nem mért: —); a PD9 szerinti kizárással is: nem felel meg (bukott feltétel: 1, 2, 3_pd9, 5; nem mért: —).
-- **A+B+C: nem felel meg** (bukott feltétel: 1, 2, 3, 4, 5; nem mért: —); a PD9 szerinti kizárással is: nem felel meg (bukott feltétel: 1, 2, 3_pd9, 4, 5; nem mért: —).
+- **A+B: nem felel meg** (bukott feltétel: 1, 2, 3, 5; nem mért: —; mért, a kizárás nélküli régi arannyal — DT21 i). Tájékoztató (az 1Móz 6:17 kizárásával, nem minősít): nem felel meg (bukott feltétel: 1, 2, 3_tajekoztato, 5; nem mért: —).
+- **A+B+C: nem felel meg** (bukott feltétel: 1, 2, 3, 4, 5; nem mért: —; mért, a kizárás nélküli régi arannyal — DT21 i). Tájékoztató (az 1Móz 6:17 kizárásával, nem minősít): nem felel meg (bukott feltétel: 1, 2, 3_tajekoztato, 4, 5; nem mért: —).
 - Az A, a B és a C egymodelles összeállítás: a PD6 szerint nem minősíthető.
 - A Döntési szabály „Javaslat” pontjához (tények): rétegenként sem az A+B, sem az A+B+C nem teljesíti a rétegfeltételeket (l. lent), tehát a szabály szerinti eset: „egyik sem” — a bukott feltételek a táblákban.
 
 ### Az öt feltétel összeállításonként és rétegenként
 
-Feltételek: (1) `magas` pontosság ≥ 98% rétegenként; (2) lefedettség ≥ 95%; (3) régi arany ≥ 95% (halmaz-definíció; kizárás nélkül / PD9 szerinti kizárással); (4) vetített költség 90%-os felső széle ≤ 60 USD (teljes Biblia, rétegenként a réteg része); (5) vetített `alacsony` arány ≤ 10% (link-arány a végső kimenetben; a 200 versen / az aranyon). Egymodelles összeállításnál az (1) és az (5) n.é. (PD6); az (1) helyén az összpontosság tájékoztatásul áll.
+Feltételek: (1) `magas` pontosság ≥ 98% rétegenként; (2) lefedettség ≥ 95%; (3) régi arany ≥ 95% (halmaz-definíció; a MÉRT érték a kizárás nélküli, a küszöb ehhez viszonyít — DT21 i; mellette TÁJÉKOZTATÓKÉNT az 1Móz 6:17 nélküli érték); (4) vetített költség 90%-os felső széle ≤ 60 USD (teljes Biblia; az „Összes” sor az F22 műfaji öt réteg szerinti vetítés, DT21 h; az R1–R4 sorokban a réteg része a korábbi pilot-4-réteges besorolás szerint, tájékoztató); (5) vetített `alacsony` arány ≤ 10% (link-arány a végső kimenetben; a 200 versen / az aranyon). Egymodelles összeállításnál az (1) és az (5) n.é. (PD6); az (1) helyén az összpontosság tájékoztatásul áll.
 
-| összeállítás | réteg | (1) magas pontosság | (2) lefedettség | (3) régi arany: kizárás nélkül / PD9 | (4) költség USD [90%] | (5) alacsony: 200 vers / arany |
+| összeállítás | réteg | (1) magas pontosság | (2) lefedettség | (3) régi arany: mért (kizárás nélkül) / tájékoztató (1Móz 6:17 nélkül) | (4) költség USD [90%] (Összes: F22; R1–R4: pilot-4, tájékoztató) | (5) alacsony: 200 vers / arany |
 |---|---|---|---|---|---|---|
 | A (F1V2) | R1 | n.é. (PD6); összpontosság: 85.5% (118/138) | 73.8% (118/160) | 71.4% (10/14) / 76.9% (10/13) | 11.2206 [10.7962–11.6113] | n.é. (PD6) |
 | A (F1V2) | R2 | n.é. (PD6); összpontosság: 81.7% (103/126) | 81.7% (103/126) | — (0/0) / — (0/0) | 1.851 [1.7736–1.9335] | n.é. (PD6) |
 | A (F1V2) | R3 | n.é. (PD6); összpontosság: 79.5% (58/73) | 87.9% (58/66) | — (0/0) / — (0/0) | 4.3735 [4.2019–4.5258] | n.é. (PD6) |
 | A (F1V2) | R4 | n.é. (PD6); összpontosság: 81.2% (121/149) | 80.7% (121/150) | — (0/0) / — (0/0) | 5.3898 [5.2096–5.5752] | n.é. (PD6) |
-| A (F1V2) | Összes | n.é. (PD6); összpontosság: 82.3% (400/486) | 79.7% (400/502) | 71.4% (10/14) / 76.9% (10/13) | 22.8348 [22.0394–23.6148] | n.é. (PD6) |
+| A (F1V2) | Összes | n.é. (PD6); összpontosság: 82.3% (400/486) | 79.7% (400/502) | 71.4% (10/14) / 76.9% (10/13) | 22.8359 [22.0403–23.6158] | n.é. (PD6) |
 | B (F2V2) | R1 | n.é. (PD6); összpontosság: 61.3% (111/181) | 87.4% (111/127) | 84.2% (16/19) / 88.9% (16/18) | 2.4564 [2.0425–2.8923] | n.é. (PD6) |
 | B (F2V2) | R2 | n.é. (PD6); összpontosság: 79.1% (121/153) | 96.0% (121/126) | — (0/0) / — (0/0) | 0.4786 [0.4031–0.5668] | n.é. (PD6) |
 | B (F2V2) | R3 | n.é. (PD6); összpontosság: 50.0% (255/510) | 95.9% (255/266) | — (0/0) / — (0/0) | 0.9492 [0.7875–1.1194] | n.é. (PD6) |
 | B (F2V2) | R4 | n.é. (PD6); összpontosság: 77.2% (129/167) | 90.8% (129/142) | — (0/0) / — (0/0) | 1.2355 [1.0347–1.4489] | n.é. (PD6) |
-| B (F2V2) | Összes | n.é. (PD6); összpontosság: 60.9% (616/1011) | 93.2% (616/661) | 84.2% (16/19) / 88.9% (16/18) | 5.1197 [4.2679–6.0131] | n.é. (PD6) |
-| C (F3V2) | R1 | n.é. (PD6); összpontosság: 94.0% (299/318) | 94.3% (299/317) | 93.8% (30/32) / 100.0% (30/30) | 20.5079 [18.6004–22.5908] | n.é. (PD6) |
+| B (F2V2) | Összes | n.é. (PD6); összpontosság: 60.9% (616/1011) | 93.2% (616/661) | 84.2% (16/19) / 88.9% (16/18) | 5.1204 [4.2687–6.0138] | n.é. (PD6) |
+| C (F3V2) | R1 | n.é. (PD6); összpontosság: 94.0% (299/318) | 94.3% (299/317) | 93.8% (30/32) / 96.8% (30/31) | 20.5079 [18.6004–22.5908] | n.é. (PD6) |
 | C (F3V2) | R2 | n.é. (PD6); összpontosság: 95.6% (153/160) | 100.0% (153/153) | — (0/0) / — (0/0) | 3.5672 [3.2585–3.9147] | n.é. (PD6) |
 | C (F3V2) | R3 | n.é. (PD6); összpontosság: 94.2% (259/275) | 97.4% (259/266) | — (0/0) / — (0/0) | 7.9682 [7.2246–8.7845] | n.é. (PD6) |
 | C (F3V2) | R4 | n.é. (PD6); összpontosság: 91.7% (309/337) | 98.1% (309/315) | — (0/0) / — (0/0) | 9.9865 [9.0769–10.9815] | n.é. (PD6) |
-| C (F3V2) | Összes | n.é. (PD6); összpontosság: 93.6% (1020/1090) | 97.1% (1020/1051) | 93.8% (30/32) / 100.0% (30/30) | 42.0298 [38.1586–46.2713] | n.é. (PD6) |
-| C (F3V2B) | R1 | n.é. (PD6); összpontosság: 93.8% (304/324) | 95.9% (304/317) | 93.8% (30/32) / 100.0% (30/30) | 20.544 [18.5624–22.8045] | n.é. (PD6) |
+| C (F3V2) | Összes | n.é. (PD6); összpontosság: 93.6% (1020/1090) | 97.1% (1020/1051) | 93.8% (30/32) / 96.8% (30/31) | 42.0329 [38.1616–46.2746] | n.é. (PD6) |
+| C (F3V2B) | R1 | n.é. (PD6); összpontosság: 93.8% (304/324) | 95.9% (304/317) | 93.8% (30/32) / 96.8% (30/31) | 20.544 [18.5624–22.8045] | n.é. (PD6) |
 | C (F3V2B) | R2 | n.é. (PD6); összpontosság: 95.6% (152/159) | 99.3% (152/153) | — (0/0) / — (0/0) | 3.5309 [3.2443–3.8467] | n.é. (PD6) |
 | C (F3V2B) | R3 | n.é. (PD6); összpontosság: 93.9% (263/280) | 98.9% (263/266) | — (0/0) / — (0/0) | 7.986 [7.2059–8.87] | n.é. (PD6) |
 | C (F3V2B) | R4 | n.é. (PD6); összpontosság: 90.3% (306/339) | 97.1% (306/315) | — (0/0) / — (0/0) | 9.971 [9.054–11.0073] | n.é. (PD6) |
-| C (F3V2B) | Összes | n.é. (PD6); összpontosság: 93.0% (1025/1102) | 97.5% (1025/1051) | 93.8% (30/32) / 100.0% (30/30) | 42.0319 [38.0541–46.491] | n.é. (PD6) |
-| A+B | R1 | 95.4% (83/87) | 46.1% (146/317) | 56.2% (18/32) / 60.0% (18/30) | 13.6769 [13.0599–14.2572] | 68.9% (1255/1822) / 62.5% (145/232) |
+| C (F3V2B) | Összes | n.é. (PD6); összpontosság: 93.0% (1025/1102) | 97.5% (1025/1051) | 93.8% (30/32) / 96.8% (30/31) | 42.0348 [38.057–46.494] | n.é. (PD6) |
+| A+B | R1 | 95.4% (83/87) | 46.1% (146/317) | 56.2% (18/32) / 58.1% (18/31) | 13.6769 [13.0599–14.2572] | 68.9% (1255/1822) / 62.5% (145/232) |
 | A+B | R2 | 93.4% (99/106) | 81.7% (125/153) | — (0/0) / — (0/0) | 2.3295 [2.2175–2.4531] | 55.0% (230/418) / 38.7% (67/173) |
 | A+B | R3 | 90.6% (58/64) | 95.9% (255/266) | — (0/0) / — (0/0) | 5.3227 [5.0794–5.5464] | 84.0% (701/835) / 87.7% (455/519) |
 | A+B | R4 | 97.0% (98/101) | 48.3% (152/315) | — (0/0) / — (0/0) | 6.6253 [6.3372–6.9104] | 63.5% (431/679) / 53.0% (114/215) |
-| A+B | Összes | 94.4% (338/358) | 64.5% (678/1051) | 56.2% (18/32) / 60.0% (18/30) | 27.9545 [26.7362–29.1517] | 69.7% (2617/3754) / 68.6% (781/1139) |
-| A+B+C | R1 | 95.4% (83/87) | 89.3% (283/317) | 87.5% (28/32) / 93.3% (28/30) | 41.1791 [38.2149–44.3132] | 57.4% (963/1677) / 62.3% (188/302) |
+| A+B | Összes | 94.4% (338/358) | 64.5% (678/1051) | 56.2% (18/32) / 58.1% (18/31) | 27.9563 [26.7382–29.1534] | 69.7% (2617/3754) / 68.6% (781/1139) |
+| A+B+C | R1 | 95.4% (83/87) | 89.3% (283/317) | 87.5% (28/32) / 90.3% (28/31) | 41.1791 [38.2149–44.3132] | 57.4% (963/1677) / 62.3% (188/302) |
 | A+B+C | R2 | 93.4% (99/106) | 98.7% (151/153) | — (0/0) / — (0/0) | 7.5782 [7.0117–8.3013] | 34.0% (124/365) / 17.2% (28/163) |
 | A+B+C | R3 | 90.6% (58/64) | 96.2% (256/266) | — (0/0) / — (0/0) | 16.6169 [15.3948–17.9057] | 75.3% (469/623) / 74.0% (205/277) |
 | A+B+C | R4 | 97.0% (98/101) | 94.9% (299/315) | — (0/0) / — (0/0) | 20.3713 [18.7513–22.1013] | 64.0% (530/828) / 60.6% (195/322) |
-| A+B+C | Összes | 94.4% (338/358) | 94.1% (989/1051) | 87.5% (28/32) / 93.3% (28/30) | 85.7455 [79.6322–92.3303] | 59.7% (2086/3493) / 57.9% (616/1064) |
+| A+B+C | Összes | 94.4% (338/358) | 94.1% (989/1051) | 87.5% (28/32) / 90.3% (28/31) | 85.9074 [79.5981–92.6267] | 59.7% (2086/3493) / 57.9% (616/1064) |
 
 Egymodelles összeállításnál a lefedettség és a régi arany a kapun átment versekre vonatkozik (n a cellában); az A+B és az A+B+C mind a 60 aranyversre és mind a 200 versre.
 
@@ -61,19 +61,19 @@ Egymodelles összeállításnál a lefedettség és a régi arany a kapun átmen
 | A+B | feltetel_1 | nem teljesül |  |
 | A+B | feltetel_2 | nem teljesül |  |
 | A+B | feltetel_3 | nem teljesül |  |
-| A+B | feltetel_3_pd9 | nem teljesül |  |
+| A+B | feltetel_3_tajekoztato | nem teljesül |  |
 | A+B | feltetel_4 | teljesül |  |
 | A+B | feltetel_5 | nem teljesül |  |
 | A+B | minosites (kizárás nélküli régi arannyal) | nem felel meg | bukott feltétel: 1, 2, 3, 5; nem mért: — |
-| A+B | minosites (PD9 szerinti kizárással) | nem felel meg | bukott feltétel: 1, 2, 3_pd9, 5; nem mért: — |
+| A+B | minosites (tájékoztató: 1Móz 6:17 kizárva) | nem felel meg | bukott feltétel: 1, 2, 3_tajekoztato, 5; nem mért: — |
 | A+B+C | feltetel_1 | nem teljesül |  |
 | A+B+C | feltetel_2 | nem teljesül |  |
 | A+B+C | feltetel_3 | nem teljesül |  |
-| A+B+C | feltetel_3_pd9 | nem teljesül |  |
+| A+B+C | feltetel_3_tajekoztato | nem teljesül |  |
 | A+B+C | feltetel_4 | nem teljesül |  |
 | A+B+C | feltetel_5 | nem teljesül |  |
 | A+B+C | minosites (kizárás nélküli régi arannyal) | nem felel meg | bukott feltétel: 1, 2, 3, 4, 5; nem mért: — |
-| A+B+C | minosites (PD9 szerinti kizárással) | nem felel meg | bukott feltétel: 1, 2, 3_pd9, 4, 5; nem mért: — |
+| A+B+C | minosites (tájékoztató: 1Móz 6:17 kizárva) | nem felel meg | bukott feltétel: 1, 2, 3_tajekoztato, 4, 5; nem mért: — |
 
 | összeállítás | réteg | rétegfeltételek (1, 2, 3, 5; a (4) összesen) | bukott |
 |---|---|---|---|
@@ -157,9 +157,25 @@ A mentett (kapun átment) válaszok újraellenőrzése a teljes kapun (futtat.me
 
 ### P5 minden összeállításra (teljes Biblia, 90%-os intervallum)
 
-**Eltérés a brieftől:** a bootstrap egysége a köteg, nem a vers (DT21 f, nyitott, nincs jóváhagyva). Az ár a modell táblaára × a futás mért cost/táblaár aránya (az A-nál és a B-nél a cost nem egyenlő a táblaárral).
+**Eltérés a brieftől:** a bootstrap egysége a köteg, nem a vers — DT21 f): **elfogadva (felhasználói döntés)**. Az ár a modell táblaára × a futás mért cost/táblaár aránya (az A-nál és a B-nél a cost nem egyenlő a táblaárral).
 
-| összeállítás | R1 | R2 | R3 | R4 | Összes |
+**Rétegbesorolás (DT21 h, felhasználói döntés):** a teljes Biblia vetítése az F22 brief 22.2 **műfaji** (nem kánon szerinti) öt rétege szerint készül: ÓSZ-próza (1Móz, 2Móz, 3Móz, 4Móz, 5Móz, Józs, Bír, Ruth, 1Sám, 2Sám, 1Kir, 2Kir, 1Krón, 2Krón, Ezsd, Neh, Eszt); költészet (Jób, Zsolt, Péld, Préd, Én, Sir); próféta (Ézs, Jer, Ez, Dán, Hós, Jóel, Ámós, Abd, Jón, Mik, Náh, Hab, Sof, Hag, Zak, Mal); evangélium+ApCsel (Mt, Mk, Luk, Ján, ApCsel); levél+Jel (Róm, 1Kor, 2Kor, Gal, Ef, Fil, Kol, 1Thessz, 2Thessz, 1Tim, 2Tim, Tit, Filem, Zsid, Jak, 1Pét, 2Pét, 1Ján, 2Ján, 3Ján, Júd, Jel). A 22.2 szövegén túli könyveket a felhasználó sorolta be: Préd → költészet, Sir → költészet, Dán → próféta, Ruth → ÓSZ-próza, Eszt → ÓSZ-próza. A pilot mérési rétegei (R1–R4, minta.tsv, arany v2) nem változnak; a minta versei a döntőbírói arányhoz és a kézimunkához könyv szerint képeződnek le az F22-rétegekre (Péld az R1-ből a költészethez; az R4 evangéliumai az evangélium+ApCsel, levelei a levél+Jel réteghez). A korábbi pilot-4-réteges besorolás alább tájékoztatóként áll.
+
+**A leképezés még nyitott része (nem egyértelmű):** az ApCsel és a Jel nincs a pilotmintában, ezért a mintában nincs az F22 szerinti evangélium+ApCsel és levél+Jel réteg-pontos mérése: e két réteg döntőbírói aránya és kézimunka-rátája csak az evangéliumok, illetve a levelek mintaverseiből jön, és a vetítés az ApCsel/Jel verseire is ezt alkalmazza (a token-illesztés rétegfüggetlen, azt nem érinti). Az öt F22-réteg a pilot négy mérési rétegével szemben: a mérési táblák R1–R4-ek maradnak, az öt réteg csak a vetítésben él.
+
+| összeállítás | ÓSZ-próza | költészet | próféta | evangélium+ApCsel | levél+Jel | Összes (F22) |
+|---|---|---|---|---|---|---|
+| A (F1V2) | 10.5772 [10.1633–10.9407] | 2.584 [2.4804–2.6958] | 4.285 [4.1149–4.4344] | 3.2495 [3.1405–3.3612] | 2.1403 [2.0691–2.214] | 22.8359 [22.0403–23.6158] |
+| B (F2V2) | 2.2947 [1.9029–2.7044] | 0.6623 [0.5586–0.7829] | 0.9279 [0.7696–1.0945] | 0.7444 [0.6232–0.8733] | 0.4911 [0.4115–0.5759] | 5.1204 [4.2687–6.0138] |
+| C (F3V2) | 19.2778 [17.4733–21.2438] | 4.9671 [4.536–5.4531] | 7.8015 [7.0728–8.6014] | 6.0195 [5.4711–6.6193] | 3.967 [3.6058–4.3622] | 42.0329 [38.1616–46.2746] |
+| C (F3V2B) | 19.3234 [17.4457–21.4833] | 4.9202 [4.52–5.3712] | 7.8202 [7.0559–8.6867] | 6.0105 [5.457–6.636] | 3.9605 [3.5968–4.3713] | 42.0348 [38.057–46.494] |
+| A+B | 12.8718 [12.2818–13.4151] | 3.2463 [3.0919–3.4163] | 5.2128 [4.9741–5.4321] | 3.9939 [3.8194–4.1659] | 2.6315 [2.5168–2.7445] | 27.9563 [26.7382–29.1534] |
+| A+B+C | 39.2741 [36.4125–42.2582] | 10.1116 [9.3219–11.1173] | 16.2654 [15.0646–17.5362] | 11.9354 [10.7866–13.1005] | 8.3209 [7.7147–8.9708] | 85.9074 [79.5981–92.6267] |
+| C döntőbíró rész | 26.4022 [23.6316–29.4579] | 6.8653 [6.1057–7.8284] | 11.0525 [9.8629–12.2769] | 7.9416 [6.7883–9.073] | 5.6895 [5.1116–6.3191] | 57.9511 [51.9552–64.4589] |
+
+Tájékoztató: a korábbi pilot-4-réteges besorolás szerint (ugyanazzal a bootstrap-mintával):
+
+| összeállítás | R1 | R2 | R3 | R4 | Összes (pilot-4) |
 |---|---|---|---|---|---|
 | A (F1V2) | 11.2206 [10.7962–11.6113] | 1.851 [1.7736–1.9335] | 4.3735 [4.2019–4.5258] | 5.3898 [5.2096–5.5752] | 22.8348 [22.0394–23.6148] |
 | B (F2V2) | 2.4564 [2.0425–2.8923] | 0.4786 [0.4031–0.5668] | 0.9492 [0.7875–1.1194] | 1.2355 [1.0347–1.4489] | 5.1197 [4.2679–6.0131] |
@@ -169,17 +185,33 @@ A mentett (kapun átment) válaszok újraellenőrzése a teljes kapun (futtat.me
 | A+B+C | 41.1791 [38.2149–44.3132] | 7.5782 [7.0117–8.3013] | 16.6169 [15.3948–17.9057] | 20.3713 [18.7513–22.1013] | 85.7455 [79.6322–92.3303] |
 | C döntőbíró rész | 27.5022 [24.6275–30.6357] | 5.2487 [4.6821–5.9345] | 11.2942 [10.0794–12.5528] | 13.7459 [12.1933–15.4553] | 57.791 [51.8778–64.2355] |
 
-| futás | cost/táblaár (s) | újrakérés-szorzó M | ellenőrzés mintán belül | leave-one-out |
+A két besorolás költségkülönbsége (tájékoztató; F22 műfaji 5 réteg − korábbi pilot-4 réteg, pont-becslés):
+
+| összeállítás | F22 USD | pilot-4 USD | különbség USD | különbség % |
 |---|---|---|---|---|
-| F1V2 | 1.000013 | 1.744426 | 0.0% | -0.111% |
-| F2V2 | 0.65627 | 1.800281 | 0.0% | -0.276% |
-| F3V2 | 0.999999 | 1.194298 | 0.0% | -0.148% |
-| F3V2B | 0.99999 | 1.181673 | 0.0% | -0.077% |
-| F4V2 | 1.000001 | 1.366257 | 0.0% | 0.321% |
+| A (F1V2) | 22.8359 | 22.8348 | 0.001071 | 0.0047% |
+| B (F2V2) | 5.1204 | 5.1197 | 0.000709 | 0.0138% |
+| C (F3V2) | 42.0329 | 42.0298 | 0.003159 | 0.0075% |
+| C (F3V2B) | 42.0348 | 42.0319 | 0.002892 | 0.0069% |
+| A+B | 27.9563 | 27.9545 | 0.00178 | 0.0064% |
+| A+B+C | 85.9074 | 85.7455 | 0.161913 | 0.1888% |
+| C döntőbíró rész | 57.9511 | 57.791 | 0.160133 | 0.2771% |
+
+Az egymodelles összeállításoknál a különbség csak a rétegenkénti ceil(N/10) kötegszám kerekítéséből jön (az illesztés rétegfüggetlen); az A+B+C-nél a döntőbírói versarány rétegenkénti súlyozása is változik.
+
+| futás | cost/táblaár (s) | újrakérés-szorzó M | ellenőrzés mintán belül | leave-one-out | **számító (DT21 g: a konzervatívabb)** |
+|---|---|---|---|---|---|
+| F1V2 | 1.000013 | 1.744426 | 0.0% | -0.111% | -0.111% (leave-one-out; küszöb ≤ 10%: teljesül) |
+| F2V2 | 0.65627 | 1.800281 | 0.0% | -0.276% | -0.276% (leave-one-out; küszöb ≤ 10%: teljesül) |
+| F3V2 | 0.999999 | 1.194298 | 0.0% | -0.148% | -0.148% (leave-one-out; küszöb ≤ 10%: teljesül) |
+| F3V2B | 0.99999 | 1.181673 | 0.0% | -0.077% | -0.077% (leave-one-out; küszöb ≤ 10%: teljesül) |
+| F4V2 | 1.000001 | 1.366257 | 0.0% | 0.321% | 0.321% (leave-one-out; küszöb ≤ 10%: teljesül) |
+
+DT21 g) (felhasználói döntés): a mintán belüli és a leave-one-out ellenőrzés közül a konzervatívabb — a nagyobb abszolút eltérésű — számít a ≤ 10%-os küszöbhöz; ez minden futásnál a leave-one-out (a mintán belüli illesztés a saját hívásait közel 0 eltéréssel adja vissza). Az A+B+C összesített ellenőrzése (0.0%) csak mintán belüli; a futásonkénti leave-one-out a fenti táblában.
 
 A pilot tényleges költsége (futásnapló, minden futás, P3 és P3b): 1.605067 USD. A C (F3V2) vetítés intervalluma itt kissé eltér a P3-as koltseg_vetites.tsv-étől, mert a két szkript bootstrapja más véletlenszám-sorrendet használ (azonos mag mellett).
 
-Döntőbírói versarány rétegenként (F4V2): R1 95/100 vers, R2 25/25 vers, R3 25/25 vers, R4 48/50 vers. Kézimunka-vetítés (A+B+C, G4): vetített `alacsony` link a Bibliára 340519 (alt olvasat: 152119); vetített eltérés az aranyhoz mérten 74830; a (c)-hiba/vers az A+B+C-re n.é. (nincs besorolva).
+Döntőbírói versarány F22-rétegenként (F4V2; a minta versei könyv szerint leképezve): ÓSZ-próza 68/70 vers, költészet 52/55 vers, próféta 25/25 vers, evangélium+ApCsel 23/25 vers, levél+Jel 25/25 vers. Tájékoztató, pilot-rétegenként: R1 95/100 vers, R2 25/25 vers, R3 25/25 vers, R4 48/50 vers. Kézimunka-vetítés (A+B+C, G4; F22-rétegenként): vetített `alacsony` link a Bibliára 359569 (alt olvasat: 165461); vetített eltérés az aranyhoz mérten 73372; a (c)-hiba/vers az A+B+C-re n.é. (nincs besorolva). Tájékoztató, a pilot-4-réteges besorolással: `alacsony` 340519 (alt: 152119), eltérés 74830.
 
 *A lenti szakaszok a P3 (a P3b előtti) adatát őrzik változatlanul (v1-A/B, F3/F3V2); a P3b-eredmény a fenti.*
 
@@ -187,7 +219,7 @@ Döntőbírói versarány rétegenként (F4V2): R1 95/100 vers, R2 25/25 vers, R
 
 - **Egyik mért összeállítás sem felel meg; az A+B+C nem mért (PD8, az F4 nem futott).**
 - Az A+B két mért feltételen bukott: az A∩B (`magas`) pontosság R1-ben, R3-ban és R4-ben a 98% alatt van, a régi arany egyezése 60.0% (3/5) (a 95% alatt).
-- A C egymodelles összeállítás, a PD6 szerint nem minősíthető. A C régi arany egyezése: kizárás nélkül 93.8% (30/32) — a 95% alatt; a PD9 szerinti kizárással 100.0% (30/30) — a kizárás a küszöb átlépését fordítja meg; a kizárás a futás után, a C két nem-egyezése alapján történt (PD9); az 1Móz 13:4 a besorolásban vitatható, a f21p/regi_arany_hibas.tsv-ben hibás.
+- A C egymodelles összeállítás, a PD6 szerint nem minősíthető. A C régi arany egyezése: **mért (kizárás nélkül) 93.8% (30/32) — a 95% alatt**; az 1Móz 6:17 kizárásával 96.8% (30/31) (tájékoztató, nem minősít — a küszöb szempontjából a mért, kizárás nélküli érték számít (DT21 i); a hibásnak jelölt hármas csak az 1Móz 6:17, az 1Móz 13:4 korábbi hibás-jelölése a felhasználó döntése szerint visszavonva).
 
 ## (a) Eredmény — P3 (korábbi, a P3b előtt)
 
@@ -197,7 +229,7 @@ Döntőbírói versarány rétegenként (F4V2): R1 95/100 vers, R2 25/25 vers, R
 |---|---|---|---|---|---|---|
 | A | n.é. (egymodelles, PD6) | mért: 81.5% (528/648) — nem minősíthető | mért: 83.3% (20/24) | nem vetítve (PD8: kiesett) | n.é. (PD6) | nem minősíthető (PD6) |
 | B | n.é. (egymodelles, PD6) | mért: 79.2% (742/937) — nem minősíthető | mért: 66.7% (4/6) | nem vetítve (PD8: kiesett) | n.é. (PD6) | nem minősíthető (PD6) |
-| C | n.é. (egymodelles, PD6) | mért: F3 94.1% (989/1051) (arany v1), F3V2 97.1% (1020/1051) (arany v2) — nem minősíthető | mért: kizárás nélkül F3 93.8% (30/32), F3V2 93.8% (30/32) — a 95% alatt; a PD9 szerinti kizárással F3V2 100.0% (30/30) (a kizárás a küszöb átlépését fordítja meg; a kizárás a futás után, a C két nem-egyezése alapján történt (PD9); az 1Móz 13:4 a besorolásban vitatható, a f21p/regi_arany_hibas.tsv-ben hibás) | vetítve: F3 42.2328 USD [37.782–47.0314], F3V2 42.0298 USD [37.9494–46.1468] (90%) | n.é. (PD6) | nem minősíthető (PD6) |
+| C | n.é. (egymodelles, PD6) | mért: F3 94.1% (989/1051) (arany v1), F3V2 97.1% (1020/1051) (arany v2) — nem minősíthető | mért (kizárás nélkül): F3 93.8% (30/32), F3V2 93.8% (30/32) — a 95% alatt; az 1Móz 6:17 kizárásával F3V2 96.8% (30/31) (tájékoztató, nem minősít — a küszöb szempontjából a mért, kizárás nélküli érték számít (DT21 i); a hibásnak jelölt hármas csak az 1Móz 6:17, az 1Móz 13:4 korábbi hibás-jelölése a felhasználó döntése szerint visszavonva) | vetítve (F22 műfaji 5 réteg): F3 42.2353 USD [37.7848–47.034], F3V2 42.033 USD [37.9527–46.1502] (90%) | n.é. (PD6) | nem minősíthető (PD6) |
 | A+B | **bukott**: A∩B pontosság R1 85.2% (52/61), R2 98.4% (61/62), R3 91.8% (179/195), R4 91.7% (77/84) | nem mért (F4 nélkül nincs végső linkhalmaz; A∩B lefedettség tájékoztatásul: 65.3% (369/565)) | **bukott** (A∩B): 60.0% (3/5); a korábbi, összetett Strong nélküli definícióval is 60.0% (3/5) | nem vetítve (PD8) | nem mért (F4 nélkül; PD8) | nem felel meg |
 | A+B+C | nem mért (az F4 nem futott, PD8) | nem mért | nem mért | nem vetítve | nem mért | nem mért (PD8) |
 
@@ -236,13 +268,13 @@ Bizonyossági szintek (G4): a `magas` az A∩B (az A+B egyező linkjei); a `koze
 | A–B | link_egyezes (uniós arány) | 32.5% (93/286) | 59.8% (149/249) | 48.3% (219/453) | 67.5% (287/425) | 52.9% (748/1413) |
 | A–B | azonos_linkhalmazu_versek | 13.3% (2/15) | 0.0% (0/17) | 0.0% (0/10) | 4.3% (1/23) | 4.6% (3/65) |
 | A | régi arany: egyezes | 83.3% (20/24) | — (0/0) | — (0/0) | — (0/0) | 83.3% (20/24) |
-| A | régi arany: egyezes_hibas_kizarva | 90.9% (20/22) | — (0/0) | — (0/0) | — (0/0) | 90.9% (20/22) |
+| A | régi arany: egyezes_hibas_kizarva_tajekoztato | 87.0% (20/23) | — (0/0) | — (0/0) | — (0/0) | 87.0% (20/23) |
 | B | régi arany: egyezes | 66.7% (4/6) | — (0/0) | — (0/0) | — (0/0) | 66.7% (4/6) |
-| B | régi arany: egyezes_hibas_kizarva | 66.7% (4/6) | — (0/0) | — (0/0) | — (0/0) | 66.7% (4/6) |
+| B | régi arany: egyezes_hibas_kizarva_tajekoztato | 66.7% (4/6) | — (0/0) | — (0/0) | — (0/0) | 66.7% (4/6) |
 | C | régi arany: egyezes | 93.8% (30/32) | — (0/0) | — (0/0) | — (0/0) | 93.8% (30/32) |
-| C | régi arany: egyezes_hibas_kizarva | 100.0% (30/30) | — (0/0) | — (0/0) | — (0/0) | 100.0% (30/30) |
+| C | régi arany: egyezes_hibas_kizarva_tajekoztato | 96.8% (30/31) | — (0/0) | — (0/0) | — (0/0) | 96.8% (30/31) |
 | A+B magas (A∩B) | régi arany: egyezes | 60.0% (3/5) | — (0/0) | — (0/0) | — (0/0) | 60.0% (3/5) |
-| A+B magas (A∩B) | régi arany: egyezes_hibas_kizarva | 60.0% (3/5) | — (0/0) | — (0/0) | — (0/0) | 60.0% (3/5) |
+| A+B magas (A∩B) | régi arany: egyezes_hibas_kizarva_tajekoztato | 60.0% (3/5) | — (0/0) | — (0/0) | — (0/0) | 60.0% (3/5) |
 | F1 (A) | kapuhiba_elso_probara | 71.0% (71/100) | 76.0% (19/25) | 96.0% (24/25) | 76.0% (38/50) | 76.0% (152/200) |
 | F1 (A) | kapuhiba_vegleg | 42.0% (42/100) | 32.0% (8/25) | 40.0% (10/25) | 44.0% (22/50) | 41.0% (82/200) |
 | F2 (B) | kapuhiba_elso_probara | 80.0% (80/100) | 8.0% (2/25) | 52.0% (13/25) | 22.0% (11/50) | 53.0% (106/200) |
@@ -281,15 +313,15 @@ Bizonyossági szintek (G4): a `magas` az A∩B (az A+B egyező linkjei); a `koze
 
 Az A és a B (arany v1, kapun átment versek; meres_eredmeny.tsv): A pontosság 81.2% (528/650), lefedettség 81.5% (528/648); B pontosság 65.1% (742/1140), lefedettség 79.2% (742/937).
 
-### Régi arany egyezés (halmaz-definíció, PD9; a 2 hibás hármas nélkül is)
+### Régi arany egyezés (halmaz-definíció; mért = kizárás nélkül, DT21 i)
 
-| összeállítás | kizárás nélkül | hibás hármasok nélkül |
+| összeállítás | kizárás nélkül (MÉRT) | az 1Móz 6:17 nélkül (TÁJÉKOZTATÓ) |
 |---|---|---|
-| A (arany-független, 200 verses minta) | 83.3% (20/24) | 90.9% (20/22) |
+| A (arany-független, 200 verses minta) | 83.3% (20/24) | 87.0% (20/23) |
 | B (arany-független, 200 verses minta) | 66.7% (4/6) | 66.7% (4/6) |
-| C (arany-független, 200 verses minta) | 93.8% (30/32) | 100.0% (30/30) |
+| C (arany-független, 200 verses minta) | 93.8% (30/32) | 96.8% (30/31) |
 | A+B magas (A∩B) (arany-független, 200 verses minta) | 60.0% (3/5) | 60.0% (3/5) |
-| C — F3V2 | 93.8% (30/32) | 100.0% (30/30) |
+| C — F3V2 | 93.8% (30/32) | 96.8% (30/31) |
 
 ### Kapuhiba-arány (első próbára / végleg)
 
@@ -357,27 +389,44 @@ A lefedettség 94.20% → 97.05% különbsége (+2.85 pp) 90%-os intervalluma [+
 
 ## (d) Költségvetítés — P3 (P5, csak a C; forrás: koltseg_vetites.tsv; a P3b-vetítés a fenti P3b-szakaszban)
 
-**Eltérés a brieftől:** a bootstrap egysége a 10 verses köteg, nem a vers (a brief P5.6 a verseken kéri; a token hívásonként, 10 versre ismert, versenként nem mérhető). Ez a DT21 f) nyitott tétele, **nincs jóváhagyva**.
+**Eltérés a brieftől:** a bootstrap egysége a 10 verses köteg, nem a vers (a brief P5.6 a verseken kéri; a token hívásonként, 10 versre ismert, versenként nem mérhető). DT21 f): **elfogadva (felhasználói döntés)**.
 
 Módszer: illesztés tokenfajtánként az első próbálkozású hívásokon (bemenet = a + b·x + c·k; kimenet = a + b·x; x = eredeti + Károli-szavak, k = KJV-támpont szavai); a teljes Biblia valódi vershosszai (Karoli_1908, TAHOT/TAGNT); ár a cost mezőből; az újrakérés a pilot mért szorzójával; bootstrap a kötegek felett (1000); ellenőrzés a 200 versen.
 
-| réteg | könyvek | versek |
+Rétegbesorolás (DT21 h): az F22 brief 22.2 műfaji (nem kánon szerinti) öt rétege; a korábbi pilot-4-réteges besorolás tájékoztatóként alább.
+
+| réteg (F22) | könyvek | versek |
+|---|---|---|
+| ÓSZ-próza | 1Móz 2Móz 3Móz 4Móz 5Móz Józs Bír Ruth 1Sám 2Sám 1Kir 2Kir 1Krón 2Krón Ezsd Neh Eszt | 12871 |
+| költészet | Jób Zsolt Péld Préd Én Sir | 5001 |
+| próféta | Ézs Jer Ez Dán Hós Jóel Ámós Abd Jón Mik Náh Hab Sof Hag Zak Mal | 5332 |
+| evangélium+ApCsel | Mt Mk Luk Ján ApCsel | 4785 |
+| levél+Jel | Róm 1Kor 2Kor Gal Ef Fil Kol 1Thessz 2Thessz 1Tim 2Tim Tit Filem Zsid Jak 1Pét 2Pét 1Ján 2Ján 3Ján Júd Jel | 3169 |
+
+| réteg (pilot-4, tájékoztató) | könyvek | versek |
 |---|---|---|
 | R1 | 1Móz 2Móz 3Móz 4Móz 5Móz Józs Bír Ruth 1Sám 2Sám 1Kir 2Kir 1Krón 2Krón Ezsd Neh Eszt Péld Préd | 14006 |
 | R2 | Jób Zsolt Én | 3712 |
 | R3 | Ézs Jer Sir Ez Dán Hós Jóel Ámós Abd Jón Mik Náh Hab Sof Hag Zak Mal | 5486 |
 | R4 | Mt Mk Luk Ján ApCsel Róm 1Kor 2Kor Gal Ef Fil Kol 1Thessz 2Thessz 1Tim 2Tim Tit Filem Zsid Jak 1Pét 2Pét 1Ján 2Ján 3Ján Júd Jel | 7954 |
 
-A besorolás szabálya: műfaj és kánonrész, a minta rétegeivel összhangban (R1: Törvény, történeti könyvek, Péld, Préd; R2: Jób, Zsolt, Én; R3: Ézs–Mal a Siralmakkal és Dániellel; R4: az ÚSZ).
-
-| futás | illesztés (bemenet a/b/c; kimenet a/b) | cost/táblaár (1. próba) | újrakérés-szorzó M | 200 vers: vetített / tényleges (eltérés) | leave-one-out eltérés |
-|---|---|---|---|---|---|
-| F3 | 1898.37 / 12.0799 / 4.6521 ; 135.08 / 3.3741 | 0.999992 | 1.295538 | 0.257253 / 0.257251 USD (0.001%) | -0.149% |
-| F3V2 | 2939.52 / 12.0797 / 4.6518 ; 117.52 / 3.4544 | 0.999999 | 1.194298 | 0.256731 / 0.256731 USD (0.0%) | -0.148% |
+| futás | illesztés (bemenet a/b/c; kimenet a/b) | cost/táblaár (1. próba) | újrakérés-szorzó M | 200 vers: vetített / tényleges (eltérés) | leave-one-out eltérés | **számító (DT21 g)** |
+|---|---|---|---|---|---|---|
+| F3 | 1898.37 / 12.0799 / 4.6521 ; 135.08 / 3.3741 | 0.999992 | 1.295538 | 0.257253 / 0.257251 USD (0.001%) | -0.149% | -0.149% (leave-one-out; küszöb ≤ 10%: teljesül) |
+| F3V2 | 2939.52 / 12.0797 / 4.6518 ; 117.52 / 3.4544 | 0.999999 | 1.194298 | 0.256731 / 0.256731 USD (0.0%) | -0.148% | -0.148% (leave-one-out; küszöb ≤ 10%: teljesül) |
 
 Az újrakérések cost-ja nem lineáris a tokenben (a megismételt előtag gyorsítótárazott), ezért az újrakérést nem tokenből, hanem a mért M szorzóval vetítjük.
 
-| réteg | F3 (prompt v1) USD [90%] | F3V2 (prompt v2) USD [90%] |
+| réteg (F22) | F3 (prompt v1) USD [90%] | F3V2 (prompt v2) USD [90%] |
+|---|---|---|
+| ÓSZ-próza | 19.498 [17.3915–21.7333] | 19.2778 [17.3559–21.171] |
+| költészet | 4.8749 [4.3993–5.4167] | 4.9671 [4.5063–5.4401] |
+| próféta | 7.8775 [7.0293–8.7774] | 7.8015 [7.0186–8.571] |
+| evangélium+ApCsel | 6.0193 [5.4011–6.6994] | 6.0195 [5.4425–6.6098] |
+| levél+Jel | 3.9656 [3.5585–4.4128] | 3.967 [3.5873–4.3558] |
+| Összes | 42.2353 [37.7848–47.034] | 42.033 [37.9527–46.1502] |
+
+| réteg (pilot-4, tájékoztató) | F3 USD [90%] | F3V2 USD [90%] |
 |---|---|---|
 | R1 | 20.7157 [18.4867–23.0838] | 20.5079 [18.4766–22.515] |
 | R2 | 3.4895 [3.1504–3.8685] | 3.5672 [3.2356–3.9119] |
@@ -385,16 +434,20 @@ Az újrakérések cost-ja nem lineáris a tokenben (a megismételt előtag gyors
 | R4 | 9.9849 [8.9596–11.1123] | 9.9865 [9.0298–10.9656] |
 | Összes | 42.2328 [37.782–47.0314] | 42.0298 [37.9494–46.1468] |
 
-**Kézimunka-vetítés (C):** az aranyon mért eltérés/vers és a (c)-hiba/vers (ez utóbbi Opus-besorolás, nem mérés), rétegenként a teljes Bibliára; a rétegenkénti arany kis mintájú (10–20 vers). `alacsony` arány: n.é. (PD6).
+A két besorolás különbsége (tájékoztató, F22 − pilot-4): F3 0.002501 USD (0.0059%), F3V2 0.003159 USD (0.0075%).
 
-| futás | eltérés/vers (mért, 60 aranyvers) | vetített eltérés a Bibliára | (c)/vers (Opus-besorolás, nem mérés) | vetített (c) a Bibliára (Opus-besorolás, nem mérés) |
-|---|---|---|---|---|
-| F3 | 2.2 | 69608 | 0.6167 | 18340 |
-| F3V2 | 1.6833 | 54649 | 0.65 | 20625 |
+**Kézimunka-vetítés (C):** az aranyon mért eltérés/vers és a (c)-hiba/vers (ez utóbbi Opus-besorolás, nem mérés), F22-rétegenként a teljes Bibliára (a minta aranyversei könyv szerint leképezve); a rétegenkénti arany kis mintájú (10–20 vers). `alacsony` arány: n.é. (PD6).
 
-## (e) Nyitott tételek a #22 esetleges újraindításához (DT21), átvihető eszközök, megtanult korlátok
+| futás | eltérés/vers (mért, 60 aranyvers) | vetített eltérés a Bibliára (F22) | (c)/vers (Opus-besorolás, nem mérés) | vetített (c) a Bibliára (F22; Opus-besorolás, nem mérés) | tájékoztató, pilot-4: eltérés / (c) |
+|---|---|---|---|---|---|
+| F3 | 2.2 | 73363 | 0.6167 | 15888 | 69608 / 18340 |
+| F3V2 | 1.6833 | 60478 | 0.65 | 19308 | 54649 / 20625 |
 
-### Öt nyitott tétel (nincs v3, nincs újabb futás; DT21)
+## (e) A DT21 tételei, átvihető eszközök, megtanult korlátok
+
+**A #22:** a döntés elhalasztva a regressziós futás utánra; brief-diff nem készül, teljes futás nem indul; marad `dontesre_var`.
+
+### Az a–e tétel: regressziós mérésre átvéve (DT21 döntés: a–e a jegyzet v2-be, prompt_v3, F3V3)
 
 1. **G / K7:** a prompt_v2 G-szabályának kivétele („többtagú igei szerkezet minden tagja”) tágabb, mint a jegyzet K7-e (*tudja vala*, *megy vala*): melyik az irányadó.
 2. **C:** a prompt „azt, őt …” felsorolása a C-nél az *'et* nélküli, betoldott tárgyi névmásokra is általánosult.
@@ -402,7 +455,14 @@ Az újrakérések cost-ja nem lineáris a tokenben (a megismételt előtag gyors
 4. **2Móz 26:13 *is*:** a K9 szerint a *ve-* az *is*-hez köthető volna; az arany v2 forditatlan-nak veszi (az F3V2-nél (b)).
 5. **D:** a birtokláncban (*szolgálójának szemét*) nem egyértelmű, melyik szó viseli a ragot.
 
-További nyitott tétel a P3b-ből (DT21 k): **k)** a G4 szerinti `alacsony` arány két olvasata az A+B+C-nél (szó szerinti: a kapuhibás maradt versben a C minden linkje alacsony; „alt”: a túlélő modellel egyező C-link `közepes`) és az A+B döntőbíró nélküli meghatározása (A∩B = `magas`, a többi link `alacsony`); a jelentés értelmezése, nem a briefé; az (5) feltétel egyik olvasattal sem teljesül.
+### Lezárt tételek (f–k; felhasználói döntés, DT21)
+
+- **f)** a P5 bootstrap-egysége a köteg: elfogadva (felhasználói döntés).
+- **g)** költség-ellenőrzés: a mintán belüli és a leave-one-out közül a konzervatívabb (nagyobb abszolút eltérésű) számít; ez minden futásnál a leave-one-out (P5-táblák, „számító” oszlop).
+- **h)** a teljes Biblia rétegbesorolása: az F22 brief 22.2 műfaji öt rétege (Préd, Sir → költészet, Dán → próféta, Ruth, Eszt → ÓSZ-próza a felhasználó döntése szerint); a korábbi pilot-4-réteges besorolás tájékoztató; a pilot mérési rétegei (R1–R4) változatlanok. Nyitott marad: az ApCsel és a Jel nincs a mintában.
+- **i)** régi arany: a mért érték a kizárás nélküli (C, F3V2: 93.8% (30/32) — a 95% alatt); a kizárásos érték csak tájékoztató (az 1Móz 6:17 nélkül: 96.8% (30/31)); az 1Móz 13:4 hibás-jelölése visszavonva.
+- **j)** a gondolkodási mód eltérése a pilot idején elfogadva.
+- **k)** az A+B+C-nél a szó szerinti olvasat számít (59.7% (2086/3493)), az A+B definíciója elfogadva.
 
 ### Az F22-re átvihető eszközök
 
@@ -419,14 +479,14 @@ További nyitott tétel a P3b-ből (DT21 k): **k)** a G4 szerinti `alacsony` ar�
 - Összetett Strong a régi aranyban: 68 hármas „+”-os Stronggal; halmaz-definícióval mérve (PD9).
 - Az A és a B JSON-hibái: első próbára érvénytelen JSON A 50.0% (100/200), B 20.0% (40/200) (meres_eredmeny.tsv, kapuhiba_tipus).
 - A C gondolkodási tokenje a naplóban és a nyers usage-ban 0 (minimal effort); a nyers usage tárolása az F3V2-től.
-- Gondolkodási mód (eltérés a brief Keretek pontjától, amely mindhárom modellnél azonos beállítást kért): az A és a B kikapcsolva, a C-nél a gondolkodás kötelező, `minimal` szinten. Az F1–F6 napló `gondolkodas_token` = 0 értéke nem mérés (a token olvasása csak az F21.10-től él); a nyers usage az F3V2-től tárolt, abban is 0. A költség ettől helyes, mert a `cost` mezőből jön.
+- Gondolkodási mód (eltérés a brief Keretek pontjától, amely mindhárom modellnél azonos beállítást kért; DT21 j: a pilot idején elfogadva): az A és a B kikapcsolva, a C-nél a gondolkodás kötelező, `minimal` szinten. Az F1–F6 napló `gondolkodas_token` = 0 értéke nem mérés (a token olvasása csak az F21.10-től él); a nyers usage az F3V2-től tárolt, abban is 0. A költség ettől helyes, mert a `cost` mezőből jön.
 - A prompt-szabályok túlkötést okozhatnak: az F3V2 több linket ad (1090 link az F3 1061-ével szemben, arany v2).
 
 ### A #22 opcióinak következményei (tények, ajánlás nélkül)
 
 - **Marad (a jelenlegi céllal):** a P3b-adaton az A+B és az A+B+C mért, és a Döntési szabály szerint egyik sem felel meg (a bukott feltételek a P3b-szakaszban); az A, a B és a C egymodelles, a PD6 szerint nem minősíthető. A teljes futás a jelenlegi szabállyal nem indítható.
-- **Módosított céllal indul:** minden összeállítás mért adata (pontosság, lefedettség, régi arany, kapuhiba, bizonyossági szintek, vetített költség) rendelkezésre áll; a Döntési szabály, a PD6 vagy a G4 módosítása felhasználói döntés; az öt nyitott tétel és a prompt túlkötése nyitott.
-- **Elhalasztva:** az eszközök, az arany v2 és a mért adat megmarad; a nyitott tételek dokumentálva.
+- **Módosított céllal indul:** minden összeállítás mért adata (pontosság, lefedettség, régi arany, kapuhiba, bizonyossági szintek, vetített költség) rendelkezésre áll; a Döntési szabály, a PD6 vagy a G4 módosítása felhasználói döntés; az a–e tétel és a prompt túlkötése regressziós mérésre átvéve (jegyzet v2, prompt_v3, F3V3).
+- **Elhalasztva:** az eszközök, az arany v2 és a mért adat megmarad; az a–e tétel regressziós mérésre átvéve, a lezárt f–k tétel dokumentálva.
 
 ## (f) A korrigált értékek (Opus-besorolás, nem mérés)
 

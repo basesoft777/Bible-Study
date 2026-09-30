@@ -11,15 +11,24 @@ A koltseg_vetit.py módszere (P5 lépései), futásonként:
     az első próbálkozásokon — az A-nál és a B-nél a cost nem egyenlő a
     táblaárral (gyorsítótár / kedvezmény), ezért a mért arány szorzóként megy
     át; az újrakérés a mért szorzóval (M = Σcost / Σcost első próba);
-  * a teljes Biblia (31 158 vers) rétegenként, ceil(N/10) köteg.
+  * a teljes Biblia (31 158 vers) rétegenként, ceil(N/10) köteg. DT21 h)
+    (F21.34): az irányadó besorolás az F22 brief 22.2 műfaji öt rétege
+    (kv.F22_RETEG_KONYVEK; Préd, Sir → költészet, Dán → próféta, Ruth, Eszt →
+    ÓSZ-próza a felhasználó döntése szerint); műfaji, nem kánon szerinti. A
+    korábbi pilot-4-réteges besorolás tájékoztató sorokban (*_pilot4_tajekoztato)
+    marad, a két változat különbségével. A pilot mérési rétegei nem változnak; a
+    minta versei könyv szerint képeződnek le az F22-rétegekre (a döntőbírói
+    arányhoz és a kézimunkához).
 Összeállítások: A (F1V2), B (F2V2), C (F3V2), C (F3V2B), A+B = A + B,
 A+B+C = A + B + (a döntőbíróhoz menő versek aránya a rétegben × C-döntőbíró),
 ahol a döntőbírói arány és a döntőbírói hívás tokenigénye rétegenként a pilotból
 (F4V2) jön.
 Bootstrap: 1000 újramintavétel (mag 20260930); egysége a köteg (a token
-versenként nem mérhető) — ez a DT21 f) nyitott tétele, nincs jóváhagyva; a
-döntőbírói arányt rétegenként a versek újramintavételezése adja.
-Ellenőrzés: a 200 versre (döntőbírónál a 193 versre) mintán belül és leave-one-out.
+versenként nem mérhető) — DT21 f): elfogadva (felhasználói döntés); a
+döntőbírói arányt a versek újramintavételezése adja, a mintavétel strátumain
+(R1–R4) belül; az F22-rétegenkénti arány ugyanebből a versmultihalmazból.
+Ellenőrzés: a 200 versre (döntőbírónál a 193 versre) mintán belül és leave-one-out;
+DT21 g): a kettő közül a konzervatívabb (nagyobb abszolút eltérésű) számít.
 Kézimunka (A+B+C, G4): az `alacsony` linkek száma versenként (a 200 versen mért,
 meres_p3b.osszeallitas_kimenet) és az aranyon mért eltérés/vers, rétegenként a
 teljes Bibliára; a (c)-hiba/vers az A+B+C-re nincs besorolva: n.é.
@@ -67,22 +76,36 @@ def koltseg(param, ar, x, k, nkoteg):
 
 
 def vetit_futas(param, ar, bib, arany=None):
-    """{reteg: cost}; arany: {reteg: p} a döntőbíró versaránya (None = minden vers)."""
+    """{reteg: cost}; arany: {reteg: p} a döntőbíró versaránya (None = minden vers). A rétegek a bib kulcsai."""
     ki = {}
-    for r in RETEGEK:
+    for r in bib:
         p = 1.0 if arany is None else arany[r]
         n = bib[r]['n'] * p
         ki[r] = koltseg(param, ar, bib[r]['x'] * p, bib[r]['k'] * p, math.ceil(n / kv.KOTEG) if n else 0)
-    ki['Összes'] = sum(ki[r] for r in RETEGEK)
+    ki['Összes'] = sum(ki[r] for r in bib)
     return ki
 
 
-def dontobiro_arany(minta, f4_versek, rnd=None):
-    ki = {}
+def minta_versek(minta, rnd=None):
+    """A minta versei; rnd-vel újramintavétel a mintavétel strátumain (a pilot R1–R4 rétegein) belül.
+
+    A pilotminta R1–R4 szerint rétegzetten készült, ezért a bootstrap e strátumokon belül mintavételez;
+    az F22-rétegenkénti arány ebből a versmultihalmazból, könyv szerinti leképezéssel származik.
+    """
+    ki = []
     for r in RETEGEK:
         vs = [m['igehely'] for m in minta if m['reteg'] == r]
         if rnd is not None:
             vs = [vs[rnd.randrange(len(vs))] for _ in vs]
+        ki += vs
+    return ki
+
+
+def dontobiro_arany(versek, f4_versek, reteg_fn, retegek):
+    """{reteg: a döntőbíróhoz menő versek aránya} a megadott rétegbesorolással."""
+    ki = {}
+    for r in retegek:
+        vs = [ig for ig in versek if reteg_fn(ig) == r]
         ki[r] = sum(1 for ig in vs if ig in f4_versek) / len(vs)
     return ki
 
@@ -92,8 +115,15 @@ def main():
     for f, m in FUTAS_MODELL.items():
         assert futtat.ARAK[m] == ARAK[m], m
     vd = kv.Versadat()
-    bib = kv.biblia(vd)
+    bib = kv.biblia(vd, kv.F22_RETEG_KONYVEK)   # irányadó: F22 műfaji öt réteg (DT21 h)
+    bib4 = kv.biblia(vd)                        # tájékoztató: a korábbi pilot-4-réteges besorolás
+    F22 = kv.F22_RETEGEK
     minta = kv._tsv(os.path.join(kv.F21P, 'minta.tsv'))
+    pilot_reteg = {m['igehely']: m['reteg'] for m in minta}
+
+    def p4_fn(ig):
+        return pilot_reteg[ig]
+
     kk = {f: kv.kotegek(f, vd) for f in FUTAS_MODELL}
     import json
     f4_versek = set()
@@ -102,7 +132,9 @@ def main():
             if s.strip():
                 f4_versek.update(json.loads(s)['igehelyek'])
     param = {f: illeszt(kk[f], ARAK[FUTAS_MODELL[f]]) for f in kk}
-    p_arany = dontobiro_arany(minta, f4_versek)
+    mv = minta_versek(minta)
+    p_arany = dontobiro_arany(mv, f4_versek, kv.f22_reteg, F22)
+    p_arany4 = dontobiro_arany(mv, f4_versek, p4_fn, RETEGEK)
     sorok = [['szakasz', 'osszeallitas', 'reteg', 'mero', 'ertek', 'also90', 'felso90', 'megjegyzes']]
 
     def add(*m):
@@ -120,72 +152,111 @@ def main():
         for i in range(len(kk[f])):
             pi = illeszt(kk[f][:i] + kk[f][i + 1:], ARAK[FUTAS_MODELL[f]])
             loo += koltseg(pi, ARAK[FUTAS_MODELL[f]], kk[f][i]['x'], kk[f][i]['k'], 1)
+        bent, loo_sz = 100 * (pred - tenyl) / tenyl, 100 * (loo - tenyl) / tenyl
         add('ellenorzes', f, '-', 'pilot_vetitett_usd', round(pred, 6), '', '', 'mintán belül')
         add('ellenorzes', f, '-', 'pilot_tenyleges_usd', round(tenyl, 6), '', '', 'futasnaplo.tsv')
-        add('ellenorzes', f, '-', 'elteres_szazalek', round(100 * (pred - tenyl) / tenyl, 3), '', '', 'küszöb ≤ 10%')
-        add('ellenorzes', f, '-', 'loo_elteres_szazalek', round(100 * (loo - tenyl) / tenyl, 3), '', '', 'leave-one-out, küszöb ≤ 10%')
-    for r in RETEGEK:
+        add('ellenorzes', f, '-', 'elteres_szazalek', round(bent, 3), '', '', 'mintán belül, küszöb ≤ 10%')
+        add('ellenorzes', f, '-', 'loo_elteres_szazalek', round(loo_sz, 3), '', '', 'leave-one-out, küszöb ≤ 10%')
+        sz, melyik = kv.szamito_ellenorzes(bent, loo_sz)
+        add('ellenorzes', f, '-', 'szamito_elteres_szazalek', round(sz, 3), '', '',
+            'DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: %s; küszöb ≤ 10%%: %s' % (
+                melyik, 'teljesül' if abs(sz) <= 10 else 'nem teljesül'))
+    for r in F22:
+        n = [ig for ig in mv if kv.f22_reteg(ig) == r]
         add('dontobiro', 'F4V2', r, 'dontobirohoz_meno_versek_aranya', round(p_arany[r], 4), '', '',
-            '%d/%d vers' % (sum(1 for m in minta if m['reteg'] == r and m['igehely'] in f4_versek),
-                            sum(1 for m in minta if m['reteg'] == r)))
+            '%d/%d vers (a minta versei könyv szerint az F22-rétegre képezve)' % (sum(1 for ig in n if ig in f4_versek), len(n)))
+    for r in RETEGEK:
+        add('dontobiro_pilot4_tajekoztato', 'F4V2', r, 'dontobirohoz_meno_versek_aranya', round(p_arany4[r], 4), '', '',
+            'TÁJÉKOZTATÓ: %d/%d vers (pilot-réteg)' % (sum(1 for m in minta if m['reteg'] == r and m['igehely'] in f4_versek),
+                                                      sum(1 for m in minta if m['reteg'] == r)))
 
-    def osszeallitasok(par, pa):
-        v = {f: vetit_futas(par[f], ARAK[FUTAS_MODELL[f]], bib) for f in ('F1V2', 'F2V2', 'F3V2', 'F3V2B')}
-        d = vetit_futas(par['F4V2'], ARAK[FUTAS_MODELL['F4V2']], bib, pa)
+    def osszeallitasok(par, pa, b_):
+        v = {f: vetit_futas(par[f], ARAK[FUTAS_MODELL[f]], b_) for f in ('F1V2', 'F2V2', 'F3V2', 'F3V2B')}
+        d = vetit_futas(par['F4V2'], ARAK[FUTAS_MODELL['F4V2']], b_, pa)
         o = {'A (F1V2)': v['F1V2'], 'B (F2V2)': v['F2V2'], 'C (F3V2)': v['F3V2'], 'C (F3V2B)': v['F3V2B']}
-        o['A+B'] = {r: v['F1V2'][r] + v['F2V2'][r] for r in RETEGEK + ['Összes']}
-        o['A+B+C'] = {r: o['A+B'][r] + d[r] for r in RETEGEK + ['Összes']}
+        o['A+B'] = {r: v['F1V2'][r] + v['F2V2'][r] for r in list(b_) + ['Összes']}
+        o['A+B+C'] = {r: o['A+B'][r] + d[r] for r in list(b_) + ['Összes']}
         o['C döntőbíró rész'] = d
         return o
 
-    alap = osszeallitasok(param, p_arany)
+    alap = osszeallitasok(param, p_arany, bib)
+    alap4 = osszeallitasok(param, p_arany4, bib4)
     # ellenőrzés az A+B+C-re a pilot kötegein (mintán belül)
     pred = sum(koltseg(param[f], ARAK[FUTAS_MODELL[f]], q['x'], q['k'], 1) for f in ('F1V2', 'F2V2', 'F4V2') for q in kk[f])
     tenyl = sum(q['cost_ossz'] for f in ('F1V2', 'F2V2', 'F4V2') for q in kk[f])
     add('ellenorzes', 'A+B+C', '-', 'elteres_szazalek', round(100 * (pred - tenyl) / tenyl, 3), '', '',
-        'F1V2+F2V2+F4V2 a pilot kötegein: %.6f vs %.6f USD' % (pred, tenyl))
+        'F1V2+F2V2+F4V2 a pilot kötegein: %.6f vs %.6f USD (mintán belül; futásonként a leave-one-out is fent)' % (pred, tenyl))
     rnd = random.Random(MAG)
-    boot = {o: {r: [] for r in RETEGEK + ['Összes']} for o in alap}
+    boot = {o: {r: [] for r in F22 + ['Összes']} for o in alap}
+    boot4 = {o: {r: [] for r in RETEGEK + ['Összes']} for o in alap4}
     for _ in range(N_BOOT):
         par = {}
         for f in kk:
             minta_k = [kk[f][rnd.randrange(len(kk[f]))] for _ in kk[f]]
             par[f] = illeszt(minta_k, ARAK[FUTAS_MODELL[f]])
-        pa = dontobiro_arany(minta, f4_versek, rnd)
-        b = osszeallitasok(par, pa)
+        mvb = minta_versek(minta, rnd)
+        b = osszeallitasok(par, dontobiro_arany(mvb, f4_versek, kv.f22_reteg, F22), bib)
+        b4 = osszeallitasok(par, dontobiro_arany(mvb, f4_versek, p4_fn, RETEGEK), bib4)
         for o in b:
             for r in b[o]:
                 boot[o][r].append(b[o][r])
+            for r in b4[o]:
+                boot4[o][r].append(b4[o][r])
     for o in alap:
-        for r in RETEGEK + ['Összes']:
+        for r in F22 + ['Összes']:
             bs = sorted(boot[o][r])
             add('vetites', o, r, 'koltseg_usd', round(alap[o][r], 4), round(bs[int(0.05 * len(bs))], 4),
-                round(bs[int(0.95 * len(bs)) - 1], 4), 'bootstrap %d (köteg-egység: DT21 f, nyitott)' % len(bs))
-    # kézimunka: A+B+C alacsony és eltérés
+                round(bs[int(0.95 * len(bs)) - 1], 4), 'F22 műfaji réteg; bootstrap %d (köteg-egység: DT21 f, elfogadva — felhasználói döntés)' % len(bs))
+    for o in alap4:
+        for r in RETEGEK + ['Összes']:
+            bs = sorted(boot4[o][r])
+            add('vetites_pilot4_tajekoztato', o, r, 'koltseg_usd', round(alap4[o][r], 4), round(bs[int(0.05 * len(bs))], 4),
+                round(bs[int(0.95 * len(bs)) - 1], 4), 'TÁJÉKOZTATÓ, korábbi pilot-4-réteges besorolás; bootstrap %d' % len(bs))
+    for o in alap:
+        d = alap[o]['Összes'] - alap4[o]['Összes']
+        add('besorolas_kulonbseg_tajekoztato', o, 'Összes', 'f22_minus_pilot4_usd', round(d, 6), '', '',
+            'TÁJÉKOZTATÓ: F22 műfaji 5 réteg − korábbi pilot-4 réteg (pont-becslés)')
+        add('besorolas_kulonbseg_tajekoztato', o, 'Összes', 'f22_minus_pilot4_szazalek', round(100 * d / alap4[o]['Összes'], 4), '', '',
+            'TÁJÉKOZTATÓ: a pilot-4-réteges érték százalékában')
+    # kézimunka: A+B+C alacsony és eltérés — F22-rétegenként (a minta versei könyv szerint leképezve)
     import meres
     import meres_p3b
     adat = meres_p3b.betolt()
     kim = meres_p3b.osszeallitas_kimenet(adat)
-    for oss in ('A+B+C', 'A+B+C (alt)', 'A+B'):
+
+    def kezi(oss, reteg_fn, retegek, b_):
         tot_a = tot_e = 0.0
-        for r in RETEGEK:
-            vs = [ig for ig in adat.versek if adat.reteg[ig] == r]
+        sor = []
+        for r in retegek:
+            vs = [ig for ig in adat.versek if reteg_fn(ig) == r]
             ala = sum(1 for ig in vs for s in kim[ig][oss].values() if s == 'alacsony')
             av = [ig for ig in vs if ig in adat.arany]
             elt = sum(len(set(kim[ig][oss]) ^ adat.arany_linkek(ig)) for ig in av)
-            add('kezimunka', oss, r, 'alacsony_link_per_vers', round(ala / len(vs), 4), '', '', 'mért, %d vers' % len(vs))
-            add('kezimunka', oss, r, 'vetitett_alacsony_link_biblia', round(ala / len(vs) * bib[r]['n']), '', '', '× %d vers' % bib[r]['n'])
-            add('kezimunka', oss, r, 'elteres_per_vers_arany_v2', round(elt / len(av), 4), '', '', 'mért, %d aranyvers' % len(av))
-            add('kezimunka', oss, r, 'vetitett_elteres_biblia', round(elt / len(av) * bib[r]['n']), '', '', '× %d vers (kis n)' % bib[r]['n'])
-            tot_a += ala / len(vs) * bib[r]['n']
-            tot_e += elt / len(av) * bib[r]['n']
-        add('kezimunka', oss, 'Összes', 'vetitett_alacsony_link_biblia', round(tot_a), '', '', 'rétegenként vetítve')
-        add('kezimunka', oss, 'Összes', 'vetitett_elteres_biblia', round(tot_e), '', '', 'rétegenként vetítve')
+            sor.append((r, ala, len(vs), elt, len(av)))
+            tot_a += ala / len(vs) * b_[r]['n']
+            tot_e += elt / len(av) * b_[r]['n']
+        return sor, tot_a, tot_e
+
+    for oss in ('A+B+C', 'A+B+C (alt)', 'A+B'):
+        sor, tot_a, tot_e = kezi(oss, kv.f22_reteg, F22, bib)
+        for r, ala, nv, elt, na in sor:
+            add('kezimunka', oss, r, 'alacsony_link_per_vers', round(ala / nv, 4), '', '', 'mért, %d vers (könyv szerint F22-rétegre képezve)' % nv)
+            add('kezimunka', oss, r, 'vetitett_alacsony_link_biblia', round(ala / nv * bib[r]['n']), '', '', '× %d vers' % bib[r]['n'])
+            add('kezimunka', oss, r, 'elteres_per_vers_arany_v2', round(elt / na, 4), '', '', 'mért, %d aranyvers' % na)
+            add('kezimunka', oss, r, 'vetitett_elteres_biblia', round(elt / na * bib[r]['n']), '', '', '× %d vers (kis n)' % bib[r]['n'])
+        add('kezimunka', oss, 'Összes', 'vetitett_alacsony_link_biblia', round(tot_a), '', '', 'F22-rétegenként vetítve')
+        add('kezimunka', oss, 'Összes', 'vetitett_elteres_biblia', round(tot_e), '', '', 'F22-rétegenként vetítve')
         add('kezimunka', oss, 'Összes', 'c_hiba_per_vers', 'n.é.', '', '', 'az A+B(+C) eltérései nincsenek (a)/(b)/(c)-re besorolva')
+        _, t4a, t4e = kezi(oss, lambda ig: adat.reteg[ig], RETEGEK, bib4)
+        add('kezimunka_pilot4_tajekoztato', oss, 'Összes', 'vetitett_alacsony_link_biblia', round(t4a), '', '',
+            'TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolással vetítve')
+        add('kezimunka_pilot4_tajekoztato', oss, 'Összes', 'vetitett_elteres_biblia', round(t4e), '', '',
+            'TÁJÉKOZTATÓ: a korábbi pilot-4-réteges besorolással vetítve')
     _ = meres
     with open(KIMENET, 'w', encoding='utf-8', newline='\n') as fh:
         fh.write('# GENERÁLT: eszkozok/karoli_strong/koltseg_vetit_p3b.py | scope=P5 minden összeállításra (A, B, C, A+B, '
-                 'A+B+C), P3b-adat (prompt_v2), teljes Biblia 31 158 vers | forras=f21p/futasnaplo.tsv, '
+                 'A+B+C), P3b-adat (prompt_v2), teljes Biblia 31 158 vers, F22 műfaji öt réteg (DT21 h), mellette a korábbi '
+                 'pilot-4-réteges besorolás tájékoztató sorai | forras=f21p/futasnaplo.tsv, '
                  'f21p/valaszok/{F1V2,F2V2,F3V2,F3V2B,F4V2}.jsonl, f21p/minta.tsv, konkordancia/Karoli_1908.tsv, '
                  'konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/KJV_Strongs_*.tsv, '
                  'f21p/arany_opus_v2.jsonl | ts=%s (a generálás ideje; ismételt futáskor csak ez a sor tér el) | '
@@ -194,8 +265,8 @@ def main():
             assert all('\t' not in x for x in s)
             fh.write('\t'.join(s) + '\n')
     for s in sorok:
-        if s[0] == 'vetites' and s[2] == 'Összes':
-            print('%s: %s USD [%s–%s]' % (s[1], s[4], s[5], s[6]))
+        if s[0] in ('vetites', 'vetites_pilot4_tajekoztato') and s[2] == 'Összes':
+            print('%s %s: %s USD [%s–%s]' % (s[0], s[1], s[4], s[5], s[6]))
         if s[0] == 'ellenorzes' and 'elteres' in s[3]:
             print('  ellenőrzés %s %s: %s%%' % (s[1], s[3], s[4]))
     print('-> %s' % KIMENET)
