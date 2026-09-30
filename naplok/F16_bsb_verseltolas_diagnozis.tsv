@@ -1,0 +1,15 @@
+# forras-URL: https://github.com/BSB-publishing/bsb-data-output + konkordancia/TAHOT_kivonat.tsv
+# commit/verzio: BSB commit a4a2c0558c26e0281ba4e3f0e5479398459e2183
+# letoltes datuma: 2026-09-30
+# futtatasi parancs: python eszkozok/fj2/bsb_verseltolas_diag.py --munka <mappa>
+# tajekoztato diagnozis, NEM a kuszob alapja; fejezetenkent a legjobb BSB v <-> TAHOT v+k eltolas (k in -1,0,1,2); nevezo = a nulla-eltolasu nevezo
+# eltolt_fejezetek: fejezet(eltolas) csak ott, ahol az eltolas javit
+konyv	nevezo	egyezo_eltolas_nelkul	szazalek_eltolas_nelkul	egyezo_legjobb_eltolassal	szazalek_legjobb_eltolassal	eltolt_fejezetek
+1Sám	809	765	94.56	784	96.91	24(+1)
+2Sám	695	660	94.96	660	94.96	-
+Ezsd	280	265	94.64	265	94.64	-
+Préd	220	200	90.91	213	96.82	12(+2)
+Ézs	1290	1222	94.73	1265	98.06	3(+1) 9(-1)
+Dán	357	320	89.64	320	89.64	-
+Hós	196	176	89.80	190	96.94	12(+1)
+Jón	47	37	78.72	47	100.00	2(+1)
