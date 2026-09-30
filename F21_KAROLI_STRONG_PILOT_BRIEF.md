@@ -140,8 +140,10 @@ Egy összeállítás **megfelel**, ha:
 **Javaslat:**
 
 - ha van megfelelő összeállítás, a legolcsóbb megfelelő;
-- ha csak egyes rétegekben felel meg, vegyes összeállítás rétegenként (pl. R2–R3 a C modellel);
+- ha csak egyes rétegekben felel meg, vegyes összeállítás rétegenként (pl. R1 és R4 A+B-vel, R2–R3 A+B+C-vel);
 - ha egyik sem felel meg, a teljes futás nem indul, és a jelentés megnevezi, mi bukott el (pontosság, költség vagy kézimunka).
+
+**Egymodelles összeállítás (A, B, C külön; rögzítve 2026.09.30, PD6):** a P4 ezeket is méri (összpontosság, lefedettség, régi arany egyezés, költség), és a C egyedül versenyez az A+B+C-vel (PD2), de csak a jelentés kedvéért. Egymodelles összeállításhoz a G4 szerinti `magas` / `alacsony` szint nem értelmezhető (az A és a B egyezésén alapul), ezért az ilyen összeállítás nem kaphat megfelelt minősítést, és a teljes futásra, rétegenként sem, mehet. **A teljes futásra, rétegenként is, csak az A+B vagy az A+B+C mehet.** A G4 nem változik.
 
 **KJV-import (N29):** érdemes, ha a KJV-támpont az R1-en legalább 1 százalékponttal növeli a `magas` pontosságot, vagy legalább 20%-kal (relatívan) csökkenti az A–B eltérést.
 
@@ -175,7 +177,10 @@ Egy összeállítás **megfelel**, ha:
 | PD3 | KJV-támpont az R1-en, kikapcsolt változattal is | az N29 importdöntéséhez mért adat kell; az R1 könyveihez már van KJV-tábla, import nélkül | a KJV importja a mérés előtt |
 | PD4 | Költségvetítés illesztéssel a valódi vershosszakra, bootstrap-intervallummal és visszaellenőrzéssel | a naiv szorzás a Thayer-becslésnél nem volt levezethető | átlagköltség × versszám |
 | PD5 | A küszöbök a futtatás előtt rögzülnek | a mérés utáni küszöbállítás torzít (az F06 BSB-mérés gyakorlata) | küszöb az eredmények láttán |
+| PD6 | Egymodelles összeállítás (A, B, C külön) csak mérésre; a teljes futásra rétegenként is csak A+B vagy A+B+C mehet | a G4 bizonyossági szintje két modell egyezésén alapul, egy modellnél nem értelmezhető | megengedő változat: minden link `magas`, az `alacsony` a kapuhibás versek aránya |
+| PD7 | `[nem TR]`: a „TR»N” és „TR«N” TR-nek számít (tokenek.py javítás), a „más helyen” versekre az alternatív arany; az „eltérő alak” három tokenje (Jak 3:4 #22, Jak 3:8 #8, 1Pét 5:12 #23) kimarad a pontossági mérésből | a modell-bemenet és az arany a TR-rel összhangban legyen; az eltérő alaknak nincs sora a kivonatban | jelölés a jelentésben; kizárás a mintából |
 
 | Verzió | Dátum | Változás |
 |---|---|---|
 | v1 | 2026.09.30 | első változat |
+| v1.1 | 2026.09.30 | a P2 ⛔ döntései: a küszöbök rögzítve (PD5); egymodelles összeállítás csak mérésre, a teljes futásra csak A+B vagy A+B+C (PD6); a vegyes példa: R1 és R4 A+B-vel, R2–R3 A+B+C-vel; `[nem TR]` javítás és az „eltérő alak” tokenek kizárása a pontossági mérésből (PD7) |
