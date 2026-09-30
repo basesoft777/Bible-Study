@@ -99,8 +99,8 @@ DONTESEK = [
      'מָלְאָה הָאָרֶץ חָמָס → ἐπλήσθη ἡ γῆ ἀδικίας; Macula és LXX_OS egyezik.'),
     ([22], 'HAMART-001', '1Móz 6:17', ELT, 'καταφθείρω', 'καταφθεῖραι', 1, None, BIZ, [M, L],
      'לְשַׁחֵת → καταφθεῖραι; a Macula (Strong nélkül) és az LXX_OS (2704) egyezik.'),
-    ([23], 'HAMART-001', '1Móz 8:21', '', '', None, 0, '', NYI, [M, L],
-     'A Macula a קַלֵּל-t ἔτι-hez köti, ami a עוֹד megfelelője; az LXX_OS versében a kulcsszó helyén τοῦ καταράσασθαι áll (LXX_OS/genesis.tsv „Genesis 8:21” 18. pozíció: καταράομαι, strong 2672; a LXX_kivonat itt Strong nélküli). A két forrás ellentmond (jelölt: καταράομαι G2672).'),
+    ([23], 'HAMART-001', '1Móz 8:21', ELT, 'καταράομαι', 'καταράσασθαι', 1, None, VAL, [L],
+     'A Macula a קַלֵּל-t ἔτι-hez köti, ami a עוֹד megfelelője; az LXX_OS versében a kulcsszó helyén τοῦ καταράσασθαι áll (LXX_OS/genesis.tsv „Genesis 8:21” 18. pozíció: καταράομαι, strong 2672; a LXX_kivonat itt Strong nélküli). A két forrás ellentmondott; DT23 (b) felhasználói döntés: a jelölt (καταράομαι G2672) elfogadva. Bizonyosság valószínű: egy forrás + felhasználói döntés, a brief „biztos” definíciója nem teljesül.'),
     ([24], 'HAMART-001', '1Móz 9:11', ELT, 'καταφθείρω', 'καταφθεῖραι', 1, None, BIZ, [M, L],
      'לְשַׁחֵת הָאָרֶץ → τοῦ καταφθεῖραι πᾶσαν τὴν γῆν; a Macula (Strong nélkül) és az LXX_OS (2704) egyezik.'),
     ([25], 'HAMART-001', '1Móz 9:15', ELT, 'ἐξαλείφω', 'ἐξαλεῖψαι', 1, None, BIZ, [M, L],
@@ -115,8 +115,8 @@ DONTESEK = [
      'מָלוּ תוֹכְךָ חָמָס → ἔπλησας τὰ ταμίειά σου ἀνομίας; Macula és LXX_OS egyezik.'),
     ([30], 'HAMART-001', 'Zsolt 74:20', ELT, 'ἀνομία', 'ἀνομιῶν', 1, None, BIZ, [M, L],
      'נְאוֹת חָמָס → οἴκων ἀνομιῶν (Zsolt(LXX) 73:20); Macula és LXX_OS egyezik.'),
-    ([31], 'HAMART-001', 'Mik 6:12', '', '', None, 0, '', NYI, [M, L],
-     'A Macula felcseréli a két szomszédos szót (מָלְאוּ → ἀσεβείας, חָמָס → ἔπλησαν); az LXX_OS szórendje (ἀσεβείας ἔπλησαν) szerint a חָמָס megfelelője ἀσέβεια (763). A két forrás ellentmond (jelölt: ἀσέβεια G0763).'),
+    ([31], 'HAMART-001', 'Mik 6:12', ELT, 'ἀσέβεια', 'ἀσεβείας', 1, None, VAL, [L],
+     'A Macula felcseréli a két szomszédos szót (מָלְאוּ → ἀσεβείας, חָמָס → ἔπλησαν); az LXX_OS szórendje (ἀσεβείας ἔπλησαν) szerint a חָמָס megfelelője ἀσέβεια (763). A két forrás ellentmondott; DT23 (b) felhasználói döntés: a jelölt (ἀσέβεια G0763) elfogadva. Bizonyosság valószínű: egy forrás + felhasználói döntés, a brief „biztos” definíciója nem teljesül.'),
     ([32], 'HAMART-001', 'Sof 1:9', ELT, 'ἀσέβεια', 'ἀσεβείας', 1, None, BIZ, [M, L],
      'הַמְמַלְאִים בֵּית אֲדֹנֵיהֶם חָמָס → τοὺς πληροῦντας τὸν οἶκον … ἀσεβείας; Macula és LXX_OS egyezik.'),
     ([33], 'HAMART-001', 'Hab 2:8', ELT, 'ἀσέβεια', 'ἀσεβείας', 1, None, BIZ, [M, L],
@@ -145,30 +145,30 @@ DONTESEK = [
      'A Macula a רְפָאִים-ot nem illeszti; az LXX_OS versében a helyén κατέκοψαν τοὺς γίγαντας áll (γίγας; Strong nincs). Egy forrás, ellentmondás nélkül.'),
     ([45], 'HODIT-001', '1Móz 15:20', ELT, 'Ραφαϊν', 'Ραφαϊν', 1, '', BIZ, [M, L],
      'A népnevet a LXX átírja (τοὺς Ραφαϊν); Macula és LXX_OS egyezik.'),
-    ([46, 82], 'HODIT-001', '4Móz 13:34', '', '', None, 0, '', NYI, [M, L, 'Karoli_versmegfeleltetes (KK)'],
-     'HODIT-001 és MENNY-001 közös sora; Károli 13:34 = MT 13:33 (KK). A munkalap kulcsszó-alakja a második נְפִלִים (בְּנֵי עֲנָק מִן־הַנְּפִלִים): a Macula nem illeszti (’’), az LXX_OS-ben ez a tagmondat hiányzik, így két egyező forrás nincs. Az első נְפִילִים → τοὺς γίγαντας (Macula és LXX_OS egyezik). Jelölt: LXX-minusz a munkalap-szóra, ill. γίγας a vers első előfordulására (F8.5, ELLENOR_F08 2.).'),
+    ([46, 82], 'HODIT-001', '4Móz 13:34', MIN, '', None, 0, '', VAL, [L, 'Karoli_versmegfeleltetes (KK)'],
+     'HODIT-001 és MENNY-001 közös sora; Károli 13:34 = MT 13:33 (KK). A munkalap kulcsszó-alakja a második נְפִלִים (בְּנֵי עֲנָק מִן־הַנְּפִלִים): a Macula nem illeszti (’’), az LXX_OS-ben ez a tagmondat hiányzik. Az első נְפִילִים → τοὺς γίγαντας (Macula és LXX_OS egyezik), erre a sor nem vonatkozik. DT23 (b) felhasználói döntés: LXX-minusz a munkalap-szóra. Bizonyosság valószínű: egy forrás + felhasználói döntés, a brief „biztos” definíciója nem teljesül.'),
     ([47], 'HODIT-001', '5Móz 2:11', ELT, 'Ραφαϊν', 'Ραφαϊν', 1, '', BIZ, [M, L],
      'רְפָאִים יֵחָשְׁבוּ → Ραφαϊν λογισθήσονται (átírás); Macula és LXX_OS egyezik.'),
-    ([48], 'HODIT-001', '5Móz 2:20', '', '', None, 0, '', NYI, [M, L],
-     'A munkalap-alak a második רְפָאִים: a Macula a szomszédos igével felcserélve (κατῴκουν) illeszti, az LXX_OS-ben mindkét רְפָאִים helyén Ραφαϊν áll. A két forrás a munkalap-szóra ellentmond, a Mik 6:12-vel azonos szabály szerint nyitott (jelölt: Ραφαϊν; F8.5, ELLENOR_F08 1.).'),
+    ([48], 'HODIT-001', '5Móz 2:20', ELT, 'Ραφαϊν', 'Ραφαϊν', 2, '', VAL, [L],
+     'A munkalap-alak a második רְפָאִים: a Macula a szomszédos igével felcserélve (κατῴκουν) illeszti, az LXX_OS-ben mindkét רְפָאִים helyén Ραφαϊν áll. A két forrás a munkalap-szóra ellentmondott; DT23 (b) felhasználói döntés: a jelölt (Ραφαϊν) elfogadva. Bizonyosság valószínű: egy forrás + felhasználói döntés, a brief „biztos” definíciója nem teljesül.'),
     ([49], 'HODIT-001', '5Móz 3:11', ELT, 'Ραφαϊν', 'Ραφαϊν', 1, '', BIZ, [M, L],
      'מִיֶּתֶר הָרְפָאִים → ἀπὸ τῶν Ραφαϊν (átírás); Macula és LXX_OS egyezik.'),
     ([50], 'HODIT-001', '5Móz 3:13', ELT, 'Ραφαϊν', 'Ραφαϊν', 1, '', BIZ, [M, L],
      'אֶרֶץ רְפָאִים → γῆ Ραφαϊν (átírás); Macula és LXX_OS egyezik.'),
     ([51], 'HODIT-001', '2Sám 21:16', ELT, 'Ραφα', 'Ραφα', 1, '', VAL, [L],
-     'A versben הָרָפָה áll (Macula: H7498, a motívum-sor H7497-je helyett). A Macula a vers nagy részét nem illeszti; az LXX_OS: ἐν τοῖς ἐκγόνοις τοῦ Ραφα (átírás). Egy forrás.'),
+     'A versben הָרָפָה áll (TAHOT: H7497, a kulcs; Macula: H7498). A Macula a vers nagy részét nem illeszti; az LXX_OS: ἐν τοῖς ἐκγόνοις τοῦ Ραφα (átírás). Egy forrás.'),
     ([52], 'HODIT-001', '2Sám 21:18', ELT, 'Ραφα', 'Ραφα', 1, '', BIZ, [M, L],
-     'בִּילִדֵי הָרָפָה (H7498) → ἐν τοῖς ἐκγόνοις τοῦ Ραφα; Macula és LXX_OS egyezik.'),
+     'בִּילִדֵי הָרָפָה (TAHOT: H7497, a kulcs; Macula: H7498) → ἐν τοῖς ἐκγόνοις τοῦ Ραφα; Macula és LXX_OS egyezik.'),
     ([53], 'HODIT-001', '2Sám 21:20', ELT, 'Ραφα', 'Ραφα', 1, '', VAL, [L],
-     'יֻלַּד לְהָרָפָה (H7498) → ἐτέχθη τῷ Ραφα; a Macula nem illeszti. Egy forrás.'),
+     'יֻלַּד לְהָרָפָה (TAHOT: H7497, a kulcs; Macula: H7498) → ἐτέχθη τῷ Ραφα; a Macula nem illeszti. Egy forrás.'),
     ([54], 'HODIT-001', '2Sám 21:22', '', '', None, 0, '', NYI, [M, L],
-     'A Macula a לְהָרָפָה-t (H7498) nem illeszti; az LXX_OS kettős fordítást mutat (ἀπόγονοι τῶν γιγάντων ἐν Γεθ τῷ Ραφα οἶκος): a megfelelő a γίγας és a Ραφα is lehet (jelölt: Ραφα, a 21:16/18/20 mintájára).'),
+     'A Macula a לְהָרָפָה-t (TAHOT: H7497, a kulcs; Macula: H7498) nem illeszti; az LXX_OS kettős fordítást mutat (ἀπόγονοι τῶν γιγάντων ἐν Γεθ τῷ Ραφα οἶκος): a megfelelő a γίγας és a Ραφα is lehet (jelölt: Ραφα, a 21:16/18/20 mintájára).'),
     ([55], 'HODIT-001', '1Krón 20:4', ELT, 'γίγας', 'γιγάντων', 1, '', BIZ, [M, L],
      'מִילִדֵי הָרְפָאִים → ἀπὸ τῶν υἱῶν τῶν γιγάντων; Macula és LXX_OS egyezik.'),
     ([56], 'HODIT-001', '1Krón 20:6', ELT, 'γίγας', 'γιγάντων', 1, '', VAL, [L],
-     'נוֹלַד לְהָרָפָא (H7498) → ἦν ἀπόγονος γιγάντων; a Macula nem illeszti. Egy forrás.'),
+     'נוֹלַד לְהָרָפָא (TAHOT: H7497, a kulcs; Macula: H7498) → ἦν ἀπόγονος γιγάντων; a Macula nem illeszti. Egy forrás.'),
     ([57], 'HODIT-001', '1Krón 20:8', ELT, 'Ραφα', 'Ραφα', 1, '', VAL, [L],
-     'נוּלְּדוּ לְהָרָפָא (H7498) → ἐγένοντο Ραφα ἐν Γεθ; a πάντες ἦσαν τέσσαρες γίγαντες LXX-többlet. A Macula nem illeszti. Egy forrás.'),
+     'נוּלְּדוּ לְהָרָפָא (TAHOT: H7497, a kulcs; Macula: H7498) → ἐγένοντο Ραφα ἐν Γεθ; a πάντες ἦσαν τέσσαρες γίγαντες LXX-többlet. A Macula nem illeszti. Egy forrás.'),
     ([58], 'HODIT-001', 'Jób 26:5', ELT, 'γίγας', 'γίγαντες', 1, '', BIZ, [M, L],
      'הָרְפָאִים יְחוֹלָלוּ → μὴ γίγαντες μαιωθήσονται; Macula és LXX_OS egyezik.'),
     ([59], 'HODIT-001', 'Zsolt 88:11', ELT, 'ἰατρός', 'ἰατροὶ', 1, None, BIZ, [M, L],
@@ -306,8 +306,10 @@ def main():
             hibak.append('%s: nincs elofordulas-sor (%s)' % (hely, motivum))
             hs = ''
         hs = hs.split('+')[0] if hs.startswith('H') else ''
-        prov = 'scope=F08 LXX-döntés, 87 függő hely (naplok/F17_87_hely.tsv, #%s) | forras=%s + kutatói versolvasat (naplok/F08_bemenet.txt) | ts=%s' % (
-            ','.join(str(i) for i in idx), ' + '.join(forrasok), TS)
+        # F8.8: a DT23 (b) felhasznaloi dontessel kitoltott sorok proveniencia-bovitese
+        dontes = ' | dontes=DT23(b)' if 'DT23 (b) felhasználói döntés' in megj else ''
+        prov = 'scope=F08 LXX-döntés, 87 függő hely (naplok/F17_87_hely.tsv, #%s) | forras=%s + kutatói versolvasat (naplok/F08_bemenet.txt)%s | ts=%s' % (
+            ','.join(str(i) for i in idx), ' + '.join(forrasok), dontes, TS)
         uj_sorok.append(['LD%03d' % n, hely, lxx_igehely, hs, lemma, gs, poz, tipus, megj, biz, prov])
 
     for s in uj_sorok:

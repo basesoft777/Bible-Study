@@ -488,6 +488,22 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   igazolni (KEZI-osztály, fejezetenkénti KJV=MT ellenőrzéssel, mint az
   `naplok/F17_kezi_fejezetek.tsv`-ben). A felvételt a chat jóváhagyta
   (2026.09.30).
+- **N-F08a — a Préd 9:10 előfordulás-sor (ALVIL-001) igehelyének javítása
+  Préd 9:12-re.** *(ÚJ, F08 (#8), DT23 (c), DT7 (g); `naplok/F08_zaras.md`)*
+  A munkalap-igehely MT/KJV-számozású: a Károli Préd 9:10 = MT 9:8 (KK, KEZI),
+  a שְׁאוֹל a Károli 9:12-ben (MT 9:10) áll, ahol a Macula ἅδη G0086 és az
+  `LXX_OS` ᾅδης egyezik. A javítás az `adat/elofordulasok.tsv` ALVIL-001
+  sorát érinti; utána az `adat/lxx_dontesek.tsv` LD008 sora tárgytalan (az
+  ALVIL-001 G-tokenje G0086, a 9:12 várhatóan „egyező” lesz, döntési sor
+  nélkül). A felvételt a felhasználó a DT23-ban jóváhagyta (2026.09.30).
+- **N-F08b — saját címke a `nincs_heber_kulcsszo` sorokra a lexikon-
+  generátorban.** *(ÚJ, F08 (#8), DT23 (e); `adat/SEMA.md` 2.11)* Az
+  `adat/lxx_dontesek.tsv` 8 `nincs_heber_kulcsszo` / `nem_alkalmazhato` sora
+  (ige-tartományú előfordulás-sor kulcsszó nélküli verse, ill. tematikus sor)
+  ma „kutatói azonosítás függőben”-ként jelenik meg. A `lexikon_general.py`
+  `blokk_lxx` kapjon saját „kulcsszó nincs a versben” címkét (és számlálót),
+  a SEMA 2.11 megjelenítési mondata ehhez igazodjon. A felvételt a
+  felhasználó a DT23-ban jóváhagyta (2026.09.30).
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
