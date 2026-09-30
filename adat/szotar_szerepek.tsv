@@ -20,5 +20,5 @@ heber	7	Megfelelők a másik nyelven	SECE (görög)	nincs adatosítva
 heber	8	Nyelvi háttér	BDB etimológia	nincs adatosítva
 heber	9	Versenkénti jelentés	UBS DBH	nincs adatosítva
 heber	10	Kiejtés (magyaros)	lemma: kiejtes_kivetelek.tsv (kézi, OSHL-alapú jelöltekből); alak: STEP-átírás, változatlanul	nincs adatosítva
-gorog	12	Tematikus index (témák és igehely-hivatkozások)	Nave's Topical Bible (1897, közkincs a basokant README szerint; konkordancia/Nave_basokant.tsv, F18, javaslat-állapotú, l. naplok/F18_import_naplo.md); nyelvfüggetlen tematikus index, csak jelölt (adat/jeloltek.tsv)	adatosítva
-heber	12	Tematikus index (témák és igehely-hivatkozások)	Nave's Topical Bible (1897, közkincs a basokant README szerint; konkordancia/Nave_basokant.tsv, F18, javaslat-állapotú, l. naplok/F18_import_naplo.md); nyelvfüggetlen tematikus index, csak jelölt (adat/jeloltek.tsv)	adatosítva
+gorog	12	Tematikus index (témák és igehely-hivatkozások)	Nave's Topical Bible (1897, közkincs a basokant README szerint; konkordancia/Nave_basokant.tsv, F18, javaslat-állapotú, l. naplok/F18_import_naplo.md); nyelvfüggetlen tematikus index, csak jelölt (adat/jeloltek.tsv)	nincs adatosítva
+heber	12	Tematikus index (témák és igehely-hivatkozások)	Nave's Topical Bible (1897, közkincs a basokant README szerint; konkordancia/Nave_basokant.tsv, F18, javaslat-állapotú, l. naplok/F18_import_naplo.md); nyelvfüggetlen tematikus index, csak jelölt (adat/jeloltek.tsv)	nincs adatosítva

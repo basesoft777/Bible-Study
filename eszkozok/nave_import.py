@@ -64,6 +64,10 @@ OSIS_RE = re.compile(
 DISP_RE = re.compile(r'^(?:\d?\s?[A-Za-z]{1,6}\.?\s+)?[\d:,\-–; ]+$')
 REF_RE = re.compile(r'<ref (osisRef|target)="([^"]*)">(.*?)</ref>', re.S)
 TAG_RE = re.compile(r'<[^>]+>')
+EGYFEJEZETES = {"Obad", "Phlm", "2John", "3John", "Jude"}
+EGYFEJ_RE = re.compile(r'^[0-9A-Za-z]+\.1\.1$')
+# a <ref> után közvetlenül álló versszám-lista: ":7", ":8-13", ":9,10", ":4-6, 8"
+VERSSZAM_RE = re.compile(r'\s*:\s*(\d+(?:\s*[-–]\s*\d+)?(?:\s*,\s*\d+(?:\s*[-–]\s*\d+)?)*)')
 
 FEJLEC = ["tema_id", "tema", "sor", "sor_jel", "tetel", "cimke", "kapcsolat",
           "igehely", "igehely_osis", "hely_tipus", "karoli_allapot",
@@ -94,9 +98,14 @@ def beolvas_versmegf():
             if sor.startswith('#') or sor.startswith('igehely_karoli'):
                 continue
             m = sor.rstrip('\n').split('\t')
-            if len(m) < 4 or not m[1]:
+            if len(m) < 4:
                 continue
             konyv = m[0].rsplit(' ', 1)[0]
+            if not m[1]:
+                # nincs KJV-megfelelő (pl. MT-only vers): külön kulcs, hogy a Nave-sor státusza megkülönböztethető legyen
+                if m[2]:
+                    idx[(konyv, 'MT:' + m[2])].append(m[0])
+                continue
             idx[(konyv, m[1])].append(m[0])
     return idx
 
@@ -120,6 +129,9 @@ def igehely_alak(osis, hu, vm):
             return ig, 'vers', 'ujszovetseg_nincs_tabla', '', megj
         t = vm.get(kulcs, [])
         if not t:
+            if vm.get((hu1, 'MT:%s:%s' % (c1, v1))):
+                # a Károli-tábla ismeri ezt a c:v számot, de csak MT-számozásként, KJV-megfelelő nélkül
+                return ig, 'vers', 'a_tablaban_nincs_kjv_megfelelo', '', megj
             return ig, 'vers', 'nincs_a_tablaban', '', megj
         if len(t) == 1 and t[0] == ig:
             return ig, 'vers', 'azonos', '', megj
@@ -224,17 +236,59 @@ def sorok_generalas(entk, hu, vm):
                         cimke = gap_szoveg
                     pos = r.end()
                     tipus, ertek, kij = r.group(1), r.group(2), tisztit(r.group(3))
+                    # egyfejezetes könyvek: a valódi versszám a <ref> UTÁN áll (":7", ":8-13", ":9,10"),
+                    # az osisRef csak "X.1.1" (alapérték) — a versszámot innen vesszük
+                    egyfej = (tipus == 'osisRef' and EGYFEJ_RE.match(ertek) is not None
+                              and ertek.split('.')[0] in EGYFEJEZETES)
+                    vers_spec = ''
+                    if egyfej:
+                        vm_ = VERSSZAM_RE.match(e[pos:])
+                        if vm_:
+                            vers_spec = re.sub(r'\s+', '', vm_.group(1)).replace('–', '-')
+                            pos += vm_.end()
                     utotag = ''
                     if i == len(refs) - 1:
                         utotag = tisztit(e[pos:]).strip(' ;,')
                     megj = []
                     if tipus == 'osisRef':
+                        if vers_spec:
+                            konyv = ertek.split('.')[0]
+                            osisok = []
+                            for seg in vers_spec.split(','):
+                                if not seg:
+                                    continue
+                                if '-' in seg:
+                                    a_, b_ = seg.split('-', 1)
+                                    osisok.append("%s.1.%s-%s.1.%s" % (konyv, a_, konyv, b_))
+                                else:
+                                    osisok.append("%s.1.%s" % (konyv, seg))
+                            stat['egyfejezetes_ref_javitva'] += 1
+                            if not DISP_RE.match(kij):
+                                megj.append('gyanus_kijelzes:' + kij)
+                                stat['gyanus_kijelzes'] += 1
+                            if utotag:
+                                megj.append('utotag:' + utotag)
+                            megj.append('egyfejezetes_versszam_a_ref_utan:' + vers_spec)
+                            for osis_ in osisok:
+                                ig, ht, ka, ikar, m2 = igehely_alak(osis_, hu, vm)
+                                mj = list(megj) + ([m2] if m2 else [])
+                                kimenet.append([tema_id, cim, str(sorszam), jel, str(tetel), cimke,
+                                                'vers', ig, osis_, ht, ka, ikar, '', ';'.join(mj)])
+                                stat['vers'] += 1
+                                stat['hely_tipus:' + ht] += 1
+                                stat['karoli:' + ka] += 1
+                            continue
                         ig, ht, ka, ikar, m2 = igehely_alak(ertek, hu, vm)
                         if m2:
                             megj.append(m2)
                         if not DISP_RE.match(kij):
                             megj.append('gyanus_kijelzes:' + kij)
                             stat['gyanus_kijelzes'] += 1
+                        if egyfej:
+                            # egyfejezetes könyv, de a ref után nincs versszám: az X 1:1 alapérték nem megbízható
+                            megj.append('gyanus_kijelzes:egyfejezetes_nincs_versszam')
+                            stat['gyanus_kijelzes'] += 1
+                            stat['egyfejezetes_versszam_nelkul'] += 1
                         if utotag:
                             megj.append('utotag:' + utotag)
                         kimenet.append([tema_id, cim, str(sorszam), jel, str(tetel), cimke,

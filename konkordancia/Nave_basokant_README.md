@@ -25,20 +25,28 @@ Egy sor = egy hivatkozás (`kapcsolat=vers`), egy „lásd” utalás (`lasd`), 
 | `igehely` | repó-formátum, magyar könyvrövidítéssel, **KJV-számozással** (`2Móz 6:16-20`, `Mt 5:1-7:29`, fejezet: `1Krón 24`) |
 | `igehely_osis` | az eredeti `osisRef` |
 | `hely_tipus` | `vers` · `tartomany` · `fejezet` · `fejezettartomany` · `konyvhatar_tartomany` · `ismeretlen_konyv` · `hibas` |
-| `karoli_allapot` | egyes versekre a `Karoli_versmegfeleltetes.tsv` szerint: `azonos` · `eltero` · `tobbes` · `nincs_a_tablaban` · `ujszovetseg_nincs_tabla` (a tábla ÓSZ-i); tartományra/fejezetre `tartomany`/`fejezet`; `n.a.` |
+| `karoli_allapot` | egyes versekre a `Karoli_versmegfeleltetes.tsv` szerint: `azonos` · `eltero` · `tobbes` · `a_tablaban_nincs_kjv_megfelelo` (a tábla ismeri a c:v számot, de csak MT-számozásként, üres `igehely_kjv`-vel — pl. 1Sám 17:13; **nem** azonos és nem hiány) · `nincs_a_tablaban` (a c:v szám a táblában sem KJV-, sem MT-oldalon nincs) · `ujszovetseg_nincs_tabla` (a tábla ÓSZ-i); tartományra/fejezetre `tartomany`/`fejezet`; `n.a.` |
 | `igehely_karoli` | csak `eltero`/`tobbes` esetén: a Károli-igehely(ek) |
 | `cel_tema` | `lasd`-nál a `Nave:` cél (a forrás `target` attribútuma) |
-| `megjegyzes` | `gyanus_kijelzes:…` (a kijelzett szöveg nem szabályos hivatkozás-alak), `utotag:…` (a hivatkozás utáni szöveg), `kijelzett:…` (a „lásd” kijelzett szövege eltér a céltól), `vegyes_veg…` |
+| `megjegyzes` | `gyanus_kijelzes:…` (a kijelzett szöveg nem szabályos hivatkozás-alak), `utotag:…` (a hivatkozás utáni szöveg), `kijelzett:…` (a „lásd” kijelzett szövege eltér a céltól), `vegyes_veg…`, `egyfejezetes_versszam_a_ref_utan:<spec>` (az egyfejezetes könyvek versszáma, l. lent) |
 
 Könyvnév-konverzió: OSIS → STEPBible-rövidítés (a parszolóban) → magyar rövidítés a `Konyv_normalizalo_tabla.tsv`-ből. A 13 `ismeretlen_konyv` sor (12 × `PrAzar.1.2`, 1 × `Wis.2`) nem valódi deuterokanonikus hivatkozás: a lekaparás a névvel összeolvadt „2Ch” / könyvrövidítést értelmezte rosszul (pl. „Azariah 2Ch 31:10” → `PrAzar.1.2`); a nyers osisRef marad. A `Wis.2` kijelzése szabályosnak látszik, ezért csak `ismeretlen_konyv` jelölést kap.
 
 ## Figyelmeztetések
 
-- A Nave-hivatkozások **KJV-számozásúak**. Az `azonos`/`eltero` csak egyes versekre és csak az ÓSZ-re ítél; a `nincs_a_tablaban` **nem** „azonos”, hanem „a tábla nem tartalmazza” (proveniencia-szabály).
-- A lekaparás hibái megmaradnak, jelölve: pl. a `Son of <ref osisRef="Mic.2">Micah 2</ref>Ch 34:20` alakú hibás `osisRef` a `gyanus_kijelzes` jelölést kapja (20 sor: 12 × `PrAzar`, 1 × `Jer`, 2 × `Obad`, 5 × `Zech`: a névvel összeolvadt hibás hivatkozás). A forrást nem javítjuk; a hibás sorok az `utotag:` megjegyzésben megőrzik az elnyelt hivatkozás-töredéket.
+- **Egyfejezetes könyvek (Abd, Filem, 2Ján, 3Ján, Júd).** A forrás itt a hivatkozás `osisRef`-jét csak `X.1.1`-re tölti ki, a valódi versszám a `<ref>` UTÁN áll (`<ref osisRef="Jude.1.1">Jude 1</ref>:8-13`). Az első változat ezt nem vette észre: 250 sor lett `X 1:1`, és a versszám a következő sor `cimke` mezőjébe vagy az `utotag`-ba csúszott (688 sor `cimke`-je kezdődött `:<szám>`-mal). A javított parszoló a `<ref>` után álló `:szám`/`:szám-szám`/`:szám,szám` listát a hivatkozáshoz rendeli (vesszős lista = külön sor versenként; tartomány = egy tartomány-sor), és `egyfejezetes_versszam_a_ref_utan:<spec>` megjegyzést tesz. 246 hivatkozás javult; **4 nem javítható biztosan** (versszám a ref után nincs: 2 × „Obadiah 1” a névvel összeolvadt hibás ref, 2 × a „See the EPISTLES OF JOHN” szövegből a `2John.1.1`/`3John.1.1`): ezek `gyanus_kijelzes:egyfejezetes_nincs_versszam` jelölést kapnak, az `X 1:1` érték náluk nem megbízható. A javítás után 0 sor `cimke`-je és 0 sor `utotag`-ja kezdődik `:<szám>`-mal.
+
+- A Nave-hivatkozások **KJV-számozásúak**. Az `azonos`/`eltero` csak egyes versekre és csak az ÓSZ-re ítél; a `nincs_a_tablaban` **nem** „azonos”, hanem „a tábla a c:v számot egyik oldalon sem tartalmazza”; az `a_tablaban_nincs_kjv_megfelelo` „a tábla MT-oldalon ismeri, KJV-megfelelő nélkül” (proveniencia-szabály). A két érték az első változatban egybe volt vonva (`nincs_a_tablaban` 727); a szétválasztás után 582 + 145.
+- A lekaparás hibái megmaradnak, **jelölve** (a jelölés nem javítás): pl. a `Son of <ref osisRef="Mic.2">Micah 2</ref>Ch 34:20` alakú hibás `osisRef` a `gyanus_kijelzes` jelölést kapja (24 `gyanus_kijelzes` sor: 12 × `PrAzar`, 1 × `Jer`, 2 × `Obad`, 5 × `Zech` — a névvel összeolvadt hibás hivatkozás —, plusz a 4 egyfejezetes, versszám nélküli sor; az `Obad` 2 sora mindkét jelölést viseli). A forrást nem javítjuk; a hibás sorok az `utotag:` megjegyzésben megőrzik az elnyelt hivatkozás-töredéket.
 - A hivatkozás-sorok nem szó szerinti verslisták; a tartományokat nem bontjuk versekre.
 - Ez **nem** a lexikai (Strong-alapú) gerinc része; nem mérőeszköz a motívum-azonosításhoz, hanem tematikus index, amelynek minden bejegyzése csak jelölt lehet (`adat/jeloltek.tsv`).
 
+## Mit mér és mit nem mér a generátor (ellenőrzési állítások)
+
+- A sor-szintű szám (82 303 `<ref>` a nyers fájlban (77 935 `osisRef` + 4 368 `target`) ↔ 77 985 `vers` + 4 368 `lasd` sor a kimenetben; a +50 az egyfejezetes vesszős listák (`:9,10`) versenkénti felbontása, l. napló 2.1) **darabszám-egyezés**, nem helyesség: azt mutatja, hogy a parszoló nem nyelt el és nem duplázott hivatkozást. Az egyfejezetes hiba épp ilyen volt: a darabszám egyezett, a versszám mégis hibás.
+- A tartalmi ellenőrzés, amit a javítás után futtattam: a `<ref>` kijelzett szövegének (`Ex 6:16-20`, `10`, `Gen 1`) első fejezet:vers száma egyezik-e az `osisRef`-fel — 77 685 nem-egyfejezetes `osisRef`-ből 77 673 egyezik, 12 nem (mind a fent jelölt `PrAzar.1.2` lekaparási hiba). Ez a **forrás két mezőjének belső konzisztenciája**, nem a nyomtatott Nave-hoz vagy független kiadáshoz mért helyesség.
+- Nem mért: hogy a `nave.txt` maga hűen adja-e a Nave 1897-es szövegét; a témák/altémák hierarchiája (a lekaparáskor elveszett); a `cimke` helyessége.
+
 ## Proveniencia
 
-`scope=teljes-Nave | forras=basokant/nave@4f35c7d data/nave.txt | ts=2026-09-30`. Sorszámok: `naplok/F18_import_naplo.md`.
+`scope=teljes-Nave | forras=basokant/nave@4f35c7d data/nave.txt | ts=2026-09-30`. Sorszámok: `naplok/F18_import_naplo.md`; a kimenet sorai: 85 116 (77 985 `vers`, 4 368 `lasd`, 2 763 `szoveg`), 5 322 `tema_id` — `scope=teljes-Nave | forras=eszkozok/nave_import.py --forras nave.txt | ts=2026-09-30`.

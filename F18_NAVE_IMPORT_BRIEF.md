@@ -9,7 +9,7 @@ allapot: fut
 ad: Nave-témák és -relációk, eredet-ellenőrzéssel mind a 4980 témán
 kovetkezo: "Import és napló kész (javaslat-állapot); hátra: fuggetlen-ellenor, zárójelentés, draft PR (orkesztrátor); DONTESEK DT18"
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv]
-ir: [konkordancia/Nave_theonize.tsv, NYITOTT_FELADATOK.md, DONTESEK.md]
+ir: [konkordancia/Nave_basokant.tsv, konkordancia/Nave_basokant_README.md, eszkozok/nave_import.py, adat/szotar_szerepek.tsv, naplok/F18_licenc.md, naplok/F18_import_naplo.md, NYITOTT_FELADATOK.md, DONTESEK.md]
 fugg: [6]
 ag: claude/nave-import
 ---
