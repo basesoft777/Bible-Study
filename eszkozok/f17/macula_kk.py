@@ -123,9 +123,16 @@ def karoli_mt_terkep(mt_versek=None):
                 # minden terkep-sor EGYIK_SEM (a Karoli-szamozas sem a hebernel, sem a latinnal, sem a
                 # gorognel nem all): a terkep Heber_vers-e nem megbizhato -> identitas, ha a KK-ban van
                 if sor is not None:
-                    ertek = {'mt': [(fej, v)], 'forras': 'identitas', 'biz': 'javaslat',
-                             'ok': 'terkep_egyik_sem_identitas'}
-                    statisztika['identitas_terkep_egyik_sem'] = statisztika.get('identitas_terkep_egyik_sem', 0) + 1
+                    elt = eltolodas.get((konyv, fej), 0)
+                    if elt not in (0, None):
+                        # fejezetszam-proba: az elozo fejezet KJV- es MT-versszama eltér -> a fejezet elejen
+                        # eltolodas van (pl. Pred 4: KJV 16 / MT 17 vers -> Karoli 5:1 = MT 4:17; 4Moz 29:
+                        # KJV 40 / MT 39 -> Karoli 30:1 = MT 30:2). Az identitas hamis lenne: ures MT-ertek.
+                        ertek = {'mt': [], 'forras': 'identitas', 'biz': 'javaslat',
+                                 'ok': 'terkep_egyik_sem_eltolodas_gyanu'}
+                    else:
+                        ertek = {'mt': [(fej, v)], 'forras': 'identitas', 'biz': 'javaslat',
+                                 'ok': 'terkep_egyik_sem_identitas'}
             elif t and not kk_mt:
                 mtlista, biz, ok = [], 'rendben', ''
                 for ts in hasznalhato:
@@ -201,6 +208,7 @@ def karoli_mt_terkep(mt_versek=None):
 
     # --- tekintely: az MT-verset, amelyet a KK (kk_mt/kk_kjv) vagy a KEZI-interpolacio igenyel, a terkep/identitas
     # nem kotheti mas Karoli-versre.
+    tekintely_visszavont = 0
     hiv = {}
     for kul, e in ki.items():
         if e['forras'] in ('kk_mt', 'kk_kjv', 'kezi_interpolalt'):
@@ -214,7 +222,25 @@ def karoli_mt_terkep(mt_versek=None):
             e['mt'] = marad
             e['biz'] = 'javaslat'
             e['ok'] = (e['ok'] + '|' if e['ok'] else '') + 'mt_vers_kk_val_foglalt'
-            statisztika['terkep_kotes_visszavonva'] = statisztika.get('terkep_kotes_visszavonva', 0) + 1
+            tekintely_visszavont += 1
+    def kat(e):
+        if e['forras'] == 'identitas':
+            return {'': 'identitas', 'terkep_egyik_sem_identitas': 'identitas_terkep_egyik_sem',
+                    'terkep_egyik_sem_eltolodas_gyanu': 'terkep_egyik_sem_eltolodas_gyanu'}.get(e['ok'].split('|')[0], 'identitas_egyeb')
+        if e['forras'] == 'kk_kjv' and e['biz'] != 'rendben':
+            return 'kk_kjv_nem_igazolt'
+        return e['forras']
+
+    kat_db = {}
+    for e in ki.values():
+        k_ = kat(e)
+        kat_db[k_] = kat_db.get(k_, 0) + 1
+    utk_ = statisztika.get('terkep_kk_utkozes', 0)
+    statisztika.clear()
+    statisztika.update(kat_db)
+    statisztika['terkep_kk_utkozes'] = utk_
+    statisztika['particio_osszeg'] = sum(kat_db.values())
+    statisztika['tekintely_visszavont'] = tekintely_visszavont
     statisztika['kezi_fejezetek'] = sorted((k[0], k[1]) + tuple(v) for k, v in kezi_fejezetek.items())
     return ki, statisztika, utkozesek
 

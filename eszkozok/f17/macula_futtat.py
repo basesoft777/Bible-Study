@@ -136,9 +136,10 @@ def fut(args):
     M.tsv_ir(os.path.join(K.REPO, 'naplok', 'F17_kezi_fejezetek.tsv'),
              ['GENERÁLT: eszkozok/f17/macula_futtat.py — kézzel nem szerkesztendő.',
               'proveniencia: scope=a KK KEZI-osztalyu sorai altal erintett KJV-fejezetek | forras=konkordancia/Karoli_versmegfeleltetes.tsv, naplok/KAROLI_KK1b_fejezetosztaly.tsv (kjv_max), Macula heber (MT-versszam) | ts=%s' % M.ma(),
+              'az igazolt_mt_vers_db / nem_igazolt_mt_vers_db az MT-CELVERSEKET szamolja (egy Karoli-vers tobb MT-verset is kaphat: Pred 2:26 = MT 2:25+2:26, ezert 250 igazolt MT-vers vs. 249 igazolt kk_kjv Karoli-vers); a kezi_sor_db a KEZI-sorok szama fejezetenkent',
               'a kk_kjv kotes csak ott iranyado, ahol az elozo fejezet KJV- es MT-versszama azonos (elozo_kulonbseg=0) es a vers mindket oldalon letezik; egyebkent javaslat (nincs MT-megfelelo)'],
              ['konyv', 'kjv_fejezet', 'kjv_versszam', 'mt_versszam', 'elozo_fejezet_kulonbseg', 'kezi_sor_db',
-              'igazolt_vers_db', 'nem_igazolt_vers_db', 'allapot'],
+              'igazolt_mt_vers_db', 'nem_igazolt_mt_vers_db', 'allapot'],
              [[r[0], r[1], r[2], r[3], r[4], r[5], r[6], r[7], 'igazolt' if r[7] == 0 else 'javaslat'] for r in kezi_fej])
 
     # ---------- GOROG ----------

@@ -72,18 +72,25 @@ A Macula héber MT-számozású (WLC), a Károli-szöveg fejezetenként KJV- vag
    ezeknél a Károli-számozás egyik hagyománnyal sem egyezik, és a `Heber_vers` nem megbízható (példa: `1Móz 37:1` →
    `Gen.36:44`, ami nem létezik); az `ELLENORZESRE_VAR` sor `javaslat`;
 5. különben identitás, ha a Károli-vers a KK-táblában szerepel (`kk_mod=identitas`); az `EGYIK_SEM` terkep-sorú versek
-   identitása `javaslat:terkep_egyik_sem_identitas` (85 Károli-vers).
+   identitása `javaslat:terkep_egyik_sem_identitas` (41 Károli-vers, pl. Dán 1) — **de csak, ha a fejezetszám-próba nem jelez
+   eltolódást** (F17.6): ha az előző fejezet KJV- és MT-versszáma eltér, az identitás hamis lenne (Préd 4: KJV 16 / MT 17 vers →
+   Károli `Préd 5:1` = MT 4:17; 4Móz 29: KJV 40 / MT 39 → Károli `4Móz 30:1` = MT 30:2), ezért a `karoli` üres és a sor
+   `javaslat:terkep_egyik_sem_eltolodas_gyanu` (44 Károli-vers: Préd 5:1–20, 4Móz 30:1–16, Zsolt 13:1–6, 4Móz 26:1, Zak 3:1;
+   az illesztetlen listában). Az F17.5-ös állapotban ezek egy verssel elcsúszott, hamis `javaslat`-értéket tároltak.
 
-**Tekintély-szabály (F17.5):** az az MT-vers, amelyet a KK (`kk_mt`, igazolt `kk_kjv`) vagy az interpoláció igényel, **nem köthető
-más Károli-versre a terkep/identitás útján** (a terkep-kötés visszavonva, `javaslat:mt_vers_kk_val_foglalt`). Példa: a terkep a
-Károli `Jób 39:1`-et az MT 39:1-hez és a `4Móz 13:1`-et az MT 13:1-hez kötötte (tévesen: MT 38:39, ill. MT 12:16), ezért az MT 39:1
-és MT 13:1 két Károli-verset kapott (`karoli` = `Jób 39:1;Jób 39:4`, 24 `rendben` sor). Most az MT 39:1 → csak Károli `Jób 39:4`,
-az MT 38:39–41 → Károli `Jób 39:1–3`, az MT 12:16 → Károli `4Móz 13:1`.
+**Tekintély-szabály (F17.5, védelmi jellegű):** az az MT-vers, amelyet a KK (`kk_mt`, igazolt `kk_kjv`) vagy az interpoláció igényel,
+nem köthető más Károli-versre a terkep/identitás útján (`javaslat:mt_vers_kk_val_foglalt`). **Ez a szabály az aktuális adaton 0-szor
+futott le** (`stat.json` `kk.tekintely_visszavont = 0`); nem ez javította a Jób 39:1-et. Az MT 39:1 kettős Károli-kötése (`Jób 39:1;Jób 39:4`,
+24 `rendben` sor) azért szűnt meg, mert az **interpoláció felülírta** a hiányzó Károli `Jób 39:1–3` terkep-kötését (MT 38:39–41), és a
+`4Móz 13:1`-ét (MT 12:16); a terkep-kötés így nem maradt meg. A szabály védőháló új adatra, jelenleg hatástalan.
 
 Egy MT-vers több Károli-verset is kaphat (összevonás, pl. `Neh 7:68;Neh 7:69`), ekkor a `karoli` mező `;`-vel elválasztott.
 
-Károli-vers a kötés forrása szerint: `identitas` 17 243, `identitas_terkep_egyik_sem` 85, `kk_mt` 1 713, `kk_kjv` 249,
-`kk_kjv_nem_igazolt` 34, `kezi_interpolalt` 40, `terkep` 3 701. **Ütközés a KK `igehely_mt` és a terkep között:** 1 048
+Károli-vers a kötés forrása szerint (**partíció**, összeg = 23 053 = `stat.json` `heber.karoli_versek_kk_szerint`; az interpoláció által
+felülírt versek csak az `kezi_interpolalt`-ban szerepelnek): `identitas` 17 235, `identitas_terkep_egyik_sem` 41,
+`terkep_egyik_sem_eltolodas_gyanu` 44, `kk_mt` 1 713, `kk_kjv` 249, `kk_kjv_nem_igazolt` 34, `kezi_interpolalt` 40, `terkep` 3 697.
+(A `kk_kjv` 249 Károli-vers 250 MT-célverset igazol: a `Préd 2:26` két MT-verset foglal magába; a `kezi_fejezetek.tsv`
+`igazolt_mt_vers_db` oszlopa az MT-célversekben számol.) **Ütközés a KK `igehely_mt` és a terkep között:** 1 048
 Károli-versnél eltér (legtöbb a Zsolt, 1Sám 24, Ézs 9, 1Kir 22, Jón 2); a KK az irányadó, nem döntöttem, az `utkozesek` listát a
 `macula_kk.karoli_mt_terkep()` adja vissza.
 
@@ -98,13 +105,26 @@ A csak-KK bontás a `naplok/F17_import_stat.json` `heber.allapot_csak_kk` mezőj
 | `allapot=rendben` | 293 808 |
 | `allapot=javaslat` (összesen) | 182 103 |
 | ebből csak a KK-kötés miatt (`allapot_csak_kk`, Strong-tól függetlenül) | 6 705 |
-| MT-vers a Maculában / ebből Károli-megfelelővel | 23 213 / 23 014 (199 MT-vers nincs Károli-párja; ebből Dán 34 a 4. fejezetben) |
-| Károli-vers a KK/terkep szerint / ebből Macula nélkül | 23 025 / 39 |
+| MT-vers a Maculában / ebből Károli-megfelelővel | 23 213 / 22 971 (242 MT-vers nincs Károli-párja, okok lent) |
+| Károli-vers a KK/terkep szerint / ebből Macula nélkül (üres vagy nem létező MT-cél) | 23 053 / 82 |
 | Károli-vers KK-osztály nélkül (EGYIK_SEM fejezet) | 151 |
 
-A KK-osztály nélküli 151 Károli-vers és a párjuk nélküli MT-versek (pl. 2Móz 35–36, Dán 1, 3, Jób 17) a 13 `EGYIK_SEM` fejezetből
-adódnak (`F01_KAROLI_KULCS_BRIEF.md`: a KK ezeket szándékosan nem osztályozza). Ezek `naplok/F17_illesztetlen.tsv`-ben vannak,
-`javaslat` jelöléssel; az interpolációt kivéve (3. pont) nem találgattam.
+**A 242 Károli nélküli MT-vers okai** (a Károli-fejezet KK1b-osztálya szerint; az F17.5-ös „199 `EGYIK_SEM` MT-vers” megjelölés pontatlan volt):
+
+| Ok | MT-vers | Fejezetek |
+|---|---|---|
+| `EGYIK_SEM` fejezet, a KK nem osztályozza | 154 | 2Móz 35 (23), 2Móz 36 (9), Dán 3 (26), Hós 2 (1), Hós 13 (15), Hós 14 (10), Jób 17 (16), Jób 37 (1: MT 37:1), Péld 12 (28), Én 5 (16), Én 6 (2), Ézs 4 (6), Ézs 64 (1) |
+| `KEZI` fejezet, a KJV = MT nem igazolt | 34 | Dán 4 (mind a 34) |
+| `KJV`-osztályú fejezet: a Károli-oldal üres az eltolódás-gyanú (F17.6) miatt (Préd 5, 4Móz 30, Zsolt 13, 4Móz 26:1, Zak 3:1), vagy egyedi eset (a többi) | 54 | Préd 5 (19), 4Móz 30 (17: köztük MT 30:17), Zsolt 13 (6), Préd 4 (1: MT 4:17), 4Móz 25/26, 1Krón 12, 1Sám 21, Hós 12, Zak 3, Eszt 3 (2), Én 7, Ézs 2, Ézs 8 (1–1) |
+
+A `Dán 1` **nem** illesztetlen: a Károli Dán 1 `identitas` (`javaslat:terkep_egyik_sem_identitas`), az MT Dán 1 kap Károli-értéket.
+A `KK`-osztály nélküli Károli-versek száma 151. Ezek `naplok/F17_illesztetlen.tsv`-ben vannak, `javaslat` jelöléssel; az
+interpolációt kivéve (3. pont) nem találgattam.
+
+**Tény a Dán 3–4-ről (nem döntöttem el):** a Károli `Dán 4:1` szövege („Én Nabukodonozor békében valék”) a Macula szerint MT 4:1
+(a KJV-ben ez 4:4). Vagyis a Károli Dán 3–4 **MT-számozású**, és a KK `igehely_kjv=4:4` a KJV-oldalt adja, nem az MT-t. Ha a
+Dán 4-et a `−3 eltolás` helyett a Károli-szöveg alapján kötnénk, az **identitást** adna (Károli 4:x = MT 4:x). A DT-F17 (c)
+4. opciója ezért ellentmondásos: a döntés a felhasználóé.
 
 **Görög (ÚSZ):** identitás a Károli-versekkel; a 8 sorú `Verzifikacios_elteres_tabla.tsv` az egyetlen kivétel-forrás
 (`kk_mod=verzifikacios_tabla`, `javaslat`). N1904: 137 704 `rendben` / 75 `javaslat` sor; SBLGNT: 137 699 / 42.
@@ -171,12 +191,12 @@ A fájl `allapot` oszlopa a gépi keresés kimenete (nem döntés); a `kk_mod` `
 
 ## 6. Illeszthetetlen sorok (brief 2. lépés)
 
-`naplok/F17_illesztetlen.tsv`: 1 445 adatsor, minden `allapot=javaslat` (D19).
+`naplok/F17_illesztetlen.tsv`: 1 531 adatsor, minden `allapot=javaslat` (D19).
 
 | Típus | Héber | Görög N1904 | Görög SBLGNT |
 |---|---|---|---|
-| `macula_vers_nincs_karoli` | 199 | 4 | 3 |
-| `karoli_vers_nincs_macula` | 190 | 15 | 18 |
+| `macula_vers_nincs_karoli` | 242 | 4 | 3 |
+| `karoli_vers_nincs_macula` | 233 | 15 | 18 |
 | `strong_nem_illesztheto` (Strong-kódonként) | 1 014 | 1 | 1 |
 
 ## 7. Szerepmátrix és datasetek
