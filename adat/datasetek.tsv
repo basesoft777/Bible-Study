@@ -19,6 +19,7 @@ bovitett	TAHOT	konkordancia/TAHOT_kivonat.tsv	mindig	—	elerheto	héber ÓSZ sz
 bovitett	TIPNR	konkordancia/TIPNR_kivonat.tsv	felteteles	ha a motívum tulajdonnevet érint	elerheto	tulajdonnév-referenciák
 bovitett	TSK	konkordancia/TSK_kereszthivatkozasok.tsv	mindig	—	elerheto	Treasury of Scripture Knowledge; minden jelölt egyedi minősítést kíván (sablon Q2)
 bovitett	Thayer	konkordancia/Thayer_teljes.tsv	felteteles	ha a görög oldal a TBESG-nél mélyebb szócikket kíván	elerheto	görög lexikon, a TBESG-nél mélyebb szócikkhez
+bovitett	Nave_basokant	konkordancia/Nave_basokant.tsv	ajanlott	tematikus index, témabevezetés és igehely-gyűjtés támasza; nem helyettesíti a kereszthivatkozás-menetet	korlatos	Nave's Topical Bible (1897), a basokant/nave nyers szövegéből saját parszolóval (F18, DT5); közkincs a README szerint, licencfájl nincs; `javaslat`-állapotú: a jelölés teljessége és a témák helyessége független kiadással nem igazolt (DT18); 5 322 entry, 85 246 sor; a theonize GPLv3 miatt nincs importálva; KJV-számozás, `karoli_allapot` oszlop
 tematikus	BDB	konkordancia/BDB_teljes_unabridged.tsv	mindig	—	elerheto	héber lexikon; az entry-id + jelentés-szám forrása
 tematikus	KJV_ASV_Strongs	konkordancia/KJV_Strongs_*.tsv, ASV_Strongs_*.tsv	felteteles	csak ha a szakasz Genezis, Exodus vagy Példabeszédek	korlatos	KORLÁTOS LEFEDETTSÉG: csak Genezis, Exodus, Példabeszédek
 tematikus	Karoli_1908	konkordancia/Karoli_1908.tsv	mindig	a Károli-szó hozzárendeléséhez (4.7)	elerheto	közkincs HunKar alapszöveg
@@ -36,6 +37,7 @@ tematikus	TAHOT	konkordancia/TAHOT_kivonat.tsv	mindig	—	elerheto	héber ÓSZ s
 tematikus	TIPNR	konkordancia/TIPNR_kivonat.tsv	felteteles	ha a motívum tulajdonnevet érint	elerheto	tulajdonnév-referenciák
 tematikus	TSK	konkordancia/TSK_kereszthivatkozasok.tsv	mindig	—	elerheto	Treasury of Scripture Knowledge; minden jelölt egyedi minősítést kíván (sablon Q2)
 tematikus	Thayer	konkordancia/Thayer_teljes.tsv	felteteles	ha a görög oldal a TBESG-nél mélyebb szócikket kíván	elerheto	görög lexikon, a TBESG-nél mélyebb szócikkhez
+tematikus	Nave_basokant	konkordancia/Nave_basokant.tsv	ajanlott	tematikus index, témabevezetés és igehely-gyűjtés támasza; nem helyettesíti a kereszthivatkozás-menetet	korlatos	Nave's Topical Bible (1897), a basokant/nave nyers szövegéből saját parszolóval (F18, DT5); közkincs a README szerint, licencfájl nincs; `javaslat`-állapotú: a jelölés teljessége és a témák helyessége független kiadással nem igazolt (DT18); 5 322 entry, 85 246 sor; a theonize GPLv3 miatt nincs importálva; KJV-számozás, `karoli_allapot` oszlop
 melyelemzes	BDB	konkordancia/BDB_teljes_unabridged.tsv	mindig	—	elerheto	héber lexikon; az entry-id + jelentés-szám forrása
 melyelemzes	KJV_ASV_Strongs	konkordancia/KJV_Strongs_*.tsv, ASV_Strongs_*.tsv	felteteles	csak ha a szakasz Genezis, Exodus vagy Példabeszédek	korlatos	KORLÁTOS LEFEDETTSÉG: csak Genezis, Exodus, Példabeszédek
 melyelemzes	Karoli_1908	konkordancia/Karoli_1908.tsv	mindig	a Károli-szó hozzárendeléséhez (4.7)	elerheto	közkincs HunKar alapszöveg
@@ -53,6 +55,7 @@ melyelemzes	TAHOT	konkordancia/TAHOT_kivonat.tsv	mindig	—	elerheto	héber ÓSZ
 melyelemzes	TIPNR	konkordancia/TIPNR_kivonat.tsv	felteteles	ha a motívum tulajdonnevet érint	elerheto	tulajdonnév-referenciák
 melyelemzes	TSK	konkordancia/TSK_kereszthivatkozasok.tsv	mindig	—	elerheto	Treasury of Scripture Knowledge; minden jelölt egyedi minősítést kíván (sablon Q2)
 melyelemzes	Thayer	konkordancia/Thayer_teljes.tsv	felteteles	ha a görög oldal a TBESG-nél mélyebb szócikket kíván	elerheto	görög lexikon, a TBESG-nél mélyebb szócikkhez
+melyelemzes	Nave_basokant	konkordancia/Nave_basokant.tsv	ajanlott	tematikus index, témabevezetés és igehely-gyűjtés támasza; nem helyettesíti a kereszthivatkozás-menetet	korlatos	Nave's Topical Bible (1897), a basokant/nave nyers szövegéből saját parszolóval (F18, DT5); közkincs a README szerint, licencfájl nincs; `javaslat`-állapotú: a jelölés teljessége és a témák helyessége független kiadással nem igazolt (DT18); 5 322 entry, 85 246 sor; a theonize GPLv3 miatt nincs importálva; KJV-számozás, `karoli_allapot` oszlop
 lexikon_oldal	BDB	konkordancia/BDB_teljes_unabridged.tsv	mindig	—	elerheto	héber lexikon; az entry-id + jelentés-szám forrása
 lexikon_oldal	KJV_ASV_Strongs	konkordancia/KJV_Strongs_*.tsv, ASV_Strongs_*.tsv	felteteles	csak ha a szakasz Genezis, Exodus vagy Példabeszédek	korlatos	KORLÁTOS LEFEDETTSÉG: csak Genezis, Exodus, Példabeszédek
 lexikon_oldal	Karoli_1908	konkordancia/Karoli_1908.tsv	mindig	a Károli-szó hozzárendeléséhez (4.7)	elerheto	közkincs HunKar alapszöveg
@@ -70,3 +73,4 @@ lexikon_oldal	TAHOT	konkordancia/TAHOT_kivonat.tsv	mindig	—	elerheto	héber Ó
 lexikon_oldal	TIPNR	konkordancia/TIPNR_kivonat.tsv	felteteles	ha a motívum tulajdonnevet érint	elerheto	tulajdonnév-referenciák
 lexikon_oldal	TSK	konkordancia/TSK_kereszthivatkozasok.tsv	mindig	—	elerheto	Treasury of Scripture Knowledge; minden jelölt egyedi minősítést kíván (sablon Q2)
 lexikon_oldal	Thayer	konkordancia/Thayer_teljes.tsv	felteteles	ha a görög oldal a TBESG-nél mélyebb szócikket kíván	elerheto	görög lexikon, a TBESG-nél mélyebb szócikkhez
+lexikon_oldal	Nave_basokant	konkordancia/Nave_basokant.tsv	ajanlott	tematikus index, témabevezetés és igehely-gyűjtés támasza; nem helyettesíti a kereszthivatkozás-menetet	korlatos	Nave's Topical Bible (1897), a basokant/nave nyers szövegéből saját parszolóval (F18, DT5); közkincs a README szerint, licencfájl nincs; `javaslat`-állapotú: a jelölés teljessége és a témák helyessége független kiadással nem igazolt (DT18); 5 322 entry, 85 246 sor; a theonize GPLv3 miatt nincs importálva; KJV-számozás, `karoli_allapot` oszlop
