@@ -13,7 +13,7 @@ ir: [naplok/F17_illesztetlen.tsv, konkordancia/Macula_heber_*.tsv, konkordancia/
 fugg: [6]
 ag: claude/macula-import
 pr: 87
-lezarva_osszegzes: Macula-import (#17): héber 475 911 és görög 275 520 sor a KK-hoz kötve (CC BY 4.0, UBS-mezők nélkül), a 87 hely 38 LXX-megfelelővel (F06: 39, közös módszerhiba javítva); ellenőrzés `naplok/ELLENOR_F17.md`; a Dán 4, a szerepmátrix és a fájlméret DT-F17-ben nyitva
+lezarva_osszegzes: Macula-import (#17): héber 475 911 és görög 275 520 sor a KK-hoz kötve (CC BY 4.0, UBS-mezők nélkül), a 87 hely 38 LXX-megfelelővel (F06: 39, közös módszerhiba javítva); ellenőrzés `naplok/ELLENOR_F17.md`; a Dán 4, a szerepmátrix és a fájlméret DT6-ben nyitva
 ---
 # F17 — Macula-import, héber és görög
 

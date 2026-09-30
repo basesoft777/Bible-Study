@@ -26,7 +26,7 @@ A számokat a `naplok/F17_import_stat.json` adja (a `eszkozok/f17/macula_futtat.
   `coredomain`, `contextualdomain`, `sensenumber`; görög `domain`, `ln`) a Semantic Dictionary of Biblical Hebrew / MARBLE
   forrásból jönnek, engedéllyel, **nem CC BY**. Ezek a mezők **nem kerültek be** — így nincs licencütközés. (A repóban az
   SDBH/SDGNT a `konkordancia/SDBH_SDGNT_README.md` szerint már CC BY-SA 4.0 forrásból van; az F06 jelentés 4. pontja szerint
-  a Macula-oldali SDBH-engedély külön tisztázandó, ha a domének kellenének. Ezt a döntést nem hoztam meg: l. DT-F17.)
+  a Macula-oldali SDBH-engedély külön tisztázandó, ha a domének kellenének. Ezt a döntést nem hoztam meg: l. DT6.)
 - A görög `gloss` a Berean Interlinear (közkincs 2023.04.30 óta), az `english` a Cherith Glosses (CC BY 4.0). Ezek bekerültek.
 
 ## 2. Mit importáltam (oszlopok)
@@ -124,7 +124,7 @@ interpolációt kivéve (3. pont) nem találgattam.
 
 **Tény a Dán 3–4-ről (nem döntöttem el):** a Károli `Dán 4:1` szövege („Én Nabukodonozor békében valék”) a Macula szerint MT 4:1
 (a KJV-ben ez 4:4). Vagyis a Károli Dán 3–4 **MT-számozású**, és a KK `igehely_kjv=4:4` a KJV-oldalt adja, nem az MT-t. Ha a
-Dán 4-et a `−3 eltolás` helyett a Károli-szöveg alapján kötnénk, az **identitást** adna (Károli 4:x = MT 4:x). A DT-F17 (c)
+Dán 4-et a `−3 eltolás` helyett a Károli-szöveg alapján kötnénk, az **identitást** adna (Károli 4:x = MT 4:x). A DT6 (c)
 4. opciója ezért ellentmondásos: a döntés a felhasználóé.
 
 **Görög (ÚSZ):** identitás a Károli-versekkel; a 8 sorú `Verzifikacios_elteres_tabla.tsv` az egyetlen kivétel-forrás
@@ -153,7 +153,7 @@ Javítás (F17.4): a független ellenőr szerint az első verzió `H1886`-ot (a 
 Strong-szótárban Dothan) adott néhány sorra (Bír 13:14, Bír 9:41, 1Krón 2:52), és a Zak 2:13 két `tobbes` sora `H5921`-et
 kapott. A szabály most a számcsaládra és a többes kódra is kiterjed, így ezek `strong` mezője üres.
 
-A funkció-morfémák STEP-megfelelője a 9000-es sáv (`H9001`…); a leképezésük nem a feladat tárgya (DT-F17 (b)).
+A funkció-morfémák STEP-megfelelője a 9000-es sáv (`H9001`…); a leképezésük nem a feladat tárgya (DT6 (b)).
 Görög: 137 777 / 137 739 sor `igen` (N1904 / SBLGNT), a maradék 2-2 sor `nincs_strong` (`Ἀρνεί`, a 0 Strong).
 Az összetett görög Strong (`1417+3461`) a SEMA 1.2 szerint `G1417+G3461`. A `naplok/F17_illesztetlen.tsv` a Strong-oldali
 illeszthetetlent Strong-kódonként összesítve tartalmazza (1 016 sor).
@@ -185,7 +185,7 @@ KK `igehely_kjv` oszlopát nem olvastam. A korábbi 87/87 egyezés az F06-tal **
 **Új lelet a Préd 9:10-ről (a #8-nak):** a munkalap `heber_kulcsszo` értéke `שְׁאוֹל`, és a Macula szerint ez a szó MT `Préd 9:10`-ben
 van (Károli-számozásban `Préd 9:12`, a KK szerint), nem MT 9:8-ban. Vagyis a munkalap `Préd 9:10` igehelye valószínűleg
 **nem Károli-, hanem KJV/MT-számozású**. Ha ez így van, a sor helyes kötése MT 9:10 → LXX-megfelelő `ἅδη`, és a
-munkalap igehelyeinek számozási alapja (Károli vs. KJV/MT) sor-szinten ellenőrizendő. Nem döntöttem el; a `DT-F17` (g) pontja.
+munkalap igehelyeinek számozási alapja (Károli vs. KJV/MT) sor-szinten ellenőrizendő. Nem döntöttem el; a `DT6` (g) pontja.
 
 A 38 sor továbbra is **javaslat, kézi megerősítést igényel** (az F06 szerint a Macula szó-szintű illesztése 78,3%).
 A fájl `allapot` oszlopa a gépi keresés kimenete (nem döntés); a `kk_mod` `:`-os utótagja a KK-kötés bizonytalanságát jelzi.
@@ -204,7 +204,7 @@ A fájl `allapot` oszlopa a gépi keresés kimenete (nem döntés); a `kk_mod` `
 
 - **`adat/szotar_szerepek.tsv`: nem módosítottam** (az F17.3-ban felvett `heber 11` és `gorog 11` sort F17.4 visszavonta): a SEMA 2.13
   10 szerep × 2 nyelv = 20 sort rögzít (sorrend 1–10); a Macula-szerep felvétele SEMA-bővítést igényel, a döntés a
-  felhasználóé (DT-F17 (f)).
+  felhasználóé (DT6 (f)).
 - **`adat/datasetek.tsv`:** felvéve a `Macula_heber` (fájl: `Macula_heber_*.tsv`) és a `Macula_gorog` (mindkettő `ajanlott`, `elerheto`, négy study-típusra:
   +8 sor). A SEMA 2.6 „17 dataset × 4 = 68 sor” száma nem frissült (SEMA-módosítás kívül esik a hatókörön); a #16 ága is bővíti a
   táblát, rebase-nél mindkét oldal sorai maradnak.
