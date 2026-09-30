@@ -308,7 +308,8 @@ def jelentes(adat, el, kezi, regi, rkezi, el_v2=None, kezi_v2=None, v2=None):
           '<!-- GENERÁLT: eszkozok/karoli_strong/c_diff.py | scope=f21p F3, a kapun átment aranyversek '
           '(60) és a C régi-arany-hármasai | forras=f21p/valaszok/F3.jsonl, f21p/arany_opus.jsonl, '
           'f21p/meres_kizaras.tsv, f21p/c_diff_besorolas.tsv, f21p/c_regi_arany_besorolas.tsv, '
-          'konkordancia/Karoli_Strong_kivonat.tsv | kézzel szerkeszteni tilos -->', '',
+          'f21p/arany_opus_v2.jsonl, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv | ts=%s (a generálás ideje; ismételt futáskor csak ez a sor tér el) | '
+          'kézzel szerkeszteni tilos -->' % tokenek.generalas_ts(), '',
           '**A számok a szkript kimenetei** (a meres.py definícióival: link = (magyar sorszám, '
           'eredeti sorszám), a f21p/meres_kizaras.tsv tokenjei nélkül). **Az osztályba sorolás '
           'kézi ítélet (Opus, F21.11), nem mérés.** Osztályok: (a) konvenciókülönbség — a '
@@ -333,7 +334,7 @@ def jelentes(adat, el, kezi, regi, rkezi, el_v2=None, kezi_v2=None, v2=None):
            '**kézi besorolás (Opus, F21.11)** alapján nem-hibának veszi — a többlet (a)/(b) '
            'linkeket a pontosság, a hiányzó (a)/(b) linkeket a lefedettség számlálójához '
            'adja. A korrekció tehát ítéletfüggő.', '',
-           '| réteg | mérőszám | P4 (mérés) | korrigált (kézi besorolás alapján) |', '|---|---|---|---|']
+           '| réteg | mérőszám | P4 (mérés) | korrigált (az Opus besorolása, nem mérés) |', '|---|---|---|---|']
     for ret in ret_lista:
         n, c, g, t = alap[ret]
         tob_ab = sum(szam.get((ret, 'tobblet', o), 0) for o in ('a', 'b'))
@@ -475,7 +476,10 @@ def v2_diff_jelentes(adat, el, kezi, el_v2, kezi_v2, v2):
     k2 = {(x[0], x[2], x[3], x[4]) for x in el_v2}
     ki = ['# F21P_arany_v2_diff.md — az Opus-arany v1 -> v2 változásai', '',
           '<!-- GENERÁLT: eszkozok/karoli_strong/c_diff.py (az arany_v2.JAVITASOK és a két arany alapján) | '
-          'scope=f21p/arany_opus.jsonl -> f21p/arany_opus_v2.jsonl | kézzel szerkeszteni tilos -->', '',
+          'scope=f21p/arany_opus.jsonl -> f21p/arany_opus_v2.jsonl (60 vers) | forras=f21p/arany_opus.jsonl, '
+          'f21p/arany_opus_v2.jsonl, f21p/arany_opus_v2.sha256, eszkozok/karoli_strong/arany_v2.py (JAVITASOK), '
+          'f21p/valaszok/F3.jsonl, f21p/c_diff_besorolas.tsv | ts=%s (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->'
+          % tokenek.generalas_ts(), '',
           'A v2 a v1 másolata, csak a f21p/arany_opus_jegyzetek.md 2. szakaszának konvencióival ütköző '
           'versek javultak (felhasználói döntés, F21.12). A v1 érintetlen. **A v2 jóváhagyásig nem fagy be.** '
           'A konvenció-azonosítás és az indok kézi ítélet (Opus).', '',

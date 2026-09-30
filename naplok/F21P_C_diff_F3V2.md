@@ -1,6 +1,6 @@
 # F21P_C_diff_F3V2.md — az F3V2 eltérései az arany v2-höz és a (c) esetek összevetése az F3-mal
 
-<!-- GENERÁLT: eszkozok/karoli_strong/c_diff_f3v2.py (c_diff.py --f3v2) | forras=f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, f21p/arany_opus_v2.jsonl (befagyasztva), f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv | kézzel szerkeszteni tilos -->
+<!-- GENERÁLT: eszkozok/karoli_strong/c_diff_f3v2.py (c_diff.py --f3v2) | scope=F3 és F3V2 a kapun átment aranyverseken (60), az arany v2-höz | forras=f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, f21p/arany_opus_v2.jsonl (befagyasztva), f21p/meres_kizaras.tsv, f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv | ts=2026-09-30T13:12:55+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
 
 A megszűnt/maradt/új/örökölt állapot gépi; az F3V2-osztály és a változást magyarázó konvenció (K1–K10) **kézi ítélet (Opus), nem mérés**, és a futás után kerül a f21p/c_diff_f3v2_osszevetes.tsv-be.
 

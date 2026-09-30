@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_strong/ingadozas.py | F3 vs F3V2 az arany v2-n | mag=20260930, bootstrap=1000 | Δ = prompthatás + futásközi ingadozás, szét nem választható | kézzel szerkeszteni tilos
+# GENERÁLT: eszkozok/karoli_strong/ingadozas.py | scope=F3 vs F3V2 az arany v2-n (60 aranyvers; kapuhiba: 200 vers) | forras=f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, f21p/arany_opus.jsonl, f21p/arany_opus_v2.jsonl, f21p/meres_kizaras.tsv, f21p/minta.tsv | ts=2026-09-30T13:13:11+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | mag=20260930, bootstrap=1000 | Δ = prompthatás + futásközi ingadozás, szét nem választható | kézzel szerkeszteni tilos
 szakasz	reteg	mero	F3	F3V2	delta	delta_also90	delta_felso90	abs_delta_felso95	n	megjegyzes
 arany_v2	R1	pontossag	0.9455	0.9403	-0.0053	-0.0273	0.0156	0.0275	20	aranyversek (mindkét futásban kapun átment)
 arany_v2	R1	lefedettseg	0.9306	0.9432	0.0126	-0.0101	0.0368	0.0368	20	aranyversek (mindkét futásban kapun átment)

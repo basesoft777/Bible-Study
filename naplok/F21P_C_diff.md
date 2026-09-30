@@ -1,6 +1,6 @@
 # F21P_C_diff.md — a C (F3) eltérései az Opus-aranytól és a régi aranytól
 
-<!-- GENERÁLT: eszkozok/karoli_strong/c_diff.py | scope=f21p F3, a kapun átment aranyversek (60) és a C régi-arany-hármasai | forras=f21p/valaszok/F3.jsonl, f21p/arany_opus.jsonl, f21p/meres_kizaras.tsv, f21p/c_diff_besorolas.tsv, f21p/c_regi_arany_besorolas.tsv, konkordancia/Karoli_Strong_kivonat.tsv | kézzel szerkeszteni tilos -->
+<!-- GENERÁLT: eszkozok/karoli_strong/c_diff.py | scope=f21p F3, a kapun átment aranyversek (60) és a C régi-arany-hármasai | forras=f21p/valaszok/F3.jsonl, f21p/arany_opus.jsonl, f21p/meres_kizaras.tsv, f21p/c_diff_besorolas.tsv, f21p/c_regi_arany_besorolas.tsv, f21p/arany_opus_v2.jsonl, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv | ts=2026-09-30T13:12:52+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
 
 **A számok a szkript kimenetei** (a meres.py definícióival: link = (magyar sorszám, eredeti sorszám), a f21p/meres_kizaras.tsv tokenjei nélkül). **Az osztályba sorolás kézi ítélet (Opus, F21.11), nem mérés.** Osztályok: (a) konvenciókülönbség — a f21p/arany_opus_jegyzetek.md 2. szakaszának tíz konvenciója; (b) az arany vitatható döntése — a jegyzet 6. szakaszának táblázata; (c) a C valódi hibája az arany szerint; a régi aranynál (d) a régi arany hibás, (e) mérési műtermék (a megadott felosztáson túli osztály, l. 6. pont).
 
@@ -18,7 +18,7 @@
 
 A **P4** sor a meres.py definíciója (a f21p/meres_eredmeny.tsv C-sorával azonos kell legyen). A **korrigált** sor NEM mérés: az (a) és (b) osztályú eltéréseket a **kézi besorolás (Opus, F21.11)** alapján nem-hibának veszi — a többlet (a)/(b) linkeket a pontosság, a hiányzó (a)/(b) linkeket a lefedettség számlálójához adja. A korrekció tehát ítéletfüggő.
 
-| réteg | mérőszám | P4 (mérés) | korrigált (kézi besorolás alapján) |
+| réteg | mérőszám | P4 (mérés) | korrigált (az Opus besorolása, nem mérés) |
 |---|---|---|---|
 | R1 | pontosság | 94.2% (294/312) | 99.4% (310/312) |
 | R1 | lefedettség | 92.7% (294/317) | 99.4% (315/317) |

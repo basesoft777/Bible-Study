@@ -89,16 +89,31 @@ def main():
     nem_tr = sum(1 for m in minta for w in ered[m['igehely']] if w['nem_tr'])
 
     ki = ['# F21P_jelentes.md — Károli–Strong mérőpilot: záró jelentés (P6)', '',
-          '<!-- GENERÁLT: eszkozok/karoli_strong/jelentes_f21p.py | forras=f21p/meres_eredmeny.tsv, '
+          '<!-- GENERÁLT: eszkozok/karoli_strong/jelentes_f21p.py | scope=F21 mérőpilot, P6 záró jelentés (A, B, C, '
+          'A+B, A+B+C; R1–R4) | forras=f21p/meres_eredmeny.tsv, '
           'f21p/meres_v2_eredmeny.tsv, f21p/koltseg_vetites.tsv, f21p/ingadozas.tsv, f21p/c_diff_besorolas.tsv, '
-          'f21p/c_diff_f3v2_osszevetes.tsv, f21p/futasnaplo.tsv | kézzel szerkeszteni tilos -->', '',
+          'f21p/c_diff_f3v2_osszevetes.tsv, f21p/futasnaplo.tsv, f21p/minta.tsv, f21p/sorrend_eltero_versek.tsv, '
+          'konkordancia/Karoli_Strong_kivonat.tsv | ts=%s (a generálás ideje; ismételt futáskor csak ez a sor tér el) | '
+          'kézzel szerkeszteni tilos -->' % tokenek.generalas_ts(), '',
           'A számok kizárólag szkriptkimenetből jönnek (a forrás soronként jelölve). A **korrigált** értékek '
           'kizárólag „**Opus-besorolás, nem mérés**” jelöléssel szerepelnek; a küszöb szempontjából csak a mért '
           'érték számít (PD10). A jelentés nem ajánl döntést a #22-ről.', '']
+    c_regi0 = m2.get('regi_arany', 'F3V2', 'Összes', 'egyezes')
+    c_regik = m2.get('regi_arany', 'F3V2', 'Összes', 'egyezes_hibas_kizarva')
+    c3_regi0 = m1.get('regi_arany', 'C', 'Összes', 'egyezes')
+    REGI_JEL = ('a kizárás a küszöb átlépését fordítja meg; a kizárás a futás után, a C két nem-egyezése alapján '
+                'történt (PD9); az 1Móz 13:4 a besorolásban vitatható, a f21p/regi_arany_hibas.tsv-ben hibás')
+    ki += ['## Összefoglaló', '',
+           '- **Egyik mért összeállítás sem felel meg; az A+B+C nem mért (PD8, az F4 nem futott).**',
+           '- Az A+B két mért feltételen bukott: az A∩B (`magas`) pontosság R1-ben, R3-ban és R4-ben a 98%% alatt van, '
+           'a régi arany egyezése %s (a 95%% alatt).' % p1('regi_arany', 'A+B magas (A∩B)', 'Összes', 'egyezes'),
+           '- A C egymodelles összeállítás, a PD6 szerint nem minősíthető. A C régi arany egyezése: kizárás nélkül '
+           '%s — a 95%% alatt; a PD9 szerinti kizárással %s — %s.' % (
+               pct(c_regi0['szamlalo'], c_regi0['nevezo']), pct(c_regik['szamlalo'], c_regik['nevezo']), REGI_JEL), '']
 
     # (a) EREDMÉNY
     ki += ['## (a) Eredmény', '',
-           '**A Döntési szabály szerint egyik összeállítás sem felel meg.** A rögzített öt feltétel '
+           '**Egyik mért összeállítás sem felel meg; az A+B+C nem mért (PD8, az F4 nem futott).** A rögzített öt feltétel '
            '(`magas` pontosság ≥ 98% minden rétegben; lefedettség ≥ 95%; régi arany ≥ 95%; vetített költség 90%-os '
            'felső széle ≤ 60 USD; vetített `alacsony` arány ≤ 10%) összeállításonként:', '',
            '| összeállítás | magas pontosság ≥ 98% | lefedettség ≥ 95% | régi arany ≥ 95% | költség ≤ 60 USD | alacsony ≤ 10% | minősítés |',
@@ -111,31 +126,71 @@ def main():
               % (p1('pontossag_lefedettseg', 'A', 'Összes', 'lefedettseg'), p1('regi_arany', 'A', 'Összes', 'egyezes')))
     ki.append('| B | n.é. (egymodelles, PD6) | mért: %s — nem minősíthető | mért: %s | nem vetítve (PD8: kiesett) | n.é. (PD6) | nem minősíthető (PD6) |'
               % (p1('pontossag_lefedettseg', 'B', 'Összes', 'lefedettseg'), p1('regi_arany', 'B', 'Összes', 'egyezes')))
-    ki.append('| C | n.é. (egymodelles, PD6) | mért: F3 %s (arany v1), F3V2 %s (arany v2) — nem minősíthető | mért: F3V2 %s (hibás hármasok nélkül) | vetítve: F3V2 %s USD [%s–%s] | n.é. (PD6) | nem minősíthető (PD6) |'
-              % (c_lef_v1, c_lef, c_regi, c_ko['ertek'], c_ko['also90'], c_ko['felso90']))
-    ki.append('| A+B | **bukott**: A∩B pontosság R1 %s, R2 %s, R3 %s, R4 %s | nem mért (F4 nélkül nincs végső linkhalmaz; A∩B lefedettség: %s) | mért (A∩B): %s | nem vetítve (PD8) | nem mért (F4 nélkül; PD8) | nem felel meg |'
+    ki.append('| C | n.é. (egymodelles, PD6) | mért: F3 %s (arany v1), F3V2 %s (arany v2) — nem minősíthető | mért: kizárás nélkül F3 %s, F3V2 %s — a 95%% alatt; a PD9 szerinti kizárással F3V2 %s (%s) | vetítve: F3 %s USD [%s–%s], F3V2 %s USD [%s–%s] (90%%) | n.é. (PD6) | nem minősíthető (PD6) |'
+              % (c_lef_v1, c_lef, pct(c3_regi0['szamlalo'], c3_regi0['nevezo']), pct(c_regi0['szamlalo'], c_regi0['nevezo']),
+                 c_regi, REGI_JEL, kv.get('vetites', 'F3', 'Összes', 'koltseg_usd')['ertek'],
+                 kv.get('vetites', 'F3', 'Összes', 'koltseg_usd')['also90'], kv.get('vetites', 'F3', 'Összes', 'koltseg_usd')['felso90'],
+                 c_ko['ertek'], c_ko['also90'], c_ko['felso90']))
+    ki.append('| A+B | **bukott**: A∩B pontosság R1 %s, R2 %s, R3 %s, R4 %s | nem mért (F4 nélkül nincs végső linkhalmaz; A∩B lefedettség tájékoztatásul: %s) | **bukott** (A∩B): %s; a korábbi, összetett Strong nélküli definícióval is %s | nem vetítve (PD8) | nem mért (F4 nélkül; PD8) | nem felel meg |'
               % tuple([p1('pontossag_lefedettseg', 'A+B magas (A∩B)', r, 'pontossag') for r in ('R1', 'R2', 'R3', 'R4')]
                       + [p1('pontossag_lefedettseg', 'A+B magas (A∩B)', 'Összes', 'lefedettseg'),
-                         p1('regi_arany', 'A+B magas (A∩B)', 'Összes', 'egyezes')]))
-    ki.append('| A+B+C | nem mért (az F4 nem futott, PD8) | nem mért | nem mért | nem vetítve | nem mért | nem felel meg (nem mérhető) |')
+                         p1('regi_arany', 'A+B magas (A∩B)', 'Összes', 'egyezes'),
+                         p1('regi_arany', 'A+B magas (A∩B)', 'Összes', 'egyezes_korabbi_osszetett_strong_nelkul')]))
+    ki.append('| A+B+C | nem mért (az F4 nem futott, PD8) | nem mért | nem mért | nem vetítve | nem mért | nem mért (PD8) |')
     ki.append('')
 
-    # (b) MI BUKOTT EL
-    ki += ['## (b) Mi bukott el', '',
-           '- **Az A+B pontossága:** az A∩B (`magas`) linkek pontossága a 98%%-os küszöb alatt: R1 %s, R2 %s, R3 %s, R4 %s '
+    # (b) MI BUKOTT EL — csak a rögzített öt feltétel
+    ki += ['## (b) Mi bukott el (csak a rögzített öt feltétel)', '',
+           '- **A+B, `magas` pontosság ≥ 98%% minden rétegben — bukott:** az A∩B linkek pontossága R1 %s, R2 %s, R3 %s, R4 %s '
            '(forrás: meres_eredmeny.tsv, pontossag_lefedettseg).' % tuple(
                p1('pontossag_lefedettseg', 'A+B magas (A∩B)', r, 'pontossag') for r in ('R1', 'R2', 'R3', 'R4')),
-           '- **Az A és a B kapuhibája:** végleges kapuhiba A %s, B %s; első próbára A %s, B %s. A döntőbíróhoz '
-           'menne (eltérő, csak egyik átment, egyik sem): %s (meres_eredmeny.tsv, kapuhiba és ab_osszeallitas).' % (
-               p1('kapuhiba', 'F1 (A)', 'Összes', 'kapuhiba_vegleg'), p1('kapuhiba', 'F2 (B)', 'Összes', 'kapuhiba_vegleg'),
-               p1('kapuhiba', 'F1 (A)', 'Összes', 'kapuhiba_elso_probara'), p1('kapuhiba', 'F2 (B)', 'Összes', 'kapuhiba_elso_probara'),
-               p1('ab_osszeallitas', 'A+B', 'Összes', 'dontobirohoz_menne (eltero + csak egyik + egyik sem)')),
-           '- **A C:** egymodelles összeállítás, a PD6 szerint nem kaphat megfelelt minősítést (a `magas`/`alacsony` '
-           'szint egy modellnél nem értelmezhető). A rétegenkénti 98%%-hoz mérten a mért összpontosság az arany v2-n '
-           'F3: %s; F3V2: %s (rétegenként l. (c)). A korrigált (Opus-besorolás, nem mérés) érték nem számít.' % (
+           '- **A+B, régi arany ≥ 95%% — bukott:** az A∩B egyezése a halmaz-definícióval %s, a korábbi (összetett Strong '
+           'nélküli) definícióval %s (meres_eredmeny.tsv, regi_arany).' % (
+               p1('regi_arany', 'A+B magas (A∩B)', 'Összes', 'egyezes'),
+               p1('regi_arany', 'A+B magas (A∩B)', 'Összes', 'egyezes_korabbi_osszetett_strong_nelkul')),
+           '- **A+B, lefedettség, költség, `alacsony` arány:** nem mért (F4 nélkül nincs végső linkhalmaz és bizonyossági '
+           'szint; PD8).',
+           '- **A, B, C (egymodelles):** a PD6 szerint nem minősíthető; a `magas`/`alacsony` szint egy modellnél nem '
+           'értelmezhető. A C mért összpontossága a rétegenkénti 98%%-hoz mérten az arany v2-n F3: %s; F3V2: %s. '
+           'A korrigált (Opus-besorolás, nem mérés) érték nem számít.' % (
                ', '.join('%s %s' % (r, p2('pontossag_lefedettseg', 'F3 × arany v2', r, 'pontossag')) for r in ('R1', 'R2', 'R3', 'R4')),
                ', '.join('%s %s' % (r, p2('pontossag_lefedettseg', 'F3V2 × arany v2', r, 'pontossag')) for r in ('R1', 'R2', 'R3', 'R4'))),
-           '- **Az A+B+C:** az F4 nem futott (PD8), tehát nem mérhető.', '']
+           '- **A+B+C:** nem mért (PD8, az F4 nem futott).', '',
+           '**Megfigyelés (nem feltétel):** a kapuhiba nem tartozik a rögzített öt feltétel közé. Végleges kapuhiba '
+           'A %s, B %s; első próbára A %s, B %s. A döntőbíróhoz menne (eltérő, csak egyik átment, egyik sem): %s '
+           '(meres_eredmeny.tsv, kapuhiba és ab_osszeallitas). Emiatt az A+B összeállításban a döntőbíró (F4) nélkül '
+           'az `alacsony`-arány feltétel nem mért.' % (
+               p1('kapuhiba', 'F1 (A)', 'Összes', 'kapuhiba_vegleg'), p1('kapuhiba', 'F2 (B)', 'Összes', 'kapuhiba_vegleg'),
+               p1('kapuhiba', 'F1 (A)', 'Összes', 'kapuhiba_elso_probara'), p1('kapuhiba', 'F2 (B)', 'Összes', 'kapuhiba_elso_probara'),
+               p1('ab_osszeallitas', 'A+B', 'Összes', 'dontobirohoz_menne (eltero + csak egyik + egyik sem)')), '']
+
+    # (b2) P-K4: minden mérőszám összeállításonként és rétegenként (meres_eredmeny.tsv)
+    ki += ['## (b2) Mérőszámok összeállításonként és rétegenként (P-K4; forrás: meres_eredmeny.tsv, arany v1)', '',
+           'Bizonyossági szintek (G4): a `magas` az A∩B (az A+B egyező linkjei); a `kozepes` és az `alacsony` a döntőbíró '
+           '(F4) döntésén alapul, F4 nélkül nem mért (PD8); egymodelles összeállításra egyik szint sem értelmezett (PD6).', '',
+           '| összeállítás | mérőszám | R1 | R2 | R3 | R4 | Összes |', '|---|---|---|---|---|---|---|']
+    for oss_ in ('A', 'B', 'C', 'A+B magas (A∩B)', 'A∪B (döntőbíró előtti felső korlát)'):
+        for mero in ('arany_versek_kapun_atment', 'pontossag', 'lefedettseg'):
+            ki.append('| %s | %s | %s |' % (oss_, mero, ' | '.join(p1('pontossag_lefedettseg', oss_, r, mero) for r in RETEGEK)))
+    for mero in ('versek_mindketto_atment', 'link_egyezes (uniós arány)', 'azonos_linkhalmazu_versek'):
+        ki.append('| A–B | %s | %s |' % (mero, ' | '.join(p1('ab_egyezes', 'A–B', r, mero) for r in RETEGEK)))
+    for oss_ in ('A', 'B', 'C', 'A+B magas (A∩B)'):
+        for mero in ('egyezes', 'egyezes_hibas_kizarva'):
+            ki.append('| %s | régi arany: %s | %s |' % (oss_, mero, ' | '.join(p1('regi_arany', oss_, r, mero) for r in RETEGEK)))
+    for oss_ in ('F1 (A)', 'F2 (B)', 'F3 (C)', 'F5 (A (KJV nélkül))', 'F6 (B (KJV nélkül))'):
+        for mero in ('kapuhiba_elso_probara', 'kapuhiba_vegleg'):
+            cellak = []
+            for r in RETEGEK:
+                try:
+                    cellak.append(p1('kapuhiba', oss_, r, mero))
+                except KeyError:
+                    cellak.append('—')
+            ki.append('| %s | %s | %s |' % (oss_, mero, ' | '.join(cellak)))
+    for mero in ('mindketto_atment_azonos_linkekkel', 'mindketto_atment_eltero_linkekkel', 'csak_A_atment', 'csak_B_atment',
+                 'egyik_sem_atment', 'dontobirohoz_menne (eltero + csak egyik + egyik sem)', 'nem_egyezo_link_arany (1 − A∩B/A∪B)'):
+        ki.append('| A+B | %s | %s |' % (mero, ' | '.join(p1('ab_osszeallitas', 'A+B', r, mero) for r in RETEGEK)))
+    ki.append('| A+B | alacsony_arany | n.é. | n.é. | n.é. | n.é. | n.é. |')
+    ki.append('')
 
     # (c) mért számok
     oss = ['F3 × arany v1', 'F3 × arany v2', 'F3V2 × arany v2']
@@ -202,6 +257,8 @@ def main():
 
     # (d) P5
     ki += ['## (d) Költségvetítés (P5, csak a C; forrás: koltseg_vetites.tsv)', '',
+           '**Eltérés a brieftől:** a bootstrap egysége a 10 verses köteg, nem a vers (a brief P5.6 a verseken kéri; a token '
+           'hívásonként, 10 versre ismert, versenként nem mérhető). Ez a DT21 f) nyitott tétele, **nincs jóváhagyva**.', '',
            'Módszer: illesztés tokenfajtánként az első próbálkozású hívásokon (bemenet = a + b·x + c·k; kimenet = a + b·x; '
            'x = eredeti + Károli-szavak, k = KJV-támpont szavai); a teljes Biblia valódi vershosszai (Karoli_1908, '
            'TAHOT/TAGNT); ár a cost mezőből; az újrakérés a pilot mért szorzójával; bootstrap a kötegek felett (1000); '
@@ -260,6 +317,10 @@ def main():
                p1('kapuhiba_tipus', 'F1 (A)', 'Összes', 'kapupont_1-json_elso_probara'),
                p1('kapuhiba_tipus', 'F2 (B)', 'Összes', 'kapupont_1-json_elso_probara')),
            '- A C gondolkodási tokenje a naplóban és a nyers usage-ban 0 (minimal effort); a nyers usage tárolása az F3V2-től.',
+           '- Gondolkodási mód (eltérés a brief Keretek pontjától, amely mindhárom modellnél azonos beállítást kért): az A '
+           'és a B kikapcsolva, a C-nél a gondolkodás kötelező, `minimal` szinten. Az F1–F6 napló `gondolkodas_token` = 0 '
+           'értéke nem mérés (a token olvasása csak az F21.10-től él); a nyers usage az F3V2-től tárolt, abban is 0. '
+           'A költség ettől helyes, mert a `cost` mezőből jön.',
            '- A prompt-szabályok túlkötést okozhatnak: az F3V2 több linket ad (%s link az F3 %s-ével szemben, arany v2).' % (
                m2.get('pontossag_lefedettseg', 'F3V2 × arany v2', 'Összes', 'pontossag')['nevezo'],
                m2.get('pontossag_lefedettseg', 'F3 × arany v2', 'Összes', 'pontossag')['nevezo']), '',

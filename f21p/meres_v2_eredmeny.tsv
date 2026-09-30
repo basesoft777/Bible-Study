@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_strong/meres_v2.py | scope=f21p F3, F3V2 | kézzel szerkeszteni tilos
+# GENERÁLT: eszkozok/karoli_strong/meres_v2.py | scope=f21p F3, F3V2 (arany v1/v2) | forras=f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, f21p/arany_opus.jsonl, f21p/arany_opus_v2.jsonl, f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, f21p/minta.tsv, f21p/futasnaplo.tsv | ts=2026-09-30T13:14:36+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos
 szakasz	osszeallitas	reteg	mero	szamlalo	nevezo
 pontossag_lefedettseg	F3 × arany v1	R1	pontossag	294	312
 pontossag_lefedettseg	F3 × arany v1	R1	lefedettseg	294	317

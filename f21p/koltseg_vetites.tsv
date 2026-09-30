@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_strong/koltseg_vetit.py | scope=C (F3, F3V2) | forras=f21p/futasnaplo.tsv, f21p/valaszok/F3*.jsonl, konkordancia/Karoli_1908.tsv, TAHOT/TAGNT_kivonat.tsv | mag=20260930 | kézzel szerkeszteni tilos
+# GENERÁLT: eszkozok/karoli_strong/koltseg_vetit.py | scope=C (F3, F3V2), P5 teljes Biblia (31 158 vers) | forras=f21p/futasnaplo.tsv, f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/KJV_Strongs_*.tsv, f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv | ts=2026-09-30T13:13:03+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | mag=20260930 | kézzel szerkeszteni tilos
 szakasz	futas	reteg	mero	ertek	also90	felso90	megjegyzes
 reteg_besorolas	-	R1	konyvek	1Móz 2Móz 3Móz 4Móz 5Móz Józs Bír Ruth 1Sám 2Sám 1Kir 2Kir 1Krón 2Krón Ezsd Neh Eszt Péld Préd			műfaj és kánonrész szerint, a minta rétegeivel összhangban
 biblia	-	R1	versek	14006			Károli-versek

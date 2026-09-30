@@ -247,6 +247,17 @@ def arany_v2_befagyasztas_ellenoriz(ut=ARANY_V2):
     return kapott
 
 
+def generalas_ts():
+    """A proveniencia-sor ts mezője (F21.20): a generálás ideje, UTC, másodpercre.
+
+    A generált kimenetek ezért ismételt futáskor a fejlécsorban eltérnek; a
+    tartalmi sorok bájtra azonosak maradnak (a bájtazonosságot ígérő minta-
+    és kiválasztás-fájlok — minta.tsv, opus_arany_kivalasztas.tsv — nem kapnak
+    ts-t, azokat ez nem érinti)."""
+    from datetime import datetime, timezone
+    return datetime.now(timezone.utc).isoformat(timespec='seconds')
+
+
 def konyv_rovid(igehely):
     b = igehely_bont(igehely)
     return b[0] if b else None

@@ -123,8 +123,11 @@ def main():
             sorok.append(['linkhalmaz', r, 'link_egyezes Σ|∩|/Σ|∪| [%s]' % halmaz_nev, '', '', '%.4f' % (m_ / u_ if u_ else 0),
                           '', '', '', str(len(vs)), '%d/%d' % (m_, u_)])
     with open(KIMENET, 'w', encoding='utf-8', newline='\n') as fh:
-        fh.write('# GENERÁLT: eszkozok/karoli_strong/ingadozas.py | F3 vs F3V2 az arany v2-n | mag=%d, bootstrap=%d | '
-                 'Δ = prompthatás + futásközi ingadozás, szét nem választható | kézzel szerkeszteni tilos\n' % (MAG, N_BOOT))
+        fh.write('# GENERÁLT: eszkozok/karoli_strong/ingadozas.py | scope=F3 vs F3V2 az arany v2-n (60 aranyvers; '
+                 'kapuhiba: 200 vers) | forras=f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, f21p/arany_opus.jsonl, '
+                 'f21p/arany_opus_v2.jsonl, f21p/meres_kizaras.tsv, f21p/minta.tsv | ts=%s (a generálás ideje; ismételt futáskor csak ez a sor tér el) | mag=%d, bootstrap=%d | '
+                 'Δ = prompthatás + futásközi ingadozás, szét nem választható | kézzel szerkeszteni tilos\n'
+                 % (tokenek.generalas_ts(), MAG, N_BOOT))
         for s in sorok:
             fh.write('\t'.join(s) + '\n')
     for s in sorok[1:]:

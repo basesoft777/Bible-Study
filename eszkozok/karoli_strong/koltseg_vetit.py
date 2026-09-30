@@ -300,9 +300,11 @@ def main():
         add('kezimunka', f, 'Összes', 'vetitett_c_hiba_biblia', round(tot_c), '', '', 'Opus-besorolás, nem mérés; rétegenként vetítve')
         add('kezimunka', f, 'Összes', 'alacsony_arany', 'n.é.', '', '', 'egymodelles összeállításra nem értelmezett (PD6, G4)')
     with open(KIMENET, 'w', encoding='utf-8', newline='\n') as fh:
-        fh.write('# GENERÁLT: eszkozok/karoli_strong/koltseg_vetit.py | scope=C (F3, F3V2) | forras=f21p/futasnaplo.tsv, '
-                 'f21p/valaszok/F3*.jsonl, konkordancia/Karoli_1908.tsv, TAHOT/TAGNT_kivonat.tsv | mag=%d | '
-                 'kézzel szerkeszteni tilos\n' % MAG)
+        fh.write('# GENERÁLT: eszkozok/karoli_strong/koltseg_vetit.py | scope=C (F3, F3V2), P5 teljes Biblia '
+                 '(31 158 vers) | forras=f21p/futasnaplo.tsv, f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, '
+                 'konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, '
+                 'konkordancia/KJV_Strongs_*.tsv, f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv | '
+                 'ts=%s (a generálás ideje; ismételt futáskor csak ez a sor tér el) | mag=%d | kézzel szerkeszteni tilos\n' % (tokenek.generalas_ts(), MAG))
         for s in sorok:
             assert all('\t' not in x for x in s)
             fh.write('\t'.join(s) + '\n')

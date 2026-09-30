@@ -1,27 +1,87 @@
 # F21P_jelentes.md — Károli–Strong mérőpilot: záró jelentés (P6)
 
-<!-- GENERÁLT: eszkozok/karoli_strong/jelentes_f21p.py | forras=f21p/meres_eredmeny.tsv, f21p/meres_v2_eredmeny.tsv, f21p/koltseg_vetites.tsv, f21p/ingadozas.tsv, f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv, f21p/futasnaplo.tsv | kézzel szerkeszteni tilos -->
+<!-- GENERÁLT: eszkozok/karoli_strong/jelentes_f21p.py | scope=F21 mérőpilot, P6 záró jelentés (A, B, C, A+B, A+B+C; R1–R4) | forras=f21p/meres_eredmeny.tsv, f21p/meres_v2_eredmeny.tsv, f21p/koltseg_vetites.tsv, f21p/ingadozas.tsv, f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv, f21p/futasnaplo.tsv, f21p/minta.tsv, f21p/sorrend_eltero_versek.tsv, konkordancia/Karoli_Strong_kivonat.tsv | ts=2026-09-30T13:14:40+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
 
 A számok kizárólag szkriptkimenetből jönnek (a forrás soronként jelölve). A **korrigált** értékek kizárólag „**Opus-besorolás, nem mérés**” jelöléssel szerepelnek; a küszöb szempontjából csak a mért érték számít (PD10). A jelentés nem ajánl döntést a #22-ről.
 
+## Összefoglaló
+
+- **Egyik mért összeállítás sem felel meg; az A+B+C nem mért (PD8, az F4 nem futott).**
+- Az A+B két mért feltételen bukott: az A∩B (`magas`) pontosság R1-ben, R3-ban és R4-ben a 98% alatt van, a régi arany egyezése 60.0% (3/5) (a 95% alatt).
+- A C egymodelles összeállítás, a PD6 szerint nem minősíthető. A C régi arany egyezése: kizárás nélkül 93.8% (30/32) — a 95% alatt; a PD9 szerinti kizárással 100.0% (30/30) — a kizárás a küszöb átlépését fordítja meg; a kizárás a futás után, a C két nem-egyezése alapján történt (PD9); az 1Móz 13:4 a besorolásban vitatható, a f21p/regi_arany_hibas.tsv-ben hibás.
+
 ## (a) Eredmény
 
-**A Döntési szabály szerint egyik összeállítás sem felel meg.** A rögzített öt feltétel (`magas` pontosság ≥ 98% minden rétegben; lefedettség ≥ 95%; régi arany ≥ 95%; vetített költség 90%-os felső széle ≤ 60 USD; vetített `alacsony` arány ≤ 10%) összeállításonként:
+**Egyik mért összeállítás sem felel meg; az A+B+C nem mért (PD8, az F4 nem futott).** A rögzített öt feltétel (`magas` pontosság ≥ 98% minden rétegben; lefedettség ≥ 95%; régi arany ≥ 95%; vetített költség 90%-os felső széle ≤ 60 USD; vetített `alacsony` arány ≤ 10%) összeállításonként:
 
 | összeállítás | magas pontosság ≥ 98% | lefedettség ≥ 95% | régi arany ≥ 95% | költség ≤ 60 USD | alacsony ≤ 10% | minősítés |
 |---|---|---|---|---|---|---|
 | A | n.é. (egymodelles, PD6) | mért: 81.5% (528/648) — nem minősíthető | mért: 83.3% (20/24) | nem vetítve (PD8: kiesett) | n.é. (PD6) | nem minősíthető (PD6) |
 | B | n.é. (egymodelles, PD6) | mért: 79.2% (742/937) — nem minősíthető | mért: 66.7% (4/6) | nem vetítve (PD8: kiesett) | n.é. (PD6) | nem minősíthető (PD6) |
-| C | n.é. (egymodelles, PD6) | mért: F3 94.1% (989/1051) (arany v1), F3V2 97.1% (1020/1051) (arany v2) — nem minősíthető | mért: F3V2 100.0% (30/30) (hibás hármasok nélkül) | vetítve: F3V2 42.0298 USD [37.9494–46.1468] | n.é. (PD6) | nem minősíthető (PD6) |
-| A+B | **bukott**: A∩B pontosság R1 85.2% (52/61), R2 98.4% (61/62), R3 91.8% (179/195), R4 91.7% (77/84) | nem mért (F4 nélkül nincs végső linkhalmaz; A∩B lefedettség: 65.3% (369/565)) | mért (A∩B): 60.0% (3/5) | nem vetítve (PD8) | nem mért (F4 nélkül; PD8) | nem felel meg |
-| A+B+C | nem mért (az F4 nem futott, PD8) | nem mért | nem mért | nem vetítve | nem mért | nem felel meg (nem mérhető) |
+| C | n.é. (egymodelles, PD6) | mért: F3 94.1% (989/1051) (arany v1), F3V2 97.1% (1020/1051) (arany v2) — nem minősíthető | mért: kizárás nélkül F3 93.8% (30/32), F3V2 93.8% (30/32) — a 95% alatt; a PD9 szerinti kizárással F3V2 100.0% (30/30) (a kizárás a küszöb átlépését fordítja meg; a kizárás a futás után, a C két nem-egyezése alapján történt (PD9); az 1Móz 13:4 a besorolásban vitatható, a f21p/regi_arany_hibas.tsv-ben hibás) | vetítve: F3 42.2328 USD [37.782–47.0314], F3V2 42.0298 USD [37.9494–46.1468] (90%) | n.é. (PD6) | nem minősíthető (PD6) |
+| A+B | **bukott**: A∩B pontosság R1 85.2% (52/61), R2 98.4% (61/62), R3 91.8% (179/195), R4 91.7% (77/84) | nem mért (F4 nélkül nincs végső linkhalmaz; A∩B lefedettség tájékoztatásul: 65.3% (369/565)) | **bukott** (A∩B): 60.0% (3/5); a korábbi, összetett Strong nélküli definícióval is 60.0% (3/5) | nem vetítve (PD8) | nem mért (F4 nélkül; PD8) | nem felel meg |
+| A+B+C | nem mért (az F4 nem futott, PD8) | nem mért | nem mért | nem vetítve | nem mért | nem mért (PD8) |
 
-## (b) Mi bukott el
+## (b) Mi bukott el (csak a rögzített öt feltétel)
 
-- **Az A+B pontossága:** az A∩B (`magas`) linkek pontossága a 98%-os küszöb alatt: R1 85.2% (52/61), R2 98.4% (61/62), R3 91.8% (179/195), R4 91.7% (77/84) (forrás: meres_eredmeny.tsv, pontossag_lefedettseg).
-- **Az A és a B kapuhibája:** végleges kapuhiba A 41.0% (82/200), B 41.0% (82/200); első próbára A 76.0% (152/200), B 53.0% (106/200). A döntőbíróhoz menne (eltérő, csak egyik átment, egyik sem): 98.5% (197/200) (meres_eredmeny.tsv, kapuhiba és ab_osszeallitas).
-- **A C:** egymodelles összeállítás, a PD6 szerint nem kaphat megfelelt minősítést (a `magas`/`alacsony` szint egy modellnél nem értelmezhető). A rétegenkénti 98%-hoz mérten a mért összpontosság az arany v2-n F3: R1 94.6% (295/312), R2 94.2% (146/155), R3 91.9% (250/272), R4 92.9% (299/322); F3V2: R1 94.0% (299/318), R2 95.6% (153/160), R3 94.2% (259/275), R4 91.7% (309/337) (rétegenként l. (c)). A korrigált (Opus-besorolás, nem mérés) érték nem számít.
-- **Az A+B+C:** az F4 nem futott (PD8), tehát nem mérhető.
+- **A+B, `magas` pontosság ≥ 98% minden rétegben — bukott:** az A∩B linkek pontossága R1 85.2% (52/61), R2 98.4% (61/62), R3 91.8% (179/195), R4 91.7% (77/84) (forrás: meres_eredmeny.tsv, pontossag_lefedettseg).
+- **A+B, régi arany ≥ 95% — bukott:** az A∩B egyezése a halmaz-definícióval 60.0% (3/5), a korábbi (összetett Strong nélküli) definícióval 60.0% (3/5) (meres_eredmeny.tsv, regi_arany).
+- **A+B, lefedettség, költség, `alacsony` arány:** nem mért (F4 nélkül nincs végső linkhalmaz és bizonyossági szint; PD8).
+- **A, B, C (egymodelles):** a PD6 szerint nem minősíthető; a `magas`/`alacsony` szint egy modellnél nem értelmezhető. A C mért összpontossága a rétegenkénti 98%-hoz mérten az arany v2-n F3: R1 94.6% (295/312), R2 94.2% (146/155), R3 91.9% (250/272), R4 92.9% (299/322); F3V2: R1 94.0% (299/318), R2 95.6% (153/160), R3 94.2% (259/275), R4 91.7% (309/337). A korrigált (Opus-besorolás, nem mérés) érték nem számít.
+- **A+B+C:** nem mért (PD8, az F4 nem futott).
+
+**Megfigyelés (nem feltétel):** a kapuhiba nem tartozik a rögzített öt feltétel közé. Végleges kapuhiba A 41.0% (82/200), B 41.0% (82/200); első próbára A 76.0% (152/200), B 53.0% (106/200). A döntőbíróhoz menne (eltérő, csak egyik átment, egyik sem): 98.5% (197/200) (meres_eredmeny.tsv, kapuhiba és ab_osszeallitas). Emiatt az A+B összeállításban a döntőbíró (F4) nélkül az `alacsony`-arány feltétel nem mért.
+
+## (b2) Mérőszámok összeállításonként és rétegenként (P-K4; forrás: meres_eredmeny.tsv, arany v1)
+
+Bizonyossági szintek (G4): a `magas` az A∩B (az A+B egyező linkjei); a `kozepes` és az `alacsony` a döntőbíró (F4) döntésén alapul, F4 nélkül nem mért (PD8); egymodelles összeállításra egyik szint sem értelmezett (PD6).
+
+| összeállítás | mérőszám | R1 | R2 | R3 | R4 | Összes |
+|---|---|---|---|---|---|---|
+| A | arany_versek_kapun_atment | 65.0% (13/20) | 60.0% (6/10) | 80.0% (8/10) | 60.0% (12/20) | 65.0% (39/60) |
+| A | pontossag | 80.1% (129/161) | 92.8% (64/69) | 76.0% (190/250) | 85.3% (145/170) | 81.2% (528/650) |
+| A | lefedettseg | 75.4% (129/171) | 87.7% (64/73) | 83.7% (190/227) | 81.9% (145/177) | 81.5% (528/648) |
+| B | arany_versek_kapun_atment | 85.0% (17/20) | 100.0% (10/10) | 100.0% (10/10) | 75.0% (15/20) | 86.7% (52/60) |
+| B | pontossag | 58.0% (156/269) | 72.2% (140/194) | 56.9% (244/429) | 81.5% (202/248) | 65.1% (742/1140) |
+| B | lefedettseg | 59.8% (156/261) | 91.5% (140/153) | 91.7% (244/266) | 78.6% (202/257) | 79.2% (742/937) |
+| C | arany_versek_kapun_atment | 100.0% (20/20) | 100.0% (10/10) | 100.0% (10/10) | 100.0% (20/20) | 100.0% (60/60) |
+| C | pontossag | 94.2% (294/312) | 94.2% (146/155) | 91.9% (250/272) | 92.9% (299/322) | 93.2% (989/1061) |
+| C | lefedettseg | 92.7% (294/317) | 95.4% (146/153) | 94.0% (250/266) | 94.9% (299/315) | 94.1% (989/1051) |
+| A+B magas (A∩B) | arany_versek_kapun_atment | 55.0% (11/20) | 60.0% (6/10) | 80.0% (8/10) | 35.0% (7/20) | 53.3% (32/60) |
+| A+B magas (A∩B) | pontossag | 85.2% (52/61) | 98.4% (61/62) | 91.8% (179/195) | 91.7% (77/84) | 91.8% (369/402) |
+| A+B magas (A∩B) | lefedettseg | 35.6% (52/146) | 83.6% (61/73) | 78.9% (179/227) | 64.7% (77/119) | 65.3% (369/565) |
+| A∪B (döntőbíró előtti felső korlát) | arany_versek_kapun_atment | 55.0% (11/20) | 60.0% (6/10) | 80.0% (8/10) | 35.0% (7/20) | 53.3% (32/60) |
+| A∪B (döntőbíró előtti felső korlát) | pontossag | 55.6% (120/216) | 75.0% (72/96) | 53.6% (216/403) | 71.1% (101/142) | 59.4% (509/857) |
+| A∪B (döntőbíró előtti felső korlát) | lefedettseg | 82.2% (120/146) | 98.6% (72/73) | 95.2% (216/227) | 84.9% (101/119) | 90.1% (509/565) |
+| A–B | versek_mindketto_atment | 15.0% (15/100) | 68.0% (17/25) | 40.0% (10/25) | 46.0% (23/50) | 32.5% (65/200) |
+| A–B | link_egyezes (uniós arány) | 32.5% (93/286) | 59.8% (149/249) | 48.3% (219/453) | 67.5% (287/425) | 52.9% (748/1413) |
+| A–B | azonos_linkhalmazu_versek | 13.3% (2/15) | 0.0% (0/17) | 0.0% (0/10) | 4.3% (1/23) | 4.6% (3/65) |
+| A | régi arany: egyezes | 83.3% (20/24) | — (0/0) | — (0/0) | — (0/0) | 83.3% (20/24) |
+| A | régi arany: egyezes_hibas_kizarva | 90.9% (20/22) | — (0/0) | — (0/0) | — (0/0) | 90.9% (20/22) |
+| B | régi arany: egyezes | 66.7% (4/6) | — (0/0) | — (0/0) | — (0/0) | 66.7% (4/6) |
+| B | régi arany: egyezes_hibas_kizarva | 66.7% (4/6) | — (0/0) | — (0/0) | — (0/0) | 66.7% (4/6) |
+| C | régi arany: egyezes | 93.8% (30/32) | — (0/0) | — (0/0) | — (0/0) | 93.8% (30/32) |
+| C | régi arany: egyezes_hibas_kizarva | 100.0% (30/30) | — (0/0) | — (0/0) | — (0/0) | 100.0% (30/30) |
+| A+B magas (A∩B) | régi arany: egyezes | 60.0% (3/5) | — (0/0) | — (0/0) | — (0/0) | 60.0% (3/5) |
+| A+B magas (A∩B) | régi arany: egyezes_hibas_kizarva | 60.0% (3/5) | — (0/0) | — (0/0) | — (0/0) | 60.0% (3/5) |
+| F1 (A) | kapuhiba_elso_probara | 71.0% (71/100) | 76.0% (19/25) | 96.0% (24/25) | 76.0% (38/50) | 76.0% (152/200) |
+| F1 (A) | kapuhiba_vegleg | 42.0% (42/100) | 32.0% (8/25) | 40.0% (10/25) | 44.0% (22/50) | 41.0% (82/200) |
+| F2 (B) | kapuhiba_elso_probara | 80.0% (80/100) | 8.0% (2/25) | 52.0% (13/25) | 22.0% (11/50) | 53.0% (106/200) |
+| F2 (B) | kapuhiba_vegleg | 68.0% (68/100) | 0.0% (0/25) | 36.0% (9/25) | 10.0% (5/50) | 41.0% (82/200) |
+| F3 (C) | kapuhiba_elso_probara | 17.0% (17/100) | 0.0% (0/25) | 20.0% (5/25) | 16.0% (8/50) | 15.0% (30/200) |
+| F3 (C) | kapuhiba_vegleg | 1.0% (1/100) | 0.0% (0/25) | 0.0% (0/25) | 0.0% (0/50) | 0.5% (1/200) |
+| F5 (A (KJV nélkül)) | kapuhiba_elso_probara | 75.0% (75/100) | — | — | — | 75.0% (75/100) |
+| F5 (A (KJV nélkül)) | kapuhiba_vegleg | 31.0% (31/100) | — | — | — | 31.0% (31/100) |
+| F6 (B (KJV nélkül)) | kapuhiba_elso_probara | 23.0% (23/100) | — | — | — | 23.0% (23/100) |
+| F6 (B (KJV nélkül)) | kapuhiba_vegleg | 13.0% (13/100) | — | — | — | 13.0% (13/100) |
+| A+B | mindketto_atment_azonos_linkekkel | 2.0% (2/100) | 0.0% (0/25) | 0.0% (0/25) | 2.0% (1/50) | 1.5% (3/200) |
+| A+B | mindketto_atment_eltero_linkekkel | 13.0% (13/100) | 68.0% (17/25) | 40.0% (10/25) | 44.0% (22/50) | 31.0% (62/200) |
+| A+B | csak_A_atment | 43.0% (43/100) | 0.0% (0/25) | 20.0% (5/25) | 10.0% (5/50) | 26.5% (53/200) |
+| A+B | csak_B_atment | 17.0% (17/100) | 32.0% (8/25) | 24.0% (6/25) | 44.0% (22/50) | 26.5% (53/200) |
+| A+B | egyik_sem_atment | 25.0% (25/100) | 0.0% (0/25) | 16.0% (4/25) | 0.0% (0/50) | 14.5% (29/200) |
+| A+B | dontobirohoz_menne (eltero + csak egyik + egyik sem) | 98.0% (98/100) | 100.0% (25/25) | 100.0% (25/25) | 98.0% (49/50) | 98.5% (197/200) |
+| A+B | nem_egyezo_link_arany (1 − A∩B/A∪B) | 67.5% (193/286) | 40.2% (100/249) | 51.7% (234/453) | 32.5% (138/425) | 47.1% (665/1413) |
+| A+B | alacsony_arany | n.é. | n.é. | n.é. | n.é. | n.é. |
 
 ## (c) A mért számok
 
@@ -111,6 +171,8 @@ A lefedettség 94.20% → 97.05% különbsége (+2.85 pp) 90%-os intervalluma [+
 
 ## (d) Költségvetítés (P5, csak a C; forrás: koltseg_vetites.tsv)
 
+**Eltérés a brieftől:** a bootstrap egysége a 10 verses köteg, nem a vers (a brief P5.6 a verseken kéri; a token hívásonként, 10 versre ismert, versenként nem mérhető). Ez a DT21 f) nyitott tétele, **nincs jóváhagyva**.
+
 Módszer: illesztés tokenfajtánként az első próbálkozású hívásokon (bemenet = a + b·x + c·k; kimenet = a + b·x; x = eredeti + Károli-szavak, k = KJV-támpont szavai); a teljes Biblia valódi vershosszai (Karoli_1908, TAHOT/TAGNT); ár a cost mezőből; az újrakérés a pilot mért szorzójával; bootstrap a kötegek felett (1000); ellenőrzés a 200 versen.
 
 | réteg | könyvek | versek |
@@ -169,6 +231,7 @@ Az újrakérések cost-ja nem lineáris a tokenben (a megismételt előtag gyors
 - Összetett Strong a régi aranyban: 68 hármas „+”-os Stronggal; halmaz-definícióval mérve (PD9).
 - Az A és a B JSON-hibái: első próbára érvénytelen JSON A 50.0% (100/200), B 20.0% (40/200) (meres_eredmeny.tsv, kapuhiba_tipus).
 - A C gondolkodási tokenje a naplóban és a nyers usage-ban 0 (minimal effort); a nyers usage tárolása az F3V2-től.
+- Gondolkodási mód (eltérés a brief Keretek pontjától, amely mindhárom modellnél azonos beállítást kért): az A és a B kikapcsolva, a C-nél a gondolkodás kötelező, `minimal` szinten. Az F1–F6 napló `gondolkodas_token` = 0 értéke nem mérés (a token olvasása csak az F21.10-től él); a nyers usage az F3V2-től tárolt, abban is 0. A költség ettől helyes, mert a `cost` mezőből jön.
 - A prompt-szabályok túlkötést okozhatnak: az F3V2 több linket ad (1090 link az F3 1061-ével szemben, arany v2).
 
 ### A #22 opcióinak következményei (tények, ajánlás nélkül)

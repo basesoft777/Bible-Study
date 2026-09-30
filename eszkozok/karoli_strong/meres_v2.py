@@ -173,7 +173,8 @@ def md_ir(ki, ut=JELENTES_UT):
            '<!-- GENERÁLT: eszkozok/karoli_strong/meres_v2.py (meres.py --v2) | scope=f21p F3, F3V2 | '
            'forras=f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, f21p/arany_opus.jsonl, '
            'f21p/arany_opus_v2.jsonl (befagyasztva, sha256 ellenőrizve), f21p/meres_kizaras.tsv, '
-           'f21p/regi_arany_hibas.tsv, f21p/futasnaplo.tsv | kézzel szerkeszteni tilos -->', '',
+           'f21p/regi_arany_hibas.tsv, f21p/minta.tsv, f21p/futasnaplo.tsv | ts=%s (a generálás ideje; ismételt futáskor csak ez a sor tér el) | '
+           'kézzel szerkeszteni tilos -->' % tokenek.generalas_ts(), '',
            'Kizárólag szkriptkimenet, a meres.py definícióival. **Egymodelles összeállítás (a C egyedül) nem '
            'kaphat „megfelelt” minősítést (PD6):** a táblák a mért számot és a rögzített küszöbhöz való '
            'viszonyát adják, minősítést nem. A `magas` pontosság (≥ 98%) egymodelles összeállításra nem '
@@ -191,12 +192,16 @@ def md_ir(ki, ut=JELENTES_UT):
         ki_s.append('| %s | lefedettség vs küszöb 95%% | %s |' % (ret, ' | '.join(_viszony(x['talalat'], x['arany'], KUSZOB_LEFEDETTSEG) for x in p)))
     ki_s.append('')
     ki_s += ['## b) Régi arany egyezés (halmaz-definíció; kapun átment versek, 200 verses minta)', '',
+             'A PD9 szerinti kizárás (f21p/regi_arany_hibas.tsv, 2 hármas) a futás után, a C két nem-egyezése alapján '
+             'történt, és a C-nél a küszöb átlépését fordítja meg; ezért mindkét érték és mindkét küszöb-viszony látszik. '
+             'Az 1Móz 13:4 a besorolásban vitatható, a hibas.tsv-ben hibás.', '',
              '| réteg | mérőszám | ' + ' | '.join(n for n, _ in FUTAS_OSZLOPOK) + ' |', '|---|---|' + '---|' * len(FUTAS_OSZLOPOK)]
     for ret in RETEGEK:
         r = [ki['regi'][(f, ret)] for _, f in FUTAS_OSZLOPOK]
         ki_s.append('| %s | egyezés, kizárás nélkül | %s |' % (ret, ' | '.join(_pct(x['egyezik'], x['hb'], True) for x in r)))
         ki_s.append('| %s | egyezés, a hibás hármasok nélkül | %s |' % (ret, ' | '.join(_pct(x['egyezik_k'], x['hb_k'], True) for x in r)))
-        ki_s.append('| %s | (hibás nélkül) vs küszöb 95%% | %s |' % (ret, ' | '.join(_viszony(x['egyezik_k'], x['hb_k'], KUSZOB_REGI) for x in r)))
+        ki_s.append('| %s | (kizárás nélkül) vs küszöb 95%% | %s |' % (ret, ' | '.join(_viszony(x['egyezik'], x['hb'], KUSZOB_REGI) for x in r)))
+        ki_s.append('| %s | (hibás nélkül, PD9 szerinti kizárással) vs küszöb 95%% | %s |' % (ret, ' | '.join(_viszony(x['egyezik_k'], x['hb_k'], KUSZOB_REGI) for x in r)))
     ki_s.append('')
     ki_s += ['## c) Kapuhiba-arány', '',
              '| réteg | mérőszám | ' + ' | '.join(n for n, _ in FUTAS_OSZLOPOK) + ' |', '|---|---|' + '---|' * len(FUTAS_OSZLOPOK)]
@@ -232,7 +237,10 @@ def md_ir(ki, ut=JELENTES_UT):
 
 
 def tsv_ir(ki, ut=EREDMENY_UT):
-    sorok = ['# GENERÁLT: eszkozok/karoli_strong/meres_v2.py | scope=f21p F3, F3V2 | kézzel szerkeszteni tilos',
+    sorok = ['# GENERÁLT: eszkozok/karoli_strong/meres_v2.py | scope=f21p F3, F3V2 (arany v1/v2) | '
+             'forras=f21p/valaszok/F3.jsonl, f21p/valaszok/F3V2.jsonl, f21p/arany_opus.jsonl, f21p/arany_opus_v2.jsonl, '
+             'f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, f21p/minta.tsv, f21p/futasnaplo.tsv | ts=%s (a generálás ideje; ismételt futáskor csak ez a sor tér el) | '
+             'kézzel szerkeszteni tilos' % tokenek.generalas_ts(),
              '\t'.join(['szakasz', 'osszeallitas', 'reteg', 'mero', 'szamlalo', 'nevezo'])]
     for (n, ret), x in ki['pont'].items():
         sorok += ['\t'.join(['pontossag_lefedettseg', n, ret, 'pontossag', str(x['talalat']), str(x['modell'])]),

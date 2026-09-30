@@ -1,6 +1,6 @@
 # F21P_arany_v2_diff.md — az Opus-arany v1 -> v2 változásai
 
-<!-- GENERÁLT: eszkozok/karoli_strong/c_diff.py (az arany_v2.JAVITASOK és a két arany alapján) | scope=f21p/arany_opus.jsonl -> f21p/arany_opus_v2.jsonl | kézzel szerkeszteni tilos -->
+<!-- GENERÁLT: eszkozok/karoli_strong/c_diff.py (az arany_v2.JAVITASOK és a két arany alapján) | scope=f21p/arany_opus.jsonl -> f21p/arany_opus_v2.jsonl (60 vers) | forras=f21p/arany_opus.jsonl, f21p/arany_opus_v2.jsonl, f21p/arany_opus_v2.sha256, eszkozok/karoli_strong/arany_v2.py (JAVITASOK), f21p/valaszok/F3.jsonl, f21p/c_diff_besorolas.tsv | ts=2026-09-30T13:12:52+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
 
 A v2 a v1 másolata, csak a f21p/arany_opus_jegyzetek.md 2. szakaszának konvencióival ütköző versek javultak (felhasználói döntés, F21.12). A v1 érintetlen. **A v2 jóváhagyásig nem fagy be.** A konvenció-azonosítás és az indok kézi ítélet (Opus).
 
