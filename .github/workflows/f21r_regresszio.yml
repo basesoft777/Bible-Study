@@ -1,0 +1,132 @@
+# F21 regresszio (P3c) -- a Karoli-Strong meropilot regresszios futtatasa: F3V3 (C, prompt_v3) es SONNETV3 (Sonnet 5.5, prompt_v3),
+# OpenRouter, GitHub Actionsben. A koltsegvetesi kapu es a workflow vaza a claude/f21-regresszio agrol atveve (b2f2da8), a futtatohoz igazitva.
+#
+# ALLAPOT: ELOKESZITVE, NEM INDITOTT. A futas inditasa kulon jovahagyas targya (a szarazbecslesi es az arany v3 megallas utan). A workflow kizarolag az f21p/futtatas_v3.txt valtozasara
+# indul; ez a fajl a repoban NEM letezik, a sablon az f21p/futtatas_v3.txt.minta (masik utvonal, nem indit).
+#
+# INDITAS. Kizarolag push-ra, a claude/f21-regresszio-meres agon, ha az f21p/futtatas_v3.txt valtozik (a
+# trigger-push az orkesztratore). Nincs workflow_dispatch. A workflow sajat commitja nem nyul az
+# f21p/futtatas_v3.txt-hez, es a GITHUB_TOKEN-nel vegzett push nem indit uj futast.
+#
+# VEZERLES (f21p/futtatas_v3.txt, a futtat.py --vezerlo formatuma). KOLTSEGVETESI KAPU: a workflow
+# elinditas elott ellenorzi, hogy a fajlban
+#     futasok=SONNETV3 | F3V3 | F3V3,SONNETV3   (mas futas ebbol a workflowbol nem indulhat)
+#     koteg_max=1|mind      (1: kalibralo trigger, 10 vers; mind: a 200 vers)
+#     plafon_usd=<szam>     (KOTELEZO ebben a workflowban; a futtato onmagaban opcionalisnak veszi es
+#                            3.0-t venne, ez itt hiba), 0 < x <= 3.0, kumulativ (futasnaplo.tsv osszeg)
+# szerepel. A futtato a plafont minden hivas elott a naplo mert osszegehez viszonyitja (kilepesi kod 3 a
+# plafonnal; ujrainditas: uj trigger). Indulaskor sha256-ellenorzes (prompt_v1, v2, biro_v2, v3, arany v2).
+#
+# JOGOSULTSAG ES ISRAS. contents: write csak a 'futtatas' jobnal, kizarolag a meresi kimenet
+# visszacommitolasahoz; a push csak a claude/f21-regresszio-meres agra mehet (a job `if`-je es a push-lepes is
+# ellenorzi a github.ref-et; explicit refspec, main-re soha), es csak az f21p/valaszok es az
+# f21p/futasnaplo.tsv erintett. Az OPENROUTER_API_KEY csak a futtato lepes env-jeben szerepel.
+# A FELADATOK.md generalt blokkjahoz a workflow nem nyul.
+
+name: f21r_regresszio
+
+on:
+  push:
+    branches: [claude/f21-regresszio-meres]
+    paths:
+      - 'f21p/futtatas_v3.txt'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: f21p-pilot
+  cancel-in-progress: false
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+
+jobs:
+  futtatas:
+    if: github.ref == 'refs/heads/claude/f21-regresszio-meres'
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Python telepitese
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fuggosegek
+        run: pip install requests
+
+      - name: Koltsegvetesi kapu (a vezerlofajl ellenorzese, halozat nelkul)
+        run: |
+          set -e
+          f=f21p/futtatas_v3.txt
+          n=$(grep -v -E '^[[:space:]]*(#|$)' "$f" | wc -l)
+          if [ "$n" -ne 3 ]; then echo "a vezerlofajl pontosan harom kulcs=ertek sort tartalmazhat (futasok, koteg_max, plafon_usd)"; exit 1; fi
+          grep -q -E '^futasok=(F3V3|SONNETV3|F3V3,SONNETV3|SONNETV3,F3V3)[[:space:]]*$' "$f" || { echo "futasok=SONNETV3, F3V3 vagy F3V3,SONNETV3 kell (mas futas ebbol a workflowbol nem indulhat)"; exit 1; }
+          grep -q -E '^koteg_max=([1-9][0-9]*|mind)[[:space:]]*$' "$f" || { echo "koteg_max=<pozitiv egesz|mind> kell"; exit 1; }
+          grep -q -E '^plafon_usd=[0-9]+(\.[0-9]+)?[[:space:]]*$' "$f" || { echo "plafon_usd=<szam> kotelezo ebben a workflowban"; exit 1; }
+          p=$(grep -E '^plafon_usd=' "$f" | cut -d= -f2 | tr -d '[:space:]')
+          python -c "import sys; p=float(sys.argv[1]); sys.exit(0 if 0 < p <= 3.0 else 1)" "$p" || { echo "a plafon_usd 0 es 3.0 kozott kell legyen"; exit 1; }
+          echo "koltsegvetesi kapu rendben: plafon_usd=$p (kumulativ)"
+
+      - name: Onteszt (halozat es kulcs nelkul)
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python eszkozok/karoli_strong/kapu.py --onteszt
+          python eszkozok/karoli_strong/futtat.py --onteszt
+
+      - name: Szaraz becsles (halozat nelkul)
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python eszkozok/karoli_strong/futtat.py --szaraz
+
+      - name: Futtatas az f21p/futtatas_v3.txt szerint (OpenRouter)
+        id: futtat
+        env:
+          PYTHONIOENCODING: utf-8
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python eszkozok/karoli_strong/futtat.py --vezerlo f21p/futtatas_v3.txt
+
+      - name: Kulcs-ellenorzes (hibat ad, ha kulcsszeru karakterlanc van)
+        id: kulcs_grep
+        if: always()
+        run: |
+          if [ -e f21p/valaszok ] || [ -e f21p/futasnaplo.tsv ]; then
+            if grep -rIlE 'sk-or-[A-Za-z0-9_-]{16,}|sk-[A-Za-z0-9]{32,}|Bearer [A-Za-z0-9_-]{20,}' f21p/valaszok f21p/futasnaplo.tsv eszkozok/karoli_strong; then
+              echo "kulcs-szeru minta a kimenetben"; exit 1
+            fi
+          fi
+          echo "kulcs-grep tiszta"
+
+      - name: Kimenet commitolasa es pusholasa (csak f21p/, csak a claude/f21-regresszio-meres agra)
+        if: always() && steps.kulcs_grep.conclusion == 'success'
+        run: |
+          if [ "$GITHUB_REF" != "refs/heads/claude/f21-regresszio-meres" ]; then
+            echo "nem a claude/f21-regresszio-meres agon futunk: $GITHUB_REF"; exit 1
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for ut in f21p/valaszok f21p/futasnaplo.tsv; do
+            if [ -e "$ut" ]; then git add -- "$ut"; fi
+          done
+          if git diff --cached --name-only | grep -v '^f21p/'; then
+            echo "az f21p/ alatti kimeneten kivuli valtozas van a staged allapotban"; exit 1
+          fi
+          if git diff --name-only | grep .; then
+            echo "nem staged, kovetett fajl valtozott (a kimenetnek csak az f21p/valaszok es f21p/futasnaplo.tsv lehet)"; exit 1
+          fi
+          if git diff --cached --quiet; then
+            echo "nincs valtozas"; exit 0
+          fi
+          printf 'F21.43: a regresszios futas kimenete (GitHub Actions, futás %s)\n\nCo-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\n' "$GITHUB_RUN_ID" > "$RUNNER_TEMP/commit_uzenet.txt"
+          git -c i18n.commitEncoding=UTF-8 commit -F "$RUNNER_TEMP/commit_uzenet.txt"
+          git fetch origin refs/heads/claude/f21-regresszio-meres
+          git rebase FETCH_HEAD
+          git push origin HEAD:refs/heads/claude/f21-regresszio-meres

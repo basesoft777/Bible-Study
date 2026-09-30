@@ -1,0 +1,18 @@
+# F21 regresszio (P3c) - SABLON, NEM INDIT (a workflow csak az f21p/futtatas_v3.txt valtozasara indul).
+# Az inditast az orkesztrator vegzi a szarazbecslesi es az arany v3 megallas jovahagyasa utan: a fajl
+# atnevezese f21p/futtatas_v3.txt-re (vagy uj fajl ugyanezzel a tartalommal), commit es push a
+# claude/f21-regresszio-meres agra. A harom kulcs kotelezo (a koltsegvetesi kapu ellenorzi).
+# Felhasznaloi dontes: plafon_usd=2.90 (kumulativ napla-osszeg), kemeny plafon 3 USD, modell
+# anthropic/claude-sonnet-5.5, gondolkodas kikapcsolva, elobb kalibralo futas (koteg_max=1).
+#
+# 1. lepes: kalibralo trigger, egy koteg (10 vers) a Sonnetbol:
+#   futasok=SONNETV3
+#   koteg_max=1
+#   plafon_usd=2.90
+# 2. lepes (a kalibralas utan, jovahagyassal): a C (F3V3) es a Sonnet 200 verse; a kesz koteg nem hiv ujra:
+#   futasok=F3V3,SONNETV3
+#   koteg_max=mind
+#   plafon_usd=2.90
+futasok=SONNETV3
+koteg_max=1
+plafon_usd=2.90
