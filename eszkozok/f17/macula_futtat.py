@@ -7,7 +7,7 @@ Bemenet (ket helyi klon, --heber / --gorog):
   Clear-Bible/macula-hebrew  WLC/lowfat/*-lowfat.xml   (CC BY 4.0, Biblica)
   Clear-Bible/macula-greek   Nestle1904/tsv, SBLGNT/tsv (CC BY 4.0, Biblica)
 Kimenet:
-  konkordancia/Macula_heber.tsv   morfema-szintu sorok, Strong + Karoli-kulcs (KK)
+  konkordancia/Macula_heber_<Konyv>.tsv   (39 fajl, F17.9) morfema-szintu sorok, Strong + Karoli-kulcs (KK)
   konkordancia/Macula_gorog.tsv   szo-szintu sorok (N1904 + SBLGNT), Strong + Karoli-kulcs
   naplok/F17_illesztetlen.tsv     az illesztetlen versek / Strong-szamok listaja (javaslat)
   naplok/F17_87_hely.tsv          a #8 ellenorzo szama: a 87 fuggo hely LXX-megfeleloje
@@ -125,8 +125,8 @@ def fut(args):
     fejl = M.fejlec_sorok(M.HEBER_URL, 'commit ' + hsha, 'CC BY 4.0 (Biblica, Inc); l. naplok/F17_import_naplo.md',
                           PARANCS, 'sorok: morfema-szint (lowfat <w>); ref = Macula (MT/WLC) szamozas; '
                           'karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva')
-    M.tsv_ir(os.path.join(K.KONK, 'Macula_heber.tsv'), fejl, M.HEBER_OSZLOP, heber)
-    stat['heber'] = {'sorok': len(heber), 'lowfat_w': len(lista), 'commit': hsha, 'allapot': dict(allapot_db), 'allapot_csak_kk': dict(allapot_kk_db),
+    heber_fajlok = M.tsv_ir_konyvenkent(K.KONK, fejl, M.HEBER_OSZLOP, heber)
+    stat['heber'] = {'sorok': len(heber), 'fajlok': dict(heber_fajlok), 'lowfat_w': len(lista), 'commit': hsha, 'allapot': dict(allapot_db), 'allapot_csak_kk': dict(allapot_kk_db),
                      'strong_illesztes': dict(sill_db), 'macula_versek': len(versek_macula),
                      'macula_versek_karolival': sum(1 for k in versek_macula if inv.get(k)),
                      'karoli_versek_kk_szerint': len(ki_kk), 'karoli_versek_macula_nelkul': len(ki_kk) - len(fedett_karoli),

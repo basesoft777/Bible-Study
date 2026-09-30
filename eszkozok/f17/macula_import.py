@@ -7,7 +7,7 @@ Bemenet (ket helyi klon, --heber / --gorog):
   Clear-Bible/macula-hebrew  WLC/lowfat/*-lowfat.xml   (CC BY 4.0, Biblica)
   Clear-Bible/macula-greek   Nestle1904/tsv, SBLGNT/tsv (CC BY 4.0, Biblica)
 Kimenet:
-  konkordancia/Macula_heber.tsv   morfema-szintu sorok, Strong + Karoli-kulcs (KK)
+  konkordancia/Macula_heber_<Konyv>.tsv   (39 fajl, F17.9) morfema-szintu sorok, Strong + Karoli-kulcs (KK)
   konkordancia/Macula_gorog.tsv   szo-szintu sorok (N1904 + SBLGNT), Strong + Karoli-kulcs
   naplok/F17_illesztetlen.tsv     az illesztetlen sorok / versek / Strong-szamok listaja
   naplok/F17_import_naplo.md      forras, licenc, verzio, sorszamok, a #8 ellenorzo szama
@@ -207,3 +207,42 @@ def fejlec_sorok(url, verzio, licenc, parancs, oszlop_megj):
             'proveniencia: scope=teljes import (F17, FELADATOK #17) | forras=%s | ts=%s' % (url, ma()),
             'futtatasi parancs: %s' % parancs,
             oszlop_megj]
+
+
+# A héber tábla könyvenkénti bontása (F17.9): a fájlnév a LXX_kivonat_*.tsv névadását követi
+# (ASCII magyar könyvnév), a sorrend a Macula-kánon (= USFM_OSZ) sorrendje.
+HEBER_KONYV_FAJL = {
+    'GEN': 'Genezis', 'EXO': 'Exodus', 'LEV': 'Leviticus', 'NUM': 'Numeri', 'DEU': 'Deuteronomium',
+    'JOS': 'Jozsue', 'JDG': 'Birak', 'RUT': 'Ruth', '1SA': 'Samuel_1', '2SA': 'Samuel_2',
+    '1KI': 'Kiralyok_1', '2KI': 'Kiralyok_2', '1CH': 'Kronikak_1', '2CH': 'Kronikak_2',
+    'EZR': 'Ezsdras', 'NEH': 'Nehemias', 'EST': 'Eszter', 'JOB': 'Job', 'PSA': 'Zsoltarok',
+    'PRO': 'Peldabeszedek', 'ECC': 'Predikator', 'SNG': 'Enekek_Eneke', 'ISA': 'Ezsaias',
+    'JER': 'Jeremias', 'LAM': 'Siralmak', 'EZK': 'Ezekiel', 'DAN': 'Daniel', 'HOS': 'Hoseas',
+    'JOL': 'Joel', 'AMO': 'Amos', 'OBA': 'Abdias', 'JON': 'Jonas', 'MIC': 'Mikeas', 'NAM': 'Nahum',
+    'HAB': 'Habakuk', 'ZEP': 'Sofonias', 'HAG': 'Aggeus', 'ZEC': 'Zakarias', 'MAL': 'Malakias',
+}
+
+
+def konyv_fejlec(fejlec, kod, db):
+    """A közös fejléc + egy könyv-sor (kód, fájlnév-tag, sorszám); a bontó és a futtató is ezt használja."""
+    return list(fejlec) + ['konyv=%s (%s) | sorok=%d | a Macula_heber tabla konyvenkenti bontasa (F17.9); '
+                           'a konyvfajlok sorrendben osszefuzve a teljes tablat adjak' % (kod, HEBER_KONYV_FAJL[kod], db)]
+
+
+def tsv_ir_konyvenkent(konyvtar, fejlec, oszlopok, sorok):
+    """Könyvenkénti kiírás: konkordancia/Macula_heber_<Konyv>.tsv; a sor 2. oszlopa a ref ('GEN 1:1!1').
+    Visszaad: [(fájlnév, sorszám)] a Macula-sorrendben."""
+    csoportok = []
+    for s in sorok:
+        kod = s[1].split(' ')[0]
+        if not csoportok or csoportok[-1][0] != kod:
+            if any(c[0] == kod for c in csoportok):
+                raise ValueError('a konyv sorai nem osszefuggoek: %s' % kod)
+            csoportok.append((kod, []))
+        csoportok[-1][1].append(s)
+    ki = []
+    for kod, ss in csoportok:
+        nev = 'Macula_heber_%s.tsv' % HEBER_KONYV_FAJL[kod]
+        tsv_ir(os.path.join(konyvtar, nev), konyv_fejlec(fejlec, kod, len(ss)), oszlopok, ss)
+        ki.append((nev, len(ss)))
+    return ki
