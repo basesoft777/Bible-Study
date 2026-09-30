@@ -3,7 +3,7 @@
 # proveniencia: scope=teljes import (F17, FELADATOK #17) | forras=https://github.com/Clear-Bible/macula-hebrew | ts=2026-09-30
 # futtatasi parancs: python eszkozok/f17/macula_futtat.py --heber <klon> --gorog <klon>
 # sorok: morfema-szint (lowfat <w>); ref = Macula (MT/WLC) szamozas; karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva
-# konyv=SNG (Enekek_Eneke) | sorok=2022 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok sorrendben osszefuzve a teljes tablat adjak
+# konyv=SNG (Enekek_Eneke) | sorok=2022 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok a Macula-kanon sorrendjeben (HEBER_KONYV_FAJL, eszkozok/f17/macula_import.py) osszefuzve, a fejlecek nelkul a teljes tabla torzset adjak
 xml_id	ref	karoli	kk_mod	allapot	szo	lemma	strong	strong_x	strong_illesztes	morf	szofaj	gloss	gorog_lxx	gorog_strong
 o220010010011	SNG 1:1!1	Én 1:1	identitas	rendben	שִׁ֥יר	שִׁיר	H7892	7892	igen	Ncbsc	noun	the.song	ἆισμα	
 o220010010021	SNG 1:1!2	Én 1:1	identitas	javaslat:strong_funkcio_kod	הַ	הַ		1886a	javaslat:funkcio_kod	Td	particle	of		

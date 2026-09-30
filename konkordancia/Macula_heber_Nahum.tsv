@@ -3,7 +3,7 @@
 # proveniencia: scope=teljes import (F17, FELADATOK #17) | forras=https://github.com/Clear-Bible/macula-hebrew | ts=2026-09-30
 # futtatasi parancs: python eszkozok/f17/macula_futtat.py --heber <klon> --gorog <klon>
 # sorok: morfema-szint (lowfat <w>); ref = Macula (MT/WLC) szamozas; karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva
-# konyv=NAM (Nahum) | sorok=849 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok sorrendben osszefuzve a teljes tablat adjak
+# konyv=NAM (Nahum) | sorok=849 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok a Macula-kanon sorrendjeben (HEBER_KONYV_FAJL, eszkozok/f17/macula_import.py) osszefuzve, a fejlecek nelkul a teljes tabla torzset adjak
 xml_id	ref	karoli	kk_mod	allapot	szo	lemma	strong	strong_x	strong_illesztes	morf	szofaj	gloss	gorog_lxx	gorog_strong
 o340010010011	NAM 1:1!1	Náh 1:1	identitas	javaslat:strong_betu_alap	מַשָּׂ֖א	מַשָּׂא	H4853	4853a	javaslat:betu_alap	Ncmsc	noun	the.oracle	λῆμμα	
 o340010010021	NAM 1:1!2	Náh 1:1	identitas	rendben	נִֽינְוֵ֑ה	נִינְוֵה	H5210	5210	igen	Np	noun	of.Nineveh	νινευη	

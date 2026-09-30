@@ -3,7 +3,7 @@
 # proveniencia: scope=teljes import (F17, FELADATOK #17) | forras=https://github.com/Clear-Bible/macula-hebrew | ts=2026-09-30
 # futtatasi parancs: python eszkozok/f17/macula_futtat.py --heber <klon> --gorog <klon>
 # sorok: morfema-szint (lowfat <w>); ref = Macula (MT/WLC) szamozas; karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva
-# konyv=PSA (Zsoltarok) | sorok=30299 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok sorrendben osszefuzve a teljes tablat adjak
+# konyv=PSA (Zsoltarok) | sorok=30299 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok a Macula-kanon sorrendjeben (HEBER_KONYV_FAJL, eszkozok/f17/macula_import.py) osszefuzve, a fejlecek nelkul a teljes tabla torzset adjak
 xml_id	ref	karoli	kk_mod	allapot	szo	lemma	strong	strong_x	strong_illesztes	morf	szofaj	gloss	gorog_lxx	gorog_strong
 o190010010011	PSA 1:1!1	Zsolt 1:1	identitas	javaslat:terkep_egyik_sem_identitas|strong_betu_alap	אַ֥שְֽׁרֵי	אֶשֶׁר	H0835	0835a	javaslat:betu_alap	Ncmpa	noun	how.blessed!	μακάριος	G3107
 o190010010021	PSA 1:1!2	Zsolt 1:1	identitas	javaslat:terkep_egyik_sem_identitas|strong_funkcio_kod	הָ	הַ		1886a	javaslat:funkcio_kod	Td	particle	[is].the		

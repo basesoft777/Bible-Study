@@ -3,7 +3,7 @@
 # proveniencia: scope=teljes import (F17, FELADATOK #17) | forras=https://github.com/Clear-Bible/macula-hebrew | ts=2026-09-30
 # futtatasi parancs: python eszkozok/f17/macula_futtat.py --heber <klon> --gorog <klon>
 # sorok: morfema-szint (lowfat <w>); ref = Macula (MT/WLC) szamozas; karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva
-# konyv=JER (Jeremias) | sorok=33016 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok sorrendben osszefuzve a teljes tablat adjak
+# konyv=JER (Jeremias) | sorok=33016 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok a Macula-kanon sorrendjeben (HEBER_KONYV_FAJL, eszkozok/f17/macula_import.py) osszefuzve, a fejlecek nelkul a teljes tabla torzset adjak
 xml_id	ref	karoli	kk_mod	allapot	szo	lemma	strong	strong_x	strong_illesztes	morf	szofaj	gloss	gorog_lxx	gorog_strong
 o240010010011	JER 1:1!1	Jer 1:1	identitas	rendben	דִּבְרֵ֥י	דָּבָר	H1697	1697	igen	Ncmpc	noun	the.words	ῥῆμα	G4487
 o240010010021	JER 1:1!2	Jer 1:1	identitas	javaslat:strong_betu_alap	יִרְמְיָ֖הוּ	יִרְמְיָהוּ	H3414	3414a	javaslat:betu_alap	Np	noun	of.Jeremiah	ιερεμιαν	G2408

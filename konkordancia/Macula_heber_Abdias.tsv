@@ -3,7 +3,7 @@
 # proveniencia: scope=teljes import (F17, FELADATOK #17) | forras=https://github.com/Clear-Bible/macula-hebrew | ts=2026-09-30
 # futtatasi parancs: python eszkozok/f17/macula_futtat.py --heber <klon> --gorog <klon>
 # sorok: morfema-szint (lowfat <w>); ref = Macula (MT/WLC) szamozas; karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva
-# konyv=OBA (Abdias) | sorok=440 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok sorrendben osszefuzve a teljes tablat adjak
+# konyv=OBA (Abdias) | sorok=440 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok a Macula-kanon sorrendjeben (HEBER_KONYV_FAJL, eszkozok/f17/macula_import.py) osszefuzve, a fejlecek nelkul a teljes tabla torzset adjak
 xml_id	ref	karoli	kk_mod	allapot	szo	lemma	strong	strong_x	strong_illesztes	morf	szofaj	gloss	gorog_lxx	gorog_strong
 o310010010011	OBA 1:1!1	Abd 1:1	identitas	rendben	חֲז֖וֹן	חָזוֹן	H2377	2377	igen	Ncmsc	noun	the.vision	ὅρασις	G3706
 o310010010021	OBA 1:1!2	Abd 1:1	identitas	rendben	עֹֽבַדְיָ֑ה	עֹבַדְיָה	H5662	5662	igen	Np	noun	of.Obadiah	αβδιου	

@@ -234,3 +234,4 @@ A fájl `allapot` oszlopa a gépi keresés kimenete (nem döntés); a `kk_mod` `
 - **A régi fájl törlése (F17.11):** a bontás és az ellenőrzés után a `konkordancia/Macula_heber.tsv` (65 051 446 bájt, 475 911 adatsor) törölve, külön commitban. Ez nem a meglévő
   fájlok sorcsökkenése, hanem az F17 ágán létrehozott (a `main`-en nem létező) fájl cseréje; a sorok mind megvannak a 39 könyvfájlban (bájtazonos törzs, l. fent).
   A régi fájl a git-előzményben elérhető: `git show f15fc91:konkordancia/Macula_heber.tsv`.
+- **Összefűzési sorrend (F17.13):** a könyvfájlok a Macula-kánon sorrendjében (`HEBER_KONYV_FAJL`: Genezis, Exodus, … Malakias) fűzhetők össze a régi tábla törzsévé; ezt a sort minden könyvfájl fejléce is kimondja (a fejlécek újragenerálva, az adatsorok összege 475 911, a törzs bájtra azonos: 65 050 734 bájt). A `macula_bont.py` egyszeri, archív eszköz: a `--be` kötelező, a régi fájl a `git show f15fc91:konkordancia/Macula_heber.tsv` paranccsal nyerhető ki.

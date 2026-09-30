@@ -3,7 +3,7 @@
 # proveniencia: scope=teljes import (F17, FELADATOK #17) | forras=https://github.com/Clear-Bible/macula-hebrew | ts=2026-09-30
 # futtatasi parancs: python eszkozok/f17/macula_futtat.py --heber <klon> --gorog <klon>
 # sorok: morfema-szint (lowfat <w>); ref = Macula (MT/WLC) szamozas; karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva
-# konyv=JON (Jonas) | sorok=1089 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok sorrendben osszefuzve a teljes tablat adjak
+# konyv=JON (Jonas) | sorok=1089 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok a Macula-kanon sorrendjeben (HEBER_KONYV_FAJL, eszkozok/f17/macula_import.py) osszefuzve, a fejlecek nelkul a teljes tabla torzset adjak
 xml_id	ref	karoli	kk_mod	allapot	szo	lemma	strong	strong_x	strong_illesztes	morf	szofaj	gloss	gorog_lxx	gorog_strong
 o320010010011	JON 1:1!1	Jón 1:1	kk_mt	javaslat:strong_funkcio_kod	וַֽ	וְ		2050b	javaslat:funkcio_kod	C	conjunction	and	καὶ	G2532
 o320010010012	JON 1:1!1	Jón 1:1	kk_mt	rendben	יְהִי֙	הָיָה	H1961	1961	igen	Vqw3ms	verb	it.came	ἐγένετο	G1096

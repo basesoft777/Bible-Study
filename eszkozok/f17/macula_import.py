@@ -226,7 +226,7 @@ HEBER_KONYV_FAJL = {
 def konyv_fejlec(fejlec, kod, db):
     """A közös fejléc + egy könyv-sor (kód, fájlnév-tag, sorszám); a bontó és a futtató is ezt használja."""
     return list(fejlec) + ['konyv=%s (%s) | sorok=%d | a Macula_heber tabla konyvenkenti bontasa (F17.9); '
-                           'a konyvfajlok sorrendben osszefuzve a teljes tablat adjak' % (kod, HEBER_KONYV_FAJL[kod], db)]
+                           'a konyvfajlok a Macula-kanon sorrendjeben (HEBER_KONYV_FAJL, eszkozok/f17/macula_import.py) osszefuzve, a fejlecek nelkul a teljes tabla torzset adjak' % (kod, HEBER_KONYV_FAJL[kod], db)]
 
 
 def tsv_ir_konyvenkent(konyvtar, fejlec, oszlopok, sorok):

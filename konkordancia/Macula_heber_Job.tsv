@@ -3,7 +3,7 @@
 # proveniencia: scope=teljes import (F17, FELADATOK #17) | forras=https://github.com/Clear-Bible/macula-hebrew | ts=2026-09-30
 # futtatasi parancs: python eszkozok/f17/macula_futtat.py --heber <klon> --gorog <klon>
 # sorok: morfema-szint (lowfat <w>); ref = Macula (MT/WLC) szamozas; karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva
-# konyv=JOB (Job) | sorok=12660 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok sorrendben osszefuzve a teljes tablat adjak
+# konyv=JOB (Job) | sorok=12660 | a Macula_heber tabla konyvenkenti bontasa (F17.9); a konyvfajlok a Macula-kanon sorrendjeben (HEBER_KONYV_FAJL, eszkozok/f17/macula_import.py) osszefuzve, a fejlecek nelkul a teljes tabla torzset adjak
 xml_id	ref	karoli	kk_mod	allapot	szo	lemma	strong	strong_x	strong_illesztes	morf	szofaj	gloss	gorog_lxx	gorog_strong
 o180010010011	JOB 1:1!1	Jób 1:1	identitas	rendben	אִ֛ישׁ	אִישׁ	H0376	0376	igen	Ncmsa	noun	a.man	ἄνθρωπός	G0444
 o180010010021	JOB 1:1!2	Jób 1:1	identitas	rendben	הָיָ֥ה	הָיָה	H1961	1961	igen	Vqp3ms	verb	he.was	ἦν	G2258
