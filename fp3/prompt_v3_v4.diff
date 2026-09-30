@@ -1,0 +1,36 @@
+--- prompt_v3.md
++++ prompt_v4.md
+@@ -59,6 +59,33 @@
+   változatlanul maradnak, a v2 szabályai szerint.
+ - A terminológia kifejezéseit kötelezően használd.
+ 
++## Kiegészítő szabályok (v4)
++
++1. Az idézőjeleket és az idézett szerzőt tartsd meg. Ha a forrás mást idéz (pl.
++   Bretschneidert), az idézet a fordításban is idézőjelben álljon, a hivatkozással együtt.
++2. A jelentésszám (1., 2.) előtt álló bevezető mondat legyen teljes magyar mondat
++   („Jelentése … eszerint:”), ne csonka szerkezet.
++3. Az *equivalent to* fordítása „=” vagy „vagyis”, ne „megegyezik …-val”.
++4. A könyvneveket a folyó szövegben írd ki („Márk evangéliuma”, „a Zsidókhoz írt levél”).
++   Rövidítés csak igehelyben álljon, Károli-rövidítéssel.
++5. Az *ff* / *f* magyarul „kk.” / „k.”
++6. Az elosztó értelmű számokat tedd egyértelművé: *once in Matthew and Luke* →
++   „egyszer-egyszer”.
++7. A szerzőnevek egységes alakban álljanak (Philón, Josephus, Tertullianus, Plutarkhosz).
++   Ha van szerzőnév-sor a terminológiai listában, az az irányadó.
++8. Magyar mondatszerkezetet használj: az angol mellékmondat-láncot bontsd magyar
++   mondatokra, de tartalmat ne hagyj el, és ne told be.
++
++### Példapár (G26, részlet) — a fenti szabályok alkalmazása
++
++Forrás (angol):
++
++G26 — ἀγάπη (ης, ἡ, a purely Biblical and ecclesiastical word (for Wyttenbach, following Reiske's conjecture, long ago restored ἀγαπήσων in place of ἀγάπης, ὧν in Plutarch, sympos. quaestt. 7, 6, 3 (vol. viii., p. 835, Reiske edition)). Secular authors from (Aristotle), Plutarch on used ἀγάπησις. "The Sept. use ἀγάπη for אַהֲבָה, Song of Solomon 2:4, 5, 7; Song of Solomon 3:5, 10; Song of Solomon 5:8; Song of Solomon 7:6; Song of Solomon 8:4, 6, 7; ("It is noticeable that the word first makes its appearance as a current term in the Song of Solomon; — certainly no undesigned evidence respecting the idea which the Alexandrian LXX translators had of the love in this Song" (Zezschwitz, Profangraec. u. Biblical Sprachgeist, p. 63)); Jer 2:2; Ecc 9:1, Ecc 9:6; (2Sa 13:15). It occurs besides in Wis. 3:9 Wis. 6:19. In Philo and Josephus, I do not remember to have met with it. Nor is it found in the N. T. in Acts, Mark, or James; it occurs only once in Matthew and Luke, twice in Hebrews and Revelation, but frequently in the writings of Paul, John, Peter, Jude" (Bretschn. Lex. under the word); (Philo, deus immut. § 14). In signification it follows the verb ἀγαπάω; consequently it denotes
++
++Célfordítás:
++
++G26 — ἀγάπη, -ης, ἡ; tisztán bibliai és egyházi szó. (Plutarkhosznál, a Sympos. quaest. 7, 6, 3 helyén, Reiske-kiadás VIII. kötet, 835. o., ugyanis Wyttenbach már régen, Reiske sejtését követve, az ἀγάπης, ὧν olvasat helyére ἀγαπήσων alakot állított vissza.) A világi szerzők (Arisztotelésztől), Plutarkhosztól kezdve az ἀγάπησις alakot használták. „A Septuaginta az ἀγάπη szóval adja vissza az אַהֲבָה szót: Én 2:4, 5, 7; Én 3:5, 10; Én 5:8; Én 7:6; Én 8:4, 6, 7 (»Figyelemre méltó, hogy a szó bevett kifejezésként először az Énekek énekében bukkan fel. Ez bizonyosan nem véletlen, és elárulja, hogyan értették az alexandriai Septuaginta-fordítók az Énekben megénekelt szeretetet.« [Zezschwitz, Profangraec. u. bibl. Sprachgeist, 63. o.]); Jer 2:2; Préd 9:1, Préd 9:6; (2Sám 13:15). Előfordul még a Bölcs 3:9 és a Bölcs 6:19 helyen. Philónnál és Josephusnál nem emlékszem, hogy találkoztam volna vele. Az Újszövetségben az Apostolok cselekedetei, Márk evangéliuma és Jakab levele nem használja. Máté és Lukács evangéliumában egyszer-egyszer, a Zsidókhoz írt levélben és a Jelenések könyvében kétszer-kétszer fordul elő, Pál, János, Péter és Júdás írásaiban viszont gyakori.” (Bretschneider, Lexikon, a címszónál); (Philón, Deus immut. 14. §). Jelentése az ἀγαπάω igét követi, eszerint:
++
+ ## Ideiglenes terminológia (kötelező megfeleltetés, amíg a 4a élesíti a saját tábláját)
+ 
+ {{TERMINOLOGIA}}
