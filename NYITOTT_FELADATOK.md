@@ -43,7 +43,7 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
      CenterBLC/MT-LXX 78,9% és Macula Hebrew 78,3% az aranykészleten — mindkettő a 90%-os küszöb alatt,
      a D14 marad (versszintű S13); a CenterBLC-nek nincs licence, a Macula Hebrew CC BY 4.0. A 87 függő
      LXX-helyre 58 gépi jelölt készült (`naplok/FORRAS_FJ1_lxx_jeloltek.tsv`), küszöb alatti forrásból,
-     ezért csak tájékoztató. BSB (`bsb-data-output`, CC0, 66 könyv): importjelölt, feltétele az N30.
+     ezért csak tájékoztató. BSB (`bsb-data-output`, CC0, 66 könyv): N30 lezárva, a BSB importálva: 31 ÓSZ-könyv, l. `konkordancia/README.md`.
      Nave: `theonize/bible_database` feltétellel (GPLv3, a Nave-tartalom licenclánca tisztázatlan),
      `elcafe7/lex` gyengébb. Nyitott utómunka: N27–N31.
 
@@ -343,11 +343,6 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   studybible.info-t és az eBible.org-ot. Helyi gépről ismétlendő (a Károli-rokonsági híd miatt
   a teljes KJV elsődleges, a BSB kiegészítő — munkaterv M4).
 
-- **N30 — BSB-import feltétele: teljes Genezis-összevetés.** *(ÚJ, FJ-ellenőrzés, 2026.09.25)*
-  Az FJ3 mintája (1Móz 1:1–5) túl kicsi a „feltétel nélkül” ítélethez. Az import előtt a BSB
-  Strong-halmazát versenként össze kell vetni a TAHOT-tal a teljes 1Mózesen (1 533 vers),
-  előre rögzített egyezési küszöbbel.
-
 - **N31 — a Macula Hebrew lefedettsége ellenőrizendő.** *(ÚJ, FJ-ellenőrzés, 2026.09.25)* Az
   FJ1 szerint a letöltött Macula Hebrew-ből hiányzik az 1Sám–2Krón. Ez valószínűleg letöltési
   vagy feldolgozási hiba; a küszöb alatti eredményen nem változtat, de bármilyen későbbi
@@ -544,6 +539,8 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 <!-- GENERÁLT-VÉGE: nyitott -->
 
 ## Lezárva
+### 2026.09.30 (F16_BSB_IMPORT_BRIEF.md — N30 lezárva):
+* N30 (BSB-import feltétele: teljes Genezis-összevetés) lezárva: az 1Mózes-mérés az F06-ban (PR #75, 98,83%, 1515/1533 vers), a teljes Biblia mérése és importja az F16-ban (`eszkozok/fj2/bsb_import.py`, `naplok/F16_bsb_lefedettseg.tsv`): 31 ÓSZ-könyv ≥ 95% → importálva (`konkordancia/BSB_Strongs.tsv`, 242 597 sor, CC0, BSB commit `a4a2c05`; a zsoltár-verseltolás javítása után, F16.8); 8 ÓSZ-könyv a küszöb alatt, az ÚSZ szándékosan kimarad (DONTESEK DT6, javaslat). Az 1Mózes újramért értéke azonos az F06-éval.
 
 ### 2026.09.28 (F05_SZOTAR_BRIEF.md S1.5 — N38 felvéve és lezárva):
 * N38 — az `eszkozok/ellenoriz.py` 10. szabálya (`forditas_ubs.tsv`) az S1.1 óta HIBA-val (kilépési kód 2) állt le minden futtatáskor, észrevétlenül. A `forditas_ubs.tsv` a SZOTAR S1.1-ben megszűnt (`adat/SEMA.md` 2.10, D31, 51-soros `adat/forditasok.tsv`-re költözött), de a 10. szabály (`LEXV2_2 tablak`) a régi fájlnevet feltétel nélkül olvasta be — a hiányzó fájl kivétele az egész szkriptet `HIBA`-val állította le, mielőtt bármi más lefuthatott volna. Mivel az S1.1–S1.4 közben egyetlen menet sem futtatta le az `ellenoriz.py`-t teljes egészében, ez a törés hetekig rejtve maradt volna a következő tényleges futtatásig. Javítva az S1.5-ben (ugyanaz a commit, amely a 13-14. szabályt bevezette): a `forditas_ubs.tsv`-részt a szabály RETIRED-ként kihagyja, ha a fájl hiányzik (a kulcs-/hash-ellenőrzést a 13. szabály veszi át); a `lxx_dontesek.tsv`-rész változatlan. `naplok/SZOTAR_S1_5_ellenoriz_jelentes.md`: RENDBEN 11, SÉRTÉS 0, KÉZI 2, JELENTÉS 3, kilépési kód 0.

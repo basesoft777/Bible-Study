@@ -1,0 +1,156 @@
+# forras-URL: https://github.com/BSB-publishing/bsb-data-output + konkordancia/Karoli_versmegfeleltetes.tsv (igehely_mt) + konkordancia/TAHOT_kivonat.tsv
+# commit/verzio: BSB commit a4a2c0558c26e0281ba4e3f0e5479398459e2183
+# letoltes datuma: 2026-09-30
+# futtatasi parancs: python eszkozok/fj2/bsb_import.py --munka <mappa>
+# zsoltaronkenti BSB-vers -> MT-vers megfeleltetes (F16.8): bsb_versszam = base/text-only sorai (a BSB/KJV-szamozas); display_versek = a display-JSON versszama; display_elso_vers = van-e az 1. vers a display-JSON-ban; bsb_d_cim = van-e "d" szintu (leiro cim, felirat) heading a fejezet structure-jeben (a "Psalms 1-41" tipusu konyvcimek nelkul); kk_mt_max = a Karoli-kulcs igehely_mt oszlopabol az MT-fejezet utolso versszama (ures: a kulcsban nincs igehely_mt, KJV-osztaly, azonos szamozas, k=0); tahot_max = a TAHOT_kivonat fejezet-maxa (ellenorzes: egyezik); k = kk_mt_max - bsb_versszam: a BSB-vers v az MT-vers v+k (k>0: az MT a feliratot sajat versszamon szamozza); allapot = illesztetlen, ha a fejezetenkent allando k belso versosztas-eltereses miatt nem igazolhato (l. belso_osztas_eltereses a szkriptben): a fejezet nincs a meresben es az importban
+zsoltar	bsb_versszam	display_versek	display_elso_vers	bsb_d_cim	kk_mt_max	tahot_max	k	allapot	illesztetlen_ok
+1	6	6	igen	nem		6	0	illesztett	
+2	12	12	igen	nem		12	0	illesztett	
+3	8	7	nem	igen	9	9	1	illesztett	
+4	8	7	nem	igen	9	9	1	illesztett	
+5	12	11	nem	igen	13	13	1	illesztett	
+6	10	9	nem	igen	11	11	1	illesztett	
+7	17	16	nem	igen	18	18	1	illesztett	
+8	9	8	nem	igen	10	10	1	illesztett	
+9	20	19	nem	igen	21	21	1	illesztett	
+10	18	18	igen	nem		18	0	illesztett	
+11	7	6	nem	igen		7	0	illesztett	
+12	8	7	nem	igen	9	9	1	illesztett	
+13	6	5	nem	igen		6	0	illesztetlen	BSB 2 illeszkedik az MT 3-hoz (nem v+k=2-hoz); BSB 3 illeszkedik az MT 4-hoz (nem v+k=3-hoz); BSB 4 illeszkedik az MT 5-hoz (nem v+k=4-hoz); MT 3 a BSB 3+2 unioja; MT 4 a BSB 4+3 unioja; MT 5 a BSB 5+4 unioja; MT 6 a BSB 6+5 unioja
+14	7	6	nem	igen		7	0	illesztett	
+15	5	4	nem	igen		5	0	illesztett	
+16	11	10	nem	igen		11	0	illesztett	
+17	15	14	nem	igen		15	0	illesztett	
+18	50	49	nem	igen	51	51	1	illesztett	
+19	14	13	nem	igen	15	15	1	illesztett	
+20	9	8	nem	igen	10	10	1	illesztett	
+21	13	12	nem	igen	14	14	1	illesztett	
+22	31	30	nem	igen	32	32	1	illesztett	
+23	6	5	nem	igen		6	0	illesztett	
+24	10	9	nem	igen		10	0	illesztett	
+25	22	21	nem	igen		22	0	illesztett	
+26	12	11	nem	igen		12	0	illesztett	
+27	14	13	nem	igen		14	0	illesztett	
+28	9	8	nem	igen		9	0	illesztett	
+29	11	10	nem	igen		11	0	illesztett	
+30	12	11	nem	igen	13	13	1	illesztett	
+31	24	23	nem	igen	25	25	1	illesztett	
+32	11	10	nem	igen		11	0	illesztett	
+33	22	22	igen	nem		22	0	illesztett	
+34	22	21	nem	igen	23	23	1	illesztett	
+35	28	27	nem	igen		28	0	illesztett	
+36	12	11	nem	igen	13	13	1	illesztett	
+37	40	39	nem	igen		40	0	illesztett	
+38	22	21	nem	igen	23	23	1	illesztett	
+39	13	12	nem	igen	14	14	1	illesztett	
+40	17	16	nem	igen	18	18	1	illesztett	
+41	13	12	nem	igen	14	14	1	illesztett	
+42	11	10	nem	igen	12	12	1	illesztett	
+43	5	5	igen	nem		5	0	illesztett	
+44	26	25	nem	igen	27	27	1	illesztett	
+45	17	16	nem	igen	18	18	1	illesztett	
+46	11	10	nem	igen	12	12	1	illesztett	
+47	9	8	nem	igen	10	10	1	illesztett	
+48	14	13	nem	igen	15	15	1	illesztett	
+49	20	19	nem	igen	21	21	1	illesztett	
+50	23	22	nem	igen		23	0	illesztett	
+51	19	18	nem	igen	21	21	2	illesztett	
+52	9	8	nem	igen	11	11	2	illesztett	
+53	6	5	nem	igen	7	7	1	illesztett	
+54	7	6	nem	igen	9	9	2	illesztett	
+55	23	22	nem	igen	24	24	1	illesztett	
+56	13	12	nem	igen	14	14	1	illesztett	
+57	11	10	nem	igen	12	12	1	illesztett	
+58	11	10	nem	igen	12	12	1	illesztett	
+59	17	16	nem	igen	18	18	1	illesztett	
+60	12	11	nem	igen	14	14	2	illesztett	
+61	8	7	nem	igen	9	9	1	illesztett	
+62	12	11	nem	igen	13	13	1	illesztett	
+63	11	10	nem	igen	12	12	1	illesztett	
+64	10	9	nem	igen	11	11	1	illesztett	
+65	13	12	nem	igen	14	14	1	illesztett	
+66	20	19	nem	igen		20	0	illesztett	
+67	7	6	nem	igen	8	8	1	illesztett	
+68	35	34	nem	igen	36	36	1	illesztett	
+69	36	35	nem	igen	37	37	1	illesztett	
+70	5	4	nem	igen	6	6	1	illesztett	
+71	24	24	igen	nem		24	0	illesztett	
+72	20	19	nem	igen		20	0	illesztett	
+73	28	27	nem	igen		28	0	illesztett	
+74	23	22	nem	igen		23	0	illesztett	
+75	10	9	nem	igen	11	11	1	illesztett	
+76	12	11	nem	igen	13	13	1	illesztett	
+77	20	19	nem	igen	21	21	1	illesztett	
+78	72	71	nem	igen		72	0	illesztett	
+79	13	12	nem	igen		13	0	illesztett	
+80	19	18	nem	igen	20	20	1	illesztett	
+81	16	15	nem	igen	17	17	1	illesztett	
+82	8	7	nem	igen		8	0	illesztett	
+83	18	17	nem	igen	19	19	1	illesztett	
+84	12	11	nem	igen	13	13	1	illesztett	
+85	13	12	nem	igen	14	14	1	illesztett	
+86	17	16	nem	igen		17	0	illesztett	
+87	7	6	nem	igen		7	0	illesztett	
+88	18	17	nem	igen	19	19	1	illesztett	
+89	52	51	nem	igen	53	53	1	illesztett	
+90	17	16	nem	igen		17	0	illesztett	
+91	16	16	igen	nem		16	0	illesztett	
+92	15	14	nem	igen	16	16	1	illesztett	
+93	5	5	igen	nem		5	0	illesztett	
+94	23	23	igen	nem		23	0	illesztett	
+95	11	11	igen	nem		11	0	illesztett	
+96	13	13	igen	nem		13	0	illesztett	
+97	12	12	igen	nem		12	0	illesztett	
+98	9	8	nem	igen		9	0	illesztett	
+99	9	9	igen	nem		9	0	illesztett	
+100	5	4	nem	igen		5	0	illesztett	
+101	8	7	nem	igen		8	0	illesztett	
+102	28	27	nem	igen	29	29	1	illesztett	
+103	22	21	nem	igen		22	0	illesztett	
+104	35	35	igen	nem		35	0	illesztett	
+105	45	45	igen	nem		45	0	illesztett	
+106	48	48	igen	nem		48	0	illesztett	
+107	43	43	igen	nem		43	0	illesztett	
+108	13	12	nem	igen	14	14	1	illesztett	
+109	31	30	nem	igen		31	0	illesztett	
+110	7	6	nem	igen		7	0	illesztett	
+111	10	10	igen	nem		10	0	illesztett	
+112	10	10	igen	nem		10	0	illesztett	
+113	9	9	igen	nem		9	0	illesztett	
+114	8	8	igen	nem		8	0	illesztett	
+115	18	18	igen	nem		18	0	illesztett	
+116	19	19	igen	nem		19	0	illesztett	
+117	2	2	igen	nem		2	0	illesztett	
+118	29	29	igen	nem		29	0	illesztett	
+119	176	176	igen	nem		176	0	illesztett	
+120	7	6	nem	igen		7	0	illesztett	
+121	8	7	nem	igen		8	0	illesztett	
+122	9	8	nem	igen		9	0	illesztett	
+123	4	3	nem	igen		4	0	illesztett	
+124	8	7	nem	igen		8	0	illesztett	
+125	5	4	nem	igen		5	0	illesztett	
+126	6	5	nem	igen		6	0	illesztett	
+127	5	4	nem	igen		5	0	illesztett	
+128	6	5	nem	igen		6	0	illesztett	
+129	8	7	nem	igen		8	0	illesztett	
+130	8	7	nem	igen		8	0	illesztett	
+131	3	2	nem	igen		3	0	illesztett	
+132	18	17	nem	igen		18	0	illesztett	
+133	3	2	nem	igen		3	0	illesztett	
+134	3	2	nem	igen		3	0	illesztett	
+135	21	21	igen	nem		21	0	illesztett	
+136	26	26	igen	nem		26	0	illesztett	
+137	9	9	igen	nem		9	0	illesztett	
+138	8	7	nem	igen		8	0	illesztett	
+139	24	23	nem	igen		24	0	illesztett	
+140	13	12	nem	igen	14	14	1	illesztett	
+141	10	9	nem	igen		10	0	illesztett	
+142	7	6	nem	igen	8	8	1	illesztett	
+143	12	11	nem	igen		12	0	illesztett	
+144	15	14	nem	igen		15	0	illesztett	
+145	21	20	nem	igen		21	0	illesztett	
+146	10	10	igen	nem		10	0	illesztett	
+147	20	20	igen	nem		20	0	illesztett	
+148	14	14	igen	nem		14	0	illesztett	
+149	9	9	igen	nem		9	0	illesztett	
+150	6	6	igen	nem		6	0	illesztett	
