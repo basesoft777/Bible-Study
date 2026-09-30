@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 25
 cim: Olvasói felület: statikus HTML állítható mélységgel
 kod: OLVASOI_HTML
 tipus: feladat
@@ -8,7 +8,7 @@ modell: sonnet
 allapot: brief_kell
 ad: a motívumforrásból generált statikus HTML-oldalak (Netlify), lenyitható apparátussal és mélységi szintekkel; később PWA
 kovetkezo: brief a #11 1. lépcsője (ISTENTISZT-001) után, a MOTIVUM_FORRAS szintjelölésére építve
-fugg: [11, 12]
+fugg: [11, 12, 23]
 ---
 
 # F<nn>_OLVASOI_HTML_BRIEF — csonk

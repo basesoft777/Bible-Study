@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 23
 cim: Egyforrású motívumdokumentum: forrássablon és mélységi szintek (terv)
 kod: MOTIVUM_FORRAS
 tipus: feladat

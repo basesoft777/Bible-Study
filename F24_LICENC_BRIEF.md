@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 24
 cim: Forrásaink licencének átnézése
 kod: LICENC
 tipus: feladat

@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 26
 cim: Egyforrású lánc (B) döntéseinek rögzítése és az érintett briefek fejléce
 kod: EGYFORRAS_NAPLO
 tipus: naplozas
