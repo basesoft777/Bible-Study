@@ -347,6 +347,10 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   FJ1 szerint a letöltött Macula Hebrew-ből hiányzik az 1Sám–2Krón. Ez valószínűleg letöltési
   vagy feldolgozási hiba; a küszöb alatti eredményen nem változtat, de bármilyen későbbi
   használat (pl. a G8 tagmondat-tagolás) előtt ellenőrizni kell.
+  **LEZÁRVA (F17, 2026.09.30):** a hiány nem valós — az F06 mérése és az F17 importja szerint az
+  1Sám–2Krón mind a hat könyve megvan (929 lowfat-fájl, 475 911 morféma-sor, `konkordancia/Macula_heber.tsv`);
+  az FJ1 hibája a fájlnév-minta volt (a számjeggyel kezdődő könyvkódot nem illesztette). A Macula–TAHOT
+  verslista-eltérések oka (F06) továbbra sincs vizsgálva; l. `naplok/F17_import_naplo.md`.
 
 - **N32 — a commitolt `lexikon/*_TUDOMANYOS.md`/`*_TORZSCIKK.md` elavult a
   KK7.5 (Károli-versszám-javítás) és a D16 (Cremer kivezetve) óta.**
