@@ -1,0 +1,3 @@
+F16.6: zárás — ELLENOR_F16, zárójelentés, README-példa javítása, brief lezarva
+
+Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
