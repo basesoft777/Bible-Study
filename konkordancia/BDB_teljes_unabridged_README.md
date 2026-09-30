@@ -81,7 +81,7 @@ Ez a fájl önálló, a `Strong_padded` mezőn keresztül join-olható a meglév
 `Join_tabla_folyamat_magyarazat.md` mintája szerint). A meglévő fájlok
 változatlanok maradtak, semmi nem lett törölve vagy felülírva.
 
-## `BDB_etimologia_kezi_hatarok.tsv` — nyelvi háttér, D28 hatókörű 26 token (SZOTAR_BRIEF.md S9)
+## `BDB_etimologia_kezi_hatarok.tsv` — nyelvi háttér, D28 hatókörű 26 token (F05_SZOTAR_BRIEF.md S9)
 
 **Részben generált, részben kézi javaslat**
 (`eszkozok/bdb_etim_hatarok_import.py`). A `nyelvi_hatter` mező a szócikk
@@ -120,7 +120,7 @@ nyelvi_hatter szocikk_hossz hatar_pozicio`.
   `nyelvi_hatter` üres. Ez **végleges állapot, nem pótlandó hiány** (D11).
 
 A 26 token a D28 hatókör-szabálya szerinti motívum-Strong-készlet (l.
-`SZOTAR_BRIEF.md` §0 0.4). Az S0-beli mérés (`naplok/SZOTAR_S0_bdb_etim.tsv`,
+`F05_SZOTAR_BRIEF.md` §0 0.4). Az S0-beli mérés (`naplok/SZOTAR_S0_bdb_etim.tsv`,
 a régi 24-tokenes hatókörön) csak a `gepi`/nem-`gepi` elkülönítést mérte
 (talál-e határt a regex, igen/nem), a tényleges `nyelvi_hatter` szöveget
 és a `H8414`/`H0922` besorolását ez a tétel (S1.4) adja először.

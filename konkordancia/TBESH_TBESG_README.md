@@ -87,7 +87,7 @@ Mindkét fájl tab-elválasztott (`\t`), UTF-8 kódolású szöveges fájl. A t�
 - **TBESG appendix-tartalom:** a TBESG fájl elején (a 91. sor előtt) egy beágyazott, eltérő oszlopszámú példa-blokk található (személyek/helynevek jelölési konvenciójának bemutatására, pl. "Herod" család) — ez nem tartozik a fő G-tétel-listához, és `grep "^G####"` nem érinti.
 - **Nyelvtani elemek (TBESH vége felé, H9000+ tartomány):** ragok, névmási végződések, írásjelek önálló "Strong-számként" (pl. `H9020`–`H9049`) — ezek nem szótári tételek, hanem morfológiai komponensek.
 
-## `TBESH_konszolidalt.tsv` — a TBESH.txt és a TBESH.lexicon uniója (SZOTAR_BRIEF.md S4)
+## `TBESH_konszolidalt.tsv` — a TBESH.txt és a TBESH.lexicon uniója (F05_SZOTAR_BRIEF.md S4)
 
 **Generált** (`eszkozok/tbesh_konszolidalt_import.py`, kézzel nem szerkesztendő):
 **unió, nem csere** — egyik forrás sem váltja ki a másikat, mert szócikkenként

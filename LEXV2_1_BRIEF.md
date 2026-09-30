@@ -1,3 +1,9 @@
+---
+cim: Lexikon-oldal v2, 1. menet: adatforrások (UBS, LXX_OS)
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # LEXV2_1_BRIEF.md — v4
 
 Lexikon-oldal v2, 1. menet: adatforrások. UBS Dictionary of New Testament Greek (jelentések + igehely-hivatkozások) és Open Scriptorium Rahlfs-LXX importja, próba-hozzárendelés, összevetés. **Generátor nem változik.**

@@ -1,12 +1,26 @@
+---
+feladat: 15
+cim: Orkesztrátor-parancs
+kod: F15
+tipus: feladat
+fazis: folyamat
+modell: sonnet
+allapot: lezarva
+ad: a munkafolyamat orkesztrátor-parancsa (`/kovetkezo`)
+kovetkezo: lezárva
+lezarva_osszegzes: `/kovetkezo`, `DONTESEK.md`, végrehajtó subagentek, ellenőrzőlista, PR #70, ✅ a merge-commitban (09.29); próbafuttatás merge után új sessionben: `/kovetkezo`
+---
 # F15_ORKESZTRATOR_BRIEF.md — a munkafolyamat orkesztrátor-parancsa
 
 *v1.3 · 2026.09.29 · FELADATOK #15 (új feladat, a chat jóváhagyásával) · Modell: sonnet · Függ: — (bármikor futhat, az 1. fázistól független)*
 
 *Repóbeli másolat (F14.5): a szám #14 → #15 (a `main`-en a #14 az FP2, DT4 döntés), a naplónevek `orkesztrator-15`; az ág neve marad `claude/orkesztrator-14`. A `/kovetkezo` 1. lépése kiegészült az elavult DONTESEK-tételek jelzésével; a `vegrehajto-*` fájlok önállóak (nem hivatkoznak a brief pontszámaira). A D-számozás a repóban D8–D13 (l. FELADATOK.md). Az élő szöveg a `.claude/`-ben van.*
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 0. Nyitó prompt (ezt másold a Code-ba, a brieffel együtt)
 
 > Olvasd be a csatolt `F15_ORKESZTRATOR_BRIEF.md`-t, a `FELADATOK.md`-t és a `CLAUDE.md`-t. Hajtsd végre a brief 3. pontját a main-ből nyitott új ágon (`claude/orkesztrator-14`). A 2. pont tiltásai kötelezők. A végén a brief 6. pontja szerint zárj.
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ## 1. Cél
 

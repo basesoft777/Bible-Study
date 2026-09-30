@@ -1,4 +1,16 @@
-# FORDITAS_PILOT_BRIEF.md — fordítási pilot: Thayer-szócikkek külső modellekkel (OpenRouter)
+---
+feladat: 3
+cim: Fordítási próba
+kod: FP
+tipus: feladat
+fazis: 1
+modell: sonnet
+allapot: lezarva
+ad: fordító eszközök és a Thayer-fordítási próba eredményei
+kovetkezo: lezárva
+lezarva_osszegzes: fordító eszközök és a próba eredményei, ellenőrzés naplok/ELLENOR_FP.md, merge `9eb43fe` (PR #62, 09.27)
+---
+# F03_FORDITAS_PILOT_BRIEF.md — fordítási pilot: Thayer-szócikkek külső modellekkel (OpenRouter)
 
 *v1 — 2026.09.25 · jóváhagyásra: a §2 G-döntései (főleg G3, G4, G6) és a §0 számai · a 2026.09.25-i munkaterv B briefje (2a–2c)*
 
@@ -128,7 +140,7 @@ Commit tételenként: `FP<n>: <rövid leírás>`.
 
 | # | Feltétel |
 |---|---|
-| K1 | `git diff --stat main..HEAD`: csak `FORDITAS_PILOT_BRIEF.md`, `eszkozok/fordit.py` és `naplok/FORDITAS_P*` |
+| K1 | `git diff --stat main..HEAD`: csak `F03_FORDITAS_PILOT_BRIEF.md`, `eszkozok/fordit.py` és `naplok/FORDITAS_P*` |
 | K2 | `eszkozok/ellenoriz.py`: RENDBEN 10 · SÉRTÉS 0 · KÉZI 2 · JELENTÉS 2 (változatlan) |
 | K3 | a kulcs sehol nem jelenik meg (repó, napló, kimenet) |
 | K4 | a költségnapló összege ≤ 2 USD, és egyezik a kimenetben rögzített hívásokkal |
@@ -146,14 +158,15 @@ Commit tételenként: `FP<n>: <rövid leírás>`.
 
 ---
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 6. Nyitó promptok (a briefet csatold)
 
 **1. menet (helyi worktree, vagy cloud, ha az FP0 engedi):**
 ```
 Először írd ki: pwd, git branch --show-current, git log --oneline -1
 Olvasd el a CLAUDE.md-t.
-1. A csatolt FORDITAS_PILOT_BRIEF.md-t mentsd a repó gyökerébe, változtatás nélkül.
-   Commit: "FP: FORDITAS_PILOT_BRIEF.md v1".
+1. A csatolt F03_FORDITAS_PILOT_BRIEF.md-t mentsd a repó gyökerébe, változtatás nélkül.
+   Commit: "FP: F03_FORDITAS_PILOT_BRIEF.md v1".
 2. Hajtsd végre az FP0–FP4 tételeket a brief §3 szerint, a §1 mércéivel és a §2 döntéseivel.
    Az OPENROUTER_API_KEY értékét soha ne írd ki és ne mentsd. Tételenként külön commit.
 3. Az FP4 után ellenőrizd a §4 K1–K6-ot, majd pushold a saját ágadat. A main-re ne pushold.
@@ -163,8 +176,9 @@ Olvasd el a CLAUDE.md-t.
 **2. menet (helyi, Opus, ugyanazon az ágon):**
 ```
 Először írd ki: pwd, git branch --show-current, git log --oneline -1
-Olvasd el a CLAUDE.md-t és a FORDITAS_PILOT_BRIEF.md-t. A csatolt, általam kitöltött
+Olvasd el a CLAUDE.md-t és a F03_FORDITAS_PILOT_BRIEF.md-t. A csatolt, általam kitöltött
 FORDITAS_P4_minta_felhasznalo.md-t mentsd a naplok/ alá. Commit: "FP5: felhasználói minta".
 Hajtsd végre az FP5–FP6 tételeket. Az FP5 alatt a naplok/FORDITAS_P4_vak_kulcs.tsv-t ne nyisd meg.
 A végén ellenőrizd a K7-et, pushold a saját ágadat. ÁLLJ az FP6 után: javaslat a chatbe.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->

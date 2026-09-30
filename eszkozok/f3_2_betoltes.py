@@ -85,7 +85,7 @@ def prov_nt(forras, ts):
 def build_ot_rows(id_, study, ts, rows, required_default=None):
     """rows: (igehely, kapcsolodas, pardes_szint[, required_strongs])
 
-    Megjegyzes (KARBANTARTAS_BRIEF.md G1 kivetele): ez a fuggveny a
+    Megjegyzes (F04_KARBANTARTAS_BRIEF.md G1 kivetele): ez a fuggveny a
     TAHOT_INDEX, TAHOT_VERSES, results, rejected_strong_hianyzik modulszintu
     valtozokat olvassa/mutalja. A main() ezeket `global` deklaracioval hozza
     letre, mert a fuggveny (modulszinten definialva) csak igy latja oket --

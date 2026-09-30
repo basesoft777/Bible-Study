@@ -1,3 +1,9 @@
+---
+cim: HAMART-001 lexikon-generálás és az ISTENTISZT-001 pilot átemelése
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # LEX_BRIEF.md — v1
 
 HAMART-001 lexikon-generálás (C1) + ISTENTISZT-001 pilot átemelése (C2/C3 első példány) + N15 felvétele
@@ -129,9 +135,11 @@ A `MUNKAMENET.md` „Mi hiányzik az üzemmenetből ma" szakaszában a nyitott t
 5. `LEX.4: MUNKAMENET C3-sor frissítése`
 6. `LEX.5: N15 (LXX-kivonat licenc-tisztázása) a nyitott listába`
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 8. Nyitó prompt *(Sonnet)*
 
 > Olvasd el a `LEX_BRIEF.md`-t és a `CLAUDE.md`-t. Hajtsd végre a LEX.0–LEX.5 tételeket egy menetben, a 2. pont G-döntései szerint. Az átemelés szó szerinti, saját fogalmazás nem kerülhet bele. Minden tétel után mérd az 5. pont számait. Ha bármelyik eltér, állj meg és jelezd, ne javítsd. Commitolj a 7. pont szerint, pusholni ne pusholj. A végén adj zárójelentést a K1–K8 szerint.
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ## Döntésnapló
 

@@ -1,3 +1,15 @@
+---
+feladat: 6
+cim: Új források 2. felmérése
+kod: F06
+tipus: feladat
+fazis: 1
+modell: sonnet
+allapot: lezarva
+ad: döntési alap a Nave, a teljes KJV/ASV, a BSB és a Macula importjáról
+kovetkezo: lezárva
+lezarva_osszegzes: GitHub Actionsben futott, helyi gép nem kellett; BSB 1Móz 98,83% (küszöb 95%, mérés előtt rögzítve), Macula teljes letöltés és 39/87 függő helyre LXX-megfelelő (#8 bemenete), KJV/ASV, Nave és licenc-javaslatok (MiniMax-költség 0,011927 USD); jelentés `naplok/F06_forras_jelentes.md`, ellenőrzés `naplok/ELLENOR_F06.md`, `naplok/ELLENOR_F06_v2.md`, merge `634d567` (PR #75, 09.29). Az import-döntés (N27, N29–N31) a felhasználóé, nyitva.
+---
 # F06_FORRASFELMERES_BRIEF.md — Új források 2. felmérése (FJ 2. menet)
 
 *FELADATOK #6 · v1 · 2026.09.29 · Modell: sonnet · Külső modell: `minimax/minimax-m3` (OpenRouter), csak a 4. lépésben · Ág: `claude/f06-forrasfelmeres`*
@@ -105,9 +117,11 @@ A `naplok/FORRAS_jelentes.md` fejlécébe kerüljön ez a megjegyzés: *„Felü
 3. A `FELADATOK.md` #6-os sorának frissítése: állapot, ág, következő lépés, és a megjegyzés, hogy a menet Actionsben futott, helyi gép nem kellett.
 4. Push, draft PR a main-be. A válasz első sora: a PR linkje és a CI állapota.
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## Nyitó prompt (a Code-sessionbe)
 
 > Olvasd be a repó gyökerében az `F06_FORRASFELMERES_BRIEF.md`-t és a `CLAUDE.md`-t, és hajtsd végre a briefet a 0. lépéstől, a `claude/f06-forrasfelmeres` ágon. A 2. lépésnél (⛔) állj meg, és várd a válaszomat. Számadatot csak szkriptkimenetből írj. Minden lépés után commitolj és pusholj.
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ## Döntésnapló
 

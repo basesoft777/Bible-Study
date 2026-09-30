@@ -151,7 +151,7 @@ def forrasreteg_beolvaszthato_szakaszok(motivum_id):
 
 
 # A PARDES_DATUM kornyezeti valtozo (YYYY-MM-DD) felulirhatja a mai napot --
-# kizarolag a nulla-diff A/B proba miatt (SZOTAR_BRIEF.md D30,
+# kizarolag a nulla-diff A/B proba miatt (F05_SZOTAR_BRIEF.md D30,
 # eszkozok/nulladiff.sh): a generalt fejlecek 'ts='/'Generálva:' mezoje
 # maskulonben mindig a futtatas napja, ami ket kulon napon futtatott,
 # egyebkent azonos generalast is elterotte tenne. Mas viselkedest nem erint.

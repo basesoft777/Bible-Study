@@ -1,3 +1,9 @@
+---
+cim: A TEREMT-002 kutatása: gate, hétlépéses scan, jelöltek, minősítés (T1–T2)
+tipus: archiv
+modell: opus
+allapot: lezarva
+---
 # TEREMT002_KUTATAS_BRIEF.md — a TEREMT-002 (תֹהוּ וָבֹהוּ) kutatása: gate, hétlépéses scan, jelöltek, minősítés
 
 *v1 — 2026.09.25 · jóváhagyásra: a §2 G-döntései és a §0 számai · a 2026.09.25-i munkaterv tartalmi szála (T1–T2)*
@@ -145,6 +151,7 @@ T3-ban jönnek, az 5b (forrásréteg rés-séma) után.
 
 ---
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 6. Nyitó promptok (helyi session; a briefet csatold)
 
 **1. menet:**
@@ -169,3 +176,4 @@ Olvasd el a CLAUDE.md-t és a TEREMT002_KUTATAS_BRIEF.md-t.
 Hajtsd végre a T2.1-et. ÁLLJ: a minősítési javaslat a chatbe, döntésre.
 A döntések után: T2.2–T2.4, majd ÁLLJ: jelentés (commitok, K1–K8).
 ```
+<!-- /KOZVETLEN_FUTTATAS -->

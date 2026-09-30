@@ -658,12 +658,12 @@ adatosítva van-e a projektben.
 | `sorrend` | egész szám | ✔ | 1–10, a szerep-lista rögzített sorrendje (azonos mindkét nyelven). |
 | `szerep` | szabad szöveg | ✔ | A szerep megnevezése (pl. „Alapjelentés", „LXX-híd"). |
 | `forras` | szabad szöveg | ✔ | A szerepet ma (vagy célként) kitöltő forrás megnevezése. |
-| `allapot` | zárt | ✔ | `adatosítva` \| `nincs adatosítva` \| `nincs forrás` (SZOTAR_BRIEF.md D27, S1.6) — a RENDER_BRIEF.md G6 záró bekezdése szerint: adatosítva a TBESG, TBESH, Thayer, BDB, UBS DNTG (a meglévő import), SDBH domének, LSJ és az LXX-híd (mindkét irány); a többi (Girdlestone, UBS DBH glossza+referencia, Mounce-kiegészítő önmagában, SECE, BDB-etimológia, kiejtés) a `SZOTAR_BRIEF.md` tárgya. **`nincs forrás`** (D27): a szerepnek az adott nyelven nincs a D17 forrásszabálynak megfelelő forrása — VÉGLEGES állapot, nem pótlandó hiány (szemben a `nincs adatosítva`-val, amely ígéretet sugallna); pl. a görög 3. szerep, ha a Translation Words elutasításra kerül (S0b.2 küszöbe alatt). |
+| `allapot` | zárt | ✔ | `adatosítva` \| `nincs adatosítva` \| `nincs forrás` (F05_SZOTAR_BRIEF.md D27, S1.6) — a RENDER_BRIEF.md G6 záró bekezdése szerint: adatosítva a TBESG, TBESH, Thayer, BDB, UBS DNTG (a meglévő import), SDBH domének, LSJ és az LXX-híd (mindkét irány); a többi (Girdlestone, UBS DBH glossza+referencia, Mounce-kiegészítő önmagában, SECE, BDB-etimológia, kiejtés) a `F05_SZOTAR_BRIEF.md` tárgya. **`nincs forrás`** (D27): a szerepnek az adott nyelven nincs a D17 forrásszabálynak megfelelő forrása — VÉGLEGES állapot, nem pótlandó hiány (szemben a `nincs adatosítva`-val, amely ígéretet sugallna); pl. a görög 3. szerep, ha a Translation Words elutasításra kerül (S0b.2 küszöbe alatt). |
 
 A törzscikk (`_TORZSCIKK.md`) 5. szakaszának szerep-mátrixa ebből a táblából
 épül; a lefedettségi mátrix (szavanként) a belső adatmodellből (G5).
 
-### 2.14 `forditasok.tsv` — fordítási gyorsítótár (SZOTAR_BRIEF.md S1, S1.1)
+### 2.14 `forditasok.tsv` — fordítási gyorsítótár (F05_SZOTAR_BRIEF.md S1, S1.1)
 
 Kulcs: `szotar` + `strong` + `entry_id` + `jelentes_szam` + `mezo`. Minden
 magyar szótári fordítás egyetlen helye — a `lexikon_hivatkozasok.tsv`
@@ -681,7 +681,7 @@ magyar szótári fordítás egyetlen helye — a `lexikon_hivatkozasok.tsv`
 | `mezo` | zárt | ✔ | Melyik forrásmezőt fordítja ez a sor: `forditas_hu` (a 2.5 `szoveg_en`-jét), `definicio_hu` vagy `glosszak_hu` (a régi `forditas_ubs.tsv` két oszlopa). |
 | `forras_hash` | szabad szöveg | ✔ | A forrásszöveg (az eredeti nyelvű, EN) SHA-1 hexdigestje (`hashlib.sha1(szoveg).hexdigest()`), UTF-8 kódolásból. Eltérés a forrás-hash és az újraszámolt hash között `ellenoriz.py`-sértés (S1.5, 13. szabály). |
 | `forditas_hu` | szabad szöveg | ✔ | A fordítás szövege — ugyanaz a tartalmi szabály, mint a 2.5-ben leírt `forditas_hu`-nál. |
-| `allapot` | zárt | ✔ | `kezi` (a migrált, ember által korábban jóváhagyott sorok) \| `pilot` (az `eszkozok/fordit.py` próba-kimenete, l. `FORDITAS_PILOT_BRIEF.md`) \| `elavult` (a `forras_hash` már nem egyezik, `ellenoriz.py` javaslata). |
+| `allapot` | zárt | ✔ | `kezi` (a migrált, ember által korábban jóváhagyott sorok) \| `pilot` (az `eszkozok/fordit.py` próba-kimenete, l. `F03_FORDITAS_PILOT_BRIEF.md`) \| `elavult` (a `forras_hash` már nem egyezik, `ellenoriz.py` javaslata). |
 | `modell` | szabad szöveg | | A fordító LLM modell-azonosítója (pl. `anthropic/claude-haiku-4.5`); üres, ha `allapot=kezi` (nem model-fordítás). |
 | `datum` | `DATUM` | ✔ | A migrált soroknál a forrás utolsó tartalmi módosításának git-dátuma (a `lexikon_hivatkozasok.tsv` soraira) vagy a korábbi `forditas_ubs.proveniencia` jóváhagyási dátuma (az UBS-soroknál); új soroknál a fordítás dátuma. |
 | `terminologia_verzio` | szabad szöveg | | A 2.15 `terminologia.tsv` verziója, amellyel a fordítás készült; üres a migrált (a terminológia-tábla előtti) soroknál. |
@@ -695,7 +695,7 @@ G5351/88.266, G5590/9.20) a `megjegyzes` mezőben őrződik meg, mindkét
 származó soron (`definicio_hu` és `glosszak_hu`) — l. `NYITOTT_FELADATOK.md`
 N34 (lezárva).
 
-### 2.15 `terminologia.tsv` — fordítási terminológia (SZOTAR_BRIEF.md S2, D26)
+### 2.15 `terminologia.tsv` — fordítási terminológia (F05_SZOTAR_BRIEF.md S2, D26)
 
 Kulcs: `angol` + `verzio`. Kézzel bővítendő tábla: angol szakkifejezések és
 rövidítés-feloldások rögzített magyar megfelelője, amelyet az
@@ -713,7 +713,7 @@ a fordítói promptba fűz be, hogy a fordítás konzisztens maradjon szótárak
 **Induló tartalom (D26):** a `naplok/FORDITAS_P_terminologia.tsv` 13 sora,
 változatlanul, `v1` verzióval.
 
-### 2.16 `kiejtes_szabalyok.tsv` — görög átírási szabálytábla (SZOTAR_BRIEF.md S3)
+### 2.16 `kiejtes_szabalyok.tsv` — görög átírási szabálytábla (F05_SZOTAR_BRIEF.md S3)
 
 Kulcs: `sorszam`. **Generált célra szolgáló, de kézzel karbantartott** tábla:
 az `eszkozok/kiejtes.py` (S1.3) ebből olvassa a görög SBL-stílusú (Unicode
@@ -745,7 +745,7 @@ feltételezésből); a tényleges forrás (`TBESG.txt`/`TAGNT_kivonat.tsv`)
 sima `u`-t ad — javítva. A 100%-os egyezés önmagában nem elfogadási
 érv — l. a jelentés lefedettségi és kihagyásos (leave-one-out) részét.
 
-### 2.17 `kiejtes_kivetelek.tsv` — kiejtés-kivételek (SZOTAR_BRIEF.md S3, D15)
+### 2.17 `kiejtes_kivetelek.tsv` — kiejtés-kivételek (F05_SZOTAR_BRIEF.md S3, D15)
 
 Kulcs: `nyelv` + `alak`. Kézzel bővítendő/jóváhagyandó tábla, kettős
 szereppel: **görögül** felülírja/kiegészíti a `kiejtes_szabalyok.tsv`
@@ -766,7 +766,7 @@ megmarad (nulla-diff, D30/D31); a kódbeli tábla kivezetése az S2.1 tétele.
 **A 26 héber lemma-kiejtés-jelölt (D28) az S1.7-ben készül, de csak az
 ÁLLJ-jóváhagyás után, az S2.1-ben kerül ide.**
 
-### 2.18 `kiejtes_heber_jeloltszabalyok.tsv` és `kiejtes_heber_kivetelek.tsv` — héber kiejtés-jelölt gépezet (SZOTAR_BRIEF.md S1.7, D34–D37)
+### 2.18 `kiejtes_heber_jeloltszabalyok.tsv` és `kiejtes_heber_kivetelek.tsv` — héber kiejtés-jelölt gépezet (F05_SZOTAR_BRIEF.md S1.7, D34–D37)
 
 Két tábla, amelyek EGYÜTT állítják elő a `naplok/SZOTAR_S1_heber_jeloltek.tsv`
 JELÖLT-listát (`eszkozok/heber_kiejtes_jeloltek.py`) — egyik sem a végleges,

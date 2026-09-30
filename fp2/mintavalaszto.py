@@ -5,7 +5,7 @@ fp2/mintavalaszto.py -- FORDITAS_STILUSPROBA_FP2_BRIEF.md v2, 1. lepes: 30 szoci
 minta a Gemini/DeepSeek/MiniMax osszevetesehez.
 
 Osszetetel:
-  - 20 szocikk: a kor2 (FORDITAS_PILOT_BRIEF.md FP1) ugyanazon 20 szocikke, valtozatlanul
+  - 20 szocikk: a kor2 (F03_FORDITAS_PILOT_BRIEF.md FP1) ugyanazon 20 szocikke, valtozatlanul
     (naplok/FORDITAS_P1_minta.tsv) -- ezen a Gemini es a DeepSeek v1/v3 kimenete kozvetlenul
     osszevetheto.
   - 10 uj szocikk: retegzett, rogzitett seed-del (20260926, ugyanaz, mint a

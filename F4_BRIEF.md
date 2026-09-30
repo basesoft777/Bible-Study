@@ -1,3 +1,9 @@
+---
+cim: F4-0: a `csv` modul kiváltása és a stderr-őr egységesítése
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # F4-0 brief — a `csv` modul kiváltása és a stderr-őr egységesítése
 
 *Készítette: chat-menet (Opus 5), 2026-09-14, v8 (v6-ig l. a döntésnaplót; v7: E1 szűkítve, B21-B23; v8: a hiányzó §3.1 pótolva, E3 predikátuma javítva). Kiindulási állapot: `main` = `origin/main` = `28ae8d4`.*
@@ -470,6 +476,7 @@ Miért nem kettő, ahogy a terv írja: a B más modellt kíván, mint a másik h
 (10 hívási hely), tehát a három menet együtt sem több tokenben, mint kettő lenne
 végig Opuson.
 
+<!-- KOZVETLEN_FUTTATAS -->
 ### 6.3 Az 1. menet nyitó promptja
 
 ```
@@ -501,7 +508,9 @@ A commit-üzeneteket UTF-8 fájlból add át (git commit -F). A három commit ut
 push origin main, ugyanebben a menetben. A jelentésbe kerüljön bele az E1-E5,
 az E7 és az E9 mért értéke, és a git log --oneline -5.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
+<!-- KOZVETLEN_FUTTATAS -->
 ### 6.4 A 2. menet nyitó promptja *(Opus)*
 
 ```
@@ -523,7 +532,9 @@ Commit: F4.0c, UTF-8 üzenetfájlból, majd push origin main ugyanebben a menetb
 A jelentésbe kerüljön az E4 (git diff --stat az adat/ és konkordancia/ alatt —
 üresnek kell lennie) mért eredménye.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
+<!-- KOZVETLEN_FUTTATAS -->
 ### 6.5 A 3. menet nyitó promptja
 
 ```
@@ -542,6 +553,7 @@ kódmintáját is a stderr sorral.
 Commit: F4.0d, UTF-8 üzenetfájlból, majd push origin main. A jelentésbe kerüljön
 az E8 (stderr-őr 24/24) és az E5 (sorvégek) mért eredménye.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ### 6.6 A menetek közé
 

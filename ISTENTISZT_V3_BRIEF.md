@@ -1,3 +1,9 @@
+---
+cim: ISTENTISZT-001 lexikon-oldal v2 → v3
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # ISTENTISZT_V3_BRIEF.md — v1
 
 Az ISTENTISZT-001 lexikon-oldal rendbetétele egy menetben: v2 → v3. Kiindulás: `main` = `65d581b`.

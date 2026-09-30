@@ -1,4 +1,17 @@
-# KARBANTARTAS_BRIEF.md — Szkript-karbantartás: importbiztos régi szkriptek, Windows-sorvég tűrése, a Károli-tábla nullázása
+---
+feladat: 4
+cim: Szkript-karbantartás
+kod: KB
+tipus: feladat
+fazis: 1
+modell: sonnet
+allapot: lezarva
+ad: importbiztos szkriptek, CRLF-tűrés, a Károli-tábla nullázása
+kovetkezo: lezárva
+fugg: [2]
+lezarva_osszegzes: K1–K10 teljesül (K10 öt körben, ágleltárral, nulla-kimenet-őrrel és három mutációs/hiba-próbával: `naplok/ELLENOR_KARB.md`), merge `b8a418a` (09.27); mérőszkript-vakfoltok és -őrök javítása, PR #60 (`8bd1e40`), PR #61
+---
+# F04_KARBANTARTAS_BRIEF.md — Szkript-karbantartás: importbiztos régi szkriptek, Windows-sorvég tűrése, a Károli-tábla nullázása
 
 *v3.1 — 2026.09.27 · **FELADATOK #4** · Állapot: futtatásra kész (a #2 merge-e megvan: PR #57, `68eb348`) · A §0 a 09.25-i mérés, változatlanul; a KB0 újraméri · A G1–G7 a v2 óta változatlan, a G8 új*
 
@@ -122,7 +135,7 @@ A menet semmit nem akaszt meg. A mostani menetek (TEREMT-002, SZOTAR, render) eg
 
 | # | Feltétel |
 |---|---|
-| K1 | A `git diff --stat main..HEAD` csak ezeket a fájlokat mutatja: `KARBANTARTAS_BRIEF.md`, a 13 érintett `eszkozok/*.py`, `konkordancia/Karoli_Strong_kivonat.tsv`, `naplok/KARB_*`, `naplok/ELLENOR_KARB.md`, `FELADATOK.md` (csak a #2-es sor Kész-listába mozgatása és a #4-es sor, G5) |
+| K1 | A `git diff --stat main..HEAD` csak ezeket a fájlokat mutatja: `F04_KARBANTARTAS_BRIEF.md`, a 13 érintett `eszkozok/*.py`, `konkordancia/Karoli_Strong_kivonat.tsv`, `naplok/KARB_*`, `naplok/ELLENOR_KARB.md`, `FELADATOK.md` (csak a #2-es sor Kész-listába mozgatása és a #4-es sor, G5) |
 | K2 | `eszkozok/ellenoriz.py`: változatlan a KB0-ban mért 0.6-hoz képest |
 | K3 | KB1: 10/10 sor „egyezik” mind a négy oszlopban (vagy azonos hibás leállás, megjelölve) |
 | K4 | KB2: a 4 szkript CRLF-tesztje zöld, a régi változaté piros |
@@ -148,15 +161,16 @@ A menet semmit nem akaszt meg. A mostani menetek (TEREMT-002, SZOTAR, render) eg
 
 ---
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 6. Nyitó prompt (cloud vagy helyi session; a briefet csatold)
 
 ```
 Először írd ki: pwd, git branch --show-current, git log --oneline -1
 Olvasd el a CLAUDE.md-t és a FELADATOK.md-t.
 Ellenőrizd, hogy a main tartalmazza a 68eb348 commitot (#2 CI merge). Ha nem, ÁLLJ, és jelezd.
-1. A csatolt KARBANTARTAS_BRIEF.md-t mentsd a repó gyökerébe, változtatás nélkül.
+1. A csatolt F04_KARBANTARTAS_BRIEF.md-t mentsd a repó gyökerébe, változtatás nélkül.
    Ugyanebben a commitban a FELADATOK.md-ben a #2-es sort mozgasd a Kész listába (G5 a).
-   Commit: "KB: KARBANTARTAS_BRIEF.md v3.1 (FELADATOK #4); #2 kész (68eb348)".
+   Commit: "KB: F04_KARBANTARTAS_BRIEF.md v3.1 (FELADATOK #4); #2 kész (68eb348)".
 2. Hajtsd végre a KB0–KB4 tételeket a brief §3 szerint, a §1 mércéivel és a §2 döntéseivel.
    A szkripteket SOHA ne futtasd a munkapéldányban, csak ideiglenes másolatban (G4).
 3. Ellenőrizd a §4 K1–K8 feltételeit, majd pushold a saját ágadat, és nyiss PR-t a main felé
@@ -166,3 +180,4 @@ Ellenőrizd, hogy a main tartalmazza a 68eb348 commitot (#2 CI merge). Ha nem, �
 ÁLLJ: jelentés a chatbe legfeljebb 20 sorban: ág, PR, CI, K1–K10, KB1/KB2/KB3 egy-egy sorban.
 A részletek a naplok/KARB_jelentes.md-be kerülnek.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->

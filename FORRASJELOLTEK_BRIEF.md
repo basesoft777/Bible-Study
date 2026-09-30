@@ -1,3 +1,9 @@
+---
+cim: Forrásjelöltek bevizsgálása: MT–LXX-illesztés, versszámozás, teljes KJV/ASV, BSB, Nave (FJ 1. menet)
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # FORRASJELOLTEK_BRIEF.md — forrásjelöltek bevizsgálása: MT–LXX-illesztés, versszámozás, teljes KJV/ASV, BSB, Nave
 
 *v1 — 2026.09.25 · jóváhagyásra: a §2 G-döntései és a §0 számai · a 2026.09.25-i munkaterv C briefje (3a–3e)*
@@ -133,6 +139,7 @@ Commit tételenként: `FJ<n>: <rövid leírás>`.
 
 ---
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 6. Nyitó prompt (cloud session; a briefet csatold)
 
 ```
@@ -145,3 +152,4 @@ Olvasd el a CLAUDE.md-t.
 3. A menet végén ellenőrizd a §4 K1–K7-et, majd pushold a saját ágadat. A main-re ne pushold.
 ÁLLJ az FJ5 után: jelentés a chatbe (ág neve, commitlista, forrásonkénti javaslat, K1–K7).
 ```
+<!-- /KOZVETLEN_FUTTATAS -->

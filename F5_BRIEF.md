@@ -1,3 +1,9 @@
+---
+cim: F5: sablon-frissítés
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # F5 brief — sablon-frissítés (`4_PaRDeS_tematikus_sablon.md`)
 
 *Készítette: chat-menet (Opus 5), 2026-09-15, **v2** (v1: első kiadás; v2: az 1. menet lefutott, a független ellenőrzés három rést talált — §1.5 —, ezeket az új F5.6a tétel zárja; az F5.5 parancsa a rögzített kiindulóponthoz mér, és a tartalmi tételek elé került; a K10 a tartalmi commitokra szűkült). Kiindulási állapot: `main` = `origin/main` = **`f425331`** (F0–F4 lezárva); az 1. menet után **`2126ebf`**.*
@@ -291,6 +297,7 @@ Az F5.0 és az F5.5 nem commitol, ha nincs eltérés. A brief saját verziói t�
 
 **Megállási pontok:** az F5.0 után, ha bármi eltér; az F5.5-nél, ha az ág eltér; minden commit előtt a hozzá tartozó K-kritériumok.
 
+<!-- KOZVETLEN_FUTTATAS -->
 ### 6.1 Az 1. menet nyitó promptja *(lefutott, `e24239a`)*
 
 ```
@@ -310,7 +317,9 @@ Olvasd el a CLAUDE.md-t, majd az F5_BRIEF.md-t teljes egészében.
 Push nincs. A végén zárójelentés: commit-hash-ek, K1–K11 eredménye
 kritériumonként, és minden eltérés, amit menet közben találtál.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
+<!-- KOZVETLEN_FUTTATAS -->
 ### 6.2 A 2. menet nyitó promptja
 
 ```
@@ -328,6 +337,7 @@ Olvasd el az F5_BRIEF.md v2 §1.5 pontját és az F5.6a tételt.
 Push nincs. Zárójelentés: hash, K1–K14 kritériumonként, a diff teljes
 szövege (rövid, idézd egészben).
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ---
 

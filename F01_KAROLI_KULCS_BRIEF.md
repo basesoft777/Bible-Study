@@ -1,4 +1,16 @@
-# KAROLI_KULCS_BRIEF.md — Károli-versmegfeleltetés: a `szamozas_elteres` valódi oka és javítása
+---
+feladat: 1
+cim: Károli-versszámok javítása a görög Ószövetségben
+kod: KK
+tipus: feladat
+fazis: 1
+modell: sonnet
+allapot: lezarva
+ad: a Károli–LXX versmegfeleltetés javítása a görög Ószövetségben
+kovetkezo: lezárva
+lezarva_osszegzes: merge `4b9ae49` (09.27)
+---
+# F01_KAROLI_KULCS_BRIEF.md — Károli-versmegfeleltetés: a `szamozas_elteres` valódi oka és javítása
 
 *v1.1 — 2026.09.25 · jóváhagyásra: a §0b számai, a G2 módosítása és a G9–G11 · új: KK1b-menet a
 KK4 előtt (a KK 1. menet jelentésének felülvizsgálatából)*
@@ -190,7 +202,7 @@ Commit tételenként: `KK<n>: <rövid leírás>` (az 1b menetben `KK1b-<n>: …`
 
 | # | Feltétel |
 |---|---|
-| K1 | 1. és 1b menet: `git diff --stat main..HEAD` csak `KAROLI_KULCS_BRIEF.md` és `naplok/KAROLI_*`. 2. menet: ezeken felül csak `konkordancia/Karoli_versmegfeleltetes.tsv`, `konkordancia/LXX_OS/*`, `eszkozok/lxx_os_import.py`, `eszkozok/lxx_kivonat_fetch_v2.py` (ha a G4 ott javít), és a lexikon generátorának kimenetei |
+| K1 | 1. és 1b menet: `git diff --stat main..HEAD` csak `F01_KAROLI_KULCS_BRIEF.md` és `naplok/KAROLI_*`. 2. menet: ezeken felül csak `konkordancia/Karoli_versmegfeleltetes.tsv`, `konkordancia/LXX_OS/*`, `eszkozok/lxx_os_import.py`, `eszkozok/lxx_kivonat_fetch_v2.py` (ha a G4 ott javít), és a lexikon generátorának kimenetei |
 | K2 | `eszkozok/ellenoriz.py`: SÉRTÉS 0 |
 | K3 | a KK1-ben mind a 15 sor besorolva, horgonyszóval mindkét oldalon; 1b: a 929 fejezet mind osztályozva |
 | K4 | a KK1b-tervezet átmegy a §1 érvényességi próbáin; a KK1b-4 mintapróba ≥ 98%; nincs `UTKOZIK_ELLENORZOTT` sor bizonyítás nélkül |
@@ -210,14 +222,15 @@ Commit tételenként: `KK<n>: <rövid leírás>` (az 1b menetben `KK1b-<n>: …`
 
 ---
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 6. Nyitó prompt — 1b menet (cloud session; a briefet csatold)
 
 ```
 Először írd ki: pwd, git branch --show-current, git log --oneline -1
 Válts a claude/karoli-kulcs-35158 ágra (git fetch; git checkout), és írd ki újra a git log --oneline -1-et.
 Olvasd el a CLAUDE.md-t, a konkordancia/LXX_OS/README.md 2. szakaszát és a naplok/KAROLI_KK1_jelentes.md-t.
-1. A csatolt KAROLI_KULCS_BRIEF.md v1.1-et írd a repó gyökerében lévő v1 helyére, változtatás nélkül.
-   Commit: "KK: KAROLI_KULCS_BRIEF.md v1.1".
+1. A csatolt F01_KAROLI_KULCS_BRIEF.md v1.1-et írd a repó gyökerében lévő v1 helyére, változtatás nélkül.
+   Commit: "KK: F01_KAROLI_KULCS_BRIEF.md v1.1".
 2. Hajtsd végre a KK1b-1…KK1b-5 tételeket a brief §3 szerint, a §0b, §1 és a G9–G11 szerint.
    Tételenként külön commit, és minden commit után push erre az ágra. A main-re ne pushold.
 3. A KK1b-5 után ellenőrizd a §4 K1–K6 és K8 feltételt; állapot csak RENDBEN vagy NEM TELJESÜL.
@@ -225,14 +238,16 @@ Olvasd el a CLAUDE.md-t, a konkordancia/LXX_OS/README.md 2. szakaszát és a nap
 darabszáma osztályonként, a mintapróba aránya, a mért hatás a Zsoltárokkal, a 15 sor, K1–K8).
 A KK4–KK6-ot ebben a sessionben NE kezdd el.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 7. Nyitó prompt — 1. menet (v1, lefutott; archív)
 
 ```
 Először írd ki: pwd, git branch --show-current, git log --oneline -1
 Olvasd el a CLAUDE.md-t és a konkordancia/LXX_OS/README.md 2. szakaszát.
-1. A csatolt KAROLI_KULCS_BRIEF.md-t mentsd a repó gyökerébe, változtatás nélkül.
-   Commit: "KK: KAROLI_KULCS_BRIEF.md v1".
+1. A csatolt F01_KAROLI_KULCS_BRIEF.md-t mentsd a repó gyökerébe, változtatás nélkül.
+   Commit: "KK: F01_KAROLI_KULCS_BRIEF.md v1".
 2. Hajtsd végre a KK0–KK3 tételeket a brief §3 szerint, a §1 mércéivel és a §2 döntéseivel.
    Tételenként külön commit, és minden commit után push a saját ágadra. A main-re ne pushold.
 3. A KK3 után ellenőrizd a §4 K1–K6-ot (az 1. menetre vonatkozó részt).
@@ -240,3 +255,4 @@ Olvasd el a CLAUDE.md-t és a konkordancia/LXX_OS/README.md 2. szakaszát.
 a 15 sor besorolása, az FJ2-felülvizsgálat, a hatásbecslés, K1–K6).
 A KK4–KK6-ot ebben a sessionben NE kezdd el.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 kozos.py -- CI.0: kozos segedfuggvenyek az eszkozok/ellenorzes/* szabalyokhoz
-(l. naplok/../CI_ELLENORZES_BRIEF.md tetellista). Egy fuggveny = egy Talalat
+(l. naplok/../F02_CI_ELLENORZES_BRIEF.md tetellista). Egy fuggveny = egy Talalat
 tipus, egy fajl-felderito, es a tsv-olvasas (split('\\t'), a `csv` modul
 tilos -- CLAUDE.md "TSV-olvasas" szakasz).
 

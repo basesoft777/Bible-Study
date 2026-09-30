@@ -558,7 +558,7 @@ def szabaly12_lap_szamlalo(adat_dir):
 
 
 # ---------------------------------------------------------------------------
-# 13-14. SZOTAR_BRIEF.md S1.5: gyorsitotar + kiejtes/terminologia
+# 13-14. F05_SZOTAR_BRIEF.md S1.5: gyorsitotar + kiejtes/terminologia
 # ---------------------------------------------------------------------------
 
 def _forditasok_forras_szoveg_idx(adat_dir):
@@ -584,7 +584,7 @@ def _forditasok_forras_szoveg_idx(adat_dir):
 
 
 def szabaly13_forditasi_gyorsitotar(adat_dir):
-    """SZOTAR_BRIEF.md S1.5, 13. szabaly (SEMA.md 2.14): a forditasok.tsv
+    """F05_SZOTAR_BRIEF.md S1.5, 13. szabaly (SEMA.md 2.14): a forditasok.tsv
     kulcsa (szotar+strong+entry_id+jelentes_szam+mezo) egyedi legyen, es a
     tarolt forras_hash egyezzen a forrasszoveg (szoveg_en / UBS
     definicio_rovid / glosszak) ujraszamolt SHA-1-evel. Eltéres SÉRTÉS,
@@ -625,7 +625,7 @@ def szabaly13_forditasi_gyorsitotar(adat_dir):
 
 
 def szabaly14_kiejtes_terminologia(adat_dir):
-    """SZOTAR_BRIEF.md S1.5, 14. szabaly: csak JELENTÉS, nem gátol.
+    """F05_SZOTAR_BRIEF.md S1.5, 14. szabaly: csak JELENTÉS, nem gátol.
     (a) hány forditasok.tsv sor terminologia_verzio-ja marad el a
     terminologia.tsv jelenlegi legmagasabb verziójától (üres is elmaradás,
     a migrált soroknál ez a várt állapot, SEMA.md 2.14); (b) a

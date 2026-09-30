@@ -59,7 +59,7 @@ text = re.sub('<[^>]+>', ' ', row[0])
 L. `konkordancia/Uj_lexikon_fajlok_2026-09-07.md` — teljes,
 fájlonkénti hasznossági rangsor.
 
-## `konkordancia/MCGED_teljes.tsv` — Mounce-import (SZOTAR_BRIEF.md S6)
+## `konkordancia/MCGED_teljes.tsv` — Mounce-import (F05_SZOTAR_BRIEF.md S6)
 
 **Generált** (`eszkozok/mcged_import.py`, kézzel nem szerkesztendő) a
 `MCGED.lexicon` `G####` Strong-kulcsú sorai(ból — a `gkG5####` GK-kulcsú

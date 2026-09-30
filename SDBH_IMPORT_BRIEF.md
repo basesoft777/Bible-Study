@@ -1,3 +1,9 @@
+---
+cim: Szemantikai domének importja (SDBH és SDGNT)
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # SDBH-import brief — szemantikai domének (SDBH + SDGNT)
 
 *Készítette: chat-menet (Opus 5), 2026-09-15, **v2** (v1: első kiadás; v2: az 1. menet lefutott, a független ellenőrzés egy adat-rést és két kisebb hibát talált — §1.5 —, ezeket a 2. menet SDBH.1a–SDBH.5a tételei zárják). Kiindulási állapot: `main` = `origin/main` = **`a94b9f9`** (F0–F5 lezárva); az 1. menet után **`6fe0d1e`**.*
@@ -450,6 +456,7 @@ A brief saját commitja tétel-azonosító nélkül megy, a 2. menet végén (`S
 
 **Megállási pontok:** az SDBH.0 után, ha bármi eltér; SHA-eltérésnél; a mintánál, ha eltér a §3.5-től; minden commit előtt a hozzá tartozó K-kritériumok; bármely szöveg-horgonynál, ha nem pontosan egy helyen illeszkedik.
 
+<!-- KOZVETLEN_FUTTATAS -->
 ### 7.1 Az 1. menet nyitó promptja *(lefutott, `6fe0d1e`)*
 
 ```
@@ -476,7 +483,9 @@ Push nincs. A végén zárójelentés: commit-hash-ek, K1–K14 kritériumonkén
 az ellenoriz.py teljes kimenete, a §3.5 parancsainak proveniencia-sorai,
 és minden eltérés, amit menet közben találtál.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
+<!-- KOZVETLEN_FUTTATAS -->
 ### 7.2 A 2. menet nyitó promptja *(v2)*
 
 ```
@@ -500,6 +509,7 @@ Push nincs. Zárójelentés: hash-ek, K15–K21 kritériumonként, az
 ellenoriz.py teljes kimenete, a §3.6 parancsainak teljes kimenete,
 az anomáliákat gyűjtő és író sorok idézve, és minden eltérés.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ---
 

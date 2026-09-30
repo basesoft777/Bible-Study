@@ -1,4 +1,4 @@
-# `tW_szocikkek.tsv` — unfoldingWord Translation Words (SZOTAR_BRIEF.md S14, D20)
+# `tW_szocikkek.tsv` — unfoldingWord Translation Words (F05_SZOTAR_BRIEF.md S14, D20)
 
 *Elfogadva mindkét nyelven S0b.2-ben (`naplok/SZOTAR_S0b_jelentes.md` 4. szakasz);
 teljes import S1.4-ben.*

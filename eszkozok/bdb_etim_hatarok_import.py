@@ -23,7 +23,7 @@ szabaly F05b-ben javitva ketszer -- l. D41 es hatar_keres()).
 A "javaslat"/"jovahagyott" sorokat ez a szkript NEM szamitja ki
 automatikusan -- a szoveget kezzel irt konstansok adjak (KEZI_JAVASLATOK),
 mert az automatikus hatarfelismeres itt eppen azert bukik, mert a forras
-nem kovetkezetes tagolasu; a kezi dontes indoklasat l. a SZOTAR_BRIEF.md
+nem kovetkezetes tagolasu; a kezi dontes indoklasat l. a F05_SZOTAR_BRIEF.md
 §3 S1.4 soraban es az S1.4 jelenteseben. A JOVAHAGYOTT halmaz csak azt
 donti el, hogy a kimeneti allapot-cimke `javaslat` vagy `jovahagyott`
 legyen -- a szoveg forrasa mindkettonel a KEZI_JAVASLATOK.

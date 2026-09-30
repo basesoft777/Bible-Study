@@ -1,3 +1,9 @@
+---
+cim: KK7.5: az 1Sám 20/21 határának javítása, utána merge
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # KAROLI_KULCS_KK75_BRIEF.md — KK7.5: az 1Sám 20/21 határának javítása, utána merge
 
 *v1 — 2026.09.25 · jóváhagyásra: a §2 G-döntései · a KK7 független ellenőrzéséből (`d9056a5`)*
@@ -89,6 +95,7 @@ Commit tételenként: `KK7.5.<n>: <rövid leírás>`.
 
 ---
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 6. Nyitó prompt — KK7.5 (a futó cloud sessionbe, a `claude/karoli-kulcs-35158` ágon; a briefet csatold)
 
 ```
@@ -101,7 +108,9 @@ Először írd ki: pwd, git branch --show-current, git log --oneline -1
 3. A végén ellenőrizd a §4 K1–K6-ot, és pushold az ágat. A main-re ne pushold.
 ÁLLJ a KK7.5.3 után: jelentés a chatbe (commitlista, a határkeresés találatai, K1–K6).
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 7. Merge-prompt (csak a KK7.5 független ellenőrzése és a jóváhagyásod után)
 
 ```
@@ -113,3 +122,4 @@ Először írd ki: pwd, git branch --show-current, git log --oneline -1
    general.py --cel lexikon --id X --ellenoriz a 8 motívumra (0 eltérés).
 4. git push origin main. Jelentés: a merge-commit hash-e és a két ellenőrzés eredménye.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->

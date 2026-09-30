@@ -174,7 +174,7 @@ Fejléc: `entry_id lemma tipus nyers_ertek allapot`. 110 sor, mind
 bejegyzései (pl. `α`), javítás vagy kitalált kód nélkül (`CLAUDE.md` 3.
 szabálya).
 
-## UBS DBH (héber, SZOTAR_BRIEF.md S5, `eszkozok/ubs_dbh_import.py`)
+## UBS DBH (héber, F05_SZOTAR_BRIEF.md S5, `eszkozok/ubs_dbh_import.py`)
 
 Ugyanaz a commit és forrás, mint a fenti SDBH-importé, a
 `dictionaries/hebrew/JSON/UBSHebrewDic-v0.9.2-en.JSON` fájlból, az

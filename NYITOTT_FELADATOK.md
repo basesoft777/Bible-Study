@@ -1,23 +1,23 @@
 # Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.09.29 (SZOTAR_BRIEF.md v1.10, S1 javítókör (F05b) —
+Utolsó frissítés: 2026.09.29 (F05_SZOTAR_BRIEF.md v1.10, S1 javítókör (F05b) —
 N39–N44 új: héber `s`/`ś` átírás, H2403 lemma-választás, `spirantize()`
 geminációs hiba, `alap_strong` lemma-választási szabály (a `#9`
 előfeltétele), CI E5-jelölés globális hatóköre, commit-fegyelem.)
 
-Korábbi frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.7, S1.5 — N38 felvéve és
+Korábbi frissítés: 2026.09.28 (F05_SZOTAR_BRIEF.md v1.7, S1.5 — N38 felvéve és
 lezárva ugyanabban a menetben: az `ellenoriz.py` 10. szabálya a megszűnt
 `forditas_ubs.tsv`-t olvasta, HIBA-val állt le S1.1 óta; javítva, és a
 13–14. szabály bevezetve, S1.5.)
 
-Korábbi frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.7, S1.4 — N35–N37 új: a
+Korábbi frissítés: 2026.09.28 (F05_SZOTAR_BRIEF.md v1.7, S1.4 — N35–N37 új: a
 MCGED `y`-ág validálatlansága, a gold-készlet 12 csonkolt sora, nincs
 egységes Strong-normalizáló függvény.)
 
-Korábbi frissítés: 2026.09.28 (SZOTAR_BRIEF.md v1.4, D30 — N32, N33 új: a
+Korábbi frissítés: 2026.09.28 (F05_SZOTAR_BRIEF.md v1.4, D30 — N32, N33 új: a
 commitolt render-kimenet elavultsága és a CI generátor-lefedettsége.)
 
-Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: a rések tartalommal, kivonatok, `forras=lap` megszűnt, diff-osztályozó — RENDER lezárva. **Következő: `SZOTAR_BRIEF.md`.**)
+Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: a rések tartalommal, kivonatok, `forras=lap` megszűnt, diff-osztályozó — RENDER lezárva. **Következő: `F05_SZOTAR_BRIEF.md`.**)
 
 ## Nagy, tartalmi döntést igénylő tételek
 
@@ -30,7 +30,7 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
 3. "Én vagyok" tematikus motívum-jelölt (2026.09.08, chat-kutatás — még sehol nincs repóban dokumentálva) — 2Móz 3:14 (אֶהְיֶה אֲשֶׁר אֶהְיֶה ⇒ LXX ἐγώ εἰμι ὁ ὤν) és az Ézsaiás "Ani Hu" klaszter (אֲנִי הוּא) mint LXX-híd Jézus ἐγώ εἰμι-mondásaihoz Jánosnál. Pozíció-alapú TAHOT/TAGNT-ellenőrzéssel megerősítve: 6 valódi ÓSZ Ani Hu-hely (Ézs 41:4, 43:10, 43:13, 46:4, 48:12, 52:6 — a kezdeti 20 jelöltből 14 hamis találatnak bizonyult), 8 abszolút ÚSZ ἐγώ εἰμι-mondás Jánosnál (4:26, 6:20, 8:24, 8:28, 8:58, 13:19, 18:5, 18:6, 18:8), 7 predikátumos ἐγώ εἰμι-mondás (6:35 kenyér, 8:12 világosság, 10:7/9 ajtó, 10:11/14 jó pásztor, 11:25 feltámadás/élet, 14:6 út/igazság/élet, 15:1/5 szőlőtő). Kiemelt lelet: Jer 2:21 (זֶרַע אֱמֶת, "igaz mag") mint lehetséges lexikai/fordítási gyökér a Ján 15:1 ἀληθινή ("igazi") jelzőjéhez — a hét predikátumos kép közül ez az egyetlen lexikai szintű, a többi hat tematikus/kép-szintű. Formális PaRDeS-feldolgozás (négyforrásos audit, sablon szerinti tanulmány) még nem indult el.
 4. Olvasói szint — FEJLESZTÉS LEÁLLÍTVA (2026.09.08, l. `motivumlog/Olvasoi_szint_tervezesi_naplo.md` 10. pontja). Egy teljes cikken (ISTENTISZT-001) végzett pilot (6 fokozat, 4 tengely, típus-tudatos finomítás) a `olvasoi-szint-pilot-2026-09-08` branch-en van, NEM mergelve a main-be. Leállítás oka: a publikálási terv (l. 2. tétel), ami ezt indokolná, még csak megbeszélés szintjén áll. Nyitott kérdések (l. napló 10. pont): a 4 tengely függetlensége nincs bizonyítva; a script-koncepció valószínűleg sosem lesz tisztán mechanikus; az általánosíthatóság más szövegtípuson nincs tesztelve. Csak akkor veendő elő újra, ha a publikálási terv ténylegesen elindul.
 
-5. Szótári szerepmátrix — utómunka a 2026.09.25-i döntések után (`SZOTAR_BRIEF.md` v1.1, D16–D17):
+5. Szótári szerepmátrix — utómunka a 2026.09.25-i döntések után (`F05_SZOTAR_BRIEF.md` v1.1, D16–D17):
    - (a) Licencoszlop a `szotar_szerepek.tsv`-be (forrásonként licenc és a repóban tárolható tartalom) — nyitott javaslat.
    - (b) A 8 törzscikk 5. szakasza a `szotar_szerepek.tsv` v1.1-es módosítása után még a régi forrásneveket mutatja („Cremer (1895)”, „+ Cremer héber mutatója”); a SZOTAR 2. menetének regenerálása hozza helyre.
 6. Forrásjelöltek a GitHub-szemléből — **felvéve** (2026.09.25, a felhasználó döntése): vizsgálat, és ha beválik, import, sorrendben (jcuenod/awesome-bible-data és 11 további link alapján):
@@ -328,7 +328,7 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   `basokant/nave` adatforrásával együtt.
 
 - **N28 — az FJ2 versszámozási következtetései felülírva.** *(ÚJ, FJ-ellenőrzés, 2026.09.25)*
-  A `KAROLI_KULCS_BRIEF.md` 0. pontja szerint nem tartható: a Jón 2:3 → LXX 2:4 javaslat, a
+  A `F01_KAROLI_KULCS_BRIEF.md` 0. pontja szerint nem tartható: a Jón 2:3 → LXX 2:4 javaslat, a
   „hiányzó fejezetek” diagnózis és a „Károli-kulcsú tábla nem szükséges” következtetés. Az
   adat megvan, a Károli-kulcs üres (`karoli_ok=szamozas_elteres`). A téma gazdája a KK-menet;
   a `naplok/FORRAS_FJ2_*` fájlok csak történeti érvényűek.
@@ -394,7 +394,7 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
 
 - **N37 — nincs egységes Strong-kód-normalizáló függvény a projektben
   (`#4/1d`).** *(ÚJ, SZOTAR S1.4 ellenőrzés, 2026.09.28, a felhasználó
-  kérésére, l. a #4/N21 kapcsán)* A `KARBANTARTAS_BRIEF.md` §3 saját
+  kérésére, l. a #4/N21 kapcsán)* A `F04_KARBANTARTAS_BRIEF.md` §3 saját
   `1a`/`1b`/`1c` sorozatának (KB1 = `__main__`-őr+argparse, KB2 =
   CRLF-tűrés, KB3 = `1c`, N21: a `Karoli_Strong_kivonat.tsv` nullázatlan
   Strong-számainak javítása) **logikus folytatása — `1d`**: legalább 7
@@ -412,7 +412,7 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   `eszkozok/strong_util.py` (vagy hasonló) modul, amit minden import
   átvesz. **A `#4` (KARBANTARTAS KB0–KB4) már lezárt és mergelt**
   (`b8a418a`, 2026.09.27), ezért ez a tétel nem élesztette újra azt a
-  menetet — a `KARBANTARTAS_BRIEF.md` §5 döntésnaplója rögzíti az
+  menetet — a `F04_KARBANTARTAS_BRIEF.md` §5 döntésnaplója rögzíti az
   eltérést (miért N-tételként, nem élő KB5-ként fut). Ez a tétel maga NEM
   végzi el a konszolidációt (kívül esik az S1 hatókörén), csak jelzi;
   jövőbeli önálló karbantartás-menet tárgya.
@@ -540,17 +540,17 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 
 ## Lezárva
 
-### 2026.09.28 (SZOTAR_BRIEF.md S1.5 — N38 felvéve és lezárva):
+### 2026.09.28 (F05_SZOTAR_BRIEF.md S1.5 — N38 felvéve és lezárva):
 * N38 — az `eszkozok/ellenoriz.py` 10. szabálya (`forditas_ubs.tsv`) az S1.1 óta HIBA-val (kilépési kód 2) állt le minden futtatáskor, észrevétlenül. A `forditas_ubs.tsv` a SZOTAR S1.1-ben megszűnt (`adat/SEMA.md` 2.10, D31, 51-soros `adat/forditasok.tsv`-re költözött), de a 10. szabály (`LEXV2_2 tablak`) a régi fájlnevet feltétel nélkül olvasta be — a hiányzó fájl kivétele az egész szkriptet `HIBA`-val állította le, mielőtt bármi más lefuthatott volna. Mivel az S1.1–S1.4 közben egyetlen menet sem futtatta le az `ellenoriz.py`-t teljes egészében, ez a törés hetekig rejtve maradt volna a következő tényleges futtatásig. Javítva az S1.5-ben (ugyanaz a commit, amely a 13-14. szabályt bevezette): a `forditas_ubs.tsv`-részt a szabály RETIRED-ként kihagyja, ha a fájl hiányzik (a kulcs-/hash-ellenőrzést a 13. szabály veszi át); a `lxx_dontesek.tsv`-rész változatlan. `naplok/SZOTAR_S1_5_ellenoriz_jelentes.md`: RENDBEN 11, SÉRTÉS 0, KÉZI 2, JELENTÉS 3, kilépési kód 0.
 
-### 2026.09.28 (SZOTAR_BRIEF.md S1.1 — N34 lezárva):
+### 2026.09.28 (F05_SZOTAR_BRIEF.md S1.1 — N34 lezárva):
 * N34 — a megszűnt `forditas_ubs.tsv` `megjegyzes` mezője (4 sor: G1311/88.266, G1944/33.475, G5351/88.266, G5590/9.20) pótolva: az `adat/forditasok.tsv` felvett egy opcionális `megjegyzes` oszlopot (`adat/SEMA.md` 2.14), a 4 sor jegyzete mindkét származó soron (`definicio_hu`, `glosszak_hu`) megőrizve. A `nulladiff.sh 8f5a1eb` a két D31-csere mellett továbbra is üres diffet ad.
 
 ### 2026.09.25 (CREMER_OCR_BRIEF.md v3 — lezárva):
 * A Cremer teljes szövegének javítása külső modellekkel (O-pipeline) lezárva, D22. Eredmény: a cremuoft-tétel azonosítása (görög betűs OCR), élőfej-alapú leképezés, módszertani tanulságok (D20–D21), ellenőrző csomag (`96c4c5d`). A Cremer a szótári rétegbe sem kerül be (SZOTAR D16).
-* Cremer utóélete (korábbi 5. tétel): a Cremer sem szövegként, sem hivatkozásként nem kerül a szótári rétegbe — `SZOTAR_BRIEF.md` D16 (a felhasználó döntése). A korábbi javaslat (oldalhivatkozás archive.org-linkkel; célzott kinyerés és becslése) a git-történetben (`eae2143`).
-* Szerepmátrix (korábbi 6. tétel): forrásszabály — csak saját repóban tárolható és onnan renderelhető forrás kerül be (`SZOTAR_BRIEF.md` D17, a felhasználó döntése). Ezért a NIDNTTE/NIDOTTE nem kerül be. A megbeszélés rögzített pontjai (NIDNTTE/NIDOTTE-javaslat és idézési szabálya, a Cremer/Girdlestone-sor átnevezése, licencoszlop, az elvetett alternatív mátrix-javaslat indoklása) szó szerint a git-történetben (`eae2143`, NYITOTT_FELADATOK.md 6. tétel).
-* TWOT-szám: marad, a D17 kivételeként (`SZOTAR_BRIEF.md` D17, a felhasználó döntése, 2026.09.25).
+* Cremer utóélete (korábbi 5. tétel): a Cremer sem szövegként, sem hivatkozásként nem kerül a szótári rétegbe — `F05_SZOTAR_BRIEF.md` D16 (a felhasználó döntése). A korábbi javaslat (oldalhivatkozás archive.org-linkkel; célzott kinyerés és becslése) a git-történetben (`eae2143`).
+* Szerepmátrix (korábbi 6. tétel): forrásszabály — csak saját repóban tárolható és onnan renderelhető forrás kerül be (`F05_SZOTAR_BRIEF.md` D17, a felhasználó döntése). Ezért a NIDNTTE/NIDOTTE nem kerül be. A megbeszélés rögzített pontjai (NIDNTTE/NIDOTTE-javaslat és idézési szabálya, a Cremer/Girdlestone-sor átnevezése, licencoszlop, az elvetett alternatív mátrix-javaslat indoklása) szó szerint a git-történetben (`eae2143`, NYITOTT_FELADATOK.md 6. tétel).
+* TWOT-szám: marad, a D17 kivételeként (`F05_SZOTAR_BRIEF.md` D17, a felhasználó döntése, 2026.09.25).
 * Utómunka: új 5. tétel (licencoszlop, törzscikk-regenerálás).
 
 ### 2026.09.23 (RENDER_BRIEF.md v4, 1. menet — R1.1–R1.8):
@@ -559,7 +559,7 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 * **ISTENTISZT-001 visszaírás**: a tanulmány (`tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md`) és a kereszthivatkozás-napló (`tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md`) megkapta a lexikonoldal hét résének tartalmát, jelölőkkel; a `minosites` a naplóba (G14), a `2b` új szakaszként a "2. Eredeti nyelvi összevetés" után (G15/D22), a `modszertan` csak a "6. Napló-frissítés" szakaszt váltja fel (D23).
 * **Törzscikk-generátor** (`eszkozok/torzscikk_general.py`, `general.py --cel torzscikk`) — mind a 8 motívumra `lexikon/[ID]_TORZSCIKK.md`, a lexikonoldalból renderelve (sablon: `sablonok/8_PaRDeS_torzscikk_sablon.md`). Az 5. szakasz a régi pilot-szócikk-dump helyett a G6 szerepmátrixot (`adat/szotar_szerepek.tsv`, 20 sor) és egy szavankénti lefedettségi mátrixot mutat. Az ISTENTISZT-001 törzscikke a pilottól igazoltan csak az 5. szakaszban és a láblécben tér el (`naplok/RENDER_R1_pilot_diff.tsv`).
 * `eszkozok/ellenoriz.py` 11–12. szakasz: a `tanulmany`/`adat` forrású rések egyezése a lexikonoldallal (SÉRTÉS eltérésnél), és a `lap` forrású sorok száma (JELENTÉS, ma 49).
-* **Nyitva maradt, tudatosan nem javított apróság**: a törzscikk-generátor `KIEJT` táblája (SBL→magyaros kiejtés-javítás) csak az ISTENTISZT-001-nél ismert 5 szót fedi — a többi motívum egyéb szavai nyers, SBL-stílusú átírással jelennek meg a törzscikkben, amíg a `SZOTAR_BRIEF.md` S3 (`kiejtes.py`) nem old meg egy általános átírást. Nem hiba, tudatos hatókör-szűkítés (l. `sablonok/8_PaRDeS_torzscikk_sablon.md`).
+* **Nyitva maradt, tudatosan nem javított apróság**: a törzscikk-generátor `KIEJT` táblája (SBL→magyaros kiejtés-javítás) csak az ISTENTISZT-001-nél ismert 5 szót fedi — a többi motívum egyéb szavai nyers, SBL-stílusú átírással jelennek meg a törzscikkben, amíg a `F05_SZOTAR_BRIEF.md` S3 (`kiejtes.py`) nem old meg egy általános átírást. Nem hiba, tudatos hatókör-szűkítés (l. `sablonok/8_PaRDeS_torzscikk_sablon.md`).
 
 ### 2026.09.09-10 (chat-munkamenet, harmadik szakasz):
 

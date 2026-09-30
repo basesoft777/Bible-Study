@@ -486,7 +486,7 @@ def _hol(b):
 def _allapot_cella(b, main_all):
     st = statusz(b, main_all)
     if st == 'pr':
-        return '🔍 PR-ben'
+        return '🔎 PR-ben'
     return ALLAPOT_JEL[st]
 
 
@@ -556,7 +556,8 @@ def blokkok(briefek, gyoker=REPO, ma=None, main_all=None):
             szoveg = b.fej['ad']
         if h and 'merge' not in szoveg:
             szoveg += ' (merge `%s`, %s)' % (h, d)
-        keszek.append((datum, b.szam, '- %s (#%d): %s' % (b.fej['cim'], b.szam, szoveg)))
+        jel = '#%d' % b.szam + (', %s' % b.fej['kod'] if 'kod' in b.fej else '')
+        keszek.append((datum, b.szam, '- %s (%s): %s' % (b.fej['cim'], jel, szoveg)))
     keszek.sort(key=lambda x: (x[0], x[1]), reverse=True)
     kimenet['kesz'] = '\n'.join(k[2] for k in keszek) or '*(nincs a legutóbbi két hétben)*'
     return kimenet
@@ -619,7 +620,7 @@ def _allapot_visszafejt(cella):
         return 'megallt'
     if c.startswith('⬜'):
         return 'brief_kell' if 'brief kell' in c else 'nem_indult'
-    if c.startswith('🔍'):
+    if c.startswith('🔎') or c.startswith('\U0001F50D'):
         return 'lezarva'
     return None
 

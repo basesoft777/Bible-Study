@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 futtat.py -- CI.0/CI.2: az E2-E16 ellenorzesek kozos futtatoja
-(CI_ELLENORZES_BRIEF.md). Az E1-et (SEMA 1-12, Q1, Q7) NEM ez futtatja --
+(F02_CI_ELLENORZES_BRIEF.md). Az E1-et (SEMA 1-12, Q1, Q7) NEM ez futtatja --
 azt a meglevo `eszkozok/ellenoriz.py --study FILE` adja, kulon hivassal
 (l. .github/workflows/ellenorzes.yml).
 

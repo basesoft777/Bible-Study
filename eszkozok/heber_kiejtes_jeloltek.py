@@ -1,4 +1,4 @@
-"""S1.7 (SZOTAR_BRIEF.md): heber kiejtes-jeloltek a D28 hatokoru 26 lemmara.
+"""S1.7 (F05_SZOTAR_BRIEF.md): heber kiejtes-jeloltek a D28 hatokoru 26 lemmara.
 
 Bemenet: a 9 motivum (adat/elofordulasok.tsv `strong` mezoje, `+`-on
 szetbontva, H-prefixummal) egyedi Strong-halmaza, es minden Strong OSHL
@@ -16,7 +16,7 @@ A jelolt harom lepesben keszul (a felhasznaloi ALLJ utani javitas, D34-D37):
   3. adat/kiejtes_heber_kivetelek.tsv kezi felulbiralasai (D36, pl. H2555).
 
 NEM ir a kivetel-tablaba (adat/kiejtes_kivetelek.tsv) -- csak jelolt-listat
-allit elo kezi jovahagyasra (SZOTAR_BRIEF.md §3 S1.7, ÁLLJ).
+allit elo kezi jovahagyasra (F05_SZOTAR_BRIEF.md §3 S1.7, ÁLLJ).
 
 Kimenet: naplok/SZOTAR_S1_heber_jeloltek.tsv.
 

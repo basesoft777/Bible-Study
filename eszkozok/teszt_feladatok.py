@@ -333,9 +333,9 @@ class GeneralTest(Alap):
 
     def test_pr_allapot_es_kesz_kor(self):
         self.felallit()
-        # a main-en a #3 még `fut` volt: a PR-ben lezárt -> 🔍 PR-ben, nem „Kész”
+        # a main-en a #3 még `fut` volt: a PR-ben lezárt -> 🔎 PR-ben, nem „Kész”
         b = F.blokkok(self.g.briefek(), self.g.ut, MA, {3: 'fut'})
-        self.assertIn('🔍 PR-ben', b['fazis1'])
+        self.assertIn('🔎 PR-ben', b['fazis1'])
         self.assertNotIn('Harmadik (#3)', b['kesz'])
 
     def test_hianyzo_jelolo(self):

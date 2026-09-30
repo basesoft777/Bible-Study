@@ -1,3 +1,9 @@
+---
+cim: A SEMA §3/8 motívumszintre: `auditok.tsv` és a 8. szabály átírása (N12)
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # N12 — A SEMA §3/8 motívumszintre: `auditok.tsv` + a 8. szabály átírása
 
 *Készítette: chat-menet (Opus 5), 2026-09-21, **v1** — a §2 G1–G4 és a §5 várt számai jóváhagyva (2026-09-21).*
@@ -140,6 +146,7 @@ A mai adaton (`6e3fd43` + N12), `python eszkozok/ellenoriz.py`:
 
 ---
 
+<!-- KOZVETLEN_FUTTATAS -->
 ## 8. Nyitó prompt *(Sonnet)*
 
 ```
@@ -161,6 +168,7 @@ vagy a kimeneti sort. Push nincs. Zárójelentés: hash-ek, K1–K9 külön sorb
 kihagyás nélkül; az ellenoriz.py új összesítő sora; minden eltérés — külön
 kiemelve a hiányzó és a plusz fájlokat a §7-hez képest.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ---
 

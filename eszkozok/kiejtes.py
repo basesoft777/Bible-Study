@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-kiejtes.py -- SZOTAR_BRIEF.md S1.3: gorog SBL-atirat -> magyaros kiejtes.
+kiejtes.py -- F05_SZOTAR_BRIEF.md S1.3: gorog SBL-atirat -> magyaros kiejtes.
 
 Bemenet: a TAGNT_kivonat.tsv/TBESG.txt "Kiejtes" oszlopaban mar meglevo,
 SBL-stilusu (Unicode makronos: ē ō ā ī ū) akademiai atirat -- ezt a
@@ -26,7 +26,7 @@ az atir()-t, es reszletes jelentest ad (sorra bontott talalat, szabaly-
 lefedettseg, 1-part-lefedo szabalyok, kihagyasos/leave-one-out proba) --
 NEM ir semmit, es a kilepokod mindig 0, kiveve hasznalati hibat (fajl
 hianyzik stb, kilepokod 1). A 100%-os egyezes onmagaban NEM elegendo
-elfogadasi erv (SZOTAR_BRIEF.md D31-mintajara) -- a jelentes mindig
+elfogadasi erv (F05_SZOTAR_BRIEF.md D31-mintajara) -- a jelentes mindig
 kiirja a lefedettsegi es kihagyasos reszletet is, fuggetlenul az
 osszesitett eredmenytol.
 
@@ -244,7 +244,7 @@ def ellenoriz_futtat(szabalyok=None, kivetelek=None, arany_ut=ARANY_TSV):
 
     print('MEGJEGYZES: a fenti 100%%-os (vagy annal alacsonyabb) egyezes '
           'ONMAGABAN NEM elfogadasi erv -- a lefedettsegi es kihagyasos '
-          'reszlet egyutt ertekelendo (SZOTAR_BRIEF.md D31 mintajara).')
+          'reszlet egyutt ertekelendo (F05_SZOTAR_BRIEF.md D31 mintajara).')
 
     return sikeres, len(parok), talalatok
 

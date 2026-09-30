@@ -1,3 +1,9 @@
+---
+cim: F6: lexikon-generátor (`lexikon/[ID]_TUDOMANYOS.md`)
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # F6 brief — lexikon-generátor (`lexikon/[ID]_TUDOMANYOS.md`)
 
 *Készítette: chat-menet (Opus 5), 2026-09-16, **v5** (v1: első kiadás; v2: a tisztázatlan licencű források bekerülnek a generált rétegbe — D9; v3: az 1. menet lefutott és ellenőrizve — §1.5 —, a `forrasok`-blokk licenc-mezőjét az F6.5a javítja; v4: a licenc-státuszok tisztázva — §1.6 —, a Thayer, az LSJ és a SECE már nem `tisztazatlan`, a Mounce megjelölése kötelező; **v5**: a 2. menet lefutott, de az F6.5a *(v4)* fele kimaradt — §1.7 —, a K11 és a K21 szövege átvezetve a v4-re, új F6.5b tétel egy rövid 3. menetben). Kiindulási állapot: `main` = `origin/main` = **`cb4aac3`** (F0–F5 és az SDBH-import lezárva).*
@@ -467,6 +473,7 @@ Az F6.0 nem commitol. A brief saját commitja tétel-azonosító nélkül megy (
 
 **Megállási pontok:** az F6.0 után, ha bármi eltér; SHA-eltérésnél (F6.1, F6.3); a migráció soronkénti összevetésénél (F6.2); ha a pilot horgonysorai nem a várt előtaggal kezdődnek (F6.3); minden commit előtt a hozzá tartozó K-kritériumok.
 
+<!-- KOZVETLEN_FUTTATAS -->
 ### 8.1 Az 1. menet nyitó promptja
 
 ```
@@ -490,7 +497,9 @@ Push nincs. Zárójelentés: commit-hash-ek, K1–K15 kritériumonként, a K13
 számai motívumonként táblázatban, a TSK/KH-blokkok találatszáma és a
 „versenként nem vizsgálható” igehelyek motívumonként, és minden eltérés.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
+<!-- KOZVETLEN_FUTTATAS -->
 ### 8.2 A 2. menet nyitó promptja *(az 1. menet független ellenőrzése után)*
 
 ```
@@ -509,7 +518,9 @@ Olvasd el az F6_BRIEF.md 4. pontját és az 5. pont 2. menet-tábláját.
 Push nincs. Zárójelentés: hash-ek, K16–K23 kritériumonként, a sablon-diff
 szakaszcímei, és minden eltérés.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
+<!-- KOZVETLEN_FUTTATAS -->
 ### 8.3 A 3. menet nyitó promptja *(javító, v5; Sonnet)*
 
 ```
@@ -529,6 +540,7 @@ külön sorban, kihagyás nélkül), a K26 ideiglenes próbájának kimenete,
 és minden eltérés — külön kiemelve a hiányzó és a plusz fájlokat a §6
 táblájához képest.
 ```
+<!-- /KOZVETLEN_FUTTATAS -->
 
 ---
 

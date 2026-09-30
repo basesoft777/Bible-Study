@@ -1,3 +1,9 @@
+---
+cim: ISTENTISZT-001: a hiányzó ÚSZ-i idézőhelyek betöltése (N16)
+tipus: archiv
+modell: sonnet
+allapot: lezarva
+---
 # N16_BRIEF.md — v1
 
 ISTENTISZT-001: a hiányzó ÚSZ-i idézőhelyek betöltése (N16) + a pilot szótári anyagának pótlása a lexikon-oldalon
