@@ -1,0 +1,139 @@
+# GENERÁLT: eszkozok/karoli_strong/koltseg_vetit_p3b.py | scope=P5 minden összeállításra (A, B, C, A+B, A+B+C), P3b-adat (prompt_v2), teljes Biblia 31 158 vers | forras=f21p/futasnaplo.tsv, f21p/valaszok/{F1V2,F2V2,F3V2,F3V2B,F4V2}.jsonl, f21p/minta.tsv, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/KJV_Strongs_*.tsv, f21p/arany_opus_v2.jsonl | ts=2026-09-30T14:28:23+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | mag=20260930 | kézzel szerkeszteni tilos
+szakasz	osszeallitas	reteg	mero	ertek	also90	felso90	megjegyzes
+illesztes	F1V2	-	bemenet_a_b_c	2939.37 / 12.0799 / 4.6521			20 első próbálkozású hívás
+illesztes	F1V2	-	kimenet_a_b	-80.54 / 4.0880			
+ar	F1V2	-	cost1_per_tablaar_s	1.000013			táblaár google/gemini-3.1-flash-lite: 0.25/1.50 USD/1M
+ar	F1V2	-	ujrakeres_szorzo_M	1.744426			hívás/köteg = 2.00
+ellenorzes	F1V2	-	pilot_vetitett_usd	0.137698			mintán belül
+ellenorzes	F1V2	-	pilot_tenyleges_usd	0.137698			futasnaplo.tsv
+ellenorzes	F1V2	-	elteres_szazalek	0.0			küszöb ≤ 10%
+ellenorzes	F1V2	-	loo_elteres_szazalek	-0.111			leave-one-out, küszöb ≤ 10%
+illesztes	F2V2	-	bemenet_a_b_c	3264.97 / 10.3785 / 3.4867			20 első próbálkozású hívás
+illesztes	F2V2	-	kimenet_a_b	510.12 / 1.9513			
+ar	F2V2	-	cost1_per_tablaar_s	0.65627			táblaár deepseek/deepseek-v4-flash: 0.14/0.28 USD/1M
+ar	F2V2	-	ujrakeres_szorzo_M	1.800281			hívás/köteg = 1.90
+ellenorzes	F2V2	-	pilot_vetitett_usd	0.032072			mintán belül
+ellenorzes	F2V2	-	pilot_tenyleges_usd	0.032072			futasnaplo.tsv
+ellenorzes	F2V2	-	elteres_szazalek	0.0			küszöb ≤ 10%
+ellenorzes	F2V2	-	loo_elteres_szazalek	-0.276			leave-one-out, küszöb ≤ 10%
+illesztes	F3V2	-	bemenet_a_b_c	2939.52 / 12.0797 / 4.6518			20 első próbálkozású hívás
+illesztes	F3V2	-	kimenet_a_b	117.52 / 3.4544			
+ar	F3V2	-	cost1_per_tablaar_s	0.999999			táblaár google/gemini-3.8-flash: 0.75/3.75 USD/1M
+ar	F3V2	-	ujrakeres_szorzo_M	1.194298			hívás/köteg = 1.30
+ellenorzes	F3V2	-	pilot_vetitett_usd	0.256731			mintán belül
+ellenorzes	F3V2	-	pilot_tenyleges_usd	0.256731			futasnaplo.tsv
+ellenorzes	F3V2	-	elteres_szazalek	0.0			küszöb ≤ 10%
+ellenorzes	F3V2	-	loo_elteres_szazalek	-0.148			leave-one-out, küszöb ≤ 10%
+illesztes	F3V2B	-	bemenet_a_b_c	2939.37 / 12.0799 / 4.6521			20 első próbálkozású hívás
+illesztes	F3V2B	-	kimenet_a_b	64.77 / 3.6737			
+ar	F3V2B	-	cost1_per_tablaar_s	0.99999			táblaár google/gemini-3.8-flash: 0.75/3.75 USD/1M
+ar	F3V2B	-	ujrakeres_szorzo_M	1.181673			hívás/köteg = 1.30
+ellenorzes	F3V2B	-	pilot_vetitett_usd	0.25611			mintán belül
+ellenorzes	F3V2B	-	pilot_tenyleges_usd	0.25611			futasnaplo.tsv
+ellenorzes	F3V2B	-	elteres_szazalek	0.0			küszöb ≤ 10%
+ellenorzes	F3V2B	-	loo_elteres_szazalek	-0.077			leave-one-out, küszöb ≤ 10%
+illesztes	F4V2	-	bemenet_a_b_c	5021.90 / 16.2346 / 4.2604			20 első próbálkozású hívás
+illesztes	F4V2	-	kimenet_a_b	102.53 / 3.4872			
+ar	F4V2	-	cost1_per_tablaar_s	1.000001			táblaár google/gemini-3.8-flash: 0.75/3.75 USD/1M
+ar	F4V2	-	ujrakeres_szorzo_M	1.366257			hívás/köteg = 1.70
+ellenorzes	F4V2	-	pilot_vetitett_usd	0.359316			mintán belül
+ellenorzes	F4V2	-	pilot_tenyleges_usd	0.359316			futasnaplo.tsv
+ellenorzes	F4V2	-	elteres_szazalek	0.0			küszöb ≤ 10%
+ellenorzes	F4V2	-	loo_elteres_szazalek	0.321			leave-one-out, küszöb ≤ 10%
+dontobiro	F4V2	R1	dontobirohoz_meno_versek_aranya	0.95			95/100 vers
+dontobiro	F4V2	R2	dontobirohoz_meno_versek_aranya	1.0			25/25 vers
+dontobiro	F4V2	R3	dontobirohoz_meno_versek_aranya	1.0			25/25 vers
+dontobiro	F4V2	R4	dontobirohoz_meno_versek_aranya	0.96			48/50 vers
+ellenorzes	A+B+C	-	elteres_szazalek	0.0			F1V2+F2V2+F4V2 a pilot kötegein: 0.529086 vs 0.529086 USD
+vetites	A (F1V2)	R1	koltseg_usd	11.2206	10.7962	11.6113	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	A (F1V2)	R2	koltseg_usd	1.851	1.7736	1.9335	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	A (F1V2)	R3	koltseg_usd	4.3735	4.2019	4.5258	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	A (F1V2)	R4	koltseg_usd	5.3898	5.2096	5.5752	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	A (F1V2)	Összes	koltseg_usd	22.8348	22.0394	23.6148	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	B (F2V2)	R1	koltseg_usd	2.4564	2.0425	2.8923	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	B (F2V2)	R2	koltseg_usd	0.4786	0.4031	0.5668	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	B (F2V2)	R3	koltseg_usd	0.9492	0.7875	1.1194	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	B (F2V2)	R4	koltseg_usd	1.2355	1.0347	1.4489	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	B (F2V2)	Összes	koltseg_usd	5.1197	4.2679	6.0131	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	C (F3V2)	R1	koltseg_usd	20.5079	18.6004	22.5908	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	C (F3V2)	R2	koltseg_usd	3.5672	3.2585	3.9147	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	C (F3V2)	R3	koltseg_usd	7.9682	7.2246	8.7845	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	C (F3V2)	R4	koltseg_usd	9.9865	9.0769	10.9815	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	C (F3V2)	Összes	koltseg_usd	42.0298	38.1586	46.2713	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	C (F3V2B)	R1	koltseg_usd	20.544	18.5624	22.8045	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	C (F3V2B)	R2	koltseg_usd	3.5309	3.2443	3.8467	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	C (F3V2B)	R3	koltseg_usd	7.986	7.2059	8.87	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	C (F3V2B)	R4	koltseg_usd	9.971	9.054	11.0073	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	C (F3V2B)	Összes	koltseg_usd	42.0319	38.0541	46.491	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	A+B	R1	koltseg_usd	13.6769	13.0599	14.2572	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	A+B	R2	koltseg_usd	2.3295	2.2175	2.4531	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	A+B	R3	koltseg_usd	5.3227	5.0794	5.5464	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	A+B	R4	koltseg_usd	6.6253	6.3372	6.9104	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	A+B	Összes	koltseg_usd	27.9545	26.7362	29.1517	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	A+B+C	R1	koltseg_usd	41.1791	38.2149	44.3132	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	A+B+C	R2	koltseg_usd	7.5782	7.0117	8.3013	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	A+B+C	R3	koltseg_usd	16.6169	15.3948	17.9057	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	A+B+C	R4	koltseg_usd	20.3713	18.7513	22.1013	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	A+B+C	Összes	koltseg_usd	85.7455	79.6322	92.3303	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	C döntőbíró rész	R1	koltseg_usd	27.5022	24.6275	30.6357	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	C döntőbíró rész	R2	koltseg_usd	5.2487	4.6821	5.9345	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	C döntőbíró rész	R3	koltseg_usd	11.2942	10.0794	12.5528	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	C döntőbíró rész	R4	koltseg_usd	13.7459	12.1933	15.4553	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+vetites	C döntőbíró rész	Összes	koltseg_usd	57.791	51.8778	64.2355	bootstrap 1000 (köteg-egység: DT21 f, nyitott)
+kezimunka	A+B+C	R1	alacsony_link_per_vers	9.63			mért, 100 vers
+kezimunka	A+B+C	R1	vetitett_alacsony_link_biblia	134878			× 14006 vers
+kezimunka	A+B+C	R1	elteres_per_vers_arany_v2	2.65			mért, 20 aranyvers
+kezimunka	A+B+C	R1	vetitett_elteres_biblia	37116			× 14006 vers (kis n)
+kezimunka	A+B+C	R2	alacsony_link_per_vers	4.96			mért, 25 vers
+kezimunka	A+B+C	R2	vetitett_alacsony_link_biblia	18412			× 3712 vers
+kezimunka	A+B+C	R2	elteres_per_vers_arany_v2	1.4			mért, 10 aranyvers
+kezimunka	A+B+C	R2	vetitett_elteres_biblia	5197			× 3712 vers (kis n)
+kezimunka	A+B+C	R3	alacsony_link_per_vers	18.76			mért, 25 vers
+kezimunka	A+B+C	R3	vetitett_alacsony_link_biblia	102917			× 5486 vers
+kezimunka	A+B+C	R3	elteres_per_vers_arany_v2	3.1			mért, 10 aranyvers
+kezimunka	A+B+C	R3	vetitett_elteres_biblia	17007			× 5486 vers (kis n)
+kezimunka	A+B+C	R4	alacsony_link_per_vers	10.6			mért, 50 vers
+kezimunka	A+B+C	R4	vetitett_alacsony_link_biblia	84312			× 7954 vers
+kezimunka	A+B+C	R4	elteres_per_vers_arany_v2	1.95			mért, 20 aranyvers
+kezimunka	A+B+C	R4	vetitett_elteres_biblia	15510			× 7954 vers (kis n)
+kezimunka	A+B+C	Összes	vetitett_alacsony_link_biblia	340519			rétegenként vetítve
+kezimunka	A+B+C	Összes	vetitett_elteres_biblia	74830			rétegenként vetítve
+kezimunka	A+B+C	Összes	c_hiba_per_vers	n.é.			az A+B(+C) eltérései nincsenek (a)/(b)/(c)-re besorolva
+kezimunka	A+B+C (alt)	R1	alacsony_link_per_vers	5.32			mért, 100 vers
+kezimunka	A+B+C (alt)	R1	vetitett_alacsony_link_biblia	74512			× 14006 vers
+kezimunka	A+B+C (alt)	R1	elteres_per_vers_arany_v2	2.65			mért, 20 aranyvers
+kezimunka	A+B+C (alt)	R1	vetitett_elteres_biblia	37116			× 14006 vers (kis n)
+kezimunka	A+B+C (alt)	R2	alacsony_link_per_vers	1.92			mért, 25 vers
+kezimunka	A+B+C (alt)	R2	vetitett_alacsony_link_biblia	7127			× 3712 vers
+kezimunka	A+B+C (alt)	R2	elteres_per_vers_arany_v2	1.4			mért, 10 aranyvers
+kezimunka	A+B+C (alt)	R2	vetitett_elteres_biblia	5197			× 3712 vers (kis n)
+kezimunka	A+B+C (alt)	R3	alacsony_link_per_vers	4.96			mért, 25 vers
+kezimunka	A+B+C (alt)	R3	vetitett_alacsony_link_biblia	27211			× 5486 vers
+kezimunka	A+B+C (alt)	R3	elteres_per_vers_arany_v2	3.1			mért, 10 aranyvers
+kezimunka	A+B+C (alt)	R3	vetitett_elteres_biblia	17007			× 5486 vers (kis n)
+kezimunka	A+B+C (alt)	R4	alacsony_link_per_vers	5.44			mért, 50 vers
+kezimunka	A+B+C (alt)	R4	vetitett_alacsony_link_biblia	43270			× 7954 vers
+kezimunka	A+B+C (alt)	R4	elteres_per_vers_arany_v2	1.95			mért, 20 aranyvers
+kezimunka	A+B+C (alt)	R4	vetitett_elteres_biblia	15510			× 7954 vers (kis n)
+kezimunka	A+B+C (alt)	Összes	vetitett_alacsony_link_biblia	152119			rétegenként vetítve
+kezimunka	A+B+C (alt)	Összes	vetitett_elteres_biblia	74830			rétegenként vetítve
+kezimunka	A+B+C (alt)	Összes	c_hiba_per_vers	n.é.			az A+B(+C) eltérései nincsenek (a)/(b)/(c)-re besorolva
+kezimunka	A+B	R1	alacsony_link_per_vers	12.55			mért, 100 vers
+kezimunka	A+B	R1	vetitett_alacsony_link_biblia	175775			× 14006 vers
+kezimunka	A+B	R1	elteres_per_vers_arany_v2	12.85			mért, 20 aranyvers
+kezimunka	A+B	R1	vetitett_elteres_biblia	179977			× 14006 vers (kis n)
+kezimunka	A+B	R2	alacsony_link_per_vers	9.2			mért, 25 vers
+kezimunka	A+B	R2	vetitett_alacsony_link_biblia	34150			× 3712 vers
+kezimunka	A+B	R2	elteres_per_vers_arany_v2	7.6			mért, 10 aranyvers
+kezimunka	A+B	R2	vetitett_elteres_biblia	28211			× 3712 vers (kis n)
+kezimunka	A+B	R3	alacsony_link_per_vers	28.04			mért, 25 vers
+kezimunka	A+B	R3	vetitett_alacsony_link_biblia	153827			× 5486 vers
+kezimunka	A+B	R3	elteres_per_vers_arany_v2	27.5			mért, 10 aranyvers
+kezimunka	A+B	R3	vetitett_elteres_biblia	150865			× 5486 vers (kis n)
+kezimunka	A+B	R4	alacsony_link_per_vers	8.62			mért, 50 vers
+kezimunka	A+B	R4	vetitett_alacsony_link_biblia	68563			× 7954 vers
+kezimunka	A+B	R4	elteres_per_vers_arany_v2	11.3			mért, 20 aranyvers
+kezimunka	A+B	R4	vetitett_elteres_biblia	89880			× 7954 vers (kis n)
+kezimunka	A+B	Összes	vetitett_alacsony_link_biblia	432317			rétegenként vetítve
+kezimunka	A+B	Összes	vetitett_elteres_biblia	448934			rétegenként vetítve
+kezimunka	A+B	Összes	c_hiba_per_vers	n.é.			az A+B(+C) eltérései nincsenek (a)/(b)/(c)-re besorolva
