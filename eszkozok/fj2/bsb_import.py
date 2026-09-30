@@ -15,6 +15,8 @@ A ZSOLTAROKON a BSB (KJV/angol) szamozasa nem egyezik a TAHOT/Karoli-kulcs (MT) 
 feliratot sajat versszamon szamozza, a BSB nem (F16.8). A BSB-vers -> MT-vers megfeleltetes fejezetenkent
 egy eltolas k = (a Karoli-kulcs igehely_mt oszlopabol az MT-fejezet utolso versszama) - (a BSB fejezet versszama,
 base/text-only sorai); k csak 0..2 lehet (kulonben megall). A meres es a Zsolt-import az MT-verset hasznalja.
+BELSO VERSOSZTAS (F16.11): ahol egy BSB-vers a v+k MT-versre nem illeszkedik, de a szomszedos MT-versre igen (vagy az MT-vers
+a ket szomszedos BSB-vers unioja), a fejezet nem igazolhato (Zsolt 13): kimarad a merestol es az importbol.
 A nem-zsoltar konyvek (1Sam 24, Pred 12, Ezs 3/9, Hos 12, Jon 2 ...) hasonlo eltolasat ez a szkript NEM
 javitja (l. DT5); azokra a F06-modszer (eltolas nelkul) marad.
 UJSZOVETSEG: a BSB-import az Ószovetseg miatt keszult (a gorog reteg forrasa a Macula, #87): a 27 USZ-konyv
@@ -94,6 +96,25 @@ def fejezet_eltolasok(mag, fejezetek, text_only_db, tahot_max):
                              % (mag, fej, tahot_max.get(fej), mt_max))
         ki[fej] = k
     return ki
+
+
+def belso_osztas_eltereses(b, forras, mag, fej, k):
+    """A fejezet a szabalyos k-modellel NEM igazolhato, ha valamelyik BSB-vers a v+k MT-versre nem illeszkedik
+    (TAHOT-Strongok nem resze a BSB-versnek), de a szomszedos MT-vers (v+k+-1) igen, vagy az MT-vers a ket
+    szomszedos BSB-vers unioja (belso versosztas-eltereses: az MT-vers a BSB-ben ketto vagy fele). Visszaad:
+    az okok listaja (ures = a k-modell nem cafolt). A ritka egyedi nem-egyezes (cimkezesi kulonbseg) nem ok."""
+    ok = []
+    for v in sorted(b):
+        x = forras.get('%s %d:%d' % (mag, fej, v + k))
+        if x is None or x <= b[v]:
+            continue
+        for d in (-1, 1):
+            y = forras.get('%s %d:%d' % (mag, fej, v + k + d))
+            if y and y <= b[v]:
+                ok.append('BSB %d illeszkedik az MT %d-hoz (nem v+k=%d-hoz)' % (v, v + k + d, v + k))
+            if v + d in b and x <= (b[v] | b[v + d]):
+                ok.append('MT %d a BSB %d+%d unioja' % (v + k, v, v + d))
+    return ok
 
 
 FEJLEC_SOR = 'Igehely\tSzósorszám\tStrong-szám\tAngol szó\tMorfológiai kód\n'
@@ -219,7 +240,7 @@ def fut(munka, parancs):
         forras = halm[nyelv]
         bsb_versek = forras_van = egyezo = egyezo_na28 = egyezo_norm = 0
         forras_van_nyers = egyezo_nyers = 0  # F06-modszer: eltolas nelkul (tajekoztato)
-        text_only_versek = 0
+        text_only_versek = display_versek = 0
         bsb_ref = set()
         konyv_sorok = []
         to_db = {fej: text_only_sorok(cel, kod, fej) for fej in fejezetek}
@@ -232,26 +253,36 @@ def fut(munka, parancs):
                     tmax[int(m.group(1))] = max(tmax.get(int(m.group(1)), 0), int(m.group(2)))
             elt = fejezet_eltolasok(mag, fejezetek, to_db, tmax)
         eltolt_fejezet = sum(1 for k in elt.values() if k)
+        illesztetlen = {}  # fejezet -> okok: a k-modell nem igazolhato, a fejezet kimarad a merestol es az importbol
         for fej in fejezetek:
             with open(os.path.join(bmappa, '%s%d.json' % (kod, fej)), encoding='utf-8') as f:
                 adat = json.load(f)
             b = vers_strongok(adat, nyelv)
             k = elt.get(fej, 0)
             text_only_versek += to_db[fej]
-            konyv_sorok += vers_sorok(adat, step, fej, k)
+            display_versek += len(b)
+            fej_sorok = vers_sorok(adat, step, fej, k)
+            okok = belso_osztas_eltereses(b, forras, mag, fej, k) if mag in MT_ELTOLASOS_KONYVEK else []
+            if okok:
+                illesztetlen[fej] = okok
+            else:
+                konyv_sorok += fej_sorok
             if mag in MT_ELTOLASOS_KONYVEK:
                 d_cim = any(h.get('level') == 'd' and not re.fullmatch(r'Psalms \d+.\d+', h.get('text', ''))
                             for sv in adat.get('structure', {}).values() for h in sv.get('headings', []))  # a 'Psalms 1-41' stb. konyv-cim nem felirat
                 zsolt_sorok.append((str(fej), str(to_db[fej]), str(len(b)), 'igen' if 1 in b else 'nem',
                                     'igen' if d_cim else 'nem', str(kk_mt_max(mag).get(fej, '')),
-                                    str(tmax.get(fej, 0)), str(k)))
+                                    str(tmax.get(fej, 0)), str(k),
+                                    'illesztetlen' if okok else 'illesztett', '; '.join(sorted(set(okok)))))
             for vs in sorted(b):
-                bsb_versek += 1
                 t0 = forras.get('%s %d:%d' % (mag, fej, vs))
                 if t0 is not None:
                     forras_van_nyers += 1
                     if t0 <= b[vs]:
                         egyezo_nyers += 1
+                if fej in illesztetlen:
+                    continue  # nem igazolhato kotes: nincs a merestol, nincs a bsb_ref-ben, nincs importalva
+                bsb_versek += 1
                 ref = '%s %d:%d' % (mag, fej, vs + k)
                 bsb_ref.add(ref)
                 t = forras.get(ref)
@@ -274,12 +305,13 @@ def fut(munka, parancs):
         lefedettseg.append((mag, kod, 'heber' if nyelv == 'H' else 'gorog',
                             str(bsb_versek), str(forras_van), str(egyezo),
                             str(bsb_versek - forras_van), str(forras_bsb_nelkul), str(text_only_versek),
-                            str(text_only_versek - bsb_versek),
+                            str(text_only_versek - display_versek),
                             '%.2f' % szaz, '%.2f' % szaz_nyers, str(eltolt_fejezet),
                             ('%.2f' % (100.0 * egyezo_na28 / forras_van)) if nyelv == 'G' and forras_van else '',
                             ('%.2f' % (100.0 * egyezo_norm / forras_van)) if nyelv == 'G' and forras_van else '',
                             '%g' % kuszob, eredmeny,
-                            str(len(konyv_sorok)) if eredmeny == 'ELERI' else '0'))
+                            str(len(konyv_sorok)) if eredmeny == 'ELERI' else '0',
+                            ' '.join(str(f) for f in sorted(illesztetlen)) or '-'))
         if eredmeny == 'ELERI':
             assert nyelv == 'H'
             import_sorok += konyv_sorok
@@ -296,11 +328,11 @@ def fut(munka, parancs):
             'ELTERES AZ F06-MODSZERTOL: az F06 (bsb.py) csak az 1Mozest merte, TAHOT-tal; a 27 ujszovetsegi konyvre a forras a TAGNT (G-Strongok) -- ez uj, az F06-ban nem mert alkalmazas, a kuszob es az egyezes-definicio valtozatlan',
             'text_only_versek = a base/text-only (CC0) nemures sorai; display_hianyzo_versek = text_only_versek - display-versek: az upstream display-JSON-bol hianyzo versek (masodlagos, fuggetlen ellenorzes)',
             'szurt sorok kategoriankent (MIND A 66 KONYVRE, az importalt es a nem importalt konyvekre egyarant; a nem_szamjegy_versszam_kulcs kulcsok 0 ertekkel is szerepelnek; az elided_span_* nem szurt: az adatsorban bent van, ures Angol szo-val, jeloles nelkul): ' + '; '.join('%s=%d' % kv for kv in sorted(SZURT.items())),
-            'egyezes_szazalek_eltolas_nelkul = a F06-modszer (a BSB-vers szama valtoztatas nelkul, a TAHOT-vers ugyanazzal a szammal); egyezes_szazalek = a kuszob alapja: a Zsoltaroknal a BSB-vers -> MT-vers megfeleltetessel (F16.8; k = Karoli-kulcs igehely_mt fejezet-max - BSB versszam), minden mas konyvre azonos az eltolas nelkulivel; mt_eltolt_fejezetek = a k>0 fejezetek szama',
+            'egyezes_szazalek_eltolas_nelkul = a F06-modszer (a BSB-vers szama valtoztatas nelkul, a TAHOT-vers ugyanazzal a szammal); egyezes_szazalek = a kuszob alapja: a Zsoltaroknal a BSB-vers -> MT-vers megfeleltetessel (F16.8; k = Karoli-kulcs igehely_mt fejezet-max - BSB versszam), minden mas konyvre azonos az eltolas nelkulivel; mt_eltolt_fejezetek = a k>0 fejezetek szama; illesztetlen_fejezetek = a Zsoltar-fejezetek, ahol a fejezetenkent allando k-modell belso versosztas-eltereses miatt nem igazolhato (javaslat: a fejezet kimarad a merestol, a versszamlalobol es az importbol; l. naplok/F16_bsb_zsolt_megfeleltetes.tsv)',
             'konyvek: %d ELERI (mind OSZ), %d NEM_ERI_EL (OSZ), %d USZ_KIHAGYVA (az USZ szandekosan kimarad: a gorog reteg forrasa a Macula #87; a mert szazalek tajekoztato); importalt sorok: %d' % (ered_db, alatta_db, usz_db, len(import_sorok))]
     kozos.tsv_ir(os.path.join(kozos.NAPLOK, 'F16_bsb_lefedettseg.tsv'), fej,
                  ['konyv', 'bsb_kod', 'nyelv', 'versek_bsb', 'forras_lefedett_versek', 'egyezo', 'nincs_forras_vers',
-                  'forras_vers_nincs_bsb', 'text_only_versek', 'display_hianyzo_versek', 'egyezes_szazalek', 'egyezes_szazalek_eltolas_nelkul', 'mt_eltolt_fejezetek', 'egyezes_na28_szurve', 'egyezes_normalizalt', 'kuszob', 'eredmeny', 'importalt_sorok'],
+                  'forras_vers_nincs_bsb', 'text_only_versek', 'display_hianyzo_versek', 'egyezes_szazalek', 'egyezes_szazalek_eltolas_nelkul', 'mt_eltolt_fejezetek', 'egyezes_na28_szurve', 'egyezes_normalizalt', 'kuszob', 'eredmeny', 'importalt_sorok', 'illesztetlen_fejezetek'],
                  lefedettseg)
     kozos.tsv_ir(os.path.join(kozos.NAPLOK, 'F16_bsb_zsolt_megfeleltetes.tsv'),
                  kozos.fejlec(URL + ' + konkordancia/Karoli_versmegfeleltetes.tsv (igehely_mt) + konkordancia/TAHOT_kivonat.tsv',
@@ -308,8 +340,8 @@ def fut(munka, parancs):
                  + ['zsoltaronkenti BSB-vers -> MT-vers megfeleltetes (F16.8): bsb_versszam = base/text-only sorai (a BSB/KJV-szamozas); display_versek = a display-JSON versszama; '
                     'display_elso_vers = van-e az 1. vers a display-JSON-ban; bsb_d_cim = van-e "d" szintu (leiro cim, felirat) heading a fejezet structure-jeben (a "Psalms 1-41" tipusu konyvcimek nelkul); '
                     'kk_mt_max = a Karoli-kulcs igehely_mt oszlopabol az MT-fejezet utolso versszama (ures: a kulcsban nincs igehely_mt, KJV-osztaly, azonos szamozas, k=0); tahot_max = a TAHOT_kivonat fejezet-maxa (ellenorzes: egyezik); '
-                    'k = kk_mt_max - bsb_versszam: a BSB-vers v az MT-vers v+k (k>0: az MT a feliratot sajat versszamon szamozza)'],
-                 ['zsoltar', 'bsb_versszam', 'display_versek', 'display_elso_vers', 'bsb_d_cim', 'kk_mt_max', 'tahot_max', 'k'],
+                    'k = kk_mt_max - bsb_versszam: a BSB-vers v az MT-vers v+k (k>0: az MT a feliratot sajat versszamon szamozza); allapot = illesztetlen, ha a fejezetenkent allando k belso versosztas-eltereses miatt nem igazolhato (l. belso_osztas_eltereses a szkriptben): a fejezet nincs a meresben es az importban'],
+                 ['zsoltar', 'bsb_versszam', 'display_versek', 'display_elso_vers', 'bsb_d_cim', 'kk_mt_max', 'tahot_max', 'k', 'allapot', 'illesztetlen_ok'],
                  zsolt_sorok)
     # BSB_Strongs.tsv: nagy fajl (a kozos.tsv_ir 1 MB-os korlatja a naplokra vonatkozik); csv nelkul
     ut = os.path.join(kozos.KONKORDANCIA, 'BSB_Strongs.tsv')
