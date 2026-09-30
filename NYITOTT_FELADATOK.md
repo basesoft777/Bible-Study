@@ -342,6 +342,9 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   Az FJ3 nem azt állapította meg, hogy nincs forrás, hanem hogy a cloud proxy blokkolta a
   studybible.info-t és az eBible.org-ot. Helyi gépről ismétlendő (a Károli-rokonsági híd miatt
   a teljes KJV elsődleges, a BSB kiegészítő — munkaterv M4).
+  **LEZÁRVA (F19, 2026.09.30):** a teljes, Strong-címkés KJV és ASV importálva az eBible USFM-ből
+  (`konkordancia/KJV_Strongs_teljes.tsv` 349 308 sor, `ASV_Strongs_teljes.tsv` 705 378 sor; Public Domain); a
+  címke nélküli versek besorolása: `naplok/F19_hianyok.tsv` (KJV 3, ASV 124 vers); a nyitott kérdések: DONTESEK DT19.
 
 - **N31 — a Macula Hebrew lefedettsége ellenőrizendő.** *(ÚJ, FJ-ellenőrzés, 2026.09.25)* Az
   FJ1 szerint a letöltött Macula Hebrew-ből hiányzik az 1Sám–2Krón. Ez valószínűleg letöltési
