@@ -471,18 +471,31 @@ def szabaly10_v22_tablak(adat_dir):
                               % (sor.get('strong'), sor.get('entry_kod'), lexid))
 
     lxx_fejlec, lxx_sorok = G.tsv_beolvas(os.path.join(adat_dir, 'lxx_dontesek.tsv'))
+    # F08 (F08_LXX_DONTESEK_BRIEF.md): +`bizonyossag` oszlop, +`nincs_heber_kulcsszo`
+    # tipus; `nyitott` sornal a tipus es a gorog_lemma ures (a jelolt csak a
+    # megjegyzesben all), l. adat/SEMA.md 2.11.
     vart_lxx_fejlec = ['id', 'igehely', 'lxx_igehely', 'heber_strong', 'gorog_lemma',
-                        'gorog_strong', 'lxx_pozicio', 'tipus', 'megjegyzes', 'proveniencia']
+                        'gorog_strong', 'lxx_pozicio', 'tipus', 'megjegyzes', 'bizonyossag',
+                        'proveniencia']
     if lxx_fejlec != vart_lxx_fejlec:
         hibas.append('lxx_dontesek.tsv fejlec eltero: %r' % (lxx_fejlec,))
-    LXX_DONTES_TIPUSOK = {'eltero_forditas', 'lxx_minusz'}
+    LXX_DONTES_TIPUSOK = {'eltero_forditas', 'lxx_minusz', 'nincs_heber_kulcsszo'}
+    LXX_BIZONYOSSAGOK = {'', 'biztos', 'valoszinu', 'nyitott'}
     for sor in lxx_sorok:
         if not (sor.get('igehely') or '').strip():
             hibas.append('lxx_dontesek.tsv %s: igehely ures' % sor.get('id'))
+        bizonyossag = (sor.get('bizonyossag') or '').strip()
+        if bizonyossag not in LXX_BIZONYOSSAGOK:
+            hibas.append('lxx_dontesek.tsv %s: bizonyossag=%r nem eleme a {biztos, valoszinu, nyitott} halmaznak'
+                          % (sor.get('id'), bizonyossag))
         tipus = (sor.get('tipus') or '').strip()
-        if tipus not in LXX_DONTES_TIPUSOK:
-            hibas.append('lxx_dontesek.tsv %s: tipus=%r nem eleme a {eltero_forditas, lxx_minusz} halmaznak'
-                          % (sor.get('id'), tipus))
+        if bizonyossag == 'nyitott':
+            if tipus or (sor.get('gorog_lemma') or '').strip():
+                hibas.append('lxx_dontesek.tsv %s: bizonyossag=nyitott, de tipus/gorog_lemma kitoltve'
+                              % sor.get('id'))
+        elif tipus not in LXX_DONTES_TIPUSOK:
+            hibas.append('lxx_dontesek.tsv %s: tipus=%r nem eleme a {eltero_forditas, lxx_minusz, '
+                          'nincs_heber_kulcsszo} halmaznak' % (sor.get('id'), tipus))
         elif tipus == 'eltero_forditas' and not (sor.get('gorog_lemma') or '').strip():
             hibas.append('lxx_dontesek.tsv %s: tipus=eltero_forditas, de gorog_lemma ures' % sor.get('id'))
 
