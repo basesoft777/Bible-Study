@@ -13,14 +13,17 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 <!-- GENERÁLT-KEZDET: feladatok.py --cel fazis1 -->
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Következő lépés | Hol |
 |---|---|---|---|---|---|---|
-| 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ brief kell | #3 (kész), #5 (kész), #14 (kész) | `/kovetkezo` csomag: #16–#19 és #7; külső modell, keret 15 USD | `F07_THAYER_ELES_BRIEF.md` |
-| 8 | LXX-fordítói döntések a 87 függő igehelyre | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ brief kell | #1 (kész), #17 | `/kovetkezo` a #17 merge-e után | `F08_LXX_DONTESEK_BRIEF.md` |
-| 16 | BSB-import, teljes Biblia (N30) | BSB minden könyvre, ahol a lefedettség ≥ 95% | ⬜ brief kell | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F16_BSB_IMPORT_BRIEF.md` |
-| 17 | Macula-import, héber és görög (N31) | Macula a Strong-számhoz és a KK-hoz kötve; a #8 fő forrása | ⬜ brief kell | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F17_MACULA_IMPORT_BRIEF.md` |
-| 18 | Nave-import, theonize (N27) | Nave-témák és -relációk, eredet-ellenőrzéssel mind a 4980 témán | ⬜ brief kell | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7; ⛔ ha a GPLv3 nem fér össze a repó licencével | `F18_NAVE_IMPORT_BRIEF.md` |
-| 19 | KJV/ASV-import, eBible (N29) | Strong-címkés KJV és ASV, a hiányok besorolásával | ⬜ brief kell | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F19_KJV_ASV_IMPORT_BRIEF.md` |
+| 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ brief kell | #3 (kész), #5 (kész), #14 (kész), #28* | halasztva (D46): a teljes Thayer gépi fordítása akkor, ha lesz böngésző felhasználó; a lexikon szócikkeit a #28 fordítja | `F07_THAYER_ELES_BRIEF.md` |
+| 8 | LXX-fordítói döntések a 87 függő igehelyre (F08) | minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`) | ⬜ | #1 (kész), #17 | `/kovetkezo` a #17 merge-e után | `F08_LXX_DONTESEK_BRIEF.md` |
+| 16 | BSB-import, teljes Biblia (N30) (F16) | BSB minden könyvre, ahol a lefedettség ≥ 95% | ⬜ | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F16_BSB_IMPORT_BRIEF.md` |
+| 17 | Macula-import, héber és görög (N31) (F17) | Macula a Strong-számhoz és a KK-hoz kötve; a #8 fő forrása | ⬜ | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F17_MACULA_IMPORT_BRIEF.md` |
+| 19 | KJV/ASV-import, eBible (N29) (F19) | Strong-címkés KJV és ASV, a hiányok besorolásával | ⬜ | #6 (kész) | `/kovetkezo` csomag: #16–#19 és #7 | `F19_KJV_ASV_IMPORT_BRIEF.md` |
 | 21 | Károli–Strong mérőpilot (minőség és költség) (F21) | mért adat arról, megéri-e a teljes Bibliát külső modellekkel Strong-számmal párosítani (minőség, költség, KJV-támpont haszna) | ⬜ | #6 (kész) | mérőpilot P0–P1, ⛔ a futtatás előtt (szúrópróba, küszöbök, secret) | `F21_KAROLI_STRONG_PILOT_BRIEF.md` |
-| 22 | Károli–Strong párosítás a teljes Bibliára (F22) | a Károli 1908 minden szavához Strong-szám bizonyossággal (két tábla, KJV-támponttal) | ⬜ | #19, #21 | csak a #21 pilot megfelelő eredménye után | `F22_KAROLI_STRONG_BRIEF.md` |
+| 22 | Károli–Strong párosítás a teljes Bibliára (F22) | a Károli 1908 minden szavához Strong-szám bizonyossággal (két tábla, KJV-támponttal) | ⬜ | #21 | csak a #21 pilot megfelelő eredménye után | `F22_KAROLI_STRONG_BRIEF.md` |
+| 23 | Egyforrású motívumdokumentum: forrássablon és mélységi szintek (terv) (MOTIVUM_FORRAS) | a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül | ⬜ | #9*, #22*, #24*, #26* | /kovetkezo; ⛔ az M0 felmérés után | `F23_MOTIVUM_FORRAS_BRIEF.md` |
+| 24 | Forrásaink licencének átnézése (LICENC) | adatkészletenként egy licencsor (licenc, verzió, kereskedelmi felhasználás, share-alike, kötelező megjelölés) egyetlen táblában, amelyre a render és a nyilvános kiadás épít | ⬜ | #16*, #17*, #19*, #22* | /kovetkezo; külön ⛔ nincs, a tisztázatlan tételek összesítve a DONTESEK.md-be | `F24_LICENC_BRIEF.md` |
+| 27 | Thayer-fordítás: Opus és Gemini összevetése, Max-keret méréssel (FP3) | mért adat a #7 modellválasztásához (A: Opus mindenre, B: vegyes hosszhatárral, vagy Gemini marad): minőség hosszkategóriánként, gépi kapuk, Max-keret fogyása és kivetítése a teljes Thayerre | ⬜ | #28* | halasztva (D46): a gépi alap modellválasztásához kell, a #7-tel együtt veszi elő a felhasználó | `F27_FP3_BRIEF.md` |
+| 28 | A lexikon Thayer- és BDB-szócikkeinek Opus-fordítása, javítóréteggel és CI-őrrel (EMELES) | a lexikonba kerülő minden Strong-szám teljes Thayer- vagy BDB-szócikke magyarul (allapot opus, szúrópróbával kezi) az adat/forditasok.tsv-ben; közös javítóréteg és fordítási kapuk; CI-őr; az emelés mint munkafolyamat-lépés | ⬜ | — | /kovetkezo; ⛔ az első 5 szócikk után és a szúrópróbánál | `F28_EMELES_BRIEF.md` |
 <!-- GENERÁLT-VÉGE: feladatok.py --cel fazis1 -->
 
 ## 2. fázis — render (csak az 1. fázis után)
@@ -28,11 +31,12 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 <!-- GENERÁLT-KEZDET: feladatok.py --cel fazis2 -->
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Megjegyzés | Hol |
 |---|---|---|---|---|---|---|
-| 9 | Szótári adatréteg, 2. menet (SZOTAR S2) | az 1. fázis adatai megjelennek a 8 lexikonoldalon és a 8 törzscikkben | ⬜ | #5 (kész), #6 (kész), #7*, #22* | Ez javítja a törzscikkek elavult Cremer-sorát is (a CI E11 szabálya jelzi) | `F05_SZOTAR_BRIEF.md#2. menet — kimenet-változtató` |
+| 9 | Szótári adatréteg, 2. menet (SZOTAR S2) | az 1. fázis adatai megjelennek a 8 lexikonoldalon és a 8 törzscikkben | ⬜ | #5 (kész), #6 (kész), #7*, #16*, #17*, #19*, #22*, #28* | Ez javítja a törzscikkek elavult Cremer-sorát is (a CI E11 szabálya jelzi) | `F05_SZOTAR_BRIEF.md#2. menet — kimenet-változtató` |
 | 10 | 8 lexikonoldal lezárása (LEXIKON_LEZARAS) | mérhetően kész oldalak (L1–L7) | ⬜ brief kell | #8, #9 | **Te:** döntés az L6 és L7 feltételről. Ide tartozik N18, N19 | `F10_LEXIKON_LEZARAS_BRIEF.md` |
 | 11 | Migráció: egy forrásból renderelés (MIGRACIO) | minden motívum a forrásrétegből renderel | ⬜ brief kell | #9 | Az M0 felmérés csak olvas, de az eredménye itt kell | `F11_MIGRACIO_BRIEF.md` |
 | 12 | TEREMT-002 3. lépés (próza, lexikonoldal) | az első natív egyforrású motívum kész | ⬜ brief kell | #11 | A tohu/bohu szótári adata az S1-ben készül (SZOTAR-D29). | `TEREMT002_KUTATAS_BRIEF.md` |
 | 13 | 1Móz 17-től a tanulmányok és a 6 betöltetlen motívum | a Genezis-kiadás tartalma | ⬜ brief kell | #10 | döntés 2026.09.21: a lexikonoldalak lezárása után | `F13_GENEZIS_KIADAS_BRIEF.md` |
+| 25 | Olvasói felület: statikus HTML állítható mélységgel (OLVASOI_HTML) | a motívumforrásból generált statikus HTML-oldalak (Netlify), lenyitható apparátussal és mélységi szintekkel; később PWA | ⬜ brief kell | #11, #12, #23 | brief a #11 1. lépcsője (ISTENTISZT-001) után, a MOTIVUM_FORRAS szintjelölésére építve | `F25_OLVASOI_HTML_BRIEF.md` |
 <!-- GENERÁLT-VÉGE: feladatok.py --cel fazis2 -->
 
 ## Folyamat és eszközök
@@ -44,7 +48,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 ## Naplózás
 
 <!-- GENERÁLT-KEZDET: feladatok.py --cel naplozas -->
-*(nincs nyitott naplózás)*
+- #26 Egyforrású lánc (B) döntéseinek rögzítése és az érintett briefek fejléce — ⬜ — /kovetkezo, a MOTIVUM_FORRAS, LICENC és OLVASOI_HTML befogadása után (`F26_EGYFORRAS_NAPLO_BRIEF.md`)
 <!-- GENERÁLT-VÉGE: feladatok.py --cel naplozas -->
 
 ## Takarítás (bármikor, rövid)
@@ -53,6 +57,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 - A chatben készült briefek (#4, #7, #10, #11) commitolása a repó gyökerébe, hogy a chat onnan olvassa őket.
 - 72 távoli ág van, ebből kb. 60 régi (2026.09.02–09.11). Egyszeri átnézés, majd törlés.
 - E5: a `-` kezdetű törölt sorok (felsorolás) alulszámolása, 68eb348 óta (l. naplok/ELLENOR_CI_E5.md, 2. kör). Rövid CI-javítás külön ágon (D6), legkésőbb a 2. fázis előtt.
+- E9: a F*_BRIEF.md fájlok kizárása (a fordítási szabályok angol szavakat idéznek; l. PR #88). Külön ágon (D6).
 
 ## Munkamenet (tokentakarékos)
 
@@ -85,7 +90,9 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 ## Kész (utolsó 2 hét)
 
 <!-- GENERÁLT-KEZDET: feladatok.py --cel kesz -->
+- A szótárfordítás döntései, a #7 és az FP3 halasztása (#29, SZOTAR_FORD_NAPLO): a D42–D50 a FELADATOK.md döntésnaplójában (#EM = #28); a #7 és az FP3 (#27) fejléce és a #7 csonk-törzse halasztott (D46); ellenőrzés `naplok/ELLENOR_F29.md` (merge `53b3eaa`, 2026-09-30)
 - Brief-befogadás és generált feladatkövető (#20, BEFOGADAS): brief-befogadás (`/befogad`, csonk-kitöltéssel), a FELADATOK.md táblái a brief-fejlécekből generálva (`eszkozok/feladatok.py`), E18 CI-szabály és a main-re futó frissítő Action; ellenőrzés `naplok/ELLENOR_F20.md`; a main-t ruleset védi, az Action a pardes-feladatok GitHub App tokenjével ír (merge `4fa1265`, 2026-09-30)
+- Nave-import, basokant (N27) (#18, F18): "basokant/nave saját parszolóval importálva (85 246 sor, 5 322 téma, javaslat-állapot; DT5: a theonize GPLv3 miatt kimaradt); licenc- és import-napló `naplok/F18_licenc.md`, `naplok/F18_import_naplo.md`, ellenőrzés `naplok/ELLENOR_F18.md`; eredet-ellenőrzés a 4980 témán és a Gemini-lépés nem futott; nyitott tételek DT18" (merge `7ec656f`, 2026-09-30)
 - Orkesztrátor-parancs (#15, F15): `/kovetkezo`, `DONTESEK.md`, végrehajtó subagentek, ellenőrzőlista, PR #70, ✅ a merge-commitban (09.29); próbafuttatás merge után új sessionben: `/kovetkezo`
 - Új források 2. felmérése (#6, F06): GitHub Actionsben futott, helyi gép nem kellett; BSB 1Móz 98,83% (küszöb 95%, mérés előtt rögzítve), Macula teljes letöltés és 39/87 függő helyre LXX-megfelelő (#8 bemenete), KJV/ASV, Nave és licenc-javaslatok (MiniMax-költség 0,011927 USD); jelentés `naplok/F06_forras_jelentes.md`, ellenőrzés `naplok/ELLENOR_F06.md`, `naplok/ELLENOR_F06_v2.md`, merge `634d567` (PR #75, 09.29). Az import-döntés (N27, N29–N31) a felhasználóé, nyitva.
 - Szótári adatréteg, 1. menet (#5, SZOTAR S1): fordítási gyorsítótár, terminológia/kiejtés-táblák, 7 konkordancia-import (TBESH, UBS DBH, MCGED, BDB-etimológia-határ, LXX-versszint, tW), `ellenoriz.py` 13–14. szabály, 26 héber kiejtés-jelölt + 6 BDB-etimológia-határ jóváhagyva; a `fuggetlen-ellenor` 3 körben talált és javított hibák (TBESH betű-utótag adatvesztés D38–D40, BDB-határ szabály D41), K6/K7 pótolva; ellenőrzés `naplok/ELLENOR_SZOTAR_S1.md`, merge `d0736aa` (PR #72, 09.29). Tartalmi döntést igénylő tételek N39–N44-ként nyitva (`NYITOTT_FELADATOK.md`).
@@ -141,3 +148,12 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | D31 | A feladat nélküli (régi) brief fejléce `tipus: archiv`, szám és átnevezés nélkül; az `ellenoriz` náluk a fájlnév–szám egyezést nem vizsgálja (az `F4_BRIEF.md` a terv F4 fázisa, nem a #4) | a régi briefek neve ne keveredjen a feladatszámokkal | a régi briefek átnevezése |
 | D32 | A szám nélküli lezárt tételek (FJ 1. menet, TEREMT-002 1–2. lépés, Szótári brief v1.1) kézi szakaszban maradnak; a generált „Kész” csak számozott feladatot ad | a fejléc nélküli tételt a generátor nem ismeri | számok utólagos kiosztása |
 | D33 | A „lezárva, még a `main`-en kívül” állapot jele 🔀 (a B4-ben 🔎 volt, a v1.4 cserélte) | a nagyító-jelek közül a U+1F50D a CI E2 szabályában „ellenőrizve” jelölés, proveniencia nélkül hibát ad; a 🔀 szabad jel | az E2 módosítása (D6: külön ágon) |
+| D42 | A lexikonba kerülő Strong-számok teljes Thayer- és BDB-szócikkét az Opus fordítja (#28); a felhasználó szúrópróbát olvas | ott a legjobb minőség, ahol olvassák; a Gemini v3 fordítása (pl. G26) nem volt elég jó | Gemini mindenre; gépi alap + Opus-emelés |
+| D43 | Tárolás az `adat/forditasok.tsv`-ben: `teljes` szintű `opus`/`kezi` sor; a meglévő jelentésszintű `kezi` sorok megmaradnak, elsőbbségi sorrend `kezi` > `opus`; a render a jelentést a forrás tagolása mentén vágja ki, ezt a tagolás-kapu biztosítja | egy fordítás, több nézet | jelentésenkénti fordítás |
+| D44 | CI-őr: a lexikon minden Thayer- és BDB-hivatkozásához kötelező az `opus` vagy `kezi` fordítás (jelentés- vagy `teljes` szinten) | a fordítás ne maradhasson ki | kézi ellenőrzés |
+| D45 | Közös, determinisztikus javítóréteg (`eszkozok/normalizal.py`) és fordítási kapuk (idézőjel, tagolás, igetörzs) minden fordítási kimenetre | a gépi szabály biztosabb, mint a promptban kért | csak promptszabály |
+| D46 | A teljes szótár gépi alapfordítása (#7 Thayer, BDB-alap) és a modellpróbák (FP3 #27, BDB-próba) halasztva, amíg nincs böngésző felhasználó (a #25 HTML-felület vagy a kereskedelmi kiadás veti fel); addig a nem lexikoni szócikkek angolok | ma senki nem böngész szócikkeket; a fordítás akkor is elkészülhet | gépi alap most (kb. 25 USD) |
+| D47 | Az első fordítási kör: 47 szócikk (18 Thayer, 29 BDB), 187 863 karakter (a 2026.09.30-i mérés); a G1941 már kézi | a Max-keret elbírja; a szöveg kevesebb mint 2%-a | — |
+| D48 | A fordítás a motívum-munkafolyamat lépése: új motívum vagy előfordulás után a hiányzó szócikkek fordítása (`MUNKAMENET.md`) | a lexikon bővülésével folyamatos | egyszeri fordítási menet |
+| D49 | Szúrópróba menetenként a lefordított szócikkek 10%-a, legalább 5; 20% fölötti kifogásnál a menet megáll | a felhasználó döntése: csak szúrópróba | minden szócikk kézi átnézése |
+| D50 | A lexikonba a szótárból csak a motívumhoz illeszkedő jelentéstartomány kerül, a Thayernél is (a BDB-nél eddig is így volt); a kiválasztás a render/#9 feladata: gépi jelölt (a jelentés igehelyei metszik a motívum előfordulásait), a döntés a felhasználóé | kisebb, pontosabb kimenet | a teljes szócikk a lexikonban |

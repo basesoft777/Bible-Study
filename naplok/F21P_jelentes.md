@@ -144,9 +144,9 @@ Az újrakérések cost-ja nem lineáris a tokenben (a megismételt előtag gyors
 | F3 | 2.2 | 69608 | 0.6167 | 18340 |
 | F3V2 | 1.6833 | 54649 | 0.65 | 20625 |
 
-## (e) Nyitott tételek a #22 esetleges újraindításához (DT7), átvihető eszközök, megtanult korlátok
+## (e) Nyitott tételek a #22 esetleges újraindításához (DT21), átvihető eszközök, megtanult korlátok
 
-### Öt nyitott tétel (nincs v3, nincs újabb futás; DT7)
+### Öt nyitott tétel (nincs v3, nincs újabb futás; DT21)
 
 1. **G / K7:** a prompt_v2 G-szabályának kivétele („többtagú igei szerkezet minden tagja”) tágabb, mint a jegyzet K7-e (*tudja vala*, *megy vala*): melyik az irányadó.
 2. **C:** a prompt „azt, őt …” felsorolása a C-nél az *'et* nélküli, betoldott tárgyi névmásokra is általánosult.

@@ -10,7 +10,7 @@ Minden szám szkriptkimenetből jön (a forrásfájlt a jelentés soronként meg
   mérés), f21p/futasnaplo.tsv (a pilot tényleges költsége), valamint a
   tokenek.py / f21p/sorrend_eltero_versek.tsv (a korlátok darabszámai).
 A szöveges részek (döntési szabály, nyitott tételek, következmények) a
-felhasználói döntések (PD1–PD10, DT5–DT7) rögzítései; ajánlás a #22-ről nincs.
+felhasználói döntések (PD1–PD10, DT19–DT21) rögzítései; ajánlás a #22-ről nincs.
 
 Futtatás (a fenti szkriptek után):
     python eszkozok/karoli_strong/jelentes_f21p.py
@@ -236,8 +236,8 @@ def main():
     ki.append('')
 
     # (e) nyitott tételek, eszközök, korlátok
-    ki += ['## (e) Nyitott tételek a #22 esetleges újraindításához (DT7), átvihető eszközök, megtanult korlátok', '',
-           '### Öt nyitott tétel (nincs v3, nincs újabb futás; DT7)', '',
+    ki += ['## (e) Nyitott tételek a #22 esetleges újraindításához (DT21), átvihető eszközök, megtanult korlátok', '',
+           '### Öt nyitott tétel (nincs v3, nincs újabb futás; DT21)', '',
            '1. **G / K7:** a prompt_v2 G-szabályának kivétele („többtagú igei szerkezet minden tagja”) tágabb, mint a jegyzet '
            'K7-e (*tudja vala*, *megy vala*): melyik az irányadó.',
            '2. **C:** a prompt „azt, őt …” felsorolása a C-nél az *\'et* nélküli, betoldott tárgyi névmásokra is általánosult.',

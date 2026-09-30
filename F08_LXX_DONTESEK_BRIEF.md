@@ -1,20 +1,54 @@
 ---
 feladat: 8
 cim: LXX-fordítói döntések a 87 függő igehelyre
+kod: F08
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: brief_kell
+allapot: nem_indult
 ad: minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`)
 kovetkezo: `/kovetkezo` a #17 merge-e után
+olvas: [adat/lxx_dontesek.tsv, naplok/FORRAS_FJ1_lxx_jeloltek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv]
+ir: [adat/lxx_dontesek.tsv, DONTESEK.md]
 fugg: [1, 17]
 ---
+# F08 — LXX-döntések mind a 87 függő igehelyre
 
-# F08_LXX_DONTESEK_BRIEF — csonk
+*FELADATOK #8 · v1 · 2026.09.29*
+*Modell: `opus` (kutatói ítélet)*
+*Ág: `claude/lxx-dontesek` · Függ: #1, #17 (Macula-import)*
 
-*FELADATOK #8 · csonk-brief (F20 B3): nem végrehajtható, csak a feladat fejlécét hordozza; a brief csak chatben van.*
+## Cél
 
-- **Mit ad, ha kész:** minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`)
-- **Következő lépés:** `/kovetkezo` a #17 merge-e után
+Mind a 87 ÓSZ-helyhez LXX-sor az `adat/lxx_dontesek.tsv`-ben, bizonysági szinttel és indoklással.
 
-A valódi briefet a `/befogad` csonk-kitöltése váltja fel, ugyanezen a számon és néven.
+## Munkaszabályok
+
+1. **Teljes feldolgozás:** mind a 87 hely.
+2. **⛔ csak egy esetben:** a meglévő `adat/` sorainak nem szándékolt csökkenése vagy törlése.
+3. **A döntések a menet végére gyűlnek.** Menet közben nem állsz meg. A zárás előtt egyetlen összesített tétel kerül a `DONTESEK.md`-be (lásd 3. lépés).
+4. **A számokat a fájlokból olvasd:** a PR #75 és a #17 fájljaiból, ne ebből a briefből.
+
+## Lépések
+
+1. **Bemenet soronként:**
+   - a Macula-megfelelő (a #17 importjából; a PR #75 szerint 39 helyre van);
+   - az FJ1 gépi jelöltje (`naplok/FORRAS_FJ1_lxx_jeloltek.tsv`);
+   - a KK-versmegfeleltetés;
+   - a görög szóalak (38 sorból 26-nál van, 12-nél nincs).
+2. **Kimenet:** `adat/lxx_dontesek.tsv`. Oszlopok: hely, héber szó, LXX-megfelelő, forrás(ok), bizonyosság, egysoros indoklás.
+3. **Bizonyosság:**
+   - *biztos*: két független forrás egyezik;
+   - *valószínű*: egy forrás, ellentmondás nélkül;
+   - *nyitott*: nincs forrás, vagy a források ellentmondanak.
+
+   A *valószínű* és a *nyitott* sorok **egyetlen** összesített `DONTESEK.md`-tételbe kerülnek, nem helyenként külön tételbe.
+4. **Külső modell:** nem kell. 87 hely, szakmai ítélet; ez Opus-munka.
+5. **Zárás:** a `/kovetkezo` 9–10. lépése szerint.
+
+## Döntésnapló (v1)
+
+| # | Döntés | Indok | Elvetett alternatíva |
+|---|---|---|---|
+| F08-1 | Önálló feladat, az orkesztrátor futtatja, a Macula-import (#17) után | a Macula a legerősebb forrás; a felhasználó kérése | közös menet a #7-tel |
+| F08-2 | Az egyes helyek nem állítják meg a menetet, a döntés egy összesített tételben jön | 87 hely, a helyenkénti megállás szétaprózná a munkát | megállás helyenként |
