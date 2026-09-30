@@ -36,6 +36,7 @@ import tokenek  # noqa: E402
 
 PROMPT_UT = os.path.join(tokenek.ROOT, 'f21p', 'prompt_v1.md')
 PROMPT_V2_UT = os.path.join(tokenek.ROOT, 'f21p', 'prompt_v2.md')   # F21.12, az F3V2 futáshoz
+PROMPT_V3_UT = os.path.join(tokenek.ROOT, 'f21p', 'prompt_v3.md')   # F21.42, az F3V3 és a SONNETV3 futáshoz (P3c)
 KEZDET = '<!-- PROMPT-KEZDET -->'
 VEGE = '<!-- PROMPT-VÉGE -->'
 

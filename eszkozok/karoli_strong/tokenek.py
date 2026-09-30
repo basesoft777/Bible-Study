@@ -247,6 +247,38 @@ def arany_v2_befagyasztas_ellenoriz(ut=ARANY_V2):
     return kapott
 
 
+def legfrissebb_arany(gyoker=None):
+    """A legfrissebb befagyasztott arany (F21.42, P3c): (jsonl, sha256-fájl, verzió).
+
+    Ha létezik a f21p/arany_opus_v3.sha256, az arany v3 (a befagyasztás jele a
+    hash-fájl megléte); különben az arany v2. A gyoker alapértelmezése a repó gyökere
+    (teszthez ideiglenes könyvtár adható)."""
+    gyoker = ROOT if gyoker is None else gyoker
+    f21p = os.path.join(gyoker, 'f21p')
+    v3_sha = os.path.join(f21p, 'arany_opus_v3.sha256')
+    if os.path.exists(v3_sha):
+        return os.path.join(f21p, 'arany_opus_v3.jsonl'), v3_sha, 'v3'
+    return os.path.join(f21p, 'arany_opus_v2.jsonl'), os.path.join(f21p, 'arany_opus_v2.sha256'), 'v2'
+
+
+def hash_hiba(ut, sha_ut, nev=None):
+    """Egy befagyasztott fájl ellenőrzése a sha256-fájl első mezője ellen (LF-normalizált
+    sha256). Visszaad: hibaüzenet (str) vagy None, ha rendben."""
+    nev = nev or os.path.basename(ut)
+    if not os.path.exists(sha_ut):
+        return 'hiányzik a befagyasztási hash (%s): %s' % (nev, sha_ut)
+    if not os.path.exists(ut):
+        return 'hiányzik a befagyasztott fájl (%s): %s' % (nev, ut)
+    with open(sha_ut, encoding='utf-8') as f:
+        mezok = f.read().split()
+    if not mezok:
+        return 'üres a befagyasztási hash-fájl (%s): %s' % (nev, sha_ut)
+    kapott = sha256_lf(ut)
+    if kapott != mezok[0]:
+        return 'a befagyasztott %s sha256-ja %s, a várt %s' % (nev, kapott, mezok[0])
+    return None
+
+
 def generalas_ts():
     """A proveniencia-sor ts mezője (F21.20): a generálás ideje, UTC, másodpercre.
 
