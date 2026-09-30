@@ -9,7 +9,7 @@ allapot: fut
 ad: Macula a Strong-számhoz és a KK-hoz kötve; a #8 fő forrása
 kovetkezo: `/kovetkezo` csomag: #16–#19 és #7
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv]
-ir: [naplok/F17_illesztetlen.tsv, konkordancia/Macula_heber.tsv, konkordancia/Macula_gorog.tsv, NYITOTT_FELADATOK.md]
+ir: [naplok/F17_illesztetlen.tsv, konkordancia/Macula_heber.tsv, konkordancia/Macula_gorog.tsv, NYITOTT_FELADATOK.md, DONTESEK.md, adat/datasetek.tsv, naplok/F17_import_naplo.md, naplok/F17_87_hely.tsv, naplok/F17_import_stat.json, eszkozok/f17/*]
 fugg: [6]
 ag: claude/macula-import
 ---
