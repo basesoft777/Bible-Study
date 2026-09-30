@@ -466,5 +466,14 @@ class D8DiffHatokorTeszt(unittest.TestCase):
             shutil.rmtree(gy, ignore_errors=True)
 
 
+class BeerkezoKizarasTest(unittest.TestCase):
+    """F20 B6: a beerkezo/ minden szabalybol kimarad."""
+
+    def test_kizart_e(self):
+        self.assertTrue(K.kizart_e('beerkezo/valami_BRIEF.md'))
+        self.assertTrue(K.kizart_e('beerkezo/README.md'))
+        self.assertFalse(K.kizart_e('F20_BEFOGADAS_BRIEF.md'))
+
+
 if __name__ == '__main__':
     unittest.main()

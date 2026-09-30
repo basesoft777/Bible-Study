@@ -321,6 +321,8 @@ def e5_tartalomvesztes_or(base_ref, head_ref, commit_uzenet=''):
             lezar()
             m = re.search(r' b/(\S+)$', sor)
             aktualis_fajl = m.group(1) if m else None
+            if aktualis_fajl and aktualis_fajl.startswith('beerkezo/'):
+                aktualis_fajl = None  # F20 B6: a beerkezo/ kimarad
             torolt_szam = 0
             torolt_cimsor = []
             continue

@@ -168,6 +168,9 @@ def git_diff_hozzaadott_sorok(base_ref, head_ref, relut):
 
 def kizart_e(relut):
     relut = relut.replace('\\', '/')
+    # F20 B6: a beerkezo/ (befogadásra váró, még fejléc nélküli briefek) minden szabályból kimarad
+    if relut.startswith('beerkezo/'):
+        return True
     alap = os.path.basename(relut)
     if alap in KIZART_FAJLOK:
         return True
