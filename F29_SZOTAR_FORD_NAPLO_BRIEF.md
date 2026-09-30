@@ -11,7 +11,7 @@ kovetkezo: /kovetkezo, az EMELES befogadása után
 olvas: [FELADATOK.md, "F*_BRIEF.md"]
 ir: [F07_THAYER_ELES_BRIEF.md, F27_FP3_BRIEF.md, FELADATOK.md]
 fugg: []
-pr: "#PR"
+pr: "#90"
 lezarva_osszegzes: a D42–D50 a FELADATOK.md döntésnaplójában (#EM = #28); a #7 és az FP3 (#27) fejléce és a #7 csonk-törzse halasztott (D46); ellenőrzés `naplok/ELLENOR_F29.md`
 ---
 
