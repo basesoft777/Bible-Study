@@ -14,6 +14,21 @@ Futások (F21 brief P3):
       szabályként); kimenet valaszok/F3V2.jsonl; ugyanaz a futasnaplo.tsv, a
       plafon kumulatív. ELŐKÉSZÍTVE: a trigger (futtatas.txt) külön jóváhagyásra.
 
+P3b (F21.25, DT22/PD11; mind a prompt_v2.md-vel, kimenet valaszok/<futas>.jsonl):
+  F1V2  A modell, 200 vers (KJV-támponttal, ahol a minta szerint van)
+  F2V2  B modell, 200 vers
+  F5V2  A modell, KJV nélkül, az R1 100 verse
+  F6V2  B modell, KJV nélkül, az R1 100 verse
+  F3V2B C modell, 200 vers: a F3V2 MÁSODIK futása (ugyanaz a konfiguráció, külön
+        kimenet; az ingadozás méréséhez). A naplóban a futas oszlop F3V2B, a jsonl
+        köteg-sorai az 'ismetles_of': 'F3V2' jelölést kapják.
+  F4V2  C döntőbíróként az F1V2 és F2V2 eltérő vagy kapuhibás versein. Alapja a
+        prompt_v2 utasításrésze + a prompt_biro_v2.md kiegészítése (a biro-fájl
+        változatlan; a futtató cseréli az alapot: biro_utasitas(alap_ut)). Csak akkor
+        fut, ha az F1V2 és az F2V2 kész (különben kilépési kód 2). Futási sorrend:
+        F1V2, F2V2, F5V2, F6V2, F3V2B, F4V2; egy triggerben is mehet (a régi F4
+        "csak egyedül" szabálya az F4V2-re nem vonatkozik).
+
 Modellek: A google/gemini-3.1-flash-lite, B deepseek/deepseek-v4-flash,
 C google/gemini-3.8-flash. 10 vers / hívás; versenként az ötpontos kapu
 (kapu.py), hibánál egy újrakérés; a mintából a f21p/minta.tsv sorrendjében.
@@ -23,10 +38,22 @@ Kimenet (alapból a f21p/ alatt):
   futasnaplo.tsv          hívásonként: tokenek, cost, modell, futás, köteg,
                           kapuhiba, próbálkozás, időbélyeg, gondolkodási mód
 
-Költségplafon: 3 USD kumulatívan a futasnaplo.tsv koltseg_usd oszlopa alapján,
-MINDEN hívás előtt ellenőrizve (a napló összege + a hívás becsült költsége);
-túllépésnél leállás, kilépési kód 3, a kész kötegek mentve maradnak. A futás
-újraindítható: a kész köteg (a jsonl-ben már szereplő verscsoport) nem hív újra.
+Költségplafon: 3 USD kumulatívan (KEMÉNY korlát) a futasnaplo.tsv koltseg_usd oszlopa
+alapján, MINDEN hívás előtt ellenőrizve (a napló összege + a hívás becsült
+költsége); túllépésnél leállás, kilépési kód 3, a kész kötegek mentve maradnak. A
+futás újraindítható: a kész köteg (a jsonl-ben már szereplő verscsoport) nem hív újra.
+Szigorúbb plafon a vezérlőfájl OPCIONÁLIS plafon_usd=<szám> kulcsával adható
+(0 < szám <= 3; hiányában 3.0; nem szám, <= 0, > 3 vagy nem véges érték hiba, 2-es
+kilépési kód, hívás nélkül). A plafon mindig a NAPLÓ KUMULATÍV összegére vonatkozik (a
+korábbi futások költségét is tartalmazza), pl. plafon_usd=2 a 2 USD kumulatív
+költségnél megáll (kilépési kód 3).
+
+Befagyasztott bemenetek: a futtató induláskor (éles futás előtt) ellenőrzi a
+prompt_v1.md, prompt_v2.md, prompt_biro_v2.md LF-normalizált sha256-ját
+(BEFAGYASZTOTT) és az arany_opus_v2.jsonl-ét (tokenek.arany_v2_befagyasztas_ellenoriz);
+eltérésnél 2-es kilépési kód, hívás nélkül. A futás végén a mentett válaszokat is
+újra ellenőrzi (mentett_valaszok_ellenoriz: ötpontos kapu, K5; F4/F4V2-nél a 6.
+pont is); külön: --mentett-ellenoriz F1V2,... .
 
 Gondolkodási mód: A és B kikapcsolva (reasoning.enabled=false, a fordit.py
 _valodi_http_kuldo alapja); a C modellnél a gondolkodás kötelező (nem
@@ -50,6 +77,7 @@ Használat:
     python eszkozok/karoli_strong/futtat.py --onteszt           # MOCK küldővel
     python eszkozok/karoli_strong/futtat.py --vezerlo f21p/futtatas.txt   # éles (kulccsal)
     python eszkozok/karoli_strong/futtat.py --futas F1 --koteg-max 1      # éles, kézi
+    python eszkozok/karoli_strong/futtat.py --mentett-ellenoriz F1V2,F4V2 # mentett válaszok újraellenőrzése
 
 Nincs alapértelmezett futás: --szaraz, --onteszt, --vezerlo vagy --futas (és ez
 utóbbival --koteg-max) nélkül a szkript hibával (kilépési kód 2) áll meg.
@@ -58,13 +86,19 @@ VEZÉRLŐFÁJL (f21p/futtatas.txt; a workflow ezt olvassa): egyszerű kulcs=ért
 a # kezdetű sor és az üres sor megjegyzés. KÖTELEZŐ kulcs mindkettő, alapérték
 nincs; ismeretlen, hiányzó vagy ismételt kulcs, hibás érték, hiányzó fájl esetén a
 futtatás 2-es kilépési kóddal áll meg, és semmit nem hív meg.
-    futasok=F1            # vesszővel elválasztva az F1..F6, F3V2 közül, pl. F1,F2,F3,F5,F6;
-                          # az F4 csak egyedül (külön trigger: az F1 és F2 kész kell)
+    futasok=F1            # vesszővel elválasztva: F1..F6, F3V2, F1V2, F2V2, F5V2, F6V2, F3V2B, F4V2;
+                          # a régi F4 csak egyedül (külön trigger: az F1 és F2 kész kell);
+                          # az F4V2 más futással együtt is állhat (az F1V2 és F2V2 kész kell)
     koteg_max=1           # futásonként legfeljebb ennyi ÚJ köteg (10 vers/köteg) fut;
                           # pozitív egész, vagy 'mind' (a kész kötegek kimaradnak)
+    plafon_usd=2          # OPCIONÁLIS: kumulatív (napló-összeg) plafon USD-ben, 0 < x <= 3;
+                          # hiányában 3.0 (a kemény korlát)
 Példák: az első trigger: futasok=F1, koteg_max=1 (10 vers); a második:
-futasok=F1,F2,F3,F5,F6, koteg_max=mind; a harmadik: futasok=F4, koteg_max=mind.
-A futások mindig az F1..F6 sorrendben futnak, akárhogy van felsorolva a fájlban.
+futasok=F1,F2,F3,F5,F6, koteg_max=mind; a harmadik: futasok=F4, koteg_max=mind;
+P3b egy triggerben: futasok=F1V2,F2V2,F5V2,F6V2,F3V2B,F4V2, koteg_max=mind,
+plafon_usd=2.
+A futások mindig a FUTASOK definíciójának sorrendjében futnak (F1,F2,F3,F4,F5,F6,
+F3V2,F1V2,F2V2,F5V2,F6V2,F3V2B,F4V2), akárhogy van felsorolva a fájlban.
 
 GONDOLKODÁSI MÓD ÉS A JELENTÉS (F21 P3 döntés): az A és B gondolkodása
 KIKAPCSOLVA fut, a C-é kötelező (nem kapcsolható ki), ezért minimal (400-nál low)
@@ -81,6 +115,7 @@ vezérlés/paraméter; 3 költségplafon.
 
 import argparse
 import json
+import math
 import os
 import shutil
 import sys
@@ -138,6 +173,25 @@ FUTASOK = {
     'F6': {'modell': 'B', 'tipus': 'parosit', 'kjv': False, 'reteg': 'R1'},
     # F21.12 (előkészítve, a trigger külön jóváhagyásra): C, 200 vers, prompt_v2
     'F3V2': {'modell': 'C', 'tipus': 'parosit', 'kjv': True, 'reteg': None, 'prompt': bemenet.PROMPT_V2_UT},
+    # F21.25 (P3b, DT22/PD11): mind a prompt_v2-vel; a dict sorrendje a futási sorrend
+    'F1V2': {'modell': 'A', 'tipus': 'parosit', 'kjv': True, 'reteg': None, 'prompt': bemenet.PROMPT_V2_UT},
+    'F2V2': {'modell': 'B', 'tipus': 'parosit', 'kjv': True, 'reteg': None, 'prompt': bemenet.PROMPT_V2_UT},
+    'F5V2': {'modell': 'A', 'tipus': 'parosit', 'kjv': False, 'reteg': 'R1', 'prompt': bemenet.PROMPT_V2_UT},
+    'F6V2': {'modell': 'B', 'tipus': 'parosit', 'kjv': False, 'reteg': 'R1', 'prompt': bemenet.PROMPT_V2_UT},
+    'F3V2B': {'modell': 'C', 'tipus': 'parosit', 'kjv': True, 'reteg': None, 'prompt': bemenet.PROMPT_V2_UT,
+              'ismetles_of': 'F3V2'},
+    'F4V2': {'modell': 'C', 'tipus': 'biro', 'kjv': True, 'reteg': None, 'forras': ('F1V2', 'F2V2'),
+             'prompt': bemenet.PROMPT_V2_UT},
+}
+
+# Befagyasztott bemenetek: a fájl LF-normalizált sha256-ja (tokenek.sha256_lf). Éles futás
+# előtt ellenőrzi a futtató (befagyasztas_ellenoriz); az arany v2-t a
+# tokenek.arany_v2_befagyasztas_ellenoriz. A prompt-fájl változtatása új fájl (v3), nem
+# ezek módosítása.
+BEFAGYASZTOTT = {
+    'f21p/prompt_v1.md': '4a02ec8178c921650f113481bf14a26a162e26bff59f9b1cb9c8f3d0474d4d37',
+    'f21p/prompt_v2.md': '6c47f2d95fe64e4fbf22597f87b587eafa0c8d26bd35f18fac28b63bb6a944d5',
+    'f21p/prompt_biro_v2.md': '9b50267b892a5fe49815b07433dd1aec35c7e0a3ac14fe0d9332d3e18f1f63b6',
 }
 
 NAPLO_FEJLEC = ['ts', 'futas', 'koteg', 'probalkozas', 'modell', 'gondolkodas_mod',
@@ -205,18 +259,22 @@ def linkek(rekord):
     return {(p[0], e) for p in rekord['obj']['parok'] for e in p[1]}
 
 
-def biro_utasitas():
-    """A főprompt utasításrésze + a döntőbírói kiegészítés (prompt_biro_v1.md)."""
+def biro_utasitas(alap_ut=None):
+    """A főprompt utasításrésze + a döntőbírói kiegészítés (prompt_biro_v2.md).
+
+    alap_ut: az alapprompt fájlja (None = prompt_v1.md, a régi F4; F4V2-nél a
+    prompt_v2.md). A döntőbírói fájl tartalma nem változik, a futtató cseréli az
+    alapot: a kiegészítés csak a „fenti feladatra” hivatkozik, az alap szövegére nem."""
     with open(BIRO_PROMPT_UT, encoding='utf-8') as f:
         s = f.read()
     a = s.index(bemenet.KEZDET) + len(bemenet.KEZDET)
     b = s.index(bemenet.VEGE)
-    return bemenet.prompt_utasitas() + '\n\n' + s[a:b].strip('\n')
+    return bemenet.prompt_utasitas(alap_ut) + '\n\n' + s[a:b].strip('\n')
 
 
-def biro_sha256():
+def biro_sha256(alap_ut=None):
     import hashlib
-    return hashlib.sha256(biro_utasitas().encode('utf-8')).hexdigest()
+    return hashlib.sha256(biro_utasitas(alap_ut).encode('utf-8')).hexdigest()
 
 
 def _kompakt(obj):
@@ -284,7 +342,7 @@ def biro_kenyszer(c_obj, a_rek, b_rek):
     return hibak
 
 
-def biro_kotegszoveg(igehelyek, a_eredmenyek, b_eredmenyek, kjv=True):
+def biro_kotegszoveg(igehelyek, a_eredmenyek, b_eredmenyek, kjv=True, alap_ut=None):
     """A döntőbíró hívásának üzenete: utasítás + versblokkok + A és B válasza
     + a gép által kiszámolt rögzítés és vitatott szavak."""
     blokkok = []
@@ -305,7 +363,7 @@ def biro_kotegszoveg(igehelyek, a_eredmenyek, b_eredmenyek, kjv=True):
             sorok.append('VITATOTT MAGYAR SZAVAK (csak ezekről döntesz): %s' % _kompakt(rog[2]))
         blokkok.append('\n'.join(sorok))
     return '%s\n\n=== A FELDOLGOZANDÓ VERSEK (%d) ===\n\n%s\n' % (
-        biro_utasitas(), len(igehelyek), '\n\n'.join(blokkok))
+        biro_utasitas(alap_ut), len(igehelyek), '\n\n'.join(blokkok))
 
 
 def kotegszoveg_futashoz(futas_id, igehelyek, kimenet_dir):
@@ -313,15 +371,64 @@ def kotegszoveg_futashoz(futas_id, igehelyek, kimenet_dir):
     if spec['tipus'] == 'biro':
         a = eredmenyek_betolt(spec['forras'][0], kimenet_dir)
         b = eredmenyek_betolt(spec['forras'][1], kimenet_dir)
-        return biro_kotegszoveg(igehelyek, a, b, spec['kjv'])
+        return biro_kotegszoveg(igehelyek, a, b, spec['kjv'], spec.get('prompt'))
     return bemenet.kotegszoveg(igehelyek, spec['kjv'], spec.get('prompt'))
 
 
 def utasitas_sha12(futas_id):
     import hashlib
     if FUTASOK[futas_id]['tipus'] == 'biro':
-        return biro_sha256()[:12]
+        return biro_sha256(FUTASOK[futas_id].get('prompt'))[:12]
     return hashlib.sha256(bemenet.prompt_utasitas(FUTASOK[futas_id].get('prompt')).encode('utf-8')).hexdigest()[:12]
+
+
+def befagyasztas_ellenoriz(tabla=None, gyoker=None, arany=True):
+    """A befagyasztott bemenetek ellenőrzése; hibaüzenetek listája (üres = rendben)."""
+    tabla = BEFAGYASZTOTT if tabla is None else tabla
+    gyoker = tokenek.ROOT if gyoker is None else gyoker
+    hibak = []
+    for rel, vart in tabla.items():
+        ut = os.path.join(gyoker, *rel.split('/'))
+        if not os.path.exists(ut):
+            hibak.append('hiányzik a befagyasztott fájl: %s' % rel)
+            continue
+        kapott = tokenek.sha256_lf(ut)
+        if kapott != vart:
+            hibak.append('a befagyasztott %s sha256-ja %s, a várt %s' % (rel, kapott, vart))
+    if arany:
+        try:
+            tokenek.arany_v2_befagyasztas_ellenoriz()
+        except SystemExit as e:
+            hibak.append(str(e))
+    return hibak
+
+
+def mentett_valaszok_ellenoriz(futas_id, kimenet_dir):
+    """A futás MENTETT (allapot=ok) válaszainak újraellenőrzése a nyers modellhívásoktól
+    függetlenül: az ötpontos kapu (a 5. pont a K5: nincs Strong-szám) és F4/F4V2-nél a 6.
+    pont (rögzítés). Hibaüzenetek listája (üres = rendben); a kapuhibás versek obj-ja
+    None kell legyen."""
+    spec = FUTASOK[futas_id]
+    hibak = []
+    a = b = None
+    if spec['tipus'] == 'biro':
+        a = eredmenyek_betolt(spec['forras'][0], kimenet_dir)
+        b = eredmenyek_betolt(spec['forras'][1], kimenet_dir)
+    for sor in koteg_sorok(futas_id, kimenet_dir):
+        for ig, v in sor['versek'].items():
+            if v['allapot'] != 'ok':
+                if v.get('obj') is not None:
+                    hibak.append('%s %s: kapuhibás vers obj-ja nem None' % (futas_id, ig))
+                continue
+            try:
+                h = kapu.vers_ellenoriz(v['obj'], bemenet.vers_adat(ig))
+            except Exception as e:  # noqa: BLE001
+                h = ['a mentett válasz nem ellenőrizhető: %s' % e]
+            if not h and a is not None:
+                h = biro_kenyszer(v['obj'], a[ig], b[ig])
+            for x in h:
+                hibak.append('%s %s: %s' % (futas_id, ig, x))
+    return hibak
 
 
 # ---------------------------------------------------------------------------
@@ -579,6 +686,8 @@ def koteg_feldolgoz(ctx, futas_id, koteg_no, igehelyek):
                 versek[ig] = {'allapot': 'kapuhiba', 'probalkozas': 2, 'hibak': r['hibak'], 'obj': None}
     sor = {'futas': futas_id, 'modell': MODELLEK[FUTASOK[futas_id]['modell']], 'koteg': koteg_no,
            'igehelyek': igehelyek, 'nyers': nyers, 'hivasok': hivasrekordok, 'versek': versek}
+    if FUTASOK[futas_id].get('ismetles_of'):
+        sor['ismetles_of'] = FUTASOK[futas_id]['ismetles_of']
     koteg_ment(futas_id, ctx.kimenet_dir, sor)
     return versek
 
@@ -591,9 +700,11 @@ def futas(ctx, futas_id, minta, koteg_max=None):
     versek = verslista(futas_id, minta, ctx.kimenet_dir)
     kotegek = bemenet.kotegek(versek, KOTEG_MERET)
     kesz = kesz_kotegek(futas_id, ctx.kimenet_dir)
-    print('%s: %s, %d vers, %d köteg (kész: %d)' % (
+    print('%s: %s, %d vers, %d köteg (kész: %d)%s' % (
         futas_id, MODELLEK[FUTASOK[futas_id]['modell']], len(versek), len(kotegek),
-        sum(1 for k in kotegek if tuple(k) in kesz)), flush=True)
+        sum(1 for k in kotegek if tuple(k) in kesz),
+        ' [a %s ismétlése, 2. futás]' % FUTASOK[futas_id]['ismetles_of'] if FUTASOK[futas_id].get('ismetles_of') else ''),
+        flush=True)
     hibas_kotegek = 0
     uj_kotegek = 0
     for no, k in enumerate(kotegek, 1):
@@ -616,8 +727,14 @@ def futas(ctx, futas_id, minta, koteg_max=None):
             continue
         print('  köteg %d/%d kész, kapuhiba: %d' % (
             no, len(kotegek), sum(1 for r in v.values() if r['allapot'] != 'ok')), flush=True)
-    return (1 if hibas_kotegek else 0), {'versek': len(versek), 'kotegek': len(kotegek),
-                                          'hibas_kotegek': hibas_kotegek}
+    mentett_hibak = mentett_valaszok_ellenoriz(futas_id, ctx.kimenet_dir)
+    if mentett_hibak:
+        print('  A MENTETT VÁLASZOK ÚJRAELLENŐRZÉSE HIBÁT TALÁLT (%d):' % len(mentett_hibak), file=sys.stderr, flush=True)
+        for x in mentett_hibak[:20]:
+            print('    ' + x, file=sys.stderr, flush=True)
+    return (1 if (hibas_kotegek or mentett_hibak) else 0), {
+        'versek': len(versek), 'kotegek': len(kotegek), 'hibas_kotegek': hibas_kotegek,
+        'mentett_hibak': len(mentett_hibak)}
 
 
 def futasok_vegrehajt(ctx, futas_idk, minta, koteg_max=None):
@@ -638,7 +755,8 @@ def futasok_vegrehajt(ctx, futas_idk, minta, koteg_max=None):
 # vezérlőfájl (f21p/futtatas.txt)
 # ---------------------------------------------------------------------------
 
-VEZERLO_KULCSOK = ('futasok', 'koteg_max')
+VEZERLO_KULCSOK = ('futasok', 'koteg_max')          # kötelező
+VEZERLO_OPCIONALIS = ('plafon_usd',)                   # opcionális
 
 
 class VezerloHiba(Exception):
@@ -647,7 +765,9 @@ class VezerloHiba(Exception):
 
 def vezerlo_beolvas(ut):
     """A vezérlőfájl értelmezése: {'futasok': [F-id, ...] (F1..F6 sorrendben),
-    'koteg_max': int|None}. Hiba esetén VezerloHiba (nincs alapérték)."""
+    'koteg_max': int|None, 'plafon_usd': float|None} (a futasok a FUTASOK sorrendjében).
+    A plafon_usd opcionális (0 < x <= PLAFON_USD); a többi kulcs kötelező, alapérték nincs.
+    Hiba esetén VezerloHiba."""
     if not os.path.exists(ut):
         raise VezerloHiba('nincs vezérlőfájl: %s' % ut)
     with open(ut, encoding='utf-8') as f:
@@ -659,9 +779,9 @@ def vezerlo_beolvas(ut):
         if '=' not in sor:
             raise VezerloHiba('%d. sor: nem kulcs=érték alakú: %r' % (i, sor))
         kulcs, ertek = (x.strip() for x in sor.split('=', 1))
-        if kulcs not in VEZERLO_KULCSOK:
+        if kulcs not in VEZERLO_KULCSOK and kulcs not in VEZERLO_OPCIONALIS:
             raise VezerloHiba('%d. sor: ismeretlen kulcs: %r (érvényes: %s)'
-                              % (i, kulcs, ', '.join(VEZERLO_KULCSOK)))
+                              % (i, kulcs, ', '.join(VEZERLO_KULCSOK + VEZERLO_OPCIONALIS)))
         if kulcs in ertekek:
             raise VezerloHiba('%d. sor: a(z) %s kulcs kétszer szerepel' % (i, kulcs))
         ertekek[kulcs] = ertek
@@ -685,7 +805,16 @@ def vezerlo_beolvas(ut):
         koteg_max = int(km)
     else:
         raise VezerloHiba('a koteg_max pozitív egész vagy "mind" lehet, nem %r' % km)
-    return {'futasok': [f for f in FUTASOK if f in idk], 'koteg_max': koteg_max}
+    plafon_usd = None
+    if 'plafon_usd' in ertekek:
+        try:
+            plafon_usd = float(ertekek['plafon_usd'])
+        except ValueError:
+            raise VezerloHiba('a plafon_usd nem szám: %r' % ertekek['plafon_usd'])
+        if not math.isfinite(plafon_usd) or plafon_usd <= 0 or plafon_usd > PLAFON_USD:
+            raise VezerloHiba('a plafon_usd 0 és %.1f (kemény korlát) között kell legyen, nem %r'
+                              % (PLAFON_USD, ertekek['plafon_usd']))
+    return {'futasok': [f for f in FUTASOK if f in idk], 'koteg_max': koteg_max, 'plafon_usd': plafon_usd}
 
 
 def vezerlo_futtat(ctx, vezerlo_ut, minta):
@@ -695,7 +824,10 @@ def vezerlo_futtat(ctx, vezerlo_ut, minta):
     except VezerloHiba as e:
         print('VEZÉRLŐFÁJL HIBA (%s): %s' % (vezerlo_ut, e), file=sys.stderr)
         return 2
-    print('vezérlés: futások=%s, koteg_max=%s' % (','.join(v['futasok']), v['koteg_max'] or 'mind'), flush=True)
+    if v['plafon_usd'] is not None:
+        ctx.plafon = min(ctx.plafon, v['plafon_usd'], PLAFON_USD)
+    print('vezérlés: futások=%s, koteg_max=%s, plafon (kumulatív, napló-összeg) %.2f USD'
+          % (','.join(v['futasok']), v['koteg_max'] or 'mind', ctx.plafon), flush=True)
     return futasok_vegrehajt(ctx, v['futasok'], minta, v['koteg_max'])
 
 
@@ -1153,9 +1285,9 @@ def onteszt():
 
     vez_ir('# megjegyzés\nfutasok = F5, F1 ,F3\nkoteg_max=mind\n')
     v = vezerlo_beolvas(vez)
-    ellen(v == {'futasok': ['F1', 'F3', 'F5'], 'koteg_max': None}, 'vezérlő: hibás értelmezés: %s' % v)
+    ellen(v == {'futasok': ['F1', 'F3', 'F5'], 'koteg_max': None, 'plafon_usd': None}, 'vezérlő: hibás értelmezés: %s' % v)
     vez_ir('futasok=F1\nkoteg_max=1\n')
-    ellen(vezerlo_beolvas(vez) == {'futasok': ['F1'], 'koteg_max': 1}, 'vezérlő: a koteg_max=1 értelmezése hibás')
+    ellen(vezerlo_beolvas(vez) == {'futasok': ['F1'], 'koteg_max': 1, 'plafon_usd': None}, 'vezérlő: a koteg_max=1 értelmezése hibás')
     vez_ir('futasok=F4\nkoteg_max=mind\n')
     ellen(vezerlo_beolvas(vez)['futasok'] == ['F4'], 'vezérlő: az egyedül álló F4 elutasítva')
     ellen(vez_hiba(''), 'vezérlő: üres fájl elfogadva (nincs alapérték)')
@@ -1216,6 +1348,7 @@ def main():
     ap.add_argument('--vezerlo', default=None, help='vezérlőfájl (f21p/futtatas.txt): futasok=..., koteg_max=...')
     ap.add_argument('--futas', default=None, help='pl. F1,F2 (nincs alapérték; --vezerlo helyett, kézi futtatáshoz)')
     ap.add_argument('--koteg-max', default=None, help='--futas mellett: futásonként legfeljebb ennyi új köteg (pozitív egész vagy mind)')
+    ap.add_argument('--mentett-ellenoriz', default=None, help='pl. F1V2,F4V2: a mentett válaszok újraellenőrzése (kapu + 6. pont), hálózat nélkül')
     ap.add_argument('--szaraz', action='store_true', help='token- és költségbecslés, hálózat nélkül')
     ap.add_argument('--onteszt', action='store_true', help='MOCK küldős önellenőrzés, hálózat és kulcs nélkül')
     ap.add_argument('--eltero-arany', type=float, default=0.30, help='--szaraz: az F4 versei az F1–F2 eltérési aránya szerint')
@@ -1225,6 +1358,19 @@ def main():
 
     if args.onteszt:
         return onteszt()
+    if args.mentett_ellenoriz:
+        ossz_hiba = 0
+        for f in (x.strip() for x in args.mentett_ellenoriz.split(',') if x.strip()):
+            if f not in FUTASOK:
+                print('ismeretlen futás: %s' % f, file=sys.stderr)
+                return 2
+            h = mentett_valaszok_ellenoriz(f, args.kimenet_dir)
+            print('%s: %d mentett vers ellenőrizve, hiba: %d' % (
+                f, sum(1 for v in eredmenyek_betolt(f, args.kimenet_dir).values() if v['allapot'] == 'ok'), len(h)))
+            for x in h[:20]:
+                print('  ' + x)
+            ossz_hiba += len(h)
+        return 1 if ossz_hiba else 0
     minta = minta_betolt()
     if args.szaraz:
         szaraz_kiir(minta, args.eltero_arany)
@@ -1256,6 +1402,14 @@ def main():
         except VezerloHiba as e:
             print('VEZÉRLŐFÁJL HIBA (%s): %s' % (args.vezerlo, e), file=sys.stderr)
             return 2
+    if not (0 < args.plafon <= PLAFON_USD):
+        print('HIBA: a --plafon 0 és %.1f (kemény korlát) között kell legyen' % PLAFON_USD, file=sys.stderr)
+        return 2
+    fagy = befagyasztas_ellenoriz()
+    if fagy:
+        for x in fagy:
+            print('BEFAGYASZTÁS HIBA: %s' % x, file=sys.stderr)
+        return 2
     api_key = os.environ.get('OPENROUTER_API_KEY')
     if not api_key:
         print('HIBA: az OPENROUTER_API_KEY környezeti változó nincs beállítva', file=sys.stderr)
