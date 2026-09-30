@@ -5,12 +5,13 @@ kod: F17
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: fut
 ad: Macula a Strong-számhoz és a KK-hoz kötve; a #8 fő forrása
 kovetkezo: `/kovetkezo` csomag: #16–#19 és #7
 olvas: [konkordancia/Karoli_versmegfeleltetes.tsv]
 ir: [naplok/F17_illesztetlen.tsv, konkordancia/Macula_heber.tsv, konkordancia/Macula_gorog.tsv, NYITOTT_FELADATOK.md]
 fugg: [6]
+ag: claude/macula-import
 ---
 # F17 — Macula-import, héber és görög
 
