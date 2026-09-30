@@ -97,3 +97,5 @@ Döntésem (`javaslat`): az import **`javaslat` státuszú marad**, mert a 90%-o
 - N27 lezárva (`NYITOTT_FELADATOK.md`).
 
 **Költség:** Gemini 0 USD; WebFetch/WebSearch díjmentes eszközhívás.
+
+**2.7. Harmadik ellenőri kör (célzott, F18.7-re).** Helyesbítés a 2.6-hoz: a „Titus/`Tit 2`” és a `Co` előtag nem teljesen lefedett — 4 `Tit 2` sor és 8 `Kol 8:x/12:18` sor (valójában 2Kor) jelöletlen, mert a töredék önálló `<ref>`-et kapott (TSV 16103–16106, 19518–19519, 51735–51737, 52528–52530). A `Jer 2` (84711) nem „valószínűleg helyes”: a forrás `Jeremiah 2</ref> <ref>2 Ch 36:12`, a sor jelölt. Jelöletlen rokon osztályok: 15 római számos névhez tapadt, `<ref>` nélküli hivatkozás-sor; „with N:N” folytató-hivatkozás (72 `utotag`, 54 `cimke`). Részletek: `naplok/ELLENOR_F18.md` 3. kör, DONTESEK DT18.

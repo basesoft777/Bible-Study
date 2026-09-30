@@ -51,3 +51,5 @@ Könyvnév-konverzió: OSIS → STEPBible-rövidítés (a parszolóban) → magy
 ## Proveniencia
 
 `scope=teljes-Nave | forras=basokant/nave@4f35c7d data/nave.txt | ts=2026-09-30`. Sorszámok: `naplok/F18_import_naplo.md`; a kimenet sorai: 85 116 (77 985 `vers`, 4 368 `lasd`, 2 763 `szoveg`), 5 322 `tema_id` — `scope=teljes-Nave | forras=eszkozok/nave_import.py --forras nave.txt | ts=2026-09-30`.
+
+**Helyesbítés (3. ellenőri kör):** a névvel összeolvadt hivatkozások jelölése nem teljes. Jelöletlen maradt 12 sor, ahol a töredék önálló `<ref>`-et kapott (`Titus 2` + `Col.8.x`, valójában 2Kor), 15 sor római számos név után `<ref>` nélküli hivatkozással, és a „with N:N” folytató-hivatkozások (72 `utotag`, 54 `cimke`); a `javaslat` a tartományt az első versre csonkolja. Lásd `naplok/F18_import_naplo.md` 2.7.
