@@ -466,6 +466,36 @@ class D8DiffHatokorTeszt(unittest.TestCase):
             shutil.rmtree(gy, ignore_errors=True)
 
 
+class E16EsemenyTest(unittest.TestCase):
+    """Az E16 push-esemenynel (ures PR-cim) nem ertelmezett; a PR-en fut."""
+
+    FAJLOK = ['.github/workflows/ellenorzes.yml', 'eszkozok/ellenoriz.py']
+
+    def _hiba(self, **kw):
+        import futtat as FU
+        eredmeny = FU.fut(self.FAJLOK, False, **kw)
+        return eredmeny, FU
+
+    def test_push_ures_cimmel_nem_piros(self):
+        eredmeny, FU = self._hiba(pr_cim='', esemeny='push')
+        self.assertEqual([t for t in eredmeny['E16'] if t.szint == 'HIBA'], [])
+        szoveg, hiba_van = FU.jelentes_szoveg(eredmeny, False, 3, 'push')
+        self.assertIn('E16: push-esemény, nem értelmezett (a PR-en fut)', szoveg)
+        self.assertFalse(hiba_van)  # az összesített jelentés sem piros
+
+    def test_pr_cim_nelkul_piros(self):
+        eredmeny, _ = self._hiba(pr_cim='', esemeny='pull_request')
+        self.assertTrue([t for t in eredmeny['E16'] if t.szint == 'HIBA'])
+
+    def test_esemeny_megadasa_nelkul_piros(self):
+        eredmeny, _ = self._hiba(pr_cim='')
+        self.assertTrue([t for t in eredmeny['E16'] if t.szint == 'HIBA'])
+
+    def test_pr_ellenorzo_cimmel_zold(self):
+        eredmeny, _ = self._hiba(pr_cim='[ELLENŐRZŐ] valami', esemeny='pull_request')
+        self.assertEqual([t for t in eredmeny['E16'] if t.szint == 'HIBA'], [])
+
+
 class BeerkezoKizarasTest(unittest.TestCase):
     """F20 B6: a beerkezo/ minden szabalybol kimarad."""
 
