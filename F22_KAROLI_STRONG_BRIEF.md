@@ -9,7 +9,7 @@ allapot: nem_indult
 ad: a Károli 1908 minden szavához Strong-szám bizonyossággal (két tábla, KJV-támponttal)
 kovetkezo: csak a #21 pilot megfelelő eredménye után
 olvas: [konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv]
-ir: [konkordancia/Karoli_Strong_OSZ.tsv, konkordancia/Karoli_Strong_USZ.tsv, konkordancia/KJV_Strongs_teljes.tsv, adat/karoli_strong_kezi.tsv, adat/datasetek.tsv, adat/SEMA.md, eszkozok/karoli_strong/, f22/, .github/workflows/f22_parositas.yml]
+ir: [konkordancia/Karoli_Strong_OSZ.tsv, konkordancia/Karoli_Strong_USZ.tsv, adat/karoli_strong_kezi.tsv, adat/datasetek.tsv, adat/SEMA.md, eszkozok/karoli_strong/, f22/, .github/workflows/f22_parositas.yml]
 fugg: [21]
 ---
 # F22_KAROLI_STRONG_BRIEF.md — Károli–Strong párosítás a teljes Bibliára
@@ -84,7 +84,7 @@ A 0. lépés ezeket újra lekérdezi. Eltérés esetén a friss szám érvényes
 2. **A 61 + 30 versmegfeleltetési maradék:** listázd ki, és osztályozd őket (összevont vers, osztott vers, TAHOT/Károli fejezethatár, Károliban hiányzó vers). Az összevont és osztott eseteknél a modell a verspárt együtt kapja meg. Ami nem osztályozható, `kezi` jelölést kap, és a pilotból kimarad.
 3. **Sorrend-ellenőrzés:** ellenőrizd, hogy a TAHOT/TAGNT sorok egy versen belül a szórendben állnak (a nyers fájl `#01, #02…` sorszámával, `konkordancia/TAHOT_TAGNT_README.md`). Ha igen, a versen belüli sorszám a sorrendből származtatható. Ha nem, állj meg és jelezd.
 4. **Károli-tokenizálás:** determinisztikus függvény (`eszkozok/karoli_strong/tokenek.py`): token = Unicode betű- és számjegysorozat, az írásjel nem token. Ugyanaz a függvény dolgozik a promptnál, a kapunál és az építésnél. Egységteszt a 383 arany sor szavaira: mindegyik szó megtalálható az adott vers tokenjei között. Ha nem, listázd.
-5. **KJV-import (N29):** az eBible.org `eng-kjv_usfm.zip` szó-szintű Strong-címkéiből `konkordancia/KJV_Strongs_teljes.tsv` (a meglévő `KJV_Strongs_*.tsv` oszlopaival: `Igehely | Szósorszám | Strong-szám | Angol szó | Morfológiai kód`), Strong nullázva. A letöltés az Actionsben fut (a cloud proxy blokkolhat). Proveniencia-fejléc: URL, sha256, dátum. Ellenőrzés: a meglévő 1Móz/2Móz/Péld táblákkal soronkénti egyezés, az eltérések száma a jelentésbe.
+5. **KJV-import (N29):** az eBible.org `eng-kjv_usfm.zip` szó-szintű Strong-címkéiből `konkordancia/KJV_Strongs_teljes.tsv` (a meglévő `KJV_Strongs_*.tsv` oszlopaival: `Igehely | Szósorszám | Strong-szám | Angol szó | Morfológiai kód`), Strong nullázva. A letöltés az Actionsben fut (a cloud proxy blokkolhat). Proveniencia-fejléc: URL, sha256, dátum. Ellenőrzés: a meglévő 1Móz/2Móz/Péld táblákkal soronkénti egyezés, az eltérések száma a jelentésbe. *(A #19 végzi, ha a #21 pilot az import mellett dönt.)*
 6. **Az arany sorok előkészítése:** a `Karoli_Strong_kivonat.tsv` sorait `(igehely, Károli-szó, Strong)` hármassá alakítsd a Károli-natív igehellyel és nullázott Strong-számmal, csak memóriában, a fájl módosítása nélkül. Az ismert eltéréseket (N21, F4.0d szófaj-drift) nem kell javítani, mert a szófaj- és gyökoszlop az aranymintában nem játszik szerepet.
 
 ### 22.1 Prompt és kapu
