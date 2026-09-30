@@ -78,6 +78,15 @@ def main():
     elteres = {json.loads(a)['vers'] for a, b in zip(sorok, ki) if a != b}
     if elteres != set(JAVITASOK) or len(ki) != len(sorok):
         raise SystemExit('váratlan eltérés a v1-től: %s' % sorted(elteres))
+    if os.path.exists(tokenek.ARANY_V2_SHA):
+        # F21.14: a v2 befagyasztva; a szkript csak ellenőriz, nem ír felül
+        import hashlib
+        uj = hashlib.sha256('\n'.join(ki).encode('utf-8')).hexdigest()
+        meglevo = tokenek.arany_v2_befagyasztas_ellenoriz(V2)
+        if uj != meglevo:
+            raise SystemExit('HIBA: a v2 befagyasztva (%s), a most előállított tartalom eltér; nem írom felül' % meglevo)
+        print('v2 befagyasztva; az előállított tartalom egyezik (sha256 %s), nem írtam felül' % meglevo)
+        return
     with open(V2, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(ki))
     print('v2: %d vers változott -> %s' % (len(elteres), V2))

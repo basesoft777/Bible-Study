@@ -47,6 +47,8 @@ def main():
     if '--arany' in sys.argv:
         arany_ut = os.path.join(tokenek.ROOT, sys.argv[sys.argv.index('--arany') + 1])
     print('arany: %s' % os.path.relpath(arany_ut, tokenek.ROOT).replace(os.sep, '/'))
+    if os.path.normcase(os.path.abspath(arany_ut)) == os.path.normcase(os.path.abspath(tokenek.ARANY_V2)):
+        print('befagyasztás: sha256 %s egyezik (f21p/arany_opus_v2.sha256)' % tokenek.arany_v2_befagyasztas_ellenoriz())
     with open(arany_ut, encoding='utf-8') as f:
         sorok = [s.rstrip('\n').rstrip('\r') for s in f if s.strip()]
     objektumok = []

@@ -220,6 +220,33 @@ def meres_kizaras():
     return {(r[0], int(r[1])): r[2] for r in _sorok(MERES_KIZARAS)}
 
 
+ARANY_V2 = os.path.join(ROOT, 'f21p', 'arany_opus_v2.jsonl')
+ARANY_V2_SHA = os.path.join(ROOT, 'f21p', 'arany_opus_v2.sha256')
+
+
+def sha256_lf(ut):
+    """A fájl sha256-ja LF-re normalizált sorvéggel (a core.autocrlf=true munkafán
+    a checkout CRLF-et adhat; a befagyasztott tartalom a sorvégtől független)."""
+    import hashlib
+    with open(ut, 'rb') as f:
+        return hashlib.sha256(f.read().replace(b'\r\n', b'\n')).hexdigest()
+
+
+def arany_v2_befagyasztas_ellenoriz(ut=ARANY_V2):
+    """Az arany v2 befagyasztásának ellenőrzése (F21.14): a jsonl LF-normalizált
+    sha256-ja egyezik a f21p/arany_opus_v2.sha256 első mezőjével. Eltérésnél vagy
+    hiányzó hash-fájlnál SystemExit (a hívó szkript hibával áll meg)."""
+    if not os.path.exists(ARANY_V2_SHA):
+        raise SystemExit('HIBA: nincs befagyasztási hash: %s' % ARANY_V2_SHA)
+    with open(ARANY_V2_SHA, encoding='utf-8') as f:
+        vart = f.read().split()[0]
+    kapott = sha256_lf(ut)
+    if kapott != vart:
+        raise SystemExit('HIBA: az arany v2 (%s) sha256-ja %s, a befagyasztott %s — a befagyasztott v2 megváltozott'
+                         % (ut, kapott, vart))
+    return kapott
+
+
 def konyv_rovid(igehely):
     b = igehely_bont(igehely)
     return b[0] if b else None

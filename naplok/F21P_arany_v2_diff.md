@@ -18,3 +18,5 @@ A v2 a v1 másolata, csak a f21p/arany_opus_jegyzetek.md 2. szakaszának konvenc
 - **Ez 39:13 *megdicsőítem*.** A -י (H9040) rag a *magamat*-hoz kötött; a K4 a „birtokos személyragot viselő magyar szóhoz” köt, a *megdicsőítem* igei személyrag, nem birtokos. Nem megnevezett K4-sértés; nem javítottam. Kérdés: kiterjed-e a K4 az igei személyragra.
 - **2Móz 26:13 *is* (23, 25).** A K9 szerint a *ve-* az *is*-hez is köthető volna, de az *is* betoldas a 6. táblázat dokumentált döntése; a v2 a minimális javítást alkalmazta (forditatlan). Kérdés: az *is*-hez kerüljön-e.
 
+**Befagyasztva 2026.09.30, felhasználói jóváhagyással** (F21.14). sha256 (LF-normalizált tartalom): `06a00738f7fd044920ffa79e023b71840d4ba4d04c91ab64d2eb655f1f4a8bb2` — f21p/arany_opus_v2.sha256; az arany_ellenoriz.py, a meres.py és a c_diff.py eltérésnél hibával megáll.
+

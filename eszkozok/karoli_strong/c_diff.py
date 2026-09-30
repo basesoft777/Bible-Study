@@ -101,6 +101,7 @@ def arany_v2(adat):
     """{igehely: v2-objektum} vagy None, ha nincs v2."""
     if not os.path.exists(ARANY_V2_UT):
         return None
+    tokenek.arany_v2_befagyasztas_ellenoriz(ARANY_V2_UT)   # F21.14: eltérésnél hibával megáll
     return {o['vers']: o for o in meres._jsonl(ARANY_V2_UT)}
 
 
@@ -503,6 +504,10 @@ def v2_diff_jelentes(adat, el, kezi, el_v2, kezi_v2, v2):
         len(av2.JAVITASOK), len(k1 - k2), ', '.join('(%s)->egyező: %d' % kv for kv in sorted(osszesit.items())) or '—',
         len(k2 - k1)), '']
     ki += NEM_JAVITOTT
+    if os.path.exists(tokenek.ARANY_V2_SHA):
+        ki += ['**Befagyasztva 2026.09.30, felhasználói jóváhagyással** (F21.14). sha256 (LF-normalizált '
+               'tartalom): `%s` — f21p/arany_opus_v2.sha256; az arany_ellenoriz.py, a meres.py és a c_diff.py '
+               'eltérésnél hibával megáll.' % tokenek.arany_v2_befagyasztas_ellenoriz(ARANY_V2_UT), '']
     with open(V2_DIFF_UT, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(ki) + '\n')
 
