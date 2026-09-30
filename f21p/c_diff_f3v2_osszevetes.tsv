@@ -1,0 +1,123 @@
+igehely	reteg	irany	k_poz	e_poz	statusz	f3_osztaly	f3v2_osztaly	konvencio_vagy_jegyzetpont	valtozas_konvencio	indok
+2Móz 20:23	R1	hianyzo	4	5	oroklott	a				
+2Móz 20:25	R1	tobblet	13	18	uj					
+2Móz 20:25	R1	tobblet	14	18	uj					
+2Móz 20:25	R1	tobblet	18	19	oroklott	a				
+2Móz 21:6	R1	hianyzo	6	5	oroklott	a				
+2Móz 21:6	R1	hianyzo	20	22	oroklott	a				
+2Móz 21:6	R1	hianyzo	25	25	oroklott	a				
+2Móz 21:26	R1	hianyzo	5	8	oroklott	a				
+2Móz 21:26	R1	hianyzo	8	13	uj					
+2Móz 21:26	R1	hianyzo	20	23	oroklott	a				
+2Móz 21:26	R1	tobblet	1	1	oroklott	b				
+2Móz 21:26	R1	tobblet	9	13	uj					
+2Móz 21:26	R1	tobblet	10	14	oroklott	b				
+2Móz 25:8	R1	hianyzo	8	10	oroklott	a				
+2Móz 25:40	R1	hianyzo	5	5	oroklott	b				
+2Móz 25:40	R1	tobblet	1	1	oroklott	a				
+2Móz 25:40	R1	tobblet	3	5	oroklott	b				
+2Móz 26:13	R1	tobblet	9	12	uj					
+2Móz 26:13	R1	tobblet	11	12	oroklott	a				
+2Móz 26:13	R1	tobblet	23	26	uj					
+2Móz 26:13	R1	tobblet	25	26	uj					
+2Móz 29:4	R1	hianyzo	6	7	oroklott	a				
+2Móz 30:3	R1	tobblet	14	15	uj					
+Péld 23:19	R1	hianyzo	3	4	maradt	c				
+Péld 23:19	R1	hianyzo	5	5	uj					
+Péld 23:19	R1	hianyzo	11	9	oroklott	a				
+Péld 23:19	R1	tobblet	4	4	maradt	c				
+Péld 25:24	R1	hianyzo	4	5	uj					
+Péld 25:24	R1	hianyzo	5	4	uj					
+Péld 25:24	R1	tobblet	4	4	uj					
+Péld 25:24	R1	tobblet	5	5	uj					
+Péld 28:17	R1	hianyzo	11	9	uj					
+Péld 28:17	R1	tobblet	7	3	uj					
+Péld 30:17	R1	tobblet	3	2	uj					
+Péld 31:8	R1	hianyzo	12	9	oroklott	b				
+Péld 31:8	R1	hianyzo	13	6	maradt	c				
+Péld 31:8	R1	tobblet	11	6	maradt	c				
+Zsolt 16:11	R2	tobblet	1	1	oroklott	a				
+Zsolt 18:1	R2	tobblet	11	16	oroklott	a				
+Zsolt 18:1	R2	tobblet	14	18	oroklott	b				
+Zsolt 18:1	R2	tobblet	14	19	oroklott	b				
+Zsolt 18:3	R2	tobblet	7	4	uj					
+Zsolt 22:32	R2	tobblet	8	8	uj					
+Zsolt 22:32	R2	tobblet	13	10	uj					
+Jer 46:21	R3	hianyzo	2	3	megszunt	c				
+Jer 46:21	R3	hianyzo	3	1	maradt	c				
+Jer 46:21	R3	hianyzo	4	7	megszunt	c				
+Jer 46:21	R3	hianyzo	6	6	oroklott	a				
+Jer 46:21	R3	hianyzo	13	11	megszunt	c				
+Jer 46:21	R3	hianyzo	27	27	oroklott	a				
+Jer 46:21	R3	tobblet	3	3	megszunt	c				
+Jer 46:21	R3	tobblet	3	11	maradt	c				
+Jer 51:3	R3	hianyzo	8	8	megszunt	c				
+Jer 51:3	R3	hianyzo	11	10	megszunt	c				
+Jer 51:3	R3	hianyzo	15	16	uj					
+Jer 51:3	R3	tobblet	2	4	uj					
+Jer 51:3	R3	tobblet	3	3	oroklott	a				
+Jer 51:3	R3	tobblet	8	10	megszunt	c				
+Jer 51:3	R3	tobblet	10	8	maradt	c				
+Ez 11:3	R3	tobblet	9	10	maradt	c				
+Ez 16:57	R3	hianyzo	16	13	megszunt	c				
+Ez 16:57	R3	tobblet	7	7	uj					
+Ez 22:25	R3	hianyzo	4	3	oroklott	a				
+Ez 22:25	R3	hianyzo	6	6	oroklott	a				
+Ez 22:25	R3	hianyzo	7	7	megszunt	c				
+Ez 22:25	R3	tobblet	12	10	uj					
+Ez 33:31	R3	hianyzo	18	14	oroklott	a				
+Ez 33:31	R3	tobblet	9	6	oroklott	b				
+Ez 33:31	R3	tobblet	15	14	uj					
+Ez 33:31	R3	tobblet	32	30	maradt	c				
+Ez 33:31	R3	tobblet	33	34	oroklott	b				
+Ez 39:13	R3	tobblet	10	8	oroklott	a				
+Ez 39:13	R3	tobblet	15	13	oroklott	a				
+Ez 39:13	R3	tobblet	16	15	oroklott	a				
+Ez 46:12	R3	tobblet	25	24	uj					
+Ez 46:12	R3	tobblet	25	27	megszunt	c				
+Ez 46:12	R3	tobblet	39	39	uj					
+Ez 46:12	R3	tobblet	39	40	megszunt	c				
+Mt 4:4	R4	tobblet	16	17	uj					
+Mt 4:4	R4	tobblet	17	17	oroklott	a				
+Mt 5:34	R4	tobblet	3	3	uj					
+Mt 6:31	R4	hianyzo	5	1	megszunt	c				
+Mt 6:31	R4	tobblet	4	4	uj					
+Mt 11:18	R4	tobblet	4	4	megszunt	c				
+Mt 11:18	R4	tobblet	4	5	uj					
+Mt 11:18	R4	tobblet	5	4	megszunt	c				
+Mt 11:18	R4	tobblet	5	5	uj					
+Mt 11:18	R4	tobblet	11	9	uj					
+Mt 21:4	R4	hianyzo	3	5	megszunt	c				
+Mt 21:4	R4	hianyzo	8	9	maradt	c				
+Mt 21:4	R4	tobblet	10	12	uj					
+Mt 21:4	R4	tobblet	11	12	uj					
+Mt 21:4	R4	tobblet	12	12	uj					
+Mt 23:31	R4	hianyzo	2	1	megszunt	c				
+Mt 27:18	R4	tobblet	2	1	uj					
+Mt 27:18	R4	tobblet	4	1	uj					
+Mk 2:23	R4	tobblet	3	2	uj					
+Mk 2:23	R4	tobblet	9	7	uj					
+Mk 2:23	R4	tobblet	19	15	uj					
+Jak 1:18	R4	hianyzo	13	13	oroklott	a				
+Jak 1:18	R4	tobblet	10	7	oroklott	a				
+Jak 3:1	R4	tobblet	7	8	uj					
+Jak 3:4	R4	hianyzo	15	13	uj					
+Jak 3:4	R4	hianyzo	19	17	uj					
+Jak 3:4	R4	tobblet	12	12	megszunt	c				
+Jak 3:4	R4	tobblet	12	13	uj					
+Jak 3:4	R4	tobblet	16	17	maradt	c				
+Jak 3:4	R4	tobblet	22	18	uj					
+Jak 3:4	R4	tobblet	23	19	megszunt	c				
+1Pét 4:11	R4	hianyzo	14	11	maradt	c				
+1Pét 4:11	R4	tobblet	7	3	maradt	c				
+1Pét 4:11	R4	tobblet	12	11	maradt	c				
+1Pét 4:11	R4	tobblet	15	9	maradt	c				
+1Pét 4:11	R4	tobblet	22	21	megszunt	c				
+1Pét 4:11	R4	tobblet	22	22	maradt	c				
+1Pét 4:11	R4	tobblet	32	34	oroklott	a				
+1Pét 4:11	R4	tobblet	33	36	oroklott	a				
+1Pét 5:12	R4	tobblet	22	21	uj					
+2Pét 1:7	R4	hianyzo	6	6	megszunt	c				
+2Pét 1:7	R4	hianyzo	10	10	megszunt	c				
+1Ján 1:10	R4	hianyzo	13	12	oroklott	a				
+1Ján 1:10	R4	tobblet	2	3	uj					
