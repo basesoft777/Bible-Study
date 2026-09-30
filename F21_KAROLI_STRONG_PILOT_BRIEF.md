@@ -5,14 +5,13 @@ kod: F21
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: lezarva
+allapot: dontesre_var
 ad: mért adat arról, megéri-e a teljes Bibliát külső modellekkel Strong-számmal párosítani (minőség, költség, KJV-támpont haszna)
-kovetkezo: lezárva, nem felel meg; a #22 sorsa a felhasználó döntése (l. DT21)
+kovetkezo: P3b fut (F1v2, F2v2, F5v2, F6v2, F3V2b, F4v2, plafon 2 USD-nál megállás); a DT21 lezárása visszavonva (DT22)
 olvas: [konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/KJV_Strongs_Genesis.tsv]
 ir: [eszkozok/karoli_strong/, f21p/, naplok/F21P_jelentes.md, DONTESEK.md, .github/workflows/f21p_pilot.yml]
 ag: claude/f21-pilot
 pr: #92
-lezarva_osszegzes: Károli–Strong mérőpilot (F21): egyik mért összeállítás sem felel meg; az A+B+C nem mért (PD8, az F4 nem futott). Az A+B a `magas` pontosságon (R1 85,2%, R3 91,8%, R4 91,7% a 98% ellen) és a régi arany egyezésén (60%, 3/5) bukott; az A és a B kapuhibája (41–41% végleg) megfigyelés, nem feltétel. A C egymodelles, a PD6 szerint nem minősíthető (pontosság rétegenként 91,7–95,6% az arany v2-n; régi arany kizárás nélkül 93,8%, a PD9 szerinti kizárással 100%). C-vetítés a teljes Bibliára: F3 42 USD (90%: 38–47), F3V2 42 USD (90%: 38–46); a pilot 0,7346 USD; KJV (N29): a v1-adaton nem teljesül, n=8, nem végleges; jelentés `naplok/F21P_jelentes.md`
 fugg: [6]
 ---
 # F21_KAROLI_STRONG_PILOT_BRIEF.md — Károli–Strong párosítás: mérőpilot (minőség és költség)
@@ -184,9 +183,11 @@ Egy összeállítás **megfelel**, ha:
 | PD8 | Az A és a B kiesik, v2 nem lesz hozzájuk; az F4 nem fut | a kapun átment versekben is az A pontossága 81,2%, a B-é 65,1%; a 197/200 döntőbírós vers mellett az F4 nem ad új információt az F3-hoz képest | v2 az A-hoz és a B-hez; F4 a jelenlegi adattal |
 | PD9 | A régi arany egyezése halmazként mért (összetett Strong a `+` mentén bontva); a két hibás hármas (1Móz 6:17, 13:4) jelölve (`f21p/regi_arany_hibas.tsv`), nem javítva | a `meres.py` az összetett Strongot egész karakterláncként hasonlította: mérési műtermék | a régi arany javítása |
 | PD10 | Arany v2: csak a jegyzet konvenciójával ütköző esetek, a sértett konvenció számával; a 6. táblázat a futás előtt lezárult, nem bővül; a korrigált pontosság csak „az Opus besorolása, nem mérés” megjelöléssel szerepelhet, a küszöb szempontjából csak a mért érték számít | az arany ne igazodjon a mért modellhez | az arany szabad javítása a C-diff alapján |
+| PD11 | A DT21 lezárása visszavonva, a pilot folytatódik (P3b): minden összeállítás kimérve a `prompt_v2`-vel, a C második futásával az ingadozás mérésére; az F4v2 csak akkor fut, ha a döntőbírói prompt teljesíti a rögzített feltételeket (az A–B egyező linkek rögzítettek, a séma és a kapu ugyanaz, nincs modell által írt Strong-szám, K5); plafon 3 USD, 2 USD kumulatív költségnél megállás és jelentés | az A és a B nem volt mérve a `prompt_v2`-vel, az A+B+C (F4) egyszer sem futott, a két C-futás nélkül a futások közti ingadozás nem választható el a prompthatástól (a 97%-os és 98%-os mért érték nem hasonlítható) | a pilot lezárása a meglévő adattal (DT21) |
 
 | Verzió | Dátum | Változás |
 |---|---|---|
 | v1 | 2026.09.30 | első változat |
 | v1.1 | 2026.09.30 | a P2 ⛔ döntései: a küszöbök rögzítve (PD5); egymodelles összeállítás csak mérésre, a teljes futásra csak A+B vagy A+B+C (PD6); a vegyes példa: R1 és R4 A+B-vel, R2–R3 A+B+C-vel; `[nem TR]` javítás és az „eltérő alak” tokenek kizárása a pontossági mérésből (PD7) |
 | v1.2 | 2026.09.30 | a P3/P4 utáni döntések: az A és a B kiesik (a kapun átment versekben is 81%, illetve 65% pontosság), v2 nem lesz hozzájuk, az F4 nem fut (PD8); a régi arany egyezése halmazként mért, a 2 hibás hármas jelölve (PD9); arany v2 csak a jegyzet konvenciójával ütköző esetekre, jóváhagyásig nem fagy be (PD10); KJV (N29): a v1-adaton nem teljesül, n=8, nem végleges |
+| v1.3 | 2026.09.30 | a DT21 lezárása visszavonva (DT22): a pilot folytatódik (P3b), minden összeállítás kimérve: F1v2 (A), F2v2 (B), F5v2/F6v2 (KJV nélkül, R1), F3V2b (a C második futása az ingadozáshoz), F4v2 (a C döntőbíróként); a `prompt_v2` és az arany v2 befagyasztva, az öt nyitott kérdés a jelentésbe kerül (PD11) |
