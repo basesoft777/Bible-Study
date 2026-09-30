@@ -1,3 +1,7 @@
+# GENERÁLT: eszkozok/f19_ebible_import.py — kézzel nem szerkesztendő.
+# proveniencia: scope=KJV teljes (66 kanonikus könyv, angol számozás) | forras=https://ebible.org/Scriptures/eng-kjv_usfm.zip sha256=1bab5d4d030439831fc0b39d7f11001dd8527fc6277405e7f6512273c200c3a4 | ts=2026-09-30
+# licenc: Public Domain (eBible copr.htm); l. naplok/F19_hianyok.tsv fejléce; kulcs-Strongok darabszáma: H430=2605 H776=2504 H1=1212 H3068=6518 G746=58 G2316=1359
+# ÁLLAPOT: importált, a meglévő KJV_Strongs_{Genesis,Exodus,Proverbs}.tsv-vel vershalmazonként 93,1% / 91,8% / 94,9% egyezik; a token-szintű egyezés a luvlylavnderrel 99,5%. A „Angol szó” néha frázis (pl. „man’s hand”); a Morfológiai kód üres.
 Igehely	Szósorszám	Strong-szám	Angol szó	Morfológiai kód
 Gen.1.1	1	H7225	beginning	
 Gen.1.1	2	H430	God	
