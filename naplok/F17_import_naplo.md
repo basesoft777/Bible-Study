@@ -231,3 +231,6 @@ A fájl `allapot` oszlopa a gépi keresés kimenete (nem döntés); a `kk_mod` `
   a törzs (fejlécek nélkül) sorrendben összefűzve **bájtra azonos** a régi fájl törzsével (65 050 734 bájt).
 - **Olvasók:** a `git grep Macula_heber` szerint nincs kódolvasó (`lekerdez.py`, `gate.py` stb. nem hivatkozza); az `adat/datasetek.tsv` négy héber
   sora `konkordancia/Macula_heber_*.tsv` glob-ra váltott (mint a `KJV_Strongs_*.tsv`).
+- **A régi fájl törlése (F17.11):** a bontás és az ellenőrzés után a `konkordancia/Macula_heber.tsv` (65 051 446 bájt, 475 911 adatsor) törölve, külön commitban. Ez nem a meglévő
+  fájlok sorcsökkenése, hanem az F17 ágán létrehozott (a `main`-en nem létező) fájl cseréje; a sorok mind megvannak a 39 könyvfájlban (bájtazonos törzs, l. fent).
+  A régi fájl a git-előzményben elérhető: `git show f15fc91:konkordancia/Macula_heber.tsv`.
