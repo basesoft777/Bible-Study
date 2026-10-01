@@ -342,6 +342,11 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   Az FJ3 nem azt állapította meg, hogy nincs forrás, hanem hogy a cloud proxy blokkolta a
   studybible.info-t és az eBible.org-ot. Helyi gépről ismétlendő (a Károli-rokonsági híd miatt
   a teljes KJV elsődleges, a BSB kiegészítő — munkaterv M4).
+  **RÉSZBEN TELJESÜLT — NYITVA (F19, 2026.09.30; F19.3, F19.7):** a teljes KJV importálva (állapot: `importált, javaslat`)
+  (`konkordancia/KJV_Strongs_teljes.tsv`, 349 308 sor, 31 099 címkés vers; vershalmazonként 91,8–94,9% egyezés a meglévő KJV-táblákkal, token-szinten 99,5% a luvlylavnderrel; Public Domain).
+  Az eBible-ASV **forráshibás** (H430/H776/H1/G746 = 0 előfordulás, H3068 51 517), ezért az `ASV_Strongs_teljes.tsv` **nem került a repóba** (F19.7, DT19 döntés; bizonyíték: DT19, `naplok/ELLENOR_F19.md`); a teljes Strong-címkés
+  ASV továbbra sincs meg; a pótlás: Strong-címkés ASV a luvlylavnder ASV-Strongs-ból (31 086 vers) — külön feladat. A címke nélküli versek besorolása: `naplok/F19_hianyok.tsv`; nyitott kérdések: DONTESEK DT19.
+  *Proveniencia: scope=konkordancia/KJV_Strongs_teljes.tsv | forras=eszkozok/f19_ellenorzes.py | ts=2026-09-30.*
 
 - **N31 — a Macula Hebrew lefedettsége ellenőrizendő.** *(ÚJ, FJ-ellenőrzés, 2026.09.25)* Az
   FJ1 szerint a letöltött Macula Hebrew-ből hiányzik az 1Sám–2Krón. Ez valószínűleg letöltési
@@ -488,6 +493,22 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   igazolni (KEZI-osztály, fejezetenkénti KJV=MT ellenőrzéssel, mint az
   `naplok/F17_kezi_fejezetek.tsv`-ben). A felvételt a chat jóváhagyta
   (2026.09.30).
+- **N-F08a — a Préd 9:10 előfordulás-sor (ALVIL-001) igehelyének javítása
+  Préd 9:12-re.** *(ÚJ, F08 (#8), DT23 (c), DT7 (g); `naplok/F08_zaras.md`)*
+  A munkalap-igehely MT/KJV-számozású: a Károli Préd 9:10 = MT 9:8 (KK, KEZI),
+  a שְׁאוֹל a Károli 9:12-ben (MT 9:10) áll, ahol a Macula ἅδη G0086 és az
+  `LXX_OS` ᾅδης egyezik. A javítás az `adat/elofordulasok.tsv` ALVIL-001
+  sorát érinti; utána az `adat/lxx_dontesek.tsv` LD008 sora tárgytalan (az
+  ALVIL-001 G-tokenje G0086, a 9:12 várhatóan „egyező” lesz, döntési sor
+  nélkül). A felvételt a felhasználó a DT23-ban jóváhagyta (2026.09.30).
+- **N-F08b — saját címke a `nincs_heber_kulcsszo` sorokra a lexikon-
+  generátorban.** *(ÚJ, F08 (#8), DT23 (e); `adat/SEMA.md` 2.11)* Az
+  `adat/lxx_dontesek.tsv` 8 `nincs_heber_kulcsszo` / `nem_alkalmazhato` sora
+  (ige-tartományú előfordulás-sor kulcsszó nélküli verse, ill. tematikus sor)
+  ma „kutatói azonosítás függőben”-ként jelenik meg. A `lexikon_general.py`
+  `blokk_lxx` kapjon saját „kulcsszó nincs a versben” címkét (és számlálót),
+  a SEMA 2.11 megjelenítési mondata ehhez igazodjon. A felvételt a
+  felhasználó a DT23-ban jóváhagyta (2026.09.30).
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 

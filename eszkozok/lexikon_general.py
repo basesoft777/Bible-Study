@@ -806,12 +806,26 @@ def lxx_os_karoli_index(slug):
     return _lxx_os_karoli_idx_cache[slug]
 
 
+# F08: csak a kiadott (biztos, ill. az F08 előtti, skála nélküli) és a
+# megjelenítésre szánt tipusú sorok jelennek meg; a `valoszinu`/`nyitott`
+# sorok "kutatói azonosítás függőben" jelöléssel jelennek meg (DT23), a
+# `nincs_heber_kulcsszo` (`nem_alkalmazhato`) sorok saját címkéje külön
+# tétel (N-F08b; adat/SEMA.md 2.11). A szűrő a 3. (LXX) blokkra
+# és a rokon_szavak_strongok-on át a "Rokon szavak" blokkra is hat.
+LXX_DONTES_MEGJELENO_BIZONYOSSAG = {'', 'biztos'}
+LXX_DONTES_MEGJELENO_TIPUS = {'eltero_forditas', 'lxx_minusz'}
+
+
 def lxx_dontesek_index():
     global _lxx_dontesek_cache
     if _lxx_dontesek_cache is None:
         _, sorok = G.tsv_beolvas(LXX_DONTESEK_TSV)
         idx = {}
         for r in sorok:
+            if (r.get('bizonyossag') or '').strip() not in LXX_DONTES_MEGJELENO_BIZONYOSSAG:
+                continue
+            if (r.get('tipus') or '').strip() not in LXX_DONTES_MEGJELENO_TIPUS:
+                continue
             idx.setdefault(r['igehely'], []).append(r)
         _lxx_dontesek_cache = idx
     return _lxx_dontesek_cache

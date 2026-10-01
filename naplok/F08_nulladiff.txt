@@ -1,0 +1,58 @@
+# F8.10 (DT23 (d)) nulla-diff igazolás, a MERGE-ELT állapoton — python eszkozok/f08/f08_nulladiff.py <ág_kimenet> <main_kimenet>
+# proveniencia: scope=lexikon+torzscikk (8 motívum, 16 fájl) | forras=general.py --cel lexikon és --cel torzscikk --kimenet (repón kívül, scratchpad): ág = claude/lxx-dontesek de1bbd0 (origin/main beolvasztva, F8.9) + az F8.10 munkafa-változásai (git stash create, git archive, teljes) vs. origin/main aaf0b8c (git archive, teljes) | ts=2026-10-01
+# eredmény: ISTENTISZT-001_TUDOMANYOS.md (az LD001–LD004 renderje) -0/+0, soronként azonos; a 8 TORZSCIKK -0/+0; az eltérés csak az LXX-blokk sorai (+61 „eltérő”, -67 „kutatói azonosítás függőben”, 6 összesítő sor) és a forráslista (+adat/lxx_dontesek.tsv az lxx- és kolofon-blokk fejlécében és forráslistájában; KIRALY-001-ben egy üres sor áthelyeződik)
+ALVIL-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+ALVIL-001_TUDOMANYOS.md: -6/+8 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+    -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#lxx | forrás: konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_
+    +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos
+    +- `adat/lxx_dontesek.tsv` (projekt-adat)
+    -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkord
+    +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat
+    +| `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | projekt-adat | lxx |
+ANTROP-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+ANTROP-001_TUDOMANYOS.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+HAMART-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+HAMART-001_TUDOMANYOS.md: -31/+33 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+    -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#lxx | forrás: konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordanc
+    +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/h
+    +- `adat/lxx_dontesek.tsv` (projekt-adat)
+    -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkor
+    +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, ada
+    +| `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | projekt-adat | lxx |
+HODIT-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+HODIT-001_TUDOMANYOS.md: -21/+23 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+    -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#lxx | forrás: konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/genesis.tsv, konkor
+    +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX
+    +- `adat/lxx_dontesek.tsv` (projekt-adat)
+    -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkorda
+    +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, konkordancia/Ka
+    +| `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | projekt-adat | lxx |
+ISTENTISZT-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+ISTENTISZT-001_TUDOMANYOS.md: -0/+0 sor; LD001-004 igehely-sorai: 5 vs 5, soronként azonos
+KIRALY-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+KIRALY-001_TUDOMANYOS.md: -8/+10 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+    -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#lxx | forrás: konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv | licenc: CC
+    +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zec
+    -
+    +
+    +- `adat/lxx_dontesek.tsv` (projekt-adat)
+    -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkor
+    +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, ada
+    +| `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | projekt-adat | lxx |
+MENNY-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+MENNY-001_TUDOMANYOS.md: -7/+9 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+    -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#lxx | forrás: konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/numbers.tsv | licenc: CC BY 4.0, projekt-adat | ts=2026-10-01 
+    +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/numbers.tsv | licenc: CC BY 4.0, projek
+    +- `adat/lxx_dontesek.tsv` (projekt-adat)
+    -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkorda
+    +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, konkordancia/Ka
+    +| `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | projekt-adat | lxx |
+TEREMT-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+TEREMT-001_TUDOMANYOS.md: -7/+9 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+    -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#lxx | forrás: konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LX
+    +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/ezeki
+    +- `adat/lxx_dontesek.tsv` (projekt-adat)
+    -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkor
+    +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, ada
+    +| `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | projekt-adat | lxx |
+osszes diff-sor: 172

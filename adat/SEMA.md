@@ -368,6 +368,7 @@ Kulcs: `study_tipus` + `dataset`. A terv 4.3 mátrixa, négy study-típusra kife
   marad a még nem importált datasetek számára.
 - `korlatos` — a `KJV_ASV_Strongs` **csak Genezis, Exodus és Példabeszédek** könyvekre áll
   rendelkezésre. Bármely más könyvre hivatkozó „ellenőrizve" állítás ezen a dataseten hamis.
+  A `KJV_Strongs_teljes.tsv` (F19) külön, `importált, javaslat` állapotú dataset, a `KJV_ASV_Strongs` sor `fajl`-mintája nem tartalmazza; az `ASV_Strongs_teljes.tsv` forráshibás és nincs a repóban (DT19, `naplok/ELLENOR_F19.md`).
   Ugyanígy `korlatos` a `BSB_Strongs` (F16): csak a 95%-os küszöböt elérő 31 ÓSZ-könyv, ÚSZ szándékosan nincs (a görög réteg forrása a Macula, #87);
   a Zak 12:1 és a 116 feliratos zsoltár 1. versének érdemi szövege a display-forrásból hiányzik (a text-only megvan);
   a Zsolt-sorok MT-számozásúak (a Zsolt 13 illesztetlen, kimarad), a többi könyv BSB/angol számozású.
@@ -614,16 +615,39 @@ a tábla adja. Automatikus héber→görög tippelés nincs (l. 0. Kiindulás:
 | `id` | szabad szöveg | ✔ | Sorazonosító (nem motívum-ID). |
 | `igehely` | `IGEHELY` | ✔ | Károli-igehely. |
 | `lxx_igehely` | szabad szöveg | ✔ | Az `LXX_OS` szerinti igehely (pl. `Genesis 4:26`). |
-| `heber_strong` | `STRONG` | ✔ | A motívum héber Strong-tokenje, amelyre a döntés vonatkozik. |
-| `gorog_lemma` | szabad szöveg | `eltero_forditas`-nál ✔, `lxx_minusz`-nál üres | A kutatói azonosítású görög megfelelő lemmája (ékezetes szóalak); `lxx_minusz`-nál nincs mit megadni (nincs görög megfelelő). |
+| `heber_strong` | `STRONG` | ✔ (tematikus sornál üres) | A motívum héber Strong-tokenje, amelyre a döntés vonatkozik (az `elofordulasok.tsv` motívum-sorának `strong` mezője; ha a versben álló szó saját Strong-ja eltér, a `megjegyzes` jelzi). `nincs_heber_kulcsszo`-nál üres, ha az előfordulás-sor tematikus (nincs Strong). |
+| `gorog_lemma` | szabad szöveg | `eltero_forditas`-nál ✔, `lxx_minusz`-nál, `nincs_heber_kulcsszo`-nál és `nyitott` sornál üres | A kutatói azonosítású görög megfelelő lemmája (ékezetes szóalak); `lxx_minusz`-nál nincs mit megadni (nincs görög megfelelő). `nyitott` sornál a jelölt csak a `megjegyzes`-ben áll. |
 | `gorog_strong` | `STRONG` | | A görög Strong-szám, ha van. |
 | `lxx_pozicio` | egész szám | | Az `LXX_OS` adott sorának `pozicio` mezője, ha a szóalak egyértelműen egy adott előfordulásra mutat. |
-| `tipus` | zárt | ✔ | `eltero_forditas` (a LXX más görög szóval fordítja, mint amit a motívum ÚSZ-i G-tokenje várna) \| `lxx_minusz` (a héber tagmondatnak/szónak nincs görög megfelelője a LXX-ben — LXX-minusz). A generált lexikon-oldal 3. szakasza `lxx_minusz`-nál „nincs megfelelő a görögben (LXX-minusz)" szöveget ír a Görög megfelelő cellába (LEXV2_2_BRIEF.md V2.6a G6). |
+| `tipus` | zárt | ✔ (`nyitott` sornál üres) | `eltero_forditas` (a LXX más görög szóval fordítja, mint amit a motívum ÚSZ-i G-tokenje várna) \| `lxx_minusz` (a héber tagmondatnak/szónak nincs görög megfelelője a LXX-ben — LXX-minusz) \| `nincs_heber_kulcsszo` (F08: az ige-tartományú előfordulás-sor e versében nem áll a motívum héber kulcsszava, vagy a sor tematikus; LXX-döntés tárgytalan). A generált lexikon-oldal 3. szakasza `lxx_minusz`-nál „nincs megfelelő a görögben (LXX-minusz)" szöveget ír a Görög megfelelő cellába (LEXV2_2_BRIEF.md V2.6a G6). |
 | `megjegyzes` | szabad szöveg | | Indoklás/forrás a döntéshez. |
-| `proveniencia` | `PROVENIENCIA` | ✔ | |
+| `bizonyossag` | zárt | | F08 (F08_LXX_DONTESEK_BRIEF.md 3. lépés): `biztos` (két független forrás egyezik: a Macula szó-szintű illesztése és az `LXX_OS` KK-kötésű versében ugyanaz a lemma a héber szó helyén) \| `valoszinu` (egy forrás, ellentmondás nélkül, vagy ellentmondásos források, felhasználói döntéssel feloldva (`feloldas=` kötelező)) \| `nyitott` (nincs forrás, vagy a források ellentmondanak — a munkalap-szóra vonatkozóan is, ha a Macula a verset csak részben illeszti; `tipus` és `gorog_lemma` üres) \| `nem_alkalmazhato` (csak és kizárólag `nincs_heber_kulcsszo` típusnál: a skála nem értelmezhető, mert nincs LXX-megfelelő, amit forrás igazolna). Üres: az F08 előtti kutatói döntés (LD001–LD004), a skála nélkül. |
+| `proveniencia` | `PROVENIENCIA` | ✔ | F08: felhasználói döntéssel kitöltött sornál `dontes=<DT-tétel>(<pont>)`; ellentmondásos forrásoknál `feloldas=<DT-tétel>` (l. alább). |
+
+**Ellentmondó források (F08, DT23; az `ellenoriz.py` 10. szabálya):** egy sor
+forrásai akkor ellentmondók, ha a `bizonyossag` `valoszinu`, és a
+proveniencia `forras=` mezője a két független forrást — `Macula_heber` **és**
+`LXX_OS` — egyaránt felsorolja. (Két egyező forrás `biztos` lenne; ha mindkettő
+szerepel, de a sor csak `valoszinu`, a források a munkalap-szóra nem egyeztek.)
+Ilyen sornál a `feloldas=` mező kötelező, és a `megjegyzes`-nek ki kell mondania
+az ellentmondást („ellentmondott”). **Nem ellentmondás**, ha a Macula az adott
+szót nem illeszti (’’): ez hiányzó forrás, nem ellenkező állítás — az ilyen sor
+`forras=` mezőjében a két független forrás közül csak az `LXX_OS` áll (pl.
+LD021, LD048; LD050: `LXX_OS` + `Karoli_versmegfeleltetes`).
 
 Ebben a körben (V2.2) a tábla csak fejlécet tartalmaz — a tartalmi feltöltés
 a 2. kör (V2.8, ISTENTISZT-001 LXX-döntések) tárgya.
+
+**F08 (FELADATOK #8):** a 87 függő igehely (`naplok/F17_87_hely.tsv`) 86 sort
+kapott (LD005–LD090; a 4Móz 13:34 a HODIT-001 és a MENNY-001 közös sora); a
+bemenet `naplok/F08_bemenet.txt`, a szkript `eszkozok/f08/f08_dontesek.py`.
+A generátor (`eszkozok/lexikon_general.py`, `lxx_dontesek_index`) csak az üres
+vagy `biztos` bizonyosságú, `eltero_forditas`/`lxx_minusz` típusú sorokat
+jeleníti meg; a `valoszinu`/`nyitott`/`nem_alkalmazhato` sorok „kutatói
+azonosítás függőben” jelöléssel jelennek meg (DT23; a `nincs_heber_kulcsszo`
+sorok saját címkéje: N-F08b).
+A szűrő a 3. (LXX) blokkon túl a „Rokon szavak” blokkot is érinti
+(`rokon_szavak_strongok` a megjelenő sorok `gorog_strong`-jait olvassa).
 
 ---
 
