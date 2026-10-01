@@ -196,6 +196,8 @@ def bemeneti_ts(konyv, gyoker=None):
     ts = None
     with open(ut, encoding='utf-8') as f:
         sorok = [x.rstrip('\n').rstrip('\r').split('\t') for x in f if x.strip()]
+    if not sorok:
+        return 'manual'
     fej = sorok[0]
     for r in sorok[1:]:
         d = dict(zip(fej, r))

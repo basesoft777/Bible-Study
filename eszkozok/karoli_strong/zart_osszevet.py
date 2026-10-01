@@ -275,8 +275,10 @@ def onteszt():
     # a repón belüli bemenet tiltott; másik meghajtó (Windows) vagy a repón kívüli útvonal engedett, nem dob hibát
     if not repon_belul(os.path.join(tokenek.ROOT, 'f22', 'minta_1Moz.tsv')):
         hibak.append('a repón belüli útvonalat nem ismerte fel')
-    if repon_belul(ut) or repon_belul('Z:\\nincs\\ilyen\\zart.txt'):
+    if repon_belul(ut):
         hibak.append('a repón kívüli útvonalat belülinek vette')
+    if os.name == 'nt' and repon_belul('Z:\\nincs\\ilyen\\zart.txt'):    # másik meghajtó: csak Windowson értelmezhető
+        hibak.append('a másik meghajtón lévő útvonalat belülinek vette (vagy hibát dobott)')
     for h in hibak:
         print('ÖNTESZT HIBA: ' + h, file=sys.stderr)
     print('önteszt: %s' % ('HIBA' if hibak else 'rendben'))
