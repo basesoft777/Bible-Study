@@ -5,7 +5,8 @@ kod: BDB_PSI
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/bdb-psi
 ad: a BDB_teljes_unabridged.tsv-ben a „ψ” (Zsoltárok) jel hibás feloldása javítva (Ez 73:23, Ézs 106:9, Ézs 71:20, Jób 97, Péld 57–75 …, rejtett esetek: Ez 16:10 = Zsolt 16:10); az érintett adat/forditasok.tsv-sorok igehelyei gépileg cserélve; a 13. kapu jelzése megszűnik
 kovetkezo: M0 felmérés (csak olvasás): az összes hibás hely listája; ⛔ a felmérés után, a forrásfájl javítása előtt
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/lexikon_hivatkozasok.tsv, naplok/EMELES_naplo.md, eszkozok/forditas_kapuk.py, konkordancia/README.md, adat/datasetek.tsv]
