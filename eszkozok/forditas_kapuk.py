@@ -276,18 +276,32 @@ HU_TOVALTOZAT = {'lélek': (r'lelk(?!es|ész|esz|ület)[eéüű]\w*',)}
 # szet: a `מִן compare` comparativust kovetel, a tobbi `compare` vö.-t. A kapu
 # nem lazul: minden forrasbeli elofordulas pontosan egy (a leghosszabb
 # illeszkedo) sorhoz tartozik.
+# DT27 (F28.46, ELLENOR_DT27 1., a) opcio): csak a kapu=IGEN hosszabb kulcs von
+# el. A kapu=nem hosszabb kulcs (pl. `which see`) talalatain beluli rovidebb
+# elofordulas (a `see`) a rovidebb, kapu=igen sore marad -- a kapu=nem sor nem
+# vehet ki a kapu alol egy ellenorzott sort.
 def _sajat_talalatok(angol, forras, terminologia):
     hosszabbak = [t['angol'] for t in terminologia
-                  if t['angol'] != angol and angol in t['angol']]
+                  if t['angol'] != angol and angol in t['angol'] and kapus_sor(t)]
     takart = [m.span() for h in hosszabbak for m in _angol_minta(h).finditer(forras)]
     return [m for m in _angol_minta(angol).finditer(forras)
             if not any(a <= m.start() and m.end() <= b for a, b in takart)]
+
+
+def kapus_sor(t):
+    """DT27: a `kapu` oszlop (adat/SEMA.md 2.15). Csak a kifejezett `nem` hagyja
+    ki a sort a megkovetelesbol; hianyzo vagy ures ertek: `igen`."""
+    return (t.get('kapu') or '').strip().lower() != 'nem'
 
 
 def ellenoriz_terminologia(forras, forditas, terminologia, bizonytalan_lista):
     serult = []
     for t in terminologia:
         angol = t['angol']
+        # a kapu=nem sort a kapu nem koveteli, es a rovidebb kulcsok
+        # talalatait sem vonja el (_sajat_talalatok csak kapu=igen hosszabbat nez)
+        if not kapus_sor(t):
+            continue
         if not _sajat_talalatok(angol, forras, terminologia):
             continue
         if _p4._magyar_alak_mintaja(t['magyar']).search(forditas):
