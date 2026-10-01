@@ -1,0 +1,618 @@
+# GENERÁLT: eszkozok/karoli_strong/elopar.py | scope=f21p, előpárosítás (kísérlet) az arany v3 60 versén (rétegek: f21p/minta.tsv), szótár 140 forrásversből (F3V2 ∩ F3V2B), C-összevetés: F3V2, F3V2B, F3V3 | forras=f21p/szotar_elopar.tsv, f21p/arany_opus_v3.jsonl (sha256 acdeb55f969c96feaa256f5384867c44320c7ad11e1b44b5db529d7543d8d458), f21p/meres_kizaras.tsv, f21p/minta.tsv, f21p/valaszok/F3V2.jsonl, F3V2B.jsonl, F3V3.jsonl, konkordancia/Karoli_1908.tsv, TAHOT_kivonat.tsv, TAGNT_kivonat.tsv | ts=2026-10-01T06:44:44+00:00 | nem minősítés; kézzel szerkeszteni tilos
+szakasz	osszeallitas	reteg	mero	szamlalo	nevezo	ertek	wilson90_alsó	wilson90_felső	megjegyzes
+alap	szkript	R1	arany_versek	20		20			a mérésben részt vevő aranyversek (rétegben)
+lefedettseg	szkript	R1	link_lefedettseg (összes szkript-link ∩ arany / arany link)	4	317	0.0126183	0.0057	0.0278	az arany linkjeiből a szkript által helyesen eldöntött
+lefedettseg	szkript	R1	link_lefedettseg [szótár]	2	317	0.00630915	0.0021	0.0189	csak a(z) szótár szabály linkjei
+lefedettseg	szkript	R1	link_lefedettseg [K9]	2	317	0.00630915	0.0021	0.0189	csak a(z) K9 szabály linkjei
+lefedettseg	szkript	R1	betoldas_lefedettseg [K1]	32	55	0.581818	0.4711	0.6849	az arany betoldas-szavaiból a szkript K1-betoldasa
+lefedettseg	szkript	R1	forditatlan_lefedettseg [K1+K8+K9]	8	26	0.307692	0.1830	0.4687	az arany forditatlan-szavaiból a szkript forditatlan-döntése
+lefedettseg	szkript	R1	egyseg_lefedettseg (link + betoldas + forditatlan)	44	398	0.110553	0.0873	0.1391	az arany döntési egységeiből a szkript helyes döntése
+lefedettseg	szkript	R1	egyseg_dontott_arany (szkript-döntés / arany egység)	46	398	0.115578			a szkript döntéseinek száma az arany egységszámához mérve (helyes és hibás együtt)
+pontossag	szkript	R1	link_pontossag [összes link]	4	4	1	0.5965	1.0000	a szkript linkjeiből az aranyban
+pontossag	szkript	R1	link_pontossag [szótár]	2	2	1	0.4250	1.0000	
+pontossag	szkript	R1	link_pontossag [K9]	2	2	1	0.4250	1.0000	
+pontossag	szkript	R1	betoldas_pontossag [K1]	32	32	1	0.9220	1.0000	a szkript betoldas-döntéseiből az arany betoldas-listájában
+pontossag	szkript	R1	forditatlan_pontossag [K1]	7	7	1	0.7212	1.0000	a szkript forditatlan-döntéseiből az arany forditatlan-listájában
+pontossag	szkript	R1	forditatlan_pontossag [K8]	1	1	1	0.2698	1.0000	a szkript forditatlan-döntéseiből az arany forditatlan-listájában
+pontossag	szkript	R1	forditatlan_pontossag [K9]	0	2	0	0.0000	0.5750	a szkript forditatlan-döntéseiből az arany forditatlan-listájában
+pontossag	szkript	R1	egyseg_pontossag [szótár]	2	2	1	0.4250	1.0000	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R1	egyseg_pontossag [K1]	39	39	1	0.9351	1.0000	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R1	egyseg_pontossag [K8]	1	1	1	0.2698	1.0000	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R1	egyseg_pontossag [K9]	2	4	0.5	0.1824	0.8176	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R1	egyseg_pontossag [K1+K8+K9]	42	44	0.954545	0.8716	0.9848	a három K-szabály döntései együtt
+pontossag	szkript	R1	egyseg_pontossag [összes]	44	46	0.956522	0.8768	0.9855	a szkript minden döntése
+modellre_var	szkript	R1	magyar_token_modellre_var	271	307	0.882736			a magyar tokenekből szkript-döntés nélkül
+modellre_var	szkript	R1	magyar_ok: nincs_szotarban	248	307	0.807818			
+modellre_var	szkript	R1	magyar_ok: tobb_magyar	2	307	0.00651466			
+modellre_var	szkript	R1	magyar_ok: nincs_jelolt	0	307	0			
+modellre_var	szkript	R1	magyar_ok: tobb_jelolt	0	307	0			
+modellre_var	szkript	R1	magyar_ok: K1_kivetel	8	307	0.0260586			
+modellre_var	szkript	R1	magyar_ok: K9_nem_gepies	13	307	0.0423453			
+modellre_var	szkript	R1	magyar_ok: egyeb	0	307	0			
+modellre_var	szkript	R1	eredeti_szo_modellre_var	295	309	0.954693			az eredeti szavakból sem szkript-link, sem forditatlan (a kizárt tokenek nélkül)
+modellre_var	szkript	R1	eredeti_ok: nincs_szabaly	265	309	0.857605			
+modellre_var	szkript	R1	eredeti_ok: K1_kivetel_nevmasi	0	309	0			
+modellre_var	szkript	R1	eredeti_ok: K1_kivetel_J	0	309	0			
+modellre_var	szkript	R1	eredeti_ok: K9_nem_gepies	30	309	0.0970874			
+modellre_var	szkript	R1	eredeti_ok: nem_tr	0	309	0			
+c_osszevetes	F3V2 [szótár]	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [szótár]	R1	szkript_pontossag (ugyanezeken)	2	2	1	0.4250	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2 [szótár]	R1	C_pontossag (ugyanazokon az egységeken)	2	2	1	0.4250	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [szótár]	R1	C_fedi_a_helyes_szkript_dontest	2	2	1	0.4250	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [szótár]	R1	elteres (C nem mondja ugyanezt)	0	2	0			
+c_osszevetes	F3V2 [szótár]	R1	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [szótár]	R1	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2 [K1]	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [K1]	R1	szkript_pontossag (ugyanezeken)	39	39	1	0.9351	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2 [K1]	R1	C_pontossag (ugyanazokon az egységeken)	39	39	1	0.9351	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [K1]	R1	C_fedi_a_helyes_szkript_dontest	39	39	1	0.9351	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [K1]	R1	elteres (C nem mondja ugyanezt)	0	39	0			
+c_osszevetes	F3V2 [K1]	R1	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [K1]	R1	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2 [K8]	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [K8]	R1	szkript_pontossag (ugyanezeken)	1	1	1	0.2698	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2 [K8]	R1	C_pontossag (ugyanazokon az egységeken)	1	1	1	0.2698	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [K8]	R1	C_fedi_a_helyes_szkript_dontest	1	1	1	0.2698	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [K8]	R1	elteres (C nem mondja ugyanezt)	0	1	0			
+c_osszevetes	F3V2 [K8]	R1	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [K8]	R1	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2 [K9]	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [K9]	R1	szkript_pontossag (ugyanezeken)	2	4	0.5	0.1824	0.8176	szkript-egység az aranyban
+c_osszevetes	F3V2 [K9]	R1	C_pontossag (ugyanazokon az egységeken)	4	4	1	0.5965	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [K9]	R1	C_fedi_a_helyes_szkript_dontest	2	2	1	0.4250	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [K9]	R1	elteres (C nem mondja ugyanezt)	2	4	0.5			
+c_osszevetes	F3V2 [K9]	R1	elteresbol_szkript_egyezik_arannyal	0	2	0			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [K9]	R1	elteresbol_C_egyezik_arannyal	2	2	1			
+c_osszevetes	F3V2 [összes]	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [összes]	R1	szkript_pontossag (ugyanezeken)	44	46	0.956522	0.8768	0.9855	szkript-egység az aranyban
+c_osszevetes	F3V2 [összes]	R1	C_pontossag (ugyanazokon az egységeken)	46	46	1	0.9444	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [összes]	R1	C_fedi_a_helyes_szkript_dontest	44	44	1	0.9421	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [összes]	R1	elteres (C nem mondja ugyanezt)	2	46	0.0434783			
+c_osszevetes	F3V2 [összes]	R1	elteresbol_szkript_egyezik_arannyal	0	2	0			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [összes]	R1	elteresbol_C_egyezik_arannyal	2	2	1			
+c_osszevetes	F3V2B [szótár]	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [szótár]	R1	szkript_pontossag (ugyanezeken)	2	2	1	0.4250	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2B [szótár]	R1	C_pontossag (ugyanazokon az egységeken)	2	2	1	0.4250	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [szótár]	R1	C_fedi_a_helyes_szkript_dontest	2	2	1	0.4250	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [szótár]	R1	elteres (C nem mondja ugyanezt)	0	2	0			
+c_osszevetes	F3V2B [szótár]	R1	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [szótár]	R1	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2B [K1]	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [K1]	R1	szkript_pontossag (ugyanezeken)	39	39	1	0.9351	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2B [K1]	R1	C_pontossag (ugyanazokon az egységeken)	39	39	1	0.9351	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [K1]	R1	C_fedi_a_helyes_szkript_dontest	39	39	1	0.9351	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [K1]	R1	elteres (C nem mondja ugyanezt)	0	39	0			
+c_osszevetes	F3V2B [K1]	R1	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [K1]	R1	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2B [K8]	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [K8]	R1	szkript_pontossag (ugyanezeken)	1	1	1	0.2698	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2B [K8]	R1	C_pontossag (ugyanazokon az egységeken)	1	1	1	0.2698	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [K8]	R1	C_fedi_a_helyes_szkript_dontest	1	1	1	0.2698	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [K8]	R1	elteres (C nem mondja ugyanezt)	0	1	0			
+c_osszevetes	F3V2B [K8]	R1	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [K8]	R1	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2B [K9]	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [K9]	R1	szkript_pontossag (ugyanezeken)	2	4	0.5	0.1824	0.8176	szkript-egység az aranyban
+c_osszevetes	F3V2B [K9]	R1	C_pontossag (ugyanazokon az egységeken)	4	4	1	0.5965	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [K9]	R1	C_fedi_a_helyes_szkript_dontest	2	2	1	0.4250	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [K9]	R1	elteres (C nem mondja ugyanezt)	2	4	0.5			
+c_osszevetes	F3V2B [K9]	R1	elteresbol_szkript_egyezik_arannyal	0	2	0			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [K9]	R1	elteresbol_C_egyezik_arannyal	2	2	1			
+c_osszevetes	F3V2B [összes]	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [összes]	R1	szkript_pontossag (ugyanezeken)	44	46	0.956522	0.8768	0.9855	szkript-egység az aranyban
+c_osszevetes	F3V2B [összes]	R1	C_pontossag (ugyanazokon az egységeken)	46	46	1	0.9444	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [összes]	R1	C_fedi_a_helyes_szkript_dontest	44	44	1	0.9421	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [összes]	R1	elteres (C nem mondja ugyanezt)	2	46	0.0434783			
+c_osszevetes	F3V2B [összes]	R1	elteresbol_szkript_egyezik_arannyal	0	2	0			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [összes]	R1	elteresbol_C_egyezik_arannyal	2	2	1			
+c_osszevetes	F3V3 [szótár]	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [szótár]	R1	szkript_pontossag (ugyanezeken)	2	2	1	0.4250	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V3 [szótár]	R1	C_pontossag (ugyanazokon az egységeken)	2	2	1	0.4250	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [szótár]	R1	C_fedi_a_helyes_szkript_dontest	2	2	1	0.4250	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [szótár]	R1	elteres (C nem mondja ugyanezt)	0	2	0			
+c_osszevetes	F3V3 [szótár]	R1	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [szótár]	R1	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V3 [K1]	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [K1]	R1	szkript_pontossag (ugyanezeken)	39	39	1	0.9351	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V3 [K1]	R1	C_pontossag (ugyanazokon az egységeken)	39	39	1	0.9351	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [K1]	R1	C_fedi_a_helyes_szkript_dontest	39	39	1	0.9351	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [K1]	R1	elteres (C nem mondja ugyanezt)	0	39	0			
+c_osszevetes	F3V3 [K1]	R1	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [K1]	R1	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V3 [K8]	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [K8]	R1	szkript_pontossag (ugyanezeken)	1	1	1	0.2698	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V3 [K8]	R1	C_pontossag (ugyanazokon az egységeken)	1	1	1	0.2698	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [K8]	R1	C_fedi_a_helyes_szkript_dontest	1	1	1	0.2698	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [K8]	R1	elteres (C nem mondja ugyanezt)	0	1	0			
+c_osszevetes	F3V3 [K8]	R1	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [K8]	R1	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V3 [K9]	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [K9]	R1	szkript_pontossag (ugyanezeken)	2	4	0.5	0.1824	0.8176	szkript-egység az aranyban
+c_osszevetes	F3V3 [K9]	R1	C_pontossag (ugyanazokon az egységeken)	4	4	1	0.5965	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [K9]	R1	C_fedi_a_helyes_szkript_dontest	2	2	1	0.4250	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [K9]	R1	elteres (C nem mondja ugyanezt)	2	4	0.5			
+c_osszevetes	F3V3 [K9]	R1	elteresbol_szkript_egyezik_arannyal	0	2	0			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [K9]	R1	elteresbol_C_egyezik_arannyal	2	2	1			
+c_osszevetes	F3V3 [összes]	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [összes]	R1	szkript_pontossag (ugyanezeken)	44	46	0.956522	0.8768	0.9855	szkript-egység az aranyban
+c_osszevetes	F3V3 [összes]	R1	C_pontossag (ugyanazokon az egységeken)	46	46	1	0.9444	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [összes]	R1	C_fedi_a_helyes_szkript_dontest	44	44	1	0.9421	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [összes]	R1	elteres (C nem mondja ugyanezt)	2	46	0.0434783			
+c_osszevetes	F3V3 [összes]	R1	elteresbol_szkript_egyezik_arannyal	0	2	0			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [összes]	R1	elteresbol_C_egyezik_arannyal	2	2	1			
+alap	szkript	R2	arany_versek	10		10			a mérésben részt vevő aranyversek (rétegben)
+lefedettseg	szkript	R2	link_lefedettseg (összes szkript-link ∩ arany / arany link)	3	152	0.0197368	0.0079	0.0484	az arany linkjeiből a szkript által helyesen eldöntött
+lefedettseg	szkript	R2	link_lefedettseg [szótár]	1	152	0.00657895	0.0015	0.0290	csak a(z) szótár szabály linkjei
+lefedettseg	szkript	R2	link_lefedettseg [K9]	2	152	0.0131579	0.0044	0.0390	csak a(z) K9 szabály linkjei
+lefedettseg	szkript	R2	betoldas_lefedettseg [K1]	17	30	0.566667	0.4185	0.7038	az arany betoldas-szavaiból a szkript K1-betoldasa
+lefedettseg	szkript	R2	forditatlan_lefedettseg [K1+K8+K9]	3	10	0.3	0.1269	0.5583	az arany forditatlan-szavaiból a szkript forditatlan-döntése
+lefedettseg	szkript	R2	egyseg_lefedettseg (link + betoldas + forditatlan)	23	192	0.119792	0.0864	0.1637	az arany döntési egységeiből a szkript helyes döntése
+lefedettseg	szkript	R2	egyseg_dontott_arany (szkript-döntés / arany egység)	23	192	0.119792			a szkript döntéseinek száma az arany egységszámához mérve (helyes és hibás együtt)
+pontossag	szkript	R2	link_pontossag [összes link]	3	3	1	0.5258	1.0000	a szkript linkjeiből az aranyban
+pontossag	szkript	R2	link_pontossag [szótár]	1	1	1	0.2698	1.0000	
+pontossag	szkript	R2	link_pontossag [K9]	2	2	1	0.4250	1.0000	
+pontossag	szkript	R2	betoldas_pontossag [K1]	17	17	1	0.8627	1.0000	a szkript betoldas-döntéseiből az arany betoldas-listájában
+pontossag	szkript	R2	forditatlan_pontossag [K1]	0	0				a szkript forditatlan-döntéseiből az arany forditatlan-listájában
+pontossag	szkript	R2	forditatlan_pontossag [K8]	3	3	1	0.5258	1.0000	a szkript forditatlan-döntéseiből az arany forditatlan-listájában
+pontossag	szkript	R2	forditatlan_pontossag [K9]	0	0				a szkript forditatlan-döntéseiből az arany forditatlan-listájában
+pontossag	szkript	R2	egyseg_pontossag [szótár]	1	1	1	0.2698	1.0000	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R2	egyseg_pontossag [K1]	17	17	1	0.8627	1.0000	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R2	egyseg_pontossag [K8]	3	3	1	0.5258	1.0000	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R2	egyseg_pontossag [K9]	2	2	1	0.4250	1.0000	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R2	egyseg_pontossag [K1+K8+K9]	22	22	1	0.8905	1.0000	a három K-szabály döntései együtt
+pontossag	szkript	R2	egyseg_pontossag [összes]	23	23	1	0.8947	1.0000	a szkript minden döntése
+modellre_var	szkript	R2	magyar_token_modellre_var	125	145	0.862069			a magyar tokenekből szkript-döntés nélkül
+modellre_var	szkript	R2	magyar_ok: nincs_szotarban	120	145	0.827586			
+modellre_var	szkript	R2	magyar_ok: tobb_magyar	0	145	0			
+modellre_var	szkript	R2	magyar_ok: nincs_jelolt	0	145	0			
+modellre_var	szkript	R2	magyar_ok: tobb_jelolt	0	145	0			
+modellre_var	szkript	R2	magyar_ok: K1_kivetel	2	145	0.0137931			
+modellre_var	szkript	R2	magyar_ok: K9_nem_gepies	3	145	0.0206897			
+modellre_var	szkript	R2	magyar_ok: egyeb	0	145	0			
+modellre_var	szkript	R2	eredeti_szo_modellre_var	141	147	0.959184			az eredeti szavakból sem szkript-link, sem forditatlan (a kizárt tokenek nélkül)
+modellre_var	szkript	R2	eredeti_ok: nincs_szabaly	134	147	0.911565			
+modellre_var	szkript	R2	eredeti_ok: K1_kivetel_nevmasi	0	147	0			
+modellre_var	szkript	R2	eredeti_ok: K1_kivetel_J	2	147	0.0136054			
+modellre_var	szkript	R2	eredeti_ok: K9_nem_gepies	5	147	0.0340136			
+modellre_var	szkript	R2	eredeti_ok: nem_tr	0	147	0			
+c_osszevetes	F3V2 [szótár]	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [szótár]	R2	szkript_pontossag (ugyanezeken)	1	1	1	0.2698	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2 [szótár]	R2	C_pontossag (ugyanazokon az egységeken)	1	1	1	0.2698	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [szótár]	R2	C_fedi_a_helyes_szkript_dontest	1	1	1	0.2698	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [szótár]	R2	elteres (C nem mondja ugyanezt)	0	1	0			
+c_osszevetes	F3V2 [szótár]	R2	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [szótár]	R2	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2 [K1]	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [K1]	R2	szkript_pontossag (ugyanezeken)	17	17	1	0.8627	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2 [K1]	R2	C_pontossag (ugyanazokon az egységeken)	17	17	1	0.8627	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [K1]	R2	C_fedi_a_helyes_szkript_dontest	17	17	1	0.8627	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [K1]	R2	elteres (C nem mondja ugyanezt)	0	17	0			
+c_osszevetes	F3V2 [K1]	R2	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [K1]	R2	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2 [K8]	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [K8]	R2	szkript_pontossag (ugyanezeken)	3	3	1	0.5258	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2 [K8]	R2	C_pontossag (ugyanazokon az egységeken)	3	3	1	0.5258	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [K8]	R2	C_fedi_a_helyes_szkript_dontest	3	3	1	0.5258	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [K8]	R2	elteres (C nem mondja ugyanezt)	0	3	0			
+c_osszevetes	F3V2 [K8]	R2	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [K8]	R2	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2 [K9]	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [K9]	R2	szkript_pontossag (ugyanezeken)	2	2	1	0.4250	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2 [K9]	R2	C_pontossag (ugyanazokon az egységeken)	2	2	1	0.4250	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [K9]	R2	C_fedi_a_helyes_szkript_dontest	2	2	1	0.4250	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [K9]	R2	elteres (C nem mondja ugyanezt)	0	2	0			
+c_osszevetes	F3V2 [K9]	R2	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [K9]	R2	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2 [összes]	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [összes]	R2	szkript_pontossag (ugyanezeken)	23	23	1	0.8947	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2 [összes]	R2	C_pontossag (ugyanazokon az egységeken)	23	23	1	0.8947	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [összes]	R2	C_fedi_a_helyes_szkript_dontest	23	23	1	0.8947	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [összes]	R2	elteres (C nem mondja ugyanezt)	0	23	0			
+c_osszevetes	F3V2 [összes]	R2	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [összes]	R2	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2B [szótár]	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [szótár]	R2	szkript_pontossag (ugyanezeken)	1	1	1	0.2698	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2B [szótár]	R2	C_pontossag (ugyanazokon az egységeken)	1	1	1	0.2698	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [szótár]	R2	C_fedi_a_helyes_szkript_dontest	1	1	1	0.2698	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [szótár]	R2	elteres (C nem mondja ugyanezt)	0	1	0			
+c_osszevetes	F3V2B [szótár]	R2	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [szótár]	R2	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2B [K1]	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [K1]	R2	szkript_pontossag (ugyanezeken)	17	17	1	0.8627	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2B [K1]	R2	C_pontossag (ugyanazokon az egységeken)	17	17	1	0.8627	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [K1]	R2	C_fedi_a_helyes_szkript_dontest	17	17	1	0.8627	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [K1]	R2	elteres (C nem mondja ugyanezt)	0	17	0			
+c_osszevetes	F3V2B [K1]	R2	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [K1]	R2	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2B [K8]	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [K8]	R2	szkript_pontossag (ugyanezeken)	3	3	1	0.5258	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2B [K8]	R2	C_pontossag (ugyanazokon az egységeken)	3	3	1	0.5258	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [K8]	R2	C_fedi_a_helyes_szkript_dontest	3	3	1	0.5258	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [K8]	R2	elteres (C nem mondja ugyanezt)	0	3	0			
+c_osszevetes	F3V2B [K8]	R2	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [K8]	R2	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2B [K9]	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [K9]	R2	szkript_pontossag (ugyanezeken)	2	2	1	0.4250	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2B [K9]	R2	C_pontossag (ugyanazokon az egységeken)	2	2	1	0.4250	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [K9]	R2	C_fedi_a_helyes_szkript_dontest	2	2	1	0.4250	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [K9]	R2	elteres (C nem mondja ugyanezt)	0	2	0			
+c_osszevetes	F3V2B [K9]	R2	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [K9]	R2	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2B [összes]	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [összes]	R2	szkript_pontossag (ugyanezeken)	23	23	1	0.8947	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2B [összes]	R2	C_pontossag (ugyanazokon az egységeken)	23	23	1	0.8947	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [összes]	R2	C_fedi_a_helyes_szkript_dontest	23	23	1	0.8947	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [összes]	R2	elteres (C nem mondja ugyanezt)	0	23	0			
+c_osszevetes	F3V2B [összes]	R2	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [összes]	R2	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V3 [szótár]	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [szótár]	R2	szkript_pontossag (ugyanezeken)	1	1	1	0.2698	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V3 [szótár]	R2	C_pontossag (ugyanazokon az egységeken)	1	1	1	0.2698	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [szótár]	R2	C_fedi_a_helyes_szkript_dontest	1	1	1	0.2698	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [szótár]	R2	elteres (C nem mondja ugyanezt)	0	1	0			
+c_osszevetes	F3V3 [szótár]	R2	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [szótár]	R2	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V3 [K1]	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [K1]	R2	szkript_pontossag (ugyanezeken)	17	17	1	0.8627	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V3 [K1]	R2	C_pontossag (ugyanazokon az egységeken)	17	17	1	0.8627	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [K1]	R2	C_fedi_a_helyes_szkript_dontest	17	17	1	0.8627	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [K1]	R2	elteres (C nem mondja ugyanezt)	0	17	0			
+c_osszevetes	F3V3 [K1]	R2	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [K1]	R2	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V3 [K8]	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [K8]	R2	szkript_pontossag (ugyanezeken)	3	3	1	0.5258	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V3 [K8]	R2	C_pontossag (ugyanazokon az egységeken)	3	3	1	0.5258	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [K8]	R2	C_fedi_a_helyes_szkript_dontest	3	3	1	0.5258	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [K8]	R2	elteres (C nem mondja ugyanezt)	0	3	0			
+c_osszevetes	F3V3 [K8]	R2	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [K8]	R2	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V3 [K9]	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [K9]	R2	szkript_pontossag (ugyanezeken)	2	2	1	0.4250	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V3 [K9]	R2	C_pontossag (ugyanazokon az egységeken)	2	2	1	0.4250	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [K9]	R2	C_fedi_a_helyes_szkript_dontest	2	2	1	0.4250	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [K9]	R2	elteres (C nem mondja ugyanezt)	0	2	0			
+c_osszevetes	F3V3 [K9]	R2	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [K9]	R2	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V3 [összes]	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [összes]	R2	szkript_pontossag (ugyanezeken)	23	23	1	0.8947	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V3 [összes]	R2	C_pontossag (ugyanazokon az egységeken)	23	23	1	0.8947	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [összes]	R2	C_fedi_a_helyes_szkript_dontest	23	23	1	0.8947	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [összes]	R2	elteres (C nem mondja ugyanezt)	0	23	0			
+c_osszevetes	F3V3 [összes]	R2	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [összes]	R2	elteresbol_C_egyezik_arannyal	0	0				
+alap	szkript	R3	arany_versek	10		10			a mérésben részt vevő aranyversek (rétegben)
+lefedettseg	szkript	R3	link_lefedettseg (összes szkript-link ∩ arany / arany link)	5	265	0.0188679	0.0092	0.0382	az arany linkjeiből a szkript által helyesen eldöntött
+lefedettseg	szkript	R3	link_lefedettseg [szótár]	3	265	0.0113208	0.0045	0.0280	csak a(z) szótár szabály linkjei
+lefedettseg	szkript	R3	link_lefedettseg [K9]	2	265	0.00754717	0.0025	0.0225	csak a(z) K9 szabály linkjei
+lefedettseg	szkript	R3	betoldas_lefedettseg [K1]	25	44	0.568182	0.4449	0.6835	az arany betoldas-szavaiból a szkript K1-betoldasa
+lefedettseg	szkript	R3	forditatlan_lefedettseg [K1+K8+K9]	9	24	0.375	0.2330	0.5423	az arany forditatlan-szavaiból a szkript forditatlan-döntése
+lefedettseg	szkript	R3	egyseg_lefedettseg (link + betoldas + forditatlan)	39	333	0.117117	0.0912	0.1492	az arany döntési egységeiből a szkript helyes döntése
+lefedettseg	szkript	R3	egyseg_dontott_arany (szkript-döntés / arany egység)	39	333	0.117117			a szkript döntéseinek száma az arany egységszámához mérve (helyes és hibás együtt)
+pontossag	szkript	R3	link_pontossag [összes link]	5	5	1	0.6488	1.0000	a szkript linkjeiből az aranyban
+pontossag	szkript	R3	link_pontossag [szótár]	3	3	1	0.5258	1.0000	
+pontossag	szkript	R3	link_pontossag [K9]	2	2	1	0.4250	1.0000	
+pontossag	szkript	R3	betoldas_pontossag [K1]	25	25	1	0.9023	1.0000	a szkript betoldas-döntéseiből az arany betoldas-listájában
+pontossag	szkript	R3	forditatlan_pontossag [K1]	9	9	1	0.7688	1.0000	a szkript forditatlan-döntéseiből az arany forditatlan-listájában
+pontossag	szkript	R3	forditatlan_pontossag [K8]	0	0				a szkript forditatlan-döntéseiből az arany forditatlan-listájában
+pontossag	szkript	R3	forditatlan_pontossag [K9]	0	0				a szkript forditatlan-döntéseiből az arany forditatlan-listájában
+pontossag	szkript	R3	egyseg_pontossag [szótár]	3	3	1	0.5258	1.0000	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R3	egyseg_pontossag [K1]	34	34	1	0.9263	1.0000	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R3	egyseg_pontossag [K8]	0	0				a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R3	egyseg_pontossag [K9]	2	2	1	0.4250	1.0000	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R3	egyseg_pontossag [K1+K8+K9]	36	36	1	0.9301	1.0000	a három K-szabály döntései együtt
+pontossag	szkript	R3	egyseg_pontossag [összes]	39	39	1	0.9351	1.0000	a szkript minden döntése
+modellre_var	szkript	R3	magyar_token_modellre_var	236	266	0.887218			a magyar tokenekből szkript-döntés nélkül
+modellre_var	szkript	R3	magyar_ok: nincs_szotarban	212	266	0.796992			
+modellre_var	szkript	R3	magyar_ok: tobb_magyar	0	266	0			
+modellre_var	szkript	R3	magyar_ok: nincs_jelolt	0	266	0			
+modellre_var	szkript	R3	magyar_ok: tobb_jelolt	1	266	0.0037594			
+modellre_var	szkript	R3	magyar_ok: K1_kivetel	4	266	0.0150376			
+modellre_var	szkript	R3	magyar_ok: K9_nem_gepies	19	266	0.0714286			
+modellre_var	szkript	R3	magyar_ok: egyeb	0	266	0			
+modellre_var	szkript	R3	eredeti_szo_modellre_var	247	261	0.94636			az eredeti szavakból sem szkript-link, sem forditatlan (a kizárt tokenek nélkül)
+modellre_var	szkript	R3	eredeti_ok: nincs_szabaly	216	261	0.827586			
+modellre_var	szkript	R3	eredeti_ok: K1_kivetel_nevmasi	2	261	0.00766284			
+modellre_var	szkript	R3	eredeti_ok: K1_kivetel_J	4	261	0.0153257			
+modellre_var	szkript	R3	eredeti_ok: K9_nem_gepies	25	261	0.0957854			
+modellre_var	szkript	R3	eredeti_ok: nem_tr	0	261	0			
+c_osszevetes	F3V2 [szótár]	R3	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [szótár]	R3	szkript_pontossag (ugyanezeken)	3	3	1	0.5258	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2 [szótár]	R3	C_pontossag (ugyanazokon az egységeken)	3	3	1	0.5258	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [szótár]	R3	C_fedi_a_helyes_szkript_dontest	3	3	1	0.5258	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [szótár]	R3	elteres (C nem mondja ugyanezt)	0	3	0			
+c_osszevetes	F3V2 [szótár]	R3	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [szótár]	R3	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2 [K1]	R3	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [K1]	R3	szkript_pontossag (ugyanezeken)	34	34	1	0.9263	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2 [K1]	R3	C_pontossag (ugyanazokon az egységeken)	33	34	0.970588	0.8784	0.9934	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [K1]	R3	C_fedi_a_helyes_szkript_dontest	33	34	0.970588	0.8784	0.9934	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [K1]	R3	elteres (C nem mondja ugyanezt)	1	34	0.0294118			
+c_osszevetes	F3V2 [K1]	R3	elteresbol_szkript_egyezik_arannyal	1	1	1			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [K1]	R3	elteresbol_C_egyezik_arannyal	0	1	0			
+c_osszevetes	F3V2 [K9]	R3	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [K9]	R3	szkript_pontossag (ugyanezeken)	2	2	1	0.4250	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2 [K9]	R3	C_pontossag (ugyanazokon az egységeken)	2	2	1	0.4250	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [K9]	R3	C_fedi_a_helyes_szkript_dontest	2	2	1	0.4250	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [K9]	R3	elteres (C nem mondja ugyanezt)	0	2	0			
+c_osszevetes	F3V2 [K9]	R3	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [K9]	R3	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2 [összes]	R3	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [összes]	R3	szkript_pontossag (ugyanezeken)	39	39	1	0.9351	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2 [összes]	R3	C_pontossag (ugyanazokon az egységeken)	38	39	0.974359	0.8929	0.9943	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [összes]	R3	C_fedi_a_helyes_szkript_dontest	38	39	0.974359	0.8929	0.9943	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [összes]	R3	elteres (C nem mondja ugyanezt)	1	39	0.025641			
+c_osszevetes	F3V2 [összes]	R3	elteresbol_szkript_egyezik_arannyal	1	1	1			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [összes]	R3	elteresbol_C_egyezik_arannyal	0	1	0			
+c_osszevetes	F3V2B [szótár]	R3	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [szótár]	R3	szkript_pontossag (ugyanezeken)	3	3	1	0.5258	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2B [szótár]	R3	C_pontossag (ugyanazokon az egységeken)	3	3	1	0.5258	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [szótár]	R3	C_fedi_a_helyes_szkript_dontest	3	3	1	0.5258	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [szótár]	R3	elteres (C nem mondja ugyanezt)	0	3	0			
+c_osszevetes	F3V2B [szótár]	R3	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [szótár]	R3	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2B [K1]	R3	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [K1]	R3	szkript_pontossag (ugyanezeken)	34	34	1	0.9263	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2B [K1]	R3	C_pontossag (ugyanazokon az egységeken)	33	34	0.970588	0.8784	0.9934	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [K1]	R3	C_fedi_a_helyes_szkript_dontest	33	34	0.970588	0.8784	0.9934	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [K1]	R3	elteres (C nem mondja ugyanezt)	1	34	0.0294118			
+c_osszevetes	F3V2B [K1]	R3	elteresbol_szkript_egyezik_arannyal	1	1	1			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [K1]	R3	elteresbol_C_egyezik_arannyal	0	1	0			
+c_osszevetes	F3V2B [K9]	R3	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [K9]	R3	szkript_pontossag (ugyanezeken)	2	2	1	0.4250	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2B [K9]	R3	C_pontossag (ugyanazokon az egységeken)	2	2	1	0.4250	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [K9]	R3	C_fedi_a_helyes_szkript_dontest	2	2	1	0.4250	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [K9]	R3	elteres (C nem mondja ugyanezt)	0	2	0			
+c_osszevetes	F3V2B [K9]	R3	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [K9]	R3	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2B [összes]	R3	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [összes]	R3	szkript_pontossag (ugyanezeken)	39	39	1	0.9351	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2B [összes]	R3	C_pontossag (ugyanazokon az egységeken)	38	39	0.974359	0.8929	0.9943	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [összes]	R3	C_fedi_a_helyes_szkript_dontest	38	39	0.974359	0.8929	0.9943	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [összes]	R3	elteres (C nem mondja ugyanezt)	1	39	0.025641			
+c_osszevetes	F3V2B [összes]	R3	elteresbol_szkript_egyezik_arannyal	1	1	1			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [összes]	R3	elteresbol_C_egyezik_arannyal	0	1	0			
+c_osszevetes	F3V3 [szótár]	R3	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [szótár]	R3	szkript_pontossag (ugyanezeken)	3	3	1	0.5258	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V3 [szótár]	R3	C_pontossag (ugyanazokon az egységeken)	3	3	1	0.5258	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [szótár]	R3	C_fedi_a_helyes_szkript_dontest	3	3	1	0.5258	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [szótár]	R3	elteres (C nem mondja ugyanezt)	0	3	0			
+c_osszevetes	F3V3 [szótár]	R3	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [szótár]	R3	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V3 [K1]	R3	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [K1]	R3	szkript_pontossag (ugyanezeken)	34	34	1	0.9263	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V3 [K1]	R3	C_pontossag (ugyanazokon az egységeken)	33	34	0.970588	0.8784	0.9934	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [K1]	R3	C_fedi_a_helyes_szkript_dontest	33	34	0.970588	0.8784	0.9934	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [K1]	R3	elteres (C nem mondja ugyanezt)	1	34	0.0294118			
+c_osszevetes	F3V3 [K1]	R3	elteresbol_szkript_egyezik_arannyal	1	1	1			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [K1]	R3	elteresbol_C_egyezik_arannyal	0	1	0			
+c_osszevetes	F3V3 [K9]	R3	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [K9]	R3	szkript_pontossag (ugyanezeken)	2	2	1	0.4250	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V3 [K9]	R3	C_pontossag (ugyanazokon az egységeken)	2	2	1	0.4250	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [K9]	R3	C_fedi_a_helyes_szkript_dontest	2	2	1	0.4250	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [K9]	R3	elteres (C nem mondja ugyanezt)	0	2	0			
+c_osszevetes	F3V3 [K9]	R3	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [K9]	R3	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V3 [összes]	R3	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [összes]	R3	szkript_pontossag (ugyanezeken)	39	39	1	0.9351	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V3 [összes]	R3	C_pontossag (ugyanazokon az egységeken)	38	39	0.974359	0.8929	0.9943	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [összes]	R3	C_fedi_a_helyes_szkript_dontest	38	39	0.974359	0.8929	0.9943	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [összes]	R3	elteres (C nem mondja ugyanezt)	1	39	0.025641			
+c_osszevetes	F3V3 [összes]	R3	elteresbol_szkript_egyezik_arannyal	1	1	1			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [összes]	R3	elteresbol_C_egyezik_arannyal	0	1	0			
+alap	szkript	R4	arany_versek	20		20			a mérésben részt vevő aranyversek (rétegben)
+lefedettseg	szkript	R4	link_lefedettseg (összes szkript-link ∩ arany / arany link)	0	314	0	0.0000	0.0085	az arany linkjeiből a szkript által helyesen eldöntött
+lefedettseg	szkript	R4	link_lefedettseg [szótár]	0	314	0	0.0000	0.0085	csak a(z) szótár szabály linkjei
+lefedettseg	szkript	R4	link_lefedettseg [K9]	0	314	0	0.0000	0.0085	csak a(z) K9 szabály linkjei
+lefedettseg	szkript	R4	betoldas_lefedettseg [K1]	29	55	0.527273	0.4179	0.6341	az arany betoldas-szavaiból a szkript K1-betoldasa
+lefedettseg	szkript	R4	forditatlan_lefedettseg [K1+K8+K9]	31	43	0.72093	0.5979	0.8178	az arany forditatlan-szavaiból a szkript forditatlan-döntése
+lefedettseg	szkript	R4	egyseg_lefedettseg (link + betoldas + forditatlan)	60	412	0.145631	0.1194	0.1765	az arany döntési egységeiből a szkript helyes döntése
+lefedettseg	szkript	R4	egyseg_dontott_arany (szkript-döntés / arany egység)	62	412	0.150485			a szkript döntéseinek száma az arany egységszámához mérve (helyes és hibás együtt)
+pontossag	szkript	R4	link_pontossag [összes link]	0	0				a szkript linkjeiből az aranyban
+pontossag	szkript	R4	link_pontossag [szótár]	0	0				
+pontossag	szkript	R4	link_pontossag [K9]	0	0				
+pontossag	szkript	R4	betoldas_pontossag [K1]	29	29	1	0.9147	1.0000	a szkript betoldas-döntéseiből az arany betoldas-listájában
+pontossag	szkript	R4	forditatlan_pontossag [K1]	31	33	0.939394	0.8324	0.9797	a szkript forditatlan-döntéseiből az arany forditatlan-listájában
+pontossag	szkript	R4	forditatlan_pontossag [K8]	0	0				a szkript forditatlan-döntéseiből az arany forditatlan-listájában
+pontossag	szkript	R4	forditatlan_pontossag [K9]	0	0				a szkript forditatlan-döntéseiből az arany forditatlan-listájában
+pontossag	szkript	R4	egyseg_pontossag [szótár]	0	0				a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R4	egyseg_pontossag [K1]	60	62	0.967742	0.9071	0.9893	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R4	egyseg_pontossag [K8]	0	0				a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R4	egyseg_pontossag [K9]	0	0				a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	R4	egyseg_pontossag [K1+K8+K9]	60	62	0.967742	0.9071	0.9893	a három K-szabály döntései együtt
+pontossag	szkript	R4	egyseg_pontossag [összes]	60	62	0.967742	0.9071	0.9893	a szkript minden döntése
+modellre_var	szkript	R4	magyar_token_modellre_var	310	339	0.914454			a magyar tokenekből szkript-döntés nélkül
+modellre_var	szkript	R4	magyar_ok: nincs_szotarban	284	339	0.837758			
+modellre_var	szkript	R4	magyar_ok: tobb_magyar	0	339	0			
+modellre_var	szkript	R4	magyar_ok: nincs_jelolt	1	339	0.00294985			
+modellre_var	szkript	R4	magyar_ok: tobb_jelolt	0	339	0			
+modellre_var	szkript	R4	magyar_ok: K1_kivetel	13	339	0.0383481			
+modellre_var	szkript	R4	magyar_ok: K9_nem_gepies	12	339	0.0353982			
+modellre_var	szkript	R4	magyar_ok: egyeb	0	339	0			
+modellre_var	szkript	R4	eredeti_szo_modellre_var	285	318	0.896226			az eredeti szavakból sem szkript-link, sem forditatlan (a kizárt tokenek nélkül)
+modellre_var	szkript	R4	eredeti_ok: nincs_szabaly	260	318	0.81761			
+modellre_var	szkript	R4	eredeti_ok: K1_kivetel_nevmasi	4	318	0.0125786			
+modellre_var	szkript	R4	eredeti_ok: K1_kivetel_J	4	318	0.0125786			
+modellre_var	szkript	R4	eredeti_ok: K9_nem_gepies	16	318	0.0503145			
+modellre_var	szkript	R4	eredeti_ok: nem_tr	1	318	0.00314465			
+c_osszevetes	F3V2 [K1]	R4	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [K1]	R4	szkript_pontossag (ugyanezeken)	60	62	0.967742	0.9071	0.9893	szkript-egység az aranyban
+c_osszevetes	F3V2 [K1]	R4	C_pontossag (ugyanazokon az egységeken)	58	62	0.935484	0.8638	0.9707	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [K1]	R4	C_fedi_a_helyes_szkript_dontest	56	60	0.933333	0.8595	0.9697	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [K1]	R4	elteres (C nem mondja ugyanezt)	6	62	0.0967742			
+c_osszevetes	F3V2 [K1]	R4	elteresbol_szkript_egyezik_arannyal	4	6	0.666667			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [K1]	R4	elteresbol_C_egyezik_arannyal	2	6	0.333333			
+c_osszevetes	F3V2 [összes]	R4	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [összes]	R4	szkript_pontossag (ugyanezeken)	60	62	0.967742	0.9071	0.9893	szkript-egység az aranyban
+c_osszevetes	F3V2 [összes]	R4	C_pontossag (ugyanazokon az egységeken)	58	62	0.935484	0.8638	0.9707	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [összes]	R4	C_fedi_a_helyes_szkript_dontest	56	60	0.933333	0.8595	0.9697	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [összes]	R4	elteres (C nem mondja ugyanezt)	6	62	0.0967742			
+c_osszevetes	F3V2 [összes]	R4	elteresbol_szkript_egyezik_arannyal	4	6	0.666667			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [összes]	R4	elteresbol_C_egyezik_arannyal	2	6	0.333333			
+c_osszevetes	F3V2B [K1]	R4	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [K1]	R4	szkript_pontossag (ugyanezeken)	60	62	0.967742	0.9071	0.9893	szkript-egység az aranyban
+c_osszevetes	F3V2B [K1]	R4	C_pontossag (ugyanazokon az egységeken)	58	62	0.935484	0.8638	0.9707	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [K1]	R4	C_fedi_a_helyes_szkript_dontest	56	60	0.933333	0.8595	0.9697	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [K1]	R4	elteres (C nem mondja ugyanezt)	6	62	0.0967742			
+c_osszevetes	F3V2B [K1]	R4	elteresbol_szkript_egyezik_arannyal	4	6	0.666667			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [K1]	R4	elteresbol_C_egyezik_arannyal	2	6	0.333333			
+c_osszevetes	F3V2B [összes]	R4	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [összes]	R4	szkript_pontossag (ugyanezeken)	60	62	0.967742	0.9071	0.9893	szkript-egység az aranyban
+c_osszevetes	F3V2B [összes]	R4	C_pontossag (ugyanazokon az egységeken)	58	62	0.935484	0.8638	0.9707	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [összes]	R4	C_fedi_a_helyes_szkript_dontest	56	60	0.933333	0.8595	0.9697	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [összes]	R4	elteres (C nem mondja ugyanezt)	6	62	0.0967742			
+c_osszevetes	F3V2B [összes]	R4	elteresbol_szkript_egyezik_arannyal	4	6	0.666667			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [összes]	R4	elteresbol_C_egyezik_arannyal	2	6	0.333333			
+c_osszevetes	F3V3 [K1]	R4	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [K1]	R4	szkript_pontossag (ugyanezeken)	60	62	0.967742	0.9071	0.9893	szkript-egység az aranyban
+c_osszevetes	F3V3 [K1]	R4	C_pontossag (ugyanazokon az egységeken)	60	62	0.967742	0.9071	0.9893	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [K1]	R4	C_fedi_a_helyes_szkript_dontest	58	60	0.966667	0.9041	0.9889	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [K1]	R4	elteres (C nem mondja ugyanezt)	4	62	0.0645161			
+c_osszevetes	F3V3 [K1]	R4	elteresbol_szkript_egyezik_arannyal	2	4	0.5			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [K1]	R4	elteresbol_C_egyezik_arannyal	2	4	0.5			
+c_osszevetes	F3V3 [összes]	R4	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [összes]	R4	szkript_pontossag (ugyanezeken)	60	62	0.967742	0.9071	0.9893	szkript-egység az aranyban
+c_osszevetes	F3V3 [összes]	R4	C_pontossag (ugyanazokon az egységeken)	60	62	0.967742	0.9071	0.9893	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [összes]	R4	C_fedi_a_helyes_szkript_dontest	58	60	0.966667	0.9041	0.9889	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [összes]	R4	elteres (C nem mondja ugyanezt)	4	62	0.0645161			
+c_osszevetes	F3V3 [összes]	R4	elteresbol_szkript_egyezik_arannyal	2	4	0.5			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [összes]	R4	elteresbol_C_egyezik_arannyal	2	4	0.5			
+alap	szkript	Összes	arany_versek	60		60			a mérésben részt vevő aranyversek (rétegben)
+lefedettseg	szkript	Összes	link_lefedettseg (összes szkript-link ∩ arany / arany link)	12	1048	0.0114504	0.0072	0.0183	az arany linkjeiből a szkript által helyesen eldöntött
+lefedettseg	szkript	Összes	link_lefedettseg [szótár]	6	1048	0.00572519	0.0030	0.0110	csak a(z) szótár szabály linkjei
+lefedettseg	szkript	Összes	link_lefedettseg [K9]	6	1048	0.00572519	0.0030	0.0110	csak a(z) K9 szabály linkjei
+lefedettseg	szkript	Összes	betoldas_lefedettseg [K1]	103	184	0.559783	0.4991	0.6187	az arany betoldas-szavaiból a szkript K1-betoldasa
+lefedettseg	szkript	Összes	forditatlan_lefedettseg [K1+K8+K9]	51	103	0.495146	0.4153	0.5753	az arany forditatlan-szavaiból a szkript forditatlan-döntése
+lefedettseg	szkript	Összes	egyseg_lefedettseg (link + betoldas + forditatlan)	166	1335	0.124345	0.1102	0.1400	az arany döntési egységeiből a szkript helyes döntése
+lefedettseg	szkript	Összes	egyseg_dontott_arany (szkript-döntés / arany egység)	170	1335	0.127341			a szkript döntéseinek száma az arany egységszámához mérve (helyes és hibás együtt)
+pontossag	szkript	Összes	link_pontossag [összes link]	12	12	1	0.8160	1.0000	a szkript linkjeiből az aranyban
+pontossag	szkript	Összes	link_pontossag [szótár]	6	6	1	0.6892	1.0000	
+pontossag	szkript	Összes	link_pontossag [K9]	6	6	1	0.6892	1.0000	
+pontossag	szkript	Összes	betoldas_pontossag [K1]	103	103	1	0.9744	1.0000	a szkript betoldas-döntéseiből az arany betoldas-listájában
+pontossag	szkript	Összes	forditatlan_pontossag [K1]	47	49	0.959184	0.8839	0.9864	a szkript forditatlan-döntéseiből az arany forditatlan-listájában
+pontossag	szkript	Összes	forditatlan_pontossag [K8]	4	4	1	0.5965	1.0000	a szkript forditatlan-döntéseiből az arany forditatlan-listájában
+pontossag	szkript	Összes	forditatlan_pontossag [K9]	0	2	0	0.0000	0.5750	a szkript forditatlan-döntéseiből az arany forditatlan-listájában
+pontossag	szkript	Összes	egyseg_pontossag [szótár]	6	6	1	0.6892	1.0000	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	Összes	egyseg_pontossag [K1]	150	152	0.986842	0.9610	0.9956	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	Összes	egyseg_pontossag [K8]	4	4	1	0.5965	1.0000	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	Összes	egyseg_pontossag [K9]	6	8	0.75	0.4601	0.9135	a csoport minden döntése (link, betoldas, forditatlan)
+pontossag	szkript	Összes	egyseg_pontossag [K1+K8+K9]	160	164	0.97561	0.9468	0.9890	a három K-szabály döntései együtt
+pontossag	szkript	Összes	egyseg_pontossag [összes]	166	170	0.976471	0.9486	0.9894	a szkript minden döntése
+modellre_var	szkript	Összes	magyar_token_modellre_var	942	1057	0.891202			a magyar tokenekből szkript-döntés nélkül
+modellre_var	szkript	Összes	magyar_ok: nincs_szotarban	864	1057	0.817408			
+modellre_var	szkript	Összes	magyar_ok: tobb_magyar	2	1057	0.00189215			
+modellre_var	szkript	Összes	magyar_ok: nincs_jelolt	1	1057	0.000946074			
+modellre_var	szkript	Összes	magyar_ok: tobb_jelolt	1	1057	0.000946074			
+modellre_var	szkript	Összes	magyar_ok: K1_kivetel	27	1057	0.025544			
+modellre_var	szkript	Összes	magyar_ok: K9_nem_gepies	47	1057	0.0444655			
+modellre_var	szkript	Összes	magyar_ok: egyeb	0	1057	0			
+modellre_var	szkript	Összes	eredeti_szo_modellre_var	968	1035	0.935266			az eredeti szavakból sem szkript-link, sem forditatlan (a kizárt tokenek nélkül)
+modellre_var	szkript	Összes	eredeti_ok: nincs_szabaly	875	1035	0.845411			
+modellre_var	szkript	Összes	eredeti_ok: K1_kivetel_nevmasi	6	1035	0.0057971			
+modellre_var	szkript	Összes	eredeti_ok: K1_kivetel_J	10	1035	0.00966184			
+modellre_var	szkript	Összes	eredeti_ok: K9_nem_gepies	76	1035	0.07343			
+modellre_var	szkript	Összes	eredeti_ok: nem_tr	1	1035	0.000966184			
+c_osszevetes	F3V2 [szótár]	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [szótár]	Összes	szkript_pontossag (ugyanezeken)	6	6	1	0.6892	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2 [szótár]	Összes	C_pontossag (ugyanazokon az egységeken)	6	6	1	0.6892	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [szótár]	Összes	C_fedi_a_helyes_szkript_dontest	6	6	1	0.6892	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [szótár]	Összes	elteres (C nem mondja ugyanezt)	0	6	0			
+c_osszevetes	F3V2 [szótár]	Összes	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [szótár]	Összes	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2 [K1]	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [K1]	Összes	szkript_pontossag (ugyanezeken)	150	152	0.986842	0.9610	0.9956	szkript-egység az aranyban
+c_osszevetes	F3V2 [K1]	Összes	C_pontossag (ugyanazokon az egységeken)	147	152	0.967105	0.9340	0.9839	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [K1]	Összes	C_fedi_a_helyes_szkript_dontest	145	150	0.966667	0.9331	0.9837	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [K1]	Összes	elteres (C nem mondja ugyanezt)	7	152	0.0460526			
+c_osszevetes	F3V2 [K1]	Összes	elteresbol_szkript_egyezik_arannyal	5	7	0.714286			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [K1]	Összes	elteresbol_C_egyezik_arannyal	2	7	0.285714			
+c_osszevetes	F3V2 [K8]	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [K8]	Összes	szkript_pontossag (ugyanezeken)	4	4	1	0.5965	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2 [K8]	Összes	C_pontossag (ugyanazokon az egységeken)	4	4	1	0.5965	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [K8]	Összes	C_fedi_a_helyes_szkript_dontest	4	4	1	0.5965	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [K8]	Összes	elteres (C nem mondja ugyanezt)	0	4	0			
+c_osszevetes	F3V2 [K8]	Összes	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [K8]	Összes	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2 [K9]	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [K9]	Összes	szkript_pontossag (ugyanezeken)	6	8	0.75	0.4601	0.9135	szkript-egység az aranyban
+c_osszevetes	F3V2 [K9]	Összes	C_pontossag (ugyanazokon az egységeken)	8	8	1	0.7472	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [K9]	Összes	C_fedi_a_helyes_szkript_dontest	6	6	1	0.6892	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [K9]	Összes	elteres (C nem mondja ugyanezt)	2	8	0.25			
+c_osszevetes	F3V2 [K9]	Összes	elteresbol_szkript_egyezik_arannyal	0	2	0			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [K9]	Összes	elteresbol_C_egyezik_arannyal	2	2	1			
+c_osszevetes	F3V2 [összes]	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2 [összes]	Összes	szkript_pontossag (ugyanezeken)	166	170	0.976471	0.9486	0.9894	szkript-egység az aranyban
+c_osszevetes	F3V2 [összes]	Összes	C_pontossag (ugyanazokon az egységeken)	165	170	0.970588	0.9408	0.9856	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2 [összes]	Összes	C_fedi_a_helyes_szkript_dontest	161	166	0.96988	0.9394	0.9853	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2 [összes]	Összes	elteres (C nem mondja ugyanezt)	9	170	0.0529412			
+c_osszevetes	F3V2 [összes]	Összes	elteresbol_szkript_egyezik_arannyal	5	9	0.555556			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2 [összes]	Összes	elteresbol_C_egyezik_arannyal	4	9	0.444444			
+c_osszevetes	F3V2B [szótár]	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [szótár]	Összes	szkript_pontossag (ugyanezeken)	6	6	1	0.6892	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2B [szótár]	Összes	C_pontossag (ugyanazokon az egységeken)	6	6	1	0.6892	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [szótár]	Összes	C_fedi_a_helyes_szkript_dontest	6	6	1	0.6892	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [szótár]	Összes	elteres (C nem mondja ugyanezt)	0	6	0			
+c_osszevetes	F3V2B [szótár]	Összes	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [szótár]	Összes	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2B [K1]	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [K1]	Összes	szkript_pontossag (ugyanezeken)	150	152	0.986842	0.9610	0.9956	szkript-egység az aranyban
+c_osszevetes	F3V2B [K1]	Összes	C_pontossag (ugyanazokon az egységeken)	147	152	0.967105	0.9340	0.9839	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [K1]	Összes	C_fedi_a_helyes_szkript_dontest	145	150	0.966667	0.9331	0.9837	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [K1]	Összes	elteres (C nem mondja ugyanezt)	7	152	0.0460526			
+c_osszevetes	F3V2B [K1]	Összes	elteresbol_szkript_egyezik_arannyal	5	7	0.714286			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [K1]	Összes	elteresbol_C_egyezik_arannyal	2	7	0.285714			
+c_osszevetes	F3V2B [K8]	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [K8]	Összes	szkript_pontossag (ugyanezeken)	4	4	1	0.5965	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V2B [K8]	Összes	C_pontossag (ugyanazokon az egységeken)	4	4	1	0.5965	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [K8]	Összes	C_fedi_a_helyes_szkript_dontest	4	4	1	0.5965	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [K8]	Összes	elteres (C nem mondja ugyanezt)	0	4	0			
+c_osszevetes	F3V2B [K8]	Összes	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [K8]	Összes	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V2B [K9]	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [K9]	Összes	szkript_pontossag (ugyanezeken)	6	8	0.75	0.4601	0.9135	szkript-egység az aranyban
+c_osszevetes	F3V2B [K9]	Összes	C_pontossag (ugyanazokon az egységeken)	8	8	1	0.7472	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [K9]	Összes	C_fedi_a_helyes_szkript_dontest	6	6	1	0.6892	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [K9]	Összes	elteres (C nem mondja ugyanezt)	2	8	0.25			
+c_osszevetes	F3V2B [K9]	Összes	elteresbol_szkript_egyezik_arannyal	0	2	0			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [K9]	Összes	elteresbol_C_egyezik_arannyal	2	2	1			
+c_osszevetes	F3V2B [összes]	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V2B [összes]	Összes	szkript_pontossag (ugyanezeken)	166	170	0.976471	0.9486	0.9894	szkript-egység az aranyban
+c_osszevetes	F3V2B [összes]	Összes	C_pontossag (ugyanazokon az egységeken)	165	170	0.970588	0.9408	0.9856	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V2B [összes]	Összes	C_fedi_a_helyes_szkript_dontest	161	166	0.96988	0.9394	0.9853	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V2B [összes]	Összes	elteres (C nem mondja ugyanezt)	9	170	0.0529412			
+c_osszevetes	F3V2B [összes]	Összes	elteresbol_szkript_egyezik_arannyal	5	9	0.555556			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V2B [összes]	Összes	elteresbol_C_egyezik_arannyal	4	9	0.444444			
+c_osszevetes	F3V3 [szótár]	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [szótár]	Összes	szkript_pontossag (ugyanezeken)	6	6	1	0.6892	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V3 [szótár]	Összes	C_pontossag (ugyanazokon az egységeken)	6	6	1	0.6892	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [szótár]	Összes	C_fedi_a_helyes_szkript_dontest	6	6	1	0.6892	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [szótár]	Összes	elteres (C nem mondja ugyanezt)	0	6	0			
+c_osszevetes	F3V3 [szótár]	Összes	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [szótár]	Összes	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V3 [K1]	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [K1]	Összes	szkript_pontossag (ugyanezeken)	150	152	0.986842	0.9610	0.9956	szkript-egység az aranyban
+c_osszevetes	F3V3 [K1]	Összes	C_pontossag (ugyanazokon az egységeken)	149	152	0.980263	0.9516	0.9921	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [K1]	Összes	C_fedi_a_helyes_szkript_dontest	147	150	0.98	0.9510	0.9920	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [K1]	Összes	elteres (C nem mondja ugyanezt)	5	152	0.0328947			
+c_osszevetes	F3V3 [K1]	Összes	elteresbol_szkript_egyezik_arannyal	3	5	0.6			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [K1]	Összes	elteresbol_C_egyezik_arannyal	2	5	0.4			
+c_osszevetes	F3V3 [K8]	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [K8]	Összes	szkript_pontossag (ugyanezeken)	4	4	1	0.5965	1.0000	szkript-egység az aranyban
+c_osszevetes	F3V3 [K8]	Összes	C_pontossag (ugyanazokon az egységeken)	4	4	1	0.5965	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [K8]	Összes	C_fedi_a_helyes_szkript_dontest	4	4	1	0.5965	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [K8]	Összes	elteres (C nem mondja ugyanezt)	0	4	0			
+c_osszevetes	F3V3 [K8]	Összes	elteresbol_szkript_egyezik_arannyal	0	0				eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [K8]	Összes	elteresbol_C_egyezik_arannyal	0	0				
+c_osszevetes	F3V3 [K9]	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [K9]	Összes	szkript_pontossag (ugyanezeken)	6	8	0.75	0.4601	0.9135	szkript-egység az aranyban
+c_osszevetes	F3V3 [K9]	Összes	C_pontossag (ugyanazokon az egységeken)	8	8	1	0.7472	1.0000	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [K9]	Összes	C_fedi_a_helyes_szkript_dontest	6	6	1	0.6892	1.0000	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [K9]	Összes	elteres (C nem mondja ugyanezt)	2	8	0.25			
+c_osszevetes	F3V3 [K9]	Összes	elteresbol_szkript_egyezik_arannyal	0	2	0			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [K9]	Összes	elteresbol_C_egyezik_arannyal	2	2	1			
+c_osszevetes	F3V3 [összes]	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment (csak ezeken számol)
+c_osszevetes	F3V3 [összes]	Összes	szkript_pontossag (ugyanezeken)	166	170	0.976471	0.9486	0.9894	szkript-egység az aranyban
+c_osszevetes	F3V3 [összes]	Összes	C_pontossag (ugyanazokon az egységeken)	167	170	0.982353	0.9567	0.9929	a C igen/nem válasza az egységre egyezik az arannyal
+c_osszevetes	F3V3 [összes]	Összes	C_fedi_a_helyes_szkript_dontest	163	166	0.981928	0.9556	0.9928	az aranyban is meglévő szkript-egységekből a C-ben is megvan
+c_osszevetes	F3V3 [összes]	Összes	elteres (C nem mondja ugyanezt)	7	170	0.0411765			
+c_osszevetes	F3V3 [összes]	Összes	elteresbol_szkript_egyezik_arannyal	3	7	0.428571			eltérésnél pontosan az egyik egyezik az arannyal
+c_osszevetes	F3V3 [összes]	Összes	elteresbol_C_egyezik_arannyal	4	7	0.571429			
