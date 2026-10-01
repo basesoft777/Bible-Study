@@ -556,6 +556,79 @@ def cmd_naplo_nezet(args):
     print('irva: %s' % os.path.relpath(args.ki, REPO))
 
 
+def cmd_beir(args):
+    """A munkatabla megadott sorainak beirasa az adat/forditasok.tsv-be
+    (E4a jovahagyas utan `kezi`, E4 utan `opus`). A KEZI_OSSZEVETES
+    jelentesszintu sorai (H7121 2.c, 3) az uj teljes forditas megfelelo
+    szakaszat kapjak (DT24 (a): az uj forditas valtja a regit). Minden mas
+    sor bajtra valtozatlan marad; ezt iras elott ellenorzi."""
+    import datetime
+    munka = {r['strong']: r for r in tsv_dict_sorok(MUNKA_UT)}
+    with open(FORDITASOK_UT, encoding='utf-8', newline='') as fh:
+        eredeti = fh.read()
+    sorok = eredeti.split('\n')
+    assert sorok[-1] == '', 'a forditasok.tsv nem sortoressel vegzodik'
+    sorok = sorok[:-1]
+    fej_i = next(i for i, s in enumerate(sorok) if s and not s.startswith('#'))
+    fejlec = sorok[fej_i].split('\t')
+    assert fejlec == FORDITASOK_FEJLEC, fejlec
+    datum = args.datum or datetime.date.today().strftime('%Y.%m.%d')
+
+    def kulcs(m):
+        return tuple(m[:5])
+    idx = {kulcs(s.split('\t')): i for i, s in enumerate(sorok) if i > fej_i and s}
+    valtozott = set()
+    for s in args.strongok:
+        sp = strong_padded(s)
+        r = dict(munka[sp])
+        r['allapot'] = args.allapot
+        r['datum'] = datum
+        if args.megjegyzes:
+            r['megjegyzes'] = args.megjegyzes
+        uj = '\t'.join(r.get(m, '') for m in FORDITASOK_FEJLEC)
+        k = kulcs(uj.split('\t'))
+        if k in idx:
+            regi = sorok[idx[k]].split('\t')
+            if regi[FORDITASOK_FEJLEC.index('allapot')] == 'kezi' and not args.kezi_felulir:
+                raise SystemExit('vedett kezi sor: %s' % (k,))
+            sorok[idx[k]] = uj
+            valtozott.add(idx[k])
+        else:
+            sorok.append(uj)
+            valtozott.add(len(sorok) - 1)
+        # jelentesszintu kezi sorok cserje az uj szakaszra
+        for jsz, eleje, vege in KEZI_OSSZEVETES.get(sp, []) if args.jelentes_csere else []:
+            h = r['forditas_hu']
+            m = re.search(eleje, h)
+            j = h.find(vege, m.start() + 1) if m else -1
+            if not m or j < 0:
+                raise SystemExit('nem talalhato szakasz: %s %s' % (sp, jsz))
+            szakasz = h[m.start():j].strip()
+            kk = (r['szotar'], strong_eredeti(sp), strong_eredeti(sp), jsz, 'forditas_hu')
+            if kk not in idx:
+                raise SystemExit('nincs meglevo sor: %s' % (kk,))
+            m_ = sorok[idx[kk]].split('\t')
+            m_[FORDITASOK_FEJLEC.index('forditas_hu')] = szakasz
+            m_[FORDITASOK_FEJLEC.index('allapot')] = args.allapot
+            m_[FORDITASOK_FEJLEC.index('modell')] = r['modell']
+            m_[FORDITASOK_FEJLEC.index('datum')] = datum
+            m_[FORDITASOK_FEJLEC.index('terminologia_verzio')] = r['terminologia_verzio']
+            m_[FORDITASOK_FEJLEC.index('megjegyzes')] = (
+                'az F28 teljes fordításának (%s teljes) szakasza; a korábbi kézi sort váltja (DT24 a)' % sp)
+            sorok[idx[kk]] = '\t'.join(m_)
+            valtozott.add(idx[kk])
+    # ellenorzes: minden nem valtozott sor bajtra azonos
+    eredeti_sorok = eredeti.split('\n')[:-1]
+    for i, s in enumerate(eredeti_sorok):
+        if i not in valtozott and sorok[i] != s:
+            raise SystemExit('varatlan elteres a %d. sorban -- megallok' % (i + 1))
+    for s in sorok:
+        assert len(s.split('\t')) == len(FORDITASOK_FEJLEC) or s.startswith('#'), s[:80]
+    with open(FORDITASOK_UT, 'w', encoding='utf-8', newline='') as fh:
+        fh.write('\n'.join(sorok) + '\n')
+    print('adat/forditasok.tsv: %d sor valtozott/uj (%s)' % (len(valtozott), ', '.join(args.strongok)))
+
+
 def cmd_prompt(args):
     sp, szoveg = forras_szoveg(args.strong)
     kiir(prompt_epit(sp, szoveg), args.ki)
@@ -605,6 +678,15 @@ def main():
     p.add_argument('--datum')
     p.add_argument('--megjegyzes')
     p.set_defaults(fv=cmd_rogzit)
+    p = al.add_parser('beir')
+    p.add_argument('strongok', nargs='+')
+    p.add_argument('--allapot', required=True, choices=['opus', 'kezi'])
+    p.add_argument('--datum')
+    p.add_argument('--megjegyzes')
+    p.add_argument('--jelentes-csere', action='store_true',
+                   help='a KEZI_OSSZEVETES jelentesszintu sorainak cserje (DT24 a)')
+    p.add_argument('--kezi-felulir', action='store_true')
+    p.set_defaults(fv=cmd_beir)
     p = al.add_parser('naplo_nezet')
     p.add_argument('strongok', nargs='+')
     p.add_argument('--fejlec', required=True, help='a naplo kezi bevezetoje (md)')
