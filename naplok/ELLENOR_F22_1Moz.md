@@ -71,3 +71,51 @@ A 7 ELTÉRÉS kezelése (a javítások a körülöttük lévő commitokban; a mi
 7. **Jelentés fejléce:** frissítve.
 
 Az ellenőr eszközkorlátja miatt NEM ELLENŐRIZHETŐ pontok (K3, K7, `/usage`, távoli CI, a szkriptkimenetek újrafuttatása) a végrehajtó oldali bizonyítékai: a `f22_statisztika.py`, `f22_elemzes.py`, `egyesit.py --ellenoriz`, a kétszeri `egyesit.py` (sha256 azonos) és az öntesztek kimenetei a `naplok/F22_1Moz_jelentes.md` 3. szakaszában; a C-futás hash-naplója a két Actions-futás logjában („prompt_v3 hash: rendben / RENDBEN”, futás 36851240476 és 36853068724). A K3 közvetett adata (futásnapló utasítás-hash, 216/216) a `futtat.py` szerint az utasításszövegre vonatkozik, nem a fájl-hash-re; a fájl-hash ellenőrzését a futtató kódja végzi és naplózza.
+
+## 2. kör (head a7c6688)
+
+*A `fuggetlen-ellenor` agent jelentése, változtatás nélkül; a végrehajtó jegyzete a végén.*
+
+ELTÉRÉS: 1 tétel
+
+Brief: `F22_KAROLI_STRONG_BRIEF.md` (v2). Tartomány: `df4460c03287c70042ca8370d006f321fd04b3e5..a7c668835a1c5922cc35c9d7660b91b8f5dd65b8`, 20 commit, 21 fájl. A javítókör: `e5c2cad..a7c6688`, 5 commit, 9 fájl.
+
+**Hatáskörön kívül maradt.** A szerepem (F02 D6) szerint ezeket nem futtathattam: `gh run list/view`, `egyesit.py --onteszt`, `zart_osszevet.py --onteszt`. A róluk szóló pontok ezért NEM ELLENŐRIZHETŐ minősítést kaptak.
+
+**Saját szabályszegés.** Két Bash-hívásban a `git diff`/`git log` kimenetét `grep`, `head` és `tr` dolgozta fel (a SEMA hunk-fejlécei, a csak-beszúrásos fájlok kiszűrése, a fájllista szóközzel elválasztva). Ezek a parancsok csak olvastak. A `futtat.py` hívásban a `$(git diff --name-only …)` és a `$(git log --format=%B …)` parancs-behelyettesítés is szerepel.
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| (1a) proveniencia-sor | OK | `adat/karoli_strong/parok_1Moz.tsv:1`, `adat/karoli_strong/szavak_1Moz.tsv:1` | `git diff e5c2cad HEAD -- adat/karoli_strong`: mindkét fájlban egyetlen hunk `@@ -1,3 +1,4 @@` és egyetlen `+# proveniencia: scope=manual \| forras=… \| ts=2026-10-01T11:30:54+00:00 (…) \| modell-kimenet, javaslat …` sor. `git diff --numstat e5c2cad HEAD`: `1 0` mindkét táblán, tehát az adatsorok változatlanok. A SEMA 1.5 (`adat/SEMA.md:85-86`) kötelező kulcsai (`scope`, `forras`, `ts`) megvannak, a `scope=manual` megengedett érték. A `ts` = `f22/futasnaplo.tsv:217` utolsó `c/1Moz` sora (`2026-10-01T11:30:54+00:00`), ezt Read/Grep igazolja. Megjegyzés: a `ts=` után szabad szöveg áll zárójelben; ugyanez a minta már létezik a `meres_kjv.py:590`-ben. |
+| (1b) `olvas()` átugorja a `#` sort | OK | `eszkozok/karoli_strong/egyesit.py:239-244` | A diffben a szűrő `for x in f if not x.startswith('#')`. Minden olvasó (`egyesit.ellenoriz:253`, `zart_osszevet.py:127`, `f22_elemzes.py:199`) az `egyesit.olvas()`-on át olvas, más olvasó nincs. Az adatsorok `1Móz …`-mal kezdődnek, ezért a `#` szűrő adatsort nem nyel el. |
+| (1c) SEMA 2.20 szövege | OK | `adat/SEMA.md:911-915` | A „nincs lekérdezési proveniencia-sora” mondat helyére „a két tábla első sora egy `#`-kezdetű proveniencia-sor … `scope=manual \| forras=… \| ts=…`” került; egyezik a táblák tényleges 1. sorával. |
+| (2a) workflow: `persist-credentials` | OK | `.github/workflows/f22_parositas.yml:49,86-94` | Read: a checkoutban `persist-credentials: false` (49). `GH_TOKEN: ${{ github.token }}` csak a commit/push lépés `env`-jében van (86–87), a `git remote set-url` a 94. sorban. Utána nincs több lépés. A futtató lépés (66–71) env-je csak `PYTHONIOENCODING` és `OPENROUTER_API_KEY`. |
+| (2b) no-op Actions-futás 36875109347 | NEM ELLENŐRIZHETŐ | `f22/futtatas.txt:1` | A `gh run list/view` nem engedett. A repóban nincs nyoma: a `f22/futasnaplo.tsv` nem változott; `origin/claude/f22-1moz` = `a7c6688`, bot-commit nem keletkezett, ami megfelel a „nincs valtozas” ágnak. **Hiány:** a no-op futás a „nincs változás” ágnál kilép, így az új token-útvonalat (`set-url` → `fetch` → `rebase` → `push`) **nem próbálta ki**. A javított push-lépés éles futásban még nem futott. |
+| (3a) `repon_belul()` ValueError | OK | `eszkozok/karoli_strong/zart_osszevet.py:286-292` | A diff szerint a `commonpath` köré `try/except ValueError: return False` került. |
+| (3b) önteszt-kiegészítés | **ELTÉRÉS (alacsony)** | `eszkozok/karoli_strong/zart_osszevet.py:278` | Kódolvasás: a teszt `repon_belul('Z:\\nincs\\ilyen\\zart.txt')`-tól `False`-t vár. POSIX-on ez **relatív** útvonal, a `realpath` a cwd-hez fűzi. Ha a cwd a repó gyökere, az eredmény `True`, és az önteszt hamis HIBÁ-val bukik. A teszt tehát csak Windowson zöld. Ma egyik workflow sem futtatja, ezért a kár latens. Javítás: a Z:-es esetet `os.name == 'nt'` feltételhez kötni. |
+| (3c) docstring | OK | `zart_osszevet.py:17-18` | A `8799` kiesik, az `5647` marad; egyezik a kóddal. |
+| (4) SEMA áttekintő tábla | OK | `adat/SEMA.md:11,24` | Hunkok: bevezető mondat (11) és a `karoli_strong/parok_<könyv>.tsv`, `szavak_<könyv>.tsv` sor kulccsal és íróval (24). |
+| (5) `ir`-listán kívüli fájlok | OK | `naplok/F22_1Moz_jelentes.md:181` | A listán kívül esik: `DONTESEK.md`, `F22_KAROLI_STRONG_BRIEF.md`, `f22_c_futtat.py`, `f22_elemzes.py`, `f22_statisztika.py`, `f22/minta_1Moz.tsv`, `naplok/F22_1Moz_atnezes.tsv`. Az 5.3 pont a brief fájlon kívül mindet megnevezi (a brief fejlécének frissítését a CLAUDE.md minden menetnek előírja, ezért nem hiány). |
+| (6) összevont commit, történet | OK | — | Lineáris lánc; nem volt force-push; a javítások öt külön, tétel-azonosítós commitban vannak, mindegyik hivatkozik az 1. kör pontjára. A `b217790` maga megmaradt: a történet átírása nélkül nem javítható, ez elfogadott. |
+| (7) jelentés fejléce | OK | `naplok/F22_1Moz_jelentes.md:3` | Új szöveg: „Állapot: a 22.1–22.6 kész; az ellenőri kör (22.7) után a ⛔ 2. megállás …”. |
+| (b) K8 CI-szimuláció | OK (helyi) / NEM ELLENŐRIZHETŐ (távoli) | `adat/SEMA.md:237,238` | `python eszkozok/ellenorzes/futtat.py --valtozott … --diff-alap df4460c… --diff-fej HEAD --pr-cim "[ELLENŐRZŐ] F22: Károli–Strong párosítás, 1Mózes" --esemeny pull_request --commit-uzenet "$(git log --format=%B df4460c..HEAD)"` → **EXIT=0**. E2–E8, E10–E16, E19: 0 találat. E9: 2 JELENTÉS (`SEMA.md:237,238`, régi sorok, eggyel lejjebb a beszúrt sor miatt). A távoli CI-t nem láttam. |
+| (c1) `egyesit.py` `bemeneti_ts`/`proveniencia_sor` | OK (kódolvasás) / NEM ELLENŐRIZHETŐ (futtatás) | `egyesit.py:189-216,218-235` | A `ts` a `futas == 'c/<könyv>'` sorok utolsójából jön, napló nélkül `manual`; determinisztikus, amíg a napló nem változik. Szélső eset: létező, de üres `futasnaplo.tsv` esetén `sorok[0]` IndexError (a `futtat.py` mindig fejléccel hozza létre a naplót, ezért nem ELTÉRÉS). |
+| (c2) `zart_osszevet.py` | l. (3b) | — | Más új hibát nem találtam. |
+| Kiszűrt/törölt sorok | OK | — | A javítókör a táblákból 0 sort törölt. |
+| ⛔ pontok | OK | — | `FELADATOK.md`, `NYITOTT_FELADATOK.md`, `futtat.py`, `kapu.py`, `tokenek.py`, `f21p/`, `eszkozok/ellenorzes/`, `ellenorzes.yml` változatlan. A ⛔ 2. megállás áll: `origin/main` = `df4460c`, merge nincs. A no-op futás 0 költségű. |
+| (d) K3 prompt-hash | NEM ELLENŐRIZHETŐ, feltételesen elfogadható | `naplok/F22_1Moz_jelentes.md:150` | A C-oldalra a bizonyíték az Actions-log két sora; a felhasználó `gh run view <id> --log`-gal ellenőrizheti. **Hiányzik:** a Sonnet-oldali „minden köteg előtt ellenőrizte” állításnak nincs repóbeli nyoma; önbevallás, `manual`-ként kezelendő. |
+| (d) K7 bájtazonos újraépítés | NEM ELLENŐRIZHETŐ, **nem elfogadható így** | `naplok/F22_1Moz_jelentes.md:153` | A 3. szakasz kétszeri sha256-bizonyítéka a **303ebdc előtti** kódra vonatkozik. Merge előtt kell: `python eszkozok/karoli_strong/egyesit.py --konyv 1Móz`, majd `git diff --exit-code adat/karoli_strong naplok/F22_1Moz_atnezes.tsv` → üres, továbbá `--ellenoriz` → „rendben”. |
+| (d) /usage | NEM ELLENŐRIZHETŐ, elfogadható önbevallásként | `naplok/F22_1Moz_jelentes.md:156` | Természeténél fogva a session önbevallása; elfogadható, ha a felhasználó a saját `/usage` nézetével összeveti. |
+
+**ELTÉRÉS-ek súlyossági sorrendben:**
+
+1. (3b) A `zart_osszevet.py` önteszt `Z:\\…`-es esete POSIX-on (cwd = repógyökér) hamis HIBÁ-t ad.
+
+**A merge előtt pótolandó, nem ELTÉRÉS:** K7 a 303ebdc utáni újraépítésre; a no-op futás nem próbálta ki az új push-útvonalat; K3 Sonnet-oldala csak önbevallás; `gh run view 36875109347` és a két C-futás logja a felhasználónál.
+
+### A végrehajtó jegyzete a 2. körhöz (nem ellenőri minősítés)
+
+- **(3b)** javítva: a `Z:`-es eset csak `os.name == 'nt'` mellett fut (`zart_osszevet.py`); a `bemeneti_ts` üres naplóra `manual`-t ad (`egyesit.py`).
+- **K7 a 303ebdc utáni kódra** (a végrehajtó oldali futtatás kimenete): `egyesit.py --onteszt` és `zart_osszevet.py --onteszt` „önteszt: rendben”; `egyesit.py --konyv 1Móz` újraépítés után `git diff --exit-code adat/karoli_strong naplok/F22_1Moz_atnezes.tsv` üres; `--ellenoriz` „rendben”; sha256: `parok_1Moz.tsv` 606bdb84…5dc10, `szavak_1Moz.tsv` e62bba95…266c2 (a kétszeri újraépítés azonos volt a proveniencia-sor bevezetése után is).
+- **A no-op Actions-futás** (36875109347) a `persist-credentials: false` mellett sikeres: a log szerint a hash-ellenőrzés elején és végén rendben, 154/154 köteg kész, API-hívás nélkül (a napló összege 2.2720 USD, változatlan), a push-lépés „nincs változás” ággal lépett ki. A `set-url` → `push` útvonal éles változással még nem futott; az első olyan futás (2Móz) lesz az első próba. Ezt a felhasználó figyelje.
+- **K3 Sonnet-oldala:** a `sonnet_koteg.py prompt` a köteg promptját csak hash-ellenőrzés után írja ki (a kód ezt kikényszeríti, exit 2 eltérésnél), de a lefutásról nincs repóbeli nyom; önbevallás, `manual`.
