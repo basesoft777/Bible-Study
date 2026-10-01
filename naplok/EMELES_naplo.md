@@ -279,3 +279,19 @@ minősíti, a kilépési kód 0). *Helyesbítés (ELLENOR_F28 8. tétel): koráb
   szerepelt; a H7451-nél csak önújrapróba volt („divine spirit” → szellem, l. fent az
   „Önújrapróbák” bekezdést), kapukalibrálás nem. **Döntés (DT26, felhasználó):** mind az 5
   szócikk mind a 9 kalibrált szegmense jóváhagyva; bukott szócikk nincs.
+
+## DT26 alkalmazása — terminológia v3 (F28.40–F28.43)
+
+- **F28.40 (kapu):** pontos kulcsolás — a hosszabb kulcson (`מִן compare`) belüli
+  forrás-előfordulás a hosszabbik sorhoz tartozik, így a `compare → vö.` (#15) és a
+  `מִן compare → comparativus` (#26) a kulcs szerint válik szét. Teszt: `PontosKulcsolas`.
+  A 40 `teljes` sor kapueredménye a v2 táblával változatlan.
+- **F28.41 (tábla):** 46 v3 sor (a jóváhagyott 1–22, 24, 25, 26–33 tételek atomi
+  kulcsokra bontva, a #23 elvetve). Próbafuttatás előtte a 39 szócikken, soronként:
+  9 jóváhagyott sor (#1 noun masculine, #2 absolute és construct, #8, #10, #11, #13, #18,
+  #20) a már jóváhagyott fordításokon hamis sértést adna, mert a forrásbeli angol alak
+  nem egyértelmű kulcs (a részletek a DT27-ben). Ezek nem kerültek be; **⛔ DT27**.
+- **F28.42 (fordítások):** Zendzsirli 3 hely (H3678, H7843, H2416), Ézs^n 6 hely (H8034 2,
+  H0430 4); mind `opus` sor, `kezi` nem érintett; `forras_hash`, `allapot`,
+  `terminologia_verzio` változatlan. Utána a 39 szócikk minden kapuja átmegy a v3-mal.
+- `ellenoriz.py` 14. szabály: 90/90 sor elmaradás a **v3**-hoz képest (JELENTÉS).
