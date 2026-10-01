@@ -36,6 +36,7 @@ import tokenek  # noqa: E402
 
 PROMPT_UT = os.path.join(tokenek.ROOT, 'f21p', 'prompt_v1.md')
 PROMPT_V2_UT = os.path.join(tokenek.ROOT, 'f21p', 'prompt_v2.md')   # F21.12, az F3V2 futáshoz
+PROMPT_V3_UT = os.path.join(tokenek.ROOT, 'f21p', 'prompt_v3.md')   # F21.42, az F3V3 és a SONNETV3 futáshoz (P3c)
 KEZDET = '<!-- PROMPT-KEZDET -->'
 VEGE = '<!-- PROMPT-VÉGE -->'
 
@@ -59,8 +60,13 @@ def vers_adat(igehely):
     }
 
 
-def versblokk(igehely, kjv=True):
-    """A modell bemenetének egy versblokkja (szöveg)."""
+def versblokk(igehely, kjv=True, kjv_forras='regi'):
+    """A modell bemenetének egy versblokkja (szöveg).
+
+    kjv_forras (csak kjv=True esetén): 'regi' = a meglévő KJV_Strongs_Genesis/Exodus/
+    Proverbs táblák (tokenek.kjv_tamapont; az alapértelmezés, a régi futások bemenete
+    bájtra változatlan), 'teljes' = a konkordancia/KJV_Strongs_teljes.tsv (F19;
+    tokenek.kjv_tamapont_teljes; F8V3)."""
     d = vers_adat(igehely)
     k = ' | '.join('%d %s' % (i, t) for i, t in enumerate(d['karoli_tokenek'], 1))
     e_reszek = []
@@ -73,7 +79,7 @@ def versblokk(igehely, kjv=True):
              'KÁROLI (számozott szavak): %s' % k,
              'EREDETI (számozott szavak): %s' % ' | '.join(e_reszek)]
     if kjv:
-        t = tokenek.kjv_tamapont(igehely)
+        t = tokenek.kjv_tamapont_forras(igehely, kjv_forras)
         if t:
             sorok.append('KJV-TÁMPONT: %s' % t)
     return '\n'.join(sorok)
@@ -100,9 +106,12 @@ def kotegek(igehelyek, meret=10):
     return [igehelyek[i:i + meret] for i in range(0, len(igehelyek), meret)]
 
 
-def kotegszoveg(igehelyek, kjv=True, prompt_ut=None):
-    """Egy hívás teljes felhasználói üzenete: utasítás + versblokkok."""
-    blokkok = '\n\n'.join(versblokk(ig, kjv) for ig in igehelyek)
+def kotegszoveg(igehelyek, kjv=True, prompt_ut=None, kjv_forras='regi'):
+    """Egy hívás teljes felhasználói üzenete: utasítás + versblokkok.
+
+    A kjv_forras csak a versblokkokra vonatkozik; az utasításrész példaversei
+    (prompt_utasitas) mindig a régi forrást használják (a prompt sha256-ja változatlan)."""
+    blokkok = '\n\n'.join(versblokk(ig, kjv, kjv_forras) for ig in igehelyek)
     return '%s\n\n=== A FELDOLGOZANDÓ VERSEK (%d) ===\n\n%s\n' % (prompt_utasitas(prompt_ut), len(igehelyek), blokkok)
 
 

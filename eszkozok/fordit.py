@@ -306,13 +306,22 @@ HIVAS_FALIDO_MP_GONDOLKODIK = 180  # a kotelezo gondolkodasu modelleknek (pl. ge
 # HTTP 400-zal utasitja el a kikapcsolast ("Reasoning is mandatory for this
 # endpoint and cannot be disabled.") -- ennel a HIVAS_FALIDO_MP faliora-
 # hatarido a vedelem a lassu/beragadt valasz ellen, nem a gondolkodas tiltasa.
-GONDOLKODAS_KOTELEZO_MODELLEK = {'google/gemini-3.8-flash'}
+# F21.70: az anthropic/claude-sonnet-5.5 OpenRouter-endpointja a reasoning:{enabled:false}-t 400-zal
+# elutasitja ("Reasoning is mandatory ..."), ezert a kotelezo-gondolkodasuak koze tartozik: a kuldo nem
+# tesz hozza enabled=false-t, a reasoning-ot a hivo adja (futtat.S_REASONING_LANC). A gondolkodas mellett az
+# Anthropic nem fogad el temperature=0-t: ezeknel a modelleknel a temperature kulcs KIMARAD (a futas
+# ezert nem determinisztikus).
+SONNET_MODELL = 'anthropic/claude-sonnet-5.5'
+GONDOLKODAS_KOTELEZO_MODELLEK = {'google/gemini-3.8-flash', SONNET_MODELL}
+TEMPERATURE_NELKULI_MODELLEK = {SONNET_MODELL}
 
 
 def _valodi_http_kuldo(model_id, uzenetek, api_key, extra_parameterek):
     import requests
     parameterek = dict(model=model_id, messages=uzenetek, temperature=0,
                         usage={'include': True}, **extra_parameterek)
+    if model_id in TEMPERATURE_NELKULI_MODELLEK:
+        del parameterek['temperature']
     if model_id not in GONDOLKODAS_KOTELEZO_MODELLEK:
         parameterek['reasoning'] = {'enabled': False}
     return requests.post(

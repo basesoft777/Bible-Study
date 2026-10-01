@@ -1,0 +1,18 @@
+# GENERÁLT: eszkozok/karoli_strong/hosszarany.py | scope=a prompt_v3/prompt_v2 hosszarány (R = Σ L_v3 / Σ L_v2, a 20 köteg első próbálkozásának teljes bemeneti üzenete, KJV a minta szerint), 200 verses minta, v2 sha a9f0f07c67b9, v3 sha 84f12ca7aafb | forras=f21p/prompt_v2.md, f21p/prompt_v3.md, f21p/minta.tsv, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/KJV_Strongs_*.tsv; a törölt ág értékei MANUAL (koordinátori közlés) | ts=2026-10-01T05:54:33+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos
+mero	v2	v3	megjegyzes
+prompt_sha256_12 (utasításrész)	a9f0f07c67b9	84f12ca7aafb	a futásnapló prompt_sha256_12 oszlopa
+kotegek_szama	20	20	10 vers/köteg, a minta.tsv sorrendjében
+utasitasresz_karakter (1 köteg)	7006	8435	példaversblokkokkal kibontva
+utasitasresz_bajt (1 köteg)	7654	9260	UTF-8
+utasitasresz_karakter (20 köteg)	140120	168700	
+versblokkok_karakter (20 köteg)	161950	161950	azonos a két prompttal
+keret_karakter (20 köteg)	800	800	„=== A FELDOLGOZANDÓ VERSEK (n) ===” és a sortörések
+osszhossz_karakter (20 köteg)	302870	331450	L = Σ_k az első próbálkozás teljes bemeneti üzenete
+osszhossz_bajt (20 köteg)	338049	370169	UTF-8 bájt
+R_karakter		1.0944	R = Σ L_v3 / Σ L_v2 (Unicode kódpont)
+R_bajt		1.0950	R = Σ L_v3 / Σ L_v2 (UTF-8 bájt)
+utasitasresz_hozzajarulas_a_kulonbsegnek		100.0%	a v3 − v2 összhossz-különbség ennyi százaléka az utasításrészből jön (a versblokkok azonosak)
+torolt_ag_v3_osszhossz_karakter		317730	MANUAL (koordinátori közlés): a törölt ág (claude/f21-regresszio) rövidebb prompt_v3-ja; nem ebből a repóból számolt
+torolt_ag_arany		1.0491	MANUAL (koordinátori közlés)
+kulonbseg_a_torolt_aghoz_karakter		13720	a mi v3 − a törölt ág v3 (20 köteg)
+kulonbseg_kotegenkent_karakter		686	a prompt különbsége kötegenként

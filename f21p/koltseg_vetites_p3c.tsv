@@ -1,0 +1,83 @@
+# GENERÁLT: eszkozok/karoli_strong/koltseg_vetit_p3c.py | scope=P5 a regressziós mérésre: Sonnet egyedül (SONNETV3), C (F3V3), Sonnet+C (a két futás költségének összege, döntőbíró nélkül), prompt_v3, teljes Biblia 31 158 vers, F22 műfaji öt réteg (PD12), kézimunka az arany v3-höz | forras=f21p/futasnaplo.tsv, f21p/valaszok/{SONNETV3,F3V3}.jsonl, f21p/minta.tsv, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/KJV_Strongs_*.tsv, arany_opus_v3.jsonl (sha256 acdeb55f969c96fe, ellenőrizve) | ts=2026-10-01T08:40:54+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | mag=20260930 | kézzel szerkeszteni tilos
+szakasz	osszeallitas	reteg	mero	ertek	also90	felso90	megjegyzes
+illesztes	Sonnet (SONNETV3)	-	bemenet_a_b_c	4937.49 / 13.6254 / 4.5354			20 első próbálkozású hívás (SONNETV3)
+illesztes	Sonnet (SONNETV3)	-	kimenet_a_b	104.69 / 22.5099			
+ar	Sonnet (SONNETV3)	-	cost1_per_tablaar_s	1.0			táblaár anthropic/claude-sonnet-5.5: 2.00/10.00 USD/1M
+ar	Sonnet (SONNETV3)	-	ujrakeres_szorzo_M	1.099461			a futás saját mért adatából: Σcost / Σcost(első próba); hívás/köteg = 1.10
+illesztes	C (F3V3)	-	bemenet_a_b_c	3431.37 / 12.0799 / 4.6521			20 első próbálkozású hívás (F3V3)
+illesztes	C (F3V3)	-	kimenet_a_b	133.49 / 3.3815			
+ar	C (F3V3)	-	cost1_per_tablaar_s	0.999993			táblaár google/gemini-3.8-flash: 0.75/3.75 USD/1M
+ar	C (F3V3)	-	ujrakeres_szorzo_M	1.173703			a futás saját mért adatából: Σcost / Σcost(első próba); hívás/köteg = 1.30
+ellenorzes	Sonnet (SONNETV3)	-	pilot_vetitett_usd	2.197554			mintán belül
+ellenorzes	Sonnet (SONNETV3)	-	pilot_tenyleges_usd	2.197554			futasnaplo.tsv
+ellenorzes	Sonnet (SONNETV3)	-	elteres_szazalek	0.0			mintán belül, küszöb ≤ 10%
+ellenorzes	Sonnet (SONNETV3)	-	loo_elteres_szazalek	-0.446			leave-one-out, küszöb ≤ 10%
+ellenorzes	Sonnet (SONNETV3)	-	szamito_elteres_szazalek	-0.446			PD12/DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: leave-one-out; küszöb ≤ 10%: teljesül
+ellenorzes	C (F3V3)	-	pilot_vetitett_usd	0.260136			mintán belül
+ellenorzes	C (F3V3)	-	pilot_tenyleges_usd	0.260136			futasnaplo.tsv
+ellenorzes	C (F3V3)	-	elteres_szazalek	0.0			mintán belül, küszöb ≤ 10%
+ellenorzes	C (F3V3)	-	loo_elteres_szazalek	-0.087			leave-one-out, küszöb ≤ 10%
+ellenorzes	C (F3V3)	-	szamito_elteres_szazalek	-0.087			PD12/DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: leave-one-out; küszöb ≤ 10%: teljesül
+ellenorzes	Sonnet+C	-	pilot_vetitett_usd	2.45769			mintán belül
+ellenorzes	Sonnet+C	-	pilot_tenyleges_usd	2.45769			futasnaplo.tsv
+ellenorzes	Sonnet+C	-	elteres_szazalek	0.0			mintán belül, küszöb ≤ 10%
+ellenorzes	Sonnet+C	-	loo_elteres_szazalek	-0.408			leave-one-out, küszöb ≤ 10%
+ellenorzes	Sonnet+C	-	szamito_elteres_szazalek	-0.408			PD12/DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: leave-one-out; küszöb ≤ 10%: teljesül
+vetites	Sonnet (SONNETV3)	ÓSZ-próza	koltseg_usd	173.3934	154.8944	194.3728	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	Sonnet (SONNETV3)	költészet	koltseg_usd	41.2015	35.9178	46.7355	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	Sonnet (SONNETV3)	próféta	koltseg_usd	70.938	63.3828	79.5027	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	Sonnet (SONNETV3)	evangélium+ApCsel	koltseg_usd	53.3063	48.1794	59.6705	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	Sonnet (SONNETV3)	levél+Jel	koltseg_usd	35.1014	31.7197	39.2959	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	Sonnet (SONNETV3)	Összes	koltseg_usd	373.9405	337.9675	418.6543	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	C (F3V3)	ÓSZ-próza	koltseg_usd	19.4119	17.5993	21.2688	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	C (F3V3)	költészet	koltseg_usd	5.0931	4.6433	5.5672	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	C (F3V3)	próféta	koltseg_usd	7.8611	7.122	8.6071	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	C (F3V3)	evangélium+ApCsel	koltseg_usd	6.1018	5.5418	6.6776	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	C (F3V3)	levél+Jel	koltseg_usd	4.0219	3.6528	4.4016	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	C (F3V3)	Összes	koltseg_usd	42.4899	38.5542	46.5194	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	Sonnet+C	ÓSZ-próza	koltseg_usd	192.8053	174.3403	213.9392	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	Sonnet+C	költészet	koltseg_usd	46.2946	40.7127	51.9994	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	Sonnet+C	próféta	koltseg_usd	78.7991	71.2282	87.5053	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	Sonnet+C	evangélium+ApCsel	koltseg_usd	59.4081	54.1866	65.8666	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	Sonnet+C	levél+Jel	koltseg_usd	39.1233	35.6917	43.3607	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+vetites	Sonnet+C	Összes	koltseg_usd	416.4304	379.8793	460.9697	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); Sonnet+C = a két futás vetítésének összege, döntőbíró nélkül
+biblia_rs	-	ÓSZ-próza	versek_szama	12871			szavak (eredeti+Károli) 566494, KJV-szavak 75607
+biblia_rs	-	költészet	versek_szama	5001			szavak (eredeti+Károli) 126258, KJV-szavak 15573
+biblia_rs	-	próféta	versek_szama	5332			szavak (eredeti+Károli) 232568, KJV-szavak 0
+biblia_rs	-	evangélium+ApCsel	versek_szama	4785			szavak (eredeti+Károli) 171399, KJV-szavak 0
+biblia_rs	-	levél+Jel	versek_szama	3169			szavak (eredeti+Károli) 112795, KJV-szavak 0
+kezimunka	Sonnet+C	ÓSZ-próza	alacsony_link_per_vers	2.5429			mért, 70 vers (könyv szerint F22-rétegre képezve)
+kezimunka	Sonnet+C	ÓSZ-próza	vetitett_alacsony_link_biblia	32729			× 12871 vers
+kezimunka	Sonnet+C	ÓSZ-próza	link_per_vers	20.7286			mért, 70 vers (a pár végső kimenete, minden szint)
+kezimunka	Sonnet+C	ÓSZ-próza	vetitett_link_biblia	266797			× 12871 vers
+kezimunka	Sonnet+C	ÓSZ-próza	elteres_per_vers_arany	1.5			mért, 10 aranyvers (v3)
+kezimunka	Sonnet+C	ÓSZ-próza	vetitett_elteres_biblia	19306			× 12871 vers (kis n)
+kezimunka	Sonnet+C	költészet	alacsony_link_per_vers	1.5091			mért, 55 vers (könyv szerint F22-rétegre képezve)
+kezimunka	Sonnet+C	költészet	vetitett_alacsony_link_biblia	7547			× 5001 vers
+kezimunka	Sonnet+C	költészet	link_per_vers	13.5455			mért, 55 vers (a pár végső kimenete, minden szint)
+kezimunka	Sonnet+C	költészet	vetitett_link_biblia	67741			× 5001 vers
+kezimunka	Sonnet+C	költészet	elteres_per_vers_arany	0.55			mért, 20 aranyvers (v3)
+kezimunka	Sonnet+C	költészet	vetitett_elteres_biblia	2751			× 5001 vers (kis n)
+kezimunka	Sonnet+C	próféta	alacsony_link_per_vers	13.88			mért, 25 vers (könyv szerint F22-rétegre képezve)
+kezimunka	Sonnet+C	próféta	vetitett_alacsony_link_biblia	74008			× 5332 vers
+kezimunka	Sonnet+C	próféta	link_per_vers	24.84			mért, 25 vers (a pár végső kimenete, minden szint)
+kezimunka	Sonnet+C	próféta	vetitett_link_biblia	132447			× 5332 vers
+kezimunka	Sonnet+C	próféta	elteres_per_vers_arany	2.5			mért, 10 aranyvers (v3)
+kezimunka	Sonnet+C	próféta	vetitett_elteres_biblia	13330			× 5332 vers (kis n)
+kezimunka	Sonnet+C	evangélium+ApCsel	alacsony_link_per_vers	1.92			mért, 25 vers (könyv szerint F22-rétegre képezve)
+kezimunka	Sonnet+C	evangélium+ApCsel	vetitett_alacsony_link_biblia	9187			× 4785 vers
+kezimunka	Sonnet+C	evangélium+ApCsel	link_per_vers	16.52			mért, 25 vers (a pár végső kimenete, minden szint)
+kezimunka	Sonnet+C	evangélium+ApCsel	vetitett_link_biblia	79048			× 4785 vers
+kezimunka	Sonnet+C	evangélium+ApCsel	elteres_per_vers_arany	1.2			mért, 10 aranyvers (v3)
+kezimunka	Sonnet+C	evangélium+ApCsel	vetitett_elteres_biblia	5742			× 4785 vers (kis n)
+kezimunka	Sonnet+C	levél+Jel	alacsony_link_per_vers	1.76			mért, 25 vers (könyv szerint F22-rétegre képezve)
+kezimunka	Sonnet+C	levél+Jel	vetitett_alacsony_link_biblia	5577			× 3169 vers
+kezimunka	Sonnet+C	levél+Jel	link_per_vers	17.72			mért, 25 vers (a pár végső kimenete, minden szint)
+kezimunka	Sonnet+C	levél+Jel	vetitett_link_biblia	56155			× 3169 vers
+kezimunka	Sonnet+C	levél+Jel	elteres_per_vers_arany	1.3			mért, 10 aranyvers (v3)
+kezimunka	Sonnet+C	levél+Jel	vetitett_elteres_biblia	4120			× 3169 vers (kis n)
+kezimunka	Sonnet+C	Összes	vetitett_alacsony_link_biblia	129049			F22-rétegenként vetítve
+kezimunka	Sonnet+C	Összes	vetitett_link_biblia	602188			F22-rétegenként vetítve (minden szint)
+kezimunka	Sonnet+C	Összes	vetitett_alacsony_arany	0.2143			F21.80: vetitett_alacsony_link_biblia / vetitett_link_biblia (az (5) feltétel vetített alakja)
+kezimunka	Sonnet+C	Összes	vetitett_elteres_biblia	45249			F22-rétegenként vetítve (a nem n.é. rétegek összege)
+kezimunka	Sonnet+C	Összes	c_hiba_per_vers	n.é.			az eltérések (a)/(b)/(c) besorolása a futás után kézi (c_diff_p3c.py)

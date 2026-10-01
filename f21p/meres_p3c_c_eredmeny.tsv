@@ -1,0 +1,846 @@
+# GENERÁLT: eszkozok/karoli_strong/meres_p3c.py --csak-c | scope=P4 a regressziós mérésre, a C (F3V3, prompt_v3) EGYEDÜL (a SONNETV3 nem futott: a Sonnet és a Sonnet+C pár nincs adat); a v2-es C-futások (F3V2, F3V2B) és az F3V3 az arany v3-ra és az arany v2-re is; F8V3 (C KJV-támponttal) tájékoztatásul; 200 verses minta; arany v3 (60 vers, sha256 acdeb55f969c96fe) és arany v2 (60 vers, sha256 06a00738f7fd0449); az első próbás kapuhiba kapupontonként és rétegenként (F3V2, F3V2B, F3V3; F21.76) | forras=f21p/valaszok/{F3V3,F3V2,F3V2B,F8V3}.jsonl, arany_opus_v3.jsonl és arany_opus_v2.jsonl (sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3c_c.tsv, konkordancia/KJV_Strongs_teljes.tsv, konkordancia/KJV_Strongs_*.tsv, f21p/c_diff_p3c_besorolas.tsv (MANUAL; csak a lefedettség-jelölés K4-száma) | ts=2026-10-01T08:17:16+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos
+szakasz	osszeallitas	reteg	mero	szamlalo	nevezo	megjegyzes
+feltetelek	C (F3V3)	R1	arany_versek_kapun_atment	20	20	
+feltetelek	C (F3V3)	R1	pontossag_osszes (tajekoztato, PD6)	296	307	
+feltetelek	C (F3V3)	R1	lefedettseg	296	317	a kapun átment aranyverseken
+feltetelek	C (F3V3)	R1	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V3)	R1	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V3)	R1	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3)	R1	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3)	R2	arany_versek_kapun_atment	10	10	
+feltetelek	C (F3V3)	R2	pontossag_osszes (tajekoztato, PD6)	152	158	
+feltetelek	C (F3V3)	R2	lefedettseg	152	152	a kapun átment aranyverseken
+feltetelek	C (F3V3)	R2	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V3)	R2	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V3)	R2	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3)	R2	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3)	R3	arany_versek_kapun_atment	10	10	
+feltetelek	C (F3V3)	R3	pontossag_osszes (tajekoztato, PD6)	255	270	
+feltetelek	C (F3V3)	R3	lefedettseg	255	265	a kapun átment aranyverseken
+feltetelek	C (F3V3)	R3	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V3)	R3	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V3)	R3	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3)	R3	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3)	R4	arany_versek_kapun_atment	20	20	
+feltetelek	C (F3V3)	R4	pontossag_osszes (tajekoztato, PD6)	306	324	
+feltetelek	C (F3V3)	R4	lefedettseg	306	314	a kapun átment aranyverseken
+feltetelek	C (F3V3)	R4	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V3)	R4	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V3)	R4	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3)	R4	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3)	Összes	arany_versek_kapun_atment	60	60	
+feltetelek	C (F3V3)	Összes	pontossag_osszes (tajekoztato, PD6)	1009	1059	
+feltetelek	C (F3V3)	Összes	lefedettseg	1009	1048	a kapun átment aranyverseken
+feltetelek	C (F3V3)	Összes	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V3)	Összes	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V3)	Összes	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3)	Összes	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2)	R1	arany_versek_kapun_atment	20	20	
+feltetelek	C (F3V2)	R1	pontossag_osszes (tajekoztato, PD6)	299	318	
+feltetelek	C (F3V2)	R1	lefedettseg	299	317	a kapun átment aranyverseken
+feltetelek	C (F3V2)	R1	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2)	R1	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2)	R1	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2)	R1	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2)	R2	arany_versek_kapun_atment	10	10	
+feltetelek	C (F3V2)	R2	pontossag_osszes (tajekoztato, PD6)	152	160	
+feltetelek	C (F3V2)	R2	lefedettseg	152	152	a kapun átment aranyverseken
+feltetelek	C (F3V2)	R2	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2)	R2	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2)	R2	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2)	R2	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2)	R3	arany_versek_kapun_atment	10	10	
+feltetelek	C (F3V2)	R3	pontossag_osszes (tajekoztato, PD6)	258	275	
+feltetelek	C (F3V2)	R3	lefedettseg	258	265	a kapun átment aranyverseken
+feltetelek	C (F3V2)	R3	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2)	R3	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2)	R3	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2)	R3	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2)	R4	arany_versek_kapun_atment	20	20	
+feltetelek	C (F3V2)	R4	pontossag_osszes (tajekoztato, PD6)	308	337	
+feltetelek	C (F3V2)	R4	lefedettseg	308	314	a kapun átment aranyverseken
+feltetelek	C (F3V2)	R4	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2)	R4	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2)	R4	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2)	R4	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2)	Összes	arany_versek_kapun_atment	60	60	
+feltetelek	C (F3V2)	Összes	pontossag_osszes (tajekoztato, PD6)	1017	1090	
+feltetelek	C (F3V2)	Összes	lefedettseg	1017	1048	a kapun átment aranyverseken
+feltetelek	C (F3V2)	Összes	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2)	Összes	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2)	Összes	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2)	Összes	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B)	R1	arany_versek_kapun_atment	20	20	
+feltetelek	C (F3V2B)	R1	pontossag_osszes (tajekoztato, PD6)	304	324	
+feltetelek	C (F3V2B)	R1	lefedettseg	304	317	a kapun átment aranyverseken
+feltetelek	C (F3V2B)	R1	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2B)	R1	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2B)	R1	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B)	R1	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B)	R2	arany_versek_kapun_atment	10	10	
+feltetelek	C (F3V2B)	R2	pontossag_osszes (tajekoztato, PD6)	151	159	
+feltetelek	C (F3V2B)	R2	lefedettseg	151	152	a kapun átment aranyverseken
+feltetelek	C (F3V2B)	R2	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2B)	R2	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2B)	R2	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B)	R2	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B)	R3	arany_versek_kapun_atment	10	10	
+feltetelek	C (F3V2B)	R3	pontossag_osszes (tajekoztato, PD6)	262	280	
+feltetelek	C (F3V2B)	R3	lefedettseg	262	265	a kapun átment aranyverseken
+feltetelek	C (F3V2B)	R3	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2B)	R3	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2B)	R3	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B)	R3	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B)	R4	arany_versek_kapun_atment	20	20	
+feltetelek	C (F3V2B)	R4	pontossag_osszes (tajekoztato, PD6)	306	339	
+feltetelek	C (F3V2B)	R4	lefedettseg	306	314	a kapun átment aranyverseken
+feltetelek	C (F3V2B)	R4	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2B)	R4	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2B)	R4	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B)	R4	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B)	Összes	arany_versek_kapun_atment	60	60	
+feltetelek	C (F3V2B)	Összes	pontossag_osszes (tajekoztato, PD6)	1023	1102	
+feltetelek	C (F3V2B)	Összes	lefedettseg	1023	1048	a kapun átment aranyverseken
+feltetelek	C (F3V2B)	Összes	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2B)	Összes	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2B)	Összes	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B)	Összes	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R1	arany_versek_kapun_atment	20	20	
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R1	pontossag_osszes (tajekoztato, PD6)	298	315	
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R1	lefedettseg	298	317	a kapun átment aranyverseken
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R1	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R1	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R1	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R1	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R2	arany_versek_kapun_atment	10	10	
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R2	pontossag_osszes (tajekoztato, PD6)	151	152	
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R2	lefedettseg	151	152	a kapun átment aranyverseken
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R2	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R2	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R2	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R2	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R3	arany_versek_kapun_atment	10	10	
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R3	pontossag_osszes (tajekoztato, PD6)	253	264	
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R3	lefedettseg	253	265	a kapun átment aranyverseken
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R3	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R3	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R3	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R3	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R4	arany_versek_kapun_atment	20	20	
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R4	pontossag_osszes (tajekoztato, PD6)	303	321	
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R4	lefedettseg	303	314	a kapun átment aranyverseken
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R4	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R4	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R4	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C KJV-vel (F8V3, tájékoztató)	R4	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C KJV-vel (F8V3, tájékoztató)	Összes	arany_versek_kapun_atment	60	60	
+feltetelek	C KJV-vel (F8V3, tájékoztató)	Összes	pontossag_osszes (tajekoztato, PD6)	1005	1052	
+feltetelek	C KJV-vel (F8V3, tájékoztató)	Összes	lefedettseg	1005	1048	a kapun átment aranyverseken
+feltetelek	C KJV-vel (F8V3, tájékoztató)	Összes	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C KJV-vel (F8V3, tájékoztató)	Összes	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C KJV-vel (F8V3, tájékoztató)	Összes	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C KJV-vel (F8V3, tájékoztató)	Összes	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3) × arany v2	R1	arany_versek_kapun_atment	20	20	
+feltetelek	C (F3V3) × arany v2	R1	pontossag_osszes (tajekoztato, PD6)	296	307	
+feltetelek	C (F3V3) × arany v2	R1	lefedettseg	296	317	a kapun átment aranyverseken
+feltetelek	C (F3V3) × arany v2	R1	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V3) × arany v2	R1	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V3) × arany v2	R1	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3) × arany v2	R1	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3) × arany v2	R2	arany_versek_kapun_atment	10	10	
+feltetelek	C (F3V3) × arany v2	R2	pontossag_osszes (tajekoztato, PD6)	153	158	
+feltetelek	C (F3V3) × arany v2	R2	lefedettseg	153	153	a kapun átment aranyverseken
+feltetelek	C (F3V3) × arany v2	R2	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V3) × arany v2	R2	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V3) × arany v2	R2	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3) × arany v2	R2	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3) × arany v2	R3	arany_versek_kapun_atment	10	10	
+feltetelek	C (F3V3) × arany v2	R3	pontossag_osszes (tajekoztato, PD6)	255	270	
+feltetelek	C (F3V3) × arany v2	R3	lefedettseg	255	266	a kapun átment aranyverseken
+feltetelek	C (F3V3) × arany v2	R3	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V3) × arany v2	R3	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V3) × arany v2	R3	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3) × arany v2	R3	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3) × arany v2	R4	arany_versek_kapun_atment	20	20	
+feltetelek	C (F3V3) × arany v2	R4	pontossag_osszes (tajekoztato, PD6)	306	324	
+feltetelek	C (F3V3) × arany v2	R4	lefedettseg	306	315	a kapun átment aranyverseken
+feltetelek	C (F3V3) × arany v2	R4	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V3) × arany v2	R4	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V3) × arany v2	R4	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3) × arany v2	R4	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3) × arany v2	Összes	arany_versek_kapun_atment	60	60	
+feltetelek	C (F3V3) × arany v2	Összes	pontossag_osszes (tajekoztato, PD6)	1010	1059	
+feltetelek	C (F3V3) × arany v2	Összes	lefedettseg	1010	1051	a kapun átment aranyverseken
+feltetelek	C (F3V3) × arany v2	Összes	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V3) × arany v2	Összes	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V3) × arany v2	Összes	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V3) × arany v2	Összes	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2) × arany v2	R1	arany_versek_kapun_atment	20	20	
+feltetelek	C (F3V2) × arany v2	R1	pontossag_osszes (tajekoztato, PD6)	299	318	
+feltetelek	C (F3V2) × arany v2	R1	lefedettseg	299	317	a kapun átment aranyverseken
+feltetelek	C (F3V2) × arany v2	R1	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2) × arany v2	R1	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2) × arany v2	R1	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2) × arany v2	R1	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2) × arany v2	R2	arany_versek_kapun_atment	10	10	
+feltetelek	C (F3V2) × arany v2	R2	pontossag_osszes (tajekoztato, PD6)	153	160	
+feltetelek	C (F3V2) × arany v2	R2	lefedettseg	153	153	a kapun átment aranyverseken
+feltetelek	C (F3V2) × arany v2	R2	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2) × arany v2	R2	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2) × arany v2	R2	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2) × arany v2	R2	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2) × arany v2	R3	arany_versek_kapun_atment	10	10	
+feltetelek	C (F3V2) × arany v2	R3	pontossag_osszes (tajekoztato, PD6)	259	275	
+feltetelek	C (F3V2) × arany v2	R3	lefedettseg	259	266	a kapun átment aranyverseken
+feltetelek	C (F3V2) × arany v2	R3	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2) × arany v2	R3	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2) × arany v2	R3	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2) × arany v2	R3	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2) × arany v2	R4	arany_versek_kapun_atment	20	20	
+feltetelek	C (F3V2) × arany v2	R4	pontossag_osszes (tajekoztato, PD6)	309	337	
+feltetelek	C (F3V2) × arany v2	R4	lefedettseg	309	315	a kapun átment aranyverseken
+feltetelek	C (F3V2) × arany v2	R4	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2) × arany v2	R4	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2) × arany v2	R4	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2) × arany v2	R4	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2) × arany v2	Összes	arany_versek_kapun_atment	60	60	
+feltetelek	C (F3V2) × arany v2	Összes	pontossag_osszes (tajekoztato, PD6)	1020	1090	
+feltetelek	C (F3V2) × arany v2	Összes	lefedettseg	1020	1051	a kapun átment aranyverseken
+feltetelek	C (F3V2) × arany v2	Összes	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2) × arany v2	Összes	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2) × arany v2	Összes	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2) × arany v2	Összes	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B) × arany v2	R1	arany_versek_kapun_atment	20	20	
+feltetelek	C (F3V2B) × arany v2	R1	pontossag_osszes (tajekoztato, PD6)	304	324	
+feltetelek	C (F3V2B) × arany v2	R1	lefedettseg	304	317	a kapun átment aranyverseken
+feltetelek	C (F3V2B) × arany v2	R1	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2B) × arany v2	R1	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2B) × arany v2	R1	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B) × arany v2	R1	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B) × arany v2	R2	arany_versek_kapun_atment	10	10	
+feltetelek	C (F3V2B) × arany v2	R2	pontossag_osszes (tajekoztato, PD6)	152	159	
+feltetelek	C (F3V2B) × arany v2	R2	lefedettseg	152	153	a kapun átment aranyverseken
+feltetelek	C (F3V2B) × arany v2	R2	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2B) × arany v2	R2	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2B) × arany v2	R2	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B) × arany v2	R2	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B) × arany v2	R3	arany_versek_kapun_atment	10	10	
+feltetelek	C (F3V2B) × arany v2	R3	pontossag_osszes (tajekoztato, PD6)	263	280	
+feltetelek	C (F3V2B) × arany v2	R3	lefedettseg	263	266	a kapun átment aranyverseken
+feltetelek	C (F3V2B) × arany v2	R3	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2B) × arany v2	R3	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2B) × arany v2	R3	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B) × arany v2	R3	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B) × arany v2	R4	arany_versek_kapun_atment	20	20	
+feltetelek	C (F3V2B) × arany v2	R4	pontossag_osszes (tajekoztato, PD6)	306	339	
+feltetelek	C (F3V2B) × arany v2	R4	lefedettseg	306	315	a kapun átment aranyverseken
+feltetelek	C (F3V2B) × arany v2	R4	regi_arany_kizaras_nelkul	0	0	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2B) × arany v2	R4	regi_arany_kizarassal_tajekoztato	0	0	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2B) × arany v2	R4	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B) × arany v2	R4	alacsony_arany	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B) × arany v2	Összes	arany_versek_kapun_atment	60	60	
+feltetelek	C (F3V2B) × arany v2	Összes	pontossag_osszes (tajekoztato, PD6)	1025	1102	
+feltetelek	C (F3V2B) × arany v2	Összes	lefedettseg	1025	1051	a kapun átment aranyverseken
+feltetelek	C (F3V2B) × arany v2	Összes	regi_arany_kizaras_nelkul	30	32	MÉRT (DT21 i); kapun átment versek
+feltetelek	C (F3V2B) × arany v2	Összes	regi_arany_kizarassal_tajekoztato	30	31	TÁJÉKOZTATÓ (DT21 i): 1Móz 6:17 nélkül; kapun átment versek
+feltetelek	C (F3V2B) × arany v2	Összes	magas_pontossag	n.é.		egymodelles (PD6)
+feltetelek	C (F3V2B) × arany v2	Összes	alacsony_arany	n.é.		egymodelles (PD6)
+nincs_adat	Sonnet (SONNETV3)	R1	minden_mero	nincs adat (SONNETV3 nem futott)		a Sonnet-adat megérkezése után a teljes mérés ugyanezzel a szkripttel fut (--csak-c nélkül): f21p/meres_p3c_eredmeny.tsv, naplok/F21P_meres_p3c.md
+nincs_adat	Sonnet (SONNETV3)	R2	minden_mero	nincs adat (SONNETV3 nem futott)		a Sonnet-adat megérkezése után a teljes mérés ugyanezzel a szkripttel fut (--csak-c nélkül): f21p/meres_p3c_eredmeny.tsv, naplok/F21P_meres_p3c.md
+nincs_adat	Sonnet (SONNETV3)	R3	minden_mero	nincs adat (SONNETV3 nem futott)		a Sonnet-adat megérkezése után a teljes mérés ugyanezzel a szkripttel fut (--csak-c nélkül): f21p/meres_p3c_eredmeny.tsv, naplok/F21P_meres_p3c.md
+nincs_adat	Sonnet (SONNETV3)	R4	minden_mero	nincs adat (SONNETV3 nem futott)		a Sonnet-adat megérkezése után a teljes mérés ugyanezzel a szkripttel fut (--csak-c nélkül): f21p/meres_p3c_eredmeny.tsv, naplok/F21P_meres_p3c.md
+nincs_adat	Sonnet (SONNETV3)	Összes	minden_mero	nincs adat (SONNETV3 nem futott)		a Sonnet-adat megérkezése után a teljes mérés ugyanezzel a szkripttel fut (--csak-c nélkül): f21p/meres_p3c_eredmeny.tsv, naplok/F21P_meres_p3c.md
+nincs_adat	Sonnet+C	R1	minden_mero	nincs adat (SONNETV3 nem futott)		a Sonnet-adat megérkezése után a teljes mérés ugyanezzel a szkripttel fut (--csak-c nélkül): f21p/meres_p3c_eredmeny.tsv, naplok/F21P_meres_p3c.md
+nincs_adat	Sonnet+C	R2	minden_mero	nincs adat (SONNETV3 nem futott)		a Sonnet-adat megérkezése után a teljes mérés ugyanezzel a szkripttel fut (--csak-c nélkül): f21p/meres_p3c_eredmeny.tsv, naplok/F21P_meres_p3c.md
+nincs_adat	Sonnet+C	R3	minden_mero	nincs adat (SONNETV3 nem futott)		a Sonnet-adat megérkezése után a teljes mérés ugyanezzel a szkripttel fut (--csak-c nélkül): f21p/meres_p3c_eredmeny.tsv, naplok/F21P_meres_p3c.md
+nincs_adat	Sonnet+C	R4	minden_mero	nincs adat (SONNETV3 nem futott)		a Sonnet-adat megérkezése után a teljes mérés ugyanezzel a szkripttel fut (--csak-c nélkül): f21p/meres_p3c_eredmeny.tsv, naplok/F21P_meres_p3c.md
+nincs_adat	Sonnet+C	Összes	minden_mero	nincs adat (SONNETV3 nem futott)		a Sonnet-adat megérkezése után a teljes mérés ugyanezzel a szkripttel fut (--csak-c nélkül): f21p/meres_p3c_eredmeny.tsv, naplok/F21P_meres_p3c.md
+kuszob	C (F3V3)	R1	f1_magas_pontossag_98	n.é.		egymodelles (PD6): a magas szint nem értelmezhető; az összpontosság mért (nem a feltétel mérőszáma): 96.4% (296/307)
+kuszob	C (F3V3)	R1	f2_lefedettseg_95	296	317	küszöb ≥ 95%: a küszöbön kívül (küszöb-viszony, nem minősítés; PD6)
+kuszob	C (F3V3)	R1	f3_regi_arany_95 (MÉRT, kizárás nélkül)	30	32	küszöb ≥ 95%: a küszöbön kívül (küszöb-viszony, nem minősítés; PD6)
+kuszob	C (F3V3)	R1	f3_regi_arany_95 (TÁJÉKOZTATÓ, 1Móz 6:17 nélkül)	30	31	küszöb ≥ 95%: a küszöbön belül (küszöb-viszony, nem minősítés; PD6); a küszöb szempontjából nem számít (PD12)
+kuszob	C (F3V3)	R1	f5_alacsony_arany_10	n.é.		egymodelles (PD6): az alacsony szint nem értelmezhető
+kuszob	C (F3V3)	R2	f1_magas_pontossag_98	n.é.		egymodelles (PD6): a magas szint nem értelmezhető; az összpontosság mért (nem a feltétel mérőszáma): 96.2% (152/158)
+kuszob	C (F3V3)	R2	f2_lefedettseg_95	152	152	küszöb ≥ 95%: a küszöbön belül (küszöb-viszony, nem minősítés; PD6)
+kuszob	C (F3V3)	R2	f3_regi_arany_95 (MÉRT, kizárás nélkül)	n.é.		nincs régi arany hármas a rétegben
+kuszob	C (F3V3)	R2	f3_regi_arany_95 (TÁJÉKOZTATÓ, 1Móz 6:17 nélkül)	n.é.		nincs régi arany hármas a rétegben
+kuszob	C (F3V3)	R2	f5_alacsony_arany_10	n.é.		egymodelles (PD6): az alacsony szint nem értelmezhető
+kuszob	C (F3V3)	R3	f1_magas_pontossag_98	n.é.		egymodelles (PD6): a magas szint nem értelmezhető; az összpontosság mért (nem a feltétel mérőszáma): 94.4% (255/270)
+kuszob	C (F3V3)	R3	f2_lefedettseg_95	255	265	küszöb ≥ 95%: a küszöbön belül (küszöb-viszony, nem minősítés; PD6)
+kuszob	C (F3V3)	R3	f3_regi_arany_95 (MÉRT, kizárás nélkül)	n.é.		nincs régi arany hármas a rétegben
+kuszob	C (F3V3)	R3	f3_regi_arany_95 (TÁJÉKOZTATÓ, 1Móz 6:17 nélkül)	n.é.		nincs régi arany hármas a rétegben
+kuszob	C (F3V3)	R3	f5_alacsony_arany_10	n.é.		egymodelles (PD6): az alacsony szint nem értelmezhető
+kuszob	C (F3V3)	R4	f1_magas_pontossag_98	n.é.		egymodelles (PD6): a magas szint nem értelmezhető; az összpontosság mért (nem a feltétel mérőszáma): 94.4% (306/324)
+kuszob	C (F3V3)	R4	f2_lefedettseg_95	306	314	küszöb ≥ 95%: a küszöbön belül (küszöb-viszony, nem minősítés; PD6)
+kuszob	C (F3V3)	R4	f3_regi_arany_95 (MÉRT, kizárás nélkül)	n.é.		nincs régi arany hármas a rétegben
+kuszob	C (F3V3)	R4	f3_regi_arany_95 (TÁJÉKOZTATÓ, 1Móz 6:17 nélkül)	n.é.		nincs régi arany hármas a rétegben
+kuszob	C (F3V3)	R4	f5_alacsony_arany_10	n.é.		egymodelles (PD6): az alacsony szint nem értelmezhető
+kuszob	C (F3V3)	Összes	f1_magas_pontossag_98	n.é.		egymodelles (PD6): a magas szint nem értelmezhető; az összpontosság mért (nem a feltétel mérőszáma): 95.3% (1009/1059)
+kuszob	C (F3V3)	Összes	f2_lefedettseg_95	1009	1048	küszöb ≥ 95%: a küszöbön belül (küszöb-viszony, nem minősítés; PD6)
+kuszob	C (F3V3)	Összes	f3_regi_arany_95 (MÉRT, kizárás nélkül)	30	32	küszöb ≥ 95%: a küszöbön kívül (küszöb-viszony, nem minősítés; PD6)
+kuszob	C (F3V3)	Összes	f3_regi_arany_95 (TÁJÉKOZTATÓ, 1Móz 6:17 nélkül)	30	31	küszöb ≥ 95%: a küszöbön belül (küszöb-viszony, nem minősítés; PD6); a küszöb szempontjából nem számít (PD12)
+kuszob	C (F3V3)	Összes	f5_alacsony_arany_10	n.é.		egymodelles (PD6): az alacsony szint nem értelmezhető
+kuszob	C (F3V3)	Összes	f4_koltseg_felso90_60	46.62		vetített teljes költség 42.49 USD [90%: 38.67–46.62]; küszöb: a felső szél ≤ 60 USD: a küszöbön belül (küszöb-viszony, nem minősítés; PD6)
+kuszob	C (F3V3)	Összes	minosites	nincs (egymodelles összeállítás, PD6)		a teljes futásra rétegenként sem mehet; csak mért számok és a küszöbhöz viszonyítás
+arany_hatas	C (F3V3)	R1	pontossag	0.9642|0.9642|0.0000	296/307|296/307	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=20 aranyvers (kapun átment)
+arany_hatas	C (F3V3)	R1	lefedettseg	0.9338|0.9338|0.0000	296/317|296/317	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=20 aranyvers (kapun átment)
+arany_hatas	C (F3V3)	R2	pontossag	0.9684|0.9620|-0.0063	153/158|152/158	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=10 aranyvers (kapun átment)
+arany_hatas	C (F3V3)	R2	lefedettseg	1.0000|1.0000|0.0000	153/153|152/152	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=10 aranyvers (kapun átment)
+arany_hatas	C (F3V3)	R3	pontossag	0.9444|0.9444|0.0000	255/270|255/270	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=10 aranyvers (kapun átment)
+arany_hatas	C (F3V3)	R3	lefedettseg	0.9586|0.9623|0.0036	255/266|255/265	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=10 aranyvers (kapun átment)
+arany_hatas	C (F3V3)	R4	pontossag	0.9444|0.9444|0.0000	306/324|306/324	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=20 aranyvers (kapun átment)
+arany_hatas	C (F3V3)	R4	lefedettseg	0.9714|0.9745|0.0031	306/315|306/314	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=20 aranyvers (kapun átment)
+arany_hatas	C (F3V3)	Összes	pontossag	0.9537|0.9528|-0.0009	1010/1059|1009/1059	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=60 aranyvers (kapun átment)
+arany_hatas	C (F3V3)	Összes	lefedettseg	0.9610|0.9628|0.0018	1010/1051|1009/1048	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=60 aranyvers (kapun átment)
+arany_hatas	C (F3V2)	R1	pontossag	0.9403|0.9403|0.0000	299/318|299/318	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=20 aranyvers (kapun átment)
+arany_hatas	C (F3V2)	R1	lefedettseg	0.9432|0.9432|0.0000	299/317|299/317	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=20 aranyvers (kapun átment)
+arany_hatas	C (F3V2)	R2	pontossag	0.9563|0.9500|-0.0063	153/160|152/160	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=10 aranyvers (kapun átment)
+arany_hatas	C (F3V2)	R2	lefedettseg	1.0000|1.0000|0.0000	153/153|152/152	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=10 aranyvers (kapun átment)
+arany_hatas	C (F3V2)	R3	pontossag	0.9418|0.9382|-0.0036	259/275|258/275	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=10 aranyvers (kapun átment)
+arany_hatas	C (F3V2)	R3	lefedettseg	0.9737|0.9736|-0.0001	259/266|258/265	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=10 aranyvers (kapun átment)
+arany_hatas	C (F3V2)	R4	pontossag	0.9169|0.9139|-0.0030	309/337|308/337	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=20 aranyvers (kapun átment)
+arany_hatas	C (F3V2)	R4	lefedettseg	0.9810|0.9809|-0.0001	309/315|308/314	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=20 aranyvers (kapun átment)
+arany_hatas	C (F3V2)	Összes	pontossag	0.9358|0.9330|-0.0028	1020/1090|1017/1090	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=60 aranyvers (kapun átment)
+arany_hatas	C (F3V2)	Összes	lefedettseg	0.9705|0.9704|-0.0001	1020/1051|1017/1048	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=60 aranyvers (kapun átment)
+arany_hatas	C (F3V2B)	R1	pontossag	0.9383|0.9383|0.0000	304/324|304/324	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=20 aranyvers (kapun átment)
+arany_hatas	C (F3V2B)	R1	lefedettseg	0.9590|0.9590|0.0000	304/317|304/317	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=20 aranyvers (kapun átment)
+arany_hatas	C (F3V2B)	R2	pontossag	0.9560|0.9497|-0.0063	152/159|151/159	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=10 aranyvers (kapun átment)
+arany_hatas	C (F3V2B)	R2	lefedettseg	0.9935|0.9934|-0.0000	152/153|151/152	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=10 aranyvers (kapun átment)
+arany_hatas	C (F3V2B)	R3	pontossag	0.9393|0.9357|-0.0036	263/280|262/280	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=10 aranyvers (kapun átment)
+arany_hatas	C (F3V2B)	R3	lefedettseg	0.9887|0.9887|-0.0000	263/266|262/265	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=10 aranyvers (kapun átment)
+arany_hatas	C (F3V2B)	R4	pontossag	0.9027|0.9027|0.0000	306/339|306/339	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=20 aranyvers (kapun átment)
+arany_hatas	C (F3V2B)	R4	lefedettseg	0.9714|0.9745|0.0031	306/315|306/314	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=20 aranyvers (kapun átment)
+arany_hatas	C (F3V2B)	Összes	pontossag	0.9301|0.9283|-0.0018	1025/1102|1023/1102	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=60 aranyvers (kapun átment)
+arany_hatas	C (F3V2B)	Összes	lefedettseg	0.9753|0.9761|0.0009	1025/1051|1023/1048	arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=60 aranyvers (kapun átment)
+arany_hatas	arany v2 → v3	Összes	eltero_linkek	3		Jób 33:13 (4, 5) csak v2; Ez 39:13 (18, 16) csak v2; Mt 21:4 (3, 5) csak v2
+hatas	F3V3 − F3V2	R1	pontossag	0.9403|0.9642|0.0239	-0.0060|0.0484|0.0484	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2	R1	lefedettseg	0.9432|0.9338|-0.0095	-0.0335|0.0140|0.0337	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2	R1	kapuhiba_elso_probara	0.1200|0.1200|0.0000	-0.0300|0.0400|0.0400	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V3 − F3V2	R1	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V3 − F3V2	R2	pontossag	0.9500|0.9620|0.0120	0.0000|0.0230|0.0230	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2	R2	lefedettseg	1.0000|1.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2	R2	kapuhiba_elso_probara	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2	R2	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2	R3	pontossag	0.9382|0.9444|0.0063	-0.0257|0.0353|0.0388	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2	R3	lefedettseg	0.9736|0.9623|-0.0113	-0.0267|0.0000|0.0267	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2	R3	kapuhiba_elso_probara	0.0800|0.4000|0.3200	0.1200|0.4800|0.4800	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2	R3	kapuhiba_vegleg	0.0000|0.0800|0.0800	0.0000|0.1600|0.1600	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2	R4	pontossag	0.9139|0.9444|0.0305	0.0109|0.0502|0.0502	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2	R4	lefedettseg	0.9809|0.9745|-0.0064	-0.0204|0.0084|0.0205	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2	R4	kapuhiba_elso_probara	0.1000|0.1600|0.0600	-0.0600|0.1800|0.1800	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V3 − F3V2	R4	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V3 − F3V2	Összes	pontossag	0.9330|0.9528|0.0198	0.0063|0.0325|0.0325	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V3 − F3V2	Összes	lefedettseg	0.9704|0.9628|-0.0076	-0.0167|0.0010|0.0167	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V3 − F3V2	Összes	kapuhiba_elso_probara	0.0950|0.1500|0.0550	0.0150|0.0950|0.0950	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F3V3 − F3V2	Összes	kapuhiba_vegleg	0.0000|0.0100|0.0100	0.0000|0.0200|0.0200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F3V3 − F3V2B	R1	pontossag	0.9383|0.9642|0.0259	0.0013|0.0489|0.0489	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2B	R1	lefedettseg	0.9590|0.9338|-0.0252	-0.0552|0.0063|0.0552	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2B	R1	kapuhiba_elso_probara	0.2100|0.1200|-0.0900	-0.1500|-0.0300|0.1500	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V3 − F3V2B	R1	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V3 − F3V2B	R2	pontossag	0.9497|0.9620|0.0123	-0.0231|0.0396|0.0400	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2B	R2	lefedettseg	0.9934|1.0000|0.0066	0.0000|0.0188|0.0188	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2B	R2	kapuhiba_elso_probara	0.2000|0.0000|-0.2000	-0.3200|-0.0800|0.3200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2B	R2	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2B	R3	pontossag	0.9357|0.9444|0.0087	-0.0138|0.0345|0.0349	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2B	R3	lefedettseg	0.9887|0.9623|-0.0264	-0.0496|-0.0077|0.0496	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2B	R3	kapuhiba_elso_probara	0.0400|0.4000|0.3600	0.2000|0.5200|0.5200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2B	R3	kapuhiba_vegleg	0.0000|0.0800|0.0800	0.0000|0.1600|0.1600	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2B	R4	pontossag	0.9027|0.9444|0.0418	0.0177|0.0673|0.0673	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2B	R4	lefedettseg	0.9745|0.9745|0.0000	-0.0129|0.0132|0.0154	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2B	R4	kapuhiba_elso_probara	0.0200|0.1600|0.1400	0.0600|0.2400|0.2400	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V3 − F3V2B	R4	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V3 − F3V2B	Összes	pontossag	0.9283|0.9528|0.0245	0.0117|0.0366|0.0366	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V3 − F3V2B	Összes	lefedettseg	0.9761|0.9628|-0.0134	-0.0247|-0.0019|0.0247	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V3 − F3V2B	Összes	kapuhiba_elso_probara	0.1400|0.1500|0.0100	-0.0350|0.0550|0.0550	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F3V3 − F3V2B	Összes	kapuhiba_vegleg	0.0000|0.0100|0.0100	0.0000|0.0200|0.0200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F3V3 − átlag(F3V2, F3V2B)	R1	pontossag	0.9393|0.9642|0.0249	-0.0010|0.0449|0.0449	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − átlag(F3V2, F3V2B)	R1	lefedettseg	0.9511|0.9338|-0.0174	-0.0383|0.0051|0.0383	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − átlag(F3V2, F3V2B)	R1	kapuhiba_elso_probara	0.1650|0.1200|-0.0450	-0.0800|-0.0050|0.0800	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V3 − átlag(F3V2, F3V2B)	R1	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V3 − átlag(F3V2, F3V2B)	R2	pontossag	0.9498|0.9620|0.0122	-0.0075|0.0285|0.0285	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − átlag(F3V2, F3V2B)	R2	lefedettseg	0.9967|1.0000|0.0033	0.0000|0.0094|0.0094	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − átlag(F3V2, F3V2B)	R2	kapuhiba_elso_probara	0.1000|0.0000|-0.1000	-0.1600|-0.0400|0.1600	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − átlag(F3V2, F3V2B)	R2	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − átlag(F3V2, F3V2B)	R3	pontossag	0.9369|0.9444|0.0075	-0.0184|0.0350|0.0357	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − átlag(F3V2, F3V2B)	R3	lefedettseg	0.9811|0.9623|-0.0189	-0.0371|-0.0043|0.0371	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − átlag(F3V2, F3V2B)	R3	kapuhiba_elso_probara	0.0600|0.4000|0.3400	0.1800|0.5000|0.5000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − átlag(F3V2, F3V2B)	R3	kapuhiba_vegleg	0.0000|0.0800|0.0800	0.0000|0.1600|0.1600	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − átlag(F3V2, F3V2B)	R4	pontossag	0.9083|0.9444|0.0361	0.0166|0.0571|0.0571	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − átlag(F3V2, F3V2B)	R4	lefedettseg	0.9777|0.9745|-0.0032	-0.0158|0.0091|0.0162	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − átlag(F3V2, F3V2B)	R4	kapuhiba_elso_probara	0.0600|0.1600|0.1000	0.0000|0.2000|0.2000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V3 − átlag(F3V2, F3V2B)	R4	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V3 − átlag(F3V2, F3V2B)	Összes	pontossag	0.9307|0.9528|0.0221	0.0101|0.0336|0.0336	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V3 − átlag(F3V2, F3V2B)	Összes	lefedettseg	0.9733|0.9628|-0.0105	-0.0188|-0.0011|0.0188	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V3 − átlag(F3V2, F3V2B)	Összes	kapuhiba_elso_probara	0.1175|0.1500|0.0325	-0.0050|0.0700|0.0700	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F3V3 − átlag(F3V2, F3V2B)	Összes	kapuhiba_vegleg	0.0000|0.0100|0.0100	0.0000|0.0200|0.0200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F3V2B − F3V2 (ingadozás)	R1	pontossag	0.9403|0.9383|-0.0020	-0.0246|0.0188|0.0261	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V2B − F3V2 (ingadozás)	R1	lefedettseg	0.9432|0.9590|0.0158	-0.0188|0.0459|0.0465	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V2B − F3V2 (ingadozás)	R1	kapuhiba_elso_probara	0.1200|0.2100|0.0900	0.0300|0.1500|0.1500	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V2B − F3V2 (ingadozás)	R1	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V2B − F3V2 (ingadozás)	R2	pontossag	0.9500|0.9497|-0.0003	-0.0255|0.0356|0.0360	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V2B − F3V2 (ingadozás)	R2	lefedettseg	1.0000|0.9934|-0.0066	-0.0188|0.0000|0.0188	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V2B − F3V2 (ingadozás)	R2	kapuhiba_elso_probara	0.0000|0.2000|0.2000	0.0800|0.3200|0.3200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V2B − F3V2 (ingadozás)	R2	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V2B − F3V2 (ingadozás)	R3	pontossag	0.9382|0.9357|-0.0025	-0.0186|0.0106|0.0187	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V2B − F3V2 (ingadozás)	R3	lefedettseg	0.9736|0.9887|0.0151	0.0034|0.0289|0.0289	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V2B − F3V2 (ingadozás)	R3	kapuhiba_elso_probara	0.0800|0.0400|-0.0400	-0.1200|0.0000|0.1200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V2B − F3V2 (ingadozás)	R3	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V2B − F3V2 (ingadozás)	R4	pontossag	0.9139|0.9027|-0.0113	-0.0302|0.0084|0.0302	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V2B − F3V2 (ingadozás)	R4	lefedettseg	0.9809|0.9745|-0.0064	-0.0167|0.0032|0.0167	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V2B − F3V2 (ingadozás)	R4	kapuhiba_elso_probara	0.1000|0.0200|-0.0800	-0.1600|0.0000|0.1600	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V2B − F3V2 (ingadozás)	R4	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V2B − F3V2 (ingadozás)	Összes	pontossag	0.9330|0.9283|-0.0047	-0.0151|0.0060|0.0152	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V2B − F3V2 (ingadozás)	Összes	lefedettseg	0.9704|0.9761|0.0057	-0.0054|0.0164|0.0164	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V2B − F3V2 (ingadozás)	Összes	kapuhiba_elso_probara	0.0950|0.1400|0.0450	0.0050|0.0850|0.0850	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F3V2B − F3V2 (ingadozás)	Összes	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R1	pontossag	0.9642|0.9460|-0.0181	-0.0419|0.0090|0.0419	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R1	lefedettseg	0.9338|0.9401|0.0063	-0.0070|0.0220|0.0220	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R1	kapuhiba_elso_probara	0.1200|0.1000|-0.0200	-0.0500|0.0000|0.0500	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R1	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R2	pontossag	0.9620|0.9934|0.0314	0.0124|0.0500|0.0500	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R2	lefedettseg	1.0000|0.9934|-0.0066	-0.0161|0.0000|0.0161	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R2	kapuhiba_elso_probara	0.0000|0.0400|0.0400	0.0000|0.1200|0.1200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R2	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R3	pontossag	0.9444|0.9583|0.0139	-0.0045|0.0356|0.0356	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R3	lefedettseg	0.9623|0.9547|-0.0075	-0.0246|0.0153|0.0259	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R3	kapuhiba_elso_probara	0.4000|0.3600|-0.0400	-0.3200|0.2400|0.3600	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R3	kapuhiba_vegleg	0.0800|0.0000|-0.0800	-0.1600|0.0000|0.1600	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R4	pontossag	0.9444|0.9439|-0.0005	-0.0213|0.0156|0.0215	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R4	lefedettseg	0.9745|0.9650|-0.0096	-0.0174|-0.0029|0.0174	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R4	kapuhiba_elso_probara	0.1600|0.0000|-0.1600	-0.2400|-0.0800|0.2400	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	R4	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	Összes	pontossag	0.9528|0.9553|0.0025	-0.0084|0.0131|0.0134	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	Összes	lefedettseg	0.9628|0.9590|-0.0038	-0.0113|0.0040|0.0113	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	Összes	kapuhiba_elso_probara	0.1500|0.1000|-0.0500	-0.0950|-0.0100|0.0950	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F8V3 − F3V3 (KJV, tájékoztató)	Összes	kapuhiba_vegleg	0.0100|0.0000|-0.0100	-0.0200|0.0000|0.0200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas_osszevetes	F3V3 vs v2 átlag	R1	pontossag	0.9393|0.9642|0.0249|0.0020	-0.0010|0.0449	az ingadozáson belül / a 0-t tartalmazza; n=20; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	R1	lefedettseg	0.9511|0.9338|-0.0174|0.0158	-0.0383|0.0051	az ingadozáson belül / a 0-t tartalmazza; n=20; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	R1	kapuhiba_elso_probara	0.1650|0.1200|-0.0450|0.0900	-0.0800|-0.0050	az ingadozáson belül / a 0-t tartalmazza; n=100; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	R1	kapuhiba_vegleg	0.0000|0.0000|0.0000|0.0000	0.0000|0.0000	az ingadozáson belül / a 0-t tartalmazza; n=100; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	R2	pontossag	0.9498|0.9620|0.0122|0.0003	-0.0075|0.0285	az ingadozáson belül / a 0-t tartalmazza; n=10; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	R2	lefedettseg	0.9967|1.0000|0.0033|0.0066	0.0000|0.0094	az ingadozáson belül / a 0-t tartalmazza; n=10; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	R2	kapuhiba_elso_probara	0.1000|0.0000|-0.1000|0.2000	-0.1600|-0.0400	az ingadozáson belül / a 0-t tartalmazza; n=25; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	R2	kapuhiba_vegleg	0.0000|0.0000|0.0000|0.0000	0.0000|0.0000	az ingadozáson belül / a 0-t tartalmazza; n=25; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	R3	pontossag	0.9369|0.9444|0.0075|0.0025	-0.0184|0.0350	az ingadozáson belül / a 0-t tartalmazza; n=10; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	R3	lefedettseg	0.9811|0.9623|-0.0189|0.0151	-0.0371|-0.0043	kívül az ingadozáson; n=10; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	R3	kapuhiba_elso_probara	0.0600|0.4000|0.3400|0.0400	0.1800|0.5000	kívül az ingadozáson; n=25; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	R3	kapuhiba_vegleg	0.0000|0.0800|0.0800|0.0000	0.0000|0.1600	az ingadozáson belül / a 0-t tartalmazza; n=25; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	R4	pontossag	0.9083|0.9444|0.0361|0.0113	0.0166|0.0571	kívül az ingadozáson; n=20; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	R4	lefedettseg	0.9777|0.9745|-0.0032|0.0064	-0.0158|0.0091	az ingadozáson belül / a 0-t tartalmazza; n=20; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	R4	kapuhiba_elso_probara	0.0600|0.1600|0.1000|0.0800	0.0000|0.2000	az ingadozáson belül / a 0-t tartalmazza; n=50; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	R4	kapuhiba_vegleg	0.0000|0.0000|0.0000|0.0000	0.0000|0.0000	az ingadozáson belül / a 0-t tartalmazza; n=50; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	Összes	pontossag	0.9307|0.9528|0.0221|0.0047	0.0101|0.0336	kívül az ingadozáson; n=60; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	Összes	lefedettseg	0.9733|0.9628|-0.0105|0.0057	-0.0188|-0.0011	kívül az ingadozáson; n=60; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	Összes	kapuhiba_elso_probara	0.1175|0.1500|0.0325|0.0450	-0.0050|0.0700	az ingadozáson belül / a 0-t tartalmazza; n=200; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag	Összes	kapuhiba_vegleg	0.0000|0.0100|0.0100|0.0000	0.0000|0.0200	az ingadozáson belül / a 0-t tartalmazza; n=200; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas	F3V3 − F3V2 [arany v2]	R1	pontossag	0.9403|0.9642|0.0239	-0.0060|0.0484|0.0484	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2 [arany v2]	R1	lefedettseg	0.9432|0.9338|-0.0095	-0.0335|0.0140|0.0337	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2 [arany v2]	R1	kapuhiba_elso_probara	0.1200|0.1200|0.0000	-0.0300|0.0400|0.0400	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V3 − F3V2 [arany v2]	R1	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V3 − F3V2 [arany v2]	R2	pontossag	0.9563|0.9684|0.0121	0.0000|0.0231|0.0231	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2 [arany v2]	R2	lefedettseg	1.0000|1.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2 [arany v2]	R2	kapuhiba_elso_probara	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2 [arany v2]	R2	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2 [arany v2]	R3	pontossag	0.9418|0.9444|0.0026	-0.0286|0.0276|0.0326	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2 [arany v2]	R3	lefedettseg	0.9737|0.9586|-0.0150	-0.0308|-0.0034|0.0308	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2 [arany v2]	R3	kapuhiba_elso_probara	0.0800|0.4000|0.3200	0.1200|0.4800|0.4800	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2 [arany v2]	R3	kapuhiba_vegleg	0.0000|0.0800|0.0800	0.0000|0.1600|0.1600	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2 [arany v2]	R4	pontossag	0.9169|0.9444|0.0275	0.0075|0.0478|0.0478	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2 [arany v2]	R4	lefedettseg	0.9810|0.9714|-0.0095	-0.0238|0.0057|0.0240	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2 [arany v2]	R4	kapuhiba_elso_probara	0.1000|0.1600|0.0600	-0.0600|0.1800|0.1800	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V3 − F3V2 [arany v2]	R4	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V3 − F3V2 [arany v2]	Összes	pontossag	0.9358|0.9537|0.0180	0.0046|0.0302|0.0302	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V3 − F3V2 [arany v2]	Összes	lefedettseg	0.9705|0.9610|-0.0095	-0.0182|-0.0009|0.0182	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V3 − F3V2 [arany v2]	Összes	kapuhiba_elso_probara	0.0950|0.1500|0.0550	0.0150|0.0950|0.0950	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F3V3 − F3V2 [arany v2]	Összes	kapuhiba_vegleg	0.0000|0.0100|0.0100	0.0000|0.0200|0.0200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F3V3 − F3V2B [arany v2]	R1	pontossag	0.9383|0.9642|0.0259	0.0013|0.0489|0.0489	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2B [arany v2]	R1	lefedettseg	0.9590|0.9338|-0.0252	-0.0552|0.0063|0.0552	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2B [arany v2]	R1	kapuhiba_elso_probara	0.2100|0.1200|-0.0900	-0.1500|-0.0300|0.1500	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V3 − F3V2B [arany v2]	R1	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V3 − F3V2B [arany v2]	R2	pontossag	0.9560|0.9684|0.0124	-0.0234|0.0397|0.0401	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2B [arany v2]	R2	lefedettseg	0.9935|1.0000|0.0065	0.0000|0.0187|0.0187	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2B [arany v2]	R2	kapuhiba_elso_probara	0.2000|0.0000|-0.2000	-0.3200|-0.0800|0.3200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2B [arany v2]	R2	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2B [arany v2]	R3	pontossag	0.9393|0.9444|0.0052	-0.0144|0.0264|0.0269	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2B [arany v2]	R3	lefedettseg	0.9887|0.9586|-0.0301	-0.0524|-0.0119|0.0524	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − F3V2B [arany v2]	R3	kapuhiba_elso_probara	0.0400|0.4000|0.3600	0.2000|0.5200|0.5200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2B [arany v2]	R3	kapuhiba_vegleg	0.0000|0.0800|0.0800	0.0000|0.1600|0.1600	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − F3V2B [arany v2]	R4	pontossag	0.9027|0.9444|0.0418	0.0177|0.0673|0.0673	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2B [arany v2]	R4	lefedettseg	0.9714|0.9714|0.0000	-0.0129|0.0131|0.0153	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − F3V2B [arany v2]	R4	kapuhiba_elso_probara	0.0200|0.1600|0.1400	0.0600|0.2400|0.2400	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V3 − F3V2B [arany v2]	R4	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V3 − F3V2B [arany v2]	Összes	pontossag	0.9301|0.9537|0.0236	0.0112|0.0356|0.0356	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V3 − F3V2B [arany v2]	Összes	lefedettseg	0.9753|0.9610|-0.0143	-0.0256|-0.0028|0.0256	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V3 − F3V2B [arany v2]	Összes	kapuhiba_elso_probara	0.1400|0.1500|0.0100	-0.0350|0.0550|0.0550	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F3V3 − F3V2B [arany v2]	Összes	kapuhiba_vegleg	0.0000|0.0100|0.0100	0.0000|0.0200|0.0200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R1	pontossag	0.9393|0.9642|0.0249	-0.0010|0.0449|0.0449	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R1	lefedettseg	0.9511|0.9338|-0.0174	-0.0383|0.0051|0.0383	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R1	kapuhiba_elso_probara	0.1650|0.1200|-0.0450	-0.0800|-0.0050|0.0800	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R1	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R2	pontossag	0.9561|0.9684|0.0122	-0.0076|0.0286|0.0286	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R2	lefedettseg	0.9967|1.0000|0.0033	0.0000|0.0093|0.0093	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R2	kapuhiba_elso_probara	0.1000|0.0000|-0.1000	-0.1600|-0.0400|0.1600	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R2	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R3	pontossag	0.9406|0.9444|0.0039	-0.0199|0.0261|0.0283	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R3	lefedettseg	0.9812|0.9586|-0.0226	-0.0411|-0.0089|0.0411	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R3	kapuhiba_elso_probara	0.0600|0.4000|0.3400	0.1800|0.5000|0.5000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R3	kapuhiba_vegleg	0.0000|0.0800|0.0800	0.0000|0.1600|0.1600	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R4	pontossag	0.9098|0.9444|0.0347	0.0157|0.0553|0.0553	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R4	lefedettseg	0.9762|0.9714|-0.0048	-0.0177|0.0080|0.0177	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R4	kapuhiba_elso_probara	0.0600|0.1600|0.1000	0.0000|0.2000|0.2000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	R4	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	Összes	pontossag	0.9330|0.9537|0.0208	0.0090|0.0318|0.0318	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	Összes	lefedettseg	0.9729|0.9610|-0.0119	-0.0200|-0.0026|0.0200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	Összes	kapuhiba_elso_probara	0.1175|0.1500|0.0325	-0.0050|0.0700|0.0700	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F3V3 − átlag(F3V2, F3V2B) [arany v2]	Összes	kapuhiba_vegleg	0.0000|0.0100|0.0100	0.0000|0.0200|0.0200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R1	pontossag	0.9403|0.9383|-0.0020	-0.0246|0.0188|0.0261	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R1	lefedettseg	0.9432|0.9590|0.0158	-0.0188|0.0459|0.0465	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R1	kapuhiba_elso_probara	0.1200|0.2100|0.0900	0.0300|0.1500|0.1500	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R1	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=100
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R2	pontossag	0.9563|0.9560|-0.0003	-0.0256|0.0360|0.0362	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R2	lefedettseg	1.0000|0.9935|-0.0065	-0.0187|0.0000|0.0187	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R2	kapuhiba_elso_probara	0.0000|0.2000|0.2000	0.0800|0.3200|0.3200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R2	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R3	pontossag	0.9418|0.9393|-0.0025	-0.0187|0.0106|0.0187	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R3	lefedettseg	0.9737|0.9887|0.0150	0.0034|0.0288|0.0288	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=10
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R3	kapuhiba_elso_probara	0.0800|0.0400|-0.0400	-0.1200|0.0000|0.1200	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R3	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=25
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R4	pontossag	0.9169|0.9027|-0.0143	-0.0366|0.0079|0.0366	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R4	lefedettseg	0.9810|0.9714|-0.0095	-0.0214|0.0000|0.0214	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R4	kapuhiba_elso_probara	0.1000|0.0200|-0.0800	-0.1600|0.0000|0.1600	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	R4	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=50
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	Összes	pontossag	0.9358|0.9301|-0.0057	-0.0164|0.0053|0.0164	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	Összes	lefedettseg	0.9705|0.9753|0.0048	-0.0062|0.0160|0.0161	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=60
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	Összes	kapuhiba_elso_probara	0.0950|0.1400|0.0450	0.0050|0.0850|0.0850	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas	F3V2B − F3V2 (ingadozás) [arany v2]	Összes	kapuhiba_vegleg	0.0000|0.0000|0.0000	0.0000|0.0000|0.0000	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=200
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R1	pontossag	0.9393|0.9642|0.0249|0.0020	-0.0010|0.0449	az ingadozáson belül / a 0-t tartalmazza; n=20; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R1	lefedettseg	0.9511|0.9338|-0.0174|0.0158	-0.0383|0.0051	az ingadozáson belül / a 0-t tartalmazza; n=20; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R1	kapuhiba_elso_probara	0.1650|0.1200|-0.0450|0.0900	-0.0800|-0.0050	az ingadozáson belül / a 0-t tartalmazza; n=100; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R1	kapuhiba_vegleg	0.0000|0.0000|0.0000|0.0000	0.0000|0.0000	az ingadozáson belül / a 0-t tartalmazza; n=100; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R2	pontossag	0.9561|0.9684|0.0122|0.0003	-0.0076|0.0286	az ingadozáson belül / a 0-t tartalmazza; n=10; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R2	lefedettseg	0.9967|1.0000|0.0033|0.0065	0.0000|0.0093	az ingadozáson belül / a 0-t tartalmazza; n=10; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R2	kapuhiba_elso_probara	0.1000|0.0000|-0.1000|0.2000	-0.1600|-0.0400	az ingadozáson belül / a 0-t tartalmazza; n=25; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R2	kapuhiba_vegleg	0.0000|0.0000|0.0000|0.0000	0.0000|0.0000	az ingadozáson belül / a 0-t tartalmazza; n=25; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R3	pontossag	0.9406|0.9444|0.0039|0.0025	-0.0199|0.0261	az ingadozáson belül / a 0-t tartalmazza; n=10; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R3	lefedettseg	0.9812|0.9586|-0.0226|0.0150	-0.0411|-0.0089	kívül az ingadozáson; n=10; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R3	kapuhiba_elso_probara	0.0600|0.4000|0.3400|0.0400	0.1800|0.5000	kívül az ingadozáson; n=25; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R3	kapuhiba_vegleg	0.0000|0.0800|0.0800|0.0000	0.0000|0.1600	az ingadozáson belül / a 0-t tartalmazza; n=25; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R4	pontossag	0.9098|0.9444|0.0347|0.0143	0.0157|0.0553	kívül az ingadozáson; n=20; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R4	lefedettseg	0.9762|0.9714|-0.0048|0.0095	-0.0177|0.0080	az ingadozáson belül / a 0-t tartalmazza; n=20; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R4	kapuhiba_elso_probara	0.0600|0.1600|0.1000|0.0800	0.0000|0.2000	az ingadozáson belül / a 0-t tartalmazza; n=50; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	R4	kapuhiba_vegleg	0.0000|0.0000|0.0000|0.0000	0.0000|0.0000	az ingadozáson belül / a 0-t tartalmazza; n=50; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	Összes	pontossag	0.9330|0.9537|0.0208|0.0057	0.0090|0.0318	kívül az ingadozáson; n=60; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	Összes	lefedettseg	0.9729|0.9610|-0.0119|0.0048	-0.0200|-0.0026	kívül az ingadozáson; n=60; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	Összes	kapuhiba_elso_probara	0.1175|0.1500|0.0325|0.0450	-0.0050|0.0700	az ingadozáson belül / a 0-t tartalmazza; n=200; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+hatas_osszevetes	F3V3 vs v2 átlag [arany v2]	Összes	kapuhiba_vegleg	0.0000|0.0100|0.0100|0.0000	0.0000|0.0200	az ingadozáson belül / a 0-t tartalmazza; n=200; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); 90% intervallum alsó|felső
+kapuhiba_kereszt	C (F3V3)	Összes	keresztellenorzes_elso_probalkozas	30	30	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (30) = napló kapuhiba_db(probalkozas=1) összeg (30): EGYEZIK
+kapuhiba	C (F3V3)	R1	elso_probara	12	100	
+kapuhiba	C (F3V3)	R1	vegleg	0	100	
+kapuhiba	C (F3V3)	R2	elso_probara	0	25	
+kapuhiba	C (F3V3)	R2	vegleg	0	25	
+kapuhiba	C (F3V3)	R3	elso_probara	10	25	
+kapuhiba	C (F3V3)	R3	vegleg	2	25	
+kapuhiba	C (F3V3)	R4	elso_probara	8	50	
+kapuhiba	C (F3V3)	R4	vegleg	0	50	
+kapuhiba	C (F3V3)	Összes	elso_probara	30	200	
+kapuhiba	C (F3V3)	Összes	vegleg	2	200	
+kapuhiba_tipus	C (F3V3)	Összes	kapupont_1_elso	7	200	
+kapuhiba_tipus	C (F3V3)	Összes	kapupont_1_vegleg	0	200	
+kapuhiba_tipus	C (F3V3)	Összes	kapupont_1-json_elso	20	200	
+kapuhiba_tipus	C (F3V3)	Összes	kapupont_1-json_vegleg	0	200	
+kapuhiba_tipus	C (F3V3)	Összes	kapupont_2_elso	1	200	
+kapuhiba_tipus	C (F3V3)	Összes	kapupont_2_vegleg	0	200	
+kapuhiba_tipus	C (F3V3)	Összes	kapupont_3_elso	1	200	
+kapuhiba_tipus	C (F3V3)	Összes	kapupont_3_vegleg	0	200	
+kapuhiba_tipus	C (F3V3)	Összes	kapupont_4_elso	2	200	
+kapuhiba_tipus	C (F3V3)	Összes	kapupont_4_vegleg	2	200	
+kapuhiba_kereszt	C (F3V2)	Összes	keresztellenorzes_elso_probalkozas	19	19	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (19) = napló kapuhiba_db(probalkozas=1) összeg (19): EGYEZIK
+kapuhiba	C (F3V2)	R1	elso_probara	12	100	
+kapuhiba	C (F3V2)	R1	vegleg	0	100	
+kapuhiba	C (F3V2)	R2	elso_probara	0	25	
+kapuhiba	C (F3V2)	R2	vegleg	0	25	
+kapuhiba	C (F3V2)	R3	elso_probara	2	25	
+kapuhiba	C (F3V2)	R3	vegleg	0	25	
+kapuhiba	C (F3V2)	R4	elso_probara	5	50	
+kapuhiba	C (F3V2)	R4	vegleg	0	50	
+kapuhiba	C (F3V2)	Összes	elso_probara	19	200	
+kapuhiba	C (F3V2)	Összes	vegleg	0	200	
+kapuhiba_tipus	C (F3V2)	Összes	kapupont_1_elso	5	200	
+kapuhiba_tipus	C (F3V2)	Összes	kapupont_1_vegleg	0	200	
+kapuhiba_tipus	C (F3V2)	Összes	kapupont_1-json_elso	10	200	
+kapuhiba_tipus	C (F3V2)	Összes	kapupont_1-json_vegleg	0	200	
+kapuhiba_tipus	C (F3V2)	Összes	kapupont_3_elso	1	200	
+kapuhiba_tipus	C (F3V2)	Összes	kapupont_3_vegleg	0	200	
+kapuhiba_tipus	C (F3V2)	Összes	kapupont_4_elso	4	200	
+kapuhiba_tipus	C (F3V2)	Összes	kapupont_4_vegleg	0	200	
+kapuhiba_kereszt	C (F3V2B)	Összes	keresztellenorzes_elso_probalkozas	28	28	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (28) = napló kapuhiba_db(probalkozas=1) összeg (28): EGYEZIK
+kapuhiba	C (F3V2B)	R1	elso_probara	21	100	
+kapuhiba	C (F3V2B)	R1	vegleg	0	100	
+kapuhiba	C (F3V2B)	R2	elso_probara	5	25	
+kapuhiba	C (F3V2B)	R2	vegleg	0	25	
+kapuhiba	C (F3V2B)	R3	elso_probara	1	25	
+kapuhiba	C (F3V2B)	R3	vegleg	0	25	
+kapuhiba	C (F3V2B)	R4	elso_probara	1	50	
+kapuhiba	C (F3V2B)	R4	vegleg	0	50	
+kapuhiba	C (F3V2B)	Összes	elso_probara	28	200	
+kapuhiba	C (F3V2B)	Összes	vegleg	0	200	
+kapuhiba_tipus	C (F3V2B)	Összes	kapupont_1_elso	6	200	
+kapuhiba_tipus	C (F3V2B)	Összes	kapupont_1_vegleg	0	200	
+kapuhiba_tipus	C (F3V2B)	Összes	kapupont_1-json_elso	20	200	
+kapuhiba_tipus	C (F3V2B)	Összes	kapupont_1-json_vegleg	0	200	
+kapuhiba_tipus	C (F3V2B)	Összes	kapupont_3_elso	1	200	
+kapuhiba_tipus	C (F3V2B)	Összes	kapupont_3_vegleg	0	200	
+kapuhiba_tipus	C (F3V2B)	Összes	kapupont_4_elso	1	200	
+kapuhiba_tipus	C (F3V2B)	Összes	kapupont_4_vegleg	0	200	
+kapuhiba_kereszt	C KJV-vel (F8V3, tájékoztató)	Összes	keresztellenorzes_elso_probalkozas	20	20	újraszámolt első-próbás hibás versek = jsonl probalkozas=2 versek (20) = napló kapuhiba_db(probalkozas=1) összeg (20): EGYEZIK
+kapuhiba	C KJV-vel (F8V3, tájékoztató)	R1	elso_probara	10	100	
+kapuhiba	C KJV-vel (F8V3, tájékoztató)	R1	vegleg	0	100	
+kapuhiba	C KJV-vel (F8V3, tájékoztató)	R2	elso_probara	1	25	
+kapuhiba	C KJV-vel (F8V3, tájékoztató)	R2	vegleg	0	25	
+kapuhiba	C KJV-vel (F8V3, tájékoztató)	R3	elso_probara	9	25	
+kapuhiba	C KJV-vel (F8V3, tájékoztató)	R3	vegleg	0	25	
+kapuhiba	C KJV-vel (F8V3, tájékoztató)	R4	elso_probara	0	50	
+kapuhiba	C KJV-vel (F8V3, tájékoztató)	R4	vegleg	0	50	
+kapuhiba	C KJV-vel (F8V3, tájékoztató)	Összes	elso_probara	20	200	
+kapuhiba	C KJV-vel (F8V3, tájékoztató)	Összes	vegleg	0	200	
+kapuhiba_tipus	C KJV-vel (F8V3, tájékoztató)	Összes	kapupont_1_elso	9	200	
+kapuhiba_tipus	C KJV-vel (F8V3, tájékoztató)	Összes	kapupont_1_vegleg	0	200	
+kapuhiba_tipus	C KJV-vel (F8V3, tájékoztató)	Összes	kapupont_1-json_elso	10	200	
+kapuhiba_tipus	C KJV-vel (F8V3, tájékoztató)	Összes	kapupont_1-json_vegleg	0	200	
+kapuhiba_tipus	C KJV-vel (F8V3, tájékoztató)	Összes	kapupont_3_elso	1	200	
+kapuhiba_tipus	C KJV-vel (F8V3, tájékoztató)	Összes	kapupont_3_vegleg	0	200	
+kapuhiba_versek	C (F3V3)	Összes	elso_probara	30		1Móz 13:14, 1Móz 24:27, 1Móz 28:8, 1Móz 30:7, 1Móz 31:18, 1Móz 32:19, 1Móz 38:22, 1Móz 41:19, 1Móz 45:24, 1Móz 49:25, 1Móz 50:2, 2Móz 26:13, Ézs 38:15, Ézs 48:5, Ézs 55:12, Ézs 63:10, Jer 6:10, Jer 8:19, Jer 9:19, Jer 16:3, Jer 32:27, Jer 44:16, Mt 5:34, Mt 6:31, Mt 11:18, Mt 21:4, Mt 23:31, Mt 27:18, Mk 2:23, Zsid 9:6
+kapuhiba_versek	C (F3V3)	Összes	vegleg	2		Ézs 48:5 (R3), Jer 16:3 (R3)
+kapuhiba_versek	C (F3V2)	Összes	elso_probara	19		1Móz 15:12, 1Móz 24:27, 1Móz 28:8, 1Móz 30:7, 1Móz 31:18, 1Móz 32:19, 1Móz 38:22, 1Móz 41:19, 1Móz 45:24, 1Móz 49:25, 1Móz 50:2, 2Móz 21:26, Ézs 48:5, Ez 46:12, Mk 9:36, Mk 13:21, Mk 14:44, Luk 1:75, Luk 9:27
+kapuhiba_versek	C (F3V2)	Összes	vegleg	0		—
+kapuhiba_versek	C (F3V2B)	Összes	elso_probara	28		1Móz 2:2, 1Móz 24:27, 1Móz 28:8, 1Móz 30:7, 1Móz 31:18, 1Móz 32:19, 1Móz 38:22, 1Móz 41:19, 1Móz 45:24, 1Móz 49:25, 1Móz 50:2, 2Móz 32:5, 2Móz 37:12, 2Móz 38:8, 2Móz 38:21, 2Móz 39:23, 2Móz 39:26, 2Móz 39:31, 2Móz 39:33, 2Móz 40:14, 2Móz 40:36, Jób 34:28, Zsolt 16:11, Zsolt 18:1, Zsolt 22:32, Zsolt 59:8, Ézs 48:5, Mk 2:10
+kapuhiba_versek	C (F3V2B)	Összes	vegleg	0		—
+kapuhiba_versek	C KJV-vel (F8V3, tájékoztató)	Összes	elso_probara	20		1Móz 24:27, 1Móz 28:8, 1Móz 30:7, 1Móz 31:18, 1Móz 32:19, 1Móz 38:22, 1Móz 41:19, 1Móz 45:24, 1Móz 49:25, 1Móz 50:2, Zsolt 18:3, Jer 46:21, Ez 11:3, Ez 16:57, Ez 22:25, Ez 30:5, Ez 33:31, Ez 39:13, Ez 41:2, Ez 46:12
+kapuhiba_versek	C KJV-vel (F8V3, tájékoztató)	Összes	vegleg	0		—
+koltseg	C (F3V3)	Összes	hivasok	26		próbálkozás=1: 20, próbálkozás=2: 6
+koltseg	C (F3V3)	Összes	bemeneti_token	226300		
+koltseg	C (F3V3)	Összes	kimeneti_token	30719		a completion_tokens (a gondolkodási token benne van, ha a modell jelenti)
+koltseg	C (F3V3)	Összes	koltseg_usd	0.260136		koltseg_forras: openrouter
+koltseg	C (F3V3)	Összes	gondolkodas_mod	kotelezo_effort=minimal		a beállítás eltér (PD15): a C minimal (kötelező), a Sonnet minimális gondolkodási kerettel; az A és a B kikapcsolva
+koltseg	C (F3V3)	Összes	prompt_sha256_12	84f12ca7aafb		
+koltseg	C (F3V2)	Összes	hivasok	26		próbálkozás=1: 20, próbálkozás=2: 6
+koltseg	C (F3V2)	Összes	bemeneti_token	216985		
+koltseg	C (F3V2)	Összes	kimeneti_token	29470		a completion_tokens (a gondolkodási token benne van, ha a modell jelenti)
+koltseg	C (F3V2)	Összes	koltseg_usd	0.256731		koltseg_forras: openrouter
+koltseg	C (F3V2)	Összes	gondolkodas_mod	kotelezo_effort=minimal		a beállítás eltér (PD15): a C minimal (kötelező), a Sonnet minimális gondolkodási kerettel; az A és a B kikapcsolva
+koltseg	C (F3V2)	Összes	prompt_sha256_12	a9f0f07c67b9		
+koltseg	C (F3V2B)	Összes	hivasok	26		próbálkozás=1: 20, próbálkozás=2: 6
+koltseg	C (F3V2B)	Összes	bemeneti_token	212738		
+koltseg	C (F3V2B)	Összes	kimeneti_token	30888		a completion_tokens (a gondolkodási token benne van, ha a modell jelenti)
+koltseg	C (F3V2B)	Összes	koltseg_usd	0.256110		koltseg_forras: openrouter
+koltseg	C (F3V2B)	Összes	gondolkodas_mod	kotelezo_effort=minimal		a beállítás eltér (PD15): a C minimal (kötelező), a Sonnet minimális gondolkodási kerettel; az A és a B kikapcsolva
+koltseg	C (F3V2B)	Összes	prompt_sha256_12	a9f0f07c67b9		
+koltseg	C KJV-vel (F8V3, tájékoztató)	Összes	hivasok	23		próbálkozás=1: 20, próbálkozás=2: 3
+koltseg	C KJV-vel (F8V3, tájékoztató)	Összes	bemeneti_token	201000		
+koltseg	C KJV-vel (F8V3, tájékoztató)	Összes	kimeneti_token	29793		a completion_tokens (a gondolkodási token benne van, ha a modell jelenti)
+koltseg	C KJV-vel (F8V3, tájékoztató)	Összes	koltseg_usd	0.262474		koltseg_forras: openrouter
+koltseg	C KJV-vel (F8V3, tájékoztató)	Összes	gondolkodas_mod	kotelezo_effort=minimal		a beállítás eltér (PD15): a C minimal (kötelező), a Sonnet minimális gondolkodási kerettel; az A és a B kikapcsolva
+koltseg	C KJV-vel (F8V3, tájékoztató)	Összes	prompt_sha256_12	84f12ca7aafb		
+mentett_ellenorzes	C (F3V3)	Összes	hibak	0		futtat.mentett_valaszok_ellenoriz: 0 hiba
+mentett_ellenorzes	C (F3V2)	Összes	hibak	0		futtat.mentett_valaszok_ellenoriz: 0 hiba
+mentett_ellenorzes	C (F3V2B)	Összes	hibak	0		futtat.mentett_valaszok_ellenoriz: 0 hiba
+mentett_ellenorzes	C KJV-vel (F8V3, tájékoztató)	Összes	hibak	0		futtat.mentett_valaszok_ellenoriz: 0 hiba
+kjv	C KJV-vel (F8V3, tájékoztató)	R1	versek_kjv_sorral (teljes tábla)	100	100	tokenek.kjv_tamapont_teljes
+kjv	C (F3V3)	R1	versek_kjv_sorral (régi tábla)	100	100	tokenek.kjv_tamapont
+kjv	C KJV-vel (F8V3, tájékoztató)	R2	versek_kjv_sorral (teljes tábla)	24	25	tokenek.kjv_tamapont_teljes
+kjv	C (F3V3)	R2	versek_kjv_sorral (régi tábla)	0	25	tokenek.kjv_tamapont
+kjv	C KJV-vel (F8V3, tájékoztató)	R3	versek_kjv_sorral (teljes tábla)	25	25	tokenek.kjv_tamapont_teljes
+kjv	C (F3V3)	R3	versek_kjv_sorral (régi tábla)	0	25	tokenek.kjv_tamapont
+kjv	C KJV-vel (F8V3, tájékoztató)	R4	versek_kjv_sorral (teljes tábla)	0	50	tokenek.kjv_tamapont_teljes
+kjv	C (F3V3)	R4	versek_kjv_sorral (régi tábla)	0	50	tokenek.kjv_tamapont
+kjv	C KJV-vel (F8V3, tájékoztató)	Összes	versek_kjv_sorral (teljes tábla)	149	200	tokenek.kjv_tamapont_teljes
+kjv	C (F3V3)	Összes	versek_kjv_sorral (régi tábla)	100	200	tokenek.kjv_tamapont
+kjv	C KJV-vel (F8V3, tájékoztató)	R4	jeloles	KJV nélkül, nem mérhető		PD17 (2): a Károli ↔ KJV megfeleltetés az ÚSZ-t nem fedi; az R4-en az F8V3 és az F3V3 bemenete azonos
+kjv	C KJV-vel (F8V3, tájékoztató)	R2	jeloles	gyenge (zsoltár-eltolódás)		PD17 (1): a zsoltárfeliratok miatti versmegfeleltetési eltolódás (N-F21); a KJV-sor valószínűleg rossz versről jön; naplok/F21P_kjv_meres.md
+kjv	C KJV-vel (F8V3, tájékoztató)	Összes	jeloles	nem igazolt, a javított táblával újramérhető		PD17 (3): a KJV a promptban — a pilot döntése
+kapupont_reteg	C (F3V3)	R1	hibas_versek_elso	12	100	az első próbán kapuhibás versek (bármely kapupont); kötegek: 3
+kapupont_reteg	C (F3V3)	R1	kapupont_1_elso	0	100	kötegek: 0
+kapupont_reteg	C (F3V3)	R1	kapupont_1-json_elso	10	100	kötegek: 1
+kapupont_reteg	C (F3V3)	R1	kapupont_2_elso	1	100	kötegek: 1
+kapupont_reteg	C (F3V3)	R1	kapupont_3_elso	1	100	kötegek: 1
+kapupont_reteg	C (F3V3)	R1	kapupont_4_elso	1	100	kötegek: 1
+kapupont_reteg	C (F3V3)	R1	tobb_kapupontos_versek_elso	1	100	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V3)	R2	hibas_versek_elso	0	25	az első próbán kapuhibás versek (bármely kapupont); kötegek: 0
+kapupont_reteg	C (F3V3)	R2	kapupont_1_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R2	kapupont_1-json_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R2	kapupont_2_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R2	kapupont_3_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R2	kapupont_4_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R2	tobb_kapupontos_versek_elso	0	25	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V3)	R3	hibas_versek_elso	10	25	az első próbán kapuhibás versek (bármely kapupont); kötegek: 1
+kapupont_reteg	C (F3V3)	R3	kapupont_1_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R3	kapupont_1-json_elso	10	25	kötegek: 1
+kapupont_reteg	C (F3V3)	R3	kapupont_2_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R3	kapupont_3_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R3	kapupont_4_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R3	tobb_kapupontos_versek_elso	0	25	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V3)	R4	hibas_versek_elso	8	50	az első próbán kapuhibás versek (bármely kapupont); kötegek: 2
+kapupont_reteg	C (F3V3)	R4	kapupont_1_elso	7	50	kötegek: 1
+kapupont_reteg	C (F3V3)	R4	kapupont_1-json_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V3)	R4	kapupont_2_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V3)	R4	kapupont_3_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V3)	R4	kapupont_4_elso	1	50	kötegek: 1
+kapupont_reteg	C (F3V3)	R4	tobb_kapupontos_versek_elso	0	50	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V3)	Összes	hibas_versek_elso	30	200	az első próbán kapuhibás versek (bármely kapupont); kötegek: 6
+kapupont_reteg	C (F3V3)	Összes	kapupont_1_elso	7	200	kötegek: 1
+kapupont_reteg	C (F3V3)	Összes	kapupont_1-json_elso	20	200	kötegek: 2
+kapupont_reteg	C (F3V3)	Összes	kapupont_2_elso	1	200	kötegek: 1
+kapupont_reteg	C (F3V3)	Összes	kapupont_3_elso	1	200	kötegek: 1
+kapupont_reteg	C (F3V3)	Összes	kapupont_4_elso	2	200	kötegek: 2
+kapupont_reteg	C (F3V3)	Összes	tobb_kapupontos_versek_elso	1	200	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_kereszt	C (F3V3)	Összes	kapupont_versek_elso	30	30	a kapupont-bontás hibás versei (30) = a kapuhiba-szakasz rétegenkénti első-próbás számai (R1: 12, R2: 0, R3: 10, R4: 8, Összes: 30) = jsonl probalkozas=2 versek (30) = napló kapuhiba_db(probalkozas=1) összeg (30): EGYEZIK
+kapupont_vers	C (F3V3)	R1	1Móz 13:14	2+4	köteg 3	első próba: 2. nem létező magyar sorszám: [26, 29] (a versben 1–25 szó van) / 4. ezek az eredeti szavak sem a "parok" jobb oldalán, sem a "forditatlan"-ban nem szerepelnek: [26,… | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 24:27	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 28:8	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 30:7	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 31:18	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 32:19	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 38:22	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 41:19	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 45:24	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 49:25	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 50:2	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	2Móz 26:13	3	köteg 6	első próba: 3. ezek a magyar szavak többször szerepelnek (a "parok" bal oldalán vagy a "betoldas"-ban): [26] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R3	Ézs 38:15	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R3	Ézs 48:5	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: kapuhibás (kapupont 4)
+kapupont_vers	C (F3V3)	R3	Ézs 55:12	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R3	Ézs 63:10	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R3	Jer 6:10	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R3	Jer 8:19	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R3	Jer 9:19	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R3	Jer 16:3	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: kapuhibás (kapupont 4)
+kapupont_vers	C (F3V3)	R3	Jer 32:27	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R3	Jer 44:16	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R4	Mt 5:34	1	köteg 16	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [3, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R4	Mt 6:31	1	köteg 16	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [4, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R4	Mt 11:18	1	köteg 16	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [4, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R4	Mt 21:4	1	köteg 16	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [3, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R4	Mt 23:31	1	köteg 16	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [2, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R4	Mt 27:18	1	köteg 16	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [2, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R4	Mk 2:23	1	köteg 16	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [3, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R4	Zsid 9:6	4	köteg 19	első próba: 4. ezek az eredeti szavak sem a "parok" jobb oldalán, sem a "forditatlan"-ban nem szerepelnek: [10] | végleg: átment (2. próba)
+kapupont_reteg	C (F3V2)	R1	hibas_versek_elso	12	100	az első próbán kapuhibás versek (bármely kapupont); kötegek: 3
+kapupont_reteg	C (F3V2)	R1	kapupont_1_elso	0	100	kötegek: 0
+kapupont_reteg	C (F3V2)	R1	kapupont_1-json_elso	10	100	kötegek: 1
+kapupont_reteg	C (F3V2)	R1	kapupont_2_elso	0	100	kötegek: 0
+kapupont_reteg	C (F3V2)	R1	kapupont_3_elso	1	100	kötegek: 1
+kapupont_reteg	C (F3V2)	R1	kapupont_4_elso	2	100	kötegek: 2
+kapupont_reteg	C (F3V2)	R1	tobb_kapupontos_versek_elso	1	100	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2)	R2	hibas_versek_elso	0	25	az első próbán kapuhibás versek (bármely kapupont); kötegek: 0
+kapupont_reteg	C (F3V2)	R2	kapupont_1_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R2	kapupont_1-json_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R2	kapupont_2_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R2	kapupont_3_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R2	kapupont_4_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R2	tobb_kapupontos_versek_elso	0	25	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2)	R3	hibas_versek_elso	2	25	az első próbán kapuhibás versek (bármely kapupont); kötegek: 2
+kapupont_reteg	C (F3V2)	R3	kapupont_1_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R3	kapupont_1-json_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R3	kapupont_2_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R3	kapupont_3_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R3	kapupont_4_elso	2	25	kötegek: 2
+kapupont_reteg	C (F3V2)	R3	tobb_kapupontos_versek_elso	0	25	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2)	R4	hibas_versek_elso	5	50	az első próbán kapuhibás versek (bármely kapupont); kötegek: 1
+kapupont_reteg	C (F3V2)	R4	kapupont_1_elso	5	50	kötegek: 1
+kapupont_reteg	C (F3V2)	R4	kapupont_1-json_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2)	R4	kapupont_2_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2)	R4	kapupont_3_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2)	R4	kapupont_4_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2)	R4	tobb_kapupontos_versek_elso	0	50	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2)	Összes	hibas_versek_elso	19	200	az első próbán kapuhibás versek (bármely kapupont); kötegek: 6
+kapupont_reteg	C (F3V2)	Összes	kapupont_1_elso	5	200	kötegek: 1
+kapupont_reteg	C (F3V2)	Összes	kapupont_1-json_elso	10	200	kötegek: 1
+kapupont_reteg	C (F3V2)	Összes	kapupont_2_elso	0	200	kötegek: 0
+kapupont_reteg	C (F3V2)	Összes	kapupont_3_elso	1	200	kötegek: 1
+kapupont_reteg	C (F3V2)	Összes	kapupont_4_elso	4	200	kötegek: 4
+kapupont_reteg	C (F3V2)	Összes	tobb_kapupontos_versek_elso	1	200	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_kereszt	C (F3V2)	Összes	kapupont_versek_elso	19	19	a kapupont-bontás hibás versei (19) = a kapuhiba-szakasz rétegenkénti első-próbás számai (R1: 12, R2: 0, R3: 2, R4: 5, Összes: 19) = jsonl probalkozas=2 versek (19) = napló kapuhiba_db(probalkozas=1) összeg (19): EGYEZIK
+kapupont_vers	C (F3V2)	R1	1Móz 15:12	4	köteg 3	első próba: 4. ezek az eredeti szavak sem a "parok" jobb oldalán, sem a "forditatlan"-ban nem szerepelnek: [7] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 24:27	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 28:8	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 30:7	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 31:18	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 32:19	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 38:22	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 41:19	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 45:24	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 49:25	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 50:2	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	2Móz 21:26	3+4	köteg 6	első próba: 3. ezek a magyar szavak többször szerepelnek (a "parok" bal oldalán vagy a "betoldas"-ban): [1] / 4. ezek az eredeti szavak sem a "parok" jobb oldalán, sem a "forditatlan"-ban nem szerepelnek: [1] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V2)	R3	Ézs 48:5	4	köteg 14	első próba: 4. ezek az eredeti szavak sem a "parok" jobb oldalán, sem a "forditatlan"-ban nem szerepelnek: [11] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R3	Ez 46:12	4	köteg 15	első próba: 4. ezek az eredeti szavak sem a "parok" jobb oldalán, sem a "forditatlan"-ban nem szerepelnek: [13] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V2)	R4	Mk 9:36	1	köteg 17	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [3, []] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R4	Mk 13:21	1	köteg 17	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [4, []] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R4	Mk 14:44	1	köteg 17	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [12, []] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R4	Luk 1:75	1	köteg 17	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [9, []] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R4	Luk 9:27	1	köteg 17	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [5, []] | végleg: átment (2. próba)
+kapupont_reteg	C (F3V2B)	R1	hibas_versek_elso	21	100	az első próbán kapuhibás versek (bármely kapupont); kötegek: 3
+kapupont_reteg	C (F3V2B)	R1	kapupont_1_elso	1	100	kötegek: 1
+kapupont_reteg	C (F3V2B)	R1	kapupont_1-json_elso	20	100	kötegek: 2
+kapupont_reteg	C (F3V2B)	R1	kapupont_2_elso	0	100	kötegek: 0
+kapupont_reteg	C (F3V2B)	R1	kapupont_3_elso	0	100	kötegek: 0
+kapupont_reteg	C (F3V2B)	R1	kapupont_4_elso	0	100	kötegek: 0
+kapupont_reteg	C (F3V2B)	R1	tobb_kapupontos_versek_elso	0	100	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2B)	R2	hibas_versek_elso	5	25	az első próbán kapuhibás versek (bármely kapupont); kötegek: 1
+kapupont_reteg	C (F3V2B)	R2	kapupont_1_elso	5	25	kötegek: 1
+kapupont_reteg	C (F3V2B)	R2	kapupont_1-json_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R2	kapupont_2_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R2	kapupont_3_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R2	kapupont_4_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R2	tobb_kapupontos_versek_elso	0	25	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2B)	R3	hibas_versek_elso	1	25	az első próbán kapuhibás versek (bármely kapupont); kötegek: 1
+kapupont_reteg	C (F3V2B)	R3	kapupont_1_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R3	kapupont_1-json_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R3	kapupont_2_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R3	kapupont_3_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R3	kapupont_4_elso	1	25	kötegek: 1
+kapupont_reteg	C (F3V2B)	R3	tobb_kapupontos_versek_elso	0	25	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2B)	R4	hibas_versek_elso	1	50	az első próbán kapuhibás versek (bármely kapupont); kötegek: 1
+kapupont_reteg	C (F3V2B)	R4	kapupont_1_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2B)	R4	kapupont_1-json_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2B)	R4	kapupont_2_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2B)	R4	kapupont_3_elso	1	50	kötegek: 1
+kapupont_reteg	C (F3V2B)	R4	kapupont_4_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2B)	R4	tobb_kapupontos_versek_elso	0	50	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2B)	Összes	hibas_versek_elso	28	200	az első próbán kapuhibás versek (bármely kapupont); kötegek: 6
+kapupont_reteg	C (F3V2B)	Összes	kapupont_1_elso	6	200	kötegek: 2
+kapupont_reteg	C (F3V2B)	Összes	kapupont_1-json_elso	20	200	kötegek: 2
+kapupont_reteg	C (F3V2B)	Összes	kapupont_2_elso	0	200	kötegek: 0
+kapupont_reteg	C (F3V2B)	Összes	kapupont_3_elso	1	200	kötegek: 1
+kapupont_reteg	C (F3V2B)	Összes	kapupont_4_elso	1	200	kötegek: 1
+kapupont_reteg	C (F3V2B)	Összes	tobb_kapupontos_versek_elso	0	200	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_kereszt	C (F3V2B)	Összes	kapupont_versek_elso	28	28	a kapupont-bontás hibás versei (28) = a kapuhiba-szakasz rétegenkénti első-próbás számai (R1: 21, R2: 5, R3: 1, R4: 1, Összes: 28) = jsonl probalkozas=2 versek (28) = napló kapuhiba_db(probalkozas=1) összeg (28): EGYEZIK
+kapupont_vers	C (F3V2B)	R1	1Móz 2:2	1	köteg 1	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [1, []] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 24:27	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 28:8	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 30:7	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 31:18	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 32:19	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 38:22	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 41:19	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 45:24	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 49:25	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 50:2	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 32:5	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 37:12	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 38:8	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 38:21	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 39:23	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 39:26	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 39:31	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 39:33	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 40:14	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 40:36	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R2	Jób 34:28	1	köteg 12	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [8, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V2B)	R2	Zsolt 16:11	1	köteg 12	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [1, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V2B)	R2	Zsolt 18:1	1	köteg 12	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [19, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V2B)	R2	Zsolt 22:32	1	köteg 12	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [8, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V2B)	R2	Zsolt 59:8	1	köteg 12	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [8, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V2B)	R3	Ézs 48:5	4	köteg 14	első próba: 4. ezek az eredeti szavak sem a "parok" jobb oldalán, sem a "forditatlan"-ban nem szerepelnek: [11] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R4	Mk 2:10	3	köteg 16	első próba: 3. ezek a magyar szavak többször szerepelnek (a "parok" bal oldalán vagy a "betoldas"-ban): [8] | végleg: átment (2. próba) | aranyvers
+jeloles	C (F3V3)	R1	lefedettseg_kuszobon_kivul	296	317	az R1 lefedettsége a 95%-os küszöbön kívül (93,4%); a hiányzó 21 link közül 12 K4-eltérés (a) — a K4-szám Opus-besorolás, nem mérés (f21p/c_diff_p3c_besorolas.tsv); a besorolás hiányzó eltérés-sorai: 21 (EGYEZIK)

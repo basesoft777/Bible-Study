@@ -1,0 +1,4 @@
+# F21 regresszio (P3c) - a teljes SONNETV3 (anthropic/claude-sonnet-5.5, prompt_v3, minimalis gondolkodas: reasoning max_tokens=1024 -> effort=low, temperature nelkul): a 19 hatralevo koteg; plafon_usd=4.90 (kumulativ), kemeny plafon 5 USD
+futasok=SONNETV3
+koteg_max=mind
+plafon_usd=4.90

@@ -1,0 +1,1 @@
+{"ts": "2026-10-01T06:05:43+00:00", "futas": "SONNETV3", "koteg": 1, "modell": "anthropic/claude-sonnet-5.5", "http_hibakod": 400, "hibauzenet": "HTTP kliens-hiba 400: {\"error\":{\"message\":\"Reasoning is mandatory for this endpoint and cannot be disabled.\",\"code\":400,\"metadata\":{\"provider_name\":null}}}"}
