@@ -13,6 +13,7 @@ olvas: [konkordancia/, adat/datasetek.tsv, adat/szotar_szerepek.tsv, eszkozok/ge
 ir: [adat/licencek.tsv, adat/SEMA.md]
 fugg: []
 nem_fugg: [22]
+pr: 99
 lezarva_osszegzes: licenc-leltár (#24, F24): adat/licencek.tsv 39 adatkészlet-sorral (15 tisztazott, 24 tisztazatlan; 6 share-alike), SEMA 2.19, összesítő DT-F24 (köztük a mostani nyilvános terjesztés: LXX_kivonat, MCGED); ellenőrzés naplok/ELLENOR_F24.md (5 kör, az utolsó 9 tétellel, K4 nem TISZTA, a maradék a zárójelentésben)
 ---
 
