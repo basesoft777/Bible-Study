@@ -16,3 +16,14 @@ Hatókör (8 fájl); más brief fugg/nem_fugg/olvas/ir változatlan; FELADATOK.m
 
 ## NEM ELLENŐRIZHETŐ (az ügynök szerepe miatt)
 K1, K7 (`ellenoriz`, tesztek, CI), a #23/#35/#38 tényleges jelöltlistája, a CI-jelentés egyezése.
+
+---
+
+# 2. kör (c66f7cb..81d14a9, F39.3 után): ELTÉRÉS 2 tétel
+
+Az 1. kör 1–5. tétele javult (explicit `fugg` megmarad; `fugg_korok` nem rejti a >2 hosszú kört; brief `fut` + „#32 nem indul”; DT-F39a–e,g ✅; a próbanapló indoklása javítva). K1–K8 OK (K1, K7: az orkesztrátor futtatta: `ellenoriz` 0 hiba, 58 teszt OK, KOR 0; K2–K6, K8 kód- és diff-olvasással).
+
+1. **E1** `eszkozok/feladatok.py:528-530`: a `fugg_korok` SCC-szinten szűr, ezért kölcsönös párok láncán/csillagán (A↔B↔C; A↔B és A↔C) hamis „függési kör” hibát ad, pedig a DT-F39g szerint ez két `kizar` + FIGYELEM. Regresszió a cc1a60e-hez képest; a mai adaton nem jelentkezik; teszt nem fedi.
+2. **E2** `naplok/F39_probafuttatas.md:40`: a napló az F39.3 előtti futást (56 teszt) rögzíti, a mostani 58.
+
+Megjegyzés: a DONTESEK DT-F39g sora csak az F39.1-re hivatkozik (a kovetkezo.md-rész az F39.2-ben készült) — apróság.
