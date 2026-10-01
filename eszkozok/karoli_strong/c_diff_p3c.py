@@ -310,7 +310,23 @@ def fejlec(info, ts, van_kezi, futasok):
 
 
 # jellemző példák (futás, vers, irány, k, e) — kézi válogatás a besorolás után; a (c) esetek mind listázódnak
-PELDAK = []
+PELDAK = [
+    ('F3V3', 'Péld 23:19', 'tobblet', 4, 4),       # megszűnt, K3 (DT21 b)
+    ('F3V3', 'Péld 23:19', 'hianyzo', 3, 4),       # megszűnt, K4 (DT21 e)
+    ('F3V3', '2Móz 21:26', 'tobblet', 9, 13),      # megszűnt, K4 (DT21 e)
+    ('F3V3', '2Móz 21:26', 'hianyzo', 8, 13),      # átsorolt c -> a, K4
+    ('F3V3', 'Mt 5:34', 'tobblet', 3, 3),          # megszűnt, K3
+    ('F3V3', 'Mt 27:18', 'tobblet', 2, 1),         # megszűnt, K7 (DT21 a)
+    ('F3V3', 'Mk 2:23', 'tobblet', 3, 2),          # megszűnt, K7
+    ('F3V3', 'Jak 3:1', 'tobblet', 7, 8),          # megszűnt, K11 (DT21 c)
+    ('F3V3', 'Mt 21:4', 'hianyzo', 3, 5),          # megszűnt az arany v3 változásával, K11
+    ('F3V3', 'Jób 33:13', 'tobblet', 4, 5),        # az arany v3 hozta létre, (a) K11
+    ('F3V3', '2Móz 25:40', 'hianyzo', 12, 9),      # új (c)
+    ('F3V3', 'Jer 51:3', 'tobblet', 8, 9),         # új (c)
+    ('F3V3', 'Ez 22:25', 'hianyzo', 7, 7),         # új (c), határeset
+    ('F3V3', '1Pét 4:11', 'tobblet', 7, 3),        # maradt (c)
+    ('F3V3', 'Jer 51:3', 'hianyzo', 2, 1),         # (b) 3. szakasz
+]
 
 
 def _sor_md(x):
@@ -435,27 +451,43 @@ def zaro_szakasz(adat, adat2, kezi, futasok, v2t, v2o):
                'eltérés és (c); **megszűnt** = az F3V3-nál nem eltérés; **átsorolt** = az F3V3-nál is eltérés, de a jegyzet v2 / arany '
                'v3 szerint (a) vagy (b); **új** = az F3V3 (c) esete, amely a v2-ben nem volt (c). Az „arany v2→v3: változott” jelölésű '
                'sorokban a változást (részben) az arany változása okozza, nem a modell.', '',
-               '| réteg | v2 (c) összesen | F3V2 (c) | F3V2B (c) | F3V3 (c) | maradt | megszűnt | átsorolt (a/b) | nem mérhető | új (c) |',
-               '|---|---|---|---|---|---|---|---|---|---|']
+               '| réteg | v2 (c) összesen | F3V2 (c) | F3V2B (c) | F3V3 (c) | maradt | megszűnt | ebből mindkét v2-ben (c) | átsorolt (a/b) | '
+               'nem mérhető | új (c) |',
+               '|---|---|---|---|---|---|---|---|---|---|---|']
         v2c = v2_c_kulcsok(v2o)
         for r in RET:
             rs = [x for x in sorok_c3.values() if _van(x['reteg'], r)]
             al = [allapot(x) for x in rs]
-            ki.append('| %s | %d | %d | %d | %d | %d | %d | %d | %d | %d |' % (
+            ki.append('| %s | %d | %d | %d | %d | %d | %d | %d | %d | %d | %d |' % (
                 r, sum(1 for kk in v2c if _van(adat2.reteg[kk[0]], r)), v2t[(V2_FUTASOK[0], r)]['c'], v2t[(V2_FUTASOK[1], r)]['c'],
                 sum(1 for x in rs if x['statusz'] == 'elteres' and x['osztaly'] == 'c'), al.count('maradt'), al.count('megszunt'),
+                sum(1 for x in rs if allapot(x) == 'megszunt' and x['elozmeny_v2'].count(':c') == 2),
                 al.count('atsorolt'), al.count('nem_merheto'), al.count('uj')))
-        # korrigált értékek
+        ki += ['', 'A „megszűnt” eset, amely csak az egyik v2-futásban volt (c), a futásközi ingadozással is összefér (a két v2-futás '
+               'azonos prompttal sem adta ugyanazt); a mindkét v2-futásban (c) eset megszűnése erősebb jel.']
+        # korrigált értékek, a v2-es futásokkal egymás mellett
         ki += ['', '### Korrigált pontosság és lefedettség — Opus-besorolás, nem mérés', '',
-               'Az (a) és (b) eltérést nem-hibának véve. A küszöb szempontjából csak a mért érték számít (PD10).', '',
-               '| réteg | mérőszám | F3V3 mért | F3V3 korrigált (Opus-besorolás, nem mérés) |', '|---|---|---|---|']
+               'Az (a) és (b) eltérést nem-hibának véve. Az F3V3 az arany v3-hoz, az F3V2 és az F3V2B az arany v2-höz (a saját v2-es kézi '
+               'besorolásukkal). A küszöb szempontjából csak a mért érték számít (PD10).', '',
+               '| réteg | mérőszám | F3V2 × v2 mért | F3V2 × v2 korrigált (Opus, nem mérés) | F3V2B × v2 mért | F3V2B × v2 korrigált (Opus, nem mérés) '
+               '| F3V3 × v3 mért | F3V3 × v3 korrigált (Opus-besorolás, nem mérés) |', '|---|---|---|---|---|---|---|---|']
         for r in RET:
+            cel = {'pontosság': [], 'lefedettség': []}
+            for f in V2_FUTASOK:
+                t, c, g, _ = meres_p3c._pl(adat2, f, r)
+                ab = [kk for kk, o in v2o[f].items() if o in ('a', 'b') and _van(adat2.reteg[kk[0]], r)]
+                tb = sum(1 for kk in ab if kk[1] == 'tobblet')
+                hb = sum(1 for kk in ab if kk[1] == 'hianyzo')
+                cel['pontosság'] += [meres_p3c._pct(t, c), meres_p3c._pct(t + tb, c)]
+                cel['lefedettség'] += [meres_p3c._pct(t, g), meres_p3c._pct(t + hb, g)]
             t, c, g, _ = meres_p3c._pl(adat, c3, r)
             ab = [x for x in sorok_c3.values() if x['statusz'] == 'elteres' and x['osztaly'] in ('a', 'b') and _van(x['reteg'], r)]
             tb = sum(1 for x in ab if x['irany'] == 'tobblet')
             hb = sum(1 for x in ab if x['irany'] == 'hianyzo')
-            ki.append('| %s | pontosság | %s | %s |' % (r, meres_p3c._pct(t, c), meres_p3c._pct(t + tb, c)))
-            ki.append('| %s | lefedettség | %s | %s |' % (r, meres_p3c._pct(t, g), meres_p3c._pct(t + hb, g)))
+            cel['pontosság'] += [meres_p3c._pct(t, c), meres_p3c._pct(t + tb, c)]
+            cel['lefedettség'] += [meres_p3c._pct(t, g), meres_p3c._pct(t + hb, g)]
+            for m in ('pontosság', 'lefedettség'):
+                ki.append('| %s | %s | %s |' % (r, m, ' | '.join(cel[m])))
         # a változás konvenciónként
         hatas = [('segített (v2 (c) megszűnt)', 'megszunt'), ('segített (v2 (c) átsorolva a/b-be)', 'atsorolt'),
                  ('nem mérhető', 'nem_merheto'), ('nem segített (v2 (c) maradt)', 'maradt'), ('ártott / új (c)', 'uj')]
