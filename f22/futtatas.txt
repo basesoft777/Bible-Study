@@ -1,4 +1,4 @@
-# F22.3 -- a C (Gemini) futtatas: a konyv tobbi resze (a kesz koteget kihagyja)
+# F22.7 -- no-op ellenorzo futas a workflow modositasa (persist-credentials) utan: minden koteg kesz, hivast nem vegez, koltseg 0
 konyv=1Móz
 koteg_max=mind
 koteg_meret=10
