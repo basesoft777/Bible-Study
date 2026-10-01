@@ -740,6 +740,12 @@ a fordítói promptba fűz be, hogy a fordítás konzisztens maradjon szótárak
 **Induló tartalom (D26):** a `naplok/FORDITAS_P_terminologia.tsv` 13 sora,
 változatlanul, `v1` verzióval.
 
+**v3 (F28, DT26):** az emelés jóváhagyott szakkifejezései (alaktan, rövidítés-feloldások,
+szerzőnevek, könyvnevek). Ha egy kulcs egy hosszabb kulcs része (`compare` ⊂ `מִן compare`),
+a fordítási kapu (`eszkozok/forditas_kapuk.py`) a forrás hosszabb kulcson belüli
+előfordulásait a hosszabbik sorhoz rendeli: a kulcs maga a forrásbeli alak, a
+megkülönböztetés a kulcsban van, nem a kapu lazításában.
+
 ### 2.16 `kiejtes_szabalyok.tsv` — görög átírási szabálytábla (F05_SZOTAR_BRIEF.md S3)
 
 Kulcs: `sorszam`. **Generált célra szolgáló, de kézzel karbantartott** tábla:
