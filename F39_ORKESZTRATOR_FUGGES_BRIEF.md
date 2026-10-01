@@ -5,9 +5,9 @@ kod: ORKESZTRATOR_FUGGES
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: fut
+allapot: dontesre_var
 ad: a közös írási útvonalból kizárás lesz, nem sorrend; nincs több levezetett kör; a halasztott, brief nélküli és 2. fázisú feladat nem tart vissza 1. fázisú feladatot; a /kovetkezo újra ad jelöltet (várhatóan #35, #38, #23)
-kovetkezo: "Te: egyszeri kézi indítás (DT-F39f bootstrap-kivétel); a #32 a #39 lezárásáig nem indul"
+kovetkezo: "Te: döntés a DT-F39g-ről (kölcsönös írás–olvasás = kizar; tág olvas nem ad sorrendet; a tesztfájl CI-helye); utána az M1 folytatódik"
 olvas: [eszkozok/feladatok.py, .claude/commands/kovetkezo.md, .claude/commands/befogad.md, BRIEF_SABLON.md, FELADATOK.md, DONTESEK.md]
 ir: [eszkozok/feladatok.py, eszkozok/tesztek/test_feladatok_fugges.py, .claude/commands/kovetkezo.md, DONTESEK.md, naplok/ELLENOR_ORKFUGG.md]
 fugg: []
