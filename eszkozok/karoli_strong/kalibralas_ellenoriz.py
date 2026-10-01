@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""F21.47 — a kalibráló trigger (SONNETV3, koteg_max=1) utáni gépi ellenőrzés. Nincs API-hívás.
+"""F21.47 / F21.70 — a kalibráló trigger (SONNETV3, koteg_max=1) utáni gépi ellenőrzés. Nincs API-hívás.
 
 A repóban lévő f21p/futasnaplo.tsv-ből, f21p/valaszok/SONNETV3.jsonl-ből és (ha van)
 f21p/valaszok/SONNETV3.hibak.jsonl-ből deterministikusan megmondja:
 
-  (a) elutasította-e a modell a `reasoning: {enabled: false}` vagy a `temperature: 0`
-      paramétert. Bizonyíték: (i) a hibak.jsonl-ben (futtat.hiba_ment) 4xx HTTP-kód (429 és 408
-      kivételével) — a köteg hívása hibára futott, köteg-sor/napló nem készült; (ii) a köteg-sor
-      hivasok[].hiba mezője (a 200-as válasz hibatestje, futtat.hivas). A hibaüzenet kulcsszavai
-      (reasoning, temperature) megnevezik, melyik paraméter. Figyelmeztetés (nem megállás): ha a
-      gondolkodás kikapcsolva fut, de a napló gondolkodási tokent / reasoning-szöveget mutat.
+  (a) elutasította-e a modell a kérést ÉS a gondolkodási lánc minden lépése elutasított-e
+      (F21.70: a Sonnet gondolkodása MINIMÁLIS szinten fut; futtat.S_REASONING_LANC:
+      reasoning.max_tokens=1024 -> reasoning.effort=low). Bizonyíték: (i) a hibak.jsonl-ben
+      (futtat.hiba_ment) 4xx HTTP-kód (429 és 408 kivételével), `lanc_tovabb` jelzés NÉLKÜL — a
+      köteg hívása a lánc végén is hibára futott, köteg-sor/napló nem készült; (ii) a köteg-sor
+      hivasok[].hiba mezője (a 200-as válasz hibatestje, futtat.hivas). A `lanc_tovabb=true` sor a
+      lánc egy elutasított, de a következő lépéssel folytatott lépése: NEM megállási ok, csak
+      naplózott "lánc: tovább" jelzés (a kilépési kód ilyenkor is lehet 0). A hibaüzenet kulcsszavai
+      (reasoning, temperature) megnevezik, melyik paraméter. A mért gondolkodási tokent (napló
+      gondolkodas_token, jsonl hivasok[].usage) külön kiírja; nem figyelmeztet (a gondolkodás be van
+      kapcsolva, a költség tartalmazza).
   (b) a mért köteg-költség és a vetített kumulatív összeg:
         vetített = napló összege (az F3V3 kész + a kalibráló köteg; minden futás) +
                    hátralévő köteg × átlagos mért köteg-költség × újrakérési szorzó,
@@ -21,7 +26,7 @@ f21p/valaszok/SONNETV3.hibak.jsonl-ből deterministikusan megmondja:
       Tájékoztatóul: a köteg-költség felső becslése a Sonnet saját mért legnagyobb
       bemeneti és kimeneti tokenjéből (max token × ár; futtat.ARAK), és az ebből vetített összeg.
 
-Kilépési kód: 0 = mehet tovább; 4 = megállni (a modell elutasította a paramétert, vagy a
+Kilépési kód: 0 = mehet tovább; 4 = megállni (a lánc minden lépését elutasította, vagy a
 vetített kumulatív összeg > küszöb [3.90]); 2 = adathiba (hiányzó/üres bemenet, nincs mért
 köteg és nincs elutasítás-bizonyíték). A kimenet olvasható, a végén a DÖNTÉS sorral; a fejléc
 proveniencia-sor (scope | forras | ts).
@@ -71,7 +76,7 @@ def _jsonl(ut):
 def ellenoriz(forras_dir=None, kuszob=KUSZOB, futas=FUTAS, minta=None):
     """Visszaad: dict ('kod', 'sorok' (olvasható sorok), 'elutasitva', 'vetitett', ...)."""
     forras_dir = forras_dir or futtat.F21P
-    ki = {'kod': KOD_RENDBEN, 'sorok': [], 'elutasitva': False, 'vetitett': None, 'kuszob': kuszob, 'okok': [], 'figyelmeztetesek': []}
+    ki = {'kod': KOD_RENDBEN, 'sorok': [], 'elutasitva': False, 'vetitett': None, 'kuszob': kuszob, 'okok': [], 'figyelmeztetesek': [], 'lanc': []}
     s = ki['sorok']
     naplo_ut = futtat.naplo_ut(forras_dir)
     if not os.path.exists(naplo_ut):
@@ -95,10 +100,14 @@ def ellenoriz(forras_dir=None, kuszob=KUSZOB, futas=FUTAS, minta=None):
     s.append('%s: %d mért köteg-sor, %d naplósor, %d rögzített hívás-hiba; a futás %d kötegű' % (
         futas, len(sorok_j), len(nr), len(hibak), osszes_koteg))
 
-    # --- (a) elutasította-e a paramétert -------------------------------------------------------
-    elutasitas = []
+    # --- (a) elutasította-e a kérést (a gondolkodási lánc minden lépése) ------------------------------
+    elutasitas, lanc = [], []
     for h in hibak:
         kod_ = h.get('http_hibakod')
+        if h.get('lanc_tovabb'):
+            lanc.append('%s. kötegnél a(z) %s lépés elutasítva (HTTP %s), lánc: tovább' % (
+                h.get('koteg'), h.get('gondolkodas_mod', '?'), kod_))
+            continue
         if kod_ is not None and 400 <= kod_ < 500 and kod_ not in (408, 429):
             par = sorted({m.lower() for m in PARAMETER.findall(h.get('hibauzenet', ''))})
             elutasitas.append('HTTP %d a(z) %s. kötegnél%s: %s' % (kod_, h.get('koteg'), ' (a hibaüzenet említi: %s)' % ', '.join(par) if par else '',
@@ -109,22 +118,30 @@ def ellenoriz(forras_dir=None, kuszob=KUSZOB, futas=FUTAS, minta=None):
                 par = sorted({m.lower() for m in PARAMETER.findall(hv['hiba'])})
                 elutasitas.append('hibatest a 200-as válaszban (köteg %s, %s. próba)%s: %s' % (
                     sor.get('koteg'), hv.get('probalkozas'), ' (említi: %s)' % ', '.join(par) if par else '', hv['hiba'][:200]))
+    ki['lanc'] = lanc
+    for x in lanc:
+        s.append('(a) ' + x)
     if elutasitas:
         ki['elutasitva'] = True
-        ki['okok'].append('a modell elutasította a kérést (a reasoning:{enabled:false} / temperature:0 paraméter gyanús)')
+        ki['okok'].append('a modell elutasította a kérést%s' % (
+            ' (a gondolkodási lánc minden lépése elutasítva: %d lépés tovább, majd a végső elutasítás)' % len(lanc) if lanc else ''))
         s.append('(a) ELUTASÍTÁS: igen')
         for x in elutasitas:
             s.append('    - ' + x)
+    elif lanc:
+        s.append('(a) elutasítás: nincs végleges (a lánc %d elutasított lépés után folytatódott: lánc: tovább)' % len(lanc))
     else:
         s.append('(a) elutasítás: nincs (se 4xx hibakód, se hibatest a válaszban)')
     mod = {r['gondolkodas_mod'] for r in nr}
     gond = sum(int(r['gondolkodas_token']) for r in nr)
+    gond_usage = sum(futtat.gondolkodas_token(hv.get('usage') or {}) for sor in sorok_j for hv in sor.get('hivasok', []))
     rsz = sum(hv.get('reasoning_szoveg_karakter', 0) or 0 for sor in sorok_j for hv in sor.get('hivasok', []))
+    ki['gondolkodas_token'] = gond
+    ki['gondolkodas_token_usage'] = gond_usage
     if nr:
-        s.append('    gondolkodas_mod a naplóban: %s; gondolkodási token: %d; reasoning-szöveg: %d karakter' % (', '.join(sorted(mod)), gond, rsz))
-        if mod != {'kikapcsolva'} or gond or rsz:
-            ki['figyelmeztetesek'].append('a gondolkodás nem látszik kikapcsoltnak (mód %s, token %d, szöveg %d karakter)' % (sorted(mod), gond, rsz))
-            s.append('    FIGYELMEZTETÉS: ' + ki['figyelmeztetesek'][-1])
+        s.append('    gondolkodas_mod a naplóban: %s; mért gondolkodási token: %d (napló), %d (jsonl usage); reasoning-szöveg: %d karakter' % (
+            ', '.join(sorted(mod)), gond, gond_usage, rsz))
+        s.append('    (a gondolkodás be van kapcsolva minimális szinten: a mért gondolkodási token a mért költségben benne van; nem figyelmeztetés)')
 
     # --- adathiány ---------------------------------------------------------------------------------
     if not sorok_j or not nr:
@@ -222,7 +239,7 @@ def onteszt():
         kesz = len({r['koteg'] for r in s})
         return {'osszeg': sum(float(r['koltseg_usd']) for r in sor), 'c_all': c_all, 'c_p1': c_p1, 'kesz': kesz,
                 'ujra': any(r['probalkozas'] == '2' for r in s), 'max_be': max(int(r['bemenet_token']) for r in s),
-                'max_ki': max(int(r['kimenet_token']) for r in s)}
+                'max_ki': max(int(r['kimenet_token']) for r in s), 'gond': sum(int(r['gondolkodas_token']) for r in s)}
     try:
         # 1. rendben: F3V3 kész + 1 Sonnet-köteg, újrakérés nélkül -> M = 1.3, kód 0
         m1 = uj('f21p_onteszt_kal_ok_')
@@ -240,7 +257,9 @@ def onteszt():
         ar = futtat.ARAK[futtat.MODELLEK['S']]
         ellen(abs(r1['felso_koteg'] - (k1['max_be'] * ar[0] + k1['max_ki'] * ar[1]) / 1e6) < 1e-12 and r1['felso_koteg'] >= k1['c_p1'] * 0 and r1['felso_vetitett'] > 0,
               'a felső köteg-becslés nem a mért max token × ár')
-        ellen(not r1['figyelmeztetesek'], 'a kikapcsolt gondolkodás mellett figyelmeztetés: %s' % r1['figyelmeztetesek'])
+        ellen(not r1['figyelmeztetesek'] and 'mért gondolkodási token: %d (napló), %d (jsonl usage)' % (k1['gond'], k1['gond']) in szoveg1
+              and k1['gond'] > 0 and 'reasoning_max_tokens=1024' in szoveg1 and r1['gondolkodas_token'] == k1['gond'],
+              'a mért gondolkodási token nincs (külön) kiírva / figyelmeztetés van: %s' % r1['figyelmeztetesek'])
         # 2. újrakérés a kalibráló kötegben: M a mért adatból
         m2 = uj('f21p_onteszt_kal_ujra_')
         futtat_mock(m2, futtat.MockKuldo(), ['F3V3'], None)
@@ -274,7 +293,7 @@ def onteszt():
                 return futtat._MockValasz({'error': self.uzenet}, status=self.kod)
         futtat_mock(m4, Elutasit(400, 'Unsupported parameter: reasoning.enabled=false'), [FUTAS], 1)
         r4 = csendben(ellenoriz, m4)
-        ellen(r4['kod'] == 4 and r4['elutasitva'] and 'reasoning' in '\n'.join(r4['sorok']) and 'HTTP 400' in '\n'.join(r4['sorok'])
+        ellen(r4['kod'] == 4 and r4['elutasitva'] and len(r4['lanc']) == 1 and 'reasoning' in '\n'.join(r4['sorok']) and 'HTTP 400' in '\n'.join(r4['sorok'])
               and not os.path.exists(futtat.valasz_ut(FUTAS, m4)), 'a HTTP 400 nem 4-es kód / nincs megnevezve a paraméter: %s' % r4['kod'])
         # 5. 200-as hibatest (temperature) a köteg-sorban -> kód 4
         m5 = uj('f21p_onteszt_kal_hibatest_')
@@ -299,7 +318,25 @@ def onteszt():
         m8 = uj('f21p_onteszt_kal_csaknaplo_')
         futtat_mock(m8, futtat.MockKuldo(), ['F3V3'], None)       # csak az F3V3: a SONNETV3-nak nincs sora
         ellen(csendben(ellenoriz, m8)['kod'] == 2, 'a SONNETV3 nélküli napló nem adathiba')
-        # 8. figyelmeztetés: a gondolkodás nem látszik kikapcsoltnak
+        # 7b. lánc: az 1. lépés (max_tokens=1024) elutasítva, a 2. (effort=low) sikeres -> kód 0, "lánc: tovább"
+        m10 = uj('f21p_onteszt_kal_lanc_ok_')
+        futtat_mock(m10, futtat.MockKuldo(), ['F3V3'], None)
+        futtat_mock(m10, futtat.MockKuldo(s_max_tokens_400=True), [FUTAS], 1)
+        r10 = csendben(ellenoriz, m10)
+        sz10 = '\n'.join(r10['sorok'])
+        ellen(r10['kod'] == 0 and not r10['elutasitva'] and len(r10['lanc']) == 1 and 'lánc: tovább' in sz10
+              and 'reasoning_effort=low' in sz10 and 'DÖNTÉS: mehet tovább (0)' in sz10 and 'nincs végleges' in sz10
+              and csendben(main, ['--forras-dir', m10]) == 0,
+              'a lánc (1. elutasítva, 2. sikeres) nem 0-s kód / nincs "lánc: tovább": %s %s' % (r10['kod'], sz10[:300]))
+        # 7c. lánc: mindkét lépés elutasítva -> kód 4 (a végső elutasítás + a lánc-lépés is látszik)
+        m11 = uj('f21p_onteszt_kal_lanc_mind_')
+        futtat_mock(m11, futtat.MockKuldo(), ['F3V3'], None)
+        futtat_mock(m11, futtat.MockKuldo(s_minden_400=True), [FUTAS], 1)
+        r11 = csendben(ellenoriz, m11)
+        ellen(r11['kod'] == 4 and r11['elutasitva'] and len(r11['lanc']) == 1 and 'a gondolkodási lánc minden lépése elutasítva' in '\n'.join(r11['okok'])
+              and csendben(main, ['--forras-dir', m11]) == 4,
+              'a lánc mindkét lépésének elutasítása nem 4-es kód: %s' % r11['kod'])
+        # 8. a gondolkodási token (mért) külön kiírva, nem figyelmeztetés
         m9 = uj('f21p_onteszt_kal_gond_')
         futtat_mock(m9, futtat.MockKuldo(), ['F3V3'], None)
         futtat_mock(m9, futtat.MockKuldo(), [FUTAS], 1)
@@ -316,7 +353,9 @@ def onteszt():
         with open(ut, 'w', encoding='utf-8', newline='\n') as f:
             f.write('\n'.join(sorok))
         r9 = csendben(ellenoriz, m9)
-        ellen(r9['kod'] == 0 and r9['figyelmeztetesek'] and 'FIGYELMEZTETÉS' in '\n'.join(r9['sorok']), 'a gondolkodási token nem ad figyelmeztetést')
+        ellen(r9['kod'] == 0 and not r9['figyelmeztetesek'] and 'FIGYELMEZTETÉS' not in '\n'.join(r9['sorok'])
+              and r9['gondolkodas_token'] == 77 * len([1 for r_ in _olvas_tsv(ut) if r_['futas'] == FUTAS]),
+              'a naplóbeli gondolkodási token figyelmeztetést ad, vagy nem a naplóösszeg szerepel: %s' % r9['gondolkodas_token'])
         # 9. determinizmus: ugyanaz a bemenet, ugyanaz a kimenet (a ts-sor kivételével)
         ra = [x for x in csendben(ellenoriz, m1)['sorok'][1:]]
         rb = [x for x in csendben(ellenoriz, m1)['sorok'][1:]]
@@ -342,7 +381,7 @@ def onteszt():
             print('  ' + h)
         return 1
     print('kalibralas_ellenoriz önteszt rendben (0: rendben, M=1.3 / mért M független számítással; 4: túl drága, HTTP 400, 200-as hibatest; '
-          '2: adathiba, 503; figyelmeztetés, küszöb-paraméter, determinizmus, régi kimenetek bájtazonossága)')
+          '4: a lánc mindkét lépése elutasítva; 0: lánc 1. lépése elutasítva, a 2. sikeres; 2: adathiba, 503; mért gondolkodási token kiírása, küszöb-paraméter, determinizmus, régi kimenetek bájtazonossága)')
     return 0
 
 
