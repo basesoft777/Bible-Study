@@ -307,3 +307,10 @@ minősíti, a kilépési kód 0). *Helyesbítés (ELLENOR_F28 8. tétel): koráb
   „construct הַשְׁחִית” → „constructus הַשְׁחִית” („status” nélkül) — ezért kapu=nem.
 - A 40 `teljes` sor kapu-eredménye: csak a G1941 v1-es „see → l.” sértése és a G0282
   rögzített Heb.-kivétele marad (mint eddig).
+- **F28.46 (ELLENOR_DT27 1., a) opció):** a kulcsolás pontosítva — csak a kapu=igen
+  hosszabb kulcs von el; a kapu=nem `which see` belsejében álló `see` a kapu=igen
+  „see → l.” soré marad. Átfedő pár (hosszabb kapu=nem ⊃ rövidebb kapu=igen) a 71 sorban
+  egy van: `which see` ⊃ `see`. Kapufutás az új kulcsolással: a 39 F28-szócikk mind
+  RENDBEN; a 40 sorból csak a G1941 régi, önálló „see” sértése marad (a forrásában
+  nincs „which see”). Tesztek: `test_kapu_nem_hosszabb_kulcs_nem_von_el`,
+  `test_kapu_igen_hosszabb_kulcs_elvon`.

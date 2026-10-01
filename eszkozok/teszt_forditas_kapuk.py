@@ -117,12 +117,29 @@ class KapuOszlop(unittest.TestCase):
         self.assertTrue(K.kapus_sor({'kapu': ' '}))
         self.assertFalse(K.kapus_sor({'kapu': 'nem'}))
 
-    def test_kapu_nem_hosszabb_kulcs_tovabbra_is_lefedi(self):
-        # a kapu=nem `מִן compare` találatai nem a kapu=igen `compare` sorhoz tartoznak
-        term = [{'angol': 'compare', 'magyar': 'vö.', 'kapu': 'igen'},
-                {'angol': 'מִן compare', 'magyar': 'comparativus', 'kapu': 'nem'}]
-        forras = 'be swift, with מִן compare, of warriors'
-        self.assertEqual(K.ellenoriz_terminologia(forras, 'gyorsnak lenni', term, [])[0], 'RENDBEN')
+    def test_kapu_nem_hosszabb_kulcs_nem_von_el(self):
+        # ELLENOR_DT27 1. (a) opció: a kapu=nem `which see` belsejében álló `see`
+        # a kapu=igen „see → l.” soré marad
+        term = [{'angol': 'see', 'magyar': 'l.', 'kapu': 'igen'},
+                {'angol': 'which see', 'magyar': 'l. ott', 'kapu': 'nem'}]
+        forras = 'Rom 8:21 (on which see δουλεία)'
+        e, r = K.ellenoriz_terminologia(forras, 'Róm 8:21 (ehhez δουλεία)', term, [])
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('see -> l. hianyzik', r)
+        self.assertNotIn('which see', r)
+        self.assertEqual(K.ellenoriz_terminologia(forras, 'Róm 8:21 (ehhez l. δουλεία)', term, [])[0],
+                         'RENDBEN')
+
+    def test_kapu_igen_hosszabb_kulcs_elvon(self):
+        # a kapu=igen hosszabb kulcs (`which see`) továbbra is elvonja a rövidebbet
+        term = [{'angol': 'see', 'magyar': 'l.', 'kapu': 'igen'},
+                {'angol': 'which see', 'magyar': 'l. ott', 'kapu': 'igen'}]
+        forras = '(λύτρον, which see)'
+        e, r = K.ellenoriz_terminologia(forras, '(λύτρον, vö.)', term, [])
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('which see -> l. ott', r)
+        self.assertNotIn('; see -> l.', r)
+        self.assertFalse(r.startswith('see -> l.'))
 
     def test_prompt_tartalmazza_a_kapu_nem_sorokat(self):
         import emeles

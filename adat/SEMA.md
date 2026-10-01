@@ -739,9 +739,10 @@ a fordítói promptba fűz be, hogy a fordítás konzisztens maradjon szótárak
 | `verzio` | `v<N>` | ✔ | A terminológia-tábla verziója; a `forditasok.tsv` `terminologia_verzio` mezője erre mutat. |
 | `kapu` | `igen` / `nem` | | DT27: ellenőrzi-e a fordítási kapu (`eszkozok/forditas_kapuk.py`, 5. terminológia) a sort. `nem`: a sor a fordítói promptba bekerül, de a kapu nem követeli meg a magyar alakot — azoknál a soroknál, amelyek forrásbeli angol alakja nem egyértelmű kulcs (szórend, minta, többjelentésű szó). Hiányzó vagy üres érték: `igen`. A `forditasok.tsv` 14. szabálya (`ellenoriz.py`, verzió-elmaradás) ettől független. |
 
-A `kapu=nem` sor kulcsa is részt vesz a pontos kulcsolásban (a hosszabb kulcs
-találatai a saját sorához tartoznak, l. a v3 bekezdést); a kapu csak a
-megkövetelést hagyja el. Az oszlop bevezetése (DT27) nem emelte a `verzio`-t:
+A pontos kulcsolásban (l. a v3 bekezdést) csak a `kapu=igen` hosszabb kulcs vonja el
+a rövidebb kulcs előfordulásait; a `kapu=nem` hosszabb kulcs (pl. `which see`)
+belsejében álló rövidebb előfordulás (`see`) a rövidebb, `kapu=igen` soré marad, így
+egy `kapu=nem` sor nem vehet ki a kapu alól ellenőrzött sort (ELLENOR_DT27, F28.46). Az oszlop bevezetése (DT27) nem emelte a `verzio`-t:
 a sorok tartalma nem változott, csak az ellenőrzésük módja.
 
 **Induló tartalom (D26):** a `naplok/FORDITAS_P_terminologia.tsv` 13 sora,
