@@ -49,6 +49,7 @@ BDB_UT = os.path.join(REPO, 'konkordancia', 'BDB_teljes_unabridged.tsv')
 KAROLI_UT = os.path.join(REPO, 'konkordancia', 'Konyv_normalizalo_tabla.tsv')
 PROMPT_UT = os.path.join(REPO, 'forditas', 'prompt_v4.md')
 LISTA_UT = os.path.join(REPO, 'naplok', 'EMELES_lista.tsv')
+PROMPT_JELOLO = '\n<!-- PROMPT-KEZDET -->\n'
 
 LISTA_FEJLEC = ['strong', 'szotar', 'entry_id', 'karakter', 'forras_hash',
                 'forras_eredet', 'kezi_sorok', 'kimarad']
@@ -255,6 +256,8 @@ def darab_info_szoveg(i, n):
 def prompt_epit(strong, forras_darab, darab_info=''):
     with open(PROMPT_UT, encoding='utf-8') as fh:
         sablon = fh.read()
+    # a jelolo feletti resz (fejlec, verzionaplo) nem prompt
+    sablon = sablon.split(PROMPT_JELOLO, 1)[1].lstrip('\n')
     term, _ = terminologia_szoveg()
     szotar = szotar_strongnak(strong)
     return (sablon
