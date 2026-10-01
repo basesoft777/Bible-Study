@@ -26,3 +26,23 @@ Alap: 5 commit (F24.0–F24.3), fájlok: `DONTESEK.md` +1, `F24_LICENC_BRIEF.md`
 7. **Kisebb:** SDBH/SDGNT/UBS `forras_hely` sortartománya (`:12,13,32,33,34`; a szó szerinti ©-mondat a `SDBH_SDGNT_README.md` 30. és 32. sora); OSHL commit hiányzik (`:28`, a README 6. sora rögzíti: `21c9add…`); SECE_H (`:15`) megjegyzésében nincs `javaslat` (a `lexikon_general.py:72` `'SECE_H': 'közkincs'`), a 8., 24., 25. sor nem `javaslat:` kezdetű; `adat/SEMA.md:11` „A nyolc tábla” (a lista 9 soros); `adat/SEMA.md:850` literális tabulátor a `\t` helyett; a `licencek.tsv:12` „(N11)” kétértelmű (a `NYITOTT_FELADATOK.md` N11 más; ez a terv N11-e).
 
 Nem ellenőrizhető: E17 (új tábla, a küszöb DT3-ban nyitott); a végrehajtó CI-jelentésével való egyezés.
+
+---
+
+## 2. kör — origin/main..17ae98f (a javítás: 72d5390..17ae98f)
+
+*Az ellenőr 2. köri jelentése, az orkesztrátor mentette, tömörítve. Eredmény: **ELTÉRÉS, 13 tétel**. Az 1. kör 14 tételéből a (1) öt sora, a K1 `BDB_etimologia`/`Strongs bővítés`, a Macula_heber megjelölés, a SEMA:11/:850, az SDBH ©-sorok, az OSHL-commit és az N11 javítva (OK). Igazolt: 39 sor, 22 `tisztazott` / 17 `tisztazatlan`; a 9 `tisztazott`+`javaslat` sor egyezik a DT-F24 listájával; nulla-diff a `eszkozok/`, `konkordancia/`, `lexikon/`, `FELADATOK.md` útvonalakon; E2–E8, E10–E16 és E12–E15: 0 találat (E9: 2 régi JELENTES, `SEMA.md:236–237`).*
+
+Súlyossági sorrendben:
+
+1. **TBESH `kereskedelmi=igen` + `tisztazott` (`licencek.tsv:26`), pedig a forrás (`konkordancia/TBESH.txt:6`) kimondja: „Permission should be gained from Online Bible before these definitions are applied in any project.”** Kitöltött hiány (munkaszabály 1); a záradékot a repó egyetlen dokumentuma sem rögzíti; a brief 3.2 szerint a `lexikon_general.py:63` besorolástól való eltérés `javaslat`-ot kérne.
+2. **A „TBESH/TBESG 4.0 verzió nem igazolt” állítás hamis** (`licencek.tsv:26–27`, DT-F24 zárójele): a `TBESH.txt:10` és a `TBESG.txt:12` kimondja „(CC BY 4.0)”. (Az 1. kör 6. pontja e két sorra téves volt.) `forras_hely`: TBESH.txt 10–20., TBESG.txt 12–22. sor; `licenc`: CC BY 4.0.
+3. **STEPBible „Please do not redistribute it yourself”** (`TBESH.txt:17`, `TBESG.txt:19`; valószínűleg a TAHOT/TAGNT/TIPNR is) nincs a táblában; SEMA 2.19 szerint `feltetelesen` vagy legalább `javaslat:`.
+4. **Karoli_Strong_kivonat** (`:9`): `allapot=tisztazatlan`, de `kereskedelmi=igen`, `share_alike=nem`; a `naplok/F24_zaras.md:7` állítása („minden tisztazatlan sorban tisztazatlan/tisztazatlan”) hamis (16, nem 17); a „ts a fájl fejlécében” sem igaz; a `kotelezo_megjeloles` nem szó szerinti.
+5. **Macula_gorog `tisztazott`** (`:25`), de a sor maga írja, hogy a görög LICENSE-szöveg nincs a repóban; a hivatkozott hely (`F17_import_naplo.md:16`) összefoglaló, nem idézet → SEMA 2.19 2. szabálya szerint nem `tisztazott`.
+6. DT-F24 (1) 2. opciója 17 tisztázatlanból ötöt nem sorol be (Karoli_Strong_kivonat, Girdlestone, Versifikacios_tablak, LSJ, projekt_adat).
+7. DT-F24: „a (4) pont szerinti LICENSE-idézés” téves kereszthivatkozás (a (4) az N9; az (1) pont ajánlás-oszlopa a helyes).
+8. LXX_OS és Strong_szotar `kotelezo_megjeloles` (`:16,29`): a GreekResources-mondat a `Strong_szotar_README.md:66–68`-ból való, a `forras_hely` nem erre mutat; a héber „Open Scriptures, CC BY 4.0” a repó megfogalmazása.
+9. Kisebb: SECE_H a `lexikon_general.py` 73. sora (nem 72.); a DT-F24 az LSJ-t „CC BY-SA 4.0”-ként csoportosítja, a tábla 3.0-t ír; `:25` megjegyzése nem `javaslat:` kezdetű mondat.
+
+K4: nem TISZTA; a commitolt `ELLENOR_F24.md` 1. sora nem „TISZTA / ELTÉRÉS: n tétel” alakú. Nem ellenőrizhető: a `konkordancia/` 153 bejegyzésének alkönyvtáras bontása az ellenőr eszközeivel; E17; a végrehajtó CI-jelentése.
