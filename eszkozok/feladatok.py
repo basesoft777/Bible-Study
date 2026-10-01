@@ -526,8 +526,16 @@ def fugg_korok(briefek, main_all=None):
     """A hibas koroket adja: a kolcsonos (kizarassa alakitott) parok kivetelevel minden
     1-nel nagyobb kor, a kolcsonos elekkel egyutt szamolva (A↔B, A→C, C→B is kor)."""
     _, _, _, _, kolcsonos, teljes = _szamol(briefek, main_all)
-    parok = set((a, b) for a, b, _ in kolcsonos)
-    return [k for k in korok(teljes) if not (len(k) == 2 and (k[0], k[1]) in parok)]
+    koles = set()
+    for a, b, _ in kolcsonos:
+        koles.add((a, b))
+        koles.add((b, a))
+    hibas = []
+    for k in korok(teljes):
+        # a tiszta kolcsonos elekbol allo komponens (par, lanc, csillag) nem kor
+        if any((a, b) not in koles for a in k for b in teljes.get(a, {}) if b in k):
+            hibas.append(k)
+    return hibas
 
 
 def korok(fugg):

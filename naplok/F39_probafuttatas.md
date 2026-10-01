@@ -37,7 +37,7 @@ KIZAR	32	39	eszkozok/feladatok.py	×
 ## tesztek
 ```
 ----------------------------------------------------------------------
-Ran 56 tests in 0.137s
+Ran 60 tests in 0.160s
 
 OK
 ```

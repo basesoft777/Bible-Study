@@ -173,6 +173,22 @@ class SzabalyTest(Fixture):
         self.brief(3, olvas=['adat/b.tsv'], ir=['adat/c.tsv'])
         self.assertTrue(any('függési kör' in u for _, u in self.hibak()))
 
+    def test_kolcsonos_lanc_nem_kor(self):
+        # 1↔2 és 2↔3: két kizar + figyelmeztetés, nem hiba
+        self.brief(1, olvas=['adat/b.tsv'], ir=['adat/a.tsv'])
+        self.brief(2, olvas=['adat/a.tsv', 'adat/c.tsv'], ir=['adat/b.tsv'])
+        self.brief(3, olvas=['adat/b.tsv'], ir=['adat/c.tsv'])
+        self.assertEqual(self.hibak(), [])
+        self.assertEqual(len(self.fugg()[1]), 2)
+
+    def test_kolcsonos_csillag_nem_kor(self):
+        # 1↔2 és 1↔3
+        self.brief(1, olvas=['adat/b.tsv', 'adat/c.tsv'], ir=['adat/a.tsv'])
+        self.brief(2, olvas=['adat/a.tsv'], ir=['adat/b.tsv'])
+        self.brief(3, olvas=['adat/a.tsv'], ir=['adat/c.tsv'])
+        self.assertEqual(self.hibak(), [])
+        self.assertEqual(len(self.fugg()[1]), 2)
+
     def test_harmas_kor_hiba(self):
         self.brief(1, olvas=['adat/b.tsv'], ir=['adat/a.tsv'])
         self.brief(2, olvas=['adat/c.tsv'], ir=['adat/b.tsv'])
