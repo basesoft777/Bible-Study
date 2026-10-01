@@ -1,4 +1,4 @@
-# F21 regresszio (P3c) - 2. trigger: kalibralo SONNETV3 (anthropic/claude-sonnet-5.5, prompt_v3, gondolkodas kikapcsolva), egy koteg (10 vers); plafon_usd=3.90, kemeny plafon 4 USD
-futasok=SONNETV3
-koteg_max=1
+# F21 regresszio (P3c) - KJV-meres: F8V3 (C, prompt_v3, 200 vers, KJV a teljes F19-tablabol); az 1-2. koteg mar kesz (helyi baleset, naplok/F21_baleset_F8V3.md); plafon_usd=3.90, kemeny plafon 4 USD
+futasok=F8V3
+koteg_max=mind
 plafon_usd=3.90
