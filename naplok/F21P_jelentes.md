@@ -1,8 +1,149 @@
 # F21P_jelentes.md — Károli–Strong mérőpilot: záró jelentés (P6)
 
-<!-- GENERÁLT: eszkozok/karoli_strong/jelentes_f21p.py | scope=F21 mérőpilot, P6 záró jelentés (A, B, C, A+B, A+B+C; R1–R4) | forras=f21p/meres_eredmeny.tsv, f21p/meres_v2_eredmeny.tsv, f21p/koltseg_vetites.tsv, f21p/ingadozas.tsv, f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv, f21p/futasnaplo.tsv, f21p/minta.tsv, f21p/sorrend_eltero_versek.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/meres_p3b_eredmeny.tsv, f21p/koltseg_vetites_p3b.tsv, f21p/c_diff_f3v2b_besorolas.tsv | ts=2026-09-30T15:23:53+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
+<!-- GENERÁLT: eszkozok/karoli_strong/jelentes_f21p.py | scope=F21 mérőpilot, P6 záró jelentés (A, B, C, A+B, A+B+C; R1–R4) | forras=f21p/meres_eredmeny.tsv, f21p/meres_v2_eredmeny.tsv, f21p/koltseg_vetites.tsv, f21p/ingadozas.tsv, f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv, f21p/futasnaplo.tsv, f21p/minta.tsv, f21p/sorrend_eltero_versek.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/meres_p3b_eredmeny.tsv, f21p/koltseg_vetites_p3b.tsv, f21p/c_diff_f3v2b_besorolas.tsv, f21p/meres_p3c_eredmeny.tsv, f21p/koltseg_vetites_p3c.tsv, f21p/c_diff_p3c_besorolas.tsv, f21p/kjv_meres_eredmeny.tsv, f21p/elopar_kjv_eredmeny.tsv, f21p/meres_p3c_c_eredmeny.tsv | ts=2026-10-01T09:39:05+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
 
 A számok kizárólag szkriptkimenetből jönnek (a forrás soronként jelölve). A **korrigált** értékek kizárólag „**Opus-besorolás, nem mérés**” jelöléssel szerepelnek; a küszöb szempontjából csak a mért érték számít (PD10). A jelentés nem ajánl döntést a #22-ről.
+
+## A regressziós mérés (P3c, prompt_v3) — összefoglaló és végleges eredmény (F21.82)
+
+Források: f21p/meres_p3c_eredmeny.tsv, f21p/koltseg_vetites_p3c.tsv, f21p/c_diff_p3c_besorolas.tsv, f21p/kjv_meres_eredmeny.tsv, f21p/elopar_kjv_eredmeny.tsv, f21p/meres_p3c_c_eredmeny.tsv; a régi P3/P3b-adat: f21p/meres_p3b_eredmeny.tsv, f21p/koltseg_vetites_p3b.tsv; a költség: f21p/futasnaplo.tsv. A P3c az arany **v3**-ra mér, a P3b az arany **v2**-re (a két arany 3 linkben tér el; l. naplok/F21P_meres_p3c_c.md). A korrigált értékek kizárólag „Opus-besorolás, nem mérés” jelöléssel; a küszöb szempontjából csak a mért érték számít.
+
+### Végleges eredmény a Döntési szabály szerint: egyik összeállítás sem felel meg
+
+- **A+B (P3b, prompt_v2, arany v2): nem felel meg** — bukott feltétel: 1, 2, 3, 5; nem mért: — (tájékoztató, 1Móz 6:17 nélkül: nem felel meg — bukott feltétel: 1, 2, 3_tajekoztato, 5; nem mért: —).
+- **A+B+C (P3b, prompt_v2, arany v2): nem felel meg** — bukott feltétel: 1, 2, 3, 4, 5; nem mért: — (tájékoztató, 1Móz 6:17 nélkül: nem felel meg — bukott feltétel: 1, 2, 3_tajekoztato, 4, 5; nem mért: —).
+- **Sonnet + C pár (P3c: A = SONNETV3, B = F3V3, prompt_v3, arany v3; döntőbíró nélkül): nem felel meg** — bukott feltétel: 3, 4, 5; nem mért: —; nem mérhető: 1 (tájékoztató, 1Móz 6:17 nélkül: nem felel meg — bukott feltétel: 4, 5; nem mért: —; nem mérhető: 1).
+- A Sonnet + C pár (1) feltétele: **nem mérhető** (0/0 magas link: R3 (PD19 (1))): a Sonnet R3-aranyversei a 15. köteg length-lezárása miatt végleg kapuhibásak; a próféták előtt pótolandó, pótló futás most nincs (PD19 (1)).
+- Az egymodelles összeállítások (A, B, C — F3V2, F3V2B, F3V3 —, Sonnet) a PD6 szerint nem minősíthetők; csak mért számaik vannak.
+
+### (a) Az öt feltétel összeállításonként (Összes; az (1) rétegenként)
+
+Feltételek: (1) `magas` pontosság ≥ 98% rétegenként; (2) lefedettség ≥ 95%; (3) régi arany ≥ 95% (mért = kizárás nélkül; tájékoztató = 1Móz 6:17 nélkül); (4) a vetített teljes költség 90%-os felső széle ≤ 60 USD; (5) `alacsony` arány ≤ 10% (a 200 versen mért link-arány; a Sonnet + C-nél a teljes Bibliára vetített is). Egymodelles összeállításnál az (1) helyén az összpontosság (tájékoztató, PD6), az (5) n.é.
+
+| összeállítás | (1) magas pontosság R1 / R2 / R3 / R4 | (2) lefedettség | (3) régi arany: mért / tájékoztató | (4) költség USD [90%] | (5) alacsony | minősítés |
+|---|---|---|---|---|---|---|
+| A+B (P3b) | 95.4% (83/87) / 93.4% (99/106) / 90.6% (58/64) / 97.0% (98/101) | 64.5% (678/1051) | 56.2% (18/32) / 58.1% (18/31) | 27.9563 [26.7382–29.1534] | 69.7% (2617/3754) | nem felel meg (bukott feltétel: 1, 2, 3, 5; nem mért: —) |
+| A+B+C (P3b) | 95.4% (83/87) / 93.4% (99/106) / 90.6% (58/64) / 97.0% (98/101) | 94.1% (989/1051) | 87.5% (28/32) / 90.3% (28/31) | 85.9074 [79.5981–92.6267] | 59.7% (2086/3493) | nem felel meg (bukott feltétel: 1, 2, 3, 4, 5; nem mért: —) |
+| Sonnet + C (P3c) | 98.3% (291/296) / 99.3% (149/150) / — (0/0) / 98.7% (294/298) | 98.6% (1033/1048) | 93.8% (30/32) / 96.8% (30/31) | 416.4304 [379.8793–460.9697] | 19.1% (700/3673); vetítve 21.4% | nem felel meg (bukott feltétel: 3, 4, 5; nem mért: —; nem mérhető: 1) |
+| A (F1V2, P3b) | n.é. (PD6); összpontosság 82.3% (400/486) | 79.7% (400/502) | 71.4% (10/14) / 76.9% (10/13) | 22.8359 [22.0403–23.6158] | n.é. (PD6) | nem minősíthető (PD6) |
+| B (F2V2, P3b) | n.é. (PD6); összpontosság 60.9% (616/1011) | 93.2% (616/661) | 84.2% (16/19) / 88.9% (16/18) | 5.1204 [4.2687–6.0138] | n.é. (PD6) | nem minősíthető (PD6) |
+| C (F3V2, P3b) | n.é. (PD6); összpontosság 93.6% (1020/1090) | 97.1% (1020/1051) | 93.8% (30/32) / 96.8% (30/31) | 42.0329 [38.1616–46.2746] | n.é. (PD6) | nem minősíthető (PD6) |
+| C (F3V2B, P3b) | n.é. (PD6); összpontosság 93.0% (1025/1102) | 97.5% (1025/1051) | 93.8% (30/32) / 96.8% (30/31) | 42.0348 [38.057–46.494] | n.é. (PD6) | nem minősíthető (PD6) |
+| C (F3V3, P3c) | n.é. (PD6); összpontosság 95.3% (1009/1059) | 96.3% (1009/1048) | 93.8% (30/32) / 96.8% (30/31) | 42.4899 [38.5542–46.5194] | n.é. (PD6) | nem minősíthető (PD6) |
+| Sonnet (SONNETV3, P3c) | n.é. (PD6); összpontosság 97.3% (758/779) | 96.8% (758/783) | 93.8% (30/32) / 96.8% (30/31) | 373.9405 [337.9675–418.6543] | n.é. (PD6) | nem minősíthető (PD6) |
+
+Egymodelles összeállításnál a lefedettség és a régi arany a kapun átment versekre vonatkozik (n a cellában); a Sonnet kapun átment aranyversei: 83.3% (50/60).
+
+### (b) A C (F3V3) a v2-es C-futásokkal egymás mellett, arany v3 (meres_p3c_eredmeny.tsv)
+
+| futás | mérőszám | R1 | R2 | R3 | R4 | Összes |
+|---|---|---|---|---|---|---|
+| C (F3V2) | pontossag_osszes | 94.0% (299/318) | 95.0% (152/160) | 93.8% (258/275) | 91.4% (308/337) | 93.3% (1017/1090) |
+| C (F3V2) | lefedettseg | 94.3% (299/317) | 100.0% (152/152) | 97.4% (258/265) | 98.1% (308/314) | 97.0% (1017/1048) |
+| C (F3V2) | kapuhiba elso_probara | 12.0% (12/100) | 0.0% (0/25) | 8.0% (2/25) | 10.0% (5/50) | 9.5% (19/200) |
+| C (F3V2) | kapuhiba vegleg | 0.0% (0/100) | 0.0% (0/25) | 0.0% (0/25) | 0.0% (0/50) | 0.0% (0/200) |
+| C (F3V2B) | pontossag_osszes | 93.8% (304/324) | 95.0% (151/159) | 93.6% (262/280) | 90.3% (306/339) | 92.8% (1023/1102) |
+| C (F3V2B) | lefedettseg | 95.9% (304/317) | 99.3% (151/152) | 98.9% (262/265) | 97.5% (306/314) | 97.6% (1023/1048) |
+| C (F3V2B) | kapuhiba elso_probara | 21.0% (21/100) | 20.0% (5/25) | 4.0% (1/25) | 2.0% (1/50) | 14.0% (28/200) |
+| C (F3V2B) | kapuhiba vegleg | 0.0% (0/100) | 0.0% (0/25) | 0.0% (0/25) | 0.0% (0/50) | 0.0% (0/200) |
+| C (F3V3) | pontossag_osszes | 96.4% (296/307) | 96.2% (152/158) | 94.4% (255/270) | 94.4% (306/324) | 95.3% (1009/1059) |
+| C (F3V3) | lefedettseg | 93.4% (296/317) | 100.0% (152/152) | 96.2% (255/265) | 97.5% (306/314) | 96.3% (1009/1048) |
+| C (F3V3) | kapuhiba elso_probara | 12.0% (12/100) | 0.0% (0/25) | 40.0% (10/25) | 16.0% (8/50) | 15.0% (30/200) |
+| C (F3V3) | kapuhiba vegleg | 0.0% (0/100) | 0.0% (0/25) | 8.0% (2/25) | 0.0% (0/50) | 1.0% (2/200) |
+
+A prompt_v2 → v3 hatás: Δ = F3V3 − a két v2-futás átlaga (azonos aranyon), 90%-os bootstrap a versek felett; az ingadozás-becslés egyetlen futáspár (|F3V2B − F3V2|, azonos prompt); „kívül”: |Δ| > ingadozás ÉS az intervallum nem tartalmazza a 0-t (leíró jelölés, nem próba).
+
+| réteg | mérőszám | v2 átlag | F3V3 | Δ | Δ 90% | ingadozás | jelölés |
+|---|---|---|---|---|---|---|---|
+| R1 | pontossag | 93.93% | 96.42% | +2.49 pp | [-0.10; +4.49] | 0.20 pp | az ingadozáson belül / a 0-t tartalmazza |
+| R1 | lefedettseg | 95.11% | 93.38% | -1.74 pp | [-3.83; +0.51] | 1.58 pp | az ingadozáson belül / a 0-t tartalmazza |
+| R2 | pontossag | 94.98% | 96.20% | +1.22 pp | [-0.75; +2.85] | 0.03 pp | az ingadozáson belül / a 0-t tartalmazza |
+| R2 | lefedettseg | 99.67% | 100.00% | +0.33 pp | [+0.00; +0.94] | 0.66 pp | az ingadozáson belül / a 0-t tartalmazza |
+| R3 | pontossag | 93.69% | 94.44% | +0.75 pp | [-1.84; +3.50] | 0.25 pp | az ingadozáson belül / a 0-t tartalmazza |
+| R3 | lefedettseg | 98.11% | 96.23% | -1.89 pp | [-3.71; -0.43] | 1.51 pp | kívül az ingadozáson |
+| R4 | pontossag | 90.83% | 94.44% | +3.61 pp | [+1.66; +5.71] | 1.13 pp | kívül az ingadozáson |
+| R4 | lefedettseg | 97.77% | 97.45% | -0.32 pp | [-1.58; +0.91] | 0.64 pp | az ingadozáson belül / a 0-t tartalmazza |
+| Összes | pontossag | 93.07% | 95.28% | +2.21 pp | [+1.01; +3.36] | 0.47 pp | kívül az ingadozáson |
+| Összes | lefedettseg | 97.33% | 96.28% | -1.05 pp | [-1.88; -0.11] | 0.57 pp | kívül az ingadozáson |
+| Összes | kapuhiba_elso_probara | 11.75% | 15.00% | +3.25 pp | [-0.50; +7.00] | 4.50 pp | az ingadozáson belül / a 0-t tartalmazza |
+| Összes | kapuhiba_vegleg | 0.00% | 1.00% | +1.00 pp | [+0.00; +2.00] | 0.00 pp | az ingadozáson belül / a 0-t tartalmazza |
+
+### (c) A Sonnet-futás (meres_p3c_eredmeny.tsv: koltseg, gondolkodas, vegleges_kapuhiba, jeloles)
+
+- Költség: 2.197554 USD (22 hívás; próbálkozás=1: 20, próbálkozás=2: 2); bemenet 231707, kimenet 173414 token.
+- A gondolkodási keret be nem tartása: 142077 gondolkodási token a 173414 kimeneti tokenből; hívásonként a legnagyobb 11144 (min 0, medián 6642, 22 hívás); a keret (reasoning.max_tokens = 1024) fölötti hívás 21 a 22-ből (a legnagyobb a keret 10.9-szerese). A gondolkodási token a kimeneti táblaáron 1.420770 USD a mért 2.197554 USD-ből.
+- Length-lezárás: 2 a 22 hívásból — finish_reason=length: köteg 15 / próba 1, köteg 15 / próba 2; költségük 0.291850 USD; kimenet 12000+12000 token, ebből gondolkodás 11144+10364.
+- A 10 végleges kapuhibás vers (köteg 15, végső kapupont 1-json): Jer 46:21 (R3, aranyvers), Jer 51:3 (R3, aranyvers), Ez 11:3 (R3, aranyvers), Ez 16:57 (R3, aranyvers), Ez 22:25 (R3, aranyvers), Ez 30:5 (R3, aranyvers), Ez 33:31 (R3, aranyvers), Ez 39:13 (R3, aranyvers), Ez 41:2 (R3, aranyvers), Ez 46:12 (R3, aranyvers).
+- a Sonnet-kérés temperature nélkül ment, gondolkodással: a futás nem determinisztikus (egyetlen futás, ingadozás-becslés nincs)
+
+### (d) A beállítás-eltérések jelölése
+
+- F21 pilot: az A és a B gondolkodás nélkül; a C kötelező minimális gondolkodással (kotelezo_effort=minimal); a Sonnet minimális gondolkodási kerettel (reasoning.max_tokens=1024), amelyet a modell nem tartott be (l. gondolkodas).
+- A gondolkodási mód futásonként (futásnapló): Sonnet (SONNETV3): reasoning_max_tokens=1024; C (F3V3): kotelezo_effort=minimal; C (F3V2): kotelezo_effort=minimal; C (F3V2B): kotelezo_effort=minimal.
+
+### (e) P5: a teljes Biblia költsége összeállításonként (F22 műfaji öt réteg, köteg-bootstrap, 90%)
+
+Az A, B, C (F3V2), A+B, A+B+C a P3b-vetítés (koltseg_vetites_p3b.tsv, prompt_v2); a C (F3V3), a Sonnet és a Sonnet + C a P3c-vetítés (koltseg_vetites_p3c.tsv, prompt_v3; a pár = a két futás vetítésének összege, döntőbíró nélkül). Az újrakérési szorzó (M) minden futásnál a saját mért adatból.
+
+| összeállítás | ÓSZ-próza | költészet | próféta | evangélium+ApCsel | levél+Jel | Összes |
+|---|---|---|---|---|---|---|
+| A (F1V2) | 10.5772 [10.1633–10.9407] | 2.584 [2.4804–2.6958] | 4.285 [4.1149–4.4344] | 3.2495 [3.1405–3.3612] | 2.1403 [2.0691–2.214] | 22.8359 [22.0403–23.6158] |
+| B (F2V2) | 2.2947 [1.9029–2.7044] | 0.6623 [0.5586–0.7829] | 0.9279 [0.7696–1.0945] | 0.7444 [0.6232–0.8733] | 0.4911 [0.4115–0.5759] | 5.1204 [4.2687–6.0138] |
+| C (F3V2) | 19.2778 [17.4733–21.2438] | 4.9671 [4.536–5.4531] | 7.8015 [7.0728–8.6014] | 6.0195 [5.4711–6.6193] | 3.967 [3.6058–4.3622] | 42.0329 [38.1616–46.2746] |
+| A+B | 12.8718 [12.2818–13.4151] | 3.2463 [3.0919–3.4163] | 5.2128 [4.9741–5.4321] | 3.9939 [3.8194–4.1659] | 2.6315 [2.5168–2.7445] | 27.9563 [26.7382–29.1534] |
+| A+B+C | 39.2741 [36.4125–42.2582] | 10.1116 [9.3219–11.1173] | 16.2654 [15.0646–17.5362] | 11.9354 [10.7866–13.1005] | 8.3209 [7.7147–8.9708] | 85.9074 [79.5981–92.6267] |
+| C (F3V3) | 19.4119 [17.5993–21.2688] | 5.0931 [4.6433–5.5672] | 7.8611 [7.122–8.6071] | 6.1018 [5.5418–6.6776] | 4.0219 [3.6528–4.4016] | 42.4899 [38.5542–46.5194] |
+| Sonnet (SONNETV3) | 173.3934 [154.8944–194.3728] | 41.2015 [35.9178–46.7355] | 70.938 [63.3828–79.5027] | 53.3063 [48.1794–59.6705] | 35.1014 [31.7197–39.2959] | 373.9405 [337.9675–418.6543] |
+| Sonnet+C | 192.8053 [174.3403–213.9392] | 46.2946 [40.7127–51.9994] | 78.7991 [71.2282–87.5053] | 59.4081 [54.1866–65.8666] | 39.1233 [35.6917–43.3607] | 416.4304 [379.8793–460.9697] |
+
+Ellenőrzés a 200 versre (a konzervatívabb számít, DT21 g): Sonnet (SONNETV3) -0.446%; C (F3V3) -0.087%; Sonnet+C -0.408%.
+
+### (f) A KJV-támpont
+
+- A mérés (kjv_meres_eredmeny.tsv, F8V3 − F3V3, Összes): a pontosság Δ = +0.25 pp [90%: -0.84; +1.32], az ingadozás-becslés (F3V2B − F3V2) -0.47 pp: a mérés szerint nincs kimutatható hatás (az ingadozáson belül); a pilot döntése: „nem igazolt, a javított táblával újramérhető” (PD17 (3)).
+- Az R4: „KJV nélkül, nem mérhető” (meres_p3c_c_eredmeny.tsv); a Károli ↔ KJV versmegfeleltetés zsoltár-eltolódása: N-F21 (NYITOTT_FELADATOK.md).
+- Az előpárosítás KJV-szabálya („nincs KJV-tag → forditatlan-jelölt”; elopar_kjv_eredmeny.tsv, A) önállóan, Összes): pontosság 14.8% (22/149).
+
+### (g) A (c) hibák újrabesorolása (Opus-besorolás, nem mérés; c_diff_p3c_besorolas.tsv, naplok/F21P_C_diff_p3c.md)
+
+- C (F3V3), arany v3: a / b / c = 41 / 22 / 26; Sonnet (50 kapun átment aranyvers): 22 / 17 / 7; közös (c) eset: 1.
+- A konvenciók hatása (a v2-es C-futások (c) eseteihez képest, DT21 a–e): l. (h).
+- Olvasási korlátok: a besorolás az Opus kézi döntése, nem mérés; a Sonnet R3-a nincs benne (kapuhiba); az egyetlen v2-futásban (c) eset megszűnése a futásközi ingadozással is összefér; a korrigált értékek a küszöb szempontjából nem számítanak.
+
+### (h) Nyitott és lezárt tételek
+
+- A DT21 a–e a regressziós mérésben lezárva (segített = a v2 (c) eset megszűnt vagy átsorolódott; nem segített = maradt; ártott = új (c)): a) 2 / 0 / 0; b) 4 / 0 / 0; c) 4 / 0 / 0; d) 0 / 0 / 0; e) 3 / 0 / 0.
+- „Arany-felülvizsgálatra jelölt” sor: 8 (C: 7, Sonnet: 1): 1Pét 4:11, Ez 22:25, Mt 21:4, Mt 23:31, Mt 6:31; a számokban (c), a 6. táblázat zárt (PD10).
+- Az (1) feltétel R3-ja nem mérhető (a Sonnet R3-pótlása a próféták előtt; pótló futás most nincs).
+- N-F21: a Károli ↔ KJV versmegfeleltetés zsoltár-eltolódása (most nem javítjuk; PD17 (1)).
+
+### (i) A teljes pilot költsége (futásnapló, futásonként)
+
+| szakasz | futás | hívás | költség USD | megjegyzés |
+|---|---|---|---|---|
+| P3 | F1 | 40 | 0.132718 |  |
+| P3 | F2 | 37 | 0.017725 |  |
+| P3 | F3 | 27 | 0.257251 |  |
+| P3 | F5 | 20 | 0.060663 |  |
+| P3 | F6 | 18 | 0.009506 |  |
+| P3 | F3V2 | 26 | 0.256731 |  |
+| **P3 összesen** | | | **0.734594** | |
+| P3b | F1V2 | 40 | 0.137698 |  |
+| P3b | F2V2 | 38 | 0.032072 |  |
+| P3b | F5V2 | 20 | 0.072390 |  |
+| P3b | F6V2 | 19 | 0.012887 |  |
+| P3b | F3V2B | 26 | 0.256110 |  |
+| P3b | F4V2 | 34 | 0.359316 |  |
+| **P3b összesen** | | | **0.870473** | |
+| P3c | F3V3 | 26 | 0.260136 |  |
+| P3c | F8V3 | 23 | 0.262474 | ebből a véletlen helyi futás két kötege (1., 2.; naplok/F21_baleset_F8V3.md): 2 hívás, 0.023232 USD |
+| P3c | SONNETV3 | 22 | 2.197554 |  |
+| **P3c összesen** | | | **2.720164** | |
+| **a pilot összesen** | | 416 | **4.325231** | a napló utolsó futó összege 4.325231: EGYEZIK |
+
+A plafonok és a megállási küszöbök (felhasználói döntések): 3 USD (P3/P3b; 2 USD-s küszöb) → 4,00 USD, küszöb 3,90 (PD14 (2)) → 5,00 USD, küszöb 4,90 (PD18 (1)). A futó összeg legnagyobb értéke a naplóban 4.325231 USD: a 4,90-es küszöb és az 5,00-es plafon alatt.
+
+*A lenti szakaszok a P3b- és a P3-adatot őrzik változatlanul (prompt_v2 / v1, arany v2 / v1).*
 
 ## P3b-eredmény (prompt_v2): minden összeállítás az arany v2-höz (forrás: meres_p3b_eredmeny.tsv, koltseg_vetites_p3b.tsv)
 
@@ -491,4 +632,21 @@ A két besorolás különbsége (tájékoztató, F22 − pilot-4): F3 0.002501 U
 ## (f) A korrigált értékek (Opus-besorolás, nem mérés)
 
 A küszöb szempontjából csak a mért érték számít. A (c)-hibák (az arany szerinti valódi C-hibák) darabszáma az Opus besorolása: F3 × arany v1: 37; F3 × arany v2: 37; F3V2 × arany v2: 39 (f21p/c_diff_besorolas.tsv, f21p/c_diff_f3v2_osszevetes.tsv). A korrigált pontosság és lefedettség: naplok/F21P_C_diff.md és naplok/F21P_C_diff_F3V2.md, ugyanezzel a jelöléssel.
+
+
+## Javaslat — a #22 választott iránya (a felhasználó döntése, javaslatként rögzítve; a #22 briefje ezzel nem változik, brief-diff nem készül, teljes futás nem indul)
+
+A felhasználó szó szerinti iránya (PD19 (3), DT32):
+
+> „Sonnet a Code-ban + C az Actionsben, könyvenként, a Genezissel kezdve; `magas` = egyezés, eltérésnél a Sonnet változata `alacsony` jelöléssel; a próféták kötegmérete 5 vers; az 1Móz 1–5 után `/usage`-jelentés, és megállás, ha a teljes Genezisre vetítve a heti keret 50%-a fölött van.”
+
+Az irány elemei és a mért adatok, amelyekre a döntés épül (rögzítés, ajánlás nélkül; a számok forrása f21p/koltseg_vetites_p3c.tsv és f21p/meres_p3c_eredmeny.tsv):
+
+- **Futtatási környezet.** A Sonnet a Claude Code-ban fut, az előfizetési (heti) kereten belül; a C (F3V3 beállítás, prompt_v3) a GitHub Actionsben, OpenRouter-költségen. A mért adatok szerint a Sonnet teljes Bibliára vetített OpenRouter-költsége 373.9405 [337.9675–418.6543] USD, a C-é 42.4899 [38.5542–46.5194] USD, a páré 416.4304 [379.8793–460.9697] USD (90%-os intervallum; a (4) küszöb 60 USD): ezért fut a Sonnet a Code-ban. A Code-ban futó Sonnet a heti keretet terheli; erre a pilotnak nincs mért adata.
+- **Könyvenként, a Genezissel kezdve.** Az 1Móz 1533 vers, ebből az 1Móz 1–5 138 vers (Károli-kivonat).
+- **`magas` = egyezés.** Ez a pár mérésének logikája (A∩B, döntőbíró nélkül): a két modell egyező linkje `magas`. A mért `magas`-pontosság rétegenként: R1 98.3% (291/296), R2 99.3% (149/150), R3 — (0/0), R4 98.7% (294/298); az R3 nem mérhető (0/0).
+- **Eltérésnél a Sonnet változata `alacsony` jelöléssel** kerül be (nem a C-é). A pár mérésében az `alacsony` arány 19.1% (700/3673) (200 vers, mért), 21.4% (a teljes Bibliára vetítve), az R3-ban 55.9% (347/621); ez a mérés a két modell nem egyező linkjeit együtt (és a kapuhibás oldal mellett a túlélő oldal linkjeit) számolja, ezért a csak Sonnet-változatot tartalmazó kimenet `alacsony` aránya ettől eltérhet (nem mért).
+- **A próféták kötegmérete 5 vers.** Ok: a Sonnet R3-kötege (15.) mindkét próbán length-lezárással végződött (finish_reason=length: köteg 15 / próba 1, köteg 15 / próba 2; költségük 0.291850 USD; kimenet 12000+12000 token, ebből gondolkodás 11144+10364), és a köteg tíz R3-aranyverse végleg kapuhibás; a pótlás a próféták előtt (kis köteg a hosszú gondolkodás miatt). A próféta réteg (F22) 5332 vers: 10 verses kötegben 534, 5 versesben 1067 köteg.
+- **A `/usage`-jelentés és az 50%-os megállási feltétel.** A heti keret felhasználását a Claude Code `/usage` parancsa mutatja; a leolvasást a felhasználó végzi (vagy a `/usage` kimenetét adja át), az 1Móz 1–5 előtt és után. A mérték: a teljes Genezisre vetített felhasználás = (az 1Móz 1–5 alatt felhasznált heti keret) × (az 1Móz versszáma / az 1Móz 1–5 versszáma) = × 1533/138 (≈ × 11.11); megállás, ha ez a heti keret 50%-a fölött van. A Sonnet tokenigényéről a pilot mért adata (OpenRouter, 200 vers): 142077 gondolkodási token a 173414 kimeneti tokenből; hívásonként legfeljebb 11144.
+- **Kapcsolódó állapotok.** A #22 fejléce `dontesre_var` (a briefje nem változik). Az F31-brief (F31_F21R_BRIEF.md, `nem_indult`) a regressziós mérést írja le, amely ezen az ágon, a pilot PD13–PD19 döntései szerint lefutott: az átfedés kezelése a felhasználó döntése.
 

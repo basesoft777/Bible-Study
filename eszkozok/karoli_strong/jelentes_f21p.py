@@ -33,6 +33,17 @@ KIMENET = os.path.join(tokenek.ROOT, 'naplok', 'F21P_jelentes.md')
 RETEGEK = ['R1', 'R2', 'R3', 'R4', 'Összes']
 
 
+# a P3 és a P3b futásai (a P3c-futások — F3V3, F8V3, SONNETV3 — költsége a P3c-szakaszban; F21.82)
+P3_FUTASOK = ('F1', 'F2', 'F3', 'F5', 'F6', 'F3V2')
+P3B_FUTASOK = ('F1V2', 'F2V2', 'F5V2', 'F6V2', 'F3V2B', 'F4V2')
+P3C_FUTASOK = ('F3V3', 'F8V3', 'SONNETV3')
+
+
+def _naplo_p3_p3b():
+    """A futásnapló P3- és P3b-sorai (a régi szakaszok számai ezekből; a P3c-futások nélkül)."""
+    return [r for r in _tsv('futasnaplo.tsv') if r['futas'] in P3_FUTASOK + P3B_FUTASOK]
+
+
 def _tsv(nev):
     with open(os.path.join(F21P, nev), encoding='utf-8') as f:
         sorok = [s.rstrip('\n').rstrip('\r') for s in f if s.strip() and not s.startswith('#')]
@@ -261,7 +272,7 @@ def p3b_szakasz():
            'nagyobb abszolút eltérésű — számít a ≤ 10%%-os küszöbhöz; ez minden futásnál a leave-one-out (a mintán belüli '
            'illesztés a saját hívásait közel 0 eltéréssel adja vissza). Az A+B+C összesített ellenőrzése (%s%%) csak '
            'mintán belüli; a futásonkénti leave-one-out a fenti táblában.' % kp.get('ellenorzes', 'A+B+C', '-', 'elteres_szazalek')['ertek']]
-    naplo = _tsv('futasnaplo.tsv')
+    naplo = _naplo_p3_p3b()
     ki.append('')
     ki.append('A pilot tényleges költsége (futásnapló, minden futás, P3 és P3b): %.6f USD. A C (F3V2) vetítés intervalluma '
               'itt kissé eltér a P3-as koltseg_vetites.tsv-étől, mert a két szkript bootstrapja más véletlenszám-sorrendet '
@@ -285,6 +296,295 @@ def p3b_szakasz():
     return ki
 
 
+# ---------------------------------------------------------------------------
+# F21.82: a regressziós mérés (P3c) vezető szakasza, a #22-javaslat szakasza, a régi számok összevetése
+# ---------------------------------------------------------------------------
+
+P3C_FORRAS = ('f21p/meres_p3c_eredmeny.tsv, f21p/koltseg_vetites_p3c.tsv, f21p/c_diff_p3c_besorolas.tsv, '
+              'f21p/kjv_meres_eredmeny.tsv, f21p/elopar_kjv_eredmeny.tsv, f21p/meres_p3c_c_eredmeny.tsv')
+
+
+def _ar(t, sz, o, r, m):
+    x = t.get(sz, o, r, m)
+    return pct(x['szamlalo'], x['nevezo']) if x['nevezo'] not in ('',) else x['szamlalo']
+
+
+def _usd(t, o, r):
+    x = t.get('vetites', o, r, 'koltseg_usd')
+    return '%s [%s–%s]' % (x['ertek'], x['also90'], x['felso90'])
+
+
+def _genezis_versek():
+    """(az 1Móz versszáma, az 1Móz 1–5 versszáma) a Károli-kivonatból (tokenek.betolt_karoli)."""
+    kar = tokenek.betolt_karoli()
+    gen = [ig for ig in kar if ig.startswith('1Móz ')]
+    g15 = [ig for ig in gen if int(ig.split(' ')[1].split(':')[0]) <= 5]
+    return len(gen), len(g15)
+
+
+def _dt21_hatas(bes):
+    """{DT21-betű: (segített, nem segített, ártott)} az F3V3-sorokból (c_diff_p3c logikája: megszűnt/átsorolt = segített,
+    maradt = nem segített, új (c) = ártott), a változás-konvenció DT21-hozzárendelésével."""
+    import c_diff_p3c as cdp
+    ki = {b: [0, 0, 0] for b in 'abcde'}
+    for r in bes:
+        if r['futas'] != 'F3V3':
+            continue
+        volt = ':c' in r['elozmeny_v2']
+        if r['statusz'] in ('megszunt', 'nem_merheto'):
+            al = 0
+        elif r['statusz'] == 'elteres' and volt and r['osztaly'] in ('a', 'b'):
+            al = 0
+        elif r['statusz'] == 'elteres' and volt and r['osztaly'] == 'c':
+            al = 1
+        elif r['statusz'] == 'elteres' and r['osztaly'] == 'c':
+            al = 2
+        else:
+            continue
+        b = cdp.dt21(r['valtozas_konvencio'], r['igehely'])
+        if b:
+            ki[b][al] += 1
+    return ki
+
+
+def p3c_szakasz():
+    """A regressziós mérés (P3c) összefoglalója és a végleges eredmény (vezető szakasz)."""
+    import c_diff_p3c as cdp
+    mc = T('meres_p3c_eredmeny.tsv', ['szakasz', 'osszeallitas', 'reteg', 'mero'])
+    kc = T('koltseg_vetites_p3c.tsv', ['szakasz', 'osszeallitas', 'reteg', 'mero'])
+    mb = T('meres_p3b_eredmeny.tsv', ['szakasz', 'osszeallitas', 'reteg', 'mero'])
+    kb = T('koltseg_vetites_p3b.tsv', ['szakasz', 'osszeallitas', 'reteg', 'mero'])
+    kj = T('kjv_meres_eredmeny.tsv', ['szakasz', 'osszeallitas', 'reteg', 'mero'])
+    ej = T('elopar_kjv_eredmeny.tsv', ['szakasz', 'osszeallitas', 'reteg', 'mero'])
+    mcc = T('meres_p3c_c_eredmeny.tsv', ['szakasz', 'osszeallitas', 'reteg', 'mero'])
+    bes = _tsv('c_diff_p3c_besorolas.tsv')
+    S, C3_, PAR = 'Sonnet (SONNETV3)', 'C (F3V3)', 'Sonnet+C'
+    R4_ = ['R1', 'R2', 'R3', 'R4']
+
+    def bukott(t, o):
+        return t.get('minosites', o, 'Összes', 'minosites (kizárás nélküli régi arannyal)')
+
+    def bukott_t(t, o):
+        return t.get('minosites', o, 'Összes', 'minosites (tájékoztató: 1Móz 6:17 kizárva)')
+    ki = ['## A regressziós mérés (P3c, prompt_v3) — összefoglaló és végleges eredmény (F21.82)', '',
+          'Források: %s; a régi P3/P3b-adat: f21p/meres_p3b_eredmeny.tsv, f21p/koltseg_vetites_p3b.tsv; a költség: '
+          'f21p/futasnaplo.tsv. A P3c az arany **v3**-ra mér, a P3b az arany **v2**-re (a két arany 3 linkben tér el; l. '
+          'naplok/F21P_meres_p3c_c.md). A korrigált értékek kizárólag „Opus-besorolás, nem mérés” jelöléssel; a küszöb '
+          'szempontjából csak a mért érték számít.' % P3C_FORRAS, '',
+          '### Végleges eredmény a Döntési szabály szerint: egyik összeállítás sem felel meg', '']
+    for t, o, cim in ((mb, 'A+B', 'A+B (P3b, prompt_v2, arany v2)'), (mb, 'A+B+C', 'A+B+C (P3b, prompt_v2, arany v2)'),
+                      (mc, PAR, 'Sonnet + C pár (P3c: A = SONNETV3, B = F3V3, prompt_v3, arany v3; döntőbíró nélkül)')):
+        a, b = bukott(t, o), bukott_t(t, o)
+        ki.append('- **%s: %s** — %s (tájékoztató, 1Móz 6:17 nélkül: %s — %s).' % (cim, a['szamlalo'], a['megjegyzes'], b['szamlalo'], b['megjegyzes']))
+    f1 = mc.get('minosites', PAR, 'Összes', 'feltetel_1')
+    ki += ['- A Sonnet + C pár (1) feltétele: **%s** (%s): a Sonnet R3-aranyversei a 15. köteg length-lezárása miatt végleg '
+           'kapuhibásak; a próféták előtt pótolandó, pótló futás most nincs (PD19 (1)).' % (f1['szamlalo'], f1['megjegyzes']),
+           '- Az egymodelles összeállítások (A, B, C — F3V2, F3V2B, F3V3 —, Sonnet) a PD6 szerint nem minősíthetők; csak mért számaik vannak.', '',
+           '### (a) Az öt feltétel összeállításonként (Összes; az (1) rétegenként)', '',
+           'Feltételek: (1) `magas` pontosság ≥ 98% rétegenként; (2) lefedettség ≥ 95%; (3) régi arany ≥ 95% (mért = kizárás '
+           'nélkül; tájékoztató = 1Móz 6:17 nélkül); (4) a vetített teljes költség 90%-os felső széle ≤ 60 USD; (5) `alacsony` '
+           'arány ≤ 10% (a 200 versen mért link-arány; a Sonnet + C-nél a teljes Bibliára vetített is). Egymodelles '
+           'összeállításnál az (1) helyén az összpontosság (tájékoztató, PD6), az (5) n.é.', '',
+           '| összeállítás | (1) magas pontosság R1 / R2 / R3 / R4 | (2) lefedettség | (3) régi arany: mért / tájékoztató | (4) költség USD [90%] | (5) alacsony | minősítés |',
+           '|---|---|---|---|---|---|---|']
+    for t, k, o, nev in ((mb, kb, 'A+B', 'A+B (P3b)'), (mb, kb, 'A+B+C', 'A+B+C (P3b)'), (mc, kc, PAR, 'Sonnet + C (P3c)')):
+        p1_ = ' / '.join(_ar(t, 'feltetelek', o, r, 'magas_pontossag') for r in R4_)
+        al = _ar(t, 'feltetelek', o, 'Összes', 'alacsony_arany [200 vers]')
+        if o == PAR:
+            v = mc.get('minosites_reszlet', PAR, 'Összes', 'feltetel_5_alacsony_arany_vetitett')
+            al += '; vetítve %.1f%%' % (100 * float(v['szamlalo']))
+        ki.append('| %s | %s | %s | %s / %s | %s | %s | %s (%s) |' % (
+            nev, p1_, _ar(t, 'feltetelek', o, 'Összes', 'lefedettseg'), _ar(t, 'feltetelek', o, 'Összes', 'regi_arany_kizaras_nelkul'),
+            _ar(t, 'feltetelek', o, 'Összes', 'regi_arany_kizarassal_tajekoztato'), _usd(k, o, 'Összes'), al,
+            bukott(t, o)['szamlalo'], bukott(t, o)['megjegyzes']))
+    for t, k, o, nev in ((mb, kb, 'A (F1V2)', 'A (F1V2, P3b)'), (mb, kb, 'B (F2V2)', 'B (F2V2, P3b)'), (mb, kb, 'C (F3V2)', 'C (F3V2, P3b)'),
+                         (mb, kb, 'C (F3V2B)', 'C (F3V2B, P3b)'), (mc, kc, C3_, 'C (F3V3, P3c)'), (mc, kc, S, 'Sonnet (SONNETV3, P3c)')):
+        ki.append('| %s | n.é. (PD6); összpontosság %s | %s | %s / %s | %s | n.é. (PD6) | nem minősíthető (PD6) |' % (
+            nev, _ar(t, 'feltetelek', o, 'Összes', 'pontossag_osszes (tajekoztato, PD6)'), _ar(t, 'feltetelek', o, 'Összes', 'lefedettseg'),
+            _ar(t, 'feltetelek', o, 'Összes', 'regi_arany_kizaras_nelkul'), _ar(t, 'feltetelek', o, 'Összes', 'regi_arany_kizarassal_tajekoztato'),
+            _usd(k, o, 'Összes')))
+    ki += ['', 'Egymodelles összeállításnál a lefedettség és a régi arany a kapun átment versekre vonatkozik (n a cellában); a '
+           'Sonnet kapun átment aranyversei: %s.' % _ar(mc, 'feltetelek', S, 'Összes', 'arany_versek_kapun_atment'), '']
+    # (b) a C három futása
+    ki += ['### (b) A C (F3V3) a v2-es C-futásokkal egymás mellett, arany v3 (meres_p3c_eredmeny.tsv)', '',
+           '| futás | mérőszám | R1 | R2 | R3 | R4 | Összes |', '|---|---|---|---|---|---|---|']
+    for o in ('C (F3V2)', 'C (F3V2B)', C3_):
+        for m in ('pontossag_osszes (tajekoztato, PD6)', 'lefedettseg'):
+            ki.append('| %s | %s | %s |' % (o, m.split(' ')[0], ' | '.join(_ar(mc, 'feltetelek', o, r, m) for r in RETEGEK)))
+        for m in ('elso_probara', 'vegleg'):
+            ki.append('| %s | kapuhiba %s | %s |' % (o, m, ' | '.join(_ar(mc, 'kapuhiba', o, r, m) for r in RETEGEK)))
+    ki += ['', 'A prompt_v2 → v3 hatás: Δ = F3V3 − a két v2-futás átlaga (azonos aranyon), 90%-os bootstrap a versek felett; '
+           'az ingadozás-becslés egyetlen futáspár (|F3V2B − F3V2|, azonos prompt); „kívül”: |Δ| > ingadozás ÉS az '
+           'intervallum nem tartalmazza a 0-t (leíró jelölés, nem próba).', '',
+           '| réteg | mérőszám | v2 átlag | F3V3 | Δ | Δ 90% | ingadozás | jelölés |', '|---|---|---|---|---|---|---|---|']
+    for r in mc.sorok:
+        if r['szakasz'] == 'hatas_osszevetes' and r['reteg'] == 'Összes' or (r['szakasz'] == 'hatas_osszevetes' and r['mero'] in ('pontossag', 'lefedettseg')):
+            ref, cl, dl, fl = (float(v) for v in r['szamlalo'].split('|'))
+            lo, hi = (float(v) for v in r['nevezo'].split('|'))
+            ki.append('| %s | %s | %.2f%% | %.2f%% | %+.2f pp | [%+.2f; %+.2f] | %.2f pp | %s |' % (
+                r['reteg'], r['mero'], 100 * ref, 100 * cl, 100 * dl, 100 * lo, 100 * hi, 100 * fl, r['megjegyzes'].split(';')[0]))
+    # (c) a Sonnet-futás
+    g = {r['mero']: r for r in mc.sorok if r['szakasz'] == 'gondolkodas' and r['osszeallitas'] == S}
+    ko = {r['mero']: r for r in mc.sorok if r['szakasz'] == 'koltseg' and r['osszeallitas'] == S}
+    vk = [r for r in mc.sorok if r['szakasz'] == 'vegleges_kapuhiba' and r['osszeallitas'] == S]
+    ki += ['', '### (c) A Sonnet-futás (meres_p3c_eredmeny.tsv: koltseg, gondolkodas, vegleges_kapuhiba, jeloles)', '',
+           '- Költség: %s USD (%s hívás; %s); bemenet %s, kimenet %s token.' % (
+               ko['koltseg_usd']['szamlalo'], ko['hivasok']['szamlalo'], ko['hivasok']['megjegyzes'],
+               ko['bemeneti_token']['szamlalo'], ko['kimeneti_token']['szamlalo']),
+           '- A gondolkodási keret be nem tartása: %s gondolkodási token a %s kimeneti tokenből; hívásonként a legnagyobb %s '
+           '(%s); a keret (reasoning.max_tokens = 1024) fölötti hívás %s a %s-ből (%s). A gondolkodási token a kimeneti '
+           'táblaáron %s USD a mért %s USD-ből.' % (
+               g['gondolkodasi_token']['szamlalo'], g['gondolkodasi_token']['nevezo'], g['gondolkodasi_token_hivasonkent_max']['szamlalo'],
+               g['gondolkodasi_token_hivasonkent_max']['megjegyzes'], g['keret_feletti_hivasok']['szamlalo'], g['keret_feletti_hivasok']['nevezo'],
+               g['keret_feletti_hivasok']['megjegyzes'].split('; ')[-1], g['gondolkodasi_token_koltsege_usd']['szamlalo'],
+               g['gondolkodasi_token_koltsege_usd']['nevezo']),
+           '- Length-lezárás: %s a %s hívásból — %s.' % (g['length_hivasok']['szamlalo'], g['length_hivasok']['nevezo'], g['length_hivasok']['megjegyzes']),
+           '- A %d végleges kapuhibás vers (%s): %s.' % (
+               len(vk), ', '.join(sorted({'%s, végső kapupont %s' % (r['nevezo'], r['szamlalo']) for r in vk})),
+               ', '.join('%s (%s%s)' % (r['mero'], r['reteg'], ', aranyvers' if 'aranyvers' in r['megjegyzes'] else '') for r in vk))]
+    ki += ['- %s' % r['megjegyzes'] for r in mc.sorok if r['szakasz'] == 'jeloles' and r['mero'] == 'nem_determinisztikus']
+    # (d) beállítás-eltérés
+    ki += ['', '### (d) A beállítás-eltérések jelölése', '']
+    ki += ['- %s: %s.' % (r['osszeallitas'], r['megjegyzes']) for r in mc.sorok if r['szakasz'] == 'jeloles' and r['mero'] == 'beallitas_elteres']
+    ki += ['- A gondolkodási mód futásonként (futásnapló): %s.' % '; '.join(
+        '%s: %s' % (r['osszeallitas'], r['szamlalo']) for r in mc.sorok if r['szakasz'] == 'koltseg' and r['mero'] == 'gondolkodas_mod'), '']
+    # (e) P5
+    F22 = list(kv_.F22_RETEGEK)
+    ki += ['### (e) P5: a teljes Biblia költsége összeállításonként (F22 műfaji öt réteg, köteg-bootstrap, 90%)', '',
+           'Az A, B, C (F3V2), A+B, A+B+C a P3b-vetítés (koltseg_vetites_p3b.tsv, prompt_v2); a C (F3V3), a Sonnet és a Sonnet + C '
+           'a P3c-vetítés (koltseg_vetites_p3c.tsv, prompt_v3; a pár = a két futás vetítésének összege, döntőbíró nélkül). Az '
+           'újrakérési szorzó (M) minden futásnál a saját mért adatból.', '',
+           '| összeállítás | %s | Összes |' % ' | '.join(F22), '|---|' + '---|' * (len(F22) + 1)]
+    for t, o in ((kb, 'A (F1V2)'), (kb, 'B (F2V2)'), (kb, 'C (F3V2)'), (kb, 'A+B'), (kb, 'A+B+C'), (kc, C3_), (kc, S), (kc, PAR)):
+        ki.append('| %s | %s |' % (o, ' | '.join(_usd(t, o, r) for r in F22 + ['Összes'])))
+    ki += ['', 'Ellenőrzés a 200 versre (a konzervatívabb számít, DT21 g): %s.' % '; '.join(
+        '%s %s%%' % (o, kc.get('ellenorzes', o, '-', 'szamito_elteres_szazalek')['ertek']) for o in (S, C3_, PAR)), '']
+    # (f) KJV
+    h = kj.get('hatas', 'F8V3 − F3V3', 'Összes', 'pontossag')
+    hi_ = kj.get('hatas', 'F3V2B − F3V2 (ingadozás)', 'Összes', 'pontossag')
+    d = float(h['szamlalo'].split('|')[2])
+    lo, up = (float(v) for v in h['nevezo'].split('|'))
+    di = float(hi_['szamlalo'].split('|')[2])
+    kr4 = mcc.get('kjv', 'C KJV-vel (F8V3, tájékoztató)', 'R4', 'jeloles')
+    ek = ej.get('dontes', 'KJV-szabály A) önállóan', 'Összes', 'pontossag (döntés ∩ arany forditatlan / döntés)')
+    ki += ['### (f) A KJV-támpont', '',
+           '- A mérés (kjv_meres_eredmeny.tsv, F8V3 − F3V3, Összes): a pontosság Δ = %+.2f pp [90%%: %+.2f; %+.2f], az ingadozás-becslés '
+           '(F3V2B − F3V2) %+.2f pp: a mérés szerint nincs kimutatható hatás (az ingadozáson belül); a pilot döntése: „nem igazolt, a '
+           'javított táblával újramérhető” (PD17 (3)).' % (100 * d, 100 * lo, 100 * up, 100 * di),
+           '- Az R4: „%s” (meres_p3c_c_eredmeny.tsv); a Károli ↔ KJV versmegfeleltetés zsoltár-eltolódása: N-F21 (NYITOTT_FELADATOK.md).' % kr4['szamlalo'],
+           '- Az előpárosítás KJV-szabálya („nincs KJV-tag → forditatlan-jelölt”; elopar_kjv_eredmeny.tsv, A) önállóan, Összes): pontosság %s.' % pct(ek['szamlalo'], ek['nevezo']), '']
+    # (g) a (c) hibák újrabesorolása
+    def oszt(f, o):
+        return sum(1 for r in bes if r['futas'] == f and r['statusz'] == 'elteres' and r['osztaly'] == o)
+    sk = {(r['igehely'], r['irany'], r['k_poz'], r['e_poz']) for r in bes if r['futas'] == 'SONNETV3' and r['osztaly'] == 'c'}
+    ck = {(r['igehely'], r['irany'], r['k_poz'], r['e_poz']) for r in bes if r['futas'] == 'F3V3' and r['statusz'] == 'elteres' and r['osztaly'] == 'c'}
+    ki += ['### (g) A (c) hibák újrabesorolása (Opus-besorolás, nem mérés; c_diff_p3c_besorolas.tsv, naplok/F21P_C_diff_p3c.md)', '',
+           '- C (F3V3), arany v3: a / b / c = %d / %d / %d; Sonnet (50 kapun átment aranyvers): %d / %d / %d; közös (c) eset: %d.' % (
+               oszt('F3V3', 'a'), oszt('F3V3', 'b'), oszt('F3V3', 'c'), oszt('SONNETV3', 'a'), oszt('SONNETV3', 'b'), oszt('SONNETV3', 'c'), len(sk & ck)),
+           '- A konvenciók hatása (a v2-es C-futások (c) eseteihez képest, DT21 a–e): l. (h).',
+           '- Olvasási korlátok: a besorolás az Opus kézi döntése, nem mérés; a Sonnet R3-a nincs benne (kapuhiba); az egyetlen '
+           'v2-futásban (c) eset megszűnése a futásközi ingadozással is összefér; a korrigált értékek a küszöb szempontjából nem számítanak.', '']
+    # (h) nyitott tételek
+    dh = _dt21_hatas(bes)
+    jel = [r for r in bes if cdp.JELOLT in r['indok']]
+    ki += ['### (h) Nyitott és lezárt tételek', '',
+           '- A DT21 a–e a regressziós mérésben lezárva (segített = a v2 (c) eset megszűnt vagy átsorolódott; nem segített = maradt; '
+           'ártott = új (c)): %s.' % '; '.join('%s) %d / %d / %d' % (b, *dh[b]) for b in 'abcde'),
+           '- „Arany-felülvizsgálatra jelölt” sor: %d (C: %d, Sonnet: %d): %s; a számokban (c), a 6. táblázat zárt (PD10).' % (
+               len(jel), sum(1 for r in jel if r['futas'] == 'F3V3'), sum(1 for r in jel if r['futas'] == 'SONNETV3'),
+               ', '.join(sorted({r['igehely'] for r in jel}, key=lambda x: x))),
+           '- Az (1) feltétel R3-ja nem mérhető (a Sonnet R3-pótlása a próféták előtt; pótló futás most nincs).',
+           '- N-F21: a Károli ↔ KJV versmegfeleltetés zsoltár-eltolódása (most nem javítjuk; PD17 (1)).', '']
+    # (i) a teljes pilot költsége
+    naplo = _tsv('futasnaplo.tsv')
+    ki += ['### (i) A teljes pilot költsége (futásnapló, futásonként)', '',
+           '| szakasz | futás | hívás | költség USD | megjegyzés |', '|---|---|---|---|---|']
+    for szak, fs in (('P3', P3_FUTASOK), ('P3b', P3B_FUTASOK), ('P3c', P3C_FUTASOK)):
+        for f in fs:
+            rs = [r for r in naplo if r['futas'] == f]
+            megj = ''
+            if f == 'F8V3':
+                bal = [r for r in rs if int(r['koteg']) in (1, 2)]
+                megj = 'ebből a véletlen helyi futás két kötege (1., 2.; naplok/F21_baleset_F8V3.md): %d hívás, %.6f USD' % (
+                    len(bal), sum(float(r['koltseg_usd']) for r in bal))
+            ki.append('| %s | %s | %d | %.6f | %s |' % (szak, f, len(rs), sum(float(r['koltseg_usd']) for r in rs), megj))
+        ki.append('| **%s összesen** | | | **%.6f** | |' % (szak, sum(float(r['koltseg_usd']) for r in naplo if r['futas'] in fs)))
+    ossz = sum(float(r['koltseg_usd']) for r in naplo)
+    ismeretlen = sorted({r['futas'] for r in naplo} - set(P3_FUTASOK + P3B_FUTASOK + P3C_FUTASOK))
+    fo = max(float(r['futo_osszeg_usd']) for r in naplo if r.get('futo_osszeg_usd'))
+    ki += ['| **a pilot összesen** | | %d | **%.6f** | a napló utolsó futó összege %.6f: %s%s |' % (
+        len(naplo), ossz, float(naplo[-1]['futo_osszeg_usd']), 'EGYEZIK' if abs(ossz - float(naplo[-1]['futo_osszeg_usd'])) < 1e-6 else 'ELTÉR',
+        ('; ismeretlen futás: %s' % ', '.join(ismeretlen)) if ismeretlen else ''), '',
+           'A plafonok és a megállási küszöbök (felhasználói döntések): 3 USD (P3/P3b; 2 USD-s küszöb) → 4,00 USD, küszöb 3,90 '
+           '(PD14 (2)) → 5,00 USD, küszöb 4,90 (PD18 (1)). A futó összeg legnagyobb értéke a naplóban %.6f USD: a 4,90-es küszöb '
+           'és az 5,00-es plafon alatt%s.' % (fo, '' if fo <= 4.90 else ' — NEM'), '']
+    return ki
+
+
+def javaslat_szakasz():
+    """A #22 választott iránya (PD19 (3), DT32): javaslatként rögzítve, ajánlás nélkül, a mért adatokkal."""
+    mc = T('meres_p3c_eredmeny.tsv', ['szakasz', 'osszeallitas', 'reteg', 'mero'])
+    kc = T('koltseg_vetites_p3c.tsv', ['szakasz', 'osszeallitas', 'reteg', 'mero'])
+    S, C3_, PAR = 'Sonnet (SONNETV3)', 'C (F3V3)', 'Sonnet+C'
+    ng, n15 = _genezis_versek()
+    pr = int(kc.get('biblia_rs', '-', 'próféta', 'versek_szama')['ertek'])
+    v = mc.get('minosites_reszlet', PAR, 'Összes', 'feltetel_5_alacsony_arany_vetitett')
+    g = {r['mero']: r for r in mc.sorok if r['szakasz'] == 'gondolkodas' and r['osszeallitas'] == S}
+    import math
+    ki = ['', '## Javaslat — a #22 választott iránya (a felhasználó döntése, javaslatként rögzítve; a #22 briefje ezzel nem '
+          'változik, brief-diff nem készül, teljes futás nem indul)', '',
+          'A felhasználó szó szerinti iránya (PD19 (3), DT32):', '',
+          '> „Sonnet a Code-ban + C az Actionsben, könyvenként, a Genezissel kezdve; `magas` = egyezés, eltérésnél a Sonnet '
+          'változata `alacsony` jelöléssel; a próféták kötegmérete 5 vers; az 1Móz 1–5 után `/usage`-jelentés, és megállás, '
+          'ha a teljes Genezisre vetítve a heti keret 50%-a fölött van.”', '',
+          'Az irány elemei és a mért adatok, amelyekre a döntés épül (rögzítés, ajánlás nélkül; a számok forrása '
+          'f21p/koltseg_vetites_p3c.tsv és f21p/meres_p3c_eredmeny.tsv):', '',
+          '- **Futtatási környezet.** A Sonnet a Claude Code-ban fut, az előfizetési (heti) kereten belül; a C (F3V3 beállítás, '
+          'prompt_v3) a GitHub Actionsben, OpenRouter-költségen. A mért adatok szerint a Sonnet teljes Bibliára vetített '
+          'OpenRouter-költsége %s USD, a C-é %s USD, a páré %s USD (90%%-os intervallum; a (4) küszöb 60 USD): ezért fut a '
+          'Sonnet a Code-ban. A Code-ban futó Sonnet a heti keretet terheli; erre a pilotnak nincs mért adata.' % (
+              _usd(kc, S, 'Összes'), _usd(kc, C3_, 'Összes'), _usd(kc, PAR, 'Összes')),
+          '- **Könyvenként, a Genezissel kezdve.** Az 1Móz %d vers, ebből az 1Móz 1–5 %d vers (Károli-kivonat).' % (ng, n15),
+          '- **`magas` = egyezés.** Ez a pár mérésének logikája (A∩B, döntőbíró nélkül): a két modell egyező linkje `magas`. A '
+          'mért `magas`-pontosság rétegenként: %s; az R3 nem mérhető (0/0).' % ', '.join(
+              '%s %s' % (r, _ar(mc, 'feltetelek', PAR, r, 'magas_pontossag')) for r in ('R1', 'R2', 'R3', 'R4')),
+          '- **Eltérésnél a Sonnet változata `alacsony` jelöléssel** kerül be (nem a C-é). A pár mérésében az `alacsony` arány '
+          '%s (200 vers, mért), %.1f%% (a teljes Bibliára vetítve), az R3-ban %s; ez a mérés a két modell nem egyező linkjeit '
+          'együtt (és a kapuhibás oldal mellett a túlélő oldal linkjeit) számolja, ezért a csak Sonnet-változatot tartalmazó '
+          'kimenet `alacsony` aránya ettől eltérhet (nem mért).' % (
+              _ar(mc, 'feltetelek', PAR, 'Összes', 'alacsony_arany [200 vers]'), 100 * float(v['szamlalo']),
+              _ar(mc, 'feltetelek', PAR, 'R3', 'alacsony_arany [200 vers]')),
+          '- **A próféták kötegmérete 5 vers.** Ok: a Sonnet R3-kötege (15.) mindkét próbán length-lezárással végződött (%s), és '
+          'a köteg tíz R3-aranyverse végleg kapuhibás; a pótlás a próféták előtt (kis köteg a hosszú gondolkodás miatt). A próféta '
+          'réteg (F22) %d vers: 10 verses kötegben %d, 5 versesben %d köteg.' % (
+              g['length_hivasok']['megjegyzes'], pr, math.ceil(pr / 10), math.ceil(pr / 5)),
+          '- **A `/usage`-jelentés és az 50%%-os megállási feltétel.** A heti keret felhasználását a Claude Code `/usage` '
+          'parancsa mutatja; a leolvasást a felhasználó végzi (vagy a `/usage` kimenetét adja át), az 1Móz 1–5 előtt és után. '
+          'A mérték: a teljes Genezisre vetített felhasználás = (az 1Móz 1–5 alatt felhasznált heti keret) × (az 1Móz versszáma / '
+          'az 1Móz 1–5 versszáma) = × %d/%d (≈ × %.2f); megállás, ha ez a heti keret 50%%-a fölött van. A Sonnet tokenigényéről '
+          'a pilot mért adata (OpenRouter, 200 vers): %s gondolkodási token a %s kimeneti tokenből; hívásonként legfeljebb %s.' % (
+              ng, n15, ng / n15, g['gondolkodasi_token']['szamlalo'], g['gondolkodasi_token']['nevezo'],
+              g['gondolkodasi_token_hivasonkent_max']['szamlalo']),
+          '- **Kapcsolódó állapotok.** A #22 fejléce `dontesre_var` (a briefje nem változik). Az F31-brief (F31_F21R_BRIEF.md, '
+          '`nem_indult`) a regressziós mérést írja le, amely ezen az ágon, a pilot PD13–PD19 döntései szerint lefutott: az '
+          'átfedés kezelése a felhasználó döntése.', '']
+    return ki
+
+
+def regi_szamok_osszevet(regi_ut, uj_ut):
+    """A régi jelentés minden számának (a ts-sor kivételével) megvan-e legalább annyi előfordulása az újban.
+    Visszaad: (régi számok darabja, hiányzó számok {szám: hiány})."""
+    import re
+    from collections import Counter
+
+    def szamok(ut):
+        with open(ut, encoding='utf-8') as f:
+            sorok = [s for s in f if 'ts=' not in s]
+        return Counter(re.findall(r'\d+(?:[.,]\d+)*', ''.join(sorok)))
+    a, b = szamok(regi_ut), szamok(uj_ut)
+    return sum(a.values()), {k: v - b[k] for k, v in a.items() if b[k] < v}
+
+
 def main():
     m1 = T('meres_eredmeny.tsv', ['szakasz', 'osszeallitas', 'reteg', 'mero'])
     m2 = T('meres_v2_eredmeny.tsv', ['szakasz', 'osszeallitas', 'reteg', 'mero'])
@@ -300,7 +600,7 @@ def main():
         r = m2.get(sz, oss, ret, mero)
         return pct(r['szamlalo'], r['nevezo'])
 
-    naplo = _tsv('futasnaplo.tsv')
+    naplo = _naplo_p3_p3b()
     pilot_cost = sum(float(r['koltseg_usd']) for r in naplo)
     futasonkent = {}
     for r in naplo:
@@ -322,11 +622,14 @@ def main():
           'f21p/meres_v2_eredmeny.tsv, f21p/koltseg_vetites.tsv, f21p/ingadozas.tsv, f21p/c_diff_besorolas.tsv, '
           'f21p/c_diff_f3v2_osszevetes.tsv, f21p/futasnaplo.tsv, f21p/minta.tsv, f21p/sorrend_eltero_versek.tsv, '
           'konkordancia/Karoli_Strong_kivonat.tsv, f21p/meres_p3b_eredmeny.tsv, f21p/koltseg_vetites_p3b.tsv, '
-          'f21p/c_diff_f3v2b_besorolas.tsv | ts=%s (a generálás ideje; ismételt futáskor csak ez a sor tér el) | '
-          'kézzel szerkeszteni tilos -->' % tokenek.generalas_ts(), '',
+          'f21p/c_diff_f3v2b_besorolas.tsv, %s | ts=%s (a generálás ideje; ismételt futáskor csak ez a sor tér el) | '
+          'kézzel szerkeszteni tilos -->' % (P3C_FORRAS, tokenek.generalas_ts()), '',
           'A számok kizárólag szkriptkimenetből jönnek (a forrás soronként jelölve). A **korrigált** értékek '
           'kizárólag „**Opus-besorolás, nem mérés**” jelöléssel szerepelnek; a küszöb szempontjából csak a mért '
           'érték számít (PD10). A jelentés nem ajánl döntést a #22-ről.', '']
+    ki += p3c_szakasz()
+    ki.append('*A lenti szakaszok a P3b- és a P3-adatot őrzik változatlanul (prompt_v2 / v1, arany v2 / v1).*')
+    ki.append('')
     ki += p3b_szakasz()
     c_regi0 = m2.get('regi_arany', 'F3V2', 'Összes', 'egyezes')
     c_regik = m2.get('regi_arany', 'F3V2', 'Összes', 'egyezes_hibas_kizarva_tajekoztato')
@@ -606,10 +909,16 @@ def main():
            'Opus besorolása: F3 × arany v1: %d; F3 × arany v2: %d; F3V2 × arany v2: %d (f21p/c_diff_besorolas.tsv, '
            'f21p/c_diff_f3v2_osszevetes.tsv). A korrigált pontosság és lefedettség: naplok/F21P_C_diff.md és '
            'naplok/F21P_C_diff_F3V2.md, ugyanezzel a jelöléssel.' % (v1_c, f3_c, f3v2_c), '']
+    ki += javaslat_szakasz()
     with open(KIMENET, 'w', encoding='utf-8', newline='\n') as fh:
         fh.write('\n'.join(ki) + '\n')
     print('-> %s' % KIMENET)
 
 
 if __name__ == '__main__':
+    if len(sys.argv) == 3 and sys.argv[1] == '--regi':
+        # a régi számok összevetése: python jelentes_f21p.py --regi <a korábbi F21P_jelentes.md>
+        n, hiany = regi_szamok_osszevet(sys.argv[2], KIMENET)
+        print('régi számok: %d előfordulás; hiányzó: %s' % (n, hiany or 'nincs (minden régi szám megvan)'))
+        sys.exit(1 if hiany else 0)
     main()
