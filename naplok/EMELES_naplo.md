@@ -209,8 +209,10 @@ Minta: `python eszkozok/emeles.py minta --seed 28` → G4151, G0282, H7585, H800
 
 **CI-megjegyzés a PR-hez:** (1) az `eszkozok/ellenoriz.py` módosult (F28.10), a CI E16
 miatt a PR címe „[ELLENŐRZŐ]” előtagot kíván; (2) az `adat/SEMA.md` módosult (F28.10,
-F28.11), és a CI E9 a fájl **korábbi** 235–236. sorában álló angol „sense” szóra HIBA-t
-ad (nem ennek a menetnek a sora).
+F28.11), és a CI E9 a fájl **korábbi** 235–236. sorában álló angol „sense” szóra
+JELENTÉS-t ad (nem ennek a menetnek a sora; a D8 a nem érintett sort JELENTÉS-re
+minősíti, a kilépési kód 0). *Helyesbítés (ELLENOR_F28 8. tétel): korábban itt tévesen
+„HIBA” állt; HIBA PR-cím nélkül csak az E16-ból jön.*
 
 ## DT25 alkalmazása, E6, E7, zárás (F28.24–F28.29)
 
@@ -220,6 +222,10 @@ ad (nem ennek a menetnek a sora).
   God → Isten Szelleme, the Spirit → a Szellem); 12. kapu (Szentlélek / Isten Lelke →
   JELZÉS), 13. kapu (a könyv fejezetszámánál nagyobb fejezet → JELZÉS; a BDB ψ-hibája 5
   szócikkben). Szentlélek-lista: `naplok/EMELES_szentlelek_lista.tsv` (9 hely, csak lista).
+  *Kiegészítés (ELLENOR_F28 7. tétel):* a lista a `lexikon/*.md` GENERÁLT-blokkjait
+  kihagyja, ezért 3 további találat nem szerepel benne: `lexikon/ANTROP-001_TUDOMANYOS.md`
+  71, 108 („Isten Lelkének”, 1Kor 2:14) és `lexikon/TEREMT-001_TUDOMANYOS.md` 159 („Isten
+  Lelke”, 1Móz 1:2). Generált tartalom; a lexikonban nem javítottam (DT26 (c)).
 - **F28.26 `85c15ac`:** `lekerdez.py` — a „Sir” a JSir álneve olvasáskor (a rögzített
   `tsk "Sir 2:8"` proveniencia újrafuttatva n=15, egyezik). *Helyesbítve az F28.32-ben:*
   az álnév a közös `parse_igehely`-be került, nem csak a scope-olvasásba, ezért a TAHOT
