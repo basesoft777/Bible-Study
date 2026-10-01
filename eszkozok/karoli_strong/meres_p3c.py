@@ -35,11 +35,24 @@ ill. a két v2-futás átlaga) és 90%-os bootstrap a versek felett (rétegenké
 
 Kimenet (a régi mérők kimenetei bájtra változatlanok): f21p/meres_p3c_eredmeny.tsv,
 naplok/F21P_meres_p3c.md; minden kimenet fejléce a proveniencia: scope | forras | ts.
-    python eszkozok/karoli_strong/meres_p3c.py [--arany <jsonl> [--arany-sha <sha256-fájl>]]
+
+--csak-c (F21.71): a C (F3V3) EGYEDÜLI mérése, amíg a SONNETV3 nem futott. Ugyanaz a számítás
+(egymodell, kapuhiba, költség, prompt-hatás), a Sonnet és a Sonnet+C pár sorai helyett
+„nincs adat (SONNETV3 nem futott)” jelölés; a C-re az öt feltétel küszöb-viszonya (PD6: nincs
+minősítés, az (1) és az (5) n.é.); a v2-es C-futások (F3V2, F3V2B) és az F3V3 az arany v2-re
+ÉS az arany v3-ra is (az arany v2 → v3 hatás determinisztikusan, a prompt_v2 → v3 hatás
+mindkét aranyon bootstrappel); az F8V3 (C KJV-támponttal, ha a jsonl megvan) tájékoztató
+oszlop (R4: KJV nélkül, nem mérhető; PD17). Kimenet: f21p/meres_p3c_c_eredmeny.tsv,
+naplok/F21P_meres_p3c_c.md; a (4) feltétel a f21p/koltseg_vetites_p3c_c.tsv-ből
+(koltseg_vetit_p3c.py --csak-c). A Sonnet-adat megérkezése után a teljes mérés --csak-c
+nélkül, ugyanezzel a szkripttel fut (az eredeti kimeneti nevekre); --csak-c nélkül a hiányzó
+SONNETV3 SystemExit (semmi nem íródik).
+    python eszkozok/karoli_strong/meres_p3c.py [--csak-c] [--arany <jsonl> [--arany-sha <sha256-fájl>]]
                                                [--forras-dir <könyvtár>] [--onteszt]
 """
 
 import argparse
+import copy
 import os
 import random
 import sys
@@ -70,6 +83,26 @@ N_BOOT = 1000
 Sorok = meres_p3b.Sorok
 _ret = meres_p3b._ret
 
+# --csak-c (F21.71)
+F8 = 'F8V3'
+NEVEK[F8] = 'C KJV-vel (F8V3, tájékoztató)'
+FUTASOK_C = [C3, C2, C2B]              # a csak-C mód kötelező futásai
+FUTASOK_C_OPC = [F8]                   # tájékoztató; csak ha a jsonl megvan
+EREDMENY_C_UT = os.path.join(F21P, 'meres_p3c_c_eredmeny.tsv')
+JELENTES_C_UT = os.path.join(tokenek.ROOT, 'naplok', 'F21P_meres_p3c_c.md')
+KOLTSEG_C_UT = os.path.join(F21P, 'koltseg_vetites_p3c_c.tsv')
+NINCS_SONNET = 'nincs adat (SONNETV3 nem futott)'
+V2_CIMKE = ' × arany v2'
+
+
+def _jsonl_ut(forras_dir, f):
+    return os.path.join(forras_dir or F21P, 'valaszok', '%s.jsonl' % f)
+
+
+def futasok_c(forras_dir=None):
+    """A csak-C mód futásai: a kötelezők és a meglévő tájékoztatók."""
+    return FUTASOK_C + [f for f in FUTASOK_C_OPC if os.path.exists(_jsonl_ut(forras_dir, f))]
+
 
 # ---------------------------------------------------------------------------
 # betöltés (legfrissebb befagyasztott arany, hash-ellenőrzéssel)
@@ -84,14 +117,21 @@ def arany_forras(arany_ut=None, arany_sha=None):
     return arany_ut, sha, os.path.basename(arany_ut)
 
 
-def betolt(forras_dir=None, arany_ut=None, arany_sha=None):
-    """(adat, arany_info). Az arany hash-ellenőrzése itt történik; hiba: SystemExit."""
+def betolt(forras_dir=None, arany_ut=None, arany_sha=None, futasok=None):
+    """(adat, arany_info). Az arany hash-ellenőrzése itt történik; hiba: SystemExit.
+    futasok: a betöltendő futások (alap: FUTASOK, a teljes P3c-mérés); hiányzó jsonl: SystemExit
+    (a SONNETV3 hiányánál a --csak-c módra utaló üzenettel)."""
+    futasok = futasok or FUTASOK
+    for f in futasok:
+        if not os.path.exists(_jsonl_ut(forras_dir, f)):
+            raise SystemExit('HIBA: hiányzik a futás válaszfájlja: %s%s' % (
+                _jsonl_ut(forras_dir, f), ' (SONNETV3 nem futott; a C egyedüli mérése: --csak-c)' if f == SONNET else ''))
     jsonl, sha, verzio = arany_forras(arany_ut, arany_sha)
     h = tokenek.hash_hiba(jsonl, sha, 'arany %s' % verzio)
     if h:
         raise SystemExit('HIBA: %s' % h)
     arany = {o['vers']: o for o in meres._jsonl(jsonl)}
-    adat = meres.Adat(futasok=FUTASOK, forras_dir=forras_dir or F21P)
+    adat = meres.Adat(futasok=futasok, forras_dir=forras_dir or F21P)
     adat.arany = arany                       # minden arany_linkek hívás a legfrissebb aranyhoz mér
     info = {'jsonl': jsonl, 'sha_fajl': sha, 'verzio': verzio, 'sha256': tokenek.sha256_lf(jsonl),
             'aranyversek': len(arany)}
@@ -225,7 +265,7 @@ def koltseg_futasok(adat, sorok, futasok=FUTASOK):
         sorok.add('koltseg', nev, meres.OSSZES, 'koltseg_usd', '%.6f' % sum(float(r['koltseg_usd']) for r in sor), '',
                   'koltseg_forras: %s' % ','.join(sorted({r['koltseg_forras'] for r in sor})))
         sorok.add('koltseg', nev, meres.OSSZES, 'gondolkodas_mod', '; '.join(sorted({r['gondolkodas_mod'] for r in sor})), '',
-                  'a beállítás eltér: a Sonnet kikapcsolva, a C minimal/low (kötelező)')
+                  'a beállítás eltér (PD15): a C minimal (kötelező), a Sonnet minimális gondolkodási kerettel; az A és a B kikapcsolva')
         sorok.add('koltseg', nev, meres.OSSZES, 'prompt_sha256_12', '; '.join(sorted({r['prompt_sha256_12'] for r in sor})), '', '')
 
 
@@ -309,16 +349,18 @@ def delta_adatok(adat, refs, cel, n_boot=N_BOOT):
     return ki
 
 
-def prompt_hatas(adat, sorok, n_boot=N_BOOT):
-    """Sorok: 'hatas' (minden összevetés) és 'hatas_osszevetes' (a prompt-hatás az ingadozáshoz képest)."""
+def prompt_hatas(adat, sorok, n_boot=N_BOOT, utotag='', extra=()):
+    """Sorok: 'hatas' (minden összevetés) és 'hatas_osszevetes' (a prompt-hatás az ingadozáshoz képest).
+    utotag: az összevetés-nevek utótagja (a csak-C mód az arany v2-re is méri: ' [arany v2]');
+    extra: további (név, refs, cél) összevetések csak a 'hatas' sorokba (pl. F8V3 − F3V3)."""
     osszevetesek = (('F3V3 − F3V2', [C2], C3), ('F3V3 − F3V2B', [C2B], C3),
-                    ('F3V3 − átlag(F3V2, F3V2B)', [C2, C2B], C3), ('F3V2B − F3V2 (ingadozás)', [C2], C2B))
+                    ('F3V3 − átlag(F3V2, F3V2B)', [C2, C2B], C3), ('F3V2B − F3V2 (ingadozás)', [C2], C2B)) + tuple(extra)
     adatok = {}
     for nev, refs, cel in osszevetesek:
         adatok[nev] = delta_adatok(adat, refs, cel, n_boot)
         for r, d in adatok[nev].items():
             for mero, (ref, cl, dl, lo, hi, ab, n) in d.items():
-                sorok.add('hatas', nev, r, mero, '%.4f|%.4f|%.4f' % (ref, cl, dl), '%.4f|%.4f|%.4f' % (lo, hi, ab),
+                sorok.add('hatas', nev + utotag, r, mero, '%.4f|%.4f|%.4f' % (ref, cl, dl), '%.4f|%.4f|%.4f' % (lo, hi, ab),
                           'ref|cél|Δ ; 90%%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=%d' % n)
     hat = adatok['F3V3 − átlag(F3V2, F3V2B)']
     ing = adatok['F3V2B − F3V2 (ingadozás)']
@@ -326,7 +368,7 @@ def prompt_hatas(adat, sorok, n_boot=N_BOOT):
         for mero, (ref, cl, dl, lo, hi, ab, n) in hat[r].items():
             fl = abs(ing[r][mero][2]) if r in ing else float('nan')
             kivul = abs(dl) > fl and (lo > 0 or hi < 0)
-            sorok.add('hatas_osszevetes', 'F3V3 vs v2 átlag', r, mero, '%.4f|%.4f|%.4f|%.4f' % (ref, cl, dl, fl),
+            sorok.add('hatas_osszevetes', 'F3V3 vs v2 átlag' + utotag, r, mero, '%.4f|%.4f|%.4f|%.4f' % (ref, cl, dl, fl),
                       '%.4f|%.4f' % (lo, hi), '%s; n=%d; ref = a két v2-futás átlaga, cél = F3V3, Δ, |F3V2B − F3V2| (ingadozás); '
                       '90%% intervallum alsó|felső' % ('kívül az ingadozáson' if kivul else 'az ingadozáson belül / a 0-t tartalmazza', n))
 
@@ -400,6 +442,314 @@ def minosit(sorok, kf, oss=PAR):
 
 
 # ---------------------------------------------------------------------------
+# --csak-c: a C (F3V3) egyedül, a v2-es C-futások két aranyon, F8V3 tájékoztatásul
+# ---------------------------------------------------------------------------
+
+def arany_valtozat(adat, jsonl=None, sha=None, verzio='v2'):
+    """(adat-másolat egy másik befagyasztott arannyal, info). Alap: az arany v2 (tokenek.ARANY_V2);
+    hash-ellenőrzés, eltérésnél SystemExit. A futásadatok közösek (sekély másolat, csak olvasás)."""
+    jsonl = jsonl or tokenek.ARANY_V2
+    sha = sha or tokenek.ARANY_V2_SHA
+    h = tokenek.hash_hiba(jsonl, sha, 'arany %s' % verzio)
+    if h:
+        raise SystemExit('HIBA: %s' % h)
+    a2 = copy.copy(adat)
+    a2.arany = {o['vers']: o for o in meres._jsonl(jsonl)}
+    return a2, {'jsonl': jsonl, 'sha_fajl': sha, 'verzio': verzio, 'sha256': tokenek.sha256_lf(jsonl),
+                'aranyversek': len(a2.arany)}
+
+
+def nincs_sonnet(sorok):
+    """A Sonnet és a Sonnet+C pár sorai a Sonnet-adat nélkül."""
+    for oss in (NEVEK[SONNET], PAR):
+        for ret in RETEGEK:
+            sorok.add('nincs_adat', oss, ret, 'minden_mero', NINCS_SONNET, '',
+                      'a Sonnet-adat megérkezése után a teljes mérés ugyanezzel a szkripttel fut (--csak-c nélkül): '
+                      'f21p/meres_p3c_eredmeny.tsv, naplok/F21P_meres_p3c.md')
+
+
+def kuszob_c(sorok, kf, oss=None):
+    """Az öt rögzített feltétel küszöb-viszonya a C-re (egymodelles: PD6, nincs minősítés)."""
+    oss = oss or NEVEK[C3]
+
+    def viszony(x, kuszob, nagyobb):
+        jo = (x >= kuszob) if nagyobb else (x <= kuszob)
+        return 'a küszöbön belül' if jo else 'a küszöbön kívül'
+    for ret in RETEGEK:
+        p = _arany(sorok, oss, ret, 'pontossag_osszes (tajekoztato, PD6)')
+        sorok.add('kuszob', oss, ret, 'f1_magas_pontossag_98', 'n.é.', '',
+                  'egymodelles (PD6): a magas szint nem értelmezhető; az összpontosság mért (nem a feltétel mérőszáma): %s'
+                  % (_pct(*p) if p else '—'))
+        lf = _arany(sorok, oss, ret, 'lefedettseg')
+        if lf:
+            sorok.add('kuszob', oss, ret, 'f2_lefedettseg_95', lf[0], lf[1],
+                      'küszöb ≥ 95%%: %s (küszöb-viszony, nem minősítés; PD6)' % viszony(lf[0] / lf[1], 0.95, True))
+        for mero, cimke in (('regi_arany_kizaras_nelkul', 'f3_regi_arany_95 (MÉRT, kizárás nélkül)'),
+                            ('regi_arany_kizarassal_tajekoztato', 'f3_regi_arany_95 (TÁJÉKOZTATÓ, 1Móz 6:17 nélkül)')):
+            g = _arany(sorok, oss, ret, mero)
+            if g:
+                sorok.add('kuszob', oss, ret, cimke, g[0], g[1],
+                          'küszöb ≥ 95%%: %s (küszöb-viszony, nem minősítés; PD6)%s' % (
+                              viszony(g[0] / g[1], 0.95, True), '' if 'MÉRT' in cimke else '; a küszöb szempontjából nem számít (PD12)'))
+            else:
+                sorok.add('kuszob', oss, ret, cimke, 'n.é.', '', 'nincs régi arany hármas a rétegben')
+        sorok.add('kuszob', oss, ret, 'f5_alacsony_arany_10', 'n.é.', '', 'egymodelles (PD6): az alacsony szint nem értelmezhető')
+    if oss in kf:
+        e, lo, hi = kf[oss]
+        sorok.add('kuszob', oss, meres.OSSZES, 'f4_koltseg_felso90_60', '%.2f' % hi, '',
+                  'vetített teljes költség %.2f USD [90%%: %.2f–%.2f]; küszöb: a felső szél ≤ 60 USD: %s (küszöb-viszony, nem minősítés; PD6)'
+                  % (e, lo, hi, viszony(hi, 60.0, False)))
+    else:
+        sorok.add('kuszob', oss, meres.OSSZES, 'f4_koltseg_felso90_60', 'nem mért', '', 'a költségvetítés (koltseg_vetit_p3c.py --csak-c) kimenete hiányzik')
+    sorok.add('kuszob', oss, meres.OSSZES, 'minosites', 'nincs (egymodelles összeállítás, PD6)', '',
+              'a teljes futásra rétegenként sem mehet; csak mért számok és a küszöbhöz viszonyítás')
+
+
+def _pl(adat, f, ret):
+    """(találat, modell-link, arany-link, vers) a kapun átment aranyverseken."""
+    vs = [ig for ig in adat.versek if ig in adat.arany and _ret(adat, ig, ret) and adat.ok(f, ig)]
+    t = sum(len(adat.linkek(f, ig) & adat.arany_linkek(ig)) for ig in vs)
+    c = sum(len(adat.linkek(f, ig)) for ig in vs)
+    g = sum(len(adat.arany_linkek(ig)) for ig in vs)
+    return t, c, g, len(vs)
+
+
+def arany_hatas(adat3, adat2, sorok, futasok):
+    """Az arany v2 → v3 hatás azonos futás-kimeneten (determinisztikus): pontosság és lefedettség."""
+    for f in futasok:
+        for ret in RETEGEK:
+            t2, c2, g2, n2 = _pl(adat2, f, ret)
+            t3, c3, g3, n3 = _pl(adat3, f, ret)
+            for mero, (a2, b2, a3, b3) in (('pontossag', (t2, c2, t3, c3)), ('lefedettseg', (t2, g2, t3, g3))):
+                v2 = a2 / b2 if b2 else 0.0
+                v3 = a3 / b3 if b3 else 0.0
+                sorok.add('arany_hatas', NEVEK[f], ret, mero, '%.4f|%.4f|%.4f' % (v2, v3, v3 - v2), '%d/%d|%d/%d' % (a2, b2, a3, b3),
+                          'arany v2|arany v3|Δ (v3 − v2), azonos futás-kimeneten; n=%d aranyvers (kapun átment)' % n3)
+    # a két arany eltérő linkjei (a 60 aranyversen)
+    elt = [(ig, l) for ig in adat3.versek if ig in adat3.arany and ig in adat2.arany
+           for l in sorted(adat3.arany_linkek(ig) ^ adat2.arany_linkek(ig))]
+    sorok.add('arany_hatas', 'arany v2 → v3', meres.OSSZES, 'eltero_linkek', len(elt), '',
+              '; '.join('%s %s %s' % (ig, l, 'csak v3' if l in adat3.arany_linkek(ig) else 'csak v2') for ig, l in elt))
+
+
+def kjv_tajekoztato(adat, sorok):
+    """Az F8V3 és az F3V3 KJV-sorral bíró versei rétegenként (a 200 verses mintán), és a PD17-jelölés."""
+    for ret in RETEGEK:
+        vs = [ig for ig in adat.versek if _ret(adat, ig, ret)]
+        n8 = sum(1 for ig in vs if tokenek.kjv_tamapont_teljes(ig))
+        n3 = sum(1 for ig in vs if tokenek.kjv_tamapont(ig))
+        sorok.add('kjv', NEVEK[F8], ret, 'versek_kjv_sorral (teljes tábla)', n8, len(vs), 'tokenek.kjv_tamapont_teljes')
+        sorok.add('kjv', NEVEK[C3], ret, 'versek_kjv_sorral (régi tábla)', n3, len(vs), 'tokenek.kjv_tamapont')
+    sorok.add('kjv', NEVEK[F8], 'R4', 'jeloles', 'KJV nélkül, nem mérhető', '',
+              'PD17 (2): a Károli ↔ KJV megfeleltetés az ÚSZ-t nem fedi; az R4-en az F8V3 és az F3V3 bemenete azonos')
+    sorok.add('kjv', NEVEK[F8], 'R2', 'jeloles', 'gyenge (zsoltár-eltolódás)', '',
+              'PD17 (1): a zsoltárfeliratok miatti versmegfeleltetési eltolódás (N-F21); a KJV-sor valószínűleg rossz versről jön; naplok/F21P_kjv_meres.md')
+    sorok.add('kjv', NEVEK[F8], meres.OSSZES, 'jeloles', 'nem igazolt, a javított táblával újramérhető', '',
+              'PD17 (3): a KJV a promptban — a pilot döntése')
+
+
+def szamol_c(forras_dir=None, arany_ut=None, arany_sha=None, koltseg_ut=None, n_boot=N_BOOT, arany_v2_ut=None, arany_v2_sha=None):
+    """A csak-C P4-számítás (kiírás nélkül). Visszaad: (adat, info, sorok, kf, info_v2, futasok)."""
+    futasok = futasok_c(forras_dir)
+    adat, info = betolt(forras_dir, arany_ut, arany_sha, futasok)
+    adat2, info2 = arany_valtozat(adat, arany_v2_ut, arany_v2_sha)
+    sorok = Sorok()
+    for f in futasok:
+        meres_p3b.egymodell(adat, sorok, NEVEK[f], f)
+    for f in FUTASOK_C:
+        meres_p3b.egymodell(adat2, sorok, NEVEK[f] + V2_CIMKE, f)
+    nincs_sonnet(sorok)
+    kf = koltseg_felso(koltseg_ut or KOLTSEG_C_UT)
+    kuszob_c(sorok, kf)
+    arany_hatas(adat, adat2, sorok, FUTASOK_C)
+    extra = (('F8V3 − F3V3 (KJV, tájékoztató)', [C3], F8),) if F8 in futasok else ()
+    prompt_hatas(adat, sorok, n_boot, extra=extra)
+    prompt_hatas(adat2, sorok, n_boot, utotag=' [arany v2]')
+    kapuhiba_futasok(adat, sorok, futasok)
+    for f in futasok:
+        _, _, elso_h = meres.hibatipusok(adat, f)
+        el = [ig for ig in adat.versek if ig in elso_h]
+        vg = [ig for ig in adat.versek if ig in adat.futas[f] and not adat.ok(f, ig)]
+        sorok.add('kapuhiba_versek', NEVEK[f], meres.OSSZES, 'elso_probara', len(el), '', ', '.join(el) or '—')
+        sorok.add('kapuhiba_versek', NEVEK[f], meres.OSSZES, 'vegleg', len(vg), '',
+                  ', '.join('%s (%s%s)' % (ig, adat.reteg[ig], ', aranyvers' if ig in adat.arany else '') for ig in vg) or '—')
+    koltseg_futasok(adat, sorok, futasok)
+    mentett_ellenorzes(sorok, forras_dir or F21P, futasok)
+    if F8 in futasok:
+        kjv_tajekoztato(adat, sorok)
+    return adat, info, sorok, kf, info2, futasok
+
+
+def _tabla(sorok, szakasz, merok, osszeallitasok, retegek=None):
+    out = ['| összeállítás | mérőszám | %s |' % ' | '.join(retegek or RETEGEK), '|---|---|' + '---|' * len(retegek or RETEGEK)]
+    for o in osszeallitasok:
+        for m in merok:
+            cellak = []
+            talalt = False
+            for r in (retegek or RETEGEK):
+                x = [s for s in sorok.lista if s[0] == szakasz and s[1] == o and s[2] == r and s[3] == m]
+                if x:
+                    talalt = True
+                    cellak.append(_pct(x[0][4], x[0][5]) if x[0][5] != '' else x[0][4])
+                else:
+                    cellak.append('—')
+            if talalt:
+                out.append('| %s | %s | %s |' % (o, m, ' | '.join(cellak)))
+    return out + ['']
+
+
+def fejlec_c(info, info2, futasok, ts):
+    return ('GENERÁLT: eszkozok/karoli_strong/meres_p3c.py --csak-c | scope=P4 a regressziós mérésre, a C (F3V3, prompt_v3) EGYEDÜL '
+            '(a SONNETV3 nem futott: a Sonnet és a Sonnet+C pár nincs adat); a v2-es C-futások (F3V2, F3V2B) és az F3V3 az arany v3-ra '
+            'és az arany v2-re is; %s200 verses minta; arany %s (%d vers, sha256 %s) és arany %s (%d vers, sha256 %s) | '
+            'forras=f21p/valaszok/{%s}.jsonl, %s és %s (sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, '
+            'konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3c_c.tsv%s | ts=%s (a generálás '
+            'ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos' % (
+                'F8V3 (C KJV-támponttal) tájékoztatásul; ' if F8 in futasok else '', info['verzio'], info['aranyversek'],
+                info['sha256'][:16], info2['verzio'], info2['aranyversek'], info2['sha256'][:16], ','.join(futasok),
+                os.path.basename(info['jsonl']), os.path.basename(info2['jsonl']),
+                ', konkordancia/KJV_Strongs_teljes.tsv, konkordancia/KJV_Strongs_*.tsv' if F8 in futasok else '', ts))
+
+
+def _hatas_md(sorok, utotag):
+    ki = ['| réteg | mérőszám | v2 átlag | F3V3 | Δ | Δ 90% | \\|F3V2B − F3V2\\| | jelölés | n |', '|---|---|---|---|---|---|---|---|---|']
+    for s in sorok.lista:
+        if s[0] == 'hatas_osszevetes' and s[1] == 'F3V3 vs v2 átlag' + utotag:
+            ref, cl, dl, fl = (float(v) for v in s[4].split('|'))
+            lo, hi = (float(v) for v in s[5].split('|'))
+            jel, _, rest = s[6].partition(';')
+            ki.append('| %s | %s | %.2f%% | %.2f%% | %+.2f pp | [%+.2f; %+.2f] | %.2f pp | %s | %s |' % (
+                s[2], s[3], 100 * ref, 100 * cl, 100 * dl, 100 * lo, 100 * hi, 100 * fl, jel, rest.split('n=')[1].split(';')[0]))
+    return ki + ['']
+
+
+def kiir_c(sorok, info, info2, futasok, ts, eredmeny_ut, jelentes_ut, kf):
+    fej = fejlec_c(info, info2, futasok, ts)
+    with open(eredmeny_ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# ' + fej + '\n')
+        f.write('\t'.join(['szakasz', 'osszeallitas', 'reteg', 'mero', 'szamlalo', 'nevezo', 'megjegyzes']) + '\n')
+        for s in sorok.lista:
+            assert all('\t' not in x for x in s)
+            f.write('\t'.join(s) + '\n')
+    c3, c2, c2b = NEVEK[C3], NEVEK[C2], NEVEK[C2B]
+    ki = ['# F21P_meres_p3c_c.md — P4 a regressziós mérésre: a C (F3V3) egyedül, a v2-es C-futásokkal (a Sonnet nélkül)', '',
+          '<!-- %s -->' % fej, '',
+          'Kizárólag szkriptkimenet (meres_p3c.py --csak-c). A SONNETV3 még nem futott: a Sonnet egyedül és a Sonnet + C pár sorai '
+          '**%s**; a teljes P4 a Sonnet-adat megérkezése után ugyanezzel a szkripttel fut (--csak-c nélkül, az eredeti '
+          'f21p/meres_p3c_eredmeny.tsv és naplok/F21P_meres_p3c.md néven). A C egymodelles összeállítás: PD6 szerint **nincs '
+          'minősítése** (nem „megfelelt / nem felel meg”), csak mért számok és a küszöbhöz viszonyítás; az (1) és az (5) feltétel '
+          'n.é. A futások beállítása: a C `kotelezo_effort=minimal` (gondolkodással), temperature 0; az F3V2/F3V2B a prompt_v2-vel, '
+          'az F3V3 és az F8V3 a prompt_v3-mal. Cellaforma: érték (számláló/nevező). A mérés az arany **%s** változatára megy '
+          '(%d vers, sha256 ellenőrizve); a v2-es összevetéshez az arany **%s** is (%d vers, sha256 ellenőrizve).'
+          % (NINCS_SONNET, info['verzio'], info['aranyversek'], info2['verzio'], info2['aranyversek']), '']
+    ki += ['## a) A C (F3V3) egyedül: az öt rögzített feltétel rétegenként (arany %s)' % info['verzio'], '']
+    ki += _tabla(sorok, 'feltetelek', ['arany_versek_kapun_atment', 'pontossag_osszes (tajekoztato, PD6)', 'lefedettseg',
+                                       'regi_arany_kizaras_nelkul', 'regi_arany_kizarassal_tajekoztato', 'magas_pontossag',
+                                       'alacsony_arany'], [c3])
+    ki += ['### Küszöb-viszony (PD6: nem minősítés)', '', '| feltétel | réteg | érték | megjegyzés |', '|---|---|---|---|']
+    for s in sorok.lista:
+        if s[0] == 'kuszob':
+            ki.append('| %s | %s | %s | %s |' % (s[3], s[2], _pct(s[4], s[5]) if s[5] != '' else s[4], s[6]))
+    ki += ['', '## b) A Sonnet egyedül és a Sonnet + C pár', '', '| összeállítás | állapot |', '|---|---|',
+           '| %s | %s |' % (NEVEK[SONNET], NINCS_SONNET), '| %s | %s |' % (PAR, NINCS_SONNET), '']
+    oszlop = [c2, c2b, c3] + ([NEVEK[F8]] if F8 in futasok else [])
+    ki += ['## c) A C-futások egymás mellett, arany %s (F3V2, F3V2B: prompt_v2; F3V3: prompt_v3%s)' % (
+        info['verzio'], '; F8V3: prompt_v3 + KJV-támpont, tájékoztató' if F8 in futasok else ''), '']
+    ki += _tabla(sorok, 'feltetelek', ['arany_versek_kapun_atment', 'pontossag_osszes (tajekoztato, PD6)', 'lefedettseg',
+                                       'regi_arany_kizaras_nelkul', 'regi_arany_kizarassal_tajekoztato'], oszlop)
+    if F8 in futasok:
+        ki += ['Az F8V3 oszlop tájékoztató (PD17): az **R4 „KJV nélkül, nem mérhető”** (a Károli ↔ KJV megfeleltetés az ÚSZ-t nem fedi, '
+               'az R4-en a bemenet azonos az F3V3-éval); az R2 a zsoltár-eltolódás miatt gyenge (N-F21); a KJV a promptban: „nem '
+               'igazolt, a javított táblával újramérhető”. Részletek: naplok/F21P_kjv_meres.md.', '']
+        ki += _tabla(sorok, 'kjv', ['versek_kjv_sorral (teljes tábla)', 'versek_kjv_sorral (régi tábla)', 'jeloles'], [NEVEK[F8], c3])
+    ki += ['## d) Ugyanez az arany %s-re (a v2-es futások saját aranya; az arany v2 → v3 hatás elválasztásához)' % info2['verzio'], '']
+    ki += _tabla(sorok, 'feltetelek', ['arany_versek_kapun_atment', 'pontossag_osszes (tajekoztato, PD6)', 'lefedettseg'],
+                 [c2 + V2_CIMKE, c2b + V2_CIMKE, c3 + V2_CIMKE])
+    ki += ['### Az arany v2 → v3 hatás azonos futás-kimeneten (determinisztikus)', '',
+           '| futás | réteg | mérőszám | arany v2 | arany v3 | Δ (v3 − v2) | számláló/nevező (v2 \\| v3) |', '|---|---|---|---|---|---|---|']
+    for s in sorok.lista:
+        if s[0] == 'arany_hatas' and s[3] in ('pontossag', 'lefedettseg'):
+            v2, v3, d = (float(v) for v in s[4].split('|'))
+            ki.append('| %s | %s | %s | %.2f%% | %.2f%% | %+.2f pp | %s |' % (s[1], s[2], s[3], 100 * v2, 100 * v3, 100 * d, s[5].replace('|', ' \\| ')))
+    for s in sorok.lista:
+        if s[0] == 'arany_hatas' and s[3] == 'eltero_linkek':
+            ki += ['', 'A két arany eltérő linkjei: %s — %s' % (s[4], s[6])]
+    ki += ['', '## e) Kapuhiba első próbára és végleg; hibatípusok kapupont szerint (hibás versek a 200-ból)', '']
+    ki += _tabla(sorok, 'kapuhiba', ['elso_probara', 'vegleg'], oszlop)
+    merok_t = []
+    for s in sorok.lista:
+        if s[0] == 'kapuhiba_tipus' and s[3] not in merok_t:
+            merok_t.append(s[3])
+    ki += ['| futás | kapupont | hibás versek (n a 200) |', '|---|---|---|']
+    for o in oszlop:
+        for m in merok_t:
+            x = [s for s in sorok.lista if s[0] == 'kapuhiba_tipus' and s[1] == o and s[3] == m]
+            if x:
+                ki.append('| %s | %s | %s/%s |' % (o, m, x[0][4], x[0][5]))
+    ki += ['', '| futás | keresztellenőrzés (első próbás hibás versek) |', '|---|---|']
+    for s in sorok.lista:
+        if s[0] == 'kapuhiba_kereszt':
+            ki.append('| %s | %s |' % (s[1], s[6]))
+    ki += ['', '| futás | mentett válaszok újraellenőrzése (hibák) |', '|---|---|']
+    for s in sorok.lista:
+        if s[0] == 'mentett_ellenorzes':
+            ki.append('| %s | %s — %s |' % (s[1], s[4], s[6]))
+    ki += ['', '| futás | első próbára kapuhibás versek | véglegesen kapuhibás versek |', '|---|---|---|']
+    for o in oszlop:
+        x = {s[3]: s for s in sorok.lista if s[0] == 'kapuhiba_versek' and s[1] == o}
+        if x:
+            ki.append('| %s | %s: %s | %s: %s |' % (o, x['elso_probara'][4], x['elso_probara'][6], x['vegleg'][4], x['vegleg'][6]))
+    ki += ['', '## f) Költség és beállítás futásonként (a futásnaplóból)', '', '| futás | mérőszám | érték | megjegyzés |', '|---|---|---|---|']
+    for s in sorok.lista:
+        if s[0] == 'koltseg':
+            ki.append('| %s | %s | %s | %s |' % (s[1], s[3], s[4], s[6]))
+    ki.append('')
+    ki.append('(4) vetített költség, teljes Biblia (f21p/koltseg_vetites_p3c_c.tsv; 90%; a bootstrap egysége a köteg):')
+    ki.append('')
+    for o in oszlop:
+        if o in kf:
+            ki.append('- %s: %.2f USD [%.2f–%.2f]' % (o, *kf[o]))
+    if not kf:
+        ki.append('- (a f21p/koltseg_vetites_p3c_c.tsv még nincs meg: a (4) feltétel nem mért)')
+    for betu, utotag, cim in (('g', '', 'arany %s' % info['verzio']), ('h', ' [arany v2]', 'arany %s' % info2['verzio'])):
+        ki += ['', '## %s) A prompt_v2 → v3 hatás (F3V3 a két v2-futás átlagához képest), %s, és a futásközi ingadozás' % (betu, cim), '',
+               'Δ = F3V3 − a v2-futások átlaga, azonos aranyon (tehát az arany változása nincs benne); a 90%%-os intervallum a versek '
+               'bootstrapje (rétegenként rétegzett, %d újramintavétel, mag %d). Az ingadozás-becslés egyetlen futáspár '
+               '(|F3V2B − F3V2|, azonos prompt). „kívül”: |Δ| > az ingadozás ÉS az intervallum nem tartalmazza a 0-t (leíró jelölés, '
+               'nem próba).' % (N_BOOT, MAG), '']
+        ki += _hatas_md(sorok, utotag)
+    ki += ['## i) Páronkénti összevetések (a „[arany v2]” utótag nélkül az arany v3-ra; az F8V3 − F3V3 tájékoztató)', '',
+           '| összevetés | réteg | mérőszám | ref | cél | Δ | Δ 90% | \\|Δ\\| 95. percentilis | n |', '|---|---|---|---|---|---|---|---|---|']
+    for s in sorok.lista:
+        if s[0] == 'hatas':
+            x, y, d = (float(v) for v in s[4].split('|'))
+            lo, hi, ab = (float(v) for v in s[5].split('|'))
+            ki.append('| %s | %s | %s | %.2f%% | %.2f%% | %+.2f pp | [%+.2f; %+.2f] | %.2f pp | %s |' % (
+                s[1], s[2], s[3], 100 * x, 100 * y, 100 * d, 100 * lo, 100 * hi, 100 * ab, s[6].split('n=')[-1]))
+    if F8 in futasok:
+        ki += ['', 'Az „F8V3 − F3V3 (KJV, tájékoztató)” sorok R4-e: KJV nélkül, nem mérhető (azonos bemenet, a különbség futásközi ingadozás).']
+    ki.append('')
+    with open(jelentes_ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\n'.join(ki) + '\n')
+
+
+def fut_c(forras_dir=None, arany_ut=None, arany_sha=None, eredmeny_ut=None, jelentes_ut=None, koltseg_ut=None, ts=None,
+          n_boot=N_BOOT, arany_v2_ut=None, arany_v2_sha=None):
+    adat, info, sorok, kf, info2, futasok = szamol_c(forras_dir, arany_ut, arany_sha, koltseg_ut, n_boot, arany_v2_ut, arany_v2_sha)
+    kiir_c(sorok, info, info2, futasok, ts or tokenek.generalas_ts(), eredmeny_ut or EREDMENY_C_UT, jelentes_ut or JELENTES_C_UT, kf)
+    print('kész (--csak-c): %d sor -> %s, %s (arany: %s; futások: %s)' % (
+        len(sorok.lista), eredmeny_ut or EREDMENY_C_UT, jelentes_ut or JELENTES_C_UT, info['verzio'], ', '.join(futasok)))
+    for s in sorok.lista:
+        if s[0] == 'kuszob' and s[2] == meres.OSSZES:
+            print('  %s | %s | %s' % (s[3], _pct(s[4], s[5]) if s[5] != '' else s[4], s[6][:110]))
+    rossz = [s for s in sorok.lista if s[3] == 'keresztellenorzes_elso_probalkozas' and 'ELTÉR' in s[6]]
+    if rossz:
+        print('FIGYELEM: a kapuhiba keresztellenőrzése eltér: %s' % [s[1] for s in rossz], file=sys.stderr)
+        return 1
+    return 0
+
+
+# ---------------------------------------------------------------------------
 # kiírás
 # ---------------------------------------------------------------------------
 
@@ -434,7 +784,8 @@ def kiir(sorok, info, ts, eredmeny_ut, jelentes_ut, kf):
           'Kizárólag szkriptkimenet. Az összeállítások: Sonnet egyedül (SONNETV3), C egyedül (F3V3), Sonnet+C pár (A = Sonnet, '
           'B = C F3V3-futása, mindkettő prompt_v3; A∩B = magas, döntőbíró nélkül; az egyik oldal kapuhibája: a vers minden '
           'linkje alacsony és beleszámít az alacsony arányba). Egymodelles összeállítás (Sonnet, C) nem minősíthető (PD6): az '
-          'alacsony arány n.é. Az A/B/C/Sonnet beállítása eltérő (a Sonnet gondolkodása kikapcsolva, a C-é minimal/low, kötelező). '
+          'alacsony arány n.é. Az A/B/C/Sonnet beállítása eltérő (PD15: a C minimal, kötelező; a Sonnet minimális gondolkodási kerettel, '
+          'temperature nélkül, nem determinisztikus; az A és a B kikapcsolva). '
           'Cellaforma: érték (számláló/nevező). A mérés az arany **%s** változatára megy (%d vers).' % (info['verzio'], info['aranyversek']), '']
 
     def tabla(szakasz, merok, osszeallitasok):
@@ -571,6 +922,115 @@ def fut(forras_dir=None, arany_ut=None, arany_sha=None, eredmeny_ut=None, jelent
 # ---------------------------------------------------------------------------
 # önteszt (mock-adat, determinisztikus)
 # ---------------------------------------------------------------------------
+
+def onteszt_csak_c(mappa, info, ellen):
+    """A --csak-c mód öntesztje a mock-adaton (a hívó onteszt() mappájában; a repó kimeneteit nem írja)."""
+    import contextlib
+    import io
+    import json
+    arany3, sha3 = os.path.join(F21P, 'arany_opus_v3.jsonl'), os.path.join(F21P, 'arany_opus_v3.sha256')
+    nincs_k = os.path.join(mappa, 'nincs_koltseg_c.tsv')
+    ut_e, ut_j = os.path.join(mappa, 'c_eredmeny.tsv'), os.path.join(mappa, 'c_jelentes.md')
+
+    def futtat_c(ts, koltseg=nincs_k, e=ut_e, j=ut_j):
+        with contextlib.redirect_stdout(io.StringIO()):
+            kod = fut_c(mappa, arany3, sha3, e, j, koltseg, ts=ts, n_boot=40)
+        with open(e, encoding='utf-8') as f:
+            t = f.read()
+        with open(j, encoding='utf-8') as f:
+            m = f.read()
+        return kod, t, m
+    kod, t1, m1 = futtat_c('T1')
+    ellen(kod == 0, 'csak-c: a mock-futás kilépési kódja %d' % kod)
+    s0 = t1.split('\n')[0]
+    ellen(s0.startswith('# GENERÁLT: eszkozok/karoli_strong/meres_p3c.py --csak-c | scope=') and ' | forras=' in s0 and ' | ts=T1 ' in s0,
+          'csak-c: a TSV fejléce nem a scope|forras|ts proveniencia: %s' % s0[:120])
+    ellen('scope=' in m1 and 'forras=' in m1 and 'ts=T1' in m1, 'csak-c: az md nem viseli a proveniencia-fejlécet')
+    kod, t2, m2 = futtat_c('T2')
+    ellen(t1.replace('ts=T1 ', 'ts=T2 ') == t2 and m1.replace('ts=T1', 'ts=T2') == m2, 'csak-c: a futás nem determinisztikus')
+    sorok = [x.split('\t') for x in t1.split('\n')[2:] if x]
+    ellen(all(len(x) == 7 for x in sorok), 'csak-c: a TSV-sorok nem mind 7 mezősek')
+    # a Sonnet és a pár: csak „nincs adat” sorok, minden rétegben; nincs minősítés, nincs Sonnet-mérés
+    na = {(x[1], x[2]) for x in sorok if x[0] == 'nincs_adat' and x[4] == NINCS_SONNET}
+    ellen(na == {(o, r) for o in (NEVEK[SONNET], PAR) for r in RETEGEK}, 'csak-c: a nincs-adat sorok hiányosak: %s' % sorted(na))
+    ellen(not any(x[0] in ('minosites', 'minosites_reteg', 'par_versosztalyok', 'ab_egyezes') for x in sorok)
+          and not any(x[1] in (NEVEK[SONNET], PAR) and x[0] != 'nincs_adat' for x in sorok),
+          'csak-c: a Sonnet / a pár mért sort vagy minősítést kapott')
+    ellen(NINCS_SONNET in m1, 'csak-c: az md-ben nincs a nincs-adat jelölés')
+    # küszöb: (1) és (5) n.é. minden rétegben, a (4) költségfájl nélkül nem mért, egy „nincs” minősítés
+    ku = {(x[3], x[2]): x for x in sorok if x[0] == 'kuszob'}
+    ellen(all(ku[('f1_magas_pontossag_98', r)][4] == 'n.é.' and ku[('f5_alacsony_arany_10', r)][4] == 'n.é.' for r in RETEGEK),
+          'csak-c: az (1)/(5) nem n.é.')
+    ellen(ku[('f4_koltseg_felso90_60', meres.OSSZES)][4] == 'nem mért', 'csak-c: a hiányzó költség nem „nem mért”')
+    ellen(ku[('minosites', meres.OSSZES)][4].startswith('nincs'), 'csak-c: a C minősítést kapott')
+    ellen(not any(x[4] in ('megfelel', 'nem felel meg') for x in sorok), 'csak-c: megfelel/nem felel meg szerepel')
+    # a (4) a költségfájlból
+    ut_k = os.path.join(mappa, 'koltseg_c_teszt.tsv')
+    with open(ut_k, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# MANUAL: mock\nszakasz\tosszeallitas\treteg\tmero\tertek\talso90\tfelso90\tmegjegyzes\n')
+        f.write('vetites\t%s\tÖsszes\tkoltseg_usd\t30\t25\t61\tmock\n' % NEVEK[C3])
+    kod, tk, _ = futtat_c('T1', ut_k, os.path.join(mappa, 'ck.tsv'), os.path.join(mappa, 'ck.md'))
+    x = [s.split('\t') for s in tk.split('\n') if s.startswith('kuszob\t%s\tÖsszes\tf4_' % NEVEK[C3])]
+    ellen(x and x[0][4] == '61.00' and 'a küszöbön kívül' in x[0][6], 'csak-c: a (4) nem a költségfájl felső széle / viszonya: %s' % x)
+    # független újraszámolás: az F3V3 lefedettsége az arany v3-ra (Összes), a saját jsonl-olvasással
+    kiz = tokenek.meres_kizaras()
+    gold = {}
+    with open(arany3, encoding='utf-8') as fh:
+        for s in fh:
+            if s.strip():
+                o = json.loads(s)
+                gold[o['vers']] = {(p[0], e) for p in o['parok'] for e in p[1] if (o['vers'], e) not in kiz}
+    t = g = 0
+    with open(os.path.join(mappa, 'valaszok', 'F3V3.jsonl'), encoding='utf-8') as fh:
+        for s in fh:
+            if not s.strip():
+                continue
+            for ig, v in json.loads(s)['versek'].items():
+                if v['allapot'] == 'ok' and ig in gold:
+                    lk = {(p[0], e) for p in v['obj']['parok'] for e in p[1] if (ig, e) not in kiz}
+                    t += len(lk & gold[ig])
+                    g += len(gold[ig])
+    x = [s for s in sorok if s[0] == 'feltetelek' and s[1] == NEVEK[C3] and s[2] == meres.OSSZES and s[3] == 'lefedettseg']
+    ellen(x and (int(x[0][4]), int(x[0][5])) == (t, g), 'csak-c: az F3V3 lefedettsége (%s) nem a független (%d/%d)' % (x[0][4:6] if x else None, t, g))
+    # az arany v2 → v3 hatás: a v2-oldal = az egymodell × arany v2 sora; vannak eltérő linkek
+    for f in FUTASOK_C:
+        ah = [s for s in sorok if s[0] == 'arany_hatas' and s[1] == NEVEK[f] and s[2] == meres.OSSZES and s[3] == 'lefedettseg']
+        ev = [s for s in sorok if s[0] == 'feltetelek' and s[1] == NEVEK[f] + V2_CIMKE and s[2] == meres.OSSZES and s[3] == 'lefedettseg']
+        ellen(ah and ev and ah[0][5].split('|')[0] == '%s/%s' % (ev[0][4], ev[0][5]), 'csak-c: az arany-hatás v2-oldala nem az egymodell × v2 (%s)' % f)
+    el = [s for s in sorok if s[0] == 'arany_hatas' and s[3] == 'eltero_linkek']
+    ellen(el and int(el[0][4]) > 0, 'csak-c: a két arany között nincs eltérő link')
+    ellen(len({s[1] for s in sorok if s[0] == 'hatas_osszevetes'}) == 2, 'csak-c: a prompt-hatás nem mindkét aranyon')
+    ellen(not any(s[0] == 'kjv' for s in sorok), 'csak-c: F8V3 nélkül kjv-sorok vannak')
+    # F8V3 (tájékoztató): az F3V3 másolata a mockban (a napló-sorokkal) -> kjv-sorok, Δ = 0
+    import shutil
+    shutil.copyfile(os.path.join(mappa, 'valaszok', 'F3V3.jsonl'), os.path.join(mappa, 'valaszok', 'F8V3.jsonl'))
+    naplo = os.path.join(mappa, 'futasnaplo.tsv')
+    with open(naplo, encoding='utf-8') as f:
+        ns = f.read().split('\n')
+    uj = [s.split('\t') for s in ns[1:] if s and s.split('\t')[1] == C3]
+    with open(naplo, 'a', encoding='utf-8', newline='\n') as f:
+        for m in uj:
+            m[1] = F8
+            f.write('\t'.join(m) + '\n')
+    kod, t8, m8 = futtat_c('T1', nincs_k, os.path.join(mappa, 'c8.tsv'), os.path.join(mappa, 'c8.md'))
+    s8 = [x.split('\t') for x in t8.split('\n')[2:] if x]
+    ellen(kod == 0 and any(s[0] == 'kjv' and s[2] == 'R4' and s[4] == 'KJV nélkül, nem mérhető' for s in s8)
+          and 'KJV nélkül, nem mérhető' in m8, 'csak-c: az F8V3 R4-jelölése hiányzik (kód %d)' % kod)
+    d8 = [s for s in s8 if s[0] == 'hatas' and s[1].startswith('F8V3 − F3V3')]
+    ellen(d8 and all(abs(float(s[4].split('|')[2])) < 1e-12 for s in d8), 'csak-c: az F8V3 = F3V3 másolat Δ-ja nem nulla')
+    os.remove(os.path.join(mappa, 'valaszok', 'F8V3.jsonl'))
+    # a SONNETV3 hiánya: a teljes mód SystemExit (--csak-c-re utal, semmi nem íródik), a csak-c ugyanazt adja
+    os.remove(os.path.join(mappa, 'valaszok', 'SONNETV3.jsonl'))
+    ut_x = os.path.join(mappa, 'teljes_nem_irodik.tsv')
+    try:
+        with contextlib.redirect_stdout(io.StringIO()):
+            fut(mappa, arany3, sha3, ut_x, os.path.join(mappa, 'teljes_nem_irodik.md'), nincs_k, ts='T1')
+        ellen(False, 'a SONNETV3 hiánya nem állította meg a teljes mérést')
+    except SystemExit as e:
+        ellen('--csak-c' in str(e) and not os.path.exists(ut_x), 'a SONNETV3 hiányának hibaüzenete/mellékhatása hibás: %s' % e)
+    kod, t3, _ = futtat_c('T1')
+    ellen(kod == 0 and t3 == t1, 'csak-c: a SONNETV3 jsonl hiánya megváltoztatta a csak-c kimenetet')
+
 
 def onteszt():
     import contextlib
@@ -773,6 +1233,7 @@ def onteszt():
         # a repó alapértelmezett aranya (legfrissebb) létező, hash-ellenőrzött fájl
         jsonl, sha, verzio = tokenek.legfrissebb_arany()
         ellen(tokenek.hash_hiba(jsonl, sha) is None, 'a repó legfrissebb aranya (%s) hash-hibás' % verzio)
+        onteszt_csak_c(mappa, info, ellen)
     finally:
         shutil.rmtree(mappa, ignore_errors=True)
     ellen(p3c_mock.regi_kimenetek_hibak() == [], 'az önteszt megváltoztatta a régi kimeneteket: %s' % p3c_mock.regi_kimenetek_hibak())
@@ -782,7 +1243,8 @@ def onteszt():
             print('  ' + h)
         return 1
     print('meres_p3c önteszt rendben (minősítés-logika mind az öt feltételre, pár-szintek és kapuhibás oldal, független '
-          'újraszámolás a mock-adaton, determinizmus, hash-ellenőrzés, arany-paraméter, régi kimenetek bájtazonossága)')
+          'újraszámolás a mock-adaton, determinizmus, hash-ellenőrzés, arany-paraméter, régi kimenetek bájtazonossága; '
+          '--csak-c: nincs-adat jelölés, PD6-küszöbviszony, arany v2 → v3 hatás, F8V3 tájékoztató, SONNETV3-hiány)')
     return 0
 
 
@@ -791,10 +1253,14 @@ def main():
     ap.add_argument('--arany', default=None, help='az arany jsonl-je (alap: a legfrissebb befagyasztott: v3, ha van, különben v2)')
     ap.add_argument('--arany-sha', default=None, help='a hash-fájl (alap: az --arany neve .sha256 kiterjesztéssel)')
     ap.add_argument('--forras-dir', default=None, help='a valaszok/ és a futasnaplo.tsv könyvtára (alap: f21p/)')
+    ap.add_argument('--csak-c', action='store_true',
+                    help='a C (F3V3) egyedüli mérése a Sonnet-adat nélkül (kimenet: meres_p3c_c_eredmeny.tsv, F21P_meres_p3c_c.md)')
     ap.add_argument('--onteszt', action='store_true')
     args = ap.parse_args()
     if args.onteszt:
         return onteszt()
+    if args.csak_c:
+        return fut_c(args.forras_dir, args.arany, args.arany_sha)
     return fut(args.forras_dir, args.arany, args.arany_sha)
 
 

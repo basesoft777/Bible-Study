@@ -186,6 +186,158 @@ def szamol(forras_dir=None, arany_ut=None, arany_sha=None, n_boot=N_BOOT, vd=Non
     return sorok, info
 
 
+# ---------------------------------------------------------------------------
+# --csak-c (F21.71): a C (F3V3) egyedül; a v2-es C-futások (F3V2, F3V2B) tájékoztatásul
+# ---------------------------------------------------------------------------
+
+KIMENET_C = os.path.join(kv.F21P, 'koltseg_vetites_p3c_c.tsv')
+C2, C2B = mp.C2, mp.C2B
+FUTASOK_C = (C3, C2, C2B)
+
+
+def szamol_c(forras_dir=None, arany_ut=None, arany_sha=None, n_boot=N_BOOT, vd=None, bib=None):
+    """A csak-C P5: futásonként (F3V3 irányadó; F3V2, F3V2B tájékoztató) illesztés, ár, M a saját
+    adatból, ellenőrzés a 200 versre (mintán belül + leave-one-out, a konzervatívabb számít), vetítés
+    F22-rétegenként, köteg-bootstrap. Visszaad: (sorok, arany_info)."""
+    import futtat
+    forras_dir = forras_dir or kv.F21P
+    modell = futtat.MODELLEK['C']
+    ar = futtat.ARAK[modell]
+    vd = vd or kv.Versadat()
+    bib = bib or kv.biblia(vd, kv.F22_RETEG_KONYVEK)
+    F22 = kv.F22_RETEGEK
+    kk = {f: kotegek_p3c(f, vd, forras_dir) for f in FUTASOK_C}
+    param = {f: kp.illeszt(kk[f], ar) for f in kk}
+    sorok = [['szakasz', 'osszeallitas', 'reteg', 'mero', 'ertek', 'also90', 'felso90', 'megjegyzes']]
+
+    def add(*m):
+        sorok.append([str(x) for x in m])
+    szerep = {C3: 'IRÁNYADÓ (prompt_v3)', C2: 'tájékoztató (prompt_v2)', C2B: 'tájékoztató (prompt_v2, a C második futása)'}
+    for f in FUTASOK_C:
+        cin, cout, M, s = param[f]
+        n = mp.NEVEK[f]
+        add('illesztes', n, '-', 'bemenet_a_b_c', '%.2f / %.4f / %.4f' % tuple(cin), '', '', '%d első próbálkozású hívás (%s; %s)' % (len(kk[f]), f, szerep[f]))
+        add('illesztes', n, '-', 'kimenet_a_b', '%.2f / %.4f' % tuple(cout), '', '', 'a kimeneti token a gondolkodási tokent is tartalmazza, ha a modell jelenti')
+        add('illesztes', n, '-', 'gondolkodasi_token_osszesen', sum(q['gond'] for q in kk[f]), '', '', 'futasnaplo.tsv gondolkodas_token (minden hívás)')
+        add('ar', n, '-', 'cost1_per_tablaar_s', round(s, 6), '', '', 'táblaár %s: %.2f/%.2f USD/1M' % ((modell,) + ar))
+        add('ar', n, '-', 'ujrakeres_szorzo_M', round(M, 6), '', '',
+            'a futás saját mért adatából: Σcost / Σcost(első próba); hívás/köteg = %.2f' % (sum(q['hivas'] for q in kk[f]) / len(kk[f])))
+        pred, loo, tenyl = _ellenorzes([kk[f]], [ar])
+        bent, loo_sz = 100 * (pred - tenyl) / tenyl, 100 * (loo - tenyl) / tenyl
+        sz, melyik = kv.szamito_ellenorzes(bent, loo_sz)
+        add('ellenorzes', n, '-', 'pilot_vetitett_usd', round(pred, 6), '', '', 'mintán belül (200 vers, %d köteg)' % len(kk[f]))
+        add('ellenorzes', n, '-', 'pilot_loo_vetitett_usd', round(loo, 6), '', '', 'leave-one-out (kötegenként kihagyva)')
+        add('ellenorzes', n, '-', 'pilot_tenyleges_usd', round(tenyl, 6), '', '', 'futasnaplo.tsv (minden hívás)')
+        add('ellenorzes', n, '-', 'elteres_szazalek', round(bent, 3), '', '', 'mintán belül, küszöb ≤ 10%')
+        add('ellenorzes', n, '-', 'loo_elteres_szazalek', round(loo_sz, 3), '', '', 'leave-one-out, küszöb ≤ 10%')
+        add('ellenorzes', n, '-', 'szamito_elteres_szazalek', round(sz, 3), '', '',
+            'PD12/DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: %s; küszöb ≤ 10%%: %s'
+            % (melyik, 'teljesül' if abs(sz) <= 10 else 'nem teljesül'))
+    alap = {mp.NEVEK[f]: kp.vetit_futas(param[f], ar, bib) for f in FUTASOK_C}
+    rnd = random.Random(MAG)
+    boot = {o: {r: [] for r in F22 + ['Összes']} for o in alap}
+    for _ in range(n_boot):
+        for f in FUTASOK_C:
+            minta_k = [kk[f][rnd.randrange(len(kk[f]))] for _ in kk[f]]
+            v = kp.vetit_futas(kp.illeszt(minta_k, ar), ar, bib)
+            for r in v:
+                boot[mp.NEVEK[f]][r].append(v[r])
+    for f in FUTASOK_C:
+        o = mp.NEVEK[f]
+        for r in F22 + ['Összes']:
+            bs = sorted(boot[o][r])
+            add('vetites', o, r, 'koltseg_usd', round(alap[o][r], 4), round(bs[int(0.05 * len(bs))], 4),
+                round(bs[int(0.95 * len(bs)) - 1], 4),
+                'F22 műfaji réteg; bootstrap %d (köteg-egység: PD12); %s; KJV-támpont a vetítésben a régi táblák szerint '
+                '(1Móz, 2Móz, Péld), mint az F3V3-ban' % (len(bs), szerep[f]))
+    for r in F22:
+        add('biblia_rs', '-', r, 'versek_szama', bib[r]['n'], '', '', 'szavak (eredeti+Károli) %d, KJV-szavak %d' % (bib[r]['x'], bib[r]['k']))
+    # kézimunka: egymodelles összeállításnál az alacsony szint n.é. (PD6); az aranytól való eltérés/vers tájékoztató
+    adat, info = mp.betolt(forras_dir, arany_ut, arany_sha, list(FUTASOK_C))
+    oss = mp.NEVEK[C3]
+    add('kezimunka', oss, 'Összes', 'alacsony_link_biblia', 'n.é.', '', '', 'egymodelles összeállítás (PD6): az alacsony szint nem értelmezhető')
+    tot = 0.0
+    for r in F22:
+        av = [ig for ig in adat.versek if kv.f22_reteg(ig) == r and ig in adat.arany and adat.ok(C3, ig)]
+        if not av:
+            add('kezimunka', oss, r, 'elteres_per_vers_arany', 'n.é.', '', '', 'nincs (kapun átment) aranyvers a rétegben')
+            continue
+        elt = sum(len(adat.linkek(C3, ig) ^ adat.arany_linkek(ig)) for ig in av)
+        add('kezimunka', oss, r, 'elteres_per_vers_arany', round(elt / len(av), 4), '', '',
+            'TÁJÉKOZTATÓ: mért, %d aranyvers (%s); hiányzó + többlet link/vers' % (len(av), info['verzio']))
+        add('kezimunka', oss, r, 'vetitett_elteres_biblia', round(elt / len(av) * bib[r]['n']), '', '', '× %d vers (kis n)' % bib[r]['n'])
+        tot += elt / len(av) * bib[r]['n']
+    add('kezimunka', oss, 'Összes', 'vetitett_elteres_biblia', round(tot), '', '', 'TÁJÉKOZTATÓ: F22-rétegenként vetítve (a nem n.é. rétegek összege)')
+    return sorok, info
+
+
+def fejlec_c(info, ts):
+    return ('GENERÁLT: eszkozok/karoli_strong/koltseg_vetit_p3c.py --csak-c | scope=P5 a regressziós mérésre: a C (F3V3, prompt_v3) '
+            'egyedül, irányadó; a v2-es C-futások (F3V2, F3V2B, prompt_v2) tájékoztatásul; a SONNETV3 nem futott (a Sonnet és a '
+            'Sonnet+C vetítése nincs adat); teljes Biblia 31 158 vers, F22 műfaji öt réteg (PD12), kézimunka-tájékoztató az arany '
+            '%s-höz | forras=f21p/futasnaplo.tsv, f21p/valaszok/{F3V3,F3V2,F3V2B}.jsonl, f21p/minta.tsv, konkordancia/Karoli_1908.tsv, '
+            'konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/KJV_Strongs_*.tsv, %s (sha256 %s, ellenőrizve) | '
+            'ts=%s (a generálás ideje; ismételt futáskor csak ez a sor tér el) | mag=%d | kézzel szerkeszteni tilos'
+            % (info['verzio'], os.path.basename(info['jsonl']), info['sha256'][:16], ts, MAG))
+
+
+def fut_c(forras_dir=None, arany_ut=None, arany_sha=None, ut=None, ts=None, n_boot=N_BOOT):
+    sorok, info = szamol_c(forras_dir, arany_ut, arany_sha, n_boot)
+    ut = ut or KIMENET_C
+    with open(ut, 'w', encoding='utf-8', newline='\n') as fh:
+        fh.write('# ' + fejlec_c(info, ts or tokenek.generalas_ts()) + '\n')
+        for s in sorok:
+            assert all('\t' not in x for x in s)
+            fh.write('\t'.join(s) + '\n')
+    for s in sorok:
+        if s[0] == 'vetites' and s[2] == 'Összes':
+            print('vetites %s: %s USD [%s–%s]' % (s[1], s[4], s[5], s[6]))
+        if s[0] == 'ellenorzes' and s[3] == 'szamito_elteres_szazalek':
+            print('  ellenőrzés %s: %s%% (%s)' % (s[1], s[4], s[7]))
+    print('-> %s' % ut)
+    return 0
+
+
+def onteszt_csak_c(mappa, info, ellen):
+    """A --csak-c önteszt a mock-adaton (a SONNETV3 nélkül is fut)."""
+    import contextlib
+    import io
+    os.remove(os.path.join(mappa, 'valaszok', 'SONNETV3.jsonl'))
+    ut1, ut2 = os.path.join(mappa, 'c1.tsv'), os.path.join(mappa, 'c2.tsv')
+    with contextlib.redirect_stdout(io.StringIO()):
+        fut_c(mappa, info['arany_ut'], info['arany_sha'], ut1, 'T1', n_boot=60)
+        fut_c(mappa, info['arany_ut'], info['arany_sha'], ut2, 'T2', n_boot=60)
+    with open(ut1, encoding='utf-8') as f:
+        t1 = f.read()
+    with open(ut2, encoding='utf-8') as f:
+        t2 = f.read()
+    ellen(t1.replace('ts=T1 ', 'ts=T2 ') == t2, 'csak-c: a vetítés nem determinisztikus')
+    s0 = t1.split('\n')[0]
+    ellen(s0.startswith('# GENERÁLT: eszkozok/karoli_strong/koltseg_vetit_p3c.py --csak-c | scope=') and ' | forras=' in s0 and ' | ts=T1 ' in s0,
+          'csak-c: a TSV fejléce nem a scope|forras|ts proveniencia')
+    sorok = [x.split('\t') for x in t1.split('\n')[2:] if x]
+    ellen(all(len(x) == 8 for x in sorok), 'csak-c: a TSV-sorok nem mind 8 mezősek')
+    F22 = kv.F22_RETEGEK
+    vet = {(x[1], x[2]): (float(x[4]), float(x[5]), float(x[6])) for x in sorok if x[0] == 'vetites'}
+    nevek = [mp.NEVEK[f] for f in FUTASOK_C]
+    ellen(set(vet) == {(o, r) for o in nevek for r in F22 + ['Összes']}, 'csak-c: a vetítés nem pontosan a három C-futás × F22-rétegek')
+    ellen(all(v[1] <= v[2] and v[0] > 0 for v in vet.values()), 'csak-c: a vetítés intervalluma/értéke hibás')
+    ellen(all(abs(sum(vet[(o, r)][0] for r in F22) - vet[(o, 'Összes')][0]) < 6e-4 for o in nevek), 'csak-c: a rétegek összege nem az Összes')
+    ellen(not any(x[1] in (OSS_S, OSS_PAR) for x in sorok), 'csak-c: Sonnet- vagy pár-sor a kimenetben')
+    naplo = kv._tsv(os.path.join(mappa, 'futasnaplo.tsv'))
+    for f in FUTASOK_C:
+        rs = [r for r in naplo if r['futas'] == f]
+        m_ert = sum(float(r['koltseg_usd']) for r in rs) / sum(float(r['koltseg_usd']) for r in rs if r['probalkozas'] == '1')
+        x = [s for s in sorok if s[0] == 'ar' and s[1] == mp.NEVEK[f] and s[3] == 'ujrakeres_szorzo_M']
+        ellen(x and abs(float(x[0][4]) - m_ert) < 2e-6, 'csak-c: M (%s) nem a saját adatból' % f)
+        t = [s for s in sorok if s[0] == 'ellenorzes' and s[1] == mp.NEVEK[f] and s[3] == 'pilot_tenyleges_usd']
+        ellen(t and abs(float(t[0][4]) - sum(float(r['koltseg_usd']) for r in rs)) < 2e-6, 'csak-c: a tényleges költség nem a napló összege (%s)' % f)
+        e = {s[3]: float(s[4]) for s in sorok if s[0] == 'ellenorzes' and s[1] == mp.NEVEK[f] and s[3].endswith('szazalek')}
+        ellen(abs(e['szamito_elteres_szazalek']) == max(abs(e['elteres_szazalek']), abs(e['loo_elteres_szazalek'])),
+              'csak-c: a számító eltérés nem a konzervatívabb (%s)' % f)
+    ellen(any(s[0] == 'kezimunka' and s[3] == 'alacsony_link_biblia' and s[4] == 'n.é.' for s in sorok), 'csak-c: az alacsony kézimunka nem n.é.')
+
+
 def fejlec(info, ts):
     return ('GENERÁLT: eszkozok/karoli_strong/koltseg_vetit_p3c.py | scope=P5 a regressziós mérésre: Sonnet egyedül (SONNETV3), '
             'C (F3V3), Sonnet+C (a két futás költségének összege, döntőbíró nélkül), prompt_v3, teljes Biblia 31 158 vers, F22 '
@@ -302,6 +454,7 @@ def onteszt():
         ala = [float(s[4]) for s in sorok if s[0] == 'kezimunka' and s[3] == 'vetitett_alacsony_link_biblia' and s[2] != 'Összes']
         tot = [float(s[4]) for s in sorok if s[0] == 'kezimunka' and s[3] == 'vetitett_alacsony_link_biblia' and s[2] == 'Összes']
         ellen(tot and abs(sum(ala) - tot[0]) <= len(ala), 'a kézimunka Összes nem a rétegek összege (%s vs %s)' % (sum(ala), tot))
+        onteszt_csak_c(mappa, info, ellen)
     finally:
         shutil.rmtree(mappa, ignore_errors=True)
     ellen(p3c_mock.regi_kimenetek_hibak() == [], 'az önteszt megváltoztatta a régi kimeneteket: %s' % p3c_mock.regi_kimenetek_hibak())
@@ -311,7 +464,8 @@ def onteszt():
             print('  ' + h)
         return 1
     print('koltseg_vetit_p3c önteszt rendben (Sonnet-árú illesztés, s és M a saját adatból, pár = összeg, F22-rétegek, '
-          'ellenőrzés futásonként és párra, determinizmus, régi kimenetek bájtazonossága)')
+          'ellenőrzés futásonként és párra, determinizmus, régi kimenetek bájtazonossága; --csak-c: három C-futás, M és tényleges '
+          'költség a saját adatból, konzervatívabb ellenőrzés, SONNETV3 nélkül)')
     return 0
 
 
@@ -320,10 +474,14 @@ def main():
     ap.add_argument('--arany', default=None, help='az arany jsonl-je (alap: a legfrissebb befagyasztott)')
     ap.add_argument('--arany-sha', default=None)
     ap.add_argument('--forras-dir', default=None, help='a valaszok/ és a futasnaplo.tsv könyvtára (alap: f21p/)')
+    ap.add_argument('--csak-c', action='store_true',
+                    help='a C (F3V3) egyedül, a v2-es C-futások tájékoztatásul, a Sonnet nélkül (kimenet: koltseg_vetites_p3c_c.tsv)')
     ap.add_argument('--onteszt', action='store_true')
     args = ap.parse_args()
     if args.onteszt:
         return onteszt()
+    if args.csak_c:
+        return fut_c(args.forras_dir, args.arany, args.arany_sha)
     return fut(args.forras_dir, args.arany, args.arany_sha)
 
 
