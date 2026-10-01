@@ -148,6 +148,8 @@ def jelolok_pozicioval(szoveg, forras_oldal):
             continue  # i. e. / e. g.
         if jel == 'i' and utana.startswith('e.'):
             continue  # i. e.
+        if jel == 'g' and elotte.endswith('e. '):
+            continue  # e. g. (masodik tagja)
         if jel == 'c' and utana[:1].isdigit():
             continue  # c. 100 = circa
         talalat.append((m.start(), jel))

@@ -346,7 +346,7 @@ def cmd_visszaallit(args):
     kiir(ki, args.ki)
 
 
-def utofeldolgoz(strong, nyers):
+def utofeldolgoz(strong, nyers, kivetel=()):
     """E4: javitoreteg + kapuk. -> (vegleges, normalizalas_valtozasai, kapueredmenyek, atment)"""
     sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
     import normalizal as N
@@ -354,7 +354,7 @@ def utofeldolgoz(strong, nyers):
     sp, forras = forras_szoveg(strong)
     szotar = szotar_strongnak(sp)
     vegleges, valt = N.normalizal(nyers, szotar)
-    eredm = K.kapuk_futtat(szotar, forras, vegleges)
+    eredm = K.kapuk_futtat(szotar, forras, vegleges, bizonytalan=kivetel)
     return vegleges, valt, eredm, K.atment(eredm)
 
 
@@ -369,7 +369,7 @@ def cmd_ellenoriz(args):
         vazlat, hiany, tobbszor = helyorzo_visszaallit(vazlat, szakaszok)
         if hiany or tobbszor:
             print('FIGYELEM: hianyzo helyorzok %s; tobbszor hasznalt %s' % (hiany, tobbszor))
-    vegleges, valt, eredm, ok = utofeldolgoz(sp, vazlat)
+    vegleges, valt, eredm, ok = utofeldolgoz(sp, vazlat, args.kivetel)
     print('javitoreteg: %s' % (', '.join('%s=%d' % v for v in valt) or 'nincs valtozas'))
     for n, e, r in eredm:
         print('  %-22s %-8s %s' % (n, e, r))
@@ -393,7 +393,7 @@ def cmd_rogzit(args):
         szoveg = fh.read().strip('\n')
     if '\t' in szoveg or '\n' in szoveg:
         raise SystemExit('a forditas tabot vagy sortorest tartalmaz -- TSV-be nem irhato')
-    vegleges, valt, eredm, ok = utofeldolgoz(sp, szoveg)
+    vegleges, valt, eredm, ok = utofeldolgoz(sp, szoveg, args.kivetel)
     if vegleges != szoveg:
         raise SystemExit('a --be nem a javitoreteg kimenete (futtasd elobb: ellenoriz --ki)')
     if not ok:
@@ -408,7 +408,11 @@ def cmd_rogzit(args):
         'entry_id': strong_eredeti(sp), 'jelentes_szam': 'teljes', 'mezo': 'forditas_hu',
         'forras_hash': forras_hash(forras), 'forditas_hu': szoveg, 'allapot': args.allapot,
         'modell': args.modell, 'datum': args.datum or datetime.date.today().strftime('%Y.%m.%d'),
-        'terminologia_verzio': term_verzio, 'megjegyzes': args.megjegyzes or '',
+        'terminologia_verzio': term_verzio,
+        'megjegyzes': '; '.join(x for x in (
+            args.megjegyzes or '',
+            ('terminológia-kivétel (bizonytalan_feloldasok): ' + ', '.join(args.kivetel)) if args.kivetel else '')
+            if x),
     }
     sorok = [r for r in sorok if not (r['szotar'] == uj['szotar'] and r['entry_id'] == uj['entry_id'])]
     sorok.append(uj)
@@ -669,6 +673,8 @@ def main():
     p.add_argument('--be', required=True, help='a forditas (helyorzos vazlat, ha --mappa adott)')
     p.add_argument('--mappa', help='a helyorzo-fajlok mappaja')
     p.add_argument('--ki', help='a vegleges (visszaallitott, normalizalt) forditas')
+    p.add_argument('--kivetel', nargs='*', default=[],
+                   help='terminologia-kivetel (a prompt bizonytalan_feloldasok listaja), pl. Heb.')
     p.set_defaults(fv=cmd_ellenoriz)
     p = al.add_parser('rogzit')
     p.add_argument('strong')
@@ -677,6 +683,7 @@ def main():
     p.add_argument('--modell', default='claude-opus-5-5')
     p.add_argument('--datum')
     p.add_argument('--megjegyzes')
+    p.add_argument('--kivetel', nargs='*', default=[])
     p.set_defaults(fv=cmd_rogzit)
     p = al.add_parser('beir')
     p.add_argument('strongok', nargs='+')
