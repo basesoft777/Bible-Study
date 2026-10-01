@@ -1,5 +1,5 @@
-"""f08_dt_dontes.py -- F8.8/F8.10: a DT23 Dontes es Allapot oszlopanak kitoltese (a felhasznalo 2026.09.30-i dontese).
-CRLF-hu iras; csak a DT23 sor vegzodeset csereli (a 🟡 allapotut, vagy az F8.8-as ✅ szoveget az F8.10-esre).
+"""f08_dt_dontes.py -- F8.8/F8.10/F8.11: a DT23 Dontes es Allapot oszlopanak kitoltese (a felhasznalo 2026.09.30-i dontese).
+CRLF-hu iras; csak a DT23 sor vegzodeset csereli (a 🟡 allapotut, vagy a korabbi ✅ szoveget a legutobbira: F8.10, F8.11).
 Futtatas: python eszkozok/f08/f08_dt_dontes.py
 """
 import io
@@ -22,8 +22,8 @@ UJ_VEG = (
     'Felhasználó, 2026.09.30: „(d) elfogadva, feltétel: az LD001–LD004 renderje nem változik (nulla-diff vagy CI igazolja). '
     '(g) külön menet, N-F08 helyőrzővel a NYITOTT_FELADATOK.md-be. (f) a kulcs a TAHOT H7497, a Macula H7498 megjegyzésként; '
     'ahol a vers személynévi Rafa (1Krón 8), a besorolás valószínű. A többi pont a javasolt alapértelmezés szerint.” '
-    '**Alkalmazva (F8.8, F8.10):** (a) a 9 sor marad `valoszinu`, nem jelenik meg; '
-    '(b) LD027 καταράομαι G2672, LD035 ἀσέβεια G0763, LD052 Ραφαϊν (`eltero_forditas`), LD050 `lxx_minusz` a munkalap-szóra — kitöltve, `valoszinu` (a brief „biztos” definíciója nem teljesül), proveniencia `dontes=DT23(b)`; LD027, LD035, LD052: ellentmondásos források (Macula_heber és LXX_OS), felhasználói döntéssel feloldva, `feloldas=DT23` (SEMA 2.11, `ellenoriz.py` 10. szabály); LD050: egy forrás (a Macula nem illeszt, nem ellentmond), `feloldas=` nélkül; LD009, LD058, LD064, LD008 marad nyitott; '
+    '**Alkalmazva (F8.8, F8.10, F8.11):** (a) a 9 sor marad `valoszinu`, nem jelenik meg; '
+    '(b) LD027 καταράομαι G2672, LD035 ἀσέβεια G0763, LD052 Ραφαϊν (`eltero_forditas`), LD050 `lxx_minusz` a munkalap-szóra — kitöltve, `valoszinu`, proveniencia `dontes=DT23(b)`; LD027, LD035, LD052: ellentmondó források (Macula_heber és LXX_OS), felhasználói döntéssel feloldva, `feloldas=DT23` — a brief v2 3. lépése és a SEMA 2.11 szerint ez `valoszinu` (döntés nélkül `nyitott` volna), `ellenoriz.py` 10. szabály; LD050: a két független forrás közül csak az LXX_OS (a Macula nem illeszt, nem ellentmond; forrás: LXX_OS + Karoli_versmegfeleltetes), `feloldas=` nélkül; LD009, LD058, LD064, LD008 marad nyitott; '
     '(c) → ~~külön tétel~~ **N-F08a** (NYITOTT_FELADATOK.md, helyőrző az F30 szerint); '
     '(d) elfogadva; a feltétel (nulla-diff vagy CI igazolja) teljesült: nulladiff a main-nel összefésülve, `naplok/F08_nulladiff.txt` — az LD001–LD004-et renderelő ISTENTISZT-001_TUDOMANYOS.md és a 8 TORZSCIKK -0/+0, soronként azonos; az eltérés csak az LXX-sorok (+61 „eltérő”) és a forráslista; '
     '(e) → ~~külön tétel~~ **N-F08b**; '

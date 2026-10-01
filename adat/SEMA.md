@@ -632,7 +632,8 @@ szerepel, de a sor csak `valoszinu`, a források a munkalap-szóra nem egyeztek.
 Ilyen sornál a `feloldas=` mező kötelező, és a `megjegyzes`-nek ki kell mondania
 az ellentmondást („ellentmondott”). **Nem ellentmondás**, ha a Macula az adott
 szót nem illeszti (’’): ez hiányzó forrás, nem ellenkező állítás — az ilyen sor
-`forras=` mezőjében csak az `LXX_OS` áll (pl. LD021, LD048, LD050).
+`forras=` mezőjében a két független forrás közül csak az `LXX_OS` áll (pl.
+LD021, LD048; LD050: `LXX_OS` + `Karoli_versmegfeleltetes`).
 
 Ebben a körben (V2.2) a tábla csak fejlécet tartalmaz — a tartalmi feltöltés
 a 2. kör (V2.8, ISTENTISZT-001 LXX-döntések) tárgya.

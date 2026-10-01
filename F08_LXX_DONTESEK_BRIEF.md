@@ -17,7 +17,7 @@ lezarva_osszegzes: LXX-döntések (#8): a 87 függő hely 86 sora az `adat/lxx_d
 ---
 # F08 — LXX-döntések mind a 87 függő igehelyre
 
-*FELADATOK #8 · v1 · 2026.09.29*
+*FELADATOK #8 · v2 · 2026.10.01 (v1: 2026.09.29)*
 *Modell: `opus` (kutatói ítélet)*
 *Ág: `claude/lxx-dontesek` · Függ: #1, #17 (Macula-import)*
 
@@ -42,16 +42,19 @@ Mind a 87 ÓSZ-helyhez LXX-sor az `adat/lxx_dontesek.tsv`-ben, bizonysági szint
 2. **Kimenet:** `adat/lxx_dontesek.tsv`. Oszlopok: hely, héber szó, LXX-megfelelő, forrás(ok), bizonyosság, egysoros indoklás.
 3. **Bizonyosság:**
    - *biztos*: két független forrás egyezik;
-   - *valószínű*: egy forrás, ellentmondás nélkül;
-   - *nyitott*: nincs forrás, vagy a források ellentmondanak.
+   - *valószínű*: egy forrás, ellentmondás nélkül; vagy ellentmondó források, felhasználói döntéssel feloldva (a proveniencián `feloldas=` kitöltve);
+   - *nyitott*: nincs forrás, vagy a források ellentmondanak, és nincs felhasználói döntés.
+
+   *(v2: igazítva az `adat/SEMA.md` 2.11-hez; az ellentmondó források meghatározása ott áll.)*
 
    A *valószínű* és a *nyitott* sorok **egyetlen** összesített `DONTESEK.md`-tételbe kerülnek, nem helyenként külön tételbe.
 4. **Külső modell:** nem kell. 87 hely, szakmai ítélet; ez Opus-munka.
 5. **Zárás:** a `/kovetkezo` 9–10. lépése szerint.
 
-## Döntésnapló (v1)
+## Döntésnapló (v2)
 
 | # | Döntés | Indok | Elvetett alternatíva |
 |---|---|---|---|
 | F08-1 | Önálló feladat, az orkesztrátor futtatja, a Macula-import (#17) után | a Macula a legerősebb forrás; a felhasználó kérése | közös menet a #7-tel |
 | F08-2 | Az egyes helyek nem állítják meg a menetet, a döntés egy összesített tételben jön | 87 hely, a helyenkénti megállás szétaprózná a munkát | megállás helyenként |
+| F08-3 | v2 (2026.10.01, F8.11): a 3. lépés bizonyossági skálája a SEMA 2.11-hez igazodik — ellentmondó források felhasználói döntés nélkül *nyitott*, felhasználói döntéssel (`feloldas=` kitöltve) *valószínű* | a DT23 (b) feloldotta az LD027, LD035, LD052 ellentmondását; a v1 definíciója ezt nem fedte, a SEMA és az `ellenoriz.py` 10. szabálya már a v2 szerint ellenőriz | feloldott sor *nyitott*-on hagyása; *biztos*-ra állítás (a két forrás nem egyezik) |

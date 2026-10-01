@@ -16,6 +16,6 @@ fugg: [8, 9]
 *FELADATOK #10 · csonk-brief (F20 B3): nem végrehajtható, csak a feladat fejlécét hordozza; a brief csak chatben van.*
 
 - **Mit ad, ha kész:** mérhetően kész oldalak (L1–L7)
-- **Következő lépés:** **Te:** döntés az L6 és L7 feltételről. Ide tartozik N18, N19
+- **Következő lépés:** **Te:** döntés az L6 és L7 feltételről. Ide tartozik N18, N19. Előfeltétel: a #8 négy nyitott sora (LD008, LD009, LD058, LD064) eldöntve
 
 A valódi briefet a `/befogad` csonk-kitöltése váltja fel, ugyanezen a számon és néven.

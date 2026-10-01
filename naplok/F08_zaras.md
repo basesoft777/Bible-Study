@@ -12,4 +12,4 @@
 
 **Leletek:** HODIT-001 2Sám 21 / 1Krón 20: a kulcs a TAHOT H7497, a H7498 csak Macula-megjegyzés; az 1Krón 8 (személynévi Rafa) nincs a 87 hely között; LD010 Macula G0999 = βόθυνος; a G2672 forrása az `LXX_OS`; a DT7 (a) nem hat ki.
 
-**Ellenőrzés:** `naplok/ELLENOR_F08.md` (1. kör: 8 eltérés, F8.5; 2. kör: 1 alacsony, DT23 (d); 3. kör: 6 tétel, F8.10). DT23: ✅ alkalmazva (F8.8, F8.10).
+**Ellenőrzés:** `naplok/ELLENOR_F08.md` (1. kör: 8 eltérés, F8.5; 2. kör: 1 alacsony, DT23 (d); 3. kör: 6 tétel, F8.10; 4. kör: dokumentációs tételek, F8.11). DT23: ✅ alkalmazva (F8.8, F8.10, F8.11). Az F08 brief „merge-re kész (ellenőrizve)” jelölése (`kovetkezo`, F8.10) a 4. ellenőri kör előtt került be, és a 4. kör igazolta.

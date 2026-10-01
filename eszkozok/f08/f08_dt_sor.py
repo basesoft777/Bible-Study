@@ -1,5 +1,7 @@
 """f08_dt_sor.py -- F08.3/F08.5: a DT23 osszesitett tetel beirasa a DONTESEK.md tablajaba (CRLF-hu fajl).
-Ha a DT23 sor mar letezik, lecsereli (F8.5: az ELLENOR_F08 1. kore utani javitott valtozat).
+egyszeri, DT23 után letiltva
+F8.11: ha a DONTESEK.md-ben mar van DT23 sor, hibaval kilep, mielott barmit irna (a DT23 a felhasznalo
+dontese ota az f08_dt_dontes.py-val frissul; ez a szkript a dontes elotti kerdes-szoveget irna vissza).
 Futtatas: python eszkozok/f08/f08_dt_sor.py
 """
 import io
@@ -49,9 +51,11 @@ def main():
     sorok = nyers.split('\r\n')
     elotte = len(sorok)
     dt = [i for i, s in enumerate(sorok) if s.startswith('| DT23 |')]
-    if len(dt) > 1:
-        print('tobb DT23 sor, nem irok')
-        sys.exit(1)
+    if dt:
+        # F8.11: egyszeri szkript, DT23 utan letiltva
+        print('HIBA: a DONTESEK.md-ben már van DT23 sor; ez a szkript egyszeri, a DT23 után letiltva '
+              '(a DT23 frissítése: eszkozok/f08/f08_dt_dontes.py). Nem írtam semmit.', file=sys.stderr)
+        sys.exit(2)
     if dt:
         sorok[dt[0]] = SOR
         uj = '\r\n'.join(sorok)
