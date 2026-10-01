@@ -46,3 +46,22 @@ Súlyossági sorrendben:
 9. Kisebb: SECE_H a `lexikon_general.py` 73. sora (nem 72.); a DT-F24 az LSJ-t „CC BY-SA 4.0”-ként csoportosítja, a tábla 3.0-t ír; `:25` megjegyzése nem `javaslat:` kezdetű mondat.
 
 K4: nem TISZTA; a commitolt `ELLENOR_F24.md` 1. sora nem „TISZTA / ELTÉRÉS: n tétel” alakú. Nem ellenőrizhető: a `konkordancia/` 153 bejegyzésének alkönyvtáras bontása az ellenőr eszközeivel; E17; a végrehajtó CI-jelentése.
+
+---
+
+## 3. kör — origin/main...f0034f5 (a javítás: 17ae98f..f0034f5)
+
+*Az ellenőr 3. köri jelentése, az orkesztrátor mentette, tömörítve. Eredmény: **ELTÉRÉS, 8 tétel**. Módszertani megjegyzés: az ellenőrzés közben a közös munkafa HEAD-je egy párhuzamos session (`/befogad`) miatt másik ágra váltott; az ellenőr a táblát `git diff`-ből igazolta, a CI-futás ezért nem a head-állapoton ment. Az F24 azóta külön worktree-ben (`../wt-f24-licenc`) folytatódik.*
+
+Igazolt (OK): TBESH `feltetelesen` és az Online Bible-záradék szó szerint (`TBESH.txt:6`); TBESH/TBESG CC BY 4.0 és `forras_hely` (10–20., 12–22.); a „do not redistribute” idézése TBESH/TBESG-nél; Karoli_Strong_kivonat `tisztazatlan/tisztazatlan`; a számok (39 sor, 21 `tisztazott`, 18 `tisztazatlan` mind `tisztazatlan/tisztazatlan`, 8 `tisztazott`+`javaslat`) egyeznek a táblával és a DT-F24-gyel; a DT-F24 kereszthivatkozásai; SECE_H a 73. sor; SEMA↔TSV séma; N9-javaslat↔kódkonstans; K2, K3; nulla-diff a `eszkozok/`, `konkordancia/`, `lexikon/`, `FELADATOK.md` útvonalakon; törölt adatsor nincs.
+
+1. **TAGNT/TAHOT/TIPNR `kereskedelmi=feltetelesen` következtetésből kitöltve** (`licencek.tsv:17–19`): a nyers fájlok nincsenek a repóban (csak kivonatok), a sor maga is „nem ellenőrizhető”-t ír → helyesen `tisztazatlan`. A DT-F24 (`DONTESEK.md:23`) és a `F24_zaras.md:8` a terjesztési kérést jelöletlen tényként közli (munkaszabály 1, A1). (A fejléc 13. sora egyébként a felhasználást engedi; a „do not redistribute” terjesztési kérés, nem kereskedelmi feltétel.)
+2. **TBESH/TBESG** (`:26–27`): a forrás ad megjelölés-mondatot (`TBESH.txt:10`, `TBESG.txt:12`: „Data created by www.STEPBible.org …”), utalási kérést (`:17`/`:19`) és változtatás-jelzést ír elő (`TBESH.txt:16`, `TBESG.txt:18`: „include a note of changes”); a tábla szerint a forrás „nem ad” megjelölést, a mező üres, a `:26` megjegyzése pedig a „README 175. sorából” kezdődik: belső ellentmondás.
+3. **`F24_zaras.md:9` és `SEMA.md:871–872`**: az LSJ-t `share_alike=igen` sorként kezeli, a táblában `tisztazatlan/tisztazatlan` (`:10`); a `share_alike=igen` sorok száma 6, nem 7.
+4. **Strong_szotar** (`:16`): a repónak tulajdonított „Open Scriptures, CC BY 4.0” idézet sehol nincs a repóban (Grep: 0 találat); a `kotelezo_megjeloles` nem szó szerinti, és hibás forrásfájlt (GreekWordList.js) nevez meg (az idézet a `Strong_szotar_README.md:66–68`-ból való).
+5. **Karoli_Strong_kivonat** (`:9`): a „a fájlnak nincs fejlécsora” hamis (`konkordancia/Karoli_Strong_kivonat.tsv:1` oszlopfejléc); csak `#`-proveniencia-sor nincs.
+6. **Macula_gorog** (`:25`): a `licenc` mezőből hiányzik a zárójeles „nem igazolt” jelölés; a `forras_hely` „3. pont” eltér a hivatkozott napló „3. sor”-ától (a „3. pont” az F17:25 szerint az UBS-kivétel).
+7. **DT-F24**: a Konyv_nevtablak a „közkincs-eredetűek” között szerepel, holott CC BY 4.0 + projekt-adat (`licencek.tsv:39`).
+8. Három nem `javaslat:` kezdetű javaslat-mondat maradt (`licencek.tsv:18,25,37`).
+
+K4: nem TISZTA. Nem ellenőrizhető: a CI a head-állapoton; a 153 bejegyzés alkönyvtáras bontása; E17.
