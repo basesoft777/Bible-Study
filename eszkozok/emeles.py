@@ -286,6 +286,138 @@ def kiir(szoveg, ut):
         print(szoveg)
 
 
+# ---------------------------------------------------------------------------
+# Helyorzok (E4 segedeszkoz): a heber/gorog szakaszok szo szerinti
+# megorzese. A forditando szovegben minden osszefuggo heber/gorog szakasz
+# (szavak egyetlen szokozzel elvalasztva) ⟦n⟧ helyorzot kap; a forditas
+# utan a `visszaallit` betuhiven visszairja oket. Igy a v4 BDB-blokk 3.
+# szabalya (a heber szoveg valtozatlan, a jobbrol balra irassal egyutt)
+# gepileg teljesul; a 1_gorog_heber kapu ezt utolag is ellenorzi.
+# ---------------------------------------------------------------------------
+
+_HG_KAR = 'Ͱ-Ͽἀ-῿֐-׿יִ-ﭏ̀-ͯ'
+HG_SZAKASZ = re.compile(r'[%s]+(?: [%s]+)*' % (_HG_KAR, _HG_KAR))
+HELYORZO = re.compile(r'⟦(\d+)⟧')
+
+
+def helyorzo_bont(szoveg):
+    szakaszok = []
+
+    def _csere(m):
+        szakaszok.append(m.group(0))
+        return '⟦%d⟧' % len(szakaszok)
+    return HG_SZAKASZ.sub(_csere, szoveg), szakaszok
+
+
+def helyorzo_visszaallit(szoveg, szakaszok):
+    hasznalt = []
+
+    def _csere(m):
+        i = int(m.group(1))
+        hasznalt.append(i)
+        return szakaszok[i - 1]
+    ki = HELYORZO.sub(_csere, szoveg)
+    hiany = sorted(set(range(1, len(szakaszok) + 1)) - set(hasznalt))
+    tobbszor = sorted({i for i in hasznalt if hasznalt.count(i) > 1})
+    return ki, hiany, tobbszor
+
+
+def cmd_helyorzo(args):
+    import json
+    sp, szoveg = forras_szoveg(args.strong)
+    bontott, szakaszok = helyorzo_bont(szoveg)
+    alap = os.path.join(args.mappa, sp)
+    kiir(bontott, alap + '_hely.txt')
+    with open(alap + '_hely.json', 'w', encoding='utf-8') as fh:
+        json.dump(szakaszok, fh, ensure_ascii=False, indent=0)
+    print('helyorzo: %d szakasz' % len(szakaszok))
+
+
+def cmd_visszaallit(args):
+    import json
+    sp = strong_padded(args.strong)
+    with open(os.path.join(args.mappa, sp + '_hely.json'), encoding='utf-8') as fh:
+        szakaszok = json.load(fh)
+    with open(args.be, encoding='utf-8') as fh:
+        vazlat = fh.read().strip('\n')
+    ki, hiany, tobbszor = helyorzo_visszaallit(vazlat, szakaszok)
+    if hiany or tobbszor:
+        print('FIGYELEM: hianyzo helyorzok %s; tobbszor hasznalt %s' % (hiany, tobbszor))
+    kiir(ki, args.ki)
+
+
+def utofeldolgoz(strong, nyers):
+    """E4: javitoreteg + kapuk. -> (vegleges, normalizalas_valtozasai, kapueredmenyek, atment)"""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import normalizal as N
+    import forditas_kapuk as K
+    sp, forras = forras_szoveg(strong)
+    szotar = szotar_strongnak(sp)
+    vegleges, valt = N.normalizal(nyers, szotar)
+    eredm = K.kapuk_futtat(szotar, forras, vegleges)
+    return vegleges, valt, eredm, K.atment(eredm)
+
+
+def cmd_ellenoriz(args):
+    import json
+    sp = strong_padded(args.strong)
+    with open(args.be, encoding='utf-8') as fh:
+        vazlat = fh.read().strip('\n')
+    if args.mappa:
+        with open(os.path.join(args.mappa, sp + '_hely.json'), encoding='utf-8') as fh:
+            szakaszok = json.load(fh)
+        vazlat, hiany, tobbszor = helyorzo_visszaallit(vazlat, szakaszok)
+        if hiany or tobbszor:
+            print('FIGYELEM: hianyzo helyorzok %s; tobbszor hasznalt %s' % (hiany, tobbszor))
+    vegleges, valt, eredm, ok = utofeldolgoz(sp, vazlat)
+    print('javitoreteg: %s' % (', '.join('%s=%d' % v for v in valt) or 'nincs valtozas'))
+    for n, e, r in eredm:
+        print('  %-22s %-8s %s' % (n, e, r))
+    print('ATMENT' if ok else 'BUKOTT')
+    if args.ki:
+        kiir(vegleges, args.ki)
+
+
+FORDITASOK_FEJLEC = ['szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo', 'forras_hash',
+                     'forditas_hu', 'allapot', 'modell', 'datum', 'terminologia_verzio', 'megjegyzes']
+MUNKA_UT = os.path.join(REPO, 'naplok', 'EMELES_munka.tsv')
+
+
+def cmd_rogzit(args):
+    """A vegleges forditas rogzitese a munkatablaba (naplok/EMELES_munka.tsv),
+    az adat/forditasok.tsv semajaval. Az adat/forditasok.tsv-be a
+    jovahagyas utan kerul (E4a: kezi; E4: opus)."""
+    import datetime
+    sp, forras = forras_szoveg(args.strong)
+    with open(args.be, encoding='utf-8') as fh:
+        szoveg = fh.read().strip('\n')
+    if '\t' in szoveg or '\n' in szoveg:
+        raise SystemExit('a forditas tabot vagy sortorest tartalmaz -- TSV-be nem irhato')
+    vegleges, valt, eredm, ok = utofeldolgoz(sp, szoveg)
+    if vegleges != szoveg:
+        raise SystemExit('a --be nem a javitoreteg kimenete (futtasd elobb: ellenoriz --ki)')
+    if not ok:
+        raise SystemExit('kapuhiba -- a sor nem rogzitheto (E4: onujraproba, utana bukottak)')
+    _, term_verzio = terminologia_szoveg()
+    sorok = list(tsv_dict_sorok(MUNKA_UT)) if os.path.exists(MUNKA_UT) else []
+    szotar = szotar_strongnak(sp)
+    uj = {
+        # a lexikon_hivatkozasok.tsv konvencioja: strong = padded, entry_id = a
+        # konkordancia Strong_eredeti mezoje (G0012 / G12)
+        'szotar': szotar, 'strong': sp,
+        'entry_id': strong_eredeti(sp), 'jelentes_szam': 'teljes', 'mezo': 'forditas_hu',
+        'forras_hash': forras_hash(forras), 'forditas_hu': szoveg, 'allapot': args.allapot,
+        'modell': args.modell, 'datum': args.datum or datetime.date.today().strftime('%Y.%m.%d'),
+        'terminologia_verzio': term_verzio, 'megjegyzes': args.megjegyzes or '',
+    }
+    sorok = [r for r in sorok if not (r['szotar'] == uj['szotar'] and r['entry_id'] == uj['entry_id'])]
+    sorok.append(uj)
+    tsv_ir(MUNKA_UT, FORDITASOK_FEJLEC, sorok,
+           megjegyzes='F28 munkatabla (adat/forditasok.tsv semaja) -- jovahagyas elott; '
+                      'irja: python eszkozok/emeles.py rogzit')
+    print('rogzitve: %s %s (%d karakter) -> %s' % (szotar, sp, len(szoveg), os.path.relpath(MUNKA_UT, REPO)))
+
+
 def cmd_prompt(args):
     sp, szoveg = forras_szoveg(args.strong)
     kiir(prompt_epit(sp, szoveg), args.ki)
@@ -311,6 +443,30 @@ def main():
     p.add_argument('strong')
     p.add_argument('--ki')
     p.set_defaults(fv=cmd_forras)
+    p = al.add_parser('helyorzo')
+    p.add_argument('strong')
+    p.add_argument('--mappa', required=True)
+    p.set_defaults(fv=cmd_helyorzo)
+    p = al.add_parser('visszaallit')
+    p.add_argument('strong')
+    p.add_argument('--mappa', required=True)
+    p.add_argument('--be', required=True)
+    p.add_argument('--ki', required=True)
+    p.set_defaults(fv=cmd_visszaallit)
+    p = al.add_parser('ellenoriz')
+    p.add_argument('strong')
+    p.add_argument('--be', required=True, help='a forditas (helyorzos vazlat, ha --mappa adott)')
+    p.add_argument('--mappa', help='a helyorzo-fajlok mappaja')
+    p.add_argument('--ki', help='a vegleges (visszaallitott, normalizalt) forditas')
+    p.set_defaults(fv=cmd_ellenoriz)
+    p = al.add_parser('rogzit')
+    p.add_argument('strong')
+    p.add_argument('--be', required=True, help='a vegleges forditas (az ellenoriz --ki kimenete)')
+    p.add_argument('--allapot', default='opus', choices=['opus', 'kezi'])
+    p.add_argument('--modell', default='claude-opus-5-5')
+    p.add_argument('--datum')
+    p.add_argument('--megjegyzes')
+    p.set_defaults(fv=cmd_rogzit)
     args = ap.parse_args()
     args.fv(args)
 
