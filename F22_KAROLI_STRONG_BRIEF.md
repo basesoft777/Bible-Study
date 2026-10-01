@@ -5,13 +5,13 @@ cim: "Károli–Strong párosítás könyvenként, két modellel (Sonnet + Gemin
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: dontesre_var
 ag: claude/f22-2moz
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
-kovetkezo: "2Mózes ugyanezzel a brieffel, a könyv paraméter cseréjével"
+kovetkezo: "Te: a 2Móz PR-jének átnézése és merge-e; a zárt összevetés (zart_osszevet.py --konyv 2Móz) eredményét a naplok/F22_2Moz_jelentes.md 6. szakaszába másold, majd döntés a DT-F22c-ről (marad-e a Gemini) és a 3Móz indításáról"
 fugg: [21]
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/futtat.py, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/regi_arany_hibas.tsv, naplok/F21P_jelentes.md]
-ir: [eszkozok/karoli_strong/futtat.py, eszkozok/karoli_strong/sonnet_koteg.py, eszkozok/karoli_strong/egyesit.py, eszkozok/karoli_strong/zart_osszevet.py, eszkozok/karoli_strong/f22_c_futtat.py, eszkozok/karoli_strong/eredeti_nelkuli_lista.py, naplok/F22_nincs_parja_versek.tsv, .github/workflows/f22_parositas.yml, f22/futtatas.txt, f22/valaszok/sonnet/1Moz.jsonl, f22/valaszok/c/1Moz.jsonl, f22/futasnaplo.tsv, adat/karoli_strong/parok_1Moz.tsv, adat/karoli_strong/szavak_1Moz.tsv, adat/datasetek.tsv, adat/SEMA.md, naplok/F22_1Moz_jelentes.md, naplok/ELLENOR_F22_1Moz.md]
+ir: [eszkozok/karoli_strong/futtat.py, eszkozok/karoli_strong/sonnet_koteg.py, eszkozok/karoli_strong/egyesit.py, eszkozok/karoli_strong/zart_osszevet.py, eszkozok/karoli_strong/f22_c_futtat.py, eszkozok/karoli_strong/eredeti_nelkuli_lista.py, naplok/F22_nincs_parja_versek.tsv, naplok/F22_2Moz_jelentes.md, naplok/ELLENOR_F22_2Moz.md, adat/karoli_strong/parok_2Moz.tsv, adat/karoli_strong/szavak_2Moz.tsv, eszkozok/karoli_strong/f22_arany_kereszt.py, eszkozok/karoli_strong/futtat.py, eszkozok/karoli_strong/egyesit.py, .github/workflows/f22_parositas.yml, f22/futtatas.txt, f22/valaszok/sonnet/1Moz.jsonl, f22/valaszok/c/1Moz.jsonl, f22/futasnaplo.tsv, adat/karoli_strong/parok_1Moz.tsv, adat/karoli_strong/szavak_1Moz.tsv, adat/datasetek.tsv, adat/SEMA.md, naplok/F22_1Moz_jelentes.md, naplok/ELLENOR_F22_1Moz.md]
 ---
 
 # F22_KAROLI_STRONG_BRIEF.md — Károli–Strong párosítás könyvenként (Sonnet + Gemini)

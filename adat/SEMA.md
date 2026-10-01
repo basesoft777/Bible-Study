@@ -914,7 +914,7 @@ eredmény, a két tábla **első sora egy `#`-kezdetű proveniencia-sor** (a `li
 `scope=manual | forras=… | ts=…` alakban (1.5); a `ts` a C futásnapló utolsó időbélyege, tehát a bemenetekből származik, és az
 újraépítés bájtra azonos marad. A tábla modell-kimenet, javaslat (CLAUDE.md 1. szabály: a `bizonyossag` nem „ellenőrizve”). A zárt licencű Károli–Strong
 forrás adata nem része a tábláknak (l. `eszkozok/karoli_strong/zart_osszevet.py`: csak helyi, összesített
-összevetés). Az első könyv az 1Móz (`parok_1Moz.tsv`, `szavak_1Moz.tsv`); a többi könyv ugyanezzel a
+összevetés). Az első két könyv az 1Móz (`parok_1Moz.tsv`, `szavak_1Moz.tsv`) és a 2Móz (`parok_2Moz.tsv`, `szavak_2Moz.tsv`); a többi könyv ugyanezzel a
 sémával, a könyv-paraméter cseréjével. A fájlnév a magyar könyvrövidítés ékezet nélküli alakja.
 
 Olvasás/írás: `split('	')` / `'	'.join()` (a `csv` modul tilos, l. CLAUDE.md). Az igehely kanonikus magyar alak.
