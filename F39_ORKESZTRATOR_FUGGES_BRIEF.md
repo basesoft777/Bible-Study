@@ -5,14 +5,16 @@ kod: ORKESZTRATOR_FUGGES
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ad: a közös írási útvonalból kizárás lesz, nem sorrend; nincs több levezetett kör; a halasztott, brief nélküli és 2. fázisú feladat nem tart vissza 1. fázisú feladatot; a /kovetkezo újra ad jelöltet (várhatóan #35, #38, #23)
-kovetkezo: "F39.3: az ellenőri javítások kész, következik a fuggetlen-ellenor 2. kör és a draft PR; a #32 a #39 lezárásáig nem indul"
+kovetkezo: "a #32 a #39 merge-e után indulhat; a #32 nyitott ága rebase-t kér; a #23 függése (a #37) a felhasználó döntése"
 olvas: [eszkozok/feladatok.py, .claude/commands/kovetkezo.md, .claude/commands/befogad.md, BRIEF_SABLON.md, FELADATOK.md, DONTESEK.md]
 ir: [eszkozok/feladatok.py, eszkozok/tesztek/test_feladatok_fugges.py, eszkozok/teszt_feladatok.py, .claude/commands/kovetkezo.md, DONTESEK.md, naplok/ELLENOR_ORKFUGG.md]
 fugg: []
 ag: claude/upbeat-wright-81rpah
 nem_fugg: [26, 30, 32]
+pr: https://github.com/basesoft777/Bible-Study/pull/112
+lezarva_osszegzes: "A függés-levezetés javítva (#39): az írás–írás ütközés kizar (×), zárt kontextus-olvasás lista, a kölcsönös írás–olvasás kizar + FIGYELEM, a kettőnél hosszabb kör hiba; jeloltek parancs; 60 teszt, ellenoriz 0 hiba; ellenőrzés naplok/ELLENOR_ORKFUGG.md (2 kör), zárás naplok/F39_zaras.md"
 ---
 
 # Az orkesztrátor függés-levezetésének javítása
