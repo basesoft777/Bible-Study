@@ -1,6 +1,6 @@
 # F21P_C_diff_p3c.md — a (c) hibák újrabesorolása: C (F3V3) eltérései az arany v3-höz, a v2-es C-futásokkal összevetve
 
-<!-- GENERÁLT: eszkozok/karoli_strong/c_diff_p3c.py --csak-c | scope=F3V3 (prompt_v3) a kapun átment aranyversekre, arany v3 (60 vers, sha256 acdeb55f969c96fe); az F3V3 (c) esetei a v2-es C-futások (F3V2, F3V2B; arany v2) (c) eseteivel összevetve | forras=f21p/valaszok/{F3V3,F3V2,F3V2B}.jsonl, arany_opus_v3.jsonl (sha256 ellenőrizve), f21p/arany_opus_v2.jsonl, f21p/meres_kizaras.tsv, f21p/c_diff_f3v2_osszevetes.tsv, f21p/c_diff_f3v2b_besorolas.tsv, f21p/c_diff_p3c_besorolas.tsv (MANUAL) | ts=2026-10-01T07:58:58+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
+<!-- GENERÁLT: eszkozok/karoli_strong/c_diff_p3c.py --csak-c | scope=F3V3 (prompt_v3) a kapun átment aranyversekre, arany v3 (60 vers, sha256 acdeb55f969c96fe); az F3V3 (c) esetei a v2-es C-futások (F3V2, F3V2B; arany v2) (c) eseteivel összevetve | forras=f21p/valaszok/{F3V3,F3V2,F3V2B}.jsonl, arany_opus_v3.jsonl (sha256 ellenőrizve), f21p/arany_opus_v2.jsonl, f21p/meres_kizaras.tsv, f21p/c_diff_f3v2_osszevetes.tsv, f21p/c_diff_f3v2b_besorolas.tsv, f21p/c_diff_p3c_besorolas.tsv (MANUAL) | ts=2026-10-01T08:20:39+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos -->
 
 Gépi diff: a kapun átment aranyverseken az arany linkjeiből hiányzó és a futás többlet linkjei; az állapot (eltérés / megszűnt / nem mérhető), az előzmény (a v2-es C-futások arany v2-höz mért eltérései és azok v2-es kézi osztálya) és az arany v2 → v3 változása gépi. **Az osztályok (a / b / c), a konvenció és a változást magyarázó konvenció kézi besorolás: Opus-besorolás, nem mérés.** A mért értékek (pontosság, lefedettség, küszöb-viszony) a naplok/F21P_meres_p3c_c.md-ben; a küszöb szempontjából csak azok számítanak.
 
@@ -45,8 +45,8 @@ Az F3V3 az arany v3-hoz, az F3V2 és az F3V2B a saját aranyához (v2) mérve, a
 | R1 | 15 | 9 | 13 | 15 | 12 | 6 | 19 | 9 | 4 |
 | R2 | 3 | 3 | 1 | 6 | 2 | 0 | 4 | 2 | 0 |
 | R3 | 12 | 3 | 8 | 7 | 4 | 9 | 8 | 8 | 9 |
-| R4 | 16 | 1 | 17 | 19 | 2 | 21 | 11 | 4 | 11 |
-| Összes | 46 | 16 | 39 | 47 | 20 | 36 | 42 | 23 | 24 |
+| R4 | 16 | 1 | 17 | 19 | 2 | 21 | 10 | 3 | 13 |
+| Összes | 46 | 16 | 39 | 47 | 20 | 36 | 41 | 22 | 26 |
 
 ## 3. Az F3V3 (c) esetei a v2-es C-futások (c) eseteihez képest (Opus-besorolás, nem mérés)
 
@@ -57,8 +57,8 @@ v2 (c) = az F3V2 vagy az F3V2B (c) esete (kulcs: vers, irány, magyar szó, ered
 | R1 | 15 | 13 | 6 | 4 | 2 | 12 | 2 | 1 | 0 | 2 |
 | R2 | 1 | 1 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
 | R3 | 12 | 8 | 9 | 9 | 5 | 7 | 2 | 0 | 0 | 4 |
-| R4 | 27 | 17 | 21 | 11 | 8 | 19 | 5 | 0 | 0 | 3 |
-| Összes | 55 | 39 | 36 | 24 | 15 | 39 | 9 | 1 | 0 | 9 |
+| R4 | 27 | 17 | 21 | 13 | 8 | 19 | 5 | 0 | 0 | 5 |
+| Összes | 55 | 39 | 36 | 26 | 15 | 39 | 9 | 1 | 0 | 11 |
 
 A „megszűnt” eset, amely csak az egyik v2-futásban volt (c), a futásközi ingadozással is összefér (a két v2-futás azonos prompttal sem adta ugyanazt); a mindkét v2-futásban (c) eset megszűnése erősebb jel.
 
@@ -74,10 +74,36 @@ Az (a) és (b) eltérést nem-hibának véve. Az F3V3 az arany v3-hoz, az F3V2 �
 | R2 | lefedettség | 100.0% (153/153) | 100.0% (153/153) | 99.3% (152/153) | 100.0% (153/153) | 100.0% (152/152) | 100.0% (152/152) |
 | R3 | pontosság | 94.2% (259/275) | 97.8% (269/275) | 93.9% (263/280) | 97.5% (273/280) | 94.4% (255/270) | 97.8% (264/270) |
 | R3 | lefedettség | 97.4% (259/266) | 99.2% (264/266) | 98.9% (263/266) | 99.2% (264/266) | 96.2% (255/265) | 98.9% (262/265) |
-| R4 | pontosság | 91.7% (309/337) | 96.1% (324/337) | 90.3% (306/339) | 95.6% (324/339) | 94.4% (306/324) | 97.8% (317/324) |
+| R4 | pontosság | 91.7% (309/337) | 96.1% (324/337) | 90.3% (306/339) | 95.6% (324/339) | 94.4% (306/324) | 97.2% (315/324) |
 | R4 | lefedettség | 98.1% (309/315) | 98.7% (311/315) | 97.1% (306/315) | 98.1% (309/315) | 97.5% (306/314) | 98.7% (310/314) |
-| Összes | pontosság | 93.6% (1020/1090) | 97.4% (1062/1090) | 93.0% (1025/1102) | 97.7% (1077/1102) | 95.3% (1009/1059) | 98.6% (1044/1059) |
+| Összes | pontosság | 93.6% (1020/1090) | 97.4% (1062/1090) | 93.0% (1025/1102) | 97.7% (1077/1102) | 95.3% (1009/1059) | 98.4% (1042/1059) |
 | Összes | lefedettség | 97.1% (1020/1051) | 99.0% (1040/1051) | 97.5% (1025/1051) | 99.0% (1040/1051) | 96.3% (1009/1048) | 99.1% (1039/1048) |
+
+Jelölés (F21.76; nincs további teendő):
+
+- az R1 lefedettsége a 95%-os küszöbön kívül (93,4%); a hiányzó 21 link közül 12 K4-eltérés (a). (A mért érték: naplok/F21P_meres_p3c_c.md; a K4-szám Opus-besorolás, nem mérés; a besorolás hiányzó eltérés-sorai: 21, EGYEZIK.)
+
+### Arany-felülvizsgálatra jelölt (c) esetek (Opus-besorolás, nem mérés)
+
+Az F3V3 26 (c) esetéből 7 „arany-felülvizsgálatra jelölt” (az arany döntése is vitatható, de a 6. táblázat zárt, PD10). A korrigált számban (fent) és minden táblában továbbra is (c)-nek számít.
+
+| réteg | F3V3 (c) | ebből arany-felülvizsgálatra jelölt | ebből: maradt | ebből: új (c) |
+|---|---|---|---|---|
+| R1 | 4 | 0 | 0 | 0 |
+| R2 | 0 | 0 | 0 | 0 |
+| R3 | 9 | 1 | 0 | 1 |
+| R4 | 13 | 6 | 4 | 2 |
+| Összes | 26 | 7 | 4 | 3 |
+
+| futás | vers | irány | magyar szó | eredeti szó | állapot | előzmény (v2) | arany v2→v3 | osztály | konvenció / jegyzetpont | változás-konvenció | indok (kézi) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| C (F3V3) | Ez 22:25 | hianyzo | 7 olyanok | 7 כַּ H9004 [like] | elteres | — | — | c | — | nincs | új a v2-höz képest (az F3 v1 (c) esete, a v2-ben megszűnt): olyanok ... mint = כַּ; a C az olyanok-at betoldas-nak veszi. Határeset: az arany döntése is vitatható, a jegyzetben nem szerepel; az L szabály (korrelatívum) túláltalánosítása nem zárható ki, de az L csak az azt/azért … hogy szerkezetről szól [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
+| C (F3V3) | Mt 6:31 | hianyzo | 5 ne | 1 μὴ G3361 [Not] | elteres | F3V2B:c | — | c | — | nincs | a második ne a μή-é (az arany szerint); a C betoldas-nak veszi; maradt az F3V2B-ből [az arany döntése is vitatható; a jegyzetben nem szerepel] [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
+| C (F3V3) | Mt 21:4 | hianyzo | 8 próféta | 9 διὰ G1223 [through] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | a διά továbbra sincs a próféta-n (maradt) [az arany döntése is vitatható; a jegyzetben nem szerepel] [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
+| C (F3V3) | Mt 21:4 | tobblet | 9 mondása | 9 διὰ G1223 [through] | elteres | — | — | c | — | nincs | új: a διά a mondása-n (az arany: a próféta-n); ugyanannak a v2-es (c) esetnek (a διά helye) új alakja [az arany döntése is vitatható; a jegyzetben nem szerepel] [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
+| C (F3V3) | Mt 23:31 | hianyzo | 2 hát | 1 ὥστε G5620 [Thus] | elteres | — | — | c | — | nincs | új a v2-höz képest (az F3 v1 (c) esete, a v2-ben megszűnt): Így hát = ὥστε; a C a hát-ot betoldas-nak veszi. Határeset [az arany döntése is vitatható; a jegyzetben nem szerepel]; konvenció nem érinti [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
+| C (F3V3) | 1Pét 4:11 | hianyzo | 14 erővel | 11 ἐξ G1537 [of] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | az ἐκ továbbra is az azzal-on, nem az erővel-en (maradt) [az arany döntése is vitatható; a jegyzetben nem szerepel] [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
+| C (F3V3) | 1Pét 4:11 | tobblet | 12 azzal | 11 ἐξ G1537 [of] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | mint az erővel sor (az ἐκ az azzal-on); maradt [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
 
 ## 4. A változás konvenciónként (kézi: a valtozas_konvencio oszlop)
 
@@ -89,7 +115,7 @@ segített = a v2 (c) eset megszűnt (vagy a jegyzet v2 szerint már nem hiba), �
 | K4 | e | 2 | 1 | 0 | 0 | 0 |
 | K7 | a | 2 | 0 | 0 | 0 | 0 |
 | K11 | c | 4 (2) | 0 | 0 | 0 | 0 |
-| nincs | — | 27 | 0 | 0 | 15 | 9 |
+| nincs | — | 27 | 0 | 0 | 15 | 11 |
 
 ### Az a–e szabályok (DT21) hatása összesítve
 
@@ -117,7 +143,7 @@ segített = a v2 (c) eset megszűnt (vagy a jegyzet v2 szerint már nem hiba), �
 | C (F3V3) | Jób 33:13 | tobblet | 4 Azért | 5 כִּ֥י H3588 [that] | elteres | — | változott | a | K11 korrelatív mutató névmás a hogy előtt (8.1; prompt L) | — | az arany v3-ban az Azért betoldas (K11); a C az Azért-et a כִּי-hez is köti (a hogy mellett): az L szabály itt nem érvényesült. Az eltérést az arany v2 -> v3 változása hozta létre (az arany v2 így párosított) |
 | C (F3V3) | 2Móz 25:40 | hianyzo | 12 néked | 9 אַתָּ֥ה H0859 [you] | elteres | — | — | c | — | nincs | új: a néked az אַתָּה egyetlen magyar megfelelője (Károli részes esettel adja); a C betoldas-nak veszi, az אַתָּה-t a 3. személyű mutattatott-hoz köti: nem védhető. A C szabály (K3 v2) túláltalánosítása (névmás -> betoldas) nem zárható ki, de a szabály a tárgyi névmásról szól, a néked nem az: konvencióval nem magyarázható |
 | C (F3V3) | Jer 51:3 | tobblet | 8 arra | 9 יִתְעַ֖ל H5927 [he lift] | elteres | — | — | c | — | nincs | új: az arra („felé”, a második אֶל) a C-nél az „emeli” (יִתְעַל) igéhez kötve, miután az אֶל-t forditatlan-nak vette: nem védhető; konvenció nem érinti |
-| C (F3V3) | Ez 22:25 | hianyzo | 7 olyanok | 7 כַּ H9004 [like] | elteres | — | — | c | — | nincs | új a v2-höz képest (az F3 v1 (c) esete, a v2-ben megszűnt): olyanok ... mint = כַּ; a C az olyanok-at betoldas-nak veszi. Határeset: az arany döntése is vitatható, a jegyzetben nem szerepel; az L szabály (korrelatívum) túláltalánosítása nem zárható ki, de az L csak az azt/azért … hogy szerkezetről szól |
+| C (F3V3) | Ez 22:25 | hianyzo | 7 olyanok | 7 כַּ H9004 [like] | elteres | — | — | c | — | nincs | új a v2-höz képest (az F3 v1 (c) esete, a v2-ben megszűnt): olyanok ... mint = כַּ; a C az olyanok-at betoldas-nak veszi. Határeset: az arany döntése is vitatható, a jegyzetben nem szerepel; az L szabály (korrelatívum) túláltalánosítása nem zárható ki, de az L csak az azt/azért … hogy szerkezetről szól [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
 | C (F3V3) | 1Pét 4:11 | tobblet | 7 szólja | 3 λαλεῖ G2980 [speaks] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | a szólja (a jegyzet 5. szakasza szerint Károli-kiegészítés, betoldas) továbbra is a λαλεῖ-hez kötve (maradt) |
 | C (F3V3) | Jer 51:3 | hianyzo | 2 kézívesre | 1 אֶֽל H0408 [may not] | elteres | — | — | b | 3. szakasz (Jer 51:3, Ketiv) — a 6. táblázatba nem kerül be | — | a C mindkét אֶל-t (1, 8) forditatlan-nak veszi (a TAHOT „ne” címkéje szerint); a jegyzet 3. szakasza maga is felkínálja (c) opcióként: az arany döntése vitatható |
 
@@ -130,9 +156,11 @@ segített = a v2 (c) eset megszűnt (vagy a jegyzet v2 szerint már nem hiba), �
 | C (F3V3) | Jer 51:3 | hianyzo | 11 pánczéljába | 10 בְּ H9003 [in] | elteres | — | — | c | — | nincs | új a v2-höz képest (az F3 v1 (c) esete, a v2-ben megszűnt): a be- a pánczéljába -ba ragja; a C az arra-hoz köti; konvenció nem érinti (az elöljáró kezelése a v3-ban nem változott): modell-ingadozás |
 | C (F3V3) | Jer 51:3 | tobblet | 8 arra | 9 יִתְעַ֖ל H5927 [he lift] | elteres | — | — | c | — | nincs | új: az arra („felé”, a második אֶל) a C-nél az „emeli” (יִתְעַל) igéhez kötve, miután az אֶל-t forditatlan-nak vette: nem védhető; konvenció nem érinti |
 | C (F3V3) | Jer 51:3 | tobblet | 8 arra | 10 בְּ H9003 [in] | elteres | — | — | c | — | nincs | új a v2-höz képest (az F3 v1 (c) esete): az arra nem a be- elöljáró |
-| C (F3V3) | Ez 22:25 | hianyzo | 7 olyanok | 7 כַּ H9004 [like] | elteres | — | — | c | — | nincs | új a v2-höz képest (az F3 v1 (c) esete, a v2-ben megszűnt): olyanok ... mint = כַּ; a C az olyanok-at betoldas-nak veszi. Határeset: az arany döntése is vitatható, a jegyzetben nem szerepel; az L szabály (korrelatívum) túláltalánosítása nem zárható ki, de az L csak az azt/azért … hogy szerkezetről szól |
-| C (F3V3) | Mt 21:4 | tobblet | 9 mondása | 9 διὰ G1223 [through] | elteres | — | — | c | — | nincs | új: a διά a mondása-n (az arany: a próféta-n); ugyanannak a v2-es (c) esetnek (a διά helye) új alakja [az arany döntése is vitatható; a jegyzetben nem szerepel] |
-| C (F3V3) | Mt 23:31 | hianyzo | 2 hát | 1 ὥστε G5620 [Thus] | elteres | — | — | c | — | nincs | új a v2-höz képest (az F3 v1 (c) esete, a v2-ben megszűnt): Így hát = ὥστε; a C a hát-ot betoldas-nak veszi. Határeset [az arany döntése is vitatható; a jegyzetben nem szerepel]; konvenció nem érinti |
+| C (F3V3) | Ez 22:25 | hianyzo | 7 olyanok | 7 כַּ H9004 [like] | elteres | — | — | c | — | nincs | új a v2-höz képest (az F3 v1 (c) esete, a v2-ben megszűnt): olyanok ... mint = כַּ; a C az olyanok-at betoldas-nak veszi. Határeset: az arany döntése is vitatható, a jegyzetben nem szerepel; az L szabály (korrelatívum) túláltalánosítása nem zárható ki, de az L csak az azt/azért … hogy szerkezetről szól [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
+| C (F3V3) | Mt 21:4 | tobblet | 9 mondása | 9 διὰ G1223 [through] | elteres | — | — | c | — | nincs | új: a διά a mondása-n (az arany: a próféta-n); ugyanannak a v2-es (c) esetnek (a διά helye) új alakja [az arany döntése is vitatható; a jegyzetben nem szerepel] [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
+| C (F3V3) | Mt 23:31 | hianyzo | 2 hát | 1 ὥστε G5620 [Thus] | elteres | — | — | c | — | nincs | új a v2-höz képest (az F3 v1 (c) esete, a v2-ben megszűnt): Így hát = ὥστε; a C a hát-ot betoldas-nak veszi. Határeset [az arany döntése is vitatható; a jegyzetben nem szerepel]; konvenció nem érinti [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
+| C (F3V3) | Mk 2:23 | tobblet | 6 vetések | 8 διὰ G1223 [through] | elteres | — | — | c | — | nincs | vetések közt: a διά a közt mellett a vetések-hez is kötve. F21.76 (felhasználói döntés): (c), nem (a) — a párosítás nem szerepel a 6. táblázatban és nem konvenció (a korábbi K10-hivatkozás, a J szabály második fele, nem áll); új a v2-höz képest (egyik v2-futásban sem volt eltérés) |
+| C (F3V3) | Jak 1:18 | tobblet | 10 hogy | 8 εἶναι G1511 [to be] | elteres | — | — | c | — | nincs | εἰς τὸ εἶναι: a hogy a C-nél az εἶναι-hoz is kötve; az arany itt nem így párosít. F21.76 (felhasználói döntés): (c), nem (b) — a vers nem szerepel a 6. táblázatban, és a párosítás nem konvenció (az 1Pét 5:12 azonos szerkezetű, 6. táblázat-beli döntése erre a versre nem terjed ki); új a v2-höz képest (egyik v2-futásban sem volt eltérés) |
 | C (F3V3) | Jak 3:4 | tobblet | 12 mindazáltal | 12 μετάγεται G3329 [are turned about] | elteres | — | — | c | — | nincs | új a v2-höz képest (az F3 v1 (c) esete, a v2-ben megszűnt): a mindazáltal (Károli betoldása) a μετάγεται-hez kötve, amely a fordíttatnak-é |
 
 ## Minden megszűnt v2 (c) eset (az F3V3-nál nem eltérés)
@@ -196,12 +224,12 @@ segített = a v2 (c) eset megszűnt (vagy a jegyzet v2 szerint már nem hiba), �
 | C (F3V3) | Ez 11:3 | tobblet | 9 város | 10 סִּ֔יר H5518 [pot] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | a város továbbra is a „fazék”-hoz (סִיר) kötve (maradt; a 6. táblázat a város döntését felsorolja, de ez nem az alternatívája) |
 | C (F3V3) | Ez 33:31 | tobblet | 32 pedig | 20 וְ H9002 [and] | elteres | F3V2B:c | — | c | — | nincs | a pedig nem a 20. ve- (az a de-é); maradt az F3V2B-ből |
 | C (F3V3) | Ez 46:12 | tobblet | 39 azután | 40 יָצָ֛א H3318 [he will go out] | elteres | F3V2B:c | — | c | — | nincs | az azután Károli betoldása; a „kimegy” igéhez kötve (maradt az F3V2B-ből; az F3V2-ben a ve--hez került) |
-| C (F3V3) | Mt 6:31 | hianyzo | 5 ne | 1 μὴ G3361 [Not] | elteres | F3V2B:c | — | c | — | nincs | a második ne a μή-é (az arany szerint); a C betoldas-nak veszi; maradt az F3V2B-ből [az arany döntése is vitatható; a jegyzetben nem szerepel] |
-| C (F3V3) | Mt 21:4 | hianyzo | 8 próféta | 9 διὰ G1223 [through] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | a διά továbbra sincs a próféta-n (maradt) [az arany döntése is vitatható; a jegyzetben nem szerepel] |
+| C (F3V3) | Mt 6:31 | hianyzo | 5 ne | 1 μὴ G3361 [Not] | elteres | F3V2B:c | — | c | — | nincs | a második ne a μή-é (az arany szerint); a C betoldas-nak veszi; maradt az F3V2B-ből [az arany döntése is vitatható; a jegyzetben nem szerepel] [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
+| C (F3V3) | Mt 21:4 | hianyzo | 8 próféta | 9 διὰ G1223 [through] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | a διά továbbra sincs a próféta-n (maradt) [az arany döntése is vitatható; a jegyzetben nem szerepel] [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
 | C (F3V3) | Jak 3:4 | tobblet | 16 oda | 17 ἂν G0302 [ever] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | az ἄν továbbra is az oda-n (a hová-é); maradt |
-| C (F3V3) | 1Pét 4:11 | hianyzo | 14 erővel | 11 ἐξ G1537 [of] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | az ἐκ továbbra is az azzal-on, nem az erővel-en (maradt) [az arany döntése is vitatható; a jegyzetben nem szerepel] |
+| C (F3V3) | 1Pét 4:11 | hianyzo | 14 erővel | 11 ἐξ G1537 [of] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | az ἐκ továbbra is az azzal-on, nem az erővel-en (maradt) [az arany döntése is vitatható; a jegyzetben nem szerepel] [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
 | C (F3V3) | 1Pét 4:11 | tobblet | 7 szólja | 3 λαλεῖ G2980 [speaks] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | a szólja (a jegyzet 5. szakasza szerint Károli-kiegészítés, betoldas) továbbra is a λαλεῖ-hez kötve (maradt) |
-| C (F3V3) | 1Pét 4:11 | tobblet | 12 azzal | 11 ἐξ G1537 [of] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | mint az erővel sor (az ἐκ az azzal-on); maradt |
+| C (F3V3) | 1Pét 4:11 | tobblet | 12 azzal | 11 ἐξ G1537 [of] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | mint az erővel sor (az ἐκ az azzal-on); maradt [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
 | C (F3V3) | 1Pét 4:11 | tobblet | 15 szolgáljon | 9 διακονεῖ G1247 [serves] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | a szolgáljon (5. szakasz: betoldas) továbbra is a διακονεῖ-hez kötve (maradt) |
 | C (F3V3) | 1Pét 4:11 | tobblet | 22 dícsőíttessék | 22 θεὸς G2316 [God] | elteres | F3V2:c | — | c | — | nincs | a θεός (Károlinál nem fordított, 5. szakasz) továbbra is a dícsőíttessék-hez kötve (maradt) |
 
@@ -282,7 +310,7 @@ segített = a v2 (c) eset megszűnt (vagy a jegyzet v2 szerint már nem hiba), �
 | C (F3V3) | Ez 16:57 | tobblet | 7 te | 7 עֵ֚ת H6256 [[the] time of] | megszunt | F3V2:c | — | — | — | nincs | a te már nem az עֵת-en; csak az egyik v2-futásban volt (c): a megszűnés az ingadozással is összefér |
 | C (F3V3) | Ez 22:25 | hianyzo | 4 prófétái | 3 הָ֙ H9024 [its] | elteres | F3V2:a | — | a | K4 v2 birtokos és névmási ragok (2. szakasz 4., 8.1; prompt D) | — | az ő prófétái: a rag csak az ő-höz; mint a v2-ben |
 | C (F3V3) | Ez 22:25 | hianyzo | 6 közepette | 6 הּ H9024 [it] | elteres | F3V2:a | — | a | K4 v2 birtokos és névmási ragok (2. szakasz 4., 8.1; prompt D) | — | ő közepette: mint fent |
-| C (F3V3) | Ez 22:25 | hianyzo | 7 olyanok | 7 כַּ H9004 [like] | elteres | — | — | c | — | nincs | új a v2-höz képest (az F3 v1 (c) esete, a v2-ben megszűnt): olyanok ... mint = כַּ; a C az olyanok-at betoldas-nak veszi. Határeset: az arany döntése is vitatható, a jegyzetben nem szerepel; az L szabály (korrelatívum) túláltalánosítása nem zárható ki, de az L csak az azt/azért … hogy szerkezetről szól |
+| C (F3V3) | Ez 22:25 | hianyzo | 7 olyanok | 7 כַּ H9004 [like] | elteres | — | — | c | — | nincs | új a v2-höz képest (az F3 v1 (c) esete, a v2-ben megszűnt): olyanok ... mint = כַּ; a C az olyanok-at betoldas-nak veszi. Határeset: az arany döntése is vitatható, a jegyzetben nem szerepel; az L szabály (korrelatívum) túláltalánosítása nem zárható ki, de az L csak az azt/azért … hogy szerkezetről szól [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
 | C (F3V3) | Ez 33:31 | hianyzo | 18 népem | 14 י H9020 [my] | elteres | F3V2:a | — | a | K4 v2 birtokos és névmási ragok (2. szakasz 4., 8.1; prompt D) | — | az én népem: a rag csak az én-hez; mint a v2-ben |
 | C (F3V3) | Ez 33:31 | tobblet | 9 szokott | 6 מְבוֹא H3996 [[the] coming of] | elteres | F3V2:b, F3V2B:b | — | b | 6. szakasz táblázat: Ez 33:31 | — | szokott -> מְבוֹא; mint a v2-ben |
 | C (F3V3) | Ez 33:31 | tobblet | 15 mint | 5 כִּ H9004 [like] | elteres | F3V2B:b | — | b | 6. szakasz táblázat: Ez 33:31 | — | a mint -> כְּ (mint az F3V2B-nél); védhető |
@@ -297,28 +325,28 @@ segített = a v2 (c) eset megszűnt (vagy a jegyzet v2 szerint már nem hiba), �
 | C (F3V3) | Mt 5:34 | hianyzo | 13 az | 14 ἐστὶν G1510 [it is] | elteres | — | — | b | 6. szakasz táblázat: Mt 5:34 | — | az arany: az (13) -> ἐστὶν; a C a jegyzet alternatíváját választja (az betoldas) |
 | C (F3V3) | Mt 5:34 | tobblet | 3 azt | 3 λέγω G3004 [say] | megszunt | F3V2:c, F3V2B:c | — | — | — | K3 (DT21 b) | az azt (azt mondom) most betoldas: a C szabály v3-as szűkítése (DT21 b: a megfelelő nélküli tárgyi névmás nem kötődik az igéhez); mindkét v2-futásban (c) volt |
 | C (F3V3) | Mt 5:34 | tobblet | 17 széke | 14 ἐστὶν G1510 [it is] | elteres | — | — | b | 6. szakasz táblázat: Mt 5:34 | — | a ki nem mondott létige (ἐστίν) a C-nél a széke (az állítmányi névszó) szóhoz kötve; a 6. táblázat ennek a versnek az ἐστίν-kezelését bizonytalan döntésként sorolja |
-| C (F3V3) | Mt 6:31 | hianyzo | 5 ne | 1 μὴ G3361 [Not] | elteres | F3V2B:c | — | c | — | nincs | a második ne a μή-é (az arany szerint); a C betoldas-nak veszi; maradt az F3V2B-ből [az arany döntése is vitatható; a jegyzetben nem szerepel] |
+| C (F3V3) | Mt 6:31 | hianyzo | 5 ne | 1 μὴ G3361 [Not] | elteres | F3V2B:c | — | c | — | nincs | a második ne a μή-é (az arany szerint); a C betoldas-nak veszi; maradt az F3V2B-ből [az arany döntése is vitatható; a jegyzetben nem szerepel] [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
 | C (F3V3) | Mt 6:31 | tobblet | 4 és | 4 λέγοντες· G3004 [saying;] | megszunt | F3V2:c, F3V2B:c | — | — | — | nincs | az és már nem a λέγοντες-en (betoldas); mindkét v2-futásban (c) volt, de a v3 egyik változott szabálya sem szól erről: modell-ingadozás (vagy a prompt egészének hatása) |
 | C (F3V3) | Mt 6:31 | tobblet | 5 ne | 4 λέγοντες· G3004 [saying;] | megszunt | F3V2B:c | — | — | — | nincs | a ne már nem a λέγοντες-en; csak az egyik v2-futásban volt (c): a megszűnés az ingadozással is összefér |
 | C (F3V3) | Mt 11:18 | tobblet | 4 a | 4 μήτε G3383 [neither] | megszunt | F3V2B:c | — | — | — | nincs | a ki vonatkozó (a) most betoldas, nem a μήτε-n; a B szabály a v3-ban nem változott; csak az egyik v2-futásban volt (c): a megszűnés az ingadozással is összefér |
 | C (F3V3) | Mt 11:18 | tobblet | 5 ki | 4 μήτε G3383 [neither] | megszunt | F3V2B:c | — | — | — | nincs | mint fent (ki) |
 | C (F3V3) | Mt 11:18 | tobblet | 11 azt | 9 λέγουσιν· G3004 [they say;] | megszunt | F3V2:c, F3V2B:c | — | — | — | K3 (DT21 b) | az azt (azt mondják) most betoldas: a C szabály v3-as szűkítése (DT21 b); mindkét v2-futásban (c) volt |
 | C (F3V3) | Mt 21:4 | hianyzo | 3 azért | 5 ἵνα G2443 [that] | megszunt | F3V2B:c | változott | — | — | K11 (DT21 c) | az arany v3-ban az azért betoldas (K11, az arany v2 -> v3 változása); az F3V3 is betoldas-nak veszi (az L szabály szerint): a v2-es „hiányzó” link az arany változásával tárgytalan; csak az egyik v2-futásban volt (c): a megszűnés az ingadozással is összefér |
-| C (F3V3) | Mt 21:4 | hianyzo | 8 próféta | 9 διὰ G1223 [through] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | a διά továbbra sincs a próféta-n (maradt) [az arany döntése is vitatható; a jegyzetben nem szerepel] |
+| C (F3V3) | Mt 21:4 | hianyzo | 8 próféta | 9 διὰ G1223 [through] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | a διά továbbra sincs a próféta-n (maradt) [az arany döntése is vitatható; a jegyzetben nem szerepel] [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
 | C (F3V3) | Mt 21:4 | tobblet | 3 azért | 4 γέγονεν G1096 [has come to pass] | megszunt | F3V2B:c | változott | — | — | K11 (DT21 c) | az azért már nem a γέγονεν-en, hanem betoldas: az L szabály (DT21 c) szerint; csak az egyik v2-futásban volt (c): a megszűnés az ingadozással is összefér |
-| C (F3V3) | Mt 21:4 | tobblet | 9 mondása | 9 διὰ G1223 [through] | elteres | — | — | c | — | nincs | új: a διά a mondása-n (az arany: a próféta-n); ugyanannak a v2-es (c) esetnek (a διά helye) új alakja [az arany döntése is vitatható; a jegyzetben nem szerepel] |
+| C (F3V3) | Mt 21:4 | tobblet | 9 mondása | 9 διὰ G1223 [through] | elteres | — | — | c | — | nincs | új: a διά a mondása-n (az arany: a próféta-n); ugyanannak a v2-es (c) esetnek (a διά helye) új alakja [az arany döntése is vitatható; a jegyzetben nem szerepel] [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
 | C (F3V3) | Mt 21:4 | tobblet | 10 a | 12 λέγοντος· G3004 [saying;] | elteres | F3V2:a, F3V2B:a | — | a | K2 kettéírt Károli-kötőszók / vonatkozó (2. szakasz 2.; prompt B) | — | a ki: az igenévhez (λέγοντος) kötve — a K2 listájában megnevezett opció; mint a v2-ben |
 | C (F3V3) | Mt 21:4 | tobblet | 11 ki | 12 λέγοντος· G3004 [saying;] | elteres | F3V2:a, F3V2B:a | — | a | K2 kettéírt Károli-kötőszók / vonatkozó (2. szakasz 2.; prompt B) | — | mint fent |
 | C (F3V3) | Mt 21:4 | tobblet | 13 szólott | 9 διὰ G1223 [through] | megszunt | F3V2B:c | — | — | — | nincs | a szólott már nem a διά-n; csak az egyik v2-futásban volt (c): a megszűnés az ingadozással is összefér |
-| C (F3V3) | Mt 23:31 | hianyzo | 2 hát | 1 ὥστε G5620 [Thus] | elteres | — | — | c | — | nincs | új a v2-höz képest (az F3 v1 (c) esete, a v2-ben megszűnt): Így hát = ὥστε; a C a hát-ot betoldas-nak veszi. Határeset [az arany döntése is vitatható; a jegyzetben nem szerepel]; konvenció nem érinti |
+| C (F3V3) | Mt 23:31 | hianyzo | 2 hát | 1 ὥστε G5620 [Thus] | elteres | — | — | c | — | nincs | új a v2-höz képest (az F3 v1 (c) esete, a v2-ben megszűnt): Így hát = ὥστε; a C a hát-ot betoldas-nak veszi. Határeset [az arany döntése is vitatható; a jegyzetben nem szerepel]; konvenció nem érinti [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
 | C (F3V3) | Mt 27:18 | tobblet | 2 jól | 1 ᾔδει G1492 [He knew] | megszunt | F3V2:c | — | — | — | K7 (DT21 a) | a jól (határozószó) már nem az ᾔδει-n: a G szabály v3-as szűkítése (DT21 a: a kivétel nem terjed ki a határozószóra); csak az egyik v2-futásban volt (c): a megszűnés az ingadozással is összefér |
 | C (F3V3) | Mk 2:23 | hianyzo | 14 tanítványai | 14 αὐτοῦ G0846 [of Him] | elteres | — | — | a | K4 v2 birtokos és névmási ragok (2. szakasz 4., 8.1; prompt D) | — | az ő tanítványai: az αὐτοῦ csak az ő-höz (az F3 v1-gyel azonos) |
 | C (F3V3) | Mk 2:23 | tobblet | 3 hogy | 2 ἐγένετο G1096 [it came to pass] | megszunt | F3V2:c | — | — | — | K7 (DT21 a) | a hogy (lőn, hogy) már nem az ἐγένετο-n: a G szabály v3-as szűkítése (DT21 a: a kivétel nem terjed ki a kötőszóra); csak az egyik v2-futásban volt (c): a megszűnés az ingadozással is összefér |
-| C (F3V3) | Mk 2:23 | tobblet | 6 vetések | 8 διὰ G1223 [through] | elteres | — | — | a | K10 összeolvadt névelő + elöljáró (2. szakasz 10.; prompt J) | — | vetések közt: a διά a közt mellett a vetések-hez is kötve (a J szabály második fele: az elöljáró a főnévhez is kötődhet) |
+| C (F3V3) | Mk 2:23 | tobblet | 6 vetések | 8 διὰ G1223 [through] | elteres | — | — | c | — | nincs | vetések közt: a διά a közt mellett a vetések-hez is kötve. F21.76 (felhasználói döntés): (c), nem (a) — a párosítás nem szerepel a 6. táblázatban és nem konvenció (a korábbi K10-hivatkozás, a J szabály második fele, nem áll); új a v2-höz képest (egyik v2-futásban sem volt eltérés) |
 | C (F3V3) | Jak 1:18 | hianyzo | 2 ő | 1 βουληθεὶς G1014 [Having willed [it]] | megszunt | F3V2B:c | — | — | — | nincs | az ő akarata most a βουληθείς-hez (a 6. táblázat szerint); csak az egyik v2-futásban volt (c): a megszűnés az ingadozással is összefér; konvenció nem igazolja |
 | C (F3V3) | Jak 1:18 | hianyzo | 13 teremtményeinek | 13 αὐτοῦ G0846 [of His] | elteres | F3V2:a, F3V2B:a | — | a | K4 v2 birtokos és névmási ragok (2. szakasz 4., 8.1; prompt D) | — | az ő teremtményeinek: az αὐτοῦ csak az ő-höz; mint a v2-ben |
 | C (F3V3) | Jak 1:18 | tobblet | 2 ő | 13 αὐτοῦ G0846 [of His] | megszunt | F3V2B:c | — | — | — | nincs | mint fent |
-| C (F3V3) | Jak 1:18 | tobblet | 10 hogy | 8 εἶναι G1511 [to be] | elteres | — | — | b | 6. szakasz táblázat: 1Pét 5:12 (azonos szerkezet) | — | εἰς τὸ εἶναι: a hogy a C-nél az εἶναι-hoz is kötve; az arany az 1Pét 5:12-ben éppen így párosít (hogy -> εἶναι, 6. táblázat), itt nem: az arany két verse között a döntés nem egységes |
+| C (F3V3) | Jak 1:18 | tobblet | 10 hogy | 8 εἶναι G1511 [to be] | elteres | — | — | c | — | nincs | εἰς τὸ εἶναι: a hogy a C-nél az εἶναι-hoz is kötve; az arany itt nem így párosít. F21.76 (felhasználói döntés): (c), nem (b) — a vers nem szerepel a 6. táblázatban, és a párosítás nem konvenció (az 1Pét 5:12 azonos szerkezetű, 6. táblázat-beli döntése erre a versre nem terjed ki); új a v2-höz képest (egyik v2-futásban sem volt eltérés) |
 | C (F3V3) | Jak 3:1 | tobblet | 7 azt | 8 ὅτι G3754 [that] | megszunt | F3V2:c | — | — | — | K11 (DT21 c) | tudván azt, hogy: az azt most betoldas, a hogy a ὅτι-n: az L szabály (DT21 c) pontosan ezt írja elő; csak az egyik v2-futásban volt (c): a megszűnés az ingadozással is összefér |
 | C (F3V3) | Jak 3:4 | hianyzo | 15 kormánytól | 13 ὑπὸ G5259 [by] | megszunt | F3V2:c, F3V2B:c | — | — | — | nincs | az ὑπό most a kormánytól-on; mindkét v2-futásban (c) volt, de a v3 egyik változott szabálya sem szól erről: modell-ingadozás (vagy a prompt egészének hatása) |
 | C (F3V3) | Jak 3:4 | hianyzo | 19 hová | 17 ἂν G0302 [ever] | megszunt | F3V2:c | — | — | — | nincs | az ἄν most a hová-n is; csak az egyik v2-futásban volt (c): a megszűnés az ingadozással is összefér |
@@ -326,9 +354,9 @@ segített = a v2 (c) eset megszűnt (vagy a jegyzet v2 szerint már nem hiba), �
 | C (F3V3) | Jak 3:4 | tobblet | 12 mindazáltal | 13 ὑπὸ G5259 [by] | megszunt | F3V2:c, F3V2B:c | — | — | — | nincs | a mindazáltal már nem az ὑπό-n (helyette a μετάγεται-n, külön (c) sor): a hibás link áthelyeződött; mindkét v2-futásban (c) volt |
 | C (F3V3) | Jak 3:4 | tobblet | 16 oda | 17 ἂν G0302 [ever] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | az ἄν továbbra is az oda-n (a hová-é); maradt |
 | C (F3V3) | 1Pét 4:2 | tobblet | 1 Hogy | 2 τὸ G3588 [<the>] | elteres | F3V2B:a | — | a | K1 névelők (2. szakasz 1.; prompt A) | — | a névelős főnévi igenév névelője (τό) a Hogy-on; mint az F3V2B |
-| C (F3V3) | 1Pét 4:11 | hianyzo | 14 erővel | 11 ἐξ G1537 [of] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | az ἐκ továbbra is az azzal-on, nem az erővel-en (maradt) [az arany döntése is vitatható; a jegyzetben nem szerepel] |
+| C (F3V3) | 1Pét 4:11 | hianyzo | 14 erővel | 11 ἐξ G1537 [of] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | az ἐκ továbbra is az azzal-on, nem az erővel-en (maradt) [az arany döntése is vitatható; a jegyzetben nem szerepel] [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
 | C (F3V3) | 1Pét 4:11 | tobblet | 7 szólja | 3 λαλεῖ G2980 [speaks] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | a szólja (a jegyzet 5. szakasza szerint Károli-kiegészítés, betoldas) továbbra is a λαλεῖ-hez kötve (maradt) |
-| C (F3V3) | 1Pét 4:11 | tobblet | 12 azzal | 11 ἐξ G1537 [of] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | mint az erővel sor (az ἐκ az azzal-on); maradt |
+| C (F3V3) | 1Pét 4:11 | tobblet | 12 azzal | 11 ἐξ G1537 [of] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | mint az erővel sor (az ἐκ az azzal-on); maradt [arany-felülvizsgálatra jelölt: az arany döntése is vitatható, de a 6. táblázat zárt (PD10); a számokban (c) marad; F21.76] |
 | C (F3V3) | 1Pét 4:11 | tobblet | 15 szolgáljon | 9 διακονεῖ G1247 [serves] | elteres | F3V2:c, F3V2B:c | — | c | — | nincs | a szolgáljon (5. szakasz: betoldas) továbbra is a διακονεῖ-hez kötve (maradt) |
 | C (F3V3) | 1Pét 4:11 | tobblet | 22 dícsőíttessék | 22 θεὸς G2316 [God] | elteres | F3V2:c | — | c | — | nincs | a θεός (Károlinál nem fordított, 5. szakasz) továbbra is a dícsőíttessék-hez kötve (maradt) |
 | C (F3V3) | 1Pét 4:11 | tobblet | 22 dícsőíttessék | 27 ἐστιν G1510 [be] | megszunt | F3V2B:c | — | — | — | nincs | az ἐστιν már nem a dícsőíttessék-en; csak az egyik v2-futásban volt (c): a megszűnés az ingadozással is összefér |

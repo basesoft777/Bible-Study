@@ -25,7 +25,9 @@ A besorolás-fájl (f21p/c_diff_p3c_besorolas.tsv, `# MANUAL` fejléc) oszlopai:
          konvencio_vagy_jegyzetpont (a/b-nél kötelező), valtozas_konvencio (K1–K11 vagy `nincs`;
          kötelező: a megszűnt (c) esetnél — `megszunt`/`nem_merheto` sor, vagy `elteres` sor, amely
          a v2-ben (c) volt, most a/b —, és az új (c) esetnél — `elteres` sor, (c), a v2-ben nem (c)),
-         indok (mindig kötelező).
+         indok (mindig kötelező). F21.76: az indokban az „arany-felülvizsgálatra jelölt” jelölés
+         csak (c) `elteres` soron állhat (az arany döntése is vitatható, de a 6. táblázat zárt,
+         PD10); a jelölt sor minden számban továbbra is (c), a jelentés külön listában adja.
 
 Módok:
   --lista       az eltérések kontextussal (a kézi besoroláshoz)
@@ -79,6 +81,7 @@ KONVENCIOK = tuple('K%d' % i for i in range(1, 12)) + ('nincs',)
 DT21 = {'K7': 'a', 'K3': 'b', 'K11': 'c', 'K4': 'e'}
 V2_FUTASOK = (meres_p3c.C2, meres_p3c.C2B)
 RET = meres.RETEGEK + [meres.OSSZES]
+JELOLT = 'arany-felülvizsgálatra jelölt'      # F21.76: az indok-oszlop jelölése; csak (c) elteres soron
 
 
 def dt21(konv, ig=None):
@@ -265,6 +268,8 @@ def ellenoriz(adat, adat2, ut, futasok=FUTASOK, szigoru=False):
             hibak.append('a %s sornak nincs osztálya (üres kell): %s' % (r['statusz'], k))
         if not r['indok'].strip():
             hibak.append('üres indok: %s' % (k,))
+        if JELOLT in r['indok'] and not (r['statusz'] == 'elteres' and r['osztaly'] == 'c'):
+            hibak.append('a(z) „%s” jelölés csak (c) eltérés-soron állhat: %s' % (JELOLT, k))
         if r['valtozas_konvencio'] and r['valtozas_konvencio'] not in KONVENCIOK:
             hibak.append('érvénytelen változás-konvenció (K1–K11 vagy nincs): %s' % (k,))
         if szigoru:
@@ -415,6 +420,39 @@ def _van(r, ret):
     return ret == meres.OSSZES or r == ret
 
 
+def lefedettseg_jeloles(adat, sorok_c3):
+    """F21.76 (1): a 95%-os küszöbön kívüli mért F3V3-lefedettség jelölése rétegenként (nincs további teendő),
+    a hiányzó linkek K4 (a) számával (Opus-besorolás, nem mérés)."""
+    ki = []
+    for r in meres.RETEGEK:
+        t, _, g, _ = meres_p3c._pl(adat, meres_p3c.C3, r)
+        if not g or t / g >= meres_p3c.KUSZOB_LEF:
+            continue
+        hi = [x for x in sorok_c3.values() if x['statusz'] == 'elteres' and x['irany'] == 'hianyzo' and x['reteg'] == r]
+        k4a = [x for x in hi if x['osztaly'] == 'a' and x['konvencio_vagy_jegyzetpont'].startswith('K4')]
+        ki.append('- az %s lefedettsége a 95%%-os küszöbön kívül (%s%%); a hiányzó %d link közül %d K4-eltérés (a). (A mért érték: '
+                  'naplok/F21P_meres_p3c_c.md; a K4-szám Opus-besorolás, nem mérés; a besorolás hiányzó eltérés-sorai: %d, %s.)'
+                  % (r, ('%.1f' % (100.0 * t / g)).replace('.', ','), g - t, len(k4a), len(hi), 'EGYEZIK' if len(hi) == g - t else 'ELTÉR'))
+    return (['', 'Jelölés (F21.76; nincs további teendő):', ''] + ki) if ki else []
+
+
+def felulvizsgalat_szakasz(adat, sorok_c3, allapot):
+    """F21.76 (3): az „arany-felülvizsgálatra jelölt” (c) esetek külön listája; a számokban továbbra is (c)."""
+    c_sorok = [x for x in sorok_c3.values() if x['statusz'] == 'elteres' and x['osztaly'] == 'c']
+    jc = [x for k, x in sorted(sorok_c3.items(), key=lambda kv_: (adat.versek.index(kv_[0][1]),) + kv_[0][2:]) if JELOLT in x['indok']]
+    ki = ['', '### Arany-felülvizsgálatra jelölt (c) esetek (Opus-besorolás, nem mérés)', '',
+          'Az F3V3 %d (c) esetéből %d „%s” (az arany döntése is vitatható, de a 6. táblázat zárt, PD10). A korrigált számban (fent) '
+          'és minden táblában továbbra is (c)-nek számít.' % (len(c_sorok), len(jc), JELOLT), '',
+          '| réteg | F3V3 (c) | ebből arany-felülvizsgálatra jelölt | ebből: maradt | ebből: új (c) |', '|---|---|---|---|---|']
+    for r in RET:
+        cs = [x for x in c_sorok if _van(x['reteg'], r)]
+        js = [x for x in jc if _van(x['reteg'], r)]
+        ki.append('| %s | %d | %d | %d | %d |' % (r, len(cs), len(js), sum(1 for x in js if allapot(x) == 'maradt'),
+                                                sum(1 for x in js if allapot(x) == 'uj')))
+    ki += [''] + SOR_FEJ + [_sor_md(x) for x in jc]
+    return ki
+
+
 def zaro_szakasz(adat, adat2, kezi, futasok, v2t, v2o):
     c3 = meres_p3c.C3
     ki = ['', '## 2. A kézi besorolás (a / b / c) rétegenként, a v2-es C-futásokkal egymás mellett (Opus-besorolás, nem mérés)', '',
@@ -488,6 +526,8 @@ def zaro_szakasz(adat, adat2, kezi, futasok, v2t, v2o):
             cel['lefedettség'] += [meres_p3c._pct(t, g), meres_p3c._pct(t + hb, g)]
             for m in ('pontosság', 'lefedettség'):
                 ki.append('| %s | %s | %s |' % (r, m, ' | '.join(cel[m])))
+        ki += lefedettseg_jeloles(adat, sorok_c3)
+        ki += felulvizsgalat_szakasz(adat, sorok_c3, allapot)
         # a változás konvenciónként
         hatas = [('segített (v2 (c) megszűnt)', 'megszunt'), ('segített (v2 (c) átsorolva a/b-be)', 'atsorolt'),
                  ('nem mérhető', 'nem_merheto'), ('nem segített (v2 (c) maradt)', 'maradt'), ('ártott / új (c)', 'uj')]
@@ -696,6 +736,37 @@ def onteszt():
         h_sz, _ = ellenoriz(adat, adat2, ut_s, szigoru=True)
         ellen(h_laza == [] and any('konvenció/jegyzetpont nélkül' in x for x in h_sz)
               and (not idx_v or any('változás-konvenció nélkül' in x for x in h_sz)), 'a szigorú ellenőrzés nem fog: %s' % h_sz[:3])
+        # F21.76: az „arany-felülvizsgálatra jelölt” jelölés: (c) soron a külön listába kerül (és (c) marad), (a)/(b) soron hiba
+        sorok_j = list(sorok_k)
+        idx_c = [i for i, s in enumerate(sorok_j) if s and not s.startswith(('#', 'futas\t')) and s.split('\t')[I_OSZT] == 'c'
+                 and s.split('\t')[0] == meres_p3c.C3]
+        for i in idx_c[:2]:
+            m = sorok_j[i].split('\t')
+            m[I_IND] += ' [%s]' % JELOLT
+            sorok_j[i] = '\t'.join(m)
+        ut_jb = os.path.join(mappa, 'besorolas_jelolt.tsv')
+        with open(ut_jb, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('\n'.join(sorok_j))
+        ut_jj = os.path.join(mappa, 'jelentes_jelolt.md')
+        with contextlib.redirect_stdout(io.StringIO()):
+            kod_j = fut(mappa, info['arany_ut'], info['arany_sha'], ut_jb, ut_jj, ts='T1', szigoru=True)
+        with open(ut_jj, encoding='utf-8') as f:
+            mdj = f.read()
+        szak = mdj.split('### Arany-felülvizsgálatra jelölt (c) esetek')[-1].split('\n## ')[0]
+        n_c3 = sum(1 for s in sorok_k if s and not s.startswith(('#', 'futas\t')) and s.split('\t')[0] == meres_p3c.C3
+                   and s.split('\t')[I_OSZT] == 'c')
+        ellen(kod_j == 0 and idx_c and ('Az F3V3 %d (c) esetéből %d' % (n_c3, min(2, len(idx_c)))) in szak
+              and szak.count('[%s]' % JELOLT) == min(2, len(idx_c))
+              and mdj.split('## 3.')[1].split('\n')[6] == md1.split('## 3.')[1].split('\n')[6],
+              'a jelölt (c) esetek listája / számai hibásak (kód %d)' % kod_j)
+        idx_a = [i for i, s in enumerate(sorok_j) if s and not s.startswith(('#', 'futas\t')) and s.split('\t')[I_OSZT] == 'a']
+        m = sorok_j[idx_a[0]].split('\t')
+        m[I_IND] += ' [%s]' % JELOLT
+        sorok_j[idx_a[0]] = '\t'.join(m)
+        with open(ut_jb, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('\n'.join(sorok_j))
+        h_j, _ = ellenoriz(adat, adat2, ut_jb)
+        ellen(any('csak (c) eltérés-soron' in x for x in h_j), 'a jelölés (a) soron nem hiba: %s' % h_j[:3])
         # hibák: ismeretlen osztály, üres indok, hiányzó és többlet sor, érvénytelen változás-konvenció, osztály a megszűnt soron
         sorok_h = list(sorok_k)
         idx = [i for i, s in enumerate(sorok_h) if s and not s.startswith('#') and not s.startswith('futas\t') and s.split('\t')[8] == 'elteres']
