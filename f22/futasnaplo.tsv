@@ -358,3 +358,8 @@ ts	futas	koteg	probalkozas	modell	gondolkodas_mod	igehely_db	kjv	bemenet_token	k
 2026-10-01T17:08:51+00:00	c/2Moz	102	2	google/gemini-3.8-flash	kotelezo_effort=minimal	4	nem	9628	623	0	0.006805	openrouter	0	1	5.03	stop	84f12ca7aafb	3.831294	
 2026-10-01T17:09:02+00:00	c/2Moz	103	1	google/gemini-3.8-flash	kotelezo_effort=minimal	10	nem	8923	1620	0	0.012767	openrouter	1	1	10.70	stop	84f12ca7aafb	3.844061	kapu
 2026-10-01T17:09:04+00:00	c/2Moz	103	2	google/gemini-3.8-flash	kotelezo_effort=minimal	1	nem	10652	223	0	0.003318	openrouter	0	1	2.65	stop	84f12ca7aafb	3.847379	
+2026-10-01T17:23:38+00:00	c/2Moz	104	1	google/gemini-3.8-flash	kotelezo_effort=minimal	10	nem	9384	1739	0	0.013559	openrouter	4	1	11.99	stop	84f12ca7aafb	3.860938	kapu
+2026-10-01T17:23:44+00:00	c/2Moz	104	2	google/gemini-3.8-flash	kotelezo_effort=minimal	4	nem	11406	790	0	0.006008	openrouter	0	1	6.34	stop	84f12ca7aafb	3.866946	
+2026-10-01T17:23:56+00:00	c/2Moz	105	1	google/gemini-3.8-flash	kotelezo_effort=minimal	10	nem	8635	1650	0	0.012664	openrouter	10	1	11.51	stop	84f12ca7aafb	3.879610	kapu
+2026-10-01T17:24:07+00:00	c/2Moz	105	2	google/gemini-3.8-flash	kotelezo_effort=minimal	10	nem	10857	1562	0	0.008493	openrouter	5	1	11.14	stop	84f12ca7aafb	3.888103	kapu
+2026-10-01T17:24:18+00:00	c/2Moz	106	1	google/gemini-3.8-flash	kotelezo_effort=minimal	10	nem	7640	1156	0	0.010065	openrouter	7	1	11.25	stop	84f12ca7aafb	3.898168	kapu
