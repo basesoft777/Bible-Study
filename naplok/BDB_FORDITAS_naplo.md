@@ -982,3 +982,104 @@ d. valameddig, valami alatt, Ézs 63:18 לַמִּצְעָר (si vera lectio), 2
 > b. with reference to, limiting or qualifying the idea expressed by the principal verb, and so resolvable sometimes into so as to, to, sometimes into in respect of, in: — (a) so as to, to, Deut 8:6 and keep the commands of י אֹתוֺ וּלְיִרְאָה בִּדְרָכָיו ׳לָלֶכֶת to walk in his ways, and to fear him, 10:15; 11:22; 19:9; 1Kin 2:3-4, 11:2; 1Sam 20:20, 36; Joel 2:26 לְהַפְלִיא עִמָּכֶם עָשָׂה אֲשֶׁר so as to do wondrously, Ezek 5:6; Judg 5:18 לָמוּת נַפְשׁוֺ חֵרֵף עַם so as to die, for dying [not 'unto death'], 16:16; 2Kin 20:1 לָמוּת חָלָה; Gen 2:3 לַעֲשׂוֺת so as to make (or in making) which, he created; and in the very frequently לֵאמֹר, introducing the words spoken, so as to say = saying (German indem er sagte), 1:22, etc. (b) in respect of, in (compare 5e (b)) 34:7; 1Sam 12:17 your evil is great that ye have done מלך לכם לִשְׁאוֺל in asking for yourselves a king, 1 Samuel 12:29; 14:33 the people sin against J. עלהֿדם לאכל in eating with the blood, 19:5; 2Sam 19:7; 2Kin 4:24; Jer 44:18; Psa 36:3; 63:3; 78:18; 101:8; 103:20; Neh 13:18. And with the tert. compare., above 5e (b). Especially with verbs expressing what with us would be denoted by an adverb adjunct, but in Hebrew idiom forms the principal idea, as 1Sam 1:12 לְהִתְמַּלֵּל הִרְבְּתָה literally did much in respect of praying ( = prayed long or much), Isa 55:7 לִסְלוֺחַ יַרְבֶּה כִּי +; 2Kin 2:10 לִשְׁאוֺל הִקְשִׁיתָ thou hast done hardly in respect of asking ( = asked a hard thing), 1Kin 14:9 לַעֲשׂוֺת הֵרַע; so with הקריב Gen 12:11, מִהַר 27:20, הרחיק Exod 8:24 הֶעְמִּיל Num 14:44, הֵהִין Deut 1:41, בּשֵׁשׁ Judg 5:28, הפליא 13:19; 2Chr 26:15 (with passive verb), שׁוּב 1Kin 13:17; Ezra 9:14, היטיב Jer 1:12 + (without לְ 1Sam 16:17), העמיק Isa 29:15 +, קֵרֵב Ezek 36:9, הגדיל Joel 2:20 +, לִבְרֹחַ קִדַּמְתִּי Jonah 4:2, הגביהּ Psa 113:5, השׁפיל 113:6; Gen 31:27 לִבְרֹחַ נַחְבֵּאתָ hast hidden thyself in regard to fleeing = hast fled secretly, 2Sam 19:4 לָבוֺא וַיִּתְגַּנֵּב = come in stealthily. (c.) by an extension of (b), the infinitive with לְ so forms the complement of a verb that, if the verb be transitive, it becomes virtually its object: so very often with such verbs as הוסיף to add Gen 4:2, 12, הֵחֵל to begin 6:1, חדל 11:8, יכל 13:6, מִהַר 18:7, נתן to permit 20:6, אבה 24:5, בקשׁ Exod 2:15, מֵאֵן 7:14, למד Deut 14:23, חפץ 25:8, ידע 1 Kings 5:20 (these all occur also without לְ); הואיל to undertake, consent, Gen 18:17, 31, כִּלָּה to finish, תָּמַם Deut 2:16 (to come to an end in respect of), קִוָּה Isa 5:2; also צִוָּה Gen 50:2, אָמַר Exod 2:14, דִּמָּה Num 33:56, חשׁב 1Sam 18:25, יעץ Psa 62:5, לִמֵּד Jer 12:16, אָהֵב Hosea 12:8: Deut 10:12 what doth ׳י ask of thee ליראה אם כי except to fear etc. ? (compare Micah 6:8 after דרשׁ without ל). (d) as the subject of a sentence (rare): Isa 10:7 בלבבו להשׁמיד, 1Chr 29:12; with טוב 1Sam 15:22; Psa 118:8; 118:9; Eccl 7:2, 5; Prov 21:9 (usually without לְ, as 21:19; 25:24; Exod 14:12); compare 8:22 כן לעשׂות נכון לא; 2Sam 18:11 לָתֵת וְעָלַי, Neh 13:13; Ezra 10:12; Micah 3:1 לדעת לכם הלא, Ezra 4:3; 2Chr 13:5; 20:17; 26:18. (e) with אֵין יֵשׁ, (late), and (more rarely) לֹא, in sense of it is (not) possible to . . ., or (sometimes) there is no need to . . . : see יֵשׁ 2c c (p. 442); אַיִן 5 (p. 34 b), adding Hag 1:6; Est 8:8; 2Chr 22:9; לֹא 1a b (p. 518): and compare Dr^§ 202 Ges^§ 114l Dav^§ 94 b, 95 b. (f) with הָיָה, to express the idea of destination, as Num 24:22 לְבָעֵר יהיה וקין shall be for consuming, Deut 31:17; Isa 5:5; 6:13; 37:26; Ezek 30:16; Psa 109:13 +. compare לַעֲשׂוֺת מֶה what is (was) to be done? Isa 5:4; 2Kin 4:13; 2Chr 25:9 + (Dr^§ 203). (g) expressing (according to the context) tendency, intention, or obligation (the 'periphrastic' future): — Hosea 9:13 בָּנָיו הוֺרֵג אֶל לְהוֺצִיא וְאֶפְרַיִם is for bringing forth (= must bring forth), Isa 10:32 לעמד בנֹב היום עוד is he for tarrying (must he tarry), 38:20 ׳י ׳י, להושׁיעני is (ready) to save me, 44:14 (si vera lectio), Jer 51:49; Hab 1:17; Psa 32:9; 49:15 שְׁאוֺל לְבַלּוֺת צוּרָם = must Sheol waste away, 62:10 לַעֲלוֺת בְּמאֹזְנַיִם, Prov 18:24; 19:8 טוב למצא תבונה שׁומר will be finding prosperity, 20:25; Job 30:6; 1Chr 22:5 (לִבְנוֺת), Eccl 3:15: of past time, Gen 15:12 לבוא השׁמשׁ ויהי was about to go down, Josh 2:5; 1Sam 14:21b (text dubious: Dr^§ 206 Obs.), 2Chr 26:5 (strangely) אלהים לדרשׁ ויהי RV set himself to seek; usually without היה, 2Sam 4:10 לוֺ לְתִתִּי אֲשֶׁר to whom it was for my giving (I ought to have given), 2Kin 13:19 לְהַכּוֺת percutiendum erat, 1Chr 9:25, and more freely 2Chr 11:22 להמליבו כי for (he was) for making him king, 12:12 להשׁחית ולא and was no longer for destroying him, 36:19 (?): in a question, Gen 30:15 וְלָקַחַת and art thou for taking ? Est 7:8; 2Chr 19:2 לַעְזֹּר הֲלָרָשָׁע wilt thou help the wicked ? compare Dr^§ 204, Ges^158; 114 h-k, Dav^§ 94. (h) with וְ, in contin. (mostly) of a finite verb or participle, Exod 32:29 וְלָתֵת ֗֗֗ יֶדְכֶם מַלְאוּ and be for placing etc. Lev 10:10f. (?), 1Sam 8:12 וְלָשׂוּם ֗֗֗ יִקַּח, Jer 19:12 וְלָתֵת ֗֗֗ אעשׂה, 44:14; Hosea 12:3; Psa 25:14; 109:16; Job 34:8; Eccl 7:25; 9:1 (si vera lectio), Dan 12:11; Neh 8:13; 1Chr 10:13; 2Chr 2:8; 7:17; 8:13; 30:9; Ezek 13:22; Amos 8:4 וג וְלַשְׁבִּית אֶבְיוֺן ׳הַשֹּׁאֲפִים and (that are) for making the poor to cease, Isa 44:28 וְלֵאמֹר ֗֗֗ הָאוֺמֵר, 56:6; Psa 104:21; Jer 17:10; 44:19; 1Chr 6:34 (compare Dr^§ 206 Dav:§ 96 R. 4). — On לְמִן, see מִן. Note. — 1Kin 6:19 שָׁם לְתִתֵּן, the supposition that לְ is a conjunction (= למען) is too alien to Hebrew usage to be justified by the Arabic for , and the view that תִתֵּן here and 17:14 is an anomalous form for תֵת (Ew^§ 238 c Kö^i. 305) is against analogy: read with Ol^§ 224 d, Ges^§ 67 A. 3, Klo, לָתֵת (as 17:14 Qr).
 
 b. vonatkozással, a főige által kifejezett gondolatot korlátozva vagy minősítve, és így néha úgy, hogy-ra, néha valami tekintetében, -ban, -ben jelentésre bontható fel: — (a) úgy, hogy; hogy, 5Móz 8:6 és tartsd meg י אֹתוֺ וּלְיִרְאָה בִּדְרָכָיו ׳לָלֶכֶת parancsolatait, hogy útjain járj, és hogy féld őt, 10:15; 11:22; 19:9; 1Kir 2:3-4, 11:2; 1Sám 20:20, 36; Jóel 2:26 לְהַפְלִיא עִמָּכֶם עָשָׂה אֲשֶׁר úgy, hogy csodásan cselekedett, Ez 5:6; Bír 5:18 לָמוּת נַפְשׁוֺ חֵרֵף עַם úgy, hogy meghaljon, halálra [nem 'unto death'], 16:16; 2Kir 20:1 לָמוּת חָלָה; 1Móz 2:3 לַעֲשׂוֺת amelyet úgy teremtett, hogy megalkossa (vagy: megalkotva); és az igen gyakori לֵאמֹר alakban, amely a kimondott szavakat vezeti be: úgy, hogy mondja = mondván (német indem er sagte), 1:22 stb. (b) valami tekintetében, -ban, -ben (vö. 5e (b)) 34:7; 1Sám 12:17 nagy a ti gonoszságotok, amelyet elkövettetek מלך לכם לִשְׁאוֺל azzal, hogy királyt kértetek magatoknak, 1Sám 12:29; 14:33 a nép vétkezik J. ellen עלהֿדם לאכל azzal, hogy vérével együtt eszik, 19:5; 2Sám 19:7; 2Kir 4:24; Jer 44:18; Zsolt 36:3; 63:3; 78:18; 101:8; 103:20; Neh 13:18. A tertium comparationisszal is, l. fent 5e (b). Különösen olyan igékkel, amelyek azt fejezik ki, amit mi határozói járulékkal jelölnénk, de ami a héber szólásmódban a fő gondolatot alkotja, mint 1Sám 1:12 לְהִתְמַּלֵּל הִרְבְּתָה szó szerint: sokat tett az imádkozás tekintetében ( = sokáig vagy sokat imádkozott), Ézs 55:7 לִסְלוֺחַ יַרְבֶּה כִּי és máshol; 2Kir 2:10 לִשְׁאוֺל הִקְשִׁיתָ nehezet tettél a kérés tekintetében ( = nehéz dolgot kértél), 1Kir 14:9 לַעֲשׂוֺת הֵרַע; így הקריב 1Móz 12:11, מִהַר 27:20, הרחיק 2Móz 8:24 הֶעְמִּיל 4Móz 14:44, הֵהִין 5Móz 1:41, בּשֵׁשׁ Bír 5:28, הפליא 13:19; 2Krón 26:15 (szenvedő igével), שׁוּב 1Kir 13:17; Ezsd 9:14, היטיב Jer 1:12 és máshol (לְ nélkül 1Sám 16:17), העמיק Ézs 29:15 és máshol, קֵרֵב Ez 36:9, הגדיל Jóel 2:20 és máshol, לִבְרֹחַ קִדַּמְתִּי Jón 4:2, הגביהּ Zsolt 113:5, השׁפיל 113:6 igékkel; 1Móz 31:27 לִבְרֹחַ נַחְבֵּאתָ elrejtőztél a menekülés tekintetében = titokban menekültél el, 2Sám 19:4 לָבוֺא וַיִּתְגַּנֵּב = lopva jönni. (c.) a (b) kiterjesztéseként az לְ elöljárós infinitivus úgy egészíti ki az igét, hogy ha az ige tárgyas, gyakorlatilag annak tárgyává válik: így igen gyakran olyan igékkel, mint הוסיף még tenni, hozzáadni 1Móz 4:2, 12, הֵחֵל kezdeni 6:1, חדל 11:8, יכל 13:6, מִהַר 18:7, נתן megengedni 20:6, אבה 24:5, בקשׁ 2Móz 2:15, מֵאֵן 7:14, למד 5Móz 14:23, חפץ 25:8, ידע 1Kir 5:20 (ezek mind előfordulnak לְ nélkül is); הואיל vállalkozni, beleegyezni, 1Móz 18:17, 31, כִּלָּה befejezni, תָּמַם 5Móz 2:16 (valami tekintetében véget érni), קִוָּה Ézs 5:2; továbbá צִוָּה 1Móz 50:2, אָמַר 2Móz 2:14, דִּמָּה 4Móz 33:56, חשׁב 1Sám 18:25, יעץ Zsolt 62:5, לִמֵּד Jer 12:16, אָהֵב Hós 12:8: 5Móz 10:12 mit kér tőled ׳י ליראה אם כי, mint hogy féld stb.? (vö. Mik 6:8 דרשׁ után ל nélkül). (d) a mondat alanyaként (ritka): Ézs 10:7 בלבבו להשׁמיד, 1Krón 29:12; טוב mellett 1Sám 15:22; Zsolt 118:8; 118:9; Préd 7:2, 5; Péld 21:9 (rendszerint לְ nélkül, mint 21:19; 25:24; 2Móz 14:12); vö. 8:22 כן לעשׂות נכון לא; 2Sám 18:11 לָתֵת וְעָלַי, Neh 13:13; Ezsd 10:12; Mik 3:1 לדעת לכם הלא, Ezsd 4:3; 2Krón 13:5; 20:17; 26:18. (e) אֵין יֵשׁ, (késői) és (ritkábban) לֹא mellett, ebben az értelemben: (nem) lehet ..., vagy (néha) nincs szükség arra, hogy ...: l. יֵשׁ 2c c (442. o.); אַיִן 5 (34. o. b), hozzáadva Hag 1:6; Eszt 8:8; 2Krón 22:9; לֹא 1a b (518. o.): és vö. Dr^§ 202 Ges^§ 114l Dav^§ 94 b, 95 b. (f) הָיָה mellett, a rendeltetés gondolatának kifejezésére, mint 4Móz 24:22 לְבָעֵר יהיה וקין pusztulásra lesz, 5Móz 31:17; Ézs 5:5; 6:13; 37:26; Ez 30:16; Zsolt 109:13 és máshol. vö. לַעֲשׂוֺת מֶה mit kell (kellett) tenni? Ézs 5:4; 2Kir 4:13; 2Krón 25:9 és máshol (Dr^§ 203). (g) (a szövegösszefüggés szerint) hajlamot, szándékot vagy kötelezettséget kifejezve (a 'körülírt' jövő idő): — Hós 9:13 בָּנָיו הוֺרֵג אֶל לְהוֺצִיא וְאֶפְרַיִם szülésre van (= szülnie kell), Ézs 10:32 לעמד בנֹב היום עוד késlekedésre van-e (késlekednie kell-e), 38:20 ׳י ׳י, להושׁיעני (kész) megmenteni engem, 44:14 (si vera lectio), Jer 51:49; Hab 1:17; Zsolt 32:9; 49:15 שְׁאוֺל לְבַלּוֺת צוּרָם = a Seolnak el kell sorvasztania, 62:10 לַעֲלוֺת בְּמאֹזְנַיִם, Péld 18:24; 19:8 טוב למצא תבונה שׁומר szerencsét fog találni, 20:25; Jób 30:6; 1Krón 22:5 (לִבְנוֺת), Préd 3:15: múlt időről, 1Móz 15:12 לבוא השׁמשׁ ויהי lenyugvóban volt, Józs 2:5; 1Sám 14:21b (a szöveg kétséges: Dr^§ 206 Obs.), 2Krón 26:5 (furcsán) אלהים לדרשׁ ויהי RV set himself to seek; rendszerint היה nélkül, 2Sám 4:10 לוֺ לְתִתִּי אֲשֶׁר akinek nekem kellett volna adnom (akinek adnom kellett volna), 2Kir 13:19 לְהַכּוֺת percutiendum erat, 1Krón 9:25, és szabadabban 2Krón 11:22 להמליבו כי mert (az volt a szándéka,) hogy királlyá tegye, 12:12 להשׁחית ולא és már nem akarta elpusztítani, 36:19 (?): kérdésben, 1Móz 30:15 וְלָקַחַת és el akarod venni? Eszt 7:8; 2Krón 19:2 לַעְזֹּר הֲלָרָשָׁע segíted-e a gonoszt? vö. Dr^§ 204, Ges^158; 114 h-k, Dav^§ 94. (h) וְ mellett, (többnyire) egy véges igealak vagy participium folytatásaként, 2Móz 32:29 וְלָתֵת ֗֗֗ יֶדְכֶם מַלְאוּ és arra legyen, hogy helyezzen stb. 3Móz 10:10k. (?), 1Sám 8:12 וְלָשׂוּם ֗֗֗ יִקַּח, Jer 19:12 וְלָתֵת ֗֗֗ אעשׂה, 44:14; Hós 12:3; Zsolt 25:14; 109:16; Jób 34:8; Préd 7:25; 9:1 (si vera lectio), Dán 12:11; Neh 8:13; 1Krón 10:13; 2Krón 2:8; 7:17; 8:13; 30:9; Ez 13:22; Ámós 8:4 וג וְלַשְׁבִּית אֶבְיוֺן ׳הַשֹּׁאֲפִים és (akik) a szegényt el akarják pusztítani, Ézs 44:28 וְלֵאמֹר ֗֗֗ הָאוֺמֵר, 56:6; Zsolt 104:21; Jer 17:10; 44:19; 1Krón 6:34 (vö. Dr^§ 206 Dav:§ 96 R. 4). — A לְמִן alakhoz l. מִן. Megjegyzés. — Az 1Kir 6:19 שָׁם לְתִתֵּן helyen az a feltevés, hogy a לְ kötőszó (= למען), túlságosan idegen a héber szóhasználattól ahhoz, hogy az arab igazolhatná, és az a nézet, hogy a תִתֵּן itt és a 17:14-ben a תֵת rendhagyó alakja (Ew^§ 238 c Kö^i. 305), ellenkezik az analógiával: olv. Ol^§ 224 d, Ges^§ 67 A. 3, Klo szerint לָתֵת (mint 17:14 Qr).
+
+## DT-F38 döntés (F38.12) és könyvalak-leképezés (F38.13)
+
+**Döntés (felhasználó, 2026.10.01):** (a) folytatás a 2. adaggal a (c) után; (b) a 13. kapu
+jelzései nem állítják meg a futást, a brief M0.1 javítva („a 13. kapu csak a jóváhagyott
+F34-maradékon és az N-F34c körén jelezhet”); (c) a könyvalak-leképezés bővítése most; (d) a
+TAHOT-sorrend marad; (e) a H0413 kivétele rendben. A ψ-n túli könyvfeloldási hibák (H0413
+„only in Job (…)” → „1 Samuel …”; „Deut 37:36” = 1Móz 37:36) nem javítandók, a fordítás hűen
+viszi tovább; későbbi gépi csere: `beerkezo/BDB_KONYVFELOLDASI_AUDIT.md`.
+
+### Mérés: a forrás igehely előtti, nem leképezett könyvalakjai
+
+Parancs: `python naplok/BDB_FORDITAS_konyvalakok.py` (csak olvas). Minta: nagybetűs szó
+(opcionális `1`–`3` vagy `I`–`III` előtaggal), opcionális pont, `fejezet:vers`; kimarad,
+ami a 11. kapu leképezésében (`forditas_kapuk._konyv_mintak`) már kulcs.
+
+- **A bővítés előtt:** 275 alak, 952 előfordulás. A legtöbb nem könyvnév: személy- és
+  helynév a szócikk saját igehelye előtt (`God` 28, `Israel` 22, `Jerusalem` 15, `Judah` 11 …),
+  nyelvtani címke (`Qal`, `Infinitive`, `Genitive`), szigla és nem bibliai mű (`Qor` 36, `Gi`
+  15, `COT` 13, `Qr` 11, `Kt` 9, `Aboth`, `Yoma`, `Iliad`, `Odyssey` …).
+- **Bibliai könyvalak, felvéve** a `konkordancia/Konyv_normalizalo_tabla.tsv` új, 4.
+  oszlopába (`Forrás-alakok`): **21 alak, 357 előfordulás** (+1: a `3 Cant` a `Cant`-kulccsal
+  együtt eltűnik a listáról):
+
+  | Alak | Előfordulás | Szócikk | → Károli |
+  |---|---|---|---|
+  | `Ezekiel` | 96 | 70 | Ez |
+  | `Cant` | 93 | 72 | Én |
+  | `Malachi` | 52 | 41 | Mal |
+  | `Daniel` | 42 | 30 | Dán |
+  | `Proverbs` | 15 | 14 | Péld |
+  | `2 Chron` | 13 | 12 | 2Krón |
+  | `1Chron` | 12 | 9 | 1Krón |
+  | `Ex` | 7 | 7 | 2Móz |
+  | `Nah` | 5 | 3 | Náh |
+  | `Esther` | 4 | 4 | Eszt |
+  | `Songs` | 4 | 4 | Én |
+  | `Haggai` | 3 | 3 | Hag |
+  | `Paslm` | 2 | 2 | Zsolt (OCR) |
+  | `James` | 2 | 2 | Jak |
+  | `1 Ki` | 1 | 1 | 1Kir |
+  | `1 Sam` | 1 | 1 | 1Sám |
+  | `2Che` | 1 | 1 | 2Krón (OCR) |
+  | `Plalm` | 1 | 1 | Zsolt (OCR) |
+  | `I Chron` | 1 | 1 | 1Krón |
+  | `Habakkuk` | 1 | 1 | Hab |
+  | `Titus` | 1 | 1 | Tit |
+
+- **Bibliai vagy könyvszerű alak, NEM felvéve** (nem egyértelmű, vagy nem kanonikus):
+
+  | Alak | Előfordulás | Ok |
+  |---|---|---|
+  | `Kings` | 2 | szám nélkül nem egyértelmű (1Kir/2Kir): H1961 „1 K i1 Kings 12:24” = 1Kir (összeolvadt), H0834 „compare Kings 6:35; 6:37” nem dönthető el. **Eltérés a DT-F38 (c)-től**, l. lent |
+  | `Ki`, `Sam`, `Chron`, `Chronicles`, `Samuel` | 1, 4, 1, 1, 2 | szám nélküli vagy összeolvadt alak (`compare1 Sam`, `feminine1 Chronicles`, `2; Chron`), ill. személynév (`of Samuel 12:2`) |
+  | `Ze`, `Jes`, `Esc`, `De`, `En` | 2, 1, 1, 1, 1 | a feloldás csak értelmezéssel adható meg (Zak? Ézs? Préd? Zsolt? Dán?) — a lexikai feloldás az audit dolga |
+  | `Che`, `Psalmist` | 1, 1 | szerzőnév (Cheyne), ill. „a zsoltáros” |
+  | `3 Esdr`, `Psalms of Solomon`, `1Makk`, `2Mace`, `Ecculs` | 2, 1, 1, 1, 1 | apokrif/pszeudepigráf; a tábla a 66 kanonikus könyvé (az apokrif alakok az `APOKRIF_ALIAS`-ban vannak) |
+
+- **A bővítés után:** 253 alak, 594 előfordulás maradt a listán (csak a fenti nem felvett
+  alakok és a nem-könyvnév találatok).
+
+**Megvalósítás.** A tábla nem kapott új sort (a `f19_ebible_import.py`, a `fj2/`, `f17/` és a
+`general.py` a 66 soros kanonikus sorrendre épül), hanem új, utolsó oszlopot (`Forrás-alakok`,
+vesszővel elválasztva). Az `eszkozok/normalizal.py` a tábla betöltésekor ezeket a
+`FORRAS_ALIAS`-hoz adja (a kódbeli alias elsőbbségével), így a javítóréteg (`IGE_LEK`) és a
+11. kapu (`forditas_kapuk._konyv_mintak`) ugyanazt látja. A prompt v4 Károli-listája
+(`emeles.karoli_szoveg`) csak az első két oszlopot használja: **a prompt nem változott.**
+Tesztek: `eszkozok/teszt_normalizal.py` (+4: leképezés mind a 21 alakra, csak igehely előtt,
+a többértelmű alakok hiánya, a tábla szerkezete) és `eszkozok/teszt_forditas_kapuk.py` (+3: a
+11. kapu a forrásalakot Károli-alakkal elfogadja, angolul hagyva sértés, `Kings` nem
+leképezett). 26/26 és 23/23 OK.
+
+**A javítóréteg újra** (`python naplok/BDB_FORDITAS_ujranormalizal.py --ir`): mind a 49 szótári
+`teljes` soron (35 BDB, 14 Thayer) lefutott; változás csak 3 F38-as sorban, mindhárom a kapukon átment (a régi
+szöveg az új leképezéssel a 11. kapun bukna):
+
+| Sor | Strong | Csere | 13. kapu (JELZES, nem gátoló) |
+|---|---|---|---|
+| 97. | H3605 | `1Chron` ×2, `2 Chron` → 1Krón, 2Krón (3) | 1Krón 119, 1Krón 145 (zsoltárhelyek, forráshiba) |
+| 99. | H9003 | `Ex 7:29` → 2Móz, `Cant` → Én (2) | — |
+| 100. | H0834 | `Malachi` → Mal (1); a `Kings 6:35; 6:37` marad | Ruth 8, Ruth 9 (F34-maradék) |
+
+A DT-F38 „5 szócikk, 9 hely” száma a mérés szerint 3 szócikk, 7 hely (6 csere + a `Kings`);
+a különbség a korábbi számolásé (a könyvnév nélküli folytatólagos igehelyek is beleszámítottak).
+A `megjegyzes` mező végére: „F38.13: javítóréteg újra a könyvalak-leképezés bővítése után
+(DT-F38 c)”. A teljes kapusor mind a 9 F38-as soron (`python naplok/BDB_FORDITAS_kapuk.py`):
+9/9 átment, 5 JELZES (13. kapu). `eszkozok/ellenoriz.py`: SÉRTÉS 0; `futtat.py`: 0 találat.
+
+**A 13. kapu a forráson** (`python naplok/BDB_FORDITAS_M0.py --nem-ir`): a bővítés előtt 91
+szócikk (83 F34-maradék), utána **109 szócikk (86 F34-maradék, 23 nem)**. A 18 új jelzés
+mind a most láthatóvá vált könyvalakok forrásbeli feloldási hibája (pl. `1Chron 119:21` =
+Zsolt, `Ex 43:21`/`46:6`/`51:25`/`45:4`, `Nah 7:5`/`19:12`/`23:8`/`47:3`/`5:14`, `Cant 19`/`26`/`34`,
+`2 Chron 105`), tehát az N-F34c körébe (nem ψ eredetű könyvfeloldási hiba) és az audit-csonkba
+tartozik; a futást a DT-F38 (b) szerint nem állítja meg. Új jelző szócikk (18): H0457, H1870,
+H3289, H3605, H3701, H3782, H3881, H4043, H4603, H4686, H4908, H5000, H5186, H5608, H6240,
+H6437, H7131, H8398; a már jelző H1931 két új hellyel (1Krón 93, 94).
+
+**Eltérés a döntéstől:** a `Kings` nincs a leképezésben (szám nélkül 1Kir és 2Kir is lehet;
+a forrás 2 helyéből csak az egyik dönthető el). A két hely forrásalakon marad (a 3. kapu
+„forrásbeli szigla igehely előtt” ágán), mint eddig. Ha a felhasználó egy könyvhöz rendeli,
+egy szó a táblában.

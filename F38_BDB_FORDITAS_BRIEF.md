@@ -8,9 +8,9 @@ modell: opus
 allapot: fut
 ag: claude/admiring-bohr-texair
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=opus), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
-kovetkezo: DT-F38 eldöntve (2026.10.01); folytatási pont: (c) könyvalak-leképezés bővítése (Konyv_normalizalo_tabla.tsv + 11. kapu, teszttel, javítóréteg újra az M1 érintett szócikkein), majd a beerkezo/BDB_KONYVFELOLDASI_AUDIT.md csonk, utána a 2. adag a naplok/BDB_FORDITAS_sorrend.tsv 10. sorától (H3808)
+kovetkezo: DT-F38 alkalmazva, (c) kész (F38.13); folytatási pont: a beerkezo/BDB_KONYVFELOLDASI_AUDIT.md csonk, utána a 2. adag a naplok/BDB_FORDITAS_sorrend.tsv 10. sorától (H3808)
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md]
-ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md]
+ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/teszt_forditas_kapuk.py, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md]
 fugg: [34]
 ---
 

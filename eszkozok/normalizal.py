@@ -117,7 +117,9 @@ def szabaly_szerzonevek(szoveg):
 # ---------------------------------------------------------------------------
 
 # A Thayer es a BDB sajat (nem STEPBible) konyvrovidítesei -> STEPBible-alak;
-# a STEPBible -> Karoli lepest a Konyv_normalizalo_tabla.tsv adja.
+# a STEPBible -> Karoli lepest a Konyv_normalizalo_tabla.tsv adja. A tabla
+# `Forrás-alakok` oszlopa (F38) tovabbi forras-alakokat ad hozza (lent,
+# a KAROLI betoltesekor).
 FORRAS_ALIAS = {
     # Thayer
     'Joh': 'Jhn', 'Mar': 'Mrk', 'Jam': 'Jas', 'Phi': 'Php', 'Eze': 'Ezk',
@@ -155,7 +157,12 @@ APOKRIF_ALIAS = {
 
 
 def _karoli_tabla():
+    """-> ({STEP: (Karoli-rovidites, teljes nev)}, {forras-alak: STEP}).
+    A masodik a tabla `Forrás-alakok` oszlopa (F38, DT-F38 (c)): a BDB
+    igehely elotti, a FORRAS_ALIAS-ban nem szereplo konyvalakjai,
+    vesszovel elvalasztva."""
     tabla = {}
+    alakok = {}
     with open(KAROLI_UT, encoding='utf-8') as fh:
         sorok = fh.read().split('\n')
     fejlec = sorok[0].split('\t')
@@ -164,10 +171,18 @@ def _karoli_tabla():
             continue
         r = dict(zip(fejlec, sor.split('\t')))
         tabla[r['STEPBible-rövidítés']] = (r['Magyar rövidítés'], r['Teljes magyar könyvnév'])
-    return tabla
+        for a in (r.get('Forrás-alakok') or '').split(','):
+            if a.strip():
+                alakok[a.strip()] = r['STEPBible-rövidítés']
+    return tabla, alakok
 
 
-KAROLI = _karoli_tabla()
+KAROLI, TABLA_ALAKOK = _karoli_tabla()
+# a tabla forras-alakjai a FORRAS_ALIAS-ba (a kodbeli alias elsobbseggel);
+# igy a javitoreteg (IGE_LEK) es a 11. kapu (forditas_kapuk._konyv_mintak)
+# ugyanazt a lekepezest latja
+for _a, _s in TABLA_ALAKOK.items():
+    FORRAS_ALIAS.setdefault(_a, _s)
 _KAROLI_ROV = {v[0] for v in KAROLI.values()}
 
 

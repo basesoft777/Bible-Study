@@ -41,6 +41,26 @@ class Fejezetszam(unittest.TestCase):
         self.assertEqual(K.ellenoriz_fejezetszam('Jóel 4:19; 1Ján 5:7; Júd 1:20; Zsolt 150:6')[0], 'RENDBEN')
 
 
+class KonyvTablaAlakok(unittest.TestCase):
+    """F38, DT-F38 (c): a 11. kapu a tabla `Forrás-alakok` oszlopat is ismeri."""
+
+    def test_forras_alak_karoli_megfelelovel_rendben(self):
+        forras = 'Ex 7:29; Cant 1:12; 2 Chron 21:43; Malachi 3:19; Ezekiel 16:4'
+        forditas = '2Móz 7:29; Én 1:12; 2Krón 21:43; Mal 3:19; Ez 16:4'
+        self.assertEqual(K.ellenoriz_konyvek(forras, forditas)[0], 'RENDBEN')
+
+    def test_forras_alak_angolul_hagyva_sertes(self):
+        # a leképezés óta az angolul hagyott forrásalak hiánynak számít
+        e, d = K.ellenoriz_konyvek('Ex 7:29; 1Chron 16:8', 'Ex 7:29; 1Chron 16:8')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('2Móz', d)
+        self.assertIn('1Krón', d)
+
+    def test_kings_szam_nelkul_nincs_lekepezve(self):
+        # a „Kings” nem egyértelmű (1Kir/2Kir): forrásbeli szigla marad
+        self.assertEqual(K.ellenoriz_konyvek('compare Kings 6:35', 'vö. Kings 6:35')[0], 'RENDBEN')
+
+
 class PsiJavitas(unittest.TestCase):
     """F34 M4: a javitott BDB-ψ helyekre a 13. kapu jelzese 0; a hibas feloldasra marad."""
 
