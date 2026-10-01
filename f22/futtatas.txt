@@ -1,5 +1,5 @@
-# F22 2Moz: a C-futas folytatasa (a keszeket kihagyja); plafon: konyvenkenti (DT-F22d)
-konyv=2Móz
+# F22 2Moz javito menet: a 38 megfeleltetett vers (versbeosztas-detektor) ujrafuttatasa a C-vel; plafon: a futas sajat 38 versere (min. 1,00 USD)
+konyv=2Móz_javito
 koteg_max=mind
 koteg_meret=10
 plafon_usd=auto

@@ -113,6 +113,16 @@ def eredeti_nelkuli_versek(konyv, karoli=None, ered=None):
     return ki
 
 
+def javito_minta_epit(konyv, karoli=None, ered=None):
+    """A javító menet mintája: a könyv azon Károli-versei, amelyeknek a megfeleltetett eredeti verse a
+    versbeosztás-detektor listája (`f22/versmegfeleltetes.tsv`, `eltolt`) szerint eltér a fájlbeli kulcstól.
+    Ugyanaz a sorformátum, mint a `minta_epit`-é; a versek Károli-sorrendben, sorszámmal."""
+    karoli = karoli if karoli is not None else tokenek.betolt_karoli()
+    ered = ered if ered is not None else tokenek.betolt_eredeti()
+    eltolt = {k for k, e, t in tokenek.versmegfeleltetes() if t == 'eltolt' and tokenek.igehely_bont(k)[0] == konyv}
+    return [dict(s, sorsz=i) for i, s in enumerate((x for x in minta_epit(konyv, karoli, ered) if x['igehely'] in eltolt), 1)]
+
+
 def minta_ir(ut, sorok):
     os.makedirs(os.path.dirname(ut), exist_ok=True)
     with open(ut, 'w', encoding='utf-8', newline='\n') as f:
@@ -245,7 +255,7 @@ def onteszt():
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('parancs', nargs='?', choices=['minta', 'allapot', 'kovetkezo', 'prompt', 'mentes'])
+    ap.add_argument('parancs', nargs='?', choices=['minta', 'javito-minta', 'allapot', 'kovetkezo', 'prompt', 'mentes'])
     ap.add_argument('--konyv', default=None, help='magyar rövidítés, pl. 1Móz (nincs alapérték)')
     ap.add_argument('--koteg-meret', type=int, default=10)
     ap.add_argument('--var', type=int, default=None, help='minta: a várt versszám (eltérésnél 3-as kilépési kód)')
@@ -261,6 +271,14 @@ def main(argv=None):
     if not a.parancs or not a.konyv:
         print('HIBA: parancs és --konyv kell (nincs alapérték)', file=sys.stderr)
         return 2
+    if a.parancs == 'javito-minta':
+        sorok = javito_minta_epit(a.konyv)
+        ut = minta_ut(a.konyv + '_javito')
+        minta_ir(ut, sorok)
+        print('%s javító minta: %d vers (%s – %s); írva: %s; kötegek: %d' % (
+            a.konyv, len(sorok), sorok[0]['igehely'] if sorok else '-', sorok[-1]['igehely'] if sorok else '-', ut,
+            len(kotegek_listaja(a.konyv + '_javito', a.koteg_meret))))
+        return 0
     if a.parancs == 'minta':
         sorok = minta_epit(a.konyv)
         kimaradt = eredeti_nelkuli_versek(a.konyv)

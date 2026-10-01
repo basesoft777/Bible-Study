@@ -66,6 +66,11 @@ def utak(konyv, gyoker=None):
         'c': os.path.join(g, 'f22', 'valaszok', 'c', '%s.jsonl' % n),
         'minta': os.path.join(g, 'f22', 'minta_%s.tsv' % n),
         'kezi_versek': os.path.join(g, 'f22', 'kezi_versek_%s.tsv' % n),
+        # javító menet (a versbeosztás-detektor megfeleltetésével újrafuttatott versek): külön minta és válaszfájlok;
+        # a javító menet verse felülírja a fő menet ugyanazon versének válaszát
+        'minta_javito': os.path.join(g, 'f22', 'minta_%s_javito.tsv' % n),
+        'sonnet_javito': os.path.join(g, 'f22', 'valaszok', 'sonnet', '%s_javito.jsonl' % n),
+        'c_javito': os.path.join(g, 'f22', 'valaszok', 'c', '%s_javito.jsonl' % n),
     }
 
 
@@ -180,6 +185,22 @@ def kezi_felulir(konyv, gyoker=None):
     return ki
 
 
+def minta_sorok(u):
+    """A fő minta és (ha van) a javító menet mintája, igehely szerint egyszer."""
+    sorok = sonnet_koteg.minta_olvas(u['minta'])
+    if os.path.exists(u['minta_javito']):
+        van = {s['igehely'] for s in sorok}
+        sorok += [s for s in sonnet_koteg.minta_olvas(u['minta_javito']) if s['igehely'] not in van]
+    return sorok
+
+
+def modell_versek(u, kulcs):
+    """A modell (`sonnet` | `c`) versenkénti válaszai: a fő menet, felülírva a javító menettel."""
+    ki = jsonl_versek(u[kulcs])
+    ki.update(jsonl_versek(u[kulcs + '_javito']))
+    return ki
+
+
 def sorrend_igehelyek(minta, kimaradt, karoli):
     """A minta versei és az eredeti nélküli (modellhez nem küldött) versek a Károli-tábla sorrendjében."""
     van = {sor['igehely'] for sor in minta} | set(kimaradt)
@@ -193,8 +214,8 @@ def epit(konyv, gyoker=None, karoli=None, ered=None):
         raise SystemExit('hiányzó bemenet: %s' % ', '.join(k for k in ('minta', 'sonnet', 'c') if not os.path.exists(u[k])))
     karoli = karoli if karoli is not None else tokenek.betolt_karoli()
     ered = ered if ered is not None else tokenek.betolt_eredeti()
-    minta = sonnet_koteg.minta_olvas(u['minta'])
-    sv, cv = jsonl_versek(u['sonnet']), jsonl_versek(u['c'])
+    minta = minta_sorok(u)
+    sv, cv = modell_versek(u, 'sonnet'), modell_versek(u, 'c')
     parok, szavak, atnezes = [], [], []
     kimaradt = set(sonnet_koteg.eredeti_nelkuli_versek(konyv, karoli, ered))
     felul = kezi_felulir(konyv, gyoker)
@@ -289,7 +310,7 @@ def ellenoriz(konyv, gyoker=None, karoli=None, ered=None):
     u = utak(konyv, gyoker)
     karoli = karoli if karoli is not None else tokenek.betolt_karoli()
     ered = ered if ered is not None else tokenek.betolt_eredeti()
-    minta = sonnet_koteg.minta_olvas(u['minta'])
+    minta = minta_sorok(u)
     parok, szavak = olvas(u['parok']), olvas(u['szavak'])
     hibak = []
     var = {}
