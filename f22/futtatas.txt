@@ -1,0 +1,5 @@
+# F22.2 -- a C (Gemini) futtatas: probaszakasz, az elso 14 koteg (1Moz 1-5 + a 6. fejezet elso versei)
+konyv=1Móz
+koteg_max=14
+koteg_meret=10
+plafon_usd=3.90
