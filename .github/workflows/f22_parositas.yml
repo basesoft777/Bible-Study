@@ -11,7 +11,7 @@
 # A prompt (f21p/prompt_v3.md) hash-et a futtato a futas elejen es vegen is ellenorzi.
 #
 # JOGOSULTSAG ES ISRAS. contents: write csak a 'futtatas' jobnal, kizarolag a kimenet visszacommitolasahoz:
-# git add csak az f22/valaszok/c es az f22/futasnaplo.tsv; commit elott ellenorzes, hogy minden valtozas
+# git add csak az f22/valaszok/c, az f22/futasnaplo.tsv es az f22/elvetett; commit elott ellenorzes, hogy minden valtozas
 # f22/ alatt van; a push csak a claude/f22-1moz agra mehet (explicit refspec). Az OPENROUTER_API_KEY csak a
 # futtato lepes env-jeben szerepel. A checkout `persist-credentials: false`: a kulcsot kapo
 # futtato lepes nem lat push-jogu tokent, az csak az utolso (commit/push) lepesben kerul a remote-ra. A FELADATOK.md generalt blokkjahoz a workflow nem nyul.
@@ -74,8 +74,8 @@ jobs:
         id: kulcs_grep
         if: always()
         run: |
-          if [ -e f22/valaszok ] || [ -e f22/futasnaplo.tsv ]; then
-            if grep -rIlE 'sk-or-[A-Za-z0-9_-]{16,}|sk-[A-Za-z0-9]{32,}|Bearer [A-Za-z0-9_-]{20,}' f22/valaszok f22/futasnaplo.tsv eszkozok/karoli_strong; then
+          if [ -e f22/valaszok ] || [ -e f22/futasnaplo.tsv ] || [ -e f22/elvetett ]; then
+            if grep -rIlE 'sk-or-[A-Za-z0-9_-]{16,}|sk-[A-Za-z0-9]{32,}|Bearer [A-Za-z0-9_-]{20,}' f22/valaszok f22/futasnaplo.tsv f22/elvetett eszkozok/karoli_strong 2>/dev/null; then
               echo "kulcs-szeru minta a kimenetben"; exit 1
             fi
           fi
@@ -94,7 +94,7 @@ jobs:
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          for ut in f22/valaszok/c f22/futasnaplo.tsv; do
+          for ut in f22/valaszok/c f22/futasnaplo.tsv f22/elvetett; do
             if [ -e "$ut" ]; then git add -- "$ut"; fi
           done
           if git diff --cached --name-only | grep -v '^f22/'; then

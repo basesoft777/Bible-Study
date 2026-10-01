@@ -107,6 +107,31 @@ def regisztral(konyv):
     return fid
 
 
+def naplo_ok_migral(kimenet_dir):
+    """A meglévő futásnapló kiegészítése az `ok` oszloppal (üres érték a régi soroknál: a 2. sor előtti hívások
+    nyers válasza nem maradt meg, az okuk a naplóból csak következtethető, és hiányt nem töltünk ki).
+    Igaz, ha módosított. Írás előtt összeveti: az `ok` oszlop elhagyása a régi sorokat bájtra visszaadja."""
+    ut = futtat.naplo_ut(kimenet_dir)
+    if not os.path.exists(ut) or os.path.getsize(ut) == 0:
+        return False
+    with open(ut, encoding='utf-8', newline='') as f:
+        szoveg = f.read()
+    sorok = szoveg.replace('\r\n', '\n').split('\n')
+    veg = sorok[-1] == ''
+    if veg:
+        sorok = sorok[:-1]
+    if sorok[0].split('\t')[-1] == 'ok':
+        return False
+    if sorok[0].split('\t') != futtat.NAPLO_FEJLEC:
+        raise ValueError('a futásnapló fejléce nem a várt (nem migrálható): %s' % sorok[0])
+    uj = [sorok[0] + '\tok'] + [s + '\t' for s in sorok[1:]]
+    if ['\t'.join(s.split('\t')[:-1]) for s in uj] != sorok:
+        raise ValueError('a migráció nem reprodukálja a régi sorokat')
+    with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\n'.join(uj) + ('\n' if veg else ''))
+    return True
+
+
 def hash_hibak():
     h = sonnet_koteg.prompt_hash_hiba()
     return [h] if h else []
@@ -115,6 +140,10 @@ def hash_hibak():
 def futtat_konyv(ctx, v, minta_ut=None):
     """A vezérlés szerinti futás; kilépési kód."""
     fid = regisztral(v['konyv'])
+    futtat.NAPLO_OK_OSZLOP = True        # F22: ok oszlop a naplóban (kapu / parse / api)
+    naplo_ok_migral(ctx.kimenet_dir)
+    if ctx.elvetett_dir is None:         # F22: az elvetett első próbák nyers válasza: f22/elvetett/<konyv>_<koteg>.txt
+        ctx.elvetett_dir = os.path.join(ctx.kimenet_dir, 'elvetett')
     minta = futtat.minta_betolt(minta_ut or sonnet_koteg.minta_ut(v['konyv']))
     futtat.KOTEG_MERET = v['koteg_meret']
     ctx.plafon = min(ctx.plafon, v['plafon_usd'], PLAFON_KEMENY)
@@ -169,10 +198,58 @@ def onteszt():
     v2 = dict(v, plafon_usd=0.0001)
     if futtat_konyv(ctx2, v2, mut) != futtat.KILEPES_PLAFON:
         hibak.append('a plafon nem állította meg a futást')
+    # ok oszlop és az elvetett első próbák (kapu / parse / api); a régi napló migrációja
+    hibak += onteszt_ok(tmp)
+    futtat.NAPLO_OK_OSZLOP = False
     for h in hibak:
         print('ÖNTESZT HIBA: ' + h, file=sys.stderr)
     print('önteszt: %s' % ('HIBA' if hibak else 'rendben'))
     return 1 if hibak else 0
+
+
+def onteszt_ok(tmp):
+    hibak = []
+    # 1. az ok-besorolás (a kaput nem módosítja)
+    jo = '[{"vers":"x"}]'
+    for szoveg, finish, valasz_hiba, kh, vart in (('', 'error', None, 10, 'api'), (jo, 'stop', {'code': 429}, 10, 'api'),
+                                                 ('nem json', 'stop', None, 10, 'parse'), (jo, 'stop', None, 3, 'kapu'),
+                                                 (jo, 'stop', None, 0, '')):
+        ert = futtat.ok_besorol(szoveg, finish, valasz_hiba, kh)
+        if ert != vart:
+            hibak.append('ok_besorol(%r, %r, %r, %r) = %r, várt %r' % (szoveg[:10], finish, valasz_hiba, kh, ert, vart))
+    # 2. régi napló migrációja: az új oszlop üres, a régi sorok bájtra visszaállíthatók
+    d = tempfile.mkdtemp()
+    ut = futtat.naplo_ut(d)
+    regi = '\t'.join(futtat.NAPLO_FEJLEC) + '\n' + '\t'.join(['x'] * len(futtat.NAPLO_FEJLEC)) + '\n'
+    with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write(regi)
+    if not naplo_ok_migral(d) or naplo_ok_migral(d):
+        hibak.append('a migráció nem egyszer, pontosan egyszer módosít')
+    with open(ut, encoding='utf-8', newline='') as f:
+        uj = f.read()
+    sorok = uj.split('\n')
+    if sorok[0].split('\t')[-1] != 'ok' or sorok[1].split('\t')[-1] != '' or '\n'.join(
+            '\t'.join(s.split('\t')[:-1]) for s in sorok[:-1]) + '\n' != regi:
+        hibak.append('a migrált napló nem adja vissza a régi sorokat')
+    # 3. mock futás kapuhibával és nem-JSON válasszal: ok oszlop, elvetett fájlok
+    d = tempfile.mkdtemp()
+    ut = futtat.naplo_ut(d)
+    sonnet_koteg.minta_ir(sonnet_koteg.minta_ut('1Móz', d), sonnet_koteg.minta_epit('1Móz')[:30])
+    mut = sonnet_koteg.minta_ut('1Móz', d)
+    elso_vers = [s['igehely'] for s in futtat.minta_betolt(mut)][:30]
+    mock = futtat.MockKuldo(hibas_elso={elso_vers[0]}, nem_json_hivas={(futtat.MODELLEK['C'], 3)})
+    ctx = futtat.Kontextus(mock, 'teszt-kulcs', d, plafon=PLAFON_KEMENY, alvas=lambda s: None)
+    v = {'konyv': '1Móz', 'koteg_max': None, 'koteg_meret': 10, 'plafon_usd': PLAFON_KEMENY}
+    kod = futtat_konyv(ctx, v, mut)
+    with open(ut, encoding='utf-8') as f:
+        n = [dict(zip(futtat.naplo_fejlec(), x.rstrip('\n').split('\t'))) for x in list(f)[1:] if x.strip()]
+    okok = sorted(r['ok'] for r in n if r['ok'])
+    if kod != 0 or 'kapu' not in okok or 'parse' not in okok or any(o not in ('kapu', 'parse', 'api') for o in okok):
+        hibak.append('az ok oszlop értékei a mock futásban: %s (kilépési kód %s)' % (okok, kod))
+    fajlok = sorted(os.listdir(ctx.elvetett_dir)) if os.path.isdir(ctx.elvetett_dir) else []
+    if len(fajlok) != len(okok) or not all(x.startswith('1Moz_') and x.endswith('.txt') for x in fajlok):
+        hibak.append('az elvetett első próbák fájljai: %s (várt %d, elnevezés 1Moz_<koteg>.txt)' % (fajlok, len(okok)))
+    return hibak
 
 
 def main(argv=None):

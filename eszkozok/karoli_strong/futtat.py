@@ -276,6 +276,14 @@ NAPLO_FEJLEC = ['ts', 'futas', 'koteg', 'probalkozas', 'modell', 'gondolkodas_mo
                 'koltseg_usd', 'koltseg_forras', 'kapuhiba_db', 'http_kiserlet',
                 'idotartam_mp', 'finish_reason', 'prompt_sha256_12', 'futo_osszeg_usd']
 
+# F22 (DT-F22b utáni kérés): opt-in `ok` oszlop a naplóban (kapu / parse / api; üres, ha a hívás átment a kapun)
+# és az elvetett első próbák nyers válasza. Alapértelmezetten KI: az F21 naplói és kimenetei bájtra változatlanok.
+NAPLO_OK_OSZLOP = False
+
+
+def naplo_fejlec():
+    return list(NAPLO_FEJLEC) + (['ok'] if NAPLO_OK_OSZLOP else [])
+
 KAR_PER_TOKEN = 3.0           # durva becslés (héber/görög/magyar vegyes szöveg)
 KIMENET_TOKEN_VERSENKENT = 150   # F22 költségbecslés
 C_GONDOLKODAS_HIVASONKENT = 500  # becslés: a minimal szint tokenje hívásonként
@@ -630,10 +638,16 @@ def koteg_ment(futas_id, kimenet_dir, sor):
 def naplo_ir(kimenet_dir, sor):
     ut = naplo_ut(kimenet_dir)
     uj = not os.path.exists(ut) or os.path.getsize(ut) == 0
+    fejlec = naplo_fejlec()
+    if not uj:
+        with open(ut, encoding='utf-8') as f:
+            meglevo = f.readline().rstrip('\n').rstrip('\r').split('\t')
+        if meglevo != fejlec:
+            raise ValueError('a futásnapló fejléce nem egyezik a várttal (%s, vár: %s)' % (meglevo, fejlec))
     with open(ut, 'a', encoding='utf-8', newline='\n') as f:
         if uj:
-            f.write('\t'.join(NAPLO_FEJLEC) + '\n')
-        f.write('\t'.join(str(sor[k]) for k in NAPLO_FEJLEC) + '\n')
+            f.write('\t'.join(fejlec) + '\n')
+        f.write('\t'.join(str(sor.get(k, '')) if k == 'ok' else str(sor[k]) for k in fejlec) + '\n')
         f.flush()
 
 
@@ -678,6 +692,7 @@ class Kontextus:
         self.alvas = alvas
         self.c_reasoning_index = 0   # a C_REASONING_LANC aktuális tagja
         self.s_reasoning_index = 0   # az S_REASONING_LANC aktuális tagja
+        self.elvetett_dir = None     # F22: ha meg van adva, az elvetett első próbák nyers válasza ide kerül
 
     def tiszta(self, szoveg):
         """A kulcs kiszűrése minden kiírt szövegből."""
@@ -757,6 +772,38 @@ def gondolkodas_token(usage):
     return 0
 
 
+def ok_besorol(szoveg, finish, valasz_hiba, kapuhiba_db):
+    """A sikertelen hívás oka a naplóhoz: 'api' (a válasz hibatest vagy finish_reason=error), 'parse' (a válasz
+    nem érvényes JSON / nem tömb, a kapu _json_tomb szerint), 'kapu' (versszintű kapuhiba); '' = átment.
+    A kaput nem módosítja, csak a saját JSON-feldolgozását hívja meg."""
+    if valasz_hiba or finish == 'error':
+        return 'api'
+    if not kapuhiba_db:
+        return ''
+    return 'parse' if kapu._json_tomb(szoveg)[1] else 'kapu'
+
+
+def elvetett_ment(ctx, futas_id, koteg_no, rekord, szoveg, kapuhiba_db):
+    """F22: az elvetett első próba nyers válasza (és az API-hibakód) a <elvetett_dir>/<konyv>_<koteg>.txt-be.
+    Kulcsmentes (ctx.tiszta). Csak ha a ctx.elvetett_dir meg van adva."""
+    if not getattr(ctx, 'elvetett_dir', None):
+        return None
+    hiba = rekord.get('hiba') or ''
+    ut = os.path.join(ctx.elvetett_dir, '%s_%s.txt' % (futas_id.split('/')[-1], koteg_no))
+    os.makedirs(ctx.elvetett_dir, exist_ok=True)
+    kod = http_hibakod(hiba) if hiba else None
+    fej = ['# futas=%s koteg=%s probalkozas=%s ok=%s kapuhiba_db=%s finish_reason=%s'
+           % (futas_id, koteg_no, rekord['probalkozas'], rekord.get('ok', ''), kapuhiba_db, rekord['finish_reason']),
+           '# api_hibakod=%s' % (kod if kod is not None else ('nincs' if not hiba else 'ismeretlen')),
+           '# api_hibatest=%s' % (ctx.tiszta(hiba) if hiba else 'nincs'),
+           '# nyers válasz (a --- sor alatt, változtatás nélkül):', '---']
+    with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\n'.join(fej) + '\n' + ctx.tiszta(szoveg))
+        if not szoveg.endswith('\n'):
+            f.write('\n')
+    return ut
+
+
 def hivas(ctx, futas_id, koteg_no, probalkozas, uzenetek, igehelyek, kapuhiba_db_fn):
     """Egy modellhívás plafon-ellenőrzéssel és naplózással.
 
@@ -790,6 +837,8 @@ def hivas(ctx, futas_id, koteg_no, probalkozas, uzenetek, igehelyek, kapuhiba_db
     valasz_elem = (valasz.get('choices') or [{}])[0]
     szoveg = ((valasz_elem.get('message') or {}).get('content')) or ''
     finish = valasz_elem.get('finish_reason') or ''
+    kapuhiba = kapuhiba_db_fn(szoveg)
+    ok = ok_besorol(szoveg, finish, valasz.get('error'), kapuhiba) if NAPLO_OK_OSZLOP else ''
 
     naplo_ir(ctx.kimenet_dir, {
         'ts': datetime.now(timezone.utc).isoformat(timespec='seconds'),
@@ -798,13 +847,16 @@ def hivas(ctx, futas_id, koteg_no, probalkozas, uzenetek, igehelyek, kapuhiba_db
         'igehely_db': len(igehelyek), 'kjv': 'igen' if spec['kjv'] else 'nem',
         'bemenet_token': be, 'kimenet_token': ki, 'gondolkodas_token': gond,
         'koltseg_usd': '%.6f' % koltseg, 'koltseg_forras': forras,
-        'kapuhiba_db': kapuhiba_db_fn(szoveg), 'http_kiserlet': kiserlet,
+        'kapuhiba_db': kapuhiba, 'http_kiserlet': kiserlet,
         'idotartam_mp': '%.2f' % mp, 'finish_reason': finish,
         'prompt_sha256_12': utasitas_sha12(futas_id),
         'futo_osszeg_usd': '%.6f' % (eddig + koltseg),
+        'ok': ok,
     })
     rekord = {'probalkozas': probalkozas, 'usage': usage, 'finish_reason': finish,
               'reasoning_szoveg_karakter': len(((valasz_elem.get('message') or {}).get('reasoning')) or '')}
+    if NAPLO_OK_OSZLOP:
+        rekord['ok'] = ok
     if modell_kulcs == 'S':
         rekord['gondolkodas_mod'] = mod   # F21.70: a tényleges (elfogadott) gondolkodási beállítás a jsonl-ben is
     if valasz.get('error'):
@@ -856,6 +908,7 @@ def koteg_feldolgoz(ctx, futas_id, koteg_no, igehelyek, reteg_map=None):
                       'hibak': r['hibak'], 'obj': r['obj'] if r['ok'] else None}
     rossz = [ig for ig in igehelyek if not kapu1[ig]['ok']]
     if rossz:
+        elvetett_ment(ctx, futas_id, koteg_no, rek1, szoveg1, len(rossz))
         ujra = [{'role': 'user', 'content': uzenet},
                 {'role': 'assistant', 'content': szoveg1},
                 {'role': 'user', 'content': kapu.ujrakeres_uzenet({ig: kapu1[ig] for ig in rossz})}]
