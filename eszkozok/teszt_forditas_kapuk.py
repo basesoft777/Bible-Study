@@ -41,6 +41,29 @@ class Fejezetszam(unittest.TestCase):
         self.assertEqual(K.ellenoriz_fejezetszam('Jóel 4:19; 1Ján 5:7; Júd 1:20; Zsolt 150:6')[0], 'RENDBEN')
 
 
+class LelekTovaltozat(unittest.TestCase):
+    """ELLENOR_F28 3. tétel: a „lélek” tőváltozata (lelk-) csak a főnév
+    toldalékolt alakjára illeszkedjen."""
+
+    TERM = [{'angol': 'soul', 'magyar': 'lélek'}]
+
+    def _e(self, forditas):
+        return K.ellenoriz_terminologia('the soul of man', forditas, self.TERM, [])[0]
+
+    def test_toldalekolt_alakok(self):
+        for szo in ('lelke', 'lelkét', 'lelkem', 'lelkedből', 'lelkünk', 'lelkük',
+                    'lelkek', 'lelketekben', 'keserű lelkű', 'Lelkét'):
+            self.assertEqual(self._e('az ember %s' % szo), 'RENDBEN', szo)
+
+    def test_nem_a_lelek_alakjai(self):
+        for szo in ('lelkiismeret', 'lelkiismerete', 'lelkész', 'lelkésze',
+                    'lelkes', 'lelkesedés', 'lelkület', 'lelki'):
+            self.assertEqual(self._e('az ember %s' % szo), 'SERTES', szo)
+
+    def test_alapalak(self):
+        self.assertEqual(self._e('az ember lélek'), 'RENDBEN')
+
+
 class Konyvek(unittest.TestCase):
     def test_jsir_es_sir(self):
         self.assertEqual(K.ellenoriz_konyvek('Lam 3:57; Sir. 1:3', 'JSir 3:57; Sir 1:3')[0], 'RENDBEN')

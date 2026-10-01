@@ -261,8 +261,12 @@ def _angol_minta(angol):
     return re.compile(r'(?<![A-Za-z])' + re.escape(angol) + vege)
 
 
-# a magyar toldalekolas tovaltozasai (lélek -> lelkét, lelked; H2416)
-HU_TOVALTOZAT = {'lélek': ('lelk',)}
+# a magyar toldalekolas tovaltozasai (lélek -> lelkét, lelked; H2416), regex-
+# mintakent: a „lelk” to UTAN a fonev toldalekanak magánhangzoja all
+# (lelke, lelkét, lelkünk, lelkük, lelkű ...). ELLENOR_F28 3. tetel: a puszta
+# „lelk” elotag a „lelkiismeret”, „lelkész”, „lelkes”, „lelkület” szora is
+# illeszkedett; ezek nem a „lélek” fonev alakjai.
+HU_TOVALTOZAT = {'lélek': (r'lelk(?!es|ész|esz|ület)[eéüű]\w*',)}
 
 
 def ellenoriz_terminologia(forras, forditas, terminologia, bizonytalan_lista):
@@ -273,7 +277,7 @@ def ellenoriz_terminologia(forras, forditas, terminologia, bizonytalan_lista):
             continue
         if _p4._magyar_alak_mintaja(t['magyar']).search(forditas):
             continue
-        if any(re.search(r'\b' + re.escape(tov), forditas, re.IGNORECASE)
+        if any(re.search(r'\b' + tov, forditas, re.IGNORECASE)
                for tov in HU_TOVALTOZAT.get(t['magyar'], ())):
             continue
         if any(angol.rstrip('.') == b.rstrip('.') for b in bizonytalan_lista):

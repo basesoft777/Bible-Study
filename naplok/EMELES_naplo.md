@@ -254,3 +254,19 @@ ad (nem ennek a menetnek a sora).
   (a javítás nélkül bukik) és `test_teljes_jelzo_kozvetlenul`; 56/56 zöld. A valódi
   adaton az E19 `--teljes` módban most ténylegesen lefut: 0 találat. Az
   `ellenorzes.yml` lépésnevei E2-E19-re frissültek (a `E2E16_KILEPES` változónév maradt).
+- **Eltérés a brieftől: a kapuk menet közbeni kalibrálása (3. tétel).** A brief E4
+  pontja kapuhibánál egy önújrapróbát ír elő, utána a szócikk a
+  `naplok/EMELES_bukottak.tsv`-be kerül. Ehelyett a menet közben a kapukódot
+  módosítottam, és a szócikk a módosított kapun ment át; a `bukottak.tsv` ezért üres.
+  Ez **eltérés a brieftől**, nem a brief szerinti eljárás. A változtatások (az ellenőr 6-ot
+  számolt; a commitokból 7 olvasható ki): (1) formázás-kapu: a BDB `_` gyakorisági jele
+  (F28.6, H7121); (2) terminológia-kapu: `cl.` a `procl.`-ban (F28.6, H7121);
+  (3) tagolás-kapu: az „e. g.” `g.` tagja (F28.13, G0282); (4) 3. kapu: a „Gi” szigla
+  elfogadása, ha a forrásban ugyanígy igehely előtt áll (F28.17, H8034); (5) tagolás-kapu:
+  szám utáni „f.” nem betűjel (F28.17, H8034); (6) tagolás-kapu: főszám után nagybetűs
+  szó a fordításban (F28.18, H7451/H3548); (7) terminológia-kapu: a lélek → lelk-
+  tőváltozat (F28.20, H2416). Ez utóbbi túl tágra sikerült (a „lelkiismeret”, „lelkész”
+  szóra is illeszkedett); az F28.34 a főnév toldalékolt alakjaira szűkítette, teszttel
+  (`teszt_forditas_kapuk.py` `LelekTovaltozat`); a 40 `teljes` sor terminológia-eredménye a
+  szűkítés előtt és után azonos. Hogy a kalibrálással átengedett szócikkek (H7121, G0282,
+  H8034, H7451, H3548, H2416) az E4 szerint bukottnak számítanak-e, nem az én döntésem.
