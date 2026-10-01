@@ -5,9 +5,9 @@ kod: EMELES
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: fut
+allapot: dontesre_var
 ad: a lexikonba kerülő minden Strong-szám teljes Thayer- vagy BDB-szócikke magyarul (allapot opus, szúrópróbával kezi) az adat/forditasok.tsv-ben; közös javítóréteg és fordítási kapuk; CI-őr; az emelés mint munkafolyamat-lépés
-kovetkezo: E4 a maradék 34 szócikkre (DT24 alkalmazva), majd ⛔ E5 szúrópróba
+kovetkezo: Te: ⛔ E5 — a szúrópróba 5 szócikkének jóváhagyása (G4151, G0282, H7585, H8004, H8415; >20% kifogás = prompttétel), a terminológia beírásának módja, a H1121 hiányzó szóköze, a régi Sir-hivatkozások (DONTESEK.md DT25); napló: naplok/EMELES_szuroproba.md. Utána: E6 CI-őr, E7 MUNKAMENET, záró tétel, fuggetlen-ellenor
 olvas: [adat/elofordulasok.tsv, adat/lexikon_hivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/BDB_teljes_unabridged.tsv, fp2/, eszkozok/fordit.py]
 ir: [adat/forditasok.tsv, adat/terminologia.tsv, forditas/prompt_v4.md, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, MUNKAMENET.md, .github/workflows/]
 fugg: []

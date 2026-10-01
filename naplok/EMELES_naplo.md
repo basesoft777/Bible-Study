@@ -154,3 +154,60 @@ commitban, negatív teszttel, (c) 39 szócikk.
   „Fordítás függőben” helyén megjelenik a fordítás, a H7121 2.c és 3. (ISTENTISZT-001)
   az új szöveget mutatja — a várt hatás. Az éles `lexikon/` újragenerálása nem ennek a
   feladatnak a dolga (záró tétel).
+
+## E4 — A maradék 34 szócikk (F28.13–F28.22)
+
+Fordító továbbra is a menet maga (Opus, `claude-opus-5-5`); subagent-indításra nem volt
+eszköz. Módszer: helyőrzős forrás → fordítás → `emeles.py ellenoriz` (javítóréteg +
+kapuk) → `emeles.py rogzit` (munkatábla) → a végén `emeles.py beir --allapot opus`.
+Darabolás nem kellett; a G4151-et és a H1121-et a fordító több vázlatrészben írta, és
+egyben került a kapukra.
+
+**Eredmény:** 34/34 szócikk átment; `naplok/EMELES_bukottak.tsv` nem készült (nincs
+bukott). A végén mind a 39 munkatábla-sor újrafutott a végleges kapukon: 0 hiba.
+`adat/forditasok.tsv`: 34 új `teljes` sor `allapot=opus`-szal (F28.22); `ellenoriz.py`
+SÉRTÉS 0.
+
+**Kapukalibrálások az E4 során** (mind hamis riasztás volt, a kapu javult; az összes
+szócikk utólag a végleges kapukon is átment):
+
+| Commit | Kapu | Eset | Javítás |
+|---|---|---|---|
+| F28.13 | 9 tagolás | `e. g.` második tagja (G0282) | kizárva |
+| F28.15 | javítóréteg | „Lange on Revelation” könyvcím (G0086) | angol elöljáró után nincs csere |
+| F28.14 | javítóréteg | „Philo's Lehre” cím (G0012) | aposztróf előtt nincs csere |
+| F28.17 | 3 Károli | „Gi 20:21” szigla (H8034) | a forrásban is igehely előtt álló, nem könyvnév tag elfogadott |
+| F28.17 | 9 tagolás | szám utáni `f.` (= és a következő) | szám után nem betűjel |
+| F28.18 | 9 tagolás | „3 Izráelben” (H3548) | a fordításban nagybetűs szó is állhat a főszám után |
+| F28.20 | 5 terminológia | „lelkét”, „lelked” (H2416) | lélek → lelk- tőváltozat |
+
+**Önújrapróbák** (a fordítás javult, nem a kapu): G0086, H1121, H3548, H0430 — vessző a
+magyar szó és a csupasz igehely közé (a 3. kapu a nagybetűs magyar szót rövidítésnek
+veszi); H7451 — „divine spirit” → szellem; H5315 — három betoldott zárójel elhagyva;
+H7121, H1121 — Sir → JSir (11. kapu).
+
+**Terminológia-kivétel:** G0282 — a „Bleek on Heb.” a Zsidókhoz írt levél; a
+terminológia `Heb. → héb.` sora itt nem alkalmazható (`--kivetel Heb.`, a sor
+megjegyzésében).
+
+**Hiba a jóváhagyott H1121-ben (javítás nélkül, DT25 (c)):** a két vázlatrész
+összefűzésekor kimaradt egy szóköz: „Bír 8:18.j. gyakran”. A sor `kezi`, a brief szerint
+védett; a G4151 összefűzésénél a hibát észrevettem és szóközzel fűztem.
+
+**Az `emeles.py lista` mostantól** a `kezi` `teljes` sorokat kimaradónak jelöli (a
+`naplok/EMELES_lista.tsv` F28.22 óta az első adag 5 sorát `kimarad=igen`-nel mutatja). Az
+`opus` sorokat nem jelöli kimaradónak — ezt az E7 munkafolyamat-lépés rendezi.
+
+**Az első adag naplója** (`naplok/EMELES_elso_adag.md`) a DT24 előtti állapot pillanatképe
+(benne még a H7121/H1121 „Sir” alakja); nem generáltam újra.
+
+## E5 — Szúrópróba (F28.23)
+
+Minta: `python eszkozok/emeles.py minta --seed 28` → G4151, G0282, H7585, H8004, H8415
+(5 = max(5, ⌈34 × 10%⌉); Thayer 2, BDB 3; G4151 > 10 000 karakter). Kimenet:
+`naplok/EMELES_szuroproba.md`. **⛔ Megállás:** DT25 (`DONTESEK.md`).
+
+**CI-megjegyzés a PR-hez:** (1) az `eszkozok/ellenoriz.py` módosult (F28.10), a CI E16
+miatt a PR címe „[ELLENŐRZŐ]” előtagot kíván; (2) az `adat/SEMA.md` módosult (F28.10,
+F28.11), és a CI E9 a fájl **korábbi** 235–236. sorában álló angol „sense” szóra HIBA-t
+ad (nem ennek a menetnek a sora).

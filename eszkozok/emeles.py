@@ -491,6 +491,11 @@ def cmd_naplo_nezet(args):
     import forditas_kapuk as K
     munka = {r['strong']: r for r in tsv_dict_sorok(MUNKA_UT)}
     kezi = list(tsv_dict_sorok(FORDITASOK_UT))
+    # az allapot a forditasok.tsv-bol (a munkatabla a beiras elotti allapotot orzi)
+    for x in kezi:
+        if (x['jelentes_szam'] == 'teljes' and x['strong'] in munka
+                and x['szotar'] == munka[x['strong']]['szotar']):
+            munka[x['strong']] = dict(munka[x['strong']], allapot=x['allapot'])
     ki = []
     with open(args.fejlec, encoding='utf-8') as fh:
         ki.append(fh.read().rstrip('\n'))
@@ -498,7 +503,7 @@ def cmd_naplo_nezet(args):
     ki.append('## Kapueredmények')
     ki.append('')
     nevek = ['1_gorog_heber', '2_versszam', '3_karoli_roviditesek', '4_formazas', '5_terminologia',
-             '6_hosszarany', '8_idezojel', '9_tagolas', '10_torzs']
+             '6_hosszarany', '8_idezojel', '9_tagolas', '10_torzs', '11_konyvek']
     ki.append('| Strong | Szótár | Forrás kar. | Fordítás kar. | ' + ' | '.join(n.split('_', 1)[0] for n in nevek) + ' |')
     ki.append('|---|---|---|---|' + '---|' * len(nevek))
     reszletek = {}
@@ -506,7 +511,10 @@ def cmd_naplo_nezet(args):
         sp = strong_padded(s)
         r = munka[sp]
         _, forras = forras_szoveg(sp)
-        eredm = {n: (e, d) for n, e, d in K.kapuk_futtat(r['szotar'], forras, r['forditas_hu'])}
+        kiv = []
+        if 'bizonytalan_feloldasok):' in (r.get('megjegyzes') or ''):
+            kiv = [x.strip() for x in r['megjegyzes'].split('bizonytalan_feloldasok):', 1)[1].split(',')]
+        eredm = {n: (e, d) for n, e, d in K.kapuk_futtat(r['szotar'], forras, r['forditas_hu'], kiv)}
         reszletek[sp] = eredm
         cellak = []
         for n in nevek:
@@ -518,7 +526,8 @@ def cmd_naplo_nezet(args):
         ki.append('| %s | %s | %d | %d | %s |' % (sp, r['szotar'], len(forras), len(r['forditas_hu']), ' | '.join(cellak)))
     ki.append('')
     ki.append('Kapuk: 1 héber–görög token · 2 igehely-számpár · 3 Károli-rövidítés · 4 formázás/zárójel · '
-              '5 terminológia · 6 hosszarány (csak jelzés) · 8 idézőjel-párok · 9 tagolás · 10 igetörzsek (BDB).')
+              '5 terminológia · 6 hosszarány (csak jelzés) · 8 idézőjel-párok · 9 tagolás · 10 igetörzsek (BDB) · '
+              '11 könyv-egyezés.')
     for s in args.strongok:
         sp = strong_padded(s)
         r = munka[sp]
@@ -633,6 +642,35 @@ def cmd_beir(args):
     print('adat/forditasok.tsv: %d sor valtozott/uj (%s)' % (len(valtozott), ', '.join(args.strongok)))
 
 
+def cmd_minta(args):
+    """E5 szuroproba-minta (D49): az elso adag utani `opus` szocikkek 10%-a,
+    de legalabb 5; retegzetten (Thayer/BDB aranyosan, mindkettobol legalabb
+    1), koztuk legalabb egy 10 000 karakternel hosszabb forrasu. Reprodukal-
+    hato: random.Random(seed)."""
+    import math
+    import random
+    forditasok = [r for r in tsv_dict_sorok(FORDITASOK_UT)
+                  if r['jelentes_szam'] == 'teljes' and r['allapot'] == 'opus'
+                  and r['szotar'] in ('Thayer', 'BDB')]
+    hossz = {r['strong']: len(forras_szoveg(r['strong'])[1]) for r in forditasok}
+    n = max(5, math.ceil(len(forditasok) * 0.10))
+    rnd = random.Random(args.seed)
+    hosszuak = sorted(s for s in hossz if hossz[s] > 10000)
+    valasztott = [rnd.choice(hosszuak)]
+    retegek = {sz: sorted(r['strong'] for r in forditasok if r['szotar'] == sz) for sz in ('Thayer', 'BDB')}
+    osszes = len(forditasok)
+    kvota = {sz: max(1, round(n * len(v) / osszes)) for sz, v in retegek.items()}
+    for sz, v in retegek.items():
+        mar = sum(1 for s in valasztott if s in v)
+        maradek = [s for s in v if s not in valasztott]
+        valasztott += rnd.sample(maradek, max(0, kvota[sz] - mar))
+    print('opus szocikk: %d; minta: %d (seed=%d); Thayer kvota %d, BDB kvota %d'
+          % (osszes, len(valasztott), args.seed, kvota['Thayer'], kvota['BDB']))
+    for s in valasztott:
+        print('  %s %s %d karakter' % (s, szotar_strongnak(s), hossz[s]))
+    print(' '.join(valasztott))
+
+
 def cmd_prompt(args):
     sp, szoveg = forras_szoveg(args.strong)
     kiir(prompt_epit(sp, szoveg), args.ki)
@@ -694,6 +732,9 @@ def main():
                    help='a KEZI_OSSZEVETES jelentesszintu sorainak cserje (DT24 a)')
     p.add_argument('--kezi-felulir', action='store_true')
     p.set_defaults(fv=cmd_beir)
+    p = al.add_parser('minta')
+    p.add_argument('--seed', type=int, default=28)
+    p.set_defaults(fv=cmd_minta)
     p = al.add_parser('naplo_nezet')
     p.add_argument('strongok', nargs='+')
     p.add_argument('--fejlec', required=True, help='a naplo kezi bevezetoje (md)')
