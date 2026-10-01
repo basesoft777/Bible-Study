@@ -95,6 +95,14 @@ def book_tables():
 
 IGEHELY_STEP_RE = re.compile(r"^([1-3]?[A-Za-z]+)\.(\d+)\.(\d+)$")
 
+# F28 DT24 (a) / DT25 (d): a Jeremiás siralmai Károli-rövidítése JSir lett
+# (a Konyv_normalizalo_tabla.tsv-ben); a régi „Sir” alak olvasáskor álnév,
+# hogy a rögzített proveniencia (`scope=range:Sir 2:8`) újrafuttatható
+# maradjon, és a TAHOT_kivonat.tsv „Sir” igehelyei illeszkedjenek. A lekérdezés
+# kimenete a JSir alakot írja. (Az OSZ-adatokban a „Sir” csak a Siralmakat
+# jelölheti: a Sirák fia apokrif, nincs a TAHOT-ban.)
+REGI_ALNEV = {"Sir": "JSir"}
+
 
 def parse_igehely(s):
     """'1Móz 3:16' vagy 'Gen.1.1' -> (magyar_konyv, fejezet, vers).
@@ -119,7 +127,7 @@ def parse_igehely(s):
         if book and ":" in rest:
             ch_str, v_str = rest.split(":", 1)
             if ch_str.isdigit() and v_str.isdigit():
-                return (book, int(ch_str), int(v_str))
+                return (REGI_ALNEV.get(book, book), int(ch_str), int(v_str))
     raise ValueError(f"nem elemezhető igehely: {s!r}")
 
 
