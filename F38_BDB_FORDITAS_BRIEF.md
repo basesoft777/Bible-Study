@@ -5,10 +5,10 @@ kod: BDB_FORDITAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: dontesre_var
+allapot: fut
 ag: claude/admiring-bohr-texair
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=opus), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
-kovetkezo: Te: ⛔ M1 — kredit leolvasása és döntés a DT-F38 (a)–(e) pontjairól (folytatás / prompt- vagy terminológiajavítás / leállás); az M0 és az M1 kész (9 szócikk, 148 984 karakter, kapuk rendben); folytatási pont: 2. adag, a naplok/BDB_FORDITAS_sorrend.tsv 10. sorától (H3808)
+kovetkezo: DT-F38 eldöntve (2026.10.01); folytatási pont: (c) könyvalak-leképezés bővítése (Konyv_normalizalo_tabla.tsv + 11. kapu, teszttel, javítóréteg újra az M1 érintett szócikkein), majd a beerkezo/BDB_KONYVFELOLDASI_AUDIT.md csonk, utána a 2. adag a naplok/BDB_FORDITAS_sorrend.tsv 10. sorától (H3808)
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md]
 ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md]
 fugg: [34]
@@ -53,7 +53,7 @@ A gyakoriságot az M0 számolja egy Strong-címkés ószövetségi szövegből a
 
 ### M0 — Felmérés (csak olvas)
 
-1. Ellenőrzi, hogy az F34 a `main`-en van, és a 13. kapu a forráson 0 jelzést ad. Ha nem, megáll és jelez.
+1. Ellenőrzi, hogy az F34 a `main`-en van, és a 13. kapu csak a jóváhagyott F34-maradékon és az N-F34c körén jelezhet. Ha nem, megáll és jelez. *(Javítva 2026.10.01, DT-F38 (b): az eredeti „a 13. kapu a forráson 0 jelzést ad” feltétel hibás volt, mert az F34 a ψ-hiba B/R maradékát a DT-F34b/c szerint szándékosan hagyta meg; a mért 91 jelző szócikk — 83 F34-maradék, 8 N-F34c — a futást nem állítja meg.)*
 2. Elkészíti a `naplok/BDB_FORDITAS_sorrend.tsv`-t: `sorszam`, `strong`, `gyakorisag`, `karakter`, `adag`. A már lefordított szócikkek (az `adat/forditasok.tsv` `teljes` sorai) kimaradnak.
 3. Kijelöli a 20 000 karakter fölötti szócikkek szegmenshatárait (jelentésszámok mentén, ahogy a #28 a G4151-nél és a H1121-nél tette).
 4. Adagokra osztja a listát: **M1 mérő adag kb. 150 000 karakter**, utána **adagonként kb. 500 000 karakter** (kb. 13 adag).
