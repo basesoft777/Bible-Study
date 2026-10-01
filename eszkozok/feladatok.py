@@ -59,6 +59,14 @@ KOZOS_FAJLOK = ('FELADATOK.md', 'DONTESEK.md', 'NYITOTT_FELADATOK.md',
                 # regiszterfajlok: minden menet csak a sajat sorat irja (rebase)
                 'adat/SEMA.md', 'adat/datasetek.tsv', 'adat/licencek.tsv')
 
+# F39 (DT-F39a-c, DT-F39g): a levezetes szabalyai
+# kontextus-olvasas: nem ad sorrendet (konyvtar-prefix = `/`-re vegzodo olvas-bejegyzes + ez a lista)
+KONTEXTUS_OLVAS = ('CLAUDE.md', 'BRIEF_SABLON.md', 'MUNKAMENET.md')
+# menetenkent egyedi fajlt iro minták: az ir-ir utkozesbol kimaradnak
+UTKOZES_KIVETEL = ('naplok/ELLENOR_*', 'naplok/*_zaras.md')
+# helyettesito minta az `ir`-ben: nem ad kapcsolatot (az `ellenoriz` figyelmeztet)
+HELYETTESITO_IR = ('naplok/', 'naplok/*')
+
 MARKER_KEZDET = '<!-- GENERÁLT-KEZDET: feladatok.py --cel %s -->'
 MARKER_VEGE = '<!-- GENERÁLT-VÉGE: feladatok.py --cel %s -->'
 CELOK = ('fazis1', 'fazis2', 'folyamat', 'naplozas', 'kesz')
@@ -270,6 +278,10 @@ def ellenoriz(briefek, gyoker=REPO):
             for n in b.fej.get(k, []):
                 if n not in ismert:
                     hibak.append((b.fajl, '%s: nincs ilyen feladat: %d' % (k, n)))
+    if not hibak:
+        for k in fugg_korok(briefek, main_allapotok(gyoker)):
+            hibak.append(('feladatok', 'függési kör (a döntés a felhasználóé): %s'
+                          % ' ↔ '.join('#%d' % x for x in k)))
     return hibak
 
 
@@ -377,6 +389,33 @@ def _szurt(b, kulcs):
     return [u for u in b.fej.get(kulcs, []) if not _kozos(b, u)]
 
 
+def kontextus_olvas(ut):
+    """DT-F39g: tag kontextus-olvasas (konyvtar-prefix, CLAUDE.md, ...): nem ad sorrendet."""
+    ut = _norm(ut)
+    return ut.endswith('/') or ut in KONTEXTUS_OLVAS
+
+
+def _olvas_szurt(b):
+    return [u for u in _szurt(b, 'olvas') if not kontextus_olvas(u)]
+
+
+def _helyettesito(ut):
+    return _norm(ut) in HELYETTESITO_IR
+
+
+def _ir_szurt(b, utkozeshez=False):
+    """Az `ir` utvonalai a kapcsolatokhoz; a helyettesito minta kimarad; ir-ir
+    utkozesnel a menetenkent egyedi naplok (UTKOZES_KIVETEL) is."""
+    ki = []
+    for u in _szurt(b, 'ir'):
+        if _helyettesito(u):
+            continue
+        if utkozeshez and any(fnmatch.fnmatchcase(_norm(u), m) for m in UTKOZES_KIVETEL):
+            continue
+        ki.append(u)
+    return ki
+
+
 def _elso_egyezes(lista_a, lista_b):
     for x in lista_a:
         for y in lista_b:
@@ -385,42 +424,69 @@ def _elso_egyezes(lista_a, lista_b):
     return None
 
 
-def fuggesek(briefek, main_all=None):
-    """(fuggesek, utkozesek, regiek, sorrend).
+def _nem_ad_kapcsolatot(a, b):
+    """DT-F39d: a halasztott, brief nelkuli es 2. fazisu `b` nem ad levezetett
+    kapcsolatot 1. fazisu `a`-nak."""
+    if a.fej.get('fazis') != '1':
+        return False
+    return (b.allapot == 'brief_kell'
+            or b.fej.get('kovetkezo', '').lower().startswith('halasztva')
+            or b.fej.get('fazis') == '2')
 
-    fuggesek: {A: {B: forras}}, forras = fajl vagy 'kezi'; a levezetett es a
-    kezi fugges kulon kulcsban (levezetett / kezi) van."""
+
+def _szamol(briefek, main_all=None):
     main_all = main_all or {}
     szamozottak = [b for b in briefek if b.szam is not None]
     by_szam = {b.szam: b for b in szamozottak}
     fugg = {}
+    explicit = set()
     for a in szamozottak:
         if statusz(a, main_all) == 'kesz':
             continue
         belso = {}
         nem = set(a.fej.get('nem_fugg', []))
-        olv = _szurt(a, 'olvas')
+        olv = _olvas_szurt(a)
         for b in szamozottak:
             if b is a or b.szam in nem:
                 continue
-            if statusz(b, main_all) == 'kesz':
+            if statusz(b, main_all) == 'kesz' or _nem_ad_kapcsolatot(a, b):
                 continue
-            f = _elso_egyezes(olv, _szurt(b, 'ir'))
+            f = _elso_egyezes(olv, _ir_szurt(b))
             if f:
                 belso[b.szam] = ('levezetett', f)
         for n in a.fej.get('fugg', []):
             if n in by_szam and n not in nem:
+                explicit.add((a.szam, n))
                 if n not in belso:
                     belso[n] = ('kezi', 'kezi')
         fugg[a.szam] = belso
+
+    # kolcsonos levezetett fugges = kizaras (DT-F39g)
+    kolcsonos = []
+    for a in sorted(fugg):
+        for b in sorted(fugg[a]):
+            if (b > a and fugg[a][b][0] == 'levezetett' and a in fugg.get(b, {})
+                    and fugg[b][a][0] == 'levezetett'
+                    and (a, b) not in explicit and (b, a) not in explicit):
+                kolcsonos.append((a, b, fugg[a][b][1]))
+    teljes = {a: dict(fugg[a]) for a in fugg}   # a kolcsonos elekkel egyutt (korkereseshez)
+    for a, b, f in kolcsonos:
+        del fugg[a][b]
+        del fugg[b][a]
 
     utkozesek = []
     aktiv = [b for b in szamozottak if statusz(b, main_all) != 'kesz']
     for i, a in enumerate(aktiv):
         for b in aktiv[i + 1:]:
-            f = _elso_egyezes(_szurt(a, 'ir'), _szurt(b, 'ir'))
+            if _nem_ad_kapcsolatot(a, b) or _nem_ad_kapcsolatot(b, a):
+                continue
+            f = _elso_egyezes(_ir_szurt(a, True), _ir_szurt(b, True))
             if f:
                 utkozesek.append((a.szam, b.szam, f))
+    for a, b, f in kolcsonos:
+        if not any(x == a and y == b for x, y, _ in utkozesek):
+            utkozesek.append((a, b, f))
+    utkozesek.sort()
 
     regiek = []
     for b in aktiv:
@@ -439,12 +505,161 @@ def fuggesek(briefek, main_all=None):
         elif a in fugg.get(b, {}):
             sorrend.append((a, b, 'függésből'))
         else:
-            sorrend.append((min(a, b), max(a, b), 'számból (egyeztetendő)'))
-    return fugg, utkozesek, regiek, sorrend
+            sorrend.append((min(a, b), max(a, b), 'számból (a kisebb sorszám előre)'))
+    return fugg, utkozesek, regiek, sorrend, kolcsonos, teljes
+
+
+def fuggesek(briefek, main_all=None):
+    """(fuggesek, kizarasok, regiek, sorrend).
+
+    fuggesek: {A: {B: (fajta, forras)}}, fajta = levezetett (iras-olvasas, `*`)
+    vagy kezi. kizarasok (`utkozesek`): (A, B, fajl) -- kolcsonos kizaras (`×`),
+    nem sorrend: nem futhat egyszerre, de barmelyik mehet elobb."""
+    return _szamol(briefek, main_all)[:4]
+
+
+def kolcsonos_fuggesek(briefek, main_all=None):
+    return _szamol(briefek, main_all)[4]
+
+
+def fugg_korok(briefek, main_all=None):
+    """A hibas koroket adja: a kolcsonos (kizarassa alakitott) parok kivetelevel minden
+    1-nel nagyobb kor, a kolcsonos elekkel egyutt szamolva (A↔B, A→C, C→B is kor)."""
+    _, _, _, _, kolcsonos, teljes = _szamol(briefek, main_all)
+    koles = set()
+    for a, b, _ in kolcsonos:
+        koles.add((a, b))
+        koles.add((b, a))
+    hibas = []
+    for k in korok(teljes):
+        # a tiszta kolcsonos elekbol allo komponens (par, lanc, csillag) nem kor
+        if any((a, b) not in koles for a in k for b in teljes.get(a, {}) if b in k):
+            hibas.append(k)
+    return hibas
+
+
+def korok(fugg):
+    """A fuggesi graf (levezetett + kezi) 1-nel nagyobb erosen osszefuggo komponensei."""
+    g = {a: set(fugg[a]) for a in fugg}
+    idx, low, verem, vanon, eredmeny, szamlalo = {}, {}, [], set(), [], [0]
+
+    def be(v):
+        idx[v] = low[v] = szamlalo[0]
+        szamlalo[0] += 1
+        verem.append(v)
+        vanon.add(v)
+        for w in g.get(v, ()):
+            if w not in g:
+                continue
+            if w not in idx:
+                be(w)
+                low[v] = min(low[v], low[w])
+            elif w in vanon:
+                low[v] = min(low[v], idx[w])
+        if low[v] == idx[v]:
+            komp = []
+            while True:
+                w = verem.pop()
+                vanon.discard(w)
+                komp.append(w)
+                if w == v:
+                    break
+            if len(komp) > 1:
+                eredmeny.append(sorted(komp))
+
+    for v in sorted(g):
+        if v not in idx:
+            be(v)
+    return sorted(eredmeny)
+
+
+def figyelmeztetesek(briefek, main_all=None):
+    """[(fajl, uzenet)]: nem hiba, de javitando (DT-F39c, DT-F39d)."""
+    main_all = main_all or {}
+    by_szam = {b.szam: b for b in briefek if b.szam is not None}
+    ki = []
+    for b in briefek:
+        if b.szam is None or statusz(b, main_all) == 'kesz':
+            continue
+        for u in b.fej.get('ir', []):
+            if _helyettesito(u):
+                ki.append((b.fajl, 'az `ir` helyettesítő mintát tartalmaz (%s): adj meg konkrét fájlt'
+                           % u))
+        if b.fej.get('fazis') == '1':
+            for n in b.fej.get('fugg', []):
+                c = by_szam.get(n)
+                if c is not None and c.fej.get('fazis') == '2' and statusz(c, main_all) != 'kesz':
+                    ki.append((b.fajl, 'az 1. fázisú feladat explicit függése 2. fázisúra (#%d): '
+                               'a D1 szerint a render nem tarthatja vissza az adatréteget' % n))
+    return ki
+
+
+def jeloltek(briefek, main_all=None):
+    """{szam: None | ok}: az 1. fazis feladatai; None = jelolt, kulonben a kihagyas oka.
+
+    Jelolt: nem_indult / dontesre_var, a `kovetkezo` nem `Te:` es nem `halasztva`, nincs
+    helyi gep, minden fuggese kesz, es nincs FUTO (▶) kizar-parja."""
+    main_all = main_all or {}
+    fugg, utk, _, _, _, _ = _szamol(briefek, main_all)
+    by_szam = {b.szam: b for b in briefek if b.szam is not None}
+    eredmeny = {}
+    for b in sorted(by_szam.values(), key=lambda x: x.szam):
+        if b.fej.get('tipus') != 'feladat' or b.fej.get('fazis') != '1':
+            continue
+        if statusz(b, main_all) == 'kesz':
+            continue
+        kov = b.fej.get('kovetkezo', '')
+        ok = None
+        if b.allapot not in ('nem_indult', 'dontesre_var'):
+            ok = 'állapot: %s' % b.allapot
+        elif kov.startswith('Te:'):
+            ok = 'a következő lépés a felhasználóé (Te:)'
+        elif kov.lower().startswith('halasztva'):
+            ok = 'halasztva'
+        elif b.fej.get('helyi_gep') == 'igen':
+            ok = 'helyi gép kell'
+        else:
+            var = sorted(n for n in fugg.get(b.szam, {})
+                         if n in by_szam and statusz(by_szam[n], main_all) != 'kesz')
+            if var:
+                ok = 'vár: ' + ', '.join('#%d' % n for n in var)
+            else:
+                futo = sorted((y if x == b.szam else x) for x, y, _ in utk
+                              if b.szam in (x, y)
+                              and by_szam[y if x == b.szam else x].allapot == 'fut'
+                              and statusz(by_szam[y if x == b.szam else x], main_all) != 'kesz')
+                if futo:
+                    ok = 'kizár (futó): ' + ', '.join('#%d' % n for n in futo)
+        eredmeny[b.szam] = ok
+    return eredmeny
+
+
+def csomag(briefek, main_all=None, legfeljebb=5):
+    """A jeloltekbol csomag: a kisebb sorszam elore; kizar-par nem kerul egy csomagba,
+    a csomag tagja nem fugg a csomag masik tagjatol; `ir` nelkuli (regi) csak egyedul."""
+    main_all = main_all or {}
+    fugg, utk, regiek, _, _, _ = _szamol(briefek, main_all)
+    regi = set(n for n, _ in regiek)
+    kizar = set()
+    for a, b, _ in utk:
+        kizar.add((a, b))
+        kizar.add((b, a))
+    tagok = []
+    for n, ok in sorted(jeloltek(briefek, main_all).items()):
+        if ok is not None:
+            continue
+        if any((n, t) in kizar or t in fugg.get(n, {}) or n in fugg.get(t, {}) for t in tagok):
+            continue
+        if n in regi and tagok:
+            continue
+        tagok.append(n)
+        if len(tagok) >= legfeljebb or n in regi:
+            break
+    return tagok
 
 
 def fuggesek_szoveg(briefek, main_all=None):
-    fugg, utkozesek, regiek, sorrend = fuggesek(briefek, main_all)
+    fugg, utkozesek, regiek, sorrend, kolcsonos, _ = _szamol(briefek, main_all)
     sorok = ['# típus\tfeladat\tmásik\tforrás']
     for a in sorted(fugg):
         for b in sorted(fugg[a]):
@@ -452,9 +667,13 @@ def fuggesek_szoveg(briefek, main_all=None):
             sorok.append('FUGGES\t%d\t%d\t%s%s' % (a, b, forras,
                                                     '*' if fajta == 'levezetett' else ''))
     for a, b, f in utkozesek:
-        sorok.append('UTKOZES\t%d\t%d\t%s' % (a, b, f))
+        sorok.append('KIZAR\t%d\t%d\t%s\t×' % (a, b, f))
+    for a, b, f in kolcsonos:
+        sorok.append('FIGYELEM\t%d\t%d\tkölcsönös függés: #%d ↔ #%d, fájl: %s' % (a, b, a, b, f))
     for a, b, ok in sorrend:
         sorok.append('SORREND\t%d\t%d\t%s' % (a, b, ok))
+    for k in fugg_korok(briefek, main_all):
+        sorok.append('KOR\t%s\t-\tfüggési kör' % ' '.join(str(x) for x in k))
     for a, hiany in regiek:
         sorok.append('REGI\t%d\t-\t%s hiányzik' % (a, ', '.join(hiany)))
     return '\n'.join(sorok) + '\n'
@@ -787,6 +1006,7 @@ def main(argv=None):
     f.add_argument('--extra', action='append', default=[], metavar='FAJL',
                    help='a befogadandó brief javasolt fejléce (a repón kívüli fájl); a számítás '
                         'úgy veszi figyelembe, mintha a repóban lenne; szám nélkül a következő szabad számot kapja')
+    alp.add_parser('jeloltek', help='az 1. fázis jelöltjei és a kihagyás okai (nem indít semmit)')
     a = alp.add_parser('atvetel', help='a FELADATOK.md táblájából a fejlécekbe')
     a.add_argument('--szaraz', action='store_true', help='csak kiírja a változásokat')
     alp.add_parser('kovetkezo_szam', help='a következő szabad feladatszám')
@@ -803,13 +1023,24 @@ def main(argv=None):
             hibak = ellenoriz(briefek, arg.gyoker)
             if arg.pr_alap:
                 hibak += pr_blokk_ellenorzes(arg.gyoker, arg.pr_alap)
+            fig = figyelmeztetesek(briefek, main_allapotok(arg.gyoker))
             for fajl, uzenet in hibak:
                 print('HIBA\t%s\t%s' % (fajl, uzenet))
-            print('%d brief, %d hiba' % (len(briefek), len(hibak)))
+            for fajl, uzenet in fig:
+                print('FIGYELEM\t%s\t%s' % (fajl, uzenet))
+            print('%d brief, %d hiba, %d figyelmeztetés' % (len(briefek), len(hibak), len(fig)))
             return 1 if hibak else 0
         if arg.parancs == 'fuggesek':
             briefek = extra_hozzaad(briefek, arg.extra)
             sys.stdout.write(fuggesek_szoveg(briefek, main_allapotok(arg.gyoker)))
+            return 0
+        if arg.parancs == 'jeloltek':
+            ma_all = main_allapotok(arg.gyoker)
+            by = {b.szam: b for b in briefek if b.szam is not None}
+            for n, ok in jeloltek(briefek, ma_all).items():
+                print('%s\t#%d\t%s' % ('JELOLT' if ok is None else 'KIHAGYVA', n,
+                                       by[n].fej.get('cim', '') if ok is None else ok))
+            print('CSOMAG\t%s' % ' '.join('#%d' % n for n in csomag(briefek, ma_all)))
             return 0
         if arg.parancs == 'atvetel':
             for fajl, kulcs, regi, uj in atvetel(arg.gyoker, szaraz=arg.szaraz):

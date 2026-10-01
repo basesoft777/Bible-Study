@@ -41,6 +41,24 @@ class Fejezetszam(unittest.TestCase):
         self.assertEqual(K.ellenoriz_fejezetszam('Jóel 4:19; 1Ján 5:7; Júd 1:20; Zsolt 150:6')[0], 'RENDBEN')
 
 
+class PsiJavitas(unittest.TestCase):
+    """F34 M4: a javitott BDB-ψ helyekre a 13. kapu jelzese 0; a hibas feloldasra marad."""
+
+    def test_javitott_hely_nem_jelez(self):
+        for sz in ('Zsolt 106:9; Zsolt 71:20', 'Zsolt 97:7', 'Zsolt 16:10; Zsolt 49:16'):
+            self.assertEqual(K.ellenoriz_fejezetszam(sz)[0], 'RENDBEN', sz)
+
+    def test_hibas_psi_feloldas_jelez(self):
+        for sz in ('Ézs 106:9', 'Jób 97:7', 'Ez 73:25', 'Péld 75:1'):
+            self.assertEqual(K.ellenoriz_fejezetszam(sz)[0], 'JELZES', sz)
+
+    def test_javitott_sorok_a_forditasokban(self):
+        sorok = open('adat/forditasok.tsv', encoding='utf-8').read().split(chr(10))
+        for n in (78, 89):
+            hu = sorok[n - 1].split(chr(9))[6]
+            self.assertEqual(K.ellenoriz_fejezetszam(hu)[0], 'RENDBEN', n)
+
+
 class LelekTovaltozat(unittest.TestCase):
     """ELLENOR_F28 3. tétel: a „lélek” tőváltozata (lelk-) csak a főnév
     toldalékolt alakjára illeszkedjen."""

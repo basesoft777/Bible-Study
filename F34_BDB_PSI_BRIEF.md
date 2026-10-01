@@ -5,11 +5,14 @@ kod: BDB_PSI
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: nem_indult
+allapot: lezarva
+ag: claude/bdb-psi
 ad: a BDB_teljes_unabridged.tsv-ben a „ψ” (Zsoltárok) jel hibás feloldása javítva (Ez 73:23, Ézs 106:9, Ézs 71:20, Jób 97, Péld 57–75 …, rejtett esetek: Ez 16:10 = Zsolt 16:10); az érintett adat/forditasok.tsv-sorok igehelyei gépileg cserélve; a 13. kapu jelzése megszűnik
-kovetkezo: M0 felmérés (csak olvasás): az összes hibás hely listája; ⛔ a felmérés után, a forrásfájl javítása előtt
+kovetkezo: független ellenőrzés (fuggetlen-ellenor), majd merge a felhasználótól
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/lexikon_hivatkozasok.tsv, naplok/EMELES_naplo.md, eszkozok/forditas_kapuk.py, konkordancia/README.md, adat/datasetek.tsv]
-ir: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, eszkozok/emeles.py]
+ir: [konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_teljes_unabridged_README.md, adat/forditasok.tsv, eszkozok/bdb_psi_javit.py, eszkozok/teszt_bdb_psi_javit.py, eszkozok/teszt_forditas_kapuk.py, naplok/, NYITOTT_FELADATOK.md, DONTESEK.md]
+lezarva_osszegzes: 159 ψ-hely javítva a BDB-forrásban (56 szócikk, TAHOT + MT-versszámozási tábla), forditasok.tsv 78/81/84/89 csak token + forras_hash (DT-F34c); 13. szabály RENDBEN, ellenoriz.py = 0; maradék 156 hely az N-F34/N-F34c-ben; részletek naplok/F34_zaras.md
+pr: https://github.com/basesoft777/Bible-Study/pull/109
 fugg: [28]
 ---
 
