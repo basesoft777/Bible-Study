@@ -97,6 +97,8 @@ def ellenoriz_idezojel(forras, forditas):
 
 _PONT_SZAM = re.compile(r'(?:(?<=^)|(?<=[\s(—]))(\d{1,2})\.(?=\s)')
 _SZAM_PONT_NELKUL = re.compile(r'(?<=[.;:—)] )(\d{1,2})(?= ([a-zá-ű]\w*))')
+# a forditas oldalan a jelolo utan nagybetus szo is allhat (`3 Izráelben`)
+_SZAM_PONT_NELKUL_HU = re.compile(r'(?<=[.;:—)] )(\d{1,2})(?= ([^\W\d_]\w*))')
 _BETU = re.compile(r'(?:(?<=^)|(?<=\s))([a-i])\.(?=\s)')
 _ROMAI = re.compile(r'(?:(?<=^)|(?<=[\s(—]))([IVX]{1,4})\.(?=[\s,;)])')
 _ZAROJELES = re.compile(r'\(([α-ω]|\d{1,2}|[IVX]{1,4})\)')
@@ -134,7 +136,7 @@ def jelolok_pozicioval(szoveg, forras_oldal):
     talalat = []  # (pozicio, jel)
     for m in _PONT_SZAM.finditer(szoveg):
         talalat.append((m.start(), m.group(1)))
-    for m in _SZAM_PONT_NELKUL.finditer(szoveg):
+    for m in (_SZAM_PONT_NELKUL if forras_oldal else _SZAM_PONT_NELKUL_HU).finditer(szoveg):
         if forras_oldal and m.group(2).lower() in _NYELVTANI:
             continue
         if forras_oldal and _HIVATKOZAS_ELOTAG.search(szoveg[max(0, m.start() - 6):m.start()]):
