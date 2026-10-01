@@ -133,6 +133,23 @@ FORRAS_ALIAS = {
     '1Cor': '1Co', '2Cor': '2Co', 'Phil': 'Php', '1Thess': '1Th', '2Thess': '2Th',
     '1Tim': '1Ti', '2Tim': '2Ti', 'Phlm': 'Phm', '1Pet': '1Pe', '2Pet': '2Pe',
     '1John': '1Jn', '2John': '2Jn', '3John': '3Jn',
+    # BDB/Thayer kiirt konyvnevei igehely elott
+    '1 Samuel': '1Sa', '2 Samuel': '2Sa', '1 Kings': '1Ki', '2 Kings': '2Ki',
+    '1 Chronicles': '1Ch', '2 Chronicles': '2Ch', 'Leviticus': 'Lev', 'Numbers': 'Num',
+    'Nehemiah': 'Neh', 'Ecclesiastes': 'Ecc', 'Isaiah': 'Isa', 'Jeremiah': 'Jer',
+    'Zechariah': 'Zec', 'Psalms': 'Psa', 'Genesis': 'Gen', 'Exodus': 'Exo',
+    'Deuteronomy': 'Deu', 'Joshua': 'Jos', 'Judges': 'Jdg', 'Obadiah': 'Oba',
+}
+
+# Apokrif/deuterokanonikus konyvek (nincs Karoli-alakjuk; a forditas a
+# FORDITAS_P4 APOKRIF_KIVETEL magyar alakjat irja). A 11. kapu (forditas_kapuk)
+# a konyvnev-egyezeshez hasznalja; a javitoreteg NEM csereli oket.
+APOKRIF_ALIAS = {
+    'Wis': 'Bölcs', 'Wisdom': 'Bölcs', 'Sir': 'Sir', 'Sirach': 'Sir', 'Ecclus': 'Sir',
+    'Ecclesiasticus': 'Sir', 'Macc': 'Makk', '1 Macc': '1Makk', '2 Macc': '2Makk',
+    '3 Macc': '3Makk', '4 Macc': '4Makk', '1Macc': '1Makk', '2Macc': '2Makk',
+    'Tob': 'Tób', 'Tobit': 'Tób', 'Bar': 'Báruk', 'Baruch': 'Báruk', 'Jdt': 'Judit',
+    'Judith': 'Judit',
 }
 
 

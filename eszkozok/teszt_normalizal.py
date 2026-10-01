@@ -68,6 +68,15 @@ class IgehelyRov(unittest.TestCase):
         uj, _ = N.szabaly_igehely_rov('Joh 3:16; Mat 5:3; Song of Solomon 2:4; Rev 1:8')
         self.assertEqual(uj, 'Ján 3:16; Mt 5:3; Én 2:4; Jel 1:8')
 
+    def test_lam_jsir(self):
+        # DT24 (a): a Jeremiás siralmai Károli-rövidítése JSir, nem Sir
+        # (a Sir a Sirák fia könyvével ütközne)
+        uj, n = N.szabaly_igehely_rov('Lam 3:57; Lam. 4:2')
+        self.assertEqual(uj, 'JSir 3:57; JSir 4:2')
+        self.assertEqual(n, 2)
+        self.assertEqual(N.KAROLI['Lam'][0], 'JSir')
+        self.assertNotIn('Sir', N._KAROLI_ROV)
+
     def test_karoli_alak_marad(self):
         szoveg = '1Móz 4:26; Jer 10:25; Gal 3:13'
         self.assertEqual(N.szabaly_igehely_rov(szoveg), (szoveg, 0))

@@ -51,7 +51,7 @@ TERMINOLOGIA_UT = os.path.join(REPO, 'adat', 'terminologia.tsv')
 KAROLI_UT = os.path.join(REPO, 'konkordancia', 'Konyv_normalizalo_tabla.tsv')
 
 GATOLO = ['1_gorog_heber', '2_versszam', '3_karoli_roviditesek', '4_formazas',
-          '5_terminologia', '8_idezojel', '9_tagolas', '10_torzs']
+          '5_terminologia', '8_idezojel', '9_tagolas', '10_torzs', '11_konyvek']
 
 
 # ---------------------------------------------------------------------------
@@ -271,6 +271,55 @@ def ellenoriz_terminologia(forras, forditas, terminologia, bizonytalan_lista):
     return 'SERTES', '; '.join(serult)
 
 
+# ---------------------------------------------------------------------------
+# 11. konyv-egyezes (DT24 (a) utan): az igehelyek konyvei a forras
+# rovidítesebol a normalizal.py lekepezesevel (Thayer/BDB/STEPBible ->
+# Karoli; apokrif -> magyar alak) szamolva egyezzenek a forditas
+# konyveivel. Ok: a Jeremiás siralmai (Lam) JSir, a Sirák fia (Sir.) Sir --
+# a 3. kapu ezt nem latja, mert mindket alak megengedett.
+# ---------------------------------------------------------------------------
+
+def _konyv_mintak():
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import normalizal as N
+    lek = {}
+    for rov, _ in N.KAROLI.values():
+        lek[rov] = rov
+    for step, (rov, _) in N.KAROLI.items():
+        lek.setdefault(step, rov)
+    for alias, step in N.FORRAS_ALIAS.items():
+        if step in N.KAROLI:
+            lek.setdefault(alias, N.KAROLI[step][0])
+    for alias, hu in N.APOKRIF_ALIAS.items():
+        lek.setdefault(alias, hu)
+    betu = r'A-Za-zÀ-ɏ'
+
+    def minta(kulcsok):
+        k = sorted(set(kulcsok), key=len, reverse=True)
+        return re.compile(r'(?<![%s0-9])(%s)\.?\s+(?=\d{1,3}:\d)' % (betu, '|'.join(re.escape(x) for x in k)))
+    return lek, minta(lek), minta(set(lek.values()))
+
+
+_KONYV = None
+
+
+def ellenoriz_konyvek(forras, forditas):
+    global _KONYV
+    if _KONYV is None:
+        _KONYV = _konyv_mintak()
+    lek, f_minta, h_minta = _KONYV
+    from collections import Counter
+    a = Counter(lek[m.group(1)] for m in f_minta.finditer(forras))
+    b = Counter(m.group(1) for m in h_minta.finditer(forditas))
+    if a == b:
+        return 'RENDBEN', '%d konyvnevvel jelolt igehely' % sum(a.values())
+    hiany = a - b
+    tobb = b - a
+    return 'SERTES', '; '.join(x for x in (
+        'a forditasbol hianyzik: ' + ', '.join('%s×%d' % kv for kv in sorted(hiany.items())) if hiany else '',
+        'a forditasban tobb: ' + ', '.join('%s×%d' % kv for kv in sorted(tobb.items())) if tobb else '') if x)
+
+
 def kapuk_futtat(szotar, forras, forditas, bizonytalan=()):
     """[(nev, eredmeny, reszlet), ...]"""
     karoli, term = _betolt()
@@ -286,6 +335,7 @@ def kapuk_futtat(szotar, forras, forditas, bizonytalan=()):
     ]
     if szotar == 'BDB':
         ki.append(('10_torzs',) + ellenoriz_torzs(forras, forditas))
+    ki.append(('11_konyvek',) + ellenoriz_konyvek(forras, forditas))
     return ki
 
 
