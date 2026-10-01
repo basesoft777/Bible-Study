@@ -11,8 +11,8 @@ ad: a BDB_teljes_unabridged.tsv-ben a „ψ” (Zsoltárok) jel hibás feloldás
 kovetkezo: független ellenőrzés (fuggetlen-ellenor), majd merge a felhasználótól
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/lexikon_hivatkozasok.tsv, naplok/EMELES_naplo.md, eszkozok/forditas_kapuk.py, konkordancia/README.md, adat/datasetek.tsv]
 ir: [konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_teljes_unabridged_README.md, adat/forditasok.tsv, eszkozok/bdb_psi_javit.py, eszkozok/teszt_bdb_psi_javit.py, eszkozok/teszt_forditas_kapuk.py, naplok/, NYITOTT_FELADATOK.md, DONTESEK.md]
-lezarva_osszegzes: 159 ψ-hely javítva a BDB-forrásban (TAHOT + MT-versszámozási tábla, 56 szócikk), forditasok.tsv 78/81/89 token; maradék 163 hely N-F34-be; 13. kapu a javított helyekre 0 (a 81/84 sor hash-e elavult: SÉRTÉS, N-F34); részletek naplok/F34_zaras.md
-pr:
+lezarva_osszegzes: 159 ψ-hely javítva a BDB-forrásban (56 szócikk, TAHOT + MT-versszámozási tábla), forditasok.tsv 78/81/84/89 csak token + forras_hash (DT-F34c); 13. szabály RENDBEN, ellenoriz.py = 0; maradék 156 hely az N-F34/N-F34c-ben; részletek naplok/F34_zaras.md
+pr: https://github.com/basesoft777/Bible-Study/pull/109
 fugg: [28]
 ---
 
