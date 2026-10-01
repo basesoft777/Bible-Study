@@ -102,6 +102,11 @@ class Konyvnevek(unittest.TestCase):
         szoveg = 'Song of Solomon 2:4'
         self.assertEqual(N.szabaly_konyvnevek(szoveg), (szoveg, 0))
 
+    def test_angol_konyvcim_nem(self):
+        # G0086: E. R. Craven in Lange on Revelation -- könyvcím
+        szoveg = 'E. R. Craven in Lange on Revelation, 364–377. o.'
+        self.assertEqual(N.szabaly_konyvnevek(szoveg), (szoveg, 0))
+
     def test_szemelynevek_nem(self):
         szoveg = 'Mark, John, James és Jude'
         self.assertEqual(N.szabaly_konyvnevek(szoveg), (szoveg, 0))

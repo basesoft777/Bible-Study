@@ -217,8 +217,11 @@ KONYVNEV_FOLYO = [
     ('Psalms', 'Zsoltárok könyve'),
     ('Lamentations', 'Jeremiás siralmai'),
 ]
+# angol konyvcimben (`Lange on Revelation`, `Commentary in Genesis`) a nev
+# nem folyo szoveg -- angol eloljaro utan nem cserelunk (G0086)
 KONYVNEV_MINTAK = [
-    (re.compile(r'(?<![%s])%s(?![%s\-])(?!\.?\s*\d)' % (_BETU, re.escape(a), _BETU)), b)
+    (re.compile(r'(?<![%s])(?<!\bon )(?<!\bin )(?<!\bof )%s(?![%s\-])(?!\.?\s*\d)'
+                % (_BETU, re.escape(a), _BETU)), b)
     for a, b in KONYVNEV_FOLYO
 ]
 
