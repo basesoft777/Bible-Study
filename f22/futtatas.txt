@@ -1,0 +1,5 @@
+# F22.7 -- no-op ellenorzo futas a workflow modositasa (persist-credentials) utan: minden koteg kesz, hivast nem vegez, koltseg 0
+konyv=1Móz
+koteg_max=mind
+koteg_meret=10
+plafon_usd=3.90

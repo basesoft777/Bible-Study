@@ -8,7 +8,7 @@ Ez a réteg a **kanonikus igazságforrás**. A `tematikus_lezart/`, `genezis/`, 
 és `lexikon/` kimenetei ebből generálódnak vagy ehhez igazodnak. Ha egy tény itt és egy
 markdown-fájlban ellentmond, **ez a tábla az irányadó**.
 
-A kilenc tábla és a hozzájuk tartozó kulcs:
+A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20) és a hozzájuk tartozó kulcs:
 
 | Fájl | Kulcs | Ki írja |
 |---|---|---|
@@ -21,6 +21,7 @@ A kilenc tábla és a hozzájuk tartozó kulcs:
 | `grammatikai_strongok.tsv` | `strong` | **generált** — `eszkozok/grammatikai_strongok_general.py` |
 | `auditok.tsv` | nincs (l. 2.9) | a `lekerdez.py` proveniencia-sora, kézzel rögzítve |
 | `licencek.tsv` | `dataset` | kézzel (leltár, F24) |
+| `karoli_strong/parok_<könyv>.tsv`, `karoli_strong/szavak_<könyv>.tsv` | `vers` + `hu_sorszam` + `er_sorszam` / `vers` + `oldal` + `sorszam` | **generált** (modell-kimenet, javaslat) — `eszkozok/karoli_strong/egyesit.py` (2.20, F22) |
 
 ---
 
@@ -902,6 +903,47 @@ tábla összevetése CI-ellenőrzés (E-szabály) legyen. A mai konstans és a t
 `Thayer`, `LSJ`, `SECE_G`, `SECE_H`, `MCGED`, `TSK`, `BDB`, `LXX_OS` és a `projekt-adat` kulcs (a táblában `projekt_adat`) a konstansban besorolt, a táblában
 `tisztazatlan` — ezek (2) után a halmazba kerülnének, és a generátor tisztázatlan-jelölést
 adna rájuk. Ez az F24 hatókörén kívüli kód- és render-változás, ezért külön tétel.
+
+### 2.20 `adat/karoli_strong/parok_<könyv>.tsv` és `szavak_<könyv>.tsv` — Károli–Strong párosítás könyvenként
+
+**Állapot: javaslat (modell-kimenet), nem lekérdezés-eredmény.** Két modell (Sonnet a Code-ban, Gemini az
+Actionsben) független párosítása ugyanazzal a prompttal (`f21p/prompt_v3.md`, befagyasztva); az
+`eszkozok/karoli_strong/egyesit.py` determinisztikusan (API nélkül) állítja elő. A modell Strong-számot
+nem ír: a `strong` a TAHOT-ból jön, a linkelt eredeti szó sorszáma alapján. Mivel nem `lekerdez.py`
+eredmény, a két tábla **első sora egy `#`-kezdetű proveniencia-sor** (a `licencek.tsv` mintájára; az olvasók átugorják),
+`scope=manual | forras=… | ts=…` alakban (1.5); a `ts` a C futásnapló utolsó időbélyege, tehát a bemenetekből származik, és az
+újraépítés bájtra azonos marad. A tábla modell-kimenet, javaslat (CLAUDE.md 1. szabály: a `bizonyossag` nem „ellenőrizve”). A zárt licencű Károli–Strong
+forrás adata nem része a tábláknak (l. `eszkozok/karoli_strong/zart_osszevet.py`: csak helyi, összesített
+összevetés). Az első könyv az 1Móz (`parok_1Moz.tsv`, `szavak_1Moz.tsv`); a többi könyv ugyanezzel a
+sémával, a könyv-paraméter cseréjével. A fájlnév a magyar könyvrövidítés ékezet nélküli alakja.
+
+Olvasás/írás: `split('	')` / `'	'.join()` (a `csv` modul tilos, l. CLAUDE.md). Az igehely kanonikus magyar alak.
+
+**`parok_<könyv>.tsv`** — linkenként egy sor (a Károli-token és az eredeti token párja):
+
+| Mező | Tartalom |
+|---|---|
+| `vers` | `IGEHELY` (1.1), pl. `1Móz 1:1` |
+| `hu_sorszam`, `hu_szo` | a Károli-token sorszáma (1-től) és szövege (`tokenek.tokenizal`, a `Karoli_1908.tsv` versszövegéből) |
+| `er_sorszam`, `er_szo` | az eredeti token sorszáma és ragozott alakja a `TAHOT_kivonat.tsv`-ből (soronkénti sorrend a versen belül) |
+| `strong` | a TAHOT `Strong-szám` mezője (pl. `H7225`; `H9001`–`H9049` a TAHOT morféma-kódjai) — a szkript veszi, modell nem írja |
+| `bizonyossag` | `magas` (mindkét modell ugyanazt a linket adta) \| `alacsony` (a két modell eltér, vagy csak az egyik ment át a kapun; a Sonnet változata kerül a táblába) \| `kezi` (mindkét modell kapuhibás; ilyen versnek nincs sora ebben a táblában, a vers az átnézési sorba kerül) |
+| `forras` | `S+C` (egyezés) \| `S` (csak Sonnet) \| `C` (csak C) |
+
+**`szavak_<könyv>.tsv`** — tokenenként egy sor; minden Károli-token és minden eredeti token **pontosan egyszer**:
+
+| Mező | Tartalom |
+|---|---|
+| `vers`, `oldal`, `sorszam`, `szo` | az igehely; `hu` (Károli) vagy `er` (eredeti); a token sorszáma és szövege |
+| `allapot` | `parositva` \| `betoldas` (Károli-token, amelynek nincs eredeti párja) \| `forditatlan` (eredeti token, amelyet Károli nem fordított) \| `fuggoben` (csak `kezi` versnél) |
+| `partner_sorszam` | a párok sorszámai vesszővel (`hu` sorban az eredeti, `er` sorban a Károli sorszámok) |
+| `strong` | `er`: a token TAHOT-Strongja; `hu`: a partnerek TAHOT-Strongjai `+`-szal fűzve (üres, ha nincs partner) |
+| `bizonyossag`, `forras` | mint a `parok` táblában; token-szinten `magas`, ha a két modell ugyanazt a partnerhalmazt (vagy ugyanazt a betoldás/fordítatlan döntést) adta |
+
+**Gépi ellenőrzés** (`egyesit.py --ellenoriz`): minden token pontosan egyszer szerepel a `szavak` táblában; a
+`strong` minden értéke a TAHOT-ból levezethető; a `parok` és `szavak` szó-alakjai a forrásból. **Átnézési sor:**
+`naplok/F22_<könyv>_atnezes.tsv` (a `kezi` versek, linkek nélkül). A tábla `egyesit.py`-val újraépíthető, a két
+modell nyers válaszaiból (`f22/valaszok/sonnet/`, `f22/valaszok/c/`), API-hívás nélkül, bájtra azonosan.
 
 ---
 
