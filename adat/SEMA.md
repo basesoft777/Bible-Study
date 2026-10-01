@@ -882,7 +882,7 @@ licenc-szövegen túli feltételt jelöl (pl. védjegy-szabály, UK Crown-jog).
 N9 tétele szerint a besorolás a `lexikon_general.py` `LICENC`-konstansában és a
 `TISZTAZATLAN_SZOTARAK` halmazban él. A `licencek.tsv` után a lezárás: (1) a generátor
 `LICENC` dict-je a `licencek.tsv` `dataset` → `licenc` leképezéséből töltődik (a lexikon
-szótárkulcsai megegyeznek a `dataset` azonosítókkal, kivéve `UBS`, `Karoli_KH`, `projekt-adat`:
+szótárkulcsai megegyeznek a `dataset` azonosítókkal, kivéve `UBS` és `projekt-adat`:
 ezekre kis megfeleltetés kell); (2) `TISZTAZATLAN_SZOTARAK = {d for d in licencek if allapot == 'tisztazatlan'}`,
 vagyis a halmaz a tábla `allapot` oszlopából származik, nem kézzel áll; (3) a konstans és a
 tábla összevetése CI-ellenőrzés (E-szabály) legyen. A mai konstans és a tábla eltérései:
