@@ -10,7 +10,7 @@ Minden szám szkriptkimenetből jön (a forrásfájlt a jelentés soronként meg
   mérés), f21p/futasnaplo.tsv (a pilot tényleges költsége), valamint a
   tokenek.py / f21p/sorrend_eltero_versek.tsv (a korlátok darabszámai).
 A szöveges részek (döntési szabály, nyitott tételek, következmények) a
-felhasználói döntések (PD1–PD10, DT19–DT21) rögzítései; ajánlás a #22-ről nincs.
+felhasználói döntések (PD1–PD10, DT-F21h–DT-F21j) rögzítései; ajánlás a #22-ről nincs.
 
 Futtatás (a fenti szkriptek után):
     python eszkozok/karoli_strong/jelentes_f21p.py
@@ -25,7 +25,7 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-import koltseg_vetit as kv_  # noqa: E402  (DT21 h: az F22-rétegbesorolás egy helyen)
+import koltseg_vetit as kv_  # noqa: E402  (DT-F21j h: az F22-rétegbesorolás egy helyen)
 import tokenek  # noqa: E402
 
 F21P = os.path.join(tokenek.ROOT, 'f21p')
@@ -85,7 +85,7 @@ def p3b_szakasz():
         return pct(x['szamlalo'], x['nevezo']) if x['nevezo'] not in ('',) else x['szamlalo']
 
     def kc(o, r, sz=None):
-        # az „Összes” az irányadó F22-vetítés; az R1–R4 a korábbi pilot-4-réteges tájékoztató sor (DT21 h)
+        # az „Összes” az irányadó F22-vetítés; az R1–R4 a korábbi pilot-4-réteges tájékoztató sor (DT-F21j h)
         sz = sz or ('vetites' if r in ('Összes',) + tuple(kv_.F22_RETEGEK) else 'vetites_pilot4_tajekoztato')
         x = kp.get(sz, o, r, 'koltseg_usd')
         return '%s [%s–%s]' % (x['ertek'], x['also90'], x['felso90'])
@@ -104,16 +104,16 @@ def p3b_szakasz():
     for o in ('A+B', 'A+B+C'):
         a = minos[(o, 'minosites (kizárás nélküli régi arannyal)')]
         b = minos[(o, 'minosites (tájékoztató: 1Móz 6:17 kizárva)')]
-        ki.append('- **%s: %s** (%s; mért, a kizárás nélküli régi arannyal — DT21 i). Tájékoztató (az 1Móz 6:17 '
+        ki.append('- **%s: %s** (%s; mért, a kizárás nélküli régi arannyal — DT-F21j i). Tájékoztató (az 1Móz 6:17 '
                   'kizárásával, nem minősít): %s (%s).' % (o, a['szamlalo'], a['megjegyzes'], b['szamlalo'], b['megjegyzes']))
     ki.append('- Az A, a B és a C egymodelles összeállítás: a PD6 szerint nem minősíthető.')
     ki.append('- A Döntési szabály „Javaslat” pontjához (tények): rétegenként sem az A+B, sem az A+B+C nem teljesíti a '
               'rétegfeltételeket (l. lent), tehát a szabály szerinti eset: „egyik sem” — a bukott feltételek a táblákban.')
     ki += ['', '### Az öt feltétel összeállításonként és rétegenként', '',
            'Feltételek: (1) `magas` pontosság ≥ 98% rétegenként; (2) lefedettség ≥ 95%; (3) régi arany ≥ 95% (halmaz-'
-           'definíció; a MÉRT érték a kizárás nélküli, a küszöb ehhez viszonyít — DT21 i; mellette TÁJÉKOZTATÓKÉNT az '
+           'definíció; a MÉRT érték a kizárás nélküli, a küszöb ehhez viszonyít — DT-F21j i; mellette TÁJÉKOZTATÓKÉNT az '
            '1Móz 6:17 nélküli érték); (4) vetített költség 90%-os felső széle ≤ 60 USD (teljes Biblia; az „Összes” sor '
-           'az F22 műfaji öt réteg szerinti vetítés, DT21 h; az R1–R4 sorokban a réteg része a korábbi pilot-4-réteges '
+           'az F22 műfaji öt réteg szerinti vetítés, DT-F21j h; az R1–R4 sorokban a réteg része a korábbi pilot-4-réteges '
            'besorolás szerint, tájékoztató); (5) vetített `alacsony` arány ≤ 10% (link-arány a végső '
            'kimenetben; a 200 versen / az aranyon). Egymodelles összeállításnál az (1) és az (5) n.é. (PD6); az (1) '
            'helyén az összpontosság tájékoztatásul áll.', '',
@@ -230,9 +230,9 @@ def p3b_szakasz():
     # P5
     F22 = list(kv_.F22_RETEGEK)
     ki += ['### P5 minden összeállításra (teljes Biblia, 90%-os intervallum)', '',
-           '**Eltérés a brieftől:** a bootstrap egysége a köteg, nem a vers — DT21 f): **elfogadva (felhasználói döntés)**. '
+           '**Eltérés a brieftől:** a bootstrap egysége a köteg, nem a vers — DT-F21j f): **elfogadva (felhasználói döntés)**. '
            'Az ár a modell táblaára × a futás mért cost/táblaár aránya (az A-nál és a B-nél a cost nem egyenlő a táblaárral).', '',
-           '**Rétegbesorolás (DT21 h, felhasználói döntés):** a teljes Biblia vetítése az F22 brief 22.2 **műfaji** (nem '
+           '**Rétegbesorolás (DT-F21j h, felhasználói döntés):** a teljes Biblia vetítése az F22 brief 22.2 **műfaji** (nem '
            'kánon szerinti) öt rétege szerint készül: %s. A 22.2 szövegén túli könyveket a felhasználó sorolta be: %s. A '
            'pilot mérési rétegei (R1–R4, minta.tsv, arany v2) nem változnak; a minta versei a döntőbírói arányhoz és a '
            'kézimunkához könyv szerint képeződnek le az F22-rétegekre (Péld az R1-ből a költészethez; az R4 evangéliumai '
@@ -260,7 +260,7 @@ def p3b_szakasz():
             kp.get('besorolas_kulonbseg_tajekoztato', o, 'Összes', 'f22_minus_pilot4_szazalek')['ertek']))
     ki += ['', 'Az egymodelles összeállításoknál a különbség csak a rétegenkénti ceil(N/10) kötegszám kerekítéséből jön (az '
            'illesztés rétegfüggetlen); az A+B+C-nél a döntőbírói versarány rétegenkénti súlyozása is változik.', '',
-           '| futás | cost/táblaár (s) | újrakérés-szorzó M | ellenőrzés mintán belül | leave-one-out | **számító (DT21 g: a konzervatívabb)** |',
+           '| futás | cost/táblaár (s) | újrakérés-szorzó M | ellenőrzés mintán belül | leave-one-out | **számító (DT-F21j g: a konzervatívabb)** |',
            '|---|---|---|---|---|---|']
     for f in ('F1V2', 'F2V2', 'F3V2', 'F3V2B', 'F4V2'):
         sz = kp.get('ellenorzes', f, '-', 'szamito_elteres_szazalek')
@@ -268,7 +268,7 @@ def p3b_szakasz():
             f, kp.get('ar', f, '-', 'cost1_per_tablaar_s')['ertek'], kp.get('ar', f, '-', 'ujrakeres_szorzo_M')['ertek'],
             kp.get('ellenorzes', f, '-', 'elteres_szazalek')['ertek'], kp.get('ellenorzes', f, '-', 'loo_elteres_szazalek')['ertek'],
             sz['ertek'], sz['megjegyzes'].split('számít: ')[-1]))
-    ki += ['', 'DT21 g) (felhasználói döntés): a mintán belüli és a leave-one-out ellenőrzés közül a konzervatívabb — a '
+    ki += ['', 'DT-F21j g) (felhasználói döntés): a mintán belüli és a leave-one-out ellenőrzés közül a konzervatívabb — a '
            'nagyobb abszolút eltérésű — számít a ≤ 10%%-os küszöbhöz; ez minden futásnál a leave-one-out (a mintán belüli '
            'illesztés a saját hívásait közel 0 eltéréssel adja vissza). Az A+B+C összesített ellenőrzése (%s%%) csak '
            'mintán belüli; a futásonkénti leave-one-out a fenti táblában.' % kp.get('ellenorzes', 'A+B+C', '-', 'elteres_szazalek')['ertek']]
@@ -323,8 +323,8 @@ def _genezis_versek():
 
 
 def _dt21_hatas(bes):
-    """{DT21-betű: (segített, nem segített, ártott)} az F3V3-sorokból (c_diff_p3c logikája: megszűnt/átsorolt = segített,
-    maradt = nem segített, új (c) = ártott), a változás-konvenció DT21-hozzárendelésével."""
+    """{DT-F21j-betű: (segített, nem segített, ártott)} az F3V3-sorokból (c_diff_p3c logikája: megszűnt/átsorolt = segített,
+    maradt = nem segített, új (c) = ártott), a változás-konvenció DT-F21j-hozzárendelésével."""
     import c_diff_p3c as cdp
     ki = {b: [0, 0, 0] for b in 'abcde'}
     for r in bes:
@@ -457,7 +457,7 @@ def p3c_szakasz():
            '| összeállítás | %s | Összes |' % ' | '.join(F22), '|---|' + '---|' * (len(F22) + 1)]
     for t, o in ((kb, 'A (F1V2)'), (kb, 'B (F2V2)'), (kb, 'C (F3V2)'), (kb, 'A+B'), (kb, 'A+B+C'), (kc, C3_), (kc, S), (kc, PAR)):
         ki.append('| %s | %s |' % (o, ' | '.join(_usd(t, o, r) for r in F22 + ['Összes'])))
-    ki += ['', 'Ellenőrzés a 200 versre (a konzervatívabb számít, DT21 g): %s.' % '; '.join(
+    ki += ['', 'Ellenőrzés a 200 versre (a konzervatívabb számít, DT-F21j g): %s.' % '; '.join(
         '%s %s%%' % (o, kc.get('ellenorzes', o, '-', 'szamito_elteres_szazalek')['ertek']) for o in (S, C3_, PAR)), '']
     # (f) KJV
     h = kj.get('hatas', 'F8V3 − F3V3', 'Összes', 'pontossag')
@@ -481,14 +481,14 @@ def p3c_szakasz():
     ki += ['### (g) A (c) hibák újrabesorolása (Opus-besorolás, nem mérés; c_diff_p3c_besorolas.tsv, naplok/F21P_C_diff_p3c.md)', '',
            '- C (F3V3), arany v3: a / b / c = %d / %d / %d; Sonnet (50 kapun átment aranyvers): %d / %d / %d; közös (c) eset: %d.' % (
                oszt('F3V3', 'a'), oszt('F3V3', 'b'), oszt('F3V3', 'c'), oszt('SONNETV3', 'a'), oszt('SONNETV3', 'b'), oszt('SONNETV3', 'c'), len(sk & ck)),
-           '- A konvenciók hatása (a v2-es C-futások (c) eseteihez képest, DT21 a–e): l. (h).',
+           '- A konvenciók hatása (a v2-es C-futások (c) eseteihez képest, DT-F21j a–e): l. (h).',
            '- Olvasási korlátok: a besorolás az Opus kézi döntése, nem mérés; a Sonnet R3-a nincs benne (kapuhiba); az egyetlen '
            'v2-futásban (c) eset megszűnése a futásközi ingadozással is összefér; a korrigált értékek a küszöb szempontjából nem számítanak.', '']
     # (h) nyitott tételek
     dh = _dt21_hatas(bes)
     jel = [r for r in bes if cdp.JELOLT in r['indok']]
     ki += ['### (h) Nyitott és lezárt tételek', '',
-           '- A DT21 a–e a regressziós mérésben lezárva (segített = a v2 (c) eset megszűnt vagy átsorolódott; nem segített = maradt; '
+           '- A DT-F21j a–e a regressziós mérésben lezárva (segített = a v2 (c) eset megszűnt vagy átsorolódott; nem segített = maradt; '
            'ártott = új (c)): %s.' % '; '.join('%s) %d / %d / %d' % (b, *dh[b]) for b in 'abcde'),
            '- „Arany-felülvizsgálatra jelölt” sor: %d (C: %d, Sonnet: %d): %s; a számokban (c), a 6. táblázat zárt (PD10).' % (
                len(jel), sum(1 for r in jel if r['futas'] == 'F3V3'), sum(1 for r in jel if r['futas'] == 'SONNETV3'),
@@ -634,7 +634,7 @@ def main():
     c_regi0 = m2.get('regi_arany', 'F3V2', 'Összes', 'egyezes')
     c_regik = m2.get('regi_arany', 'F3V2', 'Összes', 'egyezes_hibas_kizarva_tajekoztato')
     c3_regi0 = m1.get('regi_arany', 'C', 'Összes', 'egyezes')
-    REGI_JEL = ('tájékoztató, nem minősít — a küszöb szempontjából a mért, kizárás nélküli érték számít (DT21 i); '
+    REGI_JEL = ('tájékoztató, nem minősít — a küszöb szempontjából a mért, kizárás nélküli érték számít (DT-F21j i); '
                 'a hibásnak jelölt hármas csak az 1Móz 6:17, az 1Móz 13:4 korábbi hibás-jelölése a felhasználó döntése '
                 'szerint visszavonva')
     ki += ['## Összefoglaló — P3 (korábbi, a P3b előtt: v1-A/B, F3/F3V2)', '',
@@ -737,7 +737,7 @@ def main():
            'B pontosság %s, lefedettség %s.' % (
                p1('pontossag_lefedettseg', 'A', 'Összes', 'pontossag'), p1('pontossag_lefedettseg', 'A', 'Összes', 'lefedettseg'),
                p1('pontossag_lefedettseg', 'B', 'Összes', 'pontossag'), p1('pontossag_lefedettseg', 'B', 'Összes', 'lefedettseg')), '',
-           '### Régi arany egyezés (halmaz-definíció; mért = kizárás nélkül, DT21 i)', '',
+           '### Régi arany egyezés (halmaz-definíció; mért = kizárás nélkül, DT-F21j i)', '',
            '| összeállítás | kizárás nélkül (MÉRT) | az 1Móz 6:17 nélkül (TÁJÉKOZTATÓ) |', '|---|---|---|']
     for o in ('A', 'B', 'C', 'A+B magas (A∩B)'):
         ki.append('| %s (arany-független, 200 verses minta) | %s | %s |' % (
@@ -794,12 +794,12 @@ def main():
     # (d) P5
     ki += ['## (d) Költségvetítés — P3 (P5, csak a C; forrás: koltseg_vetites.tsv; a P3b-vetítés a fenti P3b-szakaszban)', '',
            '**Eltérés a brieftől:** a bootstrap egysége a 10 verses köteg, nem a vers (a brief P5.6 a verseken kéri; a token '
-           'hívásonként, 10 versre ismert, versenként nem mérhető). DT21 f): **elfogadva (felhasználói döntés)**.', '',
+           'hívásonként, 10 versre ismert, versenként nem mérhető). DT-F21j f): **elfogadva (felhasználói döntés)**.', '',
            'Módszer: illesztés tokenfajtánként az első próbálkozású hívásokon (bemenet = a + b·x + c·k; kimenet = a + b·x; '
            'x = eredeti + Károli-szavak, k = KJV-támpont szavai); a teljes Biblia valódi vershosszai (Karoli_1908, '
            'TAHOT/TAGNT); ár a cost mezőből; az újrakérés a pilot mért szorzójával; bootstrap a kötegek felett (1000); '
            'ellenőrzés a 200 versen.', '',
-           'Rétegbesorolás (DT21 h): az F22 brief 22.2 műfaji (nem kánon szerinti) öt rétege; a korábbi pilot-4-réteges '
+           'Rétegbesorolás (DT-F21j h): az F22 brief 22.2 műfaji (nem kánon szerinti) öt rétege; a korábbi pilot-4-réteges '
            'besorolás tájékoztatóként alább.', '',
            '| réteg (F22) | könyvek | versek |', '|---|---|---|']
     for r in kv_.F22_RETEGEK:
@@ -808,7 +808,7 @@ def main():
     for r in ('R1', 'R2', 'R3', 'R4'):
         ki.append('| %s | %s | %s |' % (r, kv.get('reteg_besorolas_pilot4_tajekoztato', '-', r, 'konyvek')['ertek'],
                                         kv.get('biblia_pilot4_tajekoztato', '-', r, 'versek')['ertek']))
-    ki += ['', '| futás | illesztés (bemenet a/b/c; kimenet a/b) | cost/táblaár (1. próba) | újrakérés-szorzó M | 200 vers: vetített / tényleges (eltérés) | leave-one-out eltérés | **számító (DT21 g)** |',
+    ki += ['', '| futás | illesztés (bemenet a/b/c; kimenet a/b) | cost/táblaár (1. próba) | újrakérés-szorzó M | 200 vers: vetített / tényleges (eltérés) | leave-one-out eltérés | **számító (DT-F21j g)** |',
            '|---|---|---|---|---|---|---|']
     for f in ('F3', 'F3V2'):
         sz = kv.get('ellenorzes', f, '-', 'szamito_elteres_szazalek')
@@ -847,17 +847,17 @@ def main():
     ki.append('')
 
     # (e) nyitott tételek, eszközök, korlátok
-    ki += ['## (e) A DT21 tételei, átvihető eszközök, megtanult korlátok', '',
+    ki += ['## (e) A DT-F21j tételei, átvihető eszközök, megtanult korlátok', '',
            '**A #22:** a döntés elhalasztva a regressziós futás utánra; brief-diff nem készül, teljes futás nem indul; '
            'marad `dontesre_var`.', '',
-           '### Az a–e tétel: regressziós mérésre átvéve (DT21 döntés: a–e a jegyzet v2-be, prompt_v3, F3V3)', '',
+           '### Az a–e tétel: regressziós mérésre átvéve (DT-F21j döntés: a–e a jegyzet v2-be, prompt_v3, F3V3)', '',
            '1. **G / K7:** a prompt_v2 G-szabályának kivétele („többtagú igei szerkezet minden tagja”) tágabb, mint a jegyzet '
            'K7-e (*tudja vala*, *megy vala*): melyik az irányadó.',
            '2. **C:** a prompt „azt, őt …” felsorolása a C-nél az *\'et* nélküli, betoldott tárgyi névmásokra is általánosult.',
            '3. **„azt … hogy” / „azért … hogy”:** az arany az előbbit betoldásnak veszi, az utóbbit (Mt 21:4) köti.',
            '4. **2Móz 26:13 *is*:** a K9 szerint a *ve-* az *is*-hez köthető volna; az arany v2 forditatlan-nak veszi (az F3V2-nél (b)).',
            '5. **D:** a birtokláncban (*szolgálójának szemét*) nem egyértelmű, melyik szó viseli a ragot.', '',
-           '### Lezárt tételek (f–k; felhasználói döntés, DT21)', '',
+           '### Lezárt tételek (f–k; felhasználói döntés, DT-F21j)', '',
            '- **f)** a P5 bootstrap-egysége a köteg: elfogadva (felhasználói döntés).',
            '- **g)** költség-ellenőrzés: a mintán belüli és a leave-one-out közül a konzervatívabb (nagyobb abszolút '
            'eltérésű) számít; ez minden futásnál a leave-one-out (P5-táblák, „számító” oszlop).',
@@ -886,7 +886,7 @@ def main():
                p1('kapuhiba_tipus', 'F1 (A)', 'Összes', 'kapupont_1-json_elso_probara'),
                p1('kapuhiba_tipus', 'F2 (B)', 'Összes', 'kapupont_1-json_elso_probara')),
            '- A C gondolkodási tokenje a naplóban és a nyers usage-ban 0 (minimal effort); a nyers usage tárolása az F3V2-től.',
-           '- Gondolkodási mód (eltérés a brief Keretek pontjától, amely mindhárom modellnél azonos beállítást kért; DT21 j: '
+           '- Gondolkodási mód (eltérés a brief Keretek pontjától, amely mindhárom modellnél azonos beállítást kért; DT-F21j j: '
            'a pilot idején elfogadva): az A '
            'és a B kikapcsolva, a C-nél a gondolkodás kötelező, `minimal` szinten. Az F1–F6 napló `gondolkodas_token` = 0 '
            'értéke nem mérés (a token olvasása csak az F21.10-től él); a nyers usage az F3V2-től tárolt, abban is 0. '

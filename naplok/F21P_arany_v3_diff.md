@@ -4,13 +4,13 @@
 
 > ⛔ **Megállás (PD13, DT-F21a).** Ez JAVASLAT: az `f21p/arany_opus_v3_javaslat.jsonl` nem befagyasztott, sha256-fájlja nincs. A felhasználó jóváhagyásáig az arany v3 nem fagy be, és a mérés (F3V3, Sonnet) nem fut az arany v3-ra; a befagyasztás a jóváhagyás után az orkesztrátoré.
 
-> **Két változat, a felhasználó választ (F21.44).** **A:** a jelenlegi javaslat, 3 link (`f21p/arany_opus_v3_javaslat.jsonl`, változatlan). **B:** A + a DT21 b) szó szerinti olvasatának további linkjei (`f21p/arany_opus_v3_javaslat_B.jsonl`, 5. szakasz; NEM alkalmazott, NEM befagyasztott). A jegyzet v2 és a prompt_v3 C szabálya az A olvasatot követi.
+> **Két változat, a felhasználó választ (F21.44).** **A:** a jelenlegi javaslat, 3 link (`f21p/arany_opus_v3_javaslat.jsonl`, változatlan). **B:** A + a DT-F21j b) szó szerinti olvasatának további linkjei (`f21p/arany_opus_v3_javaslat_B.jsonl`, 5. szakasz; NEM alkalmazott, NEM befagyasztott). A jegyzet v2 és a prompt_v3 C szabálya az A olvasatot követi.
 
-A javaslat az arany v2 másolata; csak a jegyzet v2 (`f21p/arany_opus_jegyzetek_v2.md` 8. szakasz, a DT21 a–e döntések) konvencióival ütköző linkek változnak, a többi sor bájtra azonos (a szkript ellenőrzi). A szabály- és konvenció-azonosítás és az indok **kézi ítélet (Opus), nem mérés**.
+A javaslat az arany v2 másolata; csak a jegyzet v2 (`f21p/arany_opus_jegyzetek_v2.md` 8. szakasz, a DT-F21j a–e döntések) konvencióival ütköző linkek változnak, a többi sor bájtra azonos (a szkript ellenőrzi). A szabály- és konvenció-azonosítás és az indok **kézi ítélet (Opus), nem mérés**.
 
 ## 1. A változások (vers, magyar szó, régi link, új link)
 
-| vers | magyar szó | régi link (v2) | új link (v3-javaslat) | szabály (DT21) | konvenció | indok |
+| vers | magyar szó | régi link (v2) | új link (v3-javaslat) | szabály (DT-F21j) | konvenció | indok |
 |---|---|---|---|---|---|---|
 | Jób 33:13 | 4 Azért | 4 Azért -> 5 כִּ֥י H3588 [that] | 4 Azért -> betoldas | c | K11 | Azért, hogy ← כִּי: az Azért korrelatív mutató névmásnak nincs külön eredetije, ezért betoldas; a hogy (5) marad a כִּי-n |
 | Mt 21:4 | 3 azért | 3 azért -> 5 ἵνα G2443 [that] | 3 azért -> betoldas | c | K11 | azért lett, hogy ← ἵνα: az azért korrelatív mutató névmásnak nincs külön eredetije, ezért betoldas; a hogy (5) marad a ἵνα-n |
@@ -50,9 +50,9 @@ A mért pontosság és lefedettség itt csak a 60 aranyversre, a két arany öss
 
 A javaslat ellenőrzése: `python eszkozok/karoli_strong/arany_ellenoriz.py --arany f21p/arany_opus_v3_javaslat.jsonl` (a befagyasztás-ellenőrzés csak az arany v2 útvonalára fut; a javaslatra a kapu öt pontja, a `[nem TR]` és a mérési kizárás ellenőrzése fut). Ez a szkript a javaslat minden versét a kapun is átengedi (kapu.vers_ellenoriz), különben hibával megáll: **60/60 vers átmegy a kapun**, 1048 link.
 
-## 5. B) változat — a DT21 b) szó szerinti olvasata (NEM alkalmazott, döntésre)
+## 5. B) változat — a DT-F21j b) szó szerinti olvasata (NEM alkalmazott, döntésre)
 
-A felhasználó értelmezése (F21.44): „a névmás a ragra kötődik” — *'et* + rag esetén a magyar névmás a ragra megy, az *'et* `forditatlan` (ez mindkét változatban így van). **Nincs eldöntve** az igén (főnévi igenéven, elöljárón) álló, *'et* nélküli névmási rag külön kitett magyar névmása: **(A)** a K4 szerint a raghoz kötve marad (a jelenlegi javaslat, `f21p/arany_opus_v3_javaslat.jsonl`); **(B)** szó szerint: a névmás `betoldas`, a rag `forditatlan` (`f21p/arany_opus_v3_javaslat_B.jsonl` = A + az alábbi linkek; NEM befagyasztott). A B a DT20 a) kérdését (tárgyrag az igén) is érinti: a rag itt `forditatlan`, nem az igéhez kötött. Az osztály és az indok kézi ítélet (Opus), nem mérés.
+A felhasználó értelmezése (F21.44): „a névmás a ragra kötődik” — *'et* + rag esetén a magyar névmás a ragra megy, az *'et* `forditatlan` (ez mindkét változatban így van). **Nincs eldöntve** az igén (főnévi igenéven, elöljárón) álló, *'et* nélküli névmási rag külön kitett magyar névmása: **(A)** a K4 szerint a raghoz kötve marad (a jelenlegi javaslat, `f21p/arany_opus_v3_javaslat.jsonl`); **(B)** szó szerint: a névmás `betoldas`, a rag `forditatlan` (`f21p/arany_opus_v3_javaslat_B.jsonl` = A + az alábbi linkek; NEM befagyasztott). A B a DT-F21i a) kérdését (tárgyrag az igén) is érinti: a rag itt `forditatlan`, nem az igéhez kötött. Az osztály és az indok kézi ítélet (Opus), nem mérés.
 
 | vers | magyar szó | régi link (A) | új link (B) | konvenció | indok |
 |---|---|---|---|---|---|

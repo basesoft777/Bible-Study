@@ -9,7 +9,7 @@
 - **A pilot költsége:** 4,325231 USD (P3 0,734594, P3b 0,870473, P3c 2,720164; ebből a Sonnet 2,197554, a baleseti F8V3-kötegek 0,023232). Plafon 3 → 4 → 5 USD (küszöb 2 → 3,90 → 4,90); a futó összeg a küszöb alatt maradt.
 - **Sonnet-keret:** a modell a `reasoning.max_tokens = 1024` keretet nem tartotta be: 142 077 gondolkodási token a 173 414 kimeneti tokenből, hívásonként max. 11 144; 2 length-lezárás a 15. kötegben, a 10 R3-aranyvers (Jer 46:21, 51:3; Ez 11:3, 16:57, 22:25, 30:5, 33:31, 39:13, 41:2, 46:12) végleg kapuhibás; a futás nem determinisztikus.
 - **KJV:** a mérés szerint nincs kimutatható hatás (+0,25 pp, az ingadozáson belül); a pilot döntése: „nem igazolt, a javított táblával újramérhető”; az R4 „KJV nélkül, nem mérhető”.
-- **(c)-besorolás (Opus, nem mérés):** C (F3V3) a/b/c = 41/22/26, Sonnet 22/17/7, közös (c) 1; a DT21 a–e segített (a 2, b 4, c 4, e 3 eset), ártott egyik sem.
+- **(c)-besorolás (Opus, nem mérés):** C (F3V3) a/b/c = 41/22/26, Sonnet 22/17/7, közös (c) 1; a DT-F21j a–e segített (a 2, b 4, c 4, e 3 eset), ártott egyik sem.
 - **#22:** a felhasználó választott iránya javaslatként rögzítve (Sonnet a Code-ban + C az Actionsben, könyvenként, a Genezissel kezdve; `magas` = egyezés, eltérésnél a Sonnet-változat `alacsony`; próféták 5 verses kötegben; az 1Móz 1–5 után `/usage`, megállás 50% fölött); a #22 `dontesre_var`, brief-diff nincs, teljes futás nem indul.
-- **Nyitott:** N-F21 (Károli ↔ KJV zsoltár-eltolódás); az (1) R3 nem mérhető (a Sonnet R3-pótlása a próféták előtt); hét „arany-felülvizsgálatra jelölt” C-eset (a Sonnetnél egy); az F31-brief átfedése. A DT21 a–e lezárva.
+- **Nyitott:** N-F21 (Károli ↔ KJV zsoltár-eltolódás); az (1) R3 nem mérhető (a Sonnet R3-pótlása a próféták előtt); hét „arany-felülvizsgálatra jelölt” C-eset (a Sonnetnél egy); az F31-brief átfedése. A DT-F21j a–e lezárva.
 - **Merge:** csak a felhasználótól.
