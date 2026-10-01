@@ -14,7 +14,8 @@ A sor elején állhat az igehely (`1Móz 1:1`, vagy `Gen.1.1`; TAB, `|` vagy sz�
 nem hordoznak igehelyet, a `--sorrend` kapcsoló a könyv verseit a minta sorrendjében rendeli a sorokhoz.
 
 SZABÁLYOK (a brief szerint):
-  * a vesszővel kapcsolt pár MÁSODIK tagja (pl. `5647, 8799` -> `8799`) igealak-kód, eldobjuk;
+  * a vesszővel kapcsolt pár MÁSODIK tagja igealak-kód, ezt eldobjuk (pl. `5647, 8799`: a `8799` kiesik,
+    az első tag, `5647` marad);
   * a `--max-strong` (alap: 8674, héber) fölötti számokat eldobjuk — mindkét oldalon (a zárt forrásból és a
     saját táblából is: a TAHOT H9001–H9049 morféma-kódjai nem szerepelnek a zárt forrásban).
 
@@ -271,6 +272,11 @@ def onteszt():
         if len(t) > 3 and t in kimenet:
             hibak.append('a kimenet szót tartalmaz')
             break
+    # a repón belüli bemenet tiltott; másik meghajtó (Windows) vagy a repón kívüli útvonal engedett, nem dob hibát
+    if not repon_belul(os.path.join(tokenek.ROOT, 'f22', 'minta_1Moz.tsv')):
+        hibak.append('a repón belüli útvonalat nem ismerte fel')
+    if repon_belul(ut) or repon_belul('Z:\\nincs\\ilyen\\zart.txt'):
+        hibak.append('a repón kívüli útvonalat belülinek vette')
     for h in hibak:
         print('ÖNTESZT HIBA: ' + h, file=sys.stderr)
     print('önteszt: %s' % ('HIBA' if hibak else 'rendben'))
@@ -280,7 +286,10 @@ def onteszt():
 def repon_belul(ut):
     root = os.path.realpath(tokenek.ROOT)
     p = os.path.realpath(ut)
-    return os.path.commonpath([root, p]) == root
+    try:
+        return os.path.commonpath([root, p]) == root
+    except ValueError:      # Windows: másik meghajtó (nincs közös gyökér) -> biztosan a repón kívül
+        return False
 
 
 def main(argv=None):
