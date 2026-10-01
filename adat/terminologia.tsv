@@ -1,64 +1,73 @@
 # Terminológia (S2, D26). Kulcs: angol + verzio. Séma: adat/SEMA.md 2.15
-angol	magyar	megjegyzes	verzio
-spirit	szellem	SZOTAR S2 indulo sor	v1
-spiritual	szellemi	SZOTAR S2 indulo sor	v1
-soul	lélek	SZOTAR S2 indulo sor	v1
-cf.	vö.	G1941 aranybol: rovidites-feloldas (confer)	v1
-cl.	klasszikus	G1941 aranybol: rovidites-feloldas (classical)	v1
-pass.	szenvedő alakban	G1941 aranybol: rovidites-feloldas (passive)	v1
-sc.	ti.	G1941 aranybol: rovidites-feloldas (scilicet -> tudniillik)	v1
-see	l.	G1941 aranybol: rovidites-feloldas (see -> lasd)	v1
-Sept.	Septuaginta	G1941 aranybol: rovidites-feloldas	v1
-i. e.	azaz	G1941 aranybol: rovidites-feloldas (id est)	v1
-etc.	stb.	G1941 aranybol: rovidites-feloldas	v1
-p.	o.	G1941 aranybol: rovidites-feloldas (page -> oldal)	v1
-Heb.	héb.	G1941 aranybol: rovidites-feloldas (Hebrew -> heber)	v1
-Holy Spirit	Szent Szellem	F28 DT25 (a): a G4151-ben jóváhagyva; a Szentlélek alak a fordításban jelzést kap (12. kapu)	v2
-Spirit of God	Isten Szelleme	F28 DT25 (a); az Isten Lelke alak a fordításban jelzést kap (12. kapu)	v2
-the Spirit	a Szellem	F28 DT25 (a): az isteni Szellem nagybetűvel; az emberi, angyali, démoni πνεῦμα kisbetűs szellem, a ψυχή lélek	v2
-verb	ige	DT26 #1 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-[masculine]	[hímnemű]	DT26 #1 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-suffix	suffixummal	DT26 #2 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-prefix	prefixummal	DT26 #2 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Perfect	perfectum	DT26 #3 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Imperfect	imperfectum	DT26 #3 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Imperative	imperativus	DT26 #3 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Infinitive construct	infinitivus constructus	DT26 #3 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Participle active	aktív participium	DT26 #4 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Participle passive	passzív participium	DT26 #4 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-consecutive	consecutivummal	DT26 #5 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-3 feminine singular	3. nőnemű egyes szám	DT26 #6 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-accusative	tárgyeset	DT26 #7 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-oratio recta	oratio recta	DT26 #9 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-twice in verse	a versben kétszer	DT26 #12 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-id.	ua.	DT26 #14 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-ib.	ugyanott	DT26 #14 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-compare	vö.	DT26 #15 (F28 javaslat, felhasználói jóváhagyás 2026.10.01) — a „מִן compare” sor (#26) külön kulcs; a kapu a hosszabb kulcs találatait annak a sornak adja (F28.40)	v3
-Late Hebrew	késői héber	DT26 #16 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Old Aramaic	óarámi	DT26 #16 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Sabean	szabeus	DT26 #16 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Nabatean	nabateus	DT26 #16 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Palmyrene	palmürai	DT26 #16 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Assyrian	asszír	DT26 #16 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-marginal reading	széljegyzet	DT26 #17 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-vol. ii	II. köt.	DT26 #19 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-from Homer down	Homérosztól kezdve	DT26 #21 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Xenophon	Xenophón	DT26 #22 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Herodotus	Hérodotosz	DT26 #22 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Plato	Platón	DT26 #22 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Aristotle	Arisztotelész	DT26 #22 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Epictetus	Epiktétosz	DT26 #22 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Isocrates	Iszokratész	DT26 #22 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Diogenes Laërtius	Diogenész Laertiosz	DT26 #22 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Lam	JSir	DT26 #24 (F28 javaslat, felhasználói jóváhagyás 2026.10.01) — DT24 (a); a #23 (Lam -> Sir) elvetve	v3
-Ecclus	Sir	DT26 #25 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Ecclesiasticus	Sir	DT26 #25 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-מִן compare	comparativus	DT26 #26 (F28 javaslat, felhasználói jóváhagyás 2026.10.01) — compare (comparativus, מִן-nel); a „compare → vö.” (#15) mellett külön kulcs	v3
-emphatic	emphaticus	DT26 #27 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-denominative	denominativum	DT26 #28 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Tel Amarna	Tel Amarna	DT26 #29 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Zinjirli	Zendzsirli	DT26 #30 (F28 javaslat, felhasználói jóváhagyás 2026.10.01) — módosítva: nagy kezdőbetű	v3
-proper name, of a location	tulajdonnév, helynév	DT26 #31 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-proper name, of a people	tulajdonnév, népnév	DT26 #31 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
-Isa^	Ézs^	DT26 #32 (F28 javaslat, felhasználói jóváhagyás 2026.10.01) — Isa^2, Isa^3 stb. -> Ézs^2, Ézs^3	v3
-She'ôl	Seol	DT26 #33 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3
+angol	magyar	megjegyzes	verzio	kapu
+spirit	szellem	SZOTAR S2 indulo sor	v1	igen
+spiritual	szellemi	SZOTAR S2 indulo sor	v1	igen
+soul	lélek	SZOTAR S2 indulo sor	v1	igen
+cf.	vö.	G1941 aranybol: rovidites-feloldas (confer)	v1	igen
+cl.	klasszikus	G1941 aranybol: rovidites-feloldas (classical)	v1	igen
+pass.	szenvedő alakban	G1941 aranybol: rovidites-feloldas (passive)	v1	igen
+sc.	ti.	G1941 aranybol: rovidites-feloldas (scilicet -> tudniillik)	v1	igen
+see	l.	G1941 aranybol: rovidites-feloldas (see -> lasd)	v1	igen
+Sept.	Septuaginta	G1941 aranybol: rovidites-feloldas	v1	igen
+i. e.	azaz	G1941 aranybol: rovidites-feloldas (id est)	v1	igen
+etc.	stb.	G1941 aranybol: rovidites-feloldas	v1	igen
+p.	o.	G1941 aranybol: rovidites-feloldas (page -> oldal)	v1	igen
+Heb.	héb.	G1941 aranybol: rovidites-feloldas (Hebrew -> heber)	v1	igen
+Holy Spirit	Szent Szellem	F28 DT25 (a): a G4151-ben jóváhagyva; a Szentlélek alak a fordításban jelzést kap (12. kapu)	v2	igen
+Spirit of God	Isten Szelleme	F28 DT25 (a); az Isten Lelke alak a fordításban jelzést kap (12. kapu)	v2	igen
+the Spirit	a Szellem	F28 DT25 (a): az isteni Szellem nagybetűvel; az emberi, angyali, démoni πνεῦμα kisbetűs szellem, a ψυχή lélek	v2	igen
+verb	ige	DT26 #1 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+[masculine]	[hímnemű]	DT26 #1 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+suffix	suffixummal	DT26 #2 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+prefix	prefixummal	DT26 #2 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Perfect	perfectum	DT26 #3 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Imperfect	imperfectum	DT26 #3 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Imperative	imperativus	DT26 #3 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Infinitive construct	infinitivus constructus	DT26 #3 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Participle active	aktív participium	DT26 #4 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Participle passive	passzív participium	DT26 #4 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+consecutive	consecutivummal	DT26 #5 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+3 feminine singular	3. nőnemű egyes szám	DT26 #6 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+accusative	tárgyeset	DT26 #7 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+oratio recta	oratio recta	DT26 #9 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+twice in verse	a versben kétszer	DT26 #12 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+id.	ua.	DT26 #14 (F28 javaslat, felhasználói jóváhagyás 2026.10.01); DT27 (felhasználói döntés 2026.10.01): kapu=nem	v3	nem
+ib.	ugyanott	DT26 #14 (F28 javaslat, felhasználói jóváhagyás 2026.10.01); DT27 (felhasználói döntés 2026.10.01): kapu=nem	v3	nem
+compare	vö.	DT26 #15 (F28 javaslat, felhasználói jóváhagyás 2026.10.01) — a „מִן compare” sor (#26) külön kulcs; a kapu a hosszabb kulcs találatait annak a sornak adja (F28.40); DT27 (felhasználói döntés 2026.10.01): kapu=nem	v3	nem
+Late Hebrew	késői héber	DT26 #16 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Old Aramaic	óarámi	DT26 #16 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Sabean	szabeus	DT26 #16 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Nabatean	nabateus	DT26 #16 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Palmyrene	palmürai	DT26 #16 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Assyrian	asszír	DT26 #16 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+marginal reading	széljegyzet	DT26 #17 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+vol. ii	II. köt.	DT26 #19 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+from Homer down	Homérosztól kezdve	DT26 #21 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Xenophon	Xenophón	DT26 #22 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Herodotus	Hérodotosz	DT26 #22 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Plato	Platón	DT26 #22 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Aristotle	Arisztotelész	DT26 #22 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Epictetus	Epiktétosz	DT26 #22 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Isocrates	Iszokratész	DT26 #22 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Diogenes Laërtius	Diogenész Laertiosz	DT26 #22 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Lam	JSir	DT26 #24 (F28 javaslat, felhasználói jóváhagyás 2026.10.01) — DT24 (a); a #23 (Lam -> Sir) elvetve	v3	igen
+Ecclus	Sir	DT26 #25 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Ecclesiasticus	Sir	DT26 #25 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+מִן compare	comparativus	DT26 #26 (F28 javaslat, felhasználói jóváhagyás 2026.10.01) — compare (comparativus, מִן-nel); a „compare → vö.” (#15) mellett külön kulcs; DT27 (felhasználói döntés 2026.10.01): kapu=nem	v3	nem
+emphatic	emphaticus	DT26 #27 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+denominative	denominativum	DT26 #28 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Tel Amarna	Tel Amarna	DT26 #29 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Zinjirli	Zendzsirli	DT26 #30 (F28 javaslat, felhasználói jóváhagyás 2026.10.01) — módosítva: nagy kezdőbetű	v3	igen
+proper name, of a location	tulajdonnév, helynév	DT26 #31 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+proper name, of a people	tulajdonnév, népnév	DT26 #31 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+Isa^	Ézs^	DT26 #32 (F28 javaslat, felhasználói jóváhagyás 2026.10.01) — Isa^2, Isa^3 stb. -> Ézs^2, Ézs^3	v3	igen
+She'ôl	Seol	DT26 #33 (F28 javaslat, felhasználói jóváhagyás 2026.10.01)	v3	igen
+noun masculine	hímnemű főnév	DT26 #1. DT27 (felhasználói döntés 2026.10.01): kapu=nem — a szórend miatt („noun masculine plural” → „hímnemű többes számú főnév”) a literális egyezés hamis sértést adna	v3	nem
+absolute	status absolutus	DT26 #2. DT27 (felhasználói döntés 2026.10.01): kapu=nem — pontos kulcs nem adható: a forrásban a status (#2) és a használat (#8) egyaránt csupasz „absolute”, az „Infinitive absolute” (infinitivus absolutus) egyik sem	v3	nem
+absolute (használat)	abszolút használatban	DT26 #8. DT27 (felhasználói döntés 2026.10.01): kapu=nem — a forrásalak csupasz „absolute” (l. a status absolutus sort); a zárójeles rész csak a kulcsot különbözteti meg, a forrásban nem áll	v3	nem
+construct	status constructus	DT26 #2. DT27 (felhasználói döntés 2026.10.01): kapu=nem — a kapu=igen próbafutás (39 F28-szócikk) 1 hamis sértést adott: H7843 „Infinitive absolute …; construct הַשְׁחִית” → „infinitivus absolutus …; constructus הַשְׁחִית” (az infinitivus folytatása, „status” nélkül); az „Infinitive construct” a saját, hosszabb kulcsú sorához tartozik	v3	nem
++	és máshol	DT26 #10. DT27 (felhasználói döntés 2026.10.01): kapu=nem — a „+” nem csak igehely után áll („both + וָבֹהוּ”, „+ 52 t. suffix”)	v3	nem
+Nt.	összesen N-szor	DT26 #11. DT27 (felhasználói döntés 2026.10.01): kapu=nem — minta, nem literális kulcs: „16t.” → összesen 16-szor, „c. 100 t.” → kb. 100-szor (-szor/-szer/-ször)	v3	nem
+read	olv.	DT26 #13. DT27 (felhasználói döntés 2026.10.01): kapu=nem — szövegjavításként „olv.”, de igeként „olvasandó”, „olvasatot ad”, „így olvassa” is helyes	v3	nem
+under the word	a címszónál	DT26 #18. DT27 (felhasználói döntés 2026.10.01): kapu=nem — a címszó a két szó közé kerül („a ἀϊδής címszónál”)	v3	nem
+which see	l. ott	DT26 #20. DT27 (felhasználói döntés 2026.10.01): kapu=nem — q.v. jelentésben „l. ott”, de vonatkozó szerkezetben („on which see δουλεία” → „ehhez l. δουλεία”) nem	v3	nem
