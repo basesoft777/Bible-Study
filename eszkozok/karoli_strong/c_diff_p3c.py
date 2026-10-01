@@ -453,6 +453,74 @@ def felulvizsgalat_szakasz(adat, sorok_c3, allapot):
     return ki
 
 
+def _konv_csoport(x):
+    """A konvenció-oszlop csoportja: K1–K11, a 6. táblázat vagy a 3. szakasz; (c)-nél „(c)”."""
+    if x['osztaly'] == 'c':
+        return '(c)'
+    k = x['konvencio_vagy_jegyzetpont']
+    if k.startswith('K'):
+        return k.split()[0]
+    if k.startswith('6. szakasz'):
+        return '6. táblázat'
+    if k.startswith('3. szakasz'):
+        return '3. szakasz (Ketiv)'
+    return k or '?'
+
+
+def sonnet_szakasz(adat, kezi):
+    """F21.80: a Sonnet eltérései konvenciónként a C-vel (F3V3) összevetve, a (c) esetek listája, a közös (c) esetek,
+    a korrigált értékek (Opus-besorolás, nem mérés) és az arany-felülvizsgálatra jelölt Sonnet-sorok."""
+    s3, c3 = meres_p3c.SONNET, meres_p3c.C3
+    rs = {k: x for k, x in kezi.items() if k[0] == s3 and x['statusz'] == 'elteres'}
+    rc = {k: x for k, x in kezi.items() if k[0] == c3 and x['statusz'] == 'elteres'}
+    ns, nc = meres_p3c.NEVEK[s3], meres_p3c.NEVEK[c3]
+    ki = ['', '## 7. A Sonnet eltérései konvenciónként, a C-vel (F3V3) összevetve (Opus-besorolás, nem mérés)', '',
+          'A Sonnet a kapun átment aranyversein (50 a 60-ból: az R3 mind a tíz aranyverse véglegesen kapuhibás), a C mind a 60-on. '
+          '(a) = konvenciókülönbség (a Károli-szó/konvenció szerint védhető), (b) = a jegyzet/arany vitatható döntésének '
+          'alternatívája, (c) = a modell valódi hibája. Csoport: a konvencio_vagy_jegyzetpont oszlop első eleme.', '',
+          '| csoport | %s (a/b) | %s (c) | %s (a/b) | %s (c) |' % (ns, ns, nc, nc), '|---|---|---|---|---|']
+    csop = sorted({_konv_csoport(x) for x in list(rs.values()) + list(rc.values())},
+                  key=lambda v: (v == '(c)', not v.startswith('K'), int(v[1:]) if v.startswith('K') and v[1:].isdigit() else 0, v))
+    for g in csop:
+        def n(d, oszt):
+            return sum(1 for x in d.values() if _konv_csoport(x) == g and x['osztaly'] in oszt)
+        ki.append('| %s | %d | %d | %d | %d |' % (g, n(rs, 'ab'), n(rs, 'c'), n(rc, 'ab'), n(rc, 'c')))
+    ki.append('| összesen | %d | %d | %d | %d |' % (sum(1 for x in rs.values() if x['osztaly'] in 'ab'), sum(1 for x in rs.values() if x['osztaly'] == 'c'),
+                                                   sum(1 for x in rc.values() if x['osztaly'] in 'ab'), sum(1 for x in rc.values() if x['osztaly'] == 'c')))
+    ki += ['', '### A (c) esetek rétegenként: Sonnet és C (F3V3); a közös (c) eset ugyanaz a kulcs (vers, irány, magyar szó, eredeti szó)', '',
+           '| réteg | %s (c) | %s (c) | közös (c) | %s (c) a C kapun átment, a Sonnet kapuhibás versein |' % (ns, nc, nc), '|---|---|---|---|---|']
+    sk = {k[1:] for k, x in rs.items() if x['osztaly'] == 'c'}
+    ck = {k[1:] for k, x in rc.items() if x['osztaly'] == 'c'}
+    for r in RET:
+        def bn(hz):
+            return sum(1 for k in hz if _van(adat.reteg[k[0]], r))
+        ki.append('| %s | %d | %d | %d | %d |' % (r, bn(sk), bn(ck), bn(sk & ck), bn({k for k in ck if not adat.ok(s3, k[0])})))
+    ki += ['', '### Korrigált pontosság és lefedettség: Sonnet — Opus-besorolás, nem mérés', '',
+           'Az (a) és (b) eltérést nem-hibának véve, az arany v3-hoz. A küszöb szempontjából csak a mért érték számít (PD10).', '',
+           '| réteg | mérőszám | %s mért | %s korrigált (Opus-besorolás, nem mérés) |' % (ns, ns), '|---|---|---|---|']
+    for r in RET:
+        t, c, g, _ = meres_p3c._pl(adat, s3, r)
+        ab = [x for x in rs.values() if x['osztaly'] in ('a', 'b') and _van(x['reteg'], r)]
+        tb = sum(1 for x in ab if x['irany'] == 'tobblet')
+        hb = sum(1 for x in ab if x['irany'] == 'hianyzo')
+        ki.append('| %s | pontosság | %s | %s |' % (r, meres_p3c._pct(t, c), meres_p3c._pct(t + tb, c)))
+        ki.append('| %s | lefedettség | %s | %s |' % (r, meres_p3c._pct(t, g), meres_p3c._pct(t + hb, g)))
+    srt = sorted(rs.items(), key=lambda kv_: (adat.versek.index(kv_[0][1]),) + kv_[0][2:])
+    ki += ['', '### A Sonnet minden (c) esete', ''] + SOR_FEJ + [_sor_md(x) for _, x in srt if x['osztaly'] == 'c']
+    jel = [x for _, x in srt if JELOLT in x['indok']]
+    cj = sorted((k[1:] for k, x in rc.items() if JELOLT in x['indok']), key=lambda k: (adat.versek.index(k[0]),) + k[1:])
+
+    def sallapot(k):
+        if not adat.ok(s3, k[0]):
+            return 'a vers a Sonnetnél kapuhibás'
+        return 'a Sonnetnél is eltérés' if (s3,) + k in rs else 'a Sonnetnél nem eltérés'
+    ki += ['', '### Arany-felülvizsgálatra jelölt esetek a Sonnetnél', '',
+           'A C %d jelölt sora a Sonnetnél: %s. A Sonnet jelölt sorai: %d; a számokban (c).' % (
+               len(cj), '; '.join('%s %s %s → %s: %s' % (k[0], k[1], k[2], k[3], sallapot(k)) for k in cj), len(jel)), '']
+    ki += (SOR_FEJ + [_sor_md(x) for x in jel]) if jel else []
+    return ki
+
+
 def zaro_szakasz(adat, adat2, kezi, futasok, v2t, v2o):
     c3 = meres_p3c.C3
     ki = ['', '## 2. A kézi besorolás (a / b / c) rétegenként, a v2-es C-futásokkal egymás mellett (Opus-besorolás, nem mérés)', '',
@@ -563,6 +631,8 @@ def zaro_szakasz(adat, adat2, kezi, futasok, v2t, v2o):
             ki += ['', '## %s' % cim, ''] + SOR_FEJ
             ki += [_sor_md(x) for k, x in sorted(sorok_c3.items(), key=lambda kv_: (adat.versek.index(kv_[0][1]),) + kv_[0][2:])
                    if allapot(x) in st]
+    if meres_p3c.SONNET in futasok:
+        ki += sonnet_szakasz(adat, kezi)
     ki += ['', '## 6. Minden sor (gépi állapot, kézi besorolás)', ''] + SOR_FEJ
     for k in sorrend(adat, futasok, kezi):
         ki.append(_sor_md(kezi[k]))
@@ -717,6 +787,7 @@ def onteszt():
         with open(ut_j, encoding='utf-8') as f:
             md2 = f.read()
         ellen(kod == 0 and '## 2.' in md1 and '## 3.' in md1 and '## 4.' in md1 and 'Opus-besorolás, nem mérés' in md1
+              and '## 7. A Sonnet eltérései konvenciónként' in md1 and '### A Sonnet minden (c) esete' in md1
               and md1.replace('ts=T1', 'ts=T2') == md2, 'a teljes jelentés hibás / nem determinisztikus')
         # a szigorú ellenőrzés: a hiányzó változás-konvenció és a/b konvenció hiba
         sorok_s = list(sorok_k)
