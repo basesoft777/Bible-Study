@@ -85,3 +85,23 @@ K4: nem TISZTA. Nem ellenőrizhető: a CI a head-állapoton; a 153 bejegyzés al
 11. **LSJ megjegyzése** (`:10`) feltétel nélküli tényként állítja a SHARE-ALIKE-ot, miközben `share_alike=tisztazatlan` (A1, kis súly).
 
 K4: nem TISZTA. Nem ellenőrizhető: a végrehajtó CI-jelentése; E17; a zárás (`allapot: fut`, a `F24_zaras.md` tervezet).
+
+---
+
+## 5. kör — origin/main..c0cdf18
+
+*Az ellenőr 5. köri jelentése, az orkesztrátor mentette, tömörítve. Eredmény: **ELTÉRÉS, 9 tétel**. Igazolt (OK): a rebase utáni kétpontos diff tiszta (6 fájl); a számok (39; 15/24; 6 `share_alike=igen`; 5 `tisztazott`+`javaslat`; 4 `feltetelesen`) egyeznek a tábla, a DT-F24, a SEMA 2.19 és a `F24_zaras.md` között; TAGNT/TAHOT/TIPNR, LXX_OS, LXX_versszintu_parok, Karoli_versmegfeleltetes `tisztazatlan`; K1: 152 bejegyzés (225−62−13 = 150 fájl + 2 alkönyvtár); `javaslat:` előtagok; SDBH_SDGNT_segedtablak az SA-listában; N9-lista; E2–E8, E10–E16: 0 (E9: 2 régi JELENTES).*
+
+1. **Szó szerinti szabály kettős mércéje** (`licencek.tsv:7,12,13,28,32,33,34`): az LXX_OS ezért lett `tisztazatlan`, hét `tisztazott` sor ugyanilyen README-összefoglalón áll (SDBH_SDGNT_README.md:25, OSHL_README:21, Karoli_TIPNR README); az OSHL-hez van szó szerinti idézet a `Strong_szotar_README.md:40–42`-ben. A 15/24 és az N9-halmaz ettől függ.
+2. **„40 LXX_kivonat_*.tsv” hamis, 39 a helyes** (`licencek.tsv:11`, `DONTESEK.md` (6)) — *az orkesztrátor javította.*
+3. A DT-F24 (6) és a zárás nem fedi le a többi követett, tisztázatlan fájlt (`lexikonok_nyers` 12 `.lexicon`, KJV/ASV_Strongs 6 fájl, Nave_basokant, TAHOT/TAGNT/TIPNR kivonat).
+4. A DT-F24 (1) ajánlás 2. opciója a TAGNT/TAHOT/TIPNR/LXX_OS sorokat nem sorolja be.
+5. SEMA 2.19 1. szabály („`share_alike=igen` → kereskedelmi `igen`”) ellentmond a tW_szocikkek soráénak (`feltetelesen`, `:36`).
+6. Az LXX_OS (`:29`) és a Konyv_nevtablak (`:39`) `licenc` mezőjéből hiányzik a zárójeles „nem igazolt” jelölés.
+7. KJV_Strongs_teljes `tisztazott` (`:37`), pedig az idézett forrás csak a szövegre mond „Public Domain”-t, a CrossWire-címkékre nem.
+8. OSHL ↔ Strong_szotar (`:16,28`): ugyanaz a HebrewLexicon-repó eltérően kezelve.
+9. A TBESG `feltetelesen` indoka (`:27`) csak a zárásban áll, a soron nem.
+
+Csak stílus: `licencek.tsv:6` szóismétlés; `:31` „forras= sor”; az LSJ „állítólag” a DT-F24 ajánlás-oszlopából hiányzik.
+
+**Az orkesztrátor döntése:** az 5. kör után nem indult újabb javítókör (a licenc-leltár nyitott végű, minden kör újabb következetességi pontot talált, a tartalmi kérdések — szó szerinti szabály, nyilvános terjesztés — felhasználói döntést igényelnek). A maradék a `F24_zaras.md` „Maradék” pontjában és a DT-F24-ben él; K4: nem TISZTA.
