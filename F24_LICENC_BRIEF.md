@@ -5,13 +5,16 @@ kod: LICENC
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f24-licenc
 ad: adatkészletenként egy licencsor (licenc, verzió, kereskedelmi felhasználás, share-alike, kötelező megjelölés) egyetlen táblában, amelyre a render és a nyilvános kiadás épít
-kovetkezo: /kovetkezo; külön ⛔ nincs, a tisztázatlan tételek összesítve a DONTESEK.md-be
+kovetkezo: Te: a DT-F24 döntése (nyilvános terjesztés, a szó szerinti szabály kettős mércéje, kimeneti licenc); l. naplok/F24_zaras.md
 olvas: [konkordancia/, adat/datasetek.tsv, adat/szotar_szerepek.tsv, eszkozok/general.py, Rendszerfejlesztesi_playbook.md]
 ir: [adat/licencek.tsv, adat/SEMA.md]
 fugg: []
 nem_fugg: [22]
+pr: 99
+lezarva_osszegzes: licenc-leltár (#24, F24): adat/licencek.tsv 39 adatkészlet-sorral (15 tisztazott, 24 tisztazatlan; 6 share-alike), SEMA 2.19, összesítő DT-F24 (köztük a mostani nyilvános terjesztés: LXX_kivonat, MCGED); ellenőrzés naplok/ELLENOR_F24.md (5 kör, az utolsó 9 tétellel, K4 nem TISZTA, a maradék a zárójelentésben)
 ---
 
 # F<nn>_LICENC_BRIEF.md — Forrásaink licencének átnézése
