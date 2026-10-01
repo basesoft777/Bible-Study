@@ -509,6 +509,34 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   `blokk_lxx` kapjon saját „kulcsszó nincs a versben” címkét (és számlálót),
   a SEMA 2.11 megjelenítési mondata ehhez igazodjon. A felvételt a
   felhasználó a DT23-ban jóváhagyta (2026.09.30).
+- **N-F34 — a BDB „ψ”-hiba B/R maradéka (163 hely, 99 szócikk): kézi nézet.**
+  *(ÚJ, F34 (#34), DT-F34b 2. pont; `naplok/F34_M2_maradek.tsv`, `naplok/F34_M2_naplo.md`)*
+  Az F34 159 helyet javított (`eszkozok/bdb_psi_javit.py`, TAHOT-próba, ill. az
+  A-maradékra versszámozási tábla); maradt 163 hely (A 4: `Gen 81:48`, `Josh 82:9`,
+  `1Ki 145:31` — a vers nem létezik az adott zsoltárban —, és az összeolvadt
+  `2Sam 132:1132`; B 144; R 15). Sorrend: (a) a TAHOT-próba újrafuttatása — **a
+  DT-F34b-ben feltételezett TAHOT-hiány Zsoltárokra nem áll fenn** (a mostani
+  kivonat mind a 2527 MT-versét tartalmazza, a 88/89/140/142-t is), tehát a 167
+  elutasítás valódi „a Strong nincs a c:v ±1 versben” eredmény, és az (a) pótlás
+  tárgytalan; helyette más Strong-forrás (pl. `Macula_heber_Zsoltarok.tsv`
+  `strong`/`strong_x` oszlopa, `BSB_Strongs.tsv`) kipróbálása a maradékon;
+  (b) csak a még kétes hely megy kézi nézetre (⛔, a BDB nyomtatott szövege
+  alapján). A 81., 84., 85. `forditasok.tsv`-sor (H7585, H7843, H8034) addig
+  változatlan; a 81. és 84. sor `forras_hash`-e elavult (az F34 a forrást
+  javította, a sort nem írta át) — a 13. szabály SÉRTÉS-t jelez, amíg a két sor
+  hash-e/tokenjei nem frissülnek (`python eszkozok/bdb_psi_javit.py --forditas`
+  a tokenekre; a hash-hez újrafordítás vagy jóváhagyott hash-frissítés kell).
+  *Helyőrző: a végleges N-számot az Action osztja ki.*
+- **N-F34b — a TAHOT-kivonat „nem teljes” állítás elavult (CLAUDE.md,
+  `konkordancia/README.md`); a valódi hiány kicsi.** *(ÚJ, F34 (#34), DT-F34b 3. pont)*
+  A `konkordancia/TAHOT_TAGNT_README.md` (195., 316., 320. sor) szerint az 1Móz 32,
+  Zsolt 88/89/90/140/142 hiánya már pótolt; az F34 mérése ezt megerősíti
+  (Zsolt: 150/150 fejezet, 2527/2527 MT-vers, a Macula-táblához mérve nincs hiányzó
+  vers; az egyetlen fejezet-szintű rés: Jób 41). Javítandó: a `CLAUDE.md` „Adat-tár”
+  szakasza („TAHOT_kivonat.tsv nem teljes … hiányzik legalább 1Móz 32, Zsolt
+  88/89/140/142, Jóel 3”) és a `konkordancia/README.md` ide vonatkozó sora — a
+  Jób 41 és az esetleges vers-szintű rések (Jóel 3 külön mérendő) pontos
+  hiánylistájával. *Helyőrző: a végleges N-számot az Action osztja ki.*
 
 - **N-F21 — Károli ↔ KJV versmegfeleltetés: zsoltárfeliratok, 1039 ÓSZ-vers, F19-tábla.** *(ÚJ, F21 regressziós mérés, KJV-szabály mérése, 2026.10.01, `naplok/F21P_elopar_kjv.md` 5. pont, `naplok/F21P_kjv_meres.md`; a számot (N-F21) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
   A `konkordancia/Karoli_versmegfeleltetes.tsv` `igehely_kjv` oszlopa (főleg az `osztaly=MT` soroknál) az MT-versszámot adja a KJV-szám helyett, ezért a `konkordancia/KJV_Strongs_teljes.tsv` (F19) KJV-támpontja ezeknél a verseknél a rossz KJV-versről jön. A teljes ÓSZ-ben 22 730 KJV-soros versből 1162 gyanús (a vers jól címkézett Strongjainak kevesebb mint fele van a KJV-sorban); ebből 1039-nél a szomszéd KJV-vers illik: Zsolt 915 (a zsoltárfeliratok: pl. Zsolt 18:1 a KJV 18:0-hoz illik), Ézs 42, Préd 24, 1Sám 20, Hós 13, Jón 9, 4Móz 8, 1Kir 6, Dán 2. A Zsolt 6:5, 13:2, 18:1, 18:3, 59:8 az F21 arany 60 versében is szerepel.

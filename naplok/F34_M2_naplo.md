@@ -44,3 +44,12 @@ A 84. és 85. sor forrása nem változott (nincs javítható találat), ezért �
 ## M4 — kapu
 
 `eszkozok/teszt_forditas_kapuk.py`: 20 teszt OK (3 új: javított hely nem jelez; hibás ψ-feloldás jelez; a 78. és 89. sor RENDBEN). A 13. kapu a 78. és 89. soron **0**; a 81., 84., 85. soron a jelzés a **maradék miatt** marad (Ez 73; Péld 57–59, 75 és `2Kir 36:10`; Dán 22) — ez a ⛔ kézi nézet.
+
+## F34.5 — DT-F34b alkalmazása (2026.10.01)
+
+1. **A-maradék TAHOT nélkül:** a 19 A-maradékból 15 javítva, ha a vers létezik a Zsolt-fejezetben (versszámozási tábla: `konkordancia/Macula_heber_Zsoltarok.tsv`, MT, 150 fejezet / 2527 vers; `vers_tabla()` az `eszkozok/bdb_psi_javit.py`-ban). Köztük `Ezek 73:23`, `Ezek 73:25` (H7585), `Prov 75:1` (H7843). Marad: `Gen 81:48`, `Josh 82:9`, `1Ki 145:31` (a vers nem létezik a zsoltárban), `2Sam 132:1132` (összeolvadt alak, kézi).
+2. **Összesen javítva: 159 hely, 56 szócikk** (A 100, B 57, R 2). **Maradék: 163 hely, 99 szócikk** (A 4, B 144, R 15), `naplok/F34_M2_maradek.tsv`; N-F34 / N-F34b a `NYITOTT_FELADATOK.md`-ben (helyőrző).
+3. **forditasok.tsv:** a 81. és 84. sor forrása (H7585, H7843) tovább változott, a sorokat a döntés szerint NEM írtam át. A tárolt `forras_hash` ezért elavult: az `ellenoriz.py` 13. szabálya e két sorra SÉRTÉS (kilépési kód 1). A 78., 89. sor RENDBEN; a 85. sor forrása nem változott.
+4. **Újrafuttathatóság:** `python eszkozok/bdb_psi_javit.py --forditas [--ir]` a csere-táblát a lefordított szövegen alkalmazza (csak a helyhivatkozás tokenje, a 81/84/85. sor kihagyva, hash érintetlen); a főfutás idempotens (újrafuttatva 0 csere). Teszt: `python eszkozok/teszt_bdb_psi_javit.py` (6 teszt OK).
+5. **Új SHA-256:** `5c176037617813e330eb57e883ab7fd728c19a244c42196668ea712d0f502f14`.
+6. **Megfigyelés:** a DT-F34b tételben feltételezett TAHOT-hiány Zsoltárokra nem áll fenn (150/150 fejezet, 2527/2527 vers; a hiányt a `TAHOT_TAGNT_README.md` szerint korábban pótolták; a `CLAUDE.md` állítása elavult) — a 167 elutasítás tehát valódi „nincs a versben” eredmény.

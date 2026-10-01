@@ -13,7 +13,7 @@
 - **Licenc:** közkincs (public domain) — az eredeti BDB szövege és annak digitalizált
   átirata is közkincs
 - **SHA-256** (`konkordancia/BDB_teljes_unabridged.tsv`, K7, F05b):
-  `e9ee0b724dcb86f40370734b142d17863fe204c764966911f72b042e0ddf666d (F34 javított verzió; az eredeti, K7: 1d28a84004817b8ee09eff92d762038ae2eac7351f24abd0a8b1cc5df380dfa5)`
+  `5c176037617813e330eb57e883ab7fd728c19a244c42196668ea712d0f502f14 (F34 javított verzió; az eredeti, K7: 1d28a84004817b8ee09eff92d762038ae2eac7351f24abd0a8b1cc5df380dfa5)`
 
 ## Konverzió
 
@@ -127,4 +127,4 @@ a régi 24-tokenes hatókörön) csak a `gepi`/nem-`gepi` elkülönítést mért
 
 ## Javítás (F34, 2026.10.01): „ψ” (Zsoltárok) hibás feloldása
 
-A forrás a „ψ” jelet több száz helyen az előző könyvnévre oldotta fel (pl. `Isa 106:9`, `Job 97:7`). Javított dataset-verzió: 144 helyhivatkozás (48 szócikk) `Psa`-ra cserélve, TAHOT-igazolással, mezőkulcsos táblával; csak helyhivatkozás változott. Nyers JSON nincs a repóban, ezért a TSV közvetlen javítása történt. Proveniencia és a maradék (178 hely, kézi nézet): `naplok/F34_M2_naplo.md`, `naplok/F34_M2_csere.tsv`, `naplok/F34_M2_maradek.tsv`; eszköz: `eszkozok/bdb_psi_javit.py`.
+A forrás a „ψ” jelet több száz helyen az előző könyvnévre oldotta fel (pl. `Isa 106:9`, `Job 97:7`). Javított dataset-verzió: 159 helyhivatkozás (56 szócikk) `Psa`-ra cserélve (TAHOT-igazolással; az A-maradék 15 helye TAHOT nélkül, a Macula MT-versszámozási táblával igazolva), mezőkulcsos táblával; csak helyhivatkozás változott. Nyers JSON nincs a repóban, ezért a TSV közvetlen javítása történt. Proveniencia és a maradék (163 hely, 99 szócikk, kézi nézet; N-F34): `naplok/F34_M2_naplo.md`, `naplok/F34_M2_csere.tsv`, `naplok/F34_M2_maradek.tsv`; eszköz: `eszkozok/bdb_psi_javit.py`.
