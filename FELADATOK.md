@@ -20,6 +20,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | 28 | A lexikon Thayer- és BDB-szócikkeinek Opus-fordítása, javítóréteggel és CI-őrrel (EMELES) | a lexikonba kerülő minden Strong-szám teljes Thayer- vagy BDB-szócikke magyarul (allapot opus, szúrópróbával kezi) az adat/forditasok.tsv-ben; közös javítóréteg és fordítási kapuk; CI-őr; az emelés mint munkafolyamat-lépés | ⬜ | — | /kovetkezo; ⛔ az első 5 szócikk után és a szúrópróbánál | `F28_EMELES_BRIEF.md` |
 | 30 | Döntés- és N-számok kiosztása merge-kor (helyőrző az ágakon) (SZAMOZAS) | az ágak nem foglalnak végleges DT/N-számot; a párhuzamos merge-ek nem ütköznek sorszámon; a main-en a számokat egy Action osztja ki | ⬜ | #8 (kész), #16 (kész), #17 (kész), #26*, #28*, #32* | a helyőrző-Action és a CI-szabály megírása, a DT18 átszámozása, a nyitott ágak helyőrzőre állítása | `F30_SZAMOZAS_BRIEF.md` |
 | 31 | "Károli–Strong párosítás: regressziós mérés az új prompttal (DT21 a–e)" (F21R) | "prompt_v3; arany v3 (csak ha az a–e érinti és jóváhagyva); F3V3 és Sonnet-futás 200 versen; mérés és teljes bibliai költségvetítés; döntési alap a #22 sorsához" | ⬜ | #21 (kész), #28* | "#22 sorsa – felhasználói döntés a mérés számai alapján" | `F31_F21R_BRIEF.md` |
+| 33 | Forrásaink licencének rendezése (az F24 utófeladata) (LICENC_RENDEZES) | a licenc-leltár egy mércével, szó szerinti licencidézetekkel; a régi LXX_kivonat kivezetve; a TBESH/STEPBible terjesztési feltételei rögzítve | ⬜ | #9*, #22*, #24 (kész), #28*, #30*, #32* | a DT-F24 állapota „alkalmazva”; a nyitott terjesztési kérdések döntésként a DONTESEK.md-ben | `F33_LICENC_RENDEZES_BRIEF.md` |
 <!-- GENERÁLT-VÉGE: feladatok.py --cel fazis1 -->
 
 ## 2. fázis — render (csak az 1. fázis után)
@@ -27,7 +28,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 <!-- GENERÁLT-KEZDET: feladatok.py --cel fazis2 -->
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Megjegyzés | Hol |
 |---|---|---|---|---|---|---|
-| 9 | Szótári adatréteg, 2. menet (SZOTAR S2) | az 1. fázis adatai megjelennek a 8 lexikonoldalon és a 8 törzscikkben | ⬜ | #5 (kész), #6 (kész), #7*, #28* | Ez javítja a törzscikkek elavult Cremer-sorát is (a CI E11 szabálya jelzi) | `F05_SZOTAR_BRIEF.md#2. menet — kimenet-változtató` |
+| 9 | Szótári adatréteg, 2. menet (SZOTAR S2) | az 1. fázis adatai megjelennek a 8 lexikonoldalon és a 8 törzscikkben | ⬜ | #5 (kész), #6 (kész), #7*, #28*, #33* | Ez javítja a törzscikkek elavult Cremer-sorát is (a CI E11 szabálya jelzi) | `F05_SZOTAR_BRIEF.md#2. menet — kimenet-változtató` |
 | 10 | 8 lexikonoldal lezárása (LEXIKON_LEZARAS) | mérhetően kész oldalak (L1–L7) | ⬜ brief kell | #8 (kész), #9 | **Te:** döntés az L6 és L7 feltételről. Ide tartozik N18, N19. Előfeltétel: a #8 négy nyitott sora (LD008, LD009, LD058, LD064) eldöntve | `F10_LEXIKON_LEZARAS_BRIEF.md` |
 | 11 | Migráció: egy forrásból renderelés (MIGRACIO) | minden motívum a forrásrétegből renderel | ⬜ brief kell | #9 | Az M0 felmérés csak olvas, de az eredménye itt kell | `F11_MIGRACIO_BRIEF.md` |
 | 12 | TEREMT-002 3. lépés (próza, lexikonoldal) | az első natív egyforrású motívum kész | ⬜ brief kell | #11 | A tohu/bohu szótári adata az S1-ben készül (SZOTAR-D29). | `TEREMT002_KUTATAS_BRIEF.md` |
