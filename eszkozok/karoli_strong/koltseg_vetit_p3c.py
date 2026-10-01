@@ -161,7 +161,7 @@ def szamol(forras_dir=None, arany_ut=None, arany_sha=None, n_boot=N_BOOT, vd=Non
     # kézimunka: a pár `alacsony` linkjei és az aranytól való eltérés, F22-rétegenként (a minta versei könyv szerint leképezve)
     adat, info = mp.betolt(forras_dir, arany_ut, arany_sha)
     kim = mp.par_kimenet(adat)
-    tot_a = tot_e = 0.0
+    tot_a = tot_e = tot_l = 0.0
     for r in F22:
         vs = [ig for ig in adat.versek if kv.f22_reteg(ig) == r]
         if not vs:
@@ -174,6 +174,10 @@ def szamol(forras_dir=None, arany_ut=None, arany_sha=None, n_boot=N_BOOT, vd=Non
             'mért, %d vers (könyv szerint F22-rétegre képezve)' % len(vs))
         add('kezimunka', OSS_PAR, r, 'vetitett_alacsony_link_biblia', round(ala / len(vs) * bib[r]['n']), '', '', '× %d vers' % bib[r]['n'])
         tot_a += ala / len(vs) * bib[r]['n']
+        osz = sum(len(kim[ig]) for ig in vs)          # F21.80: minden link a pár végső kimenetében (a vetített alacsony arányhoz)
+        add('kezimunka', OSS_PAR, r, 'link_per_vers', round(osz / len(vs), 4), '', '', 'mért, %d vers (a pár végső kimenete, minden szint)' % len(vs))
+        add('kezimunka', OSS_PAR, r, 'vetitett_link_biblia', round(osz / len(vs) * bib[r]['n']), '', '', '× %d vers' % bib[r]['n'])
+        tot_l += osz / len(vs) * bib[r]['n']
         if av:
             add('kezimunka', OSS_PAR, r, 'elteres_per_vers_arany', round(elt / len(av), 4), '', '', 'mért, %d aranyvers (%s)' % (len(av), info['verzio']))
             add('kezimunka', OSS_PAR, r, 'vetitett_elteres_biblia', round(elt / len(av) * bib[r]['n']), '', '', '× %d vers (kis n)' % bib[r]['n'])
@@ -181,6 +185,9 @@ def szamol(forras_dir=None, arany_ut=None, arany_sha=None, n_boot=N_BOOT, vd=Non
         else:
             add('kezimunka', OSS_PAR, r, 'elteres_per_vers_arany', 'n.é.', '', '', 'nincs aranyvers a rétegben')
     add('kezimunka', OSS_PAR, 'Összes', 'vetitett_alacsony_link_biblia', round(tot_a), '', '', 'F22-rétegenként vetítve')
+    add('kezimunka', OSS_PAR, 'Összes', 'vetitett_link_biblia', round(tot_l), '', '', 'F22-rétegenként vetítve (minden szint)')
+    add('kezimunka', OSS_PAR, 'Összes', 'vetitett_alacsony_arany', round(tot_a / tot_l, 4) if tot_l else 'n.é.', '', '',
+        'F21.80: vetitett_alacsony_link_biblia / vetitett_link_biblia (az (5) feltétel vetített alakja)')
     add('kezimunka', OSS_PAR, 'Összes', 'vetitett_elteres_biblia', round(tot_e), '', '', 'F22-rétegenként vetítve (a nem n.é. rétegek összege)')
     add('kezimunka', OSS_PAR, 'Összes', 'c_hiba_per_vers', 'n.é.', '', '', 'az eltérések (a)/(b)/(c) besorolása a futás után kézi (c_diff_p3c.py)')
     return sorok, info

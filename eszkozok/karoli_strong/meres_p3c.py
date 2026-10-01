@@ -939,7 +939,8 @@ def _pct(sz, nev):
 
 def fejlec(info, ts):
     return ('GENERÁLT: eszkozok/karoli_strong/meres_p3c.py | scope=P3c (prompt_v3): Sonnet egyedül (SONNETV3), C (F3V3) a v2-es '
-            'két C-futással (F3V2, F3V2B), Sonnet+C pár (A=SONNETV3, B=F3V3, döntőbíró nélkül), 200 verses minta, arany %s '
+            'két C-futással (F3V2, F3V2B), Sonnet+C pár (A=SONNETV3, B=F3V3, döntőbíró nélkül), a Sonnet gondolkodási kerete, '
+            'length-lezárásai, végleges kapuhibái és a kapupont-bontás (F21.80), 200 verses minta, arany %s '
             '(%d vers, sha256 %s) | forras=f21p/valaszok/{SONNETV3,F3V3,F3V2,F3V2B}.jsonl, %s (sha256 ellenőrizve), '
             'f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, '
             'f21p/koltseg_vetites_p3c.tsv | ts=%s (a generálás ideje; ismételt futáskor csak ez a sor tér el) | '
@@ -1058,9 +1059,207 @@ def kiir(sorok, info, ts, eredmeny_ut, jelentes_ut, kf):
             lo, hi, ab = (float(v) for v in s[5].split('|'))
             ki.append('| %s | %s | %s | %.2f%% | %.2f%% | %+.2f pp | [%+.2f; %+.2f] | %.2f pp | %s |' % (
                 s[1], s[2], s[3], 100 * x, 100 * y, 100 * d, 100 * lo, 100 * hi, 100 * ab, s[6].split('n=')[-1]))
+    ki += kiegeszites_md(sorok)
     ki.append('')
     with open(jelentes_ut, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(ki) + '\n')
+
+
+# ---------------------------------------------------------------------------
+# F21.80: a teljes mérés kiegészítései (a Sonnet futása, kapupont-bontás, a minősítés részletezése)
+# ---------------------------------------------------------------------------
+
+def _keret(gmod):
+    """A konfigurált gondolkodási keret a gondolkodas_mod mezőből ('reasoning_max_tokens=1024' -> 1024), egyébként None."""
+    if gmod.startswith('reasoning_max_tokens='):
+        try:
+            return int(gmod.split('=', 1)[1])
+        except ValueError:
+            return None
+    return None
+
+
+def gondolkodas_futasok(adat, sorok, futasok=FUTASOK):
+    """A mért gondolkodási token futásonként (a futásnapló gondolkodas_token oszlopából), a finish_reason-ök és a
+    konfigurált kerethez viszonyítás (csak ahol a gondolkodas_mod keretet ad)."""
+    import futtat
+    for f in futasok:
+        sor = [r for r in adat.naplo if r['futas'] == f]
+        if not sor:
+            continue
+        nev = NEVEK[f]
+        g = [int(r.get('gondolkodas_token') or 0) for r in sor]
+        ki = sum(int(r['kimenet_token']) for r in sor)
+        sorok.add('gondolkodas', nev, meres.OSSZES, 'gondolkodasi_token', sum(g), ki,
+                  'a kimeneti tokenből (completion_tokens) a modell által jelentett gondolkodási token (futásnapló)')
+        sorok.add('gondolkodas', nev, meres.OSSZES, 'gondolkodasi_token_hivasonkent_max', max(g), '', 'min %d, medián %d, %d hívás' % (
+            min(g), sorted(g)[len(g) // 2], len(g)))
+        fr = {}
+        for r in sor:
+            fr[r.get('finish_reason') or '?'] = fr.get(r.get('finish_reason') or '?', 0) + 1
+        sorok.add('gondolkodas', nev, meres.OSSZES, 'finish_reason', ', '.join('%s: %d' % kv_ for kv_ in sorted(fr.items())), '', '')
+        modell = sorted({r['modell'] for r in sor})
+        ar = futtat.ARAK.get(modell[0]) if len(modell) == 1 else None
+        if ar:
+            gk = sum(g) * ar[1] / 1e6
+            ko = sum(float(r['koltseg_usd']) for r in sor)
+            sorok.add('gondolkodas', nev, meres.OSSZES, 'gondolkodasi_token_koltsege_usd', '%.6f' % gk, '%.6f' % ko,
+                      'a gondolkodási token × a kimeneti táblaár (%.2f USD/1M; %s) a mért összköltséghez (%.1f%%)' % (ar[1], modell[0], 100 * gk / ko if ko else 0))
+        kerets = {_keret(r['gondolkodas_mod']) for r in sor} - {None}
+        if len(kerets) == 1:
+            k = kerets.pop()
+            sorok.add('gondolkodas', nev, meres.OSSZES, 'keret_feletti_hivasok', sum(1 for x in g if x > k), len(g),
+                      'a konfigurált keret (reasoning.max_tokens=%d) fölötti mért gondolkodási token hívásonként; a legnagyobb a keret %.1f-szerese'
+                      % (k, max(g) / k))
+        ln = [r for r in sor if (r.get('finish_reason') or '') == 'length']
+        if ln:
+            sorok.add('gondolkodas', nev, meres.OSSZES, 'length_hivasok', len(ln), len(sor),
+                      'finish_reason=length: %s; költségük %.6f USD; kimenet %s token, ebből gondolkodás %s' % (
+                          ', '.join('köteg %s / próba %s' % (r['koteg'], r['probalkozas']) for r in ln),
+                          sum(float(r['koltseg_usd']) for r in ln), '+'.join(r['kimenet_token'] for r in ln),
+                          '+'.join(r.get('gondolkodas_token') or '0' for r in ln)))
+
+
+def sonnet_hivasok(adat, sorok, f=SONNET):
+    """A Sonnet hívásonként: mért gondolkodási token a konfigurált kerethez képest, kimenet, finish_reason, költség."""
+    for r in sorted((r for r in adat.naplo if r['futas'] == f), key=lambda r: (int(r['koteg']), int(r['probalkozas']))):
+        k = _keret(r['gondolkodas_mod'])
+        g = int(r.get('gondolkodas_token') or 0)
+        sorok.add('sonnet_hivas', NEVEK[f], meres.OSSZES, 'köteg %02d / próba %s' % (int(r['koteg']), r['probalkozas']), g, r['kimenet_token'],
+                  'gondolkodási token / kimeneti token; keret %s%s; finish_reason=%s; költség %s USD; versek %s, kapuhiba_db %s' % (
+                      k, (' (×%.1f)' % (g / k)) if k else '', r.get('finish_reason') or '?', r['koltseg_usd'], r['igehely_db'], r['kapuhiba_db']))
+
+
+def vegleges_kapuhibak(adat, sorok, f=SONNET):
+    """A véglegesen kapuhibás versek: réteg, köteg, a végső kapupont és hibaüzenet, a köteg hívásainak finish_reason-je."""
+    for sor in adat.kotegsorok[f]:
+        n = [r for r in adat.naplo if r['futas'] == f and int(r['koteg']) == sor['koteg']]
+        for ig in sor['igehelyek']:
+            v = sor['versek'][ig]
+            if v['allapot'] == 'ok':
+                continue
+            sorok.add('vegleges_kapuhiba', NEVEK[f], adat.reteg[ig], ig, '+'.join(sorted(meres._tipusok(v['hibak']))), 'köteg %s' % sor['koteg'],
+                      'hívások: %s | végső hiba: %s%s' % (
+                          '; '.join('próba %s: finish_reason=%s, kimenet %s (gondolkodás %s)' % (
+                              r['probalkozas'], r.get('finish_reason') or '?', r['kimenet_token'], r.get('gondolkodas_token') or '0')
+                              for r in sorted(n, key=lambda r: int(r['probalkozas']))),
+                          ' / '.join(_rovid(h) for h in v['hibak'][:1]), ' | aranyvers' if ig in adat.arany else ''))
+
+
+def alacsony_vetitett(ut=None):
+    """(arány, alacsony, összes link) a koltseg_vetites_p3c.tsv kézimunka-soraiból (F22-rétegenként vetítve), ha van."""
+    ut = ut or KOLTSEG_UT
+    if not os.path.exists(ut):
+        return None
+    with open(ut, encoding='utf-8') as f:
+        s = [x.rstrip('\n').split('\t') for x in f if x.strip() and not x.startswith('#')]
+    fej = s[0]
+    v = {}
+    for x in s[1:]:
+        r = dict(zip(fej, x))
+        if r['szakasz'] == 'kezimunka' and r['reteg'] == 'Összes' and r['mero'] in ('vetitett_alacsony_link_biblia', 'vetitett_link_biblia'):
+            v[r['mero']] = float(r['ertek'])
+    if len(v) == 2 and v['vetitett_link_biblia']:
+        return v['vetitett_alacsony_link_biblia'] / v['vetitett_link_biblia'], v['vetitett_alacsony_link_biblia'], v['vetitett_link_biblia']
+    return None
+
+
+def minosites_reszlet(sorok, kf, av, oss=PAR):
+    """A minősítés részletezése (a minosit logikája változatlan): az (1) rétegenként (a 0/0 réteg jelölésével) és az (5)
+    mért (200 vers) és vetített (F22-rétegenként, a teljes Bibliára) értéke."""
+    for r in meres.RETEGEK:
+        m = _arany(sorok, oss, r, 'magas_pontossag')
+        sorok.add('minosites_reszlet', oss, r, 'feltetel_1_magas_pontossag', m[0] if m else 0, m[1] if m else 0,
+                  ('≥ 98%%: %s' % ('teljesül' if m[0] / m[1] >= 0.98 else 'nem teljesül')) if m else
+                  'nincs magas link a rétegben (0/0): a minősítés logikája (meres_p3b.minosit) ezt nem teljesültnek veszi')
+    al = _arany(sorok, oss, meres.OSSZES, 'alacsony_arany [200 vers]')
+    sorok.add('minosites_reszlet', oss, meres.OSSZES, 'feltetel_5_alacsony_arany_mert_200_vers', al[0], al[1],
+              '≤ 10%%: %s; a minősítés ezt használja (meres_p3b.minosit)' % ('teljesül' if al[0] / al[1] <= 0.10 else 'nem teljesül'))
+    if av:
+        sorok.add('minosites_reszlet', oss, meres.OSSZES, 'feltetel_5_alacsony_arany_vetitett', '%.4f' % av[0], '',
+                  'F22-rétegenként vetítve a teljes Bibliára (koltseg_vetites_p3c.tsv: %.0f / %.0f link); ≤ 10%%: %s' % (
+                      av[1], av[2], 'teljesül' if av[0] <= 0.10 else 'nem teljesül'))
+    if oss in kf:
+        sorok.add('minosites_reszlet', oss, meres.OSSZES, 'feltetel_4_koltseg_felso90', '%.2f' % kf[oss][2], '',
+                  'vetített %.2f USD [90%%: %.2f–%.2f]; ≤ 60 USD: %s' % (kf[oss][0], kf[oss][1], kf[oss][2],
+                                                                     'teljesül' if kf[oss][2] <= 60 else 'nem teljesül'))
+
+
+def beallitas_jeloles(sorok):
+    sorok.add('jeloles', NEVEK[SONNET], meres.OSSZES, 'nem_determinisztikus', 'igen', '',
+              'a Sonnet-kérés temperature nélkül ment, gondolkodással: a futás nem determinisztikus (egyetlen futás, ingadozás-becslés nincs)')
+    sorok.add('jeloles', 'F21 pilot', meres.OSSZES, 'beallitas_elteres', 'igen', '',
+              'az A és a B gondolkodás nélkül; a C kötelező minimális gondolkodással (kotelezo_effort=minimal); a Sonnet minimális '
+              'gondolkodási kerettel (reasoning.max_tokens=1024), amelyet a modell nem tartott be (l. gondolkodas)')
+
+
+def _kapupont_md_sonnet(sorok):
+    fs = [NEVEK[SONNET], NEVEK[C3]]
+    kr = {(s[1], s[2], s[3]): s for s in sorok.lista if s[0] == 'kapupont_reteg'}
+    if not kr:
+        return []
+    merok = []
+    for s in sorok.lista:
+        if s[0] == 'kapupont_reteg' and s[3] not in merok:
+            merok.append(s[3])
+
+    def cella(o, r, m):
+        x = kr.get((o, r, m))
+        return '%s/%s' % (x[4], x[5]) if x else '—'
+    ki = ['', '## h) Az első próbás kapuhiba kapupontonként és rétegenként: Sonnet és C (F3V3)', '',
+          'Módszer: a köteg nyers[0] válaszának újraellenőrzése a teljes kapun (meres._tipusok); keresztellenőrzés a rétegenkénti '
+          'első-próbás számokkal, a jsonl probalkozas=2 verseivel és a napló kapuhiba_db(probalkozas=1) összegével.', '',
+          '| réteg | kapupont | %s | %s |' % tuple(fs), '|---|---|---|---|']
+    for r in RETEGEK:
+        for m in merok:
+            ki.append('| %s | %s | %s | %s |' % (r, m, cella(fs[0], r, m), cella(fs[1], r, m)))
+    ki += ['', '| futás | keresztellenőrzés (kapupont-bontás) |', '|---|---|']
+    ki += ['| %s | %s |' % (s[1], s[6]) for s in sorok.lista if s[0] == 'kapupont_kereszt']
+    ki += ['', '| futás | réteg | vers | kapupont | köteg | első próba: hibaüzenet (röviden) \\| végleg |', '|---|---|---|---|---|---|']
+    ki += ['| %s | %s | %s | %s | %s | %s |' % (s[1], s[2], s[3], s[4], s[5], s[6].replace('|', '\\|'))
+           for s in sorok.lista if s[0] == 'kapupont_vers' and s[1] == fs[0]]
+    return ki
+
+
+def kiegeszites_md(sorok):
+    """A teljes jelentés F21.80-as szakaszai (f–h)."""
+    gs = {s[3]: s for s in sorok.lista if s[0] == 'gondolkodas' and s[1] == NEVEK[SONNET]}
+    ki = ['', '## f) A Sonnet futása: a gondolkodási keret, a length-lezárások, a végleges kapuhibák (F21.80)', '']
+    if gs:
+        g, kt = gs['gondolkodasi_token'], gs.get('gondolkodasi_token_koltsege_usd')
+        mx, kf_ = gs['gondolkodasi_token_hivasonkent_max'], gs.get('keret_feletti_hivasok')
+        ln = gs.get('length_hivasok')
+        ki += ['### (i) A gondolkodási keret: a modell nem tartotta be', '',
+               '- A konfigurált keret: reasoning.max_tokens = 1024 (gondolkodas_mod: %s).' % ', '.join(
+                   sorted({s[4] for s in sorok.lista if s[0] == 'koltseg' and s[1] == NEVEK[SONNET] and s[3] == 'gondolkodas_mod'})),
+               '- Mért gondolkodási token összesen: %s a %s kimeneti tokenből (%.1f%%); hívásonként a legnagyobb %s (%s).' % (
+                   g[4], g[5], 100.0 * int(g[4]) / int(g[5]), mx[4], mx[6])]
+        if kf_:
+            ki.append('- A keret fölötti hívások: %s a %s-ből; %s.' % (kf_[4], kf_[5], kf_[6].split('; ', 1)[1]))
+        if kt:
+            ki.append('- A költségre: %s.' % kt[6].replace('a gondolkodási token × a kimeneti táblaár', 'a gondolkodási token a kimeneti táblaáron %s USD' % kt[4]))
+        if ln:
+            ki.append('- A length-lezárások: %s a %s hívásból (%s): a kimenet elérte a max_tokens-t, és nagyobb részét a gondolkodási '
+                      'token adta; a köteg versei véglegesen kapuhibásak maradtak (alább).' % (ln[4], ln[5], ln[6]))
+        ki += ['', '| köteg / próba | gondolkodási token / kimeneti token | megjegyzés |', '|---|---|---|']
+        ki += ['| %s | %s / %s | %s |' % (s[3], s[4], s[5], s[6].split('; ', 1)[1]) for s in sorok.lista if s[0] == 'sonnet_hivas']
+    ki += ['', '| futás | mérőszám | érték | nevező | megjegyzés |', '|---|---|---|---|---|']
+    ki += ['| %s | %s | %s | %s | %s |' % (s[1], s[3], s[4], s[5], s[6]) for s in sorok.lista if s[0] == 'gondolkodas']
+    ki += ['', '### (ii) Beállítás-eltérés és determinizmus', '']
+    ki += ['- %s: %s.' % (s[1], s[6]) for s in sorok.lista if s[0] == 'jeloles']
+    vk = [s for s in sorok.lista if s[0] == 'vegleges_kapuhiba']
+    ki += ['', '### A Sonnet véglegesen kapuhibás versei (%d)' % len(vk), '',
+           '| réteg | vers | végső kapupont | köteg | hívások \\| végső hiba |', '|---|---|---|---|---|']
+    ki += ['| %s | %s | %s | %s | %s |' % (s[2], s[3], s[4], s[5], s[6].replace('|', '\\|')) for s in vk]
+    ki += ['', '## g) A minősítés részletezése (a minősítés logikája változatlan; a küszöb szempontjából csak a mért érték számít)', '',
+           '| feltétel | réteg | érték | megjegyzés |', '|---|---|---|---|']
+    for s in sorok.lista:
+        if s[0] == 'minosites_reszlet':
+            ert = _pct(s[4], s[5]) if s[5] not in ('', '0') else ('%.1f%%' % (100 * float(s[4])) if 'vetitett' in s[3] else
+                                                                ('— (0/0)' if s[5] == '0' else s[4]))
+            ki.append('| %s | %s | %s | %s |' % (s[3], s[2], ert, s[6]))
+    ki += _kapupont_md_sonnet(sorok)
+    return ki
 
 
 def szamol(forras_dir=None, arany_ut=None, arany_sha=None, koltseg_ut=None, n_boot=N_BOOT):
@@ -1078,6 +1277,13 @@ def szamol(forras_dir=None, arany_ut=None, arany_sha=None, koltseg_ut=None, n_bo
     kapuhiba_futasok(adat, sorok)
     koltseg_futasok(adat, sorok)
     mentett_ellenorzes(sorok, forras_dir or F21P)
+    # F21.80 (a meglévő sorok után)
+    gondolkodas_futasok(adat, sorok)
+    sonnet_hivasok(adat, sorok)
+    vegleges_kapuhibak(adat, sorok)
+    minosites_reszlet(sorok, kf, alacsony_vetitett(koltseg_ut))
+    beallitas_jeloles(sorok)
+    kapupont_reteg(adat, sorok, [SONNET, C3])
     return adat, info, sorok, kim, kf
 
 
@@ -1404,6 +1610,19 @@ def onteszt():
         kk = [s for s in sk.lista if s[0] == 'kapuhiba_kereszt']
         ellen(len(kk) == 4 and all('EGYEZIK' in s[6] for s in kk), 'kapuhiba-keresztellenőrzés: %s' % [s[6] for s in kk])
         ellen(all(s[4] == '0' for s in sk.lista if s[0] == 'mentett_ellenorzes'), 'mentett ellenőrzés hibát ad')
+        # F21.80: a végleges kapuhibák (a mock tartós hibái), a kapupont-bontás (Sonnet, F3V3), a minősítés részletezése, jelölések
+        vk = {s[3] for s in sk.lista if s[0] == 'vegleges_kapuhiba'}
+        ellen(vk == set(info['hibas_mindig']['SONNETV3']), 'F21.80: a Sonnet végleges kapuhibái nem a mock tartós hibái: %s' % sorted(vk))
+        kpk = [s for s in sk.lista if s[0] == 'kapupont_kereszt']
+        ellen({s[1] for s in kpk} == {NEVEK[SONNET], NEVEK[C3]} and all('EGYEZIK' in s[6] for s in kpk), 'F21.80: kapupont-kereszt: %s' % kpk)
+        ellen(len([s for s in sk.lista if s[0] == 'minosites_reszlet' and s[3] == 'feltetel_1_magas_pontossag']) == 4
+              and any(s[0] == 'jeloles' and s[3] == 'nem_determinisztikus' for s in sk.lista)
+              and len([s for s in sk.lista if s[0] == 'sonnet_hivas']) == len([r for r in adat.naplo if r['futas'] == SONNET])
+              and any(s[0] == 'gondolkodas' and s[1] == NEVEK[SONNET] and s[3] == 'gondolkodasi_token' for s in sk.lista),
+              'F21.80: a minősítés-részletezés / jelölés / hívás- / gondolkodás-sorok hiányosak')
+        ellen('## f) A Sonnet futása' in md1 and '## g) A minősítés részletezése' in md1 and '## h) Az első próbás kapuhiba' in md1,
+              'F21.80: az md f–h szakasza hiányzik')
+        ellen(_keret('reasoning_max_tokens=1024') == 1024 and _keret('kotelezo_effort=minimal') is None, 'F21.80: _keret hibás')
         # a prompt-hatás: a v2-átlaghoz képest; az ingadozás-sor megvan minden rétegre
         ho = [s for s in sk.lista if s[0] == 'hatas_osszevetes']
         ellen(len({s[2] for s in ho}) == 5 and len({s[3] for s in ho}) == 4, 'a prompt-hatás sorai nem fedik a rétegeket/mérőszámokat (%d)' % len(ho))
