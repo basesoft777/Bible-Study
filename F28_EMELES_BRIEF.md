@@ -5,12 +5,13 @@ kod: EMELES
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: nem_indult
+allapot: fut
 ad: a lexikonba kerülő minden Strong-szám teljes Thayer- vagy BDB-szócikke magyarul (allapot opus, szúrópróbával kezi) az adat/forditasok.tsv-ben; közös javítóréteg és fordítási kapuk; CI-őr; az emelés mint munkafolyamat-lépés
 kovetkezo: /kovetkezo; ⛔ az első 5 szócikk után és a szúrópróbánál
 olvas: [adat/elofordulasok.tsv, adat/lexikon_hivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/BDB_teljes_unabridged.tsv, fp2/, eszkozok/fordit.py]
 ir: [adat/forditasok.tsv, adat/terminologia.tsv, forditas/prompt_v4.md, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, MUNKAMENET.md, .github/workflows/]
 fugg: []
+ag: claude/magical-goldberg-4xb1a0
 nem_fugg: [27]
 ---
 
