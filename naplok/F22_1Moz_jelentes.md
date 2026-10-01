@@ -1,6 +1,6 @@
 # F22_1Moz_jelentes.md — Károli–Strong párosítás: 1Mózes
 
-*A számok kizárólag szkriptkimenetből jönnek (`eszkozok/karoli_strong/f22_statisztika.py`, `sonnet_koteg.py`, `egyesit.py`). Állapot: a menet közben épül; a 2. szakasz a 22.5-ben készül.*
+*A számok kizárólag szkriptkimenetből jönnek (`eszkozok/karoli_strong/f22_statisztika.py`, `sonnet_koteg.py`, `egyesit.py`). Állapot: a 22.1–22.6 kész; az ellenőri kör (22.7) után a ⛔ 2. megállás (a 2Móz indításáról a felhasználó dönt).*
 
 ## 1. Próbaszakasz (22.2): az első 14 köteg
 
@@ -178,9 +178,10 @@ futtatni, és az összesítést ide bemásolni. Ha a forrás jelölése eltér a
 
 1. **Hatókör a próbaszakaszban.** A brief „1Móz 1–5, 138 vers, 14 köteg” megnevezése és a 10 verses kötegelés nem azonos: az első 14 köteg 140 vers (1Móz 6:1–2 is benne). A próbát az első 14 köteggel futtattam mindkét oldalon, a vetítést a ténylegesen futtatott 140 versre számoltam.
 2. **KJV a bemenetben.** A brief „Mi nincs benne” szakasza szerint a KJV a promptban nem igazolt; ezért mindkét modell a `kjv=False` bemenetet kapta (a prompt befagyasztott példaversei a prompt_v3 szerint változatlanul tartalmazzák a KJV-támpont sort). A pilot 97,3% / 95,3% pontossága a mintán ott mért, ahol volt KJV-támpont (Gen/Exo/Pro); a KJV nélküli bemenet pontossága **nincs külön mérve**. Az 1Móz régi aranyon mért egyezés (2.2) és a zárt összevetés ad majd erre közvetett képet. Döntésre vár, ha a KJV-s bemenet visszakerülne.
-3. **Új fájlok a brief `ir` listáján kívül.** A C-futtató (`eszkozok/karoli_strong/f22_c_futtat.py`, vékony burkoló a `futtat.py` fölött: a pilot `futtat.py` fix mintafájlra és `f21p/` kimenetre épül), a számokat előállító `f22_statisztika.py` és `f22_elemzes.py` nem szerepelt az `ir` listában; a brief szerint „a futtat.py újrahasználva”, számadat csak szkriptkimenetből jöhet a jelentésbe. A `futtat.py`-t nem módosítottam. Az `adat/datasetek.tsv` bejegyzése `ajanlott` / `korlatos` (nem `mindig`, hogy az `ellenoriz.py` 8. szabálya ne kezelje lekérdezés-kötelező datasetként); az `ellenoriz.py` ezután is 11 RENDBEN / 0 SÉRTÉS.
+3. **Új fájlok a brief `ir` listáján kívül.** A C-futtató (`eszkozok/karoli_strong/f22_c_futtat.py`, vékony burkoló a `futtat.py` fölött: a pilot `futtat.py` fix mintafájlra és `f21p/` kimenetre épül), a számokat előállító `f22_statisztika.py` és `f22_elemzes.py` nem szerepelt az `ir` listában; a brief szerint „a futtat.py újrahasználva”, számadat csak szkriptkimenetből jöhet a jelentésbe. Az `ir` listán kívül írt további fájlok: `f22/minta_1Moz.tsv` (a 22.1 2. pontja kéri, a lista nem nevezi), `naplok/F22_1Moz_atnezes.tsv` (a 22.4 kéri, üres), `DONTESEK.md` (DT-F22a, a ⛔ 2. megálláshoz), `f22/_munka/` (nem verziózott munkafájlok). A `futtat.py`-t nem módosítottam. Az `adat/datasetek.tsv` bejegyzése `ajanlott` / `korlatos` (nem `mindig`, hogy az `ellenoriz.py` 8. szabálya ne kezelje lekérdezés-kötelező datasetként); az `ellenoriz.py` ezután is 11 RENDBEN / 0 SÉRTÉS.
 4. **Commit-üzenet.** A workflow commit-üzenet-sablonja `F22.3:` előtagot visel mindkét Actions-futásnál (a 22.2-es próbaszakasz kimenete is így van commitolva); a git-történetben ez a két gépi commit.
 5. **Heti keret:** a mérés egész százalékos; a próbaszakasz 1 pontja 0–2 pontot jelentett volna, a végső 5 pont a pontosabb adat.
-6. **Munkafájlok:** a Sonnet-subagentek munkafájljai (`f22/_munka/`) nincsenek verziózva (`.git/info/exclude`); a verziózott nyers válasz a `f22/valaszok/sonnet/1Moz.jsonl`.
+6. **Proveniencia a táblákban (az ellenőri kör 1. ELTÉRÉSE alapján).** A `parok_1Moz.tsv` és a `szavak_1Moz.tsv` első sora `#`-kezdetű proveniencia-sor (`scope=manual | forras=… | ts=…`, a `ts` a C futásnapló utolsó időbélyege); a tábla modell-kimenet, javaslat. Az adat sorai változatlanok; az `egyesit.py` olvasója átugorja a `#` sorokat, az újraépítés továbbra is bájtra azonos.
+7. **Munkafájlok:** a Sonnet-subagentek munkafájljai (`f22/_munka/`) nincsenek verziózva (`.git/info/exclude`); a verziózott nyers válasz a `f22/valaszok/sonnet/1Moz.jsonl`.
 
 **⛔ 2. megállás:** a jelentés elkészült; az ellenőri kör (22.7) után merge előtt a felhasználó dönt a 2Móz indításáról.
