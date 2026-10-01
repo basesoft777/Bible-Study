@@ -1,0 +1,130 @@
+# MANUAL: scope=f21p P3c (c)-újrabesorolás: F3V3 eltérései az arany v3-höz, és az F3V3 összevetése a v2-es C-futások (F3V2, F3V2B) (c) eseteivel (128 sor) | forras=f21p/valaszok/{F3V3,F3V2,F3V2B}.jsonl, az arany legfrissebb befagyasztott változata, f21p/arany_opus_v2.jsonl, f21p/c_diff_f3v2_osszevetes.tsv, f21p/c_diff_f3v2b_besorolas.tsv, eszkozok/karoli_strong/c_diff_p3c.py --sablon | ts=2026-10-01T07:51:27+00:00 (a sablon gépi váza; az osztaly, konvencio_vagy_jegyzetpont, valtozas_konvencio és indok oszlop KÉZI; a besorolás idejét a besoroló frissíti) | manual (Opus-besorolás, nem mérés) | a gépi oszlopok (futas..arany_v2_v3) nem kézzel szerkesztendők
+futas	igehely	reteg	irany	k_poz	e_poz	magyar	eredeti	statusz	elozmeny_v2	arany_v2_v3	osztaly	konvencio_vagy_jegyzetpont	valtozas_konvencio	indok
+F3V3	2Móz 20:23	R1	hianyzo	4	5	mellém	5 י H9030 [me]	elteres	F3V2:a, F3V2B:a					
+F3V3	2Móz 20:25	R1	tobblet	13	18	a	18 הָ H9034 [it]	megszunt	F3V2:c					
+F3V3	2Móz 20:25	R1	tobblet	14	13	mint	13 כִּ֧י H3588 [for]	elteres	F3V2B:b					
+F3V3	2Móz 20:25	R1	tobblet	14	18	mint	18 הָ H9034 [it]	megszunt	F3V2:c					
+F3V3	2Móz 20:25	R1	tobblet	18	19	megfertőztetted	19 וַ H9001 [and]	elteres	F3V2:a, F3V2B:a					
+F3V3	2Móz 21:6	R1	hianyzo	6	5	ura	5 ו֙ H9023 [his]	elteres	F3V2:a					
+F3V3	2Móz 21:6	R1	hianyzo	20	22	ura	22 ו H9023 [his]	elteres	F3V2:a					
+F3V3	2Móz 21:6	R1	hianyzo	25	25	fülét	25 וֹ֙ H9023 [his]	elteres	F3V2:a					
+F3V3	2Móz 21:26	R1	hianyzo	5	8	szolgájának	8 וֹ H9023 [his]	elteres	F3V2:a					
+F3V3	2Móz 21:26	R1	hianyzo	8	13	szolgálójának	13 וֹ H9023 [his]	elteres	F3V2:c					
+F3V3	2Móz 21:26	R1	hianyzo	14	16	elpusztul	16 הּ H9034 [it]	elteres						
+F3V3	2Móz 21:26	R1	hianyzo	20	23	szeméért	23 וֹ H9023 [his]	elteres	F3V2:a					
+F3V3	2Móz 21:26	R1	tobblet	9	13	szemét	13 וֹ H9023 [his]	megszunt	F3V2:c					
+F3V3	2Móz 25:8	R1	hianyzo	8	10	közöttök	10 ם H9028 [them]	elteres	F3V2:a					
+F3V3	2Móz 25:40	R1	hianyzo	2	3	hogy	3 וַ H9002 [and]	elteres						
+F3V3	2Móz 25:40	R1	hianyzo	3	7	arra	7 ם H9028 [their]	elteres	F3V2B:b					
+F3V3	2Móz 25:40	R1	hianyzo	5	5	formára	5 בְּ H9003 [in]	elteres	F3V2:b, F3V2B:b					
+F3V3	2Móz 25:40	R1	hianyzo	12	9	néked	9 אַתָּ֥ה H0859 [you]	elteres						
+F3V3	2Móz 25:40	R1	tobblet	2	1	hogy	1 וּ H9002 [and]	elteres						
+F3V3	2Móz 25:40	R1	tobblet	3	5	arra	5 בְּ H9003 [in]	elteres	F3V2:b, F3V2B:b					
+F3V3	2Móz 25:40	R1	tobblet	5	7	formára	7 ם H9028 [their]	elteres	F3V2B:b					
+F3V3	2Móz 25:40	R1	tobblet	6	3	csináld	3 וַ H9002 [and]	elteres						
+F3V3	2Móz 25:40	R1	tobblet	11	9	mutattatott	9 אַתָּ֥ה H0859 [you]	elteres						
+F3V3	2Móz 26:13	R1	tobblet	9	12	abból	12 עֹדֵ֔ף H5736 [surplus]	megszunt	F3V2:c					
+F3V3	2Móz 26:13	R1	tobblet	11	12	mi	12 עֹדֵ֔ף H5736 [surplus]	elteres	F3V2:a, F3V2B:a					
+F3V3	2Móz 29:4	R1	hianyzo	6	7	fiait	7 ו֙ H9023 [his]	elteres	F3V2:a					
+F3V3	2Móz 30:3	R1	hianyzo	17	19	is	19 וְ H9001 [and]	elteres						
+F3V3	2Móz 30:3	R1	tobblet	18	19	csinálj	19 וְ H9001 [and]	elteres						
+F3V3	Péld 23:19	R1	hianyzo	3	4	fiam	4 י H9020 [my]	megszunt	F3V2:c, F3V2B:c					
+F3V3	Péld 23:19	R1	hianyzo	5	5	hogy	5 וַ H9002 [and]	elteres	F3V2:a, F3V2B:a					
+F3V3	Péld 23:19	R1	hianyzo	11	9	úton	9 בַּ H9003 [in the]	elteres	F3V2:a, F3V2B:a					
+F3V3	Péld 23:19	R1	tobblet	4	4	engem	4 י H9020 [my]	megszunt	F3V2:c, F3V2B:c					
+F3V3	Péld 25:24	R1	hianyzo	4	5	tetőnek	5 גָּ֑ג H1406 [a roof]	megszunt	F3V2:c					
+F3V3	Péld 25:24	R1	hianyzo	5	4	ormán	4 פִּנַּת H6438 [[the] corner of]	megszunt	F3V2:c					
+F3V3	Péld 25:24	R1	tobblet	4	4	tetőnek	4 פִּנַּת H6438 [[the] corner of]	megszunt	F3V2:c					
+F3V3	Péld 25:24	R1	tobblet	5	5	ormán	5 גָּ֑ג H1406 [a roof]	megszunt	F3V2:c					
+F3V3	Péld 28:17	R1	hianyzo	11	10	senki	10 יִתְמְכוּ H8551 [people support]	elteres						
+F3V3	Péld 28:17	R1	tobblet	6	3	vér	3 בְּ H9003 [by]	elteres	F3V2B:b					
+F3V3	Péld 30:17	R1	hianyzo	13	11	kivágják	11 הָ H9034 [it]	elteres	F3V2B:a					
+F3V3	Péld 30:17	R1	hianyzo	18	16	megeszik	16 הָ H9034 [it]	elteres	F3V2B:a					
+F3V3	Péld 31:5	R1	hianyzo	11	1	ne	1 פֶּן H6435 [lest]	megszunt	F3V2B:c					
+F3V3	Péld 31:5	R1	tobblet	11	6	ne	6 וִֽ֝ H9002 [and]	megszunt	F3V2B:c					
+F3V3	Péld 31:8	R1	hianyzo	13	6	dolgában	6 אֶל H0413 [to]	elteres	F3V2:c, F3V2B:c					
+F3V3	Péld 31:8	R1	tobblet	11	6	és	6 אֶל H0413 [to]	elteres	F3V2:c, F3V2B:c					
+F3V3	Jób 33:13	R2	tobblet	4	5	Azért	5 כִּ֥י H3588 [that]	elteres		változott				
+F3V3	Zsolt 16:11	R2	tobblet	1	1	Te	1 תּֽוֹדִיעֵ H3045 [you will make known to]	elteres	F3V2:a					
+F3V3	Zsolt 18:1	R2	tobblet	14	18	azon	18 בְּ H9003 [on]	elteres	F3V2:b, F3V2B:b					
+F3V3	Zsolt 18:1	R2	tobblet	19	18	melyen	18 בְּ H9003 [on]	elteres						
+F3V3	Zsolt 18:3	R2	tobblet	7	4	és	4 וּ H9002 [and]	elteres	F3V2:a					
+F3V3	Zsolt 22:32	R2	tobblet	8	8	ő	8 נ֝וֹלָ֗ד H3205 [about to be born]	elteres	F3V2:b					
+F3V3	Zsolt 22:32	R2	tobblet	13	10	ezt	10 עָשָֽׂה H6213 [he has acted]	megszunt	F3V2:c					
+F3V3	Jer 46:21	R3	hianyzo	3	1	is	1 גַּם H1571 [also]	elteres	F3V2:c, F3V2B:c					
+F3V3	Jer 46:21	R3	hianyzo	6	6	közöttök	6 הּ֙ H9024 [its]	elteres	F3V2:a, F3V2B:a					
+F3V3	Jer 46:21	R3	hianyzo	27	27	megfenyíttetésök	27 ם H9028 [their]	elteres	F3V2:a					
+F3V3	Jer 46:21	R3	tobblet	3	11	is	11 גַם H1571 [also]	elteres	F3V2:c, F3V2B:c					
+F3V3	Jer 51:3	R3	hianyzo	2	1	kézívesre	1 אֶֽל H0408 [may not]	elteres						
+F3V3	Jer 51:3	R3	hianyzo	8	8	arra	8 אֶל H0408 [may not]	elteres						
+F3V3	Jer 51:3	R3	hianyzo	11	10	pánczéljába	10 בְּ H9003 [in]	elteres						
+F3V3	Jer 51:3	R3	hianyzo	15	16	ifjainak	16 אֶל H0413 [<to>]	megszunt	F3V2:c, F3V2B:c					
+F3V3	Jer 51:3	R3	tobblet	2	2	kézívesre	2 יִדְרֹ֤ךְ H1869 [he bend]	elteres	F3V2B:b					
+F3V3	Jer 51:3	R3	tobblet	2	3	kézívesre	3 הַ H9009 [the]	elteres	F3V2B:a					
+F3V3	Jer 51:3	R3	tobblet	2	4	kézívesre	4 דֹּרֵךְ֙ H1869 [[one] bending]	elteres	F3V2:b, F3V2B:b					
+F3V3	Jer 51:3	R3	tobblet	3	2	kézíves	2 יִדְרֹ֤ךְ H1869 [he bend]	elteres						
+F3V3	Jer 51:3	R3	tobblet	8	9	arra	9 יִתְעַ֖ל H5927 [he lift]	elteres						
+F3V3	Jer 51:3	R3	tobblet	8	10	arra	10 בְּ H9003 [in]	elteres						
+F3V3	Jer 51:3	R3	tobblet	9	8	a	8 אֶל H0408 [may not]	megszunt	F3V2B:c					
+F3V3	Jer 51:3	R3	tobblet	10	8	ki	8 אֶל H0408 [may not]	megszunt	F3V2:c, F3V2B:c					
+F3V3	Jer 51:3	R3	tobblet	10	9	ki	9 יִתְעַ֖ל H5927 [he lift]	elteres						
+F3V3	Ez 11:3	R3	tobblet	9	10	város	10 סִּ֔יר H5518 [pot]	elteres	F3V2:c, F3V2B:c					
+F3V3	Ez 16:57	R3	tobblet	6	7	miképen	7 עֵ֚ת H6256 [[the] time of]	megszunt	F3V2B:c					
+F3V3	Ez 16:57	R3	tobblet	7	7	te	7 עֵ֚ת H6256 [[the] time of]	megszunt	F3V2:c					
+F3V3	Ez 22:25	R3	hianyzo	4	3	prófétái	3 הָ֙ H9024 [its]	elteres	F3V2:a					
+F3V3	Ez 22:25	R3	hianyzo	6	6	közepette	6 הּ H9024 [it]	elteres	F3V2:a					
+F3V3	Ez 22:25	R3	hianyzo	7	7	olyanok	7 כַּ H9004 [like]	elteres						
+F3V3	Ez 33:31	R3	hianyzo	18	14	népem	14 י H9020 [my]	elteres	F3V2:a					
+F3V3	Ez 33:31	R3	tobblet	9	6	szokott	6 מְבוֹא H3996 [[the] coming of]	elteres	F3V2:b, F3V2B:b					
+F3V3	Ez 33:31	R3	tobblet	15	5	mint	5 כִּ H9004 [like]	elteres	F3V2B:b					
+F3V3	Ez 33:31	R3	tobblet	15	14	mint	14 י H9020 [my]	megszunt	F3V2:c					
+F3V3	Ez 33:31	R3	tobblet	32	20	pedig	20 וְ H9002 [and]	elteres	F3V2B:c					
+F3V3	Ez 33:31	R3	tobblet	32	30	pedig	30 הֵ֣מָּה H1992 [they]	megszunt	F3V2:c					
+F3V3	Ez 33:31	R3	tobblet	33	34	nyereség	34 ם H9028 [their]	elteres	F3V2:b					
+F3V3	Ez 39:13	R3	tobblet	15	13	melyen	13 י֚וֹם H3117 [[the] day of]	elteres	F3V2:a, F3V2B:a					
+F3V3	Ez 46:12	R3	tobblet	39	40	azután	40 יָצָ֛א H3318 [he will go out]	elteres	F3V2B:c					
+F3V3	Mt 4:4	R4	tobblet	16	17	a	17 ἐκπορευομένῳ G1607 [coming out]	elteres	F3V2:a, F3V2B:a					
+F3V3	Mt 4:4	R4	tobblet	17	17	mely	17 ἐκπορευομένῳ G1607 [coming out]	elteres	F3V2:a, F3V2B:a					
+F3V3	Mt 5:34	R4	hianyzo	13	14	az	14 ἐστὶν G1510 [it is]	elteres						
+F3V3	Mt 5:34	R4	tobblet	3	3	azt	3 λέγω G3004 [say]	megszunt	F3V2:c, F3V2B:c					
+F3V3	Mt 5:34	R4	tobblet	17	14	széke	14 ἐστὶν G1510 [it is]	elteres						
+F3V3	Mt 6:31	R4	hianyzo	5	1	ne	1 μὴ G3361 [Not]	elteres	F3V2B:c					
+F3V3	Mt 6:31	R4	tobblet	4	4	és	4 λέγοντες· G3004 [saying;]	megszunt	F3V2:c, F3V2B:c					
+F3V3	Mt 6:31	R4	tobblet	5	4	ne	4 λέγοντες· G3004 [saying;]	megszunt	F3V2B:c					
+F3V3	Mt 11:18	R4	tobblet	4	4	a	4 μήτε G3383 [neither]	megszunt	F3V2B:c					
+F3V3	Mt 11:18	R4	tobblet	5	4	ki	4 μήτε G3383 [neither]	megszunt	F3V2B:c					
+F3V3	Mt 11:18	R4	tobblet	11	9	azt	9 λέγουσιν· G3004 [they say;]	megszunt	F3V2:c, F3V2B:c					
+F3V3	Mt 21:4	R4	hianyzo	3	5	azért	5 ἵνα G2443 [that]	megszunt	F3V2B:c	változott				
+F3V3	Mt 21:4	R4	hianyzo	8	9	próféta	9 διὰ G1223 [through]	elteres	F3V2:c, F3V2B:c					
+F3V3	Mt 21:4	R4	tobblet	3	4	azért	4 γέγονεν G1096 [has come to pass]	megszunt	F3V2B:c	változott				
+F3V3	Mt 21:4	R4	tobblet	9	9	mondása	9 διὰ G1223 [through]	elteres						
+F3V3	Mt 21:4	R4	tobblet	10	12	a	12 λέγοντος· G3004 [saying;]	elteres	F3V2:a, F3V2B:a					
+F3V3	Mt 21:4	R4	tobblet	11	12	ki	12 λέγοντος· G3004 [saying;]	elteres	F3V2:a, F3V2B:a					
+F3V3	Mt 21:4	R4	tobblet	13	9	szólott	9 διὰ G1223 [through]	megszunt	F3V2B:c					
+F3V3	Mt 23:31	R4	hianyzo	2	1	hát	1 ὥστε G5620 [Thus]	elteres						
+F3V3	Mt 27:18	R4	tobblet	2	1	jól	1 ᾔδει G1492 [He knew]	megszunt	F3V2:c					
+F3V3	Mk 2:23	R4	hianyzo	14	14	tanítványai	14 αὐτοῦ G0846 [of Him]	elteres						
+F3V3	Mk 2:23	R4	tobblet	3	2	hogy	2 ἐγένετο G1096 [it came to pass]	megszunt	F3V2:c					
+F3V3	Mk 2:23	R4	tobblet	6	8	vetések	8 διὰ G1223 [through]	elteres						
+F3V3	Jak 1:18	R4	hianyzo	2	1	ő	1 βουληθεὶς G1014 [Having willed [it]]	megszunt	F3V2B:c					
+F3V3	Jak 1:18	R4	hianyzo	13	13	teremtményeinek	13 αὐτοῦ G0846 [of His]	elteres	F3V2:a, F3V2B:a					
+F3V3	Jak 1:18	R4	tobblet	2	13	ő	13 αὐτοῦ G0846 [of His]	megszunt	F3V2B:c					
+F3V3	Jak 1:18	R4	tobblet	10	8	hogy	8 εἶναι G1511 [to be]	elteres						
+F3V3	Jak 3:1	R4	tobblet	7	8	azt	8 ὅτι G3754 [that]	megszunt	F3V2:c					
+F3V3	Jak 3:4	R4	hianyzo	15	13	kormánytól	13 ὑπὸ G5259 [by]	megszunt	F3V2:c, F3V2B:c					
+F3V3	Jak 3:4	R4	hianyzo	19	17	hová	17 ἂν G0302 [ever]	megszunt	F3V2:c					
+F3V3	Jak 3:4	R4	tobblet	12	12	mindazáltal	12 μετάγεται G3329 [are turned about]	elteres						
+F3V3	Jak 3:4	R4	tobblet	12	13	mindazáltal	13 ὑπὸ G5259 [by]	megszunt	F3V2:c, F3V2B:c					
+F3V3	Jak 3:4	R4	tobblet	16	17	oda	17 ἂν G0302 [ever]	elteres	F3V2:c, F3V2B:c					
+F3V3	1Pét 4:2	R4	tobblet	1	2	Hogy	2 τὸ G3588 [<the>]	elteres	F3V2B:a					
+F3V3	1Pét 4:11	R4	hianyzo	14	11	erővel	11 ἐξ G1537 [of]	elteres	F3V2:c, F3V2B:c					
+F3V3	1Pét 4:11	R4	tobblet	7	3	szólja	3 λαλεῖ G2980 [speaks]	elteres	F3V2:c, F3V2B:c					
+F3V3	1Pét 4:11	R4	tobblet	12	11	azzal	11 ἐξ G1537 [of]	elteres	F3V2:c, F3V2B:c					
+F3V3	1Pét 4:11	R4	tobblet	15	9	szolgáljon	9 διακονεῖ G1247 [serves]	elteres	F3V2:c, F3V2B:c					
+F3V3	1Pét 4:11	R4	tobblet	22	22	dícsőíttessék	22 θεὸς G2316 [God]	elteres	F3V2:c					
+F3V3	1Pét 4:11	R4	tobblet	22	27	dícsőíttessék	27 ἐστιν G1510 [be]	megszunt	F3V2B:c					
+F3V3	1Pét 4:11	R4	tobblet	33	36	örökké	36 τῶν G3588 [of the]	elteres	F3V2:a, F3V2B:a					
+F3V3	1Pét 5:12	R4	tobblet	9	3	atyátokfia	3 ὑμῖν G4771 [to you]	elteres	F3V2B:b					
+F3V3	1Pét 5:12	R4	tobblet	22	21	a	21 εἰς G1519 [in]	elteres	F3V2:a, F3V2B:a					
+F3V3	1Ján 1:10	R4	hianyzo	13	12	ígéje	12 αὐτοῦ G0846 [of Him]	elteres	F3V2:a, F3V2B:a					
+F3V3	1Ján 1:10	R4	tobblet	2	3	azt	3 ὅτι G3754 [that]	megszunt	F3V2:c					
