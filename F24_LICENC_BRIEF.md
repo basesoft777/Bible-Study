@@ -5,7 +5,8 @@ kod: LICENC
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/f24-licenc
 ad: adatkészletenként egy licencsor (licenc, verzió, kereskedelmi felhasználás, share-alike, kötelező megjelölés) egyetlen táblában, amelyre a render és a nyilvános kiadás épít
 kovetkezo: /kovetkezo; külön ⛔ nincs, a tisztázatlan tételek összesítve a DONTESEK.md-be
 olvas: [konkordancia/, adat/datasetek.tsv, adat/szotar_szerepek.tsv, eszkozok/general.py, Rendszerfejlesztesi_playbook.md]
