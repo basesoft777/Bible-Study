@@ -1,0 +1,106 @@
+# F22 -- Karoli-Strong parositas, a C (Gemini) oldal, konyvenkent (GitHub Actions, OpenRouter).
+#
+# INDITAS. Kizarolag push-ra: a claude/f22-1moz agon, ha az f22/futtatas.txt valtozik. Nincs
+# workflow_dispatch. A workflow sajat commitja nem nyul az f22/futtatas.txt-hez, es a GITHUB_TOKEN-nel
+# vegzett push nem indit uj futast.
+#
+# VEZERLES (f22/futtatas.txt, MINDEN kulcs kotelezo): konyv=1Móz, koteg_max=<n|mind>, koteg_meret=10,
+# plafon_usd=3.90 (kumulativ napla-osszeg, megallasi kuszob; kemeny korlat 4.00). A futtato:
+# eszkozok/karoli_strong/f22_c_futtat.py (a futtat.py ujrahasznalva). Plafonnal (kilepesi kod 3) a job piros,
+# de a kesz koteg-sorok es a naplo visszacommitolodnak; a futas ujrainditheto (a kesz koteget kihagyja).
+# A prompt (f21p/prompt_v3.md) hash-et a futtato a futas elejen es vegen is ellenorzi.
+#
+# JOGOSULTSAG ES ISRAS. contents: write csak a 'futtatas' jobnal, kizarolag a kimenet visszacommitolasahoz:
+# git add csak az f22/valaszok/c es az f22/futasnaplo.tsv; commit elott ellenorzes, hogy minden valtozas
+# f22/ alatt van; a push csak a claude/f22-1moz agra mehet (explicit refspec). Az OPENROUTER_API_KEY csak a
+# futtato lepes env-jeben szerepel. A FELADATOK.md generalt blokkjahoz a workflow nem nyul.
+
+name: f22_parositas
+
+on:
+  push:
+    branches: [claude/f22-1moz]
+    paths:
+      - 'f22/futtatas.txt'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: f22-parositas
+  cancel-in-progress: false
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+
+jobs:
+  futtatas:
+    if: github.ref == 'refs/heads/claude/f22-1moz'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout (a trigger-commit)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Python telepitese
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fuggosegek
+        run: pip install requests
+
+      - name: Onteszt (halozat es kulcs nelkul)
+        env:
+          PYTHONIOENCODING: utf-8
+        run: |
+          python eszkozok/karoli_strong/kapu.py --onteszt
+          python eszkozok/karoli_strong/f22_c_futtat.py --onteszt
+
+      - name: Futtatas az f22/futtatas.txt szerint (OpenRouter)
+        id: futtat
+        env:
+          PYTHONIOENCODING: utf-8
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python eszkozok/karoli_strong/f22_c_futtat.py --vezerlo f22/futtatas.txt
+
+      - name: Kulcs-ellenorzes (hibat ad, ha kulcsszeru karakterlanc van)
+        id: kulcs_grep
+        if: always()
+        run: |
+          if [ -e f22/valaszok ] || [ -e f22/futasnaplo.tsv ]; then
+            if grep -rIlE 'sk-or-[A-Za-z0-9_-]{16,}|sk-[A-Za-z0-9]{32,}|Bearer [A-Za-z0-9_-]{20,}' f22/valaszok f22/futasnaplo.tsv eszkozok/karoli_strong; then
+              echo "kulcs-szeru minta a kimenetben"; exit 1
+            fi
+          fi
+          echo "kulcs-grep tiszta"
+
+      - name: Kimenet commitolasa es pusholasa (csak f22/, csak a claude/f22-1moz agra)
+        if: always() && steps.kulcs_grep.conclusion == 'success'
+        run: |
+          if [ "$GITHUB_REF" != "refs/heads/claude/f22-1moz" ]; then
+            echo "nem a claude/f22-1moz agon futunk: $GITHUB_REF"; exit 1
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for ut in f22/valaszok/c f22/futasnaplo.tsv; do
+            if [ -e "$ut" ]; then git add -- "$ut"; fi
+          done
+          if git diff --cached --name-only | grep -v '^f22/'; then
+            echo "az f22/ alatti kimeneten kivuli valtozas van a staged allapotban"; exit 1
+          fi
+          if git diff --name-only | grep .; then
+            echo "nem staged, kovetett fajl valtozott"; exit 1
+          fi
+          if git diff --cached --quiet; then
+            echo "nincs valtozas"; exit 0
+          fi
+          printf 'F22.3: a C (Gemini) futás kimenete (GitHub Actions, futás %s)\n' "$GITHUB_RUN_ID" > "$RUNNER_TEMP/commit_uzenet.txt"
+          git -c i18n.commitEncoding=UTF-8 commit -F "$RUNNER_TEMP/commit_uzenet.txt"
+          git fetch origin refs/heads/claude/f22-1moz
+          git rebase FETCH_HEAD
+          git push origin HEAD:refs/heads/claude/f22-1moz
