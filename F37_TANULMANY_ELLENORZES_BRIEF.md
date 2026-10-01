@@ -6,8 +6,8 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 allapot: nem_indult
-ad: a tanulmányokat CI (E17–E22) és a fuggetlen-ellenor ügynök ellenőrzi; a régi tanulmányokról két auditjelentés készül
-kovetkezo: /kovetkezo; ⛔ a T0 után (nincs Strong-jelölt eredeti szöveg vagy SzPA-korlát) és a T2 után (az alap tanulmányok sorsa)
+ad: a tanulmányokat CI (E20–E24, a T0 szerint) és a fuggetlen-ellenor ügynök ellenőrzi; a régi tanulmányokról két auditjelentés készül
+kovetkezo: /kovetkezo; ⛔ a T0 után (nincs Strong-jelölt eredeti szöveg, vagy az SzPA kötelező szakasz a Tanulmány sablonban) és a T2 után (az alap tanulmányok sorsa)
 olvas: [sablonok/, genezis/, ujszovetseg/, tematikus_lezart/, konkordancia/, adat/, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, CLAUDE.md]
 ir: [sablonok/, CLAUDE.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/]
 fugg: [30, 32]
@@ -44,9 +44,9 @@ Mérd fel, és írd a `naplok/T0_felmeres.md` fájlba:
 - a „Bővített” szó élő előfordulásait (grep, a lezárt naplók nélkül);
 - a Strong-számmal jelölt eredeti szöveget a repóban (héber, illetve görög/LXX), fájlnévvel és lefedettséggel;
 - a szótári réteget (TBESH, TBESG), fájlnévvel;
-- az SzPA-idézet hosszkorlátjának forrását (szabályfájl, szám).
+- van-e még SzPA-szakasz vagy SzPA-hivatkozás a Tanulmány sablonban, a `CLAUDE.md`-ben vagy a `MUNKAMENET.md`-ben (az SzPA kivezetésre került); ha van, jelentsd, de ne javítsd.
 
-⛔ Ha nincs Strong-jelölt eredeti szöveg, vagy nincs számszerű SzPA-korlát: állj meg, és jelentsd.
+⛔ Ha nincs Strong-jelölt eredeti szöveg: állj meg, és jelentsd. Ugyanígy állj meg, ha az SzPA kötelező szakaszként szerepel a Tanulmány sablonban, mert az E20 szakaszellenőrző szabály a szakaszlistát ebből olvassa. Más SzPA-előfordulás miatt nem kell megállni, azt csak jelentsd.
 
 ### T1 — átnevezés
 
@@ -58,16 +58,17 @@ Minden alap tanulmányt vess össze a bővített párjával. A kérdés: van-e b
 
 ⛔ Itt állj meg. A felhasználó dönt: archiválás változatlanul, törlés, vagy a hiányzó tartalom átvezetése és utána archiválás. Ebben a menetben fájlt nem módosítasz.
 
-### T3 — CI-szabályok (az utolsó E-szám után folytatva, itt E17-től jelölve)
+### T3 — CI-szabályok (az utolsó E-szám után folytatva; itt E20-tól jelölve, a végleges számozás a T0 szerint)
+
+A T0 minden tervezett szabályt vessen össze a meglévő E1–E19 szabályokkal. Átfedés esetén a meglévő szabály hatókörét bővítse, ne vegyen fel újat.
 
 | Szabály | Mit ellenőriz |
 |---|---|
-| E17 | Megvan-e minden kötelező szakasz. A szakaszlistát a Tanulmány sablonból olvassa, nem kódba égetve. |
-| E18 | Van-e kiejtés minden görög és héber szó mellett. |
-| E19 | Egységes-e a versformátum (`1Móz 17:1`). |
-| E20 | Nincs-e angolul hagyott „sense”. |
-| E21 | A naplójellegű szöveg `【NAPLO】` blokkban van-e. A felismerés módját a T0 alapján javasold; ha bizonytalan, ez a szabály csak figyelmeztessen. |
-| E22 | Az SzPA-idézet nem hosszabb-e a T0-ban azonosított korlátnál. |
+| E20 | Megvan-e minden kötelező szakasz. A szakaszlistát a Tanulmány sablonból olvassa, nem kódba égetve. |
+| E21 | Van-e kiejtés minden görög és héber szó mellett. |
+| E22 | Egységes-e a versformátum (`1Móz 17:1`). |
+| E23 | Nincs-e angolul hagyott „sense”. |
+| E24 | A naplójellegű szöveg `【NAPLO】` blokkban van-e. A felismerés módját a T0 alapján javasold; ha bizonytalan, ez a szabály csak figyelmeztessen. |
 
 Futási mód:
 - **Kötelező (piros):** csak az új vagy módosított tanulmányfájlokra, a base ághoz képest.
@@ -120,5 +121,5 @@ Az 1–6. pontot futtasd végig a meglévő tanulmányokon. Kimenet: `naplok/TAN
 | DT-F37-3 | A CI csak az új vagy módosított tanulmányra kötelező, a régiekre jelentés mód | különben a régi fájlok miatt minden PR piros lenne | minden tanulmányra kötelező |
 | DT-F37-4 | A magyar szó és a Strong-szám ellenőrzése függő a #22-ig | nincs párosítás; a zárt forrás adata nem kerülhet a repóba | ellenőrzés a zárt forrásból (licenc miatt elvetve) |
 | DT-F37-5 | A régi tanulmányok javítása külön feladat | a brief ne duzzadjon; a felhasználó dönt a javítás köréről | javítás az auditban |
-| DT-F37-6 | Az E17 a szakaszlistát a sablonból olvassa | sablonváltozáskor ne kelljen kódot módosítani | beégetett lista |
+| DT-F37-6 | Az E20 a szakaszlistát a sablonból olvassa | sablonváltozáskor ne kelljen kódot módosítani | beégetett lista |
 | DT-F37-7 | Az alap tanulmányok sorsa a T2 ⛔-pontjában dől el | előbb látni kell, van-e bennük átvezetendő tartalom | előzetes archiválás vagy törlés |
