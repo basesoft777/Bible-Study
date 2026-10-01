@@ -36,5 +36,90 @@ A különbség 7 Strong-szám (a `--szeles` halmazban van, a briefszövegű halm
 | H8085 | 9 153 | `elofordulasok.kapcsolodas` (HAMART-001, Jer 6:7) | kollokáció-pár eleme („H8085+H2555”), a `strong` mező H2555 |
 
 **Kezelés:** a menet a briefszövegű halmazzal (39 fordítandó) halad; a 7 tétel
-felvételének kérdése a `DONTESEK.md` E4a-tételébe került (az E4a első adagját nem
+felvételének kérdése a `DONTESEK.md` DT24 (c) pontjába került (az E4a első adagját nem
 érinti, kivéve a „legrövidebb Thayer-szócikk” kiválasztását — l. az E4a szakaszt).
+
+## E1 — Prompt v4 (F28.2)
+
+`forditas/prompt_v4.md`: a `fp2/prompt_v3.md` szó szerinti másolata a
+`<!-- PROMPT-KEZDET -->` jelölő alatt (az összeállító szkript ellenőrizte, hogy a v3
+minden része változatlanul, sorrendben benne van), plusz az általános (v4) és a
+BDB-blokk a v3 „Stílus” és „Ideiglenes terminológia” szakasza között, a végén a G26
+példapár (forrás: a Thayer G0026 sora a „consequently it denotes” szavakig). A
+BDB-blokk elé egy bekezdés került: H-számnál a v3 „Thayer” megnevezése a BDB-t jelenti
+(a v3 szövege Thayer-specifikus, és szó szerint maradt). Kitöltés:
+`python eszkozok/emeles.py prompt <Strong>`.
+
+## E2 — Javítóréteg (F28.3)
+
+`eszkozok/normalizal.py`, négy szabály (`kk_k`, `szerzonevek`, `igehely_rov`,
+`konyvnevek`), szótáranként kapcsolható (`SZABALYOK`). Tesztek:
+`python eszkozok/teszt_normalizal.py` → 19 teszt, OK.
+
+## E3 — Kapuk (F28.4, F28.6)
+
+`eszkozok/forditas_kapuk.py`: a `naplok/FORDITAS_P4_ellenoriz.py` 1–3. és 6.
+ellenőrzése importálva, a 4. és 5. F28-as változata saját (l. lent), plus három új:
+idézőjel-párok (8), tagolás (9), igetörzsek (10, BDB).
+
+A tagolás-kapu **részsorozatot** vizsgál: a forrás jelölőinek (pontozott szám, a BDB
+pont nélküli főszáma, betűjel, római szám, zárójeles jel) sorrendben meg kell
+jelenniük a fordításban; a fordítás hozzáadhat sorszámnevet (a magyar `14. §`,
+`835. o.`, `2. aorisztosz` nem forrásbeli tagolás). Pontos egyezést nem lehetett
+előírni, mert a magyar sorszámnév-írás a forrásban nem létező pontozott számokat
+termel.
+
+Kalibráció a G1941 meglévő `teljes` `kezi` fordításán: tagolás RENDBEN; a 3., 4., 5.
+kapu jelez (az akkori v1-stílus kiejtés-zárójelei, `Lk`, `Ám` rövidítés) — ez a
+fordítás nem a v4 mércéje.
+
+Hamis riasztások az első adagban, a kapuban javítva (F28.6):
+
+| Kapu | Eset | Javítás |
+|---|---|---|
+| 4 formázás | a BDB gyakoriságjele (`קָרָא_724`, `Qal_655`) `_` Markdown-jelnek számított | csak a forrásbelinél több `*`, `_`, `#` sértés |
+| 5 terminológia | a `procl.` szóban a `cl.` rövidítés „megvolt” | az angol alak előtt nem állhat betű |
+
+## E4a — Első adag (F28.5–F28.7)
+
+Az öt szócikk: G1944 (a briefszövegű lista legrövidebb Thayer-szócikke), G5590, H6093
+(a legrövidebb BDB), H7121, H1121 — helyettesítés nem kellett. Kimenet:
+`naplok/EMELES_elso_adag.md` (forrás és fordítás szegmensenként párban, a strukturális
+tagolásjelölőknél igazítva; kapueredmények; a H7121-nél a kézi 2.c és 3. jelentés
+összevetése). A párok nem kétoszlopos táblázatban, hanem egymás alatt állnak: a forrás
+blockquote-ban, alatta a fordítás. Ok: a CI E9 szabálya a táblázatcellában álló angol
+„sense” szót (H7121: *in this sense*) HIBA-nak vette; a blockquote a D11 szerint
+kivétel (idézett angol forrásszöveg).
+
+**Eltérés a brief E4 leírásától:** szócikkenkénti `vegrehajto-opus` subagent helyett a
+menet maga fordított (Opus-modell, `claude-opus-5-5`), mert ebben a környezetben
+subagent-indításra nem volt eszköz. A prompt, a terminológia és a forrásszöveg
+ugyanaz.
+
+**Segédeszköz (nem a brief része):** helyőrzős fordítás — az `emeles.py helyorzo` minden
+összefüggő héber/görög szakaszt ⟦n⟧ jellel helyettesít, az `ellenoriz --mappa`
+betűhíven visszaírja. Ok: a BDB-szócikkek több száz héber szakasza (H1121: 284) kézi
+átmásolásnál hibázna; így a BDB-blokk 3. szabálya gépileg teljesül.
+
+Futás: mind az öt átment a kapukon; a javítóréteg egyiken sem változtatott. Önújrapróba
+egy volt (H1121, 3. kapu: „Tiglat-Pileszernek 16:7” rövidítésnek látszott, a második
+változat vesszővel választja el a nevet az igehelytől).
+
+| Strong | Forrás kar. | Fordítás kar. | Arány |
+|---|---|---|---|
+| G1944 | 337 | 339 | 1.01 |
+| G5590 | 5 950 | 6 055 | 1.02 |
+| H6093 | 187 | 240 | 1.28 |
+| H7121 | 10 780 | 11 884 | 1.10 |
+| H1121 | 14 948 | 15 926 | 1.07 |
+
+**Írás:** a fordítások a `naplok/EMELES_munka.tsv`-ben (az `adat/forditasok.tsv`
+sémája, `allapot=opus`), nem az `adat/forditasok.tsv`-ben. Ok: az `eszkozok/ellenoriz.py`
+13. szabálya (CI E1) minden `forditasok.tsv`-sorhoz a `lexikon_hivatkozasok.tsv`-ben
+keresi a forrásszöveget; a H6093, H7121, H1121 `teljes` sorához ott nincs sor, tehát a
+beírás a CI-t elbuktatná, és a SEMA 2.14 `allapot` zárt listáján nincs `opus`. Mindkettő
+a brief `ir` listáján kívüli fájl módosítását kívánja — kérdés a DT24 (b) pontjában.
+
+**E8 (keretmérés):** cloudban fut, kimarad.
+
+**⛔ Megállás:** DT24 (`DONTESEK.md`).

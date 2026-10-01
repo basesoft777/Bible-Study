@@ -418,6 +418,144 @@ def cmd_rogzit(args):
     print('rogzitve: %s %s (%d karakter) -> %s' % (szotar, sp, len(szoveg), os.path.relpath(MUNKA_UT, REPO)))
 
 
+# ---------------------------------------------------------------------------
+# Szuroproba-/elso adag-nezet: forras es forditas egymas mellett
+# ---------------------------------------------------------------------------
+
+_STRUKT_ELOTT = ('. ', '— ', ': ', '; ', ') ')
+# a forditas nyelvtani sorszamnevei (`1. egyes szám`) nem tagolasjelolok
+_NYELVTANI_HU = re.compile(r'\.? (?:egyes|többes|hímnemű|nőnemű|személy)')
+
+
+def _strukturalis(szoveg, poz):
+    return poz == 0 or szoveg[max(0, poz - 2):poz] in _STRUKT_ELOTT
+
+
+def egymas_mellett(forras, forditas):
+    """Markdown-tablazat-sorok: a forras es a forditas a strukturalis
+    tagolasjeloloknel (elotte `. `, `— `, `: `, `; `, `) `) igazitva."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import forditas_kapuk as K
+    # csak strukturalis helyzetu jelolok, mindket oldalon kulon illesztve
+    # (a forditas hozzaadott sorszamnevei -- `1. egyes szám` -- ne vonjak el
+    # a forras `1.` jelolojet)
+    a = [(p, j) for p, j in K.jelolok_pozicioval(forras, True) if p > 0 and _strukturalis(forras, p)]
+    b = [(p, j) for p, j in K.jelolok_pozicioval(forditas, False) if p > 0 and _strukturalis(forditas, p)
+         and not _NYELVTANI_HU.match(forditas, p + len(j) + 1)]
+    vagas = [(0, 0)]
+    k = 0
+    for fp, jel in a:
+        n = k
+        while n < len(b) and b[n][1] != jel:
+            n += 1
+        if n == len(b):
+            continue
+        vagas.append((fp, b[n][0]))
+        k = n + 1
+    vagas.append((len(forras), len(forditas)))
+
+    # Szegmensparok: a forras blockquote-ban (a CI E9 szabalya a
+    # tablazatcellaban allo angol `sense` szot hibanak venne; a D11 a
+    # blockquote-ot -- idezett angol forrasszoveg -- kivetelkent kezeli),
+    # alatta a forditas.
+    sorok = []
+    for i in range(len(vagas) - 1):
+        f = forras[vagas[i][0]:vagas[i + 1][0]].strip()
+        h = forditas[vagas[i][1]:vagas[i + 1][1]].strip()
+        sorok.append('**%d.** ' % (i + 1))
+        sorok.append('')
+        sorok.append('> %s' % f)
+        sorok.append('')
+        sorok.append(h)
+        sorok.append('')
+    return sorok[:-1]
+
+
+# Az E4a H7121-es osszevetese: a meglevo kezi jelentesek es az uj forditas
+# megfelelo szakasza (a szakasz hatarai az uj forditas szovegeben).
+KEZI_OSSZEVETES = {
+    # (jelentes_szam, a szakasz elejenek regexe, a vege utani elso szoveg)
+    'H7121': [('2.c', r'c\. [^a-z]{0,40}hívni', ' d. későn'),
+              ('3', r'3 kihirdetni:', ' b. ')],
+}
+
+
+def cmd_naplo_nezet(args):
+    """naplok/EMELES_elso_adag.md vagy a szuroproba nezete -- a munkatabla
+    megadott soraibol."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import forditas_kapuk as K
+    munka = {r['strong']: r for r in tsv_dict_sorok(MUNKA_UT)}
+    kezi = list(tsv_dict_sorok(FORDITASOK_UT))
+    ki = []
+    with open(args.fejlec, encoding='utf-8') as fh:
+        ki.append(fh.read().rstrip('\n'))
+    ki.append('')
+    ki.append('## Kapueredmények')
+    ki.append('')
+    nevek = ['1_gorog_heber', '2_versszam', '3_karoli_roviditesek', '4_formazas', '5_terminologia',
+             '6_hosszarany', '8_idezojel', '9_tagolas', '10_torzs']
+    ki.append('| Strong | Szótár | Forrás kar. | Fordítás kar. | ' + ' | '.join(n.split('_', 1)[0] for n in nevek) + ' |')
+    ki.append('|---|---|---|---|' + '---|' * len(nevek))
+    reszletek = {}
+    for s in args.strongok:
+        sp = strong_padded(s)
+        r = munka[sp]
+        _, forras = forras_szoveg(sp)
+        eredm = {n: (e, d) for n, e, d in K.kapuk_futtat(r['szotar'], forras, r['forditas_hu'])}
+        reszletek[sp] = eredm
+        cellak = []
+        for n in nevek:
+            if n not in eredm:
+                cellak.append('—')
+            else:
+                e, d = eredm[n]
+                cellak.append(e + (' (%s)' % d if n in ('6_hosszarany',) else ''))
+        ki.append('| %s | %s | %d | %d | %s |' % (sp, r['szotar'], len(forras), len(r['forditas_hu']), ' | '.join(cellak)))
+    ki.append('')
+    ki.append('Kapuk: 1 héber–görög token · 2 igehely-számpár · 3 Károli-rövidítés · 4 formázás/zárójel · '
+              '5 terminológia · 6 hosszarány (csak jelzés) · 8 idézőjel-párok · 9 tagolás · 10 igetörzsek (BDB).')
+    for s in args.strongok:
+        sp = strong_padded(s)
+        r = munka[sp]
+        _, forras = forras_szoveg(sp)
+        ki.append('')
+        ki.append('## %s (%s, %d → %d karakter)' % (sp, r['szotar'], len(forras), len(r['forditas_hu'])))
+        ki.append('')
+        ki.append('`forras_hash=%s` · `allapot=%s` · `modell=%s` · `terminologia_verzio=%s`'
+                  % (r['forras_hash'], r['allapot'], r['modell'], r['terminologia_verzio']))
+        ki.append('')
+        ki.append('Tagolás-kapu: %s · %s' % reszletek[sp]['9_tagolas'])
+        if '10_torzs' in reszletek[sp]:
+            ki.append('')
+            ki.append('Törzskapu: %s · %s' % reszletek[sp]['10_torzs'])
+        ki.append('')
+        ki.extend(egymas_mellett(forras, r['forditas_hu']))
+        for jsz, eleje, vege in KEZI_OSSZEVETES.get(sp, []):
+            k = [x for x in kezi if x['szotar'] == r['szotar'] and x['strong'] == strong_eredeti(sp)
+                 and x['jelentes_szam'] == jsz and x['allapot'] == 'kezi']
+            if not k:
+                continue
+            h = r['forditas_hu']
+            m = re.search(eleje, h)
+            i = m.start() if m else -1
+            j = h.find(vege, i + 1) if m else -1
+            uj = h[i:j] if i >= 0 and j > i else '(a szakasz nem található)'
+            ki.append('')
+            ki.append('### %s — összevetés a meglévő kézi jelentéssel: %s' % (sp, jsz))
+            ki.append('')
+            ki.append('| Meglévő `kezi` (%s) | Új fordítás, ugyanez a szakasz |' % k[0]['datum'])
+            ki.append('|---|---|')
+            ki.append('| %s | %s |' % (k[0]['forditas_hu'].replace('|', '\\|'), uj.strip().replace('|', '\\|')))
+    if args.lab:
+        with open(args.lab, encoding='utf-8') as fh:
+            ki.append('')
+            ki.append(fh.read().rstrip('\n'))
+    with open(args.ki, 'w', encoding='utf-8', newline='\n') as fh:
+        fh.write('\n'.join(ki) + '\n')
+    print('irva: %s' % os.path.relpath(args.ki, REPO))
+
+
 def cmd_prompt(args):
     sp, szoveg = forras_szoveg(args.strong)
     kiir(prompt_epit(sp, szoveg), args.ki)
@@ -467,6 +605,12 @@ def main():
     p.add_argument('--datum')
     p.add_argument('--megjegyzes')
     p.set_defaults(fv=cmd_rogzit)
+    p = al.add_parser('naplo_nezet')
+    p.add_argument('strongok', nargs='+')
+    p.add_argument('--fejlec', required=True, help='a naplo kezi bevezetoje (md)')
+    p.add_argument('--lab', help='a naplo kezi zaro szakasza (md)')
+    p.add_argument('--ki', required=True)
+    p.set_defaults(fv=cmd_naplo_nezet)
     args = ap.parse_args()
     args.fv(args)
 

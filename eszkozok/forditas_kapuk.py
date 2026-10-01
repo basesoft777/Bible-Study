@@ -109,6 +109,28 @@ _HIVATKOZAS_ELOTAG = re.compile(r'(?:\bp|\bpp|\bvol|\bNo|\bed|§)\.? $')
 
 
 def _jelolok(szoveg, forras_oldal):
+    return [j for _, j in jelolok_pozicioval(szoveg, forras_oldal)]
+
+
+def tagolas_igazitas(forras, forditas):
+    """A forras jeloloinek pozicioja es a forditasban megfelelo jelolo
+    pozicioja (moho reszsorozat-illesztes) -- a naplo egymas melletti
+    nezetehez. [(jel, forras_poz, forditas_poz | None), ...]"""
+    a = jelolok_pozicioval(forras, True)
+    b = jelolok_pozicioval(forditas, False)
+    ki, j = [], 0
+    for poz, jel in a:
+        while j < len(b) and b[j][1] != jel:
+            j += 1
+        if j == len(b):
+            ki.append((jel, poz, None))
+            continue
+        ki.append((jel, poz, b[j][0]))
+        j += 1
+    return ki
+
+
+def jelolok_pozicioval(szoveg, forras_oldal):
     talalat = []  # (pozicio, jel)
     for m in _PONT_SZAM.finditer(szoveg):
         talalat.append((m.start(), m.group(1)))
@@ -136,7 +158,7 @@ def _jelolok(szoveg, forras_oldal):
         talalat.append((m.start(), m.group(1)))
     for m in _ZAROJELES.finditer(szoveg):
         talalat.append((m.start(), '(%s)' % m.group(1)))
-    return [j for _, j in sorted(talalat)]
+    return sorted(talalat)
 
 
 def tagolas_sorozat(szoveg):
