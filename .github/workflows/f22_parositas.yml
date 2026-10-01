@@ -13,7 +13,8 @@
 # JOGOSULTSAG ES ISRAS. contents: write csak a 'futtatas' jobnal, kizarolag a kimenet visszacommitolasahoz:
 # git add csak az f22/valaszok/c es az f22/futasnaplo.tsv; commit elott ellenorzes, hogy minden valtozas
 # f22/ alatt van; a push csak a claude/f22-1moz agra mehet (explicit refspec). Az OPENROUTER_API_KEY csak a
-# futtato lepes env-jeben szerepel. A FELADATOK.md generalt blokkjahoz a workflow nem nyul.
+# futtato lepes env-jeben szerepel. A checkout `persist-credentials: false`: a kulcsot kapo
+# futtato lepes nem lat push-jogu tokent, az csak az utolso (commit/push) lepesben kerul a remote-ra. A FELADATOK.md generalt blokkjahoz a workflow nem nyul.
 
 name: f22_parositas
 
@@ -45,6 +46,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: Python telepitese
         uses: actions/setup-python@v5
@@ -81,10 +83,15 @@ jobs:
 
       - name: Kimenet commitolasa es pusholasa (csak f22/, csak a claude/f22-1moz agra)
         if: always() && steps.kulcs_grep.conclusion == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           if [ "$GITHUB_REF" != "refs/heads/claude/f22-1moz" ]; then
             echo "nem a claude/f22-1moz agon futunk: $GITHUB_REF"; exit 1
           fi
+          # a checkout nem tartja meg a tokent (persist-credentials: false): a futtato lepes nem lat push-jogu tokent;
+          # a token csak ebben a lepesben kerul a remote-ra
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           for ut in f22/valaszok/c f22/futasnaplo.tsv; do
