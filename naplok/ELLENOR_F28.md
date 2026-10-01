@@ -26,3 +26,13 @@ A tesztek és az `ellenoriz.py` futtatása; a `forras_hash` SHA-1 számolása; a
 ## Megjegyzés
 
 A G5010-ben „Septuaginta Zsolt 109:5” LXX-számozású hely Károli-rövidítéssel áll (Károli szerint Zsolt 110:4). A „Dán 22:14” a BDB-forrás saját hibája (`BDB_teljes_unabridged.tsv:7501`), nem a ψ-feloldásé.
+
+---
+
+## Ismételt ellenőrzés (head 8105892, F28.31–F28.36) — ELTÉRÉS: 1 tétel
+
+Az 1–8. eltérésből 1–4 és 5–8 az ellenőr szerint megoldva (lekerdez.py: `parse_igehely`/`load_*`/`to_step` byte-azonos az e39f145-tel; Sir/JSir mindkét alak n=24/15/1/38/10; E19 `--teljes` futtat.py kimenete `## E19 (0 talalat)`; `lelk` minta; Szentlélek-lista kizárások jelezve; E9 JELENTÉS helyesbítve). A tesztek és az `ellenoriz.py` futtatása az ellenőrnek ismét nem volt eszköze (a végrehajtó kimenete: hat tesztfájl zöld, SÉRTÉS 0, futtat.py exit 0).
+
+**Egyetlen megmaradt ELTÉRÉS (enyhe):** a brief `ir` listája hiányos volt (teszt_forditas_kapuk.py, EMELES_szentlelek_lista.py, valamint a DT24-ben jóváhagyott ellenoriz.py, teszt_ellenoriz_13.py, SEMA.md, Konyv_normalizalo_tabla.tsv). → Az orkesztrátor a zárás commitjában kiegészítette az `ir` listát (fejléc-javítás, kód nem változott).
+
+Megfigyelés: a DT24 táblaváltás miatt a STEPBible-kulcsú táblák a `Lam`-ot `JSir`-ként adják vissza, a magyar kulcsúak `Sir`-t; az `elofordulasok.tsv`-ben nincs Sir/JSir sor, ezért ma nincs hatás.
