@@ -150,6 +150,8 @@ def jelolok_pozicioval(szoveg, forras_oldal):
             continue  # i. e.
         if jel == 'g' and elotte.endswith('e. '):
             continue  # e. g. (masodik tagja)
+        if jel == 'f' and re.search(r'\d\s?$', elotte):
+            continue  # `273 f.` = es a kovetkezo (magyarul `k.`), nem betujel
         if jel == 'c' and utana[:1].isdigit():
             continue  # c. 100 = circa
         talalat.append((m.start(), jel))
@@ -322,13 +324,34 @@ def ellenoriz_konyvek(forras, forditas):
         'a forditasban tobb: ' + ', '.join('%s×%d' % kv for kv in sorted(tobb.items())) if tobb else '') if x)
 
 
+# A P4 3. ellenorzesenek F28-as valtozata: az ismeretlen "rovidites" elfogadott,
+# ha a FORRASBAN is szo szerint ugyanigy all igehely elott, es nem konyvnev
+# (nem kulcsa a konyv-lekepezesnek). Ok: a BDB sziglai (`Gi 20:21` =
+# Ginsburg-kiadas, `Element. 2:6`) nem konyvrovidítesek. A konyvnev-hibat a
+# 11. kapu fogja meg.
+def ellenoriz_karoli(forras, forditas, karoli):
+    global _KONYV
+    if _KONYV is None:
+        _KONYV = _konyv_mintak()
+    lek = _KONYV[0]
+    eredm, reszlet = _p4.ellenoriz_3_karoli_roviditesek(forditas, karoli)
+    if eredm == 'RENDBEN':
+        return eredm, reszlet
+    tokenek = [t.strip() for t in reszlet.split(':', 1)[1].split(',')]
+    forras_tokenek = {m.group(1) for m in _p4.KONYV_ROVIDITES_MINTA.finditer(forras)}
+    maradek = [t for t in tokenek if not (t in forras_tokenek and t not in lek)]
+    if not maradek:
+        return 'RENDBEN', 'forrasbeli szigla igehely elott: ' + ', '.join(tokenek)
+    return 'SERTES', 'ismeretlen roviditesek: ' + ', '.join(maradek)
+
+
 def kapuk_futtat(szotar, forras, forditas, bizonytalan=()):
     """[(nev, eredmeny, reszlet), ...]"""
     karoli, term = _betolt()
     ki = [
         ('1_gorog_heber',) + _p4.ellenoriz_1_gorog_heber(forras, forditas),
         ('2_versszam',) + _p4.ellenoriz_2_versszam(forras, forditas),
-        ('3_karoli_roviditesek',) + _p4.ellenoriz_3_karoli_roviditesek(forditas, karoli),
+        ('3_karoli_roviditesek',) + ellenoriz_karoli(forras, forditas, karoli),
         ('4_formazas',) + ellenoriz_formazas(forras, forditas),
         ('5_terminologia',) + ellenoriz_terminologia(forras, forditas, term, list(bizonytalan)),
         ('6_hosszarany',) + _p4.ellenoriz_6_hosszarany(forras, forditas),
