@@ -52,6 +52,11 @@ class Szerzonevek(unittest.TestCase):
         szoveg = 'Philónnál, Plutarkhosznál, Philo-kiadás'
         self.assertEqual(N.szabaly_szerzonevek(szoveg), (szoveg, 0))
 
+    def test_konyvcimben_birtokos_marad(self):
+        # német/angol cím: Philo's Lehre ... (G0012) -- nem szerzőnév-alak
+        szoveg = "J. G. Müller, Philo's Lehre von der Weltschöpfung"
+        self.assertEqual(N.szabaly_szerzonevek(szoveg), (szoveg, 0))
+
     def test_mar_helyes_alak_marad(self):
         szoveg = 'Philón és Josephus; Plutarkhosz'
         self.assertEqual(N.szabaly_szerzonevek(szoveg), (szoveg, 0))

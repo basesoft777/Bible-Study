@@ -97,7 +97,8 @@ _BETU = r'A-Za-zÀ-ɏ'
 
 
 def _egesz_szo(minta):
-    return re.compile(r'(?<![%s])%s(?![%s\-])' % (_BETU, re.escape(minta), _BETU))
+    # utana nem allhat betu, kotojel vagy aposztrof (Philónnál; Philo's Lehre -- cim)
+    return re.compile(r"(?<![%s])%s(?![%s\-'’])" % (_BETU, re.escape(minta), _BETU))
 
 
 SZERZO_MINTAK = [(_egesz_szo(a), b) for a, b in SZERZONEVEK]
