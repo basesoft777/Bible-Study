@@ -43,3 +43,44 @@
 - **Nyitott (alacsony):** az `adat/SEMA.md`, `eszkozok/ellenoriz.py`, `eszkozok/lexikon_general.py` módosítása a brief `ir` listáján kívül esik, a DT23 (d) elfogadása előtt commitolva. A felhasználó dönt (DT23 (d)). Az E16 csak `[ELLENŐRZŐ]` előtagú PR-címmel zöld; a PR címe ezt viseli.
 - **Nem ellenőrizhető az ellenőr szerepével, az orkesztrátor futtatta:** lásd alább.
 - `python eszkozok/ellenoriz.py`: RENDBEN 11, SÉRTÉS 0, KÉZI 2, JELENTÉS 3; `python eszkozok/feladatok.py ellenoriz`: 50 brief, 0 hiba (orkesztrátor, head 87980ca).
+
+---
+
+# 3. kör (csak az F8.8 commit, 3965bc2) — eredmény: ELTÉRÉS 6 tétel
+
+*A `fuggetlen-ellenor` jelentésének összefoglalója; az orkesztrátor mentette.*
+
+**Rendben:** a 4 átsorolt sor (LD027, LD035, LD050, LD052) `valoszinu`, a Strong és a pozíció a `konkordancia/LXX_OS`-sel egyezik, a proveniencia `dontes=DT23(b)`-t tartalmaz; a nyitott sorok LD008, LD009, LD058, LD064; darabszám 61 / 13 / 4 / 8 (86 sor); az LD001–LD004 változatlan (csak az üres `bizonyossag` mező); az N-F08a és N-F08b megvan és helyes; a H7497/H7498 átfogalmazás a 6 soron helyes (TAHOT: 2Sám 21:16/18/20/22, 1Krón 20:4/6/8 → H7497), az 1Krón 8 nincs a 87 helyben; nincs adatcsökkenés.
+
+**Eltérések:**
+1. **(1f)** az LD027, LD035, LD052 `valoszinu`, de a SEMA 2.11 és a brief szerint a `valoszinu` „egy forrás, ellentmondás nélkül”; a források ellentmondanak.
+2. **(1g)** a 3 sor `forras=` mezőjéből kikerült a `Macula_heber`.
+3. **(4b)** a DT23 idézetében szerepel a „(nulla-diff vagy CI igazolja)” zárójel.
+4. a `f08_nulladiff.py` soronként hasonlít, de a dokumentumok „bájtra azonos”-t állítanak.
+5. elavult „a DT23 döntéséig” szöveg a SEMA 2.11-ben és a `lexikon_general.py`-ban.
+6. hiányzó `stderr`-őr a `f08_dt_dontes.py`-ban és a `f08_nulladiff.py`-ban, használatlan `S = None`.
+
+# 4. kör (de1bbd0 merge + e2745d2 F8.10) — eredmény: ELTÉRÉS 4 tétel
+
+**A 3. kör 6 tételének feloldása:**
+
+| # | tétel | állapot |
+|---|---|---|
+| 1 (1f) | `valoszinu` + SEMA 2.11 definíció | feloldva, OK (a SEMA „vagy ellentmondásos források, felhasználói döntéssel feloldva (`feloldas=` kötelező)”); a brief-eltérést l. a 4. kör 1. tételét |
+| 2 (1g) | `forras=` Macula + LXX_OS, `feloldas=DT23` | feloldva, OK (LD027, LD035, LD052) |
+| 3 (4b) | a DT23 idézet zárójeles része | feloldva, OK (marad, kiegészítve: „teljesült: nulladiff a main-nel összefésülve, `naplok/F08_nulladiff.txt`”) |
+| 4 | „bájtra” → „soronként azonos” | feloldva, OK (zárás, DT23, brief, `F08_nulladiff.txt`, `f08_nulladiff.py`) |
+| 5 | elavult „a DT23 döntéséig” | feloldva, OK (SEMA 2.11, `lexikon_general.py`) |
+| 6 | `stderr`-őr, `S = None` | feloldva, OK |
+
+A merge (de1bbd0) csak a `DONTESEK.md` konfliktusát oldotta fel, a DT19 és a DT23 is megmaradt. A 10. szabály új ága statikusan nem ad téves SÉRTÉST (a 13 `valoszinu` sorból csak az LD027/LD035/LD052 forrása tartalmaz Macula + LXX_OS-t). Az `lxx_dontesek.tsv` diffje az e2745d2-ben pontosan 3 sor, az LD001–LD004 és a 90 adatsor változatlan. A `F08_nulladiff.txt` a merge-elt állapotot mutatja (172 diff-sor; ISTENTISZT-001_TUDOMANYOS −0/+0; 8 törzscikk −0/+0).
+
+**Új eltérések és feloldásuk (a felhasználó jóváhagyásával, F8.11, 5a82d7f):**
+1. *(közepes)* a SEMA `valoszinu`-bővítése eltért a brief 3. lépésétől (ott az ellentmondás `nyitott`) → a brief 3. lépése a SEMA-hoz igazítva (v2): ellentmondó források felhasználói döntés nélkül `nyitott`, döntéssel (`feloldas=` kitöltve) `valoszinu`; a döntésnapló F08-3 sora és a DT23 (b) mondata igazodik.
+2. *(alacsony)* az F10 csonk-brief törzsének „Következő lépés” sora a régi szöveg maradt → szó szerint egyezik a fejléc `kovetkezo` mezőjével.
+3. *(alacsony)* az F08 brief „merge-re kész (ellenőrizve)” jelölése a 4. kör előtt került be → utólag nem átírva; a `naplok/F08_zaras.md` egy mondatban rögzíti, hogy a jelölés a 4. kör előtt került be, és a 4. kör igazolta.
+4. *(alacsony)* a SEMA az LD050 forrását „csak LXX_OS”-nek írta → pontosítva: a két független forrás közül csak az LXX_OS, LD050: LXX_OS + Karoli_versmegfeleltetes.
+
+**Megjegyzés (nem eltérés, kezelve):** a `f08_dt_sor.py` újrafuttatása felülírta volna a DT23 döntését → az F8.11 őrt tett bele (DT23 sor esetén 2-es kilépési kód, nem ír), a fejlécben „egyszeri, DT23 után letiltva”.
+
+**Nem ellenőrizhető az ellenőr szerepével:** `ellenoriz.py`, `feladatok.py ellenoriz`, generátor-futás, Macula-lekérdezés, CI-jelentés (a CI mindkét check SUCCESS volt az e2745d2-n).
