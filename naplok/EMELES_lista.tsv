@@ -1,42 +1,42 @@
 # F28 E0 -- generalja: python eszkozok/emeles.py lista
-strong	szotar	entry_id	karakter	forras_hash	forras_eredet	kezi_sorok	kimarad
-G0012	Thayer	G12	1142	d0a8decf3ed3361ae1e5abfe2eaca7ce135c3435	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:1.20;UBS_DNTG:1.20	nem
-G0086	Thayer	G86	1770	c3a79837bdfbbd6b041fafcaf051440aff6c149b	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:1.19;UBS_DNTG:1.19;UBS_DNTG:23.108;UBS_DNTG:23.108	nem
-G0282	Thayer	G282	702	bda0a77cb9ba8c8e4b52618b1f8031d43cc4c61c	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:10.17;UBS_DNTG:10.17	nem
-G0813	Thayer	G813	342	bda47a0ff5b05245574209b5b16a4f2661dbb315	elofordulasok+lexikon_hivatkozasok		nem
-G0994	Thayer	G994	661	4a651f576e0f8c552d06ec81369e2857ecd091d2	lexikon_hivatkozasok	TBESG:részlet	nem
-G1311	Thayer	G1311	787	5227e199045c4cff2ad025e21256c932ae3bd5d5	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:20.40;UBS_DNTG:20.40;UBS_DNTG:88.266;UBS_DNTG:88.266	nem
-G1941	Thayer	G1941	3746	89b25a36c51ef3891e1c8fe00af41482b807520b	elofordulasok+lexikon_hivatkozasok	TBESG:1;TBESG:2;Thayer:teljes;UBS_DNTG:33.131;UBS_DNTG:33.131;UBS_DNTG:11.28;UBS_DNTG:11.28;UBS_DNTG:33.176;UBS_DNTG:33.176	igen
-G1944	Thayer	G1944	337	f07596094b915d4d06920f0a5ba01b7f4b3331ff	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:33.475;UBS_DNTG:33.475;Thayer:teljes	igen
-G2671	Thayer	G2671	804	49590b1f5881b35c1aee932b1b00e0c107a43390	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:33.474;UBS_DNTG:33.474	nem
-G4151	Thayer	G4151	23705	695a977c32710cb46a25383bdabd48a095037720	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:12.33;UBS_DNTG:12.33;UBS_DNTG:12.18;UBS_DNTG:12.18;UBS_DNTG:26.9;UBS_DNTG:26.9	nem
-G5010	Thayer	G5010	946	67db71d7b5e1cf0bb21f250da817022a31cb43ac	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:58.21;UBS_DNTG:58.21	nem
-G5351	Thayer	G5351	1394	997faf12e6b041468f4d794f89973587028a75f0	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:88.266;UBS_DNTG:88.266	nem
-G5356	Thayer	G5356	975	2994915b3a24234b348ea0cf19ed3301ff5290b7	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:23.205;UBS_DNTG:23.205	nem
-G5590	Thayer	G5590	5950	aaf77949eefa1168f62295aa5c357d4e9c7ddadd	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:23.88;UBS_DNTG:23.88;UBS_DNTG:26.4;UBS_DNTG:26.4;UBS_DNTG:9.20;UBS_DNTG:9.20;Thayer:teljes	igen
-H0127	BDB	H127	3319	ac2a5151279ffd7e988c37cf4c2f9fbdf25eb7ee	elofordulasok		nem
-H0430	BDB	H430	9910	725530c425ce553a37a5fec88c7f3fe52e671d3b	elofordulasok		nem
-H0779	BDB	H779	1462	e1f214616023901909b50674cf93dea6037ed34b	elofordulasok		nem
-H0922	BDB	H922	432	e5095242518fee2a67aedde60a05db46a2608b49	elofordulasok		nem
-H1121	BDB	H1121	14948	e8222559909c255008d98be3df9615063646ed72	elofordulasok	BDB:teljes	igen
-H2403	BDB	H2403	9660	7f0d0bd1244941d0fd59455c22625d94581d194d	elofordulasok		nem
-H2416	BDB	H2416	10357	99807dd83845079946101df7c92e4155cf7f581e	elofordulasok		nem
-H2555	BDB	H2555	1693	0ccf15235b99ef8d6471d27907f5b139a9316554	elofordulasok		nem
-H3548	BDB	H3548	9513	9934863a2ba2d943ea368ed15b75b5c57ebdb7e9	elofordulasok+lexikon_hivatkozasok	BDB:1	nem
-H3678	BDB	H3678	4583	d940259b9a4fc1ea7f779ceee1c8cbbe93c6cd2c	elofordulasok		nem
-H4467	BDB	H4467	2499	e220d3592b5065c4bba0e3d4bfe65f6e93b6bc54	elofordulasok		nem
-H5303	BDB	H5303	461	b392d32ff68ee08695a4c228b14dc527bd2dbb57	elofordulasok		nem
-H5315	BDB	H5315	13316	ce0297a6e88add2569a549dd600e18d0371b76d7	elofordulasok		nem
-H6093	BDB	H6093	187	62bd18a2a251b2578c43e8adbd1b9338700c28f4	elofordulasok	BDB:teljes	igen
-H6975	BDB	H6975	584	6844eb76bf83bcf9e2ff10348ab1ec7c609743f7	elofordulasok		nem
-H7043	BDB	H7043	3927	78823d5873bae6f08eb60113ff0fe7c78889a9d9	elofordulasok		nem
-H7121	BDB	H7121	10780	7b02618a3285ace6b36965f7d449c9a623175805	elofordulasok+lexikon_hivatkozasok	BDB:2.c;BDB:3;TBESH:részlet;BDB:teljes	igen
-H7451	BDB	H7451	8489	3021e0052a095bf0a580fde78c7f8509072fd427	elofordulasok		nem
-H7496	BDB	H7496	511	e618a2eaed1a866f4a535903dc54ce09d9bfb027	elofordulasok		nem
-H7497	BDB	H7497	796	47682101029aa5a7ca0528e02ef739c8671ca0be	elofordulasok		nem
-H7585	BDB	H7585	3495	0d933c6e4e758d8c3592128ace88502104c94a4f	elofordulasok		nem
-H7843	BDB	H7843	4965	20d718e2f977af944b8dc1e319497ad3c28a110f	elofordulasok		nem
-H8004	BDB	H8004	235	1049c6a64aeb8f9e5e833a91e6ff3949727a7179	elofordulasok		nem
-H8034	BDB	H8034	7015	f1dd54125d8324c1877295bf1b3fb54ca83df202	elofordulasok+lexikon_hivatkozasok	BDB:részlet	nem
-H8414	BDB	H8414	1291	00b5c8e9826d9a21fca14ffbf4a901c6911d4ea7	elofordulasok		nem
-H8415	BDB	H8415	1966	14d421d364305891fd999f2ad927705ce7cf6acb	elofordulasok		nem
+strong	szotar	entry_id	karakter	forras_hash	forras_eredet	kezi_sorok	teljes_allapot	kimarad
+G0012	Thayer	G12	1142	d0a8decf3ed3361ae1e5abfe2eaca7ce135c3435	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:1.20;UBS_DNTG:1.20	opus	igen
+G0086	Thayer	G86	1770	c3a79837bdfbbd6b041fafcaf051440aff6c149b	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:1.19;UBS_DNTG:1.19;UBS_DNTG:23.108;UBS_DNTG:23.108	opus	igen
+G0282	Thayer	G282	702	bda0a77cb9ba8c8e4b52618b1f8031d43cc4c61c	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:10.17;UBS_DNTG:10.17;Thayer:teljes	kezi	igen
+G0813	Thayer	G813	342	bda47a0ff5b05245574209b5b16a4f2661dbb315	elofordulasok+lexikon_hivatkozasok		opus	igen
+G0994	Thayer	G994	661	4a651f576e0f8c552d06ec81369e2857ecd091d2	lexikon_hivatkozasok	TBESG:részlet	opus	igen
+G1311	Thayer	G1311	787	5227e199045c4cff2ad025e21256c932ae3bd5d5	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:20.40;UBS_DNTG:20.40;UBS_DNTG:88.266;UBS_DNTG:88.266	opus	igen
+G1941	Thayer	G1941	3746	89b25a36c51ef3891e1c8fe00af41482b807520b	elofordulasok+lexikon_hivatkozasok	TBESG:1;TBESG:2;Thayer:teljes;UBS_DNTG:33.131;UBS_DNTG:33.131;UBS_DNTG:11.28;UBS_DNTG:11.28;UBS_DNTG:33.176;UBS_DNTG:33.176	kezi	igen
+G1944	Thayer	G1944	337	f07596094b915d4d06920f0a5ba01b7f4b3331ff	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:33.475;UBS_DNTG:33.475;Thayer:teljes	kezi	igen
+G2671	Thayer	G2671	804	49590b1f5881b35c1aee932b1b00e0c107a43390	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:33.474;UBS_DNTG:33.474	opus	igen
+G4151	Thayer	G4151	23705	695a977c32710cb46a25383bdabd48a095037720	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:12.33;UBS_DNTG:12.33;UBS_DNTG:12.18;UBS_DNTG:12.18;UBS_DNTG:26.9;UBS_DNTG:26.9;Thayer:teljes	kezi	igen
+G5010	Thayer	G5010	946	67db71d7b5e1cf0bb21f250da817022a31cb43ac	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:58.21;UBS_DNTG:58.21	opus	igen
+G5351	Thayer	G5351	1394	997faf12e6b041468f4d794f89973587028a75f0	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:88.266;UBS_DNTG:88.266	opus	igen
+G5356	Thayer	G5356	975	2994915b3a24234b348ea0cf19ed3301ff5290b7	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:23.205;UBS_DNTG:23.205	opus	igen
+G5590	Thayer	G5590	5950	aaf77949eefa1168f62295aa5c357d4e9c7ddadd	elofordulasok+lexikon_hivatkozasok	UBS_DNTG:23.88;UBS_DNTG:23.88;UBS_DNTG:26.4;UBS_DNTG:26.4;UBS_DNTG:9.20;UBS_DNTG:9.20;Thayer:teljes	kezi	igen
+H0127	BDB	H127	3319	ac2a5151279ffd7e988c37cf4c2f9fbdf25eb7ee	elofordulasok		opus	igen
+H0430	BDB	H430	9910	725530c425ce553a37a5fec88c7f3fe52e671d3b	elofordulasok		opus	igen
+H0779	BDB	H779	1462	e1f214616023901909b50674cf93dea6037ed34b	elofordulasok		opus	igen
+H0922	BDB	H922	432	e5095242518fee2a67aedde60a05db46a2608b49	elofordulasok		opus	igen
+H1121	BDB	H1121	14948	e8222559909c255008d98be3df9615063646ed72	elofordulasok	BDB:teljes	kezi	igen
+H2403	BDB	H2403	9660	7f0d0bd1244941d0fd59455c22625d94581d194d	elofordulasok		opus	igen
+H2416	BDB	H2416	10357	99807dd83845079946101df7c92e4155cf7f581e	elofordulasok		opus	igen
+H2555	BDB	H2555	1693	0ccf15235b99ef8d6471d27907f5b139a9316554	elofordulasok		opus	igen
+H3548	BDB	H3548	9513	9934863a2ba2d943ea368ed15b75b5c57ebdb7e9	elofordulasok+lexikon_hivatkozasok	BDB:1	opus	igen
+H3678	BDB	H3678	4583	d940259b9a4fc1ea7f779ceee1c8cbbe93c6cd2c	elofordulasok		opus	igen
+H4467	BDB	H4467	2499	e220d3592b5065c4bba0e3d4bfe65f6e93b6bc54	elofordulasok		opus	igen
+H5303	BDB	H5303	461	b392d32ff68ee08695a4c228b14dc527bd2dbb57	elofordulasok		opus	igen
+H5315	BDB	H5315	13316	ce0297a6e88add2569a549dd600e18d0371b76d7	elofordulasok		opus	igen
+H6093	BDB	H6093	187	62bd18a2a251b2578c43e8adbd1b9338700c28f4	elofordulasok	BDB:teljes	kezi	igen
+H6975	BDB	H6975	584	6844eb76bf83bcf9e2ff10348ab1ec7c609743f7	elofordulasok		opus	igen
+H7043	BDB	H7043	3927	78823d5873bae6f08eb60113ff0fe7c78889a9d9	elofordulasok		opus	igen
+H7121	BDB	H7121	10780	7b02618a3285ace6b36965f7d449c9a623175805	elofordulasok+lexikon_hivatkozasok	BDB:2.c;BDB:3;TBESH:részlet;BDB:teljes	kezi	igen
+H7451	BDB	H7451	8489	3021e0052a095bf0a580fde78c7f8509072fd427	elofordulasok		opus	igen
+H7496	BDB	H7496	511	e618a2eaed1a866f4a535903dc54ce09d9bfb027	elofordulasok		opus	igen
+H7497	BDB	H7497	796	47682101029aa5a7ca0528e02ef739c8671ca0be	elofordulasok		opus	igen
+H7585	BDB	H7585	3495	0d933c6e4e758d8c3592128ace88502104c94a4f	elofordulasok	BDB:teljes	kezi	igen
+H7843	BDB	H7843	4965	20d718e2f977af944b8dc1e319497ad3c28a110f	elofordulasok		opus	igen
+H8004	BDB	H8004	235	1049c6a64aeb8f9e5e833a91e6ff3949727a7179	elofordulasok	BDB:teljes	kezi	igen
+H8034	BDB	H8034	7015	f1dd54125d8324c1877295bf1b3fb54ca83df202	elofordulasok+lexikon_hivatkozasok	BDB:részlet	opus	igen
+H8414	BDB	H8414	1291	00b5c8e9826d9a21fca14ffbf4a901c6911d4ea7	elofordulasok		opus	igen
+H8415	BDB	H8415	1966	14d421d364305891fd999f2ad927705ce7cf6acb	elofordulasok	BDB:teljes	kezi	igen

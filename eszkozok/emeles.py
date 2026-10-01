@@ -52,7 +52,7 @@ LISTA_UT = os.path.join(REPO, 'naplok', 'EMELES_lista.tsv')
 PROMPT_JELOLO = '\n<!-- PROMPT-KEZDET -->\n'
 
 LISTA_FEJLEC = ['strong', 'szotar', 'entry_id', 'karakter', 'forras_hash',
-                'forras_eredet', 'kezi_sorok', 'kimarad']
+                'forras_eredet', 'kezi_sorok', 'teljes_allapot', 'kimarad']
 
 STRONG_TOKEN = re.compile(r'^[GH]\d{1,4}[a-z]?$')
 
@@ -185,7 +185,14 @@ def lista_epit(szeles=False):
         szotar = szotar_strongnak(sp)
         szoveg = (thayer if szotar == 'Thayer' else bdb).get(sp)
         kezi = kezi_sorok_strongra(forditasok, sp)
-        teljes_kezi = any(k == '%s:teljes' % szotar for k in kezi)
+        # E7 (munkafolyamat): kesz az a szocikk, amelynek van `kezi` vagy `opus`
+        # `teljes` sora a jelenlegi forras_hash-sel; ha a forras valtozott, ujra
+        # forditando (a 13. szabaly ugyanezt `elavult`-kent jelzi)
+        teljes = [r for r in forditasok if r.get('szotar') == szotar and r.get('jelentes_szam') == 'teljes'
+                  and STRONG_TOKEN.match(r.get('strong') or '') and strong_padded(r['strong']) == sp
+                  and r.get('allapot') in ('kezi', 'opus')]
+        teljes_allapot = teljes[0]['allapot'] if teljes else ''
+        teljes_kezi = bool(teljes) and szoveg is not None and teljes[0].get('forras_hash') == forras_hash(szoveg)
         sorok.append({
             'strong': sp,
             'szotar': szotar,
@@ -194,6 +201,7 @@ def lista_epit(szeles=False):
             'forras_hash': forras_hash(szoveg) if szoveg is not None else '',
             'forras_eredet': '+'.join(sorted(halmaz[sp])),
             'kezi_sorok': ';'.join(kezi),
+            'teljes_allapot': teljes_allapot,
             'kimarad': 'igen' if teljes_kezi else 'nem',
         })
     return sorok
