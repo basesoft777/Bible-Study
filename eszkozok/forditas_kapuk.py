@@ -354,6 +354,54 @@ def ellenoriz_karoli(forras, forditas, karoli):
     return 'SERTES', 'ismeretlen roviditesek: ' + ', '.join(maradek)
 
 
+# ---------------------------------------------------------------------------
+# 12. Szentlélek / Isten Lelke (DT25 (a), JELZES): a jóváhagyott terminológia
+# Szent Szellem, Isten Szelleme, a Szellem; a régi alak jelzést kap.
+# ---------------------------------------------------------------------------
+
+SZENTLELEK_MINTA = re.compile(r'Szent ?l[ée]l|Isten Lelk', re.IGNORECASE)
+
+
+def ellenoriz_szentlelek(forditas):
+    t = sorted({m.group(0) for m in SZENTLELEK_MINTA.finditer(forditas)})
+    if not t:
+        return 'RENDBEN', ''
+    return 'JELZES', 'a terminológia Szent Szellem / Isten Szelleme; talált: ' + ', '.join(t)
+
+
+# ---------------------------------------------------------------------------
+# 13. Fejezetszám (DT25 uj feladatjelolt, JELZES): a konyvnevvel jelolt
+# igehely fejezetszama nem lehet nagyobb a konyv fejezeteinel. Ok: a BDB a
+# Zsoltarok `ψ` jelet nehol mas konyvnek oldotta fel (Ez 73:23, Ézs 106:9).
+# Az OSZ-ben a nagyobbik a Karoli- es a heber (MT) fejezetszam kozul (Jóel 4,
+# Mal 4), mert a BDB a heber szamozast koveti.
+# ---------------------------------------------------------------------------
+
+FEJEZETSZAM = {
+    "1Móz": 50, "2Móz": 40, "3Móz": 27, "4Móz": 36, "5Móz": 34, "Józs": 24, "Bír": 21,
+    "Ruth": 4, "1Sám": 31, "2Sám": 24, "1Kir": 22, "2Kir": 25, "1Krón": 29, "2Krón": 36,
+    "Ezsd": 10, "Neh": 13, "Eszt": 10, "Jób": 42, "Zsolt": 150, "Péld": 31, "Préd": 12,
+    "Én": 8, "Ézs": 66, "Jer": 52, "JSir": 5, "Ez": 48, "Dán": 12, "Hós": 14, "Jóel": 4,
+    "Ámós": 9, "Abd": 1, "Jón": 4, "Mik": 7, "Náh": 3, "Hab": 3, "Sof": 3, "Hag": 2,
+    "Zak": 14, "Mal": 4,
+    "Mt": 28, "Mk": 16, "Luk": 24, "Ján": 21, "ApCsel": 28, "Róm": 16, "1Kor": 16,
+    "2Kor": 13, "Gal": 6, "Ef": 6, "Fil": 4, "Kol": 4, "1Thessz": 5, "2Thessz": 3,
+    "1Tim": 6, "2Tim": 4, "Tit": 3, "Filem": 1, "Zsid": 13, "Jak": 5, "1Pét": 5,
+    "2Pét": 3, "1Ján": 5, "2Ján": 1, "3Ján": 1, "Júd": 1, "Jel": 22,
+}
+
+
+def ellenoriz_fejezetszam(forditas):
+    rossz = []
+    for m in re.finditer(r'(?<![A-Za-zÀ-ɏ0-9])(%s) (\d{1,3}):\d'
+                         % '|'.join(sorted(map(re.escape, FEJEZETSZAM), key=len, reverse=True)), forditas):
+        if int(m.group(2)) > FEJEZETSZAM[m.group(1)]:
+            rossz.append('%s %s' % (m.group(1), m.group(2)))
+    if not rossz:
+        return 'RENDBEN', ''
+    return 'JELZES', 'a könyv fejezetszámánál nagyobb fejezet: ' + ', '.join(sorted(set(rossz)))
+
+
 def kapuk_futtat(szotar, forras, forditas, bizonytalan=()):
     """[(nev, eredmeny, reszlet), ...]"""
     karoli, term = _betolt()
@@ -370,6 +418,8 @@ def kapuk_futtat(szotar, forras, forditas, bizonytalan=()):
     if szotar == 'BDB':
         ki.append(('10_torzs',) + ellenoriz_torzs(forras, forditas))
     ki.append(('11_konyvek',) + ellenoriz_konyvek(forras, forditas))
+    ki.append(('12_szentlelek',) + ellenoriz_szentlelek(forditas))
+    ki.append(('13_fejezetszam',) + ellenoriz_fejezetszam(forditas))
     return ki
 
 
