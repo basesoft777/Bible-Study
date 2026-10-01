@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-szabalyok.py -- CI.0: az E2-E16 ellenorzesek (F02_CI_ELLENORZES_BRIEF.md
+szabalyok.py -- CI.0: az E2-E19 ellenorzesek (F02_CI_ELLENORZES_BRIEF.md
 "Ellenorzolista" tablazata). Egy szabaly = egy fuggveny, mind
 `(fajllista) -> [Talalat, ...]` alaku (E16 kivetel: PR-metaadatot is kap;
 E5 kivetel: git diff-et is kap -- l. az egyes fuggvenyek docstringjet).
@@ -37,6 +37,10 @@ from kozos import (
 # ezt mondja ki; E4/E5/E16 szerkezetileg ugyanide tartozik (E5 maga is
 # diff-alapu, E16 fajl-letezes, E4 motivum-szintu audit-allapot).
 FAJLSZINTU_SZABALYOK = {'E4', 'E5', 'E6', 'E7', 'E16', 'E19'}
+
+# Adattablan futo szabalyok: --teljes modban a futtat.py a ['__TELJES__']
+# jelzot adja nekik (az md-fajlok listaja helyett), kulonben nem futnanak.
+HATOKOR_SZABALYOK = {'E3', 'E19'}
 
 SZINT = {
     'E2': 'HIBA', 'E3': 'HIBA', 'E4': 'HIBA', 'E5': 'HIBA', 'E6': 'HIBA',

@@ -247,3 +247,10 @@ ad (nem ennek a menetnek a sora).
   38, `scan H1323 --szakasz "Sir 2"` 10 (= az F28 előtti `e39f145` kódjának értéke
   ugyanerre a parancsra). Teszt: `eszkozok/teszt_lekerdez_sir.py` (11 eset, minden út
   mindkét alakkal).
+- **F28.33 — E19 `--teljes` módban (2. tétel).** Az F28.27 „0 találat”-a `--teljes`
+  módban hamis tiszta volt: a `futtat.py` az md-fajlok listáját adta az E19-nek, amely
+  így el sem indult. Javítás: `szabalyok.HATOKOR_SZABALYOK = {'E3', 'E19'}`, ezek
+  `--teljes` módban a `['__TELJES__']` jelzőt kapják. Teszt: `E19Teszt.test_teljes_modban_fut`
+  (a javítás nélkül bukik) és `test_teljes_jelzo_kozvetlenul`; 56/56 zöld. A valódi
+  adaton az E19 `--teljes` módban most ténylegesen lefut: 0 találat. Az
+  `ellenorzes.yml` lépésnevei E2-E19-re frissültek (a `E2E16_KILEPES` változónév maradt).

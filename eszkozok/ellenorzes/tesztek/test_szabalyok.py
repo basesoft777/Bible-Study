@@ -569,6 +569,23 @@ class E19Teszt(unittest.TestCase):
         t = self._futtat([], fajlok=('lexikon/X.md',))
         self.assertEqual(t, [])
 
+    def test_teljes_modban_fut(self):
+        # ELLENOR_F28 2. tetel: a futtat.py --teljes modja az E19-nek is a
+        # '__TELJES__' jelzot adja; korabban az md-lista miatt el sem indult.
+        import futtat as FU
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'adat/lexikon_hivatkozasok.tsv', self.LEX)
+            _ir(gy, 'adat/forditasok.tsv', "# gyorsitotar\n" + self.FEJ
+                + "BDB\tH7121\tH7121\t2.c\tforditas_hu\th\tf\tkezi\n")
+            eredmeny = FU.fut([], True)
+        self.assertEqual(len(eredmeny['E19']), 1)
+        self.assertEqual(eredmeny['E19'][0].sor, 3)
+        self.assertEqual(eredmeny['E19'][0].szint, 'JELENTES')  # --teljes: minden JELENTES
+
+    def test_teljes_jelzo_kozvetlenul(self):
+        t = self._futtat(["BDB\tH7121\tH7121\t2.c\tforditas_hu\th\tf\tkezi\n"], fajlok=('__TELJES__',))
+        self.assertEqual(len(t), 1)
+
 
 if __name__ == '__main__':
     unittest.main()
