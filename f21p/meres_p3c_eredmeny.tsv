@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_strong/meres_p3c.py | scope=P3c (prompt_v3): Sonnet egyedül (SONNETV3), C (F3V3) a v2-es két C-futással (F3V2, F3V2B), Sonnet+C pár (A=SONNETV3, B=F3V3, döntőbíró nélkül), a Sonnet gondolkodási kerete, length-lezárásai, végleges kapuhibái és a kapupont-bontás (F21.80), 200 verses minta, arany v3 (60 vers, sha256 acdeb55f969c96fe) | forras=f21p/valaszok/{SONNETV3,F3V3,F3V2,F3V2B}.jsonl, arany_opus_v3.jsonl (sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3c.tsv | ts=2026-10-01T08:44:31+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos
+# GENERÁLT: eszkozok/karoli_strong/meres_p3c.py | scope=P3c (prompt_v3): Sonnet egyedül (SONNETV3), C (F3V3) a v2-es két C-futással (F3V2, F3V2B), Sonnet+C pár (A=SONNETV3, B=F3V3, döntőbíró nélkül), a Sonnet gondolkodási kerete, length-lezárásai, végleges kapuhibái és a kapupont-bontás (F21.80), 200 verses minta, arany v3 (60 vers, sha256 acdeb55f969c96fe) | forras=f21p/valaszok/{SONNETV3,F3V3,F3V2,F3V2B}.jsonl, arany_opus_v3.jsonl (sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3c.tsv | ts=2026-10-01T09:33:35+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos
 szakasz	osszeallitas	reteg	mero	szamlalo	nevezo	megjegyzes
 feltetelek	Sonnet (SONNETV3)	R1	arany_versek_kapun_atment	20	20	
 feltetelek	Sonnet (SONNETV3)	R1	pontossag_osszes (tajekoztato, PD6)	308	318	
@@ -270,17 +270,17 @@ ab_egyezes	Sonnet+C	R4	azonos_linkhalmazu_versek	15	50	vers-szintű egyezés
 ab_egyezes	Sonnet+C	Összes	versek_mindketto_atment	188	200	nevező: a rétegben futott versek
 ab_egyezes	Sonnet+C	Összes	link_egyezes (uniós arány)	2973	3345	Σ|A∩B| / Σ|A∪B|, csak ahol mindkettő átment
 ab_egyezes	Sonnet+C	Összes	azonos_linkhalmazu_versek	60	188	vers-szintű egyezés
-minosites	Sonnet+C	Összes	feltetel_1	nem teljesül		
+minosites	Sonnet+C	Összes	feltetel_1	nem mérhető		0/0 magas link: R3 (PD19 (1))
 minosites	Sonnet+C	Összes	feltetel_2	teljesül		
 minosites	Sonnet+C	Összes	feltetel_3	nem teljesül		
 minosites	Sonnet+C	Összes	feltetel_3_tajekoztato	teljesül		
 minosites	Sonnet+C	Összes	feltetel_4	nem teljesül		
 minosites	Sonnet+C	Összes	feltetel_5	nem teljesül		
-minosites	Sonnet+C	Összes	minosites (kizárás nélküli régi arannyal)	nem felel meg		bukott feltétel: 1, 3, 4, 5; nem mért: —
-minosites	Sonnet+C	Összes	minosites (tájékoztató: 1Móz 6:17 kizárva)	nem felel meg		bukott feltétel: 1, 4, 5; nem mért: —
+minosites	Sonnet+C	Összes	minosites (kizárás nélküli régi arannyal)	nem felel meg		bukott feltétel: 3, 4, 5; nem mért: —; nem mérhető: 1
+minosites	Sonnet+C	Összes	minosites (tájékoztató: 1Móz 6:17 kizárva)	nem felel meg		bukott feltétel: 4, 5; nem mért: —; nem mérhető: 1
 minosites_reteg	Sonnet+C	R1	reteg_feltetelek (1,2,3,5; a 4. összesen)	nem teljesül		bukott: 3, 5; (3) mért
 minosites_reteg	Sonnet+C	R2	reteg_feltetelek (1,2,3,5; a 4. összesen)	nem teljesül		bukott: 5; (3) n.é. (nincs régi arany a rétegben)
-minosites_reteg	Sonnet+C	R3	reteg_feltetelek (1,2,3,5; a 4. összesen)	nem teljesül		bukott: 1, 5; (3) n.é. (nincs régi arany a rétegben)
+minosites_reteg	Sonnet+C	R3	reteg_feltetelek (1,2,3,5; a 4. összesen)	nem teljesül		bukott: 5; (3) n.é. (nincs régi arany a rétegben); (1) nem mérhető (0/0 magas link, PD19 (1))
 minosites_reteg	Sonnet+C	R4	reteg_feltetelek (1,2,3,5; a 4. összesen)	nem teljesül		bukott: 5; (3) n.é. (nincs régi arany a rétegben)
 hatas	F3V3 − F3V2	R1	pontossag	0.9403|0.9642|0.0239	-0.0060|0.0484|0.0484	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
 hatas	F3V3 − F3V2	R1	lefedettseg	0.9432|0.9338|-0.0095	-0.0335|0.0140|0.0337	ref|cél|Δ ; 90%-os intervallum alsó|felső|a |Δ| 95. percentilise; n=20
@@ -538,7 +538,7 @@ vegleges_kapuhiba	Sonnet (SONNETV3)	R3	Ez 41:2	1-json	köteg 15	hívások: prób
 vegleges_kapuhiba	Sonnet (SONNETV3)	R3	Ez 46:12	1-json	köteg 15	hívások: próba 1: finish_reason=length, kimenet 12000 (gondolkodás 11144); próba 2: finish_reason=length, kimenet 12000 (gondolkodás 10364) | végső hiba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 2252 (char 2251) | aranyvers
 minosites_reszlet	Sonnet+C	R1	feltetel_1_magas_pontossag	291	296	≥ 98%: teljesül
 minosites_reszlet	Sonnet+C	R2	feltetel_1_magas_pontossag	149	150	≥ 98%: teljesül
-minosites_reszlet	Sonnet+C	R3	feltetel_1_magas_pontossag	0	0	nincs magas link a rétegben (0/0): a minősítés logikája (meres_p3b.minosit) ezt nem teljesültnek veszi
+minosites_reszlet	Sonnet+C	R3	feltetel_1_magas_pontossag	0	0	nincs magas link a rétegben (0/0): nem mérhető (PD19 (1); a Sonnet R3-aranyversei a 15. köteg length-lezárása miatt végleg kapuhibásak; a próféták előtt pótolandó, pótló futás most nincs)
 minosites_reszlet	Sonnet+C	R4	feltetel_1_magas_pontossag	294	298	≥ 98%: teljesül
 minosites_reszlet	Sonnet+C	Összes	feltetel_5_alacsony_arany_mert_200_vers	700	3673	≤ 10%: nem teljesül; a minősítés ezt használja (meres_p3b.minosit)
 minosites_reszlet	Sonnet+C	Összes	feltetel_5_alacsony_arany_vetitett	0.2143		F22-rétegenként vetítve a teljes Bibliára (koltseg_vetites_p3c.tsv: 129049 / 602188 link); ≤ 10%: nem teljesül

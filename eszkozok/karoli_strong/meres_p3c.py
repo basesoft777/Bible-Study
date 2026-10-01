@@ -412,7 +412,15 @@ def minosit(sorok, kf, oss=PAR):
     """A Sonnet+C pár minősítése az öt rögzített feltétellel (a meres_p3b.minosit logikája)."""
     feltetel = {}
     mp = [_arany(sorok, oss, r, 'magas_pontossag') for r in meres.RETEGEK]
-    feltetel['1'] = all(x and x[0] / x[1] >= 0.98 for x in mp)
+    # F21.82 (PD19 (1)): a 0/0 magas-linkű réteg az (1)-ben „nem mérhető” (nem „nem teljesül”); ha egy mérhető réteg
+    # 98% alatt van, az (1) nem teljesül; ha minden mérhető réteg teljesül, de van 0/0 réteg: nem mérhető
+    nm_retegek = [r for r, x in zip(meres.RETEGEK, mp) if not x]
+    if any(x and x[0] / x[1] < 0.98 for x in mp):
+        feltetel['1'] = False
+    elif nm_retegek:
+        feltetel['1'] = 'nm'
+    else:
+        feltetel['1'] = True
     lf = _arany(sorok, oss, meres.OSSZES, 'lefedettseg')
     feltetel['2'] = bool(lf) and lf[0] / lf[1] >= 0.95
     r0 = _arany(sorok, oss, meres.OSSZES, 'regi_arany_kizaras_nelkul')
@@ -423,30 +431,35 @@ def minosit(sorok, kf, oss=PAR):
     al = _arany(sorok, oss, meres.OSSZES, 'alacsony_arany [200 vers]')
     feltetel['5'] = bool(al) and al[0] / al[1] <= 0.10
     for k, v in feltetel.items():
-        sorok.add('minosites', oss, meres.OSSZES, 'feltetel_%s' % k, {True: 'teljesül', False: 'nem teljesül', None: 'nem mért'}[v])
+        sorok.add('minosites', oss, meres.OSSZES, 'feltetel_%s' % k, {True: 'teljesül', False: 'nem teljesül', None: 'nem mért',
+                                                                     'nm': 'nem mérhető'}[v],
+                  '', ('0/0 magas link: %s (PD19 (1))' % ', '.join(nm_retegek)) if v == 'nm' else '')
     for cimke, kulcsok in (('minosites (kizárás nélküli régi arannyal)', ('1', '2', '3', '4', '5')),
                            ('minosites (tájékoztató: 1Móz 6:17 kizárva)', ('1', '2', '3_tajekoztato', '4', '5'))):
         bukott = [k for k in kulcsok if feltetel[k] is False]
         nem_mert = [k for k in kulcsok if feltetel[k] is None]
+        nem_merheto = [k for k in kulcsok if feltetel[k] == 'nm']
         if bukott:
             e = 'nem felel meg'
-        elif nem_mert:
-            e = 'nem minősíthető (nem mért feltétel)'
+        elif nem_mert or nem_merheto:
+            e = 'nem minősíthető (nem mért feltétel)' if nem_mert else 'nem minősíthető (nem mérhető feltétel)'
         else:
             e = 'megfelel'
         sorok.add('minosites', oss, meres.OSSZES, cimke, e, '',
-                  'bukott feltétel: %s; nem mért: %s' % (', '.join(bukott) or '—', ', '.join(nem_mert) or '—'))
+                  'bukott feltétel: %s; nem mért: %s' % (', '.join(bukott) or '—', ', '.join(nem_mert) or '—')
+                  + ('; nem mérhető: %s' % ', '.join(nem_merheto) if nem_merheto else ''))
     for r in meres.RETEGEK:
         m = _arany(sorok, oss, r, 'magas_pontossag')
         l = _arany(sorok, oss, r, 'lefedettseg')
         a = _arany(sorok, oss, r, 'alacsony_arany [200 vers]')
         g = _arany(sorok, oss, r, 'regi_arany_kizaras_nelkul')
-        reszek = {'1': bool(m) and m[0] / m[1] >= 0.98, '2': bool(l) and l[0] / l[1] >= 0.95,
+        reszek = {'1': (m[0] / m[1] >= 0.98) if m else None, '2': bool(l) and l[0] / l[1] >= 0.95,
                   '3': (g[0] / g[1] >= 0.95) if g else None, '5': bool(a) and a[0] / a[1] <= 0.10}
         bukott = [k for k, v in reszek.items() if v is False]
         sorok.add('minosites_reteg', oss, r, 'reteg_feltetelek (1,2,3,5; a 4. összesen)',
                   'teljesül' if not bukott else 'nem teljesül', '',
-                  'bukott: %s; (3) %s' % (', '.join(bukott) or '—', 'n.é. (nincs régi arany a rétegben)' if reszek['3'] is None else 'mért'))
+                  'bukott: %s; (3) %s%s' % (', '.join(bukott) or '—', 'n.é. (nincs régi arany a rétegben)' if reszek['3'] is None else 'mért',
+                                           '; (1) nem mérhető (0/0 magas link, PD19 (1))' if reszek['1'] is None else ''))
 
 
 # ---------------------------------------------------------------------------
@@ -1165,13 +1178,14 @@ def alacsony_vetitett(ut=None):
 
 
 def minosites_reszlet(sorok, kf, av, oss=PAR):
-    """A minősítés részletezése (a minosit logikája változatlan): az (1) rétegenként (a 0/0 réteg jelölésével) és az (5)
+    """A minősítés részletezése: az (1) rétegenként (a 0/0 réteg „nem mérhető”, PD19 (1)) és az (5)
     mért (200 vers) és vetített (F22-rétegenként, a teljes Bibliára) értéke."""
     for r in meres.RETEGEK:
         m = _arany(sorok, oss, r, 'magas_pontossag')
         sorok.add('minosites_reszlet', oss, r, 'feltetel_1_magas_pontossag', m[0] if m else 0, m[1] if m else 0,
                   ('≥ 98%%: %s' % ('teljesül' if m[0] / m[1] >= 0.98 else 'nem teljesül')) if m else
-                  'nincs magas link a rétegben (0/0): a minősítés logikája (meres_p3b.minosit) ezt nem teljesültnek veszi')
+                  'nincs magas link a rétegben (0/0): nem mérhető (PD19 (1); a Sonnet R3-aranyversei a 15. köteg length-lezárása '
+                  'miatt végleg kapuhibásak; a próféták előtt pótolandó, pótló futás most nincs)')
     al = _arany(sorok, oss, meres.OSSZES, 'alacsony_arany [200 vers]')
     sorok.add('minosites_reszlet', oss, meres.OSSZES, 'feltetel_5_alacsony_arany_mert_200_vers', al[0], al[1],
               '≤ 10%%: %s; a minősítés ezt használja (meres_p3b.minosit)' % ('teljesül' if al[0] / al[1] <= 0.10 else 'nem teljesül'))
@@ -1251,7 +1265,7 @@ def kiegeszites_md(sorok):
     ki += ['', '### A Sonnet véglegesen kapuhibás versei (%d)' % len(vk), '',
            '| réteg | vers | végső kapupont | köteg | hívások \\| végső hiba |', '|---|---|---|---|---|']
     ki += ['| %s | %s | %s | %s | %s |' % (s[2], s[3], s[4], s[5], s[6].replace('|', '\\|')) for s in vk]
-    ki += ['', '## g) A minősítés részletezése (a minősítés logikája változatlan; a küszöb szempontjából csak a mért érték számít)', '',
+    ki += ['', '## g) A minősítés részletezése (az (1) 0/0 rétege „nem mérhető”, PD19 (1); a küszöb szempontjából csak a mért érték számít)', '',
            '| feltétel | réteg | érték | megjegyzés |', '|---|---|---|---|']
     for s in sorok.lista:
         if s[0] == 'minosites_reszlet':
@@ -1499,6 +1513,18 @@ def onteszt():
     m = ered(mock_sorok(), {})
     ellen(m['feltetel_4'] == 'nem mért' and m['minosites (kizárás nélküli régi arannyal)'] == 'nem minősíthető (nem mért feltétel)',
           'minősítés: a hiányzó költség nem „nem mért”: %s' % m)
+    # F21.82: a 0/0 magas-linkű réteg az (1)-ben „nem mérhető”; más bukott feltétellel „nem felel meg”, egyébként nem minősíthető
+    def nulla_r3(s):
+        s.lista = [x if not (x[3] == 'magas_pontossag' and x[2] == 'R3') else x[:4] + ['0', '0', ''] for x in s.lista]
+        return s
+    m = ered(nulla_r3(mock_sorok()), kf0)
+    ellen(m['feltetel_1'] == 'nem mérhető' and m['minosites (kizárás nélküli régi arannyal)'] == 'nem minősíthető (nem mérhető feltétel)',
+          'minősítés: a 0/0 réteg nem „nem mérhető”: %s' % m)
+    m = ered(nulla_r3(mock_sorok(al=11)), kf0)
+    ellen(m['feltetel_1'] == 'nem mérhető' and m['minosites (kizárás nélküli régi arannyal)'] == 'nem felel meg',
+          'minősítés: a 0/0 réteg + bukott (5) nem „nem felel meg”: %s' % m)
+    m = ered(nulla_r3(mock_sorok(mag=97)), kf0)
+    ellen(m['feltetel_1'] == 'nem teljesül', 'minősítés: a mérhető rétegek bukása a 0/0 réteg mellett nem buktat: %s' % m)
     # a pár-logika kézzel (kapuhibás oldal: a túlélő oldal linkjei alacsonyak)
     A, B = {(1, 1), (2, 2)}, {(1, 1), (2, 3)}
     _, ab = meres_p3b.g4_vers(True, True, A, B, False, None, False)
