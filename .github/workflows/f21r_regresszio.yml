@@ -10,7 +10,7 @@
 #
 # VEZERLES (f21p/futtatas_v3.txt, a futtat.py --vezerlo formatuma). KOLTSEGVETESI KAPU: a workflow
 # elinditas elott ellenorzi, hogy a fajlban
-#     futasok=SONNETV3 | F3V3 | F3V3,SONNETV3   (mas futas ebbol a workflowbol nem indulhat)
+#     futasok=SONNETV3 | F3V3 | F3V3,SONNETV3 | F8V3   (mas futas ebbol a workflowbol nem indulhat; az F8V3 (F21.62, KJV a teljes tablabol) csak onmagaban)
 #     koteg_max=1|mind      (1: kalibralo trigger, 10 vers; mind: a 200 vers)
 #     plafon_usd=<szam>     (KOTELEZO ebben a workflowban; a futtato onmagaban opcionalisnak veszi es
 #                            4.0-t venne, ez itt hiba), 0 < x <= 4.0 (F21.47: a korabbi 3.0 helyett; felhasznaloi kuszob 3.90), kumulativ (futasnaplo.tsv osszeg)
@@ -68,7 +68,7 @@ jobs:
           f=f21p/futtatas_v3.txt
           n=$(grep -v -E '^[[:space:]]*(#|$)' "$f" | wc -l)
           if [ "$n" -ne 3 ]; then echo "a vezerlofajl pontosan harom kulcs=ertek sort tartalmazhat (futasok, koteg_max, plafon_usd)"; exit 1; fi
-          grep -q -E '^futasok=(F3V3|SONNETV3|F3V3,SONNETV3|SONNETV3,F3V3)[[:space:]]*$' "$f" || { echo "futasok=SONNETV3, F3V3 vagy F3V3,SONNETV3 kell (mas futas ebbol a workflowbol nem indulhat)"; exit 1; }
+          grep -q -E '^futasok=(F3V3|SONNETV3|F3V3,SONNETV3|SONNETV3,F3V3|F8V3)[[:space:]]*$' "$f" || { echo "futasok=SONNETV3, F3V3, F3V3,SONNETV3 vagy F8V3 kell (mas futas ebbol a workflowbol nem indulhat)"; exit 1; }
           grep -q -E '^koteg_max=([1-9][0-9]*|mind)[[:space:]]*$' "$f" || { echo "koteg_max=<pozitiv egesz|mind> kell"; exit 1; }
           grep -q -E '^plafon_usd=[0-9]+(\.[0-9]+)?[[:space:]]*$' "$f" || { echo "plafon_usd=<szam> kotelezo ebben a workflowban"; exit 1; }
           p=$(grep -E '^plafon_usd=' "$f" | cut -d= -f2 | tr -d '[:space:]')

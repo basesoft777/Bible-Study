@@ -8,18 +8,25 @@
 # 3. a kalibralas utan (eszkozok/karoli_strong/kalibralas_ellenoriz.py: kilepesi kod 0 = mehet tovabb,
 #    4 = megallni, 2 = adathiba) a teljes SONNETV3.
 #
-# 1. lepes: az F3V3 (C), 200 vers (az aktiv harom sor lent):
+# ALLAPOT (F21.62): az 1. lepes (F3V3) LEFUTOTT; a SONNET-LEPESEK (2. es 3.) FELFUGGESZTVE (a felhasznalo leallitotta
+# a Sonnet-futast; a sorok dokumentaciokent megmaradnak). A kovetkezo, AKTIV lepes az F8V3 (a harom aktiv sor lent).
+#
+# 1. lepes (LEFUTOTT): az F3V3 (C), 200 vers:
 #   futasok=F3V3
 #   koteg_max=mind
 #   plafon_usd=3.90
-# 2. lepes: kalibralo trigger, egy koteg (10 vers) a Sonnetbol:
+# 2. lepes (FELFUGGESZTVE): kalibralo trigger, egy koteg (10 vers) a Sonnetbol:
 #   futasok=SONNETV3
 #   koteg_max=1
 #   plafon_usd=3.90
-# 3. lepes (csak ha a kalibralas-ellenorzes 0-t ad): a teljes Sonnet, 200 vers; a kesz koteg nem hiv ujra:
+# 3. lepes (FELFUGGESZTVE; csak ha a kalibralas-ellenorzes 0-t ad): a teljes Sonnet, 200 vers; a kesz koteg nem hiv ujra:
 #   futasok=SONNETV3
 #   koteg_max=mind
 #   plafon_usd=3.90
-futasok=F3V3
+# 4. lepes (F8V3, AKTIV; kulon trigger, onmagaban): C (google/gemini-3.8-flash), prompt_v3, 200 vers, a KJV-tamapont a
+#    TELJES KJV-tablabol (konkordancia/KJV_Strongs_teljes.tsv) minden retegben, ahol van KJV-sor; kimenet f21p/valaszok/F8V3.jsonl;
+#    a koteg-sorok kjv_forras mezoje azonositja a forrast (tabla, sha256, a KJV-sort kapott versek szama retegenkent).
+#    Szarazbecsles: python eszkozok/karoli_strong/futtat.py --szaraz (az F8V3 szakasz); a becsles kb. 0.26-0.29 USD.
+futasok=F8V3
 koteg_max=mind
 plafon_usd=3.90
