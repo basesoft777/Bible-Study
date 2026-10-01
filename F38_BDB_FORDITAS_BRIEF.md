@@ -5,10 +5,10 @@ kod: BDB_FORDITAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: fut
+allapot: dontesre_var
 ag: claude/admiring-bohr-texair
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=opus), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
-kovetkezo: M0 felmérés + M1 mérő adag, utána megállási pont (⛔ M1)
+kovetkezo: Te: ⛔ M1 — kredit leolvasása és döntés a DT-F38 (a)–(e) pontjairól (folytatás / prompt- vagy terminológiajavítás / leállás); az M0 és az M1 kész (9 szócikk, 148 984 karakter, kapuk rendben); folytatási pont: 2. adag, a naplok/BDB_FORDITAS_sorrend.tsv 10. sorától (H3808)
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md]
 ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md]
 fugg: [34]
