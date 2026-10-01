@@ -525,5 +525,67 @@ class BeerkezoKizarasTest(unittest.TestCase):
         self.assertFalse(K.kizart_e('F20_BEFOGADAS_BRIEF.md'))
 
 
+class E19Teszt(unittest.TestCase):
+    """F28_EMELES_BRIEF.md E6: Thayer/BDB szotari hivatkozas forditas nelkul."""
+
+    LEX = (
+        "# szotari hivatkozasok\n"
+        "strong\tszotar\tentry_id\tjelentes_szam\tszoveg_en\tforrasfajl\n"
+        "G0012\tThayer\tG12\tteljes\tx\tk\n"
+        "H7121\tBDB\tH7121\t2.c\tx\tk\n"
+        "G1941\tTBESG\tG1941\t1\tx\tk\n"
+    )
+    FEJ = "szotar\tstrong\tentry_id\tjelentes_szam\tmezo\tforras_hash\tforditas_hu\tallapot\n"
+
+    def _futtat(self, ford_sorok, fajlok=('adat/forditasok.tsv',)):
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'adat/lexikon_hivatkozasok.tsv', self.LEX)
+            _ir(gy, 'adat/forditasok.tsv', "# gyorsitotar\n" + self.FEJ + ''.join(ford_sorok))
+            return SZ.e19_szotari_forditas_hiany(list(fajlok))
+
+    def test_negativ_minden_megvan(self):
+        t = self._futtat([
+            "Thayer\tG0012\tG12\tteljes\tforditas_hu\th\tf\topus\n",
+            "BDB\tH7121\tH7121\tteljes\tforditas_hu\th\tf\tkezi\n",  # teljes fedi a 2.c-t
+        ])
+        self.assertEqual(t, [])
+
+    def test_pozitiv_direkt_hianyzo_sor(self):
+        # a G0012 forditasa hianyzik -> HIBA a lexikon_hivatkozasok 3. soran
+        t = self._futtat(["BDB\tH7121\tH7121\t2.c\tforditas_hu\th\tf\tkezi\n"])
+        self.assertEqual(len(t), 1)
+        self.assertEqual(t[0].szabaly, 'E19')
+        self.assertEqual(t[0].szint, 'HIBA')
+        self.assertEqual(t[0].sor, 3)
+
+    def test_pozitiv_pilot_allapot_nem_eleg(self):
+        t = self._futtat([
+            "Thayer\tG0012\tG12\tteljes\tforditas_hu\th\tf\tpilot\n",
+            "BDB\tH7121\tH7121\t2.c\tforditas_hu\th\tf\tkezi\n",
+        ])
+        self.assertEqual(len(t), 1)
+
+    def test_nem_fut_ha_a_tablak_nem_valtoztak(self):
+        t = self._futtat([], fajlok=('lexikon/X.md',))
+        self.assertEqual(t, [])
+
+    def test_teljes_modban_fut(self):
+        # ELLENOR_F28 2. tetel: a futtat.py --teljes modja az E19-nek is a
+        # '__TELJES__' jelzot adja; korabban az md-lista miatt el sem indult.
+        import futtat as FU
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'adat/lexikon_hivatkozasok.tsv', self.LEX)
+            _ir(gy, 'adat/forditasok.tsv', "# gyorsitotar\n" + self.FEJ
+                + "BDB\tH7121\tH7121\t2.c\tforditas_hu\th\tf\tkezi\n")
+            eredmeny = FU.fut([], True)
+        self.assertEqual(len(eredmeny['E19']), 1)
+        self.assertEqual(eredmeny['E19'][0].sor, 3)
+        self.assertEqual(eredmeny['E19'][0].szint, 'JELENTES')  # --teljes: minden JELENTES
+
+    def test_teljes_jelzo_kozvetlenul(self):
+        t = self._futtat(["BDB\tH7121\tH7121\t2.c\tforditas_hu\th\tf\tkezi\n"], fajlok=('__TELJES__',))
+        self.assertEqual(len(t), 1)
+
+
 if __name__ == '__main__':
     unittest.main()

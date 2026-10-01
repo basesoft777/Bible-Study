@@ -707,10 +707,10 @@ magyar szótári fordítás egyetlen helye — a `lexikon_hivatkozasok.tsv`
 | `entry_id` | szabad szöveg | ✔ | `szotar=UBS_DNTG` esetén a `UBS_DNTG_jelentesek.tsv` `lexid` mezője (a régi `forditas_ubs.lexid`); egyébként azonos a 2.5 `entry_id` értelmezésével. |
 | `jelentes_szam` | union (l. 2.2.2) | ✔ | `szotar=UBS_DNTG` esetén a Louw–Nida `entry_kod` (pl. `33.176`, a régi `forditas_ubs.entry_kod`); egyébként azonos a 2.5 `jelentes_szam` értelmezésével. |
 | `mezo` | zárt | ✔ | Melyik forrásmezőt fordítja ez a sor: `forditas_hu` (a 2.5 `szoveg_en`-jét), `definicio_hu` vagy `glosszak_hu` (a régi `forditas_ubs.tsv` két oszlopa). |
-| `forras_hash` | szabad szöveg | ✔ | A forrásszöveg (az eredeti nyelvű, EN) SHA-1 hexdigestje (`hashlib.sha1(szoveg).hexdigest()`), UTF-8 kódolásból. Eltérés a forrás-hash és az újraszámolt hash között `ellenoriz.py`-sértés (S1.5, 13. szabály). |
+| `forras_hash` | szabad szöveg | ✔ | A forrásszöveg (az eredeti nyelvű, EN) SHA-1 hexdigestje (`hashlib.sha1(szoveg).hexdigest()`), UTF-8 kódolásból. Eltérés a forrás-hash és az újraszámolt hash között `ellenoriz.py`-sértés (S1.5, 13. szabály). A forrásszöveg a `lexikon_hivatkozasok.tsv` `szoveg_en`-je (UBS-nél a `UBS_DNTG_jelentesek.tsv`); ha ott nincs sor, és a sor `szotar ∈ {Thayer, BDB}`, `jelentes_szam=teljes`, `mezo=forditas_hu`, akkor a `konkordancia/Thayer_teljes.tsv` / `BDB_teljes_unabridged.tsv` `Teljes_szocikk` mezője (kulcs: `strong` → `Strong_padded`, az `entry_id`-nek a `Strong_eredeti`-vel kell egyeznie; F28 DT24 (b)). |
 | `forditas_hu` | szabad szöveg | ✔ | A fordítás szövege — ugyanaz a tartalmi szabály, mint a 2.5-ben leírt `forditas_hu`-nál. |
-| `allapot` | zárt | ✔ | `kezi` (a migrált, ember által korábban jóváhagyott sorok) \| `pilot` (az `eszkozok/fordit.py` próba-kimenete, l. `F03_FORDITAS_PILOT_BRIEF.md`) \| `elavult` (a `forras_hash` már nem egyezik, `ellenoriz.py` javaslata). |
-| `modell` | szabad szöveg | | A fordító LLM modell-azonosítója (pl. `anthropic/claude-haiku-4.5`); üres, ha `allapot=kezi` (nem model-fordítás). |
+| `allapot` | zárt | ✔ | `kezi` (a migrált, ember által korábban jóváhagyott sorok; az F28-ban a felhasználó által jóváhagyott Opus-fordítás) \| `opus` (a teljes Thayer-/BDB-szócikk Opus-fordítása, kapukon átment, emberi jóváhagyás nélkül, l. `F28_EMELES_BRIEF.md` E4) \| `pilot` (az `eszkozok/fordit.py` próba-kimenete, l. `F03_FORDITAS_PILOT_BRIEF.md`) \| `elavult` (a `forras_hash` már nem egyezik, `ellenoriz.py` javaslata). |
+| `modell` | szabad szöveg | | A fordító LLM modell-azonosítója (pl. `anthropic/claude-haiku-4.5`); üres, ha `allapot=kezi` és nem model-fordítás. Az F28 jóváhagyott (`kezi`) Opus-fordításainál kitöltve marad (`claude-opus-5-5`) — a jóváhagyás az állapotot változtatja, a provenienciát nem. |
 | `datum` | `DATUM` | ✔ | A migrált soroknál a forrás utolsó tartalmi módosításának git-dátuma (a `lexikon_hivatkozasok.tsv` soraira) vagy a korábbi `forditas_ubs.proveniencia` jóváhagyási dátuma (az UBS-soroknál); új soroknál a fordítás dátuma. |
 | `terminologia_verzio` | szabad szöveg | | A 2.15 `terminologia.tsv` verziója, amellyel a fordítás készült; üres a migrált (a terminológia-tábla előtti) soroknál. |
 | `megjegyzes` | szabad szöveg | | A megszűnt `forditas_ubs.tsv` `megjegyzes` oszlopának öröksége — lábjegyzet-hivatkozás vagy a fordítói döntés indoklása. A render nem olvassa (csak emberi/archív jegyzet); üres a legtöbb sornál. |
@@ -740,6 +740,12 @@ a fordítói promptba fűz be, hogy a fordítás konzisztens maradjon szótárak
 
 **Induló tartalom (D26):** a `naplok/FORDITAS_P_terminologia.tsv` 13 sora,
 változatlanul, `v1` verzióval.
+
+**v3 (F28, DT26):** az emelés jóváhagyott szakkifejezései (alaktan, rövidítés-feloldások,
+szerzőnevek, könyvnevek). Ha egy kulcs egy hosszabb kulcs része (`compare` ⊂ `מִן compare`),
+a fordítási kapu (`eszkozok/forditas_kapuk.py`) a forrás hosszabb kulcson belüli
+előfordulásait a hosszabbik sorhoz rendeli: a kulcs maga a forrásbeli alak, a
+megkülönböztetés a kulcsban van, nem a kapu lazításában.
 
 ### 2.16 `kiejtes_szabalyok.tsv` — görög átírási szabálytábla (F05_SZOTAR_BRIEF.md S3)
 

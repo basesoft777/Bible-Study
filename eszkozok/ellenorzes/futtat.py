@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-futtat.py -- CI.0/CI.2: az E2-E16 ellenorzesek kozos futtatoja
+futtat.py -- CI.0/CI.2: az E2-E19 ellenorzesek kozos futtatoja
 (F02_CI_ELLENORZES_BRIEF.md). Az E1-et (SEMA 1-12, Q1, Q7) NEM ez futtatja --
 azt a meglevo `eszkozok/ellenoriz.py --study FILE` adja, kulon hivassal
 (l. .github/workflows/ellenorzes.yml).
@@ -70,7 +70,9 @@ def fut(valtozott_fajlok, teljes, diff_alap=None, diff_fej=None, pr_cim='', comm
 
     nyers = {}
     for nev, fv in SZ.SZABALYOK_FUGGVENYEI.items():
-        if nev == 'E3':
+        if nev in SZ.HATOKOR_SZABALYOK:
+            # E3, E19: adattablan futnak; --teljes modban a '__TELJES__'
+            # jelzo kell nekik, nem az md-fajlok listaja (ELLENOR_F28 2. tetel).
             nyers[nev] = fv(hatokor if teljes else valtozott_fajlok)
         else:
             nyers[nev] = fv(fajlok_a_szabalyoknak)
