@@ -808,9 +808,9 @@ def lxx_os_karoli_index(slug):
 
 # F08: csak a kiadott (biztos, ill. az F08 előtti, skála nélküli) és a
 # megjelenítésre szánt tipusú sorok jelennek meg; a `valoszinu`/`nyitott`
-# sorok a DONTESEK.md összesített tételének döntéséig "kutatói azonosítás
-# függőben" maradnak, a `nincs_heber_kulcsszo` (`nem_alkalmazhato`) sorok
-# megjelenítése külön döntés (adat/SEMA.md 2.11). A szűrő a 3. (LXX) blokkra
+# sorok "kutatói azonosítás függőben" jelöléssel jelennek meg (DT23), a
+# `nincs_heber_kulcsszo` (`nem_alkalmazhato`) sorok saját címkéje külön
+# tétel (N-F08b; adat/SEMA.md 2.11). A szűrő a 3. (LXX) blokkra
 # és a rokon_szavak_strongok-on át a "Rokon szavak" blokkra is hat.
 LXX_DONTES_MEGJELENO_BIZONYOSSAG = {'', 'biztos'}
 LXX_DONTES_MEGJELENO_TIPUS = {'eltero_forditas', 'lxx_minusz'}

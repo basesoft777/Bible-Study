@@ -502,6 +502,18 @@ def szabaly10_v22_tablak(adat_dir):
                           'nincs_heber_kulcsszo} halmaznak' % (sor.get('id'), tipus))
         elif tipus == 'eltero_forditas' and not (sor.get('gorog_lemma') or '').strip():
             hibas.append('lxx_dontesek.tsv %s: tipus=eltero_forditas, de gorog_lemma ures' % sor.get('id'))
+        # F8.10 (DT23): ellentmondo forrasok = valoszinu + a forras= mezoben Macula_heber ES LXX_OS
+        # (adat/SEMA.md 2.11) -> a proveniencian feloldas= kotelezo, a megjegyzes kimondja az ellentmondast
+        prov_mezok = [m.strip() for m in (sor.get('proveniencia') or '').split('|')]
+        forras_mezo = next((m for m in prov_mezok if m.startswith('forras=')), '')
+        feloldas_mezo = next((m for m in prov_mezok if m.startswith('feloldas=')), '')
+        if bizonyossag == 'valoszinu' and 'Macula_heber' in forras_mezo and 'LXX_OS' in forras_mezo:
+            if not feloldas_mezo[len('feloldas='):].strip():
+                hibas.append('lxx_dontesek.tsv %s: valoszinu + ellentmondo forrasok (Macula_heber es LXX_OS), '
+                              'de a proveniencian nincs feloldas=' % sor.get('id'))
+            if 'ellentmond' not in (sor.get('megjegyzes') or ''):
+                hibas.append('lxx_dontesek.tsv %s: valoszinu + ellentmondo forrasok, de a megjegyzes nem '
+                              'jelzi az ellentmondast' % sor.get('id'))
 
     cim = '10. LEXV2_2 tablak (forditas_ubs -- RETIRED S1.1, lxx_dontesek)'
     megjegyzes = '; '.join(megjegyzesek) or None

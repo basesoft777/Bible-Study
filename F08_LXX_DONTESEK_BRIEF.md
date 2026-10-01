@@ -9,11 +9,11 @@ allapot: lezarva
 pr: 96
 ag: claude/lxx-dontesek
 ad: minden ÓSZ-helyhez LXX-megfelelő (`adat/lxx_dontesek.tsv`); a 87 függő helyből 38 kap gépi LXX-megfelelőt (Macula, #17), 49 marad kutatói döntésre
-kovetkezo: "DT23 alkalmazva (F8.8); külön tételek: N-F08a (Préd 9:10 igehely), N-F08b (generátor-címke); a PR címe [ELLENŐRZŐ] előtagú (E16)"
+kovetkezo: "merge-re kész (ellenőrizve)"
 olvas: [adat/lxx_dontesek.tsv, naplok/FORRAS_FJ1_lxx_jeloltek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv]
 ir: [adat/lxx_dontesek.tsv, DONTESEK.md]
 fugg: [1, 17]
-lezarva_osszegzes: LXX-döntések (#8): a 87 függő hely 86 sora az `adat/lxx_dontesek.tsv`-ben (LD005–LD090), biztos 61 / valószínű 13 / nyitott 4 / nem_alkalmazhato 8 (a DT23 (b) szerint kitöltött 4 sor valószínű: egy forrás + felhasználói döntés); a Macula 38 gépi megfelelőjéből 36 megerősítve, 2 ellentmondó; SEMA 2.11 bővítve (`bizonyossag`, `nincs_heber_kulcsszo`), a generátor csak a biztos sorokat jeleníti meg (LD001–LD004 renderje bájtra azonos, `naplok/F08_nulladiff.txt`); ellenőrzés `naplok/ELLENOR_F08.md`; PR-cím `[ELLENŐRZŐ]` (E16); DT23 ✅ (F8.8), külön tételek N-F08a (Préd 9:10 igehely) és N-F08b (generátor-címke); zárás `naplok/F08_zaras.md`
+lezarva_osszegzes: LXX-döntések (#8): a 87 függő hely 86 sora az `adat/lxx_dontesek.tsv`-ben (LD005–LD090), biztos 61 / valószínű 13 / nyitott 4 / nem_alkalmazhato 8 (a DT23 (b) szerint kitöltött 4 sor valószínű: LD027, LD035, LD052 ellentmondásos források, felhasználói döntéssel feloldva, `feloldas=DT23`; LD050 egy forrás); a Macula 38 gépi megfelelőjéből 36 megerősítve, 2 ellentmondó; SEMA 2.11 bővítve (`bizonyossag`, `nincs_heber_kulcsszo`, `feloldas=`), az `ellenoriz.py` 10. szabálya a `feloldas=`-t is ellenőrzi; a generátor csak a biztos sorokat jeleníti meg (merge-elt nulladiff: LD001–LD004 renderje és a 8 törzscikk soronként azonos, `naplok/F08_nulladiff.txt`); ellenőrzés `naplok/ELLENOR_F08.md`; PR-cím `[ELLENŐRZŐ]` (E16); DT23 ✅ (F8.8, F8.10), külön tételek N-F08a (Préd 9:10 igehely) és N-F08b (generátor-címke); zárás `naplok/F08_zaras.md`
 ---
 # F08 — LXX-döntések mind a 87 függő igehelyre
 

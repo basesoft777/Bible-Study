@@ -99,8 +99,8 @@ DONTESEK = [
      'מָלְאָה הָאָרֶץ חָמָס → ἐπλήσθη ἡ γῆ ἀδικίας; Macula és LXX_OS egyezik.'),
     ([22], 'HAMART-001', '1Móz 6:17', ELT, 'καταφθείρω', 'καταφθεῖραι', 1, None, BIZ, [M, L],
      'לְשַׁחֵת → καταφθεῖραι; a Macula (Strong nélkül) és az LXX_OS (2704) egyezik.'),
-    ([23], 'HAMART-001', '1Móz 8:21', ELT, 'καταράομαι', 'καταράσασθαι', 1, None, VAL, [L],
-     'A Macula a קַלֵּל-t ἔτι-hez köti, ami a עוֹד megfelelője; az LXX_OS versében a kulcsszó helyén τοῦ καταράσασθαι áll (LXX_OS/genesis.tsv „Genesis 8:21” 18. pozíció: καταράομαι, strong 2672; a LXX_kivonat itt Strong nélküli). A két forrás ellentmondott; DT23 (b) felhasználói döntés: a jelölt (καταράομαι G2672) elfogadva. Bizonyosság valószínű: egy forrás + felhasználói döntés, a brief „biztos” definíciója nem teljesül.'),
+    ([23], 'HAMART-001', '1Móz 8:21', ELT, 'καταράομαι', 'καταράσασθαι', 1, None, VAL, [M, L],
+     'A Macula a קַלֵּל-t ἔτι-hez köti, ami a עוֹד megfelelője; az LXX_OS versében a kulcsszó helyén τοῦ καταράσασθαι áll (LXX_OS/genesis.tsv „Genesis 8:21” 18. pozíció: καταράομαι, strong 2672; a LXX_kivonat itt Strong nélküli). A két forrás ellentmondott; DT23 (b) felhasználói döntés: a jelölt (καταράομαι G2672) elfogadva. Bizonyosság valószínű: ellentmondásos források, felhasználói döntéssel feloldva (feloldas=DT23); a brief „biztos” definíciója nem teljesül.'),
     ([24], 'HAMART-001', '1Móz 9:11', ELT, 'καταφθείρω', 'καταφθεῖραι', 1, None, BIZ, [M, L],
      'לְשַׁחֵת הָאָרֶץ → τοῦ καταφθεῖραι πᾶσαν τὴν γῆν; a Macula (Strong nélkül) és az LXX_OS (2704) egyezik.'),
     ([25], 'HAMART-001', '1Móz 9:15', ELT, 'ἐξαλείφω', 'ἐξαλεῖψαι', 1, None, BIZ, [M, L],
@@ -115,8 +115,8 @@ DONTESEK = [
      'מָלוּ תוֹכְךָ חָמָס → ἔπλησας τὰ ταμίειά σου ἀνομίας; Macula és LXX_OS egyezik.'),
     ([30], 'HAMART-001', 'Zsolt 74:20', ELT, 'ἀνομία', 'ἀνομιῶν', 1, None, BIZ, [M, L],
      'נְאוֹת חָמָס → οἴκων ἀνομιῶν (Zsolt(LXX) 73:20); Macula és LXX_OS egyezik.'),
-    ([31], 'HAMART-001', 'Mik 6:12', ELT, 'ἀσέβεια', 'ἀσεβείας', 1, None, VAL, [L],
-     'A Macula felcseréli a két szomszédos szót (מָלְאוּ → ἀσεβείας, חָמָס → ἔπλησαν); az LXX_OS szórendje (ἀσεβείας ἔπλησαν) szerint a חָמָס megfelelője ἀσέβεια (763). A két forrás ellentmondott; DT23 (b) felhasználói döntés: a jelölt (ἀσέβεια G0763) elfogadva. Bizonyosság valószínű: egy forrás + felhasználói döntés, a brief „biztos” definíciója nem teljesül.'),
+    ([31], 'HAMART-001', 'Mik 6:12', ELT, 'ἀσέβεια', 'ἀσεβείας', 1, None, VAL, [M, L],
+     'A Macula felcseréli a két szomszédos szót (מָלְאוּ → ἀσεβείας, חָמָס → ἔπλησαν); az LXX_OS szórendje (ἀσεβείας ἔπλησαν) szerint a חָמָס megfelelője ἀσέβεια (763). A két forrás ellentmondott; DT23 (b) felhasználói döntés: a jelölt (ἀσέβεια G0763) elfogadva. Bizonyosság valószínű: ellentmondásos források, felhasználói döntéssel feloldva (feloldas=DT23); a brief „biztos” definíciója nem teljesül.'),
     ([32], 'HAMART-001', 'Sof 1:9', ELT, 'ἀσέβεια', 'ἀσεβείας', 1, None, BIZ, [M, L],
      'הַמְמַלְאִים בֵּית אֲדֹנֵיהֶם חָמָס → τοὺς πληροῦντας τὸν οἶκον … ἀσεβείας; Macula és LXX_OS egyezik.'),
     ([33], 'HAMART-001', 'Hab 2:8', ELT, 'ἀσέβεια', 'ἀσεβείας', 1, None, BIZ, [M, L],
@@ -149,8 +149,8 @@ DONTESEK = [
      'HODIT-001 és MENNY-001 közös sora; Károli 13:34 = MT 13:33 (KK). A munkalap kulcsszó-alakja a második נְפִלִים (בְּנֵי עֲנָק מִן־הַנְּפִלִים): a Macula nem illeszti (’’), az LXX_OS-ben ez a tagmondat hiányzik. Az első נְפִילִים → τοὺς γίγαντας (Macula és LXX_OS egyezik), erre a sor nem vonatkozik. DT23 (b) felhasználói döntés: LXX-minusz a munkalap-szóra. Bizonyosság valószínű: egy forrás + felhasználói döntés, a brief „biztos” definíciója nem teljesül.'),
     ([47], 'HODIT-001', '5Móz 2:11', ELT, 'Ραφαϊν', 'Ραφαϊν', 1, '', BIZ, [M, L],
      'רְפָאִים יֵחָשְׁבוּ → Ραφαϊν λογισθήσονται (átírás); Macula és LXX_OS egyezik.'),
-    ([48], 'HODIT-001', '5Móz 2:20', ELT, 'Ραφαϊν', 'Ραφαϊν', 2, '', VAL, [L],
-     'A munkalap-alak a második רְפָאִים: a Macula a szomszédos igével felcserélve (κατῴκουν) illeszti, az LXX_OS-ben mindkét רְפָאִים helyén Ραφαϊν áll. A két forrás a munkalap-szóra ellentmondott; DT23 (b) felhasználói döntés: a jelölt (Ραφαϊν) elfogadva. Bizonyosság valószínű: egy forrás + felhasználói döntés, a brief „biztos” definíciója nem teljesül.'),
+    ([48], 'HODIT-001', '5Móz 2:20', ELT, 'Ραφαϊν', 'Ραφαϊν', 2, '', VAL, [M, L],
+     'A munkalap-alak a második רְפָאִים: a Macula a szomszédos igével felcserélve (κατῴκουν) illeszti, az LXX_OS-ben mindkét רְפָאִים helyén Ραφαϊν áll. A két forrás a munkalap-szóra ellentmondott; DT23 (b) felhasználói döntés: a jelölt (Ραφαϊν) elfogadva. Bizonyosság valószínű: ellentmondásos források, felhasználói döntéssel feloldva (feloldas=DT23); a brief „biztos” definíciója nem teljesül.'),
     ([49], 'HODIT-001', '5Móz 3:11', ELT, 'Ραφαϊν', 'Ραφαϊν', 1, '', BIZ, [M, L],
      'מִיֶּתֶר הָרְפָאִים → ἀπὸ τῶν Ραφαϊν (átírás); Macula és LXX_OS egyezik.'),
     ([50], 'HODIT-001', '5Móz 3:13', ELT, 'Ραφαϊν', 'Ραφαϊν', 1, '', BIZ, [M, L],
@@ -308,6 +308,9 @@ def main():
         hs = hs.split('+')[0] if hs.startswith('H') else ''
         # F8.8: a DT23 (b) felhasznaloi dontessel kitoltott sorok proveniencia-bovitese
         dontes = ' | dontes=DT23(b)' if 'DT23 (b) felhasználói döntés' in megj else ''
+        # F8.10: valoszinu + ket, egymasnak ellentmondo forras (Macula_heber ES LXX_OS) -> feloldas= (SEMA 2.11)
+        if biz == VAL and M in forrasok and L in forrasok:
+            dontes += ' | feloldas=DT23'
         prov = 'scope=F08 LXX-döntés, 87 függő hely (naplok/F17_87_hely.tsv, #%s) | forras=%s + kutatói versolvasat (naplok/F08_bemenet.txt)%s | ts=%s' % (
             ','.join(str(i) for i in idx), ' + '.join(forrasok), dontes, TS)
         uj_sorok.append(['LD%03d' % n, hely, lxx_igehely, hs, lemma, gs, poz, tipus, megj, biz, prov])

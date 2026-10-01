@@ -1,72 +1,36 @@
-# F8.8 (DT23 (d)) nulla-diff igazolás — python eszkozok/f08/f08_nulladiff.py <ág_kimenet> <main_kimenet>
-# proveniencia: scope=lexikon+torzscikk (8 motívum, 16 fájl) | forras=general.py --cel lexikon/torzscikk --kimenet (repón kívül): ág (claude/lxx-dontesek, F8.8 munkaállapot) vs. origin/main aaf0b8c (git archive, konkordancia az ágéval junctionnel: a main csak a KJV_Strongs_teljes.tsv-vel és README-vel tér el, a generátor ezeket nem olvassa) | ts=2026-09-30
-# eredmény: ISTENTISZT-001_TUDOMANYOS.md (az LD001–LD004 renderje) bájtra azonos; +61 eltérő LXX-sor (ALVIL 3, HAMART 28, HODIT 18, KIRALY 4, MENNY 4, TEREMT 4); a TORZSCIKK-eltérések a main F19-es adat/szotar_szerepek.tsv-sorából jönnek (nem F08)
-ALVIL-001_TORZSCIKK.md: -2/+2 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
-    -| Versenkénti jelentés | UBS DNTG (szópozícióig); KJV angol szószintű híd (konkordancia/KJV_Strongs_teljes.tsv, F19, javaslat-állapotú; az eBible-ASV forráshibás, nincs a repóban, l. DT19/ELLENOR_F19) | UBS DBH; BSB ang
-    +| Versenkénti jelentés | UBS DNTG (szópozícióig) | UBS DBH; BSB angol szószintű híd (konkordancia/BSB_Strongs.tsv, F16; csak a 31 importált ÓSZ-könyv, ÚSZ szándékosan nincs, a görög réteg a Macula (#87)) |
-    -| G0086 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    +| G0086 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-ALVIL-001_TUDOMANYOS.md: -6/+8 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
+# F8.10 (DT23 (d)) nulla-diff igazolás, a MERGE-ELT állapoton — python eszkozok/f08/f08_nulladiff.py <ág_kimenet> <main_kimenet>
+# proveniencia: scope=lexikon+torzscikk (8 motívum, 16 fájl) | forras=general.py --cel lexikon és --cel torzscikk --kimenet (repón kívül, scratchpad): ág = claude/lxx-dontesek de1bbd0 (origin/main beolvasztva, F8.9) + az F8.10 munkafa-változásai (git stash create, git archive, teljes) vs. origin/main aaf0b8c (git archive, teljes) | ts=2026-10-01
+# eredmény: ISTENTISZT-001_TUDOMANYOS.md (az LD001–LD004 renderje) -0/+0, soronként azonos; a 8 TORZSCIKK -0/+0; az eltérés csak az LXX-blokk sorai (+61 „eltérő”, -67 „kutatói azonosítás függőben”, 6 összesítő sor) és a forráslista (+adat/lxx_dontesek.tsv az lxx- és kolofon-blokk fejlécében és forráslistájában; KIRALY-001-ben egy üres sor áthelyeződik)
+ALVIL-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+ALVIL-001_TUDOMANYOS.md: -6/+8 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
     -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#lxx | forrás: konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_
     +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/1-samuel.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/amos
     +- `adat/lxx_dontesek.tsv` (projekt-adat)
     -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkord
     +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ALVIL-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat
     +| `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | projekt-adat | lxx |
-ANTROP-001_TORZSCIKK.md: -3/+3 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
-    -| Versenkénti jelentés | UBS DNTG (szópozícióig); KJV angol szószintű híd (konkordancia/KJV_Strongs_teljes.tsv, F19, javaslat-állapotú; az eBible-ASV forráshibás, nincs a repóban, l. DT19/ELLENOR_F19) | UBS DBH; BSB ang
-    +| Versenkénti jelentés | UBS DNTG (szópozícióig) | UBS DBH; BSB angol szószintű híd (konkordancia/BSB_Strongs.tsv, F16; csak a 31 importált ÓSZ-könyv, ÚSZ szándékosan nincs, a görög réteg a Macula (#87)) |
-    -| G4151 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    -| G5590 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    +| G4151 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    +| G5590 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-ANTROP-001_TUDOMANYOS.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
-HAMART-001_TORZSCIKK.md: -6/+6 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
-    -| Versenkénti jelentés | UBS DNTG (szópozícióig); KJV angol szószintű híd (konkordancia/KJV_Strongs_teljes.tsv, F19, javaslat-állapotú; az eBible-ASV forráshibás, nincs a repóban, l. DT19/ELLENOR_F19) | UBS DBH; BSB ang
-    +| Versenkénti jelentés | UBS DNTG (szópozícióig) | UBS DBH; BSB angol szószintű híd (konkordancia/BSB_Strongs.tsv, F16; csak a 31 importált ÓSZ-könyv, ÚSZ szándékosan nincs, a görög réteg a Macula (#87)) |
-    -| G1311 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    -| G1944 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    -| G2671 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    -| G5351 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    -| G5356 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    +| G1311 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    +| G1944 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    +| G2671 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    +| G5351 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    +| G5356 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-HAMART-001_TUDOMANYOS.md: -31/+33 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
+ANTROP-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+ANTROP-001_TUDOMANYOS.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+HAMART-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+HAMART-001_TUDOMANYOS.md: -31/+33 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
     -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#lxx | forrás: konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordanc
     +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/h
     +- `adat/lxx_dontesek.tsv` (projekt-adat)
     -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkor
     +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, ada
     +| `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | projekt-adat | lxx |
-HODIT-001_TORZSCIKK.md: -1/+1 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
-    -| Versenkénti jelentés | UBS DNTG (szópozícióig); KJV angol szószintű híd (konkordancia/KJV_Strongs_teljes.tsv, F19, javaslat-állapotú; az eBible-ASV forráshibás, nincs a repóban, l. DT19/ELLENOR_F19) | UBS DBH; BSB ang
-    +| Versenkénti jelentés | UBS DNTG (szópozícióig) | UBS DBH; BSB angol szószintű híd (konkordancia/BSB_Strongs.tsv, F16; csak a 31 importált ÓSZ-könyv, ÚSZ szándékosan nincs, a görög réteg a Macula (#87)) |
-HODIT-001_TUDOMANYOS.md: -21/+23 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
+HODIT-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+HODIT-001_TUDOMANYOS.md: -21/+23 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
     -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#lxx | forrás: konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/genesis.tsv, konkor
     +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/2-samuel.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX
     +- `adat/lxx_dontesek.tsv` (projekt-adat)
     -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkorda
     +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HODIT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, konkordancia/Ka
     +| `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | projekt-adat | lxx |
-ISTENTISZT-001_TORZSCIKK.md: -2/+2 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
-    -| Versenkénti jelentés | UBS DNTG (szópozícióig); KJV angol szószintű híd (konkordancia/KJV_Strongs_teljes.tsv, F19, javaslat-állapotú; az eBible-ASV forráshibás, nincs a repóban, l. DT19/ELLENOR_F19) | UBS DBH; BSB ang
-    +| Versenkénti jelentés | UBS DNTG (szópozícióig) | UBS DBH; BSB angol szószintű híd (konkordancia/BSB_Strongs.tsv, F16; csak a 31 importált ÓSZ-könyv, ÚSZ szándékosan nincs, a görög réteg a Macula (#87)) |
-    -| G1941 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    +| G1941 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-ISTENTISZT-001_TUDOMANYOS.md: -0/+0 sor; LD001-004 igehely-sorai: 5 vs 5, azonos
-KIRALY-001_TORZSCIKK.md: -4/+4 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
-    -| Versenkénti jelentés | UBS DNTG (szópozícióig); KJV angol szószintű híd (konkordancia/KJV_Strongs_teljes.tsv, F19, javaslat-állapotú; az eBible-ASV forráshibás, nincs a repóban, l. DT19/ELLENOR_F19) | UBS DBH; BSB ang
-    +| Versenkénti jelentés | UBS DNTG (szópozícióig) | UBS DBH; BSB angol szószintű híd (konkordancia/BSB_Strongs.tsv, F16; csak a 31 importált ÓSZ-könyv, ÚSZ szándékosan nincs, a görög réteg a Macula (#87)) |
-    -| G0282 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    -| G0813 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    -| G5010 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    +| G0282 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    +| G0813 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    +| G5010 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-KIRALY-001_TUDOMANYOS.md: -8/+10 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
+ISTENTISZT-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+ISTENTISZT-001_TUDOMANYOS.md: -0/+0 sor; LD001-004 igehely-sorai: 5 vs 5, soronként azonos
+KIRALY-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+KIRALY-001_TUDOMANYOS.md: -8/+10 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
     -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#lxx | forrás: konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv | licenc: CC
     +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zec
     -
@@ -75,26 +39,20 @@ KIRALY-001_TUDOMANYOS.md: -8/+10 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
     -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkor
     +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#KIRALY-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, ada
     +| `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | projekt-adat | lxx |
-MENNY-001_TORZSCIKK.md: -1/+1 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
-    -| Versenkénti jelentés | UBS DNTG (szópozícióig); KJV angol szószintű híd (konkordancia/KJV_Strongs_teljes.tsv, F19, javaslat-állapotú; az eBible-ASV forráshibás, nincs a repóban, l. DT19/ELLENOR_F19) | UBS DBH; BSB ang
-    +| Versenkénti jelentés | UBS DNTG (szópozícióig) | UBS DBH; BSB angol szószintű híd (konkordancia/BSB_Strongs.tsv, F16; csak a 31 importált ÓSZ-könyv, ÚSZ szándékosan nincs, a görög réteg a Macula (#87)) |
-MENNY-001_TUDOMANYOS.md: -7/+9 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
-    -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#lxx | forrás: konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/numbers.tsv | licenc: CC BY 4.0, projekt-adat | ts=2026-09-30 
+MENNY-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+MENNY-001_TUDOMANYOS.md: -7/+9 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+    -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#lxx | forrás: konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/numbers.tsv | licenc: CC BY 4.0, projekt-adat | ts=2026-10-01 
     +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/job-lxx.tsv, konkordancia/LXX_OS/numbers.tsv | licenc: CC BY 4.0, projek
     +- `adat/lxx_dontesek.tsv` (projekt-adat)
     -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/motivumok.tsv, konkordancia/Karoli_1908.tsv, konkorda
     +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#MENNY-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, konkordancia/Ka
     +| `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | projekt-adat | lxx |
-TEREMT-001_TORZSCIKK.md: -2/+2 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
-    -| Versenkénti jelentés | UBS DNTG (szópozícióig); KJV angol szószintű híd (konkordancia/KJV_Strongs_teljes.tsv, F19, javaslat-állapotú; az eBible-ASV forráshibás, nincs a repóban, l. DT19/ELLENOR_F19) | UBS DBH; BSB ang
-    +| Versenkénti jelentés | UBS DNTG (szópozícióig) | UBS DBH; BSB angol szószintű híd (konkordancia/BSB_Strongs.tsv, F16; csak a 31 importált ÓSZ-könyv, ÚSZ szándékosan nincs, a görög réteg a Macula (#87)) |
-    -| G0012 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-    +| G0012 | TBESG | Thayer | nincs adatosítva | UBS DNTG (Louw–Nida) | UBS DNTG glossza + referencia-szám; Mounce kiegészítő | az ÚSZ-szó LXX-háttere: mely héber szavakat ad vissza, mely versekben (lekerdez.py lxx-hid, LX
-TEREMT-001_TUDOMANYOS.md: -7/+9 sor; LD001-004 igehely-sorai: 0 vs 0, azonos
+TEREMT-001_TORZSCIKK.md: -0/+0 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
+TEREMT-001_TUDOMANYOS.md: -7/+9 sor; LD001-004 igehely-sorai: 0 vs 0, soronként azonos
     -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#lxx | forrás: konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LX
     +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/amos.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/ezeki
     +- `adat/lxx_dontesek.tsv` (projekt-adat)
     -<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/motivumok.tsv, konkor
     +<!-- GENERÁLT-KEZDET: general.py --cel lexikon#TEREMT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, ada
     +| `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | projekt-adat | lxx |
-osszes diff-sor: 214
+osszes diff-sor: 172
