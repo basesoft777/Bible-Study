@@ -10,11 +10,11 @@ ad: a tanulmányokat CI (E17–E22) és a fuggetlen-ellenor ügynök ellenőrzi;
 kovetkezo: /kovetkezo; ⛔ a T0 után (nincs Strong-jelölt eredeti szöveg vagy SzPA-korlát) és a T2 után (az alap tanulmányok sorsa)
 olvas: [sablonok/, genezis/, ujszovetseg/, tematikus_lezart/, konkordancia/, adat/, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, CLAUDE.md]
 ir: [sablonok/, CLAUDE.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/]
-fugg: [23, 26, 30, 32]
+fugg: [30, 32]
 ---
 # TANULMANY_ELLENORZES_BRIEF.md
 
-*v1 · 2026.10.01 · FELADATOK #?? (új sor, chat-jóváhagyással) · függ: #2 (CI) merge-e · ág: `claude/tanulmany-ellenorzes`*
+*v1 · 2026.10.01 · FELADATOK #37 (új sor, chat-jóváhagyással) · függ: #2 (CI) merge-e · ág: `claude/tanulmany-ellenorzes`*
 
 ## Cél
 
@@ -108,17 +108,17 @@ Az 1–6. pontot futtasd végig a meglévő tanulmányokon. Kimenet: `naplok/TAN
 ## Nyitó prompt (Code)
 
 <!-- KOZVETLEN_FUTTATAS -->
-> Olvasd el a `TANULMANY_ELLENORZES_BRIEF.md`-t és a `CLAUDE.md`-t. Hajtsd végre a T0–T6 lépéseket sorrendben, a `claude/tanulmany-ellenorzes` ágon. A ⛔ pontokon állj meg, és jelentsd, mire vársz. A döntésszámoknál helyőrzőt használj (`DT-F<nn>`). Az utolsó commit frissítse a `FELADATOK.md` saját sorát.
+> Olvasd el a `TANULMANY_ELLENORZES_BRIEF.md`-t és a `CLAUDE.md`-t. Hajtsd végre a T0–T6 lépéseket sorrendben, a `claude/tanulmany-ellenorzes` ágon. A ⛔ pontokon állj meg, és jelentsd, mire vársz. A döntésszámoknál helyőrzőt használj (`DT-F37`). Az utolsó commit frissítse a `FELADATOK.md` saját sorát.
 <!-- /KOZVETLEN_FUTTATAS -->
 
 ## Döntésnapló
 
 | # | Döntés | Indok | Elvetett alternatíva |
 |---|---|---|---|
-| DT-F<nn>-1 | Nincs alap tanulmány; a bővített neve „tanulmány” | felhasználói döntés (10.01) | két szint fenntartása |
-| DT-F<nn>-2 | Tanulmány nem kötegelhető, egy tanulmány egy menet | felhasználói döntés (10.01); a kontextus egyben marad | soros vagy párhuzamos köteg |
-| DT-F<nn>-3 | A CI csak az új vagy módosított tanulmányra kötelező, a régiekre jelentés mód | különben a régi fájlok miatt minden PR piros lenne | minden tanulmányra kötelező |
-| DT-F<nn>-4 | A magyar szó és a Strong-szám ellenőrzése függő a #22-ig | nincs párosítás; a zárt forrás adata nem kerülhet a repóba | ellenőrzés a zárt forrásból (licenc miatt elvetve) |
-| DT-F<nn>-5 | A régi tanulmányok javítása külön feladat | a brief ne duzzadjon; a felhasználó dönt a javítás köréről | javítás az auditban |
-| DT-F<nn>-6 | Az E17 a szakaszlistát a sablonból olvassa | sablonváltozáskor ne kelljen kódot módosítani | beégetett lista |
-| DT-F<nn>-7 | Az alap tanulmányok sorsa a T2 ⛔-pontjában dől el | előbb látni kell, van-e bennük átvezetendő tartalom | előzetes archiválás vagy törlés |
+| DT-F37-1 | Nincs alap tanulmány; a bővített neve „tanulmány” | felhasználói döntés (10.01) | két szint fenntartása |
+| DT-F37-2 | Tanulmány nem kötegelhető, egy tanulmány egy menet | felhasználói döntés (10.01); a kontextus egyben marad | soros vagy párhuzamos köteg |
+| DT-F37-3 | A CI csak az új vagy módosított tanulmányra kötelező, a régiekre jelentés mód | különben a régi fájlok miatt minden PR piros lenne | minden tanulmányra kötelező |
+| DT-F37-4 | A magyar szó és a Strong-szám ellenőrzése függő a #22-ig | nincs párosítás; a zárt forrás adata nem kerülhet a repóba | ellenőrzés a zárt forrásból (licenc miatt elvetve) |
+| DT-F37-5 | A régi tanulmányok javítása külön feladat | a brief ne duzzadjon; a felhasználó dönt a javítás köréről | javítás az auditban |
+| DT-F37-6 | Az E17 a szakaszlistát a sablonból olvassa | sablonváltozáskor ne kelljen kódot módosítani | beégetett lista |
+| DT-F37-7 | Az alap tanulmányok sorsa a T2 ⛔-pontjában dől el | előbb látni kell, van-e bennük átvezetendő tartalom | előzetes archiválás vagy törlés |
