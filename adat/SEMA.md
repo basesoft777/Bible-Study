@@ -8,7 +8,7 @@ Ez a réteg a **kanonikus igazságforrás**. A `tematikus_lezart/`, `genezis/`, 
 és `lexikon/` kimenetei ebből generálódnak vagy ehhez igazodnak. Ha egy tény itt és egy
 markdown-fájlban ellentmond, **ez a tábla az irányadó**.
 
-A nyolc tábla és a hozzájuk tartozó kulcs:
+A kilenc tábla és a hozzájuk tartozó kulcs:
 
 | Fájl | Kulcs | Ki írja |
 |---|---|---|
@@ -847,7 +847,7 @@ legfeljebb tükör, és ha ellentmond, **ez a tábla az irányadó**. (A `lexiko
 `LICENC`-konstansához és a `TISZTAZATLAN_SZOTARAK`-hoz az F24 nem nyúlt; az átállás az N9
 lezárása, l. lent.)
 
-Kulcs: `dataset`. Fejlécsorok `#`-tel; olvasás `split('	')`.
+Kulcs: `dataset`. Fejlécsorok `#`-tel; olvasás `split('\t')`.
 
 | Mező | Értékkészlet |
 |---|---|
