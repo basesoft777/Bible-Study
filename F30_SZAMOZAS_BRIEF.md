@@ -11,6 +11,7 @@ kovetkezo: a helyőrző-Action és a CI-szabály megírása, a DT18 átszámozá
 fugg: [8, 16, 17]
 olvas: [DONTESEK.md, NYITOTT_FELADATOK.md, FELADATOK.md, CLAUDE.md, .github/workflows/, eszkozok/feladatok.py]
 ir: [.github/workflows/szamkiosztas.yml, eszkozok/szamkiosztas.py, eszkozok/ellenorzes/szabalyok.py, DONTESEK.md, NYITOTT_FELADATOK.md, CLAUDE.md, BRIEF_SABLON.md]
+nem_fugg: [22]
 ---
 
 # Döntés- és N-számok kiosztása merge-kor

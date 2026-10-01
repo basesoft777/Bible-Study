@@ -55,7 +55,9 @@ KOTELEZO = {
 
 # 4. pont: kozos koordinacios fajlok -- sem fuggest, sem utkozest nem okoznak
 KOZOS_FAJLOK = ('FELADATOK.md', 'DONTESEK.md', 'NYITOTT_FELADATOK.md',
-                'adat/szotar_szerepek.tsv')
+                'adat/szotar_szerepek.tsv',
+                # regiszterfajlok: minden menet csak a sajat sorat irja (rebase)
+                'adat/SEMA.md', 'adat/datasetek.tsv', 'adat/licencek.tsv')
 
 MARKER_KEZDET = '<!-- GENERÁLT-KEZDET: feladatok.py --cel %s -->'
 MARKER_VEGE = '<!-- GENERÁLT-VÉGE: feladatok.py --cel %s -->'

@@ -11,6 +11,7 @@ kovetkezo: /kovetkezo; külön ⛔ nincs, a tisztázatlan tételek összesítve 
 olvas: [konkordancia/, adat/datasetek.tsv, adat/szotar_szerepek.tsv, eszkozok/general.py, Rendszerfejlesztesi_playbook.md]
 ir: [adat/licencek.tsv, adat/SEMA.md]
 fugg: []
+nem_fugg: [22]
 ---
 
 # F<nn>_LICENC_BRIEF.md — Forrásaink licencének átnézése
