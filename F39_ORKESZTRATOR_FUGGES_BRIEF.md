@@ -5,9 +5,9 @@ kod: ORKESZTRATOR_FUGGES
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: dontesre_var
+allapot: fut
 ad: a közös írási útvonalból kizárás lesz, nem sorrend; nincs több levezetett kör; a halasztott, brief nélküli és 2. fázisú feladat nem tart vissza 1. fázisú feladatot; a /kovetkezo újra ad jelöltet (várhatóan #35, #38, #23)
-kovetkezo: "M3 folyamatban (kovetkezo.md, DONTESEK, próbafuttatás kész), majd fuggetlen-ellenor és draft PR"
+kovetkezo: "F39.3: az ellenőri javítások kész, következik a fuggetlen-ellenor 2. kör és a draft PR; a #32 a #39 lezárásáig nem indul"
 olvas: [eszkozok/feladatok.py, .claude/commands/kovetkezo.md, .claude/commands/befogad.md, BRIEF_SABLON.md, FELADATOK.md, DONTESEK.md]
 ir: [eszkozok/feladatok.py, eszkozok/tesztek/test_feladatok_fugges.py, eszkozok/teszt_feladatok.py, .claude/commands/kovetkezo.md, DONTESEK.md, naplok/ELLENOR_ORKFUGG.md]
 fugg: []

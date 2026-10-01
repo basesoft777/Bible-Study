@@ -157,6 +157,22 @@ class SzabalyTest(Fixture):
         self.assertIn('kölcsönös függés: #1 ↔ #2', szoveg)
         self.assertEqual(self.hibak(), [])
 
+    def test_explicit_fugg_nem_valik_kizarra(self):
+        # a 1 explicit függ a 2-től, és a 2 levezetetten olvassa az 1 kimenetét is
+        self.brief(1, fugg=[2], olvas=['adat/b.tsv'], ir=['adat/a.tsv'])
+        self.brief(2, olvas=['adat/a.tsv'], ir=['adat/b.tsv'])
+        fugg, kizar, _, _ = self.fugg()
+        self.assertIn(2, fugg[1])           # az explicit él marad sorrendi
+        self.assertEqual(kizar, [])
+        self.assertTrue(any('függési kör' in u for _, u in self.hibak()))
+
+    def test_kolcsonos_par_plusz_kozvetett_el_kor(self):
+        # 1↔2 kölcsönös, de 1→3 és 3→2 is: a háromtagú kör hiba marad
+        self.brief(1, olvas=['adat/b.tsv', 'adat/c.tsv'], ir=['adat/a.tsv'])
+        self.brief(2, olvas=['adat/a.tsv'], ir=['adat/b.tsv'])
+        self.brief(3, olvas=['adat/b.tsv'], ir=['adat/c.tsv'])
+        self.assertTrue(any('függési kör' in u for _, u in self.hibak()))
+
     def test_harmas_kor_hiba(self):
         self.brief(1, olvas=['adat/b.tsv'], ir=['adat/a.tsv'])
         self.brief(2, olvas=['adat/c.tsv'], ir=['adat/b.tsv'])
