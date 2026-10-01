@@ -211,3 +211,19 @@ Minta: `python eszkozok/emeles.py minta --seed 28` → G4151, G0282, H7585, H800
 miatt a PR címe „[ELLENŐRZŐ]” előtagot kíván; (2) az `adat/SEMA.md` módosult (F28.10,
 F28.11), és a CI E9 a fájl **korábbi** 235–236. sorában álló angol „sense” szóra HIBA-t
 ad (nem ennek a menetnek a sora).
+
+## DT25 alkalmazása, E6, E7, zárás (F28.24–F28.29)
+
+- **F28.24 `defb80e`:** a szúrópróba 5 sora `kezi` (a G0282 terminológia-kivétele
+  megmaradt); a H1121 szóközjavítása (DT25 (c)).
+- **F28.25 `a85c855`:** `adat/terminologia.tsv` v2 (Holy Spirit → Szent Szellem, Spirit of
+  God → Isten Szelleme, the Spirit → a Szellem); 12. kapu (Szentlélek / Isten Lelke →
+  JELZÉS), 13. kapu (a könyv fejezetszámánál nagyobb fejezet → JELZÉS; a BDB ψ-hibája 5
+  szócikkben). Szentlélek-lista: `naplok/EMELES_szentlelek_lista.tsv` (9 hely, csak lista).
+- **F28.26 `85c15ac`:** `lekerdez.py` — a „Sir” a JSir álneve olvasáskor (a rögzített
+  `tsk "Sir 2:8"` proveniencia újrafuttatva n=15, egyezik); a TAHOT saját „Sir” igehelyei
+  is így illeszkednek.
+- **F28.27 `258d385` (E6):** CI E19 + tesztek (54/54 zöld; a jelenlegi adaton 0 találat).
+- **F28.28 `0d66b8d` (E7):** MUNKAMENET C0 ⛔ sor; az `emeles.py lista` kész-feltétele:
+  `kezi`/`opus` `teljes` sor a jelenlegi forrás-hash-sel (40/40 kész).
+- **Zárás:** DONTESEK DT25 ✅, DT26 nyitva; `naplok/F28_zaras.md`; brief: `lezarva`.

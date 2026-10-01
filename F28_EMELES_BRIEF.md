@@ -5,14 +5,15 @@ kod: EMELES
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: dontesre_var
+allapot: lezarva
 ad: a lexikonba kerülő minden Strong-szám teljes Thayer- vagy BDB-szócikke magyarul (allapot opus, szúrópróbával kezi) az adat/forditasok.tsv-ben; közös javítóréteg és fordítási kapuk; CI-őr; az emelés mint munkafolyamat-lépés
-kovetkezo: Te: ⛔ E5 — a szúrópróba 5 szócikkének jóváhagyása (G4151, G0282, H7585, H8004, H8415; >20% kifogás = prompttétel), a terminológia beírásának módja, a H1121 hiányzó szóköze, a régi Sir-hivatkozások (DONTESEK.md DT25); napló: naplok/EMELES_szuroproba.md. Utána: E6 CI-őr, E7 MUNKAMENET, záró tétel, fuggetlen-ellenor
+kovetkezo: lezárva; nyitott: DT26 (terminológia soronként, feladatjelöltek)
 olvas: [adat/elofordulasok.tsv, adat/lexikon_hivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/BDB_teljes_unabridged.tsv, fp2/, eszkozok/fordit.py]
 ir: [adat/forditasok.tsv, adat/terminologia.tsv, forditas/prompt_v4.md, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, MUNKAMENET.md, .github/workflows/]
 fugg: []
 ag: claude/magical-goldberg-4xb1a0
 nem_fugg: [27]
+lezarva_osszegzes: 39 Thayer/BDB szócikk teljes fordítása (10 kezi, 29 opus), kapuk + javítóréteg, CI E19, MUNKAMENET C0; zárás naplok/F28_zaras.md (10.01)
 ---
 
 # F<nn>_EMELES_BRIEF.md — A lexikon szótári szócikkeinek Opus-fordítása

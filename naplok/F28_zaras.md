@@ -1,0 +1,9 @@
+# F28 EMELES — zárójelentés (2026.10.01)
+
+- **Eredmény:** a lexikon mind a 39 Thayer/BDB szócikke (a brief szövege szerinti halmaz, DT24 (c)) teljes magyar fordítással áll az `adat/forditasok.tsv`-ben: 10 `kezi` (első adag + szúrópróba, DT24/DT25) és 29 `opus`; a G1941 korábbi `kezi` sora maradt. Bukott nincs. Fordító: a menet maga (Opus), subagent-eszköz nem volt (`naplok/EMELES_naplo.md`).
+- **Eszközök:** `eszkozok/emeles.py` (lista, prompt, helyőrző, ellenőriz, rögzít, beír, minta, naplónézet), `forditas/prompt_v4.md`, `eszkozok/normalizal.py` (22 teszt), `eszkozok/forditas_kapuk.py` (13 kapu; tesztek: `teszt_forditas_kapuk.py`).
+- **Ellenőrző-módosítások (a fuggetlen-ellenor külön nézze):** F28.10 `f540c0e` — `ellenoriz.py` 13. szabály + SEMA 2.14 `opus` (`teszt_ellenoriz_13.py`, 4 negatív eset); F28.27 `258d385` — CI E19 (`tesztek/test_szabalyok.py` E19Teszt, direkt hiányzó sor → HIBA).
+- **Döntések alkalmazva:** DT24 (Lam → JSir, 11. kapu, a H7121 2.c/3 cseréje), DT25 (szúrópróba `kezi`, terminológia v2 Szent Szellem, H1121 szóköz, `lekerdez.py` Sir-álnév + teszt). Nyitott: DT26 (terminológia soronként, feladatjelöltek).
+- **K1–K5:** K1 ✓ (tesztek zöldek, kapuk lefutottak); K2 ✓ (`emeles.py lista`: 40/40 kész); K3 ✓ (DT24, DT25); K4: E19 a jelenlegi adaton 0 találat, a tesztesetén HIBA — a `main`-en a merge után zöld kell legyen; K5: MUNKAMENET C0 bent, DT26 nyitva, a fuggetlen-ellenor jelentése a koordinátornál.
+- **A PR-hez:** cím `[ELLENŐRZŐ]` előtaggal (E16: `ellenoriz.py`, `eszkozok/ellenorzes/`). Az `adat/SEMA.md` korábbi 235–236. sorának E9-találata („sense”) nem ehhez a menethez tartozik (a D8 szerint a nem érintett sor csak JELENTÉS).
+- **Feladatjelöltek (`/befogad`, nem vettem fel):** BDB „ψ”-feloldási hiba (13. kapu jelzései); a régi „Sir” hivatkozások migrálása; az éles `lexikon/` újragenerálása. „Szentlélek”/„Isten Lelke”: 9 hely, csak lista (`naplok/EMELES_szentlelek_lista.tsv`).
