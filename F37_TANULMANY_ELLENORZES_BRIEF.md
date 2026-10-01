@@ -9,7 +9,7 @@ allapot: nem_indult
 ad: a tanulmányokat CI (E20–E24, a T0 szerint) és a fuggetlen-ellenor ügynök ellenőrzi; a régi tanulmányokról két auditjelentés készül
 kovetkezo: /kovetkezo; ⛔ a T0 után (nincs Strong-jelölt eredeti szöveg, vagy az SzPA kötelező szakasz a Tanulmány sablonban) és a T2 után (az alap tanulmányok sorsa)
 olvas: [sablonok/, genezis/, ujszovetseg/, tematikus_lezart/, konkordancia/, adat/, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, CLAUDE.md]
-ir: [sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, MUNKAMENET.md, adat/SEMA.md, ATALAKITASI_TERV.md.md, Join_tabla_folyamat_magyarazat.md, CLAUDE.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/]
+ir: [sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, MUNKAMENET.md, adat/SEMA.md, ATALAKITASI_TERV.md.md, Join_tabla_folyamat_magyarazat.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/]
 fugg: [30, 32]
 ---
 # TANULMANY_ELLENORZES_BRIEF.md
@@ -24,6 +24,7 @@ Egy tanulmány egy menetben készül. Minden új tanulmányt két szereplő elle
 
 - Alap tanulmány nincs többé. A bővített tanulmány neve mostantól „tanulmány”, a sablon neve „Tanulmány sablon”.
 - Tanulmányokat nem kötegelünk: egy tanulmány egy menet.
+- Az SzPA a projektből kivezetve (2026.10.01).
 - Károli–Strong párosítás még nincs (#22). A zárt licencű forrás adata nem kerülhet a repóba.
 
 ## Nem tartozik ide
@@ -45,12 +46,15 @@ Mérd fel, és írd a `naplok/T0_felmeres.md` fájlba:
 - a Strong-számmal jelölt eredeti szöveget a repóban (héber, illetve görög/LXX), fájlnévvel és lefedettséggel;
 - a szótári réteget (TBESH, TBESG), fájlnévvel;
 - van-e még SzPA-szakasz vagy SzPA-hivatkozás a Tanulmány sablonban, a `CLAUDE.md`-ben vagy a `MUNKAMENET.md`-ben (az SzPA kivezetésre került); ha van, jelentsd, de ne javítsd.
+- az `ATALAKITASI_TERV.md.md` dupla kiterjesztését jelentsd, javítás nélkül, utófeladat-javaslatként.
 
 ⛔ Ha nincs Strong-jelölt eredeti szöveg: állj meg, és jelentsd. Ugyanígy állj meg, ha az SzPA kötelező szakaszként szerepel a Tanulmány sablonban, mert az E20 szakaszellenőrző szabály a szakaszlistát ebből olvassa. Más SzPA-előfordulás miatt nem kell megállni, azt csak jelentsd.
 
 ### T1 — átnevezés
 
-A „Bővített sablon” nevet írd át „Tanulmány sablon”-ra minden élő hivatkozásban: sablonfájl, `CLAUDE.md`, briefek, ügynökdefiníció. A lezárt naplókat és a git-történetet ne írd át. Az alap sablont ne töröld, csak jelöld elavultnak (a sorsát a T2 döntése rendezi).
+A „Bővített sablon” nevet írd át „Tanulmány sablon”-ra minden élő hivatkozásban: sablonfájl, briefek, ügynökdefiníció. A lezárt naplókat és a git-történetet ne írd át. Az alap sablont ne töröld, csak jelöld elavultnak (a sorsát a T2 döntése rendezi).
+
+A T1 a futáskori `main`-en fut. A vele ütköző nyitott ágak (#9 `MUNKAMENET.md`, #23 `adat/SEMA.md`) a saját merge-ükkor igazodnak az átnevezéshez.
 
 ### T2 — alap tanulmányok összevetése (csak olvas)
 
@@ -123,4 +127,4 @@ Az 1–6. pontot futtasd végig a meglévő tanulmányokon. Kimenet: `naplok/TAN
 | DT-F37-5 | A régi tanulmányok javítása külön feladat | a brief ne duzzadjon; a felhasználó dönt a javítás köréről | javítás az auditban |
 | DT-F37-6 | Az E20 a szakaszlistát a sablonból olvassa | sablonváltozáskor ne kelljen kódot módosítani | beégetett lista |
 | DT-F37-7 | Az alap tanulmányok sorsa a T2 ⛔-pontjában dől el | előbb látni kell, van-e bennük átvezetendő tartalom | előzetes archiválás vagy törlés |
-| DT-F37-8 | A T3 számozása E20-tól indul (a T0 szerint); a tervezett szabályokat előbb össze kell vetni a meglévő E1–E19-cel, és átfedésnél a meglévő szabály hatóköre bővül, új nem készül; az SzPA-ellenőrzés kikerül | az E17–E19 már foglalt a `szabalyok.py`-ban; az SzPA a projektből kivezetésre került | E17–E22 új szabályokkal, SzPA-idézet-hosszkorláttal |
+| DT-F37-8 | Nincs duplikált CI-szabály; átfedésnél a meglévő szabály hatóköre bővül, ezért a számozás E20-tól indul, a T0 szerint | az E17–E19 már foglalt a `szabalyok.py`-ban | E17–E22 új szabályokkal |
