@@ -1,0 +1,4 @@
+# F21 regresszio (P3c) - 1. trigger: F3V3 (C, prompt_v3, 200 vers); plafon_usd=3.90 (kumulativ), kemeny plafon 4 USD
+futasok=F3V3
+koteg_max=mind
+plafon_usd=3.90
