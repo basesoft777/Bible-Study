@@ -1,0 +1,297 @@
+# GENERÁLT: eszkozok/karoli_strong/elopar_kjv.py | scope=f21p, a KJV-szabály ("nincs KJV-tag → forditatlan-jelölt") mérése (kísérlet) az arany v3 60 versén, rétegenként (f21p/minta.tsv); A) önállóan, B) az előpárosítással együtt; R1-kontroll a régi táblával; C-összevetés: F3V2, F3V2B, F3V3 | forras=konkordancia/KJV_Strongs_teljes.tsv (sha256 5a7891145401aa62dd8aac31d0192eecb112daf780461279a84912fe40826a2e), konkordancia/KJV_Strongs_{Genesis,Exodus,Proverbs}.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, f21p/arany_opus_v3.jsonl (sha256 acdeb55f969c96feaa256f5384867c44320c7ad11e1b44b5db529d7543d8d458; csak mérce), f21p/meres_kizaras.tsv, f21p/minta.tsv, f21p/szotar_elopar.tsv (csak B), f21p/valaszok/F3V2.jsonl, F3V2B.jsonl, F3V3.jsonl (csak C-összevetés), konkordancia/Karoli_1908.tsv, TAHOT_kivonat.tsv, TAGNT_kivonat.tsv | ts=2026-10-01T07:21:27+00:00 | kísérlet, nem minősítés a döntési szabály szerint; kézzel szerkeszteni tilos
+szakasz	osszeallitas	reteg	mero	szamlalo	nevezo	ertek	wilson90_alsó	wilson90_felső	megjegyzes
+alap	KJV-szabály	R1	arany_versek	20		20			a mérésben részt vevő aranyversek (rétegben)
+alap	KJV-szabály	R1	versek_kjv_sorral (teljes tábla)	20	20	1			a Károli → KJV megfeleltetéssel KJV-sort kapó versek
+alap	KJV-szabály	R1	versek_nincs_kjv_sor	0	20	0			itt a szabály nem alkalmazható (nincs KJV-sor, nem „nincs KJV-tag”)
+alap	KJV-szabály	R1	eredeti_szo (kizárások nélkül)	309		309			
+alap	KJV-szabály	R1	eredeti_szo a KJV-soros versekben	309	309	1			
+allapot	KJV-szabály	R1	állapot: nincs_kjv_sor	0	309	0			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R1	állapot: nem_tr	0	309	0			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R1	állapot: kizart_nyelvtani	111	309	0.359223			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R1	állapot: van_kjv_tag	150	309	0.485437			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R1	állapot: nincs_kjv_tag	48	309	0.15534			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R1	jelolt_arany_szerint_forditatlan	11	48	0.229167	0.1455	0.3418	a „nincs KJV-tag” jelöltekből forditatlan az aranyban (= A pontossága)
+dontes	KJV-szabály A) önállóan	R1	forditatlan_dontes	48		48			a KJV-szabály forditatlan-döntései
+dontes	KJV-szabály A) önállóan	R1	pontossag (döntés ∩ arany forditatlan / döntés)	11	48	0.229167	0.1455	0.3418	Wilson 90%, szószintű
+dontes	KJV-szabály A) önállóan	R1	hibás döntés, az aranyban kötött (link)	37	37	1			a hibás döntésekből az aranyban magyar szóhoz kötött
+dontes	KJV-szabály A) önállóan	R1	fedes (az arany összes forditatlan-szavából)	11	26	0.423077	0.2785	0.5822	a réteg minden aranyverse; a KJV-sor nélküli versek arany forditatlan-szavai is a nevezőben
+dontes	KJV-szabály A) önállóan	R1	fedes a KJV-soros versekben	11	26	0.423077	0.2785	0.5822	csak a KJV-sorral rendelkező versek arany forditatlan-szavai
+dontes	KJV-szabály A) önállóan	R1	fedes a KJV-soros versek lexikális szavain	11	11	1	0.8026	1.0000	a kizárási lista, a [nem TR] nélkül: amit a szabály elvben eldönthet
+dontes	KJV-szabály B) az előpárosítással együtt	R1	forditatlan_dontes	48		48			a KJV-szabály forditatlan-döntései
+dontes	KJV-szabály B) az előpárosítással együtt	R1	pontossag (döntés ∩ arany forditatlan / döntés)	11	48	0.229167	0.1455	0.3418	Wilson 90%, szószintű
+dontes	KJV-szabály B) az előpárosítással együtt	R1	hibás döntés, az aranyban kötött (link)	37	37	1			a hibás döntésekből az aranyban magyar szóhoz kötött
+dontes	KJV-szabály B) az előpárosítással együtt	R1	fedes (az arany összes forditatlan-szavából)	11	26	0.423077	0.2785	0.5822	a réteg minden aranyverse; a KJV-sor nélküli versek arany forditatlan-szavai is a nevezőben
+dontes	KJV-szabály B) az előpárosítással együtt	R1	fedes a KJV-soros versekben	11	26	0.423077	0.2785	0.5822	csak a KJV-sorral rendelkező versek arany forditatlan-szavai
+dontes	KJV-szabály B) az előpárosítással együtt	R1	fedes a KJV-soros versek lexikális szavain	11	11	1	0.8026	1.0000	a kizárási lista, a [nem TR] nélkül: amit a szabály elvben eldönthet
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R1	versek_kjv_sorral_gyanu_nelkul	20	20	1			arany nélküli vizsgálat: a vers jól címkézett Strongjainak >= 50%-a a KJV-sorban
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R1	forditatlan_dontes	48		48			
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R1	pontossag (döntés ∩ arany forditatlan / döntés)	11	48	0.229167	0.1455	0.3418	Wilson 90%, szószintű
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R1	fedes (az arany összes forditatlan-szavából)	11	26	0.423077	0.2785	0.5822	
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R1	fedes a nem gyanús KJV-soros versekben	11	26	0.423077	0.2785	0.5822	
+utkozes	KJV-szabály	R1	A-döntés, amelyet az előpárosítás linkként döntött el	0	48	0			szótár / K9-link ugyanarra az eredeti szóra (a B ezeket kihagyja)
+utkozes	KJV-szabály	R1	ebből a link az aranyban	0	0				
+utkozes	KJV-szabály	R1	ebből forditatlan az aranyban	0	0				
+utkozes	KJV-szabály	R1	A-döntés, amelyet a K1/K8/K9 forditatlannak döntött	0	48	0			a kizárási lista miatt várhatóan 0
+kombinalt	előpárosítás (F21.60)	R1	egyseg_lefedettseg	44	398	0.110553	0.0873	0.1391	az elopar.py döntései
+kombinalt	előpárosítás (F21.60)	R1	egyseg_pontossag	44	46	0.956522	0.8768	0.9855	
+kombinalt	előpárosítás (F21.60)	R1	forditatlan_lefedettseg	8	26	0.307692	0.1830	0.4687	
+kombinalt	előpárosítás (F21.60)	R1	forditatlan_pontossag	8	10	0.8	0.5408	0.9314	
+kombinalt	előpárosítás + KJV-szabály B)	R1	egyseg_lefedettseg	55	398	0.138191	0.1122	0.1691	az elopar.py döntései + a B) forditatlan-döntései
+kombinalt	előpárosítás + KJV-szabály B)	R1	egyseg_pontossag	55	94	0.585106	0.5003	0.6652	
+kombinalt	előpárosítás + KJV-szabály B)	R1	egyseg_dontott_arany	94	398	0.236181			döntések száma (helyes és hibás) az arany egységszámához mérve
+kombinalt	előpárosítás + KJV-szabály B)	R1	forditatlan_lefedettseg	19	26	0.730769	0.5711	0.8469	
+kombinalt	előpárosítás + KJV-szabály B)	R1	forditatlan_pontossag	19	58	0.327586	0.2359	0.4347	
+c_osszevetes	F3V2 (az A-döntéseken)	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment
+c_osszevetes	F3V2 (az A-döntéseken)	R1	KJV-szabály pontossága (ugyanezeken)	11	48	0.229167	0.1455	0.3418	
+c_osszevetes	F3V2 (az A-döntéseken)	R1	C pontossága (igen/nem egyezik az arannyal)	48	48	1	0.9466	1.0000	a C forditatlan-listája ezeken a szavakon
+c_osszevetes	F3V2 (az A-döntéseken)	R1	C forditatlan-igen pontossága	11	11	1	0.8026	1.0000	ahol a C is forditatlannak jelöli
+c_osszevetes	F3V2B (az A-döntéseken)	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment
+c_osszevetes	F3V2B (az A-döntéseken)	R1	KJV-szabály pontossága (ugyanezeken)	11	48	0.229167	0.1455	0.3418	
+c_osszevetes	F3V2B (az A-döntéseken)	R1	C pontossága (igen/nem egyezik az arannyal)	48	48	1	0.9466	1.0000	a C forditatlan-listája ezeken a szavakon
+c_osszevetes	F3V2B (az A-döntéseken)	R1	C forditatlan-igen pontossága	11	11	1	0.8026	1.0000	ahol a C is forditatlannak jelöli
+c_osszevetes	F3V3 (az A-döntéseken)	R1	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment
+c_osszevetes	F3V3 (az A-döntéseken)	R1	KJV-szabály pontossága (ugyanezeken)	11	48	0.229167	0.1455	0.3418	
+c_osszevetes	F3V3 (az A-döntéseken)	R1	C pontossága (igen/nem egyezik az arannyal)	48	48	1	0.9466	1.0000	a C forditatlan-listája ezeken a szavakon
+c_osszevetes	F3V3 (az A-döntéseken)	R1	C forditatlan-igen pontossága	11	11	1	0.8026	1.0000	ahol a C is forditatlannak jelöli
+regi_teljes	R1-kontroll: régi tábla (Gen/Exo/Pro)	R1	"nincs KJV-tag" jelölt (A-döntés)	47		47			R1-versek: 20
+regi_teljes	R1-kontroll: régi tábla (Gen/Exo/Pro)	R1	pontossag	11	47	0.234043	0.1487	0.3484	
+regi_teljes	R1-kontroll: régi tábla (Gen/Exo/Pro)	R1	fedes	11	26	0.423077	0.2785	0.5822	
+regi_teljes	R1-kontroll: teljes tábla (F19)	R1	"nincs KJV-tag" jelölt (A-döntés)	48		48			R1-versek: 20
+regi_teljes	R1-kontroll: teljes tábla (F19)	R1	pontossag	11	48	0.229167	0.1455	0.3418	
+regi_teljes	R1-kontroll: teljes tábla (F19)	R1	fedes	11	26	0.423077	0.2785	0.5822	
+regi_teljes	R1-kontroll: mindkét tábla szerint jelölt	R1	"nincs KJV-tag" jelölt (A-döntés)	47		47			R1-versek: 20
+regi_teljes	R1-kontroll: mindkét tábla szerint jelölt	R1	pontossag	11	47	0.234043	0.1487	0.3484	
+regi_teljes	R1-kontroll: mindkét tábla szerint jelölt	R1	fedes	11	26	0.423077	0.2785	0.5822	
+regi_teljes	R1-kontroll: csak a régi szerint	R1	"nincs KJV-tag" jelölt (A-döntés)	0		0			R1-versek: 20
+regi_teljes	R1-kontroll: csak a régi szerint	R1	pontossag	0	0				
+regi_teljes	R1-kontroll: csak a régi szerint	R1	fedes	0	26	0	0.0000	0.0943	
+regi_teljes	R1-kontroll: csak a teljes szerint	R1	"nincs KJV-tag" jelölt (A-döntés)	1		1			R1-versek: 20
+regi_teljes	R1-kontroll: csak a teljes szerint	R1	pontossag	0	1	0	0.0000	0.7302	
+regi_teljes	R1-kontroll: csak a teljes szerint	R1	fedes	0	26	0	0.0000	0.0943	
+alap	KJV-szabály	R2	arany_versek	10		10			a mérésben részt vevő aranyversek (rétegben)
+alap	KJV-szabály	R2	versek_kjv_sorral (teljes tábla)	9	10	0.9			a Károli → KJV megfeleltetéssel KJV-sort kapó versek
+alap	KJV-szabály	R2	versek_nincs_kjv_sor	1	10	0.1			itt a szabály nem alkalmazható (nincs KJV-sor, nem „nincs KJV-tag”)
+alap	KJV-szabály	R2	eredeti_szo (kizárások nélkül)	147		147			
+alap	KJV-szabály	R2	eredeti_szo a KJV-soros versekben	137	147	0.931973			
+allapot	KJV-szabály	R2	állapot: nincs_kjv_sor	10	147	0.0680272			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R2	állapot: nem_tr	0	147	0			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R2	állapot: kizart_nyelvtani	48	147	0.326531			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R2	állapot: van_kjv_tag	27	147	0.183673			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R2	állapot: nincs_kjv_tag	62	147	0.421769			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R2	jelolt_arany_szerint_forditatlan	3	62	0.0483871	0.0195	0.1150	a „nincs KJV-tag” jelöltekből forditatlan az aranyban (= A pontossága)
+dontes	KJV-szabály A) önállóan	R2	forditatlan_dontes	62		62			a KJV-szabály forditatlan-döntései
+dontes	KJV-szabály A) önállóan	R2	pontossag (döntés ∩ arany forditatlan / döntés)	3	62	0.0483871	0.0195	0.1150	Wilson 90%, szószintű
+dontes	KJV-szabály A) önállóan	R2	hibás döntés, az aranyban kötött (link)	59	59	1			a hibás döntésekből az aranyban magyar szóhoz kötött
+dontes	KJV-szabály A) önállóan	R2	fedes (az arany összes forditatlan-szavából)	3	10	0.3	0.1269	0.5583	a réteg minden aranyverse; a KJV-sor nélküli versek arany forditatlan-szavai is a nevezőben
+dontes	KJV-szabály A) önállóan	R2	fedes a KJV-soros versekben	3	10	0.3	0.1269	0.5583	csak a KJV-sorral rendelkező versek arany forditatlan-szavai
+dontes	KJV-szabály A) önállóan	R2	fedes a KJV-soros versek lexikális szavain	3	3	1	0.5258	1.0000	a kizárási lista, a [nem TR] nélkül: amit a szabály elvben eldönthet
+dontes	KJV-szabály B) az előpárosítással együtt	R2	forditatlan_dontes	61		61			a KJV-szabály forditatlan-döntései
+dontes	KJV-szabály B) az előpárosítással együtt	R2	pontossag (döntés ∩ arany forditatlan / döntés)	3	61	0.0491803	0.0198	0.1168	Wilson 90%, szószintű
+dontes	KJV-szabály B) az előpárosítással együtt	R2	hibás döntés, az aranyban kötött (link)	58	58	1			a hibás döntésekből az aranyban magyar szóhoz kötött
+dontes	KJV-szabály B) az előpárosítással együtt	R2	fedes (az arany összes forditatlan-szavából)	3	10	0.3	0.1269	0.5583	a réteg minden aranyverse; a KJV-sor nélküli versek arany forditatlan-szavai is a nevezőben
+dontes	KJV-szabály B) az előpárosítással együtt	R2	fedes a KJV-soros versekben	3	10	0.3	0.1269	0.5583	csak a KJV-sorral rendelkező versek arany forditatlan-szavai
+dontes	KJV-szabály B) az előpárosítással együtt	R2	fedes a KJV-soros versek lexikális szavain	3	3	1	0.5258	1.0000	a kizárási lista, a [nem TR] nélkül: amit a szabály elvben eldönthet
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R2	versek_kjv_sorral_gyanu_nelkul	4	9	0.444444			arany nélküli vizsgálat: a vers jól címkézett Strongjainak >= 50%-a a KJV-sorban
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R2	forditatlan_dontes	9		9			
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R2	pontossag (döntés ∩ arany forditatlan / döntés)	0	9	0	0.0000	0.2312	Wilson 90%, szószintű
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R2	fedes (az arany összes forditatlan-szavából)	0	10	0	0.0000	0.2130	
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R2	fedes a nem gyanús KJV-soros versekben	0	0				
+utkozes	KJV-szabály	R2	A-döntés, amelyet az előpárosítás linkként döntött el	1	62	0.016129			szótár / K9-link ugyanarra az eredeti szóra (a B ezeket kihagyja)
+utkozes	KJV-szabály	R2	ebből a link az aranyban	1	1	1			
+utkozes	KJV-szabály	R2	ebből forditatlan az aranyban	0	1	0			
+utkozes	KJV-szabály	R2	A-döntés, amelyet a K1/K8/K9 forditatlannak döntött	0	62	0			a kizárási lista miatt várhatóan 0
+kombinalt	előpárosítás (F21.60)	R2	egyseg_lefedettseg	23	192	0.119792	0.0864	0.1637	az elopar.py döntései
+kombinalt	előpárosítás (F21.60)	R2	egyseg_pontossag	23	23	1	0.8947	1.0000	
+kombinalt	előpárosítás (F21.60)	R2	forditatlan_lefedettseg	3	10	0.3	0.1269	0.5583	
+kombinalt	előpárosítás (F21.60)	R2	forditatlan_pontossag	3	3	1	0.5258	1.0000	
+kombinalt	előpárosítás + KJV-szabály B)	R2	egyseg_lefedettseg	26	192	0.135417	0.0998	0.1811	az elopar.py döntései + a B) forditatlan-döntései
+kombinalt	előpárosítás + KJV-szabály B)	R2	egyseg_pontossag	26	84	0.309524	0.2336	0.3974	
+kombinalt	előpárosítás + KJV-szabály B)	R2	egyseg_dontott_arany	84	192	0.4375			döntések száma (helyes és hibás) az arany egységszámához mérve
+kombinalt	előpárosítás + KJV-szabály B)	R2	forditatlan_lefedettseg	6	10	0.6	0.3516	0.8058	
+kombinalt	előpárosítás + KJV-szabály B)	R2	forditatlan_pontossag	6	64	0.09375	0.0493	0.1712	
+c_osszevetes	F3V2 (az A-döntéseken)	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment
+c_osszevetes	F3V2 (az A-döntéseken)	R2	KJV-szabály pontossága (ugyanezeken)	3	62	0.0483871	0.0195	0.1150	
+c_osszevetes	F3V2 (az A-döntéseken)	R2	C pontossága (igen/nem egyezik az arannyal)	62	62	1	0.9582	1.0000	a C forditatlan-listája ezeken a szavakon
+c_osszevetes	F3V2 (az A-döntéseken)	R2	C forditatlan-igen pontossága	3	3	1	0.5258	1.0000	ahol a C is forditatlannak jelöli
+c_osszevetes	F3V2B (az A-döntéseken)	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment
+c_osszevetes	F3V2B (az A-döntéseken)	R2	KJV-szabály pontossága (ugyanezeken)	3	62	0.0483871	0.0195	0.1150	
+c_osszevetes	F3V2B (az A-döntéseken)	R2	C pontossága (igen/nem egyezik az arannyal)	60	62	0.967742	0.9071	0.9893	a C forditatlan-listája ezeken a szavakon
+c_osszevetes	F3V2B (az A-döntéseken)	R2	C forditatlan-igen pontossága	1	1	1	0.2698	1.0000	ahol a C is forditatlannak jelöli
+c_osszevetes	F3V3 (az A-döntéseken)	R2	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment
+c_osszevetes	F3V3 (az A-döntéseken)	R2	KJV-szabály pontossága (ugyanezeken)	3	62	0.0483871	0.0195	0.1150	
+c_osszevetes	F3V3 (az A-döntéseken)	R2	C pontossága (igen/nem egyezik az arannyal)	62	62	1	0.9582	1.0000	a C forditatlan-listája ezeken a szavakon
+c_osszevetes	F3V3 (az A-döntéseken)	R2	C forditatlan-igen pontossága	3	3	1	0.5258	1.0000	ahol a C is forditatlannak jelöli
+alap	KJV-szabály	R3	arany_versek	10		10			a mérésben részt vevő aranyversek (rétegben)
+alap	KJV-szabály	R3	versek_kjv_sorral (teljes tábla)	10	10	1			a Károli → KJV megfeleltetéssel KJV-sort kapó versek
+alap	KJV-szabály	R3	versek_nincs_kjv_sor	0	10	0			itt a szabály nem alkalmazható (nincs KJV-sor, nem „nincs KJV-tag”)
+alap	KJV-szabály	R3	eredeti_szo (kizárások nélkül)	261		261			
+alap	KJV-szabály	R3	eredeti_szo a KJV-soros versekben	261	261	1			
+allapot	KJV-szabály	R3	állapot: nincs_kjv_sor	0	261	0			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R3	állapot: nem_tr	0	261	0			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R3	állapot: kizart_nyelvtani	95	261	0.363985			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R3	állapot: van_kjv_tag	127	261	0.48659			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R3	állapot: nincs_kjv_tag	39	261	0.149425			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R3	jelolt_arany_szerint_forditatlan	8	39	0.205128	0.1196	0.3289	a „nincs KJV-tag” jelöltekből forditatlan az aranyban (= A pontossága)
+dontes	KJV-szabály A) önállóan	R3	forditatlan_dontes	39		39			a KJV-szabály forditatlan-döntései
+dontes	KJV-szabály A) önállóan	R3	pontossag (döntés ∩ arany forditatlan / döntés)	8	39	0.205128	0.1196	0.3289	Wilson 90%, szószintű
+dontes	KJV-szabály A) önállóan	R3	hibás döntés, az aranyban kötött (link)	31	31	1			a hibás döntésekből az aranyban magyar szóhoz kötött
+dontes	KJV-szabály A) önállóan	R3	fedes (az arany összes forditatlan-szavából)	8	24	0.333333	0.1992	0.5012	a réteg minden aranyverse; a KJV-sor nélküli versek arany forditatlan-szavai is a nevezőben
+dontes	KJV-szabály A) önállóan	R3	fedes a KJV-soros versekben	8	24	0.333333	0.1992	0.5012	csak a KJV-sorral rendelkező versek arany forditatlan-szavai
+dontes	KJV-szabály A) önállóan	R3	fedes a KJV-soros versek lexikális szavain	8	8	1	0.7472	1.0000	a kizárási lista, a [nem TR] nélkül: amit a szabály elvben eldönthet
+dontes	KJV-szabály B) az előpárosítással együtt	R3	forditatlan_dontes	39		39			a KJV-szabály forditatlan-döntései
+dontes	KJV-szabály B) az előpárosítással együtt	R3	pontossag (döntés ∩ arany forditatlan / döntés)	8	39	0.205128	0.1196	0.3289	Wilson 90%, szószintű
+dontes	KJV-szabály B) az előpárosítással együtt	R3	hibás döntés, az aranyban kötött (link)	31	31	1			a hibás döntésekből az aranyban magyar szóhoz kötött
+dontes	KJV-szabály B) az előpárosítással együtt	R3	fedes (az arany összes forditatlan-szavából)	8	24	0.333333	0.1992	0.5012	a réteg minden aranyverse; a KJV-sor nélküli versek arany forditatlan-szavai is a nevezőben
+dontes	KJV-szabály B) az előpárosítással együtt	R3	fedes a KJV-soros versekben	8	24	0.333333	0.1992	0.5012	csak a KJV-sorral rendelkező versek arany forditatlan-szavai
+dontes	KJV-szabály B) az előpárosítással együtt	R3	fedes a KJV-soros versek lexikális szavain	8	8	1	0.7472	1.0000	a kizárási lista, a [nem TR] nélkül: amit a szabály elvben eldönthet
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R3	versek_kjv_sorral_gyanu_nelkul	10	10	1			arany nélküli vizsgálat: a vers jól címkézett Strongjainak >= 50%-a a KJV-sorban
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R3	forditatlan_dontes	39		39			
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R3	pontossag (döntés ∩ arany forditatlan / döntés)	8	39	0.205128	0.1196	0.3289	Wilson 90%, szószintű
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R3	fedes (az arany összes forditatlan-szavából)	8	24	0.333333	0.1992	0.5012	
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R3	fedes a nem gyanús KJV-soros versekben	8	24	0.333333	0.1992	0.5012	
+utkozes	KJV-szabály	R3	A-döntés, amelyet az előpárosítás linkként döntött el	0	39	0			szótár / K9-link ugyanarra az eredeti szóra (a B ezeket kihagyja)
+utkozes	KJV-szabály	R3	ebből a link az aranyban	0	0				
+utkozes	KJV-szabály	R3	ebből forditatlan az aranyban	0	0				
+utkozes	KJV-szabály	R3	A-döntés, amelyet a K1/K8/K9 forditatlannak döntött	0	39	0			a kizárási lista miatt várhatóan 0
+kombinalt	előpárosítás (F21.60)	R3	egyseg_lefedettseg	39	333	0.117117	0.0912	0.1492	az elopar.py döntései
+kombinalt	előpárosítás (F21.60)	R3	egyseg_pontossag	39	39	1	0.9351	1.0000	
+kombinalt	előpárosítás (F21.60)	R3	forditatlan_lefedettseg	9	24	0.375	0.2330	0.5423	
+kombinalt	előpárosítás (F21.60)	R3	forditatlan_pontossag	9	9	1	0.7688	1.0000	
+kombinalt	előpárosítás + KJV-szabály B)	R3	egyseg_lefedettseg	47	333	0.141141	0.1126	0.1754	az elopar.py döntései + a B) forditatlan-döntései
+kombinalt	előpárosítás + KJV-szabály B)	R3	egyseg_pontossag	47	78	0.602564	0.5095	0.6888	
+kombinalt	előpárosítás + KJV-szabály B)	R3	egyseg_dontott_arany	78	333	0.234234			döntések száma (helyes és hibás) az arany egységszámához mérve
+kombinalt	előpárosítás + KJV-szabály B)	R3	forditatlan_lefedettseg	17	24	0.708333	0.5410	0.8334	
+kombinalt	előpárosítás + KJV-szabály B)	R3	forditatlan_pontossag	17	48	0.354167	0.2512	0.4727	
+c_osszevetes	F3V2 (az A-döntéseken)	R3	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment
+c_osszevetes	F3V2 (az A-döntéseken)	R3	KJV-szabály pontossága (ugyanezeken)	8	39	0.205128	0.1196	0.3289	
+c_osszevetes	F3V2 (az A-döntéseken)	R3	C pontossága (igen/nem egyezik az arannyal)	37	39	0.948718	0.8563	0.9829	a C forditatlan-listája ezeken a szavakon
+c_osszevetes	F3V2 (az A-döntéseken)	R3	C forditatlan-igen pontossága	7	8	0.875	0.5888	0.9716	ahol a C is forditatlannak jelöli
+c_osszevetes	F3V2B (az A-döntéseken)	R3	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment
+c_osszevetes	F3V2B (az A-döntéseken)	R3	KJV-szabály pontossága (ugyanezeken)	8	39	0.205128	0.1196	0.3289	
+c_osszevetes	F3V2B (az A-döntéseken)	R3	C pontossága (igen/nem egyezik az arannyal)	38	39	0.974359	0.8929	0.9943	a C forditatlan-listája ezeken a szavakon
+c_osszevetes	F3V2B (az A-döntéseken)	R3	C forditatlan-igen pontossága	8	9	0.888889	0.6232	0.9748	ahol a C is forditatlannak jelöli
+c_osszevetes	F3V3 (az A-döntéseken)	R3	versek_C_ok	10	10	1			aranyversek, ahol a C kapun átment
+c_osszevetes	F3V3 (az A-döntéseken)	R3	KJV-szabály pontossága (ugyanezeken)	8	39	0.205128	0.1196	0.3289	
+c_osszevetes	F3V3 (az A-döntéseken)	R3	C pontossága (igen/nem egyezik az arannyal)	37	39	0.948718	0.8563	0.9829	a C forditatlan-listája ezeken a szavakon
+c_osszevetes	F3V3 (az A-döntéseken)	R3	C forditatlan-igen pontossága	8	10	0.8	0.5408	0.9314	ahol a C is forditatlannak jelöli
+alap	KJV-szabály	R4	arany_versek	20		20			a mérésben részt vevő aranyversek (rétegben)
+alap	KJV-szabály	R4	versek_kjv_sorral (teljes tábla)	0	20	0			a Károli → KJV megfeleltetéssel KJV-sort kapó versek
+alap	KJV-szabály	R4	versek_nincs_kjv_sor	20	20	1			itt a szabály nem alkalmazható (nincs KJV-sor, nem „nincs KJV-tag”)
+alap	KJV-szabály	R4	eredeti_szo (kizárások nélkül)	318		318			
+alap	KJV-szabály	R4	eredeti_szo a KJV-soros versekben	0	318	0			
+allapot	KJV-szabály	R4	állapot: nincs_kjv_sor	318	318	1			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R4	állapot: nem_tr	0	318	0			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R4	állapot: kizart_nyelvtani	0	318	0			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R4	állapot: van_kjv_tag	0	318	0			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R4	állapot: nincs_kjv_tag	0	318	0			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	R4	jelolt_arany_szerint_forditatlan	0	0				a „nincs KJV-tag” jelöltekből forditatlan az aranyban (= A pontossága)
+dontes	KJV-szabály A) önállóan	R4	forditatlan_dontes	0		0			a KJV-szabály forditatlan-döntései
+dontes	KJV-szabály A) önállóan	R4	pontossag (döntés ∩ arany forditatlan / döntés)	0	0				Wilson 90%, szószintű
+dontes	KJV-szabály A) önállóan	R4	hibás döntés, az aranyban kötött (link)	0	0				a hibás döntésekből az aranyban magyar szóhoz kötött
+dontes	KJV-szabály A) önállóan	R4	fedes (az arany összes forditatlan-szavából)	0	43	0	0.0000	0.0592	a réteg minden aranyverse; a KJV-sor nélküli versek arany forditatlan-szavai is a nevezőben
+dontes	KJV-szabály A) önállóan	R4	fedes a KJV-soros versekben	0	0				csak a KJV-sorral rendelkező versek arany forditatlan-szavai
+dontes	KJV-szabály A) önállóan	R4	fedes a KJV-soros versek lexikális szavain	0	0				a kizárási lista, a [nem TR] nélkül: amit a szabály elvben eldönthet
+dontes	KJV-szabály B) az előpárosítással együtt	R4	forditatlan_dontes	0		0			a KJV-szabály forditatlan-döntései
+dontes	KJV-szabály B) az előpárosítással együtt	R4	pontossag (döntés ∩ arany forditatlan / döntés)	0	0				Wilson 90%, szószintű
+dontes	KJV-szabály B) az előpárosítással együtt	R4	hibás döntés, az aranyban kötött (link)	0	0				a hibás döntésekből az aranyban magyar szóhoz kötött
+dontes	KJV-szabály B) az előpárosítással együtt	R4	fedes (az arany összes forditatlan-szavából)	0	43	0	0.0000	0.0592	a réteg minden aranyverse; a KJV-sor nélküli versek arany forditatlan-szavai is a nevezőben
+dontes	KJV-szabály B) az előpárosítással együtt	R4	fedes a KJV-soros versekben	0	0				csak a KJV-sorral rendelkező versek arany forditatlan-szavai
+dontes	KJV-szabály B) az előpárosítással együtt	R4	fedes a KJV-soros versek lexikális szavain	0	0				a kizárási lista, a [nem TR] nélkül: amit a szabály elvben eldönthet
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R4	versek_kjv_sorral_gyanu_nelkul	0	0				arany nélküli vizsgálat: a vers jól címkézett Strongjainak >= 50%-a a KJV-sorban
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R4	forditatlan_dontes	0		0			
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R4	pontossag (döntés ∩ arany forditatlan / döntés)	0	0				Wilson 90%, szószintű
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R4	fedes (az arany összes forditatlan-szavából)	0	43	0	0.0000	0.0592	
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	R4	fedes a nem gyanús KJV-soros versekben	0	0				
+utkozes	KJV-szabály	R4	A-döntés, amelyet az előpárosítás linkként döntött el	0	0				szótár / K9-link ugyanarra az eredeti szóra (a B ezeket kihagyja)
+utkozes	KJV-szabály	R4	ebből a link az aranyban	0	0				
+utkozes	KJV-szabály	R4	ebből forditatlan az aranyban	0	0				
+utkozes	KJV-szabály	R4	A-döntés, amelyet a K1/K8/K9 forditatlannak döntött	0	0				a kizárási lista miatt várhatóan 0
+kombinalt	előpárosítás (F21.60)	R4	egyseg_lefedettseg	60	412	0.145631	0.1194	0.1765	az elopar.py döntései
+kombinalt	előpárosítás (F21.60)	R4	egyseg_pontossag	60	62	0.967742	0.9071	0.9893	
+kombinalt	előpárosítás (F21.60)	R4	forditatlan_lefedettseg	31	43	0.72093	0.5979	0.8178	
+kombinalt	előpárosítás (F21.60)	R4	forditatlan_pontossag	31	33	0.939394	0.8324	0.9797	
+kombinalt	előpárosítás + KJV-szabály B)	R4	egyseg_lefedettseg	60	412	0.145631	0.1194	0.1765	az elopar.py döntései + a B) forditatlan-döntései
+kombinalt	előpárosítás + KJV-szabály B)	R4	egyseg_pontossag	60	62	0.967742	0.9071	0.9893	
+kombinalt	előpárosítás + KJV-szabály B)	R4	egyseg_dontott_arany	62	412	0.150485			döntések száma (helyes és hibás) az arany egységszámához mérve
+kombinalt	előpárosítás + KJV-szabály B)	R4	forditatlan_lefedettseg	31	43	0.72093	0.5979	0.8178	
+kombinalt	előpárosítás + KJV-szabály B)	R4	forditatlan_pontossag	31	33	0.939394	0.8324	0.9797	
+c_osszevetes	F3V2 (az A-döntéseken)	R4	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment
+c_osszevetes	F3V2 (az A-döntéseken)	R4	KJV-szabály pontossága (ugyanezeken)	0	0				
+c_osszevetes	F3V2 (az A-döntéseken)	R4	C pontossága (igen/nem egyezik az arannyal)	0	0				a C forditatlan-listája ezeken a szavakon
+c_osszevetes	F3V2 (az A-döntéseken)	R4	C forditatlan-igen pontossága	0	0				ahol a C is forditatlannak jelöli
+c_osszevetes	F3V2B (az A-döntéseken)	R4	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment
+c_osszevetes	F3V2B (az A-döntéseken)	R4	KJV-szabály pontossága (ugyanezeken)	0	0				
+c_osszevetes	F3V2B (az A-döntéseken)	R4	C pontossága (igen/nem egyezik az arannyal)	0	0				a C forditatlan-listája ezeken a szavakon
+c_osszevetes	F3V2B (az A-döntéseken)	R4	C forditatlan-igen pontossága	0	0				ahol a C is forditatlannak jelöli
+c_osszevetes	F3V3 (az A-döntéseken)	R4	versek_C_ok	20	20	1			aranyversek, ahol a C kapun átment
+c_osszevetes	F3V3 (az A-döntéseken)	R4	KJV-szabály pontossága (ugyanezeken)	0	0				
+c_osszevetes	F3V3 (az A-döntéseken)	R4	C pontossága (igen/nem egyezik az arannyal)	0	0				a C forditatlan-listája ezeken a szavakon
+c_osszevetes	F3V3 (az A-döntéseken)	R4	C forditatlan-igen pontossága	0	0				ahol a C is forditatlannak jelöli
+alap	KJV-szabály	Összes	arany_versek	60		60			a mérésben részt vevő aranyversek (rétegben)
+alap	KJV-szabály	Összes	versek_kjv_sorral (teljes tábla)	39	60	0.65			a Károli → KJV megfeleltetéssel KJV-sort kapó versek
+alap	KJV-szabály	Összes	versek_nincs_kjv_sor	21	60	0.35			itt a szabály nem alkalmazható (nincs KJV-sor, nem „nincs KJV-tag”)
+alap	KJV-szabály	Összes	eredeti_szo (kizárások nélkül)	1035		1035			
+alap	KJV-szabály	Összes	eredeti_szo a KJV-soros versekben	707	1035	0.683092			
+allapot	KJV-szabály	Összes	állapot: nincs_kjv_sor	328	1035	0.316908			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	Összes	állapot: nem_tr	0	1035	0			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	Összes	állapot: kizart_nyelvtani	254	1035	0.245411			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	Összes	állapot: van_kjv_tag	304	1035	0.29372			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	Összes	állapot: nincs_kjv_tag	149	1035	0.143961			eredeti szavak a KJV-szabály szerint
+allapot	KJV-szabály	Összes	jelolt_arany_szerint_forditatlan	22	149	0.147651	0.1061	0.2017	a „nincs KJV-tag” jelöltekből forditatlan az aranyban (= A pontossága)
+dontes	KJV-szabály A) önállóan	Összes	forditatlan_dontes	149		149			a KJV-szabály forditatlan-döntései
+dontes	KJV-szabály A) önállóan	Összes	pontossag (döntés ∩ arany forditatlan / döntés)	22	149	0.147651	0.1061	0.2017	Wilson 90%, szószintű
+dontes	KJV-szabály A) önállóan	Összes	hibás döntés, az aranyban kötött (link)	127	127	1			a hibás döntésekből az aranyban magyar szóhoz kötött
+dontes	KJV-szabály A) önállóan	Összes	fedes (az arany összes forditatlan-szavából)	22	103	0.213592	0.1549	0.2869	a réteg minden aranyverse; a KJV-sor nélküli versek arany forditatlan-szavai is a nevezőben
+dontes	KJV-szabály A) önállóan	Összes	fedes a KJV-soros versekben	22	60	0.366667	0.2721	0.4727	csak a KJV-sorral rendelkező versek arany forditatlan-szavai
+dontes	KJV-szabály A) önállóan	Összes	fedes a KJV-soros versek lexikális szavain	22	22	1	0.8905	1.0000	a kizárási lista, a [nem TR] nélkül: amit a szabály elvben eldönthet
+dontes	KJV-szabály B) az előpárosítással együtt	Összes	forditatlan_dontes	148		148			a KJV-szabály forditatlan-döntései
+dontes	KJV-szabály B) az előpárosítással együtt	Összes	pontossag (döntés ∩ arany forditatlan / döntés)	22	148	0.148649	0.1069	0.2030	Wilson 90%, szószintű
+dontes	KJV-szabály B) az előpárosítással együtt	Összes	hibás döntés, az aranyban kötött (link)	126	126	1			a hibás döntésekből az aranyban magyar szóhoz kötött
+dontes	KJV-szabály B) az előpárosítással együtt	Összes	fedes (az arany összes forditatlan-szavából)	22	103	0.213592	0.1549	0.2869	a réteg minden aranyverse; a KJV-sor nélküli versek arany forditatlan-szavai is a nevezőben
+dontes	KJV-szabály B) az előpárosítással együtt	Összes	fedes a KJV-soros versekben	22	60	0.366667	0.2721	0.4727	csak a KJV-sorral rendelkező versek arany forditatlan-szavai
+dontes	KJV-szabály B) az előpárosítással együtt	Összes	fedes a KJV-soros versek lexikális szavain	22	22	1	0.8905	1.0000	a kizárási lista, a [nem TR] nélkül: amit a szabály elvben eldönthet
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	Összes	versek_kjv_sorral_gyanu_nelkul	34	39	0.871795			arany nélküli vizsgálat: a vers jól címkézett Strongjainak >= 50%-a a KJV-sorban
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	Összes	forditatlan_dontes	96		96			
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	Összes	pontossag (döntés ∩ arany forditatlan / döntés)	19	96	0.197917	0.1397	0.2727	Wilson 90%, szószintű
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	Összes	fedes (az arany összes forditatlan-szavából)	19	103	0.184466	0.1300	0.2551	
+dontes	érzékenység: A) a versszámozás-gyanús versek nélkül	Összes	fedes a nem gyanús KJV-soros versekben	19	50	0.38	0.2760	0.4963	
+utkozes	KJV-szabály	Összes	A-döntés, amelyet az előpárosítás linkként döntött el	1	149	0.00671141			szótár / K9-link ugyanarra az eredeti szóra (a B ezeket kihagyja)
+utkozes	KJV-szabály	Összes	ebből a link az aranyban	1	1	1			
+utkozes	KJV-szabály	Összes	ebből forditatlan az aranyban	0	1	0			
+utkozes	KJV-szabály	Összes	A-döntés, amelyet a K1/K8/K9 forditatlannak döntött	0	149	0			a kizárási lista miatt várhatóan 0
+kombinalt	előpárosítás (F21.60)	Összes	egyseg_lefedettseg	166	1335	0.124345	0.1102	0.1400	az elopar.py döntései
+kombinalt	előpárosítás (F21.60)	Összes	egyseg_pontossag	166	170	0.976471	0.9486	0.9894	
+kombinalt	előpárosítás (F21.60)	Összes	forditatlan_lefedettseg	51	103	0.495146	0.4153	0.5753	
+kombinalt	előpárosítás (F21.60)	Összes	forditatlan_pontossag	51	55	0.927273	0.8475	0.9669	
+kombinalt	előpárosítás + KJV-szabály B)	Összes	egyseg_lefedettseg	188	1335	0.140824	0.1259	0.1572	az elopar.py döntései + a B) forditatlan-döntései
+kombinalt	előpárosítás + KJV-szabály B)	Összes	egyseg_pontossag	188	318	0.591195	0.5453	0.6356	
+kombinalt	előpárosítás + KJV-szabály B)	Összes	egyseg_dontott_arany	318	1335	0.238202			döntések száma (helyes és hibás) az arany egységszámához mérve
+kombinalt	előpárosítás + KJV-szabály B)	Összes	forditatlan_lefedettseg	73	103	0.708738	0.6305	0.7763	
+kombinalt	előpárosítás + KJV-szabály B)	Összes	forditatlan_pontossag	73	203	0.359606	0.3064	0.4165	
+c_osszevetes	F3V2 (az A-döntéseken)	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment
+c_osszevetes	F3V2 (az A-döntéseken)	Összes	KJV-szabály pontossága (ugyanezeken)	22	149	0.147651	0.1061	0.2017	
+c_osszevetes	F3V2 (az A-döntéseken)	Összes	C pontossága (igen/nem egyezik az arannyal)	147	149	0.986577	0.9602	0.9955	a C forditatlan-listája ezeken a szavakon
+c_osszevetes	F3V2 (az A-döntéseken)	Összes	C forditatlan-igen pontossága	21	22	0.954545	0.8197	0.9898	ahol a C is forditatlannak jelöli
+c_osszevetes	F3V2B (az A-döntéseken)	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment
+c_osszevetes	F3V2B (az A-döntéseken)	Összes	KJV-szabály pontossága (ugyanezeken)	22	149	0.147651	0.1061	0.2017	
+c_osszevetes	F3V2B (az A-döntéseken)	Összes	C pontossága (igen/nem egyezik az arannyal)	146	149	0.979866	0.9507	0.9919	a C forditatlan-listája ezeken a szavakon
+c_osszevetes	F3V2B (az A-döntéseken)	Összes	C forditatlan-igen pontossága	20	21	0.952381	0.8122	0.9893	ahol a C is forditatlannak jelöli
+c_osszevetes	F3V3 (az A-döntéseken)	Összes	versek_C_ok	60	60	1			aranyversek, ahol a C kapun átment
+c_osszevetes	F3V3 (az A-döntéseken)	Összes	KJV-szabály pontossága (ugyanezeken)	22	149	0.147651	0.1061	0.2017	
+c_osszevetes	F3V3 (az A-döntéseken)	Összes	C pontossága (igen/nem egyezik az arannyal)	147	149	0.986577	0.9602	0.9955	a C forditatlan-listája ezeken a szavakon
+c_osszevetes	F3V3 (az A-döntéseken)	Összes	C forditatlan-igen pontossága	22	24	0.916667	0.7769	0.9720	ahol a C is forditatlannak jelöli
+regi_teljes	R1-kontroll: régi tábla (Gen/Exo/Pro)	Összes	"nincs KJV-tag" jelölt (A-döntés)	47		47			R1-versek: 20
+regi_teljes	R1-kontroll: régi tábla (Gen/Exo/Pro)	Összes	pontossag	11	47	0.234043	0.1487	0.3484	
+regi_teljes	R1-kontroll: régi tábla (Gen/Exo/Pro)	Összes	fedes	11	26	0.423077	0.2785	0.5822	
+regi_teljes	R1-kontroll: teljes tábla (F19)	Összes	"nincs KJV-tag" jelölt (A-döntés)	48		48			R1-versek: 20
+regi_teljes	R1-kontroll: teljes tábla (F19)	Összes	pontossag	11	48	0.229167	0.1455	0.3418	
+regi_teljes	R1-kontroll: teljes tábla (F19)	Összes	fedes	11	26	0.423077	0.2785	0.5822	
+regi_teljes	R1-kontroll: mindkét tábla szerint jelölt	Összes	"nincs KJV-tag" jelölt (A-döntés)	47		47			R1-versek: 20
+regi_teljes	R1-kontroll: mindkét tábla szerint jelölt	Összes	pontossag	11	47	0.234043	0.1487	0.3484	
+regi_teljes	R1-kontroll: mindkét tábla szerint jelölt	Összes	fedes	11	26	0.423077	0.2785	0.5822	
+regi_teljes	R1-kontroll: csak a régi szerint	Összes	"nincs KJV-tag" jelölt (A-döntés)	0		0			R1-versek: 20
+regi_teljes	R1-kontroll: csak a régi szerint	Összes	pontossag	0	0				
+regi_teljes	R1-kontroll: csak a régi szerint	Összes	fedes	0	26	0	0.0000	0.0943	
+regi_teljes	R1-kontroll: csak a teljes szerint	Összes	"nincs KJV-tag" jelölt (A-döntés)	1		1			R1-versek: 20
+regi_teljes	R1-kontroll: csak a teljes szerint	Összes	pontossag	0	1	0	0.0000	0.7302	
+regi_teljes	R1-kontroll: csak a teljes szerint	Összes	fedes	0	26	0	0.0000	0.0943	

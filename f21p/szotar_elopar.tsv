@@ -1,0 +1,23 @@
+# GENERÁLT: eszkozok/karoli_strong/elopar.py --szotar | scope=f21p, F3V2 ∩ F3V2B egyező linkjei, mindkét futásban kapun átment versek, az arany v3 60 verse kizárva (140 forrásvers) | forras=f21p/valaszok/F3V2.jsonl, f21p/valaszok/F3V2B.jsonl, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, f21p/arany_opus_v3.jsonl (csak az igehelyek kizárásához) | ts=2026-10-01T06:44:44+00:00 | feltétel: db >= 3 és egyértelmű szóalak; kizárva: H9xxx, G3588, G2532 összetevőjű Strong, a/az/és/s szóalak | kézzel szerkeszteni tilos
+# statisztika: forrasversek=140; egyezo_linkek=2411; kizart_link_strong_miatt=621; kizart_link_szoalak_miatt=41; szotarjelolt_parok=1388; szotarjelolt_szoalakok=1119; kiesett_versenges=198; kiesett_versenges_de_volt_3_feletti_par=35; kiesett_keves=901; szotar_meret=20; szotar_lefedett_linkek=69; szotar_bejegyzes_3_alatti_token_elofordulassal=0
+szoalak	strong	db	vers_db
+alkotott	H6213	3	2
+csinála	H6213	3	2
+felől	H5921	4	1
+fiai	H1121	4	4
+istentelen	H7563	3	3
+keletre	H6924	3	2
+köröskörül	H5439	4	3
+legyen	H1961	4	4
+mózes	H4872	3	3
+napon	H3117	5	4
+nevét	H8034	3	3
+noé	H5146	4	3
+oltárt	H4196	3	3
+ti	G4771	3	3
+tiszta	H2889	3	2
+ábrám	H0087	4	4
+áldásaival	H1293	3	1
+áron	H0175	4	3
+égyiptom	H4714	3	3
+építe	H1129	3	3

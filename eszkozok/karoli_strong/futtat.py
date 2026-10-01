@@ -29,8 +29,55 @@ P3b (F21.25, DT22/PD11; mind a prompt_v2.md-vel, kimenet valaszok/<futas>.jsonl)
         F1V2, F2V2, F5V2, F6V2, F3V2B, F4V2; egy triggerben is mehet (a régi F4
         "csak egyedül" szabálya az F4V2-re nem vonatkozik).
 
+P3c (F21.42, PD13; regressziós mérés a prompt_v3-mal; kimenet valaszok/<futas>.jsonl):
+  F3V3     C modell, 200 vers: ugyanaz a konfiguráció és kötegelés, mint az F3V2-nél
+           (KJV a minta szerint, 10 vers/hívás, kapu + egy újrakérés, C gondolkodása
+           minimal/low), de a prompt_v3.md-vel.
+  SONNETV3 S modell (anthropic/claude-sonnet-5.5, az OpenRouteren), 200 vers, prompt_v3,
+           KJV a minta szerint, 10 vers/hívás, kapu + egy újrakérés. Ár: 2.00 / 10.00 USD
+           per 1M token (bemenet / kimenet; 0.000002 / 0.00001 USD per token, az
+           OpenRouter modell-API szerint). Gondolkodás MINIMÁLIS szinten (F21.70, DT-F21c/PD15):
+           az OpenRouter-endpoint a reasoning:{enabled:false}-t 400-zal elutasította
+           ("Reasoning is mandatory ..."), ezért a gondolkodás be van kapcsolva, a legkisebb
+           kerettel. LÁNC (S_REASONING_LANC; mint a C minimal -> low láncánál, a küldés
+           kuldes()-ben): 1. reasoning={'max_tokens': 1024} (az Anthropic minimuma); ha az
+           endpoint 400-zal elutasítja: 2. reasoning={'effort': 'low'}; ha az is elutasított:
+           hiba (a köteg a hibak.jsonl-be kerül, megállás). A tényleges (elfogadott) beállítást a
+           futásnapló gondolkodas_mod oszlopa ("reasoning_max_tokens=1024" /
+           "reasoning_effort=low") és a jsonl hivasok-mezője (gondolkodas_mod, usage) rögzíti;
+           a lánc minden elutasított lépése is bekerül a hibak.jsonl-be (lanc_tovabb=true).
+           TEMPERATURE: a SONNETV3 kérésében a `temperature` kulcs NINCS (gondolkodás mellett
+           az Anthropic nem fogad el 0-t; fordit.TEMPERATURE_NELKULI_MODELLEK), ezért a
+           Sonnet-futás NEM determinisztikus (az A, B, C kérése változatlan: temperature=0).
+           max_tokens=12000. A költség a gondolkodási tokent is tartalmazza (kimeneti áron;
+           hívásonként legfeljebb 1024 token).
+  A két új futás a hívás ELŐTT ellenőrzi (inditas_elofeltetelek, éles indításkor): létezik-e
+  a f21p/prompt_v3.sha256 és egyezik-e a f21p/prompt_v3.md LF-normalizált sha256-jával;
+  az arany legfrissebb befagyasztott változatára (f21p/arany_opus_v3.sha256, ha létezik,
+  különben v2) a jsonl sha256-ja egyezik-e a hash-fájl első mezőjével. Hiány vagy eltérés:
+  2-es kilépési kód, hívás nélkül. A vezérlő (--vezerlo) a futasok=F3V3,SONNETV3 sort és
+  az egyes azonosítókat is elfogadja; a plafon_usd és az 5 USD kemény plafon érvényes (F21.75: a 4 USD helyett). A
+  hívás előtti költségbecslés a SONNETV3-nál a Sonnet árával és a Sonnet tokenizálójára
+  konzervatívan hangolt (KAR_PER_TOKEN_MODELL, KIMENET_TOKEN_VERSENKENT_MODELL) értékekkel
+  számol (a Gemini mért 1,96 karakter/tokenje a szárazbecslés felső, 1,5-ös tokenszorzójával).
+  A futások a FUTASOK sorrendjében futnak: egy triggerben a SONNETV3 az F3V3 előtt.
+
+F8V3 (F21.62; KJV-mérés; kimenet valaszok/F8V3.jsonl):
+  F8V3     C modell, 200 vers, prompt_v3 (változatlan): ugyanaz a konfiguráció és kötegelés,
+           mint az F3V3-nál (gondolkodás kötelező minimal -> low lánc, 10 vers/hívás, kapu +
+           egy újrakérés, max_tokens 12000, temperature 0), DE a KJV-TÁMPONT a TELJES táblából
+           (konkordancia/KJV_Strongs_teljes.tsv, F19; tokenek.kjv_tamapont_teljes), minden
+           rétegben, ahol a Károli-versnek van KJV-megfelelője és a KJV-sora (a versmegfeleltetés
+           szerint; ahol nincs, ott nincs KJV-sor, nem pótoljuk). A prompt példaversei a régi
+           KJV-forrást használják (a prompt sha256-ja = F3V3: 84f12ca7aafb). A köteg-sorok
+           'kjv_forras' mezője azonosítja a forrást (tábla, sha256, a KJV-sort kapott versek
+           száma rétegenként), hogy a futás utólag értelmezhető legyen. A vezérlő
+           (futasok=F8V3, önmagában és más futásokkal együtt) és az indításkori
+           befagyasztás-ellenőrzés (prompt_v3.sha256, arany v3) érvényes; plafon: 5.0 kemény,
+           plafon_usd (felhasználói küszöb 4.90). Szárazbecslés: --szaraz (f8v3_kiir).
+
 Modellek: A google/gemini-3.1-flash-lite, B deepseek/deepseek-v4-flash,
-C google/gemini-3.8-flash. 10 vers / hívás; versenként az ötpontos kapu
+C google/gemini-3.8-flash, S anthropic/claude-sonnet-5.5 (csak P3c). 10 vers / hívás; versenként az ötpontos kapu
 (kapu.py), hibánál egy újrakérés; a mintából a f21p/minta.tsv sorrendjében.
 
 Kimenet (alapból a f21p/ alatt):
@@ -38,12 +85,12 @@ Kimenet (alapból a f21p/ alatt):
   futasnaplo.tsv          hívásonként: tokenek, cost, modell, futás, köteg,
                           kapuhiba, próbálkozás, időbélyeg, gondolkodási mód
 
-Költségplafon: 3 USD kumulatívan (KEMÉNY korlát) a futasnaplo.tsv koltseg_usd oszlopa
+Költségplafon: 5 USD kumulatívan (KEMÉNY korlát; F21.75: a korábbi 4 USD helyett) a futasnaplo.tsv koltseg_usd oszlopa
 alapján, MINDEN hívás előtt ellenőrizve (a napló összege + a hívás becsült
 költsége); túllépésnél leállás, kilépési kód 3, a kész kötegek mentve maradnak. A
 futás újraindítható: a kész köteg (a jsonl-ben már szereplő verscsoport) nem hív újra.
 Szigorúbb plafon a vezérlőfájl OPCIONÁLIS plafon_usd=<szám> kulcsával adható
-(0 < szám <= 3; hiányában 3.0; nem szám, <= 0, > 3 vagy nem véges érték hiba, 2-es
+(0 < szám <= 5; hiányában 5.0; nem szám, <= 0, > 5 vagy nem véges érték hiba, 2-es
 kilépési kód, hívás nélkül). A plafon mindig a NAPLÓ KUMULATÍV összegére vonatkozik (a
 korábbi futások költségét is tartalmazza), pl. plafon_usd=2 a 2 USD kumulatív
 költségnél megáll (kilépési kód 3).
@@ -91,8 +138,8 @@ futtatás 2-es kilépési kóddal áll meg, és semmit nem hív meg.
                           # az F4V2 más futással együtt is állhat (az F1V2 és F2V2 kész kell)
     koteg_max=1           # futásonként legfeljebb ennyi ÚJ köteg (10 vers/köteg) fut;
                           # pozitív egész, vagy 'mind' (a kész kötegek kimaradnak)
-    plafon_usd=2          # OPCIONÁLIS: kumulatív (napló-összeg) plafon USD-ben, 0 < x <= 3;
-                          # hiányában 3.0 (a kemény korlát)
+    plafon_usd=2          # OPCIONÁLIS: kumulatív (napló-összeg) plafon USD-ben, 0 < x <= 5;
+                          # hiányában 5.0 (a kemény korlát)
 Példák: az első trigger: futasok=F1, koteg_max=1 (10 vers); a második:
 futasok=F1,F2,F3,F5,F6, koteg_max=mind; a harmadik: futasok=F4, koteg_max=mind;
 P3b egy triggerben: futasok=F1V2,F2V2,F5V2,F6V2,F3V2B,F4V2, koteg_max=mind,
@@ -140,7 +187,7 @@ F21P = os.path.join(tokenek.ROOT, 'f21p')
 MINTA_UT = os.path.join(F21P, 'minta.tsv')
 BIRO_PROMPT_UT = os.path.join(F21P, 'prompt_biro_v2.md')   # a v1 megmarad, nem használt
 
-PLAFON_USD = 3.0
+PLAFON_USD = 5.0          # F21.75: a pilot kemény plafonja (korábban 4.0, F21.47: 3.0)
 KOTEG_MERET = 10
 MAX_TOKENS = 12000          # hívásonként; a lefutó gondolkodás se szaladjon el
 KILEPES_PLAFON = 3
@@ -149,6 +196,7 @@ MODELLEK = {
     'A': 'google/gemini-3.1-flash-lite',
     'B': 'deepseek/deepseek-v4-flash',
     'C': 'google/gemini-3.8-flash',
+    'S': 'anthropic/claude-sonnet-5.5',      # F21.42 (P3c, PD13)
 }
 
 # Tartalék ár (USD / 1M token: bemenet, kimenet), ha a válaszban nincs `cost`;
@@ -158,11 +206,27 @@ ARAK = {
     'google/gemini-3.1-flash-lite': (0.25, 1.50),
     'deepseek/deepseek-v4-flash': (0.14, 0.28),
     'google/gemini-3.8-flash': (0.75, 3.75),
+    # F21.42: az OpenRouter modell-API szerint 0.000002 USD/bemeneti és 0.00001 USD/kimeneti token
+    'anthropic/claude-sonnet-5.5': (2.0, 10.0),
 }
+
+# A hívás előtti (plafon-) költségbecslés modellenkénti hangolása (F21.42). Az alapértékek
+# (KAR_PER_TOKEN, KIMENET_TOKEN_VERSENKENT) az A/B/C-re maradnak. A Sonnet tokenizálója
+# ismeretlen: a C (Gemini) mért 1,96 karakter/tokenjét (a kötegszöveg karaktere / az első
+# próbálkozású hívások mért bemeneti tokenje, F3V2) a szárazbecslés felső, 1,5-ös
+# tokenszorzójával vesszük (1,96 / 1,5 ≈ 1,3 karakter/token), a kimenetet a C
+# mért 132 token/versének 1,5-szörösével (~200). A plafon-őr így a legrosszabb szcenárióval számol.
+KAR_PER_TOKEN_MODELL = {MODELLEK['S']: 1.3}
+KIMENET_TOKEN_VERSENKENT_MODELL = {MODELLEK['S']: 200}
 
 # A C modell kötelező gondolkodásának szintjei, a legalacsonyabbtól; 400-as
 # elutasításnál a következő. A sikeres szint a folyamat hátralevő részére marad.
 C_REASONING_LANC = [{'effort': 'minimal'}, {'effort': 'low'}]
+# F21.70 (DT-F21c, PD15): a Sonnet gondolkodása kötelező (az enabled:false 400), a legkisebb kerettel:
+# 1. max_tokens=1024 (az Anthropic minimuma), 2. effort=low; ha mindkettő elutasított: hiba, megállás
+# (nincs 'kotelezo_alap' tartalék, mint a C-nél). A temperature a kérésből kimarad (fordit).
+S_REASONING_LANC = [{'max_tokens': 1024}, {'effort': 'low'}]
+S_GONDOLKODAS_HIVASONKENT = 1024   # a költségbecslés felső értéke: hívásonként legfeljebb 1024 gondolkodási token
 
 FUTASOK = {
     'F1': {'modell': 'A', 'tipus': 'parosit', 'kjv': True, 'reteg': None},
@@ -182,7 +246,20 @@ FUTASOK = {
               'ismetles_of': 'F3V2'},
     'F4V2': {'modell': 'C', 'tipus': 'biro', 'kjv': True, 'reteg': None, 'forras': ('F1V2', 'F2V2'),
              'prompt': bemenet.PROMPT_V2_UT},
+    # F21.42 (P3c, PD13): regressziós mérés a prompt_v3-mal; a trigger külön jóváhagyásra
+    # a sorrend a felhasználói döntés szerinti: a Sonnet előbb, az F3V3 (C) utána (egy triggerben is)
+    'SONNETV3': {'modell': 'S', 'tipus': 'parosit', 'kjv': True, 'reteg': None, 'prompt': bemenet.PROMPT_V3_UT},
+    'F3V3': {'modell': 'C', 'tipus': 'parosit', 'kjv': True, 'reteg': None, 'prompt': bemenet.PROMPT_V3_UT},
+    # F21.62 (F8V3): mint az F3V3, de a KJV-támpont a TELJES KJV-táblából (F19), minden rétegben
+    'F8V3': {'modell': 'C', 'tipus': 'parosit', 'kjv': True, 'kjv_forras': 'teljes', 'reteg': None,
+             'prompt': bemenet.PROMPT_V3_UT},
 }
+
+# A prompt_v3-at használó futások: indítás előtt a prompt_v3 és a legfrissebb arany befagyasztása
+# ellenőrzendő (inditas_elofeltetelek).
+V3_FUTASOK = ('F3V3', 'SONNETV3', 'F8V3')
+# Az inditas_elofeltetelek gyökere (None = a repó gyökere); csak az önteszt állítja át.
+ELOFELTETEL_GYOKER = None
 
 # Befagyasztott bemenetek: a fájl LF-normalizált sha256-ja (tokenek.sha256_lf). Éles futás
 # előtt ellenőrzi a futtató (befagyasztas_ellenoriz); az arany v2-t a
@@ -372,7 +449,28 @@ def kotegszoveg_futashoz(futas_id, igehelyek, kimenet_dir):
         a = eredmenyek_betolt(spec['forras'][0], kimenet_dir)
         b = eredmenyek_betolt(spec['forras'][1], kimenet_dir)
         return biro_kotegszoveg(igehelyek, a, b, spec['kjv'], spec.get('prompt'))
-    return bemenet.kotegszoveg(igehelyek, spec['kjv'], spec.get('prompt'))
+    return bemenet.kotegszoveg(igehelyek, spec['kjv'], spec.get('prompt'), spec.get('kjv_forras', 'regi'))
+
+
+def kjv_forras_rekord(futas_id, igehelyek, reteg_map=None):
+    """A köteg-sor 'kjv_forras' mezője (F21.62): a futás KJV-forrásának azonosítása, ha a futás
+    nem az alapértelmezett ('regi') forrást használja; különben None (a régi futások köteg-sora
+    változatlan). Tartalom: a tábla útja és sha256-ja, a KJV-sort kapott / nem kapott versek
+    száma a kötegben (és rétegenként, ha a reteg_map {igehely: réteg} adott), a KJV-sort
+    kapott versek listája."""
+    spec = FUTASOK[futas_id]
+    forras = spec.get('kjv_forras', 'regi')
+    if not spec['kjv'] or forras == 'regi':
+        return None
+    tabla, sha = tokenek.kjv_forras_azonosito()
+    sorral = [ig for ig in igehelyek if tokenek.kjv_tamapont_forras(ig, forras)]
+    reteg = {}
+    for ig in igehelyek:
+        r = (reteg_map or {}).get(ig, '?')
+        d = reteg.setdefault(r, {'kjv_sorral': 0, 'kjv_nelkul': 0})
+        d['kjv_sorral' if ig in sorral else 'kjv_nelkul'] += 1
+    return {'forras': forras, 'tabla': tabla, 'sha256': sha, 'kjv_sorral_db': len(sorral),
+            'kjv_nelkul_db': len(igehelyek) - len(sorral), 'reteg_szerint': reteg, 'kjv_sorral_versek': sorral}
 
 
 def utasitas_sha12(futas_id):
@@ -401,6 +499,37 @@ def befagyasztas_ellenoriz(tabla=None, gyoker=None, arany=True):
         except SystemExit as e:
             hibak.append(str(e))
     return hibak
+
+
+def v3_elofeltetelek(gyoker=None):
+    """A prompt_v3 és a legfrissebb arany befagyasztásának ellenőrzése (F21.42, P3c);
+    hibaüzenetek listája (üres = rendben).
+
+      * f21p/prompt_v3.sha256 létezik, és első mezője egyezik a f21p/prompt_v3.md
+        LF-normalizált sha256-jával;
+      * az arany legfrissebb befagyasztott változata (tokenek.legfrissebb_arany: a
+        f21p/arany_opus_v3.sha256, ha létezik, különben v2): a jsonl létezik és
+        LF-normalizált sha256-ja egyezik a hash-fájl első mezőjével.
+    """
+    gyoker = tokenek.ROOT if gyoker is None else gyoker
+    hibak = []
+    h = tokenek.hash_hiba(os.path.join(gyoker, 'f21p', 'prompt_v3.md'),
+                          os.path.join(gyoker, 'f21p', 'prompt_v3.sha256'), 'f21p/prompt_v3.md')
+    if h:
+        hibak.append(h)
+    jsonl, sha, verzio = tokenek.legfrissebb_arany(gyoker)
+    h = tokenek.hash_hiba(jsonl, sha, 'arany %s (%s)' % (verzio, os.path.basename(jsonl)))
+    if h:
+        hibak.append(h)
+    return hibak
+
+
+def inditas_elofeltetelek(futas_idk, gyoker=None):
+    """Az éles indítás előfeltételei a kért futásokra: ha van köztük a prompt_v3-at használó
+    (V3_FUTASOK), a v3_elofeltetelek hibái; különben üres lista. A régi futásokat nem érinti."""
+    if any(f in V3_FUTASOK for f in futas_idk):
+        return v3_elofeltetelek(gyoker)
+    return []
 
 
 def mentett_valaszok_ellenoriz(futas_id, kimenet_dir):
@@ -463,6 +592,33 @@ def kesz_kotegek(futas_id, kimenet_dir):
     return {tuple(s['igehelyek']) for s in koteg_sorok(futas_id, kimenet_dir)}
 
 
+def hibak_ut(futas_id, kimenet_dir):
+    return os.path.join(kimenet_dir, 'valaszok', '%s.hibak.jsonl' % futas_id)
+
+
+def http_hibakod(szoveg):
+    """A HTTP-állapotkód a fordit._http_post_nyers hibaüzenetéből (HTTP kliens-hiba 400: ... / HTTP hiba N kiserlet utan: HTTP 503); None, ha nincs."""
+    import re
+    m = re.search(r'HTTP(?: kliens-hiba)? (\d{3})', szoveg)
+    return int(m.group(1)) if m else None
+
+
+def hiba_ment(ctx, futas_id, koteg_no, hiba, extra=None):
+    """F21.47: a köteg hívásának (HTTP-/hálózati) hibáját a valaszok/<futas>.hibak.jsonl-be írja (a köteg-sor
+    ilyenkor nem készül). Kulcsmentes (ctx.tiszta), a hibaüzenet 400 karakterre vágva; a régi kimenetek érintetlenek."""
+    uzenet = ctx.tiszta(hiba)
+    ut = hibak_ut(futas_id, ctx.kimenet_dir)
+    os.makedirs(os.path.dirname(ut), exist_ok=True)
+    with open(ut, 'a', encoding='utf-8', newline='\n') as f:
+        sor = {'ts': datetime.now(timezone.utc).isoformat(timespec='seconds'), 'futas': futas_id,
+               'koteg': koteg_no, 'modell': MODELLEK[FUTASOK[futas_id]['modell']],
+               'http_hibakod': http_hibakod(uzenet), 'hibauzenet': uzenet[:400]}
+        if extra:
+            sor.update(extra)   # F21.70: pl. lanc_tovabb / gondolkodas_mod az S gondolkodási láncának elutasított lépéséhez
+        f.write(json.dumps(sor, ensure_ascii=False) + '\n')
+        f.flush()
+
+
 def koteg_ment(futas_id, kimenet_dir, sor):
     ut = valasz_ut(futas_id, kimenet_dir)
     os.makedirs(os.path.dirname(ut), exist_ok=True)
@@ -501,10 +657,12 @@ def naplo_osszeg(kimenet_dir):
 def becsult_koltseg(modell_id, uzenetek, versdb):
     """Egy hívás konzervatív költségbecslése a plafon-ellenőrzéshez."""
     kar = sum(len(m['content']) for m in uzenetek)
-    be = kar / KAR_PER_TOKEN
-    ki = KIMENET_TOKEN_VERSENKENT * versdb
+    be = kar / KAR_PER_TOKEN_MODELL.get(modell_id, KAR_PER_TOKEN)
+    ki = KIMENET_TOKEN_VERSENKENT_MODELL.get(modell_id, KIMENET_TOKEN_VERSENKENT) * versdb
     if modell_id == MODELLEK['C']:
         ki += C_GONDOLKODAS_HIVASONKENT
+    if modell_id == MODELLEK['S']:
+        ki += S_GONDOLKODAS_HIVASONKENT   # F21.70: a gondolkodási token kimeneti áron, a felső érték (1024)
     ar_be, ar_ki = ARAK[modell_id]
     return be / 1e6 * ar_be + ki / 1e6 * ar_ki
 
@@ -519,6 +677,7 @@ class Kontextus:
         self.plafon = plafon
         self.alvas = alvas
         self.c_reasoning_index = 0   # a C_REASONING_LANC aktuális tagja
+        self.s_reasoning_index = 0   # az S_REASONING_LANC aktuális tagja
 
     def tiszta(self, szoveg):
         """A kulcs kiszűrése minden kiírt szövegből."""
@@ -528,7 +687,14 @@ class Kontextus:
         return s
 
 
+def _reasoning_cimke(reasoning):
+    """{'max_tokens': 1024} -> 'reasoning_max_tokens=1024'; {'effort': 'low'} -> 'reasoning_effort=low'."""
+    return ','.join('reasoning_%s=%s' % (k, v) for k, v in sorted(reasoning.items()))
+
+
 def _gondolkodas_mod(ctx, modell_kulcs):
+    if modell_kulcs == 'S':
+        return _reasoning_cimke(S_REASONING_LANC[ctx.s_reasoning_index])
     if modell_kulcs != 'C':
         return 'kikapcsolva'
     if ctx.c_reasoning_index >= len(C_REASONING_LANC):
@@ -536,15 +702,19 @@ def _gondolkodas_mod(ctx, modell_kulcs):
     return 'kotelezo_effort=%s' % C_REASONING_LANC[ctx.c_reasoning_index]['effort']
 
 
-def kuldes(ctx, modell_kulcs, uzenetek):
+def kuldes(ctx, modell_kulcs, uzenetek, futas_id=None, koteg_no=None):
     """Egy HTTP-hívás a fordit._http_post_nyers visszalépéses újrapróbálásával;
-    a C modellnél 400-as elutasításnál a következő gondolkodási szint.
+    a C és az S modellnél 400-as elutasításnál a következő gondolkodási szint (C: minimal -> low
+    -> alap; S: max_tokens=1024 -> effort=low, az utolsó elutasítása hiba). Az S láncának minden
+    elutasított lépése a hibak.jsonl-be kerül (lanc_tovabb=true; futas_id/koteg_no esetén).
     Visszaad: (nyers_valasz_dict, http_kiserlet, gondolkodas_mod)."""
     modell_id = MODELLEK[modell_kulcs]
     while True:
         extra = {'max_tokens': MAX_TOKENS}
         if modell_kulcs == 'C' and ctx.c_reasoning_index < len(C_REASONING_LANC):
             extra['reasoning'] = dict(C_REASONING_LANC[ctx.c_reasoning_index])
+        if modell_kulcs == 'S':
+            extra['reasoning'] = dict(S_REASONING_LANC[ctx.s_reasoning_index])
         mod = _gondolkodas_mod(ctx, modell_kulcs)
         try:
             valasz, kiserlet = fordit._http_post_nyers(
@@ -555,6 +725,13 @@ def kuldes(ctx, modell_kulcs, uzenetek):
                     and ctx.c_reasoning_index < len(C_REASONING_LANC)):
                 print('  C gondolkodási szint elutasítva (%s), következő szint' % mod, flush=True)
                 ctx.c_reasoning_index += 1
+                continue
+            if (modell_kulcs == 'S' and 'HTTP kliens-hiba 400' in str(e)
+                    and ctx.s_reasoning_index + 1 < len(S_REASONING_LANC)):
+                print('  S gondolkodási szint elutasítva (%s), lánc: tovább' % mod, flush=True)
+                if futas_id is not None:
+                    hiba_ment(ctx, futas_id, koteg_no, e, extra={'lanc_tovabb': True, 'gondolkodas_mod': mod})
+                ctx.s_reasoning_index += 1
                 continue
             raise
 
@@ -596,7 +773,7 @@ def hivas(ctx, futas_id, koteg_no, probalkozas, uzenetek, igehelyek, kapuhiba_db
         raise PlafonLeallas('a napló összege %.4f USD + a hívás becsült költsége %.4f USD > plafon %.4f USD'
                             % (eddig, becs, ctx.plafon))
     t0 = time.time()
-    valasz, kiserlet, mod = kuldes(ctx, modell_kulcs, uzenetek)
+    valasz, kiserlet, mod = kuldes(ctx, modell_kulcs, uzenetek, futas_id, koteg_no)
     mp = time.time() - t0
 
     usage = valasz.get('usage') or {}
@@ -628,6 +805,11 @@ def hivas(ctx, futas_id, koteg_no, probalkozas, uzenetek, igehelyek, kapuhiba_db
     })
     rekord = {'probalkozas': probalkozas, 'usage': usage, 'finish_reason': finish,
               'reasoning_szoveg_karakter': len(((valasz_elem.get('message') or {}).get('reasoning')) or '')}
+    if modell_kulcs == 'S':
+        rekord['gondolkodas_mod'] = mod   # F21.70: a tényleges (elfogadott) gondolkodási beállítás a jsonl-ben is
+    if valasz.get('error'):
+        # F21.47: a 200-as válasz hibatestét (pl. elutasított paraméter) a hívásrekord őrzi, kulcsmentesen
+        rekord['hiba'] = ctx.tiszta(json.dumps(valasz['error'], ensure_ascii=False))[:400]
     return szoveg, rekord
 
 
@@ -650,8 +832,11 @@ def valasz_ellenoriz_futashoz(futas_id, szoveg, igehelyek, kimenet_dir):
     return r
 
 
-def koteg_feldolgoz(ctx, futas_id, koteg_no, igehelyek):
-    """Egy köteg: hívás, kapu, egy újrakérés; a köteg-sor mentése."""
+def koteg_feldolgoz(ctx, futas_id, koteg_no, igehelyek, reteg_map=None):
+    """Egy köteg: hívás, kapu, egy újrakérés; a köteg-sor mentése.
+
+    reteg_map ({igehely: réteg}): csak a köteg-sor kjv_forras mezőjének rétegbontásához
+    (F8V3); a régi futásoknál nincs hatása."""
     uzenet = kotegszoveg_futashoz(futas_id, igehelyek, ctx.kimenet_dir)
     uzenetek = [{'role': 'user', 'content': uzenet}]
     nyers = []
@@ -688,6 +873,9 @@ def koteg_feldolgoz(ctx, futas_id, koteg_no, igehelyek):
            'igehelyek': igehelyek, 'nyers': nyers, 'hivasok': hivasrekordok, 'versek': versek}
     if FUTASOK[futas_id].get('ismetles_of'):
         sor['ismetles_of'] = FUTASOK[futas_id]['ismetles_of']
+    kf = kjv_forras_rekord(futas_id, igehelyek, reteg_map)
+    if kf is not None:
+        sor['kjv_forras'] = kf
     koteg_ment(futas_id, ctx.kimenet_dir, sor)
     return versek
 
@@ -707,6 +895,7 @@ def futas(ctx, futas_id, minta, koteg_max=None):
         flush=True)
     hibas_kotegek = 0
     uj_kotegek = 0
+    reteg_map = {s_['igehely']: s_['reteg'] for s_ in minta}
     for no, k in enumerate(kotegek, 1):
         if tuple(k) in kesz:
             continue
@@ -716,7 +905,7 @@ def futas(ctx, futas_id, minta, koteg_max=None):
             break
         uj_kotegek += 1
         try:
-            v = koteg_feldolgoz(ctx, futas_id, no, k)
+            v = koteg_feldolgoz(ctx, futas_id, no, k, reteg_map)
         except PlafonLeallas as e:
             print('  KÖLTSÉGPLAFON a(z) %d. kötegnél: %s' % (no, ctx.tiszta(e)), flush=True)
             raise
@@ -724,6 +913,7 @@ def futas(ctx, futas_id, minta, koteg_max=None):
             hibas_kotegek += 1
             print('  HIBA a(z) %d. kötegnél (kihagyva, újraindításkor újra): %s' % (no, ctx.tiszta(e)),
                   file=sys.stderr, flush=True)
+            hiba_ment(ctx, futas_id, no, e)
             continue
         print('  köteg %d/%d kész, kapuhiba: %d' % (
             no, len(kotegek), sum(1 for r in v.values() if r['allapot'] != 'ok')), flush=True)
@@ -843,7 +1033,7 @@ def _tokenbecsles(f, versek, gondolkodas_c=C_GONDOLKODAS_HIVASONKENT):
     kotegek = bemenet.kotegek(versek, KOTEG_MERET)
     be = ki = 0
     for k in kotegek:
-        szoveg_hossz = len(bemenet.kotegszoveg(k, spec['kjv'], alap))
+        szoveg_hossz = len(bemenet.kotegszoveg(k, spec['kjv'], alap, spec.get('kjv_forras', 'regi')))
         if spec['tipus'] == 'biro':
             # a döntőbírói utasítás hosszabb, és versenként két válasz is jön (A és B,
             # 150-150 token) + a rögzítés-sorok (kb. 40 token/vers); a válasz-JSON
@@ -1002,6 +1192,322 @@ def p3b_kiir(minta):
 
 
 # ---------------------------------------------------------------------------
+# P3c (F21.42): szárazbecslés az F3V3 és a SONNETV3 futásra
+# ---------------------------------------------------------------------------
+
+P3C_C_MERT = ('F3V2', 'F3V2B')                 # a C két mért futása (prompt_v2): a becslés alapja
+P3C_TOKENSZORZOK = (1.00, 1.25, 1.50)          # a Claude tokenizálója héber/görög/magyar szövegen többet adhat
+P3C_UJRAKERES_TARTALEK = 0.10                  # +10% újrakérés-tartalék
+P3C_MERT_ALAPOK = ('F3V3',) + P3C_C_MERT           # F21.70: a Sonnet-becslés mért alapjai (az F3V3 már prompt_v3: R = 1)
+P3C_HIVAS_KOTEGENKENT_KONZ = 1.5               # F21.70: konzervatív hívás/köteg (a C mért max.: 26/20 = 1.30)
+P3C_PROMPT_TARTALEK_TOKEN = 1000               # ha a prompt_v3.md még nincs meg: a v2 hossza + 1000 token/hívás
+P3C_FELHASZNALOI_PLAFON = 4.90                 # a felhasználói döntés (F21.75): plafon_usd (kumulatív megállási küszöb); a kemény korlát PLAFON_USD (5.0)
+
+
+def p3c_kotegszoveg_arany(ig_all, kar_per_token):
+    """A prompt_v3 / prompt_v2 kötegszöveg-arány, MÉRVE: a 10-es kötegek teljes kötegszövegének
+    (utasítás + versblokkok, KJV-val) összkaraktere a két prompttal. Visszaad: (arány, forrás).
+    Ha a prompt_v3.md még nincs meg: a v2 + 1000 token/hívás becslése (karakterre a mért
+    karakter/tokennel váltva)."""
+    import hosszarany
+    kotegek = bemenet.kotegek(ig_all, KOTEG_MERET)
+    h2 = sum(len(bemenet.kotegszoveg(k, True, bemenet.PROMPT_V2_UT)) for k in kotegek)
+    if os.path.exists(bemenet.PROMPT_V3_UT):
+        r = hosszarany.szamol(ig_all)       # R = Σ L_v3 / Σ L_v2 (l. hosszarany.py, naplok/F21P_hosszarany.md)
+        return r['R_k'], ('mért (hosszarany.py definíció: a %d köteg első próbálkozásának teljes bemeneti üzenete, karakter): '
+                          '%d (v3) / %d (v2); UTF-8 bájtban R = %.4f' % (len(kotegek), r['v3']['osszes_k'], r['v2']['osszes_k'], r['R_b']))
+    h3 = h2 + P3C_PROMPT_TARTALEK_TOKEN * kar_per_token * len(kotegek)
+    return h3 / h2, 'BECSLÉS (a prompt_v3.md még nincs meg): +%d token/hívás' % P3C_PROMPT_TARTALEK_TOKEN
+
+
+def p3c_becsles(minta, kimenet_dir=None):
+    """A SONNETV3 szárazbecslése (hálózat nélkül; F21.70: gondolkodás MINIMÁLIS szinten). Visszaad: dict.
+
+    Az F3V3 (C, prompt_v3) és az F8V3 már KÉSZ: a mért költségük a futásnaplóban van, a kumulatív
+    alapja a napló jelenlegi összege (`eddig`); ÚJRA NEM adjuk hozzá.
+    Alap (mért C-token, bemenet × R): az F3V3 (R = 1, mert a prompt_v3-mal futott) és a C két v2-es
+    futása (F3V2, F3V2B; R = a mért prompt_v3/prompt_v2 kötegszöveg-arány). Alapjukra:
+      bemenet_S   = a mért bemenet × R × tokenszorzó (1.00 / 1.25 / 1.50);
+      kimenet_S   = a mért (látható) kimenet × tokenszorzó  (a C gondolkodási tokenje a naplóban
+                    külön oszlopban van; ha az nem nulla, kivonjuk, különben a teljes kimenetet vesszük);
+      gondolkodás = hívásonként FELSŐ érték: S_GONDOLKODAS_HIVASONKENT = 1024 token, kimeneti áron
+                    (a Sonnet reasoning.max_tokens=1024; minden hívás kihasználja: felső eset);
+      hívások     = 20 köteg × hívás/köteg. Mért arány: az alap mért hívásai / kötegei (F3V3: 26/20 =
+                    1.30); konzervatív szorzó: P3C_HIVAS_KOTEGENKENT_KONZ (1.5 hívás/köteg), a bemenetet
+                    és a kimenetet is a hívások arányában skálázva.
+    Az újrakérés-tartalék (+10%) helyett ez a hívásszám-skálázás van (a gondolkodás minden hívásra jut).
+    Kalibráló trigger (SONNETV3, koteg_max=1): egy köteg (a mért köteg-átlag és a legdrágább mért köteg
+    alapján, a köteg MÉRT hívásszámával, gondolkodással)."""
+    kimenet_dir = kimenet_dir or F21P
+    naplo = _tsv(naplo_ut(kimenet_dir)) if os.path.exists(naplo_ut(kimenet_dir)) else []
+    eddig = naplo_osszeg(kimenet_dir)
+    ig_all = [s_['igehely'] for s_ in minta]
+    c_ar = ARAK[MODELLEK['C']]
+    s_ar = ARAK[MODELLEK['S']]
+    kotegek_v2 = bemenet.kotegek(ig_all, KOTEG_MERET)
+    kesz = {}
+    for f in ('F3V3', 'F8V3'):
+        rs = [r for r in naplo if r['futas'] == f]
+        if rs:
+            kesz[f] = {'hivas': len(rs), 'cost': sum(float(r['koltseg_usd']) for r in rs)}
+
+    mert = {}
+    for f in P3C_MERT_ALAPOK:
+        rs = [r for r in naplo if r['futas'] == f]
+        if not rs:
+            continue
+        p1 = [r for r in rs if r['probalkozas'] == '1']
+        kot = {}
+        for r in rs:
+            k_ = kot.setdefault(r['koteg'], {'be': 0, 'ki': 0, 'gond': 0, 'hivas': 0})
+            k_['be'] += int(r['bemenet_token'])
+            k_['ki'] += int(r['kimenet_token'])
+            k_['gond'] += int(r['gondolkodas_token'])
+            k_['hivas'] += 1
+        mert[f] = {'hivas': len(rs), 'be': sum(k_['be'] for k_ in kot.values()),
+                   'ki': sum(k_['ki'] for k_ in kot.values()), 'gond': sum(k_['gond'] for k_ in kot.values()),
+                   'cost': sum(float(r['koltseg_usd']) for r in rs),
+                   'be_p1': sum(int(r['bemenet_token']) for r in p1), 'kotegek': len(kot), 'kot': kot}
+    # a Gemini mért karakter/tokenje: a v2-kötegszövegek karaktere / az első hívások tokenje (csak a v2-alapokból)
+    kar_v2 = sum(len(bemenet.kotegszoveg(k, True, bemenet.PROMPT_V2_UT)) for k in kotegek_v2)
+    mert_p1 = [m_['be_p1'] for f, m_ in mert.items() if f != 'F3V3']
+    c_kpt = kar_v2 / (sum(mert_p1) / len(mert_p1)) if mert_p1 else KAR_PER_TOKEN
+    R_v2, r_forras = p3c_kotegszoveg_arany(ig_all, c_kpt)
+    for f, m_ in mert.items():
+        m_['R'] = 1.0 if f == 'F3V3' else R_v2
+
+    n_koteg = len(kotegek_v2)
+    sonnet = []
+    for f, m_ in mert.items():
+        vis_ki = m_['ki'] - m_['gond']
+        meres_arany = m_['hivas'] / m_['kotegek']
+        skala = P3C_HIVAS_KOTEGENKENT_KONZ / meres_arany
+        for sz in P3C_TOKENSZORZOK:
+            be_s = m_['be'] * m_['R'] * sz
+            ki_s = vis_ki * sz
+            gond_s = m_['hivas'] * S_GONDOLKODAS_HIVASONKENT
+            c_mert = be_s / 1e6 * s_ar[0] + (ki_s + gond_s) / 1e6 * s_ar[1]
+            c_kons = c_mert * skala
+            sonnet.append({'alap': f, 'szorzo': sz, 'hivas_mert': m_['hivas'], 'hivas_kons': round(n_koteg * P3C_HIVAS_KOTEGENKENT_KONZ),
+                           'be': be_s, 'ki': ki_s, 'gond': gond_s, 'cost_mert': c_mert, 'cost_kons': c_kons,
+                           'kum_mert': eddig + c_mert, 'kum_kons': eddig + c_kons,
+                           'gond_nelkul_mert': be_s / 1e6 * s_ar[0] + ki_s / 1e6 * s_ar[1]})
+    # kalibráló trigger: egy köteg (koteg_max=1) a Sonnetből; a köteg mért hívásszámával, 1024 gondolkodási tokennel / hívás
+    kalibralo = []
+    for f, m_ in mert.items():
+        for sz in P3C_TOKENSZORZOK:
+            def kot_cost(k_):
+                return ((k_['be'] * m_['R'] * sz) / 1e6 * s_ar[0]
+                        + ((k_['ki'] - k_['gond']) * sz + k_['hivas'] * S_GONDOLKODAS_HIVASONKENT) / 1e6 * s_ar[1])
+            koltsegek = {n: kot_cost(k_) for n, k_ in m_['kot'].items()}
+            legdragabb = max(koltsegek, key=koltsegek.get)
+            atlag = sum(koltsegek.values()) / len(koltsegek)
+            kalibralo.append({'alap': f, 'szorzo': sz, 'atlag': atlag, 'legdragabb': koltsegek[legdragabb],
+                              'kumulativ_legdragabb': eddig + koltsegek[legdragabb]})
+    return {'eddig': eddig, 'mert': mert, 'kesz': kesz, 'c_kar_per_token': c_kpt, 'arany': R_v2, 'arany_forras': r_forras,
+            'sonnet': sonnet, 'kalibralo': kalibralo}
+
+
+def p3c_jelzes(kum):
+    """A kumulatív összeg jelzése a felhasználói (4,90) és a kemény (5,0) plafonhoz."""
+    if kum > PLAFON_USD:
+        return '>> MEGHALADJA a %.1f USD kemény plafont' % PLAFON_USD
+    if kum > P3C_FELHASZNALOI_PLAFON:
+        return '>> meghaladja a %.2f USD (plafon_usd) plafont' % P3C_FELHASZNALOI_PLAFON
+    return 'belefér'
+
+
+def p3c_kiir(minta):
+    r = p3c_becsles(minta)
+    print()
+    print('P3c SZÁRAZ BECSLÉS (SONNETV3: %s, prompt_v3, gondolkodás MINIMÁLIS: reasoning.max_tokens=1024 -> effort=low; '
+          '200 vers, hálózat nélkül)' % MODELLEK['S'])
+    print('  KÉSZ futások (a mért költségük már a naplóban van, a kumulatívhoz NEM adjuk hozzá újra): %s' % (
+        '; '.join('%s: %d hívás, %.6f USD' % (f, k_['hivas'], k_['cost']) for f, k_ in r['kesz'].items()) or 'nincs'))
+    print('  árak (USD/1M token, bemenet/kimenet): Sonnet %.2f/%.2f; a gondolkodási token kimeneti áron, hívásonként legfeljebb %d token' % (
+        *ARAK[MODELLEK['S']], S_GONDOLKODAS_HIVASONKENT))
+    print('  prompt_v3 / prompt_v2 kötegszöveg-arány R = %.4f (a v2-es alapokra; az F3V3 már v3: R = 1; %s)' % (r['arany'], r['arany_forras']))
+    for f, m_ in r['mert'].items():
+        print('  mért alap %s: bemenet %d, kimenet %d token, %d hívás / %d köteg (%.2f hívás/köteg), cost %.4f USD (C ára)' % (
+            f, m_['be'], m_['ki'], m_['hivas'], m_['kotegek'], m_['hivas'] / m_['kotegek'], m_['cost']))
+    print('  SONNETV3 teljes futás (bemenet = mért × R × tokenszorzó; kimenet = mért × tokenszorzó; gondolkodás = mért hívás × %d token; '
+          'FELSŐ ESET: minden hívás kihasználja az 1024-et):' % S_GONDOLKODAS_HIVASONKENT)
+    print('    "mért" = az alap mért hívásszámával; "konz." = %.1f hívás/köteg (%d hívás; mért max. 1.30), a tokenek arányosan skálázva' % (
+        P3C_HIVAS_KOTEGENKENT_KONZ, round(len(bemenet.kotegek([s_['igehely'] for s_ in minta], KOTEG_MERET)) * P3C_HIVAS_KOTEGENKENT_KONZ)))
+    print('    %-7s %6s %11s %11s %11s %10s %10s %10s %11s %11s  %s' % (
+        'alap', 'szorzó', 'bemenet_tok', 'kimenet_tok', 'gondol_tok', 'gond. nélk.', 'USD mért', 'USD konz.', 'kum. mért', 'kum. konz.', 'jelzés (konz.)'))
+    for x in r['sonnet']:
+        print('    %-7s %6.2f %11d %11d %11d %10.4f %10.4f %10.4f %11.4f %11.4f  %s' % (
+            x['alap'], x['szorzo'], x['be'], x['ki'], x['gond'], x['gond_nelkul_mert'], x['cost_mert'], x['cost_kons'],
+            x['kum_mert'], x['kum_kons'], p3c_jelzes(x['kum_kons'])))
+    print('  kalibráló trigger (SONNETV3, koteg_max=1; egy köteg a mért hívásszámával és 1024 gondolkodási tokennel / hívás; a mért köteg-átlag és a legdrágább mért köteg):')
+    print('    %-7s %6s %10s %12s %22s' % ('alap', 'szorzó', 'átlag USD', 'legdrágább', 'kumulatív (legdrágább)'))
+    for x in r['kalibralo']:
+        print('    %-7s %6.2f %10.4f %12.4f %22.4f' % (x['alap'], x['szorzo'], x['atlag'],
+                                                      x['legdragabb'], x['kumulativ_legdragabb']))
+    print('  a futásnapló eddigi összege: %.6f USD (az F3V3 és az F8V3 már benne van); felhasználói plafon_usd (küszöb) %.2f, kemény plafon %.1f USD (kumulatív)' % (
+        r['eddig'], P3C_FELHASZNALOI_PLAFON, PLAFON_USD))
+    print('  ÖSSZEGZŐ TÁBLA (sorrend: 1. kalibráló SONNETV3 köteg, 2. teljes SONNETV3; tokenszorzónként az alapok közül a legnagyobb; '
+          'kumulatív = napló + Sonnet; küszöb %.2f, kemény %.1f USD):' % (P3C_FELHASZNALOI_PLAFON, PLAFON_USD))
+    print('    %6s %10s %16s %16s %16s %16s  %s' % ('szorzó', 'napló', '+kalibr. köteg', 'Sonnet (mért)', 'Sonnet (konz.)', 'kumulatív (konz.)', 'jelzés'))
+    tullep = []
+    for sz in P3C_TOKENSZORZOK:
+        xs = [x for x in r['sonnet'] if x['szorzo'] == sz]
+        x = max(xs, key=lambda q: q['cost_kons'])
+        x_m = max(xs, key=lambda q: q['cost_mert'])
+        kal = max(k_['legdragabb'] for k_ in r['kalibralo'] if k_['szorzo'] == sz)
+        jel = p3c_jelzes(x['kum_kons'])
+        if jel != 'belefér':
+            tullep.append((sz, jel))
+        print('    %6.2f %10.4f %16.4f %16.4f %16.4f %16.4f  %s' % (
+            sz, r['eddig'], r['eddig'] + kal, x_m['cost_mert'], x['cost_kons'], x['kum_kons'], jel))
+    print('  %s' % ('>>> LEGALÁBB EGY SZCENÁRIÓ átlépi a küszöböt/plafont: %s' % '; '.join('%.2f: %s' % t for t in tullep) if tullep
+                    else 'minden szcenárió belefér a %.2f USD küszöbbe' % P3C_FELHASZNALOI_PLAFON))
+    p3c_mert_tabla(r, minta)
+    return r
+
+
+P3C_UJRAKERESI_SZORZOK = (1.0, 1.2, 1.3)
+
+
+def p3c_mert_tabla(r, minta):
+    """F21.75: a SONNETV3 TELJES futásának vetítése a MÉRT kalibráló köteg-költségből (ha van SONNETV3 naplósor):
+    kumulatív = napló + hátralévő köteg × a mért első próbás köteg-átlag × újrakérési szorzó (1.0 / 1.2 / 1.3);
+    viszonyítva a felhasználói küszöbhöz (4.90) és a kemény plafonhoz (5.0)."""
+    naplo = _tsv(naplo_ut(F21P)) if os.path.exists(naplo_ut(F21P)) else []
+    rs = [x_ for x_ in naplo if x_['futas'] == 'SONNETV3']
+    if not rs:
+        return
+    p1 = [x_ for x_ in rs if x_['probalkozas'] == '1']
+    kesz_db = len({x_['koteg'] for x_ in rs})
+    osszes = len(bemenet.kotegek([s_['igehely'] for s_ in minta], KOTEG_MERET))
+    hatra = max(osszes - kesz_db, 0)
+    atlag = sum(float(x_['koltseg_usd']) for x_ in p1) / kesz_db
+    print('  SONNETV3 TELJES FUTÁS a MÉRT köteg-költségből (%d kész köteg, mért első próbás átlag %.6f USD/köteg; %d hátralévő köteg):' % (
+        kesz_db, atlag, hatra))
+    print('    %12s %10s %14s %14s  %s' % ('újrakérési szorzó', 'napló', 'hátralévő', 'kumulatív', 'jelzés (küszöb %.2f, kemény %.1f)' % (
+        P3C_FELHASZNALOI_PLAFON, PLAFON_USD)))
+    for m_ in P3C_UJRAKERESI_SZORZOK:
+        kum = r['eddig'] + hatra * atlag * m_
+        print('    %17.1f %10.6f %14.4f %14.4f  %s' % (m_, r['eddig'], hatra * atlag * m_, kum, p3c_jelzes(kum)))
+
+
+# ---------------------------------------------------------------------------
+# F8V3 (F21.62): szárazbecslés (KJV a teljes táblából, prompt_v3, C)
+# ---------------------------------------------------------------------------
+
+F8V3_FELHASZNALOI_BECSLES = (0.26, 0.30)    # a felhasználó becslése az F8V3 költségére (USD)
+
+
+def f8v3_becsles(minta, kimenet_dir=None):
+    """Az F8V3 szárazbecslése az F3V3 MÉRT tokenjeiből (hálózat nélkül). Visszaad: dict.
+
+    Alap: az F3V3 mért naplósorai (hívásonként bemeneti/kimeneti token és cost, az újrakérésekkel
+    együtt). Kimenet: az F3V3 mért kimenete (a KJV-sor nem növeli). Bemenet: az F3V3 mért
+    bemenete + a KJV-többlet:
+      * karakter/token = az F3V3 kötegszövegeinek (régi KJV-forrás) összkaraktere / az első
+        próbálkozású hívások mért bemeneti tokenje;
+      * FELSŐ (a felhasználói meghatározás): csak azok a versek, amelyek az F3V3-ban nem kaptak
+        KJV-sort (R2-R4), de a teljes táblából kapnak: a KJV-sorok karaktere (a 'KJV-TÁMPONT: '
+        előtaggal és a sortöréssel), kötegenként annyiszor, ahányszor az F3V3 a köteget hívta
+        (az újrakérés a teljes üzenetet újra küldi); az R1 KJV-soraiban a teljes tábla szó-szintű
+        sorai rövidebbek, ennek megtakarítását a felső becslés nem számítja;
+      * KÖZÉPSŐ: a nettó karakterkülönbség (a teljes forrásból épített kötegszöveg - a régi
+        forrásból épített), vagyis az R1 megtakarítással;
+      * költség: a felső a C listaáráért (0.75 USD / 1M bemeneti token, gyorsítótár-kedvezmény
+        nélkül), a középső a C MÉRT effektív bemeneti árán ((mért cost - kimenet x 3.75/1M) /
+        mért bemenet; ez az újrakérések gyorsítótár-kedvezményét tartalmazza);
+      * +10% újrakérés-tartalék a kumulatívhoz.
+    Kumulatív: a napló jelenlegi összege + az F8V3 becslése; a 4.90 küszöbhöz és az 5.0 kemény
+    plafonhoz viszonyítva. FIGYELEM: a kumulatív a napló összegét tartalmazza, amely az F3V3
+    mért költségét már magában foglalja; az F8V3 egy külön, új futás (külön naplósorok)."""
+    kimenet_dir = kimenet_dir or F21P
+    naplo = _tsv(naplo_ut(kimenet_dir)) if os.path.exists(naplo_ut(kimenet_dir)) else []
+    eddig = naplo_osszeg(kimenet_dir)
+    sorok = [r for r in naplo if r['futas'] == 'F3V3']
+    if not sorok:
+        return {'eddig': eddig, 'f3v3_van': False}
+    c_ar = ARAK[MODELLEK['C']]
+    ig_all = [s_['igehely'] for s_ in minta]
+    kotegek = bemenet.kotegek(ig_all, KOTEG_MERET)
+    alap = FUTASOK['F3V3'].get('prompt')
+    be = sum(int(r['bemenet_token']) for r in sorok)
+    ki = sum(int(r['kimenet_token']) for r in sorok)
+    cost = sum(float(r['koltseg_usd']) for r in sorok)
+    be_p1 = sum(int(r['bemenet_token']) for r in sorok if r['probalkozas'] == '1')
+    hivas_koteg = {}
+    for r in sorok:
+        hivas_koteg[int(r['koteg'])] = hivas_koteg.get(int(r['koteg']), 0) + 1
+    kar_regi = [len(bemenet.kotegszoveg(k, True, alap, 'regi')) for k in kotegek]
+    kar_uj = [len(bemenet.kotegszoveg(k, True, alap, 'teljes')) for k in kotegek]
+    kpt = sum(kar_regi) / be_p1                      # az F3V3 mért karakter/tokenje (első próbálkozások)
+    felso_kar = netto_kar = 0.0
+    kjv_kar_felso = 0
+    for i, k in enumerate(kotegek, 1):
+        n = hivas_koteg.get(i, 1)
+        extra = 0
+        for ig in k:
+            if tokenek.kjv_tamapont(ig) is None:
+                t = tokenek.kjv_tamapont_teljes(ig)
+                if t:
+                    extra += 1 + len('KJV-TÁMPONT: ') + len(t)
+        kjv_kar_felso += extra
+        felso_kar += n * extra
+        netto_kar += n * (kar_uj[i - 1] - kar_regi[i - 1])
+    p_lista = c_ar[0] / 1e6
+    p_eff = (cost - ki * c_ar[1] / 1e6) / be
+    d_felso = felso_kar / kpt
+    d_netto = netto_kar / kpt
+    felso = cost + d_felso * p_lista
+    kozepso = cost + d_netto * p_eff
+    r = {'f3v3_van': True, 'eddig': eddig, 'hivas': len(sorok), 'be': be, 'ki': ki, 'cost': cost,
+         'kar_per_token': kpt, 'kjv_kar_r234': kjv_kar_felso, 'felso_kar': felso_kar, 'netto_kar': netto_kar,
+         'd_felso': d_felso, 'd_netto': d_netto, 'p_lista': p_lista, 'p_eff': p_eff,
+         'felso': felso, 'kozepso': kozepso}
+    for nev in ('felso', 'kozepso'):
+        r[nev + '_tartalekkal'] = r[nev] * (1 + P3C_UJRAKERES_TARTALEK)
+        r[nev + '_kum'] = eddig + r[nev]
+        r[nev + '_kum_tartalekkal'] = eddig + r[nev + '_tartalekkal']
+    return r
+
+
+def f8v3_kiir(minta):
+    r = f8v3_becsles(minta)
+    print()
+    print('F8V3 SZÁRAZ BECSLÉS (C, prompt_v3, KJV-támpont a teljes táblából; az F3V3 mért tokenjeiből; hálózat nélkül)')
+    f8_naplo = [x for x in (_tsv(naplo_ut(F21P)) if os.path.exists(naplo_ut(F21P)) else []) if x['futas'] == 'F8V3']
+    if f8_naplo:
+        print('  >>> KÉSZ: az F8V3 lefutott, a mért költsége a naplóban: %d hívás, %.6f USD (a napló összege %.6f USD már tartalmazza; '
+              'az alábbi becslés csak dokumentáció, a kumulatív sorát NEM kell hozzáadni)' % (
+                  len(f8_naplo), sum(float(x['koltseg_usd']) for x in f8_naplo), r['eddig']))
+    if not r['f3v3_van']:
+        print('  nincs F3V3 naplósor a futásnaplóban: a becslés nem adható (a napló összege %.6f USD)' % r['eddig'])
+        return r
+    print('  az F3V3 mért értékei: %d hívás, bemenet %d token, kimenet %d token, költség %.6f USD' % (
+        r['hivas'], r['be'], r['ki'], r['cost']))
+    print('  mért karakter/token (az F3V3 kötegszövegei / az első hívások bemeneti tokenje): %.3f' % r['kar_per_token'])
+    print('  KJV-többlet (R2-R4: az F3V3-ban KJV nélküli, a teljes táblából KJV-sort kapó versek; 1 hívás/köteg): %d karakter; '
+          'a hívások számával súlyozva %d karakter = %d token' % (r['kjv_kar_r234'], r['felso_kar'], round(r['d_felso'])))
+    print('  nettó karakterkülönbség (R1 megtakarítással): %d karakter = %d token' % (r['netto_kar'], round(r['d_netto'])))
+    print('  bemeneti ár: lista %.3f USD/1M, mért effektív %.3f USD/1M' % (r['p_lista'] * 1e6, r['p_eff'] * 1e6))
+    print('  %-34s %10s %12s %14s %14s' % ('', 'F8V3 USD', '+10% tart.', 'kumulatív', 'kum. +10%'))
+    for nev, cim in (('kozepso', 'középső (nettó, mért ár)'), ('felso', 'felső (R2-R4 többlet, listaár)')):
+        print('  %-34s %10.4f %12.4f %14.4f %14.4f' % (cim, r[nev], r[nev + '_tartalekkal'], r[nev + '_kum'], r[nev + '_kum_tartalekkal']))
+    lo, hi = F8V3_FELHASZNALOI_BECSLES
+    print('  a felhasználó becslése: %.2f-%.2f USD; a mi sávunk (nettó .. felső, tartalék nélkül): %.4f-%.4f USD -> %s' % (
+        lo, hi, r['kozepso'], r['felso'],
+        'a sáv a felhasználói sávon belül van' if lo <= r['kozepso'] and r['felso'] <= hi
+        else ('a sáv részben kívül esik a felhasználói sávon' if r['felso'] >= lo and r['kozepso'] <= hi else 'a sáv a felhasználói sávon kívül van')))
+    jel = p3c_jelzes(r['felso_kum_tartalekkal'])
+    if f8_naplo:
+        print('  (kész futás: a kumulatív sor a napló összegét [%.6f USD, az F8V3-mal együtt] dupla számolná: kihagyva)' % r['eddig'])
+    else:
+        print('  kumulatív a naplóval (%.6f USD) + a felső becslés +10%%: %.4f USD; küszöb %.2f, kemény plafon %.1f USD: %s' % (
+            r['eddig'], r['felso_kum_tartalekkal'], P3C_FELHASZNALOI_PLAFON, PLAFON_USD, jel))
+    return r
+
+
+# ---------------------------------------------------------------------------
 # --onteszt: MOCK küldővel, hálózat és kulcs nélkül
 # ---------------------------------------------------------------------------
 
@@ -1033,7 +1539,12 @@ class MockKuldo:
 
     def __init__(self, hibas_elso=(), hibas_mindig=(), nem_json_hivas=(), c_minimal_400=True,
                  koltseg_szorzo=1.0, biro_rossz_elso=(), biro_rossz_mindig=(),
-                 egyedi_hibas_mindig=(), biro_strong_elso=(), biro_strong_mindig=(), b_variacio=None):
+                 egyedi_hibas_mindig=(), biro_strong_elso=(), biro_strong_mindig=(), b_variacio=None,
+                 s_max_tokens_400=False, s_minden_400=False):
+        # F21.70: az S (Sonnet) gondolkodása kötelező (reasoning nélkül 400); s_max_tokens_400: a
+        # reasoning.max_tokens-t 400-zal elutasítja (a lánc 2. lépése: effort=low); s_minden_400: bármely reasoning-ot
+        self.s_max_tokens_400 = s_max_tokens_400
+        self.s_minden_400 = s_minden_400
         # b_variacio: azok a versek, ahol a B eltér az A-tól (None: az igehely hash%4==0 szabálya)
         self.b_variacio = None if b_variacio is None else set(b_variacio)
         # egyedi_hibas_mindig: {(modell_id, igehely)} - csak az adott modell (és csak nem
@@ -1104,6 +1615,12 @@ class MockKuldo:
         self.kulcsok.append(api_key)
         if model_id == MODELLEK['C'] and self.c_minimal_400 and (extra.get('reasoning') or {}).get('effort') == 'minimal':
             return _MockValasz({'error': 'reasoning.effort minimal nem támogatott'}, status=400)
+        if model_id == MODELLEK['S']:
+            rz = extra.get('reasoning')
+            if rz is None or 'temperature' in extra:
+                return _MockValasz({'error': 'Reasoning is mandatory for this endpoint and cannot be disabled.'}, status=400)
+            if self.s_minden_400 or (self.s_max_tokens_400 and 'max_tokens' in rz):
+                return _MockValasz({'error': 'reasoning %s nem támogatott' % rz}, status=400)
         n = self.sorszam[model_id] = self.sorszam.get(model_id, 0) + 1
         van_assistant = any(m['role'] == 'assistant' for m in uzenetek)
         igehelyek = self._versek(uzenetek[-1]['content'])
@@ -1117,7 +1634,7 @@ class MockKuldo:
         be = sum(len(m['content']) for m in uzenetek) // 3
         ki = len(tartalom) // 3
         ar_be, ar_ki = ARAK[model_id]
-        gond = 200 if model_id == MODELLEK['C'] else 0
+        gond = 200 if model_id == MODELLEK['C'] else (300 if model_id == MODELLEK['S'] else 0)
         usage = {'prompt_tokens': be, 'completion_tokens': ki + gond}
         if n % 2 == 0:
             usage['output_tokens_details'] = {'reasoning_tokens': gond}     # tartalék alak
@@ -1236,10 +1753,10 @@ def onteszt_p3b(ellen, minta, teszt_kulcs, kimenet):
     ellen(vezerlo_beolvas(vez)['futasok'] == ['F4V2'], 'vezérlő: az egyedül álló F4V2 elutasítva')
     vez_ir('futasok=F1,F4\nkoteg_max=mind\n')
     ellen(_hibas(lambda: vezerlo_beolvas(vez)), 'vezérlő: a régi F4 más futással együtt elfogadva')
-    for jo in ('2', '2.0', '3', '3.0', '0.5'):
+    for jo in ('2', '2.0', '3', '3.0', '3.01', '3.9', '3.90', '4', '4.0', '4.01', '4.90', '5', '5.0', '0.5'):
         vez_ir('futasok=F1V2\nkoteg_max=1\nplafon_usd=%s\n' % jo)
         ellen(vezerlo_beolvas(vez)['plafon_usd'] == float(jo), 'plafon_usd=%s elutasítva' % jo)
-    for rossz in ('x', '0', '-1', '3.01', '10', 'nan', 'inf', '', '1,5'):
+    for rossz in ('x', '0', '-1', '5.01', '10', 'nan', 'inf', '', '1,5'):
         vez_ir('futasok=F1V2\nkoteg_max=1\nplafon_usd=%s\n' % rossz)
         ellen(_hibas(lambda: vezerlo_beolvas(vez)), 'plafon_usd=%r elfogadva' % rossz)
     ctx_p = Kontextus(MockKuldo(), teszt_kulcs, mappa)
@@ -1252,7 +1769,7 @@ def onteszt_p3b(ellen, minta, teszt_kulcs, kimenet):
     vez_ir('futasok=F1V2\nkoteg_max=1\n')
     ctx_q = Kontextus(MockKuldo(), teszt_kulcs, mappa_p)
     vezerlo_futtat(ctx_q, vez, minta)
-    ellen(ctx_q.plafon == PLAFON_USD, 'plafon_usd nélkül a plafon nem a 3.0 kemény korlát: %s' % ctx_q.plafon)
+    ellen(ctx_q.plafon == PLAFON_USD, 'plafon_usd nélkül a plafon nem az 5.0 kemény korlát: %s' % ctx_q.plafon)
 
     # --- a teljes P3b egy triggerben, rendezetlenül felsorolva, plafon_usd=2 ------------------
     vez_ir('futasok=F4V2,F1V2,F5V2,F6V2,F3V2B,F2V2\nkoteg_max=mind\nplafon_usd=2\n')
@@ -1456,6 +1973,683 @@ def onteszt_p3b(ellen, minta, teszt_kulcs, kimenet):
           'befagyasztás: a módosított prompt_v2.md-t nem vette észre')
     kimenet.append('befagyasztás: prompt_v1/v2/biro_v2 és arany v2 sha256 egyezik; a módosított prompt_v2 másolatot észreveszi')
     return mappak
+
+
+def onteszt_p3c(ellen, minta, teszt_kulcs, kimenet):
+    """A P3c (F3V3, SONNETV3) önteszt-ágai MOCK küldővel, hálózat és kulcs nélkül.
+
+    Ágak: az új azonosítók, a vezérlő (egyenként és együtt, a régiek érintetlenek), a Sonnet
+    paraméterei (gondolkodás kikapcsolva: a valódi küldő kérés-törzse hamis `requests`-szel),
+    a naplóoszlopok (gondolkodas_mod, prompt_sha256_12, modell), a hívás előtti plafon-
+    becslés a Sonnet árával, a prompt_v3 és az arany befagyasztásának ellenőrzése (hiány és
+    eltérés: 2-es kilépési kód, hívás nélkül).
+    A prompt_v3.md-t a teszt ideiglenes helyettesítővel váltja ki (a valódit az Opus-végrehajtó
+    készíti); a FUTASOK módosítását a végén visszaállítja.
+    kimenet: bizonyító sorok; visszaad: az ideiglenes könyvtárak listája."""
+    import hashlib
+    import types
+    global ELOFELTETEL_GYOKER
+    mappak = []
+    S, C = MODELLEK['S'], MODELLEK['C']
+    ig_all = [s_['igehely'] for s_ in minta]
+
+    # --- az új azonosítók és beállítások (a régiek érintetlenek) ---------------------------------
+    regi_idk = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F3V2', 'F1V2', 'F2V2', 'F5V2', 'F6V2', 'F3V2B', 'F4V2']
+    ellen(list(FUTASOK) == regi_idk + ['SONNETV3', 'F3V3', 'F8V3'], 'P3c: a FUTASOK sorrendje/tartalma nem a régiek + SONNETV3, F3V3, F8V3: %s' % list(FUTASOK))
+    ellen(S == 'anthropic/claude-sonnet-5.5' and ARAK[S] == (2.0, 10.0),
+          'P3c: a Sonnet azonosítója/ára nem anthropic/claude-sonnet-5.5, 2.0/10.0: %s %s' % (S, ARAK.get(S)))
+    ellen(ARAK[C] == (0.75, 3.75) and ARAK[MODELLEK['A']] == (0.25, 1.50) and ARAK[MODELLEK['B']] == (0.14, 0.28),
+          'P3c: a régi modell-árak megváltoztak')
+    ellen(FUTASOK['F3V3'] == {'modell': 'C', 'tipus': 'parosit', 'kjv': True, 'reteg': None, 'prompt': bemenet.PROMPT_V3_UT}
+          and FUTASOK['SONNETV3'] == {'modell': 'S', 'tipus': 'parosit', 'kjv': True, 'reteg': None, 'prompt': bemenet.PROMPT_V3_UT},
+          'P3c: az F3V3/SONNETV3 definíciója hibás')
+    ellen(bemenet.PROMPT_V3_UT.endswith(os.path.join('f21p', 'prompt_v3.md')), 'P3c: a PROMPT_V3_UT nem f21p/prompt_v3.md')
+    ellen(MAX_TOKENS == 12000 and KOTEG_MERET == 10, 'P3c: max_tokens / köteg-méret megváltozott')
+
+    mappa = tempfile.mkdtemp(prefix='f21p_onteszt_p3c_')
+    mappak.append(mappa)
+    with open(bemenet.PROMPT_V2_UT, encoding='utf-8') as f:
+        v2_szoveg = f.read()
+    v3_ut = os.path.join(mappa, 'prompt_v3_teszt.md')
+    with open(v3_ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write(v2_szoveg.replace(bemenet.VEGE, '\nP3c-önteszt: a prompt_v3 ideiglenes helyettesítője.\n' + bemenet.VEGE))
+    eredeti_prompt = {f_: FUTASOK[f_]['prompt'] for f_ in V3_FUTASOK}
+    eredeti_gyoker = ELOFELTETEL_GYOKER
+    eredeti_kuldo = fordit._valodi_http_kuldo
+    eredeti_kulcs = os.environ.get('OPENROUTER_API_KEY')
+    for f_ in V3_FUTASOK:
+        FUTASOK[f_]['prompt'] = v3_ut
+    try:
+        sha_v2 = bemenet.prompt_sha256(bemenet.PROMPT_V2_UT)[:12]
+        sha_v3 = bemenet.prompt_sha256(v3_ut)[:12]
+        ellen(sha_v2 != sha_v3 and utasitas_sha12('F3V3') == sha_v3 and utasitas_sha12('SONNETV3') == sha_v3
+              and utasitas_sha12('F3V2') == sha_v2, 'P3c: a prompt-azonosítók hibásak')
+
+        # --- a vezérlő --------------------------------------------------------------------------
+        vez = os.path.join(mappa, 'futtatas_teszt.txt')
+
+        def vez_ir(tartalom):
+            with open(vez, 'w', encoding='utf-8', newline='\n') as f:
+                f.write(tartalom)
+
+        vez_ir('futasok=F3V3,SONNETV3\nkoteg_max=mind\nplafon_usd=2\n')
+        v = vezerlo_beolvas(vez)
+        ellen(v['futasok'] == ['SONNETV3', 'F3V3'] and v['plafon_usd'] == 2.0 and v['koteg_max'] is None,
+              'P3c vezérlő: az F3V3,SONNETV3 sor értelmezése hibás (a futási sorrend: SONNETV3, F3V3): %s' % (v,))
+        for egy in ('F3V3', 'SONNETV3'):
+            vez_ir('futasok=%s\nkoteg_max=1\n' % egy)
+            ellen(vezerlo_beolvas(vez)['futasok'] == [egy], 'P3c vezérlő: az egyenként álló %s elutasítva' % egy)
+        vez_ir('futasok=F3V3,F3V2B,F1,SONNETV3\nkoteg_max=mind\n')
+        ellen(vezerlo_beolvas(vez)['futasok'] == ['F1', 'F3V2B', 'SONNETV3', 'F3V3'],
+              'P3c vezérlő: a régi és új azonosítók vegyes sora rosszul rendeződik')
+        vez_ir('futasok=F4,F3V3\nkoteg_max=mind\n')
+        ellen(_hibas(lambda: vezerlo_beolvas(vez)), 'P3c vezérlő: a régi F4 az F3V3-mal együtt elfogadva')
+        vez_ir('futasok=F3V3,F3V3\nkoteg_max=mind\n')
+        ellen(_hibas(lambda: vezerlo_beolvas(vez)), 'P3c vezérlő: az ismételt F3V3 elfogadva')
+        vez_ir('futasok=F3V3\nkoteg_max=1\nplafon_usd=5.01\n')
+        ellen(_hibas(lambda: vezerlo_beolvas(vez)), 'P3c vezérlő: az 5 USD fölötti plafon_usd elfogadva')
+        for jo_ in ('4.01', '4.90', '5.0'):
+            vez_ir('futasok=F3V3\nkoteg_max=1\nplafon_usd=%s\n' % jo_)
+            ellen(vezerlo_beolvas(vez)['plafon_usd'] == float(jo_), 'P3c vezérlő: a plafon_usd=%s elutasítva' % jo_)
+        vez_ir('futasok=F1V2,F2V2,F5V2,F6V2,F3V2B,F4V2\nkoteg_max=mind\nplafon_usd=2\n')
+        ellen(vezerlo_beolvas(vez)['futasok'] == ['F1V2', 'F2V2', 'F5V2', 'F6V2', 'F3V2B', 'F4V2'],
+              'P3c vezérlő: a P3b-sor értelmezése megváltozott')
+
+        # --- a workflow (f21r_regresszio.yml) formátuma: megjegyzések, három kulcs; koteg_max=1 = 1 köteg/futás ---
+        vez_ir('# megjegyzés\nfutasok=F3V3,SONNETV3\nkoteg_max=1\nplafon_usd=4.90\n')
+        vw = vezerlo_beolvas(vez)
+        ellen(vw == {'futasok': ['SONNETV3', 'F3V3'], 'koteg_max': 1, 'plafon_usd': 4.9},
+              'P3c vezérlő: a workflow-formátum értelmezése hibás: %s' % (vw,))
+        mappa_w = tempfile.mkdtemp(prefix='f21p_onteszt_p3c_wf_')
+        mappak.append(mappa_w)
+        mock_w = MockKuldo()
+        ctx_w = Kontextus(mock_w, teszt_kulcs, mappa_w)
+        kod_w = vezerlo_futtat(ctx_w, vez, minta)
+        ellen(kod_w == 0 and ctx_w.plafon == 4.9 and len(eredmenyek_betolt('SONNETV3', mappa_w)) == 10
+              and len(eredmenyek_betolt('F3V3', mappa_w)) == 10 and len(mock_w.hivasok) == 2
+              and [m_ for m_, _, _ in mock_w.hivasok] == [S, C],
+              'P3c vezérlő: koteg_max=1 nem futásonként 1 köteg (10 vers), vagy a sorrend nem Sonnet, C (hívások: %d)'
+              % len(mock_w.hivasok))
+        for egy in ('SONNETV3', 'F3V3'):
+            vez_ir('futasok=%s\nkoteg_max=1\nplafon_usd=3.90\n' % egy)
+            mappa_e1 = tempfile.mkdtemp(prefix='f21p_onteszt_p3c_egy_')
+            mappak.append(mappa_e1)
+            mock_e1 = MockKuldo()
+            kod_e1 = vezerlo_futtat(Kontextus(mock_e1, teszt_kulcs, mappa_e1), vez, minta)
+            ellen(kod_e1 == 0 and len(mock_e1.hivasok) == 1 and len(eredmenyek_betolt(egy, mappa_e1)) == 10,
+                  'P3c vezérlő: a %s egyedül, koteg_max=1 nem pontosan egy hívás / 10 vers' % egy)
+        sablon_ut = os.path.join(tokenek.ROOT, 'f21p', 'futtatas_v3.txt.minta')
+        if os.path.exists(sablon_ut):
+            vs_ = vezerlo_beolvas(sablon_ut)
+            ellen(bool(vs_['futasok']) and set(vs_['futasok']) <= set(V3_FUTASOK) and vs_['plafon_usd'] is not None
+                  and 0 < vs_['plafon_usd'] <= PLAFON_USD,
+                  'P3c vezérlő: a trigger-sablon (f21p/futtatas_v3.txt.minta) nem érvényes vezérlő: %s' % (vs_,))
+
+        # --- a teljes P3c egy triggerben, plafon_usd=2 ---------------------------------------------
+        rec = []
+        mock = MockKuldo()
+
+        def kuldo(model_id, uzenetek, api_key, extra):
+            rec.append((model_id, dict(extra)))
+            return mock(model_id, uzenetek, api_key, extra)
+
+        ctx = Kontextus(kuldo, teszt_kulcs, mappa)
+        vez_ir('futasok=F3V3,SONNETV3\nkoteg_max=mind\nplafon_usd=2\n')
+        kod = vezerlo_futtat(ctx, vez, minta)
+        ellen(kod == 0 and ctx.plafon == 2.0, 'P3c: kilépési kód %d, plafon %s' % (kod, ctx.plafon))
+        with open(naplo_ut(mappa), encoding='utf-8') as f:
+            naplo = [dict(zip(NAPLO_FEJLEC, x.rstrip('\n').split('\t'))) for x in list(f)[1:] if x.strip()]
+        elso = {}
+        for i, r in enumerate(naplo):
+            elso.setdefault(r['futas'], i)
+        ellen(sorted(elso, key=elso.get) == ['SONNETV3', 'F3V3'],
+              'P3c: a futási sorrend a naplóban nem SONNETV3, F3V3: %s' % sorted(elso, key=elso.get))
+        for f_, modell in (('F3V3', C), ('SONNETV3', S)):
+            ellen(os.path.exists(valasz_ut(f_, mappa)) and valasz_ut(f_, mappa).endswith(os.path.join('valaszok', '%s.jsonl' % f_)),
+                  'P3c: nincs külön kimenet: %s' % f_)
+            sorok_f = koteg_sorok(f_, mappa)
+            ellen([x['igehelyek'] for x in sorok_f] == bemenet.kotegek(ig_all, KOTEG_MERET)
+                  and all(x['modell'] == modell for x in sorok_f) and len(eredmenyek_betolt(f_, mappa)) == len(ig_all),
+                  'P3c: %s: a kötegek/versek/modell nem a várt (a mintát 10-es kötegekben, a saját modellel)' % f_)
+            ellen(mentett_valaszok_ellenoriz(f_, mappa) == [], 'P3c: %s: a mentett válaszok nem mennek át a kapun' % f_)
+            nf = [r for r in naplo if r['futas'] == f_]
+            ellen(nf and all(r['modell'] == modell and r['prompt_sha256_12'] == sha_v3 and r['kjv'] == 'igen' for r in nf),
+                  'P3c: %s: a napló modell/prompt_sha256_12/kjv oszlopa hibás' % f_)
+        ns = [r for r in naplo if r['futas'] == 'SONNETV3']
+        nc = [r for r in naplo if r['futas'] == 'F3V3']
+        ellen(ns and all(r['gondolkodas_mod'] == 'reasoning_max_tokens=1024' for r in ns),
+              'P3c: a SONNETV3 gondolkodas_mod nem reasoning_max_tokens=1024: %s' % {r['gondolkodas_mod'] for r in ns})
+        ellen(all(h_.get('gondolkodas_mod') == 'reasoning_max_tokens=1024' and h_['usage'].get('prompt_tokens')
+                  for sor_ in koteg_sorok('SONNETV3', mappa) for h_ in sor_['hivasok']),
+              'P3c: a SONNETV3 jsonl hivasok-mezője nem rögzíti a gondolkodas_mod-ot / usage-t')
+        ellen(not os.path.exists(hibak_ut('SONNETV3', mappa)), 'P3c: a gondolkodási lánc 1. lépése elfogadott, mégis van hibak.jsonl')
+        ellen(nc and {r['gondolkodas_mod'] for r in nc} <= {'kotelezo_effort=minimal', 'kotelezo_effort=low'}
+              and any(r['gondolkodas_mod'] == 'kotelezo_effort=low' for r in nc),
+              'P3c: az F3V3 gondolkodas_mod hibás (a C-nél a minimal/low lánc marad): %s' % {r['gondolkodas_mod'] for r in nc})
+        s_extra = [e_ for m_, e_ in rec if m_ == S]
+        ellen(s_extra and all(e_ == {'max_tokens': 12000, 'reasoning': {'max_tokens': 1024}} for e_ in s_extra),
+              'P3c: a Sonnet hívásainak extra paramétere nem max_tokens=12000 + reasoning.max_tokens=1024: %s' % s_extra[:2])
+        ellen(all(int(r['gondolkodas_token']) == 300 for r in ns), 'P3c: a Sonnet mért gondolkodási tokenje (mock: 300) nincs a naplóban')
+        # a tartalék ár ága a Sonnet árával (a mock minden 3. hívásról elhagyja a cost mezőt)
+        tart = [r for r in ns if r['koltseg_forras'] == 'ar_config']
+        ellen(tart and all(abs(float(r['koltseg_usd']) - (int(r['bemenet_token']) * 2.0 + int(r['kimenet_token']) * 10.0) / 1e6) < 2e-6
+                           for r in tart), 'P3c: a SONNETV3 tartalék-ára nem a Sonnet ára (2.0/10.0)')
+        kimenet.append('P3c futás (mock): F3V3 (C) és SONNETV3 (S) %d-%d vers, naplóban: modell, gondolkodas_mod (Sonnet: %s; C: %s), '
+                       'prompt_sha256_12 = a prompt_v3 (%s); a Sonnet extra paramétere: %s'
+                       % (len(eredmenyek_betolt('F3V3', mappa)), len(eredmenyek_betolt('SONNETV3', mappa)),
+                          'reasoning_max_tokens=1024', sorted({r['gondolkodas_mod'] for r in nc})[-1], sha_v3, s_extra[0]))
+        db = len(mock.hivasok)
+        kod = vezerlo_futtat(ctx, vez, minta)
+        ellen(kod == 0 and len(mock.hivasok) == db, 'P3c újraindítás: új hívás történt (%d)' % (len(mock.hivasok) - db))
+
+        # --- a valódi küldő kérés-törzse (hamis `requests`): a Sonnet: reasoning van, temperature NINCS -----
+        class _Valasz:
+            status_code = 200
+            text = ''
+
+            def json(self):
+                return {}
+        fogott = {}
+        hamis = types.ModuleType('requests')
+
+        def post(url, headers=None, json=None, timeout=None):
+            fogott['json'], fogott['headers'], fogott['url'] = json, headers, url
+            return _Valasz()
+        hamis.post = post
+        elozo_requests = sys.modules.get('requests')
+        sys.modules['requests'] = hamis
+        try:
+            uz = [{'role': 'user', 'content': 'x'}]
+            fordit._valodi_http_kuldo(S, uz, teszt_kulcs, {'max_tokens': MAX_TOKENS, 'reasoning': dict(S_REASONING_LANC[0])})
+            j_s, h_s = dict(fogott['json']), dict(fogott['headers'])
+            fordit._valodi_http_kuldo(S, uz, teszt_kulcs, {'max_tokens': MAX_TOKENS, 'reasoning': dict(S_REASONING_LANC[1])})
+            j_s2 = dict(fogott['json'])
+            fordit._valodi_http_kuldo(C, uz, teszt_kulcs, {'max_tokens': MAX_TOKENS, 'reasoning': {'effort': 'low'}})
+            j_c = dict(fogott['json'])
+            fordit._valodi_http_kuldo(MODELLEK['A'], uz, teszt_kulcs, {'max_tokens': MAX_TOKENS})
+            j_a = dict(fogott['json'])
+        finally:
+            if elozo_requests is None:
+                sys.modules.pop('requests', None)
+            else:
+                sys.modules['requests'] = elozo_requests
+        ellen(j_s.get('reasoning') == {'max_tokens': 1024} and j_s.get('model') == S and j_s.get('max_tokens') == 12000
+              and 'temperature' not in j_s and j_s.get('usage') == {'include': True}
+              and sorted(j_s) == ['max_tokens', 'messages', 'model', 'reasoning', 'usage'],
+              'P3c: a Sonnet kérés-törzse nem (reasoning.max_tokens=1024, temperature nélkül): %s' % j_s)
+        ellen(j_s2.get('reasoning') == {'effort': 'low'} and 'temperature' not in j_s2,
+              'P3c: a Sonnet lánc 2. lépésének kérés-törzse hibás: %s' % j_s2)
+        ellen(j_a.get('reasoning') == {'enabled': False} and j_a.get('temperature') == 0, 'P3c: az A kérés-törzse megváltozott')
+        ellen(j_c.get('reasoning') == {'effort': 'low'} and j_c.get('temperature') == 0, 'P3c: a C kérés-törzse megváltozott: %s' % j_c)
+        ellen(teszt_kulcs not in json.dumps(j_s) and h_s['Authorization'] == 'Bearer ' + teszt_kulcs
+              and sum(1 for v_ in h_s.values() if teszt_kulcs in str(v_)) == 1,
+              'P3c: a kulcs a kérés-törzsben van, vagy nem csak az Authorization fejlécben')
+        kimenet.append('P3c Sonnet kérés-törzse (hamis requests): kulcsok=%s, reasoning=%s, max_tokens=%s, temperature kulcs: %s, model=%s; '
+                       'lánc 2. lépése: reasoning=%s; a C: reasoning=%s, temperature=%s; az A: temperature=%s; a kulcs csak az Authorization fejlécben'
+                       % (sorted(j_s), j_s['reasoning'], j_s['max_tokens'], 'nincs' if 'temperature' not in j_s else 'VAN', j_s['model'],
+                          j_s2['reasoning'], j_c['reasoning'], j_c['temperature'], j_a['temperature']))
+
+        # --- a hívás előtti plafon-becslés a Sonnet árával ---------------------------------------------
+        uz_s = [{'role': 'user', 'content': kotegszoveg_futashoz('SONNETV3', ig_all[:10], mappa)}]
+        becs_s = becsult_koltseg(S, uz_s, 10)
+        becs_c = becsult_koltseg(C, uz_s, 10)
+        varhato_s = len(uz_s[0]['content']) / 1.3 / 1e6 * 2.0 + (200 * 10 + S_GONDOLKODAS_HIVASONKENT) / 1e6 * 10.0
+        ellen(abs(becs_s - varhato_s) < 1e-12 and becs_s > 2 * becs_c,
+              'P3c: a Sonnet hívás előtti becslése nem a Sonnet árával számol (%.6f vs %.6f, C %.6f)' % (becs_s, varhato_s, becs_c))
+        mappa_p = tempfile.mkdtemp(prefix='f21p_onteszt_p3c_plafon_')
+        mappak.append(mappa_p)
+        mock_p = MockKuldo()
+        ctx_p = Kontextus(mock_p, teszt_kulcs, mappa_p, plafon=(becs_s + becs_c) / 2)
+        kod_s = futasok_vegrehajt(ctx_p, ['SONNETV3'], minta)
+        ellen(kod_s == KILEPES_PLAFON and not mock_p.hivasok and eredmenyek_betolt('SONNETV3', mappa_p) == {},
+              'P3c: a Sonnet plafon-becslése nem állított meg hívás előtt (kód %d, hívás %d)' % (kod_s, len(mock_p.hivasok)))
+        kod_c, _ = futas(ctx_p, 'F3V3', minta, koteg_max=1)
+        ellen(kod_c == 0 and len(eredmenyek_betolt('F3V3', mappa_p)) == 10,
+              'P3c: ugyanezen a plafonon a C (saját árával) nem futott le')
+        kimenet.append('P3c plafon: az első köteg becslése Sonnet-árral %.4f USD, C-árral %.4f USD; a köztük lévő plafonon '
+                       'a SONNETV3 hívás nélkül áll meg (kód %d), az F3V3 lefut' % (becs_s, becs_c, kod_s))
+
+        # --- a hiba tárolása (F21.47): HTTP 400 a hibak.jsonl-be, a 200-as hibatest a hivasok mezőbe -------
+        class _Elutasito:
+            def __init__(self, mod):
+                self.mod = mod
+                self.mock = MockKuldo()
+
+            def __call__(self, model_id, uzenetek, api_key, extra):
+                if self.mod == '400' and model_id == S:
+                    return _MockValasz({'error': 'reasoning.enabled nem támogatott ' + api_key}, status=400)
+                if self.mod == '200' and model_id == S:
+                    return _MockValasz({'error': {'code': 400, 'message': 'temperature nem támogatott'}})
+                return self.mock(model_id, uzenetek, api_key, extra)
+        mappa_h = tempfile.mkdtemp(prefix='f21p_onteszt_p3c_hiba_')
+        mappak.append(mappa_h)
+        ctx_h = Kontextus(_Elutasito('400'), teszt_kulcs, mappa_h)
+        kod_h, _ = futas(ctx_h, 'SONNETV3', minta, koteg_max=1)
+        hs = [json.loads(x) for x in open(hibak_ut('SONNETV3', mappa_h), encoding='utf-8')] if os.path.exists(hibak_ut('SONNETV3', mappa_h)) else []
+        # F21.70: a lánc mindkét lépése 400: 1. a lánc-lépés (lanc_tovabb), 2. a végső hiba (megállás)
+        ellen(kod_h == 1 and len(hs) == 2 and all(h_['http_hibakod'] == 400 and h_['koteg'] == 1 and h_['modell'] == S for h_ in hs)
+              and hs[0].get('lanc_tovabb') is True and hs[0]['gondolkodas_mod'] == 'reasoning_max_tokens=1024'
+              and not hs[1].get('lanc_tovabb') and 'reasoning.enabled' in hs[1]['hibauzenet']
+              and teszt_kulcs not in json.dumps(hs)
+              and not os.path.exists(valasz_ut('SONNETV3', mappa_h)) and not os.path.exists(naplo_ut(mappa_h)),
+              'P3c: a HTTP 400 láncának nyoma nincs (kulcsmentesen) a hibak.jsonl-ben / köteg-sor vagy napló készült: %s' % hs)
+        # --- a gondolkodási lánc: max_tokens=1024 elutasítva -> effort=low sikeres ----------------------
+        mappa_l = tempfile.mkdtemp(prefix='f21p_onteszt_p3c_lanc_')
+        mappak.append(mappa_l)
+        rec_l = []
+        mock_l = MockKuldo(s_max_tokens_400=True)
+
+        def kuldo_l(model_id, uzenetek, api_key, extra):
+            rec_l.append((model_id, dict(extra)))
+            return mock_l(model_id, uzenetek, api_key, extra)
+        ctx_l = Kontextus(kuldo_l, teszt_kulcs, mappa_l)
+        kod_l, _ = futas(ctx_l, 'SONNETV3', minta, koteg_max=2)
+        hl = [json.loads(x) for x in open(hibak_ut('SONNETV3', mappa_l), encoding='utf-8')] if os.path.exists(hibak_ut('SONNETV3', mappa_l)) else []
+        nl = [r for r in _tsv(naplo_ut(mappa_l)) if r['futas'] == 'SONNETV3']
+        ellen(kod_l == 0 and ctx_l.s_reasoning_index == 1 and len(eredmenyek_betolt('SONNETV3', mappa_l)) == 20
+              and nl and all(r['gondolkodas_mod'] == 'reasoning_effort=low' for r in nl)
+              and len(hl) == 1 and hl[0].get('lanc_tovabb') is True and hl[0]['http_hibakod'] == 400
+              and [e_['reasoning'] for m_, e_ in rec_l[:3]] == [{'max_tokens': 1024}, {'effort': 'low'}, {'effort': 'low'}]
+              and all(h_.get('gondolkodas_mod') == 'reasoning_effort=low' for sor_ in koteg_sorok('SONNETV3', mappa_l) for h_ in sor_['hivasok']),
+              'P3c: a lánc (max_tokens elutasítva -> effort=low) nem működik: kód %s, index %s, napló %s, hibak %s' % (
+                  kod_l, ctx_l.s_reasoning_index, {r['gondolkodas_mod'] for r in nl}, hl))
+        kimenet.append('P3c gondolkodási lánc (mock): max_tokens=1024 -> 400 -> effort=low sikeres (a futás a hátralévő hívásokra low-n marad); '
+                       'hibak.jsonl: 1 lanc_tovabb sor; naplo gondolkodas_mod=reasoning_effort=low; mindkét lépés 400 -> hiba, megállás')
+        ellen(http_hibakod('HTTP kliens-hiba 400: x') == 400 and http_hibakod('HTTP hiba 5 kiserlet utan: HTTP 503') == 503
+              and http_hibakod('halozati hiba 5 kiserlet utan: x') is None, 'P3c: a http_hibakod értelmezése hibás')
+        mappa_h2 = tempfile.mkdtemp(prefix='f21p_onteszt_p3c_hiba2_')
+        mappak.append(mappa_h2)
+        ctx_h2 = Kontextus(_Elutasito('200'), teszt_kulcs, mappa_h2)
+        futas(ctx_h2, 'SONNETV3', minta, koteg_max=1)
+        sor_h = koteg_sorok('SONNETV3', mappa_h2)
+        ellen(sor_h and all('temperature nem támogatott' in h_.get('hiba', '') for h_ in sor_h[0]['hivasok']),
+              'P3c: a 200-as hibatest nincs a hivasok mezőben: %s' % [h_.get('hiba') for h_ in sor_h[0]['hivasok']] if sor_h else 'nincs köteg-sor')
+        ellen(not os.path.exists(hibak_ut('F3V3', mappa)), 'P3c: sikeres futásnál hibak.jsonl keletkezett')
+        kimenet.append('P3c hiba-tárolás: HTTP 400 -> valaszok/SONNETV3.hibak.jsonl (kód, kulcsmentes üzenet), a köteg-sor/napló nem készül; '
+                       'a 200-as hibatest a jsonl hivasok[].hiba mezőjében')
+
+        # --- a prompt_v3 és az arany befagyasztása: hiány / eltérés -> 2-es kód, hívás nélkül ------------
+        def ir(gy, rel, szoveg):
+            ut = os.path.join(gy, *rel.split('/'))
+            os.makedirs(os.path.dirname(ut), exist_ok=True)
+            with open(ut, 'w', encoding='utf-8', newline='') as f:
+                f.write(szoveg)
+            return ut
+
+        def sha(szoveg):
+            return hashlib.sha256(szoveg.replace('\r\n', '\n').encode('utf-8')).hexdigest()
+
+        prompt_szoveg, arany_szoveg, arany3_szoveg = 'v3 prompt\r\nmásodik sor\r\n', '{"vers":"x"}\n', '{"vers":"y"}\n'
+        gy_ures = tempfile.mkdtemp(prefix='f21p_onteszt_p3c_gyoker_ures_')
+        mappak.append(gy_ures)
+        os.makedirs(os.path.join(gy_ures, 'f21p'))
+        h = v3_elofeltetelek(gy_ures)
+        ellen(len(h) == 2 and 'prompt_v3' in h[0] and 'arany v2' in h[1], 'P3c: üres gyökérnél nem két hiba (prompt, arany v2): %s' % h)
+        ellen(inditas_elofeltetelek(['F1V2', 'F3V2B', 'F4V2'], gy_ures) == [], 'P3c: a régi futásokat a v3-előfeltétel érinti')
+        ellen(len(inditas_elofeltetelek(['F1V2', 'F3V3'], gy_ures)) == 2 and len(inditas_elofeltetelek(['SONNETV3'], gy_ures)) == 2,
+              'P3c: az F3V3/SONNETV3 nem kapja meg a v3-előfeltételt')
+        gy = tempfile.mkdtemp(prefix='f21p_onteszt_p3c_gyoker_')
+        mappak.append(gy)
+        ir(gy, 'f21p/prompt_v3.md', prompt_szoveg)
+        ir(gy, 'f21p/prompt_v3.sha256', sha(prompt_szoveg) + '  prompt_v3.md\n')
+        h = v3_elofeltetelek(gy)
+        ellen(len(h) == 1 and 'arany v2' in h[0], 'P3c: prompt rendben, arany nincs: nem egy arany-hiba: %s' % h)
+        ir(gy, 'f21p/arany_opus_v2.jsonl', arany_szoveg)
+        ir(gy, 'f21p/arany_opus_v2.sha256', sha(arany_szoveg) + '  arany_opus_v2.jsonl\n')
+        ellen(v3_elofeltetelek(gy) == [], 'P3c: a rendben lévő prompt_v3 + arany v2 hibát ad: %s' % v3_elofeltetelek(gy))
+        # (CRLF/LF: a prompt CRLF-fel van írva, a hash az LF-alakra szól: rendben kell legyen — fent igazolva)
+        ir(gy, 'f21p/prompt_v3.md', prompt_szoveg + 'módosítás\r\n')
+        h = v3_elofeltetelek(gy)
+        ellen(len(h) == 1 and 'prompt_v3.md' in h[0] and 'sha256' in h[0], 'P3c: a módosított prompt_v3-at nem vette észre: %s' % h)
+        ir(gy, 'f21p/prompt_v3.md', prompt_szoveg)
+        os.remove(os.path.join(gy, 'f21p', 'prompt_v3.sha256'))
+        h = v3_elofeltetelek(gy)
+        ellen(len(h) == 1 and 'hiányzik a befagyasztási hash' in h[0], 'P3c: a hiányzó prompt_v3.sha256-ot nem vette észre: %s' % h)
+        ir(gy, 'f21p/prompt_v3.sha256', sha(prompt_szoveg) + '\n')
+        ir(gy, 'f21p/arany_opus_v2.jsonl', arany_szoveg + 'x\n')
+        h = v3_elofeltetelek(gy)
+        ellen(len(h) == 1 and 'arany v2' in h[0], 'P3c: az eltérő arany v2-t nem vette észre: %s' % h)
+        ir(gy, 'f21p/arany_opus_v2.jsonl', arany_szoveg)
+        # arany v3: a hash-fájl megléte teszi irányadóvá, akkor is, ha a v2 rendben van
+        ir(gy, 'f21p/arany_opus_v3.jsonl', arany3_szoveg + 'eltér\n')
+        ir(gy, 'f21p/arany_opus_v3.sha256', sha(arany3_szoveg) + '  arany_opus_v3.jsonl\n')
+        h = v3_elofeltetelek(gy)
+        ellen(len(h) == 1 and 'arany v3' in h[0], 'P3c: az eltérő arany v3-at nem vette észre (v2 rendben): %s' % h)
+        ir(gy, 'f21p/arany_opus_v3.jsonl', arany3_szoveg)
+        ellen(v3_elofeltetelek(gy) == [] and tokenek.legfrissebb_arany(gy)[2] == 'v3',
+              'P3c: a rendben lévő arany v3 + prompt_v3 hibát ad / a v3 nem irányadó')
+        ir(gy, 'f21p/arany_opus_v2.jsonl', 'tönkretett v2\n')
+        ellen(v3_elofeltetelek(gy) == [], 'P3c: az arany v3 mellett a (már nem irányadó) v2 hibát ad')
+        ellen(tokenek.legfrissebb_arany(gy_ures)[2] == 'v2', 'P3c: arany v3 hash-fájl nélkül nem a v2 az irányadó')
+        ellen(tokenek.legfrissebb_arany()[2] in ('v2', 'v3'), 'P3c: a repó legfrissebb aranya nem v2/v3')
+
+        # a main() éles indítása: hiány / eltérés: 2-es kód, hívás nélkül; rendben: lefut
+        hivasok_main = []
+        mock_main = MockKuldo()
+
+        def main_kuldo(model_id, uzenetek, api_key, extra):
+            hivasok_main.append(model_id)
+            return mock_main(model_id, uzenetek, api_key, extra)
+        fordit._valodi_http_kuldo = main_kuldo
+        os.environ['OPENROUTER_API_KEY'] = teszt_kulcs
+        mappa_m = tempfile.mkdtemp(prefix='f21p_onteszt_p3c_main_')
+        mappak.append(mappa_m)
+        argv = ['--futas', 'F3V3,SONNETV3', '--koteg-max', '1', '--kimenet-dir', mappa_m]
+        ELOFELTETEL_GYOKER = gy_ures
+        k1 = main(argv)
+        ellen(k1 == 2 and not hivasok_main and not os.path.exists(os.path.join(mappa_m, 'valaszok')),
+              'P3c main: hiányzó prompt_v3/arany nem 2-es kód vagy hívás történt (kód %d, hívás %d)' % (k1, len(hivasok_main)))
+        gy_elt = tempfile.mkdtemp(prefix='f21p_onteszt_p3c_gyoker_elt_')
+        mappak.append(gy_elt)
+        ir(gy_elt, 'f21p/prompt_v3.md', prompt_szoveg)
+        ir(gy_elt, 'f21p/prompt_v3.sha256', sha(prompt_szoveg + 'más') + '\n')
+        ir(gy_elt, 'f21p/arany_opus_v2.jsonl', arany_szoveg)
+        ir(gy_elt, 'f21p/arany_opus_v2.sha256', sha(arany_szoveg) + '\n')
+        ELOFELTETEL_GYOKER = gy_elt
+        k2 = main(argv)
+        ellen(k2 == 2 and not hivasok_main, 'P3c main: eltérő prompt_v3-hash nem 2-es kód vagy hívás történt (%d, %d)' % (k2, len(hivasok_main)))
+        vez_ir('futasok=SONNETV3\nkoteg_max=1\n')
+        k3 = main(['--vezerlo', vez, '--kimenet-dir', mappa_m])
+        ellen(k3 == 2 and not hivasok_main, 'P3c main: a vezérlős indítás sem áll meg eltérésnél (%d, %d)' % (k3, len(hivasok_main)))
+        ELOFELTETEL_GYOKER = gy
+        k4 = main(argv)
+        ellen(k4 == 0 and set(hivasok_main) == {C, S}
+              and len(eredmenyek_betolt('F3V3', mappa_m)) == 10 and len(eredmenyek_betolt('SONNETV3', mappa_m)) == 10,
+              'P3c main: a rendben lévő befagyasztással nem futott le (kód %d, hívott modellek %s)' % (k4, sorted(set(hivasok_main))))
+        ELOFELTETEL_GYOKER = gy_ures
+        db_m = len(hivasok_main)
+        k5 = main(['--futas', 'F1', '--koteg-max', '1', '--kimenet-dir', mappa_m])
+        ellen(k5 == 0 and len(hivasok_main) > db_m, 'P3c main: a régi F1 futás a v3-előfeltétel miatt megakadt (kód %d)' % k5)
+        szivarog = []
+        for gyoker_, _, fajlok in os.walk(mappa_m):
+            for fn in fajlok:
+                with open(os.path.join(gyoker_, fn), encoding='utf-8') as f:
+                    if teszt_kulcs in f.read():
+                        szivarog.append(fn)
+        ellen(not szivarog, 'P3c main: a kulcs megjelent a kimenetben: %s' % szivarog)
+        kimenet.append('P3c befagyasztás: hiányzó prompt_v3.sha256 / arany, eltérő prompt_v3 / arany v2 / arany v3 hash -> hibaüzenet; '
+                       'arany v3 hash-fájl mellett az irányadó; main(): hiányra és eltérésre 2-es kód, hívás nélkül (F3V3,SONNETV3 és vezérlővel is), '
+                       'rendben lévő befagyasztással lefut; a régi F1 érintetlen')
+    finally:
+        for f_, p_ in eredeti_prompt.items():
+            FUTASOK[f_]['prompt'] = p_
+        ELOFELTETEL_GYOKER = eredeti_gyoker
+        fordit._valodi_http_kuldo = eredeti_kuldo
+        if eredeti_kulcs is None:
+            os.environ.pop('OPENROUTER_API_KEY', None)
+        else:
+            os.environ['OPENROUTER_API_KEY'] = eredeti_kulcs
+    return mappak
+
+
+def onteszt_f8v3(ellen, minta, teszt_kulcs, kimenet):
+    """Az F8V3 (F21.62) önteszt-ágai MOCK küldővel, hálózat és kulcs nélkül.
+
+    Ágak: a teljes KJV-betöltő MOCK-táblák fölött (versmegfeleltetés: azonos számozás,
+    eltolt számozás, nincs KJV-megfelelő, a KJV-ban hiányzó vers, ismeretlen könyv; Strong-
+    normalizálás H430 -> H0430; szó nélküli elem; megjegyzéssoros fejléc), a régi
+    kjv_tamapont érintetlensége, a bemenet kjv_forras paramétere (alapértelmezés = régi), az
+    F8V3 beállításai az F3V3-hoz képest, a vezérlő, a kapuhiba / újrakérés / plafon ágak, a
+    köteg-sor kjv_forras mezője, az indításkori előfeltétel. A prompt_v3.md-t ideiglenes
+    helyettesítő váltja ki; minden módosítást visszaállít.
+    kimenet: bizonyító sorok; visszaad: az ideiglenes könyvtárak listája."""
+    import shutil as _sh
+    global ELOFELTETEL_GYOKER
+    mappak = []
+    C = MODELLEK['C']
+    ig_all = [s_['igehely'] for s_ in minta]
+    reteg_map = {s_['igehely']: s_['reteg'] for s_ in minta}
+
+    # --- beállítások az F3V3-hoz képest --------------------------------------------------------------
+    a, b = dict(FUTASOK['F3V3']), dict(FUTASOK['F8V3'])
+    ellen(b.pop('kjv_forras', None) == 'teljes' and a.pop('kjv_forras', None) is None and a == b,
+          'F8V3: a konfiguráció nem az F3V3 + kjv_forras=teljes: F3V3 %s, F8V3 %s' % (FUTASOK['F3V3'], FUTASOK['F8V3']))
+    ellen(list(FUTASOK)[-2:] == ['F3V3', 'F8V3'] and 'F8V3' in V3_FUTASOK, 'F8V3: sorrend / V3_FUTASOK hibás')
+    ellen(utasitas_sha12('F8V3') == utasitas_sha12('F3V3'), 'F8V3: a prompt-azonosító nem egyezik az F3V3-éval')
+    ellen(FUTASOK['F8V3']['modell'] == 'C' and FUTASOK['F8V3']['tipus'] == 'parosit' and FUTASOK['F8V3']['reteg'] is None
+          and KOTEG_MERET == 10 and MAX_TOKENS == 12000 and C_REASONING_LANC == [{'effort': 'minimal'}, {'effort': 'low'}],
+          'F8V3: modell/típus/réteg/köteg/max_tokens/gondolkodás-lánc eltér az F3V3-tól')
+
+    # --- a teljes KJV-betöltő mock-táblák fölött -------------------------------------------------------
+    mappa_t = tempfile.mkdtemp(prefix='f21p_onteszt_f8v3_tabla_')
+    mappak.append(mappa_t)
+    h2s = tokenek.konyv_hu_to_step()
+    jo, zs, gen = h2s['Jóel'], h2s['Zsolt'], h2s['1Móz']
+    teljes_ut = os.path.join(mappa_t, 'KJV_teszt_teljes.tsv')
+    with open(teljes_ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# GENERÁLT: teszt — megjegyzéssor a fejléc előtt\n# második megjegyzéssor\n')
+        f.write('Igehely\tSzósorszám\tStrong-szám\tAngol szó\tMorfológiai kód\n')
+        for ig, sorok in (('%s.1.1' % gen, [('God', 'H430'), ('', 'H853'), ('earth', 'H776')]),
+                          ('%s.2.28' % jo, [('spirit', 'H7307'), ('flesh', 'H1320')]),
+                          ('%s.4.1' % zs, [('answer', 'H6030')])):
+            for i, (sz, st) in enumerate(sorok, 1):
+                f.write('\t'.join([ig, str(i), st, sz, '']) + '\n')
+    megf_ut = os.path.join(mappa_t, 'megf_teszt.tsv')
+    with open(megf_ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# megjegyzés\nigehely_karoli\tigehely_kjv\tigehely_mt\tosztaly\tforras\tmegjegyzes\n')
+        for sor in (('1Móz 1:1', '1:1', '', 'KJV', 'x', ''),      # azonos számozás
+                    ('Jóel 3:1', '2:28', '', 'KJV', 'x', ''),      # eltolt számozás (Károli 3:1 = KJV 2:28)
+                    ('Zsolt 4:2', '4:1', '', 'KJV', 'x', ''),      # a címsor miatt eltolt számozás
+                    ('Zsolt 22:32', '', '', 'MT', 'x', ''),        # nincs KJV-megfelelő
+                    ('Mal 3:19', '4:1', '', 'KJV', 'x', ''),       # a KJV-vers nincs a táblában (adathiány)
+                    ('Mk 9:43', '9:43', '', 'KJV', 'x', '')):      # a tábla szerint nincs sora (F19-hiány)
+            f.write('\t'.join(sor) + '\n')
+    eredeti = (tokenek.KJV_TELJES, tokenek.VERSMEGF, dict(tokenek._KJV_CACHE), dict(tokenek._KJV_TELJES_CACHE))
+    valodi_regi = {ig: tokenek.kjv_tamapont(ig) for ig in ('1Móz 1:1', '1Móz 3:16', 'Péld 1:1')}
+    try:
+        tokenek.KJV_TELJES, tokenek.VERSMEGF = teljes_ut, megf_ut
+        tokenek._KJV_CACHE.clear()
+        tokenek._KJV_TELJES_CACHE.clear()
+        T = tokenek.kjv_tamapont_teljes
+        ellen(T('1Móz 1:1') == 'God{H0430} {H0853} earth{H0776}', 'teljes betöltő: 1Móz 1:1 -> %r' % T('1Móz 1:1'))
+        ellen(T('Jóel 3:1') == 'spirit{H7307} flesh{H1320}', 'teljes betöltő: a Jóel eltolt számozása nem a megfeleltetés szerint: %r' % T('Jóel 3:1'))
+        ellen(T('Zsolt 4:2') == 'answer{H6030}', 'teljes betöltő: a Zsolt 4:2 -> KJV 4:1 hibás: %r' % T('Zsolt 4:2'))
+        ellen(T('Zsolt 22:32') is None, 'teljes betöltő: a KJV-megfelelő nélküli vers kapott sort')
+        ellen(T('Mal 3:19') is None, 'teljes betöltő: a táblában nem szereplő KJV-vers kapott sort')
+        ellen(T('Mk 9:43') is None, 'teljes betöltő: a címke nélküli (hiányzó) KJV-vers kapott sort')
+        ellen(T('Jóel 3:2') is None and T('Nincs 1:1') is None and T('hibás') is None,
+              'teljes betöltő: a versmegfeleltetésben nem szereplő / hibás igehely nem None')
+        ellen(tokenek.kjv_tamapont_forras('Jóel 3:1', 'teljes') == T('Jóel 3:1'), 'kjv_tamapont_forras(teljes) hibás')
+        ellen(_hibas_ertek(lambda: tokenek.kjv_tamapont_forras('Jóel 3:1', 'masik')), 'kjv_tamapont_forras: ismeretlen forrás nem ValueError')
+        ellen(tokenek.kjv_forras_azonosito()[1] == __import__('hashlib').sha256(open(teljes_ut, 'rb').read()).hexdigest(),
+              'kjv_forras_azonosito: a sha256 nem a (mock) tábla bájtjaié')
+        # a régi függvény nem a teljes táblából dolgozik: a mock teljes tábla nem hat rá
+        ellen(tokenek.kjv_tamapont('Jóel 3:1') is None, 'a régi kjv_tamapont a mock teljes táblából dolgozik')
+    finally:
+        tokenek.KJV_TELJES, tokenek.VERSMEGF = eredeti[0], eredeti[1]
+        tokenek._KJV_CACHE.clear()
+        tokenek._KJV_CACHE.update(eredeti[2])
+        tokenek._KJV_TELJES_CACHE.clear()
+        tokenek._KJV_TELJES_CACHE.update(eredeti[3])
+    ellen({ig: tokenek.kjv_tamapont(ig) for ig in valodi_regi} == valodi_regi, 'a régi kjv_tamapont kimenete megváltozott')
+    ellen(valodi_regi['1Móz 1:1'] == 'In the beginning{H7225} God{H0430} created{H1254} {H0853} the heaven{H8064} and{H0853} the earth.{H0776}',
+          'a régi kjv_tamapont 1Móz 1:1 kimenete nem a rögzített: %r' % valodi_regi['1Móz 1:1'])
+    ellen(tokenek.kjv_tamapont_teljes('1Móz 1:1') == 'beginning{H7225} God{H0430} created{H1254} heaven{H8064} and{H0853} earth{H0776}',
+          'a valódi teljes tábla 1Móz 1:1 sora nem a várt: %r' % tokenek.kjv_tamapont_teljes('1Móz 1:1'))
+    kimenet.append('F8V3 teljes KJV-betöltő (mock-táblák): azonos számozás, Jóel 3:1 -> KJV 2:28, Zsolt 4:2 -> 4:1, Strong H430 -> H0430, '
+                   'szó nélküli elem -> {H0853}; None: nincs KJV-megfelelő, a KJV-vers nincs a táblában, ismeretlen igehely; '
+                   'a régi kjv_tamapont kimenete bájtra változatlan (1Móz 1:1, 3:16, Péld 1:1)')
+
+    # --- a bemenet kjv_forras paramétere -----------------------------------------------------------------
+    r2r3 = [s_['igehely'] for s_ in minta if s_['reteg'] in ('R2', 'R3') and tokenek.kjv_tamapont(s_['igehely']) is None
+            and tokenek.kjv_tamapont_teljes(s_['igehely'])]
+    r1 = [s_['igehely'] for s_ in minta if s_['reteg'] == 'R1']
+    ellen(len(r2r3) >= 2 and len(r1) >= 2, 'F8V3 önteszt-minta: nincs R2/R3 vers, ahol csak a teljes tábla ad KJV-sort')
+    ig_uj, ig_r1 = r2r3[0], r1[0]
+    ellen(bemenet.versblokk(ig_uj, True) == bemenet.versblokk(ig_uj, True, 'regi') and 'KJV-TÁMPONT' not in bemenet.versblokk(ig_uj, True),
+          'bemenet: az alapértelmezett forrás nem a régi')
+    ellen('KJV-TÁMPONT: ' + tokenek.kjv_tamapont_teljes(ig_uj) in bemenet.versblokk(ig_uj, True, 'teljes'),
+          'bemenet: a teljes forrás KJV-sora nincs a versblokkban')
+    ellen('KJV-TÁMPONT' not in bemenet.versblokk(ig_uj, False, 'teljes'), 'bemenet: kjv=False mellett is van KJV-sor')
+    ellen(bemenet.kotegszoveg(r1[:3], True, bemenet.PROMPT_V2_UT) == bemenet.kotegszoveg(r1[:3], True, bemenet.PROMPT_V2_UT, 'regi'),
+          'bemenet: a kotegszoveg alapértelmezése nem a régi forrás')
+    ellen(bemenet.kotegszoveg(r1[:3], True, bemenet.PROMPT_V2_UT) != bemenet.kotegszoveg(r1[:3], True, bemenet.PROMPT_V2_UT, 'teljes'),
+          'bemenet: az R1-en a két forrás kötegszövege azonos (a teljes tábla szó-szintű, rövidebb)')
+    ellen(bemenet.prompt_utasitas(bemenet.PROMPT_V2_UT) == bemenet.kotegszoveg(r1[:1], True, bemenet.PROMPT_V2_UT, 'teljes').split('\n\n=== A FELDOLGOZANDÓ')[0],
+          'bemenet: a kjv_forras megváltoztatta az utasításrészt (a prompt sha256 változna)')
+    ellen(_hibas_ertek(lambda: bemenet.versblokk(ig_uj, True, 'masik')), 'bemenet: ismeretlen kjv_forras nem hiba')
+
+    mappa = tempfile.mkdtemp(prefix='f21p_onteszt_f8v3_')
+    mappak.append(mappa)
+    with open(bemenet.PROMPT_V2_UT, encoding='utf-8') as f:
+        v2_szoveg = f.read()
+    v3_ut = os.path.join(mappa, 'prompt_v3_teszt.md')
+    with open(v3_ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write(v2_szoveg.replace(bemenet.VEGE, '\nF8V3-önteszt: a prompt_v3 ideiglenes helyettesítője.\n' + bemenet.VEGE))
+    eredeti_prompt = {f_: FUTASOK[f_]['prompt'] for f_ in V3_FUTASOK}
+    eredeti_gyoker = ELOFELTETEL_GYOKER
+    for f_ in V3_FUTASOK:
+        FUTASOK[f_]['prompt'] = v3_ut
+    try:
+        # --- a vezérlő ---------------------------------------------------------------------------------
+        vez = os.path.join(mappa, 'futtatas_teszt.txt')
+
+        def vez_ir(tartalom):
+            with open(vez, 'w', encoding='utf-8', newline='\n') as f:
+                f.write(tartalom)
+
+        vez_ir('futasok=F8V3\nkoteg_max=mind\nplafon_usd=4.90\n')
+        v = vezerlo_beolvas(vez)
+        ellen(v == {'futasok': ['F8V3'], 'koteg_max': None, 'plafon_usd': 4.9}, 'F8V3 vezérlő: önmagában hibásan értelmezve: %s' % (v,))
+        vez_ir('futasok=F8V3,F3V3,SONNETV3,F1\nkoteg_max=1\n')
+        ellen(vezerlo_beolvas(vez)['futasok'] == ['F1', 'SONNETV3', 'F3V3', 'F8V3'], 'F8V3 vezérlő: a régiekkel együtt rosszul rendeződik')
+        vez_ir('futasok=F4,F8V3\nkoteg_max=mind\n')
+        ellen(_hibas(lambda: vezerlo_beolvas(vez)), 'F8V3 vezérlő: a régi F4 az F8V3-mal együtt elfogadva')
+        vez_ir('futasok=F8V3,F8V3\nkoteg_max=mind\n')
+        ellen(_hibas(lambda: vezerlo_beolvas(vez)), 'F8V3 vezérlő: az ismételt F8V3 elfogadva')
+        vez_ir('futasok=F8V3\nkoteg_max=mind\nplafon_usd=5.01\n')
+        ellen(_hibas(lambda: vezerlo_beolvas(vez)), 'F8V3 vezérlő: az 5.0 feletti plafon_usd elfogadva')
+
+        # --- teljes menet: kapuhiba, újrakérés, kjv_forras mező, F3V3-mal egyező konfiguráció ------------------
+        elso_hibas, mindig_hibas = {r1[1]}, {r1[3]}
+        mock = MockKuldo(hibas_elso=elso_hibas, hibas_mindig=mindig_hibas)
+        ctx = Kontextus(mock, teszt_kulcs, mappa)
+        kod = futasok_vegrehajt(ctx, ['F3V3', 'F8V3'], minta)
+        ellen(kod == 0, 'F8V3 menet: kilépési kód %d' % kod)
+        e3, e8 = eredmenyek_betolt('F3V3', mappa), eredmenyek_betolt('F8V3', mappa)
+        ellen(len(e8) == len(minta) and set(e8) == set(e3), 'F8V3: nem ugyanazok a versek, mint az F3V3-nál (%d, %d)' % (len(e8), len(e3)))
+        ellen(e8[r1[1]]['allapot'] == 'ok' and e8[r1[1]]['probalkozas'] == 2, 'F8V3: az újrakérés nem javított')
+        ellen(e8[r1[3]]['allapot'] == 'kapuhiba' and e8[r1[3]]['probalkozas'] == 2, 'F8V3: a tartós hiba nem maradt kapuhiba')
+        ellen(all(e8[ig]['probalkozas'] == 1 for ig in e8 if ig not in elso_hibas | mindig_hibas), 'F8V3: felesleges újrakérés')
+        naplo = _tsv(naplo_ut(mappa))
+        n3 = [r for r in naplo if r['futas'] == 'F3V3']
+        n8 = [r for r in naplo if r['futas'] == 'F8V3']
+        ellen(n8 and len(n3) == len(n8)
+              and {r['gondolkodas_mod'] for r in n8} == {r['gondolkodas_mod'] for r in n3}
+              and {r['modell'] for r in n8} == {C} and {r['kjv'] for r in n8} == {'igen'}
+              and {r['prompt_sha256_12'] for r in n8} == {r['prompt_sha256_12'] for r in n3} == {utasitas_sha12('F3V3')},
+              'F8V3: a naplóoszlopok (gondolkodas_mod, modell, kjv, prompt_sha256_12) nem egyeznek az F3V3-éval')
+        # a mock bemeneti tokenje a kötegszöveg karakterszáma // 3: az első próbálkozásoknál pontosan a két forrás kötegszövegéből adódik
+        kot_ = bemenet.kotegek(ig_all, KOTEG_MERET)
+        ellen(all(int(r['bemenet_token']) == len(kotegszoveg_futashoz('F8V3', kot_[int(r['koteg']) - 1], mappa)) // 3
+                  for r in n8 if r['probalkozas'] == '1')
+              and all(int(r['bemenet_token']) == len(kotegszoveg_futashoz('F3V3', kot_[int(r['koteg']) - 1], mappa)) // 3
+                      for r in n3 if r['probalkozas'] == '1')
+              and any(kotegszoveg_futashoz('F8V3', k_, mappa) != kotegszoveg_futashoz('F3V3', k_, mappa) for k_ in kot_),
+              'F8V3: a mock bemeneti tokenje nem a két forrás kötegszövegéből adódik / a két futás bemenete azonos')
+        sorok3, sorok8 = koteg_sorok('F3V3', mappa), koteg_sorok('F8V3', mappa)
+        ellen(all('kjv_forras' not in s_ for s_ in sorok3), 'F3V3: a köteg-sorban megjelent a kjv_forras mező')
+        ut_, sha_ = tokenek.kjv_forras_azonosito()
+        ellen(all(s_.get('kjv_forras', {}).get('sha256') == sha_ and s_['kjv_forras']['tabla'] == ut_ for s_ in sorok8),
+              'F8V3: a köteg-sor kjv_forras mezője hiányzik / a sha256 nem a teljes táblájé')
+        varhato_reteg = {}
+        for ig in ig_all:
+            d = varhato_reteg.setdefault(reteg_map[ig], {'kjv_sorral': 0, 'kjv_nelkul': 0})
+            d['kjv_sorral' if tokenek.kjv_tamapont_teljes(ig) else 'kjv_nelkul'] += 1
+        kapott = {}
+        for s_ in sorok8:
+            for r_, d_ in s_['kjv_forras']['reteg_szerint'].items():
+                k_ = kapott.setdefault(r_, {'kjv_sorral': 0, 'kjv_nelkul': 0})
+                k_['kjv_sorral'] += d_['kjv_sorral']
+                k_['kjv_nelkul'] += d_['kjv_nelkul']
+        ellen(kapott == varhato_reteg, 'F8V3: a kjv_forras rétegenkénti darabszáma nem egyezik a várttal: %s vs %s' % (kapott, varhato_reteg))
+        ellen(all(s_['kjv_forras']['kjv_sorral_db'] == len(s_['kjv_forras']['kjv_sorral_versek']) for s_ in sorok8),
+              'F8V3: a kjv_sorral_db nem a lista hossza')
+        # a mock a hívás szövegéből dolgozik: az F8V3 bemenete az R2/R3-ban KJV-sort kap, az F3V3-é nem
+        sz3 = kotegszoveg_futashoz('F3V3', [ig_uj], mappa)
+        sz8 = kotegszoveg_futashoz('F8V3', [ig_uj], mappa)
+        ellen('KJV-TÁMPONT' not in sz3.split('=== A FELDOLGOZANDÓ')[1] and 'KJV-TÁMPONT: ' in sz8.split('=== A FELDOLGOZANDÓ')[1],
+              'F8V3: a bemenet nem a teljes táblából kap KJV-sort az R2/R3 versen (F3V3 nélkül)')
+        ellen(sz3.split('=== A FELDOLGOZANDÓ')[0] == sz8.split('=== A FELDOLGOZANDÓ')[0], 'F8V3: az utasításrész eltér az F3V3-étól')
+        # újraindítás: kész köteg nem hív újra
+        db = len(mock.hivasok)
+        futasok_vegrehajt(Kontextus(mock, teszt_kulcs, mappa), ['F8V3'], minta)
+        ellen(len(mock.hivasok) == db, 'F8V3: újraindításkor a kész kötegek újra hívtak')
+        kimenet.append('F8V3 mock-futás (%d vers, %d köteg-sor): kapuhiba -> újrakérés javít, tartós hiba kapuhiba marad; napló: modell/gondolkodas_mod/kjv/'
+                       'prompt_sha256_12 egyezik az F3V3-éval; a köteg-sor kjv_forras mezője (tábla, sha256, KJV-sort kapott/nem kapott vers rétegenként, versek listája); '
+                       'F3V3 köteg-sora kjv_forras nélkül; újraindításnál nincs új hívás' % (len(e8), len(sorok8)))
+
+        # --- plafon ----------------------------------------------------------------------------------------
+        uz_p = [{'role': 'user', 'content': kotegszoveg_futashoz('F8V3', ig_all[:10], mappa)}]
+        becs = becsult_koltseg(C, uz_p, 10)
+        mappa_p = tempfile.mkdtemp(prefix='f21p_onteszt_f8v3_plafon_')
+        mappak.append(mappa_p)
+        mock_p = MockKuldo()
+        kod_p = futasok_vegrehajt(Kontextus(mock_p, teszt_kulcs, mappa_p, plafon=becs / 2), ['F8V3'], minta)
+        ellen(kod_p == KILEPES_PLAFON and not mock_p.hivasok and eredmenyek_betolt('F8V3', mappa_p) == {},
+              'F8V3 plafon: nem állt meg hívás előtt (kód %d, hívás %d)' % (kod_p, len(mock_p.hivasok)))
+        plafon_resz = '%.6f' % (becs * 1.5)
+        vez_ir('futasok=F8V3\nkoteg_max=mind\nplafon_usd=%s\n' % plafon_resz)
+        mappa_p2 = tempfile.mkdtemp(prefix='f21p_onteszt_f8v3_plafon2_')
+        mappak.append(mappa_p2)
+        kod_v = vezerlo_futtat(Kontextus(MockKuldo(), teszt_kulcs, mappa_p2), vez, minta)
+        ossz_p = naplo_osszeg(mappa_p2)
+        ellen(kod_v == KILEPES_PLAFON and 0 < ossz_p <= float(plafon_resz) and 0 < len(eredmenyek_betolt('F8V3', mappa_p2)) < len(minta),
+              'F8V3 plafon_usd=%s: kód %d, napló %.6f, kész %d' % (plafon_resz, kod_v, ossz_p, len(eredmenyek_betolt('F8V3', mappa_p2))))
+        vez_ir('futasok=F8V3\nkoteg_max=mind\nplafon_usd=2\n')
+        kod_f = vezerlo_futtat(Kontextus(MockKuldo(), teszt_kulcs, mappa_p2), vez, minta)
+        ellen(kod_f == 0 and len(eredmenyek_betolt('F8V3', mappa_p2)) == len(minta)
+              and len({tuple(x['igehelyek']) for x in koteg_sorok('F8V3', mappa_p2)}) == len(koteg_sorok('F8V3', mappa_p2)),
+              'F8V3 plafon: a folytatás nem teljes / duplikált köteg (kód %d)' % kod_f)
+        kimenet.append('F8V3 plafon: az első köteg becslése (%.4f USD) alatti plafonon hívás nélkül kilép (kód %d); plafon_usd=%s-nél részleges leállás '
+                       '(napló %.6f USD), 2 USD-vel folytatás rendben, nincs duplikált köteg' % (becs, kod_p, plafon_resz, ossz_p))
+
+        # --- indításkori befagyasztás-ellenőrzés -----------------------------------------------------------
+        gy_ures = tempfile.mkdtemp(prefix='f21p_onteszt_f8v3_gyoker_ures_')
+        mappak.append(gy_ures)
+        os.makedirs(os.path.join(gy_ures, 'f21p'))
+        ellen(len(inditas_elofeltetelek(['F8V3'], gy_ures)) == 2 and inditas_elofeltetelek(['F1V2', 'F4V2'], gy_ures) == [],
+              'F8V3: az indításkori előfeltétel (prompt_v3.sha256, arany) nem érvényes az F8V3-ra / érinti a régieket')
+        hivasok_main = []
+        mock_main = MockKuldo()
+
+        def main_kuldo(model_id, uzenetek, api_key, extra):
+            hivasok_main.append(model_id)
+            return mock_main(model_id, uzenetek, api_key, extra)
+        eredeti_kuldo = fordit._valodi_http_kuldo
+        eredeti_kulcs = os.environ.get('OPENROUTER_API_KEY')
+        fordit._valodi_http_kuldo = main_kuldo
+        os.environ['OPENROUTER_API_KEY'] = teszt_kulcs
+        try:
+            mappa_m = tempfile.mkdtemp(prefix='f21p_onteszt_f8v3_main_')
+            mappak.append(mappa_m)
+            ELOFELTETEL_GYOKER = gy_ures
+            k1 = main(['--futas', 'F8V3', '--koteg-max', '1', '--kimenet-dir', mappa_m])
+            vez_ir('futasok=F8V3\nkoteg_max=1\n')
+            k2 = main(['--vezerlo', vez, '--kimenet-dir', mappa_m])
+            ellen(k1 == 2 and k2 == 2 and not hivasok_main and not os.path.exists(os.path.join(mappa_m, 'valaszok')),
+                  'F8V3 main: hiányzó prompt_v3.sha256 / arany mellett nem 2-es kód, hívás nélkül (%d, %d, hívás %d)' % (k1, k2, len(hivasok_main)))
+        finally:
+            fordit._valodi_http_kuldo = eredeti_kuldo
+            if eredeti_kulcs is None:
+                os.environ.pop('OPENROUTER_API_KEY', None)
+            else:
+                os.environ['OPENROUTER_API_KEY'] = eredeti_kulcs
+        kimenet.append('F8V3 indításkori ellenőrzés: hiányzó prompt_v3.sha256 / arany -> 2-es kilépési kód hívás nélkül (--futas és --vezerlo is); a régi futásokat nem érinti')
+    finally:
+        for f_, p_ in eredeti_prompt.items():
+            FUTASOK[f_]['prompt'] = p_
+        ELOFELTETEL_GYOKER = eredeti_gyoker
+    return mappak
+
+
+def _hibas_ertek(fn):
+    """Igaz, ha fn() ValueError-t dob."""
+    try:
+        fn()
+    except ValueError:
+        return True
+    return False
 
 
 def onteszt():
@@ -1734,7 +2928,11 @@ def onteszt():
 
     p3b_kimenet = []
     p3b_mappak = onteszt_p3b(ellen, minta, teszt_kulcs, p3b_kimenet)
-    for m in [mappa, mappa2, mappa3, mappa4, mappa5] + p3b_mappak:
+    p3c_kimenet = []
+    p3c_mappak = onteszt_p3c(ellen, minta, teszt_kulcs, p3c_kimenet)
+    f8v3_kimenet = []
+    f8v3_mappak = onteszt_f8v3(ellen, minta, teszt_kulcs, f8v3_kimenet)
+    for m in [mappa, mappa2, mappa3, mappa4, mappa5] + p3b_mappak + p3c_mappak + f8v3_mappak:
         shutil.rmtree(m, ignore_errors=True)
     if hibak:
         print('ÖNTESZT HIBA:')
@@ -1748,6 +2946,12 @@ def onteszt():
     print('P3b önteszt (F1V2, F2V2, F5V2, F6V2, F3V2B, F4V2) rendben; bizonyító kimenet:')
     for x in p3b_kimenet:
         print('  - ' + x)
+    print('P3c önteszt (F3V3, SONNETV3) rendben; bizonyító kimenet:')
+    for x in p3c_kimenet:
+        print('  - ' + x)
+    print('F8V3 önteszt (KJV a teljes táblából) rendben; bizonyító kimenet:')
+    for x in f8v3_kimenet:
+        print('  - ' + x)
     return 0
 
 
@@ -1755,7 +2959,7 @@ def onteszt():
 # main
 # ---------------------------------------------------------------------------
 
-def main():
+def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--vezerlo', default=None, help='vezérlőfájl (f21p/futtatas.txt): futasok=..., koteg_max=...')
     ap.add_argument('--futas', default=None, help='pl. F1,F2 (nincs alapérték; --vezerlo helyett, kézi futtatáshoz)')
@@ -1764,9 +2968,9 @@ def main():
     ap.add_argument('--szaraz', action='store_true', help='token- és költségbecslés, hálózat nélkül')
     ap.add_argument('--onteszt', action='store_true', help='MOCK küldős önellenőrzés, hálózat és kulcs nélkül')
     ap.add_argument('--eltero-arany', type=float, default=0.30, help='--szaraz: az F4 versei az F1–F2 eltérési aránya szerint')
-    ap.add_argument('--plafon', type=float, default=PLAFON_USD, help='kumulatív költségplafon USD (alap: 3.0)')
+    ap.add_argument('--plafon', type=float, default=PLAFON_USD, help='kumulatív költségplafon USD (alap: 5.0)')
     ap.add_argument('--kimenet-dir', default=F21P, help='a valaszok/ és a futasnaplo.tsv könyvtára (alap: f21p/)')
-    args = ap.parse_args()
+    args = ap.parse_args(argv)
 
     if args.onteszt:
         return onteszt()
@@ -1787,6 +2991,8 @@ def main():
     if args.szaraz:
         szaraz_kiir(minta, args.eltero_arany)
         p3b_kiir(minta)
+        p3c_kiir(minta)
+        f8v3_kiir(minta)
         return 0
 
     if bool(args.vezerlo) == bool(args.futas):
@@ -1811,14 +3017,14 @@ def main():
             koteg_max = int(args.koteg_max)
     else:
         try:
-            vezerlo_beolvas(args.vezerlo)   # kulcs nélkül is hibára fusson, mielőtt bármi indul
+            idk = vezerlo_beolvas(args.vezerlo)['futasok']   # kulcs nélkül is hibára fusson, mielőtt bármi indul
         except VezerloHiba as e:
             print('VEZÉRLŐFÁJL HIBA (%s): %s' % (args.vezerlo, e), file=sys.stderr)
             return 2
     if not (0 < args.plafon <= PLAFON_USD):
         print('HIBA: a --plafon 0 és %.1f (kemény korlát) között kell legyen' % PLAFON_USD, file=sys.stderr)
         return 2
-    fagy = befagyasztas_ellenoriz()
+    fagy = befagyasztas_ellenoriz() + inditas_elofeltetelek(idk, ELOFELTETEL_GYOKER)
     if fagy:
         for x in fagy:
             print('BEFAGYASZTÁS HIBA: %s' % x, file=sys.stderr)
@@ -1826,6 +3032,15 @@ def main():
     api_key = os.environ.get('OPENROUTER_API_KEY')
     if not api_key:
         print('HIBA: az OPENROUTER_API_KEY környezeti változó nincs beállítva', file=sys.stderr)
+        return 2
+    # F21.64: éles hívás csak a GitHub Actionsben (GITHUB_ACTIONS=true) vagy kifejezett helyi engedéllyel
+    # (F21_ELES_HELYI=igen). Oka: a helyi környezetben ott lehet az OPENROUTER_API_KEY, és egy véletlen helyi
+    # futás költséget okoz (2026.10.01: két F8V3 köteg, 0,0232 USD). A mock-küldős tesztek nem érintettek
+    # (azok a fordit._valodi_http_kuldo-t lecserélik).
+    if getattr(fordit._valodi_http_kuldo, '__module__', '') == fordit.__name__ \
+            and os.environ.get('GITHUB_ACTIONS') != 'true' and os.environ.get('F21_ELES_HELYI') != 'igen':
+        print('HIBA: éles OpenRouter-hívás helyben tiltott (GITHUB_ACTIONS nincs beállítva, F21_ELES_HELYI nem "igen"); '
+              'az éles futás a workflow dolga', file=sys.stderr)
         return 2
     ctx = Kontextus(fordit._valodi_http_kuldo, api_key, args.kimenet_dir, plafon=args.plafon)
     if args.vezerlo:

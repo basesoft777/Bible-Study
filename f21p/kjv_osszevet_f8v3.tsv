@@ -1,0 +1,203 @@
+# GENERÁLT: eszkozok/karoli_strong/kjv_osszevet.py — kézzel nem szerkesztendő.
+# proveniencia: scope=a 200 verses minta (f21p/minta.tsv) | forras=konkordancia/KJV_Strongs_teljes.tsv sha256=5a7891145401aa62dd8aac31d0192eecb112daf780461279a84912fe40826a2e; régi: KJV_Strongs_Genesis/Exodus/Proverbs.tsv | ts=2026-10-01T06:54:32+00:00
+igehely	reteg	regi_van	teljes_van	osztaly	regi_kar	teljes_kar	nincs_ok
+1Móz 1:3	R1	igen	igen	strong_azonos_szo_elter	91	58	
+1Móz 2:2	R1	igen	igen	strong_azonos_szo_elter	207	137	
+1Móz 3:21	R1	igen	igen	strong_azonos_szo_elter	142	96	
+1Móz 4:9	R1	igen	igen	strong_azonos_szo_elter	178	130	
+1Móz 4:12	R1	igen	igen	strong_azonos_szo_elter	202	132	
+1Móz 5:1	R1	igen	igen	strong_azonos_szo_elter	184	141	
+1Móz 5:17	R1	igen	igen	strong_elter_regi_tobb	149	108	
+1Móz 5:32	R1	igen	igen	strong_azonos_szo_elter	148	125	
+1Móz 6:11	R1	igen	igen	strong_azonos_szo_elter	128	95	
+1Móz 6:17	R1	igen	igen	strong_azonos_szo_elter	296	193	
+1Móz 7:2	R1	igen	igen	strong_elter_regi_tobb	242	141	
+1Móz 7:23	R1	igen	igen	strong_azonos_szo_elter	382	217	
+1Móz 8:12	R1	igen	igen	strong_azonos_szo_elter	169	117	
+1Móz 8:20	R1	igen	igen	strong_azonos_szo_elter	225	159	
+1Móz 9:16	R1	igen	igen	strong_azonos_szo_elter	272	177	
+1Móz 9:21	R1	igen	igen	strong_azonos_szo_elter	124	82	
+1Móz 10:3	R1	igen	igen	strong_azonos_szo_elter	97	71	
+1Móz 10:8	R1	igen	igen	strong_azonos_szo_elter	114	85	
+1Móz 10:9	R1	igen	igen	strong_azonos_szo_elter	190	150	
+1Móz 10:10	R1	igen	igen	strong_azonos_szo_elter	160	110	
+1Móz 10:22	R1	igen	igen	strong_azonos_szo_elter	126	92	
+1Móz 11:9	R1	igen	igen	strong_azonos_szo_elter	275	155	
+1Móz 12:8	R1	igen	igen	strong_azonos_szo_elter	335	212	
+1Móz 12:10	R1	igen	igen	strong_azonos_szo_elter	189	120	
+1Móz 12:17	R1	igen	igen	strong_azonos_szo_elter	162	132	
+1Móz 13:4	R1	igen	igen	strong_azonos_szo_elter	172	101	
+1Móz 13:14	R1	igen	igen	strong_azonos_szo_elter	288	190	
+1Móz 15:1	R1	igen	igen	strong_azonos_szo_elter	244	186	
+1Móz 15:12	R1	igen	igen	strong_azonos_szo_elter	169	115	
+1Móz 19:26	R1	igen	igen	strong_azonos_szo_elter	110	60	
+1Móz 24:27	R1	igen	igen	strong_elter_regi_tobb	322	213	
+1Móz 28:8	R1	igen	igen	strong_azonos_szo_elter	130	109	
+1Móz 30:7	R1	igen	igen	strong_azonos_szo_elter	126	108	
+1Móz 31:18	R1	igen	igen	strong_azonos_szo_elter	283	176	
+1Móz 32:19	R1	igen	igen	strong_elter_regi_tobb	232	141	
+1Móz 38:22	R1	igen	igen	strong_azonos_szo_elter	197	116	
+1Móz 41:19	R1	igen	igen	strong_elter_regi_tobb	273	205	
+1Móz 45:24	R1	igen	igen	strong_azonos_szo_elter	159	89	
+1Móz 49:25	R1	igen	igen	strong_azonos_szo_elter	317	205	
+1Móz 50:2	R1	igen	igen	strong_azonos_szo_elter	170	140	
+2Móz 1:15	R1	igen	igen	strong_azonos_szo_elter	205	143	
+2Móz 2:4	R1	igen	igen	strong_azonos_szo_elter	92	60	
+2Móz 4:2	R1	igen	igen	strong_azonos_szo_elter	112	58	
+2Móz 4:14	R1	igen	igen	strong_azonos_szo_elter	351	206	
+2Móz 8:28	R1	igen	igen	strong_azonos_szo_elter	238	153	
+2Móz 12:16	R1	igen	igen	strong_azonos_szo_elter	321	181	
+2Móz 13:2	R1	igen	igen	strong_azonos_szo_elter	189	113	
+2Móz 14:13	R1	igen	igen	strong_azonos_szo_elter	336	213	
+2Móz 15:4	R1	igen	igen	strong_azonos_szo_elter	182	134	
+2Móz 15:27	R1	igen	igen	strong_elter_regi_tobb	204	117	
+2Móz 20:23	R1	igen	igen	strong_azonos_szo_elter	129	73	
+2Móz 20:25	R1	igen	igen	strong_azonos_szo_elter	197	101	
+2Móz 21:6	R1	igen	igen	strong_azonos_szo_elter	284	150	
+2Móz 21:23	R1	igen	igen	strong_azonos_szo_elter	92	49	
+2Móz 21:26	R1	igen	igen	strong_azonos_szo_elter	207	132	
+2Móz 25:8	R1	igen	igen	strong_azonos_szo_elter	91	54	
+2Móz 25:40	R1	igen	igen	strong_azonos_szo_elter	121	65	
+2Móz 26:13	R1	igen	igen	strong_azonos_szo_elter	291	152	
+2Móz 29:4	R1	igen	igen	strong_azonos_szo_elter	181	112	
+2Móz 30:3	R1	igen	igen	strong_azonos_szo_elter	252	138	
+2Móz 32:5	R1	igen	igen	strong_azonos_szo_elter	203	147	
+2Móz 37:12	R1	igen	igen	strong_azonos_szo_elter	187	121	
+2Móz 38:8	R1	igen	igen	strong_azonos_szo_elter	254	169	
+2Móz 38:21	R1	igen	igen	strong_azonos_szo_elter	321	217	
+2Móz 39:23	R1	igen	igen	strong_azonos_szo_elter	200	114	
+2Móz 39:26	R1	igen	igen	strong_azonos_szo_elter	207	155	
+2Móz 39:31	R1	igen	igen	strong_azonos_szo_elter	168	116	
+2Móz 39:33	R1	igen	igen	strong_azonos_szo_elter	221	144	
+2Móz 40:14	R1	igen	igen	strong_azonos_szo_elter	87	51	
+2Móz 40:36	R1	igen	igen	strong_azonos_szo_elter	172	112	
+Péld 2:8	R1	igen	igen	strong_azonos_szo_elter	114	86	
+Péld 2:15	R1	igen	igen	strong_azonos_szo_elter	85	54	
+Péld 3:14	R1	igen	igen	strong_azonos_szo_elter	147	89	
+Péld 4:3	R1	igen	igen	strong_azonos_szo_elter	120	79	
+Péld 5:23	R1	igen	igen	strong_azonos_szo_elter	122	73	
+Péld 6:31	R1	igen	igen	strong_azonos_szo_elter	137	86	
+Péld 7:16	R1	igen	igen	strong_azonos_szo_elter	135	81	
+Péld 10:3	R1	igen	igen	strong_azonos_szo_elter	167	111	
+Péld 10:12	R1	igen	igen	strong_azonos_szo_elter	98	78	
+Péld 10:24	R1	igen	igen	strong_azonos_szo_elter	139	83	
+Péld 10:25	R1	igen	igen	strong_azonos_szo_elter	143	99	
+Péld 11:7	R1	igen	igen	strong_azonos_szo_elter	149	113	
+Péld 11:17	R1	igen	igen	strong_azonos_szo_elter	140	93	
+Péld 13:9	R1	igen	igen	strong_azonos_szo_elter	124	83	
+Péld 14:5	R1	igen	igen	strong_azonos_szo_elter	118	94	
+Péld 14:28	R1	igen	igen	strong_azonos_szo_elter	165	117	
+Péld 17:2	R1	igen	igen	strong_azonos_szo_elter	184	122	
+Péld 17:28	R1	igen	igen	strong_azonos_szo_elter	173	100	
+Péld 18:17	R1	igen	igen	strong_elter_regi_tobb	137	85	
+Péld 21:11	R1	igen	igen	strong_azonos_szo_elter	170	120	
+Péld 23:19	R1	igen	igen	strong_azonos_szo_elter	109	71	
+Péld 24:1	R1	igen	igen	strong_azonos_szo_elter	81	51	
+Péld 25:24	R1	igen	igen	strong_elter_regi_tobb	165	110	
+Péld 27:12	R1	igen	igen	strong_azonos_szo_elter	145	97	
+Péld 28:17	R1	igen	igen	strong_azonos_szo_elter	141	88	
+Péld 29:5	R1	igen	igen	strong_azonos_szo_elter	107	85	
+Péld 30:17	R1	igen	igen	strong_azonos_szo_elter	231	159	
+Péld 31:5	R1	igen	igen	strong_elter_regi_tobb	138	85	
+Péld 31:8	R1	igen	igen	strong_azonos_szo_elter	127	85	
+Péld 31:20	R1	igen	igen	strong_azonos_szo_elter	131	73	
+Jób 5:26	R2	nem	igen	csak_teljesben_van	0	71	
+Jób 8:11	R2	nem	igen	csak_teljesben_van	0	96	
+Jób 12:14	R2	nem	igen	csak_teljesben_van	0	60	
+Jób 26:11	R2	nem	igen	csak_teljesben_van	0	76	
+Jób 29:24	R2	nem	igen	csak_teljesben_van	0	74	
+Jób 30:25	R2	nem	igen	csak_teljesben_van	0	65	
+Jób 31:36	R2	nem	igen	csak_teljesben_van	0	52	
+Jób 31:39	R2	nem	igen	csak_teljesben_van	0	77	
+Jób 32:15	R2	nem	igen	csak_teljesben_van	0	56	
+Jób 33:7	R2	nem	igen	csak_teljesben_van	0	52	
+Jób 33:13	R2	nem	igen	csak_teljesben_van	0	43	
+Jób 34:28	R2	nem	igen	csak_teljesben_van	0	77	
+Zsolt 6:5	R2	nem	igen	csak_teljesben_van	0	58	
+Zsolt 13:2	R2	nem	igen	csak_teljesben_van	0	106	
+Zsolt 16:11	R2	nem	igen	csak_teljesben_van	0	122	
+Zsolt 18:1	R2	nem	igen	csak_teljesben_van	0	39	
+Zsolt 18:3	R2	nem	igen	csak_teljesben_van	0	66	
+Zsolt 22:32	R2	nem	nem	mindketto_nincs	0	0	nincs_KJV_megfelelo (igehely_kjv='')
+Zsolt 59:8	R2	nem	igen	csak_teljesben_van	0	55	
+Zsolt 73:12	R2	nem	igen	csak_teljesben_van	0	72	
+Zsolt 83:16	R2	nem	igen	csak_teljesben_van	0	73	
+Zsolt 90:17	R2	nem	igen	csak_teljesben_van	0	120	
+Zsolt 100:3	R2	nem	igen	csak_teljesben_van	0	88	
+Zsolt 104:26	R2	nem	igen	csak_teljesben_van	0	63	
+Zsolt 119:113	R2	nem	igen	csak_teljesben_van	0	50	
+Ézs 2:17	R3	nem	igen	csak_teljesben_van	0	118	
+Ézs 7:3	R3	nem	igen	csak_teljesben_van	0	200	
+Ézs 11:5	R3	nem	igen	csak_teljesben_van	0	94	
+Ézs 19:1	R3	nem	igen	csak_teljesben_van	0	209	
+Ézs 28:21	R3	nem	igen	csak_teljesben_van	0	188	
+Ézs 38:15	R3	nem	igen	csak_teljesben_van	0	93	
+Ézs 48:5	R3	nem	igen	csak_teljesben_van	0	136	
+Ézs 55:12	R3	nem	igen	csak_teljesben_van	0	170	
+Ézs 63:10	R3	nem	igen	csak_teljesben_van	0	95	
+Jer 6:10	R3	nem	igen	csak_teljesben_van	0	155	
+Jer 8:19	R3	nem	igen	csak_teljesben_van	0	173	
+Jer 9:19	R3	nem	igen	csak_teljesben_van	0	156	
+Jer 16:3	R3	nem	igen	csak_teljesben_van	0	145	
+Jer 32:27	R3	nem	igen	csak_teljesben_van	0	60	
+Jer 44:16	R3	nem	igen	csak_teljesben_van	0	64	
+Jer 46:21	R3	nem	igen	csak_teljesben_van	0	175	
+Jer 51:3	R3	nem	igen	csak_teljesben_van	0	130	
+Ez 11:3	R3	nem	igen	csak_teljesben_van	0	77	
+Ez 16:57	R3	nem	igen	csak_teljesben_van	0	170	
+Ez 22:25	R3	nem	igen	csak_teljesben_van	0	212	
+Ez 30:5	R3	nem	igen	csak_teljesben_van	0	130	
+Ez 33:31	R3	nem	igen	csak_teljesben_van	0	209	
+Ez 39:13	R3	nem	igen	csak_teljesben_van	0	115	
+Ez 41:2	R3	nem	igen	csak_teljesben_van	0	228	
+Ez 46:12	R3	nem	igen	csak_teljesben_van	0	308	
+Mt 4:4	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Mt 5:34	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Mt 6:31	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Mt 11:18	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Mt 21:4	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Mt 23:31	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Mt 27:18	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Mk 2:10	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Mk 2:23	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Mk 3:18	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Mk 9:36	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Mk 13:21	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Mk 14:44	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Luk 1:32	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Luk 1:75	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Luk 9:27	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Luk 10:7	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Luk 23:44	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Luk 24:48	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Ján 5:10	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Ján 8:3	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Ján 9:33	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Ján 10:12	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Ján 12:32	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Ján 19:31	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Róm 4:9	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+1Kor 3:3	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+1Kor 12:18	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+1Kor 14:11	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+2Kor 5:20	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+2Kor 6:12	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Ef 4:25	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+1Thessz 4:18	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+2Thessz 2:17	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+1Tim 1:7	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+1Tim 6:7	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+2Tim 1:12	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Zsid 8:5	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Zsid 9:6	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Zsid 9:20	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Jak 1:15	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Jak 1:18	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Jak 3:1	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Jak 3:4	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+Jak 3:8	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+1Pét 4:2	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+1Pét 4:11	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+1Pét 5:12	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+2Pét 1:7	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben
+1Ján 1:10	R4	nem	nem	mindketto_nincs	0	0	nincs_a_versmegfeleltetesben

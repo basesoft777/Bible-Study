@@ -42,6 +42,9 @@ KJV_FAJLOK = {
     'Pro': os.path.join(KONK, 'KJV_Strongs_Proverbs.tsv'),
 }
 
+KJV_TELJES = os.path.join(KONK, 'KJV_Strongs_teljes.tsv')   # F19: 66 könyv, angol (KJV) számozás
+KJV_HIANYOK = os.path.join(ROOT, 'naplok', 'F19_hianyok.tsv')
+
 _TOKEN = re.compile(r'[^\W_]+', re.UNICODE)
 _IGEHELY = re.compile(r'^(.+) (\d+):(\d+)$')
 _TR_KIADAS = re.compile(r'^TR(?:[»«]\d+)?$')
@@ -179,6 +182,92 @@ def kjv_tamapont(igehely_karoli):
     return ' '.join(('%s{%s}' % (sz, s)) if sz else '{%s}' % s for sz, s in sorok)
 
 
+_KJV_TELJES_CACHE = {}
+
+
+def _kjv_teljes_tabla():
+    """STEPBible-igehely (Gen.1.1) -> [(angol szó, nullázott Strong), ...] a TELJES
+    KJV-táblából (konkordancia/KJV_Strongs_teljes.tsv, F19; eBible).
+
+    A fájl elején '#' kezdetű megjegyzéssorok állnak a fejléc előtt (a _sorok ezeket
+    adatnak venné), ezért saját olvasó: a '#' sorokat és az 'Igehely' fejlécet kihagyja.
+    A Strong-jelölés normalizálása ugyanaz, mint a régi táblánál (_strong_nullaz:
+    'H430' -> 'H0430'). Az eBible-tábla angol szava 'szó' szintű (a régi studybible-tábla
+    frázisokat is tartalmaz, és üres szavú {H0853} elemeket); ez a két forrás között
+    a bájtazonosságot kizárja, l. kjv_osszevet.py."""
+    if 'tabla' not in _KJV_TELJES_CACHE:
+        tabla = {}
+        with open(KJV_TELJES, encoding='utf-8') as f:
+            for s in f:
+                s = s.rstrip('\n').rstrip('\r')
+                if not s.strip() or s.startswith('#') or s.startswith('Igehely\t'):
+                    continue
+                r = s.split('\t')
+                tabla.setdefault(r[0], []).append((r[3].strip(), _strong_nullaz(r[2].strip())))
+        _KJV_TELJES_CACHE['tabla'] = tabla
+    return _KJV_TELJES_CACHE['tabla']
+
+
+def _kjv_sor(sorok):
+    return ' '.join(('%s{%s}' % (sz, s)) if sz else '{%s}' % s for sz, s in sorok)
+
+
+def _kjv_megfeleltetes():
+    if not _KJV_CACHE:
+        _KJV_CACHE['tabla'] = _kjv_verstabla()
+        _KJV_CACHE['megf'] = {r[0]: r[1] for r in _sorok_versmegf()}
+        _KJV_CACHE['h2s'] = konyv_hu_to_step()
+    return _KJV_CACHE['megf'], _KJV_CACHE['h2s']
+
+
+def kjv_tamapont_teljes(igehely_karoli):
+    """KJV-támpont a Károli-versre a TELJES KJV-táblából (F19); None, ha nincs.
+
+    Ugyanaz a forma, mint a kjv_tamapont-é: 'beginning{H7225} God{H0430} ...'.
+    A Károli-vers KJV-megfelelőjét a Karoli_versmegfeleltetes.tsv igehely_kjv oszlopa
+    adja (a teljes tábla is angol/KJV-számozású, tehát ugyanaz a kulcs érvényes, mint a
+    régi táblánál). Nincs KJV-sor (None), ha
+      * a versmegfeleltetésben nincs (vagy nem 'fejezet:vers' alakú) KJV-megfelelő
+        (pl. a Károli-vers a KJV-ben nincs meg; a versszámozási eltérések — Zsoltár-
+        címek, Jóel, Mal stb. — a megfeleltetési tábla szerint oldódnak fel);
+      * a könyv nem szerepel a normalizáló táblában;
+      * a megfelelő KJV-vers a teljes táblában nem szerepel (naplok/F19_hianyok.tsv:
+        KJV-oldali adathiány: Mk 9:43, Lk 6:41, Lk 17:36).
+    A régi kjv_tamapont-ot nem érinti."""
+    megf, h2s = _kjv_megfeleltetes()
+    b = igehely_bont(igehely_karoli)
+    if not b:
+        return None
+    kjv = megf.get(igehely_karoli)
+    if not kjv or not re.match(r'^\d+:\d+$', kjv):
+        return None
+    step = h2s.get(b[0])
+    if step is None:
+        return None
+    sorok = _kjv_teljes_tabla().get('%s.%s' % (step, kjv.replace(':', '.')))
+    if not sorok:
+        return None
+    return _kjv_sor(sorok)
+
+
+def kjv_tamapont_forras(igehely_karoli, forras='regi'):
+    """A KJV-támpont a megadott forrásból: 'regi' (kjv_tamapont) vagy 'teljes'
+    (kjv_tamapont_teljes). Ismeretlen forrásra ValueError."""
+    if forras == 'regi':
+        return kjv_tamapont(igehely_karoli)
+    if forras == 'teljes':
+        return kjv_tamapont_teljes(igehely_karoli)
+    raise ValueError('ismeretlen KJV-forrás: %r (regi|teljes)' % (forras,))
+
+
+def kjv_forras_azonosito():
+    """A teljes KJV-tábla azonosítása a jsonl kjv_forras mezőjéhez: (relatív út, sha256).
+    A sha256 a bájtokra számolt (a *.tsv LF-re rögzített: .gitattributes eol=lf)."""
+    import hashlib
+    with open(KJV_TELJES, 'rb') as f:
+        return 'konkordancia/KJV_Strongs_teljes.tsv', hashlib.sha256(f.read()).hexdigest()
+
+
 def _sorok_versmegf():
     """A versmegfeleltetési tábla adatsorai (a # kezdetű fejléc-megjegyzések
     és az oszlopfejléc nélkül)."""
@@ -245,6 +334,38 @@ def arany_v2_befagyasztas_ellenoriz(ut=ARANY_V2):
         raise SystemExit('HIBA: az arany v2 (%s) sha256-ja %s, a befagyasztott %s — a befagyasztott v2 megváltozott'
                          % (ut, kapott, vart))
     return kapott
+
+
+def legfrissebb_arany(gyoker=None):
+    """A legfrissebb befagyasztott arany (F21.42, P3c): (jsonl, sha256-fájl, verzió).
+
+    Ha létezik a f21p/arany_opus_v3.sha256, az arany v3 (a befagyasztás jele a
+    hash-fájl megléte); különben az arany v2. A gyoker alapértelmezése a repó gyökere
+    (teszthez ideiglenes könyvtár adható)."""
+    gyoker = ROOT if gyoker is None else gyoker
+    f21p = os.path.join(gyoker, 'f21p')
+    v3_sha = os.path.join(f21p, 'arany_opus_v3.sha256')
+    if os.path.exists(v3_sha):
+        return os.path.join(f21p, 'arany_opus_v3.jsonl'), v3_sha, 'v3'
+    return os.path.join(f21p, 'arany_opus_v2.jsonl'), os.path.join(f21p, 'arany_opus_v2.sha256'), 'v2'
+
+
+def hash_hiba(ut, sha_ut, nev=None):
+    """Egy befagyasztott fájl ellenőrzése a sha256-fájl első mezője ellen (LF-normalizált
+    sha256). Visszaad: hibaüzenet (str) vagy None, ha rendben."""
+    nev = nev or os.path.basename(ut)
+    if not os.path.exists(sha_ut):
+        return 'hiányzik a befagyasztási hash (%s): %s' % (nev, sha_ut)
+    if not os.path.exists(ut):
+        return 'hiányzik a befagyasztott fájl (%s): %s' % (nev, ut)
+    with open(sha_ut, encoding='utf-8') as f:
+        mezok = f.read().split()
+    if not mezok:
+        return 'üres a befagyasztási hash-fájl (%s): %s' % (nev, sha_ut)
+    kapott = sha256_lf(ut)
+    if kapott != mezok[0]:
+        return 'a befagyasztott %s sha256-ja %s, a várt %s' % (nev, kapott, mezok[0])
+    return None
 
 
 def generalas_ts():

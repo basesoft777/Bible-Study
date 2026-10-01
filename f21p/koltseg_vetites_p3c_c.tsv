@@ -1,0 +1,70 @@
+# GENERÁLT: eszkozok/karoli_strong/koltseg_vetit_p3c.py --csak-c | scope=P5 a regressziós mérésre: a C (F3V3, prompt_v3) egyedül, irányadó; a v2-es C-futások (F3V2, F3V2B, prompt_v2) tájékoztatásul; a SONNETV3 nem futott (a Sonnet és a Sonnet+C vetítése nincs adat); teljes Biblia 31 158 vers, F22 műfaji öt réteg (PD12), kézimunka-tájékoztató az arany v3-höz | forras=f21p/futasnaplo.tsv, f21p/valaszok/{F3V3,F3V2,F3V2B}.jsonl, f21p/minta.tsv, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/KJV_Strongs_*.tsv, arany_opus_v3.jsonl (sha256 acdeb55f969c96fe, ellenőrizve) | ts=2026-10-01T07:46:04+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | mag=20260930 | kézzel szerkeszteni tilos
+szakasz	osszeallitas	reteg	mero	ertek	also90	felso90	megjegyzes
+illesztes	C (F3V3)	-	bemenet_a_b_c	3431.37 / 12.0799 / 4.6521			20 első próbálkozású hívás (F3V3; IRÁNYADÓ (prompt_v3))
+illesztes	C (F3V3)	-	kimenet_a_b	133.49 / 3.3815			a kimeneti token a gondolkodási tokent is tartalmazza, ha a modell jelenti
+illesztes	C (F3V3)	-	gondolkodasi_token_osszesen	0			futasnaplo.tsv gondolkodas_token (minden hívás)
+ar	C (F3V3)	-	cost1_per_tablaar_s	0.999993			táblaár google/gemini-3.8-flash: 0.75/3.75 USD/1M
+ar	C (F3V3)	-	ujrakeres_szorzo_M	1.173703			a futás saját mért adatából: Σcost / Σcost(első próba); hívás/köteg = 1.30
+ellenorzes	C (F3V3)	-	pilot_vetitett_usd	0.260136			mintán belül (200 vers, 20 köteg)
+ellenorzes	C (F3V3)	-	pilot_loo_vetitett_usd	0.259911			leave-one-out (kötegenként kihagyva)
+ellenorzes	C (F3V3)	-	pilot_tenyleges_usd	0.260136			futasnaplo.tsv (minden hívás)
+ellenorzes	C (F3V3)	-	elteres_szazalek	0.0			mintán belül, küszöb ≤ 10%
+ellenorzes	C (F3V3)	-	loo_elteres_szazalek	-0.087			leave-one-out, küszöb ≤ 10%
+ellenorzes	C (F3V3)	-	szamito_elteres_szazalek	-0.087			PD12/DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: leave-one-out; küszöb ≤ 10%: teljesül
+illesztes	C (F3V2)	-	bemenet_a_b_c	2939.52 / 12.0797 / 4.6518			20 első próbálkozású hívás (F3V2; tájékoztató (prompt_v2))
+illesztes	C (F3V2)	-	kimenet_a_b	117.52 / 3.4544			a kimeneti token a gondolkodási tokent is tartalmazza, ha a modell jelenti
+illesztes	C (F3V2)	-	gondolkodasi_token_osszesen	0			futasnaplo.tsv gondolkodas_token (minden hívás)
+ar	C (F3V2)	-	cost1_per_tablaar_s	0.999999			táblaár google/gemini-3.8-flash: 0.75/3.75 USD/1M
+ar	C (F3V2)	-	ujrakeres_szorzo_M	1.194298			a futás saját mért adatából: Σcost / Σcost(első próba); hívás/köteg = 1.30
+ellenorzes	C (F3V2)	-	pilot_vetitett_usd	0.256731			mintán belül (200 vers, 20 köteg)
+ellenorzes	C (F3V2)	-	pilot_loo_vetitett_usd	0.256352			leave-one-out (kötegenként kihagyva)
+ellenorzes	C (F3V2)	-	pilot_tenyleges_usd	0.256731			futasnaplo.tsv (minden hívás)
+ellenorzes	C (F3V2)	-	elteres_szazalek	0.0			mintán belül, küszöb ≤ 10%
+ellenorzes	C (F3V2)	-	loo_elteres_szazalek	-0.148			leave-one-out, küszöb ≤ 10%
+ellenorzes	C (F3V2)	-	szamito_elteres_szazalek	-0.148			PD12/DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: leave-one-out; küszöb ≤ 10%: teljesül
+illesztes	C (F3V2B)	-	bemenet_a_b_c	2939.37 / 12.0799 / 4.6521			20 első próbálkozású hívás (F3V2B; tájékoztató (prompt_v2, a C második futása))
+illesztes	C (F3V2B)	-	kimenet_a_b	64.77 / 3.6737			a kimeneti token a gondolkodási tokent is tartalmazza, ha a modell jelenti
+illesztes	C (F3V2B)	-	gondolkodasi_token_osszesen	0			futasnaplo.tsv gondolkodas_token (minden hívás)
+ar	C (F3V2B)	-	cost1_per_tablaar_s	0.99999			táblaár google/gemini-3.8-flash: 0.75/3.75 USD/1M
+ar	C (F3V2B)	-	ujrakeres_szorzo_M	1.181673			a futás saját mért adatából: Σcost / Σcost(első próba); hívás/köteg = 1.30
+ellenorzes	C (F3V2B)	-	pilot_vetitett_usd	0.25611			mintán belül (200 vers, 20 köteg)
+ellenorzes	C (F3V2B)	-	pilot_loo_vetitett_usd	0.255912			leave-one-out (kötegenként kihagyva)
+ellenorzes	C (F3V2B)	-	pilot_tenyleges_usd	0.25611			futasnaplo.tsv (minden hívás)
+ellenorzes	C (F3V2B)	-	elteres_szazalek	0.0			mintán belül, küszöb ≤ 10%
+ellenorzes	C (F3V2B)	-	loo_elteres_szazalek	-0.077			leave-one-out, küszöb ≤ 10%
+ellenorzes	C (F3V2B)	-	szamito_elteres_szazalek	-0.077			PD12/DT21 g): a konzervatívabb (nagyobb abszolút eltérésű) számít: leave-one-out; küszöb ≤ 10%: teljesül
+vetites	C (F3V3)	ÓSZ-próza	koltseg_usd	19.4119	17.6802	21.3014	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); IRÁNYADÓ (prompt_v3); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V3)	költészet	koltseg_usd	5.0931	4.6514	5.5732	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); IRÁNYADÓ (prompt_v3); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V3)	próféta	koltseg_usd	7.8611	7.1586	8.6269	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); IRÁNYADÓ (prompt_v3); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V3)	evangélium+ApCsel	koltseg_usd	6.1018	5.5591	6.6888	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); IRÁNYADÓ (prompt_v3); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V3)	levél+Jel	koltseg_usd	4.0219	3.6645	4.4084	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); IRÁNYADÓ (prompt_v3); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V3)	Összes	koltseg_usd	42.4899	38.6747	46.6243	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); IRÁNYADÓ (prompt_v3); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V2)	ÓSZ-próza	koltseg_usd	19.2778	17.4246	21.1437	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); tájékoztató (prompt_v2); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V2)	költészet	koltseg_usd	4.9671	4.5207	5.4368	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); tájékoztató (prompt_v2); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V2)	próféta	koltseg_usd	7.8015	7.0409	8.5597	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); tájékoztató (prompt_v2); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V2)	evangélium+ApCsel	koltseg_usd	6.0195	5.4467	6.5983	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); tájékoztató (prompt_v2); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V2)	levél+Jel	koltseg_usd	3.967	3.59	4.3482	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); tájékoztató (prompt_v2); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V2)	Összes	koltseg_usd	42.0329	37.9937	46.0675	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); tájékoztató (prompt_v2); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V2B)	ÓSZ-próza	koltseg_usd	19.3234	17.4883	21.4029	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); tájékoztató (prompt_v2, a C második futása); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V2B)	költészet	koltseg_usd	4.9202	4.5095	5.3712	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); tájékoztató (prompt_v2, a C második futása); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V2B)	próféta	koltseg_usd	7.8202	7.0785	8.6643	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); tájékoztató (prompt_v2, a C második futása); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V2B)	evangélium+ApCsel	koltseg_usd	6.0105	5.4633	6.6234	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); tájékoztató (prompt_v2, a C második futása); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V2B)	levél+Jel	koltseg_usd	3.9605	3.6005	4.3633	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); tájékoztató (prompt_v2, a C második futása); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+vetites	C (F3V2B)	Összes	koltseg_usd	42.0348	38.1395	46.4312	F22 műfaji réteg; bootstrap 1000 (köteg-egység: PD12); tájékoztató (prompt_v2, a C második futása); KJV-támpont a vetítésben a régi táblák szerint (1Móz, 2Móz, Péld), mint az F3V3-ban
+biblia_rs	-	ÓSZ-próza	versek_szama	12871			szavak (eredeti+Károli) 566494, KJV-szavak 75607
+biblia_rs	-	költészet	versek_szama	5001			szavak (eredeti+Károli) 126258, KJV-szavak 15573
+biblia_rs	-	próféta	versek_szama	5332			szavak (eredeti+Károli) 232568, KJV-szavak 0
+biblia_rs	-	evangélium+ApCsel	versek_szama	4785			szavak (eredeti+Károli) 171399, KJV-szavak 0
+biblia_rs	-	levél+Jel	versek_szama	3169			szavak (eredeti+Károli) 112795, KJV-szavak 0
+kezimunka	C (F3V3)	Összes	alacsony_link_biblia	n.é.			egymodelles összeállítás (PD6): az alacsony szint nem értelmezhető
+kezimunka	C (F3V3)	ÓSZ-próza	elteres_per_vers_arany	2.4			TÁJÉKOZTATÓ: mért, 10 aranyvers (v3); hiányzó + többlet link/vers
+kezimunka	C (F3V3)	ÓSZ-próza	vetitett_elteres_biblia	30890			× 12871 vers (kis n)
+kezimunka	C (F3V3)	költészet	elteres_per_vers_arany	0.7			TÁJÉKOZTATÓ: mért, 20 aranyvers (v3); hiányzó + többlet link/vers
+kezimunka	C (F3V3)	költészet	vetitett_elteres_biblia	3501			× 5001 vers (kis n)
+kezimunka	C (F3V3)	próféta	elteres_per_vers_arany	2.5			TÁJÉKOZTATÓ: mért, 10 aranyvers (v3); hiányzó + többlet link/vers
+kezimunka	C (F3V3)	próféta	vetitett_elteres_biblia	13330			× 5332 vers (kis n)
+kezimunka	C (F3V3)	evangélium+ApCsel	elteres_per_vers_arany	1.2			TÁJÉKOZTATÓ: mért, 10 aranyvers (v3); hiányzó + többlet link/vers
+kezimunka	C (F3V3)	evangélium+ApCsel	vetitett_elteres_biblia	5742			× 4785 vers (kis n)
+kezimunka	C (F3V3)	levél+Jel	elteres_per_vers_arany	1.4			TÁJÉKOZTATÓ: mért, 10 aranyvers (v3); hiányzó + többlet link/vers
+kezimunka	C (F3V3)	levél+Jel	vetitett_elteres_biblia	4437			× 3169 vers (kis n)
+kezimunka	C (F3V3)	Összes	vetitett_elteres_biblia	57900			TÁJÉKOZTATÓ: F22-rétegenként vetítve (a nem n.é. rétegek összege)

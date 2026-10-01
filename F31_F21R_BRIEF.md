@@ -5,9 +5,10 @@ kod: F21R
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
 ad: "prompt_v3; arany v3 (csak ha az a–e érinti és jóváhagyva); F3V3 és Sonnet-futás 200 versen; mérés és teljes bibliai költségvetítés; döntési alap a #22 sorsához"
 kovetkezo: "#22 sorsa – felhasználói döntés a mérés számai alapján"
+lezarva_osszegzes: "Teljesítve a #21 regressziós mérésében (PR #105), külön nem fut."
 olvas: [DONTESEK.md, naplok/F21P_jelentes.md, naplok/F21_zaras.md, f21p/, eszkozok/karoli_strong/, .github/workflows/f21p_pilot.yml, F22_KAROLI_STRONG_BRIEF.md]
 ir: [f21p/, naplok/F21R_meres.md, naplok/ELLENOR_F21R.md, DONTESEK.md]
 fugg: [21]
@@ -15,6 +16,8 @@ nem_fugg: [22]
 ---
 
 # Károli–Strong párosítás: regressziós mérés az új prompttal
+
+Teljesítve a #21 regressziós mérésében (PR #105), külön nem fut.
 
 **Egy mondatban:** a DT21 a–e konvenciódöntéseit átvezetjük a jegyzetbe és egy új promptba (`prompt_v3`), lefuttatjuk vele a C-t és a Sonnetet a 200 verses pilot-mintán, megmérjük, és megállunk. Éles, teljes bibliai futás **nem** indul.
 
