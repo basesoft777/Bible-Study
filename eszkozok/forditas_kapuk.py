@@ -284,10 +284,20 @@ def _sajat_talalatok(angol, forras, terminologia):
             if not any(a <= m.start() and m.end() <= b for a, b in takart)]
 
 
+def kapus_sor(t):
+    """DT27: a `kapu` oszlop (adat/SEMA.md 2.15). Csak a kifejezett `nem` hagyja
+    ki a sort a megkovetelesbol; hianyzo vagy ures ertek: `igen`."""
+    return (t.get('kapu') or '').strip().lower() != 'nem'
+
+
 def ellenoriz_terminologia(forras, forditas, terminologia, bizonytalan_lista):
     serult = []
     for t in terminologia:
         angol = t['angol']
+        # a kapu=nem sor kulcsa a pontos kulcsolasban tovabbra is reszt vesz
+        # (_sajat_talalatok a teljes listat kapja), csak nem kovetelt
+        if not kapus_sor(t):
+            continue
         if not _sajat_talalatok(angol, forras, terminologia):
             continue
         if _p4._magyar_alak_mintaja(t['magyar']).search(forditas):

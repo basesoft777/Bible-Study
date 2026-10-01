@@ -93,6 +93,45 @@ class PontosKulcsolas(unittest.TestCase):
         self.assertEqual(self._e(forras, 'מִן comparativusszal Ez 8:17; vö. Dr')[0], 'RENDBEN')
 
 
+class KapuOszlop(unittest.TestCase):
+    """DT27: a terminologia.tsv `kapu` oszlopa (igen/nem; hiányzó = igen)."""
+
+    FORRAS = 'so read also 1:21; compare Dr'
+
+    def _e(self, term):
+        return K.ellenoriz_terminologia(self.FORRAS, 'így olvasandó az 1:21-ben is; Dr', term, [])
+
+    def test_kapu_nem_nem_ad_sertest(self):
+        term = [{'angol': 'read', 'magyar': 'olv.', 'kapu': 'nem'},
+                {'angol': 'compare', 'magyar': 'vö.', 'kapu': 'nem'}]
+        self.assertEqual(self._e(term)[0], 'RENDBEN')
+
+    def test_kapu_igen_sertest_ad(self):
+        e, r = self._e([{'angol': 'read', 'magyar': 'olv.', 'kapu': 'igen'}])
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('read -> olv.', r)
+
+    def test_hianyzo_es_ures_ertek_igen(self):
+        self.assertEqual(self._e([{'angol': 'read', 'magyar': 'olv.'}])[0], 'SERTES')
+        self.assertEqual(self._e([{'angol': 'read', 'magyar': 'olv.', 'kapu': ''}])[0], 'SERTES')
+        self.assertTrue(K.kapus_sor({'kapu': ' '}))
+        self.assertFalse(K.kapus_sor({'kapu': 'nem'}))
+
+    def test_kapu_nem_hosszabb_kulcs_tovabbra_is_lefedi(self):
+        # a kapu=nem `מִן compare` találatai nem a kapu=igen `compare` sorhoz tartoznak
+        term = [{'angol': 'compare', 'magyar': 'vö.', 'kapu': 'igen'},
+                {'angol': 'מִן compare', 'magyar': 'comparativus', 'kapu': 'nem'}]
+        forras = 'be swift, with מִן compare, of warriors'
+        self.assertEqual(K.ellenoriz_terminologia(forras, 'gyorsnak lenni', term, [])[0], 'RENDBEN')
+
+    def test_prompt_tartalmazza_a_kapu_nem_sorokat(self):
+        import emeles
+        # a prompt a tábla MINDEN sorát tartalmazza, a kapu értékétől függetlenül
+        szoveg, _ = emeles.terminologia_szoveg()
+        for t in emeles.tsv_dict_sorok(emeles.TERMINOLOGIA_UT):
+            self.assertIn('`%s` = %s' % (t['angol'], t['magyar']), szoveg, t.get('kapu'))
+
+
 class Konyvek(unittest.TestCase):
     def test_jsir_es_sir(self):
         self.assertEqual(K.ellenoriz_konyvek('Lam 3:57; Sir. 1:3', 'JSir 3:57; Sir 1:3')[0], 'RENDBEN')
