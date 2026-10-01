@@ -142,9 +142,15 @@ class FuggesTest(Alap):
         self.assertEqual(fugg[2], {})
         self.assertEqual(utk, [])
 
-    def test_konyvtar_illesztes(self):
+    def test_konyvtar_olvasas_kontextus(self):
+        """F39 (DT-F39g): a `/`-re végződő olvas-bejegyzés nem ad sorrendet."""
         self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, olvas=['adat/'], ir=['a.txt']))
         self.g.brief('F02_B_BRIEF.md', brief_szoveg(2, olvas=['b.txt'], ir=['adat/x.tsv']))
+        self.assertEqual(self.fugg()[0][1], {})
+
+    def test_konyvtar_iras_konkret_olvasassal(self):
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, olvas=['adat/x.tsv'], ir=['a.txt']))
+        self.g.brief('F02_B_BRIEF.md', brief_szoveg(2, olvas=['b.txt'], ir=['adat/']))
         self.assertIn(2, self.fugg()[0][1])
 
     def test_glob_illesztes(self):
@@ -169,7 +175,7 @@ class FuggesTest(Alap):
         _, utk, _, sorrend = self.fugg()
         self.assertEqual([(a, b) for a, b, _ in utk], [(1, 2)])
         self.assertEqual(sorrend[0][:2], (1, 2))
-        self.assertIn('egyeztetend', sorrend[0][2])
+        self.assertIn('számból', sorrend[0][2])
 
     def test_utkozes_sorrendjet_a_fugges_adja(self):
         self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, olvas=['q'], ir=['adat/x.tsv'], fugg=[2]))
@@ -424,6 +430,11 @@ class CliTest(Alap):
         self.assertEqual(F.main(['--gyoker', self.g.ut, 'ellenoriz']), 0)
         self.g.brief('F02_B_BRIEF.md', brief_szoveg(2, allapot='rossz'))
         self.assertEqual(F.main(['--gyoker', self.g.ut, 'ellenoriz']), 1)
+
+
+# F39: a függés-levezetés tesztjei (eszkozok/tesztek/), ugyanebben a futtatásban
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tesztek'))
+from test_feladatok_fugges import MaiAllapotTest, SzabalyTest  # noqa: E402,F401
 
 
 if __name__ == '__main__':
