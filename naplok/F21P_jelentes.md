@@ -636,7 +636,7 @@ A küszöb szempontjából csak a mért érték számít. A (c)-hibák (az arany
 
 ## Javaslat — a #22 választott iránya (a felhasználó döntése, javaslatként rögzítve; a #22 briefje ezzel nem változik, brief-diff nem készül, teljes futás nem indul)
 
-A felhasználó szó szerinti iránya (PD19 (3), DT32):
+A felhasználó szó szerinti iránya (PD19 (3), DT-F21g):
 
 > „Sonnet a Code-ban + C az Actionsben, könyvenként, a Genezissel kezdve; `magas` = egyezés, eltérésnél a Sonnet változata `alacsony` jelöléssel; a próféták kötegmérete 5 vers; az 1Móz 1–5 után `/usage`-jelentés, és megállás, ha a teljes Genezisre vetítve a heti keret 50%-a fölött van.”
 

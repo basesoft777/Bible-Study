@@ -60,7 +60,7 @@ jobs:
           echo "Valtozott fajlok:"
           cat valtozott_fajlok.txt
 
-      - name: E2-E16 (eszkozok/ellenorzes/futtat.py)
+      - name: E2-E19 (eszkozok/ellenorzes/futtat.py)
         id: e2e16
         env:
           DIFF_ALAP: ${{ steps.diff.outputs.base }}
@@ -116,14 +116,14 @@ jobs:
         run: |
           python eszkozok/ellenorzes/pr_komment.py e2e16_jelentes.md e1_jelentes.md
 
-      - name: Bukas, ha E1 vagy E2-E16 HIBA-t jelzett
+      - name: Bukas, ha E1 vagy E2-E19 HIBA-t jelzett
         if: always()
         env:
           E2E16_KILEPES: ${{ steps.e2e16.outputs.kilepes }}
           E1_KILEPES: ${{ steps.e1.outputs.kilepes }}
         run: |
           if [ "$E2E16_KILEPES" != "0" ] || [ "$E1_KILEPES" != "0" ]; then
-            echo "Van HIBA-szintu talalat (E2-E16 kilepes: $E2E16_KILEPES, E1 kilepes: $E1_KILEPES)."
+            echo "Van HIBA-szintu talalat (E2-E19 kilepes: $E2E16_KILEPES, E1 kilepes: $E1_KILEPES)."
             exit 1
           fi
           echo "Minden ellenorzes RENDBEN."

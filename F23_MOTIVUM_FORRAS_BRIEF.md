@@ -11,6 +11,7 @@ kovetkezo: /kovetkezo; ⛔ az M0 felmérés után
 olvas: [sablonok/, tematikus_lezart/, motivumok/, lexikon/, genezis/, adat/SEMA.md, adat/res_forras.tsv, eszkozok/general.py, CLAUDE.md, ATALAKITASI_TERV.md.md]
 ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md]
 fugg: []
+nem_fugg: [22]
 ---
 
 # F<nn>_MOTIVUM_FORRAS_BRIEF.md — Egyforrású motívumdokumentum: forrássablon és mélységi szintek (terv)

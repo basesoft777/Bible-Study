@@ -17,7 +17,7 @@
 # szerepel. A futtato a plafont minden hivas elott a naplo mert osszegehez viszonyitja (kilepesi kod 3 a
 # plafonnal; ujrainditas: uj trigger). Indulaskor sha256-ellenorzes (prompt_v1, v2, biro_v2, v3, arany v2).
 #
-# SONNETV3 (F21.70, DT28/PD15): a Sonnet-endpoint a gondolkodas kikapcsolasat 400-zal elutasitotta, ezert a gondolkodas
+# SONNETV3 (F21.70, DT-F21c/PD15): a Sonnet-endpoint a gondolkodas kikapcsolasat 400-zal elutasitotta, ezert a gondolkodas
 # MINIMALIS szinten fut: reasoning.max_tokens=1024 -> (400 eseten) reasoning.effort=low; a temperature kulcs kimarad
 # (a Sonnet-futas nem determinisztikus). A kalibralo trigger utan az ellenorzes:
 # eszkozok/karoli_strong/kalibralas_ellenoriz.py (0 = mehet tovabb, 4 = megallni, 2 = adathiba). A kapu (futasok=SONNETV3)

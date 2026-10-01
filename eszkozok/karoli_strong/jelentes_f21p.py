@@ -522,7 +522,7 @@ def p3c_szakasz():
 
 
 def javaslat_szakasz():
-    """A #22 választott iránya (PD19 (3), DT32): javaslatként rögzítve, ajánlás nélkül, a mért adatokkal."""
+    """A #22 választott iránya (PD19 (3), DT-F21g): javaslatként rögzítve, ajánlás nélkül, a mért adatokkal."""
     mc = T('meres_p3c_eredmeny.tsv', ['szakasz', 'osszeallitas', 'reteg', 'mero'])
     kc = T('koltseg_vetites_p3c.tsv', ['szakasz', 'osszeallitas', 'reteg', 'mero'])
     S, C3_, PAR = 'Sonnet (SONNETV3)', 'C (F3V3)', 'Sonnet+C'
@@ -533,7 +533,7 @@ def javaslat_szakasz():
     import math
     ki = ['', '## Javaslat — a #22 választott iránya (a felhasználó döntése, javaslatként rögzítve; a #22 briefje ezzel nem '
           'változik, brief-diff nem készül, teljes futás nem indul)', '',
-          'A felhasználó szó szerinti iránya (PD19 (3), DT32):', '',
+          'A felhasználó szó szerinti iránya (PD19 (3), DT-F21g):', '',
           '> „Sonnet a Code-ban + C az Actionsben, könyvenként, a Genezissel kezdve; `magas` = egyezés, eltérésnél a Sonnet '
           'változata `alacsony` jelöléssel; a próféták kötegmérete 5 vers; az 1Móz 1–5 után `/usage`-jelentés, és megállás, '
           'ha a teljes Genezisre vetítve a heti keret 50%-a fölött van.”', '',

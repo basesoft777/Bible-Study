@@ -612,6 +612,44 @@ def _forditasok_forras_szoveg_idx(adat_dir):
     return idx
 
 
+# F28_EMELES_BRIEF.md, DT24 (b): a Thayer/BDB `teljes` szintu sor forrasszovege
+# a konkordancia teljes szocikke is lehet, ha nincs hozza lexikon_hivatkozasok-sor
+# (az emeles a lexikon minden Strong-szamara forditja a teljes szocikket).
+_TELJES_SZOCIKK_FAJL = {
+    'Thayer': 'Thayer_teljes.tsv',
+    'BDB': 'BDB_teljes_unabridged.tsv',
+}
+
+
+def _strong_padded(s):
+    import re as _re
+    m = _re.match(r'^([GH])0*(\d{1,4})([a-z]?)$', s or '')
+    return '%s%04d%s' % (m.group(1), int(m.group(2)), m.group(3)) if m else None
+
+
+def _teljes_szocikk(adat_dir, sor, cache):
+    """A konkordancia teljes szocikke (Teljes_szocikk mezo) a sor Strong-szamara,
+    ha a sor `jelentes_szam=teljes`, `mezo=forditas_hu`, es a szotar Thayer
+    vagy BDB; kulonben None. Az `entry_id`-nek a konkordancia Strong_eredeti
+    mezojevel kell egyeznie."""
+    szotar = sor.get('szotar')
+    if (sor.get('jelentes_szam') != 'teljes' or sor.get('mezo') != 'forditas_hu'
+            or szotar not in _TELJES_SZOCIKK_FAJL):
+        return None
+    if szotar not in cache:
+        ut = os.path.join(os.path.dirname(adat_dir), 'konkordancia', _TELJES_SZOCIKK_FAJL[szotar])
+        idx = {}
+        if os.path.exists(ut):
+            _, kk = G.tsv_beolvas(ut)
+            for r in kk:
+                idx[r['Strong_padded']] = (r.get('Strong_eredeti'), r.get('Teljes_szocikk', ''))
+        cache[szotar] = idx
+    talalat = cache[szotar].get(_strong_padded(sor.get('strong')))
+    if talalat is None or talalat[0] != sor.get('entry_id'):
+        return None
+    return talalat[1]
+
+
 def szabaly13_forditasi_gyorsitotar(adat_dir):
     """F05_SZOTAR_BRIEF.md S1.5, 13. szabaly (SEMA.md 2.14): a forditasok.tsv
     kulcsa (szotar+strong+entry_id+jelentes_szam+mezo) egyedi legyen, es a
@@ -635,13 +673,16 @@ def szabaly13_forditasi_gyorsitotar(adat_dir):
             hibas.append('duplikált kulcs: %s (%d sor)' % (kulcs, n))
 
     forras_idx = _forditasok_forras_szoveg_idx(adat_dir)
+    teljes_cache = {}
     for sor in sorok:
         kulcs = (sor.get('szotar'), sor.get('strong'), sor.get('entry_id'),
                  sor.get('jelentes_szam'), sor.get('mezo'))
         forras_szoveg = forras_idx.get(kulcs)
         if forras_szoveg is None:
+            forras_szoveg = _teljes_szocikk(adat_dir, sor, teljes_cache)
+        if forras_szoveg is None:
             hibas.append('%s: nincs hozzá forrásszöveg (lexikon_hivatkozasok.tsv / '
-                          'UBS_DNTG_jelentesek.tsv)' % (kulcs,))
+                          'UBS_DNTG_jelentesek.tsv / teljes szócikk)' % (kulcs,))
             continue
         ujra_hash = hashlib.sha1(forras_szoveg.encode('utf-8')).hexdigest()
         if ujra_hash != (sor.get('forras_hash') or ''):

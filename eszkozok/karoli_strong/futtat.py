@@ -36,7 +36,7 @@ P3c (F21.42, PD13; regressziós mérés a prompt_v3-mal; kimenet valaszok/<futas
   SONNETV3 S modell (anthropic/claude-sonnet-5.5, az OpenRouteren), 200 vers, prompt_v3,
            KJV a minta szerint, 10 vers/hívás, kapu + egy újrakérés. Ár: 2.00 / 10.00 USD
            per 1M token (bemenet / kimenet; 0.000002 / 0.00001 USD per token, az
-           OpenRouter modell-API szerint). Gondolkodás MINIMÁLIS szinten (F21.70, DT28/PD15):
+           OpenRouter modell-API szerint). Gondolkodás MINIMÁLIS szinten (F21.70, DT-F21c/PD15):
            az OpenRouter-endpoint a reasoning:{enabled:false}-t 400-zal elutasította
            ("Reasoning is mandatory ..."), ezért a gondolkodás be van kapcsolva, a legkisebb
            kerettel. LÁNC (S_REASONING_LANC; mint a C minimal -> low láncánál, a küldés
@@ -222,7 +222,7 @@ KIMENET_TOKEN_VERSENKENT_MODELL = {MODELLEK['S']: 200}
 # A C modell kötelező gondolkodásának szintjei, a legalacsonyabbtól; 400-as
 # elutasításnál a következő. A sikeres szint a folyamat hátralevő részére marad.
 C_REASONING_LANC = [{'effort': 'minimal'}, {'effort': 'low'}]
-# F21.70 (DT28, PD15): a Sonnet gondolkodása kötelező (az enabled:false 400), a legkisebb kerettel:
+# F21.70 (DT-F21c, PD15): a Sonnet gondolkodása kötelező (az enabled:false 400), a legkisebb kerettel:
 # 1. max_tokens=1024 (az Anthropic minimuma), 2. effort=low; ha mindkettő elutasított: hiba, megállás
 # (nincs 'kotelezo_alap' tartalék, mint a C-nél). A temperature a kérésből kimarad (fordit).
 S_REASONING_LANC = [{'max_tokens': 1024}, {'effort': 'low'}]

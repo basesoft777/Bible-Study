@@ -11,6 +11,7 @@ kovetkezo: "#22 sorsa – felhasználói döntés a mérés számai alapján"
 olvas: [DONTESEK.md, naplok/F21P_jelentes.md, naplok/F21_zaras.md, f21p/, eszkozok/karoli_strong/, .github/workflows/f21p_pilot.yml, F22_KAROLI_STRONG_BRIEF.md]
 ir: [f21p/, naplok/F21R_meres.md, naplok/ELLENOR_F21R.md, DONTESEK.md]
 fugg: [21]
+nem_fugg: [22]
 ---
 
 # Károli–Strong párosítás: regressziós mérés az új prompttal

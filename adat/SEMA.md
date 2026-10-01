@@ -8,7 +8,7 @@ Ez a réteg a **kanonikus igazságforrás**. A `tematikus_lezart/`, `genezis/`, 
 és `lexikon/` kimenetei ebből generálódnak vagy ehhez igazodnak. Ha egy tény itt és egy
 markdown-fájlban ellentmond, **ez a tábla az irányadó**.
 
-A nyolc tábla és a hozzájuk tartozó kulcs:
+A kilenc tábla és a hozzájuk tartozó kulcs:
 
 | Fájl | Kulcs | Ki írja |
 |---|---|---|
@@ -20,6 +20,7 @@ A nyolc tábla és a hozzájuk tartozó kulcs:
 | `datasetek.tsv` | `study_tipus` + `dataset` | kézzel (policy-tábla) |
 | `grammatikai_strongok.tsv` | `strong` | **generált** — `eszkozok/grammatikai_strongok_general.py` |
 | `auditok.tsv` | nincs (l. 2.9) | a `lekerdez.py` proveniencia-sora, kézzel rögzítve |
+| `licencek.tsv` | `dataset` | kézzel (leltár, F24) |
 
 ---
 
@@ -706,10 +707,10 @@ magyar szótári fordítás egyetlen helye — a `lexikon_hivatkozasok.tsv`
 | `entry_id` | szabad szöveg | ✔ | `szotar=UBS_DNTG` esetén a `UBS_DNTG_jelentesek.tsv` `lexid` mezője (a régi `forditas_ubs.lexid`); egyébként azonos a 2.5 `entry_id` értelmezésével. |
 | `jelentes_szam` | union (l. 2.2.2) | ✔ | `szotar=UBS_DNTG` esetén a Louw–Nida `entry_kod` (pl. `33.176`, a régi `forditas_ubs.entry_kod`); egyébként azonos a 2.5 `jelentes_szam` értelmezésével. |
 | `mezo` | zárt | ✔ | Melyik forrásmezőt fordítja ez a sor: `forditas_hu` (a 2.5 `szoveg_en`-jét), `definicio_hu` vagy `glosszak_hu` (a régi `forditas_ubs.tsv` két oszlopa). |
-| `forras_hash` | szabad szöveg | ✔ | A forrásszöveg (az eredeti nyelvű, EN) SHA-1 hexdigestje (`hashlib.sha1(szoveg).hexdigest()`), UTF-8 kódolásból. Eltérés a forrás-hash és az újraszámolt hash között `ellenoriz.py`-sértés (S1.5, 13. szabály). |
+| `forras_hash` | szabad szöveg | ✔ | A forrásszöveg (az eredeti nyelvű, EN) SHA-1 hexdigestje (`hashlib.sha1(szoveg).hexdigest()`), UTF-8 kódolásból. Eltérés a forrás-hash és az újraszámolt hash között `ellenoriz.py`-sértés (S1.5, 13. szabály). A forrásszöveg a `lexikon_hivatkozasok.tsv` `szoveg_en`-je (UBS-nél a `UBS_DNTG_jelentesek.tsv`); ha ott nincs sor, és a sor `szotar ∈ {Thayer, BDB}`, `jelentes_szam=teljes`, `mezo=forditas_hu`, akkor a `konkordancia/Thayer_teljes.tsv` / `BDB_teljes_unabridged.tsv` `Teljes_szocikk` mezője (kulcs: `strong` → `Strong_padded`, az `entry_id`-nek a `Strong_eredeti`-vel kell egyeznie; F28 DT24 (b)). |
 | `forditas_hu` | szabad szöveg | ✔ | A fordítás szövege — ugyanaz a tartalmi szabály, mint a 2.5-ben leírt `forditas_hu`-nál. |
-| `allapot` | zárt | ✔ | `kezi` (a migrált, ember által korábban jóváhagyott sorok) \| `pilot` (az `eszkozok/fordit.py` próba-kimenete, l. `F03_FORDITAS_PILOT_BRIEF.md`) \| `elavult` (a `forras_hash` már nem egyezik, `ellenoriz.py` javaslata). |
-| `modell` | szabad szöveg | | A fordító LLM modell-azonosítója (pl. `anthropic/claude-haiku-4.5`); üres, ha `allapot=kezi` (nem model-fordítás). |
+| `allapot` | zárt | ✔ | `kezi` (a migrált, ember által korábban jóváhagyott sorok; az F28-ban a felhasználó által jóváhagyott Opus-fordítás) \| `opus` (a teljes Thayer-/BDB-szócikk Opus-fordítása, kapukon átment, emberi jóváhagyás nélkül, l. `F28_EMELES_BRIEF.md` E4) \| `pilot` (az `eszkozok/fordit.py` próba-kimenete, l. `F03_FORDITAS_PILOT_BRIEF.md`) \| `elavult` (a `forras_hash` már nem egyezik, `ellenoriz.py` javaslata). |
+| `modell` | szabad szöveg | | A fordító LLM modell-azonosítója (pl. `anthropic/claude-haiku-4.5`); üres, ha `allapot=kezi` és nem model-fordítás. Az F28 jóváhagyott (`kezi`) Opus-fordításainál kitöltve marad (`claude-opus-5-5`) — a jóváhagyás az állapotot változtatja, a provenienciát nem. |
 | `datum` | `DATUM` | ✔ | A migrált soroknál a forrás utolsó tartalmi módosításának git-dátuma (a `lexikon_hivatkozasok.tsv` soraira) vagy a korábbi `forditas_ubs.proveniencia` jóváhagyási dátuma (az UBS-soroknál); új soroknál a fordítás dátuma. |
 | `terminologia_verzio` | szabad szöveg | | A 2.15 `terminologia.tsv` verziója, amellyel a fordítás készült; üres a migrált (a terminológia-tábla előtti) soroknál. |
 | `megjegyzes` | szabad szöveg | | A megszűnt `forditas_ubs.tsv` `megjegyzes` oszlopának öröksége — lábjegyzet-hivatkozás vagy a fordítói döntés indoklása. A render nem olvassa (csak emberi/archív jegyzet); üres a legtöbb sornál. |
@@ -739,6 +740,12 @@ a fordítói promptba fűz be, hogy a fordítás konzisztens maradjon szótárak
 
 **Induló tartalom (D26):** a `naplok/FORDITAS_P_terminologia.tsv` 13 sora,
 változatlanul, `v1` verzióval.
+
+**v3 (F28, DT26):** az emelés jóváhagyott szakkifejezései (alaktan, rövidítés-feloldások,
+szerzőnevek, könyvnevek). Ha egy kulcs egy hosszabb kulcs része (`compare` ⊂ `מִן compare`),
+a fordítási kapu (`eszkozok/forditas_kapuk.py`) a forrás hosszabb kulcson belüli
+előfordulásait a hosszabbik sorhoz rendeli: a kulcs maga a forrásbeli alak, a
+megkülönböztetés a kulcsban van, nem a kapu lazításában.
 
 ### 2.16 `kiejtes_szabalyok.tsv` — görög átírási szabálytábla (F05_SZOTAR_BRIEF.md S3)
 
@@ -833,6 +840,61 @@ a `ḥ→ch` szabály gépies eredménye helyett).
 jóváhagyással); egyedül az `eszkozok/heber_kiejtes_jeloltek.py` olvassa
 őket. A render (`lexikon_general.py`/`torzscikk_general.py`) egyiket sem
 olvassa — az S1.7 jelölt-lépés, nem az S2 render-lépés tartozéka.
+
+### 2.19 `licencek.tsv` — licenc-leltár (F24, FELADATOK #24, D41)
+
+Adatkészletenként **egy** sor; a licenc **adatkészlet-szinten** él, a sorszintű adat a
+dataset-azonosítón át örökli (a sorszintű proveniencia nem változik). Ez a **leltár, nem jogi
+vélemény**: kereskedelmi vagy nyilvános kiadás előtt jogásznak kell átnéznie.
+
+**Ez a licenc egyetlen forrása.** Minden generált nézetnek (render, törzscikk, lexikonoldal,
+nyilvános kiadás) ebből kell olvasnia; a licenc-besorolás másutt (kódkonstans, README-mondat)
+legfeljebb tükör, és ha ellentmond, **ez a tábla az irányadó**. (A `lexikon_general.py`
+`LICENC`-konstansához és a `TISZTAZATLAN_SZOTARAK`-hoz az F24 nem nyúlt; az átállás az N9
+lezárása, l. lent.)
+
+Kulcs: `dataset`. Fejlécsorok `#`-tel; olvasás `split('\t')`.
+
+| Mező | Értékkészlet |
+|---|---|
+| `dataset` | a `datasetek.tsv` azonosítója, ha van ilyen; egyébként a konkordancia/ tábla- vagy forrásneve (`TBESH`, `LXX_OS`, `UBS_DBH`, `MCGED`, `tW_szocikkek`, ...); a szerepmátrix forrásai közül a nem importáltak is (`Girdlestone`); a projekt saját táblái a `projekt_adat` soron |
+| `licenc` | a forrásdokumentum szerinti licenc, nevével és verziójával; `tisztázatlan` vagy a README állítása zárójeles jelöléssel, ha a forrásból nem igazolt |
+| `verzio_vagy_commit` | rögzített commit, tag, sha256 vagy letöltési dátum; „commit nincs rögzítve”, ha tényleg nincs |
+| `forras_hely` | a licenc pontos helye: a forrás fájlja/sora, vagy a repó README-jének sora, amely a forrás szövegét idézi. `tisztazott` sornál kötelező |
+| `kereskedelmi` | `igen` \| `nem` \| `feltetelesen` \| `tisztazatlan` |
+| `share_alike` | `igen` \| `nem` \| `tisztazatlan` |
+| `kotelezo_megjeloles` | a kötelező forrásmegjelölés **szó szerint**, ha a forrás megad ilyet; egyébként üres |
+| `allapot` | `tisztazott` (a licenc a forrás saját dokumentumából, megadott helyen igazolt) \| `tisztazatlan` |
+| `megjegyzes` | tudnivaló; `javaslat:` kezdetű mondat = eltérés vagy javasolt teendő (nem döntés) |
+
+**Két bővítés a briefhez képest.** A `kereskedelmi` és a `share_alike` oszlop a
+`tisztazatlan` értéket is felveszi: egy ismeretlen licencű forrásnál sem `igen`, sem `nem`
+nem állítható (CLAUDE.md 3. szabály, a hiányt nem töltjük ki). A `feltetelesen` a
+licenc-szövegen túli feltételt jelöl (pl. védjegy-szabály, UK Crown-jog).
+
+**Szabályok.**
+
+1. A `share_alike = igen` sorok (CC BY-SA: SDBH, SDGNT, UBS_DBH, UBS_DNTG,
+   SDBH_SDGNT_segedtablak, tW_szocikkek; hat sor, mind `tisztazott`; az LSJ állítólag CC BY-SA 3.0, de `tisztazatlan`, ezért `share_alike=tisztazatlan`) megjegyzése rögzíti: a belőlük
+   származó réteg nem zárható el, a kiadásban külön jelölendő. A kereskedelmi használat
+   itt `igen` (a CC BY-SA megengedi), de a ShareAlike a származékos munkára is kiterjed.
+2. `tisztazott` csak akkor, ha a `forras_hely` a licenc szövegére vagy a forrás saját
+   állítását szó szerint idéző repó-fájlra mutat. A szerző forrásoldalából (másodkézből)
+   átvett állítás `tisztazatlan`, a README-állítással a `licenc` oszlopban.
+3. A `projekt_adat` sor a repó saját adatáé; a repónak nincs LICENSE-fájlja, tehát a
+   kimeneti réteg licence nyitott kérdés (DT-F24).
+
+**N9 (a licenc-besorolás kettős forrása) lezárásának javaslata.** A `NYITOTT_FELADATOK.md`
+N9 tétele szerint a besorolás a `lexikon_general.py` `LICENC`-konstansában és a
+`TISZTAZATLAN_SZOTARAK` halmazban él. A `licencek.tsv` után a lezárás: (1) a generátor
+`LICENC` dict-je a `licencek.tsv` `dataset` → `licenc` leképezéséből töltődik (a lexikon
+szótárkulcsai megegyeznek a `dataset` azonosítókkal, kivéve `UBS` és `projekt-adat`:
+ezekre kis megfeleltetés kell); (2) `TISZTAZATLAN_SZOTARAK = {d for d in licencek if allapot == 'tisztazatlan'}`,
+vagyis a halmaz a tábla `allapot` oszlopából származik, nem kézzel áll; (3) a konstans és a
+tábla összevetése CI-ellenőrzés (E-szabály) legyen. A mai konstans és a tábla eltérései:
+`Thayer`, `LSJ`, `SECE_G`, `SECE_H`, `MCGED`, `TSK`, `BDB`, `LXX_OS` és a `projekt-adat` kulcs (a táblában `projekt_adat`) a konstansban besorolt, a táblában
+`tisztazatlan` — ezek (2) után a halmazba kerülnének, és a generátor tisztázatlan-jelölést
+adna rájuk. Ez az F24 hatókörén kívüli kód- és render-változás, ezért külön tétel.
 
 ---
 

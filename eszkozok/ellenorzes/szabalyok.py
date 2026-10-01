@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-szabalyok.py -- CI.0: az E2-E16 ellenorzesek (F02_CI_ELLENORZES_BRIEF.md
+szabalyok.py -- CI.0: az E2-E19 ellenorzesek (F02_CI_ELLENORZES_BRIEF.md
 "Ellenorzolista" tablazata). Egy szabaly = egy fuggveny, mind
 `(fajllista) -> [Talalat, ...]` alaku (E16 kivetel: PR-metaadatot is kap;
 E5 kivetel: git diff-et is kap -- l. az egyes fuggvenyek docstringjet).
@@ -36,13 +36,17 @@ from kozos import (
 # (SZINT-ben rogzitett) szintjukon jelentkeznek. E6/E7 a brief expliciten
 # ezt mondja ki; E4/E5/E16 szerkezetileg ugyanide tartozik (E5 maga is
 # diff-alapu, E16 fajl-letezes, E4 motivum-szintu audit-allapot).
-FAJLSZINTU_SZABALYOK = {'E4', 'E5', 'E6', 'E7', 'E16'}
+FAJLSZINTU_SZABALYOK = {'E4', 'E5', 'E6', 'E7', 'E16', 'E19'}
+
+# Adattablan futo szabalyok: --teljes modban a futtat.py a ['__TELJES__']
+# jelzot adja nekik (az md-fajlok listaja helyett), kulonben nem futnanak.
+HATOKOR_SZABALYOK = {'E3', 'E19'}
 
 SZINT = {
     'E2': 'HIBA', 'E3': 'HIBA', 'E4': 'HIBA', 'E5': 'HIBA', 'E6': 'HIBA',
     'E7': 'HIBA', 'E8': 'HIBA', 'E9': 'HIBA', 'E10': 'HIBA', 'E11': 'HIBA',
     'E12': 'FIGYELMEZTETES', 'E13': 'FIGYELMEZTETES', 'E14': 'FIGYELMEZTETES',
-    'E15': 'FIGYELMEZTETES', 'E16': 'HIBA',
+    'E15': 'FIGYELMEZTETES', 'E16': 'HIBA', 'E19': 'HIBA',
 }
 
 
@@ -840,6 +844,59 @@ def e16_ellenorzo_onmodositas(fajlok, pr_cim=''):
     return talalatok
 
 
+# --------------------------------------------------------------------------
+# E19 -- szotari hivatkozas forditas nelkul (F28_EMELES_BRIEF.md E6, D44)
+# --------------------------------------------------------------------------
+# Az E17 nevet a DT3 (sorszam-valtozas kuszob), az E18-at a feladatkovetes
+# foglalja; ez a kovetkezo szabad szam.
+#
+# HIBA, ha az adat/lexikon_hivatkozasok.tsv egy Thayer- vagy BDB-sorahoz az
+# adat/forditasok.tsv-ben nincs `opus` vagy `kezi` allapotu `forditas_hu`
+# sor, sem ugyanarra a `jelentes_szam`-ra, sem `teljes` szintre. A kulcs:
+# szotar + strong + entry_id (a strong a Strong_padded alakra normalizalva).
+# Csak akkor fut, ha a ket tabla valamelyike a valtozott fajlok kozott van;
+# fajlszintu (D8): egy forditas-sor torlese is HIBA, akkor is, ha a
+# hivatkozas sora nem valtozott.
+
+E19_SZOTARAK = ('Thayer', 'BDB')
+E19_ALLAPOTOK = ('opus', 'kezi')
+E19_FAJLOK = ('adat/lexikon_hivatkozasok.tsv', 'adat/forditasok.tsv')
+
+
+def _e19_strong(s):
+    m = re.match(r'^([GH])0*(\d{1,4})([a-z]?)$', (s or '').strip())
+    return '%s%04d%s' % (m.group(1), int(m.group(2)), m.group(3)) if m else (s or '').strip()
+
+
+def e19_szotari_forditas_hiany(fajlok):
+    talalatok = []
+    if fajlok != ['__TELJES__'] and not any(f in E19_FAJLOK for f in fajlok):
+        return talalatok
+    lex_ut = os.path.join(ADAT, 'lexikon_hivatkozasok.tsv')
+    ford_ut = os.path.join(ADAT, 'forditasok.tsv')
+    if not os.path.exists(lex_ut):
+        return talalatok
+    van = set()
+    if os.path.exists(ford_ut):
+        for d in dict_sorok(ford_ut):
+            if d.get('allapot') in E19_ALLAPOTOK and d.get('mezo') == 'forditas_hu':
+                van.add((d.get('szotar'), _e19_strong(d.get('strong')), (d.get('entry_id') or '').strip(),
+                         d.get('jelentes_szam')))
+    for sorszam, d in dict_sorok_sorszammal(lex_ut):
+        szotar = d.get('szotar')
+        if szotar not in E19_SZOTARAK:
+            continue
+        alap = (szotar, _e19_strong(d.get('strong')), (d.get('entry_id') or '').strip())
+        if alap + (d.get('jelentes_szam'),) in van or alap + ('teljes',) in van:
+            continue
+        talalatok.append(Talalat(
+            'E19', SZINT['E19'], 'adat/lexikon_hivatkozasok.tsv', sorszam,
+            '%s %s %s/%s -- nincs opus vagy kezi forditas (sem erre a jelentesre, sem teljes szintre)'
+            % (szotar, d.get('strong'), d.get('entry_id'), d.get('jelentes_szam'))
+        ))
+    return talalatok
+
+
 SZABALYOK_FUGGVENYEI = {
     'E2': e2_ellenorizve_proveniencia,
     'E3': e3_proveniencia_mezo_ures_vagy_ellenorizve,
@@ -854,4 +911,5 @@ SZABALYOK_FUGGVENYEI = {
     'E13': e13_kiejtes_hianya,
     'E14': e14_jelentes_szoveg_angol,
     'E15': e15_szpa_idezet_hossz,
+    'E19': e19_szotari_forditas_hiany,
 }
