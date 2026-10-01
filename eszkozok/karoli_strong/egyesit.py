@@ -65,6 +65,7 @@ def utak(konyv, gyoker=None):
         'sonnet': os.path.join(g, 'f22', 'valaszok', 'sonnet', '%s.jsonl' % n),
         'c': os.path.join(g, 'f22', 'valaszok', 'c', '%s.jsonl' % n),
         'minta': os.path.join(g, 'f22', 'minta_%s.tsv' % n),
+        'kezi_versek': os.path.join(g, 'f22', 'kezi_versek_%s.tsv' % n),
     }
 
 
@@ -163,6 +164,22 @@ def egyesit_vers(ig, s, c, karoli_tokenek, eredeti):
     return parok, szavak, False
 
 
+def kezi_felulir(konyv, gyoker=None):
+    """{igehely: ok} az `f22/kezi_versek_<könyv>.tsv`-ből (fejléc: igehely, ok): azok a Károli-versek, amelyeket a
+    modell-válaszoktól függetlenül `kezi` állapotba kell tenni, mert a Károli-kulcs szerinti TAHOT-vers nem a
+    megfelelő (versszámozás-eltolódás). A fájl hiánya üres halmaz (az 1Móz kimenete így nem változik)."""
+    ut = utak(konyv, gyoker)['kezi_versek']
+    if not os.path.exists(ut):
+        return {}
+    ki = {}
+    with open(ut, encoding='utf-8') as f:
+        sorok = [s.rstrip('\n').rstrip('\r') for s in f if s.strip() and not s.startswith('#')]
+    for s in sorok[1:]:
+        r = s.split('\t')
+        ki[r[0]] = r[1] if len(r) > 1 else ''
+    return ki
+
+
 def sorrend_igehelyek(minta, kimaradt, karoli):
     """A minta versei és az eredeti nélküli (modellhez nem küldött) versek a Károli-tábla sorrendjében."""
     van = {sor['igehely'] for sor in minta} | set(kimaradt)
@@ -180,7 +197,13 @@ def epit(konyv, gyoker=None, karoli=None, ered=None):
     sv, cv = jsonl_versek(u['sonnet']), jsonl_versek(u['c'])
     parok, szavak, atnezes = [], [], []
     kimaradt = set(sonnet_koteg.eredeti_nelkuli_versek(konyv, karoli, ered))
+    felul = kezi_felulir(konyv, gyoker)
     for ig in sorrend_igehelyek(minta, kimaradt, karoli):
+        if ig in felul and ig not in kimaradt:
+            p, sz, kezi = egyesit_vers(ig, None, None, tokenek.tokenizal(karoli[ig]), ered[ig])
+            szavak += sz
+            atnezes.append([ig, felul[ig], felul[ig]])
+            continue
         if ig in kimaradt:
             p, sz, kezi = egyesit_vers(ig, None, None, tokenek.tokenizal(karoli[ig]), [])
             szavak += sz

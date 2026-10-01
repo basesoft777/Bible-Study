@@ -76,6 +76,13 @@ def aranyok(parok, szavak):
         ki.append('| %d | %d | %s | %s | %s | %d | %s | %s | %s |' % (
             f, la, pct(a['magas'], la), pct(a['alacsony'], la), pct(a['kezi'], la), sb,
             pct(b['magas'], sb), pct(b['alacsony'], sb), pct(b['kezi'], sb)))
+    gyanus = []
+    for f in sorted(fs):
+        la = sum(fl.get(f, {'magas': 0}).values())
+        if la == 0 or fl[f]['magas'] / la < 0.7:
+            gyanus.append(f)
+    ki += ['', 'Gyanús fejezetek (nincs link, vagy a linkek `magas` aránya < 70%%; versszámozás-eltolódás vagy más rendszerhiba jele): %s.'
+           % (', '.join(str(f) for f in gyanus) if gyanus else 'nincs')]
     return ki
 
 

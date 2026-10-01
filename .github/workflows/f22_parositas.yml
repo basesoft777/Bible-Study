@@ -4,15 +4,16 @@
 # workflow_dispatch. A workflow sajat commitja nem nyul az f22/futtatas.txt-hez, es a GITHUB_TOKEN-nel
 # vegzett push nem indit uj futast.
 #
-# VEZERLES (f22/futtatas.txt, MINDEN kulcs kotelezo): konyv=1Móz, koteg_max=<n|mind>, koteg_meret=10,
-# plafon_usd=3.90 (kumulativ napla-osszeg, megallasi kuszob; kemeny korlat 4.00). A futtato:
+# VEZERLES (f22/futtatas.txt, MINDEN kulcs kotelezo): konyv=<magyar rovidites>, koteg_max=<n|mind>, koteg_meret=10,
+# plafon_usd=auto|<szam> (DT-F22d: a konyv plafonja = versszam x (2,27/1533) x 1,5 USD, legalabb 1,00; csak a konyv sajat
+# naplosorait osszegzi; kulon osszesitett felso korlat: 60 USD a teljes naplora). A futtato:
 # eszkozok/karoli_strong/f22_c_futtat.py (a futtat.py ujrahasznalva). Plafonnal (kilepesi kod 3) a job piros,
 # de a kesz koteg-sorok es a naplo visszacommitolodnak; a futas ujrainditheto (a kesz koteget kihagyja).
 # A prompt (f21p/prompt_v3.md) hash-et a futtato a futas elejen es vegen is ellenorzi.
 #
 # JOGOSULTSAG ES ISRAS. contents: write csak a 'futtatas' jobnal, kizarolag a kimenet visszacommitolasahoz:
 # git add csak az f22/valaszok/c, az f22/futasnaplo.tsv es az f22/elvetett; commit elott ellenorzes, hogy minden valtozas
-# f22/ alatt van; a push csak a claude/f22-1moz agra mehet (explicit refspec). Az OPENROUTER_API_KEY csak a
+# f22/ alatt van; a push csak az aktualis claude/f22-* agra mehet (explicit refspec). Az OPENROUTER_API_KEY csak a
 # futtato lepes env-jeben szerepel. A checkout `persist-credentials: false`: a kulcsot kapo
 # futtato lepes nem lat push-jogu tokent, az csak az utolso (commit/push) lepesben kerul a remote-ra. A FELADATOK.md generalt blokkjahoz a workflow nem nyul.
 
@@ -88,9 +89,6 @@ jobs:
         run: |
           case "$GITHUB_REF" in refs/heads/claude/f22-*) ;; *)
             echo "nem a claude/f22-* agon futunk: $GITHUB_REF"; exit 1;; esac
-          if false; then
-            :
-          fi
           # a checkout nem tartja meg a tokent (persist-credentials: false): a futtato lepes nem lat push-jogu tokent;
           # a token csak ebben a lepesben kerul a remote-ra
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"

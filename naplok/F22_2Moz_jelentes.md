@@ -42,8 +42,8 @@ C költség: 1.851702 USD, 171 hívás, bemenet 1553010, kimenet 207416 (ebből 
 
 - **Költség (C):** a futásnapló szerint a 2Móz C-költsége a `c/2Moz` sorokra összegezve 1,8517 USD, a könyv plafonja 2,69 USD (DT-F22d, l. 5.2); a teljes napló összege (1Móz + 2Móz) 4,1237 USD.
 - **Hash (K3):** a `prompt_v3` hash-e a C-futás elején és végén mindegyik Actions-futásban rendben („a futás végén: RENDBEN”); a Sonnet-oldalon a `sonnet_koteg.py prompt` minden köteg előtt ellenőrizte, és a menet végén is `None` (nincs eltérés) a hash-ellenőrzés kimenete.
-- **Futások és megszakadások.** (a) A C-futás a 104. kötegnél `KeyError`-ral leállt (2Móz 35:36, 5.1), ezt javítottam; (b) a 106. kötegnél a költségplafon megállította (a plafon az egész napló összegét számolta, 3,8982 USD az 1Móz 2,27 USD-jével együtt, 5.2); a felhasználó döntése után (A változat) a futás a 105. kötegtől folytatódott, a kész kötegeket kihagyva. Sonnet-oldalon megszakadás nem volt; az újrapróbák kötegenként egy újrakéréssel (a brief szerint), végleges kapuhiba 0.
-- **Egyesítés (`egyesit.py --konyv 2Móz`):** `parok_2Moz.tsv` 23 966 sor, `szavak_2Moz.tsv` 49 396 sor, átnézési sor 2 vers (`naplok/F22_2Moz_atnezes.tsv`); `egyesit.py --ellenoriz`: „rendben” (minden Károli- és eredeti token pontosan egyszer szerepel, a `strong` a TAHOT-ból levezethető; K1, K2); az újraépítés API nélkül bájtra azonos táblákat adott (K7).
+- **Futások és megszakadások.** (a) A C-futás a 104. kötegnél `KeyError`-ral leállt (2Móz 35:36, 5.1), ezt javítottam; (b) a 106. kötegnél a költségplafon megállította (a plafon az egész napló összegét számolta, 3,8982 USD az 1Móz 2,27 USD-jével együtt, 5.2); a felhasználó döntése után (A változat) a futás a 106. kötegtől folytatódott (a 105. kész volt), a kész kötegeket kihagyva. Sonnet-oldalon megszakadás nem volt; az újrapróbák kötegenként egy újrakéréssel (a brief szerint), végleges kapuhiba 0.
+- **Egyesítés (`egyesit.py --konyv 2Móz`):** `parok_2Moz.tsv` 23 795 sor (magas 22 631, alacsony 1 164), `szavak_2Moz.tsv` 49 396 sor (magas 43 332, alacsony 4 608, kezi 1 456), átnézési sor 39 vers (`naplok/F22_2Moz_atnezes.tsv`: a 2Móz 35:36 és a 36:1–37, l. 5.1); `egyesit.py --ellenoriz`: „rendben” (minden Károli- és eredeti token pontosan egyszer szerepel, a `strong` a TAHOT-ból levezethető; K1, K2); az újraépítés API nélkül bájtra azonos táblákat adott (K7).
 - **Önteszt-kimenetek** (mind „rendben”): `kapu.py`, `futtat.py`, `f22_c_futtat.py`, `sonnet_koteg.py`, `egyesit.py`, `zart_osszevet.py`. A kulcs-grep az `f22/`, `adat/karoli_strong/`, `naplok/` és `eszkozok/karoli_strong/` alatt tiszta.
 
 ## 4. Ellenőrzés a könyvön (22.5)
@@ -52,9 +52,9 @@ C költség: 1.851702 USD, 171 hívás, bemenet 1553010, kimenet 207416 (ebből 
 
 ### 4.1 Arányok
 
-Összesen: linkek (parok): magas 94.7% (22704/23966), alacsony 5.3% (1262/23966), kezi 0.0% (0/23966); szavak (tokenek, Károli és eredeti együtt): magas 88.6% (43767/49396), alacsony 11.3% (5571/49396), kezi 0.1% (58/49396).
+Összesen: linkek (parok): magas 95.1% (22631/23795), alacsony 4.9% (1164/23795), kezi 0.0% (0/23795); szavak (tokenek, Károli és eredeti együtt): magas 87.7% (43332/49396), alacsony 9.3% (4608/49396), kezi 2.9% (1456/49396).
 
-Link-forrás megoszlás (parok): S 1262, S+C 22704. Csak egy modell által átjutott (a másik kapuhibás) versek, amelyekben nincs S+C sor: 9 (2Móz 29:5, 2Móz 36:12, 2Móz 36:13, 2Móz 36:15, 2Móz 36:20, 2Móz 36:21, 2Móz 36:8, 2Móz 36:9, 2Móz 39:19).
+Link-forrás megoszlás (parok): S 1164, S+C 22631. Csak egy modell által átjutott (a másik kapuhibás) versek, amelyekben nincs S+C sor: 2 (2Móz 29:5, 2Móz 39:19).
 
 | fejezet | linkek | magas | alacsony | kezi | szavak | magas | alacsony | kezi |
 |---|---|---|---|---|---|---|---|---|
@@ -93,11 +93,13 @@ Link-forrás megoszlás (parok): S 1262, S+C 22704. Csak egy modell által átju
 | 33 | 532 | 95.3% (507/532) | 4.7% (25/532) | 0.0% (0/532) | 1068 | 90.3% (964/1068) | 9.7% (104/1068) | 0.0% (0/1068) |
 | 34 | 769 | 97.3% (748/769) | 2.7% (21/769) | 0.0% (0/769) | 1543 | 91.0% (1404/1543) | 9.0% (139/1543) | 0.0% (0/1543) |
 | 35 | 583 | 93.5% (545/583) | 6.5% (38/583) | 0.0% (0/583) | 1313 | 83.0% (1090/1313) | 14.2% (187/1313) | 2.7% (36/1313) |
-| 36 | 171 | 42.7% (73/171) | 57.3% (98/171) | 0.0% (0/171) | 1420 | 30.6% (435/1420) | 67.8% (963/1420) | 1.5% (22/1420) |
+| 36 | 0 | n.é. (0/0) | n.é. (0/0) | n.é. (0/0) | 1420 | 0.0% (0/1420) | 0.0% (0/1420) | 100.0% (1420/1420) |
 | 37 | 527 | 93.7% (494/527) | 6.3% (33/527) | 0.0% (0/527) | 1067 | 90.2% (962/1067) | 9.8% (105/1067) | 0.0% (0/1067) |
 | 38 | 556 | 93.2% (518/556) | 6.8% (38/556) | 0.0% (0/556) | 1205 | 87.7% (1057/1205) | 12.3% (148/1205) | 0.0% (0/1205) |
 | 39 | 730 | 90.8% (663/730) | 9.2% (67/730) | 0.0% (0/730) | 1608 | 88.6% (1424/1608) | 11.4% (184/1608) | 0.0% (0/1608) |
 | 40 | 594 | 94.6% (562/594) | 5.4% (32/594) | 0.0% (0/594) | 1313 | 90.7% (1191/1313) | 9.3% (122/1313) | 0.0% (0/1313) |
+
+Gyanús fejezetek (nincs link, vagy a linkek `magas` aránya < 70%; versszámozás-eltolódás vagy más rendszerhiba jele): 36.
 
 ### 4.2 Régi arany (konkordancia/Karoli_Strong_kivonat.tsv)
 
@@ -136,13 +138,19 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 269
 
 ## 5. Tételek és döntési helyőrzők
 
-### 5.1 Versszám-eltolódás a 2Móz 35:36 – 36:38 körül (Károli-kulcs és TAHOT)
+### 5.1 Versszám-eltolódás: a Károli 35:36 – 36:37 a TAHOT 36:1 – 36:38
 
-A Károli-szám szerint a 2Móz 35:36-nak **nincs** TAHOT-verse, a TAHOT 2Móz 36:38-nak pedig **nincs** Károli-verse; a két versbeosztás ebben a szakaszban egy verssel eltolódik. A következmény, szkriptkimenetből: a 36. fejezetben a linkek csak 42,7%-a `magas` (a könyvé 94,7%; a 36. fejezetben 171 link van, a többi fejezetben 256–1 117), a `kezi` szavak 58 (36 Károli-token a 35:36-ból, 22 eredeti token a 36:38-ból). A Sonnet-subagentek a 36:2–36:37 kötegeiben a bemenet eltolódását maguk is jelezték (a saját jelentésükben), és óvatosan, kevés linkkel válaszoltak. **Megoldás (a felhasználó jóváhagyta):** az eredeti nélküli Károli-vers kimarad a modellmintából, és `kezi` állapotba kerül; a Károli-vers nélküli eredeti vers tokenjei az egyesítőben szintén `kezi`, `fuggoben` állapotban szerepelnek (átnézési sor mindkettőre). **Nyitott (N-F22 helyőrző, nem döntöttem el):** a 36. fejezet 37 versének érdemi párosításához a Károli–TAHOT versmegfeleltetés javítása kellene (a 36:1–37 eltolt bemenettel újrafuttatva); ezt a szakaszt a modellek a jelenlegi bemenettel gyengén párosítják.
+**Tény (az ellenőri kör találata, az adatból igazolva):** a Károli 2Móz 35:36 szövege a TAHOT 36:1-nek felel meg, és a Károli 36:n a TAHOT 36:(n+1)-nek (n = 1–37); a Károli 37:1-től a két beosztás ismét egyezik. Ezért a 35:36-nak nincs TAHOT-verse, a TAHOT 36:38-nak pedig nincs Károli-verse. (Az első menetben ezt tévesen úgy írtam le, hogy a Károli kettébontja a héber 35:35-öt; az ellenőr cáfolta.)
+
+**Mi történt a futás alatt:** a két modell a 36:1–37-et a Károli-kulcsos, eltolt TAHOT-szöveggel kapta; a Sonnet-subagentek a bemenet eltolódását a saját jelentésükben jelezték, és kevés linkkel válaszoltak, a C viszont több, nem megfelelő verssel párosított linket adott, amelyeket a két modell közös „egyezései” `magas`-nak jelöltek (az ellenőr szerint 73 link a 36. fejezetben). Ez a `magas` itt **nem** jelent pontosságot.
+
+**Kezelés (a menet alatt, az ellenőri kör után; a felhasználó a 35:36-ra elfogadott megoldását általánosítva):** az `f22/kezi_versek_2Moz.tsv` felsorolja a 36:1–37 Károli-verseket, az egyesítő ezeket a modell-válaszoktól függetlenül `kezi` állapotba teszi (a tábla nem tartalmaz linket róluk, a tokenek `fuggoben`, az átnézési sorban szerepelnek), a 35:36 és a Károli nélküli TAHOT 36:38 a korábbi úton `kezi`. Az `f22_elemzes.py` új sora a „gyanús fejezeteket” jelzi (nincs link, vagy a `magas` arány < 70%): a 2Mózesre: **36**; az 1Mózesre: nincs. **Ez döntés-értékű lépés, a felhasználó visszavonhatja** (a fájl törlésével a 36. fejezet linkjei visszakerülnek, de a `magas` jelölés félrevezető).
+
+**Nyitott (N-F22 helyőrző):** a 38 vers érdemi párosításához a Károli–TAHOT versmegfeleltetés (35:36→36:1, 36:n→36:(n+1)) javítása és a két modell újrafuttatása kellene; a kötegbeosztás megváltozása miatt ez nem a meglévő kötegek folytatása. Az **eltolódás-detektor** is hiányzik: a páratlan versek listája (5.3) csak a végponti hiányt találja meg, a fejezeten belüli eltolódást nem (az ellenőr példája: a 4Móz 30, ahol a Károli 30:1 a TAHOT 30:1-gyel nem egyezik, a lista csak a 30:17-et jelzi); a 3Móz és a további könyvek előtt kell egy detektor (pl. a fejezetenkénti `magas` arány küszöbe, ez az `f22_elemzes.py` új sora, vagy a vershosszarány).
 
 ### 5.2 DT-F22d (helyőrző) — a C-költségplafon könyvenként
 
-A korábbi plafon (3,90 USD küszöb, 4,00 USD kemény) az egész napló összegét korlátozta, így a 2Móz a 106. kötegnél megállt. A felhasználó döntése (A változat, kiegészítve): **a plafon könyvenkénti: a könyv versszáma × (2,27 / 1533) × 1,5 USD, de legalább 1,00 USD**; a futtató csak az adott könyv (`c/<könyv>`) naplósorait összegzi (`futtat.naplo_osszeg(…, futas)`); **külön összesített felső korlát: 60 USD a teljes naplóra**, elérésekor a futás megáll (kilépési kód 3). A 2Mózesre a képlet 2,69 USD; a mért költség 1,8517 USD. A vezérlőfájl `plafon_usd=auto` a képletet adja, egy szám szigorúbb értéket (0 < x ≤ 60). A szabály a brief döntésnaplójában D8 (DT-F22d helyőrző); a végleges számot a `DONTESEK.md`-ben a main-Action adja a merge után.
+A korábbi plafon (3,90 USD küszöb, 4,00 USD kemény) az egész napló összegét korlátozta, így a 2Móz a 106. kötegnél megállt. A felhasználó döntése (A változat, kiegészítve): **a plafon könyvenkénti: a könyv versszáma × (2,27 / 1533) × 1,5 USD, de legalább 1,00 USD**; a futtató csak az adott könyv (`c/<könyv>`) naplósorait összegzi (`futtat.naplo_osszeg(…, futas)`); **külön összesített felső korlát: 60 USD a teljes naplóra**, elérésekor a futás megáll (kilépési kód 3). A 2Mózesre a képlet 2,69 USD; a mért költség 1,8517 USD. A vezérlőfájl `plafon_usd=auto` a képletet adja, egy szám szigorúbb értéket (0 < x ≤ 60). Az önteszt (`f22_c_futtat.py --onteszt`) lefedi a képletet, az `auto` értelmezését, a más könyv sorait kizáró összegzést és az összesített korlátot; a régi (F21) ág a `plafon_futas` nélkül változatlan. A szabály a brief döntésnaplójában D8 (DT-F22d helyőrző); a végleges számot a `DONTESEK.md`-ben a main-Action adja a merge után.
 
 ### 5.3 A páratlan versek listája a teljes Bibliára (Károli-kulcs)
 
@@ -177,7 +185,7 @@ eredeti_karoli_nelkul	Ézs	2 vers	44 token
 ÖSSZESEN	eredeti_karoli_nelkul	30 vers	567 token
 ```
 
-Az 1Móz nem érintett (táblái az új kóddal bájtra azonosak maradtak).
+Az 1Móz nem érintett (táblái az új kóddal bájtra azonosak maradtak). **Hatókör:** a lista csak azokat a verseket találja meg, amelyeknek a Károli-kulcson nincs párjuk; a fejezeten belüli eltolódást (5.1) nem, ezért a futtató „eleve kihagyja” állítás csak erre a körre igaz.
 
 ### 5.4 Kereszttábla az aranyhoz (DT-F22c: marad-e a Gemini)
 
@@ -198,8 +206,10 @@ A `zart_osszevet.py` a 2Mózesre is fut (`--konyv 2Móz --bemenet <repón kívü
 
 ## 7. Eltérések a briefhez és nyitott kérdések
 
-1. **Minta: 1 212 modellvers 1 213 helyett** (5.1), a brief „`--var 1213`” ellenőrzése a modellmintát + a kimaradt versek számát veti össze.
+1. **Minta: 1 212 modellvers 1 213 helyett** (5.1; a 36:1–37 a mintában marad, de az egyesítő `kezi`-be teszi), a brief „`--var 1213`” ellenőrzése a modellmintát + a kimaradt versek számát veti össze.
 2. **Új/módosított fájlok a brief `ir` listáján kívül:** `eredeti_nelkuli_lista.py`, `f22_arany_kereszt.py`, `naplok/F22_nincs_parja_versek.tsv`, a `futtat.py` és `egyesit.py` módosítása (plafon, páratlan versek); a brief `ir` listája bővítve. Az 1Móz kimenetei bájtra változatlanok.
 3. **A Sonnet-subagentek segédszkriptje.** A 105. és 106. köteg subagentje a kézzel eldöntött párokat egy ideiglenes szkripttel írta JSON-ba (`f22/_munka/`, nem verziózott); a szkript nem párosít, csak a modell döntését szerializálja.
 4. **A DT-F22c nyitva:** a Gemini-döntéshez a 5.4 szám és a felhasználó zárt összevetése kell.
 5. **A bemenet KJV nélküli** (mint az 1Mózesnél, DT-F22a).
+6. **E16 (CI).** A PR a `.github/workflows/f22_parositas.yml`-t érinti, ezért a címnek `[ELLENŐRZŐ]` előtaggal kell kezdődnie (az ellenőr E16-futtatása szerint); a draft PR címe ezt tartalmazza.
+7. **Az ellenőri kör.** Az ellenőr nem futtathatott szkriptet (szerepköre csak olvasó); az `egyesit.py --ellenoriz`, a bájtazonos újraépítés, az öntesztek és a statisztika-szkriptek futtatását én végeztem, kimenetük a 3–4. szakaszban van. Egy második, független kör az ellenőri javítások után nem készült (a főbb javítások: 5.1 kezelése, önteszt, docstring, workflow, brief).

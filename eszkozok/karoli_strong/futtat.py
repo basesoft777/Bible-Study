@@ -810,6 +810,25 @@ def elvetett_ment(ctx, futas_id, koteg_no, rekord, szoveg, kapuhiba_db):
     return ut
 
 
+def plafon_hiba(ctx, becs):
+    """A plafon-ellenőrzés (F22: DT-F22d): None, ha a hívás belefér, különben a leállítás üzenete.
+    Ha a `ctx.plafon_futas` nincs megadva, a régi (F21) szabály: a TELJES napló összege + becslés <= ctx.plafon."""
+    eddig = naplo_osszeg(ctx.kimenet_dir)
+    if getattr(ctx, 'plafon_futas', None):
+        konyv_eddig = naplo_osszeg(ctx.kimenet_dir, ctx.plafon_futas)
+        if konyv_eddig + becs > ctx.plafon:
+            return ('a(z) %s futás költsége %.4f USD + a hívás becsült költsége %.4f USD > a könyv plafonja %.4f USD'
+                    % (ctx.plafon_futas, konyv_eddig, becs, ctx.plafon))
+        if ctx.plafon_osszes is not None and eddig + becs > ctx.plafon_osszes:
+            return ('a teljes napló összege %.4f USD + a hívás becsült költsége %.4f USD > az összesített felső korlát %.4f USD'
+                    % (eddig, becs, ctx.plafon_osszes))
+        return None
+    if eddig + becs > ctx.plafon:
+        return ('a napló összege %.4f USD + a hívás becsült költsége %.4f USD > plafon %.4f USD'
+                % (eddig, becs, ctx.plafon))
+    return None
+
+
 def hivas(ctx, futas_id, koteg_no, probalkozas, uzenetek, igehelyek, kapuhiba_db_fn):
     """Egy modellhívás plafon-ellenőrzéssel és naplózással.
 
@@ -822,17 +841,9 @@ def hivas(ctx, futas_id, koteg_no, probalkozas, uzenetek, igehelyek, kapuhiba_db
     modell_id = MODELLEK[modell_kulcs]
     eddig = naplo_osszeg(ctx.kimenet_dir)
     becs = becsult_koltseg(modell_id, uzenetek, len(igehelyek))
-    if getattr(ctx, 'plafon_futas', None):
-        konyv_eddig = naplo_osszeg(ctx.kimenet_dir, ctx.plafon_futas)
-        if konyv_eddig + becs > ctx.plafon:
-            raise PlafonLeallas('a(z) %s futás költsége %.4f USD + a hívás becsült költsége %.4f USD > a könyv plafonja %.4f USD'
-                                % (ctx.plafon_futas, konyv_eddig, becs, ctx.plafon))
-        if ctx.plafon_osszes is not None and eddig + becs > ctx.plafon_osszes:
-            raise PlafonLeallas('a teljes napló összege %.4f USD + a hívás becsült költsége %.4f USD > az összesített felső korlát %.4f USD'
-                                % (eddig, becs, ctx.plafon_osszes))
-    elif eddig + becs > ctx.plafon:
-        raise PlafonLeallas('a napló összege %.4f USD + a hívás becsült költsége %.4f USD > plafon %.4f USD'
-                            % (eddig, becs, ctx.plafon))
+    uzenet = plafon_hiba(ctx, becs)
+    if uzenet:
+        raise PlafonLeallas(uzenet)
     t0 = time.time()
     valasz, kiserlet, mod = kuldes(ctx, modell_kulcs, uzenetek, futas_id, koteg_no)
     mp = time.time() - t0

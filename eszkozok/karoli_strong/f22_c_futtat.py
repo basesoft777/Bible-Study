@@ -210,6 +210,29 @@ def onteszt():
     # KJV-sor nincs a C bemenetében
     if any('KJV-TÁMPONT:' in u.split('=== A FELDOLGOZANDÓ VERSEK')[1] for _, u in mock.szovegek):
         hibak.append('KJV-TÁMPONT a feldolgozandó versekben')
+    # DT-F22d: a könyvenkénti plafon képlete, az `auto` értelmezése, a más könyv sorait kizáró összegzés, az összesített korlát
+    if abs(konyv_plafon(1212) - 1212 * 2.27 / 1533 * 1.5) > 1e-9 or konyv_plafon(10) != PLAFON_MIN:
+        hibak.append('a könyv plafonjának képlete (versszám × 2,27/1533 × 1,5, legalább 1,00)')
+    ut = os.path.join(tmp, 'v2.txt')
+    with open(ut, 'w', encoding='utf-8') as f:
+        f.write('konyv=2Móz\nkoteg_max=mind\nkoteg_meret=10\nplafon_usd=auto\n')
+    if vezerlo_beolvas(ut)['plafon_usd'] is not None:
+        hibak.append('a plafon_usd=auto nem None')
+    d = tempfile.mkdtemp()
+    with open(os.path.join(d, 'futasnaplo.tsv'), 'w', encoding='utf-8') as f:
+        f.write('ts\tfutas\tkoltseg_usd\n2026-01-01\tc/1Moz\t5.0\n2026-01-01\tc/2Moz\t0.5\n')
+    if abs(futtat.naplo_osszeg(d, 'c/2Moz') - 0.5) > 1e-9 or abs(futtat.naplo_osszeg(d) - 5.5) > 1e-9:
+        hibak.append('a naplo_osszeg futás szerinti szűrése')
+    ctx3 = futtat.Kontextus(futtat.MockKuldo(), 'teszt-kulcs', d, plafon=1.0, alvas=lambda s: None)
+    ctx3.plafon_futas, ctx3.plafon_osszes = 'c/2Moz', 60.0
+    if futtat.plafon_hiba(ctx3, 0.01) is not None:
+        hibak.append('a másik könyv költsége beleszámít a könyv plafonjába')
+    ctx3.plafon = 0.5
+    if futtat.plafon_hiba(ctx3, 0.01) is None:
+        hibak.append('a könyv plafonja nem állította meg a futást')
+    ctx3.plafon, ctx3.plafon_osszes = 1.0, 5.4
+    if futtat.plafon_hiba(ctx3, 0.01) is None:
+        hibak.append('az összesített korlát nem állította meg a futást')
     # plafon
     ctx2 = futtat.Kontextus(futtat.MockKuldo(), 'teszt-kulcs', tempfile.mkdtemp(), plafon=PLAFON_KEMENY, alvas=lambda s: None)
     v2 = dict(v, plafon_usd=0.0001)

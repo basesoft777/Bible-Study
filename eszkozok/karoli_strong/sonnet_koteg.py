@@ -99,9 +99,10 @@ def karoli_nelkuli_eredeti_versek(konyv, karoli=None, ered=None):
 
 
 def eredeti_nelkuli_versek(konyv, karoli=None, ered=None):
-    """A könyv azon Károli-versei, amelyeknek nincs eredeti (TAHOT) versük (pl. 2Móz 35:36: a Károli-
-    számozás kettébontja a héber 35:35-öt). Nem kerülnek modellhez; az egyesítő `kezi` állapotban,
-    az átnézési sorral viszi tovább őket (a brief `kezi` ága), hogy minden Károli-token szerepeljen."""
+    """A könyv azon Károli-versei, amelyeknek nincs eredeti (TAHOT) versük (pl. 2Móz 35:36: a Károli 35:36
+    szövege a TAHOT 36:1-nek felel meg, tehát a 35:36–36:37 szakaszon a két versbeosztás egy verssel eltolódik;
+    az ellenőri jelentés tényei). Nem kerülnek modellhez; az egyesítő `kezi` állapotban, az átnézési sorral
+    viszi tovább őket (a brief `kezi` ága), hogy minden Károli-token szerepeljen."""
     karoli = karoli if karoli is not None else tokenek.betolt_karoli()
     ered = ered if ered is not None else tokenek.betolt_eredeti()
     ki = []
