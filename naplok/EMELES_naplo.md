@@ -88,7 +88,7 @@ Az öt szócikk: G1944 (a briefszövegű lista legrövidebb Thayer-szócikke), G
 tagolásjelölőknél igazítva; kapueredmények; a H7121-nél a kézi 2.c és 3. jelentés
 összevetése). A párok nem kétoszlopos táblázatban, hanem egymás alatt állnak: a forrás
 blockquote-ban, alatta a fordítás. Ok: a CI E9 szabálya a táblázatcellában álló angol
-„sense” szót (H7121: *in this sense*) HIBA-nak vette; a blockquote a D11 szerint
+`sense` szót (H7121: `in this sense`) HIBA-nak vette; a blockquote a D11 szerint
 kivétel (idézett angol forrásszöveg).
 
 **Eltérés a brief E4 leírásától:** szócikkenkénti `vegrehajto-opus` subagent helyett a
