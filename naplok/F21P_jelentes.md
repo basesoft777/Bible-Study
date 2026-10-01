@@ -71,7 +71,7 @@ A prompt_v2 → v3 hatás: Δ = F3V3 − a két v2-futás átlaga (azonos aranyo
 ### (c) A Sonnet-futás (meres_p3c_eredmeny.tsv: koltseg, gondolkodas, vegleges_kapuhiba, jeloles)
 
 - Költség: 2.197554 USD (22 hívás; próbálkozás=1: 20, próbálkozás=2: 2); bemenet 231707, kimenet 173414 token.
-- A gondolkodási keret be nem tartása: 142077 gondolkodási token a 173414 kimeneti tokenből; hívásonként a legnagyobb 11144 (min 0, medián 6642, 22 hívás); a keret (reasoning.max_tokens = 1024) fölötti hívás 21 a 22-ből (a legnagyobb a keret 10.9-szerese). A gondolkodási token a kimeneti táblaáron 1.420770 USD a mért 2.197554 USD-ből.
+- A gondolkodási keret be nem tartása: 142077 gondolkodási token a 173414 kimeneti tokenből; hívásonként a legnagyobb 11144 (min 0, medián 6556.5, 22 hívás); a keret (reasoning.max_tokens = 1024) fölötti hívás 21 a 22-ből (a legnagyobb a keret 10.9-szerese). A gondolkodási token a kimeneti táblaáron 1.420770 USD a mért 2.197554 USD-ből.
 - Length-lezárás: 2 a 22 hívásból — finish_reason=length: köteg 15 / próba 1, köteg 15 / próba 2; költségük 0.291850 USD; kimenet 12000+12000 token, ebből gondolkodás 11144+10364.
 - A 10 végleges kapuhibás vers (köteg 15, végső kapupont 1-json): Jer 46:21 (R3, aranyvers), Jer 51:3 (R3, aranyvers), Ez 11:3 (R3, aranyvers), Ez 16:57 (R3, aranyvers), Ez 22:25 (R3, aranyvers), Ez 30:5 (R3, aranyvers), Ez 33:31 (R3, aranyvers), Ez 39:13 (R3, aranyvers), Ez 41:2 (R3, aranyvers), Ez 46:12 (R3, aranyvers).
 - a Sonnet-kérés temperature nélkül ment, gondolkodással: a futás nem determinisztikus (egyetlen futás, ingadozás-becslés nincs)

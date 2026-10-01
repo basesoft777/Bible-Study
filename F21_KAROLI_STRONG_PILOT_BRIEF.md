@@ -7,9 +7,9 @@ fazis: 1
 modell: sonnet
 allapot: fut
 ad: mért adat arról, megéri-e a teljes Bibliát külső modellekkel Strong-számmal párosítani (minőség, költség, KJV-támpont haszna)
-kovetkezo: regressziós mérés (P3c): a jegyzet v2, prompt_v3, F3V3 és a Sonnet; ⛔ a Sonnet szárazbecslésénél és az arany v3 diffjénél
+kovetkezo: a regressziós mérés (P3c) lefutott és lezárva (ellenőri kör, draft PR); a #22 sorsa a felhasználó döntése (a javaslat a jelentés külön szakaszában)
 olvas: [konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/KJV_Strongs_Genesis.tsv]
-ir: [eszkozok/karoli_strong/, f21p/, naplok/F21P_jelentes.md, DONTESEK.md, .github/workflows/f21p_pilot.yml]
+ir: [eszkozok/karoli_strong/, eszkozok/fordit.py, f21p/, naplok/, DONTESEK.md, NYITOTT_FELADATOK.md, .github/workflows/f21p_pilot.yml, .github/workflows/f21r_regresszio.yml]
 ag: claude/f21-regresszio-meres
 fugg: [6]
 ---

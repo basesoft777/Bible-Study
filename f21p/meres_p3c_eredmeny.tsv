@@ -487,7 +487,7 @@ mentett_ellenorzes	C (F3V3)	Összes	hibak	0		futtat.mentett_valaszok_ellenoriz: 
 mentett_ellenorzes	C (F3V2)	Összes	hibak	0		futtat.mentett_valaszok_ellenoriz: 0 hiba
 mentett_ellenorzes	C (F3V2B)	Összes	hibak	0		futtat.mentett_valaszok_ellenoriz: 0 hiba
 gondolkodas	Sonnet (SONNETV3)	Összes	gondolkodasi_token	142077	173414	a kimeneti tokenből (completion_tokens) a modell által jelentett gondolkodási token (futásnapló)
-gondolkodas	Sonnet (SONNETV3)	Összes	gondolkodasi_token_hivasonkent_max	11144		min 0, medián 6642, 22 hívás
+gondolkodas	Sonnet (SONNETV3)	Összes	gondolkodasi_token_hivasonkent_max	11144		min 0, medián 6556.5, 22 hívás
 gondolkodas	Sonnet (SONNETV3)	Összes	finish_reason	length: 2, stop: 20		
 gondolkodas	Sonnet (SONNETV3)	Összes	gondolkodasi_token_koltsege_usd	1.420770	2.197554	a gondolkodási token × a kimeneti táblaár (10.00 USD/1M; anthropic/claude-sonnet-5.5) a mért összköltséghez (64.7%)
 gondolkodas	Sonnet (SONNETV3)	Összes	keret_feletti_hivasok	21	22	a konfigurált keret (reasoning.max_tokens=1024) fölötti mért gondolkodási token hívásonként; a legnagyobb a keret 10.9-szerese

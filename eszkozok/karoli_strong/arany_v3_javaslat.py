@@ -14,7 +14,7 @@ szerinti olvasata (JAVITASOK_B) -> f21p/arany_opus_v3_javaslat_B.jsonl; a diff 5
 Az A változat fájlja nem változhat: ha már létezik és eltérne, a szkript hibával megáll.
 
 A JAVASLAT NEM befagyasztott: sha256-fájlt nem ír. ⛔ A felhasználó jóváhagyásáig az
-arany v3 nem fagy be, és a mérés nem fut az arany v3-ra (PD13, DT23).
+arany v3 nem fagy be, és a mérés nem fut az arany v3-ra (PD13, DT-F21a).
 
 A hatás a C-diffre: a két C-futás (F3V2, F3V2B) eltérései (a meres.py linkhalmazaival,
 a f21p/meres_kizaras.tsv tokenjei nélkül) az arany v2-höz és a javaslathoz. A megszűnő
@@ -309,7 +309,7 @@ def md(v2, v3, sorok, osszesito, v3b=None, sorok_b=None, osszesito_b=None):
           'f21p/valaszok/F3V2B.jsonl, f21p/meres_kizaras.tsv, f21p/c_diff_f3v2_osszevetes.tsv, '
           'f21p/c_diff_f3v2b_besorolas.tsv | ts=%s (a generálás ideje; ismételt futáskor csak ez a sor tér el) | '
           'kézzel szerkeszteni tilos -->' % ts, '',
-          '> ⛔ **Megállás (PD13, DT23).** Ez JAVASLAT: az `f21p/arany_opus_v3_javaslat.jsonl` nem '
+          '> ⛔ **Megállás (PD13, DT-F21a).** Ez JAVASLAT: az `f21p/arany_opus_v3_javaslat.jsonl` nem '
           'befagyasztott, sha256-fájlja nincs. A felhasználó jóváhagyásáig az arany v3 nem fagy be, és a '
           'mérés (F3V3, Sonnet) nem fut az arany v3-ra; a befagyasztás a jóváhagyás után az orkesztrátoré.', '',
           '> **Két változat, a felhasználó választ (F21.44).** **A:** a jelenlegi javaslat, 3 link '

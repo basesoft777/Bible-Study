@@ -319,7 +319,7 @@ Kizárólag szkriptkimenet. Az összeállítások: Sonnet egyedül (SONNETV3), C
 ### (i) A gondolkodási keret: a modell nem tartotta be
 
 - A konfigurált keret: reasoning.max_tokens = 1024 (gondolkodas_mod: reasoning_max_tokens=1024).
-- Mért gondolkodási token összesen: 142077 a 173414 kimeneti tokenből (81.9%); hívásonként a legnagyobb 11144 (min 0, medián 6642, 22 hívás).
+- Mért gondolkodási token összesen: 142077 a 173414 kimeneti tokenből (81.9%); hívásonként a legnagyobb 11144 (min 0, medián 6556.5, 22 hívás).
 - A keret fölötti hívások: 21 a 22-ből; a legnagyobb a keret 10.9-szerese.
 - A költségre: a gondolkodási token a kimeneti táblaáron 1.420770 USD (10.00 USD/1M; anthropic/claude-sonnet-5.5) a mért összköltséghez (64.7%).
 - A length-lezárások: 2 a 22 hívásból (finish_reason=length: köteg 15 / próba 1, köteg 15 / próba 2; költségük 0.291850 USD; kimenet 12000+12000 token, ebből gondolkodás 11144+10364): a kimenet elérte a max_tokens-t, és nagyobb részét a gondolkodási token adta; a köteg versei véglegesen kapuhibásak maradtak (alább).
@@ -352,7 +352,7 @@ Kizárólag szkriptkimenet. Az összeállítások: Sonnet egyedül (SONNETV3), C
 | futás | mérőszám | érték | nevező | megjegyzés |
 |---|---|---|---|---|
 | Sonnet (SONNETV3) | gondolkodasi_token | 142077 | 173414 | a kimeneti tokenből (completion_tokens) a modell által jelentett gondolkodási token (futásnapló) |
-| Sonnet (SONNETV3) | gondolkodasi_token_hivasonkent_max | 11144 |  | min 0, medián 6642, 22 hívás |
+| Sonnet (SONNETV3) | gondolkodasi_token_hivasonkent_max | 11144 |  | min 0, medián 6556.5, 22 hívás |
 | Sonnet (SONNETV3) | finish_reason | length: 2, stop: 20 |  |  |
 | Sonnet (SONNETV3) | gondolkodasi_token_koltsege_usd | 1.420770 | 2.197554 | a gondolkodási token × a kimeneti táblaár (10.00 USD/1M; anthropic/claude-sonnet-5.5) a mért összköltséghez (64.7%) |
 | Sonnet (SONNETV3) | keret_feletti_hivasok | 21 | 22 | a konfigurált keret (reasoning.max_tokens=1024) fölötti mért gondolkodási token hívásonként; a legnagyobb a keret 10.9-szerese |

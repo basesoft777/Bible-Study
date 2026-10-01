@@ -1105,8 +1105,8 @@ def gondolkodas_futasok(adat, sorok, futasok=FUTASOK):
         ki = sum(int(r['kimenet_token']) for r in sor)
         sorok.add('gondolkodas', nev, meres.OSSZES, 'gondolkodasi_token', sum(g), ki,
                   'a kimeneti tokenből (completion_tokens) a modell által jelentett gondolkodási token (futásnapló)')
-        sorok.add('gondolkodas', nev, meres.OSSZES, 'gondolkodasi_token_hivasonkent_max', max(g), '', 'min %d, medián %d, %d hívás' % (
-            min(g), sorted(g)[len(g) // 2], len(g)))
+        sorok.add('gondolkodas', nev, meres.OSSZES, 'gondolkodasi_token_hivasonkent_max', max(g), '', 'min %d, medián %g, %d hívás' % (
+            min(g), (sorted(g)[(len(g) - 1) // 2] + sorted(g)[len(g) // 2]) / 2.0, len(g)))
         fr = {}
         for r in sor:
             fr[r.get('finish_reason') or '?'] = fr.get(r.get('finish_reason') or '?', 0) + 1

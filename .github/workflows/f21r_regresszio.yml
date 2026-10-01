@@ -1,8 +1,8 @@
 # F21 regresszio (P3c) -- a Karoli-Strong meropilot regresszios futtatasa: F3V3 (C, prompt_v3) es SONNETV3 (Sonnet 5.5, prompt_v3),
 # OpenRouter, GitHub Actionsben. A koltsegvetesi kapu es a workflow vaza a claude/f21-regresszio agrol atveve (b2f2da8), a futtatohoz igazitva.
 #
-# ALLAPOT: ELOKESZITVE, NEM INDITOTT. A futas inditasa kulon jovahagyas targya (a szarazbecslesi es az arany v3 megallas utan). A workflow kizarolag az f21p/futtatas_v3.txt valtozasara
-# indul; ez a fajl a repoban NEM letezik, a sablon az f21p/futtatas_v3.txt.minta (masik utvonal, nem indit).
+# ALLAPOT: a regresszios meres lefutott (F3V3, F8V3, SONNETV3: a futasnaplo es a valaszok az agon). A futas inditasa kulon jovahagyas targya volt. A workflow kizarolag az f21p/futtatas_v3.txt valtozasara
+# indul; a fajl a repoban letezik (a jelenlegi tartalom a teljes SONNETV3), a sablon az f21p/futtatas_v3.txt.minta (masik utvonal, nem indit).
 #
 # INDITAS. Kizarolag push-ra, a claude/f21-regresszio-meres agon, ha az f21p/futtatas_v3.txt valtozik (a
 # trigger-push az orkesztratore). Nincs workflow_dispatch. A workflow sajat commitja nem nyul az
@@ -131,7 +131,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "nincs valtozas"; exit 0
           fi
-          printf 'F21.43: a regresszios futas kimenete (GitHub Actions, futás %s)\n\nCo-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\n' "$GITHUB_RUN_ID" > "$RUNNER_TEMP/commit_uzenet.txt"
+          printf 'F21.43: a regressziós futás kimenete (GitHub Actions, futás %s)\n\nCo-Authored-By: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>\n' "$GITHUB_RUN_ID" > "$RUNNER_TEMP/commit_uzenet.txt"
           git -c i18n.commitEncoding=UTF-8 commit -F "$RUNNER_TEMP/commit_uzenet.txt"
           git fetch origin refs/heads/claude/f21-regresszio-meres
           git rebase FETCH_HEAD
