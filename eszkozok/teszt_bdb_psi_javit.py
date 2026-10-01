@@ -41,9 +41,23 @@ class ForditasonUjrafuttat(unittest.TestCase):
         hu = 'Péld 75:12'
         self.assertEqual(J.csere_forditason(hu, 'H7843', CSERE)[0], hu)
 
-    def test_a_tabla_a_valodi_adaton_nem_rontja_a_kihagyott_sorokat(self):
-        # a --forditas mod a VEDETT sorokat (81, 84, 85) nem irja at
-        self.assertEqual(J.VEDETT_SOROK, {81, 84, 85})
+    def test_vedett_sor_mezokulcsos(self):
+        kulcs = dict(szotar='BDB', strong='H8034', entry_id='H8034', jelentes_szam='teljes', mezo='forditas_hu')
+        self.assertTrue(J.vedett(kulcs))
+        # negativ: mas strong / mas mezo / mas jelentes_szam NEM vedett (a fajlsorszam nem szamit)
+        for mezo, ertek in (('strong', 'H7585'), ('mezo', 'definicio_hu'), ('jelentes_szam', 'reszlet')):
+            k2 = dict(kulcs)
+            k2[mezo] = ertek
+            self.assertFalse(J.vedett(k2), mezo)
+
+    def test_negativ_nem_psi_dan_hely_kimarad_a_tablabol(self):
+        # a Dt->Dan hiba nem psi: a csere-tabla nem tartalmazhat Dan-kulcsot
+        for sor in open('naplok/F34_M2_csere.tsv', encoding='utf-8').read().split(chr(10))[1:]:
+            if sor:
+                self.assertFalse(sor.split(chr(9))[1].startswith(J.NEM_PSI_KONYV), sor)
+
+    def test_negativ_hibas_token_nem_lesz_zsolt_masik_szocikkben(self):
+        self.assertEqual(J.csere_forditason('Ez 73:23', 'H8034', CSERE)[0], 'Ez 73:23')
 
 
 class VersTabla(unittest.TestCase):

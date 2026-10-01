@@ -32,8 +32,18 @@ TAHOT = 'konkordancia/TAHOT_kivonat.tsv'
 FORD = 'adat/forditasok.tsv'
 MACULA_ZS = 'konkordancia/Macula_heber_Zsoltarok.tsv'   # MT-szamozas, a versszamozasi tabla forrasa
 CSERE_TABLA = 'naplok/F34_M2_csere.tsv'
-# DT-F34b 2. pont: ezeket a forditasok.tsv-sorokat nem irjuk at (a forras-TSV javul, a hash-eltérést jelezzuk)
-VEDETT_SOROK = {81, 84, 85}
+# DT-F34c (felhasznalo, 2026.10.01): a 81. (H7585) es 84. (H7843) sor token- es forras_hash-frissitese
+# jovahagyva. Vedett (nem irjuk at) mezokulcsos: (szotar, strong, entry_id, jelentes_szam, mezo); a
+# H8034 sor (Dan 22:14 forrashiba, N-F34c) valtozatlan marad.
+VEDETT_KULCSOK = {('BDB', 'H8034', 'H8034', 'teljes', 'forditas_hu')}
+KULCS_MEZOK = ('szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo')
+# nem psi eredetu konyvfeloldasi hiba (Dt->Dan): a maradek-tablabol kimarad (DT-F34c 3. pont, N-F34c)
+NEM_PSI_KONYV = ('Dan ',)
+
+
+def vedett(sor):
+    """sor: dict (a forditasok.tsv fejlec-mezoivel). Mezokulcsos, nem fajlsorszamos."""
+    return tuple(sor[k] for k in KULCS_MEZOK) in VEDETT_KULCSOK
 
 HU = {'Gen': '1Móz', 'Exod': '2Móz', 'Lev': '3Móz', 'Num': '4Móz', 'Deut': '5Móz', 'Josh': 'Józs',
       'Judg': 'Bír', 'Ruth': 'Ruth', '1Sam': '1Sám', '2Sam': '2Sám', '1Kin': '1Kir', '2Kin': '2Kir',
@@ -108,15 +118,18 @@ def masutt(idx, strong, c, v):
 def forditas_ujrafuttat(ir):
     """--forditas: a csere-tabla (JAVIT sorok) ujrafuttatasa a LEFORDITOTT BDB-szovegen (adat/forditasok.tsv).
     Csak a helyhivatkozas tokenje valtozik; a forras_hash-t NEM erinti (az a forrasbol szamolodik);
-    a VEDETT_SOROK-at kihagyja. Igy a maradek kesobbi felbontasa nem igenyel ujrafordítast."""
+    a vedett (mezokulcsos) sorokat kihagyja. Igy a maradek kesobbi felbontasa nem igenyel ujrafordítast."""
     csere = csere_beolvas()
     fs = open(FORD, encoding='utf-8', newline='').read().split(chr(10))
-    ix = {k: i for i, k in enumerate(fs[1].split(chr(9)))}
+    fej = fs[1].split(chr(9))
+    ix = {k: i for i, k in enumerate(fej)}
     valt = []
     for n, l in enumerate(fs, 1):
-        if n <= 2 or not l or n in VEDETT_SOROK:
+        if n <= 2 or not l:
             continue
         p = l.split(chr(9))
+        if vedett(dict(zip(fej, p))):
+            continue
         if p[ix['szotar']] != 'BDB' or p[ix['mezo']] != 'forditas_hu':
             continue
         hu2, ki = csere_forditason(p[ix['forditas_hu']], p[ix['strong']], csere)
@@ -130,8 +143,81 @@ def forditas_ujrafuttat(ir):
         print('IRVA')
 
 
+def hash_frissit(ir):
+    """--hash-frissit: a nem vedett BDB `teljes` sorok, amelyek tarolt forras_hash-e elter az AKTUALIS forras
+    SHA-1-jetol: a csere-tabla tokenjei + az uj hash. Kapu: a szodiffben csak helyhivatkozas-token
+    es a forras_hash valtozhat; mas valtozas eseten megall (kilepesi kod 6)."""
+    csere = csere_beolvas()
+    forras = {}
+    for l in open(FORRAS, encoding='utf-8', newline='').read().split(chr(10))[1:]:
+        if l:
+            q = l.split(chr(9))
+            forras[q[0]] = q[2]
+    fs = open(FORD, encoding='utf-8', newline='').read().split(chr(10))
+    fej = fs[1].split(chr(9))
+    ix = {k: i for i, k in enumerate(fej)}
+    refh = re.compile(r'(?<![\wÀ-ɏ])(?:%s) \d+:\d+' % '|'.join(sorted(set(HU_FORD.values()) | {'Zsolt'}, key=len, reverse=True)))
+    valt = []
+    for n, l in enumerate(fs, 1):
+        if n <= 2 or not l:
+            continue
+        p = l.split(chr(9))
+        sor = dict(zip(fej, p))
+        if sor['szotar'] != 'BDB' or sor['jelentes_szam'] != 'teljes' or vedett(sor):
+            continue
+        uj_hash = hashlib.sha1(forras[sor['strong']].encode('utf-8')).hexdigest()
+        if uj_hash == sor['forras_hash']:
+            continue
+        hu2, ki = csere_forditason(sor['forditas_hu'], sor['strong'], csere)
+        # szodiff-kapu: a ket szoveg szavai csak a helyhivatkozasban terhetnek el
+        if refh.sub('<R>', sor['forditas_hu']) != refh.sub('<R>', hu2):
+            print('SZODIFF KAPU BUKIK', n, sor['strong'])
+            sys.exit(6)
+        a, b = sor['forditas_hu'].split(), hu2.split()
+        szodiff = [(x, y) for x, y in zip(a, b) if x != y]
+        if len(a) != len(b):
+            print('SZOSZAM VALTOZOTT', n)
+            sys.exit(6)
+        p[ix['forditas_hu']] = hu2
+        p[ix['forras_hash']] = uj_hash
+        fs[n - 1] = chr(9).join(p)
+        valt.append((n, sor['strong'], sor['allapot'], sor['forras_hash'][:8], uj_hash[:8], szodiff))
+    for v in valt:
+        print('hash-frissites:', v)
+    if ir and valt:
+        open(FORD, 'w', encoding='utf-8', newline='').write(chr(10).join(fs))
+        print('IRVA')
+
+
+def meres_tahot():
+    """--meres-tahot: a TAHOT-kivonat Zsolt-lefedettsege a Macula MT-tablahoz merve + fejezet-szintu rések.
+    Kimenet: mereseredmeny + proveniencia-sor (SEMA: scope | forras | ts)."""
+    import datetime
+    vt = vers_tabla()
+    th, fejezetek = {}, {}
+    for l in open(TAHOT, encoding='utf-8').read().split(chr(10))[1:]:
+        m = re.match(r'(.+) (\d+):(\d+)' + chr(9), l)
+        if m:
+            fejezetek.setdefault(m.group(1), set()).add(int(m.group(2)))
+            if m.group(1) == 'Zsolt':
+                th.setdefault(int(m.group(2)), set()).add(int(m.group(3)))
+    van_fej = sum(1 for c in vt if c in th)
+    van_vers = sum(len(vt[c] & th.get(c, set())) for c in vt)
+    ossz_vers = sum(len(v) for v in vt.values())
+    rest = {b: [c for c in range(1, max(cs) + 1) if c not in cs] for b, cs in fejezetek.items()}
+    print('Zsolt fejezet: %d/%d; vers: %d/%d (TAHOT a Macula MT-tablahoz merve)' % (van_fej, len(vt), van_vers, ossz_vers))
+    print('fejezet-szintu rések konyvenkent:', {b: c for b, c in rest.items() if c})
+    print('scope=TAHOT_kivonat Zsolt-lefedettseg vs Macula MT-versek, fejezet-rések minden konyvben | forras=%s + %s | ts=%s' % (TAHOT, MACULA_ZS, datetime.date.today().isoformat()))
+
+
 def main():
     ir = '--ir' in sys.argv
+    if '--meres-tahot' in sys.argv:
+        meres_tahot()
+        return
+    if '--hash-frissit' in sys.argv:
+        hash_frissit(ir)
+        return
     if '--forditas' in sys.argv:
         forditas_ujrafuttat(ir)
         return
@@ -140,7 +226,7 @@ def main():
     lista = [l.split('\t') for l in open(LISTA, encoding='utf-8').read().split('\n')[1:] if l]
     kulcsok = {}   # (strong, regi, uj) -> [osztalyok], darab
     for r in lista:
-        if r[5] == 'KIZART':
+        if r[5] == 'KIZART' or r[3].startswith(NEM_PSI_KONYV):
             continue
         if r[4].startswith('('):
             uj = 'Psa ' + r[4][5:].rstrip('?)')
@@ -254,7 +340,7 @@ def main():
         st = p[ix['strong']]
         if st not in ujforras or ujforras[st] == regiforras[st]:
             continue
-        if n in VEDETT_SOROK:
+        if vedett(dict(zip(feje, p))):
             vedett_hash_elter.append((n, st, p[ix['allapot']]))
             continue
         # a hash a forrasszovegbol

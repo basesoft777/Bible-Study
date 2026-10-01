@@ -23,7 +23,7 @@ A nyers `DictBDB.json` nincs a repóban (a `konkordancia/_convert_bdb.py` a `%TE
 | R | 2 (köztük H7585 `Ezek 16:10` → `Psa 16:10`) | 15 |
 | Összesen | **144 hely, 48 szócikk** | **178 hely, 104 szócikk** |
 
-A maradék oka: 167 kulcsnál a TAHOT-kivonatban nincs Zsolt c:v ±1 találat (a kivonat nem teljes: Zsolt 88/89/140/142 hiányzik, és a Strong-szám nem mindig szerepel az idézett versben), 7-nél más könyvben is van találat (nem egyértelmű), 1 összeolvadt alak (`2Sam 132:1132`). Listája: `naplok/F34_M2_maradek.tsv` — **kézi nézet, nem javítva**. `Dan 22:14` forráshiba, nem hatókör.
+*[ELAVULT — DT-F34c (2026.10.01): a TAHOT-hiány premisszája hamis, Zsolt 150/150 fejezet, 2527/2527 vers megvan; a 167 elutasítás valódi „a Strong nincs a c:v ±1 versben” eredmény; az N-F34 felméri az okát.]* A maradék oka: 167 kulcsnál a TAHOT-kivonatban nincs Zsolt c:v ±1 találat (a kivonat nem teljes: Zsolt 88/89/140/142 hiányzik, és a Strong-szám nem mindig szerepel az idézett versben), 7-nél más könyvben is van találat (nem egyértelmű), 1 összeolvadt alak (`2Sam 132:1132`). Listája: `naplok/F34_M2_maradek.tsv` — **kézi nézet, nem javítva**. `Dan 22:14` forráshiba, nem hatókör.
 
 ## Diff-kapu
 
@@ -39,7 +39,7 @@ Csak a helyhivatkozás tokenje változott (a fordítás szövege egyébként bá
 | 81 | H7585 | kezi | Ez 16:10 → Zsolt 16:10; Ez 49:16 → Zsolt 49:16 (Ez 73:23, 73:25 marad: a TAHOT nem igazolja) |
 | 89 | H0430 | opus | Jób 97:7 → Zsolt 97:7 |
 
-A 84. és 85. sor forrása nem változott (nincs javítható találat), ezért érintetlen. `eszkozok/ellenoriz.py`: 13. szabály (forras_hash) **RENDBEN**, kilépési kód 0.
+*[ELAVULT — DT-F34c (2026.10.01): a 81. és 84. sor token- és forras_hash-frissítése jóváhagyva, megtörtént (F34.6); az 85. sor változatlan.]* A 84. és 85. sor forrása nem változott (nincs javítható találat), ezért érintetlen. `eszkozok/ellenoriz.py`: 13. szabály (forras_hash) **RENDBEN**, kilépési kód 0.
 
 ## M4 — kapu
 
@@ -53,3 +53,11 @@ A 84. és 85. sor forrása nem változott (nincs javítható találat), ezért �
 4. **Újrafuttathatóság:** `python eszkozok/bdb_psi_javit.py --forditas [--ir]` a csere-táblát a lefordított szövegen alkalmazza (csak a helyhivatkozás tokenje, a 81/84/85. sor kihagyva, hash érintetlen); a főfutás idempotens (újrafuttatva 0 csere). Teszt: `python eszkozok/teszt_bdb_psi_javit.py` (6 teszt OK).
 5. **Új SHA-256:** `5c176037617813e330eb57e883ab7fd728c19a244c42196668ea712d0f502f14`.
 6. **Megfigyelés:** a DT-F34b tételben feltételezett TAHOT-hiány Zsoltárokra nem áll fenn (150/150 fejezet, 2527/2527 vers; a hiányt a `TAHOT_TAGNT_README.md` szerint korábban pótolták; a `CLAUDE.md` állítása elavult) — a 167 elutasítás tehát valódi „nincs a versben” eredmény.
+
+## F34.6 — DT-F34c alkalmazása (2026.10.01; a döntés a chatben a felhasználótól jött)
+
+1. **81. (H7585) és 84. (H7843) sor:** token- és `forras_hash`-frissítés (`python eszkozok/bdb_psi_javit.py --hash-frissit --ir`). Szódiff-ellenőrzés (`git diff --word-diff`): az egyetlen eltérés a `forras_hash` és a könyvnév-token (81.: `Ez`→`Zsolt` ×2; 84.: `Péld`→`Zsolt`); a szószám változatlan, más változás nincs (a szkript kapuja ezt megköveteli, különben megáll). A 85. sor (H8034) változatlan. `ellenoriz.py` kilépési kód: 0.
+2. **Dan → Psa javaslatok törölve** (H8034, H8478, H3117, H6881, H9004: 7 kulcs, a Dt→Dan hiba nem ψ); a maradék-tábla ezzel **156 hely, 94 szócikk** (A 4, B 137, R 15). A forrásban a `Dan`-helyeket nem módosítottam. A Dán 22:14 (H8034) kizárásának felülvizsgálata és a nem ψ eredetű feloldási hibák: N-F34c (helyőrző).
+3. **TAHOT-mérés proveniencia-sora** (`python eszkozok/bdb_psi_javit.py --meres-tahot`): Zsolt fejezet 150/150, vers 2527/2527 (a Macula MT-táblához mérve); fejezet-szintű rés minden könyvben csak Jób 41.
+   `scope=TAHOT_kivonat Zsolt-lefedettség vs Macula MT-versek, fejezet-rések minden könyvben | forras=konkordancia/TAHOT_kivonat.tsv + konkordancia/Macula_heber_Zsoltarok.tsv | ts=2026-10-01`
+4. Kód: a védett sorok kulcsa mezőkulcsos (szótár, strong, entry_id, jelentes_szam, mező), nem fájlsorszám; a tautologikus teszt helyett 3 negatív teszt (`teszt_bdb_psi_javit.py`, 8 teszt OK).
