@@ -47,6 +47,14 @@ naplok/F21P_meres_p3c_c.md; a (4) feltétel a f21p/koltseg_vetites_p3c_c.tsv-bő
 (koltseg_vetit_p3c.py --csak-c). A Sonnet-adat megérkezése után a teljes mérés --csak-c
 nélkül, ugyanezzel a szkripttel fut (az eredeti kimeneti nevekre); --csak-c nélkül a hiányzó
 SONNETV3 SystemExit (semmi nem íródik).
+
+F21.76 (--csak-c, a meglévő sorok után, a régi sorok változatlanok): (a) az első próbás kapuhiba
+kapupontonként és rétegenként a három C-futásra (F3V2, F3V2B, F3V3), a versek listájával
+(kapupont, köteg, rövid hibaüzenet, végleges állapot); módszer: a köteg nyers[0] válaszának
+újraellenőrzése a teljes kapun, keresztellenőrzés a rétegenkénti első-próbás számokkal, a jsonl
+probalkozas=2 verseivel és a napló kapuhiba_db(probalkozas=1) összegével (EGYEZIK / ELTÉR; ELTÉR:
+1-es kód). (b) a 95%-os küszöbön kívüli F3V3-lefedettség jelölése rétegenként, a hiányzó linkek
+K4 (a) számával a kézi besorolásból (f21p/c_diff_p3c_besorolas.tsv; Opus-besorolás, nem mérés).
     python eszkozok/karoli_strong/meres_p3c.py [--csak-c] [--arany <jsonl> [--arany-sha <sha256-fájl>]]
                                                [--forras-dir <könyvtár>] [--onteszt]
 """
@@ -548,8 +556,107 @@ def kjv_tajekoztato(adat, sorok):
               'PD17 (3): a KJV a promptban — a pilot döntése')
 
 
-def szamol_c(forras_dir=None, arany_ut=None, arany_sha=None, koltseg_ut=None, n_boot=N_BOOT, arany_v2_ut=None, arany_v2_sha=None):
-    """A csak-C P4-számítás (kiírás nélkül). Visszaad: (adat, info, sorok, kf, info_v2, futasok)."""
+# ---------------------------------------------------------------------------
+# F21.76: az első próbás kapuhiba kapupontonként és rétegenként; az R1-lefedettség jelölése
+# ---------------------------------------------------------------------------
+
+KAPUPONTOK_ALAP = ['1', '1-json', '2', '3', '4']     # mindig kiírt kapupontok (a többi csak, ha előfordul)
+BESOROLAS_C_UT = os.path.join(F21P, 'c_diff_p3c_besorolas.tsv')
+KUSZOB_LEF = 0.95
+
+
+def _rovid(h, n=100):
+    h = ' '.join(h.split())
+    return h if len(h) <= n else h[:n - 1] + '…'
+
+
+def kapupont_versek(adat, f):
+    """Az első próbán kapuhibás versek a minta sorrendjében: [(igehely, réteg, köteg, [kapupontok],
+    [első-próbás hibaüzenetek], végleg átment-e, [végleges kapupontok])]. Módszer: a köteg nyers[0]
+    válaszának újraellenőrzése a teljes kapun (a meres.hibatipusok módszere, kapupont: meres._tipusok)."""
+    ki = {}
+    for sor in adat.kotegsorok[f]:
+        ig_lista = sor['igehelyek']
+        r1 = meres.kapu.valasz_ellenoriz(sor['nyers'][0], ig_lista)
+        for ig in ig_lista:
+            if r1[ig]['ok']:
+                continue
+            v = sor['versek'][ig]
+            vok = v['allapot'] == 'ok'
+            ki[ig] = (ig, adat.reteg[ig], sor.get('koteg', '?'), sorted(meres._tipusok(r1[ig]['hibak'])), list(r1[ig]['hibak']),
+                      vok, [] if vok else sorted(meres._tipusok(v['hibak'])))
+    return [ki[ig] for ig in adat.versek if ig in ki]
+
+
+def kapupont_reteg(adat, sorok, futasok=FUTASOK_C):
+    """Az első próbás kapuhibás versek kapupontonként és rétegenként, a versek listájával; keresztellenőrzés
+    a kapuhiba-szakasz rétegenkénti első-próbás számaival, a jsonl probalkozas=2 verseivel és a napló
+    kapuhiba_db(probalkozas=1) összegével (a kapuhiba_futasok után hívandó)."""
+    vers = {f: kapupont_versek(adat, f) for f in futasok}
+    pontok = list(KAPUPONTOK_ALAP) + sorted({p for f in futasok for x in vers[f] for p in x[3]} - set(KAPUPONTOK_ALAP))
+    for f in futasok:
+        nev = NEVEK[f]
+        for ret in RETEGEK:
+            vs = [ig for ig in adat.versek if ig in adat.futas[f] and _ret(adat, ig, ret)]
+            if not vs:
+                continue
+            xs = [x for x in vers[f] if _ret(adat, x[0], ret)]
+            sorok.add('kapupont_reteg', nev, ret, 'hibas_versek_elso', len(xs), len(vs),
+                      'az első próbán kapuhibás versek (bármely kapupont); kötegek: %d' % len({x[2] for x in xs}))
+            for p in pontok:
+                xp = [x for x in xs if p in x[3]]
+                sorok.add('kapupont_reteg', nev, ret, 'kapupont_%s_elso' % p, len(xp), len(vs), 'kötegek: %d' % len({x[2] for x in xp}))
+            sorok.add('kapupont_reteg', nev, ret, 'tobb_kapupontos_versek_elso', sum(1 for x in xs if len(x[3]) > 1), len(vs),
+                      'egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél')
+        reteg_sz = {s[2]: int(s[4]) for s in sorok.lista if s[0] == 'kapuhiba' and s[1] == nev and s[3] == 'elso_probara'}
+        reteg_egy = all(n == sum(1 for x in vers[f] if _ret(adat, x[0], r)) for r, n in reteg_sz.items()) and bool(reteg_sz)
+        _, _, elso_h = meres.hibatipusok(adat, f)
+        p2 = {ig for ig, r in adat.futas[f].items() if r['probalkozas'] == 2}
+        naplo_p1 = sum(int(r['kapuhiba_db']) for r in adat.naplo if r['futas'] == f and r['probalkozas'] == '1')
+        hv = {x[0] for x in vers[f]}
+        egy = reteg_egy and hv == elso_h == p2 and len(hv) == naplo_p1
+        sorok.add('kapupont_kereszt', nev, meres.OSSZES, 'kapupont_versek_elso', len(hv), naplo_p1,
+                  'a kapupont-bontás hibás versei (%d) = a kapuhiba-szakasz rétegenkénti első-próbás számai (%s) = jsonl '
+                  'probalkozas=2 versek (%d) = napló kapuhiba_db(probalkozas=1) összeg (%d): %s' % (
+                      len(hv), ', '.join('%s: %d' % (r, reteg_sz[r]) for r in RETEGEK if r in reteg_sz), len(p2), naplo_p1,
+                      'EGYEZIK' if egy else 'ELTÉR'))
+        for x in vers[f]:
+            uzen = ' / '.join(_rovid(h) for h in x[4][:2]) + (' (+%d további)' % (len(x[4]) - 2) if len(x[4]) > 2 else '')
+            sorok.add('kapupont_vers', nev, x[1], x[0], '+'.join(x[3]), 'köteg %s' % x[2],
+                      'első próba: %s | végleg: %s%s' % (uzen, 'átment (2. próba)' if x[5] else 'kapuhibás (kapupont %s)' % '+'.join(x[6]),
+                                                       ' | aranyvers' if x[0] in adat.arany else ''))
+
+
+def besorolas_beolvas(ut):
+    """A kézi besorolás-fájl (c_diff_p3c_besorolas.tsv) sorai dict-ként (split('\\t'); a '#' sorok kimaradnak)."""
+    with open(ut, encoding='utf-8') as f:
+        s = [x.rstrip('\n').rstrip('\r') for x in f if x.strip() and not x.startswith('#')]
+    fej = s[0].split('\t')
+    return [dict(zip(fej, x.split('\t'))) for x in s[1:]]
+
+
+def lefedettseg_jeloles(adat, sorok, besorolas_ut, kuszob=KUSZOB_LEF):
+    """F21.76 (1): a küszöbön kívüli F3V3-lefedettség jelölése rétegenként (nincs további teendő): a hiányzó
+    linkek közül a K4-eltérés (a) száma a kézi besorolásból (Opus-besorolás, nem mérés)."""
+    if not besorolas_ut or not os.path.exists(besorolas_ut):
+        return
+    bs = besorolas_beolvas(besorolas_ut)
+    for ret in meres.RETEGEK:
+        t, _, g, _ = _pl(adat, C3, ret)
+        if not g or t / g >= kuszob:
+            continue
+        hi = [r for r in bs if r['futas'] == C3 and r['reteg'] == ret and r['statusz'] == 'elteres' and r['irany'] == 'hianyzo']
+        k4a = [r for r in hi if r['osztaly'] == 'a' and r['konvencio_vagy_jegyzetpont'].startswith('K4')]
+        sorok.add('jeloles', NEVEK[C3], ret, 'lefedettseg_kuszobon_kivul', t, g,
+                  'az %s lefedettsége a %s%%-os küszöbön kívül (%s%%); a hiányzó %d link közül %d K4-eltérés (a)'
+                  ' — a K4-szám Opus-besorolás, nem mérés (f21p/c_diff_p3c_besorolas.tsv); a besorolás hiányzó eltérés-sorai: %d (%s)'
+                  % (ret, ('%g' % (100.0 * kuszob)).replace('.', ','), ('%.1f' % (100.0 * t / g)).replace('.', ','), g - t, len(k4a), len(hi), 'EGYEZIK' if len(hi) == g - t else 'ELTÉR'))
+
+
+def szamol_c(forras_dir=None, arany_ut=None, arany_sha=None, koltseg_ut=None, n_boot=N_BOOT, arany_v2_ut=None, arany_v2_sha=None,
+             besorolas_ut=None):
+    """A csak-C P4-számítás (kiírás nélkül). Visszaad: (adat, info, sorok, kf, info_v2, futasok).
+    besorolas_ut: a kézi besorolás (az R1-jelöléshez; alap: a repó fájlja, ha a forras_dir az alap)."""
     futasok = futasok_c(forras_dir)
     adat, info = betolt(forras_dir, arany_ut, arany_sha, futasok)
     adat2, info2 = arany_valtozat(adat, arany_v2_ut, arany_v2_sha)
@@ -577,6 +684,9 @@ def szamol_c(forras_dir=None, arany_ut=None, arany_sha=None, koltseg_ut=None, n_
     mentett_ellenorzes(sorok, forras_dir or F21P, futasok)
     if F8 in futasok:
         kjv_tajekoztato(adat, sorok)
+    # F21.76: a régi sorok után (a meglévő sorok sorrendje változatlan)
+    kapupont_reteg(adat, sorok, FUTASOK_C)
+    lefedettseg_jeloles(adat, sorok, besorolas_ut if besorolas_ut is not None else (BESOROLAS_C_UT if forras_dir is None else None))
     return adat, info, sorok, kf, info2, futasok
 
 
@@ -598,17 +708,77 @@ def _tabla(sorok, szakasz, merok, osszeallitasok, retegek=None):
     return out + ['']
 
 
-def fejlec_c(info, info2, futasok, ts):
+def fejlec_c(info, info2, futasok, ts, bes=False):
     return ('GENERÁLT: eszkozok/karoli_strong/meres_p3c.py --csak-c | scope=P4 a regressziós mérésre, a C (F3V3, prompt_v3) EGYEDÜL '
             '(a SONNETV3 nem futott: a Sonnet és a Sonnet+C pár nincs adat); a v2-es C-futások (F3V2, F3V2B) és az F3V3 az arany v3-ra '
-            'és az arany v2-re is; %s200 verses minta; arany %s (%d vers, sha256 %s) és arany %s (%d vers, sha256 %s) | '
+            'és az arany v2-re is; %s200 verses minta; arany %s (%d vers, sha256 %s) és arany %s (%d vers, sha256 %s); az első próbás '
+            'kapuhiba kapupontonként és rétegenként (F3V2, F3V2B, F3V3; F21.76) | '
             'forras=f21p/valaszok/{%s}.jsonl, %s és %s (sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, '
-            'konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3c_c.tsv%s | ts=%s (a generálás '
+            'konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3c_c.tsv%s%s | ts=%s (a generálás '
             'ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos' % (
                 'F8V3 (C KJV-támponttal) tájékoztatásul; ' if F8 in futasok else '', info['verzio'], info['aranyversek'],
                 info['sha256'][:16], info2['verzio'], info2['aranyversek'], info2['sha256'][:16], ','.join(futasok),
                 os.path.basename(info['jsonl']), os.path.basename(info2['jsonl']),
-                ', konkordancia/KJV_Strongs_teljes.tsv, konkordancia/KJV_Strongs_*.tsv' if F8 in futasok else '', ts))
+                ', konkordancia/KJV_Strongs_teljes.tsv, konkordancia/KJV_Strongs_*.tsv' if F8 in futasok else '',
+                ', f21p/c_diff_p3c_besorolas.tsv (MANUAL; csak a lefedettség-jelölés K4-száma)' if bes else '', ts))
+
+
+def _kapupont_md(sorok):
+    """A j) szakasz: az első próbás kapuhiba kapupontonként és rétegenként (F21.76); csak számok és versek."""
+    fs = [NEVEK[f] for f in (C2, C2B, C3)]
+    kr = {(s[1], s[2], s[3]): s for s in sorok.lista if s[0] == 'kapupont_reteg'}
+    if not kr:
+        return []
+    merok = []
+    for s in sorok.lista:
+        if s[0] == 'kapupont_reteg' and s[3] not in merok:
+            merok.append(s[3])
+
+    def cella(o, r, m):
+        x = kr.get((o, r, m))
+        if not x:
+            return '—'
+        k = x[6].split('kötegek: ')[-1] if 'kötegek: ' in x[6] else ''
+        return '%s/%s%s' % (x[4], x[5], (' (%s köteg)' % k) if k and x[4] != '0' else '')
+
+    def d(a, b, r, m):
+        xa, xb = kr.get((a, r, m)), kr.get((b, r, m))
+        return '%+d' % (int(xa[4]) - int(xb[4])) if xa and xb else '—'
+    ki = ['', '## j) Az első próbás kapuhiba kapupontonként és rétegenként (F3V2, F3V2B: prompt_v2; F3V3: prompt_v3)', '',
+          'Módszer: minden köteg első nyers válaszának (nyers[0]) újraellenőrzése a teljes kapun, a kapupont a hibaüzenet sorszámából '
+          '(meres._tipusok: 1, 1-json = nem érvényes JSON, 1-hianyzo_vers, 2, 3, 4, 5); keresztellenőrzés a kapuhiba-szakasz '
+          'rétegenkénti első-próbás számaival, a jsonl probalkozas=2 verseivel és a napló kapuhiba_db(probalkozas=1) összegével. '
+          'Cella: hibás versek / a réteg versei a 200-ból (az érintett kötegek száma); egy vers több kapupontnál is hibás lehet. '
+          'Δ = verszám-különbség.', '',
+          '| réteg | kapupont | %s | %s | %s | F3V3 − F3V2 | F3V3 − F3V2B |' % tuple(fs), '|---|---|---|---|---|---|---|']
+    for r in RETEGEK:
+        for m in merok:
+            ki.append('| %s | %s | %s | %s | %s | %s | %s |' % (r, m, cella(fs[0], r, m), cella(fs[1], r, m), cella(fs[2], r, m),
+                                                           d(fs[2], fs[0], r, m), d(fs[2], fs[1], r, m)))
+    ki += ['', '| futás | keresztellenőrzés (kapupont-bontás) |', '|---|---|']
+    for s in sorok.lista:
+        if s[0] == 'kapupont_kereszt':
+            ki.append('| %s | %s |' % (s[1], s[6]))
+    vers = [s for s in sorok.lista if s[0] == 'kapupont_vers']
+    ki += ['', '### Az R3: F3V3, F3V2, F3V2B kapupontonként, a versekkel', '',
+           '| kapupont | %s | %s | %s |' % tuple(fs), '|---|---|---|---|']
+    pontok = []
+    for m in merok:
+        if m.startswith('kapupont_') and m.endswith('_elso'):
+            pontok.append(m[len('kapupont_'):-len('_elso')])
+    for p in pontok:
+        cel = []
+        for o in fs:
+            vs = [s for s in vers if s[1] == o and s[2] == 'R3' and p in s[4].split('+')]
+            cel.append('%d: %s' % (len(vs), ', '.join(s[3] for s in vs) or '—'))
+        ki.append('| %s | %s |' % (p, ' | '.join(cel)))
+    ki += ['', '### Minden első próbán kapuhibás vers (futásonként, a minta sorrendjében)', '',
+           '| futás | réteg | vers | kapupont | köteg | első próba: hibaüzenet (röviden) \\| végleg |', '|---|---|---|---|---|---|']
+    for o in fs:
+        for s in vers:
+            if s[1] == o:
+                ki.append('| %s | %s | %s | %s | %s | %s |' % (s[1], s[2], s[3], s[4], s[5], s[6].replace('|', '\\|')))
+    return ki
 
 
 def _hatas_md(sorok, utotag):
@@ -624,7 +794,7 @@ def _hatas_md(sorok, utotag):
 
 
 def kiir_c(sorok, info, info2, futasok, ts, eredmeny_ut, jelentes_ut, kf):
-    fej = fejlec_c(info, info2, futasok, ts)
+    fej = fejlec_c(info, info2, futasok, ts, any(s[0] == 'jeloles' for s in sorok.lista))
     with open(eredmeny_ut, 'w', encoding='utf-8', newline='\n') as f:
         f.write('# ' + fej + '\n')
         f.write('\t'.join(['szakasz', 'osszeallitas', 'reteg', 'mero', 'szamlalo', 'nevezo', 'megjegyzes']) + '\n')
@@ -650,6 +820,10 @@ def kiir_c(sorok, info, info2, futasok, ts, eredmeny_ut, jelentes_ut, kf):
     for s in sorok.lista:
         if s[0] == 'kuszob':
             ki.append('| %s | %s | %s | %s |' % (s[3], s[2], _pct(s[4], s[5]) if s[5] != '' else s[4], s[6]))
+    jel = [s for s in sorok.lista if s[0] == 'jeloles']
+    if jel:
+        ki += ['', 'Jelölés (F21.76; nincs további teendő):', '']
+        ki += ['- %s.' % s[6].split(' — ')[0] + ' (%s)' % s[6].split(' — ', 1)[1] for s in jel]
     ki += ['', '## b) A Sonnet egyedül és a Sonnet + C pár', '', '| összeállítás | állapot |', '|---|---|',
            '| %s | %s |' % (NEVEK[SONNET], NINCS_SONNET), '| %s | %s |' % (PAR, NINCS_SONNET), '']
     oszlop = [c2, c2b, c3] + ([NEVEK[F8]] if F8 in futasok else [])
@@ -728,6 +902,7 @@ def kiir_c(sorok, info, info2, futasok, ts, eredmeny_ut, jelentes_ut, kf):
                 s[1], s[2], s[3], 100 * x, 100 * y, 100 * d, 100 * lo, 100 * hi, 100 * ab, s[6].split('n=')[-1]))
     if F8 in futasok:
         ki += ['', 'Az „F8V3 − F3V3 (KJV, tájékoztató)” sorok R4-e: KJV nélkül, nem mérhető (azonos bemenet, a különbség futásközi ingadozás).']
+    ki += _kapupont_md(sorok)
     ki.append('')
     with open(jelentes_ut, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(ki) + '\n')
@@ -742,9 +917,10 @@ def fut_c(forras_dir=None, arany_ut=None, arany_sha=None, eredmeny_ut=None, jele
     for s in sorok.lista:
         if s[0] == 'kuszob' and s[2] == meres.OSSZES:
             print('  %s | %s | %s' % (s[3], _pct(s[4], s[5]) if s[5] != '' else s[4], s[6][:110]))
-    rossz = [s for s in sorok.lista if s[3] == 'keresztellenorzes_elso_probalkozas' and 'ELTÉR' in s[6]]
+    rossz = [s for s in sorok.lista if s[3] in ('keresztellenorzes_elso_probalkozas', 'kapupont_versek_elso', 'lefedettseg_kuszobon_kivul')
+             and 'ELTÉR' in s[6]]
     if rossz:
-        print('FIGYELEM: a kapuhiba keresztellenőrzése eltér: %s' % [s[1] for s in rossz], file=sys.stderr)
+        print('FIGYELEM: a kapuhiba keresztellenőrzése / a jelölés eltér: %s' % [(s[0], s[1]) for s in rossz], file=sys.stderr)
         return 1
     return 0
 
@@ -997,6 +1173,50 @@ def onteszt_csak_c(mappa, info, ellen):
         ah = [s for s in sorok if s[0] == 'arany_hatas' and s[1] == NEVEK[f] and s[2] == meres.OSSZES and s[3] == 'lefedettseg']
         ev = [s for s in sorok if s[0] == 'feltetelek' and s[1] == NEVEK[f] + V2_CIMKE and s[2] == meres.OSSZES and s[3] == 'lefedettseg']
         ellen(ah and ev and ah[0][5].split('|')[0] == '%s/%s' % (ev[0][4], ev[0][5]), 'csak-c: az arany-hatás v2-oldala nem az egymodell × v2 (%s)' % f)
+    # F21.76: a kapupont-bontás (a mock első-próbás és tartós hibái mind az 5. kapupontnál), keresztellenőrzés, j) szakasz
+    for f in FUTASOK_C:
+        varhato = set(info['hibas_mindig'].get(f, ())) | set(info['hibas_elso'].get(f, ()))
+        kv = [s for s in sorok if s[0] == 'kapupont_vers' and s[1] == NEVEK[f]]
+        ellen({s[3] for s in kv} == varhato and all(s[4] == '5' for s in kv),
+              'csak-c: a kapupont-versek (%s) nem a mock hibás versei: %s' % (f, sorted(s[3] for s in kv)))
+        ellen(all(('végleg: kapuhibás' in s[6]) == (s[3] in info['hibas_mindig'].get(f, ())) for s in kv),
+              'csak-c: a kapupont-versek végleges állapota hibás (%s)' % f)
+        kk = [s for s in sorok if s[0] == 'kapupont_kereszt' and s[1] == NEVEK[f]]
+        ellen(kk and 'EGYEZIK' in kk[0][6] and int(kk[0][4]) == len(varhato), 'csak-c: a kapupont-keresztellenőrzés (%s): %s' % (f, kk))
+        for r in RETEGEK:
+            h = [s for s in sorok if s[0] == 'kapupont_reteg' and s[1] == NEVEK[f] and s[2] == r and s[3] == 'hibas_versek_elso']
+            p5 = [s for s in sorok if s[0] == 'kapupont_reteg' and s[1] == NEVEK[f] and s[2] == r and s[3] == 'kapupont_5_elso']
+            p1 = [s for s in sorok if s[0] == 'kapupont_reteg' and s[1] == NEVEK[f] and s[2] == r and s[3] == 'kapupont_1-json_elso']
+            ellen(h and p5 and p1 and h[0][4] == p5[0][4] and p1[0][4] == '0', 'csak-c: a kapupont-réteg sorai hibásak (%s, %s)' % (f, r))
+    ellen(not any(s[0] == 'kapupont_vers' and s[1] == NEVEK[SONNET] for s in sorok), 'csak-c: Sonnet-kapupont sor')
+    ellen('## j) Az első próbás kapuhiba kapupontonként és rétegenként' in m1 and '### Az R3: F3V3, F3V2, F3V2B' in m1,
+          'csak-c: az md-ben nincs a j) szakasz')
+    ellen(not any(s[0] == 'jeloles' for s in sorok), 'csak-c: a mock-futás (forras_dir) besorolás-jelölést kapott')
+    # az R1-jelölés: mock besorolás-fájl a mock-adat F3V3-ának valódi hiányzó linkjeivel (két K4 (a), a többi c)
+    adat_m, _ = betolt(mappa, arany3, sha3, FUTASOK_C)
+    kus = 0.999           # a mock lefedettsége a 95%-ot minden rétegben meghaladja: szigorúbb küszöbbel teszteljük
+    jel_ret = [r for r in meres.RETEGEK if _pl(adat_m, C3, r)[2] and _pl(adat_m, C3, r)[0] / _pl(adat_m, C3, r)[2] < kus]
+    ut_b = os.path.join(mappa, 'besorolas_mock.tsv')
+    with open(ut_b, 'w', encoding='utf-8', newline='\n') as fb:
+        fb.write('# MANUAL: mock\nfutas\treteg\tirany\tstatusz\tosztaly\tkonvencio_vagy_jegyzetpont\n')
+        for r in jel_ret:
+            t_, _, g_, _ = _pl(adat_m, C3, r)
+            for i in range(g_ - t_):
+                fb.write('%s\t%s\thianyzo\telteres\t%s\t%s\n' % (C3, r, 'a' if i < 2 else 'c', 'K4 mock' if i < 2 else ''))
+    sj = Sorok()
+    lefedettseg_jeloles(adat_m, sj, ut_b, kus)
+    sj95 = Sorok()
+    lefedettseg_jeloles(adat_m, sj95, ut_b)
+    ellen(jel_ret and [s[2] for s in sj.lista] == jel_ret and all(
+        'a 99,9%-os küszöbön kívül' in s[6] and 'K4-eltérés (a)' in s[6] and 'EGYEZIK' in s[6] and
+        (' közül %d K4' % min(2, int(s[5]) - int(s[4]))) in s[6] for s in sj.lista),
+          'csak-c: az R1-jelölés hibás: %s' % sj.lista)
+    ellen(sj95.lista == [], 'csak-c: 95%%-os küszöbbel a mock jelölést kapott: %s' % sj95.lista)
+    with open(ut_b, 'a', encoding='utf-8', newline='\n') as fb:      # egy többlet hiányzó sor -> ELTÉR
+        fb.write('%s\t%s\thianyzo\telteres\tc\t\n' % (C3, jel_ret[0] if jel_ret else 'R1'))
+    sje = Sorok()
+    lefedettseg_jeloles(adat_m, sje, ut_b, kus)
+    ellen(sje.lista and 'ELTÉR' in sje.lista[0][6], 'csak-c: a jelölés keresztellenőrzése nem fogja az eltérést')
     el = [s for s in sorok if s[0] == 'arany_hatas' and s[3] == 'eltero_linkek']
     ellen(el and int(el[0][4]) > 0, 'csak-c: a két arany között nincs eltérő link')
     ellen(len({s[1] for s in sorok if s[0] == 'hatas_osszevetes'}) == 2, 'csak-c: a prompt-hatás nem mindkét aranyon')

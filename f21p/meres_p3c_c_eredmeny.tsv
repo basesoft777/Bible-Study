@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_strong/meres_p3c.py --csak-c | scope=P4 a regressziós mérésre, a C (F3V3, prompt_v3) EGYEDÜL (a SONNETV3 nem futott: a Sonnet és a Sonnet+C pár nincs adat); a v2-es C-futások (F3V2, F3V2B) és az F3V3 az arany v3-ra és az arany v2-re is; F8V3 (C KJV-támponttal) tájékoztatásul; 200 verses minta; arany v3 (60 vers, sha256 acdeb55f969c96fe) és arany v2 (60 vers, sha256 06a00738f7fd0449) | forras=f21p/valaszok/{F3V3,F3V2,F3V2B,F8V3}.jsonl, arany_opus_v3.jsonl és arany_opus_v2.jsonl (sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3c_c.tsv, konkordancia/KJV_Strongs_teljes.tsv, konkordancia/KJV_Strongs_*.tsv | ts=2026-10-01T07:46:16+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos
+# GENERÁLT: eszkozok/karoli_strong/meres_p3c.py --csak-c | scope=P4 a regressziós mérésre, a C (F3V3, prompt_v3) EGYEDÜL (a SONNETV3 nem futott: a Sonnet és a Sonnet+C pár nincs adat); a v2-es C-futások (F3V2, F3V2B) és az F3V3 az arany v3-ra és az arany v2-re is; F8V3 (C KJV-támponttal) tájékoztatásul; 200 verses minta; arany v3 (60 vers, sha256 acdeb55f969c96fe) és arany v2 (60 vers, sha256 06a00738f7fd0449); az első próbás kapuhiba kapupontonként és rétegenként (F3V2, F3V2B, F3V3; F21.76) | forras=f21p/valaszok/{F3V3,F3V2,F3V2B,F8V3}.jsonl, arany_opus_v3.jsonl és arany_opus_v2.jsonl (sha256 ellenőrizve), f21p/meres_kizaras.tsv, f21p/regi_arany_hibas.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/futasnaplo.tsv, f21p/koltseg_vetites_p3c_c.tsv, konkordancia/KJV_Strongs_teljes.tsv, konkordancia/KJV_Strongs_*.tsv, f21p/c_diff_p3c_besorolas.tsv (MANUAL; csak a lefedettség-jelölés K4-száma) | ts=2026-10-01T08:17:16+00:00 (a generálás ideje; ismételt futáskor csak ez a sor tér el) | kézzel szerkeszteni tilos
 szakasz	osszeallitas	reteg	mero	szamlalo	nevezo	megjegyzes
 feltetelek	C (F3V3)	R1	arany_versek_kapun_atment	20	20	
 feltetelek	C (F3V3)	R1	pontossag_osszes (tajekoztato, PD6)	296	307	
@@ -658,3 +658,189 @@ kjv	C (F3V3)	Összes	versek_kjv_sorral (régi tábla)	100	200	tokenek.kjv_tamapo
 kjv	C KJV-vel (F8V3, tájékoztató)	R4	jeloles	KJV nélkül, nem mérhető		PD17 (2): a Károli ↔ KJV megfeleltetés az ÚSZ-t nem fedi; az R4-en az F8V3 és az F3V3 bemenete azonos
 kjv	C KJV-vel (F8V3, tájékoztató)	R2	jeloles	gyenge (zsoltár-eltolódás)		PD17 (1): a zsoltárfeliratok miatti versmegfeleltetési eltolódás (N-F21); a KJV-sor valószínűleg rossz versről jön; naplok/F21P_kjv_meres.md
 kjv	C KJV-vel (F8V3, tájékoztató)	Összes	jeloles	nem igazolt, a javított táblával újramérhető		PD17 (3): a KJV a promptban — a pilot döntése
+kapupont_reteg	C (F3V3)	R1	hibas_versek_elso	12	100	az első próbán kapuhibás versek (bármely kapupont); kötegek: 3
+kapupont_reteg	C (F3V3)	R1	kapupont_1_elso	0	100	kötegek: 0
+kapupont_reteg	C (F3V3)	R1	kapupont_1-json_elso	10	100	kötegek: 1
+kapupont_reteg	C (F3V3)	R1	kapupont_2_elso	1	100	kötegek: 1
+kapupont_reteg	C (F3V3)	R1	kapupont_3_elso	1	100	kötegek: 1
+kapupont_reteg	C (F3V3)	R1	kapupont_4_elso	1	100	kötegek: 1
+kapupont_reteg	C (F3V3)	R1	tobb_kapupontos_versek_elso	1	100	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V3)	R2	hibas_versek_elso	0	25	az első próbán kapuhibás versek (bármely kapupont); kötegek: 0
+kapupont_reteg	C (F3V3)	R2	kapupont_1_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R2	kapupont_1-json_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R2	kapupont_2_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R2	kapupont_3_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R2	kapupont_4_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R2	tobb_kapupontos_versek_elso	0	25	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V3)	R3	hibas_versek_elso	10	25	az első próbán kapuhibás versek (bármely kapupont); kötegek: 1
+kapupont_reteg	C (F3V3)	R3	kapupont_1_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R3	kapupont_1-json_elso	10	25	kötegek: 1
+kapupont_reteg	C (F3V3)	R3	kapupont_2_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R3	kapupont_3_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R3	kapupont_4_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V3)	R3	tobb_kapupontos_versek_elso	0	25	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V3)	R4	hibas_versek_elso	8	50	az első próbán kapuhibás versek (bármely kapupont); kötegek: 2
+kapupont_reteg	C (F3V3)	R4	kapupont_1_elso	7	50	kötegek: 1
+kapupont_reteg	C (F3V3)	R4	kapupont_1-json_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V3)	R4	kapupont_2_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V3)	R4	kapupont_3_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V3)	R4	kapupont_4_elso	1	50	kötegek: 1
+kapupont_reteg	C (F3V3)	R4	tobb_kapupontos_versek_elso	0	50	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V3)	Összes	hibas_versek_elso	30	200	az első próbán kapuhibás versek (bármely kapupont); kötegek: 6
+kapupont_reteg	C (F3V3)	Összes	kapupont_1_elso	7	200	kötegek: 1
+kapupont_reteg	C (F3V3)	Összes	kapupont_1-json_elso	20	200	kötegek: 2
+kapupont_reteg	C (F3V3)	Összes	kapupont_2_elso	1	200	kötegek: 1
+kapupont_reteg	C (F3V3)	Összes	kapupont_3_elso	1	200	kötegek: 1
+kapupont_reteg	C (F3V3)	Összes	kapupont_4_elso	2	200	kötegek: 2
+kapupont_reteg	C (F3V3)	Összes	tobb_kapupontos_versek_elso	1	200	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_kereszt	C (F3V3)	Összes	kapupont_versek_elso	30	30	a kapupont-bontás hibás versei (30) = a kapuhiba-szakasz rétegenkénti első-próbás számai (R1: 12, R2: 0, R3: 10, R4: 8, Összes: 30) = jsonl probalkozas=2 versek (30) = napló kapuhiba_db(probalkozas=1) összeg (30): EGYEZIK
+kapupont_vers	C (F3V3)	R1	1Móz 13:14	2+4	köteg 3	első próba: 2. nem létező magyar sorszám: [26, 29] (a versben 1–25 szó van) / 4. ezek az eredeti szavak sem a "parok" jobb oldalán, sem a "forditatlan"-ban nem szerepelnek: [26,… | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 24:27	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 28:8	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 30:7	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 31:18	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 32:19	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 38:22	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 41:19	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 45:24	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 49:25	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	1Móz 50:2	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 966 (char 965) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R1	2Móz 26:13	3	köteg 6	első próba: 3. ezek a magyar szavak többször szerepelnek (a "parok" bal oldalán vagy a "betoldas"-ban): [26] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R3	Ézs 38:15	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R3	Ézs 48:5	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: kapuhibás (kapupont 4)
+kapupont_vers	C (F3V3)	R3	Ézs 55:12	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R3	Ézs 63:10	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R3	Jer 6:10	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R3	Jer 8:19	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R3	Jer 9:19	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R3	Jer 16:3	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: kapuhibás (kapupont 4)
+kapupont_vers	C (F3V3)	R3	Jer 32:27	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R3	Jer 44:16	1-json	köteg 14	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 10 column 3 (char 2231) | végleg: átment (2. próba)
+kapupont_vers	C (F3V3)	R4	Mt 5:34	1	köteg 16	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [3, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R4	Mt 6:31	1	köteg 16	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [4, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R4	Mt 11:18	1	köteg 16	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [4, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R4	Mt 21:4	1	köteg 16	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [3, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R4	Mt 23:31	1	köteg 16	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [2, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R4	Mt 27:18	1	köteg 16	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [2, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R4	Mk 2:23	1	köteg 16	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [3, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V3)	R4	Zsid 9:6	4	köteg 19	első próba: 4. ezek az eredeti szavak sem a "parok" jobb oldalán, sem a "forditatlan"-ban nem szerepelnek: [10] | végleg: átment (2. próba)
+kapupont_reteg	C (F3V2)	R1	hibas_versek_elso	12	100	az első próbán kapuhibás versek (bármely kapupont); kötegek: 3
+kapupont_reteg	C (F3V2)	R1	kapupont_1_elso	0	100	kötegek: 0
+kapupont_reteg	C (F3V2)	R1	kapupont_1-json_elso	10	100	kötegek: 1
+kapupont_reteg	C (F3V2)	R1	kapupont_2_elso	0	100	kötegek: 0
+kapupont_reteg	C (F3V2)	R1	kapupont_3_elso	1	100	kötegek: 1
+kapupont_reteg	C (F3V2)	R1	kapupont_4_elso	2	100	kötegek: 2
+kapupont_reteg	C (F3V2)	R1	tobb_kapupontos_versek_elso	1	100	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2)	R2	hibas_versek_elso	0	25	az első próbán kapuhibás versek (bármely kapupont); kötegek: 0
+kapupont_reteg	C (F3V2)	R2	kapupont_1_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R2	kapupont_1-json_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R2	kapupont_2_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R2	kapupont_3_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R2	kapupont_4_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R2	tobb_kapupontos_versek_elso	0	25	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2)	R3	hibas_versek_elso	2	25	az első próbán kapuhibás versek (bármely kapupont); kötegek: 2
+kapupont_reteg	C (F3V2)	R3	kapupont_1_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R3	kapupont_1-json_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R3	kapupont_2_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R3	kapupont_3_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2)	R3	kapupont_4_elso	2	25	kötegek: 2
+kapupont_reteg	C (F3V2)	R3	tobb_kapupontos_versek_elso	0	25	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2)	R4	hibas_versek_elso	5	50	az első próbán kapuhibás versek (bármely kapupont); kötegek: 1
+kapupont_reteg	C (F3V2)	R4	kapupont_1_elso	5	50	kötegek: 1
+kapupont_reteg	C (F3V2)	R4	kapupont_1-json_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2)	R4	kapupont_2_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2)	R4	kapupont_3_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2)	R4	kapupont_4_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2)	R4	tobb_kapupontos_versek_elso	0	50	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2)	Összes	hibas_versek_elso	19	200	az első próbán kapuhibás versek (bármely kapupont); kötegek: 6
+kapupont_reteg	C (F3V2)	Összes	kapupont_1_elso	5	200	kötegek: 1
+kapupont_reteg	C (F3V2)	Összes	kapupont_1-json_elso	10	200	kötegek: 1
+kapupont_reteg	C (F3V2)	Összes	kapupont_2_elso	0	200	kötegek: 0
+kapupont_reteg	C (F3V2)	Összes	kapupont_3_elso	1	200	kötegek: 1
+kapupont_reteg	C (F3V2)	Összes	kapupont_4_elso	4	200	kötegek: 4
+kapupont_reteg	C (F3V2)	Összes	tobb_kapupontos_versek_elso	1	200	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_kereszt	C (F3V2)	Összes	kapupont_versek_elso	19	19	a kapupont-bontás hibás versei (19) = a kapuhiba-szakasz rétegenkénti első-próbás számai (R1: 12, R2: 0, R3: 2, R4: 5, Összes: 19) = jsonl probalkozas=2 versek (19) = napló kapuhiba_db(probalkozas=1) összeg (19): EGYEZIK
+kapupont_vers	C (F3V2)	R1	1Móz 15:12	4	köteg 3	első próba: 4. ezek az eredeti szavak sem a "parok" jobb oldalán, sem a "forditatlan"-ban nem szerepelnek: [7] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 24:27	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 28:8	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 30:7	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 31:18	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 32:19	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 38:22	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 41:19	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 45:24	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 49:25	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	1Móz 50:2	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 982 (char 981) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R1	2Móz 21:26	3+4	köteg 6	első próba: 3. ezek a magyar szavak többször szerepelnek (a "parok" bal oldalán vagy a "betoldas"-ban): [1] / 4. ezek az eredeti szavak sem a "parok" jobb oldalán, sem a "forditatlan"-ban nem szerepelnek: [1] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V2)	R3	Ézs 48:5	4	köteg 14	első próba: 4. ezek az eredeti szavak sem a "parok" jobb oldalán, sem a "forditatlan"-ban nem szerepelnek: [11] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R3	Ez 46:12	4	köteg 15	első próba: 4. ezek az eredeti szavak sem a "parok" jobb oldalán, sem a "forditatlan"-ban nem szerepelnek: [13] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V2)	R4	Mk 9:36	1	köteg 17	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [3, []] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R4	Mk 13:21	1	köteg 17	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [4, []] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R4	Mk 14:44	1	köteg 17	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [12, []] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R4	Luk 1:75	1	köteg 17	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [9, []] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2)	R4	Luk 9:27	1	köteg 17	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [5, []] | végleg: átment (2. próba)
+kapupont_reteg	C (F3V2B)	R1	hibas_versek_elso	21	100	az első próbán kapuhibás versek (bármely kapupont); kötegek: 3
+kapupont_reteg	C (F3V2B)	R1	kapupont_1_elso	1	100	kötegek: 1
+kapupont_reteg	C (F3V2B)	R1	kapupont_1-json_elso	20	100	kötegek: 2
+kapupont_reteg	C (F3V2B)	R1	kapupont_2_elso	0	100	kötegek: 0
+kapupont_reteg	C (F3V2B)	R1	kapupont_3_elso	0	100	kötegek: 0
+kapupont_reteg	C (F3V2B)	R1	kapupont_4_elso	0	100	kötegek: 0
+kapupont_reteg	C (F3V2B)	R1	tobb_kapupontos_versek_elso	0	100	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2B)	R2	hibas_versek_elso	5	25	az első próbán kapuhibás versek (bármely kapupont); kötegek: 1
+kapupont_reteg	C (F3V2B)	R2	kapupont_1_elso	5	25	kötegek: 1
+kapupont_reteg	C (F3V2B)	R2	kapupont_1-json_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R2	kapupont_2_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R2	kapupont_3_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R2	kapupont_4_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R2	tobb_kapupontos_versek_elso	0	25	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2B)	R3	hibas_versek_elso	1	25	az első próbán kapuhibás versek (bármely kapupont); kötegek: 1
+kapupont_reteg	C (F3V2B)	R3	kapupont_1_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R3	kapupont_1-json_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R3	kapupont_2_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R3	kapupont_3_elso	0	25	kötegek: 0
+kapupont_reteg	C (F3V2B)	R3	kapupont_4_elso	1	25	kötegek: 1
+kapupont_reteg	C (F3V2B)	R3	tobb_kapupontos_versek_elso	0	25	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2B)	R4	hibas_versek_elso	1	50	az első próbán kapuhibás versek (bármely kapupont); kötegek: 1
+kapupont_reteg	C (F3V2B)	R4	kapupont_1_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2B)	R4	kapupont_1-json_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2B)	R4	kapupont_2_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2B)	R4	kapupont_3_elso	1	50	kötegek: 1
+kapupont_reteg	C (F3V2B)	R4	kapupont_4_elso	0	50	kötegek: 0
+kapupont_reteg	C (F3V2B)	R4	tobb_kapupontos_versek_elso	0	50	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_reteg	C (F3V2B)	Összes	hibas_versek_elso	28	200	az első próbán kapuhibás versek (bármely kapupont); kötegek: 6
+kapupont_reteg	C (F3V2B)	Összes	kapupont_1_elso	6	200	kötegek: 2
+kapupont_reteg	C (F3V2B)	Összes	kapupont_1-json_elso	20	200	kötegek: 2
+kapupont_reteg	C (F3V2B)	Összes	kapupont_2_elso	0	200	kötegek: 0
+kapupont_reteg	C (F3V2B)	Összes	kapupont_3_elso	1	200	kötegek: 1
+kapupont_reteg	C (F3V2B)	Összes	kapupont_4_elso	1	200	kötegek: 1
+kapupont_reteg	C (F3V2B)	Összes	tobb_kapupontos_versek_elso	0	200	egy vers több kapupontnál is hibás: a kapupont-sorok összege ennyivel több a hibás versekénél
+kapupont_kereszt	C (F3V2B)	Összes	kapupont_versek_elso	28	28	a kapupont-bontás hibás versei (28) = a kapuhiba-szakasz rétegenkénti első-próbás számai (R1: 21, R2: 5, R3: 1, R4: 1, Összes: 28) = jsonl probalkozas=2 versek (28) = napló kapuhiba_db(probalkozas=1) összeg (28): EGYEZIK
+kapupont_vers	C (F3V2B)	R1	1Móz 2:2	1	köteg 1	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [1, []] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 24:27	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 28:8	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 30:7	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 31:18	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 32:19	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 38:22	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 41:19	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 45:24	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 49:25	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	1Móz 50:2	1-json	köteg 4	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 970 (char 969) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 32:5	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 37:12	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 38:8	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 38:21	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 39:23	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 39:26	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 39:31	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 39:33	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 40:14	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R1	2Móz 40:36	1-json	köteg 7	első próba: 1. a válasz nem érvényes JSON: Expecting ',' delimiter: line 1 column 633 (char 632) | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R2	Jób 34:28	1	köteg 12	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [8, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V2B)	R2	Zsolt 16:11	1	köteg 12	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [1, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V2B)	R2	Zsolt 18:1	1	köteg 12	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [19, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V2B)	R2	Zsolt 22:32	1	köteg 12	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [8, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V2B)	R2	Zsolt 59:8	1	köteg 12	első próba: 1. hibás pár (kell: [magyar_sorszam, [eredeti_sorszam, ...]], nem üres): [8, []] | végleg: átment (2. próba) | aranyvers
+kapupont_vers	C (F3V2B)	R3	Ézs 48:5	4	köteg 14	első próba: 4. ezek az eredeti szavak sem a "parok" jobb oldalán, sem a "forditatlan"-ban nem szerepelnek: [11] | végleg: átment (2. próba)
+kapupont_vers	C (F3V2B)	R4	Mk 2:10	3	köteg 16	első próba: 3. ezek a magyar szavak többször szerepelnek (a "parok" bal oldalán vagy a "betoldas"-ban): [8] | végleg: átment (2. próba) | aranyvers
+jeloles	C (F3V3)	R1	lefedettseg_kuszobon_kivul	296	317	az R1 lefedettsége a 95%-os küszöbön kívül (93,4%); a hiányzó 21 link közül 12 K4-eltérés (a) — a K4-szám Opus-besorolás, nem mérés (f21p/c_diff_p3c_besorolas.tsv); a besorolás hiányzó eltérés-sorai: 21 (EGYEZIK)
