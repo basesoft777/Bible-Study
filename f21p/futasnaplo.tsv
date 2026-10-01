@@ -370,3 +370,5 @@ ts	futas	koteg	probalkozas	modell	gondolkodas_mod	igehely_db	kjv	bemenet_token	k
 2026-10-01T06:04:28+00:00	F3V3	19	1	google/gemini-3.8-flash	kotelezo_effort=minimal	10	igen	7060	1208	0	0.009825	openrouter	1	1	7.90	stop	84f12ca7aafb	1.847693
 2026-10-01T06:04:31+00:00	F3V3	19	2	google/gemini-3.8-flash	kotelezo_effort=minimal	1	igen	8370	120	0	0.006727	openrouter	0	1	2.48	stop	84f12ca7aafb	1.854420
 2026-10-01T06:04:39+00:00	F3V3	20	1	google/gemini-3.8-flash	kotelezo_effort=minimal	10	igen	7578	1360	0	0.010783	openrouter	0	1	8.05	stop	84f12ca7aafb	1.865203
+2026-10-01T07:01:25+00:00	F8V3	1	1	google/gemini-3.8-flash	kotelezo_effort=minimal	10	igen	8514	1208	0	0.010915	openrouter	0	1	8.37	stop	84f12ca7aafb	1.876119
+2026-10-01T07:01:37+00:00	F8V3	2	1	google/gemini-3.8-flash	kotelezo_effort=minimal	10	igen	9203	1444	0	0.012317	openrouter	0	1	11.69	stop	84f12ca7aafb	1.888435

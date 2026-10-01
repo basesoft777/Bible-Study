@@ -2911,6 +2911,15 @@ def main(argv=None):
     if not api_key:
         print('HIBA: az OPENROUTER_API_KEY környezeti változó nincs beállítva', file=sys.stderr)
         return 2
+    # F21.64: éles hívás csak a GitHub Actionsben (GITHUB_ACTIONS=true) vagy kifejezett helyi engedéllyel
+    # (F21_ELES_HELYI=igen). Oka: a helyi környezetben ott lehet az OPENROUTER_API_KEY, és egy véletlen helyi
+    # futás költséget okoz (2026.10.01: két F8V3 köteg, 0,0232 USD). A mock-küldős tesztek nem érintettek
+    # (azok a fordit._valodi_http_kuldo-t lecserélik).
+    if getattr(fordit._valodi_http_kuldo, '__module__', '') == fordit.__name__ \
+            and os.environ.get('GITHUB_ACTIONS') != 'true' and os.environ.get('F21_ELES_HELYI') != 'igen':
+        print('HIBA: éles OpenRouter-hívás helyben tiltott (GITHUB_ACTIONS nincs beállítva, F21_ELES_HELYI nem "igen"); '
+              'az éles futás a workflow dolga', file=sys.stderr)
+        return 2
     ctx = Kontextus(fordit._valodi_http_kuldo, api_key, args.kimenet_dir, plafon=args.plafon)
     if args.vezerlo:
         kod = vezerlo_futtat(ctx, args.vezerlo, minta)
