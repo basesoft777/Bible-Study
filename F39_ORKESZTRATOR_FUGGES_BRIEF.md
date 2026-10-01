@@ -7,15 +7,17 @@ fazis: folyamat
 modell: sonnet
 allapot: dontesre_var
 ad: a közös írási útvonalból kizárás lesz, nem sorrend; nincs több levezetett kör; a halasztott, brief nélküli és 2. fázisú feladat nem tart vissza 1. fázisú feladatot; a /kovetkezo újra ad jelöltet (várhatóan #35, #38, #23)
-kovetkezo: "Te: döntés a DT-F39g-ről (kölcsönös írás–olvasás = kizar; tág olvas nem ad sorrendet; a tesztfájl CI-helye); utána az M1 folytatódik"
+kovetkezo: "M3 folyamatban (kovetkezo.md, DONTESEK, próbafuttatás kész), majd fuggetlen-ellenor és draft PR"
 olvas: [eszkozok/feladatok.py, .claude/commands/kovetkezo.md, .claude/commands/befogad.md, BRIEF_SABLON.md, FELADATOK.md, DONTESEK.md]
-ir: [eszkozok/feladatok.py, eszkozok/tesztek/test_feladatok_fugges.py, .claude/commands/kovetkezo.md, DONTESEK.md, naplok/ELLENOR_ORKFUGG.md]
+ir: [eszkozok/feladatok.py, eszkozok/tesztek/test_feladatok_fugges.py, eszkozok/teszt_feladatok.py, .claude/commands/kovetkezo.md, DONTESEK.md, naplok/ELLENOR_ORKFUGG.md]
 fugg: []
 ag: claude/upbeat-wright-81rpah
 nem_fugg: [26, 30, 32]
 ---
 
 # Az orkesztrátor függés-levezetésének javítása
+
+> **Megjegyzés (M0, 2026.10.01):** a premissza pontosítása: a `*` jelű levezetett függés a kódban már írás–olvasás (A `olvas` ∩ B `ir`), nem írás–írás; az írás–írás ütközés külön `UTKOZES`/`SORREND` sor volt. A körök oka a tág `olvas`-bejegyzés (`CLAUDE.md`, könyvtárak) és a `naplok/` helyettesítő. A felhasználó DT-F39g döntése (2026.10.01): a tág kontextus-olvasás nem ad sorrendet, a kölcsönös írás–olvasás `kizar` figyelmeztetéssel; `naplok/F39_M0_felmeres.md`.
 
 **Verzió:** v1 · 2026.10.01 · készült a chatben
 **Fájlnév a befogadás után:** `F39_ORKESZTRATOR_FUGGES_BRIEF.md` (az `39`-t a `/befogad` adja)

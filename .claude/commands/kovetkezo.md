@@ -13,7 +13,7 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
 Állapot-szabály: a `FELADATOK.md` generált blokkját (a `<!-- GENERÁLT-KEZDET … -->` jelölők közötti részt) soha nem szerkeszted; az állapotot csak a feladat saját briefjének fejlécében vezeted (l. 6., 6b., 7., 8., 10. lépés).
 
 1. BEOLVASÁS: `git fetch`; olvasd be a main `FELADATOK.md`, `DONTESEK.md` és `CLAUDE.md` fájlját.
-   Futtasd: `python eszkozok/feladatok.py ellenoriz` (ha nem 0, állj meg és jelezd) és `python eszkozok/feladatok.py fuggesek`.
+   Futtasd: `python eszkozok/feladatok.py ellenoriz` (ha nem 0, állj meg és jelezd; a `FIGYELEM` sorok nem hibák, de a javaslatban jelezd őket), `python eszkozok/feladatok.py fuggesek` és `python eszkozok/feladatok.py jeloltek` (az 1. fázis jelöltjei, a kihagyás okával és a csomag-javaslattal; nem indít semmit).
    Az egyeztetési javaslat (5. lépés) előtt vesd össze a `DONTESEK.md` minden nyitott (🟡) tételét a main
    állapotával (`FELADATOK.md` sorai és döntésnaplója, `git log origin/main`): ha a tétel kérdése már
    eldőlt vagy a forrássora megváltozott, jelezd elavultként a javaslatban. Nem zárod le magad, a lezárás
@@ -22,14 +22,18 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
 3. JELÖLT KIVÁLASZTÁSA, ebben a sorrendben (az adatot a brief-fejlécek és a `feladatok.py fuggesek` kimenete adja):
    - csak az 1. fázis (`fazis: 1`) feladatai, amíg az 1. fázis minden feladata nincs `lezarva` a main-ben; a `fazis: folyamat` feladat csak alternatívaként jelenik meg, vagy ha a felhasználó választja;
    - `allapot` `nem_indult` vagy `dontesre_var`, és a `kovetkezo` mező NEM „Te:” kezdetű; a `brief_kell` állapotú csonk nem futtatható;
-   - minden függés (`fugg`, levezetett) `lezarva` a main-ben;
+   - minden függés (`fugg`, levezetett) `lezarva` a main-ben; a levezetett függés (`*`) csak írás–olvasás (A `olvas` konkrét fájlja vagy glob-ja egyezik B `ir`-jével); a tág kontextus-olvasás (`/`-re végződő olvas-bejegyzés, `CLAUDE.md`, `BRIEF_SABLON.md`, `MUNKAMENET.md`) nem ad sorrendet; a halasztott, brief nélküli és 2. fázisú feladat nem tart vissza 1. fázisút (DT-F39d);
+   - nincs `kizar`-párja (`×`) FUTÓ (`allapot: fut`) állapotban; a `kizar` kölcsönös kizárás, nem sorrend: a két feladat nem futhat egyszerre, de bármelyik mehet előbb; ha mindkettő jelölt, a kisebb sorszámú kerül előre, a másik a következő körben;
    - nincs rá nyitott tétel a `DONTESEK.md`-ben;
    - elsőbbség: a kritikus út sorrendje, utána a feladatszám sorrendje.
    Helyi gépet (`helyi_gep: igen`) igénylő feladatot nem indítasz: jelzed, és továbblépsz.
 3b. CSOMAG: az első jelölt mellé gyűjtsd össze azokat a további jelölteket, amelyek szintén megfelelnek
    a 3. lépés feltételeinek, és egyikük sem függ a csomag egy másik tagjától. Legfeljebb 5 feladat.
-   A `feladatok.py fuggesek` `UTKOZES` sora (írás–írás ütközés) és a `REGI` sora (régi fejléc, `ir` hiányzik)
-   csomagot kizár: az ilyen feladat csak egyedül fut. A `naplozas` típusú feladat bármely csomaghoz társulhat
+   A `feladatok.py fuggesek` `KIZAR` sora (`×`: írás–írás ütközés vagy kölcsönös írás–olvasás) két feladatot nem enged
+   egy csomagba és nem enged párhuzamosan futni; a `REGI` sora (régi fejléc, `ir` hiányzik) csomagot kizár:
+   az ilyen feladat csak egyedül fut. A `FIGYELEM ... kölcsönös függés` sor nem hiba, a `KOR` sor igen (döntés a felhasználóé).
+   Kivételek az ütközésvizsgálatból (`feladatok.py`: `UTKOZES_KIVETEL`, `HELYETTESITO_IR`, `KONTEXTUS_OLVAS`): `naplok/ELLENOR_*`,
+   `naplok/*_zaras.md`, a feladat saját `naplok/<F nn>_*`, `naplok/<KÓD>_*` fájljai, és a `naplok/` helyettesítő minta az `ir`-ben. A `naplozas` típusú feladat bármely csomaghoz társulhat
    (`vegrehajto-haiku`), ha nincs ütközése.
    Ha csak egy jelölt van, nincs csomag, és a menet a szokásos egyfeladatos módban fut.
 4. ELŐFELTÉTELEK: a feladat briefje a `main`-ben van; a brief fájlját a fejléc `feladat` mezője alapján keresd
