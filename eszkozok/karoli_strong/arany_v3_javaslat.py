@@ -5,11 +5,11 @@
 
 A v2 befagyasztott (f21p/arany_opus_v2.sha256): a szkript előbb ellenőrzi, és eltérésnél
 hibával megáll; a v2-t nem írja. Csak a jegyzet v2 (f21p/arany_opus_jegyzetek_v2.md 8.
-szakasz, a DT21 a–e döntések) konvencióival ütköző linkek változnak; minden javításnál a
-DT21-pont (a/b/c/e) és a konvenció (K1–K11). A többi sor bájtra azonos a v2-vel (a szkript
+szakasz, a DT-F21j a–e döntések) konvencióival ütköző linkek változnak; minden javításnál a
+DT-F21j-pont (a/b/c/e) és a konvenció (K1–K11). A többi sor bájtra azonos a v2-vel (a szkript
 ellenőrzi), és minden vers átmegy a kapun.
 
-B változat (F21.44, NEM alkalmazott, döntésre): az A (JAVITASOK) fölé a DT21 b) szó
+B változat (F21.44, NEM alkalmazott, döntésre): az A (JAVITASOK) fölé a DT-F21j b) szó
 szerinti olvasata (JAVITASOK_B) -> f21p/arany_opus_v3_javaslat_B.jsonl; a diff 5. szakasza.
 Az A változat fájlja nem változhat: ha már létezik és eltérne, a szkript hibával megáll.
 
@@ -50,7 +50,7 @@ F3V2B_BESOROLAS = os.path.join(tokenek.ROOT, 'f21p', 'c_diff_f3v2b_besorolas.tsv
 FUTASOK = ('F3V2', 'F3V2B')
 
 # vers -> javítás: párok felülírása {magyar: [eredeti...]} (üres lista: a pár törlődik),
-# betoldas-hoz adandó, forditatlan-hoz adandó / törlendő; DT21-pont, konvenció, indok.
+# betoldas-hoz adandó, forditatlan-hoz adandó / törlendő; DT-F21j-pont, konvenció, indok.
 JAVITASOK = {
     'Jób 33:13': {
         'parok': {4: []}, 'betoldas_ad': [4], 'forditatlan_ad': [], 'forditatlan_torol': [],
@@ -73,7 +73,7 @@ JAVITASOK = {
     },
 }
 
-# B változat (F21.44, NEM alkalmazott, döntésre): a DT21 b) szó szerinti olvasata — 'et + rag
+# B változat (F21.44, NEM alkalmazott, döntésre): a DT-F21j b) szó szerinti olvasata — 'et + rag
 # nélkül minden magyar tárgyi névmás betoldas, az igei (elöljárós) névmási rag forditatlan.
 # Az A változat (JAVITASOK) fölé kerül; a f21p/arany_opus_v3_javaslat_B.jsonl-t adja.
 _B_KONV = 'K3 v2, B olvasat'
@@ -252,13 +252,13 @@ def _hatas_tabla(sorok, osszesito, cimke):
 
 
 def b_szakasz(v3, v3b, sorok_a, sorok_b, osszesito, osszesito_b):
-    ki = ['## 5. B) változat — a DT21 b) szó szerinti olvasata (NEM alkalmazott, döntésre)', '',
+    ki = ['## 5. B) változat — a DT-F21j b) szó szerinti olvasata (NEM alkalmazott, döntésre)', '',
           'A felhasználó értelmezése (F21.44): „a névmás a ragra kötődik” — *\'et* + rag esetén a magyar névmás a '
           'ragra megy, az *\'et* `forditatlan` (ez mindkét változatban így van). **Nincs eldöntve** az igén '
           '(főnévi igenéven, elöljárón) álló, *\'et* nélküli névmási rag külön kitett magyar névmása: '
           '**(A)** a K4 szerint a raghoz kötve marad (a jelenlegi javaslat, `f21p/arany_opus_v3_javaslat.jsonl`); '
           '**(B)** szó szerint: a névmás `betoldas`, a rag `forditatlan` (`f21p/arany_opus_v3_javaslat_B.jsonl` = '
-          'A + az alábbi linkek; NEM befagyasztott). A B a DT20 a) kérdését (tárgyrag az igén) is érinti: a '
+          'A + az alábbi linkek; NEM befagyasztott). A B a DT-F21i a) kérdését (tárgyrag az igén) is érinti: a '
           'rag itt `forditatlan`, nem az igéhez kötött. Az osztály és az indok kézi ítélet (Opus), nem mérés.', '',
           '| vers | magyar szó | régi link (A) | új link (B) | konvenció | indok |', '|---|---|---|---|---|---|']
     n = 0
@@ -313,14 +313,14 @@ def md(v2, v3, sorok, osszesito, v3b=None, sorok_b=None, osszesito_b=None):
           'befagyasztott, sha256-fájlja nincs. A felhasználó jóváhagyásáig az arany v3 nem fagy be, és a '
           'mérés (F3V3, Sonnet) nem fut az arany v3-ra; a befagyasztás a jóváhagyás után az orkesztrátoré.', '',
           '> **Két változat, a felhasználó választ (F21.44).** **A:** a jelenlegi javaslat, 3 link '
-          '(`f21p/arany_opus_v3_javaslat.jsonl`, változatlan). **B:** A + a DT21 b) szó szerinti olvasatának '
+          '(`f21p/arany_opus_v3_javaslat.jsonl`, változatlan). **B:** A + a DT-F21j b) szó szerinti olvasatának '
           'további linkjei (`f21p/arany_opus_v3_javaslat_B.jsonl`, 5. szakasz; NEM alkalmazott, NEM '
           'befagyasztott). A jegyzet v2 és a prompt_v3 C szabálya az A olvasatot követi.', '',
           'A javaslat az arany v2 másolata; csak a jegyzet v2 (`f21p/arany_opus_jegyzetek_v2.md` 8. szakasz, a '
-          'DT21 a–e döntések) konvencióival ütköző linkek változnak, a többi sor bájtra azonos (a szkript '
+          'DT-F21j a–e döntések) konvencióival ütköző linkek változnak, a többi sor bájtra azonos (a szkript '
           'ellenőrzi). A szabály- és konvenció-azonosítás és az indok **kézi ítélet (Opus), nem mérés**.', '',
           '## 1. A változások (vers, magyar szó, régi link, új link)', '',
-          '| vers | magyar szó | régi link (v2) | új link (v3-javaslat) | szabály (DT21) | konvenció | indok |',
+          '| vers | magyar szó | régi link (v2) | új link (v3-javaslat) | szabály (DT-F21j) | konvenció | indok |',
           '|---|---|---|---|---|---|---|']
     n_link = 0
     for ig in [o for o in JAVITASOK]:

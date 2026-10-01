@@ -2,7 +2,7 @@
 
 > **v2 (2026.09.30, F21.41).** Az 1–7. szakasz a v1 jegyzet (`f21p/arany_opus_jegyzetek.md`,
 > érintetlen) szó szerinti szövege, a v1 címsora nélkül. Új a 8. szakasz: a felhasználó
-> DT21 a–e döntései (PD13) konvencióként; ahol a 8. szakasz és a 2. szakasz eltér, a 8.
+> DT-F21j a–e döntései (PD13) konvencióként; ahol a 8. szakasz és a 2. szakasz eltér, a 8.
 > szakasz az irányadó. A 6. táblázat nem bővül (PD10, PD12). Az arany v3-ra gyakorolt hatás
 > javaslat, jóváhagyásig nem fagy be: `naplok/F21P_arany_v3_diff.md`.
 >
@@ -199,16 +199,16 @@ A mérésből kizárt tokenek (`f21p/meres_kizaras.tsv`): Jak 3:4 #22, Jak 3:8 #
 „eltérő alak” tokenje (Mk 13:21, Mk 14:44, Luk 1:75, Luk 9:27, Ján 10:12, Zsid 8:5, Zsid 9:6)
 az aranyon kívül esik; a kizárásba nem vettem fel őket.
 
-## 8. v2 — a DT21 a–e döntések (2026.09.30)
+## 8. v2 — a DT-F21j a–e döntések (2026.09.30)
 
-*Forrás: a felhasználó DT21 a–e döntése (`DONTESEK.md` DT21, pilot-brief PD13). A
+*Forrás: a felhasználó DT-F21j a–e döntése (`DONTESEK.md` DT-F21j, pilot-brief PD13). A
 döntések szövege a felhasználóé; az alábbi konvencióvá fogalmazás, a határesetek és az
 arany v2-re gyakorolt hatás kézi ítélet (Opus), nem mérés. A konvenció-számozás a 2.
 szakaszé; a K11 új.*
 
 ### 8.1 A konvenciók v2-es megfogalmazása
 
-**K7 v2 — Segédige (DT21 a: a jegyzet az irányadó, a prompt kivétele szűkül).** A 2.
+**K7 v2 — Segédige (DT-F21j a: a jegyzet az irányadó, a prompt kivétele szűkül).** A 2.
 szakasz 7. pontja változatlan: a segédige (*vala, fog, fogunk, van, vannak, volna,
 lészen*), ha az eredetiben nincs külön ige (nincs הָיָה, εἰμί stb.), `betoldas`. A kivétel
 a 7. pontban megnevezett eset (Mt 4:4 *Meg van írva* ← γέγραπται: mindhárom token az egy
@@ -229,7 +229,7 @@ Ha az eredetiben van külön ige, és Károli azt segédigével vagy létigével
 (*ítéletünk lészen* ← λημψόμεθα, *van hatalma* ← ἔχει), a szó az igéhez kötődik: ez nem
 segédige-betoldás, a K7 nem érinti.
 
-**K3 v2 — Tárgyjelölő névmási raggal (DT21 b: a névmás csak *'et* + rag esetén megy az
+**K3 v2 — Tárgyjelölő névmási raggal (DT-F21j b: a névmás csak *'et* + rag esetén megy az
 eredetire, máshol `betoldas`).** A 2. szakasz 3. pontja változatlan (*'et* `forditatlan`,
 a magyar névmás csak a ragra). Pontosítás: a C szabály kizárólag az *'et* + névmási rag
 esetére szól; a magyar tárgyi névmás (*azt, ezt, őt, őket, téged, engem, azokat* stb.),
@@ -249,7 +249,7 @@ vagy mutató névmás `betoldas`, ha nincs *'et* az eredetiben, akkor is, ha a r
 áll), itt nem; a két szöveg egyébként az orkesztrátor összevetése szerint egyezik (ezt
 az összevetést nem ismételtem meg).
 
-**K4 v2 — Birtokos és névmási ragok (DT21 e: a rag arra a magyar szóra megy, amelyik a
+**K4 v2 — Birtokos és névmási ragok (DT-F21j e: a rag arra a magyar szóra megy, amelyik a
 megfelelő személyragot viseli).** A 2. szakasz 4. pontja pontosítva: a rag (H9020–H9040)
 arra a magyar szóra megy, amelyiknek a személyragja **ugyanarra a személyre utal**, mint az
 eredeti rag. Birtokláncban (két személyragos magyar szó egymás mellett) nem a közelebbi
@@ -260,21 +260,21 @@ névmás (*az ő ura*) a 2. szakasz 4. pontja szerint továbbra is kapja a ragot
 vagy szám Károli értelmező fordításában eltérhet (5. szakasz: *beszédedre*, *hozzájok*,
 *körülötted*): ilyenkor a raggal ugyanazt a birtokost jelölő magyar szó a megfelelő.
 
-**K11 (új) — Korrelatív mutató névmás a *hogy* előtt (DT21 c: „azt/azért … hogy”).** Az
+**K11 (új) — Korrelatív mutató névmás a *hogy* előtt (DT-F21j c: „azt/azért … hogy”).** Az
 *azt … hogy*, *azért … hogy* szerkezetben a mutató névmás (*azt, azért*) `betoldas`, ha
 nincs külön eredetije; a *hogy* a kötőszóra (כִּי, ἵνα, ὅτι, *ve-* stb.) megy. Ha a mutató
 névmásnak van eredetije (eredeti mutató névmás, pl. τοῦτο), arra kötődik (a K11 csak a
 megfelelő nélküli korrelátumra szól). Egységesen: a v1-ben a *tudván azt, hogy* (*azt*
 `betoldas`) és a *Mindez pedig azért lett, hogy* (*azért* → ἵνα) eltérően kezelt volt.
 
-**2Móz 26:13 *is* (DT21 d: marad).** A 6. táblázat 2Móz 26:13 sora (*is* (23, 25)
+**2Móz 26:13 *is* (DT-F21j d: marad).** A 6. táblázat 2Móz 26:13 sora (*is* (23, 25)
 `betoldas`) és az arany v2 minimális javítása (a וּ (26) `forditatlan`, l.
 `naplok/F21P_arany_v2_diff.md`) változatlan; a K9 v2-ben nem módosul, az arany ezen a
 ponton nem változik.
 
 ### 8.2 A v1-hez viszonyított változások
 
-| Pont | v1 (2. szakasz) | v2 (8.1) | DT21 |
+| Pont | v1 (2. szakasz) | v2 (8.1) | DT-F21j |
 |---|---|---|---|
 | K3 | *'et* + rag: a névmás csak a ragra | + a névmás *'et* + rag (és más eredeti névmási elem) nélkül `betoldas`, nem az igéhez | b |
 | K4 | a birtokos személyragot viselő magyar szóhoz | a raggal azonos személyre utaló személyragot viselő szóhoz (birtokláncban a megfelelő szó) | e |
@@ -295,29 +295,29 @@ döntését dokumentálja); a v3-javaslat a táblázat ott megnevezett alternat�
 
 ### 8.3 Nyitott kérdések (felhasználói döntésre, `javaslat` jelöléssel)
 
-1. **A DT21 b hatóköre.** A döntés szövege: „a névmás csak ott megy az igére, ahol *'et* +
+1. **A DT-F21j b hatóköre.** A döntés szövege: „a névmás csak ott megy az igére, ahol *'et* +
    rag áll”. Két olvasat: (a) a döntés a megfelelő nélküli (betoldott) tárgyi névmásra
    szól, az igén álló névmási rag (H9030–H9040) külön kitett magyar névmása a K4 szerint a
    raghoz kötődik (a 8.1 K3 v2 így fogalmaz, az arany v2 így párosít); (b) szó szerint:
    *'et* + rag nélkül minden tárgyi névmás `betoldas`, az igei rag `forditatlan`. A (b)
    az arany v2-ben hét magyar szó linkjét változtatná (2Móz 20:25 *azt* (19), 2Móz 21:6
    *őt* (3, 29), 2Móz 21:26 *azt* (16), 2Móz 26:13 *azt* (28), Zsolt 6:5 *engem* (9),
-   Zsolt 16:11 *engem* (3); az elöljárós Péld 28:17 *őt* ← בּוֹ esettel nyolcét), és a DT20 a) (tárgyrag az igén) kérdését is érintené. Javaslat: (a).
+   Zsolt 16:11 *engem* (3); az elöljárós Péld 28:17 *őt* ← בּוֹ esettel nyolcét), és a DT-F21i a) (tárgyrag az igén) kérdését is érintené. Javaslat: (a).
    **Állapot (F21.44):** a felhasználó értelmezése „a névmás a ragra kötődik” (*'et* + rag
    esetén); a C szabály szövege az (a) olvasat marad. Az igén álló, *'et* nélküli rag
    névmásának kérdése **nincs eldöntve**: a két változat az arany v3-ra a
    `naplok/F21P_arany_v3_diff.md`-ben (A: `f21p/arany_opus_v3_javaslat.jsonl`, 3 link;
    B: `f21p/arany_opus_v3_javaslat_B.jsonl`, A + 9 link 8 magyar szón, 5. szakasz); a
    felhasználó választ.
-2. **DT20 c) — igei személyrag (Ez 39:13 *megdicsőítem*).** A K4 v2 a személyrag
+2. **DT-F21i c) — igei személyrag (Ez 39:13 *megdicsőítem*).** A K4 v2 a személyrag
    „megfelelő” voltát a birtokosra/személyre köti; hogy az igei személyrag (a
-   *megdicsőítem* -em ragja) is megfelelő lehet-e a H9040 (*magamat*) mellett, a DT21 e
+   *megdicsőítem* -em ragja) is megfelelő lehet-e a H9040 (*magamat*) mellett, a DT-F21j e
    nem mondja ki. Az arany v2 (csak *magamat*) marad. Javaslat: marad, nyitott.
 3. **2Móz 25:40 *arra* → -ām (6. táblázat).** A K4 v2 szerint egyik magyar szó sem visel a
    -ām-nak megfelelő személyragot (*arra a formára*); a 6. táblázat sora az *arra*-t a
-   raghoz köti, alternatívája `betoldas`. A DT21 e birtokláncra szól, ezt az esetet nem
+   raghoz köti, alternatívája `betoldas`. A DT-F21j e birtokláncra szól, ezt az esetet nem
    nevezi meg; az arany nem változik. Javaslat: marad (a 6. táblázat szerint).
-4. **DT20 a) és b)** (tárgyrag az igén külön névmás nélkül; a *való*): a DT21 a–e nem
+4. **DT-F21i a) és b)** (tárgyrag az igén külön névmás nélkül; a *való*): a DT-F21j a–e nem
    érinti, nyitott marad.
 5. **A K7 kivételének általánosítása.** **Általánosítás, a jegyzet csak az Mt 4:4-et
    írja:** a kivétel típus-megfogalmazása (szenvedő vagy tökéletes igealak, egyetlen
