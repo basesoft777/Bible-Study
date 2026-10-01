@@ -221,9 +221,29 @@ ad (nem ennek a menetnek a sora).
   JELZÉS), 13. kapu (a könyv fejezetszámánál nagyobb fejezet → JELZÉS; a BDB ψ-hibája 5
   szócikkben). Szentlélek-lista: `naplok/EMELES_szentlelek_lista.tsv` (9 hely, csak lista).
 - **F28.26 `85c15ac`:** `lekerdez.py` — a „Sir” a JSir álneve olvasáskor (a rögzített
-  `tsk "Sir 2:8"` proveniencia újrafuttatva n=15, egyezik); a TAHOT saját „Sir” igehelyei
-  is így illeszkednek.
+  `tsk "Sir 2:8"` proveniencia újrafuttatva n=15, egyezik). *Helyesbítve az F28.32-ben:*
+  az álnév a közös `parse_igehely`-be került, nem csak a scope-olvasásba, ezért a TAHOT
+  „Sir” igehelyei csak a JSir-tartományra illeszkedtek, a `lxx-hid`, `gerinc "Sir 2"`,
+  `scan --szakasz "Sir 2"` és a JSir-alakú `tsk`/`karoli` pedig 0-t vagy hibát adott
+  (ELLENOR_F28 1. tétel). A tényleges viselkedés az F28.32 után: l. lent.
 - **F28.27 `258d385` (E6):** CI E19 + tesztek (54/54 zöld; a jelenlegi adaton 0 találat).
 - **F28.28 `0d66b8d` (E7):** MUNKAMENET C0 ⛔ sor; az `emeles.py lista` kész-feltétele:
   `kezi`/`opus` `teljes` sor a jelenlegi forrás-hash-sel (40/40 kész).
 - **Zárás:** DONTESEK DT25 ✅, DT26 nyitva; `naplok/F28_zaras.md`; brief: `lezarva`.
+
+## Javítások a független ellenőrzés után (ELLENOR_F28, F28.31–)
+
+- **F28.32 — `lekerdez.py` „Sir” (1. és 4. tétel, A1).** Az álnév kikerült a közös
+  `parse_igehely`-ből (a `REGI_ALNEV` törölve); az adatbeolvasás (`parse_igehely`,
+  `load_*`, `to_step`) az F28 előtti állapotú. A „Sir”/„JSir” kezelése csak a
+  parancssori scope-olvasásban van (`scope_adat_igehely`, `scope_range`,
+  `scope_to_step`): a magyar kulcsú táblák (TAHOT_kivonat, TSK, Karoli_1908,
+  LXX_kivonat_Siralmak) „Sir” alakjára fordít, a STEPBible-kulcsúakhoz
+  (Karoli_kereszthivatkozasok) a táblán át „Lam”-ra. **Tényleges viselkedés:** a kimenet és a
+  proveniencia scope-ja a parancssori alakot írja (`scope=range:Sir 2:8` vagy
+  `range:JSir 2:8`), a találatok igehelyei az adat alakjában („Sir 2:1 …”) állnak — a
+  lekérdezés tehát NEM írja ki a JSir alakot. Mért n-ek, mindkét alakra azonosak:
+  `lxx-hid` 24, `tsk` 15, `karoli` 1 (= auditok.tsv 169–171), `gerinc "Sir 2" "Ézs 34"`
+  38, `scan H1323 --szakasz "Sir 2"` 10 (= az F28 előtti `e39f145` kódjának értéke
+  ugyanerre a parancsra). Teszt: `eszkozok/teszt_lekerdez_sir.py` (11 eset, minden út
+  mindkét alakkal).

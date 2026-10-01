@@ -95,13 +95,48 @@ def book_tables():
 
 IGEHELY_STEP_RE = re.compile(r"^([1-3]?[A-Za-z]+)\.(\d+)\.(\d+)$")
 
-# F28 DT24 (a) / DT25 (d): a Jeremiás siralmai Károli-rövidítése JSir lett
-# (a Konyv_normalizalo_tabla.tsv-ben); a régi „Sir” alak olvasáskor álnév,
-# hogy a rögzített proveniencia (`scope=range:Sir 2:8`) újrafuttatható
-# maradjon, és a TAHOT_kivonat.tsv „Sir” igehelyei illeszkedjenek. A lekérdezés
-# kimenete a JSir alakot írja. (Az OSZ-adatokban a „Sir” csak a Siralmakat
-# jelölheti: a Sirák fia apokrif, nincs a TAHOT-ban.)
-REGI_ALNEV = {"Sir": "JSir"}
+# F28 DT25 (d) — a „Sir” / „JSir” kezelése CSAK a scope-olvasásban.
+# A Konyv_normalizalo_tabla.tsv-ben a Jeremiás siralmai Károli-rövidítése JSir
+# lett (DT24 a), a magyar kulcsú adattáblák (TAHOT_kivonat, TSK, Karoli_1908,
+# LXX_kivonat_Siralmak) viszont továbbra is a „Sir” alakot használják, a
+# STEPBible-kulcsúak (Karoli_kereszthivatkozasok) a „Lam”-ot. Az adatbeolvasás
+# (parse_igehely, load_*) NEM változik: a parancssori scope-ot fordítjuk az
+# adat alakjára. Így a rögzített proveniencia (`scope=range:Sir 2:8`,
+# adat/auditok.tsv 169–171) a rögzített n-nel újrafuttatható, és a JSir alak
+# ugyanezeken az utakon működik. A kimenet és a proveniencia scope-ja a
+# parancssori alakot mutatja; a találatok igehelyei az adat alakjában
+# („Sir”) állnak. (Az ÓSZ-adatokban a „Sir” csak a Siralmak lehet.)
+SCOPE_ADAT_KONYV = {"JSir": "Sir"}   # parancssori könyv -> a magyar kulcsú adattáblák alakja
+SCOPE_TABLA_KONYV = {"Sir": "JSir"}  # parancssori könyv -> a Konyv_normalizalo_tabla alakja
+
+
+def _scope_adat_konyv(book):
+    return SCOPE_ADAT_KONYV.get(book, book)
+
+
+def scope_adat_igehely(igehely):
+    """Parancssori igehely -> a magyar kulcsú adattáblák alakja ('JSir 2:8' -> 'Sir 2:8')."""
+    igehely = igehely.strip()
+    if " " in igehely:
+        book, rest = igehely.rsplit(" ", 1)
+        return f"{_scope_adat_konyv(book.strip())} {rest}"
+    return igehely
+
+
+def scope_range(spec):
+    """parse_range a parancssori tartományra, a könyv az adat alakjában."""
+    rng = parse_range(spec)
+    return (rng[0], _scope_adat_konyv(rng[1])) + tuple(rng[2:])
+
+
+def scope_to_step(igehely):
+    """Parancssori igehely -> STEPBible-kulcs; a „Sir” és a „JSir” egyaránt Lam."""
+    book, ch, v = parse_igehely(igehely)
+    _, hu2step = book_tables()
+    step = hu2step.get(SCOPE_TABLA_KONYV.get(book, book))
+    if step is None:
+        raise ValueError(f"ismeretlen magyar könyv-rövidítés: {book}")
+    return f"{step}.{ch}.{v}"
 
 
 def parse_igehely(s):
@@ -127,7 +162,7 @@ def parse_igehely(s):
         if book and ":" in rest:
             ch_str, v_str = rest.split(":", 1)
             if ch_str.isdigit() and v_str.isdigit():
-                return (REGI_ALNEV.get(book, book), int(ch_str), int(v_str))
+                return (book, int(ch_str), int(v_str))
     raise ValueError(f"nem elemezhető igehely: {s!r}")
 
 
@@ -301,7 +336,7 @@ def cmd_gerinc(args):
     if len(args.szakasz) < 2:
         print("Legalább két szakasz kell a metszethez.", file=sys.stderr)
         sys.exit(1)
-    ranges = [parse_range(s) for s in args.szakasz]
+    ranges = [scope_range(s) for s in args.szakasz]
     rows = combined_rows()
     per_range = []
     sources = set()
@@ -345,7 +380,7 @@ def cmd_scan(args):
         sys.exit(1)
 
     if args.szakasz:
-        rng = parse_range(args.szakasz)
+        rng = scope_range(args.szakasz)
         rows = [r for r in rows if in_range(rng, *r["_parsed"])]
         scope = f"range:{args.szakasz}"
 
@@ -425,7 +460,8 @@ def _lxx_filename(magyar_konyv):
 def cmd_lxx_hid(args):
     """6. lépés — LXX-híd: egy ÓSZ-igehely görög (LXX) megfelelője, és annak ÚSZ-előfordulásai."""
     igehely = args.igehely.strip()
-    book, ch, v = parse_igehely(igehely)
+    adat_igehely = scope_adat_igehely(igehely)
+    book, ch, v = parse_igehely(adat_igehely)
     fname = _lxx_filename(book)
     if fname is None:
         print(f"Nincs LXX-kivonat ehhez a könyvhöz: {book}", file=sys.stderr)
@@ -436,7 +472,7 @@ def cmd_lxx_hid(args):
         sys.exit(1)
 
     rows = read_tsv(path)
-    hits = [r for r in rows if r["Igehely"] == igehely]
+    hits = [r for r in rows if r["Igehely"] == adat_igehely]
     print(f"# LXX-híd {igehely} — {len(hits)} görög szó-előfordulás")
     for r in hits:
         print(f"{r['Strong-szám']}\t{r['Görög szóalak']}\t{r.get('Morfológiai kód', '')}")
@@ -459,7 +495,7 @@ def cmd_tsk(args):
     """A5 — TSK-kereszthivatkozások lekérdezése egy igehelyre."""
     igehely = args.igehely.strip()
     rows = load_tsk()
-    hits = [r for r in rows if r["Igehely"] == igehely]
+    hits = [r for r in rows if r["Igehely"] == scope_adat_igehely(igehely)]
     hits.sort(key=lambda r: -int(r["Votes"]))
 
     print(f"# TSK {igehely} — {len(hits)} kapcsolódó igehely")
@@ -474,7 +510,7 @@ def cmd_karoli(args):
     """A5 — Károli-szöveg + Károli-KH lekérdezés egy igehelyre (4.7 — karoli_szo hozzárendeléshez)."""
     igehely = args.igehely.strip()
     karoli = load_karoli_1908()
-    szoveg = karoli.get(igehely)
+    szoveg = karoli.get(scope_adat_igehely(igehely))
     if szoveg is None:
         print(f"Nincs Károli-szöveg ehhez: {igehely}", file=sys.stderr)
         sys.exit(1)
@@ -482,7 +518,7 @@ def cmd_karoli(args):
     print(szoveg)
 
     try:
-        step_key = to_step(igehely)
+        step_key = scope_to_step(igehely)
     except ValueError as e:
         step_key = None
 
