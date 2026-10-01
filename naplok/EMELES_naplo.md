@@ -295,3 +295,15 @@ minősíti, a kilépési kód 0). *Helyesbítés (ELLENOR_F28 8. tétel): koráb
   H0430 4); mind `opus` sor, `kezi` nem érintett; `forras_hash`, `allapot`,
   `terminologia_verzio` változatlan. Utána a 39 szócikk minden kapuja átmegy a v3-mal.
 - `ellenoriz.py` 14. szabály: 90/90 sor elmaradás a **v3**-hoz képest (JELENTÉS).
+
+## DT27 alkalmazása — `kapu` oszlop (F28.45)
+
+- Séma: `adat/SEMA.md` 2.15 `kapu` (igen/nem, hiányzó = igen); a verzió v3 marad.
+- Kapu: `forditas_kapuk.kapus_sor` — a kapu=nem sort a terminológia-kapu nem
+  követeli, a kulcsa a pontos kulcsolásban részt vesz; a prompt minden sort tartalmaz.
+  Teszt: `KapuOszlop` (5 eset).
+- Adat: 4 meglévő sor kapu=nem (id., ib., compare, מִן compare), 9 új v3 sor kapu=nem.
+  **#2 construct próbafutás** (kapu=igen, 39 szócikk): 1 hamis sértés — H7843
+  „construct הַשְׁחִית” → „constructus הַשְׁחִית” („status” nélkül) — ezért kapu=nem.
+- A 40 `teljes` sor kapu-eredménye: csak a G1941 v1-es „see → l.” sértése és a G0282
+  rögzített Heb.-kivétele marad (mint eddig).
