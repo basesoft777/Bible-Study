@@ -9,7 +9,7 @@ allapot: nem_indult
 ad: a tanulmányokat CI (E20–E24, a T0 szerint) és a fuggetlen-ellenor ügynök ellenőrzi; a régi tanulmányokról két auditjelentés készül
 kovetkezo: /kovetkezo; ⛔ a T0 után (nincs Strong-jelölt eredeti szöveg, vagy az SzPA kötelező szakasz a Tanulmány sablonban) és a T2 után (az alap tanulmányok sorsa)
 olvas: [sablonok/, genezis/, ujszovetseg/, tematikus_lezart/, konkordancia/, adat/, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, CLAUDE.md]
-ir: [sablonok/, CLAUDE.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/]
+ir: [sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, MUNKAMENET.md, adat/SEMA.md, ATALAKITASI_TERV.md.md, Join_tabla_folyamat_magyarazat.md, CLAUDE.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/]
 fugg: [30, 32]
 ---
 # TANULMANY_ELLENORZES_BRIEF.md
@@ -123,3 +123,4 @@ Az 1–6. pontot futtasd végig a meglévő tanulmányokon. Kimenet: `naplok/TAN
 | DT-F37-5 | A régi tanulmányok javítása külön feladat | a brief ne duzzadjon; a felhasználó dönt a javítás köréről | javítás az auditban |
 | DT-F37-6 | Az E20 a szakaszlistát a sablonból olvassa | sablonváltozáskor ne kelljen kódot módosítani | beégetett lista |
 | DT-F37-7 | Az alap tanulmányok sorsa a T2 ⛔-pontjában dől el | előbb látni kell, van-e bennük átvezetendő tartalom | előzetes archiválás vagy törlés |
+| DT-F37-8 | A T3 számozása E20-tól indul (a T0 szerint); a tervezett szabályokat előbb össze kell vetni a meglévő E1–E19-cel, és átfedésnél a meglévő szabály hatóköre bővül, új nem készül; az SzPA-ellenőrzés kikerül | az E17–E19 már foglalt a `szabalyok.py`-ban; az SzPA a projektből kivezetésre került | E17–E22 új szabályokkal, SzPA-idézet-hosszkorláttal |
