@@ -207,6 +207,48 @@ def _betolt():
     return _KAROLI, _TERM
 
 
+# A P4 4. es 5. ellenorzesenek F28-as valtozata. Ok (E4a kalibracio, H7121):
+#  - a BDB a gyakorisagot `_` jellel kozli (`קָרָא_724`, `Qal_655`), a P4 4.
+#    ellenorzese viszont MINDEN `_`-t Markdown-jelnek vesz -> itt csak a
+#    forrasbelinel TOBB jel serules;
+#  - a P4 5. ellenorzese reszlanc-egyezest keres, igy a `procl.` szoban
+#    megtalalja a `cl.` roviditest -> itt az angol alak elott nem allhat betu.
+
+def ellenoriz_formazas(forras, forditas):
+    hibak = []
+    for jel in '*_#':
+        if forditas.count(jel) > forras.count(jel):
+            hibak.append('Markdown-jel: %s (forras %d, forditas %d)'
+                         % (jel, forras.count(jel), forditas.count(jel)))
+    if forditas.count('(') > forras.count('('):
+        hibak.append('tobb nyito zarojel a forditasban (%d) mint a forrasban (%d) -- lehetseges betoldas'
+                     % (forditas.count('('), forras.count('(')))
+    if not hibak:
+        return 'RENDBEN', ''
+    return 'SERTES', '; '.join(hibak)
+
+
+def _angol_minta(angol):
+    vege = r'(?![A-Za-z])' if angol[-1:].isalpha() else ''
+    return re.compile(r'(?<![A-Za-z])' + re.escape(angol) + vege)
+
+
+def ellenoriz_terminologia(forras, forditas, terminologia, bizonytalan_lista):
+    serult = []
+    for t in terminologia:
+        angol = t['angol']
+        if not _angol_minta(angol).search(forras):
+            continue
+        if _p4._magyar_alak_mintaja(t['magyar']).search(forditas):
+            continue
+        if any(angol.rstrip('.') == b.rstrip('.') for b in bizonytalan_lista):
+            continue
+        serult.append('%s -> %s hianyzik' % (angol, t['magyar']))
+    if not serult:
+        return 'RENDBEN', ''
+    return 'SERTES', '; '.join(serult)
+
+
 def kapuk_futtat(szotar, forras, forditas, bizonytalan=()):
     """[(nev, eredmeny, reszlet), ...]"""
     karoli, term = _betolt()
@@ -214,8 +256,8 @@ def kapuk_futtat(szotar, forras, forditas, bizonytalan=()):
         ('1_gorog_heber',) + _p4.ellenoriz_1_gorog_heber(forras, forditas),
         ('2_versszam',) + _p4.ellenoriz_2_versszam(forras, forditas),
         ('3_karoli_roviditesek',) + _p4.ellenoriz_3_karoli_roviditesek(forditas, karoli),
-        ('4_formazas',) + _p4.ellenoriz_4_formazas(forras, forditas),
-        ('5_terminologia',) + _p4.ellenoriz_5_terminologia(forras, forditas, term, list(bizonytalan)),
+        ('4_formazas',) + ellenoriz_formazas(forras, forditas),
+        ('5_terminologia',) + ellenoriz_terminologia(forras, forditas, term, list(bizonytalan)),
         ('6_hosszarany',) + _p4.ellenoriz_6_hosszarany(forras, forditas),
         ('8_idezojel',) + ellenoriz_idezojel(forras, forditas),
         ('9_tagolas',) + ellenoriz_tagolas(forras, forditas),
