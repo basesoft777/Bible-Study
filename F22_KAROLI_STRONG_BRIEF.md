@@ -11,7 +11,7 @@ ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, biz
 kovetkezo: "2Mózes ugyanezzel a brieffel, a könyv paraméter cseréjével"
 fugg: [21]
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/futtat.py, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/regi_arany_hibas.tsv, naplok/F21P_jelentes.md]
-ir: [eszkozok/karoli_strong/sonnet_koteg.py, eszkozok/karoli_strong/egyesit.py, eszkozok/karoli_strong/zart_osszevet.py, .github/workflows/f22_parositas.yml, f22/futtatas.txt, f22/valaszok/sonnet/1Moz.jsonl, f22/valaszok/c/1Moz.jsonl, f22/futasnaplo.tsv, adat/karoli_strong/parok_1Moz.tsv, adat/karoli_strong/szavak_1Moz.tsv, adat/datasetek.tsv, adat/SEMA.md, naplok/F22_1Moz_jelentes.md, naplok/ELLENOR_F22_1Moz.md]
+ir: [eszkozok/karoli_strong/futtat.py, eszkozok/karoli_strong/sonnet_koteg.py, eszkozok/karoli_strong/egyesit.py, eszkozok/karoli_strong/zart_osszevet.py, .github/workflows/f22_parositas.yml, f22/futtatas.txt, f22/valaszok/sonnet/1Moz.jsonl, f22/valaszok/c/1Moz.jsonl, f22/futasnaplo.tsv, adat/karoli_strong/parok_1Moz.tsv, adat/karoli_strong/szavak_1Moz.tsv, adat/datasetek.tsv, adat/SEMA.md, naplok/F22_1Moz_jelentes.md, naplok/ELLENOR_F22_1Moz.md]
 ---
 
 # F22_KAROLI_STRONG_BRIEF.md — Károli–Strong párosítás könyvenként (Sonnet + Gemini)
