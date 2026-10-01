@@ -1,0 +1,224 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""bdb_psi_javit.py — F34 M2/M3: a BDB forras `psi` (Zsoltarok) hibas feloldasanak javitasa.
+
+A nyers DictBDB.json nincs a repoban (a _convert_bdb.py a Temp-bol olvasna), tehat a
+parser-javitas nem lehetseges: mezokulcsos csere a kesz TSV-n (DT-F34 1-4. pont).
+
+Dontes soronkent (kulcs: szocikk-id + regi + uj):
+  - A (fejezet>66 vagy Psalm-szo): javul, ha a szocikk Strong-szama a TAHOT szerint
+    elofordul a Zsolt c:v-ben (+-1 vers); egyebkent marad (B).
+  - B/R: javul, ha Zsolt c:v (+-1) talalat van, ES a TAHOT szerint SEMMILYEN mas
+    konyv c:v (+-1) helyen nincs (egyertelmu); egyebkent marad (kezi nezet).
+Lista: naplok/F34_M0_lista.tsv. Kimenet: naplok/F34_M2_csere.tsv, F34_M2_maradek.tsv.
+
+Futtatas a repo gyokerebol:
+    python eszkozok/bdb_psi_javit.py          # szarazon
+    python eszkozok/bdb_psi_javit.py --ir     # forras + adat/forditasok.tsv iras
+I/O: split('\\t') / '\\t'.join (csv modul nelkul); iras elott sor-osszevetes.
+"""
+import hashlib
+import re
+import sys
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
+
+FORRAS = 'konkordancia/BDB_teljes_unabridged.tsv'
+LISTA = 'naplok/F34_M0_lista.tsv'
+TAHOT = 'konkordancia/TAHOT_kivonat.tsv'
+FORD = 'adat/forditasok.tsv'
+
+HU = {'Gen': '1Móz', 'Exod': '2Móz', 'Lev': '3Móz', 'Num': '4Móz', 'Deut': '5Móz', 'Josh': 'Józs',
+      'Judg': 'Bír', 'Ruth': 'Ruth', '1Sam': '1Sám', '2Sam': '2Sám', '1Kin': '1Kir', '2Kin': '2Kir',
+      '1Chr': '1Krón', '2Chr': '2Krón', 'Ezra': 'Ezsd', 'Neh': 'Neh', 'Esth': 'Eszt', 'Job': 'Jób',
+      'Psa': 'Zsolt', 'Prov': 'Péld', 'Eccl': 'Préd', 'Song': 'Én', 'Isa': 'Ézs', 'Jer': 'Jer',
+      'Lam': 'Sir', 'Ezek': 'Ez', 'Dan': 'Dán', 'Hos': 'Hós', 'Joel': 'Jóel', 'Amos': 'Ámós',
+      'Obad': 'Abd', 'Jonah': 'Jón', 'Mic': 'Mik', 'Nah': 'Náh', 'Hab': 'Hab', 'Zeph': 'Sof',
+      'Hag': 'Hag', 'Zech': 'Zak', 'Mal': 'Mal', '1Ki': '1Kir', '2Ki': '2Kir'}
+# a fordito a Lam-ot JSir-nek irja; a TAHOT 'Sir'
+HU_FORD = dict(HU)
+HU_FORD['Lam'] = 'JSir'
+
+
+def tahot_idx():
+    idx = {}
+    for l in open(TAHOT, encoding='utf-8').read().split('\n')[1:]:
+        p = l.split('\t')
+        if len(p) < 2:
+            continue
+        m = re.match(r'(.+) (\d+):(\d+)$', p[0])
+        if not m:
+            continue
+        idx.setdefault(p[1], set()).add((m.group(1), int(m.group(2)), int(m.group(3))))
+    return idx
+
+
+def talal(idx, strong, konyv, c, v):
+    s = idx.get(strong[:5], set())
+    return [x for x in ((konyv, c, v - 1), (konyv, c, v), (konyv, c, v + 1)) if x in s]
+
+
+def masutt(idx, strong, c, v):
+    """masik konyvben (nem Zsolt) c:v +-1 helyen elofordul-e"""
+    s = idx.get(strong[:5], set())
+    return sorted({k for (k, cc, vv) in s if k != 'Zsolt' and cc == c and abs(vv - v) <= 1})
+
+
+def main():
+    ir = '--ir' in sys.argv
+    idx = tahot_idx()
+    lista = [l.split('\t') for l in open(LISTA, encoding='utf-8').read().split('\n')[1:] if l]
+    kulcsok = {}   # (strong, regi, uj) -> [osztalyok], darab
+    for r in lista:
+        if r[5] == 'KIZART':
+            continue
+        if r[4].startswith('('):
+            uj = 'Psa ' + r[4][5:].rstrip('?)')
+        else:
+            uj = r[4]
+        k = (r[1], r[3], uj)
+        kulcsok.setdefault(k, []).append(r[5])
+
+    dont = []  # kulcs, osztaly, dontes, ok
+    for (st, regi, uj), osz in sorted(kulcsok.items()):
+        m = re.match(r'Psa (\d+):(\d+)$', uj)
+        c, v = int(m.group(1)), int(m.group(2))
+        zs = talal(idx, st, 'Zsolt', c, v)
+        o = 'A' if 'A' in osz else ('B' if 'B' in osz else 'R')
+        if v > 176:
+            d, ok = 'MARAD', 'szokatlan versszam (osszeolvadt alak)'
+        elif o == 'A':
+            d, ok = ('JAVIT', 'TAHOT Zsolt %d:%s' % (c, ','.join(str(x[2]) for x in zs))) if zs else ('MARAD', 'TAHOT: nincs Zsolt %d:%d+-1 talalat' % (c, v))
+        else:
+            if not zs:
+                d, ok = 'MARAD', 'TAHOT: nincs Zsolt %d:%d+-1 talalat' % (c, v)
+            else:
+                mas = masutt(idx, st, c, v)
+                bk = re.match(r'(\S+) ', regi).group(1)
+                if mas:
+                    d, ok = 'MARAD', 'Zsolt-talalat van, de mas konyvben is: ' + ','.join(mas)
+                else:
+                    d, ok = 'JAVIT', 'TAHOT Zsolt %d:%s, mas konyvben nincs' % (c, ','.join(str(x[2]) for x in zs))
+        dont.append((st, regi, uj, o, len(osz), d, ok))
+
+    with open('naplok/F34_M2_csere.tsv', 'w', encoding='utf-8', newline='') as f:
+        f.write('\t'.join(['szocikk_id', 'regi', 'uj', 'osztaly_M0', 'elofordulas_a_listan', 'dontes', 'ok']) + '\n')
+        for d in dont:
+            f.write('\t'.join(str(x) for x in d) + '\n')
+    with open('naplok/F34_M2_maradek.tsv', 'w', encoding='utf-8', newline='') as f:
+        f.write('\t'.join(['szocikk_id', 'regi', 'javasolt_uj', 'osztaly_M0', 'elofordulas_a_listan', 'dontes', 'ok']) + '\n')
+        for d in dont:
+            if d[5] == 'MARAD':
+                f.write('\t'.join(str(x) for x in d) + '\n')
+    javit = [d for d in dont if d[5] == 'JAVIT']
+    from collections import Counter
+    print('kulcs:', len(dont), 'JAVIT:', len(javit), 'MARAD:', len(dont) - len(javit))
+    print('JAVIT osztaly:', Counter(d[3] for d in javit), 'MARAD osztaly:', Counter(d[3] for d in dont if d[5] == 'MARAD'))
+    print('javitott helyek (elofordulas):', sum(d[4] for d in javit))
+
+    # --- forras csere ---
+    nyers = open(FORRAS, encoding='utf-8', newline='').read()
+    sorok = nyers.split('\n')
+    eredeti = list(sorok)
+    ujak = {}
+    csere_db = 0
+    for st, regi, uj, o, n, d, ok in javit:
+        talalt = False
+        for i, l in enumerate(sorok):
+            if not l.startswith(st + '\t'):
+                continue
+            p = l.split('\t')
+            if p[0] != st:
+                continue
+            pat = re.compile(r'(?<![A-Za-z0-9])' + re.escape(regi) + r'(?!\d)')
+            db = len(pat.findall(p[2]))
+            if db != n:
+                print('ELTERES: %s %s: %d elofordulas a szovegben, %d a listan' % (st, regi, db, n))
+                sys.exit(2)
+            p[2] = pat.sub(uj, p[2])
+            sorok[i] = '\t'.join(p)
+            talalt = True
+            csere_db += db
+        if not talalt:
+            print('NINCS SZOCIKK', st)
+            sys.exit(2)
+    print('forras csere:', csere_db)
+
+    # kapu: csak helyhivatkozas valtozhat
+    ref = re.compile(r'(?<![A-Za-z0-9])(?:%s|Psa) \d+:\d+' % '|'.join(sorted(HU, key=len, reverse=True)))
+    valt_sor = []
+    assert len(sorok) == len(eredeti)
+    for i, (a, b) in enumerate(zip(eredeti, sorok)):
+        if a != b:
+            if ref.sub('<R>', a) != ref.sub('<R>', b):
+                print('KAPU BUKIK (nem csak helyhivatkozas valtozott):', i + 1)
+                sys.exit(3)
+            valt_sor.append(i + 1)
+    print('valtozott forras-sor:', len(valt_sor))
+
+    # --- forditasok.tsv ---
+    fnyers = open(FORD, encoding='utf-8', newline='').read()
+    fs = fnyers.split('\n')
+    feje = fs[1].split('\t')
+    ix = {k: i for i, k in enumerate(feje)}
+    ujforras = {l.split('\t')[0]: l.split('\t')[2] for l in sorok[1:] if l}
+    regiforras = {l.split('\t')[0]: l.split('\t')[2] for l in eredeti[1:] if l}
+    ford_valt = []
+    ford_hash = []
+    ford_eredeti = list(fs)
+    for n, l in enumerate(fs, 1):
+        if n <= 2 or not l:
+            continue
+        p = l.split('\t')
+        if p[ix['szotar']] != 'BDB' or p[ix['jelentes_szam']] != 'teljes':
+            continue
+        st = p[ix['strong']]
+        if st not in ujforras or ujforras[st] == regiforras[st]:
+            continue
+        # a hash a forrasszovegbol
+        if hashlib.sha1(regiforras[st].encode('utf-8')).hexdigest() != p[ix['forras_hash']]:
+            print('A TAROLT HASH MAR ELTER a regi forrastol:', n, st)
+            sys.exit(4)
+        hu = p[ix['forditas_hu']]
+        hu2 = hu
+        for (s2, regi, uj, o, nn, d, ok) in javit:
+            if s2 != st:
+                continue
+            bk, rest = regi.split(' ', 1)
+            hk = HU_FORD[bk]
+            pat = re.compile(r'(?<![\wÀ-ɏ])' + re.escape(hk + ' ' + rest) + r'(?!\d)')
+            db = len(pat.findall(hu2))
+            if db:
+                hu2 = pat.sub('Zsolt ' + rest, hu2)
+                ford_valt.append((n, st, hk + ' ' + rest, 'Zsolt ' + rest, db))
+            else:
+                ford_valt.append((n, st, hk + ' ' + rest, '(nincs a forditasban)', 0))
+        # bajtazonossag kapu: csak helyhivatkozas valtozhat
+        refh = re.compile(r'(?<![\wÀ-ɏ])(?:%s) \d+:\d+' % '|'.join(sorted(set(HU_FORD.values()) | {'Zsolt'}, key=len, reverse=True)))
+        if refh.sub('<R>', hu) != refh.sub('<R>', hu2):
+            print('FORDITAS KAPU BUKIK', n)
+            sys.exit(5)
+        p[ix['forditas_hu']] = hu2
+        p[ix['forras_hash']] = hashlib.sha1(ujforras[st].encode('utf-8')).hexdigest()
+        fs[n - 1] = '\t'.join(p)
+        ford_hash.append((n, st, p[ix['allapot']]))
+    print('forditasok soraban csere:', [x for x in ford_valt if x[4]])
+    print('forditasok: nem talalt token:', [x for x in ford_valt if not x[4]])
+    print('forditasok hash-frissitett sorok (fajlsor, strong, allapot):', ford_hash)
+
+    with open('naplok/F34_M3_forditasok_csere.tsv', 'w', encoding='utf-8', newline='') as f:
+        f.write('\t'.join(['fajlsor', 'strong', 'regi_token', 'uj_token', 'db']) + '\n')
+        for x in ford_valt:
+            f.write('\t'.join(str(y) for y in x) + '\n')
+
+    if ir:
+        open(FORRAS, 'w', encoding='utf-8', newline='').write('\n'.join(sorok))
+        open(FORD, 'w', encoding='utf-8', newline='').write('\n'.join(fs))
+        print('IRVA')
+        print('forras sha256:', hashlib.sha256(open(FORRAS, 'rb').read()).hexdigest())
+
+
+main()

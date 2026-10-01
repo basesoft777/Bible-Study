@@ -13,7 +13,7 @@
 - **Licenc:** közkincs (public domain) — az eredeti BDB szövege és annak digitalizált
   átirata is közkincs
 - **SHA-256** (`konkordancia/BDB_teljes_unabridged.tsv`, K7, F05b):
-  `1d28a84004817b8ee09eff92d762038ae2eac7351f24abd0a8b1cc5df380dfa5`
+  `e9ee0b724dcb86f40370734b142d17863fe204c764966911f72b042e0ddf666d (F34 javított verzió; az eredeti, K7: 1d28a84004817b8ee09eff92d762038ae2eac7351f24abd0a8b1cc5df380dfa5)`
 
 ## Konverzió
 
@@ -124,3 +124,7 @@ A 26 token a D28 hatókör-szabálya szerinti motívum-Strong-készlet (l.
 a régi 24-tokenes hatókörön) csak a `gepi`/nem-`gepi` elkülönítést mérte
 (talál-e határt a regex, igen/nem), a tényleges `nyelvi_hatter` szöveget
 és a `H8414`/`H0922` besorolását ez a tétel (S1.4) adja először.
+
+## Javítás (F34, 2026.10.01): „ψ” (Zsoltárok) hibás feloldása
+
+A forrás a „ψ” jelet több száz helyen az előző könyvnévre oldotta fel (pl. `Isa 106:9`, `Job 97:7`). Javított dataset-verzió: 144 helyhivatkozás (48 szócikk) `Psa`-ra cserélve, TAHOT-igazolással, mezőkulcsos táblával; csak helyhivatkozás változott. Nyers JSON nincs a repóban, ezért a TSV közvetlen javítása történt. Proveniencia és a maradék (178 hely, kézi nézet): `naplok/F34_M2_naplo.md`, `naplok/F34_M2_csere.tsv`, `naplok/F34_M2_maradek.tsv`; eszköz: `eszkozok/bdb_psi_javit.py`.
