@@ -1,5 +1,5 @@
-# F22 2Moz: a C-futas indul az elso 14 koteggel (probaszakasz)
+# F22 2Moz: a C-futas a konyv tobbi kotegere (a keszeket kihagyja)
 konyv=2Móz
-koteg_max=14
+koteg_max=mind
 koteg_meret=10
 plafon_usd=3.90
