@@ -123,3 +123,34 @@ a brief `ir` listáján kívüli fájl módosítását kívánja — kérdés a 
 **E8 (keretmérés):** cloudban fut, kimarad.
 
 **⛔ Megállás:** DT24 (`DONTESEK.md`).
+
+## DT24 alkalmazása (F28.9–F28.12)
+
+A felhasználó döntése: (a) jóváhagyva egy javítással (Lam → JSir), (b) igen, külön
+commitban, negatív teszttel, (c) 39 szócikk.
+
+- **F28.9 (`12a3022`):** `Konyv_normalizalo_tabla.tsv` 26. sor `Lam → JSir`; a
+  `normalizal.py` a táblából olvas (új teszt: 20/20). A javítóréteg a már kész
+  fordításokban a „Sir”-t nem cseréli (a Sir a Sirák fia apokrif alakja is, a csere
+  nem determinisztikus), ezért **új 11. kapu** (könyv-egyezés): a forrás igehelyeinek
+  könyvei leképezve egyezzenek a fordításéival. A H7121-ben 4, a H1121-ben 2 „Sir”
+  akadt fenn, az önújrapróba JSir-re javította; mind az 5 újra átment. Nulla-diff
+  (`eszkozok/nulladiff.sh 9f48e98`): a generált `lexikon/` azonos.
+  **Mellékhatás, nem javítva (záró tételbe):** a régi „Sir” alakú Siralmak-hivatkozás
+  maradt az `adat/jeloltek.tsv` 329. sorában (`TEREMT-002 Sir 2:8`), az
+  `adat/auditok.tsv` 169–171. sorának `scope=range:Sir 2:8` proveniencia-értékében és
+  a `genezis/1Moz_10v1-11v32_bovitett.md`-ben („Sir 3:52,4:18”) — ezek más feladatok
+  adatai, illetve rögzített lekérdezés-proveniencia; a táblaváltás után a
+  `lekerdez.py` a „Sir” alakot nem ismeri fel.
+- **F28.10 (`f540c0e`, ELLENŐRZŐ-MÓDOSÍTÁS):** `ellenoriz.py` 13. szabály: a Thayer/BDB
+  `teljes` sor forrása a konkordancia teljes szócikke, ha nincs
+  `lexikon_hivatkozasok`-sor; SEMA 2.14 `allapot` + `opus`. Teszt:
+  `eszkozok/teszt_ellenoriz_13.py`, 7 eset, 4 negatív, zöld. A CI E16 miatt a PR címe
+  „[ELLENŐRZŐ]” előtagot kíván.
+- **F28.11 (`97f8c4b`):** `emeles.py beir` → az 5 sor `kezi`-ként az
+  `adat/forditasok.tsv`-ben; a H7121 2.c és 3. sora az új fordítás szakaszát kapta (a
+  forrásszakaszon is átment a kapukon). `ellenoriz.py`: SÉRTÉS 0. Nulla-diff
+  (`f540c0e` → HEAD): a generált lexikonban a G5590 (ANTROP-001) és a G1944 (HAMART-001)
+  „Fordítás függőben” helyén megjelenik a fordítás, a H7121 2.c és 3. (ISTENTISZT-001)
+  az új szöveget mutatja — a várt hatás. Az éles `lexikon/` újragenerálása nem ennek a
+  feladatnak a dolga (záró tétel).
