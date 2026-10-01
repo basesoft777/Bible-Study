@@ -13,7 +13,7 @@
 #     futasok=SONNETV3 | F3V3 | F3V3,SONNETV3 | F8V3   (mas futas ebbol a workflowbol nem indulhat; az F8V3 (F21.62, KJV a teljes tablabol) csak onmagaban)
 #     koteg_max=1|mind      (1: kalibralo trigger, 10 vers; mind: a 200 vers)
 #     plafon_usd=<szam>     (KOTELEZO ebben a workflowban; a futtato onmagaban opcionalisnak veszi es
-#                            4.0-t venne, ez itt hiba), 0 < x <= 4.0 (F21.47: a korabbi 3.0 helyett; felhasznaloi kuszob 3.90), kumulativ (futasnaplo.tsv osszeg)
+#                            5.0-t venne, ez itt hiba), 0 < x <= 5.0 (F21.75: a korabbi 4.0 helyett; felhasznaloi kuszob 4.90), kumulativ (futasnaplo.tsv osszeg)
 # szerepel. A futtato a plafont minden hivas elott a naplo mert osszegehez viszonyitja (kilepesi kod 3 a
 # plafonnal; ujrainditas: uj trigger). Indulaskor sha256-ellenorzes (prompt_v1, v2, biro_v2, v3, arany v2).
 #
@@ -78,7 +78,7 @@ jobs:
           grep -q -E '^koteg_max=([1-9][0-9]*|mind)[[:space:]]*$' "$f" || { echo "koteg_max=<pozitiv egesz|mind> kell"; exit 1; }
           grep -q -E '^plafon_usd=[0-9]+(\.[0-9]+)?[[:space:]]*$' "$f" || { echo "plafon_usd=<szam> kotelezo ebben a workflowban"; exit 1; }
           p=$(grep -E '^plafon_usd=' "$f" | cut -d= -f2 | tr -d '[:space:]')
-          python -c "import sys; p=float(sys.argv[1]); sys.exit(0 if 0 < p <= 4.0 else 1)" "$p" || { echo "a plafon_usd 0 es 4.0 kozott kell legyen"; exit 1; }
+          python -c "import sys; p=float(sys.argv[1]); sys.exit(0 if 0 < p <= 5.0 else 1)" "$p" || { echo "a plafon_usd 0 es 5.0 kozott kell legyen"; exit 1; }
           echo "koltsegvetesi kapu rendben: plafon_usd=$p (kumulativ)"
 
       - name: Onteszt (halozat es kulcs nelkul)

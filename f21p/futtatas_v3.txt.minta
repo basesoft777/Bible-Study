@@ -2,26 +2,24 @@
 # Az inditast az orkesztrator vegzi: a fajl atnevezese f21p/futtatas_v3.txt-re (vagy uj fajl ugyanezzel a
 # tartalommal), commit es push a claude/f21-regresszio-meres agra. A harom kulcs kotelezo (a koltsegvetesi kapu
 # ellenorzi).
-# Felhasznaloi dontes (F21.47, DT28, PD15): plafon_usd=3.90 (kumulativ napla-osszeg, megallasi kuszob), kemeny plafon 4.0 USD,
-# modell anthropic/claude-sonnet-5.5; a gondolkodas MINIMALIS szinten fut (F21.70): az endpoint a gondolkodas kikapcsolasat
-# 400-zal elutasitotta; lanc: reasoning.max_tokens=1024 -> (400 eseten) reasoning.effort=low; a temperature kimarad
-# (a Sonnet-futas nem determinisztikus). A koltseg a gondolkodasi tokent is tartalmazza (hivasonkent legfeljebb 1024).
+# Felhasznaloi dontes (F21.75, 2026.10.01; korabban F21.47: 3.90/4.0): plafon_usd=4.90 (kumulativ napla-osszeg, megallasi
+# kuszob), kemeny plafon 5.0 USD, modell anthropic/claude-sonnet-5.5; a gondolkodas MINIMALIS szinten fut (F21.70): az
+# endpoint a gondolkodas kikapcsolasat 400-zal elutasitotta; lanc: reasoning.max_tokens=1024 -> (400 eseten)
+# reasoning.effort=low; a temperature kimarad (a Sonnet-futas nem determinisztikus). A koltseg a gondolkodasi tokent is
+# tartalmazza. MEGJEGYZES: a mert gondolkodasi token (5109/hivas) meghaladja az 1024-es keretet (a modell a keretet nem
+# tartja be); a mert koteg-koltseg 0.087068 USD (kalibralo koteg), a futas koltsege ebbol vetitve.
 #
-# ALLAPOT (F21.70): az F3V3 (C) KESZ; az F8V3 (C, teljes KJV-tabla) KESZ; a napla osszege 2.127677 USD. A kovetkezo, AKTIV
-# lepesek a Sonnet-lepesek (1. kalibralo, 2. teljes); egyszerre EGY blokk kerul a futtatas_v3.txt-be.
+# ALLAPOT (F21.75): az F3V3 (C) KESZ; az F8V3 (C, teljes KJV-tabla) KESZ; a SONNETV3 kalibralo koteg (1 koteg) KESZ; a napla
+# osszege 2.214745 USD. A kovetkezo, AKTIV lepes a teljes SONNETV3 (a 19 hatralevo koteg).
 #
 # KESZ (a futtatas_v3.txt-be NEM kerul):
-# F3V3 (KESZ): futasok=F3V3, koteg_max=mind, plafon_usd=3.90
-# F8V3 (KESZ): futasok=F8V3, koteg_max=mind, plafon_usd=3.90
+# F3V3 (KESZ): futasok=F3V3, koteg_max=mind, plafon_usd=4.90
+# F8V3 (KESZ): futasok=F8V3, koteg_max=mind, plafon_usd=4.90
+# 1. lepes (KESZ): kalibralo trigger, 1 koteg a SONNETV3-bol (futasok=SONNETV3, koteg_max=1, plafon_usd=4.90); az
+#    ellenorzes (python eszkozok/karoli_strong/kalibralas_ellenoriz.py) kodja 0 (mehet tovabb; kod 4 = megallni: a lanc minden
+#    lepese elutasitott, vagy a mert koteg-koltsegbol vetitett kumulativ osszeg > 4.90; kod 2 = adathiba).
 #
-# 1. lepes (AKTIV): kalibralo trigger, egy koteg (10 vers) a SONNETV3-bol, minimalis gondolkodassal. Utana a futtato
-#    ellenorzi: python eszkozok/karoli_strong/kalibralas_ellenoriz.py  (kilepesi kod 0 = mehet tovabb, 4 = megallni,
-#    2 = adathiba; a lanc 1. lepesenek elutasitasa + a 2. sikere NEM megallasi ok, "lanc: tovabb"). A kod 4: a lanc
-#    minden lepese elutasitott, vagy a mert koteg-koltsegbol vetitett kumulativ osszeg > 3.90.
+# 2. lepes (AKTIV): a teljes SONNETV3, 200 vers; a kesz koteg nem hiv ujra (a 19 hatralevo koteg):
 futasok=SONNETV3
-koteg_max=1
-plafon_usd=3.90
-# 2. lepes (csak ha az ellenorzes 0-t ad; kulon trigger): a teljes SONNETV3, 200 vers; a kesz koteg nem hiv ujra:
-#   futasok=SONNETV3
-#   koteg_max=mind
-#   plafon_usd=3.90
+koteg_max=mind
+plafon_usd=4.90

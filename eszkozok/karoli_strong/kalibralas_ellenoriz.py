@@ -14,8 +14,12 @@ f21p/valaszok/SONNETV3.hibak.jsonl-ből deterministikusan megmondja:
       lánc egy elutasított, de a következő lépéssel folytatott lépése: NEM megállási ok, csak
       naplózott "lánc: tovább" jelzés (a kilépési kód ilyenkor is lehet 0). A hibaüzenet kulcsszavai
       (reasoning, temperature) megnevezik, melyik paraméter. A mért gondolkodási tokent (napló
-      gondolkodas_token, jsonl hivasok[].usage) külön kiírja; nem figyelmeztet (a gondolkodás be van
-      kapcsolva, a költség tartalmazza).
+      gondolkodas_token, jsonl hivasok[].usage) külön kiírja; ha a hívásonkénti mért gondolkodási token
+      meghaladja a konfigurált max_tokens keretet (gondolkodas_mod: reasoning_max_tokens=N), FIGYELMEZTETÉST
+      ad (F21.75: pl. 5109 > 1024; a modell a keretet nem tartja be) — NEM megállási ok.
+      F21.75: az elutasítás-ág (hibak.jsonl) csak a legutóbbi SIKERES köteg (a SONNETV3 legutóbbi naplósora)
+      UTÁNI hívási hibákat számítja; a korábbi hibasorok (ts < a legutóbbi sikeres köteg ts-e: egy előző,
+      kikapcsolt-gondolkodású kísérlet 400-asa) "korábbi, a sikeres köteg előtti: nem számít" jelzést kapnak.
   (b) a mért köteg-költség és a vetített kumulatív összeg:
         vetített = napló összege (az F3V3 kész + a kalibráló köteg; minden futás) +
                    hátralévő köteg × átlagos mért köteg-költség × újrakérési szorzó,
@@ -27,11 +31,11 @@ f21p/valaszok/SONNETV3.hibak.jsonl-ből deterministikusan megmondja:
       bemeneti és kimeneti tokenjéből (max token × ár; futtat.ARAK), és az ebből vetített összeg.
 
 Kilépési kód: 0 = mehet tovább; 4 = megállni (a lánc minden lépését elutasította, vagy a
-vetített kumulatív összeg > küszöb [3.90]); 2 = adathiba (hiányzó/üres bemenet, nincs mért
+vetített kumulatív összeg > küszöb [4.90]); 2 = adathiba (hiányzó/üres bemenet, nincs mért
 köteg és nincs elutasítás-bizonyíték). A kimenet olvasható, a végén a DÖNTÉS sorral; a fejléc
 proveniencia-sor (scope | forras | ts).
 
-    python eszkozok/karoli_strong/kalibralas_ellenoriz.py [--forras-dir <könyvtár>] [--kuszob 3.90] [--onteszt]
+    python eszkozok/karoli_strong/kalibralas_ellenoriz.py [--forras-dir <könyvtár>] [--kuszob 4.90] [--onteszt]
 """
 
 import argparse
@@ -52,8 +56,8 @@ import futtat  # noqa: E402
 import tokenek  # noqa: E402
 
 FUTAS = 'SONNETV3'
-KUSZOB = futtat.P3C_FELHASZNALOI_PLAFON       # 3.90 (plafon_usd)
-KEMENY = futtat.PLAFON_USD                    # 4.0
+KUSZOB = futtat.P3C_FELHASZNALOI_PLAFON       # 4.90 (plafon_usd)
+KEMENY = futtat.PLAFON_USD                    # 5.0
 KONZERVATIV_M = 1.3
 KOD_RENDBEN, KOD_ADATHIBA, KOD_MEGALLNI = 0, 2, 4
 PARAMETER = re.compile(r'reasoning|temperature', re.IGNORECASE)
@@ -101,9 +105,14 @@ def ellenoriz(forras_dir=None, kuszob=KUSZOB, futas=FUTAS, minta=None):
         futas, len(sorok_j), len(nr), len(hibak), osszes_koteg))
 
     # --- (a) elutasította-e a kérést (a gondolkodási lánc minden lépése) ------------------------------
-    elutasitas, lanc = [], []
+    elutasitas, lanc, korabbi = [], [], []
+    utolso_sikeres_ts = max((r['ts'] for r in nr), default=None)   # F21.75: a legutóbbi sikeres köteg (naplósor) ts-e
     for h in hibak:
         kod_ = h.get('http_hibakod')
+        if utolso_sikeres_ts and str(h.get('ts', '')) < utolso_sikeres_ts:
+            korabbi.append('HTTP %s a(z) %s. kötegnél (ts %s) — korábbi, a sikeres köteg előtti (%s): nem számít' % (
+                kod_, h.get('koteg'), h.get('ts'), utolso_sikeres_ts))
+            continue
         if h.get('lanc_tovabb'):
             lanc.append('%s. kötegnél a(z) %s lépés elutasítva (HTTP %s), lánc: tovább' % (
                 h.get('koteg'), h.get('gondolkodas_mod', '?'), kod_))
@@ -119,6 +128,9 @@ def ellenoriz(forras_dir=None, kuszob=KUSZOB, futas=FUTAS, minta=None):
                 elutasitas.append('hibatest a 200-as válaszban (köteg %s, %s. próba)%s: %s' % (
                     sor.get('koteg'), hv.get('probalkozas'), ' (említi: %s)' % ', '.join(par) if par else '', hv['hiba'][:200]))
     ki['lanc'] = lanc
+    ki['korabbi_hibak'] = korabbi
+    for x in korabbi:
+        s.append('(a) ' + x)
     for x in lanc:
         s.append('(a) ' + x)
     if elutasitas:
@@ -141,7 +153,21 @@ def ellenoriz(forras_dir=None, kuszob=KUSZOB, futas=FUTAS, minta=None):
     if nr:
         s.append('    gondolkodas_mod a naplóban: %s; mért gondolkodási token: %d (napló), %d (jsonl usage); reasoning-szöveg: %d karakter' % (
             ', '.join(sorted(mod)), gond, gond_usage, rsz))
-        s.append('    (a gondolkodás be van kapcsolva minimális szinten: a mért gondolkodási token a mért költségben benne van; nem figyelmeztetés)')
+        s.append('    (a gondolkodás be van kapcsolva minimális szinten: a mért gondolkodási token a mért költségben benne van)')
+        # F21.75: keret-túllépés — figyelmeztetés, NEM megállási ok
+        keret = [int(m_.group(1)) for m_ in (re.search(r'max_tokens=([0-9]+)', r['gondolkodas_mod']) for r in nr) if m_]
+        if keret:
+            keret_max = max(keret)
+            mert_max = max(int(r['gondolkodas_token']) for r in nr)
+            mert_usage_max = max((futtat.gondolkodas_token(hv.get('usage') or {}) for sor in sorok_j for hv in sor.get('hivasok', [])), default=0)
+            mert_max = max(mert_max, mert_usage_max)
+            ki['gondolkodas_keret'] = keret_max
+            ki['gondolkodas_mert_max'] = mert_max
+            if mert_max > keret_max:
+                f_ = ('FIGYELMEZTETÉS (nem megállási ok): a mért gondolkodási token (legnagyobb hívásonként: %d) meghaladja a konfigurált max_tokens keretet '
+                      '(%d): a modell a keretet nem tartja be; a költség a mért tokent tartalmazza' % (mert_max, keret_max))
+                ki['figyelmeztetesek'].append(f_)
+                s.append('    ' + f_)
 
     # --- adathiány ---------------------------------------------------------------------------------
     if not sorok_j or not nr:
@@ -210,7 +236,7 @@ def onteszt():
         if not f:
             hibak.append(leiras)
     ellen(p3c_mock.regi_kimenetek_hibak() == [], 'a régi kimenetek megváltoztak: %s' % p3c_mock.regi_kimenetek_hibak())
-    ellen(KUSZOB == 3.9 and KEMENY == 4.0 and (KOD_RENDBEN, KOD_ADATHIBA, KOD_MEGALLNI) == (0, 2, 4), 'a küszöb/kilépési kódok nem a specifikáltak')
+    ellen(KUSZOB == 4.9 and KEMENY == 5.0 and (KOD_RENDBEN, KOD_ADATHIBA, KOD_MEGALLNI) == (0, 2, 4), 'a küszöb/kilépési kódok nem a specifikáltak')
     minta = futtat.minta_betolt()
     teszt_kulcs = 'sk-' + 'or-v1-TESZTKULCS0123456789abcdef0123456789'
     mappak = []
@@ -251,7 +277,7 @@ def onteszt():
         ellen(r1['kod'] == 0 and k1['kesz'] == 1 and not k1['ujra'] and abs(r1['vetitett'] - varhato) < 1e-9,
               'rendben-eset: kód %s, vetített %s vs független %s' % (r1['kod'], r1['vetitett'], varhato))
         szoveg1 = '\n'.join(r1['sorok'])
-        ellen('DÖNTÉS: mehet tovább (0)' in szoveg1 and 'VETÍTETT KUMULATÍV ÖSSZEG' in szoveg1 and 'küszöb 3.90' in szoveg1
+        ellen('DÖNTÉS: mehet tovább (0)' in szoveg1 and 'VETÍTETT KUMULATÍV ÖSSZEG' in szoveg1 and 'küszöb 4.90' in szoveg1
               and szoveg1.startswith('# scope=') and ' | forras=' in szoveg1.split('\n')[0] and ' | ts=' in szoveg1.split('\n')[0],
               'a kimenet nem tartalmazza a vetítést / küszöböt / döntést / proveniencia-sort')
         ar = futtat.ARAK[futtat.MODELLEK['S']]
@@ -271,12 +297,12 @@ def onteszt():
         ellen(k2['ujra'] and M2 > 1.0 and abs(r2['vetitett'] - (k2['osszeg'] + 19 * k2['c_p1'] / k2['kesz'] * M2)) < 1e-9,
               'újrakérés-eset: a vetítés nem a mért M-et használja (M=%.4f, vetített %s)' % (M2, r2['vetitett']))
         ellen('a mért adatból' in '\n'.join(r2['sorok']), 'az M forrása nincs kiírva')
-        # 3. túl drága: a vetített kumulatív összeg > 3.90 -> kód 4, indok
+        # 3. túl drága: a vetített kumulatív összeg > 4.90 -> kód 4, indok
         m3 = uj('f21p_onteszt_kal_draga_')
         futtat_mock(m3, futtat.MockKuldo(), ['F3V3'], None)
         futtat_mock(m3, futtat.MockKuldo(koltseg_szorzo=40.0), [FUTAS], 1)
         r3 = csendben(ellenoriz, m3)
-        ellen(r3['kod'] == 4 and not r3['elutasitva'] and r3['vetitett'] > 3.9 and 'küszöb' in '\n'.join(r3['okok']) and 'MEGÁLLNI (4)' in '\n'.join(r3['sorok']),
+        ellen(r3['kod'] == 4 and not r3['elutasitva'] and r3['vetitett'] > 4.9 and 'küszöb' in '\n'.join(r3['okok']) and 'MEGÁLLNI (4)' in '\n'.join(r3['sorok']),
               'a túl drága eset nem 4-es kód: %s %s' % (r3['kod'], r3['vetitett']))
         # a küszöb paraméter: ugyanaz az adat 100 USD küszöbbel mehet
         r3b = csendben(ellenoriz, m3, 100.0)
@@ -295,6 +321,53 @@ def onteszt():
         r4 = csendben(ellenoriz, m4)
         ellen(r4['kod'] == 4 and r4['elutasitva'] and len(r4['lanc']) == 1 and 'reasoning' in '\n'.join(r4['sorok']) and 'HTTP 400' in '\n'.join(r4['sorok'])
               and not os.path.exists(futtat.valasz_ut(FUTAS, m4)), 'a HTTP 400 nem 4-es kód / nincs megnevezve a paraméter: %s' % r4['kod'])
+        # 4b. F21.75: régi 400 (a sikeres köteg ELŐTT) + utána sikeres köteg -> NEM elutasítás (kód 0)
+        m12 = uj('f21p_onteszt_kal_regi400_')
+        futtat_mock(m12, futtat.MockKuldo(), ['F3V3'], None)
+        futtat_mock(m12, futtat.MockKuldo(), [FUTAS], 1)
+        hut = futtat.hibak_ut(FUTAS, m12)
+        os.makedirs(os.path.dirname(hut), exist_ok=True)
+        regi = {'ts': '2000-01-01T00:00:00+00:00', 'futas': FUTAS, 'koteg': 1, 'modell': futtat.MODELLEK['S'], 'http_hibakod': 400,
+                'hibauzenet': 'Reasoning is mandatory for this endpoint and cannot be disabled.'}
+        with open(hut, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(json.dumps(regi) + '\n')
+        r12 = csendben(ellenoriz, m12)
+        sz12 = '\n'.join(r12['sorok'])
+        ellen(r12['kod'] == 0 and not r12['elutasitva'] and len(r12['korabbi_hibak']) == 1
+              and 'korábbi, a sikeres köteg előtti' in sz12 and 'nem számít' in sz12 and '(a) ELUTASÍTÁS: igen' not in sz12,
+              'a sikeres köteg előtti régi 400 elutasításnak számít: %s %s' % (r12['kod'], sz12[:300]))
+        # 4c. sikeres köteg UTÁN új 400 -> elutasítás (kód 4)
+        m13 = uj('f21p_onteszt_kal_uj400_')
+        futtat_mock(m13, futtat.MockKuldo(), ['F3V3'], None)
+        futtat_mock(m13, futtat.MockKuldo(), [FUTAS], 1)
+        hut13 = futtat.hibak_ut(FUTAS, m13)
+        os.makedirs(os.path.dirname(hut13), exist_ok=True)
+        uj_h = dict(regi, ts='2999-01-01T00:00:00+00:00', hibauzenet='Unsupported parameter: temperature')
+        with open(hut13, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(json.dumps(regi) + '\n' + json.dumps(uj_h) + '\n')
+        r13 = csendben(ellenoriz, m13)
+        ellen(r13['kod'] == 4 and r13['elutasitva'] and len(r13['korabbi_hibak']) == 1 and 'temperature' in '\n'.join(r13['sorok']),
+              'a sikeres köteg utáni új 400 nem elutasítás: %s' % r13['kod'])
+        # 4d. gondolkodási keret-túllépés: figyelmeztetés (NEM megállási ok, a kód marad 0)
+        m14 = uj('f21p_onteszt_kal_keret_')
+        futtat_mock(m14, futtat.MockKuldo(), ['F3V3'], None)
+        futtat_mock(m14, futtat.MockKuldo(), [FUTAS], 1)
+        ut14 = os.path.join(m14, 'futasnaplo.tsv')
+        with open(ut14, encoding='utf-8') as f:
+            sorok14 = f.read().split('\n')
+        fej14 = sorok14[0].split('\t')
+        i_g14, i_f14 = fej14.index('gondolkodas_token'), fej14.index('futas')
+        for i, s_ in enumerate(sorok14[1:], 1):
+            m_ = s_.split('\t')
+            if len(m_) == len(fej14) and m_[i_f14] == FUTAS:
+                m_[i_g14] = '5109'
+                sorok14[i] = '\t'.join(m_)
+        with open(ut14, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('\n'.join(sorok14))
+        r14 = csendben(ellenoriz, m14)
+        ellen(r14['kod'] == 0 and len(r14['figyelmeztetesek']) == 1 and 'FIGYELMEZTETÉS' in '\n'.join(r14['sorok'])
+              and '5109' in r14['figyelmeztetesek'][0] and '(1024)' in r14['figyelmeztetesek'][0] and 'nem megállási ok' in r14['figyelmeztetesek'][0],
+              'a keret-túllépés (5109 > 1024) nincs figyelmeztetésként kiírva / megállít: %s %s' % (r14['kod'], r14['figyelmeztetesek']))
         # 5. 200-as hibatest (temperature) a köteg-sorban -> kód 4
         m5 = uj('f21p_onteszt_kal_hibatest_')
         futtat_mock(m5, futtat.MockKuldo(), ['F3V3'], None)
@@ -388,7 +461,7 @@ def onteszt():
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--forras-dir', default=None, help='a valaszok/ és a futasnaplo.tsv könyvtára (alap: f21p/)')
-    ap.add_argument('--kuszob', type=float, default=KUSZOB, help='a vetített kumulatív összeg küszöbe USD (alap: 3.90)')
+    ap.add_argument('--kuszob', type=float, default=KUSZOB, help='a vetített kumulatív összeg küszöbe USD (alap: 4.90)')
     ap.add_argument('--onteszt', action='store_true')
     args = ap.parse_args(argv)
     if args.onteszt:
