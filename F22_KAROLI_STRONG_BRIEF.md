@@ -5,8 +5,8 @@ cim: "Károli–Strong párosítás könyvenként, két modellel (Sonnet + Gemin
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: dontesre_var
-ag: claude/f22-1moz
+allapot: fut
+ag: claude/f22-2moz
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
 kovetkezo: "2Mózes ugyanezzel a brieffel, a könyv paraméter cseréjével"
 fugg: [21]
