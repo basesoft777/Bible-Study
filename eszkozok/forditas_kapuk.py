@@ -269,11 +269,26 @@ def _angol_minta(angol):
 HU_TOVALTOZAT = {'lélek': (r'lelk(?!es|ész|esz|ület)[eéüű]\w*',)}
 
 
+# DT26 (F28.40): pontos kulcsolas. Ha egy sor angol kulcsa egy masik, hosszabb
+# sor kulcsanak resze (`compare` < `מִן compare`), akkor a forrasnak a hosszabb
+# kulcs talalatain belul allo elofordulasai a hosszabbik sorhoz tartoznak, a
+# rovidebbiket nem valtjak ki. Igy a ket „compare” sor a kulcs szerint valik
+# szet: a `מִן compare` comparativust kovetel, a tobbi `compare` vö.-t. A kapu
+# nem lazul: minden forrasbeli elofordulas pontosan egy (a leghosszabb
+# illeszkedo) sorhoz tartozik.
+def _sajat_talalatok(angol, forras, terminologia):
+    hosszabbak = [t['angol'] for t in terminologia
+                  if t['angol'] != angol and angol in t['angol']]
+    takart = [m.span() for h in hosszabbak for m in _angol_minta(h).finditer(forras)]
+    return [m for m in _angol_minta(angol).finditer(forras)
+            if not any(a <= m.start() and m.end() <= b for a, b in takart)]
+
+
 def ellenoriz_terminologia(forras, forditas, terminologia, bizonytalan_lista):
     serult = []
     for t in terminologia:
         angol = t['angol']
-        if not _angol_minta(angol).search(forras):
+        if not _sajat_talalatok(angol, forras, terminologia):
             continue
         if _p4._magyar_alak_mintaja(t['magyar']).search(forditas):
             continue
