@@ -5,12 +5,14 @@ kod: F21
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ad: mért adat arról, megéri-e a teljes Bibliát külső modellekkel Strong-számmal párosítani (minőség, költség, KJV-támpont haszna)
 kovetkezo: a regressziós mérés (P3c) lefutott és lezárva (ellenőri kör, draft PR); a #22 sorsa a felhasználó döntése (a javaslat a jelentés külön szakaszában)
 olvas: [konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/KJV_Strongs_Genesis.tsv]
 ir: [eszkozok/karoli_strong/, eszkozok/fordit.py, f21p/, naplok/, DONTESEK.md, NYITOTT_FELADATOK.md, .github/workflows/f21p_pilot.yml, .github/workflows/f21r_regresszio.yml]
 ag: claude/f21-regresszio-meres
+pr: #105
+lezarva_osszegzes: Károli–Strong mérőpilot (F21), regressziós mérés (P3c) és KJV-mérés: egyik összeállítás sem felel meg a rögzített döntési szabálynak (A+B, A+B+C, Sonnet + C pár mért és nem felel meg; az egymodelles összeállítások PD6 szerint nem minősíthetők; a pár (1) feltételének R3-ja nem mérhető); C (F3V3) 42,49 USD [38,55–46,52], Sonnet 374 USD, pár 416 USD a teljes Bibliára; a Sonnet a gondolkodási keretet nem tartotta be (11 144 token/hívás az 1024-es keret ellenére, 10 R3-aranyvers length-lezárás miatt kapuhibás); a KJV a promptban: nem igazolt, a javított táblával újramérhető (+0,25 pp, az ingadozáson belül; N-F21); a pilot összesen 4,325 USD; a #22 választott iránya javaslatként a jelentésben; jelentés `naplok/F21P_jelentes.md`
 fugg: [6]
 ---
 # F21_KAROLI_STRONG_PILOT_BRIEF.md — Károli–Strong párosítás: mérőpilot (minőség és költség)
