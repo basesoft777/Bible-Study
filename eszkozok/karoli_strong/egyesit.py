@@ -163,6 +163,12 @@ def egyesit_vers(ig, s, c, karoli_tokenek, eredeti):
     return parok, szavak, False
 
 
+def sorrend_igehelyek(minta, kimaradt, karoli):
+    """A minta versei és az eredeti nélküli (modellhez nem küldött) versek a Károli-tábla sorrendjében."""
+    van = {sor['igehely'] for sor in minta} | set(kimaradt)
+    return [ig for ig in karoli if ig in van]
+
+
 def epit(konyv, gyoker=None, karoli=None, ered=None):
     """A két tábla és az átnézési sor tartalma memóriában: (parok, szavak, atnezes) sorlisták."""
     u = utak(konyv, gyoker)
@@ -173,8 +179,13 @@ def epit(konyv, gyoker=None, karoli=None, ered=None):
     minta = sonnet_koteg.minta_olvas(u['minta'])
     sv, cv = jsonl_versek(u['sonnet']), jsonl_versek(u['c'])
     parok, szavak, atnezes = [], [], []
-    for sor in minta:
-        ig = sor['igehely']
+    kimaradt = set(sonnet_koteg.eredeti_nelkuli_versek(konyv, karoli, ered))
+    for ig in sorrend_igehelyek(minta, kimaradt, karoli):
+        if ig in kimaradt:
+            p, sz, kezi = egyesit_vers(ig, None, None, tokenek.tokenizal(karoli[ig]), [])
+            szavak += sz
+            atnezes.append([ig, 'nincs eredeti vers a TAHOT-ban (versszámozás-eltérés)', 'nincs eredeti vers a TAHOT-ban (versszámozás-eltérés)'])
+            continue
         s = sv.get(ig, {}).get('obj') if sv.get(ig, {}).get('allapot') == 'ok' else None
         c = cv.get(ig, {}).get('obj') if cv.get(ig, {}).get('allapot') == 'ok' else None
         p, sz, kezi = egyesit_vers(ig, s, c, tokenek.tokenizal(karoli[ig]), ered[ig])
@@ -255,11 +266,10 @@ def ellenoriz(konyv, gyoker=None, karoli=None, ered=None):
     parok, szavak = olvas(u['parok']), olvas(u['szavak'])
     hibak = []
     var = {}
-    for sor in minta:
-        ig = sor['igehely']
+    for ig in sorrend_igehelyek(minta, sonnet_koteg.eredeti_nelkuli_versek(konyv, karoli, ered), karoli):
         for i in range(1, len(tokenek.tokenizal(karoli[ig])) + 1):
             var[(ig, 'hu', i)] = 0
-        for e in range(1, len(ered[ig]) + 1):
+        for e in range(1, len(ered.get(ig, [])) + 1):
             var[(ig, 'er', e)] = 0
     for r in szavak:
         k = (r['vers'], r['oldal'], int(r['sorszam']))

@@ -1,4 +1,4 @@
-# F22 2Moz: a C-futas a konyv tobbi kotegere (a keszeket kihagyja)
+# F22 2Moz: a C-futas folytatasa a 104. kotegtol (a keszeket kihagyja); a 2Moz 35:36 eredeti nelkul, kimarad a mintabol
 konyv=2Móz
 koteg_max=mind
 koteg_meret=10

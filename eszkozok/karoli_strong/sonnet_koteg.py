@@ -78,8 +78,24 @@ def minta_epit(konyv, karoli=None, ered=None):
         b = tokenek.igehely_bont(ig)
         if b is None or b[0] != konyv:
             continue
+        if not ered.get(ig):
+            continue   # eredeti vers nélkül (versszámozás-eltérés) nincs mit párosítani: l. eredeti_nelkuli_versek
         ki.append({'sorsz': len(ki) + 1, 'igehely': ig, 'reteg': ascii_nev(konyv), 'fejezet': b[1],
                    'karoli_szo': len(tokenek.tokenizal(szoveg)), 'eredeti_szo': len(ered.get(ig, []))})
+    return ki
+
+
+def eredeti_nelkuli_versek(konyv, karoli=None, ered=None):
+    """A könyv azon Károli-versei, amelyeknek nincs eredeti (TAHOT) versük (pl. 2Móz 35:36: a Károli-
+    számozás kettébontja a héber 35:35-öt). Nem kerülnek modellhez; az egyesítő `kezi` állapotban,
+    az átnézési sorral viszi tovább őket (a brief `kezi` ága), hogy minden Károli-token szerepeljen."""
+    karoli = karoli if karoli is not None else tokenek.betolt_karoli()
+    ered = ered if ered is not None else tokenek.betolt_eredeti()
+    ki = []
+    for ig in karoli:
+        b = tokenek.igehely_bont(ig)
+        if b is not None and b[0] == konyv and not ered.get(ig):
+            ki.append(ig)
     return ki
 
 
@@ -186,7 +202,8 @@ def onteszt():
     tmp = tempfile.mkdtemp()
     karoli = {'1Móz %d:%d' % (c, v): 'Kezdetben teremté Isten az eget és a földet.' for c in (1, 2) for v in (1, 2, 3)}
     karoli['2Móz 1:1'] = 'Ezek'
-    if len(minta_epit('1Móz', karoli, {})) != 6:
+    ered_proba = {ig: [{'sorsz': 1}] for ig in karoli}
+    if len(minta_epit('1Móz', karoli, ered_proba)) != 6 or len(minta_epit('1Móz', karoli, {})) != 0:
         hibak.append('minta_epit versszám')
     if ascii_nev('1Móz') != '1Moz':
         hibak.append('ascii_nev')
@@ -232,9 +249,10 @@ def main(argv=None):
         return 2
     if a.parancs == 'minta':
         sorok = minta_epit(a.konyv)
-        print('%s: %d vers' % (a.konyv, len(sorok)))
-        if a.var is not None and len(sorok) != a.var:
-            print('ELTÉRÉS: a várt %d vers helyett %d; megállás és jelentés' % (a.var, len(sorok)), file=sys.stderr)
+        kimaradt = eredeti_nelkuli_versek(a.konyv)
+        print('%s: %d vers (+ %d eredeti nélküli, nem kerül modellhez: %s)' % (a.konyv, len(sorok), len(kimaradt), ', '.join(kimaradt) or '-'))
+        if a.var is not None and len(sorok) + len(kimaradt) != a.var:
+            print('ELTÉRÉS: a várt %d vers helyett %d; megállás és jelentés' % (a.var, len(sorok) + len(kimaradt)), file=sys.stderr)
             return 3
         minta_ir(minta_ut(a.konyv), sorok)
         print('írva: %s; kötegek (%d vers/köteg): %d' % (minta_ut(a.konyv), a.koteg_meret,
