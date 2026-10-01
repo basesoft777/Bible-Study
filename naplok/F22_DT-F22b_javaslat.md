@@ -68,7 +68,7 @@ Megfogalmazott kizárás: a névvel egy versben álló, de értelmét nem magyar
 |---|---|---|
 | 1 | Az 1Móz 14:22 és 6:17 **aranyhiba**. | A régi arany egyezése újraszámolva (az alábbi táblában). A `f21p/regi_arany_hibas.tsv` ebben a menetben **nem módosult** (befagyasztott F21-adat; jelenleg csak a 6:17 szerepel benne); a 14:22 felvétele külön kézi lépés. |
 | 2 | A `prompt_v3` változatlan marad a 2Mózesre. | Új prompt-változat és új hash nincs; a 2Mózes az 1Mózessel azonos prompttal fut. |
-| 3 | Névmagyarázat: a „mindkettő” konvenció (N3) elfogadva, a kikötésekkel (a Károli kimondja a névadást, és a név a versben áll). | Megvalósítás: **későbbi, külön javítómenet** a névadó versekre, nem promptszabály. Felvéve **N-F22 helyőrzőként** (`NYITOTT_FELADATOK.md`). **Az 1Móz 16:11 aranyát (H3458, csak a név) ehhez a konvencióhoz kell igazítani.** |
+| 3 | Névmagyarázat: a „mindkettő” konvenció (N3) elfogadva, a kikötésekkel (a Károli kimondja a névadást, és a név a versben áll). | Megvalósítás: **későbbi, külön javítómenet** a névadó versekre, nem promptszabály. Felvéve **N-F22a helyőrzőként** (`NYITOTT_FELADATOK.md`). **Az 1Móz 16:11 aranyát (H3458, csak a név) ehhez a konvencióhoz kell igazítani.** |
 | 4 | Idióma-szabály: **halasztva**, a szótári állandó-szókapcsolat lista függvényében. | Az I2 (kifejezés-szint) nem épül be; az 1Móz 13:4 az 1Mózesben változatlan marad. |
 
 Az 5. pont (a döntés rögzítése) ez a szakasz; a `DONTESEK.md` a helyőrző-szabály szerint a merge után kap végleges számot.
@@ -84,3 +84,12 @@ Az 5. pont (a döntés rögzítése) ez a szakasz; a `DONTESEK.md` a helyőrző-
 | **6:17 és 14:22 (DT-F22b)** | **192** | **97,9% (188/192)** | **97,4% (187/192)** | **98,2% (164/167)** |
 
 A két kizárt hármas egyikének sem volt egyező linkje, ezért a számláló (188, 187, 164) nem változik, csak a nevező csökken. A kizárás a DT-F21j i) döntése szerint tájékoztató: a mért érték a kizárás nélküli, a jelentés (`naplok/F22_1Moz_jelentes.md`) 2.2 szakasza ezzel nem módosult.
+
+## 7. Utólagos kérések (felhasználó, 2026.10.01)
+
+1. **A 2Mózestől az elvetett első próbák nyers válasza és az API-hibakód kötegenként mentődik, a `futasnaplo.tsv` kap egy `ok` oszlopot** (`kapu` / `parse` / `api`; üres, ha a hívás átment a kapun). A prompt és a kapu változatlan. Megvalósítás (F22.9): `futtat.py` (opt-in `NAPLO_OK_OSZLOP`, `ok_besorol`, `elvetett_ment`; az F21 naplói és kimenetei bájtra változatlanok, az F21 önteszt rendben), `f22_c_futtat.py` (bekapcsolás, a régi napló migrációja, önteszt), `.github/workflows/f22_parositas.yml` (az `f22/elvetett` bekerül a staging-listába és a kulcs-grepbe).
+   - **Hely:** `f22/elvetett/<konyv>_<koteg>.txt` (a kérés példája szerint). A kérés szövege „`naplok/` alá” is mondta; az `f22/` alatti hely mellett az szólt, hogy a workflow csak az `f22/` alatti kimenetet commitolja és tolja, ezért ott nem kell új kivétel a staging-szabályban. Ha a `naplok/` kell, az `elvetett_dir` egyetlen sor a `f22_c_futtat.py`-ban és a workflow két sora.
+   - **A fájl:** fejléc (`futas`, `koteg`, `probalkozas`, `ok`, `kapuhiba_db`, `finish_reason`, `api_hibakod`, `api_hibatest`), majd a `---` sor alatt a nyers válasz változtatás nélkül, kulcsmentesítve. Csak az első próbák kerülnek ide; a második próbálkozás nyers válasza továbbra is a köteg-sor `nyers` mezőjében van.
+   - **API-hibakód:** a 200-as választestben érkező hibából (`finish_reason=error`); a HTTP-szintű hibák a meglévő `<futas>.hibak.jsonl`-ben maradnak.
+   - **Az 1Móz sorai:** az `ok` oszlop a 216 régi sornál üres. A nyers válasz nem maradt meg, a `parse` és az `api` besorolás a naplóból csak következtethető (l. a korábbi elemzést: 2 `api`, 4 valószínű `parse`, 56 `kapu`), és hiányt nem töltünk ki. A migráció ellenőrzött: az `ok` oszlop elhagyásával a régi napló bájtra visszaáll; az `egyesit.py --ellenoriz` rendben.
+2. **A Gemini-újrapróba versszintre szűkítése:** felvéve N-F22b helyőrzőként (`NYITOTT_FELADATOK.md`), a kért szöveggel és a naplóból mért kiindulással.
