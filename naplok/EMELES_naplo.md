@@ -300,8 +300,9 @@ minősíti, a kilépési kód 0). *Helyesbítés (ELLENOR_F28 8. tétel): koráb
 
 - Séma: `adat/SEMA.md` 2.15 `kapu` (igen/nem, hiányzó = igen); a verzió v3 marad.
 - Kapu: `forditas_kapuk.kapus_sor` — a kapu=nem sort a terminológia-kapu nem
-  követeli, a kulcsa a pontos kulcsolásban részt vesz; a prompt minden sort tartalmaz.
-  Teszt: `KapuOszlop` (5 eset).
+  követeli; a kulcsa a hosszabb kulcsok illesztésében NEM von el a rövidebb kapu=igen
+  sortól (F28.46 pontosítása, lent); a prompt minden sort tartalmaz.
+  Teszt: `KapuOszlop` (6 eset az F28.46 után).
 - Adat: 4 meglévő sor kapu=nem (id., ib., compare, מִן compare), 9 új v3 sor kapu=nem.
   **#2 construct próbafutás** (kapu=igen, 39 szócikk): 1 hamis sértés — H7843
   „construct הַשְׁחִית” → „constructus הַשְׁחִית” („status” nélkül) — ezért kapu=nem.
