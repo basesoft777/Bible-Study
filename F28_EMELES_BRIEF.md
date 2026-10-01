@@ -5,15 +5,14 @@ kod: EMELES
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: lezarva
+allapot: fut
 ad: a lexikonba kerülő minden Strong-szám teljes Thayer- vagy BDB-szócikke magyarul (allapot opus, szúrópróbával kezi) az adat/forditasok.tsv-ben; közös javítóréteg és fordítási kapuk; CI-őr; az emelés mint munkafolyamat-lépés
-kovetkezo: lezárva; nyitott: DT26 (terminológia soronként, feladatjelöltek)
+kovetkezo: az ELLENOR_F28 nyolc ELTÉRÉS-tételének javítása (F28.31–), majd újraellenőrzés; nyitott: DT26 (terminológia soronként, feladatjelöltek)
 olvas: [adat/elofordulasok.tsv, adat/lexikon_hivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/BDB_teljes_unabridged.tsv, fp2/, eszkozok/fordit.py]
-ir: [adat/forditasok.tsv, adat/terminologia.tsv, forditas/prompt_v4.md, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, MUNKAMENET.md, .github/workflows/]
+ir: [adat/forditasok.tsv, adat/terminologia.tsv, forditas/prompt_v4.md, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, MUNKAMENET.md, .github/workflows/, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/lekerdez.py, eszkozok/teszt_lekerdez_sir.py]
 fugg: []
 ag: claude/magical-goldberg-4xb1a0
 nem_fugg: [27]
-lezarva_osszegzes: 39 Thayer/BDB szócikk teljes fordítása (10 kezi, 29 opus), kapuk + javítóréteg, CI E19, MUNKAMENET C0; zárás naplok/F28_zaras.md (10.01)
 ---
 
 # F<nn>_EMELES_BRIEF.md — A lexikon szótári szócikkeinek Opus-fordítása
