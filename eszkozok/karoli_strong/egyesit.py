@@ -186,27 +186,60 @@ def epit(konyv, gyoker=None, karoli=None, ered=None):
     return parok, szavak, atnezes
 
 
-def tsv_szoveg(fej, sorok):
+def bemeneti_ts(konyv, gyoker=None):
+    """A proveniencia `ts` mezője: a C futásnapló utolsó (adott könyvre vonatkozó) időbélyege, tehát a
+    bemenetekből származik, és az újraépítés bájtra azonos marad; ha nincs napló: `manual`."""
+    ut = os.path.join(gyoker or ROOT, 'f22', 'futasnaplo.tsv')
+    if not os.path.exists(ut):
+        return 'manual'
+    nev = 'c/%s' % sonnet_koteg.ascii_nev(konyv)
+    ts = None
+    with open(ut, encoding='utf-8') as f:
+        sorok = [x.rstrip('\n').rstrip('\r').split('\t') for x in f if x.strip()]
+    fej = sorok[0]
+    for r in sorok[1:]:
+        d = dict(zip(fej, r))
+        if d.get('futas') == nev:
+            ts = d['ts']
+    return ts or 'manual'
+
+
+def proveniencia_sor(konyv, gyoker=None):
+    """A táblák első sora (SEMA 1.5/2.20): `#`-kezdetű, az olvasók átugorják; scope=manual, mert a tábla
+    modell-kimenet (javaslat), nem `lekerdez.py`-eredmény."""
+    n = sonnet_koteg.ascii_nev(konyv)
+    return ('# proveniencia: scope=manual | forras=f22/valaszok/sonnet/%s.jsonl, f22/valaszok/c/%s.jsonl, '
+            'konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=%s (a C futásnapló utolsó hívása; '
+            'az újraépítés így bájtra azonos) | modell-kimenet, javaslat: nem lekérdezés-eredmény; a bizonyossag '
+            'nem "ellenőrizve"; a strong a TAHOT-ból, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py'
+            % (n, n, bemeneti_ts(konyv, gyoker)))
+
+
+def tsv_szoveg(fej, sorok, elso_sor=None):
     for s in sorok:
         for x in s:
             if '\t' in str(x) or '\n' in str(x):
                 raise SystemExit('tab/újsor egy mezőben: %r' % (s,))
-    return '\n'.join(['\t'.join(fej)] + ['\t'.join(str(x) for x in s) for s in sorok]) + '\n'
+    elol = [elso_sor] if elso_sor else []
+    return '\n'.join(elol + ['\t'.join(fej)] + ['\t'.join(str(x) for x in s) for s in sorok]) + '\n'
 
 
 def ir(konyv, gyoker=None):
     u = utak(konyv, gyoker)
     parok, szavak, atnezes = epit(konyv, gyoker)
-    for kulcs, fej, sorok in (('parok', PAROK_FEJ, parok), ('szavak', SZAVAK_FEJ, szavak), ('atnezes', ATNEZES_FEJ, atnezes)):
+    prov = proveniencia_sor(konyv, gyoker)
+    for kulcs, fej, sorok, elso in (('parok', PAROK_FEJ, parok, prov), ('szavak', SZAVAK_FEJ, szavak, prov),
+                                    ('atnezes', ATNEZES_FEJ, atnezes, None)):
         os.makedirs(os.path.dirname(u[kulcs]), exist_ok=True)
         with open(u[kulcs], 'w', encoding='utf-8', newline='\n') as f:
-            f.write(tsv_szoveg(fej, sorok))
+            f.write(tsv_szoveg(fej, sorok, elso))
     return parok, szavak, atnezes
 
 
 def olvas(ut):
+    """TSV beolvasása a `#`-kezdetű (proveniencia-) sorok átugrásával; csak split('\t')."""
     with open(ut, encoding='utf-8') as f:
-        sorok = [x.rstrip('\n').rstrip('\r') for x in f]
+        sorok = [x.rstrip('\n').rstrip('\r') for x in f if not x.startswith('#')]
     fej = sorok[0].split('\t')
     return [dict(zip(fej, x.split('\t'))) for x in sorok[1:] if x.strip()]
 

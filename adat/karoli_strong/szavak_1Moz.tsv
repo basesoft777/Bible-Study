@@ -1,3 +1,4 @@
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/1Moz.jsonl, f22/valaszok/c/1Moz.jsonl, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=2026-10-01T11:30:54+00:00 (a C futásnapló utolsó hívása; az újraépítés így bájtra azonos) | modell-kimenet, javaslat: nem lekérdezés-eredmény; a bizonyossag nem "ellenőrizve"; a strong a TAHOT-ból, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	oldal	sorszam	szo	allapot	partner_sorszam	strong	bizonyossag	forras
 1Móz 1:1	hu	1	Kezdetben	parositva	1,2	H9003+H7225	magas	S+C
 1Móz 1:1	hu	2	teremté	parositva	3	H1254	magas	S+C

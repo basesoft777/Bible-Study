@@ -8,7 +8,7 @@ Ez a réteg a **kanonikus igazságforrás**. A `tematikus_lezart/`, `genezis/`, 
 és `lexikon/` kimenetei ebből generálódnak vagy ehhez igazodnak. Ha egy tény itt és egy
 markdown-fájlban ellentmond, **ez a tábla az irányadó**.
 
-A kilenc tábla és a hozzájuk tartozó kulcs:
+A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20) és a hozzájuk tartozó kulcs:
 
 | Fájl | Kulcs | Ki írja |
 |---|---|---|
@@ -21,6 +21,7 @@ A kilenc tábla és a hozzájuk tartozó kulcs:
 | `grammatikai_strongok.tsv` | `strong` | **generált** — `eszkozok/grammatikai_strongok_general.py` |
 | `auditok.tsv` | nincs (l. 2.9) | a `lekerdez.py` proveniencia-sora, kézzel rögzítve |
 | `licencek.tsv` | `dataset` | kézzel (leltár, F24) |
+| `karoli_strong/parok_<könyv>.tsv`, `karoli_strong/szavak_<könyv>.tsv` | `vers` + `hu_sorszam` + `er_sorszam` / `vers` + `oldal` + `sorszam` | **generált** (modell-kimenet, javaslat) — `eszkozok/karoli_strong/egyesit.py` (2.20, F22) |
 
 ---
 
@@ -909,8 +910,9 @@ adna rájuk. Ez az F24 hatókörén kívüli kód- és render-változás, ezért
 Actionsben) független párosítása ugyanazzal a prompttal (`f21p/prompt_v3.md`, befagyasztva); az
 `eszkozok/karoli_strong/egyesit.py` determinisztikusan (API nélkül) állítja elő. A modell Strong-számot
 nem ír: a `strong` a TAHOT-ból jön, a linkelt eredeti szó sorszáma alapján. Mivel nem `lekerdez.py`
-eredmény, **nincs lekérdezési proveniencia-sora**; a mezők `scope=manual` értékű, javaslat-jellegű
-adatot jelentenek (CLAUDE.md 1. szabály: a `bizonyossag` nem „ellenőrizve”). A zárt licencű Károli–Strong
+eredmény, a két tábla **első sora egy `#`-kezdetű proveniencia-sor** (a `licencek.tsv` mintájára; az olvasók átugorják),
+`scope=manual | forras=… | ts=…` alakban (1.5); a `ts` a C futásnapló utolsó időbélyege, tehát a bemenetekből származik, és az
+újraépítés bájtra azonos marad. A tábla modell-kimenet, javaslat (CLAUDE.md 1. szabály: a `bizonyossag` nem „ellenőrizve”). A zárt licencű Károli–Strong
 forrás adata nem része a tábláknak (l. `eszkozok/karoli_strong/zart_osszevet.py`: csak helyi, összesített
 összevetés). Az első könyv az 1Móz (`parok_1Moz.tsv`, `szavak_1Moz.tsv`); a többi könyv ugyanezzel a
 sémával, a könyv-paraméter cseréjével. A fájlnév a magyar könyvrövidítés ékezet nélküli alakja.
