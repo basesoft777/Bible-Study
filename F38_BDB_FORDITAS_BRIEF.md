@@ -5,7 +5,8 @@ kod: BDB_FORDITAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/admiring-bohr-texair
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=opus), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
 kovetkezo: M0 felmérés + M1 mérő adag, utána megállási pont (⛔ M1)
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md]
