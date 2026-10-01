@@ -886,7 +886,7 @@ szótárkulcsai megegyeznek a `dataset` azonosítókkal, kivéve `UBS` és `proj
 ezekre kis megfeleltetés kell); (2) `TISZTAZATLAN_SZOTARAK = {d for d in licencek if allapot == 'tisztazatlan'}`,
 vagyis a halmaz a tábla `allapot` oszlopából származik, nem kézzel áll; (3) a konstans és a
 tábla összevetése CI-ellenőrzés (E-szabály) legyen. A mai konstans és a tábla eltérései:
-`Thayer`, `LSJ`, `SECE_G`, `SECE_H`, `MCGED`, `TSK`, `BDB` a konstansban besorolt, a táblában
+`Thayer`, `LSJ`, `SECE_G`, `SECE_H`, `MCGED`, `TSK`, `BDB`, `LXX_OS` és a `projekt-adat` kulcs (a táblában `projekt_adat`) a konstansban besorolt, a táblában
 `tisztazatlan` — ezek (2) után a halmazba kerülnének, és a generátor tisztázatlan-jelölést
 adna rájuk. Ez az F24 hatókörén kívüli kód- és render-változás, ezért külön tétel.
 
