@@ -11,7 +11,7 @@ ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, biz
 kovetkezo: "2Mózes ugyanezzel a brieffel, a könyv paraméter cseréjével"
 fugg: [21]
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/futtat.py, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/regi_arany_hibas.tsv, naplok/F21P_jelentes.md]
-ir: [eszkozok/karoli_strong/futtat.py, eszkozok/karoli_strong/sonnet_koteg.py, eszkozok/karoli_strong/egyesit.py, eszkozok/karoli_strong/zart_osszevet.py, .github/workflows/f22_parositas.yml, f22/futtatas.txt, f22/valaszok/sonnet/1Moz.jsonl, f22/valaszok/c/1Moz.jsonl, f22/futasnaplo.tsv, adat/karoli_strong/parok_1Moz.tsv, adat/karoli_strong/szavak_1Moz.tsv, adat/datasetek.tsv, adat/SEMA.md, naplok/F22_1Moz_jelentes.md, naplok/ELLENOR_F22_1Moz.md]
+ir: [eszkozok/karoli_strong/futtat.py, eszkozok/karoli_strong/sonnet_koteg.py, eszkozok/karoli_strong/egyesit.py, eszkozok/karoli_strong/zart_osszevet.py, eszkozok/karoli_strong/f22_c_futtat.py, eszkozok/karoli_strong/eredeti_nelkuli_lista.py, naplok/F22_nincs_parja_versek.tsv, .github/workflows/f22_parositas.yml, f22/futtatas.txt, f22/valaszok/sonnet/1Moz.jsonl, f22/valaszok/c/1Moz.jsonl, f22/futasnaplo.tsv, adat/karoli_strong/parok_1Moz.tsv, adat/karoli_strong/szavak_1Moz.tsv, adat/datasetek.tsv, adat/SEMA.md, naplok/F22_1Moz_jelentes.md, naplok/ELLENOR_F22_1Moz.md]
 ---
 
 # F22_KAROLI_STRONG_BRIEF.md — Károli–Strong párosítás könyvenként (Sonnet + Gemini)
@@ -155,6 +155,7 @@ A jelentés 2. szakasza, csak szkriptkimenetből:
 | D5 | Próbaszakasz az 1Móz 1–5-ön, megállási feltételekkel | a Sonnet a pilotban a kimenet 82%-át gondolkodásra fordította, a valódi keretigény csak mérhető | külön 20 verses keretmérés (a felhasználó nem kért több mérést) |
 | D6 | A zárt licencű forrás csak helyi összevetésre | licenc; a repóba csak összesített szám mehet | szótárforrásként vagy aranyként használni |
 | D7 | A prompt a `prompt_v3`, befagyasztva | a pilotban mérve; a változtatás új mérést igényelne | v4 a pilot nyitott kérdéseivel |
+| D8 | **DT-F22d (helyőrző)** — C-költségplafon könyvenként: a könyv versszáma × (2,27 / 1533) × 1,5 USD, de legalább 1,00 USD (2Móz: 2,69 USD); a futtató csak az adott könyv naplósorait összegzi. Külön összesített felső korlát a teljes #22-re: 60 USD a teljes naplóra, elérésekor megáll. A korábbi 4,00 USD az 1Mózesre szólt; a naplóösszeg az egész naplót számolta, ezért a 2Móz 106. kötegénél megállt (felhasználói döntés, 2026.10.01) | a költségvédelem maradjon, de ne a könyvek összegét korlátozza; az 1Móz mért költsége az alap | a 4,00 USD az összesített naplóra (a 2Móz nem fejezhető be) |
 
 ## Döntésnapló (a brief verziói)
 

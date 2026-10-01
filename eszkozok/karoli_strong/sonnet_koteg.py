@@ -85,6 +85,19 @@ def minta_epit(konyv, karoli=None, ered=None):
     return ki
 
 
+def karoli_nelkuli_eredeti_versek(konyv, karoli=None, ered=None):
+    """A könyv azon eredeti (TAHOT) versei, amelyeknek a Károli-kulcs szerint nincs Károli-versük;
+    a tokenjeik az egyesítőben `kezi` állapotban szerepelnek (a könyv végén)."""
+    karoli = karoli if karoli is not None else tokenek.betolt_karoli()
+    ered = ered if ered is not None else tokenek.betolt_eredeti()
+    ki = []
+    for ig in ered:
+        b = tokenek.igehely_bont(ig)
+        if b is not None and b[0] == konyv and ig not in karoli:
+            ki.append(ig)
+    return ki
+
+
 def eredeti_nelkuli_versek(konyv, karoli=None, ered=None):
     """A könyv azon Károli-versei, amelyeknek nincs eredeti (TAHOT) versük (pl. 2Móz 35:36: a Károli-
     számozás kettébontja a héber 35:35-öt). Nem kerülnek modellhez; az egyesítő `kezi` állapotban,

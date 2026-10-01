@@ -1,5 +1,5 @@
-# F22 2Moz: a C-futas folytatasa a 104. kotegtol (a keszeket kihagyja); a 2Moz 35:36 eredeti nelkul, kimarad a mintabol
+# F22 2Moz: a C-futas folytatasa (a keszeket kihagyja); plafon: konyvenkenti (DT-F22d)
 konyv=2Móz
 koteg_max=mind
 koteg_meret=10
-plafon_usd=3.90
+plafon_usd=auto

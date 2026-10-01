@@ -17,7 +17,8 @@ VEZÉRLŐFÁJL (f22/futtatas.txt): kulcs=érték sorok, # megjegyzés; MINDEN ku
     konyv=1Móz        magyar rövidítés (a minta_<ascii>.tsv megléte kell)
     koteg_max=14      legfeljebb ennyi ÚJ köteg ebben a futásban, vagy 'mind'
     koteg_meret=10    vers/köteg (a prófétáknál 5)
-    plafon_usd=3.90   kumulatív (napló-összeg) megállási küszöb, 0 < x <= 4.00
+    plafon_usd=auto   a könyv C-költségének plafonja (DT-F22d): versszám × (2,27/1533) × 1,5 USD, legalább 1,00 USD;
+                      számérték is adható (a képlet értékénél szigorúbb számot alkalmazza), 0 < x <= 60
 
 Éles hívás csak GitHub Actionsben (GITHUB_ACTIONS=true) vagy F21_ELES_HELYI=igen mellett.
 
@@ -49,7 +50,17 @@ import sonnet_koteg  # noqa: E402
 import tokenek  # noqa: E402
 
 F22 = os.path.join(tokenek.ROOT, 'f22')
-PLAFON_KEMENY = 4.00
+PLAFON_OSSZES = 60.0     # DT-F22d: a teljes naplóra (minden könyv) érvényes felső korlát, USD
+PLAFON_KEMENY = PLAFON_OSSZES
+PLAFON_ALAP_USD_VERS = 2.27 / 1533   # az 1Móz mért C-költsége versenként
+PLAFON_SZORZO = 1.5
+PLAFON_MIN = 1.00
+
+
+def konyv_plafon(versszam):
+    """A könyv C-költség-plafonja (DT-F22d): versszám × (2,27/1533) × 1,5, legalább 1,00 USD."""
+    return max(PLAFON_MIN, versszam * PLAFON_ALAP_USD_VERS * PLAFON_SZORZO)
+
 KULCSOK = ('konyv', 'koteg_max', 'koteg_meret', 'plafon_usd')
 
 
@@ -90,12 +101,15 @@ def vezerlo_beolvas(ut):
         raise VezerloHiba('a koteg_max pozitív egész vagy "mind"')
     if not ert['koteg_meret'].isdigit() or int(ert['koteg_meret']) < 1:
         raise VezerloHiba('a koteg_meret pozitív egész')
-    try:
-        plafon = float(ert['plafon_usd'])
-    except ValueError:
-        raise VezerloHiba('a plafon_usd nem szám: %r' % ert['plafon_usd'])
-    if not math.isfinite(plafon) or plafon <= 0 or plafon > PLAFON_KEMENY:
-        raise VezerloHiba('a plafon_usd 0 és %.2f közé kell essen' % PLAFON_KEMENY)
+    if ert['plafon_usd'] == 'auto':
+        plafon = None
+    else:
+        try:
+            plafon = float(ert['plafon_usd'])
+        except ValueError:
+            raise VezerloHiba('a plafon_usd nem szám és nem "auto": %r' % ert['plafon_usd'])
+        if not math.isfinite(plafon) or plafon <= 0 or plafon > PLAFON_OSSZES:
+            raise VezerloHiba('a plafon_usd 0 és %.2f közé kell essen' % PLAFON_OSSZES)
     return {'konyv': ert['konyv'], 'koteg_max': km, 'koteg_meret': int(ert['koteg_meret']), 'plafon_usd': plafon}
 
 
@@ -146,9 +160,12 @@ def futtat_konyv(ctx, v, minta_ut=None):
         ctx.elvetett_dir = os.path.join(ctx.kimenet_dir, 'elvetett')
     minta = futtat.minta_betolt(minta_ut or sonnet_koteg.minta_ut(v['konyv']))
     futtat.KOTEG_MERET = v['koteg_meret']
-    ctx.plafon = min(ctx.plafon, v['plafon_usd'], PLAFON_KEMENY)
-    print('F22 C: könyv=%s, koteg_max=%s, koteg_meret=%d, plafon (kumulatív) %.2f USD'
-          % (v['konyv'], v['koteg_max'] or 'mind', v['koteg_meret'], ctx.plafon), flush=True)
+    kp = konyv_plafon(len(minta))
+    ctx.plafon = kp if v['plafon_usd'] is None else min(kp, v['plafon_usd'])
+    ctx.plafon_futas = fid               # DT-F22d: könyvenkénti plafon + összesített felső korlát
+    ctx.plafon_osszes = PLAFON_OSSZES
+    print('F22 C: könyv=%s, koteg_max=%s, koteg_meret=%d, a könyv plafonja %.2f USD (képlet %.2f), összesített korlát %.2f USD'
+          % (v['konyv'], v['koteg_max'] or 'mind', v['koteg_meret'], ctx.plafon, kp, PLAFON_OSSZES), flush=True)
     return futtat.futasok_vegrehajt(ctx, [fid], minta, v['koteg_max'])
 
 
@@ -158,7 +175,7 @@ def onteszt():
     # vezérlés
     for rossz, miert in (('konyv=1Móz\nkoteg_max=1\nkoteg_meret=10\n', 'hiányzó plafon'),
                          ('konyv=1Móz\nkoteg_max=0\nkoteg_meret=10\nplafon_usd=3.9\n', 'koteg_max=0'),
-                         ('konyv=1Móz\nkoteg_max=1\nkoteg_meret=10\nplafon_usd=4.5\n', 'plafon > 4')):
+                         ('konyv=1Móz\nkoteg_max=1\nkoteg_meret=10\nplafon_usd=61\n', 'plafon > 60')):
         ut = os.path.join(tmp, 'v.txt')
         with open(ut, 'w', encoding='utf-8') as f:
             f.write(rossz)
@@ -291,8 +308,9 @@ def main(argv=None):
     print('prompt_v3 hash a futás végén: %s' % ('RENDBEN' if not hv else 'ELTÉRÉS: %s' % hv[0]), flush=True)
     if hv:
         kod = max(kod, 2)
-    print('kész; kilépési kód: %d; a napló összege: %.4f USD (plafon %.2f)'
-          % (kod, futtat.naplo_osszeg(a.kimenet_dir), ctx.plafon), flush=True)
+    print('kész; kilépési kód: %d; a könyv költsége: %.4f USD (plafon %.2f); a teljes napló: %.4f USD (korlát %.2f)'
+          % (kod, futtat.naplo_osszeg(a.kimenet_dir, ctx.plafon_futas), ctx.plafon,
+             futtat.naplo_osszeg(a.kimenet_dir), PLAFON_OSSZES), flush=True)
     return kod
 
 

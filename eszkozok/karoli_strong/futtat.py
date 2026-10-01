@@ -651,8 +651,9 @@ def naplo_ir(kimenet_dir, sor):
         f.flush()
 
 
-def naplo_osszeg(kimenet_dir):
-    """A futasnaplo.tsv koltseg_usd oszlopának összege (a plafon alapja)."""
+def naplo_osszeg(kimenet_dir, futas=None):
+    """A futasnaplo.tsv koltseg_usd oszlopának összege (a plafon alapja). Ha a `futas` meg van adva
+    (F22: pl. 'c/2Moz'), csak annak a futásnak a sorait összegzi (könyvenkénti plafon)."""
     ut = naplo_ut(kimenet_dir)
     if not os.path.exists(ut):
         return 0.0
@@ -661,7 +662,10 @@ def naplo_osszeg(kimenet_dir):
     if len(sorok) < 2:
         return 0.0
     i = sorok[0].index('koltseg_usd')
-    return sum(float(s[i]) for s in sorok[1:])
+    if futas is None:
+        return sum(float(s[i]) for s in sorok[1:])
+    j = sorok[0].index('futas')
+    return sum(float(s[i]) for s in sorok[1:] if s[j] == futas)
 
 
 # ---------------------------------------------------------------------------
@@ -693,6 +697,8 @@ class Kontextus:
         self.c_reasoning_index = 0   # a C_REASONING_LANC aktuális tagja
         self.s_reasoning_index = 0   # az S_REASONING_LANC aktuális tagja
         self.elvetett_dir = None     # F22: ha meg van adva, az elvetett első próbák nyers válasza ide kerül
+        self.plafon_futas = None     # F22: ha meg van adva, a `plafon` csak e futás naplósorait korlátozza,
+        self.plafon_osszes = None    # és a teljes napló összegét a `plafon_osszes` (DT-F22d)
 
     def tiszta(self, szoveg):
         """A kulcs kiszűrése minden kiírt szövegből."""
@@ -816,7 +822,15 @@ def hivas(ctx, futas_id, koteg_no, probalkozas, uzenetek, igehelyek, kapuhiba_db
     modell_id = MODELLEK[modell_kulcs]
     eddig = naplo_osszeg(ctx.kimenet_dir)
     becs = becsult_koltseg(modell_id, uzenetek, len(igehelyek))
-    if eddig + becs > ctx.plafon:
+    if getattr(ctx, 'plafon_futas', None):
+        konyv_eddig = naplo_osszeg(ctx.kimenet_dir, ctx.plafon_futas)
+        if konyv_eddig + becs > ctx.plafon:
+            raise PlafonLeallas('a(z) %s futás költsége %.4f USD + a hívás becsült költsége %.4f USD > a könyv plafonja %.4f USD'
+                                % (ctx.plafon_futas, konyv_eddig, becs, ctx.plafon))
+        if ctx.plafon_osszes is not None and eddig + becs > ctx.plafon_osszes:
+            raise PlafonLeallas('a teljes napló összege %.4f USD + a hívás becsült költsége %.4f USD > az összesített felső korlát %.4f USD'
+                                % (eddig, becs, ctx.plafon_osszes))
+    elif eddig + becs > ctx.plafon:
         raise PlafonLeallas('a napló összege %.4f USD + a hívás becsült költsége %.4f USD > plafon %.4f USD'
                             % (eddig, becs, ctx.plafon))
     t0 = time.time()

@@ -194,6 +194,10 @@ def epit(konyv, gyoker=None, karoli=None, ered=None):
         if kezi:
             atnezes.append([ig, '; '.join(sv.get(ig, {}).get('hibak', ['nincs válasz'])) or 'nincs válasz',
                             '; '.join(cv.get(ig, {}).get('hibak', ['nincs válasz'])) or 'nincs válasz'])
+    for ig in sonnet_koteg.karoli_nelkuli_eredeti_versek(konyv, karoli, ered):
+        p, sz, kezi = egyesit_vers(ig, None, None, [], ered[ig])
+        szavak += sz
+        atnezes.append([ig, 'nincs Károli-vers a Károli-kulcs szerint', 'nincs Károli-vers a Károli-kulcs szerint'])
     return parok, szavak, atnezes
 
 
@@ -270,6 +274,9 @@ def ellenoriz(konyv, gyoker=None, karoli=None, ered=None):
         for i in range(1, len(tokenek.tokenizal(karoli[ig])) + 1):
             var[(ig, 'hu', i)] = 0
         for e in range(1, len(ered.get(ig, [])) + 1):
+            var[(ig, 'er', e)] = 0
+    for ig in sonnet_koteg.karoli_nelkuli_eredeti_versek(konyv, karoli, ered):
+        for e in range(1, len(ered[ig]) + 1):
             var[(ig, 'er', e)] = 0
     for r in szavak:
         k = (r['vers'], r['oldal'], int(r['sorszam']))
