@@ -261,6 +261,10 @@ def _angol_minta(angol):
     return re.compile(r'(?<![A-Za-z])' + re.escape(angol) + vege)
 
 
+# a magyar toldalekolas tovaltozasai (lélek -> lelkét, lelked; H2416)
+HU_TOVALTOZAT = {'lélek': ('lelk',)}
+
+
 def ellenoriz_terminologia(forras, forditas, terminologia, bizonytalan_lista):
     serult = []
     for t in terminologia:
@@ -268,6 +272,9 @@ def ellenoriz_terminologia(forras, forditas, terminologia, bizonytalan_lista):
         if not _angol_minta(angol).search(forras):
             continue
         if _p4._magyar_alak_mintaja(t['magyar']).search(forditas):
+            continue
+        if any(re.search(r'\b' + re.escape(tov), forditas, re.IGNORECASE)
+               for tov in HU_TOVALTOZAT.get(t['magyar'], ())):
             continue
         if any(angol.rstrip('.') == b.rstrip('.') for b in bizonytalan_lista):
             continue
