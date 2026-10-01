@@ -270,9 +270,12 @@ minősíti, a kilépési kód 0). *Helyesbítés (ELLENOR_F28 8. tétel): koráb
   (3) tagolás-kapu: az „e. g.” `g.` tagja (F28.13, G0282); (4) 3. kapu: a „Gi” szigla
   elfogadása, ha a forrásban ugyanígy igehely előtt áll (F28.17, H8034); (5) tagolás-kapu:
   szám utáni „f.” nem betűjel (F28.17, H8034); (6) tagolás-kapu: főszám után nagybetűs
-  szó a fordításban (F28.18, H7451/H3548); (7) terminológia-kapu: a lélek → lelk-
+  szó a fordításban (F28.18, H3548); (7) terminológia-kapu: a lélek → lelk-
   tőváltozat (F28.20, H2416). Ez utóbbi túl tágra sikerült (a „lelkiismeret”, „lelkész”
   szóra is illeszkedett); az F28.34 a főnév toldalékolt alakjaira szűkítette, teszttel
   (`teszt_forditas_kapuk.py` `LelekTovaltozat`); a 40 `teljes` sor terminológia-eredménye a
-  szűkítés előtt és után azonos. Hogy a kalibrálással átengedett szócikkek (H7121, G0282,
-  H8034, H7451, H3548, H2416) az E4 szerint bukottnak számítanak-e, nem az én döntésem.
+  szűkítés előtt és után azonos. A kalibrálással átengedett szócikk 5: H7121, G0282,
+  H8034, H3548, H2416 (9 szegmens). *Helyesbítés (F28.39):* korábban itt a H7451 is
+  szerepelt; a H7451-nél csak önújrapróba volt („divine spirit” → szellem, l. fent az
+  „Önújrapróbák” bekezdést), kapukalibrálás nem. **Döntés (DT26, felhasználó):** mind az 5
+  szócikk mind a 9 kalibrált szegmense jóváhagyva; bukott szócikk nincs.
