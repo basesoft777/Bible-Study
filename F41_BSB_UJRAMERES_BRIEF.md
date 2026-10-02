@@ -5,11 +5,14 @@ kod: BSB_UJRAMERES
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f41-bsb-ujrameres
+pr: https://github.com/basesoft777/Bible-Study/pull/135
+lezarva_osszegzes: "36 ÓSZ-könyv ≥95% (278 125 sor); 7. oszlop Számozás: mt 260 243 / kjv 223 (Jób 41) / ellenorizetlen 17 659, versszintű WLC-összevetésből (DT-F41f/g); 4Móz 12/13 visszavonva; 2Sám/Ezsd/Dán és Zsolt 13 kimarad; N-F41g/h nyitott."
 ad: a versszámozás miatt küszöb alatt maradt ószövetségi könyvek a 95%-os küszöbbel újramérve és importálva, a többinél igazolt ok; a BSB_Strongs.tsv-ben megkülönböztethető a „szándékosan nem fordított” és a „hiányzó” angol szó
-kovetkezo: futtatás az orkesztrátorral; az 1. lépés végén ⛔ megállás
-olvas: [eszkozok/fj2/, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, naplok/F16_bsb_lefedettseg.tsv, naplok/F16_bsb_verseltolas_diagnozis.tsv, naplok/F16_bsb_zsolt_megfeleltetes.tsv]
-ir: [eszkozok/fj2/bsb_import.py, eszkozok/fj2/bsb_verseltolas_diag.py, konkordancia/BSB_Strongs.tsv, naplok/F16_bsb_lefedettseg.tsv, naplok/F41_bsb_megfeleltetes.tsv, naplok/F41_nem_egyezo_versek.tsv]
+kovetkezo: "merge a felhasználótól; utána DT6 ✅"
+olvas: [eszkozok/fj2/, konkordancia/TAHOT_kivonat.tsv, konkordancia/Macula_heber_*.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, naplok/F16_bsb_lefedettseg.tsv, naplok/F16_bsb_verseltolas_diagnozis.tsv, naplok/F16_bsb_zsolt_megfeleltetes.tsv]
+ir: [eszkozok/fj2/bsb_import.py, eszkozok/fj2/bsb_verseltolas_diag.py, eszkozok/fj2/wlc_versek.py, eszkozok/fj2/bsb_wlc_versszam_ellenorzes.py, eszkozok/fj2/bsb_nulladiff.py, eszkozok/fj2/bsb_parameter_erzekenyseg.py, naplok/F41_parameter_erzekenyseg.tsv, naplok/F41_parameter_erzekenyseg.md, konkordancia/BSB_Strongs.tsv, konkordancia/README.md, naplok/F16_bsb_lefedettseg.tsv, naplok/F41_bsb_megfeleltetes.tsv, naplok/F41_nem_egyezo_versek.tsv, naplok/F41_nulladiff.txt, naplok/F41_wlc_versszam_ellenorzes.tsv, naplok/F41_wlc_hatar_ellenorzes.tsv, naplok/F41_zaras.md, adat/datasetek.tsv, adat/SEMA.md, adat/szotar_szerepek.tsv, DONTESEK.md, NYITOTT_FELADATOK.md, F41_BSB_UJRAMERES_BRIEF.md]
 fugg: [16]
 helyi_gep: nem
 ---
@@ -17,6 +20,14 @@ helyi_gep: nem
 # F41_BSB_UJRAMERES_BRIEF.md — BSB-import kiegészítése: a küszöb alatti 8 ószövetségi könyv újramérése és az üres angol szavak jelölése
 
 *FELADATOK #41 (várható szám, a `/befogad` véglegesíti) · Modell: sonnet · v1 · 2026.10.02 · a DT6 döntésének végrehajtása*
+
+> **Javítás (F41 menet, 2026.10.02; a címsor változatlan):** a 2. szakasz „1Kir 4/5, Jóel 2/3, Neh 3/4” példái hibásak: a Strong-illeszkedés szerint (`naplok/F41_bsb_megfeleltetes.tsv`) ezekben a TAHOT_kivonat számozása a BSB-vel azonos, 0 eltolt verssel. A ténylegesen eltolt könyvek/fejezetek: 4Móz 12/13 és 29/30, 1Sám 23/24, 1Kir 22 (a 22:43 két MT-versre osztva), Jób 38–40, Préd 11/12, Ézs 2/3 és 9, Hós 11/12, Jón 1/2, Zsolt (62 fejezet). A 3.1 szövegében szereplő Jón 1:17 → 2:1 példa helyes. Részletek: N-F41d (`NYITOTT_FELADATOK.md`).
+
+> **Javítás (F41.7, 2026.10.02; felhasználói döntés: DT-F41c (a), DT-F41b lezárva, DT-F41d, DT-F41e):** a célszámozás MT (WLC). A 3.4 „6. oszlopa” mellé a `BSB_Strongs.tsv` 7. oszlopot kapott: `Számozás` (`tahot_szamozas` / `kjv_szamozas`); a Jób 38–41 a main KJV-számozásán maradt (jelölve), a Préd 11/12 és Ézs 2/3 átszámozása visszavonva (a WLC szerint KJV = MT: `naplok/F41_wlc_hatar_ellenorzes.tsv`); a 4Móz, 1Sám, Hós, Jón átszámozás és az 1Kir 22:43 osztás marad. A nulla-diff (`naplok/F41_nulladiff.txt`) commitolt szkripttel készül (`eszkozok/fj2/bsb_nulladiff.py`); a WLC-összevetés: `eszkozok/fj2/bsb_wlc_versszam_ellenorzes.py` → `naplok/F41_wlc_versszam_ellenorzes.tsv`.
+
+> **Javítás (F41.10, 2026.10.02; felhasználói döntés: DT-F41f):** a 4Móz 12/13 átszámozása visszavonva (a WLC szerint KJV = MT; main szerinti számozás); a 4Móz 29/30 marad (WLC: KJV ≠ MT). A 7. oszlop (`Számozás`) értékei `mt` / `kjv` / `ellenorizetlen` (a `tahot_szamozas` / `kjv_szamozas` megszűnt), versszintű WLC-összevetésből (`eszkozok/fj2/wlc_versek.py`); az N-F41h a teljes MT-átszámozásról szól. Részletek: `naplok/F41_zaras.md`, `DONTESEK.md` DT-F41f.
+
+> **Javítás (F41.12, 2026.10.02; a harmadik független ellenőrzés nyomán, DT-F41g):** a `Számozás` kritériuma szigorítva (`wlc_versek.vers_igazolt`: környezet-egyértelműség, részvers- és szomszéd-szűrő; döntetlen → `ellenorizetlen`); a WLC-szkript konzisztencia-ellenőrzés + független Jaccard-ellenőrzés. Részletek: `naplok/F41_zaras.md`, `DONTESEK.md` DT-F41g.
 
 <!-- KOZVETLEN_FUTTATAS -->
 ## 0. Nyitó prompt
@@ -44,7 +55,7 @@ Ez a feladat a következőket végzi el:
 - az `elided` jelölés a `BSB_Strongs.tsv`-ben.
 
 **Nincs benne:**
-- a küszöb módosítása (DT6 (d), elvetve);
+- a küszöb módosítása (DT6 (d), döntésre vár; nem része ennek a feladatnak);
 - a hiányzó 117 első vers pótlása a `hebrew-tsv/`-ből (DT6 (c), a licenc tisztázásáig halasztva, a #33 utánra);
 - a Zsolt 13 kézi megfeleltetése (DT6 (g), külön döntés, l. 3.0);
 - az újszövetségi könyvek (DT6 (f): nincs BSB-import, a görög réteg forrása a Macula, #87);
@@ -56,9 +67,9 @@ Ez a feladat a következőket végzi el:
 
 A `DONTESEK.md` DT6-sorának „Döntés” cellája:
 
-> (a)+(b)+(f) elfogadva, (d) elvetve. (b): a BSB→MT megfeleltetés általánosítása versszintre, ugyanazzal a 95%-kal, az F41-ben. (c): a licenc tisztázásáig halasztva (#33). (e): külön oszlop az `elided` jelölésre (`Angol szó állapota`), az „Angol szó” mezőbe helyőrző szöveg nem kerül; a Morfológiai kód oszlop nem használható erre, mert eltérne a KJV-formátumtól. (g): kiválik `DT-F41a` néven. (2026.10.02)
+> (a)+(b)+(f) elfogadva ((a), (f): a mostani tényállapot rögzítése; felhasználó, chat, 2026.10.02). (b): a BSB→MT megfeleltetés általánosítása versszintre, ugyanazzal a 95%-kal, az F41-ben. (c): a licenc tisztázásáig halasztva (#33), nincs eldöntve. (d), (e): döntésre vár. (g): kiválik `DT-F41a` néven. (2026.10.02)
 
-Állapota 🟢. A ✅-ot a menet zárócommitja állítja be.
+Állapota 🟢. A menet a DT6-ot nem állítja ✅-ra: az marad 🟢, amíg a (c)–(e), (g) nyitott.
 
 A (g) új sorba kerül `DT-F41a` helyőrzővel. A kérdés és az opciók szó szerint a DT6-ból jönnek (kézi megfeleltetés: BSB 2→MT 3, 3→4, 4→5, 5+6→6, vagy kimaradás), az állapot 🟡.
 
@@ -99,6 +110,8 @@ A 2Sám, az Ezsd és a Dán okát könyvenként egy mondatban kell összefoglaln
 
 ### 3.4 Az üres „Angol szó” jelölése (DT6 (e))
 
+⛔ A DT6 (e) pontja nincs eldöntve (felhasználó, 2026.10.02): ha a menet ide ér, megállás. Az `Angol szó állapota` oszlop, amely ennek a lépésnek már elkészült eredménye (PR #135), előkészítő jellegű, és a DT6 (e) eldöntéséig nem tekinthető végleges, elfogadott kimenetnek; a lépést e szerint kell feltételesnek olvasni.
+
 - Új, 6. oszlop: `Angol szó állapota`, a következő értékekkel:
   - `forditva` — az „Angol szó” nem üres;
   - `elhagyva` — a forrás-span `elided` jelzőt hordoz (a `vers_sorok()` ezt ma csak számolja);
@@ -109,7 +122,7 @@ A 2Sám, az Ezsd és a Dán okát könyvenként egy mondatban kell összefoglaln
 
 ### 3.5 Menetzárás
 
-A `CLAUDE.md` szerint: `fuggetlen-ellenor` (`naplok/ELLENOR_F41.md`), push, draft PR, a `FELADATOK.md` saját sora, és a DT6 ✅ a zárócommitban. A záró összefoglaló első sora a PR linkje és a CI állapota.
+A `CLAUDE.md` szerint: `fuggetlen-ellenor` (`naplok/ELLENOR_F41.md`), push, draft PR, a `FELADATOK.md` saját sora, és a DT6 sora (🟢 marad; ✅ nem a zárócommitban). A záró összefoglaló első sora a PR linkje és a CI állapota.
 
 ## 4. Elfogadási feltételek
 
@@ -117,7 +130,7 @@ A `CLAUDE.md` szerint: `fuggetlen-ellenor` (`naplok/ELLENOR_F41.md`), push, draf
 2. Minden importált fejezet megfeleltetése igazolt (`modell` ≠ `illesztetlen`); az illesztetlen fejezetek jelölve kimaradnak.
 3. A Jón, Préd, Hós, Ézs, 1Sám új értéke legalább a diagnózisban mért érték (100,00 / 96,82 / 96,94 / 98,06 / 96,91), vagy az eltérés soronként indokolt.
 4. A 2Sám, Ezsd és Dán eltérésének oka a nem egyező versek listájából igazolt (könyvenként egy mondat, okkategória-számokkal).
-5. A `BSB_Strongs.tsv` minden sorában van `Angol szó állapota`; `ures_jelzo_nelkul` = 0, vagy a sorok listázva vannak.
+5. (Feltételes: csak ha a DT6 (e) eldőlt.) A `BSB_Strongs.tsv` minden sorában van `Angol szó állapota`; `ures_jelzo_nelkul` = 0, vagy a sorok listázva vannak.
 6. Ha a 31 korábbi könyv átszámozását nem hagyod jóvá, az érintetlen sorok nulla-diffje igazolt.
 7. A CI zöld, és az ellenőri jelentés eltérés nélkül zárul (vagy az eltérések itt döntésként szerepelnek).
 
@@ -125,9 +138,9 @@ A `CLAUDE.md` szerint: `fuggetlen-ellenor` (`naplok/ELLENOR_F41.md`), push, draf
 
 | # | Döntés | Indok | Elvetett alternatíva |
 |---|---|---|---|
-| D1 | A DT6-ban (a)+(b)+(f); a (d) elvetve | a D15 küszöbe mérés előtt rögzített; a diagnózis szerint öt könyvben a számozás az ok, nem a BSB címkéi | a küszöb lazítása; a 8 könyv végleges kihagyása |
+| D1 | A DT6-ban (a)+(b)+(f); a (d) döntésre vár, nem része a feladatnak | a D15 küszöbe mérés előtt rögzített; a diagnózis szerint öt könyvben a számozás az ok, nem a BSB címkéi | a küszöb lazítása; a 8 könyv végleges kihagyása |
 | D2 | A megfeleltetés versszintű, Strong-illeszkedéssel igazolva; a KK `igehely_mt` csak ellenőrzés | a fejezetenként állandó k (Zsoltár-modell) a fejezethatáron átnyúló eseteket (Jón 1:17 → MT 2:1) nem kezeli; a KK `igehely_kjv` oszlopa legalább egy helyen hibásnak látszik | a Zsoltár-szkript változatlan kiterjesztése; a KK `igehely_kjv` közvetlen használata |
 | D3 | A diagnózis mind a 39 ószövetségi könyvre fut, az átszámozásról ⛔ döntés | egységes MT-számozás kell a `BSB_Strongs.tsv`-ben; a 31 importált könyv adatait csak jóváhagyással szabad megváltoztatni | csak a 8 könyv |
-| D4 | (e): külön `Angol szó állapota` oszlop a forrás `elided` jelzőjéből | az üres mező ma nem különbözteti meg a „nem fordította” és a „nem jött át” esetet; a Károli–Strong párosításnak ez információ; helyőrző szöveg beszivárogna a renderbe és a keresésbe | helyőrző az „Angol szó” mezőben; „elided” a Morfológiai kód oszlopban (eltérne a KJV-formátumtól) |
+| D4 | (e) — döntésre vár (DT6); előkészítőként: külön `Angol szó állapota` oszlop a forrás `elided` jelzőjéből | az üres mező ma nem különbözteti meg a „nem fordította” és a „nem jött át” esetet; a Károli–Strong párosításnak ez információ; helyőrző szöveg beszivárogna a renderbe és a keresésbe | helyőrző az „Angol szó” mezőben; „elided” a Morfológiai kód oszlopban (eltérne a KJV-formátumtól) |
 | D5 | A (g) Zsolt 13 külön döntés (`DT-F41a`) | nem része a jóváhagyott javaslatnak | a menetben eldönteni |
 | D6 | (c) a #33 (licenc rendezése) utánra | a `hebrew-tsv/` licence nincs kimondva | pótlás most |

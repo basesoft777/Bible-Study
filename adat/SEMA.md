@@ -371,9 +371,9 @@ Kulcs: `study_tipus` + `dataset`. A terv 4.3 mátrixa, négy study-típusra kife
 - `korlatos` — a `KJV_ASV_Strongs` **csak Genezis, Exodus és Példabeszédek** könyvekre áll
   rendelkezésre. Bármely más könyvre hivatkozó „ellenőrizve" állítás ezen a dataseten hamis.
   A `KJV_Strongs_teljes.tsv` (F19) külön, `importált, javaslat` állapotú dataset, a `KJV_ASV_Strongs` sor `fajl`-mintája nem tartalmazza; az `ASV_Strongs_teljes.tsv` forráshibás és nincs a repóban (DT19, `naplok/ELLENOR_F19.md`).
-  Ugyanígy `korlatos` a `BSB_Strongs` (F16): csak a 95%-os küszöböt elérő 31 ÓSZ-könyv, ÚSZ szándékosan nincs (a görög réteg forrása a Macula, #87);
+  Ugyanígy `korlatos` a `BSB_Strongs` (F16): csak a 95%-os küszöböt elérő 36 ÓSZ-könyv (nincs: 2Sám, Ezsd, Dán), ÚSZ szándékosan nincs (a görög réteg forrása a Macula, #87);
   a Zak 12:1 és a 116 feliratos zsoltár 1. versének érdemi szövege a display-forrásból hiányzik (a text-only megvan);
-  a Zsolt-sorok MT-számozásúak (a Zsolt 13 illesztetlen, kimarad), a többi könyv BSB/angol számozású.
+  az `Igehely` célszámozása az MT (WLC); a 7. oszlop (`Számozás`) versszintű WLC-összevetésből: `mt` (260 243 sor, 20 180 vers: a WLC-vel versszinten egyértelműen megfeleltetett — a WLC azonos számú versének Strong-halmaza > 0,5 átfedéssel az Igehely-versben van, ez szigorúan jobb a WLC- és a BSB-környezet bármely másik versénél, nem hibrid részvers, és a szomszéd vers is illeszkedik; Strong-halmaz-egyezés, nem tartalmi egyezés) / `ellenorizetlen` (17 659 sor, 1 477 vers, 271 fejezet: a WLC-vel egyértelműen nem igazolt — nagy része formulás/ismétlődő, azonos Strong-halmazú szomszéd versek döntetlenje KJV = MT fejezetekben; a többi hibrid részvers, izolált egyezés, vagy üres WLC-halmaz; a Jób 40:1/3/6 is; **nem állítja, hogy a szám hibás**; fejezetenként `naplok/F41_wlc_versszam_ellenorzes.tsv`) / `kjv` (223 sor, 34 vers: a ténylegesen KJV ≠ MT Jób 41, a BSB/KJV-szám marad; paraméter-érzékenység: `naplok/F41_parameter_erzekenyseg.md`); a Zsolt 13 illesztetlen, kimarad. A 6. oszlop (`Angol szó állapota`): `forditva` / `elhagyva` / `ures_jelzo_nelkul`.
 
 *Licenc-következmény, rögzítve a `konkordancia/README.md` licenc-szakaszában és a
 `konkordancia/SDBH_SDGNT_README.md`-ben:* a CC BY-SA 4.0
