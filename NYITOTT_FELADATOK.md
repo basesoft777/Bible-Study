@@ -575,6 +575,8 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   Az F41 `ir` mezője nem tartalmazza őket, ezért nem frissültek: „31 ÓSZ-könyv” → 36 (új: 1Sám, Préd, Ézs, Hós, Jón; továbbra is kimarad: 2Sám, Ezsd, Dán), az `Igehely` számozása már nemcsak a Zsoltárokban a TAHOT-é (4Móz 12/13, 29/30; 1Sám 23/24; 1Kir 22; Jób 38–40; Préd 11/12; Ézs 2/3, 9; Hós 11/12; Jón 1/2), a Jób 41 KJV-számozású, a 6. oszlop (`Angol szó állapota`), a mellékletek egyes szövegei („a nem-zsoltár könyvek eltolását az import nem javítja”).
 - **N-F41f — a F41-brief számozási példái hibásak (1Kir 4/5, Jóel 2/3, Neh 3/4).** *(ÚJ, F41.1, megjegyzés)* A brief 2. szakasza ezeket eltolt fejezetként hozta példának; a Strong-illeszkedés szerint a TAHOT_kivonatban a BSB-vel azonos számozásúak (0 eltolt vers); a javítás a brief címsora alatti megjegyzésben van (a címsor változatlan).
 
+## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
+
 
 A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá vált — belépő: `DONTESEK_INDEX.tsv`. A vers-szintű jelöltek nem ide, hanem az `adat/jeloltek.tsv`-be kerültek (16 sor, mind `dontes=nyitva`): HODIT-001 13 alacsony szavazatú TSK-jelölt, MENNY-001 Mt 24:38 + Luk 17:27, ANTROP-001 Fil 1:27. Az alábbiak a nem vers-szintű tételek:
 
