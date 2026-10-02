@@ -1682,6 +1682,8 @@ Terminológia-kivétel: H0595 — accusative; H0068 — accusative; H3789 — cl
 
 ### DT-F38d (b), (c), (d) végrehajtása (F38.261–, zárómenet, Sonnet)
 
+> Felülírva (2026.10.02): a vakpróba után a felhasználó a Sonnet-utat választotta, a sorok visszaállítva, l. DT-F38e/DT-F38f. Az alábbi szakaszban a „kikerültek” és az „újrafordító menet” szöveg ennek megfelelően értendő: a sorok visszakerültek (F38.264–), újrafordítás nincs.
+
 **(b) Szócikkszintű terminológia-kivételek** (jóváhagyva: DT-F38d (b); a terminológiatábla
 általános sorai nem változnak). A kivételt az `emeles.py rogzit --kivetel` adja meg, és a sor
 `megjegyzes` mezőjében indokolva rögzül; az `adat/forditasok.tsv` megfelelő sorai a zárómenetben
