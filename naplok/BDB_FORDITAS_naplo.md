@@ -2394,7 +2394,7 @@ kapu a magyar oldalon csak `.;:—)` utáni számot ismer fel jelölőnek (H6240
 
 | Szócikk | Hely | Miért marad |
 |---|---|---|
-| ~~H4264~~ | `1Móz 33:816t.` | ~~verszám-táblázat híján gépileg nem dönthető~~ **DT-F38g 5: eldöntve** (`lekerdez.py karoli "1Móz 33:8"` van, 33:81 nincs): `1Móz 33:8, összesen 16-szor`; lekerült a listáról |
+| ~~H4264~~ | `1Móz 33:816t.` | ~~verszám-táblázat híján gépileg nem dönthető~~ **DT-F38g 5: eldöntve** (`lekerdez.py karoli "1Móz 33:8"`: a vers van, `proveniencia: scope=range:1Móz 33:8 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-02T16:44Z` [az ellenőr futtatása: ts=2026-10-02T16:37Z, azonos scope/forras/n]; `lekerdez.py karoli "1Móz 33:81"`: „Nincs Károli-szöveg ehhez: 1Móz 33:81” — a lekérdezés itt proveniencia-sort nem ad, az üres eredmény a bizonyíték): `1Móz 33:8, összesen 16-szor`; lekerült a listáról |
 | H4687 | `Zsolt 119:20 t.` | szám nélküli `t.` vagy a 119. zsoltár „20 t.”-je (a kettőspont OCR-hiba?); nem dönthető el |
 | H7043 (#28) | `Ges §67 t.` | nem gyakoriság (nyelvtani §), szándékosan nem érintett |
 

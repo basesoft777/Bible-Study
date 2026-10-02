@@ -439,5 +439,49 @@ class SzellemKisNagybetu(unittest.TestCase):
                 self.assertNotIn('bizonytalan_feloldasok): spirit', m[11], m[1])
 
 
+class ForrasVersOcr(unittest.TestCase):
+    """F38, DT-F38g (5): a `FORRAS_VERS_OCR` csak a `Gen 33:816t.` helyre és csak a
+    2_versszam kapu forrásparaméterére hat."""
+
+    def test_lekepezes_pontosan_egy_tetel(self):
+        self.assertEqual(K.FORRAS_VERS_OCR, {'Gen 33:816t.': 'Gen 33:8 16t.'})
+
+    def test_javitja_az_osszeforrt_helyet(self):
+        self.assertEqual(K._vers_ocr_javit('see Gen 33:816t. and'), 'see Gen 33:8 16t. and')
+
+    def test_mas_hely_nem_valtozik(self):
+        for szoveg in ('Gen 33:81 x', 'Gen 33:816', 'Gen 33:816t', 'Gen 3:816t.', 'Gen 33:8 16t.',
+                       'Ex 33:816t.', 'Gen 34:816t.', 'Gen 33:8; Gen 33:16', 'nincs vers', ''):
+            self.assertEqual(K._vers_ocr_javit(szoveg), szoveg, szoveg)
+
+    def test_csak_a_2_versszam_kapu_kapja_a_javitott_forrast(self):
+        from unittest import mock
+        forras = 'Gen 33:816t. forrás'
+        kapott = {}
+
+        def rogzit(nev):
+            def f(*args):
+                kapott[nev] = args[0]
+                return ('RENDBEN', '')
+            return f
+
+        with mock.patch.object(K._p4, 'ellenoriz_1_gorog_heber', rogzit('1')), \
+                mock.patch.object(K._p4, 'ellenoriz_2_versszam', rogzit('2')), \
+                mock.patch.object(K._p4, 'ellenoriz_6_hosszarany', rogzit('6')), \
+                mock.patch.object(K, 'ellenoriz_karoli', rogzit('3')), \
+                mock.patch.object(K, 'ellenoriz_formazas', rogzit('4')), \
+                mock.patch.object(K, 'ellenoriz_terminologia', rogzit('5')), \
+                mock.patch.object(K, 'ellenoriz_idezojel', rogzit('8')), \
+                mock.patch.object(K, 'ellenoriz_tagolas', rogzit('9')), \
+                mock.patch.object(K, 'ellenoriz_torzs', rogzit('10')), \
+                mock.patch.object(K, 'ellenoriz_konyvek', rogzit('11')):
+            K.kapuk_futtat('BDB', forras, 'fordítás')
+        self.assertEqual(kapott['2'], 'Gen 33:8 16t. forrás')
+        for nev, ertek in kapott.items():
+            if nev != '2':
+                self.assertEqual(ertek, forras, 'a %s. kapu nyers forrást kap' % nev)
+        self.assertEqual(len(kapott), 10)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

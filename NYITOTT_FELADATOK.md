@@ -562,6 +562,15 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
 - **N-F35a — a Macula-generátor Sir/JSir aliasának törlése a #35 lezárása után.** *(ÚJ, F17 javító menet, 2026.10.02; a számot (N-F35a) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
   A generátor a régi `Sir` könyvnévtől függött: a Károli-oldali adatok még `Sir`-t, a könyvtábla már `JSir`-t használ. A kétirányú alias az `eszkozok/f17/macula_kozos.py`-ban (`ALIAS`, `kanoni_nev`, `RAW_NEV`) és a használói (`macula_kk.py`, `macula_import.karoli_cimke`) törölhető, ha a Károli-adat átnevezése megtörtént; utána a `Macula_heber_Siralmak.tsv` újragenerálása a `JSir` címkével.
 
+- **N-F38a — a `FORRAS_VERS_OCR` kapubővítés jóváhagyása.** *(ÚJ, F38 (#38), DT-F38g (5), döntésre vár; a számot (N-F38a) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
+  Az `eszkozok/forditas_kapuk.py` `FORRAS_VERS_OCR` szótára (`Gen 33:816t.` → `Gen 33:8 16t.`) a 2_versszam kapu forrásparaméterében javítja a H4264 összeforrt OCR-helyét; más kapura és más helyre nem hat (egységteszt: `eszkozok/teszt_forditas_kapuk.py`, `ForrasVersOcr`). Kapuszabály-bővítés: a felhasználó jóváhagyása kell. Opciók: (a) jóváhagy; (b) elvet, és a H4264 kivétellel kezelendő.
+
+- **N-F38b — a H7451 és a H4390 Szellem-kisbetű/nagybetű kétsége.** *(ÚJ, F38 (#38), DT-F38g (3), tartalmi döntésre vár; a számot (N-F38b) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
+  H7451 (#28): a BDB maga „divine spirit” (`konkordancia/BDB_teljes_unabridged.tsv:6966`), a DT-F38g (3) betűje szerint nagybetű járna, de a DT-F38f 3. „rossz szellem kisbetűs” szabálya ezzel ütközik. H4390: egy frázis, emberi és isteni értelemben vegyesen. A szöveg jelenleg változatlan.
+
+- **N-F38c — a H5674 „a Szellemről” szövegezés megítélése.** *(ÚJ, F38 (#38), DT-F38g (2), megítélésre vár; a számot (N-F38c) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
+  Az 1Kir 22:24-en a végrehajtó „a Szellemről”-t írt; a brief „az Úr Szelleme” alakja új szót vinne be (a BDB-ben „az Úr” nincs). Opciók: (a) marad „a Szellemről”; (b) „az Úr Szelleme” (új szó, külön döntés).
+
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá vált — belépő: `DONTESEK_INDEX.tsv`. A vers-szintű jelöltek nem ide, hanem az `adat/jeloltek.tsv`-be kerültek (16 sor, mind `dontes=nyitva`): HODIT-001 13 alacsony szavazatú TSK-jelölt, MENNY-001 Mt 24:38 + Luk 17:27, ANTROP-001 Fil 1:27. Az alábbiak a nem vers-szintű tételek:

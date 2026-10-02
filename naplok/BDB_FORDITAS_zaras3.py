@@ -94,6 +94,20 @@ def szellem_ellenorzes(sorok_hu):
     return hibak, osszes
 
 
+def alkalmaz(szoveg, regi, uj):
+    """Egy kezi csere idempotens alkalmazasa. Eredmeny: (uj szoveg, valtozott-e).
+
+    Ha az `uj` mar pontosan egyszer all a szovegben, a csere megtortent (az `uj` a `regi`-t is
+    tartalmazhatja, pl. H5674: a `regi` az `uj` resze), ezert nem nyul hozza. Egyebkent a `regi`
+    pontosan egyszer alljon, kulonben hiba."""
+    if szoveg.count(uj) == 1:
+        return szoveg, False
+    db = szoveg.count(regi)
+    if db != 1:
+        raise SystemExit('a regi reszlet %d-szer all (1 kell): %s' % (db, regi))
+    return szoveg.replace(regi, uj), True
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--ir', action='store_true')
@@ -113,10 +127,14 @@ def main():
         i = sor_ix[sp]
         m = sorok[i].split('\t')
         hu = m[ix['forditas_hu']]
-        db = hu.count(regi)
-        if db != 1:
-            raise SystemExit('%s: a regi reszlet %d-szer all (1 kell): %s' % (sp, db, regi))
-        m[ix['forditas_hu']] = hu.replace(regi, uj)
+        try:
+            uj_hu, valt = alkalmaz(hu, regi, uj)
+        except SystemExit as e:
+            raise SystemExit('%s: %s' % (sp, e))
+        if not valt:
+            print('%s | mar alkalmazva, kihagyva' % sp)
+            continue
+        m[ix['forditas_hu']] = uj_hu
         if JELOLES_F38 not in m[ix['megjegyzes']]:
             m[ix['megjegyzes']] = '; '.join(x for x in (m[ix['megjegyzes']], JELOLES_F38) if x)
         sorok[i] = '\t'.join(m)
@@ -125,6 +143,9 @@ def main():
     for sp, (regi, uj) in MEGJ3.items():
         i = sor_ix[sp]
         m = sorok[i].split('\t')
+        if m[ix['megjegyzes']].count(uj) == 1:
+            print('%s megjegyzes: mar alkalmazva, kihagyva' % sp)
+            continue
         if m[ix['megjegyzes']].count(regi) != 1:
             raise SystemExit('%s: a megjegyzes-jeloles nem egyszer all' % sp)
         m[ix['megjegyzes']] = m[ix['megjegyzes']].replace(regi, uj)
@@ -148,7 +169,7 @@ def main():
         with open(KIMENET, encoding='utf-8', newline='') as fh:
             ts = fh.read().split('\n')
         assert ts[0] == 'szocikk\tszabaly\tregi\tuj\tdb\tiras' and ts[-1] == ''
-        ts = ts[:-1] + ['\t'.join(j) for j in javitasok]
+        ts = ts[:-1] + [j for j in ('\t'.join(x) for x in javitasok) if j not in ts]
         with open(KIMENET, 'w', encoding='utf-8', newline='') as fh:
             fh.write('\n'.join(ts) + '\n')
         print('adat/forditasok.tsv es a javitasi lista irva (+%d sor)' % len(javitasok))
