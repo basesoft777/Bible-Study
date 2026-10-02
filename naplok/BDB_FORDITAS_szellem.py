@@ -32,6 +32,14 @@ import emeles as E  # noqa: E402
 
 UT = E.FORDITASOK_UT
 JELOLES = 'F38.268: az isteni Szellem nagybetűs (DT25)'
+# szócikkszintű terminológia-kivétel (a `spirit` kulcs): ahol az egyetlen
+# szellem-hely isteni, ott a javítás után nincs kisbetűs „szellem”, amelyet az
+# 5. kapu a `spirit -> szellem` sorra követel (a DT25 jóváhagyott alakjai
+# nagybetűsek: Szent Szellem, Isten Szelleme, a Szellem)
+KIVETEL_STRONG = {'H5307', 'H5414', 'H7760'}
+KIVETEL_INDOK = ('a „spirit” kulcs szócikkszintű kivétele: az egyetlen szellem-hely isteni, ezért '
+                 'nagybetűs (DT25 a), az 5. kapu a kisbetűs „szellem” alakot várja')
+KIVETEL_RESZ = 'terminológia-kivétel (bizonytalan_feloldasok): spirit'
 
 # (strong, pont, regi, uj, indok)
 SZELLEM = [
@@ -97,11 +105,16 @@ def main():
         if 'F38 BDB_FORDITAS' not in m[ix['megjegyzes']]:
             raise SystemExit('nem F38-as sor: %s' % sp)
         db = m[ix['forditas_hu']].count(regi)
-        if db != 1:
+        if db == 0 and m[ix['forditas_hu']].count(uj) == 1:
+            print('(mar alkalmazva) ', end='')
+        elif db != 1:
             raise SystemExit('%s %s: a reszlet %d-szer all (1 kell): %s' % (sp, pont, db, regi))
-        m[ix['forditas_hu']] = m[ix['forditas_hu']].replace(regi, uj)
+        else:
+            m[ix['forditas_hu']] = m[ix['forditas_hu']].replace(regi, uj)
         if JELOLES not in m[ix['megjegyzes']]:
             m[ix['megjegyzes']] = '; '.join(x for x in (m[ix['megjegyzes']], JELOLES) if x)
+        if strong in KIVETEL_STRONG and KIVETEL_RESZ not in m[ix['megjegyzes']]:
+            m[ix['megjegyzes']] = '; '.join((m[ix['megjegyzes']], KIVETEL_INDOK, KIVETEL_RESZ))
         sorok[i] = '\t'.join(m)
         irt.add(i)
         print('%s | %s | %s => %s' % (sp, pont, regi, uj))
