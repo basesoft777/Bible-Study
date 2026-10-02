@@ -108,7 +108,7 @@ A 2Sám, az Ezsd és a Dán okát könyvenként egy mondatban kell összefoglaln
 - Import: minden ószövetségi könyv, amely a küszöböt eléri. Az illesztetlen fejezetek kimaradnak, jelölve.
 - A 31 korábbi könyv importja a 3.1 döntése szerint változik. Ha az átszámozást nem hagyod jóvá, ezeknek a soroknak bájtazonosnak kell maradniuk (nulla-diff: `naplok/F41_nulladiff.txt`).
 
-### 3.4 Az üres „Angol szó” jelölése (DT6 (e) — jóváhagyva)
+### 3.4 Az üres „Angol szó” jelölése (DT6 (e))
 
 A DT6 (e) pontját a felhasználó utólag jóváhagyta (2026.10.02); az `Angol szó állapota` oszlop (PR #135) ezzel elfogadott kimenet, a lépés nem feltételes.
 
