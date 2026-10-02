@@ -5,7 +5,8 @@ kod: ALLAPOT_ELLENTMONDASOK
 tipus: naplozas
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/f47-allapot-ellentmondasok
 ad: felhasznalo
 kovetkezo: "Code — J1 3. pont csak ellenőrzés (`feladatok.py jeloltek` futtatása, kézi szerkesztés nincs); a #47 ne fusson #26-tal egy csomagban, futó #26 lezárásáig várjon"
 olvas: [F22_KAROLI_STRONG_BRIEF.md, F24_LICENC_BRIEF.md, DONTESEK.md, FELADATOK.md]
