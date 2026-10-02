@@ -1,0 +1,940 @@
+# forras-URL: konkordancia/BSB_Strongs.tsv + konkordancia/Macula_heber_*.tsv (WLC, `ref` oszlop)
+# commit/verzio: WLC: Macula Hebrew (l. naplok/F17_import_naplo.md)
+# letoltes datuma: 2026-10-02
+# futtatasi parancs: python eszkozok/fj2/bsb_wlc_versszam_ellenorzes.py
+# F41 9. lepes (DT-F41f): a BSB_Strongs.tsv Igehely-versszamozasa vs WLC, VERSSZINTEN; l. a szkript docstringjet (kategoriak, igazolas). Konzisztencia-ellenorzes (NEM fuggetlen: ugyanaz a vers_igazolt a fajlbol): a 7. oszlop minden verse ujraszamolva es egyezik a fajllal (0 elteres). Fuggetlen ellenorzes (sajat Macula-olvasas, Jaccard): mind a 20180 mt-vers WLC-azonos-szamu verse az egyetlen legjobb Jaccard-egyezes (0 hiba); 502 nem-mt vers Jaccard-egyertelmu, de a szigorubb kriterium (b-e) nem igazolja
+# kategoria-darabszamok (fejezet): mt=610; nem_igazolt=29; nincs_bsb_sor=48; reszben_mt=243
+# Igehely-versek a 7. oszlop szerint: mt=20180; kjv=34; ellenorizetlen=1477 | sorok: mt=260243; kjv=223; ellenorizetlen=17659
+# a nem teljesen mt fejezetek (reszben_mt / nem_igazolt): 1Móz 5 (reszben_mt); 1Móz 6 (reszben_mt); 1Móz 11 (reszben_mt); 1Móz 17 (reszben_mt); 1Móz 23 (reszben_mt); 1Móz 25 (reszben_mt); 1Móz 26 (reszben_mt); 1Móz 30 (reszben_mt); 1Móz 31 (reszben_mt); 1Móz 32 (nem_igazolt); 1Móz 34 (reszben_mt); 1Móz 36 (reszben_mt); 1Móz 39 (reszben_mt); 1Móz 41 (reszben_mt); 1Móz 42 (reszben_mt); 1Móz 46 (reszben_mt); 1Móz 47 (reszben_mt); 1Móz 49 (reszben_mt); 2Móz 6 (reszben_mt); 2Móz 7 (reszben_mt); 2Móz 8 (nem_igazolt); 2Móz 9 (reszben_mt); 2Móz 10 (reszben_mt); 2Móz 11 (reszben_mt); 2Móz 13 (reszben_mt); 2Móz 14 (reszben_mt); 2Móz 19 (reszben_mt); 2Móz 21 (reszben_mt); 2Móz 22 (nem_igazolt); 2Móz 24 (reszben_mt); 2Móz 25 (reszben_mt); 2Móz 26 (reszben_mt); 2Móz 27 (reszben_mt); 2Móz 28 (reszben_mt); 2Móz 29 (reszben_mt); 2Móz 30 (reszben_mt); 2Móz 31 (reszben_mt); 2Móz 32 (reszben_mt); 2Móz 35 (reszben_mt); 2Móz 36 (reszben_mt); 2Móz 37 (reszben_mt); 2Móz 38 (reszben_mt); 2Móz 39 (reszben_mt); 2Móz 40 (reszben_mt); 3Móz 1 (reszben_mt); 3Móz 2 (reszben_mt); 3Móz 3 (reszben_mt); 3Móz 4 (reszben_mt); 3Móz 5 (reszben_mt); 3Móz 6 (nem_igazolt); 3Móz 7 (reszben_mt); 3Móz 8 (reszben_mt); 3Móz 9 (reszben_mt); 3Móz 10 (reszben_mt); 3Móz 11 (reszben_mt); 3Móz 12 (reszben_mt); 3Móz 13 (reszben_mt); 3Móz 14 (reszben_mt); 3Móz 15 (reszben_mt); 3Móz 16 (reszben_mt); 3Móz 17 (reszben_mt); 3Móz 18 (reszben_mt); 3Móz 19 (reszben_mt); 3Móz 20 (reszben_mt); 3Móz 21 (reszben_mt); 3Móz 22 (reszben_mt); 3Móz 23 (reszben_mt); 3Móz 24 (reszben_mt); 3Móz 25 (reszben_mt); 3Móz 27 (reszben_mt); 4Móz 1 (reszben_mt); 4Móz 2 (reszben_mt); 4Móz 3 (reszben_mt); 4Móz 4 (reszben_mt); 4Móz 5 (reszben_mt); 4Móz 6 (reszben_mt); 4Móz 7 (reszben_mt); 4Móz 8 (reszben_mt); 4Móz 9 (reszben_mt); 4Móz 10 (reszben_mt); 4Móz 14 (reszben_mt); 4Móz 15 (reszben_mt); 4Móz 16 (reszben_mt); 4Móz 17 (nem_igazolt); 4Móz 18 (reszben_mt); 4Móz 19 (reszben_mt); 4Móz 20 (reszben_mt); 4Móz 21 (reszben_mt); 4Móz 22 (reszben_mt); 4Móz 23 (reszben_mt); 4Móz 24 (reszben_mt); 4Móz 25 (reszben_mt); 4Móz 26 (reszben_mt); 4Móz 27 (reszben_mt); 4Móz 28 (reszben_mt); 4Móz 29 (reszben_mt); 4Móz 30 (reszben_mt); 4Móz 31 (reszben_mt); 4Móz 33 (reszben_mt); 4Móz 34 (reszben_mt); 4Móz 35 (reszben_mt); 5Móz 1 (reszben_mt); 5Móz 2 (reszben_mt); 5Móz 4 (reszben_mt); 5Móz 5 (reszben_mt); 5Móz 9 (reszben_mt); 5Móz 10 (reszben_mt); 5Móz 12 (reszben_mt); 5Móz 13 (nem_igazolt); 5Móz 22 (reszben_mt); 5Móz 23 (nem_igazolt); 5Móz 29 (nem_igazolt); Józs 3 (reszben_mt); Józs 4 (reszben_mt); Józs 5 (reszben_mt); Józs 6 (reszben_mt); Józs 9 (reszben_mt); Józs 10 (reszben_mt); Józs 12 (reszben_mt); Józs 13 (reszben_mt); Józs 22 (reszben_mt); Józs 24 (reszben_mt); Bír 2 (reszben_mt); Bír 3 (reszben_mt); Ruth 2 (reszben_mt); Ruth 3 (reszben_mt); Ruth 4 (reszben_mt); 1Sám 3 (reszben_mt); 1Sám 15 (reszben_mt); 1Sám 20 (reszben_mt); 1Sám 21 (nem_igazolt); 1Kir 2 (reszben_mt); 1Kir 4 (reszben_mt); 1Kir 5 (nem_igazolt); 1Kir 6 (reszben_mt); 1Kir 8 (reszben_mt); 1Kir 13 (reszben_mt); 1Kir 14 (reszben_mt); 1Kir 15 (reszben_mt); 1Kir 16 (reszben_mt); 1Kir 17 (reszben_mt); 1Kir 18 (reszben_mt); 1Kir 19 (reszben_mt); 1Kir 21 (reszben_mt); 1Kir 22 (reszben_mt); 2Kir 1 (reszben_mt); 2Kir 7 (reszben_mt); 2Kir 11 (reszben_mt); 2Kir 12 (nem_igazolt); 2Kir 13 (reszben_mt); 2Kir 14 (reszben_mt); 2Kir 15 (reszben_mt); 2Kir 23 (reszben_mt); 2Kir 24 (reszben_mt); 1Krón 6 (nem_igazolt); 1Krón 9 (reszben_mt); 1Krón 12 (reszben_mt); 1Krón 24 (reszben_mt); 1Krón 25 (reszben_mt); 2Krón 2 (nem_igazolt); 2Krón 6 (reszben_mt); 2Krón 7 (reszben_mt); 2Krón 14 (nem_igazolt); Neh 4 (nem_igazolt); Neh 7 (reszben_mt); Neh 9 (reszben_mt); Neh 10 (nem_igazolt); Neh 11 (reszben_mt); Eszt 4 (reszben_mt); Eszt 9 (reszben_mt); Jób 1 (reszben_mt); Jób 2 (reszben_mt); Jób 34 (reszben_mt); Jób 40 (reszben_mt); Jób 41 (nem_igazolt); Zsolt 24 (reszben_mt); Zsolt 42 (reszben_mt); Zsolt 43 (reszben_mt); Zsolt 46 (reszben_mt); Zsolt 47 (reszben_mt); Zsolt 57 (reszben_mt); Zsolt 59 (reszben_mt); Zsolt 62 (reszben_mt); Zsolt 67 (reszben_mt); Zsolt 80 (reszben_mt); Zsolt 106 (reszben_mt); Zsolt 107 (reszben_mt); Zsolt 114 (reszben_mt); Zsolt 116 (reszben_mt); Zsolt 118 (reszben_mt); Zsolt 144 (reszben_mt); Péld 9 (reszben_mt); Préd 5 (nem_igazolt); Én 2 (reszben_mt); Én 3 (reszben_mt); Én 6 (reszben_mt); Én 7 (nem_igazolt); Ézs 2 (reszben_mt); Ézs 37 (reszben_mt); Ézs 38 (reszben_mt); Ézs 39 (reszben_mt); Ézs 63 (reszben_mt); Ézs 64 (nem_igazolt); Jer 1 (reszben_mt); Jer 2 (reszben_mt); Jer 5 (reszben_mt); Jer 9 (nem_igazolt); Jer 13 (reszben_mt); Jer 16 (reszben_mt); Jer 18 (reszben_mt); Jer 25 (reszben_mt); Jer 29 (reszben_mt); Jer 30 (reszben_mt); Jer 32 (reszben_mt); Jer 33 (reszben_mt); Jer 34 (reszben_mt); Jer 35 (reszben_mt); Jer 36 (reszben_mt); Jer 50 (reszben_mt); JSir 3 (reszben_mt); Ez 6 (reszben_mt); Ez 7 (reszben_mt); Ez 10 (reszben_mt); Ez 11 (reszben_mt); Ez 12 (reszben_mt); Ez 13 (reszben_mt); Ez 14 (reszben_mt); Ez 15 (reszben_mt); Ez 16 (reszben_mt); Ez 17 (reszben_mt); Ez 18 (reszben_mt); Ez 20 (reszben_mt); Ez 21 (nem_igazolt); Ez 22 (reszben_mt); Ez 23 (reszben_mt); Ez 24 (reszben_mt); Ez 25 (reszben_mt); Ez 26 (reszben_mt); Ez 27 (reszben_mt); Ez 28 (reszben_mt); Ez 29 (reszben_mt); Ez 30 (reszben_mt); Ez 32 (reszben_mt); Ez 33 (reszben_mt); Ez 34 (reszben_mt); Ez 35 (reszben_mt); Ez 36 (reszben_mt); Ez 37 (reszben_mt); Ez 38 (reszben_mt); Ez 40 (reszben_mt); Ez 42 (reszben_mt); Ez 45 (reszben_mt); Ez 46 (reszben_mt); Hós 1 (reszben_mt); Hós 2 (nem_igazolt); Hós 13 (reszben_mt); Hós 14 (nem_igazolt); Jóel 2 (reszben_mt); Jóel 3 (nem_igazolt); Ámós 7 (reszben_mt); Mik 5 (nem_igazolt); Náh 1 (reszben_mt); Náh 2 (nem_igazolt); Hag 1 (reszben_mt); Hag 2 (reszben_mt); Zak 1 (reszben_mt); Zak 2 (nem_igazolt); Zak 4 (reszben_mt); Zak 6 (reszben_mt); Zak 7 (reszben_mt); Zak 8 (reszben_mt); Mal 4 (nem_igazolt)
+# FIGYELEM: az `ellenorizetlen` a WLC-vel EGYERTELMUEN NEM IGAZOLT vers (DT-F41g), NEM allitja, hogy a szam hibas; nagy resze formulas dontetlen (azonos Strong-halmazu szomszed versek) KJV = MT fejezetekben, a tobbi hibrid reszvers / izolalt egyezes / a WLC-ben nincs ilyen szamu vers vagy ures a WLC-vers Strong-halmaza; a `kjv` csak a tenylegesen KJV != MT Job 41 (BSB(KJV)-szam marad). Az atszamozas (-> WLC) kulon N-tetel (N-F41g, N-F41h), nem az F41 feladata.
+konyv	fejezet	bsb_versek	bsb_max	wlc_versek	wlc_max	mt_versek	kjv_versek	ellenorizetlen_versek	sorok_mt	sorok_kjv	sorok_ellenorizetlen	ellenorizetlen_versek_lista	bsb_nincs_wlcben	wlc_nincs_bsbben	kategoria
+1Móz	1	31	31	31	31	31	0	0	427	0	0			0	mt
+1Móz	2	25	25	25	25	25	0	0	324	0	0			0	mt
+1Móz	3	24	24	24	24	24	0	0	340	0	0			0	mt
+1Móz	4	26	26	26	26	26	0	0	336	0	0			0	mt
+1Móz	5	32	32	32	32	29	0	3	331	0	34	25 26 28		0	reszben_mt
+1Móz	6	22	22	22	22	20	0	2	274	0	24	11 13		0	reszben_mt
+1Móz	7	24	24	24	24	24	0	0	331	0	0			0	mt
+1Móz	8	22	22	22	22	22	0	0	308	0	0			0	mt
+1Móz	9	29	29	29	29	29	0	0	346	0	0			0	mt
+1Móz	10	32	32	32	32	32	0	0	286	0	0			0	mt
+1Móz	11	32	32	32	32	30	0	2	363	0	22	16 17		0	reszben_mt
+1Móz	12	20	20	20	20	20	0	0	261	0	0			0	mt
+1Móz	13	18	18	18	18	18	0	0	237	0	0			0	mt
+1Móz	14	24	24	24	24	24	0	0	338	0	0			0	mt
+1Móz	15	21	21	21	21	21	0	0	250	0	0			0	mt
+1Móz	16	16	16	16	16	16	0	0	215	0	0			0	mt
+1Móz	17	27	27	27	27	25	0	2	311	0	36	23 26		0	reszben_mt
+1Móz	18	33	33	33	33	33	0	0	436	0	0			0	mt
+1Móz	19	38	38	38	38	38	0	0	553	0	0			0	mt
+1Móz	20	18	18	18	18	18	0	0	271	0	0			0	mt
+1Móz	21	34	34	34	34	34	0	0	421	0	0			0	mt
+1Móz	22	24	24	24	24	24	0	0	360	0	0			0	mt
+1Móz	23	20	20	20	20	17	0	3	233	0	29	5 10 14		0	reszben_mt
+1Móz	24	67	67	67	67	67	0	0	901	0	0			0	mt
+1Móz	25	34	34	34	34	32	0	2	383	0	15	31 33		0	reszben_mt
+1Móz	26	35	35	35	35	33	0	2	445	0	11	6 17		0	reszben_mt
+1Móz	27	46	46	46	46	46	0	0	611	0	0			0	mt
+1Móz	28	22	22	22	22	22	0	0	309	0	0			0	mt
+1Móz	29	35	35	35	35	35	0	0	454	0	0			0	mt
+1Móz	30	43	43	43	43	39	0	4	516	0	27	5 7 10 12		0	reszben_mt
+1Móz	31	55	55	54	54	54	0	1	746	0	12	55	55	0	reszben_mt
+1Móz	32	32	32	33	33	0	0	32	0	0	436	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32		1	nem_igazolt
+1Móz	33	20	20	20	20	20	0	0	259	0	0			0	mt
+1Móz	34	31	31	31	31	30	0	1	398	0	5	31		0	reszben_mt
+1Móz	35	29	29	29	29	29	0	0	372	0	0			0	mt
+1Móz	36	43	43	43	43	41	0	2	466	0	22	21 30		0	reszben_mt
+1Móz	37	36	36	36	36	36	0	0	482	0	0			0	mt
+1Móz	38	30	30	30	30	30	0	0	397	0	0			0	mt
+1Móz	39	23	23	23	23	21	0	2	316	0	21	15 18		0	reszben_mt
+1Móz	40	23	23	23	23	23	0	0	308	0	0			0	mt
+1Móz	41	57	57	57	57	56	0	1	760	0	8	6		0	reszben_mt
+1Móz	42	38	38	38	38	36	0	2	486	0	32	13 32		0	reszben_mt
+1Móz	43	34	34	34	34	34	0	0	468	0	0			0	mt
+1Móz	44	34	34	34	34	34	0	0	445	0	0			0	mt
+1Móz	45	28	28	28	28	28	0	0	388	0	0			0	mt
+1Móz	46	34	34	34	34	33	0	1	389	0	20	31		0	reszben_mt
+1Móz	47	31	31	31	31	30	0	1	489	0	9	5		0	reszben_mt
+1Móz	48	22	22	22	22	22	0	0	340	0	0			0	mt
+1Móz	49	33	33	33	33	32	0	1	343	0	20	30		0	reszben_mt
+1Móz	50	26	26	26	26	26	0	0	370	0	0			0	mt
+2Móz	1	22	22	22	22	22	0	0	237	0	0			0	mt
+2Móz	2	25	25	25	25	25	0	0	329	0	0			0	mt
+2Móz	3	22	22	22	22	22	0	0	393	0	0			0	mt
+2Móz	4	31	31	31	31	31	0	0	443	0	0			0	mt
+2Móz	5	23	23	23	23	23	0	0	311	0	0			0	mt
+2Móz	6	30	30	30	30	25	0	5	331	0	60	2 10 12 29 30		0	reszben_mt
+2Móz	7	25	25	29	29	16	0	9	230	0	141	1 6 8 10 13 18 19 20 22		4	reszben_mt
+2Móz	8	32	32	28	28	0	0	32	0	0	468	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32	29 30 31 32	0	nem_igazolt
+2Móz	9	35	35	35	35	34	0	1	505	0	13	35		0	reszben_mt
+2Móz	10	29	29	29	29	28	0	1	479	0	10	20		0	reszben_mt
+2Móz	11	10	10	10	10	9	0	1	153	0	20	10		0	reszben_mt
+2Móz	12	51	51	51	51	51	0	0	729	0	0			0	mt
+2Móz	13	22	22	22	22	19	0	3	273	0	41	1 5 11		0	reszben_mt
+2Móz	14	31	31	31	31	29	0	2	449	0	17	1 15		0	reszben_mt
+2Móz	15	27	27	27	27	27	0	0	318	0	0			0	mt
+2Móz	16	36	36	36	36	36	0	0	540	0	0			0	mt
+2Móz	17	16	16	16	16	16	0	0	242	0	0			0	mt
+2Móz	18	27	27	27	27	27	0	0	413	0	0			0	mt
+2Móz	19	25	25	25	25	23	0	2	345	0	21	21 25		0	reszben_mt
+2Móz	20	26	26	26	26	26	0	0	304	0	0			0	mt
+2Móz	21	36	36	37	37	33	0	3	392	0	33	12 18 20		1	reszben_mt
+2Móz	22	31	31	30	30	0	0	31	0	0	369	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31	31	0	nem_igazolt
+2Móz	23	33	33	33	33	33	0	0	389	0	0			0	mt
+2Móz	24	18	18	18	18	17	0	1	242	0	8	9		0	reszben_mt
+2Móz	25	40	40	40	40	34	0	6	370	0	60	11 13 16 21 24 28		0	reszben_mt
+2Móz	26	37	37	37	37	35	0	2	444	0	34	19 21		0	reszben_mt
+2Móz	27	21	21	21	21	19	0	2	237	0	25	10 11		0	reszben_mt
+2Móz	28	43	43	43	43	38	0	5	518	0	65	6 11 13 14 15		0	reszben_mt
+2Móz	29	46	46	46	46	44	0	2	597	0	39	16 20		0	reszben_mt
+2Móz	30	38	38	38	38	31	0	7	389	0	60	11 17 22 27 28 29 34		0	reszben_mt
+2Móz	31	18	18	18	18	14	0	4	195	0	33	1 8 9 12		0	reszben_mt
+2Móz	32	35	35	35	35	28	0	7	409	0	117	1 9 23 26 30 31 33		0	reszben_mt
+2Móz	33	23	23	23	23	23	0	0	350	0	0			0	mt
+2Móz	34	35	35	35	35	35	0	0	529	0	0			0	mt
+2Móz	35	35	35	35	35	29	0	6	382	0	55	6 8 9 23 27 28		0	reszben_mt
+2Móz	36	38	38	38	38	36	0	2	481	0	34	24 26		0	reszben_mt
+2Móz	37	29	29	29	29	24	0	5	308	0	49	4 11 15 26 28		0	reszben_mt
+2Móz	38	31	31	31	31	29	0	2	389	0	22	10 11		0	reszben_mt
+2Móz	39	43	43	43	43	37	0	6	488	0	77	2 8 32 35 42 43		0	reszben_mt
+2Móz	40	38	38	38	38	32	0	6	368	0	67	5 7 16 20 28 30		0	reszben_mt
+3Móz	1	17	17	17	17	15	0	2	223	0	30	9 13		0	reszben_mt
+3Móz	2	16	16	16	16	14	0	2	182	0	18	3 10		0	reszben_mt
+3Móz	3	17	17	17	17	9	0	8	130	0	120	3 4 8 10 11 13 15 16		0	reszben_mt
+3Móz	4	35	35	35	35	22	0	13	339	0	197	1 6 7 9 16 17 18 24 25 26 29 30 33		0	reszben_mt
+3Móz	5	19	19	26	26	18	0	1	313	0	5	14		7	reszben_mt
+3Móz	6	30	30	23	23	0	0	30	0	0	402	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30	24 25 26 27 28 29 30	0	nem_igazolt
+3Móz	7	38	38	38	38	35	0	3	453	0	20	22 27 28		0	reszben_mt
+3Móz	8	36	36	36	36	35	0	1	564	0	5	1		0	reszben_mt
+3Móz	9	24	24	24	24	23	0	1	309	0	8	11		0	reszben_mt
+3Móz	10	20	20	20	20	18	0	2	301	0	23	3 8		0	reszben_mt
+3Móz	11	47	47	47	47	46	0	1	554	0	8	1		0	reszben_mt
+3Móz	12	8	8	8	8	7	0	1	113	0	5	1		0	reszben_mt
+3Móz	13	59	59	59	59	45	0	14	667	0	214	1 2 3 9 13 17 21 22 26 27 31 47 50 52		0	reszben_mt
+3Móz	14	57	57	57	57	45	0	12	647	0	169	1 5 12 14 16 17 18 24 27 29 33 50		0	reszben_mt
+3Móz	15	33	33	33	33	26	0	7	358	0	87	1 10 11 15 21 22 27		0	reszben_mt
+3Móz	16	34	34	34	34	31	0	3	492	0	54	2 6 11		0	reszben_mt
+3Móz	17	16	16	16	16	15	0	1	266	0	5	1		0	reszben_mt
+3Móz	18	30	30	30	30	22	0	8	260	0	78	1 2 7 8 9 11 14 16		0	reszben_mt
+3Móz	19	37	37	37	37	36	0	1	425	0	5	1		0	reszben_mt
+3Móz	20	27	27	27	27	25	0	2	402	0	13	1 7		0	reszben_mt
+3Móz	21	24	24	24	24	23	0	1	292	0	5	16		0	reszben_mt
+3Móz	22	33	33	33	33	30	0	3	407	0	15	1 17 26		0	reszben_mt
+3Móz	23	44	44	44	44	29	0	15	429	0	155	1 2 4 7 8 9 21 23 25 26 31 33 35 36 37		0	reszben_mt
+3Móz	24	23	23	23	23	21	0	2	261	0	10	1 13		0	reszben_mt
+3Móz	25	55	55	55	55	54	0	1	668	0	7	1		0	reszben_mt
+3Móz	26	46	46	46	46	46	0	0	556	0	0			0	mt
+3Móz	27	34	34	34	34	30	0	4	409	0	46	13 15 19 27		0	reszben_mt
+4Móz	1	54	54	54	54	48	0	6	550	0	38	1 6 7 8 9 48		0	reszben_mt
+4Móz	2	34	34	34	34	24	0	10	251	0	90	1 6 8 11 15 16 19 28 30 34		0	reszben_mt
+4Móz	3	51	51	51	51	45	0	6	532	0	58	5 11 14 41 44 45		0	reszben_mt
+4Móz	4	49	49	49	49	36	0	13	514	0	146	1 10 12 17 21 29 30 32 35 38 39 42 43		0	reszben_mt
+4Móz	5	31	31	31	31	26	0	5	403	0	48	1 5 11 24 27		0	reszben_mt
+4Móz	6	27	27	27	27	25	0	2	347	0	10	1 22		0	reszben_mt
+4Móz	7	89	89	89	89	39	0	50	566	0	514	4 11 13 14 15 16 19 20 21 22 25 26 27 28 31 32 33 34 37 38 39 40 43 44 45 46 49 50 51 52 55 56 57 58 61 62 63 64 67 68 69 70 73 74 75 76 79 80 81 82		0	reszben_mt
+4Móz	8	26	26	26	26	23	0	3	339	0	15	1 5 23		0	reszben_mt
+4Móz	9	23	23	23	23	21	0	2	331	0	19	1 9		0	reszben_mt
+4Móz	10	36	36	36	36	34	0	2	343	0	31	1 29		0	reszben_mt
+4Móz	11	35	35	35	35	35	0	0	534	0	0			0	mt
+4Móz	12	16	16	16	16	16	0	0	192	0	0			0	mt
+4Móz	13	33	33	33	33	33	0	0	386	0	0			0	mt
+4Móz	14	45	45	45	45	44	0	1	619	0	7	26		0	reszben_mt
+4Móz	15	41	41	41	41	37	0	4	471	0	29	1 17 35 37		0	reszben_mt
+4Móz	16	50	50	35	35	30	0	20	417	0	276	3 15 16 20 23 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50	36 37 38 39 40 41 42 43 44 45 46 47 48 49 50	0	reszben_mt
+4Móz	17	13	13	28	28	0	0	13	0	0	180	1 2 3 4 5 6 7 8 9 10 11 12 13		15	nem_igazolt
+4Móz	18	32	32	32	32	31	0	1	494	0	5	25		0	reszben_mt
+4Móz	19	22	22	22	22	21	0	1	334	0	7	1		0	reszben_mt
+4Móz	20	29	29	29	29	28	0	1	405	0	5	7		0	reszben_mt
+4Móz	21	35	35	35	35	34	0	1	449	0	17	22		0	reszben_mt
+4Móz	22	41	41	41	41	39	0	2	619	0	18	14 39		0	reszben_mt
+4Móz	23	30	30	30	30	25	0	5	320	0	57	1 5 16 22 29		0	reszben_mt
+4Móz	24	25	25	25	25	23	0	2	282	0	22	3 15		0	reszben_mt
+4Móz	25	18	18	19	19	16	0	2	215	0	10	10 16		1	reszben_mt
+4Móz	26	65	65	65	65	62	0	3	652	0	23	1 11 52		0	reszben_mt
+4Móz	27	23	23	23	23	17	0	6	234	0	73	6 10 11 12 15 18		0	reszben_mt
+4Móz	28	31	31	31	31	22	0	9	265	0	77	1 12 20 21 22 25 28 29 30		0	reszben_mt
+4Móz	29	39	39	39	39	16	0	23	209	0	205	1 3 4 5 9 10 12 14 16 18 19 21 22 24 25 27 28 30 31 33 34 37 38		0	reszben_mt
+4Móz	30	17	17	17	17	16	0	1	242	0	13	2		0	reszben_mt
+4Móz	31	54	54	54	54	42	0	12	584	0	91	1 3 21 25 33 34 38 39 40 44 45 46		0	reszben_mt
+4Móz	32	42	42	42	42	42	0	0	546	0	0			0	mt
+4Móz	33	56	56	56	56	46	0	10	397	0	58	16 17 19 20 31 32 33 35 46 50		0	reszben_mt
+4Móz	34	29	29	29	29	24	0	5	255	0	36	1 6 7 10 16		0	reszben_mt
+4Móz	35	34	34	34	34	30	0	4	426	0	40	1 9 19 21		0	reszben_mt
+4Móz	36	13	13	13	13	13	0	0	210	0	0			0	mt
+5Móz	1	46	46	46	46	41	0	5	559	0	72	6 20 25 41 42		0	reszben_mt
+5Móz	2	37	37	37	37	33	0	4	463	0	46	2 9 17 31		0	reszben_mt
+5Móz	3	29	29	29	29	29	0	0	448	0	0			0	mt
+5Móz	4	49	49	49	49	47	0	2	751	0	41	42 46		0	reszben_mt
+5Móz	5	33	33	33	33	32	0	1	458	0	2	17		0	reszben_mt
+5Móz	6	25	25	25	25	25	0	0	308	0	0			0	mt
+5Móz	7	26	26	26	26	26	0	0	393	0	0			0	mt
+5Móz	8	20	20	20	20	20	0	0	282	0	0			0	mt
+5Móz	9	29	29	29	29	28	0	1	486	0	7	24		0	reszben_mt
+5Móz	10	22	22	22	22	21	0	1	295	0	21	8		0	reszben_mt
+5Móz	11	32	32	32	32	32	0	0	491	0	0			0	mt
+5Móz	12	32	32	31	31	27	0	5	464	0	57	4 16 24 31 32	32	0	reszben_mt
+5Móz	13	18	18	19	19	0	0	18	0	0	305	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18		1	nem_igazolt
+5Móz	14	29	29	29	29	29	0	0	339	0	0			0	mt
+5Móz	15	23	23	23	23	23	0	0	334	0	0			0	mt
+5Móz	16	22	22	22	22	22	0	0	322	0	0			0	mt
+5Móz	17	20	20	20	20	20	0	0	349	0	0			0	mt
+5Móz	18	22	22	22	22	22	0	0	295	0	0			0	mt
+5Móz	19	21	21	21	21	21	0	0	316	0	0			0	mt
+5Móz	20	20	20	20	20	20	0	0	309	0	0			0	mt
+5Móz	21	23	23	23	23	23	0	0	337	0	0			0	mt
+5Móz	22	30	30	29	29	29	0	1	425	0	10	30	30	0	reszben_mt
+5Móz	23	25	25	26	26	0	0	25	0	0	317	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25		1	nem_igazolt
+5Móz	24	22	22	22	22	22	0	0	317	0	0			0	mt
+5Móz	25	19	19	19	19	19	0	0	247	0	0			0	mt
+5Móz	26	19	19	19	19	19	0	0	309	0	0			0	mt
+5Móz	27	26	26	26	26	26	0	0	323	0	0			0	mt
+5Móz	28	68	68	69	69	68	0	0	943	0	0			1	mt
+5Móz	29	29	29	28	28	0	0	29	0	0	445	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29	29	0	nem_igazolt
+5Móz	30	20	20	20	20	20	0	0	318	0	0			0	mt
+5Móz	31	30	30	30	30	30	0	0	543	0	0			0	mt
+5Móz	32	52	52	52	52	52	0	0	604	0	0			0	mt
+5Móz	33	29	29	29	29	29	0	0	328	0	0			0	mt
+5Móz	34	12	12	12	12	12	0	0	176	0	0			0	mt
+Józs	1	18	18	18	18	18	0	0	306	0	0			0	mt
+Józs	2	24	24	24	24	24	0	0	391	0	0			0	mt
+Józs	3	17	17	17	17	14	0	3	248	0	43	5 7 9		0	reszben_mt
+Józs	4	24	24	24	24	21	0	3	345	0	38	1 5 15		0	reszben_mt
+Józs	5	15	15	15	15	11	0	4	205	0	75	2 9 14 15		0	reszben_mt
+Józs	6	27	27	27	27	25	0	2	431	0	37	9 13		0	reszben_mt
+Józs	7	26	26	26	26	26	0	0	489	0	0			0	mt
+Józs	8	35	35	35	35	35	0	0	610	0	0			0	mt
+Józs	9	27	27	27	27	26	0	1	386	0	9	3		0	reszben_mt
+Józs	10	43	43	43	43	41	0	2	736	0	16	15 43		0	reszben_mt
+Józs	11	23	23	23	23	23	0	0	402	0	0			0	mt
+Józs	12	24	24	24	24	23	0	1	233	0	16	5		0	reszben_mt
+Józs	13	33	33	33	33	31	0	2	417	0	17	11 20		0	reszben_mt
+Józs	14	15	15	15	15	15	0	0	275	0	0			0	mt
+Józs	15	63	63	63	63	63	0	0	544	0	0			0	mt
+Józs	16	10	10	10	10	10	0	0	123	0	0			0	mt
+Józs	17	18	18	18	18	18	0	0	323	0	0			0	mt
+Józs	18	28	28	28	28	28	0	0	398	0	0			0	mt
+Józs	19	51	51	51	51	51	0	0	480	0	0			0	mt
+Józs	20	9	9	9	9	9	0	0	168	0	0			0	mt
+Józs	21	45	45	45	45	45	0	0	578	0	0			0	mt
+Józs	22	34	34	34	34	33	0	1	643	0	29	5		0	reszben_mt
+Józs	23	16	16	16	16	16	0	0	284	0	0			0	mt
+Józs	24	33	33	33	33	31	0	2	533	0	29	19 21		0	reszben_mt
+Bír	1	36	36	36	36	36	0	0	514	0	0			0	mt
+Bír	2	23	23	23	23	22	0	1	342	0	10	11		0	reszben_mt
+Bír	3	31	31	31	31	30	0	1	457	0	16	7		0	reszben_mt
+Bír	4	24	24	24	24	24	0	0	421	0	0			0	mt
+Bír	5	31	31	31	31	31	0	0	364	0	0			0	mt
+Bír	6	40	40	40	40	40	0	0	663	0	0			0	mt
+Bír	7	25	25	25	25	25	0	0	499	0	0			0	mt
+Bír	8	35	35	35	35	35	0	0	516	0	0			0	mt
+Bír	9	57	57	57	57	57	0	0	855	0	0			0	mt
+Bír	10	18	18	18	18	18	0	0	253	0	0			0	mt
+Bír	11	40	40	40	40	40	0	0	645	0	0			0	mt
+Bír	12	15	15	15	15	15	0	0	217	0	0			0	mt
+Bír	13	25	25	25	25	25	0	0	391	0	0			0	mt
+Bír	14	20	20	20	20	20	0	0	312	0	0			0	mt
+Bír	15	20	20	20	20	20	0	0	305	0	0			0	mt
+Bír	16	31	31	31	31	31	0	0	535	0	0			0	mt
+Bír	17	13	13	13	13	13	0	0	180	0	0			0	mt
+Bír	18	31	31	31	31	31	0	0	525	0	0			0	mt
+Bír	19	30	30	30	30	30	0	0	518	0	0			0	mt
+Bír	20	48	48	48	48	48	0	0	744	0	0			0	mt
+Bír	21	25	25	25	25	25	0	0	367	0	0			0	mt
+Ruth	1	22	22	22	22	22	0	0	306	0	0			0	mt
+Ruth	2	23	23	23	23	22	0	1	338	0	26	11		0	reszben_mt
+Ruth	3	18	18	18	18	16	0	2	227	0	19	5 16		0	reszben_mt
+Ruth	4	22	22	22	22	21	0	1	295	0	29	11		0	reszben_mt
+1Sám	1	28	28	28	28	28	0	0	409	0	0			0	mt
+1Sám	2	36	36	36	36	36	0	0	542	0	0			0	mt
+1Sám	3	21	21	21	21	20	0	1	290	0	6	4		0	reszben_mt
+1Sám	4	22	22	22	22	22	0	0	367	0	0			0	mt
+1Sám	5	12	12	12	12	12	0	0	217	0	0			0	mt
+1Sám	6	21	21	21	21	21	0	0	386	0	0			0	mt
+1Sám	7	17	17	17	17	17	0	0	288	0	0			0	mt
+1Sám	8	22	22	22	22	22	0	0	262	0	0			0	mt
+1Sám	9	27	27	27	27	27	0	0	481	0	0			0	mt
+1Sám	10	27	27	27	27	27	0	0	429	0	0			0	mt
+1Sám	11	15	15	15	15	15	0	0	249	0	0			0	mt
+1Sám	12	25	25	25	25	25	0	0	415	0	0			0	mt
+1Sám	13	23	23	23	23	23	0	0	354	0	0			0	mt
+1Sám	14	52	52	52	52	52	0	0	842	0	0			0	mt
+1Sám	15	35	35	35	35	33	0	2	498	0	24	10 26		0	reszben_mt
+1Sám	16	23	23	23	23	23	0	0	366	0	0			0	mt
+1Sám	17	58	58	58	58	58	0	0	902	0	0			0	mt
+1Sám	18	30	30	30	30	30	0	0	418	0	0			0	mt
+1Sám	19	24	24	24	24	24	0	0	388	0	0			0	mt
+1Sám	20	42	42	42	42	41	0	1	669	0	27	42		0	reszben_mt
+1Sám	21	15	15	16	16	0	0	15	0	0	271	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15		1	nem_igazolt
+1Sám	22	23	23	23	23	23	0	0	409	0	0			0	mt
+1Sám	23	28	28	28	28	28	0	0	433	0	0			0	mt
+1Sám	24	23	23	23	23	23	0	0	365	0	0			0	mt
+1Sám	25	44	44	44	44	44	0	0	722	0	0			0	mt
+1Sám	26	25	25	25	25	25	0	0	470	0	0			0	mt
+1Sám	27	12	12	12	12	12	0	0	206	0	0			0	mt
+1Sám	28	25	25	25	25	25	0	0	413	0	0			0	mt
+1Sám	29	11	11	11	11	11	0	0	212	0	0			0	mt
+1Sám	30	31	31	31	31	31	0	0	471	0	0			0	mt
+1Sám	31	13	13	13	13	13	0	0	199	0	0			0	mt
+2Sám	1	0	0	27	27	0	0	0	0	0	0			27	nincs_bsb_sor
+2Sám	2	0	0	32	32	0	0	0	0	0	0			32	nincs_bsb_sor
+2Sám	3	0	0	39	39	0	0	0	0	0	0			39	nincs_bsb_sor
+2Sám	4	0	0	12	12	0	0	0	0	0	0			12	nincs_bsb_sor
+2Sám	5	0	0	25	25	0	0	0	0	0	0			25	nincs_bsb_sor
+2Sám	6	0	0	23	23	0	0	0	0	0	0			23	nincs_bsb_sor
+2Sám	7	0	0	29	29	0	0	0	0	0	0			29	nincs_bsb_sor
+2Sám	8	0	0	18	18	0	0	0	0	0	0			18	nincs_bsb_sor
+2Sám	9	0	0	13	13	0	0	0	0	0	0			13	nincs_bsb_sor
+2Sám	10	0	0	19	19	0	0	0	0	0	0			19	nincs_bsb_sor
+2Sám	11	0	0	27	27	0	0	0	0	0	0			27	nincs_bsb_sor
+2Sám	12	0	0	31	31	0	0	0	0	0	0			31	nincs_bsb_sor
+2Sám	13	0	0	39	39	0	0	0	0	0	0			39	nincs_bsb_sor
+2Sám	14	0	0	33	33	0	0	0	0	0	0			33	nincs_bsb_sor
+2Sám	15	0	0	37	37	0	0	0	0	0	0			37	nincs_bsb_sor
+2Sám	16	0	0	23	23	0	0	0	0	0	0			23	nincs_bsb_sor
+2Sám	17	0	0	29	29	0	0	0	0	0	0			29	nincs_bsb_sor
+2Sám	18	0	0	32	32	0	0	0	0	0	0			32	nincs_bsb_sor
+2Sám	19	0	0	44	44	0	0	0	0	0	0			44	nincs_bsb_sor
+2Sám	20	0	0	26	26	0	0	0	0	0	0			26	nincs_bsb_sor
+2Sám	21	0	0	22	22	0	0	0	0	0	0			22	nincs_bsb_sor
+2Sám	22	0	0	51	51	0	0	0	0	0	0			51	nincs_bsb_sor
+2Sám	23	0	0	39	39	0	0	0	0	0	0			39	nincs_bsb_sor
+2Sám	24	0	0	25	25	0	0	0	0	0	0			25	nincs_bsb_sor
+1Kir	1	53	53	53	53	53	0	0	799	0	0			0	mt
+1Kir	2	46	46	46	46	44	0	2	751	0	32	14 30		0	reszben_mt
+1Kir	3	28	28	28	28	28	0	0	460	0	0			0	mt
+1Kir	4	34	34	20	20	17	0	17	161	0	237	1 7 9 21 22 23 24 25 26 27 28 29 30 31 32 33 34	21 22 23 24 25 26 27 28 29 30 31 32 33 34	0	reszben_mt
+1Kir	5	18	18	32	32	0	0	18	0	0	295	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18		14	nem_igazolt
+1Kir	6	38	38	38	38	35	0	3	479	0	29	14 28 32		0	reszben_mt
+1Kir	7	51	51	51	51	51	0	0	794	0	0			0	mt
+1Kir	8	66	66	66	66	64	0	2	1113	0	18	45 49		0	reszben_mt
+1Kir	9	28	28	28	28	28	0	0	464	0	0			0	mt
+1Kir	10	29	29	29	29	29	0	0	456	0	0			0	mt
+1Kir	11	43	43	43	43	43	0	0	672	0	0			0	mt
+1Kir	12	33	33	33	33	33	0	0	579	0	0			0	mt
+1Kir	13	34	34	34	34	32	0	2	561	0	27	18 19		0	reszben_mt
+1Kir	14	31	31	31	31	30	0	1	506	0	8	30		0	reszben_mt
+1Kir	15	34	34	34	34	30	0	4	478	0	41	6 16 32 34		0	reszben_mt
+1Kir	16	34	34	34	34	32	0	2	520	0	27	1 19		0	reszben_mt
+1Kir	17	24	24	24	24	21	0	3	310	0	34	1 2 8		0	reszben_mt
+1Kir	18	46	46	46	46	42	0	4	675	0	55	1 11 14 31		0	reszben_mt
+1Kir	19	21	21	21	21	19	0	2	312	0	50	10 14		0	reszben_mt
+1Kir	20	43	43	43	43	43	0	0	735	0	0			0	mt
+1Kir	21	29	29	29	29	23	0	6	398	0	70	9 10 12 13 17 28		0	reszben_mt
+1Kir	22	54	54	54	54	52	0	2	757	0	46	8 18		0	reszben_mt
+2Kir	1	18	18	18	18	16	0	2	307	0	51	10 12		0	reszben_mt
+2Kir	2	25	25	25	25	25	0	0	417	0	0			0	mt
+2Kir	3	27	27	27	27	27	0	0	429	0	0			0	mt
+2Kir	4	44	44	44	44	44	0	0	647	0	0			0	mt
+2Kir	5	27	27	27	27	27	0	0	484	0	0			0	mt
+2Kir	6	33	33	33	33	33	0	0	518	0	0			0	mt
+2Kir	7	20	20	20	20	19	0	1	383	0	21	19		0	reszben_mt
+2Kir	8	29	29	29	29	29	0	0	506	0	0			0	mt
+2Kir	9	37	37	37	37	37	0	0	601	0	0			0	mt
+2Kir	10	36	36	36	36	36	0	0	616	0	0			0	mt
+2Kir	11	21	21	20	20	20	0	1	354	0	5	21	21	0	reszben_mt
+2Kir	12	21	21	22	22	0	0	21	0	0	356	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21		1	nem_igazolt
+2Kir	13	25	25	25	25	23	0	2	374	0	38	11 12		0	reszben_mt
+2Kir	14	29	29	29	29	25	0	4	422	0	57	4 15 18 24		0	reszben_mt
+2Kir	15	38	38	38	38	33	0	5	514	0	71	4 9 24 28 35		0	reszben_mt
+2Kir	16	20	20	20	20	20	0	0	362	0	0			0	mt
+2Kir	17	41	41	41	41	41	0	0	671	0	0			0	mt
+2Kir	18	37	37	37	37	37	0	0	661	0	0			0	mt
+2Kir	19	37	37	37	37	37	0	0	561	0	0			0	mt
+2Kir	20	21	21	21	21	21	0	0	360	0	0			0	mt
+2Kir	21	26	26	26	26	26	0	0	396	0	0			0	mt
+2Kir	22	20	20	20	20	20	0	0	370	0	0			0	mt
+2Kir	23	37	37	37	37	35	0	2	755	0	16	32 37		0	reszben_mt
+2Kir	24	20	20	20	20	19	0	1	301	0	8	9		0	reszben_mt
+2Kir	25	30	30	30	30	30	0	0	504	0	0			0	mt
+1Krón	1	54	54	54	54	54	0	0	424	0	0			0	mt
+1Krón	2	55	55	55	55	55	0	0	525	0	0			0	mt
+1Krón	3	24	24	24	24	24	0	0	192	0	0			0	mt
+1Krón	4	43	43	43	43	43	0	0	472	0	0			0	mt
+1Krón	5	26	26	41	41	26	0	0	326	0	0			15	mt
+1Krón	6	81	81	66	66	0	0	81	0	0	749	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81	67 68 69 70 71 72 73 74 75 76 77 78 79 80 81	0	nem_igazolt
+1Krón	7	40	40	40	40	40	0	0	427	0	0			0	mt
+1Krón	8	40	40	40	40	40	0	0	301	0	0			0	mt
+1Krón	9	44	44	44	44	38	0	6	422	0	67	34 35 36 39 40 44		0	reszben_mt
+1Krón	10	14	14	14	14	14	0	0	201	0	0			0	mt
+1Krón	11	47	47	47	47	47	0	0	517	0	0			0	mt
+1Krón	12	40	40	41	41	3	0	37	38	0	453	4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40		1	reszben_mt
+1Krón	13	14	14	14	14	14	0	0	213	0	0			0	mt
+1Krón	14	17	17	17	17	17	0	0	189	0	0			0	mt
+1Krón	15	29	29	29	29	29	0	0	356	0	0			0	mt
+1Krón	16	43	43	43	43	43	0	0	403	0	0			0	mt
+1Krón	17	27	27	27	27	27	0	0	396	0	0			0	mt
+1Krón	18	17	17	17	17	17	0	0	243	0	0			0	mt
+1Krón	19	19	19	19	19	19	0	0	315	0	0			0	mt
+1Krón	20	8	8	8	8	8	0	0	140	0	0			0	mt
+1Krón	21	30	30	30	30	30	0	0	480	0	0			0	mt
+1Krón	22	19	19	19	19	19	0	0	300	0	0			0	mt
+1Krón	23	32	32	32	32	32	0	0	333	0	0			0	mt
+1Krón	24	31	31	31	31	29	0	2	254	0	14	23 24		0	reszben_mt
+1Krón	25	31	31	31	31	29	0	2	276	0	15	21 31		0	reszben_mt
+1Krón	26	32	32	32	32	32	0	0	354	0	0			0	mt
+1Krón	27	34	34	34	34	34	0	0	406	0	0			0	mt
+1Krón	28	21	21	21	21	21	0	0	371	0	0			0	mt
+1Krón	29	30	30	30	30	30	0	0	473	0	0			0	mt
+2Krón	1	17	17	18	18	17	0	0	267	0	0			1	mt
+2Krón	2	18	18	17	17	0	0	18	0	0	323	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18	18	0	nem_igazolt
+2Krón	3	17	17	17	17	17	0	0	238	0	0			0	mt
+2Krón	4	22	22	22	22	22	0	0	309	0	0			0	mt
+2Krón	5	14	14	14	14	14	0	0	247	0	0			0	mt
+2Krón	6	42	42	42	42	39	0	3	691	0	35	35 39 40		0	reszben_mt
+2Krón	7	22	22	22	22	21	0	1	381	0	9	15		0	reszben_mt
+2Krón	8	18	18	18	18	18	0	0	288	0	0			0	mt
+2Krón	9	31	31	31	31	31	0	0	481	0	0			0	mt
+2Krón	10	19	19	19	19	19	0	0	307	0	0			0	mt
+2Krón	11	23	23	23	23	23	0	0	288	0	0			0	mt
+2Krón	12	16	16	16	16	16	0	0	250	0	0			0	mt
+2Krón	13	22	22	23	23	22	0	0	339	0	0			1	mt
+2Krón	14	15	15	14	14	0	0	15	0	0	230	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15	15	0	nem_igazolt
+2Krón	15	19	19	19	19	19	0	0	246	0	0			0	mt
+2Krón	16	14	14	14	14	14	0	0	254	0	0			0	mt
+2Krón	17	19	19	19	19	19	0	0	236	0	0			0	mt
+2Krón	18	34	34	34	34	34	0	0	552	0	0			0	mt
+2Krón	19	11	11	11	11	11	0	0	182	0	0			0	mt
+2Krón	20	37	37	37	37	37	0	0	567	0	0			0	mt
+2Krón	21	20	20	20	20	20	0	0	315	0	0			0	mt
+2Krón	22	12	12	12	12	12	0	0	241	0	0			0	mt
+2Krón	23	21	21	21	21	21	0	0	383	0	0			0	mt
+2Krón	24	27	27	27	27	27	0	0	452	0	0			0	mt
+2Krón	25	28	28	28	28	28	0	0	487	0	0			0	mt
+2Krón	26	23	23	23	23	23	0	0	364	0	0			0	mt
+2Krón	27	9	9	9	9	9	0	0	127	0	0			0	mt
+2Krón	28	27	27	27	27	27	0	0	436	0	0			0	mt
+2Krón	29	36	36	36	36	36	0	0	538	0	0			0	mt
+2Krón	30	27	27	27	27	27	0	0	427	0	0			0	mt
+2Krón	31	21	21	21	21	21	0	0	333	0	0			0	mt
+2Krón	32	33	33	33	33	33	0	0	542	0	0			0	mt
+2Krón	33	25	25	25	25	25	0	0	376	0	0			0	mt
+2Krón	34	33	33	33	33	33	0	0	610	0	0			0	mt
+2Krón	35	27	27	27	27	27	0	0	424	0	0			0	mt
+2Krón	36	23	23	23	23	23	0	0	362	0	0			0	mt
+Ezsd	1	0	0	11	11	0	0	0	0	0	0			11	nincs_bsb_sor
+Ezsd	2	0	0	70	70	0	0	0	0	0	0			70	nincs_bsb_sor
+Ezsd	3	0	0	13	13	0	0	0	0	0	0			13	nincs_bsb_sor
+Ezsd	4	0	0	24	24	0	0	0	0	0	0			24	nincs_bsb_sor
+Ezsd	5	0	0	17	17	0	0	0	0	0	0			17	nincs_bsb_sor
+Ezsd	6	0	0	22	22	0	0	0	0	0	0			22	nincs_bsb_sor
+Ezsd	7	0	0	28	28	0	0	0	0	0	0			28	nincs_bsb_sor
+Ezsd	8	0	0	36	36	0	0	0	0	0	0			36	nincs_bsb_sor
+Ezsd	9	0	0	15	15	0	0	0	0	0	0			15	nincs_bsb_sor
+Ezsd	10	0	0	44	44	0	0	0	0	0	0			44	nincs_bsb_sor
+Neh	1	11	11	11	11	11	0	0	199	0	0			0	mt
+Neh	2	20	20	20	20	20	0	0	353	0	0			0	mt
+Neh	3	32	32	38	38	32	0	0	466	0	0			6	mt
+Neh	4	23	23	17	17	0	0	23	0	0	332	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23	18 19 20 21 22 23	0	nem_igazolt
+Neh	5	19	19	19	19	19	0	0	316	0	0			0	mt
+Neh	6	19	19	19	19	19	0	0	300	0	0			0	mt
+Neh	7	72	73	72	72	64	0	8	530	0	92	12 28 34 69 70 71 72 73	73	1	reszben_mt
+Neh	8	18	18	18	18	18	0	0	352	0	0			0	mt
+Neh	9	38	38	37	37	35	0	3	590	0	47	12 19 38	38	0	reszben_mt
+Neh	10	39	39	40	40	0	0	39	0	0	329	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39		1	nem_igazolt
+Neh	11	36	36	36	36	31	0	5	337	0	42	25 27 28 30 31		0	reszben_mt
+Neh	12	47	47	47	47	47	0	0	469	0	0			0	mt
+Neh	13	31	31	31	31	31	0	0	459	0	0			0	mt
+Eszt	1	22	22	22	22	22	0	0	372	0	0			0	mt
+Eszt	2	23	23	23	23	23	0	0	429	0	0			0	mt
+Eszt	3	15	15	15	15	15	0	0	297	0	0			0	mt
+Eszt	4	17	17	17	17	13	0	4	249	0	30	9 12 13 15		0	reszben_mt
+Eszt	5	14	14	14	14	14	0	0	257	0	0			0	mt
+Eszt	6	14	14	14	14	14	0	0	258	0	0			0	mt
+Eszt	7	10	10	10	10	10	0	0	185	0	0			0	mt
+Eszt	8	17	17	17	17	17	0	0	340	0	0			0	mt
+Eszt	9	32	32	32	32	30	0	2	499	0	36	6 12		0	reszben_mt
+Eszt	10	3	3	3	3	3	0	0	46	0	0			0	mt
+Jób	1	22	22	22	22	21	0	1	324	0	12	6		0	reszben_mt
+Jób	2	13	13	13	13	12	0	1	188	0	15	1		0	reszben_mt
+Jób	3	26	26	26	26	26	0	0	198	0	0			0	mt
+Jób	4	21	21	21	21	21	0	0	149	0	0			0	mt
+Jób	5	27	27	27	27	27	0	0	202	0	0			0	mt
+Jób	6	30	30	30	30	30	0	0	213	0	0			0	mt
+Jób	7	21	21	21	21	21	0	0	167	0	0			0	mt
+Jób	8	22	22	22	22	22	0	0	163	0	0			0	mt
+Jób	9	35	35	35	35	35	0	0	258	0	0			0	mt
+Jób	10	22	22	22	22	22	0	0	166	0	0			0	mt
+Jób	11	20	20	20	20	20	0	0	146	0	0			0	mt
+Jób	12	25	25	25	25	25	0	0	176	0	0			0	mt
+Jób	13	28	28	28	28	28	0	0	195	0	0			0	mt
+Jób	14	22	22	22	22	22	0	0	175	0	0			0	mt
+Jób	15	35	35	35	35	35	0	0	255	0	0			0	mt
+Jób	16	22	22	22	22	22	0	0	169	0	0			0	mt
+Jób	17	16	16	16	16	16	0	0	110	0	0			0	mt
+Jób	18	21	21	21	21	21	0	0	140	0	0			0	mt
+Jób	19	29	29	29	29	29	0	0	202	0	0			0	mt
+Jób	20	29	29	29	29	29	0	0	204	0	0			0	mt
+Jób	21	34	34	34	34	34	0	0	238	0	0			0	mt
+Jób	22	30	30	30	30	30	0	0	202	0	0			0	mt
+Jób	23	17	17	17	17	17	0	0	114	0	0			0	mt
+Jób	24	25	25	25	25	25	0	0	199	0	0			0	mt
+Jób	25	6	6	6	6	6	0	0	43	0	0			0	mt
+Jób	26	14	14	14	14	14	0	0	99	0	0			0	mt
+Jób	27	23	23	23	23	23	0	0	167	0	0			0	mt
+Jób	28	28	28	28	28	28	0	0	206	0	0			0	mt
+Jób	29	25	25	25	25	25	0	0	166	0	0			0	mt
+Jób	30	31	31	31	31	31	0	0	221	0	0			0	mt
+Jób	31	40	40	40	40	40	0	0	308	0	0			0	mt
+Jób	32	22	22	22	22	22	0	0	194	0	0			0	mt
+Jób	33	33	33	33	33	33	0	0	241	0	0			0	mt
+Jób	34	37	37	37	37	36	0	1	288	0	3	1		0	reszben_mt
+Jób	35	16	16	16	16	16	0	0	112	0	0			0	mt
+Jób	36	33	33	33	33	33	0	0	236	0	0			0	mt
+Jób	37	24	24	24	24	24	0	0	187	0	0			0	mt
+Jób	38	41	41	41	41	41	0	0	296	0	0			0	mt
+Jób	39	30	30	30	30	30	0	0	208	0	0			0	mt
+Jób	40	24	24	32	32	21	0	3	146	0	17	1 3 6		8	reszben_mt
+Jób	41	34	34	26	26	0	34	0	0	223	0	1(kjv) 2(kjv) 3(kjv) 4(kjv) 5(kjv) 6(kjv) 7(kjv) 8(kjv) 9(kjv) 10(kjv) 11(kjv) 12(kjv) 13(kjv) 14(kjv) 15(kjv) 16(kjv) 17(kjv) 18(kjv) 19(kjv) 20(kjv) 21(kjv) 22(kjv) 23(kjv) 24(kjv) 25(kjv) 26(kjv) 27(kjv) 28(kjv) 29(kjv) 30(kjv) 31(kjv) 32(kjv) 33(kjv) 34(kjv)	27 28 29 30 31 32 33 34	0	nem_igazolt
+Jób	42	17	17	17	17	17	0	0	236	0	0			0	mt
+Zsolt	1	6	6	6	6	6	0	0	67	0	0			0	mt
+Zsolt	2	12	12	12	12	12	0	0	90	0	0			0	mt
+Zsolt	3	7	9	9	9	7	0	0	56	0	0			2	mt
+Zsolt	4	7	9	9	9	7	0	0	62	0	0			2	mt
+Zsolt	5	11	13	13	13	11	0	0	97	0	0			2	mt
+Zsolt	6	9	11	11	11	9	0	0	70	0	0			2	mt
+Zsolt	7	16	18	18	18	16	0	0	123	0	0			2	mt
+Zsolt	8	8	10	10	10	8	0	0	60	0	0			2	mt
+Zsolt	9	19	21	21	21	19	0	0	151	0	0			2	mt
+Zsolt	10	18	18	18	18	18	0	0	161	0	0			0	mt
+Zsolt	11	6	7	7	7	6	0	0	58	0	0			1	mt
+Zsolt	12	7	9	9	9	7	0	0	62	0	0			2	mt
+Zsolt	13	0	0	6	6	0	0	0	0	0	0			6	nincs_bsb_sor
+Zsolt	14	6	7	7	7	6	0	0	61	0	0			1	mt
+Zsolt	15	4	5	5	5	4	0	0	45	0	0			1	mt
+Zsolt	16	10	11	11	11	10	0	0	88	0	0			1	mt
+Zsolt	17	14	15	15	15	14	0	0	111	0	0			1	mt
+Zsolt	18	49	51	51	51	49	0	0	359	0	0			2	mt
+Zsolt	19	13	15	15	15	13	0	0	112	0	0			2	mt
+Zsolt	20	8	10	10	10	8	0	0	58	0	0			2	mt
+Zsolt	21	12	14	14	14	12	0	0	91	0	0			2	mt
+Zsolt	22	30	32	32	32	30	0	0	232	0	0			2	mt
+Zsolt	23	5	6	6	6	5	0	0	51	0	0			1	mt
+Zsolt	24	9	10	10	10	7	0	2	63	0	18	7 9		1	reszben_mt
+Zsolt	25	21	22	22	22	21	0	0	150	0	0			1	mt
+Zsolt	26	11	12	12	12	11	0	0	74	0	0			1	mt
+Zsolt	27	13	14	14	14	13	0	0	135	0	0			1	mt
+Zsolt	28	8	9	9	9	8	0	0	76	0	0			1	mt
+Zsolt	29	10	11	11	11	10	0	0	81	0	0			1	mt
+Zsolt	30	11	13	13	13	11	0	0	82	0	0			2	mt
+Zsolt	31	23	25	25	25	23	0	0	204	0	0			2	mt
+Zsolt	32	10	11	11	11	10	0	0	101	0	0			1	mt
+Zsolt	33	22	22	22	22	22	0	0	156	0	0			0	mt
+Zsolt	34	21	23	23	23	21	0	0	145	0	0			2	mt
+Zsolt	35	27	28	28	28	27	0	0	216	0	0			1	mt
+Zsolt	36	11	13	13	13	11	0	0	86	0	0			2	mt
+Zsolt	37	39	40	40	40	39	0	0	286	0	0			1	mt
+Zsolt	38	21	23	23	23	21	0	0	156	0	0			2	mt
+Zsolt	39	12	14	14	14	12	0	0	114	0	0			2	mt
+Zsolt	40	16	18	18	18	16	0	0	171	0	0			2	mt
+Zsolt	41	12	14	14	14	12	0	0	99	0	0			2	mt
+Zsolt	42	10	12	12	12	8	0	2	91	0	26	6 12		2	reszben_mt
+Zsolt	43	5	5	5	5	4	0	1	45	0	14	5		0	reszben_mt
+Zsolt	44	25	27	27	27	25	0	0	179	0	0			2	mt
+Zsolt	45	16	18	18	18	16	0	0	138	0	0			2	mt
+Zsolt	46	10	12	12	12	8	0	2	70	0	14	8 12		2	reszben_mt
+Zsolt	47	8	10	10	10	6	0	2	51	0	13	7 8		2	reszben_mt
+Zsolt	48	13	15	15	15	13	0	0	99	0	0			2	mt
+Zsolt	49	19	21	21	21	19	0	0	151	0	0			2	mt
+Zsolt	50	22	23	23	23	22	0	0	161	0	0			1	mt
+Zsolt	51	18	21	21	21	18	0	0	131	0	0			3	mt
+Zsolt	52	8	11	11	11	8	0	0	68	0	0			3	mt
+Zsolt	53	5	7	7	7	5	0	0	62	0	0			2	mt
+Zsolt	54	6	9	9	9	6	0	0	43	0	0			3	mt
+Zsolt	55	22	24	24	24	22	0	0	175	0	0			2	mt
+Zsolt	56	12	14	14	14	12	0	0	94	0	0			2	mt
+Zsolt	57	10	12	12	12	8	0	2	68	0	16	6 12		2	reszben_mt
+Zsolt	58	10	12	12	12	10	0	0	85	0	0			2	mt
+Zsolt	59	16	18	18	18	14	0	2	126	0	12	7 15		2	reszben_mt
+Zsolt	60	11	14	14	14	11	0	0	80	0	0			3	mt
+Zsolt	61	7	9	9	9	7	0	0	58	0	0			2	mt
+Zsolt	62	11	13	13	13	9	0	2	87	0	15	3 7		2	reszben_mt
+Zsolt	63	10	12	12	12	10	0	0	69	0	0			2	mt
+Zsolt	64	9	11	11	11	9	0	0	67	0	0			2	mt
+Zsolt	65	12	14	14	14	12	0	0	97	0	0			2	mt
+Zsolt	66	19	20	20	20	19	0	0	140	0	0			1	mt
+Zsolt	67	6	8	8	8	4	0	2	30	0	12	4 6		2	reszben_mt
+Zsolt	68	34	36	36	36	34	0	0	292	0	0			2	mt
+Zsolt	69	35	37	37	37	35	0	0	271	0	0			2	mt
+Zsolt	70	4	6	6	6	4	0	0	37	0	0			2	mt
+Zsolt	71	24	24	24	24	24	0	0	197	0	0			0	mt
+Zsolt	72	19	20	20	20	19	0	0	150	0	0			1	mt
+Zsolt	73	27	28	28	28	27	0	0	181	0	0			1	mt
+Zsolt	74	22	23	23	23	22	0	0	182	0	0			1	mt
+Zsolt	75	9	11	11	11	9	0	0	73	0	0			2	mt
+Zsolt	76	11	13	13	13	11	0	0	79	0	0			2	mt
+Zsolt	77	19	21	21	21	19	0	0	140	0	0			2	mt
+Zsolt	78	71	72	72	72	71	0	0	511	0	0			1	mt
+Zsolt	79	12	13	13	13	12	0	0	116	0	0			1	mt
+Zsolt	80	18	20	20	20	15	0	3	104	0	18	4 8 20		2	reszben_mt
+Zsolt	81	15	17	17	17	15	0	0	109	0	0			2	mt
+Zsolt	82	7	8	8	8	7	0	0	52	0	0			1	mt
+Zsolt	83	17	19	19	19	17	0	0	116	0	0			2	mt
+Zsolt	84	11	13	13	13	11	0	0	101	0	0			2	mt
+Zsolt	85	12	14	14	14	12	0	0	83	0	0			2	mt
+Zsolt	86	16	17	17	17	16	0	0	137	0	0			1	mt
+Zsolt	87	6	7	7	7	6	0	0	44	0	0			1	mt
+Zsolt	88	17	19	19	19	17	0	0	123	0	0			2	mt
+Zsolt	89	51	53	53	53	51	0	0	369	0	0			2	mt
+Zsolt	90	16	17	17	17	16	0	0	129	0	0			1	mt
+Zsolt	91	16	16	16	16	16	0	0	108	0	0			0	mt
+Zsolt	92	14	16	16	16	14	0	0	102	0	0			2	mt
+Zsolt	93	5	5	5	5	5	0	0	45	0	0			0	mt
+Zsolt	94	23	23	23	23	23	0	0	164	0	0			0	mt
+Zsolt	95	11	11	11	11	11	0	0	86	0	0			0	mt
+Zsolt	96	13	13	13	13	13	0	0	111	0	0			0	mt
+Zsolt	97	12	12	12	12	12	0	0	94	0	0			0	mt
+Zsolt	98	8	9	9	9	8	0	0	61	0	0			1	mt
+Zsolt	99	9	9	9	9	9	0	0	81	0	0			0	mt
+Zsolt	100	4	5	5	5	4	0	0	36	0	0			1	mt
+Zsolt	101	7	8	8	8	7	0	0	74	0	0			1	mt
+Zsolt	102	27	29	29	29	27	0	0	197	0	0			2	mt
+Zsolt	103	21	22	22	22	21	0	0	155	0	0			1	mt
+Zsolt	104	35	35	35	35	35	0	0	267	0	0			0	mt
+Zsolt	105	45	45	45	45	45	0	0	287	0	0			0	mt
+Zsolt	106	48	48	48	48	47	0	1	312	0	8	1		0	reszben_mt
+Zsolt	107	43	43	43	43	37	0	6	236	0	36	8 13 15 19 21 31		0	reszben_mt
+Zsolt	108	12	14	14	14	12	0	0	86	0	0			2	mt
+Zsolt	109	30	31	31	31	30	0	0	216	0	0			1	mt
+Zsolt	110	6	7	7	7	6	0	0	52	0	0			1	mt
+Zsolt	111	10	10	10	10	10	0	0	73	0	0			0	mt
+Zsolt	112	10	10	10	10	10	0	0	79	0	0			0	mt
+Zsolt	113	9	9	9	9	9	0	0	60	0	0			0	mt
+Zsolt	114	8	8	8	8	6	0	2	39	0	12	4 6		0	reszben_mt
+Zsolt	115	18	18	18	18	18	0	0	128	0	0			0	mt
+Zsolt	116	19	19	19	19	17	0	2	114	0	14	14 18		0	reszben_mt
+Zsolt	117	2	2	2	2	2	0	0	17	0	0			0	mt
+Zsolt	118	29	29	29	29	26	0	3	167	0	21	1 16 29		0	reszben_mt
+Zsolt	119	176	176	176	176	176	0	0	1048	0	0			0	mt
+Zsolt	120	6	7	7	7	6	0	0	39	0	0			1	mt
+Zsolt	121	7	8	8	8	7	0	0	47	0	0			1	mt
+Zsolt	122	8	9	9	9	8	0	0	50	0	0			1	mt
+Zsolt	123	3	4	4	4	3	0	0	32	0	0			1	mt
+Zsolt	124	7	8	8	8	7	0	0	45	0	0			1	mt
+Zsolt	125	4	5	5	5	4	0	0	38	0	0			1	mt
+Zsolt	126	5	6	6	6	5	0	0	41	0	0			1	mt
+Zsolt	127	4	5	5	5	4	0	0	38	0	0			1	mt
+Zsolt	128	5	6	6	6	5	0	0	38	0	0			1	mt
+Zsolt	129	7	8	8	8	7	0	0	45	0	0			1	mt
+Zsolt	130	7	8	8	8	7	0	0	49	0	0			1	mt
+Zsolt	131	2	3	3	3	2	0	0	18	0	0			1	mt
+Zsolt	132	17	18	18	18	17	0	0	120	0	0			1	mt
+Zsolt	133	2	3	3	3	2	0	0	28	0	0			1	mt
+Zsolt	134	2	3	3	3	2	0	0	12	0	0			1	mt
+Zsolt	135	21	21	21	21	21	0	0	162	0	0			0	mt
+Zsolt	136	26	26	26	26	26	0	0	165	0	0			0	mt
+Zsolt	137	9	9	9	9	9	0	0	80	0	0			0	mt
+Zsolt	138	7	8	8	8	7	0	0	69	0	0			1	mt
+Zsolt	139	23	24	24	24	23	0	0	166	0	0			1	mt
+Zsolt	140	12	14	14	14	12	0	0	104	0	0			2	mt
+Zsolt	141	9	10	10	10	9	0	0	83	0	0			1	mt
+Zsolt	142	6	8	8	8	6	0	0	59	0	0			2	mt
+Zsolt	143	11	12	12	12	11	0	0	104	0	0			1	mt
+Zsolt	144	14	15	15	15	12	0	2	97	0	19	8 11		1	reszben_mt
+Zsolt	145	20	21	21	21	20	0	0	143	0	0			1	mt
+Zsolt	146	10	10	10	10	10	0	0	83	0	0			0	mt
+Zsolt	147	20	20	20	20	20	0	0	141	0	0			0	mt
+Zsolt	148	14	14	14	14	14	0	0	111	0	0			0	mt
+Zsolt	149	9	9	9	9	9	0	0	62	0	0			0	mt
+Zsolt	150	6	6	6	6	6	0	0	37	0	0			0	mt
+Péld	1	33	33	33	33	33	0	0	234	0	0			0	mt
+Péld	2	22	22	22	22	22	0	0	142	0	0			0	mt
+Péld	3	35	35	35	35	35	0	0	255	0	0			0	mt
+Péld	4	27	27	27	27	27	0	0	196	0	0			0	mt
+Péld	5	23	23	23	23	23	0	0	158	0	0			0	mt
+Péld	6	35	35	35	35	35	0	0	269	0	0			0	mt
+Péld	7	27	27	27	27	27	0	0	189	0	0			0	mt
+Péld	8	36	36	36	36	36	0	0	250	0	0			0	mt
+Péld	9	18	18	18	18	16	0	2	107	0	14	4 16		0	reszben_mt
+Péld	10	32	32	32	32	32	0	0	234	0	0			0	mt
+Péld	11	31	31	31	31	31	0	0	223	0	0			0	mt
+Péld	12	28	28	28	28	28	0	0	200	0	0			0	mt
+Péld	13	25	25	25	25	25	0	0	181	0	0			0	mt
+Péld	14	35	35	35	35	35	0	0	248	0	0			0	mt
+Péld	15	33	33	33	33	33	0	0	248	0	0			0	mt
+Péld	16	33	33	33	33	33	0	0	251	0	0			0	mt
+Péld	17	28	28	28	28	28	0	0	224	0	0			0	mt
+Péld	18	24	24	24	24	24	0	0	171	0	0			0	mt
+Péld	19	29	29	29	29	29	0	0	229	0	0			0	mt
+Péld	20	30	30	30	30	30	0	0	223	0	0			0	mt
+Péld	21	31	31	31	31	31	0	0	233	0	0			0	mt
+Péld	22	29	29	29	29	29	0	0	221	0	0			0	mt
+Péld	23	35	35	35	35	35	0	0	269	0	0			0	mt
+Péld	24	34	34	34	34	34	0	0	264	0	0			0	mt
+Péld	25	28	28	28	28	28	0	0	237	0	0			0	mt
+Péld	26	28	28	28	28	28	0	0	207	0	0			0	mt
+Péld	27	27	27	27	27	27	0	0	211	0	0			0	mt
+Péld	28	28	28	28	28	28	0	0	227	0	0			0	mt
+Péld	29	27	27	27	27	27	0	0	204	0	0			0	mt
+Péld	30	33	33	33	33	33	0	0	298	0	0			0	mt
+Péld	31	31	31	31	31	31	0	0	216	0	0			0	mt
+Préd	1	18	18	18	18	18	0	0	213	0	0			0	mt
+Préd	2	26	26	26	26	26	0	0	368	0	0			0	mt
+Préd	3	22	22	22	22	22	0	0	269	0	0			0	mt
+Préd	4	16	16	17	17	16	0	0	215	0	0			1	mt
+Préd	5	20	20	19	19	0	0	20	0	0	279	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20	20	0	nem_igazolt
+Préd	6	12	12	12	12	12	0	0	168	0	0			0	mt
+Préd	7	29	29	29	29	29	0	0	330	0	0			0	mt
+Préd	8	17	17	17	17	17	0	0	274	0	0			0	mt
+Préd	9	18	18	18	18	18	0	0	303	0	0			0	mt
+Préd	10	20	20	20	20	20	0	0	191	0	0			0	mt
+Préd	11	10	10	10	10	10	0	0	143	0	0			0	mt
+Préd	12	14	14	14	14	14	0	0	183	0	0			0	mt
+Én	1	17	17	17	17	17	0	0	143	0	0			0	mt
+Én	2	17	17	17	17	16	0	1	152	0	16	7		0	reszben_mt
+Én	3	11	11	11	11	10	0	1	113	0	16	5		0	reszben_mt
+Én	4	16	16	16	16	16	0	0	175	0	0			0	mt
+Én	5	16	16	16	16	16	0	0	183	0	0			0	mt
+Én	6	13	13	12	12	12	0	1	112	0	11	13	13	0	reszben_mt
+Én	7	13	13	14	14	0	0	13	0	0	125	1 2 3 4 5 6 7 8 9 10 11 12 13		1	nem_igazolt
+Én	8	14	14	14	14	14	0	0	165	0	0			0	mt
+Ézs	1	31	31	31	31	31	0	0	351	0	0			0	mt
+Ézs	2	22	22	22	22	21	0	1	239	0	11	17		0	reszben_mt
+Ézs	3	26	26	26	26	26	0	0	242	0	0			0	mt
+Ézs	4	6	6	6	6	6	0	0	88	0	0			0	mt
+Ézs	5	30	30	30	30	30	0	0	378	0	0			0	mt
+Ézs	6	13	13	13	13	13	0	0	182	0	0			0	mt
+Ézs	7	25	25	25	25	25	0	0	342	0	0			0	mt
+Ézs	8	23	23	23	23	23	0	0	291	0	0			0	mt
+Ézs	9	20	20	20	20	20	0	0	263	0	0			0	mt
+Ézs	10	34	34	34	34	34	0	0	404	0	0			0	mt
+Ézs	11	16	16	16	16	16	0	0	218	0	0			0	mt
+Ézs	12	6	6	6	6	6	0	0	60	0	0			0	mt
+Ézs	13	22	22	22	22	22	0	0	251	0	0			0	mt
+Ézs	14	32	32	32	32	32	0	0	370	0	0			0	mt
+Ézs	15	9	9	9	9	9	0	0	123	0	0			0	mt
+Ézs	16	14	14	14	14	14	0	0	190	0	0			0	mt
+Ézs	17	14	14	14	14	14	0	0	177	0	0			0	mt
+Ézs	18	7	7	7	7	7	0	0	124	0	0			0	mt
+Ézs	19	25	25	25	25	25	0	0	323	0	0			0	mt
+Ézs	20	6	6	6	6	6	0	0	96	0	0			0	mt
+Ézs	21	17	17	17	17	17	0	0	199	0	0			0	mt
+Ézs	22	25	25	25	25	25	0	0	302	0	0			0	mt
+Ézs	23	18	18	18	18	18	0	0	214	0	0			0	mt
+Ézs	24	23	23	23	23	23	0	0	251	0	0			0	mt
+Ézs	25	12	12	12	12	12	0	0	158	0	0			0	mt
+Ézs	26	21	21	21	21	21	0	0	226	0	0			0	mt
+Ézs	27	13	13	13	13	13	0	0	169	0	0			0	mt
+Ézs	28	29	29	29	29	29	0	0	378	0	0			0	mt
+Ézs	29	24	24	24	24	24	0	0	323	0	0			0	mt
+Ézs	30	33	33	33	33	33	0	0	479	0	0			0	mt
+Ézs	31	9	9	9	9	9	0	0	152	0	0			0	mt
+Ézs	32	20	20	20	20	20	0	0	203	0	0			0	mt
+Ézs	33	24	24	24	24	24	0	0	267	0	0			0	mt
+Ézs	34	17	17	17	17	17	0	0	213	0	0			0	mt
+Ézs	35	10	10	10	10	10	0	0	123	0	0			0	mt
+Ézs	36	22	22	22	22	22	0	0	380	0	0			0	mt
+Ézs	37	38	38	38	38	36	0	2	536	0	24	15 21		0	reszben_mt
+Ézs	38	22	22	22	22	21	0	1	270	0	6	4		0	reszben_mt
+Ézs	39	8	8	8	8	7	0	1	131	0	15	8		0	reszben_mt
+Ézs	40	31	31	31	31	31	0	0	349	0	0			0	mt
+Ézs	41	29	29	29	29	29	0	0	347	0	0			0	mt
+Ézs	42	25	25	25	25	25	0	0	283	0	0			0	mt
+Ézs	43	28	28	28	28	28	0	0	303	0	0			0	mt
+Ézs	44	28	28	28	28	28	0	0	380	0	0			0	mt
+Ézs	45	25	25	25	25	25	0	0	351	0	0			0	mt
+Ézs	46	13	13	13	13	13	0	0	150	0	0			0	mt
+Ézs	47	15	15	15	15	15	0	0	208	0	0			0	mt
+Ézs	48	22	22	22	22	22	0	0	260	0	0			0	mt
+Ézs	49	26	26	26	26	26	0	0	354	0	0			0	mt
+Ézs	50	11	11	11	11	11	0	0	166	0	0			0	mt
+Ézs	51	23	23	23	23	23	0	0	331	0	0			0	mt
+Ézs	52	15	15	15	15	15	0	0	199	0	0			0	mt
+Ézs	53	12	12	12	12	12	0	0	161	0	0			0	mt
+Ézs	54	17	17	17	17	17	0	0	219	0	0			0	mt
+Ézs	55	13	13	13	13	13	0	0	183	0	0			0	mt
+Ézs	56	12	12	12	12	12	0	0	175	0	0			0	mt
+Ézs	57	21	21	21	21	21	0	0	256	0	0			0	mt
+Ézs	58	14	14	14	14	14	0	0	221	0	0			0	mt
+Ézs	59	21	21	21	21	21	0	0	278	0	0			0	mt
+Ézs	60	22	22	22	22	22	0	0	286	0	0			0	mt
+Ézs	61	11	11	11	11	11	0	0	160	0	0			0	mt
+Ézs	62	12	12	12	12	12	0	0	169	0	0			0	mt
+Ézs	63	19	19	19	19	18	0	1	217	0	8	19		0	reszben_mt
+Ézs	64	12	12	11	11	0	0	12	0	0	132	1 2 3 4 5 6 7 8 9 10 11 12	12	0	nem_igazolt
+Ézs	65	25	25	25	25	25	0	0	358	0	0			0	mt
+Ézs	66	24	24	24	24	24	0	0	379	0	0			0	mt
+Jer	1	19	19	19	19	16	0	3	229	0	36	4 11 13		0	reszben_mt
+Jer	2	37	37	37	37	35	0	2	475	0	24	1 31		0	reszben_mt
+Jer	3	25	25	25	25	25	0	0	399	0	0			0	mt
+Jer	4	31	31	31	31	31	0	0	412	0	0			0	mt
+Jer	5	31	31	31	31	29	0	2	390	0	26	9 29		0	reszben_mt
+Jer	6	30	30	30	30	30	0	0	402	0	0			0	mt
+Jer	7	34	34	34	34	34	0	0	529	0	0			0	mt
+Jer	8	22	22	23	23	22	0	0	327	0	0			1	mt
+Jer	9	26	26	25	25	0	0	26	0	0	389	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26	26	0	nem_igazolt
+Jer	10	25	25	25	25	25	0	0	312	0	0			0	mt
+Jer	11	23	23	23	23	23	0	0	376	0	0			0	mt
+Jer	12	17	17	17	17	17	0	0	258	0	0			0	mt
+Jer	13	27	27	27	27	23	0	4	336	0	36	3 5 6 8		0	reszben_mt
+Jer	14	22	22	22	22	22	0	0	345	0	0			0	mt
+Jer	15	21	21	21	21	21	0	0	304	0	0			0	mt
+Jer	16	21	21	21	21	19	0	2	323	0	34	1 10		0	reszben_mt
+Jer	17	27	27	27	27	27	0	0	396	0	0			0	mt
+Jer	18	23	23	23	23	21	0	2	300	0	13	1 5		0	reszben_mt
+Jer	19	15	15	15	15	15	0	0	281	0	0			0	mt
+Jer	20	18	18	18	18	18	0	0	285	0	0			0	mt
+Jer	21	14	14	14	14	14	0	0	248	0	0			0	mt
+Jer	22	30	30	30	30	30	0	0	459	0	0			0	mt
+Jer	23	40	40	40	40	40	0	0	601	0	0			0	mt
+Jer	24	10	10	10	10	10	0	0	180	0	0			0	mt
+Jer	25	38	38	38	38	37	0	1	596	0	13	17		0	reszben_mt
+Jer	26	24	24	24	24	24	0	0	431	0	0			0	mt
+Jer	27	22	22	22	22	22	0	0	411	0	0			0	mt
+Jer	28	17	17	17	17	17	0	0	304	0	0			0	mt
+Jer	29	32	32	32	32	27	0	5	467	0	58	5 24 28 30 31		0	reszben_mt
+Jer	30	24	24	24	24	23	0	1	323	0	8	1		0	reszben_mt
+Jer	31	40	40	40	40	40	0	0	608	0	0			0	mt
+Jer	32	44	44	44	44	42	0	2	719	0	13	6 26		0	reszben_mt
+Jer	33	26	26	26	26	23	0	3	383	0	25	1 19 23		0	reszben_mt
+Jer	34	22	22	22	22	20	0	2	384	0	34	1 12		0	reszben_mt
+Jer	35	19	19	19	19	17	0	2	344	0	20	1 12		0	reszben_mt
+Jer	36	32	32	32	32	30	0	2	576	0	34	1 27		0	reszben_mt
+Jer	37	21	21	21	21	21	0	0	328	0	0			0	mt
+Jer	38	28	28	28	28	28	0	0	540	0	0			0	mt
+Jer	39	18	18	18	18	18	0	0	298	0	0			0	mt
+Jer	40	16	16	16	16	16	0	0	361	0	0			0	mt
+Jer	41	18	18	18	18	18	0	0	359	0	0			0	mt
+Jer	42	22	22	22	22	22	0	0	396	0	0			0	mt
+Jer	43	13	13	13	13	13	0	0	237	0	0			0	mt
+Jer	44	30	30	30	30	30	0	0	611	0	0			0	mt
+Jer	45	5	5	5	5	5	0	0	90	0	0			0	mt
+Jer	46	28	28	28	28	28	0	0	396	0	0			0	mt
+Jer	47	7	7	7	7	7	0	0	105	0	0			0	mt
+Jer	48	47	47	47	47	47	0	0	570	0	0			0	mt
+Jer	49	39	39	39	39	39	0	0	577	0	0			0	mt
+Jer	50	46	46	46	46	45	0	1	666	0	12	30		0	reszben_mt
+Jer	51	64	64	64	64	64	0	0	868	0	0			0	mt
+Jer	52	34	34	34	34	34	0	0	562	0	0			0	mt
+JSir	1	22	22	22	22	22	0	0	362	0	0			0	mt
+JSir	2	22	22	22	22	22	0	0	375	0	0			0	mt
+JSir	3	66	66	66	66	65	0	1	366	0	5	46		0	reszben_mt
+JSir	4	22	22	22	22	22	0	0	254	0	0			0	mt
+JSir	5	22	22	22	22	22	0	0	140	0	0			0	mt
+Ez	1	28	28	28	28	28	0	0	373	0	0			0	mt
+Ez	2	10	10	10	10	10	0	0	151	0	0			0	mt
+Ez	3	27	27	27	27	27	0	0	408	0	0			0	mt
+Ez	4	17	17	17	17	17	0	0	257	0	0			0	mt
+Ez	5	17	17	17	17	17	0	0	275	0	0			0	mt
+Ez	6	14	14	14	14	13	0	1	204	0	5	1		0	reszben_mt
+Ez	7	27	27	27	27	24	0	3	297	0	38	1 4 9		0	reszben_mt
+Ez	8	18	18	18	18	18	0	0	320	0	0			0	mt
+Ez	9	11	11	11	11	11	0	0	198	0	0			0	mt
+Ez	10	22	22	22	22	21	0	1	299	0	9	18		0	reszben_mt
+Ez	11	25	25	25	25	23	0	2	322	0	16	14 22		0	reszben_mt
+Ez	12	28	28	28	28	20	0	8	318	0	72	1 5 7 8 12 17 21 26		0	reszben_mt
+Ez	13	23	23	23	23	22	0	1	350	0	5	1		0	reszben_mt
+Ez	14	23	23	23	23	21	0	2	368	0	10	2 12		0	reszben_mt
+Ez	15	8	8	8	8	7	0	1	96	0	5	1		0	reszben_mt
+Ez	16	63	63	63	63	60	0	3	778	0	25	1 24 31		0	reszben_mt
+Ez	17	24	24	24	24	22	0	2	366	0	10	1 11		0	reszben_mt
+Ez	18	32	32	32	32	29	0	3	426	0	37	1 25 29		0	reszben_mt
+Ez	19	14	14	14	14	14	0	0	155	0	0			0	mt
+Ez	20	49	49	44	44	40	0	9	657	0	113	2 9 14 22 45 46 47 48 49	45 46 47 48 49	0	reszben_mt
+Ez	21	32	32	37	37	0	0	32	0	0	451	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32		5	nem_igazolt
+Ez	22	31	31	31	31	28	0	3	360	0	15	1 17 23		0	reszben_mt
+Ez	23	49	49	49	49	48	0	1	603	0	5	1		0	reszben_mt
+Ez	24	27	27	27	27	24	0	3	344	0	23	1 15 20		0	reszben_mt
+Ez	25	17	17	17	17	16	0	1	249	0	5	1		0	reszben_mt
+Ez	26	21	21	21	21	20	0	1	295	0	11	1		0	reszben_mt
+Ez	27	36	36	36	36	34	0	2	386	0	12	1 2		0	reszben_mt
+Ez	28	26	26	26	26	23	0	3	327	0	15	1 11 20		0	reszben_mt
+Ez	29	21	21	21	21	18	0	3	287	0	45	1 12 17		0	reszben_mt
+Ez	30	26	26	26	26	21	0	5	296	0	43	1 7 20 23 26		0	reszben_mt
+Ez	31	18	18	18	18	18	0	0	310	0	0			0	mt
+Ez	32	32	32	32	32	30	0	2	453	0	26	1 17		0	reszben_mt
+Ez	33	33	33	33	33	31	0	2	496	0	10	1 23		0	reszben_mt
+Ez	34	31	31	31	31	29	0	2	441	0	10	1 9		0	reszben_mt
+Ez	35	15	15	15	15	14	0	1	180	0	6	1		0	reszben_mt
+Ez	36	38	38	38	38	37	0	1	548	0	5	16		0	reszben_mt
+Ez	37	28	28	28	28	27	0	1	424	0	5	15		0	reszben_mt
+Ez	38	23	23	23	23	21	0	2	348	0	17	1 3		0	reszben_mt
+Ez	39	29	29	29	29	29	0	0	422	0	0			0	mt
+Ez	40	49	49	49	49	43	0	6	638	0	79	25 29 30 33 34 36		0	reszben_mt
+Ez	41	26	26	26	26	26	0	0	369	0	0			0	mt
+Ez	42	20	20	20	20	19	0	1	269	0	11	16		0	reszben_mt
+Ez	43	27	27	27	27	27	0	0	414	0	0			0	mt
+Ez	44	31	31	31	31	31	0	0	487	0	0			0	mt
+Ez	45	25	25	25	25	24	0	1	378	0	9	24		0	reszben_mt
+Ez	46	24	24	24	24	20	0	4	331	0	45	5 7 8 11		0	reszben_mt
+Ez	47	23	23	23	23	23	0	0	362	0	0			0	mt
+Ez	48	35	35	35	35	35	0	0	525	0	0			0	mt
+Dán	1	0	0	21	21	0	0	0	0	0	0			21	nincs_bsb_sor
+Dán	2	0	0	49	49	0	0	0	0	0	0			49	nincs_bsb_sor
+Dán	3	0	0	33	33	0	0	0	0	0	0			33	nincs_bsb_sor
+Dán	4	0	0	34	34	0	0	0	0	0	0			34	nincs_bsb_sor
+Dán	5	0	0	30	30	0	0	0	0	0	0			30	nincs_bsb_sor
+Dán	6	0	0	29	29	0	0	0	0	0	0			29	nincs_bsb_sor
+Dán	7	0	0	28	28	0	0	0	0	0	0			28	nincs_bsb_sor
+Dán	8	0	0	27	27	0	0	0	0	0	0			27	nincs_bsb_sor
+Dán	9	0	0	27	27	0	0	0	0	0	0			27	nincs_bsb_sor
+Dán	10	0	0	21	21	0	0	0	0	0	0			21	nincs_bsb_sor
+Dán	11	0	0	45	45	0	0	0	0	0	0			45	nincs_bsb_sor
+Dán	12	0	0	13	13	0	0	0	0	0	0			13	nincs_bsb_sor
+Hós	1	11	11	9	9	9	0	2	132	0	38	10 11	10 11	0	reszben_mt
+Hós	2	23	23	25	25	0	0	23	0	0	284	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23		2	nem_igazolt
+Hós	3	5	5	5	5	5	0	0	79	0	0			0	mt
+Hós	4	19	19	19	19	19	0	0	217	0	0			0	mt
+Hós	5	15	15	15	15	15	0	0	174	0	0			0	mt
+Hós	6	11	11	11	11	11	0	0	99	0	0			0	mt
+Hós	7	16	16	16	16	16	0	0	183	0	0			0	mt
+Hós	8	14	14	14	14	14	0	0	147	0	0			0	mt
+Hós	9	17	17	17	17	17	0	0	205	0	0			0	mt
+Hós	10	15	15	15	15	15	0	0	193	0	0			0	mt
+Hós	11	11	11	11	11	11	0	0	121	0	0			0	mt
+Hós	12	15	15	15	15	15	0	0	156	0	0			0	mt
+Hós	13	16	16	15	15	15	0	1	156	0	11	16	16	0	reszben_mt
+Hós	14	9	9	10	10	0	0	9	0	0	100	1 2 3 4 5 6 7 8 9		1	nem_igazolt
+Jóel	1	20	20	20	20	20	0	0	233	0	0			0	mt
+Jóel	2	32	32	27	27	27	0	5	378	0	67	28 29 30 31 32	28 29 30 31 32	0	reszben_mt
+Jóel	3	21	21	5	5	0	0	21	0	0	268	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21	6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21	0	nem_igazolt
+Jóel	4	0	0	21	21	0	0	0	0	0	0			21	nincs_bsb_sor
+Ámós	1	15	15	15	15	15	0	0	212	0	0			0	mt
+Ámós	2	16	16	16	16	16	0	0	213	0	0			0	mt
+Ámós	3	15	15	15	15	15	0	0	205	0	0			0	mt
+Ámós	4	13	13	13	13	13	0	0	209	0	0			0	mt
+Ámós	5	27	27	27	27	27	0	0	315	0	0			0	mt
+Ámós	6	14	14	14	14	14	0	0	174	0	0			0	mt
+Ámós	7	17	17	17	17	15	0	2	235	0	19	3 6		0	reszben_mt
+Ámós	8	14	14	14	14	14	0	0	189	0	0			0	mt
+Ámós	9	15	15	15	15	15	0	0	246	0	0			0	mt
+Abd	1	21	21	21	21	21	0	0	285	0	0			0	mt
+Jón	1	16	16	16	16	16	0	0	246	0	0			0	mt
+Jón	2	11	11	11	11	11	0	0	111	0	0			0	mt
+Jón	3	10	10	10	10	10	0	0	139	0	0			0	mt
+Jón	4	11	11	11	11	11	0	0	176	0	0			0	mt
+Mik	1	16	16	16	16	16	0	0	207	0	0			0	mt
+Mik	2	13	13	13	13	13	0	0	172	0	0			0	mt
+Mik	3	12	12	12	12	12	0	0	162	0	0			0	mt
+Mik	4	13	13	14	14	13	0	0	207	0	0			1	mt
+Mik	5	15	15	14	14	0	0	15	0	0	184	1 2 3 4 5 6 7 8 9 10 11 12 13 14 15	15	0	nem_igazolt
+Mik	6	16	16	16	16	16	0	0	201	0	0			0	mt
+Mik	7	20	20	20	20	20	0	0	239	0	0			0	mt
+Náh	1	15	15	14	14	14	0	1	155	0	20	15	15	0	reszben_mt
+Náh	2	13	13	14	14	0	0	13	0	0	154	1 2 3 4 5 6 7 8 9 10 11 12 13		1	nem_igazolt
+Náh	3	19	19	19	19	19	0	0	227	0	0			0	mt
+Hab	1	17	17	17	17	17	0	0	193	0	0			0	mt
+Hab	2	20	20	20	20	20	0	0	253	0	0			0	mt
+Hab	3	19	19	19	19	19	0	0	208	0	0			0	mt
+Sof	1	18	18	18	18	18	0	0	269	0	0			0	mt
+Sof	2	15	15	15	15	15	0	0	220	0	0			0	mt
+Sof	3	20	20	20	20	20	0	0	275	0	0			0	mt
+Hag	1	15	15	15	15	11	0	4	182	0	52	1 3 5 7		0	reszben_mt
+Hag	2	23	23	23	23	22	0	1	348	0	11	1		0	reszben_mt
+Zak	1	21	21	17	17	15	0	6	226	0	102	3 4 18 19 20 21	18 19 20 21	0	reszben_mt
+Zak	2	13	13	17	17	0	0	13	0	0	155	1 2 3 4 5 6 7 8 9 10 11 12 13		4	nem_igazolt
+Zak	3	10	10	10	10	10	0	0	162	0	0			0	mt
+Zak	4	14	14	14	14	11	0	3	151	0	32	4 5 13		0	reszben_mt
+Zak	5	11	11	11	11	11	0	0	151	0	0			0	mt
+Zak	6	15	15	15	15	14	0	1	197	0	5	9		0	reszben_mt
+Zak	7	14	14	14	14	12	0	2	175	0	12	4 8		0	reszben_mt
+Zak	8	23	23	23	23	21	0	2	341	0	11	1 18		0	reszben_mt
+Zak	9	17	17	17	17	17	0	0	216	0	0			0	mt
+Zak	10	12	12	12	12	12	0	0	163	0	0			0	mt
+Zak	11	17	17	17	17	17	0	0	250	0	0			0	mt
+Zak	12	13	14	14	14	13	0	0	210	0	0			1	mt
+Zak	13	9	9	9	9	9	0	0	150	0	0			0	mt
+Zak	14	21	21	21	21	21	0	0	359	0	0			0	mt
+Mal	1	14	14	14	14	14	0	0	233	0	0			0	mt
+Mal	2	17	17	17	17	17	0	0	263	0	0			0	mt
+Mal	3	18	18	24	24	18	0	0	268	0	0			6	mt
+Mal	4	6	6	0	0	0	0	6	0	0	91	1 2 3 4 5 6	1 2 3 4 5 6	0	nem_igazolt
