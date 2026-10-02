@@ -141,7 +141,7 @@ A szakasz két nagy tanítást hordoz. Egyfelől Noé példája — hogy annak e
 
 ### Sod (Titok) — *tömör, fegyelmezett*
 
-A galamb, amely a visszahúzódó vizek fölött repül, és amely — miután nem talál "nyugvóhelyet" (*manoach*, rokon Noé nevével, *Nóach*) — végül olajággal tér vissza, az új élet és a béke jelévé válik anélkül, hogy a szöveg ezt explicit módon kimondaná. Ez a kép a Peshat/Remez rétegekből ténylegesen levezethető: a galamb a vizek fölött, az új teremtés kezdetén jelenik meg — pontosan úgy, ahogyan az 1:2-ben Isten Szelleme a vizek fölött lebegett. Ez a párhuzam (nem szó szerinti, hanem képi) segít megérteni, miért vált a galamb a keresztény hagyományban is a Szentlélek jelévé (lásd 4 lent).
+A galamb, amely a visszahúzódó vizek fölött repül, és amely — miután nem talál "nyugvóhelyet" (*manoach*, rokon Noé nevével, *Nóach*) — végül olajággal tér vissza, az új élet és a béke jelévé válik anélkül, hogy a szöveg ezt explicit módon kimondaná. Ez a kép a Peshat/Remez rétegekből ténylegesen levezethető: a galamb a vizek fölött, az új teremtés kezdetén jelenik meg — pontosan úgy, ahogyan az 1:2-ben Isten Szelleme a vizek fölött lebegett. Ez a párhuzam (nem szó szerinti, hanem képi) segít megérteni, miért vált a galamb a keresztény hagyományban is a Szent Szellem jelévé (lásd 4 lent).
 
 Ez a gyök-mintázat a fejezet zárómondatában is folytatódik: amikor Isten "megérzi a kedves illatot" (רֵיחַ הַנִּיחֹחַ, *réach hannichóach*, 21. v.), a *nichóach* szó ugyanabból a נוח gyökből ered, mint Noé neve és a galamb *manoach*-a — mindhármat a BDB "megnyugtató, csillapító" jelentéssel erősíti meg. A fejezet így egyetlen gyök köré szerveződő ívet rajzol: Noé (pihenés) nevétől indulva, a galamb hiábavaló nyugvóhely-keresésén át, végül Isten saját "megnyugvásáig" Noé áldozatában.
 
@@ -191,7 +191,7 @@ Ez a gyök-mintázat a fejezet zárómondatában is folytatódik: amikor Isten "
 
 *Miért kapcsolódik:* **tematikus, nem lexikai kapocs** — mindkét esetben egy galamb jelenik meg a víz fölött/után, új kezdet jeleként; ezt a tipológiát a patrisztikus hagyomány (lásd 5) széles körben elfogadta, bár maga a szöveg nem állítja explicit módon a kapcsolatot.
 
-**Összegzés:** a szakasz kereszthivatkozásai egyetlen nagy ívet rajzolnak ki: Isten megemlékezése elindítja a helyreállítást, amely a teremtés áldásának megismétlésében, az átok módosításában és — a keresztény hagyomány olvasatában — a Szentlélek eljövendő munkájának előképében teljesedik ki.
+**Összegzés:** a szakasz kereszthivatkozásai egyetlen nagy ívet rajzolnak ki: Isten megemlékezése elindítja a helyreállítást, amely a teremtés áldásának megismétlésében, az átok módosításában és — a keresztény hagyomány olvasatában — a Szent Szellem eljövendő munkájának előképében teljesedik ki.
 
 📎 Bővebben, önálló tematikus feldolgozásban: `Tehom_tematikus.md` (a *tehóm*/ábüσσος — mélység motívuma — a 8:2-ben dokumentált helyreállítást a teljes genezisi/Tóra-szintű ívbe és a görög ábüσσος-kiterjesztésbe helyezve, egyetlen fájlban tárgyalja; a hádész/seól önálló motívumhoz l. `Hadesz_Seol_tematikus.md`).
 
@@ -201,7 +201,7 @@ Ez a gyök-mintázat a fejezet zárómondatában is folytatódik: amikor Isten "
 
 **Rabbinikus hang:** a Bereseit Rabbá (33) egy színes vitát örökít meg a hollóról: a midrás szerint a holló szemrehányást tett Noénak, amiért éppen őt küldte ki egy ilyen veszélyes küldetésre — a Talmud (Szanhedrin 108b) is megőrzi ezt a hagyományt, miszerint a holló később, mint "megvetett" faj, panaszkodott, hogy Noé a saját fajának fennmaradását kockáztatta vele. Ezzel szemben a galambot a rabbinikus hagyomány gyakran Izráel jelképeként (*Kneszet Jiszráél*) azonosítja, az Énekek éneke "én galambom" (2:14) kifejezéssel összefüggésben.
 
-**Patrisztikus hang:** a galamb és az olajág Szentlélek-, illetve béke-szimbolikaként való értelmezése az egyik legszélesebb körben elfogadott patrisztikus olvasat — Tertullianustól (*A keresztségről* 8.) kezdve Ambrosiuson (*De Noe*) át Ágostonig (*Isten városa* 15.27) szinte az egész egyházi hagyomány összeköti Noé galambját Jézus megkeresztelésének galambjával, mindkettőt az új teremtés/új kezdet jeleként olvasva.
+**Patrisztikus hang:** a galamb és az olajág Szent Szellem-, illetve béke-szimbolikaként való értelmezése az egyik legszélesebb körben elfogadott patrisztikus olvasat — Tertullianustól (*A keresztségről* 8.) kezdve Ambrosiuson (*De Noe*) át Ágostonig (*Isten városa* 15.27) szinte az egész egyházi hagyomány összeköti Noé galambját Jézus megkeresztelésének galambjával, mindkettőt az új teremtés/új kezdet jeleként olvasva.
 
 ---
 
