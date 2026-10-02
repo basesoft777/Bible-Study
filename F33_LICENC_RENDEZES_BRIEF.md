@@ -13,7 +13,7 @@ pr: https://github.com/basesoft777/Bible-Study/pull/123
 lezarva_osszegzes: "22 tisztazott/17 tisztazatlan, TBESG marad, TBESH-család nem mozdult, LXX_kivonat tisztazatlan, N-F33 javasolt, nyitott DT-F33c (részletek: naplok/LICENC_RENDEZES_zaras.md)"
 fugg: [24]
 olvas: [adat/licencek.tsv, adat/datasetek.tsv, adat/SEMA.md, DONTESEK.md, naplok/F24_zaras.md, naplok/ELLENOR_F24.md, konkordancia/, eszkozok/]
-ir: [adat/licencek.tsv, adat/datasetek.tsv, DONTESEK.md, naplok/LICENC_RENDEZES_zaras.md, naplok/ELLENOR_LICENC_RENDEZES.md, "konkordancia/LXX_kivonat_*.tsv", eszkozok/lexikon_general.py]
+ir: [adat/licencek.tsv, adat/SEMA.md, konkordancia/README.md, adat/datasetek.tsv, DONTESEK.md, naplok/LICENC_RENDEZES_zaras.md, naplok/ELLENOR_LICENC_RENDEZES.md, "konkordancia/LXX_kivonat_*.tsv", eszkozok/lexikon_general.py]
 ---
 
 # Forrásaink licencének rendezése (az F24 utófeladata)

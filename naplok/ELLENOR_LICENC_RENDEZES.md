@@ -16,3 +16,8 @@
 **OK pontok:** K2 (a zárónapló számai a táblából), K3 (MCGED bajtazonos), K4 (DT-F33b), a 39 sor/9 oszlop szerkezet, minden `tisztazott` sor `forras_hely`-e idézet+URL+dátum, a nem érintett sorok változatlanok.
 
 **Korlát:** a 7 új külső idézet (BDB, TAGNT, TAHOT, TIPNR, TSK, Macula_gorog, LXX_OS) a helyi repóból **nem volt ellenőrizhető** (külső forrásból valók, 2026-10-02-i lekéréssel); csak a forrás újralekérésével igazolható.
+
+## Kiegészítés — a 2. és 3. eltérés lezárása (DT-F33c, F33.8)
+
+A felhasználó döntött: README csak a JOGTULAJDONOS szó szerinti, a fájlt megnevező/lefedő nyilatkozataként fogadható el. Soronként: BDB, Karoli_1908, Karoli_KH → `tisztazatlan` (kiadás-készítői besorolás); Strong_szotar, OSHL, LXX_OS → `tisztazott` marad (jogtulajdonos README/LICENSE-DATA). Végállapot: 19 `tisztazott` / 20 `tisztazatlan`. SEMA 2.19 2. szabálya kiegészítve. Nyitott megfigyelés (nem javítva): TBESH megjegyzése és KJV_Strongs_teljes besorolása. Az ellenőrző szabály az N-F33b javaslat.
+
