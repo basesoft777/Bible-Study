@@ -111,13 +111,20 @@ def partnerek_er(nezet):
     return {e: frozenset(h) for e, h in d.items()}
 
 
-def egyesit_vers(ig, s, c, karoli_tokenek, eredeti):
+def egyesit_vers(ig, s, c, karoli_tokenek, eredeti, kezi_hu=None, extra_er=None):
     """Egy vers sorai. s, c: a modell objektuma vagy None (kapuhibás/hiányzó).
 
     Visszaad: (parok_sorok, szavak_sorok, atnezes_bool)."""
     nk, ne = len(karoli_tokenek), len(eredeti)
-    sn = vers_nezet(s) if s is not None else None
-    cn = vers_nezet(c) if c is not None else None
+    kezi_hu = set(kezi_hu or ())
+    extra_er = list(extra_er or [])
+
+    def szur(nezet):
+        # a kézi 1:2 beolvasztás Károli-tokenjei nem kapnak linket (a modell válaszából kiszűrve)
+        return nezet if not kezi_hu or nezet is None else (
+            {h: e for h, e in nezet[0].items() if h not in kezi_hu}, nezet[1] - kezi_hu, nezet[2])
+    sn = szur(vers_nezet(s)) if s is not None else None
+    cn = szur(vers_nezet(c)) if c is not None else None
     alap = sn if sn is not None else cn
     if alap is None:
         szavak = []
@@ -125,6 +132,8 @@ def egyesit_vers(ig, s, c, karoli_tokenek, eredeti):
             szavak.append([ig, 'hu', i, t, 'fuggoben', '', '', 'kezi', ''])
         for i, w in enumerate(eredeti, 1):
             szavak.append([ig, 'er', i, w['alak'], 'fuggoben', '', w['strong'], 'kezi', ''])
+        for w in extra_er:
+            szavak.append([ig, 'er', w['sorsz'], w['alak'], 'fuggoben', '', w['strong'], 'kezi', ''])
         return [], szavak, True
     van_ketto = sn is not None and cn is not None
     vforras = 'S' if sn is not None else 'C'
@@ -144,6 +153,9 @@ def egyesit_vers(ig, s, c, karoli_tokenek, eredeti):
                           'magas' if magas else 'alacsony', tforras(magas)])
     szavak = []
     for i, t in enumerate(karoli_tokenek, 1):
+        if i in kezi_hu:
+            szavak.append([ig, 'hu', i, t, 'fuggoben', '', '', 'kezi', ''])
+            continue
         if i in a_hu:
             allapot, partner = 'parositva', sorted(a_hu[i])
             strongok = []
@@ -166,6 +178,8 @@ def egyesit_vers(ig, s, c, karoli_tokenek, eredeti):
             magas = van_ketto and (e not in c_er)
         szavak.append([ig, 'er', e, w['alak'], allapot, ','.join(str(x) for x in partner), w['strong'],
                        'magas' if magas else 'alacsony', tforras(magas)])
+    for w in extra_er:
+        szavak.append([ig, 'er', w['sorsz'], w['alak'], 'fuggoben', '', w['strong'], 'kezi', ''])
     return parok, szavak, False
 
 
@@ -220,6 +234,8 @@ def epit(konyv, gyoker=None, karoli=None, ered=None):
     parok, szavak, atnezes = [], [], []
     kimaradt = set(sonnet_koteg.eredeti_nelkuli_versek(konyv, karoli, ered))
     felul = kezi_felulir(konyv, gyoker)
+    osszevon = {o['karoli']: o for o in tokenek.versosszevonasok() if tokenek.igehely_bont(o['karoli'])[0] == konyv}
+    extra = tokenek.osszevont_extra()
     for ig in sorrend_igehelyek(minta, kimaradt, karoli):
         if ig in felul and ig not in kimaradt:
             p, sz, kezi = egyesit_vers(ig, None, None, tokenek.tokenizal(karoli[ig]), ered[ig])
@@ -233,9 +249,15 @@ def epit(konyv, gyoker=None, karoli=None, ered=None):
             continue
         s = sv.get(ig, {}).get('obj') if sv.get(ig, {}).get('allapot') == 'ok' else None
         c = cv.get(ig, {}).get('obj') if cv.get(ig, {}).get('allapot') == 'ok' else None
-        p, sz, kezi = egyesit_vers(ig, s, c, tokenek.tokenizal(karoli[ig]), ered[ig])
+        o = osszevon.get(ig)
+        p, sz, kezi = egyesit_vers(ig, s, c, tokenek.tokenizal(karoli[ig]), ered[ig],
+                                   kezi_hu=range(o['hu_tol'], o['hu_ig'] + 1) if o else None,
+                                   extra_er=extra.get(ig) if o else None)
         parok += p
         szavak += sz
+        if o:
+            atnezes.append([ig, 'hu %d–%d és a TAHOT %s: %s' % (o['hu_tol'], o['hu_ig'], o['eredeti'], o['megj']),
+                            'kezi (kézi 1:2 beolvasztás)'])
         if kezi:
             atnezes.append([ig, '; '.join(sv.get(ig, {}).get('hibak', ['nincs válasz'])) or 'nincs válasz',
                             '; '.join(cv.get(ig, {}).get('hibak', ['nincs válasz'])) or 'nincs válasz'])
@@ -277,6 +299,8 @@ def proveniencia_sor(konyv, gyoker=None):
         forras += ['f22/valaszok/sonnet/%s_javito.jsonl' % n, 'f22/valaszok/c/%s_javito.jsonl' % n]
     if any(tokenek.igehely_bont(r[0] or r[1])[0] == konyv for r in tokenek.versmegfeleltetes()):
         forras.append('f22/versmegfeleltetes.tsv')
+    if any(tokenek.igehely_bont(o['karoli'])[0] == konyv for o in tokenek.versosszevonasok()):
+        forras.append('f22/versosszevonas.tsv')
     forras += ['konkordancia/TAHOT_kivonat.tsv', 'konkordancia/Karoli_1908.tsv']
     if csak_sonnet:
         return ('# proveniencia: scope=manual | forras=%s | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; a '
@@ -328,10 +352,12 @@ def ellenoriz(konyv, gyoker=None, karoli=None, ered=None):
     parok, szavak = olvas(u['parok']), olvas(u['szavak'])
     hibak = []
     var = {}
+    extra = tokenek.osszevont_extra()
+    teljes = lambda ig: ered.get(ig, []) + extra.get(ig, [])   # noqa: E731
     for ig in sorrend_igehelyek(minta, sonnet_koteg.eredeti_nelkuli_versek(konyv, karoli, ered), karoli):
         for i in range(1, len(tokenek.tokenizal(karoli[ig])) + 1):
             var[(ig, 'hu', i)] = 0
-        for e in range(1, len(ered.get(ig, [])) + 1):
+        for e in range(1, len(teljes(ig)) + 1):
             var[(ig, 'er', e)] = 0
     for ig in sonnet_koteg.karoli_nelkuli_eredeti_versek(konyv, karoli, ered):
         for e in range(1, len(ered[ig]) + 1):
@@ -342,7 +368,7 @@ def ellenoriz(konyv, gyoker=None, karoli=None, ered=None):
             hibak.append('a szavak táblában ismeretlen token: %s' % (k,))
             continue
         var[k] += 1
-        if r['oldal'] == 'er' and r['strong'] != ered[r['vers']][int(r['sorszam']) - 1]['strong']:
+        if r['oldal'] == 'er' and r['strong'] != teljes(r['vers'])[int(r['sorszam']) - 1]['strong']:
             hibak.append('szavak: a strong nem a TAHOT-é: %s' % (k,))
         if r['oldal'] == 'hu':
             tl = tokenek.tokenizal(karoli[r['vers']])

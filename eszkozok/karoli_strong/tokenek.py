@@ -52,7 +52,8 @@ MERES_KIZARAS = os.path.join(ROOT, 'f21p', 'meres_kizaras.tsv')
 VERSBEOSZTAS_MEGF = os.path.join(ROOT, 'f22', 'versmegfeleltetes.tsv')   # F22: a versbeosztás-detektor gépi listája
 # A lista csak ezekre a könyvekre érvényes a futtatóban (a többi sor javaslat, amíg a felhasználó nem hagyja jóvá):
 # a detektor pontossága csak az 1Móz (üres lista) és a 2Móz (35:36–36:37) esetén igazolt; pl. az Ézs 9:17–20 hamis lenne.
-VERSBEOSZTAS_JOVAHAGYOTT = ('2Móz', '3Móz')
+VERSBEOSZTAS_JOVAHAGYOTT = ('2Móz', '3Móz', '4Móz', '5Móz')
+VERSOSSZEVONAS = os.path.join(ROOT, 'f22', 'versosszevonas.tsv')   # F22: kézzel jóváhagyott 1:2 beolvasztások
 
 
 def tokenizal(szoveg):
@@ -114,6 +115,32 @@ def versmegfeleltetes(ut=None, jovahagyott=None):
     return [r for r in sor if _IGEHELY.match(r[0] or r[1]) and _IGEHELY.match(r[0] or r[1]).group(1) in jovahagyott]
 
 
+def versosszevonasok(ut=None):
+    """A kézi 1:2 versbeolvasztások (`f22/versosszevonas.tsv`): [{'karoli', 'hu_tol', 'hu_ig', 'eredeti', 'megj'}]."""
+    ut = ut or VERSOSSZEVONAS
+    if not os.path.exists(ut):
+        return []
+    with open(ut, encoding='utf-8') as f:
+        sorok = [s.rstrip('\n').rstrip('\r') for s in f if s.strip() and not s.startswith('#')]
+    ki = []
+    for s in sorok[1:]:
+        r = s.split('\t')
+        ki.append({'karoli': r[0], 'hu_tol': int(r[1]), 'hu_ig': int(r[2]), 'eredeti': r[3], 'megj': r[4] if len(r) > 4 else ''})
+    return ki
+
+
+def osszevont_extra(nyers=None):
+    """{karoli_igehely: [eredeti token, ...]}: a beolvasztott eredeti versek tokenjei (nyers kulcson), a sorszám a
+    Károli-vers saját eredeti szavai utáni folytatás."""
+    nyers = nyers if nyers is not None else betolt_eredeti(versmegf=False)
+    mapped = betolt_eredeti()
+    ki = {}
+    for o in versosszevonasok():
+        alap = len(mapped.get(o['karoli'], []))
+        ki[o['karoli']] = [dict(w, sorsz=alap + i) for i, w in enumerate(nyers[o['eredeti']], 1)]
+    return ki
+
+
 def _versmegfeleltet(ered, sorok):
     """A nyers (TAHOT/TAGNT-kulcsú) versfolyamot a Károli-kulcsra képezi a detektor listája szerint:
     `eltolt`: a Károli-vers a megfeleltetett eredeti verset kapja; `nincs_eredeti`: a Károli-versnek nincs
@@ -122,6 +149,7 @@ def _versmegfeleltet(ered, sorok):
     Ami a listában nem szerepel, változatlan (azonos kulcs)."""
     if not sorok:
         return ered
+    beolvasztott = {o['eredeti'] for o in versosszevonasok()}   # a kézi 1:2 beolvasztásba vont eredeti versek: nem gazdátlanok
     erintett_k = {k for k, e, t in sorok if k}
     erintett_e = {e for k, e, t in sorok if e}
     uj = {ig: v for ig, v in ered.items() if ig not in erintett_k and ig not in erintett_e}
@@ -135,6 +163,8 @@ def _versmegfeleltet(ered, sorok):
             b = _IGEHELY.match(ig)
             uj['%s %s:%d' % (b.group(1), b.group(2), int(b.group(3)) + 1000)] = ered[ig]
     for k, e, t in sorok:
+        if t == 'nincs_karoli' and e in beolvasztott:
+            continue
         if t == 'nincs_karoli':
             b = _IGEHELY.match(e)
             kulcs = e if e not in uj and e not in erintett_k else '%s %s:%d' % (b.group(1), b.group(2), int(b.group(3)) + 1000)
