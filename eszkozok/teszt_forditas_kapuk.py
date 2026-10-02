@@ -32,6 +32,18 @@ class Szentlelek(unittest.TestCase):
 
 
 class Fejezetszam(unittest.TestCase):
+    def test_forrashiba_peldak_f38(self):
+        # F38.266 (DT-F38e): a forrasbeli (BDB) igehely-hibak listazasa, nem javitasa
+        e, d = K.ellenoriz_fejezetszam('Hab 41:47; Jóel 9:9; 1Móz 81:3')
+        self.assertEqual(e, 'JELZES')
+        for hely in ('Hab 41', 'Jóel 9', '1Móz 81'):
+            self.assertIn(hely, d)
+
+    def test_nem_javit_es_nem_gatol(self):
+        e, _ = K.ellenoriz_fejezetszam('Hab 41:47')
+        self.assertEqual(e, 'JELZES')
+        self.assertTrue(K.atment([('13_fejezetszam', e, '')]))
+
     def test_tul_nagy_fejezet(self):
         e, d = K.ellenoriz_fejezetszam('Ez 73:23; Péld 57:1')
         self.assertEqual(e, 'JELZES')

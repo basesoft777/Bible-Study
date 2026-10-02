@@ -200,5 +200,100 @@ class Kapcsolhatosag(unittest.TestCase):
         self.assertEqual(N.normalizal(szoveg, 'BDB'), (szoveg, []))
 
 
+class Elofordulas(unittest.TestCase):
+    """F38.266 (DT-F38e): `N t.` -> `N-szor` (a toldalek a kiejtett szam szerint)."""
+
+    def test_alapalakok(self):
+        self.assertEqual(N.szabaly_elofordulas('33 t.')[0], '33-szor')
+        self.assertEqual(N.szabaly_elofordulas('(26 t.)')[0], '(26-szor)')
+        self.assertEqual(N.szabaly_elofordulas('Hag 1:14 (3 t. a versben); 4')[0],
+                         'Hag 1:14 (a versben 3-szor); 4')
+
+    def test_szokoz_nelkuli_es_zaro_jelek(self):
+        self.assertEqual(N.szabaly_elofordulas('322t.; (117 t.): (116 t.).')[0],
+                         '322-szer; (117-szer): (116-szor).')
+
+    def test_magashangrendu_es_melyhangrendu(self):
+        for n, v in ((3, 'szor'), (4, 'szer'), (5, 'ször'), (10, 'szer'), (20, 'szor'), (40, 'szer'),
+                     (45, 'ször'), (100, 'szor'), (2, 'szer'), (7, 'szer'), (8, 'szor'), (9, 'szer')):
+            self.assertEqual(N.szor_toldalek(n), v, n)
+
+    def test_igehely_utani_szam_nem_gyakorisag(self):
+        szoveg = '1Móz 22:3 t. és 5:12 t. stb.; 2-3 t.'
+        self.assertEqual(N.szabaly_elofordulas(szoveg), (szoveg, 0))
+
+    def test_mas_t_rovidites_valtozatlan(self):
+        szoveg = 'a t. termést; ahol t. = tárgyeset'
+        self.assertEqual(N.szabaly_elofordulas(szoveg)[1], 0)
+
+    def test_csak_bdb(self):
+        self.assertEqual(N.normalizal('33 t.', 'Thayer')[0], '33 t.')
+        self.assertEqual(N.normalizal('33 t.', 'BDB')[0], '33-szor')
+
+
+class Nevalakok(unittest.TestCase):
+    def test_izrael_izrael(self):
+        self.assertEqual(N.szabaly_nevalakok('Izrael, Izraelről, az Izraellel')[0],
+                         'Izráel, Izráelről, az Izráellel')
+
+    def test_mar_helyes_es_izraelita_valtozatlan(self):
+        szoveg = 'Izráel; izraelita; Izraelita; Jezréel'
+        self.assertEqual(N.szabaly_nevalakok(szoveg)[1], 0)
+
+    def test_csak_bdb(self):
+        self.assertEqual(N.normalizal('Izrael', 'Thayer')[0], 'Izrael')
+        self.assertEqual(N.normalizal('Izrael', 'BDB')[0], 'Izráel')
+
+
+class KonyvRov(unittest.TestCase):
+    def test_1pt_1pet(self):
+        self.assertEqual(N.szabaly_konyv_rov('1Pt 2:3; 2Pt 1:1')[0], '1Pét 2:3; 2Pét 1:1')
+
+    def test_a_tablabeli_alak_a_merveado(self):
+        self.assertEqual(N.KAROLI['1Pe'][0], '1Pét')
+
+    def test_igehely_nelkuli_nem(self):
+        self.assertEqual(N.szabaly_konyv_rov('az 1Pt kifejezés')[1], 0)
+
+    def test_mar_helyes_valtozatlan(self):
+        self.assertEqual(N.szabaly_konyv_rov('1Pét 2:3')[1], 0)
+
+
+class GlosszaVisszaallit(unittest.TestCase):
+    """F38.266: az RV/AV angol glosszaja angolul marad."""
+
+    def test_lefordult_glossza_visszaall(self):
+        uj, valt = N.glossza_visszaallit('(RV breath) 33:11', '(RV: lehelet) 33:11')
+        self.assertEqual(uj, '(RV breath) 33:11')
+        self.assertEqual(valt, [('RV: lehelet', 'RV breath')])
+
+    def test_elvalaszto_nelkuli_es_vesszos_hatar(self):
+        uj, _ = N.glossza_visszaallit('RV besides; de', 'RV mellett; de')
+        self.assertEqual(uj, 'RV besides; de')
+        uj, _ = N.glossza_visszaallit('RV against, see Ew', 'RV: valami ellen, l. Ew')
+        self.assertEqual(uj, 'RV against, l. Ew')
+
+    def test_tobb_szavas_glossza(self):
+        uj, _ = N.glossza_visszaallit('(AV because of Gedaliah), read x', '(AV: Gedalja miatt), olv. x')
+        self.assertEqual(uj, '(AV because of Gedaliah), olv. x')
+
+    def test_mar_angol_valtozatlan(self):
+        f = 'AV slacken me not, x'
+        self.assertEqual(N.glossza_visszaallit(f, f), (f, []))
+
+    def test_nem_glossza_mondatresz_valtozatlan(self):
+        for f, h in (('RV renders sin-offering; de', 'RV fordítása sin-offering; de'),
+                     ('RV and others in the heart of)', 'RV és mások: in the heart of)'),
+                     ('RV Di and others; (', 'RV Di és mások; ('),
+                     ('RVm, but order of words difficult;', 'RVm, de a szórend nehéz;')):
+            self.assertEqual(N.glossza_visszaallit(f, h), (h, []), f)
+
+    def test_jelek_szama_elter_valtozatlan(self):
+        self.assertEqual(N.glossza_visszaallit('RV breath) x', 'RV: lehelet) RV'), ('RV: lehelet) RV', []))
+
+    def test_zaro_jel_elter_valtozatlan(self):
+        self.assertEqual(N.glossza_visszaallit('RV breath) x', 'RV: lehelet; x'), ('RV: lehelet; x', []))
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

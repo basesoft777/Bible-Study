@@ -381,6 +381,11 @@ def utofeldolgoz(strong, nyers, kivetel=()):
     sp, forras = forras_szoveg(strong)
     szotar = szotar_strongnak(sp)
     vegleges, valt = N.normalizal(nyers, szotar)
+    if szotar == 'BDB':
+        # F38.266 (DT-F38e): az RV/AV angol glosszaja angolul marad
+        vegleges, glossza = N.glossza_visszaallit(forras, vegleges)
+        if glossza:
+            valt = list(valt) + [('glossza_visszaallit', len(glossza))]
     # DT-F38c (d): a kotelezo terminologiai alak kis/nagybetu-elterese gepi
     # cserevel javul (5. kapu), a csere a valtozasok kozott naplozva
     vegleges, csere = K.terminologia_kisnagybetu_csere(forras, vegleges, bizonytalan_lista=list(kivetel))

@@ -25,6 +25,15 @@ Szabalyok:
                -> kiirt magyar konyvnev (v4 alt. 4., elso fele): `Hebrews`
                -> `a Zsidókhoz írt levél`-alak helyett a semleges
                `Zsidókhoz írt levél`. Csak a KONYVNEV_FOLYO zart listaja.
+  elofordulas  (BDB, F38.266, DT-F38e) az `N t.` gyakorisag-jelolo
+               (`33 t.`, `(26 t.)`, `3 t. a versben`) -> `33-szor`,
+               `(26-szor)`, `a versben 3-szor` (a toldalek a szam kiejtett
+               utolso szava szerint: -szor/-szer/-ször).
+  nevalakok    (BDB, F38.266) `Izrael` -> `Izráel` (Károli; a toldalekos
+               alakok is), `izraelita` marad.
+  konyv_rov    (BDB, F38.266) a Karoli-tablaban nem szereplo, hibas
+               rovidites igehely elott (`1Pt 2:3`) -> a tabla szabvanyos
+               alakja (`1Pét`).
 
 Hasznalat konyvtarkent:
 
@@ -55,8 +64,12 @@ SZABALYOK = {
     'szerzonevek': {'Thayer', 'BDB'},
     'igehely_rov': {'Thayer', 'BDB'},
     'konyvnevek': {'Thayer', 'BDB'},
+    'elofordulas': {'BDB'},
+    'nevalakok': {'BDB'},
+    'konyv_rov': {'BDB'},
 }
-SZABALY_SORREND = ['igehely_rov', 'kk_k', 'szerzonevek', 'konyvnevek']
+SZABALY_SORREND = ['igehely_rov', 'kk_k', 'szerzonevek', 'konyvnevek',
+                   'elofordulas', 'nevalakok', 'konyv_rov']
 
 
 # ---------------------------------------------------------------------------
@@ -259,12 +272,121 @@ def szabaly_konyvnevek(szoveg):
     return szoveg, n
 
 
+# ---------------------------------------------------------------------------
+# elofordulas (F38.266, DT-F38e): `N t.` -> `N-szor`
+# ---------------------------------------------------------------------------
+
+_SZER_UTOLSO = {1: 'szer', 2: 'szer', 3: 'szor', 4: 'szer', 5: 'ször', 6: 'szor', 7: 'szer', 8: 'szor', 9: 'szer'}
+_SZER_TIZES = {1: 'szer', 2: 'szor', 3: 'szor', 4: 'szer', 5: 'szer', 6: 'szor', 7: 'szer', 8: 'szor', 9: 'szer'}
+
+
+def szor_toldalek(n):
+    """A `-szor` / `-szer` / `-ször` toldalek a szam kiejtett utolso szava
+    szerint (3 háromszor, 4 négyszer, 5 ötször, 20 húszszor, 100 százszor)."""
+    if n % 1000 == 0:
+        return 'szer'          # ezer
+    if n % 100 == 0:
+        return 'szor'          # száz
+    if n % 10:
+        return _SZER_UTOLSO[n % 10]
+    return _SZER_TIZES[(n // 10) % 10]
+
+
+# a szam elott nem allhat szamjegy, kettospont, pont, vesszo, kotojel vagy
+# perjel (`1Móz 22:3 t.` -- az nem gyakorisag); utana nem allhat betu
+IDO_MINTA = re.compile(r'(?<![\d:.,\-–/])(\d{1,4})\s?t\.( a versben)?(?![\w])')
+
+
+def szabaly_elofordulas(szoveg):
+    def csere(m):
+        n = int(m.group(1))
+        alak = '%d-%s' % (n, szor_toldalek(n))
+        return 'a versben ' + alak if m.group(2) else alak
+    return IDO_MINTA.subn(csere, szoveg)
+
+
+# ---------------------------------------------------------------------------
+# nevalakok (F38.266): Izrael -> Izráel
+# ---------------------------------------------------------------------------
+
+IZRAEL_MINTA = re.compile(r'(?<![%s])Izrael(?!ita)' % _BETU)
+
+
+def szabaly_nevalakok(szoveg):
+    return IZRAEL_MINTA.subn('Izráel', szoveg)
+
+
+# ---------------------------------------------------------------------------
+# konyv_rov (F38.266): hibas magyar konyvrovidites igehely elott
+# ---------------------------------------------------------------------------
+
+# hibas alak -> STEPBible-rovidites; a szabvanyos alakot a
+# Konyv_normalizalo_tabla.tsv adja (`Magyar rövidítés`)
+HIBAS_KONYV_ROV = {'1Pt': '1Pe', '2Pt': '2Pe'}
+HIBAS_KONYV_MINTA = re.compile(
+    r'(?<![%s0-9])(%s)(\s+)(?=\d{1,3}:\d)' % (_BETU, '|'.join(re.escape(k) for k in HIBAS_KONYV_ROV)))
+
+
+def szabaly_konyv_rov(szoveg):
+    return HIBAS_KONYV_MINTA.subn(lambda m: KAROLI[HIBAS_KONYV_ROV[m.group(1)]][0] + m.group(2), szoveg)
+
+
 FUGGVENYEK = {
     'kk_k': szabaly_kk_k,
     'szerzonevek': szabaly_szerzonevek,
     'igehely_rov': szabaly_igehely_rov,
     'konyvnevek': szabaly_konyvnevek,
+    'elofordulas': szabaly_elofordulas,
+    'nevalakok': szabaly_nevalakok,
+    'konyv_rov': szabaly_konyv_rov,
 }
+
+
+# ---------------------------------------------------------------------------
+# glossza_visszaallit (F38.266, DT-F38e): az RV/AV angol glosszaja angolul
+# marad (prompt v4). Ahol a fordito lefordította (`RV: lehelet` a forras
+# `RV breath` helyett), a forrasbeli angol glosszat visszaallitja. Forras is
+# kell hozza, ezert kulon fuggveny (nem a SZABALYOK kozott).
+# ---------------------------------------------------------------------------
+
+RV_JEL = re.compile(r'\b(?:AV|RV)m?\b')
+# a forrasban: szokoz + kisbetus angol glossza (max. 5 szo) + zaro jel
+RV_ANGOL = re.compile(r"^ ([a-z][A-Za-z'\-]*(?: [A-Za-z'\-]+){0,4})(?=[),;])")
+# nem glossza, hanem mondatresz / hivatkozas: az elso szava alapjan kizarva
+RV_NEM_GLOSSZA = {'and', 'but', 'or', 'see', 'compare', 'render', 'renders', 'read', 'text',
+                  'gives', 'following', 'so', 'with', 'if', 'too', 'is', 'for', 'as', 'which', 'that'}
+
+
+def glossza_visszaallit(forras, forditas):
+    """(uj_forditas, [(regi_reszlet, uj_reszlet), ...]). Csak akkor nyul a
+    szoveghez, ha a forras es a fordites AV/RV-jeleinek szama egyezik (a
+    parosítás sorrendi); a csere a jel utani glosszara korlatozodik: a
+    fordítás ugyanott, ugyanazzal a zaro jellel vegzodo szakasza (az esetleges
+    `:` elvalaszto-val) kerul a forrasbeli szakasz helyere."""
+    a = list(RV_JEL.finditer(forras))
+    b = list(RV_JEL.finditer(forditas))
+    if len(a) != len(b):
+        return forditas, []
+    csereld = []
+    for x, y in zip(a, b):
+        m = RV_ANGOL.match(forras[x.end():x.end() + 90])
+        if not m or m.group(1).split()[0] in RV_NEM_GLOSSZA:
+            continue
+        hatar = forras[x.end() + m.end()]
+        mt = re.match(r'^(:?) ([^),;.\[\d]{1,60})(?=[),;])', forditas[y.end():y.end() + 90])
+        if not mt or forditas[y.end() + mt.end()] != hatar:
+            continue
+        hu = mt.group(2)
+        if hu == m.group(1) or len(hu.split()) > 6:
+            continue
+        csereld.append((y.end(), y.end() + mt.end(), ' ' + m.group(1),
+                        forditas[y.start():y.end() + mt.end()], forras[x.start():x.end() + m.end()]))
+    valt = []
+    for eleje, vege, uj, regi_reszlet, uj_reszlet in reversed(csereld):
+        forditas = forditas[:eleje] + uj + forditas[vege:]
+    for eleje, vege, uj, regi_reszlet, uj_reszlet in csereld:
+        valt.append((regi_reszlet, uj_reszlet))
+    return forditas, valt
 
 
 def normalizal(szoveg, szotar, kikapcsolt=()):
