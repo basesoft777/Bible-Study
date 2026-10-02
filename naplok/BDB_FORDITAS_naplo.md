@@ -1184,3 +1184,41 @@ működött (pl. H0859 „Malachi 3:20” → Mal 3:20, H3045 „1 Ki 5:20” �
 Összesen: forrás 495907, fordítás 516929 karakter.
 
 13. kapu (JELZES, nem gátoló): H3808 — a könyv fejezetszámánál nagyobb fejezet: 2Sám 26; H3588 — a könyv fejezetszámánál nagyobb fejezet: 1Kir 32, 1Kir 47; H1961 — a könyv fejezetszámánál nagyobb fejezet: 1Kir 23; H9004 — a könyv fejezetszámánál nagyobb fejezet: Dán 23; H4428 — a könyv fejezetszámánál nagyobb fejezet: Préd 15; H3478 — a könyv fejezetszámánál nagyobb fejezet: 1Kir 24; H3117 — a könyv fejezetszámánál nagyobb fejezet: Dán 40; H6440 — a könyv fejezetszámánál nagyobb fejezet: 2Kir 36, Zak 17; H1931 — a könyv fejezetszámánál nagyobb fejezet: 1Krón 93, 1Krón 94, 2Kir 33, Hós 19, Hós 22, Hós 24, JSir 6; H7200 — a könyv fejezetszámánál nagyobb fejezet: 1Sám 32, 1Sám 46, 1Sám 48; H0001 — a könyv fejezetszámánál nagyobb fejezet: 1Kir 50, Eszt 11; H4480 — a könyv fejezetszámánál nagyobb fejezet: 1Kir 32; H1732 — a könyv fejezetszámánál nagyobb fejezet: 2Sám 132; H3318 — a könyv fejezetszámánál nagyobb fejezet: Jer 58; H7725 — a könyv fejezetszámánál nagyobb fejezet: 2Sám 26; H5973 — a könyv fejezetszámánál nagyobb fejezet: 2Sám 26; H0854 — a könyv fejezetszámánál nagyobb fejezet: Ján 30, Ján 54, Jón 11.
+
+## M2 — önújrapróba-elemzés (F38.54, DT-F38b)
+
+*Csak olvasó elemzés, a 3. adag előtt (DT-F38b döntés, 2026.10.02). Forrás: a fenti
+önújrapróba-táblázat, és a példaszegmensek a `konkordancia/BDB_teljes_unabridged.tsv`-ből (F)
+és az `adat/forditasok.tsv` végleges `teljes` soraiból (H). Az első, elbukott vázlatok nincsenek
+meg (a scratchpadben voltak), ezért a hibás alakot a fenti táblázat leírása adja, a példa a
+forrást és a javított végleges alakot mutatja.*
+
+A 23 önújrapróbás szócikk 30 kapujelzést adott (egy szócikk több kapun is bukhatott: H3117 a 3.,
+5. és 9. kapun; H1961 az 5. és 9.; H4428, H1931 a 4. és 5.; H0518 az 5. és 8.; H1980 az 1. és 3.).
+
+| Kapu | Darab (szócikk) | Arány a 23-ból | Jelleg | Példa szegmens |
+|---|---|---|---|---|
+| 3 Károli-rövidítés | 7 (H3588, H3478, H3117, H6440, H0376, H1980, H3318) | 30% | **részben téves riasztás**: a BDB könyvnév nélküli, láncolt igehelye (`of Judah 12:6`) előtt a magyar szórend nagybetűs szót hoz közvetlenül a c:v elé, a kapu ezt ismeretlen könyvrövidítésnek veszi; a fordítás jó, de az „Isten 23:16” olvasható is könyvnévként, így az átfogalmazás nem kár | H3478 F: `of Judah 12:6; 19:8-9t.` → H: „Júdáról pedig 12:6; 19:8-9t.” (elsőre „Júdáról 12:6”) · H3588 F: `(God's hostility 23:16 the cause of his misery …)` → H: „(a 23:16-ban Isten ellenségeskedése nyomorúságának oka …)” (elsőre „Isten 23:16”) · H3318 F: `out of (מִן) Egypt 18:1; 20:2` → H: „(מִן) Egyiptomból, így 18:1; 20:2” |
+| 5 terminológia | 7 (H1961, H4428, H3117, H1931, H8085, H0859, H0518) | 30% | **valódi fordítási hiba** (kis súlyú): a kötelező magyar alak hiányzott, más szinonima állt; hét különböző kifejezés, közös minta nélkül (`living soul`, `accusative`, `proper name, of a location`, `suffix`, `emphatic`, `Zinjirli`, `spiritual`) | H1961 F: `and the man became a living soul` → H: „és az ember élő lélekké lett” · H0518 `emphatic` (a kötelező alak pótolva) · H8085 F: `figurative (spiritual power) Jer 5:21` (a kötelező alak pótolva) |
+| 9 tagolás | 5 (H3808, H1961, H3117, H3027, H0001) | 22% | **kapu-heurisztika**: a forrás betűjelölője (`c.`, `f.`, `i.`) és a rövidítések (`c.` = circa, `f. below`, `d.` = day, `f.` = father) összetéveszthetők; a megoldás a forrás alakjának megtartása, illetve a circa-kivétel miatt „c. —” | H3808 F: `Zeph 2:1). c. Gen 15:13 להם לא בארץ` → H: „Sof 2:1). c. — 1Móz 15:13 להם לא בארץ” · H0001 H: „f. a szűkölködőké (késői) 68:6 … (tulajdonnévben, f. az egyéné, vö. lent)” · H3117 H: „i. különösen ünnepnap: הַשַּׁבָּת יוֺם a szombatnap” |
+| 1 görög–héber | 3 (H1980, H3427, H3947) | 13% | **valódi, mechanikus hiba**: helyőrző-kezelés (kimaradt ⟦94⟧, két helyőrző egybeírva, a `\x8b`/`\x99` vezérlőkarakter elhagyva) | a fenti táblázat leírása szerint; a végleges sor a kapun átmegy |
+| 4 formázás | 3 (H4428, H1931, H0259) | 13% | **valódi, kis súlyú**: a fordító zárójeles magyarázatot toldott be | H0259 F: `so also (emphatic) 2Sam 17:3 for ᵐ5 …` (a végleges sorban betoldás nincs) |
+| 8 idézőjel | 2 (H4480, H0518) | 9% | **valódi, kis súlyú**: ASCII idézőjel, illetve betoldott „ ” | H4480 F: `either from or for ("zutheilen")` → a végleges sorban „ ” |
+| 11 könyvek | 2 (H9004, H3045) | 9% | **forrásból eredő**: a forrás összeolvadt alakja (`concerning2Chr`, `learnedIsa`) a kapu forrásoldalán nem látszik, ezért a fordítás is összeolvasztva viszi | H9004 F: `= as concerning2Chr 32:19` → H: „= mint valamire nézve2Krón 32:19” · H3045 F: `skilled in a book, learnedIsa 29:11-12` → H: „az írásban jártas, tanultÉzs 29:11-12” |
+| 10 törzs | 1 (H1696) | 4% | **forrásból eredő**: a forrás `Piel` alakja (a megszokott `Pi`el` helyett) | H1696 F: `for usual Piel) Psa 51:6` → H: „a szokásos Piel helyett) Zsolt 51:6” |
+
+**Következtetés: nincs egyértelmű minta.** Egyetlen kapu sem adja a jelzések többségét: a két
+leggyakoribb (3. és 5.) egyenként 7 szócikk (30%), a 30 jelzésből 7–7. A téves riasztás jellegű
+kapuk (3., 9.) és a valódi hibát jelző kapuk (1., 4., 5., 8.) nagyjából fele-fele arányban
+oszlanak meg (15–15 jelzés, a 10. és 11. kaput a forrásból eredőként a téves oldalra számolva),
+és a valódi hibák szétszórtak (az 5. kapunál hét különböző terminus). Kalibrálási vagy
+promptpontosítási javaslat ezért **nem** készül; a 3. adag a DT-F38b szerint módosítás nélkül
+indul (prompt v4, terminológia v3, a kapuk változatlanok).
+
+**Megfigyelés a zárásra (Mz), nem javaslat:** (1) a 3. kapu a láncolt BDB-igehelyeknél a magyar
+szórend miatt jelez; ha a 3. adagban is ez marad a leggyakoribb, a zárásnál mérlegelhető egy
+kivétel (nagybetűs, de a könyv-leképezésben nem szereplő szó a láncolt c:v előtt). (2) A 9. kapu
+circa-kivétele a fordításba forrásban nem szereplő „—” jelet hoz („c. — 1Móz”). (3) A 11. kapu
+nem látja a forrás összeolvadt könyvalakjait (`learnedIsa`), így ezek a fordításban is
+összeolvadva maradnak („tanultÉzs”); ez a könyvfeloldási audit (`beerkezo/BDB_KONYVFELOLDASI_AUDIT.md`)
+körébe tartozik.
