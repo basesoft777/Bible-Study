@@ -1,0 +1,119 @@
+# GENERÁLT: eszkozok/karoli_strong/eredeti_nelkuli_lista.py | scope=Károli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv (Károli-kulcs) | forras=determinisztikus kulcs-összevetés | ts=2026-10-02T06:28:42+00:00
+irany	konyv	igehely	token_db
+karoli_eredeti_nelkul	2Móz	2Móz 35:36	36
+karoli_eredeti_nelkul	Jób	Jób 40:1	9
+karoli_eredeti_nelkul	Jób	Jób 40:2	12
+karoli_eredeti_nelkul	Jób	Jób 40:3	17
+karoli_eredeti_nelkul	Jób	Jób 40:4	14
+karoli_eredeti_nelkul	Jób	Jób 40:5	13
+karoli_eredeti_nelkul	Jób	Jób 41:1	10
+karoli_eredeti_nelkul	Jób	Jób 41:2	10
+karoli_eredeti_nelkul	Jób	Jób 41:3	12
+karoli_eredeti_nelkul	Jób	Jób 41:4	10
+karoli_eredeti_nelkul	Jób	Jób 41:5	10
+karoli_eredeti_nelkul	Jób	Jób 41:6	12
+karoli_eredeti_nelkul	Jób	Jób 41:7	10
+karoli_eredeti_nelkul	Jób	Jób 41:8	11
+karoli_eredeti_nelkul	Jób	Jób 41:9	10
+karoli_eredeti_nelkul	Jób	Jób 41:10	15
+karoli_eredeti_nelkul	Jób	Jób 41:11	15
+karoli_eredeti_nelkul	Jób	Jób 41:12	9
+karoli_eredeti_nelkul	Jób	Jób 41:13	12
+karoli_eredeti_nelkul	Jób	Jób 41:14	10
+karoli_eredeti_nelkul	Jób	Jób 41:15	8
+karoli_eredeti_nelkul	Jób	Jób 41:16	10
+karoli_eredeti_nelkul	Jób	Jób 41:17	8
+karoli_eredeti_nelkul	Jób	Jób 41:18	10
+karoli_eredeti_nelkul	Jób	Jób 41:19	10
+karoli_eredeti_nelkul	Jób	Jób 41:20	10
+karoli_eredeti_nelkul	Jób	Jób 41:21	11
+karoli_eredeti_nelkul	Jób	Jób 41:22	7
+karoli_eredeti_nelkul	Jób	Jób 41:23	10
+karoli_eredeti_nelkul	Jób	Jób 41:24	11
+karoli_eredeti_nelkul	Jób	Jób 41:25	8
+karoli_eredeti_nelkul	Jób	Jób 41:26	15
+karoli_eredeti_nelkul	Jób	Jób 41:27	13
+karoli_eredeti_nelkul	Jób	Jób 41:28	12
+karoli_eredeti_nelkul	Jób	Jób 41:29	10
+karoli_eredeti_nelkul	Jób	Jób 41:30	11
+karoli_eredeti_nelkul	Jób	Jób 41:31	14
+karoli_eredeti_nelkul	Jób	Jób 41:32	11
+karoli_eredeti_nelkul	Jób	Jób 41:33	12
+karoli_eredeti_nelkul	Jób	Jób 41:34	10
+karoli_eredeti_nelkul	Préd	Préd 9:19	12
+karoli_eredeti_nelkul	Préd	Préd 9:20	13
+karoli_eredeti_nelkul	Préd	Préd 9:21	16
+karoli_eredeti_nelkul	Préd	Préd 9:22	13
+karoli_eredeti_nelkul	Préd	Préd 9:23	17
+karoli_eredeti_nelkul	Én	Én 5:17	18
+karoli_eredeti_nelkul	Én	Én 5:18	19
+karoli_eredeti_nelkul	Én	Én 5:19	16
+karoli_eredeti_nelkul	Dán	Dán 3:31	17
+karoli_eredeti_nelkul	Dán	Dán 3:32	15
+karoli_eredeti_nelkul	Dán	Dán 3:33	23
+karoli_eredeti_nelkul	Hós	Hós 14:10	28
+karoli_eredeti_nelkul	Ján	Ján 7:53	4
+karoli_eredeti_nelkul	Róm	Róm 16:25	26
+karoli_eredeti_nelkul	Róm	Róm 16:26	21
+karoli_eredeti_nelkul	Róm	Róm 16:27	11
+karoli_eredeti_nelkul	2Kor	2Kor 13:13	16
+karoli_eredeti_nelkul	Fil	Fil 1:16	15
+karoli_eredeti_nelkul	Fil	Fil 1:17	10
+karoli_eredeti_nelkul	3Ján	3Ján 1:15	12
+karoli_eredeti_nelkul	Jel	Jel 12:18	5
+eredeti_karoli_nelkul	2Móz	2Móz 36:38	22
+eredeti_karoli_nelkul	Jób	Jób 17:16	8
+eredeti_karoli_nelkul	Jób	Jób 37:24	10
+eredeti_karoli_nelkul	Jób	Jób 40:20	13
+eredeti_karoli_nelkul	Jób	Jób 40:21	8
+eredeti_karoli_nelkul	Jób	Jób 40:22	9
+eredeti_karoli_nelkul	Jób	Jób 40:23	12
+eredeti_karoli_nelkul	Jób	Jób 40:24	9
+eredeti_karoli_nelkul	Péld	Péld 12:28	9
+eredeti_karoli_nelkul	Préd	Préd 1:18	11
+eredeti_karoli_nelkul	Préd	Préd 8:16	34
+eredeti_karoli_nelkul	Préd	Préd 8:17	46
+eredeti_karoli_nelkul	Préd	Préd 10:18	12
+eredeti_karoli_nelkul	Préd	Préd 10:19	15
+eredeti_karoli_nelkul	Préd	Préd 10:20	28
+eredeti_karoli_nelkul	Én	Én 6:11	19
+eredeti_karoli_nelkul	Én	Én 6:12	10
+eredeti_karoli_nelkul	4Móz	4Móz 30:17	24
+eredeti_karoli_nelkul	Én	Én 6:13	18
+eredeti_karoli_nelkul	Ézs	Ézs 8:23	33
+eredeti_karoli_nelkul	Ézs	Ézs 64:12	11
+eredeti_karoli_nelkul	Dán	Dán 4:35	35
+eredeti_karoli_nelkul	Dán	Dán 4:36	42
+eredeti_karoli_nelkul	Dán	Dán 4:37	29
+eredeti_karoli_nelkul	Hós	Hós 2:23	26
+eredeti_karoli_nelkul	Hós	Hós 12:15	17
+eredeti_karoli_nelkul	Hós	Hós 13:16	17
+eredeti_karoli_nelkul	Róm	Róm 3:31	11
+eredeti_karoli_nelkul	Róm	Róm 8:39	23
+eredeti_karoli_nelkul	1Kor	1Kor 3:23	6
+# ÖSSZESÍTŐ könyvenként (irany, konyv: vers_db, token_db)
+# karoli_eredeti_nelkul	2Kor	1 vers	16 token
+# karoli_eredeti_nelkul	2Móz	1 vers	36 token
+# karoli_eredeti_nelkul	3Ján	1 vers	12 token
+# karoli_eredeti_nelkul	Dán	3 vers	55 token
+# karoli_eredeti_nelkul	Fil	2 vers	25 token
+# karoli_eredeti_nelkul	Hós	1 vers	28 token
+# karoli_eredeti_nelkul	Jel	1 vers	5 token
+# karoli_eredeti_nelkul	Ján	1 vers	4 token
+# karoli_eredeti_nelkul	Jób	39 vers	432 token
+# karoli_eredeti_nelkul	Préd	5 vers	71 token
+# karoli_eredeti_nelkul	Róm	3 vers	58 token
+# karoli_eredeti_nelkul	Én	3 vers	53 token
+# eredeti_karoli_nelkul	1Kor	1 vers	6 token
+# eredeti_karoli_nelkul	2Móz	1 vers	22 token
+# eredeti_karoli_nelkul	4Móz	1 vers	24 token
+# eredeti_karoli_nelkul	Dán	3 vers	106 token
+# eredeti_karoli_nelkul	Hós	3 vers	60 token
+# eredeti_karoli_nelkul	Jób	7 vers	69 token
+# eredeti_karoli_nelkul	Préd	6 vers	146 token
+# eredeti_karoli_nelkul	Péld	1 vers	9 token
+# eredeti_karoli_nelkul	Róm	2 vers	34 token
+# eredeti_karoli_nelkul	Én	3 vers	47 token
+# eredeti_karoli_nelkul	Ézs	2 vers	44 token
+# ÖSSZESEN	karoli_eredeti_nelkul	61 vers	795 token
+# ÖSSZESEN	eredeti_karoli_nelkul	30 vers	567 token

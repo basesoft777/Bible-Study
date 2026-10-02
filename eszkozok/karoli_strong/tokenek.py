@@ -49,6 +49,10 @@ _TOKEN = re.compile(r'[^\W_]+', re.UNICODE)
 _IGEHELY = re.compile(r'^(.+) (\d+):(\d+)$')
 _TR_KIADAS = re.compile(r'^TR(?:[»«]\d+)?$')
 MERES_KIZARAS = os.path.join(ROOT, 'f21p', 'meres_kizaras.tsv')
+VERSBEOSZTAS_MEGF = os.path.join(ROOT, 'f22', 'versmegfeleltetes.tsv')   # F22: a versbeosztás-detektor gépi listája
+# A lista csak ezekre a könyvekre érvényes a futtatóban (a többi sor javaslat, amíg a felhasználó nem hagyja jóvá):
+# a detektor pontossága csak az 1Móz (üres lista) és a 2Móz (35:36–36:37) esetén igazolt; pl. az Ézs 9:17–20 hamis lenne.
+VERSBEOSZTAS_JOVAHAGYOTT = ('2Móz', '3Móz')
 
 
 def tokenizal(szoveg):
@@ -95,8 +99,54 @@ def betolt_karoli():
     return {r[0]: r[1] for r in _sorok(KAROLI)}
 
 
-def betolt_eredeti():
+def versmegfeleltetes(ut=None, jovahagyott=None):
+    """A versbeosztás-detektor gépi listája (`f22/versmegfeleltetes.tsv`): [(karoli, eredeti, tipus)];
+    a `#` kezdetű sorokat átugorja, hiányzó fájlra üres lista."""
+    ut = ut or VERSBEOSZTAS_MEGF
+    if not os.path.exists(ut):
+        return []
+    jovahagyott = VERSBEOSZTAS_JOVAHAGYOTT if jovahagyott is None else jovahagyott
+    with open(ut, encoding='utf-8') as f:
+        sorok = [s.rstrip('\n').rstrip('\r') for s in f if s.strip() and not s.startswith('#')]
+    sor = [tuple(s.split('\t')) for s in sorok[1:]]
+    if jovahagyott is False:
+        return sor
+    return [r for r in sor if _IGEHELY.match(r[0] or r[1]) and _IGEHELY.match(r[0] or r[1]).group(1) in jovahagyott]
+
+
+def _versmegfeleltet(ered, sorok):
+    """A nyers (TAHOT/TAGNT-kulcsú) versfolyamot a Károli-kulcsra képezi a detektor listája szerint:
+    `eltolt`: a Károli-vers a megfeleltetett eredeti verset kapja; `nincs_eredeti`: a Károli-versnek nincs
+    eredeti verse; `nincs_karoli`: az eredeti vers nem tartozik Károli-vershez (a saját kulcsán marad, vagy ha az
+    a kulcs már Károli-versé, a versszáma +1000 — ilyenkor a szám nem igehely, csak azonosító).
+    Ami a listában nem szerepel, változatlan (azonos kulcs)."""
+    if not sorok:
+        return ered
+    erintett_k = {k for k, e, t in sorok if k}
+    erintett_e = {e for k, e, t in sorok if e}
+    uj = {ig: v for ig, v in ered.items() if ig not in erintett_k and ig not in erintett_e}
+    for k, e, t in sorok:
+        if t == 'eltolt':
+            uj[k] = ered[e]
+    # a nincs_eredeti Károli-vers kulcsán álló, de egyetlen sorban sem szereplő eredeti vers nem veszhet el:
+    # gazdátlan eredeti vers lesz (+1000-es azonosító), az egyesítő kezi állapotban viszi tovább
+    for ig in sorted(erintett_k - erintett_e):
+        if ig in ered:
+            b = _IGEHELY.match(ig)
+            uj['%s %s:%d' % (b.group(1), b.group(2), int(b.group(3)) + 1000)] = ered[ig]
+    for k, e, t in sorok:
+        if t == 'nincs_karoli':
+            b = _IGEHELY.match(e)
+            kulcs = e if e not in uj and e not in erintett_k else '%s %s:%d' % (b.group(1), b.group(2), int(b.group(3)) + 1000)
+            uj[kulcs] = ered[e]
+    return uj
+
+
+def betolt_eredeti(versmegf=True):
     """igehely -> [eredeti szó dict, ...] a fájlsorrendben, sorszámmal.
+
+    versmegf=True (F22): a `f22/versmegfeleltetes.tsv` (versbeosztás-detektor) szerint a Károli-vers a
+    megfeleltetett eredeti verset kapja; versmegf=False: a nyers, fájl szerinti kulcsok (a detektor ezt olvassa).
 
     Kulcsok: sorsz, strong, alak, tukor, nem_tr (ÚSZ: nem TR-es sor).
     A TAHOT és a TAGNT Igehely mezője már Károli-natív.
@@ -122,7 +172,7 @@ def betolt_eredeti():
                 'tukor': r[6],
                 'nem_tr': nem_tr,
             })
-    return ered
+    return _versmegfeleltet(ered, versmegfeleltetes()) if versmegf else ered
 
 
 def maradek(karoli=None, ered=None):
