@@ -271,6 +271,9 @@ class KonyvRov(unittest.TestCase):
     def test_1pt_1pet(self):
         self.assertEqual(N.szabaly_konyv_rov('1Pt 2:3; 2Pt 1:1')[0], '1Pét 2:3; 2Pét 1:1')
 
+    def test_sziglaja_utan(self):
+        self.assertEqual(N.szabaly_konyv_rov('δόξα ᵐ51Pt 1:24 és')[0], 'δόξα ᵐ51Pét 1:24 és')
+
     def test_a_tablabeli_alak_a_merveado(self):
         self.assertEqual(N.KAROLI['1Pe'][0], '1Pét')
 

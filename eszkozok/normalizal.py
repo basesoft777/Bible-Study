@@ -326,9 +326,10 @@ def szabaly_nevalakok(szoveg):
 
 # hibas alak -> STEPBible-rovidites; a szabvanyos alakot a
 # Konyv_normalizalo_tabla.tsv adja (`Magyar rövidítés`)
+# (a `ᵐ5` sziglaja utan is: `ᵐ51Pt 1:24` = `ᵐ5` + `1Pt`)
 HIBAS_KONYV_ROV = {'1Pt': '1Pe', '2Pt': '2Pe'}
 HIBAS_KONYV_MINTA = re.compile(
-    r'(?<![%s0-9])(%s)(\s+)(?=\d{1,3}:\d)' % (_BETU, '|'.join(re.escape(k) for k in HIBAS_KONYV_ROV)))
+    r'(?:(?<=ᵐ5)|(?<![%s0-9]))(%s)(\s+)(?=\d{1,3}:\d)' % (_BETU, '|'.join(re.escape(k) for k in HIBAS_KONYV_ROV)))
 
 
 def szabaly_konyv_rov(szoveg):
