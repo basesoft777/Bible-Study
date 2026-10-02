@@ -8,7 +8,7 @@ modell: sonnet
 allapot: lezarva
 ag: claude/f24-licenc
 ad: adatkészletenként egy licencsor (licenc, verzió, kereskedelmi felhasználás, share-alike, kötelező megjelölés) egyetlen táblában, amelyre a render és a nyilvános kiadás épít
-kovetkezo: Te: a DT-F24 döntése (nyilvános terjesztés, a szó szerinti szabály kettős mércéje, kimeneti licenc); l. naplok/F24_zaras.md
+kovetkezo: "Utófeladat (LICENSE-idézetek, átsorolás, régi `LXX_kivonat` kivezetése, TBESH/STEPBible terjesztési feltételek) a `/befogad` útján, a #99 merge-e után"
 olvas: [konkordancia/, adat/datasetek.tsv, adat/szotar_szerepek.tsv, eszkozok/general.py, Rendszerfejlesztesi_playbook.md]
 ir: [adat/licencek.tsv, adat/SEMA.md]
 fugg: []
@@ -20,6 +20,8 @@ lezarva_osszegzes: licenc-leltár (#24, F24): adat/licencek.tsv 39 adatkészlet-
 # F<nn>_LICENC_BRIEF.md — Forrásaink licencének átnézése
 
 *FELADATOK #<nn> · Modell: sonnet · v1 · 2026.09.30 · döntés: D41 (a naplózó brief rögzíti)*
+
+**Eldöntve (2026.10.01, DT-F24):** egy mérce: `tisztazott` csak szó szerinti licencidézettel (a forrás helye + a lekérés dátuma), a README-összefoglaló nem elég; a Mounce/MCGED-re az F6 D16 érvényes; a repó a fejlesztés alatt nyilvános marad; korlátozott licencű nyers fájl csak a gitignore-olt `_nyers/` alá kerülhet. A választott döntés: elfogadva; a `DONTESEK.md` DT-F24 sorában felsorolt alternatívák: nem választott. A későbbi pontosítást (2026.10.02, F35) l. a `DONTESEK.md` DT-F24 sorában. Forrás: PR #99.
 
 ## 1. Cél
 
