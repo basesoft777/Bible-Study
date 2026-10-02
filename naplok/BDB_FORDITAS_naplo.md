@@ -1433,3 +1433,13 @@ jelölő után zárójel: „4 (halálosan)”).
 vezérlőkarakter és mojibake-gyanú (`Ã`, `Å`, `â€`) 0; a `hibas.tsv` mezőszáma egységes (4). A
 napló nem NFC-normalizált, de csak a forrásból betűhűen átvett héber szavaknál (1078 szó; görög
 és latin betűs 0) — ez a forrás alakja, nem sérülés. Javítás nem kellett.
+
+### (b) A két szócikkszintű kivétel (F38.139)
+
+Az `adat/forditasok.tsv` H1419 és H6310 sorának `megjegyzes` mezője kiegészült: „szócikkszintű
+kivétel, jóváhagyva: DT-F38c (b), 2026.10.02 — a terminológia általános sora nem változik”; a
+H6310-nél ezen felül „forráshiba-jelzés (13. kapu, kézi): OCR-hiba, a forrás „accusative as” =
+„according as” (Mal 2:9, 4Móz 9:17) …”. A 13. kapu ezt gépileg nem látja (nem fejezetszám-hiba),
+ezért a `naplok/BDB_FORDITAS_kapuk.py` a megjegyzés kézi jelzését 13. kapus JELZES-ként listázza
+(a 3. adagon így 16 jelző szócikk a korábbi 15 helyett). Más sor és mező nem változott (a szkript
+írás előtt bájtra ellenőrizte); az `adat/terminologia.tsv` változatlan. `ellenoriz.py`: SÉRTÉS 0.

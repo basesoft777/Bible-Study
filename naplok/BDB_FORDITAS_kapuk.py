@@ -24,6 +24,9 @@ import emeles as E  # noqa: E402
 import forditas_kapuk as K  # noqa: E402
 from BDB_FORDITAS_ujranormalizal import kivetelek  # noqa: E402
 
+KEZI_13 = 'forráshiba-jelzés (13. kapu, kézi): '
+KIVETEL_KEZDET = 'terminológia-kivétel ('
+
 
 def main():
     ap = argparse.ArgumentParser()
@@ -41,6 +44,11 @@ def main():
         ok = K.atment(eredm)
         bukott += not ok
         nem_rendben = [(nn, e, d) for nn, e, d in eredm if e != 'RENDBEN' and not nn.startswith('6')]
+        # DT-F38c (b): a gep altal nem lathato forrashiba (pl. H6310 OCR-hiba)
+        # kezi 13. kapus jelzese a sor megjegyzeseben
+        if KEZI_13 in r['megjegyzes']:
+            kezi = r['megjegyzes'].split(KEZI_13, 1)[1].split('; ' + KIVETEL_KEZDET, 1)[0]
+            nem_rendben.append(('13_fejezetszam', 'JELZES', 'kezi forrashiba-jelzes: ' + kezi))
         jelzes += any(e == 'JELZES' for _, e, _ in nem_rendben)
         print('%s %s%s' % (r['strong'], 'ATMENT' if ok else 'BUKOTT',
                            ''.join('\n    %-22s %-8s %s' % (nn, e, d[:200]) for nn, e, d in nem_rendben)))
