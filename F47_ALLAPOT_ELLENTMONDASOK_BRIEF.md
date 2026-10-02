@@ -5,7 +5,10 @@ kod: ALLAPOT_ELLENTMONDASOK
 tipus: naplozas
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f47-allapot-ellentmondasok
+pr: "#136"
+lezarva_osszegzes: a #22 (fut), a DT-F24 és a DT6 állapota a felhasználói döntésekhez igazítva (DT6: csak a (b) pont); ellenőrzés `naplok/ELLENOR_ALLAPOT_JAVITAS.md`; nyitott: a #41 briefje és a DT6 ütközése
 ad: felhasznalo
 kovetkezo: "Code — J1 3. pont csak ellenőrzés (`feladatok.py jeloltek` futtatása, kézi szerkesztés nincs); a #47 ne fusson #26-tal egy csomagban, futó #26 lezárásáig várjon"
 olvas: [F22_KAROLI_STRONG_BRIEF.md, F24_LICENC_BRIEF.md, DONTESEK.md, FELADATOK.md]
