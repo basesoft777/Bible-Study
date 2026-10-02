@@ -6,9 +6,11 @@ ag: claude/f33-licenc-rendezes
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ad: a licenc-leltár egy mércével, szó szerinti licencidézetekkel; a régi LXX_kivonat kivezetve; a TBESH/STEPBible terjesztési feltételei rögzítve
-kovetkezo: "Te: független ellenőr (fuggetlen-ellenor), draft PR; az N-F33 tétel felvétele /befogad útján"
+kovetkezo: "DT-F33c eldöntése; N-F33 felvétele /befogad-dal"
+pr:
+lezarva_osszegzes: "22 tisztazott/17 tisztazatlan, TBESG marad, TBESH-család nem mozdult, LXX_kivonat tisztazatlan, N-F33 javasolt, nyitott DT-F33c (részletek: naplok/LICENC_RENDEZES_zaras.md)"
 fugg: [24]
 olvas: [adat/licencek.tsv, adat/datasetek.tsv, adat/SEMA.md, DONTESEK.md, naplok/F24_zaras.md, naplok/ELLENOR_F24.md, konkordancia/, eszkozok/]
 ir: [adat/licencek.tsv, adat/datasetek.tsv, DONTESEK.md, naplok/LICENC_RENDEZES_zaras.md, naplok/ELLENOR_LICENC_RENDEZES.md, "konkordancia/LXX_kivonat_*.tsv", eszkozok/lexikon_general.py]
