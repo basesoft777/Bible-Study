@@ -235,3 +235,26 @@ A fájl `allapot` oszlopa a gépi keresés kimenete (nem döntés); a `kk_mod` `
   fájlok sorcsökkenése, hanem az F17 ágán létrehozott (a `main`-en nem létező) fájl cseréje; a sorok mind megvannak a 39 könyvfájlban (bájtazonos törzs, l. fent).
   A régi fájl a git-előzményben elérhető: `git show f15fc91:konkordancia/Macula_heber.tsv`.
 - **Összefűzési sorrend (F17.13):** a könyvfájlok a Macula-kánon sorrendjében (`HEBER_KONYV_FAJL`: Genezis, Exodus, … Malakias) fűzhetők össze a régi tábla törzsévé; ezt a sort minden könyvfájl fejléce is kimondja (a fejlécek újragenerálva, az adatsorok összege 475 911, a törzs bájtra azonos: 65 050 734 bájt). A `macula_bont.py` egyszeri, archív eszköz: a `--be` kötelező, a régi fájl a `git show f15fc91:konkordancia/Macula_heber.tsv` paranccsal nyerhető ki.
+
+## F17.J — DT7 javító menet (2026.10.02, `claude/f17-macula-javitas`)
+
+*Proveniencia: scope=Macula-újragenerálás | forras=Clear-Bible/macula-hebrew@47db250b…, Clear-Bible/macula-greek@8423afe4… (sekély fetch a rögzített commitra, sparse: `WLC/lowfat`, `Nestle1904/tsv`, `SBLGNT/tsv`) | ts=2026-10-02*
+
+A menet a DT7 (c) és (h) döntését hajtja végre; a generátor `eszkozok/f17/macula_futtat.py`, az újragenerált fájlok a 39 héber könyvfájl, a görög fájl és a `naplok/F17_*` kimenetek.
+
+**1. Dán 3–4 identitás-kötés (DT7 c).** Károli `Dán 3:x` és `Dán 4:x` = MT `3:x` / `4:x` (Dán 3: 33 vers, 3:31–33 is; Dán 4: 34 vers), `kk_mod=identitas`, állapot `rendben`; a statban `identitas_dan_dt7` = 67. Az előző `kk_kjv_nem_igazolt` (34) 0-ra csökkent; a `terkep` kategória 3 697 → 3 690. A `F17_kezi_fejezetek.tsv` Dán 4 sora változatlanul `javaslat` (a KJV ≠ MT igazolása továbbra is igaz; a Károli-kötés már nem arra épül). A többi `EGYIK_SEM` fejezet kézi feloldása külön feladat (`N-F17a`), az UBS-mezők (DT7 a) kimaradnak.
+
+**2. `allapot` és Strong szétválasztása (DT7 h).** Az `allapot` oszlop csak a KK-kötést jelöli; a Strong-illesztést a (korábban is meglévő) `strong_illesztes` oszlop hordozza. A `allapot_strong_szerint` függvény törölve, a `allapot_csak_kk` stat-kulcs megszűnt (az `allapot` most azonos vele). A (régi, összevont) `allapot` és a görög fájl `allapot` oszlopa ezért szándékosan változik.
+
+**3. Sir/JSir alias (külön commit, F17.J2).** Újrafuttatáskor kiderült, hogy a generátor a régi `Sir` könyvnévtől függött: a Károli-oldali adatok (`Karoli_1908`, `Karoli_versmegfeleltetes`, `LXX_versificacios_terkep`) még `Sir`-t, a `Konyv_normalizalo_tabla` már `JSir`-t használ; alias nélkül a `Macula_heber_Siralmak.tsv` mind a 2 303 sora Károli-kötés nélkül (`kk_mod=nincs`) maradt volna (illesztetlen MT-vers 336 a várt 182 helyett). Kétirányú alias a `macula_kozos.py`-ban (`ALIAS`, `kanoni_nev`, `RAW_NEV`); a kimeneti Károli-címke az adatbeli nevet őrzi (`Sir 1:1`). **A #35 lezárása után az alias törölhető** (`N-F35a`: a generátor a régi könyvnévtől függött; a törlés után a Károli-oldali adat átnevezése és a Siralmak-fájl újragenerálása a `Sir` → `JSir` címkével).
+
+**4. Ellenőrzés a régi oldallal szemben** (a régi oldal: a `main` állapota, `git show HEAD:…`; sorszám **475 911** héber morféma-sor, változatlan; görög N1904 137 779 / SBLGNT 137 741):
+- a Dán 3–4 sorain kívül minden sor (Siralmak, a görög fájl is) **bájtra azonos** az `allapot` oszlop nélkül: 0 eltérés; a Dán 3–4 mind az 1 964 sora változott (`karoli`, `kk_mod`, `allapot`);
+- illesztetlen MT-vers: **242 → 182** (−34 Dán 4, −26 Dán 3); `karoli_vers_nincs_macula|heber` 233 → 173;
+- régi KK-miatti javaslat-sorok (`allapot_csak_kk`) **6 705** (a régi fájlból megszámolva) − új javaslat-sorok **4 996** = **1 709** = a régi fájlban KK miatt javaslat állapotú Dán 3–4 sorok száma (a régi fájlból megszámolva) ✔;
+- partíció: 23 053 → 23 079 (+26 Károli-vers kapott MT-kötést; ez a 26 vers a Dán 3 korábban kötetlen részével egyezik az illesztetlen MT-versek −26-ával), `macula_versek_karolival` 22 971 → 23 031.
+Eltérés a várttól: nem volt (a 336-os köztes futás a Sir/JSir hiba következménye volt, a 3. pont javította).
+
+**Ismert korlát (a Dán 3–4 kötése):** a kötés folyamatos identitás (Károli x:y = MT x:y); a végpontok ellenőrizve: Károli Dán 3:31–33 = MT 3:31–33, 4:1 = MT 4:1, 4:34 = MT 4:34, a versszám 33 (Dán 3), illetve 34 (Dán 4) mindkét oldalon. A közbülső versek szövegét versenként nem vetettem össze; mivel a számozás mindkét végponton és a versszámban egyezik, a közbülső versek nem csúszhatnak.
+
+**Külön tételek (helyőrző, az F30 szerint):** `N-F17a` (a többi `EGYIK_SEM` fejezet kézi feloldása, DT7 c), `N-F17b` (a Macula héber funkció-kódjainak leképezése a STEP 9000-es sávjára, DT7 b, alacsony prioritás), `N-F35a` (az alias törlése a #35 lezárása után).

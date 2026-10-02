@@ -553,6 +553,15 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   **Lezárás (felhasználó, 2026.10.01):** „Az újrapróba már ma is csak a hibás versekre kér választ. Csak az újrapróba költsége csökkenthető (19%), ez a teljes Biblián néhány USD, nem éri meg a lánc módosítását.”
   „Gemini-újrapróba versszintre szűkítése (csak a hibás versek mennek újra), várható megtakarítás 25–35%. Csak akkor, ha a Gemini a DT-F22c után is marad; legkorábban a Mózes öt könyve után.”
   *Mérési megjegyzés (az `f22/futasnaplo.tsv` 1Móz-adataiból, `scope=manual`, nem a tétel része):* a `futtat.py` újrakérése már ma is csak a hibás versekre kér választ, de az első kérés teljes szövegét és a hibás választ is előzményként küldi; ezért az újrapróba bemenete nagyobb (646 797 token / 62 hívás, kimenet 27 380), mint az elvetett első próbáké (519 833 / 97 193). Az újrapróbák összköltsége 0,4363 USD, a napló 2,2720 USD-jének 19,2%-a; ennyi a megtakarítás elvi felső határa a 1Mózes költségén, tehát a 25–35% a teljes költségre nem érhető el; az elvetett első próbák 0,7543 USD-je (33,2%) a kapuhibás hívások ára, nem az újrapróbáé. A tétel döntésekor ezt a kiindulást kell a várt megtakarítás mellé tenni.
+- **N-F17a — a Macula-kötés többi `EGYIK_SEM` fejezetének kézi feloldása.** *(ÚJ, F17 javító menet, DT7 (c), 2026.10.02, `naplok/F17_import_naplo.md` F17.J; a számot (N-F17a) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
+  A Dán 3–4 identitás-kötése megtörtént; a többi `EGYIK_SEM` osztályú fejezet (2Móz 35–36, Hós 2, 13, 14, Jób 17, 37 stb.) Károli–MT kötése kézi feloldásra vár. Az interpoláció (40 vers) `javaslat` marad.
+
+- **N-F17b — a Macula héber funkció-kódjainak leképezése a STEP 9000-es sávjára. Alacsony prioritás.** *(ÚJ, F17 javító menet, DT7 (b), 2026.10.02; a számot (N-F17b) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
+  A 170 429 funkció-morféma sor Macula-azonosító (`strong_x`), nem Strong-szám; a leképezés külön feladat.
+
+- **N-F35a — a Macula-generátor Sir/JSir aliasának törlése a #35 lezárása után.** *(ÚJ, F17 javító menet, 2026.10.02; a számot (N-F35a) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
+  A generátor a régi `Sir` könyvnévtől függött: a Károli-oldali adatok még `Sir`-t, a könyvtábla már `JSir`-t használ. A kétirányú alias az `eszkozok/f17/macula_kozos.py`-ban (`ALIAS`, `kanoni_nev`, `RAW_NEV`) és a használói (`macula_kk.py`, `macula_import.karoli_cimke`) törölhető, ha a Károli-adat átnevezése megtörtént; utána a `Macula_heber_Siralmak.tsv` újragenerálása a `JSir` címkével.
+
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá vált — belépő: `DONTESEK_INDEX.tsv`. A vers-szintű jelöltek nem ide, hanem az `adat/jeloltek.tsv`-be kerültek (16 sor, mind `dontes=nyitva`): HODIT-001 13 alacsony szavazatú TSK-jelölt, MENNY-001 Mt 24:38 + Luk 17:27, ANTROP-001 Fil 1:27. Az alábbiak a nem vers-szintű tételek:
