@@ -1,12 +1,14 @@
 # GENERÁLT: eszkozok/fj2/bsb_nulladiff.py — kézzel nem szerkesztendő.
-# alap: git main (898610a53420):konkordancia/BSB_Strongs.tsv vs a munkafa konkordancia/BSB_Strongs.tsv; futtatási parancs: python eszkozok/fj2/bsb_nulladiff.py --alap main
-# proveniencia: scope=BSB_Strongs.tsv teljes (alap vs munkafa) | forras=git 898610a53420 + munkafa | ts=2026-10-02
+# alap: git main (281388d46126):konkordancia/BSB_Strongs.tsv vs a munkafa konkordancia/BSB_Strongs.tsv; futtatási parancs: python eszkozok/fj2/bsb_nulladiff.py --alap main
+# proveniencia: scope=BSB_Strongs.tsv teljes (alap vs munkafa) | forras=git 281388d46126 + munkafa | ts=2026-10-02
 FEJLEC: regi=['Igehely', 'Szósorszám', 'Strong-szám', 'Angol szó', 'Morfológiai kód'] | uj=['Igehely', 'Szósorszám', 'Strong-szám', 'Angol szó', 'Morfológiai kód', 'Angol szó állapota', 'Számozás'] | a regi oszlopok az ujban azonos neven, sorrendben az elejen: IGEN
 KONYVSORREND: a regi fajl 31 konyve az ujban ugyanabban a relativ sorrendben: IGEN
 AZONOS (a regi fajl mind az 5 oszlopa, bajtra, ugyanabban a sorrendben): 29 konyv, 213497 sor
-AZONOS konyvek: Gen(20176 sor), Exo(16439 sor), Lev(11724 sor), Deu(13855 sor), Jos(9857 sor), Jdg(9649 sor), Rut(1240 sor), 2Ki(12136 sor), 1Ch(10645 sor), 2Ch(13137 sor), Neh(5213 sor), Est(2998 sor), Job(8177 sor; ebbol kjv_szamozas=890), Psa(17790 sor), Pro(6833 sor), Sng(1211 sor), Jer(21452 sor), Lam(1502 sor), Ezk(18353 sor), Jol(946 sor), Amo(2017 sor), Oba(285 sor), Mic(1372 sor), Nam(556 sor), Hab(654 sor), Zep(764 sor), Hag(593 sor), Zec(3068 sor), Mal(855 sor)
-VALTOZOTT (a felhasznaloi dontes szerinti atszamozas): 2 konyv; ellenorzes: a sorszam es az (Strong-szam, Angol szo) sorozat soronkent azonos a regivel, csak az Igehely / Szosorszam valtozik
-VALTOZOTT: Num: sorok regi=16151 uj=16151; Strong+Angol szo sorozat azonos: IGEN; valtozott sorok (regi alakban): 628; erintett fejezetek (regi- vagy uj-szamozas): 12 13 29 30
+AZONOS konyvek: Gen(20176 sor; ellenorizetlen=432), Exo(16439 sor; ellenorizetlen=822), Lev(11724 sor; ellenorizetlen=397), Deu(13855 sor; ellenorizetlen=1059), Jos(9857 sor; ellenorizetlen=6), Jdg(9649 sor), Rut(1240 sor), 2Ki(12136 sor; ellenorizetlen=305), 1Ch(10645 sor; ellenorizetlen=1178), 2Ch(13137 sor; ellenorizetlen=553), Neh(5213 sor; ellenorizetlen=693), Est(2998 sor), Job(8177 sor; kjv=223), Psa(17790 sor), Pro(6833 sor), Sng(1211 sor; ellenorizetlen=136), Jer(21452 sor; ellenorizetlen=389), Lam(1502 sor), Ezk(18353 sor; ellenorizetlen=500), Jol(946 sor; ellenorizetlen=335), Amo(2017 sor), Oba(285 sor), Mic(1372 sor; ellenorizetlen=184), Nam(556 sor; ellenorizetlen=174), Hab(654 sor), Zep(764 sor), Hag(593 sor), Zec(3068 sor; ellenorizetlen=207), Mal(855 sor; ellenorizetlen=91)
+VISSZAVONT FEJEZETEK: Num 12 13: a regi fajl mind az 5 oszlopa, bajtra, ugyanabban a sorrendben azonos a mainnel: IGEN (578 sor)
+VALTOZOTT (a felhasznaloi dontes szerinti atszamozas; a VISSZAVONT fejezetek nem): 2 konyv; ellenorzes: a sorszam es az (Strong-szam, Angol szo) sorozat soronkent azonos a regivel, csak az Igehely / Szosorszam valtozik
+VALTOZOTT: Num: sorok regi=16151 uj=16151; Strong+Angol szo sorozat azonos: IGEN; valtozott sorok (regi alakban): 253; erintett fejezetek (regi- vagy uj-szamozas): 29 30
 VALTOZOTT: 1Ki: sorok regi=12949 uj=12949; Strong+Angol szo sorozat azonos: IGEN; valtozott sorok (regi alakban): 137; erintett fejezetek (regi- vagy uj-szamozas): 22
 UJ konyvek (a regi fajlban nem voltak): 1Sa(13000 sor), Ecc(2936 sor), Isa(16625 sor), Hos(2295 sor), Jon(672 sor)
+SZAMOZAS (7. oszlop) az uj fajlban: mt=268482, kjv=223, ellenorizetlen=9420
 OSSZESEN: regi 242597 sor, uj 278125 sor; hibak: 0

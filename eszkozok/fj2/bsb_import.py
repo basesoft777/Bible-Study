@@ -15,11 +15,12 @@ F41 (FELADATOK #41, DT6 b+e): az OSZ-konyvek BSB-vers -> MT-vers (TAHOT_kivonat-
 (konyv_megfeleltetes; a szkript eltolast mar nem csak a Zsoltarokra alkalmaz); a meres es az import ezt hasznalja, a kuszob/definicio/nevezo
 valtozatlan. Az import 6. oszlopa: "Angol szó állapota" (forditva / elhagyva / ures_jelzo_nelkul). N-F41c: a konyvnev-alias (JSir -> Sir)
 miatti nema 0%-os konyv helyett hangos hiba (0 illesztett sor / 0 egyezo vers -> leallas).
-F41 (DT-F41c (a), DT-F41b lezarva; felhasznaloi dontes 2026.10.02): a cel-versszamozas az MT (WLC, a Macula-tablak); ahol az MT-megfeleltetes nem igazolhato,
-a BSB(KJV)-szamozas marad, SORSZINTEN jelolve (BSB_Strongs.tsv 7. oszlop: `Számozás` = tahot_szamozas / kjv_szamozas): a Job 38-41 (a mainen is KJV-szamozasu volt;
-a Job MT-re szamozasa kulon N-tetel) es a Pred 11/12, Ezs 2/3 (a BSB(KJV)-szam a WLC-vel azonos: a fejezet-max egyezik, a TAHOT_kivonat itt Karoli-szeru szamozasu;
-a szkript a WLC fejezet-maxot ellenorzi, elteresnel megall). A tobbi vers `tahot_szamozas`: a TAHOT_kivonat szamozasahoz illesztett (Strong-illeszkedes); hogy ez
-fejezetenkent egyezik-e a WLC-vel: naplok/F41_wlc_versszam_ellenorzes.tsv (eszkozok/fj2/bsb_wlc_versszam_ellenorzes.py).
+F41 (DT-F41c (a), DT-F41b lezarva, DT-F41f; felhasznaloi dontes 2026.10.02): a cel-versszamozas az MT (WLC, a Macula-tablak). A BSB_Strongs.tsv 7. oszlopa (`Számozás`) VERSSZINTU
+WLC-osszevetesbol jon (wlc_versek.vers_egyezik): mt = az Igehely-vers sorainak Strong-halmaza tartalmazza a WLC azonos szamu versenek halmazanak tobb mint felet;
+kjv = nem igazolt, es a BSB(KJV)-szam marad (a Job 38-41, a mainen is KJV-szamozasu volt); ellenorizetlen = nem igazolt (a TAHOT_kivonat hibrid szamozasa; a Job MT-re
+szamozasa es az ellenorizetlen versek MT-re szamozasa kulon N-tetel: N-F41g, N-F41h). A BSB(KJV)-szam marad (nincs atszamozas) a Pred 11/12, Ezs 2/3 es a 4Moz 12/13 fejezetekben
+(a WLC fejezet-max egyezik a BSB-vel: KJV = MT; a TAHOT_kivonat itt Karoli-szeru; a szkript ellenorzi, elteresnel megall). A tobbi vers a TAHOT_kivonat szamozasahoz illesztett
+(Strong-illeszkedes); fejezetenkenti kimutatas: naplok/F41_wlc_versszam_ellenorzes.tsv (eszkozok/fj2/bsb_wlc_versszam_ellenorzes.py).
 (A lenti F16-leiras tortenelmi: a Zsoltar-specifikus k-modell az F41-ben a verszintu megfeleltetes specialis esete; a Zsoltar-sorok valtozatlanok.)
 A ZSOLTAROKON a BSB (KJV/angol) szamozasa nem egyezik a TAHOT/Karoli-kulcs (MT) szamozasaval: az MT a
 feliratot sajat versszamon szamozza, a BSB nem (F16.8). A BSB-vers -> MT-vers megfeleltetes fejezetenkent
@@ -62,8 +63,12 @@ def szur(kat, n=1):
 
 # DT-F41c (a): a BSB(KJV)-szamozas marad, sorszinten jelolve (7. oszlop `Számozás` = kjv_szamozas)
 KJV_MARAD = {'Jób': {38, 39, 40, 41}}  # a mainen is KJV-szamozasu; a Job MT-re szamozasa kulon N-tetel (TVTMS/WLC gepi tablabol)
-KJV_EGYEZIK_WLC = {'Préd': {11, 12}, 'Ézs': {2, 3}}  # BSB(KJV) = WLC (fejezet-max egyezes, wlc_versek); a TAHOT_kivonat Karoli-szeru; az atszamozas visszavonva
-SZAMOZASOK = ('tahot_szamozas', 'kjv_szamozas')
+KJV_EGYEZIK_WLC = {'Préd': {11, 12}, 'Ézs': {2, 3}, '4Móz': {12, 13}}  # BSB(KJV) = WLC (fejezet-max egyezes, wlc_versek); a TAHOT_kivonat Karoli-szeru; az atszamozas visszavonva
+# 7. oszlop `Számozás` (felhasznaloi dontes 2026.10.02, DT-F41f): VERSSZINTU WLC-osszevetesbol: mt = az Igehely-vers sorainak Strong-halmaza tartalmazza a WLC azonos szamu
+# versenek Strong-halmazanak tobb mint felet (igazolt MT-szam); kjv = nem igazolt, es a BSB(KJV)-szam marad (csak Job 38-41); ellenorizetlen = nem igazolt (a TAHOT_kivonat
+# hibrid szamozasu, vagy a WLC-ben nincs ilyen vers / ures Strong-halmaz).
+SZAMOZASOK = ('mt', 'kjv', 'ellenorizetlen')
+KJV_JELOLT_FEJEZETEK = {'Jób': {38, 39, 40, 41}}
 
 MT_ELTOLASOS_KONYVEK = ('Zsolt',)  # csak itt alkalmazzuk a BSB->MT eltolast (F16.8)
 
@@ -487,7 +492,7 @@ def vers_sorok(adat, step, fej, eltolas=0, terkep=None):
     Minden kihagyott span kategoriankent szamolva (SZURT). eltolas: BSB->MT (regi, k-modell), az Igehely vers-szama v+eltolas.
     terkep (F41): {(fej, vers): (mt_vers, p, mt_vers2, szamozas)}: a BSB-vers Igehelye az mt_vers = (fejezet, vers) (STEP-alakban a cel-fejezettel); ha p nem
     None, a vers elso p Strong-sora az mt_vers, a tobbi az mt_vers2 verse; a Szosorszam az MT-versen belul szamol (a masodik reszben 1-tol); szamozas
-    (7. oszlop) = tahot_szamozas / kjv_szamozas (alapertelmezett: tahot_szamozas).
+    (7. oszlop) = mt / kjv / ellenorizetlen (alapertelmezett: ellenorizetlen).
     Ahol a terkep nem ad bejegyzest, az Igehely a BSB sajat fejezet:verse (+eltolas)."""
     ki = []
     for v in adat['eng']:
@@ -495,7 +500,7 @@ def vers_sorok(adat, step, fej, eltolas=0, terkep=None):
             szur('nem_szamjegy_versszam_kulcs (import)')
     for vs in sorted(int(v) for v in adat['eng'] if str(v).isdigit()):
         poz = 0
-        cel1, p_oszt, cel2, szamozas = (fej, vs + eltolas), None, None, 'tahot_szamozas'
+        cel1, p_oszt, cel2, szamozas = (fej, vs + eltolas), None, None, 'ellenorizetlen'
         if terkep and (fej, vs) in terkep:
             cel1, p_oszt, cel2, szamozas = terkep[(fej, vs)]
         sorszam = 0
@@ -579,6 +584,14 @@ def cel_megfeleltetes(mag, step, sorok, osztas, bsb_fej):
                 raise SystemExit('HIBA: %s %d: a BSB(KJV) fejezet-max (%s) nem egyezik a WLC-vel (%s): a KJV_EGYEZIK_WLC kivetel nem igazolt'
                                  % (mag, f, max(bsb_fej[f]), wlc_max.get(f)))
     cel_sorok, terkep = [], {}
+    wlc = wlc_versek.wlc_konyv(wlc_versek.macula_kod(step))
+
+    def szam(f, v, *cel_versek):
+        """7. oszlop: versszintu WLC-osszevetes (a BSB-vers Strong-halmaza vs a cel-vers(ek) WLC-halmaza); osztott versnel mindket cel-versnek egyeznie kell."""
+        if cel_versek and all(wlc_versek.vers_egyezik(wlc.get(c, set()), bsb_fej[f][v]) for c in cel_versek):
+            return 'mt'
+        return 'kjv' if f in KJV_JELOLT_FEJEZETEK.get(mag, ()) else 'ellenorizetlen'
+
     for (f, v), x, modell, ok in sorok:
         tahot = _vers_szoveg(x)
         if (f, v) in osztas:
@@ -589,18 +602,22 @@ def cel_megfeleltetes(mag, step, sorok, osztas, bsb_fej):
             continue
         if f in KJV_MARAD.get(mag, ()):
             ok2 = ok if modell == 'kjv_szamozas' else 'kjv_szamozas_marad_DT-F41c_a'
-            cel_sorok.append(((f, v), '%d:%d' % (f, v), 'kjv_szamozas', ok2, 'kjv_szamozas', tahot))
-            terkep[(f, v)] = ((f, v), None, None, 'kjv_szamozas')
+            sz = szam(f, v, (f, v))
+            cel_sorok.append(((f, v), '%d:%d' % (f, v), 'kjv_szamozas', ok2, sz, tahot))
+            terkep[(f, v)] = ((f, v), None, None, sz)
         elif f in KJV_EGYEZIK_WLC.get(mag, ()):
-            cel_sorok.append(((f, v), '%d:%d' % (f, v), 'azonos', 'bsb_szam_egyezik_wlc_fejezet_max (a TAHOT_kivonat Karoli-szeru)', 'kjv_szamozas', tahot))
-            terkep[(f, v)] = ((f, v), None, None, 'kjv_szamozas')
+            sz = szam(f, v, (f, v))
+            cel_sorok.append(((f, v), '%d:%d' % (f, v), 'azonos', 'bsb_szam_egyezik_wlc_fejezet_max (a TAHOT_kivonat Karoli-szeru)', sz, tahot))
+            terkep[(f, v)] = ((f, v), None, None, sz)
         elif (f, v) in osztas:
             xa, xs, p = osztas[(f, v)]
-            cel_sorok.append(((f, v), '%d:%d+%d:%d' % (xa + xs), modell, ok, 'tahot_szamozas', tahot))
-            terkep[(f, v)] = (xa, p, xs, 'tahot_szamozas')
+            sz = szam(f, v, xa, xs)
+            cel_sorok.append(((f, v), '%d:%d+%d:%d' % (xa + xs), modell, ok, sz, tahot))
+            terkep[(f, v)] = (xa, p, xs, sz)
         else:
-            cel_sorok.append(((f, v), _vers_szoveg(x), modell, ok, 'tahot_szamozas', tahot))
-            terkep[(f, v)] = (x, None, None, 'tahot_szamozas')
+            sz = szam(f, v, x) if x else 'ellenorizetlen'
+            cel_sorok.append(((f, v), _vers_szoveg(x), modell, ok, sz, tahot))
+            terkep[(f, v)] = (x, None, None, sz)
     return cel_sorok, terkep
 
 
@@ -646,7 +663,7 @@ def fut(munka, parancs):
             forras_bsb_nelkul = len(forras_versek - bsb_ref)
             eltolt_fejezet = len({c[0][0] for c in k['cel_sorok'] if c[2] == 'eltolt'})
             illesztetlen = {f: ok[0] for f, ok in allapot.items() if ok}
-            kjv_fejezetek = sorted({c[0][0] for c in k['cel_sorok'] if c[4] == 'kjv_szamozas'})
+            kjv_fejezetek = sorted({c[0][0] for c in k['cel_sorok'] if c[4] == 'kjv'})  # fejezetek, ahol van `kjv` szamozasu vers
             # N-F41c: konyvnev-alias vagy hibas megfeleltetes miatti nema nulla -> hangos hiba (nincs csendes kihagyas)
             illesztett_db = sum(1 for s in sorok if s[2] in ('azonos', 'eltolt'))
             if illesztett_db == 0 or forras_van == 0 or egyezo == 0:
@@ -747,8 +764,8 @@ def fut(munka, parancs):
             'szurt sorok kategoriankent (MIND A 66 KONYVRE, az importalt es a nem importalt konyvekre egyarant; a nem_szamjegy_versszam_kulcs kulcsok 0 ertekkel is szerepelnek; az angol_szo_allapot=* nem szurt: az adatsorban bent van, a 6. oszlop jelzi; elhagyva = a forras-span elided jelzot hordoz, ures_jelzo_nelkul = ures Angol szo jelzo nelkul): ' + '; '.join('%s=%d' % kv for kv in sorted(SZURT.items())),
             'angol_szo_allapot az IMPORTALT sorokban (BSB_Strongs.tsv 6. oszlopa): ' + '; '.join('%s=%d' % kv for kv in sorted(allapot_szamlalo.items())),
             'HATOKOR (F41 ellenori 5.): a fenti "szurt sorok" angol_szo_allapot=* szamlaloi MIND A 66 KONYV minden feldolgozott sorara vonatkoznak; az importalt-sorok szamlaloi csak a BSB_Strongs.tsv-be kerulo sorokra; a kulonbseg a nem importalt sorok (USZ, kuszob alatti konyvek, illesztetlen fejezetek): ' + '; '.join('%s=%d' % kv for kv in sorted(nem_imp_szamlalo.items())) + ' -- a szkript ellenorzi: szurt = importalt + nem importalt, mindharom allapotra',
-            'Számozás az IMPORTALT sorokban (BSB_Strongs.tsv 7. oszlopa): ' + '; '.join('%s=%d' % kv for kv in sorted(szamozas_szamlalo.items())) + ' -- tahot_szamozas = az Igehely a TAHOT_kivonat versszamozasahoz Strong-illeszkedessel megfeleltetett (cel: MT; hogy fejezetenkent egyezik-e a WLC-vel: naplok/F41_wlc_versszam_ellenorzes.tsv); kjv_szamozas = a BSB(KJV)-szam marad (Job 38-41: DT-F41c (a), a Job MT-re szamozasa kulon N-tetel; Pred 11/12, Ezs 2/3: a BSB(KJV)-szam a WLC-vel azonos, a TAHOT_kivonat Karoli-szeru)',
-            'egyezes_szazalek_eltolas_nelkul = a F06-modszer (a BSB-vers szama valtoztatas nelkul, a TAHOT-vers ugyanazzal a szammal; a konyvnev a forras-nev, JSir -> Sir), tajekoztato; egyezes_szazalek = a kuszob alapja: a BSB-vers -> MT-vers (TAHOT_kivonat-szamozas) versszintu megfeleltetessel (F41; naplok/F41_bsb_megfeleltetes.tsv); mt_eltolt_fejezetek = a BSB-fejezetek szama, amelyekben van eltolt (mas fejezet:vers) vers; illesztetlen_fejezetek = a fejezetek, ahol a megfeleltetes nem igazolhato (kimaradnak a merestol, a versszamlalobol es az importbol); kjv_szamozasu_fejezetek = a BSB-fejezetek, amelyek Igehelye a BSB(KJV)-szamozas marad, soronkent jelolve (BSB_Strongs.tsv 7. oszlop `Számozás`=kjv_szamozas): Job 38-41 (DT-F41c (a); a Job 41 a TAHOT_kivonatban nincs, a mereshez nem szamit), Pred 11/12 es Ezs 2/3 (BSB=WLC); a Job 38-40 versei a MERESBEN a TAHOT_kivonathoz illesztve szerepelnek (a merés nem azonos az Igehely-szamozassal)',
+            'Számozás az IMPORTALT sorokban (BSB_Strongs.tsv 7. oszlopa, VERSSZINTU WLC-osszevetesbol, DT-F41f): ' + '; '.join('%s=%d' % kv for kv in sorted(szamozas_szamlalo.items())) + ' -- mt = az Igehely-vers sorainak Strong-halmaza tartalmazza a WLC (Macula) azonos szamu versenek halmazanak tobb mint felet (igazolt MT-szam); kjv = nem igazolt, a BSB(KJV)-szam marad (csak Job 38-41; a Job MT-re szamozasa: N-F41g); ellenorizetlen = nem igazolt (a TAHOT_kivonat hibrid szamozasu, vagy a WLC-ben nincs ilyen vers; MT-re szamozasa: N-F41h); fejezetenkenti kimutatas: naplok/F41_wlc_versszam_ellenorzes.tsv',
+            'egyezes_szazalek_eltolas_nelkul = a F06-modszer (a BSB-vers szama valtoztatas nelkul, a TAHOT-vers ugyanazzal a szammal; a konyvnev a forras-nev, JSir -> Sir), tajekoztato; egyezes_szazalek = a kuszob alapja: a BSB-vers -> MT-vers (TAHOT_kivonat-szamozas) versszintu megfeleltetessel (F41; naplok/F41_bsb_megfeleltetes.tsv); mt_eltolt_fejezetek = a BSB-fejezetek szama, amelyekben van eltolt (mas fejezet:vers) vers; illesztetlen_fejezetek = a fejezetek, ahol a megfeleltetes nem igazolhato (kimaradnak a merestol, a versszamlalobol es az importbol); kjv_szamozasu_fejezetek = a BSB-fejezetek, amelyekben van `kjv` Számozású sor (BSB_Strongs.tsv 7. oszlop): a Job 38-41 (DT-F41c (a); a Job 41 a TAHOT_kivonatban nincs, a mereshez nem szamit); a Job 38-40 versei a MERESBEN a TAHOT_kivonathoz illesztve szerepelnek (a merés nem azonos az Igehely-szamozassal); a Pred 11/12, Ezs 2/3, 4Moz 12/13 az Igehely a BSB(KJV)-szam (= WLC), a 7. oszlop versenkent mt/ellenorizetlen',
             'konyvek: %d ELERI (mind OSZ), %d NEM_ERI_EL (OSZ), %d USZ_KIHAGYVA (az USZ szandekosan kimarad: a gorog reteg forrasa a Macula #87; a mert szazalek tajekoztato); importalt sorok: %d' % (ered_db, alatta_db, usz_db, len(import_sorok))]
     kozos.tsv_ir(os.path.join(kozos.NAPLOK, 'F16_bsb_lefedettseg.tsv'), fej,
                  ['konyv', 'bsb_kod', 'nyelv', 'versek_bsb', 'forras_lefedett_versek', 'egyezo', 'nincs_forras_vers',

@@ -72,3 +72,12 @@ def wlc_fejezet_max(wlc):
     for (f, v) in wlc:
         ki[f] = max(ki.get(f, 0), v)
     return ki
+
+
+def vers_egyezik(wlc_halmaz, bsb_halmaz):
+    """Versszintu szamozas-igazolas (F41, DT-F41f): igaz, ha a WLC-vers (nem ures) Strong-halmazanak TOBB MINT FELE a BSB-vers (Igehely-vers sorai) halmazaban van
+    (azonos modszer, mint a bsb_import.versillesztes: hanyad > 0,5). A BSB-halmaz 9000-es prefixkodjai nem szamitanak."""
+    if not wlc_halmaz:
+        return False
+    b = {n for n in bsb_halmaz if n < 9000}
+    return len(wlc_halmaz & b) / len(wlc_halmaz) > 0.5

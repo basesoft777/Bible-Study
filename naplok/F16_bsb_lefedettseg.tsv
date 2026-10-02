@@ -12,14 +12,14 @@
 # szurt sorok kategoriankent (MIND A 66 KONYVRE, az importalt es a nem importalt konyvekre egyarant; a nem_szamjegy_versszam_kulcs kulcsok 0 ertekkel is szerepelnek; az angol_szo_allapot=* nem szurt: az adatsorban bent van, a 6. oszlop jelzi; elhagyva = a forras-span elided jelzot hordoz, ures_jelzo_nelkul = ures Angol szo jelzo nelkul): angol_szo_allapot=elhagyva=55588; angol_szo_allapot=forditva=381101; angol_szo_allapot=ures_jelzo_nelkul=0; elided_jelzo_nem_ures_szoveggel=0; nem_szamjegy_versszam_kulcs (import)=0; nem_szamjegy_versszam_kulcs (meres)=0; strong_nelkuli_span_csak_szokoz_irasjel=381138; strong_nelkuli_span_szoveggel=4102
 # angol_szo_allapot az IMPORTALT sorokban (BSB_Strongs.tsv 6. oszlopa): elhagyva=30952; forditva=247173; ures_jelzo_nelkul=0
 # HATOKOR (F41 ellenori 5.): a fenti "szurt sorok" angol_szo_allapot=* szamlaloi MIND A 66 KONYV minden feldolgozott sorara vonatkoznak; az importalt-sorok szamlaloi csak a BSB_Strongs.tsv-be kerulo sorokra; a kulonbseg a nem importalt sorok (USZ, kuszob alatti konyvek, illesztetlen fejezetek): elhagyva=24636; forditva=133928; ures_jelzo_nelkul=0 -- a szkript ellenorzi: szurt = importalt + nem importalt, mindharom allapotra
-# Számozás az IMPORTALT sorokban (BSB_Strongs.tsv 7. oszlopa): kjv_szamozas=1708; tahot_szamozas=276417 -- tahot_szamozas = az Igehely a TAHOT_kivonat versszamozasahoz Strong-illeszkedessel megfeleltetett (cel: MT; hogy fejezetenkent egyezik-e a WLC-vel: naplok/F41_wlc_versszam_ellenorzes.tsv); kjv_szamozas = a BSB(KJV)-szam marad (Job 38-41: DT-F41c (a), a Job MT-re szamozasa kulon N-tetel; Pred 11/12, Ezs 2/3: a BSB(KJV)-szam a WLC-vel azonos, a TAHOT_kivonat Karoli-szeru)
-# egyezes_szazalek_eltolas_nelkul = a F06-modszer (a BSB-vers szama valtoztatas nelkul, a TAHOT-vers ugyanazzal a szammal; a konyvnev a forras-nev, JSir -> Sir), tajekoztato; egyezes_szazalek = a kuszob alapja: a BSB-vers -> MT-vers (TAHOT_kivonat-szamozas) versszintu megfeleltetessel (F41; naplok/F41_bsb_megfeleltetes.tsv); mt_eltolt_fejezetek = a BSB-fejezetek szama, amelyekben van eltolt (mas fejezet:vers) vers; illesztetlen_fejezetek = a fejezetek, ahol a megfeleltetes nem igazolhato (kimaradnak a merestol, a versszamlalobol es az importbol); kjv_szamozasu_fejezetek = a BSB-fejezetek, amelyek Igehelye a BSB(KJV)-szamozas marad, soronkent jelolve (BSB_Strongs.tsv 7. oszlop `Számozás`=kjv_szamozas): Job 38-41 (DT-F41c (a); a Job 41 a TAHOT_kivonatban nincs, a mereshez nem szamit), Pred 11/12 es Ezs 2/3 (BSB=WLC); a Job 38-40 versei a MERESBEN a TAHOT_kivonathoz illesztve szerepelnek (a merés nem azonos az Igehely-szamozassal)
+# Számozás az IMPORTALT sorokban (BSB_Strongs.tsv 7. oszlopa, VERSSZINTU WLC-osszevetesbol, DT-F41f): ellenorizetlen=9420; kjv=223; mt=268482 -- mt = az Igehely-vers sorainak Strong-halmaza tartalmazza a WLC (Macula) azonos szamu versenek halmazanak tobb mint felet (igazolt MT-szam); kjv = nem igazolt, a BSB(KJV)-szam marad (csak Job 38-41; a Job MT-re szamozasa: N-F41g); ellenorizetlen = nem igazolt (a TAHOT_kivonat hibrid szamozasu, vagy a WLC-ben nincs ilyen vers; MT-re szamozasa: N-F41h); fejezetenkenti kimutatas: naplok/F41_wlc_versszam_ellenorzes.tsv
+# egyezes_szazalek_eltolas_nelkul = a F06-modszer (a BSB-vers szama valtoztatas nelkul, a TAHOT-vers ugyanazzal a szammal; a konyvnev a forras-nev, JSir -> Sir), tajekoztato; egyezes_szazalek = a kuszob alapja: a BSB-vers -> MT-vers (TAHOT_kivonat-szamozas) versszintu megfeleltetessel (F41; naplok/F41_bsb_megfeleltetes.tsv); mt_eltolt_fejezetek = a BSB-fejezetek szama, amelyekben van eltolt (mas fejezet:vers) vers; illesztetlen_fejezetek = a fejezetek, ahol a megfeleltetes nem igazolhato (kimaradnak a merestol, a versszamlalobol es az importbol); kjv_szamozasu_fejezetek = a BSB-fejezetek, amelyekben van `kjv` Számozású sor (BSB_Strongs.tsv 7. oszlop): a Job 38-41 (DT-F41c (a); a Job 41 a TAHOT_kivonatban nincs, a mereshez nem szamit); a Job 38-40 versei a MERESBEN a TAHOT_kivonathoz illesztve szerepelnek (a merés nem azonos az Igehely-szamozassal); a Pred 11/12, Ezs 2/3, 4Moz 12/13 az Igehely a BSB(KJV)-szam (= WLC), a 7. oszlop versenkent mt/ellenorizetlen
 # konyvek: 36 ELERI (mind OSZ), 3 NEM_ERI_EL (OSZ), 27 USZ_KIHAGYVA (az USZ szandekosan kimarad: a gorog reteg forrasa a Macula #87; a mert szazalek tajekoztato); importalt sorok: 278125
 konyv	bsb_kod	nyelv	versek_bsb	forras_lefedett_versek	egyezo	nincs_forras_vers	forras_vers_nincs_bsb	text_only_versek	display_hianyzo_versek	egyezes_szazalek	egyezes_szazalek_eltolas_nelkul	mt_eltolt_fejezetek	egyezes_na28_szurve	egyezes_normalizalt	kuszob	eredmeny	importalt_sorok	illesztetlen_fejezetek	kjv_szamozasu_fejezetek
 1Móz	GEN	heber	1533	1533	1515	0	0	1533	0	98.83	98.83	0			95	ELERI	20176	-	-
 2Móz	EXO	heber	1213	1213	1206	0	0	1213	0	99.42	99.42	0			95	ELERI	16439	-	-
 3Móz	LEV	heber	859	859	856	0	0	859	0	99.65	99.65	0			95	ELERI	11724	-	-
-4Móz	NUM	heber	1288	1288	1283	0	0	1288	0	99.61	95.80	4			95	ELERI	16151	-	-
+4Móz	NUM	heber	1288	1288	1283	0	0	1288	0	99.61	95.80	2			95	ELERI	16151	-	-
 5Móz	DEU	heber	959	959	945	0	0	959	0	98.54	98.54	0			95	ELERI	13855	-	-
 Józs	JOS	heber	658	658	647	0	0	658	0	98.33	98.33	0			95	ELERI	9857	-	-
 Bír	JDG	heber	618	618	610	0	0	618	0	98.71	98.71	0			95	ELERI	9649	-	-
@@ -33,12 +33,12 @@ Ruth	RUT	heber	85	85	83	0	0	85	0	97.65	97.65	0			95	ELERI	1240	-	-
 Ezsd	EZR	heber	280	280	265	0	0	280	0	94.64	94.64	0			95	NEM_ERI_EL	0	-	-
 Neh	NEH	heber	406	406	397	0	0	406	0	97.78	97.78	0			95	ELERI	5213	-	-
 Eszt	EST	heber	167	167	165	0	0	167	0	98.80	98.80	0			95	ELERI	2998	-	-
-Jób	JOB	heber	1070	1036	1024	34	0	1070	0	98.84	95.91	0			95	ELERI	8177	-	38 39 40 41
+Jób	JOB	heber	1070	1036	1024	34	0	1070	0	98.84	95.91	0			95	ELERI	8177	-	41
 Zsolt	PSA	heber	2340	2340	2303	0	187	2461	116	98.42	59.70	62			95	ELERI	17790	13	-
 Péld	PRO	heber	915	915	887	0	0	915	0	96.94	96.94	0			95	ELERI	6833	-	-
-Préd	ECC	heber	222	222	215	0	0	222	0	96.85	90.91	0			95	ELERI	2936	-	11 12
+Préd	ECC	heber	222	222	215	0	0	222	0	96.85	90.91	0			95	ELERI	2936	-	-
 Én	SNG	heber	117	117	116	0	0	117	0	99.15	99.15	0			95	ELERI	1211	-	-
-Ézs	ISA	heber	1292	1292	1267	0	0	1292	0	98.07	94.73	1			95	ELERI	16625	-	2 3
+Ézs	ISA	heber	1292	1292	1267	0	0	1292	0	98.07	94.73	1			95	ELERI	16625	-	-
 Jer	JER	heber	1364	1364	1323	0	0	1364	0	96.99	96.99	0			95	ELERI	21452	-	-
 JSir	LAM	heber	154	154	150	0	0	154	0	97.40	97.40	0			95	ELERI	1502	-	-
 Ez	EZK	heber	1273	1273	1253	0	0	1273	0	98.43	98.43	0			95	ELERI	18353	-	-
