@@ -7,6 +7,7 @@
 - **Megfeleltetés:** a 3Móz a `tokenek.VERSBEOSZTAS_JOVAHAGYOTT` listán (2Móz, 3Móz); a detektor szerint a 3Móz tiszta (27 fejezet, 0 jelzett fejezet, 0 eltolt pár, 0 hiány), a lista nem tartalmaz 3Móz-sort, tehát a bemenet a nyers kulcs.
 - **Minta:** 859 vers, 86 köteg (10 vers/köteg), `--var 859` egyezik, eredeti nélküli vers nincs.
 - **Csak-Sonnet támogatás:** az `egyesit.py` a C-fájl hiányát nem hibának veszi; minden link `alacsony`, `forras: S` (a brief szabálya: egy modell, nincs egyezés); a proveniencia-sor `ts=manual` (nincs C futásnapló, a subagent-futásnak nincs lekérdezés-időbélyege).
+- **Hash (K3):** a `prompt_v3` hash-ét a `sonnet_koteg.py prompt` minden köteg előtt ellenőrizte (hiba nélkül), és a menet végén is: `prompt_hash_hiba()` → `None` (nincs eltérés); `git diff f21p/` üres.
 - **Keret a /usage szerint** (heti „all models”): a menet elején **52%**, a végén **63%** → **11 százalékpont** (egész százalékos kerekítéssel 10–12) a 859 versre; az 5 órás ablak 10%-ról 100%-ra ment (a menet közben elfogyott, a kimaradt rész után nullázódott). A 30%-os menetkeret alatt maradt. A mért fogyás a menet közbeni más munkát (a session többi része) is tartalmazza, ezért felső becslés.
 
 ## 2. Szkriptkimenet
