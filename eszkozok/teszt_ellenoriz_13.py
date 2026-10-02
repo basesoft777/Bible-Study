@@ -74,6 +74,15 @@ class Szabaly13Teljes(unittest.TestCase):
     def test_opus_allapot_rendben(self):
         self.assertEqual(self._futtat([self._sor(allapot='opus', modell='claude-opus-5-5')]).verdict, 'RENDBEN')
 
+    def test_sonnet_allapot_rendben(self):
+        # F38.265 (DT-F38e): SEMA 2.14 uj `sonnet` ertek
+        self.assertEqual(self._futtat([self._sor(allapot='sonnet', modell='claude-sonnet-5-5')]).verdict, 'RENDBEN')
+
+    def test_negativ_ismeretlen_allapot_bukik(self):
+        sor = self._futtat([self._sor(allapot='haiku')])
+        self.assertEqual(sor.verdict, 'SÉRTÉS')
+        self.assertIn('ismeretlen allapot', sor.peldak[0])
+
     def test_negativ_hibas_hash_bukik(self):
         sor = self._futtat([self._sor(forras_hash='0' * 40)])
         self.assertEqual(sor.verdict, 'SÉRTÉS')
