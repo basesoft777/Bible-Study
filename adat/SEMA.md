@@ -371,9 +371,9 @@ Kulcs: `study_tipus` + `dataset`. A terv 4.3 mátrixa, négy study-típusra kife
 - `korlatos` — a `KJV_ASV_Strongs` **csak Genezis, Exodus és Példabeszédek** könyvekre áll
   rendelkezésre. Bármely más könyvre hivatkozó „ellenőrizve" állítás ezen a dataseten hamis.
   A `KJV_Strongs_teljes.tsv` (F19) külön, `importált, javaslat` állapotú dataset, a `KJV_ASV_Strongs` sor `fajl`-mintája nem tartalmazza; az `ASV_Strongs_teljes.tsv` forráshibás és nincs a repóban (DT19, `naplok/ELLENOR_F19.md`).
-  Ugyanígy `korlatos` a `BSB_Strongs` (F16): csak a 95%-os küszöböt elérő 31 ÓSZ-könyv, ÚSZ szándékosan nincs (a görög réteg forrása a Macula, #87);
+  Ugyanígy `korlatos` a `BSB_Strongs` (F16): csak a 95%-os küszöböt elérő 36 ÓSZ-könyv (nincs: 2Sám, Ezsd, Dán), ÚSZ szándékosan nincs (a görög réteg forrása a Macula, #87);
   a Zak 12:1 és a 116 feliratos zsoltár 1. versének érdemi szövege a display-forrásból hiányzik (a text-only megvan);
-  a Zsolt-sorok MT-számozásúak (a Zsolt 13 illesztetlen, kimarad), a többi könyv BSB/angol számozású.
+  az `Igehely` a 7. oszlop (`Számozás`) szerint `tahot_szamozas` (a TAHOT_kivonat versszámozásához Strong-illeszkedéssel illesztett; cél: MT/WLC, de a TAHOT_kivonat 25 könyvben nem WLC-számozású: fejezetenként `naplok/F41_wlc_versszam_ellenorzes.tsv`) vagy `kjv_szamozas` (a BSB/KJV-szám marad: Jób 38–41, Préd 11/12, Ézs 2/3); a Zsolt 13 illesztetlen, kimarad. A 6. oszlop (`Angol szó állapota`): `forditva` / `elhagyva` / `ures_jelzo_nelkul`.
 
 *Licenc-következmény, rögzítve a `konkordancia/README.md` licenc-szakaszában és a
 `konkordancia/SDBH_SDGNT_README.md`-ben:* a CC BY-SA 4.0
