@@ -5,10 +5,10 @@ kod: SIR_SZENTSZELLEM
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: dontesre_var
 ag: claude/f35-sir-szentszellem
 ad: a Siralmak régi „Sir” alakú hivatkozásai (jeloltek.tsv, genezis-tanulmány, auditok.tsv scope-ok) JSir-re cserélve vagy dokumentáltan meghagyva; a 9 „Szentlélek”/„Isten Lelke” hely a forrásrétegben „Szent Szellem”/„Isten Szelleme”-re egységesítve; egy szövegcsere-csomag
-kovetkezo: M0 felmérés (csak olvasás); ⛔ az auditok.tsv scope-ok kezelése és a szövegcsere előtt
+kovetkezo: "Te: DT-F35a (M1) eldöntése, utána M2 szövegcsere, M3 ellenőrzés, M4 SEMA E9"
 olvas: [adat/jeloltek.tsv, adat/auditok.tsv, naplok/EMELES_szentlelek_lista.tsv, adat/terminologia.tsv, eszkozok/lekerdez.py, adat/SEMA.md]
 ir: [adat/jeloltek.tsv, adat/auditok.tsv, genezis/, tematikus_lezart/, eszkozok/teszt_lekerdez_sir.py, adat/SEMA.md]
 fugg: [28, 34]
