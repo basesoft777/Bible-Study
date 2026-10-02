@@ -45,14 +45,14 @@ def karoli_mt_terkep(mt_versek=None):
     for s in kk_sorok:
         m = re.match(r'^(\S+) (\d+):(\d+)$', s[0])
         if m:
-            kk[(m.group(1), int(m.group(2)), int(m.group(3)))] = s
+            kk[(K.kanoni_nev(m.group(1)), int(m.group(2)), int(m.group(3)))] = s
     t_fej, t_sorok = K.tsv_olvas(os.path.join(K.KONK, 'LXX_versificacios_terkep.tsv'))
     terkep = {}
     for s in t_sorok:
         m = re.match(r'^(\S+) (\d+):(\d+)$', s[0])
         if not m:
             continue
-        terkep.setdefault((m.group(1), int(m.group(2)), int(m.group(3))), []).append(s)
+        terkep.setdefault((K.kanoni_nev(m.group(1)), int(m.group(2)), int(m.group(3))), []).append(s)
 
     # KJV-fejezetek versszama: naplok/KAROLI_KK1b_fejezetosztaly.tsv `kjv_max` (a KK1b a lxx-morph verse_pairs
     # KJV-oldalarol szamolta); a Macula-oldal a MT-fejezetek tenyleges versszama. A KJV-szamozas akkor egyezik az

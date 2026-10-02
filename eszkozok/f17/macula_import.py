@@ -164,7 +164,8 @@ def alap_alak(s):
 
 
 def karoli_cimke(kulcs):
-    return '%s %d:%d' % kulcs
+    # RAW_NEV: a Sir/JSir alias (l. macula_kozos.ALIAS) miatt a címke az adatbeli könyvnevet őrzi
+    return '%s %d:%d' % ((K.RAW_NEV.get(kulcs[0], kulcs[0]),) + tuple(kulcs[1:]))
 
 
 def kk_ertek(lista):
