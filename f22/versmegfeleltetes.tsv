@@ -1,0 +1,308 @@
+# GENERÁLT: eszkozok/karoli_strong/versbeosztas.py | scope=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | forras=determinisztikus vershossz-igazítás (naplok/F22_versbeosztas.md) | ts=2026-10-02T09:13:03+00:00
+# A futtató (tokenek.betolt_eredeti) ebből adja a Károli-versnek a megfeleltetett eredeti verset; ahol nincs megfeleltetés, ott kezi.
+karoli	eredeti	tipus
+2Móz 35:36	2Móz 36:1	eltolt
+2Móz 36:1	2Móz 36:2	eltolt
+2Móz 36:2	2Móz 36:3	eltolt
+2Móz 36:3	2Móz 36:4	eltolt
+2Móz 36:4	2Móz 36:5	eltolt
+2Móz 36:5	2Móz 36:6	eltolt
+2Móz 36:6	2Móz 36:7	eltolt
+2Móz 36:7	2Móz 36:8	eltolt
+2Móz 36:8	2Móz 36:9	eltolt
+2Móz 36:9	2Móz 36:10	eltolt
+2Móz 36:10	2Móz 36:11	eltolt
+2Móz 36:11	2Móz 36:12	eltolt
+2Móz 36:12	2Móz 36:13	eltolt
+2Móz 36:13	2Móz 36:14	eltolt
+2Móz 36:14	2Móz 36:15	eltolt
+2Móz 36:15	2Móz 36:16	eltolt
+2Móz 36:16	2Móz 36:17	eltolt
+2Móz 36:17	2Móz 36:18	eltolt
+2Móz 36:18	2Móz 36:19	eltolt
+2Móz 36:19	2Móz 36:20	eltolt
+2Móz 36:20	2Móz 36:21	eltolt
+2Móz 36:21	2Móz 36:22	eltolt
+2Móz 36:22	2Móz 36:23	eltolt
+2Móz 36:23	2Móz 36:24	eltolt
+2Móz 36:24	2Móz 36:25	eltolt
+2Móz 36:25	2Móz 36:26	eltolt
+2Móz 36:26	2Móz 36:27	eltolt
+2Móz 36:27	2Móz 36:28	eltolt
+2Móz 36:28	2Móz 36:29	eltolt
+2Móz 36:29	2Móz 36:30	eltolt
+2Móz 36:30	2Móz 36:31	eltolt
+2Móz 36:31	2Móz 36:32	eltolt
+2Móz 36:32	2Móz 36:33	eltolt
+2Móz 36:33	2Móz 36:34	eltolt
+2Móz 36:34	2Móz 36:35	eltolt
+2Móz 36:35	2Móz 36:36	eltolt
+2Móz 36:36	2Móz 36:37	eltolt
+2Móz 36:37	2Móz 36:38	eltolt
+	4Móz 30:1	nincs_karoli
+4Móz 30:1	4Móz 30:2	eltolt
+4Móz 30:2	4Móz 30:3	eltolt
+4Móz 30:3	4Móz 30:4	eltolt
+4Móz 30:4	4Móz 30:5	eltolt
+4Móz 30:5	4Móz 30:6	eltolt
+4Móz 30:6	4Móz 30:7	eltolt
+4Móz 30:7	4Móz 30:8	eltolt
+4Móz 30:8	4Móz 30:9	eltolt
+4Móz 30:9	4Móz 30:10	eltolt
+4Móz 30:10	4Móz 30:11	eltolt
+4Móz 30:11	4Móz 30:12	eltolt
+4Móz 30:12	4Móz 30:13	eltolt
+4Móz 30:13	4Móz 30:14	eltolt
+4Móz 30:14	4Móz 30:15	eltolt
+4Móz 30:15	4Móz 30:16	eltolt
+4Móz 30:16	4Móz 30:17	eltolt
+	Jób 17:10	nincs_karoli
+Jób 17:10	Jób 17:11	eltolt
+Jób 17:11	Jób 17:12	eltolt
+Jób 17:12	Jób 17:13	eltolt
+Jób 17:13	Jób 17:14	eltolt
+Jób 17:14	Jób 17:15	eltolt
+Jób 17:15	Jób 17:16	eltolt
+	Jób 37:21	nincs_karoli
+Jób 37:21	Jób 37:22	eltolt
+Jób 37:22	Jób 37:23	eltolt
+Jób 37:23	Jób 37:24	eltolt
+Jób 40:1		nincs_eredeti
+Jób 40:2		nincs_eredeti
+Jób 40:3		nincs_eredeti
+Jób 40:4		nincs_eredeti
+Jób 40:5		nincs_eredeti
+Jób 40:13		nincs_eredeti
+Jób 40:16		nincs_eredeti
+Jób 40:19		nincs_eredeti
+Jób 41:1		nincs_eredeti
+Jób 41:2		nincs_eredeti
+Jób 41:3		nincs_eredeti
+Jób 41:4		nincs_eredeti
+Jób 41:6		nincs_eredeti
+Jób 41:9		nincs_eredeti
+Jób 41:10		nincs_eredeti
+Jób 41:13		nincs_eredeti
+Jób 41:14		nincs_eredeti
+Jób 41:15		nincs_eredeti
+Jób 41:16		nincs_eredeti
+Jób 41:17		nincs_eredeti
+Jób 41:18		nincs_eredeti
+Jób 41:19		nincs_eredeti
+Jób 41:20		nincs_eredeti
+Jób 41:21		nincs_eredeti
+Jób 41:22		nincs_eredeti
+Jób 41:24		nincs_eredeti
+Jób 41:25		nincs_eredeti
+Jób 41:26		nincs_eredeti
+Jób 41:28		nincs_eredeti
+Jób 41:29		nincs_eredeti
+Jób 41:30		nincs_eredeti
+Jób 41:31		nincs_eredeti
+Jób 41:32		nincs_eredeti
+Jób 41:33		nincs_eredeti
+	Péld 12:28	nincs_karoli
+Préd 2:1	Préd 1:18	eltolt
+Préd 2:2	Préd 2:1	eltolt
+Préd 2:3	Préd 2:2	eltolt
+Préd 2:4	Préd 2:3	eltolt
+Préd 2:5	Préd 2:4	eltolt
+Préd 2:6	Préd 2:5	eltolt
+Préd 2:7	Préd 2:6	eltolt
+Préd 2:8	Préd 2:7	eltolt
+Préd 2:9	Préd 2:8	eltolt
+Préd 2:10	Préd 2:9	eltolt
+Préd 2:11	Préd 2:10	eltolt
+Préd 2:12	Préd 2:11	eltolt
+Préd 2:13	Préd 2:12	eltolt
+Préd 2:14	Préd 2:13	eltolt
+Préd 2:15	Préd 2:14	eltolt
+Préd 2:16	Préd 2:15	eltolt
+Préd 2:17	Préd 2:16	eltolt
+Préd 2:18	Préd 2:17	eltolt
+Préd 2:19	Préd 2:18	eltolt
+Préd 2:20	Préd 2:19	eltolt
+Préd 2:21	Préd 2:20	eltolt
+Préd 2:22	Préd 2:21	eltolt
+Préd 2:23	Préd 2:22	eltolt
+Préd 2:24	Préd 2:23	eltolt
+Préd 2:25	Préd 2:24	eltolt
+	Préd 2:25	nincs_karoli
+Préd 9:1	Préd 8:16	eltolt
+Préd 9:2	Préd 8:17	eltolt
+Préd 9:3	Préd 9:1	eltolt
+Préd 9:4	Préd 9:2	eltolt
+Préd 9:5	Préd 9:3	eltolt
+Préd 9:6	Préd 9:4	eltolt
+Préd 9:7	Préd 9:5	eltolt
+Préd 9:8	Préd 9:6	eltolt
+Préd 9:9	Préd 9:7	eltolt
+Préd 9:10	Préd 9:8	eltolt
+Préd 9:11	Préd 9:9	eltolt
+Préd 9:12	Préd 9:10	eltolt
+Préd 9:13	Préd 9:11	eltolt
+Préd 9:14	Préd 9:12	eltolt
+Préd 9:15	Préd 9:13	eltolt
+Préd 9:16	Préd 9:14	eltolt
+Préd 9:17	Préd 9:15	eltolt
+Préd 9:18	Préd 9:16	eltolt
+Préd 9:19	Préd 9:17	eltolt
+Préd 9:20	Préd 9:18	eltolt
+Préd 9:21	Préd 10:1	eltolt
+Préd 9:22	Préd 10:2	eltolt
+Préd 9:23	Préd 10:3	eltolt
+Préd 10:1	Préd 10:4	eltolt
+Préd 10:2	Préd 10:5	eltolt
+Préd 10:3	Préd 10:6	eltolt
+Préd 10:4	Préd 10:7	eltolt
+Préd 10:5	Préd 10:8	eltolt
+Préd 10:6	Préd 10:9	eltolt
+Préd 10:7	Préd 10:10	eltolt
+Préd 10:8	Préd 10:11	eltolt
+Préd 10:9	Préd 10:12	eltolt
+Préd 10:10	Préd 10:13	eltolt
+Préd 10:11	Préd 10:14	eltolt
+Préd 10:12	Préd 10:15	eltolt
+Préd 10:13	Préd 10:16	eltolt
+Préd 10:14	Préd 10:17	eltolt
+Préd 10:15	Préd 10:18	eltolt
+Préd 10:16	Préd 10:19	eltolt
+Préd 10:17	Préd 10:20	eltolt
+Én 5:17	Én 6:1	eltolt
+Én 5:18	Én 6:2	eltolt
+Én 5:19	Én 6:3	eltolt
+Én 6:1	Én 6:4	eltolt
+Én 6:2	Én 6:5	eltolt
+Én 6:3	Én 6:6	eltolt
+Én 6:4	Én 6:7	eltolt
+Én 6:5	Én 6:8	eltolt
+Én 6:6	Én 6:9	eltolt
+Én 6:7	Én 6:10	eltolt
+Én 6:8	Én 6:11	eltolt
+Én 6:9	Én 6:12	eltolt
+Én 6:10	Én 6:13	eltolt
+Ézs 9:1	Ézs 8:23	eltolt
+Ézs 9:2	Ézs 9:1	eltolt
+Ézs 9:3	Ézs 9:2	eltolt
+Ézs 9:4	Ézs 9:3	eltolt
+Ézs 9:5	Ézs 9:4	eltolt
+Ézs 9:6	Ézs 9:5	eltolt
+Ézs 9:7	Ézs 9:6	eltolt
+Ézs 9:8	Ézs 9:7	eltolt
+Ézs 9:9	Ézs 9:8	eltolt
+Ézs 9:10	Ézs 9:9	eltolt
+Ézs 9:11	Ézs 9:10	eltolt
+Ézs 9:12	Ézs 9:11	eltolt
+Ézs 9:13	Ézs 9:12	eltolt
+Ézs 9:14	Ézs 9:13	eltolt
+Ézs 9:15	Ézs 9:14	eltolt
+Ézs 9:16	Ézs 9:15	eltolt
+Ézs 9:17	Ézs 9:16	eltolt
+	Ézs 9:17	nincs_karoli
+	Ézs 64:1	nincs_karoli
+Ézs 64:1	Ézs 64:2	eltolt
+Ézs 64:2	Ézs 64:3	eltolt
+Ézs 64:3	Ézs 64:4	eltolt
+Ézs 64:4	Ézs 64:5	eltolt
+Ézs 64:5	Ézs 64:6	eltolt
+Ézs 64:6	Ézs 64:7	eltolt
+Ézs 64:7	Ézs 64:8	eltolt
+Ézs 64:8	Ézs 64:9	eltolt
+Ézs 64:9	Ézs 64:10	eltolt
+Ézs 64:10	Ézs 64:11	eltolt
+Ézs 64:11	Ézs 64:12	eltolt
+Dán 3:31	Dán 4:1	eltolt
+Dán 3:32	Dán 4:2	eltolt
+Dán 3:33	Dán 4:3	eltolt
+Dán 4:1	Dán 4:4	eltolt
+Dán 4:2	Dán 4:5	eltolt
+Dán 4:3	Dán 4:6	eltolt
+Dán 4:4	Dán 4:7	eltolt
+Dán 4:5	Dán 4:8	eltolt
+Dán 4:6	Dán 4:9	eltolt
+Dán 4:7	Dán 4:10	eltolt
+Dán 4:8	Dán 4:11	eltolt
+Dán 4:9	Dán 4:12	eltolt
+Dán 4:10	Dán 4:13	eltolt
+Dán 4:11	Dán 4:14	eltolt
+Dán 4:12	Dán 4:15	eltolt
+Dán 4:13	Dán 4:16	eltolt
+Dán 4:14	Dán 4:17	eltolt
+Dán 4:15	Dán 4:18	eltolt
+Dán 4:16	Dán 4:19	eltolt
+Dán 4:17	Dán 4:20	eltolt
+Dán 4:18	Dán 4:21	eltolt
+Dán 4:19	Dán 4:22	eltolt
+Dán 4:20	Dán 4:23	eltolt
+Dán 4:21	Dán 4:24	eltolt
+Dán 4:22	Dán 4:25	eltolt
+Dán 4:23	Dán 4:26	eltolt
+Dán 4:24	Dán 4:27	eltolt
+Dán 4:25	Dán 4:28	eltolt
+Dán 4:26	Dán 4:29	eltolt
+Dán 4:27	Dán 4:30	eltolt
+Dán 4:28	Dán 4:31	eltolt
+Dán 4:29	Dán 4:32	eltolt
+Dán 4:30	Dán 4:33	eltolt
+Dán 4:31	Dán 4:34	eltolt
+Dán 4:32	Dán 4:35	eltolt
+Dán 4:33	Dán 4:36	eltolt
+Dán 4:34	Dán 4:37	eltolt
+	Hós 2:1	nincs_karoli
+Hós 2:1	Hós 2:2	eltolt
+Hós 2:2	Hós 2:3	eltolt
+Hós 2:3	Hós 2:4	eltolt
+Hós 2:4	Hós 2:5	eltolt
+Hós 2:5	Hós 2:6	eltolt
+Hós 2:6	Hós 2:7	eltolt
+Hós 2:7	Hós 2:8	eltolt
+Hós 2:8	Hós 2:9	eltolt
+Hós 2:9	Hós 2:10	eltolt
+Hós 2:10	Hós 2:11	eltolt
+Hós 2:11	Hós 2:12	eltolt
+Hós 2:12	Hós 2:13	eltolt
+Hós 2:13	Hós 2:14	eltolt
+Hós 2:14	Hós 2:15	eltolt
+Hós 2:15	Hós 2:16	eltolt
+Hós 2:16	Hós 2:17	eltolt
+Hós 2:17	Hós 2:18	eltolt
+Hós 2:18	Hós 2:19	eltolt
+Hós 2:19	Hós 2:20	eltolt
+Hós 2:20	Hós 2:21	eltolt
+Hós 2:21	Hós 2:22	eltolt
+Hós 2:22	Hós 2:23	eltolt
+	Hós 12:3	nincs_karoli
+Hós 12:3	Hós 12:4	eltolt
+Hós 12:4	Hós 12:5	eltolt
+Hós 12:5	Hós 12:6	eltolt
+Hós 12:6	Hós 12:7	eltolt
+Hós 12:7	Hós 12:8	eltolt
+Hós 12:8	Hós 12:9	eltolt
+Hós 12:9	Hós 12:10	eltolt
+Hós 12:10	Hós 12:11	eltolt
+Hós 12:11	Hós 12:12	eltolt
+Hós 12:12	Hós 12:13	eltolt
+Hós 12:13	Hós 12:14	eltolt
+Hós 12:14	Hós 12:15	eltolt
+Hós 14:1	Hós 13:16	eltolt
+Hós 14:2	Hós 14:1	eltolt
+Hós 14:3	Hós 14:2	eltolt
+Hós 14:4	Hós 14:3	eltolt
+Hós 14:5	Hós 14:4	eltolt
+Hós 14:6	Hós 14:5	eltolt
+Hós 14:7	Hós 14:6	eltolt
+Hós 14:8	Hós 14:7	eltolt
+Hós 14:9	Hós 14:8	eltolt
+Hós 14:10	Hós 14:9	eltolt
+Ján 7:53		nincs_eredeti
+	Róm 3:31	nincs_karoli
+	Róm 8:38	nincs_karoli
+Róm 16:25		nincs_eredeti
+Róm 16:26		nincs_eredeti
+Róm 16:27		nincs_eredeti
+	1Kor 3:23	nincs_karoli
+2Kor 13:13		nincs_eredeti
+Fil 1:16		nincs_eredeti
+Fil 1:17		nincs_eredeti
+3Ján 1:15		nincs_eredeti
+Jel 12:18		nincs_eredeti

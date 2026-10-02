@@ -1,5 +1,5 @@
-# F22.7 -- no-op ellenorzo futas a workflow modositasa (persist-credentials) utan: minden koteg kesz, hivast nem vegez, koltseg 0
-konyv=1Móz
+# F22 2Moz javito menet: a 38 megfeleltetett vers (versbeosztas-detektor) ujrafuttatasa a C-vel; plafon: a futas sajat 38 versere (min. 1,00 USD)
+konyv=2Móz_javito
 koteg_max=mind
 koteg_meret=10
-plafon_usd=3.90
+plafon_usd=auto

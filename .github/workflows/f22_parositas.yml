@@ -1,18 +1,19 @@
 # F22 -- Karoli-Strong parositas, a C (Gemini) oldal, konyvenkent (GitHub Actions, OpenRouter).
 #
-# INDITAS. Kizarolag push-ra: a claude/f22-1moz agon, ha az f22/futtatas.txt valtozik. Nincs
+# INDITAS. Kizarolag push-ra: a claude/f22-* agakon (konyvenkent egy), ha az f22/futtatas.txt valtozik. Nincs
 # workflow_dispatch. A workflow sajat commitja nem nyul az f22/futtatas.txt-hez, es a GITHUB_TOKEN-nel
 # vegzett push nem indit uj futast.
 #
-# VEZERLES (f22/futtatas.txt, MINDEN kulcs kotelezo): konyv=1Móz, koteg_max=<n|mind>, koteg_meret=10,
-# plafon_usd=3.90 (kumulativ napla-osszeg, megallasi kuszob; kemeny korlat 4.00). A futtato:
+# VEZERLES (f22/futtatas.txt, MINDEN kulcs kotelezo): konyv=<magyar rovidites>, koteg_max=<n|mind>, koteg_meret=10,
+# plafon_usd=auto|<szam> (DT-F22d: a konyv plafonja = versszam x (2,27/1533) x 1,5 USD, legalabb 1,00; csak a konyv sajat
+# naplosorait osszegzi; kulon osszesitett felso korlat: 60 USD a teljes naplora). A futtato:
 # eszkozok/karoli_strong/f22_c_futtat.py (a futtat.py ujrahasznalva). Plafonnal (kilepesi kod 3) a job piros,
 # de a kesz koteg-sorok es a naplo visszacommitolodnak; a futas ujrainditheto (a kesz koteget kihagyja).
 # A prompt (f21p/prompt_v3.md) hash-et a futtato a futas elejen es vegen is ellenorzi.
 #
 # JOGOSULTSAG ES ISRAS. contents: write csak a 'futtatas' jobnal, kizarolag a kimenet visszacommitolasahoz:
 # git add csak az f22/valaszok/c, az f22/futasnaplo.tsv es az f22/elvetett; commit elott ellenorzes, hogy minden valtozas
-# f22/ alatt van; a push csak a claude/f22-1moz agra mehet (explicit refspec). Az OPENROUTER_API_KEY csak a
+# f22/ alatt van; a push csak az aktualis claude/f22-* agra mehet (explicit refspec). Az OPENROUTER_API_KEY csak a
 # futtato lepes env-jeben szerepel. A checkout `persist-credentials: false`: a kulcsot kapo
 # futtato lepes nem lat push-jogu tokent, az csak az utolso (commit/push) lepesben kerul a remote-ra. A FELADATOK.md generalt blokkjahoz a workflow nem nyul.
 
@@ -20,7 +21,7 @@ name: f22_parositas
 
 on:
   push:
-    branches: [claude/f22-1moz]
+    branches: ['claude/f22-*']
     paths:
       - 'f22/futtatas.txt'
 
@@ -36,7 +37,7 @@ env:
 
 jobs:
   futtatas:
-    if: github.ref == 'refs/heads/claude/f22-1moz'
+    if: startsWith(github.ref, 'refs/heads/claude/f22-')
     runs-on: ubuntu-latest
     timeout-minutes: 300
     permissions:
@@ -81,14 +82,13 @@ jobs:
           fi
           echo "kulcs-grep tiszta"
 
-      - name: Kimenet commitolasa es pusholasa (csak f22/, csak a claude/f22-1moz agra)
+      - name: Kimenet commitolasa es pusholasa (csak f22/, csak a claude/f22-* agra)
         if: always() && steps.kulcs_grep.conclusion == 'success'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if [ "$GITHUB_REF" != "refs/heads/claude/f22-1moz" ]; then
-            echo "nem a claude/f22-1moz agon futunk: $GITHUB_REF"; exit 1
-          fi
+          case "$GITHUB_REF" in refs/heads/claude/f22-*) ;; *)
+            echo "nem a claude/f22-* agon futunk: $GITHUB_REF"; exit 1;; esac
           # a checkout nem tartja meg a tokent (persist-credentials: false): a futtato lepes nem lat push-jogu tokent;
           # a token csak ebben a lepesben kerul a remote-ra
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
@@ -108,6 +108,6 @@ jobs:
           fi
           printf 'F22.3: a C (Gemini) futás kimenete (GitHub Actions, futás %s)\n' "$GITHUB_RUN_ID" > "$RUNNER_TEMP/commit_uzenet.txt"
           git -c i18n.commitEncoding=UTF-8 commit -F "$RUNNER_TEMP/commit_uzenet.txt"
-          git fetch origin refs/heads/claude/f22-1moz
+          git fetch origin "$GITHUB_REF"
           git rebase FETCH_HEAD
-          git push origin HEAD:refs/heads/claude/f22-1moz
+          git push origin "HEAD:$GITHUB_REF"

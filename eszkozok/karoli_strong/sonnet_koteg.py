@@ -78,9 +78,50 @@ def minta_epit(konyv, karoli=None, ered=None):
         b = tokenek.igehely_bont(ig)
         if b is None or b[0] != konyv:
             continue
+        if not ered.get(ig):
+            continue   # eredeti vers nélkül (versszámozás-eltérés) nincs mit párosítani: l. eredeti_nelkuli_versek
         ki.append({'sorsz': len(ki) + 1, 'igehely': ig, 'reteg': ascii_nev(konyv), 'fejezet': b[1],
                    'karoli_szo': len(tokenek.tokenizal(szoveg)), 'eredeti_szo': len(ered.get(ig, []))})
     return ki
+
+
+def karoli_nelkuli_eredeti_versek(konyv, karoli=None, ered=None):
+    """A könyv azon eredeti (TAHOT) versei, amelyeknek a Károli-kulcs szerint nincs Károli-versük;
+    a tokenjeik az egyesítőben `kezi` állapotban szerepelnek (a könyv végén)."""
+    karoli = karoli if karoli is not None else tokenek.betolt_karoli()
+    ered = ered if ered is not None else tokenek.betolt_eredeti()
+    ki = []
+    for ig in ered:
+        b = tokenek.igehely_bont(ig)
+        if b is not None and b[0] == konyv and ig not in karoli:
+            ki.append(ig)
+    return ki
+
+
+def eredeti_nelkuli_versek(konyv, karoli=None, ered=None):
+    """A könyv azon Károli-versei, amelyeknek a (megfeleltetett) eredeti kulcson nincs eredeti (TAHOT) versük (a nyers
+    kulcson pl. 2Móz 35:36, ami a javító menet óta a TAHOT 36:1-et kapja; a Károli 35:36
+    szövege a TAHOT 36:1-nek felel meg, tehát a 35:36–36:37 szakaszon a két versbeosztás egy verssel eltolódik;
+    az ellenőri jelentés tényei). Nem kerülnek modellhez; az egyesítő `kezi` állapotban, az átnézési sorral
+    viszi tovább őket (a brief `kezi` ága), hogy minden Károli-token szerepeljen."""
+    karoli = karoli if karoli is not None else tokenek.betolt_karoli()
+    ered = ered if ered is not None else tokenek.betolt_eredeti()
+    ki = []
+    for ig in karoli:
+        b = tokenek.igehely_bont(ig)
+        if b is not None and b[0] == konyv and not ered.get(ig):
+            ki.append(ig)
+    return ki
+
+
+def javito_minta_epit(konyv, karoli=None, ered=None):
+    """A javító menet mintája: a könyv azon Károli-versei, amelyeknek a megfeleltetett eredeti verse a
+    versbeosztás-detektor listája (`f22/versmegfeleltetes.tsv`, `eltolt`) szerint eltér a fájlbeli kulcstól.
+    Ugyanaz a sorformátum, mint a `minta_epit`-é; a versek Károli-sorrendben, sorszámmal."""
+    karoli = karoli if karoli is not None else tokenek.betolt_karoli()
+    ered = ered if ered is not None else tokenek.betolt_eredeti()
+    eltolt = {k for k, e, t in tokenek.versmegfeleltetes() if t == 'eltolt' and tokenek.igehely_bont(k)[0] == konyv}
+    return [dict(s, sorsz=i) for i, s in enumerate((x for x in minta_epit(konyv, karoli, ered) if x['igehely'] in eltolt), 1)]
 
 
 def minta_ir(ut, sorok):
@@ -186,7 +227,8 @@ def onteszt():
     tmp = tempfile.mkdtemp()
     karoli = {'1Móz %d:%d' % (c, v): 'Kezdetben teremté Isten az eget és a földet.' for c in (1, 2) for v in (1, 2, 3)}
     karoli['2Móz 1:1'] = 'Ezek'
-    if len(minta_epit('1Móz', karoli, {})) != 6:
+    ered_proba = {ig: [{'sorsz': 1}] for ig in karoli}
+    if len(minta_epit('1Móz', karoli, ered_proba)) != 6 or len(minta_epit('1Móz', karoli, {})) != 0:
         hibak.append('minta_epit versszám')
     if ascii_nev('1Móz') != '1Moz':
         hibak.append('ascii_nev')
@@ -214,7 +256,7 @@ def onteszt():
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('parancs', nargs='?', choices=['minta', 'allapot', 'kovetkezo', 'prompt', 'mentes'])
+    ap.add_argument('parancs', nargs='?', choices=['minta', 'javito-minta', 'allapot', 'kovetkezo', 'prompt', 'mentes'])
     ap.add_argument('--konyv', default=None, help='magyar rövidítés, pl. 1Móz (nincs alapérték)')
     ap.add_argument('--koteg-meret', type=int, default=10)
     ap.add_argument('--var', type=int, default=None, help='minta: a várt versszám (eltérésnél 3-as kilépési kód)')
@@ -230,11 +272,20 @@ def main(argv=None):
     if not a.parancs or not a.konyv:
         print('HIBA: parancs és --konyv kell (nincs alapérték)', file=sys.stderr)
         return 2
+    if a.parancs == 'javito-minta':
+        sorok = javito_minta_epit(a.konyv)
+        ut = minta_ut(a.konyv + '_javito')
+        minta_ir(ut, sorok)
+        print('%s javító minta: %d vers (%s – %s); írva: %s; kötegek: %d' % (
+            a.konyv, len(sorok), sorok[0]['igehely'] if sorok else '-', sorok[-1]['igehely'] if sorok else '-', ut,
+            len(kotegek_listaja(a.konyv + '_javito', a.koteg_meret))))
+        return 0
     if a.parancs == 'minta':
         sorok = minta_epit(a.konyv)
-        print('%s: %d vers' % (a.konyv, len(sorok)))
-        if a.var is not None and len(sorok) != a.var:
-            print('ELTÉRÉS: a várt %d vers helyett %d; megállás és jelentés' % (a.var, len(sorok)), file=sys.stderr)
+        kimaradt = eredeti_nelkuli_versek(a.konyv)
+        print('%s: %d vers (+ %d eredeti nélküli, nem kerül modellhez: %s)' % (a.konyv, len(sorok), len(kimaradt), ', '.join(kimaradt) or '-'))
+        if a.var is not None and len(sorok) + len(kimaradt) != a.var:
+            print('ELTÉRÉS: a várt %d vers helyett %d; megállás és jelentés' % (a.var, len(sorok) + len(kimaradt)), file=sys.stderr)
             return 3
         minta_ir(minta_ut(a.konyv), sorok)
         print('írva: %s; kötegek (%d vers/köteg): %d' % (minta_ut(a.konyv), a.koteg_meret,
