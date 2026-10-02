@@ -579,6 +579,15 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
 - **N-F41h — az `ellenorizetlen` Számozású sorok (270 fejezet, 1 474 vers, 17 642 sor) `Igehely`-ének MT/WLC-számozásra hozása.** *(ÚJ, F41.7, átírva F41.10-ben: DT-F41b, DT-F41f; a számot (N-F41h) a main-Action osztja ki)*
   A jelölés elkészült (DT-F41f): a `BSB_Strongs.tsv` 7. oszlopa versszintű WLC-összevetésből `mt` (260 243 sor) / `kjv` (240 sor: Jób 40–41) / `ellenorizetlen` (17 642 sor; F41.12: a szigorított, környezet-egyértelmű kritérium szerint — ide tartoznak a formulás/ismétlődő versek is, amelyeknek a száma lehet helyes, csak nem igazolható egyértelműen). Az `ellenorizetlen` sorok `Igehelye` a `TAHOT_kivonat.tsv` hibrid versszámozása (amely nem WLC-számozás) vagy nem egyértelmű (`naplok/F41_wlc_versszam_ellenorzes.tsv`, `ellenorizetlen_versek_lista` oszlop; a 270 fejezet listája ott). A feladat a teljes MT-átszámozás: gépi megfeleltetés a WLC-hez az N-F41g módszerével (Strong-illeszkedés, `forras` = a WLC Strong-halmazai), **kézi táblázat nélkül**; az átszámozott sorok `Számozás`-a `mt`. A 4Móz 12/13 átszámozását a felhasználó visszavonta (DT-F41f: WLC szerint KJV = MT), ezért ez a tétel azt már nem érinti.
 
+- **N-F38a — a `FORRAS_VERS_OCR` kapubővítés jóváhagyása.** *(ÚJ, F38 (#38), DT-F38g (5), döntésre vár; a számot (N-F38a) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
+  Az `eszkozok/forditas_kapuk.py` `FORRAS_VERS_OCR` szótára (`Gen 33:816t.` → `Gen 33:8 16t.`) a 2_versszam kapu forrásparaméterében javítja a H4264 összeforrt OCR-helyét; más kapura és más helyre nem hat (egységteszt: `eszkozok/teszt_forditas_kapuk.py`, `ForrasVersOcr`). Kapuszabály-bővítés: a felhasználó jóváhagyása kell. Opciók: (a) jóváhagy; (b) elvet, és a H4264 kivétellel kezelendő.
+
+- **N-F38b — a H7451 és a H4390 Szellem-kisbetű/nagybetű kétsége.** *(ÚJ, F38 (#38), DT-F38g (3), tartalmi döntésre vár; a számot (N-F38b) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
+  H7451 (#28): a BDB maga „divine spirit” (`konkordancia/BDB_teljes_unabridged.tsv:6966`), a DT-F38g (3) betűje szerint nagybetű járna, de a DT-F38f 3. „rossz szellem kisbetűs” szabálya ezzel ütközik. H4390: egy frázis, emberi és isteni értelemben vegyesen. A szöveg jelenleg változatlan.
+
+- **N-F38c — a H5674 „a Szellemről” szövegezés megítélése.** *(ÚJ, F38 (#38), DT-F38g (2), megítélésre vár; a számot (N-F38c) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
+  Az 1Kir 22:24-en a végrehajtó „a Szellemről”-t írt; a brief „az Úr Szelleme” alakja új szót vinne be (a BDB-ben „az Úr” nincs). Opciók: (a) marad „a Szellemről”; (b) „az Úr Szelleme” (új szó, külön döntés).
+
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 

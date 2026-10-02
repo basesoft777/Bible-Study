@@ -50,6 +50,12 @@ _spec.loader.exec_module(_p4)
 TERMINOLOGIA_UT = os.path.join(REPO, 'adat', 'terminologia.tsv')
 KAROLI_UT = os.path.join(REPO, 'konkordancia', 'Konyv_normalizalo_tabla.tsv')
 
+# A 2. kapu (versszam) forrasoldali OCR-javitasa: a BDB-forrasban a vers es a darabszam
+# osszeforrt (`Gen 33:816t.` = 33:8, 16-szor; DT-F38g 5, a 1Moz 33:8 a Karoli-adattal
+# igazolt). A kapu a forrasban levo `33:816` tokent a javitott alakkal veti ossze; mas
+# kapura es mas szoveghelyre nem hat.
+FORRAS_VERS_OCR = {'Gen 33:816t.': 'Gen 33:8 16t.'}
+
 GATOLO = ['1_gorog_heber', '2_versszam', '3_karoli_roviditesek', '4_formazas',
           '5_terminologia', '8_idezojel', '9_tagolas', '10_torzs', '11_konyvek']
 
@@ -114,21 +120,52 @@ def _jelolok(szoveg, forras_oldal):
     return [j for _, j in jelolok_pozicioval(szoveg, forras_oldal)]
 
 
+# DT-F38c (e): a `c.`, `d.`, `f.`, `i.` betujel a BDB-ben roviditeskent is all
+# (`c.` circa, `d.` day, `f.` father / feminine / following, `f. below`,
+# `i. below`), es ez a forras oldalan nem dontheto el biztosan. Ezek a
+# forrasjelolok ezert NEM kotelezoek: ha a forditasban az elozo es a kovetkezo
+# kotelezo jelolo kozott megvannak, illeszkednek, ha nincsenek, a kapu
+# atlepi oket. A tobbi betujel (a., b., e., g., h.), a szamok, a romai es a
+# zarojeles jelolok tovabbra is kotelezoek.
+OPCIONALIS_BETU = frozenset('cdfi')
+
+
+def _illeszt(a, b):
+    """Reszsorozat-illesztes az opcionalis jelolokkel. a, b: jelek listaja.
+    -> (illesztes: [b-index | None, ...], az elso nem talalt kotelezo
+    jelolo indexe a-ban vagy None)"""
+    ki, j = [], 0
+    for i, jel in enumerate(a):
+        if jel in OPCIONALIS_BETU:
+            kov = next((x for x in a[i + 1:] if x not in OPCIONALIS_BETU), None)
+            hatar = len(b)
+            if kov is not None:
+                hatar = next((k for k in range(j, len(b)) if b[k] == kov), len(b))
+            k = next((k for k in range(j, hatar) if b[k] == jel), None)
+            ki.append(k)
+            if k is not None:
+                j = k + 1
+            continue
+        while j < len(b) and b[j] != jel:
+            j += 1
+        if j == len(b):
+            return ki, i
+        ki.append(j)
+        j += 1
+    return ki, None
+
+
 def tagolas_igazitas(forras, forditas):
     """A forras jeloloinek pozicioja es a forditasban megfelelo jelolo
     pozicioja (moho reszsorozat-illesztes) -- a naplo egymas melletti
     nezetehez. [(jel, forras_poz, forditas_poz | None), ...]"""
     a = jelolok_pozicioval(forras, True)
     b = jelolok_pozicioval(forditas, False)
-    ki, j = [], 0
-    for poz, jel in a:
-        while j < len(b) and b[j][1] != jel:
-            j += 1
-        if j == len(b):
-            ki.append((jel, poz, None))
-            continue
-        ki.append((jel, poz, b[j][0]))
-        j += 1
+    ill, hiba = _illeszt([j for _, j in a], [j for _, j in b])
+    ki = []
+    for i, (poz, jel) in enumerate(a):
+        k = ill[i] if i < len(ill) else None
+        ki.append((jel, poz, b[k][0] if k is not None else None))
     return ki
 
 
@@ -146,16 +183,22 @@ def jelolok_pozicioval(szoveg, forras_oldal):
         jel = m.group(1)
         utana = szoveg[m.end():m.end() + 4].lstrip()
         elotte = szoveg[max(0, m.start() - 3):m.start()]
-        if jel == 'e' and (elotte.endswith('i. ') or utana.startswith('g.')):
-            continue  # i. e. / e. g.
-        if jel == 'i' and utana.startswith('e.'):
-            continue  # i. e.
-        if jel == 'g' and elotte.endswith('e. '):
-            continue  # e. g. (masodik tagja)
-        if jel == 'f' and re.search(r'\d\s?$', elotte):
-            continue  # `273 f.` = es a kovetkezo (magyarul `k.`), nem betujel
-        if jel == 'c' and utana[:1].isdigit():
-            continue  # c. 100 = circa
+        # DT-F38c (e): a rovidites-kivetelek csak a forras oldalan szurnek; a
+        # forditas oldalan a tobblet jelolo artalmatlan (reszsorozat), a
+        # kihagyas viszont hamis hianyt adott (`c. 1Móz`: a forras `c.`
+        # betujele elveszett, a menet `c. —` alakkal kerulte meg; `vizei. e.`:
+        # az `e.` betujelet a forditas oldalan `i. e.`-nek vette).
+        if forras_oldal:
+            if jel == 'e' and (elotte.endswith('i. ') or utana.startswith('g.')):
+                continue  # i. e. / e. g.
+            if jel == 'i' and utana.startswith('e.'):
+                continue  # i. e.
+            if jel == 'g' and elotte.endswith('e. '):
+                continue  # e. g. (masodik tagja)
+            if jel == 'f' and re.search(r'\d\s?$', elotte):
+                continue  # `273 f.` = es a kovetkezo (magyarul `k.`), nem betujel
+            if jel == 'c' and utana[:1].isdigit():
+                continue  # c. 100 = circa
         talalat.append((m.start(), jel))
     for m in _ROMAI.finditer(szoveg):
         elotte = szoveg[max(0, m.start() - 3):m.start()]
@@ -179,32 +222,52 @@ def tagolas_sorozat_forditas(szoveg):
 def ellenoriz_tagolas(forras, forditas):
     a = tagolas_sorozat(forras)
     b = tagolas_sorozat_forditas(forditas)
-    j = 0
-    for i, jel in enumerate(a):
-        while j < len(b) and b[j] != jel:
-            j += 1
-        if j == len(b):
-            return 'SERTES', ('a forras %d jelolojebol a(z) %d. (%s) nem talalhato a forditasban a helyen; '
-                              'kornyezet a forrasban: %s'
-                              % (len(a), i + 1, jel, ' '.join(a[max(0, i - 3):i + 3])))
-        j += 1
-    return 'RENDBEN', '%d forrasjelolo (forditas %d)' % (len(a), len(b))
+    ill, i = _illeszt(a, b)
+    if i is not None:
+        return 'SERTES', ('a forras %d jelolojebol a(z) %d. (%s) nem talalhato a forditasban a helyen; '
+                          'kornyezet a forrasban: %s'
+                          % (len(a), i + 1, a[i], ' '.join(a[max(0, i - 3):i + 3])))
+    atlepett = sum(1 for k in ill if k is None)
+    return 'RENDBEN', '%d forrasjelolo (forditas %d)%s' % (
+        len(a), len(b), '; atlepett opcionalis betujel (c/d/f/i): %d' % atlepett if atlepett else '')
 
 
 # ---------------------------------------------------------------------------
 # torzs (BDB)
 # ---------------------------------------------------------------------------
 
+_TORZS_ALAK = (
+    r'Qal|Niph(?:al)?|Pi(?:el)?|Pu(?:al)?|Hiph(?:il)?|Hoph(?:al)?|Hithp(?:a(?:el|lpel)|o(?:lel|el)|eel|ael)?'
+    r'|Hithpo|Hishtaph(?:el)?|Pilp(?:el)?|Pilel|Pulal|Pol(?:el|al)?|Po(?:el|al)?|Pōʿ(?:ēl|al)|Pōl(?:ēl|al)'
+    r'|Palp(?:al)?|Pealal|Tiph(?:el)?|Nithp(?:ael)?'
+    # F38.261 (DT-F38d (c)): a torzsnev magyaros irasa a forditasban
+    r'|Nifal|Hifil|Hofal|Hitpael')
+# F38.261: magyar rag a torzsnev utan (`Qalban`, `Nifalban`, `Pielben`,
+# `Pualban`, `Hifilben`, `Hofalban`, `Hitpaelben`, `Qalról`) -- egy
+# ragozott-alak minta. A rovid torzsek (Pi, Pu, Po) utan csak a 3+ betus rag
+# fogadhato el, kulonben a `Put` (helynev), `Pure` stb. hamis talalat lenne.
+_TORZS_RAG_HOSSZU = ('ban', 'ben', 'ból', 'ből', 'ról', 'ről', 'nak', 'nek',
+                     'hoz', 'hez', 'höz', 'tól', 'től', 'ként', 'val', 'vel')
+_TORZS_RAG_ROVID = ('ba', 'be', 'on', 'en', 'ön', 'ra', 're', 'ig', 'ok', 'ek',
+                    'ak', 'ai', 'ei', 't', 'k')
+_TORZS_ROVID_TOVEK = frozenset({'Pi', 'Pu', 'Po'})
 TORZS_MINTA = re.compile(
     r'(?<![A-Za-z])'
-    r'(Qal|Niph(?:al)?|Pi(?:el)?|Pu(?:al)?|Hiph(?:il)?|Hoph(?:al)?|Hithp(?:a(?:el|lpel)|o(?:lel|el)|eel|ael)?'
-    r'|Hithpo|Hishtaph(?:el)?|Pilp(?:el)?|Pilel|Pulal|Pol(?:el|al)?|Po(?:el|al)?|Pōʿ(?:ēl|al)|Pōl(?:ēl|al)'
-    r'|Palp(?:al)?|Pealal|Tiph(?:el)?|Nithp(?:ael)?)'
-    r'(?![A-Za-z])')
+    r'(' + _TORZS_ALAK + r')'
+    r'(' + '|'.join(sorted(_TORZS_RAG_HOSSZU + _TORZS_RAG_ROVID, key=len, reverse=True)) + r')?'
+    r'(?![^\W\d_])')
+# a magyaros torzsnev -> a forrasbeli (angol) alak, hogy a ket oldal egyezzen
+_TORZS_MAGYAROS = {'Nifal': 'Niph', 'Hifil': 'Hiph', 'Hofal': 'Hoph', 'Hitpael': 'Hith'}
 
 
 def torzs_sorozat(szoveg):
-    return [m.group(1)[:4] for m in TORZS_MINTA.finditer(szoveg)]
+    ki = []
+    for m in TORZS_MINTA.finditer(szoveg):
+        tov, rag = m.group(1), m.group(2)
+        if rag and tov in _TORZS_ROVID_TOVEK and rag not in _TORZS_RAG_HOSSZU:
+            continue
+        ki.append(_TORZS_MAGYAROS.get(tov, tov)[:4])
+    return ki
 
 
 def ellenoriz_torzs(forras, forditas):
@@ -256,6 +319,27 @@ def ellenoriz_formazas(forras, forditas):
     return 'SERTES', '; '.join(hibak)
 
 
+# DT-F38f (2), DT25: a `spirit` kulcs magyar alakja kis- ES nagybetuvel is
+# megfelel (szellem / Szellem es ragozott alakjaik: Szelleme, Szellemet ...),
+# mert az isteni szellem nagybetus (Szent Szellem, Isten Szelleme), az emberi,
+# angyali, demoni kisbetus. Ez kapuszabaly, nem szocikkszintu kivetel. Az angol
+# kulcs szerint kulcsolt: csak a felsorolt kulcsoknal lazul a kis/nagybetu.
+KIS_NAGYBETUS_IS = frozenset({'spirit'})
+
+
+def _magyar_mintak(angol, magyar):
+    """A kotelezo magyar alak mintai: az alap, es ha a kulcs a KIS_NAGYBETUS_IS
+    halmazban van, a nagy kezdobetus valtozat is."""
+    mintak = [_p4._magyar_alak_mintaja(magyar)]
+    if angol in KIS_NAGYBETUS_IS and magyar[:1].islower():
+        mintak.append(_p4._magyar_alak_mintaja(magyar[:1].upper() + magyar[1:]))
+    return mintak
+
+
+def _magyar_alak_megvan(angol, magyar, szoveg):
+    return any(m.search(szoveg) for m in _magyar_mintak(angol, magyar))
+
+
 def _angol_minta(angol):
     vege = r'(?![A-Za-z])' if angol[-1:].isalpha() else ''
     return re.compile(r'(?<![A-Za-z])' + re.escape(angol) + vege)
@@ -304,7 +388,7 @@ def ellenoriz_terminologia(forras, forditas, terminologia, bizonytalan_lista):
             continue
         if not _sajat_talalatok(angol, forras, terminologia):
             continue
-        if _p4._magyar_alak_mintaja(t['magyar']).search(forditas):
+        if _magyar_alak_megvan(angol, t['magyar'], forditas):
             continue
         if any(re.search(r'\b' + tov, forditas, re.IGNORECASE)
                for tov in HU_TOVALTOZAT.get(t['magyar'], ())):
@@ -315,6 +399,52 @@ def ellenoriz_terminologia(forras, forditas, terminologia, bizonytalan_lista):
     if not serult:
         return 'RENDBEN', ''
     return 'SERTES', '; '.join(serult)
+
+
+# DT-F38c (d): ha a kotelezo magyar alak csak kis- es nagybetuben ter el
+# (`zendzsirli` a `Zendzsirli` helyett, H2719), a javitoreteg gepileg a
+# kotelezo alakra csereli, es a cseret naplozza -- a kapu nem bukik. A csere
+# csak ott fut, ahol az 5. kapu egyebkent SERTES-t adna (a forrasban a kulcs
+# megvan, a kotelezo alak betuhiven sehol nincs a forditasban), es csak
+# szokezdeten allo, kis/nagybetu-fuggetlenul azonos alakot cserel.
+def _betuhu_alak(talalt, magyar):
+    ki = []
+    for mc, tc in zip(magyar, talalt):
+        if mc.lower() == tc.lower():
+            ki.append(mc)
+        else:  # a szovegvegi [aá]/[eé] osztaly: a talalt betu a kotelezo alak kis/nagybetujevel
+            ki.append(tc.lower() if mc.islower() else tc.upper())
+    return ''.join(ki)
+
+
+def terminologia_kisnagybetu_csere(forras, forditas, terminologia=None, bizonytalan_lista=()):
+    """-> (uj_forditas, [(angol, talalt_alak, kotelezo_alak, darab), ...])"""
+    if terminologia is None:
+        terminologia = _betolt()[1]
+    naplo = []
+    for t in terminologia:
+        angol, magyar = t['angol'], t['magyar']
+        if not kapus_sor(t) or not _sajat_talalatok(angol, forras, terminologia):
+            continue
+        minta = _p4._magyar_alak_mintaja(magyar)
+        if _magyar_alak_megvan(angol, magyar, forditas):
+            continue
+        if any(re.search(r'\b' + tov, forditas, re.IGNORECASE)
+               for tov in HU_TOVALTOZAT.get(magyar, ())):
+            continue
+        if any(angol.rstrip('.') == b.rstrip('.') for b in bizonytalan_lista):
+            continue
+        kis_nagy = re.compile(r'(?<![^\W\d_])' + minta.pattern, re.IGNORECASE)
+        talalt = {}
+
+        def _csere(m):
+            uj = _betuhu_alak(m.group(0), magyar)
+            talalt[m.group(0)] = talalt.get(m.group(0), 0) + 1
+            return uj
+        forditas = kis_nagy.sub(_csere, forditas)
+        for alak, db in sorted(talalt.items()):
+            naplo.append((angol, alak, _betuhu_alak(alak, magyar), db))
+    return forditas, naplo
 
 
 # ---------------------------------------------------------------------------
@@ -340,10 +470,15 @@ def _konyv_mintak():
         lek.setdefault(alias, hu)
     betu = r'A-Za-zÀ-ɏ'
 
-    def minta(kulcsok):
+    def minta(kulcsok, tapadt=False):
         k = sorted(set(kulcsok), key=len, reverse=True)
-        return re.compile(r'(?<![%s0-9])(%s)\.?\s+(?=\d{1,3}:\d)' % (betu, '|'.join(re.escape(x) for x in k)))
-    return lek, minta(lek), minta(set(lek.values()))
+        # F38.261 (DT-F38d (c)): tapadt=True -- a kisbetus szohoz tapadt
+        # konyvjelzes is talalat (`abundantly2Chr 3:1`, `verbDeuteronomy 7:8`).
+        # Csak a forras oldalon, ahol a tapadas OCR-hiba; a forditas oldalon a
+        # tapadt alak nem szamit (a normalizalo valasztja le).
+        elotte = r'(?<![A-ZÀ-ÖØ-Þ0-9])' if tapadt else r'(?<![%s0-9])' % betu
+        return re.compile(r'%s(%s)\.?\s+(?=\d{1,3}:\d)' % (elotte, '|'.join(re.escape(x) for x in k)))
+    return lek, minta(lek, True), minta(set(lek.values()))
 
 
 _KONYV = None
@@ -382,8 +517,22 @@ def ellenoriz_karoli(forras, forditas, karoli):
     tokenek = [t.strip() for t in reszlet.split(':', 1)[1].split(',')]
     forras_tokenek = {m.group(1) for m in _p4.KONYV_ROVIDITES_MINTA.finditer(forras)}
     maradek = [t for t in tokenek if not (t in forras_tokenek and t not in lek)]
+    # DT-F38c (e): a c:v elotti nagybetus szo (`Isten 23:16`, `Júdáról 12:6`,
+    # `A 4:16` -- a BDB lancolt, konyvnev nelkuli igehelye a magyar szorend
+    # miatt) nem Karoli-jelzes. Hiba csak az marad, ami konyvnevnek latszik:
+    # a konyv-lekepezes kulcsa (angol/STEPBible alak, pl. `Gen 1:1`), vagy
+    # szammal kezdodik (`1Ezék`). A rossz vagy hianyzo konyvet a 11. kapu
+    # fogja meg (a forras konyvei es a forditas konyvei darabra egyeznek).
+    nem_konyv = [t for t in maradek if t not in lek and not t[:1].isdigit()]
+    maradek = [t for t in maradek if t not in nem_konyv]
     if not maradek:
-        return 'RENDBEN', 'forrasbeli szigla igehely elott: ' + ', '.join(tokenek)
+        ok = []
+        if len(nem_konyv) < len(tokenek):
+            ok.append('forrasbeli szigla igehely elott: '
+                      + ', '.join(t for t in tokenek if t not in nem_konyv))
+        if nem_konyv:
+            ok.append('nagybetus szo igehely elott, nem konyvnev: ' + ', '.join(nem_konyv))
+        return 'RENDBEN', '; '.join(ok)
     return 'SERTES', 'ismeretlen roviditesek: ' + ', '.join(maradek)
 
 
@@ -435,12 +584,18 @@ def ellenoriz_fejezetszam(forditas):
     return 'JELZES', 'a könyv fejezetszámánál nagyobb fejezet: ' + ', '.join(sorted(set(rossz)))
 
 
+def _vers_ocr_javit(forras):
+    for rossz, jo in FORRAS_VERS_OCR.items():
+        forras = forras.replace(rossz, jo)
+    return forras
+
+
 def kapuk_futtat(szotar, forras, forditas, bizonytalan=()):
     """[(nev, eredmeny, reszlet), ...]"""
     karoli, term = _betolt()
     ki = [
         ('1_gorog_heber',) + _p4.ellenoriz_1_gorog_heber(forras, forditas),
-        ('2_versszam',) + _p4.ellenoriz_2_versszam(forras, forditas),
+        ('2_versszam',) + _p4.ellenoriz_2_versszam(_vers_ocr_javit(forras), forditas),
         ('3_karoli_roviditesek',) + ellenoriz_karoli(forras, forditas, karoli),
         ('4_formazas',) + ellenoriz_formazas(forras, forditas),
         ('5_terminologia',) + ellenoriz_terminologia(forras, forditas, term, list(bizonytalan)),

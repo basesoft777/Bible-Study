@@ -190,7 +190,7 @@ def lista_epit(szeles=False):
         # forditando (a 13. szabaly ugyanezt `elavult`-kent jelzi)
         teljes = [r for r in forditasok if r.get('szotar') == szotar and r.get('jelentes_szam') == 'teljes'
                   and STRONG_TOKEN.match(r.get('strong') or '') and strong_padded(r['strong']) == sp
-                  and r.get('allapot') in ('kezi', 'opus')]
+                  and r.get('allapot') in ('kezi', 'opus', 'sonnet')]
         teljes_allapot = teljes[0]['allapot'] if teljes else ''
         teljes_kezi = bool(teljes) and szoveg is not None and teljes[0].get('forras_hash') == forras_hash(szoveg)
         sorok.append({
@@ -248,6 +248,24 @@ def terminologia_szoveg():
     return '\n'.join(ki), jelen
 
 
+def kotelezo_alakok(forras):
+    """DT-F38c (d), prompt v4.1: a forrasban elofordulo kapus terminologia-
+    kulcsok es kotelezo magyar alakjuk, betuhiven -- ugyanaz a kulcsolas,
+    amit az 5. kapu kovetel (forditas_kapuk._sajat_talalatok)."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import forditas_kapuk as K
+    term = list(tsv_dict_sorok(TERMINOLOGIA_UT))
+    return [(t['angol'], t['magyar']) for t in term
+            if K.kapus_sor(t) and K._sajat_talalatok(t['angol'], forras, term)]
+
+
+def kotelezo_alakok_szoveg(forras):
+    sorok = kotelezo_alakok(forras)
+    if not sorok:
+        return '(a forrásban nincs kötelező terminológiai kulcs)'
+    return '\n'.join('- `%s` → `%s`' % s for s in sorok)
+
+
 def karoli_szoveg():
     return '\n'.join('- `%s` → `%s`' % (r['STEPBible-rövidítés'], r['Magyar rövidítés'])
                      for r in tsv_dict_sorok(KAROLI_UT))
@@ -274,6 +292,7 @@ def prompt_epit(strong, forras_darab, darab_info=''):
             .replace('{{KAROLI_TABLA}}', karoli_szoveg())
             .replace('{{STRONG}}', strong_eredeti(strong))
             .replace('{{DARAB_MEGJEGYZES}}', darab_info)
+            .replace('{{KOTELEZO_ALAKOK}}', kotelezo_alakok_szoveg(forras_darab))
             .replace('{{FORRAS_SZOVEG}}', forras_darab))
 
 
@@ -362,6 +381,16 @@ def utofeldolgoz(strong, nyers, kivetel=()):
     sp, forras = forras_szoveg(strong)
     szotar = szotar_strongnak(sp)
     vegleges, valt = N.normalizal(nyers, szotar)
+    if szotar == 'BDB':
+        # F38.266 (DT-F38e): az RV/AV angol glosszaja angolul marad
+        vegleges, glossza = N.glossza_visszaallit(forras, vegleges)
+        if glossza:
+            valt = list(valt) + [('glossza_visszaallit', len(glossza))]
+    # DT-F38c (d): a kotelezo terminologiai alak kis/nagybetu-elterese gepi
+    # cserevel javul (5. kapu), a csere a valtozasok kozott naplozva
+    vegleges, csere = K.terminologia_kisnagybetu_csere(forras, vegleges, bizonytalan_lista=list(kivetel))
+    valt = list(valt) + [('5_kisnagybetu %s -> %s (%s)' % (alak, kot, angol), db)
+                         for angol, alak, kot, db in csere]
     eredm = K.kapuk_futtat(szotar, forras, vegleges, bizonytalan=kivetel)
     return vegleges, valt, eredm, K.atment(eredm)
 
@@ -384,6 +413,30 @@ def cmd_ellenoriz(args):
     print('ATMENT' if ok else 'BUKOTT')
     if args.ki:
         kiir(vegleges, args.ki)
+        kisnagybetu_naplo(sp, [v for v in valt if v[0].startswith('5_kisnagybetu')])
+
+
+KISNAGYBETU_UT = os.path.join(REPO, 'naplok', 'FORDITAS_kisnagybetu_csere.tsv')
+
+
+def kisnagybetu_naplo(sp, csere):
+    """DT-F38c (d): az 5. kapu kis/nagybetu-gepicserejenek naploja. A Strong
+    korabbi sorait (egy korabbi `ellenoriz --ki` futasbol) a mostaniak valtjak."""
+    import datetime
+    fejlec = ['strong', 'csere', 'darab', 'datum']
+    regi = list(tsv_dict_sorok(KISNAGYBETU_UT)) if os.path.exists(KISNAGYBETU_UT) else []
+    sorok = [r for r in regi if r['strong'] != sp]
+    if not csere and len(sorok) == len(regi):
+        return  # nincs csere, es korabbi sor sem valt el: a fajl nem valtozik
+    datum = datetime.date.today().strftime('%Y.%m.%d')
+    sorok += [{'strong': sp, 'csere': nev[len('5_kisnagybetu '):], 'darab': str(db), 'datum': datum}
+              for nev, db in csere]
+    tsv_ir(KISNAGYBETU_UT, fejlec, sorok,
+           megjegyzes='DT-F38c (d): az 5. kapu kis/nagybetu-gepicsereje a javitoretegben '
+                      '(talalt -> kotelezo alak, terminologia-kulcs); irja: python eszkozok/emeles.py ellenoriz --ki')
+    for nev, db in csere:
+        print('5. kapu kis/nagybetu-csere: %s x%d (naplo: %s)' % (nev[len('5_kisnagybetu '):], db,
+                                                                   os.path.relpath(KISNAGYBETU_UT, REPO)))
 
 
 FORDITASOK_FEJLEC = ['szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo', 'forras_hash',
@@ -658,7 +711,7 @@ def cmd_minta(args):
     import math
     import random
     forditasok = [r for r in tsv_dict_sorok(FORDITASOK_UT)
-                  if r['jelentes_szam'] == 'teljes' and r['allapot'] == 'opus'
+                  if r['jelentes_szam'] == 'teljes' and r['allapot'] in ('opus', 'sonnet')
                   and r['szotar'] in ('Thayer', 'BDB')]
     hossz = {r['strong']: len(forras_szoveg(r['strong'])[1]) for r in forditasok}
     n = max(5, math.ceil(len(forditasok) * 0.10))
@@ -689,7 +742,18 @@ def cmd_forras(args):
     kiir(szoveg, args.ki)
 
 
-def main():
+def cmd_kotelezo(args):
+    """DT-F38c (d): a vazlat elott kigyujtott kotelezo terminologiai alakok."""
+    sp, szoveg = forras_szoveg(args.strong)
+    print(kotelezo_alakok_szoveg(szoveg))
+
+
+# a `forditasok.tsv` allapot-ertekei, amelyeket a rogzit/beir ir (SEMA 2.14);
+# `pilot` (fordit.py) es `elavult` (ellenoriz.py javaslat) nem innen kerul be
+ALLAPOTOK = ['opus', 'sonnet', 'kezi']
+
+
+def parser_epit():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[1])
     al = ap.add_subparsers(dest='parancs', required=True)
     p = al.add_parser('lista')
@@ -704,6 +768,9 @@ def main():
     p.add_argument('strong')
     p.add_argument('--ki')
     p.set_defaults(fv=cmd_forras)
+    p = al.add_parser('kotelezo', help='a forras kotelezo terminologiai alakjai (prompt v4.1)')
+    p.add_argument('strong')
+    p.set_defaults(fv=cmd_kotelezo)
     p = al.add_parser('helyorzo')
     p.add_argument('strong')
     p.add_argument('--mappa', required=True)
@@ -725,15 +792,18 @@ def main():
     p = al.add_parser('rogzit')
     p.add_argument('strong')
     p.add_argument('--be', required=True, help='a vegleges forditas (az ellenoriz --ki kimenete)')
-    p.add_argument('--allapot', default='opus', choices=['opus', 'kezi'])
-    p.add_argument('--modell', default='claude-opus-5-5')
+    p.add_argument('--allapot', required=True, choices=ALLAPOTOK)  # F38.271: nincs alapertek
+    # F38.265 (DT-F38e): a modell-azonosito nem kap alaperteket -- az Opus-alapertek
+    # miatt kerult 243 Sonnet-forditas `claude-opus-5-5` cimkevel a tablaba
+    p.add_argument('--modell', required=True,
+                   help='a fordito LLM tenyleges modell-azonositoja (pl. claude-sonnet-5-5); kotelezo')
     p.add_argument('--datum')
     p.add_argument('--megjegyzes')
     p.add_argument('--kivetel', nargs='*', default=[])
     p.set_defaults(fv=cmd_rogzit)
     p = al.add_parser('beir')
     p.add_argument('strongok', nargs='+')
-    p.add_argument('--allapot', required=True, choices=['opus', 'kezi'])
+    p.add_argument('--allapot', required=True, choices=ALLAPOTOK)
     p.add_argument('--datum')
     p.add_argument('--megjegyzes')
     p.add_argument('--jelentes-csere', action='store_true',
@@ -749,7 +819,11 @@ def main():
     p.add_argument('--lab', help='a naplo kezi zaro szakasza (md)')
     p.add_argument('--ki', required=True)
     p.set_defaults(fv=cmd_naplo_nezet)
-    args = ap.parse_args()
+    return ap
+
+
+def main():
+    args = parser_epit().parse_args()
     args.fv(args)
 
 
