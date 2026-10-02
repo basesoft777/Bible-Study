@@ -50,6 +50,9 @@ _IGEHELY = re.compile(r'^(.+) (\d+):(\d+)$')
 _TR_KIADAS = re.compile(r'^TR(?:[»«]\d+)?$')
 MERES_KIZARAS = os.path.join(ROOT, 'f21p', 'meres_kizaras.tsv')
 VERSBEOSZTAS_MEGF = os.path.join(ROOT, 'f22', 'versmegfeleltetes.tsv')   # F22: a versbeosztás-detektor gépi listája
+# A lista csak ezekre a könyvekre érvényes a futtatóban (a többi sor javaslat, amíg a felhasználó nem hagyja jóvá):
+# a detektor pontossága csak az 1Móz (üres lista) és a 2Móz (35:36–36:37) esetén igazolt; pl. az Ézs 9:17–20 hamis lenne.
+VERSBEOSZTAS_JOVAHAGYOTT = ('2Móz',)
 
 
 def tokenizal(szoveg):
@@ -96,15 +99,19 @@ def betolt_karoli():
     return {r[0]: r[1] for r in _sorok(KAROLI)}
 
 
-def versmegfeleltetes(ut=None):
+def versmegfeleltetes(ut=None, jovahagyott=None):
     """A versbeosztás-detektor gépi listája (`f22/versmegfeleltetes.tsv`): [(karoli, eredeti, tipus)];
     a `#` kezdetű sorokat átugorja, hiányzó fájlra üres lista."""
     ut = ut or VERSBEOSZTAS_MEGF
     if not os.path.exists(ut):
         return []
+    jovahagyott = VERSBEOSZTAS_JOVAHAGYOTT if jovahagyott is None else jovahagyott
     with open(ut, encoding='utf-8') as f:
         sorok = [s.rstrip('\n').rstrip('\r') for s in f if s.strip() and not s.startswith('#')]
-    return [tuple(s.split('\t')) for s in sorok[1:]]
+    sor = [tuple(s.split('\t')) for s in sorok[1:]]
+    if jovahagyott is False:
+        return sor
+    return [r for r in sor if _IGEHELY.match(r[0] or r[1]) and _IGEHELY.match(r[0] or r[1]).group(1) in jovahagyott]
 
 
 def _versmegfeleltet(ered, sorok):
@@ -121,6 +128,12 @@ def _versmegfeleltet(ered, sorok):
     for k, e, t in sorok:
         if t == 'eltolt':
             uj[k] = ered[e]
+    # a nincs_eredeti Károli-vers kulcsán álló, de egyetlen sorban sem szereplő eredeti vers nem veszhet el:
+    # gazdátlan eredeti vers lesz (+1000-es azonosító), az egyesítő kezi állapotban viszi tovább
+    for ig in sorted(erintett_k - erintett_e):
+        if ig in ered:
+            b = _IGEHELY.match(ig)
+            uj['%s %s:%d' % (b.group(1), b.group(2), int(b.group(3)) + 1000)] = ered[ig]
     for k, e, t in sorok:
         if t == 'nincs_karoli':
             b = _IGEHELY.match(e)

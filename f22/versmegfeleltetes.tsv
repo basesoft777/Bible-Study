@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_strong/versbeosztas.py | scope=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | forras=determinisztikus vershossz-igazítás (naplok/F22_versbeosztas.md) | ts=2026-10-01T20:17:38+00:00
+# GENERÁLT: eszkozok/karoli_strong/versbeosztas.py | scope=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | forras=determinisztikus vershossz-igazítás (naplok/F22_versbeosztas.md) | ts=2026-10-02T06:29:01+00:00
 # A futtató (tokenek.betolt_eredeti) ebből adja a Károli-versnek a megfeleltetett eredeti verset; ahol nincs megfeleltetés, ott kezi.
 karoli	eredeti	tipus
 2Móz 35:36	2Móz 36:1	eltolt

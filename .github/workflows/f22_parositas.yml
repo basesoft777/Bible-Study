@@ -21,7 +21,7 @@ name: f22_parositas
 
 on:
   push:
-    branches: [claude/f22-1moz, claude/f22-2moz]
+    branches: ['claude/f22-*']
     paths:
       - 'f22/futtatas.txt'
 

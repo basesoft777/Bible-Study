@@ -914,7 +914,7 @@ eredmény, a két tábla **első sora egy `#`-kezdetű proveniencia-sor** (a `li
 `scope=manual | forras=… | ts=…` alakban (1.5); a `ts` a C futásnapló utolsó időbélyege, tehát a bemenetekből származik, és az
 újraépítés bájtra azonos marad. A tábla modell-kimenet, javaslat (CLAUDE.md 1. szabály: a `bizonyossag` nem „ellenőrizve”). A zárt licencű Károli–Strong
 forrás adata nem része a tábláknak (l. `eszkozok/karoli_strong/zart_osszevet.py`: csak helyi, összesített
-összevetés). Az első két könyv az 1Móz (`parok_1Moz.tsv`, `szavak_1Moz.tsv`) és a 2Móz (`parok_2Moz.tsv`, `szavak_2Moz.tsv`; a 2Móz 35:36–36:37 versei a versbeosztás-detektor megfeleltetésével, a `2Móz_javito` javító menetből, l. `naplok/F22_2Moz_jelentes.md` 5.1, 5.5); a többi könyv ugyanezzel a
+összevetés). Az első két könyv az 1Móz (`parok_1Moz.tsv`, `szavak_1Moz.tsv`) és a 2Móz (`parok_2Moz.tsv`, `szavak_2Moz.tsv`; a 2Móz 35:36–36:37 versei a versbeosztás-detektor megfeleltetésével, a `2Móz_javito` javító menetből, l. `naplok/F22_2Moz_jelentes.md` 5.1, 5.5). Az `er` sorok `vers` oszlopa a **Károli-kulcs**: a megfeleltetett eredeti vers tokenjei (pl. a `2Móz 35:36` `er` sorai a TAHOT 36:1 szavai); a megfeleltetés nélküli eredeti vers a saját kulcsán, ha az foglalt, `+1000`-es verssorszámú azonosítón szerepel (pl. `4Móz 30:1001`; nem igehely), `kezi` állapotban. A megfeleltetés a `f22/versmegfeleltetes.tsv` jóváhagyott könyveire érvényes (`tokenek.VERSBEOSZTAS_JOVAHAGYOTT`: 2Móz); a többi könyv ugyanezzel a
 sémával, a könyv-paraméter cseréjével. A fájlnév a magyar könyvrövidítés ékezet nélküli alakja.
 
 Olvasás/írás: `split('	')` / `'	'.join()` (a `csv` modul tilos, l. CLAUDE.md). Az igehely kanonikus magyar alak.

@@ -29,7 +29,7 @@ IRANYOK = ('karoli_eredeti_nelkul', 'eredeti_karoli_nelkul')
 def lista(karoli=None, ered=None):
     """[(irany, konyv, igehely, token_db)] a Károli-sorrendben, majd az eredeti-oldal a TAHOT/TAGNT sorrendjében."""
     karoli = karoli if karoli is not None else tokenek.betolt_karoli()
-    ered = ered if ered is not None else tokenek.betolt_eredeti()
+    ered = ered if ered is not None else tokenek.betolt_eredeti(versmegf=False)   # a nyers Károli-kulcs
     ki = []
     for ig, szoveg in karoli.items():
         if not ered.get(ig):

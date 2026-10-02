@@ -251,7 +251,7 @@ def bemeneti_ts(konyv, gyoker=None):
     ut = os.path.join(gyoker or ROOT, 'f22', 'futasnaplo.tsv')
     if not os.path.exists(ut):
         return 'manual'
-    nev = 'c/%s' % sonnet_koteg.ascii_nev(konyv)
+    nevek = ('c/%s' % sonnet_koteg.ascii_nev(konyv), 'c/%s_javito' % sonnet_koteg.ascii_nev(konyv))
     ts = None
     with open(ut, encoding='utf-8') as f:
         sorok = [x.rstrip('\n').rstrip('\r').split('\t') for x in f if x.strip()]
@@ -260,7 +260,7 @@ def bemeneti_ts(konyv, gyoker=None):
     fej = sorok[0]
     for r in sorok[1:]:
         d = dict(zip(fej, r))
-        if d.get('futas') == nev:
+        if d.get('futas') in nevek and (ts is None or d['ts'] > ts):
             ts = d['ts']
     return ts or 'manual'
 
@@ -269,11 +269,18 @@ def proveniencia_sor(konyv, gyoker=None):
     """A táblák első sora (SEMA 1.5/2.20): `#`-kezdetű, az olvasók átugorják; scope=manual, mert a tábla
     modell-kimenet (javaslat), nem `lekerdez.py`-eredmény."""
     n = sonnet_koteg.ascii_nev(konyv)
-    return ('# proveniencia: scope=manual | forras=f22/valaszok/sonnet/%s.jsonl, f22/valaszok/c/%s.jsonl, '
-            'konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=%s (a C futásnapló utolsó hívása; '
-            'az újraépítés így bájtra azonos) | modell-kimenet, javaslat: nem lekérdezés-eredmény; a bizonyossag '
+    u = utak(konyv, gyoker)
+    forras = ['f22/valaszok/sonnet/%s.jsonl' % n, 'f22/valaszok/c/%s.jsonl' % n]
+    if os.path.exists(u['sonnet_javito']) or os.path.exists(u['c_javito']):
+        forras += ['f22/valaszok/sonnet/%s_javito.jsonl' % n, 'f22/valaszok/c/%s_javito.jsonl' % n]
+    if any(tokenek.igehely_bont(r[0] or r[1])[0] == konyv for r in tokenek.versmegfeleltetes()):
+        forras.append('f22/versmegfeleltetes.tsv')
+    forras += ['konkordancia/TAHOT_kivonat.tsv', 'konkordancia/Karoli_1908.tsv']
+    return ('# proveniencia: scope=manual | forras=%s | ts=%s (a C futásnapló utolsó hívása%s; az újraépítés '
+            'így bájtra azonos) | modell-kimenet, javaslat: nem lekérdezés-eredmény; a bizonyossag '
             'nem "ellenőrizve"; a strong a TAHOT-ból, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py'
-            % (n, n, bemeneti_ts(konyv, gyoker)))
+            % (', '.join(forras), bemeneti_ts(konyv, gyoker),
+               ', a javító menetét is beleértve' if len(forras) > 4 else ''))
 
 
 def tsv_szoveg(fej, sorok, elso_sor=None):

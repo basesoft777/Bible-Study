@@ -296,7 +296,7 @@ def onteszt():
                 ki.append(('%s %d:%d' % (konyv, c, v), rnd.randint(6, 40)))
         return ki
 
-    k = folyam('X', [30, 30, 30])
+    k = folyam('X', [30, 30, 30, 30, 30])
     # 1. azonos folyam: nincs eltérés
     e = list(k)
     if any(a != b for a, b in illeszt(k, e)):
@@ -329,8 +329,25 @@ def onteszt():
     fs = fejezet_sorok(k, e2, illeszt(k, e2))
     if not any(('KORR_ELT' in r['jel'] or 'GYENGE' in r['jel'] or 'ELTOLT' in r['jel']) for r in fs if r['fejezet'] == 2):
         hibak.append('a fejezet-jelzés nem szólt az eltolt tartalomra')
-    if any(r['jel'] for r in fs if r['fejezet'] != 2 and r['fejezet'] != 1 and r['fejezet'] != 3):
-        hibak.append('váratlan jelzés')
+    if any(r['jel'] for r in fs if r['fejezet'] != 2):
+        hibak.append('váratlan jelzés a nem érintett fejezetben')
+    # 5b. a tokenek._versmegfeleltet: eltolt, nincs_eredeti (a kulcson álló eredeti vers nem vész el), nincs_karoli (+1000)
+    ered_p = {'X 1:1': ['a'], 'X 1:2': ['b'], 'X 1:3': ['c'], 'X 1:4': ['d'], 'X 2:1': ['e']}
+    sorok = [('X 1:1', 'X 1:2', 'eltolt'), ('X 1:2', 'X 1:3', 'eltolt'), ('X 1:3', 'X 1:4', 'eltolt'), ('X 1:4', '', 'nincs_eredeti'),
+             ('', 'X 2:1', 'nincs_karoli')]
+    uj = tokenek._versmegfeleltet(dict(ered_p), sorok)
+    if uj.get('X 1:1') != ['b'] or uj.get('X 1:3') != ['d'] or 'X 1:4' in uj:
+        hibak.append('a _versmegfeleltet eltolt/nincs_eredeti képezése')
+    if sorted(v[0] for v in uj.values()) != ['a', 'b', 'c', 'd', 'e']:   # az 'a' gazdátlan lett (X 1:1001)
+        hibak.append('a _versmegfeleltet elveszített vagy megkettőzött egy eredeti verset: %s' % sorted(v[0] for v in uj.values()))
+    if 'X 2:1' not in uj:
+        hibak.append('a Károli nélküli eredeti vers kulcsa')
+    ered_q = {'X 1:1': ['a'], 'X 1:2': ['b']}
+    uj = tokenek._versmegfeleltet(dict(ered_q), [('X 1:1', '', 'nincs_eredeti')])
+    if 'X 1:1' in uj or 'X 1:1001' not in uj or uj['X 1:1001'] != ['a']:
+        hibak.append('a nincs_eredeti Károli-vers kulcsán álló eredeti vers elveszett')
+    if tokenek.versmegfeleltetes(jovahagyott=('Ismeretlen',)) != []:
+        hibak.append('a jóváhagyott-könyv szűrő')
     # 6. a valódi adat: az 1Móz tiszta, a 2Móz 35:36–36:37 eltolódása megvan (ha az adat elérhető)
     try:
         karoli, ered = tokenek.betolt_karoli(), tokenek.betolt_eredeti(versmegf=False)
