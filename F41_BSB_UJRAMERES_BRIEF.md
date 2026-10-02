@@ -5,10 +5,10 @@ kod: BSB_UJRAMERES
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: megallt
 ag: claude/f41-bsb-ujrameres
 ad: a versszámozás miatt küszöb alatt maradt ószövetségi könyvek a 95%-os küszöbbel újramérve és importálva, a többinél igazolt ok; a BSB_Strongs.tsv-ben megkülönböztethető a „szándékosan nem fordított” és a „hiányzó” angol szó
-kovetkezo: futtatás az orkesztrátorral; az 1. lépés végén ⛔ megállás
+kovetkezo: "Te: ⛔ 3.1 jelentés jóváhagyása, D3 döntés (881 sor átszámozása; 1Kir 22 és Jób 40–41 kiesése); utána 3.2–3.5"
 olvas: [eszkozok/fj2/, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, naplok/F16_bsb_lefedettseg.tsv, naplok/F16_bsb_verseltolas_diagnozis.tsv, naplok/F16_bsb_zsolt_megfeleltetes.tsv]
 ir: [eszkozok/fj2/bsb_import.py, eszkozok/fj2/bsb_verseltolas_diag.py, konkordancia/BSB_Strongs.tsv, naplok/F16_bsb_lefedettseg.tsv, naplok/F41_bsb_megfeleltetes.tsv, naplok/F41_nem_egyezo_versek.tsv]
 fugg: [16]
