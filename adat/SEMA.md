@@ -234,8 +234,8 @@ szabály egy második, addig dokumentálatlan hibát is felszínre hozott — a
 
 | Alak | Mikor | Példa |
 |---|---|---|
-| numerikus | a BDB számozott sense-ekre tagolja a szócikket (főnevek, melléknevek túlnyomó része) | `1`, `2`, `3a` |
-| binyan-címke | **a BDB az igegyököket binyan szerint tagolja, nem számozott sense-ekkel** | `Nif'ál`, `Pi'él`, `Hif'íl` |
+| numerikus | a BDB számozott jelentésekre tagolja a szócikket (főnevek, melléknevek túlnyomó része) | `1`, `2`, `3a` |
+| binyan-címke | **a BDB az igegyököket binyan szerint tagolja, nem számozott jelentésekkel** | `Nif'ál`, `Pi'él`, `Hif'íl` |
 | binyan + igealak | ha a megkülönböztetés igealakon múlik | `Qal pass. ptc.`, `Qal impf.` |
 | alternatíva | ha a hely két binyan között eldöntetlen | `Nif'ál / Hif'íl` |
 | `teljes` | **a forrásfájl nem bont számozott jelentésekre — a teljes szócikk egy sorban áll** (LEXV2_2_BRIEF.md V2.3, jelenleg: Thayer) | `teljes` |
