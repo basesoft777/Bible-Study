@@ -27,6 +27,9 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import macula_kozos as K  # noqa: E402
 
+# DT7 (c): a Károli-szöveg MT-számozású fejezetei, ahol a térkép és a KJV-alapú KEZI-kötés nem irányadó
+DAN_IDENTITAS = {3, 4}
+
 
 def karoli_mt_terkep(mt_versek=None):
     """{(konyv, fej, vers): {'mt': [(fej, vers)], 'forras': str, 'biz': 'rendben'|'javaslat', 'ok': str}}
@@ -42,14 +45,14 @@ def karoli_mt_terkep(mt_versek=None):
     for s in kk_sorok:
         m = re.match(r'^(\S+) (\d+):(\d+)$', s[0])
         if m:
-            kk[(m.group(1), int(m.group(2)), int(m.group(3)))] = s
+            kk[(K.kanoni_nev(m.group(1)), int(m.group(2)), int(m.group(3)))] = s
     t_fej, t_sorok = K.tsv_olvas(os.path.join(K.KONK, 'LXX_versificacios_terkep.tsv'))
     terkep = {}
     for s in t_sorok:
         m = re.match(r'^(\S+) (\d+):(\d+)$', s[0])
         if not m:
             continue
-        terkep.setdefault((m.group(1), int(m.group(2)), int(m.group(3))), []).append(s)
+        terkep.setdefault((K.kanoni_nev(m.group(1)), int(m.group(2)), int(m.group(3))), []).append(s)
 
     # KJV-fejezetek versszama: naplok/KAROLI_KK1b_fejezetosztaly.tsv `kjv_max` (a KK1b a lxx-morph verse_pairs
     # KJV-oldalarol szamolta); a Macula-oldal a MT-fejezetek tenyleges versszama. A KJV-szamozas akkor egyezik az
@@ -116,8 +119,13 @@ def karoli_mt_terkep(mt_versek=None):
                     statisztika['kk_kjv_nem_igazolt'] = statisztika.get('kk_kjv_nem_igazolt', 0) + 1
             t = terkep.get(kulcs)
             ertek = None
+            if konyv == 'Dán' and fej in DAN_IDENTITAS and (not mt_versek.get(konyv) or (fej, v) in mt_versek[konyv]):
+                # DT7 (c), 2026.10.02: a Károli Dán 3-4 szövege MT-számozású (Károli x:y = MT x:y; Dán 4: 1-34, Dán 3: 31-33 is)
+                ertek = {'mt': [(fej, v)], 'forras': 'identitas', 'biz': 'rendben', 'ok': 'dan_identitas_dt7'}
             hasznalhato = [ts for ts in (t or []) if not (len(ts) > 5 and ts[5] == 'EGYIK_SEM')]
-            if kezi_ertek is not None:
+            if ertek is not None:
+                pass
+            elif kezi_ertek is not None:
                 ertek = kezi_ertek
             elif t and not kk_mt and not hasznalhato:
                 # minden terkep-sor EGYIK_SEM (a Karoli-szamozas sem a hebernel, sem a latinnal, sem a
@@ -225,7 +233,7 @@ def karoli_mt_terkep(mt_versek=None):
             tekintely_visszavont += 1
     def kat(e):
         if e['forras'] == 'identitas':
-            return {'': 'identitas', 'terkep_egyik_sem_identitas': 'identitas_terkep_egyik_sem',
+            return {'': 'identitas', 'dan_identitas_dt7': 'identitas_dan_dt7', 'terkep_egyik_sem_identitas': 'identitas_terkep_egyik_sem',
                     'terkep_egyik_sem_eltolodas_gyanu': 'terkep_egyik_sem_eltolodas_gyanu'}.get(e['ok'].split('|')[0], 'identitas_egyeb')
         if e['forras'] == 'kk_kjv' and e['biz'] != 'rendben':
             return 'kk_kjv_nem_igazolt'

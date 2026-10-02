@@ -68,8 +68,11 @@ körében marad):
 1. **Kiszűrt vagy törölt sorok** kategóriákra bontva, darabszámmal.
 2. **Kulcstartomány-lefedettség** (pl. Strong-alapszámok hiánya a várt tartományban).
 3. **A „nulla-diff" pontos hatóköre:** mire vonatkozik, és mire nem.
-4. **Adattábla sorszámának változása** a main-hez képest; ha nagyobb a küszöbnél
-   (l. E17 a `DONTESEK.md`-ben), van-e bontási napló.
+4. **Adattábla sorszámának változása** a main-hez képest (E17, DT3): az `adat/` és a
+   `konkordancia/` alatti minden `.tsv`, táblánként, a fejlécsor nélkül. Ha |Δ| ≥ 10 sor
+   (új vagy törölt tábla esetén is), van-e bontási napló, amely a változást kategóriákra
+   bontja, darabszámmal. A táblák soronkénti Δ-ját a jelentés akkor is listázza, ha egyik
+   sem éri el a küszöböt.
 5. **A brief ⛔ pontjait** a végrehajtó tényleg betartotta-e.
 
 A jelentés **első sora**: `TISZTA` vagy `ELTÉRÉS: <n> tétel`. Ez nem „minden

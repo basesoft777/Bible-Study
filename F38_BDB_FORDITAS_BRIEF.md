@@ -8,14 +8,14 @@ modell: opus
 allapot: nem_indult
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=opus), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
 kovetkezo: M0 felmérés + M1 mérő adag, utána megállási pont (⛔ M1)
-olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md]
-ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md]
+olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md, konkordancia/Strong_szotar.tsv, "konkordancia/TAHOT_kivonat.tsv"]
+ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md, naplok/BDB_FORDITAS_gyokcsoportok.tsv]
 fugg: [34]
 ---
 
 # A teljes BDB magyar fordítása (BDB_FORDITAS)
 
-*v1 · 2026.10.01 · a #28 (EMELES) tapasztalatai alapján · cloud session, Claude Code kredit (túlfutás esetén a heti keretből)*
+*v1.1 · 2026.10.02 · M0 5. pont (BDB-gyökcsoportok felmérése) · v1 · 2026.10.01 · a #28 (EMELES) tapasztalatai alapján · cloud session, Claude Code kredit (túlfutás esetén a heti keretből)*
 
 ## Cél
 
@@ -56,6 +56,7 @@ A gyakoriságot az M0 számolja egy Strong-címkés ószövetségi szövegből a
 2. Elkészíti a `naplok/BDB_FORDITAS_sorrend.tsv`-t: `sorszam`, `strong`, `gyakorisag`, `karakter`, `adag`. A már lefordított szócikkek (az `adat/forditasok.tsv` `teljes` sorai) kimaradnak.
 3. Kijelöli a 20 000 karakter fölötti szócikkek szegmenshatárait (jelentésszámok mentén, ahogy a #28 a G4151-nél és a H1121-nél tette).
 4. Adagokra osztja a listát: **M1 mérő adag kb. 150 000 karakter**, utána **adagonként kb. 500 000 karakter** (kb. 13 adag).
+5. **BDB-gyökcsoportok felmérése (csak mérés, import nélkül; kiegészítés 2026.10.02).** Forrás: `openscriptures/HebrewLexicon`, `LexicalIndex.xml`, commit `21c9add1` (CC BY 4.0; GitHubról letölthető, a cloud proxyn átmegy). A BDB gyökcsoportjai (1 432 gyök, 4 616 Strong a bcv-commons `bdb_roots` mérése szerint) összevetése a `konkordancia/Strong_szotar.tsv` TWOT-számával: hány héber Strong-nál ad a BDB-gyök olyan rokon Strong-ot, amely nem ugyanazon TWOT-szám alatt áll. Kimenet: `naplok/BDB_FORDITAS_gyokcsoportok.tsv` (`strong`, `bdb_gyok`, `twot`, `bdb_rokonok`, `twot_rokonok`, `csak_bdb`), és az M0 jelentésébe három szám: a lefedett Strong-ok száma, a `csak_bdb` többletet kapó Strong-ok száma és aránya. A fájl neve, commitja és licencsora a naplóba. **Nem kerül be** a `BDB_teljes_unabridged.tsv`-be, az `adat/forditasok.tsv`-be vagy a szerepmátrixba; a hasznosításáról (a szócikkek „rokon szavak” adata-e) a ⛔ M1 megállási ponton a felhasználó dönt.
 
 ### M1 — Mérő adag
 
@@ -64,6 +65,8 @@ Az első kb. 150 000 karakter lefordítása a #28 módszerével. A végén **meg
 - 5 véletlenszerűen választott szócikk Strong-száma különböző hosszúságból, hogy a felhasználó beleolvashasson (`naplok/BDB_FORDITAS_naplo.md`, forrás és fordítás egymás alatt).
 
 **⛔ M1:** a felhasználó leolvassa a kreditet, és dönt: folytatás, prompt- vagy terminológiajavítás, vagy leállás.
+
+Az M0 5. pontjának eredménye alapján itt dönt arról is, hogy a BDB-gyökcsoport bekerül-e a szócikkek adatai közé (új mező az `adat/forditasok.tsv`-ben vagy külön tábla, SEMA-bővítéssel) vagy a felmérés lezárul import nélkül; a döntés a `DONTESEK.md`-be kerül.
 
 ### M2 … Mn — Éles adagok
 
@@ -126,3 +129,4 @@ Olvasd el a `BDB_FORDITAS_BRIEF.md`-t, és hajtsd végre az M0-t és az M1-et. E
 | D5 | F34 (ψ-javítás) előfeltétel | hibás forrást ne fordítsunk le | fordítás most, javítás utólag |
 | D6 | Kevés ⛔ (M1, Mz), a többi megállás csak „folytasd”-ra vár | a #28-ban a sok döntési kör vitte a költség és az idő nagy részét | minden adag után tartalmi ellenőrzés |
 | D7 | Egy végrehajtó, subagent nélkül | egységes terminológia, egy kontextus (#28 tapasztalata) | párhuzamos subagentek |
+| D-gyok | A BDB-gyökcsoportok csak felmérés az M0-ban, import nélkül; forrás az OpenScriptures `LexicalIndex.xml` (GitHub), nem a HF `bdb_roots` CSV | a TWOT-szám már gyökalapú csoportosítás a szerepmátrixban; a többlet mérés nélkül nem ismert; a GitHub-forrás a cloud sessionből is elérhető, a HF nem |
