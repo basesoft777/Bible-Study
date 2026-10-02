@@ -14,7 +14,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | Következő lépés | Hol |
 |---|---|---|---|---|---|---|
 | 7 | Thayer teljes magyar fordítása (éles) | a görög mélységi szócikk magyarul, adatként | ⬜ brief kell | #3 (kész), #5 (kész), #14 (kész) | halasztva (D46): a teljes Thayer gépi fordítása akkor, ha lesz böngésző felhasználó; a lexikon szócikkeit a #28 fordítja | `F07_THAYER_ELES_BRIEF.md` |
-| 22 | "Károli–Strong párosítás könyvenként, két modellel (Sonnet + Gemini); első könyv: 1Mózes" (F22) | "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)" | ⏸ döntésre vár | #21 (kész) | "Te: következő könyv előtt a jelzett fejezetek kézi jóváhagyása (első: 4Móz 30); Ézs 9:17–20 megfeleltetése hamis; a 3Móz csak Sonnettel készült (DT-F22c nyitva: a Gemini marad-e), a PR #114 merge-e és a zárt összevetés (zart_osszevet.py) a felhasználóé" | `F22_KAROLI_STRONG_BRIEF.md` |
+| 22 | "Károli–Strong párosítás könyvenként, két modellel (Sonnet + Gemini); első könyv: 1Mózes" (F22) | "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)" | ▶ fut | #21 (kész) | "Te: a következő könyvek ütemezése (Leviticustól, csak Sonnet); a következő könyv előtt a jelzett fejezetek kézi jóváhagyása (első: 4Móz 30); az Ézs 9:17–20 megfeleltetése hamis; PR #114 merge-e; zárt összevetés (tájékoztató, nem blokkol — DT-F22a)" | `F22_KAROLI_STRONG_BRIEF.md` |
 | 23 | Egyforrású motívumdokumentum: forrássablon és mélységi szintek (terv) (MOTIVUM_FORRAS) | a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül | ⬜ | #37* | /kovetkezo; ⛔ az M0 felmérés után | `F23_MOTIVUM_FORRAS_BRIEF.md` |
 | 27 | Thayer-fordítás: Opus és Gemini összevetése, Max-keret méréssel (FP3) | mért adat a #7 modellválasztásához (A: Opus mindenre, B: vegyes hosszhatárral, vagy Gemini marad): minőség hosszkategóriánként, gépi kapuk, Max-keret fogyása és kivetítése a teljes Thayerre | ⬜ | — | halasztva (D46): a gépi alap modellválasztásához kell, a #7-tel együtt veszi elő a felhasználó | `F27_FP3_BRIEF.md` |
 | 30 | Döntés- és N-számok kiosztása merge-kor (helyőrző az ágakon) (SZAMOZAS) | az ágak nem foglalnak végleges DT/N-számot; a párhuzamos merge-ek nem ütköznek sorszámon; a main-en a számokat egy Action osztja ki | ⬜ | #8 (kész), #16 (kész), #17 (kész), #32* | a helyőrző-Action és a CI-szabály megírása, a DT18 átszámozása, a nyitott ágak helyőrzőre állítása | `F30_SZAMOZAS_BRIEF.md` |
@@ -55,7 +55,6 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 <!-- GENERÁLT-KEZDET: feladatok.py --cel naplozas -->
 - #26 Egyforrású lánc (B) döntéseinek rögzítése és az érintett briefek fejléce — ⬜ — /kovetkezo, a MOTIVUM_FORRAS, LICENC és OLVASOI_HTML befogadása után (`F26_EGYFORRAS_NAPLO_BRIEF.md`)
-- #47 Három állapot-ellentmondás javítása (F22-brief és jelöltlista, F24-brief, DT6) — ⬜ — "Code — J1 3. pont csak ellenőrzés (`feladatok.py jeloltek` futtatása, kézi szerkesztés nincs); a #47 ne fusson #26-tal egy csomagban, futó #26 lezárásáig várjon" (`F47_ALLAPOT_ELLENTMONDASOK_BRIEF.md`)
 <!-- GENERÁLT-VÉGE: feladatok.py --cel naplozas -->
 
 ## Takarítás (bármikor, rövid)
@@ -98,6 +97,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 ## Kész (utolsó 2 hét)
 
 <!-- GENERÁLT-KEZDET: feladatok.py --cel kesz -->
+- Három állapot-ellentmondás javítása (F22-brief és jelöltlista, F24-brief, DT6) (#47, ALLAPOT_ELLENTMONDASOK): a #22 (fut), a DT-F24 és a DT6 állapota a felhasználói döntésekhez igazítva (DT6: csak a (b) pont); ellenőrzés `naplok/ELLENOR_ALLAPOT_JAVITAS.md`; nyitott: a #41 briefje és a DT6 ütközése (merge `f17792e`, 2026-10-02)
 - Régi „Sir” hivatkozások migrálása JSir-re és a „Szentlélek” / „Isten Lelke” helyek egységesítése „Szent Szellem”-re (#35, SIR_SZENTSZELLEM): 6 Sir→JSir csere (jeloltek, genezis, motivumlog 4 sor), 3 Szentlélek→Szent Szellem hely, SEMA E9-javítás; auditok.tsv 169–171 marad; DT-F35b eldöntve (marad); részletek naplok/SIR_SZENTSZELLEM_zaras.md (merge `37f2a80`, 2026-10-02)
 - Forrásaink licencének rendezése (az F24 utófeladata) (#33, LICENC_RENDEZES): "17 tisztazott/1 kozkincs/21 tisztazatlan, TBESG marad, TBESH-család nem mozdult (TBESH tisztazatlan), LXX_kivonat tisztazatlan, N-F33 javasolt, DT-F33a-d alkalmazva (részletek: naplok/LICENC_RENDEZES_zaras.md)" (merge `ea7cc96`, 2026-10-02)
 - Macula-import, héber és görög (N31) (#17, F17): Macula-import (#17): héber 475 911 és görög 275 520 sor a KK-hoz kötve (CC BY 4.0, UBS-mezők nélkül), a 87 hely 38 LXX-megfelelővel (F06: 39, közös módszerhiba javítva); ellenőrzés `naplok/ELLENOR_F17.md`; a Dán 4, a szerepmátrix és a fájlméret DT7-ben nyitva
