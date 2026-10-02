@@ -2,10 +2,11 @@
 feladat: 33
 cim: Forrásaink licencének rendezése (az F24 utófeladata)
 kod: LICENC_RENDEZES
+ag: claude/f33-licenc-rendezes
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: fut
 ad: a licenc-leltár egy mércével, szó szerinti licencidézetekkel; a régi LXX_kivonat kivezetve; a TBESH/STEPBible terjesztési feltételei rögzítve
 kovetkezo: a DT-F24 állapota „alkalmazva”; a nyitott terjesztési kérdések döntésként a DONTESEK.md-ben
 fugg: [24]
