@@ -1,0 +1,5 @@
+# F22: kézzel jóváhagyott 1:2 versbeolvasztás (a Károli-vers egy szakasza a TAHOT-vers tartalma; 1:2 támogatás a párosításban nincs).
+# A Károli-vers hu_tol–hu_ig tokenjei és az eredeti vers tokenjei `kezi` állapotban szerepelnek (nincs link, nem betoldas/forditatlan),
+# az eredeti vers tokenjei a Károli-vers `er` soraiként, a saját versük szavai után folytatott sorszámmal. Jóváhagyás: naplok/F22_versbeosztas_jovahagyas.md
+karoli	hu_tol	hu_ig	eredeti	megjegyzes
+4Móz 29:39	25	38	4Móz 30:1	a Károli 29:39 utolsó mondata („És megmondá Mózes … Mózesnek”) = a TAHOT 4Móz 30:1 (beolvasztás, 1:2); kézi jóváhagyás 2026.10.02

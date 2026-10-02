@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_strong/versbeosztas.py | scope=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv (nyers versfolyam, versmegfeleltetés nélkül) | forras=determinisztikus vershossz-összevetés | ts=2026-10-02T09:13:03+00:00
+# GENERÁLT: eszkozok/karoli_strong/versbeosztas.py | scope=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv (nyers versfolyam, versmegfeleltetés nélkül) | forras=determinisztikus vershossz-összevetés | ts=2026-10-02T14:20:03+00:00
 
 # F22_versbeosztas.md — a Károli- és az eredeti versbeosztás összevetése (teljes Biblia)
 
