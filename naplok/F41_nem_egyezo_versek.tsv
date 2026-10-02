@@ -1,0 +1,491 @@
+# forras-URL: https://github.com/BSB-publishing/bsb-data-output + konkordancia/TAHOT_kivonat.tsv
+# commit/verzio: BSB commit a4a2c0558c26e0281ba4e3f0e5479398459e2183
+# letoltes datuma: 2026-10-02
+# futtatasi parancs: python eszkozok/fj2/bsb_verseltolas_diag.py --munka <mappa> --f41
+# a meres nevezojebe eso (a TAHOT_kivonat versenkent mert), de NEM egyezo egysegek: a TAHOT-vers Strong-halmaza nem resze a BSB-oldalnak, a F41.1 megfeleltetes utan (naplok/F41_bsb_megfeleltetes.tsv); a ket MT-versre osztott BSB-vers ket egyseg; az illesztetlen es a kjv_szamozasu fejezetek nincsenek benne
+# tahot_nincs_bsbben = a TAHOT-nak azok a Strongjai, amelyek a BSB-oldalon nincsenek (ez okozza a nem-egyezest); bsb_tobblet = a BSB-oldal Strongjai, amelyek a TAHOT-versben nincsenek (tajekoztato)
+# okkategoria (a brief sorrendjeben): szamozas = a szomszedos MT-vers (+-1, a TAHOT sorrendjeben) Strong-halmaza teljesen a BSB-oldal resze (a vers a szomszedos MT-versre illik; a modell nem kezelte); arami = az MT-vers a brief szerinti arami szakaszba esik (Dan 2:4-7:28, Ezsd 4:8-6:18 es 7:12-26, Jer 10:11; a TAHOT_kivonatban nincs nyelvjeloles, ezert tartomany); cimkezes = a TAHOT minden hianyzo Strongjahoz van a BSB-tobbletben olyan Strong, amellyel kozos massalhangzos lemma-vazon osztozik a TAHOT_kivonat Szoto oszlopaban (formai kriterium, nem szemantikai allitas); egyeb = minden mas
+# a bsb_tobblet es a tahot_nincs_bsbben Strong-szamai a 9000-es prefixkodok nelkuliek (a merés is igy szamol)
+# feltevesek (brief 3.2) a megfeleltetesbol: 2Sam 18:33 / 19:1 (a feltevesben szereplo szamozasi hatar): BSB 18:33 -> 18:33 (azonos); BSB 19:1 -> 19:1 (azonos); a TAHOT_kivonat 2Sam-szamozasa a KJV-e (18. fej. max 33, 19. fej. max 43) -> a szamozasi eltolas feltevese NEM igazolodott (nincs eltolt vers a 2Sam-ban)
+# Dan 3/4 es 5:31/6:1: a TAHOT_kivonat Dan-szamozasa a KJV-e (fejezet-max: 3=30, 4=37, 5=31, 6=28); BSB 5:31 5:31 -> 5:31 (azonos) -> a szamozasi eltolas feltevese NEM igazolodott (nincs eltolt vers a Dan-ban). Figyelem: ez a TAHOT_kivonat szamozasa, nem feltetlenul a masoreta (WLC) szamozas (N-F41d)
+# 2Sám (660 egyezo / 695 nevezo = 94.96%): 35 nem egyezo egyseg; okkategoria: szamozas=0, arami=0, cimkezes=3, egyeb=32; a cimkezes sorokat egyezonek veve 95.40% (tajekoztato, NEM a kuszob alapja)
+# Ezsd (265 egyezo / 280 nevezo = 94.64%): 15 nem egyezo egyseg; okkategoria: szamozas=0, arami=7, cimkezes=1, egyeb=7; csak az arami tartomanyon belul levo eltereseket egyezonek veve 97.14%, az arami + cimkezes sorokat egyezonek veve 97.50% (tajekoztato szamitas, NEM a kuszob alapja)
+# Dán (320 egyezo / 357 nevezo = 89.64%): 37 nem egyezo egyseg; okkategoria: szamozas=0, arami=10, cimkezes=25, egyeb=2; csak az arami tartomanyon belul levo eltereseket egyezonek veve 92.44%, az arami + cimkezes sorokat egyezonek veve 99.44% (tajekoztato szamitas, NEM a kuszob alapja)
+# OK 2Sam: nem szamozasi eltereses, hanem 35 szetszort, egyedi Strong-eltereses (3 cimkezes, 32 egyeb; arami nincs): a TAHOT es a BSB egy-ket szavat mas Strong-szammal cimkezi, egy-egy versben; egyetlen vers sem illik a szomszedos MT-versre.
+# OK Ezsd: a 15 nem egyezobol 7 esik az arami tartomanyba (ebbol 4 a H1247 (TAHOT) / H1123 (BSB) par, a H1123 a TAHOT_kivonatban nem szerepel), 1 cimkezes, 7 egyeb a heber szakaszokban: az arami cimkezes az ok egy resze, de nem az egesz.
+# OK Dan: a felteves (arami cimkezes) a fo okra CAFOLVA: a 37 nem egyezobol csak 10 esik az arami tartomanyba (ebbol 6 a H1247/H1123 par), 25 cimkezes, ezek mind az arami tartomanyon kivul, a heber fejezetekben vannak, tobbsegukben a Daniel-nev (H1840 TAHOT / H1841 BSB, 22 vers), 2 egyeb.
+konyv	bsb_vers	mt_vers	tahot_nincs_bsbben	bsb_tobblet	okkategoria
+1Móz	1:4	1:4	H2895	H2896	cimkezes
+1Móz	1:10	1:10	H2895	H2896	cimkezes
+1Móz	1:12	1:12	H2895	H2896	cimkezes
+1Móz	1:18	1:18	H2895	H2896	cimkezes
+1Móz	1:21	1:21	H2895	H2896	cimkezes
+1Móz	1:25	1:25	H2895	H2896	cimkezes
+1Móz	4:8	4:8	H1980		egyeb
+1Móz	4:22	4:22	H2790	H2794	egyeb
+1Móz	24:33	24:33	H7760	H3455	egyeb
+1Móz	30:11	30:11	H1409		egyeb
+1Móz	32:28	32:28	H582	H376	egyeb
+1Móz	33:20	33:20	H3290	H3478	egyeb
+1Móz	36:5	36:5	H3266	H3274	egyeb
+1Móz	36:14	36:14	H3266	H3274	egyeb
+1Móz	39:20	39:20	H615		egyeb
+1Móz	40:13	40:13	H4941	H4639	egyeb
+1Móz	49:15	49:15	H2895	H2896	cimkezes
+1Móz	49:26	49:26	H8379	H8378	cimkezes
+2Móz	4:2	4:2	H2088		egyeb
+2Móz	12:19	12:19	H2556	H2557	cimkezes
+2Móz	12:20	12:20	H2556	H2557	cimkezes
+2Móz	16:8	16:8	H3885		egyeb
+2Móz	21:8	21:8	H7489	H7451	egyeb
+2Móz	22:31	22:31	H582	H376	egyeb
+2Móz	30:32	30:32	H3251	H5480	egyeb
+3Móz	12:4	12:4	H2892	H2893	egyeb
+3Móz	12:5	12:5	H2892	H2893	egyeb
+3Móz	12:6	12:6	H2892	H2893	egyeb
+4Móz	1:16	1:16	H7121	H7148	egyeb
+4Móz	14:38	14:38	H582	H376	egyeb
+4Móz	24:17	24:17	H8352	H8351	egyeb
+4Móz	26:9	26:9	H7148	H7121	egyeb
+4Móz	34:10	34:10	H184	H183	cimkezes
+5Móz	3:17	3:17	H798	H794	cimkezes
+5Móz	4:49	4:49	H798	H794	cimkezes
+5Móz	13:13	13:13	H582	H376	egyeb
+5Móz	17:9	17:9	H4941	H4639	egyeb
+5Móz	19:13	19:13	H2895	H2896	cimkezes
+5Móz	21:13	21:13	H1167	H1166	cimkezes
+5Móz	28:27	28:27	H2914	H6076	egyeb
+5Móz	28:30	28:30	H7901	H7693	egyeb
+5Móz	30:16	30:16	H413 H518 H8085		egyeb
+5Móz	32:34	32:34	H5973	H5978	egyeb
+5Móz	32:39	32:39	H5973	H5978	egyeb
+5Móz	32:42	32:42	H6546	H6545	cimkezes
+5Móz	33:2	33:2	H784 H1881	H799	egyeb
+5Móz	34:3	34:3	H5899	H5892 H8558	egyeb
+Józs	8:16	8:16	H5857		egyeb
+Józs	11:2	11:2	H5299	H5316	egyeb
+Józs	12:3	12:3	H798	H794	cimkezes
+Józs	13:17	13:17	H1004 H1186	H1010	egyeb
+Józs	13:20	13:20	H798	H794	cimkezes
+Józs	15:3	15:3	H4608		egyeb
+Józs	15:47	15:47	H1419		egyeb
+Józs	18:24	18:24	H3723		egyeb
+Józs	19:33	19:33	H5346		egyeb
+Józs	24:15	24:15	H7489	H7451	egyeb
+Józs	24:33	24:33	H1390	H1389	cimkezes
+Bír	1:16	1:16	H5899	H5892 H8558	egyeb
+Bír	1:36	1:36	H4608		egyeb
+Bír	3:13	3:13	H5899	H5892 H8558	egyeb
+Bír	16:13	16:13	H120 H259 H1961 H2470 H3489 H7023 H8628		egyeb
+Bír	16:14	16:14	H707 H3462 H4253 H5973 H7218 H7651		egyeb
+Bír	16:25	16:25	H631	H615 H3588	egyeb
+Bír	16:26	16:26	H4184	H3237	egyeb
+Bír	16:27	16:27	H4390	H4392	cimkezes
+Ruth	2:1	2:1	H4129	H3045	egyeb
+Ruth	3:14	3:14	H2962	H2958	egyeb
+1Sám	4:13	4:13	H3027	H3197	egyeb
+1Sám	5:6	5:6	H2914	H6076	egyeb
+1Sám	5:9	5:9	H2914	H6076	egyeb
+1Sám	5:12	5:12	H2914	H6076	egyeb
+1Sám	6:4	6:4	H2914	H6076	egyeb
+1Sám	6:5	6:5	H2914	H6076	egyeb
+1Sám	10:1	10:1	H226 H341 H859 H2088 H3027 H3467 H3478 H5439 H5971 H6113		egyeb
+1Sám	10:5	10:5	H1390	H1389	cimkezes
+1Sám	10:10	10:10	H1390	H1389	cimkezes
+1Sám	13:1	13:1	H705 H7970		egyeb
+1Sám	13:15	13:15	H310 H935 H1870 H1980 H3499 H4421 H7122		egyeb
+1Sám	14:27	14:27	H215	H7200	egyeb
+1Sám	14:32	14:32	H5860	H6213	egyeb
+1Sám	14:41	14:41	H176 H224 H518 H853 H1121 H2088 H3117 H3426 H3808 H4100 H5650 H5771 H6030		egyeb
+1Sám	17:7	17:7	H6086	H2671	egyeb
+1Sám	17:23	17:23	H4634	H4630	egyeb
+1Sám	18:9	18:9	H5770	H5771	egyeb
+1Sám	20:24	20:24	H413	H5921	egyeb
+1Sám	20:31	20:31	H2425	H2416	egyeb
+1Sám	20:38	20:38	H2671	H2678	egyeb
+1Sám	22:7	22:7	H1145	H3227	egyeb
+1Sám	24:4	24:5	H582	H376	egyeb
+1Sám	24:7	24:8	H582	H376	egyeb
+1Sám	24:22	24:23	H582	H376	egyeb
+1Sám	25:3	25:3	H3614	H3820	egyeb
+2Sám	2:31	2:31	H582		egyeb
+2Sám	3:15	3:15	H3919	H3889	egyeb
+2Sám	6:2	6:2	H1173 H3063	H1184	egyeb
+2Sám	7:19	7:19	H8452	H8451	cimkezes
+2Sám	8:3	8:3	H6578		egyeb
+2Sám	10:16	10:16	H1928	H1909	cimkezes
+2Sám	10:19	10:19	H1928	H1909	cimkezes
+2Sám	12:16	12:16	H8242		egyeb
+2Sám	13:34	13:34	H559 H582 H935 H2773 H3381 H4174 H4428 H5046		egyeb
+2Sám	13:37	13:37	H5989	H5991	egyeb
+2Sám	15:8	15:8	H2275		egyeb
+2Sám	15:28	15:28	H6160	H5679	egyeb
+2Sám	16:10	16:10	H3541		egyeb
+2Sám	16:12	16:12	H5869	H5771	egyeb
+2Sám	16:23	16:23	H376		egyeb
+2Sám	17:12	17:12	H5117	H5168	egyeb
+2Sám	18:20	18:20	H3651		egyeb
+2Sám	19:6	19:6	H3863	H3808	egyeb
+2Sám	19:28	19:28	H582	H376	egyeb
+2Sám	19:41	19:41	H582		egyeb
+2Sám	19:42	19:42	H5379		egyeb
+2Sám	20:6	20:6	H7489	H3415	egyeb
+2Sám	20:14	20:14	H62 H6950	H59 H1038 H7034	egyeb
+2Sám	20:15	20:15	H62	H59 H1038	egyeb
+2Sám	20:23	20:23	H3774	H3746	egyeb
+2Sám	20:25	20:25	H7724	H7864	egyeb
+2Sám	21:9	21:9	H7651	H7659	egyeb
+2Sám	21:12	21:12	H8511	H8518	egyeb
+2Sám	21:20	21:20	H4067	H4060	egyeb
+2Sám	21:21	21:21	H8093	H8096	egyeb
+2Sám	22:51	22:51	H4024	H1431	egyeb
+2Sám	23:11	23:11	H2416	H3896	egyeb
+2Sám	23:13	23:13	H7969		egyeb
+2Sám	23:20	23:20	H2428	H2416	egyeb
+2Sám	24:17	24:17	H7462		egyeb
+1Kir	6:21	6:21	H7569	H7572	egyeb
+1Kir	7:14	7:14	H2790	H2794	egyeb
+1Kir	7:23	7:23	H6957	H6961	egyeb
+1Kir	7:45	7:45	H428	H168	egyeb
+1Kir	9:18	9:18	H8412	H8559	egyeb
+1Kir	12:33	12:33	H3820	H905	egyeb
+1Kir	13:31	13:31	H4194	H4191	cimkezes
+1Kir	15:20	15:20	H62	H59 H1038	egyeb
+1Kir	20:40	20:40	H2008	H2007	cimkezes
+1Kir	21:2	21:2	H2895		egyeb
+1Kir	22:48	22:49	H6213	H6237	egyeb
+2Kir	5:12	5:12	H549	H71	egyeb
+2Kir	5:25	5:25	H370		egyeb
+2Kir	6:25	6:25	H1686	H2716	egyeb
+2Kir	9:25	9:25	H7991	H7969	egyeb
+2Kir	10:27	10:27	H4163	H4280	egyeb
+2Kir	12:15	12:15	H582	H376	egyeb
+2Kir	15:29	15:29	H62	H59 H1038	egyeb
+2Kir	16:6	16:6	H130	H761	egyeb
+2Kir	17:21	17:21	H5080	H5077	egyeb
+2Kir	17:31	17:31	H430	H433	egyeb
+2Kir	18:27	18:27	H4325 H6675 H7272	H2716 H7890	egyeb
+2Kir	19:23	19:23	H7230		egyeb
+2Kir	19:31	19:31	H6635		egyeb
+2Kir	20:4	20:4	H2691	H5892	egyeb
+2Kir	24:15	24:15	H352	H193	egyeb
+2Kir	25:3	25:3	H7243		egyeb
+1Krón	2:3	2:3	H7770	H7774	egyeb
+1Krón	3:1	3:1	H1840	H1841	cimkezes
+1Krón	3:24	3:24	H1938	H1939	egyeb
+1Krón	4:7	4:7	H6714	H3328	egyeb
+1Krón	4:12	4:12	H5176	H5904	egyeb
+1Krón	4:13	4:13	H4587		egyeb
+1Krón	4:19	4:19	H1940	H1941	cimkezes
+1Krón	6:27	6:27	H8050		egyeb
+1Krón	6:28	6:28	H3100		egyeb
+1Krón	6:59	6:59	H3194		egyeb
+1Krón	6:60	6:60	H1391		egyeb
+1Krón	6:77	6:77	H3362 H7177		egyeb
+1Krón	8:29	8:29	H3273		egyeb
+1Krón	8:30	8:30	H5369		egyeb
+1Krón	9:4	9:4	H1137 H4480	H1144	egyeb
+1Krón	9:7	9:7	H5570	H5574	egyeb
+1Krón	9:33	9:33	H6362	H6359	egyeb
+1Krón	9:41	9:41	H271		egyeb
+1Krón	11:11	11:11	H7991	H7970	egyeb
+1Krón	12:8	12:8	H582	H376	egyeb
+1Krón	12:15	12:15	H1415	H1428	egyeb
+1Krón	12:18	12:18	H7991	H7970	egyeb
+1Krón	12:30	12:30	H582	H376	egyeb
+1Krón	12:38	12:38	H582	H376	egyeb
+1Krón	14:1	14:1	H2361	H2438	egyeb
+1Krón	15:13	15:13	H7223		egyeb
+1Krón	18:3	18:3	H1928	H1909	cimkezes
+1Krón	18:5	18:5	H1928	H1909	cimkezes
+1Krón	18:7	18:7	H1928	H1909	cimkezes
+1Krón	18:8	18:8	H1928	H1909	cimkezes
+1Krón	18:9	18:9	H1928	H1909	cimkezes
+1Krón	18:10	18:10	H1928	H1909	cimkezes
+1Krón	19:16	19:16	H1928	H1909	cimkezes
+1Krón	19:19	19:19	H1928	H1909	cimkezes
+1Krón	20:4	20:4	H3651		egyeb
+1Krón	21:17	21:17	H7462		egyeb
+1Krón	23:9	23:9	H8019	H8013	egyeb
+1Krón	23:10	23:10	H2125	H2126	egyeb
+1Krón	24:24	24:24	H8069	H8053	egyeb
+1Krón	25:1	25:1	H5012	H5030	egyeb
+1Krón	26:25	26:25	H8019	H8013	egyeb
+1Krón	27:12	27:12	H1121	H1145	egyeb
+2Krón	2:17	2:17	H582	H376	egyeb
+2Krón	3:17	3:17	H3233	H3227	egyeb
+2Krón	8:10	8:10	H5324	H5333	egyeb
+2Krón	9:10	9:10	H2361	H2438	egyeb
+2Krón	15:8	15:8	H1121 H5838		egyeb
+2Krón	18:8	18:8	H4321	H4319	egyeb
+2Krón	20:1	20:1	H3651		egyeb
+2Krón	20:25	20:25	H2530	H2532	cimkezes
+2Krón	20:35	20:35	H3651		egyeb
+2Krón	24:4	24:4	H3651		egyeb
+2Krón	24:27	24:27	H7235	H7230	egyeb
+2Krón	28:15	28:15	H5899	H5892 H8558	egyeb
+2Krón	29:8	29:8	H2189	H2113	egyeb
+2Krón	30:3	30:3	H1767		egyeb
+2Krón	31:17	31:17	H3188	H3187	cimkezes
+2Krón	31:18	31:18	H3188	H3187	cimkezes
+2Krón	33:16	33:16	H1129	H3559	egyeb
+2Krón	34:6	34:6	H2719	H1004 H2022	egyeb
+2Krón	34:9	34:9	H7725	H3427	egyeb
+2Krón	34:22	34:22	H8616	H8445	egyeb
+2Krón	35:13	35:13	H6745	H6747	egyeb
+Ezsd	2:1	2:1	H5019	H5020	cimkezes
+Ezsd	2:46	2:46	H8014	H8073	egyeb
+Ezsd	3:5	3:5	H3651		egyeb
+Ezsd	4:4	4:4	H926	H1089	egyeb
+Ezsd	4:9	4:9	H1723	H1768	arami
+Ezsd	5:15	5:15	H412	H429	arami
+Ezsd	6:9	6:9	H1247	H1123	arami
+Ezsd	6:10	6:10	H1247	H1123	arami
+Ezsd	6:16	6:16	H1247	H1123	arami
+Ezsd	6:17	6:17	H2402	H2409	arami
+Ezsd	7:23	7:23	H1247	H1123	arami
+Ezsd	8:5	8:5	H2240		egyeb
+Ezsd	8:10	8:10	H1137		egyeb
+Ezsd	8:17	8:17	H5411 H6680	H3318 H5414	egyeb
+Ezsd	10:29	10:29	H7418	H3406	egyeb
+Neh	2:13	2:13	H1992	H6555	egyeb
+Neh	3:20	3:20	H2140	H2079	egyeb
+Neh	4:13	4:13	H6706	H6708	egyeb
+Neh	4:23	4:23	H582		egyeb
+Neh	5:7	5:7	H5375	H5378	cimkezes
+Neh	7:68	7:68	H705 H2568 H3967 H5483 H6505 H7651 H7970 H8337		egyeb
+Neh	9:19	9:19	H3117	H3119	egyeb
+Neh	11:35	11:35	H2796	H2798	egyeb
+Neh	12:16	12:16	H5714	H5718	egyeb
+Eszt	3:7	3:7	H5921 H7969		egyeb
+Eszt	8:13	8:13	H6264	H6259	egyeb
+Jób	6:2	6:2	H1942	H1962	egyeb
+Jób	9:30	9:30	H4325	H1119	egyeb
+Jób	13:18	13:18	H4941	H4639	egyeb
+Jób	16:11	16:11	H5760	H5759	cimkezes
+Jób	17:6	17:6	H4914	H4911	cimkezes
+Jób	20:26	20:26	H7489	H3415	egyeb
+Jób	21:13	21:13	H3615	H1086	egyeb
+Jób	30:22	30:22	H8454	H7737	egyeb
+Jób	31:33	31:33	H121	H120	cimkezes
+Jób	33:19	33:19	H7230	H7379	egyeb
+Jób	33:21	33:21	H8192	H8205	egyeb
+Jób	40:8	40:8	H4941	H4639	egyeb
+Zsolt	2:12	2:12	H1121	H1248	egyeb
+Zsolt	9:12	9:13	H6035	H6041	egyeb
+Zsolt	9:18	9:19	H6041	H6035	egyeb
+Zsolt	10:10	10:10	H2428 H3512	H2489	egyeb
+Zsolt	10:12	10:12	H6035	H6041	egyeb
+Zsolt	17:14	17:14	H6845	H6840	egyeb
+Zsolt	18:25	18:26	H1399	H1397	cimkezes
+Zsolt	21:2	21:3	H8378	H3966	egyeb
+Zsolt	25:21	25:21	H3068		egyeb
+Zsolt	34:8	34:9	H2895	H2896	cimkezes
+Zsolt	49:5	49:6	H6119	H6120	egyeb
+Zsolt	49:14	49:15	H6697	H6736	egyeb
+Zsolt	52:9	52:11	H2895	H2896	cimkezes
+Zsolt	54:6	54:8	H2895	H2896	cimkezes
+Zsolt	55:15	55:16	H4194 H5377	H3451	egyeb
+Zsolt	55:23	55:24	H582	H376	egyeb
+Zsolt	56:7	56:8	H369		egyeb
+Zsolt	59:2	59:3	H582	H376	egyeb
+Zsolt	65:9	65:10	H4390	H4392	cimkezes
+Zsolt	71:12	71:12	H2363	H2439	egyeb
+Zsolt	74:11	74:11	H2436	H2706	egyeb
+Zsolt	74:20	74:20	H4999	H5116	cimkezes
+Zsolt	76:5	76:6	H582	H376	egyeb
+Zsolt	77:10	77:11	H8141	H8138	cimkezes
+Zsolt	79:8	79:8	H4116	H4118	cimkezes
+Zsolt	87:7	87:7	H2490	H2342	egyeb
+Zsolt	102:2	102:3	H4116	H4118	cimkezes
+Zsolt	106:1	106:1	H2895 H3050	H2896	egyeb
+Zsolt	107:1	107:1	H2895	H2896	cimkezes
+Zsolt	118:1	118:1	H2895	H2896	cimkezes
+Zsolt	118:29	118:29	H2895	H2896	cimkezes
+Zsolt	119:84	119:84	H4941	H4639	egyeb
+Zsolt	123:4	123:4	H1343 H3238	H1349	egyeb
+Zsolt	128:2	128:2	H2895	H2896	cimkezes
+Zsolt	143:7	143:7	H4116	H4118	cimkezes
+Zsolt	145:13	145:13	H539 H1697 H2623 H3068 H4639		egyeb
+Zsolt	149:6	149:6	H6374	H6366	egyeb
+Péld	1:27	1:27	H7722	H7584	egyeb
+Péld	3:34	3:34	H6035	H6041	egyeb
+Péld	6:14	6:14	H4079	H4090	egyeb
+Péld	13:23	13:23	H4941	H4639	egyeb
+Péld	14:21	14:21	H6035	H6041	egyeb
+Péld	15:14	15:14	H6310	H6440	egyeb
+Péld	16:8	16:8	H4941	H4639	egyeb
+Péld	16:19	16:19	H6035	H6041	egyeb
+Péld	17:27	17:27	H3368	H7119	egyeb
+Péld	18:19	18:19	H4079	H4066	egyeb
+Péld	19:19	19:19	H1419	H1632	egyeb
+Péld	20:21	20:21	H926	H973	egyeb
+Péld	20:30	20:30	H8562	H4838	egyeb
+Péld	21:9	21:9	H2269	H2267	cimkezes
+Péld	21:19	21:19	H4079	H4066	egyeb
+Péld	21:29	21:29	H995	H3559	egyeb
+Péld	22:20	22:20	H7991	H8032	egyeb
+Péld	23:3	23:3	H183	H8376	egyeb
+Péld	23:6	23:6	H183	H8376	egyeb
+Péld	23:26	23:26	H5341	H7521	egyeb
+Péld	23:29	23:29	H4079	H4066	egyeb
+Péld	23:31	23:31	H3563	H3599	egyeb
+Péld	25:24	25:24	H2269 H4079	H2267 H4066	egyeb
+Péld	26:21	26:21	H4079	H4066	egyeb
+Péld	27:15	27:15	H4079	H4066	egyeb
+Péld	27:20	27:20	H10	H11	cimkezes
+Péld	31:2	31:2	H1121	H1248	egyeb
+Péld	31:4	31:4	H335	H176	egyeb
+Préd	5:11	5:11	H7212	H7207	egyeb
+Préd	5:17	5:17	H3707	H3708	cimkezes
+Préd	6:10	6:10	H8623	H8630	egyeb
+Préd	9:2	9:2	H7451		egyeb
+Préd	9:4	9:4	H2266	H977	egyeb
+Préd	10:3	10:3	H2637	H2638	cimkezes
+Préd	12:6	12:8	H7576	H7368	egyeb
+Én	8:6	8:6	H3050		egyeb
+Ézs	3:10	3:11	H2895	H2896	cimkezes
+Ézs	3:11	3:12	H7489	H7451	egyeb
+Ézs	9:6	9:5	H5703		egyeb
+Ézs	10:13	10:13	H6259	H6264	egyeb
+Ézs	10:32	10:32	H1323	H1004	egyeb
+Ézs	13:16	13:16	H7901	H7693	egyeb
+Ézs	18:2	18:2	H6978	H6957	egyeb
+Ézs	18:7	18:7	H6978	H6957	egyeb
+Ézs	19:20	19:20	H7378	H7227	egyeb
+Ézs	25:10	25:10	H1119	H4325	egyeb
+Ézs	28:15	28:15	H7752	H7885	egyeb
+Ézs	30:5	30:5	H954	H887	egyeb
+Ézs	32:4	32:4	H1847	H3045	egyeb
+Ézs	32:7	32:7	H6041	H6035	egyeb
+Ézs	34:5	34:5	H4941	H4639	egyeb
+Ézs	36:12	36:12	H4325 H6675 H7272	H2716 H7890	egyeb
+Ézs	42:24	42:24	H4933	H4882	egyeb
+Ézs	49:6	49:6	H5341	H5336	egyeb
+Ézs	49:21	49:21	H5493	H5494	cimkezes
+Ézs	50:8	50:8	H4941	H4639	egyeb
+Ézs	52:2	52:2	H3427		egyeb
+Ézs	52:5	52:5	H4100	H4310	egyeb
+Ézs	54:16	54:16	H2009	H2005	egyeb
+Ézs	65:4	65:4	H4839	H6564	egyeb
+Ézs	65:7	65:7	H413		egyeb
+Jer	2:15	2:15	H3341	H5327	egyeb
+Jer	2:20	2:20	H5674	H5647	egyeb
+Jer	2:25	2:25	H1627	H1637	egyeb
+Jer	2:36	2:36	H235	H2151	egyeb
+Jer	3:2	3:2	H7901	H7693	egyeb
+Jer	4:18	4:18	H4843	H4751	egyeb
+Jer	4:19	4:19	H3176	H2342	egyeb
+Jer	6:7	6:7	H875	H953	egyeb
+Jer	6:29	6:29	H784 H8535	H800	egyeb
+Jer	9:12	9:12	H3341	H5327	egyeb
+Jer	12:1	12:1	H4941	H4639	egyeb
+Jer	14:14	14:14	H457	H434	egyeb
+Jer	15:4	15:4	H2189	H2113	egyeb
+Jer	15:11	15:11	H8281	H8323	egyeb
+Jer	16:16	16:16	H1771	H1728	egyeb
+Jer	17:8	17:8	H7200	H3372	egyeb
+Jer	17:13	17:13	H5494	H3249	egyeb
+Jer	18:3	18:3	H1931		egyeb
+Jer	18:16	18:16	H8292	H8322	egyeb
+Jer	18:22	18:22	H7745	H7882	egyeb
+Jer	22:13	22:13	H4941	H4639	egyeb
+Jer	22:15	22:15	H2895	H2896	cimkezes
+Jer	22:16	22:16	H2895	H2896	cimkezes
+Jer	23:39	23:39	H5375	H5377	cimkezes
+Jer	24:9	24:9	H2189	H2113	egyeb
+Jer	26:18	26:18	H4318	H4320	egyeb
+Jer	26:19	26:19	H3372	H3373	cimkezes
+Jer	29:18	29:18	H2189	H2113	egyeb
+Jer	29:23	29:23	H3045	H1931	egyeb
+Jer	30:23	30:23	H1641	H1481	egyeb
+Jer	31:38	31:38	H935		egyeb
+Jer	31:39	31:39	H6957	H6961	egyeb
+Jer	31:40	31:40	H7709	H8309	egyeb
+Jer	34:17	34:17	H2189	H2113	egyeb
+Jer	37:19	37:19	H346	H335	egyeb
+Jer	40:4	40:4	H2895		egyeb
+Jer	42:6	42:6	H587	H580	egyeb
+Jer	46:19	46:19	H3341	H5327	egyeb
+Jer	47:6	47:6	H413	H408	cimkezes
+Jer	48:44	48:44	H5127	H5211	egyeb
+Jer	49:28	49:28	H5019	H5020	cimkezes
+JSir	1:4	1:4	H4843	H4751	egyeb
+JSir	1:11	1:11	H4261	H4262	cimkezes
+JSir	2:2	2:2	H4999	H5116	cimkezes
+JSir	4:8	4:8	H3002	H3001	cimkezes
+Ez	4:6	4:6	H3233	H3227	egyeb
+Ez	8:6	8:6	H1992		egyeb
+Ez	9:11	9:11	H3605		egyeb
+Ez	14:14	14:14	H1841	H1840	cimkezes
+Ez	14:20	14:20	H1841	H1840	cimkezes
+Ez	21:31	21:31	H582	H376	egyeb
+Ez	23:42	23:42	H5436	H5433	egyeb
+Ez	23:43	23:43	H6258	H6256	egyeb
+Ez	24:5	24:5	H1752	H1754	cimkezes
+Ez	25:7	25:7	H957	H897	egyeb
+Ez	27:6	27:6	H839	H843	egyeb
+Ez	28:3	28:3	H1841	H1840	cimkezes
+Ez	29:7	29:7	H5976	H5975	cimkezes
+Ez	29:19	29:19	H2428	H2426	egyeb
+Ez	32:2	32:2	H8565	H8577	cimkezes
+Ez	35:9	35:9	H7725	H3427	egyeb
+Ez	36:14	36:14	H7921	H3782	egyeb
+Ez	40:34	40:34	H352		egyeb
+Ez	40:36	40:36	H352	H413	egyeb
+Ez	42:16	42:16	H3967	H520	egyeb
+Dán	1:6	1:6	H1840	H1841	cimkezes
+Dán	1:7	1:7	H1840	H1841	cimkezes
+Dán	1:8	1:8	H1840	H1841	cimkezes
+Dán	1:9	1:9	H1840	H1841	cimkezes
+Dán	1:10	1:10	H1840	H1841	cimkezes
+Dán	1:11	1:11	H1840	H1841	cimkezes
+Dán	1:17	1:17	H1840	H1841	cimkezes
+Dán	1:19	1:19	H1840	H1841	cimkezes
+Dán	1:21	1:21	H1840	H1841	cimkezes
+Dán	2:25	2:25	H1247	H1123	arami
+Dán	2:38	2:38	H1247	H1123	arami
+Dán	3:7	3:7	H5481		arami
+Dán	3:22	3:22	H5267	H3606 H5559	arami
+Dán	3:29	3:29	H7960	H7955	arami
+Dán	5:13	5:13	H1247	H1123	arami
+Dán	5:21	5:21	H1247	H1123	arami
+Dán	5:31	5:31	H4077	H4076	arami
+Dán	6:13	6:13	H1247	H1123	arami
+Dán	6:24	6:24	H1247	H1123	arami
+Dán	8:1	8:1	H1840	H1841	cimkezes
+Dán	8:15	8:15	H1840	H1841	cimkezes
+Dán	8:27	8:27	H1840	H1841	cimkezes
+Dán	9:2	9:2	H1840	H1841	cimkezes
+Dán	9:22	9:22	H1840	H1841	cimkezes
+Dán	9:23	9:23	H2532	H2530	cimkezes
+Dán	9:24	9:24	H8552		egyeb
+Dán	10:1	10:1	H1840	H1841	cimkezes
+Dán	10:2	10:2	H1840	H1841	cimkezes
+Dán	10:7	10:7	H1840	H1841	cimkezes
+Dán	10:11	10:11	H1840	H1841	cimkezes
+Dán	10:12	10:12	H1840	H1841	cimkezes
+Dán	11:18	11:18	H7760		egyeb
+Dán	11:38	11:38	H2530	H2532	cimkezes
+Dán	11:43	11:43	H2530	H2532	cimkezes
+Dán	12:4	12:4	H1840	H1841	cimkezes
+Dán	12:5	12:5	H1840	H1841	cimkezes
+Dán	12:9	12:9	H1840	H1841	cimkezes
+Hós	2:7	2:7	H2895	H2896	cimkezes
+Hós	6:9	6:9	H2269	H2267	cimkezes
+Hós	8:12	8:12	H7230	H7239	egyeb
+Hós	9:16	9:16	H1077	H1097	egyeb
+Hós	10:8	10:8	H206	H205	cimkezes
+Hós	10:10	10:10	H5771	H5869	egyeb
+Jóel	3:9	3:9	H582	H376	egyeb
+Ámós	8:4	8:4	H6041	H6035	egyeb
+Ámós	8:8	8:8	H8257	H8248	egyeb
+Náh	2:3	2:3	H582	H376	egyeb
+Hab	3:19	3:19	H5058 H5329		egyeb
+Sof	3:8	3:8	H5707	H5706	cimkezes
+Zak	1:16	1:16	H6957	H6961	egyeb
+Zak	11:2	11:2	H1210	H1208	egyeb
+Zak	11:12	11:12	H2895	H2896	cimkezes
+Zak	14:2	14:2	H7901	H7693	egyeb
+Mal	1:3	1:3	H8577	H8568	egyeb
+Mal	1:13	1:13	H8513		egyeb
