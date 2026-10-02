@@ -60,6 +60,21 @@
 | CL5 (⛔ pontok) | OK | a brief blokkjában nincs ⛔ |
 | CLAUDE.md: TSV, proveniencia | OK | 7 érintett fájlban 0 `csv` használat; a `zaras2.py` írás előtt ellenőriz; a H4264 „nem dönthető” megállapítás lekérdezés nélkül született (l. 5. tétel) |
 
-## Kezelés (a fő session megjegyzése)
+## Kezelés (a fő session megjegyzése; DT-F38g, 2026.10.02)
 
-A jelentés az 1–6. tételben a forráshoz kötött, tartalmi eltéréseket jelez; ezek javítása vagy elvetése tartalmi döntés, ezért itt még nincs kezelve. Állapot: nyitott, a felhasználó döntésére vár.
+A felhasználó DT-F38g döntése szerint, egy körben, a Sonnet végrehajtóval (`claude-sonnet-5-5`). Szkript:
+`naplok/BDB_FORDITAS_zaras3.py`; a javítási lista +4 sorral bővült (`igen (kézi, DT-F38g N)`). A részletek:
+`naplok/BDB_FORDITAS_naplo.md`, „Zárómenet, 3. kör”.
+
+| # | Eltérés | Kezelés | Állapot |
+|---|---|---|---|
+| 1 | D5, H3772 | `rendszerint így fordítják: RV made for thee a covenant with them,` — az állítmány vissza, az RV-szó angolul | javítva: 082c77a |
+| 2 | D3, H5674 | az 1Kir 22:24 (H7307 9a) nagybetűs: `a Szellemről abszolút használatban és מֵאֵת 1Kir 22:24`; a Szellem-tábla indoklása javítva. Új szó („az Úr”) nem került a szövegbe | javítva: 082c77a (szöveg), a tábla: a naplóban |
+| 3 | D3, Szellem-tábla | A szabály pontosítva (kire vonatkozik a szó a kifejezésben). H7307 4c nagybetűs marad (a BDB maga „God's spirit”), a 3d-n csak a „Di Bu: isteni Szellem” nagybetűs, Elihu szelleme kisbetűs. A teljes tábla újranézve szkripttel (14 nagybetűs hely); a szöveg a H5674-en kívül nem változott, a H5650 és a H7307 9 fejléce bekerült a táblába. **Tartalmi kétség, nem döntöttem:** a H7451 (#28; a BDB maga „divine spirit”, a DT-F38f 3 szerint viszont rossz szellem, kisbetűs) és a H4390 (egy frázis, emberi/isteni vegyesen) | javítva: 082c77a (ellenőrző szkript), a tábla és a DT-F38f 3 kiegészítése: a 3. kör commitja; a H7451 és a H4390 nyitott |
+| 4 | D5, H4397 | `(az RV angel szava túl szűk)` — az RV saját szava angolul, a BDB megjegyzése („too specific”) fordítva | javítva: 082c77a |
+| 5 | D4, H4264 | `1Móz 33:8, összesen 16-szor`; lekerült a listáról. A 2. kapu forrásoldali OCR-javítást kapott (`forditas_kapuk.FORRAS_VERS_OCR`), különben a `33:816` token SÉRTÉS lett volna — **kapuszabály-bővítés, jóváhagyásra** | javítva: 082c77a |
+| 6 | D1, H2403 | a `megjegyzes` „kézi javítás” jelölést kap (nem „gépi szabályok a #28 soron”) | javítva: 082c77a |
+
+Ellenőrzés a kör végén: `teszt_bdb_zaras.py` 17, `teszt_forditas_kapuk.py` 61, `teszt_normalizal.py` 63,
+`teszt_emeles.py` 7 — OK; `ellenoriz.py` SÉRTÉS 0; a 269 BDB-soron (243 F38 + 26 #28) a gátoló kapuk RENDBEN.
+A független ellenőr a 3. kört nem látta; a kör a saját munkát nem minősíti ellenőrzöttnek.

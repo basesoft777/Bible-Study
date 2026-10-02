@@ -2355,8 +2355,8 @@ indoklással. A BDB-besorolás a H7307 forrásszövegéből (a 9a–9f pontok hi
 
 | Szócikk | Pont | Régi | Új | Indok |
 |---|---|---|---|---|
-| H7307 | 3d | Di Bu: isteni szellem, vö. 32:8 | Di Bu: isteni Szellem, vö. 32:8 | Jób 32:18 — Di és Bu szerint az isteni szellem (vö. Jób 32:8, H7307 9d) |
-| H7307 | 4c | c. ezért Isten szelleme: 1Móz 6:3 | c. ezért Isten Szelleme: 1Móz 6:3 | „Isten szelleme” |
+| H7307 | 3d | Di Bu: isteni szellem, vö. 32:8 | Di Bu: isteni Szellem, vö. 32:8 | Jób 32:18 — **csak a „Di Bu” értelmezés** nagybetűs (a BDB maga „divine spirit”); Elihu saját szelleme kisbetűs (DT-F38g 3, l. 3. kör) |
+| H7307 | 4c | c. ezért Isten szelleme: 1Móz 6:3 | c. ezért Isten Szelleme: 1Móz 6:3 | a BDB maga „God's spirit”-nek nevezi (nem a 9. pontban áll) — nagybetűs marad (DT-F38g 3) |
 | H7307 | 6 (hivatkozás a 9b pontra) | de valószínűleg prófétai szellem, 9b) | de valószínűleg prófétai Szellem, 9b) | Ézs 59:21 — a 9b pont szerinti Szellem |
 | H7307 | 9a | akit az eksztatikus állapotban a szellem megragadott | … a Szellem megragadott | Hós 9:7 — 9a |
 | H7307 | 9b | b. a szellem mint a prófétákat … | b. a Szellem mint a prófétákat … | a 9. pont b. alpontja |
@@ -2372,7 +2372,7 @@ indoklással. A BDB-besorolás a H7307 forrásszövegéből (a 9a–9f pontok hi
 | Szócikk | Hely | Szöveg | Indok |
 |---|---|---|---|
 | H4390 | 2Móz 28:3; 31:3; 35:31 | átvitt értelemben szellemmel betölteni | **Kétséges, marad:** egyetlen BDB-frázis három helyre; a 31:3 és a 35:31 a H7307 9d pontjába (Isten Szelleme, készség), a 28:3 a 6. pontba (חָכְמָה רוּחַ, az értelem szelleme, emberi) tartozik; egy kifejezésen belül nem választható szét |
-| H5674 | 4Móz 5:14; 5:30; 1Kir 22:24 | a szellemről | **Kétséges, marad:** a 4Móz 5:14, 30 a féltékenység szelleme (nem a H7307 9. pontja); az 1Kir 22:24 a hazug szellem története (rossz/hazug szellem, nem Isten Szelleme); egy frázisban állnak |
+| H5674 | 4Móz 5:14; 5:30; 1Kir 22:24 | a szellemről | ~~Kétséges, marad~~ **DT-F38g 2 szerint javítva:** a 4Móz 5:14, 30 a féltékenység szelleme (kisbetűs marad); az 1Kir 22:24-et a BDB a H7307 9a pontjába sorolja („= י ׳רוּחַ 1Kin 22:24 2Chr 18:23”), ezért nagybetűs: „a Szellemről … 1Kir 22:24”. A korábbi indoklás („rossz/hazug szellem, nem Isten Szelleme”) a forrásnak ellentmondott |
 | H7451 (#28) | 1Sám 16:14-15, 16, 23; 18:10; 19:9 | az isteni szellemről, amely az őrjöngés … | Isten által küldött rossz/gonosz szellem → kisbetűs (DT-F38f 3 második pontja; a BDB ezeket a 9a alá is sorolja, de a szabály kifejezetten kisbetűt ír elő); a sor nem változott |
 
 A H7307 többi kisbetűs helye (3e „nyugtalan volt (a) szelleme”, 1Móz 41:8; a „gonosz szellem” 1Sám 16:14, H0854,
@@ -2394,7 +2394,7 @@ kapu a magyar oldalon csak `.;:—)` utáni számot ismer fel jelölőnek (H6240
 
 | Szócikk | Hely | Miért marad |
 |---|---|---|
-| H4264 | `1Móz 33:816t.` | a vers és a darabszám összeforrt (33:8 + 16 t.? 33:81 + 6 t.?); verszám-táblázat híján gépileg nem dönthető |
+| ~~H4264~~ | `1Móz 33:816t.` | ~~verszám-táblázat híján gépileg nem dönthető~~ **DT-F38g 5: eldöntve** (`lekerdez.py karoli "1Móz 33:8"` van, 33:81 nincs): `1Móz 33:8, összesen 16-szor`; lekerült a listáról |
 | H4687 | `Zsolt 119:20 t.` | szám nélküli `t.` vagy a 119. zsoltár „20 t.”-je (a kettőspont OCR-hiba?); nem dönthető el |
 | H7043 (#28) | `Ges §67 t.` | nem gyakoriság (nyelvtani §), szándékosan nem érintett |
 
@@ -2407,8 +2407,8 @@ javítások (a `BDB_FORDITAS_zaras2.py` `RV_KEZI` listája, tesztelve):
 |---|---|---|
 | H4150 | RV rendszerint set feast vagy appointed season | RV usually set feast or appointed season |
 | H2403 (#28) | RV fordítása sin-offering; | RV renders sin-offering; |
-| H3772 | RV szerint fordítják: made for thee a covenant with them, | RV made for thee a covenant with them, |
-| H4397 | (az RV angel szava túl szűk) | (az angyal RV too specific) |
+| H3772 | RV szerint fordítják: made for thee a covenant with them, | RV made for thee a covenant with them, *(DT-F38g 1: csonka mondat, helyesbítve: „rendszerint így fordítják: RV made for thee …”)* |
+| H4397 | (az RV angel szava túl szűk) | (az angyal RV too specific) *(DT-F38g 4: visszaállítva „(az RV angel szava túl szűk)”-ra)* |
 | H5674 | RVm, akik felemésztik, felfalják őket | RVm, those that shall consume, devour them |
 | H8033 | RVm onnan [a mennyből], (onnan) a Pásztor (׳י), Izráel Köve (Sziklája), | RVm from there [from heaven], (from) the Shepherd (׳י), the Stone (Rock) of Israel, |
 
@@ -2427,3 +2427,86 @@ A hangrendhez igazodó `-szor/-szer/-ször` (4-szer, 5-ször, 33-szor) a helyes;
 
 Tesztek: `teszt_bdb_zaras.py` 12, `teszt_forditas_kapuk.py` 61, `teszt_normalizal.py` 63, `teszt_emeles.py` 7,
 `teszt_ellenoriz_13.py` 9 — mind OK. `ellenoriz.py`: SÉRTÉS 0. A 243 F38-as és a 26 #28 soron a gátoló kapuk RENDBEN.
+
+## Zárómenet, 3. kör — DT-F38g (F38.278–, 2026.10.02)
+
+**Végrehajtó:** Sonnet (`claude-sonnet-5-5`). A kör az ellenőr hat eltérését (`naplok/ELLENOR_F38_zaras_2.md`)
+kezeli a felhasználó DT-F38g döntése szerint. Szkript: `naplok/BDB_FORDITAS_zaras3.py` (javítás + a Szellem-tábla
+nagy/kisbetűs ellenőrzése; a javítási lista +4 sora). A `BDB_FORDITAS_zaras.py --ir` nem futott újra.
+
+### A Szellem-szabály pontosítása (DT-F38g 3)
+
+A kis- vagy nagybetűt az dönti el, **kire vonatkozik a szó az adott kifejezésben**, nem a BDB-pont száma.
+Nagybetűs, ha Isten Szellemét jelöli: a H7307 9. pontja, vagy ahol a BDB szövege maga mondja „God's spirit” /
+„divine spirit”, akkor is, ha egy idézett szerző értelmezéseként áll. Minden más kisbetűs (emberi szellem, szél,
+Isten által küldött rossz szellem).
+
+### Az újranézés módszere
+
+Mind a 269 BDB-sor fordításában minden `szellem*`/`Szellem*` előfordulás kilistázva (`szellem`, `Szellem` + ragozott
+alakok, 54 szóalak), és a források `spirit`, `God's spirit`, `divine spirit/Spirit`, `spirit of God/Yahweh` helyei
+mellé téve. A nagybetűs helyek számát és szövegkörnyezetét a `zaras3.py` `SZELLEM_KOVETELT` listája rögzíti és
+ellenőrzi (14 nagybetűs hely, minden más kisbetűs; a `teszt_bdb_zaras.py` `DTF38g` futtatja). Az 5. kapu
+(`KIS_NAGYBETUS_IS`) mindkét alakot elfogadja, ezért a kapu a nagy/kisbetűt nem védi; ezt a szkript védi.
+
+### Szellem-tábla, végleges állapot (3. kör) — a nagybetűs helyek
+
+| Szócikk | Hely / pont | Szöveg | Indok (kire vonatkozik) |
+|---|---|---|---|
+| H7307 | 3d (Jób 32:18) | Di Bu: isteni Szellem, vö. 32:8 | **Csak a „Di Bu” értelmezés nagybetűs**: a BDB maga „divine spirit”-nek mondja. Elihu saját szelleme (בִּטְנִי רוּחַ) kisbetűs; a fordításban ez a hely nem tartalmaz külön szót, tehát a szöveg nem változott |
+| H7307 | 4c (1Móz 6:3) | c. ezért Isten Szelleme | **Nagybetűs marad**: a BDB maga „God's spirit”-nek nevezi (a 4. pont alatt, nem a 9.-ben) |
+| H7307 | 6 (hivatkozás a 9b-re) | de valószínűleg prófétai Szellem, 9b) | Ézs 59:21: a 9b pontra (Isten Szelleme) utal |
+| H7307 | 9 (fejléc) | 9 Isten Szelleme (94-szer | a 9. pont fejléce (eredetileg is nagybetűs) |
+| H7307 | 9a | akit az eksztatikus állapotban a Szellem megragadott | Hós 9:7 — 9a |
+| H7307 | 9b | b. a Szellem mint a prófétákat … | a 9. pont b. alpontja |
+| H7307 | 9f | úgy fogják fel az isteni Szellemet, | „divine spirit” (a BDB szava) és 9f |
+| H5307 | (Ez 11:5) | a ׳י Szelleme 11:5 | „spirit of Yahweh” (a BDB szava) |
+| H5414 | (Ézs 42:1) | Szellememet adom rá Ézs 42:1 | Isten első személyű beszéde; a H7307 9c (2) |
+| H3947 | (Ez 3:14) | Ez 3:14 a Szellem felemelt | a H7307 9a pontja |
+| H7760 | (4Móz 11:17) | átvitt értelemben Szellemet (עַל) 4Móz 11:17 | a H7307 9a pontja |
+| H1320 | 5 (Ézs 31:3) | a lovak hús, nem Szellem Ézs 31:3 | a H7307 9e pontja (életerő, szemben a בָשָׂר-rel) |
+| H5650 | (Ézs 42:1) | isteni Szellemmel | a BDB maga „divine Spirit” (az eredeti fordításban is nagybetűs volt; a korábbi táblából kimaradt) |
+| **H5674** | h. (1Kir 22:24; 2Krón 18:23) | a Szellemről abszolút használatban és מֵאֵת 1Kir 22:24 | **DT-F38g 2:** a BDB az 1Kir 22:24-et a H7307 9a pontjába sorolja („= י ׳רוּחַ 1Kin 22:24 2Chr 18:23”), ezért „az Úr Szelleme”; a 4Móz 5:14, 30 (a féltékenység szelleme) kisbetűs marad |
+
+### Kisbetűs marad, indoklással
+
+| Szócikk | Hely | Indok |
+|---|---|---|
+| H7307 | 3. (Elihu, hangulat, prófétai szellem), 5., 6. pont | emberi szellem (életerő, hangulat, értelem, prófétai szellem mint emberi adottság) |
+| H4390 | 2Móz 28:3; 31:3; 35:31 | egy BDB-frázis („fill with spirit”); a BDB maga nem mondja „God's/divine spirit”; a 31:3 és a 35:31 a H7307 9d pontja, a 28:3 a 6. pont (emberi): kifejezésen belül nem választható szét — **tartalmi kétség, a felhasználó döntésére** |
+| H5674 | 4Móz 5:14, 30 | a féltékenység szelleme |
+| H7451 (#28) | 1Sám 16:14-15, 16, 23; 18:10; 19:9 | Isten által küldött rossz szellem (DT-F38f 3); **tartalmi kétség:** a BDB szövege itt maga „of the divine spirit as producing an ecstatic state of frenzy and violence”, vagyis az új szabály „ahol a BDB szövege maga mondja »divine spirit«” betűje szerint nagybetűs lenne („az isteni Szellemről”). A DT-F38f 3. szabálya (rossz szellem kisbetűs) és ez ütközik; nem döntöttem, a sor nem változott |
+| H1961 | 1Sám 16:16, 23; 19:9 | „Saul's evil spirit from God” |
+| H0854, H5493 | 1Sám 16:14 | gonosz szellem |
+| H6213 | 2Kir 21:6 | jósszellem |
+| H8147 | 2Kir 2:9 | Illés szelleme (emberi, prófétai) |
+| H8354 | Jób 6:4 | az emberi szellem |
+| H3615 | — | „a király szelleme sóvárgott” |
+| H0410 | — | szellemek (általános) |
+| a „szellemi” (H2416, H5315, H6440, H7200, H8085, H7725, H5973, H3045, H0854, H5869, H3205, H4325, H3559, H3615, H0241, H2617) | — | melléknév, nem Isten Szelleme |
+
+### A hat tétel kezelése
+
+| # | Szócikk | Javítás |
+|---|---|---|
+| 1 | H3772 | `rendszerint így fordítják: RV made for thee a covenant with them,` (az állítmány vissza, az RV-szó angolul) |
+| 2 | H5674 | `a Szellemről abszolút használatban és מֵאֵת 1Kir 22:24` (nagybetű; lásd fent) |
+| 3 | Szellem-tábla | a szabály pontosítva; újranézve: a szöveg a H5674-en kívül nem változott (a 3d és a 4c nagybetűs maradt, a tábla indoklása javítva); a H5650 és a H7307 9 fejléce bekerült a táblába; **a H7451 és a H4390 tartalmi kétség, listán** |
+| 4 | H4397 | `(az RV angel szava túl szűk)` — az RV saját szava angolul, a BDB megjegyzése fordítva |
+| 5 | H4264 | `1Móz 33:8, összesen 16-szor`; a listáról lekerült (a 2. kapu forrásoldali OCR-javítása: `forditas_kapuk.FORRAS_VERS_OCR`) |
+| 6 | H2403 | a `megjegyzes` „kézi javítás” jelölést kap (nem „gépi szabályok a #28 soron”) |
+
+**Megjegyzés a H5674 szövegéhez:** a forrás „of spirit Num 5:14 …; absolute + מֵאֵת 1Kin 22:24” egyetlen
+kifejezés; a magyar mondatba nem írtam új szót („az Úr” nincs a BDB-ben), hanem a „spirit” szót ismételtem
+nagybetűvel az 1Kir 22:24 előtt („a Szellemről”). Ha a felhasználó a szó szerinti „az Úr Szelleme” alakot kéri,
+az új szó beszúrása külön döntés.
+
+**Megjegyzés a 2. kapuhoz:** a H4264 forrásában a vers és a darabszám összeforrt (`Gen 33:816t.`); a kapu a
+forrás `33:816` tokenét a fordítás `33:8`-ával nem tudta egyeztetni. A kapu két sora (`FORRAS_VERS_OCR`) a
+forrásoldali tokent `Gen 33:8 16t.`-re javítja, csak a 2. kapunak, csak erre az egy helyre. Ez kapuszabály-bővítés:
+**jóváhagyásra a felhasználónak** (a 1Móz 33:8 a Károli-adattal igazolt: `lekerdez.py karoli "1Móz 33:8"`).
+
+### Állapot a kör végén
+
+Tesztek: `teszt_bdb_zaras.py` 17, `teszt_forditas_kapuk.py` 61, `teszt_normalizal.py` 63, `teszt_emeles.py` 7 — mind OK.
+`ellenoriz.py`: SÉRTÉS 0. A 269 BDB-soron (243 F38 + 26 #28) a gátoló kapuk RENDBEN. A nagybetűs „Szellem” 14 helye.
