@@ -2,10 +2,11 @@
 # commit/verzio: BSB commit a4a2c0558c26e0281ba4e3f0e5479398459e2183
 # letoltes datuma: 2026-10-02
 # futtatasi parancs: python eszkozok/fj2/bsb_verseltolas_diag.py --munka <mappa> --f41
-# versszintu BSB-vers -> MT-vers megfeleltetes mind a 39 OSZ-konyvre (F41.1); bsb_vers = a BSB (display-JSON) fejezet:verse; mt_vers = a konkordancia/TAHOT_kivonat.tsv szamozasa (a Karoli-kulcs MT-oszlopa a fejezet-maximumot igazolja)
-# modell: azonos = mt_vers = bsb_vers; eltolt = mas fejezet:vers (fejezethataron atnyulo eset is); illesztetlen = a fejezet megfeleltetese nem igazolhato, a fejezet nem szamit a meresbe es az importba (mt_vers ures)
-# a megfeleltetes forrasa a Strong-illeszkedes (monoton 1:1 igazitas, a TAHOT-vers Strong-halmazanak BSB-ben levo hanyada > 0,5); fejezetenkenti igazolas: nincs_mt_part / vers_osztas / mt_vers_kimarad / kk_max_eltérés (l. bsb_import.konyv_megfeleltetes)
-# ok (azonos/eltolt): strong_illeszkedik = a TAHOT-vers Strongjai a BSB-vers reszei; strong_nem_egyezo = megfeleltetett, de nem egyezo vers; tahot_nincs_vers = a megfeleltetett MT-vers nincs a TAHOT_kivonatban; kitoltve_a_szomszedok_eltolasabol = a vers nem illesztheto, a fejezeten belüli szomszedai azonos eltolasuak
+# versszintu BSB-vers -> MT-vers megfeleltetes mind a 39 OSZ-konyvre (F41.1); bsb_vers = a BSB (display-JSON) fejezet:verse; mt_vers = a konkordancia/TAHOT_kivonat.tsv szamozasa (NEM feltetlenul a masoreta/WLC-szamozas: a TAHOT_kivonat egyes helyeken KJV-szamozast kovet, l. NYITOTT N-F41d; a Karoli-kulcs MT-oszlopa a fejezet-maximumot igazolja)
+# modell: azonos = mt_vers = bsb_vers; eltolt = mas fejezet:vers (fejezethataron atnyulo eset is; az 1 BSB-vers -> 2 MT-vers osztas is: mt_vers = a ket MT-vers "fej:vers+fej:vers" alakban); illesztetlen = a fejezet megfeleltetese nem igazolhato, a fejezet nem szamit a meresbe es az importba (mt_vers ures); kjv_szamozas = a TAHOT_kivonatban a fejezetnek nincs verse (pl. Job 41), a megfeleltetes nem igazolhato, az importban a BSB(KJV)-szamozas marad (mt_vers ures), a meresbol kimarad (F41.1, D3: nem esik ki az importbol)
+# a megfeleltetes forrasa a Strong-illeszkedes (monoton 1:1 igazitas, a TAHOT-vers Strong-halmazanak BSB-ben levo hanyada > 0,5); fejezetenkenti igazolas: nincs_mt_part / vers_osztas / mt_vers_kimarad (a TAHOT_kivonat sajat versfolyamaban kimaradt MT-vers; az egyertelmuen igazolt 1 -> 2 osztas kivetel, l. bsb_import.osztas_pont) / kk_max_eltérés (l. bsb_import.konyv_megfeleltetes)
+# ok (azonos/eltolt): strong_illeszkedik = a TAHOT-vers Strongjai a BSB-vers reszei; strong_nem_egyezo = megfeleltetett, de nem egyezo vers; tahot_nincs_vers = a megfeleltetett MT-vers nincs a TAHOT_kivonatban; kitoltve_a_szomszedok_eltolasabol = a vers nem illesztheto, a fejezeten belüli szomszedai azonos eltolasuak; versosztas_ketto_mt_vers_strong_illeszkedik = a BSB-vers a ket MT-vers uniojat adja, a vago pont egyertelmu
+# osztott BSB-versek (1 -> 2 MT-vers): 1Kir 22:43->22:43+22:44
 konyv	bsb_vers	mt_vers	modell	ok
 1Móz	1:1	1:1	azonos	strong_illeszkedik
 1Móz	1:2	1:2	azonos	strong_illeszkedik
@@ -9488,59 +9489,59 @@ Ruth	4:22	4:22	azonos	strong_illeszkedik
 1Kir	21:27	21:27	azonos	strong_illeszkedik
 1Kir	21:28	21:28	azonos	strong_illeszkedik
 1Kir	21:29	21:29	azonos	strong_illeszkedik
-1Kir	22:1		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:2		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:3		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:4		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:5		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:6		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:7		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:8		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:9		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:10		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:11		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:12		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:13		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:14		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:15		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:16		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:17		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:18		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:19		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:20		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:21		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:22		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:23		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:24		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:25		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:26		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:27		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:28		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:29		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:30		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:31		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:32		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:33		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:34		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:35		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:36		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:37		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:38		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:39		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:40		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:41		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:42		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:43		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:44		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:45		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:46		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:47		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:48		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:49		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:50		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:51		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:52		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
-1Kir	22:53		illesztetlen	mt_vers_kimarad: BSB 22:43->22:44, MT 22:43->22:45
+1Kir	22:1	22:1	azonos	strong_illeszkedik
+1Kir	22:2	22:2	azonos	strong_illeszkedik
+1Kir	22:3	22:3	azonos	strong_illeszkedik
+1Kir	22:4	22:4	azonos	strong_illeszkedik
+1Kir	22:5	22:5	azonos	strong_illeszkedik
+1Kir	22:6	22:6	azonos	strong_illeszkedik
+1Kir	22:7	22:7	azonos	strong_illeszkedik
+1Kir	22:8	22:8	azonos	strong_illeszkedik
+1Kir	22:9	22:9	azonos	strong_illeszkedik
+1Kir	22:10	22:10	azonos	strong_illeszkedik
+1Kir	22:11	22:11	azonos	strong_illeszkedik
+1Kir	22:12	22:12	azonos	strong_illeszkedik
+1Kir	22:13	22:13	azonos	strong_illeszkedik
+1Kir	22:14	22:14	azonos	strong_illeszkedik
+1Kir	22:15	22:15	azonos	strong_illeszkedik
+1Kir	22:16	22:16	azonos	strong_illeszkedik
+1Kir	22:17	22:17	azonos	strong_illeszkedik
+1Kir	22:18	22:18	azonos	strong_illeszkedik
+1Kir	22:19	22:19	azonos	strong_illeszkedik
+1Kir	22:20	22:20	azonos	strong_illeszkedik
+1Kir	22:21	22:21	azonos	strong_illeszkedik
+1Kir	22:22	22:22	azonos	strong_illeszkedik
+1Kir	22:23	22:23	azonos	strong_illeszkedik
+1Kir	22:24	22:24	azonos	strong_illeszkedik
+1Kir	22:25	22:25	azonos	strong_illeszkedik
+1Kir	22:26	22:26	azonos	strong_illeszkedik
+1Kir	22:27	22:27	azonos	strong_illeszkedik
+1Kir	22:28	22:28	azonos	strong_illeszkedik
+1Kir	22:29	22:29	azonos	strong_illeszkedik
+1Kir	22:30	22:30	azonos	strong_illeszkedik
+1Kir	22:31	22:31	azonos	strong_illeszkedik
+1Kir	22:32	22:32	azonos	strong_illeszkedik
+1Kir	22:33	22:33	azonos	strong_illeszkedik
+1Kir	22:34	22:34	azonos	strong_illeszkedik
+1Kir	22:35	22:35	azonos	strong_illeszkedik
+1Kir	22:36	22:36	azonos	strong_illeszkedik
+1Kir	22:37	22:37	azonos	strong_illeszkedik
+1Kir	22:38	22:38	azonos	strong_illeszkedik
+1Kir	22:39	22:39	azonos	strong_illeszkedik
+1Kir	22:40	22:40	azonos	strong_illeszkedik
+1Kir	22:41	22:41	azonos	strong_illeszkedik
+1Kir	22:42	22:42	azonos	strong_illeszkedik
+1Kir	22:43	22:43+22:44	eltolt	versosztas_ketto_mt_vers_strong_illeszkedik
+1Kir	22:44	22:45	eltolt	strong_illeszkedik
+1Kir	22:45	22:46	eltolt	strong_illeszkedik
+1Kir	22:46	22:47	eltolt	strong_illeszkedik
+1Kir	22:47	22:48	eltolt	strong_illeszkedik
+1Kir	22:48	22:49	eltolt	strong_nem_egyezo
+1Kir	22:49	22:50	eltolt	strong_illeszkedik
+1Kir	22:50	22:51	eltolt	strong_illeszkedik
+1Kir	22:51	22:52	eltolt	strong_illeszkedik
+1Kir	22:52	22:53	eltolt	strong_illeszkedik
+1Kir	22:53	22:54	eltolt	strong_illeszkedik
 2Kir	1:1	1:1	azonos	strong_illeszkedik
 2Kir	1:2	1:2	azonos	strong_illeszkedik
 2Kir	1:3	1:3	azonos	strong_illeszkedik
@@ -13872,64 +13873,64 @@ Jób	39:27	39:30	eltolt	strong_illeszkedik
 Jób	39:28	39:31	eltolt	strong_illeszkedik
 Jób	39:29	39:32	eltolt	strong_illeszkedik
 Jób	39:30	39:33	eltolt	strong_illeszkedik
-Jób	40:1		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:2		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:3		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:4		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:5		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:6		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:7		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:8		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:9		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:10		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:11		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:12		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:13		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:14		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:15		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:16		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:17		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:18		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:19		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:20		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:21		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:22		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:23		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	40:24		illesztetlen	mt_vers_kimarad: BSB 40:5->40:6, MT 39:38->40:6
-Jób	41:1		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:2		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:3		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:4		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:5		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:6		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:7		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:8		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:9		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:10		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:11		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:12		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:13		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:14		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:15		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:16		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:17		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:18		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:19		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:20		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:21		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:22		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:23		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:24		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:25		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:26		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:27		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:28		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:29		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:30		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:31		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:32		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:33		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
-Jób	41:34		illesztetlen	nincs_mt_part: 34 vers (BSB 41:1,2,3,4,5,6,...)
+Jób	40:1	39:34	eltolt	strong_illeszkedik
+Jób	40:2	39:35	eltolt	strong_illeszkedik
+Jób	40:3	39:36	eltolt	strong_illeszkedik
+Jób	40:4	39:37	eltolt	strong_illeszkedik
+Jób	40:5	39:38	eltolt	strong_illeszkedik
+Jób	40:6	40:6	azonos	strong_illeszkedik
+Jób	40:7	40:7	azonos	strong_illeszkedik
+Jób	40:8	40:8	azonos	strong_nem_egyezo
+Jób	40:9	40:9	azonos	strong_illeszkedik
+Jób	40:10	40:10	azonos	strong_illeszkedik
+Jób	40:11	40:11	azonos	strong_illeszkedik
+Jób	40:12	40:12	azonos	strong_illeszkedik
+Jób	40:13	40:13	azonos	strong_illeszkedik
+Jób	40:14	40:14	azonos	strong_illeszkedik
+Jób	40:15	40:15	azonos	strong_illeszkedik
+Jób	40:16	40:16	azonos	strong_illeszkedik
+Jób	40:17	40:17	azonos	strong_illeszkedik
+Jób	40:18	40:18	azonos	strong_illeszkedik
+Jób	40:19	40:19	azonos	strong_illeszkedik
+Jób	40:20	40:20	azonos	strong_illeszkedik
+Jób	40:21	40:21	azonos	strong_illeszkedik
+Jób	40:22	40:22	azonos	strong_illeszkedik
+Jób	40:23	40:23	azonos	strong_illeszkedik
+Jób	40:24	40:24	azonos	strong_illeszkedik
+Jób	41:1		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:2		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:3		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:4		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:5		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:6		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:7		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:8		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:9		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:10		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:11		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:12		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:13		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:14		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:15		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:16		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:17		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:18		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:19		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:20		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:21		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:22		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:23		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:24		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:25		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:26		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:27		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:28		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:29		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:30		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:31		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:32		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:33		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
+Jób	41:34		kjv_szamozas	tahot_nincs_fejezet_kjv_szamozas_marad
 Jób	42:1	42:1	azonos	strong_illeszkedik
 Jób	42:2	42:2	azonos	strong_illeszkedik
 Jób	42:3	42:3	azonos	strong_illeszkedik
