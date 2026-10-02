@@ -5,7 +5,8 @@ kod: BSB_UJRAMERES
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/f41-bsb-ujrameres
 ad: a versszámozás miatt küszöb alatt maradt ószövetségi könyvek a 95%-os küszöbbel újramérve és importálva, a többinél igazolt ok; a BSB_Strongs.tsv-ben megkülönböztethető a „szándékosan nem fordított” és a „hiányzó” angol szó
 kovetkezo: futtatás az orkesztrátorral; az 1. lépés végén ⛔ megállás
 olvas: [eszkozok/fj2/, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, naplok/F16_bsb_lefedettseg.tsv, naplok/F16_bsb_verseltolas_diagnozis.tsv, naplok/F16_bsb_zsolt_megfeleltetes.tsv]
