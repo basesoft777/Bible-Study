@@ -36,6 +36,7 @@ import normalizal as N  # noqa: E402
 from BDB_FORDITAS_szellem import SZELLEM  # noqa: E402
 from BDB_FORDITAS_ujranormalizal import kivetelek  # noqa: E402
 from BDB_FORDITAS_zaras2 import RV_KEZI  # noqa: E402
+from BDB_FORDITAS_zaras3 import KEZI3, SZELLEM_KOVETELT, szellem_ellenorzes  # noqa: E402
 
 JEL = 'F38 BDB_FORDITAS'
 
@@ -123,6 +124,8 @@ class DTF38f(unittest.TestCase):
     def test_rv_av_kezi_javitasok(self):
         sorok = {r['strong']: r for r in f38_sorok()}
         for strong, regi, uj in RV_KEZI:
+            if strong in ('H3772', 'H4397'):
+                continue  # a DT-F38g (1), (4) felulirta: l. test_dtf38g_kezi_javitasok
             hu = sorok[strong]['forditas_hu']
             self.assertEqual(hu.count(uj), 1, strong)
             self.assertEqual(hu.count(regi), 0, strong)
@@ -138,13 +141,50 @@ class DTF38f(unittest.TestCase):
         for r in f38_sorok():
             if minta.search(r['forditas_hu']):
                 marad[r['strong']] = len(minta.findall(r['forditas_hu']))
-        # H7043: `Ges §67 t.` (nyelvtani §, nem gyakoriság); H4264: `33:816t.` (a vers és a
-        # darabszám összeforrt); H4687: `Zsolt 119:20 t.` (szám nélküli t. vagy 119. zsoltár 20-szor)
-        self.assertEqual(marad, {'H7043': 1, 'H4264': 1, 'H4687': 1})
+        # H7043: `Ges §67 t.` (nyelvtani §, nem gyakoriság); H4687: `Zsolt 119:20 t.` (szám nélküli
+        # t. vagy 119. zsoltár 20-szor). A H4264 `33:816t.` a DT-F38g (5) szerint `33:8, összesen 16-szor`.
+        self.assertEqual(marad, {'H7043': 1, 'H4687': 1})
 
     def test_szellem_nagybetus_a_h1320_ban(self):
         sorok = {r['strong']: r for r in f38_sorok()}
         self.assertIn('nem Szellem Ézs 31:3', sorok['H1320']['forditas_hu'])
+
+
+class DTF38g(unittest.TestCase):
+    """DT-F38g (2026.10.02): az ellenori hat elteres kezelese; a Szellem-tabla nagybetus helyei."""
+
+    def test_dtf38g_kezi_javitasok(self):
+        sorok = {r['strong']: r for r in f38_sorok()}
+        for strong, nev, regi, uj, iras in KEZI3:
+            hu = sorok[strong]['forditas_hu']
+            self.assertEqual(hu.count(uj), 1, strong)
+            if regi not in uj:  # a H5674 uj szovege tartalmazza a regit (beszurt `a Szellemről`)
+                self.assertEqual(hu.count(regi), 0, strong)
+
+    def test_h3772_h4397_h4264_szoveg(self):
+        sorok = {r['strong']: r for r in f38_sorok()}
+        self.assertIn('rendszerint így fordítják: RV made for thee a covenant with them,', sorok['H3772']['forditas_hu'])
+        self.assertIn('(az RV angel szava túl szűk)', sorok['H4397']['forditas_hu'])
+        self.assertIn('1Móz 33:8, összesen 16-szor', sorok['H4264']['forditas_hu'])
+
+    def test_h2403_jeloles_kezi(self):
+        sorok = {r['strong']: r for r in f38_sorok()}
+        megj = sorok['H2403']['megjegyzes']
+        self.assertIn('kézi javítás', megj)
+        self.assertNotIn('gépi szabályok a #28 soron', megj)
+
+    def test_szellem_tabla_nagybetus_helyei(self):
+        hu = {r['strong']: r['forditas_hu'] for r in f38_sorok()}
+        hibak, osszes = szellem_ellenorzes(hu)
+        self.assertEqual(hibak, [])
+        self.assertEqual(osszes, sum(len(v) for v in SZELLEM_KOVETELT.values()))
+
+    def test_elihu_es_rossz_szellem_kisbetus(self):
+        hu = {r['strong']: r['forditas_hu'] for r in f38_sorok()}
+        self.assertIn('Jób 32:18 (Du: lehelet; Di Bu: isteni Szellem', hu['H7307'])
+        self.assertIn('az isteni szellemről, amely az őrjöngés', hu['H7451'])
+        self.assertIn('Saul Istentől való gonosz szelleméről', hu['H1961'])
+        self.assertIn('a szellemről 4Móz 5:14', hu['H5674'])
 
 
 if __name__ == '__main__':

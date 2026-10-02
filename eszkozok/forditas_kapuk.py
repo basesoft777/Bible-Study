@@ -50,6 +50,12 @@ _spec.loader.exec_module(_p4)
 TERMINOLOGIA_UT = os.path.join(REPO, 'adat', 'terminologia.tsv')
 KAROLI_UT = os.path.join(REPO, 'konkordancia', 'Konyv_normalizalo_tabla.tsv')
 
+# A 2. kapu (versszam) forrasoldali OCR-javitasa: a BDB-forrasban a vers es a darabszam
+# osszeforrt (`Gen 33:816t.` = 33:8, 16-szor; DT-F38g 5, a 1Moz 33:8 a Karoli-adattal
+# igazolt). A kapu a forrasban levo `33:816` tokent a javitott alakkal veti ossze; mas
+# kapura es mas szoveghelyre nem hat.
+FORRAS_VERS_OCR = {'Gen 33:816t.': 'Gen 33:8 16t.'}
+
 GATOLO = ['1_gorog_heber', '2_versszam', '3_karoli_roviditesek', '4_formazas',
           '5_terminologia', '8_idezojel', '9_tagolas', '10_torzs', '11_konyvek']
 
@@ -578,12 +584,18 @@ def ellenoriz_fejezetszam(forditas):
     return 'JELZES', 'a könyv fejezetszámánál nagyobb fejezet: ' + ', '.join(sorted(set(rossz)))
 
 
+def _vers_ocr_javit(forras):
+    for rossz, jo in FORRAS_VERS_OCR.items():
+        forras = forras.replace(rossz, jo)
+    return forras
+
+
 def kapuk_futtat(szotar, forras, forditas, bizonytalan=()):
     """[(nev, eredmeny, reszlet), ...]"""
     karoli, term = _betolt()
     ki = [
         ('1_gorog_heber',) + _p4.ellenoriz_1_gorog_heber(forras, forditas),
-        ('2_versszam',) + _p4.ellenoriz_2_versszam(forras, forditas),
+        ('2_versszam',) + _p4.ellenoriz_2_versszam(_vers_ocr_javit(forras), forditas),
         ('3_karoli_roviditesek',) + ellenoriz_karoli(forras, forditas, karoli),
         ('4_formazas',) + ellenoriz_formazas(forras, forditas),
         ('5_terminologia',) + ellenoriz_terminologia(forras, forditas, term, list(bizonytalan)),
