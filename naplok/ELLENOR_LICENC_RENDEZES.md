@@ -21,3 +21,7 @@
 
 A felhasználó döntött: README csak a JOGTULAJDONOS szó szerinti, a fájlt megnevező/lefedő nyilatkozataként fogadható el. Soronként: BDB, Karoli_1908, Karoli_KH → `tisztazatlan` (kiadás-készítői besorolás); Strong_szotar, OSHL, LXX_OS → `tisztazott` marad (jogtulajdonos README/LICENSE-DATA). Végállapot: 19 `tisztazott` / 20 `tisztazatlan`. SEMA 2.19 2. szabálya kiegészítve. Nyitott megfigyelés (nem javítva): TBESH megjegyzése és KJV_Strongs_teljes besorolása. Az ellenőrző szabály az N-F33b javaslat.
 
+## Kiegészítés — DT-F33d (F33.9)
+
+SEMA `allapot` + `kozkincs` (feltételek: kor, kiadás-azonosítás, a kiadás készítőjének szó szerinti nyilatkozata). KJV_Strongs_teljes → `kozkincs` (eBible copr.htm szó szerint; a Strong-címkék CrossWire-licence nyitott). TBESH → `tisztazatlan`. BDB marad `tisztazatlan`. **Végső arány (a táblából): 17 `tisztazott` / 1 `kozkincs` / 21 `tisztazatlan`.** A korábbi „nyitott megfigyelések” (TBESH, KJV_Strongs_teljes) ezzel lezártak. Az `eszkozok/ellenorzes/` nem ellenőrzi a `licencek.tsv` értékkészletét (a kozkincs elfogadásához eszközmódosítás nem kell).
+

@@ -10,7 +10,7 @@ allapot: lezarva
 ad: a licenc-leltár egy mércével, szó szerinti licencidézetekkel; a régi LXX_kivonat kivezetve; a TBESH/STEPBible terjesztési feltételei rögzítve
 kovetkezo: "DT-F33c eldöntése; N-F33 felvétele /befogad-dal"
 pr: https://github.com/basesoft777/Bible-Study/pull/123
-lezarva_osszegzes: "22 tisztazott/17 tisztazatlan, TBESG marad, TBESH-család nem mozdult, LXX_kivonat tisztazatlan, N-F33 javasolt, nyitott DT-F33c (részletek: naplok/LICENC_RENDEZES_zaras.md)"
+lezarva_osszegzes: "17 tisztazott/1 kozkincs/21 tisztazatlan, TBESG marad, TBESH-család nem mozdult (TBESH tisztazatlan), LXX_kivonat tisztazatlan, N-F33 javasolt, DT-F33a-d alkalmazva (részletek: naplok/LICENC_RENDEZES_zaras.md)"
 fugg: [24]
 olvas: [adat/licencek.tsv, adat/datasetek.tsv, adat/SEMA.md, DONTESEK.md, naplok/F24_zaras.md, naplok/ELLENOR_F24.md, konkordancia/, eszkozok/]
 ir: [adat/licencek.tsv, adat/SEMA.md, konkordancia/README.md, adat/datasetek.tsv, DONTESEK.md, naplok/LICENC_RENDEZES_zaras.md, naplok/ELLENOR_LICENC_RENDEZES.md, "konkordancia/LXX_kivonat_*.tsv", eszkozok/lexikon_general.py]
