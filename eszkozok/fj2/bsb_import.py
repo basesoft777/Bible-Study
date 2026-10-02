@@ -62,7 +62,7 @@ def szur(kat, n=1):
     SZURT[kat] = SZURT.get(kat, 0) + n
 
 
-# DT-F41c (a): a BSB(KJV)-szamozas marad, sorszinten jelolve (7. oszlop `Számozás` = kjv_szamozas)
+# DT-F41c (a): a BSB(KJV)-szamozas marad, sorszinten jelolve (7. oszlop `Számozás` = `kjv` a Jób 41-re; mt / ellenorizetlen a többire, DT-F41f/g)
 KJV_MARAD = {'Jób': {38, 39, 40, 41}}  # a mainen is KJV-szamozasu; a Job MT-re szamozasa kulon N-tetel (TVTMS/WLC gepi tablabol)
 KJV_EGYEZIK_WLC = {'Préd': {11, 12}, 'Ézs': {2, 3}, '4Móz': {12, 13}}  # BSB(KJV) = WLC (fejezet-max egyezes, wlc_versek); a TAHOT_kivonat Karoli-szeru; az atszamozas visszavonva
 # 7. oszlop `Számozás` (felhasznaloi dontes 2026.10.02, DT-F41f/g): VERSSZINTU WLC-osszevetesbol (wlc_versek.vers_igazolt): mt = a WLC-vel igazolt MT-szam (a kriterium: l.
@@ -576,9 +576,9 @@ def _vers_szoveg(x):
 def cel_megfeleltetes(mag, step, sorok, osztas, bsb_fej):
     """Az IMPORT cel-versszamozasa (F41, DT-F41c (a)): a `sorok` (BSB -> TAHOT_kivonat megfeleltetes; a MERES ezt hasznalja) alapjan, a KJV_MARAD / KJV_EGYEZIK_WLC
     kivetelekkel. Visszaad: (cel_sorok, terkep). cel_sorok = [(bsb_(f,v), cel (f:v / f:v+f:v / ures), modell, ok, szamozas, tahot_vers)]; modell: azonos / eltolt /
-    illesztetlen / kjv_szamozas; terkep = {bsb_(f,v): (cel_vers, p, cel_vers2, szamozas)} az import Igehelyeihez (az illesztetlen versek nincsenek benne).
-    KJV_MARAD: a BSB(KJV)-szam marad, jelolve (kjv_szamozas). KJV_EGYEZIK_WLC: a BSB-szam marad (azonos), a WLC fejezet-max (Macula) egyezeset a szkript ellenorzi:
-    elteresnel leall (nincs csendes kozelites); jelolve (kjv_szamozas: a szam a BSB/KJV-e, a WLC-vel azonos)."""
+    illesztetlen (a `kjv_szamozas` modell-érték a Jób 41-é); terkep = {bsb_(f,v): (cel_vers, p, cel_vers2, szamozas)} az import Igehelyeihez (az illesztetlen versek nincsenek benne).
+    KJV_MARAD: a BSB(KJV)-szam marad, a 7. oszlopban `kjv`. KJV_EGYEZIK_WLC: a BSB-szam marad (azonos), a WLC fejezet-max (Macula) egyezeset a szkript ellenorzi:
+    elteresnel leall (nincs csendes kozelites); modell=azonos (a szam a BSB/KJV-e, a WLC-vel azonos); a 7. oszlop versszintu WLC-osszevetesbol (mt / ellenorizetlen)."""
     if mag in KJV_EGYEZIK_WLC:
         wlc_max = wlc_versek.wlc_fejezet_max(wlc_versek.wlc_konyv(wlc_versek.macula_kod(step)))
         for f in sorted(KJV_EGYEZIK_WLC[mag]):
