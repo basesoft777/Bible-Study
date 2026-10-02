@@ -6,9 +6,9 @@ ag: claude/f33-licenc-rendezes
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: dontesre_var
+allapot: fut
 ad: a licenc-leltár egy mércével, szó szerinti licencidézetekkel; a régi LXX_kivonat kivezetve; a TBESH/STEPBible terjesztési feltételei rögzítve
-kovetkezo: "Te: döntés a DT-F33a (TBESH/STEPBible terjesztés) és DT-F33b (LXX_kivonat kivezetés olvasókkal) tételről a DONTESEK.md-ben; utána L5 és független ellenőrzés"
+kovetkezo: "Te: DT-F33a fájlonkénti mozgatási döntés (TBESG marad-e) és az olvasók átírásának új tétele; utána L5, független ellenőrzés, PR"
 fugg: [24]
 olvas: [adat/licencek.tsv, adat/datasetek.tsv, adat/SEMA.md, DONTESEK.md, naplok/F24_zaras.md, naplok/ELLENOR_F24.md, konkordancia/, eszkozok/]
 ir: [adat/licencek.tsv, adat/datasetek.tsv, DONTESEK.md, naplok/LICENC_RENDEZES_zaras.md, naplok/ELLENOR_LICENC_RENDEZES.md, "konkordancia/LXX_kivonat_*.tsv", eszkozok/lexikon_general.py]
