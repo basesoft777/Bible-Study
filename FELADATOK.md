@@ -34,7 +34,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | 12 | TEREMT-002 3. lépés (próza, lexikonoldal) | az első natív egyforrású motívum kész | ⬜ brief kell | #11 | A tohu/bohu szótári adata az S1-ben készül (SZOTAR-D29). | `TEREMT002_KUTATAS_BRIEF.md` |
 | 13 | 1Móz 17-től a tanulmányok és a 6 betöltetlen motívum | a Genezis-kiadás tartalma | ⬜ brief kell | #10 | döntés 2026.09.21: a lexikonoldalak lezárása után | `F13_GENEZIS_KIADAS_BRIEF.md` |
 | 25 | Olvasói felület: statikus HTML állítható mélységgel (OLVASOI_HTML) | a motívumforrásból generált statikus HTML-oldalak (Netlify), lenyitható apparátussal és mélységi szintekkel; később PWA | ⬜ brief kell | #11, #12, #23 | brief a #11 1. lépcsője (ISTENTISZT-001) után, a MOTIVUM_FORRAS szintjelölésére építve | `F25_OLVASOI_HTML_BRIEF.md` |
-| 36 | Az éles lexikon/ újragenerálása az F28, a BDB_PSI és a SIR_SZENTSZELLEM után (LEXIKON_UJRAGEN) | a lexikon/[ID]_TUDOMANYOS.md és _TORZSCIKK.md fájlok a jelenlegi adatból újragenerálva; a nulla-diff / várt diff dokumentálva (az F28 fordításai, a javított ψ-igehelyek, a Szent Szellem-szöveg) | ⬜ | #7*, #9*, #28 (kész), #34 (kész), #35 (kész), #37*, #38* | M0 szárazfutás ideiglenes könyvtárba (a repón kívülre); ⛔ az éles fájlok felülírása előtt | `F36_LEXIKON_UJRAGEN_BRIEF.md` |
+| 36 | Az éles lexikon/ újragenerálása az F28, a BDB_PSI és a SIR_SZENTSZELLEM után (LEXIKON_UJRAGEN) | a lexikon/[ID]_TUDOMANYOS.md és _TORZSCIKK.md fájlok a jelenlegi adatból újragenerálva; a nulla-diff / várt diff dokumentálva (az F28 fordításai, a javított ψ-igehelyek, a Szent Szellem-szöveg) | ⬜ | #7*, #9*, #28 (kész), #34 (kész), #35 (kész), #37*, #38*, #42* | M0 szárazfutás ideiglenes könyvtárba (a repón kívülre); ⛔ az éles fájlok felülírása előtt | `F36_LEXIKON_UJRAGEN_BRIEF.md` |
 <!-- GENERÁLT-VÉGE: feladatok.py --cel fazis2 -->
 
 ## Folyamat és eszközök
@@ -44,6 +44,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 |---|---|---|---|---|---|---|
 | 32 | Kontextus-őrzés: az értelmező munka egy kézben marad, a csomagmód csak adatfeladatra (KONTEXTUS) | négy munkaszabály a MUNKAMENET-ben és a brief-sablonban, a feladatok.py fejléc- és csomag-ellenőrzése, a #23 briefjének kiegészítése és függése; döntési tétel a TEREMT-002 3. lépésének előrehozásáról | ⬜ | — | /kovetkezo; ⛔ a K5 DONTESEK-tétele után | `F32_KONTEXTUS_BRIEF.md` |
 | 37 | Tanulmány-ellenőrzés: CI-szabályok és független ellenőr (TANULMANY_ELLENORZES) | a tanulmányokat CI (E20–E24, a T0 szerint) és a fuggetlen-ellenor ügynök ellenőrzi; a régi tanulmányokról két auditjelentés készül | ⬜ | #30, #32 | /kovetkezo; ⛔ a T0 után (nincs Strong-jelölt eredeti szöveg, vagy az SzPA kötelező szakasz a Tanulmány sablonban) és a T2 után (az alap tanulmányok sorsa) | `F37_TANULMANY_ELLENORZES_BRIEF.md` |
+| 42 | Forrásfájlok kivezetése és a licencállapot egyetlen forrása (FORRASKIVEZETES) | A TBESH-család a gitignore-olt _nyers/ alatt, letöltő szkripttel. Az LXX_kivonat kivezetve. A generátor licencjelölése az adat/licencek.tsv-ből olvas. | ⬜ | #33 (kész), #35 (kész) | a lexikonoldalak újrarenderelése a frissített licencjelöléssel; a BDB-fordítás (az előfeltétele a tisztázott licencforrás) | `F42_FORRASKIVEZETES_BRIEF.md` |
 <!-- GENERÁLT-VÉGE: feladatok.py --cel folyamat -->
 
 ## Naplózás
