@@ -81,7 +81,8 @@ def main(argv=None):
     a = ap.parse_args(argv)
     nev = sonnet_koteg.ascii_nev(a.konyv)
     s = kapu_stat(sorok(sonnet_koteg.valasz_ut(a.konyv)), a.ig_koteg)
-    c = kapu_stat(sorok(os.path.join(F22, 'valaszok', 'c', '%s.jsonl' % nev)), a.ig_koteg)
+    cut = os.path.join(F22, 'valaszok', 'c', '%s.jsonl' % nev)
+    c = kapu_stat(sorok(cut), a.ig_koteg) if os.path.exists(cut) else {'kotegek': 0, 'versek': 0, 'elso_probara': 0, 'vegleg': 0}
     for nm, x in (('Sonnet', s), ('C', c)):
         print('%s: %d köteg, %d vers; kapuhiba első próbára %s; végleg %s' % (
             nm, x['kotegek'], x['versek'], pct(x['elso_probara'], x['versek']), pct(x['vegleg'], x['versek'])))

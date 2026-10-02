@@ -210,8 +210,9 @@ def sorrend_igehelyek(minta, kimaradt, karoli):
 def epit(konyv, gyoker=None, karoli=None, ered=None):
     """A két tábla és az átnézési sor tartalma memóriában: (parok, szavak, atnezes) sorlisták."""
     u = utak(konyv, gyoker)
-    if not os.path.exists(u['minta']) or not os.path.exists(u['sonnet']) or not os.path.exists(u['c']):
-        raise SystemExit('hiányzó bemenet: %s' % ', '.join(k for k in ('minta', 'sonnet', 'c') if not os.path.exists(u[k])))
+    if not os.path.exists(u['minta']) or not os.path.exists(u['sonnet']):
+        raise SystemExit('hiányzó bemenet: %s' % ', '.join(k for k in ('minta', 'sonnet') if not os.path.exists(u[k])))
+    # a C-fájl hiánya: csak-Sonnet könyv (DT-F22c); ilyenkor minden link `alacsony`, `forras: S` (a brief szerint)
     karoli = karoli if karoli is not None else tokenek.betolt_karoli()
     ered = ered if ered is not None else tokenek.betolt_eredeti()
     minta = minta_sorok(u)
@@ -270,12 +271,18 @@ def proveniencia_sor(konyv, gyoker=None):
     modell-kimenet (javaslat), nem `lekerdez.py`-eredmény."""
     n = sonnet_koteg.ascii_nev(konyv)
     u = utak(konyv, gyoker)
-    forras = ['f22/valaszok/sonnet/%s.jsonl' % n, 'f22/valaszok/c/%s.jsonl' % n]
+    csak_sonnet = not os.path.exists(u['c'])
+    forras = ['f22/valaszok/sonnet/%s.jsonl' % n] + ([] if csak_sonnet else ['f22/valaszok/c/%s.jsonl' % n])
     if os.path.exists(u['sonnet_javito']) or os.path.exists(u['c_javito']):
         forras += ['f22/valaszok/sonnet/%s_javito.jsonl' % n, 'f22/valaszok/c/%s_javito.jsonl' % n]
     if any(tokenek.igehely_bont(r[0] or r[1])[0] == konyv for r in tokenek.versmegfeleltetes()):
         forras.append('f22/versmegfeleltetes.tsv')
     forras += ['konkordancia/TAHOT_kivonat.tsv', 'konkordancia/Karoli_1908.tsv']
+    if csak_sonnet:
+        return ('# proveniencia: scope=manual | forras=%s | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; a '
+                'subagent-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link '
+                '`alacsony` (egy modell, nincs egyezés); a strong a TAHOT-ból, modell nem írja | előállítás: '
+                'eszkozok/karoli_strong/egyesit.py' % ', '.join(forras))
     return ('# proveniencia: scope=manual | forras=%s | ts=%s (a C futásnapló utolsó hívása%s; az újraépítés '
             'így bájtra azonos) | modell-kimenet, javaslat: nem lekérdezés-eredmény; a bizonyossag '
             'nem "ellenőrizve"; a strong a TAHOT-ból, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py'
