@@ -872,7 +872,7 @@ Kulcs: `dataset`. Fejlécsorok `#`-tel; olvasás `split('\t')`.
 | `kereskedelmi` | `igen` \| `nem` \| `feltetelesen` \| `tisztazatlan` |
 | `share_alike` | `igen` \| `nem` \| `tisztazatlan` |
 | `kotelezo_megjeloles` | a kötelező forrásmegjelölés **szó szerint**, ha a forrás megad ilyet; egyébként üres |
-| `allapot` | `tisztazott` (a licenc a forrás saját dokumentumából, megadott helyen igazolt) \| `tisztazatlan` |
+| `allapot` | `tisztazott` (a licenc a forrás saját dokumentumából, megadott helyen igazolt) \| `kozkincs` (F33 / DT-F33d; feltételei a 2. szabályban) \| `tisztazatlan` |
 | `megjegyzes` | tudnivaló; `javaslat:` kezdetű mondat = eltérés vagy javasolt teendő (nem döntés) |
 
 **Két bővítés a briefhez képest.** A `kereskedelmi` és a `share_alike` oszlop a
@@ -889,6 +889,15 @@ licenc-szövegen túli feltételt jelöl (pl. védjegy-szabály, UK Crown-jog).
 2. `tisztazott` csak akkor, ha a `forras_hely` a licenc szövegére vagy a forrás saját
    állítását szó szerint idéző repó-fájlra mutat. A szerző forrásoldalából (másodkézből)
    átvett állítás `tisztazatlan`, a README-állítással a `licenc` oszlopban.
+   **F33 / DT-F33c pontosítás (felhasználói döntés, 2026.10.02):** a forrásrepó README-je akkor fogadható el,
+   ha a JOGTULAJDONOS szó szerinti licencnyilatkozata a saját adatára, és megnevezi vagy egyértelműen
+   lefedi az adott fájlt. Harmadik fél licencének továbbadása vagy összefoglalása nem bizonyíték.
+   A `tisztazott` sor megjegyzése nem mondhat ellent az állapotnak.
+   **`kozkincs` (F33 / DT-F33d, felhasználói döntés, 2026.10.02; ékezet nélkül):** csak akkor, ha (a) a mű kora miatt
+   közkincs, (b) a használt digitális kiadás azonosítva van (forrás + commit/URL/sha256), és (c) a kiadásnak nincs saját
+   licencigénye, vagy a kiadás készítője maga nyilvánítja közkincsnek (szó szerint idézve a `forras_hely`-ben). Ha (c)
+   nem igazolt: `tisztazatlan`. A `kozkincs` sor `kereskedelmi`/`share_alike` értéke a megszokott értékkészletből való
+   (a kor miatti közkincs mellett lehet külön feltétel, pl. UK Crown-jog: `feltetelesen`).
 3. A `projekt_adat` sor a repó saját adatáé; a repónak nincs LICENSE-fájlja, tehát a
    kimeneti réteg licence nyitott kérdés (DT-F24).
 
