@@ -650,6 +650,10 @@ def _teljes_szocikk(adat_dir, sor, cache):
     return talalat[1]
 
 
+# SEMA 2.14: a forditasok.tsv `allapot` zart ertekkeszlete (F38.265: + `sonnet`)
+FORDITAS_ALLAPOTOK = ('kezi', 'opus', 'sonnet', 'pilot', 'elavult')
+
+
 def szabaly13_forditasi_gyorsitotar(adat_dir):
     """F05_SZOTAR_BRIEF.md S1.5, 13. szabaly (SEMA.md 2.14): a forditasok.tsv
     kulcsa (szotar+strong+entry_id+jelentes_szam+mezo) egyedi legyen, es a
@@ -671,6 +675,11 @@ def szabaly13_forditasi_gyorsitotar(adat_dir):
     for kulcs, n in kulcs_szamlalo.items():
         if n > 1:
             hibas.append('duplikált kulcs: %s (%d sor)' % (kulcs, n))
+    for sor in sorok:
+        if sor.get('allapot') not in FORDITAS_ALLAPOTOK:
+            hibas.append('%s %s: ismeretlen allapot „%s” (zárt készlet: %s)' % (
+                sor.get('szotar'), sor.get('strong'), sor.get('allapot'),
+                ', '.join(FORDITAS_ALLAPOTOK)))
 
     forras_idx = _forditasok_forras_szoveg_idx(adat_dir)
     teljes_cache = {}

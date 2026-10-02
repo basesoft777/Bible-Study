@@ -1,0 +1,450 @@
+szocikk	szabaly	regi	uj	db	iras
+H0001	nevalakok	Izrael	Izráel	1	igen
+H0001	nevalakok	Izraelről)	Izráelről)	1	igen
+H0113	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H0120	elofordulas	(3 t. a versben)	(a versben 3-szor)	1	igen
+H0127	igehely_rov	׳אֹהֵב2Krón	׳אֹהֵב 2Krón	1	igen (#28, DT-F38f 1)
+H0168	igehely_rov	sátrai2Krón	sátrai 2Krón	1	igen
+H0241	igehely_rov	׳קַשֻּׁבוֺת2Krón	׳קַשֻּׁבוֺת 2Krón	1	igen
+H0251	igehely_rov	אִישׁ1Móz	אִישׁ 1Móz	1	igen
+H0251	nevalakok	Izraelről	Izráelről	2	igen
+H0259	igehely_rov	אַחַת2Krón	אַחַת 2Krón	1	igen
+H0259	igehely_rov	שְׁנַת2Krón	שְׁנַת 2Krón	1	igen
+H0310	glossza_visszaallit	RV mellett	RV besides	1	igen
+H0369	elofordulas	(12 t.);	(12-szer);	1	igen
+H0376	nevalakok	Izrael	Izráel	1	igen
+H0398	nevalakok	(Izraelről	(Izráelről	1	igen
+H0410	elofordulas	(10 t.;	(10-szer;	1	igen
+H0410	elofordulas	(5 t.;	(5-ször;	1	igen
+H0410	elofordulas	(55 t.	(55-ször	1	igen
+H0428	elofordulas	(16 t.);	(16-szor);	1	igen
+H0428	elofordulas	(3 t.)	(3-szor)	1	igen
+H0428	elofordulas	(5 t.);	(5-ször);	1	igen
+H0428	elofordulas	(7 t.),	(7-szer),	1	igen
+H0430	igehely_rov	Dávidról2Krón	Dávidról 2Krón	1	igen (#28, DT-F38f 1)
+H0430	igehely_rov	Isten2Krón	Isten 2Krón	1	igen (#28, DT-F38f 1)
+H0518	nevalakok	(Izraelhez)	(Izráelhez)	1	igen
+H0520	elofordulas	(21 t.)	(21-szer)	1	igen
+H0520	elofordulas	(3 t. a versben);	(a versben 3-szor);	7	igen
+H0520	elofordulas	(4 t. a versben);	(a versben 4-szer);	1	igen
+H0520	elofordulas	(45 t.)	(45-ször)	1	igen
+H0520	elofordulas	(56 t.)	(56-szor)	1	igen
+H0520	elofordulas	(86 t.);	(86-szor);	1	igen
+H0520	igehely_rov	לְאַמּוֺת2Krón	לְאַמּוֺת 2Krón	1	igen
+H0559	igehely_rov	Dávidot2Krón	Dávidot 2Krón	1	igen
+H0639	elofordulas	(177 t.);	(177-szer);	1	igen
+H0639	elofordulas	(45 t.);	(45-ször);	1	igen
+H0702	elofordulas	(3 t. a versben)	(a versben 3-szor)	1	igen
+H0727	igehely_rov	ládája2Chr	ládája 2Krón	1	igen
+H0727	igehely_rov	אֲרוֺן2Móz	אֲרוֺן 2Móz	1	igen
+H0727	igehely_rov	הַקֹּדֶשׁ2Krón	הַקֹּדֶשׁ 2Krón	1	igen
+H0776	nevalakok	Izrael	Izráel	2	igen
+H0776	nevalakok	Izraelről	Izráelről	1	igen
+H0784	igehely_rov	׳בער2Krón	׳בער 2Krón	1	igen
+H0802	nevalakok	(Izrael	(Izráel	2	igen
+H0834	elofordulas	[אֲשֶׁר11t.],	[אֲשֶׁר11-szer],	1	igen
+H0834	elofordulas	אֲשֶׁא89t.);	אֲשֶׁא89-szer);	1	igen
+H0854	nevalakok	Izrael	Izráel	1	igen
+H0935	nevalakok	Izraelt	Izráelt	1	igen
+H0996	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H1004	igehely_rov	בֵּיתזְֿבֻל2Krón	בֵּיתזְֿבֻל 2Krón	1	igen
+H1004	igehely_rov	הַמַּהְמֶּכֶת2Krón	הַמַּהְמֶּכֶת 2Krón	1	igen
+H1004	igehely_rov	קֹדֶשׁ2Krón	קֹדֶשׁ 2Krón	1	igen
+H1004	nevalakok	(Izrael	(Izráel	1	igen
+H1004	nevalakok	Izraelben	Izráelben	1	igen
+H1004	nevalakok	Izraelről	Izráelről	1	igen
+H1121	igehely_rov	אֶתכֹּֿהֲנֵי2Krón	אֶתכֹּֿהֲנֵי 2Krón	1	igen (#28, DT-F38f 1)
+H1121	igehely_rov	בְּנֵי2Krón	בְּנֵי 2Krón	1	igen (#28, DT-F38f 1)
+H1121	igehely_rov	מבּן2Krón	מבּן 2Krón	1	igen (#28, DT-F38f 1)
+H1129	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H1129	igehely_rov	חֶסֶדZsolt	חֶסֶד Zsolt	1	igen
+H1129	nevalakok	Izraelt	Izráelt	1	igen
+H1285	elofordulas	(3 t. a versben)	(a versben 3-szor)	1	igen
+H1285	igehely_rov	nép2Krón	nép 2Krón	1	igen
+H1288	igehely_rov	térdeire2Krón	térdeire 2Krón	1	igen
+H1320	elofordulas	30 t.)	30-szor)	1	igen
+H1320	elofordulas	9 t.)	9-szer)	1	igen
+H1323	elofordulas	(4 t. a versben);	(a versben 4-szer);	1	igen
+H1323	elofordulas	(6 t.)	(6-szor)	1	igen
+H1323	igehely_rov	hercegnő2Krón	hercegnő 2Krón	1	igen
+H1323	igehely_rov	דָּן2Krón	דָּן 2Krón	1	igen
+H1366	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H1366	elofordulas	(8 t.)	(8-szor)	1	igen
+H1419	igehely_rov	magáról2Krón	magáról 2Krón	1	igen
+H1419	igehely_rov	׳ג1Móz	׳ג 1Móz	1	igen
+H1419	igehely_rov	׳מדברתZsolt	׳מדברת Zsolt	1	igen
+H1471	nevalakok	Izraellel	Izráellel	1	igen
+H1471	nevalakok	Izraelre	Izráelre	1	igen
+H1471	nevalakok	Izraelről	Izráelről	3	igen
+H1540	igehely_rov	גִּלֵּיתִיJer	גִּלֵּיתִי Jer	1	igen
+H1540	igehely_rov	גִּלָּה3Móz	גִּלָּה 3Móz	1	igen
+H1540	igehely_rov	נִגְלֹה1Sám	נִגְלֹה 1Sám	1	igen
+H1540	igehely_rov	עוןHós	עון Hós	1	igen
+H1571	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H1571	elofordulas	(5 t.)	(5-ször)	1	igen
+H1696	glossza_visszaallit	RV: valami ellen	RV against	1	igen
+H1696	igehely_rov	valakihez2Krón	valakihez 2Krón	1	igen
+H1696	nevalakok	Izraellel	Izráellel	1	igen
+H1697	igehely_rov	szavaiEszt	szavai Eszt	1	igen
+H1697	nevalakok	Izrael	Izráel	1	igen
+H1732	nevalakok	Izrael	Izráel	1	igen
+H1732	nevalakok	Izraelben	Izráelben	1	igen
+H1818	elofordulas	(3 t. a versben)	(a versben 3-szor)	1	igen
+H1818	elofordulas	(3 t. a versben);	(a versben 3-szor);	4	igen
+H1818	elofordulas	(4 t. a versben);	(a versben 4-szer);	1	igen
+H1870	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H1870	elofordulas	(5 t. a versben);	(a versben 5-ször);	1	igen
+H1870	igehely_rov	וּדְרָכָיו2Krón	וּדְרָכָיו 2Krón	1	igen
+H1870	nevalakok	Izraelről,	Izráelről,	1	igen
+H1961	igehely_rov	i1 Kings	i 1Kir	1	igen
+H1961	nevalakok	Izrael	Izráel	1	igen
+H1980	nevalakok	(Izrael	(Izráel	2	igen
+H1980	nevalakok	Izrael	Izráel	4	igen
+H1980	nevalakok	Izraelhez	Izráelhez	1	igen
+H1980	nevalakok	Izraellel (Izrael	Izráellel (Izráel	1	igen
+H1980	nevalakok	Izraelről	Izráelről	2	igen
+H1980	nevalakok	Izraelt	Izráelt	1	igen
+H2009	elofordulas	(37 t.)	(37-szer)	1	igen
+H2009	elofordulas	15 t.;	15-ször;	1	igen
+H2022	igehely_rov	helye2Krón	helye 2Krón	1	igen
+H2022	igehely_rov	בְּהֵמוֺתZsolt	בְּהֵמוֺת Zsolt	1	igen
+H2022	nevalakok	Izrael	Izráel	2	igen
+H2022	nevalakok	Izraelé	Izráelé	1	igen
+H2063	elofordulas	(3 t.),	(3-szor),	1	igen
+H2063	igehely_rov	כלזֿאת2Krón	כלזֿאת 2Krón	1	igen
+H2091	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H2091	igehely_rov	מַּרְוָ֑יִם2Krón	מַּרְוָ֑יִם 2Krón	1	igen
+H2091	igehely_rov	׳וּמִשְׁקָל2Krón	׳וּמִשְׁקָל 2Krón	1	igen
+H2320	elofordulas	(3 t. a versben).	(a versben 3-szor).	1	igen
+H2320	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H2388	elofordulas	(3 t. a versben)	(a versben 3-szor)	1	igen
+H2388	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H2388	igehely_rov	ellenállni2Krón	ellenállni 2Krón	1	igen
+H2388	igehely_rov	megszilárdításáról2Krón	megszilárdításáról 2Krón	1	igen
+H2388	igehely_rov	venni2Krón	venni 2Krón	1	igen
+H2398	elofordulas	20 t.	20-szor	1	igen
+H2398	elofordulas	82 t.	82-szer	1	igen
+H2398	igehely_rov	את2Krón	את 2Krón	1	igen
+H2421	elofordulas	(14 t.)	(14-szer)	1	igen
+H2421	elofordulas	(16 t.)	(16-szor)	1	igen
+H2421	elofordulas	(3 t. a versben).	(a versben 3-szor).	1	igen
+H2428	igehely_rov	׳ח2Krón	׳ח 2Krón	1	igen
+H2617	elofordulas	(26 t.);	(26-szor);	1	igen
+H2617	igehely_rov	tettek2Krón	tettek 2Krón	1	igen
+H2691	igehely_rov	הַחֲדָשָׁה2Krón	הַחֲדָשָׁה 2Krón	1	igen
+H2691	igehely_rov	הַכֹּהֲנִים2Krón	הַכֹּהֲנִים 2Krón	1	igen
+H2719	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H2896	igehely_rov	jó2Krón	jó 2Krón	1	igen
+H2896	igehely_rov	értelem2Krón	értelem 2Krón	1	igen
+H2896	igehely_rov	דברים2Krón	דברים 2Krón	1	igen
+H2896	igehely_rov	עשׂה2Krón	עשׂה 2Krón	1	igen
+H3027	glossza_visszaallit	AV: Gedalja miatt	AV because of Gedaliah	1	igen
+H3027	igehely_rov	compareIsaiah	compare Ézs	1	igen
+H3027	nevalakok	Izrael	Izráel	1	igen
+H3045	igehely_rov	tanultÉzs	tanult Ézs	1	igen
+H3045	igehely_rov	valakireZsolt	valakire Zsolt	1	igen
+H3045	igehely_rov	לְהַלֵּל2Krón	לְהַלֵּל 2Krón	1	igen
+H3045	igehely_rov	שֶׂכֶל2Krón	שֶׂכֶל 2Krón	1	igen
+H3045	nevalakok	Izraelről	Izráelről	1	igen
+H3063	igehely_rov	מַלְכוּת2Krón	מַלְכוּת 2Krón	1	igen
+H3063	nevalakok	Izraeltől:	Izráeltől:	1	igen
+H3068	elofordulas	D^228t.;	D^228-szor;	1	igen
+H3068	elofordulas	D^25t.;	D^25-ször;	1	igen
+H3117	nevalakok	Izrael	Izráel	2	igen
+H3205	elofordulas	(3 t. a versben)	(a versben 3-szor)	1	igen
+H3205	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H3205	nevalakok	Izrael	Izráel	2	igen
+H3205	nevalakok	Izraelről	Izráelről	1	igen
+H3205	nevalakok	Izraelről,	Izráelről,	1	igen
+H3220	igehely_rov	יָם2Krón	יָם 2Krón	1	igen
+H3254	igehely_rov	עלחֿטאתנו׳ה2Krón	עלחֿטאתנו׳ה 2Krón	1	igen
+H3318	elofordulas	(3 t. a versben);	(a versben 3-szor);	2	igen
+H3318	igehely_rov	כְּעֵת2Krón	כְּעֵת 2Krón	1	igen
+H3318	nevalakok	Izrael	Izráel	1	igen
+H3318	nevalakok	Izraelre).	Izráelre).	1	igen
+H3372	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H3381	nevalakok	Izraelről	Izráelről	1	igen
+H3389	elofordulas	322t.,	322-szer,	1	igen
+H3389	elofordulas	Ézs^127t.,	Ézs^127-szer,	1	igen
+H3389	nevalakok	Izrael,	Izráel,	1	igen
+H3478	nevalakok	Izrael	Izráel	2	igen
+H3519	igehely_rov	׳עשֶׁר2Krón	׳עשֶׁר 2Krón	1	igen
+H3548	igehely_rov	הלוים2Krón	הלוים 2Krón	1	igen (#28, DT-F38f 1)
+H3548	igehely_rov	לבמות2Krón	לבמות 2Krón	1	igen (#28, DT-F38f 1)
+H3548	igehely_rov	ליחוה2Krón	ליחוה 2Krón	1	igen (#28, DT-F38f 1)
+H3548	igehely_rov	׳שָׂרֵי2Krón	׳שָׂרֵי 2Krón	1	igen (#28, DT-F38f 1)
+H3559	igehely_rov	elintéztetni2Chr	elintéztetni 2Krón	1	igen
+H3559	igehely_rov	tenni2Chr	tenni 2Krón	1	igen
+H3559	igehely_rov	אֱלֹהָיו2Krón	אֱלֹהָיו 2Krón	1	igen
+H3559	igehely_rov	עַל2Krón	עַל 2Krón	1	igen
+H3588	nevalakok	Izraelnek	Izráelnek	1	igen
+H3615	igehely_rov	teljesen2Chr	teljesen 2Krón	1	igen
+H3627	elofordulas	(3 t. a versben),	(a versben 3-szor),	1	igen
+H3678	igehely_rov	הַמַּמְלָכָה2Krón	הַמַּמְלָכָה 2Krón	1	igen (#28, DT-F38f 1)
+H3701	elofordulas	(19 t.),	(19-szer),	1	igen
+H3701	elofordulas	(28 t.)	(28-szor)	1	igen
+H3772	igehely_rov	favágók2Krón	favágók 2Krón	1	igen
+H3789	igehely_rov	אִגֶּרֶת2Krón	אִגֶּרֶת 2Krón	1	igen
+H3789	igehely_rov	כְּתוּבוֺת2Krón	כְּתוּבוֺת 2Krón	1	igen
+H3789	igehely_rov	כִּדְנָהEzsd	כִּדְנָה Ezsd	1	igen
+H3789	igehely_rov	עַלדִּֿבְרֵי2Krón	עַלדִּֿבְרֵי 2Krón	1	igen
+H3808	nevalakok	Izraelnek,	Izráelnek,	1	igen
+H3820	igehely_rov	ráirányítani2Krón	ráirányítani 2Krón	1	igen
+H3820	igehely_rov	בא2Krón	בא 2Krón	1	igen
+H3820	igehely_rov	עם2Krón	עם 2Krón	1	igen
+H3824	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H3824	igehely_rov	׳יִשְׁרֵי2Krón	׳יִשְׁרֵי 2Krón	1	igen
+H3915	elofordulas	2 t.	2-szer	1	igen
+H3915	elofordulas	25 t.	25-ször	1	igen
+H3915	elofordulas	51 t.;	51-szer;	1	igen
+H3947	igehely_rov	׳י5Móz	׳י 5Móz	1	igen
+H3967	elofordulas	(4 t. a versben),	(a versben 4-szer),	1	igen
+H3967	igehely_rov	׳רָאשֵׁיהֶם1Krón	׳רָאשֵׁיהֶם 1Krón	1	igen
+H4057	igehely_rov	תקוע2Krón	תקוע 2Krón	1	igen
+H4100	elofordulas	(3 t. a versben):	(a versben 3-szor):	1	igen
+H4150	igehely_rov	מוֺעֲדוֺת2Krón	מוֺעֲדוֺת 2Krón	1	igen
+H4191	elofordulas	(3 t. a versben)	(a versben 3-szor)	1	igen
+H4196	igehely_rov	הזהב2Krón	הזהב 2Krón	1	igen
+H4196	igehely_rov	העולה2Krón	העולה 2Krón	1	igen
+H4196	igehely_rov	טִהַר2Krón	טִהַר 2Krón	1	igen
+H4196	igehely_rov	שִׁבַּר2Krón	שִׁבַּר 2Krón	1	igen
+H4264	igehely_rov	׳שַׁעֲרֵי2Krón	׳שַׁעֲרֵי 2Krón	1	igen
+H4294	elofordulas	(183 t.),	(183-szor),	1	igen
+H4294	elofordulas	(4 t. a versben)	(a versben 4-szer)	1	igen
+H4294	elofordulas	10 t.	10-szer	1	igen
+H4310	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H4310	elofordulas	(6 t.)	(6-szor)	1	igen
+H4310	igehely_rov	vÁmós	v Ámós	1	igen
+H4325	igehely_rov	מֵימֵי2Krón	מֵימֵי 2Krón	1	igen
+H4397	igehely_rov	מַלְאָכָיו2Krón	מַלְאָכָיו 2Krón	1	igen
+H4428	nevalakok	Izrael	Izráel	1	igen
+H4428	nevalakok	Izraelé	Izráelé	1	igen
+H4467	igehely_rov	מַמְלְכוֺת2Krón	מַמְלְכוֺת 2Krón	1	igen (#28, DT-F38f 1)
+H4467	igehely_rov	עַל2Krón	עַל 2Krón	1	igen (#28, DT-F38f 1)
+H4480	glossza_visszaallit	RVm: valami miatt	RVm because of	1	igen
+H4480	nevalakok	Izrael	Izráel	4	igen
+H4672	elofordulas	(3 t. a versben),	(a versben 3-szor),	1	igen
+H4672	nevalakok	Izraelre	Izráelre	1	igen
+H4872	igehely_rov	׳סֵפֶר2Krón	׳סֵפֶר 2Krón	1	igen
+H5030	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H5046	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H5221	igehely_rov	okoznak2Krón	okoznak 2Krón	1	igen
+H5221	nevalakok	Izraelt	Izráelt	1	igen
+H5307	elofordulas	(3 t. a versben)	(a versben 3-szor)	1	igen
+H5307	igehely_rov	אַ֫רְצָה2Krón	אַ֫רְצָה 2Krón	1	igen
+H5307	igehely_rov	׳י2Krón	׳י 2Krón	1	igen
+H5307	nevalakok	Izraelre	Izráelre	1	igen
+H5315	glossza_visszaallit	RV: magában	RV in himself	1	igen (#28, DT-F38f 1)
+H5315	glossza_visszaallit	RVm: vágy tudás nélkül	RVm desire without knowledge	1	igen (#28, DT-F38f 1)
+H5315	igehely_rov	הלך1Kir	הלך 1Kir	1	igen (#28, DT-F38f 1)
+H5315	igehely_rov	מלּט1Sám	מלּט 1Sám	1	igen (#28, DT-F38f 1)
+H5414	nevalakok	Izrael	Izráel	1	igen
+H5493	elofordulas	(3 t. a versben);	(a versben 3-szor);	2	igen
+H5612	igehely_rov	הַמְּלָכִים2Krón	הַמְּלָכִים 2Krón	1	igen
+H5612	igehely_rov	משֶׁה2Krón	משֶׁה 2Krón	1	igen
+H5612	igehely_rov	׳תּוֺרַת2Krón	׳תּוֺרַת 2Krón	1	igen
+H5650	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H5650	igehely_rov	כבשׁ2Krón	כבשׁ 2Krón	1	igen
+H5650	nevalakok	Izrael	Izráel	4	igen
+H5650	nevalakok	Izraelre	Izráelre	1	igen
+H5650	nevalakok	Izraeltől,	Izráeltől,	1	igen
+H5674	elofordulas	(4 t. a versben);	(a versben 4-szer);	1	igen
+H5674	igehely_rov	הַעֲבִירוּנִי2Krón	הַעֲבִירוּנִי 2Krón	1	igen
+H5674	igehely_rov	מֵעִיר2Krón	מֵעִיר 2Krón	1	igen
+H5704	igehely_rov	felettébb2Krón	felettébb 2Krón	1	igen
+H5704	igehely_rov	לְמֵרָחוֺק2Krón	לְמֵרָחוֺק 2Krón	1	igen
+H5704	igehely_rov	מצרים2Krón	מצרים 2Krón	1	igen
+H5704	igehely_rov	עַד2Krón	עַד 2Krón	2	igen
+H5750	elofordulas	(14 t.:	(14-szer:	1	igen
+H5750	igehely_rov	עוֺד2Krón	עוֺד 2Krón	1	igen
+H5769	glossza_visszaallit	RVm: az idők sziklája	RVm rock of ages	1	igen
+H5769	igehely_rov	עֵילוֺם2Krón	עֵילוֺם 2Krón	1	igen
+H5869	elofordulas	(3 t. a versben)	(a versben 3-szor)	1	igen
+H5869	igehely_rov	ל2Krón	ל 2Krón	1	igen
+H5869	igehely_rov	מֵימֵי2Krón	מֵימֵי 2Krón	1	igen
+H5892	igehely_rov	׳הָעEz	׳הָע Ez	1	igen
+H5927	igehely_rov	ellen2Krón	ellen 2Krón	1	igen
+H5927	igehely_rov	הֹעֲלָה2Krón	הֹעֲלָה 2Krón	1	igen
+H5927	igehely_rov	לבית2Krón	לבית 2Krón	1	igen
+H5927	igehely_rov	עלהֿמגדלות2Krón	עלהֿמגדלות 2Krón	1	igen
+H5971	igehely_rov	kapu2Krón	kapu 2Krón	1	igen
+H5971	nevalakok	Izrael	Izráel	2	igen
+H5973	elofordulas	(3 t. a versben).	(a versben 3-szor).	1	igen
+H5973	igehely_rov	יֵאָמֵן2Krón	יֵאָמֵן 2Krón	1	igen
+H5975	igehely_rov	מַעֲמִיד2Krón	מַעֲמִיד 2Krón	1	igen
+H6256	igehely_rov	vöNeh	vö Neh	1	igen
+H6310	elofordulas	(3 t. a versben)	(a versben 3-szor)	1	igen
+H6310	igehely_rov	által2Krón	által 2Krón	1	igen
+H6440	igehely_rov	szembeszállni2Krón	szembeszállni 2Krón	1	igen
+H6440	nevalakok	Izrael	Izráel	1	igen
+H6440	nevalakok	Izraelnek, Izrael	Izráelnek, Izráel	1	igen
+H6547	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H6547	elofordulas	19 t.	19-szer	1	igen
+H6629	elofordulas	317t.	317-szer	1	igen
+H6635	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H6635	igehely_rov	ישׂראל2Krón	ישׂראל 2Krón	1	igen
+H6635	nevalakok	(Izrael	(Izráel	1	igen
+H6635	nevalakok	Izrael	Izráel	1	igen
+H6635	nevalakok	Izraelről);	Izráelről);	1	igen
+H6680	igehely_rov	עַלתָֿגָב2Krón	עַלתָֿגָב 2Krón	1	igen
+H6963	elofordulas	(4 t. a versben)	(a versben 4-szer)	1	igen
+H6963	igehely_rov	׳חֲצֹצְרוֺת2Krón	׳חֲצֹצְרוֺת 2Krón	1	igen
+H6965	elofordulas	(3 t. a versben)	(a versben 3-szor)	1	igen
+H6965	nevalakok	Izraelből);	Izráelből);	1	igen
+H7126	elofordulas	(15 t.)	(15-ször)	1	igen
+H7126	elofordulas	(27 t.)	(27-szer)	1	igen
+H7126	elofordulas	(3 t. a versben)	(a versben 3-szor)	1	igen
+H7126	elofordulas	142 t.)	142-szer)	1	igen
+H7126	elofordulas	158 t.)	158-szor)	1	igen
+H7126	elofordulas	33 t.);	33-szor);	1	igen
+H7218	igehely_rov	׳הָר2Krón	׳הָר 2Krón	1	igen
+H7227	igehely_rov	רָ֛ב2Krón	רָ֛ב 2Krón	1	igen
+H7235	igehely_rov	hozni2Chr	hozni 2Krón	1	igen
+H7307	elofordulas	(117 t.):	(117-szer):	1	igen
+H7307	elofordulas	(25 t.):	(25-ször):	1	igen
+H7307	elofordulas	(3 t. a versben);	(a versben 3-szor);	2	igen
+H7307	elofordulas	(33 t.):	(33-szor):	1	igen
+H7307	elofordulas	(76 t.;	(76-szor;	1	igen
+H7307	elofordulas	(94 t.;	(94-szer;	1	igen
+H7307	glossza_visszaallit	RV: lehelet	RV breath	1	igen
+H7307	igehely_rov	׃לֵבEz	׃לֵב Ez	1	igen
+H7307	igehely_rov	הִנְנִי2Kir	הִנְנִי 2Kir	1	igen
+H7307	nevalakok	Izraelben:	Izráelben:	1	igen
+H7307	nevalakok	Izraelt	Izráelt	1	igen
+H7311	igehely_rov	בַּחֲצֹצְרוֺת2Krón	בַּחֲצֹצְרוֺת 2Krón	1	igen
+H7563	igehely_rov	השׁיב2Krón	השׁיב 2Krón	1	igen
+H7563	igehely_rov	שׂנְאֵי2Krón	שׂנְאֵי 2Krón	1	igen
+H7586	nevalakok	Izrael	Izráel	1	igen
+H7650	igehely_rov	igeDeuteronomy	ige 5Móz	2	igen
+H7651	elofordulas	(15 t.)	(15-ször)	1	igen
+H7651	elofordulas	(20 t.),	(20-szor),	1	igen
+H7651	elofordulas	(3 t. a versben)	(a versben 3-szor)	1	igen
+H7651	elofordulas	7 t.	7-szer	1	igen
+H7651	igehely_rov	שְׁנַת5Móz	שְׁנַת 5Móz	1	igen
+H7704	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H7725	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H7725	elofordulas	(4 t. a versben)	(a versben 4-szer)	1	igen
+H7725	igehely_rov	וַהֲשֵׁיבוֺתָם2Krón	וַהֲשֵׁיבוֺתָם 2Krón	1	igen
+H7725	igehely_rov	וַיְשִׁיבֵם2Krón	וַיְשִׁיבֵם 2Krón	1	igen
+H7760	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H7901	igehely_rov	בַּמִּשְׁכָּב2Krón	בַּמִּשְׁכָּב 2Krón	1	igen
+H7965	elofordulas	(3 t. a versben);	(a versben 3-szor);	2	igen
+H7965	elofordulas	10 t.;	10-szer;	1	igen
+H7965	elofordulas	5 t.;	5-ször;	1	igen
+H7971	igehely_rov	לִי1Sám	לִי 1Sám	1	igen
+H8033	nevalakok	Izrael	Izráel	2	igen
+H8033	nevalakok	Izraelben,	Izráelben,	1	igen
+H8064	nevalakok	(Izraelé)	(Izráelé)	1	igen
+H8064	nevalakok	Izraellel	Izráellel	1	igen
+H8064	nevalakok	Izraelről,	Izráelről,	1	igen
+H8104	elofordulas	(12 t.),	(12-szer),	1	igen
+H8104	elofordulas	(24 t.),	(24-szer),	1	igen
+H8104	elofordulas	(3 t.)	(3-szor)	1	igen
+H8147	elofordulas	(55 t.)	(55-ször)	1	igen
+H8147	elofordulas	(90 t.),	(90-szer),	1	igen
+H8179	igehely_rov	הַיְסוֺד2Krón	הַיְסוֺד 2Krón	1	igen
+H8179	igehely_rov	׳הַסּוּסִים2Krón	׳הַסּוּסִים 2Krón	1	igen
+H8179	igehely_rov	׳שַׁעֲרֵי2Krón	׳שַׁעֲרֵי 2Krón	1	igen
+H8199	igehely_rov	חִשָּׁפֵט2Krón	חִשָּׁפֵט 2Krón	1	igen
+H8199	igehely_rov	ל2Krón	ל 2Krón	1	igen
+H8199	igehely_rov	שׂרים2Krón	שׂרים 2Krón	1	igen
+H8269	elofordulas	(3 t. a versben);	(a versben 3-szor);	1	igen
+H8269	elofordulas	(4 t. a versben);	(a versben 4-szer);	1	igen
+H8269	igehely_rov	שָׂרֵי2Krón	שָׂרֵי 2Krón	1	igen
+H8269	nevalakok	(Észak-Izrael)	(Észak-Izráel)	1	igen
+H8269	nevalakok	Izrael	Izráel	1	igen
+H8269	nevalakok	Izraelé	Izráelé	1	igen
+H8337	igehely_rov	בָּנוֺת2Krón	בָּנוֺת 2Krón	1	igen
+H8337	igehely_rov	׳ע2Krón	׳ע 2Krón	1	igen
+H8432	elofordulas	(116 t.).	(116-szor).	1	igen
+H8432	elofordulas	(12 t.)	(12-szer)	1	igen
+H8432	nevalakok	Izrael	Izráel	1	igen
+H8451	igehely_rov	הַתּוֺרָה2Krón	הַתּוֺרָה 2Krón	1	igen
+H8451	igehely_rov	לֹא2Krón	לֹא 2Krón	1	igen
+H8451	igehely_rov	תורת2Krón	תורת 2Krón	1	igen
+H8451	igehely_rov	׳בספר2Krón	׳בספר 2Krón	1	igen
+H8451	igehely_rov	׳דברי2Krón	׳דברי 2Krón	1	igen
+H8478	nevalakok	Izraelről	Izráelről	1	igen
+H9004	igehely_rov	nézve2Krón	nézve 2Krón	1	igen
+H9005	elofordulas	לָהֵ֫נָּה5t.,	לָהֵ֫נָּה5-ször,	1	igen
+H9005	igehely_rov	חֵרֵף2Krón	חֵרֵף 2Krón	1	igen
+H9005	igehely_rov	לְלֹא2Krón	לְלֹא 2Krón	1	igen
+H9005	igehely_rov	לתקופת2Krón	לתקופת 2Krón	1	igen
+H9005	igehely_rov	לשׁנת2Krón	לשׁנת 2Krón	1	igen
+H2617	konyv_rov	ᵐ51Pt	ᵐ51Pét	1	igen
+H1004	igehely_rov	לְמַלְכוּתוֺ2Krón	לְמַלְכוּתוֺ 2Krón	1	igen
+H1129	igehely_rov	לְךָ2Krón	לְךָ 2Krón	1	igen
+H1419	igehely_rov	גְּדוֺלֶיהָNáh	גְּדוֺלֶיהָ Náh	1	igen
+H1471	igehely_rov	גּוֺיֵ2Krón	גּוֺיֵ 2Krón	1	igen
+H1540	igehely_rov	נִגְלוּ1Móz	נִגְלוּ 1Móz	1	igen
+H1870	igehely_rov	׳וַיִּגְבַּהּ2Krón	׳וַיִּגְבַּהּ 2Krón	1	igen
+H2091	igehely_rov	׳וַיְחַמֵּהוּ2Krón	׳וַיְחַמֵּהוּ 2Krón	1	igen
+H2398	igehely_rov	וַיְחַטְּאוּ2Krón	וַיְחַטְּאוּ 2Krón	1	igen
+H2428	igehely_rov	׳בְּכֹחַ2Krón	׳בְּכֹחַ 2Krón	1	igen
+H3423	igehely_rov	הוֺרַשְׁתָּ2Krón	הוֺרַשְׁתָּ 2Krón	1	igen
+H3423	igehely_rov	מִיְּרֻשָּֽׁתְךָ2Krón	מִיְּרֻשָּֽׁתְךָ 2Krón	1	igen
+H3519	igehely_rov	לְ2Krón	לְ 2Krón	1	igen
+H3519	igehely_rov	׳וְלֹאלְֿךָ2Krón	׳וְלֹאלְֿךָ 2Krón	1	igen
+H3559	igehely_rov	הכונוּ2Krón	הכונוּ 2Krón	1	igen
+H3820	igehely_rov	גֹּבַהּ2Krón	גֹּבַהּ 2Krón	1	igen
+H3824	igehely_rov	לְ2Krón	לְ 2Krón	1	igen
+H3915	igehely_rov	׳עַדלֿ2Krón	׳עַדלֿ 2Krón	1	igen
+H4191	igehely_rov	הֱמִיתָ֑תְהוּ2Krón	הֱמִיתָ֑תְהוּ 2Krón	1	igen
+H4467	igehely_rov	לְ2Krón	לְ 2Krón	1	igen (#28, DT-F38f 1)
+H5674	igehely_rov	וַיַּעֲבֶרֿ2Krón	וַיַּעֲבֶרֿ 2Krón	1	igen
+H5800	igehely_rov	אֹתוֺ2Krón	אֹתוֺ 2Krón	1	igen
+H7307	igehely_rov	יְהוֺשֻׁעַ4Móz	יְהוֺשֻׁעַ 4Móz	1	igen
+H7307	igehely_rov	רוּחַ2Kir	רוּחַ 2Kir	1	igen
+H7307	igehely_rov	רוּחַÉzs	רוּחַ Ézs	1	igen
+H7725	igehely_rov	׳עַליֿ2Krón	׳עַליֿ 2Krón	1	igen
+H8199	igehely_rov	בְּ2Krón	בְּ 2Krón	1	igen
+H8451	igehely_rov	לְמִעְוָךְ2Krón	לְמִעְוָךְ 2Krón	1	igen
+H0006	elofordulas	12:2-3t.;	12:2, összesen 3-szor;	1	igen
+H0006	elofordulas	22:3-4t.;	22:3, összesen 4-szer;	1	igen
+H0727	elofordulas	3:16-17t.	3:16, összesen 17-szer	1	igen
+H0899	elofordulas	50:9-10t.;	50:9, összesen 10-szer;	1	igen
+H1245	elofordulas	28:7-8t.;	28:7, összesen 8-szor;	1	igen
+H1245	elofordulas	65:1-2t.;	65:1, összesen 2-szer;	1	igen
+H1696	elofordulas	6:29-30t.;	6:29, összesen 30-szor;	1	igen
+H1697	elofordulas	25:3-4t.	25:3, összesen 4-szer	1	igen
+H1870	elofordulas	19:2-3t.,	19:2, összesen 3-szor,	1	igen
+H1961	elofordulas	11:13-14t.;	11:13, összesen 14-szer;	1	igen
+H1980	elofordulas	9:3-4t.	9:3, összesen 4-szer	1	igen
+H2022	elofordulas	9:9-10t.	9:9, összesen 10-szer	1	igen
+H2403	rv_av_kezi	RV fordítása sin-offering;	RV renders sin-offering;	1	igen (kézi, DT-F38f 5)
+H2691	elofordulas	13:23-24t.	13:23, összesen 24-szer	1	igen
+H2719	elofordulas	22:23-24t.;	22:23, összesen 24-szer;	1	igen
+H2719	elofordulas	2:4-5t.;	2:4, összesen 5-ször;	1	igen
+H3205	elofordulas	13:2-3t.	13:2, összesen 3-szor	1	igen
+H3205	elofordulas	14:1-2t.;	14:1, összesen 2-szer;	1	igen
+H3381	elofordulas	39:1-2t.	39:1, összesen 2-szer	1	igen
+H3478	elofordulas	19:8-9t.	19:8, összesen 9-szer	1	igen
+H3709	elofordulas	7:14-15t.	7:14, összesen 15-ször	1	igen
+H3772	elofordulas	15:18-19t.;	15:18, összesen 19-szer;	1	igen
+H3772	rv_av_kezi	RV szerint fordítják: made for thee a covenant with them,	RV made for thee a covenant with them,	1	igen (kézi, DT-F38f 5)
+H4150	rv_av_kezi	RV rendszerint set feast vagy appointed season	RV usually set feast or appointed season	1	igen (kézi, DT-F38f 5)
+H4264	elofordulas	10:4-5t.;	10:4, összesen 5-ször;	1	igen
+H4264	elofordulas	32:8-9t.;	32:8, összesen 9-szer;	1	igen
+H4325	elofordulas	4:9-10t.	4:9, összesen 10-szer	1	igen
+H4397	rv_av_kezi	(az RV angel szava túl szűk)	(az angyal RV too specific)	1	igen (kézi, DT-F38f 5)
+H4503	elofordulas	28:5-6t.	28:5, összesen 6-szor	1	igen
+H5337	elofordulas	37:22-23t.	37:22, összesen 23-szor	1	igen
+H5674	rv_av_kezi	RVm, akik felemésztik, felfalják őket	RVm, those that shall consume, devour them	1	igen (kézi, DT-F38f 5)
+H5927	elofordulas	32:1-2t.;	32:1, összesen 2-szer;	1	igen
+H6213	elofordulas	10:3-4t.	10:3, összesen 4-szer	1	igen
+H6240	elofordulas	1:3-4t.	1:3, összesen 4-szer.	1	igen
+H6240	elofordulas	3:2-3t.;	3:2, összesen 3-szor;	1	igen
+H6485	elofordulas	5:9-10t.;	5:9, összesen 10-szer;	1	igen
+H7650	elofordulas	1:8-9t.	1:8, összesen 9-szer	1	igen
+H7651	elofordulas	12:2-3t.,	12:2, összesen 3-szor,	1	igen
+H7651	elofordulas	37:2-3t.	37:2, összesen 3-szor	1	igen
+H7760	elofordulas	12:5-6t.;	12:5, összesen 6-szor;	1	igen
+H7760	elofordulas	2:7-8t.	2:7, összesen 8-szor	1	igen
+H8033	rv_av_kezi	RVm onnan [a mennyből], (onnan) a Pásztor (׳י), Izráel Köve (Sziklája),	RVm from there [from heaven], (from) the Shepherd (׳י), the Stone (Rock) of Israel,	1	igen (kézi, DT-F38f 5)
+H8085	elofordulas	4:5-6t.	4:5, összesen 6-szor	1	igen
+H8085	elofordulas	7:13-14t.	7:13, összesen 14-szer	1	igen
+H8141	elofordulas	32:7-8t.	32:7, összesen 8-szor	1	igen
+H3772	rv_av_kezi	helyet rendszerint az RV made for thee a covenant with them,	helyet rendszerint így fordítják: RV made for thee a covenant with them,	1	igen (kézi, DT-F38g 1)
+H5674	szellem_nagybetu	abszolút használatban és מֵאֵת 1Kir 22:24	a Szellemről abszolút használatban és מֵאֵת 1Kir 22:24	1	igen (kézi, DT-F38g 2)
+H4397	rv_av_kezi	(az angyal RV too specific)	(az RV angel szava túl szűk)	1	igen (kézi, DT-F38g 4)
+H4264	elofordulas	1Móz 33:816t.	1Móz 33:8, összesen 16-szor	1	igen (kézi, DT-F38g 5)

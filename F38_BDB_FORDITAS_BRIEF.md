@@ -1,21 +1,22 @@
 ---
 feladat: 38
-cim: A teljes BDB héber szótár magyar fordítása Opusszal, megállási pontokkal
+cim: A teljes BDB héber szótár magyar fordítása, megállási pontokkal
 kod: BDB_FORDITAS
 tipus: feladat
 fazis: 1
-modell: opus
-allapot: nem_indult
-ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=opus), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
-kovetkezo: M0 felmérés + M1 mérő adag, utána megállási pont (⛔ M1)
-olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md, konkordancia/Strong_szotar.tsv, "konkordancia/TAHOT_kivonat.tsv"]
-ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md, naplok/BDB_FORDITAS_gyokcsoportok.tsv]
+modell: sonnet
+allapot: megallt
+ag: claude/admiring-bohr-texair
+ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=sonnet; az 1–4. adagra is, DT-F38e), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
+kovetkezo: Te: a DT-F38g három nyitott tételének (N-F38a–c: FORRAS_VERS_OCR jóváhagyás, H7451/H4390, H5674 szövegezés) eldöntése, PR merge, majd az 5. adag Sonnettel
+olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv]
+ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/teszt_forditas_kapuk.py, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, forditas/prompt_v4.md, naplok/BDB_FORDITAS_kapuk.py, naplok/BDB_FORDITAS_regresszio.py, naplok/FORDITAS_kisnagybetu_csere.tsv, naplok/BDB_FORDITAS_gyokcsoportok.tsv, naplok/BDB_FORDITAS_zaras2.py, naplok/BDB_FORDITAS_zaras3.py, naplok/BDB_FORDITAS_zaras_javitasok.tsv, eszkozok/teszt_bdb_zaras.py, NYITOTT_FELADATOK.md, naplok/ELLENOR_F38_zaras_2.md, naplok/ELLENOR_F38_zaras_3.md]
 fugg: [34]
 ---
 
 # A teljes BDB magyar fordítása (BDB_FORDITAS)
 
-*v1.1 · 2026.10.02 · M0 5. pont (BDB-gyökcsoportok felmérése) · v1 · 2026.10.01 · a #28 (EMELES) tapasztalatai alapján · cloud session, Claude Code kredit (túlfutás esetén a heti keretből)*
+*v1.2 · 2026.10.02 · zárómenet 3. kör (DT-F38g; a fejléc frissítve, a DT-sorok változatlanok) · v1.1 · 2026.10.02 · M0 5. pont (BDB-gyökcsoportok felmérése) · v1 · 2026.10.01 · a #28 (EMELES) tapasztalatai alapján · cloud session, Claude Code kredit (túlfutás esetén a heti keretből)*
 
 ## Cél
 
@@ -52,7 +53,7 @@ A gyakoriságot az M0 számolja egy Strong-címkés ószövetségi szövegből a
 
 ### M0 — Felmérés (csak olvas)
 
-1. Ellenőrzi, hogy az F34 a `main`-en van, és a 13. kapu a forráson 0 jelzést ad. Ha nem, megáll és jelez.
+1. Ellenőrzi, hogy az F34 a `main`-en van, és a 13. kapu csak a jóváhagyott F34-maradékon és az N-F34c körén jelezhet. Ha nem, megáll és jelez. *(Javítva 2026.10.01, DT-F38 (b): az eredeti „a 13. kapu a forráson 0 jelzést ad” feltétel hibás volt, mert az F34 a ψ-hiba B/R maradékát a DT-F34b/c szerint szándékosan hagyta meg; a mért 91 jelző szócikk — 83 F34-maradék, 8 N-F34c — a futást nem állítja meg.)*
 2. Elkészíti a `naplok/BDB_FORDITAS_sorrend.tsv`-t: `sorszam`, `strong`, `gyakorisag`, `karakter`, `adag`. A már lefordított szócikkek (az `adat/forditasok.tsv` `teljes` sorai) kimaradnak.
 3. Kijelöli a 20 000 karakter fölötti szócikkek szegmenshatárait (jelentésszámok mentén, ahogy a #28 a G4151-nél és a H1121-nél tette).
 4. Adagokra osztja a listát: **M1 mérő adag kb. 150 000 karakter**, utána **adagonként kb. 500 000 karakter** (kb. 13 adag).
@@ -83,7 +84,7 @@ Adagonként kb. 500 000 karakter, a sorrend szerint. Minden adag végén megáll
 
 ## Megállási pont (minden adag végén)
 
-1. Az adag fordításai az `emeles.py rogzit` útján az `adat/forditasok.tsv`-be kerülnek, `allapot=opus`, `modell` a tényleges modellnév.
+1. Az adag fordításai az `emeles.py rogzit` útján az `adat/forditasok.tsv`-be kerülnek, `allapot=sonnet` (~~`opus`~~ — a DT-F38e szerint), `modell` a tényleges modellnév (kötelező, nincs alapérték).
 2. Lefut a teljes kapusor, az `ellenoriz.py` és a `futtat.py`. Piros esetén nem commitol, csak jelent (szabály, sor).
 3. **Commit és push** az ágra. Commit-üzenet: `BDB_FORDITAS adag <n>: <szócikk> szócikk, <karakter> karakter`.
 4. Rövid jelentés a chatnek (legfeljebb 8 sor): adag száma, szócikk, karakter, összesen kész / hátra (szócikk és karakter), kapuhibák száma, a hibás listára került szócikkek száma, a commit.
@@ -129,4 +130,9 @@ Olvasd el a `BDB_FORDITAS_BRIEF.md`-t, és hajtsd végre az M0-t és az M1-et. E
 | D5 | F34 (ψ-javítás) előfeltétel | hibás forrást ne fordítsunk le | fordítás most, javítás utólag |
 | D6 | Kevés ⛔ (M1, Mz), a többi megállás csak „folytasd”-ra vár | a #28-ban a sok döntési kör vitte a költség és az idő nagy részét | minden adag után tartalmi ellenőrzés |
 | D7 | Egy végrehajtó, subagent nélkül | egységes terminológia, egy kontextus (#28 tapasztalata) | párhuzamos subagentek |
+| D8 (DT-F38d) | (a) az 5. adag a következő menetben indul (~~Opus-menetben~~ — a DT-F38e szerint Sonnettel); (b), (c), (d) igen, a zárómenetben végrehajtva. | felhasználói döntés, 2026.10.02; l. `DONTESEK.md` DT-F38d | — |
+| D-új (DT-F38e) | a teljes BDB Sonnettel, a D1-et felülírja. | felhasználói döntés, 2026.10.02: az Opus-vakpróba (H2617, H7307) után a Sonnet szóhasználata közelebb áll a Károlihoz, és nincs benne szembeötlő félrefordítás; a Sonnet szabálykövetési hiányait kapuk és normalizáló pótolják; l. `DONTESEK.md` DT-F38e | a teljes BDB Opusszal (D1) |
+| D9 (DT-F38e) | ~~Az 1–4. adagot Opus újrafordítja, új ágon (felhasználói döntés, 2026.10.02).~~ **Felülírva a D-új-vel** (a teljes BDB Sonnettel). | l. `DONTESEK.md` DT-F38e | — |
+| D10 (DT-F38f) | (1) a gépi normalizáló-szabályok a #28 soraira is érvényesek (az `allapot` és a `modell` nem változik); (2) az 5. kapu a `spirit` kulcsnál a szellem/Szellem alakot és ragozott alakjaikat is elfogadja (kapuszabály; a H5307, H5414, H7760 kivétele megszűnt); (3) a Szellem-szabály: a BDB H7307 9. pontja nagybetűs, Isten által küldött rossz szellem, az emberi szellem és a szél kisbetűs, a kétséges marad és listára kerül; (4) a normalizáló a tartományos és a vershoz tapadt „N t.” alakot is kezeli; (5) ami a forrásban RV/AV/RVm után áll, angolul, szó szerint marad. | felhasználói döntés, 2026.10.02; l. `DONTESEK.md` DT-F38f | — |
+| D11 (DT-F38f) | a „-szor/-szer/-ször” toldalék a szám kiejtett utolsó szava szerinti hangrendhez igazodik (4-szer, 5-ször, 33-szor). | felhasználói döntés, 2026.10.02 | egységes „-szor” |
 | D-gyok | A BDB-gyökcsoportok csak felmérés az M0-ban, import nélkül; forrás az OpenScriptures `LexicalIndex.xml` (GitHub), nem a HF `bdb_roots` CSV | a TWOT-szám már gyökalapú csoportosítás a szerepmátrixban; a többlet mérés nélkül nem ismert; a GitHub-forrás a cloud sessionből is elérhető, a HF nem |

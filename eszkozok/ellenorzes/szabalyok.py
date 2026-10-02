@@ -851,7 +851,7 @@ def e16_ellenorzo_onmodositas(fajlok, pr_cim=''):
 # foglalja; ez a kovetkezo szabad szam.
 #
 # HIBA, ha az adat/lexikon_hivatkozasok.tsv egy Thayer- vagy BDB-sorahoz az
-# adat/forditasok.tsv-ben nincs `opus` vagy `kezi` allapotu `forditas_hu`
+# adat/forditasok.tsv-ben nincs `opus`, `sonnet` vagy `kezi` allapotu `forditas_hu`
 # sor, sem ugyanarra a `jelentes_szam`-ra, sem `teljes` szintre. A kulcs:
 # szotar + strong + entry_id (a strong a Strong_padded alakra normalizalva).
 # Csak akkor fut, ha a ket tabla valamelyike a valtozott fajlok kozott van;
@@ -859,7 +859,7 @@ def e16_ellenorzo_onmodositas(fajlok, pr_cim=''):
 # hivatkozas sora nem valtozott.
 
 E19_SZOTARAK = ('Thayer', 'BDB')
-E19_ALLAPOTOK = ('opus', 'kezi')
+E19_ALLAPOTOK = ('opus', 'sonnet', 'kezi')
 E19_FAJLOK = ('adat/lexikon_hivatkozasok.tsv', 'adat/forditasok.tsv')
 
 
@@ -891,7 +891,7 @@ def e19_szotari_forditas_hiany(fajlok):
             continue
         talalatok.append(Talalat(
             'E19', SZINT['E19'], 'adat/lexikon_hivatkozasok.tsv', sorszam,
-            '%s %s %s/%s -- nincs opus vagy kezi forditas (sem erre a jelentesre, sem teljes szintre)'
+            '%s %s %s/%s -- nincs opus, sonnet vagy kezi forditas (sem erre a jelentesre, sem teljes szintre)'
             % (szotar, d.get('strong'), d.get('entry_id'), d.get('jelentes_szam'))
         ))
     return talalatok
