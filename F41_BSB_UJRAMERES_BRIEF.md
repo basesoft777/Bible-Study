@@ -5,10 +5,10 @@ kod: BSB_UJRAMERES
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: dontesre_var
 ag: claude/f41-bsb-ujrameres
 ad: a versszámozás miatt küszöb alatt maradt ószövetségi könyvek a 95%-os küszöbbel újramérve és importálva, a többinél igazolt ok; a BSB_Strongs.tsv-ben megkülönböztethető a „szándékosan nem fordított” és a „hiányzó” angol szó
-kovetkezo: "Főszál: fuggetlen-ellenor az F41.7–F41.9 diffre (naplok/ELLENOR_F41.md frissítés), majd merge-előtti PR-frissítés; N-F41g/h külön feladat"
+kovetkezo: "Te: 4Móz 12/13 átszámozás (WLC szerint nem MT) és a 45 hibrid fejezet jelölése (N-F41h) döntése; main behúzása; javítás; újraellenőrzés; PR"
 olvas: [eszkozok/fj2/, konkordancia/TAHOT_kivonat.tsv, konkordancia/Macula_heber_*.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, naplok/F16_bsb_lefedettseg.tsv, naplok/F16_bsb_verseltolas_diagnozis.tsv, naplok/F16_bsb_zsolt_megfeleltetes.tsv]
 ir: [eszkozok/fj2/bsb_import.py, eszkozok/fj2/bsb_verseltolas_diag.py, eszkozok/fj2/wlc_versek.py, eszkozok/fj2/bsb_wlc_versszam_ellenorzes.py, eszkozok/fj2/bsb_nulladiff.py, konkordancia/BSB_Strongs.tsv, konkordancia/README.md, naplok/F16_bsb_lefedettseg.tsv, naplok/F41_bsb_megfeleltetes.tsv, naplok/F41_nem_egyezo_versek.tsv, naplok/F41_nulladiff.txt, naplok/F41_wlc_versszam_ellenorzes.tsv, naplok/F41_wlc_hatar_ellenorzes.tsv, naplok/F41_zaras.md, adat/datasetek.tsv, adat/SEMA.md, adat/szotar_szerepek.tsv, DONTESEK.md, NYITOTT_FELADATOK.md, F41_BSB_UJRAMERES_BRIEF.md]
 fugg: [16]
