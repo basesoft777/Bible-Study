@@ -2466,16 +2466,16 @@ ellenőrzi (14 nagybetűs hely, minden más kisbetűs; a `teszt_bdb_zaras.py` `D
 | H7760 | (4Móz 11:17) | átvitt értelemben Szellemet (עַל) 4Móz 11:17 | a H7307 9a pontja |
 | H1320 | 5 (Ézs 31:3) | a lovak hús, nem Szellem Ézs 31:3 | a H7307 9e pontja (életerő, szemben a בָשָׂר-rel) |
 | H5650 | (Ézs 42:1) | isteni Szellemmel | a BDB maga „divine Spirit” (az eredeti fordításban is nagybetűs volt; a korábbi táblából kimaradt) |
-| **H5674** | h. (1Kir 22:24; 2Krón 18:23) | a Szellemről abszolút használatban és מֵאֵת 1Kir 22:24 | **DT-F38g 2:** a BDB az 1Kir 22:24-et a H7307 9a pontjába sorolja („= י ׳רוּחַ 1Kin 22:24 2Chr 18:23”), ezért „az Úr Szelleme”; a 4Móz 5:14, 30 (a féltékenység szelleme) kisbetűs marad |
+| **H5674** | h. (1Kir 22:24; 2Krón 18:23) | a Szellemről abszolút használatban és מֵאֵת 1Kir 22:24 | **DT-F38g 2:** a BDB az 1Kir 22:24-et a H7307 9a pontjába sorolja („= י ׳רוּחַ 1Kin 22:24 2Chr 18:23”), ezért „az Úr Szelleme”; a 4Móz 5:14, 30 (a féltékenység szelleme) kisbetűs marad — **DT-F38h szerint eldöntve: marad „a Szellemről”, az „az Úr Szelleme” nem kerül be** |
 
 ### Kisbetűs marad, indoklással
 
 | Szócikk | Hely | Indok |
 |---|---|---|
 | H7307 | 3. (Elihu, hangulat, prófétai szellem), 5., 6. pont | emberi szellem (életerő, hangulat, értelem, prófétai szellem mint emberi adottság) |
-| H4390 | 2Móz 28:3; 31:3; 35:31 | egy BDB-frázis („fill with spirit”); a BDB maga nem mondja „God's/divine spirit”; a 31:3 és a 35:31 a H7307 9d pontja, a 28:3 a 6. pont (emberi): kifejezésen belül nem választható szét — **tartalmi kétség, a felhasználó döntésére** |
+| H4390 | 2Móz 28:3; 31:3; 35:31 | egy BDB-frázis („fill with spirit”); a BDB maga nem mondja „God's/divine spirit”; a 31:3 és a 35:31 a H7307 9d pontja, a 28:3 a 6. pont (emberi): kifejezésen belül nem választható szét — **tartalmi kétség, a felhasználó döntésére** — **DT-F38h szerint eldöntve: kisbetűs marad** |
 | H5674 | 4Móz 5:14, 30 | a féltékenység szelleme |
-| H7451 (#28) | 1Sám 16:14-15, 16, 23; 18:10; 19:9 | Isten által küldött rossz szellem (DT-F38f 3); **tartalmi kétség:** a BDB szövege itt maga „of the divine spirit as producing an ecstatic state of frenzy and violence”, vagyis az új szabály „ahol a BDB szövege maga mondja »divine spirit«” betűje szerint nagybetűs lenne („az isteni Szellemről”). A DT-F38f 3. szabálya (rossz szellem kisbetűs) és ez ütközik; nem döntöttem, a sor nem változott |
+| H7451 (#28) | 1Sám 16:14-15, 16, 23; 18:10; 19:9 | Isten által küldött rossz szellem (DT-F38f 3); **tartalmi kétség:** a BDB szövege itt maga „of the divine spirit as producing an ecstatic state of frenzy and violence”, vagyis az új szabály „ahol a BDB szövege maga mondja »divine spirit«” betűje szerint nagybetűs lenne („az isteni Szellemről”). A DT-F38f 3. szabálya (rossz szellem kisbetűs) és ez ütközik; nem döntöttem, a sor nem változott — **DT-F38h szerint eldöntve: kisbetűs marad** |
 | H1961 | 1Sám 16:16, 23; 19:9 | „Saul's evil spirit from God” |
 | H0854, H5493 | 1Sám 16:14 | gonosz szellem |
 | H6213 | 2Kir 21:6 | jósszellem |

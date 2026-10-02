@@ -8,7 +8,7 @@ modell: sonnet
 allapot: megallt
 ag: claude/admiring-bohr-texair
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=sonnet; az 1–4. adagra is, DT-F38e), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
-kovetkezo: Te: a DT-F38g három nyitott tételének (N-F38a–c: FORRAS_VERS_OCR jóváhagyás, H7451/H4390, H5674 szövegezés) eldöntése, PR merge, majd az 5. adag Sonnettel
+kovetkezo: Te: a PR #129 merge-e (a DT-F38h az N-F38a–c tételeket eldöntötte), majd az 5. adag Sonnettel
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv]
 ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/teszt_forditas_kapuk.py, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, forditas/prompt_v4.md, naplok/BDB_FORDITAS_kapuk.py, naplok/BDB_FORDITAS_regresszio.py, naplok/FORDITAS_kisnagybetu_csere.tsv, naplok/BDB_FORDITAS_gyokcsoportok.tsv, naplok/BDB_FORDITAS_zaras2.py, naplok/BDB_FORDITAS_zaras3.py, naplok/BDB_FORDITAS_zaras_javitasok.tsv, eszkozok/teszt_bdb_zaras.py, NYITOTT_FELADATOK.md, naplok/ELLENOR_F38_zaras_2.md, naplok/ELLENOR_F38_zaras_3.md]
 fugg: [34]
@@ -16,7 +16,7 @@ fugg: [34]
 
 # A teljes BDB magyar fordítása (BDB_FORDITAS)
 
-*v1.2 · 2026.10.02 · zárómenet 3. kör (DT-F38g; a fejléc frissítve, a DT-sorok változatlanok) · v1.1 · 2026.10.02 · M0 5. pont (BDB-gyökcsoportok felmérése) · v1 · 2026.10.01 · a #28 (EMELES) tapasztalatai alapján · cloud session, Claude Code kredit (túlfutás esetén a heti keretből)*
+*v1.3 · 2026.10.02 · DT-F38h (N-F38a–c eldöntve; a fejléc és a döntésnapló frissítve) · v1.2 · 2026.10.02 · zárómenet 3. kör (DT-F38g; a fejléc frissítve, a DT-sorok változatlanok) · v1.1 · 2026.10.02 · M0 5. pont (BDB-gyökcsoportok felmérése) · v1 · 2026.10.01 · a #28 (EMELES) tapasztalatai alapján · cloud session, Claude Code kredit (túlfutás esetén a heti keretből)*
 
 ## Cél
 
@@ -135,4 +135,5 @@ Olvasd el a `BDB_FORDITAS_BRIEF.md`-t, és hajtsd végre az M0-t és az M1-et. E
 | D9 (DT-F38e) | ~~Az 1–4. adagot Opus újrafordítja, új ágon (felhasználói döntés, 2026.10.02).~~ **Felülírva a D-új-vel** (a teljes BDB Sonnettel). | l. `DONTESEK.md` DT-F38e | — |
 | D10 (DT-F38f) | (1) a gépi normalizáló-szabályok a #28 soraira is érvényesek (az `allapot` és a `modell` nem változik); (2) az 5. kapu a `spirit` kulcsnál a szellem/Szellem alakot és ragozott alakjaikat is elfogadja (kapuszabály; a H5307, H5414, H7760 kivétele megszűnt); (3) a Szellem-szabály: a BDB H7307 9. pontja nagybetűs, Isten által küldött rossz szellem, az emberi szellem és a szél kisbetűs, a kétséges marad és listára kerül; (4) a normalizáló a tartományos és a vershoz tapadt „N t.” alakot is kezeli; (5) ami a forrásban RV/AV/RVm után áll, angolul, szó szerint marad. | felhasználói döntés, 2026.10.02; l. `DONTESEK.md` DT-F38f | — |
 | D11 (DT-F38f) | a „-szor/-szer/-ször” toldalék a szám kiejtett utolsó szava szerinti hangrendhez igazodik (4-szer, 5-ször, 33-szor). | felhasználói döntés, 2026.10.02 | egységes „-szor” |
+| D12 (DT-F38h) | (1) a `FORRAS_VERS_OCR` kapubővítés jóváhagyva; (2) a H7451 és a H4390 kisbetűs marad, a Szellem-szabály szűkítve: a „divine spirit” BDB-megnevezés önmagában nem tesz nagybetűssé, nagybetűs csak Isten Szelleme mint olyan (H7307 9. pont, vagy a BDB „God's spirit”-je), az Istentől küldött rossz szellem és a vegyes frázis (H4390) kisbetűs; (3) a H5674 1Kir 22:24 „a Szellemről” marad | felhasználói döntés, 2026.10.02 | a szöveg nem változik |
 | D-gyok | A BDB-gyökcsoportok csak felmérés az M0-ban, import nélkül; forrás az OpenScriptures `LexicalIndex.xml` (GitHub), nem a HF `bdb_roots` CSV | a TWOT-szám már gyökalapú csoportosítás a szerepmátrixban; a többlet mérés nélkül nem ismert; a GitHub-forrás a cloud sessionből is elérhető, a HF nem |
