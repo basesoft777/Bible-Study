@@ -585,10 +585,17 @@ def cel_megfeleltetes(mag, step, sorok, osztas, bsb_fej):
                                  % (mag, f, max(bsb_fej[f]), wlc_max.get(f)))
     cel_sorok, terkep = [], {}
     wlc = wlc_versek.wlc_konyv(wlc_versek.macula_kod(step))
+    widx = wlc_versek.wlc_index(wlc)
 
     def szam(f, v, *cel_versek):
         """7. oszlop: versszintu WLC-osszevetes (a BSB-vers Strong-halmaza vs a cel-vers(ek) WLC-halmaza); osztott versnel mindket cel-versnek egyeznie kell."""
-        if cel_versek and all(wlc_versek.vers_egyezik(wlc.get(c, set()), bsb_fej[f][v]) for c in cel_versek):
+        parok = []
+        if cel_versek:
+            if v - 1 in bsb_fej[f] and (cel_versek[0][0], cel_versek[0][1] - 1) in wlc:
+                parok.append((wlc[(cel_versek[0][0], cel_versek[0][1] - 1)], bsb_fej[f][v - 1]))
+            if v + 1 in bsb_fej[f] and (cel_versek[-1][0], cel_versek[-1][1] + 1) in wlc:
+                parok.append((wlc[(cel_versek[-1][0], cel_versek[-1][1] + 1)], bsb_fej[f][v + 1]))
+        if cel_versek and wlc_versek.vers_igazolt(wlc, widx, list(cel_versek), bsb_fej[f][v], wlc_versek.bsb_kornyezet(bsb_fej, f, v), parok):
             return 'mt'
         return 'kjv' if f in KJV_JELOLT_FEJEZETEK.get(mag, ()) else 'ellenorizetlen'
 

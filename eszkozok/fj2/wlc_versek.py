@@ -74,10 +74,107 @@ def wlc_fejezet_max(wlc):
     return ki
 
 
-def vers_egyezik(wlc_halmaz, bsb_halmaz):
-    """Versszintu szamozas-igazolas (F41, DT-F41f): igaz, ha a WLC-vers (nem ures) Strong-halmazanak TOBB MINT FELE a BSB-vers (Igehely-vers sorai) halmazaban van
-    (azonos modszer, mint a bsb_import.versillesztes: hanyad > 0,5). A BSB-halmaz 9000-es prefixkodjai nem szamitanak."""
+def atfedes(wlc_halmaz, bsb_halmaz):
+    """A WLC-vers (nem ures) Strong-halmazanak hanyad resze van a BSB-halmazban (a 9000-es prefixkodok nem szamitanak); ures WLC-halmaz: 0."""
     if not wlc_halmaz:
-        return False
+        return 0.0
     b = {n for n in bsb_halmaz if n < 9000}
-    return len(wlc_halmaz & b) / len(wlc_halmaz) > 0.5
+    return len(wlc_halmaz & b) / len(wlc_halmaz)
+
+
+def vers_egyezik(wlc_halmaz, bsb_halmaz):
+    """Egyvers-kuszob (SZUKSEGES, nem elegseges feltetel): a WLC-vers atfedese a BSB-halmazzal > 0,5. Formulas szomszed versekkel is teljesul, ezert a
+    szamozas-igazolashoz a vers_igazolt kell."""
+    return atfedes(wlc_halmaz, bsb_halmaz) > 0.5
+
+
+ABLAK = 20  # a szomszed fejezetek elso/utolso ennyi verse is a kornyezethez tartozik (a fejezethatar-eltolas legnagyobb esete: 15 vers, 4Moz 16/17, 1Kron 5/6, 1Kir 4/5)
+
+
+def wlc_index(wlc):
+    """{fejezet: rendezett versszam-lista} a wlc_konyv eredmenyebol."""
+    ki = {}
+    for (f, v) in wlc:
+        ki.setdefault(f, []).append(v)
+    return {f: sorted(vs) for f, vs in ki.items()}
+
+
+def kornyezet(idx, c):
+    """A `c` = (fejezet, vers) WLC-vers kornyezete: a fejezet MINDEN verse + a szomszed fejezetek ABLAK elso/utolso verse (ez a lista c-t is tartalmazza)."""
+    f = c[0]
+    ki = [(f, v) for v in idx.get(f, [])]
+    ki += [(f - 1, v) for v in idx.get(f - 1, [])[-ABLAK:]]
+    ki += [(f + 1, v) for v in idx.get(f + 1, [])[:ABLAK]]
+    return ki
+
+
+def szomszedok(idx, c):
+    """A `c` WLC-vers kozvetlen szomszedai (v-1, v+1), a fejezethataron atlepve (az elozo fejezet utolso / a kovetkezo fejezet elso verse)."""
+    f, v = c
+    vs = idx.get(f, [])
+    ki = []
+    if v > 1 and (f, v - 1) in {(f, x) for x in vs}:
+        ki.append((f, v - 1))
+    elif v == 1 and idx.get(f - 1):
+        ki.append((f - 1, idx[f - 1][-1]))
+    if vs and v == vs[-1] and idx.get(f + 1):
+        ki.append((f + 1, idx[f + 1][0]))
+    elif (f, v + 1) in {(f, x) for x in vs}:
+        ki.append((f, v + 1))
+    return ki
+
+
+def bsb_kornyezet(fejezetek, f, v):
+    """A BSB-vers (f, v) kornyezete: a fejezet TOBBI verse + a szomszed fejezetek ABLAK elso/utolso verse (fejezetek: {fej: {vers: set(Strong)}}); halmazok listaja."""
+    ki = [h for u, h in fejezetek.get(f, {}).items() if u != v]
+    ki += [fejezetek[f - 1][u] for u in sorted(fejezetek.get(f - 1, {}))[-ABLAK:]]
+    ki += [fejezetek[f + 1][u] for u in sorted(fejezetek.get(f + 1, {}))[:ABLAK]]
+    return ki
+
+
+def vers_igazolt(wlc, idx, cel_versek, bsb_halmaz, bsb_tobbi, szomszed_parok=()):
+    """Versszintu szamozas-igazolas (F41, DT-F41f; az F41_3 ellenorzes nyoman szigoritva). A BSB-vers (bsb_halmaz) igazolt MT-szamu, ha a `cel_versek` MINDEN WLC-versere
+    (cel_versek: [(fejezet, vers)], egy vagy ket vers; wlc: {(fej, vers): set}; idx: wlc_index(wlc)):
+      (a) az atfedes (a WLC-vers halmazanak hanyada a BSB-halmazban) > 0,5 (vers_egyezik), ES
+      (b) szigoruan nagyobb, mint a WLC-kornyezet (kornyezet: a fejezet MINDEN mas verse + a szomszed fejezetek ABLAK elso/utolso verse) barmelyik masik versenek atfedese
+          ugyanazzal a BSB-halmazzal (a ket cel-vers egymast nem szamit), ES
+      (c) szigoruan nagyobb, mint ugyanazon WLC-vers atfedese a BSB-kornyezet (bsb_tobbi: a BSB-fejezet tobbi verse + a szomszed fejezetek szeleinek versei) barmelyik
+          halmazaval, ES
+      (d) reszvers-szuro: a BSB-halmaz azon Strong-szamai, amelyek nincsenek a cel-versekben, legfeljebb a felenek (es legfeljebb 1 szamnak) szabad valamelyik KOZVETLEN
+          szomszed WLC-versben lenni; azaz ha a BSB-vers jelentos resze a szomszed WLC-veree (BSB-vers ⊋ WLC-vers), nem igazolt, ES
+      (e) szomszed-egyezes: a szamozas vers-futamokra igaz, ezert a kozvetlen szomszed BSB-vers (v-1 / v+1, a fejezeten belul) es a megfelelo szomszed WLC-vers
+          (a cel-vers elotti / utani) parjai (`szomszed_parok`: [(WLC-halmaz, BSB-halmaz)]) kozul legalabb egynek az atfedese > 0,5 (izolalt egyezes nem igazolt);
+          ha nincs szomszed-par (egyversos fejezet), ez a pont nem szuri ki.
+    Dontetlen (formulas ismetlodes), hibrid reszvers vagy izolalt egyezes -> False (a hivo `ellenorizetlen`-nek jeloli)."""
+    if not cel_versek:
+        return False
+    cel = set(cel_versek)
+    b = {n for n in bsb_halmaz if n < 9000}
+    for c in cel_versek:
+        w = wlc.get(c)
+        a = atfedes(w, bsb_halmaz) if w else 0.0
+        if a <= 0.5:
+            return False
+        for k in kornyezet(idx, c):
+            if k in cel or k not in wlc:
+                continue
+            if atfedes(wlc[k], bsb_halmaz) >= a:
+                return False
+        for bs in bsb_tobbi:
+            if atfedes(w, bs) >= a:
+                return False
+    magyarazott = set()
+    for c in cel_versek:
+        magyarazott |= wlc.get(c, set())
+    marad = b - magyarazott
+    if marad:
+        for c in cel_versek:
+            for k in szomszedok(idx, c):
+                if k in cel or k not in wlc:
+                    continue
+                kozos_db = len(marad & wlc[k])
+                if kozos_db >= 2 and kozos_db > len(marad) / 2:
+                    return False
+    if szomszed_parok and not any(atfedes(w, h) > 0.5 for w, h in szomszed_parok):
+        return False
+    return True

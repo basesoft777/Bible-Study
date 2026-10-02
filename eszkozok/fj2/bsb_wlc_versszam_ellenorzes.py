@@ -4,10 +4,16 @@
 bsb_wlc_versszam_ellenorzes.py -- F41 (FELADATOK #41, 9. lepes; DT-F41f: VERSSZINTU atiras): a konkordancia/BSB_Strongs.tsv Igehely-versszamozasanak gepi ellenorzese a WLC-vel
 (konkordancia/Macula_heber_*.tsv, `ref` = a Macula/WLC szamozas; wlc_versek.py). A referencia a WLC; a TAHOT_kivonat szama nem MT-forras.
 
-Versszintu igazolas (wlc_versek.vers_egyezik): egy Igehely-vers `mt`, ha a WLC azonos szamu versenek (nem ures) Strong-halmazanak TOBB MINT FELE az Igehely-vers sorainak
-Strong-halmazaban van (azonos modszer, mint a bsb_import.versillesztes). A szkript a BSB_Strongs.tsv-bol FUGGETLENUL ujraszamolja, es osszeveti a fajl 7. oszlopaval (`Számozás`:
-mt / kjv / ellenorizetlen); elteresnel hibaval all le. Elvart ertek: mt, ha a vers egyezik; kulonben kjv (csak Job 38-41: a BSB(KJV)-szam marad), kulonben ellenorizetlen.
-(A korabbi, fejezetszintu valtozat -- az Igehely-versek halmaza vs a WLC-fejezet versei -- a reszfejezetes teves egyezest adta: BSB ⊆ WLC, pl. 4Moz 12, 25/26; ez megszunt.)
+Versszintu igazolas (wlc_versek.vers_igazolt, szigoritva az F41_3 ellenorzes nyoman): egy Igehely-vers `mt`, ha (a) a WLC azonos szamu versenek Strong-halmazanak TOBB MINT FELE
+az Igehely-vers halmazaban van, es ez (b) szigoruan jobb, mint a WLC-kornyezet (a fejezet tobbi verse + a szomszed fejezetek 20 szelso verse) barmelyik masik versenek illeszkedese,
+(c) szigoruan jobb, mint a WLC-vers illeszkedese a BSB-kornyezet barmelyik masik versevel, (d) nem hibrid reszvers (a BSB-vers tobbletenek jelentos resze nem a szomszed WLC-veree),
+(e) a szomszed vers is illeszkedik (izolalt egyezes nem igazolt). Dontetlen / nem egyertelmu -> `ellenorizetlen` (kjv: csak Job 38-41). Ket ellenorzes:
+  1. KONZISZTENCIA-ELLENORZES (NEM fuggetlen: ugyanaz a vers_igazolt, a BSB_Strongs.tsv FAJLBOL olvasva, a fajl 7. oszlopaval osszevetve; fajlolvasas-/regresszio-ellenorzes, nem a
+     kriterium ellenorzese); elteresnel hibaval all le.
+  2. FUGGETLEN ELLENORZES (fuggetlen_jaccard): sajat Macula-olvasassal es MAS metrikaval (Jaccard), nem a vers_igazolt kodjaval: minden `mt` vers WLC azonos szamu verse legyen
+     az EGYETLEN legnagyobb Jaccard-erteku a WLC-kornyezetben, J >= 0,2; eltereskor hibaval all le. Ez a (b)-(c) kriterium fuggetlen alatamasztasa, a (d)-(e) pontot nem fedi.
+(A korabbi, fejezetszintu valtozat -- az Igehely-versek halmaza vs a WLC-fejezet versei -- a reszfejezetes teves egyezest adta: BSB ⊆ WLC, pl. 4Moz 12, 25/26; ez megszunt. Az
+egyvers-kuszobos valtozat (>0,5) a formulas szomszed versekkel is teljesult: 20 vers / 281 sor kapott teves `mt` cimkét; ez megszunt.)
 
 Ket kimenet (mindketto GENERALT, kezzel nem szerkesztendo; csv nelkul, split('\\t')):
   1. naplok/F41_wlc_versszam_ellenorzes.tsv -- fejezetenkent (a BSB_Strongs.tsv minden fejezete + a WLC azon fejezetei, amelyeknek nincs BSB-sora):
@@ -96,6 +102,55 @@ def megfeleltetes_bsb_max():
     return ki
 
 
+def _fuggetlen_macula(kod):
+    """FUGGETLEN WLC-olvaso (nem a wlc_versek.py): {(fej, vers): set(Strong int)} a Macula-tablabol, sajat feldolgozassal (a `ref` es a `strong` oszlop)."""
+    ki = {}
+    ut = os.path.join(kozos.KONKORDANCIA, 'Macula_heber_%s.tsv' % wlc_versek.MACULA_FAJL[kod])
+    with open(ut, encoding='utf-8') as f:
+        for sor in f:
+            p = sor.rstrip('\n').split('\t')
+            if len(p) < 8 or not p[1].startswith(kod + ' '):
+                continue
+            fv = p[1].split(' ')[1].split('!')[0].split(':')
+            h = ki.setdefault((int(fv[0]), int(fv[1])), set())
+            if p[7][:1] == 'H' and p[7][1:].isdigit() and int(p[7][1:]) < 9000:
+                h.add(int(p[7][1:]))
+    return ki
+
+
+def jaccard(a, b):
+    return len(a & b) / len(a | b) if (a | b) else 0.0
+
+
+def fuggetlen_jaccard(versek, szam, konyvek):
+    """FUGGETLEN ellenorzes (nem a vers_igazolt kriteriuma): minden `mt` jelolesu Igehely-versre, sajat Macula-olvasassal es JACCARD-hasonlosaggal (|A∩B|/|A∪B|, a WLC es a
+    BSB-halmaz kozott): a WLC azonos szamu verse legyen az EGYETLEN legnagyobb Jaccard-erteku a WLC-fejezet versei (es a szomszed fejezetek 20 elso/utolso verse) kozott,
+    es J >= 0,2. Visszaad: (hibak listaja, mt_db, nem_mt_de_jaccard_egyertelmu_db). A hibak (mt, de a Jaccard nem tamasztja ala) leallast okoznak."""
+    hibak, mt_db, szigorubb = [], 0, 0
+    for step, mag, ny in konyvek:
+        wlc = _fuggetlen_macula(wlc_versek.macula_kod(step))
+        fmax = {}
+        for (cc, vv) in wlc:
+            fmax[cc] = max(fmax.get(cc, 0), vv)
+        for (c, v), h in sorted(versek.get(step, {}).items()):
+            jel = szam[(step, c, v)]
+            if not h or (c, v) not in wlc:
+                if set(jel) == {'mt'}:
+                    hibak.append('%s %d:%d: mt, de nincs WLC-vers / ures halmaz' % (mag, c, v))
+                continue
+            kor = [k for k in wlc if k[0] == c or (k[0] == c - 1 and k[1] > fmax.get(c - 1, 0) - 20) or (k[0] == c + 1 and k[1] <= 20)]
+            ertek = sorted(((jaccard(wlc[k], h), k) for k in kor), reverse=True)
+            j0 = jaccard(wlc[(c, v)], h)
+            egyertelmu = ertek[0][1] == (c, v) and (len(ertek) < 2 or ertek[1][0] < j0) and j0 >= 0.2
+            if set(jel) == {'mt'}:
+                mt_db += 1
+                if not egyertelmu:
+                    hibak.append('%s %d:%d: mt, de J=%.2f, a legjobb: %s J=%.2f' % (mag, c, v, j0, '%d:%d' % ertek[0][1], ertek[0][0]))
+            elif egyertelmu:
+                szigorubb += 1
+    return hibak, mt_db, szigorubb
+
+
 def fut():
     versek, szam = bsb_strongs_olvas()
     konyvek = bi.konyvek()[:39]
@@ -109,6 +164,10 @@ def fut():
         wlc = wlc_versek.wlc_konyv(kod)
         wmax = wlc_versek.wlc_fejezet_max(wlc)
         bsb_konyv = versek.get(step, {})
+        widx = wlc_versek.wlc_index(wlc)
+        bfej = {}
+        for (cc, vv), h in bsb_konyv.items():
+            bfej.setdefault(cc, {})[vv] = h
         for c in sorted(set(wmax) | {c for c, v in bsb_konyv}):
             wv = {v for (cc, v) in wlc if cc == c}
             bv = {v for (cc, v) in bsb_konyv if cc == c}
@@ -119,7 +178,8 @@ def fut():
             sdb = {a: 0 for a in SZAMOZASOK}
             ell = []
             for v in sorted(bv):
-                egyezik = wlc_versek.vers_egyezik(wlc.get((c, v), set()), bsb_konyv[(c, v)])
+                parok = [(wlc[(c, v + d)], bsb_konyv[(c, v + d)]) for d in (-1, 1) if (c, v + d) in bsb_konyv and (c, v + d) in wlc]
+                egyezik = wlc_versek.vers_igazolt(wlc, widx, [(c, v)], bsb_konyv[(c, v)], wlc_versek.bsb_kornyezet(bfej, c, v), parok)
                 var = elvart(mag, c, egyezik)
                 jel = szam[(step, c, v)]
                 if set(jel) != {var}:
@@ -143,6 +203,9 @@ def fut():
                            str(sdb['mt']), str(sdb['kjv']), str(sdb['ellenorizetlen']), ' '.join(ell), ' '.join(str(x) for x in nincs), str(len(wv - bv)), kat))
     if elteres:
         raise SystemExit('HIBA: a BSB_Strongs.tsv 7. oszlopa eltér a versszintű WLC-összevetéstől (%d vers); első 10:\n%s' % (len(elteres), '\n'.join(elteres[:10])))
+    fh, fmt, fsz = fuggetlen_jaccard(versek, szam, konyvek)
+    if fh:
+        raise SystemExit('HIBA: a független Jaccard-ellenőrzés nem támasztja alá %d mt-verset (a %d-ből); első 15:\n%s' % (len(fh), fmt, '\n'.join(fh[:15])))
     # 2. fejezethatar-vizsgalat
     mf = megfeleltetes_bsb_max()
     for step, mag, ny in konyvek:
@@ -175,7 +238,7 @@ def fut():
     nem_mt = [s for s in sorok1 if s[15] in ('reszben_mt', 'nem_igazolt')]
     fej = kozos.fejlec('konkordancia/BSB_Strongs.tsv + konkordancia/Macula_heber_*.tsv (WLC, `ref` oszlop)', 'WLC: Macula Hebrew (l. naplok/F17_import_naplo.md)',
                        'python eszkozok/fj2/bsb_wlc_versszam_ellenorzes.py')
-    fej1 = fej + ['F41 9. lepes (DT-F41f): a BSB_Strongs.tsv Igehely-versszamozasa vs WLC, VERSSZINTEN; l. a szkript docstringjet (kategoriak, igazolas). A 7. oszlop (`Számozás`) minden verse ujraszamolva es egyezik a fajllal (0 elteres)',
+    fej1 = fej + ['F41 9. lepes (DT-F41f): a BSB_Strongs.tsv Igehely-versszamozasa vs WLC, VERSSZINTEN; l. a szkript docstringjet (kategoriak, igazolas). Konzisztencia-ellenorzes (NEM fuggetlen: ugyanaz a vers_igazolt a fajlbol): a 7. oszlop minden verse ujraszamolva es egyezik a fajllal (0 elteres). Fuggetlen ellenorzes (sajat Macula-olvasas, Jaccard): mind a %d mt-vers WLC-azonos-szamu verse az egyetlen legjobb Jaccard-egyezes (0 hiba); %d nem-mt vers Jaccard-egyertelmu, de a szigorubb kriterium (b-e) nem igazolja' % (fmt, fsz),
                   'kategoria-darabszamok (fejezet): ' + '; '.join('%s=%d' % kv for kv in sorted(kat_db.items())),
                   'Igehely-versek a 7. oszlop szerint: ' + '; '.join('%s=%d' % kv for kv in ossz_vers.items()) + ' | sorok: ' + '; '.join('%s=%d' % kv for kv in ossz_sor.items()),
                   'a nem teljesen mt fejezetek (reszben_mt / nem_igazolt): ' + '; '.join('%s %s (%s)' % (s[0], s[1], s[15]) for s in nem_mt),
