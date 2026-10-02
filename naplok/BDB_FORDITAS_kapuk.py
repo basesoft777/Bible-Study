@@ -34,7 +34,7 @@ def main():
     args = ap.parse_args()
     bukott = jelzes = n = 0
     for r in E.tsv_dict_sorok(E.FORDITASOK_UT):
-        if r['allapot'] != 'opus' or 'F38 BDB_FORDITAS' not in r['megjegyzes']:
+        if r['allapot'] not in ('opus', 'sonnet') or 'F38 BDB_FORDITAS' not in r['megjegyzes']:
             continue
         if args.adag and '(adag %d)' % args.adag not in r['megjegyzes']:
             continue
