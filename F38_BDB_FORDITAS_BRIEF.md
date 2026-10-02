@@ -5,10 +5,10 @@ kod: BDB_FORDITAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: fut
+allapot: megallt
 ag: claude/admiring-bohr-texair
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=opus), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
-kovetkezo: Claude: a 4. adag folytatása (DT-F38c alkalmazva, F38.137–F38.141): a sorrend 4. adagjának első olyan sora, amelynek Strong-számához még nincs teljes sor az adat/forditasok.tsv-ben (2026.10.02: a 193. sortól, H2142); az adag végén (243. sor) megállási pont és DT-F38d
+kovetkezo: Te: DT-F38d — a 4. adag kész (116/116 szócikk + a H2719 újrafordítása, 0 bukott; kész 269, hátra 7 821 szócikk, 4 558 278 karakter); döntés a folytatásról (5. adag: a sorrend 244. sorától, H7223), az 5 szócikkszintű terminológia-kivételről, a 11./10. kapu pontosításáról és a H2719 hibás-lista soráról; a költségadatok a naplóban (M4)
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md]
 ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/teszt_forditas_kapuk.py, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, forditas/prompt_v4.md, naplok/BDB_FORDITAS_kapuk.py, naplok/BDB_FORDITAS_regresszio.py, naplok/FORDITAS_kisnagybetu_csere.tsv]
 fugg: [34]
