@@ -1,6 +1,8 @@
 # Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.09.29 (F05_SZOTAR_BRIEF.md v1.10, S1 javítókör (F05b) —
+Utolsó frissítés: 2026.10.02 (F41_BSB_UJRAMERES_BRIEF.md, 3.2–3.5 — N-F41a, N-F41b, N-F41d, N-F41e, N-F41f új; N-F41c felvéve és lezárva.)
+
+Korábbi frissítés: 2026.09.29 (F05_SZOTAR_BRIEF.md v1.10, S1 javítókör (F05b) —
 N39–N44 új: héber `s`/`ś` átírás, H2403 lemma-választás, `spirantize()`
 geminációs hiba, `alap_strong` lemma-választási szabály (a `#9`
 előfeltétele), CI E5-jelölés globális hatóköre, commit-fegyelem.)
@@ -562,7 +564,17 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
 - **N-F35a — a Macula-generátor Sir/JSir aliasának törlése a #35 lezárása után.** *(ÚJ, F17 javító menet, 2026.10.02; a számot (N-F35a) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
   A generátor a régi `Sir` könyvnévtől függött: a Károli-oldali adatok még `Sir`-t, a könyvtábla már `JSir`-t használ. A kétirányú alias az `eszkozok/f17/macula_kozos.py`-ban (`ALIAS`, `kanoni_nev`, `RAW_NEV`) és a használói (`macula_kk.py`, `macula_import.karoli_cimke`) törölhető, ha a Károli-adat átnevezése megtörtént; utána a `Macula_heber_Siralmak.tsv` újragenerálása a `JSir` címkével.
 
-## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
+- **N-F41a — a Károli-kulcs (KK) `igehely_kjv` oszlopa nem megbízható KJV-számozás.** *(ÚJ, F41 (#41) 3.1–3.5, `naplok/F41_bsb_megfeleltetes.tsv`, `eszkozok/fj2/bsb_verseltolas_diag.py --f41`; a számot (N-F41a) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
+  A `konkordancia/Karoli_versmegfeleltetes.tsv` `igehely_kjv` oszlopa a `KJV` osztályú soroknál (20 927 sor) mindig azonos a Károli-hivatkozással, az `MT` osztályúaknál 1561/1713 sorban, a `KEZI` osztályúaknál 93/291 sorban (`scope=manual`: a menet saját összevetése, ts=2026-10-02) — vagyis az oszlop a Károli-hivatkozás másolata, nem független KJV-adat. Példa: `Jón 2:1` → `igehely_kjv=2:1`, holott a Károli Jón 2:1 a KJV 1:17-e (a Strong-illeszkedés szerint a BSB 1:17 = TAHOT 2:1). A BSB (KJV-számozás) → TAHOT_kivonat Strong-illeszkedés ellentmond a kulcsnak: 4Móz 16, 1Sám 22, 1Kir 6, Zsolt 921, Ézs 46, Hós 14, Jón 10 sorban (összehasonlítva a `KJV`/`MT` osztályú sorokat, ahol a BSB-vers szerepel). Javítás: a KK-tábla gazdájának dolga (N46 érinti: Préd 5, 4Móz 30, Zsolt 13); az F41 nem javít.
+- **N-F41b — CI-szabály-javaslat: a `BSB_Strongs.tsv` „Angol szó állapota” oszlopának gépi ellenőrzése.** *(ÚJ, F41.4, javaslat; a számot (N-F41b) a main-Action osztja ki)*
+  Az `eszkozok/fj2/bsb_import.py` a futása végén ellenőrzi (üres „Angol szó” csak `elhagyva` / `ures_jelzo_nelkul` állapottal; 6 oszlop minden sorban; a darabszámok egyeznek a napló `angol_szo_allapot` sorával), de CI-szabály nem védi a commitolt fájlt. Javaslat: E-szabály, amely a commitolt `BSB_Strongs.tsv`-ben ugyanezt ellenőrzi. Az F41 CI-szabályt nem ír.
+- **N-F41d — a `TAHOT_kivonat.tsv` versszámozása vegyes: egyes könyvekben KJV-, másokban a masszoréta (Macula/WLC) számozást követi; az F41 `mt_vers` és a `BSB_Strongs.tsv` `Igehely` a TAHOT_kivonat számozása.** *(ÚJ, F41.1/3.2, `naplok/F41_bsb_megfeleltetes.tsv` fejléc; a számot (N-F41d) a main-Action osztja ki)*
+  Mérés (`scope=manual`, a menet saját összevetése, ts=2026-10-02): a TAHOT_kivonat és a `Macula_heber_*.tsv` (MT/WLC) fejezet-maximuma 25 ószövetségi könyvben tér el (TAHOT_kivonat/Macula; pl. 2Sám 18: 33/32 és 19: 43/44; Dán 3: 30/33, 4: 37/34, 5: 31/30, 6: 28/29; 1Kir 4: 34/20, 5: 18/32; Jóel 2: 32/27, 3: 21/5, 4: nincs; Mal 3: 18/24, 4: 6/0; Jób 38: 38/41, 39: 38/30, 40: 24/32, 41: nincs; 4Móz 12: 15/16, 13: 34/33). A D3 („átszámozás MT-re”) ezért pontosabban „átszámozás a TAHOT_kivonat számozására”. A 2Sám 18:33/19:1 és a Dán 3:31–33/5:31 feltevés ezen a számozáson nem eltérés (a BSB és a TAHOT_kivonat azonos számozású), a masszoréta számozáshoz viszonyítva viszont az. Döntendő: a `Igehely` célszámozása legyen-e a TAHOT_kivonaté, a Macula/WLC-é, vagy a Károlié (a három egyenként más).
+  *Ide kapcsolódik a Jób 41:* a TAHOT_kivonatban nincs a 41. fejezet (és a 40:25–32 sem), ezért a BSB Jób 41 (34 vers) a KJV-számozást tartja, `kjv_szamozas` jelöléssel az F41-ben. A Macula (WLC) szerint a megfeleltetés a kért ismert leképezés (KJV 41:1–8 = MT 40:25–32; 41:9–34 = MT 41:1–26): a BSB-versek 30/34-en részhalmazként illeszkednek (a 4 kivétel egy-egy H4480-címke), a `konkordancia/Macula_heber_Job.tsv` alapján. Átszámozás ezzel külön döntésre vár.
+- **N-F41e — a BSB-importot leíró dokumentumok az F41 előtti állapotot mutatják.** *(ÚJ, F41.3, `konkordancia/README.md` BSB_Strongs-szakasz, `adat/SEMA.md`, `adat/datasetek.tsv` BSB-sorok, `adat/licencek.tsv`, a jelen fájl 6. nagy tétele; a számot (N-F41e) a main-Action osztja ki)*
+  Az F41 `ir` mezője nem tartalmazza őket, ezért nem frissültek: „31 ÓSZ-könyv” → 36 (új: 1Sám, Préd, Ézs, Hós, Jón; továbbra is kimarad: 2Sám, Ezsd, Dán), az `Igehely` számozása már nemcsak a Zsoltárokban a TAHOT-é (4Móz 12/13, 29/30; 1Sám 23/24; 1Kir 22; Jób 38–40; Préd 11/12; Ézs 2/3, 9; Hós 11/12; Jón 1/2), a Jób 41 KJV-számozású, a 6. oszlop (`Angol szó állapota`), a mellékletek egyes szövegei („a nem-zsoltár könyvek eltolását az import nem javítja”).
+- **N-F41f — a F41-brief számozási példái hibásak (1Kir 4/5, Jóel 2/3, Neh 3/4).** *(ÚJ, F41.1, megjegyzés)* A brief 2. szakasza ezeket eltolt fejezetként hozta példának; a Strong-illeszkedés szerint a TAHOT_kivonatban a BSB-vel azonos számozásúak (0 eltolt vers); a javítás a brief címsora alatti megjegyzésben van (a címsor változatlan).
+
 
 A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá vált — belépő: `DONTESEK_INDEX.tsv`. A vers-szintű jelöltek nem ide, hanem az `adat/jeloltek.tsv`-be kerültek (16 sor, mind `dontes=nyitva`): HODIT-001 13 alacsony szavazatú TSK-jelölt, MENNY-001 Mt 24:38 + Luk 17:27, ANTROP-001 Fil 1:27. Az alábbiak a nem vers-szintű tételek:
 
@@ -629,6 +641,9 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 <!-- GENERÁLT-VÉGE: nyitott -->
 
 ## Lezárva
+### 2026.10.02 (F41_BSB_UJRAMERES_BRIEF.md — N-F41c felvéve és lezárva):
+* N-F41c — a `bsb_import.py` a `Lam`/`JSir` (F28.9 átnevezés) miatt a Siralmakat néma 0%-os könyvként mérte volna, és kihagyta volna az importból (a TAHOT_kivonat/Károli-kulcs `Sir`-t használ, a könyvtábla `JSir`-t). F41: a mérés a forrás-nevet használja (`forras_nev`), és a szkript hangos hibával leáll, ha egy ószövetségi könyvnek 0 illesztett sora / 0 egyező verse van, vagy a TAHOT_kivonatban nincs ilyen nevű könyv (`eszkozok/fj2/bsb_import.py`; a `Lam` sorok az újraimport után sorról sorra azonosak, `naplok/F41_nulladiff.txt`). A Macula-generátor aliasa külön tétel (N-F35a).
+
 ### 2026.09.30 (F16_BSB_IMPORT_BRIEF.md — N30 lezárva):
 * N30 (BSB-import feltétele: teljes Genezis-összevetés) lezárva: az 1Mózes-mérés az F06-ban (PR #75, 98,83%, 1515/1533 vers), a teljes Biblia mérése és importja az F16-ban (`eszkozok/fj2/bsb_import.py`, `naplok/F16_bsb_lefedettseg.tsv`): 31 ÓSZ-könyv ≥ 95% → importálva (`konkordancia/BSB_Strongs.tsv`, 242 597 sor, CC0, BSB commit `a4a2c05`; a zsoltár-verseltolás javítása után, F16.8); 8 ÓSZ-könyv a küszöb alatt, az ÚSZ szándékosan kimarad (DONTESEK DT6, javaslat). Az 1Mózes újramért értéke azonos az F06-éval.
 

@@ -5,10 +5,10 @@ kod: BSB_UJRAMERES
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: megallt
+allapot: fut
 ag: claude/f41-bsb-ujrameres
 ad: a versszámozás miatt küszöb alatt maradt ószövetségi könyvek a 95%-os küszöbbel újramérve és importálva, a többinél igazolt ok; a BSB_Strongs.tsv-ben megkülönböztethető a „szándékosan nem fordított” és a „hiányzó” angol szó
-kovetkezo: "Te: ⛔ 3.1 jelentés jóváhagyása, D3 döntés (881 sor átszámozása; 1Kir 22 és Jób 40–41 kiesése); utána 3.2–3.5"
+kovetkezo: "Főszál: fuggetlen-ellenor (naplok/ELLENOR_F41.md), a naplok/F41_zaras.md zárójelentés-tervezet átvétele, push, draft PR, FELADATOK.md saját sor, DT6 ✅ és allapot: lezarva / pr mezők kitöltése; nyitva maradt: N-F41a, N-F41b, N-F41d, N-F41e, N-F41f"
 olvas: [eszkozok/fj2/, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, naplok/F16_bsb_lefedettseg.tsv, naplok/F16_bsb_verseltolas_diagnozis.tsv, naplok/F16_bsb_zsolt_megfeleltetes.tsv]
 ir: [eszkozok/fj2/bsb_import.py, eszkozok/fj2/bsb_verseltolas_diag.py, konkordancia/BSB_Strongs.tsv, naplok/F16_bsb_lefedettseg.tsv, naplok/F41_bsb_megfeleltetes.tsv, naplok/F41_nem_egyezo_versek.tsv]
 fugg: [16]
@@ -18,6 +18,8 @@ helyi_gep: nem
 # F41_BSB_UJRAMERES_BRIEF.md — BSB-import kiegészítése: a küszöb alatti 8 ószövetségi könyv újramérése és az üres angol szavak jelölése
 
 *FELADATOK #41 (várható szám, a `/befogad` véglegesíti) · Modell: sonnet · v1 · 2026.10.02 · a DT6 döntésének végrehajtása*
+
+> **Javítás (F41 menet, 2026.10.02; a címsor változatlan):** a 2. szakasz „1Kir 4/5, Jóel 2/3, Neh 3/4” példái hibásak: a Strong-illeszkedés szerint (`naplok/F41_bsb_megfeleltetes.tsv`) ezekben a TAHOT_kivonat számozása a BSB-vel azonos, 0 eltolt verssel. A ténylegesen eltolt könyvek/fejezetek: 4Móz 12/13 és 29/30, 1Sám 23/24, 1Kir 22 (a 22:43 két MT-versre osztva), Jób 38–40, Préd 11/12, Ézs 2/3 és 9, Hós 11/12, Jón 1/2, Zsolt (62 fejezet). A 3.1 szövegében szereplő Jón 1:17 → 2:1 példa helyes. Részletek: N-F41d (`NYITOTT_FELADATOK.md`).
 
 <!-- KOZVETLEN_FUTTATAS -->
 ## 0. Nyitó prompt
