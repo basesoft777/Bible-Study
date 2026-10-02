@@ -2567,3 +2567,6 @@ Egy korábbi lépésben a H6213 és a H6256 sora tévesen felülíródott; az er
 
 ### Szűrő-módosítás
 `naplok/BDB_FORDITAS_kapuk.py`: a szűrő az `opus` és a `sonnet` állapotú `F38 BDB_FORDITAS` sorokat is veszi.
+
+### Esemény: ágtévesztés és javítása
+Az 5. adag 27 commitja (F38.283–F38.308) tévesen a helyi `main`-re került a brief szerinti `claude/f38-adag5` helyett (push nem történt). Javítás (felhasználói jóváhagyással): `git branch -f claude/f38-adag5 9dea846`, a `main` visszaállítva `origin/main`-ra (`git branch -f`); ellenőrzés: `origin/main..claude/f38-adag5` = 27 commit, `origin/main..main` üres.
