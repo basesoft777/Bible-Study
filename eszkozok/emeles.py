@@ -190,7 +190,7 @@ def lista_epit(szeles=False):
         # forditando (a 13. szabaly ugyanezt `elavult`-kent jelzi)
         teljes = [r for r in forditasok if r.get('szotar') == szotar and r.get('jelentes_szam') == 'teljes'
                   and STRONG_TOKEN.match(r.get('strong') or '') and strong_padded(r['strong']) == sp
-                  and r.get('allapot') in ('kezi', 'opus')]
+                  and r.get('allapot') in ('kezi', 'opus', 'sonnet')]
         teljes_allapot = teljes[0]['allapot'] if teljes else ''
         teljes_kezi = bool(teljes) and szoveg is not None and teljes[0].get('forras_hash') == forras_hash(szoveg)
         sorok.append({
@@ -706,7 +706,7 @@ def cmd_minta(args):
     import math
     import random
     forditasok = [r for r in tsv_dict_sorok(FORDITASOK_UT)
-                  if r['jelentes_szam'] == 'teljes' and r['allapot'] == 'opus'
+                  if r['jelentes_szam'] == 'teljes' and r['allapot'] in ('opus', 'sonnet')
                   and r['szotar'] in ('Thayer', 'BDB')]
     hossz = {r['strong']: len(forras_szoveg(r['strong'])[1]) for r in forditasok}
     n = max(5, math.ceil(len(forditasok) * 0.10))
@@ -743,7 +743,12 @@ def cmd_kotelezo(args):
     print(kotelezo_alakok_szoveg(szoveg))
 
 
-def main():
+# a `forditasok.tsv` allapot-ertekei, amelyeket a rogzit/beir ir (SEMA 2.14);
+# `pilot` (fordit.py) es `elavult` (ellenoriz.py javaslat) nem innen kerul be
+ALLAPOTOK = ['opus', 'sonnet', 'kezi']
+
+
+def parser_epit():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[1])
     al = ap.add_subparsers(dest='parancs', required=True)
     p = al.add_parser('lista')
@@ -782,15 +787,18 @@ def main():
     p = al.add_parser('rogzit')
     p.add_argument('strong')
     p.add_argument('--be', required=True, help='a vegleges forditas (az ellenoriz --ki kimenete)')
-    p.add_argument('--allapot', default='opus', choices=['opus', 'kezi'])
-    p.add_argument('--modell', default='claude-opus-5-5')
+    p.add_argument('--allapot', default='opus', choices=ALLAPOTOK)
+    # F38.265 (DT-F38e): a modell-azonosito nem kap alaperteket -- az Opus-alapertek
+    # miatt kerult 243 Sonnet-forditas `claude-opus-5-5` cimkevel a tablaba
+    p.add_argument('--modell', required=True,
+                   help='a fordito LLM tenyleges modell-azonositoja (pl. claude-sonnet-5-5); kotelezo')
     p.add_argument('--datum')
     p.add_argument('--megjegyzes')
     p.add_argument('--kivetel', nargs='*', default=[])
     p.set_defaults(fv=cmd_rogzit)
     p = al.add_parser('beir')
     p.add_argument('strongok', nargs='+')
-    p.add_argument('--allapot', required=True, choices=['opus', 'kezi'])
+    p.add_argument('--allapot', required=True, choices=ALLAPOTOK)
     p.add_argument('--datum')
     p.add_argument('--megjegyzes')
     p.add_argument('--jelentes-csere', action='store_true',
@@ -806,7 +814,11 @@ def main():
     p.add_argument('--lab', help='a naplo kezi zaro szakasza (md)')
     p.add_argument('--ki', required=True)
     p.set_defaults(fv=cmd_naplo_nezet)
-    args = ap.parse_args()
+    return ap
+
+
+def main():
+    args = parser_epit().parse_args()
     args.fv(args)
 
 

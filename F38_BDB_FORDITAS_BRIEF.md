@@ -4,7 +4,7 @@ cim: A teljes BDB héber szótár magyar fordítása, megállási pontokkal
 kod: BDB_FORDITAS
 tipus: feladat
 fazis: 1
-modell: opus
+modell: sonnet
 allapot: megallt
 ag: claude/admiring-bohr-texair
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=opus), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
