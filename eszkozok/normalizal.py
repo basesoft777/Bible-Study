@@ -231,7 +231,7 @@ IGE_MINTA = re.compile(
 # (`Dávidot2Krón 13:8`, a forrasban `David2Chr 13:8`): ezt is leválasztja.
 _TAPADT_KULCSOK = sorted(set(_IGE_KULCSOK) | set(_KAROLI_ROV), key=len, reverse=True)
 IGE_TAPADT_MINTA = re.compile(
-    r'(?<=[^\W\d_])(?<![A-ZÀ-ÖØ-Þ])(%s)\.?(\s+)(?=\d{1,3}:\d)' % '|'.join(re.escape(k) for k in _TAPADT_KULCSOK))
+    r'(?:(?<=[^\W\d_])|(?<=[\u0591-\u05C7]))(?<![A-ZÀ-ÖØ-Þ])(%s)\.?(\s+)(?=\d{1,3}:\d)' % '|'.join(re.escape(k) for k in _TAPADT_KULCSOK))
 
 
 def szabaly_igehely_rov(szoveg):
@@ -298,7 +298,7 @@ def szor_toldalek(n):
 
 # a szam elott nem allhat szamjegy, kettospont, pont, vesszo, kotojel vagy
 # perjel (`1Móz 22:3 t.` -- az nem gyakorisag); utana nem allhat betu
-IDO_MINTA = re.compile(r'(?<![\d:.,\-–/])(\d{1,4})\s?t\.( a versben)?(?![\w])')
+IDO_MINTA = re.compile(r'(?<![\d:.,\-–/§])(\d{1,4})\s?t\.( a versben)?(?![\w])')
 
 
 def szabaly_elofordulas(szoveg):

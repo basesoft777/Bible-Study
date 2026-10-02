@@ -33,12 +33,12 @@ class RogzitModell(unittest.TestCase):
     def test_modell_nelkul_hiba(self):
         hiba = io.StringIO()
         with redirect_stderr(hiba), self.assertRaises(SystemExit) as k:
-            parse(['rogzit', 'H0001', '--be', 'x.txt'])
+            parse(['rogzit', 'H0001', '--be', 'x.txt', '--allapot', 'sonnet'])
         self.assertNotEqual(k.exception.code, 0)
         self.assertIn('--modell', hiba.getvalue())
 
     def test_modell_megadva_rendben(self):
-        a = parse(['rogzit', 'H0001', '--be', 'x.txt', '--modell', 'claude-sonnet-5-5'])
+        a = parse(['rogzit', 'H0001', '--be', 'x.txt', '--allapot', 'sonnet', '--modell', 'claude-sonnet-5-5'])
         self.assertEqual(a.modell, 'claude-sonnet-5-5')
 
     def test_nincs_modell_alapertek(self):
@@ -50,6 +50,14 @@ class RogzitModell(unittest.TestCase):
     def test_rogzit_sonnet_allapot(self):
         a = parse(['rogzit', 'H0001', '--be', 'x.txt', '--allapot', 'sonnet', '--modell', 'm'])
         self.assertEqual(a.allapot, 'sonnet')
+
+
+class RogzitAllapot(unittest.TestCase):
+    def test_allapot_nelkul_hiba(self):
+        hiba = io.StringIO()
+        with redirect_stderr(hiba), self.assertRaises(SystemExit):
+            parse(['rogzit', 'H0001', '--be', 'x.txt', '--modell', 'claude-sonnet-5-5'])
+        self.assertIn('--allapot', hiba.getvalue())
 
 
 class BeirAllapot(unittest.TestCase):

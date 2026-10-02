@@ -7,8 +7,8 @@ fazis: 1
 modell: sonnet
 allapot: megallt
 ag: claude/admiring-bohr-texair
-ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=opus), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
-kovetkezo: Te: új Opus-session, az 1–4. adag újrafordítása, majd az 5. adag
+ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=sonnet; az 1–4. adagra is, DT-F38e), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
+kovetkezo: Te: PR merge, majd az 5. adag Sonnettel
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md]
 ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/teszt_forditas_kapuk.py, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, forditas/prompt_v4.md, naplok/BDB_FORDITAS_kapuk.py, naplok/BDB_FORDITAS_regresszio.py, naplok/FORDITAS_kisnagybetu_csere.tsv]
 fugg: [34]
@@ -127,6 +127,6 @@ Olvasd el a `BDB_FORDITAS_BRIEF.md`-t, és hajtsd végre az M0-t és az M1-et. E
 | D5 | F34 (ψ-javítás) előfeltétel | hibás forrást ne fordítsunk le | fordítás most, javítás utólag |
 | D6 | Kevés ⛔ (M1, Mz), a többi megállás csak „folytasd”-ra vár | a #28-ban a sok döntési kör vitte a költség és az idő nagy részét | minden adag után tartalmi ellenőrzés |
 | D7 | Egy végrehajtó, subagent nélkül | egységes terminológia, egy kontextus (#28 tapasztalata) | párhuzamos subagentek |
-| D8 (DT-F38d) | (a) az 5. adag a következő, Opus-menetben indul; (b), (c), (d) igen, a zárómenetben végrehajtva. | felhasználói döntés, 2026.10.02; l. `DONTESEK.md` DT-F38d | — |
+| D8 (DT-F38d) | (a) az 5. adag a következő menetben indul (~~Opus-menetben~~ — a DT-F38e szerint Sonnettel); (b), (c), (d) igen, a zárómenetben végrehajtva. | felhasználói döntés, 2026.10.02; l. `DONTESEK.md` DT-F38d | — |
 | D-új (DT-F38e) | a teljes BDB Sonnettel, a D1-et felülírja. | felhasználói döntés, 2026.10.02: az Opus-vakpróba (H2617, H7307) után a Sonnet szóhasználata közelebb áll a Károlihoz, és nincs benne szembeötlő félrefordítás; a Sonnet szabálykövetési hiányait kapuk és normalizáló pótolják; l. `DONTESEK.md` DT-F38e | a teljes BDB Opusszal (D1) |
 | D9 (DT-F38e) | ~~Az 1–4. adagot Opus újrafordítja, új ágon (felhasználói döntés, 2026.10.02).~~ **Felülírva a D-új-vel** (a teljes BDB Sonnettel). | l. `DONTESEK.md` DT-F38e | — |

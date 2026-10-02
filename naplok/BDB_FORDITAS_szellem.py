@@ -38,7 +38,7 @@ JELOLES = 'F38.268: az isteni Szellem nagybetűs (DT25)'
 # nagybetűsek: Szent Szellem, Isten Szelleme, a Szellem)
 KIVETEL_STRONG = {'H5307', 'H5414', 'H7760'}
 KIVETEL_INDOK = ('a „spirit” kulcs szócikkszintű kivétele: az egyetlen szellem-hely isteni, ezért '
-                 'nagybetűs (DT25 a), az 5. kapu a kisbetűs „szellem” alakot várja')
+                 'nagybetűs (DT25 a), az 5. kapu a kisbetűs „szellem” alakot várja; jóváhagyásra: felhasználó')
 KIVETEL_RESZ = 'terminológia-kivétel (bizonytalan_feloldasok): spirit'
 
 # (strong, pont, regi, uj, indok)
@@ -73,9 +73,9 @@ SZELLEM = [
 # (a szellem istenre vonatkozasa nem egyertelmu, vagy a sor nem F38-as)
 NEM_MODOSITOTT = [
     ('H4390', '2Móz 28:3; 31:3; 35:31', 'szellemmel betölteni',
-     '31:3 isteni Szellem (Becalél), 28:3 viszont „a bölcsesség szelleme”; BDB nem dönt'),
+     '31:3 isteni Szellem (Becalél), 28:3 viszont „a bölcsesség szelleme”; a BDB a H7307 9d pontjába sorolja (technical skill, 2Móz 31:3; 35:31) — a besorolás szerint isteni Szellem, a felhasználó dönt'),
     ('H1320', 'Ézs 31:3', 'a lovak hús, nem szellem',
-     'a hús–szellem szembeállítás; nem egyértelműen Isten Szelleme'),
+     'a BDB a H7307 9e pontjába sorolja (as vital power, opposed to בָשָׂר: Isa 31:3), tehát az isteni Szellem alpontja alatt áll — a felhasználó dönt, a menet nem módosított'),
     ('H5674', '4Móz 5:14', 'a szellemről',
      'a féltékenység szelleme (קנאה רוח), nem isteni'),
     ('H7451', '2Sám 13:22 körül', 'az isteni szellemről, amely az őrjöngés és az erőszak eksztatikus állapotát',

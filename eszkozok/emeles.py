@@ -792,7 +792,7 @@ def parser_epit():
     p = al.add_parser('rogzit')
     p.add_argument('strong')
     p.add_argument('--be', required=True, help='a vegleges forditas (az ellenoriz --ki kimenete)')
-    p.add_argument('--allapot', default='opus', choices=ALLAPOTOK)
+    p.add_argument('--allapot', required=True, choices=ALLAPOTOK)  # F38.271: nincs alapertek
     # F38.265 (DT-F38e): a modell-azonosito nem kap alaperteket -- az Opus-alapertek
     # miatt kerult 243 Sonnet-forditas `claude-opus-5-5` cimkevel a tablaba
     p.add_argument('--modell', required=True,

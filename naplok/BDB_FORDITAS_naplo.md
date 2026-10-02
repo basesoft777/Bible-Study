@@ -2263,8 +2263,8 @@ javítás után nincs kisbetűs „szellem”, amelyet az 5. kapu a `spirit → 
 
 | Szócikk | Hely | Szöveg | Miért nem |
 |---|---|---|---|
-| H4390 | 2Móz 28:3; 31:3; 35:31 | szellemmel betölteni | 31:3 isteni Szellem (Becalél), 28:3 viszont „a bölcsesség szelleme”; BDB nem dönt |
-| H1320 | Ézs 31:3 | a lovak hús, nem szellem | a hús–szellem szembeállítás; nem egyértelműen Isten Szelleme |
+| H4390 | 2Móz 28:3; 31:3; 35:31 | szellemmel betölteni | 31:3 isteni Szellem (Becalél), 28:3 viszont „a bölcsesség szelleme”; a BDB a H7307 9d pontjába sorolja (technical skill, 2Móz 31:3; 35:31) — a besorolás szerint isteni Szellem, a felhasználó dönt |
+| H1320 | Ézs 31:3 | a lovak hús, nem szellem | a BDB a H7307 9e pontjába sorolja (as vital power, opposed to בָשָׂר: Isa 31:3), tehát az isteni Szellem alpontja alatt áll — a felhasználó dönt, a menet nem módosított |
 | H5674 | 4Móz 5:14 | a szellemről | a féltékenység szelleme (קנאה רוח), nem isteni |
 | H7451 | 2Sám 13:22 körül | az isteni szellemről, amely az őrjöngés és az erőszak eksztatikus állapotát | a #28 sor (nem F38-as), a menet nem módosítja; ha kell: „az isteni Szellemről” |
 
@@ -2285,3 +2285,15 @@ kisbetűs, mert nem Isten Szelleme.
   lefordult vagy vegyes, de a határa nem egyértelmű; nem módosult.
 - A zárómenet-szkript (`BDB_FORDITAS_zaras.py --ir`) újrafuttatása a javítási listát felülírná; a lista már a
   `naplok/BDB_FORDITAS_zaras_javitasok.tsv`-ben van, a szkriptet csak jelentés módban kell futtatni.
+
+### Utólagos javítások az ellenőri jelentés nyomán (F38.271)
+
+A független ellenőr jelentése (`naplok/ELLENOR_F38_zaras.md`) alapján:
+
+- **Héber szóhoz tapadt könyvjelzés:** a niqqud/kantilláció végű héber szó utáni tapadás (`רוּחַ2Kir`, `גְּדוֺלֶיהָNáh`) a `igehely_rov` szabályban nem szerepelt (a lookbehind kombináló jelet nem fogadott). Javítva, teszt hozzá; visszamenőleg 22 F38-as sor 26 helyen (a lista a javítások TSV-jében, 44 új egyedi sor; ebből 1 a #28 H4467 soron, nem írva). A korábbi „héber betűhöz tapadt” állítás ezzel lett teljes.
+- **`§67 t.` (H7043, #28):** az `elofordulas` szabály tévesen gyakoriságnak vette a `§` jel utáni `67 t.`-t; a lookbehind a `§`-t is kizárja, teszt hozzá; a tévesen listázott sor kikerült a javítások TSV-jéből. A fenti „Nyitott” szakasz „1 N t.” a #28-on ezzel nem javítandó hely.
+- **Maradék `N t.` (41 hely, 31 F38-as sor):** főleg `5Móz 11:13-14t.`, `Ézs 65:1-2t.` típus, ahol a forrásban is összevont az OCR (`Deut 11:13-14t.`): a `t.` itt versre/igehelyre tapad, nem biztosan gyakoriság; a szabály szándékosan kihagyja, nem javítva (a felhasználónak/forráskiegészítésnek tartva).
+- **`emeles.py rogzit --allapot`:** nincs alapérték (kötelező), mert a hibás címke másik fele ugyanebből jött.
+- **Terminológia-kivételek (`spirit`, H5307, H5414, H7760):** a megjegyzésben „jóváhagyásra: felhasználó” jelölés.
+- **Szövegek:** a DT-F38d (a) és a brief D8 sora a „Opus-menetben” szöveget áthúzva, „a DT-F38e szerint Sonnettel” kiegészítéssel; a brief `ad:` mezője `allapot=sonnet`.
+- **Nem javított észrevétel:** H8033 `RVm onnan [a mennyből]` lefordult glossza (a forrásban `RVm from there [from heaven]`); a szabály szűk határa miatt nem módosult (a „Nyitott” RV-lista bővül vele). A #28 (26 sor) visszamenőleges kezelése továbbra is felhasználói döntés.

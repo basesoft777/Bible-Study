@@ -211,6 +211,10 @@ class TapadtKarolialak(unittest.TestCase):
         self.assertEqual(N.szabaly_igehely_rov('דָּן2Krón 2:13; hercegnő2Krón 22:11')[0],
                          'דָּן 2Krón 2:13; hercegnő 2Krón 22:11')
 
+    def test_niqqud_vegu_heber_szo_utan(self):
+        self.assertEqual(N.szabaly_igehely_rov('גְּדוֺלֶיהָNáh 3:10; רוּחַ2Kir 2:15')[0],
+                         'גְּדוֺלֶיהָ Náh 3:10; רוּחַ 2Kir 2:15')
+
     def test_szokozzel_allo_valtozatlan(self):
         self.assertEqual(N.szabaly_igehely_rov('Dávidot 2Krón 13:8; Zsolt 5:1')[1], 0)
 
@@ -243,6 +247,10 @@ class Elofordulas(unittest.TestCase):
     def test_igehely_utani_szam_nem_gyakorisag(self):
         szoveg = '1Móz 22:3 t. és 5:12 t. stb.; 2-3 t.'
         self.assertEqual(N.szabaly_elofordulas(szoveg), (szoveg, 0))
+
+    def test_paragrafus_utan_nem_gyakorisag(self):
+        # Ges §67 t. = a nyelvtan 67. §-ának t) pontja
+        self.assertEqual(N.szabaly_elofordulas('Ges §67 t.) szerint'), ('Ges §67 t.) szerint', 0))
 
     def test_mas_t_rovidites_valtozatlan(self):
         szoveg = 'a t. termést; ahol t. = tárgyeset'

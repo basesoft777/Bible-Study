@@ -291,7 +291,6 @@ H6963	elofordulas	(4 t. a versben)	(a versben 4-szer)	1	igen
 H6963	igehely_rov	׳חֲצֹצְרוֺת2Krón	׳חֲצֹצְרוֺת 2Krón	1	igen
 H6965	elofordulas	(3 t. a versben)	(a versben 3-szor)	1	igen
 H6965	nevalakok	Izraelből);	Izráelből);	1	igen
-H7043	elofordulas	§67 t.)	§67-szer)	1	nem (#28 sor)
 H7126	elofordulas	(15 t.)	(15-ször)	1	igen
 H7126	elofordulas	(27 t.)	(27-szer)	1	igen
 H7126	elofordulas	(3 t. a versben)	(a versben 3-szor)	1	igen
@@ -373,3 +372,30 @@ H9005	igehely_rov	לְלֹא2Krón	לְלֹא 2Krón	1	igen
 H9005	igehely_rov	לתקופת2Krón	לתקופת 2Krón	1	igen
 H9005	igehely_rov	לשׁנת2Krón	לשׁנת 2Krón	1	igen
 H2617	konyv_rov	ᵐ51Pt	ᵐ51Pét	1	igen
+H1004	igehely_rov	לְמַלְכוּתוֺ2Krón	לְמַלְכוּתוֺ 2Krón	1	igen
+H1129	igehely_rov	לְךָ2Krón	לְךָ 2Krón	1	igen
+H1419	igehely_rov	גְּדוֺלֶיהָNáh	גְּדוֺלֶיהָ Náh	1	igen
+H1471	igehely_rov	גּוֺיֵ2Krón	גּוֺיֵ 2Krón	1	igen
+H1540	igehely_rov	נִגְלוּ1Móz	נִגְלוּ 1Móz	1	igen
+H1870	igehely_rov	׳וַיִּגְבַּהּ2Krón	׳וַיִּגְבַּהּ 2Krón	1	igen
+H2091	igehely_rov	׳וַיְחַמֵּהוּ2Krón	׳וַיְחַמֵּהוּ 2Krón	1	igen
+H2398	igehely_rov	וַיְחַטְּאוּ2Krón	וַיְחַטְּאוּ 2Krón	1	igen
+H2428	igehely_rov	׳בְּכֹחַ2Krón	׳בְּכֹחַ 2Krón	1	igen
+H3423	igehely_rov	הוֺרַשְׁתָּ2Krón	הוֺרַשְׁתָּ 2Krón	1	igen
+H3423	igehely_rov	מִיְּרֻשָּֽׁתְךָ2Krón	מִיְּרֻשָּֽׁתְךָ 2Krón	1	igen
+H3519	igehely_rov	לְ2Krón	לְ 2Krón	1	igen
+H3519	igehely_rov	׳וְלֹאלְֿךָ2Krón	׳וְלֹאלְֿךָ 2Krón	1	igen
+H3559	igehely_rov	הכונוּ2Krón	הכונוּ 2Krón	1	igen
+H3820	igehely_rov	גֹּבַהּ2Krón	גֹּבַהּ 2Krón	1	igen
+H3824	igehely_rov	לְ2Krón	לְ 2Krón	1	igen
+H3915	igehely_rov	׳עַדלֿ2Krón	׳עַדלֿ 2Krón	1	igen
+H4191	igehely_rov	הֱמִיתָ֑תְהוּ2Krón	הֱמִיתָ֑תְהוּ 2Krón	1	igen
+H4467	igehely_rov	לְ2Krón	לְ 2Krón	1	nem (#28 sor)
+H5674	igehely_rov	וַיַּעֲבֶרֿ2Krón	וַיַּעֲבֶרֿ 2Krón	1	igen
+H5800	igehely_rov	אֹתוֺ2Krón	אֹתוֺ 2Krón	1	igen
+H7307	igehely_rov	יְהוֺשֻׁעַ4Móz	יְהוֺשֻׁעַ 4Móz	1	igen
+H7307	igehely_rov	רוּחַ2Kir	רוּחַ 2Kir	1	igen
+H7307	igehely_rov	רוּחַÉzs	רוּחַ Ézs	1	igen
+H7725	igehely_rov	׳עַליֿ2Krón	׳עַליֿ 2Krón	1	igen
+H8199	igehely_rov	בְּ2Krón	בְּ 2Krón	1	igen
+H8451	igehely_rov	לְמִעְוָךְ2Krón	לְמִעְוָךְ 2Krón	1	igen
