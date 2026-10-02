@@ -55,6 +55,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 
 <!-- GENERÁLT-KEZDET: feladatok.py --cel naplozas -->
 - #26 Egyforrású lánc (B) döntéseinek rögzítése és az érintett briefek fejléce — ⬜ — /kovetkezo, a MOTIVUM_FORRAS, LICENC és OLVASOI_HTML befogadása után (`F26_EGYFORRAS_NAPLO_BRIEF.md`)
+- #47 Három állapot-ellentmondás javítása (F22-brief és jelöltlista, F24-brief, DT6) — ⬜ — "Code — J1 3. pont csak ellenőrzés (`feladatok.py jeloltek` futtatása, kézi szerkesztés nincs); a #47 ne fusson #26-tal egy csomagban, futó #26 lezárásáig várjon" (`F47_ALLAPOT_ELLENTMONDASOK_BRIEF.md`)
 <!-- GENERÁLT-VÉGE: feladatok.py --cel naplozas -->
 
 ## Takarítás (bármikor, rövid)
