@@ -2510,3 +2510,68 @@ forrásoldali tokent `Gen 33:8 16t.`-re javítja, csak a 2. kapunak, csak erre a
 
 Tesztek: `teszt_bdb_zaras.py` 17, `teszt_forditas_kapuk.py` 61, `teszt_normalizal.py` 63, `teszt_emeles.py` 7 — mind OK.
 `ellenoriz.py`: SÉRTÉS 0. A 269 BDB-soron (243 F38 + 26 #28) a gátoló kapuk RENDBEN. A nagybetűs „Szellem” 14 helye.
+
+## M5 — 5. adag (sorrend 244–406, H7223-tól; Sonnet, claude-sonnet-5-5)
+
+*Modell: Sonnet (DT-F38e). Eszköztár: prompt v4.1, terminológia v3, 1–13. kapu, normalizáló. Minden sor `allapot=sonnet`.*
+
+**Mennyiség:** 163 szócikk; forrás 499 783 karakter, fordítás 522 506 karakter (tokent és költséget nem naplózunk).
+**Kapuk:** 163/163 átment, gátló bukás 0; a 13. kapu 16 szócikknél JELZÉST adott (forrásbeli fejezetszám-hiba, l. lent).
+`ellenoriz.py`: SÉRTÉS 0. `teszt_forditas_kapuk.py`: OK.
+**Állapot:** 406 sorrend-sor kész (a 269 + 163 szócikk; ebből 26 a #28 sor), hátra 7 658 sorrend-sor.
+
+A részletes kapu-táblázat: `python naplok/BDB_FORDITAS_M1_nezet.py --adag 5`.
+
+### 13. kapu — forrásbeli fejezetszám-jelzések (a fordítás hűen viszi, nem javít)
+
+| Szócikk | Jelzett hely |
+|---|---|
+| H7223 | Préd 17 |
+| H6607 | 4Móz 39 |
+| H5608 | 1Krón 34 |
+| H7230 | 1Kir 24, 1Kir 30 |
+| H1008 | Hós 35 |
+| H5158 | 1Kir 23 |
+| H3426 | Ruth 25, 28, 38 |
+| H4605 | 4Móz 39 |
+| H4908 | 2Móz 46 |
+| H6437 | Náh 47 |
+| H8313 | 1Kir 23 |
+| H7676 | 3Móz 28 |
+| H0539 | Józs 25 |
+| H1157 | JSir 9 |
+| H8548 | 3Móz 46 |
+| H7458 | 1Kir 25 |
+
+### N-F38a — `FORRAS_VERS_OCR`
+Az 5. adagban a 2. kapu (versszámok) egyszer sem bukott összeforrt versszám miatt, ezért a `FORRAS_VERS_OCR` szótárhoz **nem került új tétel** (marad az egy `Gen 33:816t.`). Ha később jelentkezik, a bővítés engedélyezett: a forrásbeli OCR-hibás vers csak a 13. kapu forráshiba-jelzéseként kerül naplóba, és csak ott javítható a szöveg, ahol a Károli-adat egyértelműen dönt; a javítás a naplóba megy.
+
+### Terminológia-kivételek (jóváhagyásra, DT-F38d (b) mintájára)
+- **H8050:** `Heb.` — könyvcím-szigla (Hom^Heb.Trad.), nem a „Hebrew” rövidítése, ezért nem „héb.”.
+- **H5922:** `accusative` — az „on account of” / „on this account” OCR-hibája (Dan 3:16; Ezra 4:15), ezért nem tárgyeset.
+
+### Szellem-tábla kiegészítése (DT25 / DT-F38g)
+| Szócikk | Hely | Kezelés |
+|---|---|---|
+| H2451 | Péld 1:23 | „az isteni Szellemet” (nagy) |
+| H5117 | 4Móz 11:25–26; Ézs 11:2 | „az ⟦YHWH⟧ Szelleméről” (nagy); Illés szelleme kicsi |
+| H3847 | Bír 6:34 | „az ⟦YHWH⟧ Szelleme felöltözte Gedeont” (nagy) |
+| H5012 | két hely | „az isteni Szellem hatása alatt” (nagy) |
+| H1984, H2534, H6862, H0539 (Péld 11:13) | — | emberi/démoni szellem, kicsi |
+| **H7451** | 1Sám 16:14 stb. | **kicsi marad** (N-F38b: Isten küldte „gonosz szellem”) |
+| **H4390** | 2Móz 31:3; 35:31 | **nagy**: „Szellemmel betölteni” (N-F38b); a 28:3 emberi, kicsi — kézi javítás |
+| **H5674** | 1Kir 22:24 | **nagy** (N-F38c); „abszolút használatban + מֵאֵת: a Szellem 1Kir 22:24; 2Krón 18:23”, a BDB 9a besorolásával összhangban — kézi javítás |
+
+### Esemény: H6213 és H6256 téves felülírása
+Egy korábbi lépésben a H6213 és a H6256 sora tévesen felülíródott; az eredeti (F38.288) sorok visszaállítva. A felhasználó ellenőrzése (`git diff 37b3cfb HEAD -- adat/forditasok.tsv | grep -E "H6213|H6256"`) üres kimenetet adott: a két sor nem tér el, 34 hozzáadott sor.
+
+### Szűrő-módosítás
+`naplok/BDB_FORDITAS_kapuk.py`: a szűrő az `opus` és a `sonnet` állapotú `F38 BDB_FORDITAS` sorokat is veszi.
+
+### Esemény: ágtévesztés és javítása
+Az 5. adag 27 commitja (F38.283–F38.308) tévesen a helyi `main`-re került a brief szerinti `claude/f38-adag5` helyett (push nem történt). Javítás (felhasználói jóváhagyással): `git branch -f claude/f38-adag5 9dea846`, a `main` visszaállítva `origin/main`-ra (`git branch -f`); ellenőrzés: `origin/main..claude/f38-adag5` = 27 commit, `origin/main..main` üres.
+
+### Ellenőri javítások (ELLENOR_F38_adag5)
+- H7970: a „követi / megelőzi” alany-tárgy viszonya fordítva állt; javítva a forrás szerint („׳שׁ követi az egyeseket”, „követi a 100-at”).
+- A „hátra” szám 7 658 (nem 7 659); a H6213 kikerült az 5. adag Szellem-tábla soraiból (a 2. adagé).
+- Nyitva hagyva (stílus): H3532 „Mózes második könyve Mózes harmadik könyve Numeri” — a forrás „Exodus Leviticus Numbers” kevert könyvnév-formája.
