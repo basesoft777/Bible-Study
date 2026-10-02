@@ -1715,3 +1715,573 @@ forrásban tapadt jelzés, amelyet a kapu eddig nem számolt); ezek újrafordít
 alakot kapják.
 
 **(d) H2719 a hibás listán:** a sor marad, a megjegyzés „rendezve: F38.141”.
+
+## Zárómenet — az ág zárása, Sonnet-út (F38.264–, DT-F38e)
+
+**Fordító / végrehajtó:** Sonnet (`claude-sonnet-5-5`). A zárómenet nem fordít: címkét javít, kapukat és
+normalizálót bővít, visszamenőleg lefuttatja őket, és átnézi az isteni szellem alakjait.
+
+### Eltérések a briefhez (a végrehajtó jelzi, nem dönt)
+
+- **Az ág csúcsa** a menet indulásakor `719a066` volt, nem `20ef676` (a brief szerint): az F38.260–F38.263
+  már rajta volt (243 `F38 BDB_FORDITAS` sor kivéve az `adat/forditasok.tsv`-ből; a DT-F38d (b), (c), (d)
+  alkalmazása; a DT-F38e korábbi, Opus-újrafordítási változata). A menet a tényleges csúcsról dolgozott.
+- **A 243 sor visszakerült.** A brief „a 269 sor marad, a címkéje javul” szándékához az F38.260-ban kivett sorokat
+  vissza kellett tenni: a `20ef676` állapotából, bájtra azonosan, csak az `allapot` és a `modell` mezővel
+  (`naplok/BDB_FORDITAS_cimkejavit.py`). A #28 26 sora bájtra azonos maradt.
+- **A #28 sorai (26 db, `kezi`/`opus`, F28) szövege nem változott** (a brief: „A #28 sorai nem változnak”), ezért a
+  normalizálás, a glossza-visszaállítás és a Szellem-javítás csak az F38-as 243 sort írta; a #28-as soron a
+  javítás csak listázva van („nem (#28 sor)”). Következmény: a H0430 (#28) sor továbbra is 11. kapus SÉRTÉS
+  (`Dávidot2Krón`-típusú tapadt jelzés), lásd a „Nyitott” szakaszt.
+- **A modellazonosító:** a futás pontos Sonnet-verziója az 1–4. adagra nem rögzített; a brief szerint a saját
+  Sonnet-azonosítóm (`claude-sonnet-5-5`) került a 243 sor `modell` mezőjébe.
+- **Közös munkafa:** a `Bible-Study` munkafát menet közben egy másik folyamat `main`-re állította át; a menet ezért
+  önálló `git worktree`-ben dolgozott (a kimenet nem érintett, minden commit az ágra ment).
+- **Az `-szor`/`-szer`/`-ször` toldalék** a szám kiejtett utolsó szava szerint (4-szer, 5-ször, 15-ször), nem
+  egységesen `-szor`; a brief példái (`33-szor`, `26-szor`, `3-szor`) így is megfelelnek.
+
+### Címkék (F38.264–F38.265)
+
+- A DT-F38e rögzítve (brief D-új, a D9 felülírva; `DONTESEK.md`; az M1–M4 helyesbítése).
+- **SEMA 2.14:** az `allapot` új értéke `sonnet`. Az `ellenoriz.py` 13. szabálya zárt `allapot`-készletet kapott
+  (`kezi`, `opus`, `sonnet`, `pilot`, `elavult`); az E19 szabály (`eszkozok/ellenorzes/szabalyok.py`) a `sonnet` sort
+  is fordításnak veszi.
+- **`emeles.py rogzit`:** a `--modell` kötelező, nincs alapérték (a `claude-opus-5-5` alapérték okozta a hibás címkét);
+  a `rogzit` és a `beir` `--allapot` értékei közt a `sonnet` is szerepel. Új teszt: `eszkozok/teszt_emeles.py`.
+- 243 sor: `allapot=sonnet`, `modell=claude-sonnet-5-5`.
+
+### Új normalizáló-szabályok és kapuk (F38.266–F38.269)
+
+| Szabály | Hol | Mit csinál |
+|---|---|---|
+| `elofordulas` | `normalizal.py` (BDB) | `N t.` → `N-szor/-szer/-ször`; `N t. a versben` → `a versben N-szor` |
+| `nevalakok` | `normalizal.py` (BDB) | `Izrael` → `Izráel` (toldalékos alakok is; `izraelita` marad) |
+| `konyv_rov` | `normalizal.py` (BDB) | `1Pt`/`2Pt` → `1Pét`/`2Pét` (a `Konyv_normalizalo_tabla.tsv` szerint), a `ᵐ5` szigla után is |
+| `igehely_rov` (bővítve) | `normalizal.py` | a latin vagy héber betűhöz tapadt könyvjelzés leválasztása és Károli-alakra cserélése (angol és már Károli-alakú: `abundantly2Chr`, `Dávidot2Krón`, `דָּן2Krón`) |
+| `glossza_visszaallit` | `normalizal.py`, `emeles.utofeldolgoz` (BDB) | a lefordult RV/AV-glossza (`RV: lehelet`) helyére a forrásbeli angol (`RV breath`) |
+| 11. kapu | `forditas_kapuk.py` (F38.261) | a forrásoldali tapadt könyvjelzést is számolja |
+| 10. kapu | `forditas_kapuk.py` (F38.261) | a magyar raggal álló törzsnév (Qalban, Nifalban, …) |
+| 13. kapu | `forditas_kapuk.py` (már létezett) | a fejezetszám a könyv fejezeteinél nagyobb → JELZES (forráshiba, nem javít, nem gátol); új teszt a `Hab 41:47`, `Jóel 9:9`, `1Móz 81:3` esetekre |
+
+Az `RV/AV`-glossza szabálya szándékosan szűk: csak a kisbetűs, ≤5 szavas, `)`/`,`/`;` jellel záródó glossza, amelynek
+nincs `and/but/see/compare/render…` kezdőszava, és ahol a fordítás ugyanazzal a zárójellel végződik. Az, ami ennél
+bizonytalanabb (pl. H4150 `RV rendszerint set feast vagy appointed season`, H2403 `RV fordítása sin-offering`,
+H3772, H4397), nem módosult, és az alábbi „Nyitott” szakaszban szerepel.
+
+### A visszamenőleges futás (`naplok/BDB_FORDITAS_zaras.py`, F38.267, F38.269)
+
+A 269 BDB-szócikkre a teljes kapusor előtte és utána, a sor saját terminológia-kivételeivel.
+
+| Szabály | Javított hely (F38, írva) | Szócikk (F38) | Javítandó hely a #28 soron (nem írva) |
+|---|---|---|---|
+| `elofordulas` (N t.) | 138 | 69 | 1 (1 szócikk) |
+| `nevalakok` (Izráel) | 100 | 48 | 0 |
+| `igehely_rov` (tapadt könyvjelzés) | 150 | 89 | 15 (7 szócikk) |
+| `konyv_rov` (1Pét) | 1 | 1 | 0 |
+| `glossza_visszaallit` (RV/AV) | 6 | 6 | 2 (1 szócikk) |
+
+(Az 1Pt-szabály a H2617-nél talált egyetlen helyet; a #28 sorain nincs.) Az írt sorok: 154 sor szövege az F38.267-ben,
+1 sor (H2617) az F38.269-ben, 5 sor a Szellem-javításban (F38.268); a H0595 és a H0068 megjegyzése a
+„jóváhagyásra: DT-F38d” helyett „jóváhagyva: DT-F38d (b), 2026.10.02”.
+
+**Kapuk a 269 szócikkön, a javítás előtt → után** (a gátoló kapuk): 11. kapu 237 RENDBEN + 32 SÉRTÉS → 268 RENDBEN
++ 1 SÉRTÉS (a #28 H0430, nem írva); 10., 12., 1–6., 8., 9. kapu: 269 RENDBEN → 269 RENDBEN; 13. kapu (JELZES): 48
+szócikk → 48 szócikk (forráshiba, nem javítva). Az F38-as 243 soron minden gátoló kapu átmegy
+(`eszkozok/teszt_bdb_zaras.py`).
+
+**A javítások listája** (szócikk, régi, új): `naplok/BDB_FORDITAS_zaras_javitasok.tsv` (374 egyedi sor), és
+alább. A „régi/új” szószintű különbség (a javított szó a környező írásjellel).
+
+
+| Szócikk | Szabály | Régi | Új | Db | Írva |
+|---|---|---|---|---|---|
+| H0001 | nevalakok | Izrael | Izráel | 1 | igen |
+| H0001 | nevalakok | Izraelről) | Izráelről) | 1 | igen |
+| H0113 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H0120 | elofordulas | (3 t. a versben) | (a versben 3-szor) | 1 | igen |
+| H0127 | igehely_rov | ׳אֹהֵב2Krón | ׳אֹהֵב 2Krón | 1 | nem (#28 sor) |
+| H0168 | igehely_rov | sátrai2Krón | sátrai 2Krón | 1 | igen |
+| H0241 | igehely_rov | ׳קַשֻּׁבוֺת2Krón | ׳קַשֻּׁבוֺת 2Krón | 1 | igen |
+| H0251 | igehely_rov | אִישׁ1Móz | אִישׁ 1Móz | 1 | igen |
+| H0251 | nevalakok | Izraelről | Izráelről | 2 | igen |
+| H0259 | igehely_rov | אַחַת2Krón | אַחַת 2Krón | 1 | igen |
+| H0259 | igehely_rov | שְׁנַת2Krón | שְׁנַת 2Krón | 1 | igen |
+| H0310 | glossza_visszaallit | RV mellett | RV besides | 1 | igen |
+| H0369 | elofordulas | (12 t.); | (12-szer); | 1 | igen |
+| H0376 | nevalakok | Izrael | Izráel | 1 | igen |
+| H0398 | nevalakok | (Izraelről | (Izráelről | 1 | igen |
+| H0410 | elofordulas | (10 t.; | (10-szer; | 1 | igen |
+| H0410 | elofordulas | (5 t.; | (5-ször; | 1 | igen |
+| H0410 | elofordulas | (55 t. | (55-ször | 1 | igen |
+| H0428 | elofordulas | (16 t.); | (16-szor); | 1 | igen |
+| H0428 | elofordulas | (3 t.) | (3-szor) | 1 | igen |
+| H0428 | elofordulas | (5 t.); | (5-ször); | 1 | igen |
+| H0428 | elofordulas | (7 t.), | (7-szer), | 1 | igen |
+| H0430 | igehely_rov | Dávidról2Krón | Dávidról 2Krón | 1 | nem (#28 sor) |
+| H0430 | igehely_rov | Isten2Krón | Isten 2Krón | 1 | nem (#28 sor) |
+| H0518 | nevalakok | (Izraelhez) | (Izráelhez) | 1 | igen |
+| H0520 | elofordulas | (21 t.) | (21-szer) | 1 | igen |
+| H0520 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 7 | igen |
+| H0520 | elofordulas | (4 t. a versben); | (a versben 4-szer); | 1 | igen |
+| H0520 | elofordulas | (45 t.) | (45-ször) | 1 | igen |
+| H0520 | elofordulas | (56 t.) | (56-szor) | 1 | igen |
+| H0520 | elofordulas | (86 t.); | (86-szor); | 1 | igen |
+| H0520 | igehely_rov | לְאַמּוֺת2Krón | לְאַמּוֺת 2Krón | 1 | igen |
+| H0559 | igehely_rov | Dávidot2Krón | Dávidot 2Krón | 1 | igen |
+| H0639 | elofordulas | (177 t.); | (177-szer); | 1 | igen |
+| H0639 | elofordulas | (45 t.); | (45-ször); | 1 | igen |
+| H0702 | elofordulas | (3 t. a versben) | (a versben 3-szor) | 1 | igen |
+| H0727 | igehely_rov | ládája2Chr | ládája 2Krón | 1 | igen |
+| H0727 | igehely_rov | אֲרוֺן2Móz | אֲרוֺן 2Móz | 1 | igen |
+| H0727 | igehely_rov | הַקֹּדֶשׁ2Krón | הַקֹּדֶשׁ 2Krón | 1 | igen |
+| H0776 | nevalakok | Izrael | Izráel | 2 | igen |
+| H0776 | nevalakok | Izraelről | Izráelről | 1 | igen |
+| H0784 | igehely_rov | ׳בער2Krón | ׳בער 2Krón | 1 | igen |
+| H0802 | nevalakok | (Izrael | (Izráel | 2 | igen |
+| H0834 | elofordulas | [אֲשֶׁר11t.], | [אֲשֶׁר11-szer], | 1 | igen |
+| H0834 | elofordulas | אֲשֶׁא89t.); | אֲשֶׁא89-szer); | 1 | igen |
+| H0854 | nevalakok | Izrael | Izráel | 1 | igen |
+| H0935 | nevalakok | Izraelt | Izráelt | 1 | igen |
+| H0996 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H1004 | igehely_rov | בֵּיתזְֿבֻל2Krón | בֵּיתזְֿבֻל 2Krón | 1 | igen |
+| H1004 | igehely_rov | הַמַּהְמֶּכֶת2Krón | הַמַּהְמֶּכֶת 2Krón | 1 | igen |
+| H1004 | igehely_rov | קֹדֶשׁ2Krón | קֹדֶשׁ 2Krón | 1 | igen |
+| H1004 | nevalakok | (Izrael | (Izráel | 1 | igen |
+| H1004 | nevalakok | Izraelben | Izráelben | 1 | igen |
+| H1004 | nevalakok | Izraelről | Izráelről | 1 | igen |
+| H1121 | igehely_rov | אֶתכֹּֿהֲנֵי2Krón | אֶתכֹּֿהֲנֵי 2Krón | 1 | nem (#28 sor) |
+| H1121 | igehely_rov | בְּנֵי2Krón | בְּנֵי 2Krón | 1 | nem (#28 sor) |
+| H1121 | igehely_rov | מבּן2Krón | מבּן 2Krón | 1 | nem (#28 sor) |
+| H1129 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H1129 | igehely_rov | חֶסֶדZsolt | חֶסֶד Zsolt | 1 | igen |
+| H1129 | nevalakok | Izraelt | Izráelt | 1 | igen |
+| H1285 | elofordulas | (3 t. a versben) | (a versben 3-szor) | 1 | igen |
+| H1285 | igehely_rov | nép2Krón | nép 2Krón | 1 | igen |
+| H1288 | igehely_rov | térdeire2Krón | térdeire 2Krón | 1 | igen |
+| H1320 | elofordulas | 30 t.) | 30-szor) | 1 | igen |
+| H1320 | elofordulas | 9 t.) | 9-szer) | 1 | igen |
+| H1323 | elofordulas | (4 t. a versben); | (a versben 4-szer); | 1 | igen |
+| H1323 | elofordulas | (6 t.) | (6-szor) | 1 | igen |
+| H1323 | igehely_rov | hercegnő2Krón | hercegnő 2Krón | 1 | igen |
+| H1323 | igehely_rov | דָּן2Krón | דָּן 2Krón | 1 | igen |
+| H1366 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H1366 | elofordulas | (8 t.) | (8-szor) | 1 | igen |
+| H1419 | igehely_rov | magáról2Krón | magáról 2Krón | 1 | igen |
+| H1419 | igehely_rov | ׳ג1Móz | ׳ג 1Móz | 1 | igen |
+| H1419 | igehely_rov | ׳מדברתZsolt | ׳מדברת Zsolt | 1 | igen |
+| H1471 | nevalakok | Izraellel | Izráellel | 1 | igen |
+| H1471 | nevalakok | Izraelre | Izráelre | 1 | igen |
+| H1471 | nevalakok | Izraelről | Izráelről | 3 | igen |
+| H1540 | igehely_rov | גִּלֵּיתִיJer | גִּלֵּיתִי Jer | 1 | igen |
+| H1540 | igehely_rov | גִּלָּה3Móz | גִּלָּה 3Móz | 1 | igen |
+| H1540 | igehely_rov | נִגְלֹה1Sám | נִגְלֹה 1Sám | 1 | igen |
+| H1540 | igehely_rov | עוןHós | עון Hós | 1 | igen |
+| H1571 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H1571 | elofordulas | (5 t.) | (5-ször) | 1 | igen |
+| H1696 | glossza_visszaallit | RV: valami ellen | RV against | 1 | igen |
+| H1696 | igehely_rov | valakihez2Krón | valakihez 2Krón | 1 | igen |
+| H1696 | nevalakok | Izraellel | Izráellel | 1 | igen |
+| H1697 | igehely_rov | szavaiEszt | szavai Eszt | 1 | igen |
+| H1697 | nevalakok | Izrael | Izráel | 1 | igen |
+| H1732 | nevalakok | Izrael | Izráel | 1 | igen |
+| H1732 | nevalakok | Izraelben | Izráelben | 1 | igen |
+| H1818 | elofordulas | (3 t. a versben) | (a versben 3-szor) | 1 | igen |
+| H1818 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 4 | igen |
+| H1818 | elofordulas | (4 t. a versben); | (a versben 4-szer); | 1 | igen |
+| H1870 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H1870 | elofordulas | (5 t. a versben); | (a versben 5-ször); | 1 | igen |
+| H1870 | igehely_rov | וּדְרָכָיו2Krón | וּדְרָכָיו 2Krón | 1 | igen |
+| H1870 | nevalakok | Izraelről, | Izráelről, | 1 | igen |
+| H1961 | igehely_rov | i1 Kings | i 1Kir | 1 | igen |
+| H1961 | nevalakok | Izrael | Izráel | 1 | igen |
+| H1980 | nevalakok | (Izrael | (Izráel | 2 | igen |
+| H1980 | nevalakok | Izrael | Izráel | 4 | igen |
+| H1980 | nevalakok | Izraelhez | Izráelhez | 1 | igen |
+| H1980 | nevalakok | Izraellel (Izrael | Izráellel (Izráel | 1 | igen |
+| H1980 | nevalakok | Izraelről | Izráelről | 2 | igen |
+| H1980 | nevalakok | Izraelt | Izráelt | 1 | igen |
+| H2009 | elofordulas | (37 t.) | (37-szer) | 1 | igen |
+| H2009 | elofordulas | 15 t.; | 15-ször; | 1 | igen |
+| H2022 | igehely_rov | helye2Krón | helye 2Krón | 1 | igen |
+| H2022 | igehely_rov | בְּהֵמוֺתZsolt | בְּהֵמוֺת Zsolt | 1 | igen |
+| H2022 | nevalakok | Izrael | Izráel | 2 | igen |
+| H2022 | nevalakok | Izraelé | Izráelé | 1 | igen |
+| H2063 | elofordulas | (3 t.), | (3-szor), | 1 | igen |
+| H2063 | igehely_rov | כלזֿאת2Krón | כלזֿאת 2Krón | 1 | igen |
+| H2091 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H2091 | igehely_rov | מַּרְוָ֑יִם2Krón | מַּרְוָ֑יִם 2Krón | 1 | igen |
+| H2091 | igehely_rov | ׳וּמִשְׁקָל2Krón | ׳וּמִשְׁקָל 2Krón | 1 | igen |
+| H2320 | elofordulas | (3 t. a versben). | (a versben 3-szor). | 1 | igen |
+| H2320 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H2388 | elofordulas | (3 t. a versben) | (a versben 3-szor) | 1 | igen |
+| H2388 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H2388 | igehely_rov | ellenállni2Krón | ellenállni 2Krón | 1 | igen |
+| H2388 | igehely_rov | megszilárdításáról2Krón | megszilárdításáról 2Krón | 1 | igen |
+| H2388 | igehely_rov | venni2Krón | venni 2Krón | 1 | igen |
+| H2398 | elofordulas | 20 t. | 20-szor | 1 | igen |
+| H2398 | elofordulas | 82 t. | 82-szer | 1 | igen |
+| H2398 | igehely_rov | את2Krón | את 2Krón | 1 | igen |
+| H2421 | elofordulas | (14 t.) | (14-szer) | 1 | igen |
+| H2421 | elofordulas | (16 t.) | (16-szor) | 1 | igen |
+| H2421 | elofordulas | (3 t. a versben). | (a versben 3-szor). | 1 | igen |
+| H2428 | igehely_rov | ׳ח2Krón | ׳ח 2Krón | 1 | igen |
+| H2617 | elofordulas | (26 t.); | (26-szor); | 1 | igen |
+| H2617 | igehely_rov | tettek2Krón | tettek 2Krón | 1 | igen |
+| H2691 | igehely_rov | הַחֲדָשָׁה2Krón | הַחֲדָשָׁה 2Krón | 1 | igen |
+| H2691 | igehely_rov | הַכֹּהֲנִים2Krón | הַכֹּהֲנִים 2Krón | 1 | igen |
+| H2719 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H2896 | igehely_rov | jó2Krón | jó 2Krón | 1 | igen |
+| H2896 | igehely_rov | értelem2Krón | értelem 2Krón | 1 | igen |
+| H2896 | igehely_rov | דברים2Krón | דברים 2Krón | 1 | igen |
+| H2896 | igehely_rov | עשׂה2Krón | עשׂה 2Krón | 1 | igen |
+| H3027 | glossza_visszaallit | AV: Gedalja miatt | AV because of Gedaliah | 1 | igen |
+| H3027 | igehely_rov | compareIsaiah | compare Ézs | 1 | igen |
+| H3027 | nevalakok | Izrael | Izráel | 1 | igen |
+| H3045 | igehely_rov | tanultÉzs | tanult Ézs | 1 | igen |
+| H3045 | igehely_rov | valakireZsolt | valakire Zsolt | 1 | igen |
+| H3045 | igehely_rov | לְהַלֵּל2Krón | לְהַלֵּל 2Krón | 1 | igen |
+| H3045 | igehely_rov | שֶׂכֶל2Krón | שֶׂכֶל 2Krón | 1 | igen |
+| H3045 | nevalakok | Izraelről | Izráelről | 1 | igen |
+| H3063 | igehely_rov | מַלְכוּת2Krón | מַלְכוּת 2Krón | 1 | igen |
+| H3063 | nevalakok | Izraeltől: | Izráeltől: | 1 | igen |
+| H3068 | elofordulas | D^228t.; | D^228-szor; | 1 | igen |
+| H3068 | elofordulas | D^25t.; | D^25-ször; | 1 | igen |
+| H3117 | nevalakok | Izrael | Izráel | 2 | igen |
+| H3205 | elofordulas | (3 t. a versben) | (a versben 3-szor) | 1 | igen |
+| H3205 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H3205 | nevalakok | Izrael | Izráel | 2 | igen |
+| H3205 | nevalakok | Izraelről | Izráelről | 1 | igen |
+| H3205 | nevalakok | Izraelről, | Izráelről, | 1 | igen |
+| H3220 | igehely_rov | יָם2Krón | יָם 2Krón | 1 | igen |
+| H3254 | igehely_rov | עלחֿטאתנו׳ה2Krón | עלחֿטאתנו׳ה 2Krón | 1 | igen |
+| H3318 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 2 | igen |
+| H3318 | igehely_rov | כְּעֵת2Krón | כְּעֵת 2Krón | 1 | igen |
+| H3318 | nevalakok | Izrael | Izráel | 1 | igen |
+| H3318 | nevalakok | Izraelre). | Izráelre). | 1 | igen |
+| H3372 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H3381 | nevalakok | Izraelről | Izráelről | 1 | igen |
+| H3389 | elofordulas | 322t., | 322-szer, | 1 | igen |
+| H3389 | elofordulas | Ézs^127t., | Ézs^127-szer, | 1 | igen |
+| H3389 | nevalakok | Izrael, | Izráel, | 1 | igen |
+| H3478 | nevalakok | Izrael | Izráel | 2 | igen |
+| H3519 | igehely_rov | ׳עשֶׁר2Krón | ׳עשֶׁר 2Krón | 1 | igen |
+| H3548 | igehely_rov | הלוים2Krón | הלוים 2Krón | 1 | nem (#28 sor) |
+| H3548 | igehely_rov | לבמות2Krón | לבמות 2Krón | 1 | nem (#28 sor) |
+| H3548 | igehely_rov | ליחוה2Krón | ליחוה 2Krón | 1 | nem (#28 sor) |
+| H3548 | igehely_rov | ׳שָׂרֵי2Krón | ׳שָׂרֵי 2Krón | 1 | nem (#28 sor) |
+| H3559 | igehely_rov | elintéztetni2Chr | elintéztetni 2Krón | 1 | igen |
+| H3559 | igehely_rov | tenni2Chr | tenni 2Krón | 1 | igen |
+| H3559 | igehely_rov | אֱלֹהָיו2Krón | אֱלֹהָיו 2Krón | 1 | igen |
+| H3559 | igehely_rov | עַל2Krón | עַל 2Krón | 1 | igen |
+| H3588 | nevalakok | Izraelnek | Izráelnek | 1 | igen |
+| H3615 | igehely_rov | teljesen2Chr | teljesen 2Krón | 1 | igen |
+| H3627 | elofordulas | (3 t. a versben), | (a versben 3-szor), | 1 | igen |
+| H3678 | igehely_rov | הַמַּמְלָכָה2Krón | הַמַּמְלָכָה 2Krón | 1 | nem (#28 sor) |
+| H3701 | elofordulas | (19 t.), | (19-szer), | 1 | igen |
+| H3701 | elofordulas | (28 t.) | (28-szor) | 1 | igen |
+| H3772 | igehely_rov | favágók2Krón | favágók 2Krón | 1 | igen |
+| H3789 | igehely_rov | אִגֶּרֶת2Krón | אִגֶּרֶת 2Krón | 1 | igen |
+| H3789 | igehely_rov | כְּתוּבוֺת2Krón | כְּתוּבוֺת 2Krón | 1 | igen |
+| H3789 | igehely_rov | כִּדְנָהEzsd | כִּדְנָה Ezsd | 1 | igen |
+| H3789 | igehely_rov | עַלדִּֿבְרֵי2Krón | עַלדִּֿבְרֵי 2Krón | 1 | igen |
+| H3808 | nevalakok | Izraelnek, | Izráelnek, | 1 | igen |
+| H3820 | igehely_rov | ráirányítani2Krón | ráirányítani 2Krón | 1 | igen |
+| H3820 | igehely_rov | בא2Krón | בא 2Krón | 1 | igen |
+| H3820 | igehely_rov | עם2Krón | עם 2Krón | 1 | igen |
+| H3824 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H3824 | igehely_rov | ׳יִשְׁרֵי2Krón | ׳יִשְׁרֵי 2Krón | 1 | igen |
+| H3915 | elofordulas | 2 t. | 2-szer | 1 | igen |
+| H3915 | elofordulas | 25 t. | 25-ször | 1 | igen |
+| H3915 | elofordulas | 51 t.; | 51-szer; | 1 | igen |
+| H3947 | igehely_rov | ׳י5Móz | ׳י 5Móz | 1 | igen |
+| H3967 | elofordulas | (4 t. a versben), | (a versben 4-szer), | 1 | igen |
+| H3967 | igehely_rov | ׳רָאשֵׁיהֶם1Krón | ׳רָאשֵׁיהֶם 1Krón | 1 | igen |
+| H4057 | igehely_rov | תקוע2Krón | תקוע 2Krón | 1 | igen |
+| H4100 | elofordulas | (3 t. a versben): | (a versben 3-szor): | 1 | igen |
+| H4150 | igehely_rov | מוֺעֲדוֺת2Krón | מוֺעֲדוֺת 2Krón | 1 | igen |
+| H4191 | elofordulas | (3 t. a versben) | (a versben 3-szor) | 1 | igen |
+| H4196 | igehely_rov | הזהב2Krón | הזהב 2Krón | 1 | igen |
+| H4196 | igehely_rov | העולה2Krón | העולה 2Krón | 1 | igen |
+| H4196 | igehely_rov | טִהַר2Krón | טִהַר 2Krón | 1 | igen |
+| H4196 | igehely_rov | שִׁבַּר2Krón | שִׁבַּר 2Krón | 1 | igen |
+| H4264 | igehely_rov | ׳שַׁעֲרֵי2Krón | ׳שַׁעֲרֵי 2Krón | 1 | igen |
+| H4294 | elofordulas | (183 t.), | (183-szor), | 1 | igen |
+| H4294 | elofordulas | (4 t. a versben) | (a versben 4-szer) | 1 | igen |
+| H4294 | elofordulas | 10 t. | 10-szer | 1 | igen |
+| H4310 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H4310 | elofordulas | (6 t.) | (6-szor) | 1 | igen |
+| H4310 | igehely_rov | vÁmós | v Ámós | 1 | igen |
+| H4325 | igehely_rov | מֵימֵי2Krón | מֵימֵי 2Krón | 1 | igen |
+| H4397 | igehely_rov | מַלְאָכָיו2Krón | מַלְאָכָיו 2Krón | 1 | igen |
+| H4428 | nevalakok | Izrael | Izráel | 1 | igen |
+| H4428 | nevalakok | Izraelé | Izráelé | 1 | igen |
+| H4467 | igehely_rov | מַמְלְכוֺת2Krón | מַמְלְכוֺת 2Krón | 1 | nem (#28 sor) |
+| H4467 | igehely_rov | עַל2Krón | עַל 2Krón | 1 | nem (#28 sor) |
+| H4480 | glossza_visszaallit | RVm: valami miatt | RVm because of | 1 | igen |
+| H4480 | nevalakok | Izrael | Izráel | 4 | igen |
+| H4672 | elofordulas | (3 t. a versben), | (a versben 3-szor), | 1 | igen |
+| H4672 | nevalakok | Izraelre | Izráelre | 1 | igen |
+| H4872 | igehely_rov | ׳סֵפֶר2Krón | ׳סֵפֶר 2Krón | 1 | igen |
+| H5030 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H5046 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H5221 | igehely_rov | okoznak2Krón | okoznak 2Krón | 1 | igen |
+| H5221 | nevalakok | Izraelt | Izráelt | 1 | igen |
+| H5307 | elofordulas | (3 t. a versben) | (a versben 3-szor) | 1 | igen |
+| H5307 | igehely_rov | אַ֫רְצָה2Krón | אַ֫רְצָה 2Krón | 1 | igen |
+| H5307 | igehely_rov | ׳י2Krón | ׳י 2Krón | 1 | igen |
+| H5307 | nevalakok | Izraelre | Izráelre | 1 | igen |
+| H5315 | glossza_visszaallit | RV: magában | RV in himself | 1 | nem (#28 sor) |
+| H5315 | glossza_visszaallit | RVm: vágy tudás nélkül | RVm desire without knowledge | 1 | nem (#28 sor) |
+| H5315 | igehely_rov | הלך1Kir | הלך 1Kir | 1 | nem (#28 sor) |
+| H5315 | igehely_rov | מלּט1Sám | מלּט 1Sám | 1 | nem (#28 sor) |
+| H5414 | nevalakok | Izrael | Izráel | 1 | igen |
+| H5493 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 2 | igen |
+| H5612 | igehely_rov | הַמְּלָכִים2Krón | הַמְּלָכִים 2Krón | 1 | igen |
+| H5612 | igehely_rov | משֶׁה2Krón | משֶׁה 2Krón | 1 | igen |
+| H5612 | igehely_rov | ׳תּוֺרַת2Krón | ׳תּוֺרַת 2Krón | 1 | igen |
+| H5650 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H5650 | igehely_rov | כבשׁ2Krón | כבשׁ 2Krón | 1 | igen |
+| H5650 | nevalakok | Izrael | Izráel | 4 | igen |
+| H5650 | nevalakok | Izraelre | Izráelre | 1 | igen |
+| H5650 | nevalakok | Izraeltől, | Izráeltől, | 1 | igen |
+| H5674 | elofordulas | (4 t. a versben); | (a versben 4-szer); | 1 | igen |
+| H5674 | igehely_rov | הַעֲבִירוּנִי2Krón | הַעֲבִירוּנִי 2Krón | 1 | igen |
+| H5674 | igehely_rov | מֵעִיר2Krón | מֵעִיר 2Krón | 1 | igen |
+| H5704 | igehely_rov | felettébb2Krón | felettébb 2Krón | 1 | igen |
+| H5704 | igehely_rov | לְמֵרָחוֺק2Krón | לְמֵרָחוֺק 2Krón | 1 | igen |
+| H5704 | igehely_rov | מצרים2Krón | מצרים 2Krón | 1 | igen |
+| H5704 | igehely_rov | עַד2Krón | עַד 2Krón | 2 | igen |
+| H5750 | elofordulas | (14 t.: | (14-szer: | 1 | igen |
+| H5750 | igehely_rov | עוֺד2Krón | עוֺד 2Krón | 1 | igen |
+| H5769 | glossza_visszaallit | RVm: az idők sziklája | RVm rock of ages | 1 | igen |
+| H5769 | igehely_rov | עֵילוֺם2Krón | עֵילוֺם 2Krón | 1 | igen |
+| H5869 | elofordulas | (3 t. a versben) | (a versben 3-szor) | 1 | igen |
+| H5869 | igehely_rov | ל2Krón | ל 2Krón | 1 | igen |
+| H5869 | igehely_rov | מֵימֵי2Krón | מֵימֵי 2Krón | 1 | igen |
+| H5892 | igehely_rov | ׳הָעEz | ׳הָע Ez | 1 | igen |
+| H5927 | igehely_rov | ellen2Krón | ellen 2Krón | 1 | igen |
+| H5927 | igehely_rov | הֹעֲלָה2Krón | הֹעֲלָה 2Krón | 1 | igen |
+| H5927 | igehely_rov | לבית2Krón | לבית 2Krón | 1 | igen |
+| H5927 | igehely_rov | עלהֿמגדלות2Krón | עלהֿמגדלות 2Krón | 1 | igen |
+| H5971 | igehely_rov | kapu2Krón | kapu 2Krón | 1 | igen |
+| H5971 | nevalakok | Izrael | Izráel | 2 | igen |
+| H5973 | elofordulas | (3 t. a versben). | (a versben 3-szor). | 1 | igen |
+| H5973 | igehely_rov | יֵאָמֵן2Krón | יֵאָמֵן 2Krón | 1 | igen |
+| H5975 | igehely_rov | מַעֲמִיד2Krón | מַעֲמִיד 2Krón | 1 | igen |
+| H6256 | igehely_rov | vöNeh | vö Neh | 1 | igen |
+| H6310 | elofordulas | (3 t. a versben) | (a versben 3-szor) | 1 | igen |
+| H6310 | igehely_rov | által2Krón | által 2Krón | 1 | igen |
+| H6440 | igehely_rov | szembeszállni2Krón | szembeszállni 2Krón | 1 | igen |
+| H6440 | nevalakok | Izrael | Izráel | 1 | igen |
+| H6440 | nevalakok | Izraelnek, Izrael | Izráelnek, Izráel | 1 | igen |
+| H6547 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H6547 | elofordulas | 19 t. | 19-szer | 1 | igen |
+| H6629 | elofordulas | 317t. | 317-szer | 1 | igen |
+| H6635 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H6635 | igehely_rov | ישׂראל2Krón | ישׂראל 2Krón | 1 | igen |
+| H6635 | nevalakok | (Izrael | (Izráel | 1 | igen |
+| H6635 | nevalakok | Izrael | Izráel | 1 | igen |
+| H6635 | nevalakok | Izraelről); | Izráelről); | 1 | igen |
+| H6680 | igehely_rov | עַלתָֿגָב2Krón | עַלתָֿגָב 2Krón | 1 | igen |
+| H6963 | elofordulas | (4 t. a versben) | (a versben 4-szer) | 1 | igen |
+| H6963 | igehely_rov | ׳חֲצֹצְרוֺת2Krón | ׳חֲצֹצְרוֺת 2Krón | 1 | igen |
+| H6965 | elofordulas | (3 t. a versben) | (a versben 3-szor) | 1 | igen |
+| H6965 | nevalakok | Izraelből); | Izráelből); | 1 | igen |
+| H7043 | elofordulas | §67 t.) | §67-szer) | 1 | nem (#28 sor) |
+| H7126 | elofordulas | (15 t.) | (15-ször) | 1 | igen |
+| H7126 | elofordulas | (27 t.) | (27-szer) | 1 | igen |
+| H7126 | elofordulas | (3 t. a versben) | (a versben 3-szor) | 1 | igen |
+| H7126 | elofordulas | 142 t.) | 142-szer) | 1 | igen |
+| H7126 | elofordulas | 158 t.) | 158-szor) | 1 | igen |
+| H7126 | elofordulas | 33 t.); | 33-szor); | 1 | igen |
+| H7218 | igehely_rov | ׳הָר2Krón | ׳הָר 2Krón | 1 | igen |
+| H7227 | igehely_rov | רָ֛ב2Krón | רָ֛ב 2Krón | 1 | igen |
+| H7235 | igehely_rov | hozni2Chr | hozni 2Krón | 1 | igen |
+| H7307 | elofordulas | (117 t.): | (117-szer): | 1 | igen |
+| H7307 | elofordulas | (25 t.): | (25-ször): | 1 | igen |
+| H7307 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 2 | igen |
+| H7307 | elofordulas | (33 t.): | (33-szor): | 1 | igen |
+| H7307 | elofordulas | (76 t.; | (76-szor; | 1 | igen |
+| H7307 | elofordulas | (94 t.; | (94-szer; | 1 | igen |
+| H7307 | glossza_visszaallit | RV: lehelet | RV breath | 1 | igen |
+| H7307 | igehely_rov | ׃לֵבEz | ׃לֵב Ez | 1 | igen |
+| H7307 | igehely_rov | הִנְנִי2Kir | הִנְנִי 2Kir | 1 | igen |
+| H7307 | nevalakok | Izraelben: | Izráelben: | 1 | igen |
+| H7307 | nevalakok | Izraelt | Izráelt | 1 | igen |
+| H7311 | igehely_rov | בַּחֲצֹצְרוֺת2Krón | בַּחֲצֹצְרוֺת 2Krón | 1 | igen |
+| H7563 | igehely_rov | השׁיב2Krón | השׁיב 2Krón | 1 | igen |
+| H7563 | igehely_rov | שׂנְאֵי2Krón | שׂנְאֵי 2Krón | 1 | igen |
+| H7586 | nevalakok | Izrael | Izráel | 1 | igen |
+| H7650 | igehely_rov | igeDeuteronomy | ige 5Móz | 2 | igen |
+| H7651 | elofordulas | (15 t.) | (15-ször) | 1 | igen |
+| H7651 | elofordulas | (20 t.), | (20-szor), | 1 | igen |
+| H7651 | elofordulas | (3 t. a versben) | (a versben 3-szor) | 1 | igen |
+| H7651 | elofordulas | 7 t. | 7-szer | 1 | igen |
+| H7651 | igehely_rov | שְׁנַת5Móz | שְׁנַת 5Móz | 1 | igen |
+| H7704 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H7725 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H7725 | elofordulas | (4 t. a versben) | (a versben 4-szer) | 1 | igen |
+| H7725 | igehely_rov | וַהֲשֵׁיבוֺתָם2Krón | וַהֲשֵׁיבוֺתָם 2Krón | 1 | igen |
+| H7725 | igehely_rov | וַיְשִׁיבֵם2Krón | וַיְשִׁיבֵם 2Krón | 1 | igen |
+| H7760 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H7901 | igehely_rov | בַּמִּשְׁכָּב2Krón | בַּמִּשְׁכָּב 2Krón | 1 | igen |
+| H7965 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 2 | igen |
+| H7965 | elofordulas | 10 t.; | 10-szer; | 1 | igen |
+| H7965 | elofordulas | 5 t.; | 5-ször; | 1 | igen |
+| H7971 | igehely_rov | לִי1Sám | לִי 1Sám | 1 | igen |
+| H8033 | nevalakok | Izrael | Izráel | 2 | igen |
+| H8033 | nevalakok | Izraelben, | Izráelben, | 1 | igen |
+| H8064 | nevalakok | (Izraelé) | (Izráelé) | 1 | igen |
+| H8064 | nevalakok | Izraellel | Izráellel | 1 | igen |
+| H8064 | nevalakok | Izraelről, | Izráelről, | 1 | igen |
+| H8104 | elofordulas | (12 t.), | (12-szer), | 1 | igen |
+| H8104 | elofordulas | (24 t.), | (24-szer), | 1 | igen |
+| H8104 | elofordulas | (3 t.) | (3-szor) | 1 | igen |
+| H8147 | elofordulas | (55 t.) | (55-ször) | 1 | igen |
+| H8147 | elofordulas | (90 t.), | (90-szer), | 1 | igen |
+| H8179 | igehely_rov | הַיְסוֺד2Krón | הַיְסוֺד 2Krón | 1 | igen |
+| H8179 | igehely_rov | ׳הַסּוּסִים2Krón | ׳הַסּוּסִים 2Krón | 1 | igen |
+| H8179 | igehely_rov | ׳שַׁעֲרֵי2Krón | ׳שַׁעֲרֵי 2Krón | 1 | igen |
+| H8199 | igehely_rov | חִשָּׁפֵט2Krón | חִשָּׁפֵט 2Krón | 1 | igen |
+| H8199 | igehely_rov | ל2Krón | ל 2Krón | 1 | igen |
+| H8199 | igehely_rov | שׂרים2Krón | שׂרים 2Krón | 1 | igen |
+| H8269 | elofordulas | (3 t. a versben); | (a versben 3-szor); | 1 | igen |
+| H8269 | elofordulas | (4 t. a versben); | (a versben 4-szer); | 1 | igen |
+| H8269 | igehely_rov | שָׂרֵי2Krón | שָׂרֵי 2Krón | 1 | igen |
+| H8269 | nevalakok | (Észak-Izrael) | (Észak-Izráel) | 1 | igen |
+| H8269 | nevalakok | Izrael | Izráel | 1 | igen |
+| H8269 | nevalakok | Izraelé | Izráelé | 1 | igen |
+| H8337 | igehely_rov | בָּנוֺת2Krón | בָּנוֺת 2Krón | 1 | igen |
+| H8337 | igehely_rov | ׳ע2Krón | ׳ע 2Krón | 1 | igen |
+| H8432 | elofordulas | (116 t.). | (116-szor). | 1 | igen |
+| H8432 | elofordulas | (12 t.) | (12-szer) | 1 | igen |
+| H8432 | nevalakok | Izrael | Izráel | 1 | igen |
+| H8451 | igehely_rov | הַתּוֺרָה2Krón | הַתּוֺרָה 2Krón | 1 | igen |
+| H8451 | igehely_rov | לֹא2Krón | לֹא 2Krón | 1 | igen |
+| H8451 | igehely_rov | תורת2Krón | תורת 2Krón | 1 | igen |
+| H8451 | igehely_rov | ׳בספר2Krón | ׳בספר 2Krón | 1 | igen |
+| H8451 | igehely_rov | ׳דברי2Krón | ׳דברי 2Krón | 1 | igen |
+| H8478 | nevalakok | Izraelről | Izráelről | 1 | igen |
+| H9004 | igehely_rov | nézve2Krón | nézve 2Krón | 1 | igen |
+| H9005 | elofordulas | לָהֵ֫נָּה5t., | לָהֵ֫נָּה5-ször, | 1 | igen |
+| H9005 | igehely_rov | חֵרֵף2Krón | חֵרֵף 2Krón | 1 | igen |
+| H9005 | igehely_rov | לְלֹא2Krón | לְלֹא 2Krón | 1 | igen |
+| H9005 | igehely_rov | לתקופת2Krón | לתקופת 2Krón | 1 | igen |
+| H9005 | igehely_rov | לשׁנת2Krón | לשׁנת 2Krón | 1 | igen |
+| H2617 | konyv_rov | ᵐ51Pt | ᵐ51Pét | 1 | igen |
+
+### 13. kapu — a fordításban látható forrásbeli igehely-hibák (listázva, nem javítva)
+
+Az új „igehely-érvényesség” szabály a már működő 13. kapu (`ellenoriz_fejezetszam`): a könyvnévvel jelölt
+igehely fejezetszáma nagyobb a könyv fejezeteinél (a Jóel és a Malakiás esetén a héber számozással: 4). A kapu
+**JELZES**, nem gátol és nem javít. A 269 szócikkből 48-ban jelez (köztük a brief példái: H9005 `Hab 41`, `Jóel 9`):
+
+- H7843: 2Kir 36, Péld 57, Péld 58, Péld 59
+- H8034: Dán 22
+- H0413: 5Móz 37
+- H3605: 1Krón 119, 1Krón 145
+- H9009: 1Kir 45, 1Kir 59, 1Kir 61, 1Kir 66
+- H0834: Ruth 8, Ruth 9
+- H9005: Hab 41, Jóel 9
+- H3808: 2Sám 26
+- H3588: 1Kir 32, 1Kir 47
+- H1961: 1Kir 23
+- H9004: Dán 23
+- H4428: Préd 15
+- H3478: 1Kir 24
+- H3117: Dán 40
+- H6440: 2Kir 36, Zak 17
+- H1931: 1Krón 93, 1Krón 94, 2Kir 33, Hós 19, Hós 22, Hós 24, JSir 6
+- H7200: 1Sám 32, 1Sám 46, 1Sám 48
+- H0001: 1Kir 50, Eszt 11
+- H4480: 1Kir 32
+- H1732: 2Sám 132
+- H3318: Jer 58
+- H7725: 2Sám 26
+- H5973: 2Sám 26
+- H0854: Ján 30, Ján 54, Jón 11
+- H0398: 3Móz 28
+- H5650: Jón 14
+- H4100: Bír 33
+- H1870: Én 34
+- H0251: Jóel 7
+- H2063: Eszt 25
+- H7760: 3Móz 40, 5Móz 45
+- H5975: 2Kir 31
+- H8478: Dán 18, Dán 21, Dán 24
+- H5750: 2Krón 43, 2Krón 45
+- H4672: Préd 25
+- H6258: 2Kir 46
+- H3701: 2Móz 43
+- H4196: Bír 22
+- H5002: Jer 57
+- H5046: 1Kir 29
+- H0595: 1Móz 81
+- H4427: 2Kir 33
+- H6240: Náh 5
+- H4421: Bír 22
+- H3899: Péld 65
+- H3881: 1Krón 34
+- H2320: 1Kir 25
+- H5186: 2Móz 51
+
+### (b) Terminológia-kivételek és (d) H2719
+
+A (b) öt szócikkszintű kivétele (H0595, H0068 `accusative`; H3789 `cl.`; H3519, H1540 `see`) a visszakerült sorok
+`megjegyzes` mezőjében indokolva és a `terminológia-kivétel (bizonytalan_feloldasok)` jelöléssel szerepel; a H0595 és
+a H0068 megjegyzésében a „jóváhagyásra: DT-F38d” szöveg „jóváhagyva: DT-F38d (b), 2026.10.02”-re cserélődött.
+Kivételfajták az 5. kapun, az egész táblán: `accusative` 4 (H0413, H6310, H0595, H0068), `see` 2, `p.` 1, `cl.` 1,
+`Heb.` 1 (#28), és a Szellem-javítás után a `spirit` 3 (alább): egyik sem éri el az 5-öt, környezetfüggő kapuszabály
+nem kellett. A `spirit` kulcsnál a javaslat az 5. kapu bővítése (lásd „Nyitott”).
+A H2719 sora a `naplok/BDB_FORDITAS_hibas.tsv`-ben marad, „rendezve: F38.141” megjegyzéssel (F38.262).
+
+### Szellem-javítás (DT25; F38.268) — átnézésre
+
+A DT25 szerint az isteni szellem nagybetűs („Szent Szellem”, „Isten Szelleme”, „a Szellem”), az emberi, angyali,
+démoni szellem kisbetűs. A 269 szócikk összes `szellem*`, `lélek*`, `lelk*` helye átnézve; a H7307-tel kezdve (3d, 9b, 9f
+is). A mintakeresés eredménye: a `Szent lélek` / `Isten Lelke` régi alak sehol nincs (12. kapu: 0 jelzés).
+Javítva (10 hely, 5 szócikk, mind F38-as sor):
+
+| Szócikk | Pont | Régi | Új | Indok |
+|---|---|---|---|---|
+| H7307 | 3d | Di Bu: isteni szellem, vö. 32:8 | Di Bu: isteni Szellem, vö. 32:8 | Jób 32:18 — Di és Bu szerint az isteni szellem (vö. Jób 32:8) |
+| H7307 | 4c | c. ezért Isten szelleme: 1Móz 6:3 | c. ezért Isten Szelleme: 1Móz 6:3 | „Isten szelleme” |
+| H7307 | 6 (hivatkozás a 9b pontra) | de valószínűleg prófétai szellem, 9b) | de valószínűleg prófétai Szellem, 9b) | Ézs 59:21 — a 9b pont szerinti, a prófétákat tanításra indító (isteni) Szellem |
+| H7307 | 9a | akit az eksztatikus állapotban a szellem megragadott | akit az eksztatikus állapotban a Szellem megragadott | Hós 9:7 — az eksztatikus állapotot ihlető isteni Szellem (a 9. pont: Isten Szelleme) |
+| H7307 | 9b | b. a szellem mint a prófétákat tanítás vagy intés kimondására | b. a Szellem mint a prófétákat tanítás vagy intés kimondására | a 9. pont (Isten Szelleme) b. alpontja |
+| H7307 | 9f | úgy fogják fel az isteni szellemet, | úgy fogják fel az isteni Szellemet, | „isteni szellem” |
+| H5307 | (Ez 11:5) | a ׳י szelleme 11:5 | a ׳י Szelleme 11:5 | Ez 11:5 — Jahve Szelleme |
+| H5414 | (Ézs 42:1) | szellememet adom rá Ézs 42:1 | Szellememet adom rá Ézs 42:1 | Ézs 42:1 — Isten első személyű beszéde: „az én Szellemem” |
+| H3947 | (Ez 3:14) | Ez 3:14 a szellem felemelt | Ez 3:14 a Szellem felemelt | Ez 3:14 — Jahve Szelleme (a 7307 9a pontja: Ezékielre vonatkozóan Ez 3:12, 14) |
+| H7760 | (4Móz 11:17) | átvitt értelemben szellemet (עַל) 4Móz 11:17 | átvitt értelemben Szellemet (עַל) 4Móz 11:17 | 4Móz 11:17 — Isten Szelleme (a H7307 9a pontja is ide sorolja) |
+
+Szócikkszintű `spirit` terminológia-kivétel (H5307, H5414, H7760): ezekben az egyetlen szellem-hely isteni, ezért a
+javítás után nincs kisbetűs „szellem”, amelyet az 5. kapu a `spirit → szellem` sorra követel. A kivétel a sorok
+`megjegyzes` mezőjében indokolva van.
+
+**Átnézve, kétséges, nem módosítva** (a felhasználó dönt):
+
+| Szócikk | Hely | Szöveg | Miért nem |
+|---|---|---|---|
+| H4390 | 2Móz 28:3; 31:3; 35:31 | szellemmel betölteni | 31:3 isteni Szellem (Becalél), 28:3 viszont „a bölcsesség szelleme”; BDB nem dönt |
+| H1320 | Ézs 31:3 | a lovak hús, nem szellem | a hús–szellem szembeállítás; nem egyértelműen Isten Szelleme |
+| H5674 | 4Móz 5:14 | a szellemről | a féltékenység szelleme (קנאה רוח), nem isteni |
+| H7451 | 2Sám 13:22 körül | az isteni szellemről, amely az őrjöngés és az erőszak eksztatikus állapotát | a #28 sor (nem F38-as), a menet nem módosítja; ha kell: „az isteni Szellemről” |
+
+Az emberi (kisbetűs) szellem és a „szellemi” melléknév helyei (pl. H7307 3e „nyugtalan volt (a) szelleme”, 1Móz 41:8; H3615
+„a király szelleme sóvárgott”; H2617 „szellemi élet”) változatlanok; a „gonosz szellem” (1Sám 16:14, H0854, H1961, H5493)
+kisbetűs, mert nem Isten Szelleme.
+
+### Nyitott (nem e menet döntése)
+
+- **H0430 (#28) 11. kapu:** a sor `Dávidot2Krón`-típusú tapadt könyvjelzést tartalmaz; a kapu új szabálya szerint
+  SÉRTÉS, a menet a #28-as sorhoz nem nyúlt. Egy tartalomsemleges szóköz-javítás javasolt (a normalizáló kijavítaná).
+- **A #28 sorain** a normalizáló újabb szabályai (1 N t., 15 tapadt jelzés, 2 RV/AV) is javítanának; a #28-as sorok
+  szövege nem változott. A H7451 (#28) „az isteni szellemről” kisbetűs; javaslat: „az isteni Szellemről”.
+- **Az 5. kapu és a nagybetűs „Szellem”:** a DT25 jóváhagyott alakjai nagybetűsek, a `spirit → szellem` sor viszont a
+  kisbetűs alakot követeli (és az 5. kapu kis/nagybetű-gépi cseréje a nagybetűs alakot vissza is írná). Javaslat
+  (kapuváltozás, csak jóváhagyással): az 5. kapu fogadja el a `Szellem`, `Szelleme`, `Szellemet` alakot is.
+- **RV/AV-glossza, bizonytalan esetek:** H4150, H2403, H3772, H4397, H5674 (`RVm, akik felemésztik`) — a glossza
+  lefordult vagy vegyes, de a határa nem egyértelmű; nem módosult.
+- A zárómenet-szkript (`BDB_FORDITAS_zaras.py --ir`) újrafuttatása a javítási listát felülírná; a lista már a
+  `naplok/BDB_FORDITAS_zaras_javitasok.tsv`-ben van, a szkriptet csak jelentés módban kell futtatni.
