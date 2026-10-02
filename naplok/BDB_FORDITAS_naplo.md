@@ -2276,6 +2276,8 @@ kisbetűs, mert nem Isten Szelleme.
 
 ### Nyitott (nem e menet döntése)
 
+> Lezárva (2026.10.02): a lenti tételek döntése a DT-F38f; l. a „Zárómenet, 2. kör” szakaszt (a #28 sorai, az 5. kapu és a Szellem, az RV/AV-esetek, a maradék „N t.”).
+
 - **H0430 (#28) 11. kapu:** a sor `Dávidot2Krón`-típusú tapadt könyvjelzést tartalmaz; a kapu új szabálya szerint
   SÉRTÉS, a menet a #28-as sorhoz nem nyúlt. Egy tartalomsemleges szóköz-javítás javasolt (a normalizáló kijavítaná).
 - **A #28 sorain** a normalizáló újabb szabályai (1 N t., 15 tapadt jelzés, 2 RV/AV) is javítanának; a #28-as sorok
@@ -2299,3 +2301,129 @@ A független ellenőr jelentése (`naplok/ELLENOR_F38_zaras.md`) alapján:
 - **Terminológia-kivételek (`spirit`, H5307, H5414, H7760):** a megjegyzésben „jóváhagyásra: felhasználó” jelölés.
 - **Szövegek:** a DT-F38d (a) és a brief D8 sora a „Opus-menetben” szöveget áthúzva, „a DT-F38e szerint Sonnettel” kiegészítéssel; a brief `ad:` mezője `allapot=sonnet`.
 - **Nem javított észrevétel:** H8033 `RVm onnan [a mennyből]` lefordult glossza (a forrásban `RVm from there [from heaven]`); a szabály szűk határa miatt nem módosult (a „Nyitott” RV-lista bővül vele). A #28 (26 sor) visszamenőleges kezelése továbbra is felhasználói döntés.
+
+## Zárómenet, 2. kör — DT-F38f (F38.272–, 2026.10.02)
+
+**Fordító / végrehajtó:** Sonnet (`claude-sonnet-5-5`). A kör nem fordít; a felhasználó DT-F38f döntéseit hajtja végre
+(`DONTESEK.md` DT-F38f). Szkriptek: `naplok/BDB_FORDITAS_zaras2.py` (gépi és kézi javítás, jelentés + `--ir`),
+`naplok/BDB_FORDITAS_szellem.py` (a Szellem-lista, a H1320-cal bővítve).
+
+### 1. A felülírt Opus-újrafordítási szöveg rendbetétele (F38.272)
+
+A régi szöveg megmaradt, mellette/alatta „Felülírva (2026.10.02): a vakpróba után a felhasználó a Sonnet-utat
+választotta, a sorok visszaállítva, l. DT-F38e/DT-F38f.”: a `DONTESEK.md` DT-F38d (a) cellája és a DT-F38e
+kérdés-cellája („a sorok a F38.260-ban kikerültek”), valamint a napló „DT-F38d (b), (c), (d) végrehajtása” szakasza
+(„a sorok kikerültek, ezért az újrafordító menet…”). A brief D8/D9 sora már át volt húzva.
+
+**A 243 sor** a `20ef676` állapotához képest szkripttel összevetve: az `allapot`, `modell`, `megjegyzes` mezőn kívül
+minden oszlop azonos; a `forditas_hu` 156 soron tér el, minden eltérés a zárómenet szándékos javításainak
+listájában (`BDB_FORDITAS_zaras_javitasok.tsv`, Szellem-lista) szerepel (az RV/AV-glossza 5 helye a listában a
+szomszédos szóval szerepel, pl. `RV mellett` → `RV besides`); 87 sor bájtra azonos.
+
+### 2. A #28 26 sora (DT-F38f 1)
+
+A gépi szabályok a #28 soraira is lefutottak (`N t.`, tapadt könyvjelzés, Izráel, 1Pét, RV/AV). Az `allapot` és a
+`modell` nem változott (`kezi`/`opus`). A megváltozott sor `megjegyzes` mezője „F38.274: DT-F38f (1) …” jelölést kapott.
+
+- **Gépi javítás: 18 hely, 7 sorban** (H0127, H0430, H1121, H3548, H3678, H4467, H5315): 16 tapadt könyvjelzés
+  (`igehely_rov`), 2 RV/AV-glossza (`glossza_visszaallit`); `N t.`: 0 hely, Izráel: 0, 1Pét: 0 (a H7043 `§67 t.`
+  nem gyakoriság).
+- **Kézi RV/AV-javítás** (DT-F38f 5, H2403): 1 hely, 1 sor.
+- Összesen **19 hely, 8 sor**. A javítási listán (`BDB_FORDITAS_zaras_javitasok.tsv`, `iras` oszlop) külön
+  jelöléssel: `igen (#28, DT-F38f 1)` (a korábbi `nem (#28 sor)` 18 egyedi sora ide íródott át) és
+  `igen (kézi, DT-F38f 5)`.
+- **H0430 11. kapu:** SÉRTÉS → RENDBEN (a `Dávidot2Krón`-típusú tapadt jelzések szétválasztva).
+- A #28 26 során minden gátoló kapu RENDBEN a javítás után (`teszt_bdb_zaras.py` `DTF38f`).
+
+### 3. 5. kapu és DT25 (DT-F38f 2)
+
+Az 5. kapu a `spirit` kulcsnál a kis- és a nagybetűs alakot is elfogadja (szellem/Szellem és ragozott alakjaik:
+Szelleme, Szellemet, Szellemével…) a `forditas_kapuk.KIS_NAGYBETUS_IS` halmazon át: kapuszabály, nem kivétel; csak
+a felsorolt kulcsra, a `soul` stb. kis/nagybetűre nem lazul. A `terminologia_kisnagybetu_csere` a nagybetűs alakot
+nem írja vissza kisbetűsre. A H5307, H5414 és H7760 szócikkszintű `spirit`-kivétele kikerült (a három sor
+`megjegyzes` mezőjéből, „F38.274: a spirit szócikkszintű kivétele megszűnt” jelzéssel); a három sor kivétel nélkül
+átmegy az 5. kapun. Tesztek: `teszt_forditas_kapuk.py` `SzellemKisNagybetu` (5 teszt), `teszt_bdb_zaras.py`.
+Az 5. kapu kivételfajtái az egész táblán ezzel: `accusative` 4, `see` 2, `p.` 1, `cl.` 1, `Heb.` 1 (#28).
+
+### 4. Szellem-táblázat, végleges állapot (DT-F38f 3)
+
+Szabály: ahol a BDB az adott helyet a H7307 9. pontjába (Isten Szelleme) sorolja, nagybetűs; Isten által küldött
+rossz/gonosz szellem (1Sám 16:14-23) kisbetűs; emberi szellem és szél kisbetűs; ami ezek után is kétséges, marad,
+indoklással. A BDB-besorolás a H7307 forrásszövegéből (a 9a–9f pontok hivatkozáslistájából) van, nem memóriából.
+
+**Nagybetűre javítva (11 hely, 6 szócikk; mind F38-as sor):**
+
+| Szócikk | Pont | Régi | Új | Indok |
+|---|---|---|---|---|
+| H7307 | 3d | Di Bu: isteni szellem, vö. 32:8 | Di Bu: isteni Szellem, vö. 32:8 | Jób 32:18 — Di és Bu szerint az isteni szellem (vö. Jób 32:8, H7307 9d) |
+| H7307 | 4c | c. ezért Isten szelleme: 1Móz 6:3 | c. ezért Isten Szelleme: 1Móz 6:3 | „Isten szelleme” |
+| H7307 | 6 (hivatkozás a 9b pontra) | de valószínűleg prófétai szellem, 9b) | de valószínűleg prófétai Szellem, 9b) | Ézs 59:21 — a 9b pont szerinti Szellem |
+| H7307 | 9a | akit az eksztatikus állapotban a szellem megragadott | … a Szellem megragadott | Hós 9:7 — 9a |
+| H7307 | 9b | b. a szellem mint a prófétákat … | b. a Szellem mint a prófétákat … | a 9. pont b. alpontja |
+| H7307 | 9f | úgy fogják fel az isteni szellemet, | úgy fogják fel az isteni Szellemet, | „isteni szellem” |
+| H5307 | (Ez 11:5) | a ׳י szelleme 11:5 | a ׳י Szelleme 11:5 | Ez 11:5 — Jahve Szelleme (H7307 9a hivatkozik rá) |
+| H5414 | (Ézs 42:1) | szellememet adom rá Ézs 42:1 | Szellememet adom rá Ézs 42:1 | Ézs 42:1 — H7307 9c (2): Isten Szelleme a szolgán |
+| H3947 | (Ez 3:14) | Ez 3:14 a szellem felemelt | Ez 3:14 a Szellem felemelt | Ez 3:14 — H7307 9a |
+| H7760 | (4Móz 11:17) | átvitt értelemben szellemet (עַל) 4Móz 11:17 | átvitt értelemben Szellemet (עַל) 4Móz 11:17 | 4Móz 11:17 — H7307 9a |
+| **H1320** | 5 (Ézs 31:3) | a lovak hús, nem szellem Ézs 31:3 | a lovak hús, nem **Szellem** Ézs 31:3 | **DT-F38f 3:** a BDB a H7307 9e pontjába sorolja (Isten Szelleme mint életerő, szemben a בָשָׂר-rel) |
+
+**Kisbetűs marad, indoklással (a listán):**
+
+| Szócikk | Hely | Szöveg | Indok |
+|---|---|---|---|
+| H4390 | 2Móz 28:3; 31:3; 35:31 | átvitt értelemben szellemmel betölteni | **Kétséges, marad:** egyetlen BDB-frázis három helyre; a 31:3 és a 35:31 a H7307 9d pontjába (Isten Szelleme, készség), a 28:3 a 6. pontba (חָכְמָה רוּחַ, az értelem szelleme, emberi) tartozik; egy kifejezésen belül nem választható szét |
+| H5674 | 4Móz 5:14; 5:30; 1Kir 22:24 | a szellemről | **Kétséges, marad:** a 4Móz 5:14, 30 a féltékenység szelleme (nem a H7307 9. pontja); az 1Kir 22:24 a hazug szellem története (rossz/hazug szellem, nem Isten Szelleme); egy frázisban állnak |
+| H7451 (#28) | 1Sám 16:14-15, 16, 23; 18:10; 19:9 | az isteni szellemről, amely az őrjöngés … | Isten által küldött rossz/gonosz szellem → kisbetűs (DT-F38f 3 második pontja; a BDB ezeket a 9a alá is sorolja, de a szabály kifejezetten kisbetűt ír elő); a sor nem változott |
+
+A H7307 többi kisbetűs helye (3e „nyugtalan volt (a) szelleme”, 1Móz 41:8; a „gonosz szellem” 1Sám 16:14, H0854,
+H1961, H5493; H3615 „a király szelleme sóvárgott”; H2617 „szellemi élet”) változatlan.
+
+### 5. Maradék „N t.” (DT-F38f 4)
+
+A normalizáló (`normalizal.py`, `elofordulas`) bővült a tartományos alakkal: a BDB `Deut 11:13 + 14 t.` alakja a
+forrásban `Deut 11:13-14t.` (a `+` helyén kötőjel; a `t.` mindig darabszám után áll, tehát a `-` utáni szám a
+darabszám, nem vers: a H3381 `Gen 39:1-2t. + 1Sam 30:34 Kt`, a H1697 `Jer 25:3-4t. Jer` stb. ezt támasztja alá).
+Átírás: `5Móz 11:13-14t.` → `5Móz 11:13, összesen 14-szer` (a toldalék a szám kiejtett utolsó szava szerint,
+DT-F38f 6). Ha a `t.` után tagolási számjelölő áll (`4t. 2 twelve:`), a pont megmarad (`4-szer. 2 …`), mert a 9.
+kapu a magyar oldalon csak `.;:—)` utáni számot ismer fel jelölőnek (H6240).
+
+**Eredmény: 39 hely, 30 F38-as szócikk** (`igen`, `elofordulas`, a „összesen” alakú sorok a listán). Tesztek:
+`teszt_normalizal.py` (+3 teszt: tartományos alak, határesetek, a pont a tagolási szám előtt).
+
+**Listán marad (3 hely, gépileg nem dönthető el):**
+
+| Szócikk | Hely | Miért marad |
+|---|---|---|
+| H4264 | `1Móz 33:816t.` | a vers és a darabszám összeforrt (33:8 + 16 t.? 33:81 + 6 t.?); verszám-táblázat híján gépileg nem dönthető |
+| H4687 | `Zsolt 119:20 t.` | szám nélküli `t.` vagy a 119. zsoltár „20 t.”-je (a kettőspont OCR-hiba?); nem dönthető el |
+| H7043 (#28) | `Ges §67 t.` | nem gyakoriság (nyelvtani §), szándékosan nem érintett |
+
+### 6. RV/AV-esetek (DT-F38f 5)
+
+Szabály: ami a forrásban RV/AV/RVm után áll (a glossza), az a fordításban is angolul, szó szerint marad. Kézi
+javítások (a `BDB_FORDITAS_zaras2.py` `RV_KEZI` listája, tesztelve):
+
+| Szócikk | Régi | Új |
+|---|---|---|
+| H4150 | RV rendszerint set feast vagy appointed season | RV usually set feast or appointed season |
+| H2403 (#28) | RV fordítása sin-offering; | RV renders sin-offering; |
+| H3772 | RV szerint fordítják: made for thee a covenant with them, | RV made for thee a covenant with them, |
+| H4397 | (az RV angel szava túl szűk) | (az angyal RV too specific) |
+| H5674 | RVm, akik felemésztik, felfalják őket | RVm, those that shall consume, devour them |
+| H8033 | RVm onnan [a mennyből], (onnan) a Pásztor (׳י), Izráel Köve (Sziklája), | RVm from there [from heaven], (from) the Shepherd (׳י), the Stone (Rock) of Israel, |
+
+Megítélésre hagyott részletek: **H8033** — a glossza a forrásban a szerzőjelekig (`Ew Di Sta`) tart, ezért a teljes
+`from there … of Israel` rész maradt angolul; **H4397** — a forrás `angel of RV too specific`, az RV előtti `angel of`
+részt a magyar mondatszerkezet viszi (`az angyal RV too specific`); **H4150** második és harmadik RV-je (`AV RV, but
+Thes SS Be Ke Öttli they ate …`) nem glossza, hanem a szerzők megjegyzése (a vessző utáni „but” szerzői kapcsolat),
+ezért fordítva marad.
+
+### 7. Toldalék (DT-F38f 6)
+
+A hangrendhez igazodó `-szor/-szer/-ször` (4-szer, 5-ször, 33-szor) a helyes; a normalizáló eddig is így működött
+(`szor_toldalek`). A repó `F38_BDB_FORDITAS_BRIEF.md`-je nem ír elő mást; a döntés a brief D11 sorában rögzítve.
+
+### 8. Állapot a kör végén
+
+Tesztek: `teszt_bdb_zaras.py` 12, `teszt_forditas_kapuk.py` 61, `teszt_normalizal.py` 63, `teszt_emeles.py` 7,
+`teszt_ellenoriz_13.py` 9 — mind OK. `ellenoriz.py`: SÉRTÉS 0. A 243 F38-as és a 26 #28 soron a gátoló kapuk RENDBEN.
