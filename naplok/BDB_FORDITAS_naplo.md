@@ -136,6 +136,8 @@ szócikke a `ל` elöljárószó („twelfth letter … preposition to, for”).
 
 ## M1 — Mérő adag (F38.2–F38.11)
 
+Helyesbítés (2026.10.02): a fordító ténylegesen Sonnet-session volt, nem Opus. A sorok a zárómenetben kikerültek az `adat/forditasok.tsv`-ből; a Sonnet-változatok a `20ef676` commitban érhetők el.
+
 **Fordító:** a menet maga (Opus, `claude-opus-5-5`), subagent nélkül (brief D7). **Módszer**
 (a #28 E4-e szerint, változatlan eszközlánccal): `emeles.py helyorzo` → helyőrzős vázlat →
 `emeles.py ellenoriz` (javítóréteg + kapuk) → `emeles.py rogzit` → `emeles.py beir --allapot
@@ -1086,6 +1088,8 @@ egy szó a táblában.
 
 ## M2 — 2. adag (F38.15–F38.51)
 
+Helyesbítés (2026.10.02): a fordító ténylegesen Sonnet-session volt, nem Opus. A sorok a zárómenetben kikerültek az `adat/forditasok.tsv`-ből; a Sonnet-változatok a `20ef676` commitban érhetők el.
+
 **Fordító és módszer:** változatlanul az M1 szerint (a menet maga, Opus `claude-opus-5-5`,
 subagent nélkül; `emeles.py helyorzo` → helyőrzős vázlat → `emeles.py ellenoriz` → `rogzit` →
 `beir --allapot opus`, utána a `naplok/EMELES_munka.tsv` visszaállítása). Prompt v4,
@@ -1224,6 +1228,8 @@ nem látja a forrás összeolvadt könyvalakjait (`learnedIsa`), így ezek a for
 körébe tartozik.
 
 ## M3 — 3. adag (F38.55–F38.135)
+
+Helyesbítés (2026.10.02): a fordító ténylegesen Sonnet-session volt, nem Opus. A sorok a zárómenetben kikerültek az `adat/forditasok.tsv`-ből; a Sonnet-változatok a `20ef676` commitban érhetők el.
 
 **Fordító és módszer:** változatlanul az M1/M2 szerint (a menet maga, Opus `claude-opus-5-5`,
 subagent nélkül; `emeles.py helyorzo` → helyőrzős vázlat → `emeles.py ellenoriz` → `rogzit` →
@@ -1468,6 +1474,8 @@ eltérés (pl. „zincirli”) továbbra is SÉRTÉS. Tesztek: +8 (`KisNagybetuC
 
 ## M4 — 4. adag (F38.141–F38.258)
 
+Helyesbítés (2026.10.02): a fordító ténylegesen Sonnet-session volt, nem Opus. A sorok a zárómenetben kikerültek az `adat/forditasok.tsv`-ből; a Sonnet-változatok a `20ef676` commitban érhetők el.
+
 **Fordító és módszer:** a menet maga (Opus, `claude-opus-5-5`, subagent nélkül), a DT-F38c
 alkalmazása után: **prompt v4.1** (a kötelező terminológiai alakok előgyűjtése a vázlat előtt,
 `python eszkozok/emeles.py kotelezo <Strong>`), a javított 3. és 9. kapu, az 5. kapu
@@ -1671,3 +1679,39 @@ felhasználó olvassa le, a menet nem becsül pénzösszeget.*
 13. kapu (JELZES, nem gátoló): H5046 — a könyv fejezetszámánál nagyobb fejezet: 1Kir 29; H0595 — a könyv fejezetszámánál nagyobb fejezet: 1Móz 81; H4427 — a könyv fejezetszámánál nagyobb fejezet: 2Kir 33; H6240 — a könyv fejezetszámánál nagyobb fejezet: Náh 5; H4421 — a könyv fejezetszámánál nagyobb fejezet: Bír 22; H3899 — a könyv fejezetszámánál nagyobb fejezet: Péld 65; H3881 — a könyv fejezetszámánál nagyobb fejezet: 1Krón 34; H2320 — a könyv fejezetszámánál nagyobb fejezet: 1Kir 25; H5186 — a könyv fejezetszámánál nagyobb fejezet: 2Móz 51.
 
 Terminológia-kivétel: H0595 — accusative; H0068 — accusative; H3789 — cl.; H3519 — see; H1540 — see.
+
+### DT-F38d (b), (c), (d) végrehajtása (F38.261–, zárómenet, Sonnet)
+
+**(b) Szócikkszintű terminológia-kivételek** (jóváhagyva: DT-F38d (b); a terminológiatábla
+általános sorai nem változnak). A kivételt az `emeles.py rogzit --kivetel` adja meg, és a sor
+`megjegyzes` mezőjében indokolva rögzül; az `adat/forditasok.tsv` megfelelő sorai a zárómenetben
+kikerültek, ezért az újrafordító menet ezt a listát adja át a `--kivetel` kapcsolóval:
+
+| Strong | Kulcs | Indok |
+|---|---|---|
+| H0595 | `accusative` | a forrás „in accusative with usage” (5Móz 12:30) részlete az „in accordance with usage” OCR-hibája, ezért nem tárgyeset |
+| H0068 | `accusative` | a forrás „accusative to royal standard” (2Sám 14:26) részlete az „according to royal standard” OCR-hibája, ezért nem tárgyeset; 13. kapus kézi forráshiba-jelzéssel |
+| H3789 | `cl.` | a forrás „subject-cl.” = alanyi mellékmondat rövidítése, nem „classical” |
+| H3519 | `see` | a forrásban csak igeként áll („so as to see”), utalásként (l.) nem |
+| H1540 | `see` | a forrásban csak igeként áll („will see it”), utalásként (l.) nem |
+
+Ha egy kivételfajtából 5-nél több gyűlik össze, a jövőben környezetfüggő kapuszabály kell
+(az ebben a bejegyzésben listázott 5 szócikkből: `accusative` 2, `see` 2, `cl.` 1; a
+korábbi, DT-F38c (b) és M1 szerinti kivételek — H1419 `p.`, H6310 és H0413 `accusative` — a
+törölt sorokkal együtt a `20ef676` commitban maradtak, az újrafordító menet számolja össze őket).
+
+**(c) Kapujavítás.** *11. kapu:* a forrásoldali minta felismeri a kisbetűs szóhoz tapadt angol
+könyvjelzést („abundantly2Chr 3:1”, „verbDeuteronomy 7:8”); a fordítás oldalán a tapadt alak nem
+számít, ezért a fordításban szét kell választani. *Normalizáló* (`igehely_rov`): a tapadt jelzést
+leválasztja és a projekt magyar rövidítésére cseréli („abundantly 2Krón 3:1”). *10. kapu:* a
+törzsnév utáni magyar raggal álló alakot is felismeri (egy ragozott-alak minta: `Qalban`,
+`Nifalban`, `Pielben`, `Pualban`, `Hifilben`, `Hofalban`, `Hitpaelben`, `Qalról` stb.); a
+`Nifal`/`Hifil`/`Hofal`/`Hitpael` magyaros írásmód a forrásbeli `Niph`/`Hiph`/`Hoph`/`Hith`
+címkével egyezik; a rövid törzsek (`Pi`, `Pu`, `Po`) mellett csak 3+ betűs rag fogadható el (a
+`Put`, `Pure` ne legyen találat). Tesztek: `eszkozok/teszt_forditas_kapuk.py`,
+`eszkozok/teszt_normalizal.py` (bővítve, átmennek). A régi 269 sorra (a 20ef676 állapotán) a
+teljes kapusor futtatva: a 10. kapun nincs változás, a 11. kapun 32 szócikk RENDBEN → SÉRTÉS (a
+forrásban tapadt jelzés, amelyet a kapu eddig nem számolt); ezek újrafordításkor a szétválasztott
+alakot kapják.
+
+**(d) H2719 a hibás listán:** a sor marad, a megjegyzés „rendezve: F38.141”.
