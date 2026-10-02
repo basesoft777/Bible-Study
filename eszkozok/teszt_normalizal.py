@@ -200,6 +200,28 @@ class Kapcsolhatosag(unittest.TestCase):
         self.assertEqual(N.normalizal(szoveg, 'BDB'), (szoveg, []))
 
 
+class TapadtKarolialak(unittest.TestCase):
+    """F38.267: a mar Karoli-alakban tapadt konyvjelzes (`Dávidot2Krón 13:8`) is leválik."""
+
+    def test_karoli_alak_tapadt(self):
+        self.assertEqual(N.szabaly_igehely_rov('megöli Dávidot2Krón 13:8; 32:1')[0],
+                         'megöli Dávidot 2Krón 13:8; 32:1')
+
+    def test_heber_es_hosszu_ekezetes_utan(self):
+        self.assertEqual(N.szabaly_igehely_rov('דָּן2Krón 2:13; hercegnő2Krón 22:11')[0],
+                         'דָּן 2Krón 2:13; hercegnő 2Krón 22:11')
+
+    def test_szokozzel_allo_valtozatlan(self):
+        self.assertEqual(N.szabaly_igehely_rov('Dávidot 2Krón 13:8; Zsolt 5:1')[1], 0)
+
+    def test_szamjegy_utan_nem_tapadt(self):
+        # `1Kor 3:2` a `1`+`Kor`: a lookbehind kisbetut var, nem szamjegyet
+        self.assertEqual(N.szabaly_igehely_rov('l. 2Kor 3:2')[1], 0)
+
+    def test_igehely_nelkuli_szo_nem(self):
+        self.assertEqual(N.szabaly_igehely_rov('a bűnösjer kifejezés')[1], 0)
+
+
 class Elofordulas(unittest.TestCase):
     """F38.266 (DT-F38e): `N t.` -> `N-szor` (a toldalek a kiejtett szam szerint)."""
 

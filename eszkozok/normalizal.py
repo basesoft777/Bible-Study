@@ -226,13 +226,17 @@ IGE_MINTA = re.compile(
 # (`abundantly2Chr 3:1`, `verbDeuteronomy 7:8`): a forras OCR-tapadasa, amely
 # a forditasban is megmaradt. Leválasztás: szokoz a szo es a konyvjelzes koze,
 # a jelzes Karoli-alakra cserelve (`abundantly 2Krón 3:1`).
+# F38.267: a fordito sokszor mar a Karoli-alakot irta a tapadt helyen;
+# tapadt = barmely nem nagybetus betu (heber is, `ő`) utan kozvetlenul
+# (`Dávidot2Krón 13:8`, a forrasban `David2Chr 13:8`): ezt is leválasztja.
+_TAPADT_KULCSOK = sorted(set(_IGE_KULCSOK) | set(_KAROLI_ROV), key=len, reverse=True)
 IGE_TAPADT_MINTA = re.compile(
-    r'(?<=[a-zà-öø-ÿ])(%s)\.?(\s+)(?=\d{1,3}:\d)' % '|'.join(re.escape(k) for k in _IGE_KULCSOK))
+    r'(?<=[^\W\d_])(?<![A-ZÀ-ÖØ-Þ])(%s)\.?(\s+)(?=\d{1,3}:\d)' % '|'.join(re.escape(k) for k in _TAPADT_KULCSOK))
 
 
 def szabaly_igehely_rov(szoveg):
     szoveg, n1 = IGE_MINTA.subn(lambda m: IGE_LEK[m.group(1)] + ' ', szoveg)
-    szoveg, n2 = IGE_TAPADT_MINTA.subn(lambda m: ' ' + IGE_LEK[m.group(1)] + ' ', szoveg)
+    szoveg, n2 = IGE_TAPADT_MINTA.subn(lambda m: ' ' + IGE_LEK.get(m.group(1), m.group(1)) + ' ', szoveg)
     return szoveg, n1 + n2
 
 
