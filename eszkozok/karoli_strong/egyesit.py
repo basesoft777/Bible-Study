@@ -65,6 +65,12 @@ def utak(konyv, gyoker=None):
         'sonnet': os.path.join(g, 'f22', 'valaszok', 'sonnet', '%s.jsonl' % n),
         'c': os.path.join(g, 'f22', 'valaszok', 'c', '%s.jsonl' % n),
         'minta': os.path.join(g, 'f22', 'minta_%s.tsv' % n),
+        'kezi_versek': os.path.join(g, 'f22', 'kezi_versek_%s.tsv' % n),
+        # javító menet (a versbeosztás-detektor megfeleltetésével újrafuttatott versek): külön minta és válaszfájlok;
+        # a javító menet verse felülírja a fő menet ugyanazon versének válaszát
+        'minta_javito': os.path.join(g, 'f22', 'minta_%s_javito.tsv' % n),
+        'sonnet_javito': os.path.join(g, 'f22', 'valaszok', 'sonnet', '%s_javito.jsonl' % n),
+        'c_javito': os.path.join(g, 'f22', 'valaszok', 'c', '%s_javito.jsonl' % n),
     }
 
 
@@ -163,18 +169,68 @@ def egyesit_vers(ig, s, c, karoli_tokenek, eredeti):
     return parok, szavak, False
 
 
+def kezi_felulir(konyv, gyoker=None):
+    """{igehely: ok} az `f22/kezi_versek_<könyv>.tsv`-ből (fejléc: igehely, ok): azok a Károli-versek, amelyeket a
+    modell-válaszoktól függetlenül `kezi` állapotba kell tenni, mert a Károli-kulcs szerinti TAHOT-vers nem a
+    megfelelő (versszámozás-eltolódás). A fájl hiánya üres halmaz (az 1Móz kimenete így nem változik)."""
+    ut = utak(konyv, gyoker)['kezi_versek']
+    if not os.path.exists(ut):
+        return {}
+    ki = {}
+    with open(ut, encoding='utf-8') as f:
+        sorok = [s.rstrip('\n').rstrip('\r') for s in f if s.strip() and not s.startswith('#')]
+    for s in sorok[1:]:
+        r = s.split('\t')
+        ki[r[0]] = r[1] if len(r) > 1 else ''
+    return ki
+
+
+def minta_sorok(u):
+    """A fő minta és (ha van) a javító menet mintája, igehely szerint egyszer."""
+    sorok = sonnet_koteg.minta_olvas(u['minta'])
+    if os.path.exists(u['minta_javito']):
+        van = {s['igehely'] for s in sorok}
+        sorok += [s for s in sonnet_koteg.minta_olvas(u['minta_javito']) if s['igehely'] not in van]
+    return sorok
+
+
+def modell_versek(u, kulcs):
+    """A modell (`sonnet` | `c`) versenkénti válaszai: a fő menet, felülírva a javító menettel."""
+    ki = jsonl_versek(u[kulcs])
+    ki.update(jsonl_versek(u[kulcs + '_javito']))
+    return ki
+
+
+def sorrend_igehelyek(minta, kimaradt, karoli):
+    """A minta versei és az eredeti nélküli (modellhez nem küldött) versek a Károli-tábla sorrendjében."""
+    van = {sor['igehely'] for sor in minta} | set(kimaradt)
+    return [ig for ig in karoli if ig in van]
+
+
 def epit(konyv, gyoker=None, karoli=None, ered=None):
     """A két tábla és az átnézési sor tartalma memóriában: (parok, szavak, atnezes) sorlisták."""
     u = utak(konyv, gyoker)
-    if not os.path.exists(u['minta']) or not os.path.exists(u['sonnet']) or not os.path.exists(u['c']):
-        raise SystemExit('hiányzó bemenet: %s' % ', '.join(k for k in ('minta', 'sonnet', 'c') if not os.path.exists(u[k])))
+    if not os.path.exists(u['minta']) or not os.path.exists(u['sonnet']):
+        raise SystemExit('hiányzó bemenet: %s' % ', '.join(k for k in ('minta', 'sonnet') if not os.path.exists(u[k])))
+    # a C-fájl hiánya: csak-Sonnet könyv (DT-F22c); ilyenkor minden link `alacsony`, `forras: S` (a brief szerint)
     karoli = karoli if karoli is not None else tokenek.betolt_karoli()
     ered = ered if ered is not None else tokenek.betolt_eredeti()
-    minta = sonnet_koteg.minta_olvas(u['minta'])
-    sv, cv = jsonl_versek(u['sonnet']), jsonl_versek(u['c'])
+    minta = minta_sorok(u)
+    sv, cv = modell_versek(u, 'sonnet'), modell_versek(u, 'c')
     parok, szavak, atnezes = [], [], []
-    for sor in minta:
-        ig = sor['igehely']
+    kimaradt = set(sonnet_koteg.eredeti_nelkuli_versek(konyv, karoli, ered))
+    felul = kezi_felulir(konyv, gyoker)
+    for ig in sorrend_igehelyek(minta, kimaradt, karoli):
+        if ig in felul and ig not in kimaradt:
+            p, sz, kezi = egyesit_vers(ig, None, None, tokenek.tokenizal(karoli[ig]), ered[ig])
+            szavak += sz
+            atnezes.append([ig, felul[ig], felul[ig]])
+            continue
+        if ig in kimaradt:
+            p, sz, kezi = egyesit_vers(ig, None, None, tokenek.tokenizal(karoli[ig]), [])
+            szavak += sz
+            atnezes.append([ig, 'nincs eredeti vers a TAHOT-ban (versszámozás-eltérés)', 'nincs eredeti vers a TAHOT-ban (versszámozás-eltérés)'])
+            continue
         s = sv.get(ig, {}).get('obj') if sv.get(ig, {}).get('allapot') == 'ok' else None
         c = cv.get(ig, {}).get('obj') if cv.get(ig, {}).get('allapot') == 'ok' else None
         p, sz, kezi = egyesit_vers(ig, s, c, tokenek.tokenizal(karoli[ig]), ered[ig])
@@ -183,6 +239,10 @@ def epit(konyv, gyoker=None, karoli=None, ered=None):
         if kezi:
             atnezes.append([ig, '; '.join(sv.get(ig, {}).get('hibak', ['nincs válasz'])) or 'nincs válasz',
                             '; '.join(cv.get(ig, {}).get('hibak', ['nincs válasz'])) or 'nincs válasz'])
+    for ig in sonnet_koteg.karoli_nelkuli_eredeti_versek(konyv, karoli, ered):
+        p, sz, kezi = egyesit_vers(ig, None, None, [], ered[ig])
+        szavak += sz
+        atnezes.append([ig, 'nincs Károli-vers a Károli-kulcs szerint', 'nincs Károli-vers a Károli-kulcs szerint'])
     return parok, szavak, atnezes
 
 
@@ -192,7 +252,7 @@ def bemeneti_ts(konyv, gyoker=None):
     ut = os.path.join(gyoker or ROOT, 'f22', 'futasnaplo.tsv')
     if not os.path.exists(ut):
         return 'manual'
-    nev = 'c/%s' % sonnet_koteg.ascii_nev(konyv)
+    nevek = ('c/%s' % sonnet_koteg.ascii_nev(konyv), 'c/%s_javito' % sonnet_koteg.ascii_nev(konyv))
     ts = None
     with open(ut, encoding='utf-8') as f:
         sorok = [x.rstrip('\n').rstrip('\r').split('\t') for x in f if x.strip()]
@@ -201,7 +261,7 @@ def bemeneti_ts(konyv, gyoker=None):
     fej = sorok[0]
     for r in sorok[1:]:
         d = dict(zip(fej, r))
-        if d.get('futas') == nev:
+        if d.get('futas') in nevek and (ts is None or d['ts'] > ts):
             ts = d['ts']
     return ts or 'manual'
 
@@ -210,11 +270,24 @@ def proveniencia_sor(konyv, gyoker=None):
     """A táblák első sora (SEMA 1.5/2.20): `#`-kezdetű, az olvasók átugorják; scope=manual, mert a tábla
     modell-kimenet (javaslat), nem `lekerdez.py`-eredmény."""
     n = sonnet_koteg.ascii_nev(konyv)
-    return ('# proveniencia: scope=manual | forras=f22/valaszok/sonnet/%s.jsonl, f22/valaszok/c/%s.jsonl, '
-            'konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=%s (a C futásnapló utolsó hívása; '
-            'az újraépítés így bájtra azonos) | modell-kimenet, javaslat: nem lekérdezés-eredmény; a bizonyossag '
+    u = utak(konyv, gyoker)
+    csak_sonnet = not os.path.exists(u['c'])
+    forras = ['f22/valaszok/sonnet/%s.jsonl' % n] + ([] if csak_sonnet else ['f22/valaszok/c/%s.jsonl' % n])
+    if os.path.exists(u['sonnet_javito']) or os.path.exists(u['c_javito']):
+        forras += ['f22/valaszok/sonnet/%s_javito.jsonl' % n, 'f22/valaszok/c/%s_javito.jsonl' % n]
+    if any(tokenek.igehely_bont(r[0] or r[1])[0] == konyv for r in tokenek.versmegfeleltetes()):
+        forras.append('f22/versmegfeleltetes.tsv')
+    forras += ['konkordancia/TAHOT_kivonat.tsv', 'konkordancia/Karoli_1908.tsv']
+    if csak_sonnet:
+        return ('# proveniencia: scope=manual | forras=%s | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; a '
+                'subagent-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link '
+                '`alacsony` (egy modell, nincs egyezés); a strong a TAHOT-ból, modell nem írja | előállítás: '
+                'eszkozok/karoli_strong/egyesit.py' % ', '.join(forras))
+    return ('# proveniencia: scope=manual | forras=%s | ts=%s (a C futásnapló utolsó hívása%s; az újraépítés '
+            'így bájtra azonos) | modell-kimenet, javaslat: nem lekérdezés-eredmény; a bizonyossag '
             'nem "ellenőrizve"; a strong a TAHOT-ból, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py'
-            % (n, n, bemeneti_ts(konyv, gyoker)))
+            % (', '.join(forras), bemeneti_ts(konyv, gyoker),
+               ', a javító menetét is beleértve' if len(forras) > 4 else ''))
 
 
 def tsv_szoveg(fej, sorok, elso_sor=None):
@@ -251,14 +324,16 @@ def ellenoriz(konyv, gyoker=None, karoli=None, ered=None):
     u = utak(konyv, gyoker)
     karoli = karoli if karoli is not None else tokenek.betolt_karoli()
     ered = ered if ered is not None else tokenek.betolt_eredeti()
-    minta = sonnet_koteg.minta_olvas(u['minta'])
+    minta = minta_sorok(u)
     parok, szavak = olvas(u['parok']), olvas(u['szavak'])
     hibak = []
     var = {}
-    for sor in minta:
-        ig = sor['igehely']
+    for ig in sorrend_igehelyek(minta, sonnet_koteg.eredeti_nelkuli_versek(konyv, karoli, ered), karoli):
         for i in range(1, len(tokenek.tokenizal(karoli[ig])) + 1):
             var[(ig, 'hu', i)] = 0
+        for e in range(1, len(ered.get(ig, [])) + 1):
+            var[(ig, 'er', e)] = 0
+    for ig in sonnet_koteg.karoli_nelkuli_eredeti_versek(konyv, karoli, ered):
         for e in range(1, len(ered[ig]) + 1):
             var[(ig, 'er', e)] = 0
     for r in szavak:
