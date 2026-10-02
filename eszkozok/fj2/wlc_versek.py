@@ -88,6 +88,9 @@ def vers_egyezik(wlc_halmaz, bsb_halmaz):
     return atfedes(wlc_halmaz, bsb_halmaz) > 0.5
 
 
+MARGO = 0.0  # (b)/(c): a WLC-vers atfedese legalabb MARGO-val legyen jobb a tobbinel (0 = szigoruan jobb); az alapertek a DT-F41g szerint 0; a bsb_parameter_erzekenyseg.py valtoztatja
+D_ARANY = 0.5  # (d): a BSB-vers marad (nem magyarazott) Strongjainak e hanyadanal tobb a szomszed WLC-versben -> nem igazolt (DT-F41g; erzekenyseg: bsb_parameter_erzekenyseg.py)
+D_DB = 2  # (d): es legalabb ennyi kozos Strong (DT-F41g)
 ABLAK = 20  # a szomszed fejezetek elso/utolso ennyi verse is a kornyezethez tartozik (a fejezethatar-eltolas legnagyobb esete: 15 vers, 4Moz 16/17, 1Kron 5/6, 1Kir 4/5)
 
 
@@ -158,10 +161,10 @@ def vers_igazolt(wlc, idx, cel_versek, bsb_halmaz, bsb_tobbi, szomszed_parok=())
         for k in kornyezet(idx, c):
             if k in cel or k not in wlc:
                 continue
-            if atfedes(wlc[k], bsb_halmaz) >= a:
+            if atfedes(wlc[k], bsb_halmaz) + MARGO >= a:
                 return False
         for bs in bsb_tobbi:
-            if atfedes(w, bs) >= a:
+            if atfedes(w, bs) + MARGO >= a:
                 return False
     magyarazott = set()
     for c in cel_versek:
@@ -173,7 +176,7 @@ def vers_igazolt(wlc, idx, cel_versek, bsb_halmaz, bsb_tobbi, szomszed_parok=())
                 if k in cel or k not in wlc:
                     continue
                 kozos_db = len(marad & wlc[k])
-                if kozos_db >= 2 and kozos_db > len(marad) / 2:
+                if kozos_db >= D_DB and kozos_db > len(marad) * D_ARANY:
                     return False
     if szomszed_parok and not any(atfedes(w, h) > 0.5 for w, h in szomszed_parok):
         return False

@@ -3,7 +3,7 @@
 # letoltes datuma: 2026-10-02
 # futtatasi parancs: python eszkozok/fj2/bsb_verseltolas_diag.py --munka <mappa> --f41
 # versszintu BSB-vers -> MT-vers megfeleltetes mind a 39 OSZ-konyvre (F41.1); bsb_vers = a BSB (display-JSON) fejezet:verse; mt_vers = az IMPORT cel-Igehelye (a BSB_Strongs.tsv Igehely-oszlopa): a TAHOT_kivonat versszamozasahoz Strong-illeszkedessel megfeleltetett vers (cel: MT/WLC; a TAHOT_kivonat versszamozasa 25 konyvben nem azonos a WLC-vel, l. NYITOTT N-F41d), kiveve a BSB(KJV)-szamozas-megtartott fejezeteket (Job 38-41, Pred 11/12, Ezs 2/3, 4Moz 12/13: mt_vers = bsb_vers); a tahot_vers a TAHOT_kivonat verse, amelyhez a BSB-verset a MERES illesztette (a Pred 11/12, Ezs 2/3, 4Moz 12/13 sorain ez a Karoli-szeru TAHOT-szam, az Igehely nem ez); a WLC-vel versszintu egyezes: naplok/F41_wlc_versszam_ellenorzes.tsv
-# szamozas (DT-F41f; = a BSB_Strongs.tsv 7. oszlopa, VERSSZINTU WLC-osszevetesbol): mt = az Igehely-vers Strong-halmaza tartalmazza a WLC azonos szamu versenek halmazanak tobb mint felet (igazolt MT-szam); kjv = nem igazolt, a BSB(KJV)-szam marad (csak Job 38-41; a Job MT-re szamozasa kulon N-tetel, N-F41g); ellenorizetlen = nem igazolt (a TAHOT_kivonat hibrid szamozasa; MT-re szamozasa: N-F41h); ures = illesztetlen fejezet. Felhasznaloi dontes 2026.10.02: 4Moz 12/13 atszamozasa visszavonva (WLC: KJV = MT), Job 38-41 a main KJV-szamozasan; Pred 11/12, Ezs 2/3: az atszamozas visszavonva (KJV = MT: naplok/F41_wlc_hatar_ellenorzes.tsv)
+# szamozas (DT-F41f; = a BSB_Strongs.tsv 7. oszlopa, VERSSZINTU WLC-osszevetesbol): mt = a WLC azonos szamu versevel igazolt MT-szam (wlc_versek.vers_igazolt, DT-F41g); kjv = a BSB(KJV)-szam marad, es tenylegesen KJV != MT (csak Job 41; a Job MT-re szamozasa kulon N-tetel, N-F41g); ellenorizetlen = a WLC-vel egyertelmuen nem igazolt (nem allitja, hogy a szam hibas; MT-re szamozasa: N-F41h); ures = illesztetlen fejezet. Felhasznaloi dontes 2026.10.02: 4Moz 12/13 atszamozasa visszavonva (WLC: KJV = MT), Job 38-41 a main KJV-szamozasan; Pred 11/12, Ezs 2/3: az atszamozas visszavonva (KJV = MT: naplok/F41_wlc_hatar_ellenorzes.tsv)
 # modell (az Igehely cel-szamozasa szerint): azonos = mt_vers = bsb_vers; eltolt = mas fejezet:vers (fejezethataron atnyulo eset is; az 1 BSB-vers -> 2 MT-vers osztas is: mt_vers = a ket MT-vers "fej:vers+fej:vers" alakban); illesztetlen = a fejezet megfeleltetese nem igazolhato, a fejezet nem szamit a meresbe es az importba (mt_vers ures); kjv_szamozas = az Igehely a BSB(KJV)-szam marad (Job 38-41; mt_vers = bsb_vers); a Job 41 a TAHOT_kivonatban nincs (tahot_vers ures), a meresbol kimarad; a Job 38-40 a MERESBEN a TAHOT_kivonathoz illesztve szerepel (a tahot_vers oszlop); a Pred 11/12, Ezs 2/3 es 4Moz 12/13 modellje azonos (a BSB-szam egyezik a WLC-vel)
 # a megfeleltetes forrasa a Strong-illeszkedes (monoton 1:1 igazitas, a TAHOT-vers Strong-halmazanak BSB-ben levo hanyada > 0,5); fejezetenkenti igazolas: nincs_mt_part / vers_osztas / mt_vers_kimarad (a TAHOT_kivonat sajat versfolyamaban kimaradt MT-vers; az egyertelmuen igazolt 1 -> 2 osztas kivetel, l. bsb_import.osztas_pont) / kk_max_eltérés (l. bsb_import.konyv_megfeleltetes)
 # ok (azonos/eltolt): strong_illeszkedik = a TAHOT-vers Strongjai a BSB-vers reszei; strong_nem_egyezo = megfeleltetett, de nem egyezo vers; tahot_nincs_vers = a megfeleltetett MT-vers nincs a TAHOT_kivonatban; kitoltve_a_szomszedok_eltolasabol = a vers nem illesztheto, a fejezeten belüli szomszedai azonos eltolasuak; versosztas_ketto_mt_vers_strong_illeszkedik = a BSB-vers a ket MT-vers uniojat adja, a vago pont egyertelmu
@@ -13874,12 +13874,12 @@ Jób	39:27	39:27	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	39:30	mt
 Jób	39:28	39:28	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	39:31	mt
 Jób	39:29	39:29	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	39:32	mt
 Jób	39:30	39:30	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	39:33	mt
-Jób	40:1	40:1	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	39:34	kjv
+Jób	40:1	40:1	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	39:34	ellenorizetlen
 Jób	40:2	40:2	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	39:35	mt
-Jób	40:3	40:3	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	39:36	kjv
+Jób	40:3	40:3	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	39:36	ellenorizetlen
 Jób	40:4	40:4	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	39:37	mt
 Jób	40:5	40:5	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	39:38	mt
-Jób	40:6	40:6	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	40:6	kjv
+Jób	40:6	40:6	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	40:6	ellenorizetlen
 Jób	40:7	40:7	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	40:7	mt
 Jób	40:8	40:8	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	40:8	mt
 Jób	40:9	40:9	kjv_szamozas	kjv_szamozas_marad_DT-F41c_a	40:9	mt

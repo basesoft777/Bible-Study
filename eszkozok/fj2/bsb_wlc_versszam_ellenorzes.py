@@ -7,7 +7,7 @@ bsb_wlc_versszam_ellenorzes.py -- F41 (FELADATOK #41, 9. lepes; DT-F41f: VERSSZI
 Versszintu igazolas (wlc_versek.vers_igazolt, szigoritva az F41_3 ellenorzes nyoman): egy Igehely-vers `mt`, ha (a) a WLC azonos szamu versenek Strong-halmazanak TOBB MINT FELE
 az Igehely-vers halmazaban van, es ez (b) szigoruan jobb, mint a WLC-kornyezet (a fejezet tobbi verse + a szomszed fejezetek 20 szelso verse) barmelyik masik versenek illeszkedese,
 (c) szigoruan jobb, mint a WLC-vers illeszkedese a BSB-kornyezet barmelyik masik versevel, (d) nem hibrid reszvers (a BSB-vers tobbletenek jelentos resze nem a szomszed WLC-veree),
-(e) a szomszed vers is illeszkedik (izolalt egyezes nem igazolt). Dontetlen / nem egyertelmu -> `ellenorizetlen` (kjv: csak Job 38-41). Ket ellenorzes:
+(e) a szomszed vers is illeszkedik (izolalt egyezes nem igazolt). Dontetlen / nem egyertelmu -> `ellenorizetlen` (kjv: csak a Job 41). Ket ellenorzes:
   1. KONZISZTENCIA-ELLENORZES (NEM fuggetlen: ugyanaz a vers_igazolt, a BSB_Strongs.tsv FAJLBOL olvasva, a fajl 7. oszlopaval osszevetve; fajlolvasas-/regresszio-ellenorzes, nem a
      kriterium ellenorzese); elteresnel hibaval all le.
   2. FUGGETLEN ELLENORZES (fuggetlen_jaccard): sajat Macula-olvasassal es MAS metrikaval (Jaccard), nem a vers_igazolt kodjaval: minden `mt` vers WLC azonos szamu verse legyen
@@ -242,7 +242,7 @@ def fut():
                   'kategoria-darabszamok (fejezet): ' + '; '.join('%s=%d' % kv for kv in sorted(kat_db.items())),
                   'Igehely-versek a 7. oszlop szerint: ' + '; '.join('%s=%d' % kv for kv in ossz_vers.items()) + ' | sorok: ' + '; '.join('%s=%d' % kv for kv in ossz_sor.items()),
                   'a nem teljesen mt fejezetek (reszben_mt / nem_igazolt): ' + '; '.join('%s %s (%s)' % (s[0], s[1], s[15]) for s in nem_mt),
-                  'FIGYELEM: az `ellenorizetlen` vers Igehelye a TAHOT_kivonat hibrid szamozasa (25 ószövetsegi konyvben nem azonos a WLC-vel, N-F41d) vagy a WLC-ben nincs ilyen szamu vers / ures a WLC-vers Strong-halmaza; a `kjv` a Job 38-41 nem igazolt versei (BSB(KJV)-szam marad). Az atszamozas (-> WLC) kulon N-tetel (N-F41g, N-F41h), nem az F41 feladata.']
+                  'FIGYELEM: az `ellenorizetlen` a WLC-vel EGYERTELMUEN NEM IGAZOLT vers (DT-F41g), NEM allitja, hogy a szam hibas; nagy resze formulas dontetlen (azonos Strong-halmazu szomszed versek) KJV = MT fejezetekben, a tobbi hibrid reszvers / izolalt egyezes / a WLC-ben nincs ilyen szamu vers vagy ures a WLC-vers Strong-halmaza; a `kjv` csak a tenylegesen KJV != MT Job 41 (BSB(KJV)-szam marad). Az atszamozas (-> WLC) kulon N-tetel (N-F41g, N-F41h), nem az F41 feladata.']
     tsv_ir_nagy(os.path.join(kozos.NAPLOK, 'F41_wlc_versszam_ellenorzes.tsv'), fej1, FEJ1, sorok1)
     fej2 = fej + ['F41 1. lepes (DT-F41c (a)): fejezethatar-vizsgalat; csak azok az OSZ-fejezetek, ahol a BSB(KJV), a WLC es a TAHOT_kivonat fejezet-maximuma nem mind azonos, vagy a TAHOT-megfeleltetes nem csupa azonos',
                   'bsb_max = a BSB (KJV) fejezet utolso verse (naplok/F41_bsb_megfeleltetes.tsv bsb_vers); wlc_max = a Macula (WLC) fejezet utolso verse; tahot_max = a konkordancia/TAHOT_kivonat.tsv fejezet-max; tahot_modell = a F41.1 BSB->TAHOT megfeleltetes modelljei a fejezet BSB-versein']
