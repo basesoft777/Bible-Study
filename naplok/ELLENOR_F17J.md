@@ -1,6 +1,6 @@
 # ELLENOR_F17J — F17.J (DT7 javító menet)
 
-*Független ellenőr (fuggetlen-ellenor), tartomány: `origin/main..HEAD` (F17.J1–J3); a jelentést az ellenőrnek nem volt fájlíró eszköze, a fő szál másolta ide változtatás nélkül, az összefoglalóval és a válaszokkal kiegészítve.*
+*Az ügynök jelentése, a session mentette (az ügynöknek nincs írási eszköze). Független ellenőr (fuggetlen-ellenor), tartomány: `origin/main..HEAD` (F17.J1–J3); a szöveget a fő szál változtatás nélkül másolta ide, az összefoglalóval és a válaszokkal kiegészítve.*
 
 **Eredmény: TISZTA a tartalmi pontokon; 3 eltérést jelzett, ebből 1 javítva, 2 magyarázva.**
 

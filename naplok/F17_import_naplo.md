@@ -255,4 +255,6 @@ A menet a DT7 (c) és (h) döntését hajtja végre; a generátor `eszkozok/f17/
 - partíció: 23 053 → 23 079 (+26 Károli-vers kapott MT-kötést; ez a 26 vers a Dán 3 korábban kötetlen részével egyezik az illesztetlen MT-versek −26-ával), `macula_versek_karolival` 22 971 → 23 031.
 Eltérés a várttól: nem volt (a 336-os köztes futás a Sir/JSir hiba következménye volt, a 3. pont javította).
 
+**Ismert korlát (a Dán 3–4 kötése):** a kötés folyamatos identitás (Károli x:y = MT x:y); a végpontok ellenőrizve: Károli Dán 3:31–33 = MT 3:31–33, 4:1 = MT 4:1, 4:34 = MT 4:34, a versszám 33 (Dán 3), illetve 34 (Dán 4) mindkét oldalon. A közbülső versek szövegét versenként nem vetettem össze; mivel a számozás mindkét végponton és a versszámban egyezik, a közbülső versek nem csúszhatnak.
+
 **Külön tételek (helyőrző, az F30 szerint):** `N-F17a` (a többi `EGYIK_SEM` fejezet kézi feloldása, DT7 c), `N-F17b` (a Macula héber funkció-kódjainak leképezése a STEP 9000-es sávjára, DT7 b, alacsony prioritás), `N-F35a` (az alias törlése a #35 lezárása után).
