@@ -71,7 +71,6 @@ def fut(args):
     strong_db = Counter()
     strong_pelda = {}
     allapot_db = Counter()
-    allapot_kk_db = Counter()
     sill_db = Counter()
     fedett_karoli = set()
     szavak_vers = defaultdict(list)     # (mag, fej, v) -> [(strong_szam, szo, gorog, gorog_strong)]
@@ -91,8 +90,6 @@ def fut(args):
             fedett_karoli.add(kk)
         strong, sill = M.strong_feldolgoz(a.get('strongnumberx', ''), 'H', a.get('pos', ''), szotar, True, funkcio_alapok)
         sill_db[sill] += 1
-        allapot_kk_db[allapot.split(':')[0]] += 1
-        allapot = M.allapot_strong_szerint(allapot, sill)
         if sill != 'igen':
             kulcs = ('heber', a.get('strongnumberx', '') or '-', a.get('pos', ''), sill)
             strong_db[kulcs] += 1
@@ -126,7 +123,7 @@ def fut(args):
                           PARANCS, 'sorok: morfema-szint (lowfat <w>); ref = Macula (MT/WLC) szamozas; '
                           'karoli = KK-alapu Karoli-vers(ek), ;-vel elvalasztva')
     heber_fajlok = M.tsv_ir_konyvenkent(K.KONK, fejl, M.HEBER_OSZLOP, heber)
-    stat['heber'] = {'sorok': len(heber), 'fajlok': dict(heber_fajlok), 'lowfat_w': len(lista), 'commit': hsha, 'allapot': dict(allapot_db), 'allapot_csak_kk': dict(allapot_kk_db),
+    stat['heber'] = {'sorok': len(heber), 'fajlok': dict(heber_fajlok), 'lowfat_w': len(lista), 'commit': hsha, 'allapot': dict(allapot_db),
                      'strong_illesztes': dict(sill_db), 'macula_versek': len(versek_macula),
                      'macula_versek_karolival': sum(1 for k in versek_macula if inv.get(k)),
                      'karoli_versek_kk_szerint': len(ki_kk), 'karoli_versek_macula_nelkul': len(ki_kk) - len(fedett_karoli),
@@ -183,7 +180,6 @@ def fut(args):
                 gfedett[kiadas].add(cel)
             strong, sill = M.strong_feldolgoz(s[ix['strong']], 'G', s[ix['class']], szotar, False)
             sill_g[sill] += 1
-            allapot = M.allapot_strong_szerint(allapot, sill)
             allapot_g[allapot.split(':')[0]] += 1
             if sill != 'igen':
                 kulcs = ('gorog_' + kiadas, s[ix['strong']] or '-', s[ix['class']], sill)

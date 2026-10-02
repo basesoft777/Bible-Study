@@ -125,16 +125,6 @@ def strong_feldolgoz(nyers, elotag, pos, szotar, heber, funkcio_alapok=frozenset
     return '+'.join(acc), ('igen' if not okok else 'javaslat:' + '|'.join(sorted(okok)))
 
 
-def allapot_strong_szerint(allapot, sill):
-    """Ha a Strong nem illesztheto (sill != 'igen'), a sor allapota javaslat (brief 2. lepes)."""
-    if sill == 'igen':
-        return allapot
-    ok = 'strong_' + sill.replace('javaslat:', '').replace('|', '+')
-    if allapot == 'rendben':
-        return 'javaslat:' + ok
-    return allapot + '|' + ok
-
-
 def szotar_strongok():
     fej, sorok = K.tsv_olvas(os.path.join(K.KONK, 'Strong_szotar.tsv'))
     return {s[0] for s in sorok}
@@ -174,7 +164,8 @@ def alap_alak(s):
 
 
 def karoli_cimke(kulcs):
-    return '%s %d:%d' % kulcs
+    # RAW_NEV: a Sir/JSir alias (l. macula_kozos.ALIAS) miatt a címke az adatbeli könyvnevet őrzi
+    return '%s %d:%d' % ((K.RAW_NEV.get(kulcs[0], kulcs[0]),) + tuple(kulcs[1:]))
 
 
 def kk_ertek(lista):
