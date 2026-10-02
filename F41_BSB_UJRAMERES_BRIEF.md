@@ -5,14 +5,14 @@ kod: BSB_UJRAMERES
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: dontesre_var
+allapot: fut
 ag: claude/f41-bsb-ujrameres
 pr: https://github.com/basesoft777/Bible-Study/pull/135
-lezarva_osszegzes: "36 ÓSZ-könyv ≥95% (278 125 sor), 7. oszlop Számozás mt/kjv/ellenorizetlen versszintű WLC-összevetésből; nyitott: DT-F41g, ELLENOR_F41_4 2–5."
+lezarva_osszegzes: "36 ÓSZ-könyv ≥95% (278 125 sor), 7. oszlop Számozás mt 260 243 / kjv 223 / ellenorizetlen 17 659 (versszintű WLC-összevetés); DT-F41g ✅; nyitott: ELLENOR_F41_5 (F41.15), merge, DT6 ✅."
 ad: a versszámozás miatt küszöb alatt maradt ószövetségi könyvek a 95%-os küszöbbel újramérve és importálva, a többinél igazolt ok; a BSB_Strongs.tsv-ben megkülönböztethető a „szándékosan nem fordított” és a „hiányzó” angol szó
-kovetkezo: "Te: DT-F41g (ABLAK/küszöb paraméterek) megerősítése; az ELLENOR_F41_4 2–5. eltérésének javítása; merge; utána DT6 ✅"
+kovetkezo: "Fő szál: fuggetlen-ellenor az F41.15 diffre, merge a felhasználótól, utána DT6 ✅"
 olvas: [eszkozok/fj2/, konkordancia/TAHOT_kivonat.tsv, konkordancia/Macula_heber_*.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, naplok/F16_bsb_lefedettseg.tsv, naplok/F16_bsb_verseltolas_diagnozis.tsv, naplok/F16_bsb_zsolt_megfeleltetes.tsv]
-ir: [eszkozok/fj2/bsb_import.py, eszkozok/fj2/bsb_verseltolas_diag.py, eszkozok/fj2/wlc_versek.py, eszkozok/fj2/bsb_wlc_versszam_ellenorzes.py, eszkozok/fj2/bsb_nulladiff.py, konkordancia/BSB_Strongs.tsv, konkordancia/README.md, naplok/F16_bsb_lefedettseg.tsv, naplok/F41_bsb_megfeleltetes.tsv, naplok/F41_nem_egyezo_versek.tsv, naplok/F41_nulladiff.txt, naplok/F41_wlc_versszam_ellenorzes.tsv, naplok/F41_wlc_hatar_ellenorzes.tsv, naplok/F41_zaras.md, adat/datasetek.tsv, adat/SEMA.md, adat/szotar_szerepek.tsv, DONTESEK.md, NYITOTT_FELADATOK.md, F41_BSB_UJRAMERES_BRIEF.md]
+ir: [eszkozok/fj2/bsb_import.py, eszkozok/fj2/bsb_verseltolas_diag.py, eszkozok/fj2/wlc_versek.py, eszkozok/fj2/bsb_wlc_versszam_ellenorzes.py, eszkozok/fj2/bsb_nulladiff.py, eszkozok/fj2/bsb_parameter_erzekenyseg.py, naplok/F41_parameter_erzekenyseg.tsv, naplok/F41_parameter_erzekenyseg.md, konkordancia/BSB_Strongs.tsv, konkordancia/README.md, naplok/F16_bsb_lefedettseg.tsv, naplok/F41_bsb_megfeleltetes.tsv, naplok/F41_nem_egyezo_versek.tsv, naplok/F41_nulladiff.txt, naplok/F41_wlc_versszam_ellenorzes.tsv, naplok/F41_wlc_hatar_ellenorzes.tsv, naplok/F41_zaras.md, adat/datasetek.tsv, adat/SEMA.md, adat/szotar_szerepek.tsv, DONTESEK.md, NYITOTT_FELADATOK.md, F41_BSB_UJRAMERES_BRIEF.md]
 fugg: [16]
 helyi_gep: nem
 ---
