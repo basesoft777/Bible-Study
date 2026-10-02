@@ -5,13 +5,15 @@ kod: SIR_SZENTSZELLEM
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ag: claude/f35-sir-szentszellem
 ad: a Siralmak régi „Sir” alakú hivatkozásai (jeloltek.tsv, genezis-tanulmány, auditok.tsv scope-ok) JSir-re cserélve vagy dokumentáltan meghagyva; a 9 „Szentlélek”/„Isten Lelke” hely a forrásrétegben „Szent Szellem”/„Isten Szelleme”-re egységesítve; egy szövegcsere-csomag
-kovetkezo: "Te: független ellenőr, draft PR"
+kovetkezo: "DT-F35b eldöntése (elofordulasok.tsv:169 karoli_szo)"
 olvas: [adat/jeloltek.tsv, adat/auditok.tsv, naplok/EMELES_szentlelek_lista.tsv, adat/terminologia.tsv, eszkozok/lekerdez.py, adat/SEMA.md]
 ir: [adat/jeloltek.tsv, adat/auditok.tsv, genezis/, tematikus_lezart/, eszkozok/teszt_lekerdez_sir.py, adat/SEMA.md]
 fugg: [28, 34]
+lezarva_osszegzes: 6 Sir→JSir csere (jeloltek, genezis, motivumlog 4 sor), 3 Szentlélek→Szent Szellem hely, SEMA E9-javítás; auditok.tsv 169–171 marad; nyitott DT-F35b; részletek naplok/SIR_SZENTSZELLEM_zaras.md
+pr: https://github.com/basesoft777/Bible-Study/pull/122
 ---
 
 # „Sir” → JSir és Szentlélek → Szent Szellem (egy csomag)
