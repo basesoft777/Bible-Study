@@ -60,6 +60,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 - 72 távoli ág van, ebből kb. 60 régi (2026.09.02–09.11). Egyszeri átnézés, majd törlés.
 - E5: a `-` kezdetű törölt sorok (felsorolás) alulszámolása, 68eb348 óta (l. naplok/ELLENOR_CI_E5.md, 2. kör). Rövid CI-javítás külön ágon (D6), legkésőbb a 2. fázis előtt.
 - E9: a F*_BRIEF.md fájlok kizárása (a fordítási szabályok angol szavakat idéznek; l. PR #88). Külön ágon (D6).
+- A `claude/macula-import` távoli ág törlése (az F17 PR #87 óta mergelve; a javító menet új ágon, `claude/f17-macula-javitas` fut).
 
 ## Munkamenet (tokentakarékos)
 

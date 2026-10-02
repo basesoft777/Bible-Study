@@ -1,5 +1,5 @@
 # GENERÁLT: eszkozok/f17/macula_futtat.py — kézzel nem szerkesztendő.
-# proveniencia: scope=Macula heber+gorog import illesztetlen elemei | forras=https://github.com/Clear-Bible/macula-hebrew ; https://github.com/Clear-Bible/macula-greek | ts=2026-09-30
+# proveniencia: scope=Macula heber+gorog import illesztetlen elemei | forras=https://github.com/Clear-Bible/macula-hebrew ; https://github.com/Clear-Bible/macula-greek | ts=2026-10-02
 # minden sor allapota: javaslat (D19); strong_nem_illesztheto: Strong-szamonkent osszesitve (sorok = elofordulasok)
 tipus	nyelv	igehely_macula	igehely_karoli	strong	sorok	ok	pelda	allapot
 macula_vers_nincs_karoli	heber	1Krón 12:5			10	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
@@ -55,66 +55,6 @@ macula_vers_nincs_karoli	heber	4Móz 30:14			18	a KK/terkep alapjan nincs Karoli
 macula_vers_nincs_karoli	heber	4Móz 30:15			37	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
 macula_vers_nincs_karoli	heber	4Móz 30:16			14	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
 macula_vers_nincs_karoli	heber	4Móz 30:17			24	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:1			23	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:2			39	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:3			41	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:4			16	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:5			31	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:6			19	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:7			46	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:8			18	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:9			12	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:10			32	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:11			15	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:12			40	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:13			25	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:14			29	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:15			60	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:16			21	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:17			24	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:18			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:19			32	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:20			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:21			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:22			33	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:23			20	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:31			21	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:32			18	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 3:33			22	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:1			12	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:2			16	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:3			19	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:4			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:5			28	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:6			29	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:7			20	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:8			20	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:9			35	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:10			18	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:11			32	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:12			37	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:13			18	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:14			37	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:15			38	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:16			46	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:17			22	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:18			29	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:19			24	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:20			61	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:21			17	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:22			55	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:23			23	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:24			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:25			7	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:26			13	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:27			28	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:28			23	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:29			45	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:30			40	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:31			44	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:32			35	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:33			42	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
-macula_vers_nincs_karoli	heber	Dán 4:34			29	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
 macula_vers_nincs_karoli	heber	Eszt 3:14			24	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
 macula_vers_nincs_karoli	heber	Eszt 3:15			29	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
 macula_vers_nincs_karoli	heber	Hós 2:25			26	a KK/terkep alapjan nincs Karoli-megfelelo		javaslat
@@ -262,40 +202,6 @@ karoli_vers_nincs_macula	heber		4Móz 30:13		0	a KK szerinti MT-vers nincs a Mac
 karoli_vers_nincs_macula	heber		4Móz 30:14		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
 karoli_vers_nincs_macula	heber		4Móz 30:15		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
 karoli_vers_nincs_macula	heber		4Móz 30:16		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:1		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:2		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:3		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:4		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:5		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:6		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:7		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:8		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:9		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:10		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:11		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:12		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:13		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:14		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:15		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:16		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:17		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:18		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:19		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:20		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:21		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:22		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:23		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:24		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:25		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:26		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:27		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:28		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:29		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:30		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:31		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:32		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:33		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
-karoli_vers_nincs_macula	heber		Dán 4:34		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (kk_kjv: kk_kjv_mt_nem_igazolt)		javaslat
 karoli_vers_nincs_macula	heber		Eszt 3:14		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (terkep: terkep_nincs_heber_vers)		javaslat
 karoli_vers_nincs_macula	heber		Eszt 3:15		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (terkep: terkep_nincs_heber_vers)		javaslat
 karoli_vers_nincs_macula	heber		Préd 5:1		0	a KK szerinti MT-vers nincs a Maculaban / nincs igazolt MT-megfelelo (identitas: terkep_egyik_sem_eltolodas_gyanu)		javaslat
@@ -426,32 +332,6 @@ karoli_vers_nincs_macula	heber		Ézs 4:4		0	a KK nem osztalyozza (EGYIK_SEM feje
 karoli_vers_nincs_macula	heber		Ézs 4:5		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
 karoli_vers_nincs_macula	heber		Ézs 4:6		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
 karoli_vers_nincs_macula	heber		Ézs 64:1		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:1		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:2		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:3		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:4		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:5		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:6		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:7		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:8		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:9		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:10		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:11		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:12		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:13		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:14		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:15		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:16		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:17		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:18		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:19		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:20		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:21		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:22		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:23		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:31		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:32		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
-karoli_vers_nincs_macula	heber		Dán 3:33		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
 karoli_vers_nincs_macula	heber		Hós 13:1		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
 karoli_vers_nincs_macula	heber		Hós 13:2		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
 karoli_vers_nincs_macula	heber		Hós 13:3		0	a KK nem osztalyozza (EGYIK_SEM fejezet) es a terkepben sincs		javaslat
