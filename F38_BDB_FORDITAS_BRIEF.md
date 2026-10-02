@@ -9,14 +9,14 @@ allapot: megallt
 ag: claude/admiring-bohr-texair
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=sonnet; az 1–4. adagra is, DT-F38e), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
 kovetkezo: Te: PR merge, majd az 5. adag Sonnettel
-olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md]
-ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/teszt_forditas_kapuk.py, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, forditas/prompt_v4.md, naplok/BDB_FORDITAS_kapuk.py, naplok/BDB_FORDITAS_regresszio.py, naplok/FORDITAS_kisnagybetu_csere.tsv]
+olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv]
+ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/teszt_forditas_kapuk.py, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, forditas/prompt_v4.md, naplok/BDB_FORDITAS_kapuk.py, naplok/BDB_FORDITAS_regresszio.py, naplok/FORDITAS_kisnagybetu_csere.tsv, naplok/BDB_FORDITAS_gyokcsoportok.tsv, naplok/BDB_FORDITAS_zaras2.py, naplok/BDB_FORDITAS_zaras_javitasok.tsv]
 fugg: [34]
 ---
 
 # A teljes BDB magyar fordítása (BDB_FORDITAS)
 
-*v1 · 2026.10.01 · a #28 (EMELES) tapasztalatai alapján · cloud session, Claude Code kredit (túlfutás esetén a heti keretből)*
+*v1.1 · 2026.10.02 · M0 5. pont (BDB-gyökcsoportok felmérése) · v1 · 2026.10.01 · a #28 (EMELES) tapasztalatai alapján · cloud session, Claude Code kredit (túlfutás esetén a heti keretből)*
 
 ## Cél
 
@@ -57,6 +57,7 @@ A gyakoriságot az M0 számolja egy Strong-címkés ószövetségi szövegből a
 2. Elkészíti a `naplok/BDB_FORDITAS_sorrend.tsv`-t: `sorszam`, `strong`, `gyakorisag`, `karakter`, `adag`. A már lefordított szócikkek (az `adat/forditasok.tsv` `teljes` sorai) kimaradnak.
 3. Kijelöli a 20 000 karakter fölötti szócikkek szegmenshatárait (jelentésszámok mentén, ahogy a #28 a G4151-nél és a H1121-nél tette).
 4. Adagokra osztja a listát: **M1 mérő adag kb. 150 000 karakter**, utána **adagonként kb. 500 000 karakter** (kb. 13 adag).
+5. **BDB-gyökcsoportok felmérése (csak mérés, import nélkül; kiegészítés 2026.10.02).** Forrás: `openscriptures/HebrewLexicon`, `LexicalIndex.xml`, commit `21c9add1` (CC BY 4.0; GitHubról letölthető, a cloud proxyn átmegy). A BDB gyökcsoportjai (1 432 gyök, 4 616 Strong a bcv-commons `bdb_roots` mérése szerint) összevetése a `konkordancia/Strong_szotar.tsv` TWOT-számával: hány héber Strong-nál ad a BDB-gyök olyan rokon Strong-ot, amely nem ugyanazon TWOT-szám alatt áll. Kimenet: `naplok/BDB_FORDITAS_gyokcsoportok.tsv` (`strong`, `bdb_gyok`, `twot`, `bdb_rokonok`, `twot_rokonok`, `csak_bdb`), és az M0 jelentésébe három szám: a lefedett Strong-ok száma, a `csak_bdb` többletet kapó Strong-ok száma és aránya. A fájl neve, commitja és licencsora a naplóba. **Nem kerül be** a `BDB_teljes_unabridged.tsv`-be, az `adat/forditasok.tsv`-be vagy a szerepmátrixba; a hasznosításáról (a szócikkek „rokon szavak” adata-e) a ⛔ M1 megállási ponton a felhasználó dönt.
 
 ### M1 — Mérő adag
 
@@ -65,6 +66,8 @@ Az első kb. 150 000 karakter lefordítása a #28 módszerével. A végén **meg
 - 5 véletlenszerűen választott szócikk Strong-száma különböző hosszúságból, hogy a felhasználó beleolvashasson (`naplok/BDB_FORDITAS_naplo.md`, forrás és fordítás egymás alatt).
 
 **⛔ M1:** a felhasználó leolvassa a kreditet, és dönt: folytatás, prompt- vagy terminológiajavítás, vagy leállás.
+
+Az M0 5. pontjának eredménye alapján itt dönt arról is, hogy a BDB-gyökcsoport bekerül-e a szócikkek adatai közé (új mező az `adat/forditasok.tsv`-ben vagy külön tábla, SEMA-bővítéssel) vagy a felmérés lezárul import nélkül; a döntés a `DONTESEK.md`-be kerül.
 
 ### M2 … Mn — Éles adagok
 
@@ -132,3 +135,4 @@ Olvasd el a `BDB_FORDITAS_BRIEF.md`-t, és hajtsd végre az M0-t és az M1-et. E
 | D9 (DT-F38e) | ~~Az 1–4. adagot Opus újrafordítja, új ágon (felhasználói döntés, 2026.10.02).~~ **Felülírva a D-új-vel** (a teljes BDB Sonnettel). | l. `DONTESEK.md` DT-F38e | — |
 | D10 (DT-F38f) | (1) a gépi normalizáló-szabályok a #28 soraira is érvényesek (az `allapot` és a `modell` nem változik); (2) az 5. kapu a `spirit` kulcsnál a szellem/Szellem alakot és ragozott alakjaikat is elfogadja (kapuszabály; a H5307, H5414, H7760 kivétele megszűnt); (3) a Szellem-szabály: a BDB H7307 9. pontja nagybetűs, Isten által küldött rossz szellem, az emberi szellem és a szél kisbetűs, a kétséges marad és listára kerül; (4) a normalizáló a tartományos és a vershoz tapadt „N t.” alakot is kezeli; (5) ami a forrásban RV/AV/RVm után áll, angolul, szó szerint marad. | felhasználói döntés, 2026.10.02; l. `DONTESEK.md` DT-F38f | — |
 | D11 (DT-F38f) | a „-szor/-szer/-ször” toldalék a szám kiejtett utolsó szava szerinti hangrendhez igazodik (4-szer, 5-ször, 33-szor). | felhasználói döntés, 2026.10.02 | egységes „-szor” |
+| D-gyok | A BDB-gyökcsoportok csak felmérés az M0-ban, import nélkül; forrás az OpenScriptures `LexicalIndex.xml` (GitHub), nem a HF `bdb_roots` CSV | a TWOT-szám már gyökalapú csoportosítás a szerepmátrixban; a többlet mérés nélkül nem ismert; a GitHub-forrás a cloud sessionből is elérhető, a HF nem |

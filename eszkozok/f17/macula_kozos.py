@@ -26,6 +26,27 @@ USFM_USZ = ('MAT MRK LUK JHN ACT ROM 1CO 2CO GAL EPH PHP COL 1TH 2TH 1TI 2TI TIT
             '1JN 2JN 3JN JUD REV').split()
 
 
+# ALIAS (Sir <-> JSir). A generátor a #35 (Sir -> JSir migráció) lezárása előtt a régi könyvnévtől (Sir) függött:
+# a Károli-oldali adatok (Karoli_1908, Karoli_versmegfeleltetes, LXX_versificacios_terkep) még a `Sir` nevet
+# használják, a Konyv_normalizalo_tabla már a `JSir`-t. Kétirányú: mindkét név elfogadott, a belső kulcs a
+# könyvtábla (kanonikus) neve; a kimeneti Károli-címke az adatban használt nevet őrzi (RAW_NEV).
+# A #35 lezárása után ez a blokk és a használata (karoli_versek, macula_kk, M.karoli_cimke) törölhető.
+ALIAS = (('Sir', 'JSir'), ('JSir', 'Sir'))
+RAW_NEV = {}
+_KAN = []
+
+
+def kanoni_nev(nev):
+    """A Károli-oldali könyvnév -> a könyvtábla neve (Sir/JSir alias, mindkét irányban)."""
+    if not _KAN:
+        _KAN.append(set(konyvtablak()[3]))
+    for a, b in ALIAS:
+        if nev == a and a not in _KAN[0] and b in _KAN[0]:
+            RAW_NEV[b] = a
+            return b
+    return nev
+
+
 def tsv_olvas(ut):
     """(fejlec, sorok); a '#'-sorokat es az ures sorokat kihagyja."""
     sorok = []
@@ -66,7 +87,7 @@ def karoli_versek():
     for s in sorok:
         m = re.match(r'^(\S+) (\d+):(\d+)$', s[0])
         if m:
-            ki.setdefault(m.group(1), set()).add((int(m.group(2)), int(m.group(3))))
+            ki.setdefault(kanoni_nev(m.group(1)), set()).add((int(m.group(2)), int(m.group(3))))
     return ki
 
 

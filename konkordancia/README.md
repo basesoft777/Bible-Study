@@ -221,6 +221,10 @@ kiadás közt nem transzferálható közvetlenül. A főszövegen belüli (első
 mutatók kezdőlevele viszont pontosan egyeznek — a levél↔oldal leképezés önmagában
 helyesnek igazolt a `+12` és a `+15` szegmensen belül is.
 
+## `LXX_kivonat_*.tsv` — kivezetésre vár (F33, DT-F33b)
+
+A 39 `LXX_kivonat_*.tsv` (és `LXX_kivonat_*_README.md`) **kivezetésre vár**: a licence `tisztazatlan` (studybible.info, explicit licencnyilatkozat nincs; a fájl-READMEk szerint csak belső használat), a helyét a `LXX_OS` veszi át. **Nem törlődik**, amíg olvasói vannak: `eszkozok/lekerdez.py` (`cmd_lxx_hid`, 469. sor), `eszkozok/lxx_osszevetes.py`, `eszkozok/kockazat_szures_18_tanulmany.py`, valamint az `adat/datasetek.tsv` négy sora. Az olvasók `LXX_OS`-re állítása és a törlés külön, új tétel (N-F33 helyőrző, `/befogad`). Új munka ne építsen rá.
+
 ## `LXX_versszintu_parok.tsv` — versszintű együtt-előfordulás (F05_SZOTAR_BRIEF.md S13)
 
 **Generált** (`eszkozok/lxx_versszintu_import.py`, kézzel nem szerkesztendő).
