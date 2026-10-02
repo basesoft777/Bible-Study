@@ -301,12 +301,38 @@ def szor_toldalek(n):
 IDO_MINTA = re.compile(r'(?<![\d:.,\-–/§])(\d{1,4})\s?t\.( a versben)?(?![\w])')
 
 
+# DT-F38f (4): a verskoz vegehez tapadt, tartomanyos alak (`5Móz 11:13-14t.`,
+# `Ézs 65:1-2t.`): a BDB `Deut 11:13 + 14 t.` alakja, ahol a `+` helyen kotojel
+# all, a szam pedig a `t.` darabszama (a `t.` mindig szam utan all; a `-` utani
+# szam tehat nem vers). Az igehely megmarad, a darabszam kulon, `összesen`
+# szoval kerul utana: `5Móz 11:13, összesen 14-szer`. Csak a szokoz nelkuli
+# `-Nt.` alakot illeszti (a `2-3 t.` es az `1Móz 22:3 t.` valtozatlan).
+IDO_TARTOMANY = re.compile(r'(?<![\d:.])(\d{1,3}:\d{1,3})[-–](\d{1,4})t\.(?![\w])')
+
+
+# a `t.` pontja mondatvegi pont is lehet: ha utana tagolasi szamjelolo kovetkezik
+# (`4t. 2 twelve: a.` -> `4-szer 2 tizenkettő`), a pont megmarad (`4-szer. 2 ...`),
+# kulonben a 9. kapu (tagolas) a szamjelolot nem ismerne fel (a magyar oldalon
+# a pont nelkuli szam csak `.;:—)` utan szamit jelolonek)
+_TAGOLAS_UTAN = re.compile(r' \d{1,2} [^\W\d_]')
+
+
+def _pont_ha_kell(m):
+    return '.' if _TAGOLAS_UTAN.match(m.string, m.end()) else ''
+
+
 def szabaly_elofordulas(szoveg):
     def csere(m):
         n = int(m.group(1))
         alak = '%d-%s' % (n, szor_toldalek(n))
-        return 'a versben ' + alak if m.group(2) else alak
-    return IDO_MINTA.subn(csere, szoveg)
+        return ('a versben ' + alak if m.group(2) else alak) + _pont_ha_kell(m)
+
+    def csere_tartomany(m):
+        n = int(m.group(2))
+        return '%s, összesen %d-%s%s' % (m.group(1), n, szor_toldalek(n), _pont_ha_kell(m))
+    szoveg, a = IDO_TARTOMANY.subn(csere_tartomany, szoveg)
+    szoveg, b = IDO_MINTA.subn(csere, szoveg)
+    return szoveg, a + b
 
 
 # ---------------------------------------------------------------------------

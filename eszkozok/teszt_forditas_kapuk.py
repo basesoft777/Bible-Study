@@ -406,5 +406,38 @@ class TorzsRagozott(unittest.TestCase):
         self.assertEqual(K.torzs_sorozat('Qalamar Hifilosz'), [])
 
 
+class SzellemKisNagybetu(unittest.TestCase):
+    """F38, DT-F38f (2), DT25: a `spirit` kulcs magyar alakja kis- ES nagybetuvel
+    is megfelel (szellem/Szellem es ragozott alakjaik); mas kulcsra nem lazul."""
+
+    def setUp(self):
+        _, self.term = K._betolt()
+
+    def _e(self, forras, hu):
+        return K.ellenoriz_terminologia(forras, hu, self.term, [])[0]
+
+    def test_kisbetus_es_nagybetus_alak(self):
+        for szo in ('szellem', 'szelleme', 'szellemet', 'Szellem', 'Szelleme', 'Szellemet',
+                    'Szellemével', 'szellemmel'):
+            self.assertEqual(self._e('the spirit of God', 'Isten %s' % szo), 'RENDBEN', szo)
+
+    def test_hianyzo_alak_sertes(self):
+        self.assertEqual(self._e('the spirit of God', 'Isten lehelete'), 'SERTES')
+
+    def test_nagybetus_szellem_nem_csereli_kisbetusre(self):
+        uj, naplo = K.terminologia_kisnagybetu_csere('the spirit of God', 'Isten Szelleme', self.term)
+        self.assertEqual((uj, naplo), ('Isten Szelleme', []))
+
+    def test_mas_kulcs_nem_lazul(self):
+        # a `soul` -> `lélek` kulcsra a nagybetu nem megfelelo alak
+        self.assertEqual(self._e('the soul of man', 'az ember Lélek'), 'SERTES')
+
+    def test_nincs_szocikkszintu_spirit_kivetel_a_sorokon(self):
+        for l in open('adat/forditasok.tsv', encoding='utf-8').read().split(chr(10)):
+            m = l.split(chr(9))
+            if len(m) == 12:
+                self.assertNotIn('bizonytalan_feloldasok): spirit', m[11], m[1])
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

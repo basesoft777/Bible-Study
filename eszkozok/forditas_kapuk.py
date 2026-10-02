@@ -313,6 +313,27 @@ def ellenoriz_formazas(forras, forditas):
     return 'SERTES', '; '.join(hibak)
 
 
+# DT-F38f (2), DT25: a `spirit` kulcs magyar alakja kis- ES nagybetuvel is
+# megfelel (szellem / Szellem es ragozott alakjaik: Szelleme, Szellemet ...),
+# mert az isteni szellem nagybetus (Szent Szellem, Isten Szelleme), az emberi,
+# angyali, demoni kisbetus. Ez kapuszabaly, nem szocikkszintu kivetel. Az angol
+# kulcs szerint kulcsolt: csak a felsorolt kulcsoknal lazul a kis/nagybetu.
+KIS_NAGYBETUS_IS = frozenset({'spirit'})
+
+
+def _magyar_mintak(angol, magyar):
+    """A kotelezo magyar alak mintai: az alap, es ha a kulcs a KIS_NAGYBETUS_IS
+    halmazban van, a nagy kezdobetus valtozat is."""
+    mintak = [_p4._magyar_alak_mintaja(magyar)]
+    if angol in KIS_NAGYBETUS_IS and magyar[:1].islower():
+        mintak.append(_p4._magyar_alak_mintaja(magyar[:1].upper() + magyar[1:]))
+    return mintak
+
+
+def _magyar_alak_megvan(angol, magyar, szoveg):
+    return any(m.search(szoveg) for m in _magyar_mintak(angol, magyar))
+
+
 def _angol_minta(angol):
     vege = r'(?![A-Za-z])' if angol[-1:].isalpha() else ''
     return re.compile(r'(?<![A-Za-z])' + re.escape(angol) + vege)
@@ -361,7 +382,7 @@ def ellenoriz_terminologia(forras, forditas, terminologia, bizonytalan_lista):
             continue
         if not _sajat_talalatok(angol, forras, terminologia):
             continue
-        if _p4._magyar_alak_mintaja(t['magyar']).search(forditas):
+        if _magyar_alak_megvan(angol, t['magyar'], forditas):
             continue
         if any(re.search(r'\b' + tov, forditas, re.IGNORECASE)
                for tov in HU_TOVALTOZAT.get(t['magyar'], ())):
@@ -400,7 +421,7 @@ def terminologia_kisnagybetu_csere(forras, forditas, terminologia=None, bizonyta
         if not kapus_sor(t) or not _sajat_talalatok(angol, forras, terminologia):
             continue
         minta = _p4._magyar_alak_mintaja(magyar)
-        if minta.search(forditas):
+        if _magyar_alak_megvan(angol, magyar, forditas):
             continue
         if any(re.search(r'\b' + tov, forditas, re.IGNORECASE)
                for tov in HU_TOVALTOZAT.get(magyar, ())):

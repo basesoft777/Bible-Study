@@ -248,6 +248,29 @@ class Elofordulas(unittest.TestCase):
         szoveg = '1Móz 22:3 t. és 5:12 t. stb.; 2-3 t.'
         self.assertEqual(N.szabaly_elofordulas(szoveg), (szoveg, 0))
 
+    def test_tartomanyos_alak_darabszama(self):
+        # DT-F38f (4): `5Móz 11:13-14t.` = `5Móz 11:13 + 14 t.` (a `-` után a darabszám áll)
+        self.assertEqual(N.szabaly_elofordulas('5Móz 11:13-14t.; továbbá'),
+                         ('5Móz 11:13, összesen 14-szer; továbbá', 1))
+        self.assertEqual(N.szabaly_elofordulas('Ézs 65:1-2t.; imperfectum'),
+                         ('Ézs 65:1, összesen 2-szer; imperfectum', 1))
+        self.assertEqual(N.szabaly_elofordulas('Jer 25:3-4t. Jeremiás; Ez 1:3, 5'),
+                         ('Jer 25:3, összesen 4-szer Jeremiás; Ez 1:3, 5', 1))
+        self.assertEqual(N.szabaly_elofordulas('4Móz 7:14-15t. a 4Móz 7-ben')[0],
+                         '4Móz 7:14, összesen 15-ször a 4Móz 7-ben')
+
+    def test_pont_marad_tagolasi_szam_elott(self):
+        # `4t. 2 twelve:` -> a 9. kapu (tagolás) csak `.;:—)` utáni számot ismer fel jelölőnek
+        self.assertEqual(N.szabaly_elofordulas('Jer 1:3-4t. 2 tizenkettő: a.')[0],
+                         'Jer 1:3, összesen 4-szer. 2 tizenkettő: a.')
+        self.assertEqual(N.szabaly_elofordulas('(3 t.) 2 tizenkettő')[0], '(3-szor) 2 tizenkettő')
+        self.assertEqual(N.szabaly_elofordulas('4 t. 2 tizenkettő')[0], '4-szer. 2 tizenkettő')
+
+    def test_tartomanyos_alak_hataresetek(self):
+        # valódi versszám-tartomány `t.` nélkül, szóközös alak, számtartomány: változatlan
+        for szoveg in ('2Móz 4:8-9, 4Móz 15:24', 'Ézs 65:1-2 t.', '2-3t.', 'Gen 3:4-5; 6t'):
+            self.assertEqual(N.szabaly_elofordulas(szoveg), (szoveg, 0), szoveg)
+
     def test_paragrafus_utan_nem_gyakorisag(self):
         # Ges §67 t. = a nyelvtan 67. §-ának t) pontja
         self.assertEqual(N.szabaly_elofordulas('Ges §67 t.) szerint'), ('Ges §67 t.) szerint', 0))

@@ -32,14 +32,10 @@ import emeles as E  # noqa: E402
 
 UT = E.FORDITASOK_UT
 JELOLES = 'F38.268: az isteni Szellem nagybetűs (DT25)'
-# szócikkszintű terminológia-kivétel (a `spirit` kulcs): ahol az egyetlen
-# szellem-hely isteni, ott a javítás után nincs kisbetűs „szellem”, amelyet az
-# 5. kapu a `spirit -> szellem` sorra követel (a DT25 jóváhagyott alakjai
-# nagybetűsek: Szent Szellem, Isten Szelleme, a Szellem)
-KIVETEL_STRONG = {'H5307', 'H5414', 'H7760'}
-KIVETEL_INDOK = ('a „spirit” kulcs szócikkszintű kivétele: az egyetlen szellem-hely isteni, ezért '
-                 'nagybetűs (DT25 a), az 5. kapu a kisbetűs „szellem” alakot várja; jóváhagyásra: felhasználó')
-KIVETEL_RESZ = 'terminológia-kivétel (bizonytalan_feloldasok): spirit'
+# A szócikkszintű `spirit` terminológia-kivétel (H5307, H5414, H7760) megszűnt:
+# DT-F38f (2) szerint az 5. kapu a `spirit` kulcsnál a kis- és a nagybetűs alakot is
+# elfogadja (forditas_kapuk.KIS_NAGYBETUS_IS), ezért nincs rá szükség
+# (naplok/BDB_FORDITAS_zaras2.py távolítja el a sorokból).
 
 # (strong, pont, regi, uj, indok)
 SZELLEM = [
@@ -67,19 +63,27 @@ SZELLEM = [
     ('H7760', '(4Móz 11:17)', 'átvitt értelemben szellemet (עַל) 4Móz 11:17',
      'átvitt értelemben Szellemet (עַל) 4Móz 11:17',
      '4Móz 11:17 — Isten Szelleme (a H7307 9a pontja is ide sorolja)'),
+    # DT-F38f (3): ahol a BDB a H7307 9. pontjába sorolja, nagybetűs
+    ('H1320', '5 (Ézs 31:3)', 'a lovak hús, nem szellem Ézs 31:3', 'a lovak hús, nem Szellem Ézs 31:3',
+     'Ézs 31:3 — a BDB a H7307 9e pontjába (Isten Szelleme, mint életerő, szemben a בָשָׂר-rel) sorolja'),
 ]
 
-# Kozmetikai, nem modositott, de a felhasznalo dontesere vart helyek
-# (a szellem istenre vonatkozasa nem egyertelmu, vagy a sor nem F38-as)
+# DT-F38f (3): a kétséges helyek szabály szerinti eldöntése után maradt, módosítatlan helyek
+# (szócikk, hely, szöveg, indok). A szabály: ahol a BDB az adott helyet a H7307 9. pontjába
+# (Isten Szelleme) sorolja, nagybetűs; Isten által küldött rossz/gonosz szellem (1Sám 16:14-23)
+# kisbetűs; emberi szellem és szél kisbetűs; ami ezek után is kétséges, marad, indoklással.
 NEM_MODOSITOTT = [
-    ('H4390', '2Móz 28:3; 31:3; 35:31', 'szellemmel betölteni',
-     '31:3 isteni Szellem (Becalél), 28:3 viszont „a bölcsesség szelleme”; a BDB a H7307 9d pontjába sorolja (technical skill, 2Móz 31:3; 35:31) — a besorolás szerint isteni Szellem, a felhasználó dönt'),
-    ('H1320', 'Ézs 31:3', 'a lovak hús, nem szellem',
-     'a BDB a H7307 9e pontjába sorolja (as vital power, opposed to בָשָׂר: Isa 31:3), tehát az isteni Szellem alpontja alatt áll — a felhasználó dönt, a menet nem módosított'),
-    ('H5674', '4Móz 5:14', 'a szellemről',
-     'a féltékenység szelleme (קנאה רוח), nem isteni'),
-    ('H7451', '2Sám 13:22 körül', 'az isteni szellemről, amely az őrjöngés és az erőszak eksztatikus állapotát',
-     'a #28 sor (nem F38-as), a menet nem módosítja; ha kell: „az isteni Szellemről”'),
+    ('H4390', '2Móz 28:3; 31:3; 35:31', 'átvitt értelemben szellemmel betölteni 2Móz 28:3; 31:3; 35:31',
+     'kisbetűs marad, kétséges: a három hely egyetlen BDB-frázisban áll; a 31:3 és a 35:31 a H7307 9d pontjába '
+     '(Isten Szelleme, készség) tartozik, a 28:3 viszont a 6. pontba (חָכְמָה רוּחַ, az értelem szelleme, emberi) — '
+     'egy kifejezésen belül nem választható szét, ezért a kisbetű marad'),
+    ('H5674', '4Móz 5:14; 5:30; 1Kir 22:24', 'a szellemről 4Móz 5:14 (a versben kétszer); 5:30; 1Kir 22:24 2Krón 18:23',
+     'kisbetűs marad: a 4Móz 5:14, 30 a féltékenység szelleme (nem a H7307 9. pontja); az 1Kir 22:24 a hazug '
+     'szellem helyének környezete (rossz/hazug szellem, nem Isten Szelleme); egy frázisban szerepelnek'),
+    ('H7451', '1Sám 16:14-15, 16, 23; 18:10; 19:9', 'az isteni szellemről, amely az őrjöngés és az erőszak eksztatikus '
+     'állapotát idézi elő',
+     '#28 sor, nem módosult: Isten által küldött rossz/gonosz szellem (1Sám 16:14-23, 18:10, 19:9), ezért kisbetűs '
+     '(DT-F38f 3 második pontja; a BDB ezeket a H7307 9a alá is sorolja, de a szabály kifejezetten kisbetűt ír elő)'),
 ]
 
 
@@ -113,8 +117,6 @@ def main():
             m[ix['forditas_hu']] = m[ix['forditas_hu']].replace(regi, uj)
         if JELOLES not in m[ix['megjegyzes']]:
             m[ix['megjegyzes']] = '; '.join(x for x in (m[ix['megjegyzes']], JELOLES) if x)
-        if strong in KIVETEL_STRONG and KIVETEL_RESZ not in m[ix['megjegyzes']]:
-            m[ix['megjegyzes']] = '; '.join((m[ix['megjegyzes']], KIVETEL_INDOK, KIVETEL_RESZ))
         sorok[i] = '\t'.join(m)
         irt.add(i)
         print('%s | %s | %s => %s' % (sp, pont, regi, uj))
