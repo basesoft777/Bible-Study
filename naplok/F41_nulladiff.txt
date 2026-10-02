@@ -1,0 +1,9 @@
+# GENERALT/MERT: nulla-diff a F41.3 importra (az elso 5 oszlop szerint; a 6. oszlop "Angol szo allapota" uj)
+# alap: git HEAD:konkordancia/BSB_Strongs.tsv vs a munkafa konkordancia/BSB_Strongs.tsv; keszult: a menet ideiglenes osszehasonlito szkriptjevel (nincs commitolva)
+# azonos (bajt-/soronkenti egyezes az elso 5 oszlopon): 28 konyv, 205320 sor
+AZONOS: Gen(20176), Exo(16439), Lev(11724), Deu(13855), Jos(9857), Jdg(9649), Rut(1240), 2Ki(12136), 1Ch(10645), 2Ch(13137), Neh(5213), Est(2998), Psa(17790), Pro(6833), Sng(1211), Jer(21452), Lam(1502), Ezk(18353), Jol(946), Amo(2017), Oba(285), Mic(1372), Nam(556), Hab(654), Zep(764), Hag(593), Zec(3068), Mal(855)
+# valtozott (a D3 jovahagyott atszamozasa miatt): 3 konyv
+VALTOZOTT: Num: regi=16151 uj=16151 sor; csak a regiben=628, csak az ujban=628; erintett (regi- vagy uj-) fejezetek: [12, 13, 29, 30]
+VALTOZOTT: 1Ki: regi=12949 uj=12949 sor; csak a regiben=137, csak az ujban=137; erintett (regi- vagy uj-) fejezetek: [22]
+VALTOZOTT: Job: regi=8177 uj=8177 sor; csak a regiben=264, csak az ujban=264; erintett (regi- vagy uj-) fejezetek: [38, 39, 40]
+# uj konyvek (a regi fajlban nem voltak): 1Sa(13000 sor), Ecc(2936 sor), Isa(16625 sor), Hos(2295 sor), Jon(672 sor)
