@@ -16,6 +16,8 @@ fugg: [34]
 
 # A teljes BDB magyar fordítása (BDB_FORDITAS)
 
+**Módosítva (2026.10.02): a fordítás Sonnettel folytatódik.** Indoklás: az Opus-vakpróba (H2617, H7307) után a Sonnet-fordítás közelebb áll a Károli-stílushoz; az 1–4. adag (269 szócikk) is Sonneten futott. (DT-F38e)
+
 *v1.2 · 2026.10.02 · zárómenet 3. kör (DT-F38g; a fejléc frissítve, a DT-sorok változatlanok) · v1.1 · 2026.10.02 · M0 5. pont (BDB-gyökcsoportok felmérése) · v1 · 2026.10.01 · a #28 (EMELES) tapasztalatai alapján · cloud session, Claude Code kredit (túlfutás esetén a heti keretből)*
 
 ## Cél
