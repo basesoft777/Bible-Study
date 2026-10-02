@@ -230,16 +230,38 @@ def ellenoriz_tagolas(forras, forditas):
 # torzs (BDB)
 # ---------------------------------------------------------------------------
 
+_TORZS_ALAK = (
+    r'Qal|Niph(?:al)?|Pi(?:el)?|Pu(?:al)?|Hiph(?:il)?|Hoph(?:al)?|Hithp(?:a(?:el|lpel)|o(?:lel|el)|eel|ael)?'
+    r'|Hithpo|Hishtaph(?:el)?|Pilp(?:el)?|Pilel|Pulal|Pol(?:el|al)?|Po(?:el|al)?|Pōʿ(?:ēl|al)|Pōl(?:ēl|al)'
+    r'|Palp(?:al)?|Pealal|Tiph(?:el)?|Nithp(?:ael)?'
+    # F38.261 (DT-F38d (c)): a torzsnev magyaros irasa a forditasban
+    r'|Nifal|Hifil|Hofal|Hitpael')
+# F38.261: magyar rag a torzsnev utan (`Qalban`, `Nifalban`, `Pielben`,
+# `Pualban`, `Hifilben`, `Hofalban`, `Hitpaelben`, `Qalról`) -- egy
+# ragozott-alak minta. A rovid torzsek (Pi, Pu, Po) utan csak a 3+ betus rag
+# fogadhato el, kulonben a `Put` (helynev), `Pure` stb. hamis talalat lenne.
+_TORZS_RAG_HOSSZU = ('ban', 'ben', 'ból', 'ből', 'ról', 'ről', 'nak', 'nek',
+                     'hoz', 'hez', 'höz', 'tól', 'től', 'ként', 'val', 'vel')
+_TORZS_RAG_ROVID = ('ba', 'be', 'on', 'en', 'ön', 'ra', 're', 'ig', 'ok', 'ek',
+                    'ak', 'ai', 'ei', 't', 'k')
+_TORZS_ROVID_TOVEK = frozenset({'Pi', 'Pu', 'Po'})
 TORZS_MINTA = re.compile(
     r'(?<![A-Za-z])'
-    r'(Qal|Niph(?:al)?|Pi(?:el)?|Pu(?:al)?|Hiph(?:il)?|Hoph(?:al)?|Hithp(?:a(?:el|lpel)|o(?:lel|el)|eel|ael)?'
-    r'|Hithpo|Hishtaph(?:el)?|Pilp(?:el)?|Pilel|Pulal|Pol(?:el|al)?|Po(?:el|al)?|Pōʿ(?:ēl|al)|Pōl(?:ēl|al)'
-    r'|Palp(?:al)?|Pealal|Tiph(?:el)?|Nithp(?:ael)?)'
-    r'(?![A-Za-z])')
+    r'(' + _TORZS_ALAK + r')'
+    r'(' + '|'.join(sorted(_TORZS_RAG_HOSSZU + _TORZS_RAG_ROVID, key=len, reverse=True)) + r')?'
+    r'(?![^\W\d_])')
+# a magyaros torzsnev -> a forrasbeli (angol) alak, hogy a ket oldal egyezzen
+_TORZS_MAGYAROS = {'Nifal': 'Niph', 'Hifil': 'Hiph', 'Hofal': 'Hoph', 'Hitpael': 'Hith'}
 
 
 def torzs_sorozat(szoveg):
-    return [m.group(1)[:4] for m in TORZS_MINTA.finditer(szoveg)]
+    ki = []
+    for m in TORZS_MINTA.finditer(szoveg):
+        tov, rag = m.group(1), m.group(2)
+        if rag and tov in _TORZS_ROVID_TOVEK and rag not in _TORZS_RAG_HOSSZU:
+            continue
+        ki.append(_TORZS_MAGYAROS.get(tov, tov)[:4])
+    return ki
 
 
 def ellenoriz_torzs(forras, forditas):
@@ -421,10 +443,15 @@ def _konyv_mintak():
         lek.setdefault(alias, hu)
     betu = r'A-Za-zÀ-ɏ'
 
-    def minta(kulcsok):
+    def minta(kulcsok, tapadt=False):
         k = sorted(set(kulcsok), key=len, reverse=True)
-        return re.compile(r'(?<![%s0-9])(%s)\.?\s+(?=\d{1,3}:\d)' % (betu, '|'.join(re.escape(x) for x in k)))
-    return lek, minta(lek), minta(set(lek.values()))
+        # F38.261 (DT-F38d (c)): tapadt=True -- a kisbetus szohoz tapadt
+        # konyvjelzes is talalat (`abundantly2Chr 3:1`, `verbDeuteronomy 7:8`).
+        # Csak a forras oldalon, ahol a tapadas OCR-hiba; a forditas oldalon a
+        # tapadt alak nem szamit (a normalizalo valasztja le).
+        elotte = r'(?<![A-ZÀ-ÖØ-Þ0-9])' if tapadt else r'(?<![%s0-9])' % betu
+        return re.compile(r'%s(%s)\.?\s+(?=\d{1,3}:\d)' % (elotte, '|'.join(re.escape(x) for x in k)))
+    return lek, minta(lek, True), minta(set(lek.values()))
 
 
 _KONYV = None

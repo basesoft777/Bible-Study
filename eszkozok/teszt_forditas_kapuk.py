@@ -333,5 +333,66 @@ class TagolasRovidites(unittest.TestCase):
         self.assertIsNotNone(ig[2][2])
 
 
+class TapadtKonyvjelzes11(unittest.TestCase):
+    """F38.261, DT-F38d (c): a 11. kapu a forrasbeli, szohoz tapadt angol
+    konyvjelzest is szamolja."""
+
+    def test_tapadt_forras_leválasztva_rendben(self):
+        forras = 'abundantly2Chr 3:1; completely2Chr 4:2; verbDeuteronomy 7:8'
+        forditas = 'bőségesen 2Krón 3:1; teljesen 2Krón 4:2; ige 5Móz 7:8'
+        self.assertEqual(K.ellenoriz_konyvek(forras, forditas)[0], 'RENDBEN')
+
+    def test_tapadt_forras_osszetapasztva_hagyva_sertes(self):
+        # a forditasban tovabbra is tapadt, angol alak: hianyzo igehely
+        e, d = K.ellenoriz_konyvek('abundantly2Chr 3:1', 'abundantly2Chr 3:1')
+        self.assertEqual(e, 'SERTES')
+        self.assertIn('2Krón', d)
+
+    def test_tapadt_karoli_alak_a_forditasban_nem_szamit(self):
+        e, _ = K.ellenoriz_konyvek('abundantly2Chr 3:1', 'bőségesen2Krón 3:1')
+        self.assertEqual(e, 'SERTES')
+
+    def test_nagybetu_elotti_nem_tapadt(self):
+        self.assertEqual(K.ellenoriz_konyvek('ABC2Chr 3:1', 'ABC2Chr 3:1')[0], 'RENDBEN')
+
+    def test_a_normalizalt_forditas_atmegy(self):
+        import normalizal as N
+        forras = 'abundantly2Chr 3:1'
+        uj, _ = N.normalizal(forras, 'BDB')
+        self.assertEqual(K.ellenoriz_konyvek(forras, uj)[0], 'RENDBEN')
+
+
+class TorzsRagozott(unittest.TestCase):
+    """F38.261, DT-F38d (c): a 10. kapu a magyar raggal allo torzsneveket is
+    felismeri."""
+
+    def test_ragozott_alakok(self):
+        for szoveg, var in (('Qalban', ['Qal']), ('Nifalban', ['Niph']), ('Pielben', ['Piel']),
+                            ('Pualban', ['Pual']), ('Hifilben', ['Hiph']), ('Hofalban', ['Hoph']),
+                            ('Hitpaelben', ['Hith']), ('Qalról', ['Qal']), ('Qalnak', ['Qal'])):
+            self.assertEqual(K.torzs_sorozat(szoveg), var, szoveg)
+
+    def test_forras_es_forditas_egyezik(self):
+        e, _ = K.ellenoriz_torzs('Qal Niph Pi Hiph', 'Qalban Nifalban Pi Hifilben')
+        self.assertEqual(e, 'RENDBEN')
+
+    def test_ragozott_torzs_elmaradasa_sertes(self):
+        e, _ = K.ellenoriz_torzs('Qal Pual', 'Qalban')
+        self.assertEqual(e, 'SERTES')
+
+    def test_csupasz_alak_valtozatlan(self):
+        self.assertEqual(K.torzs_sorozat('Qal, Niph, Hithpael.'), ['Qal', 'Niph', 'Hith'])
+
+    def test_rovid_torzs_hamis_talalat_nincs(self):
+        # Put (helynev), Pure: a Pi/Pu + rovid rag nem torzsnev
+        self.assertEqual(K.torzs_sorozat('Put és Pure és Piacon'), [])
+
+    def test_rovid_torzs_hosszu_raggal(self):
+        self.assertEqual(K.torzs_sorozat('Pielben és Puban'), ['Piel', 'Pu'])
+
+    def test_mas_szo_resze_nem(self):
+        self.assertEqual(K.torzs_sorozat('Qalamar Hifilosz'), [])
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

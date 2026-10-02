@@ -147,6 +147,33 @@ class Konyvnevek(unittest.TestCase):
         self.assertEqual(N.szabaly_konyvnevek(szoveg), (szoveg, 0))
 
 
+class TapadtKonyvjelzes(unittest.TestCase):
+    """F38.261, DT-F38d (c): a kisbetus szohoz tapadt angol konyvjelzes."""
+
+    def test_tapadt_leval_es_karoli(self):
+        self.assertEqual(N.szabaly_igehely_rov('abundantly2Chr 3:1')[0], 'abundantly 2Krón 3:1')
+        self.assertEqual(N.szabaly_igehely_rov('completely2Chr 4:2; verbDeuteronomy 7:8')[0],
+                         'completely 2Krón 4:2; verb 5Móz 7:8')
+
+    def test_tapadt_szamlalo(self):
+        self.assertEqual(N.szabaly_igehely_rov('abundantly2Chr 3:1')[1], 1)
+
+    def test_normalis_igehely_nem_valtozik_masként(self):
+        self.assertEqual(N.szabaly_igehely_rov('l. 2Chr 3:1')[0], 'l. 2Krón 3:1')
+
+    def test_nagybetu_utan_nem_tapad(self):
+        # nagybetu elott nem kisbetu: nem tapadt jelzes
+        szoveg = 'ABC2Chr 3:1'
+        self.assertEqual(N.szabaly_igehely_rov(szoveg), (szoveg, 0))
+
+    def test_ige_szam_nelkul_nem(self):
+        szoveg = 'verbDeuteronomy es egyeb'
+        self.assertEqual(N.szabaly_igehely_rov(szoveg), (szoveg, 0))
+
+    def test_teljes_lanc_bdb(self):
+        self.assertEqual(N.normalizal('abundantly2Chr 3:1', 'BDB')[0], 'abundantly 2Krón 3:1')
+
+
 class Kapcsolhatosag(unittest.TestCase):
     def test_teljes_lanc(self):
         uj, valt = N.normalizal('Philo; Exod 12:3ff.', 'BDB')
