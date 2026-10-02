@@ -19,6 +19,7 @@ verziója.*
 | Verzió | Dátum | Változás | Ok |
 |---|---|---|---|
 | v4.0 | 2026.10.01 | a v3 másolata + általános (v4) blokk + BDB-blokk + G26-példapár | F28 brief E1 |
+| v4.1 | 2026.10.02 | új blokk: „Kiegészítő szabály (v4.1) — kötelező terminológiai alakok előgyűjtése” (a BDB-blokk után), benne az új `{{KOTELEZO_ALAKOK}}` helyőrző: a forrásban előforduló kapus terminológia-kulcsok és kötelező magyar alakjuk, betűhűen (`eszkozok/emeles.py kotelezo <Strong>` ugyanezt listázza). A v3 és a v4.0 egyetlen sora sem módosult. | F38 DT-F38c (d): a 3. adag önújrapróbáinak 41%-a 5. kapus volt (a kötelező alak helyett szinonima, ragozott vagy más kis/nagybetűs alak) |
 
 <!-- PROMPT-KEZDET -->
 
@@ -113,6 +114,18 @@ szócikke, nem Thayeré: a fenti „ógörög szótári szócikk (Thayer's Greek
 3. A héber szöveg változatlan, a jobbról balra írással együtt.
 4. *cf.* → vö.; *q.v.* → l. ott; `sense` → jelentés; a forrás- és kiadássziglák (Ges.,
    Thes., Sam., MT stb.) változatlanok.
+
+## Kiegészítő szabály (v4.1) — kötelező terminológiai alakok előgyűjtése
+
+A vázlat megírása **előtt** gyűjtsd ki, mely terminológia-kulcsok fordulnak elő a forrásban,
+és mi a kötelező magyar alakjuk — **szó szerint, kis- és nagybetűhűen**. A vázlatban ezt az
+alakot használd legalább egyszer minden olyan helyen, ahol a kulcs áll; szinonima, más
+kis/nagybetűs vagy elírt alak nem helyettesíti (a ragozás a szótő után megengedett, pl.
+„szellem” → „szellemét”). Különösen: `spirit` → szellem, `spiritual` → szellemi (nem
+„lelki”, „lelke”); a népnév- és helynév-alakok betűre (`Sabean` → szabeus, `Zinjirli` →
+Zendzsirli, nagy kezdőbetűvel). Az e forrásban előforduló kulcsok gépi kigyűjtése:
+
+{{KOTELEZO_ALAKOK}}
 
 ## Ideiglenes terminológia (kötelező megfeleltetés, amíg a 4a élesíti a saját tábláját)
 

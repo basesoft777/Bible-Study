@@ -248,6 +248,24 @@ def terminologia_szoveg():
     return '\n'.join(ki), jelen
 
 
+def kotelezo_alakok(forras):
+    """DT-F38c (d), prompt v4.1: a forrasban elofordulo kapus terminologia-
+    kulcsok es kotelezo magyar alakjuk, betuhiven -- ugyanaz a kulcsolas,
+    amit az 5. kapu kovetel (forditas_kapuk._sajat_talalatok)."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import forditas_kapuk as K
+    term = list(tsv_dict_sorok(TERMINOLOGIA_UT))
+    return [(t['angol'], t['magyar']) for t in term
+            if K.kapus_sor(t) and K._sajat_talalatok(t['angol'], forras, term)]
+
+
+def kotelezo_alakok_szoveg(forras):
+    sorok = kotelezo_alakok(forras)
+    if not sorok:
+        return '(a forrásban nincs kötelező terminológiai kulcs)'
+    return '\n'.join('- `%s` → `%s`' % s for s in sorok)
+
+
 def karoli_szoveg():
     return '\n'.join('- `%s` → `%s`' % (r['STEPBible-rövidítés'], r['Magyar rövidítés'])
                      for r in tsv_dict_sorok(KAROLI_UT))
@@ -274,6 +292,7 @@ def prompt_epit(strong, forras_darab, darab_info=''):
             .replace('{{KAROLI_TABLA}}', karoli_szoveg())
             .replace('{{STRONG}}', strong_eredeti(strong))
             .replace('{{DARAB_MEGJEGYZES}}', darab_info)
+            .replace('{{KOTELEZO_ALAKOK}}', kotelezo_alakok_szoveg(forras_darab))
             .replace('{{FORRAS_SZOVEG}}', forras_darab))
 
 
@@ -362,6 +381,11 @@ def utofeldolgoz(strong, nyers, kivetel=()):
     sp, forras = forras_szoveg(strong)
     szotar = szotar_strongnak(sp)
     vegleges, valt = N.normalizal(nyers, szotar)
+    # DT-F38c (d): a kotelezo terminologiai alak kis/nagybetu-elterese gepi
+    # cserevel javul (5. kapu), a csere a valtozasok kozott naplozva
+    vegleges, csere = K.terminologia_kisnagybetu_csere(forras, vegleges, bizonytalan_lista=list(kivetel))
+    valt = list(valt) + [('5_kisnagybetu %s -> %s (%s)' % (alak, kot, angol), db)
+                         for angol, alak, kot, db in csere]
     eredm = K.kapuk_futtat(szotar, forras, vegleges, bizonytalan=kivetel)
     return vegleges, valt, eredm, K.atment(eredm)
 
@@ -384,6 +408,30 @@ def cmd_ellenoriz(args):
     print('ATMENT' if ok else 'BUKOTT')
     if args.ki:
         kiir(vegleges, args.ki)
+        kisnagybetu_naplo(sp, [v for v in valt if v[0].startswith('5_kisnagybetu')])
+
+
+KISNAGYBETU_UT = os.path.join(REPO, 'naplok', 'FORDITAS_kisnagybetu_csere.tsv')
+
+
+def kisnagybetu_naplo(sp, csere):
+    """DT-F38c (d): az 5. kapu kis/nagybetu-gepicserejenek naploja. A Strong
+    korabbi sorait (egy korabbi `ellenoriz --ki` futasbol) a mostaniak valtjak."""
+    import datetime
+    fejlec = ['strong', 'csere', 'darab', 'datum']
+    regi = list(tsv_dict_sorok(KISNAGYBETU_UT)) if os.path.exists(KISNAGYBETU_UT) else []
+    sorok = [r for r in regi if r['strong'] != sp]
+    if not csere and len(sorok) == len(regi):
+        return  # nincs csere, es korabbi sor sem valt el: a fajl nem valtozik
+    datum = datetime.date.today().strftime('%Y.%m.%d')
+    sorok += [{'strong': sp, 'csere': nev[len('5_kisnagybetu '):], 'darab': str(db), 'datum': datum}
+              for nev, db in csere]
+    tsv_ir(KISNAGYBETU_UT, fejlec, sorok,
+           megjegyzes='DT-F38c (d): az 5. kapu kis/nagybetu-gepicsereje a javitoretegben '
+                      '(talalt -> kotelezo alak, terminologia-kulcs); irja: python eszkozok/emeles.py ellenoriz --ki')
+    for nev, db in csere:
+        print('5. kapu kis/nagybetu-csere: %s x%d (naplo: %s)' % (nev[len('5_kisnagybetu '):], db,
+                                                                   os.path.relpath(KISNAGYBETU_UT, REPO)))
 
 
 FORDITASOK_FEJLEC = ['szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo', 'forras_hash',
@@ -689,6 +737,12 @@ def cmd_forras(args):
     kiir(szoveg, args.ki)
 
 
+def cmd_kotelezo(args):
+    """DT-F38c (d): a vazlat elott kigyujtott kotelezo terminologiai alakok."""
+    sp, szoveg = forras_szoveg(args.strong)
+    print(kotelezo_alakok_szoveg(szoveg))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[1])
     al = ap.add_subparsers(dest='parancs', required=True)
@@ -704,6 +758,9 @@ def main():
     p.add_argument('strong')
     p.add_argument('--ki')
     p.set_defaults(fv=cmd_forras)
+    p = al.add_parser('kotelezo', help='a forras kotelezo terminologiai alakjai (prompt v4.1)')
+    p.add_argument('strong')
+    p.set_defaults(fv=cmd_kotelezo)
     p = al.add_parser('helyorzo')
     p.add_argument('strong')
     p.add_argument('--mappa', required=True)

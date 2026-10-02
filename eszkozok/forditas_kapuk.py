@@ -352,6 +352,52 @@ def ellenoriz_terminologia(forras, forditas, terminologia, bizonytalan_lista):
     return 'SERTES', '; '.join(serult)
 
 
+# DT-F38c (d): ha a kotelezo magyar alak csak kis- es nagybetuben ter el
+# (`zendzsirli` a `Zendzsirli` helyett, H2719), a javitoreteg gepileg a
+# kotelezo alakra csereli, es a cseret naplozza -- a kapu nem bukik. A csere
+# csak ott fut, ahol az 5. kapu egyebkent SERTES-t adna (a forrasban a kulcs
+# megvan, a kotelezo alak betuhiven sehol nincs a forditasban), es csak
+# szokezdeten allo, kis/nagybetu-fuggetlenul azonos alakot cserel.
+def _betuhu_alak(talalt, magyar):
+    ki = []
+    for mc, tc in zip(magyar, talalt):
+        if mc.lower() == tc.lower():
+            ki.append(mc)
+        else:  # a szovegvegi [aá]/[eé] osztaly: a talalt betu a kotelezo alak kis/nagybetujevel
+            ki.append(tc.lower() if mc.islower() else tc.upper())
+    return ''.join(ki)
+
+
+def terminologia_kisnagybetu_csere(forras, forditas, terminologia=None, bizonytalan_lista=()):
+    """-> (uj_forditas, [(angol, talalt_alak, kotelezo_alak, darab), ...])"""
+    if terminologia is None:
+        terminologia = _betolt()[1]
+    naplo = []
+    for t in terminologia:
+        angol, magyar = t['angol'], t['magyar']
+        if not kapus_sor(t) or not _sajat_talalatok(angol, forras, terminologia):
+            continue
+        minta = _p4._magyar_alak_mintaja(magyar)
+        if minta.search(forditas):
+            continue
+        if any(re.search(r'\b' + tov, forditas, re.IGNORECASE)
+               for tov in HU_TOVALTOZAT.get(magyar, ())):
+            continue
+        if any(angol.rstrip('.') == b.rstrip('.') for b in bizonytalan_lista):
+            continue
+        kis_nagy = re.compile(r'(?<![^\W\d_])' + minta.pattern, re.IGNORECASE)
+        talalt = {}
+
+        def _csere(m):
+            uj = _betuhu_alak(m.group(0), magyar)
+            talalt[m.group(0)] = talalt.get(m.group(0), 0) + 1
+            return uj
+        forditas = kis_nagy.sub(_csere, forditas)
+        for alak, db in sorted(talalt.items()):
+            naplo.append((angol, alak, _betuhu_alak(alak, magyar), db))
+    return forditas, naplo
+
+
 # ---------------------------------------------------------------------------
 # 11. konyv-egyezes (DT24 (a) utan): az igehelyek konyvei a forras
 # rovidítesebol a normalizal.py lekepezesevel (Thayer/BDB/STEPBible ->

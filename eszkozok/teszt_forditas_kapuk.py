@@ -227,6 +227,68 @@ class KaroliNagybetusSzo(unittest.TestCase):
         self.assertEqual(K.ellenoriz_konyvek('Isa 3:4', 'Ézsaiás 3:4')[0], 'SERTES')
 
 
+class KisNagybetuCsere(unittest.TestCase):
+    """F38, DT-F38c (d): az 5. kapu kötelező alakjának kis/nagybetű-eltérése gépi
+    cserével javul, naplózva; más eltérés továbbra is SÉRTÉS."""
+
+    def setUp(self):
+        _, self.term = K._betolt()
+
+    def test_h2719_zendzsirli(self):
+        forras = 'Phoenician, Zinjirli חרב'
+        uj, naplo = K.terminologia_kisnagybetu_csere(forras, 'föníciai, zendzsirli חרב', self.term)
+        self.assertEqual(uj, 'föníciai, Zendzsirli חרב')
+        self.assertEqual(naplo, [('Zinjirli', 'zendzsirli', 'Zendzsirli', 1)])
+        self.assertEqual(K.ellenoriz_terminologia(forras, uj, self.term, [])[0], 'RENDBEN')
+
+    def test_nem_csak_kisnagybetu_marad_sertes(self):
+        forras = 'Phoenician, Zinjirli חרב'
+        uj, naplo = K.terminologia_kisnagybetu_csere(forras, 'föníciai, zincirli חרב', self.term)
+        self.assertEqual(naplo, [])
+        self.assertEqual(K.ellenoriz_terminologia(forras, uj, self.term, [])[0], 'SERTES')
+
+    def test_betuhu_alak_megvan_nincs_csere(self):
+        forras = 'Zinjirli; Zinjirli'
+        h = 'Zendzsirli; zendzsirli'
+        self.assertEqual(K.terminologia_kisnagybetu_csere(forras, h, self.term), (h, []))
+
+    def test_szo_belseje_nem_csere(self):
+        # csak szókezdeten álló alakot cserél
+        uj, naplo = K.terminologia_kisnagybetu_csere('Zinjirli', 'xzendzsirli', self.term)
+        self.assertEqual(naplo, [])
+
+    def test_kivetel_nem_csere(self):
+        uj, naplo = K.terminologia_kisnagybetu_csere('Zinjirli', 'zendzsirli', self.term, ['Zinjirli'])
+        self.assertEqual(naplo, [])
+
+    def test_utofeldolgoz_naplozza(self):
+        import emeles
+        sp, forras = emeles.forras_szoveg('H2719')
+        self.assertIn('Zinjirli', forras)
+        # a forrás minimális „fordítása”: csak a csere hatását nézzük
+        vegleges, valt, _, _ = emeles.utofeldolgoz(sp, 'zendzsirli')
+        self.assertEqual(vegleges, 'Zendzsirli')
+        self.assertTrue(any(v[0].startswith('5_kisnagybetu zendzsirli -> Zendzsirli') for v in valt), valt)
+
+
+class PromptKotelezoAlakok(unittest.TestCase):
+    """F38, DT-F38c (d), prompt v4.1: a kötelező alakok előgyűjtése."""
+
+    def test_prompt_helyorzo_kitoltve(self):
+        import emeles
+        sp, forras = emeles.forras_szoveg('H2719')
+        p = emeles.prompt_epit(sp, forras)
+        self.assertNotIn('{{KOTELEZO_ALAKOK}}', p)
+        self.assertIn('- `Zinjirli` → `Zendzsirli`', p)
+
+    def test_kapu_nem_sor_nincs_a_listaban(self):
+        import emeles
+        alakok = dict(emeles.kotelezo_alakok('compare this; which see'))
+        self.assertNotIn('compare', alakok)
+        self.assertNotIn('which see', alakok)
+        self.assertEqual(alakok.get('see'), 'l.')
+
+
 class TagolasRovidites(unittest.TestCase):
     """F38, DT-F38c (e): a c./d./f./i. betűjel nem kötelező (rövidítésként is áll),
     a fordítás oldalán a circa- és f-kivétel nem szűr."""

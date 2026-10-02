@@ -1443,3 +1443,25 @@ H6310-nél ezen felül „forráshiba-jelzés (13. kapu, kézi): OCR-hiba, a for
 ezért a `naplok/BDB_FORDITAS_kapuk.py` a megjegyzés kézi jelzését 13. kapus JELZES-ként listázza
 (a 3. adagon így 16 jelző szócikk a korábbi 15 helyett). Más sor és mező nem változott (a szkript
 írás előtt bájtra ellenőrizte); az `adat/terminologia.tsv` változatlan. `ellenoriz.py`: SÉRTÉS 0.
+
+### (d) Prompt v4.1 és az 5. kapu kis/nagybetű-gépicseréje (F38.140)
+
+**Prompt v4.1** (`forditas/prompt_v4.md`, a verziónapló v4.1 sora): új blokk a BDB-blokk után,
+„Kiegészítő szabály (v4.1) — kötelező terminológiai alakok előgyűjtése”: a vázlat előtt a
+forrásban előforduló kapus terminológia-kulcsok kötelező magyar alakja betűhűen, kiemelve a
+spirit → szellem, spiritual → szellemi, Sabean → szabeus, Zinjirli → Zendzsirli alakot; az új
+`{{KOTELEZO_ALAKOK}}` helyőrzőt az `emeles.py prompt_epit` a forrás(darab) kulcsaival tölti
+ki, ugyanazzal a kulcsolással, amit az 5. kapu követel. A menet (egy végrehajtó, a prompt
+szabályai szerint) a vázlat előtt az `python eszkozok/emeles.py kotelezo <Strong>` kimenetét
+gyűjti ki. A v3 és a v4.0 sorai nem változtak.
+Hash-nyom: `forditas/prompt_v4.md` sha256 — v4.0 (F38.139-ig): `6426abdd642561da…e049d4`;
+v4.1 (F38.140-től): `aa08b93ce2b3e7d3…8edf32`. A 4. adag sorainak megjegyzése „prompt v4.1”.
+
+**5. kapu kis/nagybetű-gépicsere** (`forditas_kapuk.terminologia_kisnagybetu_csere`, hívja az
+`emeles.utofeldolgoz` a javítóréteg után, a kapuk előtt): ha a forrásban a kulcs megvan, a
+kötelező alak betűhűen sehol nincs a fordításban, de kis/nagybetű-függetlenül szókezdeten
+megvan, a javítóréteg a kötelező alakra cseréli; a csere a változások között (`javitoreteg:
+5_kisnagybetu zendzsirli -> Zendzsirli (Zinjirli)=1`) és az `ellenoriz --ki` futásakor a
+`naplok/FORDITAS_kisnagybetu_csere.tsv`-ben naplózódik (strong, csere, darab, dátum). Más
+eltérés (pl. „zincirli”) továbbra is SÉRTÉS. Tesztek: +8 (`KisNagybetuCsere` 6,
+`PromptKotelezoAlakok` 2), összesen 42, mind RENDBEN; regresszió a 152 szócikken: változás 0.
