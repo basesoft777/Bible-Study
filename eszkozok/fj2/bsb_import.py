@@ -30,6 +30,7 @@ Kimenet: naplok/F16_bsb_lefedettseg.tsv, konkordancia/BSB_Strongs.tsv.
 """
 
 import argparse
+import bisect
 import json
 import os
 import re
@@ -115,6 +116,174 @@ def belso_osztas_eltereses(b, forras, mag, fej, k):
             if v + d in b and x <= (b[v] | b[v + d]):
                 ok.append('MT %d a BSB %d+%d unioja' % (v + k, v, v + d))
     return ok
+
+
+# --- F41: versszintu BSB -> MT (TAHOT-kivonat-szamozas) megfeleltetes -------------------------------------
+# A megfeleltetes forrasa a Strong-illeszkedes: monoton (sorrendtarto) 1:1 igazitas a BSB-versek es a TAHOT-versek
+# kozott, a kapcsolat erteke = a TAHOT-vers Strong-halmazanak a BSB-versben levo hanyada. Az "mt_vers" a
+# konkordancia/TAHOT_kivonat.tsv szamozasa (a Karoli-kulcs MT-oszlopa ezt kovetve igazolja a fejezet-maximumot).
+
+TAHOT_NEV = {'JSir': 'Sir'}  # F28.9 (DT24) a Konyv_normalizalo_tablaban Lam-ot JSir-re nevezte at; a TAHOT-/Karoli-fajlok 'Sir'-t hasznalnak
+
+
+def forras_nev(mag):
+    """A konyv neve a TAHOT_kivonat / Karoli-kulcs fajlokban (az atnevezes miatt eltérhet a normalizalo tablatol)."""
+    return TAHOT_NEV.get(mag, mag)
+
+
+def _ref_bont(ref):
+    """'Jon 2:1' -> (2, 1); csak a fejezet:vers resz."""
+    cv = ref.rsplit(' ', 1)[1]
+    f, v = cv.split(':')
+    return int(f), int(v)
+
+
+def mt_versek(forras, fmag):
+    """(rendezett [((fejezet, vers), set(Strong))], {fejezet: max vers}) a forras-halmazokbol (TAHOT)."""
+    lista = []
+    for r, s in forras.items():
+        if r.rsplit(' ', 1)[0] == fmag:
+            try:
+                lista.append((_ref_bont(r), s))
+            except ValueError:
+                continue
+    lista.sort(key=lambda x: x[0])
+    tmax = {}
+    for (f, v), _ in lista:
+        tmax[f] = max(tmax.get(f, 0), v)
+    return lista, tmax
+
+
+def versillesztes(bs, mt):
+    """Monoton, 1:1 igazitas. bs/mt: rendezett [((fejezet, vers), set)] listak. Visszaad: {bsb_(f,v): mt_(f,v)}.
+    Egy BSB-vers csak olyan MT-versre illeszthetõ, amelynek a fejezete legfeljebb 1-gyel tér el; a kapcsolat
+    erteke 2*hanyad-1 (csak 0,5 feletti hanyad szamit), azonos szamozasnal +0,02 (dontetlen eseten az azonos nyer)."""
+    n, m = len(bs), len(mt)
+    mtf = [f for (f, v), s in mt]
+    lo = [bisect.bisect_left(mtf, bs[i][0][0] - 1) for i in range(n)]
+    hi = [bisect.bisect_right(mtf, bs[i][0][0] + 1) for i in range(n)]
+    f = [[0.0] * (m + 1) for _ in range(n + 1)]
+    ut = [[0] * (m + 1) for _ in range(n + 1)]
+    for i in range(1, n + 1):
+        (c, v), b = bs[i - 1]
+        sor, elozo = f[i], f[i - 1]
+        for j in range(1, m + 1):
+            legjobb, hogy = elozo[j], 1
+            if sor[j - 1] > legjobb:
+                legjobb, hogy = sor[j - 1], 2
+            if lo[i - 1] < j <= hi[i - 1]:
+                (c2, v2), t = mt[j - 1]
+                if t:
+                    hanyad = len(t & b) / len(t)
+                    if hanyad > 0.5:
+                        s = 2 * hanyad - 1 + (0.02 if (c2, v2) == (c, v) else 0.0)
+                        if elozo[j - 1] + s > legjobb:
+                            legjobb, hogy = elozo[j - 1] + s, 3
+            sor[j], ut[i][j] = legjobb, hogy
+    i, j, ki = n, m, {}
+    while i > 0 and j > 0:
+        h = ut[i][j]
+        if h == 3:
+            ki[bs[i - 1][0]] = mt[j - 1][0]
+            i -= 1
+            j -= 1
+        elif h == 1:
+            i -= 1
+        else:
+            j -= 1
+    return ki
+
+
+def egymas_utan(a, b, tmax):
+    """b az a utani kovetkezo MT-vers? (azonos fejezet +1, vagy a kovetkezo fejezet 1. verse az a fejezet utolso verse utan)."""
+    if b[0] == a[0] and b[1] == a[1] + 1:
+        return True
+    return b[0] == a[0] + 1 and b[1] == 1 and a[1] == tmax.get(a[0], -1)
+
+
+def konyv_megfeleltetes(mag, bsb_fej, forras, kk_max=None):
+    """Egy konyv versszintu megfeleltetese. bsb_fej: {fejezet: {vers: set(Strong)}} (a display-JSON).
+    Visszaad: (sorok, fejezet_allapot, tmax) ahol
+      sorok = [(bsb_(f,v), mt_(f,v) vagy None, modell, ok)]  (modell: azonos / eltolt / illesztetlen),
+      fejezet_allapot = {bsb_fejezet: [okok]} (ures lista = igazolt; nem ures = a fejezet illesztetlen),
+      tmax = {mt_fejezet: max vers}.
+    A fejezet illesztetlen, ha (R1) egy verse nem illesztheto es a szomszedaibol sem tolthetõ ki, (R2) egy vers a
+    megfeleltetett MT-versre nem illeszkedik, de a szomszedos MT-versre igen (belso versosztas-eltereses, F16.11), (R3) egymas utani BSB-versek nem egymas utani MT-versekre
+    kerulnek (kimaradt MT-vers), (R4) a cel MT-fejezet TAHOT-maximuma nem egyezik a Karoli-kulcs igehely_mt maximumaval."""
+    fmag = forras_nev(mag)
+    bs = [((f, v), bsb_fej[f][v]) for f in sorted(bsb_fej) for v in sorted(bsb_fej[f])]
+    mt, tmax = mt_versek(forras, fmag)
+    mtd = dict(mt)
+    mtlista = [r for r, _ in mt]
+    mtidx = {r: i for i, r in enumerate(mtlista)}
+    ill = versillesztes(bs, mt)
+    allapot = {f: [] for f in bsb_fej}
+    leker, ok_szoveg, nincs_part = {}, {}, {}
+    for f in sorted(bsb_fej):
+        versek = sorted(bsb_fej[f])
+        for v in versek:
+            if (f, v) in ill:
+                leker[(f, v)] = ill[(f, v)]
+                continue
+            # R1: kitoltes a fejezeten beluli kozvetlen szomszedokbol, ha a ket szomszed eltolasa azonos
+            elo = next((u for u in range(v - 1, 0, -1) if (f, u) in ill), None)
+            utan = next((u for u in range(v + 1, max(versek) + 1) if (f, u) in ill), None)
+            if elo is not None and utan is not None:
+                de = (ill[(f, elo)][0] - f, ill[(f, elo)][1] - elo)
+                du = (ill[(f, utan)][0] - f, ill[(f, utan)][1] - utan)
+                if de == du:
+                    leker[(f, v)] = (f + de[0], v + de[1])
+                    ok_szoveg[(f, v)] = 'kitoltve_a_szomszedok_eltolasabol'
+                    continue
+            leker[(f, v)] = None
+            nincs_part.setdefault(f, []).append(v)
+    for f, vl in nincs_part.items():
+        allapot[f].append('nincs_mt_part: %d vers (BSB %d:%s)' % (len(vl), f, ','.join(str(x) for x in vl[:6]) + (',...' if len(vl) > 6 else '')))
+    # R2: a megfeleltetett MT-vers nem illeszkedik, de a szomszedos MT-vers igen (a szomszedos BSB-vers unioja-proba nem
+    # kerul ide: a Strong-halmazok kozos (funkcio)szavai miatt tulzottan sok hamis jelzest adna; a valodi kette-/osszevonast
+    # az R1 (illesztetlen BSB-vers) es az R3 (kimaradt MT-vers) fogja meg)
+    for (f, v), b in bs:
+        x = leker.get((f, v))
+        if x is None or x not in mtd or mtd[x] <= b:
+            continue
+        i = mtidx[x]
+        for d in (-1, 1):
+            if 0 <= i + d < len(mtlista):
+                y = mtlista[i + d]
+                if mtd[y] and mtd[y] <= b:
+                    allapot[f].append('vers_osztas: BSB %d:%d illeszkedik az MT %d:%d-hoz (nem a megfeleltetett %d:%d-hoz)' % (f, v, y[0], y[1], x[0], x[1]))
+
+    # R3: egymas utani BSB-versek egymas utani MT-versek
+    for f in sorted(bsb_fej):
+        versek = sorted(bsb_fej[f])
+        for a, b2 in zip(versek, versek[1:]):
+            xa, xb = leker.get((f, a)), leker.get((f, b2))
+            if xa and xb and b2 == a + 1 and not egymas_utan(xa, xb, tmax):
+                allapot[f].append('mt_vers_kimarad: BSB %d:%d->%d:%d, MT %d:%d->%d:%d' % (f, a, f, b2, xa[0], xa[1], xb[0], xb[1]))
+    # R4: a cel MT-fejezet TAHOT-maximuma egyezzen a Karoli-kulcs igehely_mt maximumaval (ha a kulcsban van ilyen adat)
+    if kk_max:
+        for f in sorted(bsb_fej):
+            for c2 in sorted({leker[(f, v)][0] for v in bsb_fej[f] if leker.get((f, v))}):
+                if c2 in kk_max and tmax.get(c2, 0) != kk_max[c2]:
+                    allapot[f].append('kk_max_eltérés: MT %d TAHOT-max %s, Karoli-kulcs igehely_mt max %s' % (c2, tmax.get(c2, 0), kk_max[c2]))
+    sorok = []
+    for (f, v), b in bs:
+        x = leker.get((f, v))
+        if allapot[f]:
+            sorok.append(((f, v), None, 'illesztetlen', '; '.join(sorted(set(allapot[f])))[:300]))
+            continue
+        if x == (f, v):
+            modell = 'azonos'
+        else:
+            modell = 'eltolt'
+        if x not in mtd:
+            ok = 'tahot_nincs_vers'
+        elif mtd[x] <= b:
+            ok = ok_szoveg.get((f, v), 'strong_illeszkedik')
+        else:
+            ok = 'strong_nem_egyezo'
+        sorok.append(((f, v), x, modell, ok))
+    return sorok, allapot, tmax
 
 
 FEJLEC_SOR = 'Igehely\tSzósorszám\tStrong-szám\tAngol szó\tMorfológiai kód\n'
