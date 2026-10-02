@@ -299,6 +299,8 @@ def proveniencia_sor(konyv, gyoker=None):
         forras += ['f22/valaszok/sonnet/%s_javito.jsonl' % n, 'f22/valaszok/c/%s_javito.jsonl' % n]
     if any(tokenek.igehely_bont(r[0] or r[1])[0] == konyv for r in tokenek.versmegfeleltetes()):
         forras.append('f22/versmegfeleltetes.tsv')
+    if any(tokenek.igehely_bont(o['karoli'])[0] == konyv for o in tokenek.versosszevonasok()):
+        forras.append('f22/versosszevonas.tsv')
     forras += ['konkordancia/TAHOT_kivonat.tsv', 'konkordancia/Karoli_1908.tsv']
     if csak_sonnet:
         return ('# proveniencia: scope=manual | forras=%s | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; a '

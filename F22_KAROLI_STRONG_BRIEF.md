@@ -6,7 +6,7 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 allapot: dontesre_var
-ag: claude/f22-2moz
+ag: claude/f22-4moz
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
 kovetkezo: "Te: 1:2 / 2:1 versösszevonás támogatásáról döntés a Jób jóváhagyása előtt (34 K-hiány); következő könyv előtt a jelzett fejezetek kézi jóváhagyása; Ézs 9:17–20 megfeleltetése hamis; a 4Móz csak Sonnettel készült (DT-F22c nyitva); a PR merge-e és a zárt összevetés a felhasználóé"
 fugg: [21]

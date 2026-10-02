@@ -1,4 +1,4 @@
-# proveniencia: scope=manual | forras=f22/valaszok/sonnet/4Moz.jsonl, f22/versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; a subagent-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAHOT-ból, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
+# proveniencia: scope=manual | forras=f22/valaszok/sonnet/4Moz.jsonl, f22/versmegfeleltetes.tsv, f22/versosszevonas.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; a subagent-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link `alacsony` (egy modell, nincs egyezés); a strong a TAHOT-ból, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py
 vers	hu_sorszam	hu_szo	er_sorszam	er_szo	strong	bizonyossag	forras
 4Móz 1:1	1	Szóla	2	יְדַבֵּ֨ר	H1696	alacsony	S
 4Móz 1:1	2	pedig	1	וַ	H9001	alacsony	S
