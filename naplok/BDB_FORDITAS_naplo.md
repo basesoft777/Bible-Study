@@ -1377,3 +1377,59 @@ a menet nem javítja (brief, Nem cél).
 Összesen: forrás 493209, fordítás 516621 karakter.
 
 13. kapu (JELZES, nem gátoló): H0398 — a könyv fejezetszámánál nagyobb fejezet: 3Móz 28; H5650 — a könyv fejezetszámánál nagyobb fejezet: Jón 14; H4100 — a könyv fejezetszámánál nagyobb fejezet: Bír 33; H1870 — a könyv fejezetszámánál nagyobb fejezet: Én 34; H0251 — a könyv fejezetszámánál nagyobb fejezet: Jóel 7; H2063 — a könyv fejezetszámánál nagyobb fejezet: Eszt 25; H7760 — a könyv fejezetszámánál nagyobb fejezet: 3Móz 40, 5Móz 45; H5975 — a könyv fejezetszámánál nagyobb fejezet: 2Kir 31; H8478 — a könyv fejezetszámánál nagyobb fejezet: Dán 18, Dán 21, Dán 24; H5750 — a könyv fejezetszámánál nagyobb fejezet: 2Krón 43, 2Krón 45; H4672 — a könyv fejezetszámánál nagyobb fejezet: Préd 25; H6258 — a könyv fejezetszámánál nagyobb fejezet: 2Kir 46; H3701 — a könyv fejezetszámánál nagyobb fejezet: 2Móz 43; H4196 — a könyv fejezetszámánál nagyobb fejezet: Bír 22; H5002 — a könyv fejezetszámánál nagyobb fejezet: Jer 57.
+
+## DT-F38c alkalmazása (F38.137–)
+
+*A felhasználó döntése (2026.10.02): (a) 4. adag, költség- és vetítési jelentéssel; (b) a
+H1419 és H6310 kivétele szócikkszinten; (c) H2719 újrafordítása a 4. adag elején; (d)
+promptpontosítás + az 5. kapu kis/nagybetű-gépicseréje; (e) a 3. és a 9. kapu javítása. A
+rögzítés: F38.137.*
+
+### (e) Kapujavítás (F38.138)
+
+**3. kapu (`ellenoriz_karoli`).** A c:v előtti nagybetűs szó, amely nem könyvnév, nem hiba.
+Könyvnévnek az számít, ami a könyv-leképezés kulcsa (angol/STEPBible/forrásalak, pl. `Gen`,
+`Ezek`, `Malachi`), vagy számmal kezdődik (`1Ezék`); ezek továbbra is SÉRTÉS-t adnak. Ami nem
+könyvnév (`Isten 23:16`, `Júdáról 12:6`, `A 4:16`, `a Hóreben 24:4`), RENDBEN, a részletben
+„nagybetus szo igehely elott, nem konyvnev: …”. A rossz vagy hiányzó Károli-rövidítést
+(pl. kiírt „Ézsaiás 3:4”) a 11. kapu fogja meg (a forrás és a fordítás könyvei darabra
+egyeznek) — ezt teszt rögzíti.
+
+**9. kapu (`ellenoriz_tagolas`, `tagolas_igazitas`).** (1) A `c.`, `d.`, `f.`, `i.` betűjel a
+forrás oldalán nem kötelező (`OPCIONALIS_BETU`), mert a BDB-ben rövidítésként is áll (`c.`
+circa, `d.` day, `f.` father/feminine/following, `f. below`, `i. below`): ha a fordításban az
+előző és a következő kötelező jelölő között megvan, illeszkedik, ha nincs, a kapu átlépi (a
+részletben „atlepett opcionalis betujel (c/d/f/i): n”). Az opcionális jelölő nem nyelheti el a
+következő kötelezőt (a keresés a következő kötelező jelölő első találatáig tart). A többi betűjel
+(a., b., e., g., h.), a számok, a római és a zárójeles jelölők kötelezők maradnak. (2) A
+rövidítés-kivételek (`c. 100` circa, `273 f.`, `i. e.`, `e. g.`) csak a forrás oldalán szűrnek;
+a fordítás oldalán a többlet jelölő ártalmatlan (részsorozat-vizsgálat), a kihagyás viszont
+hamis hiányt adott (`c. 1Móz`, `vizei. e.`). A „c. —” kerülőalakra ezzel nincs szükség.
+
+**Tesztek:** `eszkozok/teszt_forditas_kapuk.py` +11 (`KaroliNagybetusSzo` 4, `TagolasRovidites`
+7), összesen 34, mind RENDBEN; a többi `eszkozok/teszt_*.py` is RENDBEN.
+
+**Regresszió** (`python naplok/BDB_FORDITAS_regresszio.py`, előtte/utána JSON-összevetés): a
+152 rögzített BDB `teljes` szócikk (a #28 26 sora és az F38 1–3. adagjának 126 sora) mindegyikén
+a teljes kapusor; a javítás előtt 152/152 átment, utána 152/152 átment, **megváltozott
+kapueredmény 0, új bukás 0**.
+
+**A korábbi 3. és 9. kapus önújrapróbák** (a 2. és 3. adag napló-táblázatai szerint; az elbukott
+első vázlatok nincsenek meg, ezért a hatást a táblázat leírása alapján, az esetek mintájával
+becsülöm — tesztesetként rögzítve):
+
+| Adag | 3. kapu (szócikk) | ebből a javított kapun átmenne | 9. kapu (szócikk) | ebből átmenne | önújrapróba összesen | ebből elmaradt volna (csak 3./9. kapus volt) |
+|---|---|---|---|---|---|---|
+| 2 | 7 | 7 (mind nem könyvnév) | 5 | 5 (H3808 `c. 1Móz`; H1961, H3117, H3027, H0001 `f./i./d.` rövidítés) | 23 | 8 (H3588, H3478, H6440, H0376, H3318, H3808, H3027, H0001) |
+| 3 | 5 | 5 (mind nem könyvnév) | 6 | 3 (H1992, H4994 `c.` + számjegy; H4325 `vizei. e.`) | 27 | 4 (H4672, H8269, H4196, H4994) |
+
+A 3. adag 9. kapus maradéka valódi tagolási hiba vagy más heurisztika: H1870 (a forrás `a.`
+betűjele rossz helyre került), H0251 (`Var. 23 compare` után vessző), H5221 (pont nélküli
+jelölő után zárójel: „4 (halálosan)”).
+
+**Kódolás-ellenőrzés** (az önújrapróba-napló inline echo-s sora; a H2719 sora a
+`naplok/BDB_FORDITAS_hibas.tsv`-ben, F38.121): a `naplok/BDB_FORDITAS_*` fájlok, a
+`DONTESEK.md` és a brief szigorú UTF-8-dekódolással mind érvényes; U+FFFD, BOM, CR,
+vezérlőkarakter és mojibake-gyanú (`Ã`, `Å`, `â€`) 0; a `hibas.tsv` mezőszáma egységes (4). A
+napló nem NFC-normalizált, de csak a forrásból betűhűen átvett héber szavaknál (1078 szó; görög
+és latin betűs 0) — ez a forrás alakja, nem sérülés. Javítás nem kellett.

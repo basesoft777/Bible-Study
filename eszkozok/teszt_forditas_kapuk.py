@@ -193,5 +193,83 @@ class Konyvek(unittest.TestCase):
         self.assertEqual(K.ellenoriz_konyvek('Lam 3:57', 'Sir 3:57')[0], 'SERTES')
 
 
+class KaroliNagybetusSzo(unittest.TestCase):
+    """F38, DT-F38c (e): a c:v előtti nagybetűs, nem könyvnév szó nem 3. kapus hiba
+    (a 2. és 3. adag önújrapróbáinak esetei)."""
+
+    def setUp(self):
+        self.karoli, _ = K._betolt()
+
+    def _e(self, forras, forditas):
+        return K.ellenoriz_karoli(forras, forditas, self.karoli)[0]
+
+    def test_lancolt_igehely_magyar_szorenddel_rendben(self):
+        for forras, forditas in (
+                ("(God's hostility 23:16 the cause", '(Isten 23:16 ellenségeskedése'),
+                ('of Judah 12:6; 19:8-9t.', 'Júdáról 12:6; 19:8-9t.'),
+                ('the A 4:16 text', 'A 4:16 szöveg'),
+                ('of Benjamin 18:16', 'Benjáminén 18:16'),
+                ('Horeb 24:4', 'a Hóreben 24:4')):
+            self.assertEqual(self._e(forras, forditas), 'RENDBEN', forditas)
+
+    def test_konyvnevnek_latszo_alak_tovabbra_is_sertes(self):
+        # angol/STEPBible könyvalak a fordításban
+        self.assertEqual(self._e('Gen 1:1', 'Gen 1:1'), 'SERTES')
+        # számmal kezdődő, ismeretlen könyvalak
+        self.assertEqual(self._e('Ezek 3:4', '1Ezék 3:4'), 'SERTES')
+
+    def test_karoli_rovidites_rendben(self):
+        self.assertEqual(self._e('Gen 1:1; Ezek 3:4', '1Móz 1:1; Ez 3:4'), 'RENDBEN')
+
+    def test_rossz_konyvet_a_11_kapu_fogja(self):
+        # a 3. kapu átengedi (nem könyvnévnek látszik), a 11. hiányt jelez
+        self.assertEqual(self._e('Isa 3:4', 'Ézsaiás 3:4'), 'RENDBEN')
+        self.assertEqual(K.ellenoriz_konyvek('Isa 3:4', 'Ézsaiás 3:4')[0], 'SERTES')
+
+
+class TagolasRovidites(unittest.TestCase):
+    """F38, DT-F38c (e): a c./d./f./i. betűjel nem kötelező (rövidítésként is áll),
+    a fordítás oldalán a circa- és f-kivétel nem szűr."""
+
+    def _e(self, forras, forditas):
+        return K.ellenoriz_tagolas(forras, forditas)[0]
+
+    def test_c_szamjeggyel_kezdodo_igehely_elott(self):
+        # H3808: „c. Gen 15:13” -> „c. 1Móz 15:13” (eddig csak „c. —” alakkal ment át)
+        self.assertEqual(self._e('Zeph 2:1). c. Gen 15:13 להם', 'Sof 2:1). c. 1Móz 15:13 להם'), 'RENDBEN')
+        self.assertEqual(self._e('b. x c. 3rd person', 'b. x c. 3. személyben'), 'RENDBEN')
+
+    def test_forditas_oldalan_az_i_e_kivetel_nem_szur(self):
+        # H4325: „vizei. e.” — a fordításban az „e.” betűjelet eddig „i. e.”-nek vette
+        self.assertEqual(self._e('d. x e. the waters', 'd. x vizei. e. a vizek'), 'RENDBEN')
+
+    def test_rovidites_jellegu_betujel_elhagyhato(self):
+        self.assertEqual(self._e('1. x f. below 2. y', '1. x lent 2. y'), 'RENDBEN')
+        self.assertEqual(self._e('a. x i. below b. y', 'a. x lent b. y'), 'RENDBEN')
+        self.assertEqual(self._e('a. x d. day b. y', 'a. x nap b. y'), 'RENDBEN')
+
+    def test_opcionalis_betujel_megvan_es_illeszkedik(self):
+        e, d = K.ellenoriz_tagolas('a. x b. y c. z d. w', 'a. x b. y c. z d. w')
+        self.assertEqual(e, 'RENDBEN')
+        self.assertNotIn('atlepett', d)
+
+    def test_kotelezo_jelolo_tovabbra_is_sertes(self):
+        self.assertEqual(self._e('a. x b. y c. z', 'a. x c. z'), 'SERTES')
+        self.assertEqual(self._e('1. x 2. y', '1. x y'), 'SERTES')
+        self.assertEqual(self._e('a. x e. y', 'a. x y'), 'SERTES')
+
+    def test_opcionalis_nem_nyeli_el_a_kovetkezo_kotelezot(self):
+        # a forrás „c.” rövidítés; a fordításban a „c.” csak a 2. után áll —
+        # nem illeszkedhet a 2. elé, a 2. kötelező jelölő megmarad
+        self.assertEqual(self._e('1. x c. y 2. z', '1. x y 2. z c. w'), 'RENDBEN')
+        self.assertEqual(self._e('1. x c. y 2. z 3. q', '1. x y 2. z c. w'), 'SERTES')
+
+    def test_igazitas_opcionalissal(self):
+        ig = K.tagolas_igazitas('1. x f. below 2. y', '1. x lent 2. y')
+        self.assertEqual([j for j, _, _ in ig], ['1', 'f', '2'])
+        self.assertIsNone(ig[1][2])
+        self.assertIsNotNone(ig[2][2])
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

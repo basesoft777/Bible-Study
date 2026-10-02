@@ -114,21 +114,52 @@ def _jelolok(szoveg, forras_oldal):
     return [j for _, j in jelolok_pozicioval(szoveg, forras_oldal)]
 
 
+# DT-F38c (e): a `c.`, `d.`, `f.`, `i.` betujel a BDB-ben roviditeskent is all
+# (`c.` circa, `d.` day, `f.` father / feminine / following, `f. below`,
+# `i. below`), es ez a forras oldalan nem dontheto el biztosan. Ezek a
+# forrasjelolok ezert NEM kotelezoek: ha a forditasban az elozo es a kovetkezo
+# kotelezo jelolo kozott megvannak, illeszkednek, ha nincsenek, a kapu
+# atlepi oket. A tobbi betujel (a., b., e., g., h.), a szamok, a romai es a
+# zarojeles jelolok tovabbra is kotelezoek.
+OPCIONALIS_BETU = frozenset('cdfi')
+
+
+def _illeszt(a, b):
+    """Reszsorozat-illesztes az opcionalis jelolokkel. a, b: jelek listaja.
+    -> (illesztes: [b-index | None, ...], az elso nem talalt kotelezo
+    jelolo indexe a-ban vagy None)"""
+    ki, j = [], 0
+    for i, jel in enumerate(a):
+        if jel in OPCIONALIS_BETU:
+            kov = next((x for x in a[i + 1:] if x not in OPCIONALIS_BETU), None)
+            hatar = len(b)
+            if kov is not None:
+                hatar = next((k for k in range(j, len(b)) if b[k] == kov), len(b))
+            k = next((k for k in range(j, hatar) if b[k] == jel), None)
+            ki.append(k)
+            if k is not None:
+                j = k + 1
+            continue
+        while j < len(b) and b[j] != jel:
+            j += 1
+        if j == len(b):
+            return ki, i
+        ki.append(j)
+        j += 1
+    return ki, None
+
+
 def tagolas_igazitas(forras, forditas):
     """A forras jeloloinek pozicioja es a forditasban megfelelo jelolo
     pozicioja (moho reszsorozat-illesztes) -- a naplo egymas melletti
     nezetehez. [(jel, forras_poz, forditas_poz | None), ...]"""
     a = jelolok_pozicioval(forras, True)
     b = jelolok_pozicioval(forditas, False)
-    ki, j = [], 0
-    for poz, jel in a:
-        while j < len(b) and b[j][1] != jel:
-            j += 1
-        if j == len(b):
-            ki.append((jel, poz, None))
-            continue
-        ki.append((jel, poz, b[j][0]))
-        j += 1
+    ill, hiba = _illeszt([j for _, j in a], [j for _, j in b])
+    ki = []
+    for i, (poz, jel) in enumerate(a):
+        k = ill[i] if i < len(ill) else None
+        ki.append((jel, poz, b[k][0] if k is not None else None))
     return ki
 
 
@@ -146,16 +177,22 @@ def jelolok_pozicioval(szoveg, forras_oldal):
         jel = m.group(1)
         utana = szoveg[m.end():m.end() + 4].lstrip()
         elotte = szoveg[max(0, m.start() - 3):m.start()]
-        if jel == 'e' and (elotte.endswith('i. ') or utana.startswith('g.')):
-            continue  # i. e. / e. g.
-        if jel == 'i' and utana.startswith('e.'):
-            continue  # i. e.
-        if jel == 'g' and elotte.endswith('e. '):
-            continue  # e. g. (masodik tagja)
-        if jel == 'f' and re.search(r'\d\s?$', elotte):
-            continue  # `273 f.` = es a kovetkezo (magyarul `k.`), nem betujel
-        if jel == 'c' and utana[:1].isdigit():
-            continue  # c. 100 = circa
+        # DT-F38c (e): a rovidites-kivetelek csak a forras oldalan szurnek; a
+        # forditas oldalan a tobblet jelolo artalmatlan (reszsorozat), a
+        # kihagyas viszont hamis hianyt adott (`c. 1Móz`: a forras `c.`
+        # betujele elveszett, a menet `c. —` alakkal kerulte meg; `vizei. e.`:
+        # az `e.` betujelet a forditas oldalan `i. e.`-nek vette).
+        if forras_oldal:
+            if jel == 'e' and (elotte.endswith('i. ') or utana.startswith('g.')):
+                continue  # i. e. / e. g.
+            if jel == 'i' and utana.startswith('e.'):
+                continue  # i. e.
+            if jel == 'g' and elotte.endswith('e. '):
+                continue  # e. g. (masodik tagja)
+            if jel == 'f' and re.search(r'\d\s?$', elotte):
+                continue  # `273 f.` = es a kovetkezo (magyarul `k.`), nem betujel
+            if jel == 'c' and utana[:1].isdigit():
+                continue  # c. 100 = circa
         talalat.append((m.start(), jel))
     for m in _ROMAI.finditer(szoveg):
         elotte = szoveg[max(0, m.start() - 3):m.start()]
@@ -179,16 +216,14 @@ def tagolas_sorozat_forditas(szoveg):
 def ellenoriz_tagolas(forras, forditas):
     a = tagolas_sorozat(forras)
     b = tagolas_sorozat_forditas(forditas)
-    j = 0
-    for i, jel in enumerate(a):
-        while j < len(b) and b[j] != jel:
-            j += 1
-        if j == len(b):
-            return 'SERTES', ('a forras %d jelolojebol a(z) %d. (%s) nem talalhato a forditasban a helyen; '
-                              'kornyezet a forrasban: %s'
-                              % (len(a), i + 1, jel, ' '.join(a[max(0, i - 3):i + 3])))
-        j += 1
-    return 'RENDBEN', '%d forrasjelolo (forditas %d)' % (len(a), len(b))
+    ill, i = _illeszt(a, b)
+    if i is not None:
+        return 'SERTES', ('a forras %d jelolojebol a(z) %d. (%s) nem talalhato a forditasban a helyen; '
+                          'kornyezet a forrasban: %s'
+                          % (len(a), i + 1, a[i], ' '.join(a[max(0, i - 3):i + 3])))
+    atlepett = sum(1 for k in ill if k is None)
+    return 'RENDBEN', '%d forrasjelolo (forditas %d)%s' % (
+        len(a), len(b), '; atlepett opcionalis betujel (c/d/f/i): %d' % atlepett if atlepett else '')
 
 
 # ---------------------------------------------------------------------------
@@ -382,8 +417,22 @@ def ellenoriz_karoli(forras, forditas, karoli):
     tokenek = [t.strip() for t in reszlet.split(':', 1)[1].split(',')]
     forras_tokenek = {m.group(1) for m in _p4.KONYV_ROVIDITES_MINTA.finditer(forras)}
     maradek = [t for t in tokenek if not (t in forras_tokenek and t not in lek)]
+    # DT-F38c (e): a c:v elotti nagybetus szo (`Isten 23:16`, `Júdáról 12:6`,
+    # `A 4:16` -- a BDB lancolt, konyvnev nelkuli igehelye a magyar szorend
+    # miatt) nem Karoli-jelzes. Hiba csak az marad, ami konyvnevnek latszik:
+    # a konyv-lekepezes kulcsa (angol/STEPBible alak, pl. `Gen 1:1`), vagy
+    # szammal kezdodik (`1Ezék`). A rossz vagy hianyzo konyvet a 11. kapu
+    # fogja meg (a forras konyvei es a forditas konyvei darabra egyeznek).
+    nem_konyv = [t for t in maradek if t not in lek and not t[:1].isdigit()]
+    maradek = [t for t in maradek if t not in nem_konyv]
     if not maradek:
-        return 'RENDBEN', 'forrasbeli szigla igehely elott: ' + ', '.join(tokenek)
+        ok = []
+        if len(nem_konyv) < len(tokenek):
+            ok.append('forrasbeli szigla igehely elott: '
+                      + ', '.join(t for t in tokenek if t not in nem_konyv))
+        if nem_konyv:
+            ok.append('nagybetus szo igehely elott, nem konyvnev: ' + ', '.join(nem_konyv))
+        return 'RENDBEN', '; '.join(ok)
     return 'SERTES', 'ismeretlen roviditesek: ' + ', '.join(maradek)
 
 
