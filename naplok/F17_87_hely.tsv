@@ -1,5 +1,5 @@
 # GENERÁLT: eszkozok/f17/macula_futtat.py — kézzel nem szerkesztendő.
-# proveniencia: scope=87 fuggo LXX-hely (naplok/FORRAS_FJ1_lxx_jeloltek.tsv) | forras=https://github.com/Clear-Bible/macula-hebrew@47db250bd55d0d8577f2a94fba114ef16c35b23c | ts=2026-09-30
+# proveniencia: scope=87 fuggo LXX-hely (naplok/FORRAS_FJ1_lxx_jeloltek.tsv) | forras=https://github.com/Clear-Bible/macula-hebrew@47db250bd55d0d8577f2a94fba114ef16c35b23c | ts=2026-10-02
 # a Karoli-szamozasu igehely -> MT-vers a KK alapjan (igehely_mt, KEZI osztalynal igehely_kjv; F06-ban ez a lepes hianyzott). Az `allapot` oszlop a gepi kereses kimenete (nem dontes): a LXX_MEGFELELO sorok gepi javaslatok, kezi megerositest kernek (az F06 szerint a Macula szo-szintu illesztese 78,3%). A `kk_mod` `:`-os utotagja a KK-kotes bizonytalansaga.
 # sorok=87 ; HEBER_SZO_GOROG_NELKUL=40, HEBER_SZO_NINCS_A_VERSBEN=9, LXX_MEGFELELO=38
 motivum	igehely_karoli	igehely_mt	kk_mod	heber_kulcsszo	heber_strong_munkalap	allapot	azonositas	macula_heber_szo	macula_gorog	macula_gorog_strong	f06_allapot	egyezik_f06	megjegyzes

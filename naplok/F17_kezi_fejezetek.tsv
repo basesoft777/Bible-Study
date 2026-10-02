@@ -1,5 +1,5 @@
 # GENERÁLT: eszkozok/f17/macula_futtat.py — kézzel nem szerkesztendő.
-# proveniencia: scope=a KK KEZI-osztalyu sorai altal erintett KJV-fejezetek | forras=konkordancia/Karoli_versmegfeleltetes.tsv, naplok/KAROLI_KK1b_fejezetosztaly.tsv (kjv_max), Macula heber (MT-versszam) | ts=2026-09-30
+# proveniencia: scope=a KK KEZI-osztalyu sorai altal erintett KJV-fejezetek | forras=konkordancia/Karoli_versmegfeleltetes.tsv, naplok/KAROLI_KK1b_fejezetosztaly.tsv (kjv_max), Macula heber (MT-versszam) | ts=2026-10-02
 # az igazolt_mt_vers_db / nem_igazolt_mt_vers_db az MT-CELVERSEKET szamolja (egy Karoli-vers tobb MT-verset is kaphat: Pred 2:26 = MT 2:25+2:26, ezert 250 igazolt MT-vers vs. 249 igazolt kk_kjv Karoli-vers); a kezi_sor_db a KEZI-sorok szama fejezetenkent
 # a kk_kjv kotes csak ott iranyado, ahol az elozo fejezet KJV- es MT-versszama azonos (elozo_kulonbseg=0) es a vers mindket oldalon letezik; egyebkent javaslat (nincs MT-megfelelo)
 konyv	kjv_fejezet	kjv_versszam	mt_versszam	elozo_fejezet_kulonbseg	kezi_sor_db	igazolt_mt_vers_db	nem_igazolt_mt_vers_db	allapot
