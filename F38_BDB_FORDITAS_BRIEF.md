@@ -5,10 +5,10 @@ kod: BDB_FORDITAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: megallt
+allapot: fut
 ag: claude/admiring-bohr-texair
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=opus), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
-kovetkezo: Te: a 2. adag kész (37 szócikk, F38.15–F38.51; kész összesen 72, hátra 8 018); olvasd le a kreditet, és dönts a DT-F38b-ről; „folytasd” → 3. adag a naplok/BDB_FORDITAS_sorrend.tsv 47. sorától (H5927)
+kovetkezo: Menet: DT-F38b = 1 — előbb a 2. adag 23 önújrapróbájának kapunkénti elemzése (napló, „M2 — önújrapróba-elemzés”), utána a 3. adag a naplok/BDB_FORDITAS_sorrend.tsv 47. sorától (H5927)
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md]
 ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/teszt_forditas_kapuk.py, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md]
 fugg: [34]
