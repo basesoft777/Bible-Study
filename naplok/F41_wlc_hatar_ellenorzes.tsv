@@ -1,0 +1,155 @@
+# forras-URL: konkordancia/BSB_Strongs.tsv + konkordancia/Macula_heber_*.tsv (WLC, `ref` oszlop)
+# commit/verzio: WLC: Macula Hebrew (l. naplok/F17_import_naplo.md)
+# letoltes datuma: 2026-10-02
+# futtatasi parancs: python eszkozok/fj2/bsb_wlc_versszam_ellenorzes.py
+# F41 1. lepes (DT-F41c (a)): fejezethatar-vizsgalat; csak azok az OSZ-fejezetek, ahol a BSB(KJV), a WLC es a TAHOT_kivonat fejezet-maximuma nem mind azonos, vagy a TAHOT-megfeleltetes nem csupa azonos
+# bsb_max = a BSB (KJV) fejezet utolso verse (naplok/F41_bsb_megfeleltetes.tsv bsb_vers); wlc_max = a Macula (WLC) fejezet utolso verse; tahot_max = a konkordancia/TAHOT_kivonat.tsv fejezet-max; tahot_modell = a F41.1 BSB->TAHOT megfeleltetes modelljei a fejezet BSB-versein
+konyv	fejezet	bsb_max	wlc_max	tahot_max	tahot_modell	kovetkeztetes
+1Móz	31	55	54	55	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+1Móz	32	32	33	32	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+2Móz	7	25	29	25	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+2Móz	8	32	28	32	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+2Móz	21	36	37	36	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+2Móz	22	31	30	31	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+3Móz	5	19	26	19	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+3Móz	6	30	23	30	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+4Móz	12	16	16	15	azonos+eltolt	bsb=wlc: a KJV-szam MT-szam; a TAHOT_kivonat eltero (Karoli-szeru)
+4Móz	13	33	33	34	eltolt	bsb=wlc: a KJV-szam MT-szam; a TAHOT_kivonat eltero (Karoli-szeru)
+4Móz	16	50	35	50	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+4Móz	17	13	28	13	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+4Móz	25	18	19	18	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+4Móz	29	40	39	39	azonos+eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+4Móz	30	16	17	17	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+5Móz	12	32	31	32	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+5Móz	13	18	19	18	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+5Móz	22	30	29	30	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+5Móz	23	25	26	25	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+5Móz	28	68	69	68	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+5Móz	29	29	28	29	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+1Sám	20	42	42	43	azonos	bsb=wlc: a KJV-szam MT-szam; a TAHOT_kivonat eltero (Karoli-szeru)
+1Sám	21	15	16	15	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+1Sám	23	29	28	28	azonos+eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+1Sám	24	22	23	23	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+2Sám	18	33	32	33	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+2Sám	19	43	44	43	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+1Kir	4	34	20	34	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+1Kir	5	18	32	18	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+1Kir	22	53	54	54	azonos+eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+2Kir	11	21	20	21	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+2Kir	12	21	22	21	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+1Krón	5	26	41	26	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+1Krón	6	81	66	81	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+1Krón	12	40	41	40	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+2Krón	1	17	18	17	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+2Krón	2	18	17	18	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+2Krón	13	22	23	22	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+2Krón	14	15	14	15	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Neh	3	32	38	32	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Neh	4	23	17	23	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Neh	7	73	72	73	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Neh	9	38	37	38	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Neh	10	39	40	39	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Jób	38	41	41	38	kjv_szamozas	bsb=wlc: a KJV-szam MT-szam; a TAHOT_kivonat eltero (Karoli-szeru)
+Jób	39	30	30	38	kjv_szamozas	bsb=wlc: a KJV-szam MT-szam; a TAHOT_kivonat eltero (Karoli-szeru)
+Jób	40	24	32	24	kjv_szamozas	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Jób	41	34	26	0	kjv_szamozas	egyik_sem
+Zsolt	3	8	9	9	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	4	8	9	9	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	5	12	13	13	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	6	10	11	11	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	7	17	18	18	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	8	9	10	10	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	9	20	21	21	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	12	8	9	9	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	13	6	6	6	illesztetlen	bsb=wlc=tahot (fejezet-max)
+Zsolt	18	50	51	51	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	19	14	15	15	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	20	9	10	10	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	21	13	14	14	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	22	31	32	32	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	30	12	13	13	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	31	24	25	25	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	34	22	23	23	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	36	12	13	13	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	38	22	23	23	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	39	13	14	14	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	40	17	18	18	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	41	13	14	14	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	42	11	12	12	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	44	26	27	27	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	45	17	18	18	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	46	11	12	12	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	47	9	10	10	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	48	14	15	15	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	49	20	21	21	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	51	19	21	21	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	52	9	11	11	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	53	6	7	7	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	54	7	9	9	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	55	23	24	24	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	56	13	14	14	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	57	11	12	12	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	58	11	12	12	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	59	17	18	18	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	60	12	14	14	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	61	8	9	9	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	62	12	13	13	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	63	11	12	12	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	64	10	11	11	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	65	13	14	14	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	67	7	8	8	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	68	35	36	36	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	69	36	37	37	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	70	5	6	6	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	75	10	11	11	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	76	12	13	13	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	77	20	21	21	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	80	19	20	20	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	81	16	17	17	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	83	18	19	19	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	84	12	13	13	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	85	13	14	14	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	88	18	19	19	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	89	52	53	53	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	92	15	16	16	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	102	28	29	29	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	108	13	14	14	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	140	13	14	14	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Zsolt	142	7	8	8	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Préd	4	16	17	16	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Préd	5	20	19	20	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Préd	11	10	10	8	azonos	bsb=wlc: a KJV-szam MT-szam; a TAHOT_kivonat eltero (Karoli-szeru)
+Préd	12	14	14	16	azonos	bsb=wlc: a KJV-szam MT-szam; a TAHOT_kivonat eltero (Karoli-szeru)
+Én	6	13	12	13	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Én	7	13	14	13	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Ézs	2	22	22	21	azonos	bsb=wlc: a KJV-szam MT-szam; a TAHOT_kivonat eltero (Karoli-szeru)
+Ézs	3	26	26	27	azonos	bsb=wlc: a KJV-szam MT-szam; a TAHOT_kivonat eltero (Karoli-szeru)
+Ézs	8	22	23	23	azonos	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Ézs	9	21	20	20	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Ézs	64	12	11	12	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Jer	8	22	23	22	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Jer	9	26	25	26	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Ez	20	49	44	49	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Ez	21	32	37	32	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Dán	3	30	33	30	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Dán	4	37	34	37	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Dán	5	31	30	31	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Dán	6	28	29	28	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Hós	1	11	9	11	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Hós	2	23	25	23	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Hós	11	12	11	11	azonos+eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Hós	12	14	15	15	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Hós	13	16	15	16	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Hós	14	9	10	9	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Jóel	2	32	27	32	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Jóel	3	21	5	21	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Jón	1	17	16	16	azonos+eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Jón	2	10	11	11	eltolt	tahot=wlc: a TAHOT_kivonat MT-szamozasu; a KJV elter
+Mik	4	13	14	13	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Mik	5	15	14	15	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Náh	1	15	14	15	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Náh	2	13	14	13	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Zak	1	21	17	21	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Zak	2	13	17	13	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Mal	3	18	24	18	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
+Mal	4	6	0	6	azonos	bsb=tahot!=wlc: a TAHOT_kivonat KJV-szamozasu (hibrid)
