@@ -136,7 +136,7 @@ szócikke a `ל` elöljárószó („twelfth letter … preposition to, for”).
 
 ## M1 — Mérő adag (F38.2–F38.11)
 
-Helyesbítés (2026.10.02): a fordító ténylegesen Sonnet-session volt, nem Opus. A sorok a zárómenetben kikerültek az `adat/forditasok.tsv`-ből; a Sonnet-változatok a `20ef676` commitban érhetők el.
+Helyesbítés (2026.10.02): a fordító ténylegesen Sonnet-session volt, nem Opus. A `modell=claude-opus-5-5` címke a `rogzit` alapértékéből jött; a zárómenetben javítva (F38.264–: `allapot=sonnet`, `modell=claude-sonnet-5-5`; a sorok az `adat/forditasok.tsv`-be visszakerültek, DT-F38e).
 
 **Fordító:** a menet maga (Opus, `claude-opus-5-5`), subagent nélkül (brief D7). **Módszer**
 (a #28 E4-e szerint, változatlan eszközlánccal): `emeles.py helyorzo` → helyőrzős vázlat →
@@ -1088,7 +1088,7 @@ egy szó a táblában.
 
 ## M2 — 2. adag (F38.15–F38.51)
 
-Helyesbítés (2026.10.02): a fordító ténylegesen Sonnet-session volt, nem Opus. A sorok a zárómenetben kikerültek az `adat/forditasok.tsv`-ből; a Sonnet-változatok a `20ef676` commitban érhetők el.
+Helyesbítés (2026.10.02): a fordító ténylegesen Sonnet-session volt, nem Opus. A `modell=claude-opus-5-5` címke a `rogzit` alapértékéből jött; a zárómenetben javítva (F38.264–: `allapot=sonnet`, `modell=claude-sonnet-5-5`; a sorok az `adat/forditasok.tsv`-be visszakerültek, DT-F38e).
 
 **Fordító és módszer:** változatlanul az M1 szerint (a menet maga, Opus `claude-opus-5-5`,
 subagent nélkül; `emeles.py helyorzo` → helyőrzős vázlat → `emeles.py ellenoriz` → `rogzit` →
@@ -1229,7 +1229,7 @@ körébe tartozik.
 
 ## M3 — 3. adag (F38.55–F38.135)
 
-Helyesbítés (2026.10.02): a fordító ténylegesen Sonnet-session volt, nem Opus. A sorok a zárómenetben kikerültek az `adat/forditasok.tsv`-ből; a Sonnet-változatok a `20ef676` commitban érhetők el.
+Helyesbítés (2026.10.02): a fordító ténylegesen Sonnet-session volt, nem Opus. A `modell=claude-opus-5-5` címke a `rogzit` alapértékéből jött; a zárómenetben javítva (F38.264–: `allapot=sonnet`, `modell=claude-sonnet-5-5`; a sorok az `adat/forditasok.tsv`-be visszakerültek, DT-F38e).
 
 **Fordító és módszer:** változatlanul az M1/M2 szerint (a menet maga, Opus `claude-opus-5-5`,
 subagent nélkül; `emeles.py helyorzo` → helyőrzős vázlat → `emeles.py ellenoriz` → `rogzit` →
@@ -1474,7 +1474,7 @@ eltérés (pl. „zincirli”) továbbra is SÉRTÉS. Tesztek: +8 (`KisNagybetuC
 
 ## M4 — 4. adag (F38.141–F38.258)
 
-Helyesbítés (2026.10.02): a fordító ténylegesen Sonnet-session volt, nem Opus. A sorok a zárómenetben kikerültek az `adat/forditasok.tsv`-ből; a Sonnet-változatok a `20ef676` commitban érhetők el.
+Helyesbítés (2026.10.02): a fordító ténylegesen Sonnet-session volt, nem Opus. A `modell=claude-opus-5-5` címke a `rogzit` alapértékéből jött; a zárómenetben javítva (F38.264–: `allapot=sonnet`, `modell=claude-sonnet-5-5`; a sorok az `adat/forditasok.tsv`-be visszakerültek, DT-F38e).
 
 **Fordító és módszer:** a menet maga (Opus, `claude-opus-5-5`, subagent nélkül), a DT-F38c
 alkalmazása után: **prompt v4.1** (a kötelező terminológiai alakok előgyűjtése a vázlat előtt,

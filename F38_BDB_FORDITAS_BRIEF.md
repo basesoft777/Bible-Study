@@ -1,6 +1,6 @@
 ---
 feladat: 38
-cim: A teljes BDB héber szótár magyar fordítása Opusszal, megállási pontokkal
+cim: A teljes BDB héber szótár magyar fordítása, megállási pontokkal
 kod: BDB_FORDITAS
 tipus: feladat
 fazis: 1
@@ -128,4 +128,5 @@ Olvasd el a `BDB_FORDITAS_BRIEF.md`-t, és hajtsd végre az M0-t és az M1-et. E
 | D6 | Kevés ⛔ (M1, Mz), a többi megállás csak „folytasd”-ra vár | a #28-ban a sok döntési kör vitte a költség és az idő nagy részét | minden adag után tartalmi ellenőrzés |
 | D7 | Egy végrehajtó, subagent nélkül | egységes terminológia, egy kontextus (#28 tapasztalata) | párhuzamos subagentek |
 | D8 (DT-F38d) | (a) az 5. adag a következő, Opus-menetben indul; (b), (c), (d) igen, a zárómenetben végrehajtva. | felhasználói döntés, 2026.10.02; l. `DONTESEK.md` DT-F38d | — |
-| D9 (DT-F38e) | Az 1–4. adagot Opus újrafordítja, új ágon (felhasználói döntés, 2026.10.02). | l. `DONTESEK.md` DT-F38e | — |
+| D-új (DT-F38e) | a teljes BDB Sonnettel, a D1-et felülírja. | felhasználói döntés, 2026.10.02: az Opus-vakpróba (H2617, H7307) után a Sonnet szóhasználata közelebb áll a Károlihoz, és nincs benne szembeötlő félrefordítás; a Sonnet szabálykövetési hiányait kapuk és normalizáló pótolják; l. `DONTESEK.md` DT-F38e | a teljes BDB Opusszal (D1) |
+| D9 (DT-F38e) | ~~Az 1–4. adagot Opus újrafordítja, új ágon (felhasználói döntés, 2026.10.02).~~ **Felülírva a D-új-vel** (a teljes BDB Sonnettel). | l. `DONTESEK.md` DT-F38e | — |
