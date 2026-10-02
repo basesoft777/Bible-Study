@@ -5,10 +5,10 @@ kod: BSB_UJRAMERES
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: dontesre_var
 ag: claude/f41-bsb-ujrameres
 ad: a versszámozás miatt küszöb alatt maradt ószövetségi könyvek a 95%-os küszöbbel újramérve és importálva, a többinél igazolt ok; a BSB_Strongs.tsv-ben megkülönböztethető a „szándékosan nem fordított” és a „hiányzó” angol szó
-kovetkezo: "Főszál: fuggetlen-ellenor (naplok/ELLENOR_F41.md), a naplok/F41_zaras.md zárójelentés-tervezet átvétele, push, draft PR, FELADATOK.md saját sor, DT6 ✅ és allapot: lezarva / pr mezők kitöltése; nyitva maradt: N-F41a, N-F41b, N-F41d, N-F41e, N-F41f"
+kovetkezo: "Te: DT-F41c (ellenőr 1–3. eltérés: számozás, Jób 41) és DT-F41b döntése; utána javítás és PR"
 olvas: [eszkozok/fj2/, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, naplok/F16_bsb_lefedettseg.tsv, naplok/F16_bsb_verseltolas_diagnozis.tsv, naplok/F16_bsb_zsolt_megfeleltetes.tsv]
 ir: [eszkozok/fj2/bsb_import.py, eszkozok/fj2/bsb_verseltolas_diag.py, konkordancia/BSB_Strongs.tsv, naplok/F16_bsb_lefedettseg.tsv, naplok/F41_bsb_megfeleltetes.tsv, naplok/F41_nem_egyezo_versek.tsv]
 fugg: [16]
