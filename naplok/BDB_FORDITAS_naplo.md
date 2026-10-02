@@ -2518,7 +2518,7 @@ Tesztek: `teszt_bdb_zaras.py` 17, `teszt_forditas_kapuk.py` 61, `teszt_normaliza
 **Mennyiség:** 163 szócikk; forrás 499 783 karakter, fordítás 522 506 karakter (tokent és költséget nem naplózunk).
 **Kapuk:** 163/163 átment, gátló bukás 0; a 13. kapu 16 szócikknél JELZÉST adott (forrásbeli fejezetszám-hiba, l. lent).
 `ellenoriz.py`: SÉRTÉS 0. `teszt_forditas_kapuk.py`: OK.
-**Állapot:** 406 sorrend-sor kész (a 269 + 163 szócikk; ebből 26 a #28 sor), hátra 7 659 sorrend-sor.
+**Állapot:** 406 sorrend-sor kész (a 269 + 163 szócikk; ebből 26 a #28 sor), hátra 7 658 sorrend-sor.
 
 A részletes kapu-táblázat: `python naplok/BDB_FORDITAS_M1_nezet.py --adag 5`.
 
@@ -2557,7 +2557,7 @@ Az 5. adagban a 2. kapu (versszámok) egyszer sem bukott összeforrt versszám m
 | H5117 | 4Móz 11:25–26; Ézs 11:2 | „az ⟦YHWH⟧ Szelleméről” (nagy); Illés szelleme kicsi |
 | H3847 | Bír 6:34 | „az ⟦YHWH⟧ Szelleme felöltözte Gedeont” (nagy) |
 | H5012 | két hely | „az isteni Szellem hatása alatt” (nagy) |
-| H1984, H2534, H6862, H0539 (Péld 11:13), H6213 | — | emberi/démoni szellem, kicsi |
+| H1984, H2534, H6862, H0539 (Péld 11:13) | — | emberi/démoni szellem, kicsi |
 | **H7451** | 1Sám 16:14 stb. | **kicsi marad** (N-F38b: Isten küldte „gonosz szellem”) |
 | **H4390** | 2Móz 31:3; 35:31 | **nagy**: „Szellemmel betölteni” (N-F38b); a 28:3 emberi, kicsi — kézi javítás |
 | **H5674** | 1Kir 22:24 | **nagy** (N-F38c); „abszolút használatban + מֵאֵת: a Szellem 1Kir 22:24; 2Krón 18:23”, a BDB 9a besorolásával összhangban — kézi javítás |
@@ -2570,3 +2570,8 @@ Egy korábbi lépésben a H6213 és a H6256 sora tévesen felülíródott; az er
 
 ### Esemény: ágtévesztés és javítása
 Az 5. adag 27 commitja (F38.283–F38.308) tévesen a helyi `main`-re került a brief szerinti `claude/f38-adag5` helyett (push nem történt). Javítás (felhasználói jóváhagyással): `git branch -f claude/f38-adag5 9dea846`, a `main` visszaállítva `origin/main`-ra (`git branch -f`); ellenőrzés: `origin/main..claude/f38-adag5` = 27 commit, `origin/main..main` üres.
+
+### Ellenőri javítások (ELLENOR_F38_adag5)
+- H7970: a „követi / megelőzi” alany-tárgy viszonya fordítva állt; javítva a forrás szerint („׳שׁ követi az egyeseket”, „követi a 100-at”).
+- A „hátra” szám 7 658 (nem 7 659); a H6213 kikerült az 5. adag Szellem-tábla soraiból (a 2. adagé).
+- Nyitva hagyva (stílus): H3532 „Mózes második könyve Mózes harmadik könyve Numeri” — a forrás „Exodus Leviticus Numbers” kevert könyvnév-formája.
