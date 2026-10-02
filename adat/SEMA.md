@@ -373,7 +373,7 @@ Kulcs: `study_tipus` + `dataset`. A terv 4.3 mátrixa, négy study-típusra kife
   A `KJV_Strongs_teljes.tsv` (F19) külön, `importált, javaslat` állapotú dataset, a `KJV_ASV_Strongs` sor `fajl`-mintája nem tartalmazza; az `ASV_Strongs_teljes.tsv` forráshibás és nincs a repóban (DT19, `naplok/ELLENOR_F19.md`).
   Ugyanígy `korlatos` a `BSB_Strongs` (F16): csak a 95%-os küszöböt elérő 36 ÓSZ-könyv (nincs: 2Sám, Ezsd, Dán), ÚSZ szándékosan nincs (a görög réteg forrása a Macula, #87);
   a Zak 12:1 és a 116 feliratos zsoltár 1. versének érdemi szövege a display-forrásból hiányzik (a text-only megvan);
-  az `Igehely` a 7. oszlop (`Számozás`) szerint `tahot_szamozas` (a TAHOT_kivonat versszámozásához Strong-illeszkedéssel illesztett; cél: MT/WLC, de a TAHOT_kivonat 25 könyvben nem WLC-számozású: fejezetenként `naplok/F41_wlc_versszam_ellenorzes.tsv`) vagy `kjv_szamozas` (a BSB/KJV-szám marad: Jób 38–41, Préd 11/12, Ézs 2/3); a Zsolt 13 illesztetlen, kimarad. A 6. oszlop (`Angol szó állapota`): `forditva` / `elhagyva` / `ures_jelzo_nelkul`.
+  az `Igehely` célszámozása az MT (WLC); a 7. oszlop (`Számozás`) versszintű WLC-összevetésből: `mt` (268 482 sor: igazolt MT-szám) / `ellenorizetlen` (9 420 sor, 46 fejezet: nem igazolt, a TAHOT_kivonat hibrid számozása; fejezetenként `naplok/F41_wlc_versszam_ellenorzes.tsv`) / `kjv` (223 sor: Jób 41, a BSB/KJV-szám marad); a Zsolt 13 illesztetlen, kimarad. A 6. oszlop (`Angol szó állapota`): `forditva` / `elhagyva` / `ures_jelzo_nelkul`.
 
 *Licenc-következmény, rögzítve a `konkordancia/README.md` licenc-szakaszában és a
 `konkordancia/SDBH_SDGNT_README.md`-ben:* a CC BY-SA 4.0

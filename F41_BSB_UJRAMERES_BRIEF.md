@@ -5,10 +5,10 @@ kod: BSB_UJRAMERES
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: dontesre_var
+allapot: fut
 ag: claude/f41-bsb-ujrameres
 ad: a versszámozás miatt küszöb alatt maradt ószövetségi könyvek a 95%-os küszöbbel újramérve és importálva, a többinél igazolt ok; a BSB_Strongs.tsv-ben megkülönböztethető a „szándékosan nem fordított” és a „hiányzó” angol szó
-kovetkezo: "Te: 4Móz 12/13 átszámozás (WLC szerint nem MT) és a 45 hibrid fejezet jelölése (N-F41h) döntése; main behúzása; javítás; újraellenőrzés; PR"
+kovetkezo: "Főszál: fuggetlen-ellenor az F41.10 diffre (naplok/ELLENOR_F41_3.md), a PR frissítése, FELADATOK.md, DT6 ✅, allapot: lezarva"
 olvas: [eszkozok/fj2/, konkordancia/TAHOT_kivonat.tsv, konkordancia/Macula_heber_*.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, naplok/F16_bsb_lefedettseg.tsv, naplok/F16_bsb_verseltolas_diagnozis.tsv, naplok/F16_bsb_zsolt_megfeleltetes.tsv]
 ir: [eszkozok/fj2/bsb_import.py, eszkozok/fj2/bsb_verseltolas_diag.py, eszkozok/fj2/wlc_versek.py, eszkozok/fj2/bsb_wlc_versszam_ellenorzes.py, eszkozok/fj2/bsb_nulladiff.py, konkordancia/BSB_Strongs.tsv, konkordancia/README.md, naplok/F16_bsb_lefedettseg.tsv, naplok/F41_bsb_megfeleltetes.tsv, naplok/F41_nem_egyezo_versek.tsv, naplok/F41_nulladiff.txt, naplok/F41_wlc_versszam_ellenorzes.tsv, naplok/F41_wlc_hatar_ellenorzes.tsv, naplok/F41_zaras.md, adat/datasetek.tsv, adat/SEMA.md, adat/szotar_szerepek.tsv, DONTESEK.md, NYITOTT_FELADATOK.md, F41_BSB_UJRAMERES_BRIEF.md]
 fugg: [16]
@@ -22,6 +22,8 @@ helyi_gep: nem
 > **Javítás (F41 menet, 2026.10.02; a címsor változatlan):** a 2. szakasz „1Kir 4/5, Jóel 2/3, Neh 3/4” példái hibásak: a Strong-illeszkedés szerint (`naplok/F41_bsb_megfeleltetes.tsv`) ezekben a TAHOT_kivonat számozása a BSB-vel azonos, 0 eltolt verssel. A ténylegesen eltolt könyvek/fejezetek: 4Móz 12/13 és 29/30, 1Sám 23/24, 1Kir 22 (a 22:43 két MT-versre osztva), Jób 38–40, Préd 11/12, Ézs 2/3 és 9, Hós 11/12, Jón 1/2, Zsolt (62 fejezet). A 3.1 szövegében szereplő Jón 1:17 → 2:1 példa helyes. Részletek: N-F41d (`NYITOTT_FELADATOK.md`).
 
 > **Javítás (F41.7, 2026.10.02; felhasználói döntés: DT-F41c (a), DT-F41b lezárva, DT-F41d, DT-F41e):** a célszámozás MT (WLC). A 3.4 „6. oszlopa” mellé a `BSB_Strongs.tsv` 7. oszlopot kapott: `Számozás` (`tahot_szamozas` / `kjv_szamozas`); a Jób 38–41 a main KJV-számozásán maradt (jelölve), a Préd 11/12 és Ézs 2/3 átszámozása visszavonva (a WLC szerint KJV = MT: `naplok/F41_wlc_hatar_ellenorzes.tsv`); a 4Móz, 1Sám, Hós, Jón átszámozás és az 1Kir 22:43 osztás marad. A nulla-diff (`naplok/F41_nulladiff.txt`) commitolt szkripttel készül (`eszkozok/fj2/bsb_nulladiff.py`); a WLC-összevetés: `eszkozok/fj2/bsb_wlc_versszam_ellenorzes.py` → `naplok/F41_wlc_versszam_ellenorzes.tsv`.
+
+> **Javítás (F41.10, 2026.10.02; felhasználói döntés: DT-F41f):** a 4Móz 12/13 átszámozása visszavonva (a WLC szerint KJV = MT; main szerinti számozás); a 4Móz 29/30 marad (WLC: KJV ≠ MT). A 7. oszlop (`Számozás`) értékei `mt` / `kjv` / `ellenorizetlen` (a `tahot_szamozas` / `kjv_szamozas` megszűnt), versszintű WLC-összevetésből (`eszkozok/fj2/wlc_versek.py`); az N-F41h a teljes MT-átszámozásról szól. Részletek: `naplok/F41_zaras.md`, `DONTESEK.md` DT-F41f.
 
 <!-- KOZVETLEN_FUTTATAS -->
 ## 0. Nyitó prompt
