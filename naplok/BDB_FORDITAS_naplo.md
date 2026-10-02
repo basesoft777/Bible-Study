@@ -1222,3 +1222,158 @@ circa-kivétele a fordításba forrásban nem szereplő „—” jelet hoz („
 nem látja a forrás összeolvadt könyvalakjait (`learnedIsa`), így ezek a fordításban is
 összeolvadva maradnak („tanultÉzs”); ez a könyvfeloldási audit (`beerkezo/BDB_KONYVFELOLDASI_AUDIT.md`)
 körébe tartozik.
+
+## M3 — 3. adag (F38.55–F38.135)
+
+**Fordító és módszer:** változatlanul az M1/M2 szerint (a menet maga, Opus `claude-opus-5-5`,
+subagent nélkül; `emeles.py helyorzo` → helyőrzős vázlat → `emeles.py ellenoriz` → `rogzit` →
+`beir --allapot opus`, utána a `naplok/EMELES_munka.tsv` visszaállítása). Prompt v4,
+terminológia v3 — egyik sem változott; a kapuk sem (a DT-F38b szerint a 3. adag módosítás
+nélkül indult, F38.54). Minden szócikk saját commitban (`F38.55`–`F38.135`, a `F38.121` a hibás
+lista), `megjegyzes=F38 BDB_FORDITAS M3 (adag 3)`. A kapufuttatás előtt a vázlatra egy csak
+olvasó, scratchpadbeli előellenőrzés futott (zárójelek és vezérlőkarakterek helyőrző-szakaszonként,
+„c.” + számjegy, magyar idézőjel, néhány terminológiai kulcs; az adag második felétől a
+terminológia-tábla kulcsai és a c:v előtti nagybetűs szó is). Ez nem kapu és nem kalibrálás, a
+kapuk ítéletét nem helyettesíti; a fordító saját figyelmeztető listája.
+
+**Terminológia-kivétel (`--kivetel`, a H0413 mintájára, indoklás a sor megjegyzésében):** két
+szócikkben, mindkettő forrásbeli OCR-/rövidítés-ütközés: H1419 — a forrás „the h.p.” (high
+priest = főpap) rövidítése nem oldalszám, ezért nem „o.” (`p.`); H6310 — a forrás két „accusative
+as” részlete (Mal 2:9, 4Móz 9:17) az „according as” OCR-hibája, ezért nem tárgyeset
+(`accusative`). Jóváhagyásuk a DT-F38c tétel része.
+
+**Számok:** 81 szócikk a sorrend 47–127. sorából (H5927–H8179), ebből 80 kész, 1 a hibás
+listán (H2719). A 80 kész szócikk: forrás 493 209 karakter, fordítás 516 621 karakter (arány
+1,05). Kész összesen (BDB `teljes`): 72 + 80 = 152 szócikk; hátra 7 938 szócikk, 5 060 582
+forráskarakter. A 4. adag a sorrend 113. sorával (H2719, a hibás listáról) indulna, majd a
+128. sortól (H5046) folytatódna — a brief szerint az első olyan sor, amelynek Strong-számához
+még nincs `teljes` sor.
+
+**Ellenőrzés az adag végén:** teljes kapusor a 80 kész soron (`python
+naplok/BDB_FORDITAS_kapuk.py --adag 3`): 80/80 átment, 0 bukott, 15 szócikk 13. kapus
+JELZES-sel. `eszkozok/ellenoriz.py`: RENDBEN 11, SÉRTÉS 0, KÉZI 2, JELENTÉS 3.
+`eszkozok/ellenorzes/futtat.py --valtozott adat/forditasok.tsv`: 0 találat. **Hibás lista:**
+1 szócikk (H2719, 5. kapu: a `Zinjirli` → Zendzsirli kötelező alak első futásra „zincirli”, az
+önújrapróbában kisbetűs „zendzsirli” — a kapu kis- és nagybetűt megkülönböztet), l.
+`naplok/BDB_FORDITAS_hibas.tsv`.
+
+**Önújrapróba** (mindig a fordítás javult, nem a kapu; kapukalibrálás nem volt). Elsőre átment
+54 szócikk (köztük a H6310, amelynél a terminológia-kivétel előre, indoklással került a
+hívásba). 26 szócikknél egy önújrapróba elég volt, egynél (H2719) nem; a 27 szócikk 32
+kapujelzést adott:
+
+| Kapu | Darab (szócikk) | Strong | Eset és javítás |
+|---|---|---|---|
+| 5 terminológia | 13 | H0589 (verb), H0369 (p., suffix), H0428 (suffix), H7218 (proper name, of a location), H7760 (Heb. a sziglában), H4325, H3205 (spiritual), H5307 (spirit), H1992, H6963 (prefix), H1419 (p. — kivétel), H7969 (Sabean), H2719 (Zinjirli — hibás lista) | a kötelező alak hiányzott vagy ragozott/szinonim alak állt („Igéhez”, „suffixumos”, „előtaggal”, „lelki”, „lelke”, „sabeus”, „zincirli”) — pótolva; H1419-nél forrásbeli rövidítés-ütközés, kivétellel |
+| 9 tagolás | 6 | H1870, H0251, H4325, H1992, H5221, H4994 | a forrás betűjele a fordításban rossz helyre került (H1870 „fent a.;”); a forrás „Var. 23 compare” jelölőnek számító száma után vessző került (H0251) — a forrás alakja; a „c.” betűjel után számjegy állt, a kapu circa-kivétele miatt nem számított (H1992 „c. 2Móz”, H4994 „c. 3. személyben”) — „c. —”, illetve „c. a 3. személyben”; „e.” előtt „vizei.” (a kapu „i. e.” kivétele); a pont nélküli jelölő után zárójel állt („4 (halálosan)”) |
+| 3 Károli | 5 | H5869, H0251, H4672, H8269, H4196 | nagybetűs szó közvetlenül c:v előtt („Benjáminén 18:16”, „Lábáné 29:12”, „alanya Isten 2:34”, „— A 15:22-ben”, „a Hóreben 24:4”) — átfogalmazva, illetve kettősponttal elválasztva |
+| 4 formázás | 3 | H2063, H1323, H9008 | betoldott zárójel („kéziratok (MSS.)”, „unokák (leányunokák)”) — eltávolítva |
+| 8 idézőjel | 2 | H1571, H4100 | betoldott „ ” (magyar megfelelő idézőjelben) — eltávolítva |
+| 2 versszám | 1 | H5869 | elírt igehely (Ézs 37:29 a 37:17 helyett) — javítva |
+| 1 görög–héber | 1 | H2063 | a forrás `\x99` vezérlőkaraktere két héber szakasz között kimaradt — visszaállítva |
+| 11 könyvek | 1 | H6965 | a forrás „⟦héber⟧2Chr” alakja (a kapu látja) a fordításban latin betűhöz olvadt („vonzattal2Krón”) — szóköz |
+
+*Két megjegyzés a táblához.* (1) H1992-nél a 9. kapu csak az első hiányzó jelölőt jelenti; a
+három „c. + számjegy” helyet két futás tárta fel, ezt egy javítási körként kezeltem. (2) A H4994
+és a H4196 hibáját a saját előellenőrzés előre jelezte („c.” + számjegy), illetve a bővítése után
+jelezte volna; a figyelmeztetést nem vettem figyelembe — ez a fordító figyelmetlensége, nem a kapu
+hibája.
+
+**Forráshiba a fordításban, hűen átvéve** (13. kapu JELZES, nem gátoló; a DT-F38 (b) szerint a
+futást nem állítja meg): 15 szócikk, a lista a lenti táblázat alatt. Néhány jellemző: H5650
+„Jonah 14:25” (személynév + láncolt hely, a fordításban „Jónás Jón 14:25”), H6258 „2Ki 46:34”
+(= 1Móz 46:34), H3701 „Ex 43:21” (= 1Móz 43:21), H4196 „Judg 22:28”, H5002 „Jer 57:57”. A forrást
+a menet nem javítja (brief, Nem cél).
+
+*Az alábbi alszakasz a `python naplok/BDB_FORDITAS_M1_nezet.py --adag 3` kimenetének első része
+(a minta elhagyva: a brief szerint a hosszabb minta csak az M1-ben kötelező).*
+
+### Kapueredmények (adag 3, 80/81 szócikk kész)
+
+| Strong | Forrás kar. | Fordítás kar. | 1 | 2 | 3 | 4 | 5 | 6 | 8 | 9 | 10 | 11 | 12 | 13 | Átment |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| H5927 | 11993 | 13205 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.10) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H5869 | 8186 | 8872 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.08) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H8141 | 2835 | 3176 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.12) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H0589 | 821 | 881 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.07) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H7971 | 10177 | 11402 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.12) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H2009 | 4528 | 4522 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.00) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H4191 | 7576 | 8206 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.08) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H8033 | 3939 | 3972 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.01) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H3063 | 2352 | 2469 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.05) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H0398 | 6538 | 7138 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.09) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | JELZES | igen |
+| H5650 | 5720 | 6096 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.07) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | JELZES | igen |
+| H0369 | 7009 | 7033 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.00) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H0802 | 3501 | 3742 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.07) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H3651 | 11308 | 11517 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.02) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H8147 | 3139 | 3567 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.14) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H1571 | 6184 | 6043 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (0.98) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H4872 | 1924 | 2042 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.06) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H4100 | 12145 | 11759 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (0.97) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | JELZES | igen |
+| H9008 | 3964 | 3927 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (0.99) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H0428 | 1881 | 1924 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.02) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H0408 | 2360 | 2334 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (0.99) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H0310 | 4671 | 4735 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.01) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H1870 | 11028 | 11360 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.03) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | JELZES | igen |
+| H5375 | 431 | 436 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.01) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H3389 | 2226 | 2337 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.05) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H4714 | 2660 | 2814 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.06) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H0251 | 2247 | 2482 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.10) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | JELZES | igen |
+| H6965 | 17763 | 19160 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.08) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H2063 | 12696 | 12384 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (0.98) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | JELZES | igen |
+| H7218 | 5944 | 6167 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.04) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H3820 | 8365 | 8787 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.05) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H1323 | 6088 | 6281 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.03) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H7760 | 15455 | 16881 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.09) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | JELZES | igen |
+| H3967 | 5186 | 5423 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.05) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H4325 | 5707 | 5929 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.04) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H3541 | 2226 | 2105 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (0.95) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H0582 | 1210 | 1295 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.07) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H1471 | 3612 | 3799 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.05) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H5674 | 15437 | 16274 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.05) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H1992 | 5032 | 5015 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.00) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H0120 | 3018 | 3168 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.05) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H2022 | 12901 | 13147 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.02) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H2896 | 12205 | 12316 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.01) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H1419 | 3929 | 4068 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.04) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H5975 | 8714 | 9451 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.08) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | JELZES | igen |
+| H0505 | 283 | 315 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.11) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H6963 | 4447 | 4667 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.05) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H8478 | 6783 | 6870 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.01) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | JELZES | igen |
+| H5221 | 11084 | 11893 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.07) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H3205 | 7093 | 7633 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.08) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H6310 | 7429 | 7704 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.04) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H6680 | 4989 | 5567 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.12) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H5750 | 5725 | 5746 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.00) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | JELZES | igen |
+| H6635 | 5222 | 5841 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.12) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H8104 | 7813 | 8488 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.09) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H4672 | 12297 | 13084 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.06) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | JELZES | igen |
+| H7227 | 5273 | 5611 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.06) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H5769 | 7731 | 7951 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.03) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H5307 | 11203 | 12066 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.08) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H6258 | 4010 | 4081 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.02) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | JELZES | igen |
+| H7969 | 2265 | 2547 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.12) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H4941 | 5653 | 5844 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.03) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H8269 | 6304 | 6869 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.09) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H8064 | 5277 | 5624 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.07) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H4310 | 7941 | 7853 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (0.99) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H8432 | 2586 | 2769 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.07) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H2719 | 3965 | — | — | — | — | — | — | — | — | — | — | — | — | — | nincs fordítás |
+| H7586 | 532 | 576 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.08) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H0996 | 4610 | 4534 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (0.98) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H4994 | 3007 | 3018 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.00) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H3701 | 5028 | 5265 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.05) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | JELZES | igen |
+| H4196 | 7160 | 7165 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.00) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | JELZES | igen |
+| H3220 | 4410 | 4759 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.08) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H7651 | 3533 | 3857 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.09) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H2091 | 7474 | 7862 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.05) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H3381 | 11208 | 11619 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.04) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H0784 | 4191 | 4281 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.02) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H7307 | 10184 | 10402 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.02) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H1129 | 7002 | 7542 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.08) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+| H5002 | 1709 | 1843 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.08) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | JELZES | igen |
+| H8179 | 4922 | 5234 | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN (1.06) | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | RENDBEN | igen |
+
+Összesen: forrás 493209, fordítás 516621 karakter.
+
+13. kapu (JELZES, nem gátoló): H0398 — a könyv fejezetszámánál nagyobb fejezet: 3Móz 28; H5650 — a könyv fejezetszámánál nagyobb fejezet: Jón 14; H4100 — a könyv fejezetszámánál nagyobb fejezet: Bír 33; H1870 — a könyv fejezetszámánál nagyobb fejezet: Én 34; H0251 — a könyv fejezetszámánál nagyobb fejezet: Jóel 7; H2063 — a könyv fejezetszámánál nagyobb fejezet: Eszt 25; H7760 — a könyv fejezetszámánál nagyobb fejezet: 3Móz 40, 5Móz 45; H5975 — a könyv fejezetszámánál nagyobb fejezet: 2Kir 31; H8478 — a könyv fejezetszámánál nagyobb fejezet: Dán 18, Dán 21, Dán 24; H5750 — a könyv fejezetszámánál nagyobb fejezet: 2Krón 43, 2Krón 45; H4672 — a könyv fejezetszámánál nagyobb fejezet: Préd 25; H6258 — a könyv fejezetszámánál nagyobb fejezet: 2Kir 46; H3701 — a könyv fejezetszámánál nagyobb fejezet: 2Móz 43; H4196 — a könyv fejezetszámánál nagyobb fejezet: Bír 22; H5002 — a könyv fejezetszámánál nagyobb fejezet: Jer 57.
