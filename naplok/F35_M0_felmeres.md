@@ -10,7 +10,8 @@
 
 ## „Sir” egyéb (NEM migrálandó)
 - Kód/teszt (lekerdez.py, teszt_lekerdez_sir.py, normalizal.py, macula_kozos.py ALIAS stb.): az adattáblák belső Sir-kulcsa, szándékos.
-- forditasok.tsv:84 és lexikon_hivatkozasok.tsv: BDB-idézet „Ecclus … Sir 30:11” és Bölcs-hivatkozás: Sirák fia, marad.
+- forditasok.tsv:72, 73, 84, 91 és lexikon_hivatkozasok.tsv: BDB/Thayer-idézet („Ecclus … Sir 30:11”, Bölcs-hivatkozás): Sirák fia, marad.
+- motivumlog/PaRDeS_motivumok_CHANGELOG.md:152: történeti napló, marad.
 - Terminologia.tsv 53–55: a szabály maga.
 - Sirák fiára vonatkozó előfordulás a forrásrétegben: nincs.
 
