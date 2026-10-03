@@ -1,7 +1,7 @@
 # BDB_KONYVFELOLDAS — napló (F46, FELADATOK #46)
 
 *Brief: `F46_BDB_KONYVFELOLDAS_BRIEF.md` · ág: `claude/bdb-konyvfeloldas` · végrehajtó: Opus
-(claude-opus-5-5) · 2026-10-03 · állapot: ⛔ a 3.5 megállásnál (DT-F46), a gépi csere (3.6) nem futott*
+(claude-opus-5-5) · 2026-10-03 · a 3.5-ben megállt (DT-F46), a döntés után a 3.6 és a 3.7 lefutott (F46.6–F46.7)*
 
 proveniencia (a mérések): `scope=BDB_teljes_unabridged.tsv minden könyvjelölt igehely-tokene (105 723) | forras=konkordancia/BDB_teljes_unabridged.tsv + konkordancia/OSHL_BDB_igehelyek.tsv + TAHOT_kivonat.tsv (+-1 vers) + Macula_heber_*.tsv (MT) | ts=2026-10-03`
 (újrafuttatás: `python eszkozok/bdb_konyv_javit.py`; vetítés: `--vetit --szintek …`).
@@ -175,7 +175,69 @@ a forrás helye jó, és egy másik könyvben véletlen a találat.
 - A gépi csere tokenszintű: a láncolt (könyv nélküli) hely számhibája (96) és a jelentésszám
   tapadása (12) kézi.
 
-## ⛔ Megállás — DT-F46
+## ⛔ Megállás — DT-F46 (alkalmazva)
 
-A csere-tábla jóváhagyása a `DONTESEK.md` DT-F46 tételében. A 3.6 (gépi csere, 11. és 13. kapu,
-`ellenoriz.py`) és a 3.7 (lezárás, N-F34/N-F34c, ellenőr, PR) csak a döntés után fut.
+A csere-tábla jóváhagyása a `DONTESEK.md` DT-F46 tételében. **A felhasználó döntése (chat,
+2026-10-03):** (1) b, feltétellel: a 6 MT-számozású javasolt Károli-alak (H2742, H7105, H8492,
+H5997, H0215, H6778) a Macula MT→Károli átváltással javítva, különben kézi listára; a 3.6 gépi
+kapuja minden javasolt Károli-alak létezését ellenőrzi; a >500 előfordulású Strongok (18 sor)
+kézi listára; a csere.tsv cserenaplóként marad. (2) b. (3) a. (4) igen, a fenti kapuval.
+(5) igen, a DT-F34c felülírása naplózva. (6) igen.
+
+## 3.6 Gépi csere (F46.6)
+
+Parancsok: `python eszkozok/bdb_konyv_javit.py --dt-f46-szures` (a cserenapló `dt_f46` oszlopa),
+majd `--vetit --dt-f46` (szárazon) és `--ir --dt-f46 --jovahagyva DT-F46`.
+
+**Szűrés (a cserenapló `dt_f46` oszlopa):**
+
+| | sor |
+|---|---|
+| kiválasztva (magas 12 + lehetetlen típusú kozepes 275) | 287 |
+| − >500 előfordulású Strong (TAHOT: H0001 1213, H1931 1876, H1961 3562, H4191 840, H5973 1051, H7200 1299, H8034 864, H8478 503) | 18 → kézi |
+| − F46.6 kapu: azonos cél különböző forrásalakokból (H5656 `2 Chronicles 31:33/31:39/31:43` → mind „2Krón 31:3”) | 3 → kézi |
+| igehely-csere | **266** |
+| névhiba-csere (H5973, H7588, H9005; a H3117 elvetve, kézi listán marad) | **3** |
+| a 34 „más könyv érvényes fejezettel” `kozepes` sor | 34 → kézi |
+
+- **MT→Károli átváltás (a 6 Strong):** 7 javasolt Károli-alak a Macula `karoli` oszlopa szerint
+  (egyértelmű megfeleltetés mindegyiknél, kézire egy sem került): Jóel 4:14 → 3:14, Jóel 4:13 →
+  3:13, Hós 2:24 → 2:22, 3Móz 5:21 → 6:2, Jób 41:24 → 41:32, 1Krón 12:41 → 12:40, 1Krón 12:40 →
+  12:39. A forrásbeli (BDB, MT-számozású) alak nem változott. Ezek egyike sincs lefordított
+  szócikkben, a fordításba nem került Károli-számozású hely.
+- **Karoli-létezés kapu (DT-F46 (4)):** a 266 igehely-csere minden javasolt Károli-alakja
+  létezik a `konkordancia/Karoli_1908.tsv`-ben (bukás: 0).
+- **Az F46.6 kapu** a gépi csere első futtatásának utólagos ellenőrzéséből jött: a H5656 három
+  különböző forrásalakja („2 Chronicles 31:33 / 31:39 / 31:43”, valószínűleg a Num 4. fejezete)
+  a számjegy-javítással ugyanarra a „2Krón 31:3”-ra futott. Az első futás eredményét
+  visszaállítottam (git, a commit előtt), a kaput beépítettem, és a 3.6 tiszta állapotból
+  újrafutott. A kapu csak kézire tesz sort, cserét nem ad hozzá.
+- **DT-F46 (5), H8034:** a H8034 a >500 szabály miatt kézi listára került (`Dan 22:14`,
+  `Dan 22:19`), ezért a #34-ben (DT-F34c) védett fordítássor **nem változott**; a DT-F34c
+  felülírására nem került sor.
+- A cserenapló (`naplok/BDB_KONYVFELOLDAS_csere.tsv`) pozíciói a 3.6 előtti forrásra vonatkoznak;
+  a kézi lista pozíciói az új forrásra tolva (39 sor), a három cserélt névhiba-sor lekerült róla.
+
+**Eredmény:**
+
+| | érték |
+|---|---|
+| forrás-csere (token) | 269 (266 igehely + 3 névhiba), 207 szócikkben |
+| fordítás-csere (token) | 57 (55 igehely + 2 névhiba), 42 sorban; illeszthetetlen: 0 |
+| `forras_hash` frissítve | 42 sor |
+| forrás sha256 | előtte `5c176037…0f502f14`, utána `ff5357fe69c19262aa2464fbae03e02a177f4a8e044b8f47290751fee4f427a0` |
+| 13. kapu a forráson (`naplok/BDB_FORDITAS_M0.py --nem-ir`) | 109 → **60** szócikk (ebből 50 az N-F34 maradék-listáján) |
+| 13. kapu a fordított sorokon (432 BDB `teljes` sor) | 64 → **47** JELZES |
+| 11. kapu a fordított sorokon | 432/432 RENDBEN előtte és utána |
+| az összes kapu a 42 változott soron | csak a 13. kapu változott (17 JELZES → RENDBEN), más kapu nem |
+| szövegtartalom | a fordításban csak igehely-token és a két névhiba változott (szódiff) |
+| `ellenoriz.py` | SÉRTÉS 0 |
+| tesztek | `teszt_bdb_konyv_javit`, `teszt_forditas_kapuk`, `teszt_bdb_psi_javit`, `teszt_normalizal`, `teszt_ellenoriz_13`: OK; a `teszt_bdb_zaras` 2 hibát + 1 errort ad, **a változtatás előtt is** (a HEAD-en ugyanígy) |
+
+**A megmaradt 13. kapus jelzések** a kézi listán állnak (`naplok/BDB_KONYVFELOLDAS_kezi.tsv`,
+763 sor: az eredeti 711 + 52 DT-F46 miatt kézire tett sor − a 3 cserélt névhiba-sor + a 3 azonos
+célú sor), indoklással.
+
+**Nyitott kérdés az orkesztrátornak:** a `konkordancia/BDB_teljes_unabridged_README.md`
+SHA-256-sora még az F34-es változatot rögzíti; a README nincs a brief `ir` listáján, ezért nem
+írtam át (új érték fent).

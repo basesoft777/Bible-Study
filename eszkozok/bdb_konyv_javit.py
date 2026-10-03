@@ -954,6 +954,21 @@ def dt_f46_szures():
             continue
         r['dt_f46'] = 'csere'
         stat['csere'] += 1
+    # kapu (F46.6, a gepi csere elotti ellenorzesbol): ugyanabban a szocikkben KULONBOZO
+    # forrasalakok ugyanarra a celra (H5656: `2 Chronicles 31:33/31:39/31:43` -> 2Krón 31:3)
+    # -- a szamjegy-javitas itt nem lehet helyes, kezi listara
+    cel = collections.defaultdict(set)
+    for r in sorok:
+        if r['dt_f46'] == 'csere' and r['hibatipus'] != 'nevhiba':
+            cel[(r['strong'], r['javasolt_karoli_alak'])].add(r['forras_alak'])
+    for r in sorok:
+        if (r['dt_f46'] == 'csere' and r['hibatipus'] != 'nevhiba'
+                and len(cel[(r['strong'], r['javasolt_karoli_alak'])]) > 1):
+            r['dt_f46'] = ('kezi (F46.6 kapu: a szocikkben kulonbozo forrasalakok ugyanarra a celra: %s)'
+                           % ', '.join(sorted(cel[(r['strong'], r['javasolt_karoli_alak'])])))
+            uj_kezi.append(r)
+            stat['csere'] -= 1
+            stat['kezi_azonos_cel'] += 1
     fej2 = fej + ['dt_f46'] if 'dt_f46' not in fej else fej
     with open(CSERE, 'w', encoding='utf-8', newline='') as f:
         for l in fejsor:
@@ -1094,6 +1109,9 @@ def kezi_eltolas(per, uj_szov):
         r = dict(zip(fej, l.split('\t')))
         if r['strong'] not in per:
             continue
+        if any(c['pozicio'] == r['pozicio'] and c['forras_alak'] == r['forras_alak'] for c in per[r['strong']]):
+            nyers[i] = None   # jovahagyassal cserelodott (DT-F46 (3) nevhiba): lekerul a kezi listarol
+            continue
         poz = int(r['pozicio'])
         d = sum(len(c['javasolt_forras_alak']) - len(c['forras_alak'])
                 for c in per[r['strong']] if int(c['pozicio']) < poz)
@@ -1104,7 +1122,7 @@ def kezi_eltolas(per, uj_szov):
             print('KEZI-ELTOLAS HIBA:', r['strong'], poz, r['forras_alak'])
             sys.exit(8)
         nyers[i] = '\t'.join(r[k] for k in fej)
-    open(KEZI, 'w', encoding='utf-8', newline='').write('\n'.join(nyers))
+    open(KEZI, 'w', encoding='utf-8', newline='').write('\n'.join(x for x in nyers if x is not None))
     return n
 
 
@@ -1112,6 +1130,21 @@ def main():
     if '--kivonat' in sys.argv:
         i = sys.argv.index('--kivonat')
         kivonat(sys.argv[i + 1], sys.argv[i + 2])
+        return
+    ismert = {'--kivonat', '--ir', '--vetit', '--dt-f46', '--dt-f46-szures', '--jovahagyva', '--szintek',
+              '--kulcsok', '--kezi-eltolas-dt-f46'}
+    ismeretlen = [a for a in sys.argv[1:] if a.startswith('--') and a not in ismert]
+    if ismeretlen:
+        # ne fusson le helyette a felmeres: az felulirna a cserenaplot es a kezi listat
+        print('ismeretlen kapcsolo:', ismeretlen)
+        sys.exit(2)
+    if '--kezi-eltolas-dt-f46' in sys.argv:
+        # a 3.6 utolso lepese kulon is futtathato (az uj forrason)
+        per = collections.defaultdict(list)
+        for r in csere_tabla_beolvas(set(), (), 'dt_f46'):
+            per[r['strong']].append(r)
+        uj_szov = {p[0]: p[2] for p in tsv(FORRAS)[1:]}
+        print('kezi lista: eltolt pozicio:', kezi_eltolas(per, uj_szov))
         return
     if '--dt-f46-szures' in sys.argv:
         dt_f46_szures()
