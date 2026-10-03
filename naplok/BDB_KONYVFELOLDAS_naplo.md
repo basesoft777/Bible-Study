@@ -241,3 +241,11 @@ célú sor), indoklással.
 **Nyitott kérdés az orkesztrátornak:** a `konkordancia/BDB_teljes_unabridged_README.md`
 SHA-256-sora még az F34-es változatot rögzíti; a README nincs a brief `ir` listáján, ezért nem
 írtam át (új érték fent).
+
+## 3.7 Lezárás — a végrehajtó része (F46.7)
+
+- `beerkezo/BDB_KONYVFELOLDASI_AUDIT.md`: „befogadva: #46” jelöléssel archiválva (a fájl helyén).
+- `NYITOTT_FELADATOK.md`: az N-F34 és az N-F34c a Lezárva szakaszba (DT-F46 (6)); új tétel
+  **N-F46a** — a kézi lista (763 sor) nyitott tételként (DT-F46 (2) b).
+- `DONTESEK.md` DT-F46: ✅ alkalmazva.
+- A `fuggetlen-ellenor`, a zárójelentés és a draft PR az orkesztrátor dolga (nem futott).

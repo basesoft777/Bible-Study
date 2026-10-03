@@ -8,7 +8,7 @@ modell: opus
 allapot: fut
 ag: claude/bdb-konyvfeloldas
 ad: a konkordancia/BDB_teljes_unabridged.tsv és az adat/forditasok.tsv BDB-sorainak igehelyei a helyes bibliai könyvre mutatnak (független BDB-forrással és versszám-ellenőrzéssel igazolva); a kétes esetek kézi listán; az N-F34 maradéka és az N-F34c lezárva
-kovetkezo: 3.6 gépi csere a DT-F46 szerint, majd 3.7 (N-F34/N-F34c lezárása), Opus
+kovetkezo: 3.7 maradéka (orkesztrátor): fuggetlen-ellenor, zárójelentés, draft PR; a 3.6 és az N-F34/N-F34c lezárása kész (F46.6–F46.7)
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/OSHL_lexikalis_index_README.md, adat/licencek.tsv, adat/SEMA.md, eszkozok/bdb_psi_javit.py, eszkozok/forditas_kapuk.py, naplok/F34_M2_maradek.tsv, naplok/BDB_FORDITAS_naplo.md, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md, konkordancia/TAHOT_kivonat.tsv]
 ir: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, eszkozok/bdb_konyv_javit.py, eszkozok/teszt_bdb_konyv_javit.py, konkordancia/OSHL_BDB_igehelyek.tsv, adat/datasetek.tsv, adat/licencek.tsv, naplok/BDB_KONYVFELOLDAS_csere.tsv, naplok/BDB_KONYVFELOLDAS_kezi.tsv, naplok/BDB_KONYVFELOLDAS_naplo.md, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md]
 fugg: [34]

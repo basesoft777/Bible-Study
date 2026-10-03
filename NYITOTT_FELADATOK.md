@@ -1,6 +1,6 @@
 # Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.10.02 (F41_BSB_UJRAMERES_BRIEF.md, F41.15 — N-F41d/g/h az `ellenorizetlen` pontos jelentése és a Jób 40:1/3/6 szerint; N-F41e és N-F41f a Lezárva szakaszba; előtte F41.12 — N-F41b, N-F41d, N-F41g, N-F41h a szigorított versszintű `Számozás` szerint; előtte F41.10 — N-F41e, N-F41g, N-F41h a versszintű `Számozás` (mt/kjv/ellenorizetlen) szerint; előtte F41.7 — N-F41g, N-F41h új; N-F41e elvégezve; N-F41d, N-F41b pontosítva; előtte: N-F41a, N-F41b, N-F41d, N-F41e, N-F41f új, N-F41c felvéve és lezárva.)
+Utolsó frissítés: 2026.10.03 (F46_BDB_KONYVFELOLDAS_BRIEF.md, F46.7 — N-F34 és N-F34c a Lezárva szakaszba, N-F46a új: a BDB könyvfeloldási kézi lista); előtte 2026.10.02 (F41_BSB_UJRAMERES_BRIEF.md, F41.15 — N-F41d/g/h az `ellenorizetlen` pontos jelentése és a Jób 40:1/3/6 szerint; N-F41e és N-F41f a Lezárva szakaszba; előtte F41.12 — N-F41b, N-F41d, N-F41g, N-F41h a szigorított versszintű `Számozás` szerint; előtte F41.10 — N-F41e, N-F41g, N-F41h a versszintű `Számozás` (mt/kjv/ellenorizetlen) szerint; előtte F41.7 — N-F41g, N-F41h új; N-F41e elvégezve; N-F41d, N-F41b pontosítva; előtte: N-F41a, N-F41b, N-F41d, N-F41e, N-F41f új, N-F41c felvéve és lezárva.)
 
 Korábbi frissítés: 2026.09.29 (F05_SZOTAR_BRIEF.md v1.10, S1 javítókör (F05b) —
 N39–N44 új: héber `s`/`ś` átírás, H2403 lemma-választás, `spirantize()`
@@ -511,25 +511,18 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   `blokk_lxx` kapjon saját „kulcsszó nincs a versben” címkét (és számlálót),
   a SEMA 2.11 megjelenítési mondata ehhez igazodjon. A felvételt a
   felhasználó a DT23-ban jóváhagyta (2026.09.30).
-- **N-F34 — a BDB „ψ”-hiba B/R maradéka (156 hely, 94 szócikk): kézi nézet.**
-  *(ÚJ, F34 (#34), DT-F34b/DT-F34c; `naplok/F34_M2_maradek.tsv`, `naplok/F34_M2_naplo.md`)*
-  Az F34 159 helyet javított (`eszkozok/bdb_psi_javit.py`); maradt 156 hely
-  (A 4: `Gen 81:48`, `Josh 82:9`, `1Ki 145:31` — a vers nem létezik a zsoltárban —
-  és az összeolvadt `2Sam 132:1132`; B 137; R 15). Sorrend: (a) a találat nélküli
-  helyek okának felmérése: zsoltárcím miatti versszám-eltolás (ablak ±2) vagy tényleg
-  nincs a Strong a versben (a TAHOT-pótlás tárgytalan: Zsolt 150/150 fejezet, 2527/2527
-  vers megvan; proveniencia: `naplok/F34_M2_naplo.md` F34.6/3.); (b) a TAHOT-próba
-  újrafuttatása a maradékon (az ablakkal); (c) csak a még kétes hely megy kézi nézetre
-  (⛔, a BDB nyomtatott szövege alapján). A csere-tábla a lefordított szövegen is
-  újrafuttatható (`--forditas`), a BDB-fordítást a maradék nem blokkolja.
-  *Helyőrző: a végleges N-számot az Action osztja ki.*
-- **N-F34c — nem ψ eredetű könyvfeloldási hibák a BDB-forrásban** (Dt→Dan, `Lev 28:17`
-  típus); a Dán 22:14 (H8034) kizárásának felülvizsgálata. *(ÚJ, F34 (#34), DT-F34c 3. pont)*
-  A `Dan c:v` helyek (H3117, H6881, H8034, H8478, H9004; pl. `Dan 22:19` = 5Móz 22:19) nem
-  ψ-hibák, ezért az F34 nem módosította őket. Teendő: a forrásban a könyvnévvel jelölt,
-  a könyv fejezetszámánál nagyobb fejezetű helyek (a B-lista ≤ 50 fejezetű része, pl.
-  Jób/Kivonulás-feloldások) TAHOT-próbával: melyik könyv c:v ±1 helyén van a szócikk
-  Strong-száma; egyértelmű esetben mezőkulcsos csere (mint az F34), a többi kézi nézet.
+- **N-F46a — a BDB könyvfeloldási kézi lista (763 sor): kézi döntés.**
+  *(ÚJ, F46 (#46), DT-F46 (2) b; `naplok/BDB_KONYVFELOLDAS_kezi.tsv`, `naplok/BDB_KONYVFELOLDAS_naplo.md`)*
+  Az F46 gépi cseréje (DT-F46) 269 forrás- és 57 fordítás-tokent javított; a többi jelölt
+  szövegkörnyezettel a kézi listán: 299 + a DT-F46 miatt kézire tett 55 sor javaslattal (a 34
+  „más könyv érvényes fejezettel” `kozepes`, a 18 >500 előfordulású Strong — köztük a H8034
+  `Dan 22:14/22:19` → 5Móz és a H0413 `Deut 37:36` → 1Móz —, a 3 azonos célú H5656-sor), a
+  többi javaslat nélkül (több egyenrangú jelölt, nincs igazolt jelölt, láncolt lehetetlen hely 96,
+  jelentésszám tapadt 12, H3117 téves névhiba-jelölt). A 13. kapu forrásoldali 60 megmaradt
+  jelzése mind ezen a listán áll. Teendő: döntés soronként vagy blokkban (a nyomtatott BDB
+  alapján); a jóváhagyott sorok a `naplok/BDB_KONYVFELOLDAS_csere.tsv` `dt_f46` oszlopának
+  mintájára cserélhetők (`eszkozok/bdb_konyv_javit.py --ir`). A kézi lista pozíciói az F46 utáni
+  forrásra vonatkoznak.
   *Helyőrző: a végleges N-számot az Action osztja ki.*
 - **N-F34b — a TAHOT-kivonat „nem teljes” állítás elavult (CLAUDE.md,
   `konkordancia/README.md`); a valódi hiány kicsi.** *(ÚJ, F34 (#34), DT-F34b 3. pont)*
@@ -653,6 +646,10 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 <!-- GENERÁLT-VÉGE: nyitott -->
 
 ## Lezárva
+### 2026.10.03 (F46_BDB_KONYVFELOLDAS_BRIEF.md — N-F34 és N-F34c lezárva, DT-F46 (6)):
+* N-F34 — a BDB „ψ”-hiba B/R maradéka (a `naplok/F34_M2_maradek.tsv` 153 sora). **LEZÁRVA (F46.7):** az F46 teljes könyvfeloldási felmérése 141 sort a csere-táblára vett (37 `psi_maradek`, a többi valódi típusa szerint), 12 sor helyesnek bizonyult (a vers létezik, a Strong-próba sikeres); a jóváhagyott sorok a DT-F46 szerint cserélődtek, a többi az N-F46a kézi listáján. *(F34 (#34), DT-F34b/DT-F34c; `naplok/BDB_KONYVFELOLDAS_naplo.md`)*
+* N-F34c — nem ψ eredetű könyvfeloldási hibák (Dt→Dan, `Lev 28:17` típus), a Dán 22:14 (H8034) kizárásának felülvizsgálata. **LEZÁRVA (F46.7):** a `Dan c:v` tokenek közül `Dan 4:14` (H2742) → Jóel 4:14 (a Károli-alak MT→Károli átváltva: Jóel 3:14), `Dan 21:15` és `Dan 24:2` (H8478) → 1Móz javaslat a >500 előfordulási szabály miatt kézi; a H8034 `Dan 22:14`/`Dan 22:19` → 5Móz javaslat szintén kézi (>500), ezért a DT-F34c védett sora nem változott; `Lev 28:17` (H0398) kézi (két egyenrangú jelölt). A maradék az N-F46a-ban. *(F34 (#34), DT-F34c 3. pont; F46, DT-F46)*
+
 ### 2026.10.02 (F41_BSB_UJRAMERES_BRIEF.md — N-F41c felvéve és lezárva):
 * N-F41c — a `bsb_import.py` a `Lam`/`JSir` (F28.9 átnevezés) miatt a Siralmakat néma 0%-os könyvként mérte volna, és kihagyta volna az importból (a TAHOT_kivonat/Károli-kulcs `Sir`-t használ, a könyvtábla `JSir`-t). F41: a mérés a forrás-nevet használja (`forras_nev`), és a szkript hangos hibával leáll, ha egy ószövetségi könyvnek 0 illesztett sora / 0 egyező verse van, vagy a TAHOT_kivonatban nincs ilyen nevű könyv (`eszkozok/fj2/bsb_import.py`; a `Lam` sorok az újraimport után sorról sorra azonosak, `naplok/F41_nulladiff.txt`). A Macula-generátor aliasa külön tétel (N-F35a).
 * N-F41e — a BSB-importot leíró dokumentumok az F41 előtti állapotot mutatták. **ELVÉGEZVE (F41.7, a merge előtt): `adat/datasetek.tsv`, `konkordancia/README.md`, `adat/SEMA.md`, `adat/szotar_szerepek.tsv` frissítve (36 ÓSZ-könyv, 278 125 sor, a 6./7. oszlop, a számozás); `adat/licencek.tsv`-ben nincs számadat, nem változott.** *(ÚJ, F41.3, `konkordancia/README.md` BSB_Strongs-szakasz, `adat/SEMA.md`, `adat/datasetek.tsv` BSB-sorok, `adat/licencek.tsv`, a jelen fájl 6. nagy tétele; a számot (N-F41e) a main-Action osztja ki)*
