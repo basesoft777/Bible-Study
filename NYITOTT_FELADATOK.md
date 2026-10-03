@@ -1,6 +1,6 @@
 # Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.10.03 (F46_BDB_KONYVFELOLDAS_BRIEF.md, F46.7 — N-F34 és N-F34c a Lezárva szakaszba, N-F46a új: a BDB könyvfeloldási kézi lista); előtte 2026.10.02 (F41_BSB_UJRAMERES_BRIEF.md, F41.15 — N-F41d/g/h az `ellenorizetlen` pontos jelentése és a Jób 40:1/3/6 szerint; N-F41e és N-F41f a Lezárva szakaszba; előtte F41.12 — N-F41b, N-F41d, N-F41g, N-F41h a szigorított versszintű `Számozás` szerint; előtte F41.10 — N-F41e, N-F41g, N-F41h a versszintű `Számozás` (mt/kjv/ellenorizetlen) szerint; előtte F41.7 — N-F41g, N-F41h új; N-F41e elvégezve; N-F41d, N-F41b pontosítva; előtte: N-F41a, N-F41b, N-F41d, N-F41e, N-F41f új, N-F41c felvéve és lezárva.)
+Utolsó frissítés: 2026.10.03 (F46_BDB_KONYVFELOLDAS_BRIEF.md, F46.13 — N-F46a számozás eldöntve, N-F46b új; előtte F46.7 — N-F34 és N-F34c a Lezárva szakaszba, N-F46a új: a BDB könyvfeloldási kézi lista); előtte 2026.10.02 (F41_BSB_UJRAMERES_BRIEF.md, F41.15 — N-F41d/g/h az `ellenorizetlen` pontos jelentése és a Jób 40:1/3/6 szerint; N-F41e és N-F41f a Lezárva szakaszba; előtte F41.12 — N-F41b, N-F41d, N-F41g, N-F41h a szigorított versszintű `Számozás` szerint; előtte F41.10 — N-F41e, N-F41g, N-F41h a versszintű `Számozás` (mt/kjv/ellenorizetlen) szerint; előtte F41.7 — N-F41g, N-F41h új; N-F41e elvégezve; N-F41d, N-F41b pontosítva; előtte: N-F41a, N-F41b, N-F41d, N-F41e, N-F41f új, N-F41c felvéve és lezárva.)
 
 Korábbi frissítés: 2026.09.29 (F05_SZOTAR_BRIEF.md v1.10, S1 javítókör (F05b) —
 N39–N44 új: héber `s`/`ś` átírás, H2403 lemma-választás, `spirantize()`
@@ -523,11 +523,19 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   alapján); a jóváhagyott sorok a `naplok/BDB_KONYVFELOLDAS_csere.tsv` `dt_f46` oszlopának
   mintájára cserélhetők (`eszkozok/bdb_konyv_javit.py --ir`). A kézi lista pozíciói az F46 utáni
   forrásra vonatkoznak.
-  **Számozási kérdés (a felhasználó döntésére vár; ELLENOR_F46 1.):** a gépi csere 6 sorában a javasolt
-  Károli-alak MT-számozású, a Károliban egy verssel eltolt (H2204, H7871, H2938, H7138 — 2Sám 19;
-  H3940 Náh 2:5; H1932 Dán 6:27); a forrásban (BDB, MT) helyes, fordításba nem került. Mivel a
-  lefordított BDB-szöveg igehelyei MT-számozásúak, a konvenció (MT vagy Károli a `javasolt_karoli_alak`-ban
-  és a fordításban) a felhasználó döntése.
+  **Számozás (DT-F46 kiegészítés, 2026-10-03, eldöntve):** a forrás MT-számozású marad, a `javasolt_karoli_alak`
+  Károli-számozású (H2204, H7871 → 2Sám 19:32; H2938 → 2Sám 19:35; H7138 → 2Sám 19:42; H3940 → Náh 2:4;
+  H1932 → Dán 6:26), a fordításba nem került csere. A Károli-vers Strong-kapuja (DT-F46 kiegészítés (2)) a
+  pontos Károli-versben 16 már cserélt sort nem igazol (±1 ablakkal 1-et: H0215 Jób 41:32); ezek a forrásban
+  cserélve maradtak (a kérés szerint nem írtam), felülvizsgálatuk e tétel része — lista:
+  `naplok/BDB_KONYVFELOLDAS_naplo.md` F46.13.
+  *Helyőrző: a végleges N-számot az Action osztja ki.*
+- **N-F46b — a `eszkozok/teszt_bdb_zaras.py` korábbi hibái (2 FAIL + 1 ERROR).**
+  *(ÚJ, F46 (#46), DT-F46 kiegészítés (5); `naplok/BDB_KONYVFELOLDAS_naplo.md` 3.6)*
+  `test_dtf38g_kezi_javitasok` (FAIL: H5674), `test_szellem_tabla_nagybetus_helyei` (FAIL: H5674 nagybetűs
+  `Szellem`), `Zaras3Idempotencia.test_ir_ketszer_futtatva_nem_duplikal` (ERROR). A hiba az F46 előtti
+  HEAD-en is fennállt (az F46 változtatásai nélkül ugyanígy bukik), tehát nem az F46 okozta. Teendő: az
+  ok felmérése (a H5674 sora és a zárás-szkript idempotencia-tesztje) és javítás, külön menetben.
   *Helyőrző: a végleges N-számot az Action osztja ki.*
 - **N-F34b — a TAHOT-kivonat „nem teljes” állítás elavult (CLAUDE.md,
   `konkordancia/README.md`); a valódi hiány kicsi.** *(ÚJ, F34 (#34), DT-F34b 3. pont)*

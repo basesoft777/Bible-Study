@@ -275,3 +275,33 @@ számok a fájlból és a nyers XML-ből újramért értékek
 de a kivonat nem gyártódott újra, így a commitolt fájl és a szkript eltért (az utótaggal 4062 sor lenne).
 Az F46.9 visszaállította a fájlt előállító mintát, mert a felmérés és a gépi csere a 4053 soros
 kivonatra épült; a 9 utótagos ref csak új felméréssel vehető fel.
+
+
+## DT-F46 kiegészítés (felhasználó, chat, 2026-10-03) — F46.12–F46.13
+
+1. **Károli-számozás a 6 soron (F46.12).** A cserenaplóban a `javasolt_karoli_alak`: H2204, H7871 → 2Sám 19:32,
+   H2938 → 2Sám 19:35, H7138 → 2Sám 19:42, H3940 → Náh 2:4, H1932 → Dán 6:26. A forrásban az MT-alak áll
+   (ellenőrizve a cserenapló pozícióján, az előtte végrehajtott cserék eltolásával: `2Sam 19:33`, `2Sam 19:36`,
+   `2Sam 19:43`, `Nahum 2:5`, `Dan 6:27`). Egyik sincs lefordított szócikkben; a fordításba nem került csere. A kézi
+   lista e Strongok más tokenjeit tartalmazza, nem változott.
+2. **Károli-vers Strong-kapu (F46.13).** `eszkozok/bdb_konyv_javit.py`: `karoli_strong_van` — a Strong-szám a javasolt
+   Károli-versben áll-e (TAHOT_kivonat a Károli-helyen és a `Karoli_versmegfeleltetes.tsv` `igehely_kjv` szerinti helyen,
+   vagy `Karoli_Strong_kivonat.tsv`); a `--dt-f46-szures` kézire teszi a bukó sort, az `--ir` kapuja megáll.
+   Futtatás a teljes táblán: `--karoli-strong-kapu` (ablak 0) és `--ablak 1`
+   (`scope=BDB_KONYVFELOLDAS_csere.tsv javaslattal bíró igehely-sorai | forras=TAHOT_kivonat.tsv + Karoli_Strong_kivonat.tsv + Karoli_versmegfeleltetes.tsv | ts=2026-10-03`):
+
+   | ablak | csere, igazolt | csere, bukik | kézi, igazolt / bukik | nem jelölt (—), igazolt / bukik |
+   |---|---|---|---|---|
+   | 0 (pontosan a Károli-vers) | 250 | **16** | 41 / 14 | 175 / 120 |
+   | ±1 | 265 | **1** | 53 / 2 | 278 / 17 |
+
+   **A bukó sorok mind a forrásban már cserélt sorok** → a kérés szerint **nem írtam** (sem a forrást, sem a
+   cserenaplót); a nem cserélt bukó sorok már eddig is kézin vagy nem jelöltek voltak, tehát a táblán nem változott sor.
+   A 16 sor (ablak 0): `('H0056', '1 Samuel 3:26', 'Ézs 3:26', 'csere')`; `('H0215', 'Job 42:24', 'Jób 41:32', 'csere')`; `('H2406', '1 Chronicles 20:21', '1Krón 21:21', 'csere')`; `('H2574', 'Ezekiel 47:48', 'Ez 47:18', 'csere')`; `('H2851', 'Ezekiel 26:26', 'Ez 26:16', 'csere')`; `('H4803', 'Ezra 9:20', 'Ezsd 9:2', 'csere')`; `('H4908', 'Ex 46:6', 'Zsolt 46:6', 'csere')`; `('H5019', 'Ezekiel 29:30', 'Ez 29:20', 'csere')`; `('H5456', 'Isaiah 44:46', 'Ézs 44:16', 'csere')`; `('H5532', 'Eccl 22:22', 'Jób 22:22', 'csere')`; `('H6622', 'Genesis 40:41', '1Móz 40:21', 'csere')`; `('H6778', '2 Samuel 12:40', '1Krón 12:39', 'csere')`; `('H7092', 'Deuteronomy 15:80', '5Móz 15:8', 'csere')`; `('H7676', 'Lev 28:8', '4Móz 28:8', 'csere')`; `('H7927', 'Genesis 33:47', '1Móz 33:17', 'csere')`; `('H8193', 'Psalm 16:14', 'Péld 16:14', 'csere')`
+   Jellemző ok: a Strong a szomszédos versben áll (TAHOT-címkézés vagy MT/Károli-versszámozás), ezért a ±1
+   ablak csak a H0215 `Job 42:24` → Jób 41:32 sort hagyja igazolatlanul (MT→Károli átváltás a Macula szerint;
+   a TAHOT Jób 41-e más számozású). Döntés a felhasználónál (N-F46a).
+3. **README:** `konkordancia/BDB_teljes_unabridged_README.md` SHA-256 = `ff5357fe…f427a0`, előzményként az F34-es
+   `5c176037…` és a K7-es érték.
+4. **Az F46.6 kapu** (azonos cél különböző forrásalakokból → kézi) utólag jóváhagyva; a DT-F46 sor rögzíti.
+5. **N-F46b** a `teszt_bdb_zaras.py` korábbi hibáira (2 FAIL + 1 ERROR, az F46 előtt is).

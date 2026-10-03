@@ -13,7 +13,7 @@
 - **Licenc:** közkincs (public domain) — az eredeti BDB szövege és annak digitalizált
   átirata is közkincs
 - **SHA-256** (`konkordancia/BDB_teljes_unabridged.tsv`, K7, F05b):
-  `5c176037617813e330eb57e883ab7fd728c19a244c42196668ea712d0f502f14 (F34 javított verzió; az eredeti, K7: 1d28a84004817b8ee09eff92d762038ae2eac7351f24abd0a8b1cc5df380dfa5)`
+  `ff5357fe69c19262aa2464fbae03e02a177f4a8e044b8f47290751fee4f427a0` (F46 javított verzió: a könyvfeloldási csere, `naplok/BDB_KONYVFELOLDAS_naplo.md`; előzmény: F34 javított verzió `5c176037617813e330eb57e883ab7fd728c19a244c42196668ea712d0f502f14`; az eredeti, K7: `1d28a84004817b8ee09eff92d762038ae2eac7351f24abd0a8b1cc5df380dfa5`)
 
 ## Konverzió
 

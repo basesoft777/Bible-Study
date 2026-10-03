@@ -920,6 +920,71 @@ def karoli_hely(alak):
     return m.group(1) if m else None
 
 
+# DT-F46 kiegeszites (2) (felhasznalo, 2026-10-03): a Karoli-letezes kapu a Strong-szam
+# jelenletet is ellenorzi a javasolt Karoli-versben: TAHOT_kivonat (a Karoli_versmegfeleltetes
+# `igehely_kjv` oszlopa szerinti helyen is) vagy Karoli_Strong_kivonat (STEP-alak a
+# Konyv_normalizalo_tabla szerint). Ablak: 0 = pontosan a Karoli-vers (alapertek).
+KAROLI_VERSMEGF = os.path.join(REPO, 'konkordancia', 'Karoli_versmegfeleltetes.tsv')
+KAROLI_STRONG = os.path.join(REPO, 'konkordancia', 'Karoli_Strong_kivonat.tsv')
+KAROLI_UT_TABLA = os.path.join(REPO, 'konkordancia', 'Konyv_normalizalo_tabla.tsv')
+_KS = None
+
+
+def _karoli_strong_index():
+    global _KS
+    if _KS is None:
+        tah, _ = tahot_betolt()
+        k2t = {}
+        for p in tsv(KAROLI_VERSMEGF)[1:]:
+            if len(p) > 1:
+                k2t[p[0]] = p[1]
+        step2hu = {p[0]: p[1] for p in tsv(KAROLI_UT_TABLA)[1:] if len(p) > 1}
+        ksk = collections.defaultdict(set)
+        for p in tsv(KAROLI_STRONG)[1:]:
+            m = re.match(r'(\w+)\.(\d+)\.(\d+)', p[0]) if len(p) > 1 else None
+            if m and m.group(1) in step2hu:
+                ksk[(step2hu[m.group(1)], int(m.group(2)), int(m.group(3)))].add(strong_szam(p[1]))
+        _KS = (tah, k2t, ksk)
+    return _KS
+
+
+def karoli_strong_van(strong, karoli_alak, ablak=0):
+    """True, ha a Strong-szam a javasolt Karoli-versben (+-ablak) all; None, ha nem igehely."""
+    m = re.match(r'(\S+) (\d+):(\d+)', karoli_alak or '')
+    if not m:
+        return None
+    tah, k2t, ksk = _karoli_strong_index()
+    k, c, v = m.group(1), int(m.group(2)), int(m.group(3))
+    s = strong_szam(strong)
+    helyek = {(k, c, v)}
+    mm = re.match(r'(\d+):(\d+)$', k2t.get('%s %d:%d' % (k, c, v), ''))
+    if mm:
+        helyek.add((k, int(mm.group(1)), int(mm.group(2))))
+    return any(s in tah.get((a, b, e + d), ()) or s in ksk.get((a, b, e + d), ())
+               for (a, b, e) in helyek for d in range(-ablak, ablak + 1))
+
+
+def karoli_strong_kapu_jelentes(ablak=0):
+    """--karoli-strong-kapu: a teljes csere-tabla (javaslattal biro igehely-sorok) ellen; nem ir."""
+    sor = [l for l in open(CSERE, encoding='utf-8').read().split('\n') if l and not l.startswith('#')]
+    fej = sor[0].split('\t')
+    c = collections.Counter()
+    bukik = []
+    for l in sor[1:]:
+        r = dict(zip(fej, l.split('\t')))
+        if r['javasolt_forras_alak'] == '—' or r['hibatipus'] == 'nevhiba':
+            continue
+        v = karoli_strong_van(r['strong'], r['javasolt_karoli_alak'], ablak)
+        d = (r.get('dt_f46') or '—').split(' ')[0]
+        c[(d, v)] += 1
+        if not v:
+            bukik.append((r['strong'], r['forras_alak'], r['javasolt_karoli_alak'], d))
+    print('ablak=%d | %s' % (ablak, dict(c)))
+    for b in bukik:
+        print('  BUKIK:', b)
+    return bukik
+
+
 def dt_f46_szures():
     """A csere-tabla (cserenaplo) `dt_f46` oszlopa: csere / kezi (ok) / —; a 6 Strong
     javasolt Karoli-alakja MT->Karoli atvaltva. A DT-F46 miatt kezi sorok a kezi listara."""
@@ -977,6 +1042,11 @@ def dt_f46_szures():
             r['dt_f46'] = 'kezi (DT-F46 (4): a javasolt Karoli-alak a Karoli-szovegben nem letezik)'
             uj_kezi.append(r)
             stat['kezi_karoli_nem_letezik'] += 1
+            continue
+        if not karoli_strong_van(r['strong'], r['javasolt_karoli_alak']):
+            r['dt_f46'] = 'kezi (DT-F46 kiegeszites (2): a Strong-szam a javasolt Karoli-versben nem all)'
+            uj_kezi.append(r)
+            stat['kezi_karoli_strong'] += 1
             continue
         r['dt_f46'] = 'csere'
         stat['csere'] += 1
@@ -1039,6 +1109,11 @@ def alkalmaz(sorok_csere, ir):
                   if r['hibatipus'] != 'nevhiba' and karoli_hely(r['javasolt_karoli_alak']) not in kv]
     if nem_letezo:
         print('KAROLI-KAPU BUKIK: a javasolt Karoli-alak nem letezik:', nem_letezo)
+        sys.exit(7)
+    strong_hiany = [(r['strong'], r['javasolt_karoli_alak']) for r in sorok_csere
+                    if r['hibatipus'] != 'nevhiba' and not karoli_strong_van(r['strong'], r['javasolt_karoli_alak'])]
+    if strong_hiany:
+        print('KAROLI-STRONG-KAPU BUKIK: a Strong-szam a javasolt Karoli-versben nem all:', strong_hiany)
         sys.exit(7)
     stat['karoli_kapu_ellenorzott'] = len(sorok_csere)
     for st, rs in per.items():
@@ -1158,12 +1233,16 @@ def main():
         kivonat(sys.argv[i + 1], sys.argv[i + 2])
         return
     ismert = {'--kivonat', '--ir', '--vetit', '--dt-f46', '--dt-f46-szures', '--jovahagyva', '--szintek',
-              '--kulcsok', '--kezi-eltolas-dt-f46'}
+              '--kulcsok', '--kezi-eltolas-dt-f46', '--karoli-strong-kapu', '--ablak'}
     ismeretlen = [a for a in sys.argv[1:] if a.startswith('--') and a not in ismert]
     if ismeretlen:
         # ne fusson le helyette a felmeres: az felulirna a cserenaplot es a kezi listat
         print('ismeretlen kapcsolo:', ismeretlen)
         sys.exit(2)
+    if '--karoli-strong-kapu' in sys.argv:
+        i = sys.argv.index('--ablak') if '--ablak' in sys.argv else None
+        karoli_strong_kapu_jelentes(int(sys.argv[i + 1]) if i else 0)
+        return
     if '--kezi-eltolas-dt-f46' in sys.argv:
         # a 3.6 utolso lepese kulon is futtathato (az uj forrason)
         per = collections.defaultdict(list)
