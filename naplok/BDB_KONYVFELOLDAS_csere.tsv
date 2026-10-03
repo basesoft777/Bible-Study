@@ -178,7 +178,7 @@ H1931	6027	Hos 22:9	—	Prov 22:9	Péld 22:9	fejezet_tullepes	kozepes	10:18;10:2
 H1931	6037	Hos 24:12	—	Prov 24:12	Péld 24:12	fejezet_tullepes	kozepes	10:18;10:22;10:24;11:28;19:21;22:9;13:13	illesztheto (1/1)	N-F34 maradek sora; a lancolt/csoportbeli helyek kozul 7/7 is ebben a konyvben igazolt (a forrasbeli konyvben 1)	kezi (DT-F46 (1): a Strong-szam a TAHOT-ban 1876-szor all, > 500)
 H1931	9367	Lam 6:10	—	—	—	psi_maradek	kezi	—	illesztheto (1/1)	N-F34 maradek sora; tobb egyenrangu jelolt: 3Móz 6:10, 4Móz 6:10, 1Sám 6:10, 2Sám 6:10, 1Krón 6:10, 2Krón 6:10, Neh 6:10, Préd 6:10	—
 H1932	887	Ezra 4:27	—	—	—	vers_tullepes	kezi	5:4	—	nincs olyan konyv/vers, ahol a hely letezik es a Strong-proba vagy a fuggetlen forras igazolna; arameus szakasz: a heber Strong-proba itt nem szelektiv	—
-H1932	928	Ezra 6:27	—	Dan 6:27	Dán 6:27	vers_tullepes	kozepes	6:15	—	a lancolt/csoportbeli helyek kozul 1/1 is ebben a konyvben igazolt (a forrasbeli konyvben 1)	csere
+H1932	928	Ezra 6:27	—	Dan 6:27	Dán 6:26	vers_tullepes	kozepes	6:15	—	DT-F46 kiegeszites (felhasznalo, 2026-10-03): Karoli-szamozas Dán 6:27 -> Dán 6:26, a forras MT-alakja (Dan 6:27) marad, a forditasba nem kerul csere; a lancolt/csoportbeli helyek kozul 1/1 is ebben a konyvben igazolt (a forrasbeli konyvben 1)	csere
 H1945	428	1Ki 34:5	—	Jer 34:5	Jer 34:5	fejezet_tullepes	kozepes	—	—	N-F34 maradek sora	csere
 H1961	3069	Isaiah 14:34	—	—	—	vers_tullepes	kezi	—	illesztheto (1/1)	tobb egyenrangu jelolt: 4Móz 14:34, Péld 14:34, Ézs 14:3, Ézs 14:4, Ézs 14:24	—
 H1961	7539	Hosea 2:33	—	1Sam 2:33	1Sám 2:33	vers_tullepes	kezi	2:18	illesztheto (1/1)	a lancolt/csoportbeli helyek kozul 1/1 is ebben a konyvben igazolt (a forrasbeli konyvben 1); a Strong-proba nem szelektiv (a szo egy veletlen 3 verses ablakban 41% esellyel all; a veletlen talalat varhato szama 11 jelolt hely kozott 1.81), fuggetlen forras nincs	—
@@ -227,7 +227,7 @@ H2155	109	2Chr 29:12	—	—	—	osszeolvadt_alak	kezi	—	—	jelentesszam tapa
 H2174	111	2Chr 2:6	—	1Chr 2:6	1Krón 2:6	mas_konyv_ervenyes_fejezettel	kezi	—	—	a forrasbeli hely is letezik; a mas konyvbeli talalat mellett nincs eleg lanc/csoport-tamasz (E=0.06, lanc 0, a forrasbeli konyvben 0) es fuggetlen forras	—
 H2181	270	Genesis 38:34	—	—	—	vers_tullepes	kezi	—	—	tobb egyenrangu jelolt: 1Móz 38:14, 1Móz 38:24	—
 H2204	561	1 Samuel 17:122	—	1Sam 17:12	1Sám 17:12	vers_tullepes	kozepes	2:22;4:18;8:1;8:5;12:2	—	—	csere
-H2204	582	1 Samuel 19:33	—	2Sam 19:33	2Sám 19:33	vers_tullepes	kozepes	—	—	—	csere
+H2204	582	1 Samuel 19:33	—	2Sam 19:33	2Sám 19:32	vers_tullepes	kozepes	—	—	DT-F46 kiegeszites (felhasznalo, 2026-10-03): Karoli-szamozas 2Sám 19:33 -> 2Sám 19:32, a forras MT-alakja (2Sam 19:33) marad, a forditasba nem kerul csere	csere
 H2205	2094	2Chronicles 5:2	—	—	—	osszeolvadt_alak	kezi	—	nem_egyertelmu_forrasalak	jelentesszam tapadt a szamozott konyvhoz (2Chronicles 5:2); a konyv nem hibas, a javitas szokoz-beszuras lenne -- konyvneven tuli OCR, nem e feladat hataskore	—
 H2206	470	Psalm 133:4	—	—	—	vers_tullepes	kezi	17:35	—	tobb egyenrangu jelolt: Zsolt 133:1, Zsolt 133:2, Zsolt 133:3	—
 H2206	565	17:35	—	—	—	lanc_lehetetlen	kezi	—	—	konyv nelkuli, lancolt igehely: az orokolt konyvben (Zsolt, a 'Psalm 133:4' token utan) a vers nem letezik; a gepi csere csak konyvjelolt tokent cserel	—
@@ -305,7 +305,7 @@ H2902	270	Exod 22:28	—	Ezek 22:28	Ez 22:28	mas_konyv_ervenyes_fejezettel	kezi	
 H2905	319	Ezekiel 6:36	—	1Kin 6:36	1Kir 6:36	vers_tullepes	kozepes	7:12;7:4;7:2	—	a lancolt/csoportbeli helyek kozul 3/3 is ebben a konyvben igazolt (a forrasbeli konyvben 0)	csere
 H2916	503	Psalm 40:30	—	Psa 40:3	Zsolt 40:3	vers_tullepes	kozepes	—	—	—	csere
 H2919	152	1Sam 1:21	—	2Sam 1:21	2Sám 1:21	mas_konyv_ervenyes_fejezettel	kezi	—	—	a forrasbeli hely is letezik; a mas konyvbeli talalat mellett nincs eleg lanc/csoport-tamasz (E=0.07, lanc 0, a forrasbeli konyvben 0) es fuggetlen forras	—
-H2938	411	1 Samuel 19:36	—	2Sam 19:36	2Sám 19:36	vers_tullepes	kozepes	—	—	—	csere
+H2938	411	1 Samuel 19:36	—	2Sam 19:36	2Sám 19:35	vers_tullepes	kozepes	—	—	DT-F46 kiegeszites (felhasznalo, 2026-10-03): Karoli-szamozas 2Sám 19:36 -> 2Sám 19:35, a forras MT-alakja (2Sam 19:36) marad, a forditasba nem kerul csere	csere
 H2970	214	2 Kings 25:33	—	2Kin 25:23	2Kir 25:23	vers_tullepes	kozepes	—	—	—	csere
 H3001	625	Eccl 17:10	—	Ezek 17:10	Ez 17:10	fejezet_tullepes	kozepes	—	—	N-F34 maradek sora	csere
 H3027	5354	Isaiah 49:29	—	—	—	vers_tullepes	kezi	10:12	illesztheto (1/1)	tobb egyenrangu jelolt: Ézs 49:2, Ézs 49:21, Ézs 49:22, Ézs 49:23	—
@@ -426,7 +426,7 @@ H3896	386	2Sam 31:2	—	—	—	psi_maradek	kezi	—	—	N-F34 maradek sora; nin
 H3898	1935	Judges 1:52	—	—	—	vers_tullepes	kezi	—	illesztheto (1/1)	tobb egyenrangu jelolt: Bír 1:2, Bír 1:5, Bír 9:52	—
 H3899	2916	Prov 65:25	—	Isa 65:25	Ézs 65:25	fejezet_tullepes	kozepes	6:8;30:25	illesztheto (1/1)	N-F34 maradek sora	csere
 H3915	3222	Psalm 16:17	—	Psa 16:7	Zsolt 16:7	vers_tullepes	kezi	—	illesztheto (1/1)	a Strong-proba nem szelektiv (a szo egy veletlen 3 verses ablakban 3% esellyel all; a veletlen talalat varhato szama 22 jelolt hely kozott 0.63), fuggetlen forras nincs	—
-H3940	594	Nahum 2:15	—	Nahum 2:5	Náh 2:5	vers_tullepes	kozepes	—	—	—	csere
+H3940	594	Nahum 2:15	—	Nahum 2:5	Náh 2:4	vers_tullepes	kozepes	—	—	DT-F46 kiegeszites (felhasznalo, 2026-10-03): Karoli-szamozas Náh 2:5 -> Náh 2:4, a forras MT-alakja (Nahum 2:5) marad, a forditasba nem kerul csere	csere
 H3940	906	Job 12:5	—	Zech 12:5	Zak 12:5	mas_konyv_ervenyes_fejezettel	kezi	—	—	a forrasbeli hely is letezik; a mas konyvbeli talalat mellett nincs eleg lanc/csoport-tamasz (E=0.04, lanc 0, a forrasbeli konyvben 0) es fuggetlen forras	—
 H3947	4156	Genesis 16:21	—	Ezek 16:21	Ez 16:21	vers_tullepes	kezi	45:19;6:21;12:19	illesztheto (1/1)	a lancolt/csoportbeli helyek kozul 1/3 is ebben a konyvben igazolt (a forrasbeli konyvben 3); a Strong-proba nem szelektiv (a szo egy veletlen 3 verses ablakban 12% esellyel all; a veletlen talalat varhato szama 29 jelolt hely kozott 0.40), fuggetlen forras nincs	—
 H3956	2133	Proverbs 28:33	—	Prov 28:23	Péld 28:23	vers_tullepes	kozepes	—	illesztheto (1/1)	—	csere
@@ -837,7 +837,7 @@ H7131	420	Exodus 40:46	—	Ezek 40:46	Ez 40:46	vers_tullepes	kozepes	—	—	—
 H7131	445	Ex 45:4	—	Ezek 45:4	Ez 45:4	fejezet_tullepes	kozepes	—	—	—	csere
 H7138	81	2 Samuel 19:48	—	—	—	vers_tullepes	kezi	—	—	tobb egyenrangu jelolt: 2Sám 19:41, 2Sám 19:42, 2Sám 19:43, 2Sám 19:44	—
 H7138	790	Exod 22:5	—	Ezek 22:5	Ez 22:5	mas_konyv_ervenyes_fejezettel	kezi	—	—	a forrasbeli hely is letezik; a mas konyvbeli talalat mellett nincs eleg lanc/csoport-tamasz (E=0.17, lanc 0, a forrasbeli konyvben 0) es fuggetlen forras	—
-H7138	1035	Jeremiah 19:43	—	2Sam 19:43	2Sám 19:43	vers_tullepes	kozepes	—	—	—	csere
+H7138	1035	Jeremiah 19:43	—	2Sam 19:43	2Sám 19:42	vers_tullepes	kozepes	—	—	DT-F46 kiegeszites (felhasznalo, 2026-10-03): Karoli-szamozas 2Sám 19:43 -> 2Sám 19:42, a forras MT-alakja (2Sam 19:43) marad, a forditasba nem kerul csere	csere
 H7161	1980	Exodus 27:22	—	Exod 27:2	2Móz 27:2	vers_tullepes	kozepes	—	—	—	csere
 H7179	506	40:24	—	—	—	lanc_lehetetlen	kezi	—	—	konyv nelkuli, lancolt igehely: az orokolt konyvben (Mal, a 'Malachi 3:19' token utan) a fejezet nem letezik; a gepi csere csak konyvjelolt tokent cserel	—
 H7179	513	41:2	—	—	—	lanc_lehetetlen	kezi	—	—	konyv nelkuli, lancolt igehely: az orokolt konyvben (Mal, a 'Malachi 3:19' token utan) a fejezet nem letezik; a gepi csere csak konyvjelolt tokent cserel	—
@@ -932,7 +932,7 @@ H7843	4771	Prov 57:1	—	Psa 57:1	Zsolt 57:1	psi_maradek	kezi	58:1;59:1	illeszth
 H7843	4782	Prov 58:1	—	Psa 58:1	Zsolt 58:1	psi_maradek	kezi	57:1;59:1	illesztheto (1/1)	N-F34 maradek sora; a TAHOT-proba nem sikeres, a Macula (MT) igazolja; a lancolt/csoportbeli helyek kozul 2/2 is ebben a konyvben igazolt (a forrasbeli konyvben 0)	—
 H7843	4793	Prov 59:1	—	Psa 59:1	Zsolt 59:1	psi_maradek	kezi	57:1;58:1	illesztheto (1/1)	N-F34 maradek sora; a TAHOT-proba nem sikeres, a Macula (MT) igazolja; a lancolt/csoportbeli helyek kozul 2/2 is ebben a konyvben igazolt (a forrasbeli konyvben 0)	—
 H7857	815	Ezek 11:11	—	Dan 11:11	Dán 11:11	mas_konyv_ervenyes_fejezettel	kezi	38:22	—	a forrasbeli hely is letezik; a mas konyvbeli talalat mellett nincs eleg lanc/csoport-tamasz (E=0.08, lanc 0, a forrasbeli konyvben 1) es fuggetlen forras	—
-H7871	102	2 Samuel 19:83	—	2Sam 19:33	2Sám 19:33	vers_tullepes	kozepes	—	—	—	csere
+H7871	102	2 Samuel 19:83	—	2Sam 19:33	2Sám 19:32	vers_tullepes	kozepes	—	—	DT-F46 kiegeszites (felhasznalo, 2026-10-03): Karoli-szamozas 2Sám 19:33 -> 2Sám 19:32, a forras MT-alakja (2Sam 19:33) marad, a forditasba nem kerul csere	csere
 H7903	243	Leviticus 18:33	—	Lev 18:23	3Móz 18:23	vers_tullepes	kozepes	20:15	—	—	csere
 H7911	1180	Zech 11:17	—	Job 11:17	Jób 11:17	mas_konyv_ervenyes_fejezettel	kezi	—	illesztheto (1/1)	a forrasbeli hely is letezik; a mas konyvbeli talalat mellett nincs eleg lanc/csoport-tamasz (E=0.21, lanc 0, a forrasbeli konyvben 0) es fuggetlen forras	—
 H7916	51	Exodus 14:45	—	Exod 12:45	2Móz 12:45	vers_tullepes	kozepes	—	—	—	csere
