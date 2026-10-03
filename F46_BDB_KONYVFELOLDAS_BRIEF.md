@@ -5,7 +5,8 @@ kod: BDB_KONYVFELOLDAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/bdb-konyvfeloldas
 ad: a konkordancia/BDB_teljes_unabridged.tsv és az adat/forditasok.tsv BDB-sorainak igehelyei a helyes bibliai könyvre mutatnak (független BDB-forrással és versszám-ellenőrzéssel igazolva); a kétes esetek kézi listán; az N-F34 maradéka és az N-F34c lezárva
 kovetkezo: végrehajtás a /befogad után, a BDB-fordítás (#38) két adagja közötti megállásnál
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/OSHL_lexikalis_index_README.md, adat/licencek.tsv, adat/SEMA.md, eszkozok/bdb_psi_javit.py, eszkozok/forditas_kapuk.py, naplok/F34_M2_maradek.tsv, naplok/BDB_FORDITAS_naplo.md, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md, konkordancia/TAHOT_kivonat.tsv]
