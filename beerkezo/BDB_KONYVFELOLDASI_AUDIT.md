@@ -1,5 +1,7 @@
 # BDB könyvfeloldási audit
 
+**befogadva: #46** (`F46_BDB_KONYVFELOLDAS_BRIEF.md`; végrehajtva: `naplok/BDB_KONYVFELOLDAS_naplo.md`, 2026-10-03). Archív csonk: nem futtatandó.
+
 *Csonk a `/befogad`-nak · készült az F38 (BDB_FORDITAS) menetében, a DT-F38 döntés
 kiegészítése alapján (felhasználó, 2026.10.01) · fejléc nélkül, a `beerkezo/README.md` szerint*
 
