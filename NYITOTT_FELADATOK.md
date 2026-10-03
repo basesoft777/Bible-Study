@@ -514,7 +514,7 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
 - **N-F46a — a BDB könyvfeloldási kézi lista (763 sor): kézi döntés.**
   *(ÚJ, F46 (#46), DT-F46 (2) b; `naplok/BDB_KONYVFELOLDAS_kezi.tsv`, `naplok/BDB_KONYVFELOLDAS_naplo.md`)*
   Az F46 gépi cseréje (DT-F46) 269 forrás- és 57 fordítás-tokent javított; a többi jelölt
-  szövegkörnyezettel a kézi listán: 299 + a DT-F46 miatt kézire tett 55 sor javaslattal (a 34
+  szövegkörnyezettel a kézi listán: 296 + a DT-F46 miatt kézire tett 55 = 351 sor javaslattal (a 34
   „más könyv érvényes fejezettel” `kozepes`, a 18 >500 előfordulású Strong — köztük a H8034
   `Dan 22:14/22:19` → 5Móz és a H0413 `Deut 37:36` → 1Móz —, a 3 azonos célú H5656-sor), a
   többi javaslat nélkül (több egyenrangú jelölt, nincs igazolt jelölt, láncolt lehetetlen hely 96,
@@ -523,6 +523,11 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   alapján); a jóváhagyott sorok a `naplok/BDB_KONYVFELOLDAS_csere.tsv` `dt_f46` oszlopának
   mintájára cserélhetők (`eszkozok/bdb_konyv_javit.py --ir`). A kézi lista pozíciói az F46 utáni
   forrásra vonatkoznak.
+  **Számozási kérdés (a felhasználó döntésére vár; ELLENOR_F46 1.):** a gépi csere 6 sorában a javasolt
+  Károli-alak MT-számozású, a Károliban egy verssel eltolt (H2204, H7871, H2938, H7138 — 2Sám 19;
+  H3940 Náh 2:5; H1932 Dán 6:27); a forrásban (BDB, MT) helyes, fordításba nem került. Mivel a
+  lefordított BDB-szöveg igehelyei MT-számozásúak, a konvenció (MT vagy Károli a `javasolt_karoli_alak`-ban
+  és a fordításban) a felhasználó döntése.
   *Helyőrző: a végleges N-számot az Action osztja ki.*
 - **N-F34b — a TAHOT-kivonat „nem teljes” állítás elavult (CLAUDE.md,
   `konkordancia/README.md`); a valódi hiány kicsi.** *(ÚJ, F34 (#34), DT-F34b 3. pont)*

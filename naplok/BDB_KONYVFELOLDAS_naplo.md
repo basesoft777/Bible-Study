@@ -154,7 +154,7 @@ cserél, kézi). A nem leképezett alakot (`Chron 7:8`, `Ze 8:17`) a fordító b
 | 7 | H3867 | `Proverbs 22:77` | Péld 22:7 | vers / kozepes | az audit gyanúja; a 22. fejezetnek 29 verse van |
 | 8 | H0413 | `Deut 37:36` | 1Móz 37:36 | fejezet / **kezi** | a felhasználó példája: helyes javaslat, de a אֶל szinte minden versben áll (p = 54%), a próba nem szelektív |
 | 9 | H9005 | `Hab 41:47` | 1Móz 41:47 | fejezet / **kezi** | ugyanígy: a ל elöljáró (p ≈ 100%) |
-| 10 | H9005 | `cried to Phoenician לַלָּחֶם` | Pharaoh | névhiba / kezi | 1Móz 41:55; a független forrás nem igazolja (a szó a BDB-XML-ben nem áll) — még H5973 `with Phoenician Exod 8:8`, H7588 `name of Phoenician a crash`; a H3117 (`to Phoenician ימם`) nyelvi használat, téves jelölt |
+| 10 | H9005 | `cried to Phoenician לַלָּחֶם` | Pharaoh | névhiba / kezi | 1Móz 41:55; a független forrás nem igazolja (a szócikk BDB-XML-bejegyzése kidolgozatlan vázlat, a „Pharaoh” csak más szócikkekben áll; F46.9 javítás) — még H5973 `with Phoenician Exod 8:8`, H7588 `name of Phoenician a crash`; a H3117 (`to Phoenician ימם`) nyelvi használat, téves jelölt |
 
 ### Saját szúrópróba (értelmezés, nem mérés: `forras=manual`)
 
@@ -249,3 +249,29 @@ SHA-256-sora még az F34-es változatot rögzíti; a README nincs a brief `ir` l
   **N-F46a** — a kézi lista (763 sor) nyitott tételként (DT-F46 (2) b).
 - `DONTESEK.md` DT-F46: ✅ alkalmazva.
 - A `fuggetlen-ellenor`, a zárójelentés és a draft PR az orkesztrátor dolga (nem futott).
+
+## E17/DT3 bontási napló — `konkordancia/OSHL_BDB_igehelyek.tsv` (+4053 sor; F46.9, ELLENOR_F46 2.)
+
+Új tábla (a main-ben nem volt), 4053 adatsor. Bontás (saját újramérés: a kivonat a jelenlegi
+`eszkozok/bdb_konyv_javit.py --kivonat`-tal bájtazonosan újragyártható, az adatsorok egyeznek):
+
+| tétel | sor |
+|---|---|
+| `<ref>` a BDB-XML-ben | 3952 |
+| − nem értelmezhető `r=` attribútum (kimarad) | 25 |
+| = értelmezett ref (egyedi `bdb_id` + `sorszam`) | 3927 |
+| + többlet sor: a `bdb_id`-hez a `LexicalIndex.xml` több Strong-számot rendel (soronként egy Strong) | 126 |
+| **= adatsor** | **4053** |
+| ebből Strong nélküli sor (`strong` = `—`: a `bdb_id`-hez nincs számjegyes Strong a LexicalIndex-ben) | 397 |
+
+A kimaradt 25 `r=` érték: üres (6), versrész-utótagos alak (`Gen.30.20!a` ×2, `1Chr.9.8!a`, `1Chr.9.8!b`,
+`Hos.7.16!b`, `Hag.1.10!b`, `2Kgs.17.31!a`, `Deut.21.15!b`, `Jer.10.11!a`: 9), hibás OSIS-könyvnév
+(`Ez`, `Jb`, `Erz`, `1cHR`: 4), formai hiba (`Exod24.17`, `Ps.33`, `Exod.3.12-Exod.3.15`, `Ezra.814`,
+`Job.37:23`, `Ezra,6,15`: 6). Az ellenőri jelentés „3933 + 120” bontása ettől hat sorral tér el; a fenti
+számok a fájlból és a nyers XML-ből újramért értékek
+(`scope=OSHL_BDB_igehelyek.tsv + BrownDriverBriggs.xml + LexicalIndex.xml | forras=openscriptures/HebrewLexicon@21c9add | ts=2026-10-03`).
+
+**Reprodukálhatóság:** az F46.1 után a szkriptben a versrész-utótag elfogadása (`(?:![a-z])?`) bekerült,
+de a kivonat nem gyártódott újra, így a commitolt fájl és a szkript eltért (az utótaggal 4062 sor lenne).
+Az F46.9 visszaállította a fájlt előállító mintát, mert a felmérés és a gépi csere a 4053 soros
+kivonatra épült; a 9 utótagos ref csak új felméréssel vehető fel.

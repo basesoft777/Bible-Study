@@ -282,7 +282,10 @@ def kivonat(bdb_xml, lex_xml):
         n = 0
         for r in e.iter(ns + 'ref'):
             osszes += 1
-            m = re.match(r'([1-3]?[A-Za-z]+)\.(\d+)\.(\d+)(?:![a-z])?$', r.get('r') or '')
+            # F46.9 (ELLENOR_F46 2.): a commitolt kivonat (4053 sor) ezzel a mintaval keszult;
+            # a versresz-utotagos alak (`Gen.30.20!a`, 9 ref) kimarad, a felmeres erre epult.
+            # Az utotag elfogadasa (`(?:![a-z])?`) +9 refet adna (4062 sor) -- csak uj felmeressel.
+            m = re.match(r'([1-3]?[A-Za-z]+)\.(\d+)\.(\d+)$', r.get('r') or '')
             if not m:
                 ismeretlen[r.get('r')] += 1
                 continue
@@ -654,19 +657,42 @@ NEVHIBA = [(re.compile(r'\b(to|with|unto|before|name of) (Phoenician)'
 NYERS_XML = os.path.join(REPO, 'konkordancia', '_nyers', 'oshl', 'BrownDriverBriggs.xml')
 
 
+def nevhiba_xml_ok(xml, st, uj):
+    """A fuggetlen forras allasa egy nevhiba-jeloltrol: a SZOCIKK BDB-XML-bejegyzesei
+    (Strong -> bdb-id a konkordancia/OSHL_lexikalis_index.tsv-bol) tartalmazzak-e a javitott
+    szot. (F46.9, ELLENOR_F46 5.: a korabbi valtozat az egesz XML-ben kereste, es a
+    `Pharaoh` a parʿoh-szocikkben all, ezert tevesen „elofordul”-t irt.)"""
+    if xml is None:
+        return 'a fuggetlen forras (BDB-XML) nincs a gepen, nem ellenorizheto'
+    ids = []
+    for l in open(os.path.join(REPO, 'konkordancia', 'OSHL_lexikalis_index.tsv'), encoding='utf-8').read().split('\n'):
+        if l and not l.startswith('#'):
+            p = l.split('\t')
+            if p[0] == st:
+                ids.append(p[3])
+    if not ids:
+        return ('a fuggetlen forras nem igazolja: a szocikknek nincs BDB-XML-bejegyzese (a LexicalIndex-ben '
+                'nincs bdb-id); a %r szo a BDB-XML-ben csak mas szocikkekben all' % uj)
+    allapot = []
+    for b in ids:
+        m = re.search(r'<entry id="%s"[^>]*>(.*?)</entry>' % re.escape(b), xml, re.S)
+        t = m.group(1) if m else ''
+        if uj in t:
+            return 'a szocikk BDB-XML-bejegyzeseben (%s) a %r szo all: kezi osszevetes kell' % (b, uj)
+        s_ = re.search(r'<status[^>]*>(\w+)', t)
+        allapot.append('%s: %s' % (b, s_.group(1) if s_ else 'nincs'))
+    return ('a fuggetlen forras nem igazolja: a szocikk BDB-XML-bejegyzeseiben (%s) a %r szo nem all '
+            '(a bejegyzes kidolgozatlan vazlat); a szo a BDB-XML-ben csak mas szocikkekben fordul elo'
+            % ('; '.join(allapot), uj))
+
+
 def nevhibak(sorok):
     xml = open(NYERS_XML, encoding='utf-8-sig').read() if os.path.exists(NYERS_XML) else None
     ki = []
     for st, szoveg in sorok:
         for minta, uj in NEVHIBA:
             for m in minta.finditer(szoveg):
-                if xml is None:
-                    ok = 'a fuggetlen forras (BDB-XML) nincs a gepen, nem ellenorizheto'
-                elif uj not in xml:
-                    ok = ('a fuggetlen forras (BDB-XML) nem igazolja: a %r szo a BDB-XML-ben sehol nem all '
-                          '(a szocikk ott nincs kidolgozva)' % uj)
-                else:
-                    ok = 'a fuggetlen forrasban a %r szo elofordul, kezi osszevetes kell' % uj
+                ok = nevhiba_xml_ok(xml, st, uj)
                 ki.append({
                     'strong': st, 'pozicio': str(m.start(2)), 'forras_alak': m.group(2),
                     'fuggetlen_alak': '—', 'javasolt_forras_alak': uj, 'javasolt_karoli_alak': 'fáraó',
