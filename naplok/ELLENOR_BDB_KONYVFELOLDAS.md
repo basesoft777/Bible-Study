@@ -15,3 +15,18 @@
 4. Az N-F46a „299 + 55 javaslattal” helyesen 296 + 55 = 351.
 5. A csere.tsv névhiba-sorainak `ok` mezője ellentmond a DT-F46 (3)-nak („Pharaoh” a független forrásban).
 6. A `konkordancia/BDB_teljes_unabridged_README.md` sha256-sora elavult (nincs az `ir` listán; a végrehajtó jelezte).
+
+---
+
+## Ismételt ellenőrzés (head cb493c4; F46.8–F46.15) — ELTÉRÉS: 7 tétel
+
+*Az ellenőr nem futtathatott: sha256sum, ellenoriz.py, kapuk, tesztek → ezek NEM ELLENŐRIZHETŐ (a végrehajtó jelentése szerint: 0 SÉRTÉS, 11. kapu 432/432, 13. kapu 63/49). Saját futtatás: `futtat.py` E2–E16, E19: 0 találat.*
+
+**OK (lekérdezéssel):** a 6 sor Károli-számozású javaslata, a forrásban MT-alak; a 16 visszaállítás (kezi.tsv 779 sor, H4908/H7676/H8193 fordítássora bájtra azonos a main-nel); 30 elemű minta a 250 csere Strong-jelenlétére a Károli-versben (30/30); forrás 253 token / 197 szócikk, fordítás 54 token / 39 sor; D1–D4; E17 bontási napló.
+
+**ELTÉRÉS (súlyossági sorrendben):**
+1. **E-1** — a 16 visszaállítás kézzel történt, a szkript nem tükrözi (a `--dt-f46-szures` újrafuttatása ~14-et újra `csere`-re állítana). → javítandó: a szkript kódolja.
+2. **E-2** — az N-F46a törzsében elavult számok (269/57, 351).
+3. **E-4** — napló 25. és 261. sor: 19 vs. 25 kimaradt `r=`.
+4. **E-7** — DT-F46 „(3) README SHA-256 = ff5357fe…”: a tényleges `dfb5b2aa…`.
+5. **E-3** — a brief `kovetkezo` mezője elavult; **E-5** — a zárójelentés elején hiányzik a PR-link/CI; **E-6** — a jelentés fájlneve a brief szerint `ELLENOR_BDB_KONYVFELOLDAS.md` (átnevezve).
