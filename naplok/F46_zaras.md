@@ -1,3 +1,5 @@
+PR: https://github.com/basesoft777/Bible-Study/pull/140 · CI: a push után ellenőrzendő
+
 # F46 zárójelentés — BDB_KONYVFELOLDAS (#46)
 
 *Ág: `claude/bdb-konyvfeloldas` · modell: opus · ⛔ 3.5 megállás után a DT-F46 döntéssel folytatva · ellenőr: `naplok/ELLENOR_F46.md` (ELTÉRÉS 6, nem blokkoló; 2–5. javítva F46.9)*

@@ -513,16 +513,20 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   felhasználó a DT23-ban jóváhagyta (2026.09.30).
 - **N-F46a — a BDB könyvfeloldási kézi lista (779 sor): kézi döntés.**
   *(ÚJ, F46 (#46), DT-F46 (2) b; `naplok/BDB_KONYVFELOLDAS_kezi.tsv`, `naplok/BDB_KONYVFELOLDAS_naplo.md`)*
-  Az F46 gépi cseréje (DT-F46) 269 forrás- és 57 fordítás-tokent javított; a többi jelölt
-  szövegkörnyezettel a kézi listán: 296 + a DT-F46 miatt kézire tett 55 = 351 sor javaslattal (a 34
+  Az F46 gépi cseréje (DT-F46 és kiegészítései) 253 forrás-tokent (250 igehely + 3 névhiba, 197 szócikk) és
+  54 fordítás-tokent (39 sor) javított; a többi jelölt szövegkörnyezettel a kézi listán (779 sor): 296 + a
+  DT-F46 miatt kézire tett 55 + a kiegészítés 2 szerint visszaállított 16 = 367 sor javaslattal (a 34
   „más könyv érvényes fejezettel” `kozepes`, a 18 >500 előfordulású Strong — köztük a H8034
   `Dan 22:14/22:19` → 5Móz és a H0413 `Deut 37:36` → 1Móz —, a 3 azonos célú H5656-sor), a
   többi javaslat nélkül (több egyenrangú jelölt, nincs igazolt jelölt, láncolt lehetetlen hely 96,
   jelentésszám tapadt 12, H3117 téves névhiba-jelölt). A 13. kapu forrásoldali 63 megmaradt
   jelzése mind ezen a listán áll. Teendő: döntés soronként vagy blokkban (a nyomtatott BDB
-  alapján); a jóváhagyott sorok a `naplok/BDB_KONYVFELOLDAS_csere.tsv` `dt_f46` oszlopának
-  mintájára cserélhetők (`eszkozok/bdb_konyv_javit.py --ir`). A kézi lista pozíciói az F46 utáni
-  forrásra vonatkoznak.
+  alapján). A kézi lista pozíciói a jelenlegi (F46.14 utáni) forrásra vonatkoznak; a cserenapló
+  (`naplok/BDB_KONYVFELOLDAS_csere.tsv`) pozíciói a 3.6 előttire, ezért az `eszkozok/bdb_konyv_javit.py
+  --ir --dt-f46` a mostani forráson nem futtatható újra (a pozíció-kapu megáll). A jóváhagyott kézi sorok
+  cseréjéhez a szkriptet a `kezi.tsv` pozícióira kell bővíteni (ugyanazzal a mezőkulcsos, pozícióhoz kötött
+  cserével és a Károli-létezés + Károli-vers Strong-kapuval, ablak 0); a `--dt-f46-szures` újrafuttatása
+  a commitolt állapotot adja (idempotens, F46.17).
   **Számozás (DT-F46 kiegészítés, 2026-10-03, eldöntve):** a forrás MT-számozású marad, a `javasolt_karoli_alak`
   Károli-számozású (H2204, H7871 → 2Sám 19:32; H2938 → 2Sám 19:35; H7138 → 2Sám 19:42; H3940 → Náh 2:4;
   H1932 → Dán 6:26), a fordításba nem került csere. A Károli-vers Strong-kapuja (DT-F46 kiegészítés (2)) a

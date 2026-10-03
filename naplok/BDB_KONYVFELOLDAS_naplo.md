@@ -22,7 +22,8 @@ proveniencia (a mérések): `scope=BDB_teljes_unabridged.tsv minden könyvjelöl
   (ajanlott / korlatos). A nyers XML a gitignore-olt `konkordancia/_nyers/oshl/` alatt
   (sha256 `2b52658a…c38f8`); a repóba csak a kivonat kerül:
   `konkordancia/OSHL_BDB_igehelyek.tsv` (4053 sor: 3952 `<ref>`, Strong a `LexicalIndex.xml`-ből;
-  19 `r=` attribútum nem értelmezhető, pl. `Ezra.814`, `Job.37:23` — kimaradt, a szkript kiírja).
+  25 `r=` attribútum nem értelmezhető, pl. `Ezra.814`, `Job.37:23` — kimaradt, a szkript kiírja; a szkript
+  kimenete 19 különböző értéket sorol fel, összesen 25 előfordulással, l. a bontási naplót lent).
 
 **A független forrás lefedettsége kicsi — ez a felmérés legfontosabb korlátja.** A forrás saját
 szavával „work in progress”: 11 845 szócikkéből csak 2855-ben van `<ref>`, a többi igehely nélküli
@@ -343,3 +344,14 @@ igazítva (a három sor most az F46 előttivel azonos).
 sor; kézi lista 779 sor (763 + 16); 13. kapu a forráson 109 → **63** szócikk (52 az N-F34 listáján), a fordított
 sorokon 64 → **49** JELZES; 11. kapu 432/432 RENDBEN; a Károli-vers Strong-kapu a megmaradt 250 igehely-cserén
 250/250; `ellenoriz.py` 0 SÉRTÉS; forrás sha256 `dfb5b2aaa722291736d567c4e56c10d2890f2c860eadf416629e5d02f0e59acc`.
+
+## F46.17 — a szűrés idempotenciája (ismételt ellenőr E-1)
+
+A DT-F46 kiegészítés 2 a szkriptben kódolva (`DT_F46_KIEG2`, a 16 sor kulcsa: strong + 3.6 előtti pozíció
++ forrásalak): ezek mindig kézik, a TAHOT-szomszéd csak a javaslat-oszlopban áll, nem gépi csere-jelölt. Az
+MT→Károli átváltás nem fut újra a már átváltott soron; a Károli-vers Strong-kapu az F46.6 kapu után érvényesül
+(ahol mindkettő bukik, a F46.6 indoka marad); a kézi listához csak a hiányzó sor fűződik
+(kulcs: strong + forrásalak + javasolt forrásalak, darabszám szerint). Ellenőrzés: `--dt-f46-szures --szaraz`:
+csere-sor 253, eltérés a commitolt `dt_f46`-tól 0; az írással futtatott `--dt-f46-szures` után a cserenapló és
+a kézi lista bájtra azonos maradt. A `--vetit --dt-f46` a 3.6 előtti forrásra épül, a mostanin a pozíció-kapu
+megáll (`ELTERES a poziciotol`) — ez várt viselkedés, a csere már megtörtént.

@@ -10,7 +10,7 @@ ag: claude/bdb-konyvfeloldas
 pr: https://github.com/basesoft777/Bible-Study/pull/140
 lezarva_osszegzes: "OSHL-forrással felmérve (1032 csere-jelölt), DT-F46 szerint cserélve: forrás 253 token, fordítás 54 token (a Károli-vers Strong-kapun nem igazolt 16 csere visszaállítva); N-F34/N-F34c lezárva, N-F46a nyitott (779 kézi sor), N-F46b nyitott."
 ad: a konkordancia/BDB_teljes_unabridged.tsv és az adat/forditasok.tsv BDB-sorainak igehelyei a helyes bibliai könyvre mutatnak (független BDB-forrással és versszám-ellenőrzéssel igazolva); a kétes esetek kézi listán; az N-F34 maradéka és az N-F34c lezárva
-kovetkezo: "Te: merge a #140-nel; döntés a 6 sor számozásáról (N-F46a), README sha256"
+kovetkezo: "Te: merge a #140-nel (felhasználó kérte, CI zöld után)"
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/OSHL_lexikalis_index_README.md, adat/licencek.tsv, adat/SEMA.md, eszkozok/bdb_psi_javit.py, eszkozok/forditas_kapuk.py, naplok/F34_M2_maradek.tsv, naplok/BDB_FORDITAS_naplo.md, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md, konkordancia/TAHOT_kivonat.tsv]
 ir: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, eszkozok/bdb_konyv_javit.py, eszkozok/teszt_bdb_konyv_javit.py, konkordancia/OSHL_BDB_igehelyek.tsv, adat/datasetek.tsv, adat/licencek.tsv, naplok/BDB_KONYVFELOLDAS_csere.tsv, naplok/BDB_KONYVFELOLDAS_kezi.tsv, naplok/BDB_KONYVFELOLDAS_naplo.md, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md]
 fugg: [34]
