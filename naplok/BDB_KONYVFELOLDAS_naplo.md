@@ -222,12 +222,12 @@ majd `--vetit --dt-f46` (szárazon) és `--ir --dt-f46 --jovahagyva DT-F46`.
 
 | | érték |
 |---|---|
-| forrás-csere (token) | 269 (266 igehely + 3 névhiba), 207 szócikkben |
-| fordítás-csere (token) | 57 (55 igehely + 2 névhiba), 42 sorban; illeszthetetlen: 0 |
-| `forras_hash` frissítve | 42 sor |
-| forrás sha256 | előtte `5c176037…0f502f14`, utána `ff5357fe69c19262aa2464fbae03e02a177f4a8e044b8f47290751fee4f427a0` |
-| 13. kapu a forráson (`naplok/BDB_FORDITAS_M0.py --nem-ir`) | 109 → **60** szócikk (ebből 50 az N-F34 maradék-listáján) |
-| 13. kapu a fordított sorokon (432 BDB `teljes` sor) | 64 → **47** JELZES |
+| forrás-csere (token) | 269 (266 igehely + 3 névhiba), 207 szócikkben; **az F46.14 után 253 (250 + 3), 197 szócikk** |
+| fordítás-csere (token) | 57 (55 igehely + 2 névhiba), 42 sorban; illeszthetetlen: 0; **az F46.14 után 54 (52 + 2), 39 sor** |
+| `forras_hash` frissítve | 42 sor (az F46.14 után 39 sor tér el a 3.6 előttitől) |
+| forrás sha256 | előtte `5c176037…0f502f14`, utána `ff5357fe…f427a0`; az F46.14 után `dfb5b2aaa722291736d567c4e56c10d2890f2c860eadf416629e5d02f0e59acc` |
+| 13. kapu a forráson (`naplok/BDB_FORDITAS_M0.py --nem-ir`) | 109 → 60 szócikk; **az F46.14 után 63** (ebből 52 az N-F34 maradék-listáján) |
+| 13. kapu a fordított sorokon (432 BDB `teljes` sor) | 64 → 47 JELZES; **az F46.14 után 49** |
 | 11. kapu a fordított sorokon | 432/432 RENDBEN előtte és utána |
 | az összes kapu a 42 változott soron | csak a 13. kapu változott (17 JELZES → RENDBEN), más kapu nem |
 | szövegtartalom | a fordításban csak igehely-token és a két névhiba változott (szódiff) |
@@ -305,3 +305,41 @@ kivonatra épült; a 9 utótagos ref csak új felméréssel vehető fel.
    `5c176037…` és a K7-es érték.
 4. **Az F46.6 kapu** (azonos cél különböző forrásalakokból → kézi) utólag jóváhagyva; a DT-F46 sor rögzíti.
 5. **N-F46b** a `teszt_bdb_zaras.py` korábbi hibáira (2 FAIL + 1 ERROR, az F46 előtt is).
+
+
+## DT-F46 kiegészítés 2 (felhasználó, chat, 2026-10-03) — F46.14
+
+**Döntés:** a Károli-vers Strong-kapun (ablak 0, ±1 tűrés nélkül) nem igazolt 16 csere visszaáll az eredeti
+alakra a forrásban és a fordításban; a sorok `dt_f46 = kezi`, a TAHOT szerinti szomszédos vers a javaslat-oszlopba
+kerül, és az N-F46a kézi listát bővíti. A gépi csere Strong-próbája ±1 tűrés nélkül fut (a szkript alapértéke 0).
+
+**Végrehajtás (a `--ir` tükre):** az érintett 16 szócikk forrásszövege és forditássora az F46.6 előtti alakból
+(`git 6400b5a~1`) épült újra úgy, hogy csak a megmaradt jóváhagyott cserék alkalmazódtak; a többi szócikkhez nem
+nyúltam. Ellenőrzés: az összes eredeti csere alkalmazása a régi alakra mind a 16 szócikkben és mind a 3 fordítássorban
+pontosan a visszaállítás előtti alakot adta. Visszaállított fordítássor: H4908 (`Zsolt 46:6` → `2Móz 46:6`), H7676
+(`4Móz 28:8` → `3Móz 28:8`), H8193 (`Péld 16:14` → `Zsolt 16:14`); a `forras_hash` a visszaállított forráshoz
+igazítva (a három sor most az F46 előttivel azonos).
+
+| szócikk | a forrás (visszaállítva) | a régi javaslat | TAHOT-szomszéd (javaslat-oszlop) |
+|---|---|---|---|
+| H0056 | `1 Samuel 3:26` | Ézs 3:26 | Ézs 3:27 |
+| H0215 | `Job 42:24` | Jób 41:32 | nincs (a régi alak marad) |
+| H2406 | `1 Chronicles 20:21` | 1Krón 21:21 | 1Krón 21:20 |
+| H2574 | `Ezekiel 47:48` | Ez 47:18 | Ez 47:17 |
+| H2851 | `Ezekiel 26:26` | Ez 26:16 | Ez 26:17 |
+| H4803 | `Ezra 9:20` | Ezsd 9:2 | Ezsd 9:3 |
+| H4908 | `Ex 46:6` | Zsolt 46:6 | Zsolt 46:5 |
+| H5019 | `Ezekiel 29:30` | Ez 29:20 | Ez 29:19 |
+| H5456 | `Isaiah 44:46` | Ézs 44:16 | Ézs 44:15, Ézs 44:17 |
+| H5532 | `Eccl 22:22` | Jób 22:22 | Jób 22:21 |
+| H6622 | `Genesis 40:41` | 1Móz 40:21 | 1Móz 40:22 |
+| H6778 | `2 Samuel 12:40` | 1Krón 12:39 | 1Krón 12:40 |
+| H7092 | `Deuteronomy 15:80` | 5Móz 15:8 | 5Móz 15:7 |
+| H7676 | `Lev 28:8` | 4Móz 28:8 | 4Móz 28:9 |
+| H7927 | `Genesis 33:47` | 1Móz 33:17 | 1Móz 33:18 |
+| H8193 | `Psalm 16:14` | Péld 16:14 | Péld 16:13 |
+
+**Számok az F46.14 után:** forrás 253 token (250 igehely + 3 névhiba), 197 szócikk; fordítás 54 token (52 + 2), 39
+sor; kézi lista 779 sor (763 + 16); 13. kapu a forráson 109 → **63** szócikk (52 az N-F34 listáján), a fordított
+sorokon 64 → **49** JELZES; 11. kapu 432/432 RENDBEN; a Károli-vers Strong-kapu a megmaradt 250 igehely-cserén
+250/250; `ellenoriz.py` 0 SÉRTÉS; forrás sha256 `dfb5b2aaa722291736d567c4e56c10d2890f2c860eadf416629e5d02f0e59acc`.

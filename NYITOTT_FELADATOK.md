@@ -1,6 +1,6 @@
 # Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.10.03 (F46_BDB_KONYVFELOLDAS_BRIEF.md, F46.13 — N-F46a számozás eldöntve, N-F46b új; előtte F46.7 — N-F34 és N-F34c a Lezárva szakaszba, N-F46a új: a BDB könyvfeloldási kézi lista); előtte 2026.10.02 (F41_BSB_UJRAMERES_BRIEF.md, F41.15 — N-F41d/g/h az `ellenorizetlen` pontos jelentése és a Jób 40:1/3/6 szerint; N-F41e és N-F41f a Lezárva szakaszba; előtte F41.12 — N-F41b, N-F41d, N-F41g, N-F41h a szigorított versszintű `Számozás` szerint; előtte F41.10 — N-F41e, N-F41g, N-F41h a versszintű `Számozás` (mt/kjv/ellenorizetlen) szerint; előtte F41.7 — N-F41g, N-F41h új; N-F41e elvégezve; N-F41d, N-F41b pontosítva; előtte: N-F41a, N-F41b, N-F41d, N-F41e, N-F41f új, N-F41c felvéve és lezárva.)
+Utolsó frissítés: 2026.10.03 (F46_BDB_KONYVFELOLDAS_BRIEF.md, F46.15 — N-F46a: 16 visszaállított sor, 779 sor; előtte F46.13 — N-F46a számozás eldöntve, N-F46b új; előtte F46.7 — N-F34 és N-F34c a Lezárva szakaszba, N-F46a új: a BDB könyvfeloldási kézi lista); előtte 2026.10.02 (F41_BSB_UJRAMERES_BRIEF.md, F41.15 — N-F41d/g/h az `ellenorizetlen` pontos jelentése és a Jób 40:1/3/6 szerint; N-F41e és N-F41f a Lezárva szakaszba; előtte F41.12 — N-F41b, N-F41d, N-F41g, N-F41h a szigorított versszintű `Számozás` szerint; előtte F41.10 — N-F41e, N-F41g, N-F41h a versszintű `Számozás` (mt/kjv/ellenorizetlen) szerint; előtte F41.7 — N-F41g, N-F41h új; N-F41e elvégezve; N-F41d, N-F41b pontosítva; előtte: N-F41a, N-F41b, N-F41d, N-F41e, N-F41f új, N-F41c felvéve és lezárva.)
 
 Korábbi frissítés: 2026.09.29 (F05_SZOTAR_BRIEF.md v1.10, S1 javítókör (F05b) —
 N39–N44 új: héber `s`/`ś` átírás, H2403 lemma-választás, `spirantize()`
@@ -511,14 +511,14 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   `blokk_lxx` kapjon saját „kulcsszó nincs a versben” címkét (és számlálót),
   a SEMA 2.11 megjelenítési mondata ehhez igazodjon. A felvételt a
   felhasználó a DT23-ban jóváhagyta (2026.09.30).
-- **N-F46a — a BDB könyvfeloldási kézi lista (763 sor): kézi döntés.**
+- **N-F46a — a BDB könyvfeloldási kézi lista (779 sor): kézi döntés.**
   *(ÚJ, F46 (#46), DT-F46 (2) b; `naplok/BDB_KONYVFELOLDAS_kezi.tsv`, `naplok/BDB_KONYVFELOLDAS_naplo.md`)*
   Az F46 gépi cseréje (DT-F46) 269 forrás- és 57 fordítás-tokent javított; a többi jelölt
   szövegkörnyezettel a kézi listán: 296 + a DT-F46 miatt kézire tett 55 = 351 sor javaslattal (a 34
   „más könyv érvényes fejezettel” `kozepes`, a 18 >500 előfordulású Strong — köztük a H8034
   `Dan 22:14/22:19` → 5Móz és a H0413 `Deut 37:36` → 1Móz —, a 3 azonos célú H5656-sor), a
   többi javaslat nélkül (több egyenrangú jelölt, nincs igazolt jelölt, láncolt lehetetlen hely 96,
-  jelentésszám tapadt 12, H3117 téves névhiba-jelölt). A 13. kapu forrásoldali 60 megmaradt
+  jelentésszám tapadt 12, H3117 téves névhiba-jelölt). A 13. kapu forrásoldali 63 megmaradt
   jelzése mind ezen a listán áll. Teendő: döntés soronként vagy blokkban (a nyomtatott BDB
   alapján); a jóváhagyott sorok a `naplok/BDB_KONYVFELOLDAS_csere.tsv` `dt_f46` oszlopának
   mintájára cserélhetők (`eszkozok/bdb_konyv_javit.py --ir`). A kézi lista pozíciói az F46 utáni
@@ -526,9 +526,9 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   **Számozás (DT-F46 kiegészítés, 2026-10-03, eldöntve):** a forrás MT-számozású marad, a `javasolt_karoli_alak`
   Károli-számozású (H2204, H7871 → 2Sám 19:32; H2938 → 2Sám 19:35; H7138 → 2Sám 19:42; H3940 → Náh 2:4;
   H1932 → Dán 6:26), a fordításba nem került csere. A Károli-vers Strong-kapuja (DT-F46 kiegészítés (2)) a
-  pontos Károli-versben 16 már cserélt sort nem igazol (±1 ablakkal 1-et: H0215 Jób 41:32); ezek a forrásban
-  cserélve maradtak (a kérés szerint nem írtam), felülvizsgálatuk e tétel része — lista:
-  `naplok/BDB_KONYVFELOLDAS_naplo.md` F46.13.
+  pontos Károli-versben 16 már cserélt sort nem igazolt; a DT-F46 kiegészítés 2 szerint ezek visszaálltak a
+  forrásban és a fordításban (F46.14), és a kézi listára kerültek (`dt_f46 = kezi`, a TAHOT szerinti szomszédos
+  vers a javaslat-oszlopban; lista: `naplok/BDB_KONYVFELOLDAS_naplo.md` F46.14).
   *Helyőrző: a végleges N-számot az Action osztja ki.*
 - **N-F46b — a `eszkozok/teszt_bdb_zaras.py` korábbi hibái (2 FAIL + 1 ERROR).**
   *(ÚJ, F46 (#46), DT-F46 kiegészítés (5); `naplok/BDB_KONYVFELOLDAS_naplo.md` 3.6)*
