@@ -847,9 +847,10 @@ def fejezet_jelzes(szoveg):
 # gepi csere (3.6) -- csak a csere-tabla jovahagyasa utan
 # ---------------------------------------------------------------------------
 
-def csere_tabla_beolvas(szintek, kulcsok=()):
+def csere_tabla_beolvas(szintek, kulcsok=(), dontes=None):
     """a jovahagyott sorok: bizonyossag a szintek kozt, vagy a sor kulcsa
-    (strong:pozicio) a kulon jovahagyott kulcsok kozt; javaslat nelkuli sor soha"""
+    (strong:pozicio) a kulon jovahagyott kulcsok kozt; dontes=<oszlop> eseten azok a
+    sorok, amelyeknel a dontes-oszlop erteke `csere`; javaslat nelkuli sor soha"""
     sor = [l for l in open(CSERE, encoding='utf-8').read().split('\n') if l and not l.startswith('#')]
     fej = sor[0].split('\t')
     ki = []
@@ -857,9 +858,126 @@ def csere_tabla_beolvas(szintek, kulcsok=()):
         r = dict(zip(fej, l.split('\t')))
         if r['javasolt_forras_alak'] == '—':
             continue
-        if r['bizonyossag'] in szintek or '%s:%s' % (r['strong'], r['pozicio']) in kulcsok:
+        if dontes:
+            if r.get(dontes) == 'csere':
+                ki.append(r)
+        elif r['bizonyossag'] in szintek or '%s:%s' % (r['strong'], r['pozicio']) in kulcsok:
             ki.append(r)
     return ki
+
+
+# ---------------------------------------------------------------------------
+# DT-F46 (felhasznalo, 2026-10-03): (1) b -- magas + a lehetetlen tipusu kozepes;
+# feltetelek: a 6 MT-szamozasu javasolt Karoli-alak (H2742, H7105, H8492, H5997, H0215,
+# H6778) a Macula MT->Karoli atvaltassal javitva, kulonben kezi; a gepi kapu minden
+# javasolt Karoli-alak letezeset ellenorzi; a TAHOT szerint 500-nal tobbszor elofordulo
+# Strong-szamok sorai kezi listara; (3) a: a harom nevhiba cserelheto (a H3117 nem).
+# ---------------------------------------------------------------------------
+
+DT_F46_MT_STRONG = {'H2742', 'H7105', 'H8492', 'H5997', 'H0215', 'H6778'}
+DT_F46_NEVHIBA = {'H5973', 'H7588', 'H9005'}
+DT_F46_GYAKORI = 500
+LEHETETLEN_TIPUS = {'fejezet_tullepes', 'vers_tullepes', 'nem_lekepezett_alak'}
+# a nevhiba a forditasban: a forditott alak (betuhiven, pontosan egyszer) -> a javitott
+NEVHIBA_FORDITAS = {'H9005': ('a föníciaihoz', 'a fáraóhoz'),
+                    'H5973': ('föníciai mellől', 'a fáraó mellől')}
+KAROLI_VERSEK = os.path.join(REPO, 'konkordancia', 'Karoli_1908.tsv')
+
+
+def karoli_versek():
+    return {l.split('\t')[0] for l in open(KAROLI_VERSEK, encoding='utf-8').read().split('\n')[1:] if l}
+
+
+def karoli_hely(alak):
+    """'Jóel 3:14' / 'Hab 41:47 16' -> 'Jóel 3:14' (a konyv es az elso c:v)"""
+    m = re.match(r'(\S+ \d+:\d+)', alak)
+    return m.group(1) if m else None
+
+
+def dt_f46_szures():
+    """A csere-tabla (cserenaplo) `dt_f46` oszlopa: csere / kezi (ok) / —; a 6 Strong
+    javasolt Karoli-alakja MT->Karoli atvaltva. A DT-F46 miatt kezi sorok a kezi listara."""
+    B = Bizonyitek()
+    tah = collections.Counter()
+    for p in tsv(TAHOT)[1:]:
+        if len(p) > 1:
+            tah[strong_szam(p[1])] += 1
+    kv = karoli_versek()
+    nyers = open(CSERE, encoding='utf-8').read().split('\n')
+    fejsor = [l for l in nyers if l.startswith('#')]
+    adat = [l for l in nyers if l and not l.startswith('#')]
+    fej = adat[0].split('\t')
+    sorok = [dict(zip(fej, l.split('\t'))) for l in adat[1:]]
+    uj_kezi = []
+    stat = collections.Counter()
+    for r in sorok:
+        r['dt_f46'] = '—'
+        valasztott = (r['javasolt_forras_alak'] != '—' and (
+            r['bizonyossag'] == 'magas'
+            or (r['bizonyossag'] == 'kozepes' and r['hibatipus'] in LEHETETLEN_TIPUS)))
+        if r['hibatipus'] == 'nevhiba':
+            r['dt_f46'] = 'csere' if r['strong'] in DT_F46_NEVHIBA else 'kezi (DT-F46 (3): elvetve, nyelvi hasznalat)'
+            stat[r['dt_f46'].split(' ')[0] + '_nevhiba'] += 1
+            continue
+        if r['bizonyossag'] == 'kozepes' and r['hibatipus'] == 'mas_konyv_ervenyes_fejezettel':
+            r['dt_f46'] = 'kezi (DT-F46 (1) b: a letezo hely kozepes sora kezi listara)'
+            uj_kezi.append(r)
+            stat['kezi_mas_konyv'] += 1
+            continue
+        if not valasztott:
+            continue
+        n = tah[strong_szam(r['strong'])]
+        if n > DT_F46_GYAKORI:
+            r['dt_f46'] = 'kezi (DT-F46 (1): a Strong-szam a TAHOT-ban %d-szor all, > %d)' % (n, DT_F46_GYAKORI)
+            uj_kezi.append(r)
+            stat['kezi_gyakori'] += 1
+            continue
+        if r['strong'] in DT_F46_MT_STRONG:
+            m = re.match(r'(\S+) (\d+):(\d+)(.*)$', r['javasolt_karoli_alak'])
+            k, c, v, farok = m.group(1), int(m.group(2)), int(m.group(3)), m.group(4)
+            kk = B.mt2k.get((k, c, v))
+            if not kk or len(kk) != 1:
+                r['dt_f46'] = 'kezi (DT-F46 (1): az MT->Karoli atvaltas nem egyertelmu: %s)' % (sorted(kk or []),)
+                uj_kezi.append(r)
+                stat['kezi_mt_atvaltas'] += 1
+                continue
+            (k2, c2, v2), = kk
+            uj = '%s %d:%d%s' % (k2, c2, v2, farok)
+            if uj != r['javasolt_karoli_alak']:
+                r['ok'] = ('DT-F46: MT->Karoli %s -> %s; ' % (r['javasolt_karoli_alak'], uj) + r['ok']).rstrip('; —')
+                r['javasolt_karoli_alak'] = uj
+                stat['mt_atvaltva'] += 1
+        if karoli_hely(r['javasolt_karoli_alak']) not in kv:
+            r['dt_f46'] = 'kezi (DT-F46 (4): a javasolt Karoli-alak a Karoli-szovegben nem letezik)'
+            uj_kezi.append(r)
+            stat['kezi_karoli_nem_letezik'] += 1
+            continue
+        r['dt_f46'] = 'csere'
+        stat['csere'] += 1
+    fej2 = fej + ['dt_f46'] if 'dt_f46' not in fej else fej
+    with open(CSERE, 'w', encoding='utf-8', newline='') as f:
+        for l in fejsor:
+            f.write(l + '\n')
+        f.write('# cserenaplo (DT-F46): a pozicio a 3.6 elotti forrasra vonatkozik; dt_f46 = a felhasznaloi dontes alkalmazasa\n')
+        f.write('\t'.join(fej2) + '\n')
+        for r in sorok:
+            f.write('\t'.join(r.get(k, '—') for k in fej2) + '\n')
+    # kezi lista: a DT-F46 miatt kezi sorok hozzafuzese (szovegkornyezettel)
+    szov = {p[0]: p[2] for p in tsv(FORRAS)[1:]}
+    kn = open(KEZI, encoding='utf-8').read().split('\n')
+    meglevo = {(l.split('\t')[0], l.split('\t')[1]) for l in kn if l and not l.startswith('#')}
+    kfej = [l for l in kn if l and not l.startswith('#')][0].split('\t')
+    with open(KEZI, 'a', encoding='utf-8', newline='') as f:
+        for r in uj_kezi:
+            if (r['strong'], r['pozicio']) in meglevo:
+                continue
+            r2 = dict(r)
+            r2['ok'] = (r['dt_f46'] + '; ' + r['ok']).rstrip('; —')
+            r2['kornyezet'] = kornyezet(szov[r['strong']], int(r['pozicio']), r['forras_alak'])
+            f.write('\t'.join(r2.get(k, '—').replace('\t', ' ') for k in kfej) + '\n')
+            stat['kezi_listara'] += 1
+    print('DT-F46 szures:', dict(stat))
+    return stat
 
 
 def alkalmaz(sorok_csere, ir):
@@ -874,6 +992,14 @@ def alkalmaz(sorok_csere, ir):
     for r in sorok_csere:
         per[r['strong']].append(r)
     stat = collections.Counter()
+    # kapu (DT-F46 (4)): minden javasolt Karoli-alak letezik a Karoli-szovegben
+    kv = karoli_versek()
+    nem_letezo = [(r['strong'], r['javasolt_karoli_alak']) for r in sorok_csere
+                  if r['hibatipus'] != 'nevhiba' and karoli_hely(r['javasolt_karoli_alak']) not in kv]
+    if nem_letezo:
+        print('KAROLI-KAPU BUKIK: a javasolt Karoli-alak nem letezik:', nem_letezo)
+        sys.exit(7)
+    stat['karoli_kapu_ellenorzott'] = len(sorok_csere)
     for st, rs in per.items():
         p = sorok[idx[st]].split('\t')
         szoveg = p[2]
@@ -919,6 +1045,14 @@ def alkalmaz(sorok_csere, ir):
             sys.exit(4)
         cserek = []
         for r in rs:
+            if r['hibatipus'] == 'nevhiba':
+                regi_hu, uj_hu = NEVHIBA_FORDITAS.get(st, (None, None))
+                if regi_hu is None or hu.count(regi_hu) != 1:
+                    nem_ill.append((st, r['forras_alak'], 'nevhiba: a forditott alak nem egyertelmu'))
+                    continue
+                a_ = hu.index(regi_hu)
+                cserek.append((a_, a_ + len(regi_hu), uj_hu))
+                continue
             t = next(u for u in tok_regi[st] if u.poz == int(r['pozicio']))
             allapot, j = ford_illesztes(tok_regi[st], t, hu)
             if j is None:
@@ -944,13 +1078,43 @@ def alkalmaz(sorok_csere, ir):
         open(FORRAS, 'w', encoding='utf-8', newline='').write('\n'.join(sorok))
         open(FORD, 'w', encoding='utf-8', newline='').write('\n'.join(ki_ford))
         print('IRVA; forras sha256:', hashlib.sha256(open(FORRAS, 'rb').read()).hexdigest())
+        stat['kezi_pozicio_eltolva'] = kezi_eltolas(per, uj_szov)
     return stat
+
+
+def kezi_eltolas(per, uj_szov):
+    """A kezi lista (nyitott tetel) pozicioi az uj forrasra: a szocikkben elotte
+    vegrehajtott cserek hosszkulonbsegevel tolva; utana a pozicion a forras_alak all."""
+    nyers = open(KEZI, encoding='utf-8').read().split('\n')
+    fej = [l for l in nyers if l and not l.startswith('#')][0].split('\t')
+    n = 0
+    for i, l in enumerate(nyers):
+        if not l or l.startswith('#') or l.startswith('strong\t'):
+            continue
+        r = dict(zip(fej, l.split('\t')))
+        if r['strong'] not in per:
+            continue
+        poz = int(r['pozicio'])
+        d = sum(len(c['javasolt_forras_alak']) - len(c['forras_alak'])
+                for c in per[r['strong']] if int(c['pozicio']) < poz)
+        if d:
+            r['pozicio'] = str(poz + d)
+            n += 1
+        if uj_szov[r['strong']][int(r['pozicio']):int(r['pozicio']) + len(r['forras_alak'])] != r['forras_alak']:
+            print('KEZI-ELTOLAS HIBA:', r['strong'], poz, r['forras_alak'])
+            sys.exit(8)
+        nyers[i] = '\t'.join(r[k] for k in fej)
+    open(KEZI, 'w', encoding='utf-8', newline='').write('\n'.join(nyers))
+    return n
 
 
 def main():
     if '--kivonat' in sys.argv:
         i = sys.argv.index('--kivonat')
         kivonat(sys.argv[i + 1], sys.argv[i + 2])
+        return
+    if '--dt-f46-szures' in sys.argv:
+        dt_f46_szures()
         return
     if '--ir' in sys.argv or '--vetit' in sys.argv:
         i = sys.argv.index('--szintek') if '--szintek' in sys.argv else None
@@ -961,7 +1125,8 @@ def main():
         if ir and '--jovahagyva' not in sys.argv:
             print('A gepi csere (3.6) csak a csere-tabla jovahagyasa utan futhat (--jovahagyva <DT-tetel>).')
             sys.exit(9)
-        stat = alkalmaz(csere_tabla_beolvas(szintek, kulcsok), ir)
+        dontes = 'dt_f46' if '--dt-f46' in sys.argv else None
+        stat = alkalmaz(csere_tabla_beolvas(szintek, kulcsok, dontes), ir)
         print('szintek:', sorted(szintek), '| kulon kulcs:', len(kulcsok), '|', dict(stat))
         return
     csere, kezi, stat = felmeres()
