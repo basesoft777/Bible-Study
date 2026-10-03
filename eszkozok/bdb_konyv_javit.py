@@ -141,6 +141,9 @@ TOKEN = re.compile(r'(?<![%s0-9])(%s)\.?\s+(\d{1,3}):(\d{1,3})(\d*)'
                    % (_BETU_NAGY, '|'.join(re.escape(x) for x in _ALAKOK)))
 # szamjegyhez tapadt szamozott konyv (`22Chr 35:9` = 2. jelentes + 2Chr): osszeolvadt alak
 TAPADT_SZAM = re.compile(r'(?<=\d)([123])(Chr|Chron|Chronicles|Kin|Ki|Sam|Kgs) (\d{1,3}):(\d{1,3})')
+# ket azonos konyvu token kozott a csoportot nem szakitja meg: irasjel, szam, lancolt
+# igehely es a BDB osszekoto szavai (`; compare`, `and`, `also`, `see`, `so`)
+CSOPORT_KOZ = re.compile(r'(?:[\s;,.()\d:\-–+f]|compare|and|also|see|so)*')
 CSUPASZ = re.compile(r'(?<![\w:.^])(\d{1,3}):(\d{1,3})(?![\d:])')
 
 
@@ -323,7 +326,7 @@ def oshl_betolt():
 
 class Token:
     __slots__ = ('strong', 'poz', 'alak', 'forma', 'konyvek', 'c', 'v', 'farok', 'szoveg',
-                 'lanc', 'tipus_jel', 'csoport')
+                 'lanc', 'tipus_jel', 'csoport', 'lanc_poz')
 
     def __init__(self, **kw):
         for k, v in kw.items():
@@ -340,7 +343,7 @@ def tokenek(strong, szoveg):
                                '2Chronicles': '2Krón'}.get(forma)
         ki.append(Token(strong=strong, poz=m.start(), alak=m.group(0), forma=forma,
                         konyvek=(k,) if k else (), c=int(m.group(3)), v=int(m.group(4)), farok='',
-                        szoveg=szoveg, lanc=[], tipus_jel='osszeolvadt_szam'))
+                        szoveg=szoveg, lanc=[], lanc_poz=[], tipus_jel='osszeolvadt_szam'))
         spanok.append(m.span())
     for m in TOKEN.finditer(szoveg):
         if any(a <= m.start() < b for a, b in spanok):
@@ -360,7 +363,7 @@ def tokenek(strong, szoveg):
             jel = 'nem_lekepezett'
         ki.append(Token(strong=strong, poz=m.start(), alak=m.group(0), forma=forma, konyvek=k,
                         c=int(m.group(2)), v=int(m.group(3)), farok=m.group(4), szoveg=szoveg,
-                        lanc=[], tipus_jel=jel))
+                        lanc=[], lanc_poz=[], tipus_jel=jel))
         spanok.append(m.span())
     ki.sort(key=lambda t: t.poz)
     # lancolt igehelyek: a kovetkezo tokenig
@@ -369,13 +372,14 @@ def tokenek(strong, szoveg):
         kezd = t.poz + len(t.alak)
         for m in CSUPASZ.finditer(szoveg, kezd, vege):
             t.lanc.append((int(m.group(1)), int(m.group(2))))
+            t.lanc_poz.append((m.start(), m.group(0)))
     # csoport: az egymast kozvetlenul koveto, azonos konyvre feloldott tokenek (csak
     # irasjel, szam es lancolt igehely kozottuk: `1 Samuel 3:22; 1 Samuel 5:26; 1Sam 15:22`)
     # -- a konvertalo a nyomtatott lanc minden tagjat kulon tokenne bontotta
     csoportok = []
     for i, t in enumerate(ki):
         if (i and csoportok and ki[i - 1].konyvek == t.konyvek and t.tipus_jel != 'lanctoro'
-                and re.fullmatch(r'[\s;,.()\d:\-–+f]*', szoveg[ki[i - 1].poz + len(ki[i - 1].alak):t.poz])):
+                and re.fullmatch(CSOPORT_KOZ, szoveg[ki[i - 1].poz + len(ki[i - 1].alak):t.poz])):
             csoportok[-1].append(t)
         else:
             csoportok.append([t])
@@ -730,6 +734,7 @@ def felmeres():
     fs, fej, fix = ford_betolt()
     fhu = {st: dict(zip(fej, fs[i].split('\t')))['forditas_hu'] for st, i in fix.items()}
     csere, kezi = [], []
+    javasolt_konyv = {}
     stat = collections.Counter()
     for st in (p[0] for p in sorok):
         szoveg = szov[st]
@@ -771,6 +776,34 @@ def felmeres():
                 sor['kornyezet'] = kornyezet(szoveg, t.poz, t.alak)
                 kezi.append(sor)
             csere.append(sor)
+            if j:
+                javasolt_konyv[(st, t.poz)] = j[0]
+        # lancolt (konyv nelkuli) igehely, amely az orokolt konyvben nem letezik
+        for t in tok[st]:
+            if len(t.konyvek) != 1 or t.konyvek[0] not in OSZ_SET:
+                continue
+            k0 = t.konyvek[0]
+            for (c, v), (lp, la) in zip(t.lanc, t.lanc_poz):
+                if B.letezik(k0, c, v):
+                    continue
+                stat['lanc_lehetetlen'] += 1
+                jk = javasolt_konyv.get((st, t.poz))
+                if jk and B.letezik(jk, c, v):
+                    stat['lanc_lehetetlen_tokennel_rendezodik'] += 1
+                    continue
+                sor = {
+                    'strong': st, 'pozicio': str(lp), 'forras_alak': la, 'fuggetlen_alak': '—',
+                    'javasolt_forras_alak': '—', 'javasolt_karoli_alak': '—',
+                    'hibatipus': 'lanc_lehetetlen', 'bizonyossag': 'kezi', 'lanc': '—',
+                    'forditas': '—' if st not in fhu else 'van forditas',
+                    'ok': 'konyv nelkuli, lancolt igehely: az orokolt konyvben (%s, a %r token utan) %s nem letezik%s; '
+                          'a gepi csere csak konyvjelolt tokent cserel' % (
+                              k0, t.alak, 'a fejezet' if not B.fejezet_letezik(k0, c) else 'a vers',
+                              ('; a token javaslata (%s) sem oldja meg' % jk) if jk else ''),
+                    'kornyezet': kornyezet(szoveg, lp, la),
+                }
+                csere.append(sor)
+                kezi.append(sor)
     for sor in nevhibak([(p[0], p[2]) for p in sorok]):
         sor['forditas'] = '—' if sor['strong'] not in fhu else (
             'van forditas (%d Fáraó/fáraó a szovegben)' % len(re.findall(r'[Ff]áraó', fhu[sor['strong']])))
