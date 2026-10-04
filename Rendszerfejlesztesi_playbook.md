@@ -71,7 +71,7 @@ lehet** — mindig a TÉNYLEGES tartalmat kell ellenőrizni, nem a leírást.
 | CC BY 4.0 | STEPBible-Data, openscriptures/HebrewLexicon, GreekResources | Szabadon beépíthető, forrásmegjelöléssel |
 | Public Domain | Károli 1908 (HunKar), KJV, ASV, Vizsolyi Biblia | Szabadon beépíthető |
 | Unlicense | byztxt/byzantine-majority-text | Szabadon beépíthető |
-| GPL 3.0 | openscriptures/strongs (eredeti Strong-szótár), scrollmapper KJV+Strongs forrásmodulok | **NEM építendő be** publikus repóba — copyleft-kockázat, más licencű adatokkal ütközhet |
+| GPL 3.0 | openscriptures/strongs (eredeti Strong-szótár), scrollmapper KJV+Strongs forrásmodulok | **NEM építendő be** publikus repóba — copyleft-kockázat, más licencű adatokkal ütközhet | *[F33 / DT-F33h, 2026.10.04: az `openscriptures/strongs` GPL-besorolása NEM igazolódott: a repóban (0acd2f25) nincs LICENSE/README, a Strong-szótár XML-je "Public Domain" (`<rights>`); a scrollmapper KJV+Strongs modulokra a sor változatlan.]*
 | © védett, nyílt engedéllyel | — | Csak a licenc pontos feltételeinek ellenőrzése után, esetenként |
 | © védett, engedély nélkül/bizonytalan | Veritas 2011 Károli-revízió, Biblia-Felfedező (Zsidó Miklós) | **Felfüggesztve/elutasítva** — nem használjuk, amíg nincs explicit, projektspecifikus engedély |
 
