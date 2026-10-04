@@ -5,11 +5,12 @@ kod: LXX_BRIDGE
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/f43-lxx-bridge
 ad: a 86 LXX-döntés mindegyikéhez a lxx_bridge (MACULA-eredetű, LXX-en összesített héber→görög Strong-párok) egyezés/eltérés/nincs-adat ítélete, a bizonyosság-emelés jelöltjeivel; az lxx_dontesek.tsv nem változik
-kovetkezo: "futtatható: az lxx_bridge.tsv és a LICENC.md a repóban (F43.0, F43.1, licencek.tsv-sor); a /kovetkezo indíthatja"
+kovetkezo: "Te: a draft PR átnézése és merge (DT-F43 ✅; N29 lezárva)"
 olvas: [adat/kulso/lxx_bridge.tsv, adat/lxx_dontesek.tsv, "konkordancia/LXX_OS/*.tsv", "konkordancia/LXX_kivonat_*.tsv", konkordancia/TAHOT_kivonat.tsv, konkordancia/Strong_szotar.tsv, konkordancia/LXX_OS/README.md]
-ir: [eszkozok/lxx_bridge_egyezes.py, naplok/LXX_BRIDGE_egyezes.tsv, naplok/LXX_BRIDGE_naplo.md, adat/kulso/LICENC.md]
+ir: [eszkozok/lxx_bridge_egyezes.py, naplok/LXX_BRIDGE_egyezes.tsv, naplok/LXX_BRIDGE_naplo.md, adat/kulso/LICENC.md, NYITOTT_FELADATOK.md]
 fugg: [8]
 helyi_gep: nem
 ---
