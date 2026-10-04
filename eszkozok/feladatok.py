@@ -73,6 +73,12 @@ CELOK = ('fazis1', 'fazis2', 'folyamat', 'naplozas', 'kesz')
 
 KESZ_NAPOK = 14
 
+# F49 (FOLYTATAS): a `fut` allapot ket jelentese a `kovetkezo` elotagjan latszik.
+# `fut` + FOLYTATAS_ELOTAG = felbemaradt, folytathato; `fut` mas = valoban dolgozik rajta
+# valaki. A `.claude/commands/kovetkezo.md` 8. lepese erre a konstansra hivatkozik.
+FOLYTATAS_ELOTAG = 'Folytatás:'
+VAR_RAD_ELOTAG = 'Te:'
+
 ALLAPOT_JEL = {
     'nem_indult': '⬜',
     'brief_kell': '⬜ brief kell',
@@ -594,11 +600,31 @@ def figyelmeztetesek(briefek, main_all=None):
     return ki
 
 
+def _kov_szoveg(b):
+    """A `kovetkezo` erteke a koruli idezojelek nelkul (a fejlec-elemzo nem veszi le)."""
+    k = b.fej.get('kovetkezo', '').strip()
+    if len(k) >= 2 and k[0] == k[-1] and k[0] in ('"', "'"):
+        k = k[1:-1].strip()
+    return k
+
+
+def felbemaradt(b):
+    """F49: `fut` allapot, `kovetkezo` = `Folytatás:` -- felbemaradt, folytathato feladat."""
+    return b.allapot == 'fut' and _kov_szoveg(b).startswith(FOLYTATAS_ELOTAG)
+
+
+def var_rad(b):
+    """F49: `fut` / `megallt` allapot, `kovetkezo` = `Te:` -- a felhasznalora var."""
+    return (b.allapot in ('fut', 'megallt')
+            and _kov_szoveg(b).startswith(VAR_RAD_ELOTAG))
+
+
 def jeloltek(briefek, main_all=None):
     """{szam: None | ok}: az 1. fazis feladatai; None = jelolt, kulonben a kihagyas oka.
 
-    Jelolt: nem_indult / dontesre_var, a `kovetkezo` nem `Te:` es nem `halasztva`, nincs
-    helyi gep, minden fuggese kesz, es nincs FUTO (▶) kizar-parja."""
+    Jelolt: nem_indult / dontesre_var, vagy felbemaradt (`fut` + `Folytatás:`, F49); a
+    `kovetkezo` nem `Te:` es nem `halasztva`, nincs helyi gep, minden fuggese kesz, es
+    nincs FUTO (▶, a felbemaradt nem szamit futonak) kizar-parja."""
     main_all = main_all or {}
     fugg, utk, _, _, _, _ = _szamol(briefek, main_all)
     by_szam = {b.szam: b for b in briefek if b.szam is not None}
@@ -608,11 +634,13 @@ def jeloltek(briefek, main_all=None):
             continue
         if statusz(b, main_all) == 'kesz':
             continue
-        kov = b.fej.get('kovetkezo', '')
+        kov = _kov_szoveg(b)
         ok = None
-        if b.allapot not in ('nem_indult', 'dontesre_var'):
+        if var_rad(b):
+            ok = 'a következő lépés a felhasználóé (Te:)'
+        elif b.allapot not in ('nem_indult', 'dontesre_var') and not felbemaradt(b):
             ok = 'állapot: %s' % b.allapot
-        elif kov.startswith('Te:'):
+        elif kov.startswith(VAR_RAD_ELOTAG):
             ok = 'a következő lépés a felhasználóé (Te:)'
         elif kov.lower().startswith('halasztva'):
             ok = 'halasztva'
@@ -627,6 +655,7 @@ def jeloltek(briefek, main_all=None):
                 futo = sorted((y if x == b.szam else x) for x, y, _ in utk
                               if b.szam in (x, y)
                               and by_szam[y if x == b.szam else x].allapot == 'fut'
+                              and not felbemaradt(by_szam[y if x == b.szam else x])
                               and statusz(by_szam[y if x == b.szam else x], main_all) != 'kesz')
                 if futo:
                     ok = 'kizár (futó): ' + ', '.join('#%d' % n for n in futo)
@@ -635,8 +664,9 @@ def jeloltek(briefek, main_all=None):
 
 
 def csomag(briefek, main_all=None, legfeljebb=5):
-    """A jeloltekbol csomag: a kisebb sorszam elore; kizar-par nem kerul egy csomagba,
-    a csomag tagja nem fugg a csomag masik tagjatol; `ir` nelkuli (regi) csak egyedul."""
+    """A jeloltekbol csomag: a felbemaradt (FOLYTATAS, D1) elore, utana a kisebb sorszam;
+    kizar-par nem kerul egy csomagba, a csomag tagja nem fugg a csomag masik tagjatol;
+    `ir` nelkuli (regi) csak egyedul."""
     main_all = main_all or {}
     fugg, utk, regiek, _, _, _ = _szamol(briefek, main_all)
     regi = set(n for n, _ in regiek)
@@ -645,7 +675,10 @@ def csomag(briefek, main_all=None, legfeljebb=5):
         kizar.add((a, b))
         kizar.add((b, a))
     tagok = []
-    for n, ok in sorted(jeloltek(briefek, main_all).items()):
+    by_szam = {b.szam: b for b in briefek if b.szam is not None}
+    sor = sorted(jeloltek(briefek, main_all).items(),
+                 key=lambda x: (not felbemaradt(by_szam[x[0]]), x[0]))
+    for n, ok in sor:
         if ok is not None:
             continue
         if any((n, t) in kizar or t in fugg.get(n, {}) or n in fugg.get(t, {}) for t in tagok):
@@ -1038,8 +1071,15 @@ def main(argv=None):
             ma_all = main_allapotok(arg.gyoker)
             by = {b.szam: b for b in briefek if b.szam is not None}
             for n, ok in jeloltek(briefek, ma_all).items():
-                print('%s\t#%d\t%s' % ('JELOLT' if ok is None else 'KIHAGYVA', n,
-                                       by[n].fej.get('cim', '') if ok is None else ok))
+                cim = by[n].fej.get('cim', '')
+                kov = _kov_szoveg(by[n])
+                if var_rad(by[n]):
+                    print('VAR_RAD\t#%d\t%s — %s' % (n, cim, kov))
+                elif ok is None and felbemaradt(by[n]):
+                    print('FOLYTATAS\t#%d\t%s — %s' % (n, cim, kov))
+                else:
+                    print('%s\t#%d\t%s' % ('JELOLT' if ok is None else 'KIHAGYVA', n,
+                                           cim if ok is None else ok))
             print('CSOMAG\t%s' % ' '.join('#%d' % n for n in csomag(briefek, ma_all)))
             return 0
         if arg.parancs == 'atvetel':
