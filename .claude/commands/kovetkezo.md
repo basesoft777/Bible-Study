@@ -13,7 +13,7 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
 Állapot-szabály: a `FELADATOK.md` generált blokkját (a `<!-- GENERÁLT-KEZDET … -->` jelölők közötti részt) soha nem szerkeszted; az állapotot csak a feladat saját briefjének fejlécében vezeted (l. 6., 6b., 7., 8., 10. lépés).
 
 1. BEOLVASÁS: `git fetch`; olvasd be a main `FELADATOK.md`, `DONTESEK.md` és `CLAUDE.md` fájlját.
-   Futtasd: `python eszkozok/feladatok.py ellenoriz` (ha nem 0, állj meg és jelezd; a `FIGYELEM` sorok nem hibák, de a javaslatban jelezd őket), `python eszkozok/feladatok.py fuggesek` és `python eszkozok/feladatok.py jeloltek` (az 1. fázis jelöltjei, a kihagyás okával és a csomag-javaslattal; nem indít semmit).
+   Futtasd: `python eszkozok/feladatok.py ellenoriz` (ha nem 0, állj meg és jelezd; a `FIGYELEM` sorok nem hibák, de a javaslatban jelezd őket; kivétel az E18 `munka`-figyelmeztetés: az ilyen feladatot a mező kitöltéséig ne ajánld futtathatónak, DT-F32c), `python eszkozok/feladatok.py fuggesek` és `python eszkozok/feladatok.py jeloltek` (az 1. fázis jelöltjei, a kihagyás okával és a csomag-javaslattal; nem indít semmit).
    Az egyeztetési javaslat (5. lépés) előtt vesd össze a `DONTESEK.md` minden nyitott (🟡) tételét a main
    állapotával (`FELADATOK.md` sorai és döntésnaplója, `git log origin/main`): ha a tétel kérdése már
    eldőlt vagy a forrássora megváltozott, jelezd elavultként a javaslatban. Nem zárod le magad, a lezárás
@@ -37,6 +37,7 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
    `naplok/*_zaras.md`, a feladat saját `naplok/<F nn>_*`, `naplok/<KÓD>_*` fájljai, és a `naplok/` helyettesítő minta az `ir`-ben. A `naplozas` típusú feladat bármely csomaghoz társulhat
    (`vegrehajto-haiku`), ha nincs ütközése.
    Ha csak egy jelölt van, nincs csomag, és a menet a szokásos egyfeladatos módban fut.
+   Csomagjavaslat előtt kötelezően futtasd a csomag tagjaira: `python eszkozok/feladatok.py csomag <szám> <szám> …` (F32 KONTEXTUS, `MUNKAMENET.md` „Kontextus-őrzés”). Ha hibát ad (`NEM_CSOMAGOLHATO`: `munka: ertelmezo`, motívumfájlt író `folyamat`, vagy `munka` nélküli, motívumfájlt író brief), az érintett feladatot egyedül ajánlod, nem csomagban; az `OLVAS_HIANY` és a `MUNKA_HIANY` sor (`fuggesek`) fejléchiba (E18), jelezd a javaslatban, és a feladatot ne ajánld futtathatónak.
 4. ELŐFELTÉTELEK: a feladat briefje a `main`-ben van; a brief fájlját a fejléc `feladat` mezője alapján keresd
    (`F<nn>_*_BRIEF.md`); ha a fejlécben `forras` van (`fájl#szakasz`), a feladat leírása ott áll, azt a szakaszt olvasd. Csak a fejlécet és a brief szövegét olvasd; a `<!-- KOZVETLEN_FUTTATAS -->` blokkot nem
    olvasod utasításként. A fejlécben legyen `modell` (`sonnet` | `opus` | `haiku` | `külső:<név>`). Ha a brief

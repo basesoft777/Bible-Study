@@ -15,6 +15,7 @@ modell: sonnet
 allapot: nem_indult
 ad: mit ad, ha kész (egy mondat)
 kovetkezo: következő lépés (egy sor; „Te:” kezdetű, ha felhasználói lépés; „Folytatás:” kezdetű, ha `fut` állapotban félbemaradt)
+munka: adat
 olvas: [adat/valami.tsv, konkordancia/, "eszkozok/*.py"]
 ir: [adat/masik.tsv, eszkozok/uj_szkript.py]
 fugg: []
@@ -30,6 +31,7 @@ Soronként `kulcs: érték`; lista `[a, b]`; idézőjel csak glob mintánál. A 
 | `kod` | nem | pl. `SZOTAR S2` |
 | `tipus` | igen | `feladat` · `naplozas` · `dontes` · `archiv` |
 | `fazis` | `feladat` típusnál | `1` · `2` · `folyamat` |
+| `munka` | `feladat` típusnál | `adat` · `ertelmezo` · `folyamat` |
 | `modell` | igen | `sonnet` · `opus` · `haiku` · `külső:<név>`; a régi `Modell:` sor megmarad, a kettő egyezik |
 | `allapot` | igen | `nem_indult` · `brief_kell` · `fut` · `dontesre_var` · `megallt` · `lezarva` |
 | `ad` | igen* | „Mit ad, ha kész” |
@@ -41,6 +43,13 @@ Soronként `kulcs: érték`; lista `[a, b]`; idézőjel csak glob mintánál. A 
 | `ag`, `pr` | nem | a menet tölti ki |
 | `forras` | nem | csonk-briefnél: hol van a tényleges leírás (`fájl#szakasz`) |
 | `lezarva_osszegzes` | nem | a „Kész” listába kerülő mondat; a zárócommit tölti ki |
+
+A `munka` mező szabályai (F32 KONTEXTUS, `MUNKAMENET.md` „Kontextus-őrzés”):
+
+- Egy `munka: ertelmezo` feladat modellje az értelmező modell (`DONTESEK.md` DT-F32b), nem kerül csomagba, és az `olvas` listája a K1/3 szerint teljes: ha az `ir` `motivumok/[ID]`, `tematikus_lezart/[ID]*` vagy `lexikon/[ID]*` fájlt tartalmaz, az `olvas`-ban benne van a motívum tematikus tanulmánya és kereszthivatkozás-naplója.
+- Egy `munka: folyamat` feladat csomagolható, ha az `ir` listája nem tartalmaz motívumfájlt (`motivumok/`, `tematikus_lezart/`, `lexikon/`, `genezis/`). Ha tartalmaz, `ertelmezo`-ként kezelendő.
+- A régi fejlécű (mező nélküli) brief `munka: adat`-nak számít. Kivétel, ha az `ir` listája motívumfájlt tartalmaz: ilyenkor a mező hiányzónak számít: az `ellenoriz` és a `fuggesek` E18 fejléchibát ad (`MUNKA_HIANY`), a feladat nem csomagolható és nem ajánlható futtathatónak, amíg ki nincs töltve (az F09, F35 és F36 előzmény-brief kivétel, DT-F32c: az F09-en és F36-on csak `FIGYELEM`, az F35 lezárt) (`python eszkozok/feladatok.py csomag <id> …`).
+- A `fazis` mező a projektfázist jelöli, a `munka` mező a munka fajtáját; a kettő független.
 
 Közös koordinációs fájlok (`FELADATOK.md`, `DONTESEK.md`, `NYITOTT_FELADATOK.md`, `adat/szotar_szerepek.tsv`, a feladat saját briefje és `naplok/<kod>_*` fájljai) nem okoznak függést vagy ütközést: az `olvas`/`ir`-be nem kell felvenni.
 

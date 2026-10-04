@@ -4,12 +4,16 @@ cim: Kontextus-őrzés: az értelmező munka egy kézben marad, a csomagmód csa
 kod: KONTEXTUS
 tipus: feladat
 fazis: folyamat
+munka: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f32-kontextus
+pr: https://github.com/basesoft777/Bible-Study/pull/164
 ad: négy munkaszabály a MUNKAMENET-ben és a brief-sablonban, a feladatok.py fejléc- és csomag-ellenőrzése, a #23 briefjének kiegészítése és függése; döntési tétel a TEREMT-002 3. lépésének előrehozásáról
-kovetkezo: /kovetkezo; ⛔ a K5 DONTESEK-tétele után
+kovetkezo: "Te: merge (PR #164)"
+lezarva_osszegzes: "négy kontextus-szabály, munka mező, csomag/OLVAS_HIANY/E18, F23 fugg+⛔ M0 után; DT-F32a/b/c 🟢; 20 teszt; nyitott /befogad-javaslatok: #12a brief, motívum→tanulmány tábla, F09/F36 munka mező."
 olvas: [MUNKAMENET.md, CLAUDE.md, BRIEF_SABLON.md, DONTESEK.md, eszkozok/feladatok.py, F23_MOTIVUM_FORRAS_BRIEF.md, TEREMT002_KUTATAS_BRIEF.md, .claude/commands/kovetkezo.md, motivumok/TEREMT-002.md, "tematikus_lezart/TEREMT-002*", "tematikus_lezart/naplok/TEREMT-002*"]
-ir: [MUNKAMENET.md, CLAUDE.md, BRIEF_SABLON.md, F32_KONTEXTUS_BRIEF.md, DONTESEK.md, eszkozok/feladatok.py, .claude/commands/kovetkezo.md, F23_MOTIVUM_FORRAS_BRIEF.md, naplok/KONTEXTUS_szabalyok.md, naplok/ELLENOR_KONTEXTUS.md]
+ir: [MUNKAMENET.md, CLAUDE.md, BRIEF_SABLON.md, F32_KONTEXTUS_BRIEF.md, DONTESEK.md, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, eszkozok/tesztek/test_feladatok_kontextus.py, eszkozok/tesztek/test_feladatok_fugges.py, .claude/commands/kovetkezo.md, F23_MOTIVUM_FORRAS_BRIEF.md, naplok/KONTEXTUS_szabalyok.md, naplok/ELLENOR_KONTEXTUS.md]
 fugg: []
 nem_fugg: [22]
 ---
@@ -60,7 +64,7 @@ A szabályok két munkafajtára épülnek:
 
 ### K1 — a négy szabály a `MUNKAMENET.md`-ben (új szakasz: „Kontextus-őrzés”)
 
-1. **Az értelmező réteg egy kézben készül.** Egy motívum értelmező rétegének prózáját egy brief írja, egy modellel (`DONTESEK.md`: az értelmező modell; jelenleg `opus`). Nem kerül csomagba, és nem osztható író subagentekre. A session-határ megengedett: ha a kontextus nem fér el, a folytató session ugyanazt a briefet viszi tovább, és a 3. szabály szerint az egészet olvassa.
+1. **Az értelmező réteg egy kézben készül.** Egy motívum értelmező rétegének prózáját egy brief írja, egy modellel (`DONTESEK.md` DT-F32b: az értelmező modell; jelenleg `opus`). Nem kerül csomagba, és nem osztható író subagentekre. A session-határ megengedett: ha a kontextus nem fér el, a folytató session ugyanazt a briefet viszi tovább, és a 3. szabály szerint az egészet olvassa.
    - **Kivétel:** csak olvasó subagent (például `fuggetlen-ellenor`, audit-szkript) értelmező menetben is futhat. Író subagent nem futhat.
    - A csomagmódba `munka: adat`, valamint motívumfájlt nem író `munka: folyamat` feladat kerülhet.
 2. **A forrásdokumentum próza-elsőbbségű.** A `motivumok/[ID].md` összefüggő érvelés markerekkel, amelyekből a generátor kinyeri az adatot. Nem adatséma, amelybe prózamezők vannak beszúrva.

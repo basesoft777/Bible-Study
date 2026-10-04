@@ -7,10 +7,10 @@ fazis: 1
 modell: opus
 allapot: nem_indult
 ad: a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül
-kovetkezo: /kovetkezo; ⛔ az M0 felmérés után
+kovetkezo: /kovetkezo; ⛔ az M0 felmérés után; az M1 a #12a próza-próba eredményét várja (DT-F32a)
 olvas: [sablonok/, tematikus_lezart/, motivumok/, lexikon/, genezis/, adat/SEMA.md, adat/res_forras.tsv, eszkozok/general.py, CLAUDE.md, ATALAKITASI_TERV.md.md]
 ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md]
-fugg: []
+fugg: [32]
 nem_fugg: [22]
 ---
 
@@ -22,13 +22,15 @@ nem_fugg: [22]
 
 A 2026.09.30-i döntés (D34, „B” út): motívumonként **egyetlen kézi forrás** legyen (`motivumok/[ID].md` + adattáblák). A tematikus sablon adja a szerkezetét. A tematikus tanulmány, a lexikonoldal és minden olvasói nézet ebből **generálódik**, állítható mélységgel. A törzscikk megszűnik.
 
+**Próza-elsőbbség (F32 KONTEXTUS, K1/2).** A `motivumok/[ID].md` összefüggő érvelés markerekkel, amelyekből a generátor kinyeri az adatot; nem adatséma, amelybe prózamezők vannak beszúrva. Az `adat/SEMA.md` a kinyerést írja le, nem a dokumentum szerkezetét; a forrássablon szakaszsorrendet és markereket adhat, mezőhatárokat nem. Az M1 forrássablon **tervezet marad** addig, amíg a KONTEXTUS K1/4 szerinti próba (egy motívum teljes értelmező rétege, az ISTENTISZT-001 mércéjével) le nem futott; a próba helyéről a `DONTESEK.md` DT-F32a tétele dönt. Az M1 terve ezt a feladatot (#32) megelőzően nem indulhat (`fugg: [32]`). **A DT-F32a döntése (Felhasználó, 2026.10.04):** a próba a #12 első fele (**#12a próza-próba**), amely a #23 M0 után és az M1 előtt fut, éles render nélkül (csak `generalt_proba/`); az M1 ezért a #12a eredményét várja (lásd az M0 ⛔ megállását és az M1 előfeltételét). A függés a fejlécben nem rögzíthető számmal, mert a #12a még nem önálló feladat (a #12 kettéválasztása `/befogad` tétel); addig a fejléc `kovetkezo` mezője és ez a szakasz hordozza.
+
 Ez a feladat csak **tervez és mér**. Semmit nem renderel, nem mozgat, és nem ír át meglévő tanulmányt vagy lexikonoldalt. Ezért fér bele a D1 szerinti 1. fázisba: metaadat és séma, amely nem függ a késői forrásoktól. Az eredményére a #9, a #12 és a #11 épít.
 
 ## 2. Hatókör
 
 **Benne van:** az M0 felmérés (csak olvas); a forrássablon tervezete; a szintjelölés szabálya a `adat/SEMA.md`-ben; két CI-szabály **leírása** (nem implementálása); a két pilot bemenetének leírása.
 
-**Nincs benne:** a `general.py` módosítása; bármely `tematikus_lezart/`, `motivumok/`, `lexikon/` vagy `genezis/` fájl írása; a `CLAUDE.md` rétegtáblájának átírása (az a #11 dolga); a CI-szabályok implementálása (külön ágon, D6); HTML.
+**Nincs benne:** a `general.py` módosítása; bármely `tematikus_lezart/`, `motivumok/`, `lexikon/` vagy `genezis/` fájl írása; a `CLAUDE.md` rétegtáblájának átírása (az a #11 dolga); a CI-szabályok implementálása (külön ágon, D6); HTML; a forrásdokumentum mezőkre bontása; a szakaszok külön feladatra vagy író subagentre osztása (F32 K1/1–2).
 
 ## 3. Lépések
 
@@ -38,6 +40,7 @@ Minden számot a menetben ténylegesen futtatott parancs kimenetéből vegyél. 
 
 1. **Szakasz-leképezés.** Vedd sorra a `sablonok/4_PaRDeS_tematikus_sablon.md`, a `6_PaRDeS_lexikon_oldal_sablon.md` és a `8_PaRDeS_torzscikk_sablon.md` minden szakaszát, a `motivumok/[ID].md` blokkjait és az `adat/res_forras.tsv` réseit. Kimenet: `naplok/MOTIVUM_FORRAS_lekepezes.tsv`, oszlopok:
    `szakasz` · `sablon` · `ma_hol_el` · `B_helye` (`kezi_forras` / `adat` / `generalt`) · `szint` (`olvasoi` / `apparatus` / `belso`) · `aktivalas` (mindig / feltételes: mi a feltétel) · `megjegyzes`.
+   `kezi_forras` besorolásnál a `szint` megadása kötelező, és a `megjegyzes` rögzíti, hogy a szakasz az összefüggő érvelés része, nem önálló mező (F32 K1/2).
    Ha egy szakasz besorolása nem egyértelmű, `javaslat` jelölést kap, és az összesítő tételbe kerül.
 2. **Csak a törzscikkben létező tartalom.** Motívumonként vesd össze a `lexikon/[ID]_TORZSCIKK.md`-t a `_TUDOMANYOS.md`-vel és a forrásokkal. Van-e olyan állítás vagy adat, amely csak a törzscikkben szerepel? Kimenet: `naplok/MOTIVUM_FORRAS_torzscikk_egyedi.tsv` (motívum, szakasz, szöveg-kivonat legfeljebb 15 szóban, hol kellene élnie). Az üres eredmény elfogadható, de jelölni kell.
 3. **Tematikus tanulmányok és motívumok párosítása.** Melyik `tematikus_lezart/*_tematikus.md` melyik motívum-ID-hez tartozik, melyik motívumnak nincs tematikus tanulmánya, és melyik fájl nem tanulmány (pl. ellenőrző jegyzet)? Kimenet: `naplok/MOTIVUM_FORRAS_parositas.tsv`.
@@ -47,9 +50,11 @@ Minden számot a menetben ténylegesen futtatott parancs kimenetéből vegyél. 
 
    Ez a migráció (#11) szintjelölési munkájának becslése. Kimenet: `naplok/MOTIVUM_FORRAS_naplo_keveredes.tsv`.
 5. **Átfedés a bővített tanulmányokkal.** Keress szó szerinti vagy közel szó szerinti bekezdés-átfedést a `genezis/*_bovitett.md` és a `tematikus_lezart/` fájlok között. A módszert (pl. 8 szavas n-gram) a naplóban rögzítsd. Ez mutatja, hol kell a forrásnak hivatkoznia másolás helyett (D34). Kimenet: `naplok/MOTIVUM_FORRAS_atfedes.tsv`.
-6. **Összesítés és ⛔ megállás.** Egy `DONTESEK.md`-tétel: a `javaslat` jelölésű besorolások, a 2–5. pont fő számai, és a kérdés, hogy mehet-e az M1. Menet közben máshol ne állj meg (D19).
+6. **Összesítés és ⛔ megállás.** Egy `DONTESEK.md`-tétel: a `javaslat` jelölésű besorolások, a 2–5. pont fő számai, és a kérdés, hogy mehet-e az M1. Menet közben máshol ne állj meg (D19). **Az M0 után az M1 akkor sem indul, ha a tétel jóváhagyott:** a DT-F32a szerint előbb a #12a próza-próba fut le (Opus-brief, `generalt_proba/`, éles render nélkül), és az M1 az ő eredményét veszi bemenetként. A #23 menete ezen a ponton megáll, és ezt jelzi a zárásban: „M1 várja: #12a”.
 
 ### M1 — terv (a jóváhagyás után)
+
+**⛔ Előfeltétel (DT-F32a, K1/4):** az M1 csak a #12a próza-próba eredményének ismeretében kezdhető: egy motívum teljes értelmező rétege a KONTEXTUS-szabályok szerint elkészült, és az eredmény az ISTENTISZT-001 mércéjét (L1–L5, #10) hozza. Ha a #12a még nem futott le, az M1 nem indul; állj meg, és add vissza a kérdést az orkesztrátornak.
 
 1. **Forrássablon-tervezet:** `sablonok/9_PaRDeS_motivum_forras_sablon.md`. Szakaszonként:
    - kézi vagy adatból generált;
@@ -76,7 +81,7 @@ Minden számot a menetben ténylegesen futtatott parancs kimenetéből vegyél. 
 ## 4. Munkaszabályok
 
 1. **Csak olvas az M0-ban.** Egyetlen meglévő tartalmi fájl sem változik a menetben. Írni csak a 3. pontban felsorolt új fájlokat és a `adat/SEMA.md` új alfejezetét lehet.
-2. **⛔ megállás csak az M0 után**, és ha egy meglévő tartalmi fájl nem szándékolt módosulását észleled.
+2. **⛔ megállás az M0 után** (az M1 a #12a eredményéig vár, DT-F32a), és ha egy meglévő tartalmi fájl nem szándékolt módosulását észleled.
 3. **A számok a futtatott parancsokból jönnek**, eltérésnél a fájl az irányadó. Ahol nincs mérés, ott „nincs mérés” áll, nem becslés.
 4. **Motívumszintű `ir`:** ez a feladat egyetlen motívumfájlt sem ír, ezért más feladattal párhuzamosan futhat. Ütközhet viszont minden olyan feladattal, amely a `adat/SEMA.md`-t írja; a sorrendet a `feladatok.py` dönti el.
 5. **Zárás a `/kovetkezo` szerint:** `fuggetlen-ellenor`, zárójelentés, draft PR, a saját fejléc frissítése.
@@ -94,3 +99,5 @@ Minden számot a menetben ténylegesen futtatott parancs kimenetéből vegyél. 
 | Verzió | Dátum | Változás | Döntés |
 |---|---|---|---|
 | v1 | 2026.09.30 | első változat a chat D34–D39 döntései alapján | a feladat 1. fázisú (metaadat, nincs render); Opus, mert a besorolás szakmai ítélet; a CI-szabályok itt csak leírva, implementálás D6 szerint külön |
+| v1.1 | 2026.10.04 | F32 K4: `fugg: [32]`; próza-elsőbbség a Célban; „Nincs benne” bővítve; M0/1 `kezi_forras` → `szint` kötelező | a KONTEXTUS (#32) K1/2 és K-D10; a #23-nak nincs értelmező (`munka: ertelmezo`) lépése: nem ír motívumfájlt, ezért jelölés nem kellett |
+| v1.2 | 2026.10.04 | DT-F32a (🟢): ⛔ megállási pont az M0 után, az M1 a #12a próza-próba eredményét várja; a #12a a #23 M0 és M1 közé esik | DT-F32a (Felhasználó, 2026.10.04); a függés számmal nem rögzíthető (a #12a nem önálló feladat), ezért a `kovetkezo` fejlécmező és a szöveg hordozza |

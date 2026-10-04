@@ -99,6 +99,48 @@ nem F8-tárgy (`F8_BRIEF.md` §3). A négy érintett szerep ma:
   `sablonok/7_PaRDeS_tanitoi_kereses_sablon.md` szerint dolgozik, kizárólag a
   `[study-mappa]/naplok/[motívum]_tanitoi_kereses.md` fájlt írja.
 
+## Kontextus-őrzés (F32, KONTEXTUS)
+
+Az ISTENTISZT-001 pilot minősége abból jött, hogy egyetlen összefüggő tematikus
+tanulmány volt az alap, amelyet egy kéz írt gondolatmenetként, és minden későbbi
+lépés ebből renderelt. A munka három fajtája:
+
+- **adat** (import, szótárfordítás, LXX-megfelelő, licenctábla, Károli–Strong, CI,
+  szkript): a motívum átlátása nem kell hozzá; csomagmód, modellkiosztás és
+  subagent szabadon használható.
+- **ertelmezo** (tematikus tanulmány, kereszthivatkozás-napló, értelmezés, kivonat,
+  a jelentéstartomány kiválasztása a D50 szerint, a `motivumok/[ID].md` kézi forrása).
+- **folyamat** (szabály, sablon, orkesztrátor): csomagolható, ha nem ír motívumfájlt.
+
+A fejléc `munka` mezője (`BRIEF_SABLON.md`) jelöli; a négy szabály:
+
+1. **Az értelmező réteg egy kézben készül.** Egy motívum értelmező rétegének prózáját
+   egy brief írja, egy modellel (`DONTESEK.md` DT-F32b: az értelmező modell; jelenleg `opus`).
+   Nem kerül csomagba, és nem osztható író subagentekre. A session-határ megengedett:
+   ha a kontextus nem fér el, a folytató session ugyanazt a briefet viszi tovább, és a
+   3. szabály szerint az egészet olvassa.
+   - *Kivétel:* csak olvasó subagent (például `fuggetlen-ellenor`, audit-szkript)
+     értelmező menetben is futhat. Író subagent nem futhat.
+   - A csomagmódba `munka: adat`, valamint motívumfájlt nem író `munka: folyamat`
+     feladat kerülhet.
+2. **A forrásdokumentum próza-elsőbbségű.** A `motivumok/[ID].md` összefüggő érvelés
+   markerekkel, amelyekből a generátor kinyeri az adatot; nem adatséma, amelybe
+   prózamezők vannak beszúrva. Az `adat/SEMA.md` a kinyerést írja le, nem a dokumentum
+   szerkezetét. A forrássablon (`9_PaRDeS_motivum_forras_sablon.md`) szakaszsorrendet
+   és markereket adhat, mezőhatárokat nem.
+3. **Aki motívumba ír, az egészet olvassa.** Ha egy feladat `ir` listájában
+   `motivumok/[ID]`, `tematikus_lezart/[ID]*` vagy `lexikon/[ID]*` szerepel, az `olvas`
+   listájának kötelezően tartalmaznia kell a motívum teljes tematikus tanulmányát és
+   kereszthivatkozás-naplóját. A javító körökre is érvényes. A `feladatok.py`
+   ellenőrzi (`ellenoriz`, `fuggesek`; szabályleírás: `naplok/KONTEXTUS_szabalyok.md`).
+4. **A lánc próbája megelőzi a szerkezet véglegesítését.** A B-szerkezet forrássablonja
+   (#23 M1) csak akkor véglegesíthető, ha (a) egy motívum teljes értelmező rétege a fenti
+   szabályok szerint elkészült, és (b) az eredmény hozza az ISTENTISZT-001 mércéjét
+   (L1–L5 a #10 szerint). A próba helyéről a `DONTESEK.md` DT-F32a tétele döntött (🟢, 2026.10.04): a #12 kettéválik, a **#12a próza-próba** a #23 M0 és M1 közé esik, éles render nélkül (csak `generalt_proba/`); a #12b élesítés az eredeti helyén marad.
+
+A csomagba sorolást a `python eszkozok/feladatok.py csomag <id> …` ellenőrzi; a
+`/kovetkezo` csomagjavaslat előtt kötelezően futtatja.
+
 ## Generátor-tények
 
 - `ELESITHETO = {naplo, index, nyitott, lexikon, torzscikk}` — ez az öt

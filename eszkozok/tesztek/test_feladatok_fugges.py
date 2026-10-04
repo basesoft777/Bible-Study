@@ -113,7 +113,9 @@ class MaiAllapotTest(Fixture):
     def test_jeloltek(self):
         self.mai_allapot()
         j = F.jeloltek(self.briefek(), {})
-        self.assertIsNone(j[35])
+        # a #35 nem vár a #37-re (l. test_nincs_35_37_es_30_37_kor), de a fixture-ben
+        # `munka` nélkül motívumfájlt ír: a DT-F32c (F32) óta ez kihagyási ok
+        self.assertIn('DT-F32c', j[35])
         self.assertIsNone(j[38])
         self.assertIsNotNone(j[7])
 

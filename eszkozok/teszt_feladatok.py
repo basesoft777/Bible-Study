@@ -437,6 +437,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tes
 from test_feladatok_fugges import MaiAllapotTest, SzabalyTest  # noqa: E402,F401
 # F49: a FOLYTATAS/VAR_RAD jelölés tesztjei, ugyanígy
 from test_feladatok_folytatas import FolytatasTest  # noqa: E402,F401
+# F32: a csomag-ellenőrzés, az OLVAS_HIANY és a `munka` mező tesztjei, ugyanígy
+from test_feladatok_kontextus import KontextusTest  # noqa: E402,F401
 
 
 if __name__ == '__main__':

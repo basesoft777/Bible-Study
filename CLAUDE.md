@@ -34,6 +34,8 @@ a két changelogot (`PaRDeS_dontesek_CHANGELOG.md`, `motivumlog/PaRDeS_motivumok
 
 Generált fájl fejlécében gépi jelölés áll (`# GENERÁLT: …`). Ha ilyet látsz, ne írd át.
 
+Az értelmező próza egy kézben, egy modellel készül, és aki belenyúl, az egészet olvassa; csomagmód csak adat- és motívumot nem író folyamatfeladatra (KONTEXTUS K1).
+
 A `lexikon/[ID]_TUDOMANYOS.md` hét rése (`kivonat`, `2b`, `miert_fontos`,
 `minosites`, `alatamasztas`, `ertelmezes`, `modszertan`) is a kimenet
 rétegbe tartozik: a fejlécsoruk az `adat/res_forras.tsv`-ből, a törzsük a
