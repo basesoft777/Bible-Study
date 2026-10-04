@@ -140,3 +140,10 @@ $ python eszkozok/feladatok.py fuggesek
 A valódi repón a `feladatok.py ellenoriz` 0 hibát ad (a mai briefek egyike sem nevesít motívum-ID-t az `ir`-ben), a `fuggesek` kimenete az F32 módosítása előtt és után azonos (99 sor, 0 `OLVAS_HIANY`).
 
 *(A kimenetből a `FUGGES`, `KIZAR`, `SORREND`, `KOR` és kölcsönös-függés `FIGYELEM` sorokat a terjedelem miatt kihagytam; ezek változatlanok.)*
+
+## K4.0 — a #23 ága és menete
+
+- `git fetch` után a `git branch -r` listájában nincs `F23` / `MOTIVUM_FORRAS` / `motivum-forras` nevű ág (egyetlen ág sem hivatkozik a #23-ra; a `claude/f32-kontextus` az F32 saját ága).
+- `git log --all --grep=F23`: csak a befogadás (`cf5d77c`, `f6a73c3`, `7d9bd38`) és a függés-feloldás (`52f7a58`, F22.1) commitja; menet nem futott, a brief `allapot: nem_indult`.
+- Eredmény: nincs nyitott ág, a K4 megállás nélkül, a main-en lévő briefen végrehajtható. A fejléc `fugg: [32]` lett; a `nem_fugg: [22]` marad (a `32` nem volt benne, így kivenni nincs mit; a `nem_fugg: [22]` az F22.1 felülírása).
+- Értelmező lépés: a #23 nem tartalmaz (M0 csak olvas és mér, M1 sablon- és sématerv, motívumfájlt nem ír), ezért `munka: ertelmezo` jelölés és `olvas`-kiegészítés nem kellett; a #23 `munka` mezője nincs kitöltve (adatnak számít, mert nem ír motívumfájlt).
