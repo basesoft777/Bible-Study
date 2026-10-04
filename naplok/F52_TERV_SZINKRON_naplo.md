@@ -31,7 +31,7 @@ Forrás: `git diff 5b4fcf8..8e8f771 -- FELADATOK.md DONTESEK.md NYITOTT_FELADATO
 | 12 | #22 ▶ fut → ⛔ megállt (1–5Móz és Józs kész; a Józs PR merge-e és a következő könyv a felhasználóra vár) | FELADATOK #22 | igen | MUNKATERV 1., 4a, 5.; ADATVAGYON 16. állapotfrissítés | átvezetve |
 | 13 | #43 ⬜ → ▶ fut; DT-F43: a bridge nem független forrás, csak tájékoztató | FELADATOK #43, DT-F43 | igen | MUNKATERV 1., 3., 4a, 5.; ADATVAGYON 15., 21. 0–1. lépcső | átvezetve |
 | 14 | #44: a Károli-rész tárgytalan (DT-F33e); a 0. lépés fájljai bent | DT-F33e, `adat/kulso/` | igen | MUNKATERV 3., 4a; ADATVAGYON 15., 19., 21. | átvezetve |
-| 15 | #46 ⬜ → ✅ | FELADATOK #46 | igen | MUNKATERV 1., 4a (#46, #9 függ, összesítés); ADATVAGYON 16. ábra, 21. 1. lépcső | átvezetve |
+| 15 | #46 ✅ (a merge `4e6f979` 2026-10-03-i, a viszonyítási pont előtti: nem tartomány-delta, a terv eleve elavult státusszal vette fel) | FELADATOK Kész lista | igen | MUNKATERV 1., 4a (#46, összesítés); ADATVAGYON 21. 1. lépcső | átvezetve; a #9/#36 függéséből kivéve (ellenőr 12.) |
 | 16 | a javasolt #47–#55 sorszámok ütköznek a FELADATOK-kal (#47 ALLAPOT_ELLENTMONDASOK, #48 KJV_REGI_KIVEZETES, #49 FOLYTATAS, #50 CI_JAVITO_KOR, #51 KONZISZTENCIA, #52 TERV_SZINKRON) | FELADATOK | igen | MUNKATERV 1., 2., 3., 4., 4a, 5., 6.; VIBE 1., 5., 6., 7.; ADATVAGYON fejléc-tábla, javaslat 1./4. pont | ⛔ → **felhasználói döntés (DT-F52a):** a FELADATOK számaihoz igazodik; a tervezett feladatok kódnévvel, számot a `/befogad` ad; átvezetve |
 | 17 | új FELADATOK-sorok: #48 KJV_REGI_KIVEZETES ⬜, #50 CI_JAVITO_KOR ⬜, #51 KONZISZTENCIA ⬜, #52 TERV_SZINKRON ▶; kész: #26, #32, #49 | FELADATOK | igen | MUNKATERV 4a (új sorok, kész lista, összesítés), 5. (folyamat-feladatok mondata) | átvezetve |
 | 18 | D34–D41, DT-F26a (motívumcikk-név) | DONTESEK / FELADATOK | nem | — | az ADATVAGYON fejléc-táblája már rögzíti |
@@ -41,8 +41,10 @@ Forrás: `git diff 5b4fcf8..8e8f771 -- FELADATOK.md DONTESEK.md NYITOTT_FELADATO
 | 22 | a három kézi 0. lépés fájlja bent: `lxx_bridge.tsv` + `LICENC.md` (F43.0, `0a56427`), `karoli_bible_hu_LICENC.txt` (F44.0, `5d61f7a`), `openbible_crossrefs_LICENC.txt` (F44.1, `ba18cb7`); a tervdokumentumok a repóban (`ab73f7b`) | `adat/kulso/`, git log | igen | MUNKATERV 3. (0. lépcső pipák), 5. 1. hullám; ADATVAGYON 15., 19. teendők, 21. 0. lépcső | átvezetve; a fájlnév `.csv` → `.tsv` |
 | 23 | SEMA 2.19: LSJ tisztázott (CC BY-SA 4.0); DT-F33e/f/g kivételek a 2. szabályban | adat/SEMA.md | igen | ADATVAGYON 17.1 2. sor (a 7. sorral együtt) | átvezetve |
 | 24 | MUNKAMENET: Kontextus-őrzés szakasz (F32), ⛔-nál döntés-előkészítés a `DONTES_KERDES_SABLON.md` szerint | MUNKAMENET.md | nem | VIBE 6. „Határok" nem mond ellent; ADATVAGYON fejléc-táblája rögzíti | nem kellett |
-| 25 | NYITOTT: N29 lezárva (ASV nem jön, D7); N-F33a, N-F33b új | NYITOTT_FELADATOK.md | részben | N-F33b: a 4. sorral átvezetve; N29: ADATVAGYON fejléc-tábla és a MUNKATERV új #48-sora | átvezetve |
+| 25 | NYITOTT: N29 lezárva (ASV nem jön, D7); N-F33a, N-F33b új | NYITOTT_FELADATOK.md | igen | N-F33b: a 4. sorral átvezetve; N29: ADATVAGYON fejléc-tábla és a MUNKATERV új #48-sora | átvezetve |
 | 26 | CLAUDE.md: D34 átmeneti sor, K1 csomagmód-sor | CLAUDE.md | nem | — | a fejléc-tábla (D34–D41, #32) rögzíti |
+| 28 | DT-F26b (a #12 helye: a DT-F32a az irányadó, az F12 fejléce a main-állapotra, a #11 `fugg`-jából a 12 ki; D38 kiegészítve) | DONTESEK | igen | ADATVAGYON 16. ábra (#11 függ), MUNKATERV 4a #11 (a 20–21. sorral együtt átvezetve) | átvezetve |
+| 29 | DT-F26c (az F10 `kovetkezo` mezőjébe vissza a #8 négy nyitott LXX-sorának előfeltétele) | DONTESEK | nem | a tervdokumentumok a #10 előfeltételét nem részletezik | nem kellett |
 | 27 | TERV_BEFOGAD részben teljesült: a három dokumentum a repóban (`ab73f7b`); nyitott: a #23/#25 brief `olvas:` sora (csak az F52 brief hivatkozza az ADATVAGYON_TERV-et), ATALAKITASI_TERV 4.7 jelölése, CLAUDE.md KJV-sora | repó (grep, git) | igen | MUNKATERV 1., 3., 4., 4a, 5.; ADATVAGYON 19. teendők | átvezetve („részben kész") |
 
 ### 1.2 Átírt szakaszok (brief 4.7) — a `git diff` tételei
@@ -70,10 +72,11 @@ Forrás: `git diff 5b4fcf8..8e8f771 -- FELADATOK.md DONTESEK.md NYITOTT_FELADATO
 | szakasz | egy mondat |
 | --- | --- |
 | 1. (7., 13., 15. sor) | sorszám-szabály (DT-F52a); 3. elv a DT-F33f/j szerint; F22 ⛔, F43 fut, F46 kész, TERV_BEFOGAD nyitott része |
+| 2. DT-M1–M5 | a feloldott feladat oszlopa és a DT-M1 függése kódnévvel (#48/#50/#51/#54 → kód) |
 | 2. DT-M6 | (kis minta) a két mód és a `kereskedelmi` oszlop szerinti szűrés |
 | 3. 0. lépcső | négy pipa (lxx_bridge, Károli, openbible, tervdokumentumok), az olvas-lista külön nyitott sor; tárhely-sor a DT-F33f/j szerint |
-| 4. tábla | `#` oszlop `—`; TERV_BEFOGAD „részben kész"; SQLITE_EPIT `kereskedelmi` oszlop; OLVASOI_KONKORDANCIA hosting és elfogadás a mód szerint; záró mondat kódnevekkel |
-| 4a | bevezető dátum; #22, #43, #44, #46, #23, #30, #9, #10, #11, #32, #37 sora; új #48, #50, #51, #52 sor; „Tervezett" cím és tábla kódnevekkel; kész lista (+#26, #32, #46, #49); összesítés újraszámolva |
+| 4. tábla | `#` oszlop `—`; TERV_BEFOGAD „részben kész"; SQLITE_EPIT `kereskedelmi` oszlop; OLVASOI_KONKORDANCIA hosting és elfogadás a mód szerint; záró mondat kódnevekkel; (F52.5) a kimeneti fájlnevek `naplok/F48_…`–`F55_…` → kódnév-alapú (`naplok/KAROLI_ELLENORZES_elteresek.tsv` stb.) |
+| 4a | bevezető dátum; #22, #43, #44, #46, #23, #30, #9, #10, #11, #32, #37 sora; a #7, #13, #25, #36, #38, #40, #42 sor „kapcsolat" oszlopa (kódnév-csere); új #48, #50, #51, #52 sor; „Tervezett" cím és tábla kódnevekkel; kész lista (+#26, #32, #46, #49); összesítés újraszámolva |
 | 5. | hullám-tábla kódnevekkel, 1. és 4. sor státusza; folyamat-feladatok mondata; #22 mondat; ábra újrarajzolva |
 | 6. | licenc-kockázat és OLVASOI_KONKORDANCIA mérőszám a két módra; kódnevek |
 | 7. | v3 sor |
@@ -90,7 +93,7 @@ Forrás: `git diff 5b4fcf8..8e8f771 -- FELADATOK.md DONTESEK.md NYITOTT_FELADATO
 **Egyéb fájlok (nem tervdokumentum)**
 
 - `DONTESEK.md`: DT-F52a — a brief 6. pontja szerinti megállás tétele, a felhasználó chat-döntésének rögzítése (✅ alkalmazva).
-- `F52_TERV_SZINKRON_BRIEF.md`: fejléc (`allapot: fut`, `ag`, `kovetkezo`), cím `F52`.
+- `F52_TERV_SZINKRON_BRIEF.md`: fejléc (`allapot: fut`, `ag`, `pr: 172`, `kovetkezo`, `ir` + DONTESEK.md és az ellenőr-napló), cím `F52`.
 - ez a napló.
 
 ### 1.3 Nem átvezetett, kérdéses tételek (brief 4.7, 6. pont)
@@ -115,11 +118,33 @@ Forrás: `git diff 5b4fcf8..8e8f771 -- FELADATOK.md DONTESEK.md NYITOTT_FELADATO
 
 | # | pont | állapot |
 | --- | --- | --- |
-| 1 | minden delta-sor a naplóban, igen/nem érintettséggel és indokkal | 27 sor, 1.1 |
-| 2 | az átírt szakaszok listája és a `git diff` egyezik | 1.2; ellenőr igazolja |
+| 1 | minden delta-sor a naplóban, igen/nem érintettséggel és indokkal | 29 sor, 1.1 (F52.5: DT-F26b/c felvéve, a 25. sor igen) |
+| 2 | az átírt szakaszok listája és a `git diff` egyezik | 1.2; ellenőr 1. kör: ADATVAGYON, VIBE OK; MUNKATERV hiányai F52.5-ben pótolva |
 | 3 | minden átírt állítás mellett a hivatkozott DT-/N-/#-tétel | DT-F33e–j, DT-F33a, DT-F43, DT-F32a, DT-F52a, N-F33b, N29/D7, FELADATOK-számok |
 | 4 | nem maradt megfordított állítás (régi alak keresve) | „nem terjeszthet", „csak backend", „Józsué következik/jön", „merge-elve, kézi", „#47–#55" (döntésnaplón kívül): 0 találat; a VIBE két licenc-sora szándékosan maradt (1.3) |
 | 5 | döntésnapló-sor és kiindulási állapot sor bent | ADATVAGYON v14 + kiindulási sor; MUNKATERV v3; VIBE v2 |
-| 6 | a dokumentumok többi része bájtazonos | a cserék egyszeri, pontos illesztéssel; CRLF megőrizve; ellenőr igazolja |
+| 6 | a dokumentumok többi része bájtazonos | a cserék egyszeri, pontos illesztéssel; CRLF megőrizve; ellenőr 1. kör: OK (hunkon kívül bájtazonos, sorvég-váltás nincs) |
 
-Ellenőr: `naplok/ELLENOR_TERV_SZINKRON.md` (brief 4.8).
+### 1.6 Ellenőr (brief 4.8) és javító kör
+
+**1. kör** (`fuggetlen-ellenor`, 2026-10-04; jelentés: `naplok/ELLENOR_TERV_SZINKRON.md`, az ügynök fájlíró eszköz nélkül futott, a szöveget a hívó menet mentette): **JAVÍTANDÓ, 15 tétel.** Javítás F52.5-ben:
+
+| # | ellenőr tétele | javítás |
+| --- | --- | --- |
+| 1 | CI E5: a 16. címsor átírása `TÖRLÉS-SZÁNDÉKOS` jelölés nélkül | a cím visszaállítva az eredetire; a frissítés jelzése egy dőlt sor a szakasz törzsében |
+| 2 | hibás tömeges csere `BDB_ADATBLOKK TERV_SZINKRON` (MUNKATERV 4a bevezető) | `#52 TERV_SZINKRON` |
+| 3 | DT-F43 (a) „nyitott" a fejléc-táblában | eldöntve: a bridge nem független forrás, tájékoztató réteg; a 26-os pont a DT23 szerint |
+| 4 | #22 régi alak (0.3, 17.2 ATALAKITASI-sor, 18.4 tábla; MUNKATERV 4. tábla) | „1–5Móz és Józs kész", ⛔ |
+| 5 | régi sorszám a kimeneti fájlnevekben (`naplok/F48_…`–`F55_…`) | kódnév-alapú nevek, a repó mintájára (`naplok/LXX_BRIDGE_naplo.md`) |
+| 6 | „a `pardes.db` CC BY 4.0 alatt terjeszthető" — a DT-F33f nem mondja ki | a STEPBible-származék terjeszthető; az adatbázis terjeszthetőségét a benne lévő források módja dönti el (DT-F33j); a fejléc-tábla v13-sora ugyanígy |
+| 7 | DT-F26b/c hiányzik a delta-listából; a #46 nem tartomány-delta; a 25. sor „részben" | 28–29. sor; a 15. sor átfogalmazva; 25. sor `igen` |
+| 8 | az 1.2 lista hiányos (DT-M1–M5, 4a kapcsolat-oszlopok) | kiegészítve |
+| 9 | MCGED hiányzik a 0.4 kizárásai közül | felvéve (`kereskedelmi=nem`), hivatkozás DT-F33i, j, N-F33b |
+| 10 | #46 dátuma 2026-10-04 helyett 2026-10-03 | javítva (MUNKATERV 1., 4a, kész lista) |
+| 11 | „#44 indítható", de a #42-től (⬜) függ | „a #44 a #42-re vár" (ADATVAGYON 21., MUNKATERV 5.) |
+| 12 | „#46 ✅/kész" a #9 és #36 függései között, a FELADATOK-ban nincs | kivéve (ADATVAGYON 16. ábra, MUNKATERV 4a #9) |
+| 13 | 0. szakasz elavult állításai (kézi 0. lépés; „a doc a repóba költözik") | „kész", „költözött (`ab73f7b`)" |
+| 14 | `DONTESEK.md` hiányzik a brief `ir:` listájából | felvéve (+ az ellenőr-napló) |
+| 15 | a 17.1 2. sor számai mellett nincs proveniencia-sor | proveniencia a cellában |
+
+Az ellenőr „NEM ELLENŐRIZHETŐ" jelzése (a kis minta chatbeli jóváhagyása) és a DT-F52a „Felhasználó, chat" idézete: a döntés a chatben született, a repóban a DONTESEK-tétel és ez a napló rögzíti; más nyoma nincs.

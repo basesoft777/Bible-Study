@@ -12,7 +12,7 @@ pr: 172
 ad: a három tervdokumentum (ADATVAGYON_TERV, MUNKATERV, VIBE_GUIDE) hatályos állapotának átvezetése a repó döntéseire és státuszaira; ismétlődő
 kovetkezo: "Te: a draft PR átnézése és merge (1. futás 2026-10-04, napló: naplok/F52_TERV_SZINKRON_naplo.md); utána ismétlődő, a brief 2. pontja szerinti eseményeknél"
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, FELADATOK.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, CLAUDE.md, MUNKAMENET.md]
-ir: [ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, naplok/F52_TERV_SZINKRON_naplo.md]
+ir: [ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, naplok/F52_TERV_SZINKRON_naplo.md, naplok/ELLENOR_TERV_SZINKRON.md, DONTESEK.md]
 fugg: []
 helyi_gep: nem
 ---
