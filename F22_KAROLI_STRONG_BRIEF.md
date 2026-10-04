@@ -6,9 +6,9 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 allapot: fut
-ag: claude/f22-5moz
+ag: claude/f22-5moz-ellenor
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
-kovetkezo: "1–5Móz kész (3–5Móz csak Sonnet, DT-F22c lezárva). Heti nullázás után: (1) 5Móz ellenőri kör, (2) a PR merge-e, (3) Józs – a detektor szerint tiszta, kézi jóváhagyás nem kell. Jób előtt: döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis."
+kovetkezo: "1–5Móz kész (3–5Móz csak Sonnet, DT-F22c lezárva), a 4–5Móz PR (#139) mergelve. Fut: (1) 5Móz ellenőri kör (claude/f22-5moz-ellenor). Utána: (2) Józs – a detektor szerint tiszta, kézi jóváhagyás nem kell. Jób előtt: döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis."
 fugg: [21]
 nem_fugg: [48]
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/futtat.py, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/regi_arany_hibas.tsv, naplok/F21P_jelentes.md]
