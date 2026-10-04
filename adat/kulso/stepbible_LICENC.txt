@@ -1,0 +1,30 @@
+Forrás: https://github.com/STEPBible/STEPBible-Data/blob/b99716b0cddb648ddb95cc786a197180f2f97d48/README.md
+Commit: b99716b0cddb648ddb95cc786a197180f2f97d48 (2026-09-18; a lekérés napján azonos a master-rel)
+Lekérve: 2026-10-04 (README.md 1-17. sor, szó szerint)
+Rögzítette: Claude, a szöveg alább változatlan idézet.
+
+A fájlfejlécek (TAHOT, TAGNT, TIPNR, TVTMS, TBESG, TBESH) idézetei az adat/licencek.tsv forras_hely
+mezőiben vannak (F33, 2026-10-02). Ugyanezen a commiton a fájlfejlécek ezt is mondják: "Refer others to
+github.com/STEPBible as the source of the data. Please do not redistribute it yourself." — a README
+ugyanakkor mirrort megenged ("so long as it is kept up-to-date and has a link back here").
+Értelmezés (felhasználói, jogi): DT-F33a (2026-10-02) és DT-F33f (2026-10-04) a DONTESEK.md-ben.
+
+===== A README SZÓ SZERINTI SZÖVEGE (1-17. sor) =====
+
+# STEPBible Data Repository  **CC BY 4.0**  
+Data created initially by [Tyndale House Cambridge](www.tyndalehouse.com) now curated by [www.STEPBible.org](www.STEPBible.org)  
+(The [code for wwww.STEPBible.org](https://github.com/STEPBible/step) is also on an open licence)
+
+# This licence allows...  
+This public licence allows you to:   
+* **Include any part of STEPBible-Data in any software or publications** without requesting permission    
+  (Though we'd love to hear from you about your project when you make it available.)  
+* **Make changes to the data and record the differences**   
+  You can make corrections or report possible errors to be checked at STEPBibleATgmail.com   
+  Any changes made to data should be recorded and made available to subsequent users.   
+* **Refer others to this repository as the source of the data.**   
+  Updates or corrections are easier to implement when the data is distributed from a single source.  
+  You are welcome to make a mirror, so long as it is kept up-to-date and has a link back here.   
+  
+And you should:   
+* **Credit it** to "STEP Bible" linked to www.STEPBible.org

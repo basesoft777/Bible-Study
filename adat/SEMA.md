@@ -901,6 +901,10 @@ licenc-szövegen túli feltételt jelöl (pl. védjegy-szabály, UK Crown-jog).
    **DT-F33e (felhasználói döntés, 2026.10.04), a (c) szűkítő kivétele:** a **Károli 1908-as szövegére** (`Karoli_1908`,
    `Karoli_KH`) a (c) feltétel nem követelmény: a szöveg a mű kora miatt közkincs, a magyar jogban evidens, kiadói
    nyilatkozat nincs, és nem is kérendő. A kivétel erre a műre szól, más sorra nem általánosítható.
+   **DT-F33f (felhasználói döntés, 2026.10.04), második kivétel:** a **TBESH** sorra (a `Meaning` oszlop Online Bible-eredetű
+   tartalmát is beleértve) a `tisztazott` állapothoz nem kell a jogtulajdonos (Larry Pierce / Online Bible) saját nyilatkozata:
+   a "Please do not redistribute it yourself." és a "Permission should be gained from Online Bible" mondat kérés, nem
+   licencfeltétel; a hatályos forrás az upstream README (CC BY 4.0). Más sorra nem általánosítható.
 3. A `projekt_adat` sor a repó saját adatáé; a repónak nincs LICENSE-fájlja, tehát a
    kimeneti réteg licence nyitott kérdés (DT-F24).
 
