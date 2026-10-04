@@ -1,0 +1,5 @@
+# adat/kulso/ — külső adatok licenc- és proveniencia-jegyzéke
+
+| Fájl | Forrás | Alkonfig | Letöltve | Licenc | Megjegyzés |
+|---|---|---|---|---|---|
+| `lxx_bridge.tsv` | https://huggingface.co/datasets/bcv-commons/hebrew-lexical-references (bcv-commons; revízió `b3b135b24394aa4a8f4eaa59dbc59689735c2b46`; közvetlen fájl: `…/resolve/main/lxx_bridge.tsv`) | `lxx_bridge` | 2026.10.04 | **CC BY 4.0** (bcv-commons; a MACULA Hebrew/Greek Strong-címkézése CC BY 4.0; a mögöttes LXX-szöveg közkincs) | A dataset-kártya szerint nem UBS MARBLE / Louw-Nida / SDBH-eredetű, és a kártya License szakasza négy alkonfigot nevez meg, ebből a `lxx_bridge`-re CC BY 4.0-t ad; 3 301 adatsor + fejléc, 48 191 bájt, SHA-256 `97c1c2a8df1f33069ecd88dab3a1b7ff179e900236ac41cd4d93f12ec5d40cff`; oszlopok: `hebrew_strong` (`H####`), `greek_strong` (`G####`), `count` (≥3); a fájl változatlan, tabbal tagolt (TSV). Attribúció: bcv-commons, *Hebrew Lexical Reference Indices*, `lxx_bridge`, MACULA Hebrew/Greek (CC BY 4.0) alapján. |
