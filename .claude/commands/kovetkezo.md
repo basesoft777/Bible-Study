@@ -20,10 +20,11 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
    a felhasználó döntése.
 2. ELDÖNTÖTT TÉTELEK: ha a `DONTESEK.md`-ben van „eldöntve”, de „alkalmazásra vár” állapotú tétel, az a feladat az első jelölt.
 3. JELÖLT KIVÁLASZTÁSA, ebben a sorrendben (az adatot a brief-fejlécek és a `feladatok.py fuggesek` kimenete adja):
+   - FOLYTATAS (F49, D1): a `fut` állapotú, `kovetkezo`-ja `Folytatás:` kezdetű (a `feladatok.py` `FOLYTATAS_ELOTAG` konstansa) félbemaradt feladat (`jeloltek` `FOLYTATAS` sora) megelőzi az új (`nem_indult`) jelölteket; több FOLYTATAS között a kritikus út, majd a feladatszám dönt; a függés- és helyigép-szűrés ugyanaz; a `VAR_RAD` sor (`fut`/`megallt`, `Te:`) tájékoztató, nem jelölt;
    - csak az 1. fázis (`fazis: 1`) feladatai, amíg az 1. fázis minden feladata nincs `lezarva` a main-ben; a `fazis: folyamat` feladat csak alternatívaként jelenik meg, vagy ha a felhasználó választja;
    - `allapot` `nem_indult` vagy `dontesre_var`, és a `kovetkezo` mező NEM „Te:” kezdetű; a `brief_kell` állapotú csonk nem futtatható;
    - minden függés (`fugg`, levezetett) `lezarva` a main-ben; a levezetett függés (`*`) csak írás–olvasás (A `olvas` konkrét fájlja vagy glob-ja egyezik B `ir`-jével); a tág kontextus-olvasás (`/`-re végződő olvas-bejegyzés, `CLAUDE.md`, `BRIEF_SABLON.md`, `MUNKAMENET.md`) nem ad sorrendet; a halasztott, brief nélküli és 2. fázisú feladat nem tart vissza 1. fázisút (DT-F39d);
-   - nincs `kizar`-párja (`×`) FUTÓ (`allapot: fut`) állapotban; a `kizar` kölcsönös kizárás, nem sorrend: a két feladat nem futhat egyszerre, de bármelyik mehet előbb; ha mindkettő jelölt, a kisebb sorszámú kerül előre, a másik a következő körben;
+   - nincs `kizar`-párja (`×`) FUTÓ (`allapot: fut`, nem `Folytatás:` kezdetű `kovetkezo`) állapotban; a `kizar` kölcsönös kizárás, nem sorrend: a két feladat nem futhat egyszerre, de bármelyik mehet előbb; ha mindkettő jelölt, a kisebb sorszámú kerül előre, a másik a következő körben;
    - nincs rá nyitott tétel a `DONTESEK.md`-ben;
    - elsőbbség: a kritikus út sorrendje, utána a feladatszám sorrendje.
    Helyi gépet (`helyi_gep: igen`) igénylő feladatot nem indítasz: jelzed, és továbblépsz.
@@ -43,7 +44,7 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
    megadva”) — de csak az 5. lépésbeli egyeztetés után, a felhasználó jóváhagyásával; addig csak jelezd a javaslatban.
 5. EGYEZTETÉS (kötelező, soha nem hagyod ki):
    a) Javaslat, legfeljebb 10 sorban (csomagnál legfeljebb 15 sorban, feladatonként egy sor):
-      a javasolt feladat vagy csomag és miért ez; brief; modell; ág; a brief ⛔ pontjai;
+      a javasolt feladat vagy csomag és miért ez; a `FOLYTATAS` (félbemaradt, folytatható) és a `VAR_RAD` (a felhasználóra vár) feladat külön sorban, mindkettő akkor is, ha nem ez a javaslat; brief; modell; ág; a brief ⛔ pontjai;
       hiányzó előfeltétel; legfeljebb 2 alternatív jelölt; a kihagyott feladatok és az okuk egy sorban.
       Csomagnál a felhasználó tagot vehet ki, vagy kérheti az egyfeladatos futást.
    b) Várj. A felhasználó kérdezhet, más feladatot választhat, szűkítheti vagy módosíthatja
@@ -76,8 +77,8 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
    megállási ok: a tétel a zárás előtt, összesítve kerül a `DONTESEK.md`-be.
    Csomagnál a ⛔ csak az érintett feladatot állítja meg; a többi fut tovább.
 8. KERETKIMERÜLÉS: ha a használati keret fogy, tiszta ponton commitolj; az `allapot` marad `fut`, a `kovetkezo`
-   mezőbe a folytatási pont egy sorban; a zárójelentésbe írd a részletes „Folytatási pont” szakaszt, és állj meg.
-   A következő `/kovetkezo` onnan folytatja.
+   mezőbe a folytatási pont egy sorban, `Folytatás:` kezdettel (a `feladatok.py` `FOLYTATAS_ELOTAG` konstansa; ez különbözteti meg a félbemaradt feladatot attól, amin éppen dolgoznak); a zárójelentésbe írd a részletes „Folytatási pont” szakaszt, és állj meg.
+   A következő `/kovetkezo` a `FOLYTATAS` sorból onnan folytatja (3. lépés).
    Csomagnál minden feladat a saját ágán, a saját zárójelentésében kap folytatási pontot.
 9. ELLENŐRZÉS: futtasd a `fuggetlen-ellenor` subagentet; jelentése: `naplok/ELLENOR_<feladat>.md`.
    Csomagnál feladatonként külön, a saját worktree-jében; az ellenőrök párhuzamosan futhatnak.
