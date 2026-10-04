@@ -9,7 +9,7 @@ allapot: fut
 ad: a D34–D41 a FELADATOK.md döntésnaplójában; a #9–#12 fejléce a B szerkezethez igazítva; CLAUDE.md átmeneti sor; BRIEF_SABLON D39-sor
 kovetkezo: /kovetkezo, a MOTIVUM_FORRAS, LICENC és OLVASOI_HTML befogadása után
 olvas: [FELADATOK.md, CLAUDE.md, BRIEF_SABLON.md, "F*_BRIEF.md"]
-ir: [F09_SZOTAR_S2_BRIEF.md, F10_LEXIKON_LEZARAS_BRIEF.md, F11_MIGRACIO_BRIEF.md, F12_TEREMT002_PROZA_BRIEF.md, CLAUDE.md, BRIEF_SABLON.md]
+ir: [FELADATOK.md, F09_SZOTAR_S2_BRIEF.md, F10_LEXIKON_LEZARAS_BRIEF.md, F11_MIGRACIO_BRIEF.md, F12_TEREMT002_PROZA_BRIEF.md, CLAUDE.md, BRIEF_SABLON.md]
 fugg: []
 ---
 
