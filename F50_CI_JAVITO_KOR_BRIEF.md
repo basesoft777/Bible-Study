@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 50
 cim: Korlátozott javító kör: push után a CI olvasása és a saját PR hibáinak javítása
 kod: CI_JAVITO_KOR
 tipus: feladat
@@ -8,9 +8,9 @@ modell: sonnet
 allapot: nem_indult
 ad: a /befogad és a /kovetkezo záró lépése push után elolvassa a CI-t; ha a hiba a saját PR tartalmából jön (fejléc-mező, fájlnév, formai hiba), legfeljebb két körben javítja új commitban; minden mást (CI-szabály, másik feladat, függési kör, tartalmi döntés) nem javít, hanem jelent
 kovetkezo: "futtatható a #32 (KONTEXTUS) és a #45 (MODELL_ELLENORZES) lezárása és mergelése után, mert mindkettő a .claude/commands/kovetkezo.md-t írja"
-olvas: [.claude/commands/befogad.md, .claude/commands/kovetkezo.md, CLAUDE.md, MUNKAMENET.md, DONTESEK.md, eszkozok/feladatok.py, eszkozok/ellenorzes/szabalyok.py, .github/workflows/]
+olvas: [.claude/commands/befogad.md, .claude/commands/kovetkezo.md, CLAUDE.md, MUNKAMENET.md, DONTESEK.md, eszkozok/feladatok.py, .github/workflows/]
 ir: [.claude/commands/befogad.md, .claude/commands/kovetkezo.md, naplok/CI_JAVITO_KOR_naplo.md]
-fugg: [32, 45]
+fugg: []
 helyi_gep: nem
 ---
 
