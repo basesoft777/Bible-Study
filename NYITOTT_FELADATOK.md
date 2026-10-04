@@ -465,6 +465,7 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   `#9` (SZOTAR S2, render) előfeltétele**: mielőtt a render alapszám
   szerint lemmát/kiejtést jelenítene meg, dönteni kell, melyik
   betű-utótagos sor lemmáját mutassa (vagy mindet, felsorolva).
+- **N-F33a — a SECE_G "LN:" (Louw–Nida) és "GK:" mezői ne kerüljenek a renderbe.** *(ÚJ, F33 / DT-F33h, 2026.10.04)* A `konkordancia/SECE_G_teljes.tsv` 5 406 szócikkében "LN:" (Louw–Nida szám, UBS), 5 506-ban "GK:" (Goodrick–Kohlenberger szám) jelölés áll; a modul készítőjének (Eliran Wong) "public domain" nyilatkozata ezekre a hozzáadott leképezésekre külön nem terjed ki, a jogosultságuk nem igazolt (`adat/licencek.tsv` SECE_G sor, `javaslat:`). **A `#9` (SZOTAR S2, render) szabálya:** a SECE_G szócikk-szövegét a render az LN- és GK-jelölések nélkül jeleníti meg (lexikonoldal, törzscikk). Felhasználói döntés (2026.10.04): gépi védelem nem épül, a megjegyzés és ez a tétel elég; a `#9` brief befogadásakor vagy futtatásakor ellenőrizendő. Az SDBH/SDGNT (CC BY-SA 4.0) LN-jellegű adata ettől külön, tisztázott réteg.
 - **N43 — a CI E5-szabály `TÖRLÉS-SZÁNDÉKOS:` jelölése PR-szinten
   globális, nem címsoronkénti.** *(ÚJ, SZOTAR S1 javítókör (F05b),
   2026.09.29)* Egyetlen jelölés a PR összes törölt címsorát felmenti,
