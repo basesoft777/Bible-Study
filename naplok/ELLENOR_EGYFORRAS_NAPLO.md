@@ -33,3 +33,24 @@ Commitok: 608a89b F26.1, 2cd7604 F26.2, b4517e7 F26.3, 69d981c F26.4, ae45e9e F2
 
 - `python eszkozok/feladatok.py ellenoriz` → `71 brief, 0 hiba, 3 figyelmeztetés` (előzmény: F09, F36 E18; F37 helyettesítő minta)
 - `python eszkozok/feladatok.py fuggesek` → `KOR` sor: 0. Sorrend a fejlécekből: #23 → #9 → #12 → #11 → #10 (`FUGGES 9 23`, `12 9`, `12 23`, `11 9`, `11 12`, `11 23`, `10 8`, `10 9`, `10 11`, mind `kezi`). Az 1. eltérés éppen ezt a #12 → #11 sorrendet kérdőjelezi meg.
+
+
+---
+
+## 2. kör — a DT-F26b és a DT-F26c alkalmazása
+
+Az eredmény: 2 eltérés. Tartomány: `ec88b59..752b01a`, ág: `claude/f26-egyforras-naplo`, commitok: ace9cab, 1b293e5, 64eec1e, d496c26, b2d6fef, 752b01a. Az ellenőr csak olvasott; ezt a szakaszt az orkesztrátor fűzte a naplóhoz az ellenőr szövegéből, a saját futtatásával kiegészítve.
+
+| pont | eredmény | indok |
+|---|---|---|
+| (1) Az F12 fejléce és csonk-sora egyezik a main-nal | OK | `git diff origin/main HEAD -- F12_TEREMT002_PROZA_BRIEF.md` üres |
+| (2a) Az F11 `fugg`-jából kikerült a 12 | OK | `[9, 12, 23]` → `[9, 23]` (64eec1e) |
+| (2b) Az F11 többi mezője | **ELTÉRÉS (közepes)** | Az F11 `kovetkezo` mezője és csonk-sora (10. és 19. sor): „brief a #12 után”. Ez ellentmond az F12 `fugg: [11]` értékének és a DT-F26b „#12b a #11 után” szövegének. A mondat az N2-ből maradt; a DT-F26b betűje csak a `fugg`-ot írta elő. |
+| (3) A D38 sor | OK | A változás csak a kézi Döntésnaplóban van (FELADATOK.md:179), a GENERÁLT blokkokhoz nem nyúlt. |
+| (4) Az F10 előfeltétele | OK | A main-beli mondat szó szerint került vissza; LD009 és LD064 ma is `nyitott`. |
+| (5) DONTESEK | OK | A DT-F26b és a DT-F26c ✅, a hash-ek valósak, a DT-F26a 🟢 maradt. |
+| (6) `feladatok.py` | OK (orkesztrátor) | `ellenoriz`: 71 brief, 0 hiba, 3 figyelmeztetés (F09, F36, F37 — korábbiak); `fuggesek`: 0 KOR. |
+| (7) Hatókörön kívüli változás | OK | 6 fájl, 11/11 sor, nincs `.tsv`, nincs kódolási csere. `futtat.py` E2–E16 és E19: 0 találat. |
+| Commit-üzenet | **ELTÉRÉS (alacsony)** | A 64eec1e üzenete a D38 kiegészítését is állítja, de az a d496c26-ban történt. A DONTESEK.md jól hivatkozik. |
+
+Megjegyzés: az ág az `origin/main` mögött van (F43 merge: eddfc83, cb1cf76), ezért a DONTESEK.md-ben, a FELADATOK.md-ben és a NYITOTT_FELADATOK.md-ben ütközés lehetséges; a PR előtt rebase szükséges.
