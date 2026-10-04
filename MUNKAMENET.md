@@ -80,6 +80,8 @@ motívumnapló 5:29-re vonatkozó döntését, az Opus-ág némán felülírta �
 sem kérdezett (`ATALAKITASI_TERV.md.md` 520. sor). A menet ezen a két ponton
 **megáll és kérdez**, akkor is, ha a válasz nyilvánvalónak látszik.
 
+**Hogyan készítsd elő a döntést (bármely ⛔ pontnál).** A megálló feladat a `DONTESEK.md`-be tételt nyit; a döntést a felhasználó hozza. Ha a döntés előkészítéséhez erősebb modell kell (például Opus), azt egy **külön sessionben vagy a chatben** végezd, a [`DONTES_KERDES_SABLON.md`](DONTES_KERDES_SABLON.md) kérdéssablonjával: az Opus javaslatot ad, nem dönt, és a végrehajtó/orkesztrátor modellje (a brief `modell:` sora) ettől nem változik. A döntés egy mondat és az opció száma a tétel „Döntés” oszlopában (🟡 → 🟢); a következő `/kovetkezo` a 2. lépésben onnan folytatja.
+
 ## Szereposztás — a mai valóság
 
 A terv 5.1 pontja hat szerepet ír le (fő szál, `lexikai-scan` subagent,
