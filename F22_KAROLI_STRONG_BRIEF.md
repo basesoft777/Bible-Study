@@ -8,7 +8,7 @@ modell: sonnet
 allapot: megallt
 ag: claude/f22-5moz-ellenor
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
-kovetkezo: "Te: a Józs indítása (⛔ 2.). 1–5Móz kész (3–5Móz csak Sonnet, DT-F22c lezárva), a 4–5Móz PR (#139) mergelve, az 5Móz utólagos ellenőri köre kész (naplok/ELLENOR_F22_5Moz.md, 5 eltérés). A Józs-menet első lépése: a SEMA 2.20 csak-Sonnet felsorolásába az 5Móz, és a F22_5Moz_jelentes.md 4. szakaszának frissítése (ELLENOR 2. és 4. tétel). Utána: Józs – a detektor szerint tiszta, kézi jóváhagyás nem kell. Jób előtt: döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis."
+kovetkezo: "Te: a Józs indítása (⛔ 2.). 1–5Móz kész (3–5Móz csak Sonnet, DT-F22c lezárva), a 4–5Móz PR (#139) mergelve, az 5Móz utólagos ellenőri köre kész (naplok/ELLENOR_F22_5Moz.md, 5 eltérés, mind kezelve). Következő: Józs – a detektor szerint tiszta, kézi jóváhagyás nem kell. Jób előtt: döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis."
 fugg: [21]
 nem_fugg: [48]
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/futtat.py, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/regi_arany_hibas.tsv, naplok/F21P_jelentes.md]

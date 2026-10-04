@@ -29,4 +29,4 @@ C: 0 köteg, 0 vers
 
 - A bizonyosság-jelölés a C-futással pótolható (DT-F22c: rossz mérés esetén újranyitható).
 - 1:2 / 2:1 versösszevonás támogatásáról döntés a Jób jóváhagyása előtt (34 K-hiány); a jelzett fejezetek kézi jóváhagyása könyvenként; Ézs 9:17–20 megfeleltetése hamis.
-- **PR:** a `claude/f22-5moz` ág a `claude/f22-4moz`-ra épül (a #131 ágára); a PR a #114 és a #131 merge-e után a `main`-re állítható. Push és PR **nem készült** (a felhasználó kérésére marad).
+- ~~**PR:** a `claude/f22-5moz` ág a `claude/f22-4moz`-ra épül (a #131 ágára); a PR a #114 és a #131 merge-e után a `main`-re állítható. Push és PR **nem készült** (a felhasználó kérésére marad).~~ *Lezárva (2026.10.04):* a 4–5Móz a PR #139-cel a `main`-ben; a merge előtt elmaradt független ellenőri kör utólag pótolva (`naplok/ELLENOR_F22_5Moz.md`, `claude/f22-5moz-ellenor`, PR #160).
