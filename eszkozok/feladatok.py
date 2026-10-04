@@ -14,7 +14,11 @@ Parancsok:
     ellenoriz       fejlec-ervenyesseg, egyedi szam, fajlnev-szam egyezes,
                     `modell` == regi `Modell:` sor; --pr-alap REF: a
                     generalt blokkot a PR nem modosithatja (E18)
-    fuggesek        levezetett/kezi fuggesek, utkozesek, regi fejlecek
+    fuggesek        levezetett/kezi fuggesek, utkozesek, regi fejlecek; OLVAS_HIANY
+                    sor (es 1-es kilepesi kod), ha motivumot iro feladat `olvas`-aban
+                    hianyzik a tanulmany vagy a naplo (F32, K3.2)
+    csomag SZAM..   F32 (K3.1): a felsorolt feladatok csomagolhatok-e (`munka` mezo);
+                    1-es kilepesi kod, ha valamelyik nem
     atvetel         a FELADATOK.md tablajabol allapot + kovetkezo lepes a
                     fejlecekbe (--szaraz: csak kiir)
     kovetkezo_szam  a legnagyobb hasznalt feladatszam + 1
@@ -260,6 +264,8 @@ def ellenoriz(briefek, gyoker=REPO):
                           % (modell, rm)))
         if fej.get('munka') not in (None,) + MUNKAK:
             hibak.append((b.fajl, 'munka: adat | ertelmezo | folyamat'))
+        for uzenet in kontextus_hibak(b):
+            hibak.append((b.fajl, uzenet))
         if fej.get('helyi_gep') not in (None, 'igen', 'nem'):
             hibak.append((b.fajl, 'helyi_gep: igen | nem'))
         m = re.match(r'^F(\d\d)_', b.fajl)
@@ -292,6 +298,65 @@ def ellenoriz(briefek, gyoker=REPO):
             hibak.append(('feladatok', 'függési kör (a döntés a felhasználóé): %s'
                           % ' ↔ '.join('#%d' % x for x in k)))
     return hibak
+
+
+# ---------------------------------------------------------------------------
+# F32 (KONTEXTUS): munka-fajta, csomagolhatosag, motivum-olvasas
+# ---------------------------------------------------------------------------
+
+# motivumfajlt iro `ir`-bejegyzes: ezek az elotagok (MUNKAMENET.md, Kontextus-orzes)
+MOTIVUM_IR_ELOTAGOK = ('motivumok/', 'tematikus_lezart/', 'lexikon/', 'genezis/')
+# a motivum-azonositot a fajlnev elejerol olvassuk (a genezis/ nem ID-s nevu)
+MOTIVUM_ID_ELOTAGOK = ('motivumok/', 'tematikus_lezart/', 'lexikon/')
+MOTIVUM_ID = re.compile(r'^([A-Z]+-\d+)')
+# K1/3: a motivum tanulmanya es kereszthivatkozas-naploja (mintafajlnevek az illesztesre)
+TANULMANY_MINTA = 'tematikus_lezart/%s_tematikus.md'
+NAPLO_MINTA = 'tematikus_lezart/naplok/%s_kereszthivatkozas_naplo.md'
+
+
+def motivumot_ir(b):
+    """F32: az `ir` motivumfajlt (motivumok/, tematikus_lezart/, lexikon/, genezis/) tartalmaz."""
+    return any(_norm(u).startswith(MOTIVUM_IR_ELOTAGOK) for u in b.fej.get('ir', []))
+
+
+def motivum_idk(b):
+    """Az `ir`-ben nevesitett motivum-azonositok (pl. TEREMT-002); konyvtar/glob ID nelkul kimarad."""
+    idk = set()
+    for u in b.fej.get('ir', []):
+        u = _norm(u)
+        if u.startswith(MOTIVUM_ID_ELOTAGOK):
+            m = MOTIVUM_ID.match(os.path.basename(u))
+            if m:
+                idk.add(m.group(1))
+    return sorted(idk)
+
+
+def kontextus_hibak(b):
+    """K3.2 / E18: motivum-ID-t iro feladat `olvas`-ahol hianyzik a tanulmany vagy a naplo.
+    Uzenetek listaja (a hianyzo fajl nevevel)."""
+    hibak = []
+    olvas = b.fej.get('olvas', [])
+    for azon in motivum_idk(b):
+        for cimke, minta in (('tematikus tanulmány', TANULMANY_MINTA),
+                             ('kereszthivatkozás-napló', NAPLO_MINTA)):
+            mintafajl = minta % azon
+            if not any(utvonal_egyezik(u, mintafajl) for u in olvas):
+                hibak.append('%s motívumot ír (`ir`), de az `olvas`-ból hiányzik a %s: %s*'
+                             % (azon, cimke, mintafajl.split(azon)[0] + azon))
+    return hibak
+
+
+def csomag_hiba(b):
+    """K3.1: None, ha a feladat csomagolhato; kulonben az ok."""
+    munka = b.fej.get('munka')
+    ir_motivum = motivumot_ir(b)
+    if munka == 'ertelmezo':
+        return '`munka: ertelmezo` — az értelmező munka egy kézben készül, nem kerül csomagba'
+    if munka == 'folyamat' and ir_motivum:
+        return '`munka: folyamat`, de motívumfájlt ír (`ir`) — `ertelmezo`-ként kezelendő'
+    if munka is None and ir_motivum:
+        return 'hiányzó `munka` mező motívumfájlt író briefben — töltsd ki, addig nem csomagolható'
+    return None
 
 
 # ---------------------------------------------------------------------------
@@ -712,6 +777,9 @@ def fuggesek_szoveg(briefek, main_all=None):
         sorok.append('KOR\t%s\t-\tfüggési kör' % ' '.join(str(x) for x in k))
     for a, hiany in regiek:
         sorok.append('REGI\t%d\t-\t%s hiányzik' % (a, ', '.join(hiany)))
+    for b in briefek:
+        for uzenet in kontextus_hibak(b):
+            sorok.append('OLVAS_HIANY\t%s\t-\t%s' % (b.szam if b.szam is not None else b.fajl, uzenet))
     return '\n'.join(sorok) + '\n'
 
 
@@ -1042,6 +1110,8 @@ def main(argv=None):
     f.add_argument('--extra', action='append', default=[], metavar='FAJL',
                    help='a befogadandó brief javasolt fejléce (a repón kívüli fájl); a számítás '
                         'úgy veszi figyelembe, mintha a repóban lenne; szám nélkül a következő szabad számot kapja')
+    c = alp.add_parser('csomag', help='F32: a felsorolt feladatok csomagolhatók-e (munka mező)')
+    c.add_argument('feladatok', nargs='+', type=int, metavar='SZAM')
     alp.add_parser('jeloltek', help='az 1. fázis jelöltjei és a kihagyás okai (nem indít semmit)')
     a = alp.add_parser('atvetel', help='a FELADATOK.md táblájából a fejlécekbe')
     a.add_argument('--szaraz', action='store_true', help='csak kiírja a változásokat')
@@ -1069,7 +1139,19 @@ def main(argv=None):
         if arg.parancs == 'fuggesek':
             briefek = extra_hozzaad(briefek, arg.extra)
             sys.stdout.write(fuggesek_szoveg(briefek, main_allapotok(arg.gyoker)))
-            return 0
+            return 1 if any(kontextus_hibak(b) for b in briefek) else 0
+        if arg.parancs == 'csomag':
+            by = {b.szam: b for b in briefek if b.szam is not None}
+            rossz = 0
+            for n in arg.feladatok:
+                b = by.get(n)
+                ok = 'nincs ilyen feladat' if b is None else csomag_hiba(b)
+                if ok:
+                    print('NEM_CSOMAGOLHATO\t#%d\t%s' % (n, ok))
+                    rossz += 1
+                else:
+                    print('CSOMAGOLHATO\t#%d\tmunka: %s' % (n, by[n].fej.get('munka', 'adat (alapértelmezés)')))
+            return 1 if rossz else 0
         if arg.parancs == 'jeloltek':
             ma_all = main_allapotok(arg.gyoker)
             by = {b.szam: b for b in briefek if b.szam is not None}
