@@ -1,14 +1,16 @@
 # ELLENOR_KONTEXTUS — F32_KONTEXTUS_BRIEF.md · origin/main..claude/f32-kontextus
 
-*A `fuggetlen-ellenor` jelentése (összefoglalva; az ellenőr nem írhat, a fájlt az orkesztrátor mentette). Eredmény: **ELTÉRÉS: 6 tétel**. Hatókör OK: motívumfájl, `adat/`, `konkordancia/` nem változott; K1, K2.1, K3.0, K3.1 (kód), K4, K5 (DT-F32a 🟡) OK; E2–E19 0 találat; #49-cel szöveges ütközés nincs (az ág az F49 merge-e után indult).*
+*A `fuggetlen-ellenor` jelentései (összefoglalva; az ellenőr nem írhat, a fájlt az orkesztrátor mentette).*
 
+## 1. kör — ELTÉRÉS: 6 tétel
+Javítva: duplikált `kovetkezo.md`-sor; hiányzó `git diff --stat` a naplóban; téves F33/F42 állítás. Nyitottként a felhasználóhoz ment: (1) `munka` nélküli motívumíró, (2) K-D9 hivatkozás, (3) K3.2 korlát.
+
+## 2. kör (HEAD 292752a után) — ELTÉRÉS: 4 tétel
 | # | Eltérés | Kezelés |
 |---|---|---|
-| 1 | K2/K-D4: a motívumot író, `munka` nélküli brief „nem fut” helyett csak „nem csomagolható” (egyedül fut) | **Nyitott** — döntés a felhasználóé: az `ellenoriz`/választó is tiltsa-e (`KOTELEZO`). |
-| 2 | K-D9: a szabály „az értelmező modell (`DONTESEK.md`)” tételre hivatkozik, de ilyen tétel nincs | **Nyitott** — vagy új tétel, vagy a hivatkozás kivétele. |
-| 3 | K3.2 csak ID-s fájlnévre (`[ID]_tematikus.md`) fut; a témanevű tanulmányokat (pl. F09) nem fogja meg | **Nyitott** — dokumentált korlát (`naplok/KONTEXTUS_szabalyok.md`). |
-| 4 | A `kovetkezo.md` csomag-utasítása kétszer szerepel | **Javítva.** |
-| 5 | A `git diff --stat` kimenete hiányzik a naplóból | **Javítva.** |
-| 6 | Téves naplóállítás (F33, F42 nem ír motívumfájlt) | **Javítva.** |
+| 1 | A `MUNKA_ELOZMENY = (9, 35, 36)` a végrehajtó saját döntése; az F09/F36 emiatt csak `FIGYELEM`-et kap, így egyedül futtathatónak ajánlható (K-D4 ellen); a kód megjegyzése „2. eltérés”-re hivatkozik | **Nyitott: DT-F32c (🟡).** A megjegyzés javítva (1. eltérés). |
+| 2 | A napló valódi-repó próbái elavultak, MUNKA_HIANY-próba nincs | **Javítva** (frissítés a naplóban; a viselkedést a 19 teszt fedi). |
+| 3 | A zárójelentés elavult (🟡, nincs teszt, dontesre_var) | **Javítva** (új zárójelentés). |
+| 4 | Doksi (F09, F36) és kód (9, 35, 36) előzménylistája eltér | **Javítva** (`BRIEF_SABLON.md`). |
 
-Nem ellenőrizhető az ellenőrnek: a K3 próbák és az `ellenoriz` futtatása (a végrehajtó jelentése: 0 hiba, 28 unittest zöld).
+OK: DT-F32b (🟢, hivatkozások érvényesek); K3.2 korlát rögzítve; DT-F32a 🟢 és az F23 ⛔ pont; 19 új teszt és a `teszt_feladatok.py` import; motívumfájl és `adat/`/`konkordancia/` érintetlen; `futtat.py` E2–E16 és E19: 0 találat. Nem ellenőrizhető az ellenőrnek: a tesztek és az `ellenoriz` futtatása; a felhasználói döntések ténye (chat).

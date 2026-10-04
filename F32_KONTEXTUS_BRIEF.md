@@ -6,11 +6,11 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: sonnet
-allapot: fut
+allapot: dontesre_var
 ag: claude/f32-kontextus
 pr: https://github.com/basesoft777/Bible-Study/pull/164
 ad: négy munkaszabály a MUNKAMENET-ben és a brief-sablonban, a feladatok.py fejléc- és csomag-ellenőrzése, a #23 briefjének kiegészítése és függése; döntési tétel a TEREMT-002 3. lépésének előrehozásáról
-kovetkezo: Folytatás: a DT-F32a eldőlt (🟢, 1. opció); hátra a független ellenőrzés az új E18/csomag/teszt-részre, a zárójelentés és a PR; az orkesztrátor végzi
+kovetkezo: "Te: a DT-F32c döntés (az F09/F36 MUNKA_ELOZMENY kivétel); utána a brief lezárható"
 olvas: [MUNKAMENET.md, CLAUDE.md, BRIEF_SABLON.md, DONTESEK.md, eszkozok/feladatok.py, F23_MOTIVUM_FORRAS_BRIEF.md, TEREMT002_KUTATAS_BRIEF.md, .claude/commands/kovetkezo.md, motivumok/TEREMT-002.md, "tematikus_lezart/TEREMT-002*", "tematikus_lezart/naplok/TEREMT-002*"]
 ir: [MUNKAMENET.md, CLAUDE.md, BRIEF_SABLON.md, F32_KONTEXTUS_BRIEF.md, DONTESEK.md, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, eszkozok/tesztek/test_feladatok_kontextus.py, .claude/commands/kovetkezo.md, F23_MOTIVUM_FORRAS_BRIEF.md, naplok/KONTEXTUS_szabalyok.md, naplok/ELLENOR_KONTEXTUS.md]
 fugg: []

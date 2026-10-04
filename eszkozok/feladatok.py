@@ -351,7 +351,7 @@ def kontextus_hibak(b):
     return hibak
 
 
-# F32 (2. eltérés, felhasználó 2026.10.04): a `munka` nélküli, motívumfájlt író brief E18 fejléchiba.
+# F32 (1. eltérés, felhasználó 2026.10.04; az előzmény-kivétel DT-F32c, 🟡): a `munka` nélküli, motívumfájlt író brief E18 fejléchiba.
 # A mai main-en három ilyen brief van (F09, F35, F36); ezek nem törhetik el a CI-t, ezért
 # FIGYELEM-szintűek (az F35 lezárt, azt nem jelezzük). Új brief nem kerülhet ebbe a körbe.
 MUNKA_ELOZMENY = (9, 35, 36)

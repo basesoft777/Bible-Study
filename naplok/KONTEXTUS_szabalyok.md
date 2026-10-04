@@ -161,3 +161,8 @@ A valódi repón a `feladatok.py ellenoriz` 0 hibát ad (a mai briefek egyike se
 - Az F33 és az F42 `ir`-je nem tartalmaz motívumfájlt (`grep '^ir:.*(motivumok|tematikus_lezart|lexikon|genezis)/' *_BRIEF.md`: csak F09, F35, F36), a fenti állítás javítva.
 - A `kovetkezo.md` duplikált csomag-sora egyszer áll.
 - `git diff --stat origin/main..claude/f32-kontextus -- tematikus_lezart motivumok lexikon genezis generalt_proba adat konkordancia`: üres (motívumfájl és adattábla nem változott).
+
+## Frissítés a 2. ellenőri kör után
+
+- A „valódi repó” próbák (`70 brief, 0 hiba, 1 figyelmeztetés`; a `fuggesek` kimenete előtte és után azonos) az F32.9 előtti kódból valók. A jelenlegi kódban az F09 és F36 `FIGYELEM`/E18-sort ad; a kimenet: `71 brief, 0 hiba, 3 figyelmeztetés` (F09, F36 előzmény + F37 régi jelzés). A MUNKA_HIANY- és előzmény-viselkedést az `eszkozok/tesztek/test_feladatok_kontextus.py` fedi (19 teszt).
+- Az `MUNKA_ELOZMENY` kivétel DT-F32c (🟡) alatt: felhasználói döntésre vár, jóváhagyás nem volt.
