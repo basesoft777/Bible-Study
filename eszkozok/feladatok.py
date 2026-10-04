@@ -42,9 +42,10 @@ TIPUSOK = ('feladat', 'naplozas', 'dontes', 'archiv')
 FAZISOK = ('1', '2', 'folyamat')
 ALLAPOTOK = ('nem_indult', 'brief_kell', 'fut', 'dontesre_var', 'megallt', 'lezarva')
 MODELLEK = ('sonnet', 'opus', 'haiku')
+MUNKAK = ('adat', 'ertelmezo', 'folyamat')   # F32 (K2): a munka fajtaja
 KULCSOK = ('feladat', 'cim', 'kod', 'tipus', 'fazis', 'modell', 'allapot', 'ad',
            'kovetkezo', 'olvas', 'ir', 'fugg', 'nem_fugg', 'helyi_gep', 'ag', 'pr',
-           'forras', 'lezarva_osszegzes')
+           'forras', 'lezarva_osszegzes', 'munka')
 LISTA_KULCSOK = ('olvas', 'ir', 'fugg', 'nem_fugg')
 KOTELEZO = {
     'feladat': ('feladat', 'cim', 'tipus', 'fazis', 'modell', 'allapot', 'ad', 'kovetkezo'),
@@ -257,6 +258,8 @@ def ellenoriz(briefek, gyoker=REPO):
         if rm is not None and modell is not None and rm != modell.lower():
             hibak.append((b.fajl, 'a `modell` (%s) nem egyezik a régi `Modell:` sorral (%s)'
                           % (modell, rm)))
+        if fej.get('munka') not in (None,) + MUNKAK:
+            hibak.append((b.fajl, 'munka: adat | ertelmezo | folyamat'))
         if fej.get('helyi_gep') not in (None, 'igen', 'nem'):
             hibak.append((b.fajl, 'helyi_gep: igen | nem'))
         m = re.match(r'^F(\d\d)_', b.fajl)

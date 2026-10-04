@@ -4,6 +4,7 @@ cim: Kontextus-őrzés: az értelmező munka egy kézben marad, a csomagmód csa
 kod: KONTEXTUS
 tipus: feladat
 fazis: folyamat
+munka: folyamat
 modell: sonnet
 allapot: fut
 ag: claude/f32-kontextus
