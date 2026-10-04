@@ -5,9 +5,9 @@ kod: EGYFORRAS_NAPLO
 tipus: naplozas
 modell: sonnet
 ag: claude/f26-egyforras-naplo
-allapot: fut
+allapot: dontesre_var
 ad: a D34–D41 a FELADATOK.md döntésnaplójában; a #9–#12 fejléce a B szerkezethez igazítva; CLAUDE.md átmeneti sor; BRIEF_SABLON D39-sor
-kovetkezo: /kovetkezo, a MOTIVUM_FORRAS, LICENC és OLVASOI_HTML befogadása után
+kovetkezo: "Te: döntés a DT-F26b-ről (a #12 helye: D38 kontra DT-F32a) és a DT-F26c-ről (az F10 elveszett LXX-előfeltétele); utána a javítás az ágon, majd zárás"
 olvas: [FELADATOK.md, CLAUDE.md, BRIEF_SABLON.md, "F*_BRIEF.md"]
 ir: [FELADATOK.md, F09_SZOTAR_S2_BRIEF.md, F10_LEXIKON_LEZARAS_BRIEF.md, F11_MIGRACIO_BRIEF.md, F12_TEREMT002_PROZA_BRIEF.md, CLAUDE.md, BRIEF_SABLON.md]
 fugg: []
