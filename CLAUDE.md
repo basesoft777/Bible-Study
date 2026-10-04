@@ -32,6 +32,8 @@ a két changelogot (`PaRDeS_dontesek_CHANGELOG.md`, `motivumlog/PaRDeS_motivumok
 | **forrás** — kézzel írt | `tematikus_lezart/`, `genezis/`, `ujszovetseg/`, `melyelemzesek/`, `motivumlog/[ID].md` | szabadon szerkeszthető |
 | **kimenet** — generált | l. `ATALAKITASI_TERV.md.md` 1.C; `lexikon/[ID]_TUDOMANYOS.md`, `lexikon/[ID]_TORZSCIKK.md` | **kézzel szerkeszteni tilos**; a forrás javul, és újragenerálódik |
 
+*Átmenet (D34): a cél motívumonként egyetlen kézi forrás, minden más nézet generált. A fenti táblázat a #11 lezárásáig érvényes; a törzscikket addig a meglévő generátor állítja elő. A „tanulmány” az igeszakasz-tanulmány (kézi forrás), a „motívumcikk” a `motivumok/[ID].md`-ből generált nézet (DT-F26a).*
+
 Generált fájl fejlécében gépi jelölés áll (`# GENERÁLT: …`). Ha ilyet látsz, ne írd át.
 
 Az értelmező próza egy kézben, egy modellel készül, és aki belenyúl, az egészet olvassa; csomagmód csak adat- és motívumot nem író folyamatfeladatra (KONTEXTUS K1).
