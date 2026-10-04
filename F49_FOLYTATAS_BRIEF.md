@@ -5,7 +5,8 @@ kod: FOLYTATAS
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/f49-folytatas
 ad: a feladatok.py jeloltek a félbemaradt (fut, „Folytatás:” kezdetű kovetkezo) feladatot folytatási jelöltként adja, a felhasználóra váró (fut/megallt, „Te:”) feladatot külön sorban mutatja; a /kovetkezo 8. lépése ezt a jelölést írja, a javaslat mindkettőt kiírja
 kovetkezo: "futtatható a #32 (KONTEXTUS) és a #45 (MODELL_ELLENORZES) lezárása és mergelése után, mert mindkettő a .claude/commands/kovetkezo.md-t írja"
 olvas: [.claude/commands/kovetkezo.md, BRIEF_SABLON.md, MUNKAMENET.md, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, eszkozok/tesztek/test_feladatok_fugges.py, .github/workflows/]
