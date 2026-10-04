@@ -905,6 +905,10 @@ licenc-szövegen túli feltételt jelöl (pl. védjegy-szabály, UK Crown-jog).
    tartalmát is beleértve) a `tisztazott` állapothoz nem kell a jogtulajdonos (Larry Pierce / Online Bible) saját nyilatkozata:
    a "Please do not redistribute it yourself." és a "Permission should be gained from Online Bible" mondat kérés, nem
    licencfeltétel; a hatályos forrás az upstream README (CC BY 4.0). Más sorra nem általánosítható.
+   **DT-F33g (felhasználói döntés, 2026.10.04), harmadik kivétel:** a **BDB** (1906), a **Thayer** (1886, 1889) és a
+   **Nave_basokant** (Nave, 1897) sorra a `kozkincs` állapothoz a (c) feltétel nem követelmény: a mű kora miatt közkincs,
+   kiadói nyilatkozat nélkül is. A kivétel a művekre szól, a digitális réteg külön feltételeit (formázás, lekaparás)
+   nem igazolja; azokat a sorok megjegyzése `javaslat:` jelöléssel tartja nyilván. Más sorra nem általánosítható.
 3. A `projekt_adat` sor a repó saját adatáé; a repónak nincs LICENSE-fájlja, tehát a
    kimeneti réteg licence nyitott kérdés (DT-F24).
 
