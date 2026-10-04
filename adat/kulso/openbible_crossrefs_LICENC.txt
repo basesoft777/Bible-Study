@@ -1,0 +1,14 @@
+Forrás: https://www.openbible.info/labs/cross-references/ ("About This Page")
+Licenc-hivatkozás az oldal HTML-jében: <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"> (CC BY 4.0)
+Letöltési hivatkozás az oldalon: https://a.openbible.info/data/cross-references.zip (2 MB, az oldal szerint) — NEM lett letöltve
+Lekérve: 2026-10-04 (az oldal HTML-jéből, szó szerint; az oldal nem ad dátumot az adatra)
+Rögzítette: Claude (az F44 3b lépése), a szöveg alább változatlan idézet.
+
+Megjegyzés: az oldalon idézett ESV-szentírásszöveg © Crossway (az oldal szövege szerint); ez NEM a
+kereszthivatkozás-adat, és nem kerül a repóba.
+
+===== AZ OLDAL SZÓ SZERINTI SZÖVEGE (eredet és licenc) =====
+
+This data draws primarily from public-domain sources, especially the Treasury of Scripture Knowledge, which provides most of the data. It also includes data (to seed the initial votes) from my Topical Bible and Twitter Bible Search. I created this experiment because it was hard to find Bible cross-reference data on the web. Download all the cross-reference data (2 MB .zip).
+
+Unless otherwise indicated, all content is licensed under a Creative Commons Attribution License. All Scripture quotations, unless otherwise indicated, are taken from The Holy Bible, English Standard Version. Copyright ©2001 by Crossway Bibles, a publishing ministry of Good News Publishers. Contact me: openbibleinfo (at) gmail.com.
