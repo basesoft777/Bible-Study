@@ -78,7 +78,7 @@ Az `elter` 3 sorának mindegyikében a „versben álló bridge-jelölt” kizá
 3. **Funkciószó-zaj:** a bridge-párok közt a G3588 gyakran ott van; a metszetben szereplő funkciószó nem tartalmi egyezés. A 3 `elter` sor mind ilyen.
 4. A 24 `egyezik` sor közül 23 már `biztos`; bizonyosság-emelési jelölt csak LD035 (valószínű + egyezik).
 
-## 8. ⛔ Döntési javaslat (a DONTESEK.md-be szánt szöveg; NEM beírva)
+## 8. ⛔ Döntési javaslat (a DONTESEK.md-be szánt szöveg; a döntés: DT-F43 ✅, 2026.10.04)
 
 **DT-F43 — az `lxx_bridge` ellenőrzés (F43) tanulságai és kérdései**
 
@@ -90,4 +90,4 @@ Az `elter` 3 sorának mindegyikében a „versben álló bridge-jelölt” kizá
 
 (d) *Forráspolitika-kiegészítés (D17 mellé):* „Nem kereskedelmi (NC) vagy csak-hivatkozási licencű forrás nem kerül a repóba, származtatott adaton át sem; HF-dataset importja előtt a kártya attribúciós táblája ellenőrizendő. Kizárva: CrossWire `GreekHebrew` és `HebrewGreek` (Pierre Leblanc, Abbott-Smith + Hatch–Redpath alapján; „copyrighted, free non-commercial distribution”) és származékaik (pl. NuBerea/lxx-analysis, NuBerea/crosswire-greekhebrew).” Elfogadás/elvetés a felhasználó döntése.
 
-**Megállás:** a feladat itt felfüggesztve; a (a)–(d) döntések a felhasználóra várnak. A 6. lépés (`fuggetlen-ellenor`, `naplok/ELLENOR_LXX_BRIDGE.md`, push, draft PR) az orkesztrátor feladata.
+**Megállás (lezárva):** a ⛔ ponton a menet megállt; a felhasználó 2026.10.04-én döntött (DT-F43 ✅: (a) 2., az LD035 nem emelkedik; (b) 2.; (c) 2.; (d) 1., alkalmazva az `adat/kulso/LICENC.md` „Forráspolitika” szakaszában). A 6. lépés: `naplok/ELLENOR_LXX_BRIDGE.md`, draft PR.
