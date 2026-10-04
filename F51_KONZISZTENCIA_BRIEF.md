@@ -7,11 +7,11 @@ fazis: folyamat
 modell: sonnet
 allapot: nem_indult
 ad: egy új CI-szabály jelzi, ha egy döntés érintett fájlja még a döntés előtti állapotot írja, vagy a továbbvivő feladata régóta áll; egy hetente, helyi gépen futó ügynök a fogalmi ellentmondásokat jelentésbe gyűjti
-kovetkezo: "Te: a K5 után a helyi ütemezett feladat jóváhagyása (heti futás, csak ha a gép be van kapcsolva)"
+kovetkezo: "/kovetkezo; ⛔ a K5 után (a helyi ütemezett feladat jóváhagyása: heti futás, csak ha a gép be van kapcsolva)"
 olvas: [CLAUDE.md, MUNKAMENET.md, RENDER_BRIEF.md, adat/SEMA.md, sablonok/, "F*_BRIEF.md", eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml]
 ir: [adat/dontes_hatas.tsv, adat/SEMA.md, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/, .claude/commands/konzisztencia.md, naplok/KONZISZTENCIA_naplo.md]
 fugg: []
-helyi_gep: igen
+helyi_gep: nem
 ---
 
 # F51_KONZISZTENCIA_BRIEF.md — Döntések átvezetésének ellenőrzése
