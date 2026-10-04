@@ -883,7 +883,7 @@ licenc-szövegen túli feltételt jelöl (pl. védjegy-szabály, UK Crown-jog).
 **Szabályok.**
 
 1. A `share_alike = igen` sorok (CC BY-SA: SDBH, SDGNT, UBS_DBH, UBS_DNTG,
-   SDBH_SDGNT_segedtablak, tW_szocikkek; hat sor, mind `tisztazott`; az LSJ állítólag CC BY-SA 3.0, de `tisztazatlan`, ezért `share_alike=tisztazatlan`) megjegyzése rögzíti: a belőlük
+   SDBH_SDGNT_segedtablak, tW_szocikkek, LSJ; hét sor, mind `tisztazott`; az LSJ: Perseus saját nyilatkozata, CC BY-SA 4.0, 2026.10.04) megjegyzése rögzíti: a belőlük
    származó réteg nem zárható el, a kiadásban külön jelölendő. A kereskedelmi használat
    itt `igen` (a CC BY-SA megengedi), de a ShareAlike a származékos munkára is kiterjed.
 2. `tisztazott` csak akkor, ha a `forras_hely` a licenc szövegére vagy a forrás saját
