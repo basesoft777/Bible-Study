@@ -1,0 +1,19 @@
+Forrás: https://huggingface.co/datasets/k-mktr/karoli_bible_hu
+Revízió: b05136fdd0f138de94f28aeef61fbbe65ab2d1a1 (utolsó módosítás: 2026-07-28)
+Lekérve: 2026-10-04 (README.md, szó szerint; az adatfájl, data/data.parquet, NEM lett letöltve)
+Rögzítette: Claude (az F44 0. lépése), a szöveg alább változatlan idézet.
+
+A dataset-kártya YAML-fejlécében nincs `license` mező; a licencállítás csak a "License" szakaszban áll.
+A kártya az 1590-es vizsolyi kiadást nevezi meg, nem az 1908-as revideált Károlit.
+
+===== A KÁRTYA SZÓ SZERINTI SZÖVEGE (leírás és licenc) =====
+
+# Hungarian Károli Bible (1590)
+
+## Description
+
+The Károli Bible is the first complete Hungarian translation of the Bible, prepared by Gáspár Károli (c. 1529-1591), a Hungarian Reformed pastor. Published in Vizsoly in 1590, it was translated from the original Hebrew and Greek. The Károli Bible is the Hungarian equivalent of the King James Version — it shaped the Hungarian literary language and remains the classic Hungarian Protestant Bible. It includes the Protestant canon (66 books).
+
+## License
+
+Public domain (first published 1590, copyright expired).
