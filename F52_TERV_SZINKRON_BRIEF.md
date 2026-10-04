@@ -6,16 +6,17 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 munka: folyamat
-allapot: nem_indult
+allapot: fut
+ag: claude/f52-terv-szinkron
 ad: a három tervdokumentum (ADATVAGYON_TERV, MUNKATERV, VIBE_GUIDE) hatályos állapotának átvezetése a repó döntéseire és státuszaira; ismétlődő
-kovetkezo: "ismétlődő; a brief 2. pontja szerinti eseményeknél indul; ⛔ az első futás kis mintája után"
+kovetkezo: "Te: a draft PR átnézése és merge (1. futás 2026-10-04, napló: naplok/F52_TERV_SZINKRON_naplo.md); utána ismétlődő, a brief 2. pontja szerinti eseményeknél"
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, FELADATOK.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, CLAUDE.md, MUNKAMENET.md]
 ir: [ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, naplok/F52_TERV_SZINKRON_naplo.md]
 fugg: []
 helyi_gep: nem
 ---
 
-# F5x — TERV_SZINKRON
+# F52 — TERV_SZINKRON
 
 *A fejléc mezőit a `BRIEF_SABLON.md` aktuális alakjához kell igazítani (a `munka`,
 `modell`, `fugg`, `olvas`, `ir` mezők a KONTEXTUS K-D4 és a `feladatok.py` ellenőrzése
