@@ -4,7 +4,8 @@ cim: Egyforrású lánc (B) döntéseinek rögzítése és az érintett briefek 
 kod: EGYFORRAS_NAPLO
 tipus: naplozas
 modell: sonnet
-allapot: nem_indult
+ag: claude/f26-egyforras-naplo
+allapot: fut
 ad: a D34–D41 a FELADATOK.md döntésnaplójában; a #9–#12 fejléce a B szerkezethez igazítva; CLAUDE.md átmeneti sor; BRIEF_SABLON D39-sor
 kovetkezo: /kovetkezo, a MOTIVUM_FORRAS, LICENC és OLVASOI_HTML befogadása után
 olvas: [FELADATOK.md, CLAUDE.md, BRIEF_SABLON.md, "F*_BRIEF.md"]
