@@ -115,7 +115,7 @@ lépés ebből renderelt. A munka három fajtája:
 A fejléc `munka` mezője (`BRIEF_SABLON.md`) jelöli; a négy szabály:
 
 1. **Az értelmező réteg egy kézben készül.** Egy motívum értelmező rétegének prózáját
-   egy brief írja, egy modellel (`DONTESEK.md`: az értelmező modell; jelenleg `opus`).
+   egy brief írja, egy modellel (`DONTESEK.md` DT-F32b: az értelmező modell; jelenleg `opus`).
    Nem kerül csomagba, és nem osztható író subagentekre. A session-határ megengedett:
    ha a kontextus nem fér el, a folytató session ugyanazt a briefet viszi tovább, és a
    3. szabály szerint az egészet olvassa.
@@ -136,7 +136,7 @@ A fejléc `munka` mezője (`BRIEF_SABLON.md`) jelöli; a négy szabály:
 4. **A lánc próbája megelőzi a szerkezet véglegesítését.** A B-szerkezet forrássablonja
    (#23 M1) csak akkor véglegesíthető, ha (a) egy motívum teljes értelmező rétege a fenti
    szabályok szerint elkészült, és (b) az eredmény hozza az ISTENTISZT-001 mércéjét
-   (L1–L5 a #10 szerint). A próba helyéről a `DONTESEK.md` DT-F32a tétele dönt.
+   (L1–L5 a #10 szerint). A próba helyéről a `DONTESEK.md` DT-F32a tétele döntött (🟢, 2026.10.04): a #12 kettéválik, a **#12a próza-próba** a #23 M0 és M1 közé esik, éles render nélkül (csak `generalt_proba/`); a #12b élesítés az eredeti helyén marad.
 
 A csomagba sorolást a `python eszkozok/feladatok.py csomag <id> …` ellenőrzi; a
 `/kovetkezo` csomagjavaslat előtt kötelezően futtatja.

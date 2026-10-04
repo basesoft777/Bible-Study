@@ -33,10 +33,18 @@ Következmény: a csomagolási tilalom eddig csak az `ir` és a függések alapj
 
 A hibaüzenet a hiányzó fájl mintáját nevezi meg (`tematikus_lezart/naplok/TEREMT-002*`).
 
-**Korlátok (nyitott kérdés a zárójelentésnek):**
+**E18 — `munka` nélküli, motívumfájlt író brief (felhasználói elfogadás, 2026.10.04):** az `ellenoriz` `HIBA` sort ad (`E18: hiányzó munka mező …`), a `fuggesek` `MUNKA_HIANY` sort és 1-es kilépést; az `ellenoriz` a CI-n megbukik, a `/kovetkezo` (1. lépés: `ellenoriz` nem 0 → megáll) így nem ajánlja futtathatónak. A mai main-en három brief esne ebbe (`F09`, `F35`, `F36`, a `motivumot_ir` szerint); **döntésem: előzmény-kivétel**, mert a hiba ezeknél eltörné a CI-t, más feladat briefjét pedig nem írhatom át. A `feladatok.py` `MUNKA_ELOZMENY = (9, 35, 36)` listája ezekre `FIGYELEM` sort ad (`ellenoriz`: `FIGYELEM`, nem hiba; `fuggesek`: `FIGYELEM`), a lezárt F35-re semmit; a `csomag` mindhárom előzményre továbbra is `NEM_CSOMAGOLHATO`. Új brief nem kerülhet a listára: aki új motívumot író briefet vesz fel, `munka`-t kell megadjon (a `fuggesek --extra` a befogadáskor is `MUNKA_HIANY`-t ad). Az előzmény-lista akkor szűnik meg, ha az F09 és F36 `munka` mezőt kap (külön, a gazdájuk dolga).
 
-- A mai tematikus tanulmányok témanevet viselnek (`Tehom_tematikus.md`, `Hadesz_Seol_tematikus.md`), nem motívum-ID-t. Az `[ID]_tematikus.md` névkonvenció az új (ID-s nevű) motívumokra áll; a témanevű régi tanulmány és az ID között gépi leképezés nincs, ezért az ID-s ellenőrzés a régi motívumokra nem fut (a kézi `olvas`-listát a brief szerzője felel).
-- A könyvtár- és glob-`ir` ID nélkül (`lexikon/`, `tematikus_lezart/`, `genezis/`) a K3.2-t nem váltja ki, csak a K3.1 `munka`-szabályát (így a mai, motívumkönyvtárba író F09, F35, F36 brief `munka` nélkül egyedül fut).
+## Ismert korlát — a K3.2 ID-alapú (javaslat: külön feladat)
+
+A K3.2 (`olvas`-ellenőrzés) a motívumot az `ir` fájlnevének elejéről olvasott **ID-ből** ismeri fel (`[A-Z]+-[0-9]+`, pl. `TEREMT-002`), és az `olvas`-ban a `tematikus_lezart/[ID]_tematikus.md` és a `tematikus_lezart/naplok/[ID]_kereszthivatkozas_naplo.md` mintát várja. Következmények:
+
+- **Témanevű tanulmányokra nem fut.** A mai tanulmányok témanevet viselnek (`Tehom_tematikus.md`, `Hadesz_Seol_tematikus.md`, `Segitsegul_hivni_az_Urat_tematikus.md`, így az F09 is ilyet ír), és az ID és a tanulmány között gépi megfeleltetés nincs; az ilyen briefnél az `olvas`-lista teljességéért a brief szerzője felel (K1/3 kézi betartása).
+- **Könyvtár- és glob-`ir`** (`lexikon/`, `tematikus_lezart/`, `genezis/`) ID nélkül a K3.2-t nem váltja ki, csak a `munka`-szabályt (K3.1, E18).
+- **Javaslat (`/befogad`):** külön feladat a **motívum→tanulmány megfeleltetésre**: egy gépi tábla (pl. `adat/motivum_tanulmany.tsv`: `motivum_id`, `tanulmany`, `naplo`), amelyből a K3.2 az ID-n és a témanevű tanulmányon is ellenőrizni tud. A `feladatok.py` a táblát olvasná; amíg nincs, a fenti kézi felelősség áll. Ezt a feladatot **nem veszem fel** (a `/befogad` a felhasználóé).
+
+**Egyéb korlát:**
+
 - A `jeloltek` `CSOMAG` sora nem szűri a `csomag_hiba` szerint (lásd K3.0).
 
 ## Próbák (a parancsok tényleges kimenete)

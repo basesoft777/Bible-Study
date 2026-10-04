@@ -12,7 +12,7 @@ pr: https://github.com/basesoft777/Bible-Study/pull/164
 ad: négy munkaszabály a MUNKAMENET-ben és a brief-sablonban, a feladatok.py fejléc- és csomag-ellenőrzése, a #23 briefjének kiegészítése és függése; döntési tétel a TEREMT-002 3. lépésének előrehozásáról
 kovetkezo: Te: a DT-F32a döntés (a TEREMT-002 próba helye, K5); utána független ellenőrzés, zárójelentés, PR
 olvas: [MUNKAMENET.md, CLAUDE.md, BRIEF_SABLON.md, DONTESEK.md, eszkozok/feladatok.py, F23_MOTIVUM_FORRAS_BRIEF.md, TEREMT002_KUTATAS_BRIEF.md, .claude/commands/kovetkezo.md, motivumok/TEREMT-002.md, "tematikus_lezart/TEREMT-002*", "tematikus_lezart/naplok/TEREMT-002*"]
-ir: [MUNKAMENET.md, CLAUDE.md, BRIEF_SABLON.md, F32_KONTEXTUS_BRIEF.md, DONTESEK.md, eszkozok/feladatok.py, .claude/commands/kovetkezo.md, F23_MOTIVUM_FORRAS_BRIEF.md, naplok/KONTEXTUS_szabalyok.md, naplok/ELLENOR_KONTEXTUS.md]
+ir: [MUNKAMENET.md, CLAUDE.md, BRIEF_SABLON.md, F32_KONTEXTUS_BRIEF.md, DONTESEK.md, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, eszkozok/tesztek/test_feladatok_kontextus.py, .claude/commands/kovetkezo.md, F23_MOTIVUM_FORRAS_BRIEF.md, naplok/KONTEXTUS_szabalyok.md, naplok/ELLENOR_KONTEXTUS.md]
 fugg: []
 nem_fugg: [22]
 ---
@@ -63,7 +63,7 @@ A szabályok két munkafajtára épülnek:
 
 ### K1 — a négy szabály a `MUNKAMENET.md`-ben (új szakasz: „Kontextus-őrzés”)
 
-1. **Az értelmező réteg egy kézben készül.** Egy motívum értelmező rétegének prózáját egy brief írja, egy modellel (`DONTESEK.md`: az értelmező modell; jelenleg `opus`). Nem kerül csomagba, és nem osztható író subagentekre. A session-határ megengedett: ha a kontextus nem fér el, a folytató session ugyanazt a briefet viszi tovább, és a 3. szabály szerint az egészet olvassa.
+1. **Az értelmező réteg egy kézben készül.** Egy motívum értelmező rétegének prózáját egy brief írja, egy modellel (`DONTESEK.md` DT-F32b: az értelmező modell; jelenleg `opus`). Nem kerül csomagba, és nem osztható író subagentekre. A session-határ megengedett: ha a kontextus nem fér el, a folytató session ugyanazt a briefet viszi tovább, és a 3. szabály szerint az egészet olvassa.
    - **Kivétel:** csak olvasó subagent (például `fuggetlen-ellenor`, audit-szkript) értelmező menetben is futhat. Író subagent nem futhat.
    - A csomagmódba `munka: adat`, valamint motívumfájlt nem író `munka: folyamat` feladat kerülhet.
 2. **A forrásdokumentum próza-elsőbbségű.** A `motivumok/[ID].md` összefüggő érvelés markerekkel, amelyekből a generátor kinyeri az adatot. Nem adatséma, amelybe prózamezők vannak beszúrva.

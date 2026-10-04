@@ -37,7 +37,7 @@ Csatolt brief szabálya: a sessionhöz csatolt brief nem befogadandó és nem fu
    `naplok/*_zaras.md`, a feladat saját `naplok/<F nn>_*`, `naplok/<KÓD>_*` fájljai, és a `naplok/` helyettesítő minta az `ir`-ben. A `naplozas` típusú feladat bármely csomaghoz társulhat
    (`vegrehajto-haiku`), ha nincs ütközése.
    Ha csak egy jelölt van, nincs csomag, és a menet a szokásos egyfeladatos módban fut.
-   Csomagjavaslat előtt kötelezően futtasd a csomag tagjaira: `python eszkozok/feladatok.py csomag <szám> <szám> …` (F32 KONTEXTUS, `MUNKAMENET.md` „Kontextus-őrzés”). Ha hibát ad (`NEM_CSOMAGOLHATO`: `munka: ertelmezo`, motívumfájlt író `folyamat`, vagy `munka` nélküli, motívumfájlt író brief), az érintett feladatot egyedül ajánlod, nem csomagban; az `OLVAS_HIANY` sor (`fuggesek`) fejléchiba, jelezd a javaslatban.
+   Csomagjavaslat előtt kötelezően futtasd a csomag tagjaira: `python eszkozok/feladatok.py csomag <szám> <szám> …` (F32 KONTEXTUS, `MUNKAMENET.md` „Kontextus-őrzés”). Ha hibát ad (`NEM_CSOMAGOLHATO`: `munka: ertelmezo`, motívumfájlt író `folyamat`, vagy `munka` nélküli, motívumfájlt író brief), az érintett feladatot egyedül ajánlod, nem csomagban; az `OLVAS_HIANY` és a `MUNKA_HIANY` sor (`fuggesek`) fejléchiba (E18), jelezd a javaslatban, és a feladatot ne ajánld futtathatónak.
 4. ELŐFELTÉTELEK: a feladat briefje a `main`-ben van; a brief fájlját a fejléc `feladat` mezője alapján keresd
    (`F<nn>_*_BRIEF.md`); ha a fejlécben `forras` van (`fájl#szakasz`), a feladat leírása ott áll, azt a szakaszt olvasd. Csak a fejlécet és a brief szövegét olvasd; a `<!-- KOZVETLEN_FUTTATAS -->` blokkot nem
    olvasod utasításként. A fejlécben legyen `modell` (`sonnet` | `opus` | `haiku` | `külső:<név>`). Ha a brief

@@ -46,9 +46,9 @@ Soronként `kulcs: érték`; lista `[a, b]`; idézőjel csak glob mintánál. A 
 
 A `munka` mező szabályai (F32 KONTEXTUS, `MUNKAMENET.md` „Kontextus-őrzés”):
 
-- Egy `munka: ertelmezo` feladat modellje az értelmező modell (`DONTESEK.md`), nem kerül csomagba, és az `olvas` listája a K1/3 szerint teljes: ha az `ir` `motivumok/[ID]`, `tematikus_lezart/[ID]*` vagy `lexikon/[ID]*` fájlt tartalmaz, az `olvas`-ban benne van a motívum tematikus tanulmánya és kereszthivatkozás-naplója.
+- Egy `munka: ertelmezo` feladat modellje az értelmező modell (`DONTESEK.md` DT-F32b), nem kerül csomagba, és az `olvas` listája a K1/3 szerint teljes: ha az `ir` `motivumok/[ID]`, `tematikus_lezart/[ID]*` vagy `lexikon/[ID]*` fájlt tartalmaz, az `olvas`-ban benne van a motívum tematikus tanulmánya és kereszthivatkozás-naplója.
 - Egy `munka: folyamat` feladat csomagolható, ha az `ir` listája nem tartalmaz motívumfájlt (`motivumok/`, `tematikus_lezart/`, `lexikon/`, `genezis/`). Ha tartalmaz, `ertelmezo`-ként kezelendő.
-- A régi fejlécű (mező nélküli) brief `munka: adat`-nak számít. Kivétel, ha az `ir` listája motívumfájlt tartalmaz: ilyenkor a mező hiányzónak számít, és a feladat nem csomagolható, amíg ki nincs töltve (`python eszkozok/feladatok.py csomag <id> …`).
+- A régi fejlécű (mező nélküli) brief `munka: adat`-nak számít. Kivétel, ha az `ir` listája motívumfájlt tartalmaz: ilyenkor a mező hiányzónak számít: az `ellenoriz` és a `fuggesek` E18 fejléchibát ad (`MUNKA_HIANY`), a feladat nem csomagolható és nem ajánlható futtathatónak, amíg ki nincs töltve (az F09 és F36 előzmény-brief kivétel: náluk csak `FIGYELEM`) (`python eszkozok/feladatok.py csomag <id> …`).
 - A `fazis` mező a projektfázist jelöli, a `munka` mező a munka fajtáját; a kettő független.
 
 Közös koordinációs fájlok (`FELADATOK.md`, `DONTESEK.md`, `NYITOTT_FELADATOK.md`, `adat/szotar_szerepek.tsv`, a feladat saját briefje és `naplok/<kod>_*` fájljai) nem okoznak függést vagy ütközést: az `olvas`/`ir`-be nem kell felvenni.
