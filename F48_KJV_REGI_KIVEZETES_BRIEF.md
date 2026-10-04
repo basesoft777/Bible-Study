@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 48
 cim: A régi studybible.info KJV/ASV fájlok kivezetése: minden az eBible KJV-forrásra (KJV_Strongs_teljes), az ASV kiesik
 kod: KJV_REGI_KIVEZETES
 tipus: feladat
@@ -7,7 +7,7 @@ fazis: 1
 modell: sonnet
 allapot: nem_indult
 ad: a KJV_Strongs_{Genesis,Exodus,Proverbs}.tsv és az ASV_Strongs_{Genesis,Exodus,Proverbs}.tsv (studybible.info, tisztázatlan licenc) kikerül a repóból; a kód, a tesztek és a dokumentáció egyetlen KJV-forrást (konkordancia/KJV_Strongs_teljes.tsv, eBible) használ; a KJV_ASV_Strongs licenc- és dataset-sor kivezetve
-kovetkezo: "Te: az F22 (#22) lezárása és mergelése után indítható; a ⛔ pontnál (3. lépés) a mérés eredményéről dönt a felhasználó"
+kovetkezo: "futtatható az F22 (#22) lezárása és mergelése után; a 2. lépés ⛔ pontján (a mérés eredménye) a felhasználó dönt"
 olvas: [adat/licencek.tsv, adat/datasetek.tsv, adat/SEMA.md, konkordancia/README.md, konkordancia/TAHOT_TAGNT_README.md, konkordancia/KJV_Strongs_Genesis.tsv, konkordancia/KJV_Strongs_Exodus.tsv, konkordancia/KJV_Strongs_Proverbs.tsv, konkordancia/KJV_Strongs_teljes.tsv, konkordancia/ASV_Strongs_Genesis.tsv, konkordancia/ASV_Strongs_Exodus.tsv, konkordancia/ASV_Strongs_Proverbs.tsv, eszkozok/f19_ebible_import.py, eszkozok/f19_ellenorzes.py, eszkozok/karoli_strong/, naplok/F19_hianyok.tsv]
 ir: [eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/bemenet.py, eszkozok/karoli_strong/futtat.py, eszkozok/karoli_strong/elopar_kjv.py, eszkozok/karoli_strong/kjv_osszevet.py, eszkozok/f19_ebible_import.py, eszkozok/f19_ellenorzes.py, adat/licencek.tsv, adat/datasetek.tsv, adat/SEMA.md, konkordancia/README.md, konkordancia/TAHOT_TAGNT_README.md, konkordancia/KJV_Strongs_Genesis.tsv, konkordancia/KJV_Strongs_Exodus.tsv, konkordancia/KJV_Strongs_Proverbs.tsv, konkordancia/ASV_Strongs_Genesis.tsv, konkordancia/ASV_Strongs_Exodus.tsv, konkordancia/ASV_Strongs_Proverbs.tsv, naplok/KJV_REGI_KIVEZETES_naplo.md]
 fugg: [19, 21, 22]
