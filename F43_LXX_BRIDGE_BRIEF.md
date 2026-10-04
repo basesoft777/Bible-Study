@@ -5,10 +5,10 @@ kod: LXX_BRIDGE
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: megallt
+allapot: fut
 ag: claude/f43-lxx-bridge
 ad: a 86 LXX-döntés mindegyikéhez a lxx_bridge (MACULA-eredetű, LXX-en összesített héber→görög Strong-párok) egyezés/eltérés/nincs-adat ítélete, a bizonyosság-emelés jelöltjeivel; az lxx_dontesek.tsv nem változik
-kovetkezo: "Te: ⛔ DT-F43 (a)–(d) a DONTESEK.md-ben; utána fuggetlen-ellenor, ELLENOR_LXX_BRIDGE.md, draft PR"
+kovetkezo: "fuggetlen-ellenor (naplok/ELLENOR_LXX_BRIDGE.md), draft PR; utána Te: merge (DT-F43 eldöntve: a2 LD035 nélkül, b2, c2, d1)"
 olvas: [adat/kulso/lxx_bridge.tsv, adat/lxx_dontesek.tsv, "konkordancia/LXX_OS/*.tsv", "konkordancia/LXX_kivonat_*.tsv", konkordancia/TAHOT_kivonat.tsv, konkordancia/Strong_szotar.tsv, konkordancia/LXX_OS/README.md]
 ir: [eszkozok/lxx_bridge_egyezes.py, naplok/LXX_BRIDGE_egyezes.tsv, naplok/LXX_BRIDGE_naplo.md, adat/kulso/LICENC.md]
 fugg: [8]
