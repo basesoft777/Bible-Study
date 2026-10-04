@@ -1,6 +1,6 @@
 # Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.10.03 (F46_BDB_KONYVFELOLDAS_BRIEF.md, F46.15 — N-F46a: 16 visszaállított sor, 779 sor; előtte F46.13 — N-F46a számozás eldöntve, N-F46b új; előtte F46.7 — N-F34 és N-F34c a Lezárva szakaszba, N-F46a új: a BDB könyvfeloldási kézi lista); előtte 2026.10.02 (F41_BSB_UJRAMERES_BRIEF.md, F41.15 — N-F41d/g/h az `ellenorizetlen` pontos jelentése és a Jób 40:1/3/6 szerint; N-F41e és N-F41f a Lezárva szakaszba; előtte F41.12 — N-F41b, N-F41d, N-F41g, N-F41h a szigorított versszintű `Számozás` szerint; előtte F41.10 — N-F41e, N-F41g, N-F41h a versszintű `Számozás` (mt/kjv/ellenorizetlen) szerint; előtte F41.7 — N-F41g, N-F41h új; N-F41e elvégezve; N-F41d, N-F41b pontosítva; előtte: N-F41a, N-F41b, N-F41d, N-F41e, N-F41f új, N-F41c felvéve és lezárva.)
+Utolsó frissítés: 2026.10.04 (F43_LXX_BRIDGE_BRIEF.md, F43.8 — N29 a Lezárva szakaszba, D7: az ASV-t nem importáljuk); előtte 2026.10.03 (F46_BDB_KONYVFELOLDAS_BRIEF.md, F46.15 — N-F46a: 16 visszaállított sor, 779 sor; előtte F46.13 — N-F46a számozás eldöntve, N-F46b új; előtte F46.7 — N-F34 és N-F34c a Lezárva szakaszba, N-F46a új: a BDB könyvfeloldási kézi lista); előtte 2026.10.02 (F41_BSB_UJRAMERES_BRIEF.md, F41.15 — N-F41d/g/h az `ellenorizetlen` pontos jelentése és a Jób 40:1/3/6 szerint; N-F41e és N-F41f a Lezárva szakaszba; előtte F41.12 — N-F41b, N-F41d, N-F41g, N-F41h a szigorított versszintű `Számozás` szerint; előtte F41.10 — N-F41e, N-F41g, N-F41h a versszintű `Számozás` (mt/kjv/ellenorizetlen) szerint; előtte F41.7 — N-F41g, N-F41h új; N-F41e elvégezve; N-F41d, N-F41b pontosítva; előtte: N-F41a, N-F41b, N-F41d, N-F41e, N-F41f új, N-F41c felvéve és lezárva.)
 
 Korábbi frissítés: 2026.09.29 (F05_SZOTAR_BRIEF.md v1.10, S1 javítókör (F05b) —
 N39–N44 új: héber `s`/`ś` átírás, H2403 lemma-választás, `spirantize()`
@@ -340,16 +340,6 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   adat megvan, a Károli-kulcs üres (`karoli_ok=szamozas_elteres`). A téma gazdája a KK-menet;
   a `naplok/FORRAS_FJ2_*` fájlok csak történeti érvényűek.
 
-- **N29 — a teljes KJV/ASV-forrás keresése nem zárult le.** *(ÚJ, FJ-ellenőrzés, 2026.09.25)*
-  Az FJ3 nem azt állapította meg, hogy nincs forrás, hanem hogy a cloud proxy blokkolta a
-  studybible.info-t és az eBible.org-ot. Helyi gépről ismétlendő (a Károli-rokonsági híd miatt
-  a teljes KJV elsődleges, a BSB kiegészítő — munkaterv M4).
-  **RÉSZBEN TELJESÜLT — NYITVA (F19, 2026.09.30; F19.3, F19.7):** a teljes KJV importálva (állapot: `importált, javaslat`)
-  (`konkordancia/KJV_Strongs_teljes.tsv`, 349 308 sor, 31 099 címkés vers; vershalmazonként 91,8–94,9% egyezés a meglévő KJV-táblákkal, token-szinten 99,5% a luvlylavnderrel; Public Domain).
-  Az eBible-ASV **forráshibás** (H430/H776/H1/G746 = 0 előfordulás, H3068 51 517), ezért az `ASV_Strongs_teljes.tsv` **nem került a repóba** (F19.7, DT19 döntés; bizonyíték: DT19, `naplok/ELLENOR_F19.md`); a teljes Strong-címkés
-  ASV továbbra sincs meg; a pótlás: Strong-címkés ASV a luvlylavnder ASV-Strongs-ból (31 086 vers) — külön feladat. A címke nélküli versek besorolása: `naplok/F19_hianyok.tsv`; nyitott kérdések: DONTESEK DT19.
-  *Proveniencia: scope=konkordancia/KJV_Strongs_teljes.tsv | forras=eszkozok/f19_ellenorzes.py | ts=2026-09-30.*
-
 - **N31 — a Macula Hebrew lefedettsége ellenőrizendő.** *(ÚJ, FJ-ellenőrzés, 2026.09.25)* Az
   FJ1 szerint a letöltött Macula Hebrew-ből hiányzik az 1Sám–2Krón. Ez valószínűleg letöltési
   vagy feldolgozási hiba; a küszöb alatti eredményen nem változtat, de bármilyen későbbi
@@ -665,6 +655,10 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 <!-- GENERÁLT-VÉGE: nyitott -->
 
 ## Lezárva
+### 2026.10.04 (F43_LXX_BRIDGE_BRIEF.md — N29 lezárva, a brief D7 döntése szerint):
+* N29 — a teljes KJV/ASV-forrás keresése (FJ-ellenőrzés, 2026.09.25). **LEZÁRVA (F43, 2026.10.04; felhasználó):** a KJV-ág teljesült az F19-ben (`konkordancia/KJV_Strongs_teljes.tsv`, 349 308 sor, 31 099 címkés vers, Public Domain; állapot: `importált, javaslat`). Az ASV-ág a D7 szerint megszűnik: az ASV-t nem importáljuk (felhasználó, 2026.10.02), mert a szerepmátrix 9. szerepét a KJV tölti be, és az ASV-nek nincs szerepe. Az eBible-ASV forráshibás volt (F19.7, DT19). Ha mégis igény lenne rá, a megnevezett pótlás a luvlylavnder ASV-Strongs (CC0, 31 086 vers). *(F19 (#19), DT19; `F43_LXX_BRIDGE_BRIEF.md` D7; `naplok/ELLENOR_F19.md`)*
+  *Proveniencia: scope=konkordancia/KJV_Strongs_teljes.tsv | forras=eszkozok/f19_ellenorzes.py | ts=2026-09-30.*
+
 ### 2026.10.03 (F46_BDB_KONYVFELOLDAS_BRIEF.md — N-F34 és N-F34c lezárva, DT-F46 (6)):
 * N-F34 — a BDB „ψ”-hiba B/R maradéka (a `naplok/F34_M2_maradek.tsv` 153 sora). **LEZÁRVA (F46.7):** az F46 teljes könyvfeloldási felmérése 141 sort a csere-táblára vett (37 `psi_maradek`, a többi valódi típusa szerint), 12 sor helyesnek bizonyult (a vers létezik, a Strong-próba sikeres); a jóváhagyott sorok a DT-F46 szerint cserélődtek, a többi az N-F46a kézi listáján. *(F34 (#34), DT-F34b/DT-F34c; `naplok/BDB_KONYVFELOLDAS_naplo.md`)*
 * N-F34c — nem ψ eredetű könyvfeloldási hibák (Dt→Dan, `Lev 28:17` típus), a Dán 22:14 (H8034) kizárásának felülvizsgálata. **LEZÁRVA (F46.7):** a `Dan c:v` tokenek közül `Dan 4:14` (H2742) → Jóel 4:14 (a Károli-alak MT→Károli átváltva: Jóel 3:14), `Dan 21:15` és `Dan 24:2` (H8478) → 1Móz javaslat a >500 előfordulási szabály miatt kézi; a H8034 `Dan 22:14`/`Dan 22:19` → 5Móz javaslat szintén kézi (>500), ezért a DT-F34c védett sora nem változott; `Lev 28:17` (H0398) kézi (két egyenrangú jelölt). A maradék az N-F46a-ban. *(F34 (#34), DT-F34c 3. pont; F46, DT-F46)*

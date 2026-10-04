@@ -8,9 +8,9 @@ modell: sonnet
 allapot: fut
 ag: claude/f43-lxx-bridge
 ad: a 86 LXX-döntés mindegyikéhez a lxx_bridge (MACULA-eredetű, LXX-en összesített héber→görög Strong-párok) egyezés/eltérés/nincs-adat ítélete, a bizonyosság-emelés jelöltjeivel; az lxx_dontesek.tsv nem változik
-kovetkezo: "Te: a draft PR átnézése és merge (DT-F43 ✅; nyitva: N29 lezárása külön)"
+kovetkezo: "Te: a draft PR átnézése és merge (DT-F43 ✅; N29 lezárva)"
 olvas: [adat/kulso/lxx_bridge.tsv, adat/lxx_dontesek.tsv, "konkordancia/LXX_OS/*.tsv", "konkordancia/LXX_kivonat_*.tsv", konkordancia/TAHOT_kivonat.tsv, konkordancia/Strong_szotar.tsv, konkordancia/LXX_OS/README.md]
-ir: [eszkozok/lxx_bridge_egyezes.py, naplok/LXX_BRIDGE_egyezes.tsv, naplok/LXX_BRIDGE_naplo.md, adat/kulso/LICENC.md]
+ir: [eszkozok/lxx_bridge_egyezes.py, naplok/LXX_BRIDGE_egyezes.tsv, naplok/LXX_BRIDGE_naplo.md, adat/kulso/LICENC.md, NYITOTT_FELADATOK.md]
 fugg: [8]
 helyi_gep: nem
 ---
