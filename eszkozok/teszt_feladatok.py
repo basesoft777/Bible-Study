@@ -435,6 +435,8 @@ class CliTest(Alap):
 # F39: a függés-levezetés tesztjei (eszkozok/tesztek/), ugyanebben a futtatásban
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'tesztek'))
 from test_feladatok_fugges import MaiAllapotTest, SzabalyTest  # noqa: E402,F401
+# F49: a FOLYTATAS/VAR_RAD jelölés tesztjei, ugyanígy
+from test_feladatok_folytatas import FolytatasTest  # noqa: E402,F401
 
 
 if __name__ == '__main__':

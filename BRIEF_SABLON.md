@@ -14,7 +14,7 @@ fazis: 1
 modell: sonnet
 allapot: nem_indult
 ad: mit ad, ha kész (egy mondat)
-kovetkezo: következő lépés (egy sor; „Te:” kezdetű, ha felhasználói lépés)
+kovetkezo: következő lépés (egy sor; „Te:” kezdetű, ha felhasználói lépés; „Folytatás:” kezdetű, ha `fut` állapotban félbemaradt)
 olvas: [adat/valami.tsv, konkordancia/, "eszkozok/*.py"]
 ir: [adat/masik.tsv, eszkozok/uj_szkript.py]
 fugg: []
@@ -33,7 +33,7 @@ Soronként `kulcs: érték`; lista `[a, b]`; idézőjel csak glob mintánál. A 
 | `modell` | igen | `sonnet` · `opus` · `haiku` · `külső:<név>`; a régi `Modell:` sor megmarad, a kettő egyezik |
 | `allapot` | igen | `nem_indult` · `brief_kell` · `fut` · `dontesre_var` · `megallt` · `lezarva` |
 | `ad` | igen* | „Mit ad, ha kész” |
-| `kovetkezo` | igen* | „Következő lépés” |
+| `kovetkezo` | igen* | „Következő lépés”; „Te:” = a felhasználóra vár; „Folytatás:” (`fut` állapotban) = félbemaradt, a `/kovetkezo` folytatási jelöltként ajánlja |
 | `olvas` | ajánlott | fájlok, könyvtárak (`/`-re végződik), glob minták, amelyeket a feladat olvas |
 | `ir` | ajánlott | fájlok, könyvtárak, glob minták, amelyeket a feladat ír. **`ir` nélkül a feladat nem kerülhet csomagba.** |
 | `fugg`, `nem_fugg` | nem | feladatszámok: kézi függés, a levezetett függés kézi felülírása |
