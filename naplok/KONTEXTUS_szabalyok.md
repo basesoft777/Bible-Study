@@ -36,7 +36,7 @@ A hibaüzenet a hiányzó fájl mintáját nevezi meg (`tematikus_lezart/naplok/
 **Korlátok (nyitott kérdés a zárójelentésnek):**
 
 - A mai tematikus tanulmányok témanevet viselnek (`Tehom_tematikus.md`, `Hadesz_Seol_tematikus.md`), nem motívum-ID-t. Az `[ID]_tematikus.md` névkonvenció az új (ID-s nevű) motívumokra áll; a témanevű régi tanulmány és az ID között gépi leképezés nincs, ezért az ID-s ellenőrzés a régi motívumokra nem fut (a kézi `olvas`-listát a brief szerzője felel).
-- A könyvtár- és glob-`ir` ID nélkül (`lexikon/`, `tematikus_lezart/`, `genezis/`) a K3.2-t nem váltja ki, csak a K3.1 `munka`-szabályát (így a mai, `lexikon/`-t író F09, F33, F35, F36, F42 brief `munka` nélkül egyedül fut).
+- A könyvtár- és glob-`ir` ID nélkül (`lexikon/`, `tematikus_lezart/`, `genezis/`) a K3.2-t nem váltja ki, csak a K3.1 `munka`-szabályát (így a mai, motívumkönyvtárba író F09, F35, F36 brief `munka` nélkül egyedül fut).
 - A `jeloltek` `CSOMAG` sora nem szűri a `csomag_hiba` szerint (lásd K3.0).
 
 ## Próbák (a parancsok tényleges kimenete)
@@ -147,3 +147,9 @@ A valódi repón a `feladatok.py ellenoriz` 0 hibát ad (a mai briefek egyike se
 - `git log --all --grep=F23`: csak a befogadás (`cf5d77c`, `f6a73c3`, `7d9bd38`) és a függés-feloldás (`52f7a58`, F22.1) commitja; menet nem futott, a brief `allapot: nem_indult`.
 - Eredmény: nincs nyitott ág, a K4 megállás nélkül, a main-en lévő briefen végrehajtható. A fejléc `fugg: [32]` lett; a `nem_fugg: [22]` marad (a `32` nem volt benne, így kivenni nincs mit; a `nem_fugg: [22]` az F22.1 felülírása).
 - Értelmező lépés: a #23 nem tartalmaz (M0 csak olvas és mér, M1 sablon- és sématerv, motívumfájlt nem ír), ezért `munka: ertelmezo` jelölés és `olvas`-kiegészítés nem kellett; a #23 `munka` mezője nincs kitöltve (adatnak számít, mert nem ír motívumfájlt).
+
+## Javítás az ellenőri kör után
+
+- Az F33 és az F42 `ir`-je nem tartalmaz motívumfájlt (`grep '^ir:.*(motivumok|tematikus_lezart|lexikon|genezis)/' *_BRIEF.md`: csak F09, F35, F36), a fenti állítás javítva.
+- A `kovetkezo.md` duplikált csomag-sora egyszer áll.
+- `git diff --stat origin/main..claude/f32-kontextus -- tematikus_lezart motivumok lexikon genezis generalt_proba adat konkordancia`: üres (motívumfájl és adattábla nem változott).
