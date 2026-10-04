@@ -5,8 +5,10 @@ kod: FOLYTATAS
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ag: claude/f49-folytatas
+pr: https://github.com/basesoft777/Bible-Study/pull/162
+lezarva_osszegzes: "jeloltek: FOLYTATAS és VAR_RAD sor, FUTÓ-szűkítés, kovetkezo.md/BRIEF_SABLON igazítva, 11 teszt; nyitott: a CI nem futtatja az új tesztfájlt, #32/#45 utáni rebase."
 ad: a feladatok.py jeloltek a félbemaradt (fut, „Folytatás:” kezdetű kovetkezo) feladatot folytatási jelöltként adja, a felhasználóra váró (fut/megallt, „Te:”) feladatot külön sorban mutatja; a /kovetkezo 8. lépése ezt a jelölést írja, a javaslat mindkettőt kiírja
 kovetkezo: "futtatható a #32 (KONTEXTUS) és a #45 (MODELL_ELLENORZES) lezárása és mergelése után, mert mindkettő a .claude/commands/kovetkezo.md-t írja"
 olvas: [.claude/commands/kovetkezo.md, BRIEF_SABLON.md, MUNKAMENET.md, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, eszkozok/tesztek/test_feladatok_fugges.py, .github/workflows/]
