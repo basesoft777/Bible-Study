@@ -7,8 +7,8 @@ fazis: 1
 modell: sonnet
 allapot: nem_indult
 ad: a 86 LXX-döntés mindegyikéhez a lxx_bridge (MACULA-eredetű, LXX-en összesített héber→görög Strong-párok) egyezés/eltérés/nincs-adat ítélete, a bizonyosság-emelés jelöltjeivel; az lxx_dontesek.tsv nem változik
-kovetkezo: "Te: a lxx_bridge CSV és a LICENC.md commitja az adat/kulso/ alá; utána /kovetkezo"
-olvas: [adat/kulso/lxx_bridge.csv, adat/lxx_dontesek.tsv, "konkordancia/LXX_OS/*.tsv", "konkordancia/LXX_kivonat_*.tsv", konkordancia/TAHOT_kivonat.tsv, konkordancia/Strong_szotar.tsv, konkordancia/LXX_OS/README.md]
+kovetkezo: "futtatható: az lxx_bridge.tsv és a LICENC.md a repóban (F43.0, F43.1, licencek.tsv-sor); a /kovetkezo indíthatja"
+olvas: [adat/kulso/lxx_bridge.tsv, adat/lxx_dontesek.tsv, "konkordancia/LXX_OS/*.tsv", "konkordancia/LXX_kivonat_*.tsv", konkordancia/TAHOT_kivonat.tsv, konkordancia/Strong_szotar.tsv, konkordancia/LXX_OS/README.md]
 ir: [eszkozok/lxx_bridge_egyezes.py, naplok/LXX_BRIDGE_egyezes.tsv, naplok/LXX_BRIDGE_naplo.md, adat/kulso/LICENC.md]
 fugg: [8]
 helyi_gep: nem
@@ -27,7 +27,7 @@ A feladat **nem módosítja** a döntéstáblát. Kimenete egy egyezés-tábla �
 ## 2. Hatókör
 
 **Benne van**
-- a `lxx_bridge.csv` beolvasása, séma- és licenc-rögzítése;
+- a `lxx_bridge.tsv` beolvasása, séma- és licenc-rögzítése;
 - a 86 sor összevetése a bridge párjaival, a vers tényleges görög Strong-halmazával szűrve;
 - egyezés-tábla + napló + döntési javaslat (DT-sor szövege, nem beírva).
 
@@ -39,9 +39,9 @@ A feladat **nem módosítja** a döntéstáblát. Kimenete egy egyezés-tábla �
 
 ## 3. Lépések
 
-**0. (Te, a futás előtt)** Letöltöd a `lxx_bridge` alkonfig CSV-jét (HF: `bcv-commons/hebrew-lexical-references`, Files → `lxx_bridge`), és commitolod `adat/kulso/lxx_bridge.csv` néven, mellé `adat/kulso/LICENC.md` egy sorral: forrás-URL, alkonfig, letöltés dátuma, licenc (CC BY 4.0, bcv-commons; MACULA Hebrew/Greek CC BY 4.0; LXX-szöveg közkincs), a kártya állítása, hogy nem UBS/Louw-Nida/SDBH-eredetű.
+**0. (Te, a futás előtt)** Letöltöd a `lxx_bridge` alkonfig TSV-jét (HF: `bcv-commons/hebrew-lexical-references`, Files → `lxx_bridge`), és commitolod `adat/kulso/lxx_bridge.tsv` néven, mellé `adat/kulso/LICENC.md` egy sorral: forrás-URL, alkonfig, letöltés dátuma, licenc (CC BY 4.0, bcv-commons; MACULA Hebrew/Greek CC BY 4.0; LXX-szöveg közkincs), a kártya állítása, hogy nem UBS/Louw-Nida/SDBH-eredetű.
 
-**1. Séma és normalizálás.** A CSV fejlécének beolvasása (várt oszlopok: `hebrew_strong`, `greek_strong`, `count`; az eltérést a napló rögzíti). A Strong-számok egész számmá normalizálása mindhárom oldalon: bridge (`H1254`/`G4160` vagy csupasz szám), `lxx_dontesek.tsv` (`H1254`, `G4160`), `LXX_OS` (`strong` = `4160`, G nélkül), régi `LXX_kivonat_*` (`G0746`). A kimenet egységesen `H####`/`G####` alakot ír. Ellenőrző számok a naplóba: sorok száma, egyedi héber és görög Strong-ok száma — a kártya 3 301 / 1 862 / 1 571 értékével összevetve.
+**1. Séma és normalizálás.** A TSV fejlécének beolvasása (tabbal tagolt, `split('	')`) (várt oszlopok: `hebrew_strong`, `greek_strong`, `count`; az eltérést a napló rögzíti). A Strong-számok egész számmá normalizálása mindhárom oldalon: bridge (`H1254`/`G4160` vagy csupasz szám), `lxx_dontesek.tsv` (`H1254`, `G4160`), `LXX_OS` (`strong` = `4160`, G nélkül), régi `LXX_kivonat_*` (`G0746`). A kimenet egységesen `H####`/`G####` alakot ír. Ellenőrző számok a naplóba: sorok száma, egyedi héber és görög Strong-ok száma — a kártya 3 301 / 1 862 / 1 571 értékével összevetve.
 
 **2. Lefedettség.** A 86 sor `lxx_igehely` mezője szerint: mely versekhez van `konkordancia/LXX_OS/*.tsv` sor (Strong-os, pozíciós), melyekhez csak régi `LXX_kivonat_*.tsv`, melyekhez egyik sem. A `LXX_OS/README.md`-ből a `strong_ok` és `karoli_ok` oszlop jelentése; üres érték = „nem ellenőrzött”, külön oszlopban jelölve, nem szűrünk rá.
 
@@ -94,12 +94,12 @@ Kategóriák:
 | D2 | A döntéstábla nem változik ebben a menetben | a bizonyosság-emelés a SEMA 2.11 definíciójának értelmezését igényli (5. lépés (a)), ez felhasználói döntés |
 | D3 | A bridge-jelölt csak versben álló görög Strong-gal számít egyezésnek; lexémaszintű egyezés külön kategória | a bridge korpusz-szintű, a döntés vers-szintű |
 | D4 | `LXX_OS` elsődleges, régi `LXX_kivonat` tartalék | az `LXX_OS` szó-szintű, lemmával és pozícióval; a régi kivonat kivezetés alatt (#33) |
-| D5 | A CSV a repóba kerül (`adat/kulso/`), nem csak helyi | a script hivatkozik rá; 286 kB; CC BY 4.0 attribúció a `LICENC.md`-ben |
+| D5 | A TSV a repóba kerül (`adat/kulso/`), nem csak helyi | a script hivatkozik rá; 48 kB; CC BY 4.0 attribúció a `LICENC.md`-ben |
 | D6 | NuBerea-datasetek, `bdb_roots` nincs a hatókörben | gated, ill. más feladat tárgya; a `lxx-analysis` NC-származék miatt kizárva (5. lépés (d)) |
 | D7 | ASV: nem importáljuk (felhasználó, 2026.10.02) — N29 lezárandó ezzel a döntéssel | a szerepmátrix 9. szerepét a KJV tölti be, az ASV-nek nincs szerepe; a luvlylavnder ASV-Strongs (CC0) marad megnevezett pótlásként, ha igény lesz |
 
 <!-- KOZVETLEN_FUTTATAS -->
 ## 0. Nyitó prompt
 
-> Olvasd be a csatolt briefet (`Fnn_LXX_BRIDGE_BRIEF.md`), és hajtsd végre a 3. szakasz 1–6. lépését sorban. A 0. lépés már megtörtént (az `adat/kulso/lxx_bridge.csv` és a `LICENC.md` a repóban van; ha hiányzik, állj meg és jelezd). Az `adat/lxx_dontesek.tsv`-t nem módosíthatod. Minden számot a naplóban rögzített parancsból vezess le. Az 5. lépésnél (⛔) állj meg: a döntési javaslatot a napló végére írd, a DONTESEK.md-be ne. Zárás a 6. lépés szerint; a záró összefoglaló első sora a PR-link és a CI-állapot.
+> Olvasd be a csatolt briefet (`Fnn_LXX_BRIDGE_BRIEF.md`), és hajtsd végre a 3. szakasz 1–6. lépését sorban. A 0. lépés már megtörtént (az `adat/kulso/lxx_bridge.tsv` és a `LICENC.md` a repóban van; ha hiányzik, állj meg és jelezd). Az `adat/lxx_dontesek.tsv`-t nem módosíthatod. Minden számot a naplóban rögzített parancsból vezess le. Az 5. lépésnél (⛔) állj meg: a döntési javaslatot a napló végére írd, a DONTESEK.md-be ne. Zárás a 6. lépés szerint; a záró összefoglaló első sora a PR-link és a CI-állapot.
 <!-- /KOZVETLEN_FUTTATAS -->
