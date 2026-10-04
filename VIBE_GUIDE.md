@@ -4,7 +4,7 @@ Oct 3, 2026 · @basesoft
 
 ## 1. Mi ez, és hogyan használd
 
-Ez a guide a `MUNKATERV.md` kilenc feladatát (#47–#55) viszi végig Claude Code-dal úgy, hogy te irányítasz, Code végez, és a repó szabályai (CLAUDE.md, MUNKAMENET.md, playbook) betartatják magukat. Nem programozási tankönyv: azt mondja meg, **mit írj a promptba, mire figyelj a futás közben, és mikor állj meg.**
+Ez a guide a `MUNKATERV.md` kilenc tervezett feladatát (kódnévvel: TERV\_BEFOGAD … SZPA\_AUDIT; FELADATOK-számot a `/befogad` ad, DT-F52a) viszi végig Claude Code-dal úgy, hogy te irányítasz, Code végez, és a repó szabályai (CLAUDE.md, MUNKAMENET.md, playbook) betartatják magukat. Nem programozási tankönyv: azt mondja meg, **mit írj a promptba, mire figyelj a futás közben, és mikor állj meg.**
 
 Három dokumentum együtt:
 
@@ -116,15 +116,15 @@ Minden feladathoz: mit mondasz az 1. lépésben, mire figyelsz a mintánál, mi 
 
 | # | első prompt (a sablon mellé) | a mintánál ezt nézed | jó jel | rossz jel |
 | --- | --- | --- | --- | --- |
-| #47 TERV\_BEFOGAD | *Vedd be az ADATVAGYON\_TERV.md-t és a MUNKATERV.md-t a gyökérbe; a #23 és #25 brief olvas: listájába; az ATALAKITASI\_TERV 4.7-et jelöld elavultnak egy sorral, ne írd át; a CLAUDE.md KJV-sorát javítsd.* | a diff négy fájlt érint, mást nem | három rövid módosítás, egy commit | Code „közben rendbe tette" az ATALAKITASI\_TERV más részeit |
-| #48 KAROLI\_ELLENORZES | *Kis minta: ANTROP-001. Csak `magas` link számít egyezésnek. A triplet-frissítést mutasd soronként, ne írd be, amíg nem jóváhagytam.* | 3 eltérés-sort kézzel: nyisd meg a Károli-verset és a `parok` sort | az eltérések egy része a tanulmány hibája, más része `alacsony` link — mindkettő külön listán | minden sor „egyezik" (gyanúsan tiszta), vagy a `tartalom-alapú` sorokat kérdés nélkül átírta |
-| #49 STRONG\_NORMALIZAL | *Egy függvény, egy helyen; a `lekerdez.py` és a `betolt.py` ezt hívja; a 20 ismert alakra teszt.* | a teszt tényleges TSV-beli alakokat használ, nem kitaláltakat | a függvény 15 sor, a teszt zöld, a TSV-javítás diffje olvasható | regex-vadászat több fájlban; „kézzel javítottam a TSV-t" |
-| #50 SQLITE\_EPIT | *Előbb a séma a SEMA.md-ből, tábláról táblára; mutasd a CREATE-eket, mielőtt betöltesz. A nyolc integritási szabály tesztként, sértésnél áll.* | 1Mózes + 8 motívum betöltve; 3 lekérdezés a 26 pontból, és az eredmény egyezik egy ismert tanulmány-ténnyel | 0 integritási sértés; a `pardes.db` a `.gitignore`-ban; a `szamozas` a BSB-értékkészletet használja | a script a `csv` modult használja; igehelyet nem normalizál; „kihagytam a szabály-tesztet, mert lassú" |
-| #51 MCP\_BUROK | *Legfeljebb 8 eszköz, mind a `lekerdez.py`-t hívja; minden hívás auditok-sort ír `lepes=MCP`-vel; csak olvasó.* | ugyanaz a kérdés CLI-n és eszközön át ugyanazt adja, provenienciával | az eszközteszt-napló egyezést mutat; az `auditok.tsv` új sorai szabályosak | 15 eszköz; az MCP SQL-t ír a `lekerdez.py` megkerülésével; író eszköz „kényelemből" |
-| #52 BDB\_ADATBLOKK | *A 12.1 lekérés build-lépésként; a blokk minden száma és idézete eszköz-kimenetből; `terminologia.tsv` minden adagban.* | 10 szócikk blokkja: egy Károli-idézetet nyiss meg és vess össze | a blokk szabott (400–800 token), a hiányzó adat „—", nem pótolt | a modell magyarítja a példaverset; a blokk 2000 token; a #38 adagjai nélküle indultak |
-| #53 JELOLTEK\_RETRO | *Motívumonként egy session. A `beépítve` csak napló-szöveggel; ha nincs, `nyitva`. A „még nem vizsgált" lista származtatott, ne töltsd ki kézzel.* | ANTROP-001: 5 `jeloltek`-sort a napló szövege mellett | minden ★-nak van `dontes` + `indoklas`; a nem vizsgált 0 | Code `beépítve`-t ad napló-hivatkozás nélkül; „kitaláltam az indoklást a tanulmányból" |
-| #54 OLVASOI\_KONKORDANCIA | *Csak a `pardes.db`-ből; a szó-lap a szerepmátrix `allapot` oszlopa szerint tölt; a licenc-szűrő STEPBible-származékot nem enged ki. A hosting-döntés után.* | 20 vers + 20 Strong lapja: egy TAHOT-eredetű mező sem látszik; az üres blokk jelölt | a lapok a 26-ból a motívum nélküli pontokat mind kiszolgálják; a backend-válaszban nincs nyers adat | a lap „szépítésként" fejből pótol; a TSV-t a böngészőbe küldi; a tipográfia-kapcsoló előbb kész, mint a licenc-szűrő |
-| #55 SZPA\_AUDIT | *Csak jelentés, nem javítás: a C-táblázat a tanulmányok prózájára és a BDB-fordításra.* | 2 tanulmány + 50 szócikk sorai | a tiltólistás szavak száma és helye táblában; nincs átírás | Code „egyúttal kijavította" a tanulmány szövegét |
+| TERV\_BEFOGAD | *Vedd be az ADATVAGYON\_TERV.md-t és a MUNKATERV.md-t a gyökérbe; a #23 és #25 brief olvas: listájába; az ATALAKITASI\_TERV 4.7-et jelöld elavultnak egy sorral, ne írd át; a CLAUDE.md KJV-sorát javítsd.* | a diff négy fájlt érint, mást nem | három rövid módosítás, egy commit | Code „közben rendbe tette" az ATALAKITASI\_TERV más részeit |
+| KAROLI\_ELLENORZES | *Kis minta: ANTROP-001. Csak `magas` link számít egyezésnek. A triplet-frissítést mutasd soronként, ne írd be, amíg nem jóváhagytam.* | 3 eltérés-sort kézzel: nyisd meg a Károli-verset és a `parok` sort | az eltérések egy része a tanulmány hibája, más része `alacsony` link — mindkettő külön listán | minden sor „egyezik" (gyanúsan tiszta), vagy a `tartalom-alapú` sorokat kérdés nélkül átírta |
+| STRONG\_NORMALIZAL | *Egy függvény, egy helyen; a `lekerdez.py` és a `betolt.py` ezt hívja; a 20 ismert alakra teszt.* | a teszt tényleges TSV-beli alakokat használ, nem kitaláltakat | a függvény 15 sor, a teszt zöld, a TSV-javítás diffje olvasható | regex-vadászat több fájlban; „kézzel javítottam a TSV-t" |
+| SQLITE\_EPIT | *Előbb a séma a SEMA.md-ből, tábláról táblára; mutasd a CREATE-eket, mielőtt betöltesz. A nyolc integritási szabály tesztként, sértésnél áll.* | 1Mózes + 8 motívum betöltve; 3 lekérdezés a 26 pontból, és az eredmény egyezik egy ismert tanulmány-ténnyel | 0 integritási sértés; a `pardes.db` a `.gitignore`-ban; a `szamozas` a BSB-értékkészletet használja | a script a `csv` modult használja; igehelyet nem normalizál; „kihagytam a szabály-tesztet, mert lassú" |
+| MCP\_BUROK | *Legfeljebb 8 eszköz, mind a `lekerdez.py`-t hívja; minden hívás auditok-sort ír `lepes=MCP`-vel; csak olvasó.* | ugyanaz a kérdés CLI-n és eszközön át ugyanazt adja, provenienciával | az eszközteszt-napló egyezést mutat; az `auditok.tsv` új sorai szabályosak | 15 eszköz; az MCP SQL-t ír a `lekerdez.py` megkerülésével; író eszköz „kényelemből" |
+| BDB\_ADATBLOKK | *A 12.1 lekérés build-lépésként; a blokk minden száma és idézete eszköz-kimenetből; `terminologia.tsv` minden adagban.* | 10 szócikk blokkja: egy Károli-idézetet nyiss meg és vess össze | a blokk szabott (400–800 token), a hiányzó adat „—", nem pótolt | a modell magyarítja a példaverset; a blokk 2000 token; a #38 adagjai nélküle indultak |
+| JELOLTEK\_RETRO | *Motívumonként egy session. A `beépítve` csak napló-szöveggel; ha nincs, `nyitva`. A „még nem vizsgált" lista származtatott, ne töltsd ki kézzel.* | ANTROP-001: 5 `jeloltek`-sort a napló szövege mellett | minden ★-nak van `dontes` + `indoklas`; a nem vizsgált 0 | Code `beépítve`-t ad napló-hivatkozás nélkül; „kitaláltam az indoklást a tanulmányból" |
+| OLVASOI\_KONKORDANCIA | *Csak a `pardes.db`-ből; a szó-lap a szerepmátrix `allapot` oszlopa szerint tölt; minden blokk alatt forrás és licenc, a mód-szűrő a `licencek.tsv` `kereskedelmi` oszlopa szerint (DT-F33j, N-F33b). A hosting-döntés után.* | 20 vers + 20 Strong lapja: nincs blokk dataset-kulcs nélkül; kereskedelmi módban egy `kereskedelmi=nem` forrásból jövő mező sem látszik; az üres blokk jelölt | a lapok a 26-ból a motívum nélküli pontokat mind kiszolgálják; a backend-válaszban nincs nyers adat | a lap „szépítésként" fejből pótol; a TSV-t a böngészőbe küldi; a tipográfia-kapcsoló előbb kész, mint a mód-szűrő és a blokkonkénti forrásjelölés |
+| SZPA\_AUDIT | *Csak jelentés, nem javítás: a C-táblázat a tanulmányok prózájára és a BDB-fordításra.* | 2 tanulmány + 50 szócikk sorai | a tiltólistás szavak száma és helye táblában; nincs átírás | Code „egyúttal kijavította" a tanulmány szövegét |
 
 ## 6. Határok
 
@@ -132,7 +132,7 @@ Minden feladathoz: mit mondasz az 1. lépésben, mire figyelsz a mintánál, mi 
 
 - Nem írsz kódot, és nem javítasz TSV-t kézzel. Ha egy sor rossz, Code-dal javíttatod, briefen át — így a javítás is provenienciát kap.
 - Nem döntesz a chatben. A DT-tétel a `DONTESEK.md`-ben születik, a brief hivatkozza; a chat csak elmondja.
-- Nem ugrasz feladatot. Ha a #50 közben a #54 jut eszedbe, a MUNKATERV-be írod (Code-dal), nem a folyó session promptjába.
+- Nem ugrasz feladatot. Ha az SQLITE\_EPIT közben az OLVASOI\_KONKORDANCIA jut eszedbe, a MUNKATERV-be írod (Code-dal), nem a folyó session promptjába.
 - Nem olvasol nyers adatot a fő szálban. A TAHOT-kivonatot, a KJV-t nem nyitod meg a chatben; a `lekerdez.py` kivonatát kéred.
 
 **Amit Code nem csinál** (és ha mégis, az a 3. szakasz megszakítási jele)
@@ -156,8 +156,8 @@ Minden feladathoz: mit mondasz az 1. lépésben, mire figyelsz a mintánál, mi 
 | a brief minden sessionben változik | a chatben döntöttél, Code átírta | a brief csak explicit kérésre módosul; a döntés DT-tétel |
 | az ellenőr mindent elfogad | ugyanaz a session nézi, ami csinálta | új session, más modell; az ellenőr briefje a kész brief elfogadási pontjai, nem a kód |
 | Code a `csv` modult vagy inline bash-t használ héberrel | a CLAUDE.md shell-szabálya nem volt a kontextusban | *Olvasd el a CLAUDE.md shell-szakaszát, és írd át.* (N26: hook kell rá) |
-| „nem fér a kontextusba" | nyers TSV-t olvasott be | a `lekerdez.py` kivonata, `minta=3`; nagy fájlt a #50 után a `pardes.db`-ből |
-| a lap szép, de a licenc-szűrő hiányzik | a vizuális munka előbb készült el | a #54 elfogadási pontja: STEPBible-származék a kimenetben = 0, ez előbb, a tipográfia utána |
+| „nem fér a kontextusba" | nyers TSV-t olvasott be | a `lekerdez.py` kivonata, `minta=3`; nagy fájlt az SQLITE\_EPIT után a `pardes.db`-ből |
+| a lap szép, de a licenc-jelölés és a mód-szűrő hiányzik | a vizuális munka előbb készült el | az OLVASOI\_KONKORDANCIA elfogadási pontja: blokk dataset-kulcs nélkül = 0, és kereskedelmi módban `kereskedelmi=nem` forrásból jövő mező = 0 (DT-F33j, N-F33b); ez előbb, a tipográfia utána |
 | a session harmadik javítókörnél tart | a brief nem mondja ki az elfogadást | állj, a briefbe írd be az elfogadási pontot, és onnan indulj újra |
 
 ## 8. Döntésnapló
@@ -166,3 +166,5 @@ Minden feladathoz: mit mondasz az 1. lépésben, mire figyelsz a mintánál, mi 
 | --- | --- | --- |
 | 2026-10-03 | v1: vibe coding guide a MUNKATERV #47–#55 végigviteléhez — három szabály, hatlépéses session, nyolc prompt-sablon, feladatonkénti jelek, határok, hibatábla | tervezet |
 | 2026-10-03 | A guide a repó meglévő szabályait (CLAUDE.md három szabály, MUNKAMENET lépések, playbook kis minta, `/befogad`, `fuggetlen-ellenor`) alkalmazza, nem ír újakat; a repóba `VIBE_GUIDE.md`-ként kerülhet | megjegyzés |
+| 2026-10-04 | v2 (#52 TERV\_SZINKRON, 1. futás): a tervezett feladatok sorszám helyett kóddal (DT-F52a; az 1., 5., 6., 7. szakasz hivatkozásai); tartalmi változás nincs. Kérdéses, döntésre vár: az 5. szakasz OLVASOI\_KONKORDANCIA sorának és a 7. hibatábla licenc-sorának „STEPBible-származék = 0" állítása a DT-F33f/j után (a napló listázza) | szinkron |
+| 2026-10-04 | v3 (#52, 1. futás, felhasználói döntés a chatben): a v2-ben kérdésesnek jelölt két licenc-sor (5. szakasz OLVASOI\_KONKORDANCIA, 7. hibatábla) a DT-F33f/j és az N-F33b szerint — blokkonkénti forrásjelölés és a `kereskedelmi` oszlop szerinti mód-szűrő a STEPBible-kizárás helyett; a MUNKATERV 6. szakaszával egyezően | szinkron |
