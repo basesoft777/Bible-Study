@@ -53,6 +53,8 @@ A `munka` mező szabályai (F32 KONTEXTUS, `MUNKAMENET.md` „Kontextus-őrzés�
 
 Közös koordinációs fájlok (`FELADATOK.md`, `DONTESEK.md`, `NYITOTT_FELADATOK.md`, `adat/szotar_szerepek.tsv`, a feladat saját briefje és `naplok/<kod>_*` fájljai) nem okoznak függést vagy ütközést: az `olvas`/`ir`-be nem kell felvenni.
 
+*Motívumot érintő feladat `ir` listájában a motívum fájljai egyenként szerepelnek (`motivumok/<ID>.md`, `lexikon/<ID>_*`), nem csak a könyvtár; így egy motívumon egyszerre egy feladat fut (D39).*
+
 ## Törzs
 
 ```
