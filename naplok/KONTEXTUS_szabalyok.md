@@ -166,3 +166,10 @@ A valódi repón a `feladatok.py ellenoriz` 0 hibát ad (a mai briefek egyike se
 
 - A „valódi repó” próbák (`70 brief, 0 hiba, 1 figyelmeztetés`; a `fuggesek` kimenete előtte és után azonos) az F32.9 előtti kódból valók. A jelenlegi kódban az F09 és F36 `FIGYELEM`/E18-sort ad; a kimenet: `71 brief, 0 hiba, 3 figyelmeztetés` (F09, F36 előzmény + F37 régi jelzés). A MUNKA_HIANY- és előzmény-viselkedést az `eszkozok/tesztek/test_feladatok_kontextus.py` fedi (19 teszt).
 - Az `MUNKA_ELOZMENY` kivétel DT-F32c (🟡) alatt: felhasználói döntésre vár, jóváhagyás nem volt.
+
+## DT-F32c alkalmazása (1. opció, 2026.10.04)
+
+- `feladatok.py jeloltek`: a `munka` nélküli, motívumfájlt író brief kihagyási oka „hiányzó `munka` mező (E18, DT-F32c): kitöltésig nem futtatható”; a `FIGYELEM`-szint (CI) változatlan.
+- `kovetkezo.md` 1. lépés: az E18 `munka`-figyelmeztetésű feladat nem ajánlható futtathatónak.
+- Tesztek: `test_elozmeny_brief_csak_figyelem` (+ jelölt-kizárás), új `test_elozmeny_brief_kitoltve_jelolt`; `test_feladatok_kontextus.py`: 20 teszt, OK.
+- Valódi repó: `ellenoriz` → `71 brief, 0 hiba, 3 figyelmeztetés` (rc=0); `jeloltek` → egyetlen JELOLT #43 (az F09/F36 2. fázisú, ma amúgy sem jelölt).

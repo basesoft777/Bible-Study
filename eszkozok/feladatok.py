@@ -18,7 +18,7 @@ Parancsok:
                     sor (es 1-es kilepesi kod), ha motivumot iro feladat `olvas`-aban
                     hianyzik a tanulmany vagy a naplo (F32, K3.2); MUNKA_HIANY sor (es 1-es
                     kilepesi kod), ha motivumfajlt iro brief `munka` mezoje hianyzik (E18;
-                    az elozmeny F09/F36 csak FIGYELEM)
+                    az elozmeny F09/F36 csak FIGYELEM, de a `jeloltek` kihagyja; DT-F32c)
     csomag SZAM..   F32 (K3.1): a felsorolt feladatok csomagolhatok-e (`munka` mezo);
                     1-es kilepesi kod, ha valamelyik nem
     atvetel         a FELADATOK.md tablajabol allapot + kovetkezo lepes a
@@ -351,9 +351,10 @@ def kontextus_hibak(b):
     return hibak
 
 
-# F32 (1. eltérés, felhasználó 2026.10.04; az előzmény-kivétel DT-F32c, 🟡): a `munka` nélküli, motívumfájlt író brief E18 fejléchiba.
+# F32 (1. eltérés, felhasználó 2026.10.04; az előzmény-kivétel DT-F32c, 🟢 1. opció): a `munka` nélküli, motívumfájlt író brief E18 fejléchiba.
 # A mai main-en három ilyen brief van (F09, F35, F36); ezek nem törhetik el a CI-t, ezért
 # FIGYELEM-szintűek (az F35 lezárt, azt nem jelezzük). Új brief nem kerülhet ebbe a körbe.
+# A FIGYELEM nem enged futást: a `jeloltek` a mező kitöltéséig kihagyja őket (DT-F32c).
 MUNKA_ELOZMENY = (9, 35, 36)
 
 
@@ -745,6 +746,8 @@ def jeloltek(briefek, main_all=None):
             ok = 'halasztva'
         elif b.fej.get('helyi_gep') == 'igen':
             ok = 'helyi gép kell'
+        elif munka_hianyzik(b):
+            ok = 'hiányzó `munka` mező (E18, DT-F32c): kitöltésig nem futtatható'
         else:
             var = sorted(n for n in fugg.get(b.szam, {})
                          if n in by_szam and statusz(by_szam[n], main_all) != 'kesz')

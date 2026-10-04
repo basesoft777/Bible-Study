@@ -167,6 +167,14 @@ class KontextusTest(Fixture):
         self.assertIn('FIGYELEM\t9\t-\tE18', ki)
         # az előzmény-brief sem csomagolható, amíg a mező nincs kitöltve
         self.assertEqual(self.cli('csomag', '9')[0], 1)
+        # és nem is jelölt (DT-F32c, 1. opció)
+        ok = F.jeloltek(self.briefek(), {}).get(9)
+        self.assertIsNotNone(ok)
+        self.assertIn('DT-F32c', ok)
+
+    def test_elozmeny_brief_kitoltve_jelolt(self):
+        self.brief(9, munka='ertelmezo', olvas=['a'], ir=['lexikon/'])
+        self.assertIsNone(F.jeloltek(self.briefek(), {}).get(9))
 
     def test_lezart_elozmeny_nem_jelez(self):
         self.brief(35, allapot='lezarva', olvas=['a'], ir=['genezis/'])
