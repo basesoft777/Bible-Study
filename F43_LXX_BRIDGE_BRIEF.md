@@ -8,7 +8,7 @@ modell: sonnet
 allapot: megallt
 ag: claude/f43-lxx-bridge
 ad: a 86 LXX-döntés mindegyikéhez a lxx_bridge (MACULA-eredetű, LXX-en összesített héber→görög Strong-párok) egyezés/eltérés/nincs-adat ítélete, a bizonyosság-emelés jelöltjeivel; az lxx_dontesek.tsv nem változik
-kovetkezo: "Te: ⛔ DT-F43 (a)–(d) döntési javaslat a naplok/LXX_BRIDGE_naplo.md 8. szakaszában; fuggetlen-ellenor, ELLENOR_LXX_BRIDGE.md, push, draft PR az orkesztrátornál"
+kovetkezo: "Te: ⛔ DT-F43 (a)–(d) a DONTESEK.md-ben; utána fuggetlen-ellenor, ELLENOR_LXX_BRIDGE.md, draft PR"
 olvas: [adat/kulso/lxx_bridge.tsv, adat/lxx_dontesek.tsv, "konkordancia/LXX_OS/*.tsv", "konkordancia/LXX_kivonat_*.tsv", konkordancia/TAHOT_kivonat.tsv, konkordancia/Strong_szotar.tsv, konkordancia/LXX_OS/README.md]
 ir: [eszkozok/lxx_bridge_egyezes.py, naplok/LXX_BRIDGE_egyezes.tsv, naplok/LXX_BRIDGE_naplo.md, adat/kulso/LICENC.md]
 fugg: [8]
