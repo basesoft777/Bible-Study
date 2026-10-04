@@ -34,7 +34,7 @@ Ez a feladat csak **tervez és mér**. Semmit nem renderel, nem mozgat, és nem 
 
 ## 3. Lépések
 
-### M0 — felmérés (csak olvas) ⛔ utána megállás (az M1 a #12a eredményét várja)
+### M0 — felmérés (csak olvas) ⛔ utána megállás
 
 Minden számot a menetben ténylegesen futtatott parancs kimenetéből vegyél. Becsült vagy emlékezetből vett szám nem kerülhet a naplóba.
 
