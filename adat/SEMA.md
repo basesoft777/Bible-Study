@@ -898,6 +898,9 @@ licenc-szövegen túli feltételt jelöl (pl. védjegy-szabály, UK Crown-jog).
    licencigénye, vagy a kiadás készítője maga nyilvánítja közkincsnek (szó szerint idézve a `forras_hely`-ben). Ha (c)
    nem igazolt: `tisztazatlan`. A `kozkincs` sor `kereskedelmi`/`share_alike` értéke a megszokott értékkészletből való
    (a kor miatti közkincs mellett lehet külön feltétel, pl. UK Crown-jog: `feltetelesen`).
+   **DT-F33e (felhasználói döntés, 2026.10.04), a (c) szűkítő kivétele:** a **Károli 1908-as szövegére** (`Karoli_1908`,
+   `Karoli_KH`) a (c) feltétel nem követelmény: a szöveg a mű kora miatt közkincs, a magyar jogban evidens, kiadói
+   nyilatkozat nincs, és nem is kérendő. A kivétel erre a műre szól, más sorra nem általánosítható.
 3. A `projekt_adat` sor a repó saját adatáé; a repónak nincs LICENSE-fájlja, tehát a
    kimeneti réteg licence nyitott kérdés (DT-F24).
 
