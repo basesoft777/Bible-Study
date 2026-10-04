@@ -5,10 +5,10 @@ cim: "Károli–Strong párosítás könyvenként, két modellel (Sonnet + Gemin
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: megallt
 ag: claude/f22-jozs
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
-kovetkezo: "Fut: Józs, csak Sonnettel (D12, claude/f22-jozs). 1–5Móz kész. Józs után: a felhasználó dönt a következő könyvről (⛔ 2.). Jób előtt: döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis."
+kovetkezo: "Te: a Józs PR merge-e, és döntés a következő könyvről (⛔ 2.). 1–5Móz és Józs kész (3Móz–Józs csak Sonnet, DT-F22c; Józs: naplok/F22_Jozs_jelentes.md, ELLENOR 1 eltérés, javítva). Jób előtt: döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis."
 fugg: [21]
 nem_fugg: [48]
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/futtat.py, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/regi_arany_hibas.tsv, naplok/F21P_jelentes.md]

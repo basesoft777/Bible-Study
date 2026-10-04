@@ -7,7 +7,7 @@
 - **Jóváhagyás (2026.10.04, chat: „mehet a Józsué”)**, a jóváhagyási naplóban (`naplok/F22_versbeosztas_jovahagyas.md`): a detektor szerint a Józs tiszta (`naplok/F22_versbeosztas.md`: 658 Károli-vers, 658 eredeti vers, 24 fejezet, eltolt/K-hiány/E-hiány 0), a listában nincs sora; a `tokenek.VERSBEOSZTAS_JOVAHAGYOTT` bővítve. Kézi 1:2 beolvasztás **nincs**.
 - **Minta:** 658 vers, 66 köteg (10 vers/köteg, az utolsó 8), `--var 658` egyezik; eredeti nélküli Károli-vers nincs.
 - **Hash (K3):** a `prompt_v3` hash-ét a `sonnet_koteg.py prompt` minden köteg előtt ellenőrizte (hiba nélkül; a 66 prompt a menet elején készült el).
-- **Keret a `get_usage` szerint** (heti „all models”): a menet elején **9%**, a végén **13%** → **4 százalékpont** a 658 versre. A 85%-os megállási küszöb és a 70%-os indítási feltétel messze alatta. A fogyás a session közbeni más munkát is tartalmazza (felső becslés: az 5Móz ellenőri köre és javítása ugyanebben a sessionben futott, a Józs-menet előtt). Az 5 órás ablak 0%-ról 27%-ra ment.
+- **Keret a `get_usage` szerint** (heti „all models”): a menet elején **9%**, a végén **13%** → **4 százalékpont** a 658 versre. A 85%-os megállási küszöb és a 70%-os indítási feltétel messze alatta. A 9% a Józs-jóváhagyás után, az előkészítés előtt mért érték (az ugyanebben a sessionben korábban futott 5Móz-ellenőrzés már benne van); a fogyás az orkesztrátor munkáját is tartalmazza (felső becslés). Az 5 órás ablak 0%-ról 27%-ra ment.
 - **Eljárási megjegyzés:** az 53. köteg subagentje a 2. próbálkozás előtti javításhoz segédszkriptet írt az `f22/_munka/_fix_k053.py` útvonalra (a megbízásán túl; a `f22/_munka/` nem verziózott). A mentett válasz a kapun átment; a köteg-sor formátuma a többivel azonos.
 
 ## 2. Szkriptkimenet
