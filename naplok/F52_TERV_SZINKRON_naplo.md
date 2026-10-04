@@ -93,6 +93,8 @@ Forrás: `git diff 5b4fcf8..8e8f771 -- FELADATOK.md DONTESEK.md NYITOTT_FELADATO
 | 1. (7. sor) | a kilenc tervezett feladat kódnévvel (DT-F52a) |
 | 5. tábla | a név oszlop sorszám nélkül (9 sor) |
 | 6., 7. (135., 159., 160. sor) | `#50`/`#54` → kódnév |
+| 5. OLVASOI_KONKORDANCIA sor, 7. hibatábla licenc-sor (F52.7) | a STEPBible-kizárás helyett blokkonkénti forrásjelölés és `kereskedelmi` mód-szűrő (DT-F33f/j, N-F33b); felhasználói döntés |
+| 8. (F52.7) | v3 sor |
 | 8. | v2 sor |
 
 **Egyéb fájlok (nem tervdokumentum)**
@@ -105,7 +107,7 @@ Forrás: `git diff 5b4fcf8..8e8f771 -- FELADATOK.md DONTESEK.md NYITOTT_FELADATO
 
 | tétel | miért nem | javaslat |
 | --- | --- | --- |
-| VIBE 5. szakasz OLVASOI_KONKORDANCIA sora és 7. hibatábla licenc-sora: „a licenc-szűrő STEPBible-származékot nem enged ki", „STEPBible-származék a kimenetben = 0" | a brief 6. pontja a VIBE 5. szakaszt a sorszám/név cseréig engedi; a DT-F33f/j után az állítás elavult | felhasználói döntés: „blokk dataset-kulcs nélkül = 0; kereskedelmi módban `kereskedelmi=nem` forrás = 0" (a MUNKATERV 6. szakaszával egyezően) |
+| VIBE 5. szakasz OLVASOI_KONKORDANCIA sora és 7. hibatábla licenc-sora: „a licenc-szűrő STEPBible-származékot nem enged ki", „STEPBible-származék a kimenetben = 0" | a brief 6. pontja a VIBE 5. szakaszt a sorszám/név cseréig engedi; a DT-F33f/j után az állítás elavult | **eldöntve, átvezetve (F52.7):** a felhasználó 2026-10-04-én a chatben kérte az átírást; az új alak „blokk dataset-kulcs nélkül = 0; kereskedelmi módban `kereskedelmi=nem` forrásból jövő mező = 0" (DT-F33j, N-F33b), a MUNKATERV 6. szakaszával egyezően; VIBE döntésnapló v3 |
 | TERV_BEFOGAD nyitott részei: a #23/#25 brief `olvas:` sora, ATALAKITASI_TERV 4.7 elavult-jelölés, CLAUDE.md KJV-sor („csak Genezis, Exodus, Példabeszédek") | nem a tervdokumentumok, hanem a TERV_BEFOGAD feladat tartalma (brief 8.) | a TERV_BEFOGAD befogadása vagy a #40/#51 jelzése |
 | ADATVAGYON 21. 3. lépcső „`pardes.db` (nem commit)", MUNKATERV SQLITE_EPIT „`.gitignore`-ban" | generált fájl, méret és reprodukálhatóság kérdése, nem licenc; a DT-F33f nem fordítja meg | marad |
 | `naplok/ATNEZES_2026-10-04.md` téves „nincs brief fájl" sorai (19. delta) | a napló nem tervdokumentum; a `terv_atnezes.py` új futása cserélné | külön döntés |
@@ -126,7 +128,7 @@ Forrás: `git diff 5b4fcf8..8e8f771 -- FELADATOK.md DONTESEK.md NYITOTT_FELADATO
 | 1 | minden delta-sor a naplóban, igen/nem érintettséggel és indokkal | 29 sor, 1.1 (F52.5: DT-F26b/c felvéve, a 25. sor igen) |
 | 2 | az átírt szakaszok listája és a `git diff` egyezik | 1.2; ellenőr 1. kör: ADATVAGYON, VIBE OK; MUNKATERV hiányai F52.5-ben pótolva |
 | 3 | minden átírt állítás mellett a hivatkozott DT-/N-/#-tétel | DT-F33e–j, DT-F33a, DT-F43, DT-F32a, DT-F52a, N-F33b, N29/D7, FELADATOK-számok |
-| 4 | nem maradt megfordított állítás (régi alak keresve) | „nem terjeszthet", „csak backend", „Józsué következik/jön", „merge-elve, kézi", „#47–#55" (döntésnaplón kívül): 0 találat; a VIBE két licenc-sora szándékosan maradt (1.3) |
+| 4 | nem maradt megfordított állítás (régi alak keresve) | „nem terjeszthet", „csak backend", „Józsué következik/jön", „merge-elve, kézi", „#47–#55" (döntésnaplón kívül): 0 találat; a VIBE két licenc-sora F52.7-ben átírva (1.3) |
 | 5 | döntésnapló-sor és kiindulási állapot sor bent | ADATVAGYON v14 + kiindulási sor; MUNKATERV v3; VIBE v2 |
 | 6 | a dokumentumok többi része bájtazonos | a cserék egyszeri, pontos illesztéssel; CRLF megőrizve; ellenőr 1. kör: OK (hunkon kívül bájtazonos, sorvég-váltás nincs) |
 
