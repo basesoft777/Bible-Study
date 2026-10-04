@@ -1,29 +1,18 @@
 ---
+feladat: 52
 cim: TERV_SZINKRON — a tervdokumentumok átvezetése a repó állapotára
-sorszam: "#5x (a FELADATOK.md-ben véglegesítendő)"
-nev: TERV_SZINKRON
-verzio: 1.0
-datum: 2026-10-04
-munka: folyamat
+kod: TERV_SZINKRON
+tipus: feladat
+fazis: folyamat
 modell: sonnet
-fugg: [47]
-olvas:
-  - ADATVAGYON_TERV.md
-  - MUNKATERV.md
-  - VIBE_GUIDE.md
-  - FELADATOK.md
-  - DONTESEK.md
-  - NYITOTT_FELADATOK.md
-  - adat/SEMA.md
-  - CLAUDE.md
-  - MUNKAMENET.md
-  - a kiváltó esemény fájljai (lásd 2. pont)
-ir:
-  - ADATVAGYON_TERV.md
-  - MUNKATERV.md
-  - VIBE_GUIDE.md
-  - naplok/F5x_TERV_SZINKRON_<datum>.md
-kovetkezo: "ismétlődő; a 2. pont eseményeinél indul"
+munka: folyamat
+allapot: nem_indult
+ad: a három tervdokumentum (ADATVAGYON_TERV, MUNKATERV, VIBE_GUIDE) hatályos állapotának átvezetése a repó döntéseire és státuszaira; ismétlődő
+kovetkezo: "ismétlődő; a brief 2. pontja szerinti eseményeknél indul; ⛔ az első futás kis mintája után"
+olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, FELADATOK.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, CLAUDE.md, MUNKAMENET.md]
+ir: [ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, naplok/F52_TERV_SZINKRON_naplo.md]
+fugg: []
+helyi_gep: nem
 ---
 
 # F5x — TERV_SZINKRON
