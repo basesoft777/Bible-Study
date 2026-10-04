@@ -5,9 +5,9 @@ tipus: feladat
 fazis: 2
 modell: opus
 allapot: brief_kell
-ad: az első natív egyforrású motívum a D34 szerkezetben, a B pilotja (D38)
+ad: az első natív egyforrású motívum kész
 kovetkezo: A tohu/bohu szótári adata az S1-ben készül (SZOTAR-D29).
-fugg: [9, 23]
+fugg: [11]
 forras: TEREMT002_KUTATAS_BRIEF.md
 ---
 
@@ -15,7 +15,7 @@ forras: TEREMT002_KUTATAS_BRIEF.md
 
 *FELADATOK #12 · csonk-brief (F20 B3): nem végrehajtható, csak a feladat fejlécét hordozza; a `TEREMT002_KUTATAS_BRIEF.md` csak a T1–T2-t írja le (lefutott).*
 
-- **Mit ad, ha kész:** az első natív egyforrású motívum a D34 szerkezetben, a B pilotja (D38)
+- **Mit ad, ha kész:** az első natív egyforrású motívum kész
 - **Következő lépés:** A tohu/bohu szótári adata az S1-ben készül (SZOTAR-D29).
 - **Forrás:** `TEREMT002_KUTATAS_BRIEF.md`
 

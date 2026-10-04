@@ -8,7 +8,7 @@ modell: sonnet
 allapot: brief_kell
 ad: minden motívum egyetlen kézi forrásból renderel (D34); a törzscikk, a 8. sablon és a CI E11 kivezetve (a CI-rész külön ágon, D6)
 kovetkezo: 1. lépcső ISTENTISZT-001, utána a többi 6 (D38); brief a #12 után
-fugg: [9, 12, 23]
+fugg: [9, 23]
 ---
 
 # F11_MIGRACIO_BRIEF — csonk
