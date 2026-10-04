@@ -66,3 +66,49 @@
 15. A 17.1 2. sor számai mellett nincs proveniencia-sor a tervdokumentumban.
 
 **Összegzés: JAVÍTANDÓ** (az 1–15. tétel). A VIBE két licenc-sora (`VIBE_GUIDE.md:126`, `:160`) nyitott, naplózott tétel, nem eltérés. A merge-ről a felhasználó dönt.
+
+
+---
+
+# ELLENŐR — F52 TERV_SZINKRON, 1. futás, 2. kör (a javítás után)
+
+*A `fuggetlen-ellenor` ügynök jelentése (2. kör). Az ügynök a fájlt nem tudta írni; a szöveget a hívó menet fűzte ide változtatás nélkül. Az ügynök átláthatósági megjegyzése: egy Bash-hívásban a `git diff` kimenetét `grep`-pel szűrte és `echo`-t használt (csak olvasás); az `adat/licencek.tsv`-t nem `split('\t')`-vel, hanem tab-mezős Grep-regexszel olvasta (a fejléc a 6. sor, az 5. mező a `kereskedelmi`, a 8. az `allapot`).*
+
+- **Brief:** `F52_TERV_SZINKRON_BRIEF.md`
+- **Tartomány:** `5ea6ef8..6b6b799` (F52.1–F52.5); a javítás maga: `cf89cdd..6b6b799` (F52.5)
+- **Dátum:** 2026-10-04
+- **Hatókör:** csak az 1. kör 15 tétele, és hogy a javítás behozott-e új hibát. Az 1. körben ELFOGADVA pontokat nem nyitotta újra.
+
+`git diff --stat cf89cdd..6b6b799`: ADATVAGYON_TERV.md +17/−15, F52_TERV_SZINKRON_BRIEF.md +1/−1, MUNKATERV.md +13/−13, naplok/F52_TERV_SZINKRON_naplo.md +34/−9. A DONTESEK.md és a VIBE_GUIDE.md nem változott.
+
+| tétel | eredmény | fájl:sor | lekérdezés / indok |
+|---|---|---|---|
+| 1 — CI E5: a 16. címsor átírva | ELFOGADVA | `ADATVAGYON_TERV.md:706`, `:719` | `git diff 5ea6ef8..6b6b799 -- ADATVAGYON_TERV.md \| grep -n "^[-+]## "` üres, vagyis a 16. cím bájtra a base-beli. A frissítés jelzése a `:719` dőlt sorába került. A CI E5: 0 találat (l. CI sor). |
+| 2 — hibás csere: „BDB_ADATBLOKK TERV_SZINKRON” | ELFOGADVA | `MUNKATERV.md:65` | Grep `BDB\\?_ADATBLOKK TERV` a három dokumentumon: 0 találat. Grep `frissítve 2026-10-04, #52 TERV\\_SZINKRON\)` → `:65`. A többi 15 `BDB_ADATBLOKK`-előfordulás (MUNKATERV 15, 56, 72, 75, 76, 116, 133, 139, 144, 160; VIBE 124) mind a BDB-adatblokk feladatra vonatkozik. |
+| 3 — DT-F43 (a) „nyitott” a fejléc-táblában | ELFOGADVA | `ADATVAGYON_TERV.md:13` | A `:13` most ezt írja: „az (a) eldöntve: a bridge nem független második forrás, csak tájékoztató réteg”, és „a DT-F43 (a) szerint tájékoztató réteg, a bizonyosság a DT23 szerint”. Grep a DONTESEK-en: `DONTESEK.md:79` „**(a) 2.** — a bridge nem független második forrás … csak tájékoztató”, ✅. A „nyitott” szóra a `:13` sorban nincs találat. |
+| 4 — #22 régi alakja | ELFOGADVA | `ADATVAGYON_TERV.md:33,776,851`; `MUNKATERV.md:52` | Grep `1–5Móz\|1–5Mózes`. A `:33` „1–5Mózes és Józsué kész (⛔ …)”, a `:776` „1–5Móz és Józs kész”, a `:851` „(⛔ megállt; 1–5Móz és Józs kész)”, a `MUNKATERV:52` „(1–5Móz és Józs kész)”. Grep `fut; \|Józsué következik\|Józsué jön`: nincs #22-es találat. A maradék találatok dátumozott történeti sorok (`:84`, `:897`, napló-v4). |
+| 5 — régi sorszám a kimeneti fájlnevekben | ELFOGADVA | `MUNKATERV.md:52-58` | Grep `naplok/F[0-9]+_` a három dokumentumon: 0 találat. Az új nevek (`naplok/KAROLI_ELLENORZES_elteresek.tsv`, `SQLITE_EPIT_integritas.md` stb.) a repó mintáját követik: a Glob a `naplok/LXX_BRIDGE_naplo.md`-t és a `naplok/LXX_BRIDGE_egyezes.tsv`-t találja. Ütközés nincs: a hét új névből egy sem létezik. |
+| 6 — „a `pardes.db` CC BY 4.0 alatt terjeszthető” | ELFOGADVA | `ADATVAGYON_TERV.md:9`, `:741` | Grep `pardes\.db…CC BY\|CC BY…pardes\.db` a három dokumentumon: 0 találat. Az új szöveg: „a `pardes.db` terjeszthetőségét a benne lévő források módja dönti el (DT-F33j)”, a `:741`-ben pedig: a STEPBible-származék „nem ő zárja ki” az adatbázist. Ez már nem állít többet, mint a DT-F33f/j. |
+| 7 — DT-F26b/c, a #46-sor és a 25. sor | ELFOGADVA (megjegyzéssel) | `naplok/F52_TERV_SZINKRON_naplo.md:31,44,46,47` | Grep `^\| (2[4-9]) \|` a naplón: a sorrend 24, 25, 26, **28, 29**, 27. Tartalmilag rendben: a DT-F26b/c a `DONTESEK.md:81-82` szerint, a 25. sor `igen`. A 15. sor már nem tartomány-deltaként szerepel: `git log -1 4e6f979` → 2026-10-03 12:09. A sorrend kozmetikai hiba (a 28–29. sor a 27. elé került), nem tört tábla: mindhárom új sorban 6 cella van, a fejlécben is 6. |
+| 8 — az 1.2-lista hiányos (MUNKATERV) | ELFOGADVA | `naplo:75`, `:78`, `:79` | Bekerült a „2. DT-M1–M5” sor, a 4a „#7, #13, #25, #36, #38, #40, #42 … kapcsolat oszlopa”, és a 4. táblánál az F52.5 fájlnév-cseréje. Az F52.5 MUNKATERV-hunkjai (15, 52–59, 65, 75, 87, 121, 131, 180) mind egy listasorhoz köthetők. (Az ADATVAGYON-listával kapcsolatos új eltérés: l. Ú2.) |
+| 9 — MCGED a 0.4-ből | ELFOGADVA | `ADATVAGYON_TERV.md:34` | A szöveg: „kiesik a három ETCBC-eredetű héber modul és az MCGED (`kereskedelmi=nem`), az LSJ-alapú LXX.lexicon (`tisztazatlan`) …”. A Grep a `licencek.tsv`-n, tab-mezőkkel (1 találat mindegyikre): `^MCGED\t([^\t]*\t){3}nem\t([^\t]*\t){2}tisztazott\t`, `^Heber_ETCBC_modulok\t…nem\t…tisztazatlan\t`, `^LXX_lexicon\t…igen\t…tisztazatlan\t`. A címkék egyeznek. `scope=adat/licencek.tsv \| forras=Grep tab-mezős regex \| ts=2026-10-04` |
+| 10 — a #46 dátuma | ELFOGADVA | `MUNKATERV.md:15,75,121` | `git log -1 --date=iso 4e6f979` → `2026-10-03 12:09:01`; a FELADATOK:105 szerint „merge `4e6f979`, 2026-10-03”. A három sor most 2026-10-03-at ír, a `:121` külön is kimondja: „a #46 már 2026-10-03-án kész volt”. A Grep `#46.{0,40}` az ADATVAGYON-on nem talál 2026-10-04-es #46-dátumot. |
+| 11 — „#44 indítható” | ELFOGADVA | `ADATVAGYON_TERV.md:922`, `MUNKATERV.md:131` | Grep `indítható`: csak a `:84` találat maradt („négy dolog indítható azonnal”, a #22-ről, történeti), a #44-hez nincs. Az új szöveg: „a #44 a #42-re vár (FELADATOK függés)”. A Grep a FELADATOK-on `^\| 44 \|.*\| #33 \(kész\), #42 \|` 1 találatot ad, a FELADATOK:48 szerint a #42 ⬜. |
+| 12 — „#46 ✅/kész” a #9 és a #36 függései között | ELFOGADVA | `ADATVAGYON_TERV.md:714,716`; `MUNKATERV.md:87,93` | A `:714` „függ #7*, #23, #38*”, a `:716` „függ #7*, #9*, #37*, #38*, #42*”, a `MUNKATERV:87` „#5, #6 ✅, #7\*, #23, #38\*”, és egyikben sincs #46. A FELADATOK:33 (#9) és a FELADATOK:39 (#36) sem tartalmaz #46-ot. |
+| 13 — a 0. szakasz elavult állításai | ELFOGADVA | `ADATVAGYON_TERV.md:25`, `:37` | A `:25` most „a repóba költözött … (`ab73f7b`, 2026-10-04)”, a `:37` „a három kézi 0. lépés (#43, #44) 2026-10-04-re kész”. |
+| 14 — a `DONTESEK.md` hiányzott a brief `ir:` listájából | ELFOGADVA | `F52_TERV_SZINKRON_BRIEF.md:15` | `git diff cf89cdd..6b6b799 -- F52_TERV_SZINKRON_BRIEF.md`: `ir: [… naplok/F52_TERV_SZINKRON_naplo.md, naplok/ELLENOR_TERV_SZINKRON.md, DONTESEK.md]`. |
+| 15 — nincs proveniencia a 17.1 2. sorában | **ELTÉRÉS (Ú1, a javítás hozta be)** | `ADATVAGYON_TERV.md:742` | A proveniencia bekerült, de **escape-eletlen `\|` jelekkel, a táblacellán belül**. Grep `44 adatsor \| forras=` (regexben literális pipe, előtte nincs backslash) → `742:44 adatsor \| forras=`. A 17.1 tábla 3 oszlopos (`\| tétel \| mit mond \| hatás a tervre \|`); a sor így 5 cellára esik szét. GFM-ben a „hatás a tervre” oszlopba a `forras=…` töredék kerül, a `ts=…` és a valódi „A 26 pont nem mind publikálható …” cella pedig kiesik a renderből. Ugyanebben a fájlban a helyes alak `\|`, pl. a `:976`. Kisebb pont: a `forras=` nem futtatható lekérdezés, hanem napló-hivatkozás („F52 1. futás, napló 1.4; az ellenőr független Grep-je egyezik”), a napló 1.4 pedig scratch-szkriptet nevez meg. |
+| Ú2 — az 1.2-lista az ADATVAGYON-ra a javítás után | **ELTÉRÉS (alacsony, a javítás hozta be)** | `naplo:63`; `ADATVAGYON_TERV.md:13,25,33,37,776,851,922` | Az ADATVAGYON 1.2-listája az F52.5 után nem frissült. (1) A „16. cím” még tételként áll (`naplo:63`), pedig a kumulált diffben a cím már nem változik (l. 1. tétel). (2) Az F52.5 ADATVAGYON-hunkjai közül a fejléc-tábla Státuszok sora (`:13`), a `:25`, a 0.3 (`:33`), a 0.7 (`:37`), a 17.2 ATALAKITASI-sor (`:776`) és a 18.4 hiányzó-adat sor (`:851`) nincs az 1.2-ben. A MUNKATERV-listánál ezt pótolták. Részben kompenzálja a napló 1.6 tétel-táblája, de a brief 4.7 szerinti „lista = git diff” egyezés így nem áll. |
+| Sorvég / whitespace (javítás) | ELFOGADVA | — | A `git diff --numstat cf89cdd..6b6b799` és a `--ignore-cr-at-eol --numstat` azonos (17/15, 1/1, 13/13, 34/9): sorvég-váltás nincs. A `git diff --check cf89cdd..6b6b799` exit 0. |
+| TSV Δ (E17, DT3) | ELFOGADVA | — | `git diff --numstat 5ea6ef8..6b6b799 -- adat konkordancia '*.tsv'` üres: minden `adat/` és `konkordancia/` tábla Δ = 0. |
+| **CI** saját futtatás | ELFOGADVA — **exit 0** | — | `PYTHONIOENCODING=utf-8 python eszkozok/ellenorzes/futtat.py --valtozott ADATVAGYON_TERV.md DONTESEK.md F52_TERV_SZINKRON_BRIEF.md MUNKATERV.md VIBE_GUIDE.md naplok/F52_TERV_SZINKRON_naplo.md naplok/ELLENOR_TERV_SZINKRON.md --diff-alap 5ea6ef8 --diff-fej 6b6b799 --esemeny pull_request` → E2–E16, E19: mind 0 találat, `EXIT=0`. Az 1. kör E5 HIBÁ-ja megszűnt. A CI a törött tábla-sort (Ú1) nem fogja meg. |
+
+**ELTÉRÉS-ek súlyossági sorrendben:**
+1. **Ú1 (a 15. tétel javítása):** az `ADATVAGYON_TERV.md:742` 17.1-es táblasora a proveniencia escape-eletlen `|` jelei miatt 5 cellára esik szét. A „hatás a tervre” cella tartalma rossz helyre kerül, illetve kiesik a renderből. Javítás: `\|` a cellán belül. Ugyanitt a `forras=` nem lekérdezés, hanem napló-hivatkozás.
+2. **Ú2 (alacsony):** a napló 1.2 ADATVAGYON-listája nem követi az F52.5-öt. Elavult tétel benne a „16. cím”, és hiányzik a `:13`, `:25`, `:33`, `:37`, `:776`, `:851` hunkja.
+
+Megjegyzés, nem eltérés: a napló 1.1-es delta-táblájában a 28–29. sor a 27. elé került.
+
+**Összegzés: JAVÍTANDÓ.** Az 1. kör 15 tételéből 14 ELFOGADVA. A 15. tétel javítása új hibát hozott (Ú1), és van egy alacsony súlyú listaeltérés (Ú2). A CI exit 0. A merge-ről a felhasználó dönt.
+
+*Javítás: F52.6 (Ú1, Ú2 és a 28–29. sor sorrendje; l. a szinkron-napló 1.6 szakaszát).*

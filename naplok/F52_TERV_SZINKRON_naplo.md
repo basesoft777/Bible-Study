@@ -43,9 +43,9 @@ Forrás: `git diff 5b4fcf8..8e8f771 -- FELADATOK.md DONTESEK.md NYITOTT_FELADATO
 | 24 | MUNKAMENET: Kontextus-őrzés szakasz (F32), ⛔-nál döntés-előkészítés a `DONTES_KERDES_SABLON.md` szerint | MUNKAMENET.md | nem | VIBE 6. „Határok" nem mond ellent; ADATVAGYON fejléc-táblája rögzíti | nem kellett |
 | 25 | NYITOTT: N29 lezárva (ASV nem jön, D7); N-F33a, N-F33b új | NYITOTT_FELADATOK.md | igen | N-F33b: a 4. sorral átvezetve; N29: ADATVAGYON fejléc-tábla és a MUNKATERV új #48-sora | átvezetve |
 | 26 | CLAUDE.md: D34 átmeneti sor, K1 csomagmód-sor | CLAUDE.md | nem | — | a fejléc-tábla (D34–D41, #32) rögzíti |
+| 27 | TERV_BEFOGAD részben teljesült: a három dokumentum a repóban (`ab73f7b`); nyitott: a #23/#25 brief `olvas:` sora (csak az F52 brief hivatkozza az ADATVAGYON_TERV-et), ATALAKITASI_TERV 4.7 jelölése, CLAUDE.md KJV-sora | repó (grep, git) | igen | MUNKATERV 1., 3., 4., 4a, 5.; ADATVAGYON 19. teendők | átvezetve („részben kész") |
 | 28 | DT-F26b (a #12 helye: a DT-F32a az irányadó, az F12 fejléce a main-állapotra, a #11 `fugg`-jából a 12 ki; D38 kiegészítve) | DONTESEK | igen | ADATVAGYON 16. ábra (#11 függ), MUNKATERV 4a #11 (a 20–21. sorral együtt átvezetve) | átvezetve |
 | 29 | DT-F26c (az F10 `kovetkezo` mezőjébe vissza a #8 négy nyitott LXX-sorának előfeltétele) | DONTESEK | nem | a tervdokumentumok a #10 előfeltételét nem részletezik | nem kellett |
-| 27 | TERV_BEFOGAD részben teljesült: a három dokumentum a repóban (`ab73f7b`); nyitott: a #23/#25 brief `olvas:` sora (csak az F52 brief hivatkozza az ADATVAGYON_TERV-et), ATALAKITASI_TERV 4.7 jelölése, CLAUDE.md KJV-sora | repó (grep, git) | igen | MUNKATERV 1., 3., 4., 4a, 5.; ADATVAGYON 19. teendők | átvezetve („részben kész") |
 
 ### 1.2 Átírt szakaszok (brief 4.7) — a `git diff` tételei
 
@@ -55,17 +55,22 @@ Forrás: `git diff 5b4fcf8..8e8f771 -- FELADATOK.md DONTESEK.md NYITOTT_FELADATO
 | --- | --- |
 | kiindulási állapot sor (5. sor) | viszonyítási pont `8e8f771`, az F52 napló megnevezve; „a hamissá vált állítást a #52 cseréli (v14)" |
 | fejléc-tábla, Sorszámok sor | a DT-F52a döntés: a MUNKATERV és a VIBE a FELADATOK számaihoz igazodik, a tervezett feladatok kódnévvel |
+| fejléc-tábla, DT-F33f sor (9.) | (F52.5) a `pardes.db` terjeszthetőségét a források módja dönti el (DT-F33j) |
+| fejléc-tábla, Státuszok sor (13.) | (F52.5) DT-F43 (a) eldöntve: a bridge tájékoztató réteg |
+| „A sorrend a továbbiakban” mondat (25.) | (F52.5) a doc a repóba költözött (`ab73f7b`) |
 | javaslat 1. és 4. pont | `#54` → OLVASOI_KONKORDANCIA |
-| 0. szakasz 4. pont | (kis minta) DT-F33e–j: CC BY 4.0, két mód, `kereskedelmi` szűrő |
+| 0. szakasz 3. és 7. pont | (F52.5) #22: 1–5Móz és Józs kész, ⛔; a kézi 0. lépés kész |
+| 0. szakasz 4. pont | (kis minta) DT-F33e–j: CC BY 4.0, két mód, `kereskedelmi` szűrő; (F52.5) MCGED a kereskedelmi kizárások közt |
 | 0.2 Károli–Strong sor | a bemenet (TAHOT) is terjeszthető (DT-F33f) |
 | 0.2 alatti 2. pont | a szétválasztás kereskedelmi/nem kereskedelmi (DT-F33j), nem STEPBible/saját |
 | 15. bevezető, #43/#44 sorok, 1. pont | a 0. lépés fájljai bent; #43 fut; a Károli-rész tárgytalan (DT-F33e) |
-| 16. cím, ábra (5 sor), állapotfrissítés | függések a FELADATOK szerint; #22 ⛔ |
-| 17.1 első sor | (kis minta) az 1. út nem esik ki, a hosting nyitott |
-| 17.1 második sor | 44 sor: 24 tisztazott / 9 kozkincs / 11 tisztazatlan; `kereskedelmi` oszlop |
+| 16. ábra (5 sor), állapotfrissítés, dőlt frissítés-jelzés a törzsben | függések a FELADATOK szerint; #22 ⛔; (F52.5) a cím visszaállítva az eredetire, #46 ki a #9/#36 függéséből |
+| 17.1 első sor | (kis minta) az 1. út nem esik ki, a hosting nyitott; (F52.5) a `pardes.db` terjeszthetősége a források módja szerint |
+| 17.1 második sor | 44 sor: 24 tisztazott / 9 kozkincs / 11 tisztazatlan; `kereskedelmi` oszlop; (F52.5) proveniencia a cellában, (F52.6) `\|` escape |
+| 17.2 ATALAKITASI\_TERV 4.7 sor; 18.4 hiányzó-adat tábla | (F52.5) #22: 1–5Móz és Józs kész, ⛔ |
 | 19. teendők (3 sor + 1 új) | kézi 0. lépés pipálva; Károli licenc tárgytalan; export kész, az olvas-lista nyitott |
 | 19. döntésnapló | a 2026-10-03 „nyitott" sor lezárva (v14); új v14 sor |
-| 21. 0., 1., 3., 4. lépcső | 0. lépcső kész; #46 kész; `kereskedelmi` oszlop; hosting-út a mód szerint |
+| 21. 0., 1., 3., 4. lépcső | 0. lépcső kész; #46 kész; `kereskedelmi` oszlop; hosting-út a mód szerint; (F52.5) a #44 a #42-re vár |
 
 **MUNKATERV.md**
 
@@ -146,5 +151,13 @@ Forrás: `git diff 5b4fcf8..8e8f771 -- FELADATOK.md DONTESEK.md NYITOTT_FELADATO
 | 13 | 0. szakasz elavult állításai (kézi 0. lépés; „a doc a repóba költözik") | „kész", „költözött (`ab73f7b`)" |
 | 14 | `DONTESEK.md` hiányzik a brief `ir:` listájából | felvéve (+ az ellenőr-napló) |
 | 15 | a 17.1 2. sor számai mellett nincs proveniencia-sor | proveniencia a cellában |
+
+**2. kör** (`fuggetlen-ellenor`, 2026-10-04, csak a 15 tétel és a CI; a jelentés a `naplok/ELLENOR_TERV_SZINKRON.md` 2. kör szakaszában): **14 tétel ELFOGADVA, CI exit 0; két új, a javítás által behozott eltérés**, javítva F52.6-ban:
+
+| # | ellenőr tétele | javítás |
+| --- | --- | --- |
+| Ú1 | a 17.1 második sorának provenienciájában escape-eletlen `\|` jelek: a 3 oszlopos sor 5 cellára esett | `\|` a cellán belül; a `forras=` a tényleges lekérdezést nevezi (az `allapot` és `kereskedelmi` oszlop számlálása); gépi ellenőrzés: a sor 3 cellás |
+| Ú2 | a napló 1.2 ADATVAGYON-listája nem követte az F52.5-öt (16. cím mint tétel; a 13., 25., 33., 37., 776., 851. sor hunkja hiányzott) | a lista kiegészítve, a „16. cím” tétel javítva |
+| — | a delta-lista 28–29. sora a 27. elé került | sorrend javítva |
 
 Az ellenőr „NEM ELLENŐRIZHETŐ" jelzése (a kis minta chatbeli jóváhagyása) és a DT-F52a „Felhasználó, chat" idézete: a döntés a chatben született, a repóban a DONTESEK-tétel és ez a napló rögzíti; más nyoma nincs.
