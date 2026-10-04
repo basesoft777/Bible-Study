@@ -5,12 +5,13 @@ kod: EGYFORRAS_NAPLO
 tipus: naplozas
 modell: sonnet
 ag: claude/f26-egyforras-naplo
-allapot: fut
+allapot: lezarva
 ad: a D34–D41 a FELADATOK.md döntésnaplójában; a #9–#12 fejléce a B szerkezethez igazítva; CLAUDE.md átmeneti sor; BRIEF_SABLON D39-sor
-kovetkezo: "Ellenőrzés és zárás"
+kovetkezo: lezárva
 olvas: [FELADATOK.md, CLAUDE.md, BRIEF_SABLON.md, "F*_BRIEF.md"]
 ir: [FELADATOK.md, F09_SZOTAR_S2_BRIEF.md, F10_LEXIKON_LEZARAS_BRIEF.md, F11_MIGRACIO_BRIEF.md, F12_TEREMT002_PROZA_BRIEF.md, CLAUDE.md, BRIEF_SABLON.md]
 fugg: []
+lezarva_osszegzes: D34–D41 rögzítve, #9–#12 fejléc; DT-F26b/c alkalmazva (DT-F32a irányadó; F10 LXX-előfeltétel vissza); DT-F26a a #11-re vár
 ---
 
 # F<nn>_EGYFORRAS_NAPLO_BRIEF.md — Egyforrású lánc (B) döntéseinek rögzítése
