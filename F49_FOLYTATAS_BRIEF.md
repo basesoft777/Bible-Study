@@ -8,11 +8,11 @@ modell: sonnet
 allapot: lezarva
 ag: claude/f49-folytatas
 pr: https://github.com/basesoft777/Bible-Study/pull/162
-lezarva_osszegzes: "jeloltek: FOLYTATAS és VAR_RAD sor, FUTÓ-szűkítés, kovetkezo.md/BRIEF_SABLON igazítva, 11 teszt; nyitott: a CI nem futtatja az új tesztfájlt, #32/#45 utáni rebase."
+lezarva_osszegzes: "jeloltek: FOLYTATAS és VAR_RAD sor, FUTÓ-szűkítés, kovetkezo.md/BRIEF_SABLON igazítva, 11 teszt, a CI-ben a teszt_feladatok.py importján át fut (D4); nyitott: #32/#45 utáni rebase."
 ad: a feladatok.py jeloltek a félbemaradt (fut, „Folytatás:” kezdetű kovetkezo) feladatot folytatási jelöltként adja, a felhasználóra váró (fut/megallt, „Te:”) feladatot külön sorban mutatja; a /kovetkezo 8. lépése ezt a jelölést írja, a javaslat mindkettőt kiírja
 kovetkezo: "futtatható a #32 (KONTEXTUS) és a #45 (MODELL_ELLENORZES) lezárása és mergelése után, mert mindkettő a .claude/commands/kovetkezo.md-t írja"
 olvas: [.claude/commands/kovetkezo.md, BRIEF_SABLON.md, MUNKAMENET.md, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, eszkozok/tesztek/test_feladatok_fugges.py, .github/workflows/]
-ir: [.claude/commands/kovetkezo.md, eszkozok/feladatok.py, eszkozok/tesztek/test_feladatok_folytatas.py, BRIEF_SABLON.md, naplok/FOLYTATAS_naplo.md]
+ir: [.claude/commands/kovetkezo.md, eszkozok/feladatok.py, eszkozok/tesztek/test_feladatok_folytatas.py, eszkozok/teszt_feladatok.py, BRIEF_SABLON.md, naplok/FOLYTATAS_naplo.md]
 fugg: []
 helyi_gep: nem
 ---
@@ -74,3 +74,4 @@ Másodlagos kár: a félbemaradt `fut` feladat a választó szemében FUTÓ mara
 | D1 | A FOLYTATAS jelölt elsőbbsége | (a) megelőzi az új (`nem_indult`) jelölteket; (b) a feladatszám-sorrendben áll a többi között; (c) csak alternatívaként jelenik meg | (a): a megkezdett munka befejezése olcsóbb, mint új kontextus nyitása, és a félbemaradt ág elavulását is megelőzi | ✅ **(a)** — felhasználó, 2026.10.04 (chat, a brief írásakor) |
 | D2 | Az előtag szövege | „Folytatás:” · „Folytat:” · más | „Folytatás:” — magyar főnév, párhuzamos a „Te:” és a „halasztva” előtaggal | ✅ **„Folytatás:”** — felhasználó, 2026.10.04 (chat, a brief írásakor) |
 | D3 | Új állapot helyett előtag | új `allapot: felbe` · `kovetkezo`-előtag | előtag: az `ALLAPOTOK`, a generátor és a CI változatlan marad | javaslat (a brief rögzíti) |
+| D4 | Az új tesztfájl a CI-ben (hatókör-bővítés: `teszt_feladatok.py` az `ir`-be) | (a) egy import-sor a `teszt_feladatok.py`-ba, az F39 mintájára; (b) új CI-lépés; (c) marad CI-n kívül | (a): meglévő minta, a CI-t nem kell módosítani | ✅ **(a)** — felhasználó, 2026.10.04 (chat, a zárás után) |

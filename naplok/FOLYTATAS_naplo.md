@@ -69,3 +69,9 @@ CSOMAG	#43
 
 Eltérés: #22 és #44 `KIHAGYVA … állapot/vár` helyett a „Te:” ok (a #22 VAR_RAD sorban a címmel és a
 `kovetkezo`-val); a csomag változatlan (#43).
+
+## F49.5 — az új tesztfájl a CI-ben (D4)
+
+A CI csak az `eszkozok/teszt_feladatok.py`-t futtatja, így a `test_feladatok_folytatas.py` kimaradt.
+A felhasználó jóváhagyásával (D4) a `teszt_feladatok.py` az `ir`-be került, és az F39-sor mintájára
+importálja a `FolytatasTest` osztályt.
