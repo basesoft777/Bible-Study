@@ -9,7 +9,7 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 sys.path.insert(0, "eszkozok")
-from lxx_kivonat_fetch_v2 import KEZI_ELTOLASOK  # noqa: E402
+from lxx_os_import import KEZI_ELTOLASOK  # noqa: E402
 
 BOOK_KEY_TO_KAROLI = {
     "genesis": "1Móz", "exodus": "2Móz", "leviticus": "3Móz", "numbers": "4Móz",

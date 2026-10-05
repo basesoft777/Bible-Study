@@ -41,7 +41,7 @@ Ez **döntés, nem megfigyelés** — a repóban ma két formátum él egymás m
 
 | Alak | Hol | Példa |
 |---|---|---|
-| **magyar kanonikus** (ez a séma alakja) | `TAHOT_kivonat.tsv`, `TAGNT_kivonat.tsv`, `TSK_kereszthivatkozasok.tsv`, `Karoli_1908.tsv`, `LXX_kivonat_*.tsv` | `1Móz 1:1` |
+| **magyar kanonikus** (ez a séma alakja) | `TAHOT_kivonat.tsv`, `TAGNT_kivonat.tsv`, `TSK_kereszthivatkozasok.tsv`, `Karoli_1908.tsv`, `LXX_OS/*.tsv` (`igehely_karoli` oszlop) | `1Móz 1:1` |
 | STEPBible-pontozott | `Karoli_kereszthivatkozasok.tsv`, `Karoli_Strong_kivonat.tsv`, `TIPNR_kivonat.tsv` | `Gen.1.1` |
 
 Az `adat/` réteg **kizárólag a magyar kanonikus alakot** használja. Indok: a `lekerdez.py`
@@ -357,7 +357,7 @@ Kulcs: `study_tipus` + `dataset`. A terv 4.3 mátrixa, négy study-típusra kife
 |---|---|
 | `study_tipus` | `bovitett` \| `tematikus` \| `melyelemzes` \| `lexikon_oldal` |
 | `dataset` | a dataset rövid neve (21 érték) |
-| `fajl` | a dataset útvonala; glob is lehet (`konkordancia/LXX_kivonat_*.tsv`), üres, ha `allapot=hianyzik` |
+| `fajl` | a dataset útvonala; glob is lehet (`konkordancia/LXX_OS/*.tsv`), üres, ha `allapot=hianyzik` |
 | `kotelezoseg` | `mindig` \| `felteteles` \| `ajanlott` \| `oroklott` |
 | `feltetel` | mikor válik kötelezővé a `felteteles` sor; `—`, ha nem feltételes |
 | `allapot` | `elerheto` \| `korlatos` \| `hianyzik` \| `generalt_nezet` |

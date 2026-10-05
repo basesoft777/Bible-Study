@@ -2,10 +2,17 @@
 
 Ez a könyvtár a Rahlfs-Septuaginta (1935) szó-szintű kivonatát tartalmazza,
 könyvenként (a lxx-morph 59 műve — protokanonikus ÓSZ + deuterokanonikus +
-Salamon zsoltárai). **A `konkordancia/LXX_kivonat_*.tsv` (a régi, studybible.info
-alapú kivonat) továbbra is megmarad** — a generátor egyelőre azt használja
-(l. `LEXV2_1_BRIEF.md` G6). Ez a kivonat a lexikon-oldal v2 (2. menet)
-előkészítése, és a régi LXX-kivonat licenc-tisztázatlanságát (N15) oldja fel.
+Salamon zsoltárai). **A régi `konkordancia/LXX_kivonat_*.tsv` (studybible.info) kivezetve (F42.M5, a git-történetben
+megmarad)**; az olvasók (`lekerdez.py lxx-hid`, a generátor, a bridge-ellenőrzés) ezt a kivonatot használják.
+Ez a kivonat oldotta fel a régi LXX-kivonat licenc-tisztázatlanságát (N15).
+
+## 0. F42 / DT-F42f: szövegváltozat-választás és az Ezsd/Neh/Eszt besorolás
+
+**Elsődleges szövegváltozat** (`eszkozok/lxx_os_import.py` `ELSODLEGES_SLUG`; a másik változat a könyvtárban megmarad): Józs `joshua-vaticanus-b` (616 Károli-kulcsos vers; a `joshua.tsv`-ben 95), Bír `judges` (618; a `judges-vaticanus-b`-ben 617), Dán `daniel-theodotion` (327; a `daniel.tsv`-ben 308). Az olvasók `elsodleges_slug(<Károli-könyv>)`-gal választanak.
+
+**2 Esdras és görög Eszter (f1):** a `2-esdras.tsv` 1–10. fejezete Ezsd, 11–23. Neh (fejezet − 10); a `esther-greek.tsv` héber szövegű versei Eszt. A Károli-kulcs a sor `igehely_kjv` oszlopából és a `Karoli_versmegfeleltetes.tsv`-ből jön (`karoli_ok=versmegfeleltetes_tabla`; a fejezethatár-eltolódásnál, pl. 2 Esdras 13:33–37 = Neh 4:1–5, a KJV-hivatkozás a mérvadó). A `python eszkozok/lxx_os_import.py --ujrabesorol` letöltés nélkül újraírja ezt a két fájlt (ugyanaz a függvény, mint a teljes importban). Az Eszter-betoldások (nincs KJV-megfelelő) és az `1-esdras.tsv` Károli-kulcs nélkül maradnak. Ellenőrzés a Károli-szöveggel: Ezsd 280 / 280, Neh 392 / 406, Eszt 163 / 167 Károli-vers kulcsolt; a nem kulcsolt verseket a görög forrás nem tartalmazza (Neh 3:7, 4:6, 11:16, 11:20–21, 11:28–29, 11:32–35, 12:4–6; Eszt 1:1, 4:6, 9:5, 9:30).
+
+**Strong-konvenció:** a GreekWordList egyes Strongjai betűutótagosak (pl. `3924a`); a `lxx-hid` ezeket megtartja a kimenetben, a TAGNT-keresés a betű nélküli alakot használja.
 
 ## 1. Forrás
 

@@ -221,7 +221,8 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   **Megoldás (N16_BRIEF.md):** a két sor a study kapcsolat-táblája alapján, `scope=manual` provenienciával, `betolt.py beepit` úton betöltve (29 → 31 sor); a Jóel 2:32 → Róm 10:14 kapcsolat a study szerinti három sorra bontva (23 → 25 kapcsolat). A lexikon-oldal ApCsel/Róm 10:13 ⚠ ELTÉRÉS-jelölései feloldva; a pilot szótári anyaga (2–4. szakasz) a 2/b. kézi alszakaszba átemelve. L. `N16.0`–`N16.5` commitok.
 
 - **N17 — A régi `LXX_kivonat_Zsoltarok.tsv` Igehely-címkéi gyanúsan a KJV
-  (angol) versszámozást viselhetik Károli helyett, cím-viselő zsoltároknál.**
+  (angol) versszámozást viselhetik Károli helyett, cím-viselő zsoltároknál. LEZÁRVA (F42.M5, 2026.10.05).**
+  *Megoldás:* a gyanú igazolódott (a régi zsoltár-kivonat egy verssel eltolt: 739 zsoltárvers egyezik az LXX_OS következő versével, `naplok/FORRASKIVEZETES_M5_eltereslista.tsv`, kategória `zsoltar_eltolas`); a régi kivonat kivezetve, az `lxx-hid` az `LXX_OS`-ből olvas (javítja az eltolást). *Tartalmi kérdés, nem javítva:* a régi kivonatra épült állítások: `adat/auditok.tsv` TEREMT-002 B4 sorai (Zsolt 107:40, 104:30, 33:6, 80:6, 80:7; 32., 82., 85., 160., 163. sor) és a másolat `naplok/T1_TEREMT002_auditok_munkalap.tsv`; `tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md` (LXX-egyeztetés Zsolt 14:1, 53:1), `tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md` (92. sor), `motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md` (370. sor). Ezek újraellenőrzése külön döntés.
   *(ÚJ, LEXV2_1 V1.3a független ellenőrzése, 2026.09.22)* A `LEXV2_1_BRIEF.md`
   V1.3a tétele során kiderült: a `konkordancia/LXX_versificacios_terkep.tsv`
   a studybible.info saját belső oldal-verszámozására épült, ami cím-viselő

@@ -221,9 +221,9 @@ kiadás közt nem transzferálható közvetlenül. A főszövegen belüli (első
 mutatók kezdőlevele viszont pontosan egyeznek — a levél↔oldal leképezés önmagában
 helyesnek igazolt a `+12` és a `+15` szegmensen belül is.
 
-## `LXX_kivonat_*.tsv` — kivezetésre vár (F33, DT-F33b)
+## `LXX_kivonat_*.tsv` — kivezetve (F42, DT-F33b, DT-F42f)
 
-A 39 `LXX_kivonat_*.tsv` (és `LXX_kivonat_*_README.md`) **kivezetésre vár**: a licence `tisztazatlan` (studybible.info, explicit licencnyilatkozat nincs; a fájl-READMEk szerint csak belső használat), a helyét a `LXX_OS` veszi át. **Nem törlődik**, amíg olvasói vannak: `eszkozok/lekerdez.py` (`cmd_lxx_hid`, 469. sor), `eszkozok/lxx_osszevetes.py`, `eszkozok/kockazat_szures_18_tanulmany.py`, valamint az `adat/datasetek.tsv` négy sora. Az olvasók `LXX_OS`-re állítása és a törlés külön, új tétel (N-F33 helyőrző, `/befogad`). Új munka ne építsen rá.
+A 39 `LXX_kivonat_*.tsv` és a `LXX_kivonat_README.md` **kikerült a repóból** (`git rm`, F42.M5; a git-történetben az F42 előtti commitokban megmarad). Ok: a licence `tisztazatlan` volt (studybible.info, explicit licencnyilatkozat nincs), és a `LXX_OS` (lxx-morph + GreekWordList, CC BY 4.0) átveszi a helyét. Olvasói átálltak: `eszkozok/lekerdez.py` (`lxx-hid`), `eszkozok/lxx_bridge_egyezes.py`, `eszkozok/lexikon_general.py`, `eszkozok/kockazat_szures_18_tanulmany.py`; az `adat/datasetek.tsv` négy sora `LXX_OS`-re mutat. A régi↔új teljes eltéréslista: `naplok/FORRASKIVEZETES_M5_eltereslista.tsv` (`eszkozok/lxx_osszevetes.py`), a részletek a `naplok/FORRASKIVEZETES_zaras.md`-ben. Az `LXX_OS` szövegváltozat-választását és az Ezsd/Neh/Eszt besorolást a `LXX_OS/README.md` rögzíti. Új munka a régi kivonatra nem építhet.
 
 ## `LXX_versszintu_parok.tsv` — versszintű együtt-előfordulás (F05_SZOTAR_BRIEF.md S13)
 
