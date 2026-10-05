@@ -35,6 +35,7 @@ import general as G
 import lekerdez as L
 import ubs_hozzarendeles as UBS
 import lxx_os_import as LXXOS
+import utvonalak as _U
 
 ROOT = G.ROOT
 ADAT = G.ADAT
@@ -49,7 +50,7 @@ FORDITASOK_TSV = os.path.join(ADAT, 'forditasok.tsv')
 LXX_DONTESEK_TSV = os.path.join(ADAT, 'lxx_dontesek.tsv')
 STRONG_SZOTAR_TSV = os.path.join(KONKORDANCIA, 'Strong_szotar.tsv')
 TBESG_TXT = os.path.join(KONKORDANCIA, 'TBESG.txt')
-TBESH_TXT = os.path.join(KONKORDANCIA, 'TBESH.txt')
+TBESH_TXT = _U.TBESH_TXT
 LXX_OS_DIR = os.path.join(KONKORDANCIA, 'LXX_OS')
 
 STRONG_TOKEN_RE = re.compile(r'^[HG]\d{4}[A-Za-z]?$')
@@ -222,7 +223,7 @@ def tbesg_tbesh_index():
         pontos = {}
         alap = {}
         alap_re = re.compile(r'^([HG]\d{4})[a-zA-Z]?$')
-        for path in (TBESG_TXT, TBESH_TXT):
+        for path in (TBESG_TXT, _U.kotelezo(TBESH_TXT)):
             with io.open(path, encoding='utf-8') as f:
                 for sor in f:
                     sor = sor.rstrip('\r\n')

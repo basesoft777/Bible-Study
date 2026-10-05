@@ -20,6 +20,9 @@ import sys
 from pathlib import Path
 from collections import defaultdict
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import utvonalak as _U  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 GEN_DIR = ROOT / "genezis"
 KONK_DIR = ROOT / "konkordancia"
@@ -81,7 +84,7 @@ def load_strong_dict():
 def load_tbesh_dict():
     """TBESH.txt -> {H szam: elso Meaning mezo (a G-vegzodesu alapbejegyzes)}"""
     d = {}
-    with open(KONK_DIR / "TBESH.txt", encoding="utf-8-sig") as f:
+    with open(_U.kotelezo(_U.TBESH_TXT), encoding="utf-8-sig") as f:
         lines = f.readlines()
     start = None
     for i, line in enumerate(lines):

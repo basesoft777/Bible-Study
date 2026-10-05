@@ -55,6 +55,9 @@ import unicodedata
 import zipfile
 from datetime import datetime, timezone
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import utvonalak as _U  # noqa: E402
+
 REPO_GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NYERS_ALAP = os.path.join(REPO_GYOKER, "konkordancia", "_nyers", "cremer")
 HOCR_UTVONAL = os.path.join(NYERS_ALAP, "cu31924098819406_hocr.html")
@@ -548,11 +551,11 @@ def _heber_szoveg_epit():
     if _heber_szoveg_cache is not None:
         return _heber_szoveg_cache
     reszek = []
-    for nev in ("TBESH.txt", "BDB_teljes_unabridged.tsv"):
-        p = os.path.join(REPO_GYOKER, "konkordancia", nev)
-        if os.path.exists(p):
-            with open(p, encoding="utf-8") as fh:
-                reszek.append(fh.read())
+    # F42/M2: a hiányzó forrás nem hagyható ki csendben
+    for p in (_U.kotelezo(_U.TBESH_TXT),
+              _U.kotelezo(os.path.join(REPO_GYOKER, "konkordancia", "BDB_teljes_unabridged.tsv"))):
+        with open(p, encoding="utf-8") as fh:
+            reszek.append(fh.read())
     _heber_szoveg_cache = elonormalizal("\n".join(reszek))
     return _heber_szoveg_cache
 

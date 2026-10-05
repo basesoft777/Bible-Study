@@ -39,11 +39,14 @@ import os
 import re
 import sqlite3
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-KONKORDANCIA = os.path.join(ROOT, 'konkordancia')
-TXT_UT = os.path.join(KONKORDANCIA, 'TBESH.txt')
-LEXICON_UT = os.path.join(KONKORDANCIA, 'lexikonok_nyers', 'TBESH.lexicon')
-KIMENET = os.path.join(KONKORDANCIA, 'TBESH_konszolidalt.tsv')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import utvonalak as U  # noqa: E402
+
+ROOT = U.ROOT
+KONKORDANCIA = U.KONKORDANCIA
+TXT_UT = U.TBESH_TXT
+LEXICON_UT = U.TBESH_LEXICON       # csak helyben él (F42, DT-F42b)
+KIMENET = U.TBESH_KONSZOLIDALT     # gitignore-olt _nyers/ alatt (F42, DT-F42e)
 
 TAG_RE = re.compile(r'<[^>]+>')
 WS_RE = re.compile(r'\s+')
@@ -211,6 +214,8 @@ def konszolidal(txt_adat, lex_adat):
 
 
 def run():
+    U.kotelezo(TXT_UT)
+    U.kotelezo(LEXICON_UT)
     txt_adat = txt_betolt(TXT_UT)
     lex_adat = lexicon_betolt(LEXICON_UT)
     sorok, szamlalo = konszolidal(txt_adat, lex_adat)
@@ -220,10 +225,11 @@ def run():
 
     header = ['strong', 'alap_strong', 'lemma', 'atirat', 'pos_kod', 'rovid_glosszak',
               'teljes_szoveg', 'forras', 'txt_hossz', 'lexicon_hossz']
+    os.makedirs(os.path.dirname(KIMENET), exist_ok=True)
     with open(KIMENET, 'w', encoding='utf-8', newline='\n') as f:
         f.write('# GENERÁLT: eszkozok/tbesh_konszolidalt_import.py — kézzel nem szerkesztendő.\n')
         f.write('# forras: konkordancia/TBESH.txt (STEPBible.org CC BY) sha256=%s | '
-                'konkordancia/lexikonok_nyers/TBESH.lexicon (biblematedata) sha256=%s\n'
+                'konkordancia/_nyers/tbesh/TBESH.lexicon (biblematedata) sha256=%s\n'
                 % (txt_hash, lex_hash))
         f.write('# unio-szabaly: szocikkenkent a hosszabb tisztitott szoveg (forras=txt/lexicon), '
                 '+-5%% elteresnel forras=egyenlo. Dok.: konkordancia/TBESH_TBESG_README.md\n')
