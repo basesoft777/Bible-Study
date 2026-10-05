@@ -538,7 +538,7 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   HEAD-en is fennállt (az F46 változtatásai nélkül ugyanígy bukik), tehát nem az F46 okozta. Teendő: az
   ok felmérése (a H5674 sora és a zárás-szkript idempotencia-tesztje) és javítás, külön menetben.
   *Helyőrző: a végleges N-számot az Action osztja ki.*
-- **N-F30a — a feladatszámból képzett régi DT-számok és az árva helyőrzők.** *(ÚJ, F30 (#30), SZ.0/SZ.4, 2026.10.05)*
+- **N47 — a feladatszámból képzett régi DT-számok és az árva helyőrzők.** *(ÚJ, F30 (#30), SZ.0/SZ.4, 2026.10.05)*
   (1) A DT18 (#18 Nave) a feladatszámból képzett hibás szám volt; DT29-re számozva (`DONTESEK.md`). A DT19 sora (`#19 KJV/ASV-import`) szintén a feladatszám alakját viseli, és a régi F21-pilot-kimenetekben a „DT19” az F21 sorára (ma DT-F21h) is utal: ütközés. Átszámozását az F30 nem végezte el (nem a brief tárgya); az orkesztrátor döntse el.
   (2) A lezárt ellenőri jelentések (`naplok/ELLENOR_*.md`) és a `naplok/F16_zaras.md` a DT18-at változatlanul tartalmazza (a DONTESEK-sor megjegyzése jelzi).
   (3) 17 árva helyőrző (hivatkozás definíciós sor nélkül; pl. DT-F16, DT-F17, DT-F22, DT-F28, N-F38a–c): a `szamkiosztas` nem számozza, mert nincs hová; a lezárt döntések helyőrzőinek rendezése nyitott.
