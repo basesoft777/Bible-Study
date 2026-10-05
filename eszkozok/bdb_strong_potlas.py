@@ -8,7 +8,8 @@ konkordancia/OSHL_lexikalis_index.tsv (lemma, Strong), konkordancia/TAHOT_kivona
 Módok:
   --m0       felmérés: naplok/BDB_STRONG_POTLAS_M0.md
   --m1       párosítás: konkordancia/BDB_strong_potlas.tsv
-  --sorszam  csak darabszámok a képernyőre
+  --alias    másodlagos H-címkék alias-táblája: konkordancia/BDB_strong_alias.tsv
+  --m2       az egyértelmű párok sorainak hozzáfűzése a BDB_teljes_unabridged.tsv-hez (csak új sorok)
 
 A szkript csak olvas (a BDB-táblát nem írja); a TSV-ket split('\\t')-tel olvassa.
 Párosítási szabály (BRIEF §3 M1) szó szerint:
@@ -412,16 +413,107 @@ def m0(ts):
           '| H-kulcs hiányzik:', len(hianyzo_h), '| ebből testvér a táblában:', nmt)
 
 
+# ---- M2 és alias ----
+ALIAS = os.path.join(GYOKER, 'konkordancia', 'BDB_strong_alias.tsv')
+ALIAS_FEJLEC = ['masodlagos_strong', 'tabla_strong', 'bdb_id', 'cimszo', 'cimszo_a_sorban', 'proveniencia']
+
+
+def strip_html(txt):
+    """Ugyanaz a tisztítás, mint a konkordancia/_convert_bdb.py-ban, kiegészítve a BDB.lexicon saját címkéivel."""
+    txt = re.sub(r'<a [^>]*>(.*?)</a>', r'\1', txt)
+    txt = re.sub(r'<ref0[^>]*>(.*?)</ref0>', r'\1', txt)
+    txt = re.sub(r'<font[^>]*>(.*?)</font>', r'\1', txt)
+    txt = re.sub(r'<heb>|</heb>|<bdbheb>|</bdbheb>|<bdbarc>|</bdbarc>', '', txt)
+    txt = re.sub(r'<grk>|</grk>', '', txt)
+    txt = re.sub(r'<sup>(.*?)</sup>', r'^\1', txt)
+    txt = re.sub(r'<sub>(.*?)</sub>', r'_\1', txt)
+    txt = re.sub(r'<i>|</i>|<b>|</b>', '', txt)
+    txt = re.sub(r'<[^>]+>', ' ', txt)
+    import html
+    txt = html.unescape(txt)
+    txt = txt.replace('\u200e', '')
+    return re.sub(r'\s+', ' ', txt).strip()
+
+
+def lexikon_torzs(bdb_id):
+    con = sqlite3.connect('file:%s?mode=ro' % LEX.replace('\\', '/'), uri=True)
+    d = con.execute('select Definition from Lexicon where Topic=?', (bdb_id,)).fetchone()[0]
+    con.close()
+    d = re.sub(r'^<h1>.*?</h1>', '', d, count=1, flags=re.S)
+    return re.sub(r'<div class="navigation">.*?</div>', '', d, count=1, flags=re.S)
+
+
+def m2_sorok():
+    """A potlas-tabla egyertelmu soraiból az új táblasorok (Strong, sor)."""
+    oshl = {r[0]: r for r in oshl_beolvas() if r[0] != '—'}
+    ki = []
+    with open(POTLAS, encoding='utf-8') as f:
+        sorok = [l.split('\t') for l in f.read().split('\n') if l][1:]
+    for r in sorok:
+        if r[4] != 'egyertelmu':
+            continue
+        bid, strong, cim = r[0], r[1], r[2]
+        eredeti = 'H' + str(int(strong[1:]))
+        atiras = oshl[strong][7]
+        szoveg = strip_html(lexikon_torzs(bid))
+        szoveg = szoveg.replace('\t', ' ')
+        ki.append((strong, '\t'.join([strong, eredeti, '%s. %s %s' % (eredeti, atiras, szoveg)])))
+    return ki
+
+
+def m2():
+    with open(TABLA, 'rb') as f:
+        elotte = f.read()
+    if b'\r' in elotte:
+        raise SystemExit('CRLF a táblában, megállok')
+    szoveg = elotte.decode('utf-8')
+    jelenlegi = {l.split('\t')[0] for l in szoveg.split('\n')[1:] if l}
+    uj = [(s, sor) for s, sor in m2_sorok() if s not in jelenlegi]
+    if not uj:
+        print('M2: nincs új sor (már pótolva)')
+        return
+    kiegeszites = ''.join(sor + '\n' for _, sor in uj)
+    if not szoveg.endswith('\n'):
+        raise SystemExit('a tábla nem újsorral végződik, megállok')
+    utana = (szoveg + kiegeszites).encode('utf-8')
+    # ellenőrzés: a régi tartalom bájtra azonos prefixum, csak új sorok jönnek
+    assert utana.startswith(elotte)
+    assert utana[len(elotte):].count(b'\n') == len(uj)
+    with open(TABLA, 'wb') as f:
+        f.write(utana)
+    print('M2 kész: +%d sor (%s)' % (len(uj), ', '.join(s for s, _ in uj)))
+
+
+def alias(ts):
+    prov = 'scope=konkordancia/lexikonok_nyers/BDB.lexicon + konkordancia/BDB_teljes_unabridged.tsv | forras=eszkozok/bdb_strong_potlas.py --alias (masodlagos H-cimke) | ts=%s' % ts
+    ki = []
+    for s, b, tars, hw, talal, o, db in masodlagos_lista():
+        if not tars:
+            continue
+        ki.append([s, ','.join(tars), b, hw, 'igen' if talal else 'nem', prov])
+    with open(ALIAS, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\t'.join(ALIAS_FEJLEC) + '\n')
+        for r in ki:
+            f.write('\t'.join(r) + '\n')
+    print('alias kész: %d sor -> konkordancia/BDB_strong_alias.tsv' % len(ki))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--m0', action='store_true')
     ap.add_argument('--m1', action='store_true')
+    ap.add_argument('--m2', action='store_true')
+    ap.add_argument('--alias', action='store_true')
     ap.add_argument('--ts', default=datetime.date.today().isoformat())
     a = ap.parse_args()
     if a.m0:
         m0(a.ts)
     if a.m1:
         m1(a.ts)
+    if a.alias:
+        alias(a.ts)
+    if a.m2:
+        m2()
 
 
 if __name__ == '__main__':

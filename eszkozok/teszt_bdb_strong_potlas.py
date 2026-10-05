@@ -29,7 +29,26 @@ def teszt_norm_kantillacio():
     assert b.norm('אֲבִיָּ֫הוּ') == b.norm('אֲבִיָּהוּ')
 
 
+ELSO_BEOLVAS = b.tabla_beolvas
+POTOLTAK = ('H4725', 'H4123', 'H0747')
+
+
+def tabla_m2_elott():
+    """A tábla az M2 előtti állapotban (a pótolt sorok nélkül): a párosítás újrafuttatható."""
+    t = ELSO_BEOLVAS()
+    return {k: v for k, v in t.items() if k not in POTOLTAK}
+
+
 def teszt_h4725_parosul():
+    eredeti = b.tabla_beolvas
+    b.tabla_beolvas = tabla_m2_elott
+    try:
+        _h4725_ellenorzes()
+    finally:
+        b.tabla_beolvas = eredeti
+
+
+def _h4725_ellenorzes():
     eredmeny, prov, _ = b.parosit('2026-10-05')
     sor = [r for r in eredmeny if r[0]['id'] == 'BDB7372']
     assert len(sor) == 1
@@ -39,8 +58,13 @@ def teszt_h4725_parosul():
 
 def teszt_kizaras_tablabeli_strong():
     """Nincs egyertelmu pár olyan Strongra, amelynek sora van a táblában vagy H-kulcsa."""
-    bdb, htop, tabla, oshl, un, cim, os_ = b.adatok()
-    eredmeny, _, _ = b.parosit('t')
+    eredeti = b.tabla_beolvas
+    b.tabla_beolvas = tabla_m2_elott
+    try:
+        bdb, htop, tabla, oshl, un, cim, os_ = b.adatok()
+        eredmeny, _, _ = b.parosit('t')
+    finally:
+        b.tabla_beolvas = eredeti
     for e, cs, s, lem, st, ind in eredmeny:
         for x in [y for y in s.split(',') if y]:
             assert x not in tabla and x not in htop, x
@@ -85,6 +109,37 @@ def teszt_nyelv_kulonvalik():
     jel = {'H0003': jelolt('H0003', 'אֵב', 'fruit', nyelv='heber')}
     bdb['BDB1'] = un[0]
     assert b.parosit_mag(bdb, un, jel)[0][4] == 'nincs_par'
+
+
+def teszt_tabla_potolt_sorok():
+    """A jóváhagyott párok sorai a táblában vannak, kulcsok egyediek, a fej H####. alakú."""
+    tabla = b.tabla_beolvas()
+    for strong in ('H4725', 'H4123', 'H0747'):
+        assert strong in tabla, strong
+        assert tabla[strong].split('\t')[2].startswith('H%d. ' % int(strong[1:]))
+    with open(b.TABLA, encoding='utf-8', newline='') as f:
+        kulcsok = [l.split('\t')[0] for l in f.read().split('\n')[1:] if l]
+    assert len(kulcsok) == len(set(kulcsok))
+    assert len(kulcsok) == 8090 + 3
+
+
+def teszt_m2_ujrafuttatas_nem_ir():
+    elotte = open(b.TABLA, 'rb').read()
+    b.m2()
+    assert open(b.TABLA, 'rb').read() == elotte
+
+
+def teszt_alias():
+    with open(b.ALIAS, encoding='utf-8') as f:
+        sorok = [l.split('\t') for l in f.read().split('\n') if l][1:]
+    d = {r[0]: r for r in sorok}
+    assert d['H0136'][1] == 'H0113' and d['H0136'][2] == 'BDB125'
+    assert d['H0341'][1] == 'H0340'
+    tabla = b.tabla_beolvas()
+    for r in sorok:
+        assert r[0] not in tabla and r[1].split(',')[0] in tabla
+        assert r[5].startswith('scope=') and 'ts=' in r[5]
+    assert len(sorok) == 529
 
 
 if __name__ == '__main__':

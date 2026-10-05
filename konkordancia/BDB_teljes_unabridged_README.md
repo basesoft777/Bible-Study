@@ -25,7 +25,7 @@ oszlop a repó zero-padded konvencióját követi (4 számjegyre kitöltve, pl. 
 
 ## Kimenet
 
-**`BDB_teljes_unabridged.tsv`** (8090 sor + fejléc, 3 oszlop):
+**`BDB_teljes_unabridged.tsv`** (8090 sor + fejléc az eredeti konverzióban; F57 óta 8093, l. „Pótlás”; 3 oszlop):
 ```
 Strong_padded | Strong_eredeti | Teljes_szocikk
 ```
@@ -128,3 +128,15 @@ a régi 24-tokenes hatókörön) csak a `gepi`/nem-`gepi` elkülönítést mért
 ## Javítás (F34, 2026.10.01): „ψ” (Zsoltárok) hibás feloldása
 
 A forrás a „ψ” jelet több száz helyen az előző könyvnévre oldotta fel (pl. `Isa 106:9`, `Job 97:7`). Javított dataset-verzió: 159 helyhivatkozás (56 szócikk) `Psa`-ra cserélve (TAHOT-igazolással; az A-maradék 15 helye TAHOT nélkül, a Macula MT-versszámozási táblával igazolva), mezőkulcsos táblával; csak helyhivatkozás változott. Nyers JSON nincs a repóban, ezért a TSV közvetlen javítása történt. Proveniencia és a maradék (156 hely, 94 szócikk, kézi nézet; N-F34, N-F34c): `naplok/F34_M2_naplo.md`, `naplok/F34_M2_csere.tsv`, `naplok/F34_M2_maradek.tsv`; eszköz: `eszkozok/bdb_psi_javit.py`.
+
+## Pótlás (F57, 2026.10.05): Strong-címke nélküli szócikkek
+
+**Mi történt.** A `DictBDB.json`-ból készült tábla minden szócikkhez egyetlen Strong-kulcsot ad. A BDB-azonosító szerint kulcsolt `konkordancia/lexikonok_nyers/BDB.lexicon` (ugyanaz a BDB-kiadás, közkincs; `adat/licencek.tsv` BDB-sor, új licencsor nem kellett) két osztályban mutatott eltérést (felmérés: `naplok/BDB_STRONG_POTLAS_M0.md`).
+
+**1. Címke nélküli szócikkek (a tábla +3 sora).** A BDB.lexicon 846 szócikkének fejlécében nincs Strong-címke. A párosítás szabálya (`naplok/BDB_STRONG_POTLAS_M1.md` 1. szakasz; `eszkozok/bdb_strong_potlas.py`): az OSHL-lemma és a BDB-címszó normalizált alakja egyezik (holem-waw egységesítve, kantilláció és meteg nélkül, magánhangzók megmaradnak); homonímiánál a glossza dönt, különben jelölt; ha a szócikknek van címkéje, vagy a Strongnak van sora a táblában, nem párosítható. Eredmény: 3 `egyertelmu`, 0 `tobb_jelolt`, 843 `nincs_par` (`konkordancia/BDB_strong_potlas.tsv`, minden sorban `indok` és proveniencia). A felhasználó a 3 párt jóváhagyta (DT-F57a, 2026-10-05): **H4725, H4123, H0747**. Ezek a sorok a tábla **végére** kerültek (a meglévő sorok bájtra azonosak, ellenőrzés az írás előtt/után). A sor fejében az átírás az OSHL `atiras` mezője (nem a JSON anglicizált neve), a szöveg a BDB.lexicon HTML-jéből a `_convert_bdb.py` tisztításával készült.
+
+**2. Másodlagos címke (nem kerül a táblába).** A BDB.lexicon 529 Strong-kulcsa (pl. H0136, H0341) címkével áll egy szócikk fejlécében, de a szöveg a táblában a testvér-Strong sora alatt már megvan (H0136 → H0113, H0341 → H0340). Szövegduplikáció helyett a megfeleltetés a `konkordancia/BDB_strong_alias.tsv`-ben van (generált: `python eszkozok/bdb_strong_potlas.py --alias`; oszlopok: `masodlagos_strong`, `tabla_strong`, `bdb_id`, `cimszo`, `cimszo_a_sorban`, `proveniencia`). A `cimszo_a_sorban=nem` sorok (16) címszavát a testvér-sor szövege nem igazolta (főleg többszavas nevek): ezek a megfeleltetések nem ellenőrzöttek.
+
+**Darabszám.** A tábla 8093 sor + fejléc; a pótlás előtti SHA-256 az előző bejegyzésben áll. Új SHA-256 (`BDB_teljes_unabridged.tsv`, F57 utáni állapot): `0931fd74f7f98bc01d6ac43ca69bcdae4e39ddf798af493904906cc8decdb098`.
+
+**Reprodukálás.** Az `--m1` a pótlás *előtti* táblaállapotra írja a párosítást (a pótolt Strongok a táblában már szerepelnek, ezért újrafuttatva `nincs_par`-ra esnének); az `--m2` idempotens (a már meglévő Strongot nem írja újra).
