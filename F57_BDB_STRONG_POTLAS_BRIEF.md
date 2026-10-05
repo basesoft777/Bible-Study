@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: dontesre_var
 ag: claude/bdb-strong-potlas
 ad: a BDB_teljes_unabridged.tsv kiegészül azokkal a BDB-szócikkekkel, amelyek a Strong-kulcsú forrásból (DictBDB.json) kimaradtak, mert a fejlécükből hiányzik a Strong-címke (pl. H4725 mákóm, H0136 Adonaj, H0341 ójév); minden pótolt sor egyértelmű, dokumentált párosításon áll, a többi jelölt marad
-kovetkezo: /kovetkezo; ⛔ az M1 párosítás után
+kovetkezo: "Te: döntsd el a DONTESEK.md DT-F57a tételét ((a), (b), (c) rész); utána /kovetkezo az M2-vel (pótlás a táblában, README, zárás)"
 olvas: [konkordancia/lexikonok_nyers/BDB.lexicon, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_teljes_unabridged_README.md, konkordancia/_convert_bdb.py, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/OSHL_BDB_igehelyek.tsv, konkordancia/TAHOT_kivonat.tsv, adat/licencek.tsv]
 ir: [konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_strong_potlas.tsv, konkordancia/BDB_teljes_unabridged_README.md, eszkozok/bdb_strong_potlas.py, eszkozok/teszt_bdb_strong_potlas.py]
 fugg: []
