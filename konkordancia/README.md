@@ -271,7 +271,7 @@ dokumentumban van:
 
 | Tábla | Dokumentáció | Import-szkript |
 |---|---|---|
-| `TBESH_konszolidalt.tsv` | `TBESH_TBESG_README.md` | `eszkozok/tbesh_konszolidalt_import.py` |
+| `_nyers/tbesh/TBESH_konszolidalt.tsv` (gitignore-olt, helyben generált; F42) | `TBESH_TBESG_README.md` | `eszkozok/tbesh_konszolidalt_import.py` |
 | `UBS_DBH_jelentesek.tsv`, `UBS_DBH_referenciak.tsv`, `UBS_DBH_anomaliak.tsv` | `SDBH_SDGNT_README.md` | `eszkozok/ubs_dbh_import.py` |
 | `MCGED_teljes.tsv` | `lexikonok_nyers/README.md` | `eszkozok/mcged_import.py` |
 | `BDB_etimologia_kezi_hatarok.tsv` | `BDB_teljes_unabridged_README.md` | `eszkozok/bdb_etim_hatarok_import.py` |

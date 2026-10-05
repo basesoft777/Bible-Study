@@ -89,6 +89,8 @@ Mindkét fájl tab-elválasztott (`\t`), UTF-8 kódolású szöveges fájl. A t�
 
 ## `TBESH_konszolidalt.tsv` — a TBESH.txt és a TBESH.lexicon uniója (F05_SZOTAR_BRIEF.md S4)
 
+**F42 (DT-F42b, DT-F42e): a fájl és a `TBESH.lexicon` már nincs verziózva.** Helyük `konkordancia/_nyers/tbesh/` (gitignore-olt, csak helyben élnek). A `TBESH.txt` a repóban marad; ha elveszne vagy megsérülne, `python eszkozok/forras_letolt.py` sha256-tal ellenőrzötten visszaállítja (STEPBible-Data `b99716b0`). A `TBESH.lexicon` forrása (Google Drive, biblematedata) nem rögzíthető commitra, a szkript nem tölti le; a helyi példány sha256-ja `5a8e306ef974a14a7a691f0cf1b6302337034387ff85ea5edf576d75e327ce32`. A konszolidált tábla ebből és a `TBESH.txt`-ből generálódik (`eszkozok/tbesh_konszolidalt_import.py`); kódolvasója nincs. Hiányzó bemenetnél az import egyértelmű hibát ad.
+
 **Generált** (`eszkozok/tbesh_konszolidalt_import.py`, kézzel nem szerkesztendő):
 **unió, nem csere** — egyik forrás sem váltja ki a másikat, mert szócikkenként
 hol az egyik, hol a másik bővebb (§0 0.5 mérés). Fejléc: `strong alap_strong
