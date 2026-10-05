@@ -287,8 +287,21 @@ def teszt_potolt_sor_feje_egyszerusitett():
     assert tabla['H4123'].split('\t', 2)[2].startswith('H4123. mahatallot ')
 
 
-def teszt_alias_nincs_tobb_testveres():
-    assert all(',' not in r[1] for r in _tsv(b.ALIAS))
+def teszt_alias_megfelelo_testverek_szama_egy():
+    """A „megfelelő testvérek száma = 1” feltételt méri (nem a tars-oszlop vesszőit)."""
+    alias, elv = b.alias_szetvalogat()
+    assert alias and all(r['megfelelo'] == 1 for r in alias)
+    assert any(r['azonos'] > 1 for r in alias)  # pl. H6990, H8550, H1170
+    ids = {r['s']: r for r in alias}
+    for s in ('H6990', 'H8550', 'H1170', 'H3070'):
+        assert s in ids and ids[s]['megfelelo'] == 1 and ids[s]['azonos'] >= 1, s
+    assert ids['H6990']['azonos'] > 1
+
+
+def teszt_kuszob_alatt_indokszoveg():
+    for r in _tsv(b.ELVETETT):
+        if r[5] == 'kuszob_alatt':
+            assert 'későbbi feladat beemelheti' in r[6] and 'egyedi beemelésre' not in r[6], r[6]
 
 
 def teszt_elvetett_oszlopok():
