@@ -6,6 +6,8 @@ tipus: feladat
 fazis: 2
 modell: sonnet
 allapot: brief_kell
+olvas: [ADATVAGYON_TERV.md, MUNKATERV.md]
+nem_fugg: [52]
 ad: a motívumforrásból generált statikus HTML-oldalak (Netlify), lenyitható apparátussal és mélységi szintekkel; később PWA
 kovetkezo: brief a #11 1. lépcsője (ISTENTISZT-001) után, a MOTIVUM_FORRAS szintjelölésére építve
 fugg: [11, 12, 23]
