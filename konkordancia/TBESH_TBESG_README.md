@@ -47,7 +47,7 @@ Egy alap Strong-szám gyakran **több sort** kap. Például `H7121` (קָרָא)
 | `H7121I` | call out/shout/announce |
 | `H7121J` | read out/dictated |
 
-Mind a négy alsor **ugyanazt az alap sense-listát ismétli** (a H7121 `Meaning` mezője; a szöveget itt nem idézzük, F42 / DT-F42a), csak eltérő súlyponti gloss-szal. Ezek tehát nem különböző jelentések, hanem ugyanannak a szónak különböző kontextus-specifikus felhasználási súlypontjai.
+Mind a négy alsor **ugyanazt az alap jelentéslistát ismétli** (a H7121 `Meaning` mezője; a szöveget itt nem idézzük, F42 / DT-F42a), csak eltérő súlyponti gloss-szal. Ezek tehát nem különböző jelentések, hanem ugyanannak a szónak különböző kontextus-specifikus felhasználási súlypontjai.
 
 **Munkafolyamat-szabály minden TBESH/TBESG-alapú grep-nél:**
 
