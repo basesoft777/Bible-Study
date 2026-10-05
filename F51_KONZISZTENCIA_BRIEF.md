@@ -12,6 +12,7 @@ kovetkezo: "Te: a PR ([ELLENŐRZŐ]) jóváhagyása és merge; a CI-lépésnév 
 olvas: [CLAUDE.md, MUNKAMENET.md, RENDER_BRIEF.md, adat/SEMA.md, sablonok/, "F*_BRIEF.md", eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml]
 ir: [adat/dontes_hatas.tsv, adat/SEMA.md, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/, .claude/commands/konzisztencia.md, naplok/KONZISZTENCIA_naplo.md, naplok/konzisztencia/KONZISZTENCIA_20261005.md]
 fugg: []
+pr: 192
 lezarva_osszegzes: E25 CI-szabály + dontes_hatas.tsv (D34, 3 sor) + /konzisztencia parancs; napi helyi ütemezés (konzisztencia-napi) jóváhagyva; merge előtt [ELLENŐRZŐ]-jóváhagyás
 helyi_gep: nem
 ---
