@@ -147,7 +147,7 @@ def teszt_alias():
         # bdb_id-feltétel: a testvér-sor ugyanabból a BDB-szócikkből származik
         assert htop[r[1].split(',')[0]][0] == r[2], r[0]
         assert float(r[5]) >= b.HASONLOSAG_KUSZOB
-    assert len(sorok) == 290
+    assert len(sorok) == 248
 
 
 def teszt_aramai_nem_kerul_aliasba():
@@ -156,7 +156,7 @@ def teszt_aramai_nem_kerul_aliasba():
     elv = {r[0]: r for r in _tsv(b.ELVETETT)}
     assert 'H0399' not in alias
     assert elv['H0399'][2] == 'aram' and elv['H0399'][1] == 'BDB9297'
-    assert 'bdb_id' not in elv['H0399'][5] or 'nem ebből' in elv['H0399'][5]
+    assert 'nem ebből' in elv['H0399'][5]
     # minden másodlagos címke pontosan egy listán áll
     assert alias.isdisjoint(elv)
     assert len(alias) + len(elv) == 529
@@ -167,14 +167,39 @@ def teszt_aramai_nem_kerul_aliasba():
             assert htop[r[1].split(',')[0]][0] == r[2]
 
 
-def teszt_hatsav_kezi_ellenorzesre():
+def teszt_szoveg_az_elejen_szabaly():
+    """DT-F57f: H3292 -> H6130 alias (a testvérsor a saját szócikke után további szócikket is tartalmaz),
+    H3606 -> H6903 elvetett (a testvérsor más szócikk)."""
+    alias = {r[0]: r for r in _tsv(b.ALIAS)}
     elv = {r[0]: r for r in _tsv(b.ELVETETT)}
-    for s in ('H3292', 'H3347', 'H5761', 'H6978', 'H8284'):
-        assert elv[s][5].startswith('kezi_ellenorzesre'), s
-    # a küszöb alatti, de nem határsávos sor továbbra is sima elvetés
-    assert elv['H3606'][5].startswith('a bdb_id egyezik, de')
-    assert sum(1 for r in elv.values() if r[5].startswith('kezi_ellenorzesre')) == 5
-    assert b.HASONLOSAG_KUSZOB == 0.6
+    assert alias['H3292'][1] == 'H6130' and float(alias['H3292'][5]) >= 0.9
+    assert 'H3606' not in alias
+    assert elv['H3606'][5].startswith('a testvérsor más szócikk')
+    assert b.HASONLOSAG_KUSZOB == 0.9
+    assert not any('kezi_ellenorzesre' in r[5] for r in elv.values())
+    # a három kérdéses sor kimenete a szabály szerint
+    for s in ('H2753', 'H0868', 'H0869'):
+        assert s in alias, s
+
+
+def teszt_elejegyezes_fuggveny():
+    assert b.elejegyezes('abcdefghij', 'xx abcdefghij kiegeszites') == 1.0
+    assert b.elejegyezes('abcdefghij', 'zzzzzzzzzz') < 0.2
+    assert b.elejegyezes('', 'abc') == 0.0
+
+
+def teszt_egyszerusitett_atiras():
+    assert b.egyszerusitett_atiras('ʾărîsay') == 'arisay'
+    assert b.egyszerusitett_atiras('māqôm') == 'maqom'
+    assert b.egyszerusitett_atiras('mahătallôt') == 'mahatallot'
+    assert b.egyszerusitett_atiras('šûr') == 'shur'
+
+
+def teszt_potolt_sor_feje_egyszerusitett():
+    tabla = b.tabla_beolvas()
+    assert tabla['H4725'].split('\t', 2)[2].startswith('H4725. maqom ')
+    assert tabla['H0747'].split('\t', 2)[2].startswith('H747. arisay ')
+    assert tabla['H4123'].split('\t', 2)[2].startswith('H4123. mahatallot ')
 
 
 def teszt_alias_nincs_tobb_testveres():
