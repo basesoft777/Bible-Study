@@ -10,6 +10,7 @@
 |---|---|---|
 | teljes | 874 | 473228 |
 | helykitoltovel | 18 | 2683 |
+| ketertelmu | 0 | 0 |
 | reszleges | 0 | 0 |
 | ismeretlen | 0 | 0 |
 
@@ -44,8 +45,9 @@ Részlegesen vagy nem feloldott párok:
 
 | állapot | kód | szó |
 |---|---|---|
-| teljes | 734 | 473228 |
+| teljes | 357 | 404560 |
 | helykitoltovel | 13 | 2683 |
+| ketertelmu | 377 | 68668 |
 | reszleges | 0 | 0 |
 | ismeretlen | 0 | 0 |
 
@@ -62,27 +64,27 @@ Kétértelmű (a törzs jele mindkét nyelvben szerepel, más megnevezéssel): 3
 | `Pdxcs` | helykitoltovel | 4 | 7 | helykitoltovel |
 | `Pfxcs` | helykitoltovel | 0 | 8 | helykitoltovel |
 | `Nxxxa` | helykitoltovel | 0 | 7 | helykitoltovel |
-| `Vec` | reszleges | 0 | 5 | teljes |
 | `Pfxbs` | helykitoltovel | 0 | 5 | helykitoltovel |
+| `Vec` | reszleges | 0 | 5 | teljes |
 | `Varmsa` | reszleges | 0 | 5 | teljes |
-| `Vep3ms` | reszleges | 0 | 4 | teljes |
 | `Prxcs` | helykitoltovel | 0 | 4 | helykitoltovel |
-| `Varmpa` | reszleges | 0 | 3 | teljes |
-| `Vei3ms` | reszleges | 0 | 3 | teljes |
+| `Vep3ms` | reszleges | 0 | 4 | teljes |
 | `Varfsa` | reszleges | 0 | 3 | teljes |
+| `Varmpa` | reszleges | 0 | 3 | teljes |
 | `Vai3mp` | reszleges | 0 | 3 | teljes |
 | `Pdxbp` | helykitoltovel | 0 | 3 | helykitoltovel |
+| `Vei3ms` | reszleges | 0 | 3 | teljes |
 | `Vai2ms` | reszleges | 0 | 2 | teljes |
-| `Vep3mp` | reszleges | 0 | 2 | teljes |
-| `Vai3ms` | reszleges | 0 | 2 | teljes |
 | `Vai3fs` | reszleges | 0 | 2 | teljes |
+| `Vai3ms` | reszleges | 0 | 2 | teljes |
+| `Vep3mp` | reszleges | 0 | 2 | teljes |
+| `Varfpa` | reszleges | 0 | 1 | teljes |
 | `Vav2ms` | reszleges | 0 | 1 | teljes |
+| `Vav2mp` | reszleges | 0 | 1 | teljes |
+| `Vssmpa` | reszleges | 0 | 1 | teljes |
 | `Vap3ms` | reszleges | 0 | 1 | teljes |
 | `Pdxbs` | helykitoltovel | 0 | 1 | helykitoltovel |
 | `Vermsa` | reszleges | 0 | 1 | teljes |
-| `Varfpa` | reszleges | 0 | 1 | teljes |
-| `Vssmpa` | reszleges | 0 | 1 | teljes |
-| `Vav2mp` | reszleges | 0 | 1 | teljes |
-| `Pixbs` | helykitoltovel | 0 | 1 | helykitoltovel |
 | `Pixcs` | helykitoltovel | 0 | 1 | helykitoltovel |
+| `Pixbs` | helykitoltovel | 0 | 1 | helykitoltovel |
 

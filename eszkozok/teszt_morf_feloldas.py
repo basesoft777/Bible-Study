@@ -47,6 +47,9 @@ def main():
     ellenoriz('arámi Vqp3ms = peal', 'törzs: peal' in mf.felold('Vqp3ms', 'A')['szoveg'])
     f = mf.felold('Vqp3ms', None)
     ellenoriz('nyelv nélkül kétértelmű', f['ketertelmu'] and '[nyelv ismeretlen]' in f['szoveg'], f['szoveg'])
+    ellenoriz('nyelv nélkül allapot=ketertelmu', f['allapot'] == 'ketertelmu', f['allapot'])
+    ellenoriz('Vqp3ms H teljes', mf.felold('Vqp3ms', 'H')['allapot'] == 'teljes')
+    ellenoriz('Vqp3ms A teljes (egyértelmű az arámi nyelv-kivonattal)', mf.felold('Vqp3ms', 'A')['allapot'] == 'teljes')
 
     # 3. arámi törzsjel: arámiként teljes, héberként részleges, nyelv nélkül jelzett
     ellenoriz('Vec arámi teljes', mf.felold('Vec', 'A')['allapot'] == 'teljes')
@@ -71,8 +74,8 @@ def main():
 
     # 6. adat-szintű: a Macula-tábla minden (kód, nyelv) párja a tényleges nyelvvel feloldódik
     par, allapot, reszleges, ketertelmu = mf.lefedettseg(None, kiir=False)
-    ellenoriz('nincs részlegesen feloldott pár a szó nyelvével',
-              allapot['reszleges'][0] == 0 and allapot['ismeretlen'][0] == 0, allapot)
+    ellenoriz('nincs részleges, ismeretlen vagy kétértelmű pár a szó nyelvével',
+              allapot['reszleges'][0] == 0 and allapot['ismeretlen'][0] == 0 and allapot['ketertelmu'][0] == 0, allapot)
 
     if HIBA:
         print('HIBA:')

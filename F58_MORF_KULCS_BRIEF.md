@@ -10,7 +10,7 @@ allapot: lezarva
 pr: 208
 ag: claude/morf-kulcs
 ad: egy nyílt licencű forrásból importált, forrás- és licencsorral ellátott jelkulcs-tábla (adat/morf_kulcs_heber.tsv), amely a Macula_heber morfológiai kódjainak minden pozícióját magyarul feloldja; a feloldó függvény ebből a táblából dolgozik, emlékezetből írt leképezés nincs
-kovetkezo: "PR #208 merge a felhasználótól; nyitott: ellenőri eltérés 1 (kétértelmű kód allapot=teljes) és 3–5"
+kovetkezo: "PR #208 merge a felhasználótól; az ellenőri eltérés 1, 3–5 javítva (DT-F58b)"
 olvas: ["konkordancia/Macula_heber_*.tsv", adat/licencek.tsv, adat/SEMA.md, adat/datasetek.tsv]
 ir: [adat/morf_kulcs_heber.tsv, adat/SEMA.md, adat/licencek.tsv, adat/datasetek.tsv, eszkozok/morf_feloldas.py, eszkozok/teszt_morf_feloldas.py, adat/kulso/morf_kulcs_LICENC.txt, adat/morf_nyelv_aramai.tsv, eszkozok/morf_nyelv_kivonat.py, eszkozok/morf_kulcs_import.py, adat/kulso/oshb_HebrewMorphologyCodes.html, naplok/MORF_KULCS_lefedettseg.md]
 fugg: []

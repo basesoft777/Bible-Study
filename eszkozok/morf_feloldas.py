@@ -58,7 +58,7 @@ class Kulcs:
         for r in sorok_olvas(ut):
             poz, nyelv, kod = r['pozicio'], r['nyelv'], r['kod']
             if poz == 'szerkezet':
-                if r['jelentes_forras'].startswith('('):
+                if not r['jelentes_forras']:
                     self.szerkezet[kod] = []
                 else:
                     f = r['jelentes_forras'].split(' > ')
@@ -102,7 +102,9 @@ def felold(kod, nyelv=None, k=None):
 
     Visszatér: dict(kod, nyelv, allapot, reszek, hianyzo, ketertelmu, helykitoltos, szoveg).
     allapot: 'teljes' | 'helykitoltovel' (minden jel feloldva, de `x` helykitöltő is van) |
-    'reszleges' | 'ismeretlen'. Ha a nyelv ismeretlen, de egy jel csak az egyik nyelvben
+    'ketertelmu' (nyelv nélkül több olvasat; a `ketertelmu` jelző is marad) | 'reszleges' | 'ismeretlen'.
+    Az állapot sorrendje: hiányzó jel -> reszleges; helykitöltő -> helykitoltovel; ketertelmu jelző -> ketertelmu;
+    egyébként teljes. Ha a nyelv ismeretlen, de egy jel csak az egyik nyelvben
     szerepel (pl. arámi törzs), a szöveg `[csak arámi olvasat]` jelzést kap.
     """
     k = k or kulcs()
@@ -167,6 +169,8 @@ def felold(kod, nyelv=None, k=None):
         ki['allapot'] = 'reszleges'
     elif ki['helykitoltos']:
         ki['allapot'] = 'helykitoltovel'
+    elif ki['ketertelmu']:
+        ki['allapot'] = 'ketertelmu'
     else:
         ki['allapot'] = 'teljes'
     return ki
@@ -208,7 +212,7 @@ def lefedettseg(jelentes_ut=None, kiir=True):
             osszes += 1
     kodok = {m for m, _ in par}
     # 1. (kód, nyelv) párok a szó tényleges nyelvével
-    allapot = {'teljes': [0, 0], 'helykitoltovel': [0, 0], 'reszleges': [0, 0], 'ismeretlen': [0, 0]}
+    allapot = {'teljes': [0, 0], 'helykitoltovel': [0, 0], 'ketertelmu': [0, 0], 'reszleges': [0, 0], 'ismeretlen': [0, 0]}
     helykit = [0, 0]
     reszleges = []
     for (m, ny), db in sorted(par.items(), key=lambda x: -x[1]):
@@ -222,7 +226,7 @@ def lefedettseg(jelentes_ut=None, kiir=True):
             reszleges.append((m, ny, db, f['szoveg']))
     # 2. nyelv nélkül (a kód önmagában): kétértelmű feloldások
     ketertelmu = []
-    nny = {'teljes': [0, 0], 'helykitoltovel': [0, 0], 'reszleges': [0, 0], 'ismeretlen': [0, 0]}
+    nny = {'teljes': [0, 0], 'helykitoltovel': [0, 0], 'ketertelmu': [0, 0], 'reszleges': [0, 0], 'ismeretlen': [0, 0]}
     for m, db in nyelv_nelkul.items():
         f = felold(m, None, k)
         nny[f['allapot']][0] += 1
@@ -248,7 +252,7 @@ def lefedettseg(jelentes_ut=None, kiir=True):
     sorok.append('')
     sorok.append('| állapot | pár | szó |')
     sorok.append('|---|---|---|')
-    for a in ('teljes', 'helykitoltovel', 'reszleges', 'ismeretlen'):
+    for a in ('teljes', 'helykitoltovel', 'ketertelmu', 'reszleges', 'ismeretlen'):
         sorok.append(f'| {a} | {allapot[a][0]} | {allapot[a][1]} |')
     sorok.append('')
     sorok.append('A `helykitoltovel` állapot: minden jel a táblából feloldva, de legalább egy pozíció a forrás szerinti `x` '
@@ -271,7 +275,7 @@ def lefedettseg(jelentes_ut=None, kiir=True):
     sorok.append('')
     sorok.append('| állapot | kód | szó |')
     sorok.append('|---|---|---|')
-    for a in ('teljes', 'helykitoltovel', 'reszleges', 'ismeretlen'):
+    for a in ('teljes', 'helykitoltovel', 'ketertelmu', 'reszleges', 'ismeretlen'):
         sorok.append(f'| {a} | {nny[a][0]} | {nny[a][1]} |')
     sorok.append('')
     sorok.append(f'Kétértelmű (a törzs jele mindkét nyelvben szerepel, más megnevezéssel): {len(ketertelmu)} kód, '

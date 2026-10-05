@@ -120,8 +120,8 @@ def main():
         kod, nev = tisztit(tds[0]), tisztit(tds[1])
         sor('szofaj', '*', kod, nev, hu(nev), 'Part of Speech táblázat')
         slotok = [tisztit(x) for x in tds[2:] if tisztit(x)]
-        forras_szerk = ' > '.join(slotok) if slotok else '(nincs további pozíció)'
-        hu_szerk = ' > '.join(hu(x) for x in slotok) if slotok else '(nincs további pozíció)'
+        forras_szerk = ' > '.join(slotok)  # üres: a szófajnak nincs további pozíciója
+        hu_szerk = ' > '.join(hu(x) for x in slotok)
         sor('szerkezet', '*', kod, forras_szerk, hu_szerk, 'Part of Speech táblázat, sor ' + kod)
 
     # 2. szakaszok
