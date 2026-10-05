@@ -10,10 +10,9 @@ allapot: lezarva
 pr: 208
 ag: claude/morf-kulcs
 ad: egy nyílt licencű forrásból importált, forrás- és licencsorral ellátott jelkulcs-tábla (adat/morf_kulcs_heber.tsv), amely a Macula_heber morfológiai kódjainak minden pozícióját magyarul feloldja; a feloldó függvény ebből a táblából dolgozik, emlékezetből írt leképezés nincs
-kovetkezo: fuggetlen-ellenor (naplok/ELLENOR_MORF_KULCS.md), majd az orkesztrátor zárása (draft PR); a ⛔ (DT-F58a) eldöntve 🟢
+kovetkezo: "PR #208 merge a felhasználótól; nyitott: ellenőri eltérés 1 (kétértelmű kód allapot=teljes) és 3–5"
 olvas: ["konkordancia/Macula_heber_*.tsv", adat/licencek.tsv, adat/SEMA.md, adat/datasetek.tsv]
 ir: [adat/morf_kulcs_heber.tsv, adat/SEMA.md, adat/licencek.tsv, adat/datasetek.tsv, eszkozok/morf_feloldas.py, eszkozok/teszt_morf_feloldas.py, adat/kulso/morf_kulcs_LICENC.txt, adat/morf_nyelv_aramai.tsv, eszkozok/morf_nyelv_kivonat.py, eszkozok/morf_kulcs_import.py, adat/kulso/oshb_HebrewMorphologyCodes.html, naplok/MORF_KULCS_lefedettseg.md]
-ir_bovites: "DT-F58a (felhasználó, 2026-10-05): az ir lista tételként bővül öt elemmel (az ir sor utolsó öt eleme): nyelv-kivonat (adat/morf_nyelv_aramai.tsv) és előállítója, az OSHB-import szkriptje, a forrásfájl másolata, a lefedettség-napló; a morf_kulcs_heber.tsv új oszlopa: nyelv"
 fugg: []
 lezarva_osszegzes: M0–M2 kész (commitok: naplok/F58_zaras.md); a független ellenőrzés és a draft PR az orkesztrátoré
 ---
