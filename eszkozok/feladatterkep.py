@@ -466,7 +466,8 @@ def epit(gyoker=REPO, main_all=None):
             csomopont[('kod', k['kulcs'])] = ('P_' + k['kulcs'], k)
     dt_csomopont = {}
     for d in dt_sorok:
-        if d['allapot'] in ('nyitott', 'alkalmazasra_var', 'ellenorizendo'):
+        # az `ellenorizendo` sor allapota ismeretlen: nem rajzoljuk nyitott dontesnek
+        if d['allapot'] in ('nyitott', 'alkalmazasra_var'):
             dt_csomopont[d['id']] = 'D_' + re.sub(r'\W', '_', d['id'])
     elek = set()
 

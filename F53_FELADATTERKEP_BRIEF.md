@@ -6,9 +6,9 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 munka: folyamat
-allapot: fut
+allapot: megallt
 ad: "a FELADATTERKEP.html (gyökér, mindig ugyanazon a néven felülírva) és a feladatterkep.json minden main-merge után a forrásokból generálódik; a claude.ai-artifact megnyitáskor a files képességgel ugyanezt a JSON-t olvassa, így újrafeltöltés nélkül friss"
-kovetkezo: /kovetkezo; ⛔ a kis minta után (összevetés a mai kézi lappal), a workflow módosítása előtt, ha az artifact files-olvasása nem működik, és a helyi ütemezett feladat létrehozása előtt (FT.7)
+kovetkezo: Te: a kis minta átnézése (naplok/F53_kis_minta_eltereslista.md, a minta a scratchpad/minta könyvtárban); jóváhagyás után FT.3 (⛔ a FT.4 workflow-módosítás előtt, a FT.5 és az FT.7 ütemezés előtt)
 olvas: ["F*_BRIEF.md", MUNKATERV.md, eszkozok/feladatok.py, .github/workflows/feladatok.yml, FELADATTERKEP.html]
 ir: [eszkozok/feladatterkep.py, eszkozok/feladatterkep_kartyak.tsv, eszkozok/teszt_feladatterkep.py, FELADATTERKEP.html, feladatterkep.json, .github/workflows/feladatok.yml, eszkozok/main_frissit.py]
 fugg: []
