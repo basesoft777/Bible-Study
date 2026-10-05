@@ -6,19 +6,20 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 munka: folyamat
-allapot: nem_indult
+allapot: megallt
 ad: "a FELADATTERKEP.html (gyökér, mindig ugyanazon a néven felülírva) és a feladatterkep.json minden main-merge után a forrásokból generálódik; a claude.ai-artifact megnyitáskor a files képességgel ugyanezt a JSON-t olvassa, így újrafeltöltés nélkül friss"
-kovetkezo: /kovetkezo; ⛔ a kis minta után (összevetés a mai kézi lappal), a workflow módosítása előtt, ha az artifact files-olvasása nem működik, és a helyi ütemezett feladat létrehozása előtt (FT.7)
+kovetkezo: Te: a PR #201 merge-e; utána az Action-próba (7.6). Az FT.5 és az FT.7 halasztva (N-F53f), amíg nincs chan_… azonosító
 olvas: ["F*_BRIEF.md", MUNKATERV.md, eszkozok/feladatok.py, .github/workflows/feladatok.yml, FELADATTERKEP.html]
 ir: [eszkozok/feladatterkep.py, eszkozok/feladatterkep_kartyak.tsv, eszkozok/teszt_feladatterkep.py, FELADATTERKEP.html, feladatterkep.json, .github/workflows/feladatok.yml, eszkozok/main_frissit.py]
 fugg: []
+ag: claude/f53-feladatterkep
 nem_fugg: [52]
 helyi_gep: nem
 ---
 
 # F53_FELADATTERKEP_BRIEF.md — Feladattérkép: generált vizuális áttekintés
 
-*FELADATOK #53 · Modell: sonnet · v1.1 · 2026.10.05 (v1.1: FT.7, helyi `main`-frissítés)*
+*FELADATOK #53 · Modell: sonnet · v1.2 · 2026.10.05 (v1.2: a végrehajtás döntései — FT.2–FT.6, az FT.5 és az FT.7 halasztva, N-F53a–f; v1.1: FT.7, helyi `main`-frissítés)*
 
 *Előzmény: a 2026-10-05-i chat-session kézzel épített egy áttekintő lapot
 (`FELADATTERKEP.html`, a gyökérben) és egy claude.ai-artifactot
@@ -218,6 +219,23 @@ Commitok tétel-szinten (`FT.0: …`, `FT.1: …`), az üzenet UTF-8 fájlból.
    hullámoknál és a „Tervezett” oszlopban látszanak.
 3. **A kártyaszöveg-tábla helye:** `eszkozok/feladatterkep_kartyak.tsv`
    (folyamat-konfiguráció, nem kutatási adat; SEMA-bejegyzés nem kell).
+4. **A `feladatterkep_kartyak.tsv` leírása (FT.0).** Tabulátorral tagolt, UTF-8,
+   LF; az első sor a fejléc, utána soronként egy kártya; olvasása `split('	')`,
+   írása `'	'.join()` (a mezők nem tartalmaznak tabot és sortörést).
+
+   | oszlop | tartalom |
+   |---|---|
+   | `kod` | a kártya kulcsa: a brief `kod:` mezője; ha a briefnek nincs `kod`-ja, `#<szám>` (pl. `#7`); még fel nem vett (MUNKATERV-beli) feladatnál a MUNKATERV kódneve. A `SZOTAR S2` kulcsban szóköz van, mert a #9 `kod`-ja is ilyen |
+   | `reszletes` | a részletes leírás, 2–3 mondat |
+   | `roviden` | a „Röviden:” egymondatos, közérthető összefoglaló |
+   | `forras` | honnan származik a szöveg: `kezi-2026-10-05` (a kézi lap 31 kártyája); később `kezi-<dátum>` vagy a szerző jelölése |
+
+   A generátor a táblát csak olvassa. Sor nélküli kártya „nincs leírás”
+   jelöléssel jelenik meg; kártya nélküli sor (pl. kész feladat) a JSON
+   `kartya_tabla.felhasznalatlan` listájába kerül, de nem hiba. A kezdő
+   tartalom a kézi lap 31 kártyájának szövege **változtatás nélkül**; azok a
+   kódok, amelyeknél a kézi lap kódneve eltért a brief `kod`-jától (a #22
+   `KAROLI_STRONG` helyett `F22`), a brief `kod`-ját kapták.
 
 ## 9. Döntésnapló
 
@@ -231,3 +249,7 @@ Commitok tétel-szinten (`FT.0: …`, `FT.1: …`), az üzenet UTF-8 fájlból.
 | 2026-10-05 | a kártyaszöveg-tábla az `eszkozok/`-ban (8.3) | felhasználó, chat |
 | 2026-10-05 | v1.1: FT.7 — időzített helyi `main`-frissítés (ff-only, csak tiszta `main`-en), hogy az artifact friss JSON-t lásson; létrehozás ⛔ után | felhasználó, chat |
 | 2026-10-05 | az FT.7 ütemezése Claude-os helyi ütemezett feladat (Routines alatt látható), nem Windows Feladatütemező; modell: haiku | felhasználó, chat |
+| 2026-10-05 | FT.2 ⛔: a kis minta jóváhagyva; az öt kérdésre adott válasz és az N-F53a–d a `naplok/F53_kis_minta_eltereslista.md` végén; a lap három kisebb hibája (N-F53c) és a kártyaszöveg-piszkozat (N-F53d) nem az FT.3 része; a main az FT.3 előtt behúzva | felhasználó, chat |
+| 2026-10-05 | FT.4: a `feladatok.yml`-diff jóváhagyva, változtatás nélkül; a #56-nál a `#57*` rendben (a MUNKATERV-hiány a #52 naplójában, PR #200); a CI-őr N-F53e | felhasználó, chat |
+| 2026-10-05 | FT.5 halasztva (c): az artifact a kézi 8. verzión marad, amíg a `chan_…` azonosító nincs meg (N-F53f); az FT.7 nem indul, a halasztásáról a felhasználó dönt | felhasználó, chat |
+| 2026-10-05 | v1.2: az FT.7 az FT.5-tel együtt halasztva (N-F53f), ugyanide az `origin/main` frissessége (ELLENOR 2.); a bélyeg késése (ELLENOR 1.) az N-F53e-vel szűnik meg, külön N-tétel nem kell; a minta „22 tétel” számadata (ELLENOR 3.): nincs teendő; a verziósor v1.2 (ELLENOR 4.); a PR ready, a merge a felhasználóé | felhasználó, chat |
