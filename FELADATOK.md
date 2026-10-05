@@ -65,6 +65,9 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 - E5: a `-` kezdetű törölt sorok (felsorolás) alulszámolása, 68eb348 óta (l. naplok/ELLENOR_CI_E5.md, 2. kör). Rövid CI-javítás külön ágon (D6), legkésőbb a 2. fázis előtt.
 - E9: a F*_BRIEF.md fájlok kizárása (a fordítási szabályok angol szavakat idéznek; l. PR #88). Külön ágon (D6).
 - A `claude/macula-import` távoli ág törlése (az F17 PR #87 óta mergelve; a javító menet új ágon, `claude/f17-macula-javitas` fut).
+- A kézi forrásszövegek licencsora az LSJ-re még „CC BY-SA 3.0”-t ír (pl. `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md` szócikk-szakasza), a `licencek.tsv` és a generált rész már 4.0-t (#42 utótétel). Rövid javítás a forrásrétegben.
+- Az ISTENTISZT-001 lexikonoldal renderjében 3 új E13 jelentés: a felzárkózott fordítássorok átírás nélküli héber/görög szöveget hoznak (#42 utótétel, `naplok/FORRASKIVEZETES_M5_M7.md`). Javítás a forrásban (`adat/forditasok.tsv`), utána render.
+- A `fuggetlen-ellenor` ügynök (`.claude/agents/fuggetlen-ellenor.md`) a #42-ben nem tudta menteni a jelentését (nincs Write eszköze; a végrehajtó mentette, változtatás nélkül). Döntendő: Write eszköz az ügynöknek, vagy a mentés Bash-on át / a hívó által, a leírásban rögzítve. Ügynök-beállítás: csak a felhasználó jóváhagyásával.
 
 ## Munkamenet (tokentakarékos)
 
