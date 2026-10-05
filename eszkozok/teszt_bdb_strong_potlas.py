@@ -167,6 +167,20 @@ def teszt_aramai_nem_kerul_aliasba():
             assert htop[r[1].split(',')[0]][0] == r[2]
 
 
+def teszt_hatsav_kezi_ellenorzesre():
+    elv = {r[0]: r for r in _tsv(b.ELVETETT)}
+    for s in ('H3292', 'H3347', 'H5761', 'H6978', 'H8284'):
+        assert elv[s][5].startswith('kezi_ellenorzesre'), s
+    # a küszöb alatti, de nem határsávos sor továbbra is sima elvetés
+    assert elv['H3606'][5].startswith('a bdb_id egyezik, de')
+    assert sum(1 for r in elv.values() if r[5].startswith('kezi_ellenorzesre')) == 5
+    assert b.HASONLOSAG_KUSZOB == 0.6
+
+
+def teszt_alias_nincs_tobb_testveres():
+    assert all(',' not in r[1] for r in _tsv(b.ALIAS))
+
+
 def teszt_elvetett_oszlopok():
     for r in _tsv(b.ELVETETT):
         assert r[2] in ('aram', 'heber') and r[5] and r[6].startswith('scope=')

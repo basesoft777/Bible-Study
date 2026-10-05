@@ -278,6 +278,7 @@ def m1(ts):
 
 
 HASONLOSAG_KUSZOB = 0.6
+KEZI_ALSO = 0.545  # a küszöb alatti határsáv alja (két tizedesre kerekítve 0,55): kezi_ellenorzesre
 
 
 def _ujjlenyomat(x):
@@ -320,9 +321,13 @@ def alias_szetvalogat():
             if r >= HASONLOSAG_KUSZOB:
                 jo.append((t, r))
         if not jo:
-            elvetett.append({'s': s, 'bid': bid, 'nyelv': nyelv, 'hw': hw, 'tars': ','.join(azonos),
-                             'indok': 'a bdb_id egyezik, de a testvér-sor szövege nem a szócikk szövege (hasonlóság %.2f < %.1f)'
-                                      % (legjobb, HASONLOSAG_KUSZOB)})
+            if legjobb >= KEZI_ALSO:
+                indok = ('kezi_ellenorzesre (a bdb_id egyezik, a szövegegyezés a küszöb alatt, a határsávban: hasonlóság %.2f; '
+                         'kézzel beemelhető)' % legjobb)
+            else:
+                indok = ('a bdb_id egyezik, de a testvér-sor szövege nem a szócikk szövege (hasonlóság %.2f < %.1f)'
+                         % (legjobb, HASONLOSAG_KUSZOB))
+            elvetett.append({'s': s, 'bid': bid, 'nyelv': nyelv, 'hw': hw, 'tars': ','.join(azonos), 'indok': indok})
             continue
         alias_sorok.append({'s': s, 'bid': bid, 'nyelv': nyelv, 'hw': hw, 'tars': ','.join(t for t, _ in jo),
                             'hasonlosag': '%.2f' % max(r for _, r in jo)})
@@ -339,8 +344,9 @@ def masodlagos_szakasz():
     ossz = len(alias_sorok) + len(elvetett)
     nyelv_a = collections.Counter(r['nyelv'] for r in alias_sorok)
     nyelv_e = collections.Counter(r['nyelv'] for r in elvetett)
-    ok_e = collections.Counter(r['indok'].split(' (')[0] if 'hasonlóság' in r['indok'] else
-                               ('a testvér-sor nem ebből a BDB-szócikkből származik' if 'nem ebből' in r['indok'] else r['indok'])
+    ok_e = collections.Counter('kezi_ellenorzesre (határsáv 0,55-0,59, kézzel beemelhető)' if r['indok'].startswith('kezi_ellenorzesre') else
+                               (r['indok'].split(' (')[0] if 'hasonlóság' in r['indok'] else
+                                ('a testvér-sor nem ebből a BDB-szócikkből származik' if 'nem ebből' in r['indok'] else r['indok']))
                                for r in elvetett)
     L = []
     w = L.append
@@ -350,6 +356,9 @@ def masodlagos_szakasz():
     w('- **Alias** (`konkordancia/BDB_strong_alias.tsv`): %d sor (héber %d, arámi %d). **Elvetett, jelölt marad** (`konkordancia/BDB_strong_alias_elvetett.tsv`): %d sor (héber %d, arámi %d).' % (
         len(alias_sorok), nyelv_a['heber'], nyelv_a['aram'], len(elvetett), nyelv_e['heber'], nyelv_e['aram']))
     w('- Elvetés oka: %s.' % '; '.join('%s: %d' % (k, v) for k, v in sorted(ok_e.items())))
+    tobb = sum(1 for r in alias_sorok if ',' in r['tars'])
+    w('- Több testvéres sor a megmaradt %d aliasban: **%d** (ellenőrizve; a több testvéres sorok a szövegegyezési küszöbön nem mennek át, DT-F57e). A határsáv (hasonlóság 0,55-0,59, két tizedesre kerekítve) %d sora `kezi_ellenorzesre` indokkal áll az elvetett listán, kézzel beemelhető; a küszöb (%.1f) nem változott.' % (
+        len(alias_sorok), tobb, ok_e['kezi_ellenorzesre (határsáv 0,55-0,59, kézzel beemelhető)'], HASONLOSAG_KUSZOB))
     w('- **Arámi szócikkek: két szám összevetése.** A BDB.lexicon nyelvjelölése szerint a 529 másodlagos címke között **%d** arámi szócikk van (BDB9264-től; ez a felhasználó 187-es száma). A független ellenőr 198-at talált; ez a szám a BDB.lexicon nyelvjelöléséből nem reprodukálható (a legközelebbi mérések: arámi szócikk 187; arámi másodlagos OSHL-Strong héber testvérsorral 174), a különbség (11) okát nem tudtuk azonosítani. Mérvadó a `bdb_id`-feltétel, nem a szám: ez az arámi szócikkek közül %d-et ejt az aliasból, %d marad (olyan arámi szócikk, amelynek testvérsora is ugyanabból a szócikkből származik).' % (
         nyelv_a['aram'] + nyelv_e['aram'], nyelv_e['aram'], nyelv_a['aram']))
     w('- **Nyitott tétel:** az elvetett arámi szócikkek tényleges pótlása (a BDB.lexicon szövegéből új táblasorok) külön feladat a `/befogad` útján, nem az F57 része.\n')
