@@ -51,15 +51,18 @@ jobs:
       - name: FELADATOK.md generalasa
         run: python eszkozok/feladatok.py general
 
+      - name: Feladatterkep generalasa (F53)
+        run: python eszkozok/feladatterkep.py
+
       - name: Gepi commit, ha van valtozas
         run: |
-          if git diff --quiet -- FELADATOK.md; then
-            echo "FELADATOK.md valtozatlan."
+          if git diff --quiet -- FELADATOK.md FELADATTERKEP.html feladatterkep.json; then
+            echo "FELADATOK.md es a feladatterkep valtozatlan."
             exit 0
           fi
           git config user.name "pardes-feladatok[bot]"
           git config user.email "pardes-feladatok[bot]@users.noreply.github.com"
-          git add FELADATOK.md
+          git add FELADATOK.md FELADATTERKEP.html feladatterkep.json
           printf 'FELADATOK.md frissítés (gép)\n' > commit_uzenet.txt
           git -c i18n.commitEncoding=UTF-8 commit -F commit_uzenet.txt
           git pull --rebase origin main
