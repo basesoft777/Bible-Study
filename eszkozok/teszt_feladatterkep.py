@@ -222,6 +222,46 @@ class TesztHtml(FixtureAlap):
         self.assertEqual(a.count('</script>'), 4)             # a sablon négy scriptje
         self.assertIn('\\u003c/script>', a)
 
+    def test_felirat_puszta_faziskod_helyett_cim(self):
+        self.ir('F07_F07_BRIEF.md', brief(7, 'F07', 'nem_indult'))
+        t = self.adat()['terkep']
+        self.assertNotIn('#7 F07', t)
+        self.assertIn('#7 Cim F07', t)                       # a cim eleje
+        self.assertIn('#4 DELTA', t)                         # a valodi nev marad
+
+    def test_elvalaszto_a_kartyan_belul_nem_log(self):
+        h = T.html_szoveg(self.adat())
+        self.assertNotIn('class="arrow"', h)
+        self.assertIn('class="sep"', h)
+        self.assertIn('const kov = D.sor[i+1]', h)           # az utolso kartya utan nincs
+
+    def _md_js(self, bemenet):
+        """A lap md() fuggvenye node-ban (ha nincs node: kihagyva)."""
+        import json
+        import subprocess
+        if not shutil.which('node'):
+            self.skipTest('nincs node')
+        h = T.html_szoveg(self.adat())
+        kod = '\n'.join(l for l in h.splitlines()
+                        if re.match(r'(const esc|const MD|const md|const plain|const clip) ', l))
+        js = kod + '\nconst be=%s;\nprocess.stdout.write(JSON.stringify(be.map(md)));' % json.dumps(bemenet)
+        ut = os.path.join(self.dir, 'md_teszt.js')
+        with open(ut, 'w', encoding='utf-8') as f:
+            f.write(js)
+        r = subprocess.run(['node', ut], capture_output=True, check=True)
+        return json.loads(r.stdout.decode('utf-8'))
+
+    def test_markdown_inline_xss_biztos(self):
+        ki = self._md_js(['SQLITE\\_EPIT', '`kod`', '*(forrás: x)*', '**vastag**',
+                          '<script>alert(1)</script>', '`<b>`', '*<img src=x onerror=1>*'])
+        self.assertEqual(ki[0], 'SQLITE_EPIT')
+        self.assertEqual(ki[1], '<code>kod</code>')
+        self.assertEqual(ki[2], '<em>(forrás: x)</em>')
+        self.assertEqual(ki[3], '<strong>vastag</strong>')
+        self.assertEqual(ki[4], '&lt;script&gt;alert(1)&lt;/script&gt;')
+        self.assertEqual(ki[5], '<code>&lt;b&gt;</code>')
+        self.assertNotIn('<img', ki[6])
+
     def test_main_ket_kimenetet_ir(self):
         ki = os.path.join(self.dir, 'ki')
         T.main(['--gyoker', self.dir, '--kimenet', ki])
