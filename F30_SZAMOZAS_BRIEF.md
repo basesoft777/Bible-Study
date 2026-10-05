@@ -5,10 +5,11 @@ kod: SZAMOZAS
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: lezarva
+pr: 206
 ag: claude/szamozas
 ad: az ágak nem foglalnak végleges DT/N-számot; a párhuzamos merge-ek nem ütköznek sorszámon; a main-en a számokat egy Action osztja ki
-kovetkezo: "zárás: a független ellenőrzés (naplok/ELLENOR_F30.md), majd draft PR [ELLENŐRZŐ] előtaggal"
+kovetkezo: "PR #206 merge a felhasználótól; nyitott: ellenőri eltérés 2 (a SZÁMKIOSZTÁS-SZÁNDÉKOS hatóköre) és 3 (a DT29 sor szövege), N-F30a"
 fugg: [8, 16, 17]
 olvas: [DONTESEK.md, NYITOTT_FELADATOK.md, FELADATOK.md, CLAUDE.md, .github/workflows/, eszkozok/feladatok.py]
 ir: [.github/workflows/szamkiosztas.yml, eszkozok/szamkiosztas.py, eszkozok/ellenorzes/szabalyok.py, DONTESEK.md, NYITOTT_FELADATOK.md, CLAUDE.md, BRIEF_SABLON.md, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/test_szamkiosztas.py, eszkozok/szamkiosztas_oroklott.txt, naplok/F30_szamozas_naplo.md, naplok/F30_zaras.md]
