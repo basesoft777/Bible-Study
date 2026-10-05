@@ -12,6 +12,7 @@ kovetkezo: /kovetkezo; ⛔ az M0 felmérés után
 olvas: ["konkordancia/LXX_OS/*.tsv", konkordancia/LXX_OS/README.md, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Verzifikacios_elteres_tabla.tsv, naplok/FORRASKIVEZETES_M5_M7.md, naplok/FORRASKIVEZETES_M5_eltereslista.tsv, eszkozok/lekerdez.py]
 ir: [eszkozok/lxx_os_import.py, "konkordancia/LXX_OS/*.tsv", konkordancia/LXX_OS/README.md, eszkozok/teszt_lekerdez_sir.py]
 fugg: [42]
+nem_fugg: [61]
 ---
 
 # F54_LXX_OS_LEFEDETTSEG_BRIEF.md — Az LXX_OS lefedetlen versei
