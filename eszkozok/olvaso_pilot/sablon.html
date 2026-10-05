@@ -1,0 +1,823 @@
+<title>Károli-konkordancia próba</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Elrendezés: bal oldalon a vers-lap (Károli-szöveg, héber sor, LXX, kereszthivatkozások), jobb oldalon a kiválasztott szó lapja; keskeny képernyőn egymás alatt. */
+:root {
+  --bg: #f4f5f2;
+  --surface: #ffffff;
+  --ink: #1d2120;
+  --muted: #5f6763;
+  --rule: #d9ddd6;
+  --accent: #2f5d50;        /* olajzöld-tinta: a kötött szavak és a kiválasztás */
+  --accent-soft: #e1ece7;
+  --gold: #9a6a12;          /* folyamatban lévő fordítás jelzése */
+  --gold-soft: #f6ecd8;
+  --low: #8a6f9e;           /* nem „magas” bizonyosságú kötés */
+  --font-hu: "Source Serif 4", "Noto Serif", Georgia, serif;
+  --font-he: "Frank Ruhl Libre", "SBL Hebrew", "Times New Roman", serif;
+  --font-gr: "Noto Serif", "Gentium Plus", Georgia, serif;
+  --font-ui: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.625rem;
+  --step-3: 2.25rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #151918; --surface: #1d2321; --ink: #e6e9e4; --muted: #9ba49f; --rule: #313936;
+    --accent: #8cc4b1; --accent-soft: #23362f; --gold: #e2b25a; --gold-soft: #3a2f1a; --low: #c3a6d8;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #151918; --surface: #1d2321; --ink: #e6e9e4; --muted: #9ba49f; --rule: #313936;
+  --accent: #8cc4b1; --accent-soft: #23362f; --gold: #e2b25a; --gold-soft: #3a2f1a; --low: #c3a6d8;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-ui); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: 16px; padding-block: 20px 48px; display: grid; gap: 20px; }
+header.fej { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; border-bottom: 1px solid var(--rule); padding-bottom: 14px; }
+.fej h1 { font-family: var(--font-hu); font-weight: 600; font-size: var(--step-2); margin: 0; text-wrap: balance; }
+.fej .alcim { color: var(--muted); font-size: var(--step--1); margin: 2px 0 0; }
+.cimkek { display: flex; flex-wrap: wrap; gap: 6px; }
+.cimke { font-size: 12px; letter-spacing: .02em; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.cimke.arany { background: var(--gold-soft); color: var(--gold); }
+nav.versek { display: flex; flex-wrap: wrap; gap: 6px; }
+nav.versek button { font: 500 14px var(--font-ui); border: 1px solid var(--rule); background: var(--surface); color: var(--ink); padding: 6px 12px; border-radius: 6px; cursor: pointer; font-variant-numeric: tabular-nums; }
+nav.versek button[aria-current="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+button:focus-visible, .hu-szo:focus-visible, .he-szo:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.racs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+@media (max-width: 900px) { .racs { grid-template-columns: minmax(0, 1fr); } }
+.olvaso { min-width: 0; display: grid; gap: 10px; }
+.olvaso-fej { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px; }
+.kapcs { font-size: 12px; color: var(--muted); display: inline-flex; gap: 6px; align-items: center; cursor: pointer; }
+.szoveg { font-family: var(--font-hu); font-size: 1.1875rem; line-height: 1.95; max-width: 62ch; }
+.szoveg p { margin: 0 0 0.9em; }
+.fejezet { float: left; font-family: var(--font-hu); font-weight: 600; font-size: 3.4rem; line-height: 0.9; margin: 0.08em 0.12em 0 0; color: var(--accent); }
+.vszam { font: 600 0.62em var(--font-ui); color: var(--accent); vertical-align: super; line-height: 0; cursor: pointer; padding: 0 2px 0 3px; border-radius: 3px; background: none; border: 0; }
+.vszam:hover, .vszam:focus-visible { background: var(--accent-soft); }
+.vers { border-radius: 4px; transition: background-color .15s; }
+.vers.akt { background: var(--accent-soft); box-shadow: 0 0 0 3px var(--accent-soft); }
+.ow { cursor: pointer; border-radius: 3px; }
+.jelol .ow { text-decoration: underline dotted; text-decoration-color: var(--muted); text-decoration-thickness: 1px; text-underline-offset: 5px; }
+.ow:hover { background: var(--accent-soft); text-decoration-color: var(--accent); }
+.ow.akt { background: var(--accent); color: var(--surface); text-decoration: none; }
+.racs.zart { grid-template-columns: minmax(0, 1fr); }
+.racs.zart .panel { display: none; }
+.racs.zart .olvaso { justify-self: center; width: min(100%, 62ch); }
+.panel-zar { margin-left: auto; font: 500 13px var(--font-ui); border: 1px solid var(--rule); background: var(--surface); color: var(--muted); padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+.kartya { position: absolute; z-index: 20; width: min(400px, calc(100vw - 32px)); max-height: min(72vh, 620px); overflow-y: auto; overscroll-behavior: contain; background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-radius: 10px; box-shadow: 0 10px 30px rgb(0 0 0 / .14); padding: 14px 16px 12px; display: grid; gap: 8px; }
+.kartya[hidden] { display: none; }
+@media (max-width: 600px) { .kartya { position: fixed; left: 0 !important; right: 0; top: auto !important; bottom: 0; width: 100%; border-radius: 14px 14px 0 0; padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px)); } }
+.kartya .k-fej { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.kartya .k-he { font-family: var(--font-he); font-size: 1.9rem; line-height: 1.1; direction: rtl; }
+.kartya .k-at { font-size: 13px; color: var(--muted); }
+.kartya .k-x { margin-left: auto; border: 0; background: none; color: var(--muted); font-size: 20px; line-height: 1; cursor: pointer; padding: 2px 4px; }
+.kartya .k-jel { font-family: var(--font-hu); font-size: 15px; line-height: 1.5; margin: 0; }
+.kartya .k-jel.en { font-family: var(--font-gr); color: var(--muted); font-size: 14px; }
+.kartya .k-sor { font-size: 13px; color: var(--muted); margin: 0; }
+.kartya .k-sor b { color: var(--ink); font-weight: 500; font-family: var(--font-hu); font-size: 14px; }
+.kartya .k-blokk { display: grid; gap: 4px; padding-top: 8px; border-top: 1px solid var(--rule); }
+.kartya .k-cim { font: 600 11px var(--font-ui); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.kartya .k-alak { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; font-size: 13px; }
+.kartya .k-alak .he { font-family: var(--font-he); font-size: 1.3rem; }
+.kartya .k-alak .gr { font-family: var(--font-gr); font-size: 1.05rem; color: var(--accent); }
+.kartya .k-alak .gr.kat { cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.kartya ol.k-jelek { margin: 0; padding-left: 1.3rem; display: grid; gap: 3px; font-family: var(--font-hu); font-size: 14px; line-height: 1.45; }
+.kartya ol.k-jelek li::marker { color: var(--accent); font: 600 12px var(--font-mono); }
+.kartya .k-ubs { font-size: 13px; line-height: 1.45; }
+.kartya .k-ubs b { color: var(--accent); font-weight: 600; }
+.kartya .k-gombok { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.kartya .k-gombok button { font: 500 13px var(--font-ui); border: 1px solid var(--accent); background: var(--accent); color: var(--surface); padding: 6px 12px; border-radius: 6px; cursor: pointer; }
+.kartya .k-gombok button.masod { background: var(--surface); color: var(--accent); }
+.kartya button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.panel { min-width: 0; display: grid; gap: 10px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); max-height: calc(100vh - 24px); overflow-y: auto; overscroll-behavior: contain; }
+@media (max-width: 900px) { .panel { position: static; max-height: none; overflow: visible; } }
+.fulek { display: flex; gap: 6px; position: sticky; top: 0; background: var(--bg); padding-bottom: 4px; z-index: 1; }
+.fulek button { font: 500 14px var(--font-ui); border: 1px solid var(--rule); background: var(--surface); color: var(--ink); padding: 6px 14px; border-radius: 6px; cursor: pointer; }
+.fulek button[aria-selected="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.fulek button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+section.lap { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 20px; display: grid; gap: 18px; min-width: 0; }
+.lapcim { font: 600 11px var(--font-ui); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.igehely { font-family: var(--font-hu); font-size: var(--step-1); font-weight: 600; margin: 0; }
+.karoli { font-family: var(--font-hu); font-size: 1.375rem; line-height: 1.75; margin: 0; }
+.hu-szo { border-radius: 3px; padding: 0 1px; }
+.hu-szo.kotott { cursor: pointer; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 5px; }
+.hu-szo.kotott.alacsony { text-decoration-style: dashed; text-decoration-color: var(--low); }
+.hu-szo.kotott:hover, .hu-szo.vilagit { background: var(--accent-soft); }
+.hu-szo.aktiv { background: var(--accent); color: var(--surface); text-decoration: none; }
+.blokk { display: grid; gap: 8px; min-width: 0; }
+.blokk h3 { font: 600 13px var(--font-ui); margin: 0; color: var(--ink); }
+.blokk .meg { font-size: 12px; color: var(--muted); margin: 0; }
+.heber-sor { direction: rtl; display: flex; flex-wrap: wrap; gap: 6px; }
+.he-szo { direction: ltr; display: grid; justify-items: center; gap: 1px; min-width: 64px; padding: 6px 8px; border: 1px solid var(--rule); border-radius: 6px; background: var(--bg); cursor: pointer; text-align: center; }
+.he-szo.nyelvtani { cursor: default; opacity: .62; border-style: dashed; }
+.he-szo .he { font-family: var(--font-he); font-size: 1.5rem; line-height: 1.3; direction: rtl; }
+.he-szo .at { font-size: 12px; color: var(--muted); font-style: italic; }
+.he-szo .gl { font-size: 12px; }
+.he-szo .st { font: 11px var(--font-mono); color: var(--muted); }
+.he-szo .mf { font-size: 11px; color: var(--muted); max-width: 11rem; line-height: 1.3; }
+.he-szo .lx { font-family: var(--font-gr); font-size: 14px; color: var(--accent); border-top: 1px dotted var(--rule); padding-top: 2px; margin-top: 2px; width: 100%; }
+.he-szo .lx.kat { cursor: pointer; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.he-szo .lx.kat:hover { background: var(--accent-soft); border-radius: 3px; }
+.he-szo .lx.ures { color: var(--muted); font-family: var(--font-ui); font-size: 11px; }
+.versszam { font-size: 12px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 12px; font-variant-numeric: tabular-nums; }
+.versszam b { font-weight: 500; color: var(--ink); }
+.lxx-sor > span { padding: 2px 6px; border-radius: 5px; border: 1px solid transparent; }
+.lxx-sor .gk { cursor: pointer; border-color: var(--rule); background: var(--bg); color: var(--accent); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 4px; }
+.lxx-sor .gk small { text-decoration: none; }
+.lxx-sor .gk:hover, .lxx-sor .gk:focus-visible { background: var(--accent-soft); border-color: var(--accent); }
+.lxx-sor .gk.aktiv { background: var(--accent); border-color: var(--accent); color: var(--surface); text-decoration: none; }
+.lxx-sor .gk.aktiv small { color: var(--surface); }
+.lxx-sor .gk:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.ubs { border-left: 3px solid var(--accent); padding: 4px 0 4px 10px; display: grid; gap: 2px; }
+.ubs .dom { font: 600 12px var(--font-ui); color: var(--accent); }
+.ubs .def { font-size: 13px; }
+.ubs .gl { font-size: 12px; color: var(--muted); }
+.usz { display: grid; gap: 6px; }
+.usz div { font-family: var(--font-hu); font-size: 14px; line-height: 1.55; }
+.usz b { font: 600 12px var(--font-ui); color: var(--muted); margin-right: 6px; font-variant-numeric: tabular-nums; }
+.lemma.gr { font-family: var(--font-gr); direction: ltr; }
+.appok { display: grid; gap: 14px; }
+.app { display: grid; gap: 6px; padding-top: 10px; border-top: 1px solid var(--rule); min-width: 0; }
+.app h4 { font: 600 11px var(--font-ui); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.app h5 { font: 600 14px var(--font-ui); margin: 6px 0 2px; display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.cimszo { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; font-size: 14px; }
+.cimszo .he { font-family: var(--font-he); font-size: 1.5rem; }
+.helyek { font: 500 11px var(--font-ui); color: var(--muted); background: var(--bg); border: 1px solid var(--rule); border-radius: 999px; padding: 1px 7px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.jsz { font-family: var(--font-hu); font-size: 15px; line-height: 1.6; margin: 0; overflow-wrap: anywhere; }
+ul.lista { margin: 0; padding-left: 1.1rem; display: grid; gap: 4px; font-size: 14px; overflow-wrap: anywhere; }
+ol.jel, ol.al { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+ol.jel > li, ol.al > li { position: relative; padding-left: 2rem; }
+ol.jel > li::before, ol.al > li::before { content: attr(data-jel); position: absolute; left: 0; top: 1px; font: 600 13px var(--font-mono); color: var(--accent); }
+ol.al { margin-top: 6px; padding-left: 4px; border-left: 2px solid var(--accent-soft); }
+ol.al > li { padding-left: 1.8rem; display: grid; gap: 2px; }
+ol.jel details summary { cursor: pointer; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: baseline; list-style: none; }
+ol.jel details summary::-webkit-details-marker { display: none; }
+ol.jel details[open] > summary .jt { display: none; }
+ol.jel details[open] > summary::after { content: 'összecsuk'; font-size: 11px; color: var(--muted); }
+.jt { font-family: var(--font-hu); font-size: 14px; }
+.torzs { display: grid; gap: 4px; }
+.jel-cimke { font: 12px var(--font-mono); padding: 2px 7px; border-radius: 4px; border: 1px solid var(--rule); color: var(--ink); }
+.jel-cimke.krit { border-color: var(--gold); color: var(--gold); }
+.jelleg { font: 500 11px var(--font-ui); padding: 1px 7px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+.jelleg-forras { color: var(--accent); border-color: var(--accent); }
+.jelleg-gepi { color: var(--muted); border-color: var(--rule); }
+.jelleg-modell { color: var(--gold); border-color: var(--gold); background: var(--gold-soft); }
+.fejsor { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
+details.sugo { display: contents; }
+details.sugo > summary { list-style: none; cursor: pointer; width: 18px; height: 18px; border-radius: 50%; border: 1px solid var(--accent); color: var(--accent); font: 600 11px/16px var(--font-ui); text-align: center; flex: none; }
+details.sugo > summary::-webkit-details-marker { display: none; }
+details.sugo[open] > summary { background: var(--accent); color: var(--surface); }
+details.sugo > p { flex-basis: 100%; margin: 2px 0 4px; font-size: 13px; line-height: 1.55; background: var(--accent-soft); color: var(--ink); padding: 8px 10px; border-radius: 6px; }
+.utmutato { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 16px; }
+.utmutato summary { cursor: pointer; font: 600 14px var(--font-ui); }
+.utmutato ol { margin: 10px 0 2px; padding-left: 1.2rem; display: grid; gap: 6px; font-size: 14px; max-width: 80ch; }
+section.szoszedet { background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; padding: 20px; display: grid; gap: 12px; }
+section.szoszedet h2 { font-family: var(--font-hu); font-size: var(--step-1); margin: 0; }
+dl.szavak { margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 12px 24px; }
+dl.szavak div { min-width: 0; }
+dl.szavak dt { font: 600 14px var(--font-ui); scroll-margin-top: 16px; }
+dl.szavak dd { margin: 2px 0 0; font-size: 13.5px; line-height: 1.55; color: var(--ink); }
+dl.szavak div:target dt { color: var(--accent); }
+.link { color: var(--accent); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; background: none; border: 0; padding: 0; font: inherit; }
+.he-szo.vilagit { border-color: var(--accent); background: var(--accent-soft); }
+.he-szo.aktiv { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+.lxx-sor { display: flex; flex-wrap: wrap; gap: 4px 10px; font-family: var(--font-gr); font-size: 1.125rem; }
+.lxx-sor span { display: inline-grid; line-height: 1.2; }
+.lxx-sor small { font: 11px var(--font-mono); color: var(--muted); }
+.lxx-sor .nincs-st small { color: var(--gold); }
+ul.hiv { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+ul.hiv li { font-size: 13px; padding: 3px 8px; border: 1px solid var(--rule); border-radius: 5px; font-variant-numeric: tabular-nums; }
+ul.hiv li b { font-weight: 500; color: var(--muted); font-size: 11px; margin-left: 4px; }
+.szolap-fej { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 6px 16px; }
+.lemma { font-family: var(--font-he); font-size: var(--step-3); line-height: 1.1; margin: 0; direction: rtl; }
+.szolap-adat { display: grid; gap: 2px; font-size: 13px; color: var(--muted); }
+.szolap-adat .strong { font: 500 14px var(--font-mono); color: var(--ink); }
+.szamok { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; }
+.szam { border-top: 2px solid var(--rule); padding-top: 6px; }
+.szam b { display: block; font: 600 var(--step-1) var(--font-ui); font-variant-numeric: tabular-nums; }
+.szam span { font-size: 12px; color: var(--muted); }
+.alakok { display: grid; gap: 4px; }
+.alak { display: grid; grid-template-columns: minmax(0, 9rem) minmax(0, 1fr) 3rem; align-items: center; gap: 8px; font-size: 14px; }
+.alak .nev { font-family: var(--font-hu); overflow-wrap: anywhere; }
+.alak .sav { height: 8px; border-radius: 4px; background: var(--accent-soft); overflow: hidden; }
+.alak .sav i { display: block; height: 100%; background: var(--accent); }
+.alak .db { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13px; }
+.bdb { font-family: var(--font-hu); font-size: 15px; line-height: 1.65; white-space: pre-line; overflow-wrap: anywhere; margin: 0; }
+.bdb.en { font-family: var(--font-gr); color: var(--muted); font-size: 14px; }
+.allapot { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 2px 8px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); width: fit-content; }
+.allapot.folyamat { background: var(--gold-soft); color: var(--gold); }
+.lenyit { font: 500 13px var(--font-ui); color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; width: fit-content; text-decoration: underline; text-underline-offset: 3px; }
+.lxx-meg { display: grid; gap: 4px; }
+.lxx-meg div { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; font-size: 14px; }
+.lxx-meg .gr { font-family: var(--font-gr); font-size: 1.125rem; }
+.lxx-meg .st { font: 12px var(--font-mono); color: var(--muted); }
+details.forras { font-size: 12px; color: var(--muted); }
+details.forras summary { cursor: pointer; }
+details.forras code { font-family: var(--font-mono); font-size: 11px; display: block; overflow-x: auto; white-space: pre; padding: 2px 0; }
+footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 12px; display: grid; gap: 4px; max-width: 75ch; }
+@media (prefers-reduced-motion: no-preference) { .hu-szo, .he-szo, nav.versek button { transition: background-color .12s, border-color .12s; } }
+</style>
+
+<div class="wrap">
+  <header class="fej">
+    <div>
+      <h1>Károli-konkordancia · 1Mózes 1:1–2:3</h1>
+      <p class="alcim">Belső pilot az olvasói nézethez. Minden tartalom a repó tábláiból jön; a lapon nincs magyarázó szöveg. A „?” jel az adatforrást mutatja.</p>
+    </div>
+    <div class="cimkek" id="cimkek"></div>
+  </header>
+
+  <details class="utmutato" id="utmutato" open>
+    <summary>Hogyan olvasd ezt az oldalt?</summary>
+    <ol>
+      <li>Bal oldalon a teremtéstörténet <b>folyamatos Károli-szövege</b> áll (1Mózes 1:1–2:3), ahogy a Bibliában olvasod. A kis számok a versszámok.</li>
+      <li>A <b>pontozottan aláhúzott szavakhoz</b> a héber eredetiben is tartozik szó. Rákattintva jobb oldalt, a <b>Szó</b> fülön megnyílik a szó teljes lapja: mit jelent, hogyan fordítja Károli, mi az alakja ebben a versben, hol fordul elő, mi a görög megfelelője, és a BDB-szócikk apparátusai.</li>
+      <li>A <b>versszámra</b> kattintva oldalt a <b>Vers részletei</b> nyílik meg: a vers héber eredetije szavanként, a görög fordítás (Septuaginta) és a kapcsolódó igehelyek. A <b>Bezárás</b> gombbal visszatérsz a teljes szélességű olvasáshoz.</li>
+      <li>A <b>görög szavak</b> is kattinthatók (keretes, aláhúzott szavak): ilyenkor a görög szó lapja nyílik meg, és onnan vissza lehet lépni a héber szóra.</li>
+      <li>Minden blokk címe mellett a jellege áll: <span class="jelleg jelleg-forras">forrásadat</span> (változtatás nélkül egy adatkészletből), <span class="jelleg jelleg-gepi">gépi feldolgozás</span> (szabály rendezi vagy párosítja), <span class="jelleg jelleg-modell">modell-kimenet</span> (nyelvi modell fordította vagy párosította; javaslat-értékű). A pontozott aláhúzás a szövegben is modell-kimenet (a Károli–Strong párosítás). A címek melletti <b>?</b> jel megmutatja, melyik adatkészletből jön a blokk, és mi a licence. <b>Arany jelölés</b>: ott a magyar fordítás még nem készült el.</li>
+    </ol>
+  </details>
+
+  <div class="racs" id="racs">
+    <article class="olvaso" aria-label="Bibliaszöveg">
+      <div class="olvaso-fej">
+        <p class="lapcim">Károli 1908</p>
+        <label class="kapcs"><input type="checkbox" id="jeloles" checked> Kapcsolt szavak jelölése</label>
+      </div>
+      <div id="szoveg" class="szoveg" lang="hu"></div>
+    </article>
+    <aside class="panel" aria-label="Részletek">
+      <div class="fulek" role="tablist">
+        <button type="button" role="tab" id="ful-szo" aria-controls="szolap">Szó</button>
+        <button type="button" role="tab" id="ful-vers" aria-controls="verslap">Vers részletei</button>
+        <button type="button" class="panel-zar" id="panel-zar" title="A részletek bezárása, vissza az olvasáshoz">Bezárás ×</button>
+      </div>
+      <section class="lap" id="szolap" role="tabpanel" aria-labelledby="ful-szo" aria-live="polite"></section>
+      <section class="lap" id="verslap" role="tabpanel" aria-labelledby="ful-vers" hidden></section>
+    </aside>
+  </div>
+
+
+  <footer class="lab">
+    <span>Aláhúzott szó: a Károli-szó szó szintű párosítása a héber szóval (a #22 Károli–Strong párosítás). Szaggatott aláhúzás: nem „magas” bizonyosságú pár.</span>
+    <span>Arany jelölés: a BDB-szócikk magyar fordítása még nem készült el (a #38 gyakorisági sorrendben halad); addig az angol eredeti áll.</span>
+    <span>Az előfordulásszám a TAHOT-kivonatból jön, amely nem teljes (pl. a Zsolt 88/89/140/142 hiányzik).</span>
+    <span>Igealak: a Macula nyers morfológiai kódja és szófaja, feloldás nélkül (a kód jelkulcsa nincs a repóban). A szó alatti görög szó: a párosítás a Maculából, a szóalak az LXX_OS-ből; a Macula-illesztés pontossága az F17 napló szerint kb. 78% (átvett szám, naplok/F17_import_naplo.md).</span>
+    <span>„Ebben a versben”: a UBS héber szótárának (DBH) saját jelentés-besorolása az adott előfordulásra; CC BY-SA 4.0.</span>
+  </footer>
+</div>
+
+<script type="application/json" id="adat">__ADAT__</script>
+<script>
+(function () {
+  const D = JSON.parse(document.getElementById('adat').textContent);
+  const szovegEl = document.getElementById('szoveg');
+  const verslap = document.getElementById('verslap');
+  const szolap = document.getElementById('szolap');
+  let aktVers = 0;
+  let aktSzo = 'H0430';
+  let teljesBdb = false;
+  let aktFul = 'szo';
+
+  const el = (tag, attrs, ...gyerek) => {
+    const e = document.createElement(tag);
+    if (attrs) for (const [k, v] of Object.entries(attrs)) {
+      if (v == null) continue;
+      if (k === 'class') e.className = v;
+      else if (k === 'text') e.textContent = v;
+      else if (k.startsWith('on')) e.addEventListener(k.slice(2), v);
+      else e.setAttribute(k, v);
+    }
+    for (const g of gyerek.flat()) if (g != null) e.append(g);
+    return e;
+  };
+  const forras = (...kulcsok) => el('details', { class: 'forras' },
+    el('summary', { text: 'Forrás' }),
+    ...kulcsok.map(k => el('code', { text: D.prov[k] })));
+
+  // Címkék a fejlécben
+  const lapok = Object.values(D.lapok);
+  const huDb = lapok.filter(l => l.bdb_hu).length;
+  document.getElementById('cimkek').append(
+    el('span', { class: 'cimke', text: `${D.versek.length} vers` }),
+    el('span', { class: 'cimke', text: `${lapok.length} héber + ${Object.keys(D.gor_lapok).length} görög szó-lap` }),
+    el('span', { class: 'cimke' + (huDb < lapok.length ? ' arany' : ''), text: `BDB magyarul: ${huDb}/${lapok.length}` }),
+    el('span', { class: 'cimke', text: `Károli–Strong: ${D.karoli_konyvek.length} könyv` })
+  );
+
+  const keskeny = () => window.matchMedia('(max-width: 900px)').matches;
+  const panelEl = document.querySelector('.panel');
+  const racsEl = document.getElementById('racs');
+  function panelNyit(nyit) { racsEl.classList.toggle('zart', !nyit); }
+  document.getElementById('panel-zar').addEventListener('click', () => { panelNyit(false); });
+
+  // ---- felugró szókártya
+  const kartya = el('div', { class: 'kartya', role: 'dialog', 'aria-label': 'Szókártya', hidden: '' });
+  let kartyaForras = null;
+  const REF_VAGAS = /\s(?:\d)?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüűA-Z]{0,5}\.?\s\d+:\d+/;
+  const HEBER = /[\u0590-\u05FF]+/g;
+  const NYT = /^(?:(?:hímnemű|nőnemű|többes számú|egyes számú|kétnemű|közös nemű)\s+)*(?:főnév|ige|melléknév|határozószó|elöljárószó|névmás|partikula|tulajdonnév|noun|verb|adjective|adverb|preposition|pronoun|particle|proper name)(?:\s+(?:masculine|feminine|plural|singular|collective|többes számú))*/i;
+  const tisztit = t => t.split(REF_VAGAS)[0].replace(HEBER, '').replace(/_\d+/g, '').replace(/\(\s*\)/g, '').replace(/^\d+\.?\s+/, '').replace(/\s{2,}/g, ' ').replace(/[\s,;:=.]+$/, '').replace(/^[\s,;:]+/, '').trim();
+  function rovidJelentes(l) {
+    const a = l.appar;
+    if (!a) return { szofaj: '', jel: l.rovid || '', hu: false, db: 0 };
+    // 1. a címszó glosszái: a szófaj (és a hozzá fűzött igehelyek, zárójelek) után
+    let alap = a.alap.replace(/\^\S+(?:\s\d+:\d+)?/g, '').replace(/\([^)]*\)/g, '').replace(/\s{2,}/g, ' ').trim();
+    const m = alap.match(NYT);
+    const szofaj = m ? m[0] : '';
+    let fej = alap.includes(':') ? alap.slice(alap.lastIndexOf(':') + 1) : (m ? alap.slice(m[0].length) : '');
+    fej = tisztit(fej.replace(/^\s*(?:és|and)\b.*?$/, ''));
+    // 2. ha a címszó nem ad glosszát: az első számozott jelentés (rövid fejléc esetén az első alpontja)
+    if (fej.length < 3 || /^[\d\s.,;:()]+$/.test(fej)) {
+      outer: for (const t of a.torzsek) for (const j of t.jelentesek) {
+        if (!j.jel) continue;
+        let x = j.szoveg;
+        if ((!x || x.length < 30) && j.al && j.al[0]) x = j.al[0].szoveg;
+        fej = tisztit(x || '');
+        if (fej) break outer;
+      }
+    }
+    if (fej.length > 140) fej = fej.slice(0, 140).replace(/\s+\S*$/, '') + ' …';
+    const db = a.torzsek.reduce((n, t) => n + t.jelentesek.filter(j => j.jel).length, 0);
+    return { szofaj, jel: fej, hu: !!l.bdb_hu, db };
+  }
+  function kartyaEbben(strong, versIdx) {
+    const v = D.versek[versIdx];
+    const w = v.heber.find(x => x.strong === strong);
+    if (!w) return null;
+    const m = w.macula || {};
+    const gk = m.lxx_strong && D.gor_lapok[m.lxx_strong];
+    const u = (w.ubs || [])[0];
+    return el('div', { class: 'k-blokk' },
+      el('p', { class: 'k-cim', text: `Ebben a versben (${v.igehely})` }),
+      el('div', { class: 'k-alak' },
+        el('span', { class: 'he', lang: 'he', text: w.heber }),
+        el('span', { text: w.atiras }),
+        m.morf_hu ? el('span', { text: m.morf_hu }) : (m.szofaj_hu ? el('span', { text: m.szofaj_hu }) : null)),
+      m.lxx ? el('div', { class: 'k-alak' }, 'Görögül (LXX): ',
+        el('span', { class: 'gr' + (gk ? ' kat' : ''), lang: 'grc', text: m.lxx, title: gk ? 'A görög szó lapja' : null,
+          onclick: gk ? () => { kartyaZar(); panelNyit(true); kivalaszt(m.lxx_strong); } : null }),
+        m.lxx_strong ? el('span', { class: 'k-sor', text: m.lxx_strong }) : null) : null,
+      u ? el('p', { class: 'k-ubs', lang: 'en' }, el('b', { text: u.domen + ': ' }), u.definicio.length > 160 ? u.definicio.slice(0, 160).replace(/\s+\S*$/, '') + ' …' : u.definicio) : null);
+  }
+
+  function kartyaJelentesek(l) {
+    const a = l.appar;
+    if (!a) return null;
+    const sorok = [];
+    for (const t of a.torzsek) {
+      for (const j of t.jelentesek) {
+        if (!j.jel) continue;
+        let x = j.szoveg;
+        if ((!x || x.length < 30) && j.al && j.al[0]) x = (x ? x + ' ' : '') + j.al[0].szoveg;
+        x = tisztit(x || '');
+        if (!x) continue;
+        if (x.length > 90) x = x.slice(0, 90).replace(/\s+\S*$/, '') + ' …';
+        sorok.push({ jel: (t.nev ? t.nev + ' ' : '') + j.jel, x });
+        if (sorok.length === 4) break;
+      }
+      if (sorok.length === 4) break;
+    }
+    if (!sorok.length) return null;
+    const ossz = a.torzsek.reduce((n, t) => n + t.jelentesek.filter(j => j.jel).length, 0);
+    return el('div', { class: 'k-blokk' },
+      el('p', { class: 'k-cim', text: `Jelentések a BDB-ben${ossz > sorok.length ? ` (az első ${sorok.length} a ${ossz}-ből)` : ''}` }),
+      el('ol', { class: 'k-jelek', lang: l.bdb_hu ? 'hu' : 'en' }, sorok.map(r => el('li', { value: /^\d+$/.test(r.jel) ? r.jel : null, title: r.jel, text: r.x }))));
+  }
+
+  function kartyaZar() { kartya.hidden = true; if (kartyaForras) { kartyaForras.focus({ preventScroll: true }); kartyaForras = null; } }
+  function kartyaMutat(strong, versIdx, forrasEl) {
+    const l = D.lapok[strong];
+    if (!l) return;
+    const forrasId = forrasEl.dataset.id;
+    aktVers = versIdx; aktSzo = strong; teljesBdb = false;
+    rajzolOlvaso();
+    forrasEl = szovegEl.querySelector('[data-id="' + forrasId + '"]') || forrasEl;
+    const r = rovidJelentes(l);
+    kartya.replaceChildren(
+      el('div', { class: 'k-fej' },
+        el('span', { class: 'k-he', lang: 'he', text: l.lemma }),
+        el('span', { class: 'k-at', text: [l.kiejtes, strong].filter(Boolean).join(' · ') }),
+        el('button', { type: 'button', class: 'k-x', 'aria-label': 'Bezárás', text: '×', onclick: kartyaZar })),
+      r.szofaj ? el('p', { class: 'k-sor', text: r.szofaj + (r.db > 1 ? ` · ${r.db} jelentés a BDB-ben` : '') }) : null,
+      el('p', { class: 'k-jel' + (r.hu ? '' : ' en'), lang: r.hu ? 'hu' : 'en', text: r.jel || '—' }),
+      r.hu ? null : el('span', { class: 'allapot folyamat', text: 'Magyar fordítás folyamatban · angol rövid jelentés' }),
+      l.karoli.length ? el('p', { class: 'k-sor' }, 'Károli így fordítja: ', el('b', { text: l.karoli.slice(0, 6).map(([n, d]) => `${n} (${d})`).join(', ') })) : null,
+      el('p', { class: 'k-sor', text: `${l.elofordulas.toLocaleString('hu-HU')} előfordulás az Ószövetségben, ${l.konyvek_szama} könyvben` }),
+      kartyaEbben(strong, versIdx),
+      kartyaJelentesek(l),
+      l.lxx.length ? el('div', { class: 'k-blokk' },
+        el('p', { class: 'k-cim', text: 'A Septuagintában leggyakrabban' }),
+        el('div', { class: 'k-alak' }, l.lxx.map(x => el('span', null,
+          el('span', { class: 'gr' + (D.gor_lapok[x.strong] ? ' kat' : ''), lang: 'grc', text: x.lemma || x.strong,
+            onclick: D.gor_lapok[x.strong] ? () => { kartyaZar(); panelNyit(true); kivalaszt(x.strong); } : null }),
+          ` ${x.db}×`)))) : null,
+      el('div', { class: 'k-gombok' },
+        el('button', { type: 'button', text: 'Részletek', onclick: () => { kartyaZar(); panelNyit(true); kivalaszt(strong); } }),
+        el('button', { type: 'button', class: 'masod', text: 'A vers részletei', onclick: () => { kartyaZar(); panelNyit(true); versValaszt(versIdx); } })));
+    kartya.hidden = false;
+    // elhelyezés a szó alatt (keskeny képernyőn alul rögzített lap a CSS szerint)
+    const r2 = forrasEl.getBoundingClientRect();
+    const sz = kartya.offsetWidth;
+    let x = window.scrollX + r2.left + r2.width / 2 - sz / 2;
+    x = Math.max(window.scrollX + 16, Math.min(x, window.scrollX + document.documentElement.clientWidth - sz - 16));
+    let y = window.scrollY + r2.bottom + 8;
+    if (r2.bottom + kartya.offsetHeight + 16 > window.innerHeight && r2.top > kartya.offsetHeight + 16) y = window.scrollY + r2.top - kartya.offsetHeight - 8;
+    kartya.style.left = x + 'px';
+    kartya.style.top = y + 'px';
+    kartyaForras = forrasEl;
+    kartya.querySelector('.k-gombok button').focus({ preventScroll: true });
+  }
+
+  function fulValt(ful) {
+    aktFul = ful;
+    document.getElementById('ful-szo').setAttribute('aria-selected', String(ful === 'szo'));
+    document.getElementById('ful-vers').setAttribute('aria-selected', String(ful === 'vers'));
+    szolap.hidden = ful !== 'szo';
+    verslap.hidden = ful !== 'vers';
+  }
+  document.getElementById('ful-szo').addEventListener('click', () => fulValt('szo'));
+  document.getElementById('ful-vers').addEventListener('click', () => fulValt('vers'));
+  const jeloles = document.getElementById('jeloles');
+  const jelolAllit = () => szovegEl.classList.toggle('jelol', jeloles.checked);
+  jeloles.addEventListener('change', jelolAllit);
+
+  function szoNyit(strong, i) {
+    aktVers = i; panelNyit(true); kivalaszt(strong);
+  }
+
+  function versValaszt(i) {
+    aktVers = i; panelNyit(true); rajzol(); fulValt('vers');
+    if (keskeny()) panelEl.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+
+  function rajzolOlvaso() {
+    szovegEl.replaceChildren();
+    let bekezdes = null, fejezet = null;
+    D.versek.forEach((v, i) => {
+      const [f, vs] = v.igehely.split(' ')[1].split(':');
+      if (f !== fejezet) {
+        fejezet = f;
+        bekezdes = el('p', null, el('span', { class: 'fejezet', 'aria-label': f + '. fejezet', text: f }));
+        szovegEl.append(bekezdes);
+      }
+      const vers = el('span', { class: 'vers' + (i === aktVers ? ' akt' : ''), id: 'v-' + i });
+      if (vs !== '1') vers.append(el('button', { type: 'button', class: 'vszam', title: `${v.igehely}: a vers részletei`, 'aria-label': `${v.igehely} részletei`, text: vs, onclick: () => versValaszt(i) }));
+      else vers.append(el('button', { type: 'button', class: 'vszam', title: `${v.igehely}: a vers részletei`, 'aria-label': `${v.igehely} részletei`, text: '1', onclick: () => versValaszt(i) }));
+      v.hu_szavak.forEach((w, j) => {
+        if (j) vers.append(' ');
+        if (w.fo && D.lapok[w.fo]) {
+          vers.append(el('span', {
+            class: 'ow' + (i === aktVers && w.fo === aktSzo ? ' akt' : ''), role: 'button', tabindex: '0', 'data-id': i + '-' + j,
+            title: [w.fo, ...(w.tobbi || []).map(t => t.strong)].map(s => `${(D.lapok[s] || {}).lemma || ''} ${s}`).join(' + '),
+            onclick: () => szoNyit(w.fo, i),
+            onkeydown: e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); szoNyit(w.fo, i); } }
+          }, w.szo));
+        } else vers.append(w.szo);
+      });
+      bekezdes.append(vers, ' ');
+    });
+    jelolAllit();
+  }
+
+  const lapja = s => (s && s[0] === 'G') ? D.gor_lapok[s] : D.lapok[s];
+
+  function kivalaszt(strong) {
+    if (!lapja(strong)) return;
+    aktSzo = strong; teljesBdb = false; rajzol(); fulValt('szo');
+    if (keskeny()) panelEl.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+
+  function vilagit(strong, be) {
+    verslap.querySelectorAll(`[data-strong~="${strong}"]`).forEach(n => n.classList.toggle('vilagit', be));
+  }
+
+  function rajzolVersBelso() {
+    const v = D.versek[aktVers];
+    verslap.replaceChildren();
+
+    const karoli = el('p', { class: 'karoli' });
+    v.hu_szavak.forEach((w, i) => {
+      if (i) karoli.append(' ');
+      if (w.fo && D.lapok[w.fo]) {
+        karoli.append(el('span', {
+          class: 'hu-szo kotott' + (w.biz && w.biz !== 'magas' ? ' alacsony' : '') + (w.fo === aktSzo ? ' aktiv' : ''),
+          'data-strong': w.strongok.join(' '), tabindex: '0', role: 'button',
+          title: `${w.fo} · ${D.lapok[w.fo].lemma} · bizonyosság: ${w.biz}`,
+          onclick: () => kivalaszt(w.fo),
+          onkeydown: e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); kivalaszt(w.fo); } },
+          onmouseenter: () => vilagit(w.fo, true), onmouseleave: () => vilagit(w.fo, false)
+        }, w.szo));
+      } else karoli.append(el('span', { class: 'hu-szo' }, w.szo));
+    });
+
+    const heber = el('div', { class: 'heber-sor', lang: 'he' });
+    v.heber.forEach(w => {
+      const nyt = w.nyelvtani || !D.lapok[w.strong];
+      const m = w.macula || {};
+      const mf = m.morf_hu || m.szofaj_hu || '';
+      const gk = m.lxx_strong && D.gor_lapok[m.lxx_strong];
+      heber.append(el('div', {
+        class: 'he-szo' + (nyt ? ' nyelvtani' : '') + (w.strong === aktSzo ? ' aktiv' : ''),
+        'data-strong': w.strong, tabindex: nyt ? '-1' : '0', role: nyt ? null : 'button',
+        title: (nyt ? 'Nyelvtani elem (prefixum, névelő, tárgyjelölő): nincs szó-lapja' : `${w.strong} szó-lapja`) + (m.morf ? ` · morfológia: ${m.morf}` : ''),
+        onclick: nyt ? null : () => kivalaszt(w.strong),
+        onkeydown: nyt ? null : e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); kivalaszt(w.strong); } },
+        onmouseenter: () => vilagit(w.strong, true), onmouseleave: () => vilagit(w.strong, false)
+      },
+        el('span', { class: 'he', text: w.heber }),
+        el('span', { class: 'at', text: w.atiras }),
+        el('span', { class: 'gl', text: w.tukor }),
+        el('span', { class: 'st', text: w.strong }),
+        mf ? el('span', { class: 'mf', text: mf }) : null,
+        m.lxx
+          ? el('span', { class: 'lx' + (gk ? ' kat' : ''), lang: 'grc', title: gk ? `${m.lxx_strong} görög szó-lapja` : (m.lxx_strong || 'nincs Strong-szám'),
+              onclick: gk ? e => { e.stopPropagation(); kivalaszt(m.lxx_strong); } : null }, m.lxx)
+          : el('span', { class: 'lx ures', text: 'LXX: —' })));
+    });
+
+    const lxx = el('div', { class: 'lxx-sor', lang: 'grc' },
+      v.lxx.map(w => {
+        const gk = w.strong && D.gor_lapok[w.strong];
+        return el('span', {
+          class: (w.strong ? '' : 'nincs-st') + (gk ? ' gk' : '') + (w.strong === aktSzo ? ' aktiv' : ''),
+          title: `${w.lemma} · ${w.morf}` + (gk ? ' · kattintásra görög szó-lap' : ''),
+          role: gk ? 'button' : null, tabindex: gk ? '0' : null,
+          onclick: gk ? () => kivalaszt(w.strong) : null,
+          onkeydown: gk ? e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); kivalaszt(w.strong); } } : null
+        }, w.szoalak, el('small', { text: w.strong || 'nincs Strong' }));
+      }));
+
+    const vs = v.versszam || {};
+    const egyezik = vs.kjv && vs.mt && vs.kjv === vs.mt && v.igehely.endsWith(vs.kjv);
+    const versszam = el('div', { class: 'versszam' },
+      el('span', null, 'Károli ', el('b', { text: v.igehely })),
+      el('span', null, 'héber (MT) ', el('b', { text: vs.mt || '—' })),
+      el('span', null, 'LXX ', el('b', { text: vs.lxx || '—' })),
+      el('span', { text: egyezik ? '· a számozás egyezik' : '· a számozás eltér, l. a versmegfeleltető táblát' }));
+
+    verslap.append(
+      el('div', null, el('p', { class: 'lapcim', text: 'Vers-lap' }), el('h2', { class: 'igehely', text: v.igehely + ' · Károli 1908' }), versszam, forras('versszam')),
+      el('div', { class: 'blokk' }, karoli, forras('karoli', 'parok')),
+      el('div', { class: 'blokk' },
+        el('h3', { text: 'Héber szöveg' }),
+        el('p', { class: 'meg', text: 'Jobbról balra. Szavanként: átírás, angol tükörfordítás, Strong-szám, igealak, alul a görög LXX-megfelelő (kattintható). Szaggatott keret: nyelvtani elem, nincs szó-lapja.' }),
+        heber, forras('heber', 'macula')),
+      el('div', { class: 'blokk' },
+        el('h3', { text: 'Septuaginta (LXX, Rahlfs)' }),
+        el('p', { class: 'meg', text: 'A keretes, aláhúzott görög szavakra kattintva megnyílik a görög szó-lap (jelentés, újszövetségi előfordulások, héber háttér). Keret nélkül: névelő, kötőszó és hasonló, ezeknek nincs lapja. A szó alatt a Strong-szám; arany: a szónak nincs újszövetségi Strong-száma.' }),
+        lxx, forras('lxx')),
+      el('div', { class: 'blokk' },
+        el('h3', { text: `Kereszthivatkozások (TSK, ${v.tsk_db} db; a legtöbb szavazatot kapott ${v.tsk.length})` }),
+        v.tsk.length ? el('ul', { class: 'hiv' }, v.tsk.map(h => el('li', { text: h }))) : el('p', { class: 'meg', text: 'Nincs TSK-hivatkozás.' }),
+        el('h3', { text: 'Károli-kereszthivatkozások' }),
+        v.karoli_kh.length ? el('ul', { class: 'hiv' }, v.karoli_kh.map(h => el('li', { text: h }))) : el('p', { class: 'meg', text: 'Ehhez a vershez a Károli-kiadás nem ad kereszthivatkozást.' }),
+        forras('tsk', 'kh'))
+    );
+  }
+
+  function ebbenAVersben(strong) {
+    const v = D.versek[aktVers];
+    const talalat = v.heber.filter(w => w.strong === strong);
+    if (!talalat.length) return el('p', { class: 'meg', text: `A szó nem fordul elő a ${v.igehely} versben.` });
+    const ubs = [];
+    const lat = new Set();
+    talalat.forEach(w => w.ubs.forEach(u => { if (!lat.has(u.lexid)) { lat.add(u.lexid); ubs.push(u); } }));
+    const m = talalat[0].macula || {};
+    // a Károli-szó, amely ezt a héber szót adja vissza; ha több héber szót is, mind
+    const huSzo = v.hu_szavak.find(w => w.fo === strong || (w.tobbi || []).some(t => t.strong === strong));
+    const parok = huSzo && huSzo.tobbi && huSzo.tobbi.length
+      ? [{ strong: huSzo.fo, biz: huSzo.biz }, ...huSzo.tobbi] : null;
+    const karoliSor = huSzo ? el('p', { class: 'meg' }, `Károli itt: „${huSzo.szo.replace(/[.,;:!?]+$/, '')}”`,
+      parok ? [' — ez a magyar szó több héber szót ad vissza együtt: ',
+        parok.map((p, i) => [i ? ' + ' : '',
+          p.strong === strong
+            ? el('b', { lang: 'he', style: 'font-family: var(--font-he); font-size: 1.05rem', text: (D.lapok[p.strong] || {}).lemma || p.strong })
+            : el('button', { type: 'button', class: 'link', lang: 'he', style: 'font-family: var(--font-he); font-size: 1.05rem', title: `${p.strong} szó-lapja`, text: (D.lapok[p.strong] || {}).lemma || p.strong, onclick: () => kivalaszt(p.strong) }),
+          ` (${p.strong}${p.biz && p.biz !== 'magas' ? ', ' + p.biz + ' bizonyosság' : ''})`])] : null) : null;
+    return el('div', { class: 'blokk' },
+      karoliSor,
+      m.morf ? el('p', { class: 'meg', text: `Alak: ${talalat[0].heber} (${talalat[0].atiras}) · ${m.morf_hu || m.szofaj_hu} (${m.morf})` }) : null,
+      m.lxx ? el('p', { class: 'meg' }, 'Görögül ebben a versben (LXX): ',
+        (m.lxx_strong && D.gor_lapok[m.lxx_strong])
+          ? el('button', { type: 'button', class: 'link', lang: 'grc', style: 'font-family: var(--font-gr); font-size: 1rem', text: m.lxx, title: 'A görög szó lapja', onclick: () => kivalaszt(m.lxx_strong) })
+          : el('span', { lang: 'grc', style: 'font-family: var(--font-gr); font-size: 1rem', text: m.lxx }),
+        m.lxx_strong ? ` · ${m.lxx_strong}` : '') : null,
+      ubs.length
+        ? ubs.map(u => el('div', { class: 'ubs' },
+            el('span', { class: 'dom', text: u.domen }),
+            el('span', { class: 'def', lang: 'en', text: u.definicio }),
+            el('span', { class: 'gl', lang: 'en', text: 'Glosszák: ' + u.glosszak })))
+        : el('p', { class: 'meg', text: 'A UBS-szótár ehhez az előforduláshoz nem ad jelentés-besorolást (az SDBH/DBH a szókincs kb. 90%-át fedi; az üres eredmény nem negatív lelet).' }),
+      forras('ubs', 'macula'));
+  }
+
+  function rajzolGorog(l) {
+    const hu = l.hu.length
+      ? el('div', { class: 'blokk' },
+          el('h3', { text: 'Jelentés magyarul' }),
+          el('span', { class: 'allapot', text: `Lefordítva · ${[...new Set(l.hu.map(x => x.szotar))].join(', ')} (a lexikonoldalak szócikkeiből)` }),
+          l.hu.map(x => el('p', { class: 'bdb', text: (x.szam ? x.szam + '. ' : '') + x.szoveg })))
+      : el('div', { class: 'blokk' },
+          el('h3', { text: 'Jelentés' }),
+          el('span', { class: 'allapot folyamat', text: 'Magyar fordítás nincs · a Thayer teljes fordítása halasztva (#7)' }),
+          el('p', { class: 'meg', text: `Rövid jelentés: ${l.gloss}` }));
+    szolap.append(
+      el('div', null, el('p', { class: 'lapcim', text: 'Szó-lap · görög' })),
+      el('div', { class: 'szolap-fej' },
+        el('p', { class: 'lemma gr', lang: 'grc', text: l.lemma }),
+        el('div', { class: 'szolap-adat' },
+          el('span', { class: 'strong', text: l.strong }),
+          el('span', { text: [l.atiras, l.szofaj].filter(Boolean).join(' · ') }))),
+      el('div', { class: 'szamok' },
+        el('div', { class: 'szam' }, el('b', { text: l.usz_db.toLocaleString('hu-HU') }), el('span', { text: 'előfordulás az ÚSZ-ben' })),
+        el('div', { class: 'szam' }, el('b', { text: l.usz_versek_db.toLocaleString('hu-HU') }), el('span', { text: 'versben' })),
+        el('div', { class: 'szam' }, el('b', { text: l.heber.length }), el('span', { text: 'héber szó mögötte (LXX)' }))),
+      hu,
+      el('div', { class: 'blokk' },
+        el('h3', { text: 'Héber háttér: ezeket a szavakat fordítja így a Septuaginta' }),
+        l.heber.length
+          ? el('div', { class: 'lxx-meg' }, l.heber.map(x => el('div', null,
+              el('span', { class: 'gr', lang: 'he', style: 'font-family: var(--font-he)', text: x.lemma || '—' }),
+              x.lap ? el('button', { type: 'button', class: 'link st', text: x.strong, onclick: () => kivalaszt(x.strong) }) : el('span', { class: 'st', text: x.strong }),
+              el('span', { text: `${x.db}×` }),
+              el('span', { class: 'meg', text: x.jelentes }))))
+          : el('p', { class: 'meg', text: 'A lxx_bridge nem ad héber párt (kevesebb mint 3 egyezés).' }),
+        forras('vissza')),
+      el('div', { class: 'blokk' },
+        el('h3', { text: `Az Újszövetségben (Károli; az első ${l.usz_versek.length} a ${l.usz_versek_db} versből)` }),
+        l.usz_versek.length
+          ? el('div', { class: 'usz' }, l.usz_versek.map(x => el('div', null, el('b', { text: x.ig }), x.karoli)))
+          : el('p', { class: 'meg', text: 'A szó az Újszövetségben nem fordul elő (vagy a TAGNT-kivonatban nincs).' }),
+        el('p', { class: 'meg', text: 'Versszintű egyezés: a Károli–Strong szópárosítás az Újszövetségre még nem készült el, ezért a szó a versben nincs kiemelve.' }),
+        forras('usz')),
+      el('div', { class: 'blokk' },
+        el('h3', { text: 'Szótári szöveg (angol): TBESG / Abbott-Smith' }),
+        el('p', { class: 'bdb en', lang: 'en', text: l.tbesg || '—' }),
+        l.thayer ? el('details', null, el('summary', { class: 'meg', text: 'Thayer (angol)' }), el('p', { class: 'bdb en', lang: 'en', text: l.thayer })) : null,
+        forras('gor'))
+    );
+  }
+
+  // ---- Magyarázatok az olvasónak: blokk-súgók (címek melletti ?) és szószedet ----
+  // A súgó csak azt mondja meg, melyik adatkészletből jön a blokk, és mi a licence (adat/licencek.tsv).
+  const SUGO = [
+    ['Héber szöveg', [['TAHOT', 'konkordancia/TAHOT_kivonat.tsv: héber szó, kiejtés, angol tükörfordítás, Strong-szám'], ['Macula_heber', 'konkordancia/Macula_heber_*.tsv: igealak-kód, szófaj, héber–görög párosítás'], ['LXX_OS', 'konkordancia/LXX_OS/*.tsv: a görög szóalak']], ['forras', 'gepi']],
+    ['Septuaginta', [['LXX_OS', 'konkordancia/LXX_OS/genesis.tsv (Rahlfs, lxx-morph)']], ['forras']],
+    ['Kereszthivatkozások (TSK', [['TSK', 'konkordancia/TSK_kereszthivatkozasok.tsv, szavazatszámmal']], ['forras']],
+    ['Károli-kereszthivatkozások', [['Karoli_KH', 'konkordancia/Karoli_kereszthivatkozasok.tsv']], ['forras']],
+    ['Ebben a versben', [['Macula_heber', 'igealak-kód, szófaj, görög párosítás'], ['UBS_DBH', 'konkordancia/UBS_DBH_referenciak.tsv + UBS_DBH_jelentesek.tsv'], ['LXX_OS', 'a görög szóalak']], ['forras', 'gepi']],
+    ['Így fordítja Károli', [['projekt_adat', 'adat/karoli_strong/parok_*.tsv: a #22 Károli–Strong párosítás (gépi; 1–5Móz, Józs)']], ['modell']],
+    ['BDB-szócikk', [['BDB', 'adat/forditasok.tsv (magyar, #38) és konkordancia/BDB_teljes_unabridged.tsv (angol); a bontás gépi']], ['forras', 'modell', 'gepi']],
+    ['Jelentés magyarul', [['Thayer', 'adat/forditasok.tsv (Thayer)'], ['UBS_DNTG', 'adat/forditasok.tsv (UBS DNTG)']], ['modell']],
+    ['Jelentés', [['TBESG', 'konkordancia/TBESG.txt: rövid jelentés']], ['forras']],
+    ['Héber háttér', [['lxx_bridge', 'adat/kulso/lxx_bridge.tsv (görög → héber)']], ['forras']],
+    ['Az Újszövetségben', [['TAGNT', 'konkordancia/TAGNT_kivonat.tsv'], ['Karoli_1908', 'konkordancia/Karoli_1908.tsv']], ['forras']],
+    ['Szótári szöveg (angol)', [['TBESG', 'konkordancia/TBESG.txt'], ['Thayer', 'konkordancia/Thayer_teljes.tsv']], ['forras']],
+    ['Görög megfelelő', [['lxx_bridge', 'adat/kulso/lxx_bridge.tsv (héber → görög)']], ['forras']],
+  ];
+  const sugoSzoveg = forrasok => 'Adatforrás: ' + forrasok.map(([k, leiras]) => `${k} — ${leiras} (licenc: ${D.licenc[k] || 'l. adat/licencek.tsv'})`).join('; ') + '.';
+  const TORZS_MAGY = {};
+  const JELLEG_CIMKE = {
+    forras: ['forrásadat', 'Közvetlenül egy adatkészletből, változtatás nélkül.'],
+    gepi: ['gépi feldolgozás', 'Determinisztikus szabály rendezi vagy párosítja a forrásadatot (pl. bontás, illesztés); hibás határ előfordulhat.'],
+    modell: ['modell-kimenet', 'Nyelvi modell állította elő (fordítás vagy párosítás); javaslat-értékű, nem lekérdezés-eredmény.'],
+  };
+
+  function sugoFelrak(gyoker) {
+    gyoker.querySelectorAll('h3, h4').forEach(h => {
+      if (h.parentElement.classList.contains('fejsor')) return;
+      const t = h.textContent;
+      const s = SUGO.find(([k]) => t === k || (t.startsWith(k) && !/[a-zA-ZáéíóöőúüűÁÉÍÓÖŐÚÜŰ]/.test(t[k.length])));
+      if (!s) return;
+      const sor = el('div', { class: 'fejsor' });
+      h.replaceWith(sor);
+      sor.append(h, ...(s[2] || []).map(j => el('span', { class: 'jelleg jelleg-' + j, title: JELLEG_CIMKE[j][1], text: JELLEG_CIMKE[j][0] })),
+        el('details', { class: 'sugo' }, el('summary', { 'aria-label': 'Adatforrás', title: 'Honnan jön?', text: '?' }), el('p', { text: sugoSzoveg(s[1]) })));
+    });
+  }
+
+
+  const rovid = (s, n) => s.length > n ? s.slice(0, n).replace(/\s+\S*$/, '') + ' …' : s;
+  const helyek = n => n ? el('span', { class: 'helyek', text: `${n} hely` }) : null;
+
+  function apparatus(l) {
+    const a = l.appar;
+    const hu = !!l.bdb_hu;
+    const teljes = hu ? l.bdb_hu : l.bdb_en;
+    const resz = (cim, ...tartalom) => el('div', { class: 'app' }, el('h4', { text: cim }), ...tartalom);
+
+    const torzsek = a.torzsek.map(t => el('div', { class: 'torzs' },
+      t.nev ? el('h5', { title: TORZS_MAGY[t.nev] ? `${t.nev}: ${TORZS_MAGY[t.nev]} törzs` : null }, t.nev,
+        TORZS_MAGY[t.nev] ? el('span', { class: 'meg', text: TORZS_MAGY[t.nev] }) : null, t.db ? el('span', { class: 'helyek', text: `${t.db} előfordulás a BDB szerint` }) : null) : null,
+      el('ol', { class: 'jel' }, t.jelentesek.map((j, i) => el('li', { 'data-jel': j.jel || '·' },
+        el('details', i === 0 && !t.nev ? { open: '' } : (i === 0 ? { open: '' } : null),
+          el('summary', null, el('span', { class: 'jt' }, rovid(j.szoveg || (j.al[0] ? j.al[0].szoveg : ''), 110)), helyek(j.ref)),
+          el('p', { class: 'jsz' }, j.szoveg),
+          j.al.length ? el('ol', { class: 'al' }, j.al.map(s => el('li', { 'data-jel': s.jel + '.' },
+            el('p', { class: 'jsz' }, s.szoveg), helyek(s.ref)))) : null))))));
+
+    return el('div', { class: 'blokk' },
+      el('h3', { text: hu ? 'BDB-szócikk apparátusokra bontva (magyarul)' : 'BDB-szócikk apparátusokra bontva (angol eredeti)' }),
+      el('span', { class: 'allapot' + (hu ? '' : ' folyamat'), text: hu ? `Lefordítva · ${l.bdb_hu_meta}` : 'Magyar fordítás folyamatban · az angol eredeti áll' }),
+      el('p', { class: 'meg', text: 'Gépi szeletelés (próba): a határokat a szócikk saját jelölői adják (gondolatjel, sorszámok, törzsnevek); hibás határ előfordulhat. A szöveg nem változik.' }),
+      el('div', { class: 'appok' },
+        resz('Címszó',
+          el('div', { class: 'cimszo' },
+            el('span', { class: 'he', lang: 'he', text: a.fej.heber }),
+            el('span', { text: [a.fej.atiras, a.fej.homonima ? a.fej.homonima + '. címszó' : ''].filter(Boolean).join(' · ') }),
+            a.fej.ossz ? el('span', { class: 'helyek', text: `${a.fej.ossz} előfordulás (BDB)` }) : null,
+            el('span', { class: 'helyek', text: `${a.ref_ossz} igehely-hivatkozás a szócikkben` }))),
+        resz('Alapjelentés és szófaj', el('p', { class: 'jsz' }, a.alap || '—')),
+        a.nyelvi.length ? resz('Nyelvi háttér (etimológia, rokon nyelvek)', el('ul', { class: 'lista' }, a.nyelvi.map(x => el('li', { text: x })))) : null,
+        a.alaktan ? resz('Alakok (alaktani apparátus)', el('details', null, el('summary', { class: 'meg', text: rovid(a.alaktan, 120) }), el('p', { class: 'jsz' }, a.alaktan))) : null,
+        resz(a.torzsek.some(t => t.nev) ? 'Jelentésszerkezet törzsenként' : 'Jelentésszerkezet', ...torzsek),
+        a.irodalom.length || a.krit.length ? resz('Irodalmi és szövegkritikai jelek',
+          el('div', { class: 'cimkek' },
+            a.irodalom.map(x => el('span', { class: 'jel-cimke', title: 'BDB irodalmi hivatkozás (szerző^mű)', text: x })),
+            a.krit.map(x => el('span', { class: 'jel-cimke krit', title: 'a BDB jele; a jelkulcs nincs a repóban', text: x })))) : null),
+      el('button', { type: 'button', class: 'lenyit', text: teljesBdb ? 'A teljes szócikk elrejtése' : `A teljes szócikk egyben (${teljes.length.toLocaleString('hu-HU')} karakter)`, onclick: () => { teljesBdb = !teljesBdb; rajzolSzo(); } }),
+      teljesBdb ? el('p', { class: 'bdb' + (hu ? '' : ' en'), lang: hu ? 'hu' : 'en', text: teljes }) : null,
+      forras('bdb'));
+  }
+
+  function rajzolSzoBelso() {
+    szolap.replaceChildren();
+    if (aktSzo[0] === 'G') { if (D.gor_lapok[aktSzo]) rajzolGorog(D.gor_lapok[aktSzo]); return; }
+    const l = D.lapok[aktSzo];
+    if (!l) return;
+    const max = l.karoli.length ? l.karoli[0][1] : 1;
+    const alakok = l.karoli.length
+      ? el('div', { class: 'alakok' }, l.karoli.map(([nev, db]) => el('div', { class: 'alak' },
+          el('span', { class: 'nev', text: nev }),
+          el('span', { class: 'sav', 'aria-hidden': 'true' }, el('i', { style: `width:${Math.max(4, Math.round(100 * db / max))}%` })),
+          el('span', { class: 'db', text: db }))))
+      : el('p', { class: 'meg', text: 'Nincs Károli-pár a feldolgozott könyvekben.' });
+
+    let bdb;
+    if (l.appar) {
+      bdb = apparatus(l);
+    } else if (l.bdb_hu) {
+      const hosszu = l.bdb_hu.length > 1400;
+      const szoveg = hosszu && !teljesBdb ? l.bdb_hu.slice(0, 1400).replace(/\s+\S*$/, '') + ' …' : l.bdb_hu;
+      bdb = el('div', { class: 'blokk' },
+        el('h3', { text: 'Jelentés (BDB, magyarul)' }),
+        el('span', { class: 'allapot', text: `Lefordítva · ${l.bdb_hu_meta}` }),
+        el('p', { class: 'bdb', text: szoveg }),
+        hosszu ? el('button', { type: 'button', class: 'lenyit', text: teljesBdb ? 'Rövidebben' : `A teljes szócikk (${l.bdb_hu.length.toLocaleString('hu-HU')} karakter)`, onclick: () => { teljesBdb = !teljesBdb; rajzolSzo(); } }) : null,
+        forras('bdb'));
+    } else {
+      bdb = el('div', { class: 'blokk' },
+        el('h3', { text: 'Jelentés (BDB)' }),
+        el('span', { class: 'allapot folyamat', text: 'Magyar fordítás folyamatban · az angol eredeti áll' }),
+        el('p', { class: 'meg', text: `Rövid jelentés (Strong): ${l.rovid}` }),
+        el('p', { class: 'bdb en', lang: 'en', text: l.bdb_en }),
+        forras('bdb'));
+    }
+
+    szolap.append(
+      el('div', null, el('p', { class: 'lapcim', text: 'Szó-lap' })),
+      el('div', { class: 'szolap-fej' },
+        el('p', { class: 'lemma', lang: 'he', text: l.lemma }),
+        el('div', { class: 'szolap-adat' },
+          el('span', { class: 'strong', text: l.strong }),
+          el('span', { text: [l.kiejtes, l.szofaj].filter(Boolean).join(' · ') }))),
+      el('div', { class: 'szamok' },
+        el('div', { class: 'szam' }, el('b', { text: l.elofordulas.toLocaleString('hu-HU') }), el('span', { text: 'előfordulás az ÓSZ-ben' })),
+        el('div', { class: 'szam' }, el('b', { text: l.konyvek_szama }), el('span', { text: 'könyvben' })),
+        el('div', { class: 'szam' }, el('b', { text: l.karoli_osszes }), el('span', { text: `Károli-pár (${l.karoli_magas} magas)` }))),
+      el('div', { class: 'blokk' },
+        el('h3', { text: `Ebben a versben (${D.versek[aktVers].igehely})` }),
+        ebbenAVersben(l.strong)),
+      el('div', { class: 'blokk' },
+        el('h3', { text: 'Így fordítja Károli' }),
+        el('p', { class: 'meg', text: `A ${D.karoli_konyvek.length} feldolgozott könyv (${D.karoli_konyvek.join(', ')}) szó szintű párjai alapján; a többi könyv még hiányzik.` }),
+        alakok, forras('karoli_alak')),
+      bdb,
+      el('div', { class: 'blokk' },
+        el('h3', { text: 'Görög megfelelő a Septuagintában' }),
+        l.lxx.length
+          ? el('div', { class: 'lxx-meg' }, l.lxx.map(x => el('div', null,
+              el('span', { class: 'gr', lang: 'grc', text: x.lemma || '—' }),
+              el('span', { class: 'st', text: x.strong }),
+              el('span', { text: `${x.db}×` }),
+              el('span', { class: 'meg', text: x.jelentes }))))
+          : el('p', { class: 'meg', text: 'A lxx_bridge nem ad párt (kevesebb mint 3 egyezés).' }),
+        forras('bridge'))
+    );
+  }
+
+  function rajzolVers() { rajzolVersBelso(); sugoFelrak(verslap); }
+  function rajzolSzo() { rajzolSzoBelso(); sugoFelrak(szolap); }
+  function rajzol() { rajzolOlvaso(); rajzolVers(); rajzolSzo(); }
+  rajzol();
+  fulValt('szo');
+})();
+</script>
