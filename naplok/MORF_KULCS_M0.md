@@ -37,7 +37,7 @@ Az A) forrás a 729 szintaktikailag illeszkedő kód minden pozícióértékét 
 
 ## 4. Javaslat a ⛔ megállásra
 
-Forrás: **A) OSHB `HebrewMorphologyCodes.html`** (CC BY 4.0), attribúció a szó szerinti formulával. A `licencek.tsv` sor és az `adat/kulso/morf_kulcs_LICENC.txt` az A) szó szerinti idézeteit viszi. A döntéstétel a `DONTESEK.md`-ben: DT-F58a.
+Forrás: **A) OSHB `HebrewMorphologyCodes.html`** (CC BY 4.0), attribúció a szó szerinti formulával. A `licencek.tsv` sor és az `adat/kulso/morf_kulcs_LICENC.txt` az A) szó szerinti idézeteit viszi. A döntéstétel a `DONTESEK.md`-ben: DT35.
 
 ## Melléklet — a 747 kód gyakorisággal (`kod:db`, gyakoriság szerint csökkenő)
 

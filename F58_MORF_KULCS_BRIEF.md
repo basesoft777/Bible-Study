@@ -10,7 +10,7 @@ allapot: lezarva
 pr: 208
 ag: claude/morf-kulcs
 ad: egy nyílt licencű forrásból importált, forrás- és licencsorral ellátott jelkulcs-tábla (adat/morf_kulcs_heber.tsv), amely a Macula_heber morfológiai kódjainak minden pozícióját magyarul feloldja; a feloldó függvény ebből a táblából dolgozik, emlékezetből írt leképezés nincs
-kovetkezo: "PR #208 merge a felhasználótól; az ellenőri eltérés 1, 3–5 javítva (DT-F58b)"
+kovetkezo: "PR #208 merge a felhasználótól; az ellenőri eltérés 1, 3–5 javítva (DT36)"
 olvas: ["konkordancia/Macula_heber_*.tsv", adat/licencek.tsv, adat/SEMA.md, adat/datasetek.tsv]
 ir: [adat/morf_kulcs_heber.tsv, adat/SEMA.md, adat/licencek.tsv, adat/datasetek.tsv, eszkozok/morf_feloldas.py, eszkozok/teszt_morf_feloldas.py, adat/kulso/morf_kulcs_LICENC.txt, adat/morf_nyelv_aramai.tsv, eszkozok/morf_nyelv_kivonat.py, eszkozok/morf_kulcs_import.py, adat/kulso/oshb_HebrewMorphologyCodes.html, naplok/MORF_KULCS_lefedettseg.md]
 fugg: []
@@ -77,4 +77,4 @@ Jelentés: `naplok/MORF_KULCS_M0.md`.
 |---|---|---|---|
 | v1 | 2026-10-05 | Az igealak magyar feloldása csak adatként importált jelkulcsból készülhet; az emlékezetből írt leképezés kikerült a pilotból. | felhasználó |
 | v1 | 2026-10-05 | Az ETCBC-modul (CC BY-NC 4.0) nem lehet forrás. | `adat/kulso/LICENC.md` forráspolitika |
-| v2 | 2026-10-05 | DT-F58a: forrás az OSHB HebrewMorphologyCodes.html (CC BY 4.0); `nyelv` oszlop a táblában; a nyelv a Macula-XML kivonatából (`adat/morf_nyelv_aramai.tsv`); az `ir` lista bővítve (l. `ir_bovites`). | felhasználó (chat) |
+| v2 | 2026-10-05 | DT35: forrás az OSHB HebrewMorphologyCodes.html (CC BY 4.0); `nyelv` oszlop a táblában; a nyelv a Macula-XML kivonatából (`adat/morf_nyelv_aramai.tsv`); az `ir` lista bővítve (l. `ir_bovites`). | felhasználó (chat) |

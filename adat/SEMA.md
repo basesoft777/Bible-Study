@@ -998,7 +998,7 @@ rögzítésével egy menetben; a szabály nem javít, nem ír vissza.
 
 ---
 
-### 2.22 `morf_kulcs_heber.tsv` és `morf_nyelv_aramai.tsv` — héber morfológiai jelkulcs (F58, FELADATOK #58, DT-F58a)
+### 2.22 `morf_kulcs_heber.tsv` és `morf_nyelv_aramai.tsv` — héber morfológiai jelkulcs (F58, FELADATOK #58, DT35)
 
 A `konkordancia/Macula_heber_*.tsv` `morf` oszlopának kódjait (OSHB-kódolás, nyelvjelölő nélkül) oldja fel magyarra.
 **Forrás és licenc:** `adat/kulso/oshb_HebrewMorphologyCodes.html` (openscriptures/morphhb@3d15126fb1ef74867fc1434be1942e837932691f,
@@ -1019,7 +1019,7 @@ Mindkét tábla **generált** (`eszkozok/morf_kulcs_import.py`, `eszkozok/morf_n
 | `proveniencia` | `scope=… | forras=… | ts=…` (CLAUDE.md 1. szabály) |
 
 Szabályok: (1) a feloldó (`eszkozok/morf_feloldas.py`) kizárólag ebből a táblából dolgozik; (2) a Macula-kód nyelvjelölőt **nem** hordoz, ezért
-a szó nyelvét a `morf_nyelv_aramai.tsv` adja; nyelv nélkül az `igetorzs` kétértelmű vagy nyelvfüggő, és a kimenet ezt jelzi; (3) az `allapot` (feloldás eredménye) értékei: `teljes` · `helykitoltovel` · `ketertelmu` (nyelv nélkül több olvasat; a `ketertelmu` jelző mező is megmarad; arámi nyelv-kivonattal hívva egyértelmű, tehát `teljes`) · `reszleges` · `ismeretlen`; sorrend: hiányzó jel → `reszleges`, helykitöltő → `helykitoltovel`, kétértelmű jelző → `ketertelmu`, egyébként `teljes` (DT-F58b); (3b) az `x` a forrás
+a szó nyelvét a `morf_nyelv_aramai.tsv` adja; nyelv nélkül az `igetorzs` kétértelmű vagy nyelvfüggő, és a kimenet ezt jelzi; (3) az `allapot` (feloldás eredménye) értékei: `teljes` · `helykitoltovel` · `ketertelmu` (nyelv nélkül több olvasat; a `ketertelmu` jelző mező is megmarad; arámi nyelv-kivonattal hívva egyértelmű, tehát `teljes`) · `reszleges` · `ismeretlen`; sorrend: hiányzó jel → `reszleges`, helykitöltő → `helykitoltovel`, kétértelmű jelző → `ketertelmu`, egyébként `teljes` (DT36); (3b) az `x` a forrás
 szerinti helykitöltő („ismeretlen vagy szükségtelen érték”), a feloldás állapota ilyenkor `helykitoltovel`, nem `teljes`; (4) a forrás a nemet
 `common (verb)` / `both (noun)` megnevezéssel adja, a magyar oszlop ezt szó szerint tükrözi akkor is, ha a névmásnál zavaró (`Pdxcp`).
 
