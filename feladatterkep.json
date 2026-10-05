@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-05",
-   "commit": "a3bf481"
+   "commit": "677867c"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -509,7 +509,7 @@
    "fazis": "folyamat",
    "allapot": "ready",
    "brief_allapot": "nem_indult",
-   "most": "futtatható a #32 (KONTEXTUS) és a #45 (MODELL_ELLENORZES) lezárása és mergelése után, mert mindkettő a .claude/commands/kovetkezo.md-t írja",
+   "most": "nem futhat a #45 (MODELL_ELLENORZES) mellett, mert mindkettő a .claude/commands/kovetkezo.md-t írja (kizárás, D4)",
    "fugg": "—",
    "tervezett": false,
    "reszletes": "A /befogad és a /kovetkezo push után elolvassa a CI eredményét; ha a hiba a saját PR-jéből jön (fejléc, fájlnév, formai hiba), legfeljebb két körben kijavítja, minden más hibát csak jelent.",
@@ -1138,56 +1138,7 @@
    }
   ],
   "javasolt": [],
-  "ellenorizendo": [
-   {
-    "id": "DT1",
-    "feladat": "#7 Thayer-fordítás",
-    "kerdes": "„döntés a v3-ról („természetes hű” stílus a promptban) + költség újraszámítása a teljes Thayer_teljes.tsv hosszeloszlásából (a P6 ~30 USD-ja nem vezethető le, naiv skálázással ~62 USD; ELLENOR_FP.md 1. eltérés)” *(forrás: `FELADATOK.md` #7 „Következő lépés”)*",
-    "allapot": "ellenorizendo",
-    "jelek": [
-     "✅"
-    ],
-    "sor": 9,
-    "oszlopszam": 7,
-    "fejlec_oszlopszam": 8
-   },
-   {
-    "id": "DT3",
-    "feladat": "#2 CI (E17)",
-    "kerdes": "E17: adattábla sorszámának mekkora változása kívánjon bontási naplót? *(forrás: F15 brief 3.4)*",
-    "allapot": "ellenorizendo",
-    "jelek": [
-     "✅"
-    ],
-    "sor": 11,
-    "oszlopszam": 10,
-    "fejlec_oszlopszam": 8
-   },
-   {
-    "id": "DT4",
-    "feladat": "#14 száma",
-    "kerdes": "A `main`-en a `#14` szám már a Thayer-stíluspróbáé (FP2, kész; a #7 „#14 (kész)” függést hivatkozza), az orkesztrátor-feladat sora is `#14` (F14 brief). Melyik számot kapja az orkesztrátor-feladat? *(forrás: az F14.3 merge-konfliktus)*",
-    "allapot": "ellenorizendo",
-    "jelek": [
-     "✅"
-    ],
-    "sor": 12,
-    "oszlopszam": 7,
-    "fejlec_oszlopszam": 8
-   },
-   {
-    "id": "DT19",
-    "feladat": "#19 KJV/ASV-import (összesített, D14–D19)",
-    "kerdes": "A menet közben `javaslat` jelölést kapott döntések (egy összesített tétel; a részkérdések külön-külön dönthetők). Eredmény: `konkordancia/KJV_Strongs_teljes.tsv` (349 308 sor), `konkordancia/ASV_Strongs_teljes.tsv` (705 378 sor, forráshibás; F19.7: a fájl kikerült az ágról), a hiányok: `naplok/F19_hianyok.tsv`. *Proveniencia: scope=konkordancia/{KJV,ASV}_Strongs_teljes.tsv + naplok/F19_hianyok.tsv (66 kanonikus könyv, angol számozás)",
-    "allapot": "ellenorizendo",
-    "jelek": [
-     "✅"
-    ],
-    "sor": 26,
-    "oszlopszam": 10,
-    "fejlec_oszlopszam": 8
-   }
-  ],
-  "kesz_db": 61
+  "ellenorizendo": [],
+  "kesz_db": 65
  }
 }
