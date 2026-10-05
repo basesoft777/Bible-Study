@@ -5,10 +5,11 @@ kod: LICENC_UTOKOVETES
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: lezarva
+pr: 205
 ag: claude/licenc-utokovetes
 ad: az adat/licencek.tsv Karoli_1908, Karoli_KH és Versifikacios_tablak sora tisztázott vagy dokumentáltan tisztázatlan marad, szó szerinti licencidézettel és rögzített commit-tal; a k-mktr/karoli_bible_hu nyílt Károli-jelölt felmérve; a TVTMS fájl neve és commitja rögzítve; az openbible.info kereszthivatkozás-tábla forrásjelöltként felvéve licencidézettel; a bible-mcp connector használati szabálya döntési javaslatként
-kovetkezo: "Lezárás: fuggetlen-ellenor (naplok/ELLENOR_LICENC_UTOKOVETES.md), draft PR; zárójelentés: naplok/F44_zaras.md"
+kovetkezo: "PR #205 merge a felhasználótól; nyitott: ellenőri eltérés 1–2 (⛔ 5. és DT-F44b), DT-M5, openbible import (/befogad)"
 olvas: [adat/licencek.tsv, adat/datasetek.tsv, adat/SEMA.md, naplok/LICENC_RENDEZES_zaras.md, konkordancia/Validacios_naplo.md, konkordancia/LXX_versificacios_terkep.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, F01_KAROLI_KULCS_BRIEF.md, adat/kulso/karoli_bible_hu_LICENC.txt, adat/kulso/openbible_crossrefs_LICENC.txt]
 ir: [adat/licencek.tsv, naplok/LICENC_UTOKOVETES_naplo.md, naplok/LICENC_UTOKOVETES_karoli_diff.tsv, adat/datasetek.tsv]
 fugg: [33, 42]
