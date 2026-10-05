@@ -5,7 +5,8 @@ kod: LICENC_UTOKOVETES
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/licenc-utokovetes
 ad: az adat/licencek.tsv Karoli_1908, Karoli_KH és Versifikacios_tablak sora tisztázott vagy dokumentáltan tisztázatlan marad, szó szerinti licencidézettel és rögzített commit-tal; a k-mktr/karoli_bible_hu nyílt Károli-jelölt felmérve; a TVTMS fájl neve és commitja rögzítve; az openbible.info kereszthivatkozás-tábla forrásjelöltként felvéve licencidézettel; a bible-mcp connector használati szabálya döntési javaslatként
 kovetkezo: "/kovetkezo (a 0. lépés és a 3b előfeltétel-fájljai bent: adat/kulso/karoli_bible_hu_LICENC.txt, adat/kulso/openbible_crossrefs_LICENC.txt, 2026-10-04)"
 olvas: [adat/licencek.tsv, adat/datasetek.tsv, adat/SEMA.md, naplok/LICENC_RENDEZES_zaras.md, konkordancia/Validacios_naplo.md, konkordancia/LXX_versificacios_terkep.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, F01_KAROLI_KULCS_BRIEF.md, adat/kulso/karoli_bible_hu_LICENC.txt, adat/kulso/openbible_crossrefs_LICENC.txt]
