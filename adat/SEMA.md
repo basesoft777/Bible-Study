@@ -41,7 +41,7 @@ Ez **döntés, nem megfigyelés** — a repóban ma két formátum él egymás m
 
 | Alak | Hol | Példa |
 |---|---|---|
-| **magyar kanonikus** (ez a séma alakja) | `TAHOT_kivonat.tsv`, `TAGNT_kivonat.tsv`, `TSK_kereszthivatkozasok.tsv`, `Karoli_1908.tsv`, `LXX_kivonat_*.tsv` | `1Móz 1:1` |
+| **magyar kanonikus** (ez a séma alakja) | `TAHOT_kivonat.tsv`, `TAGNT_kivonat.tsv`, `TSK_kereszthivatkozasok.tsv`, `Karoli_1908.tsv`, `LXX_OS/*.tsv` (`igehely_karoli` oszlop) | `1Móz 1:1` |
 | STEPBible-pontozott | `Karoli_kereszthivatkozasok.tsv`, `Karoli_Strong_kivonat.tsv`, `TIPNR_kivonat.tsv` | `Gen.1.1` |
 
 Az `adat/` réteg **kizárólag a magyar kanonikus alakot** használja. Indok: a `lekerdez.py`
@@ -357,7 +357,7 @@ Kulcs: `study_tipus` + `dataset`. A terv 4.3 mátrixa, négy study-típusra kife
 |---|---|
 | `study_tipus` | `bovitett` \| `tematikus` \| `melyelemzes` \| `lexikon_oldal` |
 | `dataset` | a dataset rövid neve (21 érték) |
-| `fajl` | a dataset útvonala; glob is lehet (`konkordancia/LXX_kivonat_*.tsv`), üres, ha `allapot=hianyzik` |
+| `fajl` | a dataset útvonala; glob is lehet (`konkordancia/LXX_OS/*.tsv`), üres, ha `allapot=hianyzik` |
 | `kotelezoseg` | `mindig` \| `felteteles` \| `ajanlott` \| `oroklott` |
 | `feltetel` | mikor válik kötelezővé a `felteteles` sor; `—`, ha nem feltételes |
 | `allapot` | `elerheto` \| `korlatos` \| `hianyzik` \| `generalt_nezet` |
@@ -857,9 +857,8 @@ vélemény**: kereskedelmi vagy nyilvános kiadás előtt jogásznak kell átné
 
 **Ez a licenc egyetlen forrása.** Minden generált nézetnek (render, törzscikk, lexikonoldal,
 nyilvános kiadás) ebből kell olvasnia; a licenc-besorolás másutt (kódkonstans, README-mondat)
-legfeljebb tükör, és ha ellentmond, **ez a tábla az irányadó**. (A `lexikon_general.py`
-`LICENC`-konstansához és a `TISZTAZATLAN_SZOTARAK`-hoz az F24 nem nyúlt; az átállás az N9
-lezárása, l. lent.)
+legfeljebb tükör, és ha ellentmond, **ez a tábla az irányadó**. (A `lexikon_general.py` a licenc-állapotot és a rövid címkét innen olvassa; a `LICENC`-konstans és a
+`TISZTAZATLAN_SZOTARAK` megszűnt: F42 / DT-F42g, N9 lezárva, l. lent.)
 
 Kulcs: `dataset`. Fejlécsorok `#`-tel; olvasás `split('\t')`.
 
@@ -874,6 +873,7 @@ Kulcs: `dataset`. Fejlécsorok `#`-tel; olvasás `split('\t')`.
 | `kotelezo_megjeloles` | a kötelező forrásmegjelölés **szó szerint**, ha a forrás megad ilyet; egyébként üres |
 | `allapot` | `tisztazott` (a licenc a forrás saját dokumentumából, megadott helyen igazolt) \| `kozkincs` (F33 / DT-F33d; feltételei a 2. szabályban) \| `tisztazatlan` |
 | `megjegyzes` | tudnivaló; `javaslat:` kezdetű mondat = eltérés vagy javasolt teendő (nem döntés) |
+| `cimke` | zárt (F42 / DT-F42g): a generált nézetekben megjelenő rövid licenc-címke; **kötelező minden sorra**. Értékek: `közkincs` \| `CC0 1.0` \| `CC BY 4.0` \| `CC BY-SA 4.0` \| `© Mounce 1993` \| `projekt-adat` \| `tisztázatlan`. Szabály: `allapot=tisztazatlan` sor címkéje `tisztázatlan` (kivétel: a `projekt_adat` sor, címkéje `projekt-adat`); `tisztazott` és `kozkincs` sor címkéje a `licenc` oszlop szerinti rövid név. Új típusú licencnél a címke-értékkészlet bővítése SEMA-változtatás. A tábla **utolsó** oszlopa. |
 
 **Két bővítés a briefhez képest.** A `kereskedelmi` és a `share_alike` oszlop a
 `tisztazatlan` értéket is felveszi: egy ismeretlen licencű forrásnál sem `igen`, sem `nem`
@@ -912,17 +912,13 @@ licenc-szövegen túli feltételt jelöl (pl. védjegy-szabály, UK Crown-jog).
 3. A `projekt_adat` sor a repó saját adatáé; a repónak nincs LICENSE-fájlja, tehát a
    kimeneti réteg licence nyitott kérdés (DT-F24).
 
-**N9 (a licenc-besorolás kettős forrása) lezárásának javaslata.** A `NYITOTT_FELADATOK.md`
-N9 tétele szerint a besorolás a `lexikon_general.py` `LICENC`-konstansában és a
-`TISZTAZATLAN_SZOTARAK` halmazban él. A `licencek.tsv` után a lezárás: (1) a generátor
-`LICENC` dict-je a `licencek.tsv` `dataset` → `licenc` leképezéséből töltődik (a lexikon
-szótárkulcsai megegyeznek a `dataset` azonosítókkal, kivéve `UBS` és `projekt-adat`:
-ezekre kis megfeleltetés kell); (2) `TISZTAZATLAN_SZOTARAK = {d for d in licencek if allapot == 'tisztazatlan'}`,
-vagyis a halmaz a tábla `allapot` oszlopából származik, nem kézzel áll; (3) a konstans és a
-tábla összevetése CI-ellenőrzés (E-szabály) legyen. A mai konstans és a tábla eltérései:
-`Thayer`, `LSJ`, `SECE_G`, `SECE_H`, `MCGED`, `TSK`, `BDB`, `LXX_OS` és a `projekt-adat` kulcs (a táblában `projekt_adat`) a konstansban besorolt, a táblában
-`tisztazatlan` — ezek (2) után a halmazba kerülnének, és a generátor tisztázatlan-jelölést
-adna rájuk. Ez az F24 hatókörén kívüli kód- és render-változás, ezért külön tétel.
+**N9 (a licenc-besorolás kettős forrása): lezárva (F42 / DT-F42g, 2026-10-05).** A generátor (`eszkozok/lexikon_general.py`) a licenc-állapotot (`allapot`) és a megjelenő rövid címkét (`cimke`) ebből a táblából olvassa; a kódban nincs licenc-konstans, és nincs alapértelmezett érték.
+
+- A generátor szótár- és adatkulcsai a `dataset` azonosítók (pl. `BDB`, `TBESG`, `Karoli_KH`, `LXX_OS`, `UBS_DNTG`, `projekt_adat`). **Ha egy kulcsnak nincs sora a táblában, vagy a sor `cimke` mezője üres, a generátor hibával áll meg** (`SystemExit`, a kulcs és a fájl megnevezésével).
+- Leképezés: `tisztazott` és `kozkincs` állapotú sor: nincs tisztázatlan-jelölés; `tisztazatlan` állapotú sor: van jelölés (a generátor motívumonkénti összegző sora, `tisztázatlan licencű forrás érintett-e`, a `szocikkek` blokk szótárkulcsaira).
+- A `cimke` csak a nézetek rövid címkéje; a kötelező forrásmegjelölések szó szerinti szövege a `kotelezo_megjeloles` mezőben áll (a Mounce- és LSJ-megjelölést a generátor ma is saját mondatként írja, az LSJ-mondat licencneve a táblából jön).
+- A mai kód és tábla eltérései, amelyek a bevezetéskor megszűntek: az `UBS` kulcs (a táblában `UBS_DBH` és `UBS_DNTG`), a `projekt-adat` / `projekt_adat` névkülönbség, az LSJ címkéje (CC BY-SA 3.0 → 4.0, Perseus nyilatkozata szerint).
+- A tábla és a generátor együttes helyességét a `python eszkozok/general.py --cel lexikon --ellenoriz` futása mutatja (hiányzó sor = hiba).
 
 ### 2.20 `adat/karoli_strong/parok_<könyv>.tsv` és `szavak_<könyv>.tsv` — Károli–Strong párosítás könyvenként
 

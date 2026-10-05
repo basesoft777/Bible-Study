@@ -20,6 +20,9 @@ import sys
 from pathlib import Path
 from collections import defaultdict
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import utvonalak as _U  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 GEN_DIR = ROOT / "genezis"
 KONK_DIR = ROOT / "konkordancia"
@@ -81,7 +84,7 @@ def load_strong_dict():
 def load_tbesh_dict():
     """TBESH.txt -> {H szam: elso Meaning mezo (a G-vegzodesu alapbejegyzes)}"""
     d = {}
-    with open(KONK_DIR / "TBESH.txt", encoding="utf-8-sig") as f:
+    with open(_U.kotelezo(_U.TBESH_TXT), encoding="utf-8-sig") as f:
         lines = f.readlines()
     start = None
     for i, line in enumerate(lines):
@@ -132,14 +135,19 @@ def count_senses_bdb(text):
 
 
 def load_lxx_genesis():
-    """LXX_kivonat_Genezis.tsv -> {Igehely (pl. '1Móz 2:7'): set(G szamok)}"""
+    """LXX_OS/genesis.tsv -> {Igehely (pl. '1Móz 2:7'): set(G szamok)}
+    (F42: a régi LXX_kivonat_Genezis.tsv kivezetve; a Károli-igehely az `igehely_karoli`,
+    a Strong G####-alakban, mint a TAGNT-ban)."""
     d = defaultdict(set)
-    for row in _tsv_data_rows(KONK_DIR / "LXX_kivonat_Genezis.tsv"):
-        if len(row) < 2:
+    with open(KONK_DIR / "LXX_OS" / "genesis.tsv", encoding="utf-8") as f:
+        sorok = [ln.rstrip("\n").rstrip("\r") for ln in f if ln.strip() and not ln.startswith("#")]
+    fejlec = sorok[0].split("\t")
+    i_k, i_s = fejlec.index("igehely_karoli"), fejlec.index("strong")
+    for ln in sorok[1:]:
+        row = ln.split("\t")
+        if len(row) <= max(i_k, i_s) or not row[i_k] or not row[i_s].strip():
             continue
-        verse, strong = row[0], row[1]
-        if GREEK_STRONG_RE.fullmatch(strong.strip()):
-            d[verse.strip()].add(strong.strip())
+        d[row[i_k].strip()].add("G%04d" % int("".join(ch for ch in row[i_s] if ch.isdigit())))
     return d
 
 

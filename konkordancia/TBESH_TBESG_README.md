@@ -47,7 +47,7 @@ Egy alap Strong-szám gyakran **több sort** kap. Például `H7121` (קָרָא)
 | `H7121I` | call out/shout/announce |
 | `H7121J` | read out/dictated |
 
-Mind a négy alsor **ugyanazt az alap sense-listát ismétli** (1) to call, call out, recite, read, cry out, proclaim... stb.), csak eltérő súlyponti gloss-szal. Ezek tehát nem különböző jelentések, hanem ugyanannak a szónak különböző kontextus-specifikus felhasználási súlypontjai.
+Mind a négy alsor **ugyanazt az alap jelentéslistát ismétli** (a H7121 `Meaning` mezője; a szöveget itt nem idézzük, F42 / DT-F42a), csak eltérő súlyponti gloss-szal. Ezek tehát nem különböző jelentések, hanem ugyanannak a szónak különböző kontextus-specifikus felhasználási súlypontjai.
 
 **Munkafolyamat-szabály minden TBESH/TBESG-alapú grep-nél:**
 
@@ -88,6 +88,20 @@ Mindkét fájl tab-elválasztott (`\t`), UTF-8 kódolású szöveges fájl. A t�
 - **Nyelvtani elemek (TBESH vége felé, H9000+ tartomány):** ragok, névmási végződések, írásjelek önálló "Strong-számként" (pl. `H9020`–`H9049`) — ezek nem szótári tételek, hanem morfológiai komponensek.
 
 ## `TBESH_konszolidalt.tsv` — a TBESH.txt és a TBESH.lexicon uniója (F05_SZOTAR_BRIEF.md S4)
+
+**F42 (DT-F42b, DT-F42e): a fájl és a `TBESH.lexicon` már nincs verziózva.** Helyük `konkordancia/_nyers/tbesh/` (gitignore-olt, csak helyben élnek). A `TBESH.txt` a repóban marad; ha elveszne vagy megsérülne, `python eszkozok/forras_letolt.py` sha256-tal ellenőrzötten visszaállítja (STEPBible-Data `b99716b0`). A `TBESH.lexicon` forrása (Google Drive, biblematedata) nem rögzíthető commitra, a szkript nem tölti le; a helyi példány sha256-ja `5a8e306ef974a14a7a691f0cf1b6302337034387ff85ea5edf576d75e327ce32`. A konszolidált tábla ebből és a `TBESH.txt`-ből generálódik (`eszkozok/tbesh_konszolidalt_import.py`); kódolvasója nincs. Hiányzó bemenetnél az import egyértelmű hibát ad.
+
+**A `TBESH.lexicon` tartalma nem pótolható a `TBESH.txt`-ből.** A fenti mérés szerint 542 sor csak a `.lexicon`-ban van meg, és 5 783 sornál a `.lexicon` szövege a bővebb. A lexikonoldalak erre nem épülnek: a generátor a TBESH-ből csak a lemmát és az átírást olvassa, a `.txt`-ből. A többlettartalom ezért csak a helyi példányban és a git-történetben él.
+
+**Visszaállítás a git-történetből** (új klónban vagy cloud sessionben is működik; a `08d88dc` commitból (az `origin/main` utolsó példánya)):
+
+```bash
+mkdir -p konkordancia/_nyers/tbesh
+git show 08d88dc:konkordancia/lexikonok_nyers/TBESH.lexicon > konkordancia/_nyers/tbesh/TBESH.lexicon
+python eszkozok/tbesh_konszolidalt_import.py
+```
+
+A visszaállított fájl sha256-ja egyezik a fenti értékkel (`5a8e306e…ce32`; proveniencia: `manual`, mérve 2026-10-05 `sha256sum`-mal, nem lekérdezés). A konszolidált táblát a harmadik sor generálja újra; közvetlenül is visszahozható: `git show 55c407a:konkordancia/TBESH_konszolidalt.tsv`. Javasolt a `konkordancia/_nyers/tbesh/` mappáról saját, privát mentést tartani. A nyilvános repóba a fájl nem kerülhet vissza.
 
 **Generált** (`eszkozok/tbesh_konszolidalt_import.py`, kézzel nem szerkesztendő):
 **unió, nem csere** — egyik forrás sem váltja ki a másikat, mert szócikkenként

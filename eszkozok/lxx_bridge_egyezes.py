@@ -22,7 +22,6 @@ GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BRIDGE = os.path.join(GYOKER, 'adat', 'kulso', 'lxx_bridge.tsv')
 DONTESEK = os.path.join(GYOKER, 'adat', 'lxx_dontesek.tsv')
 OS_MAPPA = os.path.join(GYOKER, 'konkordancia', 'LXX_OS')
-KIVONAT_GLOB = os.path.join(GYOKER, 'konkordancia', 'LXX_kivonat_*.tsv')
 SZOTAR = os.path.join(GYOKER, 'konkordancia', 'Strong_szotar.tsv')
 GRAMM = os.path.join(GYOKER, 'adat', 'grammatikai_strongok.tsv')
 KIMENET = os.path.join(GYOKER, 'naplok', 'LXX_BRIDGE_egyezes.tsv')
@@ -115,21 +114,6 @@ def os_betolt(kellenek):
     return idx
 
 
-def kivonat_betolt(kellenek):
-    """regi LXX_kivonat_*: Karoli-igehely -> [Strong-int]; csak a kert versek."""
-    idx = {}
-    for ut in sorted(glob.glob(KIVONAT_GLOB)):
-        if ut.endswith('README.md'):
-            continue
-        it = sorok(ut)
-        next(it)
-        for r in it:
-            if len(r) > 1 and r[0] in kellenek:
-                s = norm(r[1])
-                idx.setdefault(r[0], []).append(s)
-    return idx
-
-
 def szotar_betolt():
     d = {}
     for r in sorok(SZOTAR):
@@ -174,7 +158,6 @@ def fo():
         for _, v in lst:
             kellenek.add(v)
     os_idx = os_betolt(kellenek)
-    kiv_idx = kivonat_betolt({d['igehely'] for d in dontesek})
     szotar = szotar_betolt()
     gramm = gramm_betolt()
 
@@ -193,15 +176,10 @@ def fo():
             for _, lm, s, _ in tokenek:
                 if s is not None and s not in lemma_g:
                     lemma_g[s] = lm
-        elif d['igehely'] in kiv_idx:
-            forras = 'LXX_kivonat'
-            vers_g = {s for s in kiv_idx[d['igehely']] if s is not None}
-            hiany = sum(1 for s in kiv_idx[d['igehely']] if s is None)
-            lemma_g = {}
         else:
             forras, vers_g, hiany, lemma_g = 'nincs', set(), '', {}
-        lefed = 'OS+kivonat' if (tokenek and d['igehely'] in kiv_idx) else (
-            'csak_OS' if tokenek else ('csak_kivonat' if d['igehely'] in kiv_idx else 'egyik_sem'))
+        # F42 / DT-F42f: a régi LXX_kivonat kivezetve; a lefedettség csak az LXX_OS-ből áll.
+        lefed = 'csak_OS' if tokenek else 'egyik_sem'
 
         jeloltek = parok.get(hs, []) if hs is not None else []
         bridge_gs = {s for s, _ in jeloltek}

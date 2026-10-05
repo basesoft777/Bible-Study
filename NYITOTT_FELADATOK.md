@@ -86,7 +86,7 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   következő könyvtáras célnál megismétlődne. Eldöntendő: cél-képesség leíró
   (egyfájlos/könyvtáras, élesíthető, saját jelentés) váltsa-e ki mindhármat.
 
-- **N9 — A licenc-besorolás kettős forrása.** *(ÚJ, F6 zárás után, 2026.09.20)*
+- **N9 — A licenc-besorolás kettős forrása. LEZÁRVA (F42.7, 2026.10.05; DT-F42g).** *(ÚJ, F6 zárás után, 2026.09.20)*
   Az F6.5b után a besorolás két helyen áll: a `lexikon_general.py`
   licenc-konstansában és a `TISZTAZATLAN_SZOTARAK` halmazban (ez utóbbi most
   üres, magyarázó kommenttel). Egy új, tisztázatlan licencű forrásnál a kettő
@@ -221,7 +221,8 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   **Megoldás (N16_BRIEF.md):** a két sor a study kapcsolat-táblája alapján, `scope=manual` provenienciával, `betolt.py beepit` úton betöltve (29 → 31 sor); a Jóel 2:32 → Róm 10:14 kapcsolat a study szerinti három sorra bontva (23 → 25 kapcsolat). A lexikon-oldal ApCsel/Róm 10:13 ⚠ ELTÉRÉS-jelölései feloldva; a pilot szótári anyaga (2–4. szakasz) a 2/b. kézi alszakaszba átemelve. L. `N16.0`–`N16.5` commitok.
 
 - **N17 — A régi `LXX_kivonat_Zsoltarok.tsv` Igehely-címkéi gyanúsan a KJV
-  (angol) versszámozást viselhetik Károli helyett, cím-viselő zsoltároknál.**
+  (angol) versszámozást viselhetik Károli helyett, cím-viselő zsoltároknál. LEZÁRVA (F42.M5, 2026.10.05).**
+  *Megoldás:* a gyanú igazolódott (a régi zsoltár-kivonat egy verssel eltolt: 739 zsoltárvers egyezik az LXX_OS következő versével, `naplok/FORRASKIVEZETES_M5_eltereslista.tsv`, kategória `zsoltar_eltolas`); a régi kivonat kivezetve, az `lxx-hid` az `LXX_OS`-ből olvas (javítja az eltolást). *Tartalmi kérdés, nem javítva:* a régi kivonatra épült állítások: `adat/auditok.tsv` TEREMT-002 B4 sorai (Zsolt 107:40, 104:30, 33:6, 80:6, 80:7; 32., 82., 85., 160., 163. sor) és a másolat `naplok/T1_TEREMT002_auditok_munkalap.tsv`; `tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md` (LXX-egyeztetés Zsolt 14:1, 53:1), `tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md` (92. sor), `motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md` (370. sor). Ezek újraellenőrzése külön döntés.
   *(ÚJ, LEXV2_1 V1.3a független ellenőrzése, 2026.09.22)* A `LEXV2_1_BRIEF.md`
   V1.3a tétele során kiderült: a `konkordancia/LXX_versificacios_terkep.tsv`
   a studybible.info saját belső oldal-verszámozására épült, ami cím-viselő
@@ -655,6 +656,10 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 <!-- GENERÁLT-VÉGE: nyitott -->
 
 ## Lezárva
+### 2026.10.05 (F42_FORRASKIVEZETES_BRIEF.md — N9 lezárva, DT-F42g):
+* N9 — a licenc-besorolás kettős forrása. **LEZÁRVA (F42.7, 2026.10.05; felhasználó, DT-F42g):** a `lexikon_general.py` `LICENC`-konstansa és a `TISZTAZATLAN_SZOTARAK` megszűnt; a licenc-állapot és a rövid címke az `adat/licencek.tsv`-ből jön (új, zárt `cimke` oszlop, SEMA 2.19); hiányzó sor vagy üres címke hiba, alapértelmezett érték nincs. Várt render-változás: az LSJ-címke CC BY-SA 3.0 → 4.0 (Perseus nyilatkozata).
+  *Proveniencia: scope=adat/licencek.tsv + eszkozok/lexikon_general.py | forras=general.py --cel lexikon (a 7 érintetlen oldal renderje bájtra azonos a változtatás előtti renderrel) | ts=2026-10-05.*
+
 ### 2026.10.04 (F43_LXX_BRIDGE_BRIEF.md — N29 lezárva, a brief D7 döntése szerint):
 * N29 — a teljes KJV/ASV-forrás keresése (FJ-ellenőrzés, 2026.09.25). **LEZÁRVA (F43, 2026.10.04; felhasználó):** a KJV-ág teljesült az F19-ben (`konkordancia/KJV_Strongs_teljes.tsv`, 349 308 sor, 31 099 címkés vers, Public Domain; állapot: `importált, javaslat`). Az ASV-ág a D7 szerint megszűnik: az ASV-t nem importáljuk (felhasználó, 2026.10.02), mert a szerepmátrix 9. szerepét a KJV tölti be, és az ASV-nek nincs szerepe. Az eBible-ASV forráshibás volt (F19.7, DT19). Ha mégis igény lenne rá, a megnevezett pótlás a luvlylavnder ASV-Strongs (CC0, 31 086 vers). *(F19 (#19), DT19; `F43_LXX_BRIDGE_BRIEF.md` D7; `naplok/ELLENOR_F19.md`)*
   *Proveniencia: scope=konkordancia/KJV_Strongs_teljes.tsv | forras=eszkozok/f19_ellenorzes.py | ts=2026-09-30.*

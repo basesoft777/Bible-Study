@@ -5,12 +5,16 @@ kod: FORRASKIVEZETES
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+munka: ertelmezo
+allapot: lezarva
+pr: 176
+lezarva_osszegzes: "draft PR #176, merge a felhasználótól; zárójelentés: naplok/FORRASKIVEZETES_zaras.md"
+ag: claude/forraskivezetes
 ad: A TBESH-család a gitignore-olt _nyers/ alatt, letöltő szkripttel. Az LXX_kivonat kivezetve. A generátor licencjelölése az adat/licencek.tsv-ből olvas.
-kovetkezo: a lexikonoldalak újrarenderelése a frissített licencjelöléssel; a BDB-fordítás (az előfeltétele a tisztázott licencforrás)
+kovetkezo: "Te: a draft PR átnézése és merge (PR #176); utána a #36 renderelje újra a lexikonoldalakat és a törzscikkeket (HODIT-001, elavult törzscikkek)"
 fugg: [33, 35]
 olvas: [adat/licencek.tsv, adat/SEMA.md, adat/lexikon_hivatkozasok.tsv, DONTESEK.md, NYITOTT_FELADATOK.md, konkordancia/README.md, .gitignore]
-ir: [eszkozok/forras_letolt.py, eszkozok/utvonalak.py, eszkozok/cremer_ocr_javit.py, eszkozok/istentiszt_2b_d1_toltes.py, eszkozok/kockazat_szures_18_tanulmany.py, eszkozok/lexikon_general.py, eszkozok/tbesh_konszolidalt_import.py, konkordancia/TBESH.txt, konkordancia/lexikonok_nyers/TBESH.lexicon, konkordancia/TBESH_konszolidalt.tsv, konkordancia/README.md, adat/licencek.tsv, adat/lexikon_hivatkozasok.tsv, adat/SEMA.md, NYITOTT_FELADATOK.md, DONTESEK.md, naplok/FORRASKIVEZETES_M0.md, naplok/FORRASKIVEZETES_zaras.md, naplok/ELLENOR_FORRASKIVEZETES.md]
+ir: [eszkozok/forras_letolt.py, eszkozok/utvonalak.py, eszkozok/cremer_ocr_javit.py, eszkozok/istentiszt_2b_d1_toltes.py, eszkozok/kockazat_szures_18_tanulmany.py, eszkozok/lexikon_general.py, eszkozok/tbesh_konszolidalt_import.py, konkordancia/TBESH.txt, konkordancia/lexikonok_nyers/TBESH.lexicon, konkordancia/TBESH_konszolidalt.tsv, konkordancia/README.md, adat/licencek.tsv, adat/lexikon_hivatkozasok.tsv, adat/SEMA.md, NYITOTT_FELADATOK.md, DONTESEK.md, naplok/FORRASKIVEZETES_M0.md, naplok/FORRASKIVEZETES_zaras.md, naplok/ELLENOR_FORRASKIVEZETES.md, .gitignore, eszkozok/lekerdez.py, eszkozok/t1_teremt002_munkalap.py, eszkozok/lxx_osszevetes.py, eszkozok/lxx_kivonat_fetch.py, eszkozok/lxx_kivonat_fetch_v2.py, eszkozok/f08/f08_dontesek.py, eszkozok/f08/f08_dt_sor.py, eszkozok/f17/macula_import.py, eszkozok/istentiszt_2b_d3_szerkeszt.py, "konkordancia/LXX_kivonat_*.tsv", konkordancia/LXX_kivonat_README.md, adat/datasetek.tsv, adat/forditasok.tsv, tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md, konkordancia/TBESH_TBESG_README.md, konkordancia/lexikonok_nyers/README.md, konkordancia/Uj_lexikon_fajlok_2026-09-07.md, konkordancia/LXX_OS/README.md, eszkozok/lxx_os_import.py, sablonok/Kockazat_szures_riport_2026-09-03.md, konkordancia/_nyers/tbesh/TBESH.lexicon, konkordancia/_nyers/tbesh/TBESH_konszolidalt.tsv, eszkozok/lxx_bridge_egyezes.py, naplok/LXX_BRIDGE_egyezes.tsv, naplok/FORRASKIVEZETES_M5_eltereslista.tsv, naplok/FORRASKIVEZETES_M5_M7.md, konkordancia/LXX_OS/2-esdras.tsv, konkordancia/LXX_OS/esther-greek.tsv, naplok/KAROLI_KK1_fejezetosztaly_general.py, naplok/KAROLI_KK1b_fejezetosztaly_general.py, naplok/KAROLI_KK1b_kulcstabla_general.py, naplok/KAROLI_KK2_kulcstabla_general.py]
 ---
 
 # Forrásfájlok kivezetése és a licencállapot egyetlen forrása
@@ -175,6 +179,7 @@ Az M0 ⛔ döntése szerint. Minden javítás a forrásrétegben történik, ut�
 | v1 | 2026-10-02 | A KJV Strong-címkéinek (CrossWire) licencellenőrzése bekerül. | #33 nyitott pontja |
 | v1 | 2026-10-02 | A licencjelölés a `licencek.tsv`-ből jön; a hiányzó sor hibát ad, nincs alapértelmezett érték. | N9 |
 | v1 | 2026-10-02 | Egyetlen ⛔ megállás van (M0), minden kérdés egy csokorban. | munkamód |
+| v2 | 2026-10-05 | Az M0 kérdéseire a felhasználó minden javaslatot elfogadott (DT-F42a–i): a `TBESH.txt` a repóban marad, csak a `.lexicon` és a konszolidált tábla kerül a `_nyers/tbesh/` alá (DT-F42e); az H7121-részlet kiváltása BDB-vel (a); `cimke` oszlop a `licencek.tsv`-ben (g); az M5 csak a #43 merge-e után fut (f). | DT-F42a–i |
 
 ## Nyitó prompt
 

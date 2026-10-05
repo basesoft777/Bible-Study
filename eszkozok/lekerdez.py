@@ -98,7 +98,7 @@ IGEHELY_STEP_RE = re.compile(r"^([1-3]?[A-Za-z]+)\.(\d+)\.(\d+)$")
 # F28 DT25 (d) — a „Sir” / „JSir” kezelése CSAK a scope-olvasásban.
 # A Konyv_normalizalo_tabla.tsv-ben a Jeremiás siralmai Károli-rövidítése JSir
 # lett (DT24 a), a magyar kulcsú adattáblák (TAHOT_kivonat, TSK, Karoli_1908,
-# LXX_kivonat_Siralmak) viszont továbbra is a „Sir” alakot használják, a
+# LXX_OS igehely_karoli) viszont továbbra is a „Sir” alakot használják, a
 # STEPBible-kulcsúak (Karoli_kereszthivatkozasok) a „Lam”-ot. Az adatbeolvasás
 # (parse_igehely, load_*) NEM változik: a parancssori scope-ot fordítjuk az
 # adat alakjára. Így a rögzített proveniencia (`scope=range:Sir 2:8`,
@@ -441,44 +441,47 @@ def cmd_igealak(args):
     print(f"proveniencia: {prov}")
 
 
-def _lxx_filename(magyar_konyv):
-    mapping = {
-        "1Móz": "Genezis", "2Móz": "Exodus", "3Móz": "Leviticus", "4Móz": "Numeri",
-        "5Móz": "Deuteronomium", "Józs": "Jozsue", "Bír": "Birak", "Ruth": "Ruth",
-        "1Sám": "Samuel_1", "2Sám": "Samuel_2", "1Kir": "Kiralyok_1", "2Kir": "Kiralyok_2",
-        "1Krón": "Kronikak_1", "2Krón": "Kronikak_2", "Ezsd": "Ezsdras", "Neh": "Nehemias",
-        "Eszt": "Eszter", "Jób": "Job", "Zsolt": "Zsoltarok", "Péld": "Peldabeszedek",
-        "Préd": "Predikator", "Én": "Enekek_Eneke", "Ézs": "Ezsaias", "Jer": "Jeremias",
-        "Sir": "Siralmak", "Ez": "Ezekiel", "Dán": "Daniel", "Hós": "Hoseas",
-        "Jóel": "Joel", "Ámós": "Amos", "Abd": "Abdias", "Jón": "Jonas", "Mik": "Mikeas",
-        "Náh": "Nahum", "Hab": "Habakuk", "Sof": "Sofonias", "Hag": "Aggeus",
-        "Zak": "Zakarias", "Mal": "Malakias",
-    }
-    return mapping.get(magyar_konyv)
-
-
 def cmd_lxx_hid(args):
-    """6. lépés — LXX-híd: egy ÓSZ-igehely görög (LXX) megfelelője, és annak ÚSZ-előfordulásai."""
+    """6. lépés — LXX-híd: egy ÓSZ-igehely görög (LXX) megfelelője, és annak ÚSZ-előfordulásai.
+
+    F42 / DT-F42f: a forrás a `konkordancia/LXX_OS/` (lxx-morph + GreekWordList, CC BY 4.0), a
+    Károli-igehelyet az `igehely_karoli` oszlop adja; a szövegváltozatot a
+    `lxx_os_import.ELSODLEGES_SLUG` választja. (A régi `LXX_kivonat_*.tsv` kivezetve.)
+    A Strong G####-alakban áll (a TAGNT-hoz); üres, ha a GreekWordList nem ad Strongot."""
+    import lxx_os_import as OS
+
     igehely = args.igehely.strip()
     adat_igehely = scope_adat_igehely(igehely)
     book, ch, v = parse_igehely(adat_igehely)
-    fname = _lxx_filename(book)
-    if fname is None:
-        print(f"Nincs LXX-kivonat ehhez a könyvhöz: {book}", file=sys.stderr)
+    slug = OS.elsodleges_slug(book)
+    if slug is None:
+        print(f"Nincs LXX_OS-fájl ehhez a könyvhöz: {book}", file=sys.stderr)
         sys.exit(1)
-    path = KONK / f"LXX_kivonat_{fname}.tsv"
+    path = KONK / "LXX_OS" / f"{slug}.tsv"
     if not path.exists():
         print(f"Hiányzó LXX-fájl: {path}", file=sys.stderr)
         sys.exit(1)
 
-    rows = read_tsv(path)
-    hits = [r for r in rows if r["Igehely"] == adat_igehely]
+    rows = read_tsv(path, skip_comments=True)
+    hits = [r for r in rows if r["igehely_karoli"] == adat_igehely]
     print(f"# LXX-híd {igehely} — {len(hits)} görög szó-előfordulás")
+    if hits:
+        print(f"# LXX-vers: {hits[0]['igehely_lxx']} (karoli_ok={hits[0]['karoli_ok'] or 'egyező'})")
+
+    def strong_alak(s):
+        # A GreekWordList néhány Strongja betűutótagos (pl. 3924a): a kimenet megtartja, a
+        # TAGNT-keresés a betű nélküli G####-alakot használja.
+        m = re.match(r"^(\d+)([a-z]*)$", s or "")
+        return f"G{int(m.group(1)):04d}{m.group(2)}" if m else ""
+
+    def strong_tagnt(s):
+        return re.sub(r"[a-z]+$", "", strong_alak(s))
+
     for r in hits:
-        print(f"{r['Strong-szám']}\t{r['Görög szóalak']}\t{r.get('Morfológiai kód', '')}")
+        print(f"{strong_alak(r['strong'])}\t{r['szoalak']}\t{r.get('morf', '')}")
 
     tagnt = load_tagnt()
-    strongok = sorted({r["Strong-szám"] for r in hits})
+    strongok = sorted({strong_tagnt(r["strong"]) for r in hits} - {""})
     print(f"# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:")
     for s in strongok:
         nt_hits = sorted({r["Igehely"] for r in tagnt if r["Strong-szám"] == s},
@@ -486,7 +489,7 @@ def cmd_lxx_hid(args):
         print(f"  {s}: {len(nt_hits)} ÚSZ-vers — {', '.join(nt_hits[:10])}"
               + (" ..." if len(nt_hits) > 10 else ""))
 
-    prov = (f"scope=range:{igehely} | forras={path.name}+TAGNT_kivonat.tsv "
+    prov = (f"scope=range:{igehely} | forras=LXX_OS/{path.name}+TAGNT_kivonat.tsv "
             f"| n={len(hits)} | ts={ts()}")
     print(f"proveniencia: {prov}")
 

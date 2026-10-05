@@ -211,15 +211,9 @@ legelején azt jelzi: nincs tovább vezethető etimológia.
 
 *(Az ἐπικαλέω (epikaleó) LSJ-szócikke maga csak átirányít a καλέω (kaleó) alapigéhez — klasszikus lexikográfiai gyakorlat összetett igéknél, önálló LSJ-tartalom nincs rá.)*
 
-#### A héber oldal kiegészítő adatai (TBESH-konszolidáció + SECE)
+#### A héber oldal kiegészítő adatai (BDB + SECE)
 
-**TBESH.lexicon (SQLite, konszolidált verzió)** — H7121 itt **egyetlen, tiszta bejegyzésben** jelenik meg:
-
-【NAPLO: 2026.09.07-től elérhető; a korábban dokumentált "többsoros Strong-szám" probléma (H7121 4 alsora a szöveges TBESH.txt-ben) ezzel megoldódott.】
-
-> קָרָא [H:V] to call **1)** to call, call out, recite, read, cry out, proclaim **1a)** (Qal) **1a1)** to call, cry, utter a loud sound **1a2) to call unto, cry (for help), call (with name of God)** **1a3)** to proclaim **1a4)** to read aloud, read (to oneself), read **1a5)** to summon, invite, call for, call and commission, appoint, call and endow **1a6)** to call, name, give name to, call by **1b)** (Niphal) ... **1c)** (Pual) to be called, be named, be called out, be chosen
-
-**🇭🇺 Magyarul (TBESH):** קָרָא (kárá) [héber ige] hívni 1) hívni, kiáltani, recitálni, olvasni, felkiáltani, kihirdetni 1a) (Qal) 1a1) hívni, kiáltani, hangos hangot adni 1a2) hívni valakit, kiáltani (segítségért), hívni (Isten nevével) 1a3) kihirdetni 1a4) hangosan felolvasni, olvasni (magában), olvasni 1a5) hívatni, meghívni, hívni valakit, elhívni és megbízni, kinevezni, elhívni és felruházni 1a6) hívni, nevezni, nevet adni, néven hívni 1b) (Niphal) … 1c) (Pual) hívatni, neveztetni, kihívatni, kiválasztatni
+**BDB H7121 (קָרָא, kárá)** — a jelentés-ágak (2.c „az Úr nevével hívni”, 3. „kihirdetni”) az 1. szakasz táblázatában és a lexikonoldal BDB-sorain szerepelnek; a teljes szócikk a BDB-ben van. A TBESH-konszolidáció rövid meghatározása (Online Bible-eredetű) kikerült a szövegből (DT-F42a).
 
 **SECE H7121 — teljes görög-megfelelő lista (a teljes LXX-en át):** ἄγω (agó), ἀναβοάω (anaboaó), ἀναγγέλλω (anangelló), ἀναγινώσκω (anaginószkó), ἀνακράζω (anakradzó), ἀνοίγω (anoigó), ..., **βοάω** (boaó), ..., ἐγκαλέω (enkaleó), ..., **ἐπικαλέομαι** (epikaleomai; kétszer is szerepel a listában, jelezve gyakoriságát), ..., **καλέω** (kaleó), κηρύσσω (kérüsszó), κράζω (kradzó), ..., ὀνομάζω (onomadzó), παρακαλέω (parakaleó), προσκαλέομαι (proszkaleomai), ..., φωνέω (fóneó). TWOT-szám: **2063**. GK-szám: **H7924**.
 
@@ -235,7 +229,7 @@ a βοάω (boaó) saját szinonima-magyarázata explicit szembeállítja magát
 egy **tudatos, a szótár által is dokumentált stilisztikai spektrumból**
 választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tól (epikaleomai).
 
-*Források és licencek ehhez az alszakaszhoz:* BDB (Brown–Driver–Briggs) — közkincs; TBESG, TBESH (STEPBible-Data, Abbott-Smith-alapú) — CC BY 4.0; Thayer's Greek-English Lexicon — közkincs; SECE — közkincs; LSJ forrás: Liddell-Scott-Jones, Perseus Digital Library (`lexica` repó), CC BY-SA 3.0.; Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, www.teknia.com/greek-dictionary
+*Források és licencek ehhez az alszakaszhoz:* BDB (Brown–Driver–Briggs) — közkincs; TBESG (STEPBible-Data, Abbott-Smith-alapú) — CC BY 4.0; Thayer's Greek-English Lexicon — közkincs; SECE — közkincs; LSJ forrás: Liddell-Scott-Jones, Perseus Digital Library (`lexica` repó), CC BY-SA 3.0.; Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, www.teknia.com/greek-dictionary
 
 <!-- RÉS-VÉGE: 2b -->
 

@@ -50,7 +50,7 @@ text = re.sub('<[^>]+>', ' ', row[0])
   Goodrick-Kohlenberger) — a kettő NEM ugyanaz a szó ugyanarra a
   számra
 - `SECE`: mindkét nyelv egy fájlban (`G####` és `H####` is)
-- `TBESH.lexicon` (ez a fájl): egyetlen, konszolidált bejegyzés
+- `TBESH.lexicon` (F42 óta nem itt van: `konkordancia/_nyers/tbesh/TBESH.lexicon`, gitignore-olt, csak helyben él; ez a leírás a fájlra továbbra is érvényes): egyetlen, konszolidált bejegyzés
   szavanként — ELTÉR a meglévő `TBESH.txt`-től, ahol egy szónak
   akár 4 alsora is lehet
 

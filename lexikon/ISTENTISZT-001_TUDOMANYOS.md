@@ -1,5 +1,6 @@
 <!-- GENERÁLT: general.py --cel lexikon | rések: tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md;motivumlog/lexikon_pilot/ISTENTISZT-001_TUDOMANYOS.md -->
 
+
 # 📖 ISTENTISZT-001 — Segítségül hívni az Úr nevét
 
 ## Kivonat *(kézi)*
@@ -8,7 +9,7 @@ A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá bes�
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#tartalom | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#tartalom | forrás:  | licenc: projekt-adat | ts=2026-10-05 -->
 
 *Ez a blokk a lexikon-oldal 12 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).*
 
@@ -29,7 +30,7 @@ A motívum az ószövetségi קָרָא בְּשֵׁם יְהוָה (kárá bes�
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#jelmagyarazat | forrás:  | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#jelmagyarazat | forrás:  | licenc: projekt-adat | ts=2026-10-05 -->
 
 *Ez a blokk közös, minden lexikon-oldalon szó szerint azonos szöveg (G10).*
 
@@ -59,7 +60,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 ## 1. Előfordulások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditas_ubs.tsv | licenc: projekt-adat, közkincs, CC BY-SA 4.0 | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv | licenc: projekt-adat, közkincs, CC BY-SA 4.0 | ts=2026-10-05 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 32 igehely-sorát fedi az `elofordulasok.tsv`-ből, kanonikus sorrendben, a Károli-szöveggel (1/a) és az UBS-jelentés renderidejű hozzárendelésével (G3).*
 
@@ -328,7 +329,7 @@ Funkció: a formula önálló egyházi azonosító-formulává válik
 
 ## 1/b. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: projekt-adat | ts=2026-10-05 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 0 elutasított/nyitva maradt jelöltjét fedi a `jeloltek.tsv`-ből (G7).*
 
@@ -340,7 +341,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 ## 2. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv | licenc: CC BY 4.0, CC BY-SA 3.0, CC BY-SA 4.0, közkincs | ts=2026-09-23 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#szocikkek | forrás: adat/lexikon_hivatkozasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs | ts=2026-10-05 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 3 Strong-tokenjét fedi, van jelentés-hivatkozással a `lexikon_hivatkozasok.tsv`-ből.*
 
@@ -384,7 +385,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 > c. ׳ק י ׳בְּשֵׁם call with name of ׳י (i.e. use it in invocation): Gen 4:26; 12:8; 2Kin 5:11; Jer 10:25 = Psa 79:6 16t. (1Kin 18:24 of specific appeal to ׳י to display his power), + Isa 65:1 (see Pu`al); with name of Baal 1Kin 18:24-25, 26.
 
-**🇭🇺** c. ׳ק י ׳בְּשֵׁם (k. besém J., azaz kárá besém JHVH) hívni ׳י (J., azaz JHVH) nevével (azaz használni azt a segítségül hívásban): 1Móz 4:26; 12:8; 2Kir 5:11; Jer 10:25 = Zsolt 79:6, összesen 16-szor (1Kir 18:24: annak konkrét kérésére, hogy ׳י (J., azaz JHVH) mutassa meg hatalmát), továbbá Ézs 65:1 (l. Pual); Baál nevével: 1Kir 18:24-25, 26.
+**🇭🇺** c. ׳ק י ׳בְּשֵׁם hívni ׳י nevével (azaz használni azt a segítségül hívásban): 1Móz 4:26; 12:8; 2Kir 5:11; Jer 10:25 = Zsolt 79:6, összesen 16-szor (1Kir 18:24 annak konkrét kérésére, hogy ׳י mutassa meg hatalmát), továbbá Ézs 65:1 (l. Pu`al); Baál nevével 1Kir 18:24-25, 26.
 
 *Forrás: konkordancia/BDB_teljes_unabridged.tsv*
 
@@ -392,17 +393,9 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 > 3 proclaim: a. with accusative of thing procl. Amos 4:5; Gen 41:43; Deut 15:2; Jer 31:6; Lev 25:10 +; ׳ק צוֺם proclaim a fast 1Kin 21:9, 12; Jer 36:9 +, ׳ק י ׳מוֺעֲדֵי Lev 23:2, 4; ׳ק followed by oratio recta [direct speech] Exod 34:6, etc.; followed by ל person Jer 34:8, 15, 17 (twice in verse); Isa 61:1, עַל person (against, concerning) 1Kin 13:4, 32; Jer 49:29; Lam 1:15; proclaim peace to (ל person) Judg 21:13; compare ׳ק לְשָׁלוֺם אֵלֶיהָ Deut 20:10; ׳ק with accusative of congnate meaning with verb מִקְרָא Isa 1:13, הַקְּרִיאָה Jonah 3:2 (+ אֶל).
 
-**🇭🇺** 3 kihirdetni: a. a kihirdetett dolog tárgyesetével: Ámós 4:5; 1Móz 41:43; 5Móz 15:2; Jer 31:6; 3Móz 25:10 és máshol; ׳ק צוֺם (kárá com) böjtöt hirdetni: 1Kir 21:9, 12; Jer 36:9 és máshol; ׳ק י ׳מוֺעֲדֵי (kárá móadé JHVH): 3Móz 23:2, 4; ׳ק (k., azaz kárá) után egyenes beszéd: 2Móz 34:6 stb.; ל (le) + személy: Jer 34:8, 15, 17 (a versben kétszer); Ézs 61:1; עַל (al) + személy (ellen, felől): 1Kir 13:4, 32; Jer 49:29; JSir 1:15; békességet hirdetni valakinek (ל (le) + személy): Bír 21:13; vö. ׳ק לְשָׁלוֺם אֵלֶיהָ (kárá lesálóm éléhá) 5Móz 20:10; ׳ק az igével rokon jelentésű tárgyesettel: מִקְרָא (mikrá) Ézs 1:13, הַקְּרִיאָה (hakkeriá) Jón 3:2 (+ אֶל (el)).
+**🇭🇺** 3 kihirdetni: a. a kihirdetett dolog tárgyesetével: Ámós 4:5; 1Móz 41:43; 5Móz 15:2; Jer 31:6; 3Móz 25:10 és máshol; ׳ק צוֺם böjtöt hirdetni 1Kir 21:9, 12; Jer 36:9 és máshol, ׳ק י ׳מוֺעֲדֵי 3Móz 23:2, 4; ׳ק, utána oratio recta [egyenes beszéd]: 2Móz 34:6 stb.; utána ל + személy: Jer 34:8, 15, 17 (a versben kétszer); Ézs 61:1, עַל + személy (ellen, felől) 1Kir 13:4, 32; Jer 49:29; JSir 1:15; békességet hirdetni valakinek (ל + személy) Bír 21:13; vö. ׳ק לְשָׁלוֺם אֵלֶיהָ 5Móz 20:10; ׳ק az igével rokon jelentésű tárgyesettel: מִקְרָא Ézs 1:13, הַקְּרִיאָה Jón 3:2 (+ אֶל).
 
 *Forrás: konkordancia/BDB_teljes_unabridged.tsv*
-
-#### TBESH H7121 — (részlet)
-
-> קָרָא [H:V] to call **1)** to call, call out, recite, read, cry out, proclaim **1a)** (Qal) **1a1)** to call, cry, utter a loud sound **1a2) to call unto, cry (for help), call (with name of God)** **1a3)** to proclaim **1a4)** to read aloud, read (to oneself), read **1a5)** to summon, invite, call for, call and commission, appoint, call and endow **1a6)** to call, name, give name to, call by **1b)** (Niphal) ... **1c)** (Pual) to be called, be named, be called out, be chosen
-
-**🇭🇺** קָרָא (kárá) [héber ige] hívni 1) hívni, kiáltani, recitálni, olvasni, felkiáltani, kihirdetni 1a) (Qal) 1a1) hívni, kiáltani, hangos hangot adni 1a2) hívni valakit, kiáltani (segítségért), hívni (Isten nevével) 1a3) kihirdetni 1a4) hangosan felolvasni, olvasni (magában), olvasni 1a5) hívatni, meghívni, hívni valakit, elhívni és megbízni, kinevezni, elhívni és felruházni 1a6) hívni, nevezni, nevet adni, néven hívni 1b) (Niphal) … 1c) (Pual) hívatni, neveztetni, kihívatni, kiválasztatni
-
-*Forrás: konkordancia/TBESH.txt*
 
 ### H8034 — שֵׁם (shem)
 
@@ -438,7 +431,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 > G994 — βοάω βόω; (imperfect ἐβόων, Act 21:34 Rec.); 1 aorist ἐβόησα; (βοή); from Homer down; in the Sept. mostly for קָרָא, זָעַק, צָעַק, to cry aloud, shout (Latinboo); 1. to raise a cry: of joy, Gal 4:27 (from Isa 54:1); of pain, Mat 27:46 L marginal reading Tr WH; Act 8:7. 2. to cry i. e. speak with a high, strong voice: Mat 3:3, Mar 1:3, Luk 3:4, Joh 1:23 (all from Isa 40:3); Mar 15:34; Luk 9:38 (R G ἀναβοάω); (Luk 18:38); Act 17:6; Act 21:34 Rec.; (R G ἐπιβοάω). 3. πρός τινα to cry to one for help, implore his aid: Luk 18:7 (T Tr WH αὐτῷ; cf. Winer's Grammar, 212 (199)) (1Sa 7:8; 1Ch 5:20; Hos 7:14, etc. for אֶל זָעַק). (Compare: ἀναβοάω, ἐπιβοάω.)
 
-*Fordítás függőben.*
+**🇭🇺** G994 — βοάω βόω; (imperfectum ἐβόων, ApCsel 21:34 Rec.); 1. aorisztosz ἐβόησα; (βοή); Homérosztól kezdve; a Septuagintában többnyire a קָרָא, זָעַק, צָעַק fordítása: hangosan kiáltani, kiabálni (latinul boo). 1. kiáltást hallatni: örömében, Gal 4:27 (Ézs 54:1 nyomán); fájdalmában, Mt 27:46 L széljegyzet Tr WH; ApCsel 8:7. 2. kiáltani, azaz magas, erős hangon beszélni: Mt 3:3, Mk 1:3, Luk 3:4, Ján 1:23 (mind Ézs 40:3 nyomán); Mk 15:34; Luk 9:38 (R G ἀναβοάω); (Luk 18:38); ApCsel 17:6; ApCsel 21:34 Rec.; (R G ἐπιβοάω). 3. πρός τινα: valakihez segítségért kiáltani, segítségét kérni: Luk 18:7 (T Tr WH αὐτῷ; vö. Winer's Grammar, 212 (199)) (1Sám 7:8; 1Krón 5:20; Hós 7:14 stb., a אֶל זָעַק fordításaként). (Vö.: ἀναβοάω, ἐπιβοάω.)
 
 *Forrás: konkordancia/Thayer_teljes.tsv*
 
@@ -519,15 +512,9 @@ legelején azt jelzi: nincs tovább vezethető etimológia.
 
 *(Az ἐπικαλέω (epikaleó) LSJ-szócikke maga csak átirányít a καλέω (kaleó) alapigéhez — klasszikus lexikográfiai gyakorlat összetett igéknél, önálló LSJ-tartalom nincs rá.)*
 
-#### A héber oldal kiegészítő adatai (TBESH-konszolidáció + SECE)
+#### A héber oldal kiegészítő adatai (BDB + SECE)
 
-**TBESH.lexicon (SQLite, konszolidált verzió)** — H7121 itt **egyetlen, tiszta bejegyzésben** jelenik meg:
-
-【NAPLO: 2026.09.07-től elérhető; a korábban dokumentált "többsoros Strong-szám" probléma (H7121 4 alsora a szöveges TBESH.txt-ben) ezzel megoldódott.】
-
-> קָרָא [H:V] to call **1)** to call, call out, recite, read, cry out, proclaim **1a)** (Qal) **1a1)** to call, cry, utter a loud sound **1a2) to call unto, cry (for help), call (with name of God)** **1a3)** to proclaim **1a4)** to read aloud, read (to oneself), read **1a5)** to summon, invite, call for, call and commission, appoint, call and endow **1a6)** to call, name, give name to, call by **1b)** (Niphal) ... **1c)** (Pual) to be called, be named, be called out, be chosen
-
-**🇭🇺 Magyarul (TBESH):** קָרָא (kárá) [héber ige] hívni 1) hívni, kiáltani, recitálni, olvasni, felkiáltani, kihirdetni 1a) (Qal) 1a1) hívni, kiáltani, hangos hangot adni 1a2) hívni valakit, kiáltani (segítségért), hívni (Isten nevével) 1a3) kihirdetni 1a4) hangosan felolvasni, olvasni (magában), olvasni 1a5) hívatni, meghívni, hívni valakit, elhívni és megbízni, kinevezni, elhívni és felruházni 1a6) hívni, nevezni, nevet adni, néven hívni 1b) (Niphal) … 1c) (Pual) hívatni, neveztetni, kihívatni, kiválasztatni
+**BDB H7121 (קָרָא, kárá)** — a jelentés-ágak (2.c „az Úr nevével hívni”, 3. „kihirdetni”) az 1. szakasz táblázatában és a lexikonoldal BDB-sorain szerepelnek; a teljes szócikk a BDB-ben van. A TBESH-konszolidáció rövid meghatározása (Online Bible-eredetű) kikerült a szövegből (DT-F42a).
 
 **SECE H7121 — teljes görög-megfelelő lista (a teljes LXX-en át):** ἄγω (agó), ἀναβοάω (anaboaó), ἀναγγέλλω (anangelló), ἀναγινώσκω (anaginószkó), ἀνακράζω (anakradzó), ἀνοίγω (anoigó), ..., **βοάω** (boaó), ..., ἐγκαλέω (enkaleó), ..., **ἐπικαλέομαι** (epikaleomai; kétszer is szerepel a listában, jelezve gyakoriságát), ..., **καλέω** (kaleó), κηρύσσω (kérüsszó), κράζω (kradzó), ..., ὀνομάζω (onomadzó), παρακαλέω (parakaleó), προσκαλέομαι (proszkaleomai), ..., φωνέω (fóneó). TWOT-szám: **2063**. GK-szám: **H7924**.
 
@@ -543,7 +530,7 @@ a βοάω (boaó) saját szinonima-magyarázata explicit szembeállítja magát
 egy **tudatos, a szótár által is dokumentált stilisztikai spektrumból**
 választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tól (epikaleomai).
 
-*Források és licencek ehhez az alszakaszhoz:* BDB (Brown–Driver–Briggs) — közkincs; TBESG, TBESH (STEPBible-Data, Abbott-Smith-alapú) — CC BY 4.0; Thayer's Greek-English Lexicon — közkincs; SECE — közkincs; LSJ forrás: Liddell-Scott-Jones, Perseus Digital Library (`lexica` repó), CC BY-SA 3.0.; Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, www.teknia.com/greek-dictionary
+*Források és licencek ehhez az alszakaszhoz:* BDB (Brown–Driver–Briggs) — közkincs; TBESG (STEPBible-Data, Abbott-Smith-alapú) — CC BY 4.0; Thayer's Greek-English Lexicon — közkincs; SECE — közkincs; LSJ forrás: Liddell-Scott-Jones, Perseus Digital Library (`lexica` repó), CC BY-SA 3.0.; Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights Reserved, www.teknia.com/greek-dictionary
 
 ### Miért fontos ez a lelet *(kézi)*
 
@@ -563,7 +550,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 ## 3. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv | licenc: CC BY 4.0, projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#lxx | forrás: adat/lxx_dontesek.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv | licenc: CC BY 4.0, projekt-adat | ts=2026-10-05 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum ÓSZ-i előfordulásait veti össze az `LXX_OS`-szel (G5), soronként a Károli-vers minden versére.*
 
@@ -598,7 +585,7 @@ választott, nem véletlenül tért el a "szabvány" ἐπικαλέομαι-tó
 
 ## 4. Kereszthivatkozások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-10-05 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 32 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 23 igehely ad legalább egy találatot (106 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható.*
 
@@ -803,7 +790,7 @@ saját, lexikai szintű megfigyelés marad (l. korábbi megállapítás).
 
 ## 5. Kapcsolatok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: projekt-adat | ts=2026-09-22 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: projekt-adat | ts=2026-10-05 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum 25 kapcsolat-sorát fedi a `kapcsolatok.tsv`-ből, 31 igehely-csomóponttal.*
 
@@ -1249,7 +1236,7 @@ tévesen ne sorolja be a motívumba.】
 
 ## 8. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-09-26 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#idezes | forrás:  | licenc: projekt-adat | ts=2026-10-05 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja (G9, LEXV2_3-ig szűkítve).*
 
@@ -1257,12 +1244,12 @@ tévesen ne sorolja be a motívumba.】
 - ID: `ISTENTISZT-001`
 - Cím: Segítségül hívni az Úr nevét
 - Státusz: publikálható (`v3`, 2026.09.22)
-- Generálva: 2026-09-26
+- Generálva: 2026-10-05
 - Fájl: `https://github.com/Basesoft777/Bible-Study/blob/main/lexikon/ISTENTISZT-001_TUDOMANYOS.md`
 
 **Felhasznált szótárak:**
 - BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906) (`konkordancia/BDB_teljes_unabridged.tsv`, közkincs)
-- LSJ (Liddell-Scott-Jones, A Greek-English Lexicon) (`konkordancia/LSJ_teljes.tsv`, CC BY-SA 3.0)
+- LSJ (Liddell-Scott-Jones, A Greek-English Lexicon) (`konkordancia/LSJ_teljes.tsv`, CC BY-SA 4.0)
 - LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz) (`konkordancia/LXX_OS/1-chronicles.tsv`, `konkordancia/LXX_OS/1-kings.tsv`, `konkordancia/LXX_OS/2-kings.tsv`, `konkordancia/LXX_OS/exodus.tsv`, `konkordancia/LXX_OS/genesis.tsv`, `konkordancia/LXX_OS/isaiah.tsv`, `konkordancia/LXX_OS/jeremiah-lxx.tsv`, `konkordancia/LXX_OS/joel.tsv`, `konkordancia/LXX_OS/psalms-lxx.tsv`, `konkordancia/LXX_OS/zechariah.tsv`, `konkordancia/LXX_OS/zephaniah.tsv`, CC BY 4.0)
 - OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám (`konkordancia/OSHL_lexikalis_index.tsv`, CC BY 4.0)
 - SDBH (Semantic Dictionary of Biblical Hebrew) (`konkordancia/SDBH_domenek.tsv`, CC BY-SA 4.0)
@@ -1275,10 +1262,10 @@ tévesen ne sorolja be a motívumba.】
 
 **Adatforrások:**
 - `adat/elofordulasok.tsv` (projekt-adat)
-- `adat/forditas_ubs.tsv` (projekt-adat)
+- `adat/forditasok.tsv` (projekt-adat)
 - `adat/jeloltek.tsv` (projekt-adat)
 - `adat/kapcsolatok.tsv` (projekt-adat)
-- `adat/lexikon_hivatkozasok.tsv` (CC BY 4.0, CC BY-SA 3.0, közkincs)
+- `adat/lexikon_hivatkozasok.tsv` (CC BY 4.0, CC BY-SA 4.0, közkincs)
 - `adat/lxx_dontesek.tsv` (projekt-adat)
 - `adat/motivumok.tsv` (projekt-adat)
 - `konkordancia/Karoli_1908.tsv` (közkincs)
@@ -1288,7 +1275,7 @@ tévesen ne sorolja be a motívumba.】
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditas_ubs.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 3.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-09-23 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kolofon | forrás: adat/elofordulasok.tsv, adat/forditasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/LSJ_teljes.tsv, konkordancia/LXX_OS/1-chronicles.tsv, konkordancia/LXX_OS/1-kings.tsv, konkordancia/LXX_OS/2-kings.tsv, konkordancia/LXX_OS/exodus.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/joel.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zechariah.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, projekt-adat | ts=2026-10-05 -->
 
 *Ez a blokk a `[ID: ISTENTISZT-001]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon ténylegesen felhasznált forrásokat sorolja fel.*
 
@@ -1312,16 +1299,16 @@ tévesen ne sorolja be a motívumba.】
 | Forrás | Fájl | Licenc | Blokk |
 |---|---|---|---|
 | `elofordulasok.tsv` | `adat/elofordulasok.tsv` | projekt-adat | elofordulasok |
-| `forditas_ubs.tsv` | `adat/forditas_ubs.tsv` | projekt-adat | elofordulasok |
+| `forditasok.tsv` | `adat/forditasok.tsv` | projekt-adat | elofordulasok |
 | `jeloltek.tsv` | `adat/jeloltek.tsv` | projekt-adat | kizart |
 | `kapcsolatok.tsv` | `adat/kapcsolatok.tsv` | projekt-adat | kapcsolatok |
-| `lexikon_hivatkozasok.tsv` | `adat/lexikon_hivatkozasok.tsv` | CC BY 4.0, CC BY-SA 3.0, közkincs | szocikkek |
+| `lexikon_hivatkozasok.tsv` | `adat/lexikon_hivatkozasok.tsv` | CC BY 4.0, CC BY-SA 4.0, közkincs | szocikkek |
 | `lxx_dontesek.tsv` | `adat/lxx_dontesek.tsv` | projekt-adat | lxx |
 | `motivumok.tsv` | `adat/motivumok.tsv` | projekt-adat | kizart |
 | `BDB_teljes_unabridged.tsv` | `konkordancia/BDB_teljes_unabridged.tsv` | közkincs | szocikkek |
 | `Karoli_1908.tsv` | `konkordancia/Karoli_1908.tsv` | közkincs | elofordulasok |
 | `Karoli_kereszthivatkozasok.tsv` | `konkordancia/Karoli_kereszthivatkozasok.tsv` | közkincs | kereszthivatkozasok |
-| `LSJ_teljes.tsv` | `konkordancia/LSJ_teljes.tsv` | CC BY-SA 3.0 | szocikkek |
+| `LSJ_teljes.tsv` | `konkordancia/LSJ_teljes.tsv` | CC BY-SA 4.0 | szocikkek |
 | `1-chronicles.tsv` | `konkordancia/LXX_OS/1-chronicles.tsv` | CC BY 4.0 | lxx |
 | `1-kings.tsv` | `konkordancia/LXX_OS/1-kings.tsv` | CC BY 4.0 | lxx |
 | `2-kings.tsv` | `konkordancia/LXX_OS/2-kings.tsv` | CC BY 4.0 | lxx |
@@ -1343,6 +1330,6 @@ tévesen ne sorolja be a motívumba.】
 | `UBS_DNTG_jelentesek.tsv` | `konkordancia/UBS_DNTG_jelentesek.tsv` | CC BY-SA 4.0 | elofordulasok |
 | `UBS_DNTG_referenciak.tsv` | `konkordancia/UBS_DNTG_referenciak.tsv` | CC BY-SA 4.0 | elofordulasok |
 
-*LSJ forrás: Liddell-Scott-Jones, Perseus Digital Library (`lexica` repó), CC BY-SA 3.0.*
+*LSJ forrás: Liddell-Scott-Jones, Perseus Digital Library (`lexica` repó), CC BY-SA 4.0.*
 
 <!-- GENERÁLT-VÉGE: lexikon#ISTENTISZT-001#kolofon -->

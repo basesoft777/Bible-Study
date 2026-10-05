@@ -35,6 +35,7 @@ import general as G
 import lekerdez as L
 import ubs_hozzarendeles as UBS
 import lxx_os_import as LXXOS
+import utvonalak as _U
 
 ROOT = G.ROOT
 ADAT = G.ADAT
@@ -49,45 +50,76 @@ FORDITASOK_TSV = os.path.join(ADAT, 'forditasok.tsv')
 LXX_DONTESEK_TSV = os.path.join(ADAT, 'lxx_dontesek.tsv')
 STRONG_SZOTAR_TSV = os.path.join(KONKORDANCIA, 'Strong_szotar.tsv')
 TBESG_TXT = os.path.join(KONKORDANCIA, 'TBESG.txt')
-TBESH_TXT = os.path.join(KONKORDANCIA, 'TBESH.txt')
+TBESH_TXT = _U.TBESH_TXT
 LXX_OS_DIR = os.path.join(KONKORDANCIA, 'LXX_OS')
 
 STRONG_TOKEN_RE = re.compile(r'^[HG]\d{4}[A-Za-z]?$')
 EM_DASH = '—'
 
-# --- Licencek, §1.3 -------------------------------------------------------
+# --- Licencek (F42 / DT-F42g, N9) ------------------------------------------
+# A licenc-állapot és a megjelenő rövid címke EGYETLEN forrása az
+# adat/licencek.tsv (SEMA 2.19). A kódban nincs licenc-konstans; ha egy kulcsnak
+# nincs sora (vagy üres a `cimke` mezője), a generátor hibával áll meg --
+# alapértelmezett érték nincs. Olvasás: split('\t'), nem csv (CLAUDE.md).
 
-LICENC = {
-    'BDB': 'közkincs',
-    'Karoli_KH': 'közkincs',
-    'TBESH': 'CC BY 4.0',
-    'TBESG': 'CC BY 4.0',
-    'TSK': 'CC BY 4.0',
-    'OSHL': 'CC BY 4.0',
-    'SDBH': 'CC BY-SA 4.0',
-    'SDGNT': 'CC BY-SA 4.0',
-    'LXX_OS': 'CC BY 4.0',
-    'Thayer': 'közkincs',
-    'LSJ': 'CC BY-SA 3.0',
-    'SECE_G': 'közkincs',
-    'SECE_H': 'közkincs',
-    'MCGED': '© Mounce 1993',
-    'UBS': 'CC BY-SA 4.0',
-    'projekt-adat': 'projekt-adat',
-}
+LICENCEK_TSV = os.path.join(ADAT, 'licencek.tsv')
+_licencek_cache = None
 
-# A lexikon_hivatkozasok.tsv szótárkulcsai közül ma egyik sem tisztázatlan
-# (LEXV2_2_BRIEF.md: a Thayer közkincs). A halmaz üresen marad, nem törölve.
-TISZTAZATLAN_SZOTARAK = set()
+
+def licencek():
+    """adat/licencek.tsv -> {dataset: sor-dict}."""
+    global _licencek_cache
+    if _licencek_cache is None:
+        sorok = []
+        with io.open(LICENCEK_TSV, encoding='utf-8') as f:
+            for sor in f:
+                sor = sor.rstrip('\r\n')
+                if sor and not sor.startswith('#'):
+                    sorok.append(sor.split('\t'))
+        fejlec = sorok[0]
+        for kotelezo in ('dataset', 'allapot', 'cimke'):
+            if kotelezo not in fejlec:
+                raise SystemExit('HIBA: az adat/licencek.tsv fejlécéből hiányzik a `%s` oszlop' % kotelezo)
+        d = {}
+        for s in sorok[1:]:
+            if len(s) != len(fejlec):
+                raise SystemExit('HIBA: adat/licencek.tsv, a `%s` sor oszlopszáma %d, a fejlécé %d'
+                                 % (s[0], len(s), len(fejlec)))
+            r = dict(zip(fejlec, s))
+            d[r['dataset']] = r
+        _licencek_cache = d
+    return _licencek_cache
+
+
+def licenc_sor(dataset):
+    r = licencek().get(dataset)
+    if r is None:
+        raise SystemExit('HIBA: nincs `%s` sor az adat/licencek.tsv-ben (a licencjelölés egyetlen '
+                         'forrása; alapértelmezett érték nincs)' % dataset)
+    if not r.get('cimke'):
+        raise SystemExit('HIBA: üres `cimke` az adat/licencek.tsv `%s` során' % dataset)
+    return r
+
+
+def LC(dataset):
+    """A dataset rövid licenc-címkéje az adat/licencek.tsv-ből."""
+    return licenc_sor(dataset)['cimke']
+
+
+def licenc_tisztazatlan(dataset):
+    """`tisztazott` és `kozkincs`: nincs tisztázatlan-jelölés; `tisztazatlan`: van."""
+    return licenc_sor(dataset)['allapot'] == 'tisztazatlan'
+
 
 MOUNCE_MEGJELOLES = (
     'Mounce Concise Greek-English Dictionary, Copyright 1993 All Rights '
     'Reserved, www.teknia.com/greek-dictionary'
 )
-LSJ_FORRASMEGJELOLES = (
-    'LSJ forrás: Liddell-Scott-Jones, Perseus Digital Library (`lexica` '
-    'repó), CC BY-SA 3.0.'
-)
+
+
+def lsj_forrasmegjeloles():
+    return ('LSJ forrás: Liddell-Scott-Jones, Perseus Digital Library (`lexica` '
+            'repó), %s.' % LC('LSJ'))
 
 
 def _sorted_unique(seq):
@@ -222,7 +254,7 @@ def tbesg_tbesh_index():
         pontos = {}
         alap = {}
         alap_re = re.compile(r'^([HG]\d{4})[a-zA-Z]?$')
-        for path in (TBESG_TXT, TBESH_TXT):
+        for path in (TBESG_TXT, _U.kotelezo(TBESH_TXT)):
             with io.open(path, encoding='utf-8') as f:
                 for sor in f:
                     sor = sor.rstrip('\r\n')
@@ -303,7 +335,7 @@ def blokk_tartalom(m):
     sorok = ['- [%s](#%s)' % (cim, _heading_slug(cim)) for cim, _ in SZAKASZOK]
     hatokor = 'Ez a blokk a lexikon-oldal 12 szakaszának tartalomjegyzékét adja (LEXV2_2_BRIEF.md G1).'
     torzs = '\n'.join(sorok)
-    return _lexikon_blokk(m['id'], 'tartalom', [], ['projekt-adat'], hatokor, torzs)
+    return _lexikon_blokk(m['id'], 'tartalom', [], [LC('projekt_adat')], hatokor, torzs)
 
 
 # ---------------------------------------------------------------------------
@@ -335,7 +367,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 def blokk_jelmagyarazat(m):
     hatokor = 'Ez a blokk közös, minden lexikon-oldalon szó szerint azonos szöveg (G10).'
-    return _lexikon_blokk(m['id'], 'jelmagyarazat', [], ['projekt-adat'], hatokor, JELMAGYARAZAT_TORZS)
+    return _lexikon_blokk(m['id'], 'jelmagyarazat', [], [LC('projekt_adat')], hatokor, JELMAGYARAZAT_TORZS)
 
 
 # ---------------------------------------------------------------------------
@@ -525,14 +557,14 @@ def blokk_elofordulasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
         m['id'], 'elofordulasok',
         ['adat/elofordulasok.tsv', 'konkordancia/Karoli_1908.tsv', 'konkordancia/UBS_DNTG_referenciak.tsv',
          'konkordancia/UBS_DNTG_jelentesek.tsv', 'adat/forditasok.tsv'],
-        ['projekt-adat', 'közkincs', 'CC BY-SA 4.0'],
+        [LC('projekt_adat'), LC('Karoli_1908'), LC('UBS_DNTG')],
         hatokor, torzs)
     forras_licenc_parok = [
-        ('adat/elofordulasok.tsv', 'projekt-adat'),
-        ('konkordancia/Karoli_1908.tsv', 'közkincs'),
-        ('konkordancia/UBS_DNTG_referenciak.tsv', 'CC BY-SA 4.0'),
-        ('konkordancia/UBS_DNTG_jelentesek.tsv', 'CC BY-SA 4.0'),
-        ('adat/forditasok.tsv', 'projekt-adat'),
+        ('adat/elofordulasok.tsv', LC('projekt_adat')),
+        ('konkordancia/Karoli_1908.tsv', LC('Karoli_1908')),
+        ('konkordancia/UBS_DNTG_referenciak.tsv', LC('UBS_DNTG')),
+        ('konkordancia/UBS_DNTG_jelentesek.tsv', LC('UBS_DNTG')),
+        ('adat/forditasok.tsv', LC('projekt_adat')),
     ]
     return blokk_szoveg, forras_licenc_parok
 
@@ -584,8 +616,8 @@ def blokk_kizart(m):
     hatokor = ('Ez a blokk a `[ID: %s]` motívum %d elutasított/nyitva maradt jelöltjét fedi a '
                '`jeloltek.tsv`-ből (G7).' % (m['id'], len(sorok_ehhez)))
     return _lexikon_blokk(m['id'], 'kizart', ['adat/jeloltek.tsv', 'adat/motivumok.tsv'],
-                           ['projekt-adat'], hatokor, torzs), \
-        [('adat/jeloltek.tsv', 'projekt-adat'), ('adat/motivumok.tsv', 'projekt-adat')]
+                           [LC('projekt_adat')], hatokor, torzs), \
+        [('adat/jeloltek.tsv', LC('projekt_adat')), ('adat/motivumok.tsv', LC('projekt_adat'))]
 
 
 # ---------------------------------------------------------------------------
@@ -686,7 +718,7 @@ def _epit_szotar_alszakasz(strong, szint_eltolas, fajl_licenc_kulcsok, fajl_lice
         for r in hiv_sorok:
             fajl_licenc_kulcsok.setdefault('adat/lexikon_hivatkozasok.tsv', set()).add(r['szotar'])
             fajl_licenc_kulcsok.setdefault(r['forrasfajl'], set()).add(r['szotar'])
-            if r['szotar'] in TISZTAZATLAN_SZOTARAK:
+            if licenc_tisztazatlan(r['szotar']):
                 tisztazatlan_erintve = True
             alszakasz.append('%s %s %s — %s' % (sub_hash, r['szotar'], r['entry_id'], _jsz_cimke(r['jelentes_szam'])))
             alszakasz.append('> %s' % r['szoveg_en'])
@@ -750,12 +782,15 @@ def blokk_szocikkek(m, tokenek, sorai):
         fajl_licenc_kulcsok.setdefault('konkordancia/TBESH.txt', set()).add('TBESH')
 
     torzs = '\n\n'.join(reszek)
-    licenc_lista = _sorted_unique(LICENC[k] for kulcsok in fajl_licenc_kulcsok.values() for k in kulcsok)
+    licenc_lista = _sorted_unique(LC(k) for kulcsok in fajl_licenc_kulcsok.values() for k in kulcsok)
     forras_licenc_parok = [
         (fajl, licenc)
         for fajl, kulcsok in fajl_licenc_kulcsok.items()
-        for licenc in _sorted_unique(LICENC[k] for k in kulcsok)
+        for licenc in _sorted_unique(LC(k) for k in kulcsok)
     ]
+    # A tisztázatlan-jelölés a blokk MINDEN felhasznált forráskulcsára a táblából jön (N9).
+    tisztazatlan_erintve = tisztazatlan_erintve or any(
+        licenc_tisztazatlan(k) for kulcsok in fajl_licenc_kulcsok.values() for k in kulcsok)
     hatokor = ('Ez a blokk a `[ID: %s]` motívum %d Strong-tokenjét fedi, %s jelentés-hivatkozással '
                'a `lexikon_hivatkozasok.tsv`-ből.'
                % (m['id'], len(tokenek), 'van' if van_hivatkozas_barmelyikhez else 'nincs'))
@@ -774,16 +809,15 @@ _lxx_dontesek_cache = None
 
 
 def karoli_to_primary_slug():
+    """Károli-könyv -> LXX_OS slug; az elsődleges szövegváltozatot LXXOS.ELSODLEGES_SLUG adja
+    (F42 / DT-F42f f2)."""
     global _karoli_to_primary_slug
     if _karoli_to_primary_slug is None:
         terkep = {}
-        for slug, (_title, book_key, _test) in LXXOS.BOOKS.items():
-            karoli_book = LXXOS.BOOK_KEY_TO_KAROLI.get(book_key)
-            if not karoli_book:
-                continue
-            if slug == book_key:
-                terkep[karoli_book] = slug
-            elif karoli_book not in terkep:
+        karoli_konyvek = set(LXXOS.BOOK_KEY_TO_KAROLI.values()) | set(LXXOS.ELSODLEGES_SLUG)
+        for karoli_book in karoli_konyvek:
+            slug = LXXOS.elsodleges_slug(karoli_book)
+            if slug:
                 terkep[karoli_book] = slug
         _karoli_to_primary_slug = terkep
     return _karoli_to_primary_slug
@@ -970,10 +1004,10 @@ def blokk_lxx(m, sorai, tokenek):
     dontesek_hasznalt = bool(szamlalo['eltérő'] or szamlalo['LXX-minusz'])
     forras_lista = sorted(forras_fajlok) + (['adat/lxx_dontesek.tsv'] if dontesek_hasznalt else [])
     blokk_szoveg = _lexikon_blokk(m['id'], 'lxx', sorted(set(forras_lista)),
-                                   ['CC BY 4.0', 'projekt-adat'], hatokor, torzs)
-    forras_licenc_parok = [(f, 'CC BY 4.0') for f in sorted(forras_fajlok)]
+                                   [LC('LXX_OS'), LC('projekt_adat')], hatokor, torzs)
+    forras_licenc_parok = [(f, LC('LXX_OS')) for f in sorted(forras_fajlok)]
     if dontesek_hasznalt:
-        forras_licenc_parok.append(('adat/lxx_dontesek.tsv', 'projekt-adat'))
+        forras_licenc_parok.append(('adat/lxx_dontesek.tsv', LC('projekt_adat')))
     return blokk_szoveg, forras_licenc_parok
 
 
@@ -1050,11 +1084,11 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
     blokk_szoveg = _lexikon_blokk(
         m['id'], 'kereszthivatkozasok',
         ['konkordancia/TSK_kereszthivatkozasok.tsv', 'konkordancia/Karoli_kereszthivatkozasok.tsv'],
-        ['CC BY 4.0', 'közkincs'], hatokor, torzs
+        [LC('TSK'), LC('Karoli_KH')], hatokor, torzs
     )
     forras_licenc_parok = [
-        ('konkordancia/TSK_kereszthivatkozasok.tsv', 'CC BY 4.0'),
-        ('konkordancia/Karoli_kereszthivatkozasok.tsv', 'közkincs'),
+        ('konkordancia/TSK_kereszthivatkozasok.tsv', LC('TSK')),
+        ('konkordancia/Karoli_kereszthivatkozasok.tsv', LC('Karoli_KH')),
     ]
     return blokk_szoveg, forras_licenc_parok
 
@@ -1080,8 +1114,8 @@ def blokk_kapcsolatok(m, konyv_sorrend, hianyzo_konyvek):
     if not sorok_ehhez:
         torzs = 'Nincs kapcsolat-sor a `kapcsolatok.tsv`-ben ehhez a motívumhoz.'
         hatokor = 'Ez a blokk a `[ID: %s]` motívum kapcsolat-sorait fedné a `kapcsolatok.tsv`-ből; 0 sor.' % m['id']
-        return _lexikon_blokk(m['id'], 'kapcsolatok', ['adat/kapcsolatok.tsv'], ['projekt-adat'], hatokor, torzs), \
-            [('adat/kapcsolatok.tsv', 'projekt-adat')]
+        return _lexikon_blokk(m['id'], 'kapcsolatok', ['adat/kapcsolatok.tsv'], [LC('projekt_adat')], hatokor, torzs), \
+            [('adat/kapcsolatok.tsv', LC('projekt_adat'))]
 
     igehelyek = _sorted_unique(list(
         {r['forras_igehely'] for r in sorok_ehhez} | {r['cel_igehely'] for r in sorok_ehhez}
@@ -1109,8 +1143,8 @@ def blokk_kapcsolatok(m, konyv_sorrend, hianyzo_konyvek):
         '\n'.join(mermaid) + '\n\n</details>'
     hatokor = ('Ez a blokk a `[ID: %s]` motívum %d kapcsolat-sorát fedi a `kapcsolatok.tsv`-ből, '
                '%d igehely-csomóponttal.' % (m['id'], len(sorok_ehhez), len(igehelyek)))
-    blokk_szoveg = _lexikon_blokk(m['id'], 'kapcsolatok', ['adat/kapcsolatok.tsv'], ['projekt-adat'], hatokor, torzs)
-    return blokk_szoveg, [('adat/kapcsolatok.tsv', 'projekt-adat')]
+    blokk_szoveg = _lexikon_blokk(m['id'], 'kapcsolatok', ['adat/kapcsolatok.tsv'], [LC('projekt_adat')], hatokor, torzs)
+    return blokk_szoveg, [('adat/kapcsolatok.tsv', LC('projekt_adat'))]
 
 
 # ---------------------------------------------------------------------------
@@ -1198,7 +1232,7 @@ def blokk_idezes(m, fajl_licenc_blokk_lista):
     hatokor = ('Ez a blokk a `[ID: %s]` motívum hivatkozási adatait, a ténylegesen felhasznált '
                'szótárakat (teljes névvel, forrásfájlonként) és az adatforrásokat adja '
                '(G9, LEXV2_3-ig szűkítve).' % m['id'])
-    return _lexikon_blokk(m['id'], 'idezes', [], ['projekt-adat'], hatokor, torzs)
+    return _lexikon_blokk(m['id'], 'idezes', [], [LC('projekt_adat')], hatokor, torzs)
 
 
 # ---------------------------------------------------------------------------
@@ -1247,10 +1281,10 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista):
         forras_sorok.append('| `%s` | `%s` | %s | %s |' % (os.path.basename(fajl), fajl, licenc, blokkok))
 
     megjelolesek = []
-    if '© Mounce 1993' in tabla_licencek:
+    if LC('MCGED') in tabla_licencek:
         megjelolesek.append('*%s*' % MOUNCE_MEGJELOLES)
-    if 'CC BY-SA 3.0' in tabla_licencek:
-        megjelolesek.append('*%s*' % LSJ_FORRASMEGJELOLES)
+    if any(os.path.basename(f) == 'LSJ_teljes.tsv' for f in per_fajl):
+        megjelolesek.append('*%s*' % lsj_forrasmegjeloles())
 
     torzs = '\n'.join(metaadat_sorok) + '\n\n---\n\n' + '\n'.join(forras_sorok)
     if megjelolesek:
@@ -1259,7 +1293,7 @@ def blokk_kolofon(m, fajl_licenc_blokk_lista):
     hatokor = ('Ez a blokk a `[ID: %s]` motívum törzsadatait (`motivumok.tsv`) és a lexikon-oldalon '
                'ténylegesen felhasznált forrásokat sorolja fel.' % m['id'])
     return _lexikon_blokk(m['id'], 'kolofon', sorted(set(per_fajl) | {'adat/motivumok.tsv'}),
-                           sorted(tabla_licencek | {'projekt-adat'}), hatokor, torzs)
+                           sorted(tabla_licencek | {LC('projekt_adat')}), hatokor, torzs)
 
 
 # ---------------------------------------------------------------------------
