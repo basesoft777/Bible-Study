@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: fut
+ag: claude/morf-kulcs
 ad: egy nyílt licencű forrásból importált, forrás- és licencsorral ellátott jelkulcs-tábla (adat/morf_kulcs_heber.tsv), amely a Macula_heber morfológiai kódjainak minden pozícióját magyarul feloldja; a feloldó függvény ebből a táblából dolgozik, emlékezetből írt leképezés nincs
 kovetkezo: /kovetkezo; ⛔ az M0 forrásválasztás után
 olvas: ["konkordancia/Macula_heber_*.tsv", adat/licencek.tsv, adat/SEMA.md, adat/datasetek.tsv]
