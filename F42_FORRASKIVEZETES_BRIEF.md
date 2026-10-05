@@ -5,10 +5,10 @@ kod: FORRASKIVEZETES
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: megallt
+allapot: fut
 ag: claude/forraskivezetes
 ad: A TBESH-család a gitignore-olt _nyers/ alatt, letöltő szkripttel. Az LXX_kivonat kivezetve. A generátor licencjelölése az adat/licencek.tsv-ből olvas.
-kovetkezo: "Te: döntés az M0 kérdéseiről (naplok/FORRASKIVEZETES_M0.md, ⛔); utána M1–M8"
+kovetkezo: "M1–M8 a DT-F42a–i szerint; az M5 a #43 merge-e után"
 fugg: [33, 35]
 olvas: [adat/licencek.tsv, adat/SEMA.md, adat/lexikon_hivatkozasok.tsv, DONTESEK.md, NYITOTT_FELADATOK.md, konkordancia/README.md, .gitignore]
 ir: [eszkozok/forras_letolt.py, eszkozok/utvonalak.py, eszkozok/cremer_ocr_javit.py, eszkozok/istentiszt_2b_d1_toltes.py, eszkozok/kockazat_szures_18_tanulmany.py, eszkozok/lexikon_general.py, eszkozok/tbesh_konszolidalt_import.py, konkordancia/TBESH.txt, konkordancia/lexikonok_nyers/TBESH.lexicon, konkordancia/TBESH_konszolidalt.tsv, konkordancia/README.md, adat/licencek.tsv, adat/lexikon_hivatkozasok.tsv, adat/SEMA.md, NYITOTT_FELADATOK.md, DONTESEK.md, naplok/FORRASKIVEZETES_M0.md, naplok/FORRASKIVEZETES_zaras.md, naplok/ELLENOR_FORRASKIVEZETES.md, .gitignore, eszkozok/lekerdez.py, eszkozok/t1_teremt002_munkalap.py, eszkozok/lxx_osszevetes.py, eszkozok/lxx_kivonat_fetch.py, eszkozok/lxx_kivonat_fetch_v2.py, eszkozok/f08/f08_dontesek.py, eszkozok/f08/f08_dt_sor.py, eszkozok/f17/macula_import.py, eszkozok/istentiszt_2b_d3_szerkeszt.py, "konkordancia/LXX_kivonat_*.tsv", konkordancia/LXX_kivonat_README.md]
