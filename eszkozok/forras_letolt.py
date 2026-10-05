@@ -45,12 +45,13 @@ MANIFEST = {
 }
 
 
-def sha256_fajl(ut):
-    h = hashlib.sha256()
-    with open(ut, 'rb') as f:
-        for blk in iter(lambda: f.read(1 << 20), b''):
-            h.update(blk)
-    return h.hexdigest()
+def sha256_fajl(ut, lf_normalizalt=False):
+    """sha256; lf_normalizalt=True: a CRLF-et LF-re cseréli (core.autocrlf=true checkoutnál a
+    munkafa sorvége CRLF lehet, a forrásfájl LF)."""
+    adat = open(ut, 'rb').read()
+    if lf_normalizalt:
+        adat = adat.replace(bytes([13, 10]), bytes([10]))
+    return hashlib.sha256(adat).hexdigest()
 
 
 def url(forras_ut):
@@ -62,7 +63,9 @@ def allapot(cel):
     _, sha, _ = MANIFEST[cel]
     if not os.path.isfile(cel):
         return 'hianyzik'
-    return 'ok' if sha256_fajl(cel) == sha else 'eltero'
+    if sha256_fajl(cel) == sha or sha256_fajl(cel, lf_normalizalt=True) == sha:
+        return 'ok'
+    return 'eltero'
 
 
 def main():
