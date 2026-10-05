@@ -21,7 +21,7 @@ kilepesi kod --teljes modban mindig 0.
 D8 (--valtozott + --diff-alap/--diff-fej modban): a HIBA csak a diff altal
 HOZZAADOTT/MODOSITOTT sorokra vonatkozik -- egy szabaly regi (a PR altal
 nem erintett) talalata csak JELENTES. Kivetel a SZ.FAJLSZINTU_SZABALYOK
-(E4, E5, E6, E7, E16): ezeknel a talalat nem egy konkret uj sorhoz kotheto,
+(E4, E5, E6, E7, E16, E19, E25): ezeknel a talalat nem egy konkret uj sorhoz kotheto,
 tehat mindig a sajat szintjukon jelentkeznek. Ha --diff-alap/--diff-fej
 hianyzik --valtozott modban is, a regi (D8 elotti) viselkedes ervenyesul:
 a talalat fajlszinten a sajat szintjen jelentkezik -- ezt CI.2 mindig

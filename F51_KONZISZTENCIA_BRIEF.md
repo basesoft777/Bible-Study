@@ -5,18 +5,22 @@ kod: KONZISZTENCIA
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
-ad: egy új CI-szabály jelzi, ha egy döntés érintett fájlja még a döntés előtti állapotot írja, vagy a továbbvivő feladata régóta áll; egy hetente, helyi gépen futó ügynök a fogalmi ellentmondásokat jelentésbe gyűjti
-kovetkezo: "/kovetkezo; ⛔ a K5 után (a helyi ütemezett feladat jóváhagyása: heti futás, csak ha a gép be van kapcsolva)"
+allapot: lezarva
+ag: claude/konzisztencia
+ad: egy új CI-szabály jelzi, ha egy döntés érintett fájlja még a döntés előtti állapotot írja, vagy a továbbvivő feladata régóta áll; egy naponta, helyi gépen futó ügynök a fogalmi ellentmondásokat jelentésbe gyűjti
+kovetkezo: "Te: a PR ([ELLENŐRZŐ]) jóváhagyása és merge; a CI-lépésnév külön tétel (/befogad)"
 olvas: [CLAUDE.md, MUNKAMENET.md, RENDER_BRIEF.md, adat/SEMA.md, sablonok/, "F*_BRIEF.md", eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml]
-ir: [adat/dontes_hatas.tsv, adat/SEMA.md, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/, .claude/commands/konzisztencia.md, naplok/KONZISZTENCIA_naplo.md]
+ir: [adat/dontes_hatas.tsv, adat/SEMA.md, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/, .claude/commands/konzisztencia.md, naplok/KONZISZTENCIA_naplo.md, naplok/konzisztencia/KONZISZTENCIA_20261005.md]
 fugg: []
+pr: 192
+lezarva_osszegzes: E25 CI-szabály + dontes_hatas.tsv (D34, 3 sor) + /konzisztencia parancs; napi helyi ütemezés (konzisztencia-napi) jóváhagyva; merge előtt [ELLENŐRZŐ]-jóváhagyás
 helyi_gep: nem
 ---
 
 # F51_KONZISZTENCIA_BRIEF.md — Döntések átvezetésének ellenőrzése
 
 *FELADATOK #51 · Modell: sonnet · v1 · 2026.10.04*
+*v1.1 · 2026.10.05 · Egyeztetett eltérés: a K5 napi (nem heti) futást ír; a „heti” szó a 29. és 87. sorban a v1 szövege.*
 
 ## 1. Cél
 
