@@ -13,7 +13,7 @@
 ## Eltérések súlyossági sorrendben és állapotuk
 1. **(közepes)** Az F30 brief a `KIZART` halmazban van, a `lezarva_osszegzes`-ben álló DT-F30a/N-F30a ezért nem kapna számot, és az újragenerált FELADATOK.md-ben lógó helyőrző maradna. — **Javítva:** a `lezarva_osszegzes` helyőrző-tokenek nélkül, szövegesen hivatkozik a döntésre.
 2. **(alacsony–közepes)** A `SZÁMKIOSZTÁS-SZÁNDÉKOS` jelölés a teljes PR-re kikapcsolja az E26-ot (a később rákerülő commitokra is), tágabban a brief SZ.3-nál. — **Nyitott, tervezési döntés a felhasználóé.**
-3. **(alacsony)** A DT29 sorban a mechanikus csere a korábbi DT18-döntés szövegét is átírta („az azonosító DT29 marad”), ami már nem igaz. — **Nyitott, tartalmi javítás a felhasználó jóváhagyásával.**
+3. **(alacsony)** A DT29 sorban a mechanikus csere a korábbi DT18-döntés szövegét is átírta („az azonosító DT29 marad”), ami már nem igaz. — **Javítva (a felhasználó kérésére):** a két történeti állítás („az új DT-szám DT18”, „az azonosító DT18 marad”) visszaállt DT18-ra; az új azonosítót a sor elején álló megjegyzés adja.
 4. **(alacsony)** A napló „jelölés nélkül 3 HIBA” állítása elavult (7 a végső fejen). — **Javítva.**
 5. **(alacsony)** Az N-F30a (4) és (5) pontja nem nyitott feladat, és a pontok sorrendje hibás. — **Nyitott, kis javítás.**
 6. **(formális)** Az F30 brieffejléc az `ir`-en kívül esik, de a diffje nem DT18→DT29 csere (a CLAUDE.md konvenciója szerint minden menet a saját brieffejlécét frissíti). — **Elfogadott.**
