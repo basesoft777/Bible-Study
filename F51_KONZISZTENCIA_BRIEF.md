@@ -106,7 +106,9 @@ A naplóba: heti egy futás (javasolt: hétfő 9:00), helyi ütemezett feladatk�
 | DT-F51-3 | Az ügynök csak jelent, nem javít és nem commitol | a javítás tartalmi döntés, az a felhasználóé (`CLAUDE.md`: döntésnél megállás) | önjavító ügynök |
 | DT-F51-4 | Az E25 (a) és (b) ága FIGYELMEZTETES, csak a (c) HIBA | a régi állapot átmeneti időszakban jogos lehet; a hibás tábla viszont nem | minden ág HIBA |
 | DT-F51-5 | A tábla kulcsa fájl + azonosító | a D-számok ütköznek (D34) | csak azonosító |
+| DT-F51-6 | A jelentés helye `.claude/konzisztencia/` (gitignore-olt, helyi), nem `naplok/konzisztencia/`; az előző jelentést mindkét helyen keresi | felhasználói döntés (2026.10.05): a napi rutin commitolatlan jelentése a verziózott mappában megakasztaná a worktree frissítését; a kézi `/konzisztencia` és a rutin ugyanoda ír | jelentés a `naplok/` alá, futás előtti törléssel |
 
 | v | dátum | változás |
 |---|---|---|
 | v1 | 2026.10.04 | első változat a chatben (kiinduló eset: D34 ↔ `CLAUDE.md` / `RENDER_BRIEF.md` / `MUNKAMENET.md`) |
+| v2 | 2026.10.05 | DT-F51-6: a jelentés helye `.claude/konzisztencia/`; a 3. pont `naplok/konzisztencia/` útvonala ennek a döntésnek a régi állapota |
