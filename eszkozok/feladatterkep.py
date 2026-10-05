@@ -577,8 +577,309 @@ def epit(gyoker=REPO, main_all=None):
     }
 
 
+HTML_SABLON = r'''<!doctype html>
+<html lang="hu" data-tema="dark">
+<script>try{var t=localStorage.getItem("pardes-tema");if(t)document.documentElement.setAttribute("data-tema",t)}catch(e){}</script>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- GENERÁLT: eszkozok/feladatterkep.py — kézzel ne szerkeszd -->
+<title>PaRDeS feladattérkép</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Elrendezés: munkanapló-lap — fent az állapot, alatta a sorrend, a hullámok, az állapot szerinti oszlopok, a függési térkép és a döntések */
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --ink:#1b2333; --muted:#5d6678; --rule:#dde1e8;
+  --accent:#27508f; --accent-soft:#e3ebf7;
+  --stop:#b3261e; --stop-soft:#fcdcd8;
+  --run:#1f7a4d; --run-soft:#d2f0de;
+  --ready:#27508f; --ready-soft:#d6e4fb;
+  --wait:#8a6a12; --wait-soft:#fdecc0;
+  --plan:#6b4fa0; --plan-soft:#ead9f5;
+  --idle:#6c7383; --idle-soft:#eceef2;
+  --stop-solid:#d93025; --run-solid:#1e8e3e; --ready-solid:#1a73e8; --wait-solid:#f9ab00; --plan-solid:#8e44ad; --idle-solid:#80868b; --dt:#c25100; --dt-soft:#ffe8d6;
+  --f-display:"Literata", Georgia, serif;
+  --f-body:"IBM Plex Sans", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-tema="light"]){
+  --bg:#12161f; --surface:#1a202c; --ink:#e4e8f0; --muted:#9aa3b5; --rule:#2c3445;
+  --accent:#8fb3ec; --accent-soft:#1f2c44;
+  --stop:#f28b82; --stop-soft:#3a1f1f; --run:#7fd1a4; --run-soft:#163126;
+  --ready:#8fb3ec; --ready-soft:#1f2c44; --wait:#e2c06a; --wait-soft:#3a3018;
+  --plan:#c3a8f0; --plan-soft:#2c2340; --idle:#a1a8b8; --idle-soft:#252b38; --stop-solid:#c5221f; --run-solid:#188038; --ready-solid:#1967d2; --wait-solid:#e8a000; --plan-solid:#7b3a98; --idle-solid:#6b7177; --dt:#ff9e4a; --dt-soft:#3d2614; color-scheme:dark}}
+:root[data-tema="dark"]{
+  --bg:#12161f; --surface:#1a202c; --ink:#e4e8f0; --muted:#9aa3b5; --rule:#2c3445;
+  --accent:#8fb3ec; --accent-soft:#1f2c44;
+  --stop:#f28b82; --stop-soft:#3a1f1f; --run:#7fd1a4; --run-soft:#163126;
+  --ready:#8fb3ec; --ready-soft:#1f2c44; --wait:#e2c06a; --wait-soft:#3a3018;
+  --plan:#c3a8f0; --plan-soft:#2c2340; --idle:#a1a8b8; --idle-soft:#252b38; --stop-solid:#c5221f; --run-solid:#188038; --ready-solid:#1967d2; --wait-solid:#e8a000; --plan-solid:#7b3a98; --idle-solid:#6b7177; --dt:#ff9e4a; --dt-soft:#3d2614; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body);margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:28px 64px;display:grid;gap:40px}
+h1,h2{font-family:var(--f-display);font-weight:650;text-wrap:balance;margin:0}
+h1{font-size:clamp(26px,4vw,36px);line-height:1.15}
+h2{font-size:22px}
+.eyebrow{font:500 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{color:var(--muted);max-width:68ch;margin:8px 0 0}
+section{display:grid;gap:14px;min-width:0}
+.sechead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px}
+.sechead p{margin:0;color:var(--muted);font-size:13.5px;max-width:70ch}
+.mono{font-family:var(--f-mono);font-size:.92em}
+
+/* összesítő */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;display:grid;gap:2px}
+.stat b{font:600 26px/1.1 var(--f-display);font-variant-numeric:tabular-nums}
+.stat span{font-size:12.5px;color:var(--muted)}
+.stat.stop{background:var(--stop-soft);border-color:var(--stop)} .stat.run{background:var(--run-soft);border-color:var(--run)} .stat.ready{background:var(--ready-soft);border-color:var(--ready)}
+.stat.plan{background:var(--plan-soft);border-color:var(--plan)} .stat.wait{background:var(--wait-soft);border-color:var(--wait)} .stat.dt{background:var(--dt-soft);border-color:var(--dt)} .stat.dt b{color:var(--dt)}
+.stat.stop b{color:var(--stop)} .stat.run b{color:var(--run)} .stat.ready b{color:var(--ready)}
+.stat.plan b{color:var(--plan)} .stat.wait b{color:var(--wait)}
+
+/* sorrend */
+.seq{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.step{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:10px 12px;display:grid;gap:4px;flex:1 1 180px;min-width:0}
+.step .n{font:600 11px var(--f-mono);color:#fff;background:var(--accent);justify-self:start;padding:2px 7px;border-radius:999px}
+.step{border-top:3px solid var(--plan-solid)}
+.step strong{font-weight:600}
+.step small{color:var(--muted);font-size:12.5px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.step.par{border-style:dashed}
+.arrow{align-self:center;color:var(--muted);font-family:var(--f-mono)}
+
+/* hullámok */
+.waves{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.wave{background:var(--surface);border:1px solid var(--rule);border-top:5px solid var(--accent);border-radius:8px;padding:14px;display:grid;gap:8px;align-content:start}
+.wave h3{margin:0;font:600 15px var(--f-body)}
+.wave .gate{font-size:12.5px;color:var(--muted);border-top:1px dashed var(--rule);padding-top:8px}
+.wave .gate::before{content:"⛔ ";}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+
+/* chip */
+.chip{display:inline-flex;align-items:center;gap:6px;font:500 12px/1.2 var(--f-mono);padding:4px 8px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.chip i{font-style:normal;opacity:.75}
+.s-stop{background:var(--stop-soft);color:var(--stop);border-color:color-mix(in srgb,var(--stop) 30%,transparent)}
+.s-run{background:var(--run-soft);color:var(--run);border-color:color-mix(in srgb,var(--run) 30%,transparent)}
+.s-ready{background:var(--ready-soft);color:var(--ready);border-color:color-mix(in srgb,var(--ready) 30%,transparent)}
+.s-wait{background:var(--wait-soft);color:var(--wait);border-color:color-mix(in srgb,var(--wait) 30%,transparent)}
+.s-plan{background:var(--plan-soft);color:var(--plan);border-color:color-mix(in srgb,var(--plan) 30%,transparent);border-style:dashed}
+.s-idle{background:var(--idle-soft);color:var(--idle);border-color:color-mix(in srgb,var(--idle) 25%,transparent)}
+.s-done{background:transparent;color:var(--run);border-color:color-mix(in srgb,var(--run) 40%,transparent)}
+.s-nincs{background:transparent;color:var(--muted);border-color:var(--rule);border-style:dotted}
+
+/* szűrő */
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button{font:500 13px var(--f-body);background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:999px;padding:6px 12px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.filters button:focus-visible,.legend button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* oszlopok */
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;align-items:start}
+.col{display:grid;gap:8px;min-width:0}
+.colhead{display:flex;align-items:center;justify-content:space-between;font:600 13px var(--f-body);padding:6px 10px;border-radius:6px;color:#fff;background:var(--idle)}
+.colhead .count{color:inherit!important;opacity:.85}
+.colhead.h-stop{background:var(--stop-solid)} .colhead.h-run{background:var(--run-solid)} .colhead.h-ready{background:var(--ready-solid)} .colhead.h-wait{background:var(--wait-solid);color:#2b1d00} .colhead.h-plan{background:var(--plan-solid)} .colhead.h-idle{background:var(--idle-solid)}
+.colhead .count{font:500 12px var(--f-mono);color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--rule);border-left:6px solid var(--idle);border-radius:6px;padding:10px 12px;display:grid;gap:5px;min-width:0}
+.card.k-stop{border-left-color:var(--stop);background:var(--stop-soft)} .card.k-run{border-left-color:var(--run);background:var(--run-soft)} .card.k-ready{border-left-color:var(--ready);background:var(--ready-soft)}
+.card.k-wait{border-left-color:var(--wait);background:var(--wait-soft)} .card.k-plan{border-left-color:var(--plan);background:var(--plan-soft);border-style:dashed;border-left-style:solid} .card.k-idle{border-left-color:var(--idle);background:var(--idle-soft)}
+.card .top{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
+.card .id{font:500 12px var(--f-mono);color:var(--muted);white-space:nowrap}
+.card .name{font-weight:600;font-size:14px;line-height:1.3}
+.card .kod{font:500 11.5px var(--f-mono);color:var(--muted);overflow-wrap:anywhere}
+.card .next{font-size:12.5px;color:var(--muted);line-height:1.4}
+.card .deps{font:12px var(--f-mono);color:var(--muted);overflow-wrap:anywhere}
+.card .detail{font-size:13px;line-height:1.45;color:var(--ink)}
+.card .detail.nincs{color:var(--muted);font-style:italic}
+.card .next b{font-weight:600;color:var(--ink)}
+.card .sum{font-size:13px;line-height:1.4;font-weight:600;color:var(--ink);border-top:1px dashed color-mix(in srgb,var(--ink) 25%,transparent);padding-top:6px;margin-top:2px}
+
+/* térkép */
+.mapbox{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px;overflow-x:auto}
+.legend{display:flex;flex-wrap:wrap;gap:6px}
+.wrap{zoom:1.1}
+
+/* döntések */
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;align-items:start}
+.dlist{background:var(--surface);border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.dlist h3{margin:0;padding:10px 14px;font:600 14px var(--f-body);border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;gap:8px}
+.dlist h3 span{font:500 12px var(--f-mono);color:var(--muted)}
+.drow{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;padding:10px 14px;border-bottom:1px solid var(--rule)}
+.drow:last-child{border-bottom:0}
+.drow .did{font:500 12.5px var(--f-mono);white-space:nowrap}
+.drow .dq{font-size:13.5px;line-height:1.4}
+.drow .dfor{grid-column:2;font:12px var(--f-mono);color:var(--muted)}
+.drow .dell{grid-column:2;font:12px var(--f-mono);color:var(--dt)}
+.note{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;max-width:none}
+.note strong{color:var(--ink)}
+footer{font:12px var(--f-mono);color:var(--muted)}
+header{position:relative}
+.tema{position:absolute;top:0;right:0;font:500 13px var(--f-body);background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:999px;padding:6px 12px;cursor:pointer}
+.tema:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.eyebrow{padding-right:110px}
+@media (prefers-reduced-motion:no-preference){.card,.step{transition:border-color .15s}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header>
+  <button type="button" id="tema" class="tema" aria-label="Téma váltása"></button>
+  <div class="eyebrow" id="eyebrow"></div>
+  <h1>PaRDeS feladattérkép</h1>
+  <p class="lede">A <span class="mono">FELADATOK.md</span>, a <span class="mono">DONTESEK.md</span> és a <span class="mono">MUNKATERV.md</span> egy lapon, a források alapján generálva. A szaggatott keretes tételek tervezettek: még nincsenek a FELADATOK-ban, sorszámot a <span class="mono">/befogad</span> ad nekik.</p>
+</header>
+
+<section aria-labelledby="h-stat">
+  <h2 id="h-stat" class="eyebrow" style="font-family:var(--f-mono);font-size:12px">Összkép</h2>
+  <div class="stats" id="stats"></div>
+</section>
+
+<section aria-labelledby="h-seq">
+  <div class="sechead">
+    <h2 id="h-seq">Most induló sor</h2>
+    <p>Az 1. fázis indítható feladatai: a <span class="mono">feladatok.py jeloltek</span> kimenete, a <span class="mono">/kovetkezo</span> választási sorrendjében (a felbemaradt előre, utána a kisebb sorszám). Szaggatott keret: egy csomagban párhuzamosan futtatható.</p>
+  </div>
+  <div class="seq" id="seq"></div>
+</section>
+
+<section aria-labelledby="h-waves">
+  <div class="sechead">
+    <h2 id="h-waves">Munkaterv hullámai</h2>
+    <p>A MUNKATERV 5. szakasza; a ⛔ a hullám végi megállás. A chip színe a feladat mai állapota.</p>
+  </div>
+  <div class="waves" id="waves"></div>
+</section>
+
+<section aria-labelledby="h-board">
+  <div class="sechead">
+    <h2 id="h-board">Feladatok állapot szerint</h2>
+    <div class="filters" role="group" aria-label="Fázis szűrő" id="filters"></div>
+  </div>
+  <div class="board" id="board"></div>
+</section>
+
+<section aria-labelledby="h-map">
+  <div class="sechead">
+    <h2 id="h-map">Függési térkép</h2>
+    <p>A nyíl a függőtől a feltételig mutat. Kész feladatok nem szerepelnek; a döntések (DT) hatszögek. Forrás: <span class="mono">feladatok.py fuggesek</span> + a MUNKATERV függései + a DONTESEK „Feladat” oszlopa.</p>
+  </div>
+  <div class="legend" id="legend"></div>
+  <div class="mapbox">
+<pre class="terkep-forras">
+@@TERKEP@@
+</pre>
+  </div>
+</section>
+
+<section aria-labelledby="h-dt">
+  <div class="sechead">
+    <h2 id="h-dt">Döntések</h2>
+    <p>A <span class="mono">DONTESEK.md</span> nem alkalmazott tételei, és a MUNKATERV által javasolt, még fel nem vett DT-k. Az „ellenőrizendő” sor oszlopszáma eltér a táblafejlécétől, ezért az állapotát a generátor nem találgatja.</p>
+  </div>
+  <div class="dgrid" id="dgrid"></div>
+</section>
+
+<footer id="lablec"></footer>
+</div>
+
+<script>
+const D = @@ADAT@@;
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const clip = (s,n) => { s = String(s).split("**").join("").split(String.fromCharCode(96)).join(""); s = s.split(" ").filter(Boolean).join(" "); if(s.length<=n) return s; const v=s.slice(0,n); const i=v.lastIndexOf(" "); return (i>n*0.6?v.slice(0,i):v).replace(/[ ,;:—-]+$/,"")+"…"; };
+const ST = {}; D.cimkek.allapot.forEach(([k,l])=>{ST[k]={l:l,c:"s-"+k};});
+ST.kesz = {l:"Kész",c:"s-done"}; ST.nincs = {l:"nincs a térképen",c:"s-nincs"};
+const PH = {}; D.cimkek.fazis.forEach(([k,l])=>{PH[k]=l;});
+const chip = (t,s) => { const k = ST[s]?s:"nincs"; return `<span class="chip ${ST[k].c}">${esc(t)}${s==="kesz"?" ✓":""}</span>`; };
+const B = D.meta.belyeg;
+$("#eyebrow").textContent = "Bible-Study · források állapota " + (B.datum||"?") + " · commit " + (B.commit||"?");
+$("#lablec").textContent = "Forrás: a *_BRIEF.md fejlécek (feladatok.py) · MUNKATERV.md · DONTESEK.md · eszkozok/feladatterkep_kartyak.tsv · bélyeg: " + (B.datum||"?") + " " + (B.commit||"?") + " · generálta: " + D.meta.generator + " — kézzel ne szerkeszd.";
+
+$("#stats").innerHTML = D.csempek.map(c=>`<div class="stat ${c.kulcs}"><b>${c.db}</b><span>${esc(c.cimke)}</span></div>`).join("");
+
+$("#seq").innerHTML = D.sor.length ? D.sor.map((s,i)=>
+  (i?`<span class="arrow" aria-hidden="true">${s.parhuzamos&&D.sor[i-1].parhuzamos?"∥":"→"}</span>`:"")+
+  `<div class="step${s.parhuzamos?" par":""}"><span class="n">#${s.szam}${s.felbemaradt?" · folytatás":""}</span><strong class="mono">${esc(s.kod||s.cim)}</strong><small title="${esc(s.most)}">${esc(clip(s.most,160))}</small></div>`).join("")
+  : '<p class="note">Nincs indítható 1. fázisú feladat.</p>';
+
+const WC=["var(--run-solid)","var(--ready-solid)","var(--plan-solid)","var(--wait-solid)","var(--idle-solid)"];
+$("#waves").innerHTML = D.hullamok.map((w,i)=>`<div class="wave" style="border-top-color:${WC[i%WC.length]}"><h3>${esc(w.nev)}</h3><div class="chips">${w.elemek.map(e=>chip(e.szoveg,e.allapot)).join("")}</div><div class="gate">${esc(w.kapu)}</div></div>`).join("");
+
+$("#legend").innerHTML = D.cimkek.allapot.map(([k,l])=>chip(l,k)).join("");
+
+let phase = "all";
+try { phase = localStorage.getItem("pardes-fazis") || "all"; } catch(e) {}
+const fazisok = ["all"].concat(D.cimkek.fazis.map(f=>f[0]).filter(f=>D.kartyak.some(k=>k.fazis===f)));
+if (fazisok.indexOf(phase)<0) phase="all";
+const F = fazisok.map(v=>[v, v==="all"?"Mind":PH[v]]);
+function renderFilters(){
+  $("#filters").innerHTML = F.map(([v,l])=>`<button type="button" id="f-${v}" data-v="${v}" aria-pressed="${phase===v}">${esc(l)}</button>`).join("");
+  $("#filters").querySelectorAll("button").forEach(b=>b.onclick=()=>{phase=b.dataset.v;try{localStorage.setItem("pardes-fazis",phase)}catch(e){};renderFilters();renderBoard();});
+}
+function renderBoard(){
+  const order=["stop","run","ready","plan","wait","idle"];
+  const list = D.kartyak.filter(t=>phase==="all"||t.fazis===phase);
+  $("#board").innerHTML = order.map(s=>{
+    const items=list.filter(t=>t.allapot===s); if(!items.length) return "";
+    return `<div class="col"><div class="colhead h-${s}"><span>${ST[s].l}</span><span class="count">${items.length}</span></div>`+
+      items.map(t=>`<article class="card k-${s}"><div class="top"><span class="name">${esc(t.cim)}</span><span class="id">${t.szam!==null?"#"+t.szam:"tervezett"}</span></div>
+        <span class="kod">${esc(t.kulcs)} · ${esc(t.fazis?PH[t.fazis]:"fázis ?")}</span>
+        ${t.leiras_hiany?`<span class="detail nincs">nincs leírás</span>`:`<span class="detail">${esc(t.reszletes)}</span>`}
+        <span class="next" title="${esc(t.most)}"><b>Most:</b> ${esc(clip(t.most,220))}</span>
+        <span class="deps">függ: ${esc(t.fugg)}</span>${t.roviden?`<span class="sum">Röviden: ${esc(t.roviden)}</span>`:""}</article>`).join("")+`</div>`;
+  }).join("");
+}
+renderFilters(); renderBoard();
+(function(){var b=$("#tema"),r=document.documentElement;
+ function lbl(){b.textContent=r.getAttribute("data-tema")==="dark"?"☀ Világos":"☾ Sötét";}
+ lbl(); b.onclick=function(){var n=r.getAttribute("data-tema")==="dark"?"light":"dark";
+  r.setAttribute("data-tema",n); try{localStorage.setItem("pardes-tema",n)}catch(e){}
+  lbl(); if(window.rajzolTerkep) window.rajzolTerkep();};})();
+
+const DG = D.dontesek;
+const dsor = (d,mod) => `<div class="drow"><span class="did">${esc(d.id)}</span><span class="dq">${esc(clip(d.kerdes,230))}</span><span class="dfor">${mod==="javasolt"?"javasolt irány: "+esc(clip(d.irany||"—",90))+" · → ":"→ "}${esc(clip(d.feladat||"—",90))}</span>${mod==="ell"?`<span class="dell">ellenőrizendő: ${d.oszlopszam} oszlop a fejléc ${d.fejlec_oszlopszam} oszlopa helyett — az állapotot nézd meg a DONTESEK.md ${d.sor}. sorában</span>`:""}</div>`;
+const dlista = (cim,k,rows,mod) => `<div class="dlist"><h3>${chip(cim,k)}<span>${rows.length}</span></h3>${rows.length?rows.map(d=>dsor(d,mod)).join(""):'<div class="drow"><span class="dq">—</span></div>'}</div>`;
+$("#dgrid").innerHTML = dlista("Nyitott","stop",DG.nyitott)
+  + dlista("Eldöntve, alkalmazásra vár","run",DG.alkalmazasra_var)
+  + dlista("Javasolt, még nincs felvéve","plan",DG.javasolt,"javasolt")
+  + (DG.ellenorizendo.length?dlista("Ellenőrizendő sor","wait",DG.ellenorizendo,"ell"):"");
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11.16.1/dist/mermaid.min.js"></script>
+<script>
+/* Ugyanaz a Mermaid-beállítás, amellyel a claude.ai artifact rajzol (base téma, a lap háttere); témaváltáskor újrarajzol */
+(function(){
+var pre=document.querySelector("pre.terkep-forras"); if(!pre||typeof mermaid==="undefined") return;
+var src=pre.textContent, hely=document.createElement("div"); pre.parentNode.insertBefore(hely,pre); pre.style.display="none";
+var n=0;
+window.rajzolTerkep=function(){
+ var dark=document.documentElement.getAttribute("data-tema")==="dark";
+ var pal=dark?{surface:"#262b34",text:"#f2f3f5",line:"#a8adb8",border:"#9aa4b8"}:{surface:"#f4efe4",text:"#42392e",line:"#8a7f6d",border:"#7a6c52"};
+ var bg=getComputedStyle(document.body).backgroundColor;
+ mermaid.initialize({startOnLoad:false,securityLevel:"strict",theme:"base",flowchart:{useMaxWidth:false},
+  themeVariables:{background:bg,mainBkg:pal.surface,primaryColor:pal.surface,primaryTextColor:pal.text,lineColor:pal.line,
+   primaryBorderColor:pal.border,nodeBorder:pal.border,edgeLabelBackground:bg,darkMode:dark,fontSize:"10px",
+   fontFamily:getComputedStyle(document.body).fontFamily},
+  themeCSS:".node rect, .node circle, .node polygon, .node path { stroke-width: 2px; }"});
+ mermaid.render("terkep-"+(n++),src).then(function(r){hely.innerHTML=r.svg;},function(){pre.style.display="";});
+};
+window.rajzolTerkep();
+})();
+</script>
+</body>
+</html>
+'''
+
+
 def html_szoveg(adat):
-    raise NotImplementedError('FT.2')
+    """Az onallo lap: a JSON beagyazva (a `<` jel \\u003c-vel, hogy a script ne zarodjon le)."""
+    adat_js = json.dumps(adat, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')
+    terkep = (adat['terkep'].replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;'))
+    return (HTML_SABLON.replace('@@ADAT@@', adat_js, 1)
+            .replace('@@TERKEP@@', terkep, 1))
 
 
 def json_szoveg(adat):

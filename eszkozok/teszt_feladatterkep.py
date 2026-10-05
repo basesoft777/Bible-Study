@@ -204,6 +204,31 @@ class TesztIdempotens(FixtureAlap):
             self.assertEqual(f1.read(), f2.read())
 
 
+class TesztHtml(FixtureAlap):
+    def test_html_ketszer_azonos_es_json_beagyazva(self):
+        a = T.html_szoveg(self.adat())
+        b = T.html_szoveg(self.adat())
+        self.assertEqual(a.encode('utf-8'), b.encode('utf-8'))
+        self.assertIn('<!-- GENERÁLT: eszkozok/feladatterkep.py — kézzel ne szerkeszd -->', a)
+        self.assertIn('data-tema="dark"', a)                 # nem a data-theme
+        self.assertNotIn('data-theme', a)
+        self.assertIn('"kulcs":"ALFA"', a)                   # a beágyazott JSON
+        self.assertFalse(re.search(r'\d{2}:\d{2}:\d{2}', a))
+
+    def test_html_nem_zarja_le_a_scriptet_az_adat(self):
+        d = self.adat()
+        d['kartyak'][0]['cim'] = 'x </script><b>y'
+        a = T.html_szoveg(d)
+        self.assertEqual(a.count('</script>'), 4)             # a sablon négy scriptje
+        self.assertIn('\\u003c/script>', a)
+
+    def test_main_ket_kimenetet_ir(self):
+        ki = os.path.join(self.dir, 'ki')
+        T.main(['--gyoker', self.dir, '--kimenet', ki])
+        self.assertTrue(os.path.isfile(os.path.join(ki, T.JSON_NEV)))
+        self.assertTrue(os.path.isfile(os.path.join(ki, T.HTML_NEV)))
+
+
 class TesztTsvSzabaly(unittest.TestCase):
     def test_csv_modul_nincs_importalva(self):
         ut = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'feladatterkep.py')
