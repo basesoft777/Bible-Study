@@ -34,3 +34,19 @@ Mellékleletek (a `N-F30a` tételben): a DT19 sora (#19 KJV/ASV) ugyanilyen fela
 ## SZ.6 Próba
 
 Lásd a lap alját (a helyi próba kimenete).
+
+### Helyi próba (a próba-PR nélkül; ugyanaz a `futtat.py` hívás, mint a CI-ben)
+
+A brief SZ.6-a PR-os próbát ír; a megbízás tiltotta a PR-nyitást, ezért a próba helyben, eldobható ágon futott (`probaag-f30-szamozas`, törölve, nem pusholva), a CI `futtat.py --diff-alap/--diff-fej --esemeny pull_request` hívásával.
+
+| Eset | Eredmény |
+|---|---|
+| két helyőrzős döntés (`DT-F99a`, `DT-F99b`) | E26: 0 találat, kilépés 0 (zöld) |
+| szándékosan végleges szám (`DT44`) | E26: HIBA 2 (`új végleges azonosító: DT44`, `a DT44 szám a main-en még nem létezik`), kilépés 1 (piros) |
+| `--proba` a két próbasorral | `DT-F30a → DT30, DT-F99a → DT31, DT-F99b → DT32, N-F30a → N47`; 3 fájl, 6 csere |
+| `--ir`, majd újra `--ir` | a sorok `DT30`–`DT32`-re cserélődtek; üzenet: `szamkiosztas: DT-F30a → DT30, DT-F99a → DT31, DT-F99b → DT32, N-F30a → N47`; a második futás: „Nincs kiosztandó helyőrző” (idempotens) |
+| a teljes F30-ág a `merge-base`-hez képest (a `SZÁMKIOSZTÁS-SZÁNDÉKOS:` jelöléssel) | minden szabály 0 HIBA, kilépés 0; jelölés nélkül az E26 3 HIBA (DT29 definíció, DT29 és N47 hivatkozás) |
+
+Az Action élesben az első valódi merge-kor fut. Az első futásnak a `DT-F30a`-t `DT30`-ra és az `N-F30a`-t `N47`-re kell számoznia (ha addig más tétel nem érkezik), a 99 örökölt helyőrzőt változatlanul hagyva.
+
+Nem ellenőrzött lokálisan: a workflow YAML GitHub-oldali futása (App-token, `git push` a ruleset mögött) — ezt csak az első main-futás igazolja.

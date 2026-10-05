@@ -1,12 +1,3 @@
-F30.1–F30.5: számkiosztás merge-kor (eszköz, Action, E26, DT18 → DT29, dokumentáció)
-
-- eszkozok/szamkiosztas.py: a DT-F/N-F/D-F helyőrzők kiosztása és cseréje (--proba, --ir)
-- .github/workflows/szamkiosztas.yml: main-pushra futó gépi kiosztás
-- E26: végleges DT/N szám az ágon HIBA (eszkozok/ellenorzes), tesztekkel
-- eszkozok/szamkiosztas_oroklott.txt: a 99 már meglévő helyőrző kimarad az első kiosztásból (DT-F30a)
-- a DT18 (a #18 feladatszámából képzett hibás szám) átszámozva DT29-re
-- CLAUDE.md, BRIEF_SABLON.md, DONTESEK.md fejléc: a szabály; N-F30a, DT-F30a felvéve
-
-SZÁMKIOSZTÁS-SZÁNDÉKOS: a DT18 → DT29 átszámozás (F30 SZ.4)
+F30.6: napló, helyi próba, megállás a DT-F30a döntésnél (allapot: dontesre_var)
 
 Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>

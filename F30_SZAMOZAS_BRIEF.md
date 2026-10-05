@@ -5,10 +5,10 @@ kod: SZAMOZAS
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: dontesre_var
 ag: claude/szamozas
 ad: az ágak nem foglalnak végleges DT/N-számot; a párhuzamos merge-ek nem ütköznek sorszámon; a main-en a számokat egy Action osztja ki
-kovetkezo: a helyőrző-Action és a CI-szabály megírása, a DT18 átszámozása, a nyitott ágak helyőrzőre állítása
+kovetkezo: "Te: döntsd el a DT-F30a-t (DONTESEK.md): az 1 maradjon-e az örökölt helyőrzők kiosztása nélkül, vagy tömeges kiosztás kell; utána a független ellenőrzés és a draft PR ([ELLENŐRZŐ] előtaggal, E16)"
 fugg: [8, 16, 17]
 olvas: [DONTESEK.md, NYITOTT_FELADATOK.md, FELADATOK.md, CLAUDE.md, .github/workflows/, eszkozok/feladatok.py]
 ir: [.github/workflows/szamkiosztas.yml, eszkozok/szamkiosztas.py, eszkozok/ellenorzes/szabalyok.py, DONTESEK.md, NYITOTT_FELADATOK.md, CLAUDE.md, BRIEF_SABLON.md]
