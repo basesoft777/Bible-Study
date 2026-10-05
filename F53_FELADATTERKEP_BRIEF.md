@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 53
 cim: Feladattérkép — a feladatok, döntések és a munkaterv generált vizuális áttekintése
 kod: FELADATTERKEP
 tipus: feladat
@@ -12,12 +12,13 @@ kovetkezo: /kovetkezo; ⛔ a kis minta után (összevetés a mai kézi lappal), 
 olvas: ["F*_BRIEF.md", MUNKATERV.md, eszkozok/feladatok.py, .github/workflows/feladatok.yml, FELADATTERKEP.html]
 ir: [eszkozok/feladatterkep.py, eszkozok/feladatterkep_kartyak.tsv, eszkozok/teszt_feladatterkep.py, FELADATTERKEP.html, feladatterkep.json, .github/workflows/feladatok.yml]
 fugg: []
+nem_fugg: [52]
 helyi_gep: nem
 ---
 
-# F5x_FELADATTERKEP_BRIEF.md — Feladattérkép: generált vizuális áttekintés
+# F53_FELADATTERKEP_BRIEF.md — Feladattérkép: generált vizuális áttekintés
 
-*FELADATOK #(a /befogad adja) · Modell: sonnet · v1 · 2026.10.05*
+*FELADATOK #53 · Modell: sonnet · v1 · 2026.10.05*
 
 *Előzmény: a 2026-10-05-i chat-session kézzel épített egy áttekintő lapot
 (`FELADATTERKEP.html`, a gyökérben) és egy claude.ai-artifactot
