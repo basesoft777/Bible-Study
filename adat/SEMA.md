@@ -21,6 +21,7 @@ A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20) és a
 | `grammatikai_strongok.tsv` | `strong` | **generált** — `eszkozok/grammatikai_strongok_general.py` |
 | `auditok.tsv` | nincs (l. 2.9) | a `lekerdez.py` proveniencia-sora, kézzel rögzítve |
 | `licencek.tsv` | `dataset` | kézzel (leltár, F24) |
+| `dontes_hatas.tsv` | `dontes_forras` + `erintett_fajl` + `tilos_minta` | kézzel (F51, 2.21) |
 | `karoli_strong/parok_<könyv>.tsv`, `karoli_strong/szavak_<könyv>.tsv` | `vers` + `hu_sorszam` + `er_sorszam` / `vers` + `oldal` + `sorszam` | **generált** (modell-kimenet, javaslat) — `eszkozok/karoli_strong/egyesit.py` (2.20, F22) |
 
 ---
@@ -960,6 +961,38 @@ Olvasás/írás: `split('	')` / `'	'.join()` (a `csv` modul tilos, l. CLAUDE.md)
 `strong` minden értéke a TAHOT-ból levezethető; a `parok` és `szavak` szó-alakjai a forrásból. **Átnézési sor:**
 `naplok/F22_<könyv>_atnezes.tsv` (a `kezi` versek, linkek nélkül). A tábla `egyesit.py`-val újraépíthető, a két
 modell nyers válaszaiból (`f22/valaszok/sonnet/`, `f22/valaszok/c/`), API-hívás nélkül, bájtra azonosan.
+
+### 2.21 `dontes_hatas.tsv` — döntések átvezetésének nyilvántartása (F51, FELADATOK #51, DT-F51-5)
+
+Egy sor = egy döntés egy érintett fájlban: az a mintapár, amely a fájlban a **döntés előtti** állapotot
+jelzi. A tábla a CI E25 szabályának (l. `eszkozok/ellenorzes/szabalyok.py`) egyetlen bemenete; csak azt
+fogja meg, amit előre leírtunk. A táblában nem szereplő, fogalmi ellentmondásokat a `/konzisztencia`
+ügynök (`.claude/commands/konzisztencia.md`) keresi.
+
+Kulcs: `dontes_forras` + `erintett_fajl` + `tilos_minta`. **A fájl a kulcs része**, mert a D-számok
+fájlonként újraindulnak, és ütköznek (pl. D34: `F26_EGYFORRAS_NAPLO_BRIEF.md` kontra
+`F05_SZOTAR_BRIEF.md`, l. `naplok/KONZISZTENCIA_naplo.md`). Fejlécsorok `#`-tel; olvasás
+`split('\t')`, írás `'\t'.join()` (a `csv` modul tilos, l. CLAUDE.md).
+
+| Mező | Típus | Kötelező | Leírás |
+|---|---|---|---|
+| `dontes_forras` | `fájl#azonosító` | ✔ | a döntést rögzítő repó-relatív fájl és azonosító, pl. `F26_EGYFORRAS_NAPLO_BRIEF.md#D34`. A fájlnak léteznie kell, és az azonosítónak szó szerint (`\bD34\b`) szerepelnie kell benne |
+| `datum` | `ÉÉÉÉ-HH-NN` | ✔ | a döntés napja; a 14 napos állás-határ (E25 (b)) ettől számít |
+| `erintett_fajl` | repó-relatív út | ✔ | az a fájl, amelynek a döntést tükröznie kell; léteznie kell |
+| `tilos_minta` | regex (Python `re`) | ✔ | a döntés előtti állapot; sorokra illesztve (`re.search`), tabot nem tartalmazhat |
+| `atmeneti_jeloles` | regex | | ha a fájlban bárhol megvan, a `tilos_minta` találat csak `JELENTES` (jogos átmeneti állapot), nem `FIGYELMEZTETES` |
+| `tovabbvivo_feladat` | egész szám | | a `FELADATOK.md` száma, amely a döntést átvezeti; üres, ha nincs. Az állapotát az `F<nn>_*_BRIEF.md` fejlécének `feladat:`/`allapot:` mezője adja |
+| `megjegyzes` | szabad szöveg | | indok, a sor származása |
+
+**E25 (CI, `szabalyok.py`):** (a) `tilos_minta` találat az `erintett_fajl`-ban `atmeneti_jeloles` nélkül →
+FIGYELMEZTETES (jelöléssel: JELENTES); (b) a `tovabbvivo_feladat` állapota `nem_indult` / `brief_kell`, és a
+`datum` óta több mint 14 nap telt el → FIGYELMEZTETES; (c) a `dontes_forras` fájlja vagy azonosítója, az
+`erintett_fajl` vagy egy `tilos_minta` / `atmeneti_jeloles` regex hibás vagy nem létezik → **HIBA** (a tábla
+nem avulhat el csendben). Csak az (c) HIBA (DT-F51-4).
+
+**Felvételi szabály:** csak olyan döntésre kerül sor, amelynek a régi állapota **regexszel egyértelműen**
+felismerhető. Ami nem az, azt az ügynök jelenti (nem a tábla dolga). Egy sor kézzel kerül be, a döntés
+rögzítésével egy menetben; a szabály nem javít, nem ír vissza.
 
 ---
 
