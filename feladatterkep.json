@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-05",
-   "commit": "55af1b5"
+   "commit": "c87ac04"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -77,7 +77,7 @@
   {
    "kulcs": "wait",
    "cimke": "Függésre vár",
-   "db": 13
+   "db": 12
   },
   {
    "kulcs": "plan",
@@ -87,15 +87,15 @@
   {
    "kulcs": "dt",
    "cimke": "Nyitott döntés",
-   "db": 6
+   "db": 7
   }
  ],
  "sor": [
   {
-   "szam": 57,
-   "kod": "BDB_STRONG_POTLAS",
-   "cim": "A BDB-tábla hiányzó szócikkei — Strong-címke nélküli BDB-szócikkek párosítása és pótlása",
-   "most": "/kovetkezo; ⛔ az M1 párosítás után",
+   "szam": 56,
+   "kod": "BDB_ADATBLOKK",
+   "cim": "BDB-adatblokk — szócikkenként előre számolt Károli-, példavers- és LXX-adat a fordító promptba (közvetlen TSV-változat)",
+   "most": "/kovetkezo; ⛔ az M3 mintablokk után (elfogadási próba)",
    "felbemaradt": false,
    "parhuzamos": true
   }
@@ -150,7 +150,7 @@
     },
     {
      "szoveg": "BDB_ADATBLOKK",
-     "allapot": "wait"
+     "allapot": "ready"
     }
    ],
    "kapu": "az MCP_BUROK eszközteszt egyezik a CLI-vel; a #38 6. adagja a BDB_ADATBLOKK adatblokkjával indul (DT-F38i)"
@@ -390,7 +390,7 @@
    "allapot": "wait",
    "brief_allapot": "fut",
    "most": "Folytatás: a 6. adag (sorrend 407–), Sonnet, a #56 BDB_ADATBLOKK adatblokkjával és fejezetszám-javítótáblájával (DT-F38i 🟢); a menet elején a gyökcsoport-mérés (M0 5. pont)",
-   "fugg": "#34 (kész), #56*, #57*",
+   "fugg": "#34 (kész), #56*",
    "tervezett": false,
    "reszletes": "A BDB, a legrészletesebb héber szótár mind a 8 090 szócikke magyarra fordul, gyakorisági sorrendben, adagonként, gépi minőségkapukkal. Öt adag (406 szócikk) kész; a hatodik a DT-F38i döntésre vár.",
    "roviden": "A nagy héber szótár magyarítása — most egy igen/nemre vár, hogy mehet-e tovább.",
@@ -531,31 +531,15 @@
    "kod": "BDB_ADATBLOKK",
    "cim": "BDB-adatblokk — szócikkenként előre számolt Károli-, példavers- és LXX-adat a fordító promptba (közvetlen TSV-változat)",
    "fazis": "1",
-   "allapot": "wait",
+   "allapot": "ready",
    "brief_allapot": "nem_indult",
    "most": "/kovetkezo; ⛔ az M3 mintablokk után (elfogadási próba)",
-   "fugg": "#57*",
+   "fugg": "—",
    "tervezett": false,
    "reszletes": "A BDB-fordítás minden adagja elé gépileg összerakott adatblokk kerül: Károli-szóalakok, példaversek, LXX-megfelelő, rokon szavak. Így a fordító modell nem fejből dolgozik. A DT-F38i után indul.",
    "roviden": "Tényadatokkal látja el a szótárfordítót, hogy ne találgasson.",
    "leiras_forras": "kezi-2026-10-05",
    "leiras_hiany": false
-  },
-  {
-   "kulcs": "BDB_STRONG_POTLAS",
-   "szam": 57,
-   "kod": "BDB_STRONG_POTLAS",
-   "cim": "A BDB-tábla hiányzó szócikkei — Strong-címke nélküli BDB-szócikkek párosítása és pótlása",
-   "fazis": "1",
-   "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "/kovetkezo; ⛔ az M1 párosítás után",
-   "fugg": "—",
-   "tervezett": false,
-   "reszletes": "",
-   "roviden": "",
-   "leiras_forras": null,
-   "leiras_hiany": true
   },
   {
    "kulcs": "SZOSZEDET",
@@ -762,7 +746,6 @@
    "FELADATTERKEP",
    "LXX_OS_LEFEDETTSEG",
    "ZSOLTAR_UJRAELLENORZES",
-   "BDB_STRONG_POTLAS",
    "SZOSZEDET",
    "OLVASOI_PILOT",
    "LEKERDEZ_NAPLO",
@@ -770,7 +753,7 @@
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_OLVASOI_KONKORDANCIA[\"OLVASOI_KONKORDANCIA\"]:::plan\n  P_SQLITE_EPIT[\"SQLITE_EPIT\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::wait\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T37[\"#37 TANULMANY_ELLENORZES\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::wait\n  T40[\"#40 HIVATKOZAS_ELLENORZES\"]:::wait\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::run\n  T53[\"#53 FELADATTERKEP\"]:::stop\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::wait\n  T56[\"#56 BDB_ADATBLOKK\"]:::wait\n  T57[\"#57 BDB_STRONG_POTLAS\"]:::ready\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::ready\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::ready\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T64[\"#64 TEREMT002_PROZA_PROBA\"]:::stop\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38d{{\"DT-F38d\"}}:::dt\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> P_SQLITE_EPIT\n  P_OLVASOI_KONKORDANCIA --> D_DT_M1\n  P_OLVASOI_KONKORDANCIA --> D_DT_M4\n  P_OLVASOI_KONKORDANCIA --> D_DT_M6\n  P_OLVASOI_KONKORDANCIA --> P_SQLITE_EPIT\n  P_SQLITE_EPIT --> T62\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> T11\n  T10 --> T9\n  T11 --> T23\n  T11 --> T9\n  T12 --> T11\n  T13 --> T10\n  T23 --> D_DT28\n  T23 --> T37\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> T37\n  T36 --> T38\n  T36 --> T56\n  T36 --> T7\n  T36 --> T9\n  T37 --> D_DT28\n  T37 --> T45\n  T38 --> D_DT_F38d\n  T38 --> D_DT_F38i\n  T38 --> T56\n  T38 --> T57\n  T40 --> T37\n  T48 --> T22\n  T54 --> T62\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T56 --> T57\n  T61 --> T54\n  T61 --> T62\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T9 --> D_DT28\n  T9 --> T23\n  T9 --> T38\n  T9 --> T56\n  T9 --> T7",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_OLVASOI_KONKORDANCIA[\"OLVASOI_KONKORDANCIA\"]:::plan\n  P_SQLITE_EPIT[\"SQLITE_EPIT\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::wait\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T37[\"#37 TANULMANY_ELLENORZES\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::wait\n  T40[\"#40 HIVATKOZAS_ELLENORZES\"]:::wait\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::run\n  T53[\"#53 FELADATTERKEP\"]:::stop\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::wait\n  T56[\"#56 BDB_ADATBLOKK\"]:::ready\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::ready\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::ready\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T64[\"#64 TEREMT002_PROZA_PROBA\"]:::stop\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38d{{\"DT-F38d\"}}:::dt\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> P_SQLITE_EPIT\n  P_OLVASOI_KONKORDANCIA --> D_DT_M1\n  P_OLVASOI_KONKORDANCIA --> D_DT_M4\n  P_OLVASOI_KONKORDANCIA --> D_DT_M6\n  P_OLVASOI_KONKORDANCIA --> P_SQLITE_EPIT\n  P_SQLITE_EPIT --> T62\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> T11\n  T10 --> T9\n  T11 --> T23\n  T11 --> T9\n  T12 --> T11\n  T13 --> T10\n  T23 --> D_DT28\n  T23 --> T37\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> T37\n  T36 --> T38\n  T36 --> T56\n  T36 --> T7\n  T36 --> T9\n  T37 --> D_DT28\n  T37 --> T45\n  T38 --> D_DT_F38d\n  T38 --> D_DT_F38i\n  T38 --> T56\n  T40 --> T37\n  T48 --> T22\n  T54 --> T62\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T61 --> T54\n  T61 --> T62\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T9 --> D_DT28\n  T9 --> T23\n  T9 --> T38\n  T9 --> T56\n  T9 --> T7",
  "dontesek": {
   "nyitott": [
    {
@@ -832,6 +815,16 @@
      "🟡"
     ],
     "sor": 101
+   },
+   {
+    "id": "DT40",
+    "feladat": "#57 BDB_STRONG_POTLAS, nyitott tétel a DT39-ből",
+    "kerdes": "Az elvetett arámi szócikkek (173 másodlagos címke: 172 `nem_ebbol_a_szocikkbol` és a H3606 `a_testversor_mas_szocikk`, a BDB9264-től induló arámi szócikkek, kb. 190 új sor a BDB.lexicon szövegéből) tényleges pótlása nem az F57 hatóköre. Indítsuk külön feladatként? *(forrás: a DT39 döntés 3. pontja, orkesztrátor)*",
+    "allapot": "nyitott",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 108
    }
   ],
   "alkalmazasra_var": [
@@ -1066,6 +1059,46 @@
     "sor": 104
    },
    {
+    "id": "DT37",
+    "feladat": "#57 BDB_STRONG_POTLAS, ⛔ az M1 után",
+    "kerdes": "A felmérés a brief előfeltevését két ponton módosítja. (1) A BDB.lexicon-ban a H0136 és a H0341 (és még 527 Strong) nem címke nélküli szócikk: a szócikk fejlécében a Strong másodlagos címkeként áll (pl. BDB125 [H113 H136]), a `H<n>` kulcs létezik, a szöveg a táblában a testvér-Strong sora alatt már megvan (513/529 sorban címszó-ellenőrzéssel igazolva); a DictBDB.json egy szócikkhez csak egy Strong-kulcsot ad. A 3. kizárási szabály miatt ezek nem párosíthatók, és a brief M2-je szerint nem is volna mit pótolni. (2) A tényleg címke nélküli 846 szócikkből (köztük sok gyök-hivatkozás) a hiányzó, `H<n>` kulcs nélküli 61 OSHL-Strongra csak 3 egyértelmű pár adódik (H4725 mákóm, H4123, H0747); `tobb_jelolt` 0, a 20 soros szúrópróba így nem adható a H4725-tel, a H0136-tal és a H0341-gyel egyszerre. Mit pótoljunk, és mi legyen a 529 másodlagos címkével? *(a) a 3 egyértelmű pár jóváhagyása, (b) a tobb_jelolt kezelése (itt: nincs ilyen sor; a 2 mássalhangzó-egyezési tipp: BDB1362/H1313, BDB4531/H4118), (c) a 529 másodlagos címke)* *(forrás: `naplok/BDB_STRONG_POTLAS_M0.md`, `naplok/BDB_STRONG_POTLAS_M1.md`, `konkordancia/BDB_strong_potlas.tsv`)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 105
+   },
+   {
+    "id": "DT38",
+    "feladat": "#57 BDB_STRONG_POTLAS, a DT37 (c) alkalmazása",
+    "kerdes": "A DT37 (c) szerinti alias-tábla miatt a brief `ir` listája bővül (tételként rögzítve, nem hallgatólagosan): `konkordancia/BDB_strong_alias.tsv` (generált tábla), valamint a brief által előírt (M0/M1-jelentés) vagy a zárásra szánt (M3: `naplok/BDB_STRONG_POTLAS_zaras.md`, a brief szerinti név; az első változat `F57_zaras.md` volt, az ellenőri 5. tétel miatt átnevezve), de az `ir`-ben nem szereplő fájlok: `naplok/BDB_STRONG_POTLAS_M0.md`, `naplok/BDB_STRONG_POTLAS_M1.md`, `naplok/BDB_STRONG_POTLAS_zaras.md`. A generáló kód (`eszkozok/bdb_strong_potlas.py --alias`) és a tesztje (`eszkozok/teszt_bdb_strong_potlas.py`) már az `ir`-ben volt. *(forrás: a DT37 (c) döntés feltétele, orkesztrátor, 2026-10-05)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 106
+   },
+   {
+    "id": "DT39",
+    "feladat": "#57 BDB_STRONG_POTLAS, a független ellenőr súlyos lelete (az alias arámi szócikkeket héber testvérsorra old fel)",
+    "kerdes": "A DT37 (c) pontja az arámi csoportnál hamis előfeltevésre épült: az alias „igen” jelölése csak mássalhangzós rész-sztring-egyezés volt, a testvér-Strong táblasora (pl. H0398) a héber szócikk, nem az arámi BDB9297. Hogyan javítsuk? *(forrás: `naplok/ELLENOR_BDB_STRONG_POTLAS.md` 1. tétel)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 107
+   },
+   {
+    "id": "DT41",
+    "feladat": "#57 BDB_STRONG_POTLAS, az alias szövegegyezési küszöbe (a DT39 kiegészítése)",
+    "kerdes": "A `bdb_id`-egyezés mellé szövegegyezési küszöb (0,6, `difflib`) kerül az alias-feltételbe; a több testvéres sorok kizárva. A küszöb alatti, de 0,55–0,59 közötti 5 sor (H3292, H3347, H5761, H6978, H8284) `kezi_ellenorzesre` indokot kap az elvetett listán. *(forrás: ügynöki javaslat, a felhasználó utólag jóváhagyta)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 109
+   },
+   {
     "id": "DT35",
     "feladat": "#58 MORF_KULCS (M0 ⛔)",
     "kerdes": "Melyik nyílt forrásból készüljön a héber morfológiai jelkulcs, és jóváhagyható-e a licencsor? A Macula-kód (747 kód) az OSHB-kódolás, nyelvjelölő nélkül; a Macula repó nem ad önálló jelkulcsot. Külön döntés: a nyelvet (héber/arámi) a Macula-kód nem hordozza, de a törzsbetűk jelentése nyelvenként más (18 kód csak arámi törzsjelet használ, az arámi igék többi része a kódból nem különböztethető meg a héberétől). *(forrás: `naplok/MORF_KULCS_M0.md`)*",
@@ -1073,7 +1106,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 105
+    "sor": 110
    },
    {
     "id": "DT36",
@@ -1083,7 +1116,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 106
+    "sor": 111
    },
    {
     "id": "DT30",
@@ -1093,7 +1126,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 107
+    "sor": 112
    },
    {
     "id": "DT31",
@@ -1103,7 +1136,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 108
+    "sor": 113
    },
    {
     "id": "DT32",
@@ -1113,7 +1146,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 109
+    "sor": 114
    },
    {
     "id": "DT33",
@@ -1123,7 +1156,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 110
+    "sor": 115
    },
    {
     "id": "DT34",
@@ -1133,7 +1166,47 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 111
+    "sor": 116
+   },
+   {
+    "id": "DT42",
+    "feladat": "#57 BDB_STRONG_POTLAS, az alias szövegegyezési mércéje (a DT41 helyébe lép; PR #209)",
+    "kerdes": "Az ellenőr 2. köre szerint a teljes szövegek `difflib`-aránya (0,6) rendszerszinten rosszat mér: a DictBDB-sor a saját szócikke után további szócikkeket is tartalmaz (pl. H6130 az ʿĀqān után az עקר gyököt), ezért tökéletes egyezés is 0,2–0,6-ot kap. Mi legyen az alias szövegfeltétele? *(forrás: `naplok/ELLENOR_BDB_STRONG_POTLAS.md`, 2. kör)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 117
+   },
+   {
+    "id": "DT43",
+    "feladat": "#57 BDB_STRONG_POTLAS, a DT42 összevetési módszerének pontosítása (a DT42-et nem váltja fel; PR #209)",
+    "kerdes": "A 3. ellenőri kör szerint a DT42 mérése a héber szöveget is számolta, a DictBDB viszont a többszavas héber kifejezések szórendjét megfordítja (pl. H3347: ugyanaz a szöveg fordított sorrendben), ezért jó sorok estek ki; a mérőszám jellege csak a README-ben/M1-ben állt. Hogyan mérjünk pontosan? *(forrás: ellenőri 3. kör, orkesztrátor)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 118
+   },
+   {
+    "id": "DT44",
+    "feladat": "#57 BDB_STRONG_POTLAS, a `tobb_testveres` kizárás pontosítása (a DT43-t módosítja; PR #209)",
+    "kerdes": "A több azonos szócikkbeli testvéres sorok kizárása túl szigorú: a felhasználó mérése szerint a 37-ből 35 sorban pontosan egy testvér felel meg a szövegfeltételnek (a nyertes 0,95–1,00, a többi ≤ 0,69). Mikor érvényes a kizárás? *(forrás: ellenőri 4. kör, felhasználói mérés)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 119
+   },
+   {
+    "id": "DT45",
+    "feladat": "#57 BDB_STRONG_POTLAS, a kézzel kint tartott sorok és a `kuszob_alatt` sorok sorsa",
+    "kerdes": "A H3071, H3073, H3074 (JHVH-nisszí, JHVH-sálóm, JHVH-sammá), a H2088 → H6258 és a `kuszob_alatt` sorok (H0706, H6737, H8112) kezelése. *(forrás: ellenőri 4. kör, orkesztrátor)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 120
    }
   ],
   "javasolt": [],

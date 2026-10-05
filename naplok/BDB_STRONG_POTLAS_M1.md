@@ -34,18 +34,18 @@ Nincs.
 | BDB1362 | בשׂם | H1313 |
 | BDB4531 | מהר | H4118 |
 
-## 3. Másodlagos címke: a Strong a BDB.lexicon-ban van, a táblában nincs sora (DT-F57a, DT-F57c, DT-F57f, DT-F57g, DT-F57h)
+## 3. Másodlagos címke: a Strong a BDB.lexicon-ban van, a táblában nincs sora (DT37, DT39, DT42, DT43, DT44)
 
 - 529 Strong (a H0136 és a H0341 is ide tartozik): a BDB.lexicon `H<n>` kulcsa létezik, a szócikk fejlécében a Strong másik Strong mellett áll, ezért a 3. kizárási szabály miatt nem párosítható.
-- **Alias-feltétel (DT-F57f/g/h, nyelvi szűrés nélkül):** (1) a testvér-Strong táblasora ugyanabból a BDB-szócikkből származik (a testvér `H<n>` kulcsának `bdb_id`-je egyezik a másodlagos címke `bdb_id`-jével); (2) **mérőszám** (`elejegyezes`): a szócikk ujjlenyomatának (CSAK latin betűk; a héber szöveg és a bibliai hivatkozások kimaradnak; legfeljebb 1500 karakter) az a hányada, amely a testvérsor elején megvan: a testvérsor (a `H<n>.` előtag nélküli) ujjlenyomatának első `hossz + 60` karaktere az ablak, az érték a `difflib.SequenceMatcher` egyező blokkjainak karakterszáma osztva a szócikk ujjlenyomatának hosszával; **küszöb ≥ 0.9**; (3) ha több azonos szócikkbeli testvér van, pontosan **egy** felel meg a (2)-nek, és az az alias célja (2+ megfelelő esetén `tobb_testveres`, elvetve; ilyen sor jelenleg nincs); (4) a kézi kivételek (`KIZART`) kint maradnak.
+- **Alias-feltétel (DT42/g/h, nyelvi szűrés nélkül):** (1) a testvér-Strong táblasora ugyanabból a BDB-szócikkből származik (a testvér `H<n>` kulcsának `bdb_id`-je egyezik a másodlagos címke `bdb_id`-jével); (2) **mérőszám** (`elejegyezes`): a szócikk ujjlenyomatának (CSAK latin betűk; a héber szöveg és a bibliai hivatkozások kimaradnak; legfeljebb 1500 karakter) az a hányada, amely a testvérsor elején megvan: a testvérsor (a `H<n>.` előtag nélküli) ujjlenyomatának első `hossz + 60` karaktere az ablak, az érték a `difflib.SequenceMatcher` egyező blokkjainak karakterszáma osztva a szócikk ujjlenyomatának hosszával; **küszöb ≥ 0.9**; (3) ha több azonos szócikkbeli testvér van, pontosan **egy** felel meg a (2)-nek, és az az alias célja (2+ megfelelő esetén `tobb_testveres`, elvetve; ilyen sor jelenleg nincs); (4) a kézi kivételek (`KIZART`) kint maradnak.
 - A héber szöveg azért marad ki, mert a DictBDB a többszavas héber kifejezések szórendjét megfordítja (pl. H3347: ugyanaz a szöveg fordított sorrendben); a hivatkozások azért, mert a két forrás eltérően rövidíti őket (1Kgs/1Kin, 13:20 ; 13:21 / 13:20-21). Korlát: csonk szócikknél (rövid latin szöveg, pl. BDB515, BDB3121) az egyezés triviálisan magas lehet; az alias oldalán a mintában ebből hamis alias nem lett, de a mérőszám ott gyenge bizonyíték.
 - **Az alias azt mondja meg, hol áll a BDB-szövege, nem azt, hogy a két szó azonos.** Pl. az Abel-összetett helynevek (H0059, H0063–H0067) a H0058 ʾābēl sorára oldódnak fel, mert a BDB alpontként tárgyalja őket.
-- A H3071, H3073, H3074 (JHVH-nisszí, JHVH-sálóm, JHVH-sammá; a BDB a második tag szócikkében tárgyalja őket: נֵס, שָׁלוֹם, שָׁם) és a H3070 (JHVH-jireh → H7200; szintén JHVH-összetétel, ugyanaz az elv) alias: ugyanaz a minta, mint az Abel-helyneveknél; az alias azt mondja meg, hol áll a BDB-szövege, nem azt, hogy a két szó azonos (DT-F57i).
+- A H3071, H3073, H3074 (JHVH-nisszí, JHVH-sálóm, JHVH-sammá; a BDB a második tag szócikkében tárgyalja őket: נֵס, שָׁלוֹם, שָׁם) és a H3070 (JHVH-jireh → H7200; szintén JHVH-összetétel, ugyanaz az elv) alias: ugyanaz a minta, mint az Abel-helyneveknél; az alias azt mondja meg, hol áll a BDB-szövege, nem azt, hogy a két szó azonos (DT45).
 - **Alias** (`konkordancia/BDB_strong_alias.tsv`): 296 sor (héber 282, arámi 14). **Elvetett, jelölt marad** (`konkordancia/BDB_strong_alias_elvetett.tsv`): 233 sor (héber 60, arámi 173).
 - Elvetés oka (az `indok_kod` oszlop kódjai; darab, ebből arámi): `a_testversor_mas_szocikk`: 9 (arámi 1); `kifejezes_tarscimke`: 1 (arámi 0); `kuszob_alatt`: 3 (arámi 0); `nem_ebbol_a_szocikkbol`: 220 (arámi 172).
 - **Megfelelő testvérek száma = 1 minden aliasban:** 296/296 sorban igaz (ellenőrizve; a feltételt a szétválogatás méri: hány azonos szócikkbeli testvér sora felel meg a mérőszámnak). 37 aliasban több azonos szócikkbeli testvér is van, de pontosan egy felel meg; a többi sora más szócikk vagy csonk (pl. H6990, H8550, H1170). A `testver_strong` oszlop az elvetett listán az azonos szócikkbeli testvéreket sorolja fel (a `nem_ebbol_a_szocikkbol` sorokban a más szócikkből származókat).
 - **Korlát:** a `kuszob_alatt`/`a_testversor_mas_szocikk` megkülönböztető címszó-heurisztika csak a legjobb mérőszámú testvért nézi, és homonímára vak (pl. H5875, H5883, H5886 → H5871: a „Ayin” homonímák miatt „más szócikk” kódot kaptak, noha a címszó azonos); a kód ezért támpont, nem bizonyíték.
-- **Az elvárástól való eltérés (DT-F57h/i).** A várakozás kb. 294 alias volt (a DT-F57h ~291 + a H3071, H3073, H3074); a tényleges szám **296**: a H5853 és a H5855 → H5852 a szabály szerint alias (mérőszám 0,981: a H5852 sora szó szerint a BDB5999 szócikke), nem `kuszob_alatt` (az előzetes felhasználói mérés 0,86 volt). A két sor az aliasban van; ha mégis kint kellene tartani őket, a `KIZART` bővítendő.
+- **Az elvárástól való eltérés (DT44/i).** A várakozás kb. 294 alias volt (a DT44 ~291 + a H3071, H3073, H3074); a tényleges szám **296**: a H5853 és a H5855 → H5852 a szabály szerint alias (mérőszám 0,981: a H5852 sora szó szerint a BDB5999 szócikke), nem `kuszob_alatt` (az előzetes felhasználói mérés 0,86 volt). A két sor az aliasban van; ha mégis kint kellene tartani őket, a `KIZART` bővítendő.
 - **Külön listázott sorok (a felhasználó ellenőrizheti; a mérőszám három tizedessel):**
 
 | Strong | testvér | bdb_id | kimenet | mérőszám / indok |
@@ -64,7 +64,7 @@ Nincs.
 | H5855 | H5852 | BDB5999 | alias | 0.981 |
 | H8625 | H4484 | BDB9673 | alias | 1.000 |
 
-- **`kuszob_alatt` sorok (3):** a testvérsor ugyanazzal a címszóval kezdődik, de a mérőszám a küszöb (0.9) alatt van; jelöltként maradnak. A #57-ben nincs egyenkénti beemelés (DT-F57i); az `indok_kod` oszlop `kuszob_alatt` értéke szűrhető, egy későbbi feladat beemelheti őket.
+- **`kuszob_alatt` sorok (3):** a testvérsor ugyanazzal a címszóval kezdődik, de a mérőszám a küszöb (0.9) alatt van; jelöltként maradnak. A #57-ben nincs egyenkénti beemelés (DT45); az `indok_kod` oszlop `kuszob_alatt` értéke szűrhető, egy későbbi feladat beemelheti őket.
 
 | Strong | testvér | bdb_id | címszó | mérőszám |
 |---|---|---|---|---|
@@ -73,4 +73,4 @@ Nincs.
 | H8112 | H8110 | BDB8860 | שִׁמְרוֺן | 0.873 |
 
 - **Arámi szócikkek: két szám összevetése.** A BDB.lexicon nyelvjelölése szerint a 529 másodlagos címke között **187** arámi szócikk van (BDB9264-től; ez a felhasználó 187-es száma). A független ellenőr 198-at talált; ez a szám a BDB.lexicon nyelvjelöléséből nem reprodukálható (a legközelebbi mérések: arámi szócikk 187; arámi másodlagos OSHL-Strong héber testvérsorral 174), a különbség (11) okát nem tudtuk azonosítani. Mérvadó a feltétel, nem a szám: az arámi szócikkek közül 173 kerül elvetésre (ebből `nem_ebbol_a_szocikkbol`: 172, `a_testversor_mas_szocikk`: 1), 14 marad aliasban.
-- **Nyitott tétel:** (DT-F57d) az elvetett arámi szócikkek tényleges pótlása (a BDB.lexicon szövegéből új táblasorok) külön feladat a `/befogad` útján, nem az F57 része.
+- **Nyitott tétel:** (DT40) az elvetett arámi szócikkek tényleges pótlása (a BDB.lexicon szövegéből új táblasorok) külön feladat a `/befogad` útján, nem az F57 része.
