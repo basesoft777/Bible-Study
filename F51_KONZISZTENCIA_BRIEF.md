@@ -5,10 +5,10 @@ kod: KONZISZTENCIA
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: fut
+allapot: megallt
 ag: claude/konzisztencia
 ad: egy új CI-szabály jelzi, ha egy döntés érintett fájlja még a döntés előtti állapotot írja, vagy a továbbvivő feladata régóta áll; egy hetente, helyi gépen futó ügynök a fogalmi ellentmondásokat jelentésbe gyűjti
-kovetkezo: "/kovetkezo; ⛔ a K5 után (a helyi ütemezett feladat jóváhagyása: heti futás, csak ha a gép be van kapcsolva)"
+kovetkezo: "Te: a K2 sorlista jóváhagyása (adat/dontes_hatas.tsv, naplok/KONZISZTENCIA_naplo.md); utána K3–K4, ⛔ a K5 után"
 olvas: [CLAUDE.md, MUNKAMENET.md, RENDER_BRIEF.md, adat/SEMA.md, sablonok/, "F*_BRIEF.md", eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml]
 ir: [adat/dontes_hatas.tsv, adat/SEMA.md, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/, .claude/commands/konzisztencia.md, naplok/KONZISZTENCIA_naplo.md]
 fugg: []

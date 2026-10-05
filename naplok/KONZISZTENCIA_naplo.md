@@ -46,7 +46,23 @@ A tábla: `adat/dontes_hatas.tsv`, séma: `adat/SEMA.md` 2.21. Oszlopok a brief 
 
 ## K2 — induló sorok
 
-*(a sorlista a K2 ⛔ megállásnál a felhasználó elé kerül; a `adat/dontes_hatas.tsv` a végleges forrás)*
+A sorlista a K2 ⛔ megállásnál a felhasználó elé kerül; a `adat/dontes_hatas.tsv` a végleges forrás. Mind az öt sor a D34-é (`F26_EGYFORRAS_NAPLO_BRIEF.md#D34`, datum 2026-09-30, `tovabbvivo_feladat` 11). Minden mintát a mai fájlokon ellenőriztem: pontosan a megadott sorokra illik.
+
+| # | Fájl | Minta (`tilos_minta`) | Találat (sor) | Átmeneti jelölés | Hatás |
+|---|---|---|---|---|---|
+| 1 | `CLAUDE.md` | `\[ID\]_TORZSCIKK\.md` | 33, 47 | `Átmenet \(D34\)` (megvan, 35. sor) | JELENTES |
+| 2 | `RENDER_BRIEF.md` | `^\| G1 \| Hol élnek a rések\?` | 69 | nincs | FIGYELMEZTETES |
+| 3 | `RENDER_BRIEF.md` | `^\| G7 \| Törzscikk \|` | 75 | nincs | FIGYELMEZTETES |
+| 4 | `MUNKAMENET.md` | `^\| C1 \| lexikon TUDOMÁNYOS szakaszainak \+ a törzscikk generálása` | 67 | nincs | FIGYELMEZTETES |
+| 5 | `MUNKAMENET.md` | ``a \*\*törzscikk\*\* \(`lexikon/`` | 181 | nincs | FIGYELMEZTETES |
+
+**Eltérések a briefhez képest (jelezve):**
+- A brief a `MUNKAMENET.md` C1 sorát „139. sor körül” adja; a mai fájlban a C1 a **67.** sor, a törzscikk bemutatása a **181.** sor. A minta a szövegre illik, nem a sorszámra, ezért ez nem érinti a szabályt.
+- A brief a `tovabbvivo_feladat` értékét „26, illetve 11”-nek adja. A #26 (EGYFORRAS_NAPLO) azóta **lezárva** és mergelve (`117bafc`, 2026.10.04): a `CLAUDE.md` átmeneti sorát (`Átmenet (D34)`) ő vitte át. A tényleges továbbvivő a **#11** (MIGRACIO, `brief_kell`): a törzscikk megszűnése és a `CLAUDE.md`/`MUNKAMENET.md`/`RENDER_BRIEF.md` végleges átírása ott történik. Ezért mind az öt sor a 11-et viszi; a 26 nem szerepel (lezárt feladatnál az E25 (b) úgysem szólna).
+- A (b) ág ma még nem szól: a #11 `brief_kell`, de a D34 (2026-09-30) óta 5 nap telt el; a 14. nap 2026-10-14.
+- A `CLAUDE.md` D34-sora azért csak JELENTES, mert a #26 átmeneti jelölést tett a fájlba. Az elfogadási feltétel („az E25 legalább a D34 `CLAUDE.md`-sorát jelzi”) ezzel teljesül: jelzi, de nem riaszt.
+
+**Nem vettem fel (nem egyértelmű regex):** a „tanulmány” szó kettős jelentése (F37 kontra D34); a `CLAUDE.md` „`KJV_/ASV_Strongs` csak Genezis, Exodus, Példabeszédek” sora az F19-import (és a függő F48) után; a `sablonok/2_PaRDeS_bovitett_sablon.md` 277. sorának `LXX_kivonat_Genezis.tsv` hivatkozása az F42 után (a hivatkozás forráslistában példa, nem nyilvánvalóan hibás). Ezek az ügynök (K4) dolga.
 
 ## K3 — az E-szám (egyeztetett eltérés, rögzítve)
 
