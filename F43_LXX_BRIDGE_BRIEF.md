@@ -5,10 +5,12 @@ kod: LXX_BRIDGE
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ag: claude/f43-lxx-bridge
 ad: a 86 LXX-döntés mindegyikéhez a lxx_bridge (MACULA-eredetű, LXX-en összesített héber→görög Strong-párok) egyezés/eltérés/nincs-adat ítélete, a bizonyosság-emelés jelöltjeivel; az lxx_dontesek.tsv nem változik
-kovetkezo: "Te: a draft PR átnézése és merge (DT-F43 ✅; N29 lezárva)"
+pr: https://github.com/basesoft777/Bible-Study/pull/167
+kovetkezo: "—"
+lezarva_osszegzes: "86 LXX-döntés a lxx_bridge ellen: egyezik 24, eltér 3, LXX-mínusz összhang 1, nincs adat 46, nem alkalmazható 8, nyitott jelölt 4; az lxx_dontesek.tsv nem változott; PR #167 merge-elve 2026-10-04 (eddfc83), a fejléc utólag zárva"
 olvas: [adat/kulso/lxx_bridge.tsv, adat/lxx_dontesek.tsv, "konkordancia/LXX_OS/*.tsv", "konkordancia/LXX_kivonat_*.tsv", konkordancia/TAHOT_kivonat.tsv, konkordancia/Strong_szotar.tsv, konkordancia/LXX_OS/README.md]
 ir: [eszkozok/lxx_bridge_egyezes.py, naplok/LXX_BRIDGE_egyezes.tsv, naplok/LXX_BRIDGE_naplo.md, adat/kulso/LICENC.md, NYITOTT_FELADATOK.md]
 fugg: [8]
