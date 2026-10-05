@@ -7,7 +7,7 @@ fazis: folyamat
 modell: sonnet
 allapot: nem_indult
 ad: a /befogad és a /kovetkezo záró lépése push után elolvassa a CI-t; ha a hiba a saját PR tartalmából jön (fejléc-mező, fájlnév, formai hiba), legfeljebb két körben javítja új commitban; minden mást (CI-szabály, másik feladat, függési kör, tartalmi döntés) nem javít, hanem jelent
-kovetkezo: "futtatható a #32 (KONTEXTUS) és a #45 (MODELL_ELLENORZES) lezárása és mergelése után, mert mindkettő a .claude/commands/kovetkezo.md-t írja"
+kovetkezo: "nem futhat a #45 (MODELL_ELLENORZES) mellett, mert mindkettő a .claude/commands/kovetkezo.md-t írja (kizárás, D4)"
 olvas: [.claude/commands/befogad.md, .claude/commands/kovetkezo.md, CLAUDE.md, MUNKAMENET.md, DONTESEK.md, eszkozok/feladatok.py, .github/workflows/]
 ir: [.claude/commands/befogad.md, .claude/commands/kovetkezo.md, naplok/CI_JAVITO_KOR_naplo.md]
 fugg: []
@@ -83,3 +83,4 @@ A `/befogad` és a `/kovetkezo` a PR megnyitásával (push, draft PR) véget ér
 | D2 | A függési kör és a CI-szabály nem javítható | D6, D25; más feladat sora nem módosítható | a `nem_fugg` automatikus felvétele |
 | D3 | A parancs nem pollol, az Auto-fix a desktop alkalmazás dolga | a CLAUDE.md szerint a CI-figyelést a `ccd_pr` eszközök végzik | időzített CI-lekérdezés |
 | D4 | A feladat a #32 és #45 után fut | mindkettő a `kovetkezo.md`-t írja; a `kizar` kölcsönös kizárás | párhuzamos futás |
+| D5 | A `kovetkezo` sor a #45-tel való kizárást írja, nem sorrendet; a #32 kikerül belőle; a fejléc `fugg: []` marad (N-F53a, felhasználói döntés 2026-10-05) | a #32 a PR #164-gyel a main-en van; a D4 kizárást ír elő; a `fugg: [45]` a közös `kovetkezo.md` miatt levezetett kölcsönös éllel függési kört ad (#45 ↔ #50) | `fugg: [45]` (kör), ill. `nem_fugg: [50]` a #45 fejlécébe (más feladat sora) |
