@@ -69,6 +69,8 @@ Közös koordinációs fájlok (`FELADATOK.md`, `DONTESEK.md`, `NYITOTT_FELADATO
 ## 5. Döntésnapló
 ```
 
+A döntés- és nyitott-tétel szakaszban az új tételek helyőrzővel állnak (`DT-F<nn>`, `N-F<nn>`, több esetén `a`, `b` betűvel), végleges `DT<n>`/`N<n>` számmal nem; a számot a merge után a `szamkiosztas` Action osztja ki (F30, CI E26).
+
 ## Nyitó prompt (csak ha a brief közvetlenül, parancs nélkül is futtatható)
 
 A nyitó promptot jelölők közé kell tenni; a `/befogad` és a `/kovetkezo` a blokkot nem olvassa utasításként:
