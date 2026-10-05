@@ -8,7 +8,7 @@ modell: sonnet
 munka: folyamat
 allapot: megallt
 ad: "a FELADATTERKEP.html (gyökér, mindig ugyanazon a néven felülírva) és a feladatterkep.json minden main-merge után a forrásokból generálódik; a claude.ai-artifact megnyitáskor a files képességgel ugyanezt a JSON-t olvassa, így újrafeltöltés nélkül friss"
-kovetkezo: Te: az FT.4 ⛔ — a feladatok.yml diffjének jóváhagyása (az FT.3 kész, a gyökérbeli lap generált); utána FT.5 (⛔ ha a files-olvasás nem működik), FT.6, FT.7 (⛔ az ütemezés előtt)
+kovetkezo: Te: az FT.5 ⛔ — a projekt-azonosító (chan_…) nem állapítható meg; válassz (naplok/F53_FELADATTERKEP_naplo.md); az FT.3 és az FT.4 kész; utána FT.6, FT.7 (⛔ az ütemezés előtt)
 olvas: ["F*_BRIEF.md", MUNKATERV.md, eszkozok/feladatok.py, .github/workflows/feladatok.yml, FELADATTERKEP.html]
 ir: [eszkozok/feladatterkep.py, eszkozok/feladatterkep_kartyak.tsv, eszkozok/teszt_feladatterkep.py, FELADATTERKEP.html, feladatterkep.json, .github/workflows/feladatok.yml, eszkozok/main_frissit.py]
 fugg: []
