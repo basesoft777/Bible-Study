@@ -6,7 +6,7 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: dontesre_var
 ag: claude/bdb-strong-potlas
 ad: a BDB_teljes_unabridged.tsv kiegészül azokkal a BDB-szócikkekkel, amelyek a Strong-kulcsú forrásból (DictBDB.json) kimaradtak, mert a fejlécükből hiányzik a Strong-címke (pl. H4725 mákóm, H0136 Adonaj, H0341 ójév); minden pótolt sor egyértelmű, dokumentált párosításon áll, a többi jelölt marad
 kovetkezo: lezárás: a független ellenőr (naplok/ELLENOR_BDB_STRONG_POTLAS.md), draft PR; az orkesztrátor végzi
