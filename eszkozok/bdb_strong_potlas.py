@@ -9,9 +9,17 @@ Módok:
   --m0       felmérés: naplok/BDB_STRONG_POTLAS_M0.md
   --m1       párosítás: konkordancia/BDB_strong_potlas.tsv
   --alias    másodlagos H-címkék alias-táblája: konkordancia/BDB_strong_alias.tsv
+  --m1-szakasz  az M1-jelentés 3. (alias) szakaszának újragenerálása
   --m2       az egyértelmű párok sorainak hozzáfűzése a BDB_teljes_unabridged.tsv-hez (csak új sorok)
 
-A szkript csak olvas (a BDB-táblát nem írja); a TSV-ket split('\\t')-tel olvassa.
+Az --m0 és --m1 csak olvas a BDB-táblából; az --m2 ÍR a BDB_teljes_unabridged.tsv-be
+(csak a jóváhagyott párok sorait cseréli/fűzi hozzá a végén, a meglévő sorok bájtra
+változatlanok, idempotens), az --alias két új TSV-t ír (alias és elvetett lista).
+A TSV-ket split('\t')-tel olvassa.
+Alias-feltétel (DT-F57c): a másodlagos címke testvér-Strongjának táblasora ugyanabból a
+BDB-szócikkből származik (a testvér H-kulcsának bdb_id-je egyezik a másodlagos címke
+bdb_id-jével), és a sor szövege hasonlít a szócikk szövegére; ami elbukik, az
+elvetett listára kerül (nyelvi szűrés nincs).
 Párosítási szabály (BRIEF §3 M1) szó szerint:
  1. Címszó-egyezés: OSHL-lemma és BDB-címszó normalizált alakja egyezik
     (kantilláció és meteg le, holem-waw U+05BA -> U+05B9; magánhangzók maradnak).
@@ -269,30 +277,98 @@ def m1(ts):
     print('M1 kész:', len(eredmeny), 'sor', dict(szam), '->', os.path.relpath(POTLAS, GYOKER))
 
 
-def masodlagos_lista():
+HASONLOSAG_KUSZOB = 0.6
+
+
+def _ujjlenyomat(x):
+    return re.sub(r'[^0-9A-Za-z\u0590-\u05ff]', '', x)[:500]
+
+
+def alias_szetvalogat():
+    """A másodlagos H-címkék szétválogatása (DT-F57c): (alias_sorok, elvetett_sorok).
+
+    Alias: a testvér-Strong táblasora ugyanabból a BDB-szócikkből származik (a testvér
+    H-kulcsának bdb_id-je egyezik a másodlagos címke bdb_id-jével), és a sor szövege a
+    szócikk szövegére hasonlít. Más nem kerül az aliasba (nyelvi szűrés nincs).
+    """
+    import difflib
     bdb, htop, tabla, oshl, cimkenelkuli, cimkezett, oshl_s = adatok()
-    tahot = tahot_szamlalo()
-    sorok = []
+    alias_sorok, elvetett = [], []
     for s in sorted(htop):
         if s in tabla or s == 'H0000':
             continue
-        b, ls = htop[s]
-        tars = [x for x in ls if x != s and x in tabla]
-        e = bdb.get(b)
+        bid, ls = htop[s]
+        e = bdb.get(bid)
+        nyelv = 'aram' if e and e['nyelv'] == 'arameus' else 'heber'
         hw = e['cimszavak'][0] if e and e['cimszavak'] else ''
-        talal = False
-        for x in tars:
-            sz = tabla[x].split('	', 2)[2]
-            if hw and kons(hw) and kons(hw) in kons(sz):
-                talal = True
-        o = oshl_s.get(s)
-        sorok.append((s, b, tars, hw, talal, o, tahot_db(tahot, s)))
-    return sorok
+        tars = [x for x in ls if x != s and x in tabla]
+        if not tars:
+            elvetett.append({'s': s, 'bid': bid, 'nyelv': nyelv, 'hw': hw, 'tars': '',
+                             'indok': 'nincs testvér-Strong a táblában'})
+            continue
+        azonos = [t for t in tars if htop.get(t, ('',))[0] == bid]
+        if not azonos:
+            elvetett.append({'s': s, 'bid': bid, 'nyelv': nyelv, 'hw': hw, 'tars': ','.join(tars),
+                             'indok': 'a testvér-sor nem ebből a BDB-szócikkből származik (a testvér H-kulcsa: %s)'
+                                      % ','.join(sorted({htop.get(t, ('?',))[0] for t in tars}))})
+            continue
+        forras = _ujjlenyomat(strip_html(lexikon_torzs(bid)))
+        jo, legjobb = [], 0.0
+        for t in azonos:
+            r = difflib.SequenceMatcher(None, forras, _ujjlenyomat(tabla[t].split('\t', 2)[2]), autojunk=False).ratio()
+            legjobb = max(legjobb, r)
+            if r >= HASONLOSAG_KUSZOB:
+                jo.append((t, r))
+        if not jo:
+            elvetett.append({'s': s, 'bid': bid, 'nyelv': nyelv, 'hw': hw, 'tars': ','.join(azonos),
+                             'indok': 'a bdb_id egyezik, de a testvér-sor szövege nem a szócikk szövege (hasonlóság %.2f < %.1f)'
+                                      % (legjobb, HASONLOSAG_KUSZOB)})
+            continue
+        alias_sorok.append({'s': s, 'bid': bid, 'nyelv': nyelv, 'hw': hw, 'tars': ','.join(t for t, _ in jo),
+                            'hasonlosag': '%.2f' % max(r for _, r in jo)})
+    return alias_sorok, elvetett
+
+
+def masodlagos_lista():
+    return alias_szetvalogat()
+
+
+def masodlagos_szakasz():
+    """Az M1-jelentés 3. szakasza (DT-F57c szerint: alias és elvetett lista)."""
+    alias_sorok, elvetett = alias_szetvalogat()
+    ossz = len(alias_sorok) + len(elvetett)
+    nyelv_a = collections.Counter(r['nyelv'] for r in alias_sorok)
+    nyelv_e = collections.Counter(r['nyelv'] for r in elvetett)
+    ok_e = collections.Counter(r['indok'].split(' (')[0] if 'hasonlóság' in r['indok'] else
+                               ('a testvér-sor nem ebből a BDB-szócikkből származik' if 'nem ebből' in r['indok'] else r['indok'])
+                               for r in elvetett)
+    L = []
+    w = L.append
+    w('\n## 3. Másodlagos címke: a Strong a BDB.lexicon-ban van, a táblában nincs sora (DT-F57a, DT-F57c)\n')
+    w('- %d Strong (a H0136 és a H0341 is ide tartozik): a BDB.lexicon `H<n>` kulcsa létezik, a szócikk fejlécében a Strong másik Strong mellett áll, ezért a 3. kizárási szabály miatt nem párosítható.' % ossz)
+    w('- **Alias-feltétel (DT-F57c, nyelvi szűrés nélkül):** a testvér-Strong táblasora ugyanabból a BDB-szócikkből származik (a testvér `H<n>` kulcsának `bdb_id`-je egyezik a másodlagos címke `bdb_id`-jével), és a sor szövege hasonlít a szócikk szövegére (alfanumerikus ujjlenyomat, `difflib`, küszöb %.1f). A korábbi „címszó mássalhangzói rész-sztringként a testvér-sorban” teszt nem igazolás, kivezetve.' % HASONLOSAG_KUSZOB)
+    w('- **Alias** (`konkordancia/BDB_strong_alias.tsv`): %d sor (héber %d, arámi %d). **Elvetett, jelölt marad** (`konkordancia/BDB_strong_alias_elvetett.tsv`): %d sor (héber %d, arámi %d).' % (
+        len(alias_sorok), nyelv_a['heber'], nyelv_a['aram'], len(elvetett), nyelv_e['heber'], nyelv_e['aram']))
+    w('- Elvetés oka: %s.' % '; '.join('%s: %d' % (k, v) for k, v in sorted(ok_e.items())))
+    w('- **Arámi szócikkek: két szám összevetése.** A BDB.lexicon nyelvjelölése szerint a 529 másodlagos címke között **%d** arámi szócikk van (BDB9264-től; ez a felhasználó 187-es száma). A független ellenőr 198-at talált; ez a szám a BDB.lexicon nyelvjelöléséből nem reprodukálható (a legközelebbi mérések: arámi szócikk 187; arámi másodlagos OSHL-Strong héber testvérsorral 174), a különbség (11) okát nem tudtuk azonosítani. Mérvadó a `bdb_id`-feltétel, nem a szám: ez az arámi szócikkek közül %d-et ejt az aliasból, %d marad (olyan arámi szócikk, amelynek testvérsora is ugyanabból a szócikkből származik).' % (
+        nyelv_a['aram'] + nyelv_e['aram'], nyelv_e['aram'], nyelv_a['aram']))
+    w('- **Nyitott tétel:** az elvetett arámi szócikkek tényleges pótlása (a BDB.lexicon szövegéből új táblasorok) külön feladat a `/befogad` útján, nem az F57 része.\n')
+    return L
+
+
+def m1_szakasz_frissit():
+    """Az M1-jelentés 3. szakaszának újragenerálása a meglévő jelentésben (az --m1 nélkül)."""
+    with open(M1_JELENTES, encoding='utf-8') as f:
+        szoveg = f.read()
+    i = szoveg.index('\n## 3. ')
+    uj = szoveg[:i] + '\n'.join(masodlagos_szakasz()).rstrip('\n') + '\n'
+    with open(M1_JELENTES, 'w', encoding='utf-8', newline='\n') as f:
+        f.write(uj)
+    print('M1-jelentés 3. szakasza frissítve')
 
 
 def m1_jelentes(eredmeny, prov, ts):
     szam = collections.Counter(r[4] for r in eredmeny)
-    sor2 = masodlagos_lista()
     L = []
     w = L.append
     w('# BDB_STRONG_POTLAS M1 — párosítás (F57)\n')
@@ -326,14 +402,7 @@ def m1_jelentes(eredmeny, prov, ts):
     w('|---|---|---|')
     for e, cs, s, lem, st, ind in tipp:
         w('| %s | %s | %s |' % (e['id'], cs, ind.split('): ')[-1]))
-    w('\n## 3. Másodlagos címke: a Strong a BDB.lexicon-ban van, a táblában nincs sora\n')
-    nt = sum(1 for r in sor2 if r[4])
-    w('- %d Strong (a H0136 és a H0341 is ide tartozik), mindegyiknek a szócikke a BDB.lexicon `H<n>` kulcsa alatt **címkével** áll, tehát a 3. kizárási szabály miatt nem párosítható; a szöveg a táblában a testvér-Strong sora alatt megvan (a címszó mássalhangzós alakja a testvér-sor szövegében: %d/%d sorban megtalálható).' % (len(sor2), nt, len(sor2)))
-    w('- Ez nem a tábla szövegének hiánya, hanem a Strong-kulcs hiánya (a DictBDB.json egy szócikkhez csak egy Strong-kulcsot ad). Lásd a ⛔ döntést (DONTESEK.md).\n')
-    w('| Strong | BDB | testvér-Strong a táblában | címszó | címszó a testvér-sorban | OSHL def_en | TAHOT |')
-    w('|---|---|---|---|---|---|---|')
-    for s, b, tars, hw, talal, o, db in sor2:
-        w('| %s | %s | %s | %s | %s | %s | %d |' % (s, b, ','.join(tars), hw, 'igen' if talal else 'NEM', (o['def_en'] if o else '—').replace('|', '/'), db))
+    L.extend(masodlagos_szakasz())
     os.makedirs(os.path.dirname(M1_JELENTES), exist_ok=True)
     with open(M1_JELENTES, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(L) + '\n')
@@ -415,7 +484,7 @@ def m0(ts):
 
 # ---- M2 és alias ----
 ALIAS = os.path.join(GYOKER, 'konkordancia', 'BDB_strong_alias.tsv')
-ALIAS_FEJLEC = ['masodlagos_strong', 'tabla_strong', 'bdb_id', 'cimszo', 'cimszo_a_sorban', 'proveniencia']
+ALIAS_FEJLEC = ['masodlagos_strong', 'tabla_strong', 'bdb_id', 'nyelv', 'cimszo', 'szoveg_hasonlosag', 'proveniencia']
 
 
 def strip_html(txt):
@@ -443,6 +512,21 @@ def lexikon_torzs(bdb_id):
     return re.sub(r'<div class="navigation">.*?</div>', '', d, count=1, flags=re.S)
 
 
+KONYVNEV = {'1Kgs': '1Kin', '2Kgs': '2Kin', 'Ps': 'Psa', 'Hos': 'Hosea', 'Mic': 'Micah',
+            'Nah': 'Nahum', 'Esth': 'Est'}
+
+
+def stilus_igazit(txt):
+    """A meglévő sorok stílusa: 1Kin/Psa/Hosea/Micah/Nahum/Est könyvnevek, nincs szóköz
+    írásjel előtt, nyitó zárójel és '^' után. (A kisebb eltérések a forrás tagolásából jönnek.)"""
+    for regi, uj_ in KONYVNEV.items():
+        txt = re.sub(r'\b' + regi + r'(?= \d)', uj_, txt)
+    txt = re.sub(r' +([,;.)])', r'\1', txt)
+    txt = re.sub(r'\( +', '(', txt)
+    txt = re.sub(r'\^ +', '^', txt)
+    return txt
+
+
 def m2_sorok():
     """A potlas-tabla egyertelmu soraiból az új táblasorok (Strong, sor)."""
     oshl = {r[0]: r for r in oshl_beolvas() if r[0] != '—'}
@@ -455,7 +539,7 @@ def m2_sorok():
         bid, strong, cim = r[0], r[1], r[2]
         eredeti = 'H' + str(int(strong[1:]))
         atiras = oshl[strong][7]
-        szoveg = strip_html(lexikon_torzs(bid))
+        szoveg = stilus_igazit(strip_html(lexikon_torzs(bid)))
         szoveg = szoveg.replace('\t', ' ')
         ki.append((strong, '\t'.join([strong, eredeti, '%s. %s %s' % (eredeti, atiras, szoveg)])))
     return ki
@@ -466,36 +550,43 @@ def m2():
         elotte = f.read()
     if b'\r' in elotte:
         raise SystemExit('CRLF a táblában, megállok')
-    szoveg = elotte.decode('utf-8')
-    jelenlegi = {l.split('\t')[0] for l in szoveg.split('\n')[1:] if l}
-    uj = [(s, sor) for s, sor in m2_sorok() if s not in jelenlegi]
-    if not uj:
-        print('M2: nincs új sor (már pótolva)')
-        return
-    kiegeszites = ''.join(sor + '\n' for _, sor in uj)
-    if not szoveg.endswith('\n'):
+    if not elotte.endswith(b'\n'):
         raise SystemExit('a tábla nem újsorral végződik, megállok')
-    utana = (szoveg + kiegeszites).encode('utf-8')
-    # ellenőrzés: a régi tartalom bájtra azonos prefixum, csak új sorok jönnek
-    assert utana.startswith(elotte)
-    assert utana[len(elotte):].count(b'\n') == len(uj)
+    sorok = elotte.decode('utf-8').split('\n')[:-1]
+    uj = m2_sorok()
+    ujkulcsok = {s for s, _ in uj}
+    regi = [l for l in sorok if l.split('\t')[0] not in ujkulcsok]
+    # a pótolt Strongok sorai a tábla végén állnak (a kulcsok egyediek)
+    eredmeny = regi + [sor for _, sor in uj]
+    utana = ('\n'.join(eredmeny) + '\n').encode('utf-8')
+    if utana == elotte:
+        print('M2: nincs változás (már pótolva)')
+        return
+    # ellenőrzés: a nem pótolt sorok sorrendben, bájtra azonosak
+    assert [l for l in utana.decode('utf-8').split('\n')[:-1] if l.split('\t')[0] not in ujkulcsok] == regi
+    assert len(eredmeny) == len(regi) + len(uj)
     with open(TABLA, 'wb') as f:
         f.write(utana)
-    print('M2 kész: +%d sor (%s)' % (len(uj), ', '.join(s for s, _ in uj)))
+    print('M2 kész: %d pótolt sor (%s), a többi %d sor változatlan' % (len(uj), ', '.join(sorted(ujkulcsok)), len(regi)))
+
+
+ELVETETT = os.path.join(GYOKER, 'konkordancia', 'BDB_strong_alias_elvetett.tsv')
+ELVETETT_FEJLEC = ['masodlagos_strong', 'bdb_id', 'nyelv', 'cimszo', 'testver_strong', 'indok', 'proveniencia']
 
 
 def alias(ts):
-    prov = 'scope=konkordancia/lexikonok_nyers/BDB.lexicon + konkordancia/BDB_teljes_unabridged.tsv | forras=eszkozok/bdb_strong_potlas.py --alias (masodlagos H-cimke) | ts=%s' % ts
-    ki = []
-    for s, b, tars, hw, talal, o, db in masodlagos_lista():
-        if not tars:
-            continue
-        ki.append([s, ','.join(tars), b, hw, 'igen' if talal else 'nem', prov])
+    prov = 'scope=konkordancia/lexikonok_nyers/BDB.lexicon + konkordancia/BDB_teljes_unabridged.tsv | forras=eszkozok/bdb_strong_potlas.py --alias (masodlagos H-cimke, DT-F57c) | ts=%s' % ts
+    alias_sorok, elvetett = alias_szetvalogat()
     with open(ALIAS, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\t'.join(ALIAS_FEJLEC) + '\n')
-        for r in ki:
-            f.write('\t'.join(r) + '\n')
-    print('alias kész: %d sor -> konkordancia/BDB_strong_alias.tsv' % len(ki))
+        for r in alias_sorok:
+            f.write('\t'.join([r['s'], r['tars'], r['bid'], r['nyelv'], r['hw'], r['hasonlosag'], prov]) + '\n')
+    with open(ELVETETT, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\t'.join(ELVETETT_FEJLEC) + '\n')
+        for r in elvetett:
+            f.write('\t'.join([r['s'], r['bid'], r['nyelv'], r['hw'], r['tars'], r['indok'], prov]) + '\n')
+    print('alias kész: %d sor, elvetett: %d sor (%s)' % (len(alias_sorok), len(elvetett),
+          dict(collections.Counter(r['nyelv'] for r in elvetett))))
 
 
 def main():
@@ -504,6 +595,7 @@ def main():
     ap.add_argument('--m1', action='store_true')
     ap.add_argument('--m2', action='store_true')
     ap.add_argument('--alias', action='store_true')
+    ap.add_argument('--m1-szakasz', action='store_true')
     ap.add_argument('--ts', default=datetime.date.today().isoformat())
     a = ap.parse_args()
     if a.m0:
@@ -512,6 +604,8 @@ def main():
         m1(a.ts)
     if a.alias:
         alias(a.ts)
+    if a.m1_szakasz:
+        m1_szakasz_frissit()
     if a.m2:
         m2()
 

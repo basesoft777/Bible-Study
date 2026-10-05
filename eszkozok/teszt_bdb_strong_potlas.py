@@ -129,17 +129,61 @@ def teszt_m2_ujrafuttatas_nem_ir():
     assert open(b.TABLA, 'rb').read() == elotte
 
 
+def _tsv(utvonal):
+    with open(utvonal, encoding='utf-8') as f:
+        return [l.split('\t') for l in f.read().split('\n') if l][1:]
+
+
 def teszt_alias():
-    with open(b.ALIAS, encoding='utf-8') as f:
-        sorok = [l.split('\t') for l in f.read().split('\n') if l][1:]
+    sorok = _tsv(b.ALIAS)
     d = {r[0]: r for r in sorok}
     assert d['H0136'][1] == 'H0113' and d['H0136'][2] == 'BDB125'
     assert d['H0341'][1] == 'H0340'
     tabla = b.tabla_beolvas()
+    bdb, htop = b.bdb_beolvas()
     for r in sorok:
         assert r[0] not in tabla and r[1].split(',')[0] in tabla
-        assert r[5].startswith('scope=') and 'ts=' in r[5]
-    assert len(sorok) == 529
+        assert r[6].startswith('scope=') and 'ts=' in r[6]
+        # bdb_id-feltétel: a testvér-sor ugyanabból a BDB-szócikkből származik
+        assert htop[r[1].split(',')[0]][0] == r[2], r[0]
+        assert float(r[5]) >= b.HASONLOSAG_KUSZOB
+    assert len(sorok) == 290
+
+
+def teszt_aramai_nem_kerul_aliasba():
+    """H0399 (BDB9297, arámi) testvére a héber H0398: nem alias, hanem elvetett, nyelv=aram."""
+    alias = {r[0] for r in _tsv(b.ALIAS)}
+    elv = {r[0]: r for r in _tsv(b.ELVETETT)}
+    assert 'H0399' not in alias
+    assert elv['H0399'][2] == 'aram' and elv['H0399'][1] == 'BDB9297'
+    assert 'bdb_id' not in elv['H0399'][5] or 'nem ebből' in elv['H0399'][5]
+    # minden másodlagos címke pontosan egy listán áll
+    assert alias.isdisjoint(elv)
+    assert len(alias) + len(elv) == 529
+    # az aliasban az arámi szócikkek csak olyanok, amelyeknek a testvérsora is ugyanabból a szócikkből való
+    bdb, htop = b.bdb_beolvas()
+    for r in _tsv(b.ALIAS):
+        if r[3] == 'aram':
+            assert htop[r[1].split(',')[0]][0] == r[2]
+
+
+def teszt_elvetett_oszlopok():
+    for r in _tsv(b.ELVETETT):
+        assert r[2] in ('aram', 'heber') and r[5] and r[6].startswith('scope=')
+
+
+def teszt_stilus_igazit():
+    t = '( Exod 29:31 , etc.)^ 1Kgs 8:1 ; Ps 2:1 , Hos 1:1 .'
+    u = b.stilus_igazit(t)
+    assert u == '(Exod 29:31, etc.)^1Kin 8:1; Psa 2:1, Hosea 1:1.', u
+
+
+def teszt_potolt_sorok_stilusa():
+    tabla = b.tabla_beolvas()
+    for strong in ('H4725', 'H4123', 'H0747'):
+        sor = tabla[strong]
+        for rossz in (' ,', ' ;', ' .', ' )', '( ', '1Kgs', '2Kgs', ' Ps ', 'Hos ', ' Mic ', ' Esth '):
+            assert rossz not in sor.split('\t', 2)[2], (strong, rossz)
 
 
 if __name__ == '__main__':
