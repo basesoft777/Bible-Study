@@ -46,15 +46,13 @@ A tábla: `adat/dontes_hatas.tsv`, séma: `adat/SEMA.md` 2.21. Oszlopok a brief 
 
 ## K2 — induló sorok
 
-A sorlista a K2 ⛔ megállásnál a felhasználó elé kerül; a `adat/dontes_hatas.tsv` a végleges forrás. Mind az öt sor a D34-é (`F26_EGYFORRAS_NAPLO_BRIEF.md#D34`, datum 2026-09-30, `tovabbvivo_feladat` 11). Minden mintát a mai fájlokon ellenőriztem: pontosan a megadott sorokra illik.
+**Jóváhagyva (2026.10.05, a felhasználó chatben), módosításokkal.** A `RENDER_BRIEF.md` két sora (G1, G7) kikerült: az E25 általánosan kihagyja a `tipus: archiv` fejlécű fájlokat (archívumot nem szerkesztünk, a történeti állapot nem hiba), nem fájlhoz kötötten. Plusz sor nem került fel (a „tanulmány” kettős jelentése, a KJV/ASV és az LXX-hivatkozás a K4 ügynök dolga; a KJV/ASV → F19, az LXX → F42 később külön döntéshez kötött sor lehet). A tábla szövegmintára illeszt; a sorszám (67., 181.) csak a megjegyzésben áll. Mind a három sor a D34-é (`F26_EGYFORRAS_NAPLO_BRIEF.md#D34`, datum 2026-09-30, `tovabbvivo_feladat` 11).
 
 | # | Fájl | Minta (`tilos_minta`) | Találat (sor) | Átmeneti jelölés | Hatás |
 |---|---|---|---|---|---|
 | 1 | `CLAUDE.md` | `\[ID\]_TORZSCIKK\.md` | 33, 47 | `Átmenet \(D34\)` (megvan, 35. sor) | JELENTES |
-| 2 | `RENDER_BRIEF.md` | `^\| G1 \| Hol élnek a rések\?` | 69 | nincs | FIGYELMEZTETES |
-| 3 | `RENDER_BRIEF.md` | `^\| G7 \| Törzscikk \|` | 75 | nincs | FIGYELMEZTETES |
-| 4 | `MUNKAMENET.md` | `^\| C1 \| lexikon TUDOMÁNYOS szakaszainak \+ a törzscikk generálása` | 67 | nincs | FIGYELMEZTETES |
-| 5 | `MUNKAMENET.md` | ``a \*\*törzscikk\*\* \(`lexikon/`` | 181 | nincs | FIGYELMEZTETES |
+| 2 | `MUNKAMENET.md` | `^\| C1 \| lexikon TUDOMÁNYOS szakaszainak \+ a törzscikk generálása` | 67 | nincs | FIGYELMEZTETES |
+| 3 | `MUNKAMENET.md` | ``a \*\*törzscikk\*\* \(`lexikon/`` | 181 | nincs | FIGYELMEZTETES |
 
 **Eltérések a briefhez képest (jelezve):**
 - A brief a `MUNKAMENET.md` C1 sorát „139. sor körül” adja; a mai fájlban a C1 a **67.** sor, a törzscikk bemutatása a **181.** sor. A minta a szövegre illik, nem a sorszámra, ezért ez nem érinti a szabályt.
@@ -68,6 +66,23 @@ A sorlista a K2 ⛔ megállásnál a felhasználó elé kerül; a `adat/dontes_h
 
 A brief az új szabályt **E25**-ként jelöli, azzal a megjegyzéssel, hogy a végleges szám az implementáláskor dől el a `szabalyok.py` és a #37 aktuális állapota szerint. Állapot 2026.10.05-én: a `szabalyok.py` utolsó szabálya az **E19**; az E20–E24 helye a #37-nek (`F37_TANULMANY_ELLENORZES_BRIEF.md` T3) van fenntartva, a #37 nem indult (⬜), egy `E20`–`E24` sor sincs a kódban. A **végleges szám: E25** — a #37 számait nem foglalja el, és nem ütközik vele, akkor sem, ha a #37 később indul. A felhasználó által jóváhagyott eltérés: a #37-től való lágy, levezetett függés (`.github/workflows/ellenorzes.yml*`) nem akadály. *(A `FELADATOK.md` #51 sora `fugg: #37*`-gal jelzi a levezetett függést.)*
 
-## K5 — helyi ütemezés (terv)
+## K3 — megvalósítás (E25)
 
-*(a K5-nél kerül ide)*
+- `eszkozok/ellenorzes/szabalyok.py`: `e25_dontes_atvezetes`; fájlszintű (`FAJLSZINTU_SZABALYOK`) és adattáblán futó (`HATOKOR_SZABALYOK`), alapszint FIGYELMEZTETES; a hívott `futtat.py` a `SZABALYOK_FUGGVENYEI`-ből veszi.
+- (a) régi állapot: FIGYELMEZTETES, `atmeneti_jeloles`-szel JELENTES; a `tipus: archiv` fejlécű érintett fájl kimarad; (b) a továbbvivő feladat állapotát a gyökér `*_BRIEF.md` fejlécek `feladat:`/`allapot:` mezője adja; 14 napnál régebbi döntés, `nem_indult`/`brief_kell` → FIGYELMEZTETES; (c) hiányzó forrásfájl / azonosító / érintett fájl, hibás regex vagy dátum → HIBA.
+- Tesztek: `eszkozok/ellenorzes/tesztek/test_szabalyok.py` `E25Teszt`, 18 teszt (köztük az archív kivétel, a 14. nap határa, a lezárt továbbvivő, a `futtat.fut` teljes és változott módja, a valódi tábla nulla HIBA); az egész modul 74 teszt, zöld.
+- `futtat.py --teljes`: nulla HIBA, kilépési kód 0; az E25 a `CLAUDE.md:33` D34-sorát (JELENTES) és a `MUNKAMENET.md` két sorát jelzi.
+- A CI workflow (`.github/workflows/ellenorzes.yml`) nem módosult: a lépés neve „E2-E19”, de a `futtat.py` az E25-öt is futtatja; a név átírása a brief `ir` listáján kívül van (D6: CI-javítás külön ágon), ezért nem nyúltam hozzá.
+
+## K4 — az ügynök és az első jelentés
+
+`.claude/commands/konzisztencia.md` (csak olvas, egy fájlt ír). Az első, kézi próbafutás jelentése: `naplok/konzisztencia/KONZISZTENCIA_20261005.md` (D34 ↔ `CLAUDE.md`, a D34-számütközés, a „tanulmány” kettős jelentése; 0 régóta álló továbbvivő). A `ir` listához a jelentés fájlja (`naplok/konzisztencia/KONZISZTENCIA_20261005.md`) bekerült.
+
+## K5 — helyi ütemezés (terv; az ütemezett feladat NINCS létrehozva)
+
+- **Gyakoriság:** heti egy futás, javasolt időpont hétfő 9:00 (helyi idő).
+- **Hely:** helyi ütemezett feladat (a gépen, nem felhőben: DT-F51-2). Csak akkor fut, ha a gép be van kapcsolva; a kimaradt futás pótlódik a következő bekapcsoláskor.
+- **Modell:** sonnet. **Tartalom:** a `/konzisztencia` parancs a repó `main` ágán (friss `git fetch` és `git pull --ff-only` a munkapéldányban, érintetlen worktree-ben); kimenet: `naplok/konzisztencia/KONZISZTENCIA_<ééééhhnn>.md`.
+- **Jogosultság:** csak olvasás és egyetlen jelentésfájl írása; nem commitol, nem pushol, nem nyit ágat (DT-F51-3). A jelentést a felhasználó átnézi, és a javaslatok (`dontes_hatas.tsv`-sor, `/befogad`-jelölt, `DONTESEK.md`-tétel) sorsáról dönt.
+- **Értesítés:** a jelentés elkészültekor (a végén egy sor: a jelentés útvonala és az új találatok száma).
+- **Nincs létrehozva:** az ütemezett feladat létrehozása külön lépés, a felhasználó jóváhagyásával (⛔ a K5 után).
