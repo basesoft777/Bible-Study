@@ -33,8 +33,13 @@ jobs:
           PUSH_SHA: ${{ github.sha }}
         run: |
           if [ "$EVENT_NEV" = "pull_request" ]; then
-            BASE="$PR_ALAP_SHA"
+            # Az alap a ket ag kozos ose, nem a main aktualis csucsa: a base.sha
+            # a main csucsa, es ahhoz kepest minden, ami a fork ota a main-re
+            # kerult, az agon forditott valtozasnak (torolt cimsor: E5,
+            # ellenorzo-modositas: E16) latszott (PR #195). A fetch-depth: 0
+            # miatt a merge-base elerheto; ha megsem, marad a base.sha.
             HEAD="$PR_FEJ_SHA"
+            BASE=$(git merge-base "$PR_ALAP_SHA" "$HEAD" 2>/dev/null || echo "$PR_ALAP_SHA")
           else
             BASE="$PUSH_ELOTTE"
             HEAD="$PUSH_SHA"

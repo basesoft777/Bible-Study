@@ -15,7 +15,7 @@ Következmény: a csomagolási tilalom eddig csak az `ir` és a függések alapj
 
 **`munka` mező** (`BRIEF_SABLON.md`): `adat` · `ertelmezo` · `folyamat`. Az `ellenoriz` az értékkészletet ellenőrzi; a mező nem kötelező az `ellenoriz`-ben (a régi fejlécek mező nélkül érvényesek, K2).
 
-**Motívumfájlt író `ir`-bejegyzés:** `motivumok/`, `tematikus_lezart/`, `lexikon/` vagy `genezis/` előtagú (könyvtár, fájl vagy glob).
+**Motívumfájlt író `ir`-bejegyzés:** `motivumok/`, `tematikus_lezart/` vagy `genezis/` előtagú (könyvtár, fájl vagy glob). A `lexikon/` **nem** motívumfájl (DT28, 2026.10.05): generált kimenet, kézzel nem írható, az újragenerálása `adat` munka; a `lexikon/[ID]*` az `ir`-ben csak a K3.2-t váltja ki (adatfüggés: a render a tanulmányból és a naplóból olvas).
 
 **`csomag <szám> …` (K3.1)** — `NEM_CSOMAGOLHATO` és 1-es kilépési kód, ha a felsorolt feladatok közül bármelyik:
 
@@ -33,14 +33,14 @@ Következmény: a csomagolási tilalom eddig csak az `ir` és a függések alapj
 
 A hibaüzenet a hiányzó fájl mintáját nevezi meg (`tematikus_lezart/naplok/TEREMT-002*`).
 
-**E18 — `munka` nélküli, motívumfájlt író brief (felhasználói elfogadás, 2026.10.04):** az `ellenoriz` `HIBA` sort ad (`E18: hiányzó munka mező …`), a `fuggesek` `MUNKA_HIANY` sort és 1-es kilépést; az `ellenoriz` a CI-n megbukik, a `/kovetkezo` (1. lépés: `ellenoriz` nem 0 → megáll) így nem ajánlja futtathatónak. A mai main-en három brief esne ebbe (`F09`, `F35`, `F36`, a `motivumot_ir` szerint); **döntésem: előzmény-kivétel**, mert a hiba ezeknél eltörné a CI-t, más feladat briefjét pedig nem írhatom át. A `feladatok.py` `MUNKA_ELOZMENY = (9, 35, 36)` listája ezekre `FIGYELEM` sort ad (`ellenoriz`: `FIGYELEM`, nem hiba; `fuggesek`: `FIGYELEM`), a lezárt F35-re semmit; a `csomag` mindhárom előzményre továbbra is `NEM_CSOMAGOLHATO`. Új brief nem kerülhet a listára: aki új motívumot író briefet vesz fel, `munka`-t kell megadjon (a `fuggesek --extra` a befogadáskor is `MUNKA_HIANY`-t ad). Az előzmény-lista akkor szűnik meg, ha az F09 és F36 `munka` mezőt kap (külön, a gazdájuk dolga).
+**E18 — `munka` nélküli, motívumfájlt író brief (felhasználói elfogadás, 2026.10.04):** az `ellenoriz` `HIBA` sort ad (`E18: hiányzó munka mező …`), a `fuggesek` `MUNKA_HIANY` sort és 1-es kilépést; az `ellenoriz` a CI-n megbukik, a `/kovetkezo` (1. lépés: `ellenoriz` nem 0 → megáll) így nem ajánlja futtathatónak. A mai main-en három brief esne ebbe (`F09`, `F35`, `F36`, a `motivumot_ir` szerint); **döntésem: előzmény-kivétel**, mert a hiba ezeknél eltörné a CI-t, más feladat briefjét pedig nem írhatom át. A `feladatok.py` `MUNKA_ELOZMENY = (9, 35, 36)` listája ezekre `FIGYELEM` sort ad (`ellenoriz`: `FIGYELEM`, nem hiba; `fuggesek`: `FIGYELEM`), a lezárt F35-re semmit; a `csomag` mindhárom előzményre továbbra is `NEM_CSOMAGOLHATO`. Új brief nem kerülhet a listára: aki új motívumot író briefet vesz fel, `munka`-t kell megadjon (a `fuggesek --extra` a befogadáskor is `MUNKA_HIANY`-t ad). Az előzmény-lista akkor szűnik meg, ha az F09 és F36 `munka` mezőt kap (külön, a gazdájuk dolga). *Frissítés (DT28, 2026.10.05): a `lexikon/` nem motívumfájl, az F36 (`ir: [lexikon/, generalt_proba/]`) kikerült a listából és `munka: adat`-ot kapott; `MUNKA_ELOZMENY = (9, 35)`.*
 
 ## Ismert korlát — a K3.2 ID-alapú (javaslat: külön feladat)
 
 A K3.2 (`olvas`-ellenőrzés) a motívumot az `ir` fájlnevének elejéről olvasott **ID-ből** ismeri fel (`[A-Z]+-[0-9]+`, pl. `TEREMT-002`), és az `olvas`-ban a `tematikus_lezart/[ID]_tematikus.md` és a `tematikus_lezart/naplok/[ID]_kereszthivatkozas_naplo.md` mintát várja. Következmények:
 
 - **Témanevű tanulmányokra nem fut.** A mai tanulmányok témanevet viselnek (`Tehom_tematikus.md`, `Hadesz_Seol_tematikus.md`, `Segitsegul_hivni_az_Urat_tematikus.md`, így az F09 is ilyet ír), és az ID és a tanulmány között gépi megfeleltetés nincs; az ilyen briefnél az `olvas`-lista teljességéért a brief szerzője felel (K1/3 kézi betartása).
-- **Könyvtár- és glob-`ir`** (`lexikon/`, `tematikus_lezart/`, `genezis/`) ID nélkül a K3.2-t nem váltja ki, csak a `munka`-szabályt (K3.1, E18).
+- **Könyvtár- és glob-`ir`** (`tematikus_lezart/`, `genezis/`) ID nélkül a K3.2-t nem váltja ki, csak a `munka`-szabályt (K3.1, E18). A `lexikon/` ID nélkül egyiket sem (DT28).
 - **Javaslat (`/befogad`):** külön feladat a **motívum→tanulmány megfeleltetésre**: egy gépi tábla (pl. `adat/motivum_tanulmany.tsv`: `motivum_id`, `tanulmany`, `naplo`), amelyből a K3.2 az ID-n és a témanevű tanulmányon is ellenőrizni tud. A `feladatok.py` a táblát olvasná; amíg nincs, a fenti kézi felelősség áll. Ezt a feladatot **nem veszem fel** (a `/befogad` a felhasználóé).
 
 **Egyéb korlát:**
@@ -57,8 +57,10 @@ A fixture-briefek a repón kívüli ideiglenes könyvtárban vannak (`--gyoker`)
 | **91** | **NEG_ERT** | ertelmezo | `motivumok/TEREMT-002.md` | **csak tanulmány, a napló hiányzik** | K3.2: hiba (a TEREMT-002-re szabott negatív próba) |
 | 92 | POZ_ADAT | adat | `adat/y.tsv` | — | csomagolható |
 | 93 | POZ_FOLY | folyamat | `BRIEF_SABLON.md` | — | csomagolható |
-| 94 | NEG_FOLY | folyamat | `lexikon/ISTENTISZT-001_TUDOMANYOS.md` | semmi | `csomag`: nem; K3.2: hiba |
-| 95 | NEG_REGI | (nincs) | `lexikon/` | — | `csomag`: nem (hiányzó `munka`) |
+| 94 | NEG_FOLY | folyamat | `tematikus_lezart/TEREMT-002_javitas.md` | tanulmány + napló | `csomag`: nem (motívumfájlt ír) |
+| 94' | POZ_LEX (DT28) | folyamat | `lexikon/TEREMT-002_TUDOMANYOS.md` | semmi | `csomag`: igen (nem motívumfájl); K3.2: hiba (adatfüggés) |
+| 95 | NEG_REGI | (nincs) | `tematikus_lezart/` | — | `csomag`: nem (hiányzó `munka`) |
+| 36 | POZ_LEX_REGI (DT28) | (nincs) | `lexikon/`, `generalt_proba/` | — | csomagolható (`adat`), nincs E18 |
 | 96 | POZ_REGI | (nincs) | `adat/y.tsv` | — | csomagolható (`adat`) |
 | 97 | NEG_ID_TELJES | ertelmezo | `tematikus_lezart/TEREMT-002_javitas.md` | semmi | K3.2: hiba (a javító kör is) |
 

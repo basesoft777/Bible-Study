@@ -12,6 +12,7 @@ kovetkezo: /kovetkezo; ⛔ az M0 után (a „magas” lefedettség és a frissí
 olvas: [adat/karoli_strong/, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/SEMA.md, tematikus_lezart/, konkordancia/Karoli_Strong_kivonat.tsv, konkordancia/Karoli_1908.tsv, F22_KAROLI_STRONG_BRIEF.md, naplok/F22_Jozs_jelentes.md]
 ir: [adat/SEMA.md, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/karoli_variancia.tsv, eszkozok/karoli_ellenorzes.py, eszkozok/teszt_karoli_ellenorzes.py]
 fugg: [62, 63]
+nem_fugg: [22]
 ---
 
 # F65_KAROLI_ELLENORZES_BRIEF.md — Károli-idézetek ellenőrzése és a Károli-triplet frissítése

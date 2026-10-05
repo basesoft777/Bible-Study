@@ -18,7 +18,8 @@ Parancsok:
                     sor (es 1-es kilepesi kod), ha motivumot iro feladat `olvas`-aban
                     hianyzik a tanulmany vagy a naplo (F32, K3.2); MUNKA_HIANY sor (es 1-es
                     kilepesi kod), ha motivumfajlt iro brief `munka` mezoje hianyzik (E18;
-                    az elozmeny F09/F36 csak FIGYELEM, de a `jeloltek` kihagyja; DT-F32c)
+                    az elozmeny F09 csak FIGYELEM, de a `jeloltek` kihagyja; DT-F32c;
+                    a `lexikon/` generalt kimenet, nem motivumfajl: DT28)
     csomag SZAM..   F32 (K3.1): a felsorolt feladatok csomagolhatok-e (`munka` mezo);
                     1-es kilepesi kod, ha valamelyik nem
     atvetel         a FELADATOK.md tablajabol allapot + kovetkezo lepes a
@@ -309,9 +310,13 @@ def ellenoriz(briefek, gyoker=REPO):
 # F32 (KONTEXTUS): munka-fajta, csomagolhatosag, motivum-olvasas
 # ---------------------------------------------------------------------------
 
-# motivumfajlt iro `ir`-bejegyzes: ezek az elotagok (MUNKAMENET.md, Kontextus-orzes)
-MOTIVUM_IR_ELOTAGOK = ('motivumok/', 'tematikus_lezart/', 'lexikon/', 'genezis/')
-# a motivum-azonositot a fajlnev elejerol olvassuk (a genezis/ nem ID-s nevu)
+# motivumfajlt iro `ir`-bejegyzes: ezek az elotagok (MUNKAMENET.md, Kontextus-orzes).
+# A `lexikon/` nincs koztuk (DT28, 2026.10.05): generalt kimenet, kezzel nem irhato,
+# ezert az ujrageneralasa nem motivumot iro munka (a #36 `munka: adat`-tal fut).
+MOTIVUM_IR_ELOTAGOK = ('motivumok/', 'tematikus_lezart/', 'genezis/')
+# a motivum-azonositot a fajlnev elejerol olvassuk (a genezis/ nem ID-s nevu).
+# A `lexikon/[ID]*` itt marad: a K3.2 (olvas-ellenorzes) nem a motivumot iras, hanem az
+# adatfugges miatt keri a tanulmanyt es a naplot -- a render azokbol olvas (RENDER_BRIEF G1/G4).
 MOTIVUM_ID_ELOTAGOK = ('motivumok/', 'tematikus_lezart/', 'lexikon/')
 MOTIVUM_ID = re.compile(r'^([A-Z]+-\d+)')
 # K1/3: a motivum tanulmanya es kereszthivatkozas-naploja (mintafajlnevek az illesztesre)
@@ -320,7 +325,7 @@ NAPLO_MINTA = 'tematikus_lezart/naplok/%s_kereszthivatkozas_naplo.md'
 
 
 def motivumot_ir(b):
-    """F32: az `ir` motivumfajlt (motivumok/, tematikus_lezart/, lexikon/, genezis/) tartalmaz."""
+    """F32: az `ir` motivumfajlt (motivumok/, tematikus_lezart/, genezis/) tartalmaz; a lexikon/ nem az (DT28)."""
     return any(_norm(u).startswith(MOTIVUM_IR_ELOTAGOK) for u in b.fej.get('ir', []))
 
 
@@ -352,10 +357,11 @@ def kontextus_hibak(b):
 
 
 # F32 (1. eltérés, felhasználó 2026.10.04; az előzmény-kivétel DT-F32c, 🟢 1. opció): a `munka` nélküli, motívumfájlt író brief E18 fejléchiba.
-# A mai main-en három ilyen brief van (F09, F35, F36); ezek nem törhetik el a CI-t, ezért
+# A 2026.10.04-i main-en három ilyen brief volt (F09, F35, F36); ezek nem törhetik el a CI-t, ezért
 # FIGYELEM-szintűek (az F35 lezárt, azt nem jelezzük). Új brief nem kerülhet ebbe a körbe.
 # A FIGYELEM nem enged futást: a `jeloltek` a mező kitöltéséig kihagyja őket (DT-F32c).
-MUNKA_ELOZMENY = (9, 35, 36)
+# A 36 kikerült (DT28): az `ir`-je csak `lexikon/`-t ír, ami nem motívumfájl; a briefje `munka: adat`.
+MUNKA_ELOZMENY = (9, 35)
 
 
 def munka_hianyzik(b):
