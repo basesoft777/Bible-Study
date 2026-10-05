@@ -93,15 +93,15 @@ Mindkét fájl tab-elválasztott (`\t`), UTF-8 kódolású szöveges fájl. A t�
 
 **A `TBESH.lexicon` tartalma nem pótolható a `TBESH.txt`-ből.** A fenti mérés szerint 542 sor csak a `.lexicon`-ban van meg, és 5 783 sornál a `.lexicon` szövege a bővebb. A lexikonoldalak erre nem épülnek: a generátor a TBESH-ből csak a lemmát és az átírást olvassa, a `.txt`-ből. A többlettartalom ezért csak a helyi példányban és a git-történetben él.
 
-**Visszaállítás a git-történetből** (új klónban vagy cloud sessionben is működik; az F42.4 commit `1dca09e` előtti állapotból):
+**Visszaállítás a git-történetből** (új klónban vagy cloud sessionben is működik; a `08d88dc` commitból (az `origin/main` utolsó példánya)):
 
 ```bash
 mkdir -p konkordancia/_nyers/tbesh
-git show 1dca09e~1:konkordancia/lexikonok_nyers/TBESH.lexicon > konkordancia/_nyers/tbesh/TBESH.lexicon
+git show 08d88dc:konkordancia/lexikonok_nyers/TBESH.lexicon > konkordancia/_nyers/tbesh/TBESH.lexicon
 python eszkozok/tbesh_konszolidalt_import.py
 ```
 
-A visszaállított fájl sha256-ja egyezik a fenti értékkel (`5a8e306e…ce32`, ellenőrizve 2026-10-05). A konszolidált táblát a harmadik sor generálja újra; közvetlenül is visszahozható: `git show 1dca09e~1:konkordancia/TBESH_konszolidalt.tsv`. Javasolt a `konkordancia/_nyers/tbesh/` mappáról saját, privát mentést tartani. A nyilvános repóba a fájl nem kerülhet vissza.
+A visszaállított fájl sha256-ja egyezik a fenti értékkel (`5a8e306e…ce32`, ellenőrizve 2026-10-05). A konszolidált táblát a harmadik sor generálja újra; közvetlenül is visszahozható: `git show 55c407a:konkordancia/TBESH_konszolidalt.tsv`. Javasolt a `konkordancia/_nyers/tbesh/` mappáról saját, privát mentést tartani. A nyilvános repóba a fájl nem kerülhet vissza.
 
 **Generált** (`eszkozok/tbesh_konszolidalt_import.py`, kézzel nem szerkesztendő):
 **unió, nem csere** — egyik forrás sem váltja ki a másikat, mert szócikkenként

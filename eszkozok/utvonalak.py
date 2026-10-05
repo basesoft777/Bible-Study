@@ -33,7 +33,7 @@ _UZENET = {
     TBESH_LEXICON: ('NEM tölthető le rögzített forrásból (Google Drive, biblematedata; '
                     'l. konkordancia/lexikonok_nyers/README.md): csak helyben élő fájl, '
                     'a sha256-ja a konkordancia/README.md-ben; a letöltő szkript nem ígér letöltést. '
-                    'Visszaállítás a git-történetből: git show 1dca09e~1:konkordancia/lexikonok_nyers/TBESH.lexicon '
+                    'Visszaállítás a git-történetből: git show 08d88dc:konkordancia/lexikonok_nyers/TBESH.lexicon '
                     '> konkordancia/_nyers/tbesh/TBESH.lexicon (l. konkordancia/TBESH_TBESG_README.md)'),
     TBESH_KONSZOLIDALT: ('generált: python eszkozok/tbesh_konszolidalt_import.py '
                          '(a TBESH.txt és a helyben élő TBESH.lexicon kell hozzá)'),
