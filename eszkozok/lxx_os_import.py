@@ -27,7 +27,6 @@ import urllib.request
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(REPO_ROOT, "eszkozok"))
 
-from lxx_kivonat_fetch_v2 import KEZI_ELTOLASOK  # noqa: E402
 
 KONKORDANCIA_DIR = os.path.join(REPO_ROOT, "konkordancia")
 LXX_OS_DIR = os.path.join(KONKORDANCIA_DIR, "LXX_OS")
@@ -102,6 +101,186 @@ BOOKS = {
     "odes": ("Odes", "odes", "deuterocanon"),
 }
 
+# --- KEZI_ELTOLASOK (F42 / DT-F42f: ide költözött a megszűnt lxx_kivonat_fetch_v2.py-ból) ---
+# Könyv-specifikus, kézi fejezethatár-eltolás-szabályok (Dán, 4Móz, Jób, Préd): a nyers
+# (angol, studybible-féle) fejezet/vers -> Károli fejezet/vers; (fejezet, vers) -> (karoli_fejezet,
+# karoli_vers) vagy None. Az LXX_OS Károli-kulcs-felbontása (resolve_karoli) és a naplok/KAROLI_KK*
+# szkriptek használják.
+
+def daniel_4_eltolas(fejezet, vers_szam):
+    """Dan konyv, nyers oldal-helyi 4. fejezet 1-37. verse -> Karoli 3:31-33
+    illetve 4:1-34 (konzisztens -3 eltolodas).
+
+    A nyers studybible.info/LXX_WH/Daniel 4 oldal NEM ad zarojeles
+    kereszthivatkozast (0 db zarojel a teljes fejezetben - ellenorizve), igy a
+    LXX_versificacios_terkep.tsv automatikus lookupja soha nem lep mukodesbe
+    (az csak zarojel eseten aktivalodik). A terkep sajat sorai (Heber_vers/
+    Latin_vers oszlopok) DOKUMENTALJAK az eltolodast, de ezeket a bracket
+    hianyaban semmi nem hasznalja fel - emiatt a kimenet eddig a nyers
+    oldal-helyi szamozast hasznalta kozvetlenul, ami hibas volt.
+
+    Tartalmilag egyeztetve (l. beszelgetes): a nyers "4:1" a level koszontese
+    ("Nabukodonozor kiraly... bekesseg adassek nektek"), ami a Karoliban meg
+    a 3. fejezet zaro verse (3:31); a nyers "4:4" ("En Nabukodonozor bekeben
+    valek...") pontosan egyezik Karoli 4:1-gyel; a nyers "4:34" ("...
+    szemeimet az egre emelem...") pontosan egyezik Karoli 4:31-gyel.
+
+    Csak Dan konyv 4. fejezetere, csak az 1-37. nyers versre vonatkozik - mas
+    konyvet/fejezetet nem erint.
+    """
+    if fejezet != 4 or not (1 <= vers_szam <= 37):
+        return None
+    if vers_szam <= 3:
+        return (3, vers_szam + 30)
+    return (4, vers_szam - 3)
+
+
+def numeri_12_13_eltolas(fejezet, vers_szam):
+    """Numeri, nyers 12. fejezet 16. verse -> Karoli 13:1; nyers 13. fejezet
+    1-33. verse -> Karoli 13:2-34 (a valodi Karoli 13:1 tartalma a LXX-ben a
+    12. fejezet vegere "csuszott at").
+
+    A nyers studybible.info/LXX_WH/Numbers 12 es Numbers 13 oldalak egyike
+    sem ad zarojeles kereszthivatkozast ehhez a hatarhoz (ellenorizve), igy a
+    LXX_versificacios_terkep.tsv automatikus lookupja sosem aktivalodott.
+
+    Tartalmilag egyeztetve: a nyers "12:16" ("και μετα ταυτα εξηρεν ο λαος εξ
+    ασηρωθ...") pontosan egyezik Karoli 13:1-gyel ("Azutan pedig elindula a
+    nep Haserothbol..."); a nyers "13:1" ("και ελαλησεν κυριος προς μωυσην
+    λεγων") pontosan egyezik Karoli 13:2-vel; a nyers "13:30" pontosan
+    egyezik Karoli 13:33-mal. A 11. es 14. fejezet hatarai tisztak (tartalmi
+    egyeztetve), nem erintettek.
+    """
+    if fejezet == 12 and vers_szam == 16:
+        return (13, 1)
+    if fejezet == 13 and 1 <= vers_szam <= 33:
+        return (13, vers_szam + 1)
+    return None
+
+
+def job_38_41_eltolas(fejezet, vers_szam):
+    """Job, nyers 38-40. fejezetek elteruleseinek felbontasa Karoli
+    38:1-38 / 39:1-38 / 40:1-19 / 41:1-34 hataraira.
+
+    A nyers studybible.info/LXX_WH/Job 38, 39, 40 oldalak egyike sem ad
+    zarojeles kereszthivatkozast ehhez a lancolt hatarhoz (ellenorizve), igy
+    a LXX_versificacios_terkep.tsv automatikus lookupja sosem aktivalodott.
+    A Job 41. fejezet hatara tiszta (tartalmilag egyeztetve), nem erintett.
+
+    Tartalmilag egyeztetve minden szakaszhataron:
+      - nyers 38:1-38 valtozatlan (Karoli 38:1-38)
+      - nyers 38:39-41 -> Karoli 39:1-3 ("Vadaszol-e predat a nosteny
+        oroszlannak...", "hollonak eledelt" - pontos egyezes)
+      - nyers 39:1-30 -> Karoli 39:4-33 ("Tudod-e a koszali zergek
+        ellesenek idejet..." - pontos egyezes 39:4-gyel, 39:33-mal a vegen)
+      - nyers 40:1-5 -> Karoli 39:34-38 ("Szola tovabba az Ur Jobnak..." -
+        pontos egyezes)
+      - nyers 40:6-24 -> Karoli 40:1-19 ("Ekkor szola az Ur Jobnak a
+        forgoszelbol..." - pontos egyezes 40:1-gyel, 40:19-cel a vegen)
+    """
+    if fejezet == 38:
+        if 1 <= vers_szam <= 38:
+            return None
+        if 39 <= vers_szam <= 41:
+            return (39, vers_szam - 38)
+        return None
+    if fejezet == 39 and 1 <= vers_szam <= 30:
+        return (39, vers_szam + 3)
+    if fejezet == 40:
+        if 1 <= vers_szam <= 5:
+            return (39, vers_szam + 33)
+        if 6 <= vers_szam <= 24:
+            return (40, vers_szam - 5)
+        return None
+    return None
+
+
+def predikator_eltolas(fejezet, vers_szam):
+    """Prédikátor (Ecclesiastes) - a KONYVNEK NINCS EGYETLEN SORA SEM a
+    LXX_versificacios_terkep.tsv-ben (0 sor), tehat itt nem "a terkep nem
+    aktivalodik" a problema (mint Danielnel/Numerinel/Jobnal), hanem a
+    terkep MAGA hianyzik teljesen errol a konyvrol. A teljes konyvet
+    vegigellenorizve (minden fejezethatar, tartalmi egyeztetessel) 4
+    valodi eltolodasi/osszevonasi pont talalhato:
+
+      1/2 hatar:  nyers 1. fej. 1-17. vers valtozatlan; nyers 1:18 -> 2:1
+                  ("oti en plethei sofias..." = "Mert a bolcsessegnek
+                  sokasagaban..." - pontos egyezes). Nyers 2. fej. 1-24.
+                  vers -> Karoli 2:2-25 (egyenkent +1); nyers 2:25 ES 2:26
+                  EGYUTT Karoli 2:26-ba olvad ossze (Karoli itt ket
+                  gorog/nyers verset egyetlen hosszu mondatba von ossze:
+                  "ki ehet... Isten bolcseseget ad" - mindket felet
+                  tartalmazza).
+      8/9 hatar:  nyers 8. fej. 1-15. vers valtozatlan; nyers 8:16-17 ->
+                  9:1-2. Nyers 9. fej. 1-18. vers -> Karoli 9:3-20
+                  (egyenkent +2).
+      9/10 hatar: nyers 10. fej. 1-3. vers -> Karoli 9:21-23 (+20); nyers
+                  10:4-20 -> Karoli 10:1-17 (egyenkent -3).
+      11/12 hatar: nyers 11. fej. 1-8. vers valtozatlan; nyers 11:9-10 ->
+                  Karoli 12:1-2. Nyers 12. fej. 1-14. vers -> Karoli
+                  12:3-16 (egyenkent +2).
+
+    A 2-8. es a vege (12:16) tartalmilag egyeztetve tiszta, nem erintett.
+    Minden pontot tobb, fuggetlen tartalmi idezet-egyezessel ellenoriztunk
+    (l. beszelgetes) - pl. nyers 8:16 = "en ois edoka ten kardian mou tou
+    gnonai sofian..." = Karoli 9:1 "Mikor adam az en szivemet a
+    bolcsesegnek megtudasara..."; nyers 10:4 = "ean pneuma tou
+    exousiazontos anabe..." = Karoli 10:1 "Mikor a fejedelemnek haragja
+    felgerjed..."; nyers 11:9 = "eufrainou neaniske..." = Karoli 12:1
+    "Orvendezz a te ifjusagodban..."; nyers 12:1 = "kai mnestheti tou
+    ktisantos se..." = Karoli 12:3 "Es emlekezzel meg a te Teremtodrol...".
+    """
+    if fejezet == 1:
+        if 1 <= vers_szam <= 17:
+            return None
+        if vers_szam == 18:
+            return (2, 1)
+        return None
+    if fejezet == 2:
+        if 1 <= vers_szam <= 24:
+            return (2, vers_szam + 1)
+        if vers_szam in (25, 26):
+            return (2, 26)
+        return None
+    if fejezet == 8:
+        if 1 <= vers_szam <= 15:
+            return None
+        if vers_szam in (16, 17):
+            return (9, vers_szam - 15)
+        return None
+    if fejezet == 9 and 1 <= vers_szam <= 18:
+        return (9, vers_szam + 2)
+    if fejezet == 10:
+        if 1 <= vers_szam <= 3:
+            return (9, vers_szam + 20)
+        if 4 <= vers_szam <= 20:
+            return (10, vers_szam - 3)
+        return None
+    if fejezet == 11:
+        if 1 <= vers_szam <= 8:
+            return None
+        if vers_szam in (9, 10):
+            return (12, vers_szam - 8)
+        return None
+    if fejezet == 12 and 1 <= vers_szam <= 14:
+        return (12, vers_szam + 2)
+    return None
+
+
+# Konyv-specifikus, kezi fejezethatar-eltolas-szabalyok azokra az ismert
+# esetekre, ahol a nyers oldal nem ad zarojelet (a LXX_versificacios_terkep.tsv
+# automatikus lookupja emiatt sosem aktivalodik), DE tartalmilag egyeztetett,
+# konzisztens eltolodas van a nyers oldal-helyi es a Karoli-szamozas kozott.
+# Minden fuggveny (fejezet, vers_szam) -> (karoli_fejezet, karoli_vers) vagy
+# None (ha nem erintett) alairasu.
+KEZI_ELTOLASOK = {
+    "Daniel": daniel_4_eltolas,
+    "Numbers": numeri_12_13_eltolas,
+    "Job": job_38_41_eltolas,
+    "Ecclesiastes": predikator_eltolas,
+}
+
+
 BOOK_KEY_TO_KAROLI = {
     "genesis": "1Móz", "exodus": "2Móz", "leviticus": "3Móz", "numbers": "4Móz",
     "deuteronomy": "5Móz", "joshua": "Józs", "judges": "Bír", "ruth": "Ruth",
@@ -117,7 +296,136 @@ KAROLI_TO_ENGLISH_FOR_KEZI = {
     "4Móz": "Numbers", "Jób": "Job", "Préd": "Ecclesiastes", "Dán": "Daniel",
 }
 
+# --- F42 / DT-F42f (f2): elsődleges szövegváltozat Károli-könyvenként ----------------------
+# Ahol az LXX_OS több fájlban ad Károli-kulcsos verset ugyanahhoz a Károli-könyvhöz
+# (szövegváltozatok), az olvasók (lekerdez.py lxx-hid, lexikon_general, lxx_bridge_egyezes,
+# lxx_osszevetes) ezt az elsődleges fájlt használják; a másik változat a konkordancia/LXX_OS/-ben
+# megmarad. Józs: Vaticanus (B, 616 Károli-kulcsos vers; a joshua.tsv-ben 95), Bír: judges (618;
+# a Vaticanus-B 617), Dán: Theodotion (327; az Old Greek 308). A 2 Esdras (Ezsd, Neh) és a görög
+# Eszter a f1 besorolás (karoli_esdras_eszter) szerint.
+ELSODLEGES_SLUG = {
+    "Józs": "joshua-vaticanus-b",
+    "Bír": "judges",
+    "Dán": "daniel-theodotion",
+    "Ezsd": "2-esdras",
+    "Neh": "2-esdras",
+    "Eszt": "esther-greek",
+}
+
+
+def elsodleges_slug(karoli_konyv):
+    """Károli-könyv (pl. 'Zsolt') -> a LXX_OS-fájl slugja (pl. 'psalms-lxx'), vagy None."""
+    if karoli_konyv in ELSODLEGES_SLUG:
+        return ELSODLEGES_SLUG[karoli_konyv]
+    talalt = None
+    for slug, (_cim, book_key, _test) in BOOKS.items():
+        if BOOK_KEY_TO_KAROLI.get(book_key) == karoli_konyv:
+            if slug == book_key:
+                return slug
+            talalt = talalt or slug
+    return talalt
+
+
 VERS_REF_RE = re.compile(r'^(\d+):(\d+)$')
+
+
+# --- F42 / DT-F42f (f1): 2 Esdras és a görög Eszter Károli-besorolása -----------------------
+# A 2 Esdras 1-10 = Ezsd, 11-23 = Neh (fejezet - 10); a görög Eszter héber szövegű versei = Eszt.
+# A Károli-kulcs a `Karoli_versmegfeleltetes.tsv` (igehely_karoli <-> igehely_kjv) és a sor
+# `igehely_kjv` oszlopa szerint; az Eszter-betoldások (nincs KJV-megfelelő) és az 1 Esdras kulcs
+# nélkül maradnak. A `karoli_ok` értéke itt `versmegfeleltetes_tabla`.
+ESDRAS_ESZTER_SLUGOK = ("2-esdras", "esther-greek")
+VERSMEGFELELTETES_TSV = os.path.join(KONKORDANCIA_DIR, "Karoli_versmegfeleltetes.tsv")
+_KJV_KAROLI_CACHE = None
+
+
+def load_kjv_karoli_index():
+    """(Károli-könyv, 'fejezet:vers' KJV-alakban) -> [igehely_karoli, ...]; csak Ezsd/Neh/Eszt."""
+    global _KJV_KAROLI_CACHE
+    if _KJV_KAROLI_CACHE is not None:
+        return _KJV_KAROLI_CACHE
+    idx = {}
+    with open(VERSMEGFELELTETES_TSV, encoding="utf-8") as f:
+        for sor in f:
+            sor = sor.rstrip("\r\n")
+            if not sor or sor.startswith("#") or sor.startswith("igehely_karoli\t"):
+                continue
+            p = sor.split("\t")
+            konyv = p[0].split(" ")[0]
+            if konyv in ("Ezsd", "Neh", "Eszt"):
+                idx.setdefault((konyv, p[1]), []).append(p[0])
+    _KJV_KAROLI_CACHE = idx
+    return idx
+
+
+def karoli_esdras_eszter(slug, fejezet, igehely_kjv):
+    """-> (igehely_karoli, karoli_ok) a 2 Esdras / görög Eszter egy versére."""
+    if not igehely_kjv:
+        return "", "nincs_mt_parositas"
+    m = VERS_REF_RE.match(igehely_kjv)
+    if not m:
+        return "", "szamozas_elteres"
+    kjv_fej = int(m.group(1))
+    if slug == "2-esdras":
+        if 1 <= fejezet <= 10:
+            konyv, varhato = "Ezsd", fejezet
+        elif 11 <= fejezet <= 23:
+            konyv, varhato = "Neh", fejezet - 10
+        else:
+            return "", "szamozas_elteres"
+        # A KJV-hivatkozás a mérvadó: a fejezethatár-eltolódásnál (pl. 2 Esdras 13:33-37 =
+        # KJV Neh 4:1-5, 20:1 = Neh 9:38) a kjv_fej a `varhato` fejezet szomszédja (±1).
+        if kjv_fej not in (varhato - 1, varhato, varhato + 1):
+            return "", "szamozas_elteres"
+    elif slug == "esther-greek":
+        konyv = "Eszt"
+    else:
+        raise ValueError(slug)
+    talalat = load_kjv_karoli_index().get((konyv, igehely_kjv), [])
+    if len(talalat) != 1:
+        return "", "szamozas_elteres"
+    return talalat[0], "versmegfeleltetes_tabla"
+
+
+def ujrabesorol_esdras_eszter():
+    """Offline újrabesorolás (nincs letöltés): a már generált 2-esdras.tsv és esther-greek.tsv
+    igehely_karoli / karoli_ok oszlopát a karoli_esdras_eszter() szerint írja újra az
+    igehely_kjv oszlopból. Ugyanaz a függvény, mint a process_book()-ban."""
+    jelentes = {}
+    for slug in ESDRAS_ESZTER_SLUGOK:
+        ut = os.path.join(LXX_OS_DIR, f"{slug}.tsv")
+        komment, fejlec, sorok = [], None, []
+        with open(ut, encoding="utf-8") as f:
+            for sor in f:
+                sor = sor.rstrip("\r\n")
+                if sor.startswith("#"):
+                    komment.append(sor)
+                elif fejlec is None:
+                    fejlec = sor
+                else:
+                    sorok.append(sor.split("\t"))
+        assert fejlec.split("\t") == LXX_OS_HEADER, fejlec
+        jegyzet = ("# F42 (DT-F42f f1): az igehely_karoli / karoli_ok oszlop a `python eszkozok/lxx_os_import.py "
+                   "--ujrabesorol` szerint újrabesorolva (Karoli_versmegfeleltetes.tsv + igehely_kjv), ts="
+                   + __import__("datetime").date.today().isoformat())
+        komment = [k for k in komment if not k.startswith("# F42 (DT-F42f f1)")] + [jegyzet]
+        kulcsolt, osszes = set(), set()
+        for p in sorok:
+            m = re.search(r"(\d+):(\d+)$", p[0])
+            fej = int(m.group(1))
+            karoli, ok = karoli_esdras_eszter(slug, fej, p[1])
+            p[2], p[3] = karoli, ok
+            osszes.add(p[0])
+            if karoli:
+                kulcsolt.add(karoli)
+        with open(ut, "w", encoding="utf-8", newline="\n") as f:
+            for k in komment:
+                f.write(k + "\n")
+            f.write(fejlec + "\n")
+            for p in sorok:
+                f.write("\t".join(p) + "\n")
+        jelentes[slug] = (len(osszes), sorted(kulcsolt))
+    return jelentes
 EM_DASH = "—"
 
 LXX_OS_HEADER = [
@@ -562,7 +870,12 @@ def process_book(slug, morph_dir, verse_pairs_idx, greek_word_list, proveniencia
         mt_book, mt_refs, method = vp_for_book.get(f"{fejezet}:{vers}", (None, [], None))
         igehely_kjv = ";".join(mt_refs) if mt_refs else ""
 
-        if not karoli_book:
+        if slug in ESDRAS_ESZTER_SLUGOK:
+            igehely_karoli, karoli_ok = karoli_esdras_eszter(
+                slug, fejezet, igehely_kjv if len(mt_refs) == 1 else "")
+            stats.setdefault(karoli_ok, 0)
+            stats[karoli_ok] += 1
+        elif not karoli_book:
             igehely_karoli, karoli_ok = "", "nincs_karoli_konyv"
             stats["nincs_karoli_konyv"] += 1
         else:
@@ -666,7 +979,15 @@ def main():
     parser.add_argument("--forras", metavar="KONYVTAR", help="mar letoltott forrasok konyvtara")
     parser.add_argument("--sqlite-ellenoriz", action="store_true", help="bulk SQLite letoltese es ellenorzes")
     parser.add_argument("--konyvek", help="csak ezekre a slugokra fusson (vesszovel elvalasztva)")
+    parser.add_argument("--ujrabesorol", action="store_true",
+                        help="offline: a 2-esdras.tsv és az esther-greek.tsv Károli-besorolásának újraírása "
+                             "(F42 / DT-F42f f1), letöltés nélkül")
     args = parser.parse_args()
+
+    if args.ujrabesorol:
+        for slug, (db, kulcsolt) in ujrabesorol_esdras_eszter().items():
+            print(f"  {slug}: {db} vers, ebből Károli-kulcsos: {len(kulcsolt)}", file=sys.stderr)
+        return
 
     if args.letolt and args.forras:
         print("HIBA: --letolt es --forras kizarja egymast.", file=sys.stderr)

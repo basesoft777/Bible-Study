@@ -809,16 +809,15 @@ _lxx_dontesek_cache = None
 
 
 def karoli_to_primary_slug():
+    """Károli-könyv -> LXX_OS slug; az elsődleges szövegváltozatot LXXOS.ELSODLEGES_SLUG adja
+    (F42 / DT-F42f f2)."""
     global _karoli_to_primary_slug
     if _karoli_to_primary_slug is None:
         terkep = {}
-        for slug, (_title, book_key, _test) in LXXOS.BOOKS.items():
-            karoli_book = LXXOS.BOOK_KEY_TO_KAROLI.get(book_key)
-            if not karoli_book:
-                continue
-            if slug == book_key:
-                terkep[karoli_book] = slug
-            elif karoli_book not in terkep:
+        karoli_konyvek = set(LXXOS.BOOK_KEY_TO_KAROLI.values()) | set(LXXOS.ELSODLEGES_SLUG)
+        for karoli_book in karoli_konyvek:
+            slug = LXXOS.elsodleges_slug(karoli_book)
+            if slug:
                 terkep[karoli_book] = slug
         _karoli_to_primary_slug = terkep
     return _karoli_to_primary_slug

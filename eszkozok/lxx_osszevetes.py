@@ -1,8 +1,22 @@
-"""V1.4 — a régi (studybible.info alapú) és az új (lxx-morph alapú) LXX-kivonat
-összevetése a 8 motívum ÓSZ-igehelyein, a generátor ma is használt
-lxx-hid lépése szerint (a verset a vers-cím, nem a héber Strong azonosítja).
+"""F42 / DT-F42f (f3): a régi LXX_kivonat és az LXX_OS teljes, versenkénti összevetése.
 
-Lásd LEXV2_1_BRIEF.md V1.4.
+A régi `konkordancia/LXX_kivonat_*.tsv` (studybible.info, LXX_WH + ABP) kivezetése előtt
+készült eltéréslista: minden régi Károli-versre összeveti a régi Strong-multihalmazt az LXX_OS
+(elsődleges szövegváltozat, `lxx_os_import.ELSODLEGES_SLUG`) `igehely_karoli` szerinti soraival.
+
+    python eszkozok/lxx_osszevetes.py [--kimenet UT]
+
+Kimenet (alapértelmezés): `naplok/FORRASKIVEZETES_M5_eltereslista.tsv`, csak az NEM azonos versek.
+Kategóriák:
+  strong_eltero      a Strong-multihalmazok Jaccard-hasonlósága >= 0,8 (jellemzően konvenció-eltérés)
+  nagy_eltero        < 0,8 (szövegalap- vagy vers-hozzárendelés-eltérés)
+  zsoltar_eltolas    a régi vers az LXX_OS KÖVETKEZŐ versével egyezik (a régi zsoltár-kivonat
+                     egy verssel eltolt, N17); az átállás ezt JAVÍTJA
+  csak_regi_vers     az LXX_OS-ben nincs Károli-kulcsos sor erre a versre
+  csak_uj_vers       az LXX_OS-ben van, a régiben nincs
+A régi fájlok kivezetése (F42.M5) után a szkript a régi adatot nem találja: a git-történetből
+(`git show <F42 előtti commit>:konkordancia/LXX_kivonat_<Könyv>.tsv`) állítható vissza.
+A proveniencia: manual (összevetés), nem lekérdezés.
 """
 
 import sys
@@ -12,22 +26,21 @@ if hasattr(sys.stdout, 'reconfigure'):
 if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
-import glob
+import collections
+import datetime
 import os
 import re
+import unicodedata
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import lxx_os_import as OS  # noqa: E402
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ADAT_DIR = os.path.join(REPO_ROOT, "adat")
 KONKORDANCIA_DIR = os.path.join(REPO_ROOT, "konkordancia")
 LXX_OS_DIR = os.path.join(KONKORDANCIA_DIR, "LXX_OS")
-NAPLOK_DIR = os.path.join(REPO_ROOT, "naplok")
+KIMENET_PATH = os.path.join(REPO_ROOT, "naplok", "FORRASKIVEZETES_M5_eltereslista.tsv")
 
-ELOFORDULASOK_PATH = os.path.join(ADAT_DIR, "elofordulasok.tsv")
-KIMENET_PATH = os.path.join(NAPLOK_DIR, "LEXV2_lxx_osszevetes.tsv")
-
-HEADER = ["id", "igehely", "strong", "regi_talalat", "uj_talalat", "uj_szoalak", "uj_lemma", "megjegyzes"]
-
-# Károli-rövidítés -> régi LXX_kivonat_<fajlnev>.tsv szuffixum (l. eszkozok/lekerdez.py _lxx_filename)
+# Károli-rövidítés -> régi LXX_kivonat_<fajlnev>.tsv szuffixum
 REGI_LXX_FAJLNEV = {
     "1Móz": "Genezis", "2Móz": "Exodus", "3Móz": "Leviticus", "4Móz": "Numeri",
     "5Móz": "Deuteronomium", "Józs": "Jozsue", "Bír": "Birak", "Ruth": "Ruth",
@@ -41,149 +54,142 @@ REGI_LXX_FAJLNEV = {
     "Zak": "Zakarias", "Mal": "Malakias",
 }
 
-IGEHELY_RE = re.compile(r'^(\S+)\s+(\d+):(\d+)(?:-(\d+))?$')
+HEADER = ["igehely", "kategoria", "regi_n", "uj_n", "jaccard", "uj_lxx_vers", "csak_regi_strong",
+          "csak_uj_strong"]
 
 
-def normalize_strong(s):
-    """A régi (LXX_kivonat, 'G1722') és az új (LXX_OS/GreekWordList, '1722')
-    Strong-alak közös 'G####' formára hozása az összevetéshez."""
-    if not s:
-        return ""
-    digits = re.sub(r'\D', '', s)
-    if not digits:
-        return ""
-    return "G" + digits.zfill(4)
+def norm_strong(s):
+    d = re.sub(r"\D", "", s or "")
+    return "G" + d.zfill(4) if d.strip("0") else ""
 
 
-def read_tsv_rows(path, skip_comment_prefix="#"):
+def alak(s):
+    s = "".join(c for c in unicodedata.normalize("NFD", s) if not unicodedata.combining(c)).lower()
+    return s.replace("ς", "σ").replace("᾿", "").replace("'", "")
+
+
+def olvas(path):
+    sorok = []
     with open(path, encoding="utf-8") as f:
-        lines = [ln.rstrip("\n") for ln in f]
-    lines = [ln for ln in lines if not ln.startswith(skip_comment_prefix)]
-    header = lines[0].split("\t")
-    rows = []
-    for ln in lines[1:]:
-        if ln == "":
-            continue
-        rows.append(dict(zip(header, ln.split("\t"))))
-    return rows
+        for ln in f:
+            ln = ln.rstrip("\r\n")
+            if ln and not ln.startswith("#"):
+                sorok.append(ln.split("\t"))
+    return sorok[0], sorok[1:]
 
 
-def load_motivum_ot_versek():
-    rows = read_tsv_rows(ELOFORDULASOK_PATH)
-    versek = []
-    for r in rows:
-        m = IGEHELY_RE.match(r["igehely"])
-        if not m:
-            continue
-        book = m.group(1)
-        if book not in REGI_LXX_FAJLNEV:
-            continue  # ÚSZ-sor
-        ch = int(m.group(2))
-        v1 = int(m.group(3))
-        v2 = int(m.group(4)) if m.group(4) else v1
-        for v in range(v1, v2 + 1):
-            versek.append((r["id"], f"{book} {ch}:{v}", book))
-    return versek
-
-
-def load_regi_index(book):
-    fname = REGI_LXX_FAJLNEV.get(book)
-    if fname is None:
-        return {}
-    path = os.path.join(KONKORDANCIA_DIR, f"LXX_kivonat_{fname}.tsv")
-    if not os.path.isfile(path):
-        return {}
-    rows = read_tsv_rows(path, skip_comment_prefix="\0")  # nincs komment-sor ebben a fajlban
-    idx = {}
-    for r in rows:
-        idx.setdefault(r["Igehely"], []).append((r["Strong-szám"], r["Görög szóalak"]))
+def uj_index():
+    """igehely_karoli -> [sor-dict]; a könyvenkénti elsődleges fájlból."""
+    elsodleges = {}
+    for kb in set(OS.BOOK_KEY_TO_KAROLI.values()) | set(OS.ELSODLEGES_SLUG):
+        elsodleges[OS.elsodleges_slug(kb)] = kb
+    idx = collections.defaultdict(list)
+    for slug in sorted(elsodleges):
+        fejlec, sorok = olvas(os.path.join(LXX_OS_DIR, slug + ".tsv"))
+        for p in sorok:
+            r = dict(zip(fejlec, p))
+            if r["igehely_karoli"]:
+                idx[r["igehely_karoli"]].append(r)
     return idx
 
 
-_UJ_CACHE = {}
-
-
-def load_uj_index_all():
-    """igehely_karoli -> [(strong, szoalak, lemma), ...] az összes LXX_OS fájlból."""
-    if _UJ_CACHE:
-        return _UJ_CACHE
-    idx = {}
-    for path in glob.glob(os.path.join(LXX_OS_DIR, "*.tsv")):
-        rows = read_tsv_rows(path)
-        for r in rows:
-            ig = r.get("igehely_karoli", "")
-            if not ig:
-                continue
-            idx.setdefault(ig, []).append((r["strong"], r["szoalak"], r["lemma"]))
-    _UJ_CACHE.update(idx)
+def regi_index(konyv):
+    ut = os.path.join(KONKORDANCIA_DIR, "LXX_kivonat_%s.tsv" % REGI_LXX_FAJLNEV[konyv])
+    if not os.path.isfile(ut):
+        raise SystemExit("A régi LXX_kivonat kivezetve (F42); a git-történetből állítható vissza: %s" % ut)
+    fejlec, sorok = olvas(ut)
+    idx = collections.defaultdict(list)
+    for p in sorok:
+        r = dict(zip(fejlec, p))
+        idx[r["Igehely"]].append(r)
     return idx
+
+
+def jaccard(a, b):
+    a2 = collections.Counter(k for k in a.elements() if k)
+    b2 = collections.Counter(k for k in b.elements() if k)
+    un = sum((a2 | b2).values())
+    return (sum((a2 & b2).values()) / un) if un else 1.0
+
+
+def kovetkezo_vers(igehely):
+    m = re.match(r"^(.*?)(\d+):(\d+)$", igehely)
+    return "%s%s:%d" % (m.group(1), m.group(2), int(m.group(3)) + 1)
 
 
 def main():
-    versek = load_motivum_ot_versek()
-    uj_index = load_uj_index_all()
+    ut_ki = KIMENET_PATH
+    if "--kimenet" in sys.argv:
+        ut_ki = sys.argv[sys.argv.index("--kimenet") + 1]
+    uj = uj_index()
+    kat_db = collections.Counter()
+    konyv_db = collections.defaultdict(collections.Counter)
+    parok = collections.Counter()      # (régi Strong, új Strong) -> db, azonos szóalak mellett
+    sorok_ki = []
+    regi_osszes = set()
+    for konyv in REGI_LXX_FAJLNEV:
+        regi = regi_index(konyv)
+        for vers, rr in regi.items():
+            regi_osszes.add(vers)
+            ur = uj.get(vers, [])
+            rs = collections.Counter(norm_strong(r["Strong-szám"]) for r in rr)
+            if not ur:
+                kat = "csak_regi_vers"
+                sorok_ki.append([vers, kat, str(len(rr)), "0", "", "", "", ""])
+                kat_db[kat] += 1; konyv_db[konyv][kat] += 1
+                continue
+            us = collections.Counter(norm_strong(r["strong"]) for r in ur)
+            rsn = {k: v for k, v in rs.items() if k}
+            usn = {k: v for k, v in us.items() if k}
+            if rsn == usn:
+                kat_db["azonos"] += 1; konyv_db[konyv]["azonos"] += 1
+                continue
+            j = jaccard(collections.Counter(rsn), collections.Counter(usn))
+            kat = "strong_eltero" if j >= 0.8 else "nagy_eltero"
+            if kat == "nagy_eltero" and konyv == "Zsolt":
+                kovetkezo = uj.get(kovetkezo_vers(vers), [])
+                if kovetkezo:
+                    ks = collections.Counter(norm_strong(r["strong"]) for r in kovetkezo)
+                    ksn = {k: v for k, v in ks.items() if k}
+                    if jaccard(collections.Counter(rsn), collections.Counter(ksn)) >= 0.8:
+                        kat = "zsoltar_eltolas"
+            # szóalak szerinti Strong-párok (a konvenció-eltérések gyűjtéséhez)
+            ualak = collections.defaultdict(list)
+            for r in ur:
+                ualak[alak(r["szoalak"])].append(norm_strong(r["strong"]))
+            for r in rr:
+                lista = ualak.get(alak(r["Görög szóalak"]))
+                if lista:
+                    parok[(norm_strong(r["Strong-szám"]), lista.pop(0))] += 1
+            csak_r = " ".join("%s:%d" % (k, v) for k, v in sorted((collections.Counter(rsn) - collections.Counter(usn)).items()))
+            csak_u = " ".join("%s:%d" % (k, v) for k, v in sorted((collections.Counter(usn) - collections.Counter(rsn)).items()))
+            sorok_ki.append([vers, kat, str(len(rr)), str(len(ur)), "%.2f" % j,
+                             ur[0]["igehely_lxx"], csak_r, csak_u])
+            kat_db[kat] += 1; konyv_db[konyv][kat] += 1
+    for vers, ur in uj.items():
+        if vers not in regi_osszes:
+            sorok_ki.append([vers, "csak_uj_vers", "0", str(len(ur)), "", ur[0]["igehely_lxx"], "", ""])
+            kat_db["csak_uj_vers"] += 1
+            konyv_db[vers.split()[0]]["csak_uj_vers"] += 1
 
-    regi_cache = {}
-    out_rows = []
-    stat = {"egyezik": 0, "csak_regi": 0, "csak_uj": 0, "nem_parosithato": 0}
-
-    for (id_, igehely, book) in versek:
-        if book not in regi_cache:
-            regi_cache[book] = load_regi_index(book)
-        regi_hits = regi_cache[book].get(igehely, [])
-        uj_hits = uj_index.get(igehely, [])
-
-        regi_strongs = {normalize_strong(s) for (s, _sz) in regi_hits if s}
-        regi_strongs.discard("")
-        uj_strongs = {normalize_strong(s) for (s, _sz, _l) in uj_hits if s}
-        uj_strongs.discard("")
-
-        if not regi_hits and not uj_hits:
-            out_rows.append((id_, igehely, "", "nem", "nem", "", "", "nincs adat egyik kivonatban sem ehhez a igehelyhez"))
-            stat["nem_parosithato"] += 1
-            continue
-
-        uj_by_strong = {}
-        for (s, sz, l) in uj_hits:
-            ns = normalize_strong(s)
-            if ns and ns not in uj_by_strong:
-                uj_by_strong[ns] = (sz, l)
-
-        for strong in sorted(regi_strongs | uj_strongs):
-            regi_ott = strong in regi_strongs
-            uj_ott = strong in uj_strongs
-            uj_szoalak, uj_lemma = uj_by_strong.get(strong, ("", ""))
-            if regi_ott and uj_ott:
-                megjegyzes = "egyezik"
-                stat["egyezik"] += 1
-            elif regi_ott and not uj_ott:
-                if not uj_hits:
-                    megjegyzes = "szamozas miatt nem parosithato (uj kivonatban nincs ez az igehely)"
-                    stat["nem_parosithato"] += 1
-                else:
-                    megjegyzes = "csak regi"
-                    stat["csak_regi"] += 1
-            else:
-                megjegyzes = "csak uj"
-                stat["csak_uj"] += 1
-            out_rows.append((
-                id_, igehely, strong,
-                "igen" if regi_ott else "nem",
-                "igen" if uj_ott else "nem",
-                uj_szoalak, uj_lemma, megjegyzes,
-            ))
-
-    os.makedirs(NAPLOK_DIR, exist_ok=True)
-    with open(KIMENET_PATH, "w", encoding="utf-8", newline="\n") as f:
+    os.makedirs(os.path.dirname(ut_ki), exist_ok=True)
+    with open(ut_ki, "w", encoding="utf-8", newline="\n") as f:
         f.write("# GENERÁLT: eszkozok/lxx_osszevetes.py — kézzel nem szerkesztendő.\n")
+        f.write("# proveniencia: scope=konkordancia/LXX_kivonat_*.tsv (regi) vs konkordancia/LXX_OS/*.tsv (elsodleges "
+                "valtozat, lxx_os_import.ELSODLEGES_SLUG) | forras=manual (osszevetes, nem lekerdezes) | ts=%s\n"
+                % datetime.date.today().isoformat())
+        f.write("# csak a NEM azonos versek; kategoriak: l. a szkript docstringje (F42.M5)\n")
         f.write("\t".join(HEADER) + "\n")
-        for row in out_rows:
-            f.write("\t".join(row) + "\n")
-
-    print(f"vizsgalt ÓSZ-vers: {len(versek)}")
-    print(f"kimeneti sor: {len(out_rows)}")
-    for k, v in stat.items():
-        print(f"  {k}: {v}")
+        for s in sorok_ki:
+            f.write("\t".join(s) + "\n")
+    print("kategoriak:", dict(kat_db))
+    for k in sorted(konyv_db):
+        print("  %s: %s" % (k, dict(konyv_db[k])))
+    print("leggyakoribb (regi, uj) Strong-parok azonos szoalaknal, ha elternek:")
+    for (a, b), n in parok.most_common(40):
+        if a != b:
+            print("  %s -> %s: %d" % (a, b, n))
+    print("kimenet: %s (%d sor)" % (ut_ki, len(sorok_ki)))
 
 
 if __name__ == "__main__":
