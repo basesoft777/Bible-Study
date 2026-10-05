@@ -6,7 +6,9 @@
 
 Ez a réteg a **kanonikus igazságforrás**. A `tematikus_lezart/`, `genezis/`, `motivumlog/`
 és `lexikon/` kimenetei ebből generálódnak vagy ehhez igazodnak. Ha egy tény itt és egy
-markdown-fájlban ellentmond, **ez a tábla az irányadó**.
+markdown-fájlban ellentmond, **ez a tábla az irányadó**. Az adat egy irányba mozog (3/9,
+DT28): a kézi forrásból ide kinyerés van (`jeloltek.tsv`), innen a kimenetbe generálás;
+forrásba visszaírás nincs.
 
 A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20) és a hozzájuk tartozó kulcs:
 
@@ -1023,6 +1025,14 @@ ellenőrzés tárgyai.
    jelentéssel: (a) a lekérdező nélküli datasetek (`ellenoriz.LEKERDEZO_NELKULI`, ma: BDB);
    (b) a 8 retroaktív, F3/N14-betöltésű motívum hiányzó datasetjei (`ellenoriz.RETROAKTIV_IDK`,
    zárt lista). A `felteteles` datasetek a 8/b alatt KÉZI.
+9. **Egyirányúság** (DT28, 2026.10.05). Három réteg, minden fájl pontosan egyben:
+   (a) kanonikus adat (`adat/*.tsv`); (b) kézi próza-forrás markerekkel
+   (`motivumok/[ID].md`, a tanulmányok), amelyből a generátor kinyer; (c) generált kimenet
+   (`lexikon/`), kézzel nem írható. A mozgás csak (b)→(a) kinyerés (a `jeloltek.tsv`-n át,
+   `manual` provenienciával, döntéssel: 2. szabály) és (a)→(c) generálás. (a)→(b) visszaírás
+   tilos. A régi, adatot prózában hordozó tanulmány migrációja szétválasztás: az adatrész
+   (a)-ba, az értelmező rész (b)-be, a maradék (c) vagy archívum. Kézi ellenőrzés tárgya,
+   amíg a #37 auditja és a #23 forrássablonja el nem készül.
 
 ---
 

@@ -34,6 +34,15 @@ a két changelogot (`PaRDeS_dontesek_CHANGELOG.md`, `motivumlog/PaRDeS_motivumok
 
 *Átmenet (D34): a cél motívumonként egyetlen kézi forrás, minden más nézet generált. A fenti táblázat a #11 lezárásáig érvényes; a törzscikket addig a meglévő generátor állítja elő. A „tanulmány” az igeszakasz-tanulmány (kézi forrás), a „motívumcikk” a `motivumok/[ID].md`-ből generált nézet (DT-F26a).*
 
+**Egyirányúság (DT28).** Minden fájl pontosan egy rétegbe tartozik, és az adat csak egy
+irányba mozog: a forrásból a generátor **kinyer** az adatrétegbe (a `jeloltek.tsv`-n át,
+`manual` provenienciával, döntéssel), az adatrétegből a kimenet **generálódik**. Forrásba
+adatot visszaírni tilos. A régi tanulmány, amelyben a motívumadat a prózában áll, egyszerre
+forrás és adat; a migrációja **szétválasztás**, nem visszaírás: az adatrésze az adatrétegbe,
+az értelmező része a forrásrétegbe, a maradék generált nézet vagy archívum. A kétirányúság
+addig tart, amíg egy fájl két rétegben él. A feladatkövető ezért a `lexikon/`-t nem tekinti
+motívumfájlnak (`munka`-szabály, `BRIEF_SABLON.md`).
+
 Generált fájl fejlécében gépi jelölés áll (`# GENERÁLT: …`). Ha ilyet látsz, ne írd át.
 
 Az értelmező próza egy kézben, egy modellel készül, és aki belenyúl, az egészet olvassa; csomagmód csak adat- és motívumot nem író folyamatfeladatra (KONTEXTUS K1).
