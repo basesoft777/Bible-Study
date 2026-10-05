@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: dontesre_var
 ag: claude/morf-kulcs
 ad: egy nyílt licencű forrásból importált, forrás- és licencsorral ellátott jelkulcs-tábla (adat/morf_kulcs_heber.tsv), amely a Macula_heber morfológiai kódjainak minden pozícióját magyarul feloldja; a feloldó függvény ebből a táblából dolgozik, emlékezetből írt leképezés nincs
-kovetkezo: /kovetkezo; ⛔ az M0 forrásválasztás után
+kovetkezo: Te: válaszd ki a jelkulcs-forrást és a nyelv-kezelést (DT-F58a: javaslat OSHB HebrewMorphologyCodes.html, CC BY 4.0, nyelv külön bemenet), és hagyd jóvá a licencsort; utána /kovetkezo az M1-gyel
 olvas: ["konkordancia/Macula_heber_*.tsv", adat/licencek.tsv, adat/SEMA.md, adat/datasetek.tsv]
 ir: [adat/morf_kulcs_heber.tsv, adat/SEMA.md, adat/licencek.tsv, adat/datasetek.tsv, eszkozok/morf_feloldas.py, eszkozok/teszt_morf_feloldas.py, adat/kulso/morf_kulcs_LICENC.txt]
 fugg: []
