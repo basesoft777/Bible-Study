@@ -8,9 +8,9 @@ modell: sonnet
 munka: folyamat
 allapot: nem_indult
 ad: "a FELADATTERKEP.html (gyökér, mindig ugyanazon a néven felülírva) és a feladatterkep.json minden main-merge után a forrásokból generálódik; a claude.ai-artifact megnyitáskor a files képességgel ugyanezt a JSON-t olvassa, így újrafeltöltés nélkül friss"
-kovetkezo: /kovetkezo; ⛔ a kis minta után (összevetés a mai kézi lappal), a workflow módosítása előtt, és ha az artifact files-olvasása nem működik
+kovetkezo: /kovetkezo; ⛔ a kis minta után (összevetés a mai kézi lappal), a workflow módosítása előtt, ha az artifact files-olvasása nem működik, és a helyi ütemezett feladat létrehozása előtt (FT.7)
 olvas: ["F*_BRIEF.md", MUNKATERV.md, eszkozok/feladatok.py, .github/workflows/feladatok.yml, FELADATTERKEP.html]
-ir: [eszkozok/feladatterkep.py, eszkozok/feladatterkep_kartyak.tsv, eszkozok/teszt_feladatterkep.py, FELADATTERKEP.html, feladatterkep.json, .github/workflows/feladatok.yml]
+ir: [eszkozok/feladatterkep.py, eszkozok/feladatterkep_kartyak.tsv, eszkozok/teszt_feladatterkep.py, FELADATTERKEP.html, feladatterkep.json, .github/workflows/feladatok.yml, eszkozok/main_frissit.py]
 fugg: []
 nem_fugg: [52]
 helyi_gep: nem
@@ -18,7 +18,7 @@ helyi_gep: nem
 
 # F53_FELADATTERKEP_BRIEF.md — Feladattérkép: generált vizuális áttekintés
 
-*FELADATOK #53 · Modell: sonnet · v1 · 2026.10.05*
+*FELADATOK #53 · Modell: sonnet · v1.1 · 2026.10.05 (v1.1: FT.7, helyi `main`-frissítés)*
 
 *Előzmény: a 2026-10-05-i chat-session kézzel épített egy áttekintő lapot
 (`FELADATTERKEP.html`, a gyökérben) és egy claude.ai-artifactot
@@ -68,7 +68,8 @@ forrás javul, és újragenerálódik.
   átírása (csak a függvényeit hívja);
 - tartalmi döntés: a „Most induló sor” sorrendje és a hullám-besorolás a
   MUNKATERV-ből jön, a generátor nem talál ki sorrendet;
-- ütemezett artifact-újrafeltöltés (a `files`-olvasás teszi fölöslegessé);
+- ütemezett artifact-újrafeltöltés (a `files`-olvasás teszi fölöslegessé; a
+  helyi munkapéldány frissen tartása az FT.7 dolga);
 - a `generalt_proba/` könyvtár (nem érinti).
 
 ## 3. Bemenetek és levezetés
@@ -156,6 +157,32 @@ változik; az adat frissítéséhez nem kell feltöltés.
    artifact a beágyazott pillanatképpel marad, frissítés kérésre.
 7. **FT.6** — napló, draft PR, `fuggetlen-ellenor`; N-tétel a
    `NYITOTT_FELADATOK.md`-be a CI-védelemről (8.1).
+8. **FT.7** — helyi `main`-frissítés, hogy az artifact `files`-olvasása friss
+   JSON-t lásson (a `files` a helyi munkapéldányt olvassa, az Action viszont a
+   GitHubon frissít).
+   - `eszkozok/main_frissit.py`: `git fetch`, majd `git pull --ff-only` a
+     `main`-en — **csak akkor**, ha (a) a kiválasztott ág a `main`, (b) a
+     munkakönyvtár tiszta (`git status --porcelain` üres, a követetlen fájlokat
+     nem számítva), (c) a fast-forward lehetséges. Bármelyik feltétel hiányában
+     nem nyúl semmihez, és egy sort ír a kimenetre, miért hagyta ki. Nem
+     commitol, nem pushol, nem vált ágat, nem stashel. UTF-8 wrapper az
+     importok után (CLAUDE.md).
+   - Teszt a `teszt_feladatterkep.py`-ban: másik ágon, piszkos munkakönyvtárral
+     és nem fast-forward helyzetben a szkript nem változtat semmit.
+   - Ütemezés **terve** a naplóba: **Claude-os helyi ütemezett feladat**, hogy
+     a Claude alkalmazás **Routines** listájában látsszon (felhasználói kérés,
+     2026-10-05), a #51 `konzisztencia-napi` feladata mellett. Javasolt név:
+     `main-frissites-napi`; naponta egyszer, csak ha a gép be van kapcsolva (a
+     kimaradt futás a következő bekapcsoláskor pótlódik); a repó gyökeréből a
+     `python eszkozok/main_frissit.py`-t futtatja, és a kimenetét egy sorban
+     jelenti. Modell: a legolcsóbb elérhető (haiku) — a feladat egyetlen
+     parancs, értelmező munka nincs benne. Költség: futásonként egy rövid
+     session; ezt a naplóban becsülni kell.
+   - A Windows Feladatütemező **nem** használandó (a felhasználó a Claude
+     Routines alatt akarja látni és kezelni).
+   - **⛔ az ütemezett feladat létrehozása előtt:** a felhasználó jóváhagyja a
+     tervet (időpont, mód), és a létrehozás külön lépésben történik (a #51 K5
+     mintája). A brief végrehajtója magától nem hoz létre ütemezett feladatot.
 
 Commitok tétel-szinten (`FT.0: …`, `FT.1: …`), az üzenet UTF-8 fájlból.
 
@@ -175,6 +202,9 @@ Commitok tétel-szinten (`FT.0: …`, `FT.1: …`), az üzenet UTF-8 fájlból.
    alapállásban a dobozba illesztve látszik; a nagyítás és a témaváltó működik.
    (Vagy: FT.5 ⛔ dokumentálva.)
 8. `python eszkozok/feladatok.py ellenoriz` 0.
+9. **FT.7:** a `main_frissit.py` tesztje zöld (másik ág, piszkos munkakönyvtár,
+   nem fast-forward → nincs változás); az ütemezés terve a naplóban, és a
+   létrehozása a felhasználó jóváhagyásával dokumentálva (vagy ⛔-ban áll).
 
 ## 8. Eldöntött kérdések
 
@@ -199,3 +229,5 @@ Commitok tétel-szinten (`FT.0: …`, `FT.1: …`), az üzenet UTF-8 fájlból.
 | 2026-10-05 | CI-védelem igen, de külön ágon, későbbi N-tételként (8.1) | felhasználó, chat |
 | 2026-10-05 | a „Most induló sor” forrása a `feladatok.py jeloltek` (8.2) | felhasználó, chat |
 | 2026-10-05 | a kártyaszöveg-tábla az `eszkozok/`-ban (8.3) | felhasználó, chat |
+| 2026-10-05 | v1.1: FT.7 — időzített helyi `main`-frissítés (ff-only, csak tiszta `main`-en), hogy az artifact friss JSON-t lásson; létrehozás ⛔ után | felhasználó, chat |
+| 2026-10-05 | az FT.7 ütemezése Claude-os helyi ütemezett feladat (Routines alatt látható), nem Windows Feladatütemező; modell: haiku | felhasználó, chat |
