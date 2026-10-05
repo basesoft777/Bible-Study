@@ -163,3 +163,11 @@ Forrás: `git diff 5b4fcf8..8e8f771 -- FELADATOK.md DONTESEK.md NYITOTT_FELADATO
 | — | a delta-lista 28–29. sora a 27. elé került | sorrend javítva |
 
 Az ellenőr „NEM ELLENŐRIZHETŐ" jelzése (a kis minta chatbeli jóváhagyása) és a DT-F52a „Felhasználó, chat" idézete: a döntés a chatben született, a repóban a DONTESEK-tétel és ez a napló rögzíti; más nyoma nincs.
+
+## Nyitott a következő futásra
+
+A futások között felgyűlt tételek, amelyeket a következő szinkron a delta-listájába vesz (brief 4.2). A TERV\_BEFOGAD maradéka (DT-M8 🟢) a `DONTESEK.md`-ben áll, itt nem ismétlődik.
+
+| tétel | forrás | javaslat |
+| --- | --- | --- |
+| a MUNKATERV a #57 BDB\_STRONG\_POTLAS-t nem tartalmazza, holott a BDB-lánc első lépése: a #57 írja a `konkordancia/BDB_teljes_unabridged.tsv`-t, a #56 és a #38 olvassa, ezért a valódi sorrend #57 → #56 → #38 6. adag | `feladatok.py fuggesek`: `FUGGES 56 57`, `FUGGES 38 57` (fájlütközés, olvas–ír); F57 `ir:`, F56 `olvas:`; chat 2026-10-05 | a 4a térképbe sor, a BDB\_ADATBLOKK függés-oszlopába a #57; nem blokkol, a feladatkövető ma is helyesen sorol |
