@@ -219,6 +219,23 @@ Commitok tétel-szinten (`FT.0: …`, `FT.1: …`), az üzenet UTF-8 fájlból.
    hullámoknál és a „Tervezett” oszlopban látszanak.
 3. **A kártyaszöveg-tábla helye:** `eszkozok/feladatterkep_kartyak.tsv`
    (folyamat-konfiguráció, nem kutatási adat; SEMA-bejegyzés nem kell).
+4. **A `feladatterkep_kartyak.tsv` leírása (FT.0).** Tabulátorral tagolt, UTF-8,
+   LF; az első sor a fejléc, utána soronként egy kártya; olvasása `split('	')`,
+   írása `'	'.join()` (a mezők nem tartalmaznak tabot és sortörést).
+
+   | oszlop | tartalom |
+   |---|---|
+   | `kod` | a kártya kulcsa: a brief `kod:` mezője; ha a briefnek nincs `kod`-ja, `#<szám>` (pl. `#7`); még fel nem vett (MUNKATERV-beli) feladatnál a MUNKATERV kódneve. A `SZOTAR S2` kulcsban szóköz van, mert a #9 `kod`-ja is ilyen |
+   | `reszletes` | a részletes leírás, 2–3 mondat |
+   | `roviden` | a „Röviden:” egymondatos, közérthető összefoglaló |
+   | `forras` | honnan származik a szöveg: `kezi-2026-10-05` (a kézi lap 31 kártyája); később `kezi-<dátum>` vagy a szerző jelölése |
+
+   A generátor a táblát csak olvassa. Sor nélküli kártya „nincs leírás”
+   jelöléssel jelenik meg; kártya nélküli sor (pl. kész feladat) a JSON
+   `kartya_tabla.felhasznalatlan` listájába kerül, de nem hiba. A kezdő
+   tartalom a kézi lap 31 kártyájának szövege **változtatás nélkül**; azok a
+   kódok, amelyeknél a kézi lap kódneve eltért a brief `kod`-jától (a #22
+   `KAROLI_STRONG` helyett `F22`), a brief `kod`-ját kapták.
 
 ## 9. Döntésnapló
 
