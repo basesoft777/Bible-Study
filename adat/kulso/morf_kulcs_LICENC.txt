@@ -1,0 +1,41 @@
+MORF_KULCS (F58, FELADATOK #58) — licencnyilatkozatok szó szerint
+Lekérés: 2026-10-05. A markdown-linkjelölés az idézetekből el van hagyva (F33 egyezmény).
+
+1. adat/morf_kulcs_heber.tsv — forrás: Open Scriptures Hebrew Bible (OSHB), morfológiai kódjegyzék
+   Repó: https://github.com/openscriptures/morphhb
+   Commit: 3d15126fb1ef74867fc1434be1942e837932691f
+   Forrásfájl: parsing/HebrewMorphologyCodes.html (18 944 bájt; a letöltött fájl SHA-256: 4ef067cd9f2508de19d81aab93bf2d7e24d1687a7664c5168de1411adaf4ee1d)
+   Másolat a repóban: adat/kulso/oshb_HebrewMorphologyCodes.html
+
+   a) README.md (a jogtulajdonos nyilatkozata a lemma- és morfológiai adatra):
+      "Lemma and morphology data are licensed under a Creative Commons Attribution 4.0 International license. For attribution purposes, credit the Open Scriptures Hebrew Bible Project. The text of the WLC remains in the Public Domain."
+      URL: https://raw.githubusercontent.com/openscriptures/morphhb/3d15126fb1ef74867fc1434be1942e837932691f/README.md (9-13. sor)
+
+   b) LICENSE.md:
+      "This work is based on The Westminster Leningrad Codex, which is in the public domain."
+      "Creative Commons Attribution 4.0 International (CC BY 4.0)"
+      "Attribution — You must attribute the work as follows: "Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb". You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use."
+      "No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits."
+      URL: https://raw.githubusercontent.com/openscriptures/morphhb/3d15126fb1ef74867fc1434be1942e837932691f/LICENSE.md
+
+   c) A kódjegyzék-oldal (HebrewMorphologyCodes.html) alján:
+      "This work is licensed under a Creative Commons Attribution 4.0 International License."
+
+   Licenc: CC BY 4.0 (nem NC, nem SA). Kötelező megjelölés (szó szerint):
+   "Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb"
+   Az adat/morf_kulcs_heber.tsv a jegyzék kódjainak és megnevezéseinek importja, a magyar oszlop a megnevezések fordítása (származtatott mű, módosítva).
+
+2. adat/morf_nyelv_aramai.tsv — forrás: MACULA Hebrew lowfat XML, a szavak `lang` attribútuma
+   Repó: https://github.com/Clear-Bible/macula-hebrew
+   Commit: 47db250bd55d0d8577f2a94fba114ef16c35b23c (az F17-import revíziója)
+   Forrásfájlok: WLC/lowfat/*-lowfat.xml (930 fájl, a `w@lang="A"` szavak xml_id/ref/morf értéke kivonva)
+
+   LICENSE.md 3. sor (jogtulajdonos: Biblica, Inc):
+      "MACULA Hebrew Linguistic Datasets © 2022-2024 by Biblica, Inc is licensed under CC BY 4.0."
+   LICENSE.md (a harmadik fél adataira):
+      "OpenScriptures Hebrew Bible is licensed under a Creative Commons Attribution 4.0 International License ("CC BY 4.0"). Original work of the Open Scriptures Hebrew Bible available at https://github.com/openscriptures/morphhb."
+   URL: https://raw.githubusercontent.com/Clear-Bible/macula-hebrew/47db250bd55d0d8577f2a94fba114ef16c35b23c/LICENSE.md
+
+   Licenc: CC BY 4.0. Kötelező megjelölés: MACULA Hebrew Linguistic Datasets, available at https://github.com/Clear-Bible/macula-hebrew/ (az adat/licencek.tsv Macula_heber sora szerint).
+
+Kizárva: konkordancia/lexikonok_nyers/Morphology.lexicon (ETCBC, CC BY-NC 4.0; adat/kulso/LICENC.md forráspolitika).
