@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="hu" data-tema="dark">
+<script>try{var t=localStorage.getItem("pardes-tema");if(t)document.documentElement.setAttribute("data-tema",t)}catch(e){}</script>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Kézi pillanatkép (2026-10-05, main e9b057b): a FELADATOK.md, DONTESEK.md és MUNKATERV.md vizuális összesítése. Nem generált, nem frissül magától. -->
+<title>PaRDeS feladattérkép</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,650&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Elrendezés: munkanapló-lap — fent az állapot, alatta a sorrend, a hullámok, az állapot szerinti oszlopok, a függési térkép és a döntések */
+:root{
+  --bg:#f5f6f8; --surface:#ffffff; --ink:#1b2333; --muted:#5d6678; --rule:#dde1e8;
+  --accent:#27508f; --accent-soft:#e3ebf7;
+  --stop:#b3261e; --stop-soft:#fcdcd8;
+  --run:#1f7a4d; --run-soft:#d2f0de;
+  --ready:#27508f; --ready-soft:#d6e4fb;
+  --wait:#8a6a12; --wait-soft:#fdecc0;
+  --plan:#6b4fa0; --plan-soft:#ead9f5;
+  --idle:#6c7383; --idle-soft:#eceef2;
+  --stop-solid:#d93025; --run-solid:#1e8e3e; --ready-solid:#1a73e8; --wait-solid:#f9ab00; --plan-solid:#8e44ad; --idle-solid:#80868b; --dt:#c25100; --dt-soft:#ffe8d6;
+  --f-display:"Literata", Georgia, serif;
+  --f-body:"IBM Plex Sans", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-tema="light"]){
+  --bg:#12161f; --surface:#1a202c; --ink:#e4e8f0; --muted:#9aa3b5; --rule:#2c3445;
+  --accent:#8fb3ec; --accent-soft:#1f2c44;
+  --stop:#f28b82; --stop-soft:#3a1f1f; --run:#7fd1a4; --run-soft:#163126;
+  --ready:#8fb3ec; --ready-soft:#1f2c44; --wait:#e2c06a; --wait-soft:#3a3018;
+  --plan:#c3a8f0; --plan-soft:#2c2340; --idle:#a1a8b8; --idle-soft:#252b38; --stop-solid:#c5221f; --run-solid:#188038; --ready-solid:#1967d2; --wait-solid:#e8a000; --plan-solid:#7b3a98; --idle-solid:#6b7177; --dt:#ff9e4a; --dt-soft:#3d2614; color-scheme:dark}}
+:root[data-tema="dark"]{
+  --bg:#12161f; --surface:#1a202c; --ink:#e4e8f0; --muted:#9aa3b5; --rule:#2c3445;
+  --accent:#8fb3ec; --accent-soft:#1f2c44;
+  --stop:#f28b82; --stop-soft:#3a1f1f; --run:#7fd1a4; --run-soft:#163126;
+  --ready:#8fb3ec; --ready-soft:#1f2c44; --wait:#e2c06a; --wait-soft:#3a3018;
+  --plan:#c3a8f0; --plan-soft:#2c2340; --idle:#a1a8b8; --idle-soft:#252b38; --stop-solid:#c5221f; --run-solid:#188038; --ready-solid:#1967d2; --wait-solid:#e8a000; --plan-solid:#7b3a98; --idle-solid:#6b7177; --dt:#ff9e4a; --dt-soft:#3d2614; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body);margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:20px;padding-block:28px 64px;display:grid;gap:40px}
+h1,h2{font-family:var(--f-display);font-weight:650;text-wrap:balance;margin:0}
+h1{font-size:clamp(26px,4vw,36px);line-height:1.15}
+h2{font-size:22px}
+.eyebrow{font:500 12px/1 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lede{color:var(--muted);max-width:68ch;margin:8px 0 0}
+section{display:grid;gap:14px;min-width:0}
+.sechead{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px}
+.sechead p{margin:0;color:var(--muted);font-size:13.5px;max-width:70ch}
+.mono{font-family:var(--f-mono);font-size:.92em}
+
+/* összesítő */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;display:grid;gap:2px}
+.stat b{font:600 26px/1.1 var(--f-display);font-variant-numeric:tabular-nums}
+.stat span{font-size:12.5px;color:var(--muted)}
+.stat.stop{background:var(--stop-soft);border-color:var(--stop)} .stat.run{background:var(--run-soft);border-color:var(--run)} .stat.ready{background:var(--ready-soft);border-color:var(--ready)}
+.stat.plan{background:var(--plan-soft);border-color:var(--plan)} .stat.wait{background:var(--wait-soft);border-color:var(--wait)} .stat.dt{background:var(--dt-soft);border-color:var(--dt)} .stat.dt b{color:var(--dt)}
+.stat.stop b{color:var(--stop)} .stat.run b{color:var(--run)} .stat.ready b{color:var(--ready)}
+.stat.plan b{color:var(--plan)} .stat.wait b{color:var(--wait)}
+
+/* sorrend */
+.seq{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch}
+.step{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:10px 12px;display:grid;gap:4px;flex:1 1 180px;min-width:0}
+.step .n{font:600 11px var(--f-mono);color:#fff;background:var(--accent);justify-self:start;padding:2px 7px;border-radius:999px}
+.step{border-top:3px solid var(--plan-solid)}
+.step strong{font-weight:600}
+.step small{color:var(--muted);font-size:12.5px;line-height:1.4}
+.step.par{border-style:dashed}
+.arrow{align-self:center;color:var(--muted);font-family:var(--f-mono)}
+
+/* hullámok */
+.waves{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.wave{background:var(--surface);border:1px solid var(--rule);border-top:5px solid var(--accent);border-radius:8px;padding:14px;display:grid;gap:8px;align-content:start}
+.wave h3{margin:0;font:600 15px var(--f-body)}
+.wave .gate{font-size:12.5px;color:var(--muted);border-top:1px dashed var(--rule);padding-top:8px}
+.wave .gate::before{content:"⛔ ";}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+
+/* chip */
+.chip{display:inline-flex;align-items:center;gap:6px;font:500 12px/1.2 var(--f-mono);padding:4px 8px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.chip i{font-style:normal;opacity:.75}
+.s-stop{background:var(--stop-soft);color:var(--stop);border-color:color-mix(in srgb,var(--stop) 30%,transparent)}
+.s-run{background:var(--run-soft);color:var(--run);border-color:color-mix(in srgb,var(--run) 30%,transparent)}
+.s-ready{background:var(--ready-soft);color:var(--ready);border-color:color-mix(in srgb,var(--ready) 30%,transparent)}
+.s-wait{background:var(--wait-soft);color:var(--wait);border-color:color-mix(in srgb,var(--wait) 30%,transparent)}
+.s-plan{background:var(--plan-soft);color:var(--plan);border-color:color-mix(in srgb,var(--plan) 30%,transparent);border-style:dashed}
+.s-idle{background:var(--idle-soft);color:var(--idle);border-color:color-mix(in srgb,var(--idle) 25%,transparent)}
+
+/* szűrő */
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button{font:500 13px var(--f-body);background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:999px;padding:6px 12px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.filters button:focus-visible,.legend button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* oszlopok */
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;align-items:start}
+.col{display:grid;gap:8px;min-width:0}
+.colhead{display:flex;align-items:center;justify-content:space-between;font:600 13px var(--f-body);padding:6px 10px;border-radius:6px;color:#fff;background:var(--idle)}
+.colhead .count{color:inherit!important;opacity:.85}
+.colhead.h-stop{background:var(--stop-solid)} .colhead.h-run{background:var(--run-solid)} .colhead.h-ready{background:var(--ready-solid)} .colhead.h-wait{background:var(--wait-solid);color:#2b1d00} .colhead.h-plan{background:var(--plan-solid)} .colhead.h-idle{background:var(--idle-solid)}
+.colhead .count{font:500 12px var(--f-mono);color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--rule);border-left:6px solid var(--idle);border-radius:6px;padding:10px 12px;display:grid;gap:5px;min-width:0}
+.card.k-stop{border-left-color:var(--stop);background:var(--stop-soft)} .card.k-run{border-left-color:var(--run);background:var(--run-soft)} .card.k-ready{border-left-color:var(--ready);background:var(--ready-soft)}
+.card.k-wait{border-left-color:var(--wait);background:var(--wait-soft)} .card.k-plan{border-left-color:var(--plan);background:var(--plan-soft);border-style:dashed;border-left-style:solid} .card.k-idle{border-left-color:var(--idle);background:var(--idle-soft)}
+.card .top{display:flex;gap:8px;align-items:baseline;justify-content:space-between}
+.card .id{font:500 12px var(--f-mono);color:var(--muted);white-space:nowrap}
+.card .name{font-weight:600;font-size:14px;line-height:1.3}
+.card .kod{font:500 11.5px var(--f-mono);color:var(--muted);overflow-wrap:anywhere}
+.card .next{font-size:12.5px;color:var(--muted);line-height:1.4}
+.card .deps{font:12px var(--f-mono);color:var(--muted)}
+.card .detail{font-size:13px;line-height:1.45;color:var(--ink)}
+.card .next b{font-weight:600;color:var(--ink)}
+.card .sum{font-size:13px;line-height:1.4;font-weight:600;color:var(--ink);border-top:1px dashed color-mix(in srgb,var(--ink) 25%,transparent);padding-top:6px;margin-top:2px}
+.card .tag{font:500 10.5px var(--f-mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+
+/* térkép */
+.mapbox{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px;overflow-x:auto}
+.legend{display:flex;flex-wrap:wrap;gap:6px}
+.wrap{zoom:1.1}
+
+/* döntések */
+.dgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;align-items:start}
+.dlist{background:var(--surface);border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.dlist h3{margin:0;padding:10px 14px;font:600 14px var(--f-body);border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;gap:8px}
+.dlist h3 span{font:500 12px var(--f-mono);color:var(--muted)}
+.drow{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;padding:10px 14px;border-bottom:1px solid var(--rule)}
+.drow:last-child{border-bottom:0}
+.drow .did{font:500 12.5px var(--f-mono);white-space:nowrap}
+.drow .dq{font-size:13.5px;line-height:1.4}
+.drow .dfor{grid-column:2;font:12px var(--f-mono);color:var(--muted)}
+.note{font-size:13px;color:var(--muted);background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 14px;max-width:none}
+.note strong{color:var(--ink)}
+footer{font:12px var(--f-mono);color:var(--muted)}
+header{position:relative}
+.tema{position:absolute;top:0;right:0;font:500 13px var(--f-body);background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:999px;padding:6px 12px;cursor:pointer}
+.tema:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.eyebrow{padding-right:110px}
+@media (prefers-reduced-motion:no-preference){.card,.step{transition:border-color .15s}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header>
+  <button type="button" id="tema" class="tema" aria-label="Téma váltása"></button>
+  <div class="eyebrow">Bible-Study · állapot 2026-10-05 · main e9b057b</div>
+  <h1>PaRDeS feladattérkép</h1>
+  <p class="lede">A <span class="mono">FELADATOK.md</span>, a <span class="mono">DONTESEK.md</span> és a <span class="mono">MUNKATERV.md</span> egy lapon. A szaggatott keretes tételek tervezettek: még nincsenek a FELADATOK-ban, sorszámot a <span class="mono">/befogad</span> ad nekik.</p>
+</header>
+
+<section aria-labelledby="h-stat">
+  <h2 id="h-stat" class="eyebrow" style="font-family:var(--f-mono);font-size:12px">Összkép</h2>
+  <div class="stats" id="stats"></div>
+</section>
+
+<section aria-labelledby="h-seq">
+  <div class="sechead">
+    <h2 id="h-seq">Most induló sor</h2>
+    <p>Amit a #23 és a #11 nélkül fel lehet venni és el lehet indítani, a <span class="mono">/kovetkezo</span> ajánlott sorrendjében. Szaggatott keret: párhuzamosan futtatható.</p>
+  </div>
+  <div class="seq" id="seq"></div>
+</section>
+
+<section aria-labelledby="h-waves">
+  <div class="sechead">
+    <h2 id="h-waves">Munkaterv hullámai</h2>
+    <p>A MUNKATERV 5. szakasza. A tervezett feladatok a DT-F52a óta a MUNKATERV-ben is kódnévvel szerepelnek; számot a <span class="mono">/befogad</span> ad. Hullámoktól függetlenül, ismétlődő folyamatként fut a #50, #51 és #52.</p>
+  </div>
+  <div class="waves" id="waves"></div>
+</section>
+
+<section aria-labelledby="h-board">
+  <div class="sechead">
+    <h2 id="h-board">Feladatok állapot szerint</h2>
+    <div class="filters" role="group" aria-label="Fázis szűrő" id="filters"></div>
+  </div>
+  <div class="board" id="board"></div>
+</section>
+
+<section aria-labelledby="h-map">
+  <div class="sechead">
+    <h2 id="h-map">Függési térkép</h2>
+    <p>A nyíl a függőtől a feltételig mutat. Kész feladatok nem szerepelnek; a döntések (DT) hatszögek. Forrás: <span class="mono">feladatok.py fuggesek</span> + a MUNKATERV függései.</p>
+  </div>
+  <div class="legend" id="legend"></div>
+  <div class="mapbox">
+<pre class="terkep-forras">
+flowchart LR
+  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px
+  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px
+  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px
+  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px
+  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3
+  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff
+  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px
+
+  T22["#22 KAROLI_STRONG"]:::stop
+  T38["#38 BDB_FORDITAS"]:::stop
+  T43["#43 LXX_BRIDGE"]:::run
+  T52["#52 TERV_SZINKRON"]:::run
+  T30["#30 SZAMOZAS"]:::ready
+  T42["#42 FORRASKIVEZETES"]:::ready
+  T45["#45 MODELL_ELLENORZES"]:::ready
+  T23["#23 MOTIVUM_FORRAS"]:::wait
+  T37["#37 TANULMANY_ELL."]:::wait
+  T40["#40 HIVATKOZAS_ELL."]:::wait
+  T44["#44 LICENC_UTOKOV."]:::wait
+  T48["#48 KJV_REGI_KIVEZ."]:::wait
+  T50["#50 CI_JAVITO_KOR"]:::wait
+  T51["#51 KONZISZTENCIA"]:::wait
+  T7["#7 Thayer teljes"]:::idle
+  T27["#27 FP3"]:::idle
+  T9["#9 SZOTAR S2"]:::wait
+  T10["#10 LEXIKON_LEZ."]:::idle
+  T11["#11 MIGRACIO"]:::idle
+  T12["#12 TEREMT-002"]:::idle
+  T13["#13 GENEZIS_KIADAS"]:::idle
+  T25["#25 OLVASOI_HTML"]:::idle
+  T36["#36 LEXIKON_UJRAGEN"]:::wait
+
+  P1["STRONG_NORMALIZAL"]:::plan
+  P2["SZPA_AUDIT"]:::plan
+  P3["JELOLTEK_RETRO"]:::plan
+  P4["KAROLI_ELLENORZES"]:::plan
+  P5["BDB_ADATBLOKK"]:::plan
+  P6["SQLITE_EPIT"]:::plan
+  P7["MCP_BUROK"]:::plan
+  P8["OLVASOI_KONKORDANCIA"]:::plan
+
+  D38{{"DT-F38i"}}:::dt
+  DM2{{"DT-M2"}}:::dt
+  DM1{{"DT-M1"}}:::dt
+  DM3{{"DT-M3"}}:::dt
+  DM6{{"DT-M6"}}:::dt
+  DT2{{"DT2 · L6/L7"}}:::dt
+
+  T38 --> D38
+  P5 --> D38
+  P5 --> T38
+  P4 --> DM2
+  P4 --> T22
+  T48 --> T22
+  P6 --> P1
+  P7 --> P6
+  P7 --> DM3
+  P8 --> P6
+  P8 --> T44
+  P8 --> DM1
+  P8 --> DM6
+  P3 -. bemenet .-> T23
+  T44 --> T42
+  T40 --> T30
+  T40 --> T37
+  T37 --> T30
+  T37 --> T45
+  T50 --> T45
+  T51 --> T37
+  T23 --> T37
+  T9 --> T23
+  T9 --> T7
+  T9 --> T38
+  T11 --> T9
+  T11 --> T23
+  T10 --> T9
+  T10 --> T11
+  T10 --> DT2
+  T12 --> T11
+  T13 --> T10
+  T25 --> T11
+  T25 --> T12
+  T25 --> T23
+  T36 --> T9
+  T36 --> T37
+  T36 --> T38
+  T36 --> T42
+</pre>
+  </div>
+</section>
+
+<section aria-labelledby="h-dt">
+  <div class="sechead">
+    <h2 id="h-dt">Döntések</h2>
+    <p>A <span class="mono">DONTESEK.md</span> nem alkalmazott tételei, és a MUNKATERV által javasolt, még fel nem vett DT-k.</p>
+  </div>
+  <div class="dgrid" id="dgrid"></div>
+  <p class="note"><strong>Felvétel előtt.</strong> A számütközést a DT-F52a rendezte: a MUNKATERV a FELADATOK számaihoz igazodik, a tervezett feladatok kódnévvel szerepelnek. A következő szabad szám a #53. A SZPA_AUDIT bemenete, a <span class="mono">SZPA_FORDITOI_PROFIL_prompt.md</span>, nincs a repóban.</p>
+</section>
+
+<footer>Forrás: FELADATOK.md generált blokkjai · DONTESEK.md · MUNKATERV.md (#52 szinkron után) · main e9b057b · feladatok.py fuggesek / kovetkezo_szam. Pillanatkép, nem frissül magától.</footer>
+</div>
+
+<script>
+const ST = {
+  stop:{l:"Megállt (⛔)",c:"s-stop"}, run:{l:"Fut (▶)",c:"s-run"}, ready:{l:"Indítható",c:"s-ready"},
+  wait:{l:"Függésre vár",c:"s-wait"}, plan:{l:"Tervezett, felvehető",c:"s-plan"}, idle:{l:"Brief kell / halasztva",c:"s-idle"}
+};
+const PH = {1:"1. fázis · adat", 2:"2. fázis · render", f:"Folyamat"};
+const T = [
+  {id:"#22",n:"Károli–Strong párosítás könyvenként",k:"KAROLI_STRONG",p:1,s:"stop",d:"#21 ✓",x:"Te: a Józs PR merge-e és döntés a következő könyvről. 1–5Móz és Józs kész."},
+  {id:"#38",n:"A teljes BDB magyar fordítása",k:"BDB_FORDITAS",p:1,s:"stop",d:"#34 ✓",x:"DT-F38i: indulhat-e a 6. adag (sorrend 407–). 5 adag kész."},
+  {id:"#43",n:"LXX-döntések ellenőrzése lxx_bridge-dzsel",k:"LXX_BRIDGE",p:1,s:"run",d:"#8 ✓",x:"Te: a draft PR átnézése és merge."},
+  {id:"#30",n:"DT- és N-számok kiosztása merge-kor",k:"SZAMOZAS",p:1,s:"ready",d:"#8, #16, #17 ✓",x:"Helyőrző-Action és CI-szabály; fél menet."},
+  {id:"#42",n:"Forrásfájlok kivezetése, licencállapot egy forrása",k:"FORRASKIVEZETES",p:"f",s:"ready",d:"#33, #35 ✓",x:"A #44 feltétele."},
+  {id:"#45",n:"Modell-ellenőrzés brief elején",k:"MODELL_ELLENORZES",p:"f",s:"ready",d:"—",x:"A #37 és #50 feltétele."},
+  {id:"#52",n:"Tervdokumentumok szinkronja",k:"TERV_SZINKRON",p:"f",s:"run",d:"—",x:"1. futás kész, PR #172 merge-elve; ismétlődő, a brief 2. pontja szerinti eseményeknél."},
+  {id:"#23",n:"Egyforrású motívumdokumentum (terv)",k:"MOTIVUM_FORRAS",p:1,s:"wait",d:"#32 ✓, #37*",x:"⛔ az M0 felmérés után; a JELOLTEK_RETRO bemenete."},
+  {id:"#40",n:"Hivatkozás-ellenőrzés (CI)",k:"HIVATKOZAS_ELLENORZES",p:1,s:"wait",d:"#30*, #37*",x:"/kovetkezo"},
+  {id:"#44",n:"Licenc-utókövetés: Károli 1908, versifikáció",k:"LICENC_UTOKOVETES",p:1,s:"wait",d:"#42",x:"A 0. lépés fájljai bent; a Károli-rész a DT-F33e-vel tárgytalan. A #42-re vár."},
+  {id:"#48",n:"Régi KJV/ASV fájlok kivezetése",k:"KJV_REGI_KIVEZETES",p:1,s:"wait",d:"#22",x:"A #22 lezárása után."},
+  {id:"#37",n:"Tanulmány-ellenőrzés: CI + független ellenőr",k:"TANULMANY_ELLENORZES",p:"f",s:"wait",d:"#30, #45*",x:"⛔ a T0 és a T2 után."},
+  {id:"#50",n:"Korlátozott CI-javító kör",k:"CI_JAVITO_KOR",p:"f",s:"wait",d:"#45",x:"A #45 merge után."},
+  {id:"#51",n:"Dokumentum-konzisztencia",k:"KONZISZTENCIA",p:"f",s:"wait",d:"#37*",x:"⛔ a K5 után (heti helyi futás)."},
+  {id:"#9",n:"Szótári adatréteg S2",k:"SZOTAR S2",p:2,s:"wait",d:"#7*, #23, #38*",x:"Javítja az elavult Cremer-sort."},
+  {id:"#36",n:"Éles lexikon/ újragenerálása",k:"LEXIKON_UJRAGEN",p:2,s:"wait",d:"#7*, #9*, #37*, #38*, #42*",x:"Szárazfutás a repón kívül; ⛔ az éles felülírás előtt."},
+  {id:"#7",n:"Thayer teljes magyar fordítása",k:"THAYER",p:1,s:"idle",d:"#3, #5, #14 ✓",x:"Halasztva (D46)."},
+  {id:"#27",n:"Thayer: Opus és Gemini összevetése",k:"FP3",p:1,s:"idle",d:"—",x:"Halasztva (D46), a #7-tel együtt."},
+  {id:"#10",n:"8 lexikonoldal lezárása",k:"LEXIKON_LEZARAS",p:2,s:"idle",d:"#9, #11",x:"Brief kell; DT2 (L6/L7)."},
+  {id:"#11",n:"Migráció: egy forrásból renderelés",k:"MIGRACIO",p:2,s:"idle",d:"#9, #23",x:"Brief kell, a #12a után."},
+  {id:"#12",n:"TEREMT-002 3. lépés",k:"TEREMT002",p:2,s:"idle",d:"#11",x:"Brief kell."},
+  {id:"#13",n:"1Móz 17-től tanulmányok, 6 motívum",k:"GENEZIS_KIADAS",p:2,s:"idle",d:"#10",x:"Brief kell."},
+  {id:"#25",n:"Olvasói felület, statikus HTML",k:"OLVASOI_HTML",p:2,s:"idle",d:"#11, #12, #23",x:"A MUNKATERV szerint kettéválik (DT-M1)."},
+  {id:"új",n:"Egységes Strong-normalizáló függvény",k:"STRONG_NORMALIZAL",p:"f",s:"plan",d:"—",x:"N37 + N21; a SQLITE_EPIT előfeltétele. ½ menet."},
+  {id:"új",n:"SzPA-szabályok gépi ellenőrzése (C mód)",k:"SZPA_AUDIT",p:"f",s:"plan",d:"—",x:"Csak jelentés; a profilfájl hiányzik a repóból."},
+  {id:"új",n:"8 retroaktív motívum jelölt-sorai",k:"JELOLTEK_RETRO",p:1,s:"plan",d:"— (adat megvan)",x:"adat/jeloltek.tsv; a #23 M0 bemenete."},
+  {id:"új",n:"Károli-idézetek ellenőrzése a párokon",k:"KAROLI_ELLENORZES",p:1,s:"plan",d:"#22, DT-M2",x:"A kész 6 könyvre; a DT-M2 még nincs a DONTESEK-ben."},
+  {id:"új",n:"BDB szócikk-adatblokk",k:"BDB_ADATBLOKK",p:1,s:"plan",d:"#38, DT-F38i",x:"Csonkként vehető fel; közvetlen TSV-ből."},
+  {id:"később",n:"pardes.db építése",k:"SQLITE_EPIT",p:"f",s:"idle",d:"STRONG_NORMALIZAL",x:"Ne most: a #23/#11 nézet-döntésétől függ."},
+  {id:"később",n:"MCP-burok a lekerdez.py-ra",k:"MCP_BUROK",p:"f",s:"idle",d:"SQLITE_EPIT, DT-M3, DT-M5",x:"Ne most."},
+  {id:"később",n:"Olvasói konkordancia motívum nélkül",k:"OLVASOI_KONKORDANCIA",p:2,s:"idle",d:"SQLITE_EPIT, #44, DT-M1, DT-M4, DT-M6",x:"Ne most; hosting ⛔."}
+];
+const RESZ = {"KAROLI_STRONG": {"r": "Két modell (Sonnet, az első könyvnél Gemini is) a Károli-fordítás minden szavához megkeresi az eredeti héber szót és a Strong-számát; ahol a két modell egyezik, a kapcsolat „magas” bizonyosságú. Az 1–5Mózes és Józsué kész.", "o": "Gépi szótárpárosítás: minden magyar Károli-szó mellé odakerül, melyik héber szót fordítja."}, "BDB_FORDITAS": {"r": "A BDB, a legrészletesebb héber szótár mind a 8 090 szócikke magyarra fordul, gyakorisági sorrendben, adagonként, gépi minőségkapukkal. Öt adag (406 szócikk) kész; a hatodik a DT-F38i döntésre vár.", "o": "A nagy héber szótár magyarítása — most egy igen/nemre vár, hogy mehet-e tovább."}, "LXX_BRIDGE": {"r": "A 86 korábbi LXX-döntést (melyik görög szó felel meg a héber szónak a Septuagintában) egy független héber–görög párlistával veti össze: egyezik, eltér, vagy nincs adat. Magát a döntéstáblát nem módosítja.", "o": "Második vélemény a görög–héber megfeleltetésekre; a kész eredmény a te átnézésedre vár."}, "TERV_SZINKRON": {"r": "A három tervdokumentumot (ADATVAGYON_TERV, MUNKATERV, VIBE_GUIDE) a repó friss döntéseihez és státuszaihoz igazítja, csak az érintett szakaszokban. Az első futás kész; minden új döntés vagy lezárt hullám után újra fut.", "o": "Gondoskodik róla, hogy a tervek ne avuljanak el a valósághoz képest."}, "SZAMOZAS": {"r": "Ma minden ág maga ad számot az új döntéseknek (DT) és nyitott tételeknek (N), ezért párhuzamos munkánál ütköznek. A feladat helyőrzőt vezet be, és a végleges számot merge-kor egy GitHub Action osztja ki.", "o": "Megszünteti a sorszám-ütközéseket, ha több munka fut egyszerre."}, "FORRASKIVEZETES": {"r": "A nagy nyers STEPBible-fájlok (TBESH-család) kikerülnek a verziókezelésből egy letöltő szkript mögé, az LXX-kivonat megszűnik, és a generált oldalak licencjelölése egyetlen helyről, az adat/licencek.tsv-ből jön.", "o": "Rendet tesz a forrásfájlok és a licencjelölések körül."}, "MODELL_ELLENORZES": {"r": "Minden brief elején a futó Claude-modell ellenőrzi, hogy egyezik-e a briefben előírt modellel; ha nem, nem dolgozik. Az adattáblák modell-mezőjébe mindig a ténylegesen futó modell neve kerül.", "o": "Biztosítja, hogy minden munkát az a modell végezzen, amelyiket kijelölted."}, "MOTIVUM_FORRAS": {"r": "Megtervezi, hogyan legyen minden motívumnak egyetlen kézzel írt forrásdokumentuma mélységi szintekkel, amelyből a többi nézet generálódik. Csak terv és mérés, fájlmozgatás nélkül; az M0 felmérés után megáll.", "o": "A motívumlexikon jövőbeli „egy forrás” felépítésének tervrajza."}, "HIVATKOZAS_ELLENORZES": {"r": "Új CI-szabály: minden pull requestnél jelzi, ha a FELADATOK.md vagy egy brief nem létező fájlra, ágra vagy commitra mutat, vagy ha egy PR áthelyez egy hivatkozott fájlt a hivatkozás frissítése nélkül.", "o": "Automatikus őr a törött hivatkozások ellen."}, "LICENC_UTOKOVETES": {"r": "Tisztázza a Károli 1908 és a versszámozási táblák licencét szó szerinti licencidézettel, és forrásjelöltként felveszi az openbible.info kereszthivatkozásait. A 0. lépés fájljai bent; a Károli-rész a DT-F33e-vel tárgytalan.", "o": "Jogi rendrakás: mit szabad és milyen feltétellel közölni."}, "KJV_REGI_KIVEZETES": {"r": "A régi, tisztázatlan licencű studybible.info KJV/ASV-fájlok (csak 1Móz, 2Móz, Péld) kikerülnek; minden kód és dokumentáció az új, teljes eBible KJV-forrást használja. A #22 lezárására vár.", "o": "A régi angol Biblia-fájlokat lecseréli az újra, tisztább licencűre."}, "TANULMANY_ELLENORZES": {"r": "A tanulmányokat gépi CI-szabályok (E20–E24) és egy független ellenőrző ügynök vizsgálja; a régi tanulmányokról két auditjelentés készül. Két megállási pont van benne (T0, T2), ahol te döntesz.", "o": "Minőségellenőrzés a már megírt bibliatanulmányokra."}, "CI_JAVITO_KOR": {"r": "A /befogad és a /kovetkezo push után elolvassa a CI eredményét; ha a hiba a saját PR-jéből jön (fejléc, fájlnév, formai hiba), legfeljebb két körben kijavítja, minden más hibát csak jelent.", "o": "Az apró formai hibákat magától javítja, a többit szól."}, "KONZISZTENCIA": {"r": "Egy CI-szabály jelzi, ha egy döntés után valamelyik érintett fájl még a régi állapotot írja; egy hetente, a gépeden futó ügynök pedig a fogalmi ellentmondásokat jelentésbe gyűjti.", "o": "Figyeli, hogy a dokumentumok ne mondjanak ellent egymásnak."}, "SZOTAR S2": {"r": "Az 1. fázis új szótári adatai (fordítások, LXX, források) megjelennek a 8 lexikonoldalon és a törzscikkekben; a törzscikk utoljára itt generálódik. A #23 tervére és a #38 fordításaira vár.", "o": "Az új szótári adat bekerül a lexikonoldalakra."}, "LEXIKON_UJRAGEN": {"r": "A lexikon tudományos oldalai és törzscikkei a mai adatból újragenerálódnak (új fordítások, javított igehelyek, Szent Szellem-szöveg); előbb próbafutás a repón kívül, az éles fájlok felülírása előtt megáll.", "o": "A lexikonoldalak frissítése a legújabb adatokkal."}, "THAYER": {"r": "A Thayer görög szótár teljes magyar fordítása gépi úton. Halasztva (D46): akkor jön elő, ha lesz olvasói felület, amely használná; addig a lexikon szócikkeit a #28 fordítja.", "o": "A nagy görög szótár magyarítása — későbbre tolva."}, "FP3": {"r": "Összeméri az Opus és a Gemini modellt a Thayer fordításán: minőség hosszkategóriánként, gépi kapuk, keretfogyás. A #7 modellválasztásához ad adatot, ezért azzal együtt halasztva.", "o": "Modellverseny a görög szótár fordításához — szintén későbbre tolva."}, "LEXIKON_LEZARAS": {"r": "A 8 lexikonoldal mérhető feltételek (L1–L7) szerinti lezárása. Briefet még nem kapott; előtte el kell döntened az L6 és L7 feltételt (DT2), és meg kell lennie a #9-nek és a #11-nek.", "o": "A 8 kész lexikonoldal hivatalos lezárása."}, "MIGRACIO": {"r": "Minden motívum egyetlen kézi forrásból renderelődik (D34); a törzscikk, a 8. sablon és egy régi CI-szabály kivezetésre kerül. Első lépcső az ISTENTISZT-001, utána a többi hat.", "o": "Átállás arra, hogy minden motívumnak egy forrása legyen."}, "TEREMT002": {"r": "A TEREMT-002 motívum 3. lépése: próza és lexikonoldal. Ez lesz az első motívum, amely eleve az új, egyforrású szerkezetben születik. A #11-re vár.", "o": "Az első motívum, amely az új módon készül el."}, "GENEZIS_KIADAS": {"r": "Az 1Mózes 17. fejezetétől folytatódnak a tanulmányok, és bekerül a 6 még betöltetlen motívum; ez adja a Genezis-kiadás tartalmát. A lexikonoldalak lezárása (#10) után indul.", "o": "A Genezis-kiadás hátralévő tartalmának megírása."}, "OLVASOI_HTML": {"r": "Statikus, a motívumforrásból generált HTML-oldalak lenyitható apparátussal és állítható mélységgel, később telefonon is használható alkalmazásként. A MUNKATERV szerint kettéválik: előbb a motívum nélküli konkordancia, utána a motívumos nézet.", "o": "Az olvasóknak szánt weboldal."}, "STRONG_NORMALIZAL": {"r": "Ma több eszköz is a maga módján írja a Strong-számokat (H922 vagy H0922), ezért egyes keresések némán nem találnak. Egyetlen közös függvény készül, amit minden eszköz használ, és a hibás táblasorok kijavulnak.", "o": "Egységes írásmód a Strong-számokra, hogy a keresés mindig találjon."}, "SZPA_AUDIT": {"r": "Az SzPA fordítói profil szabályai alapján gépileg megkeresi, hol használ a projekt saját szövege (tanulmányok, BDB-fordítás) jelöletlenül egyházi műszót, vagy tér el a kötött szópároktól. Csak jelentés, szöveget nem ír át.", "o": "Nyelvi lektorálás: hol csúszik be jelöletlen egyházi zsargon."}, "JELOLTEK_RETRO": {"r": "A 8 régebbi motívum kutatási naplóiból utólag feltölti a jelöltek táblát: minden vizsgált igehelyhez döntés és indoklás. Készül egy lista arról is, mit nem vizsgált még senki.", "o": "Utólag rendbe teszi, melyik igehelyet miért vettük be vagy hagytuk ki."}, "KAROLI_ELLENORZES": {"r": "A tanulmányokban idézett Károli-szavakat és Strong-számokat összeveti a #22 gépi párosításával a kész 6 könyvön, csak a megbízható („magas”) kapcsolatokon. Az eltéréseket listázza, a javítást soronként te hagyod jóvá.", "o": "Ellenőrzi, hogy a tanulmányok héber szó-hivatkozásai stimmelnek-e."}, "BDB_ADATBLOKK": {"r": "A BDB-fordítás minden adagja elé gépileg összerakott adatblokk kerül: Károli-szóalakok, példaversek, LXX-megfelelő, rokon szavak. Így a fordító modell nem fejből dolgozik. A DT-F38i után indul.", "o": "Tényadatokkal látja el a szótárfordítót, hogy ne találgasson."}, "SQLITE_EPIT": {"r": "Az összes TSV-táblából egyetlen lekérdezhető adatbázis (pardes.db) épül, beépített integritási tesztekkel. A repóba nem kerül be, helyben generálódik.", "o": "Egy gyors, egyben kereshető adatbázis a sok táblából."}, "MCP_BUROK": {"r": "Legfeljebb 8 csak olvasó eszköz, amellyel Claude közvetlenül lekérdezheti a projekt adatait, minden hívás naplózva és forrásjelölve.", "o": "Claude közvetlen, biztonságos hozzáférése a kutatási adatokhoz."}, "OLVASOI_KONKORDANCIA": {"r": "Az első nyilvános kiadás: vers- és szólapok motívumok nélkül, forrás- és licencjelöléssel. A tárhely-döntés és a licencdöntések (DT-M1, DT-M6) után indul.", "o": "Az első nyilvános, böngészhető bibliai konkordancia."}};
+const SEQ = [
+  {n:"1",t:"STRONG_NORMALIZAL",x:"Eszközjavítás, minden későbbi betöltés előfeltétele"},
+  {n:"2a",t:"SZPA_AUDIT",x:"Csak jelentés",par:1},
+  {n:"2b",t:"JELOLTEK_RETRO",x:"Az adat/-ba ír, motívumfájlba nem",par:1},
+  {n:"3",t:"#30 SZAMOZAS",x:"Már a FELADATOK-ban, fél menet"},
+  {n:"4",t:"DT-M2",x:"Egy sor a DONTESEK-ben (SEMA 1.7)"},
+  {n:"5",t:"KAROLI_ELLENORZES",x:"A kész 6 könyvre"},
+  {n:"bármikor",t:"BDB_ADATBLOKK",x:"A DT-F38i után",par:1}
+];
+const WAVES = [
+  {h:"1. hullám",items:[["0. lépcső ✓","run"],["TERV_BEFOGAD (részben)","wait"],["STRONG_NORMALIZAL","plan"],["JELOLTEK_RETRO","plan"],["SZPA_AUDIT","plan"]],g:"DT-M1–M3 eldöntve; a #43 fut, a #44 a #42-re vár"},
+  {h:"2. hullám",items:[["KAROLI_ELLENORZES","plan"],["SQLITE_EPIT","idle"]],g:"0 integritási sértés; az eltéréslista átnézve"},
+  {h:"3. hullám",items:[["MCP_BUROK","idle"],["BDB_ADATBLOKK","plan"]],g:"Az MCP egyezik a CLI-vel; a #38 6. adagja az adatblokkal"},
+  {h:"4. hullám",items:[["OLVASOI_KONKORDANCIA","idle"]],g:"Hosting és DT-M6; mód-szűrő és forrásjelölés átnézve; első 40 lap jóváhagyva"},
+  {h:"Utána",items:[["#23","wait"],["#9 / #10","wait"],["#11","idle"],["#25b","idle"]],g:"A FELADATOK meglévő megállásai"}
+];
+const DT = [
+  {h:"Nyitott",k:"stop",rows:[
+    ["DT-F38i","Indulhat-e a BDB 6. adagja (sorrend 407–)?","#38 · BDB_ADATBLOKK"],
+    ["DT2","Az L6 és L7 lezárási feltétel (N18, N19).","#10"],
+    ["DT-F41a","A Zsolt 13 kézi versmegfeleltetése, vagy kimarad.","#41"]]},
+  {h:"Eldöntve, alkalmazásra vár",k:"run",rows:[
+    ["DT-F32a","A TEREMT-002 próza-próba helye (#12a).","#32 · #11"],
+    ["DT-F32b","Melyik modell írja az értelmező prózát.","#32"],
+    ["DT-F32c","A munka nélküli briefek előzmény-kivétele.","#32"],
+    ["DT-F26a","A „tanulmány” szó két jelentése.","#26"],
+    ["DT-F24","Licenc-leltár: 24 tisztázatlan sor.","#24"],
+    ["DT6","A 95% alatti 8 ÓSZ-könyv a BSB-ben.","#16"],
+    ["DT-F21j","A Károli–Strong pilot lezárása.","#21"]]},
+  {h:"Javasolt, még nincs felvéve",k:"plan",rows:[
+    ["DT-M1","Olvasói konkordancia a #25 előtt, motívum nélkül.","OLVASOI_KONKORDANCIA"],
+    ["DT-M2","SEMA 1.7: a szó-szintű Károli a magas linkből tölthető.","KAROLI_ELLENORZES"],
+    ["DT-M3","Új auditok.lepes érték ad hoc lekérdezésre.","MCP_BUROK"],
+    ["DT-M4","Szerepmátrix: 13. és 14. szerep.","OLVASOI_KONKORDANCIA"],
+    ["DT-M5","Külső bible-mcp connector: elvetés egyelőre.","MCP_BUROK"],
+    ["DT-M6","A saját kimenet licence és a két kiadási mód; STEPBible-származék CC BY 4.0, attribúcióval (DT-F33f).","OLVASOI_KONKORDANCIA"],
+    ["#23 M0","Az M0 függésének feloldása.","#23"]]}
+];
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const chip = (t,s) => `<span class="chip ${ST[s].c}">${esc(t)}</span>`;
+
+const cnt = s => T.filter(t=>t.s===s && t.id!=="később").length;
+$("#stats").innerHTML = [
+  ["stop","Megállt, rád vár"],["run","Fut"],["ready","Indítható most"],["wait","Függésre vár"],["plan","Felvehető új sor"]
+].map(([s,l])=>`<div class="stat ${s}"><b>${cnt(s)}</b><span>${l}</span></div>`).join("")
+ + `<div class="stat dt"><b>${DT[0].rows.length}</b><span>Nyitott döntés</span></div>`;
+
+$("#seq").innerHTML = SEQ.map((s,i)=>
+  (i?`<span class="arrow" aria-hidden="true">${s.par&&SEQ[i-1].par?"∥":"→"}</span>`:"")+
+  `<div class="step${s.par?" par":""}"><span class="n">${esc(s.n)}</span><strong class="mono">${esc(s.t)}</strong><small>${esc(s.x)}</small></div>`).join("");
+
+const WC=["var(--run-solid)","var(--ready-solid)","var(--plan-solid)","var(--wait-solid)","var(--idle-solid)"];
+$("#waves").innerHTML = WAVES.map((w,i)=>`<div class="wave" style="border-top-color:${WC[i]}"><h3>${esc(w.h)}</h3><div class="chips">${w.items.map(([t,s])=>chip(t,s)).join("")}</div><div class="gate">${esc(w.g)}</div></div>`).join("");
+
+$("#legend").innerHTML = Object.keys(ST).map(s=>chip(ST[s].l,s)).join("");
+
+let phase = "all";
+try { phase = localStorage.getItem("pardes-fazis") || "all"; } catch(e) {}
+const F = [["all","Mind"],["1",PH[1]],["2",PH[2]],["f",PH.f]];
+function renderFilters(){
+  $("#filters").innerHTML = F.map(([v,l])=>`<button type="button" id="f-${v}" data-v="${v}" aria-pressed="${phase===v}">${esc(l)}</button>`).join("");
+  $("#filters").querySelectorAll("button").forEach(b=>b.onclick=()=>{phase=b.dataset.v;try{localStorage.setItem("pardes-fazis",phase)}catch(e){};renderFilters();renderBoard();});
+}
+function renderBoard(){
+  const order=["stop","run","ready","plan","wait","idle"];
+  const list = T.filter(t=>phase==="all"||String(t.p)===phase);
+  $("#board").innerHTML = order.map(s=>{
+    const items=list.filter(t=>t.s===s); if(!items.length) return "";
+    return `<div class="col"><div class="colhead h-${s}"><span>${ST[s].l}</span><span class="count">${items.length}</span></div>`+
+      items.map(t=>`<article class="card k-${s}"><div class="top"><span class="name">${esc(t.n)}</span><span class="id">${esc(t.id)}</span></div>
+        <span class="kod">${esc(t.k)} · ${esc(PH[t.p])}</span>
+        ${RESZ[t.k]?`<span class="detail">${esc(RESZ[t.k].r)}</span>`:""}
+        <span class="next"><b>Most:</b> ${esc(t.x)}</span>
+        <span class="deps">függ: ${esc(t.d)}</span>${RESZ[t.k]?`<span class="sum">Röviden: ${esc(RESZ[t.k].o)}</span>`:""}</article>`).join("")+`</div>`;
+  }).join("");
+}
+renderFilters(); renderBoard();
+(function(){var b=$("#tema"),r=document.documentElement;
+ function lbl(){b.textContent=r.getAttribute("data-tema")==="dark"?"☀ Világos":"☾ Sötét";}
+ lbl(); b.onclick=function(){var n=r.getAttribute("data-tema")==="dark"?"light":"dark";
+  r.setAttribute("data-tema",n); try{localStorage.setItem("pardes-tema",n)}catch(e){}
+  lbl(); if(window.rajzolTerkep) window.rajzolTerkep();};})();
+
+$("#dgrid").innerHTML = DT.map(g=>`<div class="dlist"><h3>${chip(g.h,g.k)}<span>${g.rows.length}</span></h3>${
+  g.rows.map(r=>`<div class="drow"><span class="did">${esc(r[0])}</span><span class="dq">${esc(r[1])}</span><span class="dfor">→ ${esc(r[2])}</span></div>`).join("")}</div>`).join("");
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11.16.1/dist/mermaid.min.js"></script>
+<script>
+/* Ugyanaz a Mermaid-beállítás, amellyel a claude.ai artifact rajzol (base téma, a lap háttere); témaváltáskor újrarajzol */
+(function(){
+var pre=document.querySelector("pre.terkep-forras"); if(!pre||typeof mermaid==="undefined") return;
+var src=pre.textContent, hely=document.createElement("div"); pre.parentNode.insertBefore(hely,pre); pre.style.display="none";
+var n=0;
+window.rajzolTerkep=function(){
+ var dark=document.documentElement.getAttribute("data-tema")==="dark";
+ var pal=dark?{surface:"#262b34",text:"#f2f3f5",line:"#a8adb8",border:"#9aa4b8"}:{surface:"#f4efe4",text:"#42392e",line:"#8a7f6d",border:"#7a6c52"};
+ var bg=getComputedStyle(document.body).backgroundColor;
+ mermaid.initialize({startOnLoad:false,securityLevel:"strict",theme:"base",flowchart:{useMaxWidth:false},
+  themeVariables:{background:bg,mainBkg:pal.surface,primaryColor:pal.surface,primaryTextColor:pal.text,lineColor:pal.line,
+   primaryBorderColor:pal.border,nodeBorder:pal.border,edgeLabelBackground:bg,darkMode:dark,fontSize:"10px",
+   fontFamily:getComputedStyle(document.body).fontFamily},
+  themeCSS:".node rect, .node circle, .node polygon, .node path { stroke-width: 2px; }"});
+ mermaid.render("terkep-"+(n++),src).then(function(r){hely.innerHTML=r.svg;},function(){pre.style.display="";});
+};
+window.rajzolTerkep();
+})();
+</script>
+</body>
+</html>
