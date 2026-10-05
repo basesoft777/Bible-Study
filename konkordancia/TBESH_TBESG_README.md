@@ -47,7 +47,7 @@ Egy alap Strong-szám gyakran **több sort** kap. Például `H7121` (קָרָא)
 | `H7121I` | call out/shout/announce |
 | `H7121J` | read out/dictated |
 
-Mind a négy alsor **ugyanazt az alap sense-listát ismétli** (1) to call, call out, recite, read, cry out, proclaim... stb.), csak eltérő súlyponti gloss-szal. Ezek tehát nem különböző jelentések, hanem ugyanannak a szónak különböző kontextus-specifikus felhasználási súlypontjai.
+Mind a négy alsor **ugyanazt az alap sense-listát ismétli** (a H7121 `Meaning` mezője; a szöveget itt nem idézzük, F42 / DT-F42a), csak eltérő súlyponti gloss-szal. Ezek tehát nem különböző jelentések, hanem ugyanannak a szónak különböző kontextus-specifikus felhasználási súlypontjai.
 
 **Munkafolyamat-szabály minden TBESH/TBESG-alapú grep-nél:**
 
@@ -101,7 +101,7 @@ git show 08d88dc:konkordancia/lexikonok_nyers/TBESH.lexicon > konkordancia/_nyer
 python eszkozok/tbesh_konszolidalt_import.py
 ```
 
-A visszaállított fájl sha256-ja egyezik a fenti értékkel (`5a8e306e…ce32`, ellenőrizve 2026-10-05). A konszolidált táblát a harmadik sor generálja újra; közvetlenül is visszahozható: `git show 55c407a:konkordancia/TBESH_konszolidalt.tsv`. Javasolt a `konkordancia/_nyers/tbesh/` mappáról saját, privát mentést tartani. A nyilvános repóba a fájl nem kerülhet vissza.
+A visszaállított fájl sha256-ja egyezik a fenti értékkel (`5a8e306e…ce32`; proveniencia: `manual`, mérve 2026-10-05 `sha256sum`-mal, nem lekérdezés). A konszolidált táblát a harmadik sor generálja újra; közvetlenül is visszahozható: `git show 55c407a:konkordancia/TBESH_konszolidalt.tsv`. Javasolt a `konkordancia/_nyers/tbesh/` mappáról saját, privát mentést tartani. A nyilvános repóba a fájl nem kerülhet vissza.
 
 **Generált** (`eszkozok/tbesh_konszolidalt_import.py`, kézzel nem szerkesztendő):
 **unió, nem csere** — egyik forrás sem váltja ki a másikat, mert szócikkenként

@@ -15,6 +15,7 @@
 
 ## Nyitott tételek
 - **HODIT-001** élő oldala nem renderelve (a #42 hatása: 5 Józs-sor; a #36 LEXIKON_UJRAGEN dolga); a többi 6 oldal a #42-től bájtazonos.
+- A commitolt `lexikon/*_TORZSCIKK.md` oldalak (8) a mai adathoz képest általában elavultak (pl. ISTENTISZT-001: LSJ „3.0”); felzárkóztatásuk a #36 dolga. A független ellenőr jelentése: `naplok/ELLENOR_FORRASKIVEZETES.md` (6 eltérés, ebből a javítható mind javítva).
 - A régi zsoltár-kivonatra épülő állítások (TEREMT-002 B4 auditsorok, két kereszthivatkozás-napló, pilot) újraellenőrzése: tartalmi döntés (lista: `naplok/FORRASKIVEZETES_M5_M7.md`).
 - A forrásszövegek kézi licencsora (`Segitsegul_hivni_az_Urat_tematikus.md` stb.) LSJ-re még „CC BY-SA 3.0”-t ír, a generált rész már 4.0-t.
 - A TBESH.lexicon forrása nem rögzíthető (Google Drive); a git-történetből állítható vissza.

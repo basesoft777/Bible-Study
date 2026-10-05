@@ -20,7 +20,7 @@ Forrasok:
     ezek KULON sorkent maradnak a kimenetben (D38) -- nem vonjuk
     ossze oket az alapszamba, es nem is dobjuk el. Az `alap_strong`
     oszlop koti vissza az utotagos sorokat az alapszamukhoz.
-  - konkordancia/lexikonok_nyers/TBESH.lexicon (SQLite): egyetlen,
+  - konkordancia/_nyers/tbesh/TBESH.lexicon (SQLite, F42 óta itt él): egyetlen,
     konszolidalt HTML-bejegyzes Strongonkent (ugyanez a betu-utotagos
     konvencio, kis reszben nem-nullaval-toltott szamresszel).
 

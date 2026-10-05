@@ -30,7 +30,8 @@ Idegen (Károlinál nem létező) kulcs nincs. Az `lxx-hid` a nem kulcsolt verse
 
 Módszer: `general.py --cel lexikon` és `--cel torzscikk` az `origin/main` állapotával és az ág állapotával, ugyanazon a napon, ideiglenes könyvtárba (a `generalt_proba/` nem módosult).
 
-- **Törzscikkek (8):** 0 eltérés.
+- **Törzscikkek (8):** a main-állapot és az ág-állapot renderje között 0 eltérés. **De** a commitolt `lexikon/*_TORZSCIKK.md` oldalak a #42-től függetlenül mind elavultak a mai adathoz képest (a friss render 65–326 sorban tér el oldalanként), ezért a `lexikon/ISTENTISZT-001_TORZSCIKK.md` még „CC BY-SA 3.0”-t ír az LSJ-ra; ennek felzárkóztatása a #36 (LEXIKON_UJRAGEN) dolga, a #42 nem renderelte újra (független ellenőr K8).
+- **Táblák sorszám-változása (DT3, E17; fejlécsorok és kommentek nélkül, `git diff --numstat origin/main HEAD`):** `LXX_kivonat_*.tsv` (39 tábla) összesen −469 932 adatsor (kivezetés, az eltéréslista verzió szerint bont); `TBESH_konszolidalt.tsv` −9 838 (a `_nyers/tbesh/` alá költözött, generálható); `adat/lexikon_hivatkozasok.tsv` −1 és `adat/forditasok.tsv` −1 (TBESH H7121 `részlet`, DT-F42a); `datasetek.tsv`, `licencek.tsv` ±0; `LXX_OS/2-esdras.tsv`, `esther-greek.tsv` ±0 adatsor.
 - **Lexikonoldalak:** ALVIL, ANTROP, HAMART, KIRALY, MENNY, TEREMT, ISTENTISZT: a N9-átállás (`cimke`) önmagában bájtazonos renderrel jár. ISTENTISZT-001 és HODIT-001 változik.
 - **ISTENTISZT-001 (az élő oldal újrarenderelve, F42.8): 63 osztályozott sor, nem várt: 0.**
   - M4 szerinti tartalomcsere: a TBESH H7121 blokk és a TBESH-konszolidáció bekezdés, BDB-alapú szakasz (20 sor);

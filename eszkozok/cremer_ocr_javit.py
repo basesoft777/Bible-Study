@@ -553,7 +553,8 @@ def _heber_szoveg_epit():
     reszek = []
     # F42/M2: a hiányzó forrás nem hagyható ki csendben
     for p in (_U.kotelezo(_U.TBESH_TXT),
-              _U.kotelezo(os.path.join(REPO_GYOKER, "konkordancia", "BDB_teljes_unabridged.tsv"))):
+              _U.kotelezo(os.path.join(REPO_GYOKER, "konkordancia", "BDB_teljes_unabridged.tsv"),
+                          "a repó követett fájlja: git checkout -- konkordancia/BDB_teljes_unabridged.tsv")):
         with open(p, encoding="utf-8") as fh:
             reszek.append(fh.read())
     _heber_szoveg_cache = elonormalizal("\n".join(reszek))
