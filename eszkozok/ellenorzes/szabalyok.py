@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-szabalyok.py -- CI.0: az E2-E19 ellenorzesek (F02_CI_ELLENORZES_BRIEF.md
+szabalyok.py -- CI.0: az E2-E19 es E25 ellenorzesek (F02_CI_ELLENORZES_BRIEF.md
 "Ellenorzolista" tablazata). Egy szabaly = egy fuggveny, mind
 `(fajllista) -> [Talalat, ...]` alaku (E16 kivetel: PR-metaadatot is kap;
 E5 kivetel: git diff-et is kap -- l. az egyes fuggvenyek docstringjet).
@@ -15,6 +15,7 @@ felett dolgoznak.
 """
 
 import os
+import datetime
 import re
 import subprocess
 import sys
@@ -36,17 +37,17 @@ from kozos import (
 # (SZINT-ben rogzitett) szintjukon jelentkeznek. E6/E7 a brief expliciten
 # ezt mondja ki; E4/E5/E16 szerkezetileg ugyanide tartozik (E5 maga is
 # diff-alapu, E16 fajl-letezes, E4 motivum-szintu audit-allapot).
-FAJLSZINTU_SZABALYOK = {'E4', 'E5', 'E6', 'E7', 'E16', 'E19'}
+FAJLSZINTU_SZABALYOK = {'E4', 'E5', 'E6', 'E7', 'E16', 'E19', 'E25'}
 
 # Adattablan futo szabalyok: --teljes modban a futtat.py a ['__TELJES__']
 # jelzot adja nekik (az md-fajlok listaja helyett), kulonben nem futnanak.
-HATOKOR_SZABALYOK = {'E3', 'E19'}
+HATOKOR_SZABALYOK = {'E3', 'E19', 'E25'}
 
 SZINT = {
     'E2': 'HIBA', 'E3': 'HIBA', 'E4': 'HIBA', 'E5': 'HIBA', 'E6': 'HIBA',
     'E7': 'HIBA', 'E8': 'HIBA', 'E9': 'HIBA', 'E10': 'HIBA', 'E11': 'HIBA',
     'E12': 'FIGYELMEZTETES', 'E13': 'FIGYELMEZTETES', 'E14': 'FIGYELMEZTETES',
-    'E15': 'FIGYELMEZTETES', 'E16': 'HIBA', 'E19': 'HIBA',
+    'E15': 'FIGYELMEZTETES', 'E16': 'HIBA', 'E19': 'HIBA', 'E25': 'FIGYELMEZTETES',
 }
 
 
@@ -896,6 +897,145 @@ def e19_szotari_forditas_hiany(fajlok):
         ))
     return talalatok
 
+# --------------------------------------------------------------------------
+# E25 -- dontes atvezetese (F51_KONZISZTENCIA_BRIEF.md K3, adat/SEMA.md 2.21)
+# --------------------------------------------------------------------------
+# Az adat/dontes_hatas.tsv minden sorara:
+#   (a) a `tilos_minta` talalat az `erintett_fajl`-ban -> FIGYELMEZTETES, ha
+#       nincs a fajlban `atmeneti_jeloles`, kulonben JELENTES;
+#   (b) a `tovabbvivo_feladat` allapota nem_indult / brief_kell, es a `datum`
+#       ota tobb mint 14 nap telt el -> FIGYELMEZTETES;
+#   (c) hianyzo/hibas hivatkozas (dontes_forras fajl vagy azonosito,
+#       erintett_fajl, regex) -> HIBA (DT-F51-4).
+# Kivetel: a `tipus: archiv` fejlecu erintett fajlt az (a) ag kihagyja
+# (archivumot nem szerkesztunk, a torteneti allapot nem hiba).
+# Adattablan fut (HATOKOR_SZABALYOK): minden futasnal, a bemeneti listatol fuggetlenul.
+
+E25_TABLA = 'adat/dontes_hatas.tsv'
+E25_HATARNAP = 14
+E25_NYITOTT_ALLAPOTOK = ('nem_indult', 'brief_kell')
+MA = None  # tesztekben felulirhato datum (datetime.date); egyebkent a mai nap
+
+
+def _e25_fejlec(sorok):
+    """A fajl elejen allo `---` kozotti fejlec {mezo: ertek} dictje (egyszeru kulcs: ertek)."""
+    if not sorok or sorok[0].strip() != '---':
+        return {}
+    fej = {}
+    for sor in sorok[1:]:
+        if sor.strip() == '---':
+            break
+        if ':' in sor:
+            k, _, v = sor.partition(':')
+            fej[k.strip()] = v.strip().strip('"')
+    return fej
+
+
+def _e25_feladat_allapotok():
+    """{feladat_szam(str): allapot} az F*_BRIEF.md es egyeb *_BRIEF.md fejlecekbol."""
+    allapotok = {}
+    try:
+        nevek = sorted(os.listdir(SZ_ROOT()))
+    except OSError:
+        return allapotok
+    for nev in nevek:
+        if not nev.endswith('_BRIEF.md'):
+            continue
+        try:
+            fej = _e25_fejlec(md_olvasas(os.path.join(SZ_ROOT(), nev)))
+        except (OSError, UnicodeDecodeError):
+            continue
+        if fej.get('feladat') and fej.get('allapot'):
+            allapotok[fej['feladat']] = fej['allapot']
+    return allapotok
+
+
+def SZ_ROOT():
+    return ROOT
+
+
+def e25_dontes_atvezetes(fajlok):
+    talalatok = []
+    tabla = os.path.join(ROOT, *E25_TABLA.split('/'))
+    if not os.path.exists(tabla):
+        return talalatok
+    ma = MA or datetime.date.today()
+    allapotok = None
+    for sorszam, d in dict_sorok_sorszammal(tabla):
+        def hiba(reszlet):
+            talalatok.append(Talalat('E25', 'HIBA', E25_TABLA, sorszam, reszlet))
+
+        forras = d.get('dontes_forras', '')
+        fajl_resz, _, azonosito = forras.partition('#')
+        erintett = d.get('erintett_fajl', '')
+        ok = True
+        # (c) hivatkozasok
+        if not fajl_resz or not azonosito:
+            hiba('dontes_forras nem `fajl#azonosito` alaku: %r' % forras)
+            ok = False
+        else:
+            forras_ut = os.path.join(ROOT, *fajl_resz.split('/'))
+            if not os.path.exists(forras_ut):
+                hiba('a dontes_forras fajlja nem letezik: %s' % fajl_resz)
+                ok = False
+            else:
+                szoveg = chr(10).join(md_olvasas(forras_ut))
+                if not re.search(r'\b%s\b' % re.escape(azonosito), szoveg):
+                    hiba('a(z) %s azonosito nem szerepel a(z) %s fajlban' % (azonosito, fajl_resz))
+                    ok = False
+        erintett_ut = os.path.join(ROOT, *erintett.split('/')) if erintett else ''
+        if not erintett or not os.path.exists(erintett_ut):
+            hiba('az erintett_fajl nem letezik: %r' % erintett)
+            ok = False
+        try:
+            tilos = re.compile(d.get('tilos_minta', ''))
+            if not d.get('tilos_minta'):
+                raise re.error('ures minta')
+        except re.error as e:
+            hiba('hibas tilos_minta (%s): %r' % (e, d.get('tilos_minta')))
+            ok = False
+        atm = None
+        if d.get('atmeneti_jeloles'):
+            try:
+                atm = re.compile(d['atmeneti_jeloles'])
+            except re.error as e:
+                hiba('hibas atmeneti_jeloles (%s): %r' % (e, d.get('atmeneti_jeloles')))
+                ok = False
+        try:
+            datum = datetime.date.fromisoformat(d.get('datum', ''))
+        except ValueError:
+            hiba('a datum nem EEEE-HH-NN: %r' % d.get('datum'))
+            ok = False
+            datum = None
+        if not ok:
+            continue
+        # (a) regi allapot az erintett fajlban
+        sorok = md_olvasas(erintett_ut)
+        if _e25_fejlec(sorok).get('tipus') != 'archiv':
+            talalat_sorok = [i for i, s in enumerate(sorok, 1) if tilos.search(s)]
+            if talalat_sorok:
+                van_atm = atm is not None and any(atm.search(s) for s in sorok)
+                szint = 'JELENTES' if van_atm else 'FIGYELMEZTETES'
+                talalatok.append(Talalat(
+                    'E25', szint, erintett, talalat_sorok[0],
+                    '%s: a dontes elotti allapot (%s) %d helyen%s'
+                    % (forras, d['tilos_minta'], len(talalat_sorok),
+                       ' -- atmeneti jelolessel' if van_atm else '')
+                ))
+        # (b) regota allo tovabbvivo feladat
+        tv = d.get('tovabbvivo_feladat', '').strip()
+        if tv:
+            if allapotok is None:
+                allapotok = _e25_feladat_allapotok()
+            allapot = allapotok.get(tv)
+            if allapot in E25_NYITOTT_ALLAPOTOK and (ma - datum).days > E25_HATARNAP:
+                talalatok.append(Talalat(
+                    'E25', 'FIGYELMEZTETES', E25_TABLA, sorszam,
+                    '%s: a #%s tovabbvivo feladat allapota %s, a dontes (%s) ota %d nap telt el'
+                    % (forras, tv, allapot, d['datum'], (ma - datum).days)
+                ))
+    return talalatok
+
 
 SZABALYOK_FUGGVENYEI = {
     'E2': e2_ellenorizve_proveniencia,
@@ -912,4 +1052,5 @@ SZABALYOK_FUGGVENYEI = {
     'E14': e14_jelentes_szoveg_angol,
     'E15': e15_szpa_idezet_hossz,
     'E19': e19_szotari_forditas_hiany,
+    'E25': e25_dontes_atvezetes,
 }

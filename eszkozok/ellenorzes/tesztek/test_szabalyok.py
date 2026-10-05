@@ -587,5 +587,130 @@ class E19Teszt(unittest.TestCase):
         self.assertEqual(len(t), 1)
 
 
+class E25Teszt(unittest.TestCase):
+    """F51 K3: a dontes_hatas.tsv alapu atvezetes-ellenorzes (E25)."""
+
+    FEJ = ("dontes_forras\tdatum\terintett_fajl\ttilos_minta\tatmeneti_jeloles"
+           "\ttovabbvivo_feladat\tmegjegyzes\n")
+    FORRAS = "# dontesek\n| D34 | motivumonkent egy forras |\n"
+
+    def _sor(self, erintett='ERINTETT.md', minta='regi allapot', atm='', tv='11',
+             forras='FORRAS_BRIEF.md#D34', datum='2026-09-30'):
+        return '\t'.join([forras, datum, erintett, minta, atm, tv, 'teszt']) + '\n'
+
+    def _futtat(self, tabla_sorok, erintett_szoveg="regi allapot itt\n", brief_allapot='brief_kell',
+                ma=None, extra=None, forras_szoveg=None):
+        import datetime
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'adat/dontes_hatas.tsv', "# komment\n" + self.FEJ + ''.join(tabla_sorok))
+            _ir(gy, 'FORRAS_BRIEF.md', self.FORRAS if forras_szoveg is None else forras_szoveg)
+            _ir(gy, 'ERINTETT.md', erintett_szoveg)
+            _ir(gy, 'F11_X_BRIEF.md', "---\nfeladat: 11\nallapot: %s\n---\n" % brief_allapot)
+            for rel, szoveg in (extra or {}).items():
+                _ir(gy, rel, szoveg)
+            regi = SZ.MA
+            SZ.MA = ma or datetime.date(2026, 10, 5)
+            try:
+                return SZ.e25_dontes_atvezetes(['__TELJES__'])
+            finally:
+                SZ.MA = regi
+
+    def test_negativ_nincs_regi_allapot(self):
+        t = self._futtat([self._sor()], erintett_szoveg="uj allapot\n")
+        self.assertEqual(t, [])
+
+    def test_pozitiv_regi_allapot_figyelmeztetes(self):
+        t = self._futtat([self._sor()])
+        self.assertEqual(len(t), 1)
+        self.assertEqual(t[0].szabaly, 'E25')
+        self.assertEqual(t[0].szint, 'FIGYELMEZTETES')
+        self.assertEqual((t[0].fajl, t[0].sor), ('ERINTETT.md', 1))
+
+    def test_atmeneti_jeloles_jelentes(self):
+        t = self._futtat([self._sor(atm='Atmenet')], erintett_szoveg="regi allapot\nAtmenet (D34)\n")
+        self.assertEqual(len(t), 1)
+        self.assertEqual(t[0].szint, 'JELENTES')
+
+    def test_atmeneti_jeloles_hianyzik_a_fajlbol(self):
+        t = self._futtat([self._sor(atm='Atmenet')])
+        self.assertEqual(t[0].szint, 'FIGYELMEZTETES')
+
+    def test_archiv_fajl_kimarad(self):
+        archiv = "---\ntipus: archiv\n---\nregi allapot\n"
+        t = self._futtat([self._sor()], erintett_szoveg=archiv)
+        self.assertEqual(t, [])
+
+    def test_nem_archiv_tipus_nem_marad_ki(self):
+        t = self._futtat([self._sor()], erintett_szoveg="---\ntipus: feladat\n---\nregi allapot\n")
+        self.assertEqual(len(t), 1)
+
+    def test_b_regota_all_a_tovabbvivo(self):
+        import datetime
+        t = self._futtat([self._sor()], erintett_szoveg="uj\n", ma=datetime.date(2026, 10, 15))
+        self.assertEqual(len(t), 1)
+        self.assertEqual(t[0].szint, 'FIGYELMEZTETES')
+        self.assertEqual(t[0].fajl, 'adat/dontes_hatas.tsv')
+
+    def test_b_pont_14_nap_meg_nem(self):
+        import datetime
+        t = self._futtat([self._sor()], erintett_szoveg="uj\n", ma=datetime.date(2026, 10, 14))
+        self.assertEqual(t, [])
+
+    def test_b_lezart_tovabbvivo_nem_szol(self):
+        import datetime
+        t = self._futtat([self._sor()], erintett_szoveg="uj\n", brief_allapot='lezarva',
+                         ma=datetime.date(2026, 12, 1))
+        self.assertEqual(t, [])
+
+    def test_b_ures_tovabbvivo_nem_szol(self):
+        import datetime
+        t = self._futtat([self._sor(tv='')], erintett_szoveg="uj\n", ma=datetime.date(2026, 12, 1))
+        self.assertEqual(t, [])
+
+    def test_c_hianyzo_forrasfajl_hiba(self):
+        t = self._futtat([self._sor(forras='NINCS_BRIEF.md#D34')], erintett_szoveg="uj\n")
+        self.assertEqual([x.szint for x in t], ['HIBA'])
+
+    def test_c_hianyzo_azonosito_hiba(self):
+        t = self._futtat([self._sor(forras='FORRAS_BRIEF.md#D99')], erintett_szoveg="uj\n")
+        self.assertEqual([x.szint for x in t], ['HIBA'])
+
+    def test_c_hianyzo_erintett_fajl_hiba(self):
+        t = self._futtat([self._sor(erintett='NINCS.md')])
+        self.assertEqual([x.szint for x in t], ['HIBA'])
+
+    def test_c_hibas_regex_hiba(self):
+        t = self._futtat([self._sor(minta='(nyitott')])
+        self.assertEqual([x.szint for x in t], ['HIBA'])
+
+    def test_c_hibas_datum_hiba(self):
+        t = self._futtat([self._sor(datum='tegnap')])
+        self.assertEqual([x.szint for x in t], ['HIBA'])
+
+    def test_futtat_teljes_modban_jelentes_es_nincs_hiba(self):
+        import futtat as FU
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'adat/dontes_hatas.tsv', "# k\n" + self.FEJ + self._sor())
+            _ir(gy, 'FORRAS_BRIEF.md', self.FORRAS)
+            _ir(gy, 'ERINTETT.md', "regi allapot\n")
+            eredmeny = FU.fut([], True)
+        self.assertEqual(len(eredmeny['E25']), 1)
+        self.assertEqual(eredmeny['E25'][0].szint, 'JELENTES')  # --teljes: minden JELENTES
+
+    def test_futtat_valtozott_modban_megorzi_a_szintet(self):
+        import futtat as FU
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'adat/dontes_hatas.tsv', "# k\n" + self.FEJ + self._sor())
+            _ir(gy, 'FORRAS_BRIEF.md', self.FORRAS)
+            _ir(gy, 'ERINTETT.md', "regi allapot\n")
+            eredmeny = FU.fut(['ERINTETT.md'], False)
+        self.assertEqual([x.szint for x in eredmeny['E25']], ['FIGYELMEZTETES'])
+
+    def test_valodi_tabla_nincs_hiba(self):
+        # a repo tenyleges dontes_hatas.tsv-je: nulla HIBA (a jelenlegi main-en)
+        t = SZ.e25_dontes_atvezetes(['__TELJES__'])
+        self.assertEqual([x for x in t if x.szint == 'HIBA'], [])
+
+
 if __name__ == '__main__':
     unittest.main()

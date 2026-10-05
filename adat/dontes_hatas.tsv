@@ -1,0 +1,9 @@
+# Döntések átvezetésének nyilvántartása. Séma: adat/SEMA.md 2.21 (F51, FELADATOK #51, DT-F51-5).
+# Kulcs: dontes_forras + erintett_fajl + tilos_minta (a fájl a kulcs része: a D-számok fájlonként újraindulnak).
+# A tilos_minta a döntés ELŐTTI állapot regexe; csak egyértelműen felismerhető régi állapot kerül ide. Olvasás: split('	'), a csv modul tilos.
+# Az E25 a `tipus: archiv` fejlécű fájlokat általánosan kihagyja (archívumot nem szerkesztünk, a történeti állapot nem hiba); ezért nincs sor a RENDER_BRIEF.md-re.
+# proveniencia: scope=F26_EGYFORRAS_NAPLO_BRIEF.md D34 + az érintett fájlok szövege | forras=manual | ts=2026-10-05
+dontes_forras	datum	erintett_fajl	tilos_minta	atmeneti_jeloles	tovabbvivo_feladat	megjegyzes
+F26_EGYFORRAS_NAPLO_BRIEF.md#D34	2026-09-30	CLAUDE.md	\[ID\]_TORZSCIKK\.md	Átmenet \(D34\)	11	rétegtábla: a törzscikk generált kimenetként; a CLAUDE.md maga átmeneti jelölést visel (#26), ezért csak JELENTES, amíg a #11 le nem zárul
+F26_EGYFORRAS_NAPLO_BRIEF.md#D34	2026-09-30	MUNKAMENET.md	^\| C1 \| lexikon TUDOMÁNYOS szakaszainak \+ a törzscikk generálása		11	C1 sor (ma a 67.): a törzscikk-generálás mint munkamenet-lépés (D34: a törzscikk megszűnik)
+F26_EGYFORRAS_NAPLO_BRIEF.md#D34	2026-09-30	MUNKAMENET.md	a \*\*törzscikk\*\* \(`lexikon/		11	a törzscikk mint külön generált kimenet bemutatása (ma a 181. sor; D34: megszűnik a #11-ben)
