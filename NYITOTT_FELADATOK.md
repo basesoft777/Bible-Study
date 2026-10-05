@@ -542,6 +542,7 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   (1) A DT18 (#18 Nave) a feladatszámból képzett hibás szám volt; DT29-re számozva (`DONTESEK.md`). A DT19 sora (`#19 KJV/ASV-import`) szintén a feladatszám alakját viseli, és a régi F21-pilot-kimenetekben a „DT19” az F21 sorára (ma DT-F21h) is utal: ütközés. Átszámozását az F30 nem végezte el (nem a brief tárgya); az orkesztrátor döntse el.
   (2) A lezárt ellenőri jelentések (`naplok/ELLENOR_*.md`) és a `naplok/F16_zaras.md` a DT18-at változatlanul tartalmazza (a DONTESEK-sor megjegyzése jelzi).
   (3) 17 árva helyőrző (hivatkozás definíciós sor nélkül; pl. DT-F16, DT-F17, DT-F22, DT-F28, N-F38a–c): a `szamkiosztas` nem számozza, mert nincs hová; a lezárt döntések helyőrzőinek rendezése nyitott.
+  (5) Egyeztetett eltérés (F30): a brief `ir` listája az `eszkozok/ellenorzes/futtat.py`-val, a `eszkozok/ellenorzes/tesztek/test_szamkiosztas.py`-val, az `eszkozok/szamkiosztas_oroklott.txt`-vel és a `naplok/F30_*` fájlokkal bővül (az E26 bekötése, tesztje, az örökölt lista). Az `ir` listán kívül csak a DT18→DT29 csere történt (F18 brief, `adat/SEMA.md`, `adat/datasetek.tsv`, `naplok/F18_*`); a base..head diff ezt igazolja.
   (4) A `szamkiosztas.yml` és az E26 az `eszkozok/ellenorzes/`-t és a `.github/`-ot érinti: a PR címének `[ELLENŐRZŐ]` előtaggal kell kezdődnie (E16).
 
 - **N-F34b — a TAHOT-kivonat „nem teljes” állítás elavult (CLAUDE.md,

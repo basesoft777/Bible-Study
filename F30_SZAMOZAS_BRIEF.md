@@ -5,14 +5,15 @@ kod: SZAMOZAS
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: dontesre_var
+allapot: fut
 ag: claude/szamozas
 ad: az ágak nem foglalnak végleges DT/N-számot; a párhuzamos merge-ek nem ütköznek sorszámon; a main-en a számokat egy Action osztja ki
-kovetkezo: "Te: döntsd el a DT-F30a-t (DONTESEK.md): az 1 maradjon-e az örökölt helyőrzők kiosztása nélkül, vagy tömeges kiosztás kell; utána a független ellenőrzés és a draft PR ([ELLENŐRZŐ] előtaggal, E16)"
+kovetkezo: "zárás: a független ellenőrzés (naplok/ELLENOR_F30.md), majd draft PR [ELLENŐRZŐ] előtaggal"
 fugg: [8, 16, 17]
 olvas: [DONTESEK.md, NYITOTT_FELADATOK.md, FELADATOK.md, CLAUDE.md, .github/workflows/, eszkozok/feladatok.py]
-ir: [.github/workflows/szamkiosztas.yml, eszkozok/szamkiosztas.py, eszkozok/ellenorzes/szabalyok.py, DONTESEK.md, NYITOTT_FELADATOK.md, CLAUDE.md, BRIEF_SABLON.md]
+ir: [.github/workflows/szamkiosztas.yml, eszkozok/szamkiosztas.py, eszkozok/ellenorzes/szabalyok.py, DONTESEK.md, NYITOTT_FELADATOK.md, CLAUDE.md, BRIEF_SABLON.md, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/test_szamkiosztas.py, eszkozok/szamkiosztas_oroklott.txt, naplok/F30_szamozas_naplo.md, naplok/F30_zaras.md]
 nem_fugg: [22]
+lezarva_osszegzes: "számkiosztás merge-kor: szamkiosztas.py + szamkiosztas.yml Action, CI E26, DT18 → DT29, 99 örökölt helyőrző kihagyva (DT-F30a, 1. opció), N-F30a; zárás naplok/F30_zaras.md"
 ---
 
 # Döntés- és N-számok kiosztása merge-kor

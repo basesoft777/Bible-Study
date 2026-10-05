@@ -50,3 +50,7 @@ A brief SZ.6-a PR-os próbát ír; a megbízás tiltotta a PR-nyitást, ezért a
 Az Action élesben az első valódi merge-kor fut. Az első futásnak a `DT-F30a`-t `DT30`-ra és az `N-F30a`-t `N47`-re kell számoznia (ha addig más tétel nem érkezik), a 99 örökölt helyőrzőt változatlanul hagyva.
 
 Nem ellenőrzött lokálisan: a workflow YAML GitHub-oldali futása (App-token, `git push` a ruleset mögött) — ezt csak az első main-futás igazolja.
+
+## DT-F30a döntése (2026-10-05, felhasználó)
+
+1. opció most: az örökölt 99 helyőrző marad, csak az újak kapnak számot; a 3. később, lépésenként; a 2. (tömeges kiosztás) nem. A `szamkiosztas_oroklott.txt` ezért marad. Az `ir` listán kívüli diff ellenőrzése (base..head): az F18 brief, `adat/SEMA.md`, `adat/datasetek.tsv`, `naplok/F18_import_naplo.md`, `naplok/F18_zaras.md` sorvég-normalizálva pontosan a `DT18→DT29` cserével egyezik (más tartalmi módosítás nincs).
