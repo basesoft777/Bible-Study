@@ -86,7 +86,7 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   következő könyvtáras célnál megismétlődne. Eldöntendő: cél-képesség leíró
   (egyfájlos/könyvtáras, élesíthető, saját jelentés) váltsa-e ki mindhármat.
 
-- **N9 — A licenc-besorolás kettős forrása.** *(ÚJ, F6 zárás után, 2026.09.20)*
+- **N9 — A licenc-besorolás kettős forrása. LEZÁRVA (F42.7, 2026.10.05; DT-F42g).** *(ÚJ, F6 zárás után, 2026.09.20)*
   Az F6.5b után a besorolás két helyen áll: a `lexikon_general.py`
   licenc-konstansában és a `TISZTAZATLAN_SZOTARAK` halmazban (ez utóbbi most
   üres, magyarázó kommenttel). Egy új, tisztázatlan licencű forrásnál a kettő
@@ -655,6 +655,10 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 <!-- GENERÁLT-VÉGE: nyitott -->
 
 ## Lezárva
+### 2026.10.05 (F42_FORRASKIVEZETES_BRIEF.md — N9 lezárva, DT-F42g):
+* N9 — a licenc-besorolás kettős forrása. **LEZÁRVA (F42.7, 2026.10.05; felhasználó, DT-F42g):** a `lexikon_general.py` `LICENC`-konstansa és a `TISZTAZATLAN_SZOTARAK` megszűnt; a licenc-állapot és a rövid címke az `adat/licencek.tsv`-ből jön (új, zárt `cimke` oszlop, SEMA 2.19); hiányzó sor vagy üres címke hiba, alapértelmezett érték nincs. Várt render-változás: az LSJ-címke CC BY-SA 3.0 → 4.0 (Perseus nyilatkozata).
+  *Proveniencia: scope=adat/licencek.tsv + eszkozok/lexikon_general.py | forras=general.py --cel lexikon (a 7 érintetlen oldal renderje bájtra azonos a változtatás előtti renderrel) | ts=2026-10-05.*
+
 ### 2026.10.04 (F43_LXX_BRIDGE_BRIEF.md — N29 lezárva, a brief D7 döntése szerint):
 * N29 — a teljes KJV/ASV-forrás keresése (FJ-ellenőrzés, 2026.09.25). **LEZÁRVA (F43, 2026.10.04; felhasználó):** a KJV-ág teljesült az F19-ben (`konkordancia/KJV_Strongs_teljes.tsv`, 349 308 sor, 31 099 címkés vers, Public Domain; állapot: `importált, javaslat`). Az ASV-ág a D7 szerint megszűnik: az ASV-t nem importáljuk (felhasználó, 2026.10.02), mert a szerepmátrix 9. szerepét a KJV tölti be, és az ASV-nek nincs szerepe. Az eBible-ASV forráshibás volt (F19.7, DT19). Ha mégis igény lenne rá, a megnevezett pótlás a luvlylavnder ASV-Strongs (CC0, 31 086 vers). *(F19 (#19), DT19; `F43_LXX_BRIDGE_BRIEF.md` D7; `naplok/ELLENOR_F19.md`)*
   *Proveniencia: scope=konkordancia/KJV_Strongs_teljes.tsv | forras=eszkozok/f19_ellenorzes.py | ts=2026-09-30.*
