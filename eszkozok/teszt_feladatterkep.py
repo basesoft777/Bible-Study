@@ -235,6 +235,15 @@ class TesztHtml(FixtureAlap):
         self.assertIn('class="sep"', h)
         self.assertIn('const kov = D.sor[i+1]', h)           # az utolso kartya utan nincs
 
+    def test_terkep_nagyitas_gombok(self):
+        """F53.3 (brief 4.4): − / + / Illesztés a terkep felett; az SVG szelesseget a lap allitja."""
+        h = T.html_szoveg(self.adat())
+        for azon in ('nagyit-ki', 'nagyit-be', 'nagyit-illeszt', 'nagyit-ertek'):
+            self.assertIn('id="%s"' % azon, h)
+        self.assertLess(h.index('id="nagyit-ki"'), h.index('class="mapbox"'))
+        self.assertIn('.mapbox svg{max-width:none!important', h)
+        self.assertIn('hely.innerHTML=r.svg;alkalmaz();', h)  # ujrarajzolas utan is ervenyes
+
     def _md_js(self, bemenet):
         """A lap md() fuggvenye node-ban (ha nincs node: kihagyva)."""
         import json

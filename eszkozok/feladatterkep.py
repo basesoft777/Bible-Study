@@ -703,6 +703,11 @@ section{display:grid;gap:14px;min-width:0}
 /* térkép */
 .mapbox{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px;overflow-x:auto}
 .legend{display:flex;flex-wrap:wrap;gap:6px}
+.nagyitas{display:flex;align-items:center;gap:6px}
+.nagyitas button{font:500 13px var(--f-body);background:var(--surface);color:var(--ink);border:1px solid var(--rule);border-radius:999px;padding:4px 12px;cursor:pointer;min-width:34px}
+.nagyitas button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.nagyitas output{font:500 12px var(--f-mono);color:var(--muted);min-width:44px}
+.mapbox svg{max-width:none!important;height:auto;display:block}
 .wrap{zoom:1.1}
 
 /* döntések */
@@ -772,6 +777,12 @@ header{position:relative}
     <p>A nyíl a függőtől a feltételig mutat. Kész feladatok nem szerepelnek; a döntések (DT) hatszögek. Forrás: <span class="mono">feladatok.py fuggesek</span> + a MUNKATERV függései + a DONTESEK „Feladat” oszlopa.</p>
   </div>
   <div class="legend" id="legend"></div>
+  <div class="nagyitas" role="group" aria-label="A térkép nagyítása">
+    <button type="button" id="nagyit-ki" aria-label="Kicsinyítés">−</button>
+    <button type="button" id="nagyit-be" aria-label="Nagyítás">+</button>
+    <button type="button" id="nagyit-illeszt">Illesztés</button>
+    <output id="nagyit-ertek" aria-live="polite"></output>
+  </div>
   <div class="mapbox">
 <pre class="terkep-forras">
 @@TERKEP@@
@@ -875,8 +886,18 @@ window.rajzolTerkep=function(){
    primaryBorderColor:pal.border,nodeBorder:pal.border,edgeLabelBackground:bg,darkMode:dark,fontSize:"10px",
    fontFamily:getComputedStyle(document.body).fontFamily},
   themeCSS:".node rect, .node circle, .node polygon, .node path { stroke-width: 2px; }"});
- mermaid.render("terkep-"+(n++),src).then(function(r){hely.innerHTML=r.svg;},function(){pre.style.display="";});
+ mermaid.render("terkep-"+(n++),src).then(function(r){hely.innerHTML=r.svg;alkalmaz();},function(){pre.style.display="";});
 };
+/* Nagyítás (F53.3, brief 4.4): − / + / Illesztés; alapállás a dobozba illesztés, témaváltáskor a választott arány megmarad */
+var arany=null, LEPES=1.25, MAX=3;
+function svgSzel(){var s=hely.querySelector("svg"); if(!s) return 0; var vb=s.viewBox&&s.viewBox.baseVal; return vb&&vb.width?vb.width:s.getBoundingClientRect().width;}
+function illesztes(){var w=svgSzel(), box=hely.parentNode; return w?Math.min(1,(box.clientWidth-24)/w):1;}
+function alkalmaz(){var s=hely.querySelector("svg"), w=svgSzel(); if(!s||!w) return; if(arany===null) arany=illesztes();
+ s.style.width=Math.round(w*arany)+"px"; s.removeAttribute("height"); document.getElementById("nagyit-ertek").textContent=Math.round(arany*100)+"%";}
+function allit(a){var min=Math.min(illesztes(),1); arany=Math.max(min,Math.min(MAX,a)); alkalmaz();}
+document.getElementById("nagyit-ki").onclick=function(){allit((arany||1)/LEPES);};
+document.getElementById("nagyit-be").onclick=function(){allit((arany||1)*LEPES);};
+document.getElementById("nagyit-illeszt").onclick=function(){allit(illesztes());};
 window.rajzolTerkep();
 })();
 </script>
