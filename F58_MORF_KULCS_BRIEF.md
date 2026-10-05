@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: lezarva
+pr: 208
 ag: claude/morf-kulcs
 ad: egy nyílt licencű forrásból importált, forrás- és licencsorral ellátott jelkulcs-tábla (adat/morf_kulcs_heber.tsv), amely a Macula_heber morfológiai kódjainak minden pozícióját magyarul feloldja; a feloldó függvény ebből a táblából dolgozik, emlékezetből írt leképezés nincs
 kovetkezo: fuggetlen-ellenor (naplok/ELLENOR_MORF_KULCS.md), majd az orkesztrátor zárása (draft PR); a ⛔ (DT-F58a) eldöntve 🟢
