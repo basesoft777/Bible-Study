@@ -336,8 +336,8 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   **LEZÁRVA (F18, 2026.09.30, javaslat-állapotban):** DT5 szerint a `basokant/nave` nyers szövege
   importálva saját parszolóval (`konkordancia/Nave_basokant.tsv`, 85 246 sor, 5 322 téma); a `theonize`
   nem került be. Napló: `naplok/F18_import_naplo.md`, `naplok/F18_licenc.md`. Nyitva marad: teljes
-  független kiadás-összevetés (letöltés-engedéllyel) — l. DONTESEK DT18.
-- **N45 — Nave_basokant: maradék jelöletlen hivatkozás-töredékek.** *(ÚJ, F18 4. ellenőri kör, 2026.09.30)* Jelöletlen, számmal nyilvántartott maradék a `konkordancia/Nave_basokant.tsv`-ben: (a) `REVERENCEGe 35:5` (NAVE-4148): az 1Móz 35:5 nem lett sor, a töredék 153 sor `cimke` mezőjébe öröklődik; (b) 19 könyv nélküli folytató-hivatkozás `</ref>; N:N.` alakban (nyers forrás 20238 ×2, 20494 ×16, 21842), 22 sor `cimke`-je, egyik sem lett sor; (c) SATYR `utotag:34:14.` (Ézs 34:14); (d) 8 `with N` fejezetszám-folytatás (TSV-fájlsor 5263, 30166, 37102, 38336, 38737, 38741, 52628, 73970). Javaslat: külön javító menet; az import addig `javaslat`-állapotú. Napló: `naplok/ELLENOR_F18.md` 4. kör, DT18.
+  független kiadás-összevetés (letöltés-engedéllyel) — l. DONTESEK DT29.
+- **N45 — Nave_basokant: maradék jelöletlen hivatkozás-töredékek.** *(ÚJ, F18 4. ellenőri kör, 2026.09.30)* Jelöletlen, számmal nyilvántartott maradék a `konkordancia/Nave_basokant.tsv`-ben: (a) `REVERENCEGe 35:5` (NAVE-4148): az 1Móz 35:5 nem lett sor, a töredék 153 sor `cimke` mezőjébe öröklődik; (b) 19 könyv nélküli folytató-hivatkozás `</ref>; N:N.` alakban (nyers forrás 20238 ×2, 20494 ×16, 21842), 22 sor `cimke`-je, egyik sem lett sor; (c) SATYR `utotag:34:14.` (Ézs 34:14); (d) 8 `with N` fejezetszám-folytatás (TSV-fájlsor 5263, 30166, 37102, 38336, 38737, 38741, 52628, 73970). Javaslat: külön javító menet; az import addig `javaslat`-állapotú. Napló: `naplok/ELLENOR_F18.md` 4. kör, DT29.
 
 - **N28 — az FJ2 versszámozási következtetései felülírva.** *(ÚJ, FJ-ellenőrzés, 2026.09.25)*
   A `F01_KAROLI_KULCS_BRIEF.md` 0. pontja szerint nem tartható: a Jón 2:3 → LXX 2:4 javaslat, a
@@ -538,6 +538,13 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
   HEAD-en is fennállt (az F46 változtatásai nélkül ugyanígy bukik), tehát nem az F46 okozta. Teendő: az
   ok felmérése (a H5674 sora és a zárás-szkript idempotencia-tesztje) és javítás, külön menetben.
   *Helyőrző: a végleges N-számot az Action osztja ki.*
+- **N47 — a feladatszámból képzett régi DT-számok és az árva helyőrzők.** *(ÚJ, F30 (#30), SZ.0/SZ.4, 2026.10.05)*
+  (1) A DT18 (#18 Nave) a feladatszámból képzett hibás szám volt; DT29-re számozva (`DONTESEK.md`). A DT19 sora (`#19 KJV/ASV-import`) szintén a feladatszám alakját viseli, és a régi F21-pilot-kimenetekben a „DT19” az F21 sorára (ma DT-F21h) is utal: ütközés. Átszámozását az F30 nem végezte el (nem a brief tárgya); az orkesztrátor döntse el.
+  (2) A lezárt ellenőri jelentések (`naplok/ELLENOR_*.md`) és a `naplok/F16_zaras.md` a DT18-at változatlanul tartalmazza (a DONTESEK-sor megjegyzése jelzi).
+  (3) 17 árva helyőrző (hivatkozás definíciós sor nélkül; pl. DT-F16, DT-F17, DT-F22, DT-F28, N-F38a–c): a `szamkiosztas` nem számozza, mert nincs hová; a lezárt döntések helyőrzőinek rendezése nyitott.
+  (5) Egyeztetett eltérés (F30): a brief `ir` listája az `eszkozok/ellenorzes/futtat.py`-val, a `eszkozok/ellenorzes/tesztek/test_szamkiosztas.py`-val, az `eszkozok/szamkiosztas_oroklott.txt`-vel és a `naplok/F30_*` fájlokkal bővül (az E26 bekötése, tesztje, az örökölt lista). Az `ir` listán kívül csak a DT18→DT29 csere történt (F18 brief, `adat/SEMA.md`, `adat/datasetek.tsv`, `naplok/F18_*`); a base..head diff ezt igazolja.
+  (4) A `szamkiosztas.yml` és az E26 az `eszkozok/ellenorzes/`-t és a `.github/`-ot érinti: a PR címének `[ELLENŐRZŐ]` előtaggal kell kezdődnie (E16).
+
 - **N-F34b — a TAHOT-kivonat „nem teljes” állítás elavult (CLAUDE.md,
   `konkordancia/README.md`); a valódi hiány kicsi.** *(ÚJ, F34 (#34), DT-F34b 3. pont)*
   A `konkordancia/TAHOT_TAGNT_README.md` (195., 316., 320. sor) szerint az 1Móz 32,

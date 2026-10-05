@@ -687,10 +687,10 @@ adatosítva van-e a projektben.
 | Mező | Típus | Kötelező | Leírás |
 |---|---|---|---|
 | `nyelv` | zárt | ✔ | `gorog` \| `heber`. |
-| `sorrend` | egész szám | ✔ | 1–10 és 12, a szerep-lista rögzített sorrendje (azonos mindkét nyelven); a 11-es érték nincs kiosztva. A 12. a „Tematikus index” (Nave, F18, DT18 (j)); az első 10 az eredeti szerepkészlet. |
+| `sorrend` | egész szám | ✔ | 1–10 és 12, a szerep-lista rögzített sorrendje (azonos mindkét nyelven); a 11-es érték nincs kiosztva. A 12. a „Tematikus index” (Nave, F18, DT29 (j)); az első 10 az eredeti szerepkészlet. |
 | `szerep` | szabad szöveg | ✔ | A szerep megnevezése (pl. „Alapjelentés", „LXX-híd"). |
 | `forras` | szabad szöveg | ✔ | A szerepet ma (vagy célként) kitöltő forrás megnevezése. |
-| `allapot` | zárt | ✔ | `adatosítva` \| `nincs adatosítva` \| `nincs forrás` \| `javaslat` (F05_SZOTAR_BRIEF.md D27, S1.6; `javaslat`: F18.12, DT18) — a RENDER_BRIEF.md G6 záró bekezdése szerint: adatosítva a TBESG, TBESH, Thayer, BDB, UBS DNTG (a meglévő import), SDBH domének, LSJ és az LXX-híd (mindkét irány); a többi (Girdlestone, UBS DBH glossza+referencia, Mounce-kiegészítő önmagában, SECE, BDB-etimológia, kiejtés) a `F05_SZOTAR_BRIEF.md` tárgya. **`nincs forrás`** (D27): a szerepnek az adott nyelven nincs a D17 forrásszabálynak megfelelő forrása — VÉGLEGES állapot, nem pótlandó hiány (szemben a `nincs adatosítva`-val, amely ígéretet sugallna); pl. a görög 3. szerep, ha a Translation Words elutasításra kerül (S0b.2 küszöbe alatt). **`javaslat`** (F18.12): az adat a repóban van, de teljessége/helyessége független igazolással nincs megerősítve (ma: a 12. „Tematikus index” szerep, a Nave-import, l. `naplok/F18_import_naplo.md`); a generátorok ezt nem adatosítottnak kezelik (csak az `adatosítva` érték számít adatosítottnak). |
+| `allapot` | zárt | ✔ | `adatosítva` \| `nincs adatosítva` \| `nincs forrás` \| `javaslat` (F05_SZOTAR_BRIEF.md D27, S1.6; `javaslat`: F18.12, DT29) — a RENDER_BRIEF.md G6 záró bekezdése szerint: adatosítva a TBESG, TBESH, Thayer, BDB, UBS DNTG (a meglévő import), SDBH domének, LSJ és az LXX-híd (mindkét irány); a többi (Girdlestone, UBS DBH glossza+referencia, Mounce-kiegészítő önmagában, SECE, BDB-etimológia, kiejtés) a `F05_SZOTAR_BRIEF.md` tárgya. **`nincs forrás`** (D27): a szerepnek az adott nyelven nincs a D17 forrásszabálynak megfelelő forrása — VÉGLEGES állapot, nem pótlandó hiány (szemben a `nincs adatosítva`-val, amely ígéretet sugallna); pl. a görög 3. szerep, ha a Translation Words elutasításra kerül (S0b.2 küszöbe alatt). **`javaslat`** (F18.12): az adat a repóban van, de teljessége/helyessége független igazolással nincs megerősítve (ma: a 12. „Tematikus index” szerep, a Nave-import, l. `naplok/F18_import_naplo.md`); a generátorok ezt nem adatosítottnak kezelik (csak az `adatosítva` érték számít adatosítottnak). |
 
 A törzscikk (`_TORZSCIKK.md`) 5. szakaszának szerep-mátrixa ebből a táblából
 épül; a lefedettségi mátrix (szavanként) a belső adatmodellből (G5).
@@ -997,6 +997,35 @@ felismerhető. Ami nem az, azt az ügynök jelenti (nem a tábla dolga). Egy sor
 rögzítésével egy menetben; a szabály nem javít, nem ír vissza.
 
 ---
+
+### 2.22 `morf_kulcs_heber.tsv` és `morf_nyelv_aramai.tsv` — héber morfológiai jelkulcs (F58, FELADATOK #58, DT35)
+
+A `konkordancia/Macula_heber_*.tsv` `morf` oszlopának kódjait (OSHB-kódolás, nyelvjelölő nélkül) oldja fel magyarra.
+**Forrás és licenc:** `adat/kulso/oshb_HebrewMorphologyCodes.html` (openscriptures/morphhb@3d15126fb1ef74867fc1434be1942e837932691f,
+`parsing/HebrewMorphologyCodes.html`), **CC BY 4.0**; a szó szerinti nyilatkozat és a kötelező megjelölés:
+`adat/kulso/morf_kulcs_LICENC.txt` és `adat/licencek.tsv` (`morf_kulcs_heber`, `morf_nyelv_aramai` sor). Az ETCBC `Morphology.lexicon` (CC BY-NC) nem forrás.
+Mindkét tábla **generált** (`eszkozok/morf_kulcs_import.py`, `eszkozok/morf_nyelv_kivonat.py`), kézzel nem szerkeszthető. Olvasás `split('\t')`; fejlécsorok `#`-tel.
+
+**`morf_kulcs_heber.tsv`** — kulcs: (`pozicio`, `nyelv`, `kod`).
+
+| Mező | Tartalom |
+|---|---|
+| `pozicio` | `szofaj` · `szerkezet` (a szófaj pozícióinak sorrendje, a forrás szófaj-táblázatából: `jelentes_forras` = pl. `type > gender > number > state`) · `igetorzs` · `igetipus` · `tipus_A/N/P/R/S/T` (a szófaj típusa) · `szemely` · `nem` · `szam` · `allapot` · `nyelv_jel` (a forrás `H`/`A` jele) · `helykitolto` (az `x`) |
+| `nyelv` | `H` (csak héber), `A` (csak arámi), `*` (mindkettő). Csak az `igetorzs` nyelvfüggő: a törzsbetűk jelentése héberben és arámiban más |
+| `kod` | a jel (egy karakter; a `szerkezet` sorban a szófaj betűje) |
+| `jelentes_forras` | a forrás saját megnevezése, szó szerint (angol) |
+| `jelentes_hu` | a `jelentes_forras` fordítása a projekt szóhasználatával; **magyarázat nincs benne** |
+| `forras` | a forrás pontos azonosítója (repó@commit, fájl, licenc) |
+| `proveniencia` | `scope=… | forras=… | ts=…` (CLAUDE.md 1. szabály) |
+
+Szabályok: (1) a feloldó (`eszkozok/morf_feloldas.py`) kizárólag ebből a táblából dolgozik; (2) a Macula-kód nyelvjelölőt **nem** hordoz, ezért
+a szó nyelvét a `morf_nyelv_aramai.tsv` adja; nyelv nélkül az `igetorzs` kétértelmű vagy nyelvfüggő, és a kimenet ezt jelzi; (3) az `allapot` (feloldás eredménye) értékei: `teljes` · `helykitoltovel` · `ketertelmu` (nyelv nélkül több olvasat; a `ketertelmu` jelző mező is megmarad; arámi nyelv-kivonattal hívva egyértelmű, tehát `teljes`) · `reszleges` · `ismeretlen`; sorrend: hiányzó jel → `reszleges`, helykitöltő → `helykitoltovel`, kétértelmű jelző → `ketertelmu`, egyébként `teljes` (DT36); (3b) az `x` a forrás
+szerinti helykitöltő („ismeretlen vagy szükségtelen érték”), a feloldás állapota ilyenkor `helykitoltovel`, nem `teljes`; (4) a forrás a nemet
+`common (verb)` / `both (noun)` megnevezéssel adja, a magyar oszlop ezt szó szerint tükrözi akkor is, ha a névmásnál zavaró (`Pdxcp`).
+
+**`morf_nyelv_aramai.tsv`** — kulcs: `xml_id` (a Macula-szó azonosítója, `Macula_heber_*.tsv` `xml_id`). Oszlopok: `xml_id`, `ref`, `morf`, `nyelv` (mindig `A`).
+Csak az arámi szavak szerepelnek (7 549 morféma, a `w@lang="A"` a Macula lowfat XML-ben); ami nincs a táblában, az a Macula szerint héber (`lang="H"`, 468 362 szó).
+Forrás: Macula Hebrew @47db250b, CC BY 4.0 (Biblica, Inc). A `morf` oszlop minden sorban egyezik a `Macula_heber_*.tsv` értékével (0 eltérés).
 
 ## 3. Integritási szabályok
 

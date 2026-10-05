@@ -6,12 +6,15 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: lezarva
+pr: 209
+ag: claude/bdb-strong-potlas
 ad: a BDB_teljes_unabridged.tsv kiegészül azokkal a BDB-szócikkekkel, amelyek a Strong-kulcsú forrásból (DictBDB.json) kimaradtak, mert a fejlécükből hiányzik a Strong-címke (pl. H4725 mákóm, H0136 Adonaj, H0341 ójév); minden pótolt sor egyértelmű, dokumentált párosításon áll, a többi jelölt marad
-kovetkezo: /kovetkezo; ⛔ az M1 párosítás után
+kovetkezo: "PR #209 merge a felhasználótól; nyitott: DT-F57d (az elvetett arámi szócikkek pótlása, /befogad)"
 olvas: [konkordancia/lexikonok_nyers/BDB.lexicon, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_teljes_unabridged_README.md, konkordancia/_convert_bdb.py, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/OSHL_BDB_igehelyek.tsv, konkordancia/TAHOT_kivonat.tsv, adat/licencek.tsv]
-ir: [konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_strong_potlas.tsv, konkordancia/BDB_teljes_unabridged_README.md, eszkozok/bdb_strong_potlas.py, eszkozok/teszt_bdb_strong_potlas.py]
+ir: [konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_strong_potlas.tsv, konkordancia/BDB_teljes_unabridged_README.md, eszkozok/bdb_strong_potlas.py, eszkozok/teszt_bdb_strong_potlas.py, konkordancia/BDB_strong_alias.tsv, konkordancia/BDB_strong_alias_elvetett.tsv, naplok/BDB_STRONG_POTLAS_M0.md, naplok/BDB_STRONG_POTLAS_M1.md, naplok/BDB_STRONG_POTLAS_zaras.md]
 fugg: []
+lezarva_osszegzes: M0–M2 kész: 3 egyértelmű pár pótolva (H4725, H4123, H0747); 296 másodlagos címke alias-táblában (bdb_id + latin szöveg a testvérsor elején, DT-F57f–i), 233 elvetve (köztük 173 arámi szócikk, jelölt); 843 címke nélküli szócikk jelölt marad; DT-F57d nyitott (arámi pótlás)
 ---
 
 # F57_BDB_STRONG_POTLAS_BRIEF.md — A BDB-tábla hiányzó szócikkei
@@ -96,4 +99,9 @@ Kimenet: `konkordancia/BDB_strong_potlas.tsv`, oszlopai: `bdb_id`, `strong`, `ci
 |---|---|---|---|
 | v1 | 2026-10-05 | Külön feladat; a #38 következő adagja előtt érdemes futtatni, hogy a pótolt szócikkek bekerüljenek a fordítási sorrendbe. | felhasználó |
 | v1 | 2026-10-05 | Csak egyértelmű párosítás kerül a táblába; a többi jelölt marad (CLAUDE.md 3. szabály). | befogadás |
+| v1 | 2026-10-05 | DT-F57a: a 3 egyértelmű pár pótlása, a tipp-sorok jelöltek, az 529 másodlagos címke alias-táblába (nem a táblába); az `ir` bővítése: DT-F57b. | felhasználó (chat) |
+| v1 | 2026-10-05 | DT-F57c: az alias feltétele a `bdb_id`-egyezés (nem nyelvi szűrés), a kiesők külön listára (`BDB_strong_alias_elvetett.tsv`); az arámi pótlás külön feladat (DT-F57d). | felhasználó (chat) |
+| v1 | 2026-10-05 | DT-F57f (a DT-F57e helyébe): az alias szövegfeltétele: a szócikk szövege a testvérsor elején áll (≥ 0,9); a `kezi_ellenorzesre` indok megszűnt; a 3 pótolt sor feje egyszerűsített átírású. | felhasználó (chat) |
+| v1 | 2026-10-05 | DT-F57g (a DT-F57f pontosítása): az összevetésben csak latin betűk számítanak, a több testvéres sorok és a kézi kivételek (H2088, H3071, H3073, H3074) kint maradnak; a tulajdonnév-fej nagybetűs (Arisay). | felhasználó (chat) |
+| v1 | 2026-10-05 | DT-F57h/i: pontosan egy megfelelő testvér az alias célja; a H3071, H3073, H3074 alias; H2088 kint (kifejezes_tarscimke); a kuszob_alatt sorok jelöltek. | felhasználó (chat) |
 | v1 | 2026-10-05 | A #38 sorrendfájlját a feladat nem írja; a #38 következő menete generálja újra. | írásjog (a #38 `ir`-je) |
