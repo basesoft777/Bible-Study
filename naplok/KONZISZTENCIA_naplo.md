@@ -78,11 +78,14 @@ A brief az új szabályt **E25**-ként jelöli, azzal a megjegyzéssel, hogy a v
 
 `.claude/commands/konzisztencia.md` (csak olvas, egy fájlt ír). Az első, kézi próbafutás jelentése: `naplok/konzisztencia/KONZISZTENCIA_20261005.md` (D34 ↔ `CLAUDE.md`, a D34-számütközés, a „tanulmány” kettős jelentése; 0 régóta álló továbbvivő). A `ir` listához a jelentés fájlja (`naplok/konzisztencia/KONZISZTENCIA_20261005.md`) bekerült.
 
-## K5 — helyi ütemezés (terv; az ütemezett feladat NINCS létrehozva)
+## K5 — helyi ütemezés (jóváhagyva, létrehozva)
 
-- **Gyakoriság:** heti egy futás, javasolt időpont hétfő 9:00 (helyi idő).
+- **Gyakoriság:** napi egy futás, minden nap 9:00 (helyi idő). *(Egyeztetett eltérés: a brief heti futást írt, a felhasználó 2026-10-05-én napit kért.)*
 - **Hely:** helyi ütemezett feladat (a gépen, nem felhőben: DT-F51-2). Csak akkor fut, ha a gép be van kapcsolva; a kimaradt futás pótlódik a következő bekapcsoláskor.
-- **Modell:** sonnet. **Tartalom:** a `/konzisztencia` parancs a repó `main` ágán (friss `git fetch` és `git pull --ff-only` a munkapéldányban, érintetlen worktree-ben); kimenet: `naplok/konzisztencia/KONZISZTENCIA_<ééééhhnn>.md`.
+- **Modell:** sonnet. **Tartalom:** a `/konzisztencia` parancs a repó `main` állapotán; kimenet: `naplok/konzisztencia/KONZISZTENCIA_<ééééhhnn>.md`.
+- **Munkakönyvtár (egyértelműen):** NEM a fő munkapéldányban fut. Külön, csak erre használt, leválasztott (detached) worktree: `../Bible-Study-konzisztencia`. Ha nincs meg, a futás elején létrehozza: `git worktree add --detach ../Bible-Study-konzisztencia origin/main`. Minden futás elején ott `git fetch`, majd `git checkout --detach origin/main` (ff-only frissítés; a worktree-ben nincs kézi munka). A fő munkapéldányhoz és a futó session-ágakhoz nem nyúl; a jelentés is a worktree `naplok/konzisztencia/` mappájában keletkezik (követetlen marad, a repóba nem kerül).
+- **Napi összevetés:** a jelentés elején „Új az előző jelentés óta” (a `konzisztencia.md` 5. lépése); az E25 3 JELENTES-e a #11 lezárásáig naponta újra megjelenik: várható, nem hiba.
 - **Jogosultság:** csak olvasás és egyetlen jelentésfájl írása; nem commitol, nem pushol, nem nyit ágat (DT-F51-3). A jelentést a felhasználó átnézi, és a javaslatok (`dontes_hatas.tsv`-sor, `/befogad`-jelölt, `DONTESEK.md`-tétel) sorsáról dönt.
 - **Értesítés:** a jelentés elkészültekor (a végén egy sor: a jelentés útvonala és az új találatok száma).
-- **Nincs létrehozva:** az ütemezett feladat létrehozása külön lépés, a felhasználó jóváhagyásával (⛔ a K5 után).
+- **Jóváhagyás:** a felhasználó a K5 tervet a fenti pontosításokkal és napi gyakorisággal jóváhagyta (2026-10-05); az ütemezett feladat létrehozva (`konzisztencia-napi`, minden nap 9:00).
+- **Külön tétel (nem a #51 ága):** a CI lépésneve („E2-E19”) és az, hogy a CI nem futtatja a `test_szabalyok.py`-t: új feladatként a `/befogad` veheti fel.
