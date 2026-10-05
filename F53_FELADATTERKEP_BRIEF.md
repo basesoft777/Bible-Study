@@ -8,7 +8,7 @@ modell: sonnet
 munka: folyamat
 allapot: megallt
 ad: "a FELADATTERKEP.html (gyökér, mindig ugyanazon a néven felülírva) és a feladatterkep.json minden main-merge után a forrásokból generálódik; a claude.ai-artifact megnyitáskor a files képességgel ugyanezt a JSON-t olvassa, így újrafeltöltés nélkül friss"
-kovetkezo: Te: az FT.5 ⛔ — a projekt-azonosító (chan_…) nem állapítható meg; válassz (naplok/F53_FELADATTERKEP_naplo.md); az FT.3 és az FT.4 kész; utána FT.6, FT.7 (⛔ az ütemezés előtt)
+kovetkezo: Te: a draft PR és a független ellenőrzés átnézése; döntés, hogy az FT.7 az FT.5-tel együtt halasztódik-e (az FT.5 halasztva, N-F53f: nincs chan_… azonosító); merge után az Action-próba (7.6)
 olvas: ["F*_BRIEF.md", MUNKATERV.md, eszkozok/feladatok.py, .github/workflows/feladatok.yml, FELADATTERKEP.html]
 ir: [eszkozok/feladatterkep.py, eszkozok/feladatterkep_kartyak.tsv, eszkozok/teszt_feladatterkep.py, FELADATTERKEP.html, feladatterkep.json, .github/workflows/feladatok.yml, eszkozok/main_frissit.py]
 fugg: []
@@ -250,3 +250,5 @@ Commitok tétel-szinten (`FT.0: …`, `FT.1: …`), az üzenet UTF-8 fájlból.
 | 2026-10-05 | v1.1: FT.7 — időzített helyi `main`-frissítés (ff-only, csak tiszta `main`-en), hogy az artifact friss JSON-t lásson; létrehozás ⛔ után | felhasználó, chat |
 | 2026-10-05 | az FT.7 ütemezése Claude-os helyi ütemezett feladat (Routines alatt látható), nem Windows Feladatütemező; modell: haiku | felhasználó, chat |
 | 2026-10-05 | FT.2 ⛔: a kis minta jóváhagyva; az öt kérdésre adott válasz és az N-F53a–d a `naplok/F53_kis_minta_eltereslista.md` végén; a lap három kisebb hibája (N-F53c) és a kártyaszöveg-piszkozat (N-F53d) nem az FT.3 része; a main az FT.3 előtt behúzva | felhasználó, chat |
+| 2026-10-05 | FT.4: a `feladatok.yml`-diff jóváhagyva, változtatás nélkül; a #56-nál a `#57*` rendben (a MUNKATERV-hiány a #52 naplójában, PR #200); a CI-őr N-F53e | felhasználó, chat |
+| 2026-10-05 | FT.5 halasztva (c): az artifact a kézi 8. verzión marad, amíg a `chan_…` azonosító nincs meg (N-F53f); az FT.7 nem indul, a halasztásáról a felhasználó dönt | felhasználó, chat |

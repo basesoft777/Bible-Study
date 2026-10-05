@@ -12,7 +12,29 @@ A teljes napló (FT.6) ezt a fájlt bővíti.*
 | main behúzása | `5c7abe2` | a PR #199 (DT-M8) és a PR #200 (F52.8) az FT.3 előtt |
 | FT.3 | `5b7c305` | kész: a gyökérbeli lap és JSON generált; két futás bájtazonos; 19 teszt zöld; `feladatok.py ellenoriz` 0 hiba |
 | FT.4 | `5e8e6b7`, `64813ad` | kész: a diff jóváhagyva, változtatás nélkül alkalmazva; N-F53e (CI-őr) felvéve |
-| FT.5 | — | **⛔ áll** (l. lent) |
+| FT.5 | `7d55ed7` | **halasztva** (felhasználói döntés 2026-10-05: (c)); N-F53f |
+| FT.6 | l. git log | napló, push, draft PR, `fuggetlen-ellenor` (`naplok/ELLENOR_F53.md`) |
+| FT.7 | — | **nem indult**: a cél (friss JSON a `files`-olvasáshoz) az FT.5 nélkül okafogyott; a felhasználó dönt, együtt halasztódik-e |
+
+## Elfogadási feltételek (brief 7.) — állás az FT.6-nál
+
+| # | feltétel | állás |
+|---|---|---|
+| 1 | idempotens | teljesül: két egymás utáni futás bájtazonos (sha1), időbélyeg nincs |
+| 2 | teljes | teljesül a minta szerint: 38 kártya, a nem ✅ DT-k a döntéseknél (eltéréslista) |
+| 3 | nem pótol | teljesül: 10 kártya „nincs leírás”; DT1, DT3, DT4, DT19 `ellenőrizendő` (N-F53b) |
+| 4 | TSV-szabály | teljesül: a teszt ellenőrzi, hogy a `csv` nincs importálva |
+| 5 | kis minta jóváhagyva | teljesül (FT.2 ⛔, 2026-10-05) |
+| 6 | Action | **nem igazolt**: a main-re futó próba csak a merge után lehetséges |
+| 7 | artifact | FT.5 ⛔ dokumentálva, halasztva (N-F53f) |
+| 8 | `feladatok.py ellenoriz` 0 | teljesül: 85 brief, 0 hiba, 2 figyelmeztetés (nem ennek a feladatnak a briefjei) |
+| 9 | FT.7 | nem indult (l. fent) |
+
+## Felvett N-tételek
+
+N-F53a (#50 fejléce), N-F53b (DONTESEK DT1/3/4/19), N-F53c (a lap három megjelenítési
+hibája), N-F53d (kártyaszöveg-piszkozat), N-F53e (CI-őr, a brief 8.1-e), N-F53f (FT.5
+halasztva).
 
 ## FT.5 ⛔ — a projekt-azonosító nem állapítható meg (2026-10-05)
 

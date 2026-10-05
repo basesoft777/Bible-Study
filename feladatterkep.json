@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-05",
-   "commit": "3bcf666"
+   "commit": "7d55ed7"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -541,7 +541,7 @@
    "fazis": "folyamat",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: az FT.5 ⛔ — a projekt-azonosító (chan_…) nem állapítható meg; válassz (naplok/F53_FELADATTERKEP_naplo.md); az FT.3 és az FT.4 kész; utána FT.6, FT.7 (⛔ az ütemezés előtt)",
+   "most": "Te: a draft PR és a független ellenőrzés átnézése; döntés, hogy az FT.7 az FT.5-tel együtt halasztódik-e (az FT.5 halasztva, N-F53f: nincs chan_… azonosító); merge után az Action-próba (7.6)",
    "fugg": "—",
    "tervezett": false,
    "reszletes": "",
