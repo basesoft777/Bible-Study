@@ -129,3 +129,13 @@ kártyán „Indítható”). Nem eltérés, hanem a döntés következménye.
 4. **`fut` + `Folytatás:` (#38):** „Fut (▶)” oszlopban vagy várakozóként/indíthatóként jelenjen meg? Ma: mint a nem indult
    (a `jeloltek` logikájával egyezően). Javaslat: így marad.
 5. **Leírás nélküli kártyák** (10 db, fent): a szövegeket (`reszletes`, `roviden`) tartalmilag te hagyod jóvá; kérsz-e piszkozatot a TSV-be?
+
+## A felhasználó válasza (2026-10-05) — a minta jóváhagyva, mehet az FT.3
+
+1. **Igen**, két pontosítással: a #50 fejlécébe `fugg: [45]`, és a `kovetkezo:` sorból a #32 is kikerül (a #32 a PR #164-gyel a main-en van) → **N-F53a**. A `DONTESEK.md` javítása külön N-tétel, és a négy sor nem egyformán hibás: a DT3-ban és a DT19-ben fölös `|` → `\|`; a DT1-ben és a DT4-ben a Döntés és a Napló egy cellában áll, ott az elválasztó `|`-t kell beszúrni → **N-F53b**.
+2. **Kész, ehhez a feladathoz nem tartozik.** A MUNKATERV a PR #199-cel (DT-M8) a briefekhez igazodott: a #56 függése `SQLITE_EPIT`, a #38 ráépül; a #65-nél a #22 bemenet, és az F65 fejlécében `nem_fugg: [22]` áll. A main az FT.3 előtt behúzva (`5c7abe2`). **Maradék, nem javítva:** a generált lap a #56-nál `#57*`-ot mutat (a FELADATOK-sor szerint), a MUNKATERV `SQLITE_EPIT`-et; a tervezett, fel nem vett SQLITE_EPIT a brief fejlécébe nem írható, így a FELADATOK-sor nyer (a brief 3. pontja).
+3. **(a)** — marad „tervezett”.
+4. **Igen** — a #38 a „Függésre vár” oszlopban marad.
+5. **Igen**, külön tételben, az FT.3 után; a kártyaszöveg csak piszkozat lehet, és csak a felhasználó jóváhagyása után kerülhet a TSV-be → **N-F53d**.
+
+A lap három kisebb hibája külön tételbe megy, nem az FT.3-ba → **N-F53c**: a Markdown nyersen jelenik meg (`*(forrás: …)*`, visszaperjelek a címekben); a térképen a #22 felirata „#22 F22” (a kódnév hiányzik); a „Most induló sor” végén lóg egy `‖`.

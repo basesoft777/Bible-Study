@@ -1,6 +1,6 @@
 # Nyitott feladatok
 Ez a fájl a projekt aktuális, karbantartott feladatlistája. Átadási dokumentum kérésekor frissítendő: a lezárt tételek áthelyezendők a "Lezárva" szakaszba (dátummal), az újonnan felmerülő tételek felveendők a megfelelő szakaszba.
-Utolsó frissítés: 2026.10.04 (F43_LXX_BRIDGE_BRIEF.md, F43.8 — N29 a Lezárva szakaszba, D7: az ASV-t nem importáljuk); előtte 2026.10.03 (F46_BDB_KONYVFELOLDAS_BRIEF.md, F46.15 — N-F46a: 16 visszaállított sor, 779 sor; előtte F46.13 — N-F46a számozás eldöntve, N-F46b új; előtte F46.7 — N-F34 és N-F34c a Lezárva szakaszba, N-F46a új: a BDB könyvfeloldási kézi lista); előtte 2026.10.02 (F41_BSB_UJRAMERES_BRIEF.md, F41.15 — N-F41d/g/h az `ellenorizetlen` pontos jelentése és a Jób 40:1/3/6 szerint; N-F41e és N-F41f a Lezárva szakaszba; előtte F41.12 — N-F41b, N-F41d, N-F41g, N-F41h a szigorított versszintű `Számozás` szerint; előtte F41.10 — N-F41e, N-F41g, N-F41h a versszintű `Számozás` (mt/kjv/ellenorizetlen) szerint; előtte F41.7 — N-F41g, N-F41h új; N-F41e elvégezve; N-F41d, N-F41b pontosítva; előtte: N-F41a, N-F41b, N-F41d, N-F41e, N-F41f új, N-F41c felvéve és lezárva.)
+Utolsó frissítés: 2026.10.05 (F53_FELADATTERKEP_BRIEF.md, FT.2 ⛔ válasz — N-F53a, N-F53b, N-F53c, N-F53d új); előtte 2026.10.04 (F43_LXX_BRIDGE_BRIEF.md, F43.8 — N29 a Lezárva szakaszba, D7: az ASV-t nem importáljuk); előtte 2026.10.03 (F46_BDB_KONYVFELOLDAS_BRIEF.md, F46.15 — N-F46a: 16 visszaállított sor, 779 sor; előtte F46.13 — N-F46a számozás eldöntve, N-F46b új; előtte F46.7 — N-F34 és N-F34c a Lezárva szakaszba, N-F46a új: a BDB könyvfeloldási kézi lista); előtte 2026.10.02 (F41_BSB_UJRAMERES_BRIEF.md, F41.15 — N-F41d/g/h az `ellenorizetlen` pontos jelentése és a Jób 40:1/3/6 szerint; N-F41e és N-F41f a Lezárva szakaszba; előtte F41.12 — N-F41b, N-F41d, N-F41g, N-F41h a szigorított versszintű `Számozás` szerint; előtte F41.10 — N-F41e, N-F41g, N-F41h a versszintű `Számozás` (mt/kjv/ellenorizetlen) szerint; előtte F41.7 — N-F41g, N-F41h új; N-F41e elvégezve; N-F41d, N-F41b pontosítva; előtte: N-F41a, N-F41b, N-F41d, N-F41e, N-F41f új, N-F41c felvéve és lezárva.)
 
 Korábbi frissítés: 2026.09.29 (F05_SZOTAR_BRIEF.md v1.10, S1 javítókör (F05b) —
 N39–N44 új: héber `s`/`ś` átírás, H2403 lemma-választás, `spirantize()`
@@ -591,6 +591,18 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
 
 - ✅ **N-F38c — a H5674 „a Szellemről” szövegezés megítélése.** *(ÚJ, F38 (#38), DT-F38g (2), megítélésre vár; a számot (N-F38c) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
   Az 1Kir 22:24-en a végrehajtó „a Szellemről”-t írt; a brief „az Úr Szelleme” alakja új szót vinne be (a BDB-ben „az Úr” nincs). Opciók: (a) marad „a Szellemről”; (b) „az Úr Szelleme” (új szó, külön döntés).
+
+- **N-F53a — a #50 (CI_JAVITO_KOR) fejléce nem mutatja a #45-függést.** *(ÚJ, F53 (#53), FT.2 ⛔, felhasználói válasz 2026-10-05, `naplok/F53_kis_minta_eltereslista.md` 1. kérdés; a számot (N-F53a) a main-Action osztja ki)*
+  Az `F50_CI_JAVITO_KOR_BRIEF.md` fejléce `fugg: []`, a `kovetkezo:` sora viszont a #32 és a #45 lezárására vár (mindkettő a `.claude/commands/kovetkezo.md`-t írja, D4). Ezért a FELADATOK.md és a feladattérkép „Indítható”-nak mutatja. Teendő: (1) a fejlécbe `fugg: [45]`; (2) a `kovetkezo:` sorból a #32 kivétele, mert a #32 a PR #164-gyel a main-en van. A D4 sorát a végrehajtó igazítja hozzá.
+
+- **N-F53b — a `DONTESEK.md` négy ✅-sorának oszlopszám-hibája (DT1, DT3, DT4, DT19).** *(ÚJ, F53 (#53), FT.2 ⛔, felhasználói válasz 2026-10-05; a számot (N-F53b) a main-Action osztja ki)*
+  A feladattérkép ezeket `ellenőrizendő` jelöléssel mutatja, mert az oszlopszámuk eltér a táblafejléctől. A négy sor nem egyformán hibás: **DT3, DT19** — a szabad szövegben fölös `|` jelek állnak (10 oszlop): cseréld őket `\|`-re; **DT1, DT4** — a Döntés és a Napló egy cellában áll (7 oszlop): a kettő közé az elválasztó `|` beszúrandó. Javítás után a `python eszkozok/feladatterkep.py` futásában a négy sor nem `ellenőrizendő`.
+
+- **N-F53c — a generált feladattérkép három megjelenítési hibája.** *(ÚJ, F53 (#53), FT.2 ⛔ / FT.3, felhasználói válasz 2026-10-05; nem az FT.3 része; a számot (N-F53c) a main-Action osztja ki)*
+  (1) A forrásból átvett Markdown nyersen jelenik meg (pl. `*(forrás: …)*`, visszaperjelek a címekben: `SQLITE\_EPIT`). (2) A függési térképen a #22 felirata „#22 F22” — a kódnév hiányzik. (3) A „Most induló sor” végén egy fölös `‖` lóg. Javítás: `eszkozok/feladatterkep.py` (HTML-kimenet) + teszt, külön tételben.
+
+- **N-F53d — kártyaszöveg-piszkozat a 10 leírás nélküli kártyára.** *(ÚJ, F53 (#53), FT.2 ⛔, felhasználói válasz 2026-10-05; az FT.3 után, külön tételben; a számot (N-F53d) a main-Action osztja ki)*
+  Érintett: #53, #54, #55, #57, #58, #59, #60, #61, #64, TERV_BEFOGAD (a lap ma „nincs leírás”-t ír). A `reszletes` és `roviden` szöveg **csak piszkozat** lehet (a briefekből, naplóba vagy külön fájlba); az `eszkozok/feladatterkep_kartyak.tsv`-be **csak a felhasználó jóváhagyása után** kerül, `forras` = `kezi-<dátum>`.
 
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 

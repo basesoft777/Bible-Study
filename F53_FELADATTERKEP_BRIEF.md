@@ -8,7 +8,7 @@ modell: sonnet
 munka: folyamat
 allapot: megallt
 ad: "a FELADATTERKEP.html (gyökér, mindig ugyanazon a néven felülírva) és a feladatterkep.json minden main-merge után a forrásokból generálódik; a claude.ai-artifact megnyitáskor a files képességgel ugyanezt a JSON-t olvassa, így újrafeltöltés nélkül friss"
-kovetkezo: Te: a kis minta átnézése (naplok/F53_kis_minta_eltereslista.md, a minta a scratchpad/minta könyvtárban); jóváhagyás után FT.3 (⛔ a FT.4 workflow-módosítás előtt, a FT.5 és az FT.7 ütemezés előtt)
+kovetkezo: Te: az FT.4 ⛔ — a feladatok.yml diffjének jóváhagyása (az FT.3 kész, a gyökérbeli lap generált); utána FT.5 (⛔ ha a files-olvasás nem működik), FT.6, FT.7 (⛔ az ütemezés előtt)
 olvas: ["F*_BRIEF.md", MUNKATERV.md, eszkozok/feladatok.py, .github/workflows/feladatok.yml, FELADATTERKEP.html]
 ir: [eszkozok/feladatterkep.py, eszkozok/feladatterkep_kartyak.tsv, eszkozok/teszt_feladatterkep.py, FELADATTERKEP.html, feladatterkep.json, .github/workflows/feladatok.yml, eszkozok/main_frissit.py]
 fugg: []
@@ -249,3 +249,4 @@ Commitok tétel-szinten (`FT.0: …`, `FT.1: …`), az üzenet UTF-8 fájlból.
 | 2026-10-05 | a kártyaszöveg-tábla az `eszkozok/`-ban (8.3) | felhasználó, chat |
 | 2026-10-05 | v1.1: FT.7 — időzített helyi `main`-frissítés (ff-only, csak tiszta `main`-en), hogy az artifact friss JSON-t lásson; létrehozás ⛔ után | felhasználó, chat |
 | 2026-10-05 | az FT.7 ütemezése Claude-os helyi ütemezett feladat (Routines alatt látható), nem Windows Feladatütemező; modell: haiku | felhasználó, chat |
+| 2026-10-05 | FT.2 ⛔: a kis minta jóváhagyva; az öt kérdésre adott válasz és az N-F53a–d a `naplok/F53_kis_minta_eltereslista.md` végén; a lap három kisebb hibája (N-F53c) és a kártyaszöveg-piszkozat (N-F53d) nem az FT.3 része; a main az FT.3 előtt behúzva | felhasználó, chat |
