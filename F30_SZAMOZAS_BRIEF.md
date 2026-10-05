@@ -13,7 +13,7 @@ fugg: [8, 16, 17]
 olvas: [DONTESEK.md, NYITOTT_FELADATOK.md, FELADATOK.md, CLAUDE.md, .github/workflows/, eszkozok/feladatok.py]
 ir: [.github/workflows/szamkiosztas.yml, eszkozok/szamkiosztas.py, eszkozok/ellenorzes/szabalyok.py, DONTESEK.md, NYITOTT_FELADATOK.md, CLAUDE.md, BRIEF_SABLON.md, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/test_szamkiosztas.py, eszkozok/szamkiosztas_oroklott.txt, naplok/F30_szamozas_naplo.md, naplok/F30_zaras.md]
 nem_fugg: [22]
-lezarva_osszegzes: "számkiosztás merge-kor: szamkiosztas.py + szamkiosztas.yml Action, CI E26, DT18 → DT29, 99 örökölt helyőrző kihagyva (DT-F30a, 1. opció), N-F30a; zárás naplok/F30_zaras.md"
+lezarva_osszegzes: "számkiosztás merge-kor: szamkiosztas.py + szamkiosztas.yml Action, CI E26, DT18 → DT29, 99 örökölt helyőrző kihagyva (a helyőrző-döntés 1. opciója); zárás naplok/F30_zaras.md"
 ---
 
 # Döntés- és N-számok kiosztása merge-kor

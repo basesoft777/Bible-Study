@@ -45,7 +45,7 @@ A brief SZ.6-a PR-os próbát ír; a megbízás tiltotta a PR-nyitást, ezért a
 | szándékosan végleges szám (`DT44`) | E26: HIBA 2 (`új végleges azonosító: DT44`, `a DT44 szám a main-en még nem létezik`), kilépés 1 (piros) |
 | `--proba` a két próbasorral | `DT-F30a → DT30, DT-F99a → DT31, DT-F99b → DT32, N-F30a → N47`; 3 fájl, 6 csere |
 | `--ir`, majd újra `--ir` | a sorok `DT30`–`DT32`-re cserélődtek; üzenet: `szamkiosztas: DT-F30a → DT30, DT-F99a → DT31, DT-F99b → DT32, N-F30a → N47`; a második futás: „Nincs kiosztandó helyőrző” (idempotens) |
-| a teljes F30-ág a `merge-base`-hez képest (a `SZÁMKIOSZTÁS-SZÁNDÉKOS:` jelöléssel) | minden szabály 0 HIBA, kilépés 0; jelölés nélkül az E26 3 HIBA (DT29 definíció, DT29 és N47 hivatkozás) |
+| a teljes F30-ág a `merge-base`-hez képest (a `SZÁMKIOSZTÁS-SZÁNDÉKOS:` jelöléssel) | minden szabály 0 HIBA, kilépés 0; jelölés nélkül az E26 7 HIBA a végső fejen (DT29 definíció és hivatkozás, N47, DT44, DT30, DT31, DT32; az ellenőri futás szerint; az első próbán 3 volt) |
 
 Az Action élesben az első valódi merge-kor fut. Az első futásnak a `DT-F30a`-t `DT30`-ra és az `N-F30a`-t `N47`-re kell számoznia (ha addig más tétel nem érkezik), a 99 örökölt helyőrzőt változatlanul hagyva.
 
