@@ -8,6 +8,7 @@ Futtatas: python eszkozok/teszt_feladatok.py
 """
 
 import os
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -354,6 +355,75 @@ class GeneralTest(Alap):
     def test_pr_blokk_modositas(self):
         """E18: az alap blokkjától eltérő generált blokk hibát ad (git nélkül: alap nincs -> nincs hiba)."""
         self.assertEqual(F.pr_blokk_ellenorzes(self.g.ut, 'nincs/ilyen'), [])
+
+
+class PrTerkepOrTest(unittest.TestCase):
+    """N-F53e: a feladatterkep fajljait a PR nem modosithatja (merge-base..HEAD)."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.ut = self.tmp.name
+        self.git('init', '-q', '-b', 'main')
+        self.fajl('x.txt', 'a')
+        self.fajl('feladatterkep.json', '1')
+        self.commit('alap')
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def git(self, *a):
+        subprocess.run(('git', '-c', 'user.name=t', '-c', 'user.email=t@t') + a,
+                       cwd=self.ut, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+    def fajl(self, nev, szoveg):
+        with open(os.path.join(self.ut, nev), 'w', encoding='utf-8', newline='') as f:
+            f.write(szoveg)
+
+    def commit(self, uz):
+        self.git('add', '-A')
+        self.git('commit', '-q', '-m', uz)
+
+    def ellenoriz(self):
+        return F.pr_terkep_ellenorzes(self.ut, 'main')
+
+    def test_erintetlen_nincs_hiba(self):
+        self.git('checkout', '-q', '-b', 'pr')
+        self.fajl('y.txt', 'b')
+        self.commit('pr')
+        self.assertEqual(self.ellenoriz(), [])
+
+    def test_pr_diff_a_ket_fajllal_hiba(self):
+        self.git('checkout', '-q', '-b', 'pr')
+        self.fajl('feladatterkep.json', '2')
+        self.fajl('FELADATTERKEP.html', '<html>')
+        self.commit('pr')
+        self.assertEqual(sorted(f for f, _ in self.ellenoriz()),
+                         ['FELADATTERKEP.html', 'feladatterkep.json'])
+
+    def test_main_behuzasa_utan_a_bot_commitja_nem_bukik(self):
+        self.git('checkout', '-q', '-b', 'pr')
+        self.fajl('y.txt', 'b')
+        self.commit('pr')
+        self.git('checkout', '-q', 'main')
+        self.fajl('feladatterkep.json', '3')
+        self.fajl('FELADATTERKEP.html', '<html>')
+        self.commit('bot')
+        self.git('checkout', '-q', 'pr')
+        self.git('merge', '-q', '--no-edit', 'main')
+        self.assertEqual(self.ellenoriz(), [])
+
+    def test_nem_behuzott_main_bot_commitja_nem_bukik(self):
+        self.git('checkout', '-q', '-b', 'pr')
+        self.fajl('y.txt', 'b')
+        self.commit('pr')
+        self.git('checkout', '-q', 'main')
+        self.fajl('feladatterkep.json', '3')
+        self.commit('bot')
+        self.git('checkout', '-q', 'pr')
+        self.assertEqual(self.ellenoriz(), [])
+
+    def test_nincs_alap_nincs_hiba(self):
+        self.assertEqual(F.pr_terkep_ellenorzes(self.ut, 'nincs/ilyen'), [])
 
 
 class AtvetelTest(Alap):

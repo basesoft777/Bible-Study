@@ -13,7 +13,9 @@ Parancsok:
     general         a FELADATOK.md jelolt blokkjainak ujrairasa
     ellenoriz       fejlec-ervenyesseg, egyedi szam, fajlnev-szam egyezes,
                     `modell` == regi `Modell:` sor; --pr-alap REF: a
-                    generalt blokkot a PR nem modosithatja (E18)
+                    generalt blokkot a PR nem modosithatja (E18); a
+                    FELADATTERKEP.html-t es a feladatterkep.json-t sem
+                    (N-F53e: a merge-base..HEAD diffben nem szerepelhetnek)
     fuggesek        levezetett/kezi fuggesek, utkozesek, regi fejlecek; OLVAS_HIANY
                     sor (es 1-es kilepesi kod), ha motivumot iro feladat `olvas`-aban
                     hianyzik a tanulmany vagy a naplo (F32, K3.2); MUNKA_HIANY sor (es 1-es
@@ -1137,6 +1139,27 @@ def pr_blokk_ellenorzes(gyoker, alap_ref):
     return hibak
 
 
+# N-F53e: a feladatterkep gepi kimenete; csak a `main`-re futo Action irja.
+TERKEP_FAJLOK = ('FELADATTERKEP.html', 'feladatterkep.json')
+
+
+def pr_terkep_ellenorzes(gyoker, alap_ref, fej_ref='HEAD'):
+    """N-F53e (az E18 mintajara): a feladatterkep fajljait a PR nem modosithatja.
+
+    Csak a PR sajat diffjet nezi: `merge-base(alap, fej)..fej`. Ha az ag a main-t
+    behuzta, a bot korabbi commitja a kozos os elott van, ezert nem bukik. Ha az
+    alap vagy a kozos os nem allapithato meg, nincs ellenorzes (mint az E18-nal)."""
+    kozos = _git(gyoker, 'merge-base', alap_ref, fej_ref)
+    if kozos is None or not kozos.strip():
+        return []
+    valt = _git(gyoker, 'diff', '--name-only', kozos.strip(), fej_ref, '--', *TERKEP_FAJLOK)
+    if valt is None:
+        return []
+    return [(f, 'a PR módosítja a generált feladattérképet: %s '
+                '(csak a `main`-re futó Action írhatja)' % f)
+            for f in valt.splitlines() if f.strip()]
+
+
 # ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
@@ -1149,7 +1172,7 @@ def main(argv=None):
     alp = p.add_subparsers(dest='parancs', required=True)
     alp.add_parser('general', help='a FELADATOK.md jelölt blokkjainak újraírása')
     e = alp.add_parser('ellenoriz', help='fejlécek és blokkok ellenőrzése')
-    e.add_argument('--pr-alap', help='az alap ref (pl. origin/main): a generált blokk nem változhat')
+    e.add_argument('--pr-alap', help='az alap ref (pl. origin/main): a generált blokk és a feladattérkép nem változhat')
     f = alp.add_parser('fuggesek', help='függések, ütközések, régi fejlécek')
     f.add_argument('--extra', action='append', default=[], metavar='FAJL',
                    help='a befogadandó brief javasolt fejléce (a repón kívüli fájl); a számítás '
@@ -1173,6 +1196,7 @@ def main(argv=None):
             hibak = ellenoriz(briefek, arg.gyoker)
             if arg.pr_alap:
                 hibak += pr_blokk_ellenorzes(arg.gyoker, arg.pr_alap)
+                hibak += pr_terkep_ellenorzes(arg.gyoker, arg.pr_alap)
             fig = figyelmeztetesek(briefek, main_allapotok(arg.gyoker))
             for fajl, uzenet in hibak:
                 print('HIBA\t%s\t%s' % (fajl, uzenet))
