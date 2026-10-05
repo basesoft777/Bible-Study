@@ -5,7 +5,8 @@ kod: KONZISZTENCIA
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: fut
+ag: claude/konzisztencia
 ad: egy új CI-szabály jelzi, ha egy döntés érintett fájlja még a döntés előtti állapotot írja, vagy a továbbvivő feladata régóta áll; egy hetente, helyi gépen futó ügynök a fogalmi ellentmondásokat jelentésbe gyűjti
 kovetkezo: "/kovetkezo; ⛔ a K5 után (a helyi ütemezett feladat jóváhagyása: heti futás, csak ha a gép be van kapcsolva)"
 olvas: [CLAUDE.md, MUNKAMENET.md, RENDER_BRIEF.md, adat/SEMA.md, sablonok/, "F*_BRIEF.md", eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml]
