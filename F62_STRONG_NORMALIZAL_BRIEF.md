@@ -12,7 +12,7 @@ kovetkezo: /kovetkezo; ⛔ az M0 után (a leltár és a bemeneti alakok elfogad�
 olvas: [adat/SEMA.md, eszkozok/lekerdez.py, eszkozok/betolt.py, eszkozok/ellenoriz.py, eszkozok/lxx_osszevetes.py, eszkozok/merge_karoli_szofaj.py, eszkozok/tw_import.py, eszkozok/tbesh_konszolidalt_import.py, eszkozok/teszt_lekerdez_sir.py, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/lexikon_hivatkozasok.tsv, adat/grammatikai_strongok.tsv, konkordancia/Karoli_Strong_kivonat.tsv, NYITOTT_FELADATOK.md]
 ir: [eszkozok/strong_util.py, eszkozok/teszt_strong_util.py, eszkozok/lekerdez.py, eszkozok/betolt.py]
 fugg: []
-nem_fugg: [54, 61, 63]
+nem_fugg: [54, 61, 63, 65]
 ---
 
 # F62_STRONG_NORMALIZAL_BRIEF.md — Egységes Strong-normalizáló függvény

@@ -12,7 +12,7 @@ kovetkezo: /kovetkezo; ⛔ az M0 után (forrás-leképezés és hiánymérés), 
 olvas: [adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/auditok.tsv, adat/motivumok.tsv, adat/SEMA.md, tematikus_lezart/, motivumlog/, melyelemzesek/, genezis/, eszkozok/jelolt.py, eszkozok/lekerdez.py]
 ir: [adat/jeloltek.tsv, eszkozok/nem_vizsgalt.py, eszkozok/teszt_nem_vizsgalt.py]
 fugg: []
-nem_fugg: [55, 61]
+nem_fugg: [55, 61, 65]
 ---
 
 # F63_JELOLTEK_RETRO_BRIEF.md — A 8 régi motívum jelölt-sorainak pótlása
