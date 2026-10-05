@@ -21,7 +21,7 @@ kilepesi kod --teljes modban mindig 0.
 D8 (--valtozott + --diff-alap/--diff-fej modban): a HIBA csak a diff altal
 HOZZAADOTT/MODOSITOTT sorokra vonatkozik -- egy szabaly regi (a PR altal
 nem erintett) talalata csak JELENTES. Kivetel a SZ.FAJLSZINTU_SZABALYOK
-(E4, E5, E6, E7, E16, E19, E25): ezeknel a talalat nem egy konkret uj sorhoz kotheto,
+(E4, E5, E6, E7, E16, E19, E25, E26): ezeknel a talalat nem egy konkret uj sorhoz kotheto,
 tehat mindig a sajat szintjukon jelentkeznek. Ha --diff-alap/--diff-fej
 hianyzik --valtozott modban is, a regi (D8 elotti) viselkedes ervenyesul:
 a talalat fajlszinten a sajat szintjen jelentkezik -- ezt CI.2 mindig
@@ -78,6 +78,8 @@ def fut(valtozott_fajlok, teljes, diff_alap=None, diff_fej=None, pr_cim='', comm
             nyers[nev] = fv(fajlok_a_szabalyoknak)
 
     nyers['E5'] = SZ.e5_tartalomvesztes_or(diff_alap, diff_fej, commit_uzenet)
+    # E26 (F30): veglegesszam az agon; push-esemenynel (main) nem ertelmezett
+    nyers['E26'] = SZ.e26_vegleges_szam_agon(diff_alap, diff_fej, commit_uzenet, esemeny)
     # E16: push-esemenynel nincs PR-cim, ezert nem ertelmezett (a PR-en fut)
     if esemeny == 'push':
         nyers['E16'] = []

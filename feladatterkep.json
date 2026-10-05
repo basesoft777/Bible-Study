@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-05",
-   "commit": "677867c"
+   "commit": "55af1b5"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -72,12 +72,12 @@
   {
    "kulcs": "ready",
    "cimke": "Indítható most",
-   "db": 8
+   "db": 6
   },
   {
    "kulcs": "wait",
    "cimke": "Függésre vár",
-   "db": 14
+   "db": 13
   },
   {
    "kulcs": "plan",
@@ -92,34 +92,10 @@
  ],
  "sor": [
   {
-   "szam": 30,
-   "kod": "SZAMOZAS",
-   "cim": "Döntés- és N-számok kiosztása merge-kor (helyőrző az ágakon)",
-   "most": "a helyőrző-Action és a CI-szabály megírása, a DT18 átszámozása, a nyitott ágak helyőrzőre állítása",
-   "felbemaradt": false,
-   "parhuzamos": true
-  },
-  {
-   "szam": 44,
-   "kod": "LICENC_UTOKOVETES",
-   "cim": "Licenc-utókövetés — a Károli 1908 és a versifikációs táblák forrásának tisztázása",
-   "most": "/kovetkezo (a 0. lépés és a 3b előfeltétel-fájljai bent: adat/kulso/karoli_bible_hu_LICENC.txt, adat/kulso/openbible_crossrefs_LICENC.txt, 2026-10-04)",
-   "felbemaradt": false,
-   "parhuzamos": true
-  },
-  {
    "szam": 57,
    "kod": "BDB_STRONG_POTLAS",
    "cim": "A BDB-tábla hiányzó szócikkei — Strong-címke nélküli BDB-szócikkek párosítása és pótlása",
    "most": "/kovetkezo; ⛔ az M1 párosítás után",
-   "felbemaradt": false,
-   "parhuzamos": true
-  },
-  {
-   "szam": 58,
-   "kod": "MORF_KULCS",
-   "cim": "Héber igealak-jelkulcs — a morfológiai kódok magyar feloldása nyílt forrásból, adatként",
-   "most": "/kovetkezo; ⛔ az M0 forrásválasztás után",
    "felbemaradt": false,
    "parhuzamos": true
   }
@@ -374,22 +350,6 @@
    "leiras_hiany": false
   },
   {
-   "kulcs": "SZAMOZAS",
-   "szam": 30,
-   "kod": "SZAMOZAS",
-   "cim": "Döntés- és N-számok kiosztása merge-kor (helyőrző az ágakon)",
-   "fazis": "1",
-   "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "a helyőrző-Action és a CI-szabály megírása, a DT18 átszámozása, a nyitott ágak helyőrzőre állítása",
-   "fugg": "#8 (kész), #16 (kész), #17 (kész)",
-   "tervezett": false,
-   "reszletes": "Ma minden ág maga ad számot az új döntéseknek (DT) és nyitott tételeknek (N), ezért párhuzamos munkánál ütköznek. A feladat helyőrzőt vezet be, és a végleges számot merge-kor egy GitHub Action osztja ki.",
-   "roviden": "Megszünteti a sorszám-ütközéseket, ha több munka fut egyszerre.",
-   "leiras_forras": "kezi-2026-10-05",
-   "leiras_hiany": false
-  },
-  {
    "kulcs": "LEXIKON_UJRAGEN",
    "szam": 36,
    "kod": "LEXIKON_UJRAGEN",
@@ -414,7 +374,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "/kovetkezo; ⛔ a T0 után (nincs Strong-jelölt eredeti szöveg, vagy az SzPA kötelező szakasz a Tanulmány sablonban) és a T2 után (az alap tanulmányok sorsa)",
-   "fugg": "#30, #32 (kész), #45*",
+   "fugg": "#30 (kész), #32 (kész), #45*",
    "tervezett": false,
    "reszletes": "A tanulmányokat gépi CI-szabályok (E20–E24) és egy független ellenőrző ügynök vizsgálja; a régi tanulmányokról két auditjelentés készül. Két megállási pont van benne (T0, T2), ahol te döntesz.",
    "roviden": "Minőségellenőrzés a már megírt bibliatanulmányokra.",
@@ -446,26 +406,10 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "/kovetkezo",
-   "fugg": "#2 (kész), #30*, #37*",
+   "fugg": "#2 (kész), #37*",
    "tervezett": false,
    "reszletes": "Új CI-szabály: minden pull requestnél jelzi, ha a FELADATOK.md vagy egy brief nem létező fájlra, ágra vagy commitra mutat, vagy ha egy PR áthelyez egy hivatkozott fájlt a hivatkozás frissítése nélkül.",
    "roviden": "Automatikus őr a törött hivatkozások ellen.",
-   "leiras_forras": "kezi-2026-10-05",
-   "leiras_hiany": false
-  },
-  {
-   "kulcs": "LICENC_UTOKOVETES",
-   "szam": 44,
-   "kod": "LICENC_UTOKOVETES",
-   "cim": "Licenc-utókövetés — a Károli 1908 és a versifikációs táblák forrásának tisztázása",
-   "fazis": "1",
-   "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "/kovetkezo (a 0. lépés és a 3b előfeltétel-fájljai bent: adat/kulso/karoli_bible_hu_LICENC.txt, adat/kulso/openbible_crossrefs_LICENC.txt, 2026-10-04)",
-   "fugg": "#33 (kész), #42 (kész)",
-   "tervezett": false,
-   "reszletes": "Tisztázza a Károli 1908 és a versszámozási táblák licencét szó szerinti licencidézettel, és forrásjelöltként felveszi az openbible.info kereszthivatkozásait. A 0. lépés fájljai bent; a Károli-rész a DT-F33e-vel tárgytalan.",
-   "roviden": "Jogi rendrakás: mit szabad és milyen feltétellel közölni.",
    "leiras_forras": "kezi-2026-10-05",
    "leiras_hiany": false
   },
@@ -614,31 +558,15 @@
    "leiras_hiany": true
   },
   {
-   "kulcs": "MORF_KULCS",
-   "szam": 58,
-   "kod": "MORF_KULCS",
-   "cim": "Héber igealak-jelkulcs — a morfológiai kódok magyar feloldása nyílt forrásból, adatként",
-   "fazis": "1",
-   "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "/kovetkezo; ⛔ az M0 forrásválasztás után",
-   "fugg": "—",
-   "tervezett": false,
-   "reszletes": "",
-   "roviden": "",
-   "leiras_forras": null,
-   "leiras_hiany": true
-  },
-  {
    "kulcs": "SZOSZEDET",
    "szam": 59,
    "kod": "SZOSZEDET",
    "cim": "Olvasói szószedet — jóváhagyott, szerkesztői magyarázó tábla az olvasói nézethez",
    "fazis": "2",
-   "allapot": "wait",
+   "allapot": "ready",
    "brief_allapot": "nem_indult",
    "most": "/kovetkezo; ⛔ a tervezet után (tételenkénti jóváhagyás)",
-   "fugg": "#58",
+   "fugg": "#58 (kész)",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -826,14 +754,15 @@
   "felhasznalatlan": [
    "FORRASKIVEZETES",
    "KONZISZTENCIA",
-   "LXX_BRIDGE"
+   "LICENC_UTOKOVETES",
+   "LXX_BRIDGE",
+   "SZAMOZAS"
   ],
   "leiras_nelkul": [
    "FELADATTERKEP",
    "LXX_OS_LEFEDETTSEG",
    "ZSOLTAR_UJRAELLENORZES",
    "BDB_STRONG_POTLAS",
-   "MORF_KULCS",
    "SZOSZEDET",
    "OLVASOI_PILOT",
    "LEKERDEZ_NAPLO",
@@ -841,7 +770,7 @@
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_OLVASOI_KONKORDANCIA[\"OLVASOI_KONKORDANCIA\"]:::plan\n  P_SQLITE_EPIT[\"SQLITE_EPIT\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::wait\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T30[\"#30 SZAMOZAS\"]:::ready\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T37[\"#37 TANULMANY_ELLENORZES\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::wait\n  T40[\"#40 HIVATKOZAS_ELLENORZES\"]:::wait\n  T44[\"#44 LICENC_UTOKOVETES\"]:::ready\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::run\n  T53[\"#53 FELADATTERKEP\"]:::stop\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::wait\n  T56[\"#56 BDB_ADATBLOKK\"]:::wait\n  T57[\"#57 BDB_STRONG_POTLAS\"]:::ready\n  T58[\"#58 MORF_KULCS\"]:::ready\n  T59[\"#59 SZOSZEDET\"]:::wait\n  T60[\"#60 OLVASOI_PILOT\"]:::ready\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::ready\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T64[\"#64 TEREMT002_PROZA_PROBA\"]:::stop\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38d{{\"DT-F38d\"}}:::dt\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> P_SQLITE_EPIT\n  P_OLVASOI_KONKORDANCIA --> D_DT_M1\n  P_OLVASOI_KONKORDANCIA --> D_DT_M4\n  P_OLVASOI_KONKORDANCIA --> D_DT_M6\n  P_OLVASOI_KONKORDANCIA --> P_SQLITE_EPIT\n  P_OLVASOI_KONKORDANCIA --> T44\n  P_SQLITE_EPIT --> T62\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> T11\n  T10 --> T9\n  T11 --> T23\n  T11 --> T9\n  T12 --> T11\n  T13 --> T10\n  T23 --> D_DT28\n  T23 --> T37\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> T37\n  T36 --> T38\n  T36 --> T56\n  T36 --> T7\n  T36 --> T9\n  T37 --> D_DT28\n  T37 --> T30\n  T37 --> T45\n  T38 --> D_DT_F38d\n  T38 --> D_DT_F38i\n  T38 --> T56\n  T38 --> T57\n  T40 --> T30\n  T40 --> T37\n  T48 --> T22\n  T54 --> T62\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T56 --> T57\n  T59 --> T58\n  T61 --> T54\n  T61 --> T62\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T9 --> D_DT28\n  T9 --> T23\n  T9 --> T38\n  T9 --> T56\n  T9 --> T7",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_OLVASOI_KONKORDANCIA[\"OLVASOI_KONKORDANCIA\"]:::plan\n  P_SQLITE_EPIT[\"SQLITE_EPIT\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::wait\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T37[\"#37 TANULMANY_ELLENORZES\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::wait\n  T40[\"#40 HIVATKOZAS_ELLENORZES\"]:::wait\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::run\n  T53[\"#53 FELADATTERKEP\"]:::stop\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::wait\n  T56[\"#56 BDB_ADATBLOKK\"]:::wait\n  T57[\"#57 BDB_STRONG_POTLAS\"]:::ready\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::ready\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::ready\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T64[\"#64 TEREMT002_PROZA_PROBA\"]:::stop\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38d{{\"DT-F38d\"}}:::dt\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> P_SQLITE_EPIT\n  P_OLVASOI_KONKORDANCIA --> D_DT_M1\n  P_OLVASOI_KONKORDANCIA --> D_DT_M4\n  P_OLVASOI_KONKORDANCIA --> D_DT_M6\n  P_OLVASOI_KONKORDANCIA --> P_SQLITE_EPIT\n  P_SQLITE_EPIT --> T62\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> T11\n  T10 --> T9\n  T11 --> T23\n  T11 --> T9\n  T12 --> T11\n  T13 --> T10\n  T23 --> D_DT28\n  T23 --> T37\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> T37\n  T36 --> T38\n  T36 --> T56\n  T36 --> T7\n  T36 --> T9\n  T37 --> D_DT28\n  T37 --> T45\n  T38 --> D_DT_F38d\n  T38 --> D_DT_F38i\n  T38 --> T56\n  T38 --> T57\n  T40 --> T37\n  T48 --> T22\n  T54 --> T62\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T56 --> T57\n  T61 --> T54\n  T61 --> T62\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T9 --> D_DT28\n  T9 --> T23\n  T9 --> T38\n  T9 --> T56\n  T9 --> T7",
  "dontesek": {
   "nyitott": [
    {
@@ -852,7 +781,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 10
+    "sor": 12
    },
    {
     "id": "DT-F41a",
@@ -862,7 +791,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 20
+    "sor": 22
    },
    {
     "id": "DT-M1",
@@ -872,7 +801,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 94
+    "sor": 96
    },
    {
     "id": "DT-M4",
@@ -882,7 +811,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 97
+    "sor": 99
    },
    {
     "id": "DT-M5",
@@ -892,7 +821,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 98
+    "sor": 100
    },
    {
     "id": "DT-M6",
@@ -902,7 +831,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 99
+    "sor": 101
    }
   ],
   "alkalmazasra_var": [
@@ -914,7 +843,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 15
+    "sor": 17
    },
    {
     "id": "DT6",
@@ -924,7 +853,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 19
+    "sor": 21
    },
    {
     "id": "DT-F24",
@@ -934,7 +863,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 36
+    "sor": 38
    },
    {
     "id": "DT-F38d",
@@ -944,7 +873,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 52
+    "sor": 54
    },
    {
     "id": "DT-F38i",
@@ -954,7 +883,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 57
+    "sor": 59
    },
    {
     "id": "DT-F32a",
@@ -964,7 +893,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 76
+    "sor": 78
    },
    {
     "id": "DT-F32b",
@@ -974,7 +903,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 77
+    "sor": 79
    },
    {
     "id": "DT-F32c",
@@ -984,7 +913,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 78
+    "sor": 80
    },
    {
     "id": "DT-F26a",
@@ -994,7 +923,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 80
+    "sor": 82
    },
    {
     "id": "DT-F42a",
@@ -1004,7 +933,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 84
+    "sor": 86
    },
    {
     "id": "DT-F42b",
@@ -1014,7 +943,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 85
+    "sor": 87
    },
    {
     "id": "DT-F42c",
@@ -1024,7 +953,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 86
+    "sor": 88
    },
    {
     "id": "DT-F42d",
@@ -1034,7 +963,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 87
+    "sor": 89
    },
    {
     "id": "DT-F42e",
@@ -1044,7 +973,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 88
+    "sor": 90
    },
    {
     "id": "DT-F42f",
@@ -1054,7 +983,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 89
+    "sor": 91
    },
    {
     "id": "DT-F42g",
@@ -1064,7 +993,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 90
+    "sor": 92
    },
    {
     "id": "DT-F42h",
@@ -1074,7 +1003,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 91
+    "sor": 93
    },
    {
     "id": "DT-F42i",
@@ -1084,7 +1013,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 92
+    "sor": 94
    },
    {
     "id": "DT-M2",
@@ -1094,7 +1023,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 95
+    "sor": 97
    },
    {
     "id": "DT-M3",
@@ -1104,7 +1033,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 96
+    "sor": 98
    },
    {
     "id": "DT-M7",
@@ -1114,7 +1043,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 100
+    "sor": 102
    },
    {
     "id": "DT-M8",
@@ -1124,7 +1053,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 101
+    "sor": 103
    },
    {
     "id": "DT28",
@@ -1134,7 +1063,77 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 102
+    "sor": 104
+   },
+   {
+    "id": "DT35",
+    "feladat": "#58 MORF_KULCS (M0 ⛔)",
+    "kerdes": "Melyik nyílt forrásból készüljön a héber morfológiai jelkulcs, és jóváhagyható-e a licencsor? A Macula-kód (747 kód) az OSHB-kódolás, nyelvjelölő nélkül; a Macula repó nem ad önálló jelkulcsot. Külön döntés: a nyelvet (héber/arámi) a Macula-kód nem hordozza, de a törzsbetűk jelentése nyelvenként más (18 kód csak arámi törzsjelet használ, az arámi igék többi része a kódból nem különböztethető meg a héberétől). *(forrás: `naplok/MORF_KULCS_M0.md`)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 105
+   },
+   {
+    "id": "DT36",
+    "feladat": "#58 MORF_KULCS (ellenőri eltérés 1, 3–5)",
+    "kerdes": "Mi legyen a nyelv nélkül kétértelmű kód `allapot` értéke (az ellenőr 1. tétele)? *(forrás: `naplok/ELLENOR_MORF_KULCS.md`)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 106
+   },
+   {
+    "id": "DT30",
+    "feladat": "#30 Számozás (SZ.0 ⛔)",
+    "kerdes": "Az első `szamkiosztas` futáskor mi legyen a szabály bevezetése előtt már a main-en álló helyőrzőkkel? A felmérés (`python eszkozok/szamkiosztas.py --proba`, `naplok/F30_szamozas_naplo.md`): 99 helyőrző (DT-F21a…j, DT-F22a/c, DT-F24, DT-F26a–c, DT-F32a–c, DT-F33a–j, DT-F34/b/c, DT-F35a/b, DT-F38/b–i, DT-F39a–g, DT-F41a–g, DT-F42a–j, DT-F43, DT-F46, DT-F52a; N-F08a/b, N-F17a/b, N-F21, N-F22a/b, N-F33a/b, N-F34/b/c, N-F35a, N-F41a–h, N-F46a/b, N-F53a–f) áll definíciós sorral, további 17 csak hivatkozásként (árva). Ha az Action mindet kiosztja: 70 DT- és 29 N-számot (a DT29 az átszámozott DT18), 138 fájlban 2237 csere (köztük az `adat/forditasok.tsv`, `adat/licencek.tsv`, a `naplok/*.tsv` és a lezárt ellenőri jelentések), és minden nyitott ág, amely ilyen helyőrzőre hivatkozik, ütközni fog. *(forrás: F30 brief SZ.0, 2. pont)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 107
+   },
+   {
+    "id": "DT31",
+    "feladat": "#44 Licenc-utókövetés (5. ⛔)",
+    "kerdes": "A `karoli_bible_hu` (HF) felvétele tartalék forrásnak vagy elvetés? *(forrás: `naplok/LICENC_UTOKOVETES_naplo.md` 2.; a kártya az 1590-es vizsolyi kiadás, nincs `license` mező)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 108
+   },
+   {
+    "id": "DT32",
+    "feladat": "#44 (5. (d), a DT-M5 mellett)",
+    "kerdes": "A `bible-mcp` mint chat-oldali ellenőrző eszköz: „NC-licencű MCP-szerver connectorként használható a chatben ellenőrzésre és tájékozódásra, de a kimenete nem kerül adatfájlba, briefbe vagy tanulmányba; minden adatot saját, tisztázott forrásból kell újra kinyerni. A tool csak rámutat, hol nézzünk.” *(forrás: README @ `4388b38`: kód PolyForm NC, származtatott rétegek CC BY-NC 4.0)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 109
+   },
+   {
+    "id": "DT33",
+    "feladat": "#44 (3b)",
+    "kerdes": "Kerüljön-e `jelolt` az `allapot` értékkészletébe (a brief kérése)? Most az `openbible_crossrefs` 4 sora `hianyzik` + „JELÖLT, NEM IMPORTÁLT” megjegyzés. *(forrás: `adat/SEMA.md` 2.6)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 110
+   },
+   {
+    "id": "DT34",
+    "feladat": "#44 (3b, 5.(e))",
+    "kerdes": "Az openbible.info kereszthivatkozás-tábla (CC BY, az oldal lábléce) importja külön feladatként, és a „kapcsolódó igehelyek” rangsorának megjelenítése a study-rules szerint? *(forrás: `adat/kulso/openbible_crossrefs_LICENC.txt`)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 111
    }
   ],
   "javasolt": [],
