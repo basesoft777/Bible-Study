@@ -998,6 +998,35 @@ rögzítésével egy menetben; a szabály nem javít, nem ír vissza.
 
 ---
 
+### 2.22 `morf_kulcs_heber.tsv` és `morf_nyelv_aramai.tsv` — héber morfológiai jelkulcs (F58, FELADATOK #58, DT-F58a)
+
+A `konkordancia/Macula_heber_*.tsv` `morf` oszlopának kódjait (OSHB-kódolás, nyelvjelölő nélkül) oldja fel magyarra.
+**Forrás és licenc:** `adat/kulso/oshb_HebrewMorphologyCodes.html` (openscriptures/morphhb@3d15126fb1ef74867fc1434be1942e837932691f,
+`parsing/HebrewMorphologyCodes.html`), **CC BY 4.0**; a szó szerinti nyilatkozat és a kötelező megjelölés:
+`adat/kulso/morf_kulcs_LICENC.txt` és `adat/licencek.tsv` (`morf_kulcs_heber`, `morf_nyelv_aramai` sor). Az ETCBC `Morphology.lexicon` (CC BY-NC) nem forrás.
+Mindkét tábla **generált** (`eszkozok/morf_kulcs_import.py`, `eszkozok/morf_nyelv_kivonat.py`), kézzel nem szerkeszthető. Olvasás `split('\t')`; fejlécsorok `#`-tel.
+
+**`morf_kulcs_heber.tsv`** — kulcs: (`pozicio`, `nyelv`, `kod`).
+
+| Mező | Tartalom |
+|---|---|
+| `pozicio` | `szofaj` · `szerkezet` (a szófaj pozícióinak sorrendje, a forrás szófaj-táblázatából: `jelentes_forras` = pl. `type > gender > number > state`) · `igetorzs` · `igetipus` · `tipus_A/N/P/R/S/T` (a szófaj típusa) · `szemely` · `nem` · `szam` · `allapot` · `nyelv_jel` (a forrás `H`/`A` jele) · `helykitolto` (az `x`) |
+| `nyelv` | `H` (csak héber), `A` (csak arámi), `*` (mindkettő). Csak az `igetorzs` nyelvfüggő: a törzsbetűk jelentése héberben és arámiban más |
+| `kod` | a jel (egy karakter; a `szerkezet` sorban a szófaj betűje) |
+| `jelentes_forras` | a forrás saját megnevezése, szó szerint (angol) |
+| `jelentes_hu` | a `jelentes_forras` fordítása a projekt szóhasználatával; **magyarázat nincs benne** |
+| `forras` | a forrás pontos azonosítója (repó@commit, fájl, licenc) |
+| `proveniencia` | `scope=… | forras=… | ts=…` (CLAUDE.md 1. szabály) |
+
+Szabályok: (1) a feloldó (`eszkozok/morf_feloldas.py`) kizárólag ebből a táblából dolgozik; (2) a Macula-kód nyelvjelölőt **nem** hordoz, ezért
+a szó nyelvét a `morf_nyelv_aramai.tsv` adja; nyelv nélkül az `igetorzs` kétértelmű vagy nyelvfüggő, és a kimenet ezt jelzi; (3) az `x` a forrás
+szerinti helykitöltő („ismeretlen vagy szükségtelen érték”), a feloldás állapota ilyenkor `helykitoltovel`, nem `teljes`; (4) a forrás a nemet
+`common (verb)` / `both (noun)` megnevezéssel adja, a magyar oszlop ezt szó szerint tükrözi akkor is, ha a névmásnál zavaró (`Pdxcp`).
+
+**`morf_nyelv_aramai.tsv`** — kulcs: `xml_id` (a Macula-szó azonosítója, `Macula_heber_*.tsv` `xml_id`). Oszlopok: `xml_id`, `ref`, `morf`, `nyelv` (mindig `A`).
+Csak az arámi szavak szerepelnek (7 549 morféma, a `w@lang="A"` a Macula lowfat XML-ben); ami nincs a táblában, az a Macula szerint héber (`lang="H"`, 468 362 szó).
+Forrás: Macula Hebrew @47db250b, CC BY 4.0 (Biblica, Inc). A `morf` oszlop minden sorban egyezik a `Macula_heber_*.tsv` értékével (0 eltérés).
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi
