@@ -16,17 +16,11 @@ Az --m0 és --m1 csak olvas a BDB-táblából; az --m2 ÍR a BDB_teljes_unabridg
 (csak a jóváhagyott párok sorait cseréli/fűzi hozzá a végén, a meglévő sorok bájtra
 változatlanok, idempotens), az --alias két új TSV-t ír (alias és elvetett lista).
 A TSV-ket split('\t')-tel olvassa.
-Alias-feltétel (DT-F57c): a másodlagos címke testvér-Strongjának táblasora ugyanabból a
+Alias-feltétel (DT-F57f/g): a másodlagos címke testvér-Strongjának táblasora ugyanabból a
 BDB-szócikkből származik (a testvér H-kulcsának bdb_id-je egyezik a másodlagos címke
-bdb_id-jével), és a sor szövege hasonlít a szócikk szövegére; ami elbukik, az
-elvetett listára kerül (nyelvi szűrés nincs).
-Párosítási szabály (BRIEF §3 M1) szó szerint:
- 1. Címszó-egyezés: OSHL-lemma és BDB-címszó normalizált alakja egyezik
-    (kantilláció és meteg le, holem-waw U+05BA -> U+05B9; magánhangzók maradnak).
- 2. Homonímia: ha több jelölt van, az OSHL def_en és a BDB glosszák szóegyezése
-    dönt; ha nem dönt egyértelműen, tobb_jelolt.
- 3. Kizárás: ha a BDB-szócikknek van Strong-címkéje, vagy a Strong-számnak van
-    sora a táblában, vagy a BDB.lexicon H-kulcsa van, nem párosítható.
+bdb_id-jével), a szócikk latin betűinek legalább 0,9 hányada a testvérsor elején megvan
+(hivatkozások és héber szöveg nélkül), és pontosan egy testvér felel meg; ami elbukik, az
+elvetett listára kerül (nyelvi szűrés nincs; kézi kivételek: KIZART).
 """
 import sys
 import os
@@ -283,10 +277,14 @@ FEJ_ENGEDMENY = 60
 
 
 def _ujjlenyomat_teljes(x):
-    """\u00d6sszehasonl\u00edt\u00e1si ujjlenyomat: a bibliai hivatkoz\u00e1sok (k\u00f6nyvr\u00f6vid\u00edt\u00e9s + sz\u00e1m) kiesnek, mert
-    a DictBDB-sor \u00e9s a BDB.lexicon elt\u00e9r\u0151en r\u00f6vid\u00edti \u00e9s t\u00f6m\u00f6r\u00edti \u0151ket (1Kgs/1Kin, 13:20-21 stb.)."""
+    """Összehasonlítási ujjlenyomat (DT-F57g): CSAK latin betűk.
+
+    A héber szöveg kimarad, mert a DictBDB a többszavas héber kifejezések szórendjét megfordítja
+    (pl. H3347: ugyanaz a szöveg fordított sorrendben); a bibliai hivatkozások (könyvrövidítés +
+    szám) is kimaradnak, mert a két forrás eltérően rövidíti és tömöríti őket (1Kgs/1Kin,
+    13:20 ; 13:21 / 13:20-21)."""
     x = re.sub(r'\b[0-9]?[A-Z][a-z]{1,9}[.]? *(?=[0-9])', '', x)
-    return re.sub(r'[^A-Za-z\u0590-\u05ff]', '', x)
+    return re.sub(r'[^A-Za-z]', '', x)
 
 
 def _ujjlenyomat(x):
@@ -294,12 +292,16 @@ def _ujjlenyomat(x):
 
 
 def elejegyezes(forras, sorszoveg):
-    """DT-F57f: a szócikk (ujjlenyomata) hány hányada található meg a testvérsor azonos hosszúságú elején.
+    """Mérőszám (DT-F57f/g): a szócikk ujjlenyomatának (latin betűk; legfeljebb ELEJE_MAX karakter)
+    az a hányada, amely a testvérsor elején megvan.
 
-    A DictBDB-sor a saját szócikke után további szócikkeket is tartalmazhat, ezért a teljes
-    szövegek aránya (difflib ratio) rendszerszinten alulmér; itt csak a testvérsor eleje számít.
-    A sorfej (H<n>. + átírás) miatt a vizsgált ablak FEJ_ENGEDMENY karakterrel hosszabb.
-    """
+    Pontosan: a = a szócikk ujjlenyomata[:ELEJE_MAX]; b = a testvérsor (a `H<n>.` előtag nélküli)
+    ujjlenyomata[:len(a) + FEJ_ENGEDMENY] (a sorfej, azaz az átírás miatti +60 karakteres ablak);
+    érték = a `difflib.SequenceMatcher(None, a, b, autojunk=False)` egyező blokkjai karakterszámának
+    összege / len(a). A szócikknek tehát nem kell az egész sorral egyeznie (a DictBDB-sor a saját
+    szócikke után további szócikkeket is tartalmazhat). Csonk szócikknél (rövid `a`) az egyezés
+    triviálisan magas lehet (pl. BDB515, BDB3121); ez az alias oldalán nem okozott hamis aliast a
+    mintában, de a mérőszám ott gyenge bizonyíték."""
     import difflib
     a = forras[:ELEJE_MAX]
     if not a:
@@ -310,16 +312,30 @@ def elejegyezes(forras, sorszoveg):
     return sum(blk.size for blk in m.get_matching_blocks()) / len(a)
 
 
-def alias_szetvalogat():
-    """A másodlagos H-címkék szétválogatása (DT-F57c): (alias_sorok, elvetett_sorok).
+# Kézzel kint tartott sorok (DT-F57g), függetlenül a mérőszámtól: Strong -> (indok-kód, magyarázat)
+KIZART = {
+    'H2088': ('kifejezes_tarscimke', 'a BDB6199 fejlécében [H6258 H2088 H2009 H5704 H3588] kifejezés-társcímke: a „zeh” nem az עַתָּה aliasa'),
+    'H3071': ('kezi_dontes', 'Jahve-név egy köznév sorára: kézi döntés kell'),
+    'H3073': ('kezi_dontes', 'Jahve-név egy köznév sorára: kézi döntés kell'),
+    'H3074': ('kezi_dontes', 'Jahve-név egy köznév sorára: kézi döntés kell'),
+}
 
-    Alias: a testvér-Strong táblasora ugyanabból a BDB-szócikkből származik (a testvér
-    H-kulcsának bdb_id-je egyezik a másodlagos címke bdb_id-jével), és a sor szövege a
-    szócikk szövegére hasonlít. Más nem kerül az aliasba (nyelvi szűrés nincs).
+
+def alias_szetvalogat():
+    """A másodlagos H-címkék szétválogatása (DT-F57c, F57f, F57g): (alias_sorok, elvetett_sorok).
+
+    Alias-feltétel: (1) a testvér-Strong táblasora ugyanabból a BDB-szócikkből származik (a testvér
+    H-kulcsának bdb_id-je egyezik a másodlagos címke bdb_id-jével); (2) a szócikk latin betűinek
+    legalább HASONLOSAG_KUSZOB (0,9) hányada a testvérsor elején megvan (elejegyezes); (3) pontosan
+    egy testvér-Strong sora származik ugyanabból a szócikkből (a több testvéres sorok kint maradnak); (4) a KIZART kézi kivételek
+    kint maradnak. Nyelvi szűrés nincs.
     """
-    import difflib
     bdb, htop, tabla, oshl, cimkenelkuli, cimkezett, oshl_s = adatok()
     alias_sorok, elvetett = [], []
+
+    def kiesik(s, bid, nyelv, hw, tars, indok):
+        elvetett.append({'s': s, 'bid': bid, 'nyelv': nyelv, 'hw': hw, 'tars': tars, 'indok': indok})
+
     for s in sorted(htop):
         if s in tabla or s == 'H0000':
             continue
@@ -329,29 +345,37 @@ def alias_szetvalogat():
         hw = e['cimszavak'][0] if e and e['cimszavak'] else ''
         tars = [x for x in ls if x != s and x in tabla]
         if not tars:
-            elvetett.append({'s': s, 'bid': bid, 'nyelv': nyelv, 'hw': hw, 'tars': '',
-                             'indok': 'nincs testvér-Strong a táblában'})
+            kiesik(s, bid, nyelv, hw, '', 'nincs testvér-Strong a táblában')
             continue
         azonos = [t for t in tars if htop.get(t, ('',))[0] == bid]
         if not azonos:
-            elvetett.append({'s': s, 'bid': bid, 'nyelv': nyelv, 'hw': hw, 'tars': ','.join(tars),
-                             'indok': 'a testvér-sor nem ebből a BDB-szócikkből származik (a testvér H-kulcsa: %s)'
-                                      % ','.join(sorted({htop.get(t, ('?',))[0] for t in tars}))})
+            kiesik(s, bid, nyelv, hw, ','.join(tars),
+                   'a testvér-sor nem ebből a BDB-szócikkből származik (a testvér H-kulcsa: %s)'
+                   % ','.join(sorted({htop.get(t, ('?',))[0] for t in tars})))
             continue
         forras = _ujjlenyomat(strip_html(lexikon_torzs(bid)))
         jo, legjobb = [], 0.0
         for t in azonos:
-            r = elejegyezes(forras, tabla[t].split('	', 2)[2])
+            r = elejegyezes(forras, tabla[t].split('\t', 2)[2])
             legjobb = max(legjobb, r)
             if r >= HASONLOSAG_KUSZOB:
                 jo.append((t, r))
-        if not jo:
-            indok = ('a testvérsor más szócikk (a bdb_id egyezik, de a szócikk szövege nem a testvérsor elején áll; '
-                     'elejegyezés %.2f < %.1f)' % (legjobb, HASONLOSAG_KUSZOB))
-            elvetett.append({'s': s, 'bid': bid, 'nyelv': nyelv, 'hw': hw, 'tars': ','.join(azonos), 'indok': indok})
+        if s in KIZART:
+            kod, mag = KIZART[s]
+            kiesik(s, bid, nyelv, hw, ','.join(azonos), '%s (%s; elejegyezés %.3f)' % (kod, mag, legjobb))
             continue
-        alias_sorok.append({'s': s, 'bid': bid, 'nyelv': nyelv, 'hw': hw, 'tars': ','.join(t for t, _ in jo),
-                            'hasonlosag': '%.2f' % max(r for _, r in jo)})
+        if not jo:
+            kiesik(s, bid, nyelv, hw, ','.join(azonos),
+                   'a testvérsor más szócikk (a bdb_id egyezik, de a szócikk szövege nem a testvérsor elején áll; '
+                   'elejegyezés %.3f, a feltétel: >= %.1f)' % (legjobb, HASONLOSAG_KUSZOB))
+            continue
+        if len(azonos) > 1:
+            kiesik(s, bid, nyelv, hw, ','.join(tars),
+                   'tobb_testveres (több testvér-Strong sora is ugyanabból a szócikkből származik: %s; legjobb elejegyezés %.3f)'
+                   % (','.join(azonos), max(r for _, r in jo)))
+            continue
+        alias_sorok.append({'s': s, 'bid': bid, 'nyelv': nyelv, 'hw': hw, 'tars': jo[0][0],
+                            'hasonlosag': '%.3f' % jo[0][1]})
     return alias_sorok, elvetett
 
 
@@ -360,42 +384,49 @@ def masodlagos_lista():
 
 
 def masodlagos_szakasz():
-    """Az M1-jelentés 3. szakasza (DT-F57c/F57f szerint: alias és elvetett lista)."""
+    """Az M1-jelentés 3. szakasza (DT-F57c/F57f/F57g szerint: alias és elvetett lista)."""
     alias_sorok, elvetett = alias_szetvalogat()
     ossz = len(alias_sorok) + len(elvetett)
     nyelv_a = collections.Counter(r['nyelv'] for r in alias_sorok)
     nyelv_e = collections.Counter(r['nyelv'] for r in elvetett)
-    ok_e = collections.Counter('a testvérsor más szócikk (a szócikk nem a testvérsor elején áll)' if r['indok'].startswith('a testvérsor más')
-                               else ('a testvér-sor nem ebből a BDB-szócikkből származik' if 'nem ebből' in r['indok'] else r['indok'])
-                               for r in elvetett)
+
+    def kod(r):
+        i_ = r['indok']
+        if i_.startswith('a testvér-sor nem ebből'):
+            return 'nem_ebbol_a_szocikkbol'
+        if i_.startswith('a testvérsor más'):
+            return 'a_testversor_mas_szocikk'
+        return i_.split(' (')[0]
+    ok_e = collections.Counter(kod(r) for r in elvetett)
+    nyelv_ok = collections.Counter((kod(r), r['nyelv']) for r in elvetett)
     L = []
     w = L.append
-    w('\n## 3. Másodlagos címke: a Strong a BDB.lexicon-ban van, a táblában nincs sora (DT-F57a, DT-F57c, DT-F57f)\n')
+    w('\n## 3. Másodlagos címke: a Strong a BDB.lexicon-ban van, a táblában nincs sora (DT-F57a, DT-F57c, DT-F57f, DT-F57g)\n')
     w('- %d Strong (a H0136 és a H0341 is ide tartozik): a BDB.lexicon `H<n>` kulcsa létezik, a szócikk fejlécében a Strong másik Strong mellett áll, ezért a 3. kizárási szabály miatt nem párosítható.' % ossz)
-    w('- **Alias-feltétel (DT-F57f, nyelvi szűrés nélkül):** (1) a testvér-Strong táblasora ugyanabból a BDB-szócikkből származik (a testvér `H<n>` kulcsának `bdb_id`-je egyezik a másodlagos címke `bdb_id`-jével), ÉS (2) a szócikk szövege a testvérsor **elején** áll: a mérés a szócikk ujjlenyomatát (hivatkozások nélkül, csak betűk; legfeljebb %d karakter) veti össze a testvérsor azonos hosszúságú elejével (a sorfej miatt +%d karakter ablak), a szócikk karaktereinek hányada, amely a sor elején megvan; küszöb **≥ %.1f**. Az előző, teljes szöveget mérő `difflib`-arány (DT-F57e, 0,6) rendszerszinten alulmért, mert a DictBDB-sor a saját szócikke után további szócikkeket is tartalmazhat (pl. H6130 az ʿĀqān után az עקר gyököt). A hivatkozások kihagyása azért kell, mert a két forrás eltérően rövidíti és tömöríti őket (1Kgs/1Kin, 13:20 ; 13:21 / 13:20-21).' % (ELEJE_MAX, FEJ_ENGEDMENY, HASONLOSAG_KUSZOB))
+    w('- **Alias-feltétel (DT-F57f/g, nyelvi szűrés nélkül):** (1) a testvér-Strong táblasora ugyanabból a BDB-szócikkből származik (a testvér `H<n>` kulcsának `bdb_id`-je egyezik a másodlagos címke `bdb_id`-jével); (2) **mérőszám** (`elejegyezes`): a szócikk ujjlenyomatának (CSAK latin betűk; a héber szöveg és a bibliai hivatkozások kimaradnak; legfeljebb %d karakter) az a hányada, amely a testvérsor elején megvan: a testvérsor (a `H<n>.` előtag nélküli) ujjlenyomatának első `hossz + %d` karaktere az összevetés ablaka, az érték a `difflib.SequenceMatcher` egyező blokkjainak karakterszáma osztva a szócikk ujjlenyomatának hosszával; **küszöb ≥ %.1f**; (3) pontosan egy testvér-Strong sora származik ugyanabból a szócikkből (a több testvéres sorok kint maradnak); (4) a kézi kivételek (`KIZART`) kint maradnak.' % (ELEJE_MAX, FEJ_ENGEDMENY, HASONLOSAG_KUSZOB))
+    w('- A héber szöveg azért marad ki, mert a DictBDB a többszavas héber kifejezések szórendjét megfordítja (pl. H3347: ugyanaz a szöveg fordított sorrendben); a hivatkozások azért, mert a két forrás eltérően rövidíti őket (1Kgs/1Kin, 13:20 ; 13:21 / 13:20-21). Korlát: csonk szócikknél (rövid latin szöveg, pl. BDB515, BDB3121) az egyezés triviálisan magas lehet; az alias oldalán a mintában ebből hamis alias nem lett, de a mérőszám ott gyenge bizonyíték.')
     w('- **Alias** (`konkordancia/BDB_strong_alias.tsv`): %d sor (héber %d, arámi %d). **Elvetett, jelölt marad** (`konkordancia/BDB_strong_alias_elvetett.tsv`): %d sor (héber %d, arámi %d).' % (
         len(alias_sorok), nyelv_a['heber'], nyelv_a['aram'], len(elvetett), nyelv_e['heber'], nyelv_e['aram']))
-    w('- Elvetés oka: %s.' % '; '.join('%s: %d' % (k, v) for k, v in sorted(ok_e.items())))
+    w('- Elvetés oka (kód: db; ebből arámi): %s.' % '; '.join('%s: %d (arámi %d)' % (k, v, nyelv_ok[(k, 'aram')]) for k, v in sorted(ok_e.items())))
     tobb = sum(1 for r in alias_sorok if ',' in r['tars'])
     w('- Több testvéres sor a megmaradt %d aliasban: **%d** (ellenőrizve).' % (len(alias_sorok), tobb))
-    w('- **Az elvárástól való eltérés (DT-F57f).** A várakozás ~300 alias volt (290 + a visszakerülő ~10). A tényleges szám **%d**, mert a 0,9-es küszöb a korábbi 0,6-os küszöbnél szigorúbb: a bdb_id-egyező sorok közül a küszöb alatt (0,79–0,90 kerekítve) marad %d, olyan sor is, ahol a szöveg ténylegesen ugyanaz a szócikk, de a két forrás szövege az elején is eltér (átfogalmazott hivatkozások, kihagyott megjegyzések). Ezek jelöltek maradnak az elvetett listán; a küszöböt nem állítottuk.' % (
-        len(alias_sorok), sum(1 for r in elvetett if 'más szócikk' in r['indok'] and 0.75 <= float(r['indok'].split('elejegyezés ')[1].split(' ')[0]) <= 0.90)))
-    w('- **Külön listázott sorok (a felhasználó ellenőrizheti):**\n')
-    w('| Strong | testvér | bdb_id | kimenet | elejegyezés |')
+    w('- **Az elvárástól való eltérés (DT-F57g).** A várakozás kb. 294 alias volt; a tényleges szám **%d**, mert a több testvéres sorokat a szabály következetesen kint tartja (`tobb_testveres`: %d sor, köztük a H8550, H6990, H0206, H7929; minden ilyen sorban az elvetett lista `testver_strong` oszlopa a jelölteket mutatja, így kézzel beemelhetők), és a 4 kézi kivétel is kint van.' % (
+        len(alias_sorok), ok_e['tobb_testveres']))
+    w('- **Külön listázott sorok (a felhasználó ellenőrizheti; a mérőszám három tizedessel):**\n')
+    w('| Strong | testvér | bdb_id | kimenet | mérőszám / indok |')
     w('|---|---|---|---|---|')
     ae = {r['s']: r for r in alias_sorok}
     ee = {r['s']: r for r in elvetett}
-    for sid in ('H3292', 'H3347', 'H5761', 'H6978', 'H8284', 'H0532', 'H7485', 'H2753', 'H0868', 'H0869', 'H3606'):
+    for sid in ('H3347', 'H3606', 'H2088', 'H3071', 'H3073', 'H3074', 'H8550', 'H6990', 'H0206', 'H7929'):
         if sid in ae:
             r = ae[sid]
             w('| %s | %s | %s | alias | %s |' % (sid, r['tars'], r['bid'], r['hasonlosag']))
         elif sid in ee:
             r = ee[sid]
-            m = re.search(r'elejegyezés ([0-9.]+)', r['indok'])
-            w('| %s | %s | %s | elvetett | %s |' % (sid, r['tars'], r['bid'], m.group(1) if m else '—'))
+            w('| %s | %s | %s | elvetett | %s |' % (sid, r['tars'], r['bid'], kod(r)))
     w('')
-    w('- **Arámi szócikkek: két szám összevetése.** A BDB.lexicon nyelvjelölése szerint a 529 másodlagos címke között **%d** arámi szócikk van (BDB9264-től; ez a felhasználó 187-es száma). A független ellenőr 198-at talált; ez a szám a BDB.lexicon nyelvjelöléséből nem reprodukálható (a legközelebbi mérések: arámi szócikk 187; arámi másodlagos OSHL-Strong héber testvérsorral 174), a különbség (11) okát nem tudtuk azonosítani. Mérvadó a feltétel, nem a szám: az arámi szócikkek közül %d kerül elvetésre, %d marad aliasban.' % (
-        nyelv_a['aram'] + nyelv_e['aram'], nyelv_e['aram'], nyelv_a['aram']))
+    w('- **Arámi szócikkek: két szám összevetése.** A BDB.lexicon nyelvjelölése szerint a 529 másodlagos címke között **%d** arámi szócikk van (BDB9264-től; ez a felhasználó 187-es száma). A független ellenőr 198-at talált; ez a szám a BDB.lexicon nyelvjelöléséből nem reprodukálható (a legközelebbi mérések: arámi szócikk 187; arámi másodlagos OSHL-Strong héber testvérsorral 174), a különbség (11) okát nem tudtuk azonosítani. Mérvadó a feltétel, nem a szám: az arámi szócikkek közül %d kerül elvetésre (ebből `nem_ebbol_a_szocikkbol`: %d), %d marad aliasban.' % (
+        nyelv_a['aram'] + nyelv_e['aram'], nyelv_e['aram'], nyelv_ok[('nem_ebbol_a_szocikkbol', 'aram')], nyelv_a['aram']))
     w('- **Nyitott tétel:** az elvetett arámi szócikkek tényleges pótlása (a BDB.lexicon szövegéből új táblasorok) külön feladat a `/befogad` útján, nem az F57 része (DT-F57d).\n')
     return L
 
@@ -571,18 +602,20 @@ def stilus_igazit(txt):
     return txt
 
 
-def egyszerusitett_atiras(atiras):
+def egyszerusitett_atiras(atiras, tulajdonnev=False):
     """A meglévő sorok fejének egyszerűsített átírása (akal, adon, mah…; nem diakritikus).
 
     Szabály (a meglévő sorok konvenciója szerint): š -> sh; az aleph és ajin jele (ʾ, ʿ) és minden
-    kombináló diakritika (hosszúságjel, circumflex, breve, pont alatt/felett) elhagyva; a
-    betűk kisbetűk maradnak. Pl. ʾărîsay -> arisay, māqôm -> maqom, mahătallôt -> mahatallot.
+    kombináló diakritika (hosszúságjel, circumflex, breve, pont alatt/felett) elhagyva; köznévnél
+    kisbetű (maqom), tulajdonnévnél nagy kezdőbetű (a meglévő tulajdonnév-fejek: Aryowk, Moab).
+    Pl. ʾărîsay (tulajdonnév) -> Arisay, māqôm -> maqom, mahătallôt -> mahatallot.
     """
     t = atiras.replace('š', 'sh').replace('Š', 'Sh')
     t = unicodedata.normalize('NFD', t)
     t = ''.join(ch for ch in t if not unicodedata.combining(ch))
-    t = t.replace('\u02be', '').replace('\u02bf', '').replace("'", '')
-    return unicodedata.normalize('NFC', t)
+    t = t.replace('ʾ', '').replace('ʿ', '').replace("'", '')
+    t = unicodedata.normalize('NFC', t)
+    return t[:1].upper() + t[1:] if tulajdonnev else t
 
 
 def m2_sorok():
@@ -596,7 +629,8 @@ def m2_sorok():
             continue
         bid, strong, cim = r[0], r[1], r[2]
         eredeti = 'H' + str(int(strong[1:]))
-        atiras = egyszerusitett_atiras(oshl[strong][7])
+        e = bdb_beolvas()[0].get(bid)
+        atiras = egyszerusitett_atiras(oshl[strong][7], bool(e and e['szofaj'].startswith('proper name')))
         szoveg = stilus_igazit(strip_html(lexikon_torzs(bid)))
         szoveg = szoveg.replace('\t', ' ')
         ki.append((strong, '\t'.join([strong, eredeti, '%s. %s %s' % (eredeti, atiras, szoveg)])))
@@ -633,7 +667,7 @@ ELVETETT_FEJLEC = ['masodlagos_strong', 'bdb_id', 'nyelv', 'cimszo', 'testver_st
 
 
 def alias(ts):
-    prov = 'scope=konkordancia/lexikonok_nyers/BDB.lexicon + konkordancia/BDB_teljes_unabridged.tsv | forras=eszkozok/bdb_strong_potlas.py --alias (masodlagos H-cimke, DT-F57c) | ts=%s' % ts
+    prov = 'scope=konkordancia/lexikonok_nyers/BDB.lexicon + konkordancia/BDB_teljes_unabridged.tsv | forras=eszkozok/bdb_strong_potlas.py --alias (masodlagos H-cimke; feltetel: bdb_id-egyezes + a szocikk latin betui >= 0,9 aranyban a testversor elejen, egy testver; DT-F57f/g) | ts=%s' % ts
     alias_sorok, elvetett = alias_szetvalogat()
     with open(ALIAS, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\t'.join(ALIAS_FEJLEC) + '\n')

@@ -147,7 +147,7 @@ def teszt_alias():
         # bdb_id-feltétel: a testvér-sor ugyanabból a BDB-szócikkből származik
         assert htop[r[1].split(',')[0]][0] == r[2], r[0]
         assert float(r[5]) >= b.HASONLOSAG_KUSZOB
-    assert len(sorok) == 248
+    assert len(sorok) == 256
 
 
 def teszt_aramai_nem_kerul_aliasba():
@@ -182,6 +182,34 @@ def teszt_szoveg_az_elejen_szabaly():
         assert s in alias, s
 
 
+def teszt_f57g_latin_szoveg_heber_szorend():
+    """DT-F57g: H3347 -> H4169 alias (a héber szórend-eltérés ellenére), H3606 -> H6903 elvetett."""
+    alias = {r[0]: r for r in _tsv(b.ALIAS)}
+    elv = {r[0]: r for r in _tsv(b.ELVETETT)}
+    assert alias['H3347'][1] == 'H4169' and float(alias['H3347'][5]) >= 0.9
+    assert 'H3606' not in alias and elv['H3606'][5].startswith('a testvérsor más szócikk')
+    # csak latin betűk számítanak: a héber szórend megfordítása nem számít
+    assert b._ujjlenyomat('אב גד foo Gen 1:1 bar') == 'foobar'
+
+
+def teszt_f57g_kint_tartott_sorok():
+    alias = {r[0] for r in _tsv(b.ALIAS)}
+    elv = {r[0]: r for r in _tsv(b.ELVETETT)}
+    assert 'H2088' not in alias and elv['H2088'][5].startswith('kifejezes_tarscimke')
+    for s in ('H3071', 'H3073', 'H3074'):
+        assert s not in alias and elv[s][5].startswith('kezi_dontes'), s
+    for s in ('H8550', 'H6990', 'H0206', 'H7929'):
+        assert s not in alias and elv[s][5].startswith('tobb_testveres'), s
+
+
+def teszt_elvetett_kijelzes_harom_tizedes():
+    for r in _tsv(b.ELVETETT):
+        if r[5].startswith('a testvérsor más szócikk'):
+            import re
+            m = re.search(r'elejegyezés ([0-9]+[.][0-9]{3}), a feltétel: >= 0[.]9', r[5])
+            assert m and float(m.group(1)) < 0.9, r[5]
+
+
 def teszt_elejegyezes_fuggveny():
     assert b.elejegyezes('abcdefghij', 'xx abcdefghij kiegeszites') == 1.0
     assert b.elejegyezes('abcdefghij', 'zzzzzzzzzz') < 0.2
@@ -190,6 +218,7 @@ def teszt_elejegyezes_fuggveny():
 
 def teszt_egyszerusitett_atiras():
     assert b.egyszerusitett_atiras('ʾărîsay') == 'arisay'
+    assert b.egyszerusitett_atiras('ʾărîsay', tulajdonnev=True) == 'Arisay'
     assert b.egyszerusitett_atiras('māqôm') == 'maqom'
     assert b.egyszerusitett_atiras('mahătallôt') == 'mahatallot'
     assert b.egyszerusitett_atiras('šûr') == 'shur'
@@ -198,7 +227,7 @@ def teszt_egyszerusitett_atiras():
 def teszt_potolt_sor_feje_egyszerusitett():
     tabla = b.tabla_beolvas()
     assert tabla['H4725'].split('\t', 2)[2].startswith('H4725. maqom ')
-    assert tabla['H0747'].split('\t', 2)[2].startswith('H747. arisay ')
+    assert tabla['H0747'].split('\t', 2)[2].startswith('H747. Arisay ')
     assert tabla['H4123'].split('\t', 2)[2].startswith('H4123. mahatallot ')
 
 
