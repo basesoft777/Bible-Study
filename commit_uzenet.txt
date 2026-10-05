@@ -1,3 +1,0 @@
-F30.6: napló, helyi próba, megállás a DT-F30a döntésnél (allapot: dontesre_var)
-
-Co-Authored-By: Claude Sonnet 5.5 <noreply@anthropic.com>
