@@ -5,13 +5,13 @@ kod: BDB_FORDITAS
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: megallt
+allapot: fut
 ag: claude/f38-adag5
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=sonnet; az 1–4. adagra is, DT-F38e), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
-kovetkezo: ⛔ DT-F38i (az 5. adag kész; a 6. adag, sorrend 407–, indulhat-e); a döntés után a 6. adag, Sonnet
+kovetkezo: "Folytatás: a 6. adag (sorrend 407–), Sonnet, a #56 BDB_ADATBLOKK adatblokkjával és fejezetszám-javítótáblájával (DT-F38i 🟢); a menet elején a gyökcsoport-mérés (M0 5. pont)"
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv]
 ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/teszt_forditas_kapuk.py, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, forditas/prompt_v4.md, naplok/BDB_FORDITAS_kapuk.py, naplok/BDB_FORDITAS_regresszio.py, naplok/FORDITAS_kisnagybetu_csere.tsv, naplok/BDB_FORDITAS_gyokcsoportok.tsv, naplok/BDB_FORDITAS_zaras2.py, naplok/BDB_FORDITAS_zaras3.py, naplok/BDB_FORDITAS_zaras_javitasok.tsv, eszkozok/teszt_bdb_zaras.py, NYITOTT_FELADATOK.md, naplok/ELLENOR_F38_zaras_2.md, naplok/ELLENOR_F38_zaras_3.md]
-fugg: [34]
+fugg: [34, 56]
 ---
 
 # A teljes BDB magyar fordítása (BDB_FORDITAS)
