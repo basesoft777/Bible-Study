@@ -37,7 +37,7 @@ from kozos import (
 # (SZINT-ben rogzitett) szintjukon jelentkeznek. E6/E7 a brief expliciten
 # ezt mondja ki; E4/E5/E16 szerkezetileg ugyanide tartozik (E5 maga is
 # diff-alapu, E16 fajl-letezes, E4 motivum-szintu audit-allapot).
-FAJLSZINTU_SZABALYOK = {'E4', 'E5', 'E6', 'E7', 'E16', 'E19', 'E25'}
+FAJLSZINTU_SZABALYOK = {'E4', 'E5', 'E6', 'E7', 'E16', 'E19', 'E25', 'E26'}
 
 # Adattablan futo szabalyok: --teljes modban a futtat.py a ['__TELJES__']
 # jelzot adja nekik (az md-fajlok listaja helyett), kulonben nem futnanak.
@@ -47,7 +47,7 @@ SZINT = {
     'E2': 'HIBA', 'E3': 'HIBA', 'E4': 'HIBA', 'E5': 'HIBA', 'E6': 'HIBA',
     'E7': 'HIBA', 'E8': 'HIBA', 'E9': 'HIBA', 'E10': 'HIBA', 'E11': 'HIBA',
     'E12': 'FIGYELMEZTETES', 'E13': 'FIGYELMEZTETES', 'E14': 'FIGYELMEZTETES',
-    'E15': 'FIGYELMEZTETES', 'E16': 'HIBA', 'E19': 'HIBA', 'E25': 'FIGYELMEZTETES',
+    'E15': 'FIGYELMEZTETES', 'E16': 'HIBA', 'E19': 'HIBA', 'E25': 'FIGYELMEZTETES', 'E26': 'HIBA',
 }
 
 
@@ -1034,6 +1034,135 @@ def e25_dontes_atvezetes(fajlok):
                     '%s: a #%s tovabbvivo feladat allapota %s, a dontes (%s) ota %d nap telt el'
                     % (forras, tv, allapot, d['datum'], (ma - datum).days)
                 ))
+    return talalatok
+
+
+# --------------------------------------------------------------------------
+# E26 -- veglegesszam az agon (F30_SZAMOZAS_BRIEF.md SZ.3)
+# --------------------------------------------------------------------------
+# Az E17 nevet a DT3, az E18-at a feladatkovetes, az E19-et a szotari
+# forditas, az E20-E24-et mas feladatok foglaljak, az E25 a dontes-
+# atvezetes. Ez a kovetkezo szabad szam.
+#
+# PR-en (nem push-esemenynel: a main-en a `szamkiosztas` Action ad szamot)
+# a diff nem hozhat letre uj veglegesszamot:
+#   (a) a DONTESEK.md `| DT<n> |` soraban, a NYITOTT_FELADATOK.md
+#       `- **N<n>` felsorolasaban, a FELADATOK.md Dontesnaplo `| D<n> |`
+#       soraban nem jelenhet meg a base-ben nem letezo vegleges azonosito;
+#   (b) hozzaadott sor nem hivatkozhat a base-beli legnagyobbnal nagyobb
+#       DT<n>-re (minden .md/.tsv) vagy N<n>-re (.md, 1-3 jegyu);
+#   (c) a helyorzok (DT-F<nn>, N-F<nn>, D-F<nn>) definicioja a fejben egyedi.
+# Kivetel: a commit-uzenetben `SZÁMKIOSZTÁS-SZÁNDÉKOS:` kezdetu sor
+# (pl. egy regi, hibas szam atszamozasa) -- mint az E5 torles-jelolese.
+# Fajlszintu (D8): HIBA, ha a PR ilyet hoz.
+
+E26_UZENET = 'Az ágon helyőrző kell (DT-F<nn>), a végleges számot a merge adja.'
+E26_SZANDEKOS = re.compile(r'^\s*(SZÁMKIOSZTÁS-SZÁNDÉKOS|SZAMKIOSZTAS-SZANDEKOS):', re.MULTILINE)
+_E26_FAJL = {'DT': 'DONTESEK.md', 'N': 'NYITOTT_FELADATOK.md', 'D': 'FELADATOK.md'}
+_E26_VEGLEGES_DEF = {
+    'DT': re.compile(r'^\|\s*(DT\d+)\s*\|'),
+    'N': re.compile(r'^\s*(?:[-*]|\d+\.)\s*\**\s*(N\d{1,3})(?![A-Za-z0-9])'),
+    'D': re.compile(r'^\|\s*(D\d+)\s*\|'),
+}
+_E26_HELYORZO_DEF = {
+    'DT': re.compile(r'^\|\s*(DT-F\d+[a-z]?)\s*\|'),
+    'N': re.compile(r'^\s*(?:[-*]|\d+\.)\s*\**\s*(N-F\d+[a-z]?)(?![A-Za-z0-9])'),
+    'D': re.compile(r'^\|\s*(D-F\d+[a-z]?)\s*\|'),
+}
+_E26_DT_HIVATKOZAS = re.compile(r'(?<![A-Za-z0-9-])DT(\d+)(?![A-Za-z0-9])')
+_E26_N_HIVATKOZAS = re.compile(r'(?<![A-Za-z0-9-])N(\d{1,3})(?![A-Za-z0-9])')
+_E26_HUNK_FEJLEC = re.compile(r'^@@ -\d+(?:,\d+)? \+(\d+)(?:,\d+)? @@')
+_E26_KIZART_FAJL = {
+    'F30_SZAMOZAS_BRIEF.md',
+    'eszkozok/szamkiosztas.py',
+    'eszkozok/ellenorzes/szabalyok.py',
+    'eszkozok/ellenorzes/tesztek/test_szabalyok.py',
+    'eszkozok/ellenorzes/tesztek/test_szamkiosztas.py',
+}
+
+
+def _e26_git_fajl(ref, relut):
+    try:
+        return subprocess.check_output(
+            ['git', 'show', '%s:%s' % (ref, relut)],
+            cwd=ROOT, stderr=subprocess.DEVNULL).decode('utf-8', errors='replace')
+    except (subprocess.CalledProcessError, OSError):
+        return ''
+
+
+def _e26_definiciok(szoveg, minta):
+    ki = []
+    for sor in szoveg.splitlines():
+        m = minta.match(sor)
+        if m:
+            ki.append(m.group(1))
+    return ki
+
+
+def e26_vegleges_szam_agon(base_ref, head_ref, commit_uzenet='', esemeny=''):
+    talalatok = []
+    if not base_ref or not head_ref or esemeny == 'push':
+        return talalatok
+    if E26_SZANDEKOS.search(commit_uzenet or ''):
+        return talalatok
+
+    def hiba(fajl, sor, reszlet):
+        talalatok.append(Talalat('E26', SZINT['E26'], fajl, sor, '%s %s' % (reszlet, E26_UZENET)))
+
+    legnagyobb = {}
+    for kulcs, relut in _E26_FAJL.items():
+        base_sz = _e26_git_fajl(base_ref, relut)
+        head_sz = _e26_git_fajl(head_ref, relut)
+        base_def = set(_e26_definiciok(base_sz, _E26_VEGLEGES_DEF[kulcs]))
+        for az in _e26_definiciok(head_sz, _E26_VEGLEGES_DEF[kulcs]):
+            if az not in base_def:
+                hiba(relut, 0, 'új végleges azonosító: %s.' % az)
+                base_def.add(az)
+        helyorzok = _e26_definiciok(head_sz, _E26_HELYORZO_DEF[kulcs])
+        for az in sorted({h for h in helyorzok if helyorzok.count(h) > 1}):
+            hiba(relut, 0, 'a helyőrző kétszer definiált: %s.' % az)
+        if kulcs == 'DT':
+            szamok = [int(x) for x in re.findall(r'\bDT(\d+)\b', base_sz)]
+        elif kulcs == 'N':
+            szamok = [int(x) for x in re.findall(r'\bN(\d{1,3})\b', base_sz)]
+        else:
+            szamok = []
+        legnagyobb[kulcs] = max(szamok) if szamok else 0
+
+    try:
+        kimenet = subprocess.check_output(
+            ['git', 'diff', '--unified=0', '%s..%s' % (base_ref, head_ref), '--', '*.md', '*.tsv'],
+            cwd=ROOT, stderr=subprocess.DEVNULL).decode('utf-8', errors='replace')
+    except (subprocess.CalledProcessError, OSError):
+        return talalatok
+    fajl = None
+    sorszam = 0
+    jelentett = set()
+    for sor in kimenet.splitlines():
+        if sor.startswith('diff --git'):
+            m = re.search(r' b/(\S+)$', sor)
+            fajl = m.group(1) if m else None
+            if fajl and (fajl in _E26_KIZART_FAJL
+                         or fajl.startswith(('konkordancia/', 'generalt_proba/', 'beerkezo/'))):
+                fajl = None
+            continue
+        m = _E26_HUNK_FEJLEC.match(sor)
+        if m:
+            sorszam = int(m.group(1))
+            continue
+        if fajl is None or not sor.startswith('+') or sor.startswith('+++'):
+            continue
+        szoveg = sor[1:]
+        for m in _E26_DT_HIVATKOZAS.finditer(szoveg):
+            if int(m.group(1)) > legnagyobb['DT'] and ('DT', m.group(0)) not in jelentett:
+                jelentett.add(('DT', m.group(0)))
+                hiba(fajl, sorszam, 'a %s szám a main-en még nem létezik.' % m.group(0))
+        if fajl.endswith('.md'):
+            for m in _E26_N_HIVATKOZAS.finditer(szoveg):
+                if int(m.group(1)) > legnagyobb['N'] and ('N', m.group(0)) not in jelentett:
+                    jelentett.add(('N', m.group(0)))
+                    hiba(fajl, sorszam, 'a %s szám a main-en még nem létezik.' % m.group(0))
+        sorszam += 1
     return talalatok
 
 

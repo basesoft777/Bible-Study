@@ -1,0 +1,75 @@
+name: szamkiosztas
+
+# F30 (#30): a dontes- (DT), nyitott-tetel- (N) es dontesnaplo- (D) szamokat az
+# agon helyorzo (DT-F<nn>, N-F<nn>, D-F<nn>) jeloli; a veglegesszamot ez a
+# main-re futo Action osztja ki merge utan (eszkozok/szamkiosztas.py), es egy
+# commitot tesz a main-re: `szamkiosztas: DT-F17 → DT7, ...`. Az agon a vegleges
+# szamot a CI E26 szabalya tiltja.
+#
+# Ugyanaz a jogosultsag es minta, mint a feladatok.yml-ben (F20 B6, D25): a
+# main-t ruleset vedi (PR kotelezo), az egyetlen bypass a `pardes-feladatok`
+# GitHub App; a push ennek tokenjevel megy, a workflow sajat GITHUB_TOKEN-je
+# csak olvas. Titkok: FELADATOK_APP_ID, FELADATOK_APP_KEY.
+#
+# Nincs vegtelen hurok: (1) a gep sajat commitjara a `[bot]` actor miatt nem fut
+# ujra; (2) ha mégis lefutna, a szkript idempotens (helyorzo nelkul nem
+# valtoztat, nincs diff, nincs commit). A feladatok-frissites workflow-val
+# kozos concurrency-csoport: a ket gepi iras egymas utan fut.
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: feladatok-frissites
+  cancel-in-progress: false
+
+jobs:
+  kiosztas:
+    if: ${{ !endsWith(github.actor, '[bot]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: App-token (pardes-feladatok)
+        id: app
+        uses: actions/create-github-app-token@bcd2ba49218906704ab6c1aa796996da409d3eb1 # v3.2.0
+        with:
+          app-id: ${{ secrets.FELADATOK_APP_ID }}
+          private-key: ${{ secrets.FELADATOK_APP_KEY }}
+
+      - name: Checkout (a main aktualis csucsa, nem az esemeny commitja)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ steps.app.outputs.token }}
+
+      - name: Python telepitese
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Szamkiosztas (van-e helyorzo?)
+        run: python eszkozok/szamkiosztas.py --ir --uzenet-fajl "$RUNNER_TEMP/szamkiosztas_uzenet.txt"
+
+      - name: Feladatkovetes ujragenerálása (ha a csere brief-fejlecet erintett)
+        run: |
+          if [ -f "$RUNNER_TEMP/szamkiosztas_uzenet.txt" ]; then
+            python eszkozok/feladatok.py general
+            python eszkozok/feladatterkep.py
+          fi
+
+      - name: Gepi commit, ha van valtozas
+        run: |
+          if [ ! -f "$RUNNER_TEMP/szamkiosztas_uzenet.txt" ] || git diff --quiet; then
+            echo "Nincs kiosztando helyorzo."
+            exit 0
+          fi
+          git config user.name "pardes-feladatok[bot]"
+          git config user.email "pardes-feladatok[bot]@users.noreply.github.com"
+          git add -u
+          git -c i18n.commitEncoding=UTF-8 commit -F "$RUNNER_TEMP/szamkiosztas_uzenet.txt"
+          git pull --rebase origin main
+          git push origin HEAD:main
