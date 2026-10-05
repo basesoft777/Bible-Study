@@ -6,13 +6,13 @@ Ez az **első jelentés**, nincs előző, ezért az „új” szakasz a teljes l
 
 ## Új az előző jelentés óta
 
-Nincs előző jelentés: minden találat új (4 kategória, összesen 6 találat; l. alább).
+Nincs előző jelentés: minden találat új (4 kategória, összesen 5 találat; l. alább).
 
 ## Összefoglaló
 
 | Kategória | Találat |
 |---|---|
-| 1. Átvezetetlen döntés | 2 (D34 ↔ `CLAUDE.md`; D34 ↔ `RENDER_BRIEF.md`, `MUNKAMENET.md`) |
+| 1. Átvezetetlen döntés | 2 (D34 ↔ `CLAUDE.md`; D34 ↔ `MUNKAMENET.md`; a `RENDER_BRIEF.md` archív, nem találat) |
 | 2. Ütköző azonosítók | 1 (a D-számozás névtér-ütközése; kiemelve a D34) |
 | 3. Kettős szóhasználat | 2 („tanulmány”; „törzscikk” vs „motívumcikk”) |
 | 4. Régóta álló továbbvivő | 0 (a #11 `brief_kell`, de a D34 5 napos; a határ 2026-10-14) |
@@ -21,7 +21,7 @@ Nincs előző jelentés: minden találat új (4 kategória, összesen 6 találat
 
 ### 1.1 D34 ↔ `CLAUDE.md` rétegtáblája (a kiinduló eset)
 
-- Döntés: `FELADATOK.md:189` / `F26_EGYFORRAS_NAPLO_BRIEF.md:38` — „Motívumonként egy kézi forrás … a motívumcikk (a volt „tematikus tanulmány”), a lexikonoldal és az olvasói nézetek generáltak; a törzscikk a #11-ben megszűnik”.
+- Döntés: `FELADATOK.md:191` / `F26_EGYFORRAS_NAPLO_BRIEF.md:38` — „Motívumonként egy kézi forrás … a motívumcikk (a volt „tematikus tanulmány”), a lexikonoldal és az olvasói nézetek generáltak; a törzscikk a #11-ben megszűnik”.
 - Régi állapot: `CLAUDE.md:33` — „**kimenet** — generált | … `lexikon/[ID]_TUDOMANYOS.md`, `lexikon/[ID]_TORZSCIKK.md` | **kézzel szerkeszteni tilos**”; `CLAUDE.md:47` — „A `lexikon/[ID]_TORZSCIKK.md` a lexikonoldalból renderel, önálló forrás nélkül”.
 - Miért ütközik: a rétegtábla a törzscikket stabil, generált kimenetként írja, a D34 szerint viszont megszűnik; a „forrás” sor (`CLAUDE.md:32`) a `tematikus_lezart/`-et kézi forrásnak mondja, a D34 szerint a forrás a `motivumok/[ID].md`.
 - **Állapot:** a `CLAUDE.md:35` átmeneti jelölést visel („Átmenet (D34) … a #11 lezárásáig érvényes”), tehát **jogos átmenet**, nem hiba. A #26 vitte át; a végleges átírás a #11-é. Gépi jelzés: E25 (JELENTES).
@@ -42,8 +42,8 @@ Nincs előző jelentés: minden találat új (4 kategória, összesen 6 találat
 
 ### 2.1 A `D<n>` névtér: a D34 (és D1–D42) kétféle jelentéssel
 
-- `F05_SZOTAR_BRIEF.md:356` — „**D34** A héber kiejtés-jelöltekben a begadkefat-spirantizáció …”; `adat/SEMA.md:811` — „### 2.18 … (F05_SZOTAR_BRIEF.md S1.7, D34–D37)”.
-- `FELADATOK.md:189` / `F26_EGYFORRAS_NAPLO_BRIEF.md:38` — „| D34 | Motívumonként egy kézi forrás …”.
+- `F05_SZOTAR_BRIEF.md:356` — „**D34** A héber kiejtés-jelöltekben a begadkefat-spirantizáció …”; `adat/SEMA.md:812` — „### 2.18 … (F05_SZOTAR_BRIEF.md S1.7, D34–D37)”.
+- `FELADATOK.md:191` / `F26_EGYFORRAS_NAPLO_BRIEF.md:38` — „| D34 | Motívumonként egy kézi forrás …”.
 - Miért ütközik: ugyanaz az azonosító két jelentéssel; a D34–D37, D38–D41 és D42 az F05-ben a brieflokális számozás, a `FELADATOK.md`-ben a globális. Hivatkozás („D34”) fájl nélkül nem egyértelmű; a `CLAUDE.md:35` és a `RENDER_BRIEF`-hivatkozások a globálisat értik, a `SEMA.md` 2.18 a lokálisat.
 - Szélesebb kép (K0, `naplok/KONZISZTENCIA_naplo.md`): a számozás **fájlonként újraindul**; az F05 D20–D33-a és minden brief saját D1–D18 tartománya ütközik a `FELADATOK.md` D1–D50-nel.
 - A `DT-M1–M6` (`MUNKATERV.md`) és a `DONTESEK.md:94–99` `DT-M1–M6` **nem ütközik**: ugyanazok a döntések (a `DONTESEK.md` rögzíti őket); a `DT-M7–M8` új. A K0 naplóban „ellenőrizendő”-ként szerepelt, ezzel lezárva.
@@ -55,7 +55,7 @@ Nincs előző jelentés: minden találat új (4 kategória, összesen 6 találat
 
 - `CLAUDE.md:4–5` — „a tanulmányok ennek előállítási folyamata … a kereszthivatkozás adat, a tanulmány és a lexikon pedig ennek az adatnak a nézete”: a **tanulmány itt nézet** (D34 előtti „tematikus tanulmány”).
 - `CLAUDE.md:35` — „A „tanulmány” az igeszakasz-tanulmány (kézi forrás), a „motívumcikk” a `motivumok/[ID].md`-ből generált nézet (DT-F26a)”: itt **kézi forrás**.
-- `F37_TANULMANY_ELLENORZES_BRIEF.md:25` — „A bővített tanulmány neve mostantól „tanulmány”” (kézi, igeszakasz); `FELADATOK.md:189` (D34): „a tanulmányok (igeszakasz-tanulmányok) önállóak”.
+- `F37_TANULMANY_ELLENORZES_BRIEF.md:25` — „A bővített tanulmány neve mostantól „tanulmány”” (kézi, igeszakasz); `FELADATOK.md:191` (D34): „a tanulmányok (igeszakasz-tanulmányok) önállóak”.
 - `MUNKAMENET.md:68` — „a rések megírása **a tanulmányban**”, és `MUNKAMENET.md:111` / `CLAUDE.md:44` — „a motívum tematikus tanulmányából”: itt a **motívumcikk-előd** („tematikus tanulmány”).
 - Miért ütközik: a „tanulmány” szó három jelentésben él (igeszakasz-tanulmány, kézi forrás; a motívum tematikus tanulmánya, a D34 szerint generált nézet; a `CLAUDE.md:5` általános „tanulmány = nézet” állítása). A `CLAUDE.md:35` feloldja az átmenetet, de a `CLAUDE.md:5` és `:44`, a `MUNKAMENET.md` és az F37 még nem követi.
 - Javaslat: `/befogad`-jelölt: szóhasználati egységesítés (`CLAUDE.md:5`, `:44`, `MUNKAMENET.md:68,111` és az F37 brief), a #11-gyel együtt; addig a `CLAUDE.md:35` az irányadó. Gépi szabályt nem javaslok (nincs egyértelmű regex).

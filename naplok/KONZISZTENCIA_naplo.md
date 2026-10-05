@@ -56,7 +56,7 @@ A tábla: `adat/dontes_hatas.tsv`, séma: `adat/SEMA.md` 2.21. Oszlopok a brief 
 
 **Eltérések a briefhez képest (jelezve):**
 - A brief a `MUNKAMENET.md` C1 sorát „139. sor körül” adja; a mai fájlban a C1 a **67.** sor, a törzscikk bemutatása a **181.** sor. A minta a szövegre illik, nem a sorszámra, ezért ez nem érinti a szabályt.
-- A brief a `tovabbvivo_feladat` értékét „26, illetve 11”-nek adja. A #26 (EGYFORRAS_NAPLO) azóta **lezárva** és mergelve (`117bafc`, 2026.10.04): a `CLAUDE.md` átmeneti sorát (`Átmenet (D34)`) ő vitte át. A tényleges továbbvivő a **#11** (MIGRACIO, `brief_kell`): a törzscikk megszűnése és a `CLAUDE.md`/`MUNKAMENET.md`/`RENDER_BRIEF.md` végleges átírása ott történik. Ezért mind az öt sor a 11-et viszi; a 26 nem szerepel (lezárt feladatnál az E25 (b) úgysem szólna).
+- A brief a `tovabbvivo_feladat` értékét „26, illetve 11”-nek adja. A #26 (EGYFORRAS_NAPLO) azóta **lezárva** és mergelve (`117bafc`, 2026.10.04): a `CLAUDE.md` átmeneti sorát (`Átmenet (D34)`) ő vitte át. A tényleges továbbvivő a **#11** (MIGRACIO, `brief_kell`): a törzscikk megszűnése és a `CLAUDE.md`/`MUNKAMENET.md`/`RENDER_BRIEF.md` végleges átírása ott történik. Ezért mind a sor a 11-et viszi (a tábla a K3-ban 3 sorra szűkült); a 26 nem szerepel (lezárt feladatnál az E25 (b) úgysem szólna).
 - A (b) ág ma még nem szól: a #11 `brief_kell`, de a D34 (2026-09-30) óta 5 nap telt el; a 14. nap 2026-10-14.
 - A `CLAUDE.md` D34-sora azért csak JELENTES, mert a #26 átmeneti jelölést tett a fájlba. Az elfogadási feltétel („az E25 legalább a D34 `CLAUDE.md`-sorát jelzi”) ezzel teljesül: jelzi, de nem riaszt.
 
