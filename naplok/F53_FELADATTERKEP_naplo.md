@@ -14,7 +14,8 @@ A teljes napló (FT.6) ezt a fájlt bővíti.*
 | FT.4 | `5e8e6b7`, `64813ad` | kész: a diff jóváhagyva, változtatás nélkül alkalmazva; N-F53e (CI-őr) felvéve |
 | FT.5 | `7d55ed7` | **halasztva** (felhasználói döntés 2026-10-05: (c)); N-F53f |
 | FT.6 | l. git log | napló, push, draft PR, `fuggetlen-ellenor` (`naplok/ELLENOR_F53.md`) |
-| FT.7 | — | **nem indult**: a cél (friss JSON a `files`-olvasáshoz) az FT.5 nélkül okafogyott; a felhasználó dönt, együtt halasztódik-e |
+| FT.7 | — | **halasztva az FT.5-tel együtt** (felhasználói döntés 2026-10-05; N-F53f): a cél (friss JSON a `files`-olvasáshoz) az FT.5 nélkül okafogyott |
+| ELLENOR | `8332ddc` | 1. → N-F53e (Action-írás mellett megszűnik); 2. → N-F53f; 3. nincs teendő; 4. brief v1.2 |
 
 ## Elfogadási feltételek (brief 7.) — állás az FT.6-nál
 

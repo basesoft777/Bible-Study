@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-05",
-   "commit": "7d55ed7"
+   "commit": "a596346"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -541,7 +541,7 @@
    "fazis": "folyamat",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: a draft PR és a független ellenőrzés átnézése; döntés, hogy az FT.7 az FT.5-tel együtt halasztódik-e (az FT.5 halasztva, N-F53f: nincs chan_… azonosító); merge után az Action-próba (7.6)",
+   "most": "Te: a PR #201 merge-e; utána az Action-próba (7.6). Az FT.5 és az FT.7 halasztva (N-F53f), amíg nincs chan_… azonosító",
    "fugg": "—",
    "tervezett": false,
    "reszletes": "",
