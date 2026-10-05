@@ -510,7 +510,10 @@ def epit(gyoker=REPO, main_all=None):
 
     def felirat(k):
         if k['szam'] is not None:
-            return ('#%d %s' % (k['szam'], k['kod'] or _clip(k['cim'], 24))).replace('"', "'")
+            # a puszta fazis-kod (`F22`) nem nev: ilyenkor a cim eleje a felirat
+            nev = k['kod'] if k['kod'] and not re.fullmatch(r'F\d+', k['kod']) else _clip(k['cim'], 24)
+            nev = re.sub(r'[`*\\]', '', nev)
+            return ('#%d %s' % (k['szam'], nev)).replace('"', "'")
         return k['kulcs']
 
     sorok = ['flowchart LR']
@@ -646,8 +649,9 @@ section{display:grid;gap:14px;min-width:0}
 .step{border-top:3px solid var(--plan-solid)}
 .step strong{font-weight:600}
 .step small{color:var(--muted);font-size:12.5px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.step{position:relative}
 .step.par{border-style:dashed}
-.arrow{align-self:center;color:var(--muted);font-family:var(--f-mono)}
+.step .sep{position:absolute;top:8px;right:10px;color:var(--muted);font-family:var(--f-mono)}
 
 /* hullámok */
 .waves{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
@@ -790,24 +794,30 @@ header{position:relative}
 const D = @@ADAT@@;
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const clip = (s,n) => { s = String(s).split("**").join("").split(String.fromCharCode(96)).join(""); s = s.split(" ").filter(Boolean).join(" "); if(s.length<=n) return s; const v=s.slice(0,n); const i=v.lastIndexOf(" "); return (i>n*0.6?v.slice(0,i):v).replace(/[ ,;:—-]+$/,"")+"…"; };
+const clip = (s,n) => { s = String(s).split(" ").filter(Boolean).join(" "); if(s.length<=n) return s; const v=s.slice(0,n); const i=v.lastIndexOf(" "); return (i>n*0.6?v.slice(0,i):v).replace(/[ ,;:—-]+$/,"")+"…"; };
+/* minimális inline Markdown: előbb HTML-escape, aztán a jelölés (visszaperjeles jel, `kód`, **vastag**, *dőlt*) */
+const MD = /\\([\\`*_|])|`([^`]+)`|\*\*([^*]+)\*\*|\*([^*\s](?:[^*]*[^*\s])?)\*/g;
+const md = s => esc(s).replace(MD,(m,e,c,b,i)=> e!==undefined?e : c!==undefined?"<code>"+c+"</code>" : b!==undefined?"<strong>"+b+"</strong>" : "<em>"+i+"</em>").replace(/[*`]/g,"");
+const plain = s => String(s).replace(MD,(m,e,c,b,i)=> e!==undefined?e : c!==undefined?c : b!==undefined?b : i).replace(/[*`]/g,"");
+const clipmd = (s,n) => md(clip(s,n));
 const ST = {}; D.cimkek.allapot.forEach(([k,l])=>{ST[k]={l:l,c:"s-"+k};});
 ST.kesz = {l:"Kész",c:"s-done"}; ST.nincs = {l:"nincs a térképen",c:"s-nincs"};
 const PH = {}; D.cimkek.fazis.forEach(([k,l])=>{PH[k]=l;});
-const chip = (t,s) => { const k = ST[s]?s:"nincs"; return `<span class="chip ${ST[k].c}">${esc(t)}${s==="kesz"?" ✓":""}</span>`; };
+const chip = (t,s) => { const k = ST[s]?s:"nincs"; return `<span class="chip ${ST[k].c}">${esc(plain(t))}${s==="kesz"?" ✓":""}</span>`; };
 const B = D.meta.belyeg;
 $("#eyebrow").textContent = "Bible-Study · források állapota " + (B.datum||"?") + " · commit " + (B.commit||"?");
 $("#lablec").textContent = "Forrás: a *_BRIEF.md fejlécek (feladatok.py) · MUNKATERV.md · DONTESEK.md · eszkozok/feladatterkep_kartyak.tsv · bélyeg: " + (B.datum||"?") + " " + (B.commit||"?") + " · generálta: " + D.meta.generator + " — kézzel ne szerkeszd.";
 
 $("#stats").innerHTML = D.csempek.map(c=>`<div class="stat ${c.kulcs}"><b>${c.db}</b><span>${esc(c.cimke)}</span></div>`).join("");
 
-$("#seq").innerHTML = D.sor.length ? D.sor.map((s,i)=>
-  (i?`<span class="arrow" aria-hidden="true">${s.parhuzamos&&D.sor[i-1].parhuzamos?"∥":"→"}</span>`:"")+
-  `<div class="step${s.parhuzamos?" par":""}"><span class="n">#${s.szam}${s.felbemaradt?" · folytatás":""}</span><strong class="mono">${esc(s.kod||s.cim)}</strong><small title="${esc(s.most)}">${esc(clip(s.most,160))}</small></div>`).join("")
+$("#seq").innerHTML = D.sor.length ? D.sor.map((s,i)=>{
+  const kov = D.sor[i+1];
+  const sep = kov ? `<span class="sep" aria-hidden="true">${s.parhuzamos&&kov.parhuzamos?"∥":"→"}</span>` : "";
+  return `<div class="step${s.parhuzamos?" par":""}">${sep}<span class="n">#${s.szam}${s.felbemaradt?" · folytatás":""}</span><strong class="mono">${md(s.kod||s.cim)}</strong><small title="${esc(plain(s.most))}">${clipmd(s.most,160)}</small></div>`;}).join("")
   : '<p class="note">Nincs indítható 1. fázisú feladat.</p>';
 
 const WC=["var(--run-solid)","var(--ready-solid)","var(--plan-solid)","var(--wait-solid)","var(--idle-solid)"];
-$("#waves").innerHTML = D.hullamok.map((w,i)=>`<div class="wave" style="border-top-color:${WC[i%WC.length]}"><h3>${esc(w.nev)}</h3><div class="chips">${w.elemek.map(e=>chip(e.szoveg,e.allapot)).join("")}</div><div class="gate">${esc(w.kapu)}</div></div>`).join("");
+$("#waves").innerHTML = D.hullamok.map((w,i)=>`<div class="wave" style="border-top-color:${WC[i%WC.length]}"><h3>${md(w.nev)}</h3><div class="chips">${w.elemek.map(e=>chip(e.szoveg,e.allapot)).join("")}</div><div class="gate">${md(w.kapu)}</div></div>`).join("");
 
 $("#legend").innerHTML = D.cimkek.allapot.map(([k,l])=>chip(l,k)).join("");
 
@@ -826,11 +836,11 @@ function renderBoard(){
   $("#board").innerHTML = order.map(s=>{
     const items=list.filter(t=>t.allapot===s); if(!items.length) return "";
     return `<div class="col"><div class="colhead h-${s}"><span>${ST[s].l}</span><span class="count">${items.length}</span></div>`+
-      items.map(t=>`<article class="card k-${s}"><div class="top"><span class="name">${esc(t.cim)}</span><span class="id">${t.szam!==null?"#"+t.szam:"tervezett"}</span></div>
-        <span class="kod">${esc(t.kulcs)} · ${esc(t.fazis?PH[t.fazis]:"fázis ?")}</span>
-        ${t.leiras_hiany?`<span class="detail nincs">nincs leírás</span>`:`<span class="detail">${esc(t.reszletes)}</span>`}
-        <span class="next" title="${esc(t.most)}"><b>Most:</b> ${esc(clip(t.most,220))}</span>
-        <span class="deps">függ: ${esc(t.fugg)}</span>${t.roviden?`<span class="sum">Röviden: ${esc(t.roviden)}</span>`:""}</article>`).join("")+`</div>`;
+      items.map(t=>`<article class="card k-${s}"><div class="top"><span class="name">${md(t.cim)}</span><span class="id">${t.szam!==null?"#"+t.szam:"tervezett"}</span></div>
+        <span class="kod">${esc(plain(t.kulcs))} · ${esc(t.fazis?PH[t.fazis]:"fázis ?")}</span>
+        ${t.leiras_hiany?`<span class="detail nincs">nincs leírás</span>`:`<span class="detail">${md(t.reszletes)}</span>`}
+        <span class="next" title="${esc(plain(t.most))}"><b>Most:</b> ${clipmd(t.most,220)}</span>
+        <span class="deps">függ: ${esc(plain(t.fugg))}</span>${t.roviden?`<span class="sum">Röviden: ${md(t.roviden)}</span>`:""}</article>`).join("")+`</div>`;
   }).join("");
 }
 renderFilters(); renderBoard();
@@ -841,7 +851,7 @@ renderFilters(); renderBoard();
   lbl(); if(window.rajzolTerkep) window.rajzolTerkep();};})();
 
 const DG = D.dontesek;
-const dsor = (d,mod) => `<div class="drow"><span class="did">${esc(d.id)}</span><span class="dq">${esc(clip(d.kerdes,230))}</span><span class="dfor">${mod==="javasolt"?"javasolt irány: "+esc(clip(d.irany||"—",90))+" · → ":"→ "}${esc(clip(d.feladat||"—",90))}</span>${mod==="ell"?`<span class="dell">ellenőrizendő: ${d.oszlopszam} oszlop a fejléc ${d.fejlec_oszlopszam} oszlopa helyett — az állapotot nézd meg a DONTESEK.md ${d.sor}. sorában</span>`:""}</div>`;
+const dsor = (d,mod) => `<div class="drow"><span class="did">${esc(d.id)}</span><span class="dq">${clipmd(d.kerdes,230)}</span><span class="dfor">${mod==="javasolt"?"javasolt irány: "+clipmd(d.irany||"—",90)+" · → ":"→ "}${clipmd(d.feladat||"—",90)}</span>${mod==="ell"?`<span class="dell">ellenőrizendő: ${d.oszlopszam} oszlop a fejléc ${d.fejlec_oszlopszam} oszlopa helyett — az állapotot nézd meg a DONTESEK.md ${d.sor}. sorában</span>`:""}</div>`;
 const dlista = (cim,k,rows,mod) => `<div class="dlist"><h3>${chip(cim,k)}<span>${rows.length}</span></h3>${rows.length?rows.map(d=>dsor(d,mod)).join(""):'<div class="drow"><span class="dq">—</span></div>'}</div>`;
 $("#dgrid").innerHTML = dlista("Nyitott","stop",DG.nyitott)
   + dlista("Eldöntve, alkalmazásra vár","run",DG.alkalmazasra_var)
