@@ -6,13 +6,15 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: dontesre_var
+allapot: fut
 ag: claude/morf-kulcs
 ad: egy nyílt licencű forrásból importált, forrás- és licencsorral ellátott jelkulcs-tábla (adat/morf_kulcs_heber.tsv), amely a Macula_heber morfológiai kódjainak minden pozícióját magyarul feloldja; a feloldó függvény ebből a táblából dolgozik, emlékezetből írt leképezés nincs
-kovetkezo: Te: válaszd ki a jelkulcs-forrást és a nyelv-kezelést (DT-F58a: javaslat OSHB HebrewMorphologyCodes.html, CC BY 4.0, nyelv külön bemenet), és hagyd jóvá a licencsort; utána /kovetkezo az M1-gyel
+kovetkezo: fuggetlen-ellenor (naplok/ELLENOR_MORF_KULCS.md), majd az orkesztrátor zárása (draft PR); a ⛔ (DT-F58a) eldöntve 🟢
 olvas: ["konkordancia/Macula_heber_*.tsv", adat/licencek.tsv, adat/SEMA.md, adat/datasetek.tsv]
-ir: [adat/morf_kulcs_heber.tsv, adat/SEMA.md, adat/licencek.tsv, adat/datasetek.tsv, eszkozok/morf_feloldas.py, eszkozok/teszt_morf_feloldas.py, adat/kulso/morf_kulcs_LICENC.txt]
+ir: [adat/morf_kulcs_heber.tsv, adat/SEMA.md, adat/licencek.tsv, adat/datasetek.tsv, eszkozok/morf_feloldas.py, eszkozok/teszt_morf_feloldas.py, adat/kulso/morf_kulcs_LICENC.txt, adat/morf_nyelv_aramai.tsv, eszkozok/morf_nyelv_kivonat.py, eszkozok/morf_kulcs_import.py, adat/kulso/oshb_HebrewMorphologyCodes.html, naplok/MORF_KULCS_lefedettseg.md]
+ir_bovites: "DT-F58a (felhasználó, 2026-10-05): az ir lista tételként bővül öt elemmel (az ir sor utolsó öt eleme): nyelv-kivonat (adat/morf_nyelv_aramai.tsv) és előállítója, az OSHB-import szkriptje, a forrásfájl másolata, a lefedettség-napló; a morf_kulcs_heber.tsv új oszlopa: nyelv"
 fugg: []
+lezarva_osszegzes: M0–M2 kész (commitok: naplok/F58_zaras.md); a független ellenőrzés és a draft PR az orkesztrátoré
 ---
 
 # F58_MORF_KULCS_BRIEF.md — Héber igealak-jelkulcs
@@ -75,3 +77,4 @@ Jelentés: `naplok/MORF_KULCS_M0.md`.
 |---|---|---|---|
 | v1 | 2026-10-05 | Az igealak magyar feloldása csak adatként importált jelkulcsból készülhet; az emlékezetből írt leképezés kikerült a pilotból. | felhasználó |
 | v1 | 2026-10-05 | Az ETCBC-modul (CC BY-NC 4.0) nem lehet forrás. | `adat/kulso/LICENC.md` forráspolitika |
+| v2 | 2026-10-05 | DT-F58a: forrás az OSHB HebrewMorphologyCodes.html (CC BY 4.0); `nyelv` oszlop a táblában; a nyelv a Macula-XML kivonatából (`adat/morf_nyelv_aramai.tsv`); az `ir` lista bővítve (l. `ir_bovites`). | felhasználó (chat) |
