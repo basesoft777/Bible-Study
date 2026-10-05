@@ -5,13 +5,16 @@ kod: LICENC_UTOKOVETES
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
+pr: 205
+ag: claude/licenc-utokovetes
 ad: az adat/licencek.tsv Karoli_1908, Karoli_KH és Versifikacios_tablak sora tisztázott vagy dokumentáltan tisztázatlan marad, szó szerinti licencidézettel és rögzített commit-tal; a k-mktr/karoli_bible_hu nyílt Károli-jelölt felmérve; a TVTMS fájl neve és commitja rögzítve; az openbible.info kereszthivatkozás-tábla forrásjelöltként felvéve licencidézettel; a bible-mcp connector használati szabálya döntési javaslatként
-kovetkezo: "/kovetkezo (a 0. lépés és a 3b előfeltétel-fájljai bent: adat/kulso/karoli_bible_hu_LICENC.txt, adat/kulso/openbible_crossrefs_LICENC.txt, 2026-10-04)"
+kovetkezo: "PR #205 merge a felhasználótól; nyitott: ellenőri eltérés 1–2 (⛔ 5. és DT-F44b), DT-M5, openbible import (/befogad)"
 olvas: [adat/licencek.tsv, adat/datasetek.tsv, adat/SEMA.md, naplok/LICENC_RENDEZES_zaras.md, konkordancia/Validacios_naplo.md, konkordancia/LXX_versificacios_terkep.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, F01_KAROLI_KULCS_BRIEF.md, adat/kulso/karoli_bible_hu_LICENC.txt, adat/kulso/openbible_crossrefs_LICENC.txt]
 ir: [adat/licencek.tsv, naplok/LICENC_UTOKOVETES_naplo.md, naplok/LICENC_UTOKOVETES_karoli_diff.tsv, adat/datasetek.tsv]
 fugg: [33, 42]
 helyi_gep: nem
+lezarva_osszegzes: "Károli-rész tárgytalan (DT-F33e), licencek.tsv változatlan; karoli_bible_hu elvetve (nincs license mező, 1590-es kiadás; DT-F44a), 20 verses összevetés elmaradt; openbible_crossrefs 4 sor hianyzik+JELÖLT (import külön feladat); bible-mcp a DT-M5-tel döntendő; PR: orkesztrátor"
 ---
 
 # F44_LICENC_UTOKOVETES_BRIEF.md — Licenc-utókövetés (Károli 1908, versifikációs táblák)
