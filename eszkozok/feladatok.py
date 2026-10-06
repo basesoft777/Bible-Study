@@ -363,7 +363,8 @@ def kontextus_hibak(b):
 # FIGYELEM-szintűek (az F35 lezárt, azt nem jelezzük). Új brief nem kerülhet ebbe a körbe.
 # A FIGYELEM nem enged futást: a `jeloltek` a mező kitöltéséig kihagyja őket (DT-F32c).
 # A 36 kikerült (DT28): az `ir`-je csak `lexikon/`-t ír, ami nem motívumfájl; a briefje `munka: adat`.
-MUNKA_ELOZMENY = (9, 35)
+# A 9 kikerült (2026.10.06): a briefje `munka: adat`, az S2.6 leválasztva.
+MUNKA_ELOZMENY = (35,)
 
 
 def munka_hianyzik(b):
