@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-06",
-   "commit": "b0abc0f"
+   "commit": "6078a41"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -62,7 +62,7 @@
   {
    "kulcs": "stop",
    "cimke": "Megállt, rád vár",
-   "db": 3
+   "db": 2
   },
   {
    "kulcs": "run",
@@ -72,7 +72,7 @@
   {
    "kulcs": "ready",
    "cimke": "Indítható most",
-   "db": 6
+   "db": 7
   },
   {
    "kulcs": "wait",
@@ -87,7 +87,7 @@
   {
    "kulcs": "dt",
    "cimke": "Nyitott döntés",
-   "db": 7
+   "db": 3
   }
  ],
  "sor": [
@@ -96,6 +96,14 @@
    "kod": "BDB_ADATBLOKK",
    "cim": "BDB-adatblokk — szócikkenként előre számolt Károli-, példavers- és LXX-adat a fordító promptba (közvetlen TSV-változat)",
    "most": "/kovetkezo; ⛔ az M3 mintablokk után (elfogadási próba)",
+   "felbemaradt": false,
+   "parhuzamos": true
+  },
+  {
+   "szam": 66,
+   "kod": "BDB_ARAM_POTLAS",
+   "cim": "A BDB elvetett arámi szócikkeinek pótlása a BDB.lexicon szövegéből (külön táblába)",
+   "most": "/kovetkezo; ⛔ az M1 jelölttábla után",
    "felbemaradt": false,
    "parhuzamos": true
   }
@@ -289,7 +297,7 @@
    "kulcs": "F22",
    "szam": 22,
    "kod": "F22",
-   "cim": "Károli–Strong párosítás könyvenként, két modellel (Sonnet + Gemini); első könyv: 1Mózes",
+   "cim": "Károli–Strong párosítás könyvenként (1–2Móz: Sonnet + Gemini; a 3Móztól csak Sonnet, DT-F22c); első könyv: 1Mózes",
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
@@ -478,22 +486,6 @@
    "leiras_hiany": false
   },
   {
-   "kulcs": "FELADATTERKEP",
-   "szam": 53,
-   "kod": "FELADATTERKEP",
-   "cim": "Feladattérkép — a feladatok, döntések és a munkaterv generált vizuális áttekintése",
-   "fazis": "folyamat",
-   "allapot": "stop",
-   "brief_allapot": "megallt",
-   "most": "Te: a PR #201 merge-e; utána az Action-próba (7.6). Az FT.5 és az FT.7 halasztva (N-F53f), amíg nincs chan_… azonosító",
-   "fugg": "—",
-   "tervezett": false,
-   "reszletes": "",
-   "roviden": "",
-   "leiras_forras": null,
-   "leiras_hiany": true
-  },
-  {
    "kulcs": "LXX_OS_LEFEDETTSEG",
    "szam": 54,
    "kod": "LXX_OS_LEFEDETTSEG",
@@ -654,6 +646,22 @@
    "leiras_hiany": false
   },
   {
+   "kulcs": "BDB_ARAM_POTLAS",
+   "szam": 66,
+   "kod": "BDB_ARAM_POTLAS",
+   "cim": "A BDB elvetett arámi szócikkeinek pótlása a BDB.lexicon szövegéből (külön táblába)",
+   "fazis": "1",
+   "allapot": "ready",
+   "brief_allapot": "nem_indult",
+   "most": "/kovetkezo; ⛔ az M1 jelölttábla után",
+   "fugg": "#57 (kész)",
+   "tervezett": false,
+   "reszletes": "",
+   "roviden": "",
+   "leiras_forras": null,
+   "leiras_hiany": true
+  },
+  {
    "kulcs": "TERV_BEFOGAD",
    "szam": null,
    "kod": "TERV_BEFOGAD",
@@ -743,49 +751,19 @@
    "SZAMOZAS"
   ],
   "leiras_nelkul": [
-   "FELADATTERKEP",
    "LXX_OS_LEFEDETTSEG",
    "ZSOLTAR_UJRAELLENORZES",
    "SZOSZEDET",
    "OLVASOI_PILOT",
    "LEKERDEZ_NAPLO",
    "TEREMT002_PROZA_PROBA",
+   "BDB_ARAM_POTLAS",
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_OLVASOI_KONKORDANCIA[\"OLVASOI_KONKORDANCIA\"]:::plan\n  P_SQLITE_EPIT[\"SQLITE_EPIT\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::wait\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T37[\"#37 TANULMANY_ELLENORZES\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::wait\n  T40[\"#40 HIVATKOZAS_ELLENORZES\"]:::wait\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::run\n  T53[\"#53 FELADATTERKEP\"]:::stop\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::wait\n  T56[\"#56 BDB_ADATBLOKK\"]:::ready\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::ready\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::ready\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T64[\"#64 TEREMT002_PROZA_PROBA\"]:::stop\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38d{{\"DT-F38d\"}}:::dt\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> P_SQLITE_EPIT\n  P_OLVASOI_KONKORDANCIA --> D_DT_M1\n  P_OLVASOI_KONKORDANCIA --> D_DT_M4\n  P_OLVASOI_KONKORDANCIA --> D_DT_M6\n  P_OLVASOI_KONKORDANCIA --> P_SQLITE_EPIT\n  P_SQLITE_EPIT --> T62\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> T11\n  T10 --> T9\n  T11 --> T23\n  T11 --> T9\n  T12 --> T11\n  T13 --> T10\n  T23 --> D_DT28\n  T23 --> T37\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> T37\n  T36 --> T38\n  T36 --> T56\n  T36 --> T7\n  T36 --> T9\n  T37 --> D_DT28\n  T37 --> T45\n  T38 --> D_DT_F38d\n  T38 --> D_DT_F38i\n  T38 --> T56\n  T40 --> T37\n  T48 --> T22\n  T54 --> T62\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T61 --> T54\n  T61 --> T62\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T9 --> D_DT28\n  T9 --> T23\n  T9 --> T38\n  T9 --> T56\n  T9 --> T7",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_OLVASOI_KONKORDANCIA[\"OLVASOI_KONKORDANCIA\"]:::plan\n  P_SQLITE_EPIT[\"SQLITE_EPIT\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::wait\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T37[\"#37 TANULMANY_ELLENORZES\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::wait\n  T40[\"#40 HIVATKOZAS_ELLENORZES\"]:::wait\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::run\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::wait\n  T56[\"#56 BDB_ADATBLOKK\"]:::ready\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::ready\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::ready\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T64[\"#64 TEREMT002_PROZA_PROBA\"]:::stop\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T66[\"#66 BDB_ARAM_POTLAS\"]:::ready\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> P_SQLITE_EPIT\n  P_OLVASOI_KONKORDANCIA --> D_DT_M1\n  P_OLVASOI_KONKORDANCIA --> D_DT_M4\n  P_OLVASOI_KONKORDANCIA --> D_DT_M6\n  P_OLVASOI_KONKORDANCIA --> P_SQLITE_EPIT\n  P_SQLITE_EPIT --> T62\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> T11\n  T10 --> T9\n  T11 --> T23\n  T11 --> T9\n  T12 --> T11\n  T13 --> T10\n  T23 --> D_DT28\n  T23 --> T37\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> T37\n  T36 --> T38\n  T36 --> T56\n  T36 --> T7\n  T36 --> T9\n  T37 --> D_DT28\n  T37 --> T45\n  T38 --> D_DT_F38i\n  T38 --> T56\n  T40 --> T37\n  T48 --> T22\n  T54 --> T62\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T61 --> T54\n  T61 --> T62\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T9 --> D_DT28\n  T9 --> T23\n  T9 --> T38\n  T9 --> T56\n  T9 --> T7",
  "dontesek": {
   "nyitott": [
-   {
-    "id": "DT2",
-    "feladat": "#10 lexikonoldalak lezárása",
-    "kerdes": "„döntés az L6 és L7 feltételről. Ide tartozik N18, N19” *(forrás: `FELADATOK.md` #10 „Megjegyzés”)*",
-    "allapot": "nyitott",
-    "jelek": [
-     "🟡"
-    ],
-    "sor": 12
-   },
-   {
-    "id": "DT-F41a",
-    "feladat": "#41 BSB-újramérés (a DT6 (g) pontja)",
-    "kerdes": "Döntésre vár: kézi megfeleltetés a Zsolt 13-ra (BSB 2→MT 3, 3→4, 4→5, 5+6→6) vagy marad ki. *(a kérdés és az opció szó szerint a DT6-ból; a háttér ugyanott: „Belső versosztás-eltérés (F16.11)”: a Zsolt 13 illesztetlen, kimarad a mérésből és az importból)*",
-    "allapot": "nyitott",
-    "jelek": [
-     "🟡"
-    ],
-    "sor": 22
-   },
-   {
-    "id": "DT-M1",
-    "feladat": "MUNKATERV → OLVASOI_KONKORDANCIA (#25a)",
-    "kerdes": "Kiadható-e az olvasói konkordancia (vers- és szó-lap, motívum nélkül) a #25 előtt, a #11/#23-tól függetlenül? Ez átrendezi a FELADATOK sorrendjét: a #25 kettéválik, #25a konkordancia (függ SQLITE_EPIT, #44), #25b motívumos nézet (függ #11, #23). *(forrás: `MUNKATERV.md` 2. szakasz, 0. lépcső)*",
-    "allapot": "nyitott",
-    "jelek": [
-     "🟡"
-    ],
-    "sor": 96
-   },
    {
     "id": "DT-M4",
     "feladat": "MUNKATERV → OLVASOI_KONKORDANCIA szó-lap",
@@ -815,28 +793,18 @@
      "🟡"
     ],
     "sor": 101
-   },
-   {
-    "id": "DT40",
-    "feladat": "#57 BDB_STRONG_POTLAS, nyitott tétel a DT39-ből",
-    "kerdes": "Az elvetett arámi szócikkek (173 másodlagos címke: 172 `nem_ebbol_a_szocikkbol` és a H3606 `a_testversor_mas_szocikk`, a BDB9264-től induló arámi szócikkek, kb. 190 új sor a BDB.lexicon szövegéből) tényleges pótlása nem az F57 hatóköre. Indítsuk külön feladatként? *(forrás: a DT39 döntés 3. pontja, orkesztrátor)*",
-    "allapot": "nyitott",
-    "jelek": [
-     "🟡"
-    ],
-    "sor": 108
    }
   ],
   "alkalmazasra_var": [
    {
-    "id": "DT-F21j",
-    "feladat": "#21 Károli–Strong mérőpilot (lezárás)",
-    "kerdes": "*(korábbi azonosító: DT21; a régi mérési kimenetekben, az ellenőri jelentésekben és a befagyasztott `prompt_v3.md`-ben a DT19–DT21 az F21 e három tételét jelöli, az F19 DT19-e a DT19 maradt)* A pilot lezárása a Döntési szabály szerint: a P3b után az A+B és az A+B+C is mért, és egyik sem felel meg (a DT-F21j eredeti megfogalmazása, „az A+B+C nem mért”, a P3b-vel meghaladott, l. DT22). A #22 sorsa (felhasználói döntés): (1) marad, változatlan céllal; (2) módosított céllal indul újra; (3) elhalasztva. Nyitott tételek a #22 esetleges újraindításához, `javaslat` jelöléssel: a) G szabály és jegyzet K7: a prompt kivétele (többtagú igei szerkezet) tágabb a jegyzeténél; b) C szabály: az „azt, őt …” felsorolás általánosult; c) „azt … hogy” (betoldás) és „azért … hogy” (kötve) következetlen; d) 2Móz 26:13 *is*; e) D szabály: birtokláncban melyik szó viseli a ragot; f) a P5 bootstrap-egysége a köteg (a token versenként nem mérhető); g) a 200 versen belüli és a leave-one-out költség-ellenőrzés közül melyik számít; h) a teljes Biblia rétegbesorolása (Siralmak R3, Énekek R2, Prédikátor R1) egyeztetendő az F22 briefjével. i) a régi arany PD9-kizárása a futás után, a C két nem-egyezése alapján történt, és a C-nél a 95%-os küszöb átlépését fordítja meg (93,8% → 100%; a DT-F21j döntése szerint a mért érték a kizárás nélküli 93,8%, a kizárás csak tájékoztatás; az 1Móz 13:4 „hibás” jelölése visszavonva, csak az 1Móz 6:17 marad); j) a gondolkodási mód eltér a brief Keretek pontjától (A és B kikapcsolva, a C kötelezően `minimal`); döntési tétel nincs róla. k) a G4 szerinti `alacsony` arány két olvasata az A+B+C-nél (szó szerinti: a kapuhibás maradt versben a C minden linkje alacsony, 59,7%; „alt”: a túlélő modellel egyező C-link `közepes`, 27,9%) és az A+B döntőbíró nélküli meghatározása (A∩B = `magas`, a többi link `alacsony`): mindkettő a jelentés értelmezése, nem a briefé; az (5) feltétel egyik olvasattal sem teljesül.",
+    "id": "DT2",
+    "feladat": "#10 lexikonoldalak lezárása",
+    "kerdes": "„döntés az L6 és L7 feltételről. Ide tartozik N18, N19” *(forrás: `FELADATOK.md` #10 „Megjegyzés”)*",
     "allapot": "alkalmazasra_var",
     "jelek": [
      "🟢"
     ],
-    "sor": 17
+    "sor": 12
    },
    {
     "id": "DT6",
@@ -849,6 +817,16 @@
     "sor": 21
    },
    {
+    "id": "DT-F41a",
+    "feladat": "#41 BSB-újramérés (a DT6 (g) pontja)",
+    "kerdes": "Döntésre vár: kézi megfeleltetés a Zsolt 13-ra (BSB 2→MT 3, 3→4, 4→5, 5+6→6) vagy marad ki. *(a kérdés és az opció szó szerint a DT6-ból; a háttér ugyanott: „Belső versosztás-eltérés (F16.11)”: a Zsolt 13 illesztetlen, kimarad a mérésből és az importból)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 22
+   },
+   {
     "id": "DT-F24",
     "feladat": "#24 Licenc-leltár (összesített, D19)",
     "kerdes": "Az `adat/licencek.tsv` 39 sorából 24 `tisztazatlan`, 15 `tisztazott`; a `tisztazott` sorok közül ötben `javaslat:` is áll: `Karoli_KH` (a pótolt Énekek éneke licence), `TBESH` (a TBESH.txt 6. sora az Online Bible engedélyét kéri: `kereskedelmi=feltetelesen`, eltérés a `lexikon_general.py` 63. sorának „CC BY 4.0” besorolásától; a licenc maga CC BY 4.0, TBESH.txt 10. sor; „Please do not redistribute it yourself”, 17. sor), `TBESG` (CC BY 4.0, TBESG.txt 12. sor; „Please do not redistribute it yourself”, 19. sor), `Macula_heber` (UBS-engedélyes mezők kizárva), `KJV_Strongs_teljes` (UK Crown-jog; a Strong-címkék külön megjelölése). Ezek javaslat szerint maradnak, de az (1) pont ajánlás-oszlopában javasolt forrás-LICENSE-idézés után véglegesítendők. A `TAGNT`, `TAHOT`, `TIPNR` `tisztazatlan` (a CC BY 4.0 verzió a forrásfájl nevéből nem igazolt, a nyers fájlok fejléce nincs a repóban; a TBESH/TBESG fejlécében látott terjesztési kérés ezekre csak javaslatként vonatkoztatható). (1) Melyik forrás maradjon a nyilvános nézetből kihagyva a tisztázásig? Tisztázatlan (24): `TAGNT`, `TAHOT`, `TIPNR` (l. fent), `LXX_OS` (a forras_hely a README összefoglalója, nem a forrás szó szerinti szövege), `LXX_versszintu_parok` és `Karoli_versmegfeleltetes` (származtatott; TAHOT-, LXX_OS- és projekt-adat komponens), `Macula_gorog` (a görög LICENSE-szöveg nincs a repóban), `Karoli_Strong_kivonat` (származtatott; amíg a `projekt_adat` licence nincs rögzítve), `LXX_kivonat` (studybible.info, a README szerint csak belső), `KJV_ASV_Strongs` (a Strong-címkézés licence), `MCGED` (© Mounce 1993, \"All Rights Reserved\" megjelöléssel), `lexikonok_nyers` (a modulok fájljai licenc nélkül), `Cremer_nyers`, `Girdlestone` (nincs importálva), `Nave_basokant` (licencfájl nincs, lekaparás), `Versifikacios_tablak` (a TVTMS-fejléc nincs idézve), `SECE_G` és `SECE_H` (a playbook GPL 3.0-nak jelöli az openscriptures/strongs eredetet, a LICENC-konstans közkincs), `BDB`, `Thayer`, `LSJ`, `TSK`, `Konyv_nevtablak` (a licenc másodkézből, forrás-LICENSE idézése hiányzik), `projekt_adat` (a repónak nincs LICENSE-fájlja). (2) A repó saját (kimeneti) licence: a CC BY-SA 4.0 források (SDBH, SDGNT, UBS_DBH, UBS_DNTG, SDBH_SDGNT_segedtablak, tW_szocikkek) és az LSJ (állítólag CC BY-SA 3.0) miatt a belőlük származó réteg nem zárható el. (3) A SEMA 2.19-ben a `kereskedelmi` és a `share_alike` oszlop a `tisztazatlan` értéket is felveszi (a brief csak igen/nem/feltetelesen értéket nevez): jóváhagyható-e. (4) N9 lezárása (SEMA 2.19 vége): a `LICENC`-konstans és a `TISZTAZATLAN_SZOTARAK` a `licencek.tsv`-ből származzon; külön kód-tételként. (5) A `LXX_kivonat` belső-használat korlátja ütközik azzal, hogy a generátor LEXV2_1 G6 szerint egyelőre azt használja. (6) A MOSTANI nyilvános terjesztés (tény, nem döntés): a repó nyilvános (`naplok/F18_licenc.md` 15. sor), nincs LICENSE-fájlja; a `LXX_kivonat_README.md` 47–54. sora szerint a 39 `LXX_kivonat_*.tsv` „kizárólag belső”, mégis a repóban van; az MCGED „All Rights Reserved” megjelöléssel, az `MCGED_teljes.tsv` és a `lexikonok_nyers/MCGED.lexicon` a repóban van (`git ls-files`). A kérdés: a most nyilvános tisztázatlan fájlok közül melyik kerüljön ki a nyilvános terjesztésből a tisztázásig (a (1) pont a jövőbeli nyilvános *nézetre* vonatkozik). *(forrás: F24 brief 3. lépés 5. pont, `adat/licencek.tsv` `megjegyzes` oszlopai; a licenceket forrásrepó-LICENSE helyett a repó README-iből és naplóiból vettük, a forrásokat ebben a menetben nem töltöttük le újra)*",
@@ -857,16 +835,6 @@
      "🟢"
     ],
     "sor": 38
-   },
-   {
-    "id": "DT-F38d",
-    "feladat": "#38 BDB_FORDITAS (megállási pont, adag 4)",
-    "kerdes": "A DT-F38c (e)→(b)→(d)→(c) lépései az F38.138–F38.141 commitokban elkészültek (kapujavítás + tesztek, a két szócikkszintű kivétel, prompt v4.1 + az 5. kapu kis/nagybetű-cseréje, a H2719 újrafordítása — elsőre átment). A 4. adag kész: a sorrend 128–243. sora (116 szócikk, H5046–H4687), mind rögzítve, forrás 498 339 → fordítás 531 409 karakter (arány 1,07); a H2719-cel együtt 117/117 átment a teljes kapusoron, 0 bukott; `ellenoriz.py` SÉRTÉS 0, `futtat.py --valtozott adat/forditasok.tsv` 0 találat; 10 szócikk 13. kapus JELZES-t kapott (forráshiba, hűen átvéve); hibás lista: új sor nincs; kis/nagybetű-gépicsere: 0 eset. Kész összesen 269 BDB-szócikk; hátra 7 821 szócikk, 4 558 278 forráskarakter. Az adag két sessionben készült (az első F38.205 után 429-cel megszakadt; önújrapróba-adata nem maradt fenn); a második (52 szócikk) 42-t elsőre, 10-et egy önújrapróbával rögzített. Költség: a második session tokenszámlálója kb. 0,61 M tokent mutat 52 szócikkre (236 418 forráskarakter) a teljes rezsivel, kb. 2,6 token/forráskarakter; ezzel a hátralévő 4,56 M karakterre kb. 11,8 M token (kb. 9,1 adag, adagonként kb. 1,3 M); az első sessionről nincs adat; a kreditet a felhasználó olvassa le (USD-t a menet nem becsül). (a) Folytatás: az 5. adag (a sorrend 244–406. sora, 163 szócikk, 499 783 karakter)? (b) Terminológia-kivételek (szócikkszintű, a sor megjegyzésében indokolva): H0595 és H0068 `accusative` (a forrás „in accusative with usage” / „accusative to” = „in accordance with” / „according to” OCR-hibája; a H0068-nál 13. kapus kézi jelzéssel), H3789 `cl.` (a forrás „subject-cl.” = alanyi mellékmondat), H3519 és H1540 `see` (csak igeként áll, utalásként nem). (c) Kapuészrevételek (nem alkalmazva): a 11. kapu a latin betűhöz tapadt forrásbeli könyvjelzést („abundantly2Chr”, „completely2Chr”, „verbDeuteronomy 7:8”) nem számolja, ezért a fordításban is összetapasztva, angol rövidítéssel maradt (H7235, H3559, H3615, H7650, H0727); a 10. kapu a toldalékos törzsnevet („Qalban”, „Qalról”) nem ismeri fel; az 5. kapu `see` és `cl.` kulcsa igei, illetve más rövidítési helyzetben hamis jelzést ad. (d) H2719 a hibás listán: a sor rendeződött (F38.141), a menet nem módosította.",
-    "allapot": "alkalmazasra_var",
-    "jelek": [
-     "🟢"
-    ],
-    "sor": 54
    },
    {
     "id": "DT-F38i",
@@ -1007,6 +975,16 @@
      "🟢"
     ],
     "sor": 94
+   },
+   {
+    "id": "DT-M1",
+    "feladat": "MUNKATERV → OLVASOI_KONKORDANCIA (#25a)",
+    "kerdes": "Kiadható-e az olvasói konkordancia (vers- és szó-lap, motívum nélkül) a #25 előtt, a #11/#23-tól függetlenül? Ez átrendezi a FELADATOK sorrendjét: a #25 kettéválik, #25a konkordancia (függ SQLITE_EPIT, #44), #25b motívumos nézet (függ #11, #23). *(forrás: `MUNKATERV.md` 2. szakasz, 0. lépcső)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 96
    },
    {
     "id": "DT-M2",
@@ -1211,6 +1189,6 @@
   ],
   "javasolt": [],
   "ellenorizendo": [],
-  "kesz_db": 65
+  "kesz_db": 68
  }
 }

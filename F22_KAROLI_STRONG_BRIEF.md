@@ -1,7 +1,7 @@
 ---
 feladat: 22
 kod: F22
-cim: "Károli–Strong párosítás könyvenként, két modellel (Sonnet + Gemini); első könyv: 1Mózes"
+cim: "Károli–Strong párosítás könyvenként (1–2Móz: Sonnet + Gemini; a 3Móztól csak Sonnet, DT-F22c); első könyv: 1Mózes"
 tipus: feladat
 fazis: 1
 modell: sonnet

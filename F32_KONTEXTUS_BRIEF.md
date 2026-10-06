@@ -10,7 +10,7 @@ allapot: lezarva
 ag: claude/f32-kontextus
 pr: https://github.com/basesoft777/Bible-Study/pull/164
 ad: négy munkaszabály a MUNKAMENET-ben és a brief-sablonban, a feladatok.py fejléc- és csomag-ellenőrzése, a #23 briefjének kiegészítése és függése; döntési tétel a TEREMT-002 3. lépésének előrehozásáról
-kovetkezo: "Te: merge (PR #164)"
+kovetkezo: "lezárva; a PR #164 mergelve 2026-10-04"
 lezarva_osszegzes: "négy kontextus-szabály, munka mező, csomag/OLVAS_HIANY/E18, F23 fugg+⛔ M0 után; DT-F32a/b/c 🟢; 20 teszt; nyitott /befogad-javaslatok: #12a brief, motívum→tanulmány tábla, F09/F36 munka mező."
 olvas: [MUNKAMENET.md, CLAUDE.md, BRIEF_SABLON.md, DONTESEK.md, eszkozok/feladatok.py, F23_MOTIVUM_FORRAS_BRIEF.md, TEREMT002_KUTATAS_BRIEF.md, .claude/commands/kovetkezo.md, motivumok/TEREMT-002.md, "tematikus_lezart/TEREMT-002*", "tematikus_lezart/naplok/TEREMT-002*"]
 ir: [MUNKAMENET.md, CLAUDE.md, BRIEF_SABLON.md, F32_KONTEXTUS_BRIEF.md, DONTESEK.md, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, eszkozok/tesztek/test_feladatok_kontextus.py, eszkozok/tesztek/test_feladatok_fugges.py, .claude/commands/kovetkezo.md, F23_MOTIVUM_FORRAS_BRIEF.md, naplok/KONTEXTUS_szabalyok.md, naplok/ELLENOR_KONTEXTUS.md]

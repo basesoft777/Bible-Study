@@ -7,7 +7,7 @@ fazis: 1
 modell: opus
 allapot: lezarva
 ad: a lexikonba kerülő minden Strong-szám teljes Thayer- vagy BDB-szócikke magyarul (allapot opus, szúrópróbával kezi) az adat/forditasok.tsv-ben; közös javítóréteg és fordítási kapuk; CI-őr; az emelés mint munkafolyamat-lépés
-kovetkezo: lezárva; DT26 ✅ (feladatjelöltek: F34–F36, külön PR-ben befogadva); DT27 ✅, alkalmazva a PR #102-n — Te: merge
+kovetkezo: lezárva; DT26 ✅ (feladatjelöltek: F34–F36, külön PR-ben befogadva); DT27 ✅, alkalmazva a PR #102-n (mergelve); a PR #100 mergelve 2026-10-01
 olvas: [adat/elofordulasok.tsv, adat/lexikon_hivatkozasok.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/BDB_teljes_unabridged.tsv, fp2/, eszkozok/fordit.py]
 ir: [adat/forditasok.tsv, adat/terminologia.tsv, forditas/prompt_v4.md, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, MUNKAMENET.md, .github/workflows/, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/lekerdez.py, eszkozok/teszt_lekerdez_sir.py, eszkozok/teszt_forditas_kapuk.py, eszkozok/ellenoriz.py, eszkozok/teszt_ellenoriz_13.py, adat/SEMA.md, konkordancia/Konyv_normalizalo_tabla.tsv, naplok/EMELES_szentlelek_lista.py]
 fugg: []
