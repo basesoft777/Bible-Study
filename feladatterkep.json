@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-06",
-   "commit": "ae18f60"
+   "commit": "b6a2b7d"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -241,7 +241,7 @@
    "fazis": "2",
    "allapot": "idle",
    "brief_allapot": "brief_kell",
-   "most": "Te: döntés az L6 és L7 feltételről. Ide tartozik N18, N19. Az L-feltételek törzscikkre vonatkozó pontjai kikerülnek (D34). Előfeltétel: a #8 négy nyitott sora (LD008, LD009, LD058, LD064) eldöntve",
+   "most": "brief írása a DT2 🟢 mércéjével (L2 és L7 nincs; az N18, N19 nyitva marad, nem blokkol). Az L-feltételek törzscikkre vonatkozó pontjai kikerülnek (D34). Előfeltétel: a #8 négy nyitott sora (LD008, LD009, LD058, LD064) eldöntve",
    "fugg": "#8 (kész), #9, #11",
    "tervezett": false,
    "reszletes": "A 8 lexikonoldal mérhető feltételek (L1–L7) szerinti lezárása. Briefet még nem kapott; előtte el kell döntened az L6 és L7 feltételt (DT2), és meg kell lennie a #9-nek és a #11-nek.",
@@ -829,7 +829,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 100
+    "sor": 101
    },
    {
     "id": "DT-M5",
@@ -839,7 +839,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 101
+    "sor": 102
    },
    {
     "id": "DT-M6",
@@ -849,7 +849,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 102
+    "sor": 103
    }
   ],
   "alkalmazasra_var": [
@@ -1034,6 +1034,16 @@
     "sor": 95
    },
    {
+    "id": "DT-F51a",
+    "feladat": "#51 KONZISZTENCIA (K5, napi rutin)",
+    "kerdes": "Hol fut a napi konzisztencia-rutin worktree-je? A K5 `../Bible-Study-konzisztencia`-t írt, a ténylegesen futó ütemezett feladat (`konzisztencia-napi`) a `.claude/worktrees/konzisztencia`-t használja. *(forrás: `.claude/konzisztencia/KONZISZTENCIA_20261006.md` 1.3)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 97
+   },
+   {
     "id": "DT-M1",
     "feladat": "MUNKATERV → OLVASOI_KONKORDANCIA (#25a)",
     "kerdes": "Kiadható-e az olvasói konkordancia (vers- és szó-lap, motívum nélkül) a #25 előtt, a #11/#23-tól függetlenül? Ez átrendezi a FELADATOK sorrendjét: a #25 kettéválik, #25a konkordancia (függ SQLITE_EPIT, #44), #25b motívumos nézet (függ #11, #23). *(forrás: `MUNKATERV.md` 2. szakasz, 0. lépcső)*",
@@ -1041,7 +1051,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 97
+    "sor": 98
    },
    {
     "id": "DT-M2",
@@ -1051,7 +1061,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 98
+    "sor": 99
    },
    {
     "id": "DT-M3",
@@ -1061,7 +1071,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 99
+    "sor": 100
    },
    {
     "id": "DT-M7",
@@ -1071,7 +1081,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 103
+    "sor": 104
    },
    {
     "id": "DT-M8",
@@ -1081,7 +1091,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 104
+    "sor": 105
    },
    {
     "id": "DT28",
@@ -1091,7 +1101,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 105
+    "sor": 106
    },
    {
     "id": "DT37",
@@ -1101,7 +1111,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 106
+    "sor": 107
    },
    {
     "id": "DT38",
@@ -1111,7 +1121,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 107
+    "sor": 108
    },
    {
     "id": "DT39",
@@ -1121,7 +1131,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 108
+    "sor": 109
    },
    {
     "id": "DT41",
@@ -1131,7 +1141,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 110
+    "sor": 111
    },
    {
     "id": "DT35",
@@ -1141,7 +1151,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 111
+    "sor": 112
    },
    {
     "id": "DT36",
@@ -1151,7 +1161,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 112
+    "sor": 113
    },
    {
     "id": "DT30",
@@ -1161,7 +1171,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 113
+    "sor": 114
    },
    {
     "id": "DT31",
@@ -1171,7 +1181,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 114
+    "sor": 115
    },
    {
     "id": "DT32",
@@ -1181,7 +1191,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 115
+    "sor": 116
    },
    {
     "id": "DT33",
@@ -1191,7 +1201,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 116
+    "sor": 117
    },
    {
     "id": "DT34",
@@ -1201,7 +1211,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 117
+    "sor": 118
    },
    {
     "id": "DT42",
@@ -1211,7 +1221,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 118
+    "sor": 119
    },
    {
     "id": "DT43",
@@ -1221,7 +1231,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 119
+    "sor": 120
    },
    {
     "id": "DT44",
@@ -1231,7 +1241,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 120
+    "sor": 121
    },
    {
     "id": "DT45",
@@ -1241,7 +1251,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 121
+    "sor": 122
    }
   ],
   "javasolt": [],
