@@ -36,3 +36,22 @@ BDB-forrás (`konkordancia/BDB_teljes_unabridged.tsv`, H6743 szócikk, Qal): „
 ## Állapot a megállásnál
 
 Az `eszkozok/teszt_bdb_zaras.py` 21 tesztből még 1 FAIL + 1 ERROR (mindkettő a négy döntésre váró Strong miatt); `test_dtf38g_kezi_javitasok` és a H5674/H4390/H6743 tábla-sorok zöldek. Döntésre vár: DT-F73a (`DONTESEK.md`).
+
+## DT-F73a alkalmazása (F73.3)
+
+*Proveniencia: `scope=eszkozok/teszt_bdb_zaras.py, teszt_forditas_kapuk.py, teszt_normalizal.py, teszt_emeles.py, teszt_ellenoriz_13.py, ellenoriz.py + konkordancia/BDB_teljes_unabridged.tsv (H2451) | forras=repó-adat, mérés | ts=2026-10-06`*
+
+Döntés: DT-F73a **1. opció** (felhasználó, 2026.10.06): mind a négy hely nagybetűs marad. A H2451 forrásszövege (`BDB_teljes_unabridged.tsv`): „gives her pupils the divine spirit 1:23” — a DT-F38g (3) szerint („ahol a BDB szövege maga mondja: divine spirit”) nagybetűs.
+
+A `SZELLEM_KOVETELT` új sorai (`naplok/BDB_FORDITAS_zaras3.py`), a kontextus mindegyiknél egyszer áll:
+
+| Strong | Szóalak | Kontextus |
+|---|---|---|
+| H2451 | Szellemet | `tanítványainak adja az isteni Szellemet 1:23` |
+| H3847 | Szelleme | `az ׳י Szelleme felöltözte Gedeont` |
+| H5012 | Szellem ×2 | `1 az isteni Szellem hatása alatt prófétál` (Qal/Niph.), `1 Az isteni Szellem hatása alatt prófétál` (Hithp.) |
+| H5117 | Szelleméről | `az ׳י Szelleméről 4Móz 11:25-26` |
+
+Regresszió: `teszt_bdb_zaras.py` 21/21 OK (a `test_szellem_tabla_nagybetus_helyei` és a `test_ir_ketszer_futtatva_nem_duplikal` is zöld); `teszt_forditas_kapuk.py` 69 OK; `teszt_normalizal.py` 63 OK; `teszt_emeles.py` 10 OK; `teszt_ellenoriz_13.py` 9 OK; `ellenoriz.py` SÉRTÉS 0 (RENDBEN 11, KÉZI 2, JELENTÉS 3). A brief 5. lépésének „`emeles.py ellenoriz` SÉRTÉS 0” feltétele a globális `ellenoriz.py`-t jelenti (az `emeles.py ellenoriz` egy-Strongos alparancs, a #38 naplója is az `ellenoriz.py`-t futtatta). Az `adat/forditasok.tsv` változatlan (`git diff --stat` csak a táblát, a naplót, a `DONTESEK.md`-t és a briefet mutatja).
+
+Következik: 6. lépés ⛔ — `fuggetlen-ellenor`, utána lezárás és a #38 fejlécének váltása.

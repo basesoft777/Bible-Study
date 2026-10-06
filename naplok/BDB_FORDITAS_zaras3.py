@@ -59,6 +59,11 @@ MEGJ3 = {'H2403': (JELOLES_28_REGI, JELOLES_H2403)}
 # strong -> (nagybetus `Szellem*` szoalak, egy kontextus-reszlet, amely egyszer all)
 SZELLEM_KOVETELT = {
     'H1320': [('Szellem', 'nem Szellem Ézs 31:3')],
+    'H2451': [('Szellemet', 'tanítványainak adja az isteni Szellemet 1:23')],  # DT-F73a: BDB: the divine spirit
+    'H3847': [('Szelleme', 'az ׳י Szelleme felöltözte Gedeont')],  # DT-F73a
+    'H5012': [('Szellem', '1 az isteni Szellem hatása alatt prófétál'),
+              ('Szellem', '1 Az isteni Szellem hatása alatt prófétál')],  # DT-F73a
+    'H5117': [('Szelleméről', 'az ׳י Szelleméről 4Móz 11:25-26')],  # DT-F73a
     'H3947': [('Szellem', 'Ez 3:14 a Szellem felemelt')],
     'H5307': [('Szelleme', 'a ׳י Szelleme 11:5')],
     'H5414': [('Szellememet', 'Szellememet adom rá Ézs 42:1')],
