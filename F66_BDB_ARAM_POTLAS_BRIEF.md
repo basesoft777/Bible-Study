@@ -6,11 +6,12 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: megallt
+allapot: lezarva
+pr: 227
+lezarva_osszegzes: PR #227 (draft); 169 egyertelmu + 1 kezi_elfogadott (H2298 → BDB9285) sor a külön BDB_aram_potlas.tsv-ben, jelölt: H0004, H3769, H5013; DT-F66a alkalmazva; merge a felhasználóé
 ag: claude/bdb-aram-potlas
 ad: a BDB_strong_alias_elvetett.tsv 173 arámi másodlagos címkéje (BDB9264-től) saját szövegsort kap egy külön táblában (konkordancia/BDB_aram_potlas.tsv) a BDB.lexicon szövegéből, proveniencia-jelöléssel; ami nem állítható elő egyértelműen, jelölt marad; a BDB_teljes_unabridged.tsv nem változik
-kovetkezo: "Te: a 20 szúrópróba-sor jóváhagyása (naplok/BDB_ARAM_POTLAS_szurop.md); utána M3 zárás"
-olvas: [konkordancia/lexikonok_nyers/BDB.lexicon, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_teljes_unabridged_README.md, konkordancia/BDB_strong_alias_elvetett.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/_convert_bdb.py, naplok/BDB_STRONG_POTLAS_M1.md, eszkozok/bdb_strong_potlas.py, adat/licencek.tsv]
+kovetkezo: "Te: a független ellenőrzés futtatása, majd a merge; N-F66b: a beemelés a fő táblába a #38 után"olvas: [konkordancia/lexikonok_nyers/BDB.lexicon, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_teljes_unabridged_README.md, konkordancia/BDB_strong_alias_elvetett.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/_convert_bdb.py, naplok/BDB_STRONG_POTLAS_M1.md, eszkozok/bdb_strong_potlas.py, adat/licencek.tsv]
 ir: [konkordancia/BDB_aram_potlas.tsv, konkordancia/BDB_aram_potlas_README.md, eszkozok/bdb_aram_potlas.py, eszkozok/teszt_bdb_aram_potlas.py, naplok/BDB_ARAM_POTLAS_M0.md, naplok/BDB_ARAM_POTLAS_zaras.md, naplok/ELLENOR_BDB_ARAM_POTLAS.md]
 fugg: [57]
 ---
