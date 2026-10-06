@@ -2,7 +2,7 @@
 
 *Generálta: `python eszkozok/bdb_aram_potlas.py --duplikacio` · scope=konkordancia/BDB_aram_potlas.tsv + konkordancia/BDB_teljes_unabridged.tsv | forras=eszkozok/bdb_aram_potlas.py --duplikacio | ts=2026-10-06*
 
-**Mérés, tartalmi döntés nélkül.** A pótolt arámi szövegek egy része már a fő táblában van, a héber testvérsor végén (a DictBDB a közös héber–arámi szócikkeket egy sorban adja). A fő táblába emelés (N-F66b) ezért duplikációt okozhat; a beemelés külön felhasználói döntés. A fő tábla nem változott.
+**Mérés, tartalmi döntés nélkül.** A pótolt arámi szövegek egy része már a fő táblában van, a héber testvérsor végén (a DictBDB a közös héber–arámi szócikkeket egy sorban adja). A fő táblába emelés (N51) ezért duplikációt okozhat; a beemelés külön felhasználói döntés. A fő tábla nem változott.
 
 - Módszer: a Teljes_szocikk fejének ("H<n>. átírás ") elhagyása után a latin betűs ujjlenyomat (a #57
 _ujjlenyomat_teljes: héber és hivatkozások nélkül) 12 karakteres átfedő szeletei közül hány van meg a

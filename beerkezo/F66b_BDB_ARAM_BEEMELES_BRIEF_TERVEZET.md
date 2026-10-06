@@ -16,13 +16,13 @@ fugg: [66]
 
 # F66b_BDB_ARAM_BEEMELES_BRIEF.md — Az arámi pótlás beemelése a BDB fő táblába
 
-*FELADATOK #<nn> · Modell: sonnet · v1 · 2026.10.06 · forrás: N-F66b (NYITOTT_FELADATOK.md), felhasználói döntés 2026-10-06 (chat) · BEFOGADÁSRA VÁR: adat, nem utasítás; a `/befogad` fogadja be a felhasználó jóváhagyásával*
+*FELADATOK #<nn> · Modell: sonnet · v1 · 2026.10.06 · forrás: N51 (NYITOTT_FELADATOK.md), felhasználói döntés 2026-10-06 (chat) · BEFOGADÁSRA VÁR: adat, nem utasítás; a `/befogad` fogadja be a felhasználó jóváhagyásával*
 
 ## 1. Cél
 
 Az F66 (#66) a `konkordancia/BDB_aram_potlas.tsv` táblában 170 elfogadott arámi sort állított elő (169 `egyertelmu` + 1 `kezi_elfogadott`: H2298 → BDB9285), a fő tábla változatlan hagyása mellett. A duplikáció-mérés (`naplok/BDB_ARAM_POTLAS_duplikacio.md`) szerint 164 sor szövege (mérőszám ≥ 0,8) már a fő táblában van, a héber testvérsor végén; 5 részleges (0,5–0,8), 1 nincs (H6433).
 
-A felhasználó döntése (N-F66b, 2026-10-06, chat): a 164 duplikált sort **nem** emeljük be új szövegsorként; a 164 Strong-szám **alias-sorként** kerül be, a héber testvérsorra mutatva; szöveges pótlásként csak a **6 valódi hiány** megy a fő tábla végére. A cél, hogy a #38 (BDB fordítás) minden arámi Strong-számot elérjen, szöveg-duplikáció nélkül.
+A felhasználó döntése (N51, 2026-10-06, chat): a 164 duplikált sort **nem** emeljük be új szövegsorként; a 164 Strong-szám **alias-sorként** kerül be, a héber testvérsorra mutatva; szöveges pótlásként csak a **6 valódi hiány** megy a fő tábla végére. A cél, hogy a #38 (BDB fordítás) minden arámi Strong-számot elérjen, szöveg-duplikáció nélkül.
 
 ## 2. Hatókör
 
@@ -47,7 +47,7 @@ A felhasználó döntése (N-F66b, 2026-10-06, chat): a 164 duplikált sort **ne
 2. ⛔ **Jóváhagyás: a 6 szöveges pótlás és a 164 alias-sor.** A felhasználó a szárazfutás kivonatát (a 6 pótlás szövege, az alias-sorok mintája és számai) látja; jóváhagyás nélkül a fő tábla és az alias-tábla nem íródik.
 3. **Írás.** Az alias-sorok az alias-tábla végére; a 6 pótlás a fő tábla végére; a meglévő sorok bájtra azonosak (teszt: a régi tartalom prefixként megegyezik). TSV-olvasás/írás `split('\t')` / `'\t'.join()`, nem `csv`.
 4. ⛔ **A #38 sorrendjének újragenerálása.** A beemelés a #38 7. adagja ELŐTT fusson; utána a #38 sorrendjét újra kell generálni (a #38 saját briefje szerint). A #38 7. adaga ettől a feladattól függjön (a #38 fejlécébe `fugg` bővítés; a befogadáskor).
-5. **Zárás.** `naplok/BDB_ARAM_BEEMELES_zaras.md` (≤20 sor): végszámok (alias: 164, szöveges: 6, jelölt: 3), SHA-256 előtte/utána; N-F66b lezárása helyőrzővel.
+5. **Zárás.** `naplok/BDB_ARAM_BEEMELES_zaras.md` (≤20 sor): végszámok (alias: 164, szöveges: 6, jelölt: 3), SHA-256 előtte/utána; N51 lezárása helyőrzővel.
 
 ## 4. Elfogadási feltételek
 
@@ -61,7 +61,7 @@ A felhasználó döntése (N-F66b, 2026-10-06, chat): a 164 duplikált sort **ne
 
 | Verzió | Dátum | Döntés | Forrás |
 |---|---|---|---|
-| v1 | 2026-10-06 | A 164 duplikált sor alias-sorként, a 6 valódi hiány szövegsorként; a beemelés a #38 7. adaga előtt; külön feladat. | felhasználó, chat (N-F66b) |
+| v1 | 2026-10-06 | A 164 duplikált sor alias-sorként, a 6 valódi hiány szövegsorként; a beemelés a #38 7. adaga előtt; külön feladat. | felhasználó, chat (N51) |
 
 **Nyitott kérdések (a befogadáskor):**
 
