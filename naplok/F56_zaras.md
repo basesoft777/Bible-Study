@@ -8,4 +8,4 @@
 - **Egyeztetett eltérések:** (1) a 7 `javitva` sorból 3 (H0479, H2597, H5377) a 9–11. adagba esik, nincs még fordításuk: az adatblokk 6. szakasza viszi a #38 menetében; (2) a H3282 nincs a nyelvtani listán, így marad (felhasználói döntés), a `grammatikai_strongok.tsv` érintetlen; (3) a zárójelentés neve `naplok/F56_zaras.md`.
 - **Tesztek:** `teszt_bdb_adatblokk` (35), `teszt_emeles` (10), `teszt_forditas_kapuk` (69) zöld; `feladatok.py ellenoriz`: 0 hiba (2 régi figyelmeztetés); `ellenoriz.py`: SÉRTÉS 0.
 - **Nyitott javaslatok (feladatként nem felvéve):** (a) az okhatározói kötőszók (H3282, H6118, H3651) a nyelvtani listára; (b) a SEMA 2.6 „21 dataset × 4 = 84 sor” darabszám frissítése; (c) kapu, amely a fordító Y-ját a `javitott_hivatkozas`-sal veti össze (ma egyik kapu sem teszi).
-- **Ellenőr:** `naplok/ELLENOR_F56.md`. A lezárás a felhasználóé; a #38 a 6. adaggal folytatódhat.
+- **Ellenőr (2 kör):** `naplok/ELLENOR_F56.md`; a 1000 verses küszöb a végrehajtó kiegészítése (ma 0 sort érint), jóváhagyásra vár. A lezárás a felhasználóé; a #38 a 6. adaggal folytatódhat.

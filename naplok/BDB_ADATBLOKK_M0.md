@@ -29,8 +29,8 @@
 
 Mérés: `forditas_kapuk.ellenoriz_fejezetszam` az `adat/forditasok.tsv` minden `BDB`/`teljes` során (`allapot` `sonnet`/`opus`/`kezi`), és külön a forrásszövegen az M2 algoritmus (`bdb_adatblokk.forras_hibas_hivatkozasok`).
 
-- **A fordításokban:** 49 szócikk, **79 különböző hely** jelzett (6 egyértelmű jelöltre javítva, 73 `jelolt_marad`; a 2026-10-06-i felhasználói döntés előtt 18 / 61, l. 4. pont 5.); az 1–5. adagban 47 szócikk, a maradék kettő (H7843, H8034) a korábbi opus/kézi sor, nincs az adagrendben. A kapu által nem látott, könyvnév nélküli láncolt hivatkozások (pl. `1Sám 3:22; 5:26`) kívül esnek.
-- **A forrásban (az egész BDB-n):** 93 hely, 9 `javitva`, 84 `jelolt_marad` (a felhasználói döntés előtt 21 / 72) (`adat/bdb_igehely_javitas.tsv`).
+- **A fordításokban:** 49 szócikk, **79 különböző hely** jelzett (6 egyértelmű jelöltre javítva, 73 `jelolt_marad`; a DT-F56c után 4 / 75; a 2026-10-06-i felhasználói döntés előtt 18 / 61, l. 4. pont 5.); az 1–5. adagban 47 szócikk, a maradék kettő (H7843, H8034) a korábbi opus/kézi sor, nincs az adagrendben. A kapu által nem látott, könyvnév nélküli láncolt hivatkozások (pl. `1Sám 3:22; 5:26`) kívül esnek.
+- **A forrásban (az egész BDB-n):** 93 hely, 9 `javitva`, 84 `jelolt_marad` (a felhasználói döntés előtt 21 / 72); **a DT-F56c után 7 / 86**: a nyelvtani listás H4480 `1Ki 32:47` és H9009 `1Ki 66:6` sora `jelolt_marad`, és az algoritmus 4. pontja kiegészült az előtag-párral (H4480 = H9006) és a nyelvtani/1000 verses küszöb szabályával (SEMA 2.23) (`adat/bdb_igehely_javitas.tsv`).
 - Az alábbi lista a fordításokban jelzett összes hely, az M2 tábla szerinti állapottal. A fordításban és a táblában egyező helyek száma: 79/79 (minden jelzett helyet a tábla lefed).
 
 | adag | strong | a fordításban | a forrásban | állapot | javított |
