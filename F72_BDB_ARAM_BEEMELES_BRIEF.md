@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 72
 cim: Az arámi pótlás beemelése a BDB fő táblába (164 alias-sor + 6 szöveges pótlás)
 kod: BDB_ARAM_BEEMELES
 tipus: feladat

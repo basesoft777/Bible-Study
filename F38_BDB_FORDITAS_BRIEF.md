@@ -12,7 +12,7 @@ ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordít
 kovetkezo: "Te: a (d) feladat befogadása és lezárása (`beerkezo/F38d_SZELLEM_TESZT_JAVITAS_BRIEF_TERVEZET.md`, DT-F38j (d)); utána a 7. adag (sorrend 649–) a claude/f38-adag7 ágon."
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv]
 ir: [adat/forditasok.tsv, naplok/BDB_FORDITAS_naplo.md, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_hibas.tsv, DONTESEK.md, FELADATOK.md, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/normalizal.py, eszkozok/teszt_normalizal.py, eszkozok/teszt_forditas_kapuk.py, beerkezo/BDB_KONYVFELOLDASI_AUDIT.md, eszkozok/forditas_kapuk.py, eszkozok/emeles.py, forditas/prompt_v4.md, naplok/BDB_FORDITAS_kapuk.py, naplok/BDB_FORDITAS_regresszio.py, naplok/FORDITAS_kisnagybetu_csere.tsv, naplok/BDB_FORDITAS_gyokcsoportok.tsv, naplok/BDB_FORDITAS_zaras2.py, naplok/BDB_FORDITAS_zaras3.py, naplok/BDB_FORDITAS_zaras_javitasok.tsv, eszkozok/teszt_bdb_zaras.py, NYITOTT_FELADATOK.md, naplok/ELLENOR_F38_zaras_2.md, naplok/ELLENOR_F38_zaras_3.md, beerkezo/F38d_SZELLEM_TESZT_JAVITAS_BRIEF_TERVEZET.md, naplok/BDB_FORDITAS_gyokcsoport_meres.py, naplok/F38_zaras.md, naplok/ELLENOR_F38_adag6.md, naplok/ELLENOR_F38_adag6_2.md]
-fugg: [34, 56]
+fugg: [34, 56, 72]
 ---
 
 # A teljes BDB magyar fordítása (BDB_FORDITAS)
