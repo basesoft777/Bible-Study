@@ -2617,7 +2617,7 @@ A BDB-gyökcsoport tehát jóval tágabb rokonságot ad, mint az azonos TWOT-sz�
 
 **Terminológia-kivételek (szócikkszinten, jóváhagyásra a DT-F38d (b) mintájára):** H4422 és H6419 (`see` — angol ige a „to see” szövegrészben, nem „l.”); H5027 (`see` — „to see”, „see its desire”); H0349 (`emphatic` — köznyelvi melléknév, nem a nyelvtani emphaticus); H5324 (`Sept.` — „Aug.-Sept.”, a szeptember hónap); H0074 (`accusative` — a forrásban „accusative to” = „according to”, azaz „szerint”). A kivételek a sor `megjegyzes` oszlopában vannak.
 
-**Szellem-tábla (DT25 / DT-F38g):** +1 nagybetűs hely: H6743 Bír 14:6 „a Szellem . . . rárontott” (az Úr Szelleme); a H3001 „megtört szellem” és a H6588/H7350/H3444/H2506 „szellemi” kisbetűs, emberi/általános jelentésben. A `teszt_bdb_zaras.py` `SZELLEM_KOVETELT` ezt a helyet még nem ismeri, ezért a `test_szellem_tabla_nagybetus_helyei` az ágon a H6743-at is jelzi (a bővítés a DT-F38j (d) tárgya).
+**Szellem-tábla (DT25 / DT-F38g):** +1 nagybetűs hely: H6743 Bír 14:6 „a Szellem . . . rárontott” (az Úr Szelleme); a H3001 „megtört szellem” és a H6588/H7350/H3444/H2506 „szellemi” kisbetűs, emberi/általános jelentésben. A `teszt_bdb_zaras.py` `SZELLEM_KOVETELT` ezt a helyet még nem ismeri, ezért a `test_szellem_tabla_nagybetus_helyei` az ágon a H6743-at is jelzi (a bővítés a DT52 (d) tárgya).
 
 **Forrásjelek (hűen átvéve, nem javítva):** pl. H7927 „Gen 33:46; Gen 33:47”, H5341 „Psa 60:20” (valószínűleg Péld 6:20) és hasonló forrásbeli hivatkozási furcsaságok; a kapuk nem jeleztek.
 
@@ -2625,17 +2625,17 @@ A BDB-gyökcsoport tehát jóval tágabb rokonságot ad, mint az azonos TWOT-sz�
 
 **Folyamat:** szócikkenként olvasás → fordítás helyőrzőkkel → `emeles.py ellenoriz` (13 kapu) → `rogzit`/`beir`; a `naplok/EMELES_munka.tsv`-t minden `rogzit` után `git checkout`-tal visszaállítottam; a kapuhibák (9. jelölő, 4. zárójel, 11. könyvnév, 5. terminológia) a szövegben, nem a kapukon javítva.
 
-## M6b — DT-F38j döntése (2026-10-06, chat)
+## M6b — DT52 döntése (2026-10-06, chat)
 
 | | |
 |---|---|
 | (a) folytatás | 1 — a 7. adag (sorrend 649–) a `claude/f38-adag7` ágon indulhat, **de csak a (d) feladat lezárása után** |
 | (b) kivételek | 1 — szócikkszinten jóváhagyva: H4422, H6419, H5027 (`see`), H0349 (`emphatic`), H5324 (`Sept.`), H0074 (`accusative`); mind a terminológia-kapu téves riasztása, a fordítás nem változik |
-| (c) gyökcsoport | 3 — a felhasználó később dönt (irány: 2., külön adatként, nem a fordításban); N-F38x, a 7. adag nem vár rá |
+| (c) gyökcsoport | 3 — a felhasználó később dönt (irány: 2., külön adatként, nem a fordításban); N53, a 7. adag nem vár rá |
 | (d) Szellem-tábla, tesztek | 1 — külön feladat a 7. adag előtt: H6743 Bír 14:6 a `SZELLEM_KOVETELT`-be; a main-en is bukó `teszt_bdb_zaras.py`-hibák (H5674/H4390/H2451/H5117/H5012/H3847) javítása; brief-tervezet: `beerkezo/F38d_SZELLEM_TESZT_JAVITAS_BRIEF_TERVEZET.md` |
 
 **Az F38.355 csonka commitüzenete marad** (a felhasználó döntése; a történet nem íródik át).
 
 **Állapot (`dontesre_var` marad):** a brief fejlécében az `allapot` nem lép `fut`-ra, mert a 7. adag előfeltétele (a (d) feladat befogadása és lezárása) még hiányzik; a döntés megszületett, de a folytatás nem indítható. A `kovetkezo` a (d) feladatra mutat, utána a 7. adagra. A (d) brief-tervezete a `beerkezo/`-ben vár a `/befogad` jóváhagyására; a #38 7. adagja a befogadás után a (d) feladattól függ (`fugg` bővítése a befogadáskor).
 
-*Proveniencia: scope=DONTESEK.md DT-F38j | forras=felhasználó, chat | ts=2026-10-06.*
+*Proveniencia: scope=DONTESEK.md DT52 | forras=felhasználó, chat | ts=2026-10-06.*

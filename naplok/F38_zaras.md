@@ -7,8 +7,8 @@
 - **13. kapu JELZES:** H3289 „Náh 7:5” (forráshiba, hűen átvéve).
 - **Terminológia-kivételek (jóváhagyásra):** H4422, H6419, H5027 `see`; H0349 `emphatic`; H5324 `Sept.`; H0074 `accusative`.
 - **Szellem-tábla:** +1 nagybetűs hely (H6743 Bír 14:6).
-- **Döntésre vár:** `DONTESEK.md` DT-F38j (a) folytatás, (b) kivételek, (c) gyökcsoport hasznosítása, (d) Szellem-tábla és tesztek.
+- **Döntésre vár:** `DONTESEK.md` DT52 (a) folytatás, (b) kivételek, (c) gyökcsoport hasznosítása, (d) Szellem-tábla és tesztek.
 - **Gyökcsoport-mérés (újramérve):** 7 990 Strong; 5 702 (71,4%) kap `csak_bdb` többletet; TWOT-sal 5 486 közül 3 229 (58,9%); az ismétlődő Strong-sorok halmazként kezelve.
 - **Eltérés rögzítve:** a commitok 4–9 szócikkesek (nem tétel-szintűek), az üzenetek `F38.<n>: 6. adag — …, Sonnet` alakúak; a történetet nem írtam át.
 - **Folytatási pont:** a döntés után a 7. adag, sorrend 649– (kész összesen 648; hátra 7 416). Merge/ágtörlés nem történt; a független ellenőrzést az orkesztrátor futtatja, az eredményt nem minősítem „ellenőrzöttnek”.
-- **Azonosító-ismétlés:** az `F38.356` előtagot két commit viseli (`0403e71` a brief `pr` mezője és `9ebd1ae` a DT-F38j rögzítése); a történetet nem írtam át.
+- **Azonosító-ismétlés:** az `F38.356` előtagot két commit viseli (`0403e71` a brief `pr` mezője és `9ebd1ae` a DT52 rögzítése); a történetet nem írtam át.

@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-06",
-   "commit": "337a8f0"
+   "commit": "7b48e91"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -62,7 +62,7 @@
   {
    "kulcs": "stop",
    "cimke": "Megállt, rád vár",
-   "db": 2
+   "db": 3
   },
   {
    "kulcs": "run",
@@ -72,7 +72,7 @@
   {
    "kulcs": "ready",
    "cimke": "Indítható most",
-   "db": 5
+   "db": 4
   },
   {
    "kulcs": "wait",
@@ -90,16 +90,7 @@
    "db": 3
   }
  ],
- "sor": [
-  {
-   "szam": 38,
-   "kod": "BDB_FORDITAS",
-   "cim": "A teljes BDB héber szótár magyar fordítása, megállási pontokkal",
-   "most": "Folytatás: a 6. adag (sorrend 407–), Sonnet, a #56 BDB_ADATBLOKK adatblokkjával és fejezetszám-javítótáblájával (DT-F38i 🟢); a menet elején a gyökcsoport-mérés (M0 5. pont)",
-   "felbemaradt": true,
-   "parhuzamos": true
-  }
- ],
+ "sor": [],
  "hullamok": [
   {
    "nev": "1. hullám",
@@ -391,9 +382,9 @@
    "kod": "BDB_FORDITAS",
    "cim": "A teljes BDB héber szótár magyar fordítása, megállási pontokkal",
    "fazis": "1",
-   "allapot": "ready",
-   "brief_allapot": "fut",
-   "most": "Folytatás: a 6. adag (sorrend 407–), Sonnet, a #56 BDB_ADATBLOKK adatblokkjával és fejezetszám-javítótáblájával (DT-F38i 🟢); a menet elején a gyökcsoport-mérés (M0 5. pont)",
+   "allapot": "stop",
+   "brief_allapot": "dontesre_var",
+   "most": "Te: a (d) feladat befogadása és lezárása (`beerkezo/F38d_SZELLEM_TESZT_JAVITAS_BRIEF_TERVEZET.md`, DT52 (d)); utána a 7. adag (sorrend 649–) a claude/f38-adag7 ágon.",
    "fugg": "#34 (kész), #56 (kész)",
    "tervezett": false,
    "reszletes": "A BDB, a legrészletesebb héber szótár mind a 8 090 szócikke magyarra fordul, gyakorisági sorrendben, adagonként, gépi minőségkapukkal. Öt adag (406 szócikk) kész; a hatodik a DT-F38i döntésre vár.",
@@ -793,7 +784,7 @@
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_OLVASOI_KONKORDANCIA[\"OLVASOI_KONKORDANCIA\"]:::plan\n  P_SQLITE_EPIT[\"SQLITE_EPIT\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::wait\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T37[\"#37 TANULMANY_ELLENORZES\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T40[\"#40 HIVATKOZAS_ELLENORZES\"]:::wait\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::run\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::wait\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::ready\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::wait\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T64[\"#64 TEREMT002_PROZA_PROBA\"]:::stop\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T68[\"#68 GRAMM_KOTOSZOK\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> P_SQLITE_EPIT\n  P_MCP_BUROK --> T61\n  P_OLVASOI_KONKORDANCIA --> D_DT_M1\n  P_OLVASOI_KONKORDANCIA --> D_DT_M4\n  P_OLVASOI_KONKORDANCIA --> D_DT_M6\n  P_OLVASOI_KONKORDANCIA --> P_SQLITE_EPIT\n  P_SQLITE_EPIT --> T62\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> T11\n  T10 --> T9\n  T11 --> T23\n  T11 --> T9\n  T12 --> T11\n  T13 --> T10\n  T23 --> D_DT28\n  T23 --> T37\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> T37\n  T36 --> T38\n  T36 --> T52\n  T36 --> T9\n  T37 --> D_DT28\n  T37 --> T45\n  T38 --> D_DT_F38i\n  T40 --> T37\n  T48 --> T22\n  T54 --> T62\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T61 --> T54\n  T61 --> T62\n  T62 --> T68\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T67 --> T7\n  T67 --> T9\n  T70 --> T55\n  T70 --> T9\n  T9 --> D_DT28\n  T9 --> T23\n  T9 --> T38",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_OLVASOI_KONKORDANCIA[\"OLVASOI_KONKORDANCIA\"]:::plan\n  P_SQLITE_EPIT[\"SQLITE_EPIT\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::wait\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T37[\"#37 TANULMANY_ELLENORZES\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::stop\n  T40[\"#40 HIVATKOZAS_ELLENORZES\"]:::wait\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::run\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::wait\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::ready\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::wait\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T64[\"#64 TEREMT002_PROZA_PROBA\"]:::stop\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T68[\"#68 GRAMM_KOTOSZOK\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> P_SQLITE_EPIT\n  P_MCP_BUROK --> T61\n  P_OLVASOI_KONKORDANCIA --> D_DT_M1\n  P_OLVASOI_KONKORDANCIA --> D_DT_M4\n  P_OLVASOI_KONKORDANCIA --> D_DT_M6\n  P_OLVASOI_KONKORDANCIA --> P_SQLITE_EPIT\n  P_SQLITE_EPIT --> T62\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> T11\n  T10 --> T9\n  T11 --> T23\n  T11 --> T9\n  T12 --> T11\n  T13 --> T10\n  T23 --> D_DT28\n  T23 --> T37\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> T37\n  T36 --> T38\n  T36 --> T52\n  T36 --> T9\n  T37 --> D_DT28\n  T37 --> T45\n  T38 --> D_DT52\n  T38 --> D_DT_F38i\n  T40 --> T37\n  T48 --> T22\n  T54 --> T62\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T61 --> T54\n  T61 --> T62\n  T62 --> T68\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T67 --> T7\n  T67 --> T9\n  T70 --> T55\n  T70 --> T9\n  T9 --> D_DT28\n  T9 --> T23\n  T9 --> T38",
  "dontesek": {
   "nyitott": [
    {
@@ -804,7 +795,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 101
+    "sor": 102
    },
    {
     "id": "DT-M5",
@@ -814,7 +805,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 102
+    "sor": 103
    },
    {
     "id": "DT-M6",
@@ -824,7 +815,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 103
+    "sor": 104
    }
   ],
   "alkalmazasra_var": [
@@ -859,6 +850,16 @@
     "sor": 59
    },
    {
+    "id": "DT52",
+    "feladat": "#38 BDB_FORDITAS (megállási pont, adag 6)",
+    "kerdes": "A 6. adag kész: a sorrend 407–648. sora (242 szócikk, H0123–H6466), mind rögzítve (`allapot=sonnet`, a #56 adatblokkjával és fejezetszám-javítótáblával), forrás 498 550 → fordítás 521 833 karakter; 242/242 átment a gátoló kapukon; `ellenoriz.py` SÉRTÉS 0; 1 szócikk 13. kapus JELZES-t kapott (H3289 „Náh 7:5”, forráshiba, hűen átvéve); hat szócikkszintű terminológia-kivétel (H4422, H6419, H5027 `see`; H0349 `emphatic`; H5324 `Sept.`; H0074 `accusative`); a Szellem-tábla +1 nagybetűs hellyel (H6743 Bír 14:6). Kész összesen 648 sorrend-sor; hátra 7 416. A `teszt_bdb_zaras.py` 3 hibája a main-en is fennáll (a `test_ir_ketszer_futtatva_nem_duplikal` és a `test_dtf38g_kezi_javitasok` a H5674, a `test_szellem_tabla_nagybetus_helyei` a H4390, H2451, H5117, H5012, H3847 miatt); az ágon a `test_szellem_tabla_nagybetus_helyei` ezen felül a H6743-at is jelzi (ezt e menet okozta). (a) Folytatás: a 7. adag (sorrend 649–) indulhat-e? (b) Kivételek: a hat kivétel rendben van-e? (c) Gyökcsoport (M0 5. pont, ⛔ M1): a mérés (`naplok/BDB_FORDITAS_naplo.md`, M0 5. pont: 7 990 Strong, 71,4% kap BDB-rokon többletet (újramérve)) alapján hasznosítsuk-e a BDB-gyökcsoportot („rokon szavak” adat) a szócikkek mellett? (d) Szellem-tábla és tesztek: a H6743 Bír 14:6 nagybetűs helye kerüljön-e a `teszt_bdb_zaras.py` `SZELLEM_KOVETELT` táblájába (a `test_szellem_tabla_nagybetus_helyei` ezt az ágon jelzi), és ki javítsa a main-en is fennálló H5674/H4390/H2451/H5117/H5012/H3847-hibákat (`test_ir_ketszer_futtatva_nem_duplikal`, `test_dtf38g_kezi_javitasok`, `test_szellem_tabla_nagybetus_helyei`)?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 60
+   },
+   {
     "id": "DT-F32a",
     "feladat": "#32 Kontextus-őrzés (K5 ⛔, a próba helye)",
     "kerdes": "A TEREMT-002 3. lépése (#12) ma a #11 (migráció) után áll, és a T3 eredetileg prózát, lexikonoldalt és LXX-döntéseket is tartalmaz. A KONTEXTUS K1/4 szabály szerint a B-szerkezet próbájának a #23 M1 előtt kell lefutnia; a D1 viszont tiltja az éles rendert az 1. fázis (#5, #8) előtt. Hol és mikor fusson a próba? *(forrás: `F32_KONTEXTUS_BRIEF.md` K5)*",
@@ -866,7 +867,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 78
+    "sor": 79
    },
    {
     "id": "DT-F32b",
@@ -876,7 +877,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 79
+    "sor": 80
    },
    {
     "id": "DT-F32c",
@@ -886,7 +887,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 80
+    "sor": 81
    },
    {
     "id": "DT-F26a",
@@ -896,7 +897,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 82
+    "sor": 83
    },
    {
     "id": "DT-F42a",
@@ -906,7 +907,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 87
+    "sor": 88
    },
    {
     "id": "DT-F42b",
@@ -916,7 +917,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 88
+    "sor": 89
    },
    {
     "id": "DT-F42c",
@@ -926,7 +927,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 89
+    "sor": 90
    },
    {
     "id": "DT-F42d",
@@ -936,7 +937,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 90
+    "sor": 91
    },
    {
     "id": "DT-F42e",
@@ -946,7 +947,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 91
+    "sor": 92
    },
    {
     "id": "DT-F42f",
@@ -956,7 +957,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 92
+    "sor": 93
    },
    {
     "id": "DT-F42g",
@@ -966,7 +967,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 93
+    "sor": 94
    },
    {
     "id": "DT-F42h",
@@ -976,7 +977,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 94
+    "sor": 95
    },
    {
     "id": "DT-F42i",
@@ -986,7 +987,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 95
+    "sor": 96
    },
    {
     "id": "DT50",
@@ -996,7 +997,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 97
+    "sor": 98
    },
    {
     "id": "DT-M1",
@@ -1006,7 +1007,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 98
+    "sor": 99
    },
    {
     "id": "DT-M2",
@@ -1016,7 +1017,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 99
+    "sor": 100
    },
    {
     "id": "DT-M3",
@@ -1026,7 +1027,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 100
+    "sor": 101
    },
    {
     "id": "DT-M7",
@@ -1036,7 +1037,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 104
+    "sor": 105
    },
    {
     "id": "DT-M8",
@@ -1046,7 +1047,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 105
+    "sor": 106
    },
    {
     "id": "DT28",
@@ -1056,7 +1057,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 106
+    "sor": 107
    },
    {
     "id": "DT37",
@@ -1066,7 +1067,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 107
+    "sor": 108
    },
    {
     "id": "DT38",
@@ -1076,7 +1077,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 108
+    "sor": 109
    },
    {
     "id": "DT39",
@@ -1086,7 +1087,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 109
+    "sor": 110
    },
    {
     "id": "DT41",
@@ -1096,7 +1097,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 111
+    "sor": 112
    },
    {
     "id": "DT35",
@@ -1106,7 +1107,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 112
+    "sor": 113
    },
    {
     "id": "DT36",
@@ -1116,7 +1117,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 113
+    "sor": 114
    },
    {
     "id": "DT30",
@@ -1126,7 +1127,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 114
+    "sor": 115
    },
    {
     "id": "DT31",
@@ -1136,7 +1137,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 115
+    "sor": 116
    },
    {
     "id": "DT32",
@@ -1146,7 +1147,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 116
+    "sor": 117
    },
    {
     "id": "DT33",
@@ -1156,7 +1157,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 117
+    "sor": 118
    },
    {
     "id": "DT34",
@@ -1166,7 +1167,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 118
+    "sor": 119
    },
    {
     "id": "DT42",
@@ -1176,7 +1177,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 119
+    "sor": 120
    },
    {
     "id": "DT43",
@@ -1186,7 +1187,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 120
+    "sor": 121
    },
    {
     "id": "DT44",
@@ -1196,7 +1197,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 121
+    "sor": 122
    },
    {
     "id": "DT45",
@@ -1206,7 +1207,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 122
+    "sor": 123
    }
   ],
   "javasolt": [],
