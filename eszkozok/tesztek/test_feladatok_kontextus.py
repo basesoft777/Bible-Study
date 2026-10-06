@@ -175,23 +175,30 @@ class KontextusTest(Fixture):
         self.assertEqual(self.hibak(), [])
 
     def test_elozmeny_brief_csak_figyelem(self):
-        self.assertEqual(tuple(sorted(F.MUNKA_ELOZMENY)), (9, 35))
-        self.brief(9, olvas=['a'], ir=['lexikon/', 'tematikus_lezart/Segitsegul_tematikus.md'])
+        """A mechanizmus egy nem lezárt előzmény-brieffel (a 35 alakja, `nem_indult` állapotban)."""
+        self.assertEqual(tuple(sorted(F.MUNKA_ELOZMENY)), (35,))
+        self.brief(35, olvas=['a'], ir=['genezis/'])
         self.assertEqual(self.hibak(), [])
         fig = F.figyelmeztetesek(self.briefek(), {})
         self.assertTrue(any('E18' in u for _, u in fig))
         rc, ki = self.cli('ellenoriz')
         self.assertEqual(rc, 0)
-        self.assertIn('FIGYELEM\tF09_T9_BRIEF.md\tE18', ki)
+        self.assertIn('FIGYELEM\tF35_T35_BRIEF.md\tE18', ki)
         rc, ki = self.cli('fuggesek')
         self.assertEqual(rc, 0)
-        self.assertIn('FIGYELEM\t9\t-\tE18', ki)
+        self.assertIn('FIGYELEM\t35\t-\tE18', ki)
         # az előzmény-brief sem csomagolható, amíg a mező nincs kitöltve
-        self.assertEqual(self.cli('csomag', '9')[0], 1)
+        self.assertEqual(self.cli('csomag', '35')[0], 1)
         # és nem is jelölt (DT-F32c, 1. opció)
-        ok = F.jeloltek(self.briefek(), {}).get(9)
+        ok = F.jeloltek(self.briefek(), {}).get(35)
         self.assertIsNotNone(ok)
         self.assertIn('DT-F32c', ok)
+
+    def test_9_mar_nem_elozmeny(self):
+        """A 9 kikerült a kivételből (2026.10.06): `munka` nélkül, motívumfájllal már E18 hiba."""
+        self.assertNotIn(9, F.MUNKA_ELOZMENY)
+        self.brief(9, olvas=['a'], ir=['lexikon/', 'tematikus_lezart/Segitsegul_tematikus.md'])
+        self.assertTrue(any('E18' in u for _, u in self.hibak()))
 
     def test_elozmeny_brief_kitoltve_jelolt(self):
         self.brief(9, munka='ertelmezo', olvas=['a'], ir=['lexikon/', 'tematikus_lezart/Segitsegul_tematikus.md'])
