@@ -4,13 +4,13 @@
 
 **Eredmény: ELTÉRÉS, 3 tétel (mind alacsony vagy hatókörön kívüli).**
 
-Az ellenőr a `teszt_bdb_zaras.py`-t és az `ellenoriz.py`-t a szerepe miatt nem futtatta. Ezeket a végrehajtó mérte (napló, „DT-F73a alkalmazása”).
+Az ellenőr a `teszt_bdb_zaras.py`-t és az `ellenoriz.py`-t a szerepe miatt nem futtatta. Ezeket a végrehajtó mérte (napló, „DT53 alkalmazása”).
 
 | pont | eredmény | fájl:sor | parancs / indok |
 |---|---|---|---|
 | Hatókör | OK | — | `git diff --numstat 8f70e4f^..HEAD`: 6 fájl, mind a brief `ir` listáján. |
 | forditasok.tsv bájtra változatlan | OK | `adat/forditasok.tsv` | `git diff --stat 8f70e4f^ HEAD -- adat/forditasok.tsv` üres; `git diff --numstat main...HEAD -- adat konkordancia` üres. A commitolt fát fedi, a munkafát nem. |
-| ⛔ 2. lépés: a DT-F73a négy helye csak döntés után | OK | `naplok/BDB_FORDITAS_zaras3.py:62-66` | Az F73.1 csak a H4390, H5674, H6743 sort hozta; az F73.2 megállás; a négy hely az F73.3-ban. A felhasználói döntést a repóból nem ellenőrizhette. |
+| ⛔ 2. lépés: a DT53 négy helye csak döntés után | OK | `naplok/BDB_FORDITAS_zaras3.py:62-66` | Az F73.1 csak a H4390, H5674, H6743 sort hozta; az F73.2 megállás; a négy hely az F73.3-ban. A felhasználói döntést a repóból nem ellenőrizhette. |
 | SZELLEM_KOVETELT H2451 | OK | `zaras3.py:62`; `forditasok.tsv:371` | A kontextus egyszer áll. BDB `:2298`: „gives her pupils the divine spirit 1:23” → DT-F38g (3). |
 | SZELLEM_KOVETELT H3847 | OK | `zaras3.py:63`; `forditasok.tsv:466` | BDB `:3590`: „the spirit of ׳י clothed itself with Gideon”. |
 | SZELLEM_KOVETELT H5012 ×2 | OK | `zaras3.py:64-65`; `forditasok.tsv:454` | Mindkét kontextus egyszer áll; BDB `:4687`: kétszer „under influence of divine spirit”. |
@@ -26,7 +26,7 @@ Az ellenőr a `teszt_bdb_zaras.py`-t és az `ellenoriz.py`-t a szerepe miatt nem
 | Elavult megjegyzések | **ELTÉRÉS** (alacsony) | `zaras3.py:107-108`; `teszt_bdb_zaras.py:167, 209` | „a `regi` az `uj` resze”, és a tesztnév `test_h5674_regi_resze_az_ujnak` az F73.1 után hamis. |
 | 4. feltétel: a #38 `fugg` mezője tartalmazza a #73-at | **ELTÉRÉS** | `F38_BDB_FORDITAS_BRIEF.md:15` | `fugg: [34, 56, 72]`; a befogadáskor maradt ki, a fájl nincs a #73 `ir` listáján. |
 | 3. feltétel: a hat Strong oka egyenként | OK | napló 9–17 | — |
-| Helyőrző-szabály (DT-F73a) | OK | `DONTESEK.md:128` | Végleges DT-szám nincs. |
+| Helyőrző-szabály (DT53) | OK | `DONTESEK.md:128` | Végleges DT-szám nincs. |
 | TSV-írás csv nélkül | OK | `zaras3.py:122-181` | `import csv` nincs; a 448. sor 6 mezős, LF. |
 | Proveniencia | OK | napló 3., 42. sor | — |
 | A1–A6 | OK / tárgytalan | — | E12–E15 0 találat. |
