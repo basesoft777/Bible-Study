@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-06",
-   "commit": "9071ad6"
+   "commit": "5a38cd7"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -87,7 +87,7 @@
   {
    "kulcs": "dt",
    "cimke": "Nyitott döntés",
-   "db": 4
+   "db": 3
   }
  ],
  "sor": [
@@ -782,16 +782,6 @@
  "dontesek": {
   "nyitott": [
    {
-    "id": "DT-F41a",
-    "feladat": "#41 BSB-újramérés (a DT6 (g) pontja)",
-    "kerdes": "Döntésre vár: kézi megfeleltetés a Zsolt 13-ra (BSB 2→MT 3, 3→4, 4→5, 5+6→6) vagy marad ki. *(a kérdés és az opció szó szerint a DT6-ból; a háttér ugyanott: „Belső versosztás-eltérés (F16.11)”: a Zsolt 13 illesztetlen, kimarad a mérésből és az importból)*",
-    "allapot": "nyitott",
-    "jelek": [
-     "🟡"
-    ],
-    "sor": 22
-   },
-   {
     "id": "DT-M4",
     "feladat": "MUNKATERV → OLVASOI_KONKORDANCIA szó-lap",
     "kerdes": "Bővüljön-e a SEMA 2.13 szerepmátrix: 13. szerep Károli-megfelelők (+ SZPA-alternatíva), 14. szerep rejtett/hamis párhuzam? *(forrás: `MUNKATERV.md` 2. szakasz, 0. lépcső)*",
@@ -852,6 +842,16 @@
      "🟢"
     ],
     "sor": 21
+   },
+   {
+    "id": "DT-F41a",
+    "feladat": "#41 BSB-újramérés (a DT6 (g) pontja)",
+    "kerdes": "Döntésre vár: kézi megfeleltetés a Zsolt 13-ra (BSB 2→MT 3, 3→4, 4→5, 5+6→6) vagy marad ki. *(a kérdés és az opció szó szerint a DT6-ból; a háttér ugyanott: „Belső versosztás-eltérés (F16.11)”: a Zsolt 13 illesztetlen, kimarad a mérésből és az importból)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 22
    },
    {
     "id": "DT-F24",
