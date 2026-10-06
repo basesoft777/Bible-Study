@@ -48,7 +48,9 @@ FELADATOK = (
     '| D3 | regi |\n'
     '| D-F40 | uj |\n'
 )
-NAPLO = 'A DT-F40a es a DT-F40b dontes, N-F40a nyitott, D-F40 napló. DT-F99 arva. DT-F40ab nem helyorzo.\n'
+NAPLO = ('A DT-F40a es a DT-F40b dontes, N-F40a nyitott, D-F40 napló. DT-F99 arva. DT-F40ab nem helyorzo.\n'
+         # brief belso dontesnaploja (F51 K0): kotojel + sorszam -- nem helyorzo, nem arva
+         'Belso dontes: DT-F40a-3 es DT-F51-2 (kotojeles alak).\n')
 
 
 class _Gyoker(object):
@@ -76,6 +78,7 @@ class SzamkiosztasTeszt(unittest.TestCase):
             self.assertEqual(list(h.items()), [
                 ('DT-F40b', 'DT6'), ('DT-F40a', 'DT7'),
                 ('N-F40a', 'N8'), ('D-F40', 'D4')])
+            # a kotojeles DT-F51-2 nem helyorzo: nem arva (konzisztencia 2026-10-06, 2. talalat)
             self.assertEqual(arvak, ['DT-F99'])
 
     def test_ir_cserel_es_idempotens(self):
@@ -86,6 +89,8 @@ class SzamkiosztasTeszt(unittest.TestCase):
             self.assertIn('A DT7 es a DT6 dont', _olvas(gy, 'naplo.md'))
             self.assertIn('DT-F99 arva', _olvas(gy, 'naplo.md'))
             self.assertIn('DT-F40ab nem helyorzo', _olvas(gy, 'naplo.md'))
+            # a kotojeles belso azonosito erintetlen: a DT-F40a-3 nem lett DT7-3
+            self.assertIn('DT-F40a-3 es DT-F51-2', _olvas(gy, 'naplo.md'))
             self.assertIn('napló', _olvas(gy, 'naplo.md'))
             h2, _, _ = SK.terv(gy)
             self.assertEqual(h2, {})

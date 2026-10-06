@@ -51,7 +51,7 @@ A feladat a hiányzó sorokat adatként pótolja, és megépíti a „még nem v
 **Nincs benne:**
 - új tartalmi ítélet: ahol a forrás nem mond egyértelmű döntést, a sor `dontes = nyitva`, `indoklas` = „nincs dokumentált döntés (forrás: …)”. **A hiány nem tölthető ki gyenge vagy asszociatív indoklással** (CLAUDE.md 3. szabály); a `nyitva` sorok elbírálása külön, értelmező feladat;
 - `elofordulasok.tsv`-sor felvétele vagy törlése (a 2. szabály: találatból nincs közvetlen út);
-- motívumfájl írása (`motivumok/`, `tematikus_lezart/`, `lexikon/`, `motivumlog/`);
+- motívumfájl írása (`motivumok/`, `tematikus_lezart/`, `motivumlog/`) és generált kimenet írása (`lexikon/`; a DT28 szerint nem motívumfájl, de kézzel nem írható);
 - a TEREMT-002 (natív, a jelöltjei megvannak);
 - a lelet-lap renderelése vagy publikálása (az OLVASOI_KONKORDANCIA dolga) és a többi 7 motívum lelet-futása (az M2 minta után, ha a felhasználó kéri, ugyanebben a feladatban vagy külön).
 

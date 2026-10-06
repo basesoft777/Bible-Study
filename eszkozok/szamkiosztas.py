@@ -50,9 +50,13 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 FAJL = {'DT': 'DONTESEK.md', 'N': 'NYITOTT_FELADATOK.md', 'D': 'FELADATOK.md'}
 
-# Hatarok: elotte nem lehet betu/szam/kotojel, utana nem lehet betu/szam.
+# Hatarok: elotte nem lehet betu/szam/kotojel, utana nem lehet betu/szam/kotojel.
+# A kotojel utana is hatar: a briefek belso dontesnaploi `DT-F51-2`, `DT-F37-8`
+# alakuak (F51 brief K0), ezek nem helyorzok -- a kotojel nelkul a sorszam elotti
+# reszuk arva helyorzonek latszott, es egy kesobbi azonos nevu definicios sor
+# felig atirta volna oket (konzisztencia-jelentes 2026-10-06, 2. talalat).
 _HATAR_E = r'(?<![A-Za-z0-9-])'
-_HATAR_U = r'(?![A-Za-z0-9])'
+_HATAR_U = r'(?![A-Za-z0-9-])'
 HELYORZO = {
     k: re.compile(_HATAR_E + k + r'-F(\d+)([a-z]?)' + _HATAR_U)
     for k in ('DT', 'N', 'D')
