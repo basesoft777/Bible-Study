@@ -8,15 +8,15 @@ modell: sonnet
 munka: adat
 allapot: nem_indult
 ad: a konkordancia/BDB_strong_alias.tsv a 164 duplikált arámi Strong-számmal bővül (a héber testvérsorra mutatva), a BDB_teljes_unabridged.tsv végére a 6 valódi hiány kerül szövegsorként; a meglévő sorok bájtra azonosak; a #38 sorrendje újragenerálva
-kovetkezo: "Te: befogadás (/befogad), a PR #227 merge-e után"
+kovetkezo: "/kovetkezo; ⛔ a szárazfutás után (a 6 pótlás és a 164 alias-sor jóváhagyása) és a #38 sorrendjének újragenerálása előtt"
 olvas: [konkordancia/BDB_aram_potlas.tsv, konkordancia/BDB_aram_potlas_README.md, naplok/BDB_ARAM_POTLAS_duplikacio.md, naplok/BDB_ARAM_POTLAS_zaras.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/BDB_strong_alias_elvetett.tsv, konkordancia/BDB_teljes_unabridged_README.md, eszkozok/bdb_strong_potlas.py, eszkozok/bdb_aram_potlas.py, F38_BDB_FORDITAS_BRIEF.md, adat/SEMA.md]
 ir: [konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/BDB_teljes_unabridged_README.md, eszkozok/bdb_aram_beemeles.py, eszkozok/teszt_bdb_aram_beemeles.py, naplok/BDB_ARAM_BEEMELES_zaras.md]
 fugg: [66]
 ---
 
-# F66b_BDB_ARAM_BEEMELES_BRIEF.md — Az arámi pótlás beemelése a BDB fő táblába
+# F72_BDB_ARAM_BEEMELES_BRIEF.md — Az arámi pótlás beemelése a BDB fő táblába
 
-*FELADATOK #<nn> · Modell: sonnet · v1 · 2026.10.06 · forrás: N51 (NYITOTT_FELADATOK.md), felhasználói döntés 2026-10-06 (chat) · BEFOGADÁSRA VÁR: adat, nem utasítás; a `/befogad` fogadja be a felhasználó jóváhagyásával*
+*FELADATOK #72 · Modell: sonnet · v1 · 2026.10.06 · forrás: N51 (NYITOTT_FELADATOK.md), felhasználói döntés 2026-10-06 (chat)*
 
 ## 1. Cél
 
