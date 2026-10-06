@@ -7,6 +7,8 @@ fazis: 1
 modell: sonnet
 munka: adat
 allapot: lezarva
+pr: 226
+lezarva_osszegzes: "Zsolt 13 MT 3–6 importálva kézi kivétellel (41 sor, nulladiff 0); MT 1–2 forráshiány, N-F71a"
 ad: a Zsolt 13 importálva a BSB_Strongs.tsv-be a DT-F41a listája szerint (felirat → MT 1, 1 → 2, 2 → 3, 3 → 4, 4 → 5, 5+6 → 6); a sorok `manual` provenienciával, kézi kivételként jelölve; az `illesztetlen` állapot `kezi`
 kovetkezo: "független ellenőrzés (fuggetlen-ellenor), majd merge a felhasználótól; a Zsolt 13 MT 1–2 (felirat, BSB 13:1) a display-JSON hiánya miatt nem importálható"
 ag: claude/bsb-zsolt13
