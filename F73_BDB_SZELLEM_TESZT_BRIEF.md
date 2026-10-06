@@ -1,5 +1,5 @@
 ---
-feladat:
+feladat: 73
 cim: A BDB-fordítás Szellem-tábla és zárótesztek javítása (F38 (d))
 kod: BDB_SZELLEM_TESZT
 tipus: feladat
