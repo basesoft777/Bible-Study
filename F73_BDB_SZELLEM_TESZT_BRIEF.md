@@ -5,10 +5,10 @@ kod: BDB_SZELLEM_TESZT
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: dontesre_var
 ag: claude/bdb-szellem-teszt
 ad: a `teszt_bdb_zaras.py` zöld (a main-en is), a `SZELLEM_KOVETELT` tábla a H6743 Bír 14:6 nagybetűs helyével bővítve; a #38 7. adagja (sorrend 649–) előfeltétele teljesül
-kovetkezo: "Folytatás: 1. lépés (felmérés)"
+kovetkezo: "Te: a DT-F73a (H2451, H5117, H5012, H3847 nagybetűs Szellem-helyei) eldöntése; utána a négy hely felvétele a SZELLEM_KOVETELT-be, 4–6. lépés"
 munka: adat
 olvas: [naplok/BDB_FORDITAS_zaras3.py, naplok/BDB_FORDITAS_zaras2.py, naplok/BDB_FORDITAS_zaras_javitasok.tsv, eszkozok/teszt_bdb_zaras.py, adat/forditasok.tsv, adat/terminologia.tsv, naplok/ELLENOR_F38_zaras_2.md, naplok/ELLENOR_F38_zaras_3.md, naplok/BDB_FORDITAS_naplo.md, konkordancia/BDB_teljes_unabridged.tsv, DONTESEK.md]
 ir: [eszkozok/teszt_bdb_zaras.py, naplok/BDB_FORDITAS_zaras3.py, naplok/BDB_FORDITAS_zaras_javitasok.tsv, naplok/BDB_SZELLEM_TESZT_naplo.md, adat/forditasok.tsv, DONTESEK.md, NYITOTT_FELADATOK.md]
