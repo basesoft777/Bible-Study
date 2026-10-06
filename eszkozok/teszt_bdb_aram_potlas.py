@@ -45,7 +45,7 @@ def main():
             assert not e['gyokstub'] and not e['jegyzet'], s
 
     # K4: H0004 — nem szócikk, jelölt marad, szöveg nincs
-    assert d['H0004']['allapot'] == 'nincs_szoveg' and d['H0004']['Teljes_szocikk'] == ''
+    assert d['H0004']['allapot'] == 'cimke_reszleges' and d['H0004']['Teljes_szocikk'] == ''
     # H0007: egyértelmű, fej: "H7. abad ..."
     assert d['H0007']['allapot'] == 'egyertelmu'
     assert d['H0007']['Teljes_szocikk'].startswith('H7. abad '), d['H0007']['Teljes_szocikk'][:20]
@@ -55,7 +55,7 @@ def main():
     # csonk szócikk jelöltként marad (gyök-hivatkozás), szöveg megvan, de nem egyertelmu
     assert d['H3769']['allapot'] == 'csonk' and d['H5013']['allapot'] == 'csonk'
     # a címszó/glossza-eltérés nem kerül be egyértelműként
-    assert d['H2298']['allapot'] == 'nincs_szoveg' and d['H2298']['Teljes_szocikk'] == ''
+    assert d['H2298']['allapot'] == 'cimke_reszleges' and 'BDB9285' in d['H2298']['indok'] and d['H2298']['Teljes_szocikk'] == ''
 
     # a fej formátuma egyezik a fő táblával: "H<n>. <átírás> ..."
     _, fo = olvas(B.TABLA)
@@ -63,7 +63,7 @@ def main():
     minta = [r[2] for r in fo if r[0] in ('H0002', 'H0001')]
     assert all(fo_re.match(m) for m in minta), minta
     for s, r in d.items():
-        if r['allapot'] != 'nincs_szoveg':
+        if r['allapot'] not in ('nincs_szoveg', 'cimke_reszleges'):
             assert fo_re.match(r['Teljes_szocikk']), (s, r['Teljes_szocikk'][:30])
             assert r['Teljes_szocikk'].startswith('H%d. ' % int(s[1:5])), s
             assert '\t' not in r['Teljes_szocikk']

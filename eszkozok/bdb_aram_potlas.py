@@ -18,8 +18,10 @@ SOHA nem írja. A TSV-ket split('\\t')-tel olvassa, '\\t'.join()-nal írja (nem 
                 a BDB-azonosítóra pontosan ez az egy címke nélküli (táblasor nélküli) Strong mutat
   csonk         gyök-hivatkozás ("√ of following"), szófaj és értelem nélkül: gyenge bizonyíték
   tobb_jelolt   a szócikk más, táblasor nélküli Strongot is hordoz (nem dönthető el, melyikhez tartozik)
-  nincs_szoveg  a Strong saját szövege nem azonosítható: a címke nem szócikkre mutat (bevezető jegyzet),
-                a szócikk címszava és glosszája az OSHL-lemmával sem egyezik, vagy üres a szöveg
+  nincs_szoveg  a BDB.lexicon-ban nincs a Strongra szócikk-szöveg (üres vagy hiányzó Definition)
+  cimke_reszleges  a címke nem a Strong saját szócikkére mutat: vagy nem szócikkre (bevezető jegyzet,
+                pl. H0004), vagy a szócikk csak részlegesen tárgyalja a Strongot (többes címke,
+                összetételek; pl. H2298); jelölt marad, Teljes_szocikk üres
 """
 import sys
 import os
@@ -41,7 +43,7 @@ GYOKER = B.GYOKER
 KIMENET = os.path.join(GYOKER, 'konkordancia', 'BDB_aram_potlas.tsv')
 M0_JELENTES = os.path.join(GYOKER, 'naplok', 'BDB_ARAM_POTLAS_M0.md')
 FEJLEC = ['Strong_padded', 'bdb_id', 'cimszo', 'oshl_lemma', 'allapot', 'indok', 'Teljes_szocikk', 'proveniencia']
-ALLAPOTOK = ('egyertelmu', 'csonk', 'tobb_jelolt', 'nincs_szoveg')
+ALLAPOTOK = ('egyertelmu', 'csonk', 'tobb_jelolt', 'nincs_szoveg', 'cimke_reszleges')
 STOP = B.STOP | {'see', 'etc', 'but', 'its', 'are', 'was', 'not'}
 
 
@@ -123,7 +125,7 @@ def _osztalyoz(sor, bdb, htop, tabla, oshl):
     if e is None or not e['szoveg']:
         return 'nincs_szoveg', 'a BDB.lexicon-ban nincs ilyen azonosítójú, nem üres szócikk', e, ol
     if e['jegyzet'] or not e['cimszavak']:
-        return ('nincs_szoveg', 'a címke nem szócikkre mutat: a %s a BDB arámi szakaszának bevezető jegyzete '
+        return ('cimke_reszleges', 'a címke nem szócikkre mutat: a %s a BDB arámi szakaszának bevezető jegyzete '
                 '([Note]), nincs címszava; a Strong saját szócikke ebben a forrásban nem azonosítható' % bid), e, ol
     if e['gyokstub']:
         return ('csonk', 'gyök-hivatkozás ("√ of following"), szófaj és értelem nélkül; a címszó: %s; '
@@ -143,9 +145,30 @@ def _osztalyoz(sor, bdb, htop, tabla, oshl):
     elif glosszak_egy:
         alap = 'a címszó eltér (BDB %s / OSHL %s), de a glossza egyezik (%s)' % (e['cimszavak'][0], ol, ','.join(sorted(glosszak_egy)))
     else:
-        return ('nincs_szoveg', 'a szócikk nem ennek a Strongnak a szövege: a címszó és a glossza sem egyezik az OSHL-lemmával (BDB %s / OSHL %s; OSHL def_en: %s; BDB glossza: %s)'
-                % (' '.join(e['cimszavak'][:2]), ol or '—', gl_oshl or '—', '; '.join(e['glosszak']) or '—')), e, ol
+        return _reszleges(s, bid, e, ol, gl_oshl, bdb), e, ol
     return 'egyertelmu', '%s; a szócikk a %s azonosítón önálló (egy táblasor nélküli címke); szófaj: %s' % (alap, bid, e['szofaj']), e, ol
+
+
+def _reszleges(s, bid, e, ol, gl_oshl, bdb):
+    """A címszó és a glossza sem egyezik: részleges kapcsolat (a szöveg említi a lemmát), vagy nem azonosítható."""
+    cimkek = [B.pad(x) for x in re.findall(r"lex\('(H\d+[a-z]?)'\)", re.match(r'<h1>(.*?)</h1>', e['nyers'], re.S).group(1))]
+    kl = B.kons(ol) if ol else ''
+    emlit = kl and kl in B.kons(e['szoveg'])
+    cel = [k for k, x in bdb.items() if k != bid and x['nyelv'] == 'arameus' and kl
+           and any(B.kons(c) == kl for c in x['cimszavak'])]
+    if cel:
+        sz = [k for k in cel if set(re.findall(r'[a-z]{3,}', gl_oshl.lower())) & set(re.findall(r'[a-z]{3,}', ' '.join(bdb[k]['glosszak']).lower()))]
+        cel = sz or cel
+    idez = re.search(r'[^;,]{0,40}' + re.escape(ol) + r'[^;]{0,30}|[^;]{0,60}see ' + re.escape(ol) + r'[^;.]{0,20}', e['szoveg']) if emlit else None
+    if emlit:
+        return ('cimke_reszleges', 'részleges kapcsolat, nem véletlen: a %s (%s) címkéje [%s] többes címke a %s-vel képzett összetételekre; '
+                'a szócikk szövegében van a Strongra (%s, OSHL def_en: %s) vonatkozó rész ("%s"), de a szócikk maga más szót tárgyal és a lemmára utal '
+                '(BDB glossza: %s); a Strong saját szócikke nem ez%s'
+                % (bid, ' '.join(e['cimszavak'][:1]), ' '.join(cimkek), ' '.join(e['cimszavak'][:1]), ol, gl_oshl, idez.group(0).strip() if idez else '',
+                   '; '.join(e['glosszak']) or '—',
+                   ('; jelölt cél-szócikk (csak jelölt, a felhasználó dönt): %s' % ', '.join(cel)) if cel else ''))
+    return ('cimke_reszleges', 'a címszó és a glossza sem egyezik az OSHL-lemmával, és a szöveg sem említi (BDB %s / OSHL %s; OSHL def_en: %s; BDB glossza: %s)'
+            % (' '.join(e['cimszavak'][:2]), ol or '—', gl_oshl or '—', '; '.join(e['glosszak']) or '—'))
 
 
 def osztalyoz(sor, bdb, htop, tabla, oshl):
@@ -173,7 +196,7 @@ def m1(ts):
         allapot, indok, e, ol = osztalyoz(sor, bdb, htop, tabla, oshl)
         o = oshl.get(sor['masodlagos_strong'])
         cim = (e['cimszavak'][0] if e and e['cimszavak'] else sor['cimszo'])
-        if allapot == 'nincs_szoveg':
+        if allapot in ('nincs_szoveg', 'cimke_reszleges'):
             szoveg = ''
         else:
             szoveg = sor_szoveg(sor['masodlagos_strong'], e, o)
@@ -294,16 +317,55 @@ def m0(ts):
     print('M0 kész: naplok/BDB_ARAM_POTLAS_M0.md')
 
 
+SZUROP = ('H0524', 'H0999', 'H1678', 'H1868', 'H2217', 'H2409', 'H2804', 'H3221', 'H3542', 'H3797',
+          'H3969', 'H4804', 'H5182', 'H5368', 'H5831', 'H6173', 'H6755', 'H7162', 'H7695', 'H8450')
+SZUROP_JELENTES = os.path.join(GYOKER, 'naplok', 'BDB_ARAM_POTLAS_szurop.md')
+
+
+def olvas_tabla():
+    with open(KIMENET, encoding='utf-8', newline='') as f:
+        sorok = [l.split('\t') for l in f.read().split('\n') if l]
+    return sorok[0], [dict(zip(sorok[0], r)) for r in sorok[1:]]
+
+
+def szurop(ts):
+    """Szúrópróba-kivonat a felhasználónak: címszó, glossza, igehelyek, indok, a szöveg eleje."""
+    _, ki = olvas_tabla()
+    d = {r['Strong_padded']: r for r in ki}
+    L = ['# BDB_ARAM_POTLAS — szúrópróba-kivonat (F66, M1 ⛔ (a))\n',
+         '*Generálta: `python eszkozok/bdb_aram_potlas.py --szurop` · scope=konkordancia/BDB_aram_potlas.tsv + '
+         'konkordancia/lexikonok_nyers/BDB.lexicon | forras=eszkozok/bdb_aram_potlas.py --szurop | ts=%s*\n' % ts,
+         'Az `egyertelmu` sorok elfogadása a felhasználó döntése. Mezők: BDB-címszó, OSHL-lemma, glossza (a BDB '
+         '`highlightword`-jei), az első igehelyek (a BDB-szócikk `ref` jelölései), az `indok`, a `Teljes_szocikk` '
+         'eleje (220 karakter).\n']
+    for s in SZUROP:
+        r = d[s]
+        e = szocikk_elemzes(r['bdb_id'])
+        refs = re.findall(r'<ref ref="([^"]+)"', e['nyers'])
+        L.append('## %s — %s (%s)\n' % (s, r['cimszo'], r['bdb_id']))
+        L.append('- allapot: `%s` · OSHL-lemma: %s · szófaj: %s' % (r['allapot'], r['oshl_lemma'], e['szofaj']))
+        L.append('- glossza: %s' % ('; '.join(e['glosszak']) or '—'))
+        L.append('- igehelyek (első 5): %s' % ('; '.join(refs[:5]) or '—'))
+        L.append('- indok: %s' % r['indok'])
+        L.append('- szöveg eleje: %s\n' % r['Teljes_szocikk'][:220])
+    with open(SZUROP_JELENTES, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\n'.join(L) + '\n')
+    print('szurop kész: naplok/BDB_ARAM_POTLAS_szurop.md')
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--m0', action='store_true')
     ap.add_argument('--m1', action='store_true')
+    ap.add_argument('--szurop', action='store_true')
     ap.add_argument('--ts', default=datetime.date.today().isoformat())
     a = ap.parse_args()
     if a.m0:
         m0(a.ts)
     if a.m1:
         m1(a.ts)
+    if a.szurop:
+        szurop(a.ts)
 
 
 if __name__ == '__main__':
