@@ -6,9 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: fut
 ad: a Zsolt 13 importálva a BSB_Strongs.tsv-be a DT-F41a listája szerint (felirat → MT 1, 1 → 2, 2 → 3, 3 → 4, 4 → 5, 5+6 → 6); a sorok `manual` provenienciával, kézi kivételként jelölve; az `illesztetlen` állapot `kezi`
 kovetkezo: /kovetkezo; ⛔, ha a Strong-illeszkedés ellentmond a DT-F41a listájának
+ag: claude/bsb-zsolt13
 olvas: [naplok/F16_bsb_zsolt_megfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/fj2/]
 ir: [konkordancia/BSB_Strongs.tsv, konkordancia/README.md, eszkozok/fj2/bsb_import.py, naplok/F16_bsb_zsolt_megfeleltetes.tsv, naplok/F16_bsb_lefedettseg.tsv]
 fugg: [41]
