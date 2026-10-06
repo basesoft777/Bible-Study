@@ -7,6 +7,7 @@ fazis: 1
 modell: sonnet
 munka: adat
 allapot: dontesre_var
+pr: 218
 ag: claude/bdb-adatblokk
 ad: a #38 minden adagjában a BDB-szócikk elé egy gépileg előállított adatblokk kerül (Károli-szóalakok gyakorisággal, legfeljebb 3 Károli-példavers szóalakonként, LXX-megfelelő, rokon szavak, meglévő magyar szócikk, a forrás fejezetszám-hibáinak javítása), minden sor proveniencia-jelöléssel; a fejezetszám-javítótábla elkészül, és visszamenőleg az 1–5. adag fordításain is átvezetve
 kovetkezo: "Te: DT-F56c (H4480, H9009 javitva sorok visszaállítása?), utána a lezárás és a merge; a #38 a 6. adaggal folytatódik"
