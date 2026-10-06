@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-06",
-   "commit": "151fcb5"
+   "commit": "0b71079"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -117,29 +117,33 @@
      "allapot": "kesz"
     },
     {
-     "szoveg": "TERV_BEFOGAD (részben kész)",
+     "szoveg": "TERV_BEFOGAD (lezárva)",
      "allapot": "plan"
     },
     {
-     "szoveg": "STRONG_NORMALIZAL",
+     "szoveg": "#62 STRONG_NORMALIZAL",
      "allapot": "ready"
     },
     {
-     "szoveg": "JELOLTEK_RETRO",
+     "szoveg": "#63 JELOLTEK_RETRO",
      "allapot": "wait"
+    },
+    {
+     "szoveg": "#56 BDB_ADATBLOKK (kész)",
+     "allapot": "kesz"
     },
     {
      "szoveg": "SZPA_AUDIT",
      "allapot": "plan"
     }
    ],
-   "kapu": "DT-M1–M3 eldöntve; a #43/#44 kézi fájlok bent (kész); a #43 fut; a #44 a #42-re vár"
+   "kapu": "DT-M1–M3 eldöntve (🟢); a #43 és a #44 kész; a #38 6. adagja a #56 adatblokkjával indul (DT-F38i 🟢)"
   },
   {
    "nev": "2. hullám",
    "elemek": [
     {
-     "szoveg": "KAROLI_ELLENORZES",
+     "szoveg": "#65 KAROLI_ELLENORZES",
      "allapot": "wait"
     },
     {
@@ -153,21 +157,21 @@
    "nev": "3. hullám",
    "elemek": [
     {
-     "szoveg": "MCP_BUROK",
-     "allapot": "plan"
+     "szoveg": "— (az MCP_BUROK a DT-M7 szerint kikerült a hullámból",
+     "allapot": null
     },
     {
-     "szoveg": "BDB_ADATBLOKK",
-     "allapot": "kesz"
+     "szoveg": "feltételes)",
+     "allapot": null
     }
    ],
-   "kapu": "az MCP_BUROK eszközteszt egyezik a CLI-vel; a #38 6. adagja a BDB_ADATBLOKK adatblokkjával indul (DT-F38i)"
+   "kapu": "az MCP_BUROK eszközteszt egyezik a CLI-vel (ha a hullám elindul)"
   },
   {
    "nev": "4. hullám",
    "elemek": [
     {
-     "szoveg": "OLVASOI_KONKORDANCIA",
+     "szoveg": "OLVASOI_KONKORDANCIA (a #25a)",
      "allapot": "plan"
     }
    ],
@@ -366,7 +370,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "M0 szárazfutás ideiglenes könyvtárba (a repón kívülre); ⛔ az éles fájlok felülírása előtt",
-   "fugg": "#7*, #9*, #28 (kész), #34 (kész), #35 (kész), #37*, #38*",
+   "fugg": "#7*, #9*, #28 (kész), #34 (kész), #35 (kész), #37*, #38*, #52*",
    "tervezett": false,
    "reszletes": "A lexikon tudományos oldalai és törzscikkei a mai adatból újragenerálódnak (új fordítások, javított igehelyek, Szent Szellem-szöveg); előbb próbafutás a repón kívül, az éles fájlok felülírása előtt megáll.",
    "roviden": "A lexikonoldalak frissítése a legújabb adatokkal.",
@@ -477,7 +481,7 @@
    "fazis": "folyamat",
    "allapot": "run",
    "brief_allapot": "fut",
-   "most": "Te: a draft PR átnézése és merge (1. futás 2026-10-04, napló: naplok/F52_TERV_SZINKRON_naplo.md); utána ismétlődő, a brief 2. pontja szerinti eseményeknél",
+   "most": "Te: a draft PR átnézése és merge (2. futás 2026-10-06, napló: naplok/F52_TERV_SZINKRON_naplo.md; az 1. futás PR #172 mergelve 2026-10-04); döntés a VIBE lepes=MCP sorról (DT49); utána ismétlődő, a brief 2. pontja szerinti eseményeknél",
    "fugg": "—",
    "tervezett": false,
    "reszletes": "A három tervdokumentumot (ADATVAGYON_TERV, MUNKATERV, VIBE_GUIDE) a repó friss döntéseihez és státuszaihoz igazítja, csak az érintett szakaszokban. Az első futás kész; minden új döntés vagy lezárt hullám után újra fut.",
@@ -670,7 +674,7 @@
    "allapot": "plan",
    "brief_allapot": "tervezett",
    "most": "még nincs felvéve; a sorszámot a /befogad adja (MUNKATERV 4. szakasz)",
-   "fugg": "STRONG_NORMALIZAL",
+   "fugg": "STRONG_NORMALIZAL (#62)",
    "tervezett": true,
    "reszletes": "Az összes TSV-táblából egyetlen lekérdezhető adatbázis (pardes.db) épül, beépített integritási tesztekkel. A repóba nem kerül be, helyben generálódik.",
    "roviden": "Egy gyors, egyben kereshető adatbázis a sok táblából.",
@@ -686,7 +690,7 @@
    "allapot": "plan",
    "brief_allapot": "tervezett",
    "most": "még nincs felvéve; a sorszámot a /befogad adja (MUNKATERV 4. szakasz)",
-   "fugg": "SQLITE_EPIT, DT-M3, DT-M5",
+   "fugg": "SQLITE_EPIT, #61, DT-M5",
    "tervezett": true,
    "reszletes": "Legfeljebb 8 csak olvasó eszköz, amellyel Claude közvetlenül lekérdezheti a projekt adatait, minden hívás naplózva és forrásjelölve.",
    "roviden": "Claude közvetlen, biztonságos hozzáférése a kutatási adatokhoz.",
@@ -702,7 +706,7 @@
    "allapot": "plan",
    "brief_allapot": "tervezett",
    "most": "még nincs felvéve; a sorszámot a /befogad adja (MUNKATERV 4. szakasz)",
-   "fugg": "SQLITE_EPIT, #44, DT-M1, DT-M4, DT-M6; hosting ⛔",
+   "fugg": "SQLITE_EPIT (a #44 ✅, DT-M1 🟢), DT-M4, DT-M6; hosting ⛔",
    "tervezett": true,
    "reszletes": "Az első nyilvános kiadás: vers- és szólapok motívumok nélkül, forrás- és licencjelöléssel. A tárhely-döntés és a licencdöntések (DT-M1, DT-M6) után indul.",
    "roviden": "Az első nyilvános, böngészhető bibliai konkordancia.",
@@ -746,7 +750,7 @@
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_OLVASOI_KONKORDANCIA[\"OLVASOI_KONKORDANCIA\"]:::plan\n  P_SQLITE_EPIT[\"SQLITE_EPIT\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::wait\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T37[\"#37 TANULMANY_ELLENORZES\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T40[\"#40 HIVATKOZAS_ELLENORZES\"]:::wait\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::run\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::wait\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::ready\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::ready\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T64[\"#64 TEREMT002_PROZA_PROBA\"]:::stop\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T66[\"#66 BDB_ARAM_POTLAS\"]:::ready\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> P_SQLITE_EPIT\n  P_OLVASOI_KONKORDANCIA --> D_DT_M1\n  P_OLVASOI_KONKORDANCIA --> D_DT_M4\n  P_OLVASOI_KONKORDANCIA --> D_DT_M6\n  P_OLVASOI_KONKORDANCIA --> P_SQLITE_EPIT\n  P_SQLITE_EPIT --> T62\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> T11\n  T10 --> T9\n  T11 --> T23\n  T11 --> T9\n  T12 --> T11\n  T13 --> T10\n  T23 --> D_DT28\n  T23 --> T37\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> T37\n  T36 --> T38\n  T36 --> T7\n  T36 --> T9\n  T37 --> D_DT28\n  T37 --> T45\n  T38 --> D_DT_F38i\n  T40 --> T37\n  T48 --> T22\n  T54 --> T62\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T61 --> T54\n  T61 --> T62\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T9 --> D_DT28\n  T9 --> T23\n  T9 --> T38\n  T9 --> T7",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_OLVASOI_KONKORDANCIA[\"OLVASOI_KONKORDANCIA\"]:::plan\n  P_SQLITE_EPIT[\"SQLITE_EPIT\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::wait\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T37[\"#37 TANULMANY_ELLENORZES\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T40[\"#40 HIVATKOZAS_ELLENORZES\"]:::wait\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::run\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::wait\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::ready\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::ready\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T64[\"#64 TEREMT002_PROZA_PROBA\"]:::stop\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T66[\"#66 BDB_ARAM_POTLAS\"]:::ready\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> P_SQLITE_EPIT\n  P_MCP_BUROK --> T61\n  P_OLVASOI_KONKORDANCIA --> D_DT_M1\n  P_OLVASOI_KONKORDANCIA --> D_DT_M4\n  P_OLVASOI_KONKORDANCIA --> D_DT_M6\n  P_OLVASOI_KONKORDANCIA --> P_SQLITE_EPIT\n  P_SQLITE_EPIT --> T62\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> T11\n  T10 --> T9\n  T11 --> T23\n  T11 --> T9\n  T12 --> T11\n  T13 --> T10\n  T23 --> D_DT28\n  T23 --> T37\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> T37\n  T36 --> T38\n  T36 --> T52\n  T36 --> T7\n  T36 --> T9\n  T37 --> D_DT28\n  T37 --> T45\n  T38 --> D_DT_F38i\n  T40 --> T37\n  T48 --> T22\n  T54 --> T62\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T61 --> T54\n  T61 --> T62\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T9 --> D_DT28\n  T9 --> T23\n  T9 --> T38\n  T9 --> T7",
  "dontesek": {
   "nyitott": [
    {
@@ -757,7 +761,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 99
+    "sor": 100
    },
    {
     "id": "DT-M5",
@@ -767,7 +771,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 100
+    "sor": 101
    },
    {
     "id": "DT-M6",
@@ -777,7 +781,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 101
+    "sor": 102
    }
   ],
   "alkalmazasra_var": [
@@ -879,7 +883,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 86
+    "sor": 87
    },
    {
     "id": "DT-F42b",
@@ -889,7 +893,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 87
+    "sor": 88
    },
    {
     "id": "DT-F42c",
@@ -899,7 +903,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 88
+    "sor": 89
    },
    {
     "id": "DT-F42d",
@@ -909,7 +913,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 89
+    "sor": 90
    },
    {
     "id": "DT-F42e",
@@ -919,7 +923,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 90
+    "sor": 91
    },
    {
     "id": "DT-F42f",
@@ -929,7 +933,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 91
+    "sor": 92
    },
    {
     "id": "DT-F42g",
@@ -939,7 +943,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 92
+    "sor": 93
    },
    {
     "id": "DT-F42h",
@@ -949,7 +953,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 93
+    "sor": 94
    },
    {
     "id": "DT-F42i",
@@ -959,7 +963,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 94
+    "sor": 95
    },
    {
     "id": "DT-M1",
@@ -969,7 +973,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 96
+    "sor": 97
    },
    {
     "id": "DT-M2",
@@ -979,7 +983,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 97
+    "sor": 98
    },
    {
     "id": "DT-M3",
@@ -989,7 +993,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 98
+    "sor": 99
    },
    {
     "id": "DT-M7",
@@ -999,7 +1003,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 102
+    "sor": 103
    },
    {
     "id": "DT-M8",
@@ -1009,7 +1013,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 103
+    "sor": 104
    },
    {
     "id": "DT28",
@@ -1019,7 +1023,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 104
+    "sor": 105
    },
    {
     "id": "DT37",
@@ -1029,7 +1033,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 105
+    "sor": 106
    },
    {
     "id": "DT38",
@@ -1039,7 +1043,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 106
+    "sor": 107
    },
    {
     "id": "DT39",
@@ -1049,7 +1053,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 107
+    "sor": 108
    },
    {
     "id": "DT41",
@@ -1059,7 +1063,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 109
+    "sor": 110
    },
    {
     "id": "DT35",
@@ -1069,7 +1073,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 110
+    "sor": 111
    },
    {
     "id": "DT36",
@@ -1079,7 +1083,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 111
+    "sor": 112
    },
    {
     "id": "DT30",
@@ -1089,7 +1093,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 112
+    "sor": 113
    },
    {
     "id": "DT31",
@@ -1099,7 +1103,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 113
+    "sor": 114
    },
    {
     "id": "DT32",
@@ -1109,7 +1113,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 114
+    "sor": 115
    },
    {
     "id": "DT33",
@@ -1119,7 +1123,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 115
+    "sor": 116
    },
    {
     "id": "DT34",
@@ -1129,7 +1133,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 116
+    "sor": 117
    },
    {
     "id": "DT42",
@@ -1139,7 +1143,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 117
+    "sor": 118
    },
    {
     "id": "DT43",
@@ -1149,7 +1153,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 118
+    "sor": 119
    },
    {
     "id": "DT44",
@@ -1159,7 +1163,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 119
+    "sor": 120
    },
    {
     "id": "DT45",
@@ -1169,41 +1173,11 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 120
-   },
-   {
-    "id": "DT46",
-    "feladat": "#56 BDB_ADATBLOKK (M3 ⛔, a javítótábla első eredménye)",
-    "kerdes": "Az `adat/bdb_igehely_javitas.tsv` első eredménye 21 `javitva` sor, ebből 12-nél FIGYELEM-jelzés (a hibás `fejezet:vers` más könyvben is létezik, és ott a Strong-szám szerepel: pl. `Ruth 8:14` → `Ez 8:14`, `Jób 8:14`; könyvnév-hiba gyanú). Javítson-e a tábla ezekben, vagy maradjanak jelöltnek? *(forrás: `naplok/BDB_ADATBLOKK_M0.md` 4. pont 5.)*",
-    "allapot": "alkalmazasra_var",
-    "jelek": [
-     "🟢"
-    ],
     "sor": 121
-   },
-   {
-    "id": "DT47",
-    "feladat": "#56 BDB_ADATBLOKK (M0, rokon szavak forrása)",
-    "kerdes": "A brief a rokon szavak TWOT-csoportját a `konkordancia/Strong_szotar.tsv`-ből várja, de abban nincs TWOT-oszlop. Használható-e forrásként az `konkordancia/OSHL_lexikalis_index.tsv` (CC BY 4.0, F6.1 importálta; Strong → TWOT-szám hivatkozás, a TWOT szövege nincs a repóban)? *(forrás: `naplok/BDB_ADATBLOKK_M0.md` 1. pont)*",
-    "allapot": "alkalmazasra_var",
-    "jelek": [
-     "🟢"
-    ],
-    "sor": 122
-   },
-   {
-    "id": "DT48",
-    "feladat": "#56 BDB_ADATBLOKK (M5, ellenőr-találat)",
-    "kerdes": "Az ellenőr szerint két átvezetett `javitva` sor tartalmilag gyenge: H4480 `1Kir 32:47` → `1Kir 22:47`: az idézet (מִכֶּם רֵק) az 5Móz 32:47-é, *(javítva az ellenőr 2. körében: a `scan` a H4480-ra az 1Kir 22:47-ben n=1, tehát az előfordulás-keresés nem zárja ki a hivatkozást; a gyanú alapja az idézet, és az, hogy az 5Móz 32:47 a H9006-tal szerepel)*; a könyvnév-gyanú szabály azért nem fogta, mert a `parok_5Moz.tsv` a מִ-t H9006-tal jelöli, nem H4480-nal (nyelvtani Strong-szám előfordulás-keresése megbízhatatlan). H9009 (névelő): ugyanabban a szócikkben 4 érvénytelen fejezetszám (45:14, 45:16, 61:7, 66:6), rendszeres könyvfeloldási hibára vall; az egyetlen jelölt a fejezethatár mellékterméke. Mindkettő bekerült a `forditasok.tsv`-be `Y [BDB: X]` alakban. Mi legyen?",
-    "allapot": "alkalmazasra_var",
-    "jelek": [
-     "🟢"
-    ],
-    "sor": 123
    }
   ],
   "javasolt": [],
   "ellenorizendo": [],
-  "kesz_db": 68
+  "kesz_db": 72
  }
 }

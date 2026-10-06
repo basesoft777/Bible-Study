@@ -2,7 +2,7 @@
 
 ## Kiindulási állapot és mi változott a repóban (2026-10-04)
 
-**Kiindulási állapot:** FELADATOK.md v1.3, merge `8e8f771` (#171), 2026-10-04 — a #52 TERV\_SZINKRON 1. futásának viszonyítási pontja (`naplok/F52_TERV_SZINKRON_naplo.md`); előzménye a `117bafc` (#26 EGYFORRAS_NAPLO; #32 KONTEXTUS kész; DT-F33e–j; #46 kész). Az alábbi szakaszok a 2026-10-02/03-i repóállapotra íródtak; ahol a mai állapot felülírja őket, azt **itt** rögzítem, és a szakasz szövegében a hamissá vált állítást a #52 cseréli (v14). Ami nincs ebben a listában, az változatlanul érvényes.
+**Kiindulási állapot:** FELADATOK.md v1.3 (a generált blokkok 2026-10-06-i állapota), `main` `7dd0183` (a #218 merge-e `a25c7a0` után), 2026-10-06 — a #52 TERV\_SZINKRON 2. futásának viszonyítási pontja (`naplok/F52_TERV_SZINKRON_naplo.md`); az 1. futás kiindulása a `8e8f771` (#171) volt (PR #172, merge `de9c464`, 2026-10-04), előzménye a `117bafc` (#26 EGYFORRAS_NAPLO; #32 KONTEXTUS kész; DT-F33e–j; #46 kész). Az alábbi szakaszok a 2026-10-02/03-i repóállapotra íródtak; ahol a mai állapot felülírja őket, azt **itt** rögzítem, és a szakasz szövegében a hamissá vált állítást a #52 cseréli (v14, v15). Ami nincs ebben a listában, az változatlanul érvényes.
 
 | mi változott a repóban | mit ír felül a tervben |
 | --- | --- |
@@ -10,7 +10,8 @@
 | **D34–D41 bent a FELADATOK-ban** (#26 merge-elve): motívumonként egy kézi forrás, minden nézet generált; a törzscikk a #11-ben megszűnik; D36 három mélységi szint; D40 olvasói felület statikus HTML, később PWA. **DT-F26a névhasználat:** a „tematikus tanulmány" neve mostantól **motívumcikk** (a `motivumok/[ID].md`-ből generált nézet); a „tanulmány" az igeszakasz-tanulmány (kézi forrás). | A 16. és 18.2 szakasz állításai igazolódtak. A docban a „tematikus tanulmány" mindenütt **motívumcikk**-ként olvasandó; a 4., 5., 20. szakasz „Tanulmány" doboza = motívumcikk + igeszakasz-tanulmány. |
 | **#32 KONTEXTUS kész**, négy szabály (MUNKAMENET, CLAUDE.md): az értelmező réteg egy kézben, egy modellel (**DT-F32b: Opus**); a `motivumok/[ID].md` próza-elsőbbségű — a SEMA a kinyerést írja le, nem a dokumentum szerkezetét; aki motívumba ír, az egészet olvassa; a #23 M1 a #12a próza-próba után. A brief fejléce `munka: adat / ertelmezo / folyamat`. | A 9., 13., 14. szakasz eszközei és a 21. workflow lépcsői `munka: adat` vagy `folyamat` feladatok — ezekre a Sonnet és a csomagmód áll. A 22. szakasz „a SEMA a kinyerést írja le" elve ezzel egyezik: a vers-lap/szó-lap/motívum-lap render a markerekből nyer, nem mezőkből. Író MCP-eszköz motívumfájlra sosem (K1). |
 | **Sorszámok:** a repóban már van #48 KJV_REGI_KIVEZETES, #49 FOLYTATAS (merge-elve), #50 CI_JAVITO_KOR, **#51 KONZISZTENCIA** (döntések átvezetésének gépi ellenőrzése). | A MUNKATERV javasolt #47–#55 sorszámai ütköztek ezekkel; a felhasználó döntése (DT-F52a, 2026-10-04) szerint a MUNKATERV és a VIBE\_GUIDE a FELADATOK számaihoz igazodik: a még be nem fogadott tervezett feladatok a kódjukkal szerepelnek (`SQLITE_EPIT`, `OLVASOI_KONKORDANCIA` …), számot a `/befogad` ad; a `#nn` alak mindhárom tervdokumentumban FELADATOK-szám. A #51 pontosan a tervdokumentumok elavulását őrzi — a szinkron ritmusát ő adja, nem a chat. |
-| **Státuszok:** #22 ⛔ megállt (a Józsué PR merge-e és döntés — a felhasználóra vár); #43 ▶ fut, DT-F43 eredménnyel (86 sor: 24 egyezik, 3 eltér, 46 nincs adat; az (a) eldöntve: a bridge nem független második forrás, csak tájékoztató réteg); #46 ✅; #9 a #23-tól is függ; #11 a #9 és #23-tól, első lépcső ISTENTISZT-001; #37 függése #32 kész. N29 lezárva, az ASV nem jön (D7). | A 16. szakasz és a 21. workflow 1. lépcsője ennek megfelelően értendő; a 15. szakasz „#43 merge-elve, kézi lépésre vár" → fut; a 26-os pont (LXX-híd ★) a DT-F43 (a) szerint tájékoztató réteg, a bizonyosság a DT23 szerint. |
+| **Státuszok (2026-10-06):** #22 ⛔ megállt (1–5Móz és Józs kész, a Józs PR mergelve; a következő könyv a Bírák); #43 ✅ (PR #167; DT-F43: 86 sor: 24 egyezik, 3 eltér, 46 nincs adat; a bridge nem független második forrás, csak tájékoztató réteg); #42 ✅ (PR #176), #44 ✅ (PR #205), #30 ✅ (PR #206), #51 ✅ (PR #192), #53 ✅, #57 ✅ (PR #209), #58 ✅ (PR #208), #56 ✅ (PR #218), #46 ✅; #38 ▶ (5 adag kész, a 6. adag a #56 adatblokkjával, DT-F38i 🟢); #9 a #23-tól is függ; #11 a #9 és #23-tól, első lépcső ISTENTISZT-001; #37 függése #30 ✅, #32 ✅. N29 lezárva, az ASV nem jön (D7). | A 15., 16. szakasz és a 21. workflow 1. lépcsője ennek megfelelően értendő; a 26-os pont (LXX-híd ★) a DT-F43 (a) szerint tájékoztató réteg, a bizonyosság a DT23 szerint. |
+| **2026-10-04 óta eldöntve (2. futás):** **DT-M1** 🟢 — az olvasói konkordancia motívum nélkül a #25 előtt: a #25 kettéválik (#25a = OLVASOI\_KONKORDANCIA, függ SQLITE\_EPIT; #25b motívumos nézet, függ #11, #12, #23; a kettéválasztás külön `/befogad`); **DT-M2** 🟢 új `AZONOSITAS_MODJA` érték: `szó-szintű-gépi`; **DT-M3** 🟢 az `auditok.lepes` a kutatási lépés kódja, lépésen kívül `adhoc`, a csatorna a proveniencia-sorban (#61); **DT-M7** 🟢 az MCP-szerver feltételes (előbb a #61); **DT-M8** 🟢 a TERV\_BEFOGAD külön brief nélkül záródik; **DT-F42d, DT-F42g** — a `KJV_Strongs_teljes` Strong-címkéi `tisztazatlan`, a licenc-címke egyetlen forrása a `licencek.tsv` `cimke` oszlopa; **DT-F42f** — az LXX\_kivonat kivezetve; **DT31–DT34** — a `karoli_bible_hu` elvetve (DT31), az openbible 4 sora `hianyzik` + JELÖLT (DT33), az import külön feladat (DT34). Számot kapott tervezett feladatok: #56 (BDB\_ADATBLOKK), #62 (STRONG\_NORMALIZAL), #63 (JELOLTEK\_RETRO), #65 (KAROLI\_ELLENORZES); új feladatok: #54, #55, #59, #60, #61, #64, #66. | A 0., 9., 13., 15., 16., 17.1, 19., 21., 22.2 és 22.4 szakasz ennek megfelelően értendő; ahol a törzs ezt felülírja, a v15 sor jelöli. |
 | **MUNKAMENET:** a ⛔-nál a döntést a `DONTES_KERDES_SABLON.md` szerint kell előkészíteni, erősebb modell (Opus) külön sessionben vagy a chatben. | A 14. és 21. szakasz ⛔-jai ezt a sablont követik. |
 
 **Javaslat (licenc és saját réteg, 2026-10-04)** — a szintézis szabad, a mezők öröklik a forrás licencét, a határ a proveniencia:
@@ -29,13 +30,13 @@ A sorrend a továbbiakban: ez a doc a repóba költözött `ADATVAGYON_TERV.md`-
 A tervjegyzet a repó meglévő terveinek kibontása, nem új rendszer. Ami a 18 szakasz átnézéséből a repó fájljaival (FELADATOK, DONTESEK, CLAUDE, MUNKAMENET, NYITOTT\_FELADATOK, ATALAKITASI\_TERV, SEMA, F23/F25) összevetve megáll:
 
 1. **Egy adat, három nézet.** A CLAUDE.md fő szabálya („a kereszthivatkozás adat, a tanulmány és a lexikon nézet") a projekt értelmezésében egy lánc, nem három egyenrangú nézet: a tanulmány detektálja a motívumot → a lexikon hordozza a teljes apparátust (adat, napló, döntések, üzemeltetői üzenetek) → minden olvasói nézet a lexikon adatára készül. A mélységi szintek (D36) ezt a láncot képezik le: belső = üzemeltetői réteg, apparátus = napló és döntés, olvasói = a publikus nézet. Az olvasói felület így nem harmadik, hanem a lánc végén álló nézet ugyanarra az `adat/`-ra. A vers-lap, szó-lap és motívum-lap az F23 (D34) *olvasói nézetei*, `olvasoi` / `apparatus` / `belso` mélységgel; a `belso` (nyitott jelöltek, napló nyers indoklása) a publikus buildből kimarad — a lelet-lap munkalistája csak Code-ban él.
-2. **A kutatói lekérdező létezik: `eszkozok/lekerdez.py`.** Az MCP az ATALAKITASI\_TERV 11.7 szerint ennek vékony burka, legfeljebb 8 eszközzel, proveniencia-sorral és kötelező `auditok.tsv`-sorral minden hívásnál. A `sqlite_epit.py` a kutatói oldalon nem előfeltétel; az olvasói felületnek és a nagy fájloknak kell.
+2. **A kutatói lekérdező létezik: `eszkozok/lekerdez.py`.** Az MCP (feltételes, DT-M7) az ATALAKITASI\_TERV 11.7 szerint ennek vékony burka, legfeljebb 8 eszközzel, proveniencia-sorral és kötelező `auditok.tsv`-sorral minden hívásnál. A `sqlite_epit.py` a kutatói oldalon nem előfeltétel; az olvasói felületnek és a nagy fájloknak kell.
 3. **A Károli–Strong (#22) a terv alapja, és már 1–5Mózes és Józsué kész (⛔ a következő könyv döntéséig).** Az 1.1–1.4 haszon (ellenőrzés, variancia-térkép, magyar frázis, ujjlenyomat) ebből indul; az ATALAKITASI\_TERV 4.7 („teljes strongozás nem cél") elavult.
 4. **A publikálás licenc-kérdés, de nem akadály (DT-F33e–j).** A STEPBible-származékok CC BY 4.0 alatt, attribúcióval terjeszthetők (DT-F33f: a „Please do not redistribute" kérés, nem licencfeltétel) → a böngészőben futó adatbázis nem esik ki, a hosting-út (böngészős, cPanel vagy serverless) nyitott, nem kényszer; a nyers fájlok a repóban maradnak (DT-F33a). A Károli 1908, a BDB, a Thayer, a Nave és a SECE közkincs (DT-F33e, g, h), ezért a Károli kiadói nyilatkozata nem előfeltétel. A kiadás két módban megy (DT-F33j, N-F33b): nem kereskedelmi (minden forrás, jelöléssel) és kereskedelmi (csak a `licencek.tsv` `kereskedelmi=igen` forrásai; kiesik a három ETCBC-eredetű héber modul és az MCGED (`kereskedelmi=nem`), az LSJ-alapú LXX.lexicon (`tisztazatlan`) és a SECE_G LN/GK mezője (DT-F33i, j; N-F33b)); a nyilvános nézet a `kereskedelmi` oszlop szerint szűr. A Bible-Discovery Károli kizárva. Jogász a kereskedelmi döntéskor (ATALAKITASI\_TERV 12).
 5. **A séma fő kockázata a versszámozás.** A KK `igehely_kjv` nem megbízható, a TAHOT számozása vegyes (N17, N46, N-F41a/d): a vers-lap kulcsa Károli-számozás, minden más forrás a KK-n át kötve, `szamozas` jelzővel, interpoláció nélkül. A Strong-normalizálás az N37 szerinti egységes függvény.
-6. **A BDB-fordításnál (#38, ⛔ DT-F38i) nem MCP, hanem build-lépés.** A 12.1 adatlekérés előre számolt blokkként az adagfájlban; az adagok közötti következetesség a már létező `terminologia.tsv`-vel (SEMA 2.15). Szócikkenként drágább, helyes szócikkenként olcsóbb.
-7. **Függések.** A lexikonoldal-illesztés a #9/#10, a motívum-séma a #23, a renderelés a #11, az olvasói felület a #25 dolga; ez a tervjegyzet a #25 és #23 bemenete. Most, függés nélkül mehet: az adatréteg importja (Strong, Károli–Strong, TSK, lexikon), az MCP olvasó eszközei, az 1.1 ellenőrzés; a három kézi 0. lépés (#43, #44) 2026-10-04-re kész.
-8. **Ez a doc csak a repóban hat.** Claude Code nem látja a claude.ai-t (playbook): Markdown-exportja a repó gyökerébe, és a #25/#23 brief `olvas:` listájába.
+6. **A BDB-fordításnál (#38; a 6. adag a #56 adatblokkjával, DT-F38i 🟢) nem MCP, hanem build-lépés.** A 12.1 adatlekérés előre számolt blokkként az adagfájlban; az adagok közötti következetesség a már létező `terminologia.tsv`-vel (SEMA 2.15). Szócikkenként drágább, helyes szócikkenként olcsóbb.
+7. **Függések.** A lexikonoldal-illesztés a #9/#10, a motívum-séma a #23, a renderelés a #11, az olvasói felület a #25 dolga; ez a tervjegyzet a #25 és #23 bemenete. Most, függés nélkül mehet: az adatréteg importja (Strong, Károli–Strong, TSK, lexikon), az 1.1 ellenőrzés (#65); az MCP olvasó eszközei feltételesek (DT-M7: előbb a #61 LEKERDEZ\_NAPLO); a három kézi 0. lépés (#43, #44) 2026-10-04-re kész.
+8. **Ez a doc csak a repóban hat.** Claude Code nem látja a claude.ai-t (playbook): Markdown-exportja a repó gyökerébe (kész: `ab73f7b`), és a #25/#23 brief `olvas:` listájába (kész, DT-M8 (a); a #11 briefjébe a befogadáskor kerül, DT-M8 (d)).
 
 A részletek és a forrás-hivatkozások a 16–18. szakaszban; a döntésnapló a 19.-ben.
 
@@ -63,9 +64,9 @@ Ami ebből következik:
 
 1. **Az adatvagyon a projekt saját termékének nagyobb része, nem a tanulmány.** A fenti kilencből hat saját szellemi tulajdon, és egyik sem függ a motívumoktól. Együtt: **az első nyílt, magyar Strong-konkordáns bibliatanulmányozó adatkészlet** — Károli-szöveg szavanként Stronggal, teljes magyar BDB és Thayer a Károli tényleges szóhasználatával, kiejtéssel, versszámozás-kulccsal. Magyarul ma egyetlen zárt program (Biblia-Felfedező / Bible-Discovery) ad Strong-párosított Károlit: az ÚSZ-e kész és lektorált, az ÓSZ-e könyvenként készül; a szó-szintű párosítás fizetős modul, a Strong\_HU szótár zárt. Nyílt licencű magyar Strong-párosítás vagy magyar BDB/Thayer nem került elő (2026-10-03, nem kimerítő keresés). De a lényeg nem ez: a három réteg — konkordancia, értelmezési réteg (motívum, PaRDeS-szint, LXX-híd döntésekkel), és a kettő közti indokolt kapcsolat (★ lelet, napló) — \*\*együtt sehol nem létezik, zártan sem\*\*. A különbség fajtabeli, nem fokozati.
 2. **A terjesztési kérdés kettéválik.** A bemeneti STEPBible-fájlok CC BY 4.0 alatt, attribúcióval terjeszthetők (DT-F33f: a „do not redistribute" kérés, nem licencfeltétel), a nyers fájlok a repóban maradnak (DT-F33a); a projekt *saját* kimenete (párosítás, fordítás, döntés) a sajátja, licencét külön DT-tétel mondja ki (fent, javaslat 3.). A szétválasztás így nem STEPBible kontra saját, hanem kereskedelmi kontra nem kereskedelmi (DT-F33j): a `licencek.tsv` `kereskedelmi` oszlopa szerint a kereskedelmi módból a `nem` és a `tisztazatlan` források mezői esnek ki (N-F33b). Ez a 17.1 licenc-szűrőjének tényleges tartalma — és jogászi megerősítést kér a Károli–Strong kimenet státuszáról.
-3. **A 26 pont fele kész adaton áll.** Az 1–6, 13–16, 18–20 pont az 1. fázis végén teljes adattal fut, motívum nélkül: szó-lap, variancia-térkép, magyar frázis-keresés, konkordancia. Ez az olvasói felület első, motívum nélküli kiadása lehet — a #25 előtt, mert nem függ a #23-tól és a #11-től.
-4. **A hasznosítás négy iránya**, mind ugyanabból az adatból: (a) olvasói konkordancia és szó-lap (#25); (b) fordítói eszköz — SZPA-profil B/C üzemmód, variancia-térkép, terminológia (10. szakasz); (c) kutatói MCP a saját és külső kutatónak (9. szakasz); (d) licencelhető adatkészlet — a saját rétegek CC BY alatt, ami visszahat a projekt hitelességére (idézhető forrás lesz).
-5. **A motívum-réteg ezután nem az alap, hanem a csúcs.** Amit a tanulmányok évek alatt termelnek (★ leletek, döntések, PaRDeS-szint), az erre a kész konkordanciára ül, és attól lesz egyedi, hogy az alatta lévő adat teljes és ellenőrzött. A sorrend tehát: 1. fázis végig → olvasói konkordancia (motívum nélkül) → motívum-réteg ráépítve (#23, #11, #25 teljes).
+3. **A 26 pont fele kész adaton áll.** Az 1–6, 13–16, 18–20 pont az 1. fázis végén teljes adattal fut, motívum nélkül: szó-lap, variancia-térkép, magyar frázis-keresés, konkordancia. Ez az olvasói felület első, motívum nélküli kiadása lehet — a #25 előtt (DT-M1 🟢, 2026-10-06: a #25 kettéválik, ez a #25a), mert nem függ a #23-tól és a #11-től.
+4. **A hasznosítás négy iránya**, mind ugyanabból az adatból: (a) olvasói konkordancia és szó-lap (#25a); (b) fordítói eszköz — SZPA-profil B/C üzemmód, variancia-térkép, terminológia (10. szakasz); (c) kutatói MCP a saját és külső kutatónak (9. szakasz; feltételes, DT-M7); (d) licencelhető adatkészlet — a saját rétegek CC BY alatt, ami visszahat a projekt hitelességére (idézhető forrás lesz).
+5. **A motívum-réteg ezután nem az alap, hanem a csúcs.** Amit a tanulmányok évek alatt termelnek (★ leletek, döntések, PaRDeS-szint), az erre a kész konkordanciára ül, és attól lesz egyedi, hogy az alatta lévő adat teljes és ellenőrzött. A sorrend tehát: 1. fázis végig → olvasói konkordancia (motívum nélkül) → motívum-réteg ráépítve (#23, #11, #25b).
 
 **0.3 Kereszthivatkozás a Károlin — mi van, mi nincs**
 
@@ -466,6 +467,8 @@ Ugyanez a táblázat Excelben: `hosting_osszehasonlitas.xlsx` (három lap, dönt
 
 ## 9. Saját MCP-szerver és AI-réteg
 
+**Állapot (DT-M7, 2026-10-05): az MCP-szerver feltételes.** Kikerül a MUNKATERV 3. hullámából; akkor készül, ha a chatből való adathozzáférés ténylegesen hiányzik, vagy repó nélkül dolgozó munkatárs lesz. Előbb a `lekerdez.py` automatikus naplózása (#61), amely a DT-M3 szerint a `lepes` mezőbe a kutatási lépés kódját (lépésen kívül `adhoc`-ot), a proveniencia-sorba a csatornát írja. A szakasz többi része az MCP tervezett alakját írja le arra az esetre, ha elindul.
+
 Az MCP-szerver és egy saját AI-modell nem oldja meg a lekérdezéseket — az SQLite oldja meg; ők azt döntik el, ki és hogyan fér hozzá. Három réteg ugyanazon az adaton:
 
 ```
@@ -487,14 +490,13 @@ Az MCP-szerver és egy saját AI-modell nem oldja meg a lekérdezéseket — az 
 
 **Miért kell az MCP, ha a prompt már adatból kér választ.** A chatben a szabálynak ma csak a tiltó fele működik: fejből nem mondok igehelyet, de a repó TSV-ihez nem férek hozzá, így a válasz „greppeld le". Az MCP a „ne tippelj"-t „nézd meg"-re fordítja. Code-ban a különbség a költség: egy hívás egy sor eredménnyel, nem egy többmegás TSV a kontextusban; és a 26 lekérdezés egyszer van megírva.
 
-**További előnyök**
+**Tényleges többlet (DT-M7 szerint újravizsgálva, 2026-10-05)**
 
-1. Nyomon követhetőség: minden eszközhívás naplózható — a tanulmány állításai mögé a bizonyíték kerül, nem csak a forrás neve.
-2. Modellfüggetlenség: Sonnet, Opus vagy más gyártó modellje ugyanazt az eszközt hívja; bármelyik MCP-kliens rákapcsolódik.
-3. Automatikus kapu commit előtt: Code-hook hívja az `ellenoriz_tabla`-t; eltérésnél nem commitol.
-4. Az olvasói AI-réteg már kész: ugyanez a szerver egy belépés-ellenőrzéssel.
-5. Munkatárs repó nélkül: lektor vagy társszerző chatből kérdezi az adatot.
-6. Adat-integritás tesztként: árva Strong-hivatkozás, napló-sor vers nélkül — a `sqlite_epit.py` minden építésnél futtatja.
+1. Nyomon követhetőség: minden hívás automatikusan naplózható — a tanulmány állításai mögé a bizonyíték kerül, nem csak a forrás neve. Ez MCP nélkül is elérhető: a `lekerdez.py --naplo` (#61 LEKERDEZ\_NAPLO, DT-M3) maga írja az `auditok.tsv`-sort.
+2. Strukturált hívás: az eszköz paraméterezett, a válasz proveniencia-sort hordoz.
+3. Munkatárs repó nélkül: lektor vagy társszerző chatből kérdezi az adatot — csak hostolva, VPS-költséggel.
+
+**Nem MCP-előny (DT-M7):** a modellfüggetlenség, a commit előtti kapu és az adat-integritás tesztje — ezek MCP nélkül is megvalósíthatók (CLI-parancsok, hook, az építő tesztjei). Az olvasói AI-réteg spekulatív: nem „már kész", külön döntést kér.
 
 **Mire nem jó:** nem olvasónak (nincs MCP-kliense, token-költség); nem forrás (semmit nem ad az adatvagyonhoz); első körben nem ír (naplóba írás csak ha bevált).
 
@@ -665,7 +667,7 @@ A #38-nál a legtöbbet adja, mert a fordítás 13 adagban fut, és minden adag 
 | a kész rétegek | nincsenek a szócikkben | `lxx_hid` (#43 kimenete), bdb\_roots rokonsor, motívum-tagság, meglévő lexikonoldal — egy-egy hívás |
 | ellenőrzés commit előtt | az ellenőr is olvasással dolgozik | `ellenoriz_szocikk(strong)` — minden idézett igehelyben ott a Strong, a megfelelő szerepel Károlinál, a rokon szócikkek nem mondanak ellent |
 
-A #38-at (⛔ DT-F38i-nél áll) nem emiatt újraindítani: a javító menet (teljes Károli–Strong után) már ezzel menjen. Az adagok közötti következetesség MCP nélkül is megoldható a már létező (SEMA 2.15) `terminologia.tsv`-vel, amit minden adag olvas — ez a futó #38-nak azonnal segít.
+A #38 nem áll meg emiatt: a 6. adag a #56 BDB\_ADATBLOKK adatblokkjával indul (DT-F38i 🟢), a javító menet (teljes Károli–Strong után) az 1–5. adagon pótol. Az adagok közötti következetesség MCP nélkül is megoldható a már létező (SEMA 2.15) `terminologia.tsv`-vel, amit minden adag olvas — ez a futó #38-nak azonnal segít.
 
 **Tokenköltség.** Az adatblokk szócikkenként 400–800 tokennel növeli a bemenetet (8 090 szócikknél 3–6 millió, becslés), és minden eszközhívás külön kör. Megtérülés: elmaradó javító menetek (terminológiai eltérés az M1-nél újrafordítást jelent), kevesebb kitalált idézet, célzottabb kontextus a lexikonoldal vagy TSV-részlet helyett. Szócikkenként drágább, helyes szócikkenként olcsóbb. Ezért a #38-nál a 12.1 lekérések **build-lépésként** futnak (Python előre számolja a blokkot, és az adagfájlban a BDB-szócikk elé fűzi), nem MCP-hívásként: ugyanaz az adat, nulla hívás-overhead, szabott méret. Az MCP az ad hoc kutatói kérdésé; a tömeges fordításé a build.
 
@@ -689,15 +691,15 @@ A „Bible models on Hugging Face" chat (50 kör) nyomán három feladat jött l
 
 | feladat | kézi 0. lépés | hová |
 | --- | --- | --- |
-| #43 LXX\_BRIDGE (▶ fut; DT-F43 ✅) | `lxx_bridge` tábla + licencsor | `adat/kulso/lxx_bridge.tsv`, `adat/kulso/LICENC.md` — bent (F43.0) |
-| #44 LICENC\_UTOKOVETES (⬜) | a `k-mktr/karoli_bible_hu` kártya licence + README szó szerint — a Károli-rész a DT-F33e-vel tárgytalan (közkincs) | `adat/kulso/karoli_bible_hu_LICENC.txt` — bent (F44.0) |
+| #43 LXX\_BRIDGE (✅ kész, PR #167; DT-F43 ✅) | `lxx_bridge` tábla + licencsor | `adat/kulso/lxx_bridge.tsv`, `adat/kulso/LICENC.md` — bent (F43.0) |
+| #44 LICENC\_UTOKOVETES (✅ kész, PR #205) | a `k-mktr/karoli_bible_hu` kártya licence + README szó szerint — a Károli-rész a DT-F33e-vel tárgytalan (közkincs) | `adat/kulso/karoli_bible_hu_LICENC.txt` — bent (F44.0) |
 | #44 | az openbible.info licencnyilatkozata szó szerint | `adat/kulso/openbible_crossrefs_LICENC.txt` — bent (F44.1) |
 
-Nyitott kérdés: a #38 azóta elindult — az M0 5. pontja (BDB-gyökcsoport-felmérés, az F38-kiegészítés) lefutott-e előtte; a #38 naplójából ellenőrizendő.
+Nyitott kérdés: a #38 5 adaga kész; az M0 5. pontja (BDB-gyökcsoport-felmérés, az F38-kiegészítés) a 6. adag menetének elején fut (FELADATOK #38), a #38 naplójából ellenőrizendő.
 
 **Ami a tervjegyzetet érinti**
 
-1. **Nyílt Károli-szöveg = publikálási feltétel.** A Bible-Discovery Károli zárt; az olvasói felület (vers-lap kattintható Stronggal) csak nyílt törzsszöveggel publikálható. A Károli 1908 szövege közkincs (DT-F33e), kiadói nyilatkozat nélkül: a `karoli_bible_hu` licencellenőrzése nem előfeltétel, a #44 Károli-része tárgytalan.
+1. **Nyílt Károli-szöveg = publikálási feltétel.** A Bible-Discovery Károli zárt; az olvasói felület (vers-lap kattintható Stronggal) csak nyílt törzsszöveggel publikálható. A Károli 1908 szövege közkincs (DT-F33e), kiadói nyilatkozat nélkül: a `karoli_bible_hu` licencellenőrzése nem előfeltétel, a #44 Károli-része tárgytalan; a `karoli_bible_hu` elvetve (DT31: a kártya az 1590-es vizsolyi kiadás, nincs `license` mező).
 2. **`lxx_bridge` = a 26-os pont forrása.** A „LXX-híd mint lelet ★" a #43 kimenetére épül (héber → görög Strong, előfordulás-számmal).
 3. **bdb\_roots / OpenScriptures LexicalIndex = a 6-os pont forrása.** Ha az M0-felmérés többletet mutat a TWOT-hoz képest, a szó-lap „rokon szavak" blokkja onnan tölthető.
 4. **bible-mcp döntés összehangolása.** Az F44 5.(d) a connector-használatot döntési javaslatként tartalmazza; a 11. szakasz halasztást javasol a saját MCP utánra. A (d)-nél: „elvetés egyelőre, saját MCP után újra".
@@ -710,17 +712,18 @@ A lexikonoldal-blokkok táblára illesztése és a motívum-séma nem ennek a te
 ```
 #23 MOTIVUM_FORRAS (szintjelölés a SEMA-ban)  ⛔ M0 után; M1 a #12a után (DT-F32a) · függ #32 (kész), #37*
    └─ #11 MIGRACIO (egy forrásból renderelés)   függ #9, #23 · brief a #12a után
-         └─ #25 OLVASOI_HTML (statikus HTML, Netlify, mélységi szintek)  függ #11, #12, #23
+         └─ #25b (a #25 motívumos fele; statikus HTML, Netlify, mélységi szintek)  függ #11, #12, #23
+#25a OLVASOI_KONKORDANCIA (= 1–6, 13–16, 18–20. pont, motívum nélkül)  függ SQLITE_EPIT (a #44 kész) — DT-M1; a #25 kettéválasztása külön /befogad
 #9 SZOTAR S2 (adat a 8 lexikonoldalon)  függ #7*, #23, #38*
    └─ #10 LEXIKON_LEZARAS  függ #8 (kész), #9, #11
-#36 LEXIKON_UJRAGEN  függ #7*, #9*, #37*, #38*, #42*
+#36 LEXIKON_UJRAGEN  függ #7*, #9*, #37*, #38* (a #42 kész)
 ```
 
-*(A függések a 2026-10-04-i FELADATOK szerint frissítve, #52.)*
+*(A függések a 2026-10-06-i FELADATOK szerint frissítve, #52.)*
 
 **Következmények a tervjegyzetre**
 
-1. **A #25 már létezik.** A 2., 3. és 8. szakasz (olvasói kimenet, serverless, cPanel) nem új feladat, hanem a `F25_OLVASOI_HTML_BRIEF.md` bemenete. A #25 ma „statikus HTML Netlify-on"; a kereső- és hosting-döntés ott dől el, a #11 első lépcsője után. A doc ehhez kötődik, nem mellé.
+1. **A #25 már létezik.** A 2., 3. és 8. szakasz (olvasói kimenet, serverless, cPanel) nem új feladat, hanem a `F25_OLVASOI_HTML_BRIEF.md` bemenete. A #25 ma „statikus HTML Netlify-on"; a DT-M1 (🟢, 2026-10-06) szerint kettéválik: a konkordancia (#25a) hosting-döntése a #25a briefje előtt dől el (⛔ hosting), a motívumos nézeté (#25b) a #11 első lépcsője után. A doc ehhez kötődik, nem mellé.
 2. **A séma-illesztés két részre válik.**
 
 | mikor | mi | pontok |
@@ -730,7 +733,7 @@ A lexikonoldal-blokkok táblára illesztése és a motívum-séma nem ennek a te
 
 3. **A lexikonoldal = szó-lap** elv marad, de a leképezést a #9/#10 végzi; itt csak annyi rögzül, hogy a #38 szócikkei és a szó-lap ugyanabból a táblából töltenek.
 
-**Állapotfrissítés a FELADATOK.md-ből:** a Károli–Strong (#22) 1–5Mózesre és Józsuéra kész (3Móz–Józs csak Sonnet, DT-F22c), ⛔ megállt: a Józs PR merge-e és a következő könyv döntése a felhasználóra vár; a #38 ⛔ a DT-F38i-nél áll (5. adag kész, a 6. indulhat-e). Az 1. és a 13. szakasz ennek megfelelően értendő.
+**Állapotfrissítés a FELADATOK.md-ből (2026-10-06):** a Károli–Strong (#22) 1–5Mózesre és Józsuéra kész (3Móz–Józs csak Sonnet, DT-F22c; a Józs PR mergelve), ⛔ megállt: a következő könyv a Bírák (előbb a versbeosztás-detektor és a kézi jóváhagyás); a #38 ▶ fut: 5 adag kész, a 6. adag a #56 adatblokkjával indul (DT-F38i 🟢). Az 1. és a 13. szakasz ennek megfelelően értendő.
 
 ## 17. Ütközések és pontosítások: DONTESEK.md, CLAUDE.md, MUNKAMENET.md (2026-10-03)
 
@@ -739,14 +742,14 @@ A lexikonoldal-blokkok táblára illesztése és a motívum-séma nem ennek a te
 | tétel | mit mond | hatás a tervre |
 | --- | --- | --- |
 | DT-F33a, DT-F33f, DT-F24 | A STEPBible-fájlok fejlécének „Please do not redistribute it yourself" mondata (TAHOT, TAGNT, TBESH, TBESG, TVTMS) a DT-F33f szerint kérés, nem jognyilatkozat; a hatályos licenc az upstream README: CC BY 4.0, a TBESH „Meaning” oszlopával együtt; jogi súlya jogász elé a kereskedelmi döntéskor | **A 2. szakasz 1. útja (böngészőben futó SQLite) nem esik ki**: a STEPBible-származék CC BY 4.0 alatt, attribúcióval terjeszthető, tehát nem ő zárja ki a letölthető `pardes.db`-t; az adatbázis terjeszthetőségét a benne lévő források módja dönti el (DT-F33j: kereskedelmi módban csak a `kereskedelmi=igen` források); a nyers fájlok a repóban maradnak (DT-F33a). A hosting-utat a kereskedelmi/nem kereskedelmi mód (DT-F33j) és az offline-igény dönti el; a cPanel „adat a webgyökér fölött” érve opció, nem feltétel. |
-| DT-F24, DT-F33c–j | 44 sor a `licencek.tsv`-ben (2026-10-04): 24 `tisztazott`, 9 `kozkincs`, 11 `tisztazatlan` (köztük Karoli\_Strong\_kivonat, LXX\_kivonat, Heber\_ETCBC\_modulok, LXX\_lexicon, projekt\_adat); `kereskedelmi=nem`: MCGED, Heber\_ETCBC\_modulok; `feltetelesen`: tW\_szocikkek, KJV\_Strongs\_teljes *(scope=adat/licencek.tsv, 44 adatsor \| forras=az `allapot` és a `kereskedelmi` oszlop számlálása, F52 1. futás (`naplok/F52_TERV_SZINKRON_naplo.md` 1.4), az ellenőr tab-mezős Grep-je egyezik \| ts=2026-10-04)* | A 26 pont nem mind publikálható kereskedelmi módban. Minden táblához `licenc_allapot` és `kereskedelmi` a `licencek.tsv`-ből (ahogy a #42 a generátorra előírja); az olvasói lekérdező a módnak megfelelő oszlopra szűr (DT-F33j, N-F33b). A kutatói MCP-t nem korlátozza. |
+| DT-F24, DT-F33c–j | 46 sor a `licencek.tsv`-ben (2026-10-06): 26 `tisztazott`, 8 `kozkincs`, 12 `tisztazatlan` (köztük KJV\_ASV\_Strongs, Karoli\_Strong\_kivonat, LXX\_kivonat, KJV\_Strongs\_teljes (a Strong-címkék, DT-F42d), Heber\_ETCBC\_modulok, LXX\_lexicon, projekt\_adat); `kereskedelmi`: 33 `igen`, 2 `nem` (MCGED, Heber\_ETCBC\_modulok), 1 `feltetelesen` (tW\_szocikkek), 10 `tisztazatlan` *(scope=adat/licencek.tsv, 46 adatsor \| forras=az `allapot` és a `kereskedelmi` oszlop számlálása `split('\t')`-bal, F52 2. futás (`naplok/F52_TERV_SZINKRON_naplo.md` 2.4) \| ts=2026-10-06)* | A 26 pont nem mind publikálható kereskedelmi módban. Minden táblához `licenc_allapot` és `kereskedelmi` a `licencek.tsv`-ből (ahogy a #42 a generátorra előírja); az olvasói lekérdező a módnak megfelelő oszlopra szűr (DT-F33j, N-F33b). A kutatói MCP-t nem korlátozza. |
 | DT7 (a) | Az UBS-mezők (SDBH, lexdomain, Louw-Nida) licenc miatt kimaradtak | A Macula UBS-mezői kizárva; a külön importált Louw–Nida és SDBH (CC BY-SA 4.0) a szerepmátrix 4., 5., 9. szerepében adatosítva marad — a ShareAlike terjesztési feltétel a licenc-szűrőben (l. 18.5). |
 | DT23 | „Biztos" = két független forrás; független csak a Macula szó-szintű illesztése és az `LXX_OS` | A 26-os pont (LXX-híd mint lelet) a #43 kimenetére épül; a #43 (a) szerint a bridge nem független forrás — a ★ a bridge-ből tájékoztató réteg, a bizonyosság a DT23 szerint. |
 | D46 | A teljes szótár gépi fordítása halasztva, amíg nincs böngésző felhasználó (#25 vagy kereskedelmi kiadás) | A szó-lap (13. pont) a nem lexikoni Strongoknál angol szócikket mutat; az olvasói felület terve maga a D46 feloldó feltétele. |
 | D50 | A lexikonba csak a motívumhoz illeszkedő jelentéstartomány kerül | A 13. pont ezzel egyezik; a szó-lap teljes szócikke más nézet (szótár ≠ lexikon) — a kettő megkülönböztetendő. |
 | DT-F22a | A párosításnak bizonyossági jelölése van (`magas`); 1Móz `kezi` 0 | Az 1.1 ellenőrzés csak `magas` linkre számítson egyezést; `alacsony` link eltérésénél nem a tanulmány a gyanús. |
 | DT-F33b | Van `eszkozok/lekerdez.py` (`cmd_lxx_hid`), `lxx_osszevetes.py` | Az MCP ezekre ül rá (l. 17.2). |
-| DT-F38e/i, DT-F22c | Sonnet-út, ⛔ DT-F38i; 3Móztól csak Sonnet | egyezik a 16. szakasszal |
+| DT-F38e/i, DT-F22c | Sonnet-út, DT-F38i 🟢 (a 6. adag a #56-tal); 3Móztól csak Sonnet | egyezik a 16. szakasszal |
 
 **17.2 CLAUDE.md és MUNKAMENET.md**
 
@@ -763,7 +766,7 @@ A legnagyobb korrekció: **a kutatói lekérdező már létezik.** A hét lépé
 | MUNKAMENET C0, D48; CI E19 | Opus-emelés a lexikon Strongjaira | A szó-lap „szócikk magyarul" blokkja a `forditasok.tsv` `opus`/`kezi` sorából tölt; a többi angol (D46). |
 | Git | egy session = egy feladat, `/befogad`, `F<nn>_<NEV>_BRIEF.md`, commit UTF-8 fájlból | az MCP- és építő-brief formája |
 
-Elavultság a CLAUDE.md-ben: „KJV/ASV\_Strongs csak Genezis, Exodus, Példabeszédek" — az F19 óta a KJV teljes (349 308 sor); a brief ne erre építsen.
+Elavultság a CLAUDE.md-ben: „KJV/ASV\_Strongs csak Genezis, Exodus, Példabeszédek" — az F19 óta a KJV teljes (349 308 sor); a brief ne erre építsen. *(Javítva a #52 2. futásában, DT-M8 (c); a #48 a régi fájlok kivezetésekor a végleges állapotra igazítja.)*
 
 ## 18. NYITOTT\_FELADATOK.md, ATALAKITASI\_TERV.md, SEMA.md, playbook, F23/F25 (2026-10-03)
 
@@ -773,7 +776,7 @@ Elavultság a CLAUDE.md-ben: „KJV/ASV\_Strongs csak Genezis, Exodus, Példabes
 | --- | --- | --- |
 | ATALAKITASI\_TERV 11.7 „Saját MCP-szerver" | a `lekerdez.py` MCP-burokként a chatből is elérhető; a proveniencia protokollszinten kikényszeríthető (`scope`, `forras`, `n`, `ts` mindig a strukturált válaszban); **hat-nyolc eszköznél többre ne bomoljon**, mert az eszközdefiníciók minden menetben kontextust fogyasztanak; sorrend: előbb `lekerdez.py`, az MCP vékony burok, csak ha a chatből is kell | A 9. és 17.2 szakasz ezzel egyezik — a tervjegyzet a 11.7 kibontása. A 9. szakasz eszközlistája **legfeljebb 8 eszköz**: a `lekerdez.py` alparancsai egy `lekerdez(parancs, …)` eszközben, külön csak a vers-lap, lelet-lap, Károli-szóalak, ellenőrzés. |
 | ATALAKITASI\_TERV 11.5 | a lexikon publikálási formája: generált statikus oldal az `adat/` táblákból — „a legerősebb adatminőségi próba" (rossz kapcsolat = rossz link, azonnal látszik) | Az olvasói felület (2., 8. szakasz, #25) nem csak termék, hanem adatminőségi próba; a 11.5 ezt már kimondta. |
-| ATALAKITASI\_TERV 4.7 | „A Károli 31 ezer versének teljes strongozása nem cél" — a join tanulmányvezérelt melléktermék | **Elavult**: a #22 (F22) könyvenként teljes strongozást végez, 1–5Móz és Józs kész. A 4.7 elve (a `karoli_szo` a `jeloltek.tsv` minősítési sorában) marad; a teljes Károli–Strong új réteg mellette. Az ATALAKITASI\_TERV-ben jelölendő. |
+| ATALAKITASI\_TERV 4.7 | „A Károli 31 ezer versének teljes strongozása nem cél" — a join tanulmányvezérelt melléktermék | **Elavult**: a #22 (F22) könyvenként teljes strongozást végez, 1–5Móz és Józs kész. A 4.7 elve (a `karoli_szo` a `jeloltek.tsv` minősítési sorában) marad; a teljes Károli–Strong új réteg mellette. Az ATALAKITASI\_TERV-ben jelölve (DT-M8 (b), #52 2. futás). |
 | ATALAKITASI\_TERV 12 | a szerzői jogi kérdés nincs megoldva; publikálásnál szakjogász | egyezik a 17.1 nyitott tételével |
 | playbook 1. | „Claude Code nem látja a claude.ai memóriát, csak a repó fájljait" | **Ez a tervjegyzet csak akkor hat, ha a repóban van**: Markdown-exportja a repó gyökerébe (pl. `ADATVAGYON_TERV.md`), és a #25/#23 brief `olvas:` listájába. |
 | playbook 2. licenc-tábla | Biblia-Felfedező (Zsidó Miklós) felfüggesztve/elutasítva; GPL 3.0 nem építhető be | A Bible-Discovery Károli kizárása (11., 17.1) ezzel egyezik — a repó régóta tudja. |
@@ -802,7 +805,7 @@ Elavultság a CLAUDE.md-ben: „KJV/ASV\_Strongs csak Genezis, Exodus, Példabes
 | tétel | mit mond | hatás |
 | --- | --- | --- |
 | 1. (biblemate `morphology.sqlite`) | a `ClauseID` tagmondat-szintű csoportosítást ad, pontosabb a formula-motívumoknál, mint a szórend-heurisztika (Deut 32:3 kizárásánál már segített) | az 5. pont (frázis-keresés) jelöltje; licenc ellenőrizendő a playbook 2. szerint |
-| N37 | nincs egységes Strong-normalizáló függvény (`1d`); N21: nullázatlan `H922` | az építő script normalizálása **ez a függvény**, nem újabb ad hoc; a 3. és 17.2 szakasz normalizálási igénye ide fut |
+| N37 | nincs egységes Strong-normalizáló függvény (`1d`); N21: nullázatlan `H922` | az építő script normalizálása **ez a függvény**, nem újabb ad hoc; a 3. és 17.2 szakasz normalizálási igénye ide fut; megoldja a #62 STRONG\_NORMALIZAL |
 | N17, N46, N-F41a, N-F41d | versszámozás: a KK `igehely_kjv` nem megbízható; a `TAHOT_kivonat` számozása vegyes (KJV/MT); 44 KK-vers eltolódás-gyanús | **a vers-lap igehely-kulcsa Károli-számozás, és minden más forrást (TAHOT, BSB, LXX\_OS, TSK) a KK-n át kell kötni; `szamozas` jelző a vers-táblában; ahol a KK üres vagy gyanús, a vers-lap ezt mutatja, nem interpolál** — ez a séma legnagyobb kockázata |
 | N-F34b | a „TAHOT\_kivonat nem teljes" állítás elavult, a hiány kicsi | a 17.2 Adat-tár sora ennek megfelelően értendő |
 | N13 | `jelolt.py` túltermel gyakori Strongokon (H1121, H0430, H2416) | a 23. pont (ritka együttállás) gyakorisági küszöböt kap; a ★ lelet-lapon a gyakori Strongok zajt adnának |
@@ -855,23 +858,23 @@ A napló gépi alakja a `jeloltek.tsv` (SEMA 2.4) — a tényleges munka a 8 ret
 
 **Kivetkező lépések**
 
-- [ ] Code-brief az 1.1 ellenőrzésre (bemenet: grep a Genezis-igehelyes tematikus táblákra; kimenet: eltéréslista)
+- [ ] Code-brief az 1.1 ellenőrzésre (bemenet: grep a Genezis-igehelyes tematikus táblákra; kimenet: eltéréslista) — a brief megvan: #65 KAROLI\_ELLENORZES (nem_indult)
 - [ ] 1.2 variancia-térkép ugyanabban a futásban
-- [ ] napló-adatosítás brief (a 12/24/25/11 alapja)
+- [ ] napló-adatosítás brief (a 12/24/25/11 alapja) — a 8 retroaktív motívumra: #63 JELOLTEK\_RETRO (nem_indult)
 - [ ] `eszkozok/sqlite_epit.py` séma a 26 pontból
 - [ ] tárhely-döntés (cPanel PHP vagy Python / Netlify) a mért `pardes.db` méret után
 
-* [ ] MCP-szerver Code-ban (FastMCP, a `sqlite_epit.py` után; a 12. szakasz eszköznevei)
+* [ ] MCP-szerver Code-ban (FastMCP, a `sqlite_epit.py` után; a 12. szakasz eszköznevei) — feltételes (DT-M7); előbb a #61 LEKERDEZ\_NAPLO
 * [ ] SZPA-audit (C üzemmód) a tanulmányok prózáján és a BDB-fordításon
-* [ ] openbible.info felvétele a `datasetek.tsv`-be, F44 licencellenőrzés
+* [x] openbible.info felvétele a `datasetek.tsv`-be, F44 licencellenőrzés — kész (#44 ✅, PR #205): 4 sor `hianyzik` + „JELÖLT, NEM IMPORTÁLT” (DT33); az import külön feladat (DT34)
 * [ ] BDB javító menet a teljes Károli–Strong után (Károli-oszlop minden szócikkhez)
-* [x] a három kézi 0. lépés (#43 lxx\_bridge.tsv + LICENC.md; #44 karoli\_bible\_hu\_LICENC.txt, openbible\_crossrefs\_LICENC.txt) — bent (F43.0, F44.0, F44.1); a #43 fut, a #44 ⬜
-* [ ] ellenőrizni a #38 naplójában, hogy az M0 5. pont (BDB-gyökcsoport-felmérés) lefutott-e
+* [x] a három kézi 0. lépés (#43 lxx\_bridge.tsv + LICENC.md; #44 karoli\_bible\_hu\_LICENC.txt, openbible\_crossrefs\_LICENC.txt) — bent (F43.0, F44.0, F44.1); a #43 és a #44 kész
+* [ ] ellenőrizni a #38 naplójában, hogy az M0 5. pont (BDB-gyökcsoport-felmérés) lefutott-e — a 6. adag menetének elején fut
 * [ ] terminologia.tsv a #38 további adagjainak (adagok közötti következetesség, MCP nélkül is)
 * [x] a nyílt Károli 1908 licencének tisztázása (#44) — tárgytalan: a szöveg közkincs (DT-F33e), nem előfeltétel
 * [x] a tervjegyzet Markdown-exportja a repó gyökerébe (ADATVAGYON\_TERV.md) — bent (`ab73f7b`, 2026-10-04)
-* [ ] az ADATVAGYON\_TERV.md a #25/#23 brief olvas: listájába — még nincs bent (TERV\_BEFOGAD nyitott része)
-* [ ] ATALAKITASI\_TERV 4.7 jelölése elavultként (a #22 teljes strongozást végez)
+* [x] az ADATVAGYON\_TERV.md a #25/#23 brief olvas: listájába — bent (DT-M8 (a)); a #11 briefjébe a befogadáskor kerül (DT-M8 (d))
+* [x] ATALAKITASI\_TERV 4.7 jelölése elavultként (a #22 teljes strongozást végez) — kész (#52 2. futás, DT-M8 (b))
 * [ ] a vers-tábla igehely-kulcsa és a szamozas jelző: KK-alapú kötés minden forráshoz (N17, N46, N-F41a/d)
 
 **Döntésnapló**
@@ -891,7 +894,7 @@ A napló gépi alakja a `jeloltek.tsv` (SEMA 2.4) — a tényleges munka a 8 ret
 | 2026-10-02 | BDB-fordítás (#38) nem áll meg az adatlekérésért; javító menet a teljes Károli–Strong után | javaslat |
 | 2026-10-03 | v3: 13–15. szakasz hozzáadva (MCP a #38-nál, visszaírás szabályai, a HF-forrásáttekintés hozama); a záró szakasz 16-ra számozva | kiegészítés |
 | 2026-10-03 | Visszaírás: a forrás-TSV-be hozzáfűzéssel, proveniencia-oszloppal, csak Code-ban; az SQLite nem írható; első író eszköz a terminologia\_rogzit | javaslat |
-| 2026-10-03 | A nyílt Károli 1908 (karoli\_bible\_hu) licencellenőrzése az olvasói felület publikálási előfeltétele; a Bible-Discovery Károli kizárva | megállapítás |
+| 2026-10-03 | A nyílt Károli 1908 (karoli\_bible\_hu) licencellenőrzése az olvasói felület publikálási előfeltétele; a Bible-Discovery Károli kizárva | megállapítás — lezárva (v15): a Károli 1908 közkincs (DT-F33e), a `karoli_bible_hu` elvetve (DT31); a Bible-Discovery Károli kizárása marad |
 | 2026-10-03 | bible-mcp: az F44 5.(d) döntésnél elvetés egyelőre, saját MCP után újra | javaslat |
 | 2026-10-03 | A #38-nál a 12.1 lekérések build-lépésként (előre számolt blokk az adagfájlban), nem MCP-hívásként; tokenköltség-becslés a 13. szakaszban | javaslat |
 | 2026-10-03 | v4: 16. szakasz (függések a FELADATOK.md szerint); a 2–3–8. szakasz a #25 OLVASOI\_HTML bemenete; a séma-illesztés kettéválik (adatréteg most, motívum/napló a #23 után); állapotfrissítés: Károli–Strong 1–5Móz kész, #38 ⛔ DT-F38i | kiegészítés |
@@ -906,6 +909,7 @@ A napló gépi alakja a `jeloltek.tsv` (SEMA 2.4) — a tényleges munka a 8 ret
 | 2026-10-03 | v12: 22. szakasz — a SEMA.md teljes figyelembevétele. Három korrekció: a napló gépi alakja a jeloltek.tsv (nem új tábla; a hiány a 8 retroaktív motívum és a származtatott „még nem vizsgált”); a forrás-tengely a jeloltek.forras_kereses, nem a kapcsolatok (két tengely már ütközik); a szamozas értékkészlet a BSB 7. oszlopáé. 26 pont → tábla illesztés; az 1.7 AZONOSITAS_MODJA elavult a #22 miatt; auditok.lepes új MCP-érték kell; az integritási szabályok az építő tesztjei | kiegészítés — két DT-tétel (1.7 szövege; auditok.lepes) |
 | 2026-10-04 | v13: „Kiindulási állapot és mi változott a repóban” szakasz a doc elején (merge 117bafc): DT-F33e–j licenc-fordulat (az 1. út nem esik ki; kereskedelmi/nem kereskedelmi szűrő), D34–D41 és DT-F26a (motívumcikk), #32 KONTEXTUS (DT-F32b Opus), sorszám-ütközés (#48–#51 foglalt), státuszok (#22 ⛔, #43 ▶, #46 ✅); a 2. szakasz licenc-mondata cserélve. A doc a repóba költözik, onnantól az md a hatályos | kiegészítés — utolsó chat-oldali verzió |
 | 2026-10-04 | v14 (#52 TERV\_SZINKRON, 1. futás; kiindulás: merge `8e8f771`): a DT-F33e–j a törzsben is átvezetve — 0.2 (Károli–Strong sor, 2. pont), 0.4, 15., 16., 17.1 (két sor), 19. (nyitott sor lezárva, teendőlista), 21. (0., 1., 3., 4. lépcső); státuszok: #22 ⛔, #43 ▶, #44 Károli-rész tárgytalan, #46 ✅, #32 ✅; függések a FELADATOK szerint (#9, #10, #11, #23, #36); sorszámok: a MUNKATERV tervezett feladatai kódnévvel (DT-F52a). Ellenőr 1. kör (JAVÍTANDÓ, 15 tétel) javítva F52.5-ben: DT-F43 (a), #22 Józs, `pardes.db` megfogalmazás, MCGED, 0. szakasz, proveniencia. Napló: `naplok/F52_TERV_SZINKRON_naplo.md` | szinkron |
+| 2026-10-06 | v15 (#52 TERV\_SZINKRON, 2. futás; kiindulás: FELADATOK v1.3, `main` `69da794`): DT-M1 🟢 (a #25 kettéválik: #25a/#25b — 0.2, 16., 21.), DT-M2 🟢 (`szó-szintű-gépi` — 22.2), DT-M3 🟢 (`adhoc`, csatorna a proveniencia-sorban — 22.4), DT-M7 🟢 (az MCP feltételes — 0., 9., 19., 21.), DT-M8 🟢 (a TERV\_BEFOGAD külön brief nélkül: az `olvas:`-teendő és az ATALAKITASI\_TERV 4.7 jelölése kész, a CLAUDE.md KJV-sora javítva — 17.2, 18.1, 19.); státuszok: #22 (Józs PR mergelve, következő a Bírák), #42, #43, #44, #30, #51, #53, #57, #58 ✅, #38 ▶ (6. adag a #56-tal, DT-F38i 🟢); a 17.1 licenc-összesítés 46 sorra (26/8/12; DT-F42d, DT-F42g); 15. (DT31: `karoli_bible_hu` elvetve); új feladatok: #54, #55, #56, #59, #60, #61, #62, #63, #64, #65, #66. Napló: `naplok/F52_TERV_SZINKRON_naplo.md` | szinkron |
 
 ## 20. Rendszer-séma
 
@@ -919,17 +923,17 @@ Hat lépcső, a 16. szakasz függései és a 0.2 sorrendje szerint (1. fázis v�
 
 | # | lépcső | mit csinál | kimenet | függ | ki |
 | --- | --- | --- | --- | --- | --- |
-| 0 | kézi előfeltételek — **kész (2026-10-04)** | a három 0. lépés: `lxx_bridge.tsv` + `LICENC.md` (#43), `karoli_bible_hu_LICENC.txt` (a Károli-rész a DT-F33e-vel tárgytalan), `openbible_crossrefs_LICENC.txt` (#44); a tervjegyzet exportja `ADATVAGYON_TERV.md`-ként a repóba (`ab73f7b`) | a #43 fut; a #44 a #42-re vár (FELADATOK függés); Code látja a tervet | — | felhasználó |
-| 1 | adatréteg lezárása (1. fázis) | #22 Károli–Strong könyvenként végig; #38 BDB adagok (⛔ DT-F38i után, `terminologia.tsv` minden adagnak); #43 (fut), #44; #46 kész; #7 Thayer a D46 feloldásakor | teljes Károli–Strong, magyar BDB, licenc-tiszta leltár, LXX-híd ellenőrizve | 0 | Code (Sonnet), felhasználó a megállásoknál |
-| 2 | ellenőrzés és variancia | 1.1 ellenőrzés (tanulmány-táblák vs. Károli–Strong, csak `magas` link); 1.2 variancia-térkép; N37 egységes Strong-normalizáló | eltéréslista; motívumonként Károli-szólista; `strong_normalizal()` | 1 (könyvenként, nem kell a teljes) | Code, egy brief |
-| 3 | eszközök | `sqlite_epit.py` (SEMA-típusok, KK-alapú vers-kulcs, `szamozas`, `licenc_allapot` és `kereskedelmi` oszlop, `strong_parok`, frázis-pozíció); MCP-burok a `lekerdez.py`-ra, ≤ 8 eszköz, proveniencia + `auditok.tsv`-sor; a #38 build-blokkja (12.1) | `pardes.db` (nem commit), `.mcp.json`, adatblokk-generátor | 2 | Code, két brief (építő; MCP) |
-| 4 | olvasói konkordancia — motívum nélkül | a 26-ból az 1–6, 13–16, 18–20 pont; szó-lap a szerepmátrix (18.5) szerint, vers-lap KK-kulccsal; `general.py --cel verslap / szolap`; hosting-út a mód szerint (böngészős SQLite, cPanel vagy serverless — DT-F33f/j), a `kereskedelmi` oszlop szerinti szűrővel; nyílt Károli-szöveg (közkincs, DT-F33e) | első publikus kiadás: kereshető magyar Strong-konkordancia, nem kereskedelmi módban | 3, #44 (openbible-rész), DT-F33j | Code; felhasználó a hosting-döntésnél ⛔ |
-| 5 | motívum-réteg | #23 (séma, mélységi szintek) → #9/#10 (lexikonoldal) → #11 (egy forrásból renderelés) → napló-adatosítás → #25 teljes (motívum-lap, lelet-lap ★, 7–12, 21–26. pont) | a kereszthivatkozási lexikon mint harmadik nézet | 4, #37 | Code (Opus a #23-nál), felhasználó A4/B5 ⛔ |
+| 0 | kézi előfeltételek — **kész (2026-10-04)** | a három 0. lépés: `lxx_bridge.tsv` + `LICENC.md` (#43), `karoli_bible_hu_LICENC.txt` (a Károli-rész a DT-F33e-vel tárgytalan), `openbible_crossrefs_LICENC.txt` (#44); a tervjegyzet exportja `ADATVAGYON_TERV.md`-ként a repóba (`ab73f7b`) | a #43 és a #44 kész; Code látja a tervet | — | felhasználó |
+| 1 | adatréteg lezárása (1. fázis) | #22 Károli–Strong könyvenként végig; #38 BDB adagok (a 6. adagtól a #56 adatblokkjával, DT-F38i 🟢; `terminologia.tsv` minden adagnak); #43, #44, #46 kész; #7 Thayer a D46 feloldásakor | teljes Károli–Strong, magyar BDB, licenc-tiszta leltár, LXX-híd ellenőrizve | 0 | Code (Sonnet), felhasználó a megállásoknál |
+| 2 | ellenőrzés és variancia | 1.1 ellenőrzés (#65 KAROLI\_ELLENORZES: tanulmány-táblák vs. Károli–Strong, csak `magas` link); 1.2 variancia-térkép; N37 egységes Strong-normalizáló (#62, a lépcső elején) | eltéréslista; motívumonként Károli-szólista; `strong_normalizal()` | 1 (könyvenként, nem kell a teljes) | Code, egy brief |
+| 3 | eszközök | `sqlite_epit.py` (SEMA-típusok, KK-alapú vers-kulcs, `szamozas`, `licenc_allapot` és `kereskedelmi` oszlop, `strong_parok`, frázis-pozíció); MCP-burok a `lekerdez.py`-ra, ≤ 8 eszköz, proveniencia + `auditok.tsv`-sor (feltételes, DT-M7; előbb a #61); a #38 build-blokkja (12.1) már a #56-ban, az SQLITE\_EPIT-től függetlenül | `pardes.db` (nem commit), `.mcp.json`, adatblokk-generátor | 2 | Code, egy brief (építő; az MCP feltételes) |
+| 4 | olvasói konkordancia — motívum nélkül (#25a, DT-M1 🟢) | a 26-ból az 1–6, 13–16, 18–20 pont; szó-lap a szerepmátrix (18.5) szerint, vers-lap KK-kulccsal; `general.py --cel verslap / szolap`; hosting-út a mód szerint (böngészős SQLite, cPanel vagy serverless — DT-F33f/j), a `kereskedelmi` oszlop szerinti szűrővel; nyílt Károli-szöveg (közkincs, DT-F33e) | első publikus kiadás: kereshető magyar Strong-konkordancia, nem kereskedelmi módban | 3, DT-F33j (a #44 kész) | Code; felhasználó a hosting-döntésnél ⛔ |
+| 5 | motívum-réteg | #23 (séma, mélységi szintek) → #9/#10 (lexikonoldal) → #11 (egy forrásból renderelés) → napló-adatosítás → #25b (motívum-lap, lelet-lap ★, 7–12, 21–26. pont) | a kereszthivatkozási lexikon mint harmadik nézet | 4, #37 | Code (Opus a #23-nál), felhasználó A4/B5 ⛔ |
 | 6 | hasznosítás | SZPA-audit (10.); fordítói eszköz; licencelt adatkészlet (saját rétegek CC BY); AI-réteg és kereskedelmi döntés jogásszal | a 0.2 négy iránya | 4–5 | felhasználó dönt, Code végez |
 
 **Három szabály a lépcsőkre**
 
-1. A 4. lépcső nem vár az 5.-re: a konkordancia motívum nélkül is kiadható, és ez a D46 feloldó feltétele. Ez a FELADATOK.md mai sorrendjétől (#25 a #11/#23 mögött) eltér — DT-tétel.
+1. A 4. lépcső nem vár az 5.-re: a konkordancia motívum nélkül is kiadható, és ez a D46 feloldó feltétele. Ez eltért a FELADATOK.md addigi sorrendjétől (#25 a #11/#23 mögött); a DT-M1 🟢 (2026-10-06) eldöntötte: a #25 kettéválik.
 2. Egyik lépcső sem ír az `adat/`-ba a briefen kívül; a `pardes.db` és minden nézet generált. Visszaírás csak a 14. szakasz szabályaival.
 3. Minden lépcső első futása kis mintán (a 8 lexikonoldalas motívum, ill. 1Mózes), ⛔ után teljes.
 
@@ -955,7 +959,7 @@ A teljes `adat/SEMA.md` (1. közös típusok, 2.1–2.20 táblák, 3. integritá
 
 **22.2 Egy elavult SEMA-tétel, amit a #22 ír felül**
 
-1.7 `AZONOSITAS_MODJA`: „a projektnek nincs szó-szintű Strong-taggelt Károlija, és nem is lesz (zárt licenc)" — a 227 join-sor mind `tartalom-alapú`. A Károli–Strong (#22, 2.20 `parok_<könyv>.tsv`) pontosan a `szó-szintű-tagged` értéket teszi elérhetővé. Következmény: az 1.1 ellenőrzés nem csak eltéréslistát ad, hanem **a `jeloltek`/`elofordulasok` Károli-tripletjét frissíti**: ahol a `parok` `magas` linkje egyezik a `karoli_szo`-val, az `azonositas_modja` `tartalom-alapú` → `szó-szintű-tagged`, a `megbizhatosag` a `parok` bizonyosságából. Ez DT-tétel (az 1.7 szövegének és a DONTESEK 8. szakaszának módosítása), és az 1.1 brief része.
+1.7 `AZONOSITAS_MODJA`: „a projektnek nincs szó-szintű Strong-taggelt Károlija, és nem is lesz (zárt licenc)" — a 227 join-sor mind `tartalom-alapú`. A Károli–Strong (#22, 2.20 `parok_<könyv>.tsv`) pontosan a `szó-szintű-gépi` értéket teszi elérhetővé (DT-M2 🟢, 2026-10-05: új érték, hogy a modell-kimenet jelölt legyen; a `szó-szintű-tagged` esetleges kiadói taggelésnek marad). Következmény: az 1.1 ellenőrzés nem csak eltéréslistát ad, hanem **a `jeloltek`/`elofordulasok` Károli-tripletjét frissíti**: ahol a `parok` `magas` linkje egyezik a `karoli_szo`-val, az `azonositas_modja` `tartalom-alapú` → `szó-szintű-gépi`, a `megbizhatosag` a `parok` bizonyosságából. Az 1.7 szövegének és a DONTESEK 8. szakaszának módosítása a DT-M2-vel eldőlt; a triplet-frissítés az 1.1 brief (#65) része.
 
 **22.3 A 26 pont → SEMA-tábla illesztés**
 
@@ -984,7 +988,7 @@ A teljes `adat/SEMA.md` (1. közös típusok, 2.1–2.20 táblák, 3. integritá
 **22.4 Amit az építő script és az MCP a SEMA-ból kötelezően visz**
 
 - Közös típusok: 1.1 `IGEHELY` magyar kanonikus alak (három dataset STEPBible-pontozott, `Konyv_normalizalo_tabla` konvertál; normalizálás nélkül néma nem-találat); 1.2 `STRONG` négyjegyű nullázott, `+` több számnál; 1.5 `PROVENIENCIA` kötelező kulcsai és `scope` értékkészlete (`TAHOT-teljes`, nem `OT-full`, a 4. szakasz szerint); 1.8 `IGAZOLAS` külön mező, nem proveniencia-kulcs.
-- 2.9 `auditok.lepes` zárt: `A5` \| `B2` \| `B3` \| `B4`. **Egy ad hoc MCP-hívás egyikbe sem fér** — új érték kell (pl. `MCP`), DT-tétel; addig az MCP auditsorai nem írhatók szabályosan.
+- 2.9 `auditok.lepes` zárt: `A5` \| `B2` \| `B3` \| `B4`. **Egy ad hoc hívás egyikbe sem fér** — DT-M3 🟢 (2026-10-05): a `lepes` a kutatási lépés kódját kapja (bármely csatornán), a lépésen kívüli lekérdezés új értéke `adhoc`; a csatorna (`csatorna=cli`, később esetleg `mcp`) a proveniencia-sorba kerül; alkalmazás: #61.
 - 3. integritási szabályok mint teszt-sor az építésnél: hivatkozási épség (1.), nincs közvetlen út (2.), proveniencia-kényszer (3.), horgony-kényszer (4.), Károli-triplet (5.), gate-kényszer (6.), dataset-lefedettség (8.) — a `sqlite_epit.py` ezeket futtatja, és sértésnél megáll; az MCP író eszközei csak a `jeloltek`-be írnak (2. szabály).
 - 2.6 `datasetek.tsv` `allapot` és a CC BY-SA következmény (SDBH/SDGNT származék azonos licenc) — a `licenc_allapot` szűrő forrása a 2.19-cel együtt.
 

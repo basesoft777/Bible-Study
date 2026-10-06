@@ -112,3 +112,22 @@ Megjegyzés, nem eltérés: a napló 1.1-es delta-táblájában a 28–29. sor a
 **Összegzés: JAVÍTANDÓ.** Az 1. kör 15 tételéből 14 ELFOGADVA. A 15. tétel javítása új hibát hozott (Ú1), és van egy alacsony súlyú listaeltérés (Ú2). A CI exit 0. A merge-ről a felhasználó dönt.
 
 *Javítás: F52.6 (Ú1, Ú2 és a 28–29. sor sorrendje; l. a szinkron-napló 1.6 szakaszát).*
+
+## 2. futás — 2026-10-06 (fuggetlen-ellenor, tartomány 69da794..7d6f1af)
+
+Jelentés: ELTÉRÉS, 12 tétel (az ügynök fájlt nem írhatott; a hívó mentette összefoglalóban). A licenc-összesítés (46 sor, 26/8/12; kereskedelmi 33/2/1/10), a FELADATOK-státuszok és -függések, a delta-lista teljessége, a CRLF/bájtazonosság és a CI-tükör (E12–E15 0, EXIT 0) rendben. Közben a #56 (PR #218) mergelődött: rebase és 33. delta-sor.
+
+| # | tétel | kezelés (F52.14) |
+| --- | --- | --- |
+| E1 | MCP_BUROK a MUNKATERV 3. hullámában, a DT-M7 szerint kikerül | a 3. hullám sora „—”, az ábra igazítva |
+| E2 | ADATVAGYON 9.: nem létező hook/sqlite_epit „megvan” | „MCP nélkül is megvalósíthatók” |
+| E3 | brief `pr: 172`, a napló hamisan frissítettnek mondta | `pr: 219` |
+| E4 | DT-M1–M3, M7, M8 ✅ (valójában 🟢) | 🟢 |
+| E5 | új, forrás nélküli 1. hullám-⛔ (DT-M4–6) | kivéve |
+| E6 | VIBE: állapotjelzők a névben | visszavonva |
+| E7 | napló 2.2 lista pontatlan (19. szakasz 8 sor; DT-M5 a 2. szakaszban) | javítva |
+| E8 | DT-F42d/g a kivezetéshez | DT-F42f |
+| E9 | 215 commit a `--since` paranccsal nem jön ki | a napló a `de9c464..` tartományt nevezi |
+| E10 | „#25a” FELADATOK-számként | a `#` oszlopban „—”, a névben „(a #25a)” |
+| E11 | a VIBE-kérdéshez nincs DONTESEK-tétel | DT49 (🟡) |
+| E12 | lezáratlan döntésnapló-sor (karoli_bible_hu) | lezárva (v15) |

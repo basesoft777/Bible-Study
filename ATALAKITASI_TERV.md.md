@@ -296,6 +296,8 @@ Hookként minden íráskor lefut. Ma ezt ember veszi észre, hetekkel később �
 
 ### 4.7 Károli-Strong join — melléktermék, de nem felejthető
 
+> **Elavult (DT-M8 (b), #52 TERV\_SZINKRON, 2026-10-06):** a „teljes strongozás nem cél” és a tartalom-alapú, kumulatív join elve a #22 (F22) óta nem érvényes: a #22 könyvenként szó-szintű, gépi Károli–Strong párosítást ad (`szó-szintű-gépi`, DT-M2; 1–5Móz és Józs kész). A `karoli_szo` a `jeloltek.tsv` minősítési sorában marad; az alábbi szöveg történeti. Forrás: `ADATVAGYON_TERV.md` 18.1.
+
 **Az elv változatlan: kumulatív, tanulmányvezérelt.** A join-tábla nem külön projekt, hanem a tanulmány-készítés mellékterméke; minden tanulmány annyit ad hozzá, amennyire ténylegesen szüksége van, és a következő tanulmány számára ez grepelhető, nem újragenerálandó. A Károli 31 ezer versének teljes strongozása **nem cél**.
 
 **Mért állapot (2026.09.13):** 227 sor, 161 egyedi igehely, 156 egyedi Strong, 25 forrás-tanulmányból. Azonosítás 100%-ban tartalom-alapú (222 magas, 5 közepes megbízhatóság). Megoszlás: 181 sor a Genezisből, 46 huszonegy könyv között.
