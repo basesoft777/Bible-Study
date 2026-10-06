@@ -6,8 +6,8 @@ tipus: feladat
 fazis: 2
 modell: opus
 allapot: brief_kell
-ad: mérhetően kész oldalak (L1–L7)
-kovetkezo: **Te:** döntés az L6 és L7 feltételről. Ide tartozik N18, N19. Az L-feltételek törzscikkre vonatkozó pontjai kikerülnek (D34). Előfeltétel: a #8 négy nyitott sora (LD008, LD009, LD058, LD064) eldöntve
+ad: mérhetően kész oldalak: a sablon Minőségi kapuja (L1, L3–L6), és minden rés kitöltött vagy explicit hiány-, ill. `adat`-forrás-jelölésű (DT2)
+kovetkezo: brief írása a DT2 🟢 mércéjével (L2 és L7 nincs; az N18, N19 nyitva marad, nem blokkol). Az L-feltételek törzscikkre vonatkozó pontjai kikerülnek (D34). Előfeltétel: a #8 négy nyitott sora (LD008, LD009, LD058, LD064) eldöntve
 fugg: [8, 9, 11]
 ---
 
@@ -15,7 +15,7 @@ fugg: [8, 9, 11]
 
 *FELADATOK #10 · csonk-brief (F20 B3): nem végrehajtható, csak a feladat fejlécét hordozza; a brief csak chatben van.*
 
-- **Mit ad, ha kész:** mérhetően kész oldalak (L1–L7)
-- **Következő lépés:** **Te:** döntés az L6 és L7 feltételről. Ide tartozik N18, N19. Az L-feltételek törzscikkre vonatkozó pontjai kikerülnek (D34). Előfeltétel: a #8 négy nyitott sora (LD008, LD009, LD058, LD064) eldöntve
+- **Mit ad, ha kész:** mérhetően kész oldalak: a sablon Minőségi kapuja (L1, L3–L6), és minden rés kitöltött vagy explicit hiány-, ill. `adat`-forrás-jelölésű (DT2)
+- **Következő lépés:** brief írása a DT2 🟢 mércéjével (L2 és L7 nincs; az N18, N19 nyitva marad, nem blokkol). Az L-feltételek törzscikkre vonatkozó pontjai kikerülnek (D34). Előfeltétel: a #8 négy nyitott sora (LD008, LD009, LD058, LD064) eldöntve
 
 A valódi briefet a `/befogad` csonk-kitöltése váltja fel, ugyanezen a számon és néven.
