@@ -11,7 +11,7 @@ ad: a Zsolt 13 importálva a BSB_Strongs.tsv-be a DT-F41a listája szerint (feli
 kovetkezo: "független ellenőrzés (fuggetlen-ellenor), majd merge a felhasználótól; a Zsolt 13 MT 1–2 (felirat, BSB 13:1) a display-JSON hiánya miatt nem importálható"
 ag: claude/bsb-zsolt13
 olvas: [naplok/F16_bsb_zsolt_megfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/fj2/]
-ir: [konkordancia/BSB_Strongs.tsv, konkordancia/README.md, eszkozok/fj2/bsb_import.py, naplok/F16_bsb_zsolt_megfeleltetes.tsv, naplok/F16_bsb_lefedettseg.tsv, naplok/F41_bsb_megfeleltetes.tsv, naplok/F41_nem_egyezo_versek.tsv, naplok/F71_nulladiff.txt]
+ir: [naplok/ELLENOR_F71.md, naplok/F71_zaras.md, adat/datasetek.tsv, adat/SEMA.md, NYITOTT_FELADATOK.md, konkordancia/BSB_Strongs.tsv, konkordancia/README.md, eszkozok/fj2/bsb_import.py, naplok/F16_bsb_zsolt_megfeleltetes.tsv, naplok/F16_bsb_lefedettseg.tsv, naplok/F41_bsb_megfeleltetes.tsv, naplok/F41_nem_egyezo_versek.tsv, naplok/F71_nulladiff.txt]
 fugg: [41]
 ---
 

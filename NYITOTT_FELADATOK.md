@@ -602,6 +602,8 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
 - **N-F53d — kártyaszöveg-piszkozat a 10 leírás nélküli kártyára.** *(ÚJ, F53 (#53), FT.2 ⛔, felhasználói válasz 2026-10-05; az FT.3 után, külön tételben; a számot (N-F53d) a main-Action osztja ki)*
   Érintett: #53, #54, #55, #57, #58, #59, #60, #61, #64, TERV_BEFOGAD (a lap ma „nincs leírás”-t ír). A `reszletes` és `roviden` szöveg **csak piszkozat** lehet (a briefekből, naplóba vagy külön fájlba); az `eszkozok/feladatterkep_kartyak.tsv`-be **csak a felhasználó jóváhagyása után** kerül, `forras` = `kezi-<dátum>`.
 
+- **N-F71a — a Zsolt 13 MT 1–2 verse (felirat, BSB 13:1) hiányzik a `BSB_Strongs.tsv`-ből.** *(ÚJ, F71, ellenőr: EF1 eltérés; a számot (N-F71a) a main-Action osztja ki)* A #71 csak az MT 3–6-ot importálta (41 sor, `manual`, kézi kivétel): a BSB 13:1 szövege a `base/display/` JSON-ból kiesik (DT6 (c), a README „Ismert hiány”-a, 116 feliratos zsoltár), a felirat pedig a BSB-ben `d`-szintű heading, nem hordoz Strongot, bár a TAHOT szerint az MT 13:1 hordoz (H1732, H4210, H5329). Az üres eredmény explicit, nem töltendő ki (3. szabály). Megoldás: a display-JSON hiányának külön kezelése (pl. a `base/text-only/` állomány), nem a kézi kivétel. Nyitott: a `naplok/F41_wlc_versszam_ellenorzes.tsv` Zsolt 13 sora még `nincs_bsb_sor`; a `naplok/F16_bsb_zsolt_megfeleltetes.tsv` fejléce gépi futtatási parancsot mond a kézzel szerkesztett sorokhoz.
+
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 
