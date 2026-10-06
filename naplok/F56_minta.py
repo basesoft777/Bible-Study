@@ -95,18 +95,29 @@ def ellenorzes(strong, blokk):
                      % (vers, pm.group(3), (nyers_vers or '')[:160], 'szakasz BENNE VAN' if bent else 'NINCS BENNE'))
     else:
         sorok.append('- 2. Példavers: nincs (a blokkban nincs példa)')
-    # 3. LXX
-    lm = re.search(r'\*\*3\. LXX-megfelelő\*\*\n(G\d+) (\S+) ×(\d+)', blokk)
-    nyers_lxx = [s for s in open(B.LXX_UT, encoding='utf-8').read().split('\n') if s.startswith('H%04d\t' % szam)]
-    if lm:
-        keres = '\t'.join(['H%04d' % szam, 'G%04d' % int(lm.group(1)[1:]), lm.group(3)])
-        bent = keres in nyers_lxx
-        ok = ok and bent
-        sorok.append('- 3. LXX: `%s %s ×%s` → nyers `lxx_bridge.tsv`-sor: `%s` (%s)'
-                     % (lm.group(1), lm.group(2), lm.group(3), keres.replace('\t', ' | '), 'BENNE VAN' if bent else 'NINCS'))
-    else:
-        ok = ok and not nyers_lxx
-        sorok.append('- 3. LXX: „—” → nyers `lxx_bridge.tsv`-ben a `H%04d` sorai: %d' % (szam, len(nyers_lxx)))
+    # 3. LXX -- a nyers fajlokbol, a blokk kodjatol fuggetlenul: a heber szo
+    # nyelvtani-e (grammatikai_strongok.tsv), a gorog talalatok rendezve (db csokkeno,
+    # strong novekvo), a nyelvtani gorogok kihagyva, ha a heber nem nyelvtani; elso 3.
+    gram = set()
+    for sor in open(B.GRAMM_UT, encoding='utf-8').read().split('\n'):
+        if sor and not sor.startswith('#') and not sor.startswith('strong\t'):
+            gram.add(sor.split('\t')[0])
+    nyers_lxx = [s_ for s_ in open(B.LXX_UT, encoding='utf-8').read().split('\n') if s_.startswith('H%04d\t' % szam)]
+    talalat = sorted(((int(x.split('\t')[2]), x.split('\t')[1]) for x in nyers_lxx), key=lambda t: (-t[0], t[1]))
+    heber_gr = ('H%04d' % szam) in gram
+    var = [(g, n) for n, g in talalat if heber_gr or g not in gram][:3]
+    var_szoveg = ', '.join('G%d ×%d' % (int(g[1:]), n) for g, n in var) or '—'
+    lm = re.search(r'\*\*3\. LXX-megfelelő\*\*\n([^\n]+)', blokk)
+    blokk_lista = ', '.join('G%s ×%s' % (m_.group(1), m_.group(3))
+                            for m_ in re.finditer(r'G(\d+) (\S+) ×(\d+)', lm.group(1))) or '—'
+    egyezik = blokk_lista == var_szoveg
+    ok = ok and egyezik
+    kih = [g for n, g in talalat if (not heber_gr) and g in gram]
+    sorok.append('- 3. LXX: a blokk `%s`; nyersből újraszámolva (`lxx_bridge.tsv` `H%04d` sorai, %d db; a héber szó nyelvtani: %s; '
+                 'a nyelvtani görög találatok száma: %d%s): `%s` (%s)'
+                 % (blokk_lista, szam, len(nyers_lxx), 'igen' if heber_gr else 'nem', len(kih),
+                    (' = ' + ', '.join('G%d' % int(g[1:]) for g in kih[:4]) + ('…' if len(kih) > 4 else '')) if kih else '',
+                    var_szoveg, 'EGYEZIK' if egyezik else 'ELTÉR'))
     return ok, sorok
 
 

@@ -46,6 +46,7 @@ OSHL_UT = os.path.join(KONK, 'OSHL_lexikalis_index.tsv')
 LXX_UT = os.path.join(ADAT, 'kulso', 'lxx_bridge.tsv')
 PAROK_MAPPA = os.path.join(ADAT, 'karoli_strong')
 LEXHIV_UT = os.path.join(ADAT, 'lexikon_hivatkozasok.tsv')
+GRAMM_UT = os.path.join(ADAT, 'grammatikai_strongok.tsv')
 FORDITASOK_UT = os.path.join(ADAT, 'forditasok.tsv')
 JAVITAS_UT = os.path.join(ADAT, 'bdb_igehely_javitas.tsv')
 SORREND_UT = os.path.join(REPO, 'naplok', 'BDB_FORDITAS_sorrend.tsv')
@@ -241,6 +242,23 @@ def lxx_hid():
     return _cache('lxx', be)
 
 
+def grammatikai():
+    """A nyelvtani (stopword) Strong-szamok halmaza: {'H0413', 'G3588', ...}
+    (4 jegyre kitoltve) -- adat/grammatikai_strongok.tsv, F56 M3b."""
+    def be():
+        d = set()
+        elso = True
+        for m in tsv_sorok(GRAMM_UT):
+            if elso:
+                elso = False
+                continue
+            mm = re.match(r'^([HG])0*(\d{1,4})$', m[0])
+            if mm:
+                d.add('%s%04d' % (mm.group(1), int(mm.group(2))))
+        return d
+    return _cache('gramm', be)
+
+
 def twot_szam(t):
     m = re.match(r'^(\d+)', t or '')
     return m.group(1) if m else None
@@ -362,7 +380,7 @@ def javitas_sorok(strong_padded_kulcs, szoveg, ts):
             scope, forras_jel, ts)
         figy = (' FIGYELEM: a %s:%d azonos fejezet:vers masik konyvben is tartalmazza a %s-t (%s) -- a hiba konyvfelodasi '
                 'hiba is lehet.' % (fej, vers, strong_norm(strong_padded_kulcs), ', '.join(masik[:4]))) if masik else ''
-        if len(jelolt) == 1:
+        if len(jelolt) == 1 and not masik:
             sorok.append({
                 'strong': strong_padded_kulcs,
                 'forras_hivatkozas': forras,
@@ -375,7 +393,12 @@ def javitas_sorok(strong_padded_kulcs, szoveg, ts):
                 'proveniencia': pv,
             })
         else:
-            if jelolt:
+            if jelolt and masik and len(jelolt) == 1:
+                ind = ('a %s fejezetszam a konyvben nem letezik (max. %d); egy jelolt van (%s %d:%d), de javitas nincs: '
+                       'konyvnev-hiba gyanu (szabaly: ha a hibas hivatkozas masik konyvben is letezik es ott a '
+                       'Strong-szam szerepel, jelolt_marad).%s'
+                       % (fej, K.FEJEZETSZAM[kv], kv, jelolt[0], vers, figy))
+            elif jelolt:
                 ind = ('a %s fejezetszam a konyvben nem letezik (max. %d); %d jelolt, javitas nincs: %s.%s'
                        % (fej, K.FEJEZETSZAM[kv], len(jelolt),
                           ', '.join('%s %d:%d' % (kv, f, vers) for f in jelolt), figy))
@@ -542,8 +565,24 @@ def szakasz_karoli(strong, ts, pelda_per_alak=PELDA_MAX, alak_max=8, pelda_alak_
 
 
 def szakasz_lxx(strong, ts):
+    """LXX-megfelelo (legfeljebb LXX_MAX). F56 M3b: ha a HEBER szo nem nyelvtani
+    (adat/grammatikai_strongok.tsv), a nyelvtani gorog talalatok (nevelo, eloljaro,
+    kotoszo: G3588, G1519, ...) kimaradnak a legfeljebb 3 koze; ha a heber szo maga is
+    nyelvtani, a gorog nyelvtani talalatok maradnak. A kihagyas jelolve van."""
     sz = strong_szam(strong)
-    sor = sorted(lxx_hid().get(sz, []), key=lambda x: (-x[1], x[0]))[:LXX_MAX]
+    mind = sorted(lxx_hid().get(sz, []), key=lambda x: (-x[1], x[0]))
+    gr = grammatikai()
+    heber_nyelvtani = ('H%04d' % sz) in gr
+    kihagyva = []
+    if heber_nyelvtani:
+        sor = mind[:LXX_MAX]
+    else:
+        sor = []
+        for g, db in mind:
+            if g in gr:
+                kihagyva.append((g, db))
+            elif len(sor) < LXX_MAX:
+                sor.append((g, db))
     f = ['**3. LXX-megfelelő**']
     if not sor:
         f.append('—')
@@ -553,7 +592,12 @@ def szakasz_lxx(strong, ts):
             lemma = szotar().get(g, ('[nincs lemma a Strong_szotar.tsv-ben]', ''))[0]
             r.append('%s %s ×%d' % (g[:1] + str(int(g[1:])), lemma, db))
         f.append(', '.join(r) + ' (a legfeljebb %d leggyakoribb)' % LXX_MAX)
-    f.append(prov(strong_norm(strong), 'adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv', ts))
+    if kihagyva:
+        f.append('[kihagyva, nyelvtani görög szó: %s]' % ', '.join(
+            '%s %s ×%d' % (g[:1] + str(int(g[1:])), szotar().get(g, ('?', ''))[0], db)
+            for g, db in kihagyva[:3]) + (' (+%d további)' % (len(kihagyva) - 3) if len(kihagyva) > 3 else ''))
+    f.append(prov(strong_norm(strong),
+                  'adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv', ts))
     return f
 
 
@@ -620,8 +664,15 @@ def szakasz_javitas(strong, ts):
         if s['allapot'] == 'javitva':
             f.append('- a forrásban `%s` → helyesen `%s`' % (s['forras_hivatkozas'], s['javitott_hivatkozas']))
         else:
-            f.append('- a forrásban `%s` nem létező fejezet; javítás nincs (%s)' % (
-                s['forras_hivatkozas'], s['indok'].split('; ', 1)[-1]))
+            ind = s['indok']
+            mj = re.search(r'egy jelolt van \(([^)]+)\)', ind)
+            if mj and 'konyvnev-hiba gyanu' in ind:
+                ok = 'könyvnév-hiba gyanú, a hibás fejezet:vers másik könyvben is tartalmazza a Strong-számot; egy jelölt: %s' % mj.group(1)
+            elif 'nincs jelolt' in ind:
+                ok = 'nincs jelölt'
+            else:
+                ok = ind.split('; ', 1)[-1].split(' FIGYELEM')[0].rstrip('.')
+            f.append('- a forrásban `%s` nem létező fejezet; javítás nincs (%s)' % (s['forras_hivatkozas'], ok))
     f.append(prov(strong_norm(strong), 'adat/bdb_igehely_javitas.tsv', ts))
     return f
 
@@ -655,7 +706,8 @@ def blokk_epit(strong, ts=None, max_kar=BLOKK_MAX):
             return szoveg
     # utolso eset: vagas a szoveg vegen, jelezve (a proveniencia-sorok elvesznek --
     # ez csak a hibakezeles; a mintaban nem fordulhat elo, a tesztek figyelik)
-    return vegso[:max_kar - 40] + '\n[LEVÁGVA: a blokk a méretkorlát miatt csonka]\n'
+    jel = '\n[LEVÁGVA: a blokk a méretkorlát miatt csonka]\n'
+    return vegso[:max_kar - len(jel)] + jel
 
 
 # ---------------------------------------------------------------------------

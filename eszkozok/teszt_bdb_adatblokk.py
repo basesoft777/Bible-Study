@@ -90,6 +90,62 @@ class Blokk(unittest.TestCase):
             B.blokk_epit('G26', TS)
 
 
+class LxxSzures(unittest.TestCase):
+    """F56 M3b: a nyelvtani gorog talalatok kimaradnak, ha a heber szo nem nyelvtani."""
+
+    def _lxx_sor(self, strong):
+        b = B.blokk_epit(strong, TS)
+        return re.search(r'\*\*3\. LXX-megfelelő\*\*\n([^\n]+)(?:\n(\[kihagyva[^\n]*))?', b)
+
+    def test_grammatikai_halmaz(self):
+        g = B.grammatikai()
+        for s in ('G3588', 'G1519', 'H0413', 'H3588', 'H9009'):
+            self.assertIn(s, g)
+        self.assertNotIn('H0894', g)
+
+    def test_nevelo_kimarad(self):
+        # H3824 (szív): a nyers hídban G3588 ὁ x10 a 2. helyen állt; most nincs a listán
+        m = self._lxx_sor('H3824')
+        self.assertRegex(m.group(1), r'^G2588 \S+ ×200,')
+        self.assertNotIn('G3588', m.group(1))
+        self.assertRegex(m.group(2), r'G3588 \S+ ×10')      # a kihagyás jelölt, nem néma
+        self.assertIn('G1271', m.group(1))             # a 3. hely a következő nem nyelvtani
+
+    def test_eloljaro_kimarad(self):
+        m = self._lxx_sor('H0894')
+        self.assertNotIn('G1519', m.group(1))
+        self.assertRegex(m.group(2), r'G1519 \S+ ×18')
+
+    def test_nincs_nyelvtani_a_listan(self):
+        # a héber szó nem nyelvtani -> egyetlen mintaszócikk listáján sincs nyelvtani görög
+        gr = B.grammatikai()
+        for s in ('H0894', 'H3824', 'H4294', 'H7272', 'H1366', 'H3282', 'H0410', 'H7097', 'H2617', 'H1481'):
+            m = self._lxx_sor(s)
+            for g in re.findall(r'G(\d+) ', m.group(1)):
+                self.assertNotIn('G%04d' % int(g), gr, '%s: G%s' % (s, g))
+
+    def test_nyelvtani_heber_marad(self):
+        # a héber szó maga is nyelvtani (H3588 ki, H0413 el) -> a görög nyelvtani találatok maradnak
+        gr = B.grammatikai()
+        for s in ('H3588', 'H0413'):
+            self.assertIn('H%04d' % B.strong_szam(s), gr)
+            mind = sorted(B.lxx_hid().get(B.strong_szam(s), []), key=lambda x: (-x[1], x[0]))[:3]
+            m = self._lxx_sor(s)
+            self.assertIsNone(m.group(2), s)            # nincs kihagyás
+            for g, db in mind:
+                self.assertIn('G%d ' % int(g[1:]), m.group(1), s)
+
+    def test_nem_nyelvtani_nem_csonkul(self):
+        # H4390: nincs nyelvtani találat -> változatlan 3 elem
+        m = self._lxx_sor('H4390')
+        self.assertEqual(len(re.findall(r'G\d+ ', m.group(1))), 3)
+        self.assertIsNone(m.group(2))
+
+    def test_proveniencia_nevezi_a_listat(self):
+        b = B.blokk_epit('H3824', TS)
+        self.assertIn('adat/grammatikai_strongok.tsv', b)
+
+
 class Javitas(unittest.TestCase):
     def test_jeloltek_elgepeles(self):
         self.assertIn(7, B.fejezet_jeloltek('17', 12))
@@ -122,6 +178,37 @@ class Javitas(unittest.TestCase):
                 self.assertIn(s['allapot'], ('javitva', 'jelolt_marad'))
                 self.assertTrue(s['indok'] and s['proveniencia'])
                 self.assertEqual(bool(s['javitott_hivatkozas']), s['allapot'] == 'javitva')
+
+    def test_konyvnev_gyanu_jelolt_marad(self):
+        # DT-F56a: ha a hibas fejezet:vers masik konyvben is letezik es ott a Strong-szam szerepel,
+        # a sor jelolt_marad (akkor is, ha egyetlen jelolt van), FIGYELEM-jelzessel
+        sorok = B.javitas_sorok('H0834', B.bdb_szocikkek()['H0834'], TS)
+        s = [x for x in sorok if x['forras_hivatkozas'] == 'Ruth 8:14']
+        self.assertEqual(len(s), 1)
+        self.assertEqual(s[0]['allapot'], 'jelolt_marad')
+        self.assertEqual(s[0]['javitott_hivatkozas'], '')
+        self.assertIn('FIGYELEM', s[0]['indok'])
+        self.assertIn('Ruth 4:14', s[0]['indok'])      # az egyetlen jelolt a indokban latszik
+
+    def test_javitva_sorban_nincs_figyelem(self):
+        t = B.javitotabla_olvas()
+        db = 0
+        for sorok in t.values():
+            for s in sorok:
+                if s['allapot'] == 'javitva':
+                    db += 1
+                    self.assertNotIn('FIGYELEM', s['indok'])
+        self.assertEqual(db, 9)
+
+    def test_tabla_egyezik_az_algoritmussal(self):
+        # a --javitas-epit ujrafuttatasa ugyanazt adja (allapot es javitott hivatkozas)
+        t = B.javitotabla_olvas()
+        for sp, szoveg in B.bdb_szocikkek().items():
+            for s in B.javitas_sorok(sp, szoveg, TS):
+                tabla = [x for x in t.get(sp, []) if x['forras_hivatkozas'] == s['forras_hivatkozas']]
+                self.assertEqual(len(tabla), 1, '%s %s' % (sp, s['forras_hivatkozas']))
+                self.assertEqual((tabla[0]['allapot'], tabla[0]['javitott_hivatkozas']),
+                                 (s['allapot'], s['javitott_hivatkozas']))
 
     def test_blokk_javitas_szakasz(self):
         b = B.blokk_epit('H7223', TS)

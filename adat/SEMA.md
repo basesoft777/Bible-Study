@@ -1032,21 +1032,22 @@ Forrás: Macula Hebrew @47db250b, CC BY 4.0 (Biblica, Inc). A `morf` oszlop mind
 A `konkordancia/BDB_teljes_unabridged.tsv` néhány hivatkozásának fejezetszáma az adott könyvben nem létezik (pl. `Eccl 17:10`, a Prédikátor 12 fejezetes).
 A forrásfájl **nem módosul**; a javítás ebben a táblában él, és az adatblokk (`eszkozok/bdb_adatblokk.py`, 6. szakasz) meg a fordítás (`Y [BDB: X]`) olvassa.
 **Generált** (`python eszkozok/bdb_adatblokk.py --javitas-epit`), kézzel nem szerkeszthető; olvasás `split('\t')`, fejlécsor előtt `#`-sor. A tábla **javaslat-szintű**
-(gépi, a TAHOT/Károli–Strong adatából levezetett), a felhasználó az F56 M3 megállásán hagyja jóvá.
+(gépi, a TAHOT/Károli–Strong adatából levezetett), a felhasználó az F56 M3 megállásán a fenti szabályt jóváhagyta.
 
 | Mező | Tartalom |
 |---|---|
 | `strong` | a BDB-szócikk `Strong_padded` kulcsa (pl. `H7223`, homográfnál `H0090a`) |
 | `forras_hivatkozas` | a hivatkozás a forrásban, betűre (a forrás könyvrövidítésével), pl. `Eccl 17:10` |
 | `javitott_hivatkozas` | a javított igehely Károli-rövidítéssel (`Préd 7:10`); üres, ha `allapot=jelolt_marad` |
-| `allapot` | `javitva` (pontosan egy jelölt) · `jelolt_marad` (nulla vagy több jelölt; a forrás alakja marad) |
+| `allapot` | `javitva` (pontosan egy jelölt, és nincs könyvnév-hiba gyanú) · `jelolt_marad` (nulla vagy több jelölt, vagy könyvnév-hiba gyanú; a forrás alakja marad) |
 | `indok` | az algoritmus eredménye szavakkal: a jelölt(ek), illetve hogy nincs jelölt; ha ugyanaz a `fejezet:vers` másik könyvben is tartalmazza a Strong-számot, `FIGYELEM:` megjegyzés (a hiba könyvfeloldási hiba is lehet) |
 | `proveniencia` | `scope=… | forras=… | ts=…` (1.5; CLAUDE.md 1. szabály) |
 
 **Algoritmus** (brief M2): minden olyan `Könyv fej:vers` hivatkozásra a szócikkben, amelynek fejezetszáma a könyvben nem létezik (`forditas_kapuk.FEJEZETSZAM`, az ÓSZ-ben a Károli- és az MT-szám nagyobbika),
 (1) a szócikk Strong-számának előfordulásai az adott könyvben (`TAHOT_kivonat.tsv` ∪ `adat/karoli_strong/parok_*.tsv`; a TAHOT ismert hiányai miatt mindkettő; a homográf-betű nem számít);
 (2) jelöltek: a hibás fejezetszámból **egy számjegy elhagyásával, betoldásával vagy cseréjével** előálló, a könyvben létező fejezetszám, amelynek **ugyanazon a versszámú versén** a Strong-szám előfordul;
-(3) **pontosan egy jelölt** → `javitva`; nulla vagy több → `jelolt_marad`. Találgatás nincs. Csak a könyvnévvel jelölt hivatkozások vizsgáltak (a lánc második tagja, `Isa 40:1; 41:2`, könyvnév nélkül nem).
+(3) **pontosan egy jelölt** → `javitva`; nulla vagy több → `jelolt_marad`. Találgatás nincs.
+**Könyvnév-hiba gyanú (DT-F56a, felhasználói döntés 2026-10-06):** ha a hibás `fejezet:vers` *más könyvben is létezik, és ott a Strong-szám szerepel*, a sor `jelolt_marad` akkor is, ha egyetlen jelölt van (a hiba könyvfeloldási hiba is lehet; a javítás fordítási szöveget érintene), az `indok` `FIGYELEM:` jelzést kap. Ezért `javitva` sor soha nem FIGYELEM-es. Állapot: 93 sor, 9 `javitva`, 84 `jelolt_marad` (ebből 60 FIGYELEM-es). Csak a könyvnévvel jelölt hivatkozások vizsgáltak (a lánc második tagja, `Isa 40:1; 41:2`, könyvnév nélkül nem).
 Kulcs: `strong` + `forras_hivatkozas`. Teszteset: `H7223`, `Eccl 17:10` → `Préd 7:10`.
 
 ## 3. Integritási szabályok

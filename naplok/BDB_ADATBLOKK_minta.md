@@ -20,8 +20,9 @@
 *proveniencia: scope=H894 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/Karoli_1908.tsv | ts=2026-10-06T12:00:00Z*
 
 **3. LXX-megfelelő**
-G897 Βαβυλών ×191, G1519 εἰς ×18 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H894 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+G897 Βαβυλών ×191 (a legfeljebb 3 leggyakoribb)
+[kihagyva, nyelvtani görög szó: G1519 εἰς ×18]
+*proveniencia: scope=H894 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 197: H895 בָּבֶ֫ל, בָּבֶל („Babylon”)
@@ -39,7 +40,7 @@ TWOT 197: H895 בָּבֶ֫ל, בָּבֶל („Babylon”)
 
 - 1. Károli: `bábel` ×1 → nyers `parok_*.tsv` számlálás: magas 1, alacsony 0 (EGYEZIK); első nyers sor: `parok_1Moz.tsv: 1Móz 10:10	6	Bábel	6	בָּבֶ֔ל	H0894	magas	S+C`
 - 2. Példavers: `1Móz 10:10` „Az ő birodalmának kezdete volt **Bábel**, Erekh, Akkád és Kálnéh a Sineár földén.” → a `Karoli_1908.tsv`-ben a vers: „Az ő birodalmának kezdete volt Bábel, Erekh, Akkád és Kálnéh a Sineár földén.” (szakasz BENNE VAN)
-- 3. LXX: `G897 Βαβυλών ×191` → nyers `lxx_bridge.tsv`-sor: `H0894 | G0897 | 191` (BENNE VAN)
+- 3. LXX: a blokk `G897 ×191`; nyersből újraszámolva (`lxx_bridge.tsv` `H0894` sorai, 2 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 1 = G1519): `G897 ×191` (EGYEZIK)
 
 ### H3824
 
@@ -58,8 +59,9 @@ TWOT 197: H895 בָּבֶ֫ל, בָּבֶל („Babylon”)
 *proveniencia: scope=H3824 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/Karoli_1908.tsv | ts=2026-10-06T12:00:00Z*
 
 **3. LXX-megfelelő**
-G2588 καρδία ×200, G3588 ὁ ×10, G5590 ψυχή ×4 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H3824 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+G2588 καρδία ×200, G5590 ψυχή ×4, G1271 διάνοια ×3 (a legfeljebb 3 leggyakoribb)
+[kihagyva, nyelvtani görög szó: G3588 ὁ ×10]
+*proveniencia: scope=H3824 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 1071: H3820 לֵב („heart”); H3823 לִבֵּב („to bake”); H3826 לִבָּה („heart”); H3834 לְבִבָה („cake”)
@@ -77,27 +79,27 @@ TWOT 1071: H3820 לֵב („heart”); H3823 לִבֵּב („to bake”); H3826
 
 - 1. Károli: `szíve` ×1 → nyers `parok_*.tsv` számlálás: magas 1, alacsony 6 (EGYEZIK); első nyers sor: `parok_2Moz.tsv: 2Móz 14:5	19	szíve	12	לְבַ֨ב	H3824	magas	S+C`
 - 2. Példavers: `3Móz 19:17` „Ne gyűlöld a te atyádfiát **szívedben**; fedd meg a te felebarátodat nyilván, hogy...” → a `Karoli_1908.tsv`-ben a vers: „Ne gyűlöld a te atyádfiát szívedben; fedd meg a te felebarátodat nyilván, hogy ne viseljed az ő bűnének terhét.” (szakasz BENNE VAN)
-- 3. LXX: `G2588 καρδία ×200` → nyers `lxx_bridge.tsv`-sor: `H3824 | G2588 | 200` (BENNE VAN)
+- 3. LXX: a blokk `G2588 ×200, G5590 ×4, G1271 ×3`; nyersből újraszámolva (`lxx_bridge.tsv` `H3824` sorai, 4 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 1 = G3588): `G2588 ×200, G5590 ×4, G1271 ×3` (EGYEZIK)
 
 ### H4294
 
 ### ADATBLOKK H4294 (gépi, a projekt adataiból; nem értelmezés; max. 2500 karakter; levágás: példák/alak 3→2→1, kevesebb példás alak, rövidebb alaklista, rövidebb magyar szöveg; jelzés: [LEVÁGVA])
 
 **1. Károli-szóalakok** (a Károli–Strong párosítás kész könyvei: 1Móz, 2Móz, 3Móz, 4Móz, 5Móz, Józs; az arányok csak ezekre érvényesek; a szóalakok kisbetűsítve, egyesítve számolva)
-- magas bizonyosságú pár: nemzetségéből ×6, vesszejét ×6, pálczádat ×3, vessződet ×3, vesszőt ×3, pálcza ×1 (+7 további alak)
-- alacsonyabb bizonyosságú pár (`alacsony`): nemzetségéből ×34, törzséből ×32, nemzetségének ×19, törzse ×12, nemzetségétől ×11, vesszőt ×8 (+33 további alak)
+- magas bizonyosságú pár: nemzetségéből ×6, vesszejét ×6, pálczádat ×3, vessződet ×3, vesszőt ×3 (+8 további alak)
+- alacsonyabb bizonyosságú pár (`alacsony`): nemzetségéből ×34, törzséből ×32, nemzetségének ×19, törzse ×12, nemzetségétől ×11 (+34 további alak)
 - a lefedett könyvekben a TAHOT-ban 201 előfordulás, ebből 206 kapott Károli-párt
 *proveniencia: scope=H4294 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/TAHOT_kivonat.tsv | ts=2026-10-06T12:00:00Z*
 
 **2. Példaversek** (szabály: a leggyakoribb szóalakok, alakonként a kanonikus sorrend első 2 verse, a szó **kiemelve**)
 - **nemzetségéből**: 2Móz 31:2 „...Bésaléelt, a Húr fiának Urinak fiát a Júda **nemzetségéből**.” · 2Móz 31:6 „...ímé Aholiábot is, Akhiszamáknak fiát a Dán **nemzetségéből**, mellé adtam; és adtam minden értelmesnek...”
-- **törzséből**: 4Móz 1:21 „A kik megszámláltattak a Rúben **törzséből**: negyvenhat ezer és ötszáz.” · 4Móz 1:23 „A kik megszámláltattak Simeon **törzséből**: ötvenkilencz ezer és háromszáz.”
-[LEVÁGVA: a további 44 szóalak példái kimaradtak]
+[LEVÁGVA: a további 45 szóalak példái kimaradtak]
 *proveniencia: scope=H4294 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/Karoli_1908.tsv | ts=2026-10-06T12:00:00Z*
 
 **3. LXX-megfelelő**
-G5443 φυλή ×163, G4464 ῥάβδος ×21, G3588 ὁ ×7 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H4294 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+G5443 φυλή ×163, G4464 ῥάβδος ×21 (a legfeljebb 3 leggyakoribb)
+[kihagyva, nyelvtani görög szó: G3588 ὁ ×7]
+*proveniencia: scope=H4294 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 1352: H4295 מַ֫טָּה („beneath”); H4296 מִטָּה („bed”); H4297 מֻטֶּה („perversion”); H4298 מֻטָּה („spread”); H5186 נָטָה („to stretch”)
@@ -115,27 +117,26 @@ TWOT 1352: H4295 מַ֫טָּה („beneath”); H4296 מִטָּה („bed”);
 
 - 1. Károli: `nemzetségéből` ×6 → nyers `parok_*.tsv` számlálás: magas 6, alacsony 34 (EGYEZIK); első nyers sor: `parok_2Moz.tsv: 2Móz 31:2	13	nemzetségéből	11	מַטֵּ֥ה	H4294	magas	S+C`
 - 2. Példavers: `2Móz 31:2` „...Bésaléelt, a Húr fiának Urinak fiát a Júda **nemzetségéből**.” → a `Karoli_1908.tsv`-ben a vers: „Ímé, név szerint meghívtam Bésaléelt, a Húr fiának Urinak fiát a Júda nemzetségéből.” (szakasz BENNE VAN)
-- 3. LXX: `G5443 φυλή ×163` → nyers `lxx_bridge.tsv`-sor: `H4294 | G5443 | 163` (BENNE VAN)
+- 3. LXX: a blokk `G5443 ×163, G4464 ×21`; nyersből újraszámolva (`lxx_bridge.tsv` `H4294` sorai, 3 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 1 = G3588): `G5443 ×163, G4464 ×21` (EGYEZIK)
 
 ### H4390
 
 ### ADATBLOKK H4390 (gépi, a projekt adataiból; nem értelmezés; max. 2500 karakter; levágás: példák/alak 3→2→1, kevesebb példás alak, rövidebb alaklista, rövidebb magyar szöveg; jelzés: [LEVÁGVA])
 
 **1. Károli-szóalakok** (a Károli–Strong párosítás kész könyvei: 1Móz, 2Móz, 3Móz, 4Móz, 5Móz, Józs; az arányok csak ezekre érvényesek; a szóalakok kisbetűsítve, egyesítve számolva)
-- magas bizonyosságú pár: be ×7, meg ×3, töltsétek ×3, betöltötte ×2, betöltöttem ×2, iktasd ×2 (+29 további alak)
-- alacsonyabb bizonyosságú pár (`alacsony`): tökéletesen ×5, be ×2, fel ×2, jártak ×2, meg ×2, tökéletességgel ×2 (+19 további alak)
+- magas bizonyosságú pár: be ×7, meg ×3, töltsétek ×3, betöltötte ×2, betöltöttem ×2 (+30 további alak)
+- alacsonyabb bizonyosságú pár (`alacsony`): tökéletesen ×5, be ×2, fel ×2, jártak ×2, meg ×2 (+20 további alak)
 - a lefedett könyvekben a TAHOT-ban 62 előfordulás, ebből 86 kapott Károli-párt
 *proveniencia: scope=H4390 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/TAHOT_kivonat.tsv | ts=2026-10-06T12:00:00Z*
 
 **2. Példaversek** (szabály: a leggyakoribb szóalakok, alakonként a kanonikus sorrend első 2 verse, a szó **kiemelve**)
 - **be**: 1Móz 1:22 „...és sokasodjatok, és töltsétek **be** a tenger vizeit; a madár is sokasodjék a...” · 1Móz 1:28 „...Szaporodjatok és sokasodjatok, és töltsétek **be** a földet és hajtsátok birodalmatok alá; és...”
-- **meg**: 1Móz 6:13 „...mivelhogy a föld erőszakoskodással telt **meg** általok: és ímé elvesztem őket a földdel...” · 1Móz 42:25 „És parancsola József, hogy töltsék **meg** edényeiket gabonával, és tegyék vissza...”
-[LEVÁGVA: a további 54 szóalak példái kimaradtak]
+[LEVÁGVA: a további 55 szóalak példái kimaradtak]
 *proveniencia: scope=H4390 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/Karoli_1908.tsv | ts=2026-10-06T12:00:00Z*
 
 **3. LXX-megfelelő**
 G4137 πληρόω ×46, G4130 πλήθω ×40, G4134 πλήρης ×16 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H4390 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+*proveniencia: scope=H4390 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 1195: H4392 מָלֵא („full”); H4393 מְלֹא („fullness”); H4394 מִלֻּא („setting”); H4395 מְלֵאָה („fruit”); H4396 מִלֻּאָה („setting”) (+1 további)
@@ -153,7 +154,7 @@ TWOT 1195: H4392 מָלֵא („full”); H4393 מְלֹא („fullness”); H43
 
 - 1. Károli: `be` ×7 → nyers `parok_*.tsv` számlálás: magas 7, alacsony 2 (EGYEZIK); első nyers sor: `parok_1Moz.tsv: 1Móz 1:22	11	be	12	מִלְא֤וּ	H4390	magas	S+C`
 - 2. Példavers: `1Móz 1:22` „...és sokasodjatok, és töltsétek **be** a tenger vizeit; a madár is sokasodjék a...” → a `Karoli_1908.tsv`-ben a vers: „És megáldá azokat Isten, mondván: Szaporodjatok, és sokasodjatok, és töltsétek be a tenger vizeit; a madár is sokasodjék a földön.” (szakasz BENNE VAN)
-- 3. LXX: `G4137 πληρόω ×46` → nyers `lxx_bridge.tsv`-sor: `H4390 | G4137 | 46` (BENNE VAN)
+- 3. LXX: a blokk `G4137 ×46, G4130 ×40, G4134 ×16`; nyersből újraszámolva (`lxx_bridge.tsv` `H4390` sorai, 4 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 0): `G4137 ×46, G4130 ×40, G4134 ×16` (EGYEZIK)
 
 ### H0520
 
@@ -165,15 +166,15 @@ TWOT 1195: H4392 מָלֵא („full”); H4393 מְלֹא („fullness”); H43
 - a lefedett könyvekben a TAHOT-ban 74 előfordulás, ebből 95 kapott Károli-párt
 *proveniencia: scope=H520 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/TAHOT_kivonat.tsv | ts=2026-10-06T12:00:00Z*
 
-**2. Példaversek** (szabály: a leggyakoribb szóalakok, alakonként a kanonikus sorrend első 3 verse, a szó **kiemelve**)
-- **sing**: 1Móz 6:15 „...pedig azt: A bárka hoszsza háromszáz **sing** legyen, a szélessége ötven sing, és a...” · 2Móz 25:10 „...egy ládát sittim-fából; harmadfél **sing** hosszút, másfél sing széleset, és másfél...” · 2Móz 25:17 „...fedelet is tiszta aranyból: harmadfél **sing** hosszút, és másfél sing széleset.”
-- **egy**: 1Móz 6:16 „Ablakot csinálj a bárkán, és **egy** singnyire hagyd azt felülről; a bárka...” · 2Móz 25:23 „...asztalt is sittim-fából, két sing hosszút, **egy** sing széleset, és másfél sing magasat.” · 2Móz 26:13 „**Egy** singnyi pedig egyfelől, és egy singnyi...”
+**2. Példaversek** (szabály: a leggyakoribb szóalakok, alakonként a kanonikus sorrend első 2 verse, a szó **kiemelve**)
+- **sing**: 1Móz 6:15 „...pedig azt: A bárka hoszsza háromszáz **sing** legyen, a szélessége ötven sing, és a...” · 2Móz 25:10 „...egy ládát sittim-fából; harmadfél **sing** hosszút, másfél sing széleset, és másfél...”
+- **egy**: 1Móz 6:16 „Ablakot csinálj a bárkán, és **egy** singnyire hagyd azt felülről; a bárka...” · 2Móz 25:23 „...asztalt is sittim-fából, két sing hosszút, **egy** sing széleset, és másfél sing magasat.”
 [LEVÁGVA: a további 8 szóalak példái kimaradtak]
 *proveniencia: scope=H520 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/Karoli_1908.tsv | ts=2026-10-06T12:00:00Z*
 
 **3. LXX-megfelelő**
 G4083 πῆχυς ×105, G1540 ἑκατόν ×15, G1803 ἕξ ×9 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H520 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+*proveniencia: scope=H520 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 115: H517 אֵם („mother”); H523 אֻמָּה („people”)
@@ -191,7 +192,7 @@ TWOT 115: H517 אֵם („mother”); H523 אֻמָּה („people”)
 
 - 1. Károli: `sing` ×55 → nyers `parok_*.tsv` számlálás: magas 55, alacsony 3 (EGYEZIK); első nyers sor: `parok_1Moz.tsv: 1Móz 6:15	9	sing	9	אַמָּ֗ה	H0520	magas	S+C`
 - 2. Példavers: `1Móz 6:15` „...pedig azt: A bárka hoszsza háromszáz **sing** legyen, a szélessége ötven sing, és a...” → a `Karoli_1908.tsv`-ben a vers: „Ekképen csináld pedig azt: A bárka hoszsza háromszáz sing legyen, a szélessége ötven sing, és a magassága harmincz sing.” (szakasz BENNE VAN)
-- 3. LXX: `G4083 πῆχυς ×105` → nyers `lxx_bridge.tsv`-sor: `H0520 | G4083 | 105` (BENNE VAN)
+- 3. LXX: a blokk `G4083 ×105, G1540 ×15, G1803 ×9`; nyersből újraszámolva (`lxx_bridge.tsv` `H0520` sorai, 4 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 0): `G4083 ×105, G1540 ×15, G1803 ×9` (EGYEZIK)
 
 ### H2617
 
@@ -211,7 +212,7 @@ TWOT 115: H517 אֵם („mother”); H523 אֻמָּה („people”)
 
 **3. LXX-megfelelő**
 G1656 ἔλεος ×142, G1343 δικαιοσύνη ×3, G1654 ἐλεημοσύνη ×3 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H2617 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+*proveniencia: scope=H2617 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 698, 699: H2616 חָסַד („be kind”); H2623 חָסִיד („pious”); H2624 חֲסִידָה („stork”)
@@ -229,7 +230,7 @@ TWOT 698, 699: H2616 חָסַד („be kind”); H2623 חָסִיד („pious”
 
 - 1. Károli: `irgalmasságot` ×3 → nyers `parok_*.tsv` számlálás: magas 3, alacsony 6 (EGYEZIK); első nyers sor: `parok_1Moz.tsv: 1Móz 24:14	40	irgalmasságot	37	חֶ֖סֶד	H2617	magas	S+C`
 - 2. Példavers: `1Móz 24:14` „...Izsáknak, és erről ismerjem meg, hogy **irgalmasságot** cselekedtél az én urammal.” → a `Karoli_1908.tsv`-ben a vers: „Legyen azért, hogy a mely leánynak ezt mondom: Hajtsd meg a te vedredet, hogy igyam, és az azt mondándja: igyál, sőt a te tevéidet is megitatom: hogy azt rendel” (szakasz BENNE VAN)
-- 3. LXX: `G1656 ἔλεος ×142` → nyers `lxx_bridge.tsv`-sor: `H2617 | G1656 | 142` (BENNE VAN)
+- 3. LXX: a blokk `G1656 ×142, G1343 ×3, G1654 ×3`; nyersből újraszámolva (`lxx_bridge.tsv` `H2617` sorai, 3 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 0): `G1656 ×142, G1343 ×3, G1654 ×3` (EGYEZIK)
 
 ### H7272
 
@@ -248,8 +249,9 @@ TWOT 698, 699: H2616 חָסַד („be kind”); H2623 חָסִיד („pious”
 *proveniencia: scope=H7272 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/Karoli_1908.tsv | ts=2026-10-06T12:00:00Z*
 
 **3. LXX-megfelelő**
-G4228 πούς ×169, G3588 ὁ ×14, G5154 τρίτος ×3 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H7272 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+G4228 πούς ×169, G5154 τρίτος ×3 (a legfeljebb 3 leggyakoribb)
+[kihagyva, nyelvtani görög szó: G3588 ὁ ×14]
+*proveniencia: scope=H7272 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 2113: H4772 מַרְגְּלוֹת („feet”); H7270 רָגַל („to spy”); H7273 רַגְלִי („on foot”); H8637 תִּרְגַּל („to teach”)
@@ -267,7 +269,7 @@ TWOT 2113: H4772 מַרְגְּלוֹת („feet”); H7270 רָגַל („to sp
 
 - 1. Károli: `lábaikat` ×4 → nyers `parok_*.tsv` számlálás: magas 4, alacsony 2 (EGYEZIK); első nyers sor: `parok_1Moz.tsv: 1Móz 43:24	16	lábaikat	16	רַגְלֵי	H7272	magas	S+C`
 - 2. Példavers: `1Móz 43:24` „...József házába, és vizet hozata, és megmosák **lábaikat**, és abrakot is ada az ő szamaraiknak.” → a `Karoli_1908.tsv`-ben a vers: „Bevivé azután a férfiú azokat az embereket a József házába, és vizet hozata, és megmosák lábaikat, és abrakot is ada az ő szamaraiknak.” (szakasz BENNE VAN)
-- 3. LXX: `G4228 πούς ×169` → nyers `lxx_bridge.tsv`-sor: `H7272 | G4228 | 169` (BENNE VAN)
+- 3. LXX: a blokk `G4228 ×169, G5154 ×3`; nyersből újraszámolva (`lxx_bridge.tsv` `H7272` sorai, 3 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 1 = G3588): `G4228 ×169, G5154 ×3` (EGYEZIK)
 
 ### H2428
 
@@ -279,15 +281,15 @@ TWOT 2113: H4772 מַרְגְּלוֹת („feet”); H7270 רָגַל („to sp
 - a lefedett könyvekben a TAHOT-ban 21 előfordulás, ebből 22 kapott Károli-párt
 *proveniencia: scope=H2428 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/TAHOT_kivonat.tsv | ts=2026-10-06T12:00:00Z*
 
-**2. Példaversek** (szabály: a leggyakoribb szóalakok, alakonként a kanonikus sorrend első 3 verse, a szó **kiemelve**)
-- **serege**: 2Móz 14:4 „...megdicsőíttessem a Faraó által és minden ő **serege** által és megtudják az Égyiptombeliek, hogy...” · 2Móz 14:9 „...minden lova, szekere, meg lovasai és **serege** Pi-Hahiróth mellett, Baál-Czefón előtt.” · 2Móz 14:17 „...megdicsőíttetem a Faraó által és az ő egész **serege** által, szekerei és lovasai által.”
+**2. Példaversek** (szabály: a leggyakoribb szóalakok, alakonként a kanonikus sorrend első 2 verse, a szó **kiemelve**)
+- **serege**: 2Móz 14:4 „...megdicsőíttessem a Faraó által és minden ő **serege** által és megtudják az Égyiptombeliek, hogy...” · 2Móz 14:9 „...minden lova, szekere, meg lovasai és **serege** Pi-Hahiróth mellett, Baál-Czefón előtt.”
 - **derék**: 2Móz 18:21 „És szemelj ki magad az egész nép közűl **derék**, istenfélő férfiakat, igazságos férfiakat,...” · 2Móz 18:25 „És választa Mózes az egész Izráelből **derék** férfiakat és a nép fejeivé tevé őket,...”
 [LEVÁGVA: a további 15 szóalak példái kimaradtak]
 *proveniencia: scope=H2428 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/Karoli_1908.tsv | ts=2026-10-06T12:00:00Z*
 
 **3. LXX-megfelelő**
 G1411 δύναμις ×147, G2479 ἰσχύς ×20, G1415 δυνατός ×10 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H2428 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+*proveniencia: scope=H2428 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 624: H2342 חוּל („to twist”)
@@ -305,7 +307,7 @@ TWOT 624: H2342 חוּל („to twist”)
 
 - 1. Károli: `serege` ×3 → nyers `parok_*.tsv` számlálás: magas 3, alacsony 0 (EGYEZIK); első nyers sor: `parok_2Moz.tsv: 2Móz 14:4	19	serege	17	חֵיל֔	H2428	magas	S+C`
 - 2. Példavers: `2Móz 14:4` „...megdicsőíttessem a Faraó által és minden ő **serege** által és megtudják az Égyiptombeliek, hogy...” → a `Karoli_1908.tsv`-ben a vers: „Én pedig megkeményítem a Faraó szívét, és űzőbe veszi őket, hogy megdicsőíttessem a Faraó által és minden ő serege által és megtudják az Égyiptombeliek, hogy én” (szakasz BENNE VAN)
-- 3. LXX: `G1411 δύναμις ×147` → nyers `lxx_bridge.tsv`-sor: `H2428 | G1411 | 147` (BENNE VAN)
+- 3. LXX: a blokk `G1411 ×147, G2479 ×20, G1415 ×10`; nyersből újraszámolva (`lxx_bridge.tsv` `H2428` sorai, 4 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 0): `G1411 ×147, G2479 ×20, G1415 ×10` (EGYEZIK)
 
 ### H0410
 
@@ -317,15 +319,16 @@ TWOT 624: H2342 חוּל („to twist”)
 - a lefedett könyvekben a TAHOT-ban 53 előfordulás, ebből 53 kapott Károli-párt
 *proveniencia: scope=H410 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/TAHOT_kivonat.tsv | ts=2026-10-06T12:00:00Z*
 
-**2. Példaversek** (szabály: a leggyakoribb szóalakok, alakonként a kanonikus sorrend első 3 verse, a szó **kiemelve**)
-- **isten**: 1Móz 14:20 „Áldott a Magasságos **Isten**, a ki kezedbe adta ellenségeidet. És...” · 1Móz 17:1 „...Úr Ábrámnak, és monda néki: Én a mindenható **Isten** vagyok, járj én előttem, és légy tökéletes.” · 1Móz 28:3 „A mindenható **Isten** pedig áldjon meg, szaporítson és sokasítson...”
-- **istennek**: 1Móz 14:18 „...kenyeret és bort hoza; ő pedig a Magasságos **Istennek** papja vala.” · 1Móz 21:33 „...és segítségűl hívá ott az örökkévaló Úr **Istennek** nevét.” · 1Móz 35:1 „...le ott; és csinálj ott oltárt amaz **Istennek**, ki megjelenék néked, mikor a te bátyád...”
+**2. Példaversek** (szabály: a leggyakoribb szóalakok, alakonként a kanonikus sorrend első 2 verse, a szó **kiemelve**)
+- **isten**: 1Móz 14:20 „Áldott a Magasságos **Isten**, a ki kezedbe adta ellenségeidet. És...” · 1Móz 17:1 „...Úr Ábrámnak, és monda néki: Én a mindenható **Isten** vagyok, járj én előttem, és légy tökéletes.”
+- **istennek**: 1Móz 14:18 „...kenyeret és bort hoza; ő pedig a Magasságos **Istennek** papja vala.” · 1Móz 21:33 „...és segítségűl hívá ott az örökkévaló Úr **Istennek** nevét.”
 [LEVÁGVA: a további 10 szóalak példái kimaradtak]
 *proveniencia: scope=H410 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/Karoli_1908.tsv | ts=2026-10-06T12:00:00Z*
 
 **3. LXX-megfelelő**
 G2316 θεός ×142, G2962 κύριος ×39, G2478 ἰσχυρός ×14 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H410 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+[kihagyva, nyelvtani görög szó: G4314 πρός ×3]
+*proveniencia: scope=H410 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 93: H430 אֱלֹהִים („LORD”); H433 אֱלֹהַּ („god”)
@@ -343,7 +346,7 @@ TWOT 93: H430 אֱלֹהִים („LORD”); H433 אֱלֹהַּ („god”)
 
 - 1. Károli: `isten` ×12 → nyers `parok_*.tsv` számlálás: magas 12, alacsony 21 (EGYEZIK); első nyers sor: `parok_1Moz.tsv: 1Móz 14:20	4	Isten	3	אֵ֣ל	H0410	magas	S+C`
 - 2. Példavers: `1Móz 14:20` „Áldott a Magasságos **Isten**, a ki kezedbe adta ellenségeidet. És...” → a `Karoli_1908.tsv`-ben a vers: „Áldott a Magasságos Isten, a ki kezedbe adta ellenségeidet. És tizedet ada néki mindenből.” (szakasz BENNE VAN)
-- 3. LXX: `G2316 θεός ×142` → nyers `lxx_bridge.tsv`-sor: `H0410 | G2316 | 142` (BENNE VAN)
+- 3. LXX: a blokk `G2316 ×142, G2962 ×39, G2478 ×14`; nyersből újraszámolva (`lxx_bridge.tsv` `H0410` sorai, 4 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 1 = G4314): `G2316 ×142, G2962 ×39, G2478 ×14` (EGYEZIK)
 
 ### H1366
 
@@ -362,8 +365,9 @@ TWOT 93: H430 אֱלֹהִים („LORD”); H433 אֱלֹהַּ („god”)
 *proveniencia: scope=H1366 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/Karoli_1908.tsv | ts=2026-10-06T12:00:00Z*
 
 **3. LXX-megfelelő**
-G3725 ὅριον ×121, G3588 ὁ ×3 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H1366 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+G3725 ὅριον ×121 (a legfeljebb 3 leggyakoribb)
+[kihagyva, nyelvtani görög szó: G3588 ὁ ×3]
+*proveniencia: scope=H1366 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 307: H1367 גְּבוּלָה („border”); H1379 גָּבַל („to border”); H1383 גַּבְלֻת („twists”); H4020 מִגְבָּלֹת („twisted”)
@@ -381,7 +385,7 @@ TWOT 307: H1367 גְּבוּלָה („border”); H1379 גָּבַל („to bor
 
 - 1. Károli: `határodat` ×3 → nyers `parok_*.tsv` számlálás: magas 3, alacsony 2 (EGYEZIK); első nyers sor: `parok_2Moz.tsv: 2Móz 8:2	11	határodat	12	גְּבוּלְ	H1366	magas	S+C`
 - 2. Példavers: `4Móz 22:36` „...egyik városába, a mely az Arnon vidékén, a **határ** szélén vala.” → a `Karoli_1908.tsv`-ben a vers: „Mikor pedig meghallá Bálák, hogy jön Bálám, kiméne elébe Moábnak egyik városába, a mely az Arnon vidékén, a határ szélén vala.” (szakasz BENNE VAN)
-- 3. LXX: `G3725 ὅριον ×121` → nyers `lxx_bridge.tsv`-sor: `H1366 | G3725 | 121` (BENNE VAN)
+- 3. LXX: a blokk `G3725 ×121`; nyersből újraszámolva (`lxx_bridge.tsv` `H1366` sorai, 2 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 1 = G3588): `G3725 ×121` (EGYEZIK)
 
 ## B. A 6. adag első 10 szocikke (407–416)
 
@@ -403,7 +407,7 @@ TWOT 307: H1367 גְּבוּלָה („border”); H1379 גָּבַל („to bor
 
 **3. LXX-megfelelő**
 —
-*proveniencia: scope=H123 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+*proveniencia: scope=H123 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 26: H119 אָדֹם („to redden”); H122 אֱדֹם („red stuff”); H124 אֹ֫דֶם („sardius”); H125 אֲדַמְדָּם („reddish”); H130 אֲדֹמִי („Edom”) (+1 további)
@@ -421,7 +425,7 @@ TWOT 26: H119 אָדֹם („to redden”); H122 אֱדֹם („red stuff”); H
 
 - 1. Károli: `edóm` ×7 → nyers `parok_*.tsv` számlálás: magas 7, alacsony 0 (EGYEZIK); első nyers sor: `parok_1Moz.tsv: 1Móz 32:3	13	Edóm	16	אֱדֽוֹם	H0123	magas	S+C`
 - 2. Példavers: `2Móz 15:15` „Akkor megháborodának **Edom** fejedelmei, Moáb hatalmasait rettegés...” → a `Karoli_1908.tsv`-ben a vers: „Akkor megháborodának Edom fejedelmei, Moáb hatalmasait rettegés szállja meg, elcsügged a Kanaán egész lakossága.” (szakasz BENNE VAN)
-- 3. LXX: „—” → nyers `lxx_bridge.tsv`-ben a `H0123` sorai: 0
+- 3. LXX: a blokk `—`; nyersből újraszámolva (`lxx_bridge.tsv` `H0123` sorai, 0 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 0): `—` (EGYEZIK)
 
 ### H3282
 
@@ -440,8 +444,9 @@ TWOT 26: H119 אָדֹם („to redden”); H122 אֱדֹם („red stuff”); H
 *proveniencia: scope=H3282 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/Karoli_1908.tsv | ts=2026-10-06T12:00:00Z*
 
 **3. LXX-megfelelő**
-G473 ἀντί ×21, G3754 ὅτι ×6, G1223 διά ×4 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H3282 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+G473 ἀντί ×21, G1894 ἐπειδή ×3 (a legfeljebb 3 leggyakoribb)
+[kihagyva, nyelvtani görög szó: G3754 ὅτι ×6, G1223 διά ×4]
+*proveniencia: scope=H3282 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 1650: H4616 מַ֫עַן („because”); H4617 מַעֲנֶה („answer”); H5772 עֹנָה („cohabitation”); H6030 עָנָה („to answer”); H6256 עֵת („time”) (+2 további)
@@ -459,7 +464,7 @@ TWOT 1650: H4616 מַ֫עַן („because”); H4617 מַעֲנֶה („answer�
 
 - 1. Károli: `mivelhogy` ×1 → nyers `parok_*.tsv` számlálás: magas 1, alacsony 2 (EGYEZIK); első nyers sor: `parok_1Moz.tsv: 1Móz 22:16	10	mivelhogy	9	יַ֚עַן	H3282	magas	S+C`
 - 2. Példavers: `1Móz 22:16` „...Én magamra esküszöm azt mondja az Úr: **mivelhogy** e dolgot cselekedéd, és nem kedvezél a te...” → a `Karoli_1908.tsv`-ben a vers: „És monda: Én magamra esküszöm azt mondja az Úr: mivelhogy e dolgot cselekedéd, és nem kedvezél a te fiadnak, a te egyetlenegyednek:” (szakasz BENNE VAN)
-- 3. LXX: `G473 ἀντί ×21` → nyers `lxx_bridge.tsv`-sor: `H3282 | G0473 | 21` (BENNE VAN)
+- 3. LXX: a blokk `G473 ×21, G1894 ×3`; nyersből újraszámolva (`lxx_bridge.tsv` `H3282` sorai, 4 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 2 = G3754, G1223): `G473 ×21, G1894 ×3` (EGYEZIK)
 
 ### H5785
 
@@ -479,7 +484,7 @@ TWOT 1650: H4616 מַ֫עַן („because”); H4617 מַעֲנֶה („answer�
 
 **3. LXX-megfelelő**
 G1192 δέρμα ×67, G1193 δερμάτινος ×13 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H5785 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+*proveniencia: scope=H5785 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 —
@@ -497,7 +502,7 @@ G1192 δέρμα ×67, G1193 δερμάτινος ×13 (a legfeljebb 3 leggyak
 
 - 1. Károli: `borzbőrökből` ×3 → nyers `parok_*.tsv` számlálás: magas 3, alacsony 0 (EGYEZIK); első nyers sor: `parok_2Moz.tsv: 2Móz 26:14	15	borzbőrökből	11	עֹרֹ֥ת	H5785	magas	S+C`
 - 2. Példavers: `3Móz 13:5` „...van, át nem terjedt tovább a fakadék a **bőrön**, a pap másodszor is rekeszsze őt külön hét...” → a `Karoli_1908.tsv`-ben a vers: „A hetedik napon pedig nézze meg őt a pap, s ha szerinte a fakadék egy állapotban van, át nem terjedt tovább a fakadék a bőrön, a pap másodszor is rekeszsze őt k” (szakasz BENNE VAN)
-- 3. LXX: `G1192 δέρμα ×67` → nyers `lxx_bridge.tsv`-sor: `H5785 | G1192 | 67` (BENNE VAN)
+- 3. LXX: a blokk `G1192 ×67, G1193 ×13`; nyersből újraszámolva (`lxx_bridge.tsv` `H5785` sorai, 2 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 0): `G1192 ×67, G1193 ×13` (EGYEZIK)
 
 ### H7637
 
@@ -509,15 +514,15 @@ G1192 δέρμα ×67, G1193 δερμάτινος ×13 (a legfeljebb 3 leggyak
 - a lefedett könyvekben a TAHOT-ban 61 előfordulás, ebből 61 kapott Károli-párt
 *proveniencia: scope=H7637 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/TAHOT_kivonat.tsv | ts=2026-10-06T12:00:00Z*
 
-**2. Példaversek** (szabály: a leggyakoribb szóalakok, alakonként a kanonikus sorrend első 3 verse, a szó **kiemelve**)
-- **hetedik**: 1Móz 2:2 „...a melyet alkotott vala, megszűnék a **hetedik** napon minden munkájától, a melyet alkotott...” · 1Móz 2:3 „És megáldá Isten a **hetedik** napot, és megszentelé azt; mivelhogy azon...” · 1Móz 8:4 „A bárka pedig a **hetedik** hónapban, a hónak tizenhetedik napján,...”
-- **hetednapon**: 1Móz 2:2 „Mikor pedig elvégezé Isten **hetednapon** az ő munkáját, a melyet alkotott vala,...” · 2Móz 16:27 „És lőn **hetednapon**: kimenének a nép közül, hogy szedjenek, de...” · 2Móz 31:17 „...teremtette az Úr a mennyet és a földet, **hetednapon** pedig megszünt és megnyugodott.”
+**2. Példaversek** (szabály: a leggyakoribb szóalakok, alakonként a kanonikus sorrend első 2 verse, a szó **kiemelve**)
+- **hetedik**: 1Móz 2:2 „...a melyet alkotott vala, megszűnék a **hetedik** napon minden munkájától, a melyet alkotott...” · 1Móz 2:3 „És megáldá Isten a **hetedik** napot, és megszentelé azt; mivelhogy azon...”
+- **hetednapon**: 1Móz 2:2 „Mikor pedig elvégezé Isten **hetednapon** az ő munkáját, a melyet alkotott vala,...” · 2Móz 16:27 „És lőn **hetednapon**: kimenének a nép közül, hogy szedjenek, de...”
 [LEVÁGVA: a további 1 szóalak példái kimaradtak]
 *proveniencia: scope=H7637 | forras=adat/karoli_strong/parok_*.tsv + konkordancia/Karoli_1908.tsv | ts=2026-10-06T12:00:00Z*
 
 **3. LXX-megfelelő**
 G1442 ἕβδομος ×79 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H7637 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+*proveniencia: scope=H7637 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 2318: H7620 שָׁבוּעַ („week”); H7651 שֶׁ֫בַע („seven”); H7657 שִׁבְעִים („seventy”); H7658 שִׁבְעָ֫נָה („seven”); H7659 שִׁבְעָתַיִם („sevenfold”)
@@ -535,7 +540,7 @@ TWOT 2318: H7620 שָׁבוּעַ („week”); H7651 שֶׁ֫בַע („seven�
 
 - 1. Károli: `hetedik` ×16 → nyers `parok_*.tsv` számlálás: magas 16, alacsony 33 (EGYEZIK); első nyers sor: `parok_1Moz.tsv: 1Móz 2:2	15	hetedik	17	שְּׁבִיעִ֔י	H7637	magas	S+C`
 - 2. Példavers: `1Móz 2:2` „...a melyet alkotott vala, megszűnék a **hetedik** napon minden munkájától, a melyet alkotott...” → a `Karoli_1908.tsv`-ben a vers: „Mikor pedig elvégezé Isten hetednapon az ő munkáját, a melyet alkotott vala, megszűnék a hetedik napon minden munkájától, a melyet alkotott vala.” (szakasz BENNE VAN)
-- 3. LXX: `G1442 ἕβδομος ×79` → nyers `lxx_bridge.tsv`-sor: `H7637 | G1442 | 79` (BENNE VAN)
+- 3. LXX: a blokk `G1442 ×79`; nyersből újraszámolva (`lxx_bridge.tsv` `H7637` sorai, 1 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 0): `G1442 ×79` (EGYEZIK)
 
 ### H6215
 
@@ -555,7 +560,7 @@ TWOT 2318: H7620 שָׁבוּעַ („week”); H7651 שֶׁ֫בַע („seven�
 
 **3. LXX-megfelelő**
 G2269 Ἠσαῦ ×87 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H6215 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+*proveniencia: scope=H6215 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 — (a Strong-számhoz nincs TWOT-szám az OSHL-indexben)
@@ -573,7 +578,7 @@ G2269 Ἠσαῦ ×87 (a legfeljebb 3 leggyakoribb)
 
 - 1. Károli: `ézsaú` ×56 → nyers `parok_*.tsv` számlálás: magas 56, alacsony 5 (EGYEZIK); első nyers sor: `parok_1Moz.tsv: 1Móz 25:26	7	Ézsaú	13	עֵשָׂ֔ו	H6215	magas	S+C`
 - 2. Példavers: `1Móz 25:26` „Azután kijöve az ő atyjafia, kezével **Ézsaú** sarkába fogódzva; azért nevezék nevét...” → a `Karoli_1908.tsv`-ben a vers: „Azután kijöve az ő atyjafia, kezével Ézsaú sarkába fogódzva; azért nevezék nevét Jákóbnak. Izsák pedig hatvan esztendős vala, a mikor ezek születének.” (szakasz BENNE VAN)
-- 3. LXX: `G2269 Ἠσαῦ ×87` → nyers `lxx_bridge.tsv`-sor: `H6215 | G2269 | 87` (BENNE VAN)
+- 3. LXX: a blokk `G2269 ×87`; nyersből újraszámolva (`lxx_bridge.tsv` `H6215` sorai, 1 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 0): `G2269 ×87` (EGYEZIK)
 
 ### H7097
 
@@ -593,7 +598,8 @@ G2269 Ἠσαῦ ×87 (a legfeljebb 3 leggyakoribb)
 
 **3. LXX-megfelelő**
 G3313 μέρος ×19, G206 ἄκρον ×14, G2078 ἔσχατος ×8 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H7097 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+[kihagyva, nyelvtani görög szó: G3326 μετά ×6]
+*proveniencia: scope=H7097 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 2053: H7096 קָצָה („to cut off”); H7098 קָצָה („end”); H7099 קָ֫צוּ („boundary”); H7117 קְצָת („end”)
@@ -611,7 +617,7 @@ TWOT 2053: H7096 קָצָה („to cut off”); H7098 קָצָה („end”); H7
 
 - 1. Károli: `szélén` ×3 → nyers `parok_*.tsv` számlálás: magas 3, alacsony 4 (EGYEZIK); első nyers sor: `parok_2Moz.tsv: 2Móz 13:20	10	szélén	10	קְצֵ֖ה	H7097	magas	S+C`
 - 2. Példavers: `2Móz 13:20` „...és táborba szállának Ethámban, a puszta **szélén**.” → a `Karoli_1908.tsv`-ben a vers: „És elindulának Szukhótból és táborba szállának Ethámban, a puszta szélén.” (szakasz BENNE VAN)
-- 3. LXX: `G3313 μέρος ×19` → nyers `lxx_bridge.tsv`-sor: `H7097 | G3313 | 19` (BENNE VAN)
+- 3. LXX: a blokk `G3313 ×19, G206 ×14, G2078 ×8`; nyersből újraszámolva (`lxx_bridge.tsv` `H7097` sorai, 4 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 1 = G3326): `G3313 ×19, G206 ×14, G2078 ×8` (EGYEZIK)
 
 ### H7646
 
@@ -631,7 +637,7 @@ TWOT 2053: H7096 קָצָה („to cut off”); H7098 קָצָה („end”); H7
 
 **3. LXX-megfelelő**
 G4130 πλήθω ×16, G5526 χορτάζω ×9, G1705 ἐμπίμπλημι ×6 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H7646 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+*proveniencia: scope=H7646 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 2231: H7647 שָׂבָע („abundance”); H7648 שֹׂ֫בַע („satiety”); H7653 שִׂבְעָה („fullness”); H7654 שׇׂבְעָה („satiety”)
@@ -649,7 +655,7 @@ TWOT 2231: H7647 שָׂבָע („abundance”); H7648 שֹׂ֫בַע („satiet
 
 - 1. Károli: `jól` ×2 → nyers `parok_*.tsv` számlálás: magas 2, alacsony 2 (EGYEZIK); első nyers sor: `parok_2Moz.tsv: 2Móz 16:8	14	jól	19	שְׂבֹּ֔עַ	H7646	magas	S+C`
 - 2. Példavers: `2Móz 16:8` „...az Úr ennetek, reggel pedig kenyeret, hogy **jól** lakjatok; mert hallotta az Úr a ti...” → a `Karoli_1908.tsv`-ben a vers: „És monda Mózes: Estve húst ád az Úr ennetek, reggel pedig kenyeret, hogy jól lakjatok; mert hallotta az Úr a ti zúgolódástokat, melylyel ellene zúgolódtatok. De” (szakasz BENNE VAN)
-- 3. LXX: `G4130 πλήθω ×16` → nyers `lxx_bridge.tsv`-sor: `H7646 | G4130 | 16` (BENNE VAN)
+- 3. LXX: a blokk `G4130 ×16, G5526 ×9, G1705 ×6`; nyersből újraszámolva (`lxx_bridge.tsv` `H7646` sorai, 4 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 0): `G4130 ×16, G5526 ×9, G1705 ×6` (EGYEZIK)
 
 ### H8334
 
@@ -669,7 +675,7 @@ TWOT 2231: H7647 שָׂבָע („abundance”); H7648 שֹׂ֫בַע („satiet
 
 **3. LXX-megfelelő**
 G3008 λειτουργέω ×25, G3011 λειτουργός ×3 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H8334 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+*proveniencia: scope=H8334 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 2472: H8335 שָׁרֵת („ministry”)
@@ -687,7 +693,7 @@ TWOT 2472: H8335 שָׁרֵת („ministry”)
 
 - 1. Károli: `szolgája` ×2 → nyers `parok_*.tsv` számlálás: magas 2, alacsony 1 (EGYEZIK); első nyers sor: `parok_2Moz.tsv: 2Móz 24:13	7	szolgája	6	מְשָׁרְת֑	H8334	magas	S+C`
 - 2. Példavers: `2Móz 30:20` „...vagy mikor az oltárhoz járulnak, hogy **szolgáljanak** és tűzáldozatot füstölögtessenek az Úrnak.” → a `Karoli_1908.tsv`-ben a vers: „A mikor a gyülekezet sátorába mennek, mosakodjanak meg vízben, hogy meg ne haljanak; vagy mikor az oltárhoz járulnak, hogy szolgáljanak és tűzáldozatot füstölög” (szakasz BENNE VAN)
-- 3. LXX: `G3008 λειτουργέω ×25` → nyers `lxx_bridge.tsv`-sor: `H8334 | G3008 | 25` (BENNE VAN)
+- 3. LXX: a blokk `G3008 ×25, G3011 ×3`; nyersből újraszámolva (`lxx_bridge.tsv` `H8334` sorai, 2 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 0): `G3008 ×25, G3011 ×3` (EGYEZIK)
 
 ### H1481
 
@@ -707,7 +713,7 @@ TWOT 2472: H8335 שָׁרֵת („ministry”)
 
 **3. LXX-megfelelő**
 G3939 παροικέω ×22, G4339 προσήλυτος ×5, G2730 κατοικέω ×3 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H1481 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+*proveniencia: scope=H1481 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 330, 331, 332: H1482 גּוּר („whelp”); H1484 גּוֹר („whelp”); H1616 גֵּר („sojourner”); H1628 גֵּרוּת („Geruth_Chimham”); H4032 מָגוֹר („terror”) (+4 további)
@@ -725,7 +731,7 @@ TWOT 330, 331, 332: H1482 גּוּר („whelp”); H1484 גּוֹר („whelp�
 
 - 1. Károli: `jövevény` ×2 → nyers `parok_*.tsv` számlálás: magas 2, alacsony 1 (EGYEZIK); első nyers sor: `parok_1Moz.tsv: 1Móz 19:9	14	jövevény	11	גוּר֙	H1481	magas	S+C`
 - 2. Példavers: `3Móz 16:29` „...se a benszülött, se a közöttetek **tartózkodó** jövevény.” → a `Karoli_1908.tsv`-ben a vers: „Örökkévaló rendtartás legyen ez nálatok: a hetedik hónapban, a hónapnak tizedikén sanyargassátok meg magatokat és semmi munkát ne végezzetek, se a benszülött, s” (szakasz BENNE VAN)
-- 3. LXX: `G3939 παροικέω ×22` → nyers `lxx_bridge.tsv`-sor: `H1481 | G3939 | 22` (BENNE VAN)
+- 3. LXX: a blokk `G3939 ×22, G4339 ×5, G2730 ×3`; nyersből újraszámolva (`lxx_bridge.tsv` `H1481` sorai, 3 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 0): `G3939 ×22, G4339 ×5, G2730 ×3` (EGYEZIK)
 
 ### H2543
 
@@ -745,7 +751,7 @@ TWOT 330, 331, 332: H1482 גּוּר („whelp”); H1484 גּוֹר („whelp�
 
 **3. LXX-megfelelő**
 G3688 ὄνος ×30, G5268 ὑποζύγιον ×8 (a legfeljebb 3 leggyakoribb)
-*proveniencia: scope=H2543 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv | ts=2026-10-06T12:00:00Z*
+*proveniencia: scope=H2543 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-06T12:00:00Z*
 
 **4. Rokon szavak** (azonos TWOT-szám, legfeljebb 5, a Strong-szám szerint növekvő)
 TWOT 685: H2560 חָמַר („to daub”); H3180 יַחְמוּר („roebuck”)
@@ -763,7 +769,7 @@ TWOT 685: H2560 חָמַר („to daub”); H3180 יַחְמוּר („roebuck�
 
 - 1. Károli: `szamarát` ×4 → nyers `parok_*.tsv` számlálás: magas 4, alacsony 1 (EGYEZIK); első nyers sor: `parok_1Moz.tsv: 1Móz 22:3	10	szamarát	9	חֲמֹר֔	H2543	magas	S+C`
 - 2. Példavers: `1Móz 49:14` „Izsakhár erős csontú **szamár**, a karámok közt heverész.” → a `Karoli_1908.tsv`-ben a vers: „Izsakhár erős csontú szamár, a karámok közt heverész.” (szakasz BENNE VAN)
-- 3. LXX: `G3688 ὄνος ×30` → nyers `lxx_bridge.tsv`-sor: `H2543 | G3688 | 30` (BENNE VAN)
+- 3. LXX: a blokk `G3688 ×30, G5268 ×8`; nyersből újraszámolva (`lxx_bridge.tsv` `H2543` sorai, 2 db; a héber szó nyelvtani: nem; a nyelvtani görög találatok száma: 0): `G3688 ×30, G5268 ×8` (EGYEZIK)
 
 ## Összegzés
 

@@ -17,7 +17,7 @@
 
 **Normalizálás.** Egyetlen belső kulcs: `strong_norm` (`H2617` / `H02617` / `2617` / `h2617` → `H2617`), a számkulcsú táblák (`TAHOT`, `parok`, `lxx_bridge`, `OSHL`) a számot (`strong_szam`), a kitöltött kulcsúak a 4 jegyre kitöltött alakot (`strong_padded`) használják. A homográf-betű (`H0090a`) a számkulcsú táblákban nem számít. A teszt (`teszt_bdb_adatblokk.py`, `test_nincs_nema_nemtalalat`) három ismert Strong-számon (H2617, H5785, H8057) mindhárom alakban ellenőrzi, hogy van Károli-pár, és a blokk nem ad `[NINCS KÁROLI-ALAK]`-ot (K2).
 
-**Eltérés a briefhez (forrás-fájl).** A brief `olvas`-listája a rokon szavak TWOT-csoportját a `Strong_szotar.tsv`-ből várja; abban nincs TWOT-adat. A TWOT-szám az `OSHL_lexikalis_index.tsv`-ben (és a `SECE_H_teljes.tsv` szövegében) van; a blokk az OSHL-indexet használja (a „TWOT-szám hivatkozás”, a TWOT szövege nem kerül a repóba — OSHL README), a lemmát és jelentést a `Strong_szotar.tsv`-ből veszi. Az `OSHL_lexikalis_index.tsv` nincs a brief `olvas`-mezőjében; olvasása csak a brief szándékát (a TWOT-csoport) teljesíti. **A rokon-szó szakasz forrásának kiválasztását jóváhagyásra jelzem.**
+**Eltérés a briefhez (forrás-fájl).** A brief `olvas`-listája a rokon szavak TWOT-csoportját a `Strong_szotar.tsv`-ből várja; abban nincs TWOT-adat. A TWOT-szám az `OSHL_lexikalis_index.tsv`-ben (és a `SECE_H_teljes.tsv` szövegében) van; a blokk az OSHL-indexet használja (a „TWOT-szám hivatkozás”, a TWOT szövege nem kerül a repóba — OSHL README), a lemmát és jelentést a `Strong_szotar.tsv`-ből veszi. A felhasználó 2026-10-06-án jóváhagyta (DT-F56b): az `OSHL_lexikalis_index.tsv` bekerült a brief `olvas`-mezőjébe és az `adat/datasetek.tsv`-be (`lexikon_oldal` sor).
 
 ## 2. Lefedettség
 
@@ -29,27 +29,27 @@
 
 Mérés: `forditas_kapuk.ellenoriz_fejezetszam` az `adat/forditasok.tsv` minden `BDB`/`teljes` során (`allapot` `sonnet`/`opus`/`kezi`), és külön a forrásszövegen az M2 algoritmus (`bdb_adatblokk.forras_hibas_hivatkozasok`).
 
-- **A fordításokban:** 49 szócikk, **79 különböző hely** jelzett (18 egyértelmű jelöltre javítható, 61 `jelolt_marad`); az 1–5. adagban 47 szócikk, a maradék kettő (H7843, H8034) a korábbi opus/kézi sor, nincs az adagrendben. A kapu által nem látott, könyvnév nélküli láncolt hivatkozások (pl. `1Sám 3:22; 5:26`) kívül esnek.
-- **A forrásban (az egész BDB-n):** 93 hely, 21 `javitva`, 72 `jelolt_marad` (`adat/bdb_igehely_javitas.tsv`).
+- **A fordításokban:** 49 szócikk, **79 különböző hely** jelzett (6 egyértelmű jelöltre javítva, 73 `jelolt_marad`; a 2026-10-06-i felhasználói döntés előtt 18 / 61, l. 4. pont 5.); az 1–5. adagban 47 szócikk, a maradék kettő (H7843, H8034) a korábbi opus/kézi sor, nincs az adagrendben. A kapu által nem látott, könyvnév nélküli láncolt hivatkozások (pl. `1Sám 3:22; 5:26`) kívül esnek.
+- **A forrásban (az egész BDB-n):** 93 hely, 9 `javitva`, 84 `jelolt_marad` (a felhasználói döntés előtt 21 / 72) (`adat/bdb_igehely_javitas.tsv`).
 - Az alábbi lista a fordításokban jelzett összes hely, az M2 tábla szerinti állapottal. A fordításban és a táblában egyező helyek száma: 79/79 (minden jelzett helyet a tábla lefed).
 
 | adag | strong | a fordításban | a forrásban | állapot | javított |
 |---|---|---|---|---|---|
 | 1 | H0413 | `5Móz 37:36` | `Deut 37:36` | jelolt_marad | — |
 | 1 | H0834 | `Ruth 8:12` | `Ruth 8:12` | jelolt_marad | — |
-| 1 | H0834 | `Ruth 8:14` | `Ruth 8:14` | javitva | `Ruth 4:14` |
+| 1 | H0834 | `Ruth 8:14` | `Ruth 8:14` | jelolt_marad | — |
 | 1 | H0834 | `Ruth 9:1` | `Ruth 9:1` | jelolt_marad | — |
 | 1 | H3605 | `1Krón 119:21` | `1Chron 119:21` | jelolt_marad | — |
 | 1 | H3605 | `1Krón 145:9` | `1Chron 145:9` | jelolt_marad | — |
 | 1 | H9005 | `Hab 41:47` | `Hab 41:47` | jelolt_marad | — |
 | 1 | H9005 | `Jóel 9:9` | `Joel 9:9` | jelolt_marad | — |
 | 1 | H9009 | `1Kir 45:14` | `1Ki 45:14` | jelolt_marad | — |
-| 1 | H9009 | `1Kir 45:16` | `1Ki 45:16` | javitva | `1Kir 5:16` |
-| 1 | H9009 | `1Kir 59:15` | `1Ki 59:15` | javitva | `1Kir 9:15` |
+| 1 | H9009 | `1Kir 45:16` | `1Ki 45:16` | jelolt_marad | — |
+| 1 | H9009 | `1Kir 59:15` | `1Ki 59:15` | jelolt_marad | — |
 | 1 | H9009 | `1Kir 61:7` | `1Ki 61:7` | jelolt_marad | — |
 | 1 | H9009 | `1Kir 66:6` | `1Ki 66:6` | javitva | `1Kir 6:6` |
-| 2 | H0001 | `1Kir 50:1` | `1Ki 50:1` | javitva | `1Kir 5:1` |
-| 2 | H0001 | `1Kir 50:5` | `1Ki 50:5` | javitva | `1Kir 5:5` |
+| 2 | H0001 | `1Kir 50:1` | `1Ki 50:1` | jelolt_marad | — |
+| 2 | H0001 | `1Kir 50:5` | `1Ki 50:5` | jelolt_marad | — |
 | 2 | H0001 | `Eszt 11:32` | `Esth 11:32` | jelolt_marad | — |
 | 2 | H0854 | `Ján 30:1` | `John 30:1` | jelolt_marad | — |
 | 2 | H0854 | `Ján 54:15` | `John 54:15` | jelolt_marad | — |
@@ -62,25 +62,25 @@ Mérés: `forditas_kapuk.ellenoriz_fejezetszam` az `adat/forditasok.tsv` minden 
 | 2 | H1931 | `Hós 22:9` | `Hos 22:9` | jelolt_marad | — |
 | 2 | H1931 | `Hós 24:12` | `Hos 24:12` | jelolt_marad | — |
 | 2 | H1931 | `JSir 6:10` | `Lam 6:10` | jelolt_marad | — |
-| 2 | H1961 | `1Kir 23:25` | `1Ki 23:25` | javitva | `1Kir 21:25` |
-| 2 | H3117 | `Dán 40:4` | `Dan 40:4` | javitva | `Dán 10:4` |
+| 2 | H1961 | `1Kir 23:25` | `1Ki 23:25` | jelolt_marad | — |
+| 2 | H3117 | `Dán 40:4` | `Dan 40:4` | jelolt_marad | — |
 | 2 | H3318 | `Jer 58:8` | `Jer 58:8` | jelolt_marad | — |
 | 2 | H3478 | `1Kir 24:10` | `1Ki 24:10` | jelolt_marad | — |
 | 2 | H3478 | `1Kir 24:7` | `1Ki 24:7` | jelolt_marad | — |
-| 2 | H3588 | `1Kir 32:29` | `1Ki 32:29` | javitva | `1Kir 2:29` |
+| 2 | H3588 | `1Kir 32:29` | `1Ki 32:29` | jelolt_marad | — |
 | 2 | H3588 | `1Kir 47:18` | `1Ki 47:18` | jelolt_marad | — |
-| 2 | H3808 | `2Sám 26:1` | `2Sam 26:1` | javitva | `2Sám 20:1` |
+| 2 | H3808 | `2Sám 26:1` | `2Sam 26:1` | jelolt_marad | — |
 | 2 | H4428 | `Préd 15:26` | `Eccl 15:26` | jelolt_marad | — |
 | 2 | H4480 | `1Kir 32:47` | `1Ki 32:47` | javitva | `1Kir 22:47` |
-| 2 | H5973 | `2Sám 26:16` | `2Sam 26:16` | javitva | `2Sám 24:16` |
+| 2 | H5973 | `2Sám 26:16` | `2Sam 26:16` | jelolt_marad | — |
 | 2 | H6440 | `2Kir 36:12` | `2Ki 36:12` | jelolt_marad | — |
 | 2 | H6440 | `Zak 17:3` | `Zech 17:3` | jelolt_marad | — |
-| 2 | H6440 | `Zak 17:5` | `Zech 17:5` | javitva | `Zak 14:5` |
+| 2 | H6440 | `Zak 17:5` | `Zech 17:5` | jelolt_marad | — |
 | 2 | H7200 | `1Sám 32:31` | `1Sam 32:31` | jelolt_marad | — |
 | 2 | H7200 | `1Sám 46:30` | `1Sam 46:30` | jelolt_marad | — |
 | 2 | H7200 | `1Sám 48:11` | `1Sam 48:11` | jelolt_marad | — |
 | 2 | H7725 | `2Sám 26:23` | `2Sam 26:23` | jelolt_marad | — |
-| 2 | H9004 | `Dán 23:22` | `Dan 23:22` | javitva | `Dán 3:22` |
+| 2 | H9004 | `Dán 23:22` | `Dan 23:22` | jelolt_marad | — |
 | 3 | H0251 | `Jóel 7:10` | `Joel 7:10` | jelolt_marad | — |
 | 3 | H0398 | `3Móz 28:17` | `Lev 28:17` | jelolt_marad | — |
 | 3 | H1870 | `Én 34:2` | `Songs 34:2` | jelolt_marad | — |
@@ -120,5 +120,9 @@ Mérés: `forditas_kapuk.ellenoriz_fejezetszam` az `adat/forditasok.tsv` minden 
 1. Hibás hivatkozás: a szócikk szövegében `Könyv fej:vers` (a 11. kapu forrás-oldali könyv-leképezésével), ahol a fejezet > a könyv fejezetszáma (`forditas_kapuk.FEJEZETSZAM`, az ÓSZ-ben a Károli/MT nagyobbika).
 2. A Strong-szám előfordulásai (`TAHOT_kivonat.tsv` ∪ `parok_*.tsv`, a homográf-betű nélkül) → verslista.
 3. Jelöltek: a fejezetszám egy számjegyének elhagyása / betoldása (0–9) / cseréje; a jelölt a könyvben létező fejezet (1..max), és `könyv jelölt:vers` a verslistában van.
-4. Pontosan egy jelölt → `javitva`; különben `jelolt_marad`. **Küszöb:** csak a fejezetszám módosul (a versszám nem), csak egy számjegyes eltérés, és csak egy jelölt; több jelöltnél és jelölt nélkül nincs javítás.
-5. **Tájékoztató FIGYELEM-jelzés** (a brief nem írja elő, nem dönt): ha a hibás `fej:vers` más könyvben is létezik, és ott a Strong-szám szerepel (pl. `Ruth 8:14` → `Ez 8:14`, `Jób 8:14`, `2Sám 8:14`, `Neh 8:14`), a hiba nem feltétlenül elgépelés, hanem a BDB-forrás könyvfeloldási hibája (a naplóban ismert eset: `H0834 Ruth 8, 9 (Préd)`). A 21 `javitva` sorból 12-nél áll FIGYELEM; ezeket az M3 ⛔-nál külön kérem megítélni.
+4. Pontosan egy jelölt **és nincs FIGYELEM-jelzés** (5. pont) → `javitva`; különben `jelolt_marad`. **Küszöb:** csak a fejezetszám módosul (a versszám nem), csak egy számjegyes eltérés, és csak egy jelölt; több jelöltnél és jelölt nélkül nincs javítás.
+5. **Könyvnév-hiba gyanú (a felhasználó döntése, 2026-10-06, DT-F56a):** ha a hibás `fej:vers` más könyvben is létezik, és ott a Strong-szám szerepel (pl. `Ruth 8:14` → `Ez 8:14`, `Jób 8:14`, `2Sám 8:14`, `Neh 8:14`), a hiba nem feltétlenül fejezetszám-elgépelés, hanem a BDB-forrás könyvfeloldási hibája (ismert eset: `H0834 Ruth 8, 9 (Préd)`), ezért **a sor `jelolt_marad`, akkor is, ha egyetlen jelölt van**; a javítás fordítási szöveget érintene az M5-ben. Az `indok` `FIGYELEM:` jelzést kap. Hatás: a korábban 21 `javitva` sorból 12 (mind FIGYELEM-es) `jelolt_marad` lett; a maradék 9 `javitva` marad. FIGYELEM-es sor összesen 60, javitva-FIGYELEM-es 0. Az algoritmus (`bdb_adatblokk.javitas_sorok`) ezt építi be, a `--javitas-epit` újrafuttatása ugyanezt adja (teszt: `test_konyvnev_gyanu_jelolt_marad`, `test_javitva_sorban_nincs_figyelem`).
+
+## 5. M3b — az LXX-szakasz nyelvtani szűrése (a felhasználó döntése, 2026-10-06)
+
+A mintában 7/20 blokk legleggyakoribb LXX-találatai közé névelő/elöljáró került (G3588 ὁ 5 blokkban, H894-nél G1519 εἰς ×18). Javítás: a 3. szakasz az `adat/grammatikai_strongok.tsv` alapján szűr. **Ha a héber szó nem nyelvtani, a nyelvtani görög találatok kimaradnak** a legfeljebb 3 közül (a kihagyás a blokkban `[kihagyva …]` sorral jelölt, nem néma); ha a héber szó maga is nyelvtani (pl. H3588, H0413), a görög nyelvtani találatok maradnak. Teszt: `teszt_bdb_adatblokk.py` `LxxSzures`. A mintát újragenerálta a `naplok/F56_minta.py`, a szúrópróba az LXX-szakaszt a nyers `lxx_bridge.tsv` + `grammatikai_strongok.tsv` fájlokból, a blokk kódjától függetlenül számolja újra (20/20 egyezik). A szűrő a lista alapján működik: a `H3282` (ja'an) nincs a nyelvtani listán, ezért nála a G3754 ὅτι és G1223 διά is kimarad (nyitott kérdés az orkesztrátornak: kerüljön-e a H3282 a listára).
