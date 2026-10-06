@@ -2594,3 +2594,28 @@ Az 5. adag 27 commitja (F38.283–F38.308) tévesen a helyi `main`-re került a 
 | ebből csak a TWOT-számmal rendelkezők (5 458) között | 3 174 — 58,2% (2 532 lefedett Strongnak nincs TWOT-száma, ezek a `csak_bdb` számot felfelé torzítják) |
 
 A BDB-gyökcsoport tehát jóval tágabb rokonságot ad, mint az azonos TWOT-szám; hasznosításáról (a szócikkek „rokon szavak” adata-e) a ⛔ M1 szerint a felhasználó dönt, ezt a menet nem hozza meg.
+
+
+## M6 — 6. adag (sorrend 407–648; F38.311–F38.353)
+
+*Prompt v4.2, terminológia v3, a #56 adatblokkjával (`eszkozok/bdb_adatblokk.py`) és a fejezetszám-javítótáblával (`adat/bdb_igehely_javitas.tsv`); modell: `claude-sonnet-5-5`, `allapot=sonnet`.*
+
+| | |
+|---|---|
+| szócikk | 242 (H0123–H6466, gyakoriság 100–57), mind rögzítve (`rogzit` + `beir`) |
+| karakter | forrás 498 550 → fordítás 521 833 (arány 1,05) |
+| kapuk | 242/242 RENDBEN a gátoló kapukon (1–11.); a 13. kapu 1 JELZES-t adott |
+| `ellenoriz.py` | SÉRTÉS 0 (RENDBEN 11, KÉZI 2, JELENTÉS 3: terminológia-verzió elmaradás, kiejtés-kivétel — régi tételek) |
+| tesztek | `teszt_forditas_kapuk.py` 69, `teszt_normalizal.py` 63, `teszt_emeles.py` 10, `teszt_ellenoriz_13.py` 9 — mind OK |
+| `teszt_bdb_zaras.py` | 21 teszt, 2 FAIL + 1 ERROR (H5674 szöveg: `DTF38g` ×2, `Zaras3Idempotencia` ×1) — **a main-en (bdae91d) is ugyanígy hibás**, nem e menet okozta; jelzem, nem javítottam (más feladat tárgya) |
+| kész összesen | 648 sorrend-sor; hátra 7 416 szócikk (a #28 26 sorát leszámítva) |
+
+**13. kapu (JELZES, forráshiba, hűen átvéve):** H3289 „Náh 7:5” (a Nahum 3 fejezetes).
+
+**Terminológia-kivételek (szócikkszinten, jóváhagyásra a DT-F38d (b) mintájára):** H4422 és H6419 (`see` — angol ige a „to see” szövegrészben, nem „l.”); H5027 (`see` — „to see”, „see its desire”); H0349 (`emphatic` — köznyelvi melléknév, nem a nyelvtani emphaticus); H5324 (`Sept.` — „Aug.-Sept.”, a szeptember hónap); H0074 (`accusative` — a forrásban „accusative to” = „according to”, azaz „szerint”). A kivételek a sor `megjegyzes` oszlopában vannak.
+
+**Szellem-tábla (DT25 / DT-F38g):** +1 nagybetűs hely: H6743 Bír 14:6 „a Szellem . . . rárontott” (az Úr Szelleme); a H3001 „megtört szellem” és a H6588/H7350/H3444/H2506 „szellemi” kisbetűs, emberi/általános jelentésben. A `teszt_bdb_zaras.py` `DTF38g` Szellem-táblája ezt a helyet még nem ismeri (a tábla bővítése a DT-F38j (d) tárgya).
+
+**Forrásjelek (hűen átvéve, nem javítva):** pl. H7927 „Gen 33:46; Gen 33:47”, H5341 „Psa 60:20” (valószínűleg Péld 6:20) és hasonló forrásbeli hivatkozási furcsaságok; a kapuk nem jeleztek.
+
+**Folyamat:** szócikkenként olvasás → fordítás helyőrzőkkel → `emeles.py ellenoriz` (13 kapu) → `rogzit`/`beir`; a `naplok/EMELES_munka.tsv`-t minden `rogzit` után `git checkout`-tal visszaállítottam; a kapuhibák (9. jelölő, 4. zárójel, 11. könyvnév, 5. terminológia) a szövegben, nem a kapukon javítva.
