@@ -2,7 +2,7 @@
 # commit/verzio: BSB commit a4a2c0558c26e0281ba4e3f0e5479398459e2183
 # letoltes datuma: 2026-09-30
 # futtatasi parancs: python eszkozok/fj2/bsb_import.py --munka <mappa>
-# zsoltaronkenti BSB-vers -> MT-vers megfeleltetes (F16.8): bsb_versszam = base/text-only sorai (a BSB/KJV-szamozas); display_versek = a display-JSON versszama; display_elso_vers = van-e az 1. vers a display-JSON-ban; bsb_d_cim = van-e "d" szintu (leiro cim, felirat) heading a fejezet structure-jeben (a "Psalms 1-41" tipusu konyvcimek nelkul); kk_mt_max = a Karoli-kulcs igehely_mt oszlopabol az MT-fejezet utolso versszama (ures: a kulcsban nincs igehely_mt, KJV-osztaly, azonos szamozas, k=0); tahot_max = a TAHOT_kivonat fejezet-maxa (ellenorzes: egyezik); k = kk_mt_max - bsb_versszam: a BSB-vers v az MT-vers v+k (k>0: az MT a feliratot sajat versszamon szamozza); allapot = illesztetlen, ha a fejezetenkent allando k belso versosztas-eltereses miatt nem igazolhato (l. belso_osztas_eltereses a szkriptben): a fejezet nincs a meresben es az importban
+# zsoltaronkenti BSB-vers -> MT-vers megfeleltetes (F16.8): bsb_versszam = base/text-only sorai (a BSB/KJV-szamozas); display_versek = a display-JSON versszama; display_elso_vers = van-e az 1. vers a display-JSON-ban; bsb_d_cim = van-e "d" szintu (leiro cim, felirat) heading a fejezet structure-jeben (a "Psalms 1-41" tipusu konyvcimek nelkul); kk_mt_max = a Karoli-kulcs igehely_mt oszlopabol az MT-fejezet utolso versszama (ures: a kulcsban nincs igehely_mt, KJV-osztaly, azonos szamozas, k=0); tahot_max = a TAHOT_kivonat fejezet-maxa (ellenorzes: egyezik); k = kk_mt_max - bsb_versszam: a BSB-vers v az MT-vers v+k (k>0: az MT a feliratot sajat versszamon szamozza); allapot = illesztetlen, ha a fejezetenkent allando k belso versosztas-eltereses miatt nem igazolhato (l. belso_osztas_eltereses a szkriptben): a fejezet nincs a meresben es az importban; kezi = az illesztetlen fejezet kezi megfeleltetese (F71, DT-F41a; manual): a Zsolt 13 a bsb_import.py KEZI_KIVETEL-ebol importalodik
 zsoltar	bsb_versszam	display_versek	display_elso_vers	bsb_d_cim	kk_mt_max	tahot_max	k	allapot	illesztetlen_ok
 1	6	6	igen	nem		6	0	illesztett	
 2	12	12	igen	nem		12	0	illesztett	
@@ -16,7 +16,7 @@ zsoltar	bsb_versszam	display_versek	display_elso_vers	bsb_d_cim	kk_mt_max	tahot_
 10	18	18	igen	nem		18	0	illesztett	
 11	7	6	nem	igen		7	0	illesztett	
 12	8	7	nem	igen	9	9	1	illesztett	
-13	6	5	nem	igen		6	0	illesztetlen	BSB 2 illeszkedik az MT 3-hoz (nem v+k=2-hoz); BSB 3 illeszkedik az MT 4-hoz (nem v+k=3-hoz); BSB 4 illeszkedik az MT 5-hoz (nem v+k=4-hoz); MT 3 a BSB 3+2 unioja; MT 4 a BSB 4+3 unioja; MT 5 a BSB 5+4 unioja; MT 6 a BSB 6+5 unioja
+13	6	5	nem	igen		6	0	kezi	BSB 2 illeszkedik az MT 3-hoz (nem v+k=2-hoz); BSB 3 illeszkedik az MT 4-hoz (nem v+k=3-hoz); BSB 4 illeszkedik az MT 5-hoz (nem v+k=4-hoz); MT 3 a BSB 3+2 unioja; MT 4 a BSB 4+3 unioja; MT 5 a BSB 5+4 unioja; MT 6 a BSB 6+5 unioja | kezi megfeleltetes (F71, DT-F41a): felirat->MT 1, BSB 1->MT 2 (nincs display-szoveg), 2->3, 3->4, 4->5, 5+6->6; manual
 14	7	6	nem	igen		7	0	illesztett	
 15	5	4	nem	igen		5	0	illesztett	
 16	11	10	nem	igen		11	0	illesztett	
