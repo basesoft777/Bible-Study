@@ -2575,3 +2575,22 @@ Az 5. adag 27 commitja (F38.283–F38.308) tévesen a helyi `main`-re került a 
 - H7970: a „követi / megelőzi” alany-tárgy viszonya fordítva állt; javítva a forrás szerint („׳שׁ követi az egyeseket”, „követi a 100-at”).
 - A „hátra” szám 7 658 (nem 7 659); a H6213 kikerült az 5. adag Szellem-tábla soraiból (a 2. adagé).
 - Nyitva hagyva (stílus): H3532 „Mózes második könyve Mózes harmadik könyve Numeri” — a forrás „Exodus Leviticus Numbers” kevert könyvnév-formája.
+
+## M0 5. pont — BDB-gyökcsoportok felmérése (6. adag menetének eleje; F38.311)
+
+*Csak mérés, import nélkül; a gyökcsoport nem került a `BDB_teljes_unabridged.tsv`-be, az `adat/forditasok.tsv`-be vagy a szerepmátrixba.*
+
+**Forrás:** `konkordancia/OSHL_lexikalis_index.tsv` — az `openscriptures/HebrewLexicon` `LexicalIndex.xml` kivonata, commit `21c9add13bc727d3a951361778e97e3ff7afd1ce`, SHA-256 `8f7a605c…bc85f`, **CC BY 4.0** (Open Scriptures Hebrew Bible Project; `konkordancia/OSHL_lexikalis_index_README.md`, `adat/licencek.tsv`: OSHL). A kivonat az #56 óta a repóban van, ezért letöltés nem kellett. Mérőszkript: `naplok/BDB_FORDITAS_gyokcsoport_meres.py`; kimenet: `naplok/BDB_FORDITAS_gyokcsoportok.tsv`.
+
+**Módszer:** BDB-gyök = a `bdb_id` első két tagja (pl. `a.ac.aa` → `a.ac`); TWOT-csoport = a TWOT-szám a betűs utótag nélkül (`4a` → `4`). Csak héber (nem arámi), négyjegyű H-Strong.
+
+**Eltérés a briefhez (jelzem, nem döntök):** a brief a TWOT-számot a `Strong_szotar.tsv`-ből várta, de ott nincs TWOT-oszlop; a TWOT az OSHL-indexből jön (ugyanaz a forrás, amelyből az #56 „rokon szavak” szakasza is dolgozik). A brief „1 432 gyök / 4 616 Strong” (bcv-commons `bdb_roots`) számával a mérés nem egyezik (itt 2 275 gyökcsoport, 7 990 Strong): a két forrás gyökfelosztása eltér.
+
+**Három szám:**
+| | |
+|---|---|
+| lefedett héber Strong (van `bdb_gyok`) | **7 990** |
+| `csak_bdb` többletet kapó Strong (van BDB-rokon, amely nem azonos TWOT-szám alatt áll) | **5 675** — 71,0% a lefedettekből (76,3% azokból, akiknek van BDB-rokonuk: 7 439) |
+| ebből csak a TWOT-számmal rendelkezők (5 458) között | 3 174 — 58,2% (2 532 lefedett Strongnak nincs TWOT-száma, ezek a `csak_bdb` számot felfelé torzítják) |
+
+A BDB-gyökcsoport tehát jóval tágabb rokonságot ad, mint az azonos TWOT-szám; hasznosításáról (a szócikkek „rokon szavak” adata-e) a ⛔ M1 szerint a felhasználó dönt, ezt a menet nem hozza meg.

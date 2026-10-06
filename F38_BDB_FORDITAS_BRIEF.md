@@ -6,7 +6,7 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 allapot: fut
-ag: claude/f38-adag5
+ag: claude/f38-adag6
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=sonnet; az 1–4. adagra is, DT-F38e), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
 kovetkezo: "Folytatás: a 6. adag (sorrend 407–), Sonnet, a #56 BDB_ADATBLOKK adatblokkjával és fejezetszám-javítótáblájával (DT-F38i 🟢); a menet elején a gyökcsoport-mérés (M0 5. pont)"
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv]
