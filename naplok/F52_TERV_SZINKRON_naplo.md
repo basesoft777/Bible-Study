@@ -164,10 +164,136 @@ Forrás: `git diff 5b4fcf8..8e8f771 -- FELADATOK.md DONTESEK.md NYITOTT_FELADATO
 
 Az ellenőr „NEM ELLENŐRIZHETŐ" jelzése (a kis minta chatbeli jóváhagyása) és a DT-F52a „Felhasználó, chat" idézete: a döntés a chatben született, a repóban a DONTESEK-tétel és ez a napló rögzíti; más nyoma nincs.
 
+## 2. futás — 2026-10-06
+
+kiindulasi_allapot: FELADATOK v1.3 (a generált blokkok 2026-10-06-i állapota), `main` `7dd0183` (a #218 merge-e `a25c7a0` után; az ág eredetileg a `69da794`-ről indult, a futás közben mergelt #56 miatt rebase-elve), 2026-10-06.
+
+- **Viszonyítási pont a delta-listához:** az 1. futás merge-e, `de9c464` (PR #172, 2026-10-04 21:57 +0200; a napló 1. futás szakaszának kiindulása a `8e8f771` volt). `git log de9c464..origin/main` (a `--since=2026-10-04T19:57` helyi időként értelmezve néhány 1. futásbeli commitot is behozna): 215 commit a `69da794`-ig (köztük a gépi „FELADATOK.md frissítés” sorok); a tervdokumentumokat azóta csak a `2e439f6` (DT-M8, MUNKATERV függések) és a `9d9d685` (F52.8, a napló nyitott tétele) érintette.
+- **Kiváltó esemény (brief 2.):** (1) új DT-tételek, amelyek a MUNKATERV/ADATVAGYON állításait módosítják (DT-M1, M2, M3, M7, M8; DT-F42d/g; DT31–34); (2) a MUNKATERV feladatainak állapotváltozása és a tervezett feladatok számot kapása; (3) a DT-M8 kifejezett utasítása („a következő futás — kiváltó esemény: a felhasználó kéri — elvégzi az (a), (b), (c) pontot”; előfeltétele, a #52 PR #172 merge-e, teljesült); (4) felhasználói kérés. **Nem** kiváltó: a `#23` M0 jelentése (a #23 `nem_indult`, nincs `naplok/F23_M0_*.md`); a `#51` CI-jelzése (az E25 `dontes_hatas.tsv`-ben a három tervdokumentumra nincs sor; a `naplok/konzisztencia/KONZISZTENCIA_20261005.md` a MUNKATERV-et csak a DT-M névtér miatt említi, ütközést nem talált); MUNKATERV-hullám lezárása (az 1. hullám #62, #63 ⬜).
+- **Ág:** `claude/f52-terv-szinkron-2` (az `origin/main`-ből, `69da794`; külön worktree).
+- **⛔ vizsgálat (brief 6.):** a MUNKATERV sorrendjét és hullámait módosító döntések (DT-M1, DT-M7) és a DT-M8 átvezetési utasításai a felhasználó kifejezett, a chatben hozott és a `main`-re mergelt döntései; a #52-nek címzett átvezetés (DT-M7, DT-M8 „Alkalmazás” sora). Alapfeltevést fordító, még el nem döntött változás nincs; ezért a 4. pont előtt nem álltam meg. Két forrás közti **ellentmondás** nincs; egy szabály-szintű feszültség van (2.3 / 1. tétel: a brief 6. pontja a VIBE 5. szakaszát csak a sorszámok és nevek cseréjéig engedi, a DT-M3 viszont a VIBE `lepes=MCP` állítását elavulttá teszi) — ezt nem döntöttem el, hanem jelzem.
+
+### 2.1 Delta-lista és érintettség (brief 4.2–4.3)
+
+Forrás: `git diff de9c464..origin/main -- FELADATOK.md DONTESEK.md NYITOTT_FELADATOK.md adat/SEMA.md CLAUDE.md MUNKAMENET.md BRIEF_SABLON.md`, a `git log` és a brief-fejlécek (`F*_BRIEF.md`) átnézésével. „Érint” = a szakasz egy állítása a változás után hamis vagy hiányos lenne (brief 4.3).
+
+| # | változás | forrás | érinti-e | szakasz | státusz |
+| --- | --- | --- | --- | --- | --- |
+| 1 | DT-M1 🟢: az olvasói konkordancia a #25 előtt; a #25 kettéválik (#25a = OLVASOI_KONKORDANCIA, #25b motívumos nézet); a kettéválasztás külön `/befogad`, még nem történt meg | DONTESEK DT-M1 (PR #214) | igen | MUNKATERV 1., 2., 3. (0. lépcső), 4 (OLVASOI sor), 4a (#25, tervezett tábla), 5, 7; ADATVAGYON 0.2 (3., 4., 5.), 16. (ábra, 1. pont), 21. (4–5. lépcső, 1. szabály) | átvezetve |
+| 2 | DT-M2 🟢: új `AZONOSITAS_MODJA` érték `szó-szintű-gépi` (a terv `szó-szintű-tagged` javaslata helyett) | DONTESEK DT-M2 | igen | MUNKATERV 2., 4 (KAROLI sor); ADATVAGYON 22.2 | átvezetve |
+| 3 | DT-M3 🟢: `auditok.lepes` = a kutatási lépés kódja, lépésen kívül `adhoc`, a csatorna a proveniencia-sorba (a terv `MCP` javaslata helyett); alkalmazás: #61 | DONTESEK DT-M3 | igen | MUNKATERV 2., 4 (MCP sor); ADATVAGYON 22.4, 9. | átvezetve; a VIBE `lepes=MCP` sora → 2.3/1. |
+| 4 | DT-M7 🟢: az MCP_BUROK feltételes, kikerül a 3. hullámból; előbb a #61; a 9. szakasz „további előnyei” újraértékelve | DONTESEK DT-M7 („a TERV_SZINKRON vezeti át”) | igen | MUNKATERV 2., 4, 4a, 5 (3. hullám, ábra); ADATVAGYON 0. (2., 7.), 9., 19., 21. (3. lépcső) | átvezetve |
+| 5 | DT-M8 🟢: a TERV_BEFOGAD külön brief nélkül; (a) 3. szakasz pipa, (b) ATALAKITASI_TERV 4.7 jelölés, (c) CLAUDE.md KJV-sor, (d) a #11 briefjébe | DONTESEK DT-M8 | igen | MUNKATERV 1., 2., 3., 4, 4a, 5; ADATVAGYON 0. (8.), 17.2, 18.1, 19.; **ATALAKITASI_TERV.md.md 4.7; CLAUDE.md „Adat-tár”** (a #52 `ir` listája DT-M8 szerint bővül) | átvezetve; a (d) a #11 befogadására vár |
+| 6 | DT-M4, DT-M5, DT-M6 továbbra is 🟡 nyitott | DONTESEK | igen (jelölés) | MUNKATERV 2. (🟡 jelölések, DT-M7/M8 sor), 3. | átvezetve (tartalmi változás nincs) |
+| 7 | DT2 🟢: a #10 mércéje L1, L3–L6 + rés-feltétel; N18/N19 nem blokkol | DONTESEK DT2 (PR #213) | igen | MUNKATERV 4a (#10 sor); az ADATVAGYON nem említi az L-feltételeket | átvezetve |
+| 8 | DT40 ✅ → új feladat #66 BDB_ARAM_POTLAS (külön tábla; a #38/#56/#60 nem függ tőle) | DONTESEK DT40; FELADATOK #66 (PR #212) | igen | MUNKATERV 4a, 5 (önálló feladatok); ADATVAGYON 2. futás sor (v15) | átvezetve |
+| 9 | DT-F41a 🟢: a Zsolt 13 kézi BSB→MT megfeleltetése | DONTESEK DT-F41a (PR #215) | nem | — | a #41 következő menetére vár; a versszámozás-kockázat (N-F41a/d) állítása nem fordul meg |
+| 10 | DT-F21j, DT-F38d ✅ (állapotjavítás); lezárt briefek merge-sora, F22 cím (PR #216) | DONTESEK, F-briefek | nem | — | a tervdokumentumok nem hivatkoznak rájuk |
+| 11 | #53 FELADATTERKEP lezárása (PR #217, `6078a41`); `FELADATTERKEP.html`/`feladatterkep.json` generált | FELADATOK #53 | igen (kicsi) | MUNKATERV 4a (kész lista); ADATVAGYON „Státuszok” sor | átvezetve |
+| 12 | DT28 ✅: egyirányúság (szétválasztás, nem visszaírás); CLAUDE.md „Egyirányúság”; SEMA 3/9; BRIEF_SABLON `lexikon/` nem motívumfájl; F23 v1.3 | DONTESEK DT28; CLAUDE.md; adat/SEMA.md; BRIEF_SABLON.md | nem | — | a tervdokumentumok „visszaírása” az `adat/` TSV-kbe írást jelenti (14. szakasz), nem forrás-md-be; a 22.2 triplet-frissítés adat→adat |
+| 13 | #30 ✅ SZAMOZAS: számkiosztás merge-kor (`szamkiosztas.py` + Action, E26); DT18 → DT29, DT30; az új DT-kat ágon helyőrzővel kell írni | FELADATOK #30; CLAUDE.md; BRIEF_SABLON | igen | MUNKATERV 4a (#30 sor) | átvezetve; a tervdokumentumok új DT-t helyőrzővel kapnak (DT-F52b…), végleges számot nem írok |
+| 14 | #42 ✅ FORRASKIVEZETES + DT-F42a–j: licenc-címke egyetlen forrása `licencek.tsv` `cimke`; `KJV_Strongs_teljes` Strong-címkéi `tisztazatlan` (DT-F42d); `LXX_kivonat` kivezetve; `licencek.tsv` 46 sor | FELADATOK #42; DONTESEK; adat/SEMA.md 2.19; `adat/licencek.tsv` | igen | MUNKATERV 4a (#42 sor); ADATVAGYON 17.1 (licenc-összesítés) | átvezetve (számok: 2.4) |
+| 15 | #43 ✅ (PR #167, 2026-10-04) | FELADATOK #43 | igen | MUNKATERV 1., 4a; ADATVAGYON 15., 16., „Státuszok” sor, 19., 21. | átvezetve |
+| 16 | #44 ✅ + DT31–34: `karoli_bible_hu` elvetve, openbible 4 sor `hianyzik` + JELÖLT, az import külön feladat | FELADATOK #44 (PR #205); DONTESEK DT31–34 | igen | MUNKATERV 1., 3., 4 (OLVASOI sor), 4a; ADATVAGYON 15., 19., 21. | átvezetve; a bible-mcp kérdés (DT-M5) nyitott |
+| 17 | #51 ✅ KONZISZTENCIA (E25, `/konzisztencia`, napi ütemezés) | FELADATOK #51 (PR #192) | igen | MUNKATERV 4a (#51 sor); ADATVAGYON „Státuszok” | átvezetve |
+| 18 | #57 ✅ BDB_STRONG_POTLAS (alias-tábla; DT37–DT45) — a BDB-lánc első lépése (#57 → #56 → #38); a napló nyitott tétele (1. futás) | FELADATOK #57 (PR #209); naplók „Nyitott” tétel | igen | MUNKATERV 1., 4a (kész lista, szöveg) | átvezetve; a nyitott tétel lezárva |
+| 19 | #58 ✅ MORF_KULCS (DT35, DT36; SEMA 2.22) | FELADATOK #58 (PR #208) | igen (kicsi) | MUNKATERV 4a (kész lista, #59 függése) | átvezetve |
+| 20 | #22: a Józs PR mergelve; a következő könyv a Bírák (előbb versbeosztás-detektor és kézi jóváhagyás) | FELADATOK #22 | igen | MUNKATERV 1., 4a, 5; ADATVAGYON „Státuszok”, 16. (állapotfrissítés) | átvezetve |
+| 21 | #38 ▶ fut: DT-F38i 🟢, a 6. adag a #56 adatblokkjával; az M0 5. pont a menet elején | FELADATOK #38; DONTESEK DT-F38i | igen | MUNKATERV 3., 4a, 5; ADATVAGYON 0. (6.), 13., 15., 17.1, 19., 21. | átvezetve |
+| 22 | a tervezett feladatok számot kaptak: #56 BDB_ADATBLOKK (közvetlen TSV-változat, `fugg: []`), #62 STRONG_NORMALIZAL, #63 JELOLTEK_RETRO, #65 KAROLI_ELLENORZES (DT-F52a: számot a `/befogad` ad) | FELADATOK #56, #62, #63, #65 | igen | MUNKATERV 1., 4, 4a, 5; VIBE 1., 5.; ADATVAGYON „Státuszok”, 18.4 (N37) | átvezetve; a #56 az 1. hullámba (nem függ SQLITE_EPIT-től) |
+| 23 | új feladatok a terven kívülről: #54 LXX_OS_LEFEDETTSEG, #55 ZSOLTAR_UJRAELLENORZES, #59 SZOSZEDET, #60 OLVASOI_PILOT, #61 LEKERDEZ_NAPLO, #64 TEREMT002_PROZA_PROBA (#12a), #66 | FELADATOK | igen | MUNKATERV 4a, 5; ADATVAGYON „2026-10-04 óta eldöntve” sor, v15 | átvezetve |
+| 24 | FELADATOK-függések: #9 + #56*; #36 + #56*, #42/#37…; #40 nem függ #30-tól; #37 függése #30 ✅ | FELADATOK | igen | MUNKATERV 4a; ADATVAGYON 16. (ábra) | átvezetve |
+| 25 | `DONTESEK.md`: DT-F42a–j, DT37–DT45 (#57), DT35–36 (#58), DT30 (#30), új számkiosztás | DONTESEK | nem (kivéve a fenti sorokban hivatkozottak) | — | a tervdokumentumok nem hivatkoznak a #57/#58 döntéseire |
+| 26 | `NYITOTT_FELADATOK.md`: N9 lezárva (F42), N47, N-F53a–f, a Macula χ/ξ csere, a HODIT-001/#36 tétel | NYITOTT_FELADATOK | nem | — | N9: az ADATVAGYON a SEMA 2.19-re hivatkozik, az pontos; a #36 tétel a 4a #36 sorában (a #42 ✅ után renderel újra) |
+| 27 | `adat/SEMA.md`: 2.19 `cimke`, 2.21 `dontes_hatas.tsv`, 2.22 morf-kulcs, 3/9 egyirányúság, `LXX_OS` útvonal | adat/SEMA.md | nem (az `AZONOSITAS_MODJA`/`lepes` 1.7/2.9 szövegét a DT-M2/M3 alkalmazása, nem a SEMA e futás előtti változása érinti) | — | a 22. szakasz az 1.7 és 2.9 elavultságát már kimondja; a SEMA módosítása külön feladat (#61, #65) |
+| 28 | `MUNKAMENET.md`: nem változott | git diff | nem | — | VIBE a MUNKAMENET szabályát nem érzi (brief 6.) |
+| 29 | `BRIEF_SABLON.md`: `lexikon/` nem motívumfájl; DT-/N-helyőrző szabály | git diff | nem | — | a VIBE nem hivatkozik rá |
+| 30 | `CLAUDE.md`: egyirányúság, helyőrző-szabály; KJV-sor (DT-M8 (c)) | CLAUDE.md | igen (csak a KJV-sor) | **CLAUDE.md „Adat-tár”** | átvezetve (5. sor) |
+| 31 | a `#23` M0 jelentése; MUNKATERV-hullám lezárása | `naplok/F23_M0_*.md` (nincs); FELADATOK | nem | — | a #23 `nem_indult`; az 1. hullám #62/#63 ⬜ |
+| 33 | #56 ✅ BDB_ADATBLOKK (PR #218, merge 2026-10-06; DT46–48 számkiosztás), a #38 függése `#56 (kész)`, a #9/#36 függéséből a `#56*` kikerült — az ellenőr szerint a futás közben történt, rebase után átvezetve | FELADATOK #56, #38, #9, #36 | igen | MUNKATERV 4a (#56, #38, #9, #36 sor, tervezett tábla), 5 (1. hullám sor); ADATVAGYON „Státuszok” sor, 16. (ábra) | átvezetve |
+| 32 | `naplok/ATNEZES_2026-10-04.md` téves „nincs brief” sorai (1. futás 19. sor) | naplók | nem | — | változatlan, külön döntés |
+
+### 2.2 Átírt szakaszok (brief 4.7) — a `git diff` tételei
+
+**MUNKATERV.md**
+
+| szakasz | egy mondat |
+| --- | --- |
+| 1. (3. bekezdés, 2. elv, „Viszony a meglévő briefekhez”) | a négy számot kapott feladat; az OLVASOI_KONKORDANCIA = #25a (DT-M1); TERV_BEFOGAD lezárva (DT-M8); F22/F42/F43/F44/F46 állapota; a BDB-lánc #57 → #56 → #38 |
+| 2. (bevezető, DT-M1–M6 státuszjelölés, DT-M7, DT-M8 sor, záró mondat) | a döntések állapota (🟢/🟡), DT-M2 `szó-szintű-gépi`, DT-M3 `adhoc`, két új sor |
+| 3. (0. lépcső három pipa) | a #23/#25 `olvas:` pipa kész (DT-M8 (a)); DT-M tételek állapota; a #38 6. adagja |
+| 4. (feladatlista) | (DT-M5 megfogalmazása a 2. szakaszban: DT32) TERV_BEFOGAD lezárva; a számot kapott sorok `#` oszlopa (#65, #62, #56, #63, #25a); `szó-szintű-gépi`; MCP_BUROK feltételes és `adhoc`; BDB_ADATBLOKK függése; OLVASOI sor bemenete (`Karoli_1908`, nem `karoli_bible_hu`) és függése; záró mondat; DT-M5 megfogalmazás (DT32) |
+| 4a. (teljes szakasz) | a nyitott sorok állapota, függése és a #25 kettéválása; új sorok: #54, #55, #56, #59, #60, #61, #62, #63, #64, #65, #66; #30, #42, #43, #44, #51 ✅; tervezett tábla; kész lista; összesítés újraszámolva |
+| 5. (1–4. hullám sor, két bekezdés, ábra) | a #56 az 1. hullámba; az MCP_BUROK a 3. hullámban feltételes; #65, #25a; önálló feladatok; az ábra |
+| 7. | v4 sor |
+
+**ADATVAGYON_TERV.md**
+
+| szakasz | egy mondat |
+| --- | --- |
+| kiindulási állapot sor (5. sor), „Státuszok” sor + új sor (13–14. sor) | a 2. futás viszonyítási pontja; a mai státuszok; a 2026-10-04 óta eldöntött tételek |
+| 0. (2., 6., 7., 8. pont; 0.2 3., 4., 5. pont) | MCP feltételes; #56; az `olvas:` teendők kész; #25a |
+| 9. (bevezető állapot-bekezdés, „További előnyök”) | DT-M7: az MCP feltételes; a tényleges többlet és a nem MCP-előnyök |
+| 13. (záró bekezdés) | a #38 nem áll meg, a 6. adag a #56-tal |
+| 15. (két sor a táblában, „Nyitott kérdés”, 1. pont) | #43/#44 ✅, `karoli_bible_hu` elvetve (DT31), a #38 M0 5. pont |
+| 16. (ábra, frissítés-jelzés, 1. pont, állapotfrissítés) | #25a/#25b, #56* függés, DT-M1, a #22 és a #38 állapota |
+| 17.1 (licenc-összesítés, DT-F38e/i sor), 17.2 (CLAUDE.md-elavultság) | 46 sor 26/8/12; DT-F38i 🟢; a CLAUDE.md KJV-sora javítva |
+| 18.1 (ATALAKITASI 4.7 sor), 18.4 (N37 sor) | az ATALAKITASI_TERV 4.7 jelölve; N37 → #62 |
+| 19. (nyolc teendő-sor, v15 döntésnapló-sor, a 2026-10-03-i „karoli_bible_hu” sor lezárása) | #65, #63, MCP feltételes, openbible, #43/#44 pipa, #38 M0 5. pont, `olvas:` és 4.7 pipa |
+| 21. (0–5. lépcső sorai, 1. szabály) | #43/#44 kész; #56/#62/#65; MCP feltételes; #25a/#25b |
+| 22.2, 22.4 | DT-M2 `szó-szintű-gépi`; DT-M3 `adhoc` |
+
+**VIBE_GUIDE.md**
+
+| szakasz | egy mondat |
+| --- | --- |
+| 1. (7. sor) | a számot kapott feladatok és az OLVASOI_KONKORDANCIA = #25a |
+| 5. (a feladatonkénti tábla hét sorának neve) | #65, #62, #56, #63, TERV_BEFOGAD lezárva, MCP_BUROK feltételes, OLVASOI_KONKORDANCIA (= #25a) |
+| 8. (v4 sor) | a változás és a nem átvezetett `lepes=MCP` jelzése |
+
+**Egyéb fájlok (DT-M8 szerint a #52 hatóköre)**
+
+- `ATALAKITASI_TERV.md.md`: a 4.7 pont elé egy „Elavult” jelölő sor (DT-M8 (b)).
+- `CLAUDE.md`: az „Adat-tár” szakasz KJV-sora (DT-M8 (c)).
+- `F52_TERV_SZINKRON_BRIEF.md`: fejléc (`ag`, `pr: 219`, `kovetkezo`, `ir` + `ATALAKITASI_TERV.md.md`, `CLAUDE.md`).
+- ez a napló.
+
+### 2.3 Nem átvezetett, kérdéses tételek (brief 4.7, 6. pont)
+
+| # | tétel | miért nem | javaslat |
+| --- | --- | --- | --- |
+| 1 | VIBE 5. szakasz MCP_BUROK sora: „minden hívás auditok-sort ír `lepes=MCP`-vel” | a DT-M3 szerint elavult (a `lepes` a kutatási lépés kódja vagy `adhoc`); a brief 6. pontja a VIBE 5. szakaszát csak a sorszámok és nevek cseréjéig engedi, a DT-M7 a MUNKATERV-et és az ADATVAGYON-t nevezi meg átvezetendőnek | a felhasználó döntsön (mint az 1. futás 2 licenc-sora): a sor átírása („`lepes` a kutatási lépés kódja vagy `adhoc`, `csatorna=mcp`”) engedélyezett-e; vagy marad, mert az MCP_BUROK feltételes |
+| 2 | a #25 csonk tényleges kettéválasztása és a #25a befogadása | a DT-M1 szerint külön `/befogad` menet; a #52 nem vesz fel feladatot | `/befogad`: #25a OLVASOI_KONKORDANCIA (függ SQLITE_EPIT), a #25 csonk szűkítése |
+| 3 | DT-M4, DT-M5, DT-M6 nyitott | a felhasználóé; a DT-M6 és a hosting az OLVASOI_KONKORDANCIA briefje előtt | döntés a #25a befogadása előtt |
+| 4 | a DT-M8 (d): a #11 briefjének `olvas:` sora | a #11 csonk, a valódi brief a #12a után; nem a tervdokumentum | a #11 csonk-kitöltésekor |
+| 5 | a MUNKATERV 4. szakasz bevezetőjének „az `ellenor` mindig Haiku vagy Sonnet” mondata kontra FELADATOK D10 (`fuggetlen-ellenor` Opus) | nem delta (az 1. futás 1.3 szakasza már jelezte); nem érint változást e futásban | a MUNKATERV szerzője vagy külön döntés |
+| 6 | a SQLITE_EPIT és az MCP_BUROK, SZPA_AUDIT még számtalan; nincs a FELADATOK-ban | a `/befogad` dolga | `/befogad` a megfelelő időben |
+| 7 | a MUNKATERV 4. szakaszának „kimenet”/„bemenet” cellái a brief-ek tényleges `ir`/`olvas` listájával nincsenek egyeztetve (#56, #62, #63, #65) | a #52 hatóköre a státusz/függés/sorszám; a tartalom a briefeké (brief 1. „nem újraírás”) | a következő futás, ha egy brief tartalma eltér |
+
+### 2.4 Proveniencia
+
+- licenc-összesítés (ADATVAGYON 17.1): `scope=adat/licencek.tsv (46 adatsor; allapot × kereskedelmi) | forras=egyszeri számláló szkript (split('\t'), nem a csv modul; a szkript a scratchpad-könyvtárban, nem repó-eszköz) | ts=2026-10-06`; eredmény: `allapot` — 26 tisztazott, 8 kozkincs, 12 tisztazatlan; `kereskedelmi` — 33 igen, 2 nem (MCGED, Heber_ETCBC_modulok), 1 feltetelesen (tW_szocikkek), 10 tisztazatlan.
+- delta-lista: `scope=FELADATOK.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, CLAUDE.md, MUNKAMENET.md, BRIEF_SABLON.md | forras=git diff de9c464..origin/main (69da794) | ts=2026-10-06`.
+- brief-fejlécek (`fugg`, `nem_fugg`, `allapot`, `pr`): `scope=F22–F66_*_BRIEF.md | forras=Read/grep a fejlécekre | ts=2026-10-06`.
+- DT státuszok: `scope=DONTESEK.md | forras=grep a DT-M1–M8, DT2, DT28, DT31–34, DT40, DT-F38i, DT-F41a, DT-F42a–j sorokra | ts=2026-10-06`.
+
+### 2.5 Elfogadási pontok (brief 7.)
+
+| # | pont | állapot |
+| --- | --- | --- |
+| 1 | minden delta-sor a naplóban, igen/nem érintettséggel és indokkal | 33 sor, 2.1 |
+| 2 | az átírt szakaszok listája és a `git diff` egyezik | 2.2; a diff hunk-jai szakaszra bontva ellenőrizve (`git diff -U0`), az ellenőr lefuttatja |
+| 3 | minden átírt állítás mellett a hivatkozott DT-/N-/#-tétel | DT-M1–M3, M7, M8, DT-F38i, DT-F42d/g, DT31–34, DT32, FELADATOK-számok, #52 |
+| 4 | nem maradt megfordított állítás | keresve: `#43 fut`, `#42-re vár`, `részben kész`, `nyitott része`, `lepes=MCP`, `Józs PR merge-e`, `vagy TSV)`: 0 találat a MUNKATERV-ben és az ADATVAGYON-ban; a VIBE-ben a `lepes=MCP` marad (2.3/1., döntésre vár) |
+| 5 | döntésnapló-sor és kiindulási állapot sor bent | ADATVAGYON v15 + kiindulási állapot sor; MUNKATERV v4; VIBE v4 |
+| 6 | a dokumentum többi része bájtazonos | cserék pontos illesztéssel (`ed.py`: pontosan egy előfordulás, különben leáll), CRLF megőrizve |
+
 ## Nyitott a következő futásra
 
-A futások között felgyűlt tételek, amelyeket a következő szinkron a delta-listájába vesz (brief 4.2). A TERV\_BEFOGAD maradéka (DT-M8 🟢) a `DONTESEK.md`-ben áll, itt nem ismétlődik.
+A futások között felgyűlt tételek, amelyeket a következő szinkron a delta-listájába vesz (brief 4.2). A TERV\_BEFOGAD maradéka (DT-M8 🟢) a 2. futásban elvégezve (a (d) pont a #11 befogadására vár).
 
 | tétel | forrás | javaslat |
 | --- | --- | --- |
-| a MUNKATERV a #57 BDB\_STRONG\_POTLAS-t nem tartalmazza, holott a BDB-lánc első lépése: a #57 írja a `konkordancia/BDB_teljes_unabridged.tsv`-t, a #56 és a #38 olvassa, ezért a valódi sorrend #57 → #56 → #38 6. adag | `feladatok.py fuggesek`: `FUGGES 56 57`, `FUGGES 38 57` (fájlütközés, olvas–ír); F57 `ir:`, F56 `olvas:`; chat 2026-10-05 | a 4a térképbe sor, a BDB\_ADATBLOKK függés-oszlopába a #57; nem blokkol, a feladatkövető ma is helyesen sorol |
+| *(lezárva, 2. futás)* a MUNKATERV a #57 BDB\_STRONG\_POTLAS-t nem tartalmazta | az 1. futás nyitott tétele | a #57 ✅ (PR #209), a 4a térkép kész listájába és a BDB-lánc mondatába (#57 → #56 → #38) átvezetve |
+| a VIBE 5. szakasz MCP\_BUROK sorának `lepes=MCP` állítása elavult (DT-M3) | a 2. futás 2.3/1. | felhasználói döntés: átírható-e a brief 6. pontja ellenére |
+| a #25 csonk kettéválasztása és a #25a befogadása; DT-M4, M5, M6; a DT-M8 (d) | a 2. futás 2.3/2–4. | `/befogad`, ill. felhasználói döntés; a következő szinkron a döntések után |
