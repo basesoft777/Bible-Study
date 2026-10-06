@@ -46,7 +46,7 @@ A DT-M2 „csak `magas`” szabálya szerint tehát **ma csak az 1Móz és a 2M�
 
 **Nincs benne:**
 - az eltérések tartalmi feloldása: ha a régi pár és a gépi pár eltér, a sor nem változik, hanem az eltéréslistába kerül (a feloldás értelmező döntés, külön tétel);
-- tanulmány- vagy motívumfájl javítása (`tematikus_lezart/`, `motivumok/`, `lexikon/`): csak jelentés;
+- tanulmány- vagy motívumfájl javítása (`tematikus_lezart/`, `motivumok/`) és generált kimenet írása (`lexikon/`; a DT28 szerint nem motívumfájl, de kézzel nem írható): csak jelentés;
 - a `konkordancia/Karoli_Strong_kivonat.tsv` írása (az M0 jelzi, hogy generált nézet-e, és ki frissíti);
 - a #22 párosításának javítása vagy újrafuttatása (a #22 dolga); `alacsony` párból triplet-frissítés.
 
