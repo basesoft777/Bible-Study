@@ -599,6 +599,9 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
 - ✅ **N-F38c — a H5674 „a Szellemről” szövegezés megítélése.** *(ÚJ, F38 (#38), DT-F38g (2), megítélésre vár; a számot (N-F38c) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
   Az 1Kir 22:24-en a végrehajtó „a Szellemről”-t írt; a brief „az Úr Szelleme” alakja új szót vinne be (a BDB-ben „az Úr” nincs). Opciók: (a) marad „a Szellemről”; (b) „az Úr Szelleme” (új szó, külön döntés).
 
+- **N-F38x — a BDB-gyökcsoport (rokon szavak) hasznosítása külön adatként.** *(ÚJ, F38 (#38), DT-F38j (c), a felhasználó később dönt; a számot (N-F38x) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
+  A mérés (`naplok/BDB_FORDITAS_naplo.md` M0 5. pont, `naplok/BDB_FORDITAS_gyokcsoportok.tsv`): 7 990 Strong, 71,4% kap BDB-rokon többletet (újramérve). A felhasználó a DT-F38j (c) szerint a 3. opciót választotta (később dönt), az irány a 2.: ha hasznosítjuk, külön adatként (új tábla vagy mező SEMA-bővítéssel), **nem a fordításban**. A 7. adag nem vár rá; a fordítás szócikkenként megy tovább, a gyökcsoport-adat nem kerül a `forditasok.tsv`-be, amíg a döntés nincs meg. Opciók: (a) külön adat (`adat/` tábla, SEMA-bővítéssel, licencsorral: CC BY 4.0); (b) nem használjuk.
+
 - **N-F53d — kártyaszöveg-piszkozat a 10 leírás nélküli kártyára.** *(ÚJ, F53 (#53), FT.2 ⛔, felhasználói válasz 2026-10-05; az FT.3 után, külön tételben; a számot (N-F53d) a main-Action osztja ki)*
   Érintett: #53, #54, #55, #57, #58, #59, #60, #61, #64, TERV_BEFOGAD (a lap ma „nincs leírás”-t ír). A `reszletes` és `roviden` szöveg **csak piszkozat** lehet (a briefekből, naplóba vagy külön fájlba); az `eszkozok/feladatterkep_kartyak.tsv`-be **csak a felhasználó jóváhagyása után** kerül, `forras` = `kezi-<dátum>`.
 
