@@ -70,5 +70,33 @@ class BeirAllapot(unittest.TestCase):
             parse(['beir', 'H0001', '--allapot', 'haiku'])
 
 
+class PromptAdatblokk(unittest.TestCase):
+    """F56 M4, prompt v4.2: az {{ADATBLOKK}} helyorzo bekotese."""
+
+    def test_bdb_prompt_adatblokkot_kap(self):
+        sp, forras = E.forras_szoveg('H2617')
+        p = E.prompt_epit(sp, forras)
+        self.assertNotIn('{{ADATBLOKK}}', p)
+        self.assertIn('### ADATBLOKK H2617', p)
+        self.assertIn('scope=', p)
+        # a blokk a forras elott all
+        self.assertLess(p.index('### ADATBLOKK H2617'), p.index('Forrás (Thayer, angol):'))
+
+    def test_thayer_prompt_nincs_adatblokk(self):
+        sp, forras = E.forras_szoveg('G26')
+        p = E.prompt_epit(sp, forras)
+        self.assertNotIn('{{ADATBLOKK}}', p)
+        self.assertNotIn('### ADATBLOKK', p)
+        self.assertIn('nincs adatblokk', p)
+
+    def test_prompt_szabalyok_kimondva(self):
+        sp, forras = E.forras_szoveg('H2617')
+        p = E.prompt_epit(sp, forras)
+        self.assertIn('`alacsony` bizonyosságú Károli-alak **nem kevésbé valószínű olvasat**', p)
+        self.assertIn('`[kihagyva …]` sor szavai', p)
+        self.assertIn("ja'an", p)
+        self.assertIn('`Y [BDB: X]`', p)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

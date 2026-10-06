@@ -279,6 +279,14 @@ def darab_info_szoveg(i, n):
             'ne jelezd a szöveg részlegességét)') % (i + 1, n)
 
 
+def adatblokk_szoveg(strong):
+    """F56 M4: a BDB-szocikk (H-Strong) adatblokkja; Thayer (G-Strong) eseten nincs."""
+    if not str(strong).upper().startswith('H'):
+        return 'nincs adatblokk'
+    import bdb_adatblokk
+    return bdb_adatblokk.blokk_epit(strong).rstrip(chr(10))
+
+
 def prompt_epit(strong, forras_darab, darab_info=''):
     with open(PROMPT_UT, encoding='utf-8') as fh:
         sablon = fh.read()
@@ -293,6 +301,7 @@ def prompt_epit(strong, forras_darab, darab_info=''):
             .replace('{{STRONG}}', strong_eredeti(strong))
             .replace('{{DARAB_MEGJEGYZES}}', darab_info)
             .replace('{{KOTELEZO_ALAKOK}}', kotelezo_alakok_szoveg(forras_darab))
+            .replace('{{ADATBLOKK}}', adatblokk_szoveg(strong))
             .replace('{{FORRAS_SZOVEG}}', forras_darab))
 
 
