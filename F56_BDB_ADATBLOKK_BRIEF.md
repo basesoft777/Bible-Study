@@ -8,10 +8,10 @@ modell: sonnet
 munka: adat
 allapot: lezarva
 pr: 218
-lezarva_osszegzes: PR #218 (draft), DT-F56c alkalmazva (F56.10–F56.13); merge a felhasználóé
+lezarva_osszegzes: PR #218 (draft), DT48 alkalmazva (F56.10–F56.13); merge a felhasználóé
 ag: claude/bdb-adatblokk
 ad: a #38 minden adagjában a BDB-szócikk elé egy gépileg előállított adatblokk kerül (Károli-szóalakok gyakorisággal, legfeljebb 3 Károli-példavers szóalakonként, LXX-megfelelő, rokon szavak, meglévő magyar szócikk, a forrás fejezetszám-hibáinak javítása), minden sor proveniencia-jelöléssel; a fejezetszám-javítótábla elkészül, és visszamenőleg az 1–5. adag fordításain is átvezetve
-kovetkezo: "Te: a lezárás és a merge (DT-F56c alkalmazva); a #38 a 6. adaggal folytatódik"
+kovetkezo: "Te: a lezárás és a merge (DT48 alkalmazva); a #38 a 6. adaggal folytatódik"
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, "adat/karoli_strong/*.tsv", konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, adat/kulso/lxx_bridge.tsv, konkordancia/Strong_szotar.tsv, konkordancia/OSHL_lexikalis_index.tsv, adat/grammatikai_strongok.tsv, adat/lexikon_hivatkozasok.tsv, adat/terminologia.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_naplo.md, F38_BDB_FORDITAS_BRIEF.md, eszkozok/forditas_kapuk.py, ADATVAGYON_TERV.md]
 ir: [eszkozok/bdb_adatblokk.py, eszkozok/teszt_bdb_adatblokk.py, eszkozok/emeles.py, eszkozok/teszt_emeles.py, forditas/prompt_v4.md, adat/bdb_igehely_javitas.tsv, adat/forditasok.tsv, adat/SEMA.md, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, eszkozok/bdb_atvezet_m5.py, naplok/F56_minta.py, adat/datasetek.tsv, DONTESEK.md]
 fugg: []
@@ -128,5 +128,5 @@ Ellenőrzés: a blokk minden száma és idézete visszakereshető egy forrássor
 | v1 | 2026-10-05 | A Károli-alakok a fordítónak ajánlások; kötelező alakot továbbra is csak a terminológia ad. | ADATVAGYON_TERV 12.1, prompt v4.1 |
 | v1 | 2026-10-05 | A tervdokumentum olvasása nem ad függést a TERV_SZINKRON-tól (`nem_fugg: [52]`). | kontextus-olvasás |
 | v1 | 2026-10-05 | `nem_fugg: [22, 38]`: a #56 szándékosan a részleges Károli–Strong adattal dolgozik (a lefedettséget jelzi), és a #38 előtt fut (a #38 vár a #56-ra, DT-F38i); a levezetett #38 ↔ #56 kör így feloldva. | DT-F38i, felhasználó |
-| v1.1 | 2026-10-06 | M3b: az LXX-szakasz az `adat/grammatikai_strongok.tsv` alapján kihagyja a nyelvtani görög találatokat, ha a héber szó nem nyelvtani; a javítótábla 12 FIGYELEM-es `javitva` sora mind `jelolt_marad` (könyvnév-hiba gyanú); az OSHL-index (TWOT) a `datasetek.tsv`-be és az `olvas`-mezőbe kerül. | DT-F56a, DT-F56b (felhasználó, chat) |
-| v1.2 | 2026-10-06 | DT-F56c (felhasználó, 1. opció): a H4480 és H9009 `javitva` sora `jelolt_marad`, a két fordításmező visszaáll; a generátor szabályai: előtag-pár (H4480 = H9006), nyelvtani listás Strongra nincs egyetlen-jelöltes javítás (a 1000 verses küszöb a végrehajtó kiegészítése, jóváhagyásra vár). | DT-F56c |
+| v1.1 | 2026-10-06 | M3b: az LXX-szakasz az `adat/grammatikai_strongok.tsv` alapján kihagyja a nyelvtani görög találatokat, ha a héber szó nem nyelvtani; a javítótábla 12 FIGYELEM-es `javitva` sora mind `jelolt_marad` (könyvnév-hiba gyanú); az OSHL-index (TWOT) a `datasetek.tsv`-be és az `olvas`-mezőbe kerül. | DT46, DT47 (felhasználó, chat) |
+| v1.2 | 2026-10-06 | DT48 (felhasználó, 1. opció): a H4480 és H9009 `javitva` sora `jelolt_marad`, a két fordításmező visszaáll; a generátor szabályai: előtag-pár (H4480 = H9006), nyelvtani listás Strongra nincs egyetlen-jelöltes javítás (a 1000 verses küszöb a végrehajtó kiegészítése, jóváhagyásra vár). | DT48 |

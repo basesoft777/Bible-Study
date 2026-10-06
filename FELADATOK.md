@@ -106,7 +106,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 ## Kész (utolsó 2 hét)
 
 <!-- GENERÁLT-KEZDET: feladatok.py --cel kesz -->
-- BDB-adatblokk — szócikkenként előre számolt Károli-, példavers- és LXX-adat a fordító promptba (közvetlen TSV-változat) (#56, BDB_ADATBLOKK): PR #218 (draft), DT-F56c alkalmazva (F56.10–F56.13); merge a felhasználóé
+- BDB-adatblokk — szócikkenként előre számolt Károli-, példavers- és LXX-adat a fordító promptba (közvetlen TSV-változat) (#56, BDB_ADATBLOKK): PR #218 (draft), DT48 alkalmazva (F56.10–F56.13); merge a felhasználóé
 - Feladattérkép — a feladatok, döntések és a munkaterv generált vizuális áttekintése (#53, FELADATTERKEP): "FT.0–FT.6 kész (PR #201, merge 2026-10-05); Action-próba (7.6) teljesült: a gépi commit mindhárom fájlt írja (2ddccb1), változatlan forrásnál nincs commit (37338591500-as futás, fe3e70e); az FT.5 és az FT.7 kiváltva a feladatterkep-napi helyi ütemezett feladattal (N-F53f lezárva); utótételek: PR #204, #207 (F53.3), F53.4"
 - Macula-import, héber és görög (N31) (#17, F17): Macula-import (#17): héber 475 911 és görög 275 520 sor a KK-hoz kötve (CC BY 4.0, UBS-mezők nélkül), a 87 hely 38 LXX-megfelelővel (F06: 39, közös módszerhiba javítva); ellenőrzés `naplok/ELLENOR_F17.md`; a Dán 4, a szerepmátrix és a fájlméret DT7-ben nyitva
 - Héber igealak-jelkulcs — a morfológiai kódok magyar feloldása nyílt forrásból, adatként (#58, MORF_KULCS): M0–M2 kész (commitok: naplok/F58_zaras.md); a független ellenőrzés és a draft PR az orkesztrátoré (merge `65709a5`, 2026-10-05)
