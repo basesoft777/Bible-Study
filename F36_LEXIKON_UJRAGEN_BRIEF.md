@@ -12,6 +12,7 @@ kovetkezo: M0 szárazfutás ideiglenes könyvtárba (a repón kívülre); ⛔ az
 olvas: [lexikon/, eszkozok/lexikon_general.py, RENDER_BRIEF.md, adat/forditasok.tsv, adat/res_forras.tsv, ATALAKITASI_TERV.md.md]
 ir: [lexikon/, generalt_proba/]
 fugg: [28, 34, 35]
+nem_fugg: [7]
 ---
 
 # Éles lexikon/ újragenerálása
