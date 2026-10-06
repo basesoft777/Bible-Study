@@ -5,10 +5,10 @@ kod: BDB_SZELLEM_TESZT
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: dontesre_var
 ag: claude/bdb-szellem-teszt
 ad: a `teszt_bdb_zaras.py` zöld (a main-en is), a `SZELLEM_KOVETELT` tábla a H6743 Bír 14:6 nagybetűs helyével bővítve; a #38 7. adagja (sorrend 649–) előfeltétele teljesül
-kovetkezo: "6. lépés: fuggetlen-ellenor a 8f70e4f..HEAD diffen; utána lezárás és a #38 fejlécének váltása (Te)"
+kovetkezo: "Te: ⛔ lezárás — a #38 fejlécének váltása (fugg +73, kovetkezo: 7. adag), a javítólista H5674-sorának sorsa (ELLENOR_F73 2.); utána merge"
 munka: adat
 olvas: [naplok/BDB_FORDITAS_zaras3.py, naplok/BDB_FORDITAS_zaras2.py, naplok/BDB_FORDITAS_zaras_javitasok.tsv, eszkozok/teszt_bdb_zaras.py, adat/forditasok.tsv, adat/terminologia.tsv, naplok/ELLENOR_F38_zaras_2.md, naplok/ELLENOR_F38_zaras_3.md, naplok/BDB_FORDITAS_naplo.md, konkordancia/BDB_teljes_unabridged.tsv, DONTESEK.md]
 ir: [eszkozok/teszt_bdb_zaras.py, naplok/BDB_FORDITAS_zaras3.py, naplok/BDB_FORDITAS_zaras_javitasok.tsv, naplok/BDB_SZELLEM_TESZT_naplo.md, adat/forditasok.tsv, DONTESEK.md, NYITOTT_FELADATOK.md]

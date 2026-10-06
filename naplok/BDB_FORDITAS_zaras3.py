@@ -105,7 +105,7 @@ def alkalmaz(szoveg, regi, uj):
     """Egy kezi csere idempotens alkalmazasa. Eredmeny: (uj szoveg, valtozott-e).
 
     Ha az `uj` mar pontosan egyszer all a szovegben, a csere megtortent (az `uj` a `regi`-t is
-    tartalmazhatja, pl. H5674: a `regi` az `uj` resze), ezert nem nyul hozza. Egyebkent a `regi`
+    tartalmazhatja; a H5674-nel ez a DT-F38h (c) atfogalmazasa ota nem all fenn), ezert nem nyul hozza. Egyebkent a `regi`
     pontosan egyszer alljon, kulonben hiba."""
     if szoveg.count(uj) == 1:
         return szoveg, False
