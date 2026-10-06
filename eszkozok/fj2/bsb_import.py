@@ -373,7 +373,7 @@ def konyv_megfeleltetes(mag, bsb_fej, forras, kk_max=None, sorrend=None):
         if f in kjv_fejezetek:
             sorok.append(((f, v), None, 'kjv_szamozas', 'tahot_nincs_fejezet_kjv_szamozas_marad'))
             continue
-        if x == (f, v) and (f, v) not in osztas:
+        if x == (f, v) and (f, v) not in osztas and f not in KEZI_KIVETEL.get(mag, {}):
             modell = 'azonos'
         else:
             modell = 'eltolt'
@@ -798,6 +798,7 @@ def fut(munka, parancs):
         if SZURT['angol_szo_allapot=' + a] != allapot_szamlalo[a] + nem_imp_szamlalo[a]:
             raise SystemExit('HIBA (F41.4): angol_szo_allapot=%s: szurt %d != importalt %d + nem importalt %d'
                              % (a, SZURT['angol_szo_allapot=' + a], allapot_szamlalo[a], nem_imp_szamlalo[a]))
+    kezi_szoveg = '; '.join('%s %d: %d sor' % (m, f, sum(1 for r in import_sorok if r[0].startswith('%s.%d.' % (st, f)))) for st, m, ny in konyvek() for f in sorted(KEZI_KIVETEL.get(m, {})))
     fej += ['rogzitett kuszob=%g%% definicio=%s nevezo=%s (kuszob.txt, F06-ban meres elott rogzitve); konyvenkenti alkalmazas: FELADATOK D15' % (kuszob, definicio, nevezo),
             'licenc: base/display/ CC0 1.0 (README.md, ATTRIBUTION.md); a CC-BY index-cc-by/ nem importalt',
             'nincs_forras_vers = a BSB-meresi egysegek (BSB-vers; a ket MT-versre osztott BSB-vers ket egyseg) es a kjv_szamozasu versek szama, amelyekhez a TAHOT/TAGNT-nak nincs sora (nem elteres, nem szamit a nevezobe); forras_vers_nincs_bsb = a forras verseinek szama, amelyek igehelye nem kapott BSB-verset (megfeleltetes utan; verszamozas-elteres vagy illesztetlen fejezet jele)',
@@ -810,6 +811,7 @@ def fut(munka, parancs):
             'HATOKOR (F41 ellenori 5.): a fenti "szurt sorok" angol_szo_allapot=* szamlaloi MIND A 66 KONYV minden feldolgozott sorara vonatkoznak; az importalt-sorok szamlaloi csak a BSB_Strongs.tsv-be kerulo sorokra; a kulonbseg a nem importalt sorok (USZ, kuszob alatti konyvek, illesztetlen fejezetek): ' + '; '.join('%s=%d' % kv for kv in sorted(nem_imp_szamlalo.items())) + ' -- a szkript ellenorzi: szurt = importalt + nem importalt, mindharom allapotra',
             'Számozás az IMPORTALT sorokban (BSB_Strongs.tsv 7. oszlopa, VERSSZINTU WLC-osszevetesbol, DT-F41f): ' + '; '.join('%s=%d' % kv for kv in sorted(szamozas_szamlalo.items())) + ' -- mt = a WLC (Macula) azonos szamu versevel igazolt MT-szam (wlc_versek.vers_igazolt, DT-F41g); kjv = a BSB(KJV)-szam marad, es tenylegesen KJV != MT (csak Job 41; a Job MT-re szamozasa: N-F41g); ellenorizetlen = a WLC-vel egyertelmuen nem igazolt (nem allitja, hogy a szam hibas; MT-re szamozasa: N-F41h); fejezetenkenti kimutatas: naplok/F41_wlc_versszam_ellenorzes.tsv',
             'egyezes_szazalek_eltolas_nelkul = a F06-modszer (a BSB-vers szama valtoztatas nelkul, a TAHOT-vers ugyanazzal a szammal; a konyvnev a forras-nev, JSir -> Sir), tajekoztato; egyezes_szazalek = a kuszob alapja: a BSB-vers -> MT-vers (TAHOT_kivonat-szamozas) versszintu megfeleltetessel (F41; naplok/F41_bsb_megfeleltetes.tsv); mt_eltolt_fejezetek = a BSB-fejezetek szama, amelyekben van eltolt (mas fejezet:vers) vers; illesztetlen_fejezetek = a fejezetek, ahol a megfeleltetes nem igazolhato (kimaradnak a merestol, a versszamlalobol es az importbol); kjv_szamozasu_fejezetek = a BSB-fejezetek, amelyekben van `kjv` Számozású sor (BSB_Strongs.tsv 7. oszlop): csak a Job 41 (tenylegesen KJV != MT; a Job 38-41 Igehelye a BSB(KJV)-szam, DT-F41c (a); a Job 41 a TAHOT_kivonatban nincs, a mereshez nem szamit); a Job 38-40 versei a MERESBEN a TAHOT_kivonathoz illesztve szerepelnek (a merés nem azonos az Igehely-szamozassal); a Pred 11/12, Ezs 2/3, 4Moz 12/13 az Igehely a BSB(KJV)-szam (= WLC), a 7. oszlop versenkent mt/ellenorizetlen',
+            'KEZI KIVETEL (F71, DT-F41a; manual provenienciaju, ok = ' + KEZI_OK + ' a naplok/F41_bsb_megfeleltetes.tsv-ben): ' + (kezi_szoveg or '-') + '; a 7. oszlop ezeken a sorokon `mt` a kezi dontes alapjan (nem a WLC-osszevetesbol; a Strong-illeszkedest a szkript ellenorzi); a felirat (MT 1) es a BSB 13:1 (MT 2) nem a display-JSON-ban van, nincs importsor',
             'konyvek: %d ELERI (mind OSZ), %d NEM_ERI_EL (OSZ), %d USZ_KIHAGYVA (az USZ szandekosan kimarad: a gorog reteg forrasa a Macula #87; a mert szazalek tajekoztato); importalt sorok: %d' % (ered_db, alatta_db, usz_db, len(import_sorok))]
     kozos.tsv_ir(os.path.join(kozos.NAPLOK, 'F16_bsb_lefedettseg.tsv'), fej,
                  ['konyv', 'bsb_kod', 'nyelv', 'versek_bsb', 'forras_lefedett_versek', 'egyezo', 'nincs_forras_vers',

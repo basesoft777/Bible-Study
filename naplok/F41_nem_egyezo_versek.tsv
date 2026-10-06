@@ -1,6 +1,6 @@
 # forras-URL: https://github.com/BSB-publishing/bsb-data-output + konkordancia/TAHOT_kivonat.tsv
 # commit/verzio: BSB commit a4a2c0558c26e0281ba4e3f0e5479398459e2183
-# letoltes datuma: 2026-10-02
+# letoltes datuma: 2026-10-06
 # futtatasi parancs: python eszkozok/fj2/bsb_verseltolas_diag.py --munka <mappa> --f41
 # a meres nevezojebe eso (a TAHOT_kivonat versenkent mert), de NEM egyezo egysegek: a TAHOT-vers Strong-halmaza nem resze a BSB-oldalnak, a F41.1 megfeleltetes utan (naplok/F41_bsb_megfeleltetes.tsv); a ket MT-versre osztott BSB-vers ket egyseg; az illesztetlen es a kjv_szamozasu fejezetek nincsenek benne
 # tahot_nincs_bsbben = a TAHOT-nak azok a Strongjai, amelyek a BSB-oldalon nincsenek (ez okozza a nem-egyezest); bsb_tobblet = a BSB-oldal Strongjai, amelyek a TAHOT-versben nincsenek (tajekoztato)

@@ -1,6 +1,6 @@
 # forras-URL: https://github.com/BSB-publishing/bsb-data-output + konkordancia/TAHOT_kivonat.tsv + konkordancia/Karoli_versmegfeleltetes.tsv (igehely_mt, ellenorzes)
 # commit/verzio: BSB commit a4a2c0558c26e0281ba4e3f0e5479398459e2183
-# letoltes datuma: 2026-10-02
+# letoltes datuma: 2026-10-06
 # futtatasi parancs: python eszkozok/fj2/bsb_verseltolas_diag.py --munka <mappa> --f41
 # versszintu BSB-vers -> MT-vers megfeleltetes mind a 39 OSZ-konyvre (F41.1); bsb_vers = a BSB (display-JSON) fejezet:verse; mt_vers = az IMPORT cel-Igehelye (a BSB_Strongs.tsv Igehely-oszlopa): a TAHOT_kivonat versszamozasahoz Strong-illeszkedessel megfeleltetett vers (cel: MT/WLC; a TAHOT_kivonat versszamozasa 25 konyvben nem azonos a WLC-vel, l. NYITOTT N-F41d), kiveve a BSB(KJV)-szamozas-megtartott fejezeteket (Job 38-41, Pred 11/12, Ezs 2/3, 4Moz 12/13: mt_vers = bsb_vers); a tahot_vers a TAHOT_kivonat verse, amelyhez a BSB-verset a MERES illesztette (a Pred 11/12, Ezs 2/3, 4Moz 12/13 sorain ez a Karoli-szeru TAHOT-szam, az Igehely nem ez); a WLC-vel versszintu egyezes: naplok/F41_wlc_versszam_ellenorzes.tsv
 # szamozas (DT-F41f; = a BSB_Strongs.tsv 7. oszlopa, VERSSZINTU WLC-osszevetesbol): mt = a WLC azonos szamu versevel igazolt MT-szam (wlc_versek.vers_igazolt, DT-F41g); kjv = a BSB(KJV)-szam marad, es tenylegesen KJV != MT (csak Job 41; a Job MT-re szamozasa kulon N-tetel, N-F41g); ellenorizetlen = a WLC-vel egyertelmuen nem igazolt (nem allitja, hogy a szam hibas; MT-re szamozasa: N-F41h); ures = illesztetlen fejezet. Felhasznaloi dontes 2026.10.02: 4Moz 12/13 atszamozasa visszavonva (WLC: KJV = MT), Job 38-41 a main KJV-szamozasan; Pred 11/12, Ezs 2/3: az atszamozas visszavonva (KJV = MT: naplok/F41_wlc_hatar_ellenorzes.tsv)
@@ -14075,11 +14075,11 @@ Zsolt	12:5	12:6	eltolt	strong_illeszkedik	12:6	mt
 Zsolt	12:6	12:7	eltolt	strong_illeszkedik	12:7	mt
 Zsolt	12:7	12:8	eltolt	strong_illeszkedik	12:8	mt
 Zsolt	12:8	12:9	eltolt	strong_illeszkedik	12:9	mt
-Zsolt	13:2		illesztetlen	nincs_mt_part: 1 vers (BSB 13:6)		
-Zsolt	13:3		illesztetlen	nincs_mt_part: 1 vers (BSB 13:6)		
-Zsolt	13:4		illesztetlen	nincs_mt_part: 1 vers (BSB 13:6)		
-Zsolt	13:5		illesztetlen	nincs_mt_part: 1 vers (BSB 13:6)		
-Zsolt	13:6		illesztetlen	nincs_mt_part: 1 vers (BSB 13:6)		
+Zsolt	13:2	13:3	eltolt	kezi_kivetel_DT-F41a_manual	13:3	mt
+Zsolt	13:3	13:4	eltolt	kezi_kivetel_DT-F41a_manual	13:4	mt
+Zsolt	13:4	13:5	eltolt	kezi_kivetel_DT-F41a_manual	13:5	mt
+Zsolt	13:5	13:6	eltolt	kezi_kivetel_DT-F41a_manual	13:6	mt
+Zsolt	13:6	13:6	eltolt	kezi_kivetel_DT-F41a_manual	13:6	mt
 Zsolt	14:2	14:2	azonos	strong_illeszkedik	14:2	mt
 Zsolt	14:3	14:3	azonos	strong_illeszkedik	14:3	mt
 Zsolt	14:4	14:4	azonos	strong_illeszkedik	14:4	mt
