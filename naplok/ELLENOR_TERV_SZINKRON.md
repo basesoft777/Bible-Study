@@ -129,5 +129,5 @@ Jelentés: ELTÉRÉS, 12 tétel (az ügynök fájlt nem írhatott; a hívó ment
 | E8 | DT-F42d/g a kivezetéshez | DT-F42f |
 | E9 | 215 commit a `--since` paranccsal nem jön ki | a napló a `de9c464..` tartományt nevezi |
 | E10 | „#25a” FELADATOK-számként | a `#` oszlopban „—”, a névben „(a #25a)” |
-| E11 | a VIBE-kérdéshez nincs DONTESEK-tétel | DT-F52b (🟡) |
+| E11 | a VIBE-kérdéshez nincs DONTESEK-tétel | DT49 (🟡) |
 | E12 | lezáratlan döntésnapló-sor (karoli_bible_hu) | lezárva (v15) |
