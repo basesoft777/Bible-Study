@@ -2576,7 +2576,7 @@ Az 5. adag 27 commitja (F38.283–F38.308) tévesen a helyi `main`-re került a 
 - A „hátra” szám 7 658 (nem 7 659); a H6213 kikerült az 5. adag Szellem-tábla soraiból (a 2. adagé).
 - Nyitva hagyva (stílus): H3532 „Mózes második könyve Mózes harmadik könyve Numeri” — a forrás „Exodus Leviticus Numbers” kevert könyvnév-formája.
 
-## M0 5. pont — BDB-gyökcsoportok felmérése (6. adag menetének eleje; F38.311)
+## M0 5. pont — BDB-gyökcsoportok felmérése (6. adag menetének eleje; F38.310a)
 
 *Csak mérés, import nélkül; a gyökcsoport nem került a `BDB_teljes_unabridged.tsv`-be, az `adat/forditasok.tsv`-be vagy a szerepmátrixba.*
 
@@ -2594,11 +2594,12 @@ Az 5. adag 27 commitja (F38.283–F38.308) tévesen a helyi `main`-re került a 
 | lefedett héber Strong (van `bdb_gyok`) | **7 990** |
 | `csak_bdb` többletet kapó Strong (van BDB-rokon, amely nem azonos TWOT-szám alatt áll) | **5 702** — 71,4% a lefedettekből (76,2% azokból, akiknek van BDB-rokonuk: 7 479) |
 | ebből csak a TWOT-számmal rendelkezők (5 486) között | 3 229 — 58,9% (2 504 lefedett Strongnak nincs TWOT-száma, ezek a `csak_bdb` számot felfelé torzítják) |
+| az unió miatt több gyökcsoportba / több TWOT-hoz kerülő Strong (a 8 581 sor → 7 990 Strong ismétlődései) | 221 Strong több BDB-gyökcsoportba, 207 Strong több TWOT-hoz |
 
 A BDB-gyökcsoport tehát jóval tágabb rokonságot ad, mint az azonos TWOT-szám; hasznosításáról (a szócikkek „rokon szavak” adata-e) a ⛔ M1 szerint a felhasználó dönt, ezt a menet nem hozza meg.
 
 
-## M6 — 6. adag (sorrend 407–648; F38.311–F38.353)
+## M6 — 6. adag (sorrend 407–648; F38.312–F38.353)
 
 *Prompt v4.2, terminológia v3, a #56 adatblokkjával (`eszkozok/bdb_adatblokk.py`) és a fejezetszám-javítótáblával (`adat/bdb_igehely_javitas.tsv`); modell: `claude-sonnet-5-5`, `allapot=sonnet`.*
 
@@ -2609,7 +2610,7 @@ A BDB-gyökcsoport tehát jóval tágabb rokonságot ad, mint az azonos TWOT-sz�
 | kapuk | 242/242 RENDBEN a gátoló kapukon (1–11.); a 13. kapu 1 JELZES-t adott |
 | `ellenoriz.py` | SÉRTÉS 0 (RENDBEN 11, KÉZI 2, JELENTÉS 3: terminológia-verzió elmaradás, kiejtés-kivétel — régi tételek) |
 | tesztek | `teszt_forditas_kapuk.py` 69, `teszt_normalizal.py` 63, `teszt_emeles.py` 10, `teszt_ellenoriz_13.py` 9 — mind OK |
-| `teszt_bdb_zaras.py` | 21 teszt, 2 FAIL + 1 ERROR. A main-en (bdae91d) ugyanez a 3 teszt bukik a H5674 miatt (`Zaras3Idempotencia.test_ir_ketszer_futtatva_nem_duplikal` ERROR; `DTF38g.test_dtf38g_kezi_javitasok` FAIL; `DTF38g.test_szellem_tabla_nagybetus_helyei` FAIL: H5674, H4390, H2451, H5117, H5012, H3847). **Az ágon a `test_szellem_tabla_nagybetus_helyei` egy hellyel többet jelez: H6743 `Szellem` (várt []) — ezt e menet okozta** (a `SZELLEM_KOVETELT` nem ismeri). Nem javítottam |
+| `teszt_bdb_zaras.py` | 21 teszt, 2 FAIL + 1 ERROR. A main-en (bdae91d) ugyanez a 3 teszt bukik: a `Zaras3Idempotencia.test_ir_ketszer_futtatva_nem_duplikal` (ERROR) és a `DTF38g.test_dtf38g_kezi_javitasok` (FAIL) a H5674 miatt, a `DTF38g.test_szellem_tabla_nagybetus_helyei` (FAIL) a H4390, H2451, H5117, H5012, H3847 miatt. **Az ágon a `test_szellem_tabla_nagybetus_helyei` egy hellyel többet jelez: H6743 `Szellem` (várt []) — ezt e menet okozta** (a `SZELLEM_KOVETELT` nem ismeri). Nem javítottam |
 | kész összesen | 648 sorrend-sor; hátra 7 416 szócikk (a #28 26 sorát leszámítva) |
 
 **13. kapu (JELZES, forráshiba, hűen átvéve):** H3289 „Náh 7:5” (a Nahum 3 fejezetes).
@@ -2624,7 +2625,7 @@ A BDB-gyökcsoport tehát jóval tágabb rokonságot ad, mint az azonos TWOT-sz�
 
 **Folyamat:** szócikkenként olvasás → fordítás helyőrzőkkel → `emeles.py ellenoriz` (13 kapu) → `rogzit`/`beir`; a `naplok/EMELES_munka.tsv`-t minden `rogzit` után `git checkout`-tal visszaállítottam; a kapuhibák (9. jelölő, 4. zárójel, 11. könyvnév, 5. terminológia) a szövegben, nem a kapukon javítva.
 
-## M6 — DT-F38j döntése (2026-10-06, chat)
+## M6b — DT-F38j döntése (2026-10-06, chat)
 
 | | |
 |---|---|

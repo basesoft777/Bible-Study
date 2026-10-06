@@ -1,3 +1,7 @@
+ELTÉRÉS: 4 tétel
+
+*Az orkesztrátor tömörítve mentette (az OK sorok összevonva); a tartalom nem változott.*
+
 # ELLENOR_F38_adag6 — független ellenőrzés
 
 - Brief: `F38_BDB_FORDITAS_BRIEF.md`

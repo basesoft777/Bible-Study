@@ -596,7 +596,7 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
 - ✅ **N-F38b — a H7451 és a H4390 Szellem-kisbetű/nagybetű kétsége.** *(ÚJ, F38 (#38), DT-F38g (3), tartalmi döntésre vár; a számot (N-F38b) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
   H7451 (#28): a BDB maga „divine spirit” (`konkordancia/BDB_teljes_unabridged.tsv:6966`), a DT-F38g (3) betűje szerint nagybetű járna, de a DT-F38f 3. „rossz szellem kisbetűs” szabálya ezzel ütközik. H4390: egy frázis, emberi és isteni értelemben vegyesen. A szöveg jelenleg változatlan.
 
-- ✅ **N-F38c — a H5674 „a Szellemről” szövegezés megítélése.** *(ÚJ, F38 (#38), DT-F38g (2), megítélésre vár; a számot (N-F38c) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
+- ✅ **N-F38c — a H5674 „a Szellemről” szövegezés megítélése. LEZÁRVA a DT-F38h (c) szerint: a `forditasok.tsv` 176. sora ma „a Szellem 1Kir 22:24” (nagybetűs, a BDB 9a besorolásával összhangban); az „a Szellemről” alak a DT-F38g (2) alkalmazása volt, a DT-F38h (c) átfogalmazta.** *(ÚJ, F38 (#38), DT-F38g (2), megítélésre vár; a számot (N-F38c) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*
   Az 1Kir 22:24-en a végrehajtó „a Szellemről”-t írt; a brief „az Úr Szelleme” alakja új szót vinne be (a BDB-ben „az Úr” nincs). Opciók: (a) marad „a Szellemről”; (b) „az Úr Szelleme” (új szó, külön döntés).
 
 - **N-F38x — a BDB-gyökcsoport (rokon szavak) hasznosítása külön adatként.** *(ÚJ, F38 (#38), DT-F38j (c), a felhasználó később dönt; a számot (N-F38x) a F30 helyőrző-szabálya szerint a main-Action osztja ki)*

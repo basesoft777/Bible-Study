@@ -24,8 +24,8 @@ fugg: [38]
 
 Két, egymástól elválasztható hiba rendezése, hogy a `teszt_bdb_zaras.py` zöld legyen, és a 7. adag tiszta zárótesztre építhessen:
 
-1. a H6743 Bír 14:6 („a Szellem . . . rárontott”, az Úr Szelleme) nagybetűs helye bekerül a `SZELLEM_KOVETELT` táblába (a `test_szellem_tabla_nagybetus_helyei` ezt az ágon jelzi; a hely a 6. adagban keletkezett, F38.311–F38.353);
-2. a main-en is (bdae91d) bukó három teszt és a mögöttük álló hat Strong rendezése: H5674, H4390, H2451, H5117, H5012, H3847 (`Zaras3Idempotencia.test_ir_ketszer_futtatva_nem_duplikal`, `DTF38g.test_dtf38g_kezi_javitasok`, `test_szellem_tabla_nagybetus_helyei`).
+1. a H6743 Bír 14:6 („a Szellem . . . rárontott”, az Úr Szelleme) nagybetűs helye bekerül a `SZELLEM_KOVETELT` táblába (a `test_szellem_tabla_nagybetus_helyei` ezt az ágon jelzi; a hely a 6. adagban keletkezett, F38.312–F38.353);
+2. a main-en is (bdae91d) bukó három teszt rendezése: a `Zaras3Idempotencia.test_ir_ketszer_futtatva_nem_duplikal` és a `DTF38g.test_dtf38g_kezi_javitasok` a H5674 miatt, a `test_szellem_tabla_nagybetus_helyei` a H4390, H2451, H5117, H5012, H3847 miatt bukik (a felmérés ezt igazolja vagy pontosítja).
 
 ## 2. Hatókör
 
@@ -44,8 +44,8 @@ Két, egymástól elválasztható hiba rendezése, hogy a `teszt_bdb_zaras.py` z
 
 ## 3. Lépések (⛔ a kötelező megállások)
 
-1. **Felmérés (csak olvasás).** A `python eszkozok/teszt_bdb_zaras.py` futtatása a main-en és az ágon; a három bukó teszt hibaüzenete Strongonként (H5674, H4390, H2451, H5117, H5012, H3847). Minden Strongnál az ok megnevezése: (i) a teszt hibás (elavult elvárás), (ii) a tábla hibás/hiányos, (iii) a `forditasok.tsv` szövege tért el a javító-tábla szerinti elvárástól (a `naplok/BDB_FORDITAS_zaras_javitasok.tsv` alapján), (iv) a javítóréteg `ir` futtatása nem idempotens. A `test_ir_ketszer_futtatva_nem_duplikal` ERROR-jának stacktrace-e külön, a gyökérokkal. Kimenet: a napló „Felmérés” szakasza.
-2. ⛔ **Megállás, ha bármelyik ok a (iii) vagy nem a teszt/tábla** (azaz fordítás-sort kellene módosítani): a menet nem módosít `adat/forditasok.tsv`-t, hanem tételt nyit a `DONTESEK.md`-be (opciókkal és javaslattal), és visszaadja az orkesztrátornak. A (i), (ii), (iv) okok javítása a felhasználó külön jóváhagyása nélkül mehet.
+1. **Felmérés (csak olvasás).** A `python eszkozok/teszt_bdb_zaras.py` futtatása a main-en és az ágon; a három bukó teszt hibaüzenete Strongonként (H5674, H4390, H2451, H5117, H5012, H3847; a várakozás: H5674 a másik két teszt, a többi öt a Szellem-tábla tesztje). Minden Strongnál az ok megnevezése: (i) a teszt hibás (elavult elvárás), (ii) a tábla hibás/hiányos, (iii) a `forditasok.tsv` szövege tért el a javító-tábla szerinti elvárástól (a `naplok/BDB_FORDITAS_zaras_javitasok.tsv` alapján), (iv) a javítóréteg `ir` futtatása nem idempotens. A `test_ir_ketszer_futtatva_nem_duplikal` ERROR-jának stacktrace-e külön, a gyökérokkal. Kimenet: a napló „Felmérés” szakasza.
+2. ⛔ **Megállás, ha bármelyik ok a (iii) vagy nem a teszt/tábla** (azaz fordítás-sort kellene módosítani): a menet nem módosít `adat/forditasok.tsv`-t, hanem tételt nyit a `DONTESEK.md`-be (opciókkal és javaslattal), és visszaadja az orkesztrátornak. A (i) és (iv) okok javítása a felhasználó külön jóváhagyása nélkül mehet. A (ii) tábla-okoknál **⛔ megállás és DONTESEK-tétel kell** a H2451, H5117, H5012, H3847 nagybetűs Szellem-helyeire: ezek soha nem lettek eldöntve (DT-F38g (3): helyenkénti tartalmi mérlegelés, „kire vonatkozik”), ezért csak a felhasználói döntés után kerülhetnek a `SZELLEM_KOVETELT`-be. Megállás nélkül csak a H6743 (a felhasználó DT-F38j (d) döntése) kerülhet be; a H4390-et (2Móz 31:3; 35:31 nagybetű) a DT-F38h (b) fedi.
 3. **H6743 felvétele** a `SZELLEM_KOVETELT` táblába (`naplok/BDB_FORDITAS_zaras3.py`), a forráshely idézetével (`BDB_teljes_unabridged.tsv`, a H6743 Bír 14:6 sora) és a `forditasok.tsv` jelenlegi szövegével egybevetve; a tábla megváltoztatása után a `test_szellem_tabla_nagybetus_helyei` összeszámlálása (`osszes`) stimmeljen.
 4. **A teszthibák javítása** a 2. lépés szerint (a teszt vagy a tábla; az `ir` idempotenciája: a duplikáció gyökérokának megszüntetése, nem a teszt gyengítése).
 5. **Regresszió:** `eszkozok/teszt_bdb_zaras.py`, `teszt_forditas_kapuk.py`, `teszt_normalizal.py`, `teszt_emeles.py`, `teszt_ellenoriz_13.py` mind OK; `python eszkozok/emeles.py ellenoriz` SÉRTÉS 0; a `forditasok.tsv` bájtra változatlan (`git diff --stat` igazolja), ha a 2. lépés nem engedett mást.
@@ -68,5 +68,6 @@ Nincs új döntés a tervezetben. Helyőrzők csak a felmérés eredményétől 
 
 **Nyitott kérdések (a befogadáskor):**
 - A feladat kódja és száma (`BDB_SZELLEM_TESZT`; a `feladat` számot a `python eszkozok/feladatok.py kovetkezo_szam` adja).
-- A H5674 mint közös gyökér: a DT-F38g (2) / N-F38c ✅ szerint a „a Szellemről” marad; ha a teszt ezt az elvárást nem veszi át, a teszt javul, nem a szöveg (a felmérés igazolja).
+- A H5674 (1Kir 22:24): a DT-F38g (2) „a Szellemről” alakját a DT-F38h (c) átfogalmazta; a `forditasok.tsv` 176. sora ma „a Szellem 1Kir 22:24” (nagybetűs, az N-F38c ✅ szerint lezárva). Ha a teszt a régi alakot várja, a teszt javul, nem a szöveg (a felmérés igazolja).
+- A H2451, H5117, H5012, H3847 nagybetűs helyei: döntésre vár (l. 3. lépés, ⛔).
 - Az `ir` idempotenciája: ha a duplikáció a javítóréteg `ir` logikájából jön, az a `naplok/BDB_FORDITAS_zaras3.py` hatókörében javítható; ha az `eszkozok/` eszközt kell módosítani, az `ir` listát a befogadáskor bővíteni kell.
