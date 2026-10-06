@@ -55,3 +55,7 @@ A `SZELLEM_KOVETELT` új sorai (`naplok/BDB_FORDITAS_zaras3.py`), a kontextus mi
 Regresszió: `teszt_bdb_zaras.py` 21/21 OK (a `test_szellem_tabla_nagybetus_helyei` és a `test_ir_ketszer_futtatva_nem_duplikal` is zöld); `teszt_forditas_kapuk.py` 69 OK; `teszt_normalizal.py` 63 OK; `teszt_emeles.py` 10 OK; `teszt_ellenoriz_13.py` 9 OK; `ellenoriz.py` SÉRTÉS 0 (RENDBEN 11, KÉZI 2, JELENTÉS 3). A brief 5. lépésének „`emeles.py ellenoriz` SÉRTÉS 0” feltétele a globális `ellenoriz.py`-t jelenti (az `emeles.py ellenoriz` egy-Strongos alparancs, a #38 naplója is az `ellenoriz.py`-t futtatta). Az `adat/forditasok.tsv` változatlan (`git diff --stat` csak a táblát, a naplót, a `DONTESEK.md`-t és a briefet mutatja).
 
 Következik: 6. lépés ⛔ — `fuggetlen-ellenor`, utána lezárás és a #38 fejlécének váltása.
+
+## Lezárás (F73.5)
+
+A felhasználó jóváhagyása (2026.10.06): a #38 fejléce vált (`fugg: [34, 56, 72, 73]`, `allapot: fut`, `kovetkezo: Folytatás: a 7. adag …`); a javítólista H5674-sora marad (ELLENOR_F73 2. eltérés: a `iras` mező mindkét döntést megnevezi). A #73 fejlécébe `nem_fugg: [38]` került: a #73 olvassa a #38 által írt fájlokat, ezért a `feladatok.py` levezetett #73 → #38 függést és ezzel kört jelzett, holott az irány fordított (DT52 (a)); utána `feladatok.py ellenoriz` 0 hiba. A #73 lezárva, a merge a felhasználóé.
