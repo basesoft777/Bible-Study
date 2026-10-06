@@ -2,7 +2,7 @@
 
 **Elkészült:** a Zsolt 13 kézi megfeleltetése a `bsb_import.py`-ban (DT-F41a, `KEZI_KIVETEL`); 41 új sor a `BSB_Strongs.tsv`-ben (Psa.13.3–6, `manual`, 7. oszlop `mt`); naplók és README frissítve; `illesztetlen` → `kezi`. Nulladiff: a Psa.13-on kívül 0 (`naplok/F71_nulladiff.txt`).
 
-**Egyeztetett eltérés:** a brief „hat MT-vers” célja helyett négy MT-vers (3–6) került be. Az MT 1 (felirat) a BSB-ben heading, nem hordoz Strongot; az MT 2 (BSB 13:1) szövege a `base/display/` JSON-ból hiányzik (DT6 (c)). Mindkettő explicit üres eredmény, nem töltöttem ki (3. szabály). Az elvárt eredményt utólag nem írtam át. Nyitott: **N-F71a** (helyőrző).
+**Egyeztetett eltérés:** a brief „hat MT-vers” célja helyett négy MT-vers (3–6) került be. Az MT 1 (felirat) a BSB-ben heading, nem hordoz Strongot; az MT 2 (BSB 13:1) szövege a `base/display/` JSON-ból hiányzik (DT6 (c)). Mindkettő explicit üres eredmény, nem töltöttem ki (3. szabály). Az elvárt eredményt utólag nem írtam át. Nyitott: **N50** (helyőrző).
 
 **⛔:** az M0-ban nem lépett életbe (a DT-F41a lista minden sora alátámasztott).
 

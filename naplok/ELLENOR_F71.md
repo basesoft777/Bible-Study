@@ -4,7 +4,7 @@
 
 | pont | eredmény | indok |
 |---|---|---|
-| EF1 hat MT-vers | **ELTÉRÉS** | csak MT 3–6 (41 sor, `BSB_Strongs.tsv:178405–178445`). A BSB 13:1 a display-JSON-hiány (DT6 (c)) miatt nincs meg; a felirat BSB-oldalon nem hordoz Strongot, a TAHOT szerint az MT 13:1 igen (H1732, H4210, H5329). Dokumentált, de nincs hozzá N-tétel → N-F71a. |
+| EF1 hat MT-vers | **ELTÉRÉS** | csak MT 3–6 (41 sor, `BSB_Strongs.tsv:178405–178445`). A BSB 13:1 a display-JSON-hiány (DT6 (c)) miatt nincs meg; a felirat BSB-oldalon nem hordoz Strongot, a TAHOT szerint az MT 13:1 igen (H1732, H4210, H5329). Dokumentált, de nincs hozzá N-tétel → N50. |
 | `manual` proveniencia, kézi kivétel | OK | napló: `F41_bsb_megfeleltetes.tsv`, `F16_bsb_lefedettseg.tsv` fejléc; az 1Kir 22:43 mintája azonos (a BSB-táblában az `mt` nem különböztethető meg a WLC-vel igazolttól) |
 | M3 nulladiff | OK | `41 0` a numstatban, egyetlen hunk, mind `Psa.13.`; 278 166 adatsor |
 | M0 ⛔ | OK | MT 3–6 Strong-halmaza a `lekerdez.py gerinc` szerint egyezik; a ⛔ nem lépett életbe |
