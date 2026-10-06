@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-06",
-   "commit": "3980d6d"
+   "commit": "c2b1446"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -87,7 +87,7 @@
   {
    "kulcs": "dt",
    "cimke": "Nyitott döntés",
-   "db": 6
+   "db": 5
   }
  ],
  "sor": [
@@ -782,16 +782,6 @@
  "dontesek": {
   "nyitott": [
    {
-    "id": "DT2",
-    "feladat": "#10 lexikonoldalak lezárása",
-    "kerdes": "„döntés az L6 és L7 feltételről. Ide tartozik N18, N19” *(forrás: `FELADATOK.md` #10 „Megjegyzés”)*",
-    "allapot": "nyitott",
-    "jelek": [
-     "🟡"
-    ],
-    "sor": 12
-   },
-   {
     "id": "DT-F41a",
     "feladat": "#41 BSB-újramérés (a DT6 (g) pontja)",
     "kerdes": "Döntésre vár: kézi megfeleltetés a Zsolt 13-ra (BSB 2→MT 3, 3→4, 4→5, 5+6→6) vagy marad ki. *(a kérdés és az opció szó szerint a DT6-ból; a háttér ugyanott: „Belső versosztás-eltérés (F16.11)”: a Zsolt 13 illesztetlen, kimarad a mérésből és az importból)*",
@@ -843,6 +833,16 @@
    }
   ],
   "alkalmazasra_var": [
+   {
+    "id": "DT2",
+    "feladat": "#10 lexikonoldalak lezárása",
+    "kerdes": "„döntés az L6 és L7 feltételről. Ide tartozik N18, N19” *(forrás: `FELADATOK.md` #10 „Megjegyzés”)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 12
+   },
    {
     "id": "DT-F21j",
     "feladat": "#21 Károli–Strong mérőpilot (lezárás)",
