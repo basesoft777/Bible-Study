@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: fut
+ag: claude/bdb-aram-potlas
 ad: a BDB_strong_alias_elvetett.tsv 173 arámi másodlagos címkéje (BDB9264-től) saját szövegsort kap egy külön táblában (konkordancia/BDB_aram_potlas.tsv) a BDB.lexicon szövegéből, proveniencia-jelöléssel; ami nem állítható elő egyértelműen, jelölt marad; a BDB_teljes_unabridged.tsv nem változik
 kovetkezo: /kovetkezo; ⛔ az M1 jelölttábla után
 olvas: [konkordancia/lexikonok_nyers/BDB.lexicon, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_teljes_unabridged_README.md, konkordancia/BDB_strong_alias_elvetett.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/_convert_bdb.py, naplok/BDB_STRONG_POTLAS_M1.md, eszkozok/bdb_strong_potlas.py, adat/licencek.tsv]
