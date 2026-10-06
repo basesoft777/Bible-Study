@@ -1,4 +1,4 @@
-# Prompt v4 — F28_EMELES_BRIEF.md, E1
+# Prompt v4.2 — F28_EMELES_BRIEF.md, E1; F56 M4
 
 *Az `fp2/prompt_v3.md` szó szerinti másolata (a `<!-- PROMPT-KEZDET -->` jelölő alatt, a
 v3 saját címével és előszavával együtt), plusz két kiegészítő blokk („Kiegészítő
@@ -20,6 +20,7 @@ verziója.*
 |---|---|---|---|
 | v4.0 | 2026.10.01 | a v3 másolata + általános (v4) blokk + BDB-blokk + G26-példapár | F28 brief E1 |
 | v4.1 | 2026.10.02 | új blokk: „Kiegészítő szabály (v4.1) — kötelező terminológiai alakok előgyűjtése” (a BDB-blokk után), benne az új `{{KOTELEZO_ALAKOK}}` helyőrző: a forrásban előforduló kapus terminológia-kulcsok és kötelező magyar alakjuk, betűhűen (`eszkozok/emeles.py kotelezo <Strong>` ugyanezt listázza). A v3 és a v4.0 egyetlen sora sem módosult. | F38 DT-F38c (d): a 3. adag önújrapróbáinak 41%-a 5. kapus volt (a kötelező alak helyett szinonima, ragozott vagy más kis/nagybetűs alak) |
+| v4.2 | 2026.10.06 | új blokk: „Kiegészítő szabály (v4.2) — adatblokk” (a v4.1 blokk után), és az új `{{ADATBLOKK}}` helyőrző a „Bemenet” szakaszban: a H-Strongú szócikk elé gépileg előállított adatblokk (`eszkozok/bdb_adatblokk.py`; Károli-alakok, példaversek, LXX, rokon szavak, magyar szócikk, javított hivatkozások). Szabályok: a Károli-alak ajánlás; az `alacsony` bizonyosságú alak nem kevésbé valószínű olvasat; `[NINCS KÁROLI-ALAK]` esetén szótári jelentés; a `[kihagyva …]` sor szavai jogos megfelelők lehetnek, ha a héber szó maga is nyelvtani; javított hivatkozás: `Y [BDB: X]`. A v3, v4.0 és v4.1 egyetlen sora sem módosult. | F56 M4 (DT-F38i (a) 2b) |
 
 <!-- PROMPT-KEZDET -->
 
@@ -127,6 +128,28 @@ Zendzsirli, nagy kezdőbetűvel). Az e forrásban előforduló kulcsok gépi kig
 
 {{KOTELEZO_ALAKOK}}
 
+## Kiegészítő szabály (v4.2) — adatblokk
+
+A „Bemenet” szakaszban H-Strongú (BDB) szócikknél a szócikk előtt gépileg előállított
+adatblokk áll (a projekt saját adataiból, proveniencia-sorokkal; nem értelmezés). Így használd:
+
+1. A Károli-alakok és példaversek **ajánlások**, nem kötelező kulcsok. A kötelező alakokat
+   továbbra is a terminológia (a fenti „kötelező terminológiai alakok” és az ideiglenes
+   terminológia) adja, az megelőzi az adatblokkot.
+2. Az `alacsony` bizonyosságú Károli-alak **nem kevésbé valószínű olvasat**, mint a `magas`:
+   a bizonyosság a gépi párosítás biztosságát jelzi, nem a szóválasztás helyességét.
+3. `[NINCS KÁROLI-ALAK]` esetén (vagy ha a Károli-alak a szócikk adott jelentésébe nem
+   illik) a szótári jelentésből választasz; hiányt emlékezetből nem töltesz ki.
+4. A `[kihagyva …]` sor szavai (az LXX-szakaszban kihagyott nyelvtani görög megfelelők)
+   jogos megfelelők lehetnek, ha a héber szó maga is nyelvtani (pl. ja'an); a kihagyás
+   nem jelenti, hogy a megfelelés téves.
+5. A „Javított forrás-hivatkozások” szakasz szerint a hibás fejezetszámú hivatkozást a
+   javított alakkal írd, a forrás alakját jelölve: `Y [BDB: X]` (Y a helyes, X a forrásban
+   álló hivatkozás, a Károli-rövidítéssel). Ahol a szakasz „javítás nincs”-et mond, a
+   hivatkozást változatlanul hagyd.
+6. Az adatblokk szövege nem kerül a fordításba, kivéve a fenti `[BDB: X]` jelölést.
+   Hiányzó blokknál (`{{ADATBLOKK}}` helyén „nincs adatblokk”) a v4.1 szerint dolgozol.
+
 ## Ideiglenes terminológia (kötelező megfeleltetés, amíg a 4a élesíti a saját tábláját)
 
 {{TERMINOLOGIA}}
@@ -138,6 +161,10 @@ Zendzsirli, nagy kezdőbetűvel). Az e forrásban előforduló kulcsok gépi kig
 ## Bemenet
 
 Strong-szám: {{STRONG}}{{DARAB_MEGJEGYZES}}
+
+Adatblokk:
+
+{{ADATBLOKK}}
 
 Forrás (Thayer, angol):
 
