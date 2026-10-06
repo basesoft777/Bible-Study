@@ -7,6 +7,7 @@ fazis: 1
 modell: sonnet
 allapot: dontesre_var
 ag: claude/f38-adag6
+lezarva_osszegzes: "A 6. adag (sorrend 407–648, 242 szócikk) lefordítva és rögzítve; kapuk RENDBEN, ellenoriz.py SÉRTÉS 0; döntésre vár: DT-F38j."
 ad: a BDB_teljes_unabridged.tsv mind a 8 090 szócikkének teljes magyar fordítása az adat/forditasok.tsv-ben (allapot=sonnet; az 1–4. adagra is, DT-F38e), gyakorisági sorrendben, adagonként commitolva; ami a futás leállításáig nem készül el, angol marad
 kovetkezo: "Te: a DONTESEK.md DT-F38j (a)–(d) döntése (a 6. adag, sorrend 407–648, kész: 242 szócikk; kész összesen 648 sorrend-sor, hátra 7 416); utána a 7. adag (sorrend 649–) a claude/f38-adag7 ágon."
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, adat/forditasok.tsv, adat/terminologia.tsv, adat/SEMA.md, eszkozok/emeles.py, eszkozok/normalizal.py, eszkozok/forditas_kapuk.py, konkordancia/Konyv_normalizalo_tabla.tsv, F28_EMELES_BRIEF.md, naplok/EMELES_naplo.md, DONTESEK.md, FELADATOK.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv]

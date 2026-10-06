@@ -51,17 +51,23 @@ def main():
     heb = [r for r in sorok if r['nyelv'] == 'heber' and re.match(r'^H\d{4}$', r['strong'])]
     gy = defaultdict(set)
     tw = defaultdict(set)
-    adat = {}
+    # Egy Strong tobb indexsorban is szerepelhet (pl. H1121); az utolso sor nem
+    # irhatja felul a tobbit: minden sor gyokerei es TWOT-szamai halmazkent
+    # gyulnek (a nem ures ertekek; a TWOT-ot igy nem veszitjuk el).
+    gyokok_s = defaultdict(set)
+    twotok_s = defaultdict(set)
     for r in heb:
         bid = r['bdb_id']
         parts = bid.split('.')
         gyok = '.'.join(parts[:2]) if len(parts) >= 3 and bid != '—' else ''
         t = twot_alap(r['twot'])
-        adat[r['strong']] = (gyok, t)
         if gyok:
+            gyokok_s[r['strong']].add(gyok)
             gy[gyok].add(r['strong'])
         if t:
+            twotok_s[r['strong']].add(t)
             tw[t].add(r['strong'])
+    adat = {s: (sorted(gyokok_s[s]), sorted(twotok_s[s])) for s in set(r['strong'] for r in heb)}
     ki = ['\t'.join(['strong', 'bdb_gyok', 'twot', 'bdb_rokonok', 'twot_rokonok', 'csak_bdb'])]
     lefedett = 0
     tobblet = 0
@@ -73,8 +79,8 @@ def main():
         if not gyok:
             continue
         lefedett += 1
-        br = sorted(gy[gyok] - {s})
-        tr = sorted(tw[t] - {s}) if t else []
+        br = sorted(set().union(*[gy[g] for g in gyok]) - {s})
+        tr = sorted(set().union(*[tw[x] for x in t]) - {s}) if t else []
         cs = sorted(set(br) - set(tr))
         if br:
             van_bdb_rokon += 1
@@ -84,7 +90,7 @@ def main():
             twotos += 1
             if cs:
                 twotos_tobblet += 1
-        ki.append('\t'.join([s, gyok, r_or(t), ','.join(br), ','.join(tr), ','.join(cs)]))
+        ki.append('\t'.join([s, ','.join(gyok), r_or(','.join(t)), ','.join(br), ','.join(tr), ','.join(cs)]))
     with open(KI, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(ki) + '\n')
     gyokok = len(gy)
