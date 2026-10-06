@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-06",
-   "commit": "151fcb5"
+   "commit": "8aadec7"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -1170,40 +1170,10 @@
      "🟢"
     ],
     "sor": 120
-   },
-   {
-    "id": "DT46",
-    "feladat": "#56 BDB_ADATBLOKK (M3 ⛔, a javítótábla első eredménye)",
-    "kerdes": "Az `adat/bdb_igehely_javitas.tsv` első eredménye 21 `javitva` sor, ebből 12-nél FIGYELEM-jelzés (a hibás `fejezet:vers` más könyvben is létezik, és ott a Strong-szám szerepel: pl. `Ruth 8:14` → `Ez 8:14`, `Jób 8:14`; könyvnév-hiba gyanú). Javítson-e a tábla ezekben, vagy maradjanak jelöltnek? *(forrás: `naplok/BDB_ADATBLOKK_M0.md` 4. pont 5.)*",
-    "allapot": "alkalmazasra_var",
-    "jelek": [
-     "🟢"
-    ],
-    "sor": 121
-   },
-   {
-    "id": "DT47",
-    "feladat": "#56 BDB_ADATBLOKK (M0, rokon szavak forrása)",
-    "kerdes": "A brief a rokon szavak TWOT-csoportját a `konkordancia/Strong_szotar.tsv`-ből várja, de abban nincs TWOT-oszlop. Használható-e forrásként az `konkordancia/OSHL_lexikalis_index.tsv` (CC BY 4.0, F6.1 importálta; Strong → TWOT-szám hivatkozás, a TWOT szövege nincs a repóban)? *(forrás: `naplok/BDB_ADATBLOKK_M0.md` 1. pont)*",
-    "allapot": "alkalmazasra_var",
-    "jelek": [
-     "🟢"
-    ],
-    "sor": 122
-   },
-   {
-    "id": "DT48",
-    "feladat": "#56 BDB_ADATBLOKK (M5, ellenőr-találat)",
-    "kerdes": "Az ellenőr szerint két átvezetett `javitva` sor tartalmilag gyenge: H4480 `1Kir 32:47` → `1Kir 22:47`: az idézet (מִכֶּם רֵק) az 5Móz 32:47-é, *(javítva az ellenőr 2. körében: a `scan` a H4480-ra az 1Kir 22:47-ben n=1, tehát az előfordulás-keresés nem zárja ki a hivatkozást; a gyanú alapja az idézet, és az, hogy az 5Móz 32:47 a H9006-tal szerepel)*; a könyvnév-gyanú szabály azért nem fogta, mert a `parok_5Moz.tsv` a מִ-t H9006-tal jelöli, nem H4480-nal (nyelvtani Strong-szám előfordulás-keresése megbízhatatlan). H9009 (névelő): ugyanabban a szócikkben 4 érvénytelen fejezetszám (45:14, 45:16, 61:7, 66:6), rendszeres könyvfeloldási hibára vall; az egyetlen jelölt a fejezethatár mellékterméke. Mindkettő bekerült a `forditasok.tsv`-be `Y [BDB: X]` alakban. Mi legyen?",
-    "allapot": "alkalmazasra_var",
-    "jelek": [
-     "🟢"
-    ],
-    "sor": 123
    }
   ],
   "javasolt": [],
   "ellenorizendo": [],
-  "kesz_db": 68
+  "kesz_db": 71
  }
 }
