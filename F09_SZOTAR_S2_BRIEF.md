@@ -13,7 +13,7 @@ olvas: [adat/forditasok.tsv, adat/terminologia.tsv, adat/kiejtes_kivetelek.tsv, 
 ir: [lexikon/, adat/kiejtes_kivetelek.tsv, adat/szotar_szerepek.tsv, eszkozok/torzscikk_general.py, eszkozok/lexikon_general.py, eszkozok/render_diff_osztalyoz.py, MUNKAMENET.md, NYITOTT_FELADATOK.md, adat/forditasok.tsv, eszkozok/kiejtes.py]
 munka: adat
 forras: F05_SZOTAR_BRIEF.md#2. menet — kimenet-változtató
-nem_fugg: [22]
+nem_fugg: [7, 22]
 ---
 
 # F09_SZOTAR_S2_BRIEF — csonk
