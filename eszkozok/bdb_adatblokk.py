@@ -59,6 +59,10 @@ PELDA_MAX = 3            # szoalakonkent legfeljebb ennyi pelda-vers
 PELDA_ABLAK = 45         # a kiemelt szo korul ennyi karakter a versbol
 LXX_MAX = 3
 ROKON_MAX = 5
+# Javitas-szabaly (DT-F56c): ennyi (kulonbozo) vers felett egy Strong-szam talalata nem bizonyit
+# (az ertekelt javitva sorok legnagyobb erteke 358 vers; ez a kuszob 1000, kb. a 23 ezer verses
+# OSZ 4%-a). A nyelvtani listan szereplo Strongra sosem lesz `javitva`.
+GYAKORI_VERS_KUSZOB = 1000
 MAGYAR_MAX = 300         # a meglevo magyar szocikk-reszlet hossza
 
 
@@ -259,6 +263,28 @@ def grammatikai():
     return _cache('gramm', be)
 
 
+def elotag_parok():
+    """{szam: {szam, ...}}: az onallo es a nyelvtani elotag-alak Strong-szama egy szonak
+    szamit (pl. H4480 `min` = H9006 `mi-`). Forras: az adat/grammatikai_strongok.tsv
+    kizaras_oka mezoje (`PREFIXALT valtozata (H9xxx`); a repoban ma csak ez az egy
+    dokumentalt par van. Ures dict, ha a fajl nincs meg."""
+    def be():
+        d = {}
+        elso = True
+        for m in tsv_sorok(GRAMM_UT):
+            if elso:
+                elso = False
+                continue
+            mm = re.match(r'^H0*(\d{1,4})$', m[0])
+            pp = re.search(r'PREFIXÁLT változata \(H0*(\d{1,4})', m[3]) if len(m) > 3 else None
+            if mm and pp:
+                a, b = int(mm.group(1)), int(pp.group(1))
+                d.setdefault(a, {a}).add(b)
+                d.setdefault(b, {b}).add(a)
+        return d
+    return _cache('elotag_parok', be)
+
+
 def twot_szam(t):
     m = re.match(r'^(\d+)', t or '')
     return m.group(1) if m else None
@@ -362,8 +388,13 @@ def javitas_sorok(strong_padded_kulcs, szoveg, ts):
        jeloltek felsorolasaval). Talalgatas nincs."""
     K = _kapuk()
     sz = int(re.match(r'H(\d+)', strong_padded_kulcs).group(1))
-    versek = set(tahot_versek().get(sz, {}))
-    versek.update(v for v, _a, _b, _c in parok().get(sz, []))
+    szamok = elotag_parok().get(sz, {sz})            # onallo + elotag-alak egy szo (DT-F56c)
+    versek = set()
+    for n in szamok:
+        versek.update(tahot_versek().get(n, {}))
+        versek.update(v for v, _a, _b, _c in parok().get(n, []))
+    gramm = strong_padded_kulcs in grammatikai()
+    gyakori = len(versek) > GYAKORI_VERS_KUSZOB
     sorok = []
     for forras, kv, fej, vers in forras_hibas_hivatkozasok(szoveg):
         jelolt = [f for f in fejezet_jeloltek(fej, K.FEJEZETSZAM[kv])
@@ -380,7 +411,7 @@ def javitas_sorok(strong_padded_kulcs, szoveg, ts):
             scope, forras_jel, ts)
         figy = (' FIGYELEM: a %s:%d azonos fejezet:vers masik konyvben is tartalmazza a %s-t (%s) -- a hiba konyvfelodasi '
                 'hiba is lehet.' % (fej, vers, strong_norm(strong_padded_kulcs), ', '.join(masik[:4]))) if masik else ''
-        if len(jelolt) == 1 and not masik:
+        if len(jelolt) == 1 and not masik and not gramm and not gyakori:
             sorok.append({
                 'strong': strong_padded_kulcs,
                 'forras_hivatkozas': forras,
@@ -393,7 +424,15 @@ def javitas_sorok(strong_padded_kulcs, szoveg, ts):
                 'proveniencia': pv,
             })
         else:
-            if jelolt and masik and len(jelolt) == 1:
+            if len(jelolt) == 1 and not masik and (gramm or gyakori):
+                ok = ('a %s a nyelvtani listan szerepel (adat/grammatikai_strongok.tsv)' % strong_norm(strong_padded_kulcs)
+                      if gramm else
+                      'a %s %d versben fordul elo (kuszob: %d), a talalat nem bizonyit'
+                      % (strong_norm(strong_padded_kulcs), len(versek), GYAKORI_VERS_KUSZOB))
+                ind = ('a %s fejezetszam a konyvben nem letezik (max. %d); egy jelolt van (%s %d:%d), de javitas nincs: '
+                       '%s, ezert a jelolt nem igazolja a javitast.%s'
+                       % (fej, K.FEJEZETSZAM[kv], kv, jelolt[0], vers, ok, figy))
+            elif jelolt and masik and len(jelolt) == 1:
                 ind = ('a %s fejezetszam a konyvben nem letezik (max. %d); egy jelolt van (%s %d:%d), de javitas nincs: '
                        'konyvnev-hiba gyanu (szabaly: ha a hibas hivatkozas masik konyvben is letezik es ott a '
                        'Strong-szam szerepel, jelolt_marad).%s'
@@ -733,6 +772,29 @@ def atvezet_szoveg(forditas, javitva_sorok):
             uj = minta.sub(lambda mm, jav=jav, regi=regi: '%s [BDB: %s]' % (jav, regi), uj)
             csere.append((regi, jav, db))
     return uj, csere
+
+
+def regi_alak(forras_hivatkozas):
+    """A forras-hivatkozas (angol alak) magyar megfeleloje a fordításban."""
+    lek = konyv_minta()[1]
+    m = re.match(r'^(.+?)\.?\s+(\d{1,3}):(\d{1,3})$', forras_hivatkozas)
+    return '%s %s:%s' % (lek[m.group(1)], m.group(2), m.group(3))
+
+
+def atvezet_vissza(forditas, javitva_sorok):
+    """Az atvezet_szoveg ellentetje (DT-F56c): a `Y [BDB: X]` alakot X-re allitja vissza, ha X
+    a szocikk jelenlegi `javitva` soraiban nem szerepel (a javitas azota `jelolt_marad` lett).
+    Visszaad: (uj_szoveg, [(Y, X, db)])."""
+    tartott = {regi_alak(s['forras_hivatkozas']) for s in javitva_sorok}
+    csere = {}
+
+    def f(m):
+        if m.group(2) in tartott:
+            return m.group(0)
+        csere[(m.group(1), m.group(2))] = csere.get((m.group(1), m.group(2)), 0) + 1
+        return m.group(2)
+    uj = re.sub(r'(?<![A-Za-zÀ-ɏ0-9])(\d?[A-Za-zÀ-ɏ]+\.? \d{1,3}:\d{1,3}) \[BDB: ([^\]]+)\]', f, forditas)
+    return uj, [(y, x, n) for (y, x), n in csere.items()]
 
 
 # ---------------------------------------------------------------------------

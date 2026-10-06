@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 """
 bdb_atvezet_m5.py -- F56 M5: a javitotabla `javitva` soranak atvezetese az adat/forditasok.tsv
-BDB-fordításain (`Y [BDB: X]`). Szarazon fut; --ir eseten ir. Iras elott/utan a sorok
+BDB-fordításain (`Y [BDB: X]`). Szarazon fut; --ir eseten ir. --visszaallit (DT-F56c): a mar atvezetett
+`Y [BDB: X]` alakot X-re allitja vissza, ha a javitotablaban az X sora azota nem `javitva`. Iras elott/utan a sorok
 soronkenti osszevetese: csak a szandekolt sorok `forditas_hu` mezoje valtozhat, eltereskor megall.
 TSV: split('\t') / '\t'.join(), nem a csv modul.
 """
@@ -30,6 +31,7 @@ def olvas():
 
 def main():
     ir = '--ir' in sys.argv
+    vissza = '--visszaallit' in sys.argv
     sorok = olvas()
     assert not any('\r' in s for s in sorok), 'CR a tablaban'
     javitva = {}
@@ -48,9 +50,14 @@ def main():
         if m[0] != 'BDB':
             continue
         sp = B.strong_padded(m[1])
-        if sp not in javitva:
+        if vissza:
+            if '[BDB: ' not in m[IDX_FORDITAS]:
+                continue
+            ujszoveg, csere = B.atvezet_vissza(m[IDX_FORDITAS], javitva.get(sp, []))
+        elif sp not in javitva:
             continue
-        ujszoveg, csere = B.atvezet_szoveg(m[IDX_FORDITAS], javitva[sp])
+        else:
+            ujszoveg, csere = B.atvezet_szoveg(m[IDX_FORDITAS], javitva[sp])
         if csere:
             m2 = list(m)
             m2[IDX_FORDITAS] = ujszoveg
@@ -58,10 +65,13 @@ def main():
             valtozott.append(i)
             osszes.extend((m[1], m[3], r, j, d) for r, j, d in csere)
     for x in osszes:
-        print('csere: %s jelentes=%s | %s -> %s [BDB: %s] x%d' % (x[0], x[1], x[2], x[3], x[2], x[4]))
+        if vissza:
+            print('visszaallitas: %s jelentes=%s | %s [BDB: %s] -> %s x%d' % (x[0], x[1], x[2], x[3], x[3], x[4]))
+        else:
+            print('csere: %s jelentes=%s | %s -> %s [BDB: %s] x%d' % (x[0], x[1], x[2], x[3], x[2], x[4]))
     # javitva sorok, amelyek nem fordulnak elo a fordításban (pl. kesobbi adag)
     osszes_strong = {x[0] for x in osszes}
-    for strong, ss in sorted(javitva.items()):
+    for strong, ss in ([] if vissza else sorted(javitva.items())):
         for s_ in ss:
             if strong.lstrip('H').lstrip('0') and not any(B.strong_padded(k) == strong for k in osszes_strong):
                 print('nincs elofordulas a forditasban: %s %s' % (strong, s_['forras_hivatkozas']))

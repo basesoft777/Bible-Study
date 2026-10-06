@@ -13,6 +13,7 @@ import os
 import re
 import sys
 import unittest
+from unittest import mock
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -198,7 +199,7 @@ class Javitas(unittest.TestCase):
                 if s['allapot'] == 'javitva':
                     db += 1
                     self.assertNotIn('FIGYELEM', s['indok'])
-        self.assertEqual(db, 9)
+        self.assertEqual(db, 7)   # DT-F56c: a H4480 es a H9009 sora jelolt_marad
 
     def test_tabla_egyezik_az_algoritmussal(self):
         # a --javitas-epit ujrafuttatasa ugyanazt adja (allapot es javitott hivatkozas)
@@ -209,6 +210,40 @@ class Javitas(unittest.TestCase):
                 self.assertEqual(len(tabla), 1, '%s %s' % (sp, s['forras_hivatkozas']))
                 self.assertEqual((tabla[0]['allapot'], tabla[0]['javitott_hivatkozas']),
                                  (s['allapot'], s['javitott_hivatkozas']))
+
+    def test_elotag_par(self):
+        # DT-F56c (a): az onallo es az elotag-alak Strongja egy szo (H4480 min = H9006 mi-)
+        p = B.elotag_parok()
+        self.assertEqual(p[4480], {4480, 9006})
+        self.assertEqual(p[9006], {4480, 9006})
+
+    def test_elotag_par_konyvnev_gyanu(self):
+        # a grammatikai- es gyakorisag-szabaly kikapcsolva is jelolt_marad: az 5Moz 32:47 a H9006-tal
+        # szerepel (a TAHOT-ban), a kozvetlen H4480-kereses ezt nem latja
+        with mock.patch.object(B, 'grammatikai', lambda: set()), mock.patch.object(B, 'GYAKORI_VERS_KUSZOB', 10 ** 9):
+            sorok = B.javitas_sorok('H4480', B.bdb_szocikkek()['H4480'], TS)
+        s = [x for x in sorok if x['forras_hivatkozas'] == '1Ki 32:47']
+        self.assertEqual(len(s), 1)
+        self.assertEqual(s[0]['allapot'], 'jelolt_marad')
+        self.assertIn('5Móz 32:47', s[0]['indok'])
+
+    def test_nyelvtani_strong_nem_javitva(self):
+        # DT-F56c (b): nyelvtani listan szereplo Strongra egyetlen jelolt sem javitas
+        for sp in ('H4480', 'H9009'):
+            self.assertIn(sp, B.grammatikai())
+            for s in B.javitas_sorok(sp, B.bdb_szocikkek()[sp], TS):
+                self.assertEqual(s['allapot'], 'jelolt_marad', (sp, s['forras_hivatkozas']))
+        s = [x for x in B.javitas_sorok('H9009', B.bdb_szocikkek()['H9009'], TS) if x['forras_hivatkozas'] == '1Ki 66:6']
+        self.assertEqual(len(s), 1)
+        self.assertIn('nyelvtani listan', s[0]['indok'])
+
+    def test_gyakori_strong_nem_javitva(self):
+        # DT-F56c (b): kuszob felett (nem nyelvtani) sem javitva; a kuszob alatt igen (H7223)
+        with mock.patch.object(B, 'GYAKORI_VERS_KUSZOB', 100):
+            sorok = B.javitas_sorok('H7223', B.bdb_szocikkek()['H7223'], TS)
+        s = [x for x in sorok if x['forras_hivatkozas'] == 'Eccl 17:10']
+        self.assertEqual(s[0]['allapot'], 'jelolt_marad')
+        self.assertIn('nem bizonyit', s[0]['indok'])
 
     def test_blokk_javitas_szakasz(self):
         b = B.blokk_epit('H7223', TS)
@@ -228,6 +263,27 @@ class Atvezetes(unittest.TestCase):
         uj, cs = B.atvezet_szoveg('Préd 17:100 es Préd 117:10', self.SOR)
         self.assertEqual(uj, 'Préd 17:100 es Préd 117:10')
         self.assertEqual(cs, [])
+
+    def test_visszaallitas(self):
+        # DT-F56c: a mar atvezetett, de azota nem `javitva` alak visszaall; a megtartott javitva marad
+        uj, cs = B.atvezet_vissza('1Kir 22:47 [BDB: 1Kir 32:47] es Préd 7:10 [BDB: Préd 17:10]', self.SOR)
+        self.assertEqual(uj, '1Kir 32:47 es Préd 7:10 [BDB: Préd 17:10]')
+        self.assertEqual(cs, [('1Kir 22:47', '1Kir 32:47', 1)])
+
+    def test_visszaallitas_idempotens(self):
+        egyszer, _ = B.atvezet_vissza('1Kir 22:47 [BDB: 1Kir 32:47]', [])
+        ketszer, cs = B.atvezet_vissza(egyszer, [])
+        self.assertEqual((egyszer, cs), ('1Kir 32:47', []))
+        self.assertEqual(ketszer, egyszer)
+
+    def test_forditasokban_nincs_nem_javitva_jeloles(self):
+        # a forditasok.tsv-ben csak `javitva` sorra van [BDB: X] jeloles
+        for sor in open(B.FORDITASOK_UT, encoding='utf-8').read().split(chr(10)):
+            m = sor.split(chr(9))
+            if len(m) == 12 and m[0] == 'BDB' and '[BDB: ' in m[6]:
+                javitva = [x for x in B.javitotabla_olvas().get(B.strong_padded(m[1]), []) if x['allapot'] == 'javitva']
+                uj, cs = B.atvezet_vissza(m[6], javitva)
+                self.assertEqual(cs, [], m[1])
 
     def test_ketszeri_futtatas_idempotens(self):
         egyszer, _ = B.atvezet_szoveg('Préd 17:10', self.SOR)
