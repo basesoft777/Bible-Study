@@ -1,0 +1,6 @@
+alap: 79a1afd; regi sorok: 278127; uj sorok: 278168
+Psa.13 sorok regi: 0, uj: 41
+a Psa.13 kivul a fajl bajtra azonos: True
+sorrend: a regi sorok az ujban azonos sorrendben (reszsorozat): True
+uj Psa.13 versek: Psa.13.3, Psa.13.4, Psa.13.5, Psa.13.6; sorok: 41; 7. oszlop mind mt: igen
+nulladiff eredmeny (a Zsolt 13-on kivul): 0
