@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-06",
-   "commit": "c2b1446"
+   "commit": "9071ad6"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -87,7 +87,7 @@
   {
    "kulcs": "dt",
    "cimke": "Nyitott döntés",
-   "db": 5
+   "db": 4
   }
  ],
  "sor": [
@@ -792,16 +792,6 @@
     "sor": 22
    },
    {
-    "id": "DT-M1",
-    "feladat": "MUNKATERV → OLVASOI_KONKORDANCIA (#25a)",
-    "kerdes": "Kiadható-e az olvasói konkordancia (vers- és szó-lap, motívum nélkül) a #25 előtt, a #11/#23-tól függetlenül? Ez átrendezi a FELADATOK sorrendjét: a #25 kettéválik, #25a konkordancia (függ SQLITE_EPIT, #44), #25b motívumos nézet (függ #11, #23). *(forrás: `MUNKATERV.md` 2. szakasz, 0. lépcső)*",
-    "allapot": "nyitott",
-    "jelek": [
-     "🟡"
-    ],
-    "sor": 96
-   },
-   {
     "id": "DT-M4",
     "feladat": "MUNKATERV → OLVASOI_KONKORDANCIA szó-lap",
     "kerdes": "Bővüljön-e a SEMA 2.13 szerepmátrix: 13. szerep Károli-megfelelők (+ SZPA-alternatíva), 14. szerep rejtett/hamis párhuzam? *(forrás: `MUNKATERV.md` 2. szakasz, 0. lépcső)*",
@@ -1022,6 +1012,16 @@
      "🟢"
     ],
     "sor": 94
+   },
+   {
+    "id": "DT-M1",
+    "feladat": "MUNKATERV → OLVASOI_KONKORDANCIA (#25a)",
+    "kerdes": "Kiadható-e az olvasói konkordancia (vers- és szó-lap, motívum nélkül) a #25 előtt, a #11/#23-tól függetlenül? Ez átrendezi a FELADATOK sorrendjét: a #25 kettéválik, #25a konkordancia (függ SQLITE_EPIT, #44), #25b motívumos nézet (függ #11, #23). *(forrás: `MUNKATERV.md` 2. szakasz, 0. lépcső)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 96
    },
    {
     "id": "DT-M2",
