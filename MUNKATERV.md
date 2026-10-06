@@ -29,7 +29,7 @@ Hat döntés (DT-M1–M6), amit a feladatok előtt vagy mellett a felhasználón
 | DT-M7 | Maradjon-e az MCP\_BUROK a 3. hullámban (a chatbeli újravizsgálat szerint a tényleges többlet az automatikus naplózás — MCP nélkül is a `lekerdez.py`-ban —, a strukturált hívás és a claude.ai-ból való hozzáférés, utóbbi csak hostolva) | 🟢 2026-10-05: kikerül a 3. hullámból, **feltételes**: akkor jön, ha a chatből való adathozzáférés ténylegesen hiányzik, vagy repó nélkül dolgozó munkatárs lesz; előbb a `lekerdez.py` automatikus naplózása (#61) | MCP\_BUROK |
 | DT-M8 | A TERV\_BEFOGAD maradéka külön brief nélkül | 🟢 2026-10-05: nincs külön brief; (a) a 3. szakasz pipája, (b) az `ATALAKITASI_TERV.md.md` 4.7 jelölése és (c) a `CLAUDE.md` KJV-sora a #52 2. futásában (elvégezve, 2026-10-06); a (d) a #11 briefjének `olvas:` sorába kerül a befogadáskor; a #48 a `CLAUDE.md` KJV-sorát a régi fájlok kivezetésekor a végleges állapotra igazítja | TERV\_BEFOGAD |
 
-A DT-M1 volt a legsúlyosabb: átrendezi a FELADATOK sorrendjét (eldöntve, 2026-10-06). Eldöntve: DT-M1, M2, M3, M7, M8; nyitott: DT-M4, M5, M6.
+A DT-M1 volt a legsúlyosabb: átrendezi a FELADATOK sorrendjét (eldöntve, 2026-10-06). Eldöntve (🟢): DT-M1, M2, M3, M7, M8; nyitott: DT-M4, M5, M6.
 
 ## 3. 0. lépcső — a felhasználó kézi lépései
 
@@ -40,7 +40,7 @@ Ezek nélkül a `/kovetkezo` nem indítja a függő feladatokat, mert a forráso
 - [x] az openbible.info licencnyilatkozata szó szerint → `adat/kulso/openbible_crossrefs_LICENC.txt` (#44; bent, F44.1)
 - [x] `ADATVAGYON_TERV.md` és `MUNKATERV.md` a repó gyökerébe, commit (`ab73f7b`, 2026-10-04)
 - [x] a #23/#25 brief `olvas:` listájába felvéve (DT-M8 (a): mindkét fejlécben bent; a #11 briefjébe a befogadáskor, DT-M8 (d))
-- [ ] a 2. szakasz DT-tételei eldöntve: DT-M1, M2, M3 ✅ (2026-10-05/06), DT-M7, M8 ✅; **nyitott: DT-M4, M5, M6**
+- [ ] a 2. szakasz DT-tételei eldöntve: DT-M1, M2, M3, M7, M8 🟢 (2026-10-05/06); **nyitott: DT-M4, M5, M6**
 - [ ] a #38 6. adagja: a DT-F38i 🟢 feloldva; az M0 5. pont (BDB-gyökcsoport-felmérés) a 6. adag menetének elején fut (FELADATOK #38 következő lépés), ellenőrizendő
 - [ ] tárhely-döntés előkészítése: böngészős SQLite, cPanel (PHP vagy Python a lekérdező) vagy Netlify — a licenc nem kényszerít (DT-F33f), a mód és az offline-igény dönt (DT-F33j); az OLVASOI\_KONKORDANCIA előtt ⛔
 
@@ -57,7 +57,7 @@ Minden sor egy brief. A „kis minta" oszlop az elfogadási próba, amit a telje
 | — | MCP\_BUROK (**feltételes**, DT-M7: csak ha a chatből való adathozzáférés hiányzik, vagy repó nélkül dolgozó munkatárs lesz; előbb a #61) | FastMCP burok a `lekerdez.py`-ra, ≤ 8 eszköz: `lekerdez(parancs, …)`, `vers_lap`, `szo_lap`, `lelet_lap`, `ellenoriz`, `karoli_szoalakok`; minden hívás proveniencia-sorral (`csatorna=mcp`) és `auditok.tsv`-sorral (`lepes` a kutatási lépés kódja vagy `adhoc`, DT-M3); csak olvasó; `.mcp.json` | SQLITE\_EPIT, `lekerdez.py` | `eszkozok/mcp_szerver.py`, `.mcp.json`, `naplok/MCP_BUROK_eszkozteszt.md` | a `lexikai-scan` subagent egy ANTROP-001 futása eszközökön át ugyanazt adja, mint CLI-n | SQLITE\_EPIT, #61, DT-M5 | 1 |
 | #56 | BDB\_ADATBLOKK | a 12.1 szócikk-adatlekérés build-lépésként: Python előre számolja a Károli-szóalakok, példaversek, LXX-híd, rokonok, meglévő szócikk blokkját, és az adagfájlban a BDB-szócikk elé fűzi; `terminologia.tsv` olvasása minden adagban; a fordító prompt egy sora (`[NINCS KÁROLI-ALAK]`) | közvetlen TSV (a #56 briefje szerint nem függ az SQLITE\_EPIT-től), `BDB_FORDITAS_BRIEF.md` | adagfájl-generátor; a #38 javító menetének briefje | 10 szócikk H2617 körül: a blokk minden száma és idézete eszköz-kimenetből | — (F56 `fugg: []`); a #38 nem előfeltétel, hanem ráépül: a 6. adag a #56 után fut (F38 `fugg: [34, 56]`, F56 `nem_fugg: [38]`, DT-F38i 🟢) | 1 |
 | #63 | JELOLTEK\_RETRO | a 8 retroaktív (F3/N14) motívum `jeloltek.tsv`-sorainak feltöltése a naplókból; a származtatott „még nem vizsgált" lista (`auditok` scan − `jeloltek`) generátora; a 12-es lelet-lap adatának első teljes futása | `tematikus_lezart/naplok/*.md`, `auditok.tsv`, `jeloltek.tsv` | `jeloltek.tsv` bővítés (PR), `eszkozok/nem_vizsgalt.py`, `naplok/JELOLTEK_RETRO_lelet_ANTROP.md` | ANTROP-001: minden ★ sor mellett `dontes` + `indoklas`, 0 „még nem vizsgált" | #62\* (szoftfüggés; az adat megvan) | 1–2 |
-| #25a | OLVASOI\_KONKORDANCIA (a #25 kettéválasztása után, DT-M1 🟢) | első publikus kiadás motívum nélkül: `general.py --cel verslap / szolap`; szó-lap a szerepmátrix (18.5) szerint, `allapot` vezérli a blokkokat; vers-lap KK-kulccsal, Károli 1908 nyílt szöveg; lekérdező a hosting-döntés szerint (böngészős SQLite, cPanel PHP vagy Netlify Function) a `kereskedelmi` oszlop szerinti mód-szűrővel (DT-F33j); tipográfia/színséma kapcsoló | SQLITE\_EPIT, `Karoli_1908` (közkincs, DT-F33e), 1–6, 13–16, 18–20. pont | `kimenet/olvasoi/` generált oldalak, `api/kereses.*`, `naplok/OLVASOI_KONKORDANCIA_publikalas.md` | 20 vers + 20 Strong lapja; minden adat a `pardes.db`-ből; minden blokk alatt forrás és licenc, nincs blokk dataset-kulcs nélkül (nem kereskedelmi mód, N-F33b) | SQLITE\_EPIT (a #44 ✅, DT-M1 🟢), DT-M4, DT-M6; hosting ⛔ | 2–3 |
+| — | OLVASOI\_KONKORDANCIA (a #25 kettéválasztása után #25a, DT-M1 🟢) | első publikus kiadás motívum nélkül: `general.py --cel verslap / szolap`; szó-lap a szerepmátrix (18.5) szerint, `allapot` vezérli a blokkokat; vers-lap KK-kulccsal, Károli 1908 nyílt szöveg; lekérdező a hosting-döntés szerint (böngészős SQLite, cPanel PHP vagy Netlify Function) a `kereskedelmi` oszlop szerinti mód-szűrővel (DT-F33j); tipográfia/színséma kapcsoló | SQLITE\_EPIT, `Karoli_1908` (közkincs, DT-F33e), 1–6, 13–16, 18–20. pont | `kimenet/olvasoi/` generált oldalak, `api/kereses.*`, `naplok/OLVASOI_KONKORDANCIA_publikalas.md` | 20 vers + 20 Strong lapja; minden adat a `pardes.db`-ből; minden blokk alatt forrás és licenc, nincs blokk dataset-kulcs nélkül (nem kereskedelmi mód, N-F33b) | SQLITE\_EPIT (a #44 ✅, DT-M1 🟢), DT-M4, DT-M6; hosting ⛔ | 2–3 |
 | — | SZPA\_AUDIT | a profil C üzemmódja: 1.2 tiltólista és 1.1 kötött párok gépi ellenőrzése a tanulmányok prózáján és a BDB-fordításon; kimenet a C-táblázat | `SZPA_FORDITOI_PROFIL_prompt.md`, tanulmányok, `forditasok.tsv` | `naplok/SZPA_AUDIT_szpa_audit.tsv` | 2 tanulmány + 50 szócikk | — | ½ |
 
 Az OLVASOI\_KONKORDANCIA után a meglévő lánc fut tovább: #23 (motívum-séma, mélységi szintek) → #9/#10 (lexikonoldal) → #11 (egy forrásból renderelés) → #25b (motívum-lap, lelet-lap ★, a 7–12. és 21–26. pont). Az MCP\_BUROK (feltételes, DT-M7) és a JELOLTEK\_RETRO kimenete ezekbe épül, nem külön rendszer.
@@ -71,7 +71,7 @@ Minden nyitott FELADATOK-sor (státuszok és függések frissítve 2026-10-06, #
 | # | feladat | státusz | függ | terv | kapcsolat |
 | --- | --- | --- | --- | --- | --- |
 | #22 | Károli–Strong párosítás könyvenként | ⛔ megállt (1–5Móz és Józs kész, a Józs PR #165 mergelve; a következő könyv a Bírák: előbb versbeosztás-detektor és kézi jóváhagyás) | #21 ✅ | **bemenet** | KAROLI\_ELLENORZES (#65) könyvenként újrafut rá; SQLITE\_EPIT, OLVASOI\_KONKORDANCIA forrása; 13. szerep (DT-M4) |
-| #38 | BDB teljes magyar fordítása | ▶ fut (5 adag kész; a 6. adag a #56 adatblokkjával, DT-F38i 🟢) | #34 ✅, #56\* | **módosul** | a 6. adagtól a #56 BDB\_ADATBLOKK adatblokkjával; javító menet a teljes #22 után |
+| #38 | BDB teljes magyar fordítása | ▶ fut (5 adag kész; a 6. adag a #56 adatblokkjával, DT-F38i 🟢) | #34 ✅, #56 ✅ | **módosul** | a 6. adagtól a #56 BDB\_ADATBLOKK adatblokkjával; javító menet a teljes #22 után |
 | #43 | LXX-döntések ellenőrzése lxx\_bridge-dzsel | ✅ kész (2026-10-04, PR #167; DT-F43: a bridge nem független forrás, csak tájékoztató) | #8 ✅ | **bemenet** | a 26-os pont, a szó-lap LXX-blokkja |
 | #44 | Licenc-utókövetés: Károli 1908, openbible.info | ✅ kész (2026-10-05, PR #205; a Károli-rész tárgytalan, DT-F33e; a `karoli_bible_hu` elvetve, DT31; nyitott: az openbible-import külön feladat, DT34, és a DT-M5) | #33 ✅, #42 ✅ | **bemenet** | az OLVASOI\_KONKORDANCIA publikálási előfeltétele teljesült |
 | #46 | BDB rosszul feloldott könyvnevei | ✅ kész (2026-10-03) | #34 ✅ | marad | a #56 példaversei innen javítva |
@@ -83,7 +83,7 @@ Minden nyitott FELADATOK-sor (státuszok és függések frissítve 2026-10-06, #
 | #48 | KJV\_REGI\_KIVEZETES: a régi studybible.info KJV/ASV fájlok kivezetése, minden az eBible KJV-forrásra | ⬜ | #19 ✅, #21 ✅, #22 | **bemenet** | az SQLITE\_EPIT KJV-forrása a `KJV_Strongs_teljes`; az ASV kiesik (N29 lezárva, D7); a `CLAUDE.md` KJV-sorát a végleges állapotra igazítja (DT-M8) |
 | #54 | LXX\_OS\_LEFEDETTSEG: az 503 lefedetlen Károli-vers (valódi görög hiány vagy versszámozási rés) | ⬜ (⛔ az M0 után) | #42 ✅, #62\* | marad | a 26-os pont (LXX-híd) hiánykezelése: a lefedetlen vers explicit üres eredmény; a tervet nem érinti |
 | #55 | ZSOLTAR\_UJRAELLENORZES: az eltolt zsoltár-kivonatra épülő állítások újraellenőrzése | ⬜ (⛔ az M0 után) | #42 ✅, #54\*, #63\*, #65\* | marad | szoftfüggés a #54, #63, #65 fájljaira; a tervet nem érinti |
-| #56 | BDB\_ADATBLOKK (közvetlen TSV-változat) | ⬜ (⛔ az M3 mintablokk után) | — | **tervezett** | a #38 6. adagja ráépül; a javítótábla az 1–5. adagra is visszamenőleg |
+| #56 | BDB\_ADATBLOKK (közvetlen TSV-változat) | ✅ kész (PR #218, 2026-10-06; DT48 alkalmazva) | — | **tervezett** | a #38 6. adagja ráépül; a javítótábla az 1–5. adagra is visszamenőleg |
 | #63 | JELOLTEK\_RETRO | ⬜ (⛔ az M0 után) | #62\* | **tervezett** | az első teljes lelet-lap-adat; a #65 és a #55 szoftfüggése |
 | #64 | TEREMT002\_PROZA\_PROBA (#12a) | ⬜ (indítás a #23 M0 jóváhagyása után) | — | marad | a #23 M1 bemenete (DT-F32a); a #12 első fele |
 | #65 | KAROLI\_ELLENORZES | ⬜ (⛔ az M0 után) | #62, #63\* | **tervezett** | a #22 kész könyveire fut (`nem_fugg: [22]`); DT-M2 🟢 |
@@ -93,13 +93,13 @@ Minden nyitott FELADATOK-sor (státuszok és függések frissítve 2026-10-06, #
 
 | # | feladat | státusz | függ | terv | kapcsolat |
 | --- | --- | --- | --- | --- | --- |
-| #9 | Szótári adatréteg S2 | ⬜ | #5, #6 ✅, #7\*, #23, #38\*, #56\* | marad | lexikonoldal = szó-lap elv; a 13–14. szerep (DT-M4) ide |
+| #9 | Szótári adatréteg S2 | ⬜ | #5, #6 ✅, #7\*, #23, #38\* | marad | lexikonoldal = szó-lap elv; a 13–14. szerep (DT-M4) ide |
 | #10 | 8 lexikonoldal lezárása | ⬜ brief kell | #8 ✅, #9, #11 | marad | a mérce: a sablon Minőségi kapuja (L1, L3–L6) + minden rés kitöltött vagy explicit hiány-/`adat`-jelölésű (DT2 🟢, 2026-10-06); N18, N19 nem blokkol; a #8 négy nyitott sora előfeltétel |
 | #11 | Migráció: egy forrásból renderelés | ⬜ brief kell (a #12a után) | #9, #23 | **módosul** (kicsi) | `olvas:` listába az ADATVAGYON\_TERV (DT-M8 (d), a befogadáskor); vers-lap/szó-lap mint `general.py --cel` ide ? |
 | #12 | TEREMT-002 3. lépés | ⬜ brief kell | #11 | marad | — |
 | #13 | 1Móz 17-től tanulmányok, 6 betöltetlen motívum | ⬜ brief kell | #10 | marad | a #63 után tisztábban futhat ? |
 | #25 | Olvasói felület: statikus HTML mélységgel | ⬜ brief kell (a kettéválasztás külön `/befogad`) | #11, #12, #23 | **módosul** | DT-M1 🟢 (2026-10-06): kettéválik — **#25a** = OLVASOI\_KONKORDANCIA (konkordancia motívum nélkül, függ SQLITE\_EPIT; a #44 ✅), **#25b** motívumos nézet (függ #11, #12, #23) |
-| #36 | Éles lexikon/ újragenerálása | ⬜ | #7\*, #9\*, #28 ✅, #34 ✅, #35 ✅, #37\*, #38\*, #56\* | marad | az OLVASOI\_KONKORDANCIA (#25a) generátora ugyanabban a CI-futásban (N33); a #42 ✅ után renderel újra (elavult törzscikkek) |
+| #36 | Éles lexikon/ újragenerálása | ⬜ | #7\*, #9\*, #28 ✅, #34 ✅, #35 ✅, #37\*, #38\* | marad | az OLVASOI\_KONKORDANCIA (#25a) generátora ugyanabban a CI-futásban (N33); a #42 ✅ után renderel újra (elavult törzscikkek) |
 | #59 | SZOSZEDET: jóváhagyott, szerkesztői magyarázó tábla az olvasói nézethez | ⬜ (⛔ a tervezet után, tételenkénti jóváhagyás) | #58 ✅ | **bemenet** | az OLVASOI\_KONKORDANCIA (#25a) szó-lapjának szakszavai; minden sor „szerkesztői szöveg" jelölésű |
 
 **Folyamat és eszközök**
@@ -126,7 +126,7 @@ Minden nyitott FELADATOK-sor (státuszok és függések frissítve 2026-10-06, #
 | #62 STRONG\_NORMALIZAL | eszközök | N37, N21 |
 | SQLITE\_EPIT | eszközök | #62, SEMA 3. |
 | MCP\_BUROK (feltételes, DT-M7) | eszközök | SQLITE\_EPIT, ATALAKITASI\_TERV 11.7, #61 |
-| #56 BDB\_ADATBLOKK | 1. adatréteg | közvetlen TSV; a #38 ráépül (a 6. adag a #56 után, DT-F38i) |
+| #56 BDB\_ADATBLOKK | 1. adatréteg | közvetlen TSV; a #38 ráépül (a 6. adag a #56 adatblokkjával, DT-F38i; a #56 kész) |
 | #63 JELOLTEK\_RETRO | 1. adatréteg | SEMA 2.4, F3/N14, #62\* |
 | OLVASOI\_KONKORDANCIA (= #25a) | 2. render | SQLITE\_EPIT, DT-M1 🟢, DT-M4, DT-M6 |
 | SZPA\_AUDIT | folyamat | SZPA-profil |
@@ -141,10 +141,10 @@ A feladatok négy hullámban futnak; egy hullámon belül párhuzamosíthatók (
 
 | hullám | feladatok | miért együtt | ⛔ a végén |
 | --- | --- | --- | --- |
-| 1 | 0. lépcső (kész); TERV\_BEFOGAD (lezárva); #62 STRONG\_NORMALIZAL; #63 JELOLTEK\_RETRO; #56 BDB\_ADATBLOKK; SZPA\_AUDIT | egyik sem igényel új adatot; a #63 az első teljes lelet-lap-adat, az SZPA\_AUDIT azonnal mérhető hozam; a #56 közvetlen TSV-változat (nem függ az SQLITE\_EPIT-től), a #38 6. adagjának előfeltétele | DT-M1–M3 eldöntve (✅); a #43 és a #44 kész; a DT-M4–M6 nyitott; a #38 6. adagja a #56 adatblokkjával indul (DT-F38i 🟢) |
+| 1 | 0. lépcső (kész); TERV\_BEFOGAD (lezárva); #62 STRONG\_NORMALIZAL; #63 JELOLTEK\_RETRO; #56 BDB\_ADATBLOKK (kész); SZPA\_AUDIT | egyik sem igényel új adatot; a #63 az első teljes lelet-lap-adat, az SZPA\_AUDIT azonnal mérhető hozam; a #56 közvetlen TSV-változat volt (nem függött az SQLITE\_EPIT-től), PR #218-cal kész | DT-M1–M3 eldöntve (🟢); a #43 és a #44 kész; a #38 6. adagja a #56 adatblokkjával indul (DT-F38i 🟢) |
 | 2 | #65 KAROLI\_ELLENORZES; SQLITE\_EPIT | a #65 a #22 kész könyveire fut, és a #62-től, #63-tól függ; az SQLITE\_EPIT a #62-re épül; a két brief független | az SQLITE\_EPIT integritási tesztje 0 sértés; a KAROLI\_ELLENORZES eltéréslistája átnézve, a triplet-frissítés PR-je befogadva |
-| 3 | MCP\_BUROK (**feltételes**, DT-M7) | a `pardes.db`-n ül; csak akkor jön, ha a chatből való adathozzáférés hiányzik, vagy repó nélkül dolgozó munkatárs lesz; előbb a #61 LEKERDEZ\_NAPLO adja az automatikus naplózást | az MCP\_BUROK eszközteszt egyezik a CLI-vel (ha a hullám elindul) |
-| 4 | #25a OLVASOI\_KONKORDANCIA | az első publikus kiadás; csak a hosting-döntés és a DT-M6 után | hosting ⛔; a mód-szűrő és a blokkonkénti forrásjelölés átnézve (DT-F33j, N-F33b); első 40 lap jóváhagyva → publikálás |
+| 3 | — (az MCP\_BUROK a DT-M7 szerint kikerült a hullámból; feltételes) | a `pardes.db`-n ül; csak akkor jön, ha a chatből való adathozzáférés hiányzik, vagy repó nélkül dolgozó munkatárs lesz; előbb a #61 LEKERDEZ\_NAPLO adja az automatikus naplózást | az MCP\_BUROK eszközteszt egyezik a CLI-vel (ha a hullám elindul) |
+| 4 | OLVASOI\_KONKORDANCIA (a #25a) | az első publikus kiadás; csak a hosting-döntés és a DT-M6 után | hosting ⛔; a mód-szűrő és a blokkonkénti forrásjelölés átnézve (DT-F33j, N-F33b); első 40 lap jóváhagyva → publikálás |
 | után | #23 → #9/#10 → #11 → #25b | a motívum-réteg a kész konkordanciára ül | a FELADATOK meglévő megállásai (A4/B5) |
 
 A hullámoktól függetlenül, folyamat-feladatként fut: #50 CI\_JAVITO\_KOR és #52 TERV\_SZINKRON (ismétlődő, a briefje 2. pontja szerinti eseményeknél); a #51 KONZISZTENCIA kész (napi helyi ütemezés). A tervet nem érintő önálló feladatok: #54, #55, #64 (a #23 M1 bemenete, DT-F32a), #66; a tervhez bemenetként kapcsolódik a #59 SZOSZEDET, a #60 OLVASOI\_PILOT és a #61 LEKERDEZ\_NAPLO (DT-M3).
@@ -153,13 +153,13 @@ Közben folyamatosan: **#22** könyvenként (1–5Móz és Józs kész; ⛔ a fe
 
 ```
 1. hullám  ─▶  2. hullám  ─▶  3. hullám  ─▶  4. hullám  ─▶  #23 → #9/#10 → #11 → #25b
-0. lépcső ✓         #65 KAROLI_ELLENORZES   MCP_BUROK       #25a OLVASOI_KONKORDANCIA
-TERV_BEFOGAD ✓      SQLITE_EPIT             (feltételes)
+0. lépcső ✓         #65 KAROLI_ELLENORZES   —               OLVASOI_KONKORDANCIA (a #25a)
+TERV_BEFOGAD ✓      SQLITE_EPIT             (MCP_BUROK: feltételes, DT-M7)
 #62 STRONG_NORMALIZAL
 #63 JELOLTEK_RETRO
 #56 BDB_ADATBLOKK
 SZPA_AUDIT
-     ⛔ DT-M4–6 nyitott  ⛔ 0 sértés          ⛔ (DT-M7)      ⛔ hosting, DT-M6
+                         ⛔ 0 sértés                         ⛔ hosting, DT-M6
 ```
 
 ## 6. Kockázatok és mérőszámok
