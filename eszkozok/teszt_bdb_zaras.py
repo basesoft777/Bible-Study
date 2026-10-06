@@ -164,7 +164,7 @@ class DTF38g(unittest.TestCase):
         for strong, nev, regi, uj, iras in KEZI3:
             hu = sorok[strong]['forditas_hu']
             self.assertEqual(hu.count(uj), 1, strong)
-            if regi not in uj:  # a H5674 uj szovege tartalmazza a regit (beszurt `a Szellemről`)
+            if regi not in uj:  # ha az uj tartalmazna a regit, a regi szamlalasa nem ertelmes
                 self.assertEqual(hu.count(regi), 0, strong)
 
     def test_h3772_h4397_h4264_szoveg(self):
@@ -206,11 +206,14 @@ class Zaras3Idempotencia(unittest.TestCase):
             self.assertFalse(valt2, sp)
             self.assertEqual(masodik, elso, sp)
 
-    def test_h5674_regi_resze_az_ujnak(self):
+    def test_h5674_csere_idempotens(self):
         sp, nev, regi, uj, iras = [k for k in KEZI3 if k[0] == 'H5674'][0]
-        self.assertIn(regi, uj)  # ez volt a duplikálás oka
-        elso, _ = alkalmaz('x ' + regi, regi, uj)
-        self.assertEqual(alkalmaz(elso, regi, uj)[0].count('a Szellemről a Szellemről'), 0)
+        # a DT-F38h (c) átfogalmazás óta az új szöveg nem tartalmazza a régit (a régi duplikálás oka megszűnt)
+        elso, valt = alkalmaz('x ' + regi, regi, uj)
+        self.assertTrue(valt)
+        masodik, valt2 = alkalmaz(elso, regi, uj)
+        self.assertFalse(valt2)
+        self.assertEqual(masodik.count('a Szellem a Szellem'), 0)
 
     def test_se_regi_se_uj_hiba(self):
         with self.assertRaises(SystemExit):

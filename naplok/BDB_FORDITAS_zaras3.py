@@ -47,7 +47,7 @@ KEZI3 = [
     ('H3772', 'rv_av_kezi', 'helyet rendszerint az RV made for thee a covenant with them,',
      'helyet rendszerint így fordítják: RV made for thee a covenant with them,', 'igen (kézi, DT-F38g 1)'),
     ('H5674', 'szellem_nagybetu', 'abszolút használatban és מֵאֵת 1Kir 22:24',
-     'a Szellemről abszolút használatban és מֵאֵת 1Kir 22:24', 'igen (kézi, DT-F38g 2)'),
+     'abszolút használatban + מֵאֵת: a Szellem 1Kir 22:24', 'igen (kézi, DT-F38g 2; átfogalmazva: DT-F38h c)'),
     ('H4397', 'rv_av_kezi', '(az angyal RV too specific)', '(az RV angel szava túl szűk)',
      'igen (kézi, DT-F38g 4)'),
     ('H4264', 'elofordulas', '1Móz 33:816t.', '1Móz 33:8, összesen 16-szor', 'igen (kézi, DT-F38g 5)'),
@@ -59,11 +59,18 @@ MEGJ3 = {'H2403': (JELOLES_28_REGI, JELOLES_H2403)}
 # strong -> (nagybetus `Szellem*` szoalak, egy kontextus-reszlet, amely egyszer all)
 SZELLEM_KOVETELT = {
     'H1320': [('Szellem', 'nem Szellem Ézs 31:3')],
+    'H2451': [('Szellemet', 'tanítványainak adja az isteni Szellemet 1:23')],  # DT-F73a: BDB: the divine spirit
+    'H3847': [('Szelleme', 'az ׳י Szelleme felöltözte Gedeont')],  # DT-F73a
+    'H5012': [('Szellem', '1 az isteni Szellem hatása alatt prófétál'),
+              ('Szellem', '1 Az isteni Szellem hatása alatt prófétál')],  # DT-F73a
+    'H5117': [('Szelleméről', 'az ׳י Szelleméről 4Móz 11:25-26')],  # DT-F73a
     'H3947': [('Szellem', 'Ez 3:14 a Szellem felemelt')],
     'H5307': [('Szelleme', 'a ׳י Szelleme 11:5')],
     'H5414': [('Szellememet', 'Szellememet adom rá Ézs 42:1')],
     'H5650': [('Szellemmel', 'isteni Szellemmel')],
-    'H5674': [('Szellemről', 'a Szellemről abszolút használatban és מֵאֵת 1Kir 22:24')],
+    'H4390': [('Szellemmel', 'Szellemmel betölteni 31:3; 35:31')],  # DT-F38h (b)
+    'H5674': [('Szellem', 'מֵאֵת: a Szellem 1Kir 22:24')],  # DT-F38h (c)
+    'H6743': [('Szellem', 'Bír 14:6 a Szellem')],  # DT52 (d): BDB: the Spirit . . . rushed upon him
     'H7307': [('Szellem', 'Di Bu: isteni Szellem, vö. 32:8'),
               ('Szelleme', 'c. ezért Isten Szelleme: 1Móz 6:3'),
               ('Szellem', 'prófétai Szellem, 9b)'),
@@ -98,7 +105,7 @@ def alkalmaz(szoveg, regi, uj):
     """Egy kezi csere idempotens alkalmazasa. Eredmeny: (uj szoveg, valtozott-e).
 
     Ha az `uj` mar pontosan egyszer all a szovegben, a csere megtortent (az `uj` a `regi`-t is
-    tartalmazhatja, pl. H5674: a `regi` az `uj` resze), ezert nem nyul hozza. Egyebkent a `regi`
+    tartalmazhatja; a H5674-nel ez a DT-F38h (c) atfogalmazasa ota nem all fenn), ezert nem nyul hozza. Egyebkent a `regi`
     pontosan egyszer alljon, kulonben hiba."""
     if szoveg.count(uj) == 1:
         return szoveg, False
