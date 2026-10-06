@@ -575,6 +575,8 @@ FEJEZETSZAM = {
 
 def ellenoriz_fejezetszam(forditas):
     rossz = []
+    # F56 M5: a `Y [BDB: X]` jelolesben X a forras (hibas) hivatkozasa, szandekosan nem javitott
+    forditas = re.sub(r'\[BDB: [^\]]*\]', '', forditas)
     for m in re.finditer(r'(?<![A-Za-zÀ-ɏ0-9])(%s) (\d{1,3}):\d'
                          % '|'.join(sorted(map(re.escape, FEJEZETSZAM), key=len, reverse=True)), forditas):
         if int(m.group(2)) > FEJEZETSZAM[m.group(1)]:
@@ -590,9 +592,21 @@ def _vers_ocr_javit(forras):
     return forras
 
 
+BDB_JELOLES = re.compile(r'(?<![A-Za-zÀ-ɏ0-9])\d?[A-Za-zÀ-ɏ]+\.? \d{1,3}:\d{1,3} \[BDB: ([^\]]+)\]')
+
+
+def bdb_jeloles_vissza(forditas):
+    """F56 M5: a `Y [BDB: X]` alakot a forras hivatkozasara (X) allitja vissza, hogy a
+    forrassal osszevetho kapuk (versszam, konyvek stb.) a forras alakjat lassak."""
+    return BDB_JELOLES.sub(lambda m: m.group(1), forditas)
+
+
 def kapuk_futtat(szotar, forras, forditas, bizonytalan=()):
-    """[(nev, eredmeny, reszlet), ...]"""
+    """[(nev, eredmeny, reszlet), ...]. A 13. kapu a nyers szoveget kapja; a tobbi a
+    `Y [BDB: X]` -> `X` visszaallitott szoveget (F56 M5)."""
     karoli, term = _betolt()
+    forditas_nyers = forditas
+    forditas = bdb_jeloles_vissza(forditas)
     ki = [
         ('1_gorog_heber',) + _p4.ellenoriz_1_gorog_heber(forras, forditas),
         ('2_versszam',) + _p4.ellenoriz_2_versszam(_vers_ocr_javit(forras), forditas),
@@ -607,7 +621,7 @@ def kapuk_futtat(szotar, forras, forditas, bizonytalan=()):
         ki.append(('10_torzs',) + ellenoriz_torzs(forras, forditas))
     ki.append(('11_konyvek',) + ellenoriz_konyvek(forras, forditas))
     ki.append(('12_szentlelek',) + ellenoriz_szentlelek(forditas))
-    ki.append(('13_fejezetszam',) + ellenoriz_fejezetszam(forditas))
+    ki.append(('13_fejezetszam',) + ellenoriz_fejezetszam(forditas_nyers))
     return ki
 
 

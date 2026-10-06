@@ -283,6 +283,26 @@ class KisNagybetuCsere(unittest.TestCase):
         self.assertTrue(any(v[0].startswith('5_kisnagybetu zendzsirli -> Zendzsirli') for v in valt), valt)
 
 
+class FejezetszamBdbJeloles(unittest.TestCase):
+    """F56 M5: a `Y [BDB: X]` jelolesben X-et a 13. kapu nem jelzi."""
+
+    def test_bdb_jeloles_nem_jelzes(self):
+        self.assertEqual(K.ellenoriz_fejezetszam('Préd 7:10 [BDB: Préd 17:10]')[0], 'RENDBEN')
+
+    def test_valodi_hiba_tovabbra_jelzes(self):
+        self.assertEqual(K.ellenoriz_fejezetszam('Préd 17:10')[0], 'JELZES')
+        self.assertEqual(K.ellenoriz_fejezetszam('Préd 17:10 [BDB: Préd 17:10]')[0], 'JELZES')
+
+
+class BdbJelolesVissza(unittest.TestCase):
+    def test_visszaallitas(self):
+        self.assertEqual(K.bdb_jeloles_vissza('lásd Préd 7:10 [BDB: Préd 17:10]; 1Kir 6:6 [BDB: 1Kir 66:6].'),
+                         'lásd Préd 17:10; 1Kir 66:6.')
+
+    def test_nincs_jeloles_valtozatlan(self):
+        self.assertEqual(K.bdb_jeloles_vissza('Préd 7:10; 1Kir 6:6'), 'Préd 7:10; 1Kir 6:6')
+
+
 class PromptKotelezoAlakok(unittest.TestCase):
     """F38, DT-F38c (d), prompt v4.1: a kötelező alakok előgyűjtése."""
 

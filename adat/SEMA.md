@@ -1049,6 +1049,7 @@ A forrásfájl **nem módosul**; a javítás ebben a táblában él, és az adat
 (3) **pontosan egy jelölt** → `javitva`; nulla vagy több → `jelolt_marad`. Találgatás nincs.
 **Könyvnév-hiba gyanú (DT-F56a, felhasználói döntés 2026-10-06):** ha a hibás `fejezet:vers` *más könyvben is létezik, és ott a Strong-szám szerepel*, a sor `jelolt_marad` akkor is, ha egyetlen jelölt van (a hiba könyvfeloldási hiba is lehet; a javítás fordítási szöveget érintene), az `indok` `FIGYELEM:` jelzést kap. Ezért `javitva` sor soha nem FIGYELEM-es. Állapot: 93 sor, 9 `javitva`, 84 `jelolt_marad` (ebből 60 FIGYELEM-es). Csak a könyvnévvel jelölt hivatkozások vizsgáltak (a lánc második tagja, `Isa 40:1; 41:2`, könyvnév nélkül nem).
 Kulcs: `strong` + `forras_hivatkozas`. Teszteset: `H7223`, `Eccl 17:10` → `Préd 7:10`.
+**Átvezetés a fordításba (M5, `eszkozok/bdb_atvezet_m5.py`):** a `javitva` hivatkozás a `forditasok.tsv` BDB-sorainak `forditas_hu` mezőjében `Y [BDB: X]` alakot kap (Y a helyes, X a forrásbeli hivatkozás, Károli-rövidítéssel); más mező nem változik (a `forras_hash` a forrásé, ezért érintetlen). A kapuk ezt kezelik: a 13. (fejezetszám) az `[BDB: …]` tartalmát nem jelzi, a többi a `Y [BDB: X]` → `X` visszaállított szöveget látja (`forditas_kapuk.bdb_jeloles_vissza`). Az 1–5. adag fordításaiban 6 a 9 `javitva` sorból fordul elő (H9009, H4480, H5002, H5046, H4427, H7223); H0479, H2597 és H5377 a 9–11. adagba esik, ott az adatblokk 6. szakasza viszi át a #38 menetében.
 
 ## 3. Integritási szabályok
 
