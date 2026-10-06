@@ -208,9 +208,12 @@ class Zaras3Idempotencia(unittest.TestCase):
 
     def test_h5674_regi_resze_az_ujnak(self):
         sp, nev, regi, uj, iras = [k for k in KEZI3 if k[0] == 'H5674'][0]
-        self.assertIn(regi, uj)  # ez volt a duplikálás oka
-        elso, _ = alkalmaz('x ' + regi, regi, uj)
-        self.assertEqual(alkalmaz(elso, regi, uj)[0].count('a Szellemről a Szellemről'), 0)
+        # a DT-F38h (c) átfogalmazás óta az új szöveg nem tartalmazza a régit (a régi duplikálás oka megszűnt)
+        elso, valt = alkalmaz('x ' + regi, regi, uj)
+        self.assertTrue(valt)
+        masodik, valt2 = alkalmaz(elso, regi, uj)
+        self.assertFalse(valt2)
+        self.assertEqual(masodik.count('a Szellem a Szellem'), 0)
 
     def test_se_regi_se_uj_hiba(self):
         with self.assertRaises(SystemExit):
