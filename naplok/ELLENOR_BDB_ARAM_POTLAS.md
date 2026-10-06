@@ -13,8 +13,8 @@
 | 2 | A brief fejlécének 14. sora sérült (`kovetkezo:` idézőjele után sortörés nélkül az `olvas: [...]`); az `olvas` kétszer szerepel; az F66.7 nem javította. | `F66_BDB_ARAM_POTLAS_BRIEF.md:14-15` | javítandó |
 | 3 | ⛔ M1 (a): a szúrópróba-kivonatban nincs ott a H0004, H0007, H3606 (a brief kötelezően előírja). A H0007 és H3606 sort a felhasználó a chatben külön megnézte; a H0004 a `cimke_reszleges` indokában szerepel. | `bdb_aram_potlas.py:338-339`; `BDB_ARAM_POTLAS_szurop.md` | a kivonatba felvenni a három sort |
 | 4 | 3 sor `Teljes_szocikk` fejében benne maradt a betűfej (H3969, H8406, H5013): `H3969. mea מ מְאָה…`. A fő táblában ilyen nincs. | `tsv:90,168,102`; `bdb_aram_potlas.py:90` | javítandó (a teszt fej-regexe nem fogta meg) |
-| 5 | README:30 a beemelésre N-F66a-ként hivatkozik (N-F66b kell); „csak egyertelmu” sorokat említ, miközben 170 elfogadott sor van. | `README:30` | javítandó |
-| 6 | DT-F66a: az opciók közt nincs a `kezi_elfogadott`; a felhasználói döntés nincs a szokásos lezárási alakban. | `DONTESEK.md:126` | javítandó |
+| 5 | README:30 a beemelésre N-F66a-ként hivatkozik (N51 kell); „csak egyertelmu” sorokat említ, miközben 170 elfogadott sor van. | `README:30` | javítandó |
+| 6 | DT51: az opciók közt nincs a `kezi_elfogadott`; a felhasználói döntés nincs a szokásos lezárási alakban. | `DONTESEK.md:126` | javítandó |
 | 7 | A `naplok/BDB_ARAM_POTLAS_szurop.md` új fájl, nincs az `ir:` listában. | `BRIEF:16` | felvenni |
 | 8 | Docstring elavult: hiányzik a `kezi_elfogadott`, a `cimke_reszleges` példája H2298. | `bdb_aram_potlas.py:16-24` | javítandó |
 
