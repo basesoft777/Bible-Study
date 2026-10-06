@@ -43,7 +43,13 @@ GYOKER = B.GYOKER
 KIMENET = os.path.join(GYOKER, 'konkordancia', 'BDB_aram_potlas.tsv')
 M0_JELENTES = os.path.join(GYOKER, 'naplok', 'BDB_ARAM_POTLAS_M0.md')
 FEJLEC = ['Strong_padded', 'bdb_id', 'cimszo', 'oshl_lemma', 'allapot', 'indok', 'Teljes_szocikk', 'proveniencia']
-ALLAPOTOK = ('egyertelmu', 'csonk', 'tobb_jelolt', 'nincs_szoveg', 'cimke_reszleges')
+ALLAPOTOK = ('egyertelmu', 'csonk', 'tobb_jelolt', 'nincs_szoveg', 'cimke_reszleges', 'kezi_elfogadott')
+# Kézi hozzárendelések (felhasználói döntés, 2026-10-06, DT-F66a): Strong -> (cél bdb_id, indok).
+# A sor `kezi_elfogadott` állapotú, a proveniencia `manual`.
+KEZI = {
+    'H2298': ('BDB9285', 'forráscímke: H259 (téves); lemma és glossza egyezik az OSHL H2298-cal; '
+                         'kézi hozzárendelés (felhasználói döntés)'),
+}
 STOP = B.STOP | {'see', 'etc', 'but', 'its', 'are', 'was', 'not'}
 
 
@@ -193,6 +199,18 @@ def m1(ts):
             'a _convert_bdb.py tisztitasaval; DT40, F66) | ts=%s' % ts)
     ki = []
     for sor in sorok:
+        s = sor['masodlagos_strong']
+        if s in KEZI:
+            cel, indok = KEZI[s]
+            e = szocikk_elemzes(cel)
+            o = oshl[s]
+            assert cimszo_egyezes(o[6], e['cimszavak']) == 'pont', s
+            assert not e['gyokstub'] and not e['jegyzet']
+            assert cel not in {r['bdb_id'] for r in sorok}, 'a cél-szócikk már szerepel az elvetettek között'
+            kprov = ('manual | felhasznaloi dontes 2026-10-06 (DT-F66a); a szoveg forrasa: '
+                     'konkordancia/lexikonok_nyers/BDB.lexicon Topic=%s' % cel)
+            ki.append([s, cel, e['cimszavak'][0], o[6], 'kezi_elfogadott', indok, sor_szoveg(s, e, o), kprov])
+            continue
         allapot, indok, e, ol = osztalyoz(sor, bdb, htop, tabla, oshl)
         o = oshl.get(sor['masodlagos_strong'])
         cim = (e['cimszavak'][0] if e and e['cimszavak'] else sor['cimszo'])
@@ -322,6 +340,19 @@ SZUROP = ('H0524', 'H0999', 'H1678', 'H1868', 'H2217', 'H2409', 'H2804', 'H3221'
 SZUROP_JELENTES = os.path.join(GYOKER, 'naplok', 'BDB_ARAM_POTLAS_szurop.md')
 
 
+def aram_hely(ref):
+    """Igaz, ha a hely a bibliai arámi szakaszokban van (Dán 2:4-7:28; Ezsd 4:8-6:18, 7:12-26; Jer 10:11; 1Móz 31:47)."""
+    m = re.match(r'(\d?[A-Za-z]+) (\d+):(\d+)', ref)
+    if not m:
+        return False
+    k, c, v = m.group(1), int(m.group(2)), int(m.group(3))
+    if k == 'Dan':
+        return (c, v) >= (2, 4) and (c, v) <= (7, 28)
+    if k == 'Ezra':
+        return ((4, 8) <= (c, v) <= (6, 18)) or ((7, 12) <= (c, v) <= (7, 26))
+    return (k, c, v) in (('Jer', 10, 11), ('Gen', 31, 47))
+
+
 def olvas_tabla():
     with open(KIMENET, encoding='utf-8', newline='') as f:
         sorok = [l.split('\t') for l in f.read().split('\n') if l]
@@ -336,16 +367,19 @@ def szurop(ts):
          '*Generálta: `python eszkozok/bdb_aram_potlas.py --szurop` · scope=konkordancia/BDB_aram_potlas.tsv + '
          'konkordancia/lexikonok_nyers/BDB.lexicon | forras=eszkozok/bdb_aram_potlas.py --szurop | ts=%s*\n' % ts,
          'Az `egyertelmu` sorok elfogadása a felhasználó döntése. Mezők: BDB-címszó, OSHL-lemma, glossza (a BDB '
-         '`highlightword`-jei), az első igehelyek (a BDB-szócikk `ref` jelölései), az `indok`, a `Teljes_szocikk` '
+         '`highlightword`-jei), az első igehelyek (a BDB-szócikk `ref` jelölései, csak a bibliai arámi szakaszokból, ismétlés nélkül), az `indok`, a `Teljes_szocikk` '
          'eleje (220 karakter).\n']
     for s in SZUROP:
         r = d[s]
         e = szocikk_elemzes(r['bdb_id'])
-        refs = re.findall(r'<ref ref="([^"]+)"', e['nyers'])
+        refs = []
+        for x in re.findall(r'<ref ref="([^"]+)"', e['nyers']):
+            if aram_hely(x) and x not in refs:
+                refs.append(x)
         L.append('## %s — %s (%s)\n' % (s, r['cimszo'], r['bdb_id']))
         L.append('- allapot: `%s` · OSHL-lemma: %s · szófaj: %s' % (r['allapot'], r['oshl_lemma'], e['szofaj']))
         L.append('- glossza: %s' % ('; '.join(e['glosszak']) or '—'))
-        L.append('- igehelyek (első 5): %s' % ('; '.join(refs[:5]) or '—'))
+        L.append('- igehelyek (az arámi szakaszokból, ismétlés nélkül, első 5): %s' % ('; '.join(refs[:5]) or '—'))
         L.append('- indok: %s' % r['indok'])
         L.append('- szöveg eleje: %s\n' % r['Teljes_szocikk'][:220])
     with open(SZUROP_JELENTES, 'w', encoding='utf-8', newline='\n') as f:

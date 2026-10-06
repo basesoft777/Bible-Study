@@ -34,8 +34,8 @@ def main():
     assert set(elv) == set(d), 'a két halmaz eltér'
     for s, r in d.items():
         assert r['allapot'] in A.ALLAPOTOK, (s, r['allapot'])
-        assert r['bdb_id'] == elv[s]['bdb_id']
-        assert r['indok'] and r['proveniencia'].startswith('scope='), s
+        assert r['bdb_id'] == elv[s]['bdb_id'] or s in A.KEZI
+        assert r['indok'] and r['proveniencia'].startswith(('scope=', 'manual')), s
 
     # K2: az egyértelmű sor szövege a BDB.lexicon saját szócikkéből jön
     for s, r in d.items():
@@ -55,7 +55,21 @@ def main():
     # csonk szócikk jelöltként marad (gyök-hivatkozás), szöveg megvan, de nem egyertelmu
     assert d['H3769']['allapot'] == 'csonk' and d['H5013']['allapot'] == 'csonk'
     # a címszó/glossza-eltérés nem kerül be egyértelműként
-    assert d['H2298']['allapot'] == 'cimke_reszleges' and 'BDB9285' in d['H2298']['indok'] and d['H2298']['Teljes_szocikk'] == ''
+    # H2298: kézi, felhasználó által elfogadott hozzárendelés a BDB9285-höz (חַד); proveniencia manual
+    r = d['H2298']
+    assert r['allapot'] == 'kezi_elfogadott' and r['bdb_id'] == 'BDB9285'
+    assert r['proveniencia'].startswith('manual'), r['proveniencia']
+    assert r['indok'].startswith('forráscímke: H259 (téves)')
+    assert r['Teljes_szocikk'].startswith('H2298. had ')
+    assert A.szocikk_elemzes('BDB9285')['szoveg'] and r['Teljes_szocikk'].endswith(A.szocikk_elemzes('BDB9285')['szoveg'])
+    # nincs ütközés: a BDB9285 egyetlen alias/elvetett/más sorban sem szerepel
+    for f in ('BDB_strong_alias.tsv', 'BDB_strong_alias_elvetett.tsv', 'BDB_strong_potlas.tsv'):
+        assert 'BDB9285' not in open(os.path.join(A.GYOKER, 'konkordancia', f), encoding='utf-8').read(), f
+    assert sum(1 for x in d.values() if x['bdb_id'] == 'BDB9285') == 1
+    # H0004 továbbra is jelölt
+    assert d['H0004']['allapot'] == 'cimke_reszleges'
+    # a szúrópróba-kivonat arámi helyszűrője
+    assert not A.aram_hely('Jer 48:47') and not A.aram_hely('Jer 51:64') and A.aram_hely('Dan 7:28') and A.aram_hely('Ezra 6:17')
 
     # a fej formátuma egyezik a fő táblával: "H<n>. <átírás> ..."
     _, fo = olvas(B.TABLA)

@@ -608,6 +608,8 @@ Korábbi frissítés: 2026.09.23 (RENDER_BRIEF.md v5, 2. menet — R2.1–R2.7: 
 
 - **N50 — a Zsolt 13 MT 1–2 verse (felirat, BSB 13:1) hiányzik a `BSB_Strongs.tsv`-ből.** *(ÚJ, F71, ellenőr: EF1 eltérés; a számot (N50) a main-Action osztja ki)* A #71 csak az MT 3–6-ot importálta (41 sor, `manual`, kézi kivétel): a BSB 13:1 szövege a `base/display/` JSON-ból kiesik (DT6 (c), a README „Ismert hiány”-a, 116 feliratos zsoltár), a felirat pedig a BSB-ben `d`-szintű heading, nem hordoz Strongot, bár a TAHOT szerint az MT 13:1 hordoz (H1732, H4210, H5329). Az üres eredmény explicit, nem töltendő ki (3. szabály). Megoldás: a display-JSON hiányának külön kezelése (pl. a `base/text-only/` állomány), nem a kézi kivétel. Nyitott: a `naplok/F41_wlc_versszam_ellenorzes.tsv` Zsolt 13 sora még `nincs_bsb_sor`; a `naplok/F16_bsb_zsolt_megfeleltetes.tsv` fejléce gépi futtatási parancsot mond a kézzel szerkesztett sorokhoz.
 
+- **N-F66b — a jóváhagyott arámi pótlás beemelése a `BDB_teljes_unabridged.tsv`-be, és a #38 sorrendjének újragenerálása.** *(ÚJ, F66 (#66), 2026.10.06; a briefben N-F66a néven szerepelt; a számot a main-Action osztja ki)* A `konkordancia/BDB_aram_potlas.tsv` 170 elfogadott sora (169 `egyertelmu` + 1 `kezi_elfogadott`: H2298 → BDB9285) külön táblában áll; a fő tábla bájtra változatlan. A beemelés feltétele: a #38 aktuális adagja után, felhasználói döntéssel; módszere az `eszkozok/bdb_strong_potlas.py --m2` mintája (új sorok a tábla végére, a meglévők bájtra azonosak). Jelölt marad: H0004 (`cimke_reszleges`), H3769, H5013 (`csonk`).
+
 ## Migrálva a döntési fájl 8. szakaszából (F1.6, 2026.09.13)
 
 
@@ -676,6 +678,9 @@ A `PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md` 8. szakasza ezzel archívummá
 <!-- GENERÁLT-VÉGE: nyitott -->
 
 ## Lezárva
+### 2026.10.06 (F66_BDB_ARAM_POTLAS_BRIEF.md — N-F66a felvéve és lezárva):
+* N-F66a — a szúrópróba-kivonat két hibája (csak a `naplok/BDB_ARAM_POTLAS_szurop.md` igehely-kivonatát érintette, a TSV-t nem). **LEZÁRVA (2026.10.06, F66):** (a) a H3542 listáján a Jer 48:47 és a Jer 51:64 héber „compare” hely volt, nem arámi előfordulás; (b) a H3969 listáján az Ezsd 6:17 háromszor állt (nem szűrte az ismétlést). Javítva az `eszkozok/bdb_aram_potlas.py --szurop`-ban (`aram_hely`: csak a bibliai arámi szakaszok; ismétlés nélkül), a napló újragenerálva, teszttel.
+
 ### 2026.10.05 (F53_FELADATTERKEP_BRIEF.md utótétel — N-F53c, N-F53e, N-F53f lezárva):
 * N-F53c — a generált feladattérkép három megjelenítési hibája. **LEZÁRVA (2026.10.05, PR #204):** a nyers Markdown a lapon `md()`/`plain()` függvénnyel renderel (előbb HTML-escape); a puszta `F\d+` kódú csomópont (#22) felirata a cím eleje; az elválasztó a kártyán belül áll, az utolsón nincs. A #22 valódi kódneve a brief `kod:` mezőjén múlik.
 * N-F53e — CI-őr a generált feladattérképre. **LEZÁRVA (2026.10.05, PR #203):** az E18 bővítése a `feladatok.py ellenoriz --pr-alap`-ban (`pr_terkep_ellenorzes`): a `FELADATTERKEP.html` és a `feladatterkep.json` a PR `merge-base..HEAD` diffjében nem szerepelhet. Ezzel a bélyeg egy-commitos késése is megszűnt.
