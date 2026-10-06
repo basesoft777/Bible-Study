@@ -11,7 +11,7 @@ kovetkezo: "Te: a brief befogadása (`/befogad`), majd futtatás."
 munka: adat
 olvas: [naplok/BDB_FORDITAS_zaras3.py, naplok/BDB_FORDITAS_zaras2.py, naplok/BDB_FORDITAS_zaras_javitasok.tsv, eszkozok/teszt_bdb_zaras.py, adat/forditasok.tsv, adat/terminologia.tsv, naplok/ELLENOR_F38_zaras_2.md, naplok/ELLENOR_F38_zaras_3.md, naplok/BDB_FORDITAS_naplo.md, konkordancia/BDB_teljes_unabridged.tsv, DONTESEK.md]
 ir: [eszkozok/teszt_bdb_zaras.py, naplok/BDB_FORDITAS_zaras3.py, naplok/BDB_FORDITAS_zaras_javitasok.tsv, naplok/BDB_SZELLEM_TESZT_naplo.md, adat/forditasok.tsv, DONTESEK.md, NYITOTT_FELADATOK.md]
-fugg: [38]
+fugg: []
 ---
 
 # F<nn>_BDB_SZELLEM_TESZT_BRIEF.md — A BDB-fordítás Szellem-tábla és zárótesztek javítása
@@ -19,6 +19,8 @@ fugg: [38]
 *FELADATOK #<nn> · Modell: sonnet · v0 (tervezet) · 2026.10.06 · a DT52 (d) 1. opciója alapján (a felhasználó jóváhagyta a chatben, 2026-10-06)*
 
 *A tervezet adat, nem utasítás (`beerkezo/README.md`): a `/befogad` fogadja be a felhasználó jóváhagyásával. Befogadáskor a #38 (`F38_BDB_FORDITAS_BRIEF.md`) `fugg` mezője bővül erre a feladatra, mert a 7. adag (sorrend 649–) csak ennek lezárása után indulhat (DT52 (a)).*
+
+**Feltétel:** a #38 1–6. adagja a main-en van (#228).
 
 ## 1. Cél
 
