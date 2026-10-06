@@ -7,8 +7,8 @@
    "eszkozok/feladatterkep_kartyak.tsv"
   ],
   "belyeg": {
-   "datum": "2026-10-05",
-   "commit": "0300b5e"
+   "datum": "2026-10-06",
+   "commit": "b0abc0f"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
