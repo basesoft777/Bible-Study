@@ -82,6 +82,14 @@ def main():
             assert r['Teljes_szocikk'].startswith('H%d. ' % int(s[1:5])), s
             assert '\t' not in r['Teljes_szocikk']
 
+    # betűfej nem maradhat a fejben: 'H<n>. átírás <héber betű> <héber szó>' tilos; a három korábbi hibás sor
+    betufej = re.compile(r'^H\d+\. \S+ [\u05d0-\u05ea] [\u05d0-\u05ea\u05b0-\u05c7]')
+    for s in ('H3969', 'H8406', 'H5013'):
+        assert fo_re.match(d[s]['Teljes_szocikk']) and not betufej.match(d[s]['Teljes_szocikk']), (s, d[s]['Teljes_szocikk'][:30])
+    assert not [s for s, r in d.items() if betufej.match(r['Teljes_szocikk'])]
+    # a szúrópróba-kivonat tartalmazza a H0004, H0007, H3606 sort
+    assert all(x in A.SZUROP for x in ('H0004', 'H0007', 'H3606')) and len(A.SZUROP) == 23
+
     # K3: a fő tábla és az alias-táblák nem változtak a git szerint
     gyoker = A.GYOKER
     for f in ('konkordancia/BDB_teljes_unabridged.tsv', 'konkordancia/BDB_strong_alias.tsv',

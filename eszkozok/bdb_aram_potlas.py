@@ -19,9 +19,12 @@ SOHA nem írja. A TSV-ket split('\\t')-tel olvassa, '\\t'.join()-nal írja (nem 
   csonk         gyök-hivatkozás ("√ of following"), szófaj és értelem nélkül: gyenge bizonyíték
   tobb_jelolt   a szócikk más, táblasor nélküli Strongot is hordoz (nem dönthető el, melyikhez tartozik)
   nincs_szoveg  a BDB.lexicon-ban nincs a Strongra szócikk-szöveg (üres vagy hiányzó Definition)
-  cimke_reszleges  a címke nem a Strong saját szócikkére mutat: vagy nem szócikkre (bevezető jegyzet,
-                pl. H0004), vagy a szócikk csak részlegesen tárgyalja a Strongot (többes címke,
-                összetételek; pl. H2298); jelölt marad, Teljes_szocikk üres
+  cimke_reszleges  a címke nem a Strong saját szócikkére mutat: nem szócikkre (bevezető jegyzet, pl. H0004),
+                vagy a szócikk csak részlegesen tárgyalja a Strongot (többes címke); jelölt marad,
+                Teljes_szocikk üres. (A H2298 ilyen volt, a felhasználó kézzel a BDB9285-höz rendelte.)
+  kezi_elfogadott  kézi, felhasználó által elfogadott hozzárendelés (KEZI; DT-F66a): H2298 -> BDB9285;
+                proveniencia: manual
+Elfogadott sor: egyertelmu + kezi_elfogadott.
 """
 import sys
 import os
@@ -87,7 +90,7 @@ def szocikk_elemzes(bid):
     for g in re.findall(r'<highlightword>(.*?)</highlightword>', elso):
         glosszak.append(B.tisztit(g))
     gyokstub = (not b) or ('of following' in elso and not glosszak)
-    szoveg = B.stilus_igazit(B.strip_html(torzs)).replace('\t', ' ')
+    szoveg = B.stilus_igazit(B.strip_html(torzs_cs)).replace('\t', ' ')
     return {'nyers': nyers, 'cimszavak': cimszavak, 'szofaj': szofaj, 'glosszak': glosszak,
             'gyokstub': gyokstub, 'jegyzet': jegyzet, 'szoveg': szoveg,
             'latin': len(B._ujjlenyomat_teljes(szoveg))}
@@ -335,7 +338,7 @@ def m0(ts):
     print('M0 kész: naplok/BDB_ARAM_POTLAS_M0.md')
 
 
-SZUROP = ('H0524', 'H0999', 'H1678', 'H1868', 'H2217', 'H2409', 'H2804', 'H3221', 'H3542', 'H3797',
+SZUROP = ('H0004', 'H0007', 'H3606', 'H0524', 'H0999', 'H1678', 'H1868', 'H2217', 'H2409', 'H2804', 'H3221', 'H3542', 'H3797',
           'H3969', 'H4804', 'H5182', 'H5368', 'H5831', 'H6173', 'H6755', 'H7162', 'H7695', 'H8450')
 SZUROP_JELENTES = os.path.join(GYOKER, 'naplok', 'BDB_ARAM_POTLAS_szurop.md')
 
@@ -387,11 +390,80 @@ def szurop(ts):
     print('szurop kész: naplok/BDB_ARAM_POTLAS_szurop.md')
 
 
+ELFOGADOTT = ('egyertelmu', 'kezi_elfogadott')
+DUPLIKACIO_JELENTES = os.path.join(GYOKER, 'naplok', 'BDB_ARAM_POTLAS_duplikacio.md')
+
+
+def _ujj(x):
+    return B._ujjlenyomat_teljes(x).lower()
+
+
+def duplikacio(ts):
+    """Mérés: az elfogadott sorok szövege szerepel-e már a BDB_teljes_unabridged.tsv valamelyik sorában.
+
+    Módszer: a Teljes_szocikk fejének ("H<n>. átírás ") elhagyása után a latin betűs ujjlenyomat (a #57
+    _ujjlenyomat_teljes: héber és hivatkozások nélkül) 12 karakteres átfedő szeletei közül hány van meg a
+    főtábla egy sorának ujjlenyomatában (a sor csak akkor jelölt, ha a címszó mássalhangzói is benne vannak);
+    a legjobb sor hányada a mérőszám. Küszöb: >= 0,8 "már a fő táblában van"; 0,5-0,8 részleges; alatta nincs.
+    A hányadot a kisebb eltérések (elírások, szóköz-tagolás) lefelé torzíthatják; támpont, nem bizonyíték."""
+    _, ki = olvas_tabla()
+    fo = []
+    with open(B.TABLA, encoding='utf-8', newline='') as f:
+        for n, sor in enumerate(f.read().split('\n'), 1):
+            if n == 1 or not sor:
+                continue
+            m = sor.split('\t', 2)
+            fo.append((n, m[0], _ujj(m[2]), B.kons(m[2])))
+    elv = {r['masodlagos_strong']: r for r in elvetett_aram()}
+    talalat, reszleges, nincs = [], [], []
+    for r in ki:
+        if r['allapot'] not in ELFOGADOTT:
+            continue
+        s = r['Strong_padded']
+        torzs = r['Teljes_szocikk'].split(' ', 2)[2] if r['Teljes_szocikk'].count(' ') >= 2 else r['Teljes_szocikk']
+        u = _ujj(torzs)
+        szeletek = {u[i:i + 12] for i in range(max(1, len(u) - 11))}
+        ck = B.kons(r['cimszo'])
+        legjobb = (0.0, 0, '')
+        for n, k, uj, ko in fo:
+            if ck not in ko:
+                continue
+            h = sum(1 for x in szeletek if x in uj) / len(szeletek)
+            if h > legjobb[0]:
+                legjobb = (h, n, k)
+        tars = elv[s]['testver_strong'] if s in elv else ''
+        (talalat if legjobb[0] >= 0.8 else reszleges if legjobb[0] >= 0.5 else nincs).append((s, r['bdb_id'], legjobb, tars))
+    ossz = sum(1 for r in ki if r['allapot'] in ELFOGADOTT)
+    L = ['# BDB_ARAM_POTLAS — átfedés a BDB_teljes_unabridged.tsv-vel (F66, mérés)\n',
+         '*Generálta: `python eszkozok/bdb_aram_potlas.py --duplikacio` · scope=konkordancia/BDB_aram_potlas.tsv + konkordancia/BDB_teljes_unabridged.tsv | '
+         'forras=eszkozok/bdb_aram_potlas.py --duplikacio | ts=%s*\n' % ts,
+         '**Mérés, tartalmi döntés nélkül.** A pótolt arámi szövegek egy része már a fő táblában van, a héber testvérsor végén (a DictBDB a közös héber–arámi szócikkeket egy sorban adja). '
+         'A fő táblába emelés (N-F66b) ezért duplikációt okozhat; a beemelés külön felhasználói döntés. A fő tábla nem változott.\n',
+         '- Módszer: ' + duplikacio.__doc__.split('Módszer: ')[1].replace('\n    ', ' ') + '\n',
+         '- Elfogadott sor: **%d**; a szövege (a fenti módszerrel) **már a fő táblában van: %d**; nincs benne: %d.\n' % (ossz, len(talalat), len(nincs))]
+    L.append('- Részleges (0,5-0,8): %d.\n' % len(reszleges))
+    egy = sum(1 for _, _, lj, tars in talalat if tars and lj[2] in tars.split(','))
+    L.append('- A találati főtáblasor a #57 elvetett táblájának `testver_strong` oszlopában szereplő héber testvérsor: %d/%d.\n' % (egy, len(talalat)))
+    for cim, lista in (('Már a fő táblában lévő sorok (>= 0,8)', talalat), ('Részleges egyezés (0,5-0,8)', reszleges)):
+        L.append('## %s\n' % cim)
+        L.append('| Strong | bdb_id | főtáblasor (fájl sorszáma / kulcs) | hányad | elvetett-tábla testvére |')
+        L.append('|---|---|---|---|---|')
+        for s, bid, lj, tars in lista:
+            L.append('| %s | %s | %d / %s | %.2f | %s |' % (s, bid, lj[1], lj[2], lj[0], tars or '—'))
+        L.append('')
+    L.append('## Nincs a fő táblában (< 0,5)\n')
+    L.append(', '.join('%s (%s, legjobb %.2f)' % (s, bid, lj[0]) for s, bid, lj, _ in nincs) or '—')
+    with open(DUPLIKACIO_JELENTES, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\n'.join(L) + '\n')
+    print('duplikacio kész: %d elfogadott, a fő táblában: %d, nincs: %d' % (ossz, len(talalat), len(nincs)))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--m0', action='store_true')
     ap.add_argument('--m1', action='store_true')
     ap.add_argument('--szurop', action='store_true')
+    ap.add_argument('--duplikacio', action='store_true')
     ap.add_argument('--ts', default=datetime.date.today().isoformat())
     a = ap.parse_args()
     if a.m0:
@@ -400,6 +472,8 @@ def main():
         m1(a.ts)
     if a.szurop:
         szurop(a.ts)
+    if a.duplikacio:
+        duplikacio(a.ts)
 
 
 if __name__ == '__main__':

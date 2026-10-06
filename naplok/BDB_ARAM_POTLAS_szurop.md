@@ -4,6 +4,30 @@
 
 Az `egyertelmu` sorok elfogadása a felhasználó döntése. Mezők: BDB-címszó, OSHL-lemma, glossza (a BDB `highlightword`-jei), az első igehelyek (a BDB-szócikk `ref` jelölései, csak a bibliai arámi szakaszokból, ismétlés nélkül), az `indok`, a `Teljes_szocikk` eleje (220 karakter).
 
+## H0004 —  (BDB9264)
+
+- allapot: `cimke_reszleges` · OSHL-lemma: אֵב · szófaj: [ Dan 2:4-7:28 ; Ezra 4:8-6:18 ; Ezra 7:12-26 ; Jer 10:11 ; Gen 31:47 a β . ]
+- glossza: —
+- igehelyek (az arámi szakaszokból, ismétlés nélkül, első 5): Dan 2:4-7:28; Ezra 4:8-6:18; Ezra 7:12-26; Jer 10:11; Gen 31:47
+- indok: a címke nem szócikkre mutat: a BDB9264 a BDB arámi szakaszának bevezető jegyzete ([Note]), nincs címszava; a Strong saját szócikke ebben a forrásban nem azonosítható
+- szöveg eleje: 
+
+## H0007 — אֲבַד (BDB9265)
+
+- allapot: `egyertelmu` · OSHL-lemma: אֲבַד · szófaj: verb
+- glossza: perish
+- igehelyek (az arámi szakaszokból, ismétlés nélkül, első 5): Jer 10:11; Dan 2:24; Dan 2:18; Dan 2:12; Dan 7:26
+- indok: a címszó egyezik az OSHL-lemmával (normalizálva, magánhangzókkal); a szócikk a BDB9265 azonosítón önálló (egy táblasor nélküli címke); szófaj: verb
+- szöveg eleje: H7. abad [אֲבַד] verb perish (Biblical Hebrew); — Pe`al mpl. 3 masculine plural יֵאבַ֫דוּ (not וּן- see K^§ 26, 1) Jer 10:11 they shall persish, pass away. Haph`el (Old Aramaic האבד Lzb^205 Cooke^189) destoy: Imperfect 2
+
+## H3606 — כֹּל (BDB9612)
+
+- allapot: `egyertelmu` · OSHL-lemma: כֹּל · szófaj: noun masculine
+- glossza: the whole, all
+- igehelyek (az arámi szakaszokból, ismétlés nélkül, első 5): Dan 2:40; Dan 2:12; Dan 3:2; Dan 2:8; Dan 2:38
+- indok: a címszó egyezik az OSHL-lemmával (normalizálva, magánhangzókkal); a szócikk a BDB9612 azonosítón önálló (egy táblasor nélküli címke); szófaj: noun masculine
+- szöveg eleje: H3606. kol כֹּל, כָּלֿ: noun masculine the whole, all (Biblical Hebrew כֹּל); — emphatic כֹּלָּא Dan 2:40 +, construct כֹּל Dan 2:12; Dan 3:2 +, כָּלֿ Dan 2:8 +, suffix 3 masculine plural כָּלְּהוֺן (so Palmyrene Lzb^296
+
 ## H0524 — אֻמָּה (BDB9307)
 
 - allapot: `egyertelmu` · OSHL-lemma: אֻמָּה · szófaj: noun feminine
@@ -90,7 +114,7 @@ Az `egyertelmu` sorok elfogadása a felhasználó döntése. Mezők: BDB-címsz�
 - glossza: hundred
 - igehelyek (az arámi szakaszokból, ismétlés nélkül, első 5): Ezra 6:17; Ezra 7:22; Dan 6:1
 - indok: a címszó egyezik az OSHL-lemmával (normalizálva, magánhangzókkal); a szócikk a BDB9647 azonosítón önálló (egy táblasor nélküli címke); szófaj: noun feminine
-- szöveg eleje: H3969. mea מ מְאָה noun feminine hundred (see Biblical Hebrew); — absolute ׳מ after noun enumerator, Ezra 6:17; Ezra 7:22 (4 t. in verse), so ׳אַרְבַּע מ Ezra 6:17, וְעֶשְׂרִין ׳מ Dan 6:1, and dual מָאתַ֫וִן Ezra 6:17. מ
+- szöveg eleje: H3969. mea מְאָה noun feminine hundred (see Biblical Hebrew); — absolute ׳מ after noun enumerator, Ezra 6:17; Ezra 7:22 (4 t. in verse), so ׳אַרְבַּע מ Ezra 6:17, וְעֶשְׂרִין ׳מ Dan 6:1, and dual מָאתַ֫וִן Ezra 6:17. מאֹ
 
 ## H4804 — מְרַט (BDB9680)
 

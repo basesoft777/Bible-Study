@@ -27,4 +27,8 @@ A H3606 (BDB9612, `egyertelmu`) testvérsora a H6903 (a #57 `a_testversor_mas_sz
 
 ## A fő táblába emelés feltétele (külön lépés, nem ennek a feladatnak a része)
 
-A `konkordancia/BDB_teljes_unabridged.tsv` **nem változott** (SHA-256 `40d96e57…f3cf6`, bájtra azonos a main-nel; a `BDB_strong_alias.tsv` és a `BDB_strong_alias_elvetett.tsv` is). A fő tábla olvasója a #38, a #56 és a #60, ezért a beemelés csak (1) a #38 aktuális adagja után, (2) a felhasználó döntésével, (3) csak a jóváhagyott `egyertelmu` sorokra történhet, az `eszkozok/bdb_strong_potlas.py --m2` mintájára (új sorok a tábla végére, a meglévők bájtra változatlanok); utána a #38 sorrendje újragenerálandó (N-F66a).
+A `konkordancia/BDB_teljes_unabridged.tsv` **nem változott** (SHA-256 `40d96e57…f3cf6`, bájtra azonos a main-nel; a `BDB_strong_alias.tsv` és a `BDB_strong_alias_elvetett.tsv` is). A fő tábla olvasója a #38, a #56 és a #60.
+
+**Duplikáció-kockázat (mérés, `naplok/BDB_ARAM_POTLAS_duplikacio.md`).** A DictBDB a közös héber–arámi szócikkeket egy sorban adja, ezért a pótolt arámi szövegek nagy része már a fő táblában van, a héber testvérsor végén (pl. H0007 a H0006 sorában, H3606 a H3605-ében). A 170 elfogadott sorból **164** szövege (a mérőszám ≥ 0,8) már megvan a fő táblában, 5 részlegesen (0,5–0,8), 1 nincs (H6433); a 164 találatból 161 a #57 elvetett táblájának `testver_strong` oszlopában szereplő sor. A mérés ujjlenyomat-alapú támpont, nem bizonyíték. Ezért a sorok fő táblába emelése **duplikációt okozhat**, és külön felhasználói döntés (nem automatikus lépés).
+
+Ha a felhasználó mégis a beemelés mellett dönt (N-F66b): (1) a #38 aktuális adagja után; (2) csak az elfogadott sorokra (`egyertelmu` + `kezi_elfogadott`, 170), a duplikáció-mérés szerint kezelve; (3) az `eszkozok/bdb_strong_potlas.py --m2` mintájára (új sorok a tábla végére, a meglévők bájtra azonosak); (4) utána a #38 sorrendje újragenerálandó.
