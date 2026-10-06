@@ -2,7 +2,7 @@ ELTÉRÉS: 9 tétel
 
 # ELLENOR_F38_adag6_2 — független ellenőrzés, 2. kör
 
-- Brief: `F38_BDB_FORDITAS_BRIEF.md` (+ DT-F38j, N-F38x, `beerkezo/F38d_SZELLEM_TESZT_JAVITAS_BRIEF_TERVEZET.md`)
+- Brief: `F38_BDB_FORDITAS_BRIEF.md` (+ DT52, N53, `beerkezo/F38d_SZELLEM_TESZT_JAVITAS_BRIEF_TERVEZET.md`)
 - Tartomány: `0ba75ea..HEAD` (F38.355, F38.356 ×2), PR #228; viszonyítási alap: main `bdae91d`
 - Az ellenőr nem írhatott fájlt; a jelentést az orkesztrátor mentette tömörítve (az OK sorok összevonva). Futtatás (gyökcsoport-szkript, tesztek) az ellenőr szerepében nem megengedett: NEM ELLENŐRIZHETŐ.
 
@@ -21,7 +21,7 @@ ELTÉRÉS: 9 tétel
 ## Rendben (saját lekérdezéssel)
 
 - Újramért számok a kimeneti TSV-ből igazolva: 7 990 Strong; 7 479 rokonos; csak_bdb 5 702 (71,4% / 76,2%); TWOT-os 5 486, ebből 3 229 (58,9%); 2 504 TWOT nélküli; H1121 TWOT 254. A 2 275 csoport NEM ELLENŐRIZHETŐ (kódolvasás szerint a javítástól nem változik). Megjegyzés: az unió miatt 221 Strong több gyökcsoportba, 207 több TWOT-hoz kerül (a naplóban nem szerepel a nagyságrend).
-- DT-F38j: 8 oszlop, nincs duplikátum, (a)–(d) pontosan rögzítve; N-F38x helyőrző, nincs végleges szám.
+- DT52: 8 oszlop, nincs duplikátum, (a)–(d) pontosan rögzítve; N53 helyőrző, nincs végleges szám.
 - Teszthiba-állítás kódolvasással: 21 teszt, a main-en 2 FAIL + 1 ERROR; az ágon a H6743 8. elemként.
 - `forditasok.tsv`: +242, régi sorok bájtra azonosak; a 0ba75ea..HEAD szakasz nem érinti. Más `adat/`, `konkordancia/` Δ=0; a gyökcsoport import nélkül maradt; a 7. adag nem indult.
 - `futtat.py`: E2–E16, E19, E26: 0; E25 3 régi találat.
