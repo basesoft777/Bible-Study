@@ -6,13 +6,15 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 munka: folyamat
-allapot: megallt
+allapot: lezarva
 ad: "a FELADATTERKEP.html (gyökér, mindig ugyanazon a néven felülírva) és a feladatterkep.json minden main-merge után a forrásokból generálódik; a claude.ai-artifact megnyitáskor a files képességgel ugyanezt a JSON-t olvassa, így újrafeltöltés nélkül friss"
-kovetkezo: Te: a PR #201 merge-e; utána az Action-próba (7.6). Az FT.5 és az FT.7 halasztva (N-F53f), amíg nincs chan_… azonosító
+kovetkezo: "lezárva; a PR #201 mergelve 2026-10-05; az Action-próba (7.6) teljesült"
 olvas: ["F*_BRIEF.md", MUNKATERV.md, eszkozok/feladatok.py, .github/workflows/feladatok.yml, FELADATTERKEP.html]
 ir: [eszkozok/feladatterkep.py, eszkozok/feladatterkep_kartyak.tsv, eszkozok/teszt_feladatterkep.py, FELADATTERKEP.html, feladatterkep.json, .github/workflows/feladatok.yml, eszkozok/main_frissit.py]
 fugg: []
 ag: claude/f53-feladatterkep
+pr: 201
+lezarva_osszegzes: "FT.0–FT.6 kész (PR #201, merge 2026-10-05); Action-próba (7.6) teljesült: a gépi commit mindhárom fájlt írja (2ddccb1), változatlan forrásnál nincs commit (37338591500-as futás, fe3e70e); az FT.5 és az FT.7 kiváltva a feladatterkep-napi helyi ütemezett feladattal (N-F53f lezárva); utótételek: PR #204, #207 (F53.3), F53.4"
 nem_fugg: [52]
 helyi_gep: nem
 ---
