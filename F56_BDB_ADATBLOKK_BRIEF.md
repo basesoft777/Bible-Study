@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: megallt
 ag: claude/bdb-adatblokk
 ad: a #38 minden adagjában a BDB-szócikk elé egy gépileg előállított adatblokk kerül (Károli-szóalakok gyakorisággal, legfeljebb 3 Károli-példavers szóalakonként, LXX-megfelelő, rokon szavak, meglévő magyar szócikk, a forrás fejezetszám-hibáinak javítása), minden sor proveniencia-jelöléssel; a fejezetszám-javítótábla elkészül, és visszamenőleg az 1–5. adag fordításain is átvezetve
-kovetkezo: /kovetkezo; ⛔ az M3 mintablokk után (elfogadási próba)
+kovetkezo: Te: az M3 mintablokk (naplok/BDB_ADATBLOKK_minta.md, 20 blokk) és a javítótábla első eredménye (adat/bdb_igehely_javitas.tsv: 21 javitva, 72 jelolt_marad; 12 javitva soron FIGYELEM-jelzés) jóváhagyása; utána /kovetkezo az M4–M6-ra
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, "adat/karoli_strong/*.tsv", konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, adat/kulso/lxx_bridge.tsv, konkordancia/Strong_szotar.tsv, adat/lexikon_hivatkozasok.tsv, adat/terminologia.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_naplo.md, F38_BDB_FORDITAS_BRIEF.md, eszkozok/forditas_kapuk.py, ADATVAGYON_TERV.md]
 ir: [eszkozok/bdb_adatblokk.py, eszkozok/teszt_bdb_adatblokk.py, eszkozok/emeles.py, eszkozok/teszt_emeles.py, forditas/prompt_v4.md, adat/bdb_igehely_javitas.tsv, adat/forditasok.tsv, adat/SEMA.md]
 fugg: []

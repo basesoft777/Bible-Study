@@ -484,7 +484,7 @@ def szakasz_karoli(strong, ts, pelda_per_alak=PELDA_MAX, alak_max=8, pelda_alak_
     alakok = karoli_alakok(sz)
     sorok = []
     lef_szoveg = ', '.join(lef) if lef else 'nincs'
-    f1 = ['**1. Károli-szóalakok** (a Károli–Strong párosítás kész könyvei: %s; az arányok csak ezekre érvényesek)'
+    f1 = ['**1. Károli-szóalakok** (a Károli–Strong párosítás kész könyvei: %s; az arányok csak ezekre érvényesek; a szóalakok kisbetűsítve, egyesítve számolva)'
           % lef_szoveg]
     # TAHOT-elofordulas a lefedett konyvekben vs. a parok darabszama (nem nema nem-talalat)
     tah = tahot_versek().get(sz, {})
