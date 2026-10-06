@@ -6,12 +6,12 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: megallt
+allapot: dontesre_var
 ag: claude/bdb-adatblokk
 ad: a #38 minden adagjában a BDB-szócikk elé egy gépileg előállított adatblokk kerül (Károli-szóalakok gyakorisággal, legfeljebb 3 Károli-példavers szóalakonként, LXX-megfelelő, rokon szavak, meglévő magyar szócikk, a forrás fejezetszám-hibáinak javítása), minden sor proveniencia-jelöléssel; a fejezetszám-javítótábla elkészül, és visszamenőleg az 1–5. adag fordításain is átvezetve
-kovetkezo: "Te: az újragenerált minta (naplok/BDB_ADATBLOKK_minta.md, LXX-nyelvtani szűrés után) elfogadása, utána M4 (+ a promptban kimondandó: az `alacsony` bizonyosságú alak nem kevésbé valószínű olvasat); a javítótábla 9 javitva + 84 jelolt_marad, DT-F56a/DT-F56b 🟢 lezárása"
+kovetkezo: "Te: DT-F56c (H4480, H9009 javitva sorok visszaállítása?), utána a lezárás és a merge; a #38 a 6. adaggal folytatódik"
 olvas: [konkordancia/BDB_teljes_unabridged.tsv, "adat/karoli_strong/*.tsv", konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, adat/kulso/lxx_bridge.tsv, konkordancia/Strong_szotar.tsv, konkordancia/OSHL_lexikalis_index.tsv, adat/grammatikai_strongok.tsv, adat/lexikon_hivatkozasok.tsv, adat/terminologia.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, naplok/BDB_FORDITAS_sorrend.tsv, naplok/BDB_FORDITAS_naplo.md, F38_BDB_FORDITAS_BRIEF.md, eszkozok/forditas_kapuk.py, ADATVAGYON_TERV.md]
-ir: [eszkozok/bdb_adatblokk.py, eszkozok/teszt_bdb_adatblokk.py, eszkozok/emeles.py, eszkozok/teszt_emeles.py, forditas/prompt_v4.md, adat/bdb_igehely_javitas.tsv, adat/forditasok.tsv, adat/SEMA.md]
+ir: [eszkozok/bdb_adatblokk.py, eszkozok/teszt_bdb_adatblokk.py, eszkozok/emeles.py, eszkozok/teszt_emeles.py, forditas/prompt_v4.md, adat/bdb_igehely_javitas.tsv, adat/forditasok.tsv, adat/SEMA.md, eszkozok/forditas_kapuk.py, eszkozok/teszt_forditas_kapuk.py, eszkozok/bdb_atvezet_m5.py, naplok/F56_minta.py, adat/datasetek.tsv, DONTESEK.md]
 fugg: []
 nem_fugg: [22, 38, 52]
 ---

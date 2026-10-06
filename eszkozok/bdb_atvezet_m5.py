@@ -59,11 +59,12 @@ def main():
             osszes.extend((m[1], m[3], r, j, d) for r, j, d in csere)
     for x in osszes:
         print('csere: %s jelentes=%s | %s -> %s [BDB: %s] x%d' % (x[0], x[1], x[2], x[3], x[2], x[4]))
-    # hianyzo javitva sorok (nincs elofordulas a fordításban)
-    talalt = {(x[0], x[2]) for x in osszes}
-    for strong, ss in javitva.items():
-        for s in ss:
-            pass
+    # javitva sorok, amelyek nem fordulnak elo a fordításban (pl. kesobbi adag)
+    osszes_strong = {x[0] for x in osszes}
+    for strong, ss in sorted(javitva.items()):
+        for s_ in ss:
+            if strong.lstrip('H').lstrip('0') and not any(B.strong_padded(k) == strong for k in osszes_strong):
+                print('nincs elofordulas a forditasban: %s %s' % (strong, s_['forras_hivatkozas']))
     # osszevetes: csak a szandekolt sorok, csak a forditas_hu mezo
     assert len(uj) == len(sorok)
     for i, (a, b) in enumerate(zip(sorok, uj)):
