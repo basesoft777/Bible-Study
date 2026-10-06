@@ -2575,3 +2575,67 @@ Az 5. adag 27 commitja (F38.283–F38.308) tévesen a helyi `main`-re került a 
 - H7970: a „követi / megelőzi” alany-tárgy viszonya fordítva állt; javítva a forrás szerint („׳שׁ követi az egyeseket”, „követi a 100-at”).
 - A „hátra” szám 7 658 (nem 7 659); a H6213 kikerült az 5. adag Szellem-tábla soraiból (a 2. adagé).
 - Nyitva hagyva (stílus): H3532 „Mózes második könyve Mózes harmadik könyve Numeri” — a forrás „Exodus Leviticus Numbers” kevert könyvnév-formája.
+
+## M0 5. pont — BDB-gyökcsoportok felmérése (6. adag menetének eleje; F38.310a)
+
+*Csak mérés, import nélkül; a gyökcsoport nem került a `BDB_teljes_unabridged.tsv`-be, az `adat/forditasok.tsv`-be vagy a szerepmátrixba.*
+
+**Forrás:** `konkordancia/OSHL_lexikalis_index.tsv` — az `openscriptures/HebrewLexicon` `LexicalIndex.xml` kivonata, commit `21c9add13bc727d3a951361778e97e3ff7afd1ce`, SHA-256 `8f7a605c…bc85f`, **CC BY 4.0** (Open Scriptures Hebrew Bible Project; `konkordancia/OSHL_lexikalis_index_README.md`, `adat/licencek.tsv`: OSHL). A kivonat az #56 óta a repóban van, ezért letöltés nem kellett. Mérőszkript: `naplok/BDB_FORDITAS_gyokcsoport_meres.py`; kimenet: `naplok/BDB_FORDITAS_gyokcsoportok.tsv`.
+
+**Módszer:** BDB-gyök = a `bdb_id` első két tagja (pl. `a.ac.aa` → `a.ac`); TWOT-csoport = a TWOT-szám a betűs utótag nélkül (`4a` → `4`). Csak héber (nem arámi), négyjegyű H-Strong.
+
+**Eltérés a briefhez (jelzem, nem döntök):** a brief a TWOT-számot a `Strong_szotar.tsv`-ből várta, de ott nincs TWOT-oszlop; a TWOT az OSHL-indexből jön (ugyanaz a forrás, amelyből az #56 „rokon szavak” szakasza is dolgozik). A brief „1 432 gyök / 4 616 Strong” (bcv-commons `bdb_roots`) számával a mérés nem egyezik (itt 2 275 gyökcsoport, 7 990 Strong): a két forrás gyökfelosztása eltér.
+
+**Javítás (ellenőri jelzés, ELLENOR_F38_adag6):** a 8 581 indexsor 7 990 egyedi Strongot ad; az első változat az ismétlődő Strong-soroknál az utolsó sort tartotta meg (pl. H1121: TWOT 254 elveszett). Most minden sor nem üres gyöke és TWOT-ja **halmazként** gyűlik a Strongnál (a `bdb_gyok`/`twot` oszlop vesszős lista, a rokonok az összes gyök/TWOT uniója); a választás így nem veszít TWOT-értéket. A lenti számok az újramért értékek.
+
+**Három szám:**
+| | |
+|---|---|
+| lefedett héber Strong (van `bdb_gyok`) | **7 990** |
+| `csak_bdb` többletet kapó Strong (van BDB-rokon, amely nem azonos TWOT-szám alatt áll) | **5 702** — 71,4% a lefedettekből (76,2% azokból, akiknek van BDB-rokonuk: 7 479) |
+| ebből csak a TWOT-számmal rendelkezők (5 486) között | 3 229 — 58,9% (2 504 lefedett Strongnak nincs TWOT-száma, ezek a `csak_bdb` számot felfelé torzítják) |
+| az unió miatt több gyökcsoportba / több TWOT-hoz kerülő Strong (a 8 581 sor → 7 990 Strong ismétlődései) | 221 Strong több BDB-gyökcsoportba, 207 Strong több TWOT-hoz |
+
+A BDB-gyökcsoport tehát jóval tágabb rokonságot ad, mint az azonos TWOT-szám; hasznosításáról (a szócikkek „rokon szavak” adata-e) a ⛔ M1 szerint a felhasználó dönt, ezt a menet nem hozza meg.
+
+
+## M6 — 6. adag (sorrend 407–648; F38.312–F38.353)
+
+*Prompt v4.2, terminológia v3, a #56 adatblokkjával (`eszkozok/bdb_adatblokk.py`) és a fejezetszám-javítótáblával (`adat/bdb_igehely_javitas.tsv`); modell: `claude-sonnet-5-5`, `allapot=sonnet`.*
+
+| | |
+|---|---|
+| szócikk | 242 (H0123–H6466, gyakoriság 100–57), mind rögzítve (`rogzit` + `beir`) |
+| karakter | forrás 498 550 → fordítás 521 833 (arány 1,05) |
+| kapuk | 242/242 RENDBEN a gátoló kapukon (1–11.); a 13. kapu 1 JELZES-t adott |
+| `ellenoriz.py` | SÉRTÉS 0 (RENDBEN 11, KÉZI 2, JELENTÉS 3: terminológia-verzió elmaradás, kiejtés-kivétel — régi tételek) |
+| tesztek | `teszt_forditas_kapuk.py` 69, `teszt_normalizal.py` 63, `teszt_emeles.py` 10, `teszt_ellenoriz_13.py` 9 — mind OK |
+| `teszt_bdb_zaras.py` | 21 teszt, 2 FAIL + 1 ERROR. A main-en (bdae91d) ugyanez a 3 teszt bukik: a `Zaras3Idempotencia.test_ir_ketszer_futtatva_nem_duplikal` (ERROR) és a `DTF38g.test_dtf38g_kezi_javitasok` (FAIL) a H5674 miatt, a `DTF38g.test_szellem_tabla_nagybetus_helyei` (FAIL) a H4390, H2451, H5117, H5012, H3847 miatt. **Az ágon a `test_szellem_tabla_nagybetus_helyei` egy hellyel többet jelez: H6743 `Szellem` (várt []) — ezt e menet okozta** (a `SZELLEM_KOVETELT` nem ismeri). Nem javítottam |
+| kész összesen | 648 sorrend-sor; hátra 7 416 szócikk (a #28 26 sorát leszámítva) |
+
+**13. kapu (JELZES, forráshiba, hűen átvéve):** H3289 „Náh 7:5” (a Nahum 3 fejezetes).
+
+**Terminológia-kivételek (szócikkszinten, jóváhagyásra a DT-F38d (b) mintájára):** H4422 és H6419 (`see` — angol ige a „to see” szövegrészben, nem „l.”); H5027 (`see` — „to see”, „see its desire”); H0349 (`emphatic` — köznyelvi melléknév, nem a nyelvtani emphaticus); H5324 (`Sept.` — „Aug.-Sept.”, a szeptember hónap); H0074 (`accusative` — a forrásban „accusative to” = „according to”, azaz „szerint”). A kivételek a sor `megjegyzes` oszlopában vannak.
+
+**Szellem-tábla (DT25 / DT-F38g):** +1 nagybetűs hely: H6743 Bír 14:6 „a Szellem . . . rárontott” (az Úr Szelleme); a H3001 „megtört szellem” és a H6588/H7350/H3444/H2506 „szellemi” kisbetűs, emberi/általános jelentésben. A `teszt_bdb_zaras.py` `SZELLEM_KOVETELT` ezt a helyet még nem ismeri, ezért a `test_szellem_tabla_nagybetus_helyei` az ágon a H6743-at is jelzi (a bővítés a DT-F38j (d) tárgya).
+
+**Forrásjelek (hűen átvéve, nem javítva):** pl. H7927 „Gen 33:46; Gen 33:47”, H5341 „Psa 60:20” (valószínűleg Péld 6:20) és hasonló forrásbeli hivatkozási furcsaságok; a kapuk nem jeleztek.
+
+**Eltérés a briefhez (rögzítve):** a granularitás nem szigorúan tétel-szintű (4–9 szócikk/commit, nem 1/commit), és a commit-üzenetek `F38.<n>: 6. adag — <Strongok>, Sonnet` alakúak; a történetet nem írtam át.
+
+**Folyamat:** szócikkenként olvasás → fordítás helyőrzőkkel → `emeles.py ellenoriz` (13 kapu) → `rogzit`/`beir`; a `naplok/EMELES_munka.tsv`-t minden `rogzit` után `git checkout`-tal visszaállítottam; a kapuhibák (9. jelölő, 4. zárójel, 11. könyvnév, 5. terminológia) a szövegben, nem a kapukon javítva.
+
+## M6b — DT-F38j döntése (2026-10-06, chat)
+
+| | |
+|---|---|
+| (a) folytatás | 1 — a 7. adag (sorrend 649–) a `claude/f38-adag7` ágon indulhat, **de csak a (d) feladat lezárása után** |
+| (b) kivételek | 1 — szócikkszinten jóváhagyva: H4422, H6419, H5027 (`see`), H0349 (`emphatic`), H5324 (`Sept.`), H0074 (`accusative`); mind a terminológia-kapu téves riasztása, a fordítás nem változik |
+| (c) gyökcsoport | 3 — a felhasználó később dönt (irány: 2., külön adatként, nem a fordításban); N-F38x, a 7. adag nem vár rá |
+| (d) Szellem-tábla, tesztek | 1 — külön feladat a 7. adag előtt: H6743 Bír 14:6 a `SZELLEM_KOVETELT`-be; a main-en is bukó `teszt_bdb_zaras.py`-hibák (H5674/H4390/H2451/H5117/H5012/H3847) javítása; brief-tervezet: `beerkezo/F38d_SZELLEM_TESZT_JAVITAS_BRIEF_TERVEZET.md` |
+
+**Az F38.355 csonka commitüzenete marad** (a felhasználó döntése; a történet nem íródik át).
+
+**Állapot (`dontesre_var` marad):** a brief fejlécében az `allapot` nem lép `fut`-ra, mert a 7. adag előfeltétele (a (d) feladat befogadása és lezárása) még hiányzik; a döntés megszületett, de a folytatás nem indítható. A `kovetkezo` a (d) feladatra mutat, utána a 7. adagra. A (d) brief-tervezete a `beerkezo/`-ben vár a `/befogad` jóváhagyására; a #38 7. adagja a befogadás után a (d) feladattól függ (`fugg` bővítése a befogadáskor).
+
+*Proveniencia: scope=DONTESEK.md DT-F38j | forras=felhasználó, chat | ts=2026-10-06.*
