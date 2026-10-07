@@ -688,7 +688,11 @@ E12_E13_HATOKOR = (
 
 
 def _e12_e13_hatokorben_e(relut):
-    return any(relut.startswith(p) for p in E12_E13_HATOKOR)
+    # F37 (ELLENOR_TANULMANY_ELLENORZES 1.): a tanulmanyfajl a hatokor-
+    # konyvtarakon kivul is a study-reteg resze, kulonben egy uj konyvtarba
+    # irt tanulmanyon az E13 HIBA es az E12 csendben nem futna.
+    return (any(relut.startswith(p) for p in E12_E13_HATOKOR)
+            or tanulmany_fajl_e(relut))
 
 
 # F37 (E24 -> E12): tanulmanyfajlon a naplojellegu szoveg tovabbi ket tipusa

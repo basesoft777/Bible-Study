@@ -128,6 +128,18 @@ class E13TanulmanyTeszt(unittest.TestCase):
             self.assertEqual(len(t), 1)
             self.assertIn('בֹהוּ', t[0].reszlet)
 
+    def test_pozitiv_hatokor_konyvtaron_kivul(self):
+        """Uj konyvtarba irt tanulmany is HIBA (ELLENOR_TANULMANY_ELLENORZES 1.)."""
+        with _IdeiglenesGyoker() as gy:
+            rel = _ir(gy, 'zsoltarok/Zsolt_23_tanulmany.md', "A גדל gyök jelentése nagy.\n")
+            t = SZ.e13_kiejtes_hianya([rel])
+            self.assertEqual([x.szint for x in t], ['HIBA'])
+
+    def test_negativ_hatokoron_kivul_nem_tanulmany(self):
+        with _IdeiglenesGyoker() as gy:
+            rel = _ir(gy, 'zsoltarok/jegyzet.md', "A גדל gyök jelentése nagy.\n")
+            self.assertEqual(SZ.e13_kiejtes_hianya([rel]), [])
+
     def test_negativ_tablazat_kovetkezo_cellaja(self):
         with _IdeiglenesGyoker() as gy:
             rel = _ir(gy, TANULMANY, "| 12:2 | בְּרָכָה | *berachá* | H1293 | áldás |\n")
@@ -209,6 +221,12 @@ class E12TanulmanyTeszt(unittest.TestCase):
             t = SZ.e12_proveniencia_prozaban([rel])
             self.assertEqual(len(t), 2)
             self.assertTrue(all(x.szint == 'FIGYELMEZTETES' for x in t))
+
+    def test_pozitiv_hatokor_konyvtaron_kivul(self):
+        """Uj konyvtarba irt tanulmanyon is fut (ELLENOR_TANULMANY_ELLENORZES 1.)."""
+        with _IdeiglenesGyoker() as gy:
+            rel = _ir(gy, 'zsoltarok/Zsolt_23_tanulmany.md', "## Formai önellenőrzés (elvégezve)\n\nA retroaktív pótlás kész.\n")
+            self.assertEqual(len(SZ.e12_proveniencia_prozaban([rel])), 2)
 
     def test_negativ_naplo_blokkban(self):
         with _IdeiglenesGyoker() as gy:
