@@ -36,3 +36,21 @@
 4. Az N51 nincs lezárva/frissítve; a README elvetett-szakasza elavult.
 5. A H3606 kézi ellenőrzésének eredménye nincs dokumentálva.
 6. A proveniencia `forras` mezője eltér a brieftől; elírás: „sorveegen”.
+
+---
+
+# 2. kör — origin/main(73d4651)..claude/bdb-aram-beemeles(c3a423f)
+
+*A fájlt az orkesztrátor mentette. Eredmény: ELTÉRÉS, 6 enyhe (dokumentációs) tétel; az 1. kör mind a 7 eltérése megoldódott. A 6 tételt az F72.7 (e2253fe) javította.*
+
+**Táblaadat — OK:** 164 alias-sor (`git diff --numstat`: 164/0); H5839 → H5838 (BDB9760) és H2298 → H0259 (BDB9285) megvan; a régi alias- (296) és fő tábla (8093) sorai bájtra azonos prefix, 0 törölt sor; az elvetett tábla, az F38 brief és a `BDB_FORDITAS_M0.py` változatlan; a #38 sorrendjének 648 soros kész előtagja változatlan, a 9 új sor (H1753, H3367, H3848, H6433, H7560, H8065, H0747, H4123, H4725) pontosan egyszer szerepel; H0004, H3769, H5013 egyik táblában sincs.
+
+**2. köri eltérések (mind javítva az F72.7-ben):**
+1. az újragenerálás nem volt dokumentálva a zárásban és az N51-ben (+9 bontása, H4725 gyakorisága 401, az adagok eltolódása → DT-F67a hivatkozás);
+2. a brief v3 és a README a H2298 → H0259-et „indokolt felülírásnak” nevezte, pedig automatikus egyezés (0,947);
+3. az `ir` fejlécből hiányzott a `bdb_sorrend_ujragen.py`, a `BDB_FORDITAS_sorrend.tsv`, az `ELLENOR_F72.md`;
+4. N-F72a: 162 → 164;
+5. a brief nyitott kérdéseiben elavult számok (161 → 162, kivétel 2);
+6. README:141 alias-darabszám: 296 → 460.
+
+**NEM ELLENŐRIZHETŐ (az ellenőr eszközeivel):** a teszt futtatása, a SHA-256, a CI-jelentés egyezése (helyi futás: E2–E16, E19, E26: 0 találat; E25 a diffen kívül), a #38 sorrend Strong-egyediségének teljes ellenőrzése, a ⛔2/⛔4 jóváhagyás (a repóból nem igazolható; a döntésnapló „felhasználó, chat”-ként rögzíti).
