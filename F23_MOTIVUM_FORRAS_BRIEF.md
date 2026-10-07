@@ -5,18 +5,20 @@ kod: MOTIVUM_FORRAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: nem_indult
+allapot: megallt
+ag: claude/f23-motivum-forras
+pr: https://github.com/basesoft777/Bible-Study/pull/243
 ad: a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül
-kovetkezo: /kovetkezo; ⛔ az M0 felmérés után; az M1 a #12a próza-próba eredményét várja (DT-F32a)
+kovetkezo: "Te: ⛔ az M0 kész, a DT-F23a eldöntve és átvezetve (🟢). M1 várja: #12a (#64) próza-próba (DT-F32a, DT-F23a d); utána /kovetkezo"
 olvas: [sablonok/, tematikus_lezart/, motivumok/, lexikon/, genezis/, adat/SEMA.md, adat/res_forras.tsv, eszkozok/general.py, CLAUDE.md, ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md]
-ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/MOTIVUM_FORRAS_torzscikk_egyedi.tsv, naplok/MOTIVUM_FORRAS_parositas.tsv, naplok/MOTIVUM_FORRAS_naplo_keveredes.tsv, naplok/MOTIVUM_FORRAS_atfedes.tsv]
+ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/MOTIVUM_FORRAS_torzscikk_egyedi.tsv, naplok/MOTIVUM_FORRAS_parositas.tsv, naplok/MOTIVUM_FORRAS_naplo_keveredes.tsv, naplok/MOTIVUM_FORRAS_atfedes.tsv, naplok/MOTIVUM_FORRAS_M0.py, naplok/F23_zaras.md, naplok/ELLENOR_F23.md, naplok/ELLENOR_F23_2.md]
 fugg: [32]
 nem_fugg: [22, 52]
 ---
 
 # F<nn>_MOTIVUM_FORRAS_BRIEF.md — Egyforrású motívumdokumentum: forrássablon és mélységi szintek (terv)
 
-*FELADATOK #<nn> · Modell: opus · v1.4 · 2026.10.05 · döntések: D34–D39 (a naplózó brief rögzíti; a számok a befogadáskor a következő szabad D-számtól csúszhatnak), DT28 (v1.3)*
+*FELADATOK #<nn> · Modell: opus · v1.5 · 2026.10.07 · döntések: D34–D39 (a naplózó brief rögzíti; a számok a befogadáskor a következő szabad D-számtól csúszhatnak), DT28 (v1.3)*
 
 ## 1. Cél
 
@@ -108,3 +110,4 @@ Minden számot a menetben ténylegesen futtatott parancs kimenetéből vegyél. 
 | v1.2 | 2026.10.04 | DT-F32a (🟢): ⛔ megállási pont az M0 után, az M1 a #12a próza-próba eredményét várja; a #12a a #23 M0 és M1 közé esik | DT-F32a (Felhasználó, 2026.10.04); a függés számmal nem rögzíthető (a #12a nem önálló feladat), ezért a `kovetkezo` fejlécmező és a szöveg hordozza |
 | v1.3 | 2026.10.05 | DT28 (3. pont): „Egyirányúság” a Célban; M0/1 `B_helye` egyetlen érték, `szetvalasztando` jelölés; M0/4 a DT28 mércéje; M1/1 markerek: mit nyer ki a generátor és hova, visszaírás nincs; M1/2 a SEMA 3/9-re épít, a kinyerést írja le; M1/4 a szétválasztás négy kategóriája és a visszaírás-számláló | DT28 (Felhasználó, 2026.10.05, PR #195; az 1–2. pont a #197-ben); a brief hatóköre nem bővül: továbbra is csak tervez és mér |
 | v1.4 | 2026.10.07 | fejléc `ir`: az öt M0-kimenet (`naplok/MOTIVUM_FORRAS_lekepezes.tsv`, `_torzscikk_egyedi.tsv`, `_parositas.tsv`, `_naplo_keveredes.tsv`, `_atfedes.tsv`) felvéve; a hatókör nem bővül (az M0 eleve ezeket állítja elő) | DT65 (c) (Felhasználó, 2026.10.07): önálló fejléchiba-javítás; az `allapot` és a `fugg` nem változik |
+| v1.5 | 2026.10.07 | fejléc `ir`: a mérőszkript (`naplok/MOTIVUM_FORRAS_M0.py`), a zárófájl (`naplok/F23_zaras.md`) és a két független ellenőri jelentés (`naplok/ELLENOR_F23.md`, `naplok/ELLENOR_F23_2.md`) felvéve; a hatókör nem bővül (a fájlok az M0 menetében és ellenőrzésében keletkeztek) | ELLENOR_F23 8. pont és ELLENOR_F23_2 3. pont; a javítókört a Felhasználó hagyta jóvá (2026.10.07); az `allapot` és a `fugg` nem változik |
