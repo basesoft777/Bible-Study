@@ -6,10 +6,10 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: megallt
 ag: claude/olvasoi-pilot
 ad: a repóban futó olvasói pilot (eszkozok/olvaso_pilot/) két szakaszon (1Móz 1:1–2:3 és Zsolt 22), minden blokk jellegjelöléssel (forrásadat / gépi feldolgozás / modell-kimenet), és egy értékelő jelentés számokkal, amely a DT-M1 döntés (olvasói konkordancia előre) alapja
-kovetkezo: /kovetkezo; ⛔ az M3 felhasználói átnézésnél
+kovetkezo: "Te: M3 átnézés — nézd meg mindkét szakasz oldalát: C:/Users/bases/AppData/Local/Temp/olvaso_pilot/1Moz_1_1-2_3/karoli_konkordancia_proba.html és C:/Users/bases/AppData/Local/Temp/olvaso_pilot/Zsolt_22/karoli_konkordancia_proba.html (újragenerálás: eszkozok/olvaso_pilot/adat.py és epit.py --szakasz …); mérés: naplok/OLVASOI_PILOT_meres.md; ellenőrzőlista: naplok/OLVASOI_PILOT_ellenorzolista.md. Észrevétel: mi hiányzik, mi felesleges, melyik mérőszám a döntő; utána /kovetkezo (M4)"
 olvas: [eszkozok/olvaso_pilot/README.md, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, "konkordancia/Macula_heber_*.tsv", "konkordancia/LXX_OS/*.tsv", konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Strong_szotar.tsv, konkordancia/TBESG.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, "adat/karoli_strong/*.tsv", adat/forditasok.tsv, adat/kulso/lxx_bridge.tsv, adat/licencek.tsv, MUNKATERV.md, ADATVAGYON_TERV.md]
 ir: [eszkozok/olvaso_pilot/adat.py, eszkozok/olvaso_pilot/bdb_szelet.py, eszkozok/olvaso_pilot/epit.py, eszkozok/olvaso_pilot/sablon.html, eszkozok/olvaso_pilot/README.md, eszkozok/olvaso_pilot/teszt_olvaso_pilot.py]
 fugg: []
