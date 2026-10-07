@@ -5,10 +5,10 @@ cim: "Károli–Strong párosítás könyvenként (1–2Móz: Sonnet + Gemini; a
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: megallt
 ag: claude/f22-zsolt
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
-kovetkezo: "Zsoltárok futása (D13, DT54): előkészítés; ⛔ a versbeosztás kézi jóváhagyása (27 jelzett fejezet), a Zsolt 88/89/140/142 TAHOT-hiányának kezelése és a pontossági szúrópróba előtt nem indul a Sonnet-futás. Háttér (előző állapot): a Zsoltárok indítása (⛔ 2.; a következő könyv a Zsoltárok, utána Bír, DT54 2026-10-07; előbb a versbeosztás kézi jóváhagyása (27 jelzett fejezet), a Zsolt 88/89/140/142 TAHOT-hiányának kezelése és pontossági szúrópróba az első költői könyvre). 1–5Móz és Józs kész (3Móz–Józs csak Sonnet, DT-F22c; a Józs PR #165 mergelve 2026-10-04; naplok/F22_Jozs_jelentes.md). Jób előtt: döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis."
+kovetkezo: "Te: Zsoltárok — az előkészítés kész (naplok/F22_Zsolt_elokeszites.md); döntés kell: DT-F22f (versbeosztás-jóváhagyás, elavult TAHOT-hiány sor javítása) és DT-F22g (szúrópróba módja), utána a Sonnet-futás indítása (csak Sonnet, DT-F22c; 85%-nál megállás). Jób előtt: döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis."
 fugg: [21]
 nem_fugg: [48]
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/futtat.py, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/regi_arany_hibas.tsv, naplok/F21P_jelentes.md]
