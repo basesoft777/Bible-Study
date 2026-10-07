@@ -1399,11 +1399,16 @@ SZABALYOK_FUGGVENYEI = {
 # A: a FELADATOK.md / NYITOTT_FELADATOK.md backtickes utvonalai leteznek-e;
 # B: a `claude/...` agnevek leteznek-e a tavoli repoban (egy ls-remote);
 # C: a 7-40 jegyu hexa commit-azonositok leteznek-e;
-# D: a *_BRIEF.md fejlec `olvas` mezojenek utvonalai leteznek-e;
+# D: a *_BRIEF.md fejlec `olvas` mezojenek utvonalai leteznek-e (csak az
+#    utvonalak; a fejlec ervenyessege az E18-e, DT-F40b);
 # E: a PR altal torolt/atnevezett fajl megmaradt-e hivatkozaskent.
-# A HIBA a diff altal hozzaadott/modositott sorokra vonatkozik (D8: a regi,
-# a PR altal nem erintett talalat csak JELENTES); az E-ellenorzes a PR sajat
-# hibaja, ezert mindig HIBA. A szabaly FAJLSZINTU (a futtat.py nem
+# Hatokor (DT-F40a): a FELADATOK.md generalt blokkjanak nyitott soran a
+# hianyzo fajl/commit mindig HIBA, az ag csak FIGYELMEZTETES; az `olvas`
+# hianyzo fajlja mindig HIBA, kiveve ha `fugg`-beli feladat `ir`-je fedi
+# (FIGYELMEZTETES); a Kesz szakasz fajlhianya FIGYELMEZTETES; minden egyeb a
+# diff altal hozzaadott/modositott sorokra vonatkozik (D8: a regi, a PR altal
+# nem erintett talalat csak JELENTES); az E-ellenorzes a PR sajat hibaja,
+# ezert mindig HIBA. A szabaly FAJLSZINTU (a futtat.py nem
 # leminositi), mert a diff-hatokort maga kezeli.
 
 E27_KOVETO_FAJLOK = ('FELADATOK.md', 'NYITOTT_FELADATOK.md')
@@ -1543,38 +1548,52 @@ def _e27_szakasz_kesz(cimsor):
     return any(c.startswith(k) for k in E27_KESZ_CIMSOROK)
 
 
-def _e27_fejlec_olvas(szoveg):
-    """(olvas_lista, sor, hiba): a brief YAML-fejlecenek `olvas` mezoje.
-    lista None, ha nincs fejlec vagy hibas; hiba szoveg, ha a fejlec hibas."""
+def _e27_fejlec_mezo(szoveg, kulcs):
+    """A brief YAML-fejlecenek `kulcs` mezoje: lista (a skalar egyelemu lista),
+    vagy [] ha nincs fejlec / nincs mezo / a mezo hibas. DT-F40b: a fejlec
+    ervenyessegenek ellenorzese (lezaras, lista-ertek) az E18-e, ez a
+    fuggveny nem jelez, csak olvas."""
     sorok = _e27_sorok(szoveg)
     if not sorok or sorok[0].strip() != '---':
-        return None, 0, None
+        return []
     veg = None
     for i in range(1, len(sorok)):
         if sorok[i].strip() == '---':
             veg = i
             break
     if veg is None:
-        return None, 1, 'a fejléc nincs lezárva (hiányzó záró `---`)'
+        return []
+    minta = re.compile(r'^%s:\s*(.*)$' % re.escape(kulcs))
     for i in range(1, veg):
-        m = re.match(r'^olvas:\s*(.*)$', sorok[i])
+        m = minta.match(sorok[i])
         if not m:
             continue
         ertek = m.group(1).strip()
         if ertek.startswith('['):
             if not ertek.endswith(']'):
-                return None, i + 1, 'az `olvas` mező listája nincs lezárva'
-            elemek = [e.strip().strip('\'"') for e in ertek[1:-1].split(',')]
-            return [e for e in elemek if e], i + 1, None
+                return []
+            elemek = [e.strip().strip("'\"") for e in ertek[1:-1].split(',')]
+            return [e for e in elemek if e]
         if ertek == '':
             elemek = []
             j = i + 1
             while j < veg and re.match(r'^\s+-\s+', sorok[j]):
-                elemek.append(re.sub(r'^\s+-\s+', '', sorok[j]).strip().strip('\'"'))
+                elemek.append(re.sub(r'^\s+-\s+', '', sorok[j]).strip().strip("'\""))
                 j += 1
-            return elemek, i + 1, None
-        return None, i + 1, 'az `olvas` mező nem lista'
-    return [], 0, None
+            return elemek
+        return [ertek.strip("'\"")]
+    return []
+
+
+def _e27_mezo_sorszam(szoveg, kulcs):
+    """A `kulcs:` mezo 1-alapu sorszama a fejlecben (0, ha nincs)."""
+    sorok = _e27_sorok(szoveg)
+    for i, sor in enumerate(sorok[1:], start=2):
+        if sor.strip() == '---':
+            break
+        if sor.startswith(kulcs + ':'):
+            return i
+    return 0
 
 
 def _e27_briefek():
@@ -1585,6 +1604,44 @@ def _e27_briefek():
             if f.endswith('_BRIEF.md'):
                 ki.append(os.path.relpath(os.path.join(gyoker, f), ROOT).replace(os.sep, '/'))
     return sorted(ki)
+
+
+def _e27_brief_terkep():
+    """{feladatszam: {'brief': relut, 'ir': [...], 'fugg': [...]}} a briefek
+    fejleceibol (a generalt blokk sorainak forras-brief nevezesehez es a
+    `fugg`-feladatok `ir` mezo szerinti lefedettsegehez)."""
+    terkep = {}
+    for relut in _e27_briefek():
+        szoveg = _e27_olvas(relut)
+        if szoveg is None:
+            continue
+        szam = _e27_fejlec_mezo(szoveg, 'feladat')
+        if not szam or not szam[0].isdigit():
+            continue
+        terkep[int(szam[0])] = {
+            'brief': relut,
+            'ir': _e27_fejlec_mezo(szoveg, 'ir'),
+            'fugg': [int(x) for x in _e27_fejlec_mezo(szoveg, 'fugg') if x.strip().isdigit()],
+        }
+    return terkep
+
+
+def _e27_ir_fedi(ir_lista, ut):
+    """Az `ir` mezo valamelyik eleme fedi-e az utat: azonos, konyvtar-elotag
+    (`naplok/`), vagy joker-minta (`naplok/F40_*`)."""
+    import fnmatch
+    for e in ir_lista:
+        e = e.split('#')[0].strip()
+        if not e:
+            continue
+        if e == ut or (e.endswith('/') and ut.startswith(e)) or fnmatch.fnmatch(ut, e):
+            return True
+    return False
+
+
+E27_GENERALT_KEZDET = re.compile(r'<!--\s*GENERÁLT-KEZDET:.*?--cel\s+(\w+)')
+E27_GENERALT_VEGE = re.compile(r'<!--\s*GENERÁLT-VÉGE:')
+E27_SORSZAM = re.compile(r'^\|\s*(\d+)\s*\|')
 
 
 def e27_hivatkozas(base_ref=None, head_ref=None, esemeny=''):
@@ -1608,15 +1665,34 @@ def e27_hivatkozas(base_ref=None, head_ref=None, esemeny=''):
     torolt = _e27_diff_statusz(base_ref, head_ref) if (base_ref and head_ref) else {}
     agak = None
     agak_lekerve = False
+    terkep = None
 
     for relut in E27_KOVETO_FAJLOK:
         szoveg = _e27_olvas(relut)
         if szoveg is None:
             continue
         kesz = False
+        generalt_nyitott = False   # DT-F40a (a): a FELADATOK.md generalt blokkjanak nyitott sorai
         for sorszam, sor in enumerate(_e27_sorok(szoveg), start=1):
             if sor.startswith('#'):
                 kesz = _e27_szakasz_kesz(sor)
+            mk = E27_GENERALT_KEZDET.search(sor)
+            if mk:
+                generalt_nyitott = (relut == 'FELADATOK.md' and mk.group(1) != 'kesz')
+            elif E27_GENERALT_VEGE.search(sor):
+                generalt_nyitott = False
+            nyitott_sor = generalt_nyitott and not kesz
+            forras = ''
+            if nyitott_sor:
+                ms = E27_SORSZAM.match(sor)
+                if terkep is None:
+                    terkep = _e27_brief_terkep()
+                if ms and int(ms.group(1)) in terkep:
+                    forras = (' A sor a generált blokkban áll; a javítás a forrás-briefben történik: `%s`.'
+                              % terkep[int(ms.group(1))]['brief'])
+                else:
+                    forras = (' A sor a generált blokkban áll; a javítás a forrás-briefben történik '
+                              '(a sor száma nem azonosít briefet).')
             csak_chatben = E27_CSAK_CHATBEN in sor
             latott = set()
             for m in E27_BACKTICK.finditer(sor):
@@ -1630,7 +1706,14 @@ def e27_hivatkozas(base_ref=None, head_ref=None, esemeny=''):
                           'a hivatkozott `%s` a PR-ban %s; frissítsd a mutatót ugyanabban a commitban.' % (ut, st),
                           kozvetlen=True)
                 elif not csak_chatben and not _e27_van_ut(ut):
-                    jelez('HIBA', relut, sorszam, 'a hivatkozott fájl/könyvtár nem létezik: `%s`.' % ut)
+                    uzenet = 'a hivatkozott fájl/könyvtár nem létezik: `%s`.' % ut
+                    if nyitott_sor:      # DT-F40a (a): mindig HIBA, diff-hatokor nelkul
+                        jelez('HIBA', relut, sorszam, uzenet + forras, kozvetlen=True)
+                    elif kesz:           # DT-F40a (c) / H2: figyelmeztetes
+                        jelez('FIGYELMEZTETES', relut, sorszam,
+                              uzenet + ' (lezárt szakasz)', kozvetlen=(relut == 'FELADATOK.md'))
+                    else:                # DT-F40a (d): diff-hatokoru
+                        jelez('HIBA', relut, sorszam, uzenet)
             for m in E27_AG.finditer(sor):
                 if not agak_lekerve:
                     agak = _e27_tavoli_agak()
@@ -1643,25 +1726,38 @@ def e27_hivatkozas(base_ref=None, head_ref=None, esemeny=''):
                     break
                 ag = m.group(0)
                 if ag not in agak:
-                    jelez('FIGYELMEZTETES' if kesz else 'HIBA', relut, sorszam,
-                          'a hivatkozott ág nem létezik a távoli repóban: `%s`%s.'
-                          % (ag, ' (lezárt szakasz: merge után törölt ág normális)' if kesz else ''))
+                    uzenet = 'a hivatkozott ág nem létezik a távoli repóban: `%s`' % ag
+                    if nyitott_sor:      # DT-F40a (a): a tervezett (meg nem letezo) ag ervenyes
+                        jelez('FIGYELMEZTETES', relut, sorszam,
+                              uzenet + ' (nyitott sor: a tervezett ág érvényes).' + forras, kozvetlen=True)
+                    elif kesz:
+                        jelez('FIGYELMEZTETES', relut, sorszam,
+                              uzenet + ' (lezárt szakasz: merge után törölt ág normális).')
+                    else:
+                        jelez('HIBA', relut, sorszam, uzenet + '.')
             for m in E27_HEXA.finditer(sor):
                 az = m.group(0)
                 if not (re.search(r'\d', az) and re.search(r'[a-f]', az)):
                     continue
                 if not _e27_commit_van(az):
-                    jelez('FIGYELMEZTETES', relut, sorszam, 'a hivatkozott commit nem létezik: `%s`.' % az)
+                    uzenet = 'a hivatkozott commit nem létezik: `%s`.' % az
+                    if nyitott_sor:      # DT-F40a (a): mindig HIBA
+                        jelez('HIBA', relut, sorszam, uzenet + forras, kozvetlen=True)
+                    else:
+                        jelez('FIGYELMEZTETES', relut, sorszam, uzenet)
 
+    # D: csak az `olvas` mezo utvonalai (DT-F40b: a fejlec-ervenyesseg az E18-e)
+    if terkep is None:
+        terkep = _e27_brief_terkep()
+    brief_szam = {adat['brief']: szam for szam, adat in terkep.items()}
     for relut in _e27_briefek():
         szoveg = _e27_olvas(relut)
         if szoveg is None:
             continue
-        olvas, sor, hiba = _e27_fejlec_olvas(szoveg)
-        if hiba:
-            jelez('FIGYELMEZTETES', relut, sor, 'hibás brief-fejléc: %s.' % hiba)
-            continue
-        for elem in olvas or []:
+        sor = _e27_mezo_sorszam(szoveg, 'olvas')
+        szam = brief_szam.get(relut)
+        fuggok = [terkep[f] for f in terkep[szam]['fugg'] if f in terkep] if szam is not None else []
+        for elem in _e27_fejlec_mezo(szoveg, 'olvas'):
             ut = elem.split('#')[0].strip()
             if not ut or any(c in ut for c in '*<>{} ') or ut.startswith(('http', '/')):
                 continue
@@ -1671,6 +1767,13 @@ def e27_hivatkozas(base_ref=None, head_ref=None, esemeny=''):
                       'az `olvas` mezőben hivatkozott `%s` a PR-ban %s; frissítsd a mutatót ugyanabban a commitban.' % (ut, st),
                       kozvetlen=True)
             elif not _e27_van_ut(ut):
-                jelez('FIGYELMEZTETES', relut, sor,
-                      'az `olvas` mezőben hivatkozott fájl nem létezik: `%s` (lehet, hogy egy függő feladat állítja elő).' % ut)
+                elo = [f for f in fuggok if _e27_ir_fedi(f['ir'], ut)]
+                if elo:
+                    jelez('FIGYELMEZTETES', relut, sor,
+                          'az `olvas` mezőben hivatkozott fájl még nem létezik: `%s` (a `fugg`-beli feladat állítja elő: `%s`).'
+                          % (ut, elo[0]['brief']), kozvetlen=True)
+                else:   # DT-F40a (b): mindig HIBA
+                    jelez('HIBA', relut, sor,
+                          'az `olvas` mezőben hivatkozott fájl nem létezik: `%s`, és egyik `fugg`-beli feladat `ir` mezője sem fedi.' % ut,
+                          kozvetlen=True)
     return talalatok
