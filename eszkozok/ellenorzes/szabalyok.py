@@ -1404,8 +1404,8 @@ SZABALYOK_FUGGVENYEI = {
 # E: a PR altal torolt/atnevezett fajl megmaradt-e hivatkozaskent.
 # Hatokor (DT-F40a): a FELADATOK.md generalt blokkjanak nyitott soran a
 # hianyzo fajl/commit mindig HIBA, az ag csak FIGYELMEZTETES; az `olvas`
-# hianyzo fajlja mindig HIBA, kiveve ha `fugg`-beli feladat `ir`-je fedi
-# (FIGYELMEZTETES); a Kesz szakasz fajlhianya FIGYELMEZTETES; minden egyeb a
+# hianyzo fajlja HIBA, kiveve ha lezart a brief, vagy barmely nem lezart
+# feladat `ir`-je fedi (DT-F40c: FIGYELMEZTETES); a Kesz szakasz fajlhianya FIGYELMEZTETES; minden egyeb a
 # diff altal hozzaadott/modositott sorokra vonatkozik (D8: a regi, a PR altal
 # nem erintett talalat csak JELENTES); az E-ellenorzes a PR sajat hibaja,
 # ezert mindig HIBA. A szabaly FAJLSZINTU (a futtat.py nem
@@ -1609,7 +1609,7 @@ def _e27_briefek():
 def _e27_brief_terkep():
     """{feladatszam: {'brief': relut, 'ir': [...], 'fugg': [...]}} a briefek
     fejleceibol (a generalt blokk sorainak forras-brief nevezesehez es a
-    `fugg`-feladatok `ir` mezo szerinti lefedettsegehez)."""
+    nem lezart feladatok `ir` mezo szerinti lefedettsegehez (DT-F40c))."""
     terkep = {}
     for relut in _e27_briefek():
         szoveg = _e27_olvas(relut)

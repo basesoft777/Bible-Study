@@ -2,7 +2,7 @@
 
 *Állapot: a DT-F40a/b szerinti javítás után (F40.5–), az F40 ágon mért, a main tartalmával megegyező feladatkövető-fájlokon. A javítás a talált hivatkozásokon nem ennek a menetnek a dolga (H4), a lista a takarítási ponthoz tartozik.*
 
-## Eredmény
+## Eredmény (a DT-F40a/b utáni köztes állapot — a végleges a „DT-F40c végrehajtása” szakaszban áll; az itt jelzett 2 HIBA és a bukó teszt megszűnt)
 
 - **`futtat.py --teljes`: 0 HIBA** (kilépési kód 0) — de ez a `--teljes` mód szerkezeti tulajdonsága: minden találatot JELENTES-re minősít (D3), tehát a 0 önmagában nem bizonyít. A nyers szint (`SZ.e27_hivatkozas()` közvetlen hívása, diff nélkül) a main mai állapotán: **2 HIBA, 1 FIGYELMEZTETÉS, 30 JELENTES**.
 - A 2 HIBA a DT-F40a (b) szabály következménye: az `olvas`-mező hiányzó fájlja mindig HIBA, ha egy `fugg`-beli feladat `ir` mezője nem fedi. Ilyen az `F46_BDB_KONYVFELOLDAS_BRIEF.md:14` (`beerkezo/BDB_KONYVFELOLDASI_AUDIT.md`; az útvonalat az F38 `ir`-je tartalmazza, az F46 `fugg`-je viszont [34]; az F46 lezárt) és az `F64_TEREMT002_PROZA_PROBA_BRIEF.md:12` (`naplok/MOTIVUM_FORRAS_lekepezes.tsv`; az F64 `fugg`-je üres, az útvonal a #23 M0 kimenete, de az F23 `ir`-je nem fedi). **A felhasználói döntés („F46, F64 mostani jelzése figyelmeztetés”) feltevése nem teljesül, ezért a CI a main-en piros lenne: `DT-F40c` (🟡) vár döntésre.** A `test_push_ures_cimmel_nem_piros` (E16EsemenyTest) emiatt bukik: a valódi repón az E27 2 HIBÁJA az összesített jelentést pirossá teszi.
@@ -61,3 +61,6 @@
 - **F23 `ir`-bővítés:** `naplok/MOTIVUM_FORRAS_lekepezes.tsv`, `_torzscikk_egyedi.tsv`, `_parositas.tsv`, `_naplo_keveredes.tsv`, `_atfedes.tsv`; az F23 verziónaplójában v1.4. Az `allapot` és a `fugg` nem változott.
 - **Eredmény:** az E27 nyers szintje (`SZ.e27_hivatkozas()`, diff nélkül) a main tartalmán 0 HIBA; a fenti „2 HIBA” (F46, F64) megszűnt. Az F46 FIGYELMEZTETÉS (lezárt), az F64 FIGYELMEZTETÉS (az F23 `ir`-je fedi).
 - **Tesztek:** a `test_olvas_hiba_ha_a_fedo_feladat_nincs_a_fuggesek_kozott` a DT-F40c (b) szerint megfordult (nem `fugg`-beli fedés is FIGYELMEZTETÉS); új: lezárt feladat `ir`-je nem fed (HIBA), joker, lezárt brief (FIGYELMEZTETÉS, kilépés 0), fedetlen nyitott brief (HIBA, kilépés 1). A kilépési kódok a `futtat.py main()` valódi kilépési kódjai.
+
+- **Végleges tesztszám (ellenőr 2. kör, mérve):** `E27Teszt` 37 metódus, `test_szabalyok.py` összesen 111 teszt, mind OK (a fenti „33 / 107, 1 bukik” köztes adat). Az F46 és F64 sora a fenti listában a köztes [HIBA] besorolású; végleges: FIGYELMEZTETES.
+- **Ellenőrzés:** `naplok/ELLENOR_HIVATKOZAS.md` (1. kör) és `naplok/ELLENOR_HIVATKOZAS_2.md` (2. kör). B-ellenőrzés Actions-tokennel: az első CI-futáson derül ki.

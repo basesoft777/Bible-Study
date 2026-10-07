@@ -10,7 +10,7 @@ ad: a CI minden PR-nál jelzi, ha a FELADATOK.md vagy egy brief nem létező fá
 ag: claude/hivatkozas-ellenorzes
 kovetkezo: "Te: DT-F40c döntése (az E27 2 HIBÁT ad a main-en: F46 és F64 olvas-mezője); utána zárás: ellenőri kör, zárójelentés, draft PR [ELLENŐRZŐ] előtaggal (E16)"
 olvas: [FELADATOK.md, NYITOTT_FELADATOK.md, CLAUDE.md, .github/workflows/, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, BRIEF_SABLON.md]
-ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/, .github/workflows/ellenorzes.yml, CLAUDE.md, naplok/ELLENOR_HIVATKOZAS.md]
+ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/, .github/workflows/ellenorzes.yml, CLAUDE.md, naplok/ELLENOR_HIVATKOZAS.md, F23_MOTIVUM_FORRAS_BRIEF.md, naplok/F40_zaras.md, naplok/ELLENOR_HIVATKOZAS_2.md, DONTESEK.md]
 fugg: [2]
 ---
 
