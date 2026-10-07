@@ -13,6 +13,7 @@ olvas: [sablonok/, genezis/, ujszovetseg/, tematikus_lezart/, konkordancia/, ada
 ir: [sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, sablonok/5_Melyelemzes_prompt_sablon.md, sablonok/Javasolt_sablon_kiegeszites_BDB_arnyalat.md, sablonok/PaRDeS_gyorsreferencia.md, sablonok/PaRDeS_tanitok_lista.md, MUNKAMENET.md, adat/SEMA.md, ATALAKITASI_TERV.md.md, Join_tabla_folyamat_magyarazat.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/T0_felmeres.md, naplok/TANULMANY_AUDIT.md, naplok/TANULMANY_AUDIT_ugynok.md, naplok/TANULMANY_ELLENORZES_utofeladat.md, naplok/TANULMANY_ELLENORZES_zaras.md]
 fugg: [30, 32]
 lezarva_osszegzes: E20 új, E13/E8/E9/E12 tanulmányra bővítve, jelentés mód (433 találat); fuggetlen-ellenor tanulmány-ellenőrzőlista; két auditjelentés; DT-F37a/b eldöntve; utófeladat-javaslat /befogad-ra vár; ellenőr 2 kör; részletek naplok/TANULMANY_ELLENORZES_zaras.md
+pr: https://github.com/basesoft777/Bible-Study/pull/240
 ---
 # TANULMANY_ELLENORZES_BRIEF.md
 
