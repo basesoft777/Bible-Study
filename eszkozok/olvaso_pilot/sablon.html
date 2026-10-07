@@ -1066,15 +1066,50 @@ ol.jel { gap: 12px; }
   }
 
 
-  // a fejléc alapjelentése: magyar BDB esetén a szócikk első jelentés-sora (maradék-jelek nélkül, az első „;” / „ — ” előtt, röviden);
-  // magyar BDB hiányában a Strong-szótár rövid jelentése (angol)
+  // a fejléc alapjelentése: magyar BDB esetén a szócikk első jelentés-sora; ha abban héber betű, hivatkozás vagy csak szófaj áll,
+  // gépi tisztítással (héber betűk, zárójeles részek, forrás-hivatkozások, szófaji szavak és átírás-maradékok kivétele) a magyar jelentés-rész;
+  // ha így sem marad használható szöveg, a Strong-szótár rövid jelentése (angol)
+  const HEB_RE = /[֐-׿יִ-ﭏ]+(?:,?_\d+)?/g;
+  const POS_RE = 'főnév|ige|melléknév|tulajdonnév|határozószó|névmás|partikula|sorszámnév|elöljárószó|kötőszó|istennév|népnév';
+  function tisztitAlap(alap) {
+    let s = alap;
+    for (let i = 0; i < 3; i++) s = s.replace(/\([^()]*\)/g, ' ');
+    s = s.replace(/\^\S+(?:\s+\d+(?::\d+)?(?:-\d+)?)?/g, ' ').replace(HEB_RE, ' ').replace(/_\d+/g, ' ');
+    s = s.replace(/\b[A-Z][a-z]?\^\S+|\bl\.\s+(?:lent|fent|ott)\b/g, ' ');
+    s = s.replace(/\s+/g, ' ').replace(/\s+([,.;:])/g, '$1').replace(/([,;:])\s*(?=[,;:.])/g, '');
+    const kp = new RegExp('(?:' + POS_RE + ')[^:;.]{0,60}:\\s*').exec(s);
+    let t;
+    if (kp) t = s.slice(kp.index + kp[0].length);
+    else {
+      const poz = [...s.matchAll(new RegExp('\\b(?:' + POS_RE + ')\\b\\s*', 'g'))];
+      t = poz.length ? s.slice(poz[poz.length - 1].index + poz[poz.length - 1][0].length) : s;
+    }
+    t = t.split(/;|\. |\[|\(/)[0];
+    // legfeljebb 3 tag, a számot, kettőspontot vagy rövidítést tartalmazó tagok előtt megáll
+    const tagok = [];
+    for (const x of t.split(/,\s*/)) {
+      let y = x.trim();
+      // vezető nyelvtani szavak, függő „mindig / csak …” utótag és lógó névelő kivétele
+      for (let i = 0; i < 4; i++) y = y.replace(/^(?:és|vagy|csak|mindig|többes számban|egyes számban|többes szám|egyes szám|gyűjtőnév|hímnemű|nőnemű|közös nem)\s+/i, '');
+      y = y.replace(/\s+(?:mindig|csak)\b.*$/i, '').replace(/\s+(?:a|az|és|vagy|szóval)$/i, '').trim();
+      if (!y || y.length > 40 || /\d|:|suffix|status|stb|\bl\.|[Ͱ-Ͽ]/i.test(y) || /^(?:fia|lánya|leánya|apja|atyja|neje)\b/i.test(y)) break;
+      tagok.push(y);
+      if (tagok.length >= 3 || tagok.join(', ').length > 70) break;
+    }
+    let ki = tagok.join(', ').replace(/[\s,:;.]+$/, '').replace(/^[\s,:;.=]+/, '').replace(/(?:,\s*)?\b(?:és|vagy)$/, '').trim();
+    if (/-(?:\s|,|$)/.test(ki)) return '';
+    if (ki.length < 3 || !/[a-záéíóöőúüű]{3}/i.test(ki) || /^(?:participium|igenévi melléknév)$/i.test(ki) || /[֐-׿יִ-ﭏ]/.test(ki)) return '';
+    return ki;
+  }
   function alapjelentes(l) {
     const alap = l.bdb_hu && l.appar && l.appar.alap;
     if (alap) {
       const t = alap.replace(/,_\d+/g, '').split(/;| — |\(/)[0].trim();
-      // héber betűs vagy hivatkozás-maradékos (a gépi bontás itt nem tiszta) sor helyett a Strong-szótár rövid jelentése áll
-      if (t && !/[\u0590-\u05ff]/.test(t) && !/\bl\.\s/.test(t) &&
-          t.replace(/hímnemű|nőnemű|közös|többes|egyes|számú|szám|főnév|ige|melléknév|tulajdonnév|határozószó|elöljárószó|kötőszó|névmás|[[\]:,.\s]/g, '').length > 2) return { nyelv: 'hu', szoveg: t.length > 110 ? t.slice(0, 110).replace(/\s+\S*$/, '') + ' …' : t };
+      const tiszta = t && !/[֐-׿יִ-ﭏ]/.test(t) && !/\bl\.\s/.test(t) &&
+        t.replace(/hímnemű|nőnemű|közös|többes|egyes|számú|szám|főnév|ige|melléknév|tulajdonnév|határozószó|elöljárószó|kötőszó|névmás|[[\]:,.\s]/g, '').length > 2;
+      if (tiszta && t.length <= 70 && !/\^/.test(t)) return { nyelv: 'hu', szoveg: t };
+      const c = tisztitAlap(alap);
+      if (c) return { nyelv: 'hu', szoveg: c, tisztitott: true };
     }
     return l.rovid ? { nyelv: 'en', szoveg: l.rovid } : null;
   }
@@ -1178,7 +1213,7 @@ ol.jel { gap: 12px; }
         el('div', { class: 'szolap-adat' },
           el('span', { class: 'strong', text: l.strong }),
           el('span', { text: [l.kiejtes, l.szofaj].filter(Boolean).join(' · ') }))),
-      alapjelentes(l) ? el('p', { class: 'alapjel', lang: alapjelentes(l).nyelv }, el('span', { class: 'fcim', text: 'Alapjelentés' }), alapjelentes(l).szoveg) : null,
+      alapjelentes(l) ? el('p', { class: 'alapjel', lang: alapjelentes(l).nyelv, title: alapjelentes(l).tisztitott ? 'Gépi tisztítás: a magyar BDB-sorból a héber betűk, hivatkozások és szófaji szavak kivéve' : null }, el('span', { class: 'fcim', text: 'Alapjelentés' }), alapjelentes(l).szoveg) : null,
       el('div', { class: 'szamok' },
         el('div', { class: 'szam' }, el('b', { text: l.elofordulas.toLocaleString('hu-HU') }), el('span', { text: 'előfordulás az ÓSZ-ben' })),
         el('div', { class: 'szam' }, el('b', { text: l.konyvek_szama }), el('span', { text: 'könyvben' })),

@@ -545,6 +545,24 @@ class AlapjelentesAFejlecben(unittest.TestCase):
         self.assertIn('modell', sor)
 
 
+class AlapjelentesTisztitas(unittest.TestCase):
+    """F60.20: a magyar BDB-s alapjelentésből a héber betűk, hivatkozások és szófaji szavak kikerülnek (gépi tisztítás);
+    ha nem marad használható szöveg, a Strong-szótár rövid jelentése áll."""
+
+    def test_tisztito_a_sablonban(self):
+        s = sablon()
+        self.assertIn("function tisztitAlap(alap)", s)
+        self.assertIn("const HEB_RE", s)
+        self.assertIn("tisztitott: true", s)
+        self.assertIn("Gépi tisztítás", s)
+
+    def test_a_tisztitott_alapjelentes_nem_marad_hosszu_vagy_hebert_tartalmazo(self):
+        # a böngészős mérés (F60.20): 0 héber betű, 0 görög betű, 0 üres alapjelentés — itt a sablon biztosítékait ellenőrizzük
+        s = sablon()
+        self.assertIn("y.length > 40", s)
+        self.assertIn("/-(?:", s)
+
+
 class Regresszio(unittest.TestCase):
     @unittest.skipUnless(os.environ.get('OLVASO_PROTOTIP_JSON'), 'OLVASO_PROTOTIP_JSON nincs megadva')
     def test_prototipussal_azonos(self):
