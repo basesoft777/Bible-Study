@@ -13,7 +13,8 @@
 - **Licenc:** közkincs (public domain) — az eredeti BDB szövege és annak digitalizált
   átirata is közkincs; **a státusz a repóban „tisztázatlan”** (`adat/licencek.tsv`: a `BDB` sor 7. és a `lexikonok_nyers` sor 43. sora; a forrásrepó README-jének állítása nem független igazolás). Ugyanez áll a `konkordancia/lexikonok_nyers/BDB.lexicon`-ra, amelyből az F57 pótlása készült.
 - **SHA-256** (`konkordancia/BDB_teljes_unabridged.tsv`, K7, F05b):
-  `40d96e57b491457a712a0fc45ed84022a1d3929f480495472a11f66a445f3cf6` (aktuális: F57 utáni állapot, +3 pótolt sor, l. „Pótlás”; előzmény, az F57 előtti F46-os állapot:
+  `d4b15b2faea6a0f0f12a701c3905d10850c6877e138344a60f4dca3e9b6a7794` (aktuális: F72 utáni állapot, +6 arámi pótolt sor a végén, l. „Arámi beemelés (F72)”; előzmény, az F57 utáni állapot (+3 pótolt sor, l. „Pótlás”):
+  `40d96e57b491457a712a0fc45ed84022a1d3929f480495472a11f66a445f3cf6`; előzmény, az F57 előtti F46-os állapot:
   `dfb5b2aaa722291736d567c4e56c10d2890f2c860eadf416629e5d02f0e59acc`; F46 javított verzió, a DT-F46 kiegészítés 2 utáni állapot: 16 csere visszaállítva, F46.14; előzmények: F46.6 `ff5357fe69c19262aa2464fbae03e02a177f4a8e044b8f47290751fee4f427a0`; F34 javított verzió `5c176037617813e330eb57e883ab7fd728c19a244c42196668ea712d0f502f14`; az eredeti, K7: `1d28a84004817b8ee09eff92d762038ae2eac7351f24abd0a8b1cc5df380dfa5`)
 
 ## Konverzió
@@ -141,6 +142,16 @@ A forrás a „ψ” jelet több száz helyen az előző könyvnévre oldotta fe
 - **`konkordancia/BDB_strong_alias_elvetett.tsv`** (233 sor: héber 60, arámi 173; oszlopok: `masodlagos_strong`, `bdb_id`, `nyelv`, `cimszo`, `testver_strong`, `indok_kod`, `indok`, `proveniencia`; az `indok_kod` gépi kód, szűrhető, az `indok` a magyar magyarázat): ezek **nem** feloldhatók a táblában meglévő sorra, jelöltek maradnak. A `testver_strong` az azonos szócikkbeli testvéreket sorolja fel (a `nem_ebbol_a_szocikkbol` sorokban a más szócikkből származókat). Kódok (darab): `nem_ebbol_a_szocikkbol` 220 (ebből arámi 172: a testvérsor a héber szócikk sora, pl. H0399 → H0398); `a_testversor_mas_szocikk` 9 (a testvérsor valóban más szócikk, pl. H3606 → H6903; ebből arámi 1); `kuszob_alatt` 3 (H0706 0,832; H6737 0,858; H8112 0,873: a testvérsor ugyanazzal a címszóval kezdődik, de a mérőszám a küszöb alatt van; a #57-ben nincs egyenkénti beemelés, a kód szűrhető, egy későbbi feladat beemelheti őket); `kifejezes_tarscimke` 1 (H2088 → H6258: a BDB6199 fejlécében a „zeh” egy attá-kifejezés miatt kapott társcímkét; a saját szócikke máshol van, ezért valódi téves alias volna). Több testvér-Strong esetén nincs elvetés (nincs 2+ megfelelő sor); az alias célja pontosan egy megfelelő testvér: a „megfelelő testvérek száma = 1” feltétel minden aliasban teljesül (ellenőrzött); több azonos szócikkbeli testvér esetén a többi testvér sora más szócikk vagy csonk (pl. H6990, H8550, H1170). **Korlát:** a `kuszob_alatt` / `a_testversor_mas_szocikk` megkülönböztetés címszó-heurisztika, amely csak a legjobb mérőszámú testvért nézi és homonímára vak (pl. H5875, H5883, H5886 → H5871: „más szócikk” kódot kaptak, noha a címszó azonos), ezért a kód támpont, nem bizonyíték. A „stub-sor/rövid törzs” korábbi magyarázat téves volt: a valós ok az, hogy a testvérsor további szócikkeket is tartalmaz, vagy más szócikk.
 - **Nyitott:** az elvetett arámi szócikkek tényleges pótlása (a BDB.lexicon szövegéből új táblasorok) külön feladat a `/befogad` útján (DT-F57d).
 
-**Darabszám.** A tábla 8093 sor + fejléc (az eredeti konverzió: 8090). SHA-256: l. fent (aktuális érték).
+**Darabszám.** A tábla 8099 sor + fejléc (az eredeti konverzió: 8090; F57: +3; F72: +6 arámi). SHA-256: l. fent (aktuális érték).
 
 **Reprodukálás.** Az `--m1` a pótlás *előtti* táblaállapotra írja a párosítást (a pótolt Strongok a táblában már szerepelnek, ezért újrafuttatva `nincs_par`-ra esnének); az `--m2` idempotens; az `--alias` a táblából és a BDB.lexicon-ból bármikor újragenerálja a két alias-táblát.
+
+## Arámi beemelés (F72, #72; N51, felhasználói döntés 2026-10-06/07)
+
+`python eszkozok/bdb_aram_beemeles.py --m2 --jovahagyva` (szárazfutás: `--m0`). A `konkordancia/BDB_aram_potlas.tsv` 170 elfogadott sorából:
+
+- **162 alias-sor** került a `BDB_strong_alias.tsv` végére (`nyelv=aram`; a tábla 296 → 458 sor): ezek szövege (ujjlenyomat-mérőszám ≥ 0,8) már a héber testvérsor végén áll. Indokolt kizárólista a szkriptben (`KIZAR`): **H2298** (kézzel a BDB9285-höz rendelt, `kezi_elfogadott`; a H0259-re mutató alias ellentmondana) és **H5839** (téves testvér: BDB9760 = Azarjá, a H5665 Abed-Negó).
+- **6 szöveges pótlás** a fő tábla végére (H1753, H3367, H3848, H6433, H7560, H8065), a régi sorok bájtra azonosak (a teszt az `origin/main` ellen ellenőrzi).
+- Jelölt marad: H0004, H3769, H5013, H2298, H5839. A `BDB_strong_alias_elvetett.tsv` változatlan.
+
+**FIGYELEM.** A `bdb_strong_potlas.py --alias` a `BDB_strong_alias.tsv`-t és a `BDB_strong_alias_elvetett.tsv`-t **nulláról újragenerálja**, ezért újrafuttatva **letörölné a 162 új arámi alias-sort**. Amíg a szkript nem őrzi meg őket (N-F72a, nyitott tétel), az `--alias` futtatása után a `bdb_aram_beemeles.py --m2 --jovahagyva` újra kell hogy fusson (a szkript az alias-oldalon csak a hiányzó sorokat tudja pótolni, ha az alias-tábla már tartalmazza őket, ütközés miatt megáll).
