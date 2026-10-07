@@ -13,7 +13,7 @@ Sonnet: 12 köteg, 120 vers; kapuhiba első próbára 0.0% (0/120); végleg 0.0%
 köteg összesen: 253, kész: 12, hátralevő: 241
 ```
 
-Rendszerszintű hiba (kapu, hash, sorszám-lefedettség) nem jelent meg. A jelzett fejezetekből a mintában a 105, 114, 121 szerepel (a 6 nem; a rögzített lista 12 különböző kötegre esett).
+Rendszerszintű hiba (kapu, hash, sorszám-lefedettség) nem jelent meg. A jelzett fejezetekből a mintában a 6 (a 5. köteg: 5:5–6:1), 105, 114, 121 szerepel.
 
 ## 3. Keret
 
