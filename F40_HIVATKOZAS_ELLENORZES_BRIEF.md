@@ -5,12 +5,14 @@ kod: HIVATKOZAS_ELLENORZES
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: dontesre_var
+allapot: lezarva
 ad: a CI minden PR-nál jelzi, ha a FELADATOK.md vagy egy brief nem létező fájlra, ágra vagy commitra mutat, illetve ha egy PR áthelyez vagy töröl egy hivatkozott fájlt anélkül, hogy a mutatót frissítené
 ag: claude/hivatkozas-ellenorzes
-kovetkezo: "Te: DT-F40c döntése (az E27 2 HIBÁT ad a main-en: F46 és F64 olvas-mezője); utána zárás: ellenőri kör, zárójelentés, draft PR [ELLENŐRZŐ] előtaggal (E16)"
+kovetkezo: merge a felhasználótól; az E27 első CI-futásán a B-ellenőrzés (ágak) Actions-tokenes működésének ellenőrzése
 olvas: [FELADATOK.md, NYITOTT_FELADATOK.md, CLAUDE.md, .github/workflows/, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, BRIEF_SABLON.md]
 ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/, .github/workflows/ellenorzes.yml, CLAUDE.md, naplok/ELLENOR_HIVATKOZAS.md, F23_MOTIVUM_FORRAS_BRIEF.md, naplok/F40_zaras.md, naplok/ELLENOR_HIVATKOZAS_2.md, DONTESEK.md]
+pr: https://github.com/basesoft777/Bible-Study/pull/242
+lezarva_osszegzes: E27 hivatkozás-ellenőrzés (A–E, DT-F40a/b/c szerinti hatókör), 111 teszt OK, a main-en 0 HIBA / 3 FIGYELMEZTETÉS / 30 JELENTÉS; két ellenőri kör; B-ellenőrzés tokenje CI-n igazolandó
 fugg: [2]
 ---
 
