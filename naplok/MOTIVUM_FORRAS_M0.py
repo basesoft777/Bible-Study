@@ -106,7 +106,20 @@ print('== ⭐-küszöb: COUNT(DISTINCT fo_elofordulas) ID-nként (adat/elofordul
 for m in motivumok:
     fo = {e['fo_elofordulas'] for e in elof if e['id'] == m['id'] and e.get('fo_elofordulas', '').strip()}
     sorok = sum(1 for e in elof if e['id'] == m['id'])
-    print(f"  {m['id']}\tfo_elofordulas={len(fo)}\telofordulas_sor={sorok}")
+    print(f"  {m['id']}\tfo_elofordulas={len(fo)}\telofordulas_sor={sorok}\tstatusz={m.get('statusz', '')}"
+          f"\tforras_study={'van' if m.get('forras_study', '').strip() else 'nincs'}\tertekek={sorted(fo)}")
+# a napló generált ⭐/index-sorában kimondott szám (SEMA 2.2.3 önellenőrzés) — DT-F23a (c)
+NAPLO_SZAM = re.compile(r'\[ID: ([A-Z]+-\d{3})\]`? — (\d+) fő előfordulás')
+naplo_szam = {}
+for sor in olvas('motivumlog/PaRDeS_motivumok.md').split('\n'):
+    t = NAPLO_SZAM.search(sor)
+    if t:
+        naplo_szam.setdefault(t.group(1), t.group(2))
+print('== ⭐-önellenőrzés: COUNT(DISTINCT fo_elofordulas) vs. motivumlog/PaRDeS_motivumok.md „N fő előfordulás”')
+for m in motivumok:
+    fo = {e['fo_elofordulas'] for e in elof if e['id'] == m['id'] and e.get('fo_elofordulas', '').strip()}
+    n = naplo_szam.get(m['id'], 'nincs sor')
+    print(f"  {m['id']}\tadat={len(fo)}\tnaplo={n}\t{'egyezik' if str(len(fo)) == n else 'ELTÉR'}")
 
 # ---------------------------------------------------------------- M0/3
 tem_fajlok = sorted(glob.glob(os.path.join(GYOKER, 'tematikus_lezart', '*.md')))
