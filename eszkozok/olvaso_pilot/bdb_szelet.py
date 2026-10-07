@@ -31,12 +31,45 @@ def _zarojelek(s):
     return ki
 
 
+SZOFAJ_RE = re.compile(r"\b(?:verb|noun|adjective|adverb|preposition|conjunction|particle|pronoun|interjection|ige|főnév|melléknév|"
+                       r"határozószó|elöljárószó|kötőszó|partikula|névmás|indulatszó|tulajdonnév)\b")
+
+
+def _zarojelben(szoveg, max_hossz=400):
+    """Logikai lista: a szöveg adott pozíciója felső szintű (…) vagy […] csoporton belül van-e. A csoport csak akkor számít, ha a záró
+    zárójel `max_hossz` karakteren belül megvan (a csonka, lezáratlan zárójel nem némít el mindent utána)."""
+    ki = [False] * (len(szoveg) + 1)
+    i = 0
+    n = len(szoveg)
+    while i < n:
+        if szoveg[i] in '([':
+            mely, j = 0, i
+            while j < n and j - i <= max_hossz:
+                if szoveg[j] in '([':
+                    mely += 1
+                elif szoveg[j] in ')]':
+                    mely -= 1
+                    if mely == 0:
+                        break
+                j += 1
+            if j < n and j - i <= max_hossz and mely == 0:
+                for k in range(i, j + 1):
+                    ki[k] = True
+                i = j + 1
+                continue
+        i += 1
+    return ki
+
+
 def _szamozott(szoveg, minta_fn, elso):
     """Sorszámozott jelölők keresése szigorú sorrenddel (1, 2, 3 … vagy a, b, c …).
     Visszaad: [(jel, kezdo_index, tartalom_kezdete)]."""
     talalat, varas = [], elso
+    bent = _zarojelben(szoveg)
     for m in minta_fn().finditer(szoveg):
         csop = 1 if m.group(1) is not None else 2
+        if bent[m.start(csop)]:
+            continue
         if m.group(csop) == varas:
             talalat.append((m.group(csop), m.start(csop), m.end()))
             varas = str(int(varas) + 1) if varas.isdigit() else chr(ord(varas) + 1)
@@ -92,8 +125,13 @@ def _egy(szoveg):
     # „1.a beginning” → „1. a. beginning” (így a magyar „a” névelő nem téveszthető alpontnak)
     s = re.sub(r'(?<=[\s—])(\d{1,2})\.([a-l])\s', r'\1. \2. ', s)
     fej = {'strong': '', 'atiras': '', 'heber': '', 'ossz': ''}
+    HEB = "[\u0590-\u05ff\ufb1d-\ufb4f]"
+    m2 = re.match(r"^(H\d+)\.\s+((?:(?!\[?" + HEB + r")[^\u0590-\u05ff\ufb1d-\ufb4f]){1,80}?)\s*(?:([IVX]+)\.\s+)?\[?(" + HEB + r"[^\s\]_,;:]*)\]?,?(?:_(\d+))?", s)
     m = re.match(r"^(H\d+)\.\s+(\S+(?:\s')?)\s+(?:([IVX]+)\.\s+)?\[?([^\s\]_]+)\]?(?:_(\d+))?\s", s)
-    if m:
+    if m2:
+        fej = {'strong': m2.group(1), 'atiras': m2.group(2).strip(), 'homonima': m2.group(3) or '', 'heber': m2.group(4), 'ossz': m2.group(5) or ''}
+        torzs = s[m2.end():].lstrip(' ,;:')
+    elif m:
         fej = {'strong': m.group(1), 'atiras': m.group(2), 'homonima': m.group(3) or '', 'heber': m.group(4), 'ossz': m.group(5) or ''}
         torzs = s[m.end():]
     else:
@@ -119,9 +157,12 @@ def _egy(szoveg):
         rk = len(torzs)
     eleje, regio = torzs[:rk], torzs[rk:]
     # eleje: alapjelentés + nyelvi háttér + alaktan (gondolatjelek mentén)
-    darabok = [d.strip(' —;') for d in re.split(r'\s—\s', eleje) if d.strip(' —;')]
-    fo = darabok[0] if darabok else ''
-    alaktan = ' — '.join(darabok[1:])
+    darabok = [d.strip(' —;,') for d in re.split(r'\s—\s', eleje) if d.strip(' —;,')]
+    k = 0
+    if len(darabok) > 1 and not SZOFAJ_RE.search(darabok[0]):
+        k = next((i for i, d in enumerate(darabok) if i and SZOFAJ_RE.search(d[:50])), 0)
+    fo = darabok[k] if darabok else ''
+    alaktan = ' — '.join(darabok[:k] + darabok[k + 1:])
     nyelvi, alap, utolso = [], [], 0
     for a, b in _zarojelek(fo):
         csoport = fo[a:b]

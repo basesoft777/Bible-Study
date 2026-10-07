@@ -596,6 +596,61 @@ class AlapjelentesTisztitas(unittest.TestCase):
         self.assertIn("_l['alapjelentes'] = alap_jelentes(", src)
 
 
+class BdbFejlec(unittest.TestCase):
+    """F60.23: a BDB-sor eleje (H4100 típus): átírás-változatok után az első héber szó a címszó; a „… — megjegyzés — <szófaj>: jelentés”
+    szerkezetben a szófajos szakasz az alapjelentés; a zárójelben álló számok („(Da^§ 8, R. 2 K?:iii. 23 k.)”) nem jelentés-sorszámok."""
+
+    H4100 = ("H4100. mah vagy ma- vagy meh מָה, ritkán מָהֿ (pl. 1Móz 31:43), מָ (csak a מָהֵם Ez 8:6 Kt. helyen) "
+             "— ezen alakok használatának különbségéről l. Ges^§ 37 — kérdő és határozatlan névmás: mi? hogyan? valami; "
+             "dolgokról használatos (arámi , מָא, arab ; valószínűleg egy n-es hosszabb alak, asszír minû): — "
+             "1 kérdő: mi ? a. egyenes kérdésben, igék vagy főnevek előtt 1Móz 4:10 mit tettél ? "
+             "b. gyakran függő kérdésben, Péld 25:8 (Da^§ 8, R. 2 K?:iii. 23 k.); felkiáltásként, Zsolt 89:48b. "
+             "2 határozószóként használva: a. kérdőszóként: hogyan ? b. felkiáltásként: mily ... Jób 26:2-3,. "
+             "3 határozatlan névmás: valami, bármi, 4Móz 23:3. "
+             "4 Elöljárószókkal: a. בַּמָּה miben ? 2Móz 22:26; b. מֶה יַעַן Hag 1:9 mi miatt ?")
+
+    def setUp(self):
+        import bdb_szelet
+        self.r = bdb_szelet.szeletel(self.H4100, 'מָה')
+
+    def test_cimszo_a_heber_szo(self):
+        self.assertEqual(self.r['fej']['heber'], 'מָה')
+        self.assertEqual(self.r['fej']['atiras'], 'mah vagy ma- vagy meh')
+
+    def test_alapjelentes_a_szofajos_szakasz(self):
+        self.assertTrue(self.r['alap'].startswith('kérdő és határozatlan névmás'))
+        self.assertTrue(any('arámi' in x for x in self.r['nyelvi']))
+        self.assertIn('Ges^§ 37', self.r['alaktan'])
+
+    def test_zarojelben_allo_szam_nem_jelolo(self):
+        jelek = [j['jel'] for j in self.r['torzsek'][0]['jelentesek']]
+        self.assertEqual(jelek, ['1', '2', '3', '4'])
+        elso_al = [a['jel'] for a in self.r['torzsek'][0]['jelentesek'][0]['al']]
+        self.assertEqual(elso_al, ['a', 'b'])
+
+    def test_alapjelentes_a_fejlecbe(self):
+        import bdb_szelet
+        self.assertEqual(bdb_szelet.alap_jelentes(self.r['alap'])['szoveg'], 'kérdő és határozatlan névmás: mi? hogyan? valami')
+
+    def test_zarojelben_segedfuggveny(self):
+        import bdb_szelet
+        s = "a (b 2 c) d 2 e"
+        bent = bdb_szelet._zarojelben(s)
+        self.assertTrue(bent[s.index('2')])
+        self.assertFalse(bent[s.rindex('2')])
+        # lezáratlan zárójel nem némít el mindent utána
+        s2 = "a (b" + " x" * 300 + " 2 y"
+        self.assertFalse(bdb_szelet._zarojelben(s2)[s2.rindex('2')])
+
+    def test_egyszeru_fejlec_valtozatlan(self):
+        import bdb_szelet
+        r = bdb_szelet.szeletel("H0001. av [אָב] noun father; — 1. father Gen 2:24.", 'אָב')
+        self.assertEqual(r['fej']['heber'], 'אָב')
+        self.assertEqual(r['fej']['atiras'], 'av')
+        r2 = bdb_szelet.szeletel("H1732. David דָּוִד,_1066 tulajdonnév, hímnemű: Dávid", 'דָּוִד')
+        self.assertEqual((r2['fej']['heber'], r2['fej']['ossz']), ('דָּוִד', '1066'))
+
+
 class Regresszio(unittest.TestCase):
     @unittest.skipUnless(os.environ.get('OLVASO_PROTOTIP_JSON'), 'OLVASO_PROTOTIP_JSON nincs megadva')
     def test_prototipussal_azonos(self):
