@@ -67,7 +67,7 @@ A „?” jel a blokk adatkészletét, fájlját és licencét mutatja (`adat/li
 
 - A héber szó-lapok magyar BDB-szócikkel: 1Móz 98-ból 61 (62,2%), Zsolt 159-ből 112 (70,4%); a többinek az angol eredeti áll (a #38 gyakorisági sorrendben halad).
 - A Károli–Strong párosítás csak 1–5Móz, Józsué és Zsoltárok könyvére kész; az Újszövetségre nincs. A Zsoltárokban a párok mind „alacsony” bizonyosságúak (egy modell, #22).
-- A görög szó-lapokon magyar jelentés csak a #28 lexikon-szócikkeiből van (1Móz 110-ből 3, Zsolt 153-ból 1).
+- A görög szó-lapokon magyar jelentés csak a #28 lexikon-szócikkeiből van (1Móz 202-ből 4, Zsolt 304-ből 3; a görög szó-lapok köre a lxx_bridge-ből hivatkozott szavakkal bővült, F60.15).
 - A BSB-tábla a Zsolt 22:1–2-re nem ad sort (a pilot nem pótolja); a TAHOT-kivonat nem teljes (a két szakaszt nem érinti).
 - A `Karoli_versmegfeleltetes.tsv`, a `LXX_versificacios_terkep.tsv` és a Nave `karoli_allapot` oszlopa a Zsolt 22-re Károli = KJV számozást feltételez (lásd az adatfelmérés 5. pontját).
 - A TBESH jelentés-listája Online Bible-eredetű (a fejléc szerint külön engedély kell); az MCGED nem kereskedelmi; a KJV-Strong-címkék, az LXX_versszintu_parok és a Karoli_versmegfeleltetes licence tisztázatlan; a tW és az UBS/SDBH CC BY-SA (share-alike). Nyilvános közzététel előtt jogi átnézés kell (DT-M6).

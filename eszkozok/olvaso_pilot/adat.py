@@ -415,15 +415,21 @@ for v in versek:
                      'kjv_lxx': lxx_kjv.get(ig, '')}
 
 # Görög szó-lapok az LXX-szavakhoz
+# F60.15: minden görög szó kap lapot, amelyre a lap valahol hivatkozik: az LXX-sor szavai, a Macula-párok és a héber
+# szó-lapok „Görög megfelelő” (lxx_bridge) sorai — a nyelvtani szavak is (a lapon jelölve: `nyelvtani`).
 gor_szavak = set()
 for v in versek:
     for x in v['lxx']:
-        if x['strong'] and x['strong'] not in nyelvtani:
+        if x['strong']:
             gor_szavak.add(x['strong'])
     for w in v['heber']:
         m = w.get('macula')
-        if m and m['lxx_strong'] and m['lxx_strong'] not in nyelvtani:
+        if m and m['lxx_strong']:
             gor_szavak.add(m['lxx_strong'])
+for _l in lapok.values():
+    for x in _l['lxx']:
+        if x['strong']:
+            gor_szavak.add(x['strong'])
 
 tbesg = {}
 for s in open(GY + 'konkordancia/TBESG.txt', encoding='utf-8'):
@@ -467,6 +473,7 @@ for g in sorted(gor_szavak):
     th = thayer.get(g, '')
     gor_lapok[g] = {
         'strong': g,
+        'nyelvtani': g in nyelvtani,
         'lemma': tb.get('lemma') or sz.get('szoto', ''),
         'atiras': tb.get('atiras') or sz.get('kiejtes', ''),
         'gloss': tb.get('gloss') or sz.get('jelentes', ''),

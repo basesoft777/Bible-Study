@@ -241,7 +241,7 @@ def main():
     # 4
     w('## 4. Görög szó-lapok')
     w('')
-    proveniencia('konkordancia/TBESG.txt + Thayer_teljes.tsv + adat/forditasok.tsv (Thayer, UBS_DNTG) + konkordancia/TAGNT_kivonat.tsv + adat/kulso/lxx_bridge.tsv; a görög szavak köre: LXX_OS + Macula a szakasz verseire')
+    proveniencia('konkordancia/TBESG.txt + Thayer_teljes.tsv + adat/forditasok.tsv (Thayer, UBS_DNTG) + konkordancia/TAGNT_kivonat.tsv + adat/kulso/lxx_bridge.tsv; a görög szavak köre: LXX_OS + Macula a szakasz verseire, és minden görög szó, amelyre egy héber szó-lap a lxx_bridge-ből hivatkozik')
     w(tabla('Mérőszám', [
         sor('görög szó-lap', *[M[s]['gor_ossz'] for s in SZAKASZOK]),
         sor('van magyar jelentés (adat/forditasok.tsv: Thayer / UBS_DNTG)', *['%d (%s)' % (M[s]['gor_hu'], szaz(M[s]['gor_hu'], M[s]['gor_ossz'])) for s in SZAKASZOK]),

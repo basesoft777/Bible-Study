@@ -933,7 +933,8 @@ ol.jel { gap: 12px; }
           el('span', { class: 'allapot folyamat', text: 'Magyar fordítás nincs' }),
           el('p', { class: 'meg', text: `Rövid jelentés: ${l.gloss}` }));
     szolap.append(
-      el('div', null, el('p', { class: 'lapcim', text: 'Szó-lap · görög' })),
+      el('div', null, el('p', { class: 'lapcim', text: 'Szó-lap · görög' }),
+        l.nyelvtani ? el('span', { class: 'allapot', text: 'Nyelvtani szó (adat/grammatikai_strongok.tsv)' }) : null),
       el('h3', { text: 'Szó adatai (görög)' }),
       el('div', { class: 'szolap-fej' },
         el('p', { class: 'lemma gr', lang: 'grc', text: l.lemma }),
