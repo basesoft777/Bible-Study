@@ -262,5 +262,24 @@ class TanulmanyAuditTeszt(unittest.TestCase):
         self.assertEqual(len(eredmeny['E20']), 3)  # a TANULMANY-bol 1., 2., 3. hianyzik
 
 
+class TanulmanyEllenorzesSegedTeszt(unittest.TestCase):
+    """T4 segedszkript: igeszakasz a fajlnevbol, vers-cella ertelmezese (a
+    valodi normalizalo tablaval)."""
+
+    def test_szakasz_fajlnevbol(self):
+        import tanulmany_ellenorzes as TE
+        self.assertEqual(TE.tanulmany_szakasz('genezis/1Moz_12v1-20_bovitett.md'), ('1Móz', (12, 1), (12, 20)))
+        self.assertEqual(TE.tanulmany_szakasz('genezis/1Moz_10v1-11v32_bovitett.md'), ('1Móz', (10, 1), (11, 32)))
+        self.assertEqual(TE.tanulmany_szakasz('genezis/1Moz_14_bovitett.md'), ('1Móz', (14, 1), (14, None)))
+        self.assertEqual(TE.tanulmany_szakasz('ujszovetseg/Rom_8v10_bovitett.md'), ('Róm', (8, 10), (8, 10)))
+
+    def test_vers_cella(self):
+        import tanulmany_ellenorzes as TE
+        sz = ('1Móz', (6, 9), (6, 22))
+        self.assertEqual(TE.versek(sz, '12:7/12:8 ⚠️'), ['1Móz 12:7', '1Móz 12:8'])
+        self.assertEqual(TE.versek(sz, '17'), ['1Móz 6:17'])
+        self.assertIsNone(TE.versek(sz, ''))
+
+
 if __name__ == '__main__':
     unittest.main()
