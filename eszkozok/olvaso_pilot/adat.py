@@ -16,6 +16,7 @@ from collections import Counter, defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from bdb_szelet import szeletel  # noqa: E402
+from bovites import MorfKulcs, bovit  # noqa: E402
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -315,7 +316,7 @@ def morf_hu(kod):
 macula_vers = defaultdict(list)
 for r in sorok(MACULA_F):
     if len(r) > 14 and r[2] in VERSEK:
-        macula_vers[r[2]].append({'szo': r[5], 'lemma': r[6], 'strong': hnorm(r[7]) if r[7] else None,
+        macula_vers[r[2]].append({'_xml': r[0], 'szo': r[5], 'lemma': r[6], 'strong': hnorm(r[7]) if r[7] else None,
                                   'morf': r[10], 'szofaj': r[11], 'gloss': r[12],
                                   'lxx': r[13], 'lxx_strong': hnorm(r[14]) if r[14] else None})
 
@@ -341,6 +342,8 @@ for r in sorok(LXX_F):
         lxx_igehely.setdefault(r[2], r[0])
         lxx_kjv.setdefault(r[2], r[1])
 
+MK = MorfKulcs(GY)
+MK.betolt_nyelv(GY, {m['_xml'] for ms in macula_vers.values() for m in ms})
 for v in versek:
     ig = v['igehely']
     mac = macula_vers[ig]
@@ -383,9 +386,10 @@ for v in versek:
     for w in th:
         m = w.get('macula')
         if m:
-            # a kód magyar feloldásához nincs jelkulcs a repóban (az ETCBC-modul NC-licencű, kizárt):
-            # a Macula nyers kódja és szófaja áll, feloldás nélkül
-            m['morf_hu'] = ''
+            # a Macula nyers kódja marad (morf); a magyar feloldás az adat/morf_kulcs_heber.tsv-ből jön
+            # (gépi feldolgozás, bovites.MorfKulcs); az arámi/héber nyelv: adat/morf_nyelv_aramai.tsv
+            m['nyelv'] = MK.nyelv(m.get('_xml'))
+            m['morf_hu'] = MK.dekodol(m['morf'], m['nyelv'])
             m['szofaj_hu'] = m['szofaj']
         lexidk = sorted(ubs_ref.get((ig, w['strong']), ()))
         w['ubs'] = [dict(ubs_jel[x], lexid=x) for x in lexidk if x in ubs_jel]
@@ -462,6 +466,19 @@ for g in sorted(gor_szavak):
                   for db, h in sorted(vissza.get(g, []), reverse=True)[:5]],
     }
 
+for v in versek:
+    for w in v['heber']:
+        if w.get('macula'):
+            w['macula'].pop('_xml', None)
+
+# ===================== 3. kör (F60.5, v2): a bővítés — bovites.py =====================
+import types  # noqa: E402
+_C = types.SimpleNamespace(GY=GY, TS=TS, SZAKASZ=SZAKASZ, KONYV=KONYV, VERSEK=VERSEK, versek=versek, lapok=lapok,
+                           gor_lapok=gor_lapok, hnorm=hnorm, STEP_HU=STEP_HU, nyelvtani=nyelvtani)
+BOV_PROV, BOV_TOP, BOV_STAT = bovit(_C)
+BOV_STAT['morf_ismeretlen'] = sum(MK.ismeretlen.values())
+BOV_STAT['morf_aramai_szo'] = sum(1 for n in MK.aramai.values() if n == 'A')
+
 LXX_REL = LXX_F[len('konkordancia/'):]
 PAROK_F = parok_hasznalt[0] if len(parok_hasznalt) == 1 else '{%s}' % ','.join(parok_hasznalt)
 prov = {
@@ -482,13 +499,17 @@ prov = {
     'elofordulas': 'scope=OT | forras=konkordancia/TAHOT_kivonat.tsv (nem teljes) | ts=%s' % TS,
     'bridge': 'scope=strong | forras=adat/kulso/lxx_bridge.tsv | ts=%s' % TS,
 }
+prov.update(BOV_PROV)
 with open(KI, 'w', encoding='utf-8') as fh:
     licenc = {}
+    licenc_jelzes = {}
     for r in sorok('adat/licencek.tsv'):
         if len(r) > 9:
             licenc[r[0]] = r[9]
-    json.dump({'licenc': licenc, 'versek': versek, 'lapok': lapok, 'gor_lapok': gor_lapok, 'prov': prov, 'karoli_konyvek': pkonyvek,
-               'bdb_kesz': len(bdb_hu)}, fh, ensure_ascii=False)
+            licenc_jelzes[r[0]] = {'allapot': r[7], 'kereskedelmi': r[4], 'share_alike': r[5], 'megjeloles': r[6]}
+    json.dump({'licenc': licenc, 'licenc_jelzes': licenc_jelzes, 'versek': versek, 'lapok': lapok, 'gor_lapok': gor_lapok,
+               'prov': prov, 'karoli_konyvek': pkonyvek, 'bdb_kesz': len(bdb_hu), 'stat': BOV_STAT, **BOV_TOP}, fh,
+              ensure_ascii=False)
 print('versek:', len(versek), '| szó-lapok:', len(lapok), '| ebből magyar BDB:',
       sum(1 for x in lapok.values() if x['bdb_hu']), '| Károli-könyvek:', pkonyvek)
 for v in versek:

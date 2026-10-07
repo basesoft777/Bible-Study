@@ -216,6 +216,19 @@ ul.hiv li b { font-weight: 500; color: var(--muted); font-size: 11px; margin-lef
 .allapot { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; padding: 2px 8px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); width: fit-content; }
 .allapot.folyamat { background: var(--gold-soft); color: var(--gold); }
 .lenyit { font: 500 13px var(--font-ui); color: var(--accent); background: none; border: 0; padding: 0; cursor: pointer; width: fit-content; text-decoration: underline; text-underline-offset: 3px; }
+.angol-sor { display: flex; flex-wrap: wrap; gap: 4px 8px; }
+.ang { display: inline-grid; line-height: 1.25; padding: 2px 7px; border: 1px solid var(--rule); border-radius: 5px; font-family: var(--font-gr); font-size: 14px; background: var(--bg); text-align: left; color: var(--ink); }
+.ang small { font: 11px var(--font-mono); color: var(--muted); }
+.ang.ures b { color: var(--muted); font-weight: 400; }
+.ang.kat { cursor: pointer; border-color: var(--accent); }
+.ang.kat:hover, .ang.kat:focus-visible, .ang.vilagit { background: var(--accent-soft); }
+.ang.aktiv { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+.ang.aktiv small { color: var(--surface); }
+.sorok { display: grid; gap: 8px; }
+.sorok .sor { border-left: 3px solid var(--accent); padding: 4px 0 4px 10px; display: grid; gap: 2px; font-size: 13px; line-height: 1.45; }
+.sorok .sor .fo { font: 600 12px var(--font-ui); color: var(--accent); }
+.sorok .sor .al { font-size: 12px; color: var(--muted); overflow-wrap: anywhere; }
+.sorok .sor.regi { border-left-color: var(--low); }
 .lxx-meg { display: grid; gap: 4px; }
 .lxx-meg div { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; font-size: 14px; }
 .lxx-meg .gr { font-family: var(--font-gr); font-size: 1.125rem; }
@@ -271,7 +284,8 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
     <span>Aláhúzott szó: a Károli-szó szó szintű párosítása a héber szóval (a Károli–Strong párosítás, modell-kimenet). Szaggatott aláhúzás: nem „magas” bizonyosságú pár.</span>
     <span>Arany jelölés: a BDB-szócikk magyar fordítása nincs meg; az angol eredeti áll.</span>
     <span>Az előfordulásszám a TAHOT-kivonatból jön, amely nem teljes (pl. a Zsolt 88/89/140/142 hiányzik).</span>
-    <span>Igealak: a Macula nyers morfológiai kódja és szófaja, feloldás nélkül (a kód jelkulcsa nincs a repóban). A szó alatti görög szó: a párosítás a Maculából, a szóalak az LXX_OS-ből; a Macula-illesztés pontossága az F17 napló szerint kb. 78% (átvett szám, naplok/F17_import_naplo.md).</span>
+    <span>Igealak: a Macula nyers morfológiai kódja mellett a magyar feloldás az adat/morf_kulcs_heber.tsv-ből jön (gépi feldolgozás; a kód változatlanul látszik). A szó alatti görög szó: a párosítás a Maculából, a szóalak az LXX_OS-ből; a Macula-illesztés pontossága az F17 napló szerint kb. 78% (átvett szám, naplok/F17_import_naplo.md).</span>
+    <span>Angol szó szavanként: a BSB „Számozás” oszlopa jelzi a versszámozást; a KJV-kulcs a LXX_OS KJV-oszlopából jön (gépi illesztés). A Nave-témák KJV-számozású hivatkozások, a tartományok versekre bontva (gépi feldolgozás).</span>
     <span>„Ebben a versben”: a UBS héber szótárának (DBH) saját jelentés-besorolása az adott előfordulásra; CC BY-SA 4.0.</span>
   </footer>
 </div>
@@ -565,6 +579,7 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
       el('span', null, 'héber (MT) ', el('b', { text: vs.mt || '—' })),
       el('span', null, 'LXX ', el('b', { text: vs.lxx || '—' })),
       vs.kjv_lxx ? el('span', null, 'KJV (LXX_OS-tábla) ', el('b', { text: vs.kjv_lxx })) : null,
+      vs.kjv_kulcs ? el('span', null, 'KJV-kulcs (a pilot illesztése) ', el('b', { text: vs.kjv_kulcs }), ` (${vs.kjv_kulcs_forras})`) : null,
       el('span', { text: egyezik ? '· a számozás egyezik' : (ellentmond ? `· a két tábla ellentmond (versmegfeleltetés: KJV ${vs.kjv || '—'}; LXX_OS: KJV ${vs.kjv_lxx})` : '· a számozás eltér, l. a versmegfeleltető táblát') }));
 
     verslap.append(
@@ -583,7 +598,8 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
         v.tsk.length ? el('ul', { class: 'hiv' }, v.tsk.map(h => el('li', { text: h }))) : el('p', { class: 'meg', text: 'Nincs TSK-hivatkozás.' }),
         el('h3', { text: 'Károli-kereszthivatkozások' }),
         v.karoli_kh.length ? el('ul', { class: 'hiv' }, v.karoli_kh.map(h => el('li', { text: h }))) : el('p', { class: 'meg', text: 'Ehhez a vershez a Károli-kiadás nem ad kereszthivatkozást.' }),
-        forras('tsk', 'kh'))
+        forras('tsk', 'kh')),
+      ...vers2Blokkok(v)
     );
   }
 
@@ -621,6 +637,175 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
             el('span', { class: 'gl', lang: 'en', text: 'Glosszák: ' + u.glosszak })))
         : el('p', { class: 'meg', text: 'A UBS-szótár ehhez az előforduláshoz nem ad jelentés-besorolást (az SDBH/DBH a szókincs kb. 90%-át fedi; az üres eredmény nem negatív lelet).' }),
       forras('ubs', 'macula'));
+  }
+
+  // ---- F60.5 (v2): bővítés — szó-lap és vers-lap blokkok a meglévő táblákból
+  const HU_URES = 'Nincs sor ehhez a szóhoz ebben a táblában.';
+  const tobbRessz = (lista, n, rajz, felirat) => {
+    if (lista.length <= n) return lista.map(rajz);
+    return [...lista.slice(0, n).map(rajz), el('details', null, el('summary', { class: 'meg', text: `${felirat} (${lista.length - n})` }), el('div', { class: 'sorok' }, lista.slice(n).map(rajz)))];
+  };
+  const hosszuSzoveg = (cim, t, nyelv) => el('details', null, el('summary', { class: 'meg', text: `${cim} (${t.length.toLocaleString('hu-HU')} karakter)` }), el('p', { class: 'bdb en', lang: nyelv || 'en', text: t }));
+
+  function domenBlokk(l, cim, kulcs) {
+    const d = l.domen || [];
+    return el('div', { class: 'blokk' },
+      el('h3', { text: cim }),
+      d.length ? el('div', { class: 'sorok' }, tobbRessz(d, 8, x => el('div', { class: 'ubs' },
+        el('span', { class: 'dom', text: x.domen }), el('span', { class: 'def', lang: 'en', text: x.glossza }),
+        el('span', { class: 'gl', text: `${x.db} hivatkozás · ${x.lexid}` })), 'További jelentés'))
+        : el('p', { class: 'meg', text: 'Az SDBH/SDGNT nem ad domént ehhez a szóhoz (a szókincs kb. 90%-át fedi; az üres eredmény nem negatív lelet).' }),
+      forras(kulcs));
+  }
+  function seceBlokk(l, cim, kulcs) {
+    return el('div', { class: 'blokk' },
+      el('h3', { text: cim }),
+      l.sece ? hosszuSzoveg('A szócikk (TWOT/GK/OSHL-hivatkozásokkal)', l.sece) : el('p', { class: 'meg', text: HU_URES }),
+      forras(kulcs));
+  }
+  function oshlBlokk(l) {
+    const o = l.oshl || [];
+    return el('div', { class: 'blokk' },
+      el('h3', { text: 'TWOT- és BDB-azonosító (OSHL)' }),
+      o.length ? el('div', { class: 'sorok' }, o.map(x => el('div', { class: 'sor' },
+        el('span', { class: 'fo', text: `TWOT ${x.twot || '—'} · BDB ${x.bdb_id || '—'}` }),
+        el('span', { text: [x.atiras, x.szofaj, x.nyelv].filter(Boolean).join(' · ') }),
+        el('span', { class: 'al', lang: 'en', text: x.def_en })))) : el('p', { class: 'meg', text: HU_URES }),
+      l.oshl_db > o.length ? el('p', { class: 'meg', text: `Az első ${o.length} a ${l.oshl_db} sorból.` }) : null,
+      forras('oshl'));
+  }
+  function tbeshBlokk(l) {
+    const t = l.tbesh || [];
+    return el('div', { class: 'blokk' },
+      el('h3', { text: 'Bővített Strong-szócikk (TBESH)' }),
+      t.length ? el('div', { class: 'sorok' }, t.map(x => el('div', { class: 'sor' },
+        el('span', { class: 'fo', text: `${x.dstrong}${x.rokon ? ' · ' + x.rokon : ''}` }),
+        el('span', { lang: 'en', text: x.gloss }),
+        x.jelentes ? el('span', { class: 'al', lang: 'en', style: 'white-space: pre-line', text: x.jelentes }) : null))) : el('p', { class: 'meg', text: HU_URES }),
+      l.tbesh_db > t.length ? el('p', { class: 'meg', text: `Az első ${t.length} a ${l.tbesh_db} sorból.` }) : null,
+      forras('tbesh'));
+  }
+  function twBlokk(l) {
+    const ids = l.tw || [];
+    return el('div', { class: 'blokk' },
+      el('h3', { text: 'translationWords (tW)' }),
+      ids.length ? el('div', { class: 'sorok' }, ids.map(id => {
+        const x = D.tw_cikkek[id] || {};
+        return el('div', { class: 'sor' }, el('span', { class: 'fo', text: `${x.cim} · ${id}` }),
+          hosszuSzoveg('A szócikk (angol)', x.szoveg || ''));
+      })) : el('p', { class: 'meg', text: HU_URES }),
+      l.tw_db > ids.length ? el('p', { class: 'meg', text: `Az első ${ids.length} a ${l.tw_db} szócikkből.` }) : null,
+      forras('tw'));
+  }
+  function ubsEnBlokk(l) {
+    const u = l.ubs_en || [];
+    return el('div', { class: 'blokk' },
+      el('h3', { text: 'UBS DNTG jelentések (angol)' }),
+      u.length ? el('div', { class: 'sorok' }, tobbRessz(u, 5, x => el('div', { class: 'ubs' },
+        el('span', { class: 'dom', text: x.domen }), el('span', { class: 'def', lang: 'en', text: x.rovid }),
+        x.hosszu ? el('span', { class: 'gl', lang: 'en', text: x.hosszu }) : null,
+        el('span', { class: 'gl', lang: 'en', text: 'Glosszák: ' + x.glosszak }),
+        x.megjegyzes ? el('span', { class: 'gl', lang: 'en', text: x.megjegyzes }) : null), 'További jelentés')) : el('p', { class: 'meg', text: HU_URES }),
+      l.ubs_en_db > u.length ? el('p', { class: 'meg', text: `Az első ${u.length} a ${l.ubs_en_db} jelentésből.` }) : null,
+      forras('ubs_dntg'));
+  }
+  function mcgedBlokk(l) {
+    const m = l.mcged;
+    const jel = ((D.licenc_jelzes || {}).MCGED || {}).megjeloles || '';
+    return el('div', { class: 'blokk' },
+      el('h3', { text: 'Mounce-szótár (MCGED)' }),
+      m ? el('div', { class: 'sorok' }, el('div', { class: 'sor' },
+        el('span', { class: 'fo', text: `GK ${m.gk} · ${m.gyakorisag}× az ÚSZ-ben` }), el('span', { lang: 'en', text: m.glossza }))) : el('p', { class: 'meg', text: HU_URES }),
+      el('p', { class: 'meg', text: jel.split(' (')[0] }),
+      forras('mcged'));
+  }
+  function lsjBlokk(l) {
+    return el('div', { class: 'blokk' },
+      el('h3', { text: 'LSJ-szócikk (angol)' }),
+      l.lsj ? hosszuSzoveg('A szócikk', l.lsj) : el('p', { class: 'meg', text: HU_URES }),
+      forras('lsj'));
+  }
+
+  function angolBlokk(cim, a, kulcs, jelzes) {
+    const sz = a.szavak;
+    return el('div', { class: 'blokk' },
+      el('h3', { text: cim }),
+      el('p', { class: 'meg', text: jelzes }),
+      sz.length ? el('div', { class: 'angol-sor', lang: 'en' }, sz.map(x => {
+        const lap = x.strong && D.lapok[x.strong];
+        return el('span', {
+          class: 'ang' + (lap ? ' kat' : '') + (x.szo ? '' : ' ures') + (x.strong === aktSzo ? ' aktiv' : ''),
+          'data-strong': x.strong, role: lap ? 'button' : null, tabindex: lap ? '0' : null,
+          title: x.allapot ? `állapot: ${x.allapot}` : null,
+          onclick: lap ? () => kivalaszt(x.strong) : null,
+          onkeydown: lap ? e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); kivalaszt(x.strong); } } : null
+        }, el('b', { text: x.szo || '—' }), el('small', { text: x.strong || '' }));
+      })) : el('p', { class: 'meg', text: `A táblában nincs sor erre a kulcsra (${a.kulcs}).` }),
+      forras(kulcs));
+  }
+  function naveBlokk(v) {
+    const lst = v.nave || [];
+    const fej = (D.nave_fejezet || {})[v.igehely.split(' ')[1].split(':')[0]] || [];
+    const rajz = x => el('li', { title: x.hely }, x.tema + (x.cimke ? ': ' + x.cimke : ''), el('b', { text: x.tart ? x.hely : '' }));
+    return el('div', { class: 'blokk' },
+      el('h3', { text: 'Témák (Nave)' }),
+      lst.length ? el('ul', { class: 'hiv', lang: 'en' }, lst.slice(0, 40).map(rajz)) : el('p', { class: 'meg', text: 'Nincs Nave-sor erre a vershez (KJV-kulcs: ' + (v.versszam.kjv_kulcs || '—') + ').' }),
+      lst.length > 40 ? el('details', null, el('summary', { class: 'meg', text: `További témák (${lst.length - 40})` }), el('ul', { class: 'hiv', lang: 'en' }, lst.slice(40).map(rajz))) : null,
+      fej.length ? el('details', null, el('summary', { class: 'meg', text: `Fejezet-szintű hivatkozások (${fej.length})` }), el('ul', { class: 'hiv', lang: 'en' }, fej.map(rajz))) : null,
+      forras('nave'));
+  }
+  function tipnrBlokk(v) {
+    const t = v.tipnr || [];
+    return el('div', { class: 'blokk' },
+      el('h3', { text: 'Tulajdonnevek (TIPNR)' }),
+      t.length ? el('ul', { class: 'hiv', lang: 'en' }, t.map(x => el('li', { title: `${x.igehely} · illesztés: ${x.illesztes}` }, x.nev, el('b', { text: `${x.valtozat} · ${x.strong}` })))) : el('p', { class: 'meg', text: 'Nincs TIPNR-sor erre a vershez.' }),
+      forras('tipnr'));
+  }
+  function adatrBlokk(cim, lista, kulcs, rajz) {
+    return el('div', { class: 'blokk' },
+      el('h3', { text: cim }),
+      lista.length ? el('div', { class: 'sorok' }, lista.map(rajz)) : el('p', { class: 'meg', text: 'Nincs sor erre a vershez.' }),
+      forras(kulcs));
+  }
+  const mot = x => (x.motivum && (x.motivum.ui_cimke || x.motivum.cim)) || '';
+  function lxxParBlokk(v) {
+    const h = Object.entries(v.lxx_par || {});
+    return el('div', { class: 'blokk' },
+      el('h3', { text: 'LXX versszintű együttelőfordulás' }),
+      h.length ? el('details', null, el('summary', { class: 'meg', text: `${h.length} héber szó, ${h.reduce((n, [, g]) => n + g.length, 0)} pár` }),
+        el('div', { class: 'sorok' }, h.map(([hs, gs]) => el('div', { class: 'sor' },
+          el('span', { class: 'fo', text: `${hs}${(D.lapok[hs] || {}).lemma ? ' · ' + D.lapok[hs].lemma : ''}` }),
+          el('span', { class: 'al', text: gs.join(', ') }))))) : el('p', { class: 'meg', text: 'Nincs sor erre a vershez.' }),
+      forras('lxx_par'));
+  }
+  function tobbletBlokk(v) {
+    const t = v.lxx_tobblet || [], z = v.verzif || [];
+    return el('div', { class: 'blokk' },
+      el('h3', { text: 'LXX többlet és számozási eltérés' }),
+      t.length ? el('div', { class: 'sorok' }, t.map(x => el('div', { class: 'sor' }, el('span', { class: 'fo', text: `${x.szakasz} · ${x.tipus}` }),
+        el('span', { class: 'al', text: `KJV ${x.kjv} · héber ${x.heber} · görög ${x.gorog} · ${x.karoli_allapot} · ${x.statusz}` })))) : el('p', { class: 'meg', text: 'Az LXX_tobblet_szakaszok táblában nincs sor erre a vershez.' }),
+      forras('lxx_tobblet'),
+      z.length ? el('div', { class: 'sorok' }, z.map(x => el('div', { class: 'sor' }, el('span', { class: 'fo', text: `${x.step1} / ${x.step2} · ${x.allapot}` }), el('span', { class: 'al', text: x.megjegyzes })))) : el('p', { class: 'meg', text: 'A Verzifikacios_elteres_tabla nem ad sort erre a vershez.' }),
+      forras('verzif'));
+  }
+  function vers2Blokkok(v) {
+    const a = v.angol;
+    return [
+      angolBlokk('Angol szó szavanként (BSB)', a.bsb, 'bsb', `Kulcs: ${a.bsb.kulcs} · a tábla számozás-jelölése: ${a.bsb.szamozas.join(', ') || '—'}. Kattintható: a héber szó lapja.`),
+      angolBlokk('Angol szó szavanként (KJV)', a.kjv, 'kjv', `Kulcs: ${a.kjv.kulcs} · a KJV-kulcs forrása: ${a.kjv.mod}.`),
+      naveBlokk(v), tipnrBlokk(v),
+      adatrBlokk('Motívumadat (adatréteg)', v.motivum || [], 'motivum', x => el('div', { class: 'sor' },
+        el('span', { class: 'fo', text: `${x.id} · ${mot(x)} · ${x.igehely}` }), el('span', { text: x.kapcsolodas }),
+        el('span', { class: 'al', text: `${x.pardes_szint} · ${x.funkcio} · gerinc: ${x.gerinc_elem || '—'} · ${x.azonositas} · megbízhatóság: ${x.megbizhatosag} · igazolás: ${x.igazolas}` }),
+        el('span', { class: 'al', text: x.proveniencia }))),
+      adatrBlokk('Igehely-kapcsolatok (adatréteg)', v.kapcsolat || [], 'kapcsolat', x => el('div', { class: 'sor' },
+        el('span', { class: 'fo', text: `${x.forras} → ${x.cel} (${x.irany}) · ${x.id} · ${mot(x)}` }), el('span', { text: `${x.tipus}: ${x.funkcio}` }),
+        el('span', { class: 'al', text: `${x.pardes_szint} · bizonyosság: ${x.bizonyossag}` }))),
+      adatrBlokk('LXX-fordítói döntések (adatréteg)', v.lxx_dontes || [], 'lxx_dontes', x => el('div', { class: 'sor' },
+        el('span', { class: 'fo', text: `${x.id} · ${x.heber_strong} → ${x.gorog_lemma} ${x.gorog_strong} · ${x.tipus}` }), el('span', { text: x.megjegyzes }),
+        el('span', { class: 'al', text: x.proveniencia }))),
+      lxxParBlokk(v), tobbletBlokk(v)
+    ];
   }
 
   function rajzolGorog(l) {
@@ -668,14 +853,18 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
         el('h3', { text: 'Szótári szöveg (angol): TBESG / Abbott-Smith' }),
         el('p', { class: 'bdb en', lang: 'en', text: l.tbesg || '—' }),
         l.thayer ? el('details', null, el('summary', { class: 'meg', text: 'Thayer (angol)' }), el('p', { class: 'bdb en', lang: 'en', text: l.thayer })) : null,
-        forras('gor'))
+        forras('gor')),
+      domenBlokk(l, 'Szemantikai domén (SDGNT)', 'sdgnt'),
+      ubsEnBlokk(l), lsjBlokk(l), mcgedBlokk(l),
+      seceBlokk(l, 'SECE-szócikk (görög)', 'sece_g'),
+      twBlokk(l)
     );
   }
 
   // ---- Magyarázatok az olvasónak: blokk-súgók (címek melletti ?) és szószedet ----
   // A súgó csak azt mondja meg, melyik adatkészletből jön a blokk, és mi a licence (adat/licencek.tsv).
   const SUGO = [
-    ['Héber szöveg', [['TAHOT', 'konkordancia/TAHOT_kivonat.tsv: héber szó, kiejtés, angol tükörfordítás, Strong-szám'], ['Macula_heber', 'konkordancia/Macula_heber_*.tsv: igealak-kód, szófaj, héber–görög párosítás'], ['LXX_OS', 'konkordancia/LXX_OS/*.tsv: a görög szóalak']], ['forras', 'gepi']],
+    ['Héber szöveg', [['TAHOT', 'konkordancia/TAHOT_kivonat.tsv: héber szó, kiejtés, angol tükörfordítás, Strong-szám'], ['Macula_heber', 'konkordancia/Macula_heber_*.tsv: igealak-kód, szófaj, héber–görög párosítás'], ['LXX_OS', 'konkordancia/LXX_OS/*.tsv: a görög szóalak'], ['morf_kulcs_heber', 'adat/morf_kulcs_heber.tsv: az igealak-kód magyar feloldása (gépi)'], ['morf_nyelv_aramai', 'adat/morf_nyelv_aramai.tsv: héber/arámi nyelv']], ['forras', 'gepi']],
     ['Károli-szöveg', [['Karoli_1908', 'konkordancia/Karoli_1908.tsv: a szöveg'], ['projekt_adat', 'adat/karoli_strong/parok_*.tsv: a pontozott aláhúzás (Károli–Strong párosítás)']], ['forras', 'modell']],
     ['Versszámozás', [['Karoli_versmegfeleltetes', 'konkordancia/Karoli_versmegfeleltetes.tsv'], ['LXX_OS', 'konkordancia/LXX_OS/*.tsv: a görög versszám']], ['forras']],
     ['Szó adatai (héber)', [['Strong_szotar', 'konkordancia/Strong_szotar.tsv: szótő, kiejtés, szófaj'], ['TAHOT', 'konkordancia/TAHOT_kivonat.tsv: előfordulás- és könyvszám (számolás)'], ['projekt_adat', 'adat/karoli_strong/parok_*.tsv: a Károli-párok száma']], ['forras', 'gepi', 'modell']],
@@ -683,7 +872,7 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
     ['Septuaginta', [['LXX_OS', 'konkordancia/LXX_OS/*.tsv (Rahlfs, lxx-morph)']], ['forras']],
     ['Kereszthivatkozások (TSK', [['TSK', 'konkordancia/TSK_kereszthivatkozasok.tsv, szavazatszámmal']], ['forras']],
     ['Károli-kereszthivatkozások', [['Karoli_KH', 'konkordancia/Karoli_kereszthivatkozasok.tsv']], ['forras']],
-    ['Ebben a versben', [['Macula_heber', 'igealak-kód, szófaj, görög párosítás'], ['UBS_DBH', 'konkordancia/UBS_DBH_referenciak.tsv + UBS_DBH_jelentesek.tsv'], ['LXX_OS', 'a görög szóalak'], ['projekt_adat', 'adat/karoli_strong/parok_*.tsv: „Károli itt” (Károli–Strong párosítás)']], ['forras', 'gepi', 'modell']],
+    ['Ebben a versben', [['Macula_heber', 'igealak-kód, szófaj, görög párosítás'], ['UBS_DBH', 'konkordancia/UBS_DBH_referenciak.tsv + UBS_DBH_jelentesek.tsv'], ['LXX_OS', 'a görög szóalak'], ['morf_kulcs_heber', 'az igealak magyar feloldása'], ['projekt_adat', 'adat/karoli_strong/parok_*.tsv: „Károli itt” (Károli–Strong párosítás)']], ['forras', 'gepi', 'modell']],
     ['Így fordítja Károli', [['projekt_adat', 'adat/karoli_strong/parok_*.tsv: a Károli–Strong párosítás (nyelvi modell)']], ['modell']],
     ['BDB-szócikk', [['BDB', 'adat/forditasok.tsv (magyar) és konkordancia/BDB_teljes_unabridged.tsv (angol); a bontás gépi']], ['forras', 'modell', 'gepi']],
     ['Jelentés (BDB', [['BDB', 'adat/forditasok.tsv (magyar) vagy konkordancia/BDB_teljes_unabridged.tsv (angol); a rövid jelentés: Strong_szotar']], ['forras', 'modell']],
@@ -693,8 +882,35 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
     ['Az Újszövetségben', [['TAGNT', 'konkordancia/TAGNT_kivonat.tsv'], ['Karoli_1908', 'konkordancia/Karoli_1908.tsv']], ['forras']],
     ['Szótári szöveg (angol)', [['TBESG', 'konkordancia/TBESG.txt'], ['Thayer', 'konkordancia/Thayer_teljes.tsv']], ['forras']],
     ['Görög megfelelő', [['lxx_bridge', 'adat/kulso/lxx_bridge.tsv (héber → görög)']], ['forras']],
+    ['Szemantikai domén (SDBH)', [['SDBH', 'konkordancia/SDBH_domenek.tsv']], ['forras']],
+    ['Szemantikai domén (SDGNT)', [['SDGNT', 'konkordancia/SDGNT_domenek.tsv']], ['forras']],
+    ['SECE-szócikk (héber)', [['SECE_H', 'konkordancia/SECE_H_teljes.tsv']], ['forras']],
+    ['SECE-szócikk (görög)', [['SECE_G', 'konkordancia/SECE_G_teljes.tsv']], ['forras']],
+    ['TWOT- és BDB-azonosító', [['OSHL', 'konkordancia/OSHL_lexikalis_index.tsv']], ['forras']],
+    ['Bővített Strong-szócikk', [['TBESH', 'konkordancia/TBESH.txt (a jelentés-lista az Online Bible-eredetű: a licenc-kérdés nyitott)']], ['forras']],
+    ['translationWords', [['tW_szocikkek', 'konkordancia/tW_szocikkek.tsv']], ['forras']],
+    ['UBS DNTG jelentések', [['UBS_DNTG', 'konkordancia/UBS_DNTG_jelentesek.tsv']], ['forras']],
+    ['LSJ-szócikk', [['LSJ', 'konkordancia/LSJ_teljes.tsv']], ['forras']],
+    ['Mounce-szótár', [['MCGED', 'konkordancia/MCGED_teljes.tsv']], ['forras']],
+    ['Angol szó szavanként (BSB)', [['BSB_Strongs', 'konkordancia/BSB_Strongs.tsv'], ['Karoli_versmegfeleltetes', 'a vers-kulcs (MT-szám)']], ['forras', 'gepi']],
+    ['Angol szó szavanként (KJV)', [['KJV_Strongs_teljes', 'konkordancia/KJV_Strongs_teljes.tsv'], ['LXX_OS', 'a KJV-kulcs: a LXX_OS KJV-oszlopa']], ['forras', 'gepi']],
+    ['Témák (Nave)', [['Nave_basokant', 'konkordancia/Nave_basokant.tsv; a tartomány bontása versekre gépi'], ['LXX_OS', 'a KJV-kulcs']], ['forras', 'gepi']],
+    ['Tulajdonnevek (TIPNR)', [['TIPNR', 'konkordancia/TIPNR_kivonat.tsv; az illesztés a vers Strong-számaival gépi']], ['forras', 'gepi']],
+    ['Motívumadat (adatréteg)', [['projekt_adat', 'adat/elofordulasok.tsv + adat/motivumok.tsv; soronként a sor saját proveniencia-mezője']], ['forras']],
+    ['Igehely-kapcsolatok (adatréteg)', [['projekt_adat', 'adat/kapcsolatok.tsv']], ['forras']],
+    ['LXX-fordítói döntések (adatréteg)', [['projekt_adat', 'adat/lxx_dontesek.tsv; soronként a sor saját proveniencia-mezője']], ['forras']],
+    ['LXX versszintű együttelőfordulás', [['LXX_versszintu_parok', 'konkordancia/LXX_versszintu_parok.tsv (együttelőfordulás, nem szóillesztés)']], ['forras']],
+    ['LXX többlet és számozási eltérés', [['Versifikacios_tablak', 'konkordancia/LXX_tobblet_szakaszok.tsv és Verzifikacios_elteres_tabla.tsv']], ['forras']],
   ];
-  const sugoSzoveg = forrasok => 'Adatforrás: ' + forrasok.map(([k, leiras]) => `${k} — ${leiras} (licenc: ${D.licenc[k] || 'l. adat/licencek.tsv'})`).join('; ') + '.';
+  // a licenc-jelzés az adat/licencek.tsv-ből: címke, és ha az állapot tisztázatlan vagy nem kereskedelmi, az is
+  const licencSzoveg = k => {
+    const j = (D.licenc_jelzes || {})[k] || {};
+    const cimke = D.licenc[k] || 'l. adat/licencek.tsv';
+    const KER = { nem: 'nem kereskedelmi', feltetelesen: 'kereskedelmi csak feltétellel', tisztazatlan: 'kereskedelmi használat tisztázatlan' };
+    const toldalek = [j.allapot === 'tisztazatlan' && !cimke.includes('tisztázatlan') ? 'tisztázatlan' : '', j.kereskedelmi && j.kereskedelmi !== 'igen' && !(j.kereskedelmi === 'tisztazatlan' && cimke.includes('tisztázatlan')) ? (KER[j.kereskedelmi] || 'kereskedelmi: ' + j.kereskedelmi) : '', j.share_alike === 'igen' ? 'share-alike' : ''].filter(Boolean);
+    return cimke + (toldalek.length ? ' — ' + toldalek.join(', ') : '');
+  };
+  const sugoSzoveg = forrasok => 'Adatforrás: ' + forrasok.map(([k, leiras]) => `${k} — ${leiras} (licenc: ${licencSzoveg(k)})`).join('; ') + '.';
   const TORZS_MAGY = {};
   const JELLEG_CIMKE = {
     forras: ['forrásadat', 'Közvetlenül egy adatkészletből, változtatás nélkül.'],
@@ -823,7 +1039,10 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
               el('span', { text: `${x.db}×` }),
               el('span', { class: 'meg', text: x.jelentes }))))
           : el('p', { class: 'meg', text: 'A lxx_bridge nem ad párt (kevesebb mint 3 egyezés).' }),
-        forras('bridge'))
+        forras('bridge')),
+      domenBlokk(l, 'Szemantikai domén (SDBH)', 'sdbh'),
+      seceBlokk(l, 'SECE-szócikk (héber)', 'sece_h'),
+      oshlBlokk(l), tbeshBlokk(l), twBlokk(l)
     );
   }
 
