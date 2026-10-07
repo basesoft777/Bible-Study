@@ -528,6 +528,23 @@ class TbeshSorrend(unittest.TestCase):
         self.assertEqual(bovites._tbesh_sorrend(sok, 'שׁלום', 'peace'), sok)
 
 
+class AlapjelentesAFejlecben(unittest.TestCase):
+    """F60.19: a szó-lap fejlécmezőjében (lemma, Strong, kiejtés, szófaj mellett) az alapjelentés is szerepel."""
+
+    def test_heber_es_gorog_fejlec(self):
+        s = sablon()
+        self.assertIn("class: 'alapjel'", s)
+        self.assertIn("function alapjelentes(l)", s)
+        self.assertIn("alapjelentes(l) ? el('p', { class: 'alapjel'", s)
+        self.assertIn("l.gloss ? el('p', { class: 'alapjel'", s)
+
+    def test_heber_fejlec_forrasai_kozott_a_bdb(self):
+        s = sablon()
+        sor = [x for x in s.splitlines() if x.strip().startswith("['Szó adatai (héber)'")][0]
+        self.assertIn("['BDB'", sor)
+        self.assertIn('modell', sor)
+
+
 class Regresszio(unittest.TestCase):
     @unittest.skipUnless(os.environ.get('OLVASO_PROTOTIP_JSON'), 'OLVASO_PROTOTIP_JSON nincs megadva')
     def test_prototipussal_azonos(self):

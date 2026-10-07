@@ -197,6 +197,7 @@ dl.szavak div:target dt { color: var(--accent); }
 ul.hiv { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
 ul.hiv li { font-size: 13px; padding: 3px 8px; border: 1px solid var(--rule); border-radius: 5px; font-variant-numeric: tabular-nums; }
 ul.hiv li b { font-weight: 500; color: var(--muted); font-size: 13px; margin-left: 4px; }
+.alapjel { margin: 2px 0 0; font: 500 1.25rem/1.4 var(--font-hu); } .alapjel .fcim { display: block; margin: 0 0 2px; }
 .szolap-fej { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 6px 16px; }
 .lemma { font-family: var(--font-he); font-size: var(--step-3); line-height: 1.5; margin: 0; direction: rtl; }
 .szolap-adat { display: grid; gap: 2px; font-size: 13px; color: var(--muted); }
@@ -941,6 +942,7 @@ ol.jel { gap: 12px; }
         el('div', { class: 'szolap-adat' },
           el('span', { class: 'strong', text: l.strong }),
           el('span', { text: [l.atiras, l.szofaj].filter(Boolean).join(' · ') }))),
+      l.gloss ? el('p', { class: 'alapjel', lang: 'en' }, el('span', { class: 'fcim', text: 'Alapjelentés' }), l.gloss) : null,
       el('div', { class: 'szamok' },
         el('div', { class: 'szam' }, el('b', { text: l.usz_db.toLocaleString('hu-HU') }), el('span', { text: 'előfordulás az ÚSZ-ben' })),
         el('div', { class: 'szam' }, el('b', { text: l.usz_versek_db.toLocaleString('hu-HU') }), el('span', { text: 'versben' })),
@@ -983,7 +985,7 @@ ol.jel { gap: 12px; }
     ['Héber szöveg', [['TAHOT', 'konkordancia/TAHOT_kivonat.tsv: héber szó, kiejtés, angol tükörfordítás, Strong-szám'], ['Macula_heber', 'konkordancia/Macula_heber_*.tsv: igealak-kód, szófaj, héber–görög párosítás'], ['LXX_OS', 'konkordancia/LXX_OS/*.tsv: a görög szóalak'], ['morf_kulcs_heber', 'adat/morf_kulcs_heber.tsv: az igealak-kód magyar feloldása (gépi)'], ['morf_nyelv_aramai', 'adat/morf_nyelv_aramai.tsv: héber/arámi nyelv']], ['forras', 'gepi']],
     ['Károli-szöveg', [['Karoli_1908', 'konkordancia/Karoli_1908.tsv: a szöveg'], ['projekt_adat', 'adat/karoli_strong/parok_*.tsv: a pontozott aláhúzás (Károli–Strong párosítás)']], ['forras', 'modell']],
     ['Versszámozás', [['Karoli_versmegfeleltetes', 'konkordancia/Karoli_versmegfeleltetes.tsv'], ['LXX_OS', 'konkordancia/LXX_OS/*.tsv: a görög versszám']], ['forras']],
-    ['Szó adatai (héber)', [['Strong_szotar', 'konkordancia/Strong_szotar.tsv: szótő, kiejtés, szófaj'], ['TAHOT', 'konkordancia/TAHOT_kivonat.tsv: előfordulás- és könyvszám (számolás)'], ['projekt_adat', 'adat/karoli_strong/parok_*.tsv: a Károli-párok száma']], ['forras', 'gepi', 'modell']],
+    ['Szó adatai (héber)', [['BDB', 'adat/forditasok.tsv (magyar) vagy konkordancia/BDB_teljes_unabridged.tsv (angol): az alapjelentés a szócikk első sora (gépi bontás); ennek híján a Strong_szotar rövid jelentése'], ['Strong_szotar', 'konkordancia/Strong_szotar.tsv: szótő, kiejtés, szófaj'], ['TAHOT', 'konkordancia/TAHOT_kivonat.tsv: előfordulás- és könyvszám (számolás)'], ['projekt_adat', 'adat/karoli_strong/parok_*.tsv: a Károli-párok száma']], ['forras', 'gepi', 'modell']],
     ['Szó adatai (görög)', [['TBESG', 'konkordancia/TBESG.txt: szótő, átírás, jelentés'], ['TAGNT', 'konkordancia/TAGNT_kivonat.tsv: előfordulás- és versszám (számolás)'], ['lxx_bridge', 'adat/kulso/lxx_bridge.tsv: a héber szavak száma']], ['forras', 'gepi']],
     ['Septuaginta', [['LXX_OS', 'konkordancia/LXX_OS/*.tsv (Rahlfs, lxx-morph)']], ['forras']],
     ['Kereszthivatkozások (TSK', [['TSK', 'konkordancia/TSK_kereszthivatkozasok.tsv, szavazatszámmal']], ['forras']],
@@ -1064,6 +1066,18 @@ ol.jel { gap: 12px; }
   }
 
 
+  // a fejléc alapjelentése: magyar BDB esetén a szócikk első jelentés-sora (maradék-jelek nélkül, az első „;” / „ — ” előtt, röviden);
+  // magyar BDB hiányában a Strong-szótár rövid jelentése (angol)
+  function alapjelentes(l) {
+    const alap = l.bdb_hu && l.appar && l.appar.alap;
+    if (alap) {
+      const t = alap.replace(/,_\d+/g, '').split(/;| — |\(/)[0].trim();
+      // héber betűs vagy hivatkozás-maradékos (a gépi bontás itt nem tiszta) sor helyett a Strong-szótár rövid jelentése áll
+      if (t && !/[\u0590-\u05ff]/.test(t) && !/\bl\.\s/.test(t) &&
+          t.replace(/hímnemű|nőnemű|közös|többes|egyes|számú|szám|főnév|ige|melléknév|tulajdonnév|határozószó|elöljárószó|kötőszó|névmás|[[\]:,.\s]/g, '').length > 2) return { nyelv: 'hu', szoveg: t.length > 110 ? t.slice(0, 110).replace(/\s+\S*$/, '') + ' …' : t };
+    }
+    return l.rovid ? { nyelv: 'en', szoveg: l.rovid } : null;
+  }
   const rovid = (s, n) => s.length > n ? s.slice(0, n).replace(/\s+\S*$/, '') + ' …' : s;
   const helyek = n => n ? el('span', { class: 'helyek', text: `${n} hely` }) : null;
 
@@ -1164,6 +1178,7 @@ ol.jel { gap: 12px; }
         el('div', { class: 'szolap-adat' },
           el('span', { class: 'strong', text: l.strong }),
           el('span', { text: [l.kiejtes, l.szofaj].filter(Boolean).join(' · ') }))),
+      alapjelentes(l) ? el('p', { class: 'alapjel', lang: alapjelentes(l).nyelv }, el('span', { class: 'fcim', text: 'Alapjelentés' }), alapjelentes(l).szoveg) : null,
       el('div', { class: 'szamok' },
         el('div', { class: 'szam' }, el('b', { text: l.elofordulas.toLocaleString('hu-HU') }), el('span', { text: 'előfordulás az ÓSZ-ben' })),
         el('div', { class: 'szam' }, el('b', { text: l.konyvek_szama }), el('span', { text: 'könyvben' })),
