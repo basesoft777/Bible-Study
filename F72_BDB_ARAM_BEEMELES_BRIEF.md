@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: megallt
 ag: claude/bdb-aram-beemeles
 ad: a konkordancia/BDB_strong_alias.tsv a 164 duplikált arámi Strong-számmal bővül (a héber testvérsorra mutatva), a BDB_teljes_unabridged.tsv végére a 6 valódi hiány kerül szövegsorként; a meglévő sorok bájtra azonosak; a #38 sorrendje újragenerálva
-kovetkezo: "/kovetkezo; ⛔ a szárazfutás után (a 6 pótlás és a 164 alias-sor jóváhagyása) és a #38 sorrendjének újragenerálása előtt"
+kovetkezo: "Te: a szárazfutás kivonatának (naplok/BDB_ARAM_BEEMELES_szarazfutas.md) áttekintése és a 6 szöveges pótlás + 164 alias-sor jóváhagyása; utána /kovetkezo (3. lépés: éles írás --m2 --jovahagyva); a #38 sorrendjének újragenerálása külön jóváhagyás"
 olvas: [konkordancia/BDB_aram_potlas.tsv, konkordancia/BDB_aram_potlas_README.md, naplok/BDB_ARAM_POTLAS_duplikacio.md, naplok/BDB_ARAM_POTLAS_zaras.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/BDB_strong_alias_elvetett.tsv, konkordancia/BDB_teljes_unabridged_README.md, eszkozok/bdb_strong_potlas.py, eszkozok/bdb_aram_potlas.py, F38_BDB_FORDITAS_BRIEF.md, adat/SEMA.md]
 ir: [konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/BDB_teljes_unabridged_README.md, eszkozok/bdb_aram_beemeles.py, eszkozok/teszt_bdb_aram_beemeles.py, naplok/BDB_ARAM_BEEMELES_zaras.md]
 fugg: [66]
