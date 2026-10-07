@@ -5,10 +5,10 @@ kod: MOTIVUM_FORRAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: fut
+allapot: megallt
 ag: claude/f23-motivum-forras
 ad: a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül
-kovetkezo: /kovetkezo; ⛔ az M0 felmérés után; az M1 a #12a próza-próba eredményét várja (DT-F32a)
+kovetkezo: "Te: ⛔ az M0 kész (naplok/MOTIVUM_FORRAS_*.tsv); döntés a DT-F23a-ról (javaslat-besorolások, ⭐-küszöb eltérés: KIRALY-001, MENNY-001, HODIT-001). M1 várja: #12a próza-próba (DT-F32a); utána /kovetkezo"
 olvas: [sablonok/, tematikus_lezart/, motivumok/, lexikon/, genezis/, adat/SEMA.md, adat/res_forras.tsv, eszkozok/general.py, CLAUDE.md, ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md]
 ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/MOTIVUM_FORRAS_torzscikk_egyedi.tsv, naplok/MOTIVUM_FORRAS_parositas.tsv, naplok/MOTIVUM_FORRAS_naplo_keveredes.tsv, naplok/MOTIVUM_FORRAS_atfedes.tsv]
 fugg: [32]
