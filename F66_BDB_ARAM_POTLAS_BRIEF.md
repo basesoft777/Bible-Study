@@ -8,10 +8,10 @@ modell: sonnet
 munka: adat
 allapot: lezarva
 pr: 227
-lezarva_osszegzes: PR #227 (draft); 169 egyertelmu + 1 kezi_elfogadott (H2298 → BDB9285) sor a külön BDB_aram_potlas.tsv-ben, jelölt: H0004, H3769, H5013; DT51 alkalmazva; a fő táblával való átfedés mérve (naplok/BDB_ARAM_POTLAS_duplikacio.md); merge a felhasználóé
+lezarva_osszegzes: PR #227; 169 egyertelmu + 1 kezi_elfogadott (H2298 → BDB9285) sor a külön BDB_aram_potlas.tsv-ben, jelölt: H0004, H3769, H5013; DT51 alkalmazva; a fő táblával való átfedés mérve (naplok/BDB_ARAM_POTLAS_duplikacio.md)
 ag: claude/bdb-aram-potlas
 ad: a BDB_strong_alias_elvetett.tsv 173 arámi másodlagos címkéje (BDB9264-től) saját szövegsort kap egy külön táblában (konkordancia/BDB_aram_potlas.tsv) a BDB.lexicon szövegéből, proveniencia-jelöléssel; ami nem állítható elő egyértelműen, jelölt marad; a BDB_teljes_unabridged.tsv nem változik
-kovetkezo: "Te: a merge; N51: a beemelés a fő táblába (duplikáció-mérés után) külön felhasználói döntés"
+kovetkezo: "lezárva; a PR #227 mergelve 2026-10-06 (b2ee25e); a beemelés (N51) a #72"
 olvas: [konkordancia/lexikonok_nyers/BDB.lexicon, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_teljes_unabridged_README.md, konkordancia/BDB_strong_alias_elvetett.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/_convert_bdb.py, naplok/BDB_STRONG_POTLAS_M1.md, eszkozok/bdb_strong_potlas.py, adat/licencek.tsv]
 ir: [konkordancia/BDB_aram_potlas.tsv, konkordancia/BDB_aram_potlas_README.md, eszkozok/bdb_aram_potlas.py, eszkozok/teszt_bdb_aram_potlas.py, naplok/BDB_ARAM_POTLAS_M0.md, naplok/BDB_ARAM_POTLAS_szurop.md, naplok/BDB_ARAM_POTLAS_duplikacio.md, naplok/BDB_ARAM_POTLAS_zaras.md, naplok/ELLENOR_BDB_ARAM_POTLAS.md]
 fugg: [57]
@@ -70,7 +70,7 @@ Jelentés: `naplok/BDB_ARAM_POTLAS_M0.md`.
 
 ### M3 — Zárás
 
-- `naplok/BDB_ARAM_POTLAS_zaras.md` (≤20 sor): végszámok állapotonként; új nyitott tétel helyőrzővel (`N52`): a jóváhagyott sorok beemelése a `BDB_teljes_unabridged.tsv`-be és a #38 sorrendjének újragenerálása.
+- `naplok/BDB_ARAM_POTLAS_zaras.md` (≤20 sor): végszámok állapotonként; új nyitott tétel helyőrzővel (ma `N51`; a brief eredetileg csupasz `N52`-ként írta, ami ma a szúrópróba-kivonat tétele): a jóváhagyott sorok beemelése a `BDB_teljes_unabridged.tsv`-be és a #38 sorrendjének újragenerálása.
 - A `fuggetlen-ellenor` jelentése: `naplok/ELLENOR_BDB_ARAM_POTLAS.md`; a brief fejléce `lezarva`; push, draft PR.
 
 ## 4. Elfogadási feltételek
