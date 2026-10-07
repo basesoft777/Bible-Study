@@ -546,21 +546,54 @@ class AlapjelentesAFejlecben(unittest.TestCase):
 
 
 class AlapjelentesTisztitas(unittest.TestCase):
-    """F60.20: a magyar BDB-s alapjelentésből a héber betűk, hivatkozások és szófaji szavak kikerülnek (gépi tisztítás);
-    ha nem marad használható szöveg, a Strong-szótár rövid jelentése áll."""
+    """F60.21: a szó-lap fejlécének alapjelentése a bdb_szelet.alap_jelentes függvényből jön (magyar BDB-sor gépi tisztítása):
+    héber betű, forrás-hivatkozás, szófaji szó és átírás-maradék nélkül; ha nem marad használható szöveg, None (a Strong-rövid jelentés áll)."""
 
-    def test_tisztito_a_sablonban(self):
-        s = sablon()
-        self.assertIn("function tisztitAlap(alap)", s)
-        self.assertIn("const HEB_RE", s)
-        self.assertIn("tisztitott: true", s)
-        self.assertIn("Gépi tisztítás", s)
+    ESETEK = [
+        ("ige: felelni, válaszolni", "ige: felelni, válaszolni", False),
+        ("אֶחָב, אַחְאָב, אָח stb. l. אחה. I. אָח_630 hímnemű főnév: testvér, fivér", "testvér, fivér", True),
+        ("דָּוִד,_1066 tulajdonnév, hímnemű: Dávid, יִשַׂי fia, Izráel királya", "Dávid", True),
+        ("lel vagy layelah לַ֫יִל לַ֫יְלָה,_242 hímnemű főnév^1Móz 40:5 éjszaka", "éjszaka", True),
+        ("hímnemű שֵׁנִית nőnemű_157 melléknév: sorszámnév: második", "második", True),
+        ("nőnemű főnév^5Móz 8:4 , láb", "láb", True),
+        ("nőnemű főnév : év", "év", True),
+        ("hímnemű főnév^Mal 3:1 úr", "úr", True),
+        ("אָֽנֹכִ֫י (egyszer Jób 33:9) névmás, 1. személy egyes szám, közös nem: én; 1Móz 3:10", "én", True),
+        ("isten, אֶלְדָּעָה אֶלְדָּד stb. l. I. אלה. II. אֵל hímnemű főnév isten, de különféle alárendelt alkalmazásokban a hatalom fogalmának kifejezésére", "isten", True),
+    ]
 
-    def test_a_tisztitott_alapjelentes_nem_marad_hosszu_vagy_hebert_tartalmazo(self):
-        # a böngészős mérés (F60.20): 0 héber betű, 0 görög betű, 0 üres alapjelentés — itt a sablon biztosítékait ellenőrizzük
+    def test_esetek(self):
+        import bdb_szelet
+        for alap, vart, tisztitott in self.ESETEK:
+            r = bdb_szelet.alap_jelentes(alap)
+            self.assertIsNotNone(r, alap)
+            self.assertEqual(r['szoveg'], vart, alap)
+            self.assertEqual(r['tisztitott'], tisztitott, alap)
+
+    def test_a_kimenet_tiszta(self):
+        import bdb_szelet
+        for alap, _, _ in self.ESETEK:
+            sz = bdb_szelet.alap_jelentes(alap)['szoveg']
+            self.assertIsNone(re.search(r'[\u0590-\u05ff\ufb1d-\ufb4f]', sz), sz)
+            self.assertNotIn('^', sz)
+            self.assertNotIn('_', sz)
+
+    def test_nincs_hasznalhato_jelentes(self):
+        import bdb_szelet
+        self.assertIsNone(bdb_szelet.alap_jelentes('hímnemű többes számú főnév'))
+        self.assertIsNone(bdb_szelet.alap_jelentes('ige'))
+        self.assertIsNone(bdb_szelet.alap_jelentes('igenévi melléknév l. fent participium'))
+        self.assertIsNone(bdb_szelet.alap_jelentes(''))
+        self.assertIsNone(bdb_szelet.alap_jelentes(None))
+
+    def test_a_sablon_a_kesz_mezot_hasznalja(self):
         s = sablon()
-        self.assertIn("y.length > 40", s)
-        self.assertIn("/-(?:", s)
+        self.assertIn("const a = l.alapjelentes;", s)
+        self.assertNotIn("function tisztitAlap", s)   # a tisztítás a szeletelőben él, nem az oldalon
+
+    def test_az_adat_py_kitolti_a_mezot(self):
+        src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'adat.py'), encoding='utf-8').read()
+        self.assertIn("_l['alapjelentes'] = alap_jelentes(", src)
 
 
 class Regresszio(unittest.TestCase):

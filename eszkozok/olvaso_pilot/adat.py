@@ -15,7 +15,7 @@ import tempfile
 from collections import Counter, defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from bdb_szelet import szeletel  # noqa: E402
+from bdb_szelet import szeletel, alap_jelentes  # noqa: E402
 from bovites import MorfKulcs, bovit  # noqa: E402
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -413,6 +413,10 @@ for v in versek:
     v['versszam'] = {'karoli': ig, 'kjv': vs.get('kjv', ''), 'mt': vs.get('mt', '') or vs.get('kjv', ''),
                      'osztaly': vs.get('osztaly', ''), 'lxx': lxx_igehely.get(ig, ''),
                      'kjv_lxx': lxx_kjv.get(ig, '')}
+
+# F60.21: a szó-lap fejlécének alapjelentése (a magyar BDB-sor első jelentés-sora, gépi tisztítással; None = a Strong-szótár rövid jelentése áll)
+for _l in lapok.values():
+    _l['alapjelentes'] = alap_jelentes((_l['appar'] or {}).get('alap')) if _l['bdb_hu'] else None
 
 # Görög szó-lapok az LXX-szavakhoz
 # F60.15: minden görög szó kap lapot, amelyre a lap valahol hivatkozik: az LXX-sor szavai, a Macula-párok és a héber

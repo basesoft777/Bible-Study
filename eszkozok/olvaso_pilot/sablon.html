@@ -1066,51 +1066,11 @@ ol.jel { gap: 12px; }
   }
 
 
-  // a fejléc alapjelentése: magyar BDB esetén a szócikk első jelentés-sora; ha abban héber betű, hivatkozás vagy csak szófaj áll,
-  // gépi tisztítással (héber betűk, zárójeles részek, forrás-hivatkozások, szófaji szavak és átírás-maradékok kivétele) a magyar jelentés-rész;
-  // ha így sem marad használható szöveg, a Strong-szótár rövid jelentése (angol)
-  const HEB_RE = /[֐-׿יִ-ﭏ]+(?:,?_\d+)?/g;
-  const POS_RE = 'főnév|ige|melléknév|tulajdonnév|határozószó|névmás|partikula|sorszámnév|elöljárószó|kötőszó|istennév|népnév';
-  function tisztitAlap(alap) {
-    let s = alap;
-    for (let i = 0; i < 3; i++) s = s.replace(/\([^()]*\)/g, ' ');
-    s = s.replace(/\^\S+(?:\s+\d+(?::\d+)?(?:-\d+)?)?/g, ' ').replace(HEB_RE, ' ').replace(/_\d+/g, ' ');
-    s = s.replace(/\b[A-Z][a-z]?\^\S+|\bl\.\s+(?:lent|fent|ott)\b/g, ' ');
-    s = s.replace(/\s+/g, ' ').replace(/\s+([,.;:])/g, '$1').replace(/([,;:])\s*(?=[,;:.])/g, '');
-    const kp = new RegExp('(?:' + POS_RE + ')[^:;.]{0,60}:\\s*').exec(s);
-    let t;
-    if (kp) t = s.slice(kp.index + kp[0].length);
-    else {
-      const poz = [...s.matchAll(new RegExp('\\b(?:' + POS_RE + ')\\b\\s*', 'g'))];
-      t = poz.length ? s.slice(poz[poz.length - 1].index + poz[poz.length - 1][0].length) : s;
-    }
-    t = t.split(/;|\. |\[|\(/)[0];
-    // legfeljebb 3 tag, a számot, kettőspontot vagy rövidítést tartalmazó tagok előtt megáll
-    const tagok = [];
-    for (const x of t.split(/,\s*/)) {
-      let y = x.trim();
-      // vezető nyelvtani szavak, függő „mindig / csak …” utótag és lógó névelő kivétele
-      for (let i = 0; i < 4; i++) y = y.replace(/^(?:és|vagy|csak|mindig|többes számban|egyes számban|többes szám|egyes szám|gyűjtőnév|hímnemű|nőnemű|közös nem)\s+/i, '');
-      y = y.replace(/\s+(?:mindig|csak)\b.*$/i, '').replace(/\s+(?:a|az|és|vagy|szóval)$/i, '').trim();
-      if (!y || y.length > 40 || /\d|:|suffix|status|stb|\bl\.|[Ͱ-Ͽ]/i.test(y) || /^(?:fia|lánya|leánya|apja|atyja|neje)\b/i.test(y)) break;
-      tagok.push(y);
-      if (tagok.length >= 3 || tagok.join(', ').length > 70) break;
-    }
-    let ki = tagok.join(', ').replace(/[\s,:;.]+$/, '').replace(/^[\s,:;.=]+/, '').replace(/(?:,\s*)?\b(?:és|vagy)$/, '').trim();
-    if (/-(?:\s|,|$)/.test(ki)) return '';
-    if (ki.length < 3 || !/[a-záéíóöőúüű]{3}/i.test(ki) || /^(?:participium|igenévi melléknév)$/i.test(ki) || /[֐-׿יִ-ﭏ]/.test(ki)) return '';
-    return ki;
-  }
+  // a fejléc alapjelentése: az adat.py-ban számolt `alapjelentes` (magyar BDB-sor gépi tisztítása, bdb_szelet.alap_jelentes);
+  // ha az nincs, a Strong-szótár rövid jelentése (angol)
   function alapjelentes(l) {
-    const alap = l.bdb_hu && l.appar && l.appar.alap;
-    if (alap) {
-      const t = alap.replace(/,_\d+/g, '').split(/;| — |\(/)[0].trim();
-      const tiszta = t && !/[֐-׿יִ-ﭏ]/.test(t) && !/\bl\.\s/.test(t) &&
-        t.replace(/hímnemű|nőnemű|közös|többes|egyes|számú|szám|főnév|ige|melléknév|tulajdonnév|határozószó|elöljárószó|kötőszó|névmás|[[\]:,.\s]/g, '').length > 2;
-      if (tiszta && t.length <= 70 && !/\^/.test(t)) return { nyelv: 'hu', szoveg: t };
-      const c = tisztitAlap(alap);
-      if (c) return { nyelv: 'hu', szoveg: c, tisztitott: true };
-    }
+    const a = l.alapjelentes;
+    if (a && a.szoveg) return { nyelv: 'hu', szoveg: a.szoveg, tisztitott: a.tisztitott };
     return l.rovid ? { nyelv: 'en', szoveg: l.rovid } : null;
   }
   const rovid = (s, n) => s.length > n ? s.slice(0, n).replace(/\s+\S*$/, '') + ' …' : s;

@@ -219,6 +219,83 @@ def szeletel(szoveg, lemma=""):
     return r
 
 
+
+# ---------- alapjelentés (a szó-lap fejlécéhez) ----------
+HEB_BETU = re.compile(r"[֐-׿יִ-ﭏ]")
+HEB_FUTAM = re.compile(r"[֐-׿יִ-ﭏ]+(?:,?_\d+)?")
+GORBETU = re.compile(r"[Ͱ-Ͽ]")
+SZOFAJ = ("főnév|ige|melléknév|tulajdonnév|határozószó|névmás|partikula|sorszámnév|elöljárószó|kötőszó|istennév|népnév")
+CSAK_SZOFAJ = re.compile(r"hímnemű|nőnemű|közös|többes|egyes|számú|szám|főnév|ige|melléknév|tulajdonnév|határozószó|elöljárószó|kötőszó|névmás|[\[\]:,.\s]")
+VEZETO = re.compile(r"^(?:és|vagy|csak|mindig|többes számban|egyes számban|többes szám|egyes szám|gyűjtőnév|hímnemű|nőnemű|közös nem)\s+", re.I)
+
+
+def _tisztit_alap(alap):
+    """A magyar BDB-sor elejéből (a szeletelő `alap` mezője: címszó-maradék, átírás, héber alakok, szófaj, jelentés) a magyar
+    jelentés-rész: héber betűk, zárójeles részek, forrás-hivatkozások, szófaji szavak és átírás-maradékok nélkül. Üres, ha nem marad
+    használható szöveg."""
+    s = alap
+    for _ in range(3):
+        s = re.sub(r"\([^()]*\)", " ", s)
+    s = re.sub(r"\^\S+(?:\s+\d+(?::\d+)?(?:-\d+)?)?", " ", s)
+    s = HEB_FUTAM.sub(" ", s)
+    s = re.sub(r"_\d+", " ", s)
+    s = re.sub(r"\b[A-Z][a-z]?\^\S+|\bl\.\s+(?:lent|fent|ott)\b", " ", s)
+    s = re.sub(r"\s+", " ", s)
+    s = re.sub(r"\s+([,.;:])", r"\1", s)
+    s = re.sub(r"([,;:])\s*(?=[,;:.])", "", s)
+    kp = re.search(r"(?:%s)[^:;]{0,70}?:\s*" % SZOFAJ, s)
+    if kp:
+        t = s[kp.end():]
+        # több egymás utáni „szófaj: ” előtag (pl. „melléknév: sorszámnév: második”) mind kiesik
+        for _ in range(3):
+            m2 = re.match(r"(?:%s)[^:;]{0,70}?:\s*" % SZOFAJ, t)
+            if not m2:
+                break
+            t = t[m2.end():]
+    else:
+        poz = list(re.finditer(r"\b(?:%s)\b\s*" % SZOFAJ, s))
+        t = s[poz[-1].end():] if poz else s
+    t = t.lstrip(" ,:;.=")
+    t = re.split(r";|\. |\[|\(", t)[0]
+    tagok = []
+    for x in re.split(r",\s*", t):
+        y = x.strip()
+        for _ in range(4):
+            y = VEZETO.sub("", y)
+        y = re.sub(r"\s+(?:mindig|csak)\b.*$", "", y, flags=re.I)
+        y = re.sub(r"\s+(?:a|az|és|vagy|szóval)$", "", y, flags=re.I).strip()
+        if (not y or len(y) > 40 or re.search(r"\d|:|suffix|status|stb|\bl\.", y, re.I) or GORBETU.search(y)
+                or re.match(r"(?:fia|lánya|leánya|apja|atyja|neje)\b", y, re.I)):
+            break
+        tagok.append(y)
+        if len(tagok) >= 3 or len(", ".join(tagok)) > 70:
+            break
+    ki = ", ".join(tagok)
+    ki = re.sub(r"[\s,:;.]+$", "", ki)
+    ki = re.sub(r"^[\s,:;.=]+", "", ki)
+    ki = re.sub(r"(?:,\s*)?\b(?:és|vagy)$", "", ki).strip()
+    if re.search(r"-(?:\s|,|$)", ki):
+        return ""
+    if (len(ki) < 2 or not re.search(r"[a-záéíóöőúüű]{2}", ki, re.I) or re.fullmatch(r"(?:participium|igenévi melléknév)", ki, re.I)
+            or HEB_BETU.search(ki)):
+        return ""
+    return ki
+
+
+def alap_jelentes(alap):
+    """A szó-lap fejlécének alapjelentése a magyar BDB-sorból: {'szoveg', 'tisztitott'} vagy None (ekkor a Strong-szótár rövid jelentése áll).
+    Egy rövid, tiszta első jelentés-sor változtatás nélkül marad („ige: felelni, válaszolni”); ha az héber betűt, hivatkozást vagy csak
+    szófajt tartalmaz, vagy hosszú, a gépi tisztítás adja a magyar jelentés-részt."""
+    if not alap:
+        return None
+    t = re.split(r";| — |\(", re.sub(r",_\d+", "", alap))[0].strip()
+    tiszta = bool(t) and not HEB_BETU.search(t) and not re.search(r"\bl\.\s", t) and len(CSAK_SZOFAJ.sub("", t)) > 2
+    if tiszta and len(t) <= 70 and "^" not in t:
+        return {"szoveg": t, "tisztitott": False}
+    c = _tisztit_alap(alap)
+    return {"szoveg": c, "tisztitott": True} if c else None
+
+
 if __name__ == '__main__':
     import json
     import os
