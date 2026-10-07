@@ -136,12 +136,19 @@ def bovit(C):
         return C.lapok[strong] if strong[0] == 'H' else C.gor_lapok[strong]
 
     # SDBH / SDGNT: szemantikai domén (jelentésenként egy sor)
+    fa = {}
+    for r in sorok('konkordancia/SDBH_SDGNT_domenfa.tsv'):
+        if len(r) > 4:
+            fa[(r[0], r[1])] = r[4]
     for fajl, kulcs in (('konkordancia/SDBH_domenek.tsv', 'sdbh'), ('konkordancia/SDGNT_domenek.tsv', 'sdgnt')):
         d = defaultdict(dict)
+        szotar = 'SDBH' if kulcs == 'sdbh' else 'SDGNT'
         for r in sorok(fajl):
             if len(r) > 12 and r[0] in mind:
+                # a domén-fa szülő-szintjei (a kód 3 jegyes szakaszai: 001, 001002, ...), a levél a 'domen'
+                ut = [fa.get((szotar, r[9][:i]), '') for i in range(3, len(r[9]), 3)]
                 d[r[0]].setdefault(r[7], {'lexid': r[7], 'domen': r[10], 'domen_kod': r[9], 'glossza': r[11],
-                                          'db': int(r[12]) if r[12].isdigit() else 0})
+                                          'db': int(r[12]) if r[12].isdigit() else 0, 'ut': [x for x in ut if x]})
         for s in mind:
             if s in d:
                 tobb(s)['domen'] = sorted(d[s].values(), key=lambda x: (-x['db'], x['lexid']))
@@ -171,11 +178,12 @@ def bovit(C):
     with open(GY + 'konkordancia/TBESH.txt', encoding='utf-8-sig') as fh:
         for s in fh:
             r = s.rstrip('\r\n').split('\t')
-            if len(r) > 7 and re.match(r'^H\d{4}$', r[0]) and r[0] in heber:
-                tbesh[r[0]].append({'dstrong': r[1].strip(), 'rokon': r[2].strip(), 'gloss': r[6],
-                                    'jelentes': _tisztit_html(r[7])[:2500]})
+            m = re.match(r'^(H\d{4})[a-z]?$', r[0]) if len(r) > 7 else None   # eStrong, pl. H1254a / H1254b
+            if m and m.group(1) in heber:
+                tbesh[m.group(1)].append({'estrong': r[0], 'dstrong': r[1].strip(), 'rokon': r[2].strip(), 'gloss': r[6],
+                                          'jelentes': _tisztit_html(r[7])[:2500]})
     for s, lst in tbesh.items():
-        C.lapok[s]['tbesh'] = lst[:6]
+        C.lapok[s]['tbesh'] = lst[:8]
         C.lapok[s]['tbesh_db'] = len(lst)
     stat['tbesh'] = len(tbesh)
 
@@ -205,6 +213,21 @@ def bovit(C):
         C.gor_lapok[s]['ubs_en'] = lst[:12]
         C.gor_lapok[s]['ubs_en_db'] = len(lst)
     stat['ubs_dntg'] = len(dntg)
+    # az ÚSZ-helyek (a lapon listázott első öt vers) jelentés-besorolása: UBS_DNTG_referenciak (strong + igehely -> lexid)
+    kell_ref = {(g, x['ig']) for g, l in C.gor_lapok.items() for x in l['usz_versek']}
+    lex_jel = {x['lexid']: x for lst in dntg.values() for x in lst}
+    ref_lex = defaultdict(set)
+    for r in sorok('konkordancia/UBS_DNTG_referenciak.tsv'):
+        if len(r) > 2 and (r[1], r[2]) in kell_ref:
+            ref_lex[(r[1], r[2])].add(r[0])
+    n_usz = n_usz_van = 0
+    for g, l in C.gor_lapok.items():
+        for x in l['usz_versek']:
+            n_usz += 1
+            x['ubs'] = [{'domen': lex_jel[k]['domen'], 'rovid': lex_jel[k]['rovid']} for k in sorted(ref_lex.get((g, x['ig']), ())) if k in lex_jel][:3]
+            n_usz_van += bool(x['ubs'])
+    stat['usz_hely'] = n_usz
+    stat['usz_hely_ubs'] = n_usz_van
 
     # tW (translationWords): a strong oszlop '+'-szal elválasztott lista
     tw = defaultdict(list)
@@ -484,8 +507,9 @@ def bovit(C):
     def p(forras):
         return 'scope=%s | forras=%s | ts=%s' % (SZ, forras, TS)
     prov.update({
-        'sdbh': 'scope=strong | forras=konkordancia/SDBH_domenek.tsv (CC BY-SA 4.0) | ts=%s' % TS,
-        'sdgnt': 'scope=strong | forras=konkordancia/SDGNT_domenek.tsv (CC BY-SA 4.0) | ts=%s' % TS,
+        'ubs_usz': 'scope=NT-helyek (a lapon listázott első 5 vers) | forras=konkordancia/UBS_DNTG_referenciak.tsv + UBS_DNTG_jelentesek.tsv (CC BY-SA 4.0) | ts=%s' % TS,
+        'sdbh': 'scope=strong | forras=konkordancia/SDBH_domenek.tsv + SDBH_SDGNT_domenfa.tsv (CC BY-SA 4.0) | ts=%s' % TS,
+        'sdgnt': 'scope=strong | forras=konkordancia/SDGNT_domenek.tsv + SDBH_SDGNT_domenfa.tsv (CC BY-SA 4.0) | ts=%s' % TS,
         'sece_h': 'scope=strong | forras=konkordancia/SECE_H_teljes.tsv | ts=%s' % TS,
         'sece_g': 'scope=strong | forras=konkordancia/SECE_G_teljes.tsv | ts=%s' % TS,
         'oshl': 'scope=strong | forras=konkordancia/OSHL_lexikalis_index.tsv | ts=%s' % TS,

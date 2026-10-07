@@ -318,6 +318,22 @@ class Bovites(unittest.TestCase):
         self.assertEqual(mk.dekodol('Vqc'), 'ige, qal, infinitivus constructus')
         self.assertEqual(mk.dekodol('C'), 'kötőszó')
 
+    def test_bdb_alias_zsolt22(self):
+        # a H0136 és a H7358 szócikke másik Strong-szám alatt áll (BDB_strong_alias.tsv): a lap jelzi, nem üres
+        l = ADAT['zsolt']['lapok']
+        for s, tabla in (('H0136', 'H0113'), ('H7358', 'H7356')):
+            self.assertEqual(l[s]['bdb_alias']['tabla_strong'], tabla)
+            self.assertTrue(l[s]['bdb_hu'] or l[s]['bdb_en'])
+        # ahol van saját szócikk, nincs alias
+        self.assertIsNone(l['H0001']['bdb_alias'] if 'H0001' in l else None)
+        self.assertFalse(any(x['bdb_alias'] for x in ADAT['gen']['lapok'].values()))
+
+    def test_domen_ut_es_usz_jelentes(self):
+        d = ADAT['gen']['lapok']['H0216']['domen'][0]
+        self.assertTrue(d['ut'])
+        g = ADAT['gen']['gor_lapok']
+        self.assertTrue(any(x['ubs'] for l in g.values() for x in l['usz_versek']))
+
     def test_licenc_jelzes(self):
         j = ADAT['gen']['licenc_jelzes']
         self.assertEqual(j['MCGED']['kereskedelmi'], 'nem')

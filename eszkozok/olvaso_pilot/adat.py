@@ -138,6 +138,14 @@ for r in sorok('konkordancia/BDB_teljes_unabridged.tsv'):
     if n and len(r) > 2:
         bdb_en[n] = r[2]
 
+# --- BDB-alias: a BDB-szócikk másik Strong-szám alatt áll (konkordancia/BDB_strong_alias.tsv, #57); csak akkor
+# használjuk, ha a Strong-számnak sem magyar, sem angol BDB-szócikke nincs (a lap jelzi az aliast)
+bdb_alias = {}
+for r in sorok('konkordancia/BDB_strong_alias.tsv'):
+    n = hnorm(r[0]) if r else None
+    if n and len(r) > 5:
+        bdb_alias[n] = {'tabla_strong': hnorm(r[1]), 'bdb_id': r[2], 'hasonlosag': r[5]}
+
 # --- LXX_OS a pilot verseire
 lxx_vers = defaultdict(list)
 for r in sorok(LXX_F):
@@ -221,6 +229,13 @@ for s in sorted(szavak):
     lem = tahot_lemma.get(s, ('', '', ''))
     hu = bdb_hu.get(s)
     en = bdb_en.get(s, '')
+    alias = None
+    if not hu and not en and s in bdb_alias:
+        a = bdb_alias[s]
+        hu = bdb_hu.get(a['tabla_strong'])
+        en = bdb_en.get(a['tabla_strong'], '')
+        if hu or en:
+            alias = a
     lapok[s] = {
         'strong': s,
         'lemma': sz.get('szoto') or lem[0],
@@ -231,6 +246,7 @@ for s in sorted(szavak):
         'bdb_hu_meta': ('%s, %s' % (hu['modell'], hu['datum'])) if hu else None,
         'bdb_en': en if not hu else None,
         'appar': szeletel(hu['szoveg'] if hu else en),
+        'bdb_alias': alias,
         'karoli': karoli_alak[s].most_common(8),
         'karoli_magas': sum(karoli_alak_magas[s].values()),
         'karoli_osszes': sum(karoli_alak[s].values()),
@@ -495,6 +511,7 @@ prov = {
     'tsk': 'scope=%s | forras=konkordancia/TSK_kereszthivatkozasok.tsv | ts=%s' % (SZAKASZ, TS),
     'kh': 'scope=%s | forras=konkordancia/Karoli_kereszthivatkozasok.tsv | ts=%s' % (SZAKASZ, TS),
     'bdb': 'scope=strong | forras=adat/forditasok.tsv (BDB) + konkordancia/BDB_teljes_unabridged.tsv | ts=%s' % TS,
+    'bdb_alias': 'scope=strong | forras=konkordancia/BDB_strong_alias.tsv (alias-párosítás, csak ha a Strong-számnak nincs saját BDB-szócikke) | ts=%s' % TS,
     'karoli_alak': 'scope=strong | forras=adat/karoli_strong/parok_{%s}.tsv | ts=%s' % (','.join(pkonyvek), TS),
     'elofordulas': 'scope=OT | forras=konkordancia/TAHOT_kivonat.tsv (nem teljes) | ts=%s' % TS,
     'bridge': 'scope=strong | forras=adat/kulso/lxx_bridge.tsv | ts=%s' % TS,

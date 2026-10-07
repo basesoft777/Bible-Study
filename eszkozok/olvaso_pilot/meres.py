@@ -5,7 +5,7 @@ naplok/OLVASOI_PILOT_meres.md-be írja, minden mérési szakaszhoz proveniencia-
 (scope=… | forras=… | ts=…). Csak olvas; a szakasz JSON-ját előbb elő kell állítani.
 Futtatás: python eszkozok/olvaso_pilot/meres.py [--szakasz "1Móz 1:1-2:3" --szakasz "Zsolt 22"]
           [--ki naplok/OLVASOI_PILOT_meres.md]
-Ha a JSON hiányzik, a program futtatja az adat.py-t a szakasz alap-kimeneti könyvtárába."""
+Alapból az adat.py-t és az epit.py-t is újrafuttatja a szakasz alap-kimeneti könyvtárába (--nincs-ujra: a meglévő JSON-t használja)."""
 import argparse
 import datetime
 import json
@@ -13,6 +13,7 @@ import os
 import subprocess
 import sys
 import unicodedata
+from collections import Counter
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -26,15 +27,22 @@ from szakasz import GY, alap_kimenet, szakasz_cim  # noqa: E402
 ap = argparse.ArgumentParser(description='Olvasói pilot: mérés')
 ap.add_argument('--szakasz', action='append', default=None)
 ap.add_argument('--ki', default=GY + 'naplok/OLVASOI_PILOT_meres.md')
+ap.add_argument('--nincs-ujra', action='store_true', help='a meglévő JSON-t használja (alapból az adat.py-t és az epit.py-t újrafuttatja)')
 args = ap.parse_args()
 SZAKASZOK = args.szakasz or ['1Móz 1:1-2:3', 'Zsolt 22']
 TS = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
 
 
+HTML_BAJT = {}
+
+
 def betolt(szakasz):
-    ut = os.path.join(alap_kimenet(szakasz), 'olvaso_pilot.json')
-    if not os.path.exists(ut):
-        subprocess.run([sys.executable, os.path.join(D, 'adat.py'), '--szakasz', szakasz], check=True)
+    ki = alap_kimenet(szakasz)
+    ut = os.path.join(ki, 'olvaso_pilot.json')
+    if not args.nincs_ujra or not os.path.exists(ut):
+        subprocess.run([sys.executable, os.path.join(D, 'adat.py'), '--szakasz', szakasz, '--kimenet', ki], check=True, stdout=subprocess.DEVNULL)
+        subprocess.run([sys.executable, os.path.join(D, 'epit.py'), '--szakasz', szakasz, '--kimenet', ki], check=True, stdout=subprocess.DEVNULL)
+    HTML_BAJT[szakasz_cim(szakasz)] = (os.path.getsize(ut), os.path.getsize(os.path.join(ki, 'karoli_konkordancia_proba.html')))
     with open(ut, encoding='utf-8') as fh:
         return json.load(fh)
 
@@ -119,6 +127,26 @@ def meres(d):
     m['vs_ellentmond'] = [i for i, x in vs if x['kjv_lxx'] and x['kjv_lxx'] != x['kjv']]
     m['vs_mt_ne_karoli'] = [i for i, x in vs if x['mt'] and not i.endswith(' ' + x['mt'])]
     m['vers_ossz'] = len(versek)
+    # 7. a bővítés (F60.5, v2)
+    st = d['stat']
+    m['stat'] = st
+    m['alias'] = [s for s, l in lapok.items() if l.get('bdb_alias')]
+    for kulcs in ('domen', 'sece', 'oshl', 'tbesh', 'tw'):
+        m['h_' + kulcs] = sum(1 for l in lapok.values() if l.get(kulcs))
+    for kulcs in ('domen', 'sece', 'lsj', 'mcged', 'ubs_en', 'tw'):
+        m['g_' + kulcs] = sum(1 for l in g.values() if l.get(kulcs))
+    mm = [x['macula'] for x in hw if x.get('macula') and x['macula'].get('morf')]
+    m['morf_van'] = len(mm)
+    m['morf_hu'] = sum(1 for x in mm if x.get('morf_hu'))
+    m['bsb_szo'] = sum(len(v['angol']['bsb']['szavak']) for v in versek)
+    m['kjv_szo'] = sum(len(v['angol']['kjv']['szavak']) for v in versek)
+    m['bsb_elhagyva'] = sum(1 for v in versek for x in v['angol']['bsb']['szavak'] if x['allapot'] == 'elhagyva')
+    m['bsb_szamozas'] = sorted({z for v in versek for z in v['angol']['bsb']['szamozas']})
+    m['nave_sor'] = sum(len(v['nave']) for v in versek)
+    m['nave_tart'] = sum(1 for v in versek for x in v['nave'] if x['tart'])
+    m['nave_fej'] = sum(len(x) for x in d['nave_fejezet'].values())
+    m['kjv_forras'] = Counter(v['versszam']['kjv_kulcs_forras'] for v in versek)
+    m['tipnr_vers'] = sum(1 for v in versek if v['tipnr'])
     return m
 
 
@@ -151,7 +179,7 @@ def main():
     out = []
     w = out.append
     w('<!-- GENERÁLT: eszkozok/olvaso_pilot/meres.py — kézzel nem szerkesztendő. -->')
-    w('# Olvasói pilot — mérés (F60.2)')
+    w('# Olvasói pilot — mérés (F60.2, bővítve: F60.5)')
     w('')
     w('*Gép által generált (`eszkozok/olvaso_pilot/meres.py`), kézzel nem szerkesztendő; a #60 M2 lépése. Mért adatállapot: repó-commit `%s` (az `ág: claude/olvasoi-pilot` feje a mérés előtt), a szakasz-adatok `ts` ideje: %s.*'
       % (commit, ', '.join('%s %s' % (fej(s), adat_ts[s]) for s in SZAKASZOK)))
@@ -191,6 +219,8 @@ def main():
     for s in SZAKASZOK:
         if M[s]['lap_nincs']:
             w('- %s: BDB-szócikk nélküli szó-lapok: %s' % (fej(s), ', '.join(M[s]['lap_nincs'])))
+        if M[s]['alias']:
+            w('- %s: a saját szócikk nélküli, de a BDB_strong_alias.tsv szerint másik Strong-szám alatt álló szó-lapok (az alias-szócikk a lapon jelezve; a fenti számokban a magyar/angol sorban szerepelnek): %s' % (fej(s), ', '.join(M[s]['alias'])))
     w('')
     # 3
     w('## 3. BDB-bontás (gépi szeletelés)')
@@ -258,6 +288,71 @@ def main():
                            ('vs_ellentmond', 'a két tábla KJV-száma ellentmond')):
             if M[s][kulcs]:
                 w('- %s, %s: %s' % (fej(s), cim, ', '.join(M[s][kulcs][:40]) + (' …(+%d)' % (len(M[s][kulcs]) - 40) if len(M[s][kulcs]) > 40 else '')))
+    w('')
+    # 7
+    w('## 7. A bővítés (F60.5, v2): a meglévő adatok megjelenítésének mérése')
+    w('')
+    w('A bővítés új adatot nem állít elő: minden érték egy meglévő tábla sora; a gépi feldolgozás (kulcs-illesztés, tartomány bontása, morf-kód feloldása) jelölt. A teljes adatkészlet-felmérés: `naplok/OLVASOI_PILOT_adatfelmeres.md`.')
+    w('')
+    w('### 7.1 Szó-lapok (Strong-kulcs)')
+    w('')
+    proveniencia('konkordancia/{SDBH_domenek,SDGNT_domenek,SECE_H_teljes,SECE_G_teljes,OSHL_lexikalis_index,LSJ_teljes,MCGED_teljes,UBS_DNTG_jelentesek,tW_szocikkek}.tsv + TBESH.txt; szó-lapok: adat.py → bovites.py')
+    fr = lambda a, b: '%d/%d (%s)' % (a, b, szaz(a, b))
+    hl = lambda s: M[s]['lap_ossz']
+    gl = lambda s: M[s]['gor_ossz']
+    w(tabla('Mérőszám (a szakasz szó-lapjai közül)', [
+        sor('héber: SDBH-domén', *[fr(M[s]['h_domen'], hl(s)) for s in SZAKASZOK]),
+        sor('héber: SECE_H-szócikk', *[fr(M[s]['h_sece'], hl(s)) for s in SZAKASZOK]),
+        sor('héber: OSHL (TWOT, BDB-azonosító)', *[fr(M[s]['h_oshl'], hl(s)) for s in SZAKASZOK]),
+        sor('héber: TBESH-szócikk', *[fr(M[s]['h_tbesh'], hl(s)) for s in SZAKASZOK]),
+        sor('héber: tW-szócikk', *[fr(M[s]['h_tw'], hl(s)) for s in SZAKASZOK]),
+        sor('görög: SDGNT-domén', *[fr(M[s]['g_domen'], gl(s)) for s in SZAKASZOK]),
+        sor('görög: UBS_DNTG angol jelentések', *[fr(M[s]['g_ubs_en'], gl(s)) for s in SZAKASZOK]),
+        sor('görög: LSJ-szócikk', *[fr(M[s]['g_lsj'], gl(s)) for s in SZAKASZOK]),
+        sor('görög: MCGED (Mounce)', *[fr(M[s]['g_mcged'], gl(s)) for s in SZAKASZOK]),
+        sor('görög: SECE_G-szócikk', *[fr(M[s]['g_sece'], gl(s)) for s in SZAKASZOK]),
+        sor('görög: tW-szócikk', *[fr(M[s]['g_tw'], gl(s)) for s in SZAKASZOK]),
+        sor('görög: ÚSZ-hely UBS_DNTG-besorolása (a lapon listázott helyek)', *[fr(M[s]['stat']['usz_hely_ubs'], M[s]['stat']['usz_hely']) for s in SZAKASZOK]),
+    ]))
+    w('')
+    w('### 7.2 Vers-lapok (vers-kulcs)')
+    w('')
+    proveniencia('konkordancia/{BSB_Strongs,KJV_Strongs_teljes,Nave_basokant,TIPNR_kivonat,LXX_versszintu_parok,LXX_tobblet_szakaszok,Verzifikacios_elteres_tabla}.tsv + adat/{elofordulasok,kapcsolatok,lxx_dontesek,motivumok}.tsv; vers-kulcs: eszkozok/olvaso_pilot/bovites.py (gépi illesztés)')
+    vl = lambda s: M[s]['vers_ossz']
+    w(tabla('Mérőszám', [
+        sor('vers, amelyhez van BSB-sor (MT-kulcs)', *[fr(M[s]['stat']['bsb_vers'], vl(s)) for s in SZAKASZOK]),
+        sor('BSB-szó összesen (ebből „elhagyva” állapotú)', *['%d (%d)' % (M[s]['bsb_szo'], M[s]['bsb_elhagyva']) for s in SZAKASZOK]),
+        sor('BSB „Számozás” oszlop értékei a pilot-versekre', *[', '.join(M[s]['bsb_szamozas']) or '—' for s in SZAKASZOK]),
+        sor('vers, amelyhez van KJV-sor (KJV-kulcs)', *[fr(M[s]['stat']['kjv_vers'], vl(s)) for s in SZAKASZOK]),
+        sor('KJV-szó összesen', *[M[s]['kjv_szo'] for s in SZAKASZOK]),
+        sor('a KJV-kulcs forrása', *['; '.join('%s: %d' % (k, n) for k, n in M[s]['kjv_forras'].most_common()) for s in SZAKASZOK]),
+        sor('a versmegfeleltető tábla KJV-száma eltér a KJV-kulcstól (vers)', *[M[s]['stat']['kjv_tabla_ellentmondas'] for s in SZAKASZOK]),
+        sor('vers, amelyhez van Nave-sor (vers- és tartományhivatkozás)', *[fr(M[s]['stat']['nave_vers'], vl(s)) for s in SZAKASZOK]),
+        sor('Nave-sor a versekre összesen (ebből tartományból bontva); fejezet-szintű sor', *['%d (%d); %d' % (M[s]['nave_sor'], M[s]['nave_tart'], M[s]['nave_fej']) for s in SZAKASZOK]),
+        sor('TIPNR: vers névvel; a szakasz TIPNR-sorai közül illesztve', *['%d vers; %s' % (M[s]['tipnr_vers'], fr(M[s]['stat']['tipnr_illesztett'], M[s]['stat']['tipnr_osszes'])) for s in SZAKASZOK]),
+        sor('adat/elofordulasok.tsv: sor a szakasz verseire', *[M[s]['stat']['motivum_sor'] for s in SZAKASZOK]),
+        sor('adat/kapcsolatok.tsv: sor a szakasz verseire', *[M[s]['stat']['kapcsolat_sor'] for s in SZAKASZOK]),
+        sor('adat/lxx_dontesek.tsv: sor a szakasz verseire', *[M[s]['stat']['lxx_dontes_sor'] for s in SZAKASZOK]),
+        sor('LXX versszintű együttelőfordulás: vers; pár', *['%s; %d' % (fr(M[s]['stat']['lxx_par_vers'], vl(s)), M[s]['stat']['lxx_par_sor']) for s in SZAKASZOK]),
+        sor('LXX_tobblet_szakaszok / Verzifikacios_elteres_tabla: sor', *['%d / %d' % (M[s]['stat']['lxx_tobblet_sor'], M[s]['stat']['verzif_sor']) for s in SZAKASZOK]),
+    ]))
+    w('')
+    w('### 7.3 Morfológia és méret')
+    w('')
+    proveniencia('adat/morf_kulcs_heber.tsv + adat/morf_nyelv_aramai.tsv; Macula-kód: konkordancia/Macula_heber_*.tsv; feldolgozás: eszkozok/olvaso_pilot/bovites.py (gépi feldolgozás)')
+    w(tabla('Mérőszám', [
+        sor('Macula-szó morfológiai kóddal, ebből magyarul feloldva (a nyers kód mellett marad)', *[fr(M[s]['morf_hu'], M[s]['morf_van']) for s in SZAKASZOK]),
+        sor('ismeretlen jelű kód (a jelkulcs nem oldja fel)', *[M[s]['stat']['morf_ismeretlen'] for s in SZAKASZOK]),
+        sor('arámi szó a szakaszban (adat/morf_nyelv_aramai.tsv)', *[M[s]['stat']['morf_aramai_szo'] for s in SZAKASZOK]),
+        sor('olvaso_pilot.json mérete (bájt)', *[format(HTML_BAJT[fej(s)][0], ',').replace(',', ' ') for s in SZAKASZOK]),
+        sor('karoli_konkordancia_proba.html mérete (bájt; egyetlen fájl, minden adat beágyazva)', *[format(HTML_BAJT[fej(s)][1], ',').replace(',', ' ') for s in SZAKASZOK]),
+    ]))
+    w('')
+    legnagyobb = max(v[1] for v in HTML_BAJT.values())
+    if legnagyobb < 8 * 1024 * 1024:
+        w('A legnagyobb HTML %s bájt, vagyis 8 MB alatt van: lusta betöltésre vagy külön JSON-ra nem kellett áttérni (a határ átlépése esetén a nagy szövegek: SECE, LSJ, tW, TBESH, BDB teljes szöveg külön JSON-ba kerülnének).' % format(legnagyobb, ',').replace(',', ' '))
+    else:
+        w('A legnagyobb HTML %s bájt, vagyis átlépte a 8 MB-ot: lusta betöltésre vagy külön JSON-ra kell áttérni.' % format(legnagyobb, ',').replace(',', ' '))
     w('')
     os.makedirs(os.path.dirname(args.ki), exist_ok=True)
     with open(args.ki, 'w', encoding='utf-8', newline='\n') as fh:
