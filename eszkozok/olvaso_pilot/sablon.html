@@ -557,12 +557,14 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
       }));
 
     const vs = v.versszam || {};
-    const egyezik = vs.kjv && vs.mt && vs.kjv === vs.mt && v.igehely.endsWith(vs.kjv);
+    const ellentmond = vs.kjv_lxx && vs.kjv_lxx !== vs.kjv;
+    const egyezik = vs.kjv && vs.mt && vs.kjv === vs.mt && v.igehely.endsWith(vs.kjv) && !ellentmond;
     const versszam = el('div', { class: 'versszam' },
       el('span', null, 'Károli ', el('b', { text: v.igehely })),
       el('span', null, 'héber (MT) ', el('b', { text: vs.mt || '—' })),
       el('span', null, 'LXX ', el('b', { text: vs.lxx || '—' })),
-      el('span', { text: egyezik ? '· a számozás egyezik' : '· a számozás eltér, l. a versmegfeleltető táblát' }));
+      vs.kjv_lxx ? el('span', null, 'KJV (LXX_OS-tábla) ', el('b', { text: vs.kjv_lxx })) : null,
+      el('span', { text: egyezik ? '· a számozás egyezik' : (ellentmond ? `· a két tábla ellentmond (versmegfeleltetés: KJV ${vs.kjv || '—'}; LXX_OS: KJV ${vs.kjv_lxx})` : '· a számozás eltér, l. a versmegfeleltető táblát') }));
 
     verslap.append(
       el('div', null, el('p', { class: 'lapcim', text: 'Vers-lap' }), el('h2', { class: 'igehely', text: v.igehely + ' · Károli 1908' }), el('h3', { text: 'Versszámozás' }), versszam, forras('versszam')),

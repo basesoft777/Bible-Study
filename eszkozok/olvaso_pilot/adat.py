@@ -335,9 +335,11 @@ for r in sorok('konkordancia/UBS_DBH_jelentesek.tsv'):
 versszam = {r[0]: {'kjv': r[1], 'mt': r[2], 'osztaly': r[3]} for r in sorok('konkordancia/Karoli_versmegfeleltetes.tsv')
             if r and r[0] in VERSEK}
 lxx_igehely = {}
+lxx_kjv = {}
 for r in sorok(LXX_F):
     if len(r) > 2 and r[2] in VERSEK:
         lxx_igehely.setdefault(r[2], r[0])
+        lxx_kjv.setdefault(r[2], r[1])
 
 for v in versek:
     ig = v['igehely']
@@ -389,7 +391,8 @@ for v in versek:
         w['ubs'] = [dict(ubs_jel[x], lexid=x) for x in lexidk if x in ubs_jel]
     vs = versszam.get(ig, {})
     v['versszam'] = {'karoli': ig, 'kjv': vs.get('kjv', ''), 'mt': vs.get('mt', '') or vs.get('kjv', ''),
-                     'osztaly': vs.get('osztaly', ''), 'lxx': lxx_igehely.get(ig, '')}
+                     'osztaly': vs.get('osztaly', ''), 'lxx': lxx_igehely.get(ig, ''),
+                     'kjv_lxx': lxx_kjv.get(ig, '')}
 
 # Görög szó-lapok az LXX-szavakhoz
 gor_szavak = set()

@@ -115,6 +115,11 @@ class Zsolt22(unittest.TestCase):
     def test_versszam_eltereskor_jelzes(self):
         self.assertEqual(vers(ADAT['zsolt'], 'Zsolt 22:32')['versszam']['kjv'], '')
 
+    def test_versszam_tablak_ellentmondasa(self):
+        # a versmegfeleltető tábla szerint Károli 22:2 = KJV 22:2; az LXX_OS saját KJV-oszlopa szerint 22:1
+        vs = vers(ADAT['zsolt'], 'Zsolt 22:2')['versszam']
+        self.assertEqual((vs['kjv'], vs['kjv_lxx']), ('22:2', '22:1'))
+
     def test_kh_kulcs_normalizalva(self):
         # a Karoli_kereszthivatkozasok STEPBible-alakú (Psa.22.2); a normalizálás nélkül üres lenne
         self.assertTrue(any(v['karoli_kh'] for v in ADAT['zsolt']['versek']))
@@ -230,7 +235,8 @@ class Regresszio(unittest.TestCase):
     @unittest.skipUnless(os.environ.get('OLVASO_PROTOTIP_JSON'), 'OLVASO_PROTOTIP_JSON nincs megadva')
     def test_prototipussal_azonos(self):
         def tisztit(t):
-            return re.sub(r'ts=[0-9T:\-Z]+', 'ts=X', t)
+            # a prototípus óta bővült mező (F60.2): kjv_lxx
+            return re.sub(r', "kjv_lxx": "[^"]*"', '', re.sub(r'ts=[0-9T:\-Z]+', 'ts=X', t))
         a = tisztit(open(os.environ['OLVASO_PROTOTIP_JSON'], encoding='utf-8').read())
         b = tisztit(open(os.path.join(TMP, 'gen', 'olvaso_pilot.json'), encoding='utf-8').read())
         self.assertEqual(a, b)
