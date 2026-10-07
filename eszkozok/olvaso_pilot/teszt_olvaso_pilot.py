@@ -398,6 +398,24 @@ class LathatoForras(unittest.TestCase):
             self.assertGreaterEqual(float(m.group(1)), 12, m.group(0))
 
 
+class SzinseMa(unittest.TestCase):
+    """F60.12: világos/sötét/rendszer színséma-váltó; a tárolás csak try/catch-ben; a világos paletta az alap."""
+
+    def test_valto_es_alap_paletta(self):
+        s = sablon()
+        self.assertIn('data-tema="light"', s)
+        self.assertIn('data-tema="dark"', s)
+        self.assertIn('data-tema="rendszer"', s)
+        self.assertRegex(s, r':root\s*\{\s*--bg:\s*#f5f2ea')
+        self.assertIn(':root[data-theme="dark"]', s)
+
+    def test_localstorage_csak_trycatch_ben(self):
+        s = sablon()
+        for m in re.finditer(r'localStorage\.(get|set)Item', s):
+            elotte = s[max(0, m.start() - 60):m.start()]
+            self.assertIn('try', elotte, m.group(0))
+
+
 class Regresszio(unittest.TestCase):
     @unittest.skipUnless(os.environ.get('OLVASO_PROTOTIP_JSON'), 'OLVASO_PROTOTIP_JSON nincs megadva')
     def test_prototipussal_azonos(self):

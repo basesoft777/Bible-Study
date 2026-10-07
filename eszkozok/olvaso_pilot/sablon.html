@@ -6,16 +6,16 @@
 <style>
 /* Elrendezés: bal oldalon a vers-lap (Károli-szöveg, héber sor, LXX, kereszthivatkozások), jobb oldalon a kiválasztott szó lapja; keskeny képernyőn egymás alatt. */
 :root {
-  --bg: #f4f5f2;
-  --surface: #ffffff;
-  --ink: #1d2120;
-  --muted: #5f6763;
-  --rule: #d9ddd6;
-  --accent: #2f5d50;        /* olajzöld-tinta: a kötött szavak és a kiválasztás */
-  --accent-soft: #e1ece7;
-  --gold: #9a6a12;          /* folyamatban lévő fordítás jelzése */
-  --gold-soft: #f6ecd8;
-  --low: #8a6f9e;           /* nem „magas” bizonyosságú kötés */
+  --bg: #f5f2ea;           /* meleg papír */
+  --surface: #fffdf8;
+  --ink: #1b1a17;
+  --muted: #58554d;
+  --rule: #ddd7c9;
+  --accent: #1f5a49;        /* olajzöld-tinta: a kötött szavak és a kiválasztás */
+  --accent-soft: #e2eee8;
+  --gold: #8a5a00;          /* modell-kimenet jelzése */
+  --gold-soft: #f7ecd2;
+  --low: #7a5a93;           /* nem „magas” bizonyosságú kötés */
   --font-hu: "Source Serif 4", "Noto Serif", Georgia, serif;
   --font-he: "Frank Ruhl Libre", "SBL Hebrew", "Times New Roman", serif;
   --font-gr: "Noto Serif", "Gentium Plus", Georgia, serif;
@@ -291,6 +291,41 @@ dl.szavak dd { font-size: 14.5px; line-height: 1.6; }
 section.lap .lapcim { color: var(--accent); letter-spacing: .12em; font-size: 12px; }
 .meg, .blokk .meg { font-size: 13.5px; line-height: 1.55; }
 ::selection { background: var(--accent-soft); color: var(--ink); }
+/* Szélesebb tanulmányozó rész, világos/sötét váltó (F60.12) */
+.wrap { max-width: 1720px; padding-inline: clamp(16px, 2.5vw, 40px); }
+.racs { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(24px, 3vw, 44px); }
+@media (max-width: 1100px) { .racs { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+@media (max-width: 900px) { .racs { grid-template-columns: minmax(0, 1fr); } }
+.panel { font-size: 16px; }
+section.lap { padding: 28px clamp(22px, 2.4vw, 40px); }
+section.lap > * + * { margin-top: 26px; }
+section.lap p, .kartya p { max-width: 74ch; }
+.jsz, .bdb { max-width: 76ch; }
+.szamok { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px 20px; }
+dl.szavak { grid-template-columns: repeat(auto-fill, minmax(min(100%, 380px), 1fr)); gap: 16px 32px; }
+.blokk > h3, .fejsor > h3 { font-size: 1.3rem; line-height: 1.25; font-weight: 600; font-variation-settings: "opsz" 28; }
+.blokk h3, .fejsor h3 { margin-bottom: 0; }
+.forrasnev { font-size: 13px; line-height: 1.5; }
+.app h4, section.lap .lapcim { font-size: 12.5px; }
+.app h5 { font-size: 16px; }
+.jsz, .bdb, .kartya .k-jel { font-size: 16.5px; line-height: 1.72; }
+.jt { font-size: 15.5px; }
+.lemma { font-size: 3rem; }
+.szam b { font-size: 1.7rem; }
+.helyek, .jelleg { font-size: 12.5px; }
+ol.jel > li, ol.al > li { padding-left: 2.3rem; }
+ol.jel { gap: 12px; }
+.heber-sor { gap: 8px; }
+.he-szo { min-width: 72px; padding: 8px 10px; }
+.he-szo .he { font-size: 1.7rem; }
+.he-szo .gl, .he-szo .at { font-size: 13.5px; }
+.tema { display: inline-flex; border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.tema button { font: 500 13px var(--font-ui); border: 0; background: none; color: var(--muted); padding: 5px 12px; cursor: pointer; }
+.tema button + button { border-left: 1px solid var(--rule); }
+.tema button[aria-pressed="true"] { background: var(--accent); color: var(--surface); }
+.tema button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.fej { align-items: center; }
+@media print { .tema { display: none; } :root { --bg: #fff; --surface: #fff; --ink: #000; --muted: #333; } }
 @media (max-width: 640px) { .szoveg { font-size: 1.15rem; line-height: 1.75; } .fejezet { font-size: 3rem; } }
 @media print { body { font-size: 11pt; } .szoveg { font-size: 12pt; line-height: 1.6; } }
 </style>
@@ -302,6 +337,11 @@ section.lap .lapcim { color: var(--accent); letter-spacing: .12em; font-size: 12
       <p class="alcim">Belső pilot az olvasói nézethez. Minden tartalom a repó tábláiból jön; a lapon nincs magyarázó szöveg. A „?” jel az adatforrást mutatja.</p>
     </div>
     <div class="cimkek" id="cimkek"></div>
+    <div class="tema" role="group" aria-label="Színséma">
+      <button type="button" data-tema="rendszer" aria-pressed="true">Rendszer</button>
+      <button type="button" data-tema="light" aria-pressed="false">Világos</button>
+      <button type="button" data-tema="dark" aria-pressed="false">Sötét</button>
+    </div>
   </header>
 
   <details class="utmutato" id="utmutato" open>
@@ -1126,5 +1166,22 @@ section.lap .lapcim { color: var(--accent); letter-spacing: .12em; font-size: 12
   function rajzol() { rajzolOlvaso(); rajzolVers(); rajzolSzo(); }
   rajzol();
   fulValt('szo');
+})();
+</script>
+<script>
+(function () {
+  const gyoker = document.documentElement, KULCS = 'olvaso-pilot-tema';
+  const gombok = [...document.querySelectorAll('.tema button')];
+  function alkalmaz(t) {
+    if (t === 'light' || t === 'dark') gyoker.setAttribute('data-theme', t); else gyoker.removeAttribute('data-theme');
+    gombok.forEach(g => g.setAttribute('aria-pressed', String(g.dataset.tema === (t === 'light' || t === 'dark' ? t : 'rendszer'))));
+  }
+  let t = 'rendszer';
+  try { t = localStorage.getItem(KULCS) || 'rendszer'; } catch (e) { /* tároló nélkül is működik */ }
+  alkalmaz(t);
+  gombok.forEach(g => g.addEventListener('click', () => {
+    alkalmaz(g.dataset.tema);
+    try { localStorage.setItem(KULCS, g.dataset.tema); } catch (e) { /* nem baj */ }
+  }));
 })();
 </script>
