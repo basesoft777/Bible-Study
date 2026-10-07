@@ -38,6 +38,16 @@ A `FELADATOK.md` „Hol” oszlopa és a briefek fejlécei ágakra, fájlokra é
 - Az `ir` mező nem ellenőrzendő (a feladat még nem hozta létre a fájlokat).
 - Könyvtárra mutató útvonal (`/` végű) akkor jó, ha a könyvtár létezik.
 
+**Hatókör (DT-F40a, 2026.10.07):** a `FELADATOK.md` generált blokkjának nyitott sorain (a `kesz` blokkon kívüli blokkokon) a hiányzó fájl és a nem létező commit mindig HIBA (diff-hatókör nélkül), a nem létező ág FIGYELMEZTETÉS (a tervezett ág érvényes); a hibaüzenet a forrás-briefet nevezi meg. A brief `olvas`-mezőjének hiányzó fájlja mindig HIBA, kivéve ha egy `fugg`-beli feladat `ir` mezője fedi az útvonalat (egyezés, könyvtár-előtag vagy joker): akkor FIGYELMEZTETÉS. A `FELADATOK.md` Kész szakaszában a fájlhiány FIGYELMEZTETÉS (H2). A `NYITOTT_FELADATOK.md` és minden egyéb hely diff-hatókörű marad. A D-ág csak az `olvas` útvonalait ellenőrzi; a fejléc érvényessége (hibás YAML, lezáratlan fejléc) az E18-é (DT-F40b).
+
+**A szabály kódbeli kivételei (a briefben eredetileg nem szerepeltek, a DT-F40 ellenőri jelentés 4. pontja nyomán dokumentálva és tesztelve):**
+
+- Könyvtár nélküli rövid név (`ellenoriz.py`) akkor elfogadott, ha a repóban *bármely* helyen van azonos nevű fájl (a feladatkövető szövegei így hivatkoznak).
+- Kiterjesztés nélküli `a/b` alak csak akkor fájlútvonal, ha az első tagja létező repó-bejegyzés (különben pl. `szervezet/repo` téves jelzés lenne).
+- A `beerkezo/` és a `konkordancia/` (valamint a `.`-tal kezdődő és `node_modules`) könyvtárak briefjei nem tartoznak a D-ághoz (beérkezett vagy adat-jellegű anyag, nem feladatbrief).
+- URL-ek, `claude/…` ágnevek és a `*`/`<`/`{` jelű minták nem fájlútvonalak.
+- A `NYITOTT_FELADATOK.md:612/614` adatkészlet-belső rövidítései (`base/display/` stb.) NEM kapnak kivételt (DT-F40a (f)): a takarítási pontba mennek.
+
 ## 3. Hogyan
 
 1. Python, csak standard könyvtár, a meglévő E-szabályok szkriptjeinek mintájára (parancssor, kimenet, kilépési kód ugyanúgy).
@@ -78,4 +88,8 @@ Olvasd el ezt a briefet, a `CLAUDE.md`-t és a meglévő CI-szabályok szkriptje
 | H3 | A „csak chatben” sor nem hiba | szándékos, átmeneti állapot; a takarítási pont kezeli | a sor hibát ad, amíg a brief nincs a repóban |
 | H4 | A main-en talált régi hibákat a menet nem javítja | a feladat a szabály, nem a takarítás; a javítás a takarítási ponthoz tartozik | a menet a szabály mellett a main-t is kitakarítja |
 | H5 | A szabály száma E25 | az E17–E24 foglalt (F15, F37) | E17 |
+| H1a | *(DT-F40a, 2026.10.07, a H1 pontosítása)* A „következő PR elkapja” a generált blokk nyitott sorain és a brief `olvas`-mezőjén diff-hatókör nélkül, mindig HIBA; a többi hely diff-hatókörű | a generált blokkot PR nem szerkeszti, a diff-hatókör ott soha nem hibázna | minden mindig HIBA (a régi hibák javítása külön tétel) |
+| H2a | *(DT-F40a (c), a H2 pontosítása)* A Kész szakaszban a fájlhiány is figyelmeztetés (nem csak az ág); az `olvas`-mező hiányzó fájlja figyelmeztetés, ha egy `fugg`-beli feladat `ir` mezője fedi | a kód a Kész szakaszban hibát adott, ellentétben a H2-vel | marad a hiba a Kész szakaszban |
+| H5a | A szabály száma E27 (a H5 elavult) | az E25 (döntés-átvezetés) és az E26 (végleges szám az ágon) foglalt | E25 |
+| H7 | *(DT-F40b)* A D-ág csak az `olvas` útvonalait ellenőrzi; a fejléc-érvényesség az E18-é | nincs kettős ellenőrzés; a végrehajtó a 4. pontnál nem állt meg, ez eltérés (naplok/F40_zaras.md) | a D-ág fejléc-ellenőrzése marad |
 | H6 | A menet nem írja a FELADATOK.md-t | a generált blokkot a D25/E18 szerint csak a main-Action írja | a saját sor frissítése a menet végén |
