@@ -46,7 +46,7 @@
 **Táblaadat — OK:** 164 alias-sor (`git diff --numstat`: 164/0); H5839 → H5838 (BDB9760) és H2298 → H0259 (BDB9285) megvan; a régi alias- (296) és fő tábla (8093) sorai bájtra azonos prefix, 0 törölt sor; az elvetett tábla, az F38 brief és a `BDB_FORDITAS_M0.py` változatlan; a #38 sorrendjének 648 soros kész előtagja változatlan, a 9 új sor (H1753, H3367, H3848, H6433, H7560, H8065, H0747, H4123, H4725) pontosan egyszer szerepel; H0004, H3769, H5013 egyik táblában sincs.
 
 **2. köri eltérések (mind javítva az F72.7-ben):**
-1. az újragenerálás nem volt dokumentálva a zárásban és az N51-ben (+9 bontása, H4725 gyakorisága 401, az adagok eltolódása → DT-F67a hivatkozás);
+1. az újragenerálás nem volt dokumentálva a zárásban és az N51-ben (+9 bontása, H4725 gyakorisága 401, az adagok eltolódása → DT55 hivatkozás);
 2. a brief v3 és a README a H2298 → H0259-et „indokolt felülírásnak” nevezte, pedig automatikus egyezés (0,947);
 3. az `ir` fejlécből hiányzott a `bdb_sorrend_ujragen.py`, a `BDB_FORDITAS_sorrend.tsv`, az `ELLENOR_F72.md`;
 4. N-F72a: 162 → 164;

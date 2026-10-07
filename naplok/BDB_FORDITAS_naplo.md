@@ -2640,7 +2640,7 @@ A BDB-gyökcsoport tehát jóval tágabb rokonságot ad, mint az azonos TWOT-sz�
 
 *Proveniencia: scope=DONTESEK.md DT52 | forras=felhasználó, chat | ts=2026-10-06.*
 
-## M6c — Szinkron a Károli–Strong párosítással (DT-F38j, 2026-10-07, chat)
+## M6c — Szinkron a Károli–Strong párosítással (DT56, 2026-10-07, chat)
 
 **Ok.** A fordító promptjába az adatblokk (`eszkozok/bdb_adatblokk.py`, `karoli_alakok()`) a Strong-szám Károli-alakjait a párosított könyvekből adja (ma 1–5Móz, Józs, `adat/karoli_strong/parok_*.tsv`). A gyakorisági sorrendben lefelé haladva ez a támasz fogy; amit nélküle fordítunk, azt később nem fordítjuk újra.
 
@@ -2655,9 +2655,9 @@ A BDB-gyökcsoport tehát jóval tágabb rokonságot ad, mint az azonos TWOT-sz�
 
 Összevetésül: a kész 1–648. sor 94%-a kapott Károli-párt; a hátralék vége (2501–) kb. 30%.
 
-**Könyvenkénti haszon** a 7–10. adag 696 pár nélküli szócikkére (TAHOT-előfordulás; felső becslés, a könyvek átfednek, nem minden előfordulásból lesz pár; a TAHOT nem teljes, pl. Zsolt 88/89/140/142): Ézs 251 · Zsolt 250 · Jer 220 · 1Krón 189 · 2Krón 169 · Ezsd 162 · Jób 159 · Ez 147 · Péld 145 · Dán 144 · 2Sám 142 · 2Kir 130. A Bír nincs az első 12-ben (DT-F38k, nyitott).
+**Könyvenkénti haszon** a 7–10. adag 696 pár nélküli szócikkére (TAHOT-előfordulás; felső becslés, a könyvek átfednek, nem minden előfordulásból lesz pár; a TAHOT nem teljes, pl. Zsolt 88/89/140/142): Ézs 251 · Zsolt 250 · Jer 220 · 1Krón 189 · 2Krón 169 · Ezsd 162 · Jób 159 · Ez 147 · Péld 145 · Dán 144 · 2Sám 142 · 2Kir 130. A Bír nincs az első 12-ben (DT57, nyitott).
 
-**Döntés (DT-F38j = 1):** a BDB a #22-höz igazodik. Minden adag előtt kötelező a mérés; az adag csak akkor indul, ha a sorrendtartományának legalább 85%-a Károli-párt kap. Ha nem éri el, a `kovetkezo` a #22 következő könyvére mutat. A `megjegyzes`-jelölés és az utólagos visszaellenőrző feladat (2. opció) plusz munka, elvetve.
+**Döntés (DT56 = 1):** a BDB a #22-höz igazodik. Minden adag előtt kötelező a mérés; az adag csak akkor indul, ha a sorrendtartományának legalább 85%-a Károli-párt kap. Ha nem éri el, a `kovetkezo` a #22 következő könyvére mutat. A `megjegyzes`-jelölés és az utólagos visszaellenőrző feladat (2. opció) plusz munka, elvetve.
 
 **Elvetve ugyanebben a menetben:** a #38 párhuzamos, több subagentes futtatása (szilánkok gyökcsoport szerint, közös glosszáriummal). A szilánkok közötti szabad szóválasztás (a terminológia v3-on kívül) egy adagon belül szétcsúszhatna; a brief „Egy végrehajtó, egy kontextus” szabálya marad.
 
