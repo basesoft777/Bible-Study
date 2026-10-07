@@ -23,6 +23,7 @@ import os
 import argparse
 import datetime
 import tempfile
+import subprocess
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -34,18 +35,28 @@ import bdb_aram_potlas as A  # noqa: E402
 import bdb_strong_potlas as B  # noqa: E402
 
 KUSZOB = 0.8
-# Explicit, indokolt kizárólista (felhasználói döntés, 2026-10-07, chat): ezek az elfogadott,
-# duplikált (mérőszám >= 0,8) sorok NEM kerülnek alias-sorként a táblába; jelöltek maradnak.
-KIZAR = {
-    'H2298': 'kézzel a BDB9285-höz rendelt (kezi_elfogadott); a H0259-re mutató alias ellentmondana; '
-             'ha később pótlás lesz, a saját BDB9285 szövegével készül (most nem íródik)',
-    'H5839': 'téves testvér: BDB9760 = Azarjá, a H5665 pedig Abed-Negó; az alias a rossz sorra mutatna',
+NL, TAB, CR = bytes([10]), bytes([9]), bytes([13])
+# Indokolt felülírás (felhasználói döntés, 2026-10-07, chat; az F72 ellenőr-jelentése alapján): a legjobb
+# mérőszámú sor helyett a megnevezett testvérsorra mutat az alias. A mérőszámot ennek a sornak a
+# szövegén is kiszámolja a szkript (>= KUSZOB kell). A korábbi kizárások (H2298, H5839) téves alapon
+# álltak: a szöveg mindkét esetben a testvérsor végén van; a `kezi_elfogadott` (H2298 -> BDB9285)
+# döntés a szócikk-azonosításról szólt, nem a táblasorról.
+TABLA_FELULIR = {
+    'H5839': ('H5838', 'a legjobb mérőszámú sor a H5665 (Abed-Negó) volt; a H5838 sora (comrade of Daniel, '
+                       '= נְגוֺ עֲבֵד) tartalmazza a BDB9760 szövegét, és az elvetett tábla testvére is H5838'),
 }
+# Kézi ellenőrzések eredménye (a szárazfutás-kivonatba kerül).
+KEZI_ELLENORZES = {
+    'H3606': 'H3606 -> H3605: elfogadva (arámi–héber kol, ugyanaz a lemma; a testvér az elvetett táblában H6903, '
+             'de a szöveg a H3605 sorának végén áll)',
+}
+KIZAR = {}
+MARKER = 'bdb_aram_beemeles.py'
 ELFOGADOTT = ('egyertelmu', 'kezi_elfogadott')
 PROV_SABLON = ('scope=konkordancia/BDB_aram_potlas.tsv + konkordancia/BDB_teljes_unabridged.tsv | '
-               'forras=eszkozok/bdb_aram_beemeles.py --m2 (arami masodlagos Strong; a szocikk szovege '
-               'mar a heber testversor sorveegen all: ujjlenyomat-meres >= 0,8, '
-               'eszkozok/bdb_aram_potlas.py --duplikacio modszere; N51, felhasznaloi dontes 2026-10-06) | ts=%s')
+               'forras=eszkozok/bdb_aram_potlas.py --duplikacio (ujjlenyomat-meres >= 0,8: a szocikk szovege mar a '
+               'heber testversor sorvegen all; beemeles: eszkozok/bdb_aram_beemeles.py --m2; arami masodlagos '
+               'Strong; N51, felhasznaloi dontes 2026-10-06) | ts=%s')
 
 
 def olvas(path):
@@ -58,11 +69,14 @@ def szamol(ts):
     """A beemelés számítása a repó állapotából; visszaad: (alias_sorok, potlas_sorok, tobbi)."""
     fej, ki = A.olvas_tabla()
     fo = []
+    aram_kulcsok = {r['Strong_padded'] for r in ki}  # a pótlás-tábla Strongjai: az idempotens méréshez kimaradnak
     with open(B.TABLA, encoding='utf-8', newline='') as f:
         for n, sor in enumerate(f.read().split('\n'), 1):
             if n == 1 or not sor:
                 continue
             m = sor.split('\t', 2)
+            if m[0] in aram_kulcsok:
+                continue
             fo.append((n, m[0], A._ujj(m[2]), B.kons(m[2])))
     fo_kulcsok = {k for _, k, _, _ in fo}
     elv = {r['masodlagos_strong']: r for r in A.elvetett_aram()}
@@ -83,6 +97,13 @@ def szamol(ts):
             h = sum(1 for x in szeletek if x in uj) / len(szeletek)
             if h > legjobb[0]:
                 legjobb = (h, n, k)
+        if s in TABLA_FELULIR:
+            cel = TABLA_FELULIR[s][0]
+            sor_cel = [(n, k, uj) for n, k, uj, ko in fo if k == cel]
+            assert len(sor_cel) == 1, cel
+            h = sum(1 for x in szeletek if x in sor_cel[0][2]) / len(szeletek)
+            assert h >= KUSZOB, (s, cel, h)
+            legjobb = (h, sor_cel[0][0], cel)
         if legjobb[0] >= KUSZOB and s in KIZAR:
             kimarad.append((s, 'kizárt: ' + KIZAR[s].split(';')[0]))
         elif legjobb[0] >= KUSZOB:
@@ -101,7 +122,7 @@ def ellenoriz(alias, potlas, kimarad, fo_kulcsok):
     """Ütközések és kulcs-létezés; visszaad egy hibalistát (üres = rendben)."""
     hibak = []
     _, regi_alias = olvas(B.ALIAS)
-    regi_masod = {r[0] for r in regi_alias}
+    regi_masod = {r[0] for r in regi_alias if MARKER not in r[-1]}  # a saját korábbi sorok újraépíthetők
     for a in alias:
         if a['tabla'] not in fo_kulcsok:
             hibak.append('a testvérkulcs nincs a fő táblában: %s -> %s' % (a['s'], a['tabla']))
@@ -148,7 +169,9 @@ def m0(kimenet, kivonat, ts):
          '*Generálta: `python eszkozok/bdb_aram_beemeles.py --m0` · scope=konkordancia/BDB_aram_potlas.tsv + '
          'konkordancia/BDB_teljes_unabridged.tsv + konkordancia/BDB_strong_alias.tsv | '
          'forras=eszkozok/bdb_aram_beemeles.py --m0 | ts=%s*\n' % ts,
-         'A repó fájljai nem változtak. A jóváhagyás előtt semmi sem íródik élesben.\n',
+         'A kivonat a szárazfutás eredménye (a `--m0` a repó fájljait nem írja).\n',
+         '- Kézi ellenőrzés: %s Indokolt felülírás: %s.\n' % (' '.join(KEZI_ELLENORZES.values()), '; '.join(
+             '%s -> %s (%s)' % (k, v[0], v[1]) for k, v in TABLA_FELULIR.items()) or '—'),
          '- Alias-jelölt (mérőszám >= 0,8): **%d**; szöveges pótlás: **%d** (ebből részleges 0,5–0,8: %d); jelölt marad: %d (%s).' % (
              len(alias), len(potlas), sum(1 for p in potlas if p['reszleges']), len(kimarad),
              ', '.join('%s (%s)' % x for x in kimarad)),
@@ -183,17 +206,37 @@ def m2(ts):
     hibak = ellenoriz(alias, potlas, kimarad, fo_kulcsok)
     if hibak:
         raise SystemExit('megállok: ' + '; '.join(hibak))
-    if len(alias) != 162 or len(potlas) != 6:
-        raise SystemExit('megállok: a várt 162 alias / 6 pótlás helyett %d / %d' % (len(alias), len(potlas)))
-    for path, ujak in ((B.ALIAS, alias_sorok_szoveg(alias, ts)), (B.TABLA, potlas_sorok_szoveg(potlas))):
-        with open(path, 'rb') as f:
-            elotte = f.read()
-        if b'\r' in elotte or not elotte.endswith(b'\n'):
-            raise SystemExit('CRLF vagy hiányzó záró újsor: ' + path)
-        utana = elotte + ''.join(ujak).encode('utf-8')
-        assert utana.startswith(elotte)
-        with open(path, 'wb') as f:
-            f.write(utana)
+    if len(alias) != 164 or len(potlas) != 6:
+        raise SystemExit('megállok: a várt 164 alias / 6 pótlás helyett %d / %d' % (len(alias), len(potlas)))
+    # fő tábla: a 6 sor a végén; ha már ott áll, nem írunk újra
+    uj_fo = ''.join(potlas_sorok_szoveg(potlas)).encode('utf-8')
+    with open(B.TABLA, 'rb') as f:
+        fo = f.read()
+    if CR in fo or not fo.endswith(NL):
+        raise SystemExit('CRLF vagy hiányzó záró újsor: fő tábla')
+    if fo.endswith(uj_fo):
+        print('fő tábla: a 6 pótlás már a végén áll, változatlan')
+    else:
+        kulcsok = {l.split(TAB)[0].decode() for l in fo.split(NL)}
+        if any(p['s'] in kulcsok for p in potlas):
+            raise SystemExit('megállok: a pótlás kulcsa részben már a fő táblában')
+        with open(B.TABLA, 'wb') as f:
+            f.write(fo + uj_fo)
+    # alias-tábla: a saját korábbi sorok (MARKER a proveniencián) újraépítése; a többi bájtra azonos
+    with open(B.ALIAS, 'rb') as f:
+        al = f.read()
+    if CR in al or not al.endswith(NL):
+        raise SystemExit('CRLF vagy hiányzó záró újsor: alias-tábla')
+    nl, tab = NL.decode(), TAB.decode()
+    sorok = al.decode('utf-8').split(nl)[:-1]
+    regi = [l for l in sorok if MARKER not in l.split(tab)[-1]]
+    regi_bajt = (nl.join(regi) + nl).encode('utf-8')
+    r = subprocess.run(['git', 'show', 'origin/main:konkordancia/BDB_strong_alias.tsv'], capture_output=True, cwd=B.GYOKER)
+    if r.returncode == 0 and regi_bajt != r.stdout:
+        raise SystemExit('megállok: a nem-F72 alias-sorok nem azonosak az origin/main tartalmával')
+    utana = regi_bajt + ''.join(alias_sorok_szoveg(alias, ts)).encode('utf-8')
+    with open(B.ALIAS, 'wb') as f:
+        f.write(utana)
     print('M2 kész: %d alias-sor, %d szöveges pótlás' % (len(alias), len(potlas)))
 
 
