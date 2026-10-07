@@ -545,7 +545,7 @@ okból, hanem mert a lista még esetenként épült, nem szabály szerint.
 
 ### 2.8 `kulcsszavak.tsv` — átmeneti tábla, study→adat átjáró (F8_BRIEF.md G2a)
 
-Kulcs: `tanulmany` + `igehely` + `strong`. **Átmeneti tábla:** a bővített sablon 2.
+Kulcs: `tanulmany` + `igehely` + `strong`. **Átmeneti tábla:** a Tanulmány sablon 2.
 pontjának kulcsszó-táblázatát viszi géppel olvasható alakba, mielőtt a betöltés
 motívum-ID-t rendelne hozzá. Az `id` mező szándékosan **nincs** ezen a táblán — az
 csak az A4 lépésben, a `jeloltek.tsv`-ben születik meg (l. 2.4 és `F8_BRIEF.md` §1 L4). A `betolt.py`
@@ -553,7 +553,7 @@ csak az A4 lépésben, a `jeloltek.tsv`-ben születik meg (l. 2.4 és `F8_BRIEF.
 
 | Mező | Típus | Kötelező | Leírás |
 |---|---|---|---|
-| `tanulmany` | fájlút | ✔ | A forrás bővített tanulmány útvonala. |
+| `tanulmany` | fájlút | ✔ | A forrás tanulmány (igeszakasz-tanulmány) útvonala. |
 | `igehely` | `IGEHELY` | ✔ | |
 | `szo` | szabad szöveg | ✔ | A kulcsszó-táblázat magyar/héber/görög szava, ahogy a study-ban áll. |
 | `strong` | `STRONG` | ✔ | |

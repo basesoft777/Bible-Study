@@ -1,4 +1,4 @@
-# A join-tábla (Károli-Strong számozás) felépítésének folyamata — bővített és tematikus sablonoknál
+# A join-tábla (Károli-Strong számozás) felépítésének folyamata — Tanulmány sablonnál és tematikus sablonnál
 
 *Kiegészítés a PaRDeS_STEPBible_SzPA_dontesek_es_workflow.md-hez. Az SzPA-integráció felfüggesztése (v23) óta a join-tábla gyakorlati formájában kétoszlopos: Strong-szám + Károli-szó — nem a korábban tervezett háromoszlopos (Strong+Károli+SzPA) szerkezet. Ez a fájl azt írja le, hogyan épül fel ez a kétoszlopos join a két fő sablontípusnál.*
 
@@ -21,7 +21,7 @@ A korábban rögzített "tanulmányvezérelt, kumulatív" elv (7.1-7.2 pont) mos
 
 ---
 
-## 1. Bővített sablonnál — a szűkítés a keresés ELŐTT történik
+## 1. Tanulmány sablonnál — a szűkítés a keresés ELŐTT történik
 
 ```
 1. Tanulmány 2. pontja: kiválasztunk kb. 6-8 kulcsszót a kritériumlista alapján
@@ -63,7 +63,7 @@ A korábban rögzített "tanulmányvezérelt, kumulatív" elv (7.1-7.2 pont) mos
 
 ## A két folyamat összehasonlítása
 
-| | Bővített sablon | Tematikus sablon |
+| | Tanulmány sablon | Tematikus sablon |
 |---|---|---|
 | Szűkítés helye | keresés ELŐTT (kritériumlista) | keresés UTÁN (találati lista értékelése) |
 | Tipikus mennyiség/tanulmány | 6-8 szó | 10-20 előfordulás |

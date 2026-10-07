@@ -1,4 +1,4 @@
-# Munkamenet — a bővített tanulmánytól a lexikon-oldalig
+# Munkamenet — a tanulmánytól a lexikon-oldalig
 
 *Készült: F7 (chat-menet, Sonnet), 2026-09-20, a mérés forrása `F7_BRIEF.md` §1.*
 
@@ -30,11 +30,11 @@ Az oszlop kizárólag három alakot vehet fel:
 Nem létező eszköz **kizárólag** az `F8 — nincs eszköz`
 jelöléssel szerepel — futtathatóként sehol nem áll.
 
-## A) szakasz — bővített tanulmány: a motívum felismerése
+## A) szakasz — tanulmány: a motívum felismerése
 
 | # | Lépés | Ki | Kimenet | Ma mivel fut | Megjegyzés |
 |---|---|---|---|---|---|
-| A1 💎 | a szakasz feldolgozása, PaRDeS-kifejtés | kutató | bővített tanulmány prózája | kézi | drága modell (l. lent) |
+| A1 💎 | a szakasz feldolgozása, PaRDeS-kifejtés | kutató | tanulmány prózája | kézi | drága modell (l. lent) |
 | A2 💎 | 2. pont kulcsszó-táblázata | kutató | kulcsszavak, Strong-számmal | kézi | drága modell |
 | A3 | a kulcsszó-táblázat sorainak kiírása a táblába | végrehajtó | `kulcsszavak.tsv` sorok | `eszkozok/betolt.py kulcsszo --study … --konyv …` | átmeneti tábla, `id` nélkül (SEMA 2.8); a motívum-ID az A4-ben, a `jeloltek.tsv`-ben születik |
 | A3b | jelölt-generálás meglévő motívumokhoz | végrehajtó (`jelolt.py`) | automatikus jelöltlista | `eszkozok/jelolt.py --szakasz "…"` | formulaikus motívumnál a sorok `pozicionális ellenőrzés kell` jelzést kapnak; `beépítve`/`elutasítva` soha nem íródik |

@@ -1,4 +1,6 @@
-# 2. Bővített PaRDeS sablon — teljes, részletes verzió
+# 2. Tanulmány sablon (PaRDeS) — teljes, részletes verzió
+
+*v20 — 2026.10.07 (Átnevezés: a „Bővített PaRDeS sablon” neve mostantól „Tanulmány sablon”, a bővített tanulmányé „tanulmány” [DT-F37-1, #37 T1]; alap tanulmány nem készül, az alap sablon elavult. A fájlnév a hivatkozások miatt változatlan. Tartalmi változás nincs.)*
 
 *v19 — 2026.09.09 (Új, kötelező "Logikai kötőszó szerinti bontás"
 lépés a 3. pont végén — azonos indoklással, mint a tematikus sablon
@@ -204,7 +206,7 @@ A Remez/Sod rétegekhez: korai zsidó (Midrás, Talmud) és korai egyházatyai �
 
 **Vitatott pontok jelzése** — ⚠️, nevesített képviselőkkel, csak érdemi vita esetén.
 
-**Alkalmazás és tanítványság** *(itt konkretizálva — ez csak a bővített sablon sajátja)*
+**Alkalmazás és tanítványság** *(itt konkretizálva — ez csak a Tanulmány sablon sajátja)*
 Zárja a tanulmányt 2-3 konkrét kérdés megválaszolásával:
 1. *Mit jelent ez a mai hívő mindennapi életében?*
 2. *Milyen konkrét lépést, döntést vagy szokásváltozást von maga után?*

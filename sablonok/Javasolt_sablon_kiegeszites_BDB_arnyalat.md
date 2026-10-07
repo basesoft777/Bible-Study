@@ -56,7 +56,7 @@ kiegészítve.*
 ## 0. Cél
 
 Ez a dokumentum írja le, **hogyan** kerüljön be BDB/TBESH-alapú lexikai
-árnyalat-adat egy PaRDeS-tanulmányba (alap vagy bővített sablon szerint),
+árnyalat-adat egy PaRDeS-tanulmányba (a Tanulmány sablon szerint; az alap sablon 2026.10.07 óta elavult),
 két alkalmazási szinten:
 1. **Per-study sense-választás** — egy adott vers egy adott szavának melyik
    BDB-jelentésárnyalata releváns az adott kontextusban
@@ -75,7 +75,7 @@ KIVÉTEL NÉLKÜL, ebben a sorrendben:
    `grep "^G####" konkordancia/TBESG.txt` (görög) — MINDIG lefut,
    MINDEN triázson átment szónál.
 
-2. A teljes 2/a-2/e technikasor MINDEN, a bővített sablon saját
+2. A teljes 2/a-2/e technikasor MINDEN, a Tanulmány sablon saját
    triázsán (`2_PaRDeS_bovitett_sablon.md`, 2. pont, 6 kritérium) átment
    kulcsszóra kötelezően lefut — nincs további szűrés vagy
    kör-tagság-vizsgálat. (2026.09.03-ig egy külön "13-as kör" lista
@@ -325,7 +325,7 @@ MÁR MEGLÉVŐ kapcsolaton belül) közvetlenül következik ez a szétválaszt�
   alternatív árnyalataival szemben (pl. a כָּבַשׁ-eset, ahol a "gondoskodó
   uralom" tanítás nem zárta ki explicit a szótár keményebb olvasatait).
   NEM tartozik a napló-tápláló folyamathoz, külön kezelendő, és NEM
-  íródik be a motívumnaplóba — marad a bővített sablon saját,
+  íródik be a motívumnaplóba — marad a Tanulmány sablon saját,
   study-belüli lépéseként.
 
 **Gyakorlati következtetés:** amikor a kettő közül el kell dönteni, melyik
@@ -347,7 +347,7 @@ kérésre nyílik meg**, nem automatikusan ugyanabban a körben.
 
 **Döntés (2026.09.03):** a "13-as kör" mint külön jóváhagyandó
 szűrő-lista elvetve — a 2/a-2/e technikasor mostantól minden, a
-bővített sablon saját triázsán átment kulcsszóra lefut (l. 1. pont, 2.
+Tanulmány sablon saját triázsán átment kulcsszóra lefut (l. 1. pont, 2.
 lépés). A lista sosem lett véglegesítve (l. alább az eltérő
 számítások), és a gyakorlati tapasztalat (két teljes study-audit) azt
 mutatta, hogy külön kör-lista nélkül is kezelhető a technikasor
@@ -418,7 +418,7 @@ dokumentálja:
 - a forrás-hivatkozási fegyelem (2. pont) betartva dokumentálva minden
   egyes lelethez.
 
-Ez a szakasz a bővített sablon (`2_PaRDeS_bovitett_sablon.md`) saját
+Ez a szakasz a Tanulmány sablon (`2_PaRDeS_bovitett_sablon.md`) saját
 struktúrájába nem íródik vissza automatikusan ezzel a dokumentummal — a
 sablon-fájl saját, külön jóváhagyást igénylő frissítése továbbra is
 nyitott feladat (l. 11. pont).
@@ -429,7 +429,7 @@ nyitott feladat (l. 11. pont).
 
 1. ~~A 8. pont "13-as kör" listájának végleges megerősítése~~ —
    TÁRGYTALANNÁ VÁLT (2026.09.03): a koncepció elvetve, l. 8. pont.
-2. A bővített sablon (`2_PaRDeS_bovitett_sablon.md`) saját frissítése a
+2. A Tanulmány sablon (`2_PaRDeS_bovitett_sablon.md`) saját frissítése a
    kötelező 7. szakasszal (l. 10. pont) — ez a dokumentum eddig csak a
    *szabályt* rögzíti, a sablon-fájl saját szerkezeti frissítése még
    hátravan, külön jóváhagyással

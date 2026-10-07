@@ -1,5 +1,7 @@
 # 1. PaRDeS sablon (alap) — teljes, részletes verzió
 
+> **ELAVULT (2026.10.07, DT-F37-1, #37 T1).** Alap tanulmány nem készül többé; minden tanulmány a Tanulmány sablon (`sablonok/2_PaRDeS_bovitett_sablon.md`) szerint íródik. A fájl nem törölt: a Tanulmány sablon néhány pontja („mint az alap sablonban”) még erre hivatkozik. A sorsáról a #37 T6 utófeladat-javaslata szól.
+
 *v2 — 2026.08.14 (belső önellenőrzés kiegészítve: lexikai vs. tematikus kapcsolat explicit ellenőrzése)*
 
 **Kimenet nyelve:** magyar
@@ -46,7 +48,7 @@ Elrejtett spirituális titok, mélyebb kinyilatkoztatás Isten természetéről 
 Szerzői szándék, műfaji szabályok (pl. egy példázat képei nem szó szerint veendők, egy törvény viszont igen), irodalmi mintázatok (ismétlés, párhuzamosság, kiazmus), tágabb értelmezési elvek (pl. homályosabb szöveget világosabbal magyarázni).
 
 **Bibliai nyelvek**
-A kulcsfogalmak **görög/héber szó + kiejtés + rövid jelentés** formában (pl. πνεῦμα – *pneuma* – szellem), előfordulásuk máshol a Szentírásban. *(Könnyű verzió — nem a teljes vers eredeti nyelvi elemzése, ami a bővített sablonban van.)*
+A kulcsfogalmak **görög/héber szó + kiejtés + rövid jelentés** formában (pl. πνεῦμα – *pneuma* – szellem), előfordulásuk máshol a Szentírásban. *(Könnyű verzió — nem a teljes vers eredeti nyelvi elemzése, ami a Tanulmány sablonban van.)*
 
 **Történelmi és kulturális kontextus** *(konkrét, célzott)*
 Csak azok a kulturális-jogi-vallási részletek, amelyek ténylegesen alakítják egy adott vers/kifejezés jelentését — pl. első századi zsidó szokásjog, római közigazgatás, második templomi kori gondolkodás. Nem általános háttérfestés, hanem célzott magyarázat: "ez a kifejezés azért furcsa/erős a mai olvasónak, mert..."
@@ -55,7 +57,7 @@ Csak azok a kulturális-jogi-vallási részletek, amelyek ténylegesen alakítj�
 ⚠️ emojival, nevesített képviselőkkel (konkrét teológus/tudós néven) — **csak akkor**, ha ténylegesen van érdemi tudományos/teológiai vita az adott szakasz körül; nincs mesterségesen erőltetve.
 
 **Alkalmazás és tanítványság**
-Kapcsolat valós érzelmi, lelki és pszichológiai növekedéssel. *(Tömör megfogalmazás, konkretizáló kérdéslista nélkül — az csak a bővített sablonban alkalmazandó.)*
+Kapcsolat valós érzelmi, lelki és pszichológiai növekedéssel. *(Tömör megfogalmazás, konkretizáló kérdéslista nélkül — az csak a Tanulmány sablonban alkalmazandó.)*
 
 ---
 

@@ -48,7 +48,7 @@ A szó szórendje, alakja, mondatbeli szerepe eltér-e a két helyen?
 (vagy ha a mélyelemzés önálló, lezárt szálként a `Lezart_tematikus_tanulmanyok_index.md`-be
 is felkerül, az ott rögzített fájlnévhez igazítva). Mélyelemzésnél a napló
 kisebb terjedelmű is lehet — elég a két igehely összevetésének és minősítésének
-(✅/❌/🔶) indoklása —, de az elv ugyanaz, mint a bővített/tematikus sablonnál:
+(✅/❌/🔶) indoklása —, de az elv ugyanaz, mint a Tanulmány sablonnál és a tematikus sablonnál:
 a vizsgálat és annak indoklása auditálható módon, nem csak a végeredmény
 marad rögzítve.
 

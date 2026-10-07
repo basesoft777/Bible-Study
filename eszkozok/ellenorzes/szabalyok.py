@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-szabalyok.py -- CI.0: az E2-E19 es E25 ellenorzesek (F02_CI_ELLENORZES_BRIEF.md
-"Ellenorzolista" tablazata). Egy szabaly = egy fuggveny, mind
+szabalyok.py -- CI.0: az E2-E20 es E25 ellenorzesek (F02_CI_ELLENORZES_BRIEF.md
+"Ellenorzolista" tablazata; az E20 es az E8/E9/E12/E13 tanulmanyfajlra
+szolo bovitese: F37_TANULMANY_ELLENORZES_BRIEF.md T3, naplok/T0_felmeres.md 3.
+pont -- a tervezett E21-E24 atfedes miatt nem uj szabaly, hanem az E13, E8,
+E9, E12 hatokorenek bovitese, DT-F37-8). Egy szabaly = egy fuggveny, mind
 `(fajllista) -> [Talalat, ...]` alaku (E16 kivetel: PR-metaadatot is kap;
 E5 kivetel: git diff-et is kap -- l. az egyes fuggvenyek docstringjet).
 
@@ -28,7 +31,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from kozos import (
     ROOT, ADAT, Talalat, md_olvasas, dict_sorok, dict_sorok_sorszammal,
-    szakaszokra_bont, repo_ut,
+    szakaszokra_bont, repo_ut, tanulmany_fajl_e, TANULMANY_SABLON,
 )
 
 # D8: ezeknek a szabalyoknak a talalata motivum-/fajl-szintu (nem egy
@@ -37,7 +40,9 @@ from kozos import (
 # (SZINT-ben rogzitett) szintjukon jelentkeznek. E6/E7 a brief expliciten
 # ezt mondja ki; E4/E5/E16 szerkezetileg ugyanide tartozik (E5 maga is
 # diff-alapu, E16 fajl-letezes, E4 motivum-szintu audit-allapot).
-FAJLSZINTU_SZABALYOK = {'E4', 'E5', 'E6', 'E7', 'E16', 'E19', 'E25', 'E26'}
+# E20 (F37): a hianyzo kotelezo szakasz a tanulmany egeszere vonatkozik, nem
+# egy sorra -- a modositott tanulmanyfajlon mindig piros (F37 T3 "Futasi mod").
+FAJLSZINTU_SZABALYOK = {'E4', 'E5', 'E6', 'E7', 'E16', 'E19', 'E20', 'E25', 'E26'}
 
 # Adattablan futo szabalyok: --teljes modban a futtat.py a ['__TELJES__']
 # jelzot adja nekik (az md-fajlok listaja helyett), kulonben nem futnanak.
@@ -47,8 +52,12 @@ SZINT = {
     'E2': 'HIBA', 'E3': 'HIBA', 'E4': 'HIBA', 'E5': 'HIBA', 'E6': 'HIBA',
     'E7': 'HIBA', 'E8': 'HIBA', 'E9': 'HIBA', 'E10': 'HIBA', 'E11': 'HIBA',
     'E12': 'FIGYELMEZTETES', 'E13': 'FIGYELMEZTETES', 'E14': 'FIGYELMEZTETES',
-    'E15': 'FIGYELMEZTETES', 'E16': 'HIBA', 'E19': 'HIBA', 'E25': 'FIGYELMEZTETES', 'E26': 'HIBA',
+    'E15': 'FIGYELMEZTETES', 'E16': 'HIBA', 'E19': 'HIBA', 'E20': 'HIBA',
+    'E25': 'FIGYELMEZTETES', 'E26': 'HIBA',
 }
+# F37 (E21 -> E13): tanulmanyfajlon az E13 HIBA (a fuggveny talalatonkent
+# allitja be; a futtat.py a talalat sajat szintjet veszi alapul).
+E13_TANULMANY_SZINT = 'HIBA'
 
 
 # --------------------------------------------------------------------------
@@ -486,11 +495,24 @@ TILTOTT_IGEHELY_MINTAK = [
 ]
 HELYES_IGEHELY_MINTA = re.compile(r'\b\d(Móz|Sám|Kir|Krón|Kor|Thessz|Tim|Pét|Jn)\b')
 
+# F37 (E22 -> E8): a tanulmanyfajlban a versformatum egyseges (`1Móz 17:1`).
+# A ket tovabbi tiltott alak csak itt tiltott: mas fajlban (CLAUDE.md, briefek,
+# adat-leirasok) a STEPBible-alak (`Gen.1.1`) adatformatumkent legitim.
+TANULMANY_TILTOTT_IGEHELY_MINTAK = [
+    # hosszu konyvnev fejezet:vers elott: "1Mózes 12:1", "1 Mózes 3:1"
+    re.compile(r'\b[1-5]\.?\s?Mózes\s+\d+[:,.]\d'),
+    # STEPBible-alak a prozaban: "Gen.12.7", "1Ki.7.13"
+    re.compile(r'\b[1-3]?[A-Z][a-z]{1,4}\.\d+\.\d+\b'),
+]
+
 
 def e8_igehely_format(fajlok):
     """D16: a backtickes inline kod (`...`) es a kodblokk (```...```) ki van
     zarva -- egy szabalyleiro sor, amely peldakent idezi a tiltott formatumot
-    (pl. "`1 Móz`"), nem tenyleges study-szoveg."""
+    (pl. "`1 Móz`"), nem tenyleges study-szoveg.
+
+    F37 (E22): tanulmanyfajlon (kozos.tanulmany_fajl_e) a
+    TANULMANY_TILTOTT_IGEHELY_MINTAK is tiltott."""
     talalatok = []
     for relut in fajlok:
         if not relut.endswith('.md'):
@@ -499,6 +521,9 @@ def e8_igehely_format(fajlok):
             sorok = md_olvasas(repo_ut(relut))
         except (IOError, OSError):
             continue
+        mintak = TILTOTT_IGEHELY_MINTAK
+        if tanulmany_fajl_e(relut):
+            mintak = TILTOTT_IGEHELY_MINTAK + TANULMANY_TILTOTT_IGEHELY_MINTAK
         kodblokkban = False
         for i, sor in enumerate(sorok):
             if sor.strip().startswith('```'):
@@ -507,7 +532,7 @@ def e8_igehely_format(fajlok):
             if kodblokkban:
                 continue
             tisztitott = re.sub(r'`[^`]*`', '', sor)
-            for minta in TILTOTT_IGEHELY_MINTAK:
+            for minta in mintak:
                 m = minta.search(tisztitott)
                 if m:
                     talalatok.append(Talalat(
@@ -525,6 +550,9 @@ SENSE_MINTA = re.compile(r'\bsense\b', re.IGNORECASE)
 
 
 def e9_angol_sense(fajlok):
+    """F37 (E23): tanulmanyfajlon a D11 blockquote-kizaras nem ervenyes -- ott
+    a blockquote a 🔗 kereszthivatkozas-blokk (Karoli-idezet + magyar
+    magyarazo sor), nem angol forrasszoveg. Az idezojeles szoveg ott is kizart."""
     talalatok = []
     for relut in fajlok:
         if not relut.endswith('.md'):
@@ -533,6 +561,7 @@ def e9_angol_sense(fajlok):
             sorok = md_olvasas(repo_ut(relut))
         except (IOError, OSError):
             continue
+        tanulmany = tanulmany_fajl_e(relut)
         kodblokkban = False
         for i, sor in enumerate(sorok):
             if sor.strip().startswith('```'):
@@ -541,7 +570,7 @@ def e9_angol_sense(fajlok):
             if kodblokkban:
                 continue
             # D11: blockquote (idezett angol forrasszoveg) kizarva.
-            if sor.lstrip().startswith('>'):
+            if sor.lstrip().startswith('>') and not tanulmany:
                 continue
             tisztitott = re.sub(r'`[^`]*`', '', sor)
             tisztitott = re.sub(r'"[^"]*"', '', tisztitott)
@@ -659,10 +688,29 @@ E12_E13_HATOKOR = (
 
 
 def _e12_e13_hatokorben_e(relut):
-    return any(relut.startswith(p) for p in E12_E13_HATOKOR)
+    # F37 (ELLENOR_TANULMANY_ELLENORZES 1.): a tanulmanyfajl a hatokor-
+    # konyvtarakon kivul is a study-reteg resze, kulonben egy uj konyvtarba
+    # irt tanulmanyon az E13 HIBA es az E12 csendben nem futna.
+    return (any(relut.startswith(p) for p in E12_E13_HATOKOR)
+            or tanulmany_fajl_e(relut))
+
+
+# F37 (E24 -> E12): tanulmanyfajlon a naplojellegu szoveg tovabbi ket tipusa
+# (naplok/T0_felmeres.md 3. pont): a sablonon kivuli napló-szakasz cimsora
+# es a folyamatleiro mondat. A felismeres bizonytalan, ezert FIGYELMEZTETES
+# marad (F37 T3: "ha bizonytalan, ez a szabaly csak figyelmeztessen").
+TANULMANY_NAPLO_CIMSOR_MINTA = re.compile(
+    r'^#{2,4}\s.*(önellenőrzés|napló[- ]frissítés|Kiegészítés\s*\(|Következő lépés|Javasolt következő)',
+    re.IGNORECASE
+)
+TANULMANY_NAPLO_PROZA_MINTA = re.compile(
+    r'retroaktív|visszamenőleges|Code-prompt|\bcommit\b', re.IGNORECASE
+)
 
 
 def e12_proveniencia_prozaban(fajlok):
+    """F37 (E24): tanulmanyfajlon a naplojellegu cimsor es folyamat-mondat is
+    talalat, ha nem `【NAPLO: …】` blokkban all."""
     talalatok = []
     for relut in fajlok:
         if not relut.endswith('.md'):
@@ -673,6 +721,7 @@ def e12_proveniencia_prozaban(fajlok):
             sorok = md_olvasas(repo_ut(relut))
         except (IOError, OSError):
             continue
+        tanulmany = tanulmany_fajl_e(relut)
         naplo_blokkban = False
         for i, sor in enumerate(sorok):
             if '【NAPLO' in sor or '【NAPLÓ' in sor:
@@ -680,6 +729,13 @@ def e12_proveniencia_prozaban(fajlok):
             if naplo_blokkban:
                 if '】' in sor:
                     naplo_blokkban = False
+                continue
+            if tanulmany and (TANULMANY_NAPLO_CIMSOR_MINTA.search(sor)
+                              or TANULMANY_NAPLO_PROZA_MINTA.search(sor)):
+                talalatok.append(Talalat(
+                    'E12', SZINT['E12'], relut, i + 1,
+                    'naplojellegu szoveg 【NAPLO】 blokkon kivul: ' + sor.strip()[:140]
+                ))
                 continue
             if PROZAI_PROVENIENCIA_MINTA.search(sor):
                 talalatok.append(Talalat(
@@ -706,7 +762,59 @@ KIEJTES_ELFOGADVA = re.compile(
 )
 
 
+# F37 (E21 -> E13): a sor MINDEN heber/gorog futamat (kifejezest) nezi, nem
+# csak az elsot. Egy kifejezes: egymas utani heber/gorog szavak (szokoz,
+# maqaf, perjel, vesszo kozott), a politonikus gorog (U+1F00-1FFF) is.
+_HG = r'[֐-׿]|[Ͱ-Ͽ]|[ἀ-῿]'
+HEBER_GOROG_KIFEJEZES = re.compile(
+    r'(?:%s){2,}(?:[\s/־,]+(?:%s)+)*' % (_HG, _HG)
+)
+_LATIN = r'[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüűāēīōūšḥṭṣʼʾʿ\']'
+# A kifejezes UTAN allo, tovabbi elfogadott kiejtes-alakok (a D13 harom alakja mellett):
+#   (d) dolt atiras kozvetlenul utana, opcionalis elvalasztoval: ", *mispachot*",
+#       "| *lech-lechá* |" (a tablazat kovetkezo cellaja), "/ *pneuma*"
+#   (e) perjel vagy tablazat-cella utan latin betus atiras: "/ toledot", "| re.Shit"
+KIEJTES_UTANA_TANULMANY = re.compile(
+    r'^\s*[|,/:;(–-]?\s*\*{1,2}_?%s' % _LATIN
+    + r'|^\s*[/|]\s*\(?%s' % _LATIN
+)
+# A kifejezes ELOTT allo atiras: "*gadal* (גדל)", "*lech-lechá* / לֶךְ",
+# "karat/כרת" (perjellel kozvetlenul elotte)
+KIEJTES_ELOTTE = re.compile(
+    r'\*[^*\n]{1,40}\*\s*[(/,–-]?\s*$' + r'|%s{2,}\s*/\s*$' % _LATIN
+)
+_HG_BETU = re.compile(_HG)
+_LATIN_BETU = re.compile(r'[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű]')
+
+
+def _eredeti_nyelvu_versor(sor):
+    """A Tanulmany sablon 2. pontja a teljes verset eredeti nyelven kéri: az
+    ilyen sor (tobbsegeben heber/gorog betu, legalabb harom heber/gorog szo)
+    folyo szoveg, nem szotari szo -- a kiejtes-szabaly nem vonatkozik ra."""
+    hg = len(_HG_BETU.findall(sor))
+    lat = len(_LATIN_BETU.findall(sor))
+    szavak = len(re.findall(r'(?:%s)+' % _HG, sor))
+    return szavak >= 3 and hg >= 0.6 * (hg + lat)
+
+
+def _kifejezes_kiejtessel(sor, m):
+    utana = sor[m.end():m.end() + 60]
+    if KIEJTES_ELFOGADVA.search(utana[:40]) or KIEJTES_UTANA_TANULMANY.search(utana):
+        return True
+    elotte = sor[max(0, m.start() - 50):m.start()]
+    # a kifejezes egy zarojelben all, a zarojelen belul atirassal: "(מִשְׁפְּחֹת, *mispachot*)"
+    nyito = elotte.rfind('(')
+    if nyito != -1 and ')' not in elotte[nyito:]:
+        zaro = sor.find(')', m.end())
+        if zaro != -1 and re.search(_LATIN + r'{2,}', sor[m.end():zaro]):
+            return True
+    return bool(KIEJTES_ELOTTE.search(elotte))
+
+
 def e13_kiejtes_hianya(fajlok):
+    """F37 (E21): tanulmanyfajlon (kozos.tanulmany_fajl_e) HIBA, mashol
+    FIGYELMEZTETES marad. Soronkent egy talalat (az elso kiejtes nelkuli
+    kifejezes), hogy a jelentes ne sokszorozodjon."""
     talalatok = []
     for relut in fajlok:
         if not relut.endswith('.md'):
@@ -717,16 +825,24 @@ def e13_kiejtes_hianya(fajlok):
             sorok = md_olvasas(repo_ut(relut))
         except (IOError, OSError):
             continue
+        szint = E13_TANULMANY_SZINT if tanulmany_fajl_e(relut) else SZINT['E13']
         for i, sor in enumerate(sorok):
-            m = HEBER_GOROG_FUTAM.search(sor)
-            if not m:
+            if _eredeti_nyelvu_versor(sor):
                 continue
-            utana = sor[m.end():m.end() + 40]
-            if KIEJTES_ELFOGADVA.search(utana):
-                continue
-            talalatok.append(Talalat(
-                'E13', SZINT['E13'], relut, i + 1, sor.strip()[:150]
-            ))
+            elfogadott = set()
+            for m in HEBER_GOROG_KIFEJEZES.finditer(sor):
+                kif = m.group(0).strip()
+                # ugyanaz a kifejezes a sorban mar kiejtessel allt
+                if kif in elfogadott:
+                    continue
+                if _kifejezes_kiejtessel(sor, m):
+                    elfogadott.add(kif)
+                    continue
+                talalatok.append(Talalat(
+                    'E13', szint, relut, i + 1,
+                    'kiejtes nelkul: %s -- %s' % (m.group(0).strip()[:40], sor.strip()[:120])
+                ))
+                break
     return talalatok
 
 
@@ -898,6 +1014,90 @@ def e19_szotari_forditas_hiany(fajlok):
     return talalatok
 
 # --------------------------------------------------------------------------
+# E20 -- tanulmany: minden kotelezo szakasz megvan (F37 T3, DT-F37-6)
+# --------------------------------------------------------------------------
+# A szakaszlistat a Tanulmany sablon (kozos.TANULMANY_SABLON) szamozott `##`
+# cimsoraibol olvassa, nem kodba egetve: kotelezo minden szamozott szakasz,
+# amelynek cimsoraban nincs "(feltételes pont)". A tanulmany cimsora a szam
+# (pl. `1/b.`) es a cim magja szerint illeszkedik: a mag a cim a `*(…)*`
+# megjegyzes es a ` — ` utani alcim nelkul, kis-nagybetu nelkul.
+# HIBA, ha (a) a kotelezo szakasz szama hianyzik, (b) a szam megvan, de a cim
+# magja mas, (c) a szakasz torzse ures. Fajlszintu (FAJLSZINTU_SZABALYOK).
+
+_E20_CIMSOR = re.compile(r'^##\s+(\d+(?:/[a-z])?)\.\s+(.*?)\s*$')
+
+
+def _e20_mag(cim):
+    cim = re.sub(r'\*\([^)]*\)\*', '', cim)
+    cim = re.sub(r'\([^)]*\)', '', cim)
+    cim = cim.split(' — ')[0]
+    return ' '.join(cim.replace('*', '').split()).lower()
+
+
+def tanulmany_sablon_szakaszai(sablon_relut=None):
+    """[(szam, cim_mag, kotelezo, teljes_cim)] a Tanulmany sablonbol; None,
+    ha a sablon nem olvashato."""
+    ut = repo_ut(*(sablon_relut or TANULMANY_SABLON).split('/'))
+    try:
+        sorok = md_olvasas(ut)
+    except (IOError, OSError):
+        return None
+    ki = []
+    for sor in sorok:
+        m = _E20_CIMSOR.match(sor)
+        if not m:
+            continue
+        ki.append((m.group(1), _e20_mag(m.group(2)),
+                   'feltételes pont' not in m.group(2), m.group(2).strip()))
+    return ki
+
+
+def e20_kotelezo_szakaszok(fajlok):
+    talalatok = []
+    tanulmanyok = [f for f in fajlok if tanulmany_fajl_e(f)]
+    if not tanulmanyok:
+        return talalatok
+    sablon = tanulmany_sablon_szakaszai()
+    if not sablon:
+        for relut in tanulmanyok:
+            talalatok.append(Talalat('E20', SZINT['E20'], relut, 0,
+                                     'a Tanulmany sablon (%s) nem olvashato, vagy nincs '
+                                     'szamozott ## szakasza' % TANULMANY_SABLON))
+        return talalatok
+    kotelezok = [s for s in sablon if s[2]]
+    for relut in tanulmanyok:
+        try:
+            sorok = md_olvasas(repo_ut(relut))
+        except (IOError, OSError):
+            continue
+        cimek = {}
+        for i, sor in enumerate(sorok):
+            m = _E20_CIMSOR.match(sor)
+            if m and m.group(1) not in cimek:
+                vege = len(sorok)
+                for j in range(i + 1, len(sorok)):
+                    if sorok[j].startswith('## ') or sorok[j].startswith('# '):
+                        vege = j
+                        break
+                torzs = '\n'.join(sorok[i + 1:vege]).replace('---', '').strip()
+                cimek[m.group(1)] = (i + 1, _e20_mag(m.group(2)), torzs)
+        for szam, mag, _k, teljes in kotelezok:
+            if szam not in cimek:
+                talalatok.append(Talalat('E20', SZINT['E20'], relut, 0,
+                                         'hianyzik a kotelezo szakasz: ## %s. %s' % (szam, teljes)))
+                continue
+            sorszam, t_mag, torzs = cimek[szam]
+            if not (t_mag.startswith(mag) or mag.startswith(t_mag)) or not t_mag:
+                talalatok.append(Talalat('E20', SZINT['E20'], relut, sorszam,
+                                         'a ## %s. szakasz cime ("%s") nem a sablon szerinti ("%s")'
+                                         % (szam, t_mag, mag)))
+            elif not torzs:
+                talalatok.append(Talalat('E20', SZINT['E20'], relut, sorszam,
+                                         'a ## %s. %s szakasz torzse ures' % (szam, teljes)))
+    return talalatok
+
+
+# --------------------------------------------------------------------------
 # E25 -- dontes atvezetese (F51_KONZISZTENCIA_BRIEF.md K3, adat/SEMA.md 2.21)
 # --------------------------------------------------------------------------
 # Az adat/dontes_hatas.tsv minden sorara:
@@ -1042,7 +1242,10 @@ def e25_dontes_atvezetes(fajlok):
 # --------------------------------------------------------------------------
 # Az E17 nevet a DT3, az E18-at a feladatkovetes, az E19-et a szotari
 # forditas, az E20-E24-et mas feladatok foglaljak, az E25 a dontes-
-# atvezetes. Ez a kovetkezo szabad szam.
+# atvezetes. Ez a kovetkezo szabad szam. (F37: az E20 a tanulmany kotelezo
+# szakaszai; a tervezett E21-E24 az E13/E8/E9/E12 bovitesekent valosult meg,
+# DT-F37-8 -- a szamuk szabad maradt, de ujrahasznositasuk elott l.
+# naplok/T0_felmeres.md 3. pont.)
 #
 # PR-en (nem push-esemenynel: a main-en a `szamkiosztas` Action ad szamot)
 # a diff nem hozhat letre uj veglegesszamot:
@@ -1181,5 +1384,6 @@ SZABALYOK_FUGGVENYEI = {
     'E14': e14_jelentes_szoveg_angol,
     'E15': e15_szpa_idezet_hossz,
     'E19': e19_szotari_forditas_hiany,
+    'E20': e20_kotelezo_szakaszok,
     'E25': e25_dontes_atvezetes,
 }

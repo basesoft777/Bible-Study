@@ -112,6 +112,35 @@ jobs:
           echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
           exit $KILEPES
 
+      # F37 T3: a tanulmany-szabalyok (E20; E8/E9/E12/E13 tanulmanyra bovitve)
+      # kotelezo modja a fenti futtat.py-ban fut (csak az uj/modositott
+      # tanulmanyfajl, D8). Ez a lepes a jelentes mod: MINDEN tanulmanyfajl,
+      # nem bukik (a helyi, verziozott pillanatkep: naplok/TANULMANY_AUDIT.md).
+      - name: Tanulmany-audit (jelentes mod, nem bukik)
+        if: always()
+        continue-on-error: true
+        run: |
+          python eszkozok/ellenorzes/tanulmany_audit.py > tanulmany_audit.md || true
+          {
+            echo "## Tanulmany-audit (jelentes mod, nem bukik)"
+            echo ""
+            head -c 900000 tanulmany_audit.md
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # F37 T3: a szabalyok pozitiv/negativ tesztjei (E2-E26, F37 tanulmany-szabalyok)
+      - name: Szabaly-tesztek
+        id: tesztek
+        if: always()
+        run: |
+          set +e
+          python eszkozok/ellenorzes/tesztek/test_szabalyok.py
+          K1=$?
+          python eszkozok/ellenorzes/tesztek/test_tanulmany.py
+          K2=$?
+          if [ "$K1" != "0" ] || [ "$K2" != "0" ]; then KILEPES=1; else KILEPES=0; fi
+          echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
+          exit $KILEPES
+
       - name: Jelentes PR-kommentkent
         if: always() && github.event_name == 'pull_request'
         continue-on-error: true
@@ -121,14 +150,15 @@ jobs:
         run: |
           python eszkozok/ellenorzes/pr_komment.py e2e16_jelentes.md e1_jelentes.md
 
-      - name: Bukas, ha E1 vagy E2-E19 HIBA-t jelzett
+      - name: Bukas, ha E1 vagy E2-E26 HIBA-t jelzett, vagy a szabaly-teszt bukott
         if: always()
         env:
           E2E16_KILEPES: ${{ steps.e2e16.outputs.kilepes }}
           E1_KILEPES: ${{ steps.e1.outputs.kilepes }}
+          TESZT_KILEPES: ${{ steps.tesztek.outputs.kilepes }}
         run: |
-          if [ "$E2E16_KILEPES" != "0" ] || [ "$E1_KILEPES" != "0" ]; then
-            echo "Van HIBA-szintu talalat (E2-E19 kilepes: $E2E16_KILEPES, E1 kilepes: $E1_KILEPES)."
+          if [ "$E2E16_KILEPES" != "0" ] || [ "$E1_KILEPES" != "0" ] || [ "$TESZT_KILEPES" != "0" ]; then
+            echo "Van HIBA-szintu talalat vagy bukott teszt (E2-E26 kilepes: $E2E16_KILEPES, E1 kilepes: $E1_KILEPES, tesztek: $TESZT_KILEPES)."
             exit 1
           fi
           echo "Minden ellenorzes RENDBEN."

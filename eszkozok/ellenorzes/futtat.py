@@ -21,7 +21,7 @@ kilepesi kod --teljes modban mindig 0.
 D8 (--valtozott + --diff-alap/--diff-fej modban): a HIBA csak a diff altal
 HOZZAADOTT/MODOSITOTT sorokra vonatkozik -- egy szabaly regi (a PR altal
 nem erintett) talalata csak JELENTES. Kivetel a SZ.FAJLSZINTU_SZABALYOK
-(E4, E5, E6, E7, E16, E19, E25, E26): ezeknel a talalat nem egy konkret uj sorhoz kotheto,
+(E4, E5, E6, E7, E16, E19, E20, E25, E26): ezeknel a talalat nem egy konkret uj sorhoz kotheto,
 tehat mindig a sajat szintjukon jelentkeznek. Ha --diff-alap/--diff-fej
 hianyzik --valtozott modban is, a regi (D8 elotti) viselkedes ervenyesul:
 a talalat fajlszinten a sajat szintjen jelentkezik -- ezt CI.2 mindig
@@ -93,8 +93,11 @@ def fut(valtozott_fajlok, teljes, diff_alap=None, diff_fej=None, pr_cim='', comm
             for t in talalatok:
                 t.szint = 'JELENTES'
         elif nev not in SZ.FAJLSZINTU_SZABALYOK:
-            alap_szint = SZ.SZINT[nev]
+            # F37: az alap szint a talalat sajat szintje (az E13 tanulmany-
+            # fajlon HIBA, mashol FIGYELMEZTETES); a tobbi szabalynal ez
+            # azonos az SZ.SZINT[nev]-vel.
             for t in talalatok:
+                alap_szint = t.szint or SZ.SZINT[nev]
                 t.szint = _szint_diff_szerint(t, alap_szint, hozzaadott_cache, diff_alap, diff_fej)
         eredmeny[nev] = talalatok
 

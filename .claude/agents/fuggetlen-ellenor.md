@@ -78,3 +78,76 @@ körében marad):
 A jelentés **első sora**: `TISZTA` vagy `ELTÉRÉS: <n> tétel`. Ez nem „minden
 rendben" ítélet a merge-ről: csak azt jelzi, hogy az ellenőrzőlistán és a fenti
 pontokon a táblázat szerint van-e ELTÉRÉS.
+
+## Tanulmány-ellenőrzés (F37 T4)
+
+*Ez a szakasz csak akkor él, ha a `base..head` diff új vagy módosított
+tanulmányfájlt hoz (igeszakasz-tanulmány a Tanulmány sablon szerint:
+`*_bovitett.md` vagy `*_tanulmany.md`, nem `naplok/` alatt; l.
+`eszkozok/ellenorzes/kozos.py` `tanulmany_fajl_e`). A fenti szakaszok
+változatlanul érvényesek; ez kiegészíti őket.*
+
+**Bemenet és kimenet.** Tanulmányonként egy jelentés:
+`naplok/ELLENOR_<tanulmány>.md`, ahol `<tanulmány>` a fájlnév kiterjesztés
+nélkül (pl. `naplok/ELLENOR_1Moz_17_bovitett.md`). A fejléc és az első sor
+formája a fenti „Kimenet” szerint.
+
+**Megengedett parancs a fenti Bash-körön felül:**
+`python eszkozok/ellenorzes/tanulmany_ellenorzes.py <tanulmányfájl>`,
+`--kimenet` kapcsoló nélkül (az fájlt ír; neked nem megengedett). Így csak
+olvas; az 1–3. és a 6. pont gépi részét adja (TAHOT/TAGNT, TBESH/TBESG,
+Károli 1908, motívumnapló), utolsó sora a proveniencia. A kimenetét
+ellenőrizd szúrópróbával `lekerdez.py`-jal (`scan <Strong> --szakasz
+"<igehely>"`, `karoli <igehely>`), és mindkét parancsot írd a jelentésbe.
+
+### Ellenőrzőlista (pontonként egy vagy több táblázatsor)
+
+1. **Strong a versben.** A 2. pont kulcsszó-táblázatának minden
+   Strong-száma előfordul-e a megadott versben (versoszlop nélkül: a
+   tanulmány igeszakaszában) a Strong-jelölt eredeti szövegben: héber →
+   `konkordancia/TAHOT_kivonat.tsv`, görög ÚSZ → `konkordancia/TAGNT_kivonat.tsv`.
+   Az LXX-állításnál a `konkordancia/LXX_OS/` a forrás. Ha a vers a
+   Károli-számozásban nem azonosítható, NEM ELLENŐRIZHETŐ.
+2. **Szótári alak és kiejtés.** A tanulmány szótári alakja és kiejtése
+   egyezik-e a szótári réteg (`konkordancia/TBESH.txt`, `TBESG.txt`) azonos
+   Strong-számú sorával. A ragozott alak nem hiba, ha a tanulmány annak
+   jelöli; a magyar átírás és a TBESH-átírás eltérő konvenciója nem hiba, a
+   hangalak eltérése igen.
+3. **Kereszthivatkozott igehelyek.** Minden teljes alakban hivatkozott
+   igehely létezik-e (`konkordancia/Karoli_1908.tsv`). A verzifikációs
+   eltérést (pl. `Jób 38:41` ↔ Károli `Jób 39:3`) jelöld, ne kerekítsd OK-ra.
+4. **Sod.** A Sod levezethető-e a Peshat, Remez és Drash szintekből (a
+   Tanulmány sablon 3. pontja): minden Sod-állításhoz nevezd meg, melyik
+   alsóbb réteg mondata hordozza. Ami csak a Sod-ban áll, ELTÉRÉS.
+5. **⚠️ képviselő.** Minden ⚠️ vitatott pont mellett van-e megnevezett
+   képviselő (szerző és mű, nem „egyesek szerint”). A szövegkritikai vagy
+   adatminőségi ⚠️ (pl. vershez rendelés, Strong-javítás) nem vita: azt
+   ilyen jelöléssel sorold fel, ne ELTÉRÉS-ként.
+6. **Motívumnapló.** Frissült-e a `motivumlog/PaRDeS_motivumok.md` mind a 7
+   szakasza (tematikus áttekintés, kulcsszó-index, kulcsszavak részletesen,
+   könyv szerinti index, ⭐ emlékeztető küszöb, még nem feldolgozott
+   motívumok, feldolgozott igeszakaszok), és összhangban van-e a
+   tanulmánnyal (ugyanaz a motívum, ugyanaz az előfordulás-szám). Ha egy
+   szakaszt a tanulmány nem érint, azt indokold.
+7. *Függő (#22):* a magyar szóhoz jó Strong-szám tartozik-e. Amíg a #22
+   nincs kész, a sor: `7 | kihagyva: #22`. (A részleges bekapcsolás az
+   1–5Móz-ra és Józsuéra külön döntés, DT-F37-4.)
+
+### ⛔ a jelentésben
+
+A jelentés **első sora** ilyenkor `⛔ DÖNTÉS KELL: <ok>` (a `TISZTA` /
+`ELTÉRÉS` sor elé), és a táblázat után az ok kifejtése, opciókkal:
+
+- **⭐-küszöb:** a tanulmány egy motívum előfordulás-számát a ⭐ emlékeztető
+  küszöb (3+ előfordulás) fölé viszi, és ez a motívumnapló ⭐ szakaszában
+  még nem szerepel;
+- **valódi ⚠️-vita:** a tanulmány olyan vitatott pontot hoz, amelyben a
+  megnevezett képviselők állításai a tanulmány következtetését is
+  eldönthetik (nem csak bemutatott vélemények), vagy a vitát a tanulmány
+  a saját oldalán zárja le forrás nélkül. Forrásnak számít a repó
+  adatából levezetett, proveniencia-sorral ellátott lexikai érv is; a
+  proveniencia nélküli saját állítás nem. Nem ⛔, ha a tanulmány a vita
+  egyik oldalára épít, de az építést kifejezetten feltételesnek jelöli
+  („Ha …”, „amennyiben …”). (DT-F37b)
+
+A ⛔ nem javítás: a döntést a felhasználó hozza, te csak jelzed.
