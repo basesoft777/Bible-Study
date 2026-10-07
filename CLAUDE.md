@@ -105,7 +105,7 @@ hígulni fog. Minden új sornál: *csak ezen keresztül tartozik ide?* Ha igen, 
 Három korlát, amit tudnod kell:
 
 - **`TAHOT_kivonat.tsv` nem teljes**, bár a README annak mondja (hiányzik legalább
-  1Móz 32, Zsolt 88/89/140/142, Jóel 3) — minden „teljes körű scan" ennyivel gyengébb.
+  Jób 40:1–5 és a Jób 41; a Zsolt 88/89/140/142-t és az 1Móz 32-t és a Jóel 3-at az F2 pótolta, 2026.09.14, `NYITOTT_FELADATOK.md`) — minden „teljes körű scan" ennyivel gyengébb. A Jób-futás (#22) előtt figyelmeztetés.
 - **KJV:** a `KJV_Strongs_teljes.tsv` (eBible, #19) teljes; az ASV nem használható (a teljes fájl forráshibás, N29/D7). A régi `KJV_/ASV_Strongs_*.tsv` csak Genezis, Exodus, Példabeszédek — a #48 vezeti ki.
 - **SDBH / SDGNT** (szemantikai domének, **CC BY-SA 4.0**) az ÓSZ szókincsének kb. 90%-át fedik — **üres `domen`-eredmény nem negatív lelet**, és a domén támasz, nem a mező-hipotézis helyettesítője.
 

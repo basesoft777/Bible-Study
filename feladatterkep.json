@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-07",
-   "commit": "dff1659"
+   "commit": "1c006aa"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -297,7 +297,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: a Zsoltárok indítása (⛔ 2.; a következő könyv a Zsoltárok, utána Bír, DT54 2026-10-07; előbb a versbeosztás kézi jóváhagyása (27 jelzett fejezet), a Zsolt 88/89/140/142 TAHOT-hiányának kezelése és pontossági szúrópróba az első költői könyvre). 1–5Móz és Józs kész (3Móz–Józs csak Sonnet, DT-F22c; a Józs PR #165 mergelve 2026-10-04; naplok/F22_Jozs_jelentes.md). Jób előtt: döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis.",
+   "most": "Te: a Zsoltárok kész (PR #239); ⛔ 2.: kézi átnézés 119:94, 144:15, 145:1 (a felhasználóé), ready és merge (a felhasználóé). A Bírák (DT54) indítása külön jóváhagyás; párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60). Jób előtt: TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis.",
    "fugg": "#21 (kész)",
    "tervezett": false,
    "reszletes": "Két modell (Sonnet, az első könyvnél Gemini is) a Károli-fordítás minden szavához megkeresi az eredeti héber szót és a Strong-számát; ahol a két modell egyezik, a kapcsolat „magas” bizonyosságú. Az 1–5Mózes és Józsué kész.",
@@ -804,7 +804,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 104
+    "sor": 107
    },
    {
     "id": "DT-M5",
@@ -814,7 +814,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 105
+    "sor": 108
    },
    {
     "id": "DT-M6",
@@ -824,7 +824,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 106
+    "sor": 109
    },
    {
     "id": "DT57",
@@ -834,7 +834,7 @@
     "jelek": [
      "🟡"
     ],
-    "sor": 132
+    "sor": 135
    }
   ],
   "alkalmazasra_var": [
@@ -866,7 +866,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 60
+    "sor": 63
    },
    {
     "id": "DT52",
@@ -876,7 +876,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 61
+    "sor": 64
    },
    {
     "id": "DT-F32a",
@@ -886,7 +886,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 81
+    "sor": 84
    },
    {
     "id": "DT-F32b",
@@ -896,7 +896,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 82
+    "sor": 85
    },
    {
     "id": "DT-F32c",
@@ -906,7 +906,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 83
+    "sor": 86
    },
    {
     "id": "DT-F26a",
@@ -916,7 +916,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 85
+    "sor": 88
    },
    {
     "id": "DT-F42a",
@@ -926,7 +926,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 90
+    "sor": 93
    },
    {
     "id": "DT-F42b",
@@ -936,7 +936,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 91
+    "sor": 94
    },
    {
     "id": "DT-F42c",
@@ -946,7 +946,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 92
+    "sor": 95
    },
    {
     "id": "DT-F42d",
@@ -956,7 +956,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 93
+    "sor": 96
    },
    {
     "id": "DT-F42e",
@@ -966,7 +966,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 94
+    "sor": 97
    },
    {
     "id": "DT-F42f",
@@ -976,7 +976,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 95
+    "sor": 98
    },
    {
     "id": "DT-F42g",
@@ -986,7 +986,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 96
+    "sor": 99
    },
    {
     "id": "DT-F42h",
@@ -996,7 +996,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 97
+    "sor": 100
    },
    {
     "id": "DT-F42i",
@@ -1006,7 +1006,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 98
+    "sor": 101
    },
    {
     "id": "DT-M1",
@@ -1016,7 +1016,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 101
+    "sor": 104
    },
    {
     "id": "DT-M2",
@@ -1026,7 +1026,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 102
+    "sor": 105
    },
    {
     "id": "DT-M3",
@@ -1036,7 +1036,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 103
+    "sor": 106
    },
    {
     "id": "DT-M7",
@@ -1046,7 +1046,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 107
+    "sor": 110
    },
    {
     "id": "DT-M8",
@@ -1056,7 +1056,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 108
+    "sor": 111
    },
    {
     "id": "DT28",
@@ -1066,7 +1066,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 109
+    "sor": 112
    },
    {
     "id": "DT37",
@@ -1076,7 +1076,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 110
+    "sor": 113
    },
    {
     "id": "DT38",
@@ -1086,7 +1086,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 111
+    "sor": 114
    },
    {
     "id": "DT39",
@@ -1096,7 +1096,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 112
+    "sor": 115
    },
    {
     "id": "DT41",
@@ -1106,7 +1106,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 114
+    "sor": 117
    },
    {
     "id": "DT35",
@@ -1116,7 +1116,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 115
+    "sor": 118
    },
    {
     "id": "DT36",
@@ -1126,7 +1126,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 116
+    "sor": 119
    },
    {
     "id": "DT30",
@@ -1136,7 +1136,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 117
+    "sor": 120
    },
    {
     "id": "DT31",
@@ -1146,7 +1146,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 118
+    "sor": 121
    },
    {
     "id": "DT32",
@@ -1156,7 +1156,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 119
+    "sor": 122
    },
    {
     "id": "DT33",
@@ -1166,7 +1166,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 120
+    "sor": 123
    },
    {
     "id": "DT34",
@@ -1176,7 +1176,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 121
+    "sor": 124
    },
    {
     "id": "DT42",
@@ -1186,7 +1186,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 122
+    "sor": 125
    },
    {
     "id": "DT43",
@@ -1196,7 +1196,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 123
+    "sor": 126
    },
    {
     "id": "DT44",
@@ -1206,7 +1206,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 124
+    "sor": 127
    },
    {
     "id": "DT45",
@@ -1216,7 +1216,7 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 125
+    "sor": 128
    },
    {
     "id": "DT56",
@@ -1226,11 +1226,11 @@
     "jelek": [
      "🟢"
     ],
-    "sor": 131
+    "sor": 134
    }
   ],
   "javasolt": [],
   "ellenorizendo": [],
-  "kesz_db": 79
+  "kesz_db": 82
  }
 }
