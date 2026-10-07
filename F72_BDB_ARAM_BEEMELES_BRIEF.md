@@ -9,7 +9,7 @@ munka: adat
 allapot: megallt
 ag: claude/bdb-aram-beemeles
 ad: a konkordancia/BDB_strong_alias.tsv a 164 duplikált arámi Strong-számmal bővül (a héber testvérsorra mutatva), a BDB_teljes_unabridged.tsv végére a 6 valódi hiány kerül szövegsorként; a meglévő sorok bájtra azonosak; a #38 sorrendje újragenerálva
-kovetkezo: "Te: az F72.3 beemelés (162 alias + 6 pótlás) áttekintése és a #38 sorrendjének újragenerálására (4. lépés) jóváhagyás; a #38 7. adaga ettől függjön (fugg bővítés a befogadáskor)"
+kovetkezo: "Te: az F72 zárása (a beemelés, a #38 sorrendjének újragenerálása és az ELLENOR_F72 javítása áttekintése); utána a #38 befogadáskori fugg-bővítése és a 7. adag (sorrend 649–, az első sor most H4725)"
 olvas: [konkordancia/BDB_aram_potlas.tsv, konkordancia/BDB_aram_potlas_README.md, naplok/BDB_ARAM_POTLAS_duplikacio.md, naplok/BDB_ARAM_POTLAS_zaras.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/BDB_strong_alias_elvetett.tsv, konkordancia/BDB_teljes_unabridged_README.md, eszkozok/bdb_strong_potlas.py, eszkozok/bdb_aram_potlas.py, F38_BDB_FORDITAS_BRIEF.md, adat/SEMA.md]
 ir: [NYITOTT_FELADATOK.md, naplok/BDB_ARAM_BEEMELES_szarazfutas.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/BDB_teljes_unabridged_README.md, eszkozok/bdb_aram_beemeles.py, eszkozok/teszt_bdb_aram_beemeles.py, naplok/BDB_ARAM_BEEMELES_zaras.md]
 fugg: [66]
