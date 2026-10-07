@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-07",
-   "commit": "aaebc9f"
+   "commit": "dff1659"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -377,7 +377,7 @@
    "fazis": "folyamat",
    "allapot": "wait",
    "brief_allapot": "nem_indult",
-   "most": "/kovetkezo; ⛔ a T0 után (nincs Strong-jelölt eredeti szöveg, vagy az SzPA kötelező szakasz a Tanulmány sablonban) és a T2 után (az alap tanulmányok sorsa)",
+   "most": "/kovetkezo; ⛔ a T0 után (nincs Strong-jelölt eredeti szöveg, vagy az SzPA kötelező szakasz a Tanulmány sablonban, vagy a T0 mégis alap tanulmányt talál)",
    "fugg": "#30 (kész), #32 (kész), #45*",
    "tervezett": false,
    "reszletes": "A tanulmányokat gépi CI-szabályok (E20–E24) és egy független ellenőrző ügynök vizsgálja; a régi tanulmányokról két auditjelentés készül. Két megállási pont van benne (T0, T2), ahol te döntesz.",
