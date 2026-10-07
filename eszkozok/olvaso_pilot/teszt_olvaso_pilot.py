@@ -444,6 +444,31 @@ class LxxKiemeles(unittest.TestCase):
         self.assertIn("role: gk ? 'button'", blokk)
 
 
+class ZarojelesElozoCikk(unittest.TestCase):
+    """F60.17: a [gyök] előszócikkel induló BDB-sorban az „I. <lemma>” homonima a Strong-számé (H6030: „felelni”, nem „lakni”)."""
+
+    def test_h6030_alapjelentes_felelni(self):
+        import bdb_szelet
+        hu = ("H6030. anah [עוּן] ige: lakni (valószínűleg; √, a következőé); — Qal perfectum Ézs 13:22 és sakálok laknak. "
+              "I. עָנָה ige: felelni, válaszolni (késői héber); — Qal perfectum 1Móz 41:16.")
+        r = bdb_szelet.szeletel(hu, 'עָנָה')
+        self.assertEqual(r['fej']['heber'], 'עָנָה')
+        self.assertTrue(r['alap'].startswith('ige: felelni'))
+        self.assertIn('lakni', r['elotag'])
+
+    def test_masik_lemma_nem_cserel(self):
+        import bdb_szelet
+        hu = ("H5222. nekeh [נֵכֶה] adjective id.; — plural נֵכִים Psa 35:15 smitten ones "
+              "I. נָכוֺן noun [masculine] = blow Job 12:5")
+        r = bdb_szelet.szeletel(hu, 'נֵכֶה')
+        self.assertEqual(r['elotag'], '')
+
+    def test_lemma_nelkul_is_marad_a_regi_viselkedes_ha_nincs_homonima(self):
+        import bdb_szelet
+        r = bdb_szelet.szeletel("H0001. av [אָב] noun father; — 1. father Gen 2:24.", 'אָב')
+        self.assertEqual(r['elotag'], '')
+
+
 class Regresszio(unittest.TestCase):
     @unittest.skipUnless(os.environ.get('OLVASO_PROTOTIP_JSON'), 'OLVASO_PROTOTIP_JSON nincs megadva')
     def test_prototipussal_azonos(self):

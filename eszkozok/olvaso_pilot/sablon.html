@@ -1097,6 +1097,7 @@ ol.jel { gap: 12px; }
             a.fej.ossz ? el('span', { class: 'helyek', text: `${a.fej.ossz} előfordulás (BDB)` }) : null,
             el('span', { class: 'helyek', text: `${a.ref_ossz} igehely-hivatkozás a szócikkben` }))),
         resz('Alapjelentés és szófaj', el('p', { class: 'jsz' }, a.alap || '—')),
+        a.elotag ? resz('Zárójeles előszócikk (más gyök, nem ennek a Strong-számnak a jelentése)', el('details', null, el('summary', { class: 'meg', text: rovid(a.elotag, 120) }), el('p', { class: 'jsz', lang: 'hu', text: a.elotag }))) : null,
         a.nyelvi.length ? resz('Nyelvi háttér (etimológia, rokon nyelvek)', el('ul', { class: 'lista' }, a.nyelvi.map(x => el('li', { text: x })))) : null,
         a.alaktan ? resz('Alakok (alaktani apparátus)', el('details', null, el('summary', { class: 'meg', text: rovid(a.alaktan, 120) }), el('p', { class: 'jsz' }, a.alaktan))) : null,
         resz(a.torzsek.some(t => t.nev) ? 'Jelentésszerkezet törzsenként' : 'Jelentésszerkezet', ...torzsek),

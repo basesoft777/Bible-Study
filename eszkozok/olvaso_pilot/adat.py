@@ -245,7 +245,7 @@ for s in sorted(szavak):
         'bdb_hu': hu['szoveg'] if hu else None,
         'bdb_hu_meta': ('%s, %s' % (hu['modell'], hu['datum'])) if hu else None,
         'bdb_en': en if not hu else None,
-        'appar': szeletel(hu['szoveg'] if hu else en),
+        'appar': szeletel(hu['szoveg'] if hu else en, sz.get('szoto') or lem[0]),
         'bdb_alias': alias,
         'karoli': karoli_alak[s].most_common(8),
         'karoli_magas': sum(karoli_alak_magas[s].values()),

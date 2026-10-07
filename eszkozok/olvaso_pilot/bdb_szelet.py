@@ -83,12 +83,27 @@ def _jelentesek(regio):
     return ki
 
 
-def szeletel(szoveg):
+def szeletel(szoveg, lemma=''):
     if not szoveg:
         return None
     s = szoveg.replace('\n', ' ').strip()
     # „1.a beginning” → „1. a. beginning” (így a magyar „a” névelő nem téveszthető alpontnak)
     s = re.sub(r'(?<=[\s—])(\d{1,2})\.([a-l])\s', r'\1. \2. ', s)
+    # Zárójeles előszócikk: ha a sor „H… atiras [gyök] …” előszócikkel indul (a gyök zárójelben van), és később
+    # betűjellel nem zárójeles „I. <héber szó> …” homonima következik, a Strong-számhoz az „I.” homonima tartozik
+    # (pl. H6030: előbb az [עוּן] „lakni”, utána az „I. עָנָה felelni”). Az előszócikk szövege külön marad.
+    elotag = ''
+    mz = re.match(r"^(H\d+)\.\s+(\S+(?:\s')?)\s+\[", s)
+    if mz:
+        mh = re.search(r'(?<=[\s.;—])I\.\s+(?=[֐-׿]+\s+(?:verb|noun|adjective|adverb|ige|főnév|melléknév|határozószó)\b)', s)
+        if mh and lemma:
+            szo = re.match(r'[\u0590-\u05ff]+', s[mh.end():])
+            kons = lambda x: re.sub(r'[\u0591-\u05c7]', '', x)
+            if not szo or kons(szo.group(0)) != kons(lemma):
+                mh = None
+        if mh and mh.start() > 0:
+            elotag = s[len(mz.group(0)) - 1:mh.start()].strip(' —;')
+            s = '%s. %s %s' % (mz.group(1), mz.group(2), s[mh.start():])
     fej = {'strong': '', 'atiras': '', 'heber': '', 'ossz': ''}
     m = re.match(r"^(H\d+)\.\s+(\S+(?:\s')?)\s+(?:([IVX]+)\.\s+)?\[?([^\s\]_]+)\]?(?:_(\d+))?\s", s)
     if m:
@@ -141,6 +156,7 @@ def szeletel(szoveg):
         torzsek.append({'nev': '', 'db': '', 'jelentesek': _jelentesek(regio)})
     return {
         'fej': fej,
+        'elotag': elotag,
         'alap': alapjelentes,
         'nyelvi': nyelvi,
         'alaktan': alaktan,
