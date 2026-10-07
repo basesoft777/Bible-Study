@@ -8,9 +8,9 @@ modell: opus
 allapot: fut
 ag: claude/tanulmany-ellenorzes
 ad: a tanulmányokat CI (E20; az E21–E24 a T0 szerint az E13/E8/E9/E12 bővítéseként) és a fuggetlen-ellenor ügynök ellenőrzi; a régi tanulmányokról két auditjelentés készül
-kovetkezo: "T6 (zárás, utófeladat-javaslat): a DT-F37a szerint az öt ⚠️-vita-eset név szerint, a három választással és súlyossági sorrenddel a javító utófeladatba; a T6 naplójában eltérésként a T1 `ir`-listán kívüli átírása és az F37.3 commit-üzenet tesztszáma (28 helyett 27). Utána fuggetlen-ellenor, draft PR `[ELLENŐRZŐ]` előtaggal. Kész: T0–T5 (F37.1–F37.5), DT-F37a/b eldöntve (2026.10.07)."
+kovetkezo: "fuggetlen-ellenor (naplok/ELLENOR_TANULMANY_ELLENORZES.md), utána zárójelentés, push, draft PR `[ELLENŐRZŐ]` előtaggal. Kész: T0–T6 (F37.1–F37.7); DT-F37a/b eldöntve és alkalmazva; az utófeladat-javaslat (naplok/TANULMANY_ELLENORZES_utofeladat.md) /befogad-ra vár."
 olvas: [sablonok/, genezis/, ujszovetseg/, tematikus_lezart/, konkordancia/, adat/, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, CLAUDE.md]
-ir: [sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, MUNKAMENET.md, adat/SEMA.md, ATALAKITASI_TERV.md.md, Join_tabla_folyamat_magyarazat.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/T0_felmeres.md, naplok/TANULMANY_AUDIT.md, naplok/TANULMANY_AUDIT_ugynok.md]
+ir: [sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, MUNKAMENET.md, adat/SEMA.md, ATALAKITASI_TERV.md.md, Join_tabla_folyamat_magyarazat.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/T0_felmeres.md, naplok/TANULMANY_AUDIT.md, naplok/TANULMANY_AUDIT_ugynok.md, naplok/TANULMANY_ELLENORZES_utofeladat.md]
 fugg: [30, 32]
 ---
 # TANULMANY_ELLENORZES_BRIEF.md
