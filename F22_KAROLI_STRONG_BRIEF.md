@@ -8,7 +8,7 @@ modell: sonnet
 allapot: megallt
 ag: claude/f22-jozs
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
-kovetkezo: "Te: a Zsoltárok indítása (⛔ 2.; a következő könyv a Zsoltárok, utána Bír, DT-F22e 2026-10-07; előbb a versbeosztás kézi jóváhagyása (27 jelzett fejezet), a Zsolt 88/89/140/142 TAHOT-hiányának kezelése és pontossági szúrópróba az első költői könyvre). 1–5Móz és Józs kész (3Móz–Józs csak Sonnet, DT-F22c; a Józs PR #165 mergelve 2026-10-04; naplok/F22_Jozs_jelentes.md). Jób előtt: döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis."
+kovetkezo: "Te: a Zsoltárok indítása (⛔ 2.; a következő könyv a Zsoltárok, utána Bír, DT54 2026-10-07; előbb a versbeosztás kézi jóváhagyása (27 jelzett fejezet), a Zsolt 88/89/140/142 TAHOT-hiányának kezelése és pontossági szúrópróba az első költői könyvre). 1–5Móz és Józs kész (3Móz–Józs csak Sonnet, DT-F22c; a Józs PR #165 mergelve 2026-10-04; naplok/F22_Jozs_jelentes.md). Jób előtt: döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis."
 fugg: [21]
 nem_fugg: [48]
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/futtat.py, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/regi_arany_hibas.tsv, naplok/F21P_jelentes.md]
@@ -161,7 +161,7 @@ A jelentés 2. szakasza, csak szkriptkimenetből:
 | D10 | a 4Móz csak Sonnettel (DT-F22c lezárva, mint a 3Móz); a 4Móz 29:39 utolsó mondata = TAHOT 30:1: kézi 1:2 beolvasztás, `kezi` (nem `betoldas`); `f22/versosszevonas.tsv`; heti keret 85%-nál megállás a köteg végén (felhasználói döntés, 2026.10.02) | az 1:2 támogatás a párosításban nincs; a kézi jóváhagyás naplózva | 1:2 támogatás most (a Jób-döntésig halasztva) |
 | D11 | az 5Móz csak Sonnettel (DT-F22c lezárva); a detektor szerint tiszta (959/959, K-hiány 0, E-hiány 0), nincs kézi beolvasztás; heti keret 85%-nál megállás a köteg végén (felhasználói döntés, 2026.10.02) | ugyanaz a menet, mint a 3–4Mózesnél; a heti keret a menet elején 76% (a 70%-os szabály felett, a felhasználó tudatos jóváhagyásával) | várás a heti keret nullázódására |
 | D12 | a Józs csak Sonnettel (DT-F22c lezárva); a detektor szerint tiszta (658/658 vers, 24 fejezet, K-hiány 0, E-hiány 0), nincs kézi beolvasztás; heti keret 85%-nál megállás a köteg végén (felhasználói döntés, 2026.10.04, chat: „mehet a Józsué”) | ugyanaz a menet, mint a 3–5Mózesnél; a heti keret a menet elején 9% | két modell (D2) |
-| D13 | **DT-F22e** — a Józsué után a Zsoltárok következik, utána a kanonikus sorrend (Bír, …) (felhasználói döntés, 2026-10-07, (b)); a #38 7. adagja nem vár rá | a #38 BDB-adatblokkjának Károli-szakasza csak a kész könyvekből él; a 7. adagban a NINCS/kevés szócikkek előfordulása Zsolt 741 / Bír 187, a hátralévő sorban Zsolt 3 172 / Bír 1 029 (`naplok/F22_DT-F22e_zsoltarok_javaslat.md`) | (a) marad a Bírák; (c) nyereség szerinti sorrend Ézs-sel kezdve; (d) a 7. adag vár |
+| D13 | **DT54** — a Józsué után a Zsoltárok következik, utána a kanonikus sorrend (Bír, …) (felhasználói döntés, 2026-10-07, (b)); a #38 7. adagja nem vár rá | a #38 BDB-adatblokkjának Károli-szakasza csak a kész könyvekből él; a 7. adagban a NINCS/kevés szócikkek előfordulása Zsolt 741 / Bír 187, a hátralévő sorban Zsolt 3 172 / Bír 1 029 (`naplok/F22_DT54_zsoltarok_javaslat.md`) | (a) marad a Bírák; (c) nyereség szerinti sorrend Ézs-sel kezdve; (d) a 7. adag vár |
 
 ## Döntésnapló (a brief verziói)
 
@@ -169,7 +169,7 @@ A jelentés 2. szakasza, csak szkriptkimenetből:
 |---|---|---|---|
 | v1 | 2026.09.30 | első változat: teljes Biblia, három külső modell (A, B, döntőbíró C), Opus-arany, KJV-import, pilot ⛔ | a felhasználó kérése (teljes feldolgozás) |
 | v2 | 2026.10.01 | v1 (három külső modell, a teljes Biblia) felváltva v2-vel, a #21 pilot eredménye alapján | a pilot mért pontossága: Sonnet 97,3%, Gemini 95,3%, a pár `magas` linkjei 98,7% |
-| v2.7 | 2026.10.07 | a következő könyv a Zsoltárok (D13, DT-F22e); a `kovetkezo` frissítve | a felhasználó döntése |
+| v2.7 | 2026.10.07 | a következő könyv a Zsoltárok (D13, DT54); a `kovetkezo` frissítve | a felhasználó döntése |
 | v2.6 | 2026.10.04 | a Józs menete csak Sonnettel (D12); `tokenek.VERSBEOSZTAS_JOVAHAGYOTT` bővítve a Józsuéval | a felhasználó utasítása |
 | v2.5 | 2026.10.02 | az 5Móz menete csak Sonnettel (D11); `tokenek.VERSBEOSZTAS_JOVAHAGYOTT` bővítve az 5Mózessel | a felhasználó utasítása |
 | v2.4 | 2026.10.02 | a 4Móz menete csak Sonnettel (D10); kézi 1:2 beolvasztás (`f22/versosszevonas.tsv`); jóváhagyási napló | a felhasználó utasítása |

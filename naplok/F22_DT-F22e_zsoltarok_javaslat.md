@@ -1,4 +1,4 @@
-# DT-F22e — a #22 könyvsorrendje a #38 adatblokkja szerint: Zsoltárok a Bírák előtt?
+# DT54 — a #22 könyvsorrendje a #38 adatblokkja szerint: Zsoltárok a Bírák előtt?
 
 *2026-10-07 · kérdés a #22-höz (KAROLI_STRONG), a #38 (BDB_FORDITAS) és a #56 (BDB_ADATBLOKK) mérése alapján · mérő szkript: `naplok/F22_konyvsorrend_meres.py`*
 
