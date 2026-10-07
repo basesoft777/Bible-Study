@@ -21,7 +21,7 @@ kilepesi kod --teljes modban mindig 0.
 D8 (--valtozott + --diff-alap/--diff-fej modban): a HIBA csak a diff altal
 HOZZAADOTT/MODOSITOTT sorokra vonatkozik -- egy szabaly regi (a PR altal
 nem erintett) talalata csak JELENTES. Kivetel a SZ.FAJLSZINTU_SZABALYOK
-(E4, E5, E6, E7, E16, E19, E20, E25, E26): ezeknel a talalat nem egy konkret uj sorhoz kotheto,
+(E4, E5, E6, E7, E16, E19, E20, E25, E26, E27): ezeknel a talalat nem egy konkret uj sorhoz kotheto,
 tehat mindig a sajat szintjukon jelentkeznek. Ha --diff-alap/--diff-fej
 hianyzik --valtozott modban is, a regi (D8 elotti) viselkedes ervenyesul:
 a talalat fajlszinten a sajat szintjen jelentkezik -- ezt CI.2 mindig
@@ -80,6 +80,8 @@ def fut(valtozott_fajlok, teljes, diff_alap=None, diff_fej=None, pr_cim='', comm
     nyers['E5'] = SZ.e5_tartalomvesztes_or(diff_alap, diff_fej, commit_uzenet)
     # E26 (F30): veglegesszam az agon; push-esemenynel (main) nem ertelmezett
     nyers['E26'] = SZ.e26_vegleges_szam_agon(diff_alap, diff_fej, commit_uzenet, esemeny)
+    # E27 (F40): hivatkozas-ellenorzes; a diff-hatokort maga kezeli
+    nyers['E27'] = SZ.e27_hivatkozas(diff_alap, diff_fej, esemeny)
     # E16: push-esemenynel nincs PR-cim, ezert nem ertelmezett (a PR-en fut)
     if esemeny == 'push':
         nyers['E16'] = []
@@ -136,6 +138,20 @@ def jelentes_szoveg(eredmeny, teljes, minta_db=3, esemeny=''):
     return '\n'.join(sorok), hiba_van
 
 
+def annotaciok_kiirasa(talalatok):
+    """F40: az E27 talalatai GitHub-annotaciokent (stderr), sorszammal, hogy a
+    PR-ban a sorra mutassanak. Csak GitHub Actions alatt."""
+    if not os.environ.get('GITHUB_ACTIONS'):
+        return
+    for t in talalatok:
+        if t.szint not in ('HIBA', 'FIGYELMEZTETES'):
+            continue  # a regi (JELENTES) talalat nem annotal: csak a jelentesben
+        szint = 'error' if t.szint == 'HIBA' else 'warning'
+        sor = ',line=%d' % t.sor if t.sor else ''
+        uzenet = ('E27: %s' % t.reszlet).replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+        print('::%s file=%s%s::%s' % (szint, t.fajl, sor, uzenet), file=sys.stderr)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--valtozott', nargs='*', default=[])
@@ -180,6 +196,7 @@ def main():
     )
     szoveg, hiba_van = jelentes_szoveg(eredmeny, args.teljes, args.minta, args.esemeny)
     print(szoveg)
+    annotaciok_kiirasa(eredmeny.get('E27', []))
     return 1 if hiba_van else 0
 
 

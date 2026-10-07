@@ -5,11 +5,14 @@ kod: HIVATKOZAS_ELLENORZES
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: lezarva
 ad: a CI minden PR-nál jelzi, ha a FELADATOK.md vagy egy brief nem létező fájlra, ágra vagy commitra mutat, illetve ha egy PR áthelyez vagy töröl egy hivatkozott fájlt anélkül, hogy a mutatót frissítené
-kovetkezo: /kovetkezo
+ag: claude/hivatkozas-ellenorzes
+kovetkezo: merge a felhasználótól; az E27 első CI-futásán a B-ellenőrzés (ágak) Actions-tokenes működésének ellenőrzése
 olvas: [FELADATOK.md, NYITOTT_FELADATOK.md, CLAUDE.md, .github/workflows/, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, BRIEF_SABLON.md]
-ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/, .github/workflows/ellenorzes.yml, CLAUDE.md, naplok/ELLENOR_HIVATKOZAS.md]
+ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/, .github/workflows/ellenorzes.yml, CLAUDE.md, naplok/ELLENOR_HIVATKOZAS.md, F23_MOTIVUM_FORRAS_BRIEF.md, naplok/F40_zaras.md, naplok/ELLENOR_HIVATKOZAS_2.md, DONTESEK.md]
+pr: https://github.com/basesoft777/Bible-Study/pull/242
+lezarva_osszegzes: E27 hivatkozás-ellenőrzés (A–E, DT-F40a/b/c szerinti hatókör), 111 teszt OK, a main-en 0 HIBA / 3 FIGYELMEZTETÉS / 30 JELENTÉS; két ellenőri kör; B-ellenőrzés tokenje CI-n igazolandó
 fugg: [2]
 ---
 
@@ -36,6 +39,18 @@ A `FELADATOK.md` „Hol” oszlopa és a briefek fejlécei ágakra, fájlokra é
 - Az a sor, amelynek „Hol” cellája a „csak chatben” szöveget tartalmazza, nem ad A-hibát (a brief még nincs a repóban, ez szándékos állapot).
 - Az `ir` mező nem ellenőrzendő (a feladat még nem hozta létre a fájlokat).
 - Könyvtárra mutató útvonal (`/` végű) akkor jó, ha a könyvtár létezik.
+
+**Hatókör (DT-F40a, 2026.10.07):** a `FELADATOK.md` generált blokkjának nyitott sorain (a `kesz` blokkon kívüli blokkokon) a hiányzó fájl és a nem létező commit mindig HIBA (diff-hatókör nélkül), a nem létező ág FIGYELMEZTETÉS (a tervezett ág érvényes); a hibaüzenet a forrás-briefet nevezi meg. A brief `olvas`-mezőjének hiányzó fájlja mindig HIBA, kivéve ha egy `fugg`-beli feladat `ir` mezője fedi az útvonalat (egyezés, könyvtár-előtag vagy joker): akkor FIGYELMEZTETÉS. A `FELADATOK.md` Kész szakaszában a fájlhiány FIGYELMEZTETÉS (H2). A `NYITOTT_FELADATOK.md` és minden egyéb hely diff-hatókörű marad. A D-ág csak az `olvas` útvonalait ellenőrzi; a fejléc érvényessége (hibás YAML, lezáratlan fejléc) az E18-é (DT-F40b).
+
+**Az `olvas`-mező hiányzó fájlja (DT-F40c, 2026.10.07; felváltja a fenti „`fugg`-beli” megszorítást):** (a) lezárt (`allapot: lezarva`) brief `olvas`-mezőjében FIGYELMEZTETÉS (a lezárt feladat bemenete szándékosan eltűnhet; az F46 esete); (b) nyitott brief esetén FIGYELMEZTETÉS, ha *bármely nem lezárt* feladat `ir` mezője fedi (egyezés, könyvtár-előtag vagy joker; nem csak a `fugg`-beliek), egyébként HIBA. Az F23 `ir`-je az öt M0-kimenettel bővült (önálló fejléchiba-javítás); az F64 fejléce nem változott.
+
+**A szabály kódbeli kivételei (a briefben eredetileg nem szerepeltek, a DT-F40 ellenőri jelentés 4. pontja nyomán dokumentálva és tesztelve):**
+
+- Könyvtár nélküli rövid név (`ellenoriz.py`) akkor elfogadott, ha a repóban *bármely* helyen van azonos nevű fájl (a feladatkövető szövegei így hivatkoznak).
+- Kiterjesztés nélküli `a/b` alak csak akkor fájlútvonal, ha az első tagja létező repó-bejegyzés (különben pl. `szervezet/repo` téves jelzés lenne).
+- A `beerkezo/` és a `konkordancia/` (valamint a `.`-tal kezdődő és `node_modules`) könyvtárak briefjei nem tartoznak a D-ághoz (beérkezett vagy adat-jellegű anyag, nem feladatbrief).
+- URL-ek, `claude/…` ágnevek és a `*`/`<`/`{` jelű minták nem fájlútvonalak.
+- A `NYITOTT_FELADATOK.md:612/614` adatkészlet-belső rövidítései (`base/display/` stb.) NEM kapnak kivételt (DT-F40a (f)): a takarítási pontba mennek.
 
 ## 3. Hogyan
 
@@ -77,4 +92,9 @@ Olvasd el ezt a briefet, a `CLAUDE.md`-t és a meglévő CI-szabályok szkriptje
 | H3 | A „csak chatben” sor nem hiba | szándékos, átmeneti állapot; a takarítási pont kezeli | a sor hibát ad, amíg a brief nincs a repóban |
 | H4 | A main-en talált régi hibákat a menet nem javítja | a feladat a szabály, nem a takarítás; a javítás a takarítási ponthoz tartozik | a menet a szabály mellett a main-t is kitakarítja |
 | H5 | A szabály száma E25 | az E17–E24 foglalt (F15, F37) | E17 |
+| H1a | *(DT-F40a, 2026.10.07, a H1 pontosítása)* A „következő PR elkapja” a generált blokk nyitott sorain és a brief `olvas`-mezőjén diff-hatókör nélkül, mindig HIBA; a többi hely diff-hatókörű | a generált blokkot PR nem szerkeszti, a diff-hatókör ott soha nem hibázna | minden mindig HIBA (a régi hibák javítása külön tétel) |
+| H2a | *(DT-F40a (c), a H2 pontosítása)* A Kész szakaszban a fájlhiány is figyelmeztetés (nem csak az ág); az `olvas`-mező hiányzó fájlja figyelmeztetés, ha egy `fugg`-beli feladat `ir` mezője fedi | a kód a Kész szakaszban hibát adott, ellentétben a H2-vel | marad a hiba a Kész szakaszban |
+| H5a | A szabály száma E27 (a H5 elavult) | az E25 (döntés-átvezetés) és az E26 (végleges szám az ágon) foglalt | E25 |
+| H7 | *(DT-F40b)* A D-ág csak az `olvas` útvonalait ellenőrzi; a fejléc-érvényesség az E18-é | nincs kettős ellenőrzés; a végrehajtó a 4. pontnál nem állt meg, ez eltérés (naplok/F40_zaras.md) | a D-ág fejléc-ellenőrzése marad |
 | H6 | A menet nem írja a FELADATOK.md-t | a generált blokkot a D25/E18 szerint csak a main-Action írja | a saját sor frissítése a menet végén |
+| H2b | *(DT-F40c, 2026.10.07, a H2a pontosítása)* Lezárt brief `olvas`-mezőjének hiányzó fájlja FIGYELMEZTETÉS; nyitott briefnél a fedés bármely nem lezárt feladat `ir`-jéből elfogadott; az F23 `ir`-je az öt M0-kimenettel bővült | az F46 lezárt (bemenete szándékosan tűnt el), az F64 olvasta fájlt a #23 M0 állítja elő; a `fugg: [23]` körfüggés volna (DT-F32a) | az F64 `fugg: [23]`; a lezárt F46 módosítása |

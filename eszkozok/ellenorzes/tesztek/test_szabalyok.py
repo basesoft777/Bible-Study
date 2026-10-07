@@ -712,5 +712,356 @@ class E25Teszt(unittest.TestCase):
         self.assertEqual([x for x in t if x.szint == 'HIBA'], [])
 
 
+class E27Teszt(unittest.TestCase):
+    """F40: hivatkozas-ellenorzes (A-E), a DT-F40a/b dontes szerint. A
+    `_kilepes*` segedek a futtat.py VALODI kilepesi kodjat merik (main()),
+    nem a talalatok szintjebol szamolnak."""
+
+    # kezzel irt (nem generalt) feladatkovetes
+    JO = (
+        "# FELADATOK.md\n\n## 1. fazis\n"
+        "| 1 | Valami | `adat/SEMA.md` | `claude/nyitott-ag` | abc1234 |\n"
+        "\n## Kész (utolsó 2 hét)\n"
+        "| 2 | Régi | `claude/torolt-ag` |\n"
+    )
+
+    BRIEF1 = '---\nfeladat: 1\nir: [adat/SEMA.md]\nfugg: []\n---\n'
+
+    @staticmethod
+    def _gen(nyitott='', kesz=''):
+        """Generalt blokkos FELADATOK.md: a nyitott sor az 1. feladaté."""
+        return (
+            "# FELADATOK.md\n\n## 1. fázis — adatréteg\n\n"
+            "<!-- GENERÁLT-KEZDET: feladatok.py --cel fazis1 -->\n"
+            "| # | Feladat | Hol |\n|---|---|---|\n"
+            "| 1 | Valami | %s |\n"
+            "<!-- GENERÁLT-VÉGE: feladatok.py --cel fazis1 -->\n\n"
+            "## Kész (utolsó 2 hét)\n\n"
+            "<!-- GENERÁLT-KEZDET: feladatok.py --cel kesz -->\n"
+            "- Régi (#2): %s\n"
+            "<!-- GENERÁLT-VÉGE: feladatok.py --cel kesz -->\n" % (nyitott, kesz)
+        )
+
+    def setUp(self):
+        self._eredeti = (SZ._e27_tavoli_agak, SZ._e27_commit_van, SZ._e27_diff_statusz)
+        SZ._e27_tavoli_agak = lambda: {'main', 'claude/nyitott-ag'}
+        SZ._e27_commit_van = lambda az: az == 'abc1234'
+        SZ._e27_diff_statusz = lambda b, h: {}
+
+    def tearDown(self):
+        SZ._e27_tavoli_agak, SZ._e27_commit_van, SZ._e27_diff_statusz = self._eredeti
+
+    def _fixture(self, gy, feladatok, extra):
+        _ir(gy, 'adat/SEMA.md', 'x\n')
+        if feladatok.startswith('@CRLF@'):
+            with open(os.path.join(gy, 'FELADATOK.md'), 'wb') as f:
+                f.write(feladatok[6:].replace(chr(10), chr(13) + chr(10)).encode('utf-8'))
+        else:
+            _ir(gy, 'FELADATOK.md', feladatok)
+        for ut, tart in (extra or {}).items():
+            _ir(gy, ut, tart)
+
+    def _fut(self, feladatok, extra=None, **kw):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy, feladatok, extra)
+            kw.setdefault('base_ref', 'A')
+            kw.setdefault('head_ref', 'B')
+            return SZ.e27_hivatkozas(**kw)
+
+    def _kilepes(self, feladatok, extra=None, hozzaadott=None, diff=True):
+        """A futtat.py main() VALODI kilepesi kodja (--valtozott, push-esemeny).
+        `hozzaadott`: a PR altal hozzaadott sorok halmaza (None = nem allapithato
+        meg, a talalat a sajat szintjen marad)."""
+        import contextlib
+        import io
+        import futtat as FU
+        eredeti_hs = SZ._e27_hozzaadott_sorok
+        eredeti_argv = sys.argv
+        eredeti_root = FU.ROOT
+        SZ._e27_hozzaadott_sorok = lambda b, h, ut: hozzaadott
+        try:
+            with _IdeiglenesGyoker() as gy:
+                self._fixture(gy, feladatok, extra)
+                FU.ROOT = gy
+                sys.argv = ['futtat.py', '--valtozott', 'FELADATOK.md', '--esemeny', 'push']
+                if diff:
+                    sys.argv += ['--diff-alap', 'A', '--diff-fej', 'B']
+                with contextlib.redirect_stdout(io.StringIO()):
+                    return FU.main()
+        finally:
+            SZ._e27_hozzaadott_sorok = eredeti_hs
+            sys.argv = eredeti_argv
+            FU.ROOT = eredeti_root
+
+    # --- jo eset, "csak chatben" ---------------------------------------
+
+    def test_jo_feladatkovetes_figyelmeztetes_a_keszben_es_a_kilepes_0(self):
+        t = self._fut(self.JO)
+        self.assertEqual([(x.szint, x.sor) for x in t], [('FIGYELMEZTETES', 7)])
+        self.assertEqual(self._kilepes(self.JO), 0)
+
+    def test_csak_chatben_sor_nem_ad_a_hibat_a_generalt_blokkban_sem(self):
+        f = self._gen(nyitott='`F99_X_BRIEF.md` (csak chatben)')
+        self.assertEqual([x for x in self._fut(f, {'F01_X_BRIEF.md': self.BRIEF1}) if x.szint == 'HIBA'], [])
+        self.assertEqual(self._kilepes(f, {'F01_X_BRIEF.md': self.BRIEF1}, hozzaadott=set()), 0)
+
+    # --- DT-F40a (a): a FELADATOK.md generalt blokkjanak nyitott sorai ----
+
+    def test_a_generalt_nyitott_sor_hianyzo_fajl_mindig_hiba_es_nevezi_a_briefet(self):
+        f = self._gen(nyitott='`adat/nincs.tsv`')
+        for kw in ({'hozzaadott': set()}, {'hozzaadott': None}):
+            self.assertEqual(self._kilepes(f, {'F01_X_BRIEF.md': self.BRIEF1}, **kw), 1)
+        # diff nelkul (kezi futas) is HIBA, a PR altal nem erintett soron is
+        t = self._fut(f, {'F01_X_BRIEF.md': self.BRIEF1}, base_ref=None, head_ref=None)
+        h = [x for x in t if x.szint == 'HIBA']
+        self.assertEqual(len(h), 1)
+        self.assertIn('adat/nincs.tsv', h[0].reszlet)
+        self.assertIn('F01_X_BRIEF.md', h[0].reszlet)      # DT-F40a (e)
+        self.assertEqual(h[0].fajl, 'FELADATOK.md')
+
+    def test_a_generalt_nyitott_sor_hianyzo_commit_mindig_hiba(self):
+        f = self._gen(nyitott='deadbe1')
+        t = self._fut(f, {'F01_X_BRIEF.md': self.BRIEF1})
+        self.assertEqual([x.szint for x in t], ['HIBA'])
+        self.assertIn('F01_X_BRIEF.md', t[0].reszlet)
+        self.assertEqual(self._kilepes(f, {'F01_X_BRIEF.md': self.BRIEF1}, hozzaadott=set()), 1)
+
+    def test_a_generalt_nyitott_sor_letezo_commit_nem_hiba(self):
+        t = self._fut(self._gen(nyitott='abc1234'), {'F01_X_BRIEF.md': self.BRIEF1})
+        self.assertEqual(t, [])
+
+    def test_a_generalt_nyitott_sor_nem_letezo_ag_csak_figyelmeztetes(self):
+        # a tervezett (meg nem letezo) ag ervenyes, pl. claude/f38-adag7
+        f = self._gen(nyitott='`claude/f38-adag7`')
+        t = self._fut(f, {'F01_X_BRIEF.md': self.BRIEF1})
+        self.assertEqual([x.szint for x in t], ['FIGYELMEZTETES'])
+        self.assertIn('F01_X_BRIEF.md', t[0].reszlet)
+        self.assertEqual(self._kilepes(f, {'F01_X_BRIEF.md': self.BRIEF1}, hozzaadott=set()), 0)
+
+    def test_a_generalt_sor_szama_nem_azonosit_briefet(self):
+        t = self._fut(self._gen(nyitott='`adat/nincs.tsv`'))      # nincs brief
+        self.assertEqual([x.szint for x in t], ['HIBA'])
+        self.assertIn('nem azonosít briefet', t[0].reszlet)
+
+    # --- DT-F40a (c): a Kesz szakasz --------------------------------------
+
+    def test_kesz_szakasz_fajlhiany_figyelmeztetes_a_generalt_blokkban(self):
+        f = self._gen(kesz='`adat/nincs.tsv`')
+        t = self._fut(f, {'F01_X_BRIEF.md': self.BRIEF1})
+        self.assertEqual([(x.szint, x.fajl) for x in t], [('FIGYELMEZTETES', 'FELADATOK.md')])
+        self.assertEqual(self._kilepes(f, {'F01_X_BRIEF.md': self.BRIEF1}, hozzaadott=set()), 0)
+
+    def test_kesz_szakasz_torolt_ag_figyelmeztetes(self):
+        f = self._gen(kesz='`claude/torolt-ag`')
+        t = self._fut(f, {'F01_X_BRIEF.md': self.BRIEF1})
+        self.assertEqual([x.szint for x in t], ['FIGYELMEZTETES'])
+        self.assertEqual(self._kilepes(f, {'F01_X_BRIEF.md': self.BRIEF1}), 0)
+
+    def test_kesz_szakasz_kezi_sorban_a_fajlhiany_figyelmeztetes(self):
+        t = self._fut("## Kész\n| 1 | `adat/nincs.tsv` |\n")
+        self.assertEqual([x.szint for x in t], ['FIGYELMEZTETES'])
+
+    # --- DT-F40a (d): minden egyeb diff-hatokoru -------------------------
+
+    def test_a_hianyzo_fajl_kezi_sorban_hiba(self):
+        f = self.JO.replace("\n## Kész", "| 3 | `adat/nincs.tsv` |\n\n## Kész")
+        t = self._fut(f)
+        h = [x for x in t if x.szint == 'HIBA']
+        self.assertEqual(len(h), 1)
+        self.assertIn('adat/nincs.tsv', h[0].reszlet)
+        self.assertEqual(self._kilepes(f), 1)
+
+    def test_torolt_ag_kezi_nyitott_sorban_hiba(self):
+        f = "| 1 | `claude/torolt-ag` |\n"
+        self.assertEqual([x.szint for x in self._fut(f)], ['HIBA'])
+        self.assertEqual(self._kilepes(f), 1)
+
+    def test_torolt_ag_a_kesz_szakaszban_figyelmeztetes(self):
+        f = "## Kész\n| 1 | `claude/torolt-ag` |\n"
+        self.assertEqual([x.szint for x in self._fut(f)], ['FIGYELMEZTETES'])
+        self.assertEqual(self._kilepes(f), 0)
+
+    def test_nem_elerheto_tavoli_ag_nem_hiba(self):
+        SZ._e27_tavoli_agak = lambda: None
+        f = "| 1 | `claude/valami` |\n"
+        self.assertEqual([x.szint for x in self._fut(f)], ['FIGYELMEZTETES'])
+        self.assertEqual(self._kilepes(f), 0)
+
+    def test_c_hianyzo_commit_kezi_sorban_figyelmeztetes(self):
+        t = self._fut("| 1 | deadbe1 |\n")
+        self.assertEqual([x.szint for x in t], ['FIGYELMEZTETES'])
+        self.assertIn('deadbe1', t[0].reszlet)
+        self.assertEqual(self._kilepes("| 1 | deadbe1 |\n"), 0)
+
+    def test_d8_a_regi_hibas_kezi_sor_csak_jelentes(self):
+        # a PR nem erinti a hibas sort: JELENTES (nem blokkol)
+        eredeti = SZ._e27_hozzaadott_sorok
+        SZ._e27_hozzaadott_sorok = lambda b, h, ut: set()
+        try:
+            t = self._fut("| 1 | `adat/nincs.tsv` |\n", base_ref='A', head_ref='B')
+        finally:
+            SZ._e27_hozzaadott_sorok = eredeti
+        self.assertEqual([x.szint for x in t], ['JELENTES'])
+        self.assertEqual(self._kilepes("| 1 | `adat/nincs.tsv` |\n", hozzaadott=set()), 0)
+
+    def test_nyitott_feladatok_md_diff_hatokoru(self):
+        # NYITOTT_FELADATOK.md: a PR altal hozzaadott soron HIBA, a regi soron JELENTES
+        sor = "- hivatkozas: `adat/nincs.tsv`\n"
+        with _IdeiglenesGyoker() as gy:
+            _ir(gy, 'NYITOTT_FELADATOK.md', sor)
+            eredeti = SZ._e27_hozzaadott_sorok
+            try:
+                SZ._e27_hozzaadott_sorok = lambda b, h, ut: {1}
+                uj = SZ.e27_hivatkozas('A', 'B')
+                SZ._e27_hozzaadott_sorok = lambda b, h, ut: set()
+                regi = SZ.e27_hivatkozas('A', 'B')
+            finally:
+                SZ._e27_hozzaadott_sorok = eredeti
+        self.assertEqual([x.szint for x in uj], ['HIBA'])
+        self.assertEqual([x.szint for x in regi], ['JELENTES'])
+
+    def test_diff_nelkul_a_kezi_sor_csak_jelentes(self):
+        t = self._fut("| 1 | `adat/nincs.tsv` |\n", base_ref=None, head_ref=None)
+        self.assertEqual([x.szint for x in t], ['JELENTES'])
+        self.assertEqual(self._kilepes("| 1 | `adat/nincs.tsv` |\n", diff=False), 0)
+
+    # --- DT-F40a (b), DT-F40b: a brief `olvas` mezoje --------------------
+
+    def test_olvas_hianyzo_fajl_mindig_hiba(self):
+        b = '---\nfeladat: 2\nolvas: [adat/SEMA.md, adat/nincs.md]\nir: [uj/fajl.md]\nfugg: []\n---\n'
+        for diff in (True, False):
+            t = self._fut('x\n', {'F02_X_BRIEF.md': b}, **({} if diff else {'base_ref': None, 'head_ref': None}))
+            self.assertEqual([x.szint for x in t], ['HIBA'])    # az `ir` nem ellenorzott
+            self.assertIn('adat/nincs.md', t[0].reszlet)
+            self.assertEqual(t[0].sor, 3)
+        self.assertEqual(self._kilepes('x\n', {'F02_X_BRIEF.md': b}, hozzaadott=set()), 1)
+
+    def test_olvas_hianyzo_fajl_figyelmeztetes_ha_fugg_feladat_ir_mezoje_fedi(self):
+        elo = '---\nfeladat: 5\nir: [naplok/audit.md]\nfugg: []\n---\n'
+        b = '---\nfeladat: 6\nolvas: [naplok/audit.md]\nfugg: [5]\n---\n'
+        extra = {'F05_ELO_BRIEF.md': elo, 'F06_UTO_BRIEF.md': b}
+        t = self._fut('x\n', extra)
+        self.assertEqual([(x.szint, x.fajl) for x in t], [('FIGYELMEZTETES', 'F06_UTO_BRIEF.md')])
+        self.assertIn('F05_ELO_BRIEF.md', t[0].reszlet)
+        self.assertEqual(self._kilepes('x\n', extra), 0)
+
+    def test_olvas_konyvtar_elotag_is_fedi(self):
+        elo = '---\nfeladat: 5\nir: [naplok/]\nfugg: []\n---\n'
+        b = '---\nfeladat: 6\nolvas: [naplok/audit.md]\nfugg: [5]\n---\n'
+        t = self._fut('x\n', {'F05_ELO_BRIEF.md': elo, 'F06_UTO_BRIEF.md': b})
+        self.assertEqual([x.szint for x in t], ['FIGYELMEZTETES'])
+
+    def test_olvas_figyelmeztetes_ha_barmely_nem_lezart_feladat_ir_mezoje_fedi(self):
+        # DT-F40c (b): a fedo feladat nem kell, hogy a `fugg`-ben legyen
+        elo = '---\nfeladat: 5\nallapot: nem_indult\nir: [naplok/audit.md]\nfugg: []\n---\n'
+        b = '---\nfeladat: 6\nallapot: nem_indult\nolvas: [naplok/audit.md]\nfugg: [7]\n---\n'
+        extra = {'F05_ELO_BRIEF.md': elo, 'F06_UTO_BRIEF.md': b}
+        t = self._fut('x\n', extra)
+        self.assertEqual([(x.szint, x.fajl) for x in t], [('FIGYELMEZTETES', 'F06_UTO_BRIEF.md')])
+        self.assertEqual(self._kilepes('x\n', extra), 0)
+
+    def test_olvas_hiba_ha_csak_lezart_feladat_ir_mezoje_fedi(self):
+        # DT-F40c (b): a lezart feladat mar nem allitja elo a fajlt
+        elo = '---\nfeladat: 5\nallapot: lezarva\nir: [naplok/audit.md]\nfugg: []\n---\n'
+        b = '---\nfeladat: 6\nallapot: nem_indult\nolvas: [naplok/audit.md]\nfugg: [5]\n---\n'
+        extra = {'F05_ELO_BRIEF.md': elo, 'F06_UTO_BRIEF.md': b}
+        self.assertEqual([x.szint for x in self._fut('x\n', extra)], ['HIBA'])
+        self.assertEqual(self._kilepes('x\n', extra), 1)
+
+    def test_olvas_jokeres_ir_is_fedi_nyitott_briefnel(self):
+        elo = '---\nfeladat: 5\nallapot: fut\nir: [naplok/MF_*.tsv]\nfugg: []\n---\n'
+        b = '---\nfeladat: 6\nolvas: [naplok/MF_x.tsv]\n---\n'
+        t = self._fut('x\n', {'F05_ELO_BRIEF.md': elo, 'F06_UTO_BRIEF.md': b})
+        self.assertEqual([x.szint for x in t], ['FIGYELMEZTETES'])
+
+    def test_olvas_lezart_brief_hianyzo_fajl_figyelmeztetes(self):
+        # DT-F40c (a): az F46 esete, a fedes nem szamit
+        b = '---\nfeladat: 6\nallapot: lezarva\nolvas: [adat/SEMA.md, beerkezo/eltunt.md]\nir: [uj/x.md]\nfugg: [4]\n---\n'
+        for diff in (True, False):
+            t = self._fut('x\n', {'F06_X_BRIEF.md': b}, **({} if diff else {'base_ref': None, 'head_ref': None}))
+            self.assertEqual([x.szint for x in t], ['FIGYELMEZTETES'])
+            self.assertIn('beerkezo/eltunt.md', t[0].reszlet)
+        self.assertEqual(self._kilepes('x\n', {'F06_X_BRIEF.md': b}), 0)
+        self.assertEqual(self._kilepes('x\n', {'F06_X_BRIEF.md': b}, hozzaadott=set()), 0)
+
+    def test_olvas_nyitott_brief_fedetlen_hianyzo_fajl_hiba_kilepes_1(self):
+        b = '---\nfeladat: 6\nallapot: fut\nolvas: [beerkezo/eltunt.md]\n---\n'
+        self.assertEqual([x.szint for x in self._fut('x\n', {'F06_X_BRIEF.md': b})], ['HIBA'])
+        self.assertEqual(self._kilepes('x\n', {'F06_X_BRIEF.md': b}), 1)
+
+    def test_olvas_hiba_ha_a_fugg_feladat_ir_mezeje_nem_fedi(self):
+        elo = '---\nfeladat: 5\nir: [mas/fajl.md]\nfugg: []\n---\n'
+        b = '---\nfeladat: 6\nolvas: [naplok/audit.md]\nfugg: [5]\n---\n'
+        t = self._fut('x\n', {'F05_ELO_BRIEF.md': elo, 'F06_UTO_BRIEF.md': b})
+        self.assertEqual([x.szint for x in t], ['HIBA'])
+
+    def test_hibas_yaml_fejlec_nem_e27_dolga_nincs_talalat_es_kilepes_0(self):
+        # DT-F40b: lezaratlan fejlec / lezaratlan lista: az E18 jelez, az E27 hallgat
+        for tartalom in ('---\nfeladat: 1\nolvas: [adat/SEMA.md\n---\n',
+                         '---\nfeladat: 1\nolvas: [adat/SEMA.md]\n(nincs zaro)\n'):
+            t = self._fut('x\n', {'F01_X_BRIEF.md': tartalom})
+            self.assertEqual(t, [])
+            self.assertEqual(self._kilepes('x\n', {'F01_X_BRIEF.md': tartalom}), 0)
+
+    def test_skalar_olvas_mezo_is_ellenorzott(self):
+        t = self._fut('x\n', {'F01_X_BRIEF.md': '---\nfeladat: 1\nolvas: adat/nincs.md\n---\n'})
+        self.assertEqual([x.szint for x in t], ['HIBA'])
+
+    # --- E: torles/atnevezes ----------------------------------------------
+
+    def test_e_torolt_fajl_mutato_nelkul_hiba(self):
+        SZ._e27_diff_statusz = lambda b, h: {'adat/SEMA.md': 'D'}
+        f = "| 1 | `adat/SEMA.md` |\n"
+        t = self._fut(f, base_ref='A', head_ref='B')
+        self.assertEqual([x.szint for x in t], ['HIBA'])
+        self.assertIn('ugyanabban a commitban', t[0].reszlet)
+        self.assertEqual(self._kilepes(f), 1)
+
+    def test_e_atnevezett_fajl_olvas_mezoben_hiba(self):
+        SZ._e27_diff_statusz = lambda b, h: {'adat/SEMA.md': 'R'}
+        b = {'F01_X_BRIEF.md': '---\nfeladat: 1\nolvas: [adat/SEMA.md]\n---\n'}
+        t = self._fut('x\n', b, base_ref='A', head_ref='B')
+        self.assertEqual([x.szint for x in t], ['HIBA'])
+        self.assertEqual(self._kilepes('x\n', b), 1)
+
+    # --- CRLF, kivetelek (a brief 2. pontja es naplok/F40_zaras.md) ---------
+
+    def test_crlf_tures(self):
+        t = self._fut('@CRLF@' + self.JO)
+        self.assertEqual([(x.szint, x.sor) for x in t], [('FIGYELMEZTETES', 7)])
+
+    def test_kivetel_rovid_alapnev_barmely_azonos_nevu_fajllal(self):
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy, "| 1 | `SEMA.md` `nincs_ilyen.md` |\n", {'mappa/almappa/mas.py': 'x\n'})
+            t = SZ.e27_hivatkozas('A', 'B')
+        self.assertEqual(len(t), 1)
+        self.assertIn('nincs_ilyen.md', t[0].reszlet)      # SEMA.md (adat/SEMA.md) elfogadott
+        with _IdeiglenesGyoker() as gy:
+            self._fixture(gy, "| 1 | `mas.py` |\n", {'mappa/almappa/mas.py': 'x\n'})
+            self.assertEqual(SZ.e27_hivatkozas('A', 'B'), [])   # mas helyen levo azonos nevu fajl
+
+    def test_kivetel_kiterjesztes_nelkuli_a_b_csak_letezo_elso_taggal_utvonal(self):
+        # `szervezet/repo` (nem letezo elso tag): nem fajlutvonal; `adat/nincs` (letezo `adat/`): az
+        self.assertEqual(self._fut("| 1 | `szervezet/repo` |\n"), [])
+        t = self._fut("| 1 | `adat/nincs` |\n")
+        self.assertEqual([x.szint for x in t], ['HIBA'])
+
+    def test_kivetel_url_es_ag_nem_fajlutvonal(self):
+        t = self._fut("| 1 | `https://x.y/z` `claude/nyitott-ag` `a/b` |\n")
+        self.assertEqual(t, [])
+
+    def test_kivetel_beerkezo_es_konkordancia_briefjei_nem_szamitanak_a_d_agban(self):
+        rossz = '---\nfeladat: 9\nolvas: [adat/nincs.md]\n---\n'
+        t = self._fut('x\n', {'beerkezo/F09_X_BRIEF.md': rossz, 'konkordancia/F09_Y_BRIEF.md': rossz})
+        self.assertEqual(t, [])
+        t = self._fut('x\n', {'tema/F09_X_BRIEF.md': rossz})
+        self.assertEqual([x.szint for x in t], ['HIBA'])    # mas mappa: ellenorzott
+
+    def test_valodi_repo_nincs_kivetel(self):
+        # a repo tenyleges allapota: lefut, minden talalat E27
+        t = SZ.e27_hivatkozas()
+        self.assertTrue(all(x.szabaly == 'E27' for x in t))
+
+
 if __name__ == '__main__':
     unittest.main()

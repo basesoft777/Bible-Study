@@ -186,6 +186,8 @@ Táblát író szkript írás előtt vesse össze a sorokat az eredetivel, és e
 **Git:** munkaág `main`; commit-üzenet magyarul, tétel-azonosítóval kezdve (`F1.4: …`);
 push csak kérésre.
 
+Ha egy commit fájlt áthelyez, átnevez vagy töröl, ugyanabban a commitban frissíti a rá mutató hivatkozásokat a `FELADATOK.md`-ben, a `NYITOTT_FELADATOK.md`-ben és a briefek `olvas` mezőjében. *(CI: E27, hivatkozás-ellenőrzés.)*
+
 Új döntés vagy nyitott tétel az ágon csak helyőrzővel kerül be (`DT-F<nn>`, `N-F<nn>`, több esetén `a`, `b` betűvel). Végleges számot a main-en a `szamkiosztas` Action ad merge után. Végleges `DT<n>`/`N<n>` számot ágon ne írj, a CI elutasítja.
 
 Minden menet a saját briefje fejlécét frissíti; a `FELADATOK.md` generált blokkját csak a
