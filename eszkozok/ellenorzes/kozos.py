@@ -40,7 +40,30 @@ KIZART_UTVONAL_RESZLETEK = (
 KIZART_NAPLO_MINTAK = (
     re.compile(r'^naplok/CI_.*\.md$'),
     re.compile(r'^naplok/ELLENOR_.*\.md$'),
+    # F37 T3/T5: a tanulmany-audit sajat jelentesei (a talalt sorokat idezik)
+    re.compile(r'^naplok/TANULMANY_AUDIT.*\.md$'),
 )
+
+# F37 (DT-F37-1): "tanulmany" = igeszakasz-tanulmany (a regi "bovitett"),
+# a Tanulmany sablon szerint. A fajlnev-utotag a regi fajloknal `_bovitett`,
+# az uj nev `_tanulmany` is elfogadott. A naplok/ alatti fajl (pl. a
+# kereszthivatkozas-naplo) es a generalt konyvtarak nem tanulmanyfajlok.
+TANULMANY_UTOTAGOK = ('_bovitett.md', '_tanulmany.md')
+TANULMANY_SABLON = 'sablonok/2_PaRDeS_bovitett_sablon.md'
+
+
+def tanulmany_fajl_e(relut):
+    relut = relut.replace('\\', '/')
+    if not relut.endswith(TANULMANY_UTOTAGOK):
+        return False
+    if '/naplok/' in relut or relut.startswith('naplok/'):
+        return False
+    # a tematikus tanulmany (tematikus_lezart/) es a melyelemzes sajat
+    # sablont kovet; a `_tanulmany` szo ott nem igeszakasz-tanulmanyt jelol
+    if relut.startswith(('sablonok/', 'lexikon/', 'motivumlog/', 'motivumok/',
+                         'tematikus_lezart/', 'melyelemzesek/')):
+        return False
+    return not kizart_e(relut)
 
 # A generalt (kimenet-reteg) konyvtarak/fajlmintak -- CLAUDE.md "Retegek"
 # szakasz: "lexikon/[ID]_TUDOMANYOS.md", "lexikon/[ID]_TORZSCIKK.md" kezzel
