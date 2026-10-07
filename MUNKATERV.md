@@ -70,7 +70,7 @@ Minden nyitott FELADATOK-sor (státuszok és függések frissítve 2026-10-06, #
 
 | # | feladat | státusz | függ | terv | kapcsolat |
 | --- | --- | --- | --- | --- | --- |
-| #22 | Károli–Strong párosítás könyvenként | ⛔ megállt (1–5Móz és Józs kész, a Józs PR #165 mergelve; a következő könyv a Bírák: előbb versbeosztás-detektor és kézi jóváhagyás) | #21 ✅ | **bemenet** | KAROLI\_ELLENORZES (#65) könyvenként újrafut rá; SQLITE\_EPIT, OLVASOI\_KONKORDANCIA forrása; 13. szerep (DT-M4) |
+| #22 | Károli–Strong párosítás könyvenként | ⛔ megállt (1–5Móz és Józs kész, a Józs PR #165 mergelve; a következő könyv a Zsoltárok, utána Bír (DT-F22e): előbb versbeosztás-jóváhagyás és pontossági szúrópróba) | #21 ✅ | **bemenet** | KAROLI\_ELLENORZES (#65) könyvenként újrafut rá; SQLITE\_EPIT, OLVASOI\_KONKORDANCIA forrása; 13. szerep (DT-M4) |
 | #38 | BDB teljes magyar fordítása | ▶ fut (5 adag kész; a 6. adag a #56 adatblokkjával, DT-F38i 🟢) | #34 ✅, #56 ✅ | **módosul** | a 6. adagtól a #56 BDB\_ADATBLOKK adatblokkjával; javító menet a teljes #22 után |
 | #43 | LXX-döntések ellenőrzése lxx\_bridge-dzsel | ✅ kész (2026-10-04, PR #167; DT-F43: a bridge nem független forrás, csak tájékoztató) | #8 ✅ | **bemenet** | a 26-os pont, a szó-lap LXX-blokkja |
 | #44 | Licenc-utókövetés: Károli 1908, openbible.info | ✅ kész (2026-10-05, PR #205; a Károli-rész tárgytalan, DT-F33e; a `karoli_bible_hu` elvetve, DT31; nyitott: az openbible-import külön feladat, DT34, és a DT-M5) | #33 ✅, #42 ✅ | **bemenet** | az OLVASOI\_KONKORDANCIA publikálási előfeltétele teljesült |
@@ -149,7 +149,7 @@ A feladatok négy hullámban futnak; egy hullámon belül párhuzamosíthatók (
 
 A hullámoktól függetlenül, folyamat-feladatként fut: #50 CI\_JAVITO\_KOR és #52 TERV\_SZINKRON (ismétlődő, a briefje 2. pontja szerinti eseményeknél); a #51 KONZISZTENCIA kész (napi helyi ütemezés). A tervet nem érintő önálló feladatok: #54, #55, #64 (a #23 M1 bemenete, DT-F32a), #66; a tervhez bemenetként kapcsolódik a #59 SZOSZEDET, a #60 OLVASOI\_PILOT és a #61 LEKERDEZ\_NAPLO (DT-M3).
 
-Közben folyamatosan: **#22** könyvenként (1–5Móz és Józs kész; ⛔ a felhasználónál a következő könyvig, a Bírákig) és **#38** adagonként — a 2. hullámtól a #65 minden új Károli–Strong könyvre újrafuttatható, a #38 adagjai az 1. hullámtól (a #56 után) a #56 blokkjával mennek.
+Közben folyamatosan: **#22** könyvenként (1–5Móz és Józs kész; ⛔ a felhasználónál a következő könyvig, a Zsoltárokig, DT-F22e) és **#38** adagonként — a 2. hullámtól a #65 minden új Károli–Strong könyvre újrafuttatható, a #38 adagjai az 1. hullámtól (a #56 után) a #56 blokkjával mennek.
 
 ```
 1. hullám  ─▶  2. hullám  ─▶  3. hullám  ─▶  4. hullám  ─▶  #23 → #9/#10 → #11 → #25b
