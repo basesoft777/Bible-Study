@@ -1,6 +1,6 @@
 # F37 T6 — utófeladat-javaslat a régi tanulmányok javítására
 
-*2026.10.07 · `claude/tanulmany-ellenorzes` · forrás: `naplok/TANULMANY_AUDIT.md` (gépi, jelentés mód), `naplok/TANULMANY_AUDIT_ugynok.md` (ügynöki), `DONTESEK.md` DT-F37a/b. **Ez javaslat:** új sor a `FELADATOK.md`-be csak a `/befogad` paranccsal, a felhasználó jóváhagyásával kerül (D22, brief T6).*
+*2026.10.07 · `claude/tanulmany-ellenorzes` · forrás: `naplok/TANULMANY_AUDIT.md` (gépi, jelentés mód), `naplok/TANULMANY_AUDIT_ugynok.md` (ügynöki), `DONTESEK.md` DT61/b. **Ez javaslat:** új sor a `FELADATOK.md`-be csak a `/befogad` paranccsal, a felhasználó jóváhagyásával kerül (D22, brief T6).*
 
 ## Kiindulás
 
@@ -17,27 +17,27 @@
 
 ## A javaslat — tartalmi rész (tanulmányonként egy menet, modell: opus)
 
-**Nyitó ⛔ (DT-F37a feltétele):** a feladat elején a felhasználó tételenként dönt az öt ⚠️-vita-esetről, mindegyiknél a három választás egyikével: **elfogadott projekt-olvasat** (marad, jelölve) / **feltételessé teendő** / **a Sod-ból törlendő**. Súlyossági sorrend és előzetes értékelés:
+**Nyitó ⛔ (DT61 feltétele):** a feladat elején a felhasználó tételenként dönt az öt ⚠️-vita-esetről, mindegyiknél a három választás egyikével: **elfogadott projekt-olvasat** (marad, jelölve) / **feltételessé teendő** / **a Sod-ból törlendő**. Súlyossági sorrend és előzetes értékelés:
 
 | # | Tanulmány | Vita | Előzetes értékelés |
 |---|---|---|---|
 | 1 | `1Moz_9v1-17` | *kesét* = hadi íj | a legsúlyosabb: a Remez és a Sod feltételesség nélkül épül a vita egyik oldalára |
 | 2 | `1Moz_15` | 15:6 imputáció | kimondott projekt-munkahipotézis; valószínűleg elég jelölni |
-| 3 | `1Moz_1v1` | *creatio ex nihilo* | saját lexikai érv: ha van proveniencia-sora, a DT-F37b szerint nem forrás nélküli lezárás — ellenőrizendő |
+| 3 | `1Moz_1v1` | *creatio ex nihilo* | saját lexikai érv: ha van proveniencia-sora, a DT62 szerint nem forrás nélküli lezárás — ellenőrizendő |
 | 4 | `1Moz_1v2-2v3` | Isten képmása | mint a 3.: a „Lexikai megerősítés … ÚJ” proveniencia-sora ellenőrizendő |
-| 5 | `1Moz_14` | Melkizedek | a Sod feltételesnek jelöli („Ha …”) — a DT-F37b szerint nem ⛔; tájékoztató sor |
+| 5 | `1Moz_14` | Melkizedek | a Sod feltételesnek jelöli („Ha …”) — a DT62 szerint nem ⛔; tájékoztató sor |
 
 **Menetsorrend** (a leletek súlya szerint; minden menet a teljes tanulmányt olvassa, K1):
 
 | Sor | Tanulmány | Javítandó |
 |---|---|---|
-| 1 | `1Moz_9v1-17` | ⚠️-vita (DT-F37a 1.), Sod (feltételesség), ⚠️ képviselő RÉSZBEN |
+| 1 | `1Moz_9v1-17` | ⚠️-vita (DT61 1.), Sod (feltételesség), ⚠️ képviselő RÉSZBEN |
 | 2 | `1Moz_14` | Strong: 14:22 H5375 → H7311 (הֲרִמֹתִי); Sod RÉSZBEN (feltételes, marad) |
 | 3 | `1Moz_4v1-24` | Strong: 4:2 H1892 → H1893 (személynév; a *hevel*-szójáték értelmezésként marad, a Strong-adat javul); ⚠️ Nód „mások”; angol *later* a Sod-ban |
-| 4 | `1Moz_1v1` | Strong: 1:1 אֵת = H0853; két csonka ⚠️-hivatkozás (32., 177. sor); ⚠️-vita (DT-F37a 3.); Sod: az idő teremtése |
+| 4 | `1Moz_1v1` | Strong: 1:1 אֵת = H0853; két csonka ⚠️-hivatkozás (32., 177. sor); ⚠️-vita (DT61 3.); Sod: az idő teremtése |
 | 5 | `1Moz_6v9-22` | Strong: 6:17 H5315 nincs a versben (*rúach chajjim*) |
-| 6 | `1Moz_15` | ⚠️-vita (DT-F37a 2.); Sod: Mt 27:45 párhuzam |
-| 7 | `1Moz_1v2-2v3` | ⚠️-vita (DT-F37a 4.); elavult ⭐-jegyzet (272. sor, TEREMT-002) |
+| 6 | `1Moz_15` | ⚠️-vita (DT61 2.); Sod: Mt 27:45 párhuzam |
+| 7 | `1Moz_1v2-2v3` | ⚠️-vita (DT61 4.); elavult ⭐-jegyzet (272. sor, TEREMT-002) |
 | 8 | `1Moz_10v1-11v32` | ⚠️ „hetven nép” képviselő nélkül; nyelvzavar-⚠️ RÉSZBEN; `Jób 38:41` Károli-számozása (`Jób 39:3`) |
 | 9 | `1Moz_13v1-18` | ⚠️ „mint a föld pora”: név nélküli oldalak |
 | 10 | `1Moz_16` | elavult „Motívumnaplózásra váró elemek” jegyzet (198–203. sor); Sod RÉSZBEN |
@@ -57,4 +57,4 @@
 - A brief T6 1. pontja („Frissítsd a `FELADATOK.md` saját sorát”) nem teljesült, szándékosan: a #37 sora a `FELADATOK.md` generált blokkjában áll, amelyet csak a `main`-re futó Action ír (D25, `FELADATOK.md` „Állapot és új feladat”); az állapotot a brief fejléce viszi.
 - A `CLAUDE.md` TAHOT-hiánylistájának elavulását a menet jelentette; a `main` közben javította (DT58, `07fcb39`), ezért külön tétel nem kell.
 - A `naplok/TANULMANY_AUDIT.md` első változata a proveniencia-sorban a `f25faa6` commitot nevezte meg, amelyben a generátor még nem volt benne; a jelentés újragenerálva (F37.10), a tartalma változatlan (433 találat).
-- A „valódi ⚠️-vita” meghatározását és a T5 4–5. pontjának ítéleteit a végrehajtó hozta (`manual`); a meghatározást a DT-F37b pontosította.
+- A „valódi ⚠️-vita” meghatározását és a T5 4–5. pontjának ítéleteit a végrehajtó hozta (`manual`); a meghatározást a DT62 pontosította.

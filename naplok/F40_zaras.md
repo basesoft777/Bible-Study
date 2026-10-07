@@ -1,18 +1,18 @@
 # F40 zárás — a hivatkozás-ellenőrző (E27) eredménye a main-en
 
-*Állapot: a DT-F40a/b szerinti javítás után (F40.5–), az F40 ágon mért, a main tartalmával megegyező feladatkövető-fájlokon. A javítás a talált hivatkozásokon nem ennek a menetnek a dolga (H4), a lista a takarítási ponthoz tartozik.*
+*Állapot: a DT63/b szerinti javítás után (F40.5–), az F40 ágon mért, a main tartalmával megegyező feladatkövető-fájlokon. A javítás a talált hivatkozásokon nem ennek a menetnek a dolga (H4), a lista a takarítási ponthoz tartozik.*
 
-## Eredmény (a DT-F40a/b utáni köztes állapot — a végleges a „DT-F40c végrehajtása” szakaszban áll; az itt jelzett 2 HIBA és a bukó teszt megszűnt)
+## Eredmény (a DT63/b utáni köztes állapot — a végleges a „DT65 végrehajtása” szakaszban áll; az itt jelzett 2 HIBA és a bukó teszt megszűnt)
 
 - **`futtat.py --teljes`: 0 HIBA** (kilépési kód 0) — de ez a `--teljes` mód szerkezeti tulajdonsága: minden találatot JELENTES-re minősít (D3), tehát a 0 önmagában nem bizonyít. A nyers szint (`SZ.e27_hivatkozas()` közvetlen hívása, diff nélkül) a main mai állapotán: **2 HIBA, 1 FIGYELMEZTETÉS, 30 JELENTES**.
-- A 2 HIBA a DT-F40a (b) szabály következménye: az `olvas`-mező hiányzó fájlja mindig HIBA, ha egy `fugg`-beli feladat `ir` mezője nem fedi. Ilyen az `F46_BDB_KONYVFELOLDAS_BRIEF.md:14` (`beerkezo/BDB_KONYVFELOLDASI_AUDIT.md`; az útvonalat az F38 `ir`-je tartalmazza, az F46 `fugg`-je viszont [34]; az F46 lezárt) és az `F64_TEREMT002_PROZA_PROBA_BRIEF.md:12` (`naplok/MOTIVUM_FORRAS_lekepezes.tsv`; az F64 `fugg`-je üres, az útvonal a #23 M0 kimenete, de az F23 `ir`-je nem fedi). **A felhasználói döntés („F46, F64 mostani jelzése figyelmeztetés”) feltevése nem teljesül, ezért a CI a main-en piros lenne: `DT-F40c` (🟡) vár döntésre.** A `test_push_ures_cimmel_nem_piros` (E16EsemenyTest) emiatt bukik: a valódi repón az E27 2 HIBÁJA az összesített jelentést pirossá teszi.
-- Az 1 FIGYELMEZTETÉS: `FELADATOK.md:20` `claude/f38-adag7`, a tervezett (még nem létező) ág, nyitott sorban csak figyelmeztetés (DT-F40a (a)); az üzenet a forrás-briefet (`F38_BDB_FORDITAS_BRIEF.md`) nevezi meg.
-- A 30 JELENTES a diff-hatókörű helyeken (`NYITOTT_FELADATOK.md`, a `FELADATOK.md` kézi/Kész sorai) lévő régi hivatkozás; a PR-ban nem érintett sorokon nem blokkol. A `NYITOTT_FELADATOK.md:612/614` adatkészlet-belső rövidítései (`base/display/`, `base/text-only/`, `base/hebrew-tsv/`, `text-only/`, `hebrew-tsv/`) a DT-F40a (f) szerint **nem kapnak kódbeli kivételt**: a takarítási pontba mennek (vagy kikerülnek a backtickből).
-- Az előző (F40.3) zárólista 33 találata ugyanennyi, de a besorolás változott: az 1 FIGYELMEZTETÉS és a 2 HIBA a DT-F40a miatt.
+- A 2 HIBA a DT63 (b) szabály következménye: az `olvas`-mező hiányzó fájlja mindig HIBA, ha egy `fugg`-beli feladat `ir` mezője nem fedi. Ilyen az `F46_BDB_KONYVFELOLDAS_BRIEF.md:14` (`beerkezo/BDB_KONYVFELOLDASI_AUDIT.md`; az útvonalat az F38 `ir`-je tartalmazza, az F46 `fugg`-je viszont [34]; az F46 lezárt) és az `F64_TEREMT002_PROZA_PROBA_BRIEF.md:12` (`naplok/MOTIVUM_FORRAS_lekepezes.tsv`; az F64 `fugg`-je üres, az útvonal a #23 M0 kimenete, de az F23 `ir`-je nem fedi). **A felhasználói döntés („F46, F64 mostani jelzése figyelmeztetés”) feltevése nem teljesül, ezért a CI a main-en piros lenne: `DT65` (🟡) vár döntésre.** A `test_push_ures_cimmel_nem_piros` (E16EsemenyTest) emiatt bukik: a valódi repón az E27 2 HIBÁJA az összesített jelentést pirossá teszi.
+- Az 1 FIGYELMEZTETÉS: `FELADATOK.md:20` `claude/f38-adag7`, a tervezett (még nem létező) ág, nyitott sorban csak figyelmeztetés (DT63 (a)); az üzenet a forrás-briefet (`F38_BDB_FORDITAS_BRIEF.md`) nevezi meg.
+- A 30 JELENTES a diff-hatókörű helyeken (`NYITOTT_FELADATOK.md`, a `FELADATOK.md` kézi/Kész sorai) lévő régi hivatkozás; a PR-ban nem érintett sorokon nem blokkol. A `NYITOTT_FELADATOK.md:612/614` adatkészlet-belső rövidítései (`base/display/`, `base/text-only/`, `base/hebrew-tsv/`, `text-only/`, `hebrew-tsv/`) a DT63 (f) szerint **nem kapnak kódbeli kivételt**: a takarítási pontba mennek (vagy kikerülnek a backtickből).
+- Az előző (F40.3) zárólista 33 találata ugyanennyi, de a besorolás változott: az 1 FIGYELMEZTETÉS és a 2 HIBA a DT63 miatt.
 
 ## Eltérések a briefhez
 
-- **DT-F40b:** a végrehajtó a brief 4. pontjánál (⛔ átfedés az E18-cal) nem állt meg, a D-ág a fejléc-érvényességet is ellenőrizte. A felhasználó döntése: a D-ág csak az `olvas` útvonalait ellenőrzi, a fejléc érvényessége az E18-é. A javítás: `_e27_fejlec_olvas` helyett a hibatűrő `_e27_fejlec_mezo` (hibás fejlécre üres listát ad, nem jelez); a tesztek hibás YAML-re 0 találatot és 0 kilépési kódot várnak.
+- **DT64:** a végrehajtó a brief 4. pontjánál (⛔ átfedés az E18-cal) nem állt meg, a D-ág a fejléc-érvényességet is ellenőrizte. A felhasználó döntése: a D-ág csak az `olvas` útvonalait ellenőrzi, a fejléc érvényessége az E18-é. A javítás: `_e27_fejlec_olvas` helyett a hibatűrő `_e27_fejlec_mezo` (hibás fejlécre üres listát ad, nem jelez); a tesztek hibás YAML-re 0 találatot és 0 kilépési kódot várnak.
 - **Szabályszám:** E27 (a brief H5 szerinti E25 elavult: az E25 a döntés-átvezetés, az E26 a végleges szám az ágon).
 - **Kódbeli kivételek** (a briefben eredetileg nem szerepeltek; most a brief 2. pontja alatt dokumentálva és tesztelve): rövid név bármely azonos nevű fájllal; kiterjesztés nélküli `a/b` csak létező első taggal; `beerkezo/` és `konkordancia/` briefjei kizárva a D-ágból; URL, ág és minta nem útvonal.
 - **Tesztek:** a `_kilepes` segéd már a `futtat.py main()` valódi kilépési kódját méri (`--valtozott`, push-esemény, `--diff-alap/--diff-fej`), a brief 3. pontja minden esetére, a „csak chatben” és a hibás YAML esetre is.
@@ -54,13 +54,13 @@
 - `F46_BDB_KONYVFELOLDAS_BRIEF.md:14` — [HIBA] az `olvas` mezőben hivatkozott fájl nem létezik: `beerkezo/BDB_KONYVFELOLDASI_AUDIT.md`, és egyik `fugg`-beli feladat `ir` mezője sem fedi.
 - `F64_TEREMT002_PROZA_PROBA_BRIEF.md:12` — [HIBA] az `olvas` mezőben hivatkozott fájl nem létezik: `naplok/MOTIVUM_FORRAS_lekepezes.tsv`, és egyik `fugg`-beli feladat `ir` mezője sem fedi.
 
-## DT-F40c végrehajtása (F40.9–)
+## DT65 végrehajtása (F40.9–)
 
 - **Döntés (Felhasználó, 2026.10.07):** (a) lezárt brief `olvas`-mezőjében a hiányzó fájl FIGYELMEZTETÉS; (b) nyitott briefnél FIGYELMEZTETÉS, ha bármely nem lezárt feladat `ir`-je fedi (egyezés, könyvtár-előtag, joker), különben HIBA; (c) az F23 `ir`-je az öt M0-kimenettel bővül. Az F64 fejléce nem változott.
 - **Kód:** `e27_hivatkozas` D-ága az `allapot` mezőt a terkepből és a vizsgált briefből olvassa; `_e27_brief_terkep` felvette az `allapot`-ot.
 - **F23 `ir`-bővítés:** `naplok/MOTIVUM_FORRAS_lekepezes.tsv`, `_torzscikk_egyedi.tsv`, `_parositas.tsv`, `_naplo_keveredes.tsv`, `_atfedes.tsv`; az F23 verziónaplójában v1.4. Az `allapot` és a `fugg` nem változott.
 - **Eredmény:** az E27 nyers szintje (`SZ.e27_hivatkozas()`, diff nélkül) a main tartalmán 0 HIBA; a fenti „2 HIBA” (F46, F64) megszűnt. Az F46 FIGYELMEZTETÉS (lezárt), az F64 FIGYELMEZTETÉS (az F23 `ir`-je fedi).
-- **Tesztek:** a `test_olvas_hiba_ha_a_fedo_feladat_nincs_a_fuggesek_kozott` a DT-F40c (b) szerint megfordult (nem `fugg`-beli fedés is FIGYELMEZTETÉS); új: lezárt feladat `ir`-je nem fed (HIBA), joker, lezárt brief (FIGYELMEZTETÉS, kilépés 0), fedetlen nyitott brief (HIBA, kilépés 1). A kilépési kódok a `futtat.py main()` valódi kilépési kódjai.
+- **Tesztek:** a `test_olvas_hiba_ha_a_fedo_feladat_nincs_a_fuggesek_kozott` a DT65 (b) szerint megfordult (nem `fugg`-beli fedés is FIGYELMEZTETÉS); új: lezárt feladat `ir`-je nem fed (HIBA), joker, lezárt brief (FIGYELMEZTETÉS, kilépés 0), fedetlen nyitott brief (HIBA, kilépés 1). A kilépési kódok a `futtat.py main()` valódi kilépési kódjai.
 
 - **Végleges tesztszám (ellenőr 2. kör, mérve):** `E27Teszt` 37 metódus, `test_szabalyok.py` összesen 111 teszt, mind OK (a fenti „33 / 107, 1 bukik” köztes adat). Az F46 és F64 sora a fenti listában a köztes [HIBA] besorolású; végleges: FIGYELMEZTETES.
 - **Ellenőrzés:** `naplok/ELLENOR_HIVATKOZAS.md` (1. kör) és `naplok/ELLENOR_HIVATKOZAS_2.md` (2. kör). B-ellenőrzés Actions-tokennel: az első CI-futáson derül ki.

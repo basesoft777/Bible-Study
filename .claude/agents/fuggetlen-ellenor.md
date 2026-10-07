@@ -148,6 +148,6 @@ A jelentés **első sora** ilyenkor `⛔ DÖNTÉS KELL: <ok>` (a `TISZTA` /
   adatából levezetett, proveniencia-sorral ellátott lexikai érv is; a
   proveniencia nélküli saját állítás nem. Nem ⛔, ha a tanulmány a vita
   egyik oldalára épít, de az építést kifejezetten feltételesnek jelöli
-  („Ha …”, „amennyiben …”). (DT-F37b)
+  („Ha …”, „amennyiben …”). (DT62)
 
 A ⛔ nem javítás: a döntést a felhasználó hozza, te csak jelzed.

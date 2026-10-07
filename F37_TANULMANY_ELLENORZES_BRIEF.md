@@ -12,7 +12,7 @@ kovetkezo: "nincs; az utófeladat-javaslat (naplok/TANULMANY_ELLENORZES_utofelad
 olvas: [sablonok/, genezis/, ujszovetseg/, tematikus_lezart/, konkordancia/, adat/, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, CLAUDE.md]
 ir: [sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, sablonok/5_Melyelemzes_prompt_sablon.md, sablonok/Javasolt_sablon_kiegeszites_BDB_arnyalat.md, sablonok/PaRDeS_gyorsreferencia.md, sablonok/PaRDeS_tanitok_lista.md, MUNKAMENET.md, adat/SEMA.md, ATALAKITASI_TERV.md.md, Join_tabla_folyamat_magyarazat.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/T0_felmeres.md, naplok/TANULMANY_AUDIT.md, naplok/TANULMANY_AUDIT_ugynok.md, naplok/TANULMANY_ELLENORZES_utofeladat.md, naplok/TANULMANY_ELLENORZES_zaras.md]
 fugg: [30, 32]
-lezarva_osszegzes: E20 új, E13/E8/E9/E12 tanulmányra bővítve, jelentés mód (433 találat); fuggetlen-ellenor tanulmány-ellenőrzőlista; két auditjelentés; DT-F37a/b eldöntve; utófeladat-javaslat /befogad-ra vár; ellenőr 2 kör; részletek naplok/TANULMANY_ELLENORZES_zaras.md
+lezarva_osszegzes: E20 új, E13/E8/E9/E12 tanulmányra bővítve, jelentés mód (433 találat); fuggetlen-ellenor tanulmány-ellenőrzőlista; két auditjelentés; DT61/b eldöntve; utófeladat-javaslat /befogad-ra vár; ellenőr 2 kör; részletek naplok/TANULMANY_ELLENORZES_zaras.md
 pr: https://github.com/basesoft777/Bible-Study/pull/240
 ---
 # TANULMANY_ELLENORZES_BRIEF.md
@@ -131,5 +131,5 @@ Az 1–6. pontot futtasd végig a meglévő tanulmányokon. Kimenet: `naplok/TAN
 | DT-F37-7 | ~~Az alap tanulmányok sorsa a T2 ⛔-pontjában dől el~~ — tárgytalan, l. DT-F37-9 | előbb látni kell, van-e bennük átvezetendő tartalom | előzetes archiválás vagy törlés |
 | DT-F37-8 | Nincs duplikált CI-szabály; átfedésnél a meglévő szabály hatóköre bővül, ezért a számozás E20-tól indul, a T0 szerint | az E17–E19 már foglalt a `szabalyok.py`-ban | E17–E22 új szabályokkal |
 | DT-F37-9 | A T2 elmarad: alap tanulmány nincs, sem a repóban, sem rajta kívül | felhasználói döntés (2026.10.07, chat); a repóban csak `_bovitett.md` tanulmány van (`genezis/` 20, `ujszovetseg/` 3), törölt alap tanulmány a git-történetben sincs | a T2 lefuttatása üres eredménnyel |
-| DT-F37-10 | A T5 öt ⚠️-vita-esete nem ⛔ most; a javító utófeladatba kerül, név szerint, tételenkénti döntéssel a feladat elején (DT-F37a) | felhasználói döntés (2026.10.07, chat); a javítás úgyis külön feladat (DT-F37-5) | mind ⛔ most; csak két eset ⛔ |
-| DT-F37-11 | A „valódi ⚠️-vita” meghatározása a T4 szerint, két pontosítással: a proveniencia-soros lexikai érv forrás; a feltételesnek jelölt építés nem ⛔ (DT-F37b) | felhasználói döntés (2026.10.07, chat) | szűkebb (csak forrás nélküli lezárás); tágabb (minden új ⚠️) |
+| DT-F37-10 | A T5 öt ⚠️-vita-esete nem ⛔ most; a javító utófeladatba kerül, név szerint, tételenkénti döntéssel a feladat elején (DT61) | felhasználói döntés (2026.10.07, chat); a javítás úgyis külön feladat (DT-F37-5) | mind ⛔ most; csak két eset ⛔ |
+| DT-F37-11 | A „valódi ⚠️-vita” meghatározása a T4 szerint, két pontosítással: a proveniencia-soros lexikai érv forrás; a feltételesnek jelölt építés nem ⛔ (DT62) | felhasználói döntés (2026.10.07, chat) | szűkebb (csak forrás nélküli lezárás); tágabb (minden új ⚠️) |
