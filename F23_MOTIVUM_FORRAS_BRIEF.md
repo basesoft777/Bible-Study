@@ -9,7 +9,7 @@ allapot: megallt
 ag: claude/f23-motivum-forras
 pr: https://github.com/basesoft777/Bible-Study/pull/243
 ad: a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül
-kovetkezo: "Te: ⛔ az M0 kész, a DT-F23a eldöntve és átvezetve (🟢). M1 várja: #12a (#64) próza-próba (DT-F32a, DT-F23a d); utána /kovetkezo"
+kovetkezo: "Te: ⛔ az M0 kész, a DT66 eldöntve és átvezetve (🟢). M1 várja: #12a (#64) próza-próba (DT-F32a, DT66 d); utána /kovetkezo"
 olvas: [sablonok/, tematikus_lezart/, motivumok/, lexikon/, genezis/, adat/SEMA.md, adat/res_forras.tsv, eszkozok/general.py, CLAUDE.md, ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md]
 ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/MOTIVUM_FORRAS_torzscikk_egyedi.tsv, naplok/MOTIVUM_FORRAS_parositas.tsv, naplok/MOTIVUM_FORRAS_naplo_keveredes.tsv, naplok/MOTIVUM_FORRAS_atfedes.tsv, naplok/MOTIVUM_FORRAS_M0.py, naplok/F23_zaras.md, naplok/ELLENOR_F23.md, naplok/ELLENOR_F23_2.md]
 fugg: [32]

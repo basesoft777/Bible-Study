@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-07",
-   "commit": "8e3b5c0"
+   "commit": "7ee9f46"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -62,7 +62,7 @@
   {
    "kulcs": "stop",
    "cimke": "Megállt, rád vár",
-   "db": 2
+   "db": 3
   },
   {
    "kulcs": "run",
@@ -72,7 +72,7 @@
   {
    "kulcs": "ready",
    "cimke": "Indítható most",
-   "db": 8
+   "db": 7
   },
   {
    "kulcs": "wait",
@@ -97,14 +97,6 @@
    "cim": "A teljes BDB héber szótár magyar fordítása, megállási pontokkal",
    "most": "Folytatás: a 7. adag (sorrend 649–) a claude/f38-adag7 ágon, a #72 lezárása és a sorrend újragenerálása után (a #73 kész; N51, DT52 (a)); a 9. adag előtt a #67 kapuja (DT55: a 9. adag menete fugg: 67-et tesz); a 8. adagtól minden adag előtt a Károli-lefedettség mérése, indulás csak ≥85%-nál (DT56, naplok/BDB_FORDITAS_karoli_lefedettseg.py)",
    "felbemaradt": true,
-   "parhuzamos": true
-  },
-  {
-   "szam": 23,
-   "kod": "MOTIVUM_FORRAS",
-   "cim": "Egyforrású motívumdokumentum: forrássablon és mélységi szintek (terv)",
-   "most": "/kovetkezo; ⛔ az M0 felmérés után; az M1 a #12a próza-próba eredményét várja (DT-F32a)",
-   "felbemaradt": false,
    "parhuzamos": true
   }
  ],
@@ -182,7 +174,7 @@
    "elemek": [
     {
      "szoveg": "#23",
-     "allapot": "ready"
+     "allapot": "stop"
     },
     {
      "szoveg": "#9/#10",
@@ -319,9 +311,9 @@
    "kod": "MOTIVUM_FORRAS",
    "cim": "Egyforrású motívumdokumentum: forrássablon és mélységi szintek (terv)",
    "fazis": "1",
-   "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "/kovetkezo; ⛔ az M0 felmérés után; az M1 a #12a próza-próba eredményét várja (DT-F32a)",
+   "allapot": "stop",
+   "brief_allapot": "megallt",
+   "most": "Te: ⛔ az M0 kész, a DT66 eldöntve és átvezetve (🟢). M1 várja: #12a (#64) próza-próba (DT-F32a, DT66 d); utána /kovetkezo",
    "fugg": "#32 (kész)",
    "tervezett": false,
    "reszletes": "Megtervezi, hogyan legyen minden motívumnak egyetlen kézzel írt forrásdokumentuma mélységi szintekkel, amelyből a többi nézet generálódik. Csak terv és mérés, fájlmozgatás nélkül; az M0 felmérés után megáll.",
@@ -805,7 +797,7 @@
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_OLVASOI_KONKORDANCIA[\"OLVASOI_KONKORDANCIA\"]:::plan\n  P_SQLITE_EPIT[\"SQLITE_EPIT\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::ready\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::ready\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::wait\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::ready\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::wait\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T64[\"#64 TEREMT002_PROZA_PROBA\"]:::stop\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T68[\"#68 GRAMM_KOTOSZOK\"]:::ready\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> P_SQLITE_EPIT\n  P_MCP_BUROK --> T61\n  P_OLVASOI_KONKORDANCIA --> D_DT_M1\n  P_OLVASOI_KONKORDANCIA --> D_DT_M4\n  P_OLVASOI_KONKORDANCIA --> D_DT_M6\n  P_OLVASOI_KONKORDANCIA --> P_SQLITE_EPIT\n  P_SQLITE_EPIT --> T62\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> T11\n  T10 --> T9\n  T11 --> T23\n  T11 --> T9\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T23 --> D_DT28\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> T38\n  T36 --> T52\n  T36 --> T9\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T22\n  T54 --> T62\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T61 --> T54\n  T61 --> T62\n  T62 --> T68\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T67 --> T7\n  T67 --> T9\n  T70 --> T55\n  T70 --> T9\n  T75 --> T74\n  T9 --> D_DT28\n  T9 --> T23\n  T9 --> T38",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_OLVASOI_KONKORDANCIA[\"OLVASOI_KONKORDANCIA\"]:::plan\n  P_SQLITE_EPIT[\"SQLITE_EPIT\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::ready\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::wait\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::ready\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::wait\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T64[\"#64 TEREMT002_PROZA_PROBA\"]:::stop\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T68[\"#68 GRAMM_KOTOSZOK\"]:::ready\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT66{{\"DT66\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> P_SQLITE_EPIT\n  P_MCP_BUROK --> T61\n  P_OLVASOI_KONKORDANCIA --> D_DT_M1\n  P_OLVASOI_KONKORDANCIA --> D_DT_M4\n  P_OLVASOI_KONKORDANCIA --> D_DT_M6\n  P_OLVASOI_KONKORDANCIA --> P_SQLITE_EPIT\n  P_SQLITE_EPIT --> T62\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> T11\n  T10 --> T9\n  T11 --> T23\n  T11 --> T9\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T23 --> D_DT28\n  T23 --> D_DT66\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> T38\n  T36 --> T52\n  T36 --> T9\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T22\n  T54 --> T62\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T61 --> T54\n  T61 --> T62\n  T62 --> T68\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T67 --> T7\n  T67 --> T9\n  T70 --> T55\n  T70 --> T9\n  T75 --> T74\n  T9 --> D_DT28\n  T9 --> T23\n  T9 --> T38",
  "dontesek": {
   "nyitott": [
    {
@@ -1239,6 +1231,17 @@
      "🟢"
     ],
     "sor": 134
+   },
+   {
+    "id": "DT66",
+    "feladat": "#23 MOTIVUM_FORRAS (M0 ⛔ összesítés; javítva az ELLENOR_F23 és az ELLENOR_F23_2 után)",
+    "kerdes": "Az M0 felmérés kész (`naplok/MOTIVUM_FORRAS_*.tsv`, mérőszkript: `naplok/MOTIVUM_FORRAS_M0.py`). (1) Leképezés (`naplok/MOTIVUM_FORRAS_lekepezes.tsv`): 77 sor — a 4., 6. és 8. sablon minden `##`/kötelező szakasza, a `motivumok/[ID].md` blokkjai és a 7 rés. B_helye: `generalt` 26, `kezi_forras` 21, `sablonszabaly` 16 (javasolt negyedik érték), `adat` 14. Szint: `apparatus` 28, `olvasoi` 20, `—` 16 (a sablonszabály-sorok), `belso` 13. `szetvalasztando` 19. `javaslat` jelölésű besorolások (35 sor): → `sablonszabaly` (16): Mikor használandó (4. és 6. sablon); Terminológiai és formai szabályok (4. és 6.); Konfliktuskezelés (6.); Licenc és nyilvános repó; Lezárási checklist (eljárás); Tartalmi visszaírás bővített tanulmányokba (eljárás; a link-blokk generált); B) OLVASHATÓ változat (megszűnt kimenet); Kimenet: KÉT fájl (okafogyott); Fájlnév-konvenció; Minőségi kapu (lexikon → a CI-szabályok veszik át); Mikor és hogyan készül (törzscikk, okafogyott); Amit a törzscikk kihagy (→ szintjelölés engedélyezőlistája); Ellenőrzés (törzscikk → CI (b)); Kiejtés — tudatos korlát (→ közös kiejtés-réteg). → `adat`: 0. Forrás-összegyűjtés (folyamat-nyom); 1. Friss keresés P1–P7 (a sor az eredményt képviseli, a checklist sablonszabály); 2/b Kiegészítő szótári adatok és rés 2b (→ lexikon_hivatkozasok.tsv); Minőségi kapu Q1–Q7 (a study-beli eredmény); Önellenőrzés / Napló-frissítési javaslat; Minősítés és rés minosites (→ jeloltek.tsv döntés+indoklás); Alátámasztás és rés alatamasztas (→ kapcsolatok.tsv indoklás-oszlop, séma-kérdés); 7. Módszertan — ellenőrzési rétegek táblája (→ auditok.tsv). → `kezi_forras`: Logikai kötőszó szerinti bontás; Új felismerés; 5. Nevesített tanítói egyezés (kanonikus hely: saját fájl vagy beemelés — döntés); 【NAPLO】 blokkok (kézi, de nem érvelés: `belso`; alternatíva: `adat`); 7. Nyitott kérdések; Kulcsszavak részletesen (a maradék értelmező szöveg); rés modszertan (szétválik adatra és kézi részre). → `generalt`: Forrásréteg-fejléc és proveniencia-bekezdés (cím/ID adatból; a proveniencia NAPLO vagy archívum). (2) Csak-törzscikk tartalom: 3418 vizsgált egységből 363 jelölt (<50% 3-gram-lefedettség); a gépi előbesorolás (regex) szerint mind render-szerkezet vagy átrendezett adat, `nem_besorolt` 0 — az „üres eredmény” erre a heurisztikára érvényes, nem soronkénti kézi átnézésre. Mellékmegfigyelés: a KIEJT-átírásjavítás (pl. *epikaleó*) az ISTENTISZT-001 törzscikkben 38-szor, a lapon 5-ször áll. (3) Párosítás: 8 tematikus tanulmány 1:1-ben 8 motívumhoz; a `Konnyu_ellenorzes_4_lezart_tanulmany.md` nem tanulmány; a TEREMT-002-nek nincs tematikus tanulmánya (natív). (4) NAPLO-keveredés (25 fájl: `tematikus_lezart/*.md` 9, `tematikus_lezart/naplok/*.md` 7, `motivumok/*.md` 9): 87 `【NAPLO` blokk (72 / 6 / 9). A blokkokon kívül 324 gyanús sor (213 / 52 / 59); ezekben a találatok száma mintánként: dátum 207, fájlnév 323, „l. X pont” 32, felismerve/visszaírva/audit során 1 (egy sorban több találat is lehet). Ez a szétválasztandó (a)-rétegű anyag felső becslése. (5) Átfedés (8 szavas n-gram, bekezdésenként, a tematikus oldalon a naplókkal együtt): 176 pár — 3 bekezdésmásolat (Bun ↔ 1Moz_6v9-22: a 6:11–13 idézet-bekezdések), 6 részleges (Melkizedek ↔ 1Moz_14: Prince-tanítói blokk; Isten fiai ↔ 1Moz_6v1-8; Segítségül hívni ↔ 1Moz_12/13: címsor), 40 rövid egyezés, 127 sablonformula. Mérési lelet a D37-hez: a ⭐ küszöb (`COUNT(DISTINCT fo_elofordulas)` ≥ 3) a KIRALY-001, a MENNY-001 és a HODIT-001 esetén 1, pedig mindháromnak van lezárt tematikus tanulmánya (`publikálható`, forrás-study megvan). *Magyarázat (saját mérés: `python naplok/MOTIVUM_FORRAS_M0.py`, az első két `==` blokk; ellenpróba: `grep -n 'fő előfordulás' motivumlog/PaRDeS_motivumok.md`):* nem mérési hiba. A `fo_elofordulas` mező értéke a három ID-nél egyetlen csoport (KIRALY-001: `1Móz 14:18-20`; MENNY-001: `1Móz 6:1-4`; HODIT-001: `1Móz 14:5`), miközben az igehely-sorok száma 9, 9 és 33; a szám mind a 9 ID-nél egyezik a napló generált „N fő előfordulás” számával, és a kézi, archív napló-szöveg is ezt mondja (a `motivumok/*.md` index-sora mindhárom ID-nél 1; a HODIT-001 ⭐-bekezdése szó szerint: a tanulmány „KIVÉTELESEN a ⭐ küszöb elérése ELŐTT” készült, felhasználói kérésre). A mező tehát azt méri, amire a SEMA 2.2.3 szánta: a napló tanulmány előtti „fő előfordulás”-számát, vagyis a tanulmány-javaslat kiváltóját, nem a feldolgozott motívum terjedelmét. A hiba a szabály alkalmazási körében van: a D37 ezt a kiváltó-mutatót teszi a lezárt tanulmány szakaszainak aktiválási feltételévé, ami a kivételesen (küszöb előtt) vagy mélyelemzésből indult motívumoknál a meglévő értelmező szakaszokat kikapcsolná. Kérdések: (a) elfogadhatók-e a fenti `javaslat` besorolások? (b) bevezethető-e a `sablonszabaly` mint negyedik B_helye-érték? (c) a ⭐-küszöb eltérésénél mi az aktiválás szabálya? (d) mehet-e az M1 — a DT-F32a szerint csak a #12a próza-próba után. *(forrás: `F23_MOTIVUM_FORRAS_BRIEF.md` M0/6; `naplok/ELLENOR_F23.md`, `naplok/ELLENOR_F23_2.md`)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢",
+     "✅"
+    ],
+    "sor": 141
    }
   ],
   "javasolt": [],

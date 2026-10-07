@@ -10,8 +10,8 @@
 2. **10 `kezi_forras` sor** (lekepezes.tsv:2,4,16,19,21,26,27,56,60,68) megjegyzése nem rögzíti az „összefüggő érvelés része, nem önálló mező” jelölést; köztük nem érvelés-szakaszok is (NAPLO-blokk, Forrásréteg-fejléc, Mikor használandó, Terminológiai szabályok): lehetséges besorolási hiba.
 3. **M0/4–5 hatókör:** a mérés csak a `tematikus_lezart/*.md` gyökerét nézi; a `tematikus_lezart/naplok/` 7 kereszthivatkozás-naplója kimaradt, a szűkítést sem a napló, sem a DT nem rögzíti.
 4. **„rés: modszertan” sor** (lekepezes.tsv:68): B_helye `kezi_forras`, a megjegyzés szerint adat- és kézi részre válik, de a `szetvalasztando` jelölés hiányzik (DT28).
-5. **DT-F23a szám-keverés** (DONTESEK.md:141): „272 gyanús sor (dátum 179, fájlnév 273, …)” — a zárójeles számok találatok, nem sorok.
-6. **DT-F23a nem sorolja fel** a `javaslat` besorolásokat, csak a darabszámot és a TSV-re mutat (alacsony).
+5. **DT66 szám-keverés** (DONTESEK.md:141): „272 gyanús sor (dátum 179, fájlnév 273, …)” — a zárójeles számok találatok, nem sorok.
+6. **DT66 nem sorolja fel** a `javaslat` besorolásokat, csak a darabszámot és a TSV-re mutat (alacsony).
 7. **Oszlopnév:** `lefedettseg_5gram` (M0.py:216), a módszer viszont 3-gram.
 8. **`ir`-en kívüli fájl:** `naplok/MOTIVUM_FORRAS_M0.py` és `naplok/F23_zaras.md` (a végrehajtó maga dokumentálta; alacsony).
 
