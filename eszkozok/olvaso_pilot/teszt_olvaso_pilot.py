@@ -5,8 +5,10 @@ Az adat.py-t ideiglenes könyvtárba futtatja mindkét szakaszra (a kimenet nem 
 ellenőrzi: a szakasz-feloldást, a fő szó választását, a görög szóalak párosítását, a BDB-bontást,
 a proveniencia-sorokat, a „csak adat” ellenőrzőlistát (minden blokk-cím kap jelleg-címkét és
 adatforrást; nincs feladatszám az oldalon).
-Regressziós azonosság: ha az OLVASO_PROTOTIP_JSON környezeti változó egy korábbi olvaso_pilot.json
-útvonala, az 1Móz 1:1–2:3 kimenete ahhoz képest bájtra azonos (a ts= mező kivételével)."""
+Regressziós alap: ha az OLVASO_PROTOTIP_JSON környezeti változó egy korábbi (F60.4, a bővítés előtti)
+olvaso_pilot.json útvonala, az 1Móz 1:1–2:3 kimenete ahhoz képest csak új mezőkkel térhet el (a macula.morf_hu
+maszkolva: a feloldás üres volt). Előállítás: git worktree add <könyvtár> 98b5098, ott adat.py --szakasz ... --kimenet ...
+A bővítés (F60.5) és a Szó / Vers részletei fülváltás (hidden szabály) tesztjei is itt vannak."""
 import json
 import os
 import re
@@ -231,15 +233,154 @@ class CsakAdat(unittest.TestCase):
             self.assertIn(ez, s)
 
 
+class Bovites(unittest.TestCase):
+    """F60.5 (v2): a bővítés blokkjai és a vers-kulcsok."""
+
+    def test_szolap_uj_mezok(self):
+        l = ADAT['gen']['lapok']['H0216']
+        for k in ('domen', 'sece', 'oshl', 'tbesh'):
+            self.assertTrue(l.get(k), k)
+        g = ADAT['gen']['gor_lapok']
+        self.assertTrue(any(x.get('lsj') for x in g.values()))
+        self.assertTrue(any(x.get('mcged') for x in g.values()))
+        self.assertTrue(any(x.get('ubs_en') for x in g.values()))
+        self.assertTrue(any(x.get('domen') for x in g.values()))
+
+    def test_tw_hivatkozasok_feloldhatok(self):
+        for d in ADAT.values():
+            for lap in list(d['lapok'].values()) + list(d['gor_lapok'].values()):
+                for tid in lap.get('tw', []):
+                    self.assertIn(tid, d['tw_cikkek'])
+
+    def test_bsb_kjv_1moz_1_1(self):
+        a = vers(ADAT['gen'], '1Móz 1:1')['angol']
+        self.assertEqual(a['bsb']['kulcs'], 'Gen.1.1')
+        self.assertEqual((a['bsb']['szavak'][0]['strong'], a['bsb']['szavak'][0]['szo']), ('H7225', 'In the beginning'))
+        self.assertEqual(a['kjv']['szavak'][0]['szo'], 'beginning')
+
+    def test_zsolt22_versszam_kulcsok(self):
+        # Károli (MT) 22:3 = BSB Psa.22.3 (mt) = KJV 22:2; Károli 22:2 = KJV 22:1; a felirat (22:1) = KJV 22:0
+        d = ADAT['zsolt']
+        v3 = vers(d, 'Zsolt 22:3')
+        self.assertEqual((v3['angol']['bsb']['kulcs'], v3['angol']['kjv']['kulcs']), ('Psa.22.3', 'Psa.22.2'))
+        self.assertEqual(v3['angol']['bsb']['szavak'][0]['szo'], 'I cry out')
+        self.assertEqual(vers(d, 'Zsolt 22:2')['angol']['kjv']['kulcs'], 'Psa.22.1')
+        v1 = vers(d, 'Zsolt 22:1')['angol']
+        self.assertEqual(v1['kjv']['kulcs'], 'Psa.22.0')
+        self.assertEqual(len(v1['kjv']['szavak']), 5)
+        self.assertEqual(vers(d, 'Zsolt 22:32')['versszam']['kjv_kulcs'], '22:31')
+
+    def test_zsolt22_bsb_hiany_jelezve_nem_potolva(self):
+        # a BSB-táblában nincs Psa.22.1 és Psa.22.2: üres marad (nem tölti ki szomszéd vers)
+        for ig in ('Zsolt 22:1', 'Zsolt 22:2'):
+            self.assertEqual(vers(ADAT['zsolt'], ig)['angol']['bsb']['szavak'], [])
+
+    def test_versmegfeleltetes_tabla_ellentmondas_jelezve(self):
+        self.assertTrue(vers(ADAT['zsolt'], 'Zsolt 22:5')['versszam']['tabla_ellentmond'])
+        self.assertFalse(vers(ADAT['gen'], '1Móz 1:5')['versszam']['tabla_ellentmond'])
+
+    def test_nave_tartomany_bontasa(self):
+        x = [n for n in vers(ADAT['gen'], '1Móz 1:27')['nave'] if n['hely'] == '1Móz 1:26-28']
+        self.assertTrue(x and all(n['tart'] for n in x))
+        self.assertFalse([n for n in vers(ADAT['gen'], '1Móz 1:29')['nave'] if n['hely'] == '1Móz 1:26-28'])
+
+    def test_nave_kjv_szamozas_zsolt22(self):
+        # a Nave KJV-számozású: Zsolt 22:1 (KJV) = Károli 22:2
+        d = ADAT['zsolt']
+        self.assertTrue(any(n['cimke'] == 'DESPONDENCY IN' for n in vers(d, 'Zsolt 22:2')['nave']))
+        self.assertFalse(any(n['cimke'] == 'DESPONDENCY IN' for n in vers(d, 'Zsolt 22:1')['nave']))
+
+    def test_tipnr_illesztes(self):
+        self.assertEqual([x['nev'] for x in vers(ADAT['gen'], '1Móz 1:1')['tipnr']], ['LORD'])
+        z = vers(ADAT['zsolt'], 'Zsolt 22:1')['tipnr']
+        self.assertEqual([(x['nev'], x['illesztes']) for x in z], [('David', 'MT-szám')])
+        self.assertEqual(ADAT['zsolt']['stat']['tipnr_nem_illeszkedo'], [])
+
+    def test_adatreteg_sorok(self):
+        g = ADAT['gen']['stat']
+        self.assertEqual((g['motivum_sor'], g['kapcsolat_sor']), (2, 3))
+        self.assertEqual(vers(ADAT['gen'], '1Móz 1:2')['motivum'][0]['proveniencia'][:6], 'scope=')
+        z = ADAT['zsolt']['stat']
+        self.assertEqual((z['motivum_sor'], z['kapcsolat_sor'], z['lxx_dontes_sor']), (0, 0, 0))
+
+    def test_morf_feloldas(self):
+        w = next(x for x in vers(ADAT['gen'], '1Móz 1:1')['heber'] if x['strong'] == 'H1254')['macula']
+        self.assertEqual(w['morf'], 'Vqp3ms')   # a nyers kód megmarad
+        self.assertEqual(w['morf_hu'], 'ige, qal, perfectum (qatal), harmadik személy, hímnem, egyes szám')
+        for d in ADAT.values():
+            self.assertEqual(d['stat']['morf_ismeretlen'], 0)
+
+    def test_morf_aramai(self):
+        from bovites import MorfKulcs
+        mk = MorfKulcs(GY)
+        self.assertIn('peal', mk.dekodol('Vqp3ms', 'A'))
+        self.assertIn('qal', mk.dekodol('Vqp3ms', 'H'))
+        self.assertEqual(mk.dekodol('Vqc'), 'ige, qal, infinitivus constructus')
+        self.assertEqual(mk.dekodol('C'), 'kötőszó')
+
+    def test_licenc_jelzes(self):
+        j = ADAT['gen']['licenc_jelzes']
+        self.assertEqual(j['MCGED']['kereskedelmi'], 'nem')
+        self.assertEqual(j['KJV_Strongs_teljes']['allapot'], 'tisztazatlan')
+
+    def test_json_merete_a_hataron_belul(self):
+        for k in SZAKASZOK:
+            self.assertLess(os.path.getsize(os.path.join(TMP, k, 'olvaso_pilot.json')), 8 * 1024 * 1024)
+
+
+class FulvaltasHidden(unittest.TestCase):
+    """A Szó / Vers részletei fülváltás (F60.4 javítás): a hidden attribútum tényleges elrejtést ad.
+    Böngésző nélküli statikus ellenőrzés: a sablon CSS-ében minden olyan elemre, amelyen a JS a hidden
+    attribútumot kapcsolja, van [hidden] { display: none } szabály (különben a display: grid felülírja)."""
+
+    def css(self):
+        return re.search(r'<style>(.*?)</style>', sablon(), re.S).group(1)
+
+    def test_section_lap_hidden_szabaly(self):
+        self.assertRegex(self.css(), r'section\.lap\[hidden\]\s*\{\s*display:\s*none;?\s*\}')
+
+    def test_kartya_hidden_szabaly(self):
+        self.assertRegex(self.css(), r'\.kartya\[hidden\]\s*\{\s*display:\s*none;?\s*\}')
+
+    def test_minden_display_szabaly_elemre_van_hidden_szabaly(self):
+        # a JS-ben hidden-nel kapcsolt elemek: #szolap, #verslap (section.lap) és a .kartya
+        css = self.css()
+        for sel in ('section.lap', '.kartya'):
+            self.assertRegex(css, re.escape(sel) + r'\s*\{[^}]*display:\s*grid')
+            self.assertIn(sel + '[hidden]', css, sel)
+
+    def test_a_js_a_hidden_tulajdonsagot_kapcsolja(self):
+        s = sablon()
+        self.assertIn("szolap.hidden = ful !== 'szo'", s)
+        self.assertIn("verslap.hidden = ful !== 'vers'", s)
+        self.assertRegex(s, r'<section class="lap" id="verslap"[^>]*\bhidden\b')
+
+
 class Regresszio(unittest.TestCase):
     @unittest.skipUnless(os.environ.get('OLVASO_PROTOTIP_JSON'), 'OLVASO_PROTOTIP_JSON nincs megadva')
     def test_prototipussal_azonos(self):
-        def tisztit(t):
-            # a prototípus óta bővült mező (F60.2): kjv_lxx
-            return re.sub(r', "kjv_lxx": "[^"]*"', '', re.sub(r'ts=[0-9T:\-Z]+', 'ts=X', t))
-        a = tisztit(open(os.environ['OLVASO_PROTOTIP_JSON'], encoding='utf-8').read())
-        b = tisztit(open(os.path.join(TMP, 'gen', 'olvaso_pilot.json'), encoding='utf-8').read())
-        self.assertEqual(a, b)
+        """Az 1Móz 1:1–2:3 JSON a korábbi (F60.4) kimenethez képest csak az új mezőkkel térhet el.
+        Maszkolt (szándékosan megváltozott) érték: macula.morf_hu (a feloldás üres volt)."""
+        MASZK = {'morf_hu'}
+        a = json.load(open(os.environ['OLVASO_PROTOTIP_JSON'], encoding='utf-8'))
+        b = json.load(open(os.path.join(TMP, 'gen', 'olvaso_pilot.json'), encoding='utf-8'))
+
+        def reszhalmaz(x, y, ut):
+            if isinstance(x, dict):
+                self.assertIsInstance(y, dict, ut)
+                for k, v in x.items():
+                    self.assertIn(k, y, ut + '/' + k)
+                    if k not in MASZK:
+                        reszhalmaz(v, y[k], ut + '/' + k)
+            elif isinstance(x, list):
+                self.assertEqual(len(x), len(y), ut)
+                for i, (p, q) in enumerate(zip(x, y)):
+                    reszhalmaz(p, q, '%s[%d]' % (ut, i))
+            else:
+                if isinstance(x, str):     # a ts= mező a futás ideje: maszkolva
+                    x, y = re.sub(r'ts=[0-9T:\-Z]+', 'ts=X', x), re.sub(r'ts=[0-9T:\-Z]+', 'ts=X', y)
+                self.assertEqual(x, y, ut)
+        reszhalmaz(a, b, '')
 
 
 if __name__ == '__main__':
