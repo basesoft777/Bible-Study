@@ -255,6 +255,42 @@ section.lap p { line-height: 1.6; }
 .cimke, .jelleg, .helyek { line-height: 1.4; }
 .st, code, .kartya ol.k-jelek li::marker { font-variant-numeric: tabular-nums slashed-zero; }
 .lapcim, section.lap h4, .kartya .k-cim { letter-spacing: .08em; }
+/* Tanulmányozó rész (F60.11): hierarchia, ritmus, látható forrássor */
+section.lap { padding: 24px 26px; gap: 0; }
+section.lap > * + * { margin-top: 22px; }
+.blokk, .app { gap: 8px; }
+.blokk > h3, .fejsor > h3 { font: 600 1.1875rem/1.3 var(--font-hu); letter-spacing: -.005em; color: var(--ink); text-wrap: balance; }
+.fejsor { gap: 6px 10px; align-items: center; }
+.fejsor + .forrasnev { margin-top: -2px; }
+.forrasnev { margin: 0; font: 400 12.5px/1.5 var(--font-ui); color: var(--muted); max-width: none; }
+.forrasnev .fcim { font-weight: 600; text-transform: uppercase; letter-spacing: .08em; font-size: 12px; margin-right: 8px; color: var(--accent); }
+.blokk + .blokk, section.lap > .blokk:not(:first-child) { padding-top: 22px; border-top: 1px solid var(--rule); }
+.app { padding-top: 14px; }
+.app h4 + .forrasnev { margin-top: -4px; }
+.app h4 { font-size: 12.5px; letter-spacing: .09em; color: var(--accent); }
+.app h5 { font: 600 15px/1.35 var(--font-hu); margin: 8px 0 2px; }
+.jsz, .bdb, .kartya .k-jel { font-size: 16px; line-height: 1.7; font-optical-sizing: auto; hyphens: auto; text-wrap: pretty; }
+.bdb.en, .kartya .k-jel.en { font-family: var(--font-hu); font-size: 15.5px; line-height: 1.65; }
+.jt { font-size: 15px; line-height: 1.5; }
+.usz div { font-size: 15.5px; line-height: 1.65; }
+.usz b { color: var(--accent); font-size: 12.5px; letter-spacing: .02em; }
+ol.jel { gap: 10px; }
+ol.jel > li::before, ol.al > li::before { font-size: 13px; top: 3px; }
+.ubs .dom { font-size: 13.5px; }
+.ubs .def { font-size: 15px; line-height: 1.6; font-family: var(--font-hu); }
+.ubs .gl, .szolap-adat { font-size: 13.5px; }
+.sorok .sor { font-size: 14.5px; line-height: 1.55; }
+.sorok .sor .al { font-size: 13.5px; }
+dl.szavak dd { font-size: 14.5px; line-height: 1.6; }
+.szam b { font-size: 1.5rem; font-weight: 600; letter-spacing: -.01em; }
+.szam span, .allapot, .lenyit, details.forras { font-size: 13px; }
+.alak { font-size: 15px; }
+.lxx-sor { font-size: 1.2rem; gap: 6px 12px; line-height: 1.4; }
+.lemma { font-size: 2.6rem; }
+.szolap-adat .strong { font-size: 14.5px; }
+section.lap .lapcim { color: var(--accent); letter-spacing: .12em; font-size: 12px; }
+.meg, .blokk .meg { font-size: 13.5px; line-height: 1.55; }
+::selection { background: var(--accent-soft); color: var(--ink); }
 @media (max-width: 640px) { .szoveg { font-size: 1.15rem; line-height: 1.75; } .fejezet { font-size: 3rem; } }
 @media print { body { font-size: 11pt; } .szoveg { font-size: 12pt; line-height: 1.6; } }
 </style>
@@ -938,6 +974,21 @@ section.lap p { line-height: 1.6; }
     modell: ['modell-kimenet', 'Nyelvi modell állította elő (fordítás vagy párosítás); javaslat-értékű, nem lekérdezés-eredmény.'],
   };
 
+  const FORRAS_NEV = {
+    BDB: 'BDB (Brown–Driver–Briggs)', TAHOT: 'TAHOT (STEPBible)', TAGNT: 'TAGNT (STEPBible)', TBESG: 'TBESG (STEPBible)', TBESH: 'TBESH (STEPBible)',
+    TIPNR: 'TIPNR (STEPBible)', Karoli_1908: 'Károli-Biblia 1908', Karoli_KH: 'Károli-kereszthivatkozások', Karoli_versmegfeleltetes: 'Károli-versmegfeleltetés',
+    Karoli_Strong_kivonat: 'Károli–Strong kivonat', projekt_adat: 'projekt adatréteg (adat/)', Strong_szotar: 'Strong-szótár', LXX_OS: 'LXX_OS (Rahlfs, lxx-morph)',
+    TSK: 'Treasury of Scripture Knowledge', Macula_heber: 'Macula Hebrew', UBS_DBH: 'UBS DBH (SDBH)', UBS_DNTG: 'UBS DNTG (SDGNT)', SDBH: 'SDBH (UBS)', SDGNT: 'SDGNT (UBS)',
+    Thayer: 'Thayer-szótár', lxx_bridge: 'LXX-híd', SECE_H: 'SECE (héber)', SECE_G: 'SECE (görög)', OSHL: 'OSHL (Open Scriptures Hebrew Lexicon)',
+    tW_szocikkek: 'translationWords (unfoldingWord)', LSJ: 'LSJ (Liddell–Scott–Jones)', MCGED: 'Mounce (MCGED)', BSB_Strongs: 'Berean Standard Bible (BSB)',
+    KJV_Strongs_teljes: 'KJV + Strong', Nave_basokant: 'Nave’s Topical Bible', LXX_versszintu_parok: 'LXX versszintű párok', Versifikacios_tablak: 'versifikációs táblák',
+    morf_kulcs_heber: 'OSHB morfológiai kódok (morf_kulcs_heber)', morf_nyelv_aramai: 'héber/arámi nyelvi jelölés (morf_nyelv_aramai)',
+  };
+  const forrasSor = forrasok => {
+    const nevek = [...new Set(forrasok.map(([k]) => FORRAS_NEV[k] || k))];
+    return el('p', { class: 'forrasnev' }, el('span', { class: 'fcim', text: nevek.length > 1 ? 'Források' : 'Forrás' }), nevek.join(' · '));
+  };
+
   function sugoFelrak(gyoker) {
     gyoker.querySelectorAll('h3, h4').forEach(h => {
       if (h.parentElement.classList.contains('fejsor')) return;
@@ -948,6 +999,7 @@ section.lap p { line-height: 1.6; }
       h.replaceWith(sor);
       sor.append(h, ...(s[2] || []).map(j => el('span', { class: 'jelleg jelleg-' + j, title: JELLEG_CIMKE[j][1], text: JELLEG_CIMKE[j][0] })),
         el('details', { class: 'sugo' }, el('summary', { 'aria-label': 'Adatforrás', title: 'Honnan jön?', text: '?' }), el('p', { text: sugoSzoveg(s[1]) })));
+      sor.after(forrasSor(s[1]));
     });
   }
 
@@ -959,7 +1011,8 @@ section.lap p { line-height: 1.6; }
     const a = l.appar;
     const hu = !!l.bdb_hu;
     const teljes = hu ? l.bdb_hu : l.bdb_en;
-    const resz = (cim, ...tartalom) => el('div', { class: 'app' }, el('h4', { text: cim }), ...tartalom);
+    const resz = (cim, ...tartalom) => el('div', { class: 'app' }, el('h4', { text: cim }),
+      el('p', { class: 'forrasnev' }, el('span', { class: 'fcim', text: 'Forrás' }), hu ? 'BDB (Brown–Driver–Briggs), magyar fordítás' : 'BDB (Brown–Driver–Briggs), angol eredeti', ' · gépi bontás'), ...tartalom);
 
     const torzsek = a.torzsek.map(t => el('div', { class: 'torzs' },
       t.nev ? el('h5', { title: TORZS_MAGY[t.nev] ? `${t.nev}: ${TORZS_MAGY[t.nev]} törzs` : null }, t.nev,

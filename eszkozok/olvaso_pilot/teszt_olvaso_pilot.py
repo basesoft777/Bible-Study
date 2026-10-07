@@ -372,6 +372,32 @@ class FulvaltasHidden(unittest.TestCase):
         self.assertRegex(s, r'<section class="lap" id="verslap"[^>]*\bhidden\b')
 
 
+class LathatoForras(unittest.TestCase):
+    """F60.11: minden blokk fejléce alatt látható forrássor áll (nem csak a „?” súgóban)."""
+
+    def test_forrassor_a_fejlec_utan(self):
+        s = sablon()
+        self.assertIn("sor.after(forrasSor(s[1]))", s)
+        self.assertIn("class: 'forrasnev'", s)
+
+    def test_bdb_alszakaszok_forrassort_kapnak(self):
+        s = sablon()
+        self.assertRegex(s, re.compile(r"const resz = .{0,300}forrasnev.{0,200}BDB \(Brown", re.S))
+
+    def test_minden_suggo_forras_kulcsnak_van_olvashato_neve(self):
+        s = sablon()
+        kulcsok = set(re.findall(r"\['([A-Za-z_]+)', '", s[s.index('const SUGO'):s.index('const FORRAS_NEV')]))
+        kulcsok.discard('forras')
+        nevek = s[s.index('const FORRAS_NEV'):s.index('const forrasSor')]
+        hianyzo = sorted(k for k in kulcsok if k + ':' not in nevek)
+        self.assertEqual(hianyzo, [])
+
+    def test_legkisebb_betumeret_12px(self):
+        css = re.search(r'<style>(.*?)</style>', sablon(), re.S).group(1)
+        for m in re.finditer(r'font(?:-size)?:\s*(?:\d+\s+)?(\d+(?:\.\d+)?)px', css):
+            self.assertGreaterEqual(float(m.group(1)), 12, m.group(0))
+
+
 class Regresszio(unittest.TestCase):
     @unittest.skipUnless(os.environ.get('OLVASO_PROTOTIP_JSON'), 'OLVASO_PROTOTIP_JSON nincs megadva')
     def test_prototipussal_azonos(self):
