@@ -25,3 +25,15 @@ Heti „all models”: 61% az előfutás előtt, 61% utána (a kerekítés alatt
 - A subagentek gépi ellenőrzést nem futtattak, a kaput a `mentes` futtatta.
 - Vitás döntések a subagentek jelentéséből (kézi átnézésre): 119:94 „vagyok” betoldás/„ani” fordítatlan; 144:15 „a melynek”; 145:1 „dicsérő éneke”.
 - **Teendő (felhasználó, helyben):** `eszkozok/karoli_strong/zart_osszevet.py` futtatása a zárt forrásból kimásolt, **a 12 köteg 120 versére** (repón kívüli fájl, parancssori útvonal), az összesítő szám (egyezés %, n) bemásolása ide; csak ezután indulhat a teljes futás (241 köteg).
+
+## 5. Szúrópróba eredménye (a felhasználó által továbbított; nem ellenőrzött)
+
+*A felhasználó 2026-10-07-i chat-döntése: a szúrópróba a **Zsolt 51:1–10-re szűkül** (n = 10 vers, a 79. köteg), a DT-F22g lezárva. Az összesítőt a `zart_osszevet.py` helyi futásából egy másik session továbbította; a zárt szöveg nem a repóban van, a számokat ebben a session nem tudta újramérni. A `parok_Zsolt.tsv` még nem létezik, az összevetés ideiglenes (repón kívüli) táblán futott.*
+
+- szószint, `alacsony` token (n = 55): a partner-Strongok tartalmazzák a zárt szó összes Strongját: 100,0% (55/55); azonos halmaz 96,4% (53/55); eltérő 0. `magas` token: n = 0 (csak Sonnet, DT-F22c).
+- versszint: azonos halmazú vers 50,0% (5/10); elemszintű átfedés 85,7% (54/63); a saját táblának 9 többlet-Strongja van, a zárt forrásban nincs olyan Strong, amely nálunk hiányzik (a többlet jellege nem ellenőrzött).
+- Értelmezés: rendszerszintű hiba nincs; n = 10 futás előtti ellenőrzésnek elég, pontossági becslésnek nem.
+
+## 6. Döntés és következő lépés
+
+DT-F22g lezárva; a teljes futás (241 köteg, csak Sonnet, DT-F22c) a felhasználó jóváhagyásával indul, a heti keret 85%-ánál a köteg végén megáll. A futás végén kézi átnézés: 119:94, 144:15, 145:1.

@@ -5,10 +5,10 @@ cim: "Károli–Strong párosítás könyvenként (1–2Móz: Sonnet + Gemini; a
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: megallt
+allapot: fut
 ag: claude/f22-zsolt
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
-kovetkezo: "Te: a 12 kötegű Zsolt-előfutás kész (0/120 kapuhiba, naplok/F22_Zsolt_elofutas.md); futtasd helyben a zart_osszevet.py-t a 120 versre, és másold be az összesítőt; utána a teljes futás (241 köteg, csak Sonnet, 85%-nál megállás). Jób előtt: TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis."
+kovetkezo: "Zsoltárok: a teljes futás (241 köteg, csak Sonnet, DT-F22c; megállás a heti keret 85%-ánál a köteg végén); a futás végén kézi átnézés: 119:94, 144:15, 145:1. Jób előtt: TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis."
 fugg: [21]
 nem_fugg: [48]
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/futtat.py, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/regi_arany_hibas.tsv, naplok/F21P_jelentes.md]
