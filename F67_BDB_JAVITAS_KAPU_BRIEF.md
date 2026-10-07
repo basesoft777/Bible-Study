@@ -7,7 +7,7 @@ fazis: folyamat
 modell: sonnet
 allapot: brief_kell
 ad: egy kapu az eszkozok/forditas_kapuk.py-ban, amely a fordítás [BDB: X] / Y hivatkozását összeveti az adat/bdb_igehely_javitas.tsv javitott_hivatkozas értékével, tesztekkel
-kovetkezo: "brief kell; a #38 6. adagja előtt (a #56 zárójavaslata (c); a #38 következő menete a saját fejlécébe fugg: 67-et tesz, mert a #38 ugyanezt a két fájlt írja)"
+kovetkezo: "brief kell; a #38 9. adagja előtt (DT-F67a); a #38 9. adagjának menete a saját fejlécébe fugg: 67-et tesz, mert ugyanezt a két fájlt írja"
 fugg: [56]
 nem_fugg: [38]
 olvas: [adat/bdb_igehely_javitas.tsv, adat/SEMA.md, adat/forditasok.tsv, eszkozok/forditas_kapuk.py, eszkozok/bdb_atvezet_m5.py, F56_BDB_ADATBLOKK_BRIEF.md, F38_BDB_FORDITAS_BRIEF.md]
