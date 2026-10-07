@@ -5,13 +5,14 @@ kod: TANULMANY_ELLENORZES
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: fut
+allapot: lezarva
 ag: claude/tanulmany-ellenorzes
 ad: a tanulmányokat CI (E20; az E21–E24 a T0 szerint az E13/E8/E9/E12 bővítéseként) és a fuggetlen-ellenor ügynök ellenőrzi; a régi tanulmányokról két auditjelentés készül
-kovetkezo: "zárójelentés (naplok/TANULMANY_ELLENORZES_zaras.md), push, draft PR `[ELLENŐRZŐ]` előtaggal. Kész: T0–T6 (F37.1–F37.7); ellenőri 1. kör ELTÉRÉS 6, mind javítva (F37.8–F37.10); a main összefésülve (F37.11); ellenőri 2. kör: a brief-fejléc eltérése javítva (F37.12); DT-F37a/b eldöntve és alkalmazva; az utófeladat-javaslat (naplok/TANULMANY_ELLENORZES_utofeladat.md) /befogad-ra vár."
+kovetkezo: "nincs; az utófeladat-javaslat (naplok/TANULMANY_ELLENORZES_utofeladat.md) /befogad-ra vár"
 olvas: [sablonok/, genezis/, ujszovetseg/, tematikus_lezart/, konkordancia/, adat/, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, CLAUDE.md]
-ir: [sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, sablonok/5_Melyelemzes_prompt_sablon.md, sablonok/Javasolt_sablon_kiegeszites_BDB_arnyalat.md, sablonok/PaRDeS_gyorsreferencia.md, sablonok/PaRDeS_tanitok_lista.md, MUNKAMENET.md, adat/SEMA.md, ATALAKITASI_TERV.md.md, Join_tabla_folyamat_magyarazat.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/T0_felmeres.md, naplok/TANULMANY_AUDIT.md, naplok/TANULMANY_AUDIT_ugynok.md, naplok/TANULMANY_ELLENORZES_utofeladat.md]
+ir: [sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/4_PaRDeS_tematikus_sablon.md, sablonok/5_Melyelemzes_prompt_sablon.md, sablonok/Javasolt_sablon_kiegeszites_BDB_arnyalat.md, sablonok/PaRDeS_gyorsreferencia.md, sablonok/PaRDeS_tanitok_lista.md, MUNKAMENET.md, adat/SEMA.md, ATALAKITASI_TERV.md.md, Join_tabla_folyamat_magyarazat.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/T0_felmeres.md, naplok/TANULMANY_AUDIT.md, naplok/TANULMANY_AUDIT_ugynok.md, naplok/TANULMANY_ELLENORZES_utofeladat.md, naplok/TANULMANY_ELLENORZES_zaras.md]
 fugg: [30, 32]
+lezarva_osszegzes: E20 új, E13/E8/E9/E12 tanulmányra bővítve, jelentés mód (433 találat); fuggetlen-ellenor tanulmány-ellenőrzőlista; két auditjelentés; DT-F37a/b eldöntve; utófeladat-javaslat /befogad-ra vár; ellenőr 2 kör; részletek naplok/TANULMANY_ELLENORZES_zaras.md
 ---
 # TANULMANY_ELLENORZES_BRIEF.md
 
