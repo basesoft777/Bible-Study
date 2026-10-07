@@ -1,6 +1,6 @@
 # F22_Zsolt_jelentes.md — Károli–Strong párosítás: Zsoltárok (csak Sonnet)
 
-*A számok szkriptkimenetből jönnek (`f22_statisztika.py`, `sonnet_koteg.py allapot`, `egyesit.py`, `f22_elemzes.py`, `get_usage`). Ág: `claude/f22-zsolt`. Módszer: `prompt_v3` változatlanul (a `sonnet_koteg.py prompt` minden köteg előtt ellenőrizte a hash-ét), Sonnet (`vegrehajto-sonnet` subagentek, kötegenként egy), **a C (Gemini) kimarad** (DT-F22c). Jóváhagyások (felhasználó, 2026-10-07, chat): versbeosztás (DT-F22f), szúrópróba módja (DT-F22g), a teljes futás indítása.*
+*A számok szkriptkimenetből jönnek (`f22_statisztika.py`, `sonnet_koteg.py allapot`, `egyesit.py`, `f22_elemzes.py`, `get_usage`). Ág: `claude/f22-zsolt`. Módszer: `prompt_v3` változatlanul (a `sonnet_koteg.py prompt` minden köteg előtt ellenőrizte a hash-ét), Sonnet (`vegrehajto-sonnet` subagentek, kötegenként egy), **a C (Gemini) kimarad** (DT-F22c). Jóváhagyások (felhasználó, 2026-10-07, chat): versbeosztás (DT58), szúrópróba módja (DT59), a teljes futás indítása.*
 
 ## 1. Menet
 
@@ -211,6 +211,6 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - ⛔ 2. megállás: a jelentés és az ellenőri kör után, merge előtt a felhasználó dönt a következő könyvről (a kanonikus sorrend szerint a Bírák; DT54).
 - A régi-arany egyezés fenti értéke kizárás nélkül mért.
 
-## 7. Utólagos jóváhagyás: a párhuzamos futás (DT-F22h)
+## 7. Utólagos jóváhagyás: a párhuzamos futás (DT60)
 
 A felhasználó (2026-10-07, chat) a Zsolt-menet párhuzamos futását utólag elfogadta; indok: a kötegek függetlenek, az `egyesit.py --ellenoriz` rendben, a kapu végeredménye 0 bukás, a régi arany 34/34. A heti keret 61%→68% mérése nem tiszta, felső becslés. Az elv érvényben marad: párhuzamos futás csak kifejezett jóváhagyással indulhat (brief D15). A Bírák (DT54) indítása külön jóváhagyás.

@@ -12,7 +12,7 @@
 | jelentés-számok | OK (független újraszámolás) | parok 32189, szavak 61064, 253 köteg, 1 első-próbás kapuhiba (köteg 65, 42:12), régi arany 34 hármas |
 | 1–5Móz, Józs táblái | OK (változatlanok) | csak a két új Zsolt-tábla jelent meg |
 | VERSBEOSZTAS_JOVAHAGYOTT + napló | OK | a jóváhagyás a ⛔ után, a futás előtt került be |
-| DT-F22f/g ↔ brief ↔ CLAUDE.md | OK | a Jób 40:1–5 és a Jób 41 a TAHOT-ból valóban hiányzik |
+| DT58/g ↔ brief ↔ CLAUDE.md | OK | a Jób 40:1–5 és a Jób 41 a TAHOT-ból valóban hiányzik |
 | CI a változott fájlokon | OK | E2–E16, E19, E26: 0 találat |
 | D3/D9 (csak Sonnet) | OK | minden sor `alacsony`/`S` |
 | zárt forrás, kulcsok | OK | versenkénti zárt adat nincs; kulcs-grep 0 |

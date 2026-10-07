@@ -26,8 +26,8 @@
 ## 4. Kért felhasználói döntések (javaslatok; tétel még nincs felvéve)
 
 1. **A versbeosztás jóváhagyása a Zsolt-ra** (`tokenek.VERSBEOSZTAS_JOVAHAGYOTT` + jóváhagyási napló): javaslat: igen, mert a detektor 2527/2527, 0/0/0 és a 27 jelzés zaj; a jóváhagyást a felhasználó adja (nem írtam).
-2. **A TAHOT-hiány elavult állításának kezelése** (DT-F22f javaslat): a CLAUDE.md/brief sor javítása, a feltétel elengedése.
-3. **A szúrópróba módja** (DT-F22g javaslat): előzetes 12 köteg (javasolt) / utólagos / elhagyás.
+2. **A TAHOT-hiány elavult állításának kezelése** (DT58 javaslat): a CLAUDE.md/brief sor javítása, a feltétel elengedése.
+3. **A szúrópróba módja** (DT59 javaslat): előzetes 12 köteg (javasolt) / utólagos / elhagyás.
 4. **A Sonnet-futás indítása** (csak Sonnet, DT-F22c szerint; heti keret 85%-nál megállás a köteg végén, mint a Józsnál).
 
 ## 5. Mit nem csináltam
