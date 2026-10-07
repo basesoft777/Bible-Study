@@ -26,6 +26,36 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 
+def _kons(x):
+    return re.sub(r"[\u0591-\u05c7]", "", x or "")
+
+
+def _szavak(x):
+    return {w for w in re.findall(r"[a-z]+", (x or "").lower()) if w not in ("to", "be", "a", "the", "of", "in")}
+
+
+def _tbesh_sorrend(lst, lemma, rovid):
+    """Egy Strong-szám alatt több TBESH-sor (homonima) is állhat (pl. H6030a „dwell”, H6030b „answer”, H6030c „sing”).
+    A Strong-számhoz tartozó sor az, amelynek lemmája (mássalhangzó-váza) egyezik a Strong-lemmával, és a rövid jelentése
+    leginkább fedi a Strong-szótár rövid jelentését; ez kerül előre (`elsodleges: True`), a többi a `False` jelölést kapja,
+    az eredeti sorrendben. Ha nincs egyértelmű választás (egy sor, vagy nincs lemma-egyezés), a sorrend és a jelölés nem változik."""
+    if len(lst) < 2 or not lemma:
+        return lst
+    def pont(x):
+        return (10 if _kons(x.get('lemma')) == _kons(lemma) else 0) + len(_szavak(x.get('gloss')) & _szavak(rovid))
+    pontok = [pont(x) for x in lst]
+    legjobb = max(pontok)
+    if legjobb < 10:
+        return lst
+    i = pontok.index(legjobb)
+    ki = []
+    for k, x in enumerate(lst):
+        y = dict(x)
+        y['elsodleges'] = (k == i)
+        ki.append(y)
+    return [ki[i]] + [y for k, y in enumerate(ki) if k != i]
+
+
 def _sorok(gy, ut, fejlec=True):
     with open(gy + ut, encoding='utf-8-sig') as fh:
         elso = True
@@ -180,9 +210,10 @@ def bovit(C):
             r = s.rstrip('\r\n').split('\t')
             m = re.match(r'^(H\d{4})[a-z]?$', r[0]) if len(r) > 7 else None   # eStrong, pl. H1254a / H1254b
             if m and m.group(1) in heber:
-                tbesh[m.group(1)].append({'estrong': r[0], 'dstrong': r[1].strip(), 'rokon': r[2].strip(), 'gloss': r[6],
+                tbesh[m.group(1)].append({'estrong': r[0], 'dstrong': r[1].strip(), 'rokon': r[2].strip(), 'gloss': r[6], 'lemma': r[3],
                                           'jelentes': _tisztit_html(r[7])[:2500]})
     for s, lst in tbesh.items():
+        lst = _tbesh_sorrend(lst, C.lapok[s].get('lemma', ''), C.lapok[s].get('rovid', ''))
         C.lapok[s]['tbesh'] = lst[:8]
         C.lapok[s]['tbesh_db'] = len(lst)
     stat['tbesh'] = len(tbesh)

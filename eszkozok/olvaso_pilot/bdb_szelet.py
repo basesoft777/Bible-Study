@@ -4,7 +4,9 @@ igehely-hivatkozások száma, irodalmi és szövegkritikai jelek. A határok heu
 import re
 
 TORZS = (r"Qal|Niph`al|Pi`el|Pu`al|Hiph`il|Hoph`al|Hithpa`el|Hithpe`el|Hithpo`el|Hithpalpel|"
-         r"Pilpel|Polpal|Polel|Polal|Po`el|Po`al|Pil`el|Pul`al|Pual|Piel|Hiphil|Niphal|Hophal|Ishtaphel|Tiph`el")
+         r"Pilpel|Polpal|Polel|Polal|Po`el|Po`al|Pil`el|Pul`al|Pual|Piel|Hiphil|Niphal|Hophal|Ishtaphel|Tiph`el|"
+         r"Pe`al|Pa`el|Aph`el|Haph`el|Shaph`el|Ithpe`el|Ithpa`al|Ithpa`el|Ithpo`el|Hithpe`el|Hithpa`al|Pe`il|Ishtaph`al")
+ARAMI_TORZS = re.compile(r"Pe`al|Pa`el|Aph`el|Haph`el|Shaph`el|Ithpe`el|Ithpa`al|Ithpa`el|Ithpo`el|Hithpe`el|Hithpa`al|Pe`il|Ishtaph`al")
 TORZS_FEJ = re.compile(r'(?<![\w`])(' + TORZS + r')_(\d+)')
 REF = re.compile(r'\d+:\d+')
 NYELV = re.compile(r'(asszír|arab|arámi|szír|szíriai|föníciai|etióp|sabeus|ugariti|akkád|újhéber|nabateus|palmirai|'
@@ -83,27 +85,12 @@ def _jelentesek(regio):
     return ki
 
 
-def szeletel(szoveg, lemma=''):
+def _egy(szoveg):
     if not szoveg:
         return None
     s = szoveg.replace('\n', ' ').strip()
     # „1.a beginning” → „1. a. beginning” (így a magyar „a” névelő nem téveszthető alpontnak)
     s = re.sub(r'(?<=[\s—])(\d{1,2})\.([a-l])\s', r'\1. \2. ', s)
-    # Zárójeles előszócikk: ha a sor „H… atiras [gyök] …” előszócikkel indul (a gyök zárójelben van), és később
-    # betűjellel nem zárójeles „I. <héber szó> …” homonima következik, a Strong-számhoz az „I.” homonima tartozik
-    # (pl. H6030: előbb az [עוּן] „lakni”, utána az „I. עָנָה felelni”). Az előszócikk szövege külön marad.
-    elotag = ''
-    mz = re.match(r"^(H\d+)\.\s+(\S+(?:\s')?)\s+\[", s)
-    if mz:
-        mh = re.search(r'(?<=[\s.;—])I\.\s+(?=[֐-׿]+\s+(?:verb|noun|adjective|adverb|ige|főnév|melléknév|határozószó)\b)', s)
-        if mh and lemma:
-            szo = re.match(r'[\u0590-\u05ff]+', s[mh.end():])
-            kons = lambda x: re.sub(r'[\u0591-\u05c7]', '', x)
-            if not szo or kons(szo.group(0)) != kons(lemma):
-                mh = None
-        if mh and mh.start() > 0:
-            elotag = s[len(mz.group(0)) - 1:mh.start()].strip(' —;')
-            s = '%s. %s %s' % (mz.group(1), mz.group(2), s[mh.start():])
     fej = {'strong': '', 'atiras': '', 'heber': '', 'ossz': ''}
     m = re.match(r"^(H\d+)\.\s+(\S+(?:\s')?)\s+(?:([IVX]+)\.\s+)?\[?([^\s\]_]+)\]?(?:_(\d+))?\s", s)
     if m:
@@ -156,7 +143,6 @@ def szeletel(szoveg, lemma=''):
         torzsek.append({'nev': '', 'db': '', 'jelentesek': _jelentesek(regio)})
     return {
         'fej': fej,
-        'elotag': elotag,
         'alap': alapjelentes,
         'nyelvi': nyelvi,
         'alaktan': alaktan,
@@ -165,6 +151,72 @@ def szeletel(szoveg, lemma=''):
         'krit': sorted(set(x.replace(' ', '') for x in KRIT.findall(s))),
         'ref_ossz': len(REF.findall(s)),
     }
+
+
+POS = r"(?:verb|noun|adjective|adverb|preposition|conjunction|particle|pronoun|interjection|ige|főnév|melléknév|határozószó|elöljárószó|kötőszó|partikula|névmás|indulatszó)"
+CIM = re.compile(r"(?<=[\s.;—])((?:IV|VI|V|I{1,3}))\.\s+(?=\[?[\u0590-\u05ff]+\]?\s+" + POS + r"\b)")
+
+
+def _kons(x):
+    return re.sub(r"[\u0591-\u05c7]", "", x or "")
+
+
+def szeletel(szoveg, lemma=""):
+    """Egy BDB-sor szeletelése. Ha a sor több szócikket (homonimát) tartalmaz — zárójeles előszócikk, „I. / II. / IV. <héber szó> <szófaj>”
+    címszavak, arámi (Pe`al) rész —, akkor szakaszokra bontja; a Strong-számhoz tartozó szakasz (a Strong-lemma mássalhangzó-vázával
+    egyező első címszó) a fő elemzés, a többi a `szakaszok` listába kerül, szerepjelöléssel (elo / azonos_lemma / masik_lemma)."""
+    if not szoveg:
+        return None
+    s = szoveg.replace("\n", " ").strip()
+    mf = re.match(r"^(H\d+)\.\s+(\S+(?:\s')?)\s+", s)
+    heads = [m for m in CIM.finditer(s) if mf and m.start() > mf.end()]
+    if not heads:
+        r = _egy(szoveg)
+        r['elotag'] = ''
+        r['szakaszok'] = []
+        return r
+    strong, atiras = mf.group(1), mf.group(2)
+    hatarok = [0] + [m.start() for m in heads] + [len(s)]
+    szakaszok = []
+    for i in range(len(hatarok) - 1):
+        resz = s[hatarok[i]:hatarok[i + 1]].strip()
+        if i > 0:
+            resz = "%s. %s %s" % (strong, atiras, resz)
+        e = _egy(resz)
+        if not e or not e['fej']['heber']:
+            continue
+        szakaszok.append({'jel': (heads[i - 1].group(1) if i > 0 else e['fej'].get('homonima', '')), 'szoveg': resz, 'e': e})
+    if not szakaszok:
+        r = _egy(szoveg)
+        r['elotag'] = ''
+        r['szakaszok'] = []
+        return r
+    if lemma:
+        fo = next((k for k, x in enumerate(szakaszok) if _kons(x['e']['fej']['heber']) == _kons(lemma)), 0)
+    else:
+        fo = 0
+    r = dict(szakaszok[fo]['e'])
+    ki = []
+    for k, x in enumerate(szakaszok):
+        if k == fo:
+            continue
+        e = x['e']
+        elo = k == 0 and not x['jel']
+        stems = ' '.join(t['nev'] for t in e['torzsek'])
+        ki.append({
+            'jel': x['jel'], 'heber': e['fej']['heber'],
+            'szerep': 'elo' if elo else ('azonos_lemma' if lemma and _kons(e['fej']['heber']) == _kons(lemma) else 'masik_lemma'),
+            'nyelv': 'arámi' if ARAMI_TORZS.search(x['szoveg']) and not re.search(r'\bQal\b', x['szoveg']) else 'héber',
+            'alap': e['alap'], 'nyelvi': e['nyelvi'], 'torzsek': e['torzsek'], 'ref': e['ref_ossz'],
+            'zarojeles': bool(re.match(r"^H\d+\.\s+\S+(?:\s')?\s+(?:[IVX]+\.\s+)?\[", x['szoveg'])),
+        })
+    elotag = ''
+    if szakaszok[0]['jel'] == '' and fo != 0:
+        elotag = re.sub(r"^H\d+\.\s+\S+(?:\s')?\s+", '', szakaszok[0]['szoveg']).strip(' —;')
+    r['elotag'] = elotag
+    r['szakaszok'] = ki
+    r['ref_ossz'] = szakaszok[fo]['e']['ref_ossz']
+    return r
 
 
 if __name__ == '__main__':

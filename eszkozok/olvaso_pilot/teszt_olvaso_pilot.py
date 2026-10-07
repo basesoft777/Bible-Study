@@ -469,6 +469,65 @@ class ZarojelesElozoCikk(unittest.TestCase):
         self.assertEqual(r['elotag'], '')
 
 
+class HomonimaSzakaszok(unittest.TestCase):
+    """F60.18: egy BDB-sor több szócikke (zárójeles előszócikk, I./IV. homonimák, arámi Pe`al rész) külön szakasz; a Strong-lemma dönt."""
+
+    HU = ("H6030. anah [עוּן] ige: lakni (valószínűleg); — Qal perfectum Ézs 13:22 és sakálok laknak. — Zsolt 87:7, l. מַעְיָן. "
+          "I. עָנָה ige: felelni, válaszolni (késői héber); — Qal perfectum Mik 6:5; imperfectum יַעֲנֶה 1Móz 41:16; — 1 felelni, 1Sám 4:20. "
+          "Hiph`il participium Préd 5:19, teljesen kétséges. "
+          "IV. עָנָה ige: énekelni (arab); — Qal perfectum Jer 51:14; — énekelni, Kiv 15:21. "
+          "I. [עֲנָה] ige: felelni (l. bibliai héber I. עָנָה); — Pe`al perfectum Dán 5:10; — 1 felelni, Dán 2:5, 7.")
+
+    def setUp(self):
+        import bdb_szelet
+        self.r = bdb_szelet.szeletel(self.HU, 'עָנָה')
+
+    def test_fo_szakasz_a_strong_lemma(self):
+        self.assertEqual(self.r['fej']['heber'], 'עָנָה')
+        self.assertTrue(self.r['alap'].startswith('ige: felelni'))
+
+    def test_hiphil_nem_olvassa_be_az_arami_reszt(self):
+        hiphil = [t for t in self.r['torzsek'] if t['nev'].startswith('Hiph')]
+        self.assertEqual(len(hiphil), 1)
+        szoveg = ' '.join(j['szoveg'] for j in hiphil[0]['jelentesek'])
+        self.assertNotIn('Dán', szoveg)
+
+    def test_szakaszok_szerepei(self):
+        sz = {(x['szerep'], x['nyelv'], x['jel']) for x in self.r['szakaszok']}
+        self.assertIn(('elo', 'héber', ''), sz)
+        self.assertIn(('azonos_lemma', 'héber', 'IV'), sz)
+        self.assertTrue(any(x['nyelv'] == 'arámi' for x in self.r['szakaszok']))
+        arami = [x for x in self.r['szakaszok'] if x['nyelv'] == 'arámi'][0]
+        self.assertTrue(any(t['nev'].startswith('Pe') for t in arami['torzsek']))
+
+    def test_egyszeru_szocikk_valtozatlan(self):
+        import bdb_szelet
+        r = bdb_szelet.szeletel("H0001. av [אָב] noun father; — 1. father Gen 2:24.", 'אָב')
+        self.assertEqual(r['szakaszok'], [])
+
+
+class TbeshSorrend(unittest.TestCase):
+    """F60.18: a TBESH-sorok közül a Strong-lemmához és a rövid jelentéshez illő kerül előre (H6030b „answer”, nem H6030a „dwell”)."""
+
+    def sorok(self):
+        return [{'estrong': 'H6030a', 'lemma': 'עוּן', 'gloss': 'to dwell'},
+                {'estrong': 'H6030b', 'lemma': 'עָנָה', 'gloss': 'to answer'},
+                {'estrong': 'H6030c', 'lemma': 'עָנָה', 'gloss': 'to sing'}]
+
+    def test_h6030(self):
+        import bovites
+        r = bovites._tbesh_sorrend(self.sorok(), 'עָנָה', 'to answer')
+        self.assertEqual([x['estrong'] for x in r], ['H6030b', 'H6030a', 'H6030c'])
+        self.assertEqual([x['elsodleges'] for x in r], [True, False, False])
+
+    def test_egy_sor_es_nincs_egyezes_valtozatlan(self):
+        import bovites
+        egy = [{'estrong': 'H0001', 'lemma': 'אָב', 'gloss': 'father'}]
+        self.assertEqual(bovites._tbesh_sorrend(egy, 'אָב', 'father'), egy)
+        sok = self.sorok()
+        self.assertEqual(bovites._tbesh_sorrend(sok, 'שׁלום', 'peace'), sok)
+
+
 class Regresszio(unittest.TestCase):
     @unittest.skipUnless(os.environ.get('OLVASO_PROTOTIP_JSON'), 'OLVASO_PROTOTIP_JSON nincs megadva')
     def test_prototipussal_azonos(self):

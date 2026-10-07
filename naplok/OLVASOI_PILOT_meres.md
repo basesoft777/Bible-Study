@@ -1,14 +1,14 @@
 <!-- GENERÁLT: eszkozok/olvaso_pilot/meres.py — kézzel nem szerkesztendő. -->
 # Olvasói pilot — mérés (F60.2, bővítve: F60.5)
 
-*Gép által generált (`eszkozok/olvaso_pilot/meres.py`), kézzel nem szerkesztendő; a #60 M2 lépése. Mért adatállapot: repó-commit `7f18c4c` (az `ág: claude/olvasoi-pilot` feje a mérés előtt), a szakasz-adatok `ts` ideje: 1Móz 1:1–2:3 2026-10-07T14:29Z, Zsolt 22 2026-10-07T14:29Z.*
+*Gép által generált (`eszkozok/olvaso_pilot/meres.py`), kézzel nem szerkesztendő; a #60 M2 lépése. Mért adatállapot: repó-commit `8b64234` (az `ág: claude/olvasoi-pilot` feje a mérés előtt), a szakasz-adatok `ts` ideje: 1Móz 1:1–2:3 2026-10-07T15:39Z, Zsolt 22 2026-10-07T15:39Z.*
 
 A pilot az aktuális adatállapotot méri (a #7, #9, #22, #38, #54, #56, #57 lezárása után újrafuttatható). A számok a pilot-oldalra kerülő adatot jellemzik, nem a repó egészét.
 
 ## 1. A Károli-szavak kötése héber szóhoz
 
-- `scope=1Móz 1:1–2:3 | forras=adat/karoli_strong/parok_*.tsv (modell-kimenet, #22) + konkordancia/Karoli_1908.tsv; feldolgozás: eszkozok/olvaso_pilot/adat.py (fő szó választása) | ts=2026-10-07T14:29Z`
-- `scope=Zsolt 22 | forras=adat/karoli_strong/parok_*.tsv (modell-kimenet, #22) + konkordancia/Karoli_1908.tsv; feldolgozás: eszkozok/olvaso_pilot/adat.py (fő szó választása) | ts=2026-10-07T14:29Z`
+- `scope=1Móz 1:1–2:3 | forras=adat/karoli_strong/parok_*.tsv (modell-kimenet, #22) + konkordancia/Karoli_1908.tsv; feldolgozás: eszkozok/olvaso_pilot/adat.py (fő szó választása) | ts=2026-10-07T15:41Z`
+- `scope=Zsolt 22 | forras=adat/karoli_strong/parok_*.tsv (modell-kimenet, #22) + konkordancia/Karoli_1908.tsv; feldolgozás: eszkozok/olvaso_pilot/adat.py (fő szó választása) | ts=2026-10-07T15:41Z`
 
 | Mérőszám | 1Móz 1:1–2:3 | Zsolt 22 |
 |---|---|---|
@@ -21,8 +21,8 @@ A pilot az aktuális adatállapotot méri (a #7, #9, #22, #38, #54, #56, #57 lez
 
 ## 2. Héber szó-lapok: BDB-szócikk
 
-- `scope=1Móz 1:1–2:3 | forras=adat/forditasok.tsv (BDB, magyar) + konkordancia/BDB_teljes_unabridged.tsv (angol) | ts=2026-10-07T14:29Z`
-- `scope=Zsolt 22 | forras=adat/forditasok.tsv (BDB, magyar) + konkordancia/BDB_teljes_unabridged.tsv (angol) | ts=2026-10-07T14:29Z`
+- `scope=1Móz 1:1–2:3 | forras=adat/forditasok.tsv (BDB, magyar) + konkordancia/BDB_teljes_unabridged.tsv (angol) | ts=2026-10-07T15:41Z`
+- `scope=Zsolt 22 | forras=adat/forditasok.tsv (BDB, magyar) + konkordancia/BDB_teljes_unabridged.tsv (angol) | ts=2026-10-07T15:41Z`
 
 | Mérőszám | 1Móz 1:1–2:3 | Zsolt 22 |
 |---|---|---|
@@ -35,26 +35,26 @@ A pilot az aktuális adatállapotot méri (a #7, #9, #22, #38, #54, #56, #57 lez
 
 ## 3. BDB-bontás (gépi szeletelés)
 
-- `scope=1Móz 1:1–2:3 | forras=adat/forditasok.tsv + konkordancia/BDB_teljes_unabridged.tsv; bontás: eszkozok/olvaso_pilot/bdb_szelet.py (gépi feldolgozás); „jelentés” = a szócikk számozott (1, 2 …) első szintű pontja | ts=2026-10-07T14:29Z`
-- `scope=Zsolt 22 | forras=adat/forditasok.tsv + konkordancia/BDB_teljes_unabridged.tsv; bontás: eszkozok/olvaso_pilot/bdb_szelet.py (gépi feldolgozás); „jelentés” = a szócikk számozott (1, 2 …) első szintű pontja | ts=2026-10-07T14:29Z`
+- `scope=1Móz 1:1–2:3 | forras=adat/forditasok.tsv + konkordancia/BDB_teljes_unabridged.tsv; bontás: eszkozok/olvaso_pilot/bdb_szelet.py (gépi feldolgozás); „jelentés” = a szócikk számozott (1, 2 …) első szintű pontja | ts=2026-10-07T15:41Z`
+- `scope=Zsolt 22 | forras=adat/forditasok.tsv + konkordancia/BDB_teljes_unabridged.tsv; bontás: eszkozok/olvaso_pilot/bdb_szelet.py (gépi feldolgozás); „jelentés” = a szócikk számozott (1, 2 …) első szintű pontja | ts=2026-10-07T15:41Z`
 
 | Mérőszám | 1Móz 1:1–2:3 | Zsolt 22 |
 |---|---|---|
-| legalább 2 jelentésre bomlik | 68 (69.4%) | 125 (78.6%) |
-| egyben marad (1 számozott jelentés) | 5 (5.1%) | 2 (1.3%) |
-| nincs számozott jelentés a szeletelésben (0) | 25 (25.5%) | 32 (20.1%) |
+| legalább 2 jelentésre bomlik | 67 (68.4%) | 123 (77.4%) |
+| egyben marad (1 számozott jelentés) | 6 (6.1%) | 2 (1.3%) |
+| nincs számozott jelentés a szeletelésben (0) | 25 (25.5%) | 34 (21.4%) |
 
-- 1Móz 1:1–2:3, egyben maradó szócikkek (5): H2009 הִנֵּה, H3533 כָּבַשׁ, H6153 עֶ֫רֶב, H7287 רָדָה, H8415 תְּהוֹם
+- 1Móz 1:1–2:3, egyben maradó szócikkek (6): H2009 הִנֵּה, H2416 חַי, H3533 כָּבַשׁ, H6153 עֶ֫רֶב, H7287 רָדָה, H8415 תְּהוֹם
 - 1Móz 1:1–2:3, számozott jelentés nélkül (25): H0226 אוֹת, H0402 אׇכְלָה, H0922 בֹּהוּ, H1419 גַּל, H1710 דָּגָה, H1876 דָּשָׁא, H1877 דֶּ֫שֶׁא, H2145 זָכָר, H3004 יַבָּשָׁה, H3220 יָם, H3418 יֶ֫רֶק, H3556 כּוֹכָב, H3974 מָאוֹר, H4327 מִין, H4723 מִקְוֶה, H6086 עֵץ, H6212 עֵ֫שֶׂב, H7363 רָחַף, H7549 רָקִיעַ, H7992 שְׁלִישִׁי, H8141 שָׁנָה, H8145 שֵׁנִי, H8318 שֶׁ֫רֶץ, H8345 שִׁשִּׁי, H8432 תָּ֫וֶךְ
-- 1Móz 1:1–2:3, bomló szócikkek (68), jelentésszám szerint csökkenően: H6942 קָדַשׁ (17), H6213 עָשָׂה (12), H0216 אוֹר (11), H2896 טוֹב (10), H5315 נֶ֫פֶשׁ (10), H1254 בָּרָא (9), H7307 רוּחַ (9), H6440 פָּנֶה (8), H0127 אֲדָמָה (7), H4725 מָקוֹם (7), H7200 רָאָה (7), H7673 שָׁבַת (7), H4390 מָלֵא (6), H4399 מְלָאכָה (6), H5414 נָתַן (6), H7121 קָרָא (6), H0215 אוֹר (5), H0776 אֶ֫רֶץ (5), H1288 בָּרַךְ (5), H1961 הָיָה (5), H2233 זֶ֫רַע (5), H3318 יָצָא (5), H4150 מוֹעֵד (5), H6509 פָּרָה (5), H0120 אָדָם (4) …
+- 1Móz 1:1–2:3, bomló szócikkek (67), jelentésszám szerint csökkenően: H6942 קָדַשׁ (17), H6213 עָשָׂה (12), H0216 אוֹר (11), H2896 טוֹב (10), H5315 נֶ֫פֶשׁ (10), H1254 בָּרָא (9), H7307 רוּחַ (9), H6440 פָּנֶה (8), H0127 אֲדָמָה (7), H4725 מָקוֹם (7), H7200 רָאָה (7), H7673 שָׁבַת (7), H4390 מָלֵא (6), H4399 מְלָאכָה (6), H5414 נָתַן (6), H7121 קָרָא (6), H0215 אוֹר (5), H0776 אֶ֫רֶץ (5), H1288 בָּרַךְ (5), H1961 הָיָה (5), H2233 זֶ֫רַע (5), H3318 יָצָא (5), H4150 מוֹעֵד (5), H6509 פָּרָה (5), H0120 אָדָם (4) …
 - Zsolt 22, egyben maradó szócikkek (2): H1518 גִּיחַ, H3119 יוֹמָם
-- Zsolt 22, számozott jelentés nélkül (32): H0251 אָח, H0355 אַיָּלָה, H0360 אֱיָלוּת, H0376 אִישׁ, H0408 אַל, H0595 אָֽנֹכִ֫י, H0657 אֶ֫פֶס, H0738 אַרְיֵה, H0859 אַתָּ֫ה, H1316 בָּשָׁן, H1556 גָּלַל, H1732 דָּוִד, H1747 דּוּמִיָּה, H1749 דּוֹנַג, H1879 דָּשֵׁן, H2963 טָרַף, H3373 יָרֵא, H3611 כֶּ֫לֶב, H3803 כָּתַר, H3830 לְבוּשׁ, H3932 לָעַג, H4210 מִזְמוֹר, H4410 מְלוּכָה, H4455 מַלְקוֹחַ, H5826 עָזַר, H6039 עֱנוּת, H6869 צָרָה, H7214 רְאֵם, H7227 רַב, H7768 שָׁוַע, H7837 שַׁ֫חַר, H8432 תָּ֫וֶךְ
-- Zsolt 22, bomló szócikkek (125), jelentésszám szerint csökkenően: H7725 שׁוּב (20), H2142 זָכַר (15), H0398 אָכַל (12), H3513 כָּבֵד (12), H6213 עָשָׂה (12), H5437 סָבַב (11), H2505 חָלַק (10), H3820 לֵב (10), H3824 לֵבָב (10), H5315 נֶ֫פֶשׁ (10), H0001 אָב (9), H1697 דָּבָר (8), H3427 יָשַׁב (8), H4422 מָלַט (8), H6440 פָּנֶה (8), H8085 שָׁמַע (8), H0410 אֵל (7), H5307 נָפַל (7), H6666 צְדָקָה (7), H7200 רָאָה (7), H0136 אֲדֹנָי (6), H0369 אַ֫יִן (6), H0935 בּוֹא (6), H1984 הָלַל (6), H2199 זָעַק (6) …
+- Zsolt 22, számozott jelentés nélkül (34): H0251 אָח, H0355 אַיָּלָה, H0360 אֱיָלוּת, H0376 אִישׁ, H0408 אַל, H0595 אָֽנֹכִ֫י, H0657 אֶ֫פֶס, H0738 אַרְיֵה, H0859 אַתָּ֫ה, H1316 בָּשָׁן, H1556 גָּלַל, H1732 דָּוִד, H1747 דּוּמִיָּה, H1749 דּוֹנַג, H1879 דָּשֵׁן, H1984 הָלַל, H2963 טָרַף, H3373 יָרֵא, H3611 כֶּ֫לֶב, H3803 כָּתַר, H3830 לְבוּשׁ, H3932 לָעַג, H4210 מִזְמוֹר, H4410 מְלוּכָה, H4455 מַלְקוֹחַ, H5362 נָקַף, H5826 עָזַר, H6039 עֱנוּת, H6869 צָרָה, H7214 רְאֵם, H7227 רַב, H7768 שָׁוַע, H7837 שַׁ֫חַר, H8432 תָּ֫וֶךְ
+- Zsolt 22, bomló szócikkek (123), jelentésszám szerint csökkenően: H7725 שׁוּב (20), H2142 זָכַר (15), H0398 אָכַל (14), H3513 כָּבֵד (12), H6213 עָשָׂה (12), H5437 סָבַב (11), H3820 לֵב (10), H3824 לֵבָב (10), H5315 נֶ֫פֶשׁ (10), H0001 אָב (9), H1697 דָּבָר (8), H2505 חָלַק (8), H3427 יָשַׁב (8), H4422 מָלַט (8), H6440 פָּנֶה (8), H8085 שָׁמַע (8), H0410 אֵל (7), H5307 נָפַל (7), H6666 צְדָקָה (7), H7200 רָאָה (7), H0136 אֲדֹנָי (6), H0369 אַ֫יִן (6), H0935 בּוֹא (6), H2199 זָעַק (6), H3956 לָשׁוֹן (6) …
 
 ## 4. Görög szó-lapok
 
-- `scope=1Móz 1:1–2:3 | forras=konkordancia/TBESG.txt + Thayer_teljes.tsv + adat/forditasok.tsv (Thayer, UBS_DNTG) + konkordancia/TAGNT_kivonat.tsv + adat/kulso/lxx_bridge.tsv; a görög szavak köre: LXX_OS + Macula a szakasz verseire, és minden görög szó, amelyre egy héber szó-lap a lxx_bridge-ből hivatkozik | ts=2026-10-07T14:29Z`
-- `scope=Zsolt 22 | forras=konkordancia/TBESG.txt + Thayer_teljes.tsv + adat/forditasok.tsv (Thayer, UBS_DNTG) + konkordancia/TAGNT_kivonat.tsv + adat/kulso/lxx_bridge.tsv; a görög szavak köre: LXX_OS + Macula a szakasz verseire, és minden görög szó, amelyre egy héber szó-lap a lxx_bridge-ből hivatkozik | ts=2026-10-07T14:29Z`
+- `scope=1Móz 1:1–2:3 | forras=konkordancia/TBESG.txt + Thayer_teljes.tsv + adat/forditasok.tsv (Thayer, UBS_DNTG) + konkordancia/TAGNT_kivonat.tsv + adat/kulso/lxx_bridge.tsv; a görög szavak köre: LXX_OS + Macula a szakasz verseire, és minden görög szó, amelyre egy héber szó-lap a lxx_bridge-ből hivatkozik | ts=2026-10-07T15:41Z`
+- `scope=Zsolt 22 | forras=konkordancia/TBESG.txt + Thayer_teljes.tsv + adat/forditasok.tsv (Thayer, UBS_DNTG) + konkordancia/TAGNT_kivonat.tsv + adat/kulso/lxx_bridge.tsv; a görög szavak köre: LXX_OS + Macula a szakasz verseire, és minden görög szó, amelyre egy héber szó-lap a lxx_bridge-ből hivatkozik | ts=2026-10-07T15:41Z`
 
 | Mérőszám | 1Móz 1:1–2:3 | Zsolt 22 |
 |---|---|---|
@@ -66,8 +66,8 @@ A pilot az aktuális adatállapotot méri (a #7, #9, #22, #38, #54, #56, #57 lez
 
 ## 5. A görög szóalak forrása
 
-- `scope=1Móz 1:1–2:3 | forras=konkordancia/Macula_heber_*.tsv (héber–görög párosítás) + konkordancia/LXX_OS/*.tsv (szóalak); összevetés: eszkozok/olvaso_pilot/adat.py (gépi feldolgozás) | ts=2026-10-07T14:29Z`
-- `scope=Zsolt 22 | forras=konkordancia/Macula_heber_*.tsv (héber–görög párosítás) + konkordancia/LXX_OS/*.tsv (szóalak); összevetés: eszkozok/olvaso_pilot/adat.py (gépi feldolgozás) | ts=2026-10-07T14:29Z`
+- `scope=1Móz 1:1–2:3 | forras=konkordancia/Macula_heber_*.tsv (héber–görög párosítás) + konkordancia/LXX_OS/*.tsv (szóalak); összevetés: eszkozok/olvaso_pilot/adat.py (gépi feldolgozás) | ts=2026-10-07T15:41Z`
+- `scope=Zsolt 22 | forras=konkordancia/Macula_heber_*.tsv (héber–görög párosítás) + konkordancia/LXX_OS/*.tsv (szóalak); összevetés: eszkozok/olvaso_pilot/adat.py (gépi feldolgozás) | ts=2026-10-07T15:41Z`
 
 | Mérőszám | 1Móz 1:1–2:3 | Zsolt 22 |
 |---|---|---|
@@ -84,8 +84,8 @@ A pilot az aktuális adatállapotot méri (a #7, #9, #22, #38, #54, #56, #57 lez
 
 ## 6. UBS-jelentés lefedettsége, versszámozás
 
-- `scope=1Móz 1:1–2:3 | forras=konkordancia/UBS_DBH_referenciak.tsv + UBS_DBH_jelentesek.tsv (CC BY-SA 4.0); konkordancia/Karoli_versmegfeleltetes.tsv + LXX_OS/*.tsv (versszám) | ts=2026-10-07T14:29Z`
-- `scope=Zsolt 22 | forras=konkordancia/UBS_DBH_referenciak.tsv + UBS_DBH_jelentesek.tsv (CC BY-SA 4.0); konkordancia/Karoli_versmegfeleltetes.tsv + LXX_OS/*.tsv (versszám) | ts=2026-10-07T14:29Z`
+- `scope=1Móz 1:1–2:3 | forras=konkordancia/UBS_DBH_referenciak.tsv + UBS_DBH_jelentesek.tsv (CC BY-SA 4.0); konkordancia/Karoli_versmegfeleltetes.tsv + LXX_OS/*.tsv (versszám) | ts=2026-10-07T15:41Z`
+- `scope=Zsolt 22 | forras=konkordancia/UBS_DBH_referenciak.tsv + UBS_DBH_jelentesek.tsv (CC BY-SA 4.0); konkordancia/Karoli_versmegfeleltetes.tsv + LXX_OS/*.tsv (versszám) | ts=2026-10-07T15:41Z`
 
 | Mérőszám | 1Móz 1:1–2:3 | Zsolt 22 |
 |---|---|---|
@@ -109,8 +109,8 @@ A bővítés új adatot nem állít elő: minden érték egy meglévő tábla so
 
 ### 7.1 Szó-lapok (Strong-kulcs)
 
-- `scope=1Móz 1:1–2:3 | forras=konkordancia/{SDBH_domenek,SDGNT_domenek,SECE_H_teljes,SECE_G_teljes,OSHL_lexikalis_index,LSJ_teljes,MCGED_teljes,UBS_DNTG_jelentesek,tW_szocikkek}.tsv + TBESH.txt; szó-lapok: adat.py → bovites.py | ts=2026-10-07T14:29Z`
-- `scope=Zsolt 22 | forras=konkordancia/{SDBH_domenek,SDGNT_domenek,SECE_H_teljes,SECE_G_teljes,OSHL_lexikalis_index,LSJ_teljes,MCGED_teljes,UBS_DNTG_jelentesek,tW_szocikkek}.tsv + TBESH.txt; szó-lapok: adat.py → bovites.py | ts=2026-10-07T14:29Z`
+- `scope=1Móz 1:1–2:3 | forras=konkordancia/{SDBH_domenek,SDGNT_domenek,SECE_H_teljes,SECE_G_teljes,OSHL_lexikalis_index,LSJ_teljes,MCGED_teljes,UBS_DNTG_jelentesek,tW_szocikkek}.tsv + TBESH.txt; szó-lapok: adat.py → bovites.py | ts=2026-10-07T15:41Z`
+- `scope=Zsolt 22 | forras=konkordancia/{SDBH_domenek,SDGNT_domenek,SECE_H_teljes,SECE_G_teljes,OSHL_lexikalis_index,LSJ_teljes,MCGED_teljes,UBS_DNTG_jelentesek,tW_szocikkek}.tsv + TBESH.txt; szó-lapok: adat.py → bovites.py | ts=2026-10-07T15:41Z`
 
 | Mérőszám (a szakasz szó-lapjai közül) | 1Móz 1:1–2:3 | Zsolt 22 |
 |---|---|---|
@@ -129,8 +129,8 @@ A bővítés új adatot nem állít elő: minden érték egy meglévő tábla so
 
 ### 7.2 Vers-lapok (vers-kulcs)
 
-- `scope=1Móz 1:1–2:3 | forras=konkordancia/{BSB_Strongs,KJV_Strongs_teljes,Nave_basokant,TIPNR_kivonat,LXX_versszintu_parok,LXX_tobblet_szakaszok,Verzifikacios_elteres_tabla}.tsv + adat/{elofordulasok,kapcsolatok,lxx_dontesek,motivumok}.tsv; vers-kulcs: eszkozok/olvaso_pilot/bovites.py (gépi illesztés) | ts=2026-10-07T14:29Z`
-- `scope=Zsolt 22 | forras=konkordancia/{BSB_Strongs,KJV_Strongs_teljes,Nave_basokant,TIPNR_kivonat,LXX_versszintu_parok,LXX_tobblet_szakaszok,Verzifikacios_elteres_tabla}.tsv + adat/{elofordulasok,kapcsolatok,lxx_dontesek,motivumok}.tsv; vers-kulcs: eszkozok/olvaso_pilot/bovites.py (gépi illesztés) | ts=2026-10-07T14:29Z`
+- `scope=1Móz 1:1–2:3 | forras=konkordancia/{BSB_Strongs,KJV_Strongs_teljes,Nave_basokant,TIPNR_kivonat,LXX_versszintu_parok,LXX_tobblet_szakaszok,Verzifikacios_elteres_tabla}.tsv + adat/{elofordulasok,kapcsolatok,lxx_dontesek,motivumok}.tsv; vers-kulcs: eszkozok/olvaso_pilot/bovites.py (gépi illesztés) | ts=2026-10-07T15:41Z`
+- `scope=Zsolt 22 | forras=konkordancia/{BSB_Strongs,KJV_Strongs_teljes,Nave_basokant,TIPNR_kivonat,LXX_versszintu_parok,LXX_tobblet_szakaszok,Verzifikacios_elteres_tabla}.tsv + adat/{elofordulasok,kapcsolatok,lxx_dontesek,motivumok}.tsv; vers-kulcs: eszkozok/olvaso_pilot/bovites.py (gépi illesztés) | ts=2026-10-07T15:41Z`
 
 | Mérőszám | 1Móz 1:1–2:3 | Zsolt 22 |
 |---|---|---|
@@ -152,16 +152,16 @@ A bővítés új adatot nem állít elő: minden érték egy meglévő tábla so
 
 ### 7.3 Morfológia és méret
 
-- `scope=1Móz 1:1–2:3 | forras=adat/morf_kulcs_heber.tsv + adat/morf_nyelv_aramai.tsv; Macula-kód: konkordancia/Macula_heber_*.tsv; feldolgozás: eszkozok/olvaso_pilot/bovites.py (gépi feldolgozás) | ts=2026-10-07T14:29Z`
-- `scope=Zsolt 22 | forras=adat/morf_kulcs_heber.tsv + adat/morf_nyelv_aramai.tsv; Macula-kód: konkordancia/Macula_heber_*.tsv; feldolgozás: eszkozok/olvaso_pilot/bovites.py (gépi feldolgozás) | ts=2026-10-07T14:29Z`
+- `scope=1Móz 1:1–2:3 | forras=adat/morf_kulcs_heber.tsv + adat/morf_nyelv_aramai.tsv; Macula-kód: konkordancia/Macula_heber_*.tsv; feldolgozás: eszkozok/olvaso_pilot/bovites.py (gépi feldolgozás) | ts=2026-10-07T15:41Z`
+- `scope=Zsolt 22 | forras=adat/morf_kulcs_heber.tsv + adat/morf_nyelv_aramai.tsv; Macula-kód: konkordancia/Macula_heber_*.tsv; feldolgozás: eszkozok/olvaso_pilot/bovites.py (gépi feldolgozás) | ts=2026-10-07T15:41Z`
 
 | Mérőszám | 1Móz 1:1–2:3 | Zsolt 22 |
 |---|---|---|
 | Macula-szó morfológiai kóddal, ebből magyarul feloldva (a nyers kód mellett marad) | 746/746 (100.0%) | 388/388 (100.0%) |
 | ismeretlen jelű kód (a jelkulcs nem oldja fel) | 0 | 0 |
 | arámi szó a szakaszban (adat/morf_nyelv_aramai.tsv) | 0 | 0 |
-| olvaso_pilot.json mérete (bájt) | 4 635 070 | 6 316 611 |
-| karoli_konkordancia_proba.html mérete (bájt; egyetlen fájl, minden adat beágyazva) | 4 727 842 | 6 409 362 |
+| olvaso_pilot.json mérete (bájt) | 4 646 525 | 6 335 413 |
+| karoli_konkordancia_proba.html mérete (bájt; egyetlen fájl, minden adat beágyazva) | 4 740 236 | 6 429 103 |
 
-A legnagyobb HTML 6 409 362 bájt, vagyis 8 MB alatt van: lusta betöltésre vagy külön JSON-ra nem kellett áttérni (a határ átlépése esetén a nagy szövegek: SECE, LSJ, tW, TBESH, BDB teljes szöveg külön JSON-ba kerülnének).
+A legnagyobb HTML 6 429 103 bájt, vagyis 8 MB alatt van: lusta betöltésre vagy külön JSON-ra nem kellett áttérni (a határ átlépése esetén a nagy szövegek: SECE, LSJ, tW, TBESH, BDB teljes szöveg külön JSON-ba kerülnének).
 

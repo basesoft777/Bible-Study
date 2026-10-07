@@ -792,8 +792,8 @@ ol.jel { gap: 12px; }
     const t = l.tbesh || [];
     return el('div', { class: 'blokk' },
       el('h3', { text: 'Bővített Strong-szócikk (TBESH)' }),
-      t.length ? el('div', { class: 'sorok' }, t.map(x => el('div', { class: 'sor' },
-        el('span', { class: 'fo', text: `${x.estrong} · ${x.dstrong}${x.rokon ? ' · ' + x.rokon : ''}` }),
+      t.length ? el('div', { class: 'sorok' }, t.map(x => el('div', { class: 'sor' + (x.elsodleges === false ? ' regi' : '') },
+        el('span', { class: 'fo', text: `${x.estrong} · ${x.dstrong}${x.rokon ? ' · ' + x.rokon : ''}` + (x.elsodleges === true ? ' · ennek a Strong-számnak a szócikke (lemma és jelentés egyezik)' : x.elsodleges === false ? ' · másik homonima ugyanezen a Strong-számon' : '') }),
         el('span', { lang: 'en', text: x.gloss }),
         x.jelentes ? el('span', { class: 'al', lang: 'en', style: 'white-space: pre-line', text: x.jelentes }) : null))) : el('p', { class: 'meg', text: HU_URES }),
       l.tbesh_db > t.length ? el('p', { class: 'meg', text: `Az első ${t.length} a ${l.tbesh_db} sorból.` }) : null,
@@ -1003,7 +1003,7 @@ ol.jel { gap: 12px; }
     ['SECE-szócikk (héber)', [['SECE_H', 'konkordancia/SECE_H_teljes.tsv']], ['forras']],
     ['SECE-szócikk (görög)', [['SECE_G', 'konkordancia/SECE_G_teljes.tsv']], ['forras']],
     ['TWOT- és BDB-azonosító', [['OSHL', 'konkordancia/OSHL_lexikalis_index.tsv']], ['forras']],
-    ['Bővített Strong-szócikk', [['TBESH', 'konkordancia/TBESH.txt (a jelentés-lista az Online Bible-eredetű: a licenc-kérdés nyitott)']], ['forras']],
+    ['Bővített Strong-szócikk', [['TBESH', 'konkordancia/TBESH.txt (a jelentés-lista az Online Bible-eredetű: a licenc-kérdés nyitott)']], ['forras', 'gepi']],
     ['translationWords', [['tW_szocikkek', 'konkordancia/tW_szocikkek.tsv']], ['forras']],
     ['UBS DNTG jelentések', [['UBS_DNTG', 'konkordancia/UBS_DNTG_jelentesek.tsv']], ['forras']],
     ['LSJ-szócikk', [['LSJ', 'konkordancia/LSJ_teljes.tsv']], ['forras']],
@@ -1067,6 +1067,10 @@ ol.jel { gap: 12px; }
   const rovid = (s, n) => s.length > n ? s.slice(0, n).replace(/\s+\S*$/, '') + ' …' : s;
   const helyek = n => n ? el('span', { class: 'helyek', text: `${n} hely` }) : null;
 
+  const SZAKASZ_CIM = x => x.szerep === 'elo' ? 'Zárójeles előszócikk (más gyök)'
+    : x.nyelv === 'arámi' ? `${x.jel ? x.jel + '. ' : ''}Arámi (Pe'al) rész`
+    : x.szerep === 'azonos_lemma' ? `${x.jel ? x.jel + '. ' : ''}További homonima ugyanezen a lemmán`
+    : `${x.jel ? x.jel + '. ' : ''}Másik szó (más lemma)`;
   function apparatus(l) {
     const a = l.appar;
     const hu = !!l.bdb_hu;
@@ -1074,7 +1078,7 @@ ol.jel { gap: 12px; }
     const resz = (cim, ...tartalom) => el('div', { class: 'app' }, el('h4', { text: cim }),
       el('p', { class: 'forrasnev' }, el('span', { class: 'fcim', text: 'Forrás' }), hu ? 'BDB (Brown–Driver–Briggs), magyar fordítás' : 'BDB (Brown–Driver–Briggs), angol eredeti', ' · gépi bontás'), ...tartalom);
 
-    const torzsek = a.torzsek.map(t => el('div', { class: 'torzs' },
+    const torzsLista = tl => tl.map(t => el('div', { class: 'torzs' },
       t.nev ? el('h5', { title: TORZS_MAGY[t.nev] ? `${t.nev}: ${TORZS_MAGY[t.nev]} törzs` : null }, t.nev,
         TORZS_MAGY[t.nev] ? el('span', { class: 'meg', text: TORZS_MAGY[t.nev] }) : null, t.db ? el('span', { class: 'helyek', text: `${t.db} előfordulás a BDB szerint` }) : null) : null,
       el('ol', { class: 'jel' }, t.jelentesek.map((j, i) => el('li', { 'data-jel': j.jel || '·' },
@@ -1083,6 +1087,8 @@ ol.jel { gap: 12px; }
           el('p', { class: 'jsz' }, j.szoveg),
           j.al.length ? el('ol', { class: 'al' }, j.al.map(s => el('li', { 'data-jel': s.jel + '.' },
             el('p', { class: 'jsz' }, s.szoveg), helyek(s.ref)))) : null))))));
+
+    const torzsek = torzsLista(a.torzsek);
 
     return el('div', { class: 'blokk' },
       el('h3', { text: hu ? 'BDB-szócikk apparátusokra bontva (magyarul)' : 'BDB-szócikk apparátusokra bontva (angol eredeti)' }),
@@ -1097,7 +1103,12 @@ ol.jel { gap: 12px; }
             a.fej.ossz ? el('span', { class: 'helyek', text: `${a.fej.ossz} előfordulás (BDB)` }) : null,
             el('span', { class: 'helyek', text: `${a.ref_ossz} igehely-hivatkozás a szócikkben` }))),
         resz('Alapjelentés és szófaj', el('p', { class: 'jsz' }, a.alap || '—')),
-        a.elotag ? resz('Zárójeles előszócikk (más gyök, nem ennek a Strong-számnak a jelentése)', el('details', null, el('summary', { class: 'meg', text: rovid(a.elotag, 120) }), el('p', { class: 'jsz', lang: 'hu', text: a.elotag }))) : null,
+        (a.szakaszok || []).length ? resz(`Ugyanabban a BDB-sorban további szakaszok (${a.szakaszok.length}) — nem ennek a címszónak a szerkezete`,
+          ...a.szakaszok.map(x => el('details', null,
+            el('summary', { class: 'meg' }, SZAKASZ_CIM(x), ' · ', el('span', { class: 'he', lang: 'he', text: x.heber }), ' · ', rovid(x.alap || '—', 80),
+              x.ref ? helyek(x.ref) : null),
+            x.nyelvi.length ? el('ul', { class: 'lista' }, x.nyelvi.map(n => el('li', { text: n }))) : null,
+            ...torzsLista(x.torzsek)))) : null,
         a.nyelvi.length ? resz('Nyelvi háttér (etimológia, rokon nyelvek)', el('ul', { class: 'lista' }, a.nyelvi.map(x => el('li', { text: x })))) : null,
         a.alaktan ? resz('Alakok (alaktani apparátus)', el('details', null, el('summary', { class: 'meg', text: rovid(a.alaktan, 120) }), el('p', { class: 'jsz' }, a.alaktan))) : null,
         resz(a.torzsek.some(t => t.nev) ? 'Jelentésszerkezet törzsenként' : 'Jelentésszerkezet', ...torzsek),
