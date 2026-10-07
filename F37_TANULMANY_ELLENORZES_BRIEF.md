@@ -5,10 +5,10 @@ kod: TANULMANY_ELLENORZES
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: fut
+allapot: dontesre_var
 ag: claude/tanulmany-ellenorzes
-ad: a tanulmányokat CI (E20–E24, a T0 szerint) és a fuggetlen-ellenor ügynök ellenőrzi; a régi tanulmányokról két auditjelentés készül
-kovetkezo: Egyeztetett eltérés: a #45 levezetett függést a felhasználó felülbírálta (2026.10.07); ⛔ a T0 után (nincs Strong-jelölt eredeti szöveg, vagy az SzPA kötelező szakasz a Tanulmány sablonban, vagy a T0 mégis alap tanulmányt talál)
+ad: a tanulmányokat CI (E20; az E21–E24 a T0 szerint az E13/E8/E9/E12 bővítéseként) és a fuggetlen-ellenor ügynök ellenőrzi; a régi tanulmányokról két auditjelentés készül
+kovetkezo: "Te: döntés a DONTESEK.md DT-F37a (a T5 ⛔-jelöltjei: 5 régi tanulmány ⚠️-vitája most ⛔ vagy utófeladat) és DT-F37b (a „valódi ⚠️-vita” meghatározása a fuggetlen-ellenor T4-szakaszában) tételéről; utána a T6 (zárás, utófeladat-javaslat). Kész: T0–T5 (F37.1–F37.5)."
 olvas: [sablonok/, genezis/, ujszovetseg/, tematikus_lezart/, konkordancia/, adat/, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, CLAUDE.md]
 ir: [sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, MUNKAMENET.md, adat/SEMA.md, ATALAKITASI_TERV.md.md, Join_tabla_folyamat_magyarazat.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/T0_felmeres.md, naplok/TANULMANY_AUDIT.md, naplok/TANULMANY_AUDIT_ugynok.md]
 fugg: [30, 32]

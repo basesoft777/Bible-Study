@@ -339,6 +339,13 @@ def pont6(relut, szak):
         vege = next((j for j in range(eleje + 1, len(sorok)) if sorok[j].startswith('## ')), len(sorok))
         szoveg = '\n'.join(sorok[eleje:vege])
         talalt = [k for k in keresett if k in szoveg]
+        if szak and not talalt:
+            # barmely, a szakaszba eso versre mutato hivatkozas ("1Móz 2:7", "1Mózes 2:7")
+            konyv = szak[0]
+            for m in re.finditer(r'(?<![\wÁ-ű])%s(?:es|a)? (\d+):(\d+)' % re.escape(konyv), szoveg):
+                if _szakaszban(szak, int(m.group(1)), int(m.group(2))):
+                    talalt.append(m.group(0))
+                    break
         ki.append((nev, 'említi' if talalt else 'nem említi', ', '.join(talalt)))
     return ki
 
