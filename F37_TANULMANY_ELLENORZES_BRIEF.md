@@ -7,14 +7,14 @@ fazis: folyamat
 modell: opus
 allapot: nem_indult
 ad: a tanulmányokat CI (E20–E24, a T0 szerint) és a fuggetlen-ellenor ügynök ellenőrzi; a régi tanulmányokról két auditjelentés készül
-kovetkezo: /kovetkezo; ⛔ a T0 után (nincs Strong-jelölt eredeti szöveg, vagy az SzPA kötelező szakasz a Tanulmány sablonban) és a T2 után (az alap tanulmányok sorsa)
+kovetkezo: /kovetkezo; ⛔ a T0 után (nincs Strong-jelölt eredeti szöveg, vagy az SzPA kötelező szakasz a Tanulmány sablonban, vagy a T0 mégis alap tanulmányt talál)
 olvas: [sablonok/, genezis/, ujszovetseg/, tematikus_lezart/, konkordancia/, adat/, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, CLAUDE.md]
-ir: [sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, MUNKAMENET.md, adat/SEMA.md, ATALAKITASI_TERV.md.md, Join_tabla_folyamat_magyarazat.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/T0_felmeres.md, naplok/T2_alap_osszevetes.md, naplok/TANULMANY_AUDIT.md, naplok/TANULMANY_AUDIT_ugynok.md]
+ir: [sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, MUNKAMENET.md, adat/SEMA.md, ATALAKITASI_TERV.md.md, Join_tabla_folyamat_magyarazat.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/T0_felmeres.md, naplok/TANULMANY_AUDIT.md, naplok/TANULMANY_AUDIT_ugynok.md]
 fugg: [30, 32]
 ---
 # TANULMANY_ELLENORZES_BRIEF.md
 
-*v1 · 2026.10.01 · FELADATOK #37 (új sor, chat-jóváhagyással) · függ: #2 (CI) merge-e · ág: `claude/tanulmany-ellenorzes`*
+*v1.1 · 2026.10.07 · a T2 elhagyva (nincs alap tanulmány, DT-F37-9); a Károli–Strong párosítás állapota frissítve · v1 · 2026.10.01 · FELADATOK #37 (új sor, chat-jóváhagyással) · függ: #2 (CI) merge-e · ág: `claude/tanulmany-ellenorzes`*
 
 ## Cél
 
@@ -25,7 +25,8 @@ Egy tanulmány egy menetben készül. Minden új tanulmányt két szereplő elle
 - Alap tanulmány nincs többé. A bővített tanulmány neve mostantól „tanulmány”, a sablon neve „Tanulmány sablon”.
 - Tanulmányokat nem kötegelünk: egy tanulmány egy menet.
 - Az SzPA a projektből kivezetve (2026.10.01).
-- Károli–Strong párosítás még nincs (#22). A zárt licencű forrás adata nem kerülhet a repóba.
+- A Károli–Strong párosítás (#22) részben kész: 2026.10.07-én 1–5Móz és Józsué (`adat/karoli_strong/parok_*.tsv`); a többi könyv folyamatban. A zárt licencű forrás adata nem kerülhet a repóba.
+- Alap tanulmány a repóban nem létezik: a `genezis/` és az `ujszovetseg/` alatt csak bővített tanulmány van, a git-történetben sincs törölt alap tanulmány; a repón kívül sincs bevonandó (felhasználó, 2026.10.07; DT-F37-9).
 
 ## Nem tartozik ide
 
@@ -39,7 +40,7 @@ Egy tanulmány egy menetben készül. Minden új tanulmányt két szereplő elle
 
 Mérd fel, és írd a `naplok/T0_felmeres.md` fájlba:
 - a sablonfájlok helyét (bővített/tanulmány és alap);
-- a tanulmányfájlok helyét és listáját, típus szerint (alap, bővített);
+- a tanulmányfájlok helyét és listáját (a 2026.10.07-i állapot szerint mind bővített; ha a T0 mégis alap tanulmányt talál, jelentsd, és állj meg ⛔);
 - a CI-szabályok helyét és az utolsó E-számot;
 - a `fuggetlen-ellenor` ügynök definíciójának helyét;
 - a „Bővített” szó élő előfordulásait (grep, a lezárt naplók nélkül);
@@ -52,15 +53,13 @@ Mérd fel, és írd a `naplok/T0_felmeres.md` fájlba:
 
 ### T1 — átnevezés
 
-A „Bővített sablon” nevet írd át „Tanulmány sablon”-ra minden élő hivatkozásban: sablonfájl, briefek, ügynökdefiníció. A lezárt naplókat és a git-történetet ne írd át. Az alap sablont ne töröld, csak jelöld elavultnak (a sorsát a T2 döntése rendezi).
+A „Bővített sablon” nevet írd át „Tanulmány sablon”-ra minden élő hivatkozásban: sablonfájl, briefek, ügynökdefiníció. A lezárt naplókat és a git-történetet ne írd át. Az alap sablont ne töröld, csak jelöld elavultnak (a sorsáról a T6 utófeladat-javaslata szól; alap tanulmány nincs, DT-F37-9).
 
 A T1 a futáskori `main`-en fut. A vele ütköző nyitott ágak (#9 `MUNKAMENET.md`, #23 `adat/SEMA.md`) a saját merge-ükkor igazodnak az átnevezéshez.
 
-### T2 — alap tanulmányok összevetése (csak olvas)
+### T2 — elhagyva (DT-F37-9)
 
-Minden alap tanulmányt vess össze a bővített párjával. A kérdés: van-e benne olyan tartalom (megállapítás, hivatkozás, motívum), ami a bővítettből hiányzik. Az eredményt táblázatban írd a `naplok/T2_alap_osszevetes.md` fájlba: fájl, bővített pár, hiányzó tartalom (igen/nem), példák.
-
-⛔ Itt állj meg. A felhasználó dönt: archiválás változatlanul, törlés, vagy a hiányzó tartalom átvezetése és utána archiválás. Ebben a menetben fájlt nem módosítasz.
+Az eredeti T2 az alap tanulmányokat vetette volna össze a bővített párjukkal. Alap tanulmány nincs (sem a repóban, sem rajta kívül), ezért a lépés és a ⛔ pontja elmarad; a `naplok/T2_alap_osszevetes.md` nem készül. A lépésszámozás a hivatkozások miatt marad (T3–T6).
 
 ### T3 — CI-szabályok (az utolsó E-szám után folytatva; itt E20-tól jelölve, a végleges számozás a T0 szerint)
 
@@ -108,7 +107,7 @@ Az 1–6. pontot futtasd végig a meglévő tanulmányokon. Kimenet: `naplok/TAN
 - A CI zöld, és minden új szabálynak van pozitív és negatív tesztje.
 - Mindkét auditjelentés elkészült (`TANULMANY_AUDIT.md`, `TANULMANY_AUDIT_ugynok.md`).
 - A „Bővített sablon” név élő hivatkozásban nem fordul elő.
-- A T2 ⛔ megállás megtörtént, a döntés a döntésnaplóban szerepel.
+- A T0 felmérése megerősíti, hogy nincs alap tanulmány (vagy a ⛔ megállás megtörtént, ha mégis van).
 
 ## Nyitó prompt (Code)
 
@@ -123,8 +122,9 @@ Az 1–6. pontot futtasd végig a meglévő tanulmányokon. Kimenet: `naplok/TAN
 | DT-F37-1 | Nincs alap tanulmány; a bővített neve „tanulmány” | felhasználói döntés (10.01) | két szint fenntartása |
 | DT-F37-2 | Tanulmány nem kötegelhető, egy tanulmány egy menet | felhasználói döntés (10.01); a kontextus egyben marad | soros vagy párhuzamos köteg |
 | DT-F37-3 | A CI csak az új vagy módosított tanulmányra kötelező, a régiekre jelentés mód | különben a régi fájlok miatt minden PR piros lenne | minden tanulmányra kötelező |
-| DT-F37-4 | A magyar szó és a Strong-szám ellenőrzése függő a #22-ig | nincs párosítás; a zárt forrás adata nem kerülhet a repóba | ellenőrzés a zárt forrásból (licenc miatt elvetve) |
+| DT-F37-4 | A magyar szó és a Strong-szám ellenőrzése függő a #22-ig | nincs párosítás *(2026.10.07: a párosítás részben kész, 1–5Móz, Józs; a szabály változatlan, a T4 7. pontjának részleges bekapcsolása külön döntés)*; a zárt forrás adata nem kerülhet a repóba | ellenőrzés a zárt forrásból (licenc miatt elvetve) |
 | DT-F37-5 | A régi tanulmányok javítása külön feladat | a brief ne duzzadjon; a felhasználó dönt a javítás köréről | javítás az auditban |
 | DT-F37-6 | Az E20 a szakaszlistát a sablonból olvassa | sablonváltozáskor ne kelljen kódot módosítani | beégetett lista |
-| DT-F37-7 | Az alap tanulmányok sorsa a T2 ⛔-pontjában dől el | előbb látni kell, van-e bennük átvezetendő tartalom | előzetes archiválás vagy törlés |
+| DT-F37-7 | ~~Az alap tanulmányok sorsa a T2 ⛔-pontjában dől el~~ — tárgytalan, l. DT-F37-9 | előbb látni kell, van-e bennük átvezetendő tartalom | előzetes archiválás vagy törlés |
 | DT-F37-8 | Nincs duplikált CI-szabály; átfedésnél a meglévő szabály hatóköre bővül, ezért a számozás E20-tól indul, a T0 szerint | az E17–E19 már foglalt a `szabalyok.py`-ban | E17–E22 új szabályokkal |
+| DT-F37-9 | A T2 elmarad: alap tanulmány nincs, sem a repóban, sem rajta kívül | felhasználói döntés (2026.10.07, chat); a repóban csak `_bovitett.md` tanulmány van (`genezis/` 20, `ujszovetseg/` 3), törölt alap tanulmány a git-történetben sincs | a T2 lefuttatása üres eredménnyel |
