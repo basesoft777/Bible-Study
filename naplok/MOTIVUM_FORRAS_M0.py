@@ -19,6 +19,8 @@ Módszer:
          motivumok/[ID].md + minden adat/*.tsv). A jelöltek kézi besorolása
          (hol_kellene_elnie) a futás után, a TSV-ben történik.
   M0/3 — adat/motivumok.tsv forras_study + adat/res_forras.tsv tanulmany oszlop.
+  M0/4–5 hatóköre: tematikus_lezart/*.md + tematikus_lezart/naplok/*.md
+         (az M0/4-ben ezen felül motivumok/*.md).
   M0/4 — 【NAPLO blokk = a „【NAPLO” kezdő jelek száma. A gyanús proveniencia-
          szöveget a 【NAPLO…】 szakaszok kivágása után számolja: dátum
          (20ÉÉ.HH.NN / 20ÉÉ-HH-NN), fájlnév (*.md/.tsv/.py/.txt), „l. X pont/
@@ -109,6 +111,8 @@ for m in motivumok:
 # ---------------------------------------------------------------- M0/3
 tem_fajlok = sorted(glob.glob(os.path.join(GYOKER, 'tematikus_lezart', '*.md')))
 tem_rel = [os.path.relpath(p, GYOKER).replace('\\', '/') for p in tem_fajlok]
+# M0/4–5: a tematikus_lezart/naplok/ kereszthivatkozás-naplói is a mérés részei (ELLENOR_F23 3. pont)
+tem_naplo_rel = sorted(os.path.relpath(p, GYOKER).replace(os.sep, '/') for p in glob.glob(os.path.join(GYOKER, 'tematikus_lezart', 'naplok', '*.md')))
 par_sorok = []
 lefedett_id = set()
 for rel in tem_rel:
@@ -213,7 +217,7 @@ for m in motivumok:
                 szak = sz2 + (' / ' + sz3 if sz3 else '')
                 egyedi_sorok.append([mid, szak, kivonat(e), f'{arany:.2f}', besorol(e, szak), PARANCS])
 ir_tsv('naplok/MOTIVUM_FORRAS_torzscikk_egyedi.tsv',
-       ['motivum', 'szakasz', 'kivonat', 'lefedettseg_5gram', 'hol_kellene_elnie', 'forras_parancs'], egyedi_sorok)
+       ['motivum', 'szakasz', 'kivonat', 'lefedettseg_3gram', 'hol_kellene_elnie', 'forras_parancs'], egyedi_sorok)
 print(f'== M0/2: {egyseg_ossz} vizsgált egység, {len(egyedi_sorok)} egyedi-jelölt')
 szak_db = {}
 for s in egyedi_sorok:
@@ -232,7 +236,7 @@ MINTAK = {
 }
 kev_sorok = []
 ossz = {'naplo': 0, **{k: 0 for k in MINTAK}, 'gyanus_sor': 0}
-for rel in tem_rel + sorted(os.path.relpath(p, GYOKER).replace('\\', '/') for p in glob.glob(os.path.join(GYOKER, 'motivumok', '*.md'))):
+for rel in tem_rel + tem_naplo_rel + sorted(os.path.relpath(p, GYOKER).replace('\\', '/') for p in glob.glob(os.path.join(GYOKER, 'motivumok', '*.md'))):
     sz = olvas(rel)
     naplo = sz.count('【NAPLO')
     kint = NAPLO_SPAN.sub('', sz)
@@ -260,7 +264,7 @@ for rel in bov:
             index.setdefault(g, set()).add((rel, kezd))
 atf_sorok = []
 kat_db = {}
-for rel in tem_rel:
+for rel in tem_rel + tem_naplo_rel:
     for kezd, b in bekezdesek(olvas(rel)):
         gs = ngramok(tokenek(b), N)
         if not gs:

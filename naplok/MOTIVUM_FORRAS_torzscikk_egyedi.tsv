@@ -1,4 +1,4 @@
-motivum	szakasz	kivonat	lefedettseg_5gram	hol_kellene_elnie	forras_parancs
+motivum	szakasz	kivonat	lefedettseg_3gram	hol_kellene_elnie	forras_parancs
 KIRALY-001	KIRALY-001 — Melkizedek — király-pap rendje, kenyér és bor	Kereszthivatkozási törzscikk — ugyanannak a tartalomnak az olvasói nézete, mint a [tudományos lexikonoldal](KIRALY-001TUDOMANYOS.md).	0.08	render_szoveg: generalt (torzscikk_general.py sablonszöveg)	python naplok/MOTIVUM_FORRAS_M0.py
 KIRALY-001	KIRALY-001 — Melkizedek — király-pap rendje, kenyér és bor	9 (5 ÓSZ / 4 ÚSZ)	0.00	szamolt_ertek: generalt (adat/elofordulasok.tsv)	python naplok/MOTIVUM_FORRAS_M0.py
 KIRALY-001	KIRALY-001 — Melkizedek — király-pap rendje, kenyér és bor	ἀμήτωρ (amētōr, G0282) · ἄτακτος (ataktos, G0813) · τάξις (taxis, G5010) · כֹּהֵן (ko.hen, H3548)	0.47	atrendezett_adat: generalt (törzsadat-kártya „Fő szavak”: adat/elofordulasok.tsv strong + kiejtés)	python naplok/MOTIVUM_FORRAS_M0.py
