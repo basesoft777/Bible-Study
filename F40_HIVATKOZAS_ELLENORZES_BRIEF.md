@@ -40,6 +40,8 @@ A `FELADATOK.md` „Hol” oszlopa és a briefek fejlécei ágakra, fájlokra é
 
 **Hatókör (DT-F40a, 2026.10.07):** a `FELADATOK.md` generált blokkjának nyitott sorain (a `kesz` blokkon kívüli blokkokon) a hiányzó fájl és a nem létező commit mindig HIBA (diff-hatókör nélkül), a nem létező ág FIGYELMEZTETÉS (a tervezett ág érvényes); a hibaüzenet a forrás-briefet nevezi meg. A brief `olvas`-mezőjének hiányzó fájlja mindig HIBA, kivéve ha egy `fugg`-beli feladat `ir` mezője fedi az útvonalat (egyezés, könyvtár-előtag vagy joker): akkor FIGYELMEZTETÉS. A `FELADATOK.md` Kész szakaszában a fájlhiány FIGYELMEZTETÉS (H2). A `NYITOTT_FELADATOK.md` és minden egyéb hely diff-hatókörű marad. A D-ág csak az `olvas` útvonalait ellenőrzi; a fejléc érvényessége (hibás YAML, lezáratlan fejléc) az E18-é (DT-F40b).
 
+**Az `olvas`-mező hiányzó fájlja (DT-F40c, 2026.10.07; felváltja a fenti „`fugg`-beli” megszorítást):** (a) lezárt (`allapot: lezarva`) brief `olvas`-mezőjében FIGYELMEZTETÉS (a lezárt feladat bemenete szándékosan eltűnhet; az F46 esete); (b) nyitott brief esetén FIGYELMEZTETÉS, ha *bármely nem lezárt* feladat `ir` mezője fedi (egyezés, könyvtár-előtag vagy joker; nem csak a `fugg`-beliek), egyébként HIBA. Az F23 `ir`-je az öt M0-kimenettel bővült (önálló fejléchiba-javítás); az F64 fejléce nem változott.
+
 **A szabály kódbeli kivételei (a briefben eredetileg nem szerepeltek, a DT-F40 ellenőri jelentés 4. pontja nyomán dokumentálva és tesztelve):**
 
 - Könyvtár nélküli rövid név (`ellenoriz.py`) akkor elfogadott, ha a repóban *bármely* helyen van azonos nevű fájl (a feladatkövető szövegei így hivatkoznak).
@@ -93,3 +95,4 @@ Olvasd el ezt a briefet, a `CLAUDE.md`-t és a meglévő CI-szabályok szkriptje
 | H5a | A szabály száma E27 (a H5 elavult) | az E25 (döntés-átvezetés) és az E26 (végleges szám az ágon) foglalt | E25 |
 | H7 | *(DT-F40b)* A D-ág csak az `olvas` útvonalait ellenőrzi; a fejléc-érvényesség az E18-é | nincs kettős ellenőrzés; a végrehajtó a 4. pontnál nem állt meg, ez eltérés (naplok/F40_zaras.md) | a D-ág fejléc-ellenőrzése marad |
 | H6 | A menet nem írja a FELADATOK.md-t | a generált blokkot a D25/E18 szerint csak a main-Action írja | a saját sor frissítése a menet végén |
+| H2b | *(DT-F40c, 2026.10.07, a H2a pontosítása)* Lezárt brief `olvas`-mezőjének hiányzó fájlja FIGYELMEZTETÉS; nyitott briefnél a fedés bármely nem lezárt feladat `ir`-jéből elfogadott; az F23 `ir`-je az öt M0-kimenettel bővült | az F46 lezárt (bemenete szándékosan tűnt el), az F64 olvasta fájlt a #23 M0 állítja elő; a `fugg: [23]` körfüggés volna (DT-F32a) | az F64 `fugg: [23]`; a lezárt F46 módosítása |

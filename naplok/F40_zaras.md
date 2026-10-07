@@ -53,3 +53,11 @@
 - `NYITOTT_FELADATOK.md:810` — [JELENTES] a hivatkozott fájl/könyvtár nem létezik: `Atadasi_dokumentum_2026_09_07_TELJES.md`.
 - `F46_BDB_KONYVFELOLDAS_BRIEF.md:14` — [HIBA] az `olvas` mezőben hivatkozott fájl nem létezik: `beerkezo/BDB_KONYVFELOLDASI_AUDIT.md`, és egyik `fugg`-beli feladat `ir` mezője sem fedi.
 - `F64_TEREMT002_PROZA_PROBA_BRIEF.md:12` — [HIBA] az `olvas` mezőben hivatkozott fájl nem létezik: `naplok/MOTIVUM_FORRAS_lekepezes.tsv`, és egyik `fugg`-beli feladat `ir` mezője sem fedi.
+
+## DT-F40c végrehajtása (F40.9–)
+
+- **Döntés (Felhasználó, 2026.10.07):** (a) lezárt brief `olvas`-mezőjében a hiányzó fájl FIGYELMEZTETÉS; (b) nyitott briefnél FIGYELMEZTETÉS, ha bármely nem lezárt feladat `ir`-je fedi (egyezés, könyvtár-előtag, joker), különben HIBA; (c) az F23 `ir`-je az öt M0-kimenettel bővül. Az F64 fejléce nem változott.
+- **Kód:** `e27_hivatkozas` D-ága az `allapot` mezőt a terkepből és a vizsgált briefből olvassa; `_e27_brief_terkep` felvette az `allapot`-ot.
+- **F23 `ir`-bővítés:** `naplok/MOTIVUM_FORRAS_lekepezes.tsv`, `_torzscikk_egyedi.tsv`, `_parositas.tsv`, `_naplo_keveredes.tsv`, `_atfedes.tsv`; az F23 verziónaplójában v1.4. Az `allapot` és a `fugg` nem változott.
+- **Eredmény:** az E27 nyers szintje (`SZ.e27_hivatkozas()`, diff nélkül) a main tartalmán 0 HIBA; a fenti „2 HIBA” (F46, F64) megszűnt. Az F46 FIGYELMEZTETÉS (lezárt), az F64 FIGYELMEZTETÉS (az F23 `ir`-je fedi).
+- **Tesztek:** a `test_olvas_hiba_ha_a_fedo_feladat_nincs_a_fuggesek_kozott` a DT-F40c (b) szerint megfordult (nem `fugg`-beli fedés is FIGYELMEZTETÉS); új: lezárt feladat `ir`-je nem fed (HIBA), joker, lezárt brief (FIGYELMEZTETÉS, kilépés 0), fedetlen nyitott brief (HIBA, kilépés 1). A kilépési kódok a `futtat.py main()` valódi kilépési kódjai.
