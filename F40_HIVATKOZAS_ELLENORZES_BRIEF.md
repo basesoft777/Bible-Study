@@ -8,7 +8,7 @@ modell: sonnet
 allapot: dontesre_var
 ad: a CI minden PR-nál jelzi, ha a FELADATOK.md vagy egy brief nem létező fájlra, ágra vagy commitra mutat, illetve ha egy PR áthelyez vagy töröl egy hivatkozott fájlt anélkül, hogy a mutatót frissítené
 ag: claude/hivatkozas-ellenorzes
-kovetkezo: "Te: DT-F40a (az E27 hatóköre) és DT-F40b (átfedés az E18-cal) döntése; utána a javítás, a PR címe [ELLENŐRZŐ] előtagú (E16), a 4–6. ellenőri pont (kivételek, tesztek, 16 teszt) a javításban"
+kovetkezo: "Te: DT-F40c döntése (az E27 2 HIBÁT ad a main-en: F46 és F64 olvas-mezője); utána zárás: ellenőri kör, zárójelentés, draft PR [ELLENŐRZŐ] előtaggal (E16)"
 olvas: [FELADATOK.md, NYITOTT_FELADATOK.md, CLAUDE.md, .github/workflows/, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, BRIEF_SABLON.md]
 ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/, .github/workflows/ellenorzes.yml, CLAUDE.md, naplok/ELLENOR_HIVATKOZAS.md]
 fugg: [2]
