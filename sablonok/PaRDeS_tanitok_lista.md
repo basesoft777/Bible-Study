@@ -2,7 +2,7 @@
 
 *v1 — 2026.08.01*
 
-Ez a fájl gyűjti össze azt a jóváhagyott tanítói kört, akikre a bővített sablon Alkalmazás pontja (és a tematikus sablon 5. pontja) explicit felhasználói kérésre hivatkozhat. A `2_PaRDeS_bovitett_sablon.md` "Nevesített tanítói egyezés-keresés módszere" (4. lépés: Névsor a jóváhagyott listából) erre a fájlra hivatkozik.
+Ez a fájl gyűjti össze azt a jóváhagyott tanítói kört, akikre a Tanulmány sablon Alkalmazás pontja (és a tematikus sablon 5. pontja) explicit felhasználói kérésre hivatkozhat. A `2_PaRDeS_bovitett_sablon.md` "Nevesített tanítói egyezés-keresés módszere" (4. lépés: Névsor a jóváhagyott listából) erre a fájlra hivatkozik.
 
 **Fontos:** ez a lista kizárólag az Alkalmazás pont opcionális, popular/nevesített tanítói forrásaihoz szól — nem keverendő a `3_PaRDeS_research_sablon.md` akadémiai pünkösdi/karizmatikus tudós-körével (Rickie D. Moore, Lee Roy Martin, Frank Macchia stb.), amely elméletileg más kategória, más forrás-szabályokkal.
 

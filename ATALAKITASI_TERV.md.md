@@ -588,7 +588,7 @@ Viszonyításul az elkészült termék: egy motívum teljes íve hat fájlban (I
 
 | Szakasz | Mit lát a kutató-agent | ~token |
 |---|---|---|
-| A) bővített | `CLAUDE.md` + séma (~3k), a bővített sablon érintett szakasza (~5k), motívum-index kivonat a napló helyett (~2k), sorozat-kivonat (~4k), lekérdezés-kivonatok (~8k) | **~22k** |
+| A) bővített | `CLAUDE.md` + séma (~3k), a Tanulmány sablon érintett szakasza (~5k), motívum-index kivonat a napló helyett (~2k), sorozat-kivonat (~4k), lekérdezés-kivonatok (~8k) | **~22k** |
 | B) tematikus | `CLAUDE.md` + séma (~3k), a tematikus sablon érintett szakasza (~6k), a motívum `[ID].md`-je (~2k), lekérdezés-kivonatok (~10k), jelölt-halmaz (~4k) | **~25k** |
 | C) lexikon | séma (~3k), a lexikon-sablon kézi szakaszai (~2k), a generált váz (~6k), a study 2-5. pontja (~8k) | **~19k** |
 | | **teljes ív** | **~66k** |

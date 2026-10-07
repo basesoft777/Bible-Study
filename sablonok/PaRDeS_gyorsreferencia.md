@@ -36,8 +36,8 @@ Tömör, kulcsszavas áttekintés a memóriában rögzített szabályokról. A t
 ## Alapkérdések / Kiegészítő szempontok
 - 🌍 Történelmi háttér: Alapkérdéseknél rövid (2-3 mondat); Kiegészítőnél konkrét, célzott
 - ⚠️ Vitatott pont: csak ha érdemi vita van, nevesített képviselőkkel — nem erőltetve
-- Alap sablon Alkalmazás pontja: tömör, kérdéslista nélkül
-- Bővített sablon Alkalmazás pontja: 3 konkrét záró kérdés (alapból szöveg-immanens; explicit kérésre nevesített külső tanító szemszögéből is megválaszolható, forrásmegjelöléssel — lásd lent)
+- Alap sablon (elavult, 2026.10.07) Alkalmazás pontja: tömör, kérdéslista nélkül
+- Tanulmány sablon Alkalmazás pontja: 3 konkrét záró kérdés (alapból szöveg-immanens; explicit kérésre nevesített külső tanító szemszögéből is megválaszolható, forrásmegjelöléssel — lásd lent)
 
 ## PaRDeS-rétegek
 - Remez: csak felismerés/azonosítás, következtetés nélkül
@@ -45,7 +45,7 @@ Tömör, kulcsszavas áttekintés a memóriában rögzített szabályokról. A t
 - Sod: fegyelmezett, csak szövegből levezethető, gematria/allegorizálás nélkül
 - Arány: Alapkérdések rövid; Peshat + Drash legrészletesebb; Sod tömör
 
-## Bővített sablon specifikus pontok
+## Tanulmány sablon specifikus pontok
 - 0. Sorozat-kontextus: csak ha van korábbi tanulmány ugyanabból a könyvből
 - 1/b. Idővonal/térkép: csak ha 2+ helyszín/időpont vagy sorrend kulcsfontosságú
 - 2. Eredeti nyelv: max 6-8 kulcsszó/vers + szó szerinti tükörfordítás a Károli mellett

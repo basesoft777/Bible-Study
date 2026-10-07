@@ -151,7 +151,7 @@ vizsgált jelöltet, nem csak a bekerülteket — rögzítsd egy önálló fájl
 könyvfüggetlen motívumnál `tematikus_lezart/naplok/` alatt). A napló szerkezete:
 vizsgált kulcsszavak → nyers találatok forrásonként → tartalmi minősítés minden
 jelöltre → végső döntés és indoklás → összegzés — ugyanaz az elv, mint a
-bővített sablonnál (`2_PaRDeS_bovitett_sablon.md`), azzal a különbséggel, hogy
+Tanulmány sablonnál (`2_PaRDeS_bovitett_sablon.md`), azzal a különbséggel, hogy
 itt a "végső döntés" a TELJES ✅ halmaz beépítését dokumentálja, nem csak
 szintenkénti 1-2 kiválasztást.
 
@@ -211,7 +211,7 @@ Ha a motívum érinti a pünkösdi/karizmatikus teológiai hangsúlyokat (pl. a 
 
 ## 5. Alkalmazás és tanítványság
 
-A bővített sablon logikája szerint: alapértelmezésben a válaszok a tanulmány saját Peshat/Remez/Drash/Sod megállapításaiból vezetendők le. Ha egy adott motívumhoz kifejezetten elmentett szabály köti egy nevesített tanító/szerző szemszögének bevonását (lásd a memóriában rögzített, motívum-specifikus tanító-listákat), azt itt, forrásmegjelöléssel kell megjeleníteni — kizárólag az adott szerző(k) ellenőrizhető tanításaira támaszkodva. Ha nincs elég megbízható forrás, ezt explicit jelezni kell, nem szabad gyengébb anyaggal pótolni.
+A Tanulmány sablon logikája szerint: alapértelmezésben a válaszok a tanulmány saját Peshat/Remez/Drash/Sod megállapításaiból vezetendők le. Ha egy adott motívumhoz kifejezetten elmentett szabály köti egy nevesített tanító/szerző szemszögének bevonását (lásd a memóriában rögzített, motívum-specifikus tanító-listákat), azt itt, forrásmegjelöléssel kell megjeleníteni — kizárólag az adott szerző(k) ellenőrizhető tanításaira támaszkodva. Ha nincs elég megbízható forrás, ezt explicit jelezni kell, nem szabad gyengébb anyaggal pótolni.
 
 ### Nevesített tanítói egyezés-keresés módszere (mindig ez az öt lépés, ebben a sorrendben)
 
