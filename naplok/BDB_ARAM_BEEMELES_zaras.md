@@ -8,5 +8,6 @@
 - SHA-256 előtte → utána: fő tábla `40d96e57…f3cf6` → `d4b15b2f…a7794`; alias `243c6bea…d375` → `71e40bc8…cc04`; elvetett `e66064b6…9f44` (változatlan).
 - H3606 → H3605 kézi ellenőrzése: elfogadva (arámi–héber kol, ugyanaz a lemma).
 - H6433 mérőszáma 0,07 (a többi pótlásé 0,73–0,79): a mérés a szöveg 12 karakteres szeleteit keresi a fő tábla egy sorában. A többi öt arámi szócikknek a héber testvérsorban nagyrészt ott a szövege; a H6433 (פֻּם, arámi pum, „mouth”, Dán 7:8) a héber peh (H6310) sorában csak mellékesen szerepel, más szerkezetben. A 0,07 valódi hiányt jelez: a pum önálló arámi szócikk, a pótlás helyes.
-- README, N-F72a (az `--alias` őrizze meg az arámi sorokat; helyőrző), N51 lezárása (helyőrző DT-F72): kész.
-- Teszt: `python eszkozok/teszt_bdb_aram_beemeles.py` zöld. A #38 sorrendjének újragenerálása: l. a következő commit. A független ellenőrzést nem én végzem.
+- README, N-F72a, N51 lezárása (helyőrző DT-F72): kész.
+- Teszt: `python eszkozok/teszt_bdb_aram_beemeles.py` zöld. A független ellenőrzést nem én végzem.
+- A #38 sorrendje újragenerálva (F72.6, `eszkozok/bdb_sorrend_ujragen.py`): 648 soros kész előtag változatlan, +9 sor (F72: H1753, H3367, H3848, H6433, H7560, H8065; F57 óta kimaradt: H0747, H4123, H4725); a H4725 (gyakoriság 401) a 649. sor; hátralék 7425 sor, adagok 7–14 (az adagbeosztás eltolódott: a DT-F67a „9. adag előtt” hivatkozását érintheti, jelezve, nem döntve).
