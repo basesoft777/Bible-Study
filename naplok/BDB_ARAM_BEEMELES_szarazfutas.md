@@ -4,11 +4,11 @@
 
 A repó fájljai nem változtak. A jóváhagyás előtt semmi sem íródik élesben.
 
-- Alias-jelölt (mérőszám >= 0,8): **164**; szöveges pótlás: **6** (ebből részleges 0,5–0,8: 5); jelölt marad: 3 (H0004 cimke_reszleges, H3769 csonk, H5013 csonk).
+- Alias-jelölt (mérőszám >= 0,8): **162**; szöveges pótlás: **6** (ebből részleges 0,5–0,8: 5); jelölt marad: 5 (H0004 (cimke_reszleges), H2298 (kizárt: kézzel a BDB9285-höz rendelt (kezi_elfogadott)), H3769 (csonk), H5013 (csonk), H5839 (kizárt: téves testvér: BDB9760 = Azarjá, a H5665 pedig Abed-Negó)).
 - Ütközés / hiba: nincs.
 - Minden alias-sor testvérkulcsa létezik a fő táblában: igen.
-- Az alias-sorok testvére szerepel a #57 elvetett táblájának `testver_strong` oszlopában: 161/164.
-- Ahol nem (kézi ellenőrzésre): H2298 -> H0259 (elvetett-tábla testvére: H1768,H1836); H3606 -> H3605 (elvetett-tábla testvére: H6903); H5839 -> H5665 (elvetett-tábla testvére: H5838).
+- Az alias-sorok testvére szerepel a #57 elvetett táblájának `testver_strong` oszlopában: 161/162.
+- Ahol nem (kézi ellenőrzésre): H3606 -> H3605 (elvetett-tábla testvére: H6903).
 
 ## A 6 szöveges pótlás (a fő tábla végére)
 
@@ -19,7 +19,7 @@ A repó fájljai nem változtak. A jóváhagyás előtt semmi sem íródik éles
 - **H7560** (BDB9910, mérőszám 0.78): H7560. resham רְשַׁם verb inscribe, sign (ᵑ7 Syr.; see Biblical Hebrew (once, late)); — Pe`al Perfect 3 masculine singular ׳ר Dan 6:10 2 masculine singular רְשַׁ֫מְתָּ v. Dan 6:13 רְשַׁ֑מְתָּ v. Dan 6 … *(508 karakter)*
 - **H8065** (BDB9965, mérőszám 0.79): H8065. shamayin [שְׁמַ֫יִן] noun masculine plural heavens (Biblical Hebrew [שָׁמַי], שָׁמַיִם, √ שׁמה); — always emphatic שְׁמַיָּא: 1. visible sky Jer 10:11; Dan 4:8; Dan 4:10; Dan 4:17; Dan 4:19; Da … *(884 karakter)*
 
-## Az alias-sorok mintája (első 6 és a 3 kézi ellenőrzendő)
+## Az alias-sorok mintája (első 6 és az elvetett táblában nem szereplő testvérű sor)
 
 | masodlagos_strong | tabla_strong | bdb_id | nyelv | szoveg_hasonlosag |
 |---|---|---|---|---|
@@ -29,8 +29,6 @@ A repó fájljai nem változtak. A jóváhagyás előtt semmi sem íródik éles
 | H0236 | H0235 | BDB9281 | aram | 0.810 |
 | H0399 | H0398 | BDB9297 | aram | 0.826 |
 | H0506 | H0505 | BDB9305 | aram | 0.909 |
-| H2298 | H0259 | BDB9285 | aram | 0.947 |
 | H3606 | H3605 | BDB9612 | aram | 0.908 |
-| H5839 | H5665 | BDB9760 | aram | 0.907 |
 
 Teljes lista: a `--kimenet` mappa `alias_uj_sorok.tsv` fájlja (a repón kívül). Proveniencia-sablon: `scope=konkordancia/BDB_aram_potlas.tsv + konkordancia/BDB_teljes_unabridged.tsv | forras=eszkozok/bdb_aram_beemeles.py --m2 (arami masodlagos Strong; a szocikk szovege mar a heber testversor sorveegen all: ujjlenyomat-meres >= 0,8, eszkozok/bdb_aram_potlas.py --duplikacio modszere; N51, felhasznaloi dontes 2026-10-06) | ts=2026-10-07`

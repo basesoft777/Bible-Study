@@ -34,6 +34,13 @@ import bdb_aram_potlas as A  # noqa: E402
 import bdb_strong_potlas as B  # noqa: E402
 
 KUSZOB = 0.8
+# Explicit, indokolt kizárólista (felhasználói döntés, 2026-10-07, chat): ezek az elfogadott,
+# duplikált (mérőszám >= 0,8) sorok NEM kerülnek alias-sorként a táblába; jelöltek maradnak.
+KIZAR = {
+    'H2298': 'kézzel a BDB9285-höz rendelt (kezi_elfogadott); a H0259-re mutató alias ellentmondana; '
+             'ha később pótlás lesz, a saját BDB9285 szövegével készül (most nem íródik)',
+    'H5839': 'téves testvér: BDB9760 = Azarjá, a H5665 pedig Abed-Negó; az alias a rossz sorra mutatna',
+}
 ELFOGADOTT = ('egyertelmu', 'kezi_elfogadott')
 PROV_SABLON = ('scope=konkordancia/BDB_aram_potlas.tsv + konkordancia/BDB_teljes_unabridged.tsv | '
                'forras=eszkozok/bdb_aram_beemeles.py --m2 (arami masodlagos Strong; a szocikk szovege '
@@ -76,7 +83,9 @@ def szamol(ts):
             h = sum(1 for x in szeletek if x in uj) / len(szeletek)
             if h > legjobb[0]:
                 legjobb = (h, n, k)
-        if legjobb[0] >= KUSZOB:
+        if legjobb[0] >= KUSZOB and s in KIZAR:
+            kimarad.append((s, 'kizárt: ' + KIZAR[s].split(';')[0]))
+        elif legjobb[0] >= KUSZOB:
             tars = elv[s]['testver_strong'] if s in elv else ''
             alias.append({'s': s, 'tabla': legjobb[2], 'sor': legjobb[1], 'bid': r['bdb_id'],
                           'cim': r['cimszo'], 'h': legjobb[0], 'tars_elv': tars,
@@ -142,7 +151,7 @@ def m0(kimenet, kivonat, ts):
          'A repó fájljai nem változtak. A jóváhagyás előtt semmi sem íródik élesben.\n',
          '- Alias-jelölt (mérőszám >= 0,8): **%d**; szöveges pótlás: **%d** (ebből részleges 0,5–0,8: %d); jelölt marad: %d (%s).' % (
              len(alias), len(potlas), sum(1 for p in potlas if p['reszleges']), len(kimarad),
-             ', '.join('%s %s' % x for x in kimarad)),
+             ', '.join('%s (%s)' % x for x in kimarad)),
          '- Ütközés / hiba: %s.' % ('nincs' if not hibak else '; '.join(hibak)),
          '- Minden alias-sor testvérkulcsa létezik a fő táblában: %s.' % ('igen' if not any('nincs a fő' in h for h in hibak) else 'NEM'),
          '- Az alias-sorok testvére szerepel a #57 elvetett táblájának `testver_strong` oszlopában: %d/%d.' % (
@@ -153,7 +162,7 @@ def m0(kimenet, kivonat, ts):
     for p in potlas:
         szoveg = p['sor'].split('\t')[2]
         L.append('- **%s** (%s, mérőszám %.2f): %s … *(%d karakter)*' % (p['s'], p['bid'], p['h'], szoveg[:200], len(szoveg)))
-    L.append('\n## Az alias-sorok mintája (első 6 és a 3 kézi ellenőrzendő)\n')
+    L.append('\n## Az alias-sorok mintája (első 6 és az elvetett táblában nem szereplő testvérű sor)\n')
     L.append('| masodlagos_strong | tabla_strong | bdb_id | nyelv | szoveg_hasonlosag |')
     L.append('|---|---|---|---|---|')
     minta = alias[:6] + [a for a in nem_elv if a not in alias[:6]]
@@ -174,8 +183,8 @@ def m2(ts):
     hibak = ellenoriz(alias, potlas, kimarad, fo_kulcsok)
     if hibak:
         raise SystemExit('megállok: ' + '; '.join(hibak))
-    if len(alias) != 164 or len(potlas) != 6:
-        raise SystemExit('megállok: a várt 164 alias / 6 pótlás helyett %d / %d' % (len(alias), len(potlas)))
+    if len(alias) != 162 or len(potlas) != 6:
+        raise SystemExit('megállok: a várt 162 alias / 6 pótlás helyett %d / %d' % (len(alias), len(potlas)))
     for path, ujak in ((B.ALIAS, alias_sorok_szoveg(alias, ts)), (B.TABLA, potlas_sorok_szoveg(potlas))):
         with open(path, 'rb') as f:
             elotte = f.read()
