@@ -47,12 +47,14 @@
 
 ## Nem ebbe a feladatba tartozó, külön befogadandó tételek
 
-- A `CLAUDE.md` TAHOT-hiánylistája elavult (1Móz 32, Zsolt 88, Jóel 3 megvan) — külön `/befogad`-tétel; a `CLAUDE.md` minden session belépési pontja.
 - A T4 7. pontjának részleges bekapcsolása az 1–5Móz-ra és Józsuéra — külön döntés (DT-F37-4).
 
 ## A menet eltérései (a zárójelentésbe is)
 
-- A T1 a brief `ir` listáján kívül is átírta a sablonnevet (`sablonok/4_`, `5_`, a gyorsreferencia, a tanítói lista); enélkül az elfogadási feltétel („a „Bővített sablon” név élő hivatkozásban nem fordul elő”) nem teljesült volna.
+- A T1 a brief `ir` listáján kívül is átírta a sablonnevet (`sablonok/4_`, `5_`, `sablonok/Javasolt_sablon_kiegeszites_BDB_arnyalat.md`, a gyorsreferencia, a tanítói lista; a `Javasolt_…` fájlt a végrehajtó jelentése kihagyta, a független ellenőr találta meg); enélkül az elfogadási feltétel („a „Bővített sablon” név élő hivatkozásban nem fordul elő”) nem teljesült volna.
 - Két kis módosításnál inline Python és `sed` futott magyar szöveggel (`CLAUDE.md` Shell-szakasz); mindkettő hiba nélkül lefutott, a kimenet ellenőrizve.
 - Az F37.3 commit-üzenete 28 tesztet ír, a valós szám akkor 27 volt; a történet nem íródik át.
+- A brief T6 1. pontja („Frissítsd a `FELADATOK.md` saját sorát”) nem teljesült, szándékosan: a #37 sora a `FELADATOK.md` generált blokkjában áll, amelyet csak a `main`-re futó Action ír (D25, `FELADATOK.md` „Állapot és új feladat”); az állapotot a brief fejléce viszi.
+- A `CLAUDE.md` TAHOT-hiánylistájának elavulását a menet jelentette; a `main` közben javította (DT58, `07fcb39`), ezért külön tétel nem kell.
+- A `naplok/TANULMANY_AUDIT.md` első változata a proveniencia-sorban a `f25faa6` commitot nevezte meg, amelyben a generátor még nem volt benne; a jelentés újragenerálva (F37.10), a tartalma változatlan (433 találat).
 - A „valódi ⚠️-vita” meghatározását és a T5 4–5. pontjának ítéleteit a végrehajtó hozta (`manual`); a meghatározást a DT-F37b pontosította.

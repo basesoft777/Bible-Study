@@ -2,7 +2,7 @@
 
 # Tanulmány-audit (CI jelentés mód)
 
-*F37 T3 · jelentés mód: minden tanulmányfájl, nem bukik · commit `f25faa6` · 2026-10-07 · proveniencia: `scope=23 tanulmányfájl | forras=eszkozok/ellenorzes/tanulmany_audit.py | ts=2026-10-07T08:11Z`*
+*F37 T3 · jelentés mód: minden tanulmányfájl, nem bukik · commit `5dbee41` · 2026-10-07 · proveniencia: `scope=23 tanulmányfájl | forras=eszkozok/ellenorzes/tanulmany_audit.py | ts=2026-10-07T09:46Z`*
 
 A „szint módosításnál” oszlop azt mutatja, mi lenne a találat szintje, ha egy PR az adott sort módosítaná (a kötelező mód csak az új vagy módosított sort bünteti, D8; az E20 fájlszintű: a módosított tanulmányon mindig piros). Javítást ez a jelentés nem végez (DT-F37-5).
 

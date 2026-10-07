@@ -93,7 +93,8 @@ nélkül (pl. `naplok/ELLENOR_1Moz_17_bovitett.md`). A fejléc és az első sor
 formája a fenti „Kimenet” szerint.
 
 **Megengedett parancs a fenti Bash-körön felül:**
-`python eszkozok/ellenorzes/tanulmany_ellenorzes.py <tanulmányfájl>`. Csak
+`python eszkozok/ellenorzes/tanulmany_ellenorzes.py <tanulmányfájl>`,
+`--kimenet` kapcsoló nélkül (az fájlt ír; neked nem megengedett). Így csak
 olvas; az 1–3. és a 6. pont gépi részét adja (TAHOT/TAGNT, TBESH/TBESG,
 Károli 1908, motívumnapló), utolsó sora a proveniencia. A kimenetét
 ellenőrizd szúrópróbával `lekerdez.py`-jal (`scan <Strong> --szakasz
