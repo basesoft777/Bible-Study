@@ -143,6 +143,10 @@ A jelentés **első sora** ilyenkor `⛔ DÖNTÉS KELL: <ok>` (a `TISZTA` /
 - **valódi ⚠️-vita:** a tanulmány olyan vitatott pontot hoz, amelyben a
   megnevezett képviselők állításai a tanulmány következtetését is
   eldönthetik (nem csak bemutatott vélemények), vagy a vitát a tanulmány
-  a saját oldalán zárja le forrás nélkül.
+  a saját oldalán zárja le forrás nélkül. Forrásnak számít a repó
+  adatából levezetett, proveniencia-sorral ellátott lexikai érv is; a
+  proveniencia nélküli saját állítás nem. Nem ⛔, ha a tanulmány a vita
+  egyik oldalára épít, de az építést kifejezetten feltételesnek jelöli
+  („Ha …”, „amennyiben …”). (DT-F37b)
 
 A ⛔ nem javítás: a döntést a felhasználó hozza, te csak jelzed.

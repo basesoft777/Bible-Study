@@ -5,10 +5,10 @@ kod: TANULMANY_ELLENORZES
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: dontesre_var
+allapot: fut
 ag: claude/tanulmany-ellenorzes
 ad: a tanulmányokat CI (E20; az E21–E24 a T0 szerint az E13/E8/E9/E12 bővítéseként) és a fuggetlen-ellenor ügynök ellenőrzi; a régi tanulmányokról két auditjelentés készül
-kovetkezo: "Te: döntés a DONTESEK.md DT-F37a (a T5 ⛔-jelöltjei: 5 régi tanulmány ⚠️-vitája most ⛔ vagy utófeladat) és DT-F37b (a „valódi ⚠️-vita” meghatározása a fuggetlen-ellenor T4-szakaszában) tételéről; utána a T6 (zárás, utófeladat-javaslat). Kész: T0–T5 (F37.1–F37.5)."
+kovetkezo: "T6 (zárás, utófeladat-javaslat): a DT-F37a szerint az öt ⚠️-vita-eset név szerint, a három választással és súlyossági sorrenddel a javító utófeladatba; a T6 naplójában eltérésként a T1 `ir`-listán kívüli átírása és az F37.3 commit-üzenet tesztszáma (28 helyett 27). Utána fuggetlen-ellenor, draft PR `[ELLENŐRZŐ]` előtaggal. Kész: T0–T5 (F37.1–F37.5), DT-F37a/b eldöntve (2026.10.07)."
 olvas: [sablonok/, genezis/, ujszovetseg/, tematikus_lezart/, konkordancia/, adat/, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, CLAUDE.md]
 ir: [sablonok/1_PaRDeS_alap_sablon.md, sablonok/2_PaRDeS_bovitett_sablon.md, MUNKAMENET.md, adat/SEMA.md, ATALAKITASI_TERV.md.md, Join_tabla_folyamat_magyarazat.md, .claude/agents/fuggetlen-ellenor.md, eszkozok/ellenorzes/, .github/workflows/ellenorzes.yml, naplok/T0_felmeres.md, naplok/TANULMANY_AUDIT.md, naplok/TANULMANY_AUDIT_ugynok.md]
 fugg: [30, 32]
@@ -129,3 +129,5 @@ Az 1–6. pontot futtasd végig a meglévő tanulmányokon. Kimenet: `naplok/TAN
 | DT-F37-7 | ~~Az alap tanulmányok sorsa a T2 ⛔-pontjában dől el~~ — tárgytalan, l. DT-F37-9 | előbb látni kell, van-e bennük átvezetendő tartalom | előzetes archiválás vagy törlés |
 | DT-F37-8 | Nincs duplikált CI-szabály; átfedésnél a meglévő szabály hatóköre bővül, ezért a számozás E20-tól indul, a T0 szerint | az E17–E19 már foglalt a `szabalyok.py`-ban | E17–E22 új szabályokkal |
 | DT-F37-9 | A T2 elmarad: alap tanulmány nincs, sem a repóban, sem rajta kívül | felhasználói döntés (2026.10.07, chat); a repóban csak `_bovitett.md` tanulmány van (`genezis/` 20, `ujszovetseg/` 3), törölt alap tanulmány a git-történetben sincs | a T2 lefuttatása üres eredménnyel |
+| DT-F37-10 | A T5 öt ⚠️-vita-esete nem ⛔ most; a javító utófeladatba kerül, név szerint, tételenkénti döntéssel a feladat elején (DT-F37a) | felhasználói döntés (2026.10.07, chat); a javítás úgyis külön feladat (DT-F37-5) | mind ⛔ most; csak két eset ⛔ |
+| DT-F37-11 | A „valódi ⚠️-vita” meghatározása a T4 szerint, két pontosítással: a proveniencia-soros lexikai érv forrás; a feltételesnek jelölt építés nem ⛔ (DT-F37b) | felhasználói döntés (2026.10.07, chat) | szűkebb (csak forrás nélküli lezárás); tágabb (minden új ⚠️) |
