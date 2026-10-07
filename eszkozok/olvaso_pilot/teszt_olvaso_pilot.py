@@ -416,6 +416,16 @@ class SzinseMa(unittest.TestCase):
             self.assertIn('try', elotte, m.group(0))
 
 
+class AlapNyitva(unittest.TestCase):
+    """F60.13: a blokkok alapból nyitva; a „Forrás” (details.forras) és a „?” súgó (details.sugo) zárva marad."""
+
+    def test_mindnyit_kizarasokkal(self):
+        s = sablon()
+        self.assertIn("details:not(.forras):not(.sugo)", s)
+        self.assertIn("mindNyit(verslap)", s)
+        self.assertIn("mindNyit(szolap)", s)
+
+
 class Regresszio(unittest.TestCase):
     @unittest.skipUnless(os.environ.get('OLVASO_PROTOTIP_JSON'), 'OLVASO_PROTOTIP_JSON nincs megadva')
     def test_prototipussal_azonos(self):

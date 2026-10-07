@@ -1161,8 +1161,10 @@ ol.jel { gap: 12px; }
     );
   }
 
-  function rajzolVers() { rajzolVersBelso(); sugoFelrak(verslap); }
-  function rajzolSzo() { rajzolSzoBelso(); sugoFelrak(szolap); }
+  // alapértelmezés: minden összecsukható blokk nyitva; zárva marad a „Forrás” és a „?” súgó
+  const mindNyit = gyoker => gyoker.querySelectorAll('details:not(.forras):not(.sugo)').forEach(d => { d.open = true; });
+  function rajzolVers() { rajzolVersBelso(); sugoFelrak(verslap); mindNyit(verslap); }
+  function rajzolSzo() { rajzolSzoBelso(); sugoFelrak(szolap); mindNyit(szolap); }
   function rajzol() { rajzolOlvaso(); rajzolVers(); rajzolSzo(); }
   rajzol();
   fulValt('szo');
