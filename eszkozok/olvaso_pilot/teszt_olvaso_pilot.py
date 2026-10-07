@@ -426,6 +426,24 @@ class AlapNyitva(unittest.TestCase):
         self.assertIn("mindNyit(szolap)", s)
 
 
+class LxxKiemeles(unittest.TestCase):
+    """F60.14: a vers-lap LXX-sorában az aktuális héber szó görög párja ki van emelve; a szó-lap LXX-sorai átkattinthatók."""
+
+    def test_par_kiemeles_es_tartalek(self):
+        s = sablon()
+        self.assertIn("(par ? ' par' : '')", s)
+        self.assertIn("parAlakok", s)
+        self.assertIn("aria-current", s)
+
+    def test_szo_lap_lxx_sorok_atkattinthatok(self):
+        s = sablon()
+        i = s.index("Görög megfelelő a Septuagintában")
+        blokk = s[i:i + 1200]
+        self.assertIn("kivalaszt(x.strong)", blokk)
+        self.assertIn("D.gor_lapok[x.strong]", blokk)
+        self.assertIn("role: gk ? 'button'", blokk)
+
+
 class Regresszio(unittest.TestCase):
     @unittest.skipUnless(os.environ.get('OLVASO_PROTOTIP_JSON'), 'OLVASO_PROTOTIP_JSON nincs megadva')
     def test_prototipussal_azonos(self):

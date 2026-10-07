@@ -326,6 +326,14 @@ ol.jel { gap: 12px; }
 .tema button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
 .fej { align-items: center; }
 @media print { .tema { display: none; } :root { --bg: #fff; --surface: #fff; --ink: #000; --muted: #333; } }
+/* LXX: az aktuális szó görög párja kiemelve; a szó-lap LXX-sorai átkattinthatók (F60.14) */
+.lxx-sor .par { background: var(--accent-soft); border-color: var(--accent); box-shadow: inset 0 -3px 0 var(--accent); font-weight: 600; }
+.lxx-sor .par small { color: var(--accent); }
+.lxx-sor .vilagit { background: var(--accent-soft); }
+.lxx-sor .gk.par.aktiv { background: var(--accent); color: var(--surface); }
+.lxx-meg .gr.kat { cursor: pointer; color: var(--accent); text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 4px; border-radius: 3px; }
+.lxx-meg .gr.kat:hover, .lxx-meg .gr.kat:focus-visible { background: var(--accent-soft); }
+.lxx-meg .gr.kat:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 @media (max-width: 640px) { .szoveg { font-size: 1.15rem; line-height: 1.75; } .fejezet { font-size: 3rem; } }
 @media print { body { font-size: 11pt; } .szoveg { font-size: 12pt; line-height: 1.6; } }
 </style>
@@ -637,11 +645,12 @@ ol.jel { gap: 12px; }
       const gk = m.lxx_strong && D.gor_lapok[m.lxx_strong];
       heber.append(el('div', {
         class: 'he-szo' + (nyt ? ' nyelvtani' : '') + (w.strong === aktSzo ? ' aktiv' : ''),
-        'data-strong': w.strong, tabindex: nyt ? '-1' : '0', role: nyt ? null : 'button',
+        'data-strong': w.strong + (m.lxx_strong ? ' ' + m.lxx_strong : ''), tabindex: nyt ? '-1' : '0', role: nyt ? null : 'button',
         title: (nyt ? 'Nyelvtani elem (prefixum, névelő, tárgyjelölő): nincs szó-lapja' : `${w.strong} szó-lapja`) + (m.morf ? ` · morfológia: ${m.morf}` : ''),
         onclick: nyt ? null : () => kivalaszt(w.strong),
         onkeydown: nyt ? null : e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); kivalaszt(w.strong); } },
-        onmouseenter: () => vilagit(w.strong, true), onmouseleave: () => vilagit(w.strong, false)
+        onmouseenter: () => { vilagit(w.strong, true); if (m.lxx_strong) vilagit(m.lxx_strong, true); },
+        onmouseleave: () => { vilagit(w.strong, false); if (m.lxx_strong) vilagit(m.lxx_strong, false); }
       },
         el('span', { class: 'he', text: w.heber }),
         el('span', { class: 'at', text: w.atiras }),
@@ -654,12 +663,22 @@ ol.jel { gap: 12px; }
           : el('span', { class: 'lx ures', text: 'LXX: —' })));
     });
 
+    // az aktuális héber szó görög párja(i) ebben a versben (Macula-párosítás): ezeket emeljük ki az LXX-sorban
+    const alapAlak = t => (t || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/ς/g, 'σ').replace(/ξ/g, 'χ'); // a Macula χ/ξ-cseréje (NYITOTT_FELADATOK) miatt a kettő azonosnak számít
+    const aktHeber = v.heber.filter(w => w.strong === aktSzo && w.macula && w.macula.lxx);
+    const parok = new Set(aktHeber.map(w => w.macula.lxx_strong).filter(Boolean));
+    // tartalék: ha a Macula Strong-száma nem szerepel az LXX-sorban (más lemma-választás), a szóalak (ékezet nélkül) dönt
+    const strongTalalat = v.lxx.some(w => w.strong && parok.has(w.strong));
+    const parAlakok = new Set(strongTalalat ? [] : aktHeber.map(w => alapAlak(w.macula.lxx)));
     const lxx = el('div', { class: 'lxx-sor', lang: 'grc' },
       v.lxx.map(w => {
         const gk = w.strong && D.gor_lapok[w.strong];
+        const par = (w.strong && parok.has(w.strong)) || parAlakok.has(alapAlak(w.szoalak));
         return el('span', {
-          class: (w.strong ? '' : 'nincs-st') + (gk ? ' gk' : '') + (w.strong === aktSzo ? ' aktiv' : ''),
-          title: `${w.lemma} · ${w.morf}` + (gk ? ' · kattintásra görög szó-lap' : ''),
+          class: (w.strong ? '' : 'nincs-st') + (gk ? ' gk' : '') + (w.strong === aktSzo ? ' aktiv' : '') + (par ? ' par' : ''),
+          'data-strong': w.strong || null, 'aria-current': par ? 'true' : null,
+          onmouseenter: w.strong ? () => vilagit(w.strong, true) : null, onmouseleave: w.strong ? () => vilagit(w.strong, false) : null,
+          title: `${w.lemma} · ${w.morf}` + (par ? ' · az aktuális héber szó görög párja' : '') + (gk ? ' · kattintásra görög szó-lap' : ''),
           role: gk ? 'button' : null, tabindex: gk ? '0' : null,
           onclick: gk ? () => kivalaszt(w.strong) : null,
           onkeydown: gk ? e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); kivalaszt(w.strong); } } : null
@@ -1148,11 +1167,17 @@ ol.jel { gap: 12px; }
       el('div', { class: 'blokk' },
         el('h3', { text: 'Görög megfelelő a Septuagintában' }),
         l.lxx.length
-          ? el('div', { class: 'lxx-meg' }, l.lxx.map(x => el('div', null,
-              el('span', { class: 'gr', lang: 'grc', text: x.lemma || '—' }),
-              el('span', { class: 'st', text: x.strong }),
-              el('span', { text: `${x.db}×` }),
-              el('span', { class: 'meg', text: x.jelentes }))))
+          ? el('div', { class: 'lxx-meg' }, l.lxx.map(x => {
+              const gk = x.strong && D.gor_lapok[x.strong];
+              const nyit = () => kivalaszt(x.strong);
+              return el('div', { class: gk ? 'kat' : null },
+                el('span', { class: 'gr' + (gk ? ' kat' : ''), lang: 'grc', text: x.lemma || '—',
+                  title: gk ? `${x.strong} görög szó-lapja` : null, role: gk ? 'button' : null, tabindex: gk ? '0' : null,
+                  onclick: gk ? nyit : null, onkeydown: gk ? e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); nyit(); } } : null }),
+                el('span', { class: 'st', text: x.strong }),
+                el('span', { text: `${x.db}×` }),
+                el('span', { class: 'meg', text: x.jelentes }));
+            }))
           : el('p', { class: 'meg', text: 'A lxx_bridge nem ad párt (kevesebb mint 3 egyezés).' }),
         forras('bridge')),
       domenBlokk(l, 'Szemantikai domén (SDBH)', 'sdbh'),
