@@ -5,9 +5,10 @@ kod: HIVATKOZAS_ELLENORZES
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: nem_indult
+allapot: fut
 ad: a CI minden PR-nál jelzi, ha a FELADATOK.md vagy egy brief nem létező fájlra, ágra vagy commitra mutat, illetve ha egy PR áthelyez vagy töröl egy hivatkozott fájlt anélkül, hogy a mutatót frissítené
-kovetkezo: /kovetkezo
+ag: claude/hivatkozas-ellenorzes
+kovetkezo: a végrehajtás fut
 olvas: [FELADATOK.md, NYITOTT_FELADATOK.md, CLAUDE.md, .github/workflows/, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, BRIEF_SABLON.md]
 ir: [eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/, .github/workflows/ellenorzes.yml, CLAUDE.md, naplok/ELLENOR_HIVATKOZAS.md]
 fugg: [2]
