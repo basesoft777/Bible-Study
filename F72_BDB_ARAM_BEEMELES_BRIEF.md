@@ -11,7 +11,7 @@ ag: claude/bdb-aram-beemeles
 pr: 236
 lezarva_osszegzes: PR #236; 164 arámi alias-sor + 6 szövegsor a BDB fő táblába (a régi sorok bájtra azonosak), a #38 sorrendje újragenerálva (+9 sor, a 7. adag első sora H4725), jelölt H0004, H3769, H5013; N-F72a helyőrző; ellenőr 2 kör
 ad: a konkordancia/BDB_strong_alias.tsv a 164 duplikált arámi Strong-számmal bővül (a héber testvérsorra mutatva), a BDB_teljes_unabridged.tsv végére a 6 valódi hiány kerül szövegsorként; a meglévő sorok bájtra azonosak; a #38 sorrendje újragenerálva
-kovetkezo: "lezárva; a #38 befogadáskori fugg-bővítése és a 7. adag (sorrend 649–, az első sor most H4725); a DT-F67a 9. adag kapuját az adagok eltolódása érintheti"
+kovetkezo: "lezárva; a #38 befogadáskori fugg-bővítése és a 7. adag (sorrend 649–, az első sor most H4725); a DT-F67a érvényes marad (az eltolódás után is a 9. adag az első, amelyben javitva sor van)"
 olvas: [konkordancia/BDB_aram_potlas.tsv, konkordancia/BDB_aram_potlas_README.md, naplok/BDB_ARAM_POTLAS_duplikacio.md, naplok/BDB_ARAM_POTLAS_zaras.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/BDB_strong_alias_elvetett.tsv, konkordancia/BDB_teljes_unabridged_README.md, eszkozok/bdb_strong_potlas.py, eszkozok/bdb_aram_potlas.py, F38_BDB_FORDITAS_BRIEF.md, adat/SEMA.md]
 ir: [eszkozok/bdb_sorrend_ujragen.py, naplok/BDB_FORDITAS_sorrend.tsv, naplok/ELLENOR_F72.md, NYITOTT_FELADATOK.md, naplok/BDB_ARAM_BEEMELES_szarazfutas.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/BDB_teljes_unabridged_README.md, eszkozok/bdb_aram_beemeles.py, eszkozok/teszt_bdb_aram_beemeles.py, naplok/BDB_ARAM_BEEMELES_zaras.md]
 fugg: [66]
