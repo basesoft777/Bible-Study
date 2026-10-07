@@ -2639,3 +2639,26 @@ A BDB-gyökcsoport tehát jóval tágabb rokonságot ad, mint az azonos TWOT-sz�
 **Állapot (`dontesre_var` marad):** a brief fejlécében az `allapot` nem lép `fut`-ra, mert a 7. adag előfeltétele (a (d) feladat befogadása és lezárása) még hiányzik; a döntés megszületett, de a folytatás nem indítható. A `kovetkezo` a (d) feladatra mutat, utána a 7. adagra. A (d) brief-tervezete a `beerkezo/`-ben vár a `/befogad` jóváhagyására; a #38 7. adagja a befogadás után a (d) feladattól függ (`fugg` bővítése a befogadáskor).
 
 *Proveniencia: scope=DONTESEK.md DT52 | forras=felhasználó, chat | ts=2026-10-06.*
+
+## M6c — Szinkron a Károli–Strong párosítással (DT56, 2026-10-07, chat)
+
+**Ok.** A fordító promptjába az adatblokk (`eszkozok/bdb_adatblokk.py`, `karoli_alakok()`) a Strong-szám Károli-alakjait a párosított könyvekből adja (ma 1–5Móz, Józs, `adat/karoli_strong/parok_*.tsv`). A gyakorisági sorrendben lefelé haladva ez a támasz fogy; amit nélküle fordítunk, azt később nem fordítjuk újra.
+
+**Mérés** (`python naplok/BDB_FORDITAS_karoli_lefedettseg.py --adagok 4`; adag = kb. 500 000 forráskarakter):
+
+| adag (sorrend) | szócikk | Károli-pár | % | indulhat (≥85%) |
+|---|---|---|---|---|
+| 7. (649–966) | 318 | 273 | 86% | igen |
+| 8. (967–1390) | 424 | 329 | 78% | nem |
+| 9. (1391–1979) | 589 | 396 | 67% | nem |
+| 10. (1980–2826) | 847 | 484 | 57% | nem |
+
+Összevetésül: a kész 1–648. sor 94%-a kapott Károli-párt; a hátralék vége (2501–) kb. 30%.
+
+**Könyvenkénti haszon** a 7–10. adag 696 pár nélküli szócikkére (TAHOT-előfordulás; felső becslés, a könyvek átfednek, nem minden előfordulásból lesz pár; a TAHOT nem teljes, pl. Zsolt 88/89/140/142): Ézs 251 · Zsolt 250 · Jer 220 · 1Krón 189 · 2Krón 169 · Ezsd 162 · Jób 159 · Ez 147 · Péld 145 · Dán 144 · 2Sám 142 · 2Kir 130. A Bír nincs az első 12-ben (DT57, nyitott).
+
+**Döntés (DT56 = 1):** a BDB a #22-höz igazodik. Minden adag előtt kötelező a mérés; az adag csak akkor indul, ha a sorrendtartományának legalább 85%-a Károli-párt kap. Ha nem éri el, a `kovetkezo` a #22 következő könyvére mutat. A `megjegyzes`-jelölés és az utólagos visszaellenőrző feladat (2. opció) plusz munka, elvetve.
+
+**Elvetve ugyanebben a menetben:** a #38 párhuzamos, több subagentes futtatása (szilánkok gyökcsoport szerint, közös glosszáriummal). A szilánkok közötti szabad szóválasztás (a terminológia v3-on kívül) egy adagon belül szétcsúszhatna; a brief „Egy végrehajtó, egy kontextus” szabálya marad.
+
+*Proveniencia: scope=BDB-sorrend 649–2826, 4 adag | forras=naplok/BDB_FORDITAS_sorrend.tsv x adat/karoli_strong/parok_*.tsv x konkordancia/TAHOT_kivonat.tsv x adat/forditasok.tsv | ts=2026-10-07 09:37.*

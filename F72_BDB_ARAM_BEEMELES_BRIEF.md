@@ -6,11 +6,14 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: lezarva
+ag: claude/bdb-aram-beemeles
+pr: 236
+lezarva_osszegzes: PR #236; 164 arámi alias-sor + 6 szövegsor a BDB fő táblába (a régi sorok bájtra azonosak), a #38 sorrendje újragenerálva (+9 sor, a 7. adag első sora H4725), jelölt H0004, H3769, H5013; N-F72a helyőrző; ellenőr 2 kör
 ad: a konkordancia/BDB_strong_alias.tsv a 164 duplikált arámi Strong-számmal bővül (a héber testvérsorra mutatva), a BDB_teljes_unabridged.tsv végére a 6 valódi hiány kerül szövegsorként; a meglévő sorok bájtra azonosak; a #38 sorrendje újragenerálva
-kovetkezo: "/kovetkezo; ⛔ a szárazfutás után (a 6 pótlás és a 164 alias-sor jóváhagyása) és a #38 sorrendjének újragenerálása előtt"
+kovetkezo: "lezárva; a #38 befogadáskori fugg-bővítése és a 7. adag (sorrend 649–, az első sor most H4725); a DT55 érvényes marad (az eltolódás után is a 9. adag az első, amelyben javitva sor van)"
 olvas: [konkordancia/BDB_aram_potlas.tsv, konkordancia/BDB_aram_potlas_README.md, naplok/BDB_ARAM_POTLAS_duplikacio.md, naplok/BDB_ARAM_POTLAS_zaras.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/BDB_strong_alias_elvetett.tsv, konkordancia/BDB_teljes_unabridged_README.md, eszkozok/bdb_strong_potlas.py, eszkozok/bdb_aram_potlas.py, F38_BDB_FORDITAS_BRIEF.md, adat/SEMA.md]
-ir: [konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/BDB_teljes_unabridged_README.md, eszkozok/bdb_aram_beemeles.py, eszkozok/teszt_bdb_aram_beemeles.py, naplok/BDB_ARAM_BEEMELES_zaras.md]
+ir: [eszkozok/bdb_sorrend_ujragen.py, naplok/BDB_FORDITAS_sorrend.tsv, naplok/ELLENOR_F72.md, NYITOTT_FELADATOK.md, naplok/BDB_ARAM_BEEMELES_szarazfutas.md, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/BDB_strong_alias.tsv, konkordancia/BDB_teljes_unabridged_README.md, eszkozok/bdb_aram_beemeles.py, eszkozok/teszt_bdb_aram_beemeles.py, naplok/BDB_ARAM_BEEMELES_zaras.md]
 fugg: [66]
 ---
 
@@ -62,10 +65,12 @@ A felhasználó döntése (N51, 2026-10-06, chat): a 164 duplikált sort **nem**
 | Verzió | Dátum | Döntés | Forrás |
 |---|---|---|---|
 | v1 | 2026-10-06 | A 164 duplikált sor alias-sorként, a 6 valódi hiány szövegsorként; a beemelés a #38 7. adaga előtt; külön feladat. | felhasználó, chat (N51) |
+| v2 | 2026-10-07 | A ⛔ 2. pont jóváhagyása: 6 pótlás + 162 alias; a H2298 (kezi_elfogadott) és a H5839 (feltételezett téves testvér) kizárva, jelölt: 5. | felhasználó, chat |
+| v3 | 2026-10-07 | A két kizárás visszavonva (téves alapon álltak: a szöveg mindkét esetben a testvérsor végén van; a `kezi_elfogadott` döntés a szócikk-azonosításról szólt, nem a táblasorról). H5839 → H5838 (BDB9760): indokolt felülírás a szkriptben (`TABLA_FELULIR`); H2298 → H0259 (BDB9285): automatikus egyezés (0,947) a `KIZAR` kiürítése óta, felülírás nélkül. Eredmény: **164 alias + 6 pótlás, jelölt 3** (H0004, H3769, H5013). A H3606 → H3605 kézi ellenőrzése: elfogadva. A #38 sorrendjének újragenerálása jóváhagyva (a végleges alias-táblából, külön commit). | felhasználó, chat; ELLENOR_F72 |
 
 **Nyitott kérdések (a befogadáskor):**
 
-- `DT-F66b`/`N-F66c` (helyőrző): a 164 alias-sorból 161 a #57 elvetett táblájának `testver_strong` oszlopában is szerepel; az elvetett tábla soraira kell-e jelölés (pl. „beemelve”), vagy marad változatlan? Javaslat: marad változatlan, az alias-tábla a tény.
-- A 3 alias-sor, amelynek testvére nem szerepel az elvetett táblában (164 − 161): a `tabla_strong` kézi ellenőrzése kell-e? Javaslat: igen, a szárazfutás külön listázza.
+- `DT-F66b`/`N-F66c` (helyőrző): a 164 alias-sorból 162 a #57 elvetett táblájának `testver_strong` oszlopában is szerepel; az elvetett tábla soraira kell-e jelölés (pl. „beemelve”), vagy marad változatlan? Javaslat: marad változatlan, az alias-tábla a tény.
+- A 2 alias-sor, amelynek testvére nem szerepel az elvetett táblában (164 − 162: H2298 → H0259 és H3606 → H3605): a `tabla_strong` kézi ellenőrzése kell-e? Javaslat: igen, a szárazfutás külön listázza. (Elvégezve, F72: mindkettő elfogadva.)
 - Az 5 részleges sor szöveges pótlása a teljes arámi szócikk szövege, vagy csak a hiányzó rész? Javaslat: a teljes szócikk (a `--m2` minta szerint), a héber testvérsor érintetlen marad.
 - A #38 jelenlegi adag-számozása (7. adag) a befogadáskor ellenőrizendő.
