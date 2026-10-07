@@ -951,12 +951,43 @@ class E27Teszt(unittest.TestCase):
         t = self._fut('x\n', {'F05_ELO_BRIEF.md': elo, 'F06_UTO_BRIEF.md': b})
         self.assertEqual([x.szint for x in t], ['FIGYELMEZTETES'])
 
-    def test_olvas_hiba_ha_a_fedo_feladat_nincs_a_fuggesek_kozott(self):
-        elo = '---\nfeladat: 5\nir: [naplok/audit.md]\nfugg: []\n---\n'
-        b = '---\nfeladat: 6\nolvas: [naplok/audit.md]\nfugg: [7]\n---\n'
+    def test_olvas_figyelmeztetes_ha_barmely_nem_lezart_feladat_ir_mezoje_fedi(self):
+        # DT-F40c (b): a fedo feladat nem kell, hogy a `fugg`-ben legyen
+        elo = '---\nfeladat: 5\nallapot: nem_indult\nir: [naplok/audit.md]\nfugg: []\n---\n'
+        b = '---\nfeladat: 6\nallapot: nem_indult\nolvas: [naplok/audit.md]\nfugg: [7]\n---\n'
+        extra = {'F05_ELO_BRIEF.md': elo, 'F06_UTO_BRIEF.md': b}
+        t = self._fut('x\n', extra)
+        self.assertEqual([(x.szint, x.fajl) for x in t], [('FIGYELMEZTETES', 'F06_UTO_BRIEF.md')])
+        self.assertEqual(self._kilepes('x\n', extra), 0)
+
+    def test_olvas_hiba_ha_csak_lezart_feladat_ir_mezoje_fedi(self):
+        # DT-F40c (b): a lezart feladat mar nem allitja elo a fajlt
+        elo = '---\nfeladat: 5\nallapot: lezarva\nir: [naplok/audit.md]\nfugg: []\n---\n'
+        b = '---\nfeladat: 6\nallapot: nem_indult\nolvas: [naplok/audit.md]\nfugg: [5]\n---\n'
         extra = {'F05_ELO_BRIEF.md': elo, 'F06_UTO_BRIEF.md': b}
         self.assertEqual([x.szint for x in self._fut('x\n', extra)], ['HIBA'])
         self.assertEqual(self._kilepes('x\n', extra), 1)
+
+    def test_olvas_jokeres_ir_is_fedi_nyitott_briefnel(self):
+        elo = '---\nfeladat: 5\nallapot: fut\nir: [naplok/MF_*.tsv]\nfugg: []\n---\n'
+        b = '---\nfeladat: 6\nolvas: [naplok/MF_x.tsv]\n---\n'
+        t = self._fut('x\n', {'F05_ELO_BRIEF.md': elo, 'F06_UTO_BRIEF.md': b})
+        self.assertEqual([x.szint for x in t], ['FIGYELMEZTETES'])
+
+    def test_olvas_lezart_brief_hianyzo_fajl_figyelmeztetes(self):
+        # DT-F40c (a): az F46 esete, a fedes nem szamit
+        b = '---\nfeladat: 6\nallapot: lezarva\nolvas: [adat/SEMA.md, beerkezo/eltunt.md]\nir: [uj/x.md]\nfugg: [4]\n---\n'
+        for diff in (True, False):
+            t = self._fut('x\n', {'F06_X_BRIEF.md': b}, **({} if diff else {'base_ref': None, 'head_ref': None}))
+            self.assertEqual([x.szint for x in t], ['FIGYELMEZTETES'])
+            self.assertIn('beerkezo/eltunt.md', t[0].reszlet)
+        self.assertEqual(self._kilepes('x\n', {'F06_X_BRIEF.md': b}), 0)
+        self.assertEqual(self._kilepes('x\n', {'F06_X_BRIEF.md': b}, hozzaadott=set()), 0)
+
+    def test_olvas_nyitott_brief_fedetlen_hianyzo_fajl_hiba_kilepes_1(self):
+        b = '---\nfeladat: 6\nallapot: fut\nolvas: [beerkezo/eltunt.md]\n---\n'
+        self.assertEqual([x.szint for x in self._fut('x\n', {'F06_X_BRIEF.md': b})], ['HIBA'])
+        self.assertEqual(self._kilepes('x\n', {'F06_X_BRIEF.md': b}), 1)
 
     def test_olvas_hiba_ha_a_fugg_feladat_ir_mezeje_nem_fedi(self):
         elo = '---\nfeladat: 5\nir: [mas/fajl.md]\nfugg: []\n---\n'

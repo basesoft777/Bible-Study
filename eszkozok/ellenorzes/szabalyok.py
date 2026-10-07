@@ -1621,6 +1621,7 @@ def _e27_brief_terkep():
         terkep[int(szam[0])] = {
             'brief': relut,
             'ir': _e27_fejlec_mezo(szoveg, 'ir'),
+            'allapot': (_e27_fejlec_mezo(szoveg, 'allapot') or [''])[0],
             'fugg': [int(x) for x in _e27_fejlec_mezo(szoveg, 'fugg') if x.strip().isdigit()],
         }
     return terkep
@@ -1756,7 +1757,9 @@ def e27_hivatkozas(base_ref=None, head_ref=None, esemeny=''):
             continue
         sor = _e27_mezo_sorszam(szoveg, 'olvas')
         szam = brief_szam.get(relut)
-        fuggok = [terkep[f] for f in terkep[szam]['fugg'] if f in terkep] if szam is not None else []
+        lezart = ((_e27_fejlec_mezo(szoveg, 'allapot') or [''])[0] == 'lezarva')
+        # DT-F40c (b): barmely nem lezart feladat `ir`-je fedhet (nem csak a `fugg`-beliek)
+        elo_feladatok = [a for a in terkep.values() if a['allapot'] != 'lezarva']
         for elem in _e27_fejlec_mezo(szoveg, 'olvas'):
             ut = elem.split('#')[0].strip()
             if not ut or any(c in ut for c in '*<>{} ') or ut.startswith(('http', '/')):
@@ -1767,13 +1770,18 @@ def e27_hivatkozas(base_ref=None, head_ref=None, esemeny=''):
                       'az `olvas` mezőben hivatkozott `%s` a PR-ban %s; frissítsd a mutatót ugyanabban a commitban.' % (ut, st),
                       kozvetlen=True)
             elif not _e27_van_ut(ut):
-                elo = [f for f in fuggok if _e27_ir_fedi(f['ir'], ut)]
+                if lezart:   # DT-F40c (a): lezart brief bemenete szandekosan eltunhet
+                    jelez('FIGYELMEZTETES', relut, sor,
+                          'az `olvas` mezőben hivatkozott fájl nem létezik: `%s` (lezárt feladat: a bemenet szándékosan eltűnhetett).' % ut,
+                          kozvetlen=True)
+                    continue
+                elo = [f for f in elo_feladatok if _e27_ir_fedi(f['ir'], ut)]
                 if elo:
                     jelez('FIGYELMEZTETES', relut, sor,
-                          'az `olvas` mezőben hivatkozott fájl még nem létezik: `%s` (a `fugg`-beli feladat állítja elő: `%s`).'
+                          'az `olvas` mezőben hivatkozott fájl még nem létezik: `%s` (egy nem lezárt feladat állítja elő: `%s`).'
                           % (ut, elo[0]['brief']), kozvetlen=True)
-                else:   # DT-F40a (b): mindig HIBA
+                else:   # DT-F40a (b) / DT-F40c (b): HIBA
                     jelez('HIBA', relut, sor,
-                          'az `olvas` mezőben hivatkozott fájl nem létezik: `%s`, és egyik `fugg`-beli feladat `ir` mezője sem fedi.' % ut,
+                          'az `olvas` mezőben hivatkozott fájl nem létezik: `%s`, és egyetlen nem lezárt feladat `ir` mezője sem fedi.' % ut,
                           kozvetlen=True)
     return talalatok
