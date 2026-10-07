@@ -1,4 +1,4 @@
-<title>Károli-konkordancia próba</title>
+<title>Károli-konkordancia próba · __SZAKASZ__</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -228,7 +228,7 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
 <div class="wrap">
   <header class="fej">
     <div>
-      <h1>Károli-konkordancia · 1Mózes 1:1–2:3</h1>
+      <h1>Károli-konkordancia · __SZAKASZ__</h1>
       <p class="alcim">Belső pilot az olvasói nézethez. Minden tartalom a repó tábláiból jön; a lapon nincs magyarázó szöveg. A „?” jel az adatforrást mutatja.</p>
     </div>
     <div class="cimkek" id="cimkek"></div>
@@ -237,7 +237,7 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
   <details class="utmutato" id="utmutato" open>
     <summary>Hogyan olvasd ezt az oldalt?</summary>
     <ol>
-      <li>Bal oldalon a teremtéstörténet <b>folyamatos Károli-szövege</b> áll (1Mózes 1:1–2:3), ahogy a Bibliában olvasod. A kis számok a versszámok.</li>
+      <li>Bal oldalon a szakasz <b>folyamatos Károli-szövege</b> áll (__SZAKASZ__), ahogy a Bibliában olvasod. A kis számok a versszámok.</li>
       <li>A <b>pontozottan aláhúzott szavakhoz</b> a héber eredetiben is tartozik szó. Rákattintva jobb oldalt, a <b>Szó</b> fülön megnyílik a szó teljes lapja: mit jelent, hogyan fordítja Károli, mi az alakja ebben a versben, hol fordul elő, mi a görög megfelelője, és a BDB-szócikk apparátusai.</li>
       <li>A <b>versszámra</b> kattintva oldalt a <b>Vers részletei</b> nyílik meg: a vers héber eredetije szavanként, a görög fordítás (Septuaginta) és a kapcsolódó igehelyek. A <b>Bezárás</b> gombbal visszatérsz a teljes szélességű olvasáshoz.</li>
       <li>A <b>görög szavak</b> is kattinthatók (keretes, aláhúzott szavak): ilyenkor a görög szó lapja nyílik meg, és onnan vissza lehet lépni a héber szóra.</li>
@@ -266,8 +266,8 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
 
 
   <footer class="lab">
-    <span>Aláhúzott szó: a Károli-szó szó szintű párosítása a héber szóval (a #22 Károli–Strong párosítás). Szaggatott aláhúzás: nem „magas” bizonyosságú pár.</span>
-    <span>Arany jelölés: a BDB-szócikk magyar fordítása még nem készült el (a #38 gyakorisági sorrendben halad); addig az angol eredeti áll.</span>
+    <span>Aláhúzott szó: a Károli-szó szó szintű párosítása a héber szóval (a Károli–Strong párosítás, modell-kimenet). Szaggatott aláhúzás: nem „magas” bizonyosságú pár.</span>
+    <span>Arany jelölés: a BDB-szócikk magyar fordítása nincs meg; az angol eredeti áll.</span>
     <span>Az előfordulásszám a TAHOT-kivonatból jön, amely nem teljes (pl. a Zsolt 88/89/140/142 hiányzik).</span>
     <span>Igealak: a Macula nyers morfológiai kódja és szófaja, feloldás nélkül (a kód jelkulcsa nincs a repóban). A szó alatti görög szó: a párosítás a Maculából, a szóalak az LXX_OS-ből; a Macula-illesztés pontossága az F17 napló szerint kb. 78% (átvett szám, naplok/F17_import_naplo.md).</span>
     <span>„Ebben a versben”: a UBS héber szótárának (DBH) saját jelentés-besorolása az adott előfordulásra; CC BY-SA 4.0.</span>
@@ -282,7 +282,7 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
   const verslap = document.getElementById('verslap');
   const szolap = document.getElementById('szolap');
   let aktVers = 0;
-  let aktSzo = 'H0430';
+  let aktSzo = (() => { for (const v of D.versek) for (const w of v.hu_szavak) if (w.fo && D.lapok[w.fo]) return w.fo; return Object.keys(D.lapok)[0] || ''; })();
   let teljesBdb = false;
   let aktFul = 'szo';
 
@@ -408,7 +408,7 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
         el('button', { type: 'button', class: 'k-x', 'aria-label': 'Bezárás', text: '×', onclick: kartyaZar })),
       r.szofaj ? el('p', { class: 'k-sor', text: r.szofaj + (r.db > 1 ? ` · ${r.db} jelentés a BDB-ben` : '') }) : null,
       el('p', { class: 'k-jel' + (r.hu ? '' : ' en'), lang: r.hu ? 'hu' : 'en', text: r.jel || '—' }),
-      r.hu ? null : el('span', { class: 'allapot folyamat', text: 'Magyar fordítás folyamatban · angol rövid jelentés' }),
+      r.hu ? null : el('span', { class: 'allapot folyamat', text: 'Magyar fordítás nincs · angol rövid jelentés' }),
       l.karoli.length ? el('p', { class: 'k-sor' }, 'Károli így fordítja: ', el('b', { text: l.karoli.slice(0, 6).map(([n, d]) => `${n} (${d})`).join(', ') })) : null,
       el('p', { class: 'k-sor', text: `${l.elofordulas.toLocaleString('hu-HU')} előfordulás az Ószövetségben, ${l.konyvek_szama} könyvben` }),
       kartyaEbben(strong, versIdx),
@@ -564,8 +564,8 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
       el('span', { text: egyezik ? '· a számozás egyezik' : '· a számozás eltér, l. a versmegfeleltető táblát' }));
 
     verslap.append(
-      el('div', null, el('p', { class: 'lapcim', text: 'Vers-lap' }), el('h2', { class: 'igehely', text: v.igehely + ' · Károli 1908' }), versszam, forras('versszam')),
-      el('div', { class: 'blokk' }, karoli, forras('karoli', 'parok')),
+      el('div', null, el('p', { class: 'lapcim', text: 'Vers-lap' }), el('h2', { class: 'igehely', text: v.igehely + ' · Károli 1908' }), el('h3', { text: 'Versszámozás' }), versszam, forras('versszam')),
+      el('div', { class: 'blokk' }, el('h3', { text: 'Károli-szöveg' }), karoli, forras('karoli', 'parok')),
       el('div', { class: 'blokk' },
         el('h3', { text: 'Héber szöveg' }),
         el('p', { class: 'meg', text: 'Jobbról balra. Szavanként: átírás, angol tükörfordítás, Strong-szám, igealak, alul a görög LXX-megfelelő (kattintható). Szaggatott keret: nyelvtani elem, nincs szó-lapja.' }),
@@ -627,10 +627,11 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
           l.hu.map(x => el('p', { class: 'bdb', text: (x.szam ? x.szam + '. ' : '') + x.szoveg })))
       : el('div', { class: 'blokk' },
           el('h3', { text: 'Jelentés' }),
-          el('span', { class: 'allapot folyamat', text: 'Magyar fordítás nincs · a Thayer teljes fordítása halasztva (#7)' }),
+          el('span', { class: 'allapot folyamat', text: 'Magyar fordítás nincs' }),
           el('p', { class: 'meg', text: `Rövid jelentés: ${l.gloss}` }));
     szolap.append(
       el('div', null, el('p', { class: 'lapcim', text: 'Szó-lap · görög' })),
+      el('h3', { text: 'Szó adatai (görög)' }),
       el('div', { class: 'szolap-fej' },
         el('p', { class: 'lemma gr', lang: 'grc', text: l.lemma }),
         el('div', { class: 'szolap-adat' },
@@ -640,6 +641,7 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
         el('div', { class: 'szam' }, el('b', { text: l.usz_db.toLocaleString('hu-HU') }), el('span', { text: 'előfordulás az ÚSZ-ben' })),
         el('div', { class: 'szam' }, el('b', { text: l.usz_versek_db.toLocaleString('hu-HU') }), el('span', { text: 'versben' })),
         el('div', { class: 'szam' }, el('b', { text: l.heber.length }), el('span', { text: 'héber szó mögötte (LXX)' }))),
+      forras('gor', 'usz', 'vissza'),
       hu,
       el('div', { class: 'blokk' },
         el('h3', { text: 'Héber háttér: ezeket a szavakat fordítja így a Septuaginta' }),
@@ -656,7 +658,7 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
         l.usz_versek.length
           ? el('div', { class: 'usz' }, l.usz_versek.map(x => el('div', null, el('b', { text: x.ig }), x.karoli)))
           : el('p', { class: 'meg', text: 'A szó az Újszövetségben nem fordul elő (vagy a TAGNT-kivonatban nincs).' }),
-        el('p', { class: 'meg', text: 'Versszintű egyezés: a Károli–Strong szópárosítás az Újszövetségre még nem készült el, ezért a szó a versben nincs kiemelve.' }),
+        el('p', { class: 'meg', text: `A szó az Újszövetség Károli-szövegében nincs kiemelve (a Károli–Strong párosítás könyvei: ${D.karoli_konyvek.join(', ')}).` }),
         forras('usz')),
       el('div', { class: 'blokk' },
         el('h3', { text: 'Szótári szöveg (angol): TBESG / Abbott-Smith' }),
@@ -670,12 +672,17 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
   // A súgó csak azt mondja meg, melyik adatkészletből jön a blokk, és mi a licence (adat/licencek.tsv).
   const SUGO = [
     ['Héber szöveg', [['TAHOT', 'konkordancia/TAHOT_kivonat.tsv: héber szó, kiejtés, angol tükörfordítás, Strong-szám'], ['Macula_heber', 'konkordancia/Macula_heber_*.tsv: igealak-kód, szófaj, héber–görög párosítás'], ['LXX_OS', 'konkordancia/LXX_OS/*.tsv: a görög szóalak']], ['forras', 'gepi']],
-    ['Septuaginta', [['LXX_OS', 'konkordancia/LXX_OS/genesis.tsv (Rahlfs, lxx-morph)']], ['forras']],
+    ['Károli-szöveg', [['Karoli_1908', 'konkordancia/Karoli_1908.tsv: a szöveg'], ['projekt_adat', 'adat/karoli_strong/parok_*.tsv: a pontozott aláhúzás (Károli–Strong párosítás)']], ['forras', 'modell']],
+    ['Versszámozás', [['Karoli_versmegfeleltetes', 'konkordancia/Karoli_versmegfeleltetes.tsv'], ['LXX_OS', 'konkordancia/LXX_OS/*.tsv: a görög versszám']], ['forras']],
+    ['Szó adatai (héber)', [['Strong_szotar', 'konkordancia/Strong_szotar.tsv: szótő, kiejtés, szófaj'], ['TAHOT', 'konkordancia/TAHOT_kivonat.tsv: előfordulás- és könyvszám (számolás)'], ['projekt_adat', 'adat/karoli_strong/parok_*.tsv: a Károli-párok száma']], ['forras', 'gepi', 'modell']],
+    ['Szó adatai (görög)', [['TBESG', 'konkordancia/TBESG.txt: szótő, átírás, jelentés'], ['TAGNT', 'konkordancia/TAGNT_kivonat.tsv: előfordulás- és versszám (számolás)'], ['lxx_bridge', 'adat/kulso/lxx_bridge.tsv: a héber szavak száma']], ['forras', 'gepi']],
+    ['Septuaginta', [['LXX_OS', 'konkordancia/LXX_OS/*.tsv (Rahlfs, lxx-morph)']], ['forras']],
     ['Kereszthivatkozások (TSK', [['TSK', 'konkordancia/TSK_kereszthivatkozasok.tsv, szavazatszámmal']], ['forras']],
     ['Károli-kereszthivatkozások', [['Karoli_KH', 'konkordancia/Karoli_kereszthivatkozasok.tsv']], ['forras']],
-    ['Ebben a versben', [['Macula_heber', 'igealak-kód, szófaj, görög párosítás'], ['UBS_DBH', 'konkordancia/UBS_DBH_referenciak.tsv + UBS_DBH_jelentesek.tsv'], ['LXX_OS', 'a görög szóalak']], ['forras', 'gepi']],
-    ['Így fordítja Károli', [['projekt_adat', 'adat/karoli_strong/parok_*.tsv: a #22 Károli–Strong párosítás (gépi; 1–5Móz, Józs)']], ['modell']],
-    ['BDB-szócikk', [['BDB', 'adat/forditasok.tsv (magyar, #38) és konkordancia/BDB_teljes_unabridged.tsv (angol); a bontás gépi']], ['forras', 'modell', 'gepi']],
+    ['Ebben a versben', [['Macula_heber', 'igealak-kód, szófaj, görög párosítás'], ['UBS_DBH', 'konkordancia/UBS_DBH_referenciak.tsv + UBS_DBH_jelentesek.tsv'], ['LXX_OS', 'a görög szóalak'], ['projekt_adat', 'adat/karoli_strong/parok_*.tsv: „Károli itt” (Károli–Strong párosítás)']], ['forras', 'gepi', 'modell']],
+    ['Így fordítja Károli', [['projekt_adat', 'adat/karoli_strong/parok_*.tsv: a Károli–Strong párosítás (nyelvi modell)']], ['modell']],
+    ['BDB-szócikk', [['BDB', 'adat/forditasok.tsv (magyar) és konkordancia/BDB_teljes_unabridged.tsv (angol); a bontás gépi']], ['forras', 'modell', 'gepi']],
+    ['Jelentés (BDB', [['BDB', 'adat/forditasok.tsv (magyar) vagy konkordancia/BDB_teljes_unabridged.tsv (angol); a rövid jelentés: Strong_szotar']], ['forras', 'modell']],
     ['Jelentés magyarul', [['Thayer', 'adat/forditasok.tsv (Thayer)'], ['UBS_DNTG', 'adat/forditasok.tsv (UBS DNTG)']], ['modell']],
     ['Jelentés', [['TBESG', 'konkordancia/TBESG.txt: rövid jelentés']], ['forras']],
     ['Héber háttér', [['lxx_bridge', 'adat/kulso/lxx_bridge.tsv (görög → héber)']], ['forras']],
@@ -726,7 +733,7 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
 
     return el('div', { class: 'blokk' },
       el('h3', { text: hu ? 'BDB-szócikk apparátusokra bontva (magyarul)' : 'BDB-szócikk apparátusokra bontva (angol eredeti)' }),
-      el('span', { class: 'allapot' + (hu ? '' : ' folyamat'), text: hu ? `Lefordítva · ${l.bdb_hu_meta}` : 'Magyar fordítás folyamatban · az angol eredeti áll' }),
+      el('span', { class: 'allapot' + (hu ? '' : ' folyamat'), text: hu ? `Lefordítva · ${l.bdb_hu_meta}` : 'Magyar fordítás nincs · az angol eredeti áll' }),
       el('p', { class: 'meg', text: 'Gépi szeletelés (próba): a határokat a szócikk saját jelölői adják (gondolatjel, sorszámok, törzsnevek); hibás határ előfordulhat. A szöveg nem változik.' }),
       el('div', { class: 'appok' },
         resz('Címszó',
@@ -776,7 +783,7 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
     } else {
       bdb = el('div', { class: 'blokk' },
         el('h3', { text: 'Jelentés (BDB)' }),
-        el('span', { class: 'allapot folyamat', text: 'Magyar fordítás folyamatban · az angol eredeti áll' }),
+        el('span', { class: 'allapot folyamat', text: 'Magyar fordítás nincs · az angol eredeti áll' }),
         el('p', { class: 'meg', text: `Rövid jelentés (Strong): ${l.rovid}` }),
         el('p', { class: 'bdb en', lang: 'en', text: l.bdb_en }),
         forras('bdb'));
@@ -784,6 +791,7 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
 
     szolap.append(
       el('div', null, el('p', { class: 'lapcim', text: 'Szó-lap' })),
+      el('h3', { text: 'Szó adatai (héber)' }),
       el('div', { class: 'szolap-fej' },
         el('p', { class: 'lemma', lang: 'he', text: l.lemma }),
         el('div', { class: 'szolap-adat' },
@@ -793,6 +801,7 @@ footer.lab { font-size: 12px; color: var(--muted); border-top: 1px solid var(--r
         el('div', { class: 'szam' }, el('b', { text: l.elofordulas.toLocaleString('hu-HU') }), el('span', { text: 'előfordulás az ÓSZ-ben' })),
         el('div', { class: 'szam' }, el('b', { text: l.konyvek_szama }), el('span', { text: 'könyvben' })),
         el('div', { class: 'szam' }, el('b', { text: l.karoli_osszes }), el('span', { text: `Károli-pár (${l.karoli_magas} magas)` }))),
+      forras('elofordulas', 'karoli_alak'),
       el('div', { class: 'blokk' },
         el('h3', { text: `Ebben a versben (${D.versek[aktVers].igehely})` }),
         ebbenAVersben(l.strong)),

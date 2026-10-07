@@ -1,10 +1,12 @@
-"""Olvasói pilot (prototípus, nem éles): az 1Móz 1:1–2:3 vers- és szó-lapjainak adata a repó tábláiból.
+"""Olvasói pilot (nem éles): egy szakasz (alapból 1Móz 1:1–2:3) vers- és szó-lapjainak adata a repó tábláiból.
 
 Csak olvas. Kimenet: olvaso_pilot.json a --kimenet könyvtárba (alapból a repón kívüli ideiglenes
 könyvtárba, CLAUDE.md: a próbák kimenete nem kerül a repóba). Minden érték forrássorból jön;
 a gépi feldolgozás (BDB-bontás, fő szó választása, görög szóalak párosítása) szabálya itt olvasható.
-Futtatás: python eszkozok/olvaso_pilot/adat.py [--kimenet KÖNYVTÁR], utána epit.py."""
+Futtatás: python eszkozok/olvaso_pilot/adat.py [--szakasz "Zsolt 22"] [--kimenet KÖNYVTÁR], utána epit.py
+(ugyanazzal a --szakasz és --kimenet értékkel)."""
 import argparse
+import datetime
 import json
 import os
 import re
@@ -22,12 +24,21 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 GY = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))).replace('\\', '/') + '/'
 _ap = argparse.ArgumentParser(description='Olvasói pilot: adatkinyerés')
-_ap.add_argument('--kimenet', default=os.path.join(tempfile.gettempdir(), 'olvaso_pilot'))
+_ap.add_argument('--szakasz', default='1Móz 1:1-2:3',
+                 help='pl. "1Móz 1:1-2:3" (vers-tartomány) vagy "Zsolt 22" (egész fejezet)')
+_ap.add_argument('--kimenet', default=None,
+                 help='kimeneti könyvtár; alapból <temp>/olvaso_pilot/<szakasz-azonosító>, a repón kívül')
 _args = _ap.parse_args()
-os.makedirs(_args.kimenet, exist_ok=True)
-KI = os.path.join(_args.kimenet, 'olvaso_pilot.json')
-VERSEK = ['1Móz 1:%d' % v for v in range(1, 32)] + ['1Móz 2:%d' % v for v in range(1, 4)]
-TS = '2026-10-05'
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from szakasz import KONYVFAJLOK, szakasz_cim, szakasz_versei, alap_kimenet, step_tabla  # noqa: E402
+KI_DIR = _args.kimenet or alap_kimenet(_args.szakasz)
+os.makedirs(KI_DIR, exist_ok=True)
+KI = os.path.join(KI_DIR, 'olvaso_pilot.json')
+VERSEK = szakasz_versei(_args.szakasz)
+SZAKASZ = szakasz_cim(_args.szakasz)
+KONYV = VERSEK[0].split(' ')[0]
+MACULA_F, LXX_F = KONYVFAJLOK[KONYV]
+TS = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
 
 
 def sorok(ut, fejlec=True):
@@ -91,6 +102,7 @@ karoli_alak = defaultdict(Counter)
 karoli_alak_magas = defaultdict(Counter)
 karoli_konyv = defaultdict(set)
 pkonyvek = []
+parok_hasznalt = []
 for f in sorted(os.listdir(GY + 'adat/karoli_strong')):
     if not f.startswith('parok_'):
         continue
@@ -100,6 +112,8 @@ for f in sorted(os.listdir(GY + 'adat/karoli_strong')):
             continue
         n = hnorm(r[5])
         if r[0] in VERSEK:
+            if f not in parok_hasznalt:
+                parok_hasznalt.append(f)
             parok_vers[r[0]].append({'hu_sorszam': r[1], 'hu_szo': r[2], 'er_sorszam': r[3],
                                      'strong': n, 'bizonyossag': r[6]})
         if n and n not in nyelvtani:
@@ -125,7 +139,7 @@ for r in sorok('konkordancia/BDB_teljes_unabridged.tsv'):
 
 # --- LXX_OS a pilot verseire
 lxx_vers = defaultdict(list)
-for r in sorok('konkordancia/LXX_OS/genesis.tsv'):
+for r in sorok(LXX_F):
     if len(r) > 10 and r[2] in VERSEK:
         g = ('G%04d' % int(r[9])) if r[9].isdigit() else ''
         lxx_vers[r[2]].append((int(r[4]) if r[4].isdigit() else 0,
@@ -144,10 +158,13 @@ for r in sorok('konkordancia/TSK_kereszthivatkozasok.tsv'):
     if len(r) > 3 and r[0] in VERSEK:
         tsk[r[0]].append((int(r[3]) if r[3].lstrip('-').isdigit() else 0, r[2]))
 kh = defaultdict(list)
+STEP_HU = step_tabla()
 for r in sorok('konkordancia/Karoli_kereszthivatkozasok.tsv'):
-    m = re.match(r'^Gen\.(\d+)\.(\d+)$', r[0]) if r else None
-    if m and len(r) > 2 and ('1Móz %s:%s' % (m.group(1), m.group(2))) in VERSEK:
-        kh['1Móz %s:%s' % (m.group(1), m.group(2))].append(r[2])
+    m = re.match(r'^(\w+)\.(\d+)\.(\d+)$', r[0]) if r else None
+    if m and len(r) > 2:
+        kulcs = '%s %s:%s' % (STEP_HU.get(m.group(1), m.group(1)), m.group(2), m.group(3))
+        if kulcs in VERSEK:
+            kh[kulcs].append(r[2])
 
 
 FUNKCIO = ('elöljárószó', 'kötőszó', 'partikula', 'névmás', 'indulatszó')
@@ -296,7 +313,7 @@ def morf_hu(kod):
 
 
 macula_vers = defaultdict(list)
-for r in sorok('konkordancia/Macula_heber_Genezis.tsv'):
+for r in sorok(MACULA_F):
     if len(r) > 14 and r[2] in VERSEK:
         macula_vers[r[2]].append({'szo': r[5], 'lemma': r[6], 'strong': hnorm(r[7]) if r[7] else None,
                                   'morf': r[10], 'szofaj': r[11], 'gloss': r[12],
@@ -318,7 +335,7 @@ for r in sorok('konkordancia/UBS_DBH_jelentesek.tsv'):
 versszam = {r[0]: {'kjv': r[1], 'mt': r[2], 'osztaly': r[3]} for r in sorok('konkordancia/Karoli_versmegfeleltetes.tsv')
             if r and r[0] in VERSEK}
 lxx_igehely = {}
-for r in sorok('konkordancia/LXX_OS/genesis.tsv'):
+for r in sorok(LXX_F):
     if len(r) > 2 and r[2] in VERSEK:
         lxx_igehely.setdefault(r[2], r[0])
 
@@ -442,19 +459,21 @@ for g in sorted(gor_szavak):
                   for db, h in sorted(vissza.get(g, []), reverse=True)[:5]],
     }
 
+LXX_REL = LXX_F[len('konkordancia/'):]
+PAROK_F = parok_hasznalt[0] if len(parok_hasznalt) == 1 else '{%s}' % ','.join(parok_hasznalt)
 prov = {
-    'macula': 'scope=1Móz 1:1–2:3 | forras=konkordancia/Macula_heber_Genezis.tsv (morf: gépi magyar feloldás; héber–görög párosítás) + LXX_OS/genesis.tsv (a görög szóalak) | ts=%s' % TS,
-    'ubs': 'scope=1Móz 1:1–2:3 | forras=konkordancia/UBS_DBH_referenciak.tsv + UBS_DBH_jelentesek.tsv (CC BY-SA 4.0) | ts=%s' % TS,
-    'versszam': 'scope=1Móz 1:1–2:3 | forras=konkordancia/Karoli_versmegfeleltetes.tsv + LXX_OS/genesis.tsv | ts=%s' % TS,
+    'macula': 'scope=%s | forras=%s (morf: gépi magyar feloldás; héber–görög párosítás) + %s (a görög szóalak) | ts=%s' % (SZAKASZ, MACULA_F, LXX_REL, TS),
+    'ubs': 'scope=%s | forras=konkordancia/UBS_DBH_referenciak.tsv + UBS_DBH_jelentesek.tsv (CC BY-SA 4.0) | ts=%s' % (SZAKASZ, TS),
+    'versszam': 'scope=%s | forras=konkordancia/Karoli_versmegfeleltetes.tsv + %s | ts=%s' % (SZAKASZ, LXX_REL, TS),
     'gor': 'scope=strong | forras=konkordancia/TBESG.txt + Thayer_teljes.tsv + adat/forditasok.tsv (Thayer, UBS_DNTG) | ts=%s' % TS,
     'usz': 'scope=NT | forras=konkordancia/TAGNT_kivonat.tsv + Karoli_1908.tsv | ts=%s' % TS,
     'vissza': 'scope=strong | forras=adat/kulso/lxx_bridge.tsv (görög → héber) | ts=%s' % TS,
-    'karoli': 'scope=1Móz 1:1–2:3 | forras=konkordancia/Karoli_1908.tsv | ts=%s' % TS,
-    'heber': 'scope=1Móz 1:1–2:3 | forras=konkordancia/TAHOT_kivonat.tsv | ts=%s' % TS,
-    'parok': 'scope=1Móz 1:1–2:3 | forras=adat/karoli_strong/parok_1Moz.tsv | ts=%s' % TS,
-    'lxx': 'scope=1Móz 1:1–2:3 | forras=konkordancia/LXX_OS/genesis.tsv | ts=%s' % TS,
-    'tsk': 'scope=1Móz 1:1–2:3 | forras=konkordancia/TSK_kereszthivatkozasok.tsv | ts=%s' % TS,
-    'kh': 'scope=1Móz 1:1–2:3 | forras=konkordancia/Karoli_kereszthivatkozasok.tsv | ts=%s' % TS,
+    'karoli': 'scope=%s | forras=konkordancia/Karoli_1908.tsv | ts=%s' % (SZAKASZ, TS),
+    'heber': 'scope=%s | forras=konkordancia/TAHOT_kivonat.tsv | ts=%s' % (SZAKASZ, TS),
+    'parok': 'scope=%s | forras=adat/karoli_strong/%s | ts=%s' % (SZAKASZ, PAROK_F, TS),
+    'lxx': 'scope=%s | forras=%s | ts=%s' % (SZAKASZ, LXX_F, TS),
+    'tsk': 'scope=%s | forras=konkordancia/TSK_kereszthivatkozasok.tsv | ts=%s' % (SZAKASZ, TS),
+    'kh': 'scope=%s | forras=konkordancia/Karoli_kereszthivatkozasok.tsv | ts=%s' % (SZAKASZ, TS),
     'bdb': 'scope=strong | forras=adat/forditasok.tsv (BDB) + konkordancia/BDB_teljes_unabridged.tsv | ts=%s' % TS,
     'karoli_alak': 'scope=strong | forras=adat/karoli_strong/parok_{%s}.tsv | ts=%s' % (','.join(pkonyvek), TS),
     'elofordulas': 'scope=OT | forras=konkordancia/TAHOT_kivonat.tsv (nem teljes) | ts=%s' % TS,
