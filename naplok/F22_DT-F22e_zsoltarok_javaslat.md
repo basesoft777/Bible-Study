@@ -1,4 +1,4 @@
-# DT-F22d — a #22 könyvsorrendje a #38 adatblokkja szerint: Zsoltárok a Bírák előtt?
+# DT-F22e — a #22 könyvsorrendje a #38 adatblokkja szerint: Zsoltárok a Bírák előtt?
 
 *2026-10-07 · kérdés a #22-höz (KAROLI_STRONG), a #38 (BDB_FORDITAS) és a #56 (BDB_ADATBLOKK) mérése alapján · mérő szkript: `naplok/F22_konyvsorrend_meres.py`*
 
@@ -68,3 +68,7 @@ A 6. adag 28 NINCS-szócikke a `Strong_szotar.tsv` szófaja és az előfordulás
 A (c) a teljes sorra hatékonyabb (Ézs előre). Ha a keret szűk, az Ézs-sel kezdés a jobb választás. A (d)-t nem javaslom, mert a #38 javító menete úgyis lefut.
 
 Az első költői könyv előtt kell egy rövid pontossági szúrópróba (a #22 brief ⛔ 2. megállójának mintájára).
+
+## 7. Döntés
+
+**Felhasználó, 2026-10-07 (chat): (b), a 7. adag nem vár.** A #22 következő könyve a Zsoltárok, utána a kanonikus sorrend (Bír, Ruth, …). A #38 7. adagja nem vár; a Zsoltárok Károli-adatát a 7. adag a #38 javító menetében kapja meg. Alkalmazva az F22 briefben (D13, v2.7, `kovetkezo`).

@@ -1,4 +1,4 @@
-"""DT-F22d mérése: a #22 Károli–Strong párosítás melyik következő könyve ad a
+"""DT-F22e mérése: a #22 Károli–Strong párosítás melyik következő könyve ad a
 legtöbb Károli-adatot a #38 BDB-fordítás adatblokkjának (#56).
 
 A #56 generátor (eszkozok/bdb_adatblokk.py) saját függvényeivel számol:
