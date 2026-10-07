@@ -65,7 +65,7 @@ jobs:
           echo "Valtozott fajlok:"
           cat valtozott_fajlok.txt
 
-      - name: E2-E19 (eszkozok/ellenorzes/futtat.py)
+      - name: E2-E27 (eszkozok/ellenorzes/futtat.py; E27 = hivatkozas-ellenorzes, F40)
         id: e2e16
         env:
           DIFF_ALAP: ${{ steps.diff.outputs.base }}
@@ -127,7 +127,7 @@ jobs:
             head -c 900000 tanulmany_audit.md
           } >> "$GITHUB_STEP_SUMMARY"
 
-      # F37 T3: a szabalyok pozitiv/negativ tesztjei (E2-E26, F37 tanulmany-szabalyok)
+      # F37 T3: a szabalyok pozitiv/negativ tesztjei (E2-E27, F37 tanulmany-szabalyok)
       - name: Szabaly-tesztek
         id: tesztek
         if: always()
@@ -150,7 +150,7 @@ jobs:
         run: |
           python eszkozok/ellenorzes/pr_komment.py e2e16_jelentes.md e1_jelentes.md
 
-      - name: Bukas, ha E1 vagy E2-E26 HIBA-t jelzett, vagy a szabaly-teszt bukott
+      - name: Bukas, ha E1 vagy E2-E27 HIBA-t jelzett, vagy a szabaly-teszt bukott
         if: always()
         env:
           E2E16_KILEPES: ${{ steps.e2e16.outputs.kilepes }}
@@ -158,7 +158,7 @@ jobs:
           TESZT_KILEPES: ${{ steps.tesztek.outputs.kilepes }}
         run: |
           if [ "$E2E16_KILEPES" != "0" ] || [ "$E1_KILEPES" != "0" ] || [ "$TESZT_KILEPES" != "0" ]; then
-            echo "Van HIBA-szintu talalat vagy bukott teszt (E2-E26 kilepes: $E2E16_KILEPES, E1 kilepes: $E1_KILEPES, tesztek: $TESZT_KILEPES)."
+            echo "Van HIBA-szintu talalat vagy bukott teszt (E2-E27 kilepes: $E2E16_KILEPES, E1 kilepes: $E1_KILEPES, tesztek: $TESZT_KILEPES)."
             exit 1
           fi
           echo "Minden ellenorzes RENDBEN."
