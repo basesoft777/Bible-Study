@@ -210,3 +210,7 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 
 - ⛔ 2. megállás: a jelentés és az ellenőri kör után, merge előtt a felhasználó dönt a következő könyvről (a kanonikus sorrend szerint a Bírák; DT54).
 - A régi-arany egyezés fenti értéke kizárás nélkül mért.
+
+## 7. Utólagos jóváhagyás: a párhuzamos futás (DT-F22h)
+
+A felhasználó (2026-10-07, chat) a Zsolt-menet párhuzamos futását utólag elfogadta; indok: a kötegek függetlenek, az `egyesit.py --ellenoriz` rendben, a kapu végeredménye 0 bukás, a régi arany 34/34. A heti keret 61%→68% mérése nem tiszta, felső becslés. Az elv érvényben marad: párhuzamos futás csak kifejezett jóváhagyással indulhat (brief D15). A Bírák (DT54) indítása külön jóváhagyás.
