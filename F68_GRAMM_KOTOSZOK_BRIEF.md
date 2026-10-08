@@ -6,7 +6,8 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: fut
+ag: claude/gramm-kotoszok
 ad: a H3282 (ja’an), H6118 (‘ekev), H3651 (lākēn) — és a felvételi kritérium szerint hasonló kötőszók — elbírálása a HEBER_KEZI listán át, a gerinc-metszetre és az F56 LXX-szűrésre gyakorolt hatás mérésével
 kovetkezo: /kovetkezo; ⛔ az M0 után (jelöltlista, kritérium-eltérések, hatásmérés)
 olvas: [eszkozok/grammatikai_strongok_general.py, adat/grammatikai_strongok.tsv, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv, adat/SEMA.md, eszkozok/bdb_adatblokk.py, eszkozok/lekerdez.py, adat/kulso/lxx_bridge.tsv, adat/elofordulasok.tsv, adat/jeloltek.tsv, naplok/F56_zaras.md, naplok/BDB_ADATBLOKK_M0.md]
