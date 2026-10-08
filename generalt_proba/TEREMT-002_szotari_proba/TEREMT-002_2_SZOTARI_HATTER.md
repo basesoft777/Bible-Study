@@ -1,4 +1,4 @@
-<!-- F78 M3 próbarender: csak a 2. Szótári háttér szakasz (a TEREMT-002 lexikonoldala még nincs, #12b). Generálta: lexikon_general.blokk_szocikkek, nem éles fájl. -->
+<!-- F78 M3 próbarender: csak a 2. Szótári háttér szakasz (a TEREMT-002 lexikonoldala még nincs, #12b). Generálta: lexikon_general.blokk_szocikkek, nem éles fájl. A szakasz „l. 3. szakaszt” / „l. 2/b” / „l. az 1. szakasz táblázatát” hivatkozásai a leendő TEREMT-002 lexikonoldalra mutatnak, amely még nem létezik (#12b): jelenleg lógó hivatkozások. -->
 
 ## 2. Szótári háttér
 
@@ -8,19 +8,20 @@
 
 ### Görög szavak
 
+<!-- ÜRES-NYELV: gorog | nincs Strong-token -->
 *A motívumnak nincs görög Strong-tokenje; a görög szerepek nem alkalmazhatók.*
 
 ### Héber szavak: H0922, H8414
 
 #### 1. Alapjelentés
 
-<!-- ÜRES-BLOKK: Alapjelentés | adatosítva, nincs sor -->
-*(üres blokk: a szerep adatosítva, de a motívum tokenjeihez nincs sor a forrásban; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
+<!-- ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve -->
+*(üres blokk: a szerep adatosítva (a forrásfájl megvan), de a motívum tokenjeihez a `lexikon_hivatkozasok.tsv`-be nincs bekötve sor; a bekötés a #9 dolga; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
 
 #### 2. Mélységi szócikk
 
-<!-- ÜRES-BLOKK: Mélységi szócikk | adatosítva, nincs sor -->
-*(üres blokk: a szerep adatosítva, de a motívum tokenjeihez nincs sor a forrásban; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
+<!-- ÜRES-BLOKK: Mélységi szócikk | adatosítva, nincs bekötve -->
+*(üres blokk: a szerep adatosítva (a forrásfájl megvan), de a motívum tokenjeihez a `lexikon_hivatkozasok.tsv`-be nincs bekötve sor; a bekötés a #9 dolga; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
 
 #### 3. Teológiai szócikk
 
@@ -48,8 +49,7 @@
 
 #### 7. Megfelelők a másik nyelven
 
-<!-- ÜRES-BLOKK: Megfelelők a másik nyelven | nincs adatosítva -->
-*(üres blokk: nincs adatosítva; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
+*Hivatkozás: a szerep nincs adatosítva; a SECE-megfelelők kézzel a 2/b szakaszban állnak (l. 2/b), ha van.*
 
 #### 8. Nyelvi háttér
 

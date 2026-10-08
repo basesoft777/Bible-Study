@@ -144,7 +144,12 @@ class TestVazIstentiszt(unittest.TestCase):
                 continue  # a nyelvfüggetlen sor egyszer jelenik meg
             b = self._blokk_szerep(kulcs, n)
             vannak = UROS_RE.findall(b)
-            if r['allapot'] in ('nincs adatosítva', 'javaslat'):
+            if (r['nyelv'], n) in LG.SZEREP_KEZI_2B:
+                # DT-F78c 3.: kézi 2/b hivatkozás, nem üres blokk
+                self.assertEqual(vannak, [], (r['nyelv'], n))
+                self.assertIn('*Hivatkozás:', b)
+                self.assertIn('l. 2/b', b)
+            elif r['allapot'] in ('nincs adatosítva', 'javaslat'):
                 self.assertEqual(len(vannak), 1, (r['nyelv'], n, b[:200]))
                 self.assertEqual(vannak[0][1], r['allapot'])
                 self.assertIn('(üres blokk:', b)
@@ -162,7 +167,36 @@ class TestVazIstentiszt(unittest.TestCase):
     def test_heber_tbesh_nincs_sor_jelolve(self):
         # adatosítva, de a tokenekhez nincs TBESH-sor: nem néma, jelölt üres blokk
         b = self._blokk_szerep('heber', 1)
-        self.assertIn('ÜRES-BLOKK: Alapjelentés | adatosítva, nincs sor', b)
+        self.assertIn('ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve', b)
+        self.assertIn('#9', b)
+
+    def test_heber_adatositott_szerep_nem_hamisan_ures(self):
+        # héber 2. (BDB), 4. (SDBH), 6. (LXX, hivatkozás): adatosítva, van tartalom -> nincs ÜRES-BLOKK
+        for n in (2, 4, 6):
+            self.assertNotIn('ÜRES-BLOKK', self._blokk_szerep('heber', n), n)
+
+    def test_hivatkozasi_celok_leteznek(self):
+        # a hivatkozott szakaszok a lexikonoldal vázában (sablon) ténylegesen megvannak
+        sablon = LG.VAZ_SABLON
+        self.assertIn('## 1. Előfordulások', sablon)
+        self.assertIn('### 2/b', sablon)
+        self.assertIn('## 3. LXX-fordítói döntések', sablon)
+        # a görög 9. hivatkozása az 1. szakasz UBS-jelentés oszlopára mutat: az oszlop létezik
+        self.assertIn('UBS-jelentés', LG.SZEREP_HIVATKOZAS[('gorog', 9)])
+        import inspect
+        self.assertIn('| UBS-jelentés |', inspect.getsource(LG.blokk_elofordulasok))
+
+    def test_forrasszoveg_nem_szivarog_nem_forras_szerepbe(self):
+        # idézőblokk ('> ') csak a forrás-szerepekben lehet (görög 1., 2., 8.; héber 1., 2.)
+        forras = set(LG.SZEREP_SZOTAR)
+        for r in self.tabla:
+            n = int(r['sorrend'])
+            kulcs = 'kozos' if n >= 12 else r['nyelv']
+            if n >= 12 and r['nyelv'] == 'heber':
+                continue
+            if (r['nyelv'], n) in forras:
+                continue
+            self.assertNotIn('\n> ', self._blokk_szerep(kulcs, n), (r['nyelv'], n))
 
     def test_sajat_sor_a_szerep_alatt(self):
         self.assertIn('**TWOT:** 2063', self._blokk_szerep('heber', 3))
@@ -206,14 +240,16 @@ class TestVazTeremt(unittest.TestCase):
         sz = _szakaszok(szoveg)
         self.assertEqual(tokenek, ['H0922', 'H8414'])
         self.assertIn('nincs görög Strong-tokenje', sz['gorog'])
+        self.assertIn('<!-- ÜRES-NYELV: gorog | nincs Strong-token -->', sz['gorog'])
+        self.assertNotIn('ÜRES-NYELV', sz['heber'])
         self.assertNotRegex(sz['gorog'], SZEREP_FEJ_RE)
         h = [(int(n), s) for n, s in SZEREP_FEJ_RE.findall(sz['heber'])]
         tabla = sorted((r for r in _tsv_sorok() if r['nyelv'] == 'heber' and int(r['sorrend']) < 12),
                        key=lambda r: int(r['sorrend']))
         self.assertEqual(h, [(int(r['sorrend']), r['szerep']) for r in tabla])
         # lexikon_hivatkozasok-sor nincs: az 1. és 2. szerep adatosítva, de nincs sor -> jelölt üres blokk
-        self.assertIn('ÜRES-BLOKK: Alapjelentés | adatosítva, nincs sor', sz['heber'])
-        self.assertIn('ÜRES-BLOKK: Mélységi szócikk | adatosítva, nincs sor', sz['heber'])
+        self.assertIn('ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve', sz['heber'])
+        self.assertIn('ÜRES-BLOKK: Mélységi szócikk | adatosítva, nincs bekötve', sz['heber'])
         self.assertNotIn('\n> ', sz['heber'])
         # a TWOT és a domén megvan, a tokenhez kötve
         self.assertIn('**H8414** · **TWOT:**', sz['heber'])

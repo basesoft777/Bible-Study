@@ -393,8 +393,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 #### 7. Megfelelők a másik nyelven
 
-<!-- ÜRES-BLOKK: Megfelelők a másik nyelven | nincs adatosítva -->
-*(üres blokk: nincs adatosítva; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
+*Hivatkozás: a szerep nincs adatosítva; a SECE-megfelelők kézzel a 2/b szakaszban állnak (l. 2/b), ha van.*
 
 #### 8. Nyelvi háttér
 
@@ -415,8 +414,8 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 #### 1. Alapjelentés
 
-<!-- ÜRES-BLOKK: Alapjelentés | adatosítva, nincs sor -->
-*(üres blokk: a szerep adatosítva, de a motívum tokenjeihez nincs sor a forrásban; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
+<!-- ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve -->
+*(üres blokk: a szerep adatosítva (a forrásfájl megvan), de a motívum tokenjeihez a `lexikon_hivatkozasok.tsv`-be nincs bekötve sor; a bekötés a #9 dolga; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
 
 #### 2. Mélységi szócikk
 
@@ -470,8 +469,7 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 #### 7. Megfelelők a másik nyelven
 
-<!-- ÜRES-BLOKK: Megfelelők a másik nyelven | nincs adatosítva -->
-*(üres blokk: nincs adatosítva; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
+*Hivatkozás: a szerep nincs adatosítva; a SECE-megfelelők kézzel a 2/b szakaszban állnak (l. 2/b), ha van.*
 
 #### 8. Nyelvi háttér
 

@@ -103,7 +103,7 @@ Ez a szűkítés a #36 `lexikon_general.py`-ra épülő munkáját nem zavarja (
 - Szerephez nem rendelt szótár (`SZEREP_SZOTAR`) `ValueError`: nincs néma elhagyás. A licenc-állapot nem romlik (`tisztazatlan`: nem), a szerepmátrix projekt-adatként a blokk forrásai között szerepel.
 - `eszkozok/teszt_szerepmatrix.py`: 13 teszt zöld; `feladatok.py ellenoriz` 0 hiba; `ellenorzes/tesztek` 153 teszt zöld.
 
-**Értelmezői bővítés (jelzem, nem a DT-F78a betűje):** a héber 1. (TBESH) szerep a táblában `adatosítva`, de a `lexikon_hivatkozasok.tsv`-ben 0 TBESH-sor van. Itt nem hivatkozást, hanem jelölt üres blokkot ad a render (`ÜRES-BLOKK: Alapjelentés | adatosítva, nincs sor`), mert a hiányt elhallgatni a 3. szabályt sértené, hivatkozni pedig nincs hová. Ugyanez áll a TEREMT-002 héber 1–2. szerepére. Kérdés a felhasználónak: elfogadja-e ezt a harmadik állapotértéket, vagy a TBESH-sor állapota a táblában `nincs adatosítva`-ra javítandó (a `torzscikk` lefedettségi mátrixa is „TBESH”-t mutat a H7121/H8034 alatt, ami a jelenlegi adattal nem igaz).
+**Értelmezői bővítés (jelzem, nem a DT-F78a betűje):** a héber 1. (TBESH) szerep a táblában `adatosítva`, de a `lexikon_hivatkozasok.tsv`-ben 0 TBESH-sor van. Itt nem hivatkozást, hanem jelölt üres blokkot ad a render (`ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve`), mert a hiányt elhallgatni a 3. szabályt sértené, hivatkozni pedig nincs hová. Ugyanez áll a TEREMT-002 héber 1–2. szerepére. Kérdés a felhasználónak: elfogadja-e ezt a harmadik állapotértéket, vagy a TBESH-sor állapota a táblában `nincs adatosítva`-ra javítandó (a `torzscikk` lefedettségi mátrixa is „TBESH”-t mutat a H7121/H8034 alatt, ami a jelenlegi adattal nem igaz).
 
 ### 10. M3 – próbarender és töltöttség
 
@@ -115,13 +115,13 @@ Kimenet (csak `generalt_proba/`, az éles `lexikon/` változatlan, `git status` 
 
 | # | Szerep | ISTENTISZT-001 görög | ISTENTISZT-001 héber | TEREMT-002 héber |
 |---|---|---|---|---|
-| 1 | Alapjelentés | töltött (TBESG, 2 jelentés) | **üres** (adatosítva, nincs sor) | **üres** (adatosítva, nincs sor) |
-| 2 | Mélységi szócikk | töltött (Thayer) | töltött (BDB, 3 blokk) | **üres** (adatosítva, nincs sor) |
+| 1 | Alapjelentés | töltött (TBESG, 2 jelentés) | **üres** (adatosítva, nincs bekötve) | **üres** (adatosítva, nincs bekötve) |
+| 2 | Mélységi szócikk | töltött (Thayer) | töltött (BDB, 3 blokk) | **üres** (adatosítva, nincs bekötve) |
 | 3 | Teológiai szócikk | **üres** (nincs adatosítva) | részleges: TWOT-szám + üres blokk | részleges: TWOT-szám + üres blokk |
 | 4 | Jelentésszerkezet | töltött (SDGNT-domén) | töltött (SDBH-domén) | töltött (SDBH-domén) |
 | 5 | Tömör jelentés | hivatkozás (2/b, kézi) | **üres** (nincs adatosítva) | **üres** (nincs adatosítva) |
 | 6 | LXX-híd | hivatkozás (3. szakasz) | hivatkozás (3. szakasz) | hivatkozás (3. szakasz) |
-| 7 | Megfelelők | **üres** (nincs adatosítva) | **üres** | **üres** |
+| 7 | Megfelelők | hivatkozás (2/b, kézi; DT-F78c 3.) | hivatkozás (2/b, kézi) | hivatkozás (2/b — a TEREMT-002 oldala még nincs, lógó) |
 | 8 | Nyelvi háttér | hivatkozás (nincs LSJ-sor a tokenhez) | **üres** (nincs adatosítva) | **üres** |
 | 9 | Versenkénti jelentés | hivatkozás (1. szakasz UBS-oszlop) | **üres** (nincs adatosítva) | **üres** |
 | 10 | Kiejtés | részleges: lemma (átírás) + üres blokk | részleges + üres blokk | részleges + üres blokk |
@@ -129,6 +129,27 @@ Kimenet (csak `generalt_proba/`, az éles `lexikon/` változatlan, `git status` 
 
 Összesítés: ISTENTISZT-001-en a görög szerepek közül 3 töltött (1., 2., 4.) és 4 hivatkozásos (5., 6., 8., 9.), a héberek közül 2 töltött (2., 4.) és 1 hivatkozásos (6.); a többi explicit üres vagy részleges. A #64 mérés 7. szakaszának korlátja (a mérce hiánya a szerepmátrixra) ezzel megszűnik: a 2. szakasz a mátrix minden szerepét mutatja, a hiány látszik, kitöltetlen szerepen sehol nincs gyenge vagy asszociatív anyag. A mérce kiterjesztése (a TEREMT-002-nél a H8414/H0922 BDB-bekötés hiánya, `lexikon_hivatkozasok.tsv` 0 sor) a #9/#12b dolga marad.
 
-### 11. Állapot
+### 11. Javítókör a DT-F78c és az ellenőr után (2026-10-08)
 
-M0–M3 kész. Az M4 (független ellenőr, `naplok/F78_zaras.md`, PR) az orkesztrátoré.
+- **Állapotnév:** `adatosítva, nincs bekötve` (nem „nincs sor”), a szöveg a #9-re mutat (ISTENTISZT-001 héber 1. és TEREMT-002 héber 1–2. szerep; a próbafájlok újragenerálva).
+- **Token nélküli nyelv:** egy mondat + gépi `<!-- ÜRES-NYELV: gorog | nincs Strong-token -->` (a nyelv kódjával).
+- **7. szerep (SECE):** „l. 2/b” hivatkozás, nincs ÜRES-BLOKK (`SZEREP_KEZI_2B`, görög és héber).
+- **SEMA 2.13** `javaslat` leírás a 13–14. szerepre kiegészítve.
+- **Lógó hivatkozás:** a `TEREMT-002_2_SZOTARI_HATTER.md` fejléksora jelzi, hogy a „l. 3. szakaszt / 2/b / 1. szakasz” hivatkozások a leendő lexikonoldalra mutatnak (#12b), jelenleg lógnak.
+- **Tesztek:** 16 teszt zöld; új lefedettség: héber `adatosítva` szerepek (2., 4., 6.) nem kapnak hamis ÜRES-BLOKK-ot; a hivatkozási célok léteznek (sablon-szakaszok, az `UBS-jelentés` oszlop a `blokk_elofordulasok` fejlécében); a forrásszöveg (`> `) csak a forrás-szerepekben fordulhat elő, minden más szerepre ellenőrizve; `ÜRES-NYELV` jelölő; a 7. szerep hivatkozás.
+- **„Bájtra azonos” igazolás:** a `_epit_szotar_alszakasz` régi (`b7be700~1`) és új változata a repó mind a 41 Strong-számára (motívum-tokenek + rokon szavak), 0 és 1 szinteltolással (82 összevetés): a kimenet UTF-8 bájtjai, a visszatérési jelzők és a licenc-mellékhatások azonosak; SHA-256 mindkét oldalon `3d4979e217b69ec7f1a1064a9a145a4d3d591258b3e35c87bfd9de244d7ab2e1`. (`scope=git b7be700~1:eszkozok/lexikon_general.py vs a munkafa | forras=manual (szkript) | ts=2026-10-08`.) A korábbi „19 451 = 19 451 karakter” állítás ezzel felváltva.
+- **N-F78a** (helyőrző, `NYITOTT_FELADATOK.md`): a `torzscikk_general.py --kimenet` az éles `lexikon/`-ból olvas, ezért a próba-törzscikk nulla-diffje nem áll (#36, #11).
+
+### 12. Egyeztetett eltérés a briefhez (a zárójelentés bemenete)
+
+A brief hatóköre a DT-F78c (a) szerint kivételesen bővül: az ISTENTISZT-001-hez két héber TBESH-sor (H7121H „call by”, H8034 „name … the Name”) bekötése, jelölt-soron át, majd a `lexikon_hivatkozasok.tsv`-be; minden más bekötés a #9-é. Az `ir` mező ennek megfelelően kiegészült (`adat/jeloltek.tsv`, `adat/lexikon_hivatkozasok.tsv`).
+
+**⛔ A bekötés NEM történt meg: két akadály, a felhasználónak kell dönteni.**
+1. **Ütközés a DT-F42a-val** (felhasználó, 2026-10-05, 🟢): a TBESH H7121 „részlet” sorát kifejezetten *törölni* kellett a `lexikon_hivatkozasok.tsv`-ből és a `forditasok.tsv`-ből, a lexikonoldal és a kézi 2/b szakasz BDB-alapra íródott át (Online Bible-eredetű szöveg kiváltása). A TBESH.txt 7. mezője („Meaning”) Online Bible-eredetű; a mostani kérés ezt a sort visszahozná (a H8034 TBESH-sora ugyanígy Online Bible-eredetű Meaning-szöveg). A DT-F33f ugyan `tisztazott`-ra emelte a licencet, de a DT-F42a a kiváltásról döntött. Nem tudom, hogy a felhasználó a DT-F78c (a) jóváhagyásakor ezt mérlegelte-e.
+2. **A `jeloltek.tsv` séma (SEMA 2.4):** a kulcs `id` + `igehely`, az `igehely` kötelező `IGEHELY` típus; szótárszócikknek nincs igehelye, így a jelölt-sor sémasértés nélkül nem írható. A precedens (F6.3, `f6_3_lexikon_hivatkozasok_toltes.py`) szótári sort jelölt nélkül, szó szerinti részsztring-ellenőrzéssel kötött be.
+
+Opciók a felhasználónak: **(1)** a bekötés a DT-F42a felülírásával, a `jeloltek.tsv` kihagyásával (döntés + indoklás a `DONTESEK.md`-ben, mint az F6.3-nál; a két sor a TBESH-ból szó szerinti kivonattal, `forditasok.tsv`-sor nélkül → „Fordítás függőben”); **(2)** a bekötés a #9-re marad, az ISTENTISZT-001 héber 1. szerepe `adatosítva, nincs bekötve` (a mai állapot), ami a #78 aranymintájánál látható hiány; **(3)** a héber 1. sor állapota `nincs adatosítva`-ra javul az adatrétegben. Javaslat: (2) vagy (1) a DT-F42a-döntés újranyitásával; a (3) az adatréteg külön lépése.
+
+### 13. Állapot
+
+M0–M3 kész, a javítókör kész a TBESH-bekötés kivételével. Következik: az ellenőr újrafuttatása (orkesztrátor).

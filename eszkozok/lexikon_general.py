@@ -791,6 +791,11 @@ SZEREP_HIVATKOZAS = {
     ('gorog', 8): 'a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben; a rokon szavaknál (alább) és a kézi 2/b szakaszban l.',
     ('gorog', 9): 'l. az 1. szakasz táblázatát (UBS-jelentés oszlop; csak újszövetségi sorok)',
 }
+# Nem adatosított szerep, amelynek tartalma kézzel a 2/b szakaszban él: hivatkozás, nem üres blokk (DT-F78c 3., S4).
+SZEREP_KEZI_2B = {
+    ('gorog', 7): 'a szerep nincs adatosítva; a SECE-megfelelők kézzel a 2/b szakaszban állnak (l. 2/b), ha van',
+    ('heber', 7): 'a szerep nincs adatosítva; a SECE-megfelelők kézzel a 2/b szakaszban állnak (l. 2/b), ha van',
+}
 ROKON_SZAVAK_CIM = '### Rokon szavak'
 
 
@@ -844,8 +849,13 @@ def _szerep_blokk(nyelv, sor, tokenek_ny, reszek):
             hiv = SZEREP_HIVATKOZAS[(nyelv, n)]
             szakasz.append('*Hivatkozás: %s%s*' % (hiv, '' if hiv.endswith('.') else '.'))
         else:
-            szakasz.append(ures_blokk(szerep, 'adatosítva, nincs sor',
-                                      'a szerep adatosítva, de a motívum tokenjeihez nincs sor a forrásban'))
+            # DT-F78c 1.: harmadik állapot, mutatóval a #9-re (a bekötés a #9 dolga)
+            szakasz.append(ures_blokk(szerep, 'adatosítva, nincs bekötve',
+                                      'a szerep adatosítva (a forrásfájl megvan), de a motívum tokenjeihez a '
+                                      '`lexikon_hivatkozasok.tsv`-be nincs bekötve sor; a bekötés a #9 dolga'))
+    elif not tart and (nyelv, n) in SZEREP_KEZI_2B:
+        hiv = SZEREP_KEZI_2B[(nyelv, n)]
+        szakasz.append('*Hivatkozás: %s.*' % hiv)
     else:
         if tart:
             szakasz.extend(tart)
@@ -890,8 +900,9 @@ def szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh):
     for nyelv, cim in (('gorog', 'Görög'), ('heber', 'Héber')):
         tok_ny = [t for t in tokenek if t.startswith('G' if nyelv == 'gorog' else 'H')]
         if not tok_ny:
-            reszek_szoveg.append('### %s szavak\n\n*A motívumnak nincs %s Strong-tokenje; a %s szerepek nem alkalmazhatók.*'
-                                 % (cim, cim.lower(), cim.lower()))
+            reszek_szoveg.append('### %s szavak\n\n<!-- ÜRES-NYELV: %s | nincs Strong-token -->\n'
+                                 '*A motívumnak nincs %s Strong-tokenje; a %s szerepek nem alkalmazhatók.*'
+                                 % (cim, nyelv, cim.lower(), cim.lower()))
             continue
         blokkok = ['### %s szavak: %s' % (cim, ', '.join(tok_ny))]
         for s in (g_sorok if nyelv == 'gorog' else h_sorok):
