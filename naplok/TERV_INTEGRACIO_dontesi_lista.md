@@ -160,11 +160,12 @@
 
 **19. A terv → feladat irány gazdája (a rés gyökéroka)** *(R19)*
 - Kérdés: ki hajtsa be a jövőben a tervből a feladatokba és a döntésekbe kerülő tételeket?
-- a) a #52 brief bővítése: minden futás a repó → terv mellett terv → feladat résjelentést is ad (`naplok/`), és a döntést igénylő tételekből DONTESEK-tételt nyit; plusz a #51 `dontes_hatas.tsv`-jébe a tervdokumentumok sorai
+- a) **kemény zár, három rétegben** (a felhasználó 2026-10-08: „véglegesen, ne naplóban maradjon”): (1) **gépi őr, hibával:** a `feladatok.py ellenoriz` (és így a CI) HIBÁT ad, ha a három terv (`ATALAKITASI_TERV.md.md`, `MUNKATERV.md`, `ADATVAGYON_TERV.md`) feladatként megnevezett eleme (kód vagy `#szám`) nincs a `FELADATOK.md`-ben, és nincs „elavult”/„feltételes” jelölése a tervben — a `/kovetkezo` hibás állapotban nem indul; (2) **`/konzisztencia` 5. kategória:** „tervelem feladat vagy brief-tartalom nélkül”, a három terv a beolvasott döntésforrások közé kerül; (3) **#52 brief:** a terv → feladat tétel nem maradhat naplóban — a futás vagy átvezeti, vagy DONTESEK-tételt / befogadási csonkot nyit, vagy ⛔-val megáll; plusz a #51 `dontes_hatas.tsv`-jébe a tervdokumentumok sorai
 - b) csak a #52 bővítése
 - c) csak a #51 gépi őre
 - **Javaslat: a)** — a tartalmi résjelentéshez olvasó kell (#52), a visszacsúszás ellen gépi őr (#51); egyik a másik nélkül ugyanoda vezet, ahol most vagyunk.
-- Érinti: `F52_TERV_SZINKRON_BRIEF.md`, `adat/dontes_hatas.tsv`, `.claude/commands/konzisztencia.md` (csak leírás; eszközmódosítás külön ágon, D6).
+- Háttér (2026-10-08): a `/konzisztencia` azért nem jelezte a gyökérokot, mert a három tervet nem olvassa, és négy kategóriája csak a döntés → dokumentum irányt nézi; a terv → feladat irányt sem a #51, sem a #52 nem fedi.
+- Érinti: `eszkozok/feladatok.py` (+ teszt), `.claude/commands/konzisztencia.md`, `.claude/commands/kovetkezo.md` (1. lépés), `F52_TERV_SZINKRON_BRIEF.md`, `F51_KONZISZTENCIA_BRIEF.md`, `adat/dontes_hatas.tsv` (eszközmódosítás: D6 szerint, ha külön ág kell, a 3. lépésben egyeztetendő).
 
 **20. Az ATALAKITASI_TERV állapota** *(R20)*
 - Kérdés: kapjon-e az alapterv állapot- és kiegészítés-szakaszt, és kerüljön-e a #52 hatókörébe?
