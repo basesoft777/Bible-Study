@@ -112,7 +112,7 @@ Futtatva: `python eszkozok/general.py --cel <cél> --id TEREMT-002 --kimenet <re
 
 **A T1–T2 naplók és a kapcsolódó tételek nyitott pontjai** (a próza szempontjából):
 
-1. **LXX-alap — a legfontosabb (új összefüggés).** A TEREMT-002 mind az 58 `lxx-hid` audit-sora a 2026.09.25-i, azóta kivezetett `LXX_kivonat_*.tsv`-ből származik (#42, F42.M5; a mai `lxx-hid` az `LXX_OS`-ből olvas). Az összevetés (`naplok/FORRASKIVEZETES_M5_eltereslista.tsv`) mindhárom előfordulás-versnél eltérést mutat: 1Móz 1:2 `strong_eltero`, Ézs 34:11 `strong_eltero`, Jer 4:23 `nagy_eltero`; az öt zsoltár-sor (Zsolt 107:40, 104:30, 33:6, 80:6, 80:7) a régi zsoltár-kivonat egyverses eltolására épül (N17 „tartalmi kérdés, nem javítva”). A brief M1-szabálya („LXX-állítás csak a meglévő `lxx-hid` lekérdezés proveniencia-sorával”) ezért kivezetett forrásra mutató proveniencia-sort írna elő. → döntési kérdés (DT-F64b).
+1. **LXX-alap — a legfontosabb (új összefüggés).** A TEREMT-002 mind az 58 `lxx-hid` audit-sora a 2026.09.25-i, azóta kivezetett `LXX_kivonat_*.tsv`-ből származik (#42, F42.M5; a mai `lxx-hid` az `LXX_OS`-ből olvas). Az összevetés (`naplok/FORRASKIVEZETES_M5_eltereslista.tsv`) mindhárom előfordulás-versnél eltérést mutat: 1Móz 1:2 `strong_eltero`, Ézs 34:11 `strong_eltero`, Jer 4:23 `nagy_eltero`; az öt zsoltár-sor (Zsolt 107:40, 104:30, 33:6, 80:6, 80:7) a régi zsoltár-kivonat egyverses eltolására épül (N17 „tartalmi kérdés, nem javítva”). A brief M1-szabálya („LXX-állítás csak a meglévő `lxx-hid` lekérdezés proveniencia-sorával”) ezért kivezetett forrásra mutató proveniencia-sort írna elő. → döntési kérdés (DT69).
 2. **N22** — a `Karoli_kereszthivatkozasok.tsv` `Isa.34.11` listája az `Isa.40.11` másolata; az öt érintett jelölt „adathiba” indokkal elutasítva; az Ézs 34:11 valódi Károli-KH célpontjai nincsenek felmérve. A prózában explicit hiány.
 3. **N25** — a „teremtés-visszavonás” kifejezés rendezése a T3 prózájában (a cím a gate óta „a föld kietlen és puszta állapota a teremtéskor és az ítéletkor”).
 4. **N20 / N21** — `Pshat`/`Peshat` (SEMA vs. adat) és a `Karoli_Strong_kivonat` Gen.1.2 nullázatlan `H922`-je: a prózát nem blokkolja, a hivatkozott Strong-alak `H0922`.
@@ -125,8 +125,8 @@ Futtatva: `python eszkozok/general.py --cel <cél> --id TEREMT-002 --kimenet <re
 
 ## ⛔ Megállás — döntési kérdések
 
-A `DONTESEK.md` DT-F64a és DT-F64b tételei.
+A `DONTESEK.md` DT68 és DT69 tételei.
 
-- **DT-F64a (1) — a próza helye:** javaslat: a `motivumok/TEREMT-002.md` (egy kézi forrás), alternatíva: külön tematikus tanulmányfájl.
-- **DT-F64a (2) — a mérce:** javaslat: a DT2-mérce (L1, L3–L6 + rés-/hiányjelölés), az L1 átfordítva a tematikus sablon aktív szakaszaira; az L2/L7 helyén a Q2 és Q7 forrás-oldali megfelelője mérési pontként. Alternatívák: szó szerint L1, L3–L6 (a rés üres); vagy a teljes Q1–Q7 a forrásra, L-pontok a próbarenderre.
-- **DT-F64b — az LXX-alap:** l. 5. pont, 1. tétel.
+- **DT68 (1) — a próza helye:** javaslat: a `motivumok/TEREMT-002.md` (egy kézi forrás), alternatíva: külön tematikus tanulmányfájl.
+- **DT68 (2) — a mérce:** javaslat: a DT2-mérce (L1, L3–L6 + rés-/hiányjelölés), az L1 átfordítva a tematikus sablon aktív szakaszaira; az L2/L7 helyén a Q2 és Q7 forrás-oldali megfelelője mérési pontként. Alternatívák: szó szerint L1, L3–L6 (a rés üres); vagy a teljes Q1–Q7 a forrásra, L-pontok a próbarenderre.
+- **DT69 — az LXX-alap:** l. 5. pont, 1. tétel.

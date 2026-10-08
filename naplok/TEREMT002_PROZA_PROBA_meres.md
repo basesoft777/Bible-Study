@@ -1,6 +1,6 @@
 # F64 M3 — TEREMT-002 próza-próba: mérés ⛔
 
-*FELADATOK #64 · `F64_TEREMT002_PROZA_PROBA_BRIEF.md` 3. szakasz, M3 · ág `claude/f64-teremt002-proza-proba` · 2026.10.08 · mérce: DT-F64a (2) — L1–L7 + a DT2 két rés-szabálya*
+*FELADATOK #64 · `F64_TEREMT002_PROZA_PROBA_BRIEF.md` 3. szakasz, M3 · ág `claude/f64-teremt002-proza-proba` · 2026.10.08 · mérce: DT68 (2) — L1–L7 + a DT2 két rés-szabálya*
 
 **Mérés tárgya.** Forrásproza: `motivumok/TEREMT-002.md` (`0e36220` F64.5, `28ffd04` F64.8; az ellenőri körök javításai: `78e926e` F64.12, `ecb12db` F64.15, `c3879dd` F64.18, `9aa1333` F64.21 — a számok és ítéletek az F64.21 utáni állapotra vonatkoznak). Próbarender: `generalt_proba/TEREMT-002_proza_proba/` (`0f42ca9` F64.9). LXX-munkajegyzet: `naplok/TEREMT002_PROZA_PROBA_lxx_friss.md` (`ccd4b1d` F64.6).
 

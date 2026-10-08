@@ -2,8 +2,8 @@
 
 *FELADATOK #64 · ág `claude/f64-teremt002-proza-proba` · 2026-10-08 · modell: opus (végrehajtó), egy kézben (K1)*
 
-- **Elkészült:** a TEREMT-002 teljes értelmező rétege a `motivumok/TEREMT-002.md`-ben (DT-F64a (1)); próbarender a `generalt_proba/TEREMT-002_proza_proba/` alatt (csak adatnézetek: a generátor a forrásprózát nem olvassa); mérés: `naplok/TEREMT002_PROZA_PROBA_meres.md`; LXX-munkajegyzet: `naplok/TEREMT002_PROZA_PROBA_lxx_friss.md`.
-- **Döntések (🟢):** DT-F64a (1) a próza helye; (2) mérce L1–L7 (L2 = „Napló-jelölés kötelező” `4c4003b`, L7 = PaRDeS-rétegfegyelem `f51851d`) + a DT2 két rés-szabálya; DT-F64b friss `lxx-hid` (LXX_OS), audit-sor nélkül.
+- **Elkészült:** a TEREMT-002 teljes értelmező rétege a `motivumok/TEREMT-002.md`-ben (DT68 (1)); próbarender a `generalt_proba/TEREMT-002_proza_proba/` alatt (csak adatnézetek: a generátor a forrásprózát nem olvassa); mérés: `naplok/TEREMT002_PROZA_PROBA_meres.md`; LXX-munkajegyzet: `naplok/TEREMT002_PROZA_PROBA_lxx_friss.md`.
+- **Döntések (🟢):** DT68 (1) a próza helye; (2) mérce L1–L7 (L2 = „Napló-jelölés kötelező” `4c4003b`, L7 = PaRDeS-rétegfegyelem `f51851d`) + a DT2 két rés-szabálya; DT69 friss `lxx-hid` (LXX_OS), audit-sor nélkül.
 - **Mérés:** a forrásprózán L1–L7 és a DT2 két pontja teljesül; a próbarenderen részben / nem (nincs renderút). A K1/4 (b) a szótári (szerepmátrix-) részre nem mondható ki: az aranyminta (ISTENTISZT-001) maga sem tartalmazza a teljes szerepmátrixot (mérés 7. szakasz).
 - **Független ellenőrzés:** 4 kör (10 → 3 → 7 → 1 enyhe eltérés), a zárás eltérés nélkül (`naplok/ELLENOR_TEREMT002_PROZA_PROBA.md`). Tanulság a #23 M1-nek: a soronkénti foltozás új hibát hozott; a teljes szakasz-átolvasás („új állítás nem jöhet be”) konvergált.
 - **Változatlan:** adattábla, `lexikon/`, `tematikus_lezart/`, `lxx_dontesek.tsv`, éles generált fájl (`general.py --ellenoriz` naplo/index/nyitott: zöld).

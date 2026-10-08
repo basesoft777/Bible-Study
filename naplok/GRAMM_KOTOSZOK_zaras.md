@@ -2,7 +2,7 @@
 
 *FELADATOK #68 · ág: `claude/gramm-kotoszok` · 2026-10-08 · a menet-zárás és az ellenőrzés (`fuggetlen-ellenor`) még hátravan.*
 
-- **Felvétel (DT-F68a):** H3282, H0176, H3863, H3884, H6435, H0432, H3860 `kotoszo`-ként (`d0f531d`); a tábla 85 → 92 adatsor, a generátorból újragenerálva.
+- **Felvétel (DT67):** H3282, H0176, H3863, H3884, H6435, H0432, H3860 `kotoszo`-ként (`d0f531d`); a tábla 85 → 92 adatsor, a generátorból újragenerálva.
 - **Soronkénti összevetés:** 7 új sor, 0 törölt, 0 módosult; csak a két `ts` fejlécsor tér el. **HATARESET:** H3651 (dokumentálva, nem aktív). **Elutasítva:** H6118. **Halasztva:** H0638, H3861, H6903, H2958 (nem érintve).
 - **Szófaj-jel:** mind a hét `kötőszó` a Strong_szotar szerint, kivétel nincs; a TILTOLISTA-őr lefutott, nem sérült.
 - **Hatásmérés (valódi tábla, a `lekerdez.py gerinc` négy hívása):** metszet 40/23/3/54, marad 24/11/2/38 — az M0-val azonos, változatlan. Kilenc motívum teljes metszete és 5829 szakaszpár: marad-átlag 1,1053 → 1,1053, érintett pár 0 (az M0 1,10-es értéke a H3651-et is tartalmazó forgatókönyv volt; az nem került fel).
@@ -11,7 +11,7 @@
 - **Generátor-sorszám:** `f4_0c_korut_ellenoriz.py`: `:231` → `:272` (a `with open(KIMENET…)` sora), a generátorral egy commitban. A `naplok/F4_0c_korut_ellenoriz.tsv` régi kimenet, nem érintve.
 - **M0-napló 7. szakasz:** HEAD-hivatkozás `046d081` → `8322fc5` (`6be514e`).
 - **Ellenőrzők:** `feladatok.py ellenoriz` 0 hiba; `ellenoriz.py` SÉRTÉS 0 (KÉZI 2, JELENTÉS 3, korábbi állapot); `teszt_lekerdez_sir.py`, `teszt_ellenoriz_13.py` zöld.
-- **Nyitott (nem e feladat):** az `olvaso_pilot` a felvett Strongoknak nem ad szó-lapot (a H6435-nél a felhasználó tudomásul vette; a H3282-re ugyanez áll). A görög oldal tükrözése (G473, G1894, G3379) külön döntés. `N-F68a`: a H2617-bukás javítása.
+- **Nyitott (nem e feladat):** az `olvaso_pilot` a felvett Strongoknak nem ad szó-lapot (a H6435-nél a felhasználó tudomásul vette; a H3282-re ugyanez áll). A görög oldal tükrözése (G473, G1894, G3379) külön döntés. `N54`: a H2617-bukás javítása.
 
 **Proveniencia (az M1 hatásmérése, 2026-10-08):**
 

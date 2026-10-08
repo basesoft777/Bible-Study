@@ -285,4 +285,4 @@ Javaslat (nem döntés), a mérés alapján:
 - **H0176, H6435, H3863, H3884, H0432, H3860**: felvehető `kotoszo`-ként, hatás gyakorlatilag 0 a gerincen; az LXX-nézeten H0176/H3863/H3884/H6435 javul (görög nyelvtani találatok megjelennek). H6435-nál a tanulmánybeli említést tudomásul kell venni.
 - **H0638, H3861, H6903 (arámi), H2958 (0 előfordulás)**: külön kérdés (arámi precedens), javaslat: halasztás, amíg nincs mérhető hatás.
 
-A tételt a `DONTESEK.md` `DT-F68a` helyőrzővel rögzíti.
+A tételt a `DONTESEK.md` `DT67` helyőrzővel rögzíti.

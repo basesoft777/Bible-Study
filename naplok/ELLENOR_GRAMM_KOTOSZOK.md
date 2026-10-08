@@ -7,14 +7,14 @@
 | # | Eltérés | Javítás |
 |---|---|---|
 | 1 | Az M1 megismételt hatásmérésének számai proveniencia-sor nélkül álltak (`GRAMM_KOTOSZOK_zaras.md`) | a hat proveniencia-sor a zárónaplóba került |
-| 2 | Az `N-F68a` (H2617-bukás) nem volt nyitott tétel | helyőrzős sor a `NYITOTT_FELADATOK.md`-ben (a számot a main-Action osztja) |
+| 2 | Az `N54` (H2617-bukás) nem volt nyitott tétel | helyőrzős sor a `NYITOTT_FELADATOK.md`-ben (a számot a main-Action osztja) |
 | 3 | A brief `ir` mezője nem fedte az írt fájlokat | az `ir` bővítve (`f4_0c_korut_ellenoriz.py`, `teszt_bdb_adatblokk.py`, `naplok/GRAMM_KOTOSZOK_*.md`) |
-| 4 | A brief döntésnaplója szerint a DT-F68a „nyitva” | frissítve: eldöntve (🟢), az M1 kész |
+| 4 | A brief döntésnaplója szerint a DT67 „nyitva” | frissítve: eldöntve (🟢), az M1 kész |
 
 ## Igazolt pontok (OK)
 
 - **Tábla:** `git diff origin/main..HEAD -- adat/`: +9/−2; 7 új adatsor (H0176, H0432, H3282, H3860, H3863, H3884, H6435), a többi a két `ts` sor; 85 → 92, Δ +7; minden más tábla Δ 0.
-- **DT-F68a:** H3651 csak a `HATARESET`-ben, H6118 és a négy halasztott (H0638, H3861, H6903, H2958) a táblán 0 találat; a TILTOLISTA-blokk változatlan.
+- **DT67:** H3651 csak a `HATARESET`-ben, H6118 és a négy halasztott (H0638, H3861, H6903, H2958) a táblán 0 találat; a TILTOLISTA-blokk változatlan.
 - **Szófaj-jel:** a hét felvett mind `kötőszó` a `Strong_szotar.tsv` szerint.
 - **Jelöltkör:** 13 = 7 + 1 + 1 + 4; a szótári `kötőszó`-kör teljes.
 - **Gerinc, 4 levezetés:** 40/23/3/54, marad 24/11/2/38, egyezik az M0-val.

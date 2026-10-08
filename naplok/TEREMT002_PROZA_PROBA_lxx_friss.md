@@ -1,8 +1,8 @@
 # F64 M1 — LXX friss futás és a régi audit-sorok eltérése (munkajegyzet)
 
-*FELADATOK #64 · `F64_TEREMT002_PROZA_PROBA_BRIEF.md` M1 · DT-F64b (1) · ág `claude/f64-teremt002-proza-proba` · 2026.10.08 · a mérési jelentés (M3) és a #12b bemenete; nem döntés*
+*FELADATOK #64 · `F64_TEREMT002_PROZA_PROBA_BRIEF.md` M1 · DT69 (1) · ág `claude/f64-teremt002-proza-proba` · 2026.10.08 · a mérési jelentés (M3) és a #12b bemenete; nem döntés*
 
-A próza (`motivumok/TEREMT-002.md`, 2. pont „Septuaginta”) LXX-állításai a három előfordulás-versre futtatott friss `python eszkozok/lekerdez.py lxx-hid "<igehely>"` lekérdezésen állnak (`LXX_OS`). Az `adat/auditok.tsv` nem változott (DT-F64b); a régi sorok a #42 óta kivezetett `LXX_kivonat_*.tsv`-re mutatnak. Az összevetés oszlopai a `naplok/FORRASKIVEZETES_M5_eltereslista.tsv` szerint (`eszkozok/lxx_osszevetes.py` docstring): kategória, régi / új szószám, Jaccard, csak a régiben / csak az újban álló Strong-ok.
+A próza (`motivumok/TEREMT-002.md`, 2. pont „Septuaginta”) LXX-állításai a három előfordulás-versre futtatott friss `python eszkozok/lekerdez.py lxx-hid "<igehely>"` lekérdezésen állnak (`LXX_OS`). Az `adat/auditok.tsv` nem változott (DT69); a régi sorok a #42 óta kivezetett `LXX_kivonat_*.tsv`-re mutatnak. Az összevetés oszlopai a `naplok/FORRASKIVEZETES_M5_eltereslista.tsv` szerint (`eszkozok/lxx_osszevetes.py` docstring): kategória, régi / új szószám, Jaccard, csak a régiben / csak az újban álló Strong-ok.
 
 ## 1. A három előfordulás-vers
 
@@ -29,5 +29,5 @@ Ezeket a #64 nem futtatta újra: a próza a jelölt-versekről LXX-állítást n
 ## 3. A #12b-nek
 
 - A „függő (#12b)” LXX-helyek: **1Móz 1:2, Jer 4:23, Ézs 34:11** (a próza 2. pontja és a Kivonat).
-- A régi 58 audit-sor forrása kivezetett fájl; ha a #12b az `auditok.tsv`-re épít, a három előfordulás-vers sorait a friss futással kell újraírni (a #64 nem írja, DT-F64b).
+- A régi 58 audit-sor forrása kivezetett fájl; ha a #12b az `auditok.tsv`-re épít, a három előfordulás-vers sorait a friss futással kell újraírni (a #64 nem írja, DT69).
 - Az ἀκατασκεύαστος Strong-hiánya az LXX_OS-ben: a lexikonoldal LXX-szakasza erre a szóra Strong-alapú hidat nem tud adni.
