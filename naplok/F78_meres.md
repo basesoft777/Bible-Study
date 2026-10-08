@@ -25,7 +25,7 @@ A kézi 2/b (462–533. sor) és a „Miért fontos” (535–549. sor) a gener�
 
 | # | Szerep | Görög (G1941, rokon: G0994, G2564) | Héber (H7121, H8034) |
 |---|---|---|---|
-| 1 | Alapjelentés | töltött (TBESG, 2 jelentés) | hivatkozás a meglévő BDB-sorokra (DT-F42a kiváltás, DT-F78d) | **üres** (adatosítva, nincs bekötve; a #9 a BDB-t köti be) |
+| 1 | Alapjelentés | **megvan**: TBESG-alszakasz Strongonként (G1941 1., 2. jelentés; G0994, G2564 részlet) | **hiányzik**: TBESH-szócikk nincs a blokkban (csak a Strong-fejlécben a TBESH-lemma/licenckulcs; `lexikon_hivatkozasok.tsv`-ben 0 TBESH-sor) |
 | 2 | Mélységi szócikk | **megvan**: Thayer (G1941 teljes; G0994 rokon) | **megvan**: BDB (H7121 2.c és 3.; H8034 részlet) |
 | 3 | Teológiai szócikk | nincs adatosítva — nincs | nincs adatosítva — csak a **TWOT-szám** áll (H7121: 2063; H8034: 2405), hivatkozásként a Strong-fejlécben |
 | 4 | Jelentésszerkezet, szemantikai mező | **Strong szerinti** „Szemantikai domén” sor (SDGNT; G1941: 4 domén); a 2/b-ben SECE-domének kézzel | **Strong szerinti** „Szemantikai domén” sor (SDBH; H7121: 13, H8034: 5 domén) |
@@ -115,7 +115,7 @@ Kimenet (csak `generalt_proba/`, az éles `lexikon/` változatlan, `git status` 
 
 | # | Szerep | ISTENTISZT-001 görög | ISTENTISZT-001 héber | TEREMT-002 héber |
 |---|---|---|---|---|
-| 1 | Alapjelentés | töltött (TBESG, 2 jelentés) | **üres** (adatosítva, nincs bekötve) | **üres** (adatosítva, nincs bekötve) |
+| 1 | Alapjelentés | töltött (TBESG, 2 jelentés) | hivatkozás a meglévő BDB-sorokra (DT-F42a kiváltás, DT-F78d) | **üres** (adatosítva, nincs bekötve; a #9 a BDB-t köti be) |
 | 2 | Mélységi szócikk | töltött (Thayer) | töltött (BDB, 3 blokk) | **üres** (adatosítva, nincs bekötve) |
 | 3 | Teológiai szócikk | **üres** (nincs adatosítva) | részleges: TWOT-szám + üres blokk | részleges: TWOT-szám + üres blokk |
 | 4 | Jelentésszerkezet | töltött (SDGNT-domén) | töltött (SDBH-domén) | töltött (SDBH-domén) |
