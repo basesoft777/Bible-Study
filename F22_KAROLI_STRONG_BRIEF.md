@@ -8,7 +8,7 @@ modell: sonnet
 allapot: megallt
 ag: claude/f22-ezsd
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
-kovetkezo: "Te: az Ezsdrás kész (API, DT73 (a); jelentés: `naplok/F22_Ezsd_jelentes.md`); ⛔ 2.: a független ellenőr (`naplok/ELLENOR_F22_Ezsd.md`), a szúrópróba elmarad (DT70); kézi átnézés korábbról 1Krón 19:2, Ézs 9:20, 64:1 és a Zsoltároknál 119:94, 144:15, 145:1 (a felhasználóé); a #77 briefjének fejléce (F77.11) a merge előtt frissítendő; ready és merge (a felhasználóé). A következő könyv (DT57 (1): Jób, előtte TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról; utána Ez) indítása külön jóváhagyás; **párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60)**."
+kovetkezo: "Te: az Ezsdrás kész (API, DT73 (a); jelentés: `naplok/F22_Ezsd_jelentes.md`); ⛔ 2.: a független ellenőr (`naplok/ELLENOR_F22_Ezsd.md`), a szúrópróba elmarad (DT70); kézi átnézés korábbról 1Krón 19:2, Ézs 9:20, 64:1 és a Zsoltároknál 119:94, 144:15, 145:1 (a felhasználóé); a #77 briefjének fejléce (F77.11) frissítendő (a `kovetkezo` mezője még „merge (közös PR …)”, holott a #249 beolvadt); ready és merge (a felhasználóé). A következő könyv (DT57 (1): Jób, előtte TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról; utána Ez) indítása külön jóváhagyás; **párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60)**."
 fugg: [21]
 nem_fugg: [48]
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/futtat.py, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/regi_arany_hibas.tsv, naplok/F21P_jelentes.md]

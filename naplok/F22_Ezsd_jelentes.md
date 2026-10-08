@@ -92,3 +92,10 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - Független ellenőr: `naplok/ELLENOR_F22_Ezsd.md`.
 - A korábbi kézi átnézések (1Krón 19:2, Ézs 9:20, 64:1, Zsolt 119:94, 144:15, 145:1) továbbra is a felhasználóé.
 - A következő könyv indítása a felhasználó döntése (⛔ 2.). A DT57 (1) mérése szerint a sorrend: Jób 159, Ez 147, Péld 145 szócikk; a Jób előtt TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról.
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_Ezsd.md`)
+
+Az ellenőr eltérést nem talált (TISZTA). A számokat Grep-számlálással és `lekerdez.py`-jal igazolta, a szkripteket (`egyesit.py`, `f22_statisztika.py`, `f22_elemzes.py`) nem futtathatta (az `--ellenoriz` a 12 könyvre ebben a menetben lefutott, l. 1a). A saját CI-futásában HIBA szintű találat nincs.
+
+- **Arámi szakaszok (tájékoztató, az ellenőr 3c pontja):** 67 vers; er 1 835 token (= TAHOT), ebből `forditatlan` 9,3%; hu 1 627 token, ebből `betoldas` 16,8%. A héber részen 9,1%, ill. 17,6%: a két szakasz aránya gyakorlatilag azonos. A Strong-oszlop az arámi versekben is a TAHOT-tal egyezik (Ezsd 4:8, 7:13 mintavétel).
+- **Megjegyzés (A2):** a brief `kovetkezo` mezőjének „a #77 briefjének fejléce … a merge előtt frissítendő” mondata a #249 merge-e után elavult — pontosítva (a tétel nyitott marad).
