@@ -129,3 +129,12 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - Az Ezsd-ág (`claude/f22-ezsd`) és az Ez-ág PR-ja még nincs; az Ez-ág az Ezsd-ágra épül.
 - A korábbi kézi átnézések (1Krón 19:2, Ézs 9:20, 64:1, Zsolt 119:94, 144:15, 145:1) továbbra is a felhasználóé.
 - A következő könyv indítása a felhasználó döntése (⛔ 2.). A DT57 (1) mérése szerint a Jób (159) és a Péld (145) maradt a mért listából; a Jób előtt a versmegfeleltetés (#83, TAHOT-hiány Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról.
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_Ez.md`)
+
+Az ellenőr eltérést nem talált (TISZTA). A számokat pontos könyvegyezéssel (Grep `\tapi_termeles/high/Ez\t`, `cimke=ez`, `^Ez `, `Ez_k*.json`) és `lekerdez.py`-jal igazolta; a laza „Ez” előtag a futásnaplóban 324 sort adna (146 Ez + 145 Ézs + 33 Ezsd), a jelentés számai csak az Ez-sorokat tartalmazzák. A szkripteket (`egyesit.py`, `f22_statisztika.py`, `f22_elemzes.py`) nem futtathatta. A saját CI-futásában HIBA szintű találat nincs.
+
+- **Régi arany:** a 8 `Ezk.` hármas (H8415, H7585) mind a várt Károli-szónál áll a `parok_Ez.tsv`-ben (8/8).
+- **Strong a TAHOT-ból:** Ez 1:1, 34:22 (a javított k088-ból) és 48:35 mintavétele 57/57 er-tokenen egyezik.
+- **Merge-sorrend:** az Ez-ág az Ezsd-commitokat is hordozza, ezért az Ezsd-PR előbb vagy együtt merge-elendő; szöveges ütközés a main-nel nem várható.
+- **Tájékoztató:** a `szavak_Ez.tsv`-ben a `\tmagas\t` minta 15 hamis pozitívot ad (a magyar „magas” szó a `szo` oszlopban); bizonyosság szerinti számlálásnál oszlopra kell horgonyozni.
