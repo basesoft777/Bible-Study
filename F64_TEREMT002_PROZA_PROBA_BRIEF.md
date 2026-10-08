@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: ertelmezo
-allapot: fut
+allapot: megallt
 ag: claude/f64-teremt002-proza-proba
 ad: a TEREMT-002 teljes értelmező rétege (a motívumcikk prózája a tematikus sablon szerkezetével) a motivumok/TEREMT-002.md forrásban, a próbarender csak a generalt_proba/ alatt, az LXX-helyek „függő” jelöléssel; egy mérési jelentés az ISTENTISZT-001 mércéje szerint, amely a #23 M1 bemenete (DT-F32a, KONTEXTUS K1/4)
-kovetkezo: "M1 (próza a motivumok/TEREMT-002.md-be, DT-F64a; LXX friss lxx-hid-del, DT-F64b; mérce L1–L7 + DT2 rés-szabályok); ⛔ az M3 mérés után"
+kovetkezo: "Te: M1 kész (próza a motivumok/TEREMT-002.md-ben); az M2 próbarender és az M3 mérés indítása a felhasználó jóváhagyásával"
 olvas: [motivumok/TEREMT-002.md, "tematikus_lezart/TEREMT-002*", "tematikus_lezart/naplok/TEREMT-002*", motivumlog/PaRDeS_motivumok.md, TEREMT002_KUTATAS_BRIEF.md, naplok/T1_TEREMT002_gate.md, naplok/T1_TEREMT002_scan.md, naplok/T1_TEREMT002_jeloltek_munkalap.tsv, naplok/T1_TEREMT002_masodrendu_talalatok.tsv, naplok/T2_TEREMT002_minosites.tsv, naplok/T2_TEREMT002_kapcsolatok_javaslat.tsv, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/auditok.tsv, adat/motivumok.tsv, adat/res_forras.tsv, adat/SEMA.md, sablonok/4_PaRDeS_tematikus_sablon.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/PaRDeS_gyorsreferencia.md, F23_MOTIVUM_FORRAS_BRIEF.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/KONTEXTUS_szabalyok.md, MUNKAMENET.md, eszkozok/general.py, lexikon/ISTENTISZT-001_TUDOMANYOS.md]
 ir: [motivumok/TEREMT-002.md, generalt_proba/TEREMT-002_proza_proba/]
 fugg: []
