@@ -676,40 +676,43 @@ def _jsz_cimke(jelentes_szam):
     return '%s. jelentés' % jelentes_szam
 
 
-def _epit_szotar_alszakasz(strong, szint_eltolas, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh):
-    """Egy Strong-szám szócikk-alszakasza -- azonos logika a motívum
-    tokenjeire és a Rokon szavak (D2) bejegyzéseire, a `szint_eltolas`
-    (0 vagy 1) csak a heading-mélységet tolja el. Visszaadja: (szöveg,
-    van_hivatkozas, tisztazatlan_erintve)."""
+def _szotar_reszek(strong, szint_eltolas, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh):
+    """Egy Strong-szám szótári adatai szerepenként szétbontva (F78, DT-F78b):
+    a Strong-fejléc (lemma + kiejtés, 10. szerep), a TWOT-sor (héber 3.),
+    a domén-sorok (4.), és a forrásonkénti jelentés-blokkok (1., 2., 8.).
+    A licenc-gyűjtés mellékhatása azonos a régi, egybeépített változatéval.
+    Visszaad egy dict-et: fejlec_cim, lemma_kiejtes, twot, domen (sorok listája),
+    forras_blokkok [(szotar, [bekezdések])], van_hivatkozas, tisztazatlan_erintve."""
     cim_hash = '#' * (3 + szint_eltolas)
     sub_hash = '#' * (4 + szint_eltolas)
 
     lk = lemma_kiejtes(strong)
     if lk:
         lemma, kiejtes = lk
-        alszakasz = ['%s %s — %s (%s)' % (cim_hash, strong, lemma, kiejtes)]
+        fejlec = '%s %s — %s (%s)' % (cim_hash, strong, lemma, kiejtes)
         fajl_licenc_kulcsok_tbesg_tbesh.add('TBESG' if strong.startswith('G') else 'TBESH')
     else:
-        alszakasz = ['%s %s' % (cim_hash, strong)]
+        fejlec = '%s %s' % (cim_hash, strong)
 
     if strong.startswith('H'):
         twotok = oshl_twot_ehhez(strong)
-        alszakasz.append('**TWOT:** %s' % (', '.join(twotok) if twotok else EM_DASH))
+        twot = '**TWOT:** %s' % (', '.join(twotok) if twotok else EM_DASH)
         fajl_licenc_kulcsok.setdefault('konkordancia/OSHL_lexikalis_index.tsv', set()).add('OSHL')
     else:
-        alszakasz.append('**TWOT:** %s' % EM_DASH)
+        twot = '**TWOT:** %s' % EM_DASH
 
     domenek = domen_talalatok(strong)
     domen_szoveg = ', '.join('%s %s' % (kod, label) for kod, label in domenek) if domenek else EM_DASH
-    alszakasz.append('**Szemantikai domén:** %s' % domen_szoveg)
+    domen_sorok = ['**Szemantikai domén:** %s' % domen_szoveg]
     domen_fajl = 'konkordancia/SDBH_domenek.tsv' if strong.startswith('H') else 'konkordancia/SDGNT_domenek.tsv'
     domen_licenc_kulcs = 'SDBH' if strong.startswith('H') else 'SDGNT'
     fajl_licenc_kulcsok.setdefault(domen_fajl, set()).add(domen_licenc_kulcs)
 
     for anom in domen_anomalia_figyelmeztetes(strong):
-        alszakasz.append('*Figyelem: elemzetlen bejegyzés illeszkedik — %s %s %s*'
-                          % (anom['entry_id'], anom['lemma'], anom['nyers_ertek']))
+        domen_sorok.append('*Figyelem: elemzetlen bejegyzés illeszkedik — %s %s %s*'
+                           % (anom['entry_id'], anom['lemma'], anom['nyers_ertek']))
 
+    forras_blokkok = []
     van_hivatkozas = False
     tisztazatlan_erintve = False
     hiv_sorok = lexikon_hivatkozasok_ehhez(strong)
@@ -720,18 +723,37 @@ def _epit_szotar_alszakasz(strong, szint_eltolas, fajl_licenc_kulcsok, fajl_lice
             fajl_licenc_kulcsok.setdefault(r['forrasfajl'], set()).add(r['szotar'])
             if licenc_tisztazatlan(r['szotar']):
                 tisztazatlan_erintve = True
-            alszakasz.append('%s %s %s — %s' % (sub_hash, r['szotar'], r['entry_id'], _jsz_cimke(r['jelentes_szam'])))
-            alszakasz.append('> %s' % r['szoveg_en'])
+            bek = ['%s %s %s — %s' % (sub_hash, r['szotar'], r['entry_id'], _jsz_cimke(r['jelentes_szam'])),
+                   '> %s' % r['szoveg_en']]
             hu = forditas_ehhez(r['szotar'], r['strong'], r['entry_id'], r['jelentes_szam'], 'forditas_hu')
             if hu:
-                alszakasz.append('**🇭🇺** %s' % hu)
+                bek.append('**🇭🇺** %s' % hu)
             else:
-                alszakasz.append('*Fordítás függőben.*')
-            alszakasz.append('*Forrás: %s*' % r['forrasfajl'])
+                bek.append('*Fordítás függőben.*')
+            bek.append('*Forrás: %s*' % r['forrasfajl'])
+            forras_blokkok.append((r['szotar'], bek))
+
+    return {
+        'fejlec': fejlec, 'lemma_kiejtes': lk, 'twot': twot, 'domen': domen_sorok,
+        'forras_blokkok': forras_blokkok, 'van_hivatkozas': van_hivatkozas,
+        'tisztazatlan_erintve': tisztazatlan_erintve,
+    }
+
+
+def _epit_szotar_alszakasz(strong, szint_eltolas, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh):
+    """Egy Strong-szám szócikk-alszakasza -- azonos logika a motívum
+    tokenjeire és a Rokon szavak (D2) bejegyzéseire, a `szint_eltolas`
+    (0 vagy 1) csak a heading-mélységet tolja el. Visszaadja: (szöveg,
+    van_hivatkozas, tisztazatlan_erintve). F78: a rokon szavak (S5) belső
+    szerkezete változatlan; a szerep-sorrendű váz a `_szotar_reszek`-et használja."""
+    r = _szotar_reszek(strong, szint_eltolas, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh)
+    alszakasz = [r['fejlec'], r['twot']] + r['domen']
+    if r['forras_blokkok']:
+        for _, bek in r['forras_blokkok']:
+            alszakasz.extend(bek)
     else:
         alszakasz.append('Nincs jelentés-hivatkozás a `lexikon_hivatkozasok.tsv`-ben.')
-
-    return '\n\n'.join(alszakasz), van_hivatkozas, tisztazatlan_erintve
+    return '\n\n'.join(alszakasz), r['van_hivatkozas'], r['tisztazatlan_erintve']
 
 
 def rokon_szavak_strongok(sorai, tokenek):
@@ -749,6 +771,179 @@ def rokon_szavak_strongok(sorai, tokenek):
     return sorted(s for s in strongok if lexikon_hivatkozasok_ehhez(s))
 
 
+# --- F78: szerep-sorrendű váz (DT-F78a B változat, DT-F78b szűkített hatókör) ---
+
+# Melyik szótári forrás tölti a szerepet (a forrásonkénti belső render változatlan).
+SZEREP_SZOTAR = {
+    ('gorog', 1): 'TBESG', ('gorog', 2): 'Thayer', ('gorog', 8): 'LSJ',
+    ('heber', 1): 'TBESH', ('heber', 2): 'BDB',
+}
+# A szerep saját sora a Strong-fejlécből (DT-F78b: a TWOT/domén/kiejtés a saját szerepe alá költözik).
+SZEREP_SAJAT = {
+    ('heber', 3): 'twot', ('gorog', 4): 'domen', ('heber', 4): 'domen',
+    ('gorog', 10): 'kiejtes', ('heber', 10): 'kiejtes',
+}
+# Adatosított szerep, amelynek tartalma másutt jelenik meg: hivatkozás (S4).
+SZEREP_HIVATKOZAS = {
+    ('gorog', 5): 'az adat adatosítva (UBS DNTG glossza, Mounce), de a váz nem rendereli; kézi megjelenítés a 2/b szakaszban, ha van',
+    ('gorog', 6): 'l. a 3. szakaszt (LXX-fordítói döntések)',
+    ('heber', 6): 'l. a 3. szakaszt (LXX-fordítói döntések)',
+    ('gorog', 8): 'a motívum saját tokenjeihez nincs LSJ-sor a `lexikon_hivatkozasok.tsv`-ben; a rokon szavaknál (alább) és a kézi 2/b szakaszban l.',
+    ('gorog', 9): 'l. az 1. szakasz táblázatát (UBS-jelentés oszlop; csak újszövetségi sorok)',
+}
+# Nem adatosított szerep, amelynek tartalma kézzel a 2/b szakaszban él: hivatkozás, nem üres blokk (DT-F78c 3., S4).
+SZEREP_KEZI_2B = {
+    ('gorog', 7): 'a szerep nincs adatosítva; a SECE-megfelelők kézzel a 2/b szakaszban állnak (l. 2/b), ha van',
+    ('heber', 7): 'a szerep nincs adatosítva; a SECE-megfelelők kézzel a 2/b szakaszban állnak (l. 2/b), ha van',
+}
+ROKON_SZAVAK_CIM = '### Rokon szavak'
+
+
+def ures_blokk(szerep, allapot, ok):
+    """DT-F78a (B változat): gépi jelölő + látható zárójeles sor, amely kimondja,
+    hogy a hiány nincs kitöltve."""
+    return ('<!-- ÜRES-BLOKK: %s | %s -->\n'
+            '*(üres blokk: %s; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*'
+            % (szerep, allapot, ok))
+
+
+def _szerep_tartalom(nyelv, n, tokenek_ny, reszek):
+    """A szerep kitöltött bekezdései: lista. Üres lista = a szerepnek nincs adata ezekhez a tokenekhez."""
+    kulcs = (nyelv, n)
+    out = []
+    if kulcs in SZEREP_SZOTAR:
+        szotar = SZEREP_SZOTAR[kulcs]
+        tobb_van = any(b[0] == szotar for t in tokenek_ny for b in reszek[t]['forras_blokkok'])
+        if tobb_van:
+            for t in tokenek_ny:
+                bl = [b for b in reszek[t]['forras_blokkok'] if b[0] == szotar]
+                if not bl:
+                    out.append('*%s: nincs %s-sor ehhez a szerephez.*' % (t, szotar))
+                for _, bek in bl:
+                    out.extend(bek)
+    elif SZEREP_SAJAT.get(kulcs) == 'twot':
+        for t in tokenek_ny:
+            out.append('**%s** · %s' % (t, reszek[t]['twot']))
+    elif SZEREP_SAJAT.get(kulcs) == 'domen':
+        for t in tokenek_ny:
+            d = reszek[t]['domen']
+            out.append('**%s** · %s' % (t, d[0]))
+            out.extend(d[1:])
+    elif SZEREP_SAJAT.get(kulcs) == 'kiejtes':
+        for t in tokenek_ny:
+            lk = reszek[t]['lemma_kiejtes']
+            if lk:
+                out.append('**%s** · %s (%s)' % ((t,) + tuple(lk)))
+    return out
+
+
+# DT-F78d: a TBESH-szöveg (Online Bible-eredetű) a DT-F42a szerint kikerült; az `adatosítva` héber 1. szerepnél
+# a szerep forrása a táblában változatlanul TBESH, a render a meglévő BDB-sorokra hivatkozik (új adatsor nélkül).
+SZEREP_KIVALTO = {('heber', 1): 'BDB'}
+
+
+def _kivalto_hivatkozas(nyelv, n, tokenek_ny, reszek):
+    """Hivatkozás-sorok a meglévő kiváltó szótári sorokra; üres lista, ha egyik tokenhez sincs ilyen sor."""
+    szotar = SZEREP_KIVALTO.get((nyelv, n))
+    if not szotar:
+        return []
+    sorok, van = [], False
+    for t in tokenek_ny:
+        bl = [b[1][0] for b in reszek[t]['forras_blokkok'] if b[0] == szotar]
+        if bl:
+            van = True
+            cimek = '; '.join(c.split(' — ', 1)[1] if ' — ' in c else c for c in bl)
+            sorok.append('**%s** · *Hivatkozás: meglévő %s-sor (DT-F42a kiváltás): %s %s — %s (l. a 2. szerepnél).*'
+                         % (t, szotar, szotar, t, cimek))
+        else:
+            sorok.append('*%s: nincs meglévő %s-sor sem.*' % (t, szotar))
+    return sorok if van else []
+
+
+def _szerep_blokk(nyelv, sor, tokenek_ny, reszek):
+    n = int(sor['sorrend'])
+    szerep, allapot = sor['szerep'], sor['allapot']
+    szakasz = ['#### %d. %s' % (n, szerep)]
+    tart = _szerep_tartalom(nyelv, n, tokenek_ny, reszek)
+    if allapot == 'adatosítva':
+        if tart:
+            szakasz.extend(tart)
+        elif (nyelv, n) in SZEREP_HIVATKOZAS and (nyelv, n) not in SZEREP_SAJAT:
+            hiv = SZEREP_HIVATKOZAS[(nyelv, n)]
+            szakasz.append('*Hivatkozás: %s%s*' % (hiv, '' if hiv.endswith('.') else '.'))
+        elif _kivalto_hivatkozas(nyelv, n, tokenek_ny, reszek):
+            szakasz.extend(_kivalto_hivatkozas(nyelv, n, tokenek_ny, reszek))
+        else:
+            # DT-F78c 1.: harmadik állapot, mutatóval a #9-re (a bekötés a #9 dolga)
+            szakasz.append(ures_blokk(szerep, 'adatosítva, nincs bekötve',
+                                      'a szerep adatosítva (a forrásfájl megvan), de a motívum tokenjeihez a '
+                                      '`lexikon_hivatkozasok.tsv`-be nincs bekötve sor; a bekötés a #9 dolga'))
+    elif not tart and (nyelv, n) in SZEREP_KEZI_2B:
+        hiv = SZEREP_KEZI_2B[(nyelv, n)]
+        szakasz.append('*Hivatkozás: %s.*' % hiv)
+    else:
+        if tart:
+            szakasz.extend(tart)
+            ok = '%s; a fenti sor csak hivatkozás/részadat, a szerep tartalma nincs adatosítva' % allapot
+        else:
+            ok = allapot
+        szakasz.append(ures_blokk(szerep, allapot, ok))
+    return '\n\n'.join(szakasz)
+
+
+def szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh):
+    """A 2. szakasz fő törzse: nyelv szerint (görög, héber), azon belül az
+    `adat/szotar_szerepek.tsv` sorrendjében, a nem adatosított szerep explicit
+    üres blokkal. Visszaad: (törzs szöveg, van_hivatkozas, tisztazatlan_erintve)."""
+    szerepek = szerepek_sorok()
+    van_hiv = False
+    tiszt = False
+    reszek = {}
+    for t in tokenek:
+        r = _szotar_reszek(t, 1, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh)
+        nyelv = 'gorog' if t.startswith('G') else 'heber'
+        megengedett = {s for (ny, _), s in SZEREP_SZOTAR.items() if ny == nyelv}
+        for szotar, _ in r['forras_blokkok']:
+            if szotar not in megengedett:
+                raise ValueError('a(z) %s szótár nincs szerephez rendelve (%s, %s)' % (szotar, t, nyelv))
+        van_hiv = van_hiv or r['van_hivatkozas']
+        tiszt = tiszt or r['tisztazatlan_erintve']
+        reszek[t] = r
+
+    def sorrendben(ny):
+        return sorted((s for s in szerepek if s['nyelv'] == ny), key=lambda s: int(s['sorrend']))
+
+    g_sorok, h_sorok = sorrendben('gorog'), sorrendben('heber')
+    h_idx = {int(s['sorrend']): s for s in h_sorok}
+    kozos = set()
+    for s in g_sorok:
+        h = h_idx.get(int(s['sorrend']))
+        if h and all(h[k] == s[k] for k in ('szerep', 'forras', 'allapot')):
+            kozos.add(int(s['sorrend']))
+
+    reszek_szoveg = []
+    for nyelv, cim in (('gorog', 'Görög'), ('heber', 'Héber')):
+        tok_ny = [t for t in tokenek if t.startswith('G' if nyelv == 'gorog' else 'H')]
+        if not tok_ny:
+            reszek_szoveg.append('### %s szavak\n\n<!-- ÜRES-NYELV: %s | nincs Strong-token -->\n'
+                                 '*A motívumnak nincs %s Strong-tokenje; a %s szerepek nem alkalmazhatók.*'
+                                 % (cim, nyelv, cim.lower(), cim.lower()))
+            continue
+        blokkok = ['### %s szavak: %s' % (cim, ', '.join(tok_ny))]
+        for s in (g_sorok if nyelv == 'gorog' else h_sorok):
+            if int(s['sorrend']) in kozos:
+                continue
+            blokkok.append(_szerep_blokk(nyelv, s, tok_ny, reszek))
+        reszek_szoveg.append('\n\n'.join(blokkok))
+    if kozos:
+        blokkok = ['### Nyelvfüggetlen szerepek']
+        for s in g_sorok:
+            if int(s['sorrend']) in kozos:
+                blokkok.append(_szerep_blokk('gorog', s, [], reszek))
+        reszek_szoveg.append('\n\n'.join(blokkok))
+    return '\n\n'.join(reszek_szoveg), van_hiv, tiszt
+
+
 def blokk_szocikkek(m, tokenek, sorai):
     reszek = []
     fajl_licenc_kulcsok = {'adat/lexikon_hivatkozasok.tsv': set()}
@@ -756,12 +951,11 @@ def blokk_szocikkek(m, tokenek, sorai):
     tisztazatlan_erintve = False
 
     fajl_licenc_kulcsok_tbesg_tbesh = set()
-    for strong in tokenek:
-        alszakasz_szov, van_hiv, tiszt = _epit_szotar_alszakasz(
-            strong, 0, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh)
-        van_hivatkozas_barmelyikhez = van_hivatkozas_barmelyikhez or van_hiv
-        tisztazatlan_erintve = tisztazatlan_erintve or tiszt
-        reszek.append(alszakasz_szov)
+    # F78 (DT-F78b): szerep-sorrendű váz a Strong-szám szerinti helyett.
+    vaz_szov, van_hiv, tiszt = szerep_vaz(tokenek, fajl_licenc_kulcsok, fajl_licenc_kulcsok_tbesg_tbesh)
+    van_hivatkozas_barmelyikhez = van_hivatkozas_barmelyikhez or van_hiv
+    tisztazatlan_erintve = tisztazatlan_erintve or tiszt
+    reszek.append(vaz_szov)
 
     rokon_strongok = rokon_szavak_strongok(sorai, tokenek)
     if rokon_strongok:
@@ -791,10 +985,16 @@ def blokk_szocikkek(m, tokenek, sorai):
     # A tisztázatlan-jelölés a blokk MINDEN felhasznált forráskulcsára a táblából jön (N9).
     tisztazatlan_erintve = tisztazatlan_erintve or any(
         licenc_tisztazatlan(k) for kulcsok in fajl_licenc_kulcsok.values() for k in kulcsok)
-    hatokor = ('Ez a blokk a `[ID: %s]` motívum %d Strong-tokenjét fedi, %s jelentés-hivatkozással '
+    hatokor = ('Ez a blokk a `[ID: %s]` motívum %d Strong-tokenjét fedi, szerepenként a szerepmátrix '
+               '(`szotar_szerepek.tsv`) sorrendjében, %s jelentés-hivatkozással '
                'a `lexikon_hivatkozasok.tsv`-ből.'
                % (m['id'], len(tokenek), 'van' if van_hivatkozas_barmelyikhez else 'nincs'))
-    blokk_szoveg = _lexikon_blokk(m['id'], 'szocikkek', sorted(fajl_licenc_kulcsok), licenc_lista, hatokor, torzs)
+    # F78: a szerepmátrix (projekt-adat) a blokk forrása is; a licenc-kulcsok között nem szerepel
+    # (a kulcsok dataset-kulcsok), ezért külön kerül a forrás-, licenc- és pár-listába.
+    forras_lista = sorted(list(fajl_licenc_kulcsok) + ['adat/szotar_szerepek.tsv'])
+    licenc_lista = _sorted_unique(licenc_lista + [LC('projekt_adat')])
+    forras_licenc_parok.append(('adat/szotar_szerepek.tsv', LC('projekt_adat')))
+    blokk_szoveg = _lexikon_blokk(m['id'], 'szocikkek', forras_lista, licenc_lista, hatokor, torzs)
     return blokk_szoveg, tisztazatlan_erintve, forras_licenc_parok
 
 

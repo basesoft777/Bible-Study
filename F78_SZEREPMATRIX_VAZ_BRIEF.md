@@ -6,11 +6,14 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f78-szerepmatrix-vaz
+pr: 254
+lezarva_osszegzes: szerepmátrix-váz (szerep-sorrendű 2. szakasz, B-jelölés, ÜRES-NYELV, 26 soros szerep-tábla), próbarender ISTENTISZT-001 + TEREMT-002; DT83 nyitva; ellenőr 2 kör: naplok/ELLENOR_F78.md
 ad: a lexikonoldal-generátor a `_TUDOMANYOS` 2. szakaszát szerepenként, az adat/szotar_szerepek.tsv sorrendjében rendereli, a nem adatosított szerep explicit üres blokk (adatosítás nélkül); próbarender az ISTENTISZT-001-re és a TEREMT-002-re a generalt_proba/ alá, mérési jelentéssel — ez a #23 M1, a #10 és a #11 aranymintája
-kovetkezo: /kovetkezo; M0 (mérés), utána ⛔ az M0 végén
+kovetkezo: DT83 (a tábla héber 1. sorának forrása) a felhasználóé; merge a felhasználótól
 olvas: [adat/szotar_szerepek.tsv, adat/SEMA.md, adat/lexikon_hivatkozasok.tsv, adat/forditasok.tsv, eszkozok/lexikon_general.py, eszkozok/general.py, eszkozok/torzscikk_general.py, lexikon/ISTENTISZT-001_TUDOMANYOS.md, motivumok/TEREMT-002.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, RENDER_BRIEF.md, ADATVAGYON_TERV.md, ATALAKITASI_TERV.md.md, naplok/TEREMT002_PROZA_PROBA_meres.md, naplok/TERV_INTEGRACIO_dontesi_lista.md]
-ir: [eszkozok/lexikon_general.py, eszkozok/torzscikk_general.py, eszkozok/teszt_szerepmatrix.py, generalt_proba/, adat/szotar_szerepek.tsv, adat/SEMA.md, DONTESEK.md, NYITOTT_FELADATOK.md, naplok/F78_meres.md, naplok/ELLENOR_F78.md, naplok/F78_zaras.md]
+ir: [eszkozok/lexikon_general.py, eszkozok/torzscikk_general.py, eszkozok/teszt_szerepmatrix.py, generalt_proba/, naplok/F78a_valtozatok/, adat/szotar_szerepek.tsv, adat/SEMA.md, DONTESEK.md, NYITOTT_FELADATOK.md, naplok/F78_meres.md, naplok/ELLENOR_F78.md, naplok/F78_zaras.md]
 fugg: []
 nem_fugg: [38, 52]
 ---
@@ -48,7 +51,7 @@ Ez a #23 M1, a #10 és a #11 aranymintája, és megtöri a #23 M1 → aranyminta
 **M1 — mátrix-bővítés.** 13. és 14. szerep `javaslat` állapottal a `szotar_szerepek.tsv`-be és a SEMA 2.13-ba (a „22 sor” szöveg frissül); `torzscikk_general.py` 5. szakasza követi. Táblát író lépés előtt a sorokat vesd össze az eredetivel, eltérésnél állj meg; **`csv` modul tilos** (`split('\t')` / `'\t'.join()`).
 
 **M2 — váz-render.** A szerep-sorrendű render és az üres blokk.
-⛔ **DT-F78a (üres blokk jelölése): a végrehajtó nem dönt.** 2–3 jelölés-változatot hoz, **mindet ugyanazon az ISTENTISZT-001 szakaszon kirenderelve, egymás mellett** (ideiglenes könyvtárban, a repón kívül), nem egyetlen javaslatot. A felhasználó választ; a döntés `DT-F78a` helyőrzővel a `DONTESEK.md`-be kerül.
+⛔ **DT80 (üres blokk jelölése): a végrehajtó nem dönt.** 2–3 jelölés-változatot hoz, **mindet ugyanazon az ISTENTISZT-001 szakaszon kirenderelve, egymás mellett** (ideiglenes könyvtárban, a repón kívül), nem egyetlen javaslatot. A felhasználó választ; a döntés `DT80` helyőrzővel a `DONTESEK.md`-be kerül.
 
 **M3 — próbarender és mérés.** ISTENTISZT-001, majd TEREMT-002 a `generalt_proba/` alá (`--kimenet`). `naplok/F78_meres.md`: szerepenként töltöttség és üres blokk, a #64 7. szakaszának korlátjára hivatkozva.
 
@@ -67,4 +70,7 @@ Ez a #23 M1, a #10 és a #11 aranymintája, és megtöri a #23 M1 → aranyminta
 
 - DT74 (1)–(2): a váz külön feladat, a TEREMT-002 a második minta — **rögzített**.
 - DT76 (9): 13–14. szerep `javaslat` állapottal, a #78 menetében — **rögzített**.
-- `DT-F78a`: az üres blokk jelölése — **nyitva**, M2-nél a felhasználó dönt.
+- `DT80`: az üres blokk jelölése — **eldöntve** (B változat: gépi `<!-- ÜRES-BLOKK: szerep | állapot -->` + látható sor; csak `nincs adatosítva` / `javaslat` szerepnél).
+- `DT81`: hatókör — **eldöntve** (szűkített S1–S5; a TWOT/domén/kiejtés a saját szerepe alá költözik).
+- `DT82`: az ellenőr három tartalmi eltérése — **eldöntve** (harmadik állapot „adatosítva, nincs bekötve”; `ÜRES-NYELV` jelölő; a 7. szerep „l. 2/b”). A két héber TBESH-sor bekötése a #78-ban **NEM történt meg**: a felhasználó (2026-10-08, chat) a „negyedik utat” választotta (a DT-F42a érvényben marad; a héber 1. szerep a meglévő BDB-sorokra hivatkozik), l. `naplok/F78_meres.md` 12–13.
+- `DT83`: a `szotar_szerepek.tsv` héber 1. sorának forrás-oszlopa a DT-F42a után — **nyitva** (a felhasználó külön döntése).
