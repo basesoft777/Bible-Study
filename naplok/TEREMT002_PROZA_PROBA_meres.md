@@ -116,6 +116,13 @@ Ez az író saját mérése, nem független ellenőrzés; a független ellenőr 
 2. **H8414 „49:19”:** a BDB-szócikk az Ézs 49:19-re hivatkozik, a *tohu*-vers viszont az Ézs 49:4 (`scan H8414`, 19 vers). Valószínű forrás- vagy átírási hiba; nem javítva.
 3. **Az M0-pontosítás:** az M0 5. pontja mind az öt zsoltár-jelölt régi LXX-sorát az N17-eltolásra épülőnek írta; a `naplok/FORRASKIVEZETES_M5_eltereslista.tsv` szerint ez csak kettőre áll (Zsolt 80:6, 80:7 `zsoltar_eltolas`); a Zsolt 104:30 `strong_eltero`, a Zsolt 107:40 `nagy_eltero`, a Zsolt 33:6 azonos.
 
+## 7. A mérce korlátja (felhasználó, 2026-10-08, chat)
+
+Az aranyminta (ISTENTISZT-001) maga sem tartalmazza a szótári szerepmátrix (`adat/szotar_szerepek.tsv`, SEMA 2.13) minden elemét, és nem a mátrix szerint rendez: a `lexikon/ISTENTISZT-001_TUDOMANYOS.md` 2. szakasza Strong-számonként, azon belül forrásonként halad (TBESG, Thayer, BDB, LSJ), a 4., 5., 7. szerep csak a 2/b vegyes blokkjában áll, a 9. (versenkénti jelentés), 10. (kiejtés), 12. (Nave) és a javasolt 13. (Károli-megfelelők) szerep hiányzik.
+`scope=lexikon/ISTENTISZT-001_TUDOMANYOS.md címsorai + adat/szotar_szerepek.tsv | forras=manual (összevetés) | ts=2026-10-08`
+
+Következmény: ez a mérés a próza értelmező részére érvényes (PaRDeS-rétegek, L1–L7 a forrásprózán); a szerepmátrix szerinti szótári rész **nincs mérve**, mert a mérce erre a részre hiányos. Az ISTENTISZT-001 rekonstrukciója a teljes szerepmátrix szerint külön feladat (befogadásra vár), a #23 M1, a #10 és a #11 mércéje az lesz. A felhasználó a #64 zárását ezzel a korláttal hagyta jóvá.
+
 ---
 
 ## ⛔ Megállás
