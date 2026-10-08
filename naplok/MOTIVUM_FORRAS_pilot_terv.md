@@ -80,7 +80,7 @@ motívuma a szétválasztást nem méri, a sablon pedig mindkét esetre szól.]*
 
 ### 4.1 A régi források
 
-`scope=a hat fájl | forras=manual (szkript; blokk = üres sorral határolt egység a kódkerítésen kívül, a ## címsor nélkül) | ts=2026-10-08`
+`scope=tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md + tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md + motivumok/ISTENTISZT-001.md | forras=manual (szkript; blokk = üres sorral határolt egység a kódkerítésen kívül, a ## címsor nélkül) | ts=2026-10-08`
 
 | Fájl | Sor | Blokk | `【NAPLO` | `RÉS` |
 |---|---|---|---|---|
