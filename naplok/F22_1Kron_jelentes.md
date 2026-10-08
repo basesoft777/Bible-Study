@@ -1,6 +1,6 @@
 # F22_1Kron_jelentes.md — Károli–Strong párosítás: 1Krónika (csak Sonnet, Message Batches API)
 
-*A számok szkriptkimenetből jönnek (`f22_statisztika.py --konyv 1Kron`, `egyesit.py --ellenoriz --konyv <könyv>`, `f22_elemzes.py --konyv 1Kron`, a `f22/api_termeles/futasnaplo.tsv` és `batchek.tsv` 1Krón-sorainak összesítése, a `f22/api_termeles/high/_munka/1Kron_k*.json` hibaüzenetei). Ág: `claude/wonderful-einstein-ezr2pw`. Módszer: `prompt_v3` változatlanul, **Sonnet a Message Batches API-n, `effort=high`** (DT-F77 (a)), **a C (Gemini) kimarad** (DT-F22c), 10 verses kötegek. Sorrend: DT57 (1), a BDB-haszon mérése szerint elsőként az 1Krón.*
+*A számok szkriptkimenetből jönnek (`f22_statisztika.py --konyv 1Kron`, `egyesit.py --ellenoriz --konyv <könyv>`, `f22_elemzes.py --konyv 1Krón`, a `f22/api_termeles/futasnaplo.tsv` és `batchek.tsv` 1Krón-sorainak összesítése, a `f22/api_termeles/high/_munka/1Kron_k*.json` hibaüzenetei). Ág: `claude/wonderful-einstein-ezr2pw`. Módszer: `prompt_v3` változatlanul, **Sonnet a Message Batches API-n, `effort=high`** (DT-F77 (a)), **a C (Gemini) kimarad** (DT-F22c), 10 verses kötegek. Sorrend: DT57 (1), a BDB-haszon mérése szerint elsőként az 1Krón.*
 
 ## 1. Menet
 
@@ -15,7 +15,7 @@
 | 2. próba (javító) | 20 | 19 | 1 köteg (1 vers) | 0,4609 | 218 743 / 48 441 |
 | **összesen** | 115 | | | **4,5552** | |
 
-A javító körbe került kötegek: 2, 4, 6, 7, 9, 12, 17, 30, 33, 34, 37, 52, 55, 66, 74, 75, 79, 82, 85, 90. Ebből **öt köteg egészében bukott** (12, 30, 66, 75, 82: 10–10 vers, együtt 50): a válasz formája volt hibás, nem a párosítás (pl. a k012-ben „a válasz nem érvényes JSON: Extra data”; a k030 és a k075 nyers válaszában a JSON után önjavító szöveg áll, a k082-ben a válasz nem tömb, hanem soronkénti objektumok). A többi 20 vers versenkénti kapuhiba: üres partnerlista (`[n, []]`), kétszer vagy sehol sem szereplő sorszám.
+A javító körbe került kötegek: 2, 4, 6, 7, 9, 12, 17, 30, 33, 34, 37, 52, 55, 66, 74, 75, 79, 82, 85, 90. Ebből **öt köteg egészében bukott** (12, 30, 66, 75, 82: 10–10 vers, együtt 50): a válasz formája volt hibás, nem a párosítás (pl. a k012-ben „a válasz nem érvényes JSON: Extra data”; a k030 és a k075 nyers válaszában az első versobjektum után zárócímke áll (`</parameter>`, ill. `</parok>`), utána önjavító szöveg és a teljes válasz újra; a k012 és a k082 válasza nem tömb, hanem soronkénti objektumok). A többi 20 vers versenkénti kapuhiba: üres partnerlista (`[n, []]`), kétszer vagy sehol sem szereplő sorszám.
 
 A költség versenként 0,0048 USD (a plafon alapja 0,0074). A könyvplafonból (942 × 0,0074 × 1,5 = 10,46 USD) 4,56 fogyott; a futásnapló futó összege 20,6938 USD (Ézs 7,0834 + Jer 9,0552 + 1Krón 4,5552), a globális 110 USD-ből.
 
@@ -35,7 +35,7 @@ C költség: 0.000000 USD, 0 hívás, bemenet 0, kimenet 0 (ebből gondolkodás 
 
 ## 2. Ellenőrzés a könyvön (22.5)
 
-*Minden szám az `eszkozok/karoli_strong/f22_elemzes.py --konyv 1Kron` kimenetéből.*
+*Minden szám az `eszkozok/karoli_strong/f22_elemzes.py --konyv 1Krón` kimenetéből.*
 
 ### 2.1 Arányok
 
@@ -79,11 +79,11 @@ Gyanús fejezetek (nincs link, vagy a linkek `magas` aránya < 70%; versszámoz�
 
 ### 2.2 Régi arany (konkordancia/Karoli_Strong_kivonat.tsv)
 
-- Minden régi-arany hármas a könyvben: 0; a Károli-szó/kifejezés nem található a vers tokenjei közt: 0.
-- **Mért érték (kizárás nélkül, minden link):** n.é. (0/0).
-- Csak a `magas` linkekkel (a nevező ugyanaz, tehát alsó becslés): n.é. (0/0).
+- Minden régi-arany hármas a könyvben: 6; a Károli-szó/kifejezés nem található a vers tokenjei közt: 0.
+- **Mért érték (kizárás nélkül, minden link):** 100.0% (6/6).
+- Csak a `magas` linkekkel (a nevező ugyanaz, tehát alsó becslés): 0.0% (0/6).
 - A `magas` tokenekre korlátozva (azok a hármasok, amelyeknél a Károli-token(ek) mind `magas` bizonyosságúak; a találat a `magas` token linkjein): n.é. (0/0).
-- Tájékoztató (az `f21p/regi_arany_hibas.tsv` hibásnak jelölt hármasai kizárva; nem a mért érték): n.é. (0/0).
+- Tájékoztató (az `f21p/regi_arany_hibas.tsv` hibásnak jelölt hármasai kizárva; nem a mért érték): 100.0% (6/6).
 
 ### 2.3 A 20 leggyakoribb eltérés-típus az alacsony tokenekből
 
@@ -96,12 +96,12 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 
 - **1Krón 19:2** (végleges kapuhiba, `kezi`, linkek nélkül; `naplok/F22_1Kron_atnezes.tsv`): a felhasználóé. Kézi párosítás vagy újrafuttatás nélkül a vers 86 tokenje `fuggoben` marad.
 - A „gyanús fejezetek” listája a 2.1-ben formális: egy modell fut, `magas` nincs (mint a 3Móz–Jer menetekben); a versbeosztás a detektor szerint tiszta.
-- A régi arany (2.2) az 1Krónban üres (0 hármas): ebben a könyvben a régi arannyal nem mérhető.
+- A régi arany (2.2) 6 hármasa (1Krón 11:15, 14:9, 16:8, 20:4, 20:6, 20:8) mind egyezik (6/6); kis minta.
 
 ## 4. Kiegészítések ebben a menetben
 
 - K9: az 1Krón bejegyezve az `adat/datasetek.tsv`-be (8 sor) és az `adat/SEMA.md` 2.20-ba.
-- A brief fejléce: `ag`, `kovetkezo`, `ir`, D20, v2.14.
+- A brief fejléce: `kovetkezo`, `ir`, D20, v2.14 (az `ag` nem változott).
 
 ## 5. Nyitott (felhasználói) lépések
 
@@ -109,3 +109,15 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - Független ellenőr: `naplok/ELLENOR_F22_1Kron.md`.
 - Kézi átnézés: 1Krón 19:2.
 - A következő könyv indítása a felhasználó döntése (⛔ 2.). A DT57 (1) mérése szerint a sorrend: 2Krón 169, Ezsd 162, Jób 159, Ez 147, Péld 145 szócikk; a Jób előtt TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról.
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_1Kron.md`)
+
+Az ellenőr 5 eltérést talált; a párosítási adatban hibát nem. A számokat Grep-számlálással igazolta, a szkripteket nem futtathatta.
+
+| # | eltérés | kezelés |
+|---|---|---|
+| 1 | a régi arany némán 0: az `f22_elemzes.py` `--konyv 1Kron` (ASCII) névvel futott, a `regi_arany` szűrése (`startswith(konyv + ' ')`) így egy verset sem talált | javítva: újrafuttatás `--konyv 1Krón`-nal, a 2. szakasz cserélve; mért érték 100.0% (6/6). A 2.1 és 2.3 kimenete változatlan. Az eszköz ismeretlen könyvnévre nem jelez — nyitva (javaslat:az `f22_elemzes.py` álljon meg, ha a könyvnévre 0 Károli-vers jön) |
+| 2 | az ág elavult a main-hez képest: a main-en a `szamkiosztas` már kiosztotta a DT70–DT73-at, az ág új szövegei a helyőrzőket (DT-F22e, DT-F77 …) használják; a brief fejléce és a SEMA 2.20 mindkét oldalon módosult, ütközés várható; a PR #249 már merge-elt | nyitva, felhasználói döntésre: a main beolvasztása és a helyőrzők cseréje, új PR |
+| 3 | SEMA 2.20: a „minden link és szó `alacsony`” mondat nem igaz a `kezi` versekre (1Krón 19:2, Ézs 9:20, 64:1); a csak-Sonnet felsorolásból hiányoznak a Zsolt-fájlok és -jelentés | javítva |
+| 4 | a k030 és a k075 hibájának leírása pontatlan (1. szakasz) | javítva |
+| 5 | a 4. szakasz szerint az `ag` is változott, pedig nem | javítva |
