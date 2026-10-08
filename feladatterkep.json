@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-08",
-   "commit": "edff976"
+   "commit": "727664d"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -313,7 +313,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: a Jeremiás kész (API, DT73 (a); jelentés: `naplok/F22_Jer_jelentes.md`); ⛔ 2.: a független ellenőr lefutott (`naplok/ELLENOR_F22_Jer.md`), a szúrópróba elmarad (DT70); a prófétáknál is 10 verses kötegek (DT71 (a)); a #77 briefjének fejléce (F77.11) a merge előtt frissítendő; kézi átnézés Ézs 9:20, 64:1 és a Zsoltároknál 119:94, 144:15, 145:1 (a felhasználóé), ready és merge (a felhasználóé). A következő könyv (DT57 (1): a BDB-haszon mérése szerint, elsőként 1Krón) indítása külön jóváhagyás; párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60). Jób előtt: TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról.",
+   "most": "Te: az 1Krónika kész (API, DT73 (a); jelentés: `naplok/F22_1Kron_jelentes.md`); ⛔ 2.: a független ellenőr (`naplok/ELLENOR_F22_1Kron.md`), a szúrópróba elmarad (DT70); kézi átnézés 1Krón 19:2 (végleges kapuhiba, `kezi`), korábbról Ézs 9:20, 64:1 és a Zsoltároknál 119:94, 144:15, 145:1 (a felhasználóé); a #77 briefjének fejléce (F77.11) a merge előtt frissítendő; ready és merge (a felhasználóé). A következő könyv (DT57 (1): 2Krón) indítása külön jóváhagyás; párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60). Jób előtt: TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról.",
    "fugg": "#21 (kész)",
    "tervezett": false,
    "reszletes": "Két modell (Sonnet, az első könyvnél Gemini is) a Károli-fordítás minden szavához megkeresi az eredeti héber szót és a Strong-számát; ahol a két modell egyezik, a kapcsolat „magas” bizonyosságú. Az 1–5Mózes és Józsué kész.",
