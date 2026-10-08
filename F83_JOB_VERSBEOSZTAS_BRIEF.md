@@ -5,9 +5,12 @@ kod: JOB_VERSBEOSZTAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: nem_indult
+allapot: lezarva
+pr: 260
+lezarva_osszegzes: "Jób 38–42 megfeleltetés jóváhagyva (146 × 1:1, 4 fejezethatár-eltolás), kézi tábla +19 sor, DT-F83a ✅; a Jób 41 a TAHOT-kulcsgenerátor javításáig blokkolt (N-F83a javaslat), PR #260 (10.08)"
+ag: claude/f83-job-versbeosztas
 ad: "Jóváhagyott Jób 38–42 versmegfeleltetés (1:2 / 2:1 esetekkel), a három ellenőrzés eredményével; a Jób bekerülhet a VERSBEOSZTAS_JOVAHAGYOTT-ba"
-kovetkezo: "⛔ a kézi megfeleltetési táblázat előtt (a felhasználó jóváhagyása). Nyitott a befogadáskor: (a) az 1. ellenőrzés forrása — a nyers TAHOT-fájl nincs a repóban, csak a kivonat; a Macula_heber_Job.tsv (MT/WLC) vagy a STEPBible-fájl letöltése (külön engedély); (b) az 1:2 / 2:1 támogatásáról döntés DT-F83a helyőrzővel (l. naplok/F22_versbeosztas_jovahagyas.md, Jób-sor); (c) az N-F41g (Jób 38–41 MT-számozás a BSB-ben) átfedése: a jelentés lezárja-e, vagy külön tétel marad. A #22-vel nem fut párhuzamosan (KIZAR: f22/versmegfeleltetes_kezi.tsv)."
+kovetkezo: "merge a felhasználótól; nyitott: N-F83a (kulcsgenerátor Jób 40–41) felvétele /befogad-dal; zárás: naplok/F83_zaras.md"
 fugg: []
 nem_fugg: [22]
 olvas: [konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Macula_heber_Job.tsv, f22/versmegfeleltetes.tsv, naplok/F22_versbeosztas.md, eszkozok/karoli_strong/versbeosztas.py, eszkozok/tahot_karoli_kulcs_generalas.py]
