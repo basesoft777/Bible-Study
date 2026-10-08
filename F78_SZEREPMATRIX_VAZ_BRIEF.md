@@ -8,7 +8,7 @@ modell: sonnet
 munka: adat
 allapot: lezarva
 ag: claude/f78-szerepmatrix-vaz
-pr: 0
+pr: 254
 lezarva_osszegzes: szerepmátrix-váz (szerep-sorrendű 2. szakasz, B-jelölés, ÜRES-NYELV, 26 soros szerep-tábla), próbarender ISTENTISZT-001 + TEREMT-002; DT-F78d nyitva; ellenőr 2 kör: naplok/ELLENOR_F78.md
 ad: a lexikonoldal-generátor a `_TUDOMANYOS` 2. szakaszát szerepenként, az adat/szotar_szerepek.tsv sorrendjében rendereli, a nem adatosított szerep explicit üres blokk (adatosítás nélkül); próbarender az ISTENTISZT-001-re és a TEREMT-002-re a generalt_proba/ alá, mérési jelentéssel — ez a #23 M1, a #10 és a #11 aranymintája
 kovetkezo: DT-F78d (a tábla héber 1. sorának forrása) a felhasználóé; merge a felhasználótól
