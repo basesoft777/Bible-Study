@@ -79,6 +79,16 @@ Ez a szűkítés a #36 `lexikon_general.py`-ra épülő munkáját nem zavarja (
 
 **Nyitott pont a döntéshez:** S2 szerint a TWOT/domén/kiejtés sor a Strong-fejlécben marad *és* a szerep alatt hivatkozásként szerepel, vagy a Strong-fejlécből a szerep alá költözik (ez már belső szerkezetet érint). A javaslat az előbbi (nincs szövegkettőzés: a szerep-blokk csak a kereszthivatkozást és a töltöttséget mutatja).
 
-### 6. Állapot
+### 6. A #64 mérés 7. szakaszának két pontosítása
 
-M0 kész. **⛔ Megállás** (brief M0 vége és a blokk-átrendezés miatt): a felhasználó dönt, hogy a teljes átépítés vagy a szűkített hatókör (S1–S5) érvényes. Az M1 (mátrix-bővítés) a hatókör-döntéstől független, de a brief szerint az M0 végén megállunk.
+1. **Héber 1. szerep (Alapjelentés, TBESH):** a blokk szövegéből hiányzik; a Strong-fejlécben csak a TBESH-lemma és a licenckulcs áll. `adat/lexikon_hivatkozasok.tsv`-ben **0 TBESH-sor** van (`scope=adat/lexikon_hivatkozasok.tsv, szotar=TBESH | forras=manual (szkript, lexikon_hivatkozasok_ehhez) | ts=2026-10-08`).
+2. **6. szerep (LXX-híd):** nem a 2., hanem a **3. szakaszban** áll (`lexikon#ISTENTISZT-001#lxx`); a 2. szakaszban csak hivatkozás kell rá (S4).
+
+### 7. Döntések (felhasználó, 2026-10-08, chat)
+
+- **DT-F78b:** szűkített hatókör (S1–S5). A TWOT-, domén- és kiejtés-sor a saját szerepe alá költözik (3., 4., 10.), nem marad a Strong-fejlécben hivatkozással (az S2 pont eredeti "referencia" változata így módosul).
+- **DT-F78a:** B változat: gépi `<!-- ÜRES-BLOKK: szerep | állapot -->` jelölő + látható zárójeles sor. Üres blokk csak a `nincs adatosítva` / `javaslat` állapotú szerepeknél; az `adatosítva` szerepnél (görög 5., 8., 9.) hivatkozás kell (S4), nem üres blokk.
+
+### 8. Állapot
+
+M0 kész, a megállás feloldva a fenti döntésekkel. Következik: M1.
