@@ -53,6 +53,9 @@ MODELL = 'claude-sonnet-5-5'
 MAX_TOKENS = 32000
 PLAFON_USD = 110.00
 KULCS_VALTOZO = 'PARDES_API_KEY'
+USD_VERS = 0.0074       # `high` szint, Józsué-próba (0,00736 USD/vers, Batch-ár); a könyvplafon alapja
+KONYV_SZORZO = 1.5      # a könyvplafon tartaléka
+KONYV_MIN_USD = 1.00
 VAKPROBA = os.path.join(tokenek.ROOT, 'f22', 'vakproba')
 # Batch-ár ($/MTok): a claude-sonnet-5-5 normál ára (2 / 10, cache-olvasás 0,20) fele.
 AR_BE, AR_KI, AR_CACHE_OLV, AR_CACHE_IR = 1.00, 5.00, 0.10, 1.25
@@ -210,6 +213,29 @@ def kerelem_params(uzenetek, effort):
             'output_config': {'effort': effort}, 'messages': uzenetek}
 
 
+def konyv_versek(konyv, koteg_meret=10):
+    return sum(len(x) for x in sonnet_koteg.kotegek_listaja(konyv, koteg_meret))
+
+
+def konyv_plafon(konyv, koteg_meret=10):
+    """Könyvenkénti költségplafon: a könyv versszáma × USD_VERS × 1,5, legalább 1,00 USD (mint a C-nél, DT-F22d)."""
+    return max(KONYV_MIN_USD, konyv_versek(konyv, koteg_meret) * USD_VERS * KONYV_SZORZO)
+
+
+def konyv_koltseg(konyv):
+    """A könyv eddigi tényleges API-költsége a futásnaplóban (a `futas` oszlop utolsó tagja a könyv)."""
+    n = sonnet_koteg.ascii_nev(konyv)
+    return sum(float(x['koltseg_usd'] or 0) for x in tsv_olvas(ut('futasnaplo.tsv')) if x['futas'].split('/')[-1] == n)
+
+
+def konyv_plafon_ellenorzes(konyv, vers_db, koteg_meret=10):
+    """(rendben, üzenet): a könyv eddigi költsége + a most beküldött `vers_db` vers várt költsége a könyvplafon alatt van-e."""
+    plafon, eddig, varhato = konyv_plafon(konyv, koteg_meret), konyv_koltseg(konyv), vers_db * USD_VERS
+    uz = 'könyvplafon (%s): %.2f USD (%d vers × %.4f × %.1f, min. %.2f); eddig %.4f, most várható %.4f USD' % (
+        konyv, plafon, konyv_versek(konyv, koteg_meret), USD_VERS, KONYV_SZORZO, KONYV_MIN_USD, eddig, varhato)
+    return eddig + varhato <= plafon, uz
+
+
 def bekuld(konyv, kotegek, effortok, cimke, koteg_meret=10, hivo=None):
     hivo = hivo or http
     kerelmek, bemenet_db, prompt_szovegek = [], 0, {}
@@ -221,6 +247,12 @@ def bekuld(konyv, kotegek, effortok, cimke, koteg_meret=10, hivo=None):
         for e in effortok:
             kerelmek.append({'custom_id': custom_id(konyv, k, e, 1),
                              'params': kerelem_params([{'role': 'user', 'content': szoveg}], e)})
+    vers_db = sum(len(prompt_szoveg(konyv, k, koteg_meret)[1]) for k in kotegek) * len(effortok)
+    rendben, uz = konyv_plafon_ellenorzes(konyv, vers_db, koteg_meret)
+    print(uz)
+    if not rendben:
+        print('MEGÁLLÁS: a könyvplafon fölött lenne', file=sys.stderr)
+        return 3
     becs = felso_becsles(bemenet_db, len(kerelmek))
     ossz = futo_osszeg() + becs
     print('becslés: %d kérés, bemenet %d token, felső költség %.4f USD, eddig %.4f, plafon %.2f USD' % (
@@ -266,7 +298,7 @@ def hivas_naplo(konyv, koteg, effort, proba, ig, usage, stop, kapuhiba, ok, ts=N
     c = koltseg(usage)
     tsv_hozzaad(ut('futasnaplo.tsv'), NAPLO_FEJLEC, {
         'ts': ts or time.strftime('%Y-%m-%dT%H:%M:%S+00:00', time.gmtime()),
-        'futas': 'vakproba/%s/%s' % (effort, sonnet_koteg.ascii_nev(konyv)), 'koteg': koteg, 'probalkozas': proba,
+        'futas': '%s/%s/%s' % (os.path.basename(VAKPROBA), effort, sonnet_koteg.ascii_nev(konyv)), 'koteg': koteg, 'probalkozas': proba,
         'modell': MODELL, 'gondolkodas_mod': 'adaptive,effort=%s' % effort, 'igehely_db': len(ig), 'kjv': 'nem',
         'bemenet_token': be, 'kimenet_token': usage.get('output_tokens', 0), 'gondolkodas_token': '',
         'koltseg_usd': '%.6f' % c, 'koltseg_forras': 'batch_ar_szamolt', 'kapuhiba_db': kapuhiba,
@@ -405,6 +437,16 @@ def javit(cimke, koteg_meret=10, hivo=None):
                 {'role': 'user', 'content': elozo['uzenet']}]
         bemenet_db += hivo('POST', '/v1/messages/count_tokens', {'model': MODELL, 'messages': msgs})['input_tokens']
         kerelmek.append({'custom_id': custom_id(konyv, koteg, effort, 2), 'params': kerelem_params(msgs, effort)})
+    jav_versek = {}
+    for k in kerelmek:
+        ascii_konyv, kot, _, _ = custom_id_bont(k['custom_id'])
+        jav_versek[ascii_konyv] = jav_versek.get(ascii_konyv, 0) + len(sonnet_koteg.kotegek_listaja(konyv_nev(ascii_konyv), koteg_meret)[kot - 1])
+    for ak, vdb in jav_versek.items():
+        rendben, uz = konyv_plafon_ellenorzes(konyv_nev(ak), vdb, koteg_meret)
+        print(uz)
+        if not rendben:
+            print('MEGÁLLÁS: a könyvplafon fölött lenne', file=sys.stderr)
+            return 3
     becs = felso_becsles(bemenet_db, len(kerelmek))
     print('javító becslés: %d kérés, felső költség %.4f USD, eddig %.4f' % (len(kerelmek), becs, futo_osszeg()))
     if futo_osszeg() + becs > PLAFON_USD:
@@ -498,6 +540,9 @@ def onteszt():
             hibak.append('git_mentes (%s, %s, %s)' % (e1, e2, fajlok))
     if konyv_nev('Ezs') != 'Ézs' or konyv_nev('Jozs') != 'Józs' or kotegek_tartomany('1-3,7') != [1, 2, 3, 7]:
         hibak.append('konyv_nev / kotegek_tartomany')
+    if abs(konyv_plafon('Józs') - 658 * USD_VERS * KONYV_SZORZO) > 1e-9 or konyv_plafon_ellenorzes('Józs', 10)[0] is not True \
+            or konyv_plafon_ellenorzes('Józs', 10000)[0] is not False:
+        hibak.append('könyvplafon')
     for h in hibak:
         print('ÖNTESZT HIBA: ' + h, file=sys.stderr)
     print('önteszt: %s' % ('HIBA' if hibak else 'rendben'))
