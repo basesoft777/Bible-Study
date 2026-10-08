@@ -8,10 +8,10 @@
 - Próbarender `generalt_proba/` alá: ISTENTISZT-001 (aranyminta), TEREMT-002 szótári rész (második minta). Mérés: `naplok/F78_meres.md`. Az éles `lexikon/` érintetlen.
 
 ## Egyeztetett eltérés
-- A DT-F78c (a) a két héber TBESH-sor bekötését írta elő. Ez a DT-F42a (licenc) miatt nem történt meg; a felhasználó a negyedik utat választotta: az ISTENTISZT-001 héber 1. szerepe a meglévő BDB-sorokra hivatkozik. Új adatsor és `jeloltek.tsv`-sor nincs.
+- A DT82 (a) a két héber TBESH-sor bekötését írta elő. Ez a DT-F42a (licenc) miatt nem történt meg; a felhasználó a negyedik utat választotta: az ISTENTISZT-001 héber 1. szerepe a meglévő BDB-sorokra hivatkozik. Új adatsor és `jeloltek.tsv`-sor nincs.
 
 ## Nyitott
-- **DT-F78d** 🟡: a tábla héber 1. sorának forrás-oszlopa (TBESH) a DT-F42a után (javaslat: forrás → BDB, állapot marad `adatosítva`). Nem blokkolja a #23 M1-et és a #9-et.
+- **DT83** 🟡: a tábla héber 1. sorának forrás-oszlopa (TBESH) a DT-F42a után (javaslat: forrás → BDB, állapot marad `adatosítva`). Nem blokkolja a #23 M1-et és a #9-et.
 - **N-F78a**: a próba-törzscikk az éles lexikonból készül (nulla-diff nem áll) — #36, #11.
 - A TEREMT-002 héber 1–2. szerepe `adatosítva, nincs bekötve`: a #9-nek a BDB-t kell bekötnie.
 

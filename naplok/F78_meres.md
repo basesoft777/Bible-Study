@@ -71,7 +71,7 @@ A forrásonkénti belső render **változatlan marad**; csak a 2. szakasz küls�
 
 - **S1.** A `_epit_szotar_alszakasz` kimenetét nem bontjuk szét, hanem a *meglévő forrás-alszakaszokat* (TBESG, Thayer, BDB, LSJ — már most önálló, jelentésszámos `####` blokkok) szerep alá csoportosítjuk: szerep-fejléc (`### 1. Alapjelentés — TBESG`) a nyelv szerinti sorrendben, alatta Strongonként a változatlan forrás-blokkok.
 - **S2.** A Strong-fejléc `lemma (kiejtés)` + TWOT + domén sorai a Strong-szintű összefoglalóba (a 10., 3. és 4. szerep sorai) kerülnek, a mai szövegük változatlanul, de a megfelelő szerep fejléce alatt is feltüntetve (referenciaként), nem kettőzve a szöveget [egyeztetendő: lásd lent].
-- **S3.** Az adat nélküli szerep (`nincs adatosítva`, `javaslat`, vagy az adott tokenhez nincs sor) **explicit üres blokk** (DT-F78a jelölésével), adatosítás és szöveg-kitöltés nélkül.
+- **S3.** Az adat nélküli szerep (`nincs adatosítva`, `javaslat`, vagy az adott tokenhez nincs sor) **explicit üres blokk** (DT80 jelölésével), adatosítás és szöveg-kitöltés nélkül.
 - **S4.** A 5., 7. (2/b) és 6. (3. szakasz) szerep a váz-blokkban **hivatkozásként** jelenik meg („l. 2/b”, „l. 3. szakasz”), nem mozgatjuk át; a kézi 2/b és a LXX-blokk érintetlen.
 - **S5.** A „Rokon szavak” külön alcsoport marad a váz végén (a szerepek után), belső szerkezete változatlan.
 
@@ -86,8 +86,8 @@ Ez a szűkítés a #36 `lexikon_general.py`-ra épülő munkáját nem zavarja (
 
 ### 7. Döntések (felhasználó, 2026-10-08, chat)
 
-- **DT-F78b:** szűkített hatókör (S1–S5). A TWOT-, domén- és kiejtés-sor a saját szerepe alá költözik (3., 4., 10.), nem marad a Strong-fejlécben hivatkozással (az S2 pont eredeti "referencia" változata így módosul).
-- **DT-F78a:** B változat: gépi `<!-- ÜRES-BLOKK: szerep | állapot -->` jelölő + látható zárójeles sor. Üres blokk csak a `nincs adatosítva` / `javaslat` állapotú szerepeknél; az `adatosítva` szerepnél (görög 5., 8., 9.) hivatkozás kell (S4), nem üres blokk.
+- **DT81:** szűkített hatókör (S1–S5). A TWOT-, domén- és kiejtés-sor a saját szerepe alá költözik (3., 4., 10.), nem marad a Strong-fejlécben hivatkozással (az S2 pont eredeti "referencia" változata így módosul).
+- **DT80:** B változat: gépi `<!-- ÜRES-BLOKK: szerep | állapot -->` jelölő + látható zárójeles sor. Üres blokk csak a `nincs adatosítva` / `javaslat` állapotú szerepeknél; az `adatosítva` szerepnél (görög 5., 8., 9.) hivatkozás kell (S4), nem üres blokk.
 
 ### 8. M1 – a mátrix-bővítés
 
@@ -98,12 +98,12 @@ Ez a szűkítés a #36 `lexikon_general.py`-ra épülő munkáját nem zavarja (
 - `_epit_szotar_alszakasz` → `_szotar_reszek` (Strong-szócikk szétbontva: fejléc/kiejtés, TWOT, domén, forrásblokkok). A régi egybeépített kimenet **bájtra azonos** maradt a refaktor után (az ISTENTISZT-001 `szocikkek` blokk a ts nélkül 19 451 = 19 451 karakter, egyezik), a rokon szavak (S5) ezt használják változatlanul.
 - `szerep_vaz()`: nyelv szerint (görög, héber), azon belül a tábla sorrendjében; a mindkét nyelven azonos (szerep, forrás, állapot) sorok (12–14.) a „Nyelvfüggetlen szerepek” alatt, egyszer.
 - A TWOT (héber 3.), a domén (4.) és a kiejtés (10.) a saját szerepe alatt áll; a forrásblokkok (`##### TBESG G1941 — …`) belső szövege változatlan, egy fejlécszinttel mélyebben.
-- Üres blokk (DT-F78a B): `<!-- ÜRES-BLOKK: szerep | állapot -->` + látható zárójeles sor. A `nincs adatosítva` / `javaslat` szerep mindig kapja; részadat (TWOT, kiejtés-lemma) esetén a sor kimondja, hogy csak hivatkozás/részadat áll.
+- Üres blokk (DT80 B): `<!-- ÜRES-BLOKK: szerep | állapot -->` + látható zárójeles sor. A `nincs adatosítva` / `javaslat` szerep mindig kapja; részadat (TWOT, kiejtés-lemma) esetén a sor kimondja, hogy csak hivatkozás/részadat áll.
 - S4 hivatkozás az `adatosítva` szerepeknél, ahol a tartalom máshol él: görög 5. (2/b, kézi), 6. és héber 6. (3. szakasz), görög 8. (nincs LSJ-sor a tokenekhez), görög 9. (az 1. szakasz UBS-jelentés oszlopa).
 - Szerephez nem rendelt szótár (`SZEREP_SZOTAR`) `ValueError`: nincs néma elhagyás. A licenc-állapot nem romlik (`tisztazatlan`: nem), a szerepmátrix projekt-adatként a blokk forrásai között szerepel.
 - `eszkozok/teszt_szerepmatrix.py`: 13 teszt zöld; `feladatok.py ellenoriz` 0 hiba; `ellenorzes/tesztek` 153 teszt zöld.
 
-**Értelmezői bővítés (jelzem, nem a DT-F78a betűje):** a héber 1. (TBESH) szerep a táblában `adatosítva`, de a `lexikon_hivatkozasok.tsv`-ben 0 TBESH-sor van. Itt nem hivatkozást, hanem jelölt üres blokkot ad a render (`ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve`), mert a hiányt elhallgatni a 3. szabályt sértené, hivatkozni pedig nincs hová. Ugyanez áll a TEREMT-002 héber 1–2. szerepére. Kérdés a felhasználónak: elfogadja-e ezt a harmadik állapotértéket, vagy a TBESH-sor állapota a táblában `nincs adatosítva`-ra javítandó (a `torzscikk` lefedettségi mátrixa is „TBESH”-t mutat a H7121/H8034 alatt, ami a jelenlegi adattal nem igaz).
+**Értelmezői bővítés (jelzem, nem a DT80 betűje):** a héber 1. (TBESH) szerep a táblában `adatosítva`, de a `lexikon_hivatkozasok.tsv`-ben 0 TBESH-sor van. Itt nem hivatkozást, hanem jelölt üres blokkot ad a render (`ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve`), mert a hiányt elhallgatni a 3. szabályt sértené, hivatkozni pedig nincs hová. Ugyanez áll a TEREMT-002 héber 1–2. szerepére. Kérdés a felhasználónak: elfogadja-e ezt a harmadik állapotértéket, vagy a TBESH-sor állapota a táblában `nincs adatosítva`-ra javítandó (a `torzscikk` lefedettségi mátrixa is „TBESH”-t mutat a H7121/H8034 alatt, ami a jelenlegi adattal nem igaz).
 
 ### 10. M3 – próbarender és töltöttség
 
@@ -115,13 +115,13 @@ Kimenet (csak `generalt_proba/`, az éles `lexikon/` változatlan, `git status` 
 
 | # | Szerep | ISTENTISZT-001 görög | ISTENTISZT-001 héber | TEREMT-002 héber |
 |---|---|---|---|---|
-| 1 | Alapjelentés | töltött (TBESG, 2 jelentés) | hivatkozás a meglévő BDB-sorokra (DT-F42a kiváltás, DT-F78d) | **üres** (adatosítva, nincs bekötve; a #9 a BDB-t köti be) |
+| 1 | Alapjelentés | töltött (TBESG, 2 jelentés) | hivatkozás a meglévő BDB-sorokra (DT-F42a kiváltás, DT83) | **üres** (adatosítva, nincs bekötve; a #9 a BDB-t köti be) |
 | 2 | Mélységi szócikk | töltött (Thayer) | töltött (BDB, 3 blokk) | **üres** (adatosítva, nincs bekötve) |
 | 3 | Teológiai szócikk | **üres** (nincs adatosítva) | részleges: TWOT-szám + üres blokk | részleges: TWOT-szám + üres blokk |
 | 4 | Jelentésszerkezet | töltött (SDGNT-domén) | töltött (SDBH-domén) | töltött (SDBH-domén) |
 | 5 | Tömör jelentés | hivatkozás (2/b, kézi) | **üres** (nincs adatosítva) | **üres** (nincs adatosítva) |
 | 6 | LXX-híd | hivatkozás (3. szakasz) | hivatkozás (3. szakasz) | hivatkozás (3. szakasz) |
-| 7 | Megfelelők | hivatkozás (2/b, kézi; DT-F78c 3.) | hivatkozás (2/b, kézi) | hivatkozás (2/b — a TEREMT-002 oldala még nincs, lógó) |
+| 7 | Megfelelők | hivatkozás (2/b, kézi; DT82 3.) | hivatkozás (2/b, kézi) | hivatkozás (2/b — a TEREMT-002 oldala még nincs, lógó) |
 | 8 | Nyelvi háttér | hivatkozás (nincs LSJ-sor a tokenhez) | **üres** (nincs adatosítva) | **üres** |
 | 9 | Versenkénti jelentés | hivatkozás (1. szakasz UBS-oszlop) | **üres** (nincs adatosítva) | **üres** |
 | 10 | Kiejtés | részleges: lemma (átírás) + üres blokk | részleges + üres blokk | részleges + üres blokk |
@@ -129,7 +129,7 @@ Kimenet (csak `generalt_proba/`, az éles `lexikon/` változatlan, `git status` 
 
 Összesítés: ISTENTISZT-001-en a görög szerepek közül 3 töltött (1., 2., 4.) és 4 hivatkozásos (5., 6., 8., 9.), a héberek közül 2 töltött (2., 4.) és 2 hivatkozásos (1., 6.); a többi explicit üres vagy részleges. A #64 mérés 7. szakaszának korlátja (a mérce hiánya a szerepmátrixra) ezzel megszűnik: a 2. szakasz a mátrix minden szerepét mutatja, a hiány látszik, kitöltetlen szerepen sehol nincs gyenge vagy asszociatív anyag. A mérce kiterjesztése (a TEREMT-002-nél a H8414/H0922 BDB-bekötés hiánya, `lexikon_hivatkozasok.tsv` 0 sor) a #9/#12b dolga marad.
 
-### 11. Javítókör a DT-F78c és az ellenőr után (2026-10-08)
+### 11. Javítókör a DT82 és az ellenőr után (2026-10-08)
 
 - **Állapotnév:** `adatosítva, nincs bekötve` (nem „nincs sor”), a szöveg a #9-re mutat (ISTENTISZT-001 héber 1. és TEREMT-002 héber 1–2. szerep; a próbafájlok újragenerálva).
 - **Token nélküli nyelv:** egy mondat + gépi `<!-- ÜRES-NYELV: gorog | nincs Strong-token -->` (a nyelv kódjával).
@@ -142,21 +142,21 @@ Kimenet (csak `generalt_proba/`, az éles `lexikon/` változatlan, `git status` 
 
 ### 12. Egyeztetett eltérés a briefhez (a zárójelentés bemenete)
 
-A brief hatóköre a DT-F78c (a) szerint kivételesen bővül: az ISTENTISZT-001-hez két héber TBESH-sor (H7121H „call by”, H8034 „name … the Name”) bekötése, jelölt-soron át, majd a `lexikon_hivatkozasok.tsv`-be; minden más bekötés a #9-é. Az `ir` mező ennek megfelelően kiegészült (`adat/jeloltek.tsv`, `adat/lexikon_hivatkozasok.tsv`).
+A brief hatóköre a DT82 (a) szerint kivételesen bővül: az ISTENTISZT-001-hez két héber TBESH-sor (H7121H „call by”, H8034 „name … the Name”) bekötése, jelölt-soron át, majd a `lexikon_hivatkozasok.tsv`-be; minden más bekötés a #9-é. Az `ir` mező ennek megfelelően kiegészült (`adat/jeloltek.tsv`, `adat/lexikon_hivatkozasok.tsv`).
 
 **A TBESH-bekötés NEM történt meg (két akadály); a felhasználó a negyedik utat választotta: l. a 13. szakaszt (a DT-F42a érvényben marad, a héber 1. szerep a meglévő BDB-sorokra hivatkozik).**
-1. **Ütközés a DT-F42a-val** (felhasználó, 2026-10-05, 🟢): a TBESH H7121 „részlet” sorát kifejezetten *törölni* kellett a `lexikon_hivatkozasok.tsv`-ből és a `forditasok.tsv`-ből, a lexikonoldal és a kézi 2/b szakasz BDB-alapra íródott át (Online Bible-eredetű szöveg kiváltása). A TBESH.txt 7. mezője („Meaning”) Online Bible-eredetű; a mostani kérés ezt a sort visszahozná (a H8034 TBESH-sora ugyanígy Online Bible-eredetű Meaning-szöveg). A DT-F33f ugyan `tisztazott`-ra emelte a licencet, de a DT-F42a a kiváltásról döntött. Nem tudom, hogy a felhasználó a DT-F78c (a) jóváhagyásakor ezt mérlegelte-e.
+1. **Ütközés a DT-F42a-val** (felhasználó, 2026-10-05, 🟢): a TBESH H7121 „részlet” sorát kifejezetten *törölni* kellett a `lexikon_hivatkozasok.tsv`-ből és a `forditasok.tsv`-ből, a lexikonoldal és a kézi 2/b szakasz BDB-alapra íródott át (Online Bible-eredetű szöveg kiváltása). A TBESH.txt 7. mezője („Meaning”) Online Bible-eredetű; a mostani kérés ezt a sort visszahozná (a H8034 TBESH-sora ugyanígy Online Bible-eredetű Meaning-szöveg). A DT-F33f ugyan `tisztazott`-ra emelte a licencet, de a DT-F42a a kiváltásról döntött. Nem tudom, hogy a felhasználó a DT82 (a) jóváhagyásakor ezt mérlegelte-e.
 2. **A `jeloltek.tsv` séma (SEMA 2.4):** a kulcs `id` + `igehely`, az `igehely` kötelező `IGEHELY` típus; szótárszócikknek nincs igehelye, így a jelölt-sor sémasértés nélkül nem írható. A precedens (F6.3, `f6_3_lexikon_hivatkozasok_toltes.py`) szótári sort jelölt nélkül, szó szerinti részsztring-ellenőrzéssel kötött be.
 
 Opciók a felhasználónak: **(1)** a bekötés a DT-F42a felülírásával, a `jeloltek.tsv` kihagyásával (döntés + indoklás a `DONTESEK.md`-ben, mint az F6.3-nál; a két sor a TBESH-ból szó szerinti kivonattal, `forditasok.tsv`-sor nélkül → „Fordítás függőben”); **(2)** a bekötés a #9-re marad, az ISTENTISZT-001 héber 1. szerepe `adatosítva, nincs bekötve` (a mai állapot), ami a #78 aranymintájánál látható hiány; **(3)** a héber 1. sor állapota `nincs adatosítva`-ra javul az adatrétegben. Javaslat: (2) vagy (1) a DT-F42a-döntés újranyitásával; a (3) az adatréteg külön lépése.
 
 ### 13. A negyedik út (felhasználó, 2026-10-08): DT-F42a érvényben, a TBESH-szöveg nem kerül vissza
 
-**Ág: köthető.** A héber 1. szerepnél (ISTENTISZT-001) a meglévő, közkincs BDB-sorokra hivatkozik a render: `BDB H7121` (2.c., 3. jelentés) és `BDB H8034` (részlet) a `lexikon_hivatkozasok.tsv`-ből, „meglévő BDB-sor (DT-F42a kiváltás)” megjegyzéssel, a 2. szerepnél álló szöveg felé mutatva. Új adatsor és `jeloltek.tsv`-sor nincs; a `szotar_szerepek.tsv` forrás-oszlopa (TBESH) érintetlen (a módosítás külön döntés: DT-F78d). A Strong_szotar-ra nem volt szükség (a BDB-sorok megvannak; a Strong_szotar CC BY 4.0, de új forrást vezetne a szerepbe — opció a DT-F78d 3. pontjában), SDBH/KJV/BSB nem használva.
+**Ág: köthető.** A héber 1. szerepnél (ISTENTISZT-001) a meglévő, közkincs BDB-sorokra hivatkozik a render: `BDB H7121` (2.c., 3. jelentés) és `BDB H8034` (részlet) a `lexikon_hivatkozasok.tsv`-ből, „meglévő BDB-sor (DT-F42a kiváltás)” megjegyzéssel, a 2. szerepnél álló szöveg felé mutatva. Új adatsor és `jeloltek.tsv`-sor nincs; a `szotar_szerepek.tsv` forrás-oszlopa (TBESH) érintetlen (a módosítás külön döntés: DT83). A Strong_szotar-ra nem volt szükség (a BDB-sorok megvannak; a Strong_szotar CC BY 4.0, de új forrást vezetne a szerepbe — opció a DT83 3. pontjában), SDBH/KJV/BSB nem használva.
 
 `scope=adat/lexikon_hivatkozasok.tsv (szotar=BDB, strong=H7121,H8034), split('	') | forras=manual (olvasás, a render saját függvényei) | ts=2026-10-08`
 
-Hatás: az `adatosítva, nincs bekötve` állapot az ISTENTISZT-001-nél nem jelenik meg; a TEREMT-002 héber 1–2. szerepén igen (nincs BDB-sora: a #9-nek **a BDB-t kell bekötnie, nem a TBESH-t**, l. DT-F78d).
+Hatás: az `adatosítva, nincs bekötve` állapot az ISTENTISZT-001-nél nem jelenik meg; a TEREMT-002 héber 1–2. szerepén igen (nincs BDB-sora: a #9-nek **a BDB-t kell bekötnie, nem a TBESH-t**, l. DT83).
 
 ### 14. Állapot
 
