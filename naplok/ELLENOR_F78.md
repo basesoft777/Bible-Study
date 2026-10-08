@@ -52,7 +52,13 @@ A felhasználó (2026-10-08) lezárta a DT83-at (a TBESH licence tisztázott, DT
 2. `F78_meres.md` 118. sor: „a #9 a BDB-t köti be” → „a #9 köti be” (a TBESH-t).
 3. `teszt_szerepmatrix.py` megjegyzés: a #9 a TBESH-t köti be.
 4. Zárójelentés és brief (`lezarva_osszegzes`, `kovetkezo`): 3 ellenőri kör, DT83 lezárva, nincs nyitott tétel a DT83-ból (N-F78a marad); a `pr:` mező 254 marad.
-5. Teszt: a H7121 mutató a `**H7121**` tokenhez kötve.
-6. Teszt: a „2. szerep BDB változatlan” ellenőrzés a `#### 2.` blokkra és a „3. jelentés” címre is fut.
+5. DONTESEK.md: a DT83 opció- és javaslat-oszlopának elavult állításai elavultként jelölve; a DT82 a licenc-tisztázással kiegészítve.
+6. Teszt: a H7121 mutató a `**H7121**` tokenhez kötve; a „2. szerep BDB változatlan” ellenőrzés a `#### 2.` blokkra és a „3. jelentés” címre is fut.
 
 A 2. kör fenti szövege változatlan (historikus). A javítás után az orkesztrátor új független ellenőrt futtat.
+
+## 4. kör — `d776994` (ág: `claude/f78-dt83-lezaras`, új PR; a #254 már a main-ben)
+
+*`fuggetlen-ellenor`, `manual`. Mind a hat előző eltérés lezárult (E5 0; a DT82/DT83 számokkal, új helyőrző nélkül; a 13. címsor megmaradt; a TBESH-szöveg nem került vissza; az éles `lexikon/` és az `adat/` érintetlen; a `szotar_szerepek.tsv` héber 1. sora változatlan).*
+
+Új, alacsony súlyú észrevételek: (1) a 3. kör tétellistája nem fedte a DT83 oszlopainak javítását és az ág nevét — pótolva fent; (2) a DT82 sor 6 cellás a 8 oszlopos fejléc alatt, escape nélküli `|` van benne — a main-en is így volt, külön javítandó (nem tartalmi); (3) `F78_meres.md` 12. szakasz elavult mondatai a 14. szakasz címével felülírtak; (4) a „kikerült a szövegből (DT-F42a)” mondat a `tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md:216`-ban és az éles lexikonban a felhasználó döntése (átfogalmazandó-e); (5) látens kockázat: ha a #9 csak az egyik héber tokenhez köt TBESH-sort, a `_token_ures_blokkok` nem fut a másikra (`lexikon_general.py:867–874`) — a #9 briefjébe; (6) a feladattérkép (gépi) a régi DT83-címet mutatja, a main Action frissíti.
