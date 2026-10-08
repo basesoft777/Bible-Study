@@ -192,8 +192,8 @@ előtti 2. szakaszt viseli, a mai generátor attól eltér, és befagyasztott (D
 
 | Elem | Érték |
 |---|---|
-| `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` | 331 sor, 106 blokk, 16 `【NAPLO`, 7 `RÉS` |
-| `tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md` | 276 sor, 46 blokk, 1 `【NAPLO`, 2 `RÉS` |
+| `tematikus_lezart/Bun_kovetkezmenyeinek_gyuruzese_tematikus.md` | 331 sor, 106 blokk, 16 `【NAPLO`; 7 `RÉS-KEZDET` jelölő-előfordulás, 5 különböző rés (`kivonat`, `2b`, `miert_fontos`, `ertelmezes`, `modszertan` ×3); `alatamasztas` jelölő nincs |
+| `tematikus_lezart/naplok/Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md` | 276 sor, 46 blokk, 1 `【NAPLO`; 2 `RÉS-KEZDET` jelölő-előfordulás, 1 rés (`minosites` ×2) |
 | `motivumok/HAMART-001.md` | 23 sor, 7 blokk, 1 `【NAPLO` |
 | `lexikon/HAMART-001_TUDOMANYOS.md` (éles) | 1275 sor, 116 621 bájt, 10 `GENERÁLT-KEZDET`, 3 `【NAPLO`, 52 lábjegyzet-definíció |
 | adat | `elofordulasok` 52, `jeloltek` 52, `kapcsolatok` 0, `res_forras` 7 (`alatamasztas`: `adat`), `auditok` 0; ⭐ csoport 4 |
@@ -203,7 +203,8 @@ előtti 2. szakaszt viseli, a mai generátor attól eltér, és befagyasztott (D
 commitja után; a HAMART-001 összes `general.py` célja (`lexikon`, `naplo`, `index`, `nyitott`,
 `study`, `naplok`) — a `torzscikk` nélkül (N-F78a). **Elvárt: üres diff** (N0), `--csere` nélkül.
 Amikor a HAMART-001 később migrál, a saját migrációja az ISTENTISZT-001 kategóriáival mérődik
-(a 7 `RÉS`-ből a `alatamasztas` már ma `adat`).
+(a két fájl 9 `RÉS-KEZDET` jelölője 6 különböző rést fed; a `res_forras.tsv` 7 HAMART-001 sora
+ettől külön adat: a hetedik, az `alatamasztas` sor `forras=adat`, jelölő nélkül).
 
 ## 7. A szétválasztás (DT28)
 
