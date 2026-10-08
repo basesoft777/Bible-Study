@@ -135,7 +135,7 @@ Az ellenőr 5 eltérést talált; adathibát nem. A számokat Grep-számláláss
 
 | # | eltérés | kezelés |
 |---|---|---|
-| 1 | prófétai kötegméret: a brief 22.1.3 és a DT-F21g (3) szerint 5 vers, az Ézs és a Jer 10 verses kötegekkel futott | **DT-F22f (b)** (felhasználó, 2026-10-08): a következő prófétai könyvtől 5 verses kötegek; az Ézs és a Jer futása marad (kár nem látszik: minden sor `end_turn`, végleges kapuhiba 0). Előfeltétel: `api_koteg.py --koteg-meret`, a plafon újramérése |
+| 1 | prófétai kötegméret: a brief 22.1.3 és a DT-F21g (3) szerint 5 vers, az Ézs és a Jer 10 verses kötegekkel futott | **DT-F22f (a)** (felhasználó, 2026-10-08, a korábbi (b) helyett): a 10 verses köteg utólag elfogadva, a további prófétai könyveknél is 10 vers/köteg (kár nem látszik: minden sor `end_turn`, végleges kapuhiba 0). Az `--koteg-meret` és a plafon újramérése tárgytalan |
 | 2 | az F77.11 a 145 Ézs-futásnapló-sor `futas` mezőjét átírta, döntés nélkül | **DT-F22g** (felhasználó, 2026-10-08): utólag elfogadva; az adat ép, csak ez a mező változott |
 | 3 | elavult Ézs-jelentés (6. tábla 2., 3., 8. sor, 5. pont) | javítva |
 | 4 | ág és F77-brief: az F77-brief fejléce nem rögzíti az F77.11-et | nyitva (a #77 saját fejléce, a merge előtt frissítendő); az Ézs-jelentés 6/2 állítása javítva |
