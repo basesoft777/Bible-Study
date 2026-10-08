@@ -10,7 +10,7 @@ allapot: nem_indult
 ad: a tervdokumentumok (ATALAKITASI_TERV, ADATVAGYON_TERV, MUNKATERV, VIBE_GUIDE) hatályos állapotának átvezetése a repó döntéseire és státuszaira, és fordítva: a terv minden feladat-, lépcső- és döntés-eleme feladatban, briefben vagy DONTESEK-tételben (naplóban nem maradhat); ismétlődő
 kovetkezo: "ismétlődő; a brief 2. pontja szerinti eseményeknél indul (viszonyítási pont: a 2. futás, PR #219 mergelve 2026-10-06, DT49 alkalmazva; napló: naplok/F52_TERV_SZINKRON_naplo.md)"
 olvas: [ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, FELADATOK.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, CLAUDE.md, MUNKAMENET.md]
-ir: [ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, ATALAKITASI_TERV.md.md, CLAUDE.md, naplok/F52_TERV_SZINKRON_naplo.md, naplok/ELLENOR_TERV_SZINKRON.md, DONTESEK.md, beerkezo/]
+ir: [ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, ATALAKITASI_TERV.md.md, CLAUDE.md, naplok/F52_TERV_SZINKRON_naplo.md, naplok/ELLENOR_TERV_SZINKRON.md, DONTESEK.md, "beerkezo/TERV_SZINKRON_*.md"]
 fugg: []
 helyi_gep: nem
 ---
@@ -97,7 +97,7 @@ Ha egyszerre több esemény áll fenn, egy futás kezeli mindet.
    - **átvezetés**, ha gépies és a saját `ir`-ed alá esik (terv-jelölés „elavult”/
      „feltételes”, státusz, hivatkozás);
    - **`DONTESEK.md`-tétel** (`DONTES_KERDES_SABLON.md`), ha döntést igényel;
-   - **befogadási csonk-javaslat** a `beerkezo/` mappába (a `/befogad` fogadja be, a
+   - **befogadási csonk-javaslat** a `beerkezo/` mappába, `TERV_SZINKRON_<kód>.md` néven (a szűk név miatt nem ütközik más feladat `beerkezo/`-írásával) (a `/befogad` fogadja be, a
      felhasználó jóváhagyásával), ha új feladat kell;
    - **⛔**, ha a kettő közül nem dönthető el, melyik.
    A naplóban a rés a kimenete hivatkozásával áll (DT-tétel, csonk, ⛔); a „Nyitott a
