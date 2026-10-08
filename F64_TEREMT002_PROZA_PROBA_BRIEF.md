@@ -99,3 +99,4 @@ Jelentés: `naplok/TEREMT002_PROZA_PROBA_meres.md`.
 | v1 | 2026-10-05 | A #12a önálló számot kap (#64); a #12 (most #12b) csonkja és sora változatlan. | DT-F32a, DT-F26b, befogadás |
 | v1 | 2026-10-05 | A #23 M0-tól való függés számmal nem rögzíthető (a #23 egy része), ezért a `kovetkezo` mező és az M0 1. pontja hordozza. | befogadás (az F23 v1.2 mintája) |
 | v1 | 2026-10-05 | A mérce a `sablonok/6_PaRDeS_lexikon_oldal_sablon.md` Minőségi kapuja (L1, L3–L6); az L2/L7 rés és az alkalmazhatóság a prózára az M0 ⛔ pontján dől el. | befogadás (független átnézés javítása) |
+| v1.1 | 2026-10-08 | Az L2/L7 rés kitöltve: L2 = „Napló-jelölés kötelező” (`4c4003b`), L7 = PaRDeS-rétegfegyelem (`f51851d`, az L6 (g) pontja); a #64 mércéje L1–L7 + a DT2 két rés-szabálya. | DT-F64a (2), felhasználó (chat) |
