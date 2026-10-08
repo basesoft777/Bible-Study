@@ -4,7 +4,7 @@
 
 **Eredmény.** A Károli Jób 38–42 versszáma 38/38/19/34/17, az MT-é 41/30/32/26/17, összesen mindkettő 146. A briefben szereplő „40 = 28, 41 = 25” téves volt. Mind a 146 vers 1:1, 1:2 / 2:1 eset nincs. A fejezethatár négy helyen tolódik (Károli 39:1–3 = MT 38:39–41; 39:34–38 = 40:1–5; 40:1–19 = 40:6–24; 41:1–34 = 40:25–41:26). A Jób 42:2–9 hiányának gyanúja nem igazolódott. A `TAHOT_kivonat` Jób 40-es kulcsai MT-számozásúak, a Jób 41-hez 0 sora van: ez kulcsgenerátor-hiba, a héber szöveg a Macula-ban megvan.
 
-**Jóváhagyás** (felhasználó, chat, 2026.10.08): a megfeleltetés és a DT-F83a (1) opciója — nincs összevonás-támogatás, kézi tábla. Végrehajtva: `f22/versmegfeleltetes_kezi.tsv` +19 sor (Károli 40:n → TAHOT 40:(n+5)), jóváhagyási sor a `naplok/F22_versbeosztas_jovahagyas.md`-ben, DT-F83a ✅.
+**Jóváhagyás** (felhasználó, chat, 2026.10.08): a megfeleltetés és a DT85 (1) opciója — nincs összevonás-támogatás, kézi tábla. Végrehajtva: `f22/versmegfeleltetes_kezi.tsv` +19 sor (Károli 40:n → TAHOT 40:(n+5)), jóváhagyási sor a `naplok/F22_versbeosztas_jovahagyas.md`-ben, DT85 ✅.
 
 **Egyeztetett eltérés.** Az 1. ellenőrzés forrása a `Macula_heber_Job.tsv` volt (letöltés nélkül). Az N-F41g külön tétel maradt.
 

@@ -7,7 +7,7 @@ fazis: 1
 modell: opus
 allapot: lezarva
 pr: 260
-lezarva_osszegzes: "Jób 38–42 megfeleltetés jóváhagyva (146 × 1:1, 4 fejezethatár-eltolás), kézi tábla +19 sor, DT-F83a ✅; a Jób 41 a TAHOT-kulcsgenerátor javításáig blokkolt (N-F83a javaslat), PR #260 (10.08)"
+lezarva_osszegzes: "Jób 38–42 megfeleltetés jóváhagyva (146 × 1:1, 4 fejezethatár-eltolás), kézi tábla +19 sor, DT85 ✅; a Jób 41 a TAHOT-kulcsgenerátor javításáig blokkolt (N-F83a javaslat), PR #260 (10.08)"
 ag: claude/f83-job-versbeosztas
 ad: "Jóváhagyott Jób 38–42 versmegfeleltetés (1:2 / 2:1 esetekkel), a három ellenőrzés eredményével; a Jób bekerülhet a VERSBEOSZTAS_JOVAHAGYOTT-ba"
 kovetkezo: "merge a felhasználótól; nyitott: N-F83a (kulcsgenerátor Jób 40–41) felvétele /befogad-dal; zárás: naplok/F83_zaras.md"

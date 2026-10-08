@@ -114,7 +114,7 @@ Az N-F41g (`NYITOTT_FELADATOK.md`) a `BSB_Strongs.tsv` Jób 38–41 `Igehely`-é
 
 ### 5.3 Kétes helyek
 
-- **Nincs** olyan Károli-vers, amely két MT-vers tartalmát hordozná, és olyan MT-vers sem, amely két Károli-versre oszlana: a négy fejezethatár-eltolás (38/39, 39/40, 40/41 kétszer) tiszta versszám-átvitel. Ezért a Jóbnál **nem kell 1:2 / 2:1 versösszevonás** — a DT-F83a javaslata ezen alapul.
+- **Nincs** olyan Károli-vers, amely két MT-vers tartalmát hordozná, és olyan MT-vers sem, amely két Károli-versre oszlana: a négy fejezethatár-eltolás (38/39, 39/40, 40/41 kétszer) tiszta versszám-átvitel. Ezért a Jóbnál **nem kell 1:2 / 2:1 versösszevonás** — a DT85 javaslata ezen alapul.
 - A K 39:36 („És szóla Jób az Úrnak, és monda”) Strong-szinten a MT 40:3 mellett a 42:1-gyel is azonos (formula); a sorrend egyértelművé teszi (MT 40:3).
 - A K 40:1 / MT 40:6 bevezető formula az MT 40:1-gyel is hasonló (Jaccard 0,62); a „forgószélből” / „from a tempest” csak az MT 40:6-ban áll.
 
@@ -132,11 +132,11 @@ A F22 futtató az eredeti verset a `TAHOT_kivonat` kulcsán keresi (`eredeti` = 
 
 1. **Károli 38, 39, 42** (93 vers): identitás a TAHOT-kulccsal — kézi sor nem kell.
 2. **Károli 40:1–19** → TAHOT-kulcs **40:6–24** (`eltolt`, 19 sor a `f22/versmegfeleltetes_kezi.tsv`-be; a detektor 8 hibás Jób 40-es `nincs_eredeti` sorát kiváltja).
-3. **Károli 41:1–34**: a `TAHOT_kivonat`-ban nincs adat. Ez **nem versbeosztás-kérdés, hanem adatforrás-kérdés**, és a kézi táblával nem oldható meg. Lehetőségek (döntést igényel, a DT-F83a mellett): (a) a kulcsgenerátor `DONTES_FELULBIRALAS[("Job", (40, 41))]` javítása (a hibás 28/25 indoklás helyett `ELSODLEGES` a 41-re), és a 332 sor visszakerül a `TAHOT_kivonat`-ba Jób 41:1–34 kulccsal — ez a `konkordancia/` táblát írja, külön feladat; (b) a 41. fejezet eredetije a Macula-ból (MT 40:25–41:26) — a futtató forrását érinti, külön feladat; (c) a Jób 41 a #22-ben `kezi` marad, amíg (a) vagy (b) el nem készül. Javaslat: (a), mert a nyers adat megvan és a Strong-egyezés igazolja.
+3. **Károli 41:1–34**: a `TAHOT_kivonat`-ban nincs adat. Ez **nem versbeosztás-kérdés, hanem adatforrás-kérdés**, és a kézi táblával nem oldható meg. Lehetőségek (döntést igényel, a DT85 mellett): (a) a kulcsgenerátor `DONTES_FELULBIRALAS[("Job", (40, 41))]` javítása (a hibás 28/25 indoklás helyett `ELSODLEGES` a 41-re), és a 332 sor visszakerül a `TAHOT_kivonat`-ba Jób 41:1–34 kulccsal — ez a `konkordancia/` táblát írja, külön feladat; (b) a 41. fejezet eredetije a Macula-ból (MT 40:25–41:26) — a futtató forrását érinti, külön feladat; (c) a Jób 41 a #22-ben `kezi` marad, amíg (a) vagy (b) el nem készül. Javaslat: (a), mert a nyers adat megvan és a Strong-egyezés igazolja.
 
 ## 6. Jóváhagyás és végrehajtás (F83.5–F83.7)
 
-**Jóváhagyás:** a felhasználó (chat, 2026.10.08, „1 igen 2 igen”, az orkesztrátoron át) elfogadta (a) az 5. szakasz megfeleltetési javaslatát és (b) a DT-F83a (1) opcióját: 1:2 / 2:1 összevonás-támogatás nem kell, a megfeleltetés kézi táblával megy.
+**Jóváhagyás:** a felhasználó (chat, 2026.10.08, „1 igen 2 igen”, az orkesztrátoron át) elfogadta (a) az 5. szakasz megfeleltetési javaslatát és (b) a DT85 (1) opcióját: 1:2 / 2:1 összevonás-támogatás nem kell, a megfeleltetés kézi táblával megy.
 
 ### 6.1 Mi került a `f22/versmegfeleltetes_kezi.tsv`-be és mi nem (F83.5)
 
