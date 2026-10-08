@@ -322,10 +322,10 @@ def proveniencia_sor(konyv, gyoker=None):
         forras.append('f22/versosszevonas.tsv')
     forras += ['konkordancia/TAHOT_kivonat.tsv', 'konkordancia/Karoli_1908.tsv']
     if csak_sonnet:
-        return ('# proveniencia: scope=manual | forras=%s | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; a '
+        return ('# proveniencia: scope=manual | forras=%s | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; '
                 '%s-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link '
                 '`alacsony` (egy modell, nincs egyezés); a strong a TAHOT-ból, modell nem írja | előállítás: '
-                'eszkozok/karoli_strong/egyesit.py' % (', '.join(forras), 'API (Batch)' if api_futas(konyv, gyoker) else 'subagent'))
+                'eszkozok/karoli_strong/egyesit.py' % (', '.join(forras), 'az API (Batch)' if api_futas(konyv, gyoker) else 'a subagent'))
     return ('# proveniencia: scope=manual | forras=%s | ts=%s (a C futásnapló utolsó hívása%s; az újraépítés '
             'így bájtra azonos) | modell-kimenet, javaslat: nem lekérdezés-eredmény; a bizonyossag '
             'nem "ellenőrizve"; a strong a TAHOT-ból, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py'

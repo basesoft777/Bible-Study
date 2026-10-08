@@ -7,7 +7,7 @@
 - **Versbeosztás-jóváhagyás (2026.10.08)**, a jóváhagyási naplóban (`naplok/F22_versbeosztas_jovahagyas.md`): a detektor az Ézs 9 és 64 fejezetben hibás volt, kézi javítás `f22/versmegfeleltetes_kezi.tsv`-ben, két 2:1 beolvasztás (`f22/versosszevonas.tsv`): a TAHOT Ézs 9:20 a Károli 9:20 15–34. szava, a TAHOT 64:2 a Károli 64:1 12–31. szava. Ellenőrzés a jóváhagyáskor: nyers 1 292 vers / 25 222 token = leképezett 1 290 vers / 25 180 token + 42 beolvasztott token.
 - **Minta:** `f22/minta_Ezs.tsv`, 1 290 vers, 129 köteg (10 vers/köteg).
 - **Batchek** (`f22/api_termeles/batchek.tsv`): 1. kör `msgbatch_01HEKmVhAaRF9zmDkMkSeFrH`, 129 kérés (2026-10-08T09:13Z); javító kör `msgbatch_01GF4UqJE45mzqsWhHcqk4pN`, 16 kérés (09:32Z).
-- **Futásnapló** (`f22/api_termeles/futasnaplo.tsv`, 145 sor): modell `claude-sonnet-5-5`, `adaptive,effort=high`, minden sor `finish_reason=end_turn`, `prompt_sha256_12` minden soron ugyanaz (`84f12ca7aafb`, ugyanaz az érték, mint a korábbi futásnaplóban, `f22/futasnaplo.tsv`). A `prompt_ir` minden prompt előtt ellenőrzi a `prompt_v3.sha256`-ot (K3).
+- **Futásnapló** (`f22/api_termeles/futasnaplo.tsv`, 145 sor): modell `claude-sonnet-5-5`, `adaptive,effort=high`, minden sor `finish_reason=end_turn`, `prompt_sha256_12` minden soron ugyanaz (`84f12ca7aafb`, ugyanaz az érték, mint a korábbi futásnaplóban, `f22/futasnaplo.tsv`). Az `api_koteg.prompt_szoveg` minden prompt előtt ellenőrzi a `prompt_v3.sha256`-ot (`sonnet_koteg.prompt_hash_hiba`, K3); az `f21p/` diffje üres.
 
 | kör | kérés | kapun átment | kapun bukott (vers) | költség (USD) | bemenet / kimenet token |
 |---|---|---|---|---|---|
@@ -17,7 +17,7 @@
 
 A javító körbe került kötegek: 14, 21, 27, 33, 42, 45, 47, 54, 60, 62, 68, 73, 74, 81, 93, 94. A költség `batch_ar_szamolt` (a válasz tokenszámaiból, batch-árral); a 110 USD-s plafonból (F77.8) 7,08 fogyott. Előfizetési keret (`/usage`) nem fogyott; a K4 `/usage`-sora ezért itt az API-költség.
 
-## 2. Szkriptkimenet
+## 1a. Szkriptkimenet
 
 ```
 Sonnet: 129 köteg, 1290 vers; kapuhiba első próbára 2.2% (29/1290); végleg 0.0% (0/1290)
@@ -140,3 +140,20 @@ A futás commitjai (`d288e08` … `4d2f292`) a #77 ágán (`claude/wonderful-ein
 - **Független szúrópróba** (22.6): `python eszkozok/karoli_strong/zart_osszevet.py --konyv Ézs --bemenet <repón kívüli fájl>`, az összesítés ide másolandó. Mintát a felhasználó választ (a Zsoltárnál DT59: egy szakasz, 10 vers).
 - Független ellenőr: `naplok/ELLENOR_F22_Ezs.md`.
 - A Jeremiás (DT57) indítása a felhasználó döntése (⛔ 2.), az Ézs szúrópróbája után.
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_Ezs.md`)
+
+Az ellenőr 8 eltérést talált. Mindegyik dokumentációs, eljárási vagy formai; adathibát nem talált. A számokat Grep-számlálással és `lekerdez.py`-jal igazolta, az `--ellenoriz`-t nem futtathatta (a 8 könyvre ez a menetben lefutott, l. 1a).
+
+| # | eltérés | kezelés |
+|---|---|---|
+| 1 | K9: az Ézs nincs az `adat/datasetek.tsv`-ben és a SEMA 2.20-ban | javítva: datasetek (8 sor), SEMA 2.20 (jóváhagyott lista, kézi megfeleltetés, 2:1 beolvasztás, csak-Sonnet könyvek) |
+| 2 | az ág (F77 + F22.Ézs egy ágon) | a felhasználó döntése (2026.10.08): az Ézs-munka egy commitba összevonva, az F77.1–F77.10 után |
+| 3 | a DT-F77 (a) könyvméretű plafonja nem valósult meg (110 USD maradt) | nyitva; a Jeremiás előtt a `PLAFON_USD` a könyvre méretezendő |
+| 4 | proveniencia-sor: „a API (Batch)-futásnak” | javítva az `egyesit.py`-ban; az Ézs táblái újraépítve, csak az 1. sor változott; a régi könyvek bájtra azonosak |
+| 5 | K3 leírása a jelentésben | javítva (1. pont) |
+| 6 | a briefből hiányzik a v2.10 sor | javítva |
+| 7 | a brief `ir` mezőjéből hiányzik az `f22/api_termeles/*` | javítva |
+| 8 | a futásnapló `futas` mezője éles futáson is `vakproba/high/Ezs` | nyitva: a napló nem íródik át; az `api_koteg.py` címkéje a Jeremiás előtt javítandó |
+
+A dupla „## 2.” címsor javítva (1a). Az üres `f22/api_termeles/javitando.txt` az eszköz állapotfájlja, marad.
