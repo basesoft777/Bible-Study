@@ -862,13 +862,13 @@ A napló gépi alakja a `jeloltek.tsv` (SEMA 2.4) — a tényleges munka a 8 ret
 - [ ] Code-brief az 1.1 ellenőrzésre (bemenet: grep a Genezis-igehelyes tematikus táblákra; kimenet: eltéréslista) — a brief megvan: #65 KAROLI\_ELLENORZES (nem_indult)
 - [ ] 1.2 variancia-térkép ugyanabban a futásban
 - [ ] napló-adatosítás brief (a 12/24/25/11 alapja) — a 8 retroaktív motívumra: #63 JELOLTEK\_RETRO (nem_indult)
-- [x] `eszkozok/sqlite_epit.py` séma a 26 pontból — feladat: #79 SQLITE\_EPIT (csonk, DT-F52f (12))
+- [ ] `eszkozok/sqlite_epit.py` séma a 26 pontból — brief kell: #79 SQLITE\_EPIT (csonk, DT-F52f (12))
 - [ ] tárhely-döntés (cPanel PHP vagy Python / Netlify) a mért `pardes.db` méret után
 
 * [ ] MCP-szerver Code-ban (FastMCP, a `sqlite_epit.py` után; a 12. szakasz eszköznevei) — feltételes (DT-M7); előbb a #61 LEKERDEZ\_NAPLO
 * [ ] SZPA-audit (C üzemmód) a tanulmányok prózáján és a BDB-fordításon — **feltételes** (DT-F52f (13)): előbb a `SZPA_FORDITOI_PROFIL_prompt.md` a repóba, a befogadás a 6. lépcsőben
 * [x] openbible.info felvétele a `datasetek.tsv`-be, F44 licencellenőrzés — kész (#44 ✅, PR #205): 4 sor `hianyzik` + „JELÖLT, NEM IMPORTÁLT” (DT33); az import külön feladat (DT34)
-* [x] BDB javító menet a teljes Károli–Strong után (Károli-oszlop minden szócikkhez) — feladat: #80 BDB\_KAROLI\_POTLAS (adatblokk-pótlás újrafordítás nélkül, DT-F52f (15))
+* [ ] BDB javító menet a teljes Károli–Strong után (Károli-oszlop minden szócikkhez) — brief kell: #80 BDB\_KAROLI\_POTLAS (csonk) (adatblokk-pótlás újrafordítás nélkül, DT-F52f (15))
 * [x] a három kézi 0. lépés (#43 lxx\_bridge.tsv + LICENC.md; #44 karoli\_bible\_hu\_LICENC.txt, openbible\_crossrefs\_LICENC.txt) — bent (F43.0, F44.0, F44.1); a #43 és a #44 kész
 * [x] ellenőrizni a #38 naplójában, hogy az M0 5. pont (BDB-gyökcsoport-felmérés) lefutott-e — lefutott (`naplok/BDB_FORDITAS_gyokcsoportok.tsv`, DT52 (c), N53) — a 6. adag menetének elején fut
 * [ ] terminologia.tsv a #38 további adagjainak (adagok közötti következetesség, MCP nélkül is)

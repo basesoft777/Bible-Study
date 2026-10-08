@@ -38,7 +38,8 @@ Nyelv: a jelentés magyarul. Igehely-formátum: `1Móz 3:16`. Minden lekérdezé
 *(proveniencia: scope=… | forras=… | ts=…)*
 ## Új az előző jelentés óta
 ## Összefoglaló (kategóriánként darabszám)
-## 1. Átvezetetlen döntés  ·  2. Ütköző azonosítók  ·  3. Kettős szóhasználat  ·  4. Régóta álló továbbvivő  ·  5. Tervelem feladat nélkül
+## 1. Átvezetetlen döntés  ·  2. Ütköző azonosítók  ·  3. Kettős szóhasználat  ·  4. Régóta álló továbbvivő
+## 5. Tervelem feladat nélkül
 ## E25 (gépi réteg) — a futtat.py kimenete
 ## Amit nem vizsgáltam
 ```
