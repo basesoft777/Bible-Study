@@ -1,4 +1,4 @@
-ELTÉRÉS: 3 tétel (2. kör; az 1. kör 10 tétele javítva)
+ELTÉRÉS: 7 tétel (3. kör; a 2. kör Ú1–Ú3 részben javítva)
 
 # Független ellenőrzés — F64_TEREMT002_PROZA_PROBA_BRIEF.md · 0962e4f..47fd7d8 (`git merge-base origin/main HEAD`..HEAD)
 
@@ -116,3 +116,31 @@ A három NEM ELLENŐRIZHETŐ parancs, az orkesztrátor futtatásában (2026-10-0
 3. Alacsony (Ú3): a mérés :65, :109 és :77 sora (és a korábbi :37, :9) az F64.15 előtti prózát írja le.
 
 **Összegzés:** az 1. kör mind a 10 eltérése javult, saját lekérdezéssel és olvasással ellenőrizve. A javítás három új eltérést hozott, a legsúlyosabb az Ú1: a próza a Vitatott pontokon kívül, implicit módon továbbra is az egyik olvasat mellett dönt.
+
+---
+
+## 3. kör: független ellenőrzés, `5c6512f..HEAD` (F64.18 `c3879dd`, F64.19 `70824cb`)
+
+*Az ellenőr szövege; fájlírási jog híján az orkesztrátor fűzte hozzá. Első sora: `ELTÉRÉS: 7 tétel`.*
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| Ú1 Peshat | ELTÉRÉS | `motivumok/TEREMT-002.md:101` | Feltétel nélkül áll: „A vers nem mond el semmilyen eseményt, amely ezt az állapotot előidézte; állapotot rögzít”. A fájl maga a kiinduló-állapot olvasat érvei közé sorolja (:134), és a :138 szerint a הָיְתָה „vala”/„lett” kérdése nyitott. A NAPLO (:140) szerint a Peshat olvasatfüggő mondatai feltételes jelölést kaptak, ez a mondat mégsem kapott. Indok: teljes fájl olvasása. |
+| Ú1 Nyitott kérdések 8. | ELTÉRÉS | `motivumok/TEREMT-002.md:173` | Feltétel nélkül áll: „a föld visszarendeződését a teremtés előtti állapotba”. A „teremtés előtti” jelző a kiinduló-állapot olvasatot előfeltételezi: a restitúciós olvasat szerint az 1Móz 1:2 állapota az 1:1 utáni ítélet nyoma. |
+| Ú1 Remez, új állítás | ELTÉRÉS | `motivumok/TEREMT-002.md:109` | A mondat: „a Jer 4:23 ráadásul ugyanazzal a mellérendelt alakkal és a »föld« alannyal”, lábjegyzete [^tahot3]. A TAHOT-sor ennek ellentmond: Grep `^Jer 4:23\t` a `konkordancia/TAHOT_kivonat.tsv` fájlban → 348745: `H0853 אֶת [Obj.]`, utána 348747: `H0776 אָרֶץ`. A הָאָרֶץ a רָאִיתִי tárgya, nem alanya (a :59 maga is „ige nélkül”-t ír). Az F64.18-ban került be. |
+| Ú1 Remez [^d-kapcs] | OK | `:109` | A besorolás „maga is értelmezés, nem a szöveg független tanúsága” megszorítással áll, nem bizonyítékként. Grep `TEREMT-002` az `adat/kapcsolatok.tsv`-ben: :37–:39 Kontraszt/Kontraszt/Párhuzam, egyezik. `lekerdez.py tsk "1Móz 1:2"` → `Jer 4,23 Votes=84`; `tsk "Jer 4:23"` → `1Móz 1,2 Votes=21`, egyezik. |
+| Ú1 Peshat :107, Drash :121, Alkalmazás :154, Kivonat :15 | OK | `:107`, `:121`, `:154`, `:15` | Mindegyikben feltételes jelölés vagy semlegesített mondat áll. A Kivonat :13 („mielőtt Isten szava rendet teremt rajta”) szó szerint a :127 kiinduló-állapot definíciója, de mindkét olvasat elfogadja (:132). A Drash :117 és a Sod :123 mindkét olvasattal összefér. Az archív blokkok (:229–239) karakterre azonos átemelések. |
+| Ú2 BDB keretezés | OK | `:132` | Grep `of primaeval earth.{0,250}` a `konkordancia/BDB_teljes_unabridged.tsv` fájlban → 7849 (H8414): „of primaeval earth Gen 1:2 (P), of land reduced to primaeval chaos Jer 4:23 (both + וָבֹהוּ…)”. A próza mindkét felét idézi. |
+| Ú2 nem különböztető blokk | ELTÉRÉS | `:132` | A BDB-mondat a „Közös, nem különböztető tények” blokkban áll, miközben a próza ugyanott kimondja: „a szótár keretezése tehát a kiinduló-állapot olvasaté”. Ez az egyik olvasatot támogató tétel, rossz blokkba került. A két oldal ettől eltekintve 3–3 érvvel kiegyensúlyozott (:134, :136). |
+| Ú2 „vala”/„lett”, manual | ELTÉRÉS (enyhe) | `:134`; meres `:109` | A `manual` jelölés csak a NAPLO-ban áll (:140), a mondatban nem. A mondat („a szokásos »vala« jelentésében áll”) mellett [^tahot3] lábjegyzet áll, ez lekérdezésből származónak mutatja. `lekerdez.py scan H1961 --szakasz "1Móz 1:2"` → n=1. Grep `H1961` a TAHOT-ban → `1Móz 1:2 H1961 הָיְתָ֥ה … to be  <it> was`. A TAHOT csak angol glosszát ad, morfológiai oszlopa nincs, így a „szokásos” jelző és a nyelvtani kérdés eldöntése nem az adatból jön. A meres :109 szerint a kérdés „lekérdezéssel nincs alátámasztva”, ami ütközik a lábjegyzettel. `lekerdez.py karoli "1Móz 1:2"` → „…kietlen és puszta vala”: egyezik. |
+| Ú3 számok | OK | meres `:14`, `:18`, `:37`, `:77` | 39 definíció; 94 hivatkozás (:13–:170); 13 NAPLO; a Kivonat 10 hivatkozás; a bontás 27+5+4+3 = 39. |
+| Ú3 meres :65 | ELTÉRÉS | `naplok/TEREMT002_PROZA_PROBA_meres.md:65` | Elavult sorhivatkozás: „(a :132 NAPLO szerint …)”; a NAPLO ma a :140-en áll. Emellett „a Remez, a Drash és az Alkalmazás olvasatfüggő mondatai feltételes jelölést kaptak” — ennek a :101 és a :173 ellentmond. |
+| Ú3 meres :109 | OK, megszorítással | `meres:109` | A tartalom egyezik, kivéve: a BDB a „nem különböztető” blokkban áll (Ú2), és a „vala”/„lett” mondat [^tahot3] lábjegyzetet kapott. |
+| Ú3 meres fejléc | ELTÉRÉS (enyhe) | `meres:5` | A „Mérés tárgya” sor még az F64.5/F64.8 commitokat nevezi meg, a :9 már az F64.18 utáni állapotot. |
+| Adattábla / lexikon / tematikus_lezart / generalt_proba | OK | — | `git diff --stat 5c6512f..HEAD` → 2 fájl. `git diff --numstat 5c6512f..HEAD -- adat konkordancia lexikon tematikus_lezart generalt_proba` → üres. `git diff --numstat main...HEAD -- adat konkordancia` → üres (Δ=0 minden táblán). |
+| CI | OK | — | `futtat.py --valtozott motivumok/TEREMT-002.md naplok/TEREMT002_PROZA_PROBA_meres.md --diff-alap 5c6512f --diff-fej HEAD` → exit=0. E2–E20: 0. E25 (3), E27 (33) más fájlokra vonatkozik; az E27 30 sorát a kimenet levágta. |
+| Tanulmány-ellenőrzés (F37 T4) | nem alkalmazható | — | A változott fájl nem `*_bovitett.md` / `*_tanulmany.md`. |
+
+**Súlyossági sorrend:** (1) :109 tényhiba: a TAHOT szerint a Jer 4:23 „föld”-je tárgy (אֶת), nem alany, mégis TAHOT-lábjegyzettel áll; (2) :101 és :173: két olvasatfüggő mondat feltétel nélkül, a NAPLO :140 és a meres :65 erről pontatlan; (3) :132: a BDB-keretezés a „nem különböztető” blokkban, pedig a mondat maga egyoldalúnak minősíti; (4) :134: a „vala” állítás TAHOT-lábjegyzete adat-alátámasztásnak mutatja a `manual` nyelvtani állítást; (5) meres :65 elavult sorhivatkozás és meres :5 elavult fejléc.
+
+*Eljárási megjegyzés (ellenőr): két parancs túllépett a megengedett körön (egy `| grep` a `tsk` kimenetén, egy `echo`); mindkettő csak olvasott, a `tsk`-t csövezés nélkül újrafuttatta.*
