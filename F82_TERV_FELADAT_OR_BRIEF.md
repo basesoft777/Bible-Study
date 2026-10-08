@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: folyamat
-allapot: fut
+allapot: dontesre_var
 ag: claude/f82-terv-feladat-or
 ad: a `feladatok.py ellenoriz` (és így a CI E18 és a /kovetkezo 1. lépése) HIBÁT ad, ha a tervdokumentumok jelölt mutató-táblájának egy sora sem FELADATOK-számra/briefre (`#nn`, `kod`), sem „elavult”/„feltételes”/„lezárva” jelölésre nem mutat; a jelölő-formátum rögzítve, tesztekkel; a mai repón 0 hiba
-kovetkezo: /kovetkezo; ⛔ az M0 után (a jelölő-formátum és a jelölt táblák listája)
+kovetkezo: Te: DT-F82a eldöntése (a jelölő-formátum és a jelölt táblák listája, `naplok/F82_M0.md`, `DONTESEK.md`); az M0 kész, az M1 a döntés után indul
 olvas: [ATALAKITASI_TERV.md.md, MUNKATERV.md, ADATVAGYON_TERV.md, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, BRIEF_SABLON.md, naplok/TERV_INTEGRACIO_zaras.md, naplok/TERV_INTEGRACIO_leltar.md, naplok/TERV_INTEGRACIO_dontesi_lista.md]
 ir: [eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, ATALAKITASI_TERV.md.md, MUNKATERV.md, ADATVAGYON_TERV.md]
 fugg: []
