@@ -199,5 +199,6 @@ A nézetekre vonatkozó két gépi ellenőrzés (bájtazonosság, nulla `belso` 
 5. A Nyitott kérdések tételenkénti besorolási szabálya (4. pont, 7.N).
 6. Az értelmezői aktiválás (Vitatott pontok, 4. pont) rögzítése (3. pont).
 7. A „Tartalmi visszaírás” szabály megszűnése (7. pont).
+8. A séma-kérdések: Alátámasztás, Minősítés, Módszertan / kapu-eredmény helye (4. pont 7.K, 7.A, 7.M, 7.Q; `adat/SEMA.md` 3.10.7).
 
 A sablon a #12 pilotja után válik véglegessé; addig a `v0` tervezet.
