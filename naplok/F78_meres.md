@@ -25,7 +25,7 @@ A kézi 2/b (462–533. sor) és a „Miért fontos” (535–549. sor) a gener�
 
 | # | Szerep | Görög (G1941, rokon: G0994, G2564) | Héber (H7121, H8034) |
 |---|---|---|---|
-| 1 | Alapjelentés | **megvan**: TBESG-alszakasz Strongonként (G1941 1., 2. jelentés; G0994, G2564 részlet) | **hiányzik**: TBESH-szócikk nincs a blokkban (csak a Strong-fejlécben a TBESH-lemma/licenckulcs; `lexikon_hivatkozasok.tsv`-ben 0 TBESH-sor) |
+| 1 | Alapjelentés | töltött (TBESG, 2 jelentés) | hivatkozás a meglévő BDB-sorokra (DT-F42a kiváltás, DT-F78d) | **üres** (adatosítva, nincs bekötve; a #9 a BDB-t köti be) |
 | 2 | Mélységi szócikk | **megvan**: Thayer (G1941 teljes; G0994 rokon) | **megvan**: BDB (H7121 2.c és 3.; H8034 részlet) |
 | 3 | Teológiai szócikk | nincs adatosítva — nincs | nincs adatosítva — csak a **TWOT-szám** áll (H7121: 2063; H8034: 2405), hivatkozásként a Strong-fejlécben |
 | 4 | Jelentésszerkezet, szemantikai mező | **Strong szerinti** „Szemantikai domén” sor (SDGNT; G1941: 4 domén); a 2/b-ben SECE-domének kézzel | **Strong szerinti** „Szemantikai domén” sor (SDBH; H7121: 13, H8034: 5 domén) |
@@ -127,7 +127,7 @@ Kimenet (csak `generalt_proba/`, az éles `lexikon/` változatlan, `git status` 
 | 10 | Kiejtés | részleges: lemma (átírás) + üres blokk | részleges + üres blokk | részleges + üres blokk |
 | 12–14 | Nave; Károli+SZPA; rejtett/hamis | **üres** (javaslat) | ugyanaz (közös blokk) | ugyanaz |
 
-Összesítés: ISTENTISZT-001-en a görög szerepek közül 3 töltött (1., 2., 4.) és 4 hivatkozásos (5., 6., 8., 9.), a héberek közül 2 töltött (2., 4.) és 1 hivatkozásos (6.); a többi explicit üres vagy részleges. A #64 mérés 7. szakaszának korlátja (a mérce hiánya a szerepmátrixra) ezzel megszűnik: a 2. szakasz a mátrix minden szerepét mutatja, a hiány látszik, kitöltetlen szerepen sehol nincs gyenge vagy asszociatív anyag. A mérce kiterjesztése (a TEREMT-002-nél a H8414/H0922 BDB-bekötés hiánya, `lexikon_hivatkozasok.tsv` 0 sor) a #9/#12b dolga marad.
+Összesítés: ISTENTISZT-001-en a görög szerepek közül 3 töltött (1., 2., 4.) és 4 hivatkozásos (5., 6., 8., 9.), a héberek közül 2 töltött (2., 4.) és 2 hivatkozásos (1., 6.); a többi explicit üres vagy részleges. A #64 mérés 7. szakaszának korlátja (a mérce hiánya a szerepmátrixra) ezzel megszűnik: a 2. szakasz a mátrix minden szerepét mutatja, a hiány látszik, kitöltetlen szerepen sehol nincs gyenge vagy asszociatív anyag. A mérce kiterjesztése (a TEREMT-002-nél a H8414/H0922 BDB-bekötés hiánya, `lexikon_hivatkozasok.tsv` 0 sor) a #9/#12b dolga marad.
 
 ### 11. Javítókör a DT-F78c és az ellenőr után (2026-10-08)
 
@@ -144,12 +144,20 @@ Kimenet (csak `generalt_proba/`, az éles `lexikon/` változatlan, `git status` 
 
 A brief hatóköre a DT-F78c (a) szerint kivételesen bővül: az ISTENTISZT-001-hez két héber TBESH-sor (H7121H „call by”, H8034 „name … the Name”) bekötése, jelölt-soron át, majd a `lexikon_hivatkozasok.tsv`-be; minden más bekötés a #9-é. Az `ir` mező ennek megfelelően kiegészült (`adat/jeloltek.tsv`, `adat/lexikon_hivatkozasok.tsv`).
 
-**⛔ A bekötés NEM történt meg: két akadály, a felhasználónak kell dönteni.**
+**A TBESH-bekötés NEM történt meg (két akadály); a felhasználó a negyedik utat választotta: l. a 13. szakaszt (a DT-F42a érvényben marad, a héber 1. szerep a meglévő BDB-sorokra hivatkozik).**
 1. **Ütközés a DT-F42a-val** (felhasználó, 2026-10-05, 🟢): a TBESH H7121 „részlet” sorát kifejezetten *törölni* kellett a `lexikon_hivatkozasok.tsv`-ből és a `forditasok.tsv`-ből, a lexikonoldal és a kézi 2/b szakasz BDB-alapra íródott át (Online Bible-eredetű szöveg kiváltása). A TBESH.txt 7. mezője („Meaning”) Online Bible-eredetű; a mostani kérés ezt a sort visszahozná (a H8034 TBESH-sora ugyanígy Online Bible-eredetű Meaning-szöveg). A DT-F33f ugyan `tisztazott`-ra emelte a licencet, de a DT-F42a a kiváltásról döntött. Nem tudom, hogy a felhasználó a DT-F78c (a) jóváhagyásakor ezt mérlegelte-e.
 2. **A `jeloltek.tsv` séma (SEMA 2.4):** a kulcs `id` + `igehely`, az `igehely` kötelező `IGEHELY` típus; szótárszócikknek nincs igehelye, így a jelölt-sor sémasértés nélkül nem írható. A precedens (F6.3, `f6_3_lexikon_hivatkozasok_toltes.py`) szótári sort jelölt nélkül, szó szerinti részsztring-ellenőrzéssel kötött be.
 
 Opciók a felhasználónak: **(1)** a bekötés a DT-F42a felülírásával, a `jeloltek.tsv` kihagyásával (döntés + indoklás a `DONTESEK.md`-ben, mint az F6.3-nál; a két sor a TBESH-ból szó szerinti kivonattal, `forditasok.tsv`-sor nélkül → „Fordítás függőben”); **(2)** a bekötés a #9-re marad, az ISTENTISZT-001 héber 1. szerepe `adatosítva, nincs bekötve` (a mai állapot), ami a #78 aranymintájánál látható hiány; **(3)** a héber 1. sor állapota `nincs adatosítva`-ra javul az adatrétegben. Javaslat: (2) vagy (1) a DT-F42a-döntés újranyitásával; a (3) az adatréteg külön lépése.
 
-### 13. Állapot
+### 13. A negyedik út (felhasználó, 2026-10-08): DT-F42a érvényben, a TBESH-szöveg nem kerül vissza
 
-M0–M3 kész, a javítókör kész a TBESH-bekötés kivételével. Következik: az ellenőr újrafuttatása (orkesztrátor).
+**Ág: köthető.** A héber 1. szerepnél (ISTENTISZT-001) a meglévő, közkincs BDB-sorokra hivatkozik a render: `BDB H7121` (2.c., 3. jelentés) és `BDB H8034` (részlet) a `lexikon_hivatkozasok.tsv`-ből, „meglévő BDB-sor (DT-F42a kiváltás)” megjegyzéssel, a 2. szerepnél álló szöveg felé mutatva. Új adatsor és `jeloltek.tsv`-sor nincs; a `szotar_szerepek.tsv` forrás-oszlopa (TBESH) érintetlen (a módosítás külön döntés: DT-F78d). A Strong_szotar-ra nem volt szükség (a BDB-sorok megvannak; a Strong_szotar CC BY 4.0, de új forrást vezetne a szerepbe — opció a DT-F78d 3. pontjában), SDBH/KJV/BSB nem használva.
+
+`scope=adat/lexikon_hivatkozasok.tsv (szotar=BDB, strong=H7121,H8034), split('	') | forras=manual (olvasás, a render saját függvényei) | ts=2026-10-08`
+
+Hatás: az `adatosítva, nincs bekötve` állapot az ISTENTISZT-001-nél nem jelenik meg; a TEREMT-002 héber 1–2. szerepén igen (nincs BDB-sora: a #9-nek **a BDB-t kell bekötnie, nem a TBESH-t**, l. DT-F78d).
+
+### 14. Állapot
+
+M0–M3 kész, a javítókör és a negyedik út kész. Következik: az ellenőr újrafuttatása (orkesztrátor).

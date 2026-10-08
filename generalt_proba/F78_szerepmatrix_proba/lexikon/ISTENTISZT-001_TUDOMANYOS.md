@@ -414,8 +414,9 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 #### 1. Alapjelentés
 
-<!-- ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve -->
-*(üres blokk: a szerep adatosítva (a forrásfájl megvan), de a motívum tokenjeihez a `lexikon_hivatkozasok.tsv`-be nincs bekötve sor; a bekötés a #9 dolga; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
+**H7121** · *Hivatkozás: meglévő BDB-sor (DT-F42a kiváltás): BDB H7121 — 2.c. jelentés; 3. jelentés (l. a 2. szerepnél).*
+
+**H8034** · *Hivatkozás: meglévő BDB-sor (DT-F42a kiváltás): BDB H8034 — (részlet) (l. a 2. szerepnél).*
 
 #### 2. Mélységi szócikk
 

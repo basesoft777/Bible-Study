@@ -166,9 +166,13 @@ class TestVazIstentiszt(unittest.TestCase):
 
     def test_heber_tbesh_nincs_sor_jelolve(self):
         # adatosítva, de a tokenekhez nincs TBESH-sor: nem néma, jelölt üres blokk
+        # DT-F78d: ISTENTISZT-001-nél a meglévő BDB-sorokra hivatkozik (új adatsor nélkül), nincs üres blokk
         b = self._blokk_szerep('heber', 1)
-        self.assertIn('ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve', b)
-        self.assertIn('#9', b)
+        self.assertNotIn('ÜRES-BLOKK', b)
+        self.assertIn('meglévő BDB-sor (DT-F42a kiváltás)', b)
+        self.assertIn('BDB H7121', b)
+        self.assertIn('BDB H8034', b)
+        self.assertNotIn('TBESH-sor', b)
 
     def test_heber_adatositott_szerep_nem_hamisan_ures(self):
         # héber 2. (BDB), 4. (SDBH), 6. (LXX, hivatkozás): adatosítva, van tartalom -> nincs ÜRES-BLOKK
@@ -249,6 +253,7 @@ class TestVazTeremt(unittest.TestCase):
         self.assertEqual(h, [(int(r['sorrend']), r['szerep']) for r in tabla])
         # lexikon_hivatkozasok-sor nincs: az 1. és 2. szerep adatosítva, de nincs sor -> jelölt üres blokk
         self.assertIn('ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve', sz['heber'])
+        self.assertIn('#9', sz['heber'])  # nincs BDB-sor sem: a #9 köti be (a BDB-t, nem a TBESH-t)
         self.assertIn('ÜRES-BLOKK: Mélységi szócikk | adatosítva, nincs bekötve', sz['heber'])
         self.assertNotIn('\n> ', sz['heber'])
         # a TWOT és a domén megvan, a tokenhez kötve

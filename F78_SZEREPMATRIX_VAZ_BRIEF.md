@@ -9,7 +9,7 @@ munka: adat
 allapot: fut
 ag: claude/f78-szerepmatrix-vaz
 ad: a lexikonoldal-generátor a `_TUDOMANYOS` 2. szakaszát szerepenként, az adat/szotar_szerepek.tsv sorrendjében rendereli, a nem adatosított szerep explicit üres blokk (adatosítás nélkül); próbarender az ISTENTISZT-001-re és a TEREMT-002-re a generalt_proba/ alá, mérési jelentéssel — ez a #23 M1, a #10 és a #11 aranymintája
-kovetkezo: ellenőr újrafuttatása (orkesztrátor); a TBESH-bekötés (DT-F78c a) a DT-F42a-ütközés miatt vár (naplok/F78_meres.md 12.)
+kovetkezo: ellenőr újrafuttatása (orkesztrátor); a DT-F78d (héber 1. szerep forrás-oszlopa) a felhasználó külön döntése
 olvas: [adat/szotar_szerepek.tsv, adat/SEMA.md, adat/lexikon_hivatkozasok.tsv, adat/forditasok.tsv, eszkozok/lexikon_general.py, eszkozok/general.py, eszkozok/torzscikk_general.py, lexikon/ISTENTISZT-001_TUDOMANYOS.md, motivumok/TEREMT-002.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, RENDER_BRIEF.md, ADATVAGYON_TERV.md, ATALAKITASI_TERV.md.md, naplok/TEREMT002_PROZA_PROBA_meres.md, naplok/TERV_INTEGRACIO_dontesi_lista.md]
 ir: [adat/jeloltek.tsv, adat/lexikon_hivatkozasok.tsv, eszkozok/lexikon_general.py, eszkozok/torzscikk_general.py, eszkozok/teszt_szerepmatrix.py, generalt_proba/, adat/szotar_szerepek.tsv, adat/SEMA.md, DONTESEK.md, NYITOTT_FELADATOK.md, naplok/F78_meres.md, naplok/ELLENOR_F78.md, naplok/F78_zaras.md]
 fugg: []
