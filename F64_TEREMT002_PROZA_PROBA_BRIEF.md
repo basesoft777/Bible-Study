@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: ertelmezo
-allapot: megallt
+allapot: fut
 ag: claude/f64-teremt002-proza-proba
 ad: a TEREMT-002 teljes értelmező rétege (a motívumcikk prózája a tematikus sablon szerkezetével) a motivumok/TEREMT-002.md forrásban, a próbarender csak a generalt_proba/ alatt, az LXX-helyek „függő” jelöléssel; egy mérési jelentés az ISTENTISZT-001 mércéje szerint, amely a #23 M1 bemenete (DT-F32a, KONTEXTUS K1/4)
-kovetkezo: "Te: ⛔ M0 kész (naplok/TEREMT002_PROZA_PROBA_M0.md): döntés a próza helyéről (2.) és a mérce megerősítése, L2/L7 rés (3.)"
+kovetkezo: "M1 (próza a motivumok/TEREMT-002.md-be, DT-F64a; LXX friss lxx-hid-del, DT-F64b; mérce L1–L7 + DT2 rés-szabályok); ⛔ az M3 mérés után"
 olvas: [motivumok/TEREMT-002.md, "tematikus_lezart/TEREMT-002*", "tematikus_lezart/naplok/TEREMT-002*", motivumlog/PaRDeS_motivumok.md, TEREMT002_KUTATAS_BRIEF.md, naplok/T1_TEREMT002_gate.md, naplok/T1_TEREMT002_scan.md, naplok/T1_TEREMT002_jeloltek_munkalap.tsv, naplok/T1_TEREMT002_masodrendu_talalatok.tsv, naplok/T2_TEREMT002_minosites.tsv, naplok/T2_TEREMT002_kapcsolatok_javaslat.tsv, adat/elofordulasok.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/auditok.tsv, adat/motivumok.tsv, adat/res_forras.tsv, adat/SEMA.md, sablonok/4_PaRDeS_tematikus_sablon.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/PaRDeS_gyorsreferencia.md, F23_MOTIVUM_FORRAS_BRIEF.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/KONTEXTUS_szabalyok.md, MUNKAMENET.md, eszkozok/general.py, lexikon/ISTENTISZT-001_TUDOMANYOS.md]
 ir: [motivumok/TEREMT-002.md, generalt_proba/TEREMT-002_proza_proba/]
 fugg: []
@@ -100,3 +100,4 @@ Jelentés: `naplok/TEREMT002_PROZA_PROBA_meres.md`.
 | v1 | 2026-10-05 | A #23 M0-tól való függés számmal nem rögzíthető (a #23 egy része), ezért a `kovetkezo` mező és az M0 1. pontja hordozza. | befogadás (az F23 v1.2 mintája) |
 | v1 | 2026-10-05 | A mérce a `sablonok/6_PaRDeS_lexikon_oldal_sablon.md` Minőségi kapuja (L1, L3–L6); az L2/L7 rés és az alkalmazhatóság a prózára az M0 ⛔ pontján dől el. | befogadás (független átnézés javítása) |
 | v1.1 | 2026-10-08 | Az L2/L7 rés kitöltve: L2 = „Napló-jelölés kötelező” (`4c4003b`), L7 = PaRDeS-rétegfegyelem (`f51851d`, az L6 (g) pontja); a #64 mércéje L1–L7 + a DT2 két rés-szabálya. | DT-F64a (2), felhasználó (chat) |
+| v1.1 | 2026-10-08 | A próza helye a `motivumok/TEREMT-002.md` (DT-F64a (1)); az LXX-állítás friss `lxx-hid` futás proveniencia-sorával, audit-sor nélkül (DT-F64b). Az M0 ⛔ feloldva. | DT-F64a (1), DT-F64b, felhasználó (chat) |
