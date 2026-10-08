@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-10-08",
-   "commit": "edff976"
+   "commit": "480b3c5"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -72,7 +72,7 @@
   {
    "kulcs": "ready",
    "cimke": "Indítható most",
-   "db": 7
+   "db": 6
   },
   {
    "kulcs": "wait",
@@ -87,7 +87,7 @@
   {
    "kulcs": "dt",
    "cimke": "Nyitott döntés",
-   "db": 0
+   "db": 1
   }
  ],
  "sor": [
@@ -104,14 +104,6 @@
    "kod": "STRONG_NORMALIZAL",
    "cim": "Egységes Strong-normalizáló függvény — egyetlen strong_normalizal() a lekérdezőben és a betöltőben",
    "most": "/kovetkezo; ⛔ az M0 után (a leltár és a bemeneti alakok elfogadása)",
-   "felbemaradt": false,
-   "parhuzamos": true
-  },
-  {
-   "szam": 78,
-   "kod": "SZEREPMATRIX_VAZ",
-   "cim": "Szerepmátrix-váz — a lexikonoldal szótári szakasza szerepenként (ISTENTISZT-001 aranyminta, TEREMT-002 második minta)",
-   "most": "/kovetkezo; M0 (mérés), utána ⛔ az M0 végén",
    "felbemaradt": false,
    "parhuzamos": true
   }
@@ -234,7 +226,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "Ez javítja a törzscikkek elavult Cremer-sorát is (a CI E11 szabálya jelzi). Nyitott, a brief megírásakor dől el: a #9 éles lexikon/-írása a #11 előtt vs. a befagyasztás (D52, DT74 (3))",
-   "fugg": "#5 (kész), #6 (kész), #23, #52*, #78, #80*",
+   "fugg": "#5 (kész), #6 (kész), #23, #52*, #78 (kész), #80*",
    "tervezett": false,
    "reszletes": "Az 1. fázis új szótári adatai (fordítások, LXX, források) megjelennek a 8 lexikonoldalon és a törzscikkekben; a törzscikk utoljára itt generálódik. A #23 tervére és a #38 fordításaira vár.",
    "roviden": "Az új szótári adat bekerül a lexikonoldalakra.",
@@ -313,7 +305,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: a Jeremiás kész (API, DT73 (a); jelentés: `naplok/F22_Jer_jelentes.md`); ⛔ 2.: a független ellenőr lefutott (`naplok/ELLENOR_F22_Jer.md`), a szúrópróba elmarad (DT70); a prófétáknál is 10 verses kötegek (DT71 (a)); a #77 briefjének fejléce (F77.11) a merge előtt frissítendő; kézi átnézés Ézs 9:20, 64:1 és a Zsoltároknál 119:94, 144:15, 145:1 (a felhasználóé), ready és merge (a felhasználóé). A következő könyv (DT57 (1): a BDB-haszon mérése szerint, elsőként 1Krón) indítása külön jóváhagyás; párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60). Jób előtt: TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról.",
+   "most": "Te: a 2Krónika kész (API, DT73 (a); jelentés: `naplok/F22_2Kron_jelentes.md`); ⛔ 2.: a független ellenőr (`naplok/ELLENOR_F22_2Kron.md`), a szúrópróba elmarad (DT70); kézi átnézés korábbról 1Krón 19:2, Ézs 9:20, 64:1 és a Zsoltároknál 119:94, 144:15, 145:1 (a felhasználóé); a #77 briefjének fejléce (F77.11) a merge előtt frissítendő; ready és merge (a felhasználóé). A következő könyv (DT57 (1): Ezsd) indítása külön jóváhagyás; párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60). Jób előtt: TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról.",
    "fugg": "#21 (kész)",
    "tervezett": false,
    "reszletes": "Két modell (Sonnet, az első könyvnél Gemini is) a Károli-fordítás minden szavához megkeresi az eredeti héber szót és a Strong-számát; ahol a két modell egyezik, a kapcsolat „magas” bizonyosságú. Az 1–5Mózes és Józsué kész.",
@@ -328,9 +320,9 @@
    "cim": "Egyforrású motívumdokumentum: forrássablon és mélységi szintek (terv)",
    "fazis": "1",
    "allapot": "stop",
-   "brief_allapot": "megallt",
-   "most": "Te: ⛔ az M0 kész (DT66 🟢), a #12a (#64) lezárult; az M1 a #78 szerepmátrix-váz (a rekonstruált aranyminta, DT74 (1)) után indul, bemenete a #64 mérése a 7. („A mérce korlátja”) szakasszal, mércéje L1–L7 + DT2 (DT68, DT74 (5)); utána /kovetkezo",
-   "fugg": "#32 (kész), #78",
+   "brief_allapot": "dontesre_var",
+   "most": "Te: DT84 (az M1 13 javaslat-pontja: forrássablon, SEMA 3.10, pilot-terv); utána átvezetés, és a #11 briefje a pilot-terv alapján; ⛔ előtte az F83-ágról ki kell venni a két elkeveredett F23-commitot",
+   "fugg": "#32 (kész), #78 (kész)",
    "tervezett": false,
    "reszletes": "Megtervezi, hogyan legyen minden motívumnak egyetlen kézzel írt forrásdokumentuma mélységi szintekkel, amelyből a többi nézet generálódik. Csak terv és mérés, fájlmozgatás nélkül; az M0 felmérés után megáll.",
    "roviden": "A motívumlexikon jövőbeli „egy forrás” felépítésének tervrajza.",
@@ -378,7 +370,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "befagyasztva a #11 1. lépcsőjéig (DT74 (3): a régi forrásréteg és az éles lexikon nem bővül a régi szerkezet szerint); utána: M0 szárazfutás ideiglenes könyvtárba (a repón kívülre); ⛔ az éles fájlok felülírása előtt",
-   "fugg": "#9*, #28 (kész), #34 (kész), #35 (kész), #38*, #52*, #78*, #80*",
+   "fugg": "#9*, #28 (kész), #34 (kész), #35 (kész), #38*, #52*, #80*",
    "tervezett": false,
    "reszletes": "A lexikon tudományos oldalai és törzscikkei a mai adatból újragenerálódnak (új fordítások, javított igehelyek, Szent Szellem-szöveg); előbb próbafutás a repón kívül, az éles fájlok felülírása előtt megáll.",
    "roviden": "A lexikonoldalak frissítése a legújabb adatokkal.",
@@ -706,22 +698,6 @@
    "leiras_hiany": true
   },
   {
-   "kulcs": "SZEREPMATRIX_VAZ",
-   "szam": 78,
-   "kod": "SZEREPMATRIX_VAZ",
-   "cim": "Szerepmátrix-váz — a lexikonoldal szótári szakasza szerepenként (ISTENTISZT-001 aranyminta, TEREMT-002 második minta)",
-   "fazis": "1",
-   "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "/kovetkezo; M0 (mérés), utána ⛔ az M0 végén",
-   "fugg": "—",
-   "tervezett": false,
-   "reszletes": "",
-   "roviden": "",
-   "leiras_forras": null,
-   "leiras_hiany": true
-  },
-  {
    "kulcs": "SQLITE_EPIT",
    "szam": 79,
    "kod": "SQLITE_EPIT",
@@ -841,15 +817,25 @@
    "TANULMANY_JAVITAS_GEPI",
    "TANULMANY_JAVITAS",
    "API_VAKPROBA",
-   "SZEREPMATRIX_VAZ",
    "BDB_KAROLI_POTLAS",
    "KAROLI_UJJLENYOMAT",
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::ready\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::wait\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::ready\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::idle\n  T77[\"#77 API_VAKPROBA\"]:::stop\n  T78[\"#78 SZEREPMATRIX_VAZ\"]:::ready\n  T79[\"#79 SQLITE_EPIT\"]:::idle\n  T80[\"#80 BDB_KAROLI_POTLAS\"]:::idle\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT66{{\"DT66\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT73{{\"DT73\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> T61\n  P_MCP_BUROK --> T79\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T10 --> T9\n  T11 --> D_DT74\n  T11 --> T23\n  T11 --> T52\n  T11 --> T9\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T23 --> D_DT28\n  T23 --> D_DT66\n  T23 --> D_DT74\n  T23 --> T78\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T38\n  T36 --> T52\n  T36 --> T78\n  T36 --> T80\n  T36 --> T9\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T22\n  T52 --> D_DT78\n  T54 --> T62\n  T55 --> D_DT74\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T60 --> T80\n  T61 --> D_DT75\n  T61 --> T54\n  T61 --> T62\n  T62 --> D_DT75\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T67 --> T7\n  T67 --> T80\n  T67 --> T9\n  T70 --> D_DT74\n  T70 --> T55\n  T70 --> T9\n  T75 --> T74\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T76 --> T79\n  T77 --> D_DT73\n  T79 --> D_DT77\n  T79 --> T62\n  T80 --> T22\n  T80 --> T38\n  T81 --> T61\n  T81 --> T62\n  T81 --> T65\n  T9 --> D_DT28\n  T9 --> D_DT74\n  T9 --> T23\n  T9 --> T52\n  T9 --> T78\n  T9 --> T80",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::idle\n  T11[\"#11 MIGRACIO\"]:::idle\n  T12[\"#12 TEREMT-002 3. lépés…\"]:::idle\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T23[\"#23 MOTIVUM_FORRAS\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T27[\"#27 FP3\"]:::idle\n  T36[\"#36 LEXIKON_UJRAGEN\"]:::wait\n  T38[\"#38 BDB_FORDITAS\"]:::ready\n  T45[\"#45 MODELL_ELLENORZES\"]:::ready\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T50[\"#50 CI_JAVITO_KOR\"]:::ready\n  T52[\"#52 TERV_SZINKRON\"]:::ready\n  T54[\"#54 LXX_OS_LEFEDETTSEG\"]:::wait\n  T55[\"#55 ZSOLTAR_UJRAELLENORZES\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T60[\"#60 OLVASOI_PILOT\"]:::wait\n  T61[\"#61 LEKERDEZ_NAPLO\"]:::wait\n  T62[\"#62 STRONG_NORMALIZAL\"]:::ready\n  T63[\"#63 JELOLTEK_RETRO\"]:::wait\n  T65[\"#65 KAROLI_ELLENORZES\"]:::wait\n  T67[\"#67 BDB_JAVITAS_KAPU\"]:::idle\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::idle\n  T7[\"#7 Thayer teljes magyar…\"]:::idle\n  T70[\"#70 SZOTAR_S26\"]:::wait\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::idle\n  T75[\"#75 TANULMANY_JAVITAS\"]:::idle\n  T76[\"#76 OLVASOI_KONKORDANCIA\"]:::idle\n  T77[\"#77 API_VAKPROBA\"]:::stop\n  T79[\"#79 SQLITE_EPIT\"]:::idle\n  T80[\"#80 BDB_KAROLI_POTLAS\"]:::idle\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::idle\n  T9[\"#9 SZOTAR S2\"]:::wait\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M1{{\"DT-M1\"}}:::dt\n  D_DT_M2{{\"DT-M2\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M4{{\"DT-M4\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M6{{\"DT-M6\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT28{{\"DT28\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT66{{\"DT66\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT73{{\"DT73\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT75{{\"DT75\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT84{{\"DT84\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_MCP_BUROK --> T61\n  P_MCP_BUROK --> T79\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT74\n  T10 --> T11\n  T10 --> T52\n  T10 --> T9\n  T11 --> D_DT74\n  T11 --> T23\n  T11 --> T52\n  T11 --> T9\n  T12 --> D_DT74\n  T12 --> T11\n  T13 --> T10\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T23 --> D_DT28\n  T23 --> D_DT66\n  T23 --> D_DT74\n  T23 --> D_DT84\n  T25 --> T11\n  T25 --> T12\n  T25 --> T23\n  T36 --> D_DT28\n  T36 --> D_DT74\n  T36 --> T38\n  T36 --> T52\n  T36 --> T80\n  T36 --> T9\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T48 --> T22\n  T52 --> D_DT78\n  T54 --> T62\n  T55 --> D_DT74\n  T55 --> T54\n  T55 --> T63\n  T55 --> T65\n  T60 --> T80\n  T61 --> D_DT75\n  T61 --> T54\n  T61 --> T62\n  T62 --> D_DT75\n  T63 --> T62\n  T65 --> D_DT_M2\n  T65 --> T62\n  T65 --> T63\n  T67 --> T7\n  T67 --> T80\n  T67 --> T9\n  T70 --> D_DT74\n  T70 --> T55\n  T70 --> T9\n  T75 --> T74\n  T76 --> D_DT75\n  T76 --> D_DT_M1\n  T76 --> D_DT_M4\n  T76 --> D_DT_M6\n  T76 --> T79\n  T77 --> D_DT73\n  T79 --> D_DT77\n  T79 --> T62\n  T80 --> T22\n  T80 --> T38\n  T81 --> T61\n  T81 --> T62\n  T81 --> T65\n  T9 --> D_DT28\n  T9 --> D_DT74\n  T9 --> T23\n  T9 --> T52\n  T9 --> T80",
  "dontesek": {
-  "nyitott": [],
+  "nyitott": [
+   {
+    "id": "DT84",
+    "feladat": "#23 MOTIVUM_FORRAS (M1 összesítő: a `javaslat` jelölésű pontok)",
+    "kerdes": "Az M1/1–4 kész: forrássablon-tervezet (`sablonok/9_PaRDeS_motivum_forras_sablon.md`, v0), `adat/SEMA.md` 3.10, CI-terv (E28, E29), pilot-terv. A brief K3-a szerint `javaslat` csak jóváhagyott tételként maradhat. Tizenhárom pont: (1) a szintjelölő alakja és hatóköre (sablon 2., SEMA 3.10.2); (2) a proveniencia-lábjegyzetből (`scope≠manual`) közvetlenül, döntés nélkül írt `auditok.tsv`-sor ütközik a SEMA 3/9-cel (kinyerés csak a `jeloltek.tsv`-n át, `manual` provenienciával, döntéssel), a DT28-cal és a SEMA 2.9-cel (az audit-sort a fő szál rögzíti); a normatív szöveg ezért a lábjegyzetet csak hivatkozásnak veszi, az audit-út javaslat (ELLENOR_F23_M1 2.; SEMA 3.10.5, sablon 6.); ha az audit-út marad, a `lepes`-mező forrása is kérdés (a proveniencia-sor szó szerinti, új kulcs nem írható bele); (3) a nem igehely-kulcsú adat (szótári idézet, LXX-megfelelő) útja a prózából, mert a `jeloltek.tsv` kulcsa igehely (`naplok/F78_meres.md` 12/2; sablon 6., SEMA 3.10.7 4.); (4) két új szakasz a tematikus sablonhoz képest: 7.N Nyitott kérdések, P Proveniencia-sorok (#64 mérés 3., 4. tanulság); (5) a Nyitott kérdések tételenkénti besorolási szabálya (DT66 (a) 4.): tartalmi → `forras`/`apparatus`; séma-korlát és adatállapot → N-tétel, a forrásban `【NAPLO】` mutató; lezárt → `archivum` — az ISTENTISZT-001 öt tételére: 1–2. N-tétel, 3. archívum (+ N-tétel, ha maradt nyitott pont), 4. archívum, 5. forrás (pilot-terv 4.4); (6) az értelmezői aktiválás (Vitatott pontok, 4. pont) rögzítése (#64 mérés 5., 1–2.); (7) a tematikus sablon „Tartalmi visszaírás bővített tanulmányokba” szabálya (v10) a B-ben (sablon 7.); (8) séma-kérdések (DT66 (a) megjegyzése; SEMA 3.10.7 1–3.): Alátámasztás → `kapcsolatok.tsv` indoklás-oszlop; Minősítés „független megerősítés” a `jeloltek.tsv` kulcsával; Módszertan-tábla és kapu-eredmény helye (az `auditok.tsv` `lepes` készlete nem fedi); (9) a HAMART-001 „nulla-diff referencia” (DT78 (22)) értelmezése (pilot-terv 6.); (10) a lexikonoldal nyilvános `apparatus` nézet-e — ha igen, a migrált lapról a `【NAPLO` kimarad (ma: ISTENTISZT-001 14, HAMART-001 3; ci-terv E29, pilot-terv 5. D3); (11) a vegyes blokk szétválasztásának egysége (pilot-terv 7.1); (12) az `archivum` kategória fizikai helye (pilot-terv 7.1); (13) sorrend: a sablon „a #12 pilotja véglegesíti”, de az `F12_TEREMT002_PROZA_BRIEF.md` `fugg: [11]`, így a #11 1. lépcsője a v0-n futna (pilot-terv 1.). *(forrás: `F23_MOTIVUM_FORRAS_BRIEF.md` M1/1–4; a négy kimenet)*",
+    "allapot": "nyitott",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 159
+   }
+  ],
   "alkalmazasra_var": [
    {
     "id": "DT2",
@@ -1401,10 +1387,55 @@
      "🟢"
     ],
     "sor": 154
+   },
+   {
+    "id": "DT81",
+    "feladat": "#78 SZEREPMATRIX_VAZ (M0 ⛔: a hatókör)",
+    "kerdes": "A szerep-sorrendű render érinti a `blokk_szocikkek` / `_epit_szotar_alszakasz` belső szerkezetét (Strong → forrás hierarchia megfordul: nyelv → szerep → Strong → forrás). Teljes átépítés vagy szűkített hatókör? *(forrás: `naplok/F78_meres.md` 4–5. szakasz)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 156
+   },
+   {
+    "id": "DT83",
+    "feladat": "#78 SZEREPMATRIX_VAZ (a héber 1. szerep forrása a DT-F42a után)",
+    "kerdes": "A `szotar_szerepek.tsv` héber 1. sora forrásként TBESH-t nevez `adatosítva` állapottal, a `lexikon_hivatkozasok.tsv`-ben viszont 0 TBESH-sor van (a DT-F42a a H7121 „részlet” sorát váltotta ki BDB-vel). Mi legyen a tábla forrás-oszlopa, és mit mutasson a render? *(forrás: `naplok/F78_meres.md` 12–14. szakasz)*",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 158
    }
   ],
   "javasolt": [],
-  "ellenorizendo": [],
-  "kesz_db": 89
+  "ellenorizendo": [
+   {
+    "id": "DT80",
+    "feladat": "#78 SZEREPMATRIX_VAZ (üres blokk jelölése; a brief M2 ⛔-je, az orkesztrátor kérésére előrehozva)",
+    "kerdes": "Hogyan jelölje a render az adat nélküli szerep (`nincs adatosítva`, `javaslat`, vagy az adott tokenhez nincs sor) explicit üres blokkját a lexikonoldal 2. szakaszában? *(forrás: `F78_SZEREPMATRIX_VAZ_BRIEF.md` 1., 3. M2; három szemléltető változat ugyanazon az ISTENTISZT-001 szakaszon, `naplok/F78a_valtozatok/F78a_valtozat_A.md`, `…_B.md`, `…_C.md`; a forrásszövegek 110 karakterre rövidítve, a prototípus nem a végleges render)*",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 155,
+    "oszlopszam": 10,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT82",
+    "feladat": "#78 SZEREPMATRIX_VAZ (M3/M4 ⛔: az ellenőr három tartalmi eltérése)",
+    "kerdes": "(a) A héber 1. (TBESH) szerep a táblában `adatosítva`, de a `lexikon_hivatkozasok.tsv`-ben 0 TBESH-sor van; a render `ÜRES-BLOKK: …",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 157,
+    "oszlopszam": 7,
+    "fejlec_oszlopszam": 8
+   }
+  ],
+  "kesz_db": 90
  }
 }
