@@ -8,4 +8,4 @@
 - Elfogadási feltételek 1, 3 (kódolvasás), 5: OK. `futtat.py --teljes` exit 0.
 - Az ellenőr nem futtathatta: `feladatok.py ellenoriz`, `teszt_feladatok.py`, `ellenoriz.py` (szerepkör-korlát). Az orkesztrátor futtatása a javítás után: `teszt_feladatok.py` 111 teszt OK, `feladatok.py ellenoriz` 102 brief, 0 hiba (manual).
 - Megfigyelés: az ATALAKITASI 13.4 „célvonal” sora csak a `#13` miatt megy át; a DT78 (21) szerint rendben.
-- A DT-F82a chatbeli jóváhagyása a repóból nem igazolható (a felhasználó chat-válasza).
+- A DT79 chatbeli jóváhagyása a repóból nem igazolható (a felhasználó chat-válasza).

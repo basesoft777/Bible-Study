@@ -4,10 +4,10 @@
 
 ## Mi készült
 
-- **Döntés:** DT-F82a (helyőrző, 🟢): jelölőpár `oszlop=` attribútummal; jelölt táblák: ATALAKITASI 13.4 és MUNKATERV 4. (felhasználó, 2026-10-08, chat). Felmérés: `naplok/F82_M0.md`.
+- **Döntés:** DT79 (helyőrző, 🟢): jelölőpár `oszlop=` attribútummal; jelölt táblák: ATALAKITASI 13.4 és MUNKATERV 4. (felhasználó, 2026-10-08, chat). Felmérés: `naplok/F82_M0.md`.
 - **Szabály (M1):** `eszkozok/feladatok.py` `terv_mutato_hibak()`, az `ellenoriz` hibalistájába kötve (így fut az E18-ban és a `/kovetkezo` 1. lépésében). Jelölő: `<!-- TERVELEM-MUTATO [oszlop=a,b] -->` … `<!-- /TERVELEM-MUTATO -->`, külön sorban. A vizsgált cellák összefűzött szövegében legalább egy: létező `#nn`; brief-`kod` (az `\_` → `_` visszaalakítás után); létező DT-/D-tétel (`DONTESEK.md`, `FELADATOK.md`); `elavult` / `feltételes` / `lezárva`. Hiba: `fájl:sor`, a sor első cellája, a vizsgált szöveg. Külön hiba: hiányzó záró jelölő, záró jelölő nyitó nélkül, nincs tábla a jelölőpár között, ismeretlen `oszlop=`. A `csv` modul nincs használva; a terv-fájlok CRLF-je kezelve.
 - **Tesztek:** `TervMutatoTest` (12 teszt) az `eszkozok/teszt_feladatok.py`-ban: jó sor `#nn`-nel; `kod`-dal (`SQLITE\_EPIT`); `feltételes`/`elavult`/`lezárva`; DT-hivatkozás (létező és nem létező); nem létező `#99` → HIBA a pontos sorral; jelölőn kívüli `#205` és `SECE_H` → nem számít; hiányzó záró jelölő → HIBA; záró nyitó nélkül; jelölőpár tábla nélkül; többoszlopos `oszlop=#,név`; ismeretlen oszlop; CRLF; és a valódi repó 0 találata.
-- **Jelölők (M2):** ATALAKITASI 13.4 (`oszlop=feladat`, a formátum leírása a bevezető mondatban) és MUNKATERV 4. (`oszlop=#,név`); a táblák tartalma nem módosult, új feladat nem született. A MUNKATERV 4a és az ADATVAGYON 21. kimarad (DT-F82a).
+- **Jelölők (M2):** ATALAKITASI 13.4 (`oszlop=feladat`, a formátum leírása a bevezető mondatban) és MUNKATERV 4. (`oszlop=#,név`); a táblák tartalma nem módosult, új feladat nem született. A MUNKATERV 4a és az ADATVAGYON 21. kimarad (DT79).
 
 ## Ellenőrzés (saját futtatás, `manual`: a menet maga futtatta, nem független ellenőrzés)
 

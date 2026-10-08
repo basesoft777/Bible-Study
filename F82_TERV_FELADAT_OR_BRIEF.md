@@ -38,7 +38,7 @@ Az őr **csak a jelölt mutató-táblákat** olvassa, nem a terv szabad szöveg�
 
 ## 3. Lépések (⛔ a kötelező megállások)
 
-**M0 — felmérés (csak olvas).** A három terv táblái közül melyik „feladat-mutató” (sor = tervelem, oszlop = feladat); a jelölő-formátum javaslata; száraz próba a javasolt szabállyal a mai repón (a hibás sorok listája, proveniencia-sorral). ⛔ **Megállás:** a jelölő-formátum és a jelölt táblák listája a felhasználóé (`DONTESEK.md`, helyőrző `DT-F82a`).
+**M0 — felmérés (csak olvas).** A három terv táblái közül melyik „feladat-mutató” (sor = tervelem, oszlop = feladat); a jelölő-formátum javaslata; száraz próba a javasolt szabállyal a mai repón (a hibás sorok listája, proveniencia-sorral). ⛔ **Megállás:** a jelölő-formátum és a jelölt táblák listája a felhasználóé (`DONTESEK.md`, helyőrző `DT79`).
 
 **M1 — szabály és teszt.** A szabály a `feladatok.py`-ban (egy függvény, a meglévő `ellenoriz` hibalistájába kötve); `split('\t')`/szövegfeldolgozás, a `csv` modul nem kell. Tesztek legalább: jó sor `#nn`-nel; jó sor `kod`-dal (`SQLITE\_EPIT` escape-pel is); `feltételes`/`elavult`/`lezárva` sor; nem létező `#99` → HIBA; jelölőn kívüli `#205` és `SECE_H` → nem számít; hiányzó záró jelölő → HIBA (a tábla nem tűnhet el csendben).
 
