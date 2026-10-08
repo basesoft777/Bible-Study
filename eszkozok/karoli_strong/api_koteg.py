@@ -19,7 +19,12 @@ Használat:
     python eszkozok/karoli_strong/api_koteg.py allapot
     python eszkozok/karoli_strong/api_koteg.py begyujt --cimke vakproba
     python eszkozok/karoli_strong/api_koteg.py javit --cimke vakproba
+    python eszkozok/karoli_strong/api_koteg.py bekuld … --commit [--tetel F77]
     python eszkozok/karoli_strong/api_koteg.py --onteszt
+
+A `--commit` a bekuld / begyujt / javit után commitolja és pusholja az `f22/vakproba/` mappát
+(csak azt: `git add -- <út>` és `git commit -- <út>`, soha `-A`), hogy a batch-azonosító és a
+begyűjtött kötegek ne vesszenek el egy megszakadt session után. A push hibája nem állítja meg a futást.
 
 Kilépési kódok: 0 rendben; 2 hibás paraméter/előfeltétel; 3 a plafon megállít;
 4 hálózati/API-hiba; 5 elfogyott az API-kredit (nincs újrapróbálás).
@@ -452,10 +457,62 @@ def onteszt():
     if not (kredit_hiba(402, '') and kredit_hiba(400, '{"error":{"message":"Your credit balance is too low"}}')
             and not kredit_hiba(400, 'invalid_request') and not kredit_hiba(429, 'rate limit')):
         hibak.append('kredit_hiba felismerés')
+    import subprocess
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        def g(*x):
+            return subprocess.run(['git'] + list(x), cwd=td, capture_output=True, text=True, encoding='utf-8')
+        g('init', '-q'); g('config', 'user.email', 't@t'); g('config', 'user.name', 't')
+        os.makedirs(os.path.join(td, 'f22', 'vakproba'))
+        open(os.path.join(td, 'f22', 'vakproba', 'batchek.tsv'), 'w', encoding='utf-8').write('x\n')
+        open(os.path.join(td, 'mas.txt'), 'w', encoding='utf-8').write('nem ide tartozik\n')
+        g('add', 'mas.txt')   # előre stage-elt, nem vakproba fájl: nem kerülhet a commitba
+        e1 = git_mentes('T: próba ékezetek: árvíztűrő', push=False, cwd=td)
+        e2 = git_mentes('T: üres', push=False, cwd=td)
+        fajlok = g('show', '--name-only', '--format=%s', 'HEAD').stdout.split('\n')
+        if e1 != 'commit' or e2 != 'nincs_valtozas' or 'f22/vakproba/batchek.tsv' not in fajlok or 'mas.txt' in fajlok \
+                or 'árvíztűrő' not in fajlok[0]:
+            hibak.append('git_mentes (%s, %s, %s)' % (e1, e2, fajlok))
     for h in hibak:
         print('ÖNTESZT HIBA: ' + h, file=sys.stderr)
     print('önteszt: %s' % ('HIBA' if hibak else 'rendben'))
     return 1 if hibak else 0
+
+
+def git_mentes(uzenet, utak=None, push=True, cwd=None):
+    """Az `utak` (alap: f22/vakproba/) commitja és pusholása. Csak a megnevezett utak kerülnek bele.
+    Visszaad: 'commit' | 'nincs_valtozas' | 'hiba'. A push hibája csak figyelmeztetés."""
+    import subprocess
+    import tempfile
+    cwd = cwd or tokenek.ROOT
+    utak = utak or ['f22/vakproba']
+
+    def git(*args):
+        return subprocess.run(['git', '-c', 'i18n.commitEncoding=UTF-8'] + list(args), cwd=cwd,
+                              capture_output=True, text=True, encoding='utf-8')
+    if git('add', '--', *utak).returncode != 0:
+        print('GIT-FIGYELMEZTETÉS: a git add nem sikerült', file=sys.stderr)
+        return 'hiba'
+    if git('diff', '--cached', '--quiet', '--', *utak).returncode == 0:
+        return 'nincs_valtozas'
+    with tempfile.NamedTemporaryFile('w', suffix='.txt', delete=False, encoding='utf-8', newline='\n') as f:
+        f.write(uzenet + '\n')
+        uzfajl = f.name
+    try:
+        r = git('commit', '-q', '-F', uzfajl, '--', *utak)
+    finally:
+        os.unlink(uzfajl)
+    if r.returncode != 0:
+        print('GIT-FIGYELMEZTETÉS: a commit nem sikerült: %s' % r.stderr.strip()[:300], file=sys.stderr)
+        return 'hiba'
+    if push:
+        for kiserlet in range(4):
+            if git('push', '-q', '-u', 'origin', 'HEAD').returncode == 0:
+                break
+            time.sleep(2 ** (kiserlet + 1))
+        else:
+            print('GIT-FIGYELMEZTETÉS: a push nem sikerült (a commit megvan helyben)', file=sys.stderr)
+    return 'commit'
 
 
 def main(argv=None):
@@ -466,6 +523,8 @@ def main(argv=None):
     ap.add_argument('--effort', default=None)
     ap.add_argument('--cimke', default=None)
     ap.add_argument('--kor', type=int, default=None)
+    ap.add_argument('--commit', action='store_true', help='a művelet után commit + push (f22/vakproba/)')
+    ap.add_argument('--tetel', default='F77', help='a commit-üzenet tétel-előtagja')
     ap.add_argument('--onteszt', action='store_true')
     a = ap.parse_args(argv)
     if a.onteszt:
@@ -473,18 +532,24 @@ def main(argv=None):
     if not a.parancs or not a.cimke:
         print('HIBA: parancs és --cimke kell', file=sys.stderr)
         return 2
-    if a.parancs == 'bekuld':
-        if not (a.konyv and a.kotegek and a.effort):
-            print('HIBA: --konyv, --kotegek, --effort kell', file=sys.stderr)
-            return 2
-        return bekuld(a.konyv, [int(x) for x in a.kotegek.split(',')], a.effort.split(','), a.cimke)
     if a.parancs == 'allapot':
         allapot(a.cimke)
         return 0
-    if a.parancs == 'begyujt':
-        return begyujt(a.cimke, a.kor)
-    return javit(a.cimke)
-
+    if a.parancs == 'bekuld' and not (a.konyv and a.kotegek and a.effort):
+        print('HIBA: --konyv, --kotegek, --effort kell', file=sys.stderr)
+        return 2
+    kod = 1
+    try:   # a commit hiba/megszakadás esetén is megtörténik: ami addig elkészült, ne vesszen el
+        if a.parancs == 'bekuld':
+            kod = bekuld(a.konyv, [int(x) for x in a.kotegek.split(',')], a.effort.split(','), a.cimke)
+        elif a.parancs == 'begyujt':
+            kod = begyujt(a.cimke, a.kor)
+        else:
+            kod = javit(a.cimke)
+    finally:
+        if a.commit:
+            git_mentes('%s: api_koteg %s (%s)' % (a.tetel, a.parancs, a.cimke))
+    return kod
 
 if __name__ == '__main__':
     sys.exit(main())
