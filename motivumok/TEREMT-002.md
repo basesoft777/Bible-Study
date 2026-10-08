@@ -28,7 +28,9 @@ A motívum tárgya ezért nem a pusztulás általában, hanem egy megnevezett á
 
 **P2. Szemantikai mező-hipotézis.** A *tohu* maga is kettéágazik, ezért a mező két irányt választ szét: a pusztaság / formátlanság ágát (a motívum mezeje) és a semmiség / hiábavalóság ágát (a fölérendelt fogalom felé húzó ág). A pusztaság-ág sztereotip ítélet-szavai (H8077 *semámá*, H0950 *buká*, H1238 *bákak*) egyetlen *tohu*-versben sem állnak a *tohu* mellett; a semmiség-ág szavai (H0657, H0205, H7385, H1892) csak Ézsaiás 40–59 bálvány- és panaszszövegeiben kollokálnak vele.[^p2] Az SDBH a *tohu*-nak két jelentés-egységet ad („waste; desolation; chaos” a Non-Exist, „nothing; useless; worthless; in vain; emptiness” a Worthless doménben),[^domen-tohu] a *bohu*-nak egyet; a pár egyetlen közös doménje a Non-Exist.[^domen-par] A domén támasz, nem a mező-hipotézis helyettesítője.
 
-**P3. Teljes scan.** A H8414 19 versben (20 szó-előfordulás), a H0922 3 versben áll.[^scan-tohu][^scan-bohu] A TAHOT-kivonat ismert hiánya (Jób 40:1–5 és Jób 41) ennyivel gyengíti a „teljes” jelzőt; a három előfordulás-verset nem érinti.
+**P3. Teljes scan.** A H8414 19 versben (20 szó-előfordulás), a H0922 3 versben áll.[^scan-tohu][^scan-bohu] A TAHOT-kivonatból hiányzik a Jób 40:1–5 és a Jób 41; a három előfordulás-vers nem esik ezek közé.
+
+【NAPLO: hatókör — a P3 „teljes” scanje a TAHOT-kivonat egészére fut, nem az ÓSZ kánonjára; a Jób 40:1–5 és a Jób 41 hiánya ennyivel szűkíti.】
 
 **P4. Kollokáció.** H8414 + H0922 egy versben: 1Móz 1:2, Jer 4:23, Ézs 34:11 — pontosan a három előfordulás.[^koll]
 
@@ -146,14 +148,16 @@ A harmadik a remény iránya (Remez, Drash). A Teremtő szándéka a lakhatósá
 
 ## 7. Nyitott kérdések
 
-1. **LXX-döntések.** A három előfordulás LXX-megfelelője (2. pont, „Septuaginta”) fordítói döntésként nincs rögzítve; a lexikonoldal LXX-szakasza erre épül majd.
+1. **LXX-döntések.** A három előfordulás LXX-megfelelőjéről (2. pont, „Septuaginta”) fordítói döntés nincs; ez explicit hiány.
 2. **Az Ézs 34:11 Károli-kereszthivatkozásai.** A dataset Ézs 34:11-re adott listája betűre azonos az Ézs 40:11-ével (pásztor-kép), ezért a vers valódi Károli-célpontjai nem ismertek; az öt hibás célpont elutasított jelölt.[^k-ezs][^d-jel]
-3. **Szótári alap.** A 2. pont BDB-idézete a szótárfájlból készült, magyar fordítása gépi; az előfordulás-sorok BDB-mezői és a szótári hivatkozás-tábla bekötése hiányzik. A BDB két szócikkének héber idézetei a forrásban sérültek (szórend, kötőjel).
-4. **TAHOT-lefedettség.** A Jób 40:1–5 és a Jób 41 hiányzik a héber kivonatból, így a P3 scan ezekre a versekre nem terjed ki. A három előfordulás-verset ez nem érinti.
+3. **Szótári alap.** Az előfordulás-sorokhoz BDB-jelentés és szótári hivatkozás nem tartozik; ez explicit hiány. A BDB két szócikkének héber idézetei sérültek (szórend, kötőjel).
+4. **TAHOT-lefedettség.** A Jób 40:1–5 és a Jób 41 hiányzik a héber kivonatból; a három előfordulás-vers nem esik ezek közé.
 5. **A TEREMT-001 1Móz 1:2-sora.** Ennek a sornak a `funkcio`-ja üres, a `kapcsolodas`-a („formátlan” vizek) pedig a *tohu*-jegyet a *tehóm*-sorba viszi át; az elhatárolás (3. pont, Remez) akkor teljes, ha a TEREMT-001 sora is kitöltődik.[^gate]
-6. **Nevesített tanító.** Nincs feldolgozva; a 7. lépés önálló menet.
+6. **Nevesített tanító.** Nevesített tanítói egyezés nincs; ez explicit hiány.
 7. **A vitatott pont képviselői.** A restitúciós olvasat nevesített képviselői forrás híján nincsenek bemutatva (3. pont, ⚠️).
-8. **A régi kifejezés.** A „teremtés-visszavonás” kifejezés más fájlokban (napló „Lásd még”, changelog, HAMART-001-napló és -lexikon, a fájl végi archív blokkok) még áll; ez a próza a motívum címének megfogalmazását követi („a föld kietlen és puszta állapota a teremtéskor és az ítéletkor”), és a visszautalást visszarendeződésként, nem a teremtés visszavonásaként írja le.
+8. **A régi kifejezés.** A motívum nem a teremtés visszavonását állítja, hanem a föld visszarendeződését a teremtés előtti állapotba („a föld kietlen és puszta állapota a teremtéskor és az ítéletkor”).
+
+【NAPLO: folyamat (F64.12, az L2 szerint a 7. pontból kiemelve) — 1. az LXX-döntések rögzítése (`adat/lxx_dontesek.tsv`) a #12b-é, a lexikonoldal LXX-szakasza erre épül; 3. a 2. pont BDB-idézete a `konkordancia/BDB_teljes_unabridged.tsv`-ből készült, magyar fordítása gépi (`forditasok.tsv`, `allapot=opus`), a BDB-mezők és a `lexikon_hivatkozasok`-bekötés a #12b-é, a héber idézetek sérülése a forrásfájlban van, nem javítva; 4. a P3 scan hatóköre a Jób 40:1–5 és a Jób 41 hiányával szűkebb a kánonnál; 6. a 7. lépés (nevesített tanító) önálló menet, nem futott, nem a #64 hatóköre; 8. a „teremtés-visszavonás” kifejezés más fájlokban (napló „Lásd még”, changelog, HAMART-001-napló és -lexikon, a fájl végi archív blokkok) még áll.】
 
 【NAPLO: N25 — a kifejezés rendezése ebben a forrásban megtörtént (a próza nem használja motívumnévként); a többi fájl az `ir`-en kívül esik, a #64 nem írja. N22 — az Ézs 34:11 Károli-KH adathiba; N17 — a régi zsoltár-kivonat eltolása (a zsoltár-jelöltek régi `lxx-hid` sorai); mindkettő változatlanul nyitott.】
 

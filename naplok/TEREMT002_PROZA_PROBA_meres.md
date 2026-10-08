@@ -15,7 +15,7 @@ Ez az író saját mérése, nem független ellenőrzés; a független ellenőr 
 | ebből friss `lekerdez.py`-futás | 20 (gerinc 1, kollokacio 1, scan 2, domen 2, lxx-hid 3, karoli 11) |
 | sorkivonat `split('\t')`-tel (nem `lekerdez.py`) | 5 (TAHOT 1, BDB 2, `forditasok.tsv` 2) |
 | adattábla-olvasás / `manual` (T1-naplók) | 4 / 3 |
-| `【NAPLO】` blokk | 10 |
+| `【NAPLO】` blokk | 12 (F64.12 előtt 10) |
 | `SZINT` / `INAKTÍV` / `ADAT-NÉZET` jelölő | 7 / 6 / 5 |
 | archív blokk karakterre azonos | igen (3 blokk) |
 | `【NAPLO` a próbarenderben | 0 |
@@ -41,7 +41,7 @@ Ez az író saját mérése, nem független ellenőrzés; a független ellenőr 
 | Pont | Forrásproza | Próbarender |
 |---|---|---|
 | **L1** szerkezeti teljesség | **teljesül** (átfordítva) | **nem** |
-| **L2** napló-jelölés kötelező | **részben** | **részben** |
+| **L2** napló-jelölés kötelező | **teljesül** (F64.12) | **részben** |
 | **L3** lexikai vs. tematikus | **teljesül** | **részben** |
 | **L4** kereszt-motívum szennyeződés | **teljesül** | **teljesül** |
 | **L5** nevesített tanítói szakasz | **teljesül** (hiányjelzéssel) | nem alkalmazható |
@@ -52,7 +52,7 @@ Ez az író saját mérése, nem független ellenőrzés; a független ellenőr 
 
 **L1.** *Forrás:* a 13-szakaszos TUDOMÁNYOS-lista a lapra szól (M0 3. pont); átfordítva a tematikus sablon aktív `kezi_forras` szakaszai mind jelen vannak (Kivonat, 2., 3. a négy réteggel és a Vitatott pontokkal, 5., 7.), az inaktívak `INAKTÍV`-jelölővel, üres cím nélkül, az `adat` szakaszok `ADAT-NÉZET`-jelölővel. *Render:* lexikonoldal nincs, a 13 szakasz nem ellenőrizhető; a próza egyetlen szakasza sem jelenik meg.
 
-**L2.** *Forrás:* minden dátum-, eredet- és döntés-megjegyzés NAPLO-blokkban áll, prózai mondatba ágyazva nem. **Részben**, mert a 7. pont (Nyitott kérdések) tételei természetüknél fogva adatállapotot írnak le tartalmi mondatban („fordítói döntésként nincs rögzítve”, „magyar fordítása gépi”), és a P1–P7 (belso) egy mondata a TAHOT-rés hatását írja („ennyivel gyengíti a »teljes« jelzőt”). A sablon nem mondja meg, hogy a módszertan-/nyitott-kérdés-rés ilyen állapotmondatai tartalomnak vagy naplónak számítanak — #23 M1-kérdés. *Render:* 0 NAPLO; a `kuszob` blokk helyőrző-sora („a bekezdés-próza a G2 után … fűződik ide”) folyamatjelzés a nyilvános nézetben.
+**L2.** *Forrás:* **teljesül (F64.12).** Minden dátum-, eredet-, döntés- és folyamat-megjegyzés NAPLO-blokkban áll, prózai mondatba ágyazva nem. Az F64.12 a 7. pont és a P3 hat folyamat-/állapotmondatát (rögzítés a #12b-nél, gépi fordítás és forrásfájl, scan-hatókör, „önálló menet”, a régi kifejezés más fájlokban) két új NAPLO-blokkba emelte; a tartalmi mondatban csak a hiány ténye maradt („explicit hiány”). *Az F64.12 előtti ítélet (részben) indoka:*  a 7. pont (Nyitott kérdések) tételei természetüknél fogva adatállapotot írnak le tartalmi mondatban („fordítói döntésként nincs rögzítve”, „magyar fordítása gépi”), és a P1–P7 (belso) egy mondata a TAHOT-rés hatását írja („ennyivel gyengíti a »teljes« jelzőt”). A sablon nem mondja meg, hogy a módszertan-/nyitott-kérdés-rés ilyen állapotmondatai tartalomnak vagy naplónak számítanak — #23 M1-kérdés. *Render:* 0 NAPLO; a `kuszob` blokk helyőrző-sora („a bekezdés-próza a G2 után … fűződik ide”) folyamatjelzés a nyilvános nézetben.
 
 **L3.** *Forrás:* az Ézs 45:18 és az Ézs 24:10 „a formula szempontjából tematikus, nem lexikai” jelölést kap (a versben a *tohu* áll, a pár nem), a 2Kir 21:13 / JSir 2:8 mérőkötél-képe „tematikus, nem lexikai”. *Render:* a kapcsolat-nézet nem renderelődik (a lexikonoldal hiányzik), a kereszthivatkozás-napló az elutasítást indoklással hozza, de a „tematikus, nem lexikai” címke nem jelenik meg.
 
