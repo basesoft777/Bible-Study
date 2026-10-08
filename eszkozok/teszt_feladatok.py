@@ -536,6 +536,8 @@ class TervMutatoTest(Alap):
         self.assertEqual(self.hibak(), [])
         self.terv(self.tabla('| a | DT-M7 | — |'))
         self.assertEqual(len(self.hibak()), 1)
+        self.terv(self.tabla('| a | DT5 (13) | — |'))
+        self.assertEqual(self.hibak(), [])
 
     def test_nem_letezo_szam_hiba(self):
         self.terv(self.tabla('| rossz elem | #99 | csonk |', '| jo | #1 | csonk |'))

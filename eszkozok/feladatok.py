@@ -247,7 +247,7 @@ MUTATO_KEZDET = re.compile(r'^<!--\s*TERVELEM-MUTATO(?:\s+oszlop=(.*?))?\s*-->$'
 MUTATO_VEGE = re.compile(r'^<!--\s*/TERVELEM-MUTATO\s*-->$')
 MUTATO_JELOLES = re.compile(r'elavult|feltételes|lezárva', re.IGNORECASE)
 MUTATO_SZAM = re.compile(r'(?<![\w&])#(\d+)')
-MUTATO_DT = re.compile(r'(?<![\w-])(DT-[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*|D\d+)(?![\w-])')
+MUTATO_DT = re.compile(r'(?<![\w-])(DT-[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*|DT\d+|D\d+)(?![\w-])')
 DONTES_SOR = re.compile(r'^\|\s*(D[A-Za-z0-9-]*)\s*\|')
 
 
