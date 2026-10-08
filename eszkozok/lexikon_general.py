@@ -837,27 +837,26 @@ def _szerep_tartalom(nyelv, n, tokenek_ny, reszek):
     return out
 
 
-# DT-F78d: a TBESH-szöveg (Online Bible-eredetű) a DT-F42a szerint kikerült; az `adatosítva` héber 1. szerepnél
-# a szerep forrása a táblában változatlanul TBESH, a render a meglévő BDB-sorokra hivatkozik (új adatsor nélkül).
-SZEREP_KIVALTO = {('heber', 1): 'BDB'}
+# DT-F78d (lezárva): a TBESH (CC BY 4.0, DT-F33f) a héber 1. szerep forrása marad, `adatosítva`; a DT-F42a csak a
+# H7121 „részlet” sorát váltotta ki BDB-vel. Tokenenkénti mutató az üres blokkon; a többi token a #9-re mutat.
+SZEREP_TOKEN_MUTATO = {
+    ('heber', 1, 'H7121'): 'a H7121 alapjelentését a BDB 2.c adja (DT-F42a)',
+}
 
 
-def _kivalto_hivatkozas(nyelv, n, tokenek_ny, reszek):
-    """Hivatkozás-sorok a meglévő kiváltó szótári sorokra; üres lista, ha egyik tokenhez sincs ilyen sor."""
-    szotar = SZEREP_KIVALTO.get((nyelv, n))
-    if not szotar:
+def _token_ures_blokkok(nyelv, n, szerep, tokenek_ny):
+    """Tokenenkénti jelölt üres blokkok, ha legalább egy tokennek van mutatója; különben üres lista
+    (az általános, szerep-szintű üres blokk lép életbe)."""
+    if not any((nyelv, n, t) in SZEREP_TOKEN_MUTATO for t in tokenek_ny):
         return []
-    sorok, van = [], False
+    out = []
     for t in tokenek_ny:
-        bl = [b[1][0] for b in reszek[t]['forras_blokkok'] if b[0] == szotar]
-        if bl:
-            van = True
-            cimek = '; '.join(c.split(' — ', 1)[1] if ' — ' in c else c for c in bl)
-            sorok.append('**%s** · *Hivatkozás: meglévő %s-sor (DT-F42a kiváltás): %s %s — %s (l. a 2. szerepnél).*'
-                         % (t, szotar, szotar, t, cimek))
-        else:
-            sorok.append('*%s: nincs meglévő %s-sor sem.*' % (t, szotar))
-    return sorok if van else []
+        mutato = SZEREP_TOKEN_MUTATO.get(
+            (nyelv, n, t), 'adatosítva, nincs bekötve; a bekötés a #9 dolga')
+        out.append('<!-- ÜRES-BLOKK: %s | adatosítva, nincs bekötve -->\n'
+                   '**%s** · *(üres blokk: %s; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*'
+                   % (szerep, t, mutato))
+    return out
 
 
 def _szerep_blokk(nyelv, sor, tokenek_ny, reszek):
@@ -871,8 +870,8 @@ def _szerep_blokk(nyelv, sor, tokenek_ny, reszek):
         elif (nyelv, n) in SZEREP_HIVATKOZAS and (nyelv, n) not in SZEREP_SAJAT:
             hiv = SZEREP_HIVATKOZAS[(nyelv, n)]
             szakasz.append('*Hivatkozás: %s%s*' % (hiv, '' if hiv.endswith('.') else '.'))
-        elif _kivalto_hivatkozas(nyelv, n, tokenek_ny, reszek):
-            szakasz.extend(_kivalto_hivatkozas(nyelv, n, tokenek_ny, reszek))
+        elif _token_ures_blokkok(nyelv, n, szerep, tokenek_ny):
+            szakasz.extend(_token_ures_blokkok(nyelv, n, szerep, tokenek_ny))
         else:
             # DT-F78c 1.: harmadik állapot, mutatóval a #9-re (a bekötés a #9 dolga)
             szakasz.append(ures_blokk(szerep, 'adatosítva, nincs bekötve',
