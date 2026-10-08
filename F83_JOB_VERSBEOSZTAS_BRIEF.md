@@ -5,7 +5,8 @@ kod: JOB_VERSBEOSZTAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/f83-job-versbeosztas
 ad: "Jóváhagyott Jób 38–42 versmegfeleltetés (1:2 / 2:1 esetekkel), a három ellenőrzés eredményével; a Jób bekerülhet a VERSBEOSZTAS_JOVAHAGYOTT-ba"
 kovetkezo: "⛔ a kézi megfeleltetési táblázat előtt (a felhasználó jóváhagyása). Nyitott a befogadáskor: (a) az 1. ellenőrzés forrása — a nyers TAHOT-fájl nincs a repóban, csak a kivonat; a Macula_heber_Job.tsv (MT/WLC) vagy a STEPBible-fájl letöltése (külön engedély); (b) az 1:2 / 2:1 támogatásáról döntés DT-F83a helyőrzővel (l. naplok/F22_versbeosztas_jovahagyas.md, Jób-sor); (c) az N-F41g (Jób 38–41 MT-számozás a BSB-ben) átfedése: a jelentés lezárja-e, vagy külön tétel marad. A #22-vel nem fut párhuzamosan (KIZAR: f22/versmegfeleltetes_kezi.tsv)."
 fugg: []
