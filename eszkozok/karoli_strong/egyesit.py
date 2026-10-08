@@ -288,6 +288,22 @@ def bemeneti_ts(konyv, gyoker=None):
     return ts or 'manual'
 
 
+def _kezi_sorok():
+    """A kézi versmegfeleltetés-javítások nyers sorai (karoli, eredeti, tipus)."""
+    with open(tokenek.VERSMEGF_KEZI, encoding='utf-8') as f:
+        return [tuple((x.rstrip('\n').rstrip('\r').split('\t') + ['', '', ''])[:3]) for x in f if x.strip() and not x.startswith('#')][1:]
+
+
+def api_futas(konyv, gyoker=None):
+    """Az éles jsonl modell-mezője szerint API-futás volt-e (alapból subagentes)."""
+    f = utak(konyv, gyoker)['sonnet']
+    if not os.path.exists(f):
+        return False
+    with open(f, encoding='utf-8') as h:
+        elso = h.readline()
+    return '(API' in elso
+
+
 def proveniencia_sor(konyv, gyoker=None):
     """A táblák első sora (SEMA 1.5/2.20): `#`-kezdetű, az olvasók átugorják; scope=manual, mert a tábla
     modell-kimenet (javaslat), nem `lekerdez.py`-eredmény."""
@@ -299,14 +315,17 @@ def proveniencia_sor(konyv, gyoker=None):
         forras += ['f22/valaszok/sonnet/%s_javito.jsonl' % n, 'f22/valaszok/c/%s_javito.jsonl' % n]
     if any(tokenek.igehely_bont(r[0] or r[1])[0] == konyv for r in tokenek.versmegfeleltetes()):
         forras.append('f22/versmegfeleltetes.tsv')
+    if os.path.exists(tokenek.VERSMEGF_KEZI) and any(
+            tokenek.igehely_bont(r[0] or r[1])[0] == konyv for r in _kezi_sorok()):
+        forras.append('f22/versmegfeleltetes_kezi.tsv')
     if any(tokenek.igehely_bont(o['karoli'])[0] == konyv for o in tokenek.versosszevonasok()):
         forras.append('f22/versosszevonas.tsv')
     forras += ['konkordancia/TAHOT_kivonat.tsv', 'konkordancia/Karoli_1908.tsv']
     if csak_sonnet:
         return ('# proveniencia: scope=manual | forras=%s | ts=manual (csak Sonnet, DT-F22c: nincs C futásnapló; a '
-                'subagent-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link '
+                '%s-futásnak nincs lekérdezés-időbélyege) | modell-kimenet, javaslat: nem lekérdezés-eredmény; minden link '
                 '`alacsony` (egy modell, nincs egyezés); a strong a TAHOT-ból, modell nem írja | előállítás: '
-                'eszkozok/karoli_strong/egyesit.py' % ', '.join(forras))
+                'eszkozok/karoli_strong/egyesit.py' % (', '.join(forras), 'API (Batch)' if api_futas(konyv, gyoker) else 'subagent'))
     return ('# proveniencia: scope=manual | forras=%s | ts=%s (a C futásnapló utolsó hívása%s; az újraépítés '
             'így bájtra azonos) | modell-kimenet, javaslat: nem lekérdezés-eredmény; a bizonyossag '
             'nem "ellenőrizve"; a strong a TAHOT-ból, modell nem írja | előállítás: eszkozok/karoli_strong/egyesit.py'
