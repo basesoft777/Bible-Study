@@ -3,7 +3,7 @@ feladat: 62
 cim: Egységes Strong-normalizáló függvény — egyetlen strong_normalizal() a lekérdezőben és a betöltőben
 kod: STRONG_NORMALIZAL
 tipus: feladat
-fazis: folyamat
+fazis: 1
 modell: sonnet
 munka: folyamat
 allapot: nem_indult

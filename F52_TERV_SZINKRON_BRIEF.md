@@ -7,10 +7,10 @@ fazis: folyamat
 modell: sonnet
 munka: folyamat
 allapot: nem_indult
-ad: a három tervdokumentum (ADATVAGYON_TERV, MUNKATERV, VIBE_GUIDE) hatályos állapotának átvezetése a repó döntéseire és státuszaira; ismétlődő
+ad: a tervdokumentumok (ATALAKITASI_TERV, ADATVAGYON_TERV, MUNKATERV, VIBE_GUIDE) hatályos állapotának átvezetése a repó döntéseire és státuszaira, és fordítva: a terv minden feladat-, lépcső- és döntés-eleme feladatban, briefben vagy DONTESEK-tételben (naplóban nem maradhat); ismétlődő
 kovetkezo: "ismétlődő; a brief 2. pontja szerinti eseményeknél indul (viszonyítási pont: a 2. futás, PR #219 mergelve 2026-10-06, DT49 alkalmazva; napló: naplok/F52_TERV_SZINKRON_naplo.md)"
-olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, FELADATOK.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, CLAUDE.md, MUNKAMENET.md]
-ir: [ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, ATALAKITASI_TERV.md.md, CLAUDE.md, naplok/F52_TERV_SZINKRON_naplo.md, naplok/ELLENOR_TERV_SZINKRON.md, DONTESEK.md]
+olvas: [ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, FELADATOK.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, CLAUDE.md, MUNKAMENET.md]
+ir: [ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, ATALAKITASI_TERV.md.md, CLAUDE.md, naplok/F52_TERV_SZINKRON_naplo.md, naplok/ELLENOR_TERV_SZINKRON.md, DONTESEK.md, "beerkezo/TERV_SZINKRON_*.md"]
 fugg: []
 helyi_gep: nem
 ---
@@ -32,6 +32,13 @@ verziósort ír, és naplózza, mit változtatott és miért.
 A szinkron nem újraírás. Ami nem változott a repóban, az a tervdokumentumban sem
 változik; stilisztikai vagy szerkezeti javítás nem a feladat része.
 
+**Két irány (DT-F52g (19)–(20), 2026-10-08).** A repó → terv irány mellett a futás a
+terv → feladat irányt is behajtja: a négy tervdokumentum (az `ATALAKITASI_TERV.md.md`
+az alap, a másik három a kiegészítése) minden feladatként, lépcsőként, teendőként vagy
+döntésként megnevezett eleme vagy feladatban (FELADATOK-sor, brief), vagy
+`DONTESEK.md`-tételben áll, vagy a terv „elavult”/„feltételes”-nek jelöli. **Terv →
+feladat tétel nem maradhat naplóban** (l. 4. pont, 3b).
+
 ## 2. Mikor fut (kiváltó események)
 
 A feladat ismétlődő. Egy futás akkor indul, ha az alábbiak egyike bekövetkezett
@@ -43,6 +50,7 @@ a legutóbbi szinkron óta (a napló utolsó bejegyzése a viszonyítási pont):
 | új `DT-` tétel a `DONTESEK.md`-ben, amelynek *érintett fájlja* a három tervdokumentum egyike, vagy amely licencet, forrást, sorrendet, sémát módosít | a tervdokumentum döntés előtti állapotot írna |
 | a `#51` KONZISZTENCIA CI-szabálya a három dokumentum egyikét jelzi | gépi jelzés a driftre |
 | a MUNKATERV egy hulláma lezárult (a hullám minden feladata ✅ vagy ⛔) | a következő hullám bemenetei változhattak |
+| a terv → feladat gépi őr (`feladatok.py ellenoriz`) vagy a `/konzisztencia` 5. kategóriája tervelemet jelez feladat nélkül | a terv → feladat rés (DT-F52g (19)) |
 | a felhasználó kéri | — |
 
 Ha egyszerre több esemény áll fenn, egy futás kezeli mindet.
@@ -82,6 +90,18 @@ Ha egyszerre több esemény áll fenn, egy futás kezeli mindet.
    - a MUNKATERV javasolt sorszámai (`#5x`) a FELADATOK-ban véglegesített számra
      cserélve, ha ott már állnak.
    Amit a döntés nem érint, ahhoz ne nyúlj.
+3b. **Terv → feladat (DT-F52g (19)).** Vedd sorra a négy terv feladat-, lépcső-,
+   teendő- és döntés-elemeit, és vesd össze a `FELADATOK.md`-vel (`feladatok.py
+   fuggesek`, `jeloltek`), a briefek fejlécével és szövegével és a `DONTESEK.md`-vel.
+   Minden résre pontosan egy kimenet, **soha nem csak napló**:
+   - **átvezetés**, ha gépies és a saját `ir`-ed alá esik (terv-jelölés „elavult”/
+     „feltételes”, státusz, hivatkozás);
+   - **`DONTESEK.md`-tétel** (`DONTES_KERDES_SABLON.md`), ha döntést igényel;
+   - **befogadási csonk-javaslat** a `beerkezo/` mappába, `TERV_SZINKRON_<kód>.md` néven (a szűk név miatt nem ütközik más feladat `beerkezo/`-írásával) (a `/befogad` fogadja be, a
+     felhasználó jóváhagyásával), ha új feladat kell;
+   - **⛔**, ha a kettő közül nem dönthető el, melyik.
+   A naplóban a rés a kimenete hivatkozásával áll (DT-tétel, csonk, ⛔); a „Nyitott a
+   következő futásra” táblába csak hivatkozással kerülhet tétel.
 5. **Döntésnapló-sor** mindhárom dokumentumban, ha változott: `dátum | vN: <mi
    változott, melyik DT/N/#-re hivatkozva> | státusz`. A verziószám eggyel nő.
 6. **Kiindulási állapot sor** az `ADATVAGYON_TERV.md` döntésnaplója fölé (vagy a
@@ -124,12 +144,15 @@ teljes átvezetés a jóváhagyás után.
    adnak régi alakot).
 5. A döntésnapló-sor és a kiindulási állapot sor bent van.
 6. A dokumentum többi része bájtazonos a futás előttivel.
+7. Terv → feladat (3b): a naplóban nincs olyan rés, amely mellett ne állna
+   DT-tétel, befogadási csonk-javaslat vagy ⛔; a `feladatok.py ellenoriz` 0 hiba.
 
 ## 8. Nincs benne
 
 A tervdokumentumok tartalmi továbbgondolása, új szakasz, új javaslat; a repó más
-fájljainak módosítása; a FELADATOK/DONTESEK szerkesztése (az a kiváltó eseményé);
-a `#51` CI-szabály implementálása.
+fájljainak módosítása; a FELADATOK szerkesztése (a generált blokk az Action-é, új
+sor a `/befogad`-é); a DONTESEK-be csak a 3b szerinti új tétel kerül; a `#51`
+CI-szabály implementálása.
 
 ## 9. Megjegyzés a chat-dokumentumokhoz
 
@@ -142,3 +165,4 @@ hatályos, ha md-ként visszakerül a repóba és ezen a briefen átmegy.
 | verzió | dátum | változás | ok |
 | --- | --- | --- | --- |
 | 1.0 | 2026-10-04 | első változat | a tervdokumentumok elavulása a D34–D41 / DT-F33e–j átvezetése után; a szinkron ritmusát a repó eseményei adják, nem a chat |
+| 1.1 | 2026-10-08 | a terv → feladat irány (3b, 7. elfogadási pont, új kiváltó esemény); az `ATALAKITASI_TERV.md.md` a hatókörben; `ir` + `beerkezo/` | DT-F52g (19)–(20), TERV-INTEGRÁCIÓ: a terv → feladat tételek a naplóban maradtak, és senki nem hajtotta be őket |

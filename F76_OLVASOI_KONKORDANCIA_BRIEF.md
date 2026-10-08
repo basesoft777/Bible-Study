@@ -3,14 +3,14 @@ feladat: 76
 cim: Olvasói konkordancia motívum nélkül (#25a)
 kod: OLVASOI_KONKORDANCIA
 tipus: feladat
-fazis: 2
+fazis: 1
 modell: sonnet
 allapot: brief_kell
-olvas: [ADATVAGYON_TERV.md, MUNKATERV.md]
+olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, adat/szotar_szerepek.tsv, adat/SEMA.md, adat/licencek.tsv]
 nem_fugg: [52]
 ad: vers- és szó-lap, variancia-térkép, magyar frázis-keresés és konkordancia motívum nélkül, kereséssel (ADATVAGYON_TERV 4. szakasz, 1–6, 13–16, 18–20. pont)
-kovetkezo: brief a hosting ⛔ előtt; előbb az SQLITE_EPIT feladatként felveendő
-fugg: [44]
+kovetkezo: brief a hosting ⛔ előtt, a #79 (SQLITE_EPIT) után; a briefbe: DT-M4/DT-M6 🟢 (DT-F52e), az openbible-import befogadása (DT34, DT-F52f (14)), szó-lap a szerepmátrix szerint (#78), az idézési szabály és a saját réteg licencének DT-tétele a publikálás előtt (DT-F52g (17))
+fugg: [44, 79]
 ---
 
 # F76_OLVASOI_KONKORDANCIA_BRIEF — csonk
@@ -18,9 +18,9 @@ fugg: [44]
 *FELADATOK #76 (= a DT-M1 #25a-ja) · csonk-brief: nem végrehajtható, csak a feladat fejlécét és a briefbe tartozó bemeneteket hordozza · döntés: DT-M1*
 
 - **Mit ad, ha kész:** az olvasói felület első, motívum nélküli kiadása: vers- és szó-lap, variancia-térkép, magyar frázis-keresés, konkordancia, kereséssel. A motívumos nézet a #25 (#25b) dolga.
-- **Következő lépés:** brief a hosting ⛔ előtt.
-- **Függés:** #44 (kész). A DT-M1 az SQLITE_EPIT-re is függést ír, de ez még nincs feladatként felvéve; a `fugg` mezőbe a felvétele után kerül.
-- **A DT-M1 szerint a briefbe tartozó feltételek:** DT-M4, DT-M6, hosting ⛔, nem kereskedelmi mód, N-F33b (mezőszintű forrás- és licencjelölés).
+- **Következő lépés:** brief a hosting ⛔ előtt, a #79 (SQLITE_EPIT) után.
+- **Függés:** #44 (kész), #79 (SQLITE_EPIT, DT-F52f (12)). **Fázis:** `1` — a D1 kiegészítése (DT-F52d (7), FELADATOK D-F52a): a #76 a kész Károli–Strong könyvekkel indulhat, az 1. fázis lezárása nélkül.
+- **A DT-M1 szerint a briefbe tartozó feltételek:** DT-M4 és DT-M6 (🟢, DT-F52e), hosting ⛔, nem kereskedelmi mód, N-F33b (mezőszintű forrás- és licencjelölés); az openbible-import befogadása (DT-F52f (14)); az idézési szabály és a saját réteg licencének DT-tétele a publikálás előtt (DT-F52g (17)).
 
 ## Bemenet a hosting ⛔-hez és a CI-hez
 

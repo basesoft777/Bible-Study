@@ -81,7 +81,7 @@ A TSV olvasása/írása `split('\t')` / `'\t'.join()`, a `CLAUDE.md` TSV-szabál
 Az ügynök utasítása. Csak olvas, egyetlen fájlt ír: `naplok/konzisztencia/KONZISZTENCIA_<ééééhhnn>.md`.
 - Beolvassa a döntésforrásokat (K0 listája) és a belépési dokumentumokat (`CLAUDE.md`, `MUNKAMENET.md`, `RENDER_BRIEF.md`, `adat/SEMA.md` fejezetcímei, `sablonok/`), a `CLAUDE.md` „Ezt olvasd, ezt ne” szabályai szerint (az archívumot és a changelogokat nem).
 - Lefuttatja az E25-öt `--teljes` módban, és a kimenetét beemeli.
-- Keresi: (1) döntés, amely egy belépési dokumentumnak ellentmond, és nincs a `dontes_hatas.tsv`-ben; (2) ütköző döntés-azonosítók; (3) ugyanaz a szó két jelentésben (pl. „tanulmány”); (4) 14 napnál régebben ⬜ továbbvivő feladat.
+- Keresi: (1) döntés, amely egy belépési dokumentumnak ellentmond, és nincs a `dontes_hatas.tsv`-ben; (2) ütköző döntés-azonosítók; (3) ugyanaz a szó két jelentésben (pl. „tanulmány”); (4) 14 napnál régebben ⬜ továbbvivő feladat; (5) *(2026-10-08, DT-F52g (19))* tervelem feladat vagy brief-tartalom nélkül: a három terv (`ATALAKITASI_TERV.md.md`, `MUNKATERV.md`, `ADATVAGYON_TERV.md`) — ezek a beolvasott döntésforrások közé tartoznak — feladatként, lépcsőként, teendőként vagy döntésként megnevezett eleme, amely nincs FELADATOK-sorban, briefben vagy DONTESEK-tételben, és nincs „elavult”/„feltételes” jelölése.
 - Minden találat: idézet mindkét helyről (fájl:sor), egy mondat arról, miért ütközik, és javaslat: `dontes_hatas.tsv`-sor, `/befogad`-jelölt vagy `DONTESEK.md`-tétel. **Javítást nem végez, nem commitol, nem pushol.**
 - Ha nincs találat, a jelentés ezt mondja ki (üres eredmény elfogadható kimenet).
 - Az előző jelentéshez képest csak az új találatokat emeli ki az elején.
@@ -112,3 +112,4 @@ A naplóba: heti egy futás (javasolt: hétfő 9:00), helyi ütemezett feladatk�
 |---|---|---|
 | v1 | 2026.10.04 | első változat a chatben (kiinduló eset: D34 ↔ `CLAUDE.md` / `RENDER_BRIEF.md` / `MUNKAMENET.md`) |
 | v2 | 2026.10.05 | DT-F51-6: a jelentés helye `.claude/konzisztencia/`; a 3. pont `naplok/konzisztencia/` útvonala ennek a döntésnek a régi állapota |
+| v3 | 2026.10.08 | DT-F52g (19) (TERV-INTEGRÁCIÓ, kemény zár 2. rétege): a `/konzisztencia` 5. kategóriája (tervelem feladat vagy brief-tartalom nélkül); a három tervdokumentum a beolvasott döntésforrások közé kerül. Ok: a #51 négy kategóriája csak a döntés → dokumentum irányt nézte, a terveket nem olvasta, ezért a terv → feladat rés nem jelzett (`naplok/TERV_INTEGRACIO_leltar.md`). |

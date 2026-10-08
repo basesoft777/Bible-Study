@@ -8,7 +8,7 @@ modell: opus
 munka: ertelmezo
 allapot: nem_indult
 ad: az ISTENTISZT-001 2/b rése csak prózát tartalmaz; a jelentőség-bekezdések a `miert_fontos` rés `#### H7121`, `#### H8034`, `#### G0994` alszakaszaiban állnak; a G0994-megjegyzés javítva (F05 K12)
-kovetkezo: /kovetkezo; a #9 után, a közös fájl miatt a #55 után
+kovetkezo: befagyasztva a #11 1. lépcsőjéig (DT-F52c (3): a régi forrásréteg és az éles lexikon nem bővül a régi szerkezet szerint); a #9 után, a közös fájl miatt a #55 után; a Strong-szerinti alszakaszok a #78 vázához igazítandók
 fugg: [9]
 olvas: [tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md, tematikus_lezart/naplok/Segitsegul_hivni_az_Urat_kereszthivatkozas_naplo.md, lexikon/, F05_SZOTAR_BRIEF.md]
 ir: [tematikus_lezart/Segitsegul_hivni_az_Urat_tematikus.md]

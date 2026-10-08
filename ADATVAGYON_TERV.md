@@ -12,6 +12,7 @@
 | **Sorszámok:** a repóban már van #48 KJV_REGI_KIVEZETES, #49 FOLYTATAS (merge-elve), #50 CI_JAVITO_KOR, **#51 KONZISZTENCIA** (döntések átvezetésének gépi ellenőrzése). | A MUNKATERV javasolt #47–#55 sorszámai ütköztek ezekkel; a felhasználó döntése (DT-F52a, 2026-10-04) szerint a MUNKATERV és a VIBE\_GUIDE a FELADATOK számaihoz igazodik: a még be nem fogadott tervezett feladatok a kódjukkal szerepelnek (`SQLITE_EPIT`, `OLVASOI_KONKORDANCIA` …), számot a `/befogad` ad; a `#nn` alak mindhárom tervdokumentumban FELADATOK-szám. A #51 pontosan a tervdokumentumok elavulását őrzi — a szinkron ritmusát ő adja, nem a chat. |
 | **Státuszok (2026-10-06):** #22 ⛔ megállt (1–5Móz és Józs kész, a Józs PR mergelve; a következő könyv a Bírák); #43 ✅ (PR #167; DT-F43: 86 sor: 24 egyezik, 3 eltér, 46 nincs adat; a bridge nem független második forrás, csak tájékoztató réteg); #42 ✅ (PR #176), #44 ✅ (PR #205), #30 ✅ (PR #206), #51 ✅ (PR #192), #53 ✅, #57 ✅ (PR #209), #58 ✅ (PR #208), #56 ✅ (PR #218), #46 ✅; #38 ▶ (5 adag kész, a 6. adag a #56 adatblokkjával, DT-F38i 🟢); #9 a #23-tól is függ; #11 a #9 és #23-tól, első lépcső ISTENTISZT-001; #37 függése #30 ✅, #32 ✅. N29 lezárva, az ASV nem jön (D7). | A 15., 16. szakasz és a 21. workflow 1. lépcsője ennek megfelelően értendő; a 26-os pont (LXX-híd ★) a DT-F43 (a) szerint tájékoztató réteg, a bizonyosság a DT23 szerint. |
 | **2026-10-04 óta eldöntve (2. futás):** **DT-M1** 🟢 — az olvasói konkordancia motívum nélkül a #25 előtt: a #25 kettéválik (#25a = OLVASOI\_KONKORDANCIA, függ SQLITE\_EPIT; #25b motívumos nézet, függ #11, #12, #23; a kettéválasztás külön `/befogad`); **DT-M2** 🟢 új `AZONOSITAS_MODJA` érték: `szó-szintű-gépi`; **DT-M3** 🟢 az `auditok.lepes` a kutatási lépés kódja, lépésen kívül `adhoc`, a csatorna a proveniencia-sorban (#61); **DT-M7** 🟢 az MCP-szerver feltételes (előbb a #61); **DT-M8** 🟢 a TERV\_BEFOGAD külön brief nélkül záródik; **DT-F42d, DT-F42g** — a `KJV_Strongs_teljes` Strong-címkéi `tisztazatlan`, a licenc-címke egyetlen forrása a `licencek.tsv` `cimke` oszlopa; **DT-F42f** — az LXX\_kivonat kivezetve; **DT31–DT34** — a `karoli_bible_hu` elvetve (DT31), az openbible 4 sora `hianyzik` + JELÖLT (DT33), az import külön feladat (DT34). Számot kapott tervezett feladatok: #56 (BDB\_ADATBLOKK), #62 (STRONG\_NORMALIZAL), #63 (JELOLTEK\_RETRO), #65 (KAROLI\_ELLENORZES); új feladatok: #54, #55, #59, #60, #61, #64, #66. | A 0., 9., 13., 15., 16., 17.1, 19., 21., 22.2 és 22.4 szakasz ennek megfelelően értendő; ahol a törzs ezt felülírja, a v15 sor jelöli. |
+| **2026-10-08 (TERV-INTEGRÁCIÓ, DT-F52c–g):** a terv → feladat irány átvezetve: SQLITE\_EPIT = #79, OLVASOI\_KONKORDANCIA = #76 (#25a, `fazis: 1`, a #79 után), szerepmátrix-váz = #78 (a lexikonoldal szótári szakasza a 18.5 szerint; az ISTENTISZT-001 aranyminta rekonstrukciója), BDB-adatblokk-pótlás a teljes #22 után = #80 (újrafordítás nélkül; a DT54/DT56 pontosítása), Károli-ujjlenyomat (1.4) = #81; SZPA-audit feltételes (a profilfájl repóba kerülése után); DT-M4, M5, M6 🟢; a #38 6. adagja kész (DT52), a 7. a DT56 küszöbével; a #22-ben a Zsoltárok kész (PR #239), a további sorrend DT54/DT57; a BDB-gyökcsoport-felmérés lefutott (N53). | Ahol a törzs ennek ellentmond (0., 13., 15., 16., 19., 21.), ez a sor az irányadó; a 19. teendőlistája jelölve. |
 | **MUNKAMENET:** a ⛔-nál a döntést a `DONTES_KERDES_SABLON.md` szerint kell előkészíteni, erősebb modell (Opus) külön sessionben vagy a chatben. | A 14. és 21. szakasz ⛔-jai ezt a sablont követik. |
 
 **Javaslat (licenc és saját réteg, 2026-10-04)** — a szintézis szabad, a mezők öröklik a forrás licencét, a határ a proveniencia:
@@ -114,7 +115,7 @@ A kalibrált pozicionális script (szórend mindkét irányban, névmás-kibont�
 - csak héberben → Károli másképp fordította; a magyar olvasó nem látja a párhuzamot — tanulmányba illő lelet
 - csak magyarban → Károli egybemosott két héber kifejezést — figyelmeztetés
 
-**1.4 Motívum-index 1Mózesből előre**
+**1.4 Motívum-index 1Mózesből előre** *(feladat: #81 KAROLI\_UJJLENYOMAT, DT-F52f (16))*
 
 Minden kész motívumhoz egy „Károli-ujjlenyomat": Strong-készlet, magyar szavak (1.2), frázis-minta (1.3), 1Mózes-találatok. Új könyv Károli–Strongja után Code minden ujjlenyomatot ráfuttat; könyvenként jelentés: motívum → új előfordulások → TSK-ban is / csak lexikai. Így minden új könyv automatikusan visszahat a kész tanulmányokra.
 
@@ -836,7 +837,7 @@ Az `adat/szotar_szerepek.tsv` (SEMA 2.13) 11 szerep × 2 nyelv statikus tábláj
 - Az `allapot` oszlop a szó-lap töltöttségének forrása: `adatosítva` → blokk; `nincs adatosítva` / `javaslat` → a blokk helye üres, jelölve (a „memória vs. lekérdezés" szabály a renderben); `nincs forrás` → a blokk nincs.
 - **A 17.1 DT7-sora pontosítva:** a DT7 a *Macula* UBS-mezőit zárta ki licenc miatt; a külön importált Louw–Nida (UBS DNTG) és SDBH a mátrix 4., 5. és 9. szerepében adatosítva van, CC BY-SA 4.0 alatt. A CC BY-SA ShareAlike-feltétele terjesztési kérdés: az olvasói nézet ezeket a blokkokat csak azonos licencű kiadásban adhatja — a 17.1 licenc-szűrője ezt is kezeli. A 4. szakasz címsorából az UBS kizárása visszavonva.
 
-**Javaslat: 13. szerep — Károli-megfelelők**
+**Javaslat: 13. szerep — Károli-megfelelők** *(DT-M4 🟢 2026-10-08: felvétel `javaslat` állapottal; a szerepmátrix-váz #78)*
 
 A Károli–Strong (#22) olyan szerepet hoz, ami a mátrixban nincs: a Strong-szám Károli-szóalakjai gyakorisággal és példaversekkel (a 12.1 lekérés 1–2. pontja), mindkét nyelven, forrás `adat/karoli_strong/szavak_<könyv>.tsv`, állapot `javaslat`, amíg a #22 nem teljes. Ugyanide, külön mezőként: a SZPA konkordáns alternatíva (10. szakasz, B üzemmód), `[SZPA-B/V/F]` jelöléssel. A sor felvétele a SEMA 2.13 bővítése — DT-tétel, a #22 lezárásakor vagy az F38 javító menetében.
 
@@ -861,15 +862,15 @@ A napló gépi alakja a `jeloltek.tsv` (SEMA 2.4) — a tényleges munka a 8 ret
 - [ ] Code-brief az 1.1 ellenőrzésre (bemenet: grep a Genezis-igehelyes tematikus táblákra; kimenet: eltéréslista) — a brief megvan: #65 KAROLI\_ELLENORZES (nem_indult)
 - [ ] 1.2 variancia-térkép ugyanabban a futásban
 - [ ] napló-adatosítás brief (a 12/24/25/11 alapja) — a 8 retroaktív motívumra: #63 JELOLTEK\_RETRO (nem_indult)
-- [ ] `eszkozok/sqlite_epit.py` séma a 26 pontból
+- [ ] `eszkozok/sqlite_epit.py` séma a 26 pontból — brief kell: #79 SQLITE\_EPIT (csonk, DT-F52f (12))
 - [ ] tárhely-döntés (cPanel PHP vagy Python / Netlify) a mért `pardes.db` méret után
 
 * [ ] MCP-szerver Code-ban (FastMCP, a `sqlite_epit.py` után; a 12. szakasz eszköznevei) — feltételes (DT-M7); előbb a #61 LEKERDEZ\_NAPLO
-* [ ] SZPA-audit (C üzemmód) a tanulmányok prózáján és a BDB-fordításon
+* [ ] SZPA-audit (C üzemmód) a tanulmányok prózáján és a BDB-fordításon — **feltételes** (DT-F52f (13)): előbb a `SZPA_FORDITOI_PROFIL_prompt.md` a repóba, a befogadás a 6. lépcsőben
 * [x] openbible.info felvétele a `datasetek.tsv`-be, F44 licencellenőrzés — kész (#44 ✅, PR #205): 4 sor `hianyzik` + „JELÖLT, NEM IMPORTÁLT” (DT33); az import külön feladat (DT34)
-* [ ] BDB javító menet a teljes Károli–Strong után (Károli-oszlop minden szócikkhez)
+* [ ] BDB javító menet a teljes Károli–Strong után (Károli-oszlop minden szócikkhez) — brief kell: #80 BDB\_KAROLI\_POTLAS (csonk) (adatblokk-pótlás újrafordítás nélkül, DT-F52f (15))
 * [x] a három kézi 0. lépés (#43 lxx\_bridge.tsv + LICENC.md; #44 karoli\_bible\_hu\_LICENC.txt, openbible\_crossrefs\_LICENC.txt) — bent (F43.0, F44.0, F44.1); a #43 és a #44 kész
-* [ ] ellenőrizni a #38 naplójában, hogy az M0 5. pont (BDB-gyökcsoport-felmérés) lefutott-e — a 6. adag menetének elején fut
+* [x] ellenőrizni a #38 naplójában, hogy az M0 5. pont (BDB-gyökcsoport-felmérés) lefutott-e — lefutott (`naplok/BDB_FORDITAS_gyokcsoportok.tsv`, DT52 (c), N53) — a 6. adag menetének elején fut
 * [ ] terminologia.tsv a #38 további adagjainak (adagok közötti következetesség, MCP nélkül is)
 * [x] a nyílt Károli 1908 licencének tisztázása (#44) — tárgytalan: a szöveg közkincs (DT-F33e), nem előfeltétel
 * [x] a tervjegyzet Markdown-exportja a repó gyökerébe (ADATVAGYON\_TERV.md) — bent (`ab73f7b`, 2026-10-04)
@@ -910,6 +911,7 @@ A napló gépi alakja a `jeloltek.tsv` (SEMA 2.4) — a tényleges munka a 8 ret
 | 2026-10-04 | v13: „Kiindulási állapot és mi változott a repóban” szakasz a doc elején (merge 117bafc): DT-F33e–j licenc-fordulat (az 1. út nem esik ki; kereskedelmi/nem kereskedelmi szűrő), D34–D41 és DT-F26a (motívumcikk), #32 KONTEXTUS (DT-F32b Opus), sorszám-ütközés (#48–#51 foglalt), státuszok (#22 ⛔, #43 ▶, #46 ✅); a 2. szakasz licenc-mondata cserélve. A doc a repóba költözik, onnantól az md a hatályos | kiegészítés — utolsó chat-oldali verzió |
 | 2026-10-04 | v14 (#52 TERV\_SZINKRON, 1. futás; kiindulás: merge `8e8f771`): a DT-F33e–j a törzsben is átvezetve — 0.2 (Károli–Strong sor, 2. pont), 0.4, 15., 16., 17.1 (két sor), 19. (nyitott sor lezárva, teendőlista), 21. (0., 1., 3., 4. lépcső); státuszok: #22 ⛔, #43 ▶, #44 Károli-rész tárgytalan, #46 ✅, #32 ✅; függések a FELADATOK szerint (#9, #10, #11, #23, #36); sorszámok: a MUNKATERV tervezett feladatai kódnévvel (DT-F52a). Ellenőr 1. kör (JAVÍTANDÓ, 15 tétel) javítva F52.5-ben: DT-F43 (a), #22 Józs, `pardes.db` megfogalmazás, MCGED, 0. szakasz, proveniencia. Napló: `naplok/F52_TERV_SZINKRON_naplo.md` | szinkron |
 | 2026-10-06 | v15 (#52 TERV\_SZINKRON, 2. futás; kiindulás: FELADATOK v1.3, `main` `69da794`): DT-M1 🟢 (a #25 kettéválik: #25a/#25b — 0.2, 16., 21.), DT-M2 🟢 (`szó-szintű-gépi` — 22.2), DT-M3 🟢 (`adhoc`, csatorna a proveniencia-sorban — 22.4), DT-M7 🟢 (az MCP feltételes — 0., 9., 19., 21.), DT-M8 🟢 (a TERV\_BEFOGAD külön brief nélkül: az `olvas:`-teendő és az ATALAKITASI\_TERV 4.7 jelölése kész, a CLAUDE.md KJV-sora javítva — 17.2, 18.1, 19.); státuszok: #22 (Józs PR mergelve, következő a Bírák), #42, #43, #44, #30, #51, #53, #57, #58 ✅, #38 ▶ (6. adag a #56-tal, DT-F38i 🟢); a 17.1 licenc-összesítés 46 sorra (26/8/12; DT-F42d, DT-F42g); 15. (DT31: `karoli_bible_hu` elvetve); új feladatok: #54, #55, #56, #59, #60, #61, #62, #63, #64, #65, #66. Napló: `naplok/F52_TERV_SZINKRON_naplo.md` | szinkron |
+| 2026-10-08 | v16 (TERV-INTEGRÁCIÓ, DT-F52c–g): a terv → feladat irány átvezetve (a „Kiindulási állapot” 2026-10-08-i sora): #76, #78, #79, #80, #81; SZPA-audit feltételes; DT-M4, M5, M6 🟢; a 19. teendőlista jelölve; 1.4 → #81; 18.5 → #78. Napló: `naplok/TERV_INTEGRACIO_leltar.md` | integráció |
 
 ## 20. Rendszer-séma
 
