@@ -1,6 +1,6 @@
 # F22_2Kron_jelentes.md — Károli–Strong párosítás: 2Krónika (csak Sonnet, Message Batches API)
 
-*A számok szkriptkimenetből jönnek (`f22_statisztika.py --konyv 2Kron`, `egyesit.py --ellenoriz --konyv <könyv>`, `f22_elemzes.py --konyv 2Krón`, a `f22/api_termeles/futasnaplo.tsv` és `batchek.tsv` 2Krón-sorainak összesítése, a `f22/api_termeles/high/_munka/2Kron_k*.json` hibaüzenetei). Ág: `claude/f22-2kron` (az 1Krón PR #253 merge-e után, a main-ről). Módszer: `prompt_v3` változatlanul, **Sonnet a Message Batches API-n, `effort=high`** (DT73 (a)), **a C (Gemini) kimarad** (DT-F22c), 10 verses kötegek. Sorrend: DT57 (1), a BDB-haszon mérése szerint az 1Krón után a 2Krón.*
+*A számok szkriptkimenetből jönnek (`f22_statisztika.py --konyv 2Kron`, `egyesit.py --ellenoriz --konyv <könyv>`, `f22_elemzes.py --konyv 2Krón`, a `f22/api_termeles/futasnaplo.tsv` és `batchek.tsv` 2Krón-sorainak összesítése, a `f22/api_termeles/high/_munka/2Kron_k*.json` hibaüzenetei). Ág: `claude/f22-2kron`, az 1Krón-ág utolsó commitjáról (`727664d`) indítva; a fája azonos a main #253-merge-ével (`9399997`), attól csak a gépi FELADATOK-blokk választja el. Módszer: `prompt_v3` változatlanul, **Sonnet a Message Batches API-n, `effort=high`** (DT73 (a)), **a C (Gemini) kimarad** (DT-F22c), 10 verses kötegek. Sorrend: DT57 (1), a BDB-haszon mérése szerint az 1Krón után a 2Krón.*
 
 *Az `f22_elemzes.py` a magyar könyvnévvel (`2Krón`) futott; az ASCII-név (`2Kron`) a régi arany szűrésén némán 0-t ad (l. `naplok/ELLENOR_F22_1Kron.md` 1. eltérés). A 2Krónnál a két futás kimenete a régi arany pontján is azonos, mert a `Karoli_Strong_kivonat.tsv`-ben nincs `2Ch` sor (az `1Ch`-nak 6 van).*
 
@@ -118,3 +118,13 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - Független ellenőr: `naplok/ELLENOR_F22_2Kron.md`.
 - A korábbi kézi átnézések (1Krón 19:2, Ézs 9:20, 64:1, Zsolt 119:94, 144:15, 145:1) továbbra is a felhasználóé.
 - A következő könyv indítása a felhasználó döntése (⛔ 2.). A DT57 (1) mérése szerint a sorrend: Ezsd 162, Jób 159, Ez 147, Péld 145 szócikk; a Jób előtt TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról.
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_2Kron.md`)
+
+Az ellenőr 1 eltérést talált, alacsony súlyút; adathibát nem. A számokat Grep-számlálással és `lekerdez.py`-jal igazolta, a szkripteket (`egyesit.py`, `f22_statisztika.py`, `f22_elemzes.py`) nem futtathatta (az `--ellenoriz` a 11 könyvre ebben a menetben lefutott, l. 1a). A saját CI-futása (`futtat.py`) exit 0.
+
+| # | eltérés | kezelés |
+|---|---|---|
+| 1 | a fejléc szerint az ág „a main-ről” indult; az alapja valójában a `727664d` (az 1Krón-ág csúcsa), a fa azonos a `9399997`-tel | javítva (fejléc) |
+
+Megjegyzés (nem eltérés): a `adat/datasetek.tsv` parok-sorainak jelentéslistájából előzményként hiányzik a `naplok/F22_Zsolt_jelentes.md`.
