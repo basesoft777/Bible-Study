@@ -35,3 +35,11 @@
 3. A próba-TORZSCIKK az éles lexikonból készült, dokumentálatlanul tér el (#11 aranyminta).
 4. Teszt-lefedettségi rések.
 5. Kisebbek: G5a, D3, G2a, „bájtra azonos”.
+
+## 2. kör — `01a1d21` (a végrehajtó F78.7–F78.8 után)
+
+*`fuggetlen-ellenor`, `manual`. Lezárult: G1 (a) (héber 1. szerep az ISTENTISZT-001-nél a meglévő BDB-sorokra hivatkozik, TBESH-szöveg nem került vissza: `\tTBESH\t` 0 találat a `lexikon_hivatkozasok.tsv`-ben és a `forditasok.tsv`-ben), G1 (b) (`ÜRES-NYELV` jelölő), S4 (a 7. szerep „l. 2/b”), G2a (SEMA), G5a (a lógó hivatkozás jelölve), a teszt-lefedettségi rések, az éles `lexikon/` és a régi `szotar_szerepek.tsv` sorok bájtazonossága, N-F78a.*
+
+Új eltérések (4, mind dokumentációs), javítva az F78.9-ben (`e5c3d1e`): (1) a DT-F78c/DT-F78d döntési nyom (a negyedik út rögzítve, a DT-F78d marad 🟡); (2) a `naplok/F78_meres.md` M0/M3 táblája; (3) a brief döntésnaplója és `ir` mezője; (4) a DT-F78a változatai a repóba (`naplok/F78a_valtozatok/`).
+
+NEM ELLENŐRIZHETŐ az ellenőrnek: a tesztek és az `ellenoriz` futtatása (az orkesztrátor futtatta az F78.9 után: 16 teszt OK, 102 brief 0 hiba), a hash-állítás, a CI-jelentés (az E5 HIBA a main előnyéből jön; a merge-base-szel futtatva exit 0), hogy a döntéseket a felhasználó hozta (chat). Megjegyzés: a `SZEREP_SZOTAR` TBESH-t ír a héber 1. szerephez; általános kódőr a DT-F42a ellen nincs, erről a DT-F78d dönt. A javítások utáni harmadik ellenőri kör nem futott (csak dokumentáció változott).
