@@ -6,11 +6,14 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: lezarva
+pr: https://github.com/basesoft777/Bible-Study/pull/244
+lezarva_osszegzes: "A nyelvtani listára 7 kötőszó került (H3282, H0176, H3863, H3884, H6435, H0432, H3860); H3651 HATARESET, H6118 elutasítva, 4 halasztva (DT-F68a). A gerinc-metszet változatlan, a H3282 LXX-nézete bővült."
+ag: claude/gramm-kotoszok
 ad: a H3282 (ja’an), H6118 (‘ekev), H3651 (lākēn) — és a felvételi kritérium szerint hasonló kötőszók — elbírálása a HEBER_KEZI listán át, a gerinc-metszetre és az F56 LXX-szűrésre gyakorolt hatás mérésével
-kovetkezo: /kovetkezo; ⛔ az M0 után (jelöltlista, kritérium-eltérések, hatásmérés)
+kovetkezo: "—"
 olvas: [eszkozok/grammatikai_strongok_general.py, adat/grammatikai_strongok.tsv, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv, adat/SEMA.md, eszkozok/bdb_adatblokk.py, eszkozok/lekerdez.py, adat/kulso/lxx_bridge.tsv, adat/elofordulasok.tsv, adat/jeloltek.tsv, naplok/F56_zaras.md, naplok/BDB_ADATBLOKK_M0.md]
-ir: [eszkozok/grammatikai_strongok_general.py, adat/grammatikai_strongok.tsv]
+ir: [eszkozok/grammatikai_strongok_general.py, adat/grammatikai_strongok.tsv, eszkozok/f4_0c_korut_ellenoriz.py, eszkozok/teszt_bdb_adatblokk.py, naplok/GRAMM_KOTOSZOK_*.md]
 fugg: []
 nem_fugg: [61, 62, 63, 65]
 ---
@@ -67,4 +70,4 @@ A feladat nem a felvételt dönti el, hanem előkészíti: jelöltlistát, krit�
 
 ## 5. Döntésnapló
 
-- (üres; a M0 utáni döntés `DT-F68a`-tól)
+- (a M0 kész, `naplok/GRAMM_KOTOSZOK_M0.md`; a jelöltenkénti döntés `DT-F68a` a `DONTESEK.md`-ben eldöntve (🟢), 2026.10.08: 7 felvétel, H3651 HATARESET, H6118 elutasítva, 4 halasztva; az M1 kész, `naplok/GRAMM_KOTOSZOK_zaras.md`)

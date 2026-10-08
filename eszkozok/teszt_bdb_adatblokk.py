@@ -119,8 +119,9 @@ class LxxSzures(unittest.TestCase):
 
     def test_nincs_nyelvtani_a_listan(self):
         # a héber szó nem nyelvtani -> egyetlen mintaszócikk listáján sincs nyelvtani görög
+        # (a H3282 innen kikerült: DT-F68a, 2026.10.08 óta a nyelvtani listán van, ezért a görög nyelvtani találatok nála megmaradnak)
         gr = B.grammatikai()
-        for s in ('H0894', 'H3824', 'H4294', 'H7272', 'H1366', 'H3282', 'H0410', 'H7097', 'H2617', 'H1481'):
+        for s in ('H0894', 'H3824', 'H4294', 'H7272', 'H1366', 'H0410', 'H7097', 'H2617', 'H1481'):
             m = self._lxx_sor(s)
             for g in re.findall(r'G(\d+) ', m.group(1)):
                 self.assertNotIn('G%04d' % int(g), gr, '%s: G%s' % (s, g))
