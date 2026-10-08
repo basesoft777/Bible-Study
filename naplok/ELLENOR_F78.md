@@ -43,3 +43,16 @@
 Új eltérések (4, mind dokumentációs), javítva az F78.9-ben (`e5c3d1e`): (1) a DT82/DT83 döntési nyom (a negyedik út rögzítve, a DT83 marad 🟡); (2) a `naplok/F78_meres.md` M0/M3 táblája; (3) a brief döntésnaplója és `ir` mezője; (4) a DT80 változatai a repóba (`naplok/F78a_valtozatok/`).
 
 NEM ELLENŐRIZHETŐ az ellenőrnek: a tesztek és az `ellenoriz` futtatása (az orkesztrátor futtatta az F78.9 után: 16 teszt OK, 102 brief 0 hiba), a hash-állítás, a CI-jelentés (az E5 HIBA a main előnyéből jön; a merge-base-szel futtatva exit 0), hogy a döntéseket a felhasználó hozta (chat). Megjegyzés: a `SZEREP_SZOTAR` TBESH-t ír a héber 1. szerephez; általános kódőr a DT-F42a ellen nincs, erről a DT83 dönt. A javítások utáni harmadik ellenőri kör nem futott (csak dokumentáció változott).
+
+## 3. kör
+
+A felhasználó (2026-10-08) lezárta a DT83-at (a TBESH licence tisztázott, DT-F33f; a DT-F42a csak a H7121 „részlet” sorát váltotta ki; a tábla változatlan; a bekötés a #9-re marad). A kód és a render ennek megfelelően változott (`lexikon_general.py`: `SZEREP_TOKEN_MUTATO`, `_token_ures_blokkok`; héber 1. szerep, ISTENTISZT-001: H7121 jelölt üres blokk a BDB 2.c-re mutatva, H8034 `adatosítva, nincs bekötve`), a próbarenderek újragenerálva; az éles `lexikon/` és az `adat/` változatlan. A 3. körös ellenőr 6 eltérést talált; javításuk (F78.12, új ágon):
+
+1. A `naplok/F78_meres.md` 13. címsora nem íródik át: az eredeti címsor megmaradt, a felülírás új, 14. szakaszban áll, a 13. végén „Elavult” jelöléssel.
+2. `F78_meres.md` 118. sor: „a #9 a BDB-t köti be” → „a #9 köti be” (a TBESH-t).
+3. `teszt_szerepmatrix.py` megjegyzés: a #9 a TBESH-t köti be.
+4. Zárójelentés és brief (`lezarva_osszegzes`, `kovetkezo`): 3 ellenőri kör, DT83 lezárva, nincs nyitott tétel a DT83-ból (N-F78a marad); a `pr:` mező 254 marad.
+5. Teszt: a H7121 mutató a `**H7121**` tokenhez kötve.
+6. Teszt: a „2. szerep BDB változatlan” ellenőrzés a `#### 2.` blokkra és a „3. jelentés” címre is fut.
+
+A 2. kör fenti szövege változatlan (historikus). A javítás után az orkesztrátor új független ellenőrt futtat.
