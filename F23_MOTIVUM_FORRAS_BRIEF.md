@@ -7,7 +7,7 @@ fazis: 1
 modell: opus
 allapot: dontesre_var
 ag: claude/f23-m1-forrassablon
-pr: https://github.com/basesoft777/Bible-Study/pull/243
+pr: https://github.com/basesoft777/Bible-Study/pull/258
 ad: a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül
 kovetkezo: "Te: DT-F23a (az M1 13 javaslat-pontja: forrássablon, SEMA 3.10, pilot-terv); utána átvezetés, és a #11 briefje a pilot-terv alapján; ⛔ előtte az F83-ágról ki kell venni a két elkeveredett F23-commitot"
 olvas: [sablonok/, tematikus_lezart/, motivumok/, lexikon/, genezis/, adat/SEMA.md, adat/res_forras.tsv, adat/szotar_szerepek.tsv, eszkozok/general.py, CLAUDE.md, ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md, naplok/TEREMT002_PROZA_PROBA_meres.md]
