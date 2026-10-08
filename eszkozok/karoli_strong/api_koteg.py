@@ -51,7 +51,7 @@ import tokenek  # noqa: E402
 BASE = 'https://api.anthropic.com'
 MODELL = 'claude-sonnet-5-5'
 MAX_TOKENS = 32000
-PLAFON_USD = 3.00
+PLAFON_USD = 110.00
 KULCS_VALTOZO = 'PARDES_API_KEY'
 VAKPROBA = os.path.join(tokenek.ROOT, 'f22', 'vakproba')
 # Batch-ár ($/MTok): a claude-sonnet-5-5 normál ára (2 / 10, cache-olvasás 0,20) fele.
