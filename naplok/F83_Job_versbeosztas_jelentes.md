@@ -133,3 +133,35 @@ A F22 futtató az eredeti verset a `TAHOT_kivonat` kulcsán keresi (`eredeti` = 
 1. **Károli 38, 39, 42** (93 vers): identitás a TAHOT-kulccsal — kézi sor nem kell.
 2. **Károli 40:1–19** → TAHOT-kulcs **40:6–24** (`eltolt`, 19 sor a `f22/versmegfeleltetes_kezi.tsv`-be; a detektor 8 hibás Jób 40-es `nincs_eredeti` sorát kiváltja).
 3. **Károli 41:1–34**: a `TAHOT_kivonat`-ban nincs adat. Ez **nem versbeosztás-kérdés, hanem adatforrás-kérdés**, és a kézi táblával nem oldható meg. Lehetőségek (döntést igényel, a DT-F83a mellett): (a) a kulcsgenerátor `DONTES_FELULBIRALAS[("Job", (40, 41))]` javítása (a hibás 28/25 indoklás helyett `ELSODLEGES` a 41-re), és a 332 sor visszakerül a `TAHOT_kivonat`-ba Jób 41:1–34 kulccsal — ez a `konkordancia/` táblát írja, külön feladat; (b) a 41. fejezet eredetije a Macula-ból (MT 40:25–41:26) — a futtató forrását érinti, külön feladat; (c) a Jób 41 a #22-ben `kezi` marad, amíg (a) vagy (b) el nem készül. Javaslat: (a), mert a nyers adat megvan és a Strong-egyezés igazolja.
+
+## 6. Jóváhagyás és végrehajtás (F83.5–F83.7)
+
+**Jóváhagyás:** a felhasználó (chat, 2026.10.08, „1 igen 2 igen”, az orkesztrátoron át) elfogadta (a) az 5. szakasz megfeleltetési javaslatát és (b) a DT-F83a (1) opcióját: 1:2 / 2:1 összevonás-támogatás nem kell, a megfeleltetés kézi táblával megy.
+
+### 6.1 Mi került a `f22/versmegfeleltetes_kezi.tsv`-be és mi nem (F83.5)
+
+`scope=a kézi tábla Jób-sorai + a futtató szimulációja (tokenek.versmegfeleltetes(jovahagyott={'Jób'}), tokenek._versmegfeleltet a nyers TAHOT-kulcsokon) | forras=f22/versmegfeleltetes_kezi.tsv, f22/versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/karoli_strong/tokenek.py | ts=2026-10-08`
+
+A futtató az `eredeti` oszlopban a **nyers `TAHOT_kivonat`-kulcsot** várja, nem MT-számot. Kézi sor ezért csak ott kell, ahol a TAHOT-kulcs eltér a Károli-kulcstól:
+
+| Károli | TAHOT-kulcs | kézi sor | indoklás |
+|---|---|---|---|
+| 38:1–38 | 38:1–38 | **nincs** | a TAHOT 38-as kulcsa Károli-számozású (MT 38:1–38), identitás |
+| 39:1–38 | 39:1–38 | **nincs** | a TAHOT 39-es kulcsa már Károli-számozású (a 39:1–3 = MT 38:39–41, a 39:34–38 = MT 40:1–5 tartalommal; 3. szakasz), identitás |
+| 40:1–19 | 40:6–24 | **19 `eltolt` sor** | a TAHOT 40-es kulcsa MT-számozású; a kézi sor a detektor 8 hibás `nincs_eredeti` sorát (40:1–5, 13, 16, 19) is kiváltja |
+| 41:1–34 | — | **nincs** | a `TAHOT_kivonat`-ban nincs Jób 41-kulcs; a detektor 26 `nincs_eredeti` sora és a kulcs hiánya együtt azt adja, hogy mind a 34 vers eredeti nélkül marad. Kézi `nincs_eredeti` sort szándékosan nem vettem fel: a kulcsgenerátor javítása után (Jób 41:n = Károli 41:n) a kézi sor felülírná a helyes identitást |
+| 42:1–17 | 42:1–17 | **nincs** | identitás |
+
+**Szimuláció (a futtató függvényeivel, a táblák írása nélkül):** leképezett Károli-kulcsok 38 / 38 / 19 / 0 / 17; a Károli 40:1 = nyers TAHOT 40:6, a 40:19 = nyers 40:24; a Jób 38–42 tokenszáma nyers/leképezett 1344 / 1344 (nem veszett el, nem duplázódott); gazdátlan (+1000) kulcs a 38–42-ben nincs.
+
+**Hatókörön kívül, de a Jób felvételekor élesedik:** a detektor Jób 17 és 37 sorai (`eltolt` / `nincs_karoli`, 17:10–15, 37:21–23) a jóváhagyással együtt hatályba lépnek, és a szimulációban két gazdátlan kulcsot adnak (`Jób 17:1010`, `Jób 37:1021`). Ezeket a #83 nem vizsgálta; a #22 Jób-menetének kell átnéznie.
+
+**Kötöttség:** a 19 kézi sor a mostani `TAHOT_kivonat` Jób 40-kulcsaihoz kötött. Ha a kulcsgenerátor javítása a Jób 40-et is átkulcsolja Károli-számozásra, ezeket a sorokat törölni kell.
+
+### 6.2 Nyitott tétel — javaslat (N-F83a helyőrző, nem felvéve)
+
+A `NYITOTT_FELADATOK.md` nincs a brief `ir` mezőjében, ezért nem írtam bele. **Javasolt tétel (N-F83a):** a `eszkozok/tahot_karoli_kulcs_generalas.py` `DONTES_FELULBIRALAS[("Job", (40, 41))]` javítása — a hibás „40 = 28, 41 = 25” indoklás helyett `ELSODLEGES` a 41. fejezetre —, és a `TAHOT_kivonat_nyitott_esetek.tsv` 332 Jób-sorának visszavétele a `TAHOT_kivonat.tsv`-be Jób 41:1–34 kulccsal, majd a detektor újrafuttatása. **A Jób 41 futtatása addig nem lehetséges** (34 vers eredeti nélkül).
+
+### 6.3 A futtató jóváhagyott listája
+
+A `tokenek.VERSBEOSZTAS_JOVAHAGYOTT`-hoz ez a menet nem nyúlt (nincs az `ir`-ben). A Jób felvétele a #22 Jób-menetének első lépése, a Jób 41 hiányára tekintettel: vagy a N-F83a után, vagy a Jób 41 kizárásával / `kezi` kezelésével.
