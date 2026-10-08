@@ -66,6 +66,29 @@ CID = re.compile(r'^(?P<konyv>[A-Za-z0-9]+)-k(?P<koteg>\d+)-(?P<effort>[a-z]+)-p
 
 # ---------- kis segédek ----------
 
+def konyv_nev(ascii_konyv):
+    """'Ezs' -> 'Ézs' (a Konyv_normalizalo_tabla magyar rövidítései szerint); ismeretlenre változatlan."""
+    f = os.path.join(tokenek.ROOT, 'konkordancia', 'Konyv_normalizalo_tabla.tsv')
+    with open(f, encoding='utf-8') as h:
+        for sor in h:
+            mezok = sor.rstrip('\n').rstrip('\r').split('\t')
+            if len(mezok) > 1 and sonnet_koteg.ascii_nev(mezok[1]) == ascii_konyv:
+                return mezok[1]
+    return ascii_konyv
+
+
+def kotegek_tartomany(szoveg):
+    """'1,6,25' vagy '1-129' vagy kevert -> [int]."""
+    ki = []
+    for r in szoveg.split(','):
+        if '-' in r:
+            a, b = r.split('-')
+            ki.extend(range(int(a), int(b) + 1))
+        else:
+            ki.append(int(r))
+    return ki
+
+
 def custom_id(konyv, koteg, effort, proba):
     return '%s-k%d-%s-p%d' % (sonnet_koteg.ascii_nev(konyv), koteg, effort, proba)
 
@@ -269,7 +292,7 @@ def feldolgoz(sor, koteg_meret=10):
     if not p:
         return cid, 'kapuhiba', 'ismeretlen custom_id'
     ascii_konyv, koteg, effort, proba = p
-    konyv = next((k for k in ('Józs',) if sonnet_koteg.ascii_nev(k) == ascii_konyv), ascii_konyv)
+    konyv = konyv_nev(ascii_konyv)
     ig = sonnet_koteg.kotegek_listaja(konyv, koteg_meret)[koteg - 1]
     res = sor.get('result', {})
     usage, stop, szoveg = {}, res.get('type'), ''
@@ -357,7 +380,7 @@ def javitando_lista():
         p = custom_id_bont(c)
         if p[3] != 1 or c[:-1] + '2' in kesz:
             continue
-        konyv = next((k for k in ('Józs',) if sonnet_koteg.ascii_nev(k) == p[0]), p[0])
+        konyv = konyv_nev(p[0])
         if os.path.exists(allapot_ut(konyv, p[1], p[2])):
             ki.append(c)
     return ki
@@ -374,7 +397,7 @@ def javit(cimke, koteg_meret=10, hivo=None):
     kerelmek, bemenet_db = [], 0
     for cid in cidek:
         ascii_konyv, koteg, effort, _ = custom_id_bont(cid)
-        konyv = next((k for k in ('Józs',) if sonnet_koteg.ascii_nev(k) == ascii_konyv), ascii_konyv)
+        konyv = konyv_nev(ascii_konyv)
         szoveg, _ = prompt_szoveg(konyv, koteg, koteg_meret)
         with open(allapot_ut(konyv, koteg, effort), encoding='utf-8') as f:
             elozo = json.load(f)
@@ -467,16 +490,44 @@ def onteszt():
         open(os.path.join(td, 'f22', 'vakproba', 'batchek.tsv'), 'w', encoding='utf-8').write('x\n')
         open(os.path.join(td, 'mas.txt'), 'w', encoding='utf-8').write('nem ide tartozik\n')
         g('add', 'mas.txt')   # előre stage-elt, nem vakproba fájl: nem kerülhet a commitba
-        e1 = git_mentes('T: próba ékezetek: árvíztűrő', push=False, cwd=td)
-        e2 = git_mentes('T: üres', push=False, cwd=td)
+        e1 = git_mentes('T: próba ékezetek: árvíztűrő', ['f22/vakproba'], push=False, cwd=td)
+        e2 = git_mentes('T: üres', ['f22/vakproba'], push=False, cwd=td)
         fajlok = g('show', '--name-only', '--format=%s', 'HEAD').stdout.split('\n')
         if e1 != 'commit' or e2 != 'nincs_valtozas' or 'f22/vakproba/batchek.tsv' not in fajlok or 'mas.txt' in fajlok \
                 or 'árvíztűrő' not in fajlok[0]:
             hibak.append('git_mentes (%s, %s, %s)' % (e1, e2, fajlok))
+    if konyv_nev('Ezs') != 'Ézs' or konyv_nev('Jozs') != 'Józs' or kotegek_tartomany('1-3,7') != [1, 2, 3, 7]:
+        hibak.append('konyv_nev / kotegek_tartomany')
     for h in hibak:
         print('ÖNTESZT HIBA: ' + h, file=sys.stderr)
     print('önteszt: %s' % ('HIBA' if hibak else 'rendben'))
     return 1 if hibak else 0
+
+
+def atvezet(konyv, effort):
+    """Az API-futás kész köteg-sorait az éles `f22/valaszok/sonnet/<könyv>.jsonl`-be másolja (ami még nincs benne).
+    A sorformátum azonos a sonnet_koteg._sor_epit-tel. Kapuhibás (végleges) köteg is átmegy, mint a subagentes futásnál.
+    Visszaad: (átvezetett, már bent volt)."""
+    forras = jsonl_ut(konyv, effort)
+    if not os.path.exists(forras):
+        print('HIBA: nincs %s' % forras, file=sys.stderr)
+        return 2
+    cel = sonnet_koteg.valasz_ut(konyv)
+    bent = {tuple(x['igehelyek']) for x in sonnet_koteg.sorok_beolvas(cel)}
+    uj = 0
+    os.makedirs(os.path.dirname(cel), exist_ok=True)
+    with open(forras, encoding='utf-8') as f, open(cel, 'a', encoding='utf-8', newline='\n') as h:
+        for sor in f:
+            if not sor.strip():
+                continue
+            d = json.loads(sor)
+            if tuple(d['igehelyek']) in bent:
+                continue
+            h.write(sor if sor.endswith('\n') else sor + '\n')
+            bent.add(tuple(d['igehelyek']))
+            uj += 1
+    print('átvezetve: %d köteg → %s (már bent volt: %d)' % (uj, cel, len(bent) - uj))
+    return 0
 
 
 def git_mentes(uzenet, utak=None, push=True, cwd=None):
@@ -485,7 +536,7 @@ def git_mentes(uzenet, utak=None, push=True, cwd=None):
     import subprocess
     import tempfile
     cwd = cwd or tokenek.ROOT
-    utak = utak or ['f22/vakproba']
+    utak = utak or [os.path.relpath(VAKPROBA, tokenek.ROOT).replace(os.sep, '/')]
 
     def git(*args):
         return subprocess.run(['git', '-c', 'i18n.commitEncoding=UTF-8'] + list(args), cwd=cwd,
@@ -517,16 +568,20 @@ def git_mentes(uzenet, utak=None, push=True, cwd=None):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument('parancs', nargs='?', choices=['bekuld', 'allapot', 'begyujt', 'javit'])
+    ap.add_argument('parancs', nargs='?', choices=['bekuld', 'allapot', 'begyujt', 'javit', 'atvezet'])
     ap.add_argument('--konyv', default=None)
     ap.add_argument('--kotegek', default=None)
     ap.add_argument('--effort', default=None)
     ap.add_argument('--cimke', default=None)
     ap.add_argument('--kor', type=int, default=None)
+    ap.add_argument('--gyoker', default=None, help='állapot/kimenet gyökere (alap: f22/vakproba; éles futás: pl. f22/api_termeles)')
     ap.add_argument('--commit', action='store_true', help='a művelet után commit + push (f22/vakproba/)')
     ap.add_argument('--tetel', default='F77', help='a commit-üzenet tétel-előtagja')
     ap.add_argument('--onteszt', action='store_true')
     a = ap.parse_args(argv)
+    if a.gyoker:
+        global VAKPROBA
+        VAKPROBA = os.path.join(tokenek.ROOT, a.gyoker)
     if a.onteszt:
         return onteszt()
     if not a.parancs or not a.cimke:
@@ -535,13 +590,22 @@ def main(argv=None):
     if a.parancs == 'allapot':
         allapot(a.cimke)
         return 0
+    if a.parancs == 'atvezet':
+        if not a.konyv:
+            print('HIBA: --konyv kell', file=sys.stderr)
+            return 2
+        kod = atvezet(a.konyv, (a.effort or 'high').split(',')[0])
+        if kod == 0 and a.commit:
+            git_mentes('%s: api_koteg atvezet (%s) — kész kötegek az f22/valaszok/sonnet-be' % (a.tetel, a.konyv),
+                       [os.path.relpath(sonnet_koteg.valasz_ut(a.konyv), tokenek.ROOT).replace(os.sep, '/')])
+        return kod
     if a.parancs == 'bekuld' and not (a.konyv and a.kotegek and a.effort):
         print('HIBA: --konyv, --kotegek, --effort kell', file=sys.stderr)
         return 2
     kod = 1
     try:   # a commit hiba/megszakadás esetén is megtörténik: ami addig elkészült, ne vesszen el
         if a.parancs == 'bekuld':
-            kod = bekuld(a.konyv, [int(x) for x in a.kotegek.split(',')], a.effort.split(','), a.cimke)
+            kod = bekuld(a.konyv, kotegek_tartomany(a.kotegek), a.effort.split(','), a.cimke)
         elif a.parancs == 'begyujt':
             kod = begyujt(a.cimke, a.kor)
         else:
