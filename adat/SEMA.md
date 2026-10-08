@@ -1087,6 +1087,135 @@ ellenőrzés tárgyai.
    (a)-ba, az értelmező rész (b)-be, a maradék (c) vagy archívum. Kézi ellenőrzés tárgya,
    amíg a #37 auditja és a #23 forrássablonja el nem készül.
 
+### 3.10 Szintjelölés és kinyerés a kézi forrásból (#23 M1, D36, DT28)
+
+*F23 M1/2, 2026.10.08. Tervezet: a forrássablonnal (`sablonok/9_PaRDeS_motivum_forras_sablon.md`)
+együtt a #12 pilotja véglegesíti. A `javaslat` jelölésű pontokról a `DONTESEK.md`
+DT-F23a tétele dönt. A D35 szabálya (generált fájlba kézzel nem írunk) a 3/9-ben áll; ez
+az alfejezet nem ismétli, hanem a (b)→(a) kinyeréssel egészíti ki.*
+
+Ez az alfejezet a (b) réteg (`motivumok/[ID].md`) két gépi tulajdonságát írja le: a
+**mélységi szintet**, amely szerint a nézetek válogatnak, és a **kinyerést**, amellyel a
+forrás jelölőiből adat lesz. A dokumentum szerkezetét nem írja le: az a forrássablon
+dolga, és ott is szakaszsorrend és jelölő, nem mezőhatár (F32 KONTEXTUS K1/2).
+
+#### 3.10.1 Három szint
+
+Zárt értékkészlet: `olvasoi` | `apparatus` | `belso` (D36).
+
+| Szint | Mi tartozik ide | Melyik nézet mutatja |
+|---|---|---|
+| `olvasoi` | az összefüggő érvelés olvasónak szóló része (Kivonat, PaRDeS-rétegek, Alkalmazás) | mind |
+| `apparatus` | tudományos apparátus: táblák, szótári háttér, minősítés, alátámasztás, nyitott kérdések | `apparatus` és `belso` mélységű nézet (a motívumcikk és a lexikonoldal ilyen) |
+| `belso` | folyamat-nyom: `【NAPLO】`, P1–P7 levezetés, módszertani réteg-tábla, kapu-eredmény, proveniencia-sorok, archív blokk | csak a `belso` (szerkesztői) nézet |
+
+A nézet mélysége kumulatív: az `apparatus` nézet az `olvasoi` blokkokat is mutatja, a
+`belso` mindent. Nyilvános nézet csak `olvasoi` vagy `apparatus` mélységű lehet.
+
+#### 3.10.2 A jelölés blokkszintű, gépileg olvasható
+
+- **Alapszint:** minden szakasz alapszintje a forrássablon 4. pontjának táblázatában áll;
+  a forrásban ehhez jelölő nem kell. Ismeretlen (a táblázatban nem szereplő) szakasz
+  szintje `belso` (zárt alapérték, l. 3.10.4).
+- **Eltérés:** jelölőpár, a meglévő `RÉS-KEZDET` / `GENERÁLT-KEZDET` mintájára, saját sorban:
+
+  ```
+  <!-- SZINT-KEZDET: belso -->
+  …
+  <!-- SZINT-VÉGE: belso -->
+  ```
+
+  Gépi alak: `^<!-- SZINT-(KEZDET|VÉGE): (olvasoi|apparatus|belso) -->$`.
+- **Szabályok:** a pár kezdő és záró értéke azonos; a pár nem nyúlhat át `##` címsoron;
+  egymásba ágyazni csak mélyebb szint felé lehet (`olvasoi` szakaszon belül `apparatus`
+  vagy `belso`, `apparatus`-on belül `belso`); sekélyebb szintre váltani nem lehet
+  (egy `belso` szakaszból nem emelhető ki `olvasoi` blokk). Párosítatlan vagy ellentmondó
+  jelölő generátor-hiba, nem csendes kihagyás.
+- Az `ADAT-NÉZET` jelölő a saját `SZINT:` mezőjében adja a generált blokk szintjét
+  (a #64 mintája, `motivumok/TEREMT-002.md`).
+
+*[javaslat: DT-F23a (1) — a jelölőpár alakja. A #64 ideiglenes alakja (`<!-- SZINT: x -->` a
+következő jelölőig) írás közben kezelhető volt, de a hatóköre nem volt kimondva
+(`naplok/TEREMT002_PROZA_PROBA_meres.md` 3. szakasz, 2. tanulság); a pár ezt zárja le.]*
+
+#### 3.10.3 A `【NAPLO】` mindig `belso`
+
+A `【NAPLO: …】` blokk szintje mindig `belso`, attól függetlenül, milyen szintű szakaszban
+vagy jelölőpárban áll; külön jelölő nem kell hozzá (DT66 (a) 1. kivétel: kézi, de nem az
+érvelés része). Kinyerés belőle nincs (az `adat` alternatíva elvetve, DT66 (a) 1.).
+
+#### 3.10.4 Engedélyezőlista és build-kihagyás (D36)
+
+- **Engedélyezőlista:** a nyilvános nézet csak azt veszi fel, ami a forrássablon
+  szakaszlistáján szerepel, aktív (forrássablon 3. pont), és szintje legfeljebb a nézet
+  mélysége. Ami nincs a listán (ismeretlen szakasz, ismeretlen jelölő), az kimarad —
+  zárt alapérték, nem nyitott.
+- **Build-kihagyás, nem elrejtés:** a `belso` blokk a nyilvános nézet felépítésekor **nem
+  kerül a kimenetbe**. Nem HTML-megjegyzésbe, nem `<details>` alá, nem CSS-sel rejtve: a
+  nyilvános fájlban a szövege nem létezik. Ugyanígy kimarad minden csak-forrásbeli jelölő
+  (`SZINT-*`, `INAKTÍV`, `JELÖLT`, `ADAT-HIV`, `ADAT-ÉRTÉK`, `FORRÁSRÉTEG`).
+- Gépi ellenőrzés: CI E29 (`naplok/MOTIVUM_FORRAS_ci_terv.md`).
+
+#### 3.10.5 Kinyerés jelölőnként — (b) → (a)
+
+A 3/9 egyirányúsági szabályára épül: a kinyerés a forrásból **csak jelölt-sort** ír a
+`jeloltek.tsv`-be, `manual` provenienciával; a jelölt-sorról ember dönt (3/2), és **a
+generátor a forrásba nem ír**. Más táblába a kinyerés közvetlenül nem ír.
+
+| Jelölő (forrássablon 6. pont) | Tábla | Kulcs | Mit ír | Proveniencia | Ütközés (a kulcs már létezik) |
+|---|---|---|---|---|---|
+| `<!-- JELÖLT: [igehely] \| gerinc: [gerinc_elem] \| [indoklás] -->` | `jeloltek.tsv` (2.4) | `id` + `igehely` | `dontes=nyitva`, `indoklas` = a jelölő indoklása, `datum` = a kinyerés napja | a `forras_kereses` mezőben: `scope=manual \| forras=motivumok/[ID].md#[szakasz] \| ts=[DATUM]` (1.5) | nem ír; a kinyerési jelentés jelzi, hogy a jelölt már minősítve van |
+| proveniencia-lábjegyzet (bármely `scope`) | — (hivatkozás) | — | semmit: a lábjegyzet a próza állításának forrás-hivatkozása; az audit-sort a 2.9 szerint a lekérdezést futtató fő szál rögzíti, nem a kinyerés | — | — |
+| `ADAT-HIV`, `ADAT-ÉRTÉK` | — (ellenőrző) | a jelölőben megadott | semmit; hiány vagy eltérés a kinyerési jelentésbe | — | — |
+| szerkezeti jelölők (`FORRÁSRÉTEG`, `SZINT-*`, `【NAPLO】`, `INAKTÍV`, `RÉS-*`, `ADAT-NÉZET`) | — | — | semmit | — | — |
+
+- **Előléptetés:** a jelölt-sorból az `elofordulasok.tsv` sora csak döntéssel
+  (`dontes=beépítve`) lesz (3/2); a sor `proveniencia` mezője a jelölt `forras_kereses`
+  proveniencia-sora (`scope=manual`), az `igazolas` mezője az 1.8 szerint. A `manual`
+  sor a generált kimenetben értelmezésként jelölendő (3/3).
+- **Audit-út a lábjegyzetből:** *[javaslat: DT-F23a (2) — a `scope≠manual` lábjegyzetből
+  közvetlenül, döntés nélkül írt `auditok.tsv`-sor ütközne a 3/9-cel (kinyerés csak a
+  `jeloltek.tsv`-n át, `manual` provenienciával, döntéssel). Opciók: (a) nincs
+  audit-kinyerés, a lábjegyzet csak hivatkozás (ez a fenti normatív szöveg); (b) a
+  `jeloltek.tsv`-n át, döntéssel; (c) a 3/9 módosítása külön döntéssel. Ha a (b) vagy
+  a (c) nyer, a `lepes` mezőt a lábjegyzet kulcsának előtagja vagy egy zárójeles címke
+  hordozza, mert a proveniencia-sor szó szerinti, abba új kulcs nem írható.]*
+- **Kinyerési jelentés:** a kinyerés futásának kimenete (generált, (c) réteg): a felvett
+  jelölt-sorok, az ütközések, az `ADAT-HIV` hiányai és az `ADAT-ÉRTÉK`
+  eltérései. Táblát nem ír felül; eltérésnél a futás megáll (minta:
+  `eszkozok/igazolas_migracio.py`, `CLAUDE.md` „TSV-olvasás”).
+
+#### 3.10.6 Ami nincs
+
+- **(a) → (b) út nincs.** A generátor a forrásba nem ír; az adatból semmi nem kerül
+  vissza a prózába. Generált jelölő (`GENERÁLT-KEZDET`, `GENERÁLT-VÉGE`, `GENERÁLT:`,
+  `ÜRES-BLOKK`, `ÜRES-NYELV`) a forrásban tilos; ha megjelenik, visszaírás-gyanú.
+- **Közvetlen út nincs.** Kinyerő jelölő soha nem ír közvetlenül `elofordulasok.tsv`,
+  `kapcsolatok.tsv`, `lexikon_hivatkozasok.tsv` vagy `lxx_dontesek.tsv` sort.
+
+#### 3.10.7 Nyitott séma-kérdések (DT66 (a) megjegyzése; *javaslat*, DT-F23a (3), (8))
+
+A DT66 (a) a Minősítés, az Alátámasztás és a 7. Módszertan `adat`-besorolását fogadta el,
+azzal a megjegyzéssel, hogy új oszlopot kérhet. A mai sémával:
+
+1. **Alátámasztás → `kapcsolatok.tsv`:** a soronkénti funkció-/bizonyosság-indoklásnak
+   nincs oszlopa (2.3: `funkcio` van, indoklás nincs). Új `indoklas` oszlop kell, vagy az
+   Alátámasztás `kezi_forras` marad.
+2. **Minősítés → `jeloltek.tsv`:** az „új találat” és a „nem releváns” a `dontes`
+   (`beépítve` / `nyitva` / `elutasítva`) és az `indoklas` mezőbe képezhető, a
+   kereszthivatkozás forrás-verse a `forras_kereses` mezőbe (`TSK [igehely]`). A
+   „független megerősítés” viszont egy már beépített igehelyre szól; a kulcs (`id` +
+   `igehely`) miatt második sor nem írható. Új érték vagy oszlop kell, vagy a megerősítés
+   a minősítés-nézetben generált (a TSK-találat és a beépített sor metszete).
+3. **Módszertan-tábla és kapu-eredmény → `auditok.tsv`:** a `lepes` értékkészlete
+   (`A5` | `B2` | `B3` | `B4`) a retroaktív ellenőrzési rétegeket és a Q-kapu eredményét
+   nem fedi, és ezek többségéhez nincs `lekerdez.py`-proveniencia. Lehetőség: új `lepes`
+   érték, új tábla, vagy a régi rétegtáblák archívumba (a nézet a meglévő audit-sorokból
+   generálódik).
+4. **Nem igehely-kulcsú adat a prózában** (szótári idézet, LXX-megfelelő): a
+   `jeloltek.tsv` kulcsa igehely, ezért jelölt-sor nem írható (`naplok/F78_meres.md`
+   12. szakasz 2. pont); a tervezet az `ADAT-HIV` ellenőrző utat adja (3.10.5).
+
 ---
 
 ## 4. Amit ez a séma nem old meg
