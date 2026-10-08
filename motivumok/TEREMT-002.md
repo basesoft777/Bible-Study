@@ -2,7 +2,197 @@
 
 <!-- FORRÁSRÉTEG (F4 G2) — kézzel írt, szabadon szerkeszthető. NEM generált fájl. -->
 
-*Proveniencia: az alábbi szövegblokkok a `motivumlog/PaRDeS_motivumok.md`-ből lettek átemelve, **karakterre azonosan**, 2026-09-25-én (TEREMT002_KUTATAS_BRIEF.md T2.3 / G6; az N14.3 mintája). A naplóban a helyükön a `general.py` generált marker-blokkjai állnak. A TEREMT-002 natív egyforrású motívum (G1): tematikus tanulmány nem tartozik hozzá, a próza a T3-ban ide kerül. Ami a tábláról levezethető (`adat/motivumok.tsv`, `adat/elofordulasok.tsv`), az nem ide tartozik.*
+【NAPLO: proveniencia (az átemelés, 2026-09-25; a korábbi dőlt fejléc-bekezdés szó szerint) — Proveniencia: az alábbi szövegblokkok a `motivumlog/PaRDeS_motivumok.md`-ből lettek átemelve, **karakterre azonosan**, 2026-09-25-én (TEREMT002_KUTATAS_BRIEF.md T2.3 / G6; az N14.3 mintája). A naplóban a helyükön a `general.py` generált marker-blokkjai állnak. A TEREMT-002 natív egyforrású motívum (G1): tematikus tanulmány nem tartozik hozzá, a próza a T3-ban ide kerül. Ami a tábláról levezethető (`adat/motivumok.tsv`, `adat/elofordulasok.tsv`), az nem ide tartozik.】
+
+【NAPLO: #64 M1 (#12a próza-próba), 2026-10-08 — a próza a `sablonok/4_PaRDeS_tematikus_sablon.md` szakaszsorrendjével került ide (DT-F64a (1)); a három átemelt archív blokk változatlanul, karakterre azonosan a fájl végére került. Jelölők (ideiglenes alak, a #23 M1 forrássablonja véglegesíti): `<!-- SZINT: olvasoi|apparatus|belso -->` a következő blokk szintje a következő SZINT-jelölőig; `<!-- INAKTÍV: … -->` a nem aktivált sablonszakasz (D37, DT66 c), üres cím nélkül; `<!-- ADAT-NÉZET: … -->` az adatból generált szakasz helye, kézi tartalom nélkül. A NAPLO-blokk mindig `belso` (DT66 a/1). A lekérdezésből származó állítások proveniencia-sora lábjegyzetben áll (a „Proveniencia-sorok” szakasz); ahol lábjegyzet nem mutat lekérdezésre, az állítás értelmezés (`manual`). Az LXX-állítások friss `lxx-hid` futásból valók (DT-F64b), a régi audit-sorokkal való eltérés: `naplok/TEREMT002_PROZA_PROBA_lxx_friss.md`.】
+
+<!-- SZINT: olvasoi -->
+
+## Kivonat
+
+A תֹהוּ וָבֹהוּ (*tohu va-vohu*, kiejtése: tóhu vá-vóhu) szópár a héber Ószövetségben pontosan három versben áll együtt: 1Móz 1:2, Jer 4:23 és Ézs 34:11.[^koll] Második tagja, a *bohu*, a páron kívül egyetlen versben sem fordul elő,[^scan-bohu] így a pár nem két szó alkalmi találkozása, hanem rögzített formula. Az 1Móz 1:2-ben a föld állapotát nevezi meg, mielőtt Isten szava rendet teremt rajta; Jeremiásnál Júda, Ézsaiásnál Edom ítéletét írja le ugyanez a pár.[^d-elof]
+
+A motívum tárgya ezért nem a pusztulás általában, hanem egy megnevezett állapot: az, amely a teremtés kiindulópontján áll, és amelybe a prófétai ítélet-szöveg a földet visszarendeződni látja. A határt a formula húzza meg. Az önálló *tohu* — a 19 *tohu*-versből 16 a pár nélkül áll[^scan-tohu] — és a lexikai pár nélküli kozmikus elsötétülés- és romhalmaz-képek kívül esnek a motívumon.[^d-mot] A Septuaginta a párt mindhárom helyen másként fordítja,[^lxx-gen][^lxx-jer][^lxx-ezs] ezért görög lexikai híd az Újszövetség felé nem mutatható ki; a motívum az Ószövetségen belül él.
+
+【NAPLO: LXX — függő (#12b): az 1Móz 1:2, Jer 4:23, Ézs 34:11 LXX-megfelelőjéről `adat/lxx_dontesek.tsv`-sor nincs; az állítás a friss `lxx-hid` futáson áll (DT-F64b), audit-sor nem készült.】
+
+<!-- INAKTÍV: 0. Forrás-összegyűjtés a meglévő anyagból — a feltétel nem áll fenn: natív motívum, előzményanyag (bővített 🔗-blokk, örökölt napló-audit, kockázat-riport) nélkül (DT66 c; naplok/MOTIVUM_FORRAS_lekepezes.tsv) -->
+
+## 1. Előfordulások összegyűjtése
+
+<!-- SZINT: belso -->
+
+### Friss, teljes körű keresés (P1–P7)
+
+**P1. Gerinc-metszet.** A három vers egyedi Strong-halmazának metszete a grammatikai szűrés (a *ve-* kötőszó, H9002 kiszűrve) után két elem: H0922 (*bohu*) és H8414 (*tohu*). Más közös tartalmi Strong nincs; minden előfordulás-sor a `tohu+bohu` gerinc-elemen lóg.[^gerinc][^d-elof]
+
+**P2. Szemantikai mező-hipotézis.** A *tohu* maga is kettéágazik, ezért a mező két irányt választ szét: a pusztaság / formátlanság ágát (a motívum mezeje) és a semmiség / hiábavalóság ágát (a fölérendelt fogalom felé húzó ág). A pusztaság-ág sztereotip ítélet-szavai (H8077 *semámá*, H0950 *buká*, H1238 *bákak*) egyetlen *tohu*-versben sem állnak a *tohu* mellett; a semmiség-ág szavai (H0657, H0205, H7385, H1892) csak Ézsaiás 40–59 bálvány- és panaszszövegeiben kollokálnak vele.[^p2] Az SDBH a *tohu*-nak két jelentés-egységet ad („waste; desolation; chaos” a Non-Exist, „nothing; useless; worthless; in vain; emptiness” a Worthless doménben),[^domen-tohu] a *bohu*-nak egyet; a pár egyetlen közös doménje a Non-Exist.[^domen-par] A domén támasz, nem a mező-hipotézis helyettesítője.
+
+**P3. Teljes scan.** A H8414 19 versben (20 szó-előfordulás), a H0922 3 versben áll.[^scan-tohu][^scan-bohu] A TAHOT-kivonat ismert hiánya (Jób 40:1–5 és Jób 41) ennyivel gyengíti a „teljes” jelzőt; a három előfordulás-verset nem érinti.
+
+**P4. Kollokáció.** H8414 + H0922 egy versben: 1Móz 1:2, Jer 4:23, Ézs 34:11 — pontosan a három előfordulás.[^koll]
+
+**P5. Igealak.** Nem alkalmazható: mindkét gerinc-elem főnév.[^p5]
+
+**P6. LXX-híd.** L. a 2. pont „Septuaginta” bekezdését.
+
+**P7. Nevesített tanító.** L. a 7. pont 6. tételét.
+
+**Jelölt-halmaz.** 66 jelölt: 3 beépítve, 63 elutasítva, 0 nyitva.[^d-jel] Két elutasított jelölt kapcsolat-sorként él tovább (Ézs 45:18, Ézs 24:10), előfordulásként nem.[^d-kapcs]
+
+<!-- ADAT-NÉZET: 1. pont, 7 oszlopos előfordulás-tábla | forrás: adat/elofordulasok.tsv | cél: general.py --cel study | SZINT: apparatus -->
+
+<!-- INAKTÍV: Logikai kötőszó szerinti bontás — a feltétel nem áll fenn: egyik előfordulás-sor sem igehely-tartomány -->
+
+<!-- SZINT: apparatus -->
+
+## 2. Eredeti nyelvi összevetés
+
+**A pár alakja a három versben.**[^tahot3] Az 1Móz 1:2-ben a pár a föld (הָאָרֶץ, *há-árec*, kiejtése: há-árec) állítmánya a הָיְתָה (*hájetá*, „vala”) igével:
+
+> וְהָאָרֶץ הָיְתָה תֹהוּ וָבֹהוּ
+
+„A föld pedig kietlen és puszta vala” (Károli).[^k-gen]
+
+A Jer 4:23-ban ugyanaz a mellérendelt pár áll, de ige nélkül, a הִנֵּה (*hinné*, „ímé”) után: nem elbeszélt múlt, hanem a látomásban feltáruló jelen állapot. A vers második fele az egekről mondja, hogy „nincs világosságuk” (אֵין אוֹרָם, *én óram*):
+
+> רָאִיתִי אֶת־הָאָרֶץ וְהִנֵּה־תֹהוּ וָבֹהוּ וְאֶל־הַשָּׁמַיִם וְאֵין אוֹרָם
+
+„Nézek a földre, de ímé kietlen és puszta; és az égre, de nincsen világossága!” (Károli).[^k-jer]
+
+Az Ézs 34:11-ben a pár szétválik: mindkét tagja egy-egy mérőeszköz birtokos szerkezetében (status constructus) áll, a נָטָה (*nátá*, „kifeszít”) ige tárgyaként — קַו־תֹהוּ (*kav-tóhu*, „a *tohu* mérőkötele”) és אַבְנֵי־בֹהוּ (*avné-vóhu*, „a *bohu* kövei”, vagyis a függőón):
+
+> וְנָטָה עָלֶיהָ קַו־תֹהוּ וְאַבְנֵי־בֹהוּ
+
+„fölvonják rá a pusztaság mérőkötelét és a semmiségnek köveit” (Károli).[^k-ezs]
+
+A mérőkötél és a függőón az építés eszköze; itt a rombolás mértékét adják. Az SDBH a Non-Exist doménben az אֶבֶן (*even*, „kő”, H0068) egyik jelentés-egységét ugyanerre a képre tartja: „to stretch the plummet of chaos over (something) > to reduce (something) to chaos”.[^domen-tohu]
+
+**Jelentés.** A *tohu* két jelentés-ága közül a három versben a „waste; desolation; chaos” ág áll; a *bohu* egyetlen jelentése „emptiness; wasteland”.[^domen-par][^p2] A pár tehát mindhárom helyen ugyanazt jelenti: a föld lakhatatlan, rendezetlen, üres állapotát. Ami eltér, az a mondatbeli szerep: az 1Móz 1:2-ben és a Jer 4:23-ban állapot-állítmány, az Ézs 34:11-ben az ítélet eszközének jelzője.
+
+【NAPLO: hiány — a 2. pont szótári (BDB) idézete nem készült: a három előfordulás-sor BDB-mezői (`lexikon_entry_id`, `jelentes_*`) üresek, a `lexikon_hivatkozasok.tsv`-ben H8414-re és H0922-re nincs sor, és adattábla a #64-ben nem bővülhet. A jelentés-bekezdés az SDBH-lekérdezésen áll; igehelyenkénti SDBH-besorolás a repóban nincs, ezért a három vers „waste; desolation; chaos” ágba sorolása értelmezés (`manual`).】
+
+**A magyar fordítás.** Károli az 1Móz 1:2-t és a Jer 4:23-at szó szerint azonosan fordítja („kietlen és puszta”), az Ézs 34:11-et másként („pusztaság … semmiség”);[^d-elof] a héber pár mindhárom helyen azonos.[^koll] A Jer 4:23 magyar olvasója így hallja a visszautalást, az Ézs 34:11-é nem.
+
+**Mélység: a mérőkötél.** A TSK az Ézs 34:11-hez a 2Kir 21:13-at és a JSir 2:8-at rendeli (6–6 szavazat); ezekben a pár nem áll, a negatív kritérium kizárja őket.[^d-jel] A mérőkötél mint a rombolás mértéke a mező-hipotézis szerint rokon kép (tematikus, nem lexikai).[^p2]
+
+**Septuaginta.** A görög fordítás a párt mindhárom helyen másként adja vissza:
+
+- 1Móz 1:2: ἀόρατος καὶ ἀκατασκεύαστος (*aoratosz kai akataszkeuasztosz*, „láthatatlan és elrendezetlen”; az ἀόρατος G0517);[^lxx-gen]
+- Jer 4:23: οὐθέν (*uthen*, „semmi”, G3762) — a két szót egyetlen szó fordítja;[^lxx-jer]
+- Ézs 34:11: σπαρτίον γεωμετρίας ἐρήμου (*szpartion geómetriasz erému*, „a puszta földmérésének kötele”), az ἐρήμου G2048; a *bohu*-kövek a görög versben megfelelő nélkül maradnak, és a vers állatlistája is eltér a héberétől.[^lxx-ezs]
+
+A görög szavak ÚSZ-előfordulásai nem adnak hidat. Az ἀόρατος öt ÚSZ-verse (1Tim 1:17, Kol 1:15, Kol 1:16, Róm 1:20, Zsid 11:27) a láthatatlan Istenről és a láthatatlan dolgokról szól, nem a föld állapotáról;[^lxx-gen] az οὐθέν és az ἔρημος általános szókincs.[^lxx-jer][^lxx-ezs] Az 1Móz 1:2 LXX-szövegének ἀβύσσου (G0012) szava a vers *tehóm*-tagjához tartozik, nem ehhez a motívumhoz (l. 3. pont, Remez, elhatárolás).
+
+【NAPLO: LXX — függő (#12b): mindhárom fenti LXX-megfelelő; a fordítói döntések rögzítése (`adat/lxx_dontesek.tsv`) a #12b tárgya. A 2026-09-25-i régi audit-sorok (kivezetett `LXX_kivonat_*.tsv`) Strong-címkézése eltér a friss futásétól; a fordító szavak (ἀόρατος καὶ ἀκατασκεύαστος; οὐθέν; σπαρτίον γεωμετρίας ἐρήμου) azonosak. Az ἀκατασκεύαστος az LXX_OS-ben Strong-szám nélkül áll, ezért ÚSZ-előfordulása a `lxx-hid`-ből nem számolható (üres, nem negatív lelet). Részletek: `naplok/TEREMT002_PROZA_PROBA_lxx_friss.md`.】
+
+<!-- INAKTÍV: 2/b. Kiegészítő szótári adatok — a feltétel nem áll fenn: nincs lexikon_hivatkozasok-sor, a generált szócikk-blokkon túli szótári anyag nincs -->
+
+<!-- SZINT: olvasoi -->
+
+## 3. A PaRDeS keretrendszer — a motívumra alkalmazva
+
+【NAPLO: a 3. pont állításai értelmezés (`manual`), kivéve, ahol lábjegyzet lekérdezésre vagy adattáblára mutat.】
+
+**Peshat.** A három szöveg szó szerint ugyanazt az állapotot mondja ki a földről, három különböző helyzetben. Az 1Móz 1:2 a föld állapotát írja le a teremtő szavak előtt: kietlen és puszta. A vers nem mond el semmilyen eseményt, amely ezt az állapotot előidézte; állapotot rögzít, amelyből a következő versek rendezése kiindul — az első teremtő szó a világosság: „Legyen világosság: és lőn világosság.”[^k-gen3]
+
+A Jer 4:23–26 négy „nézek”-mondatban látja a földet: kietlen és puszta, az egeknek nincs világosságuk; a hegyek reszketnek, a halmok ingadoznak; „egy ember sincsen; és az ég madarai is mind elmenekültek”; a bő termő föld pusztává lett, és minden városa összeomlott „az Úr előtt, az ő haragjának tüze előtt”.[^k-jer][^k-jer24][^k-jer25][^k-jer26] A következő vers az egész országra mondja ki a pusztulást, és határt is szab neki: „de nem vetem végét!”[^k-jer27] A szöveg Júda ítéletéről szól.[^d-elof]
+
+Az Ézs 34:11 Edomot írja le az ítélet után: pusztai állatok veszik birtokba, és fölé feszítik a *tohu* mérőkötelét és a *bohu* köveit.[^k-ezs][^d-elof] Az előző vers szerint a föld „nemzetségről nemzetségre pusztán marad, soha örökké senki át nem megy rajta”.[^k-ezs3410]
+
+Együtt olvasva: a pár mindig a föld vagy egy ország állapotára vonatkozik — az Ézs 34:11-ben is a mérőeszközök azt mérik ki, mivé lesz az ország —, és mindig a lakhatatlanságot nevezi meg — a teremtés előtt azért, mert még nincs rend, az ítéletben azért, mert a rend megszűnt.
+
+**Remez.** Az előfordulások sorrendje egy ívet rajzol. Az 1Móz 1:2 a prototípus: az állapot, amelyre a két prófétai szöveg visszautal; a Jer 4:23 és az Ézs 34:11 egyaránt az 1Móz 1:2-vel kontrasztban áll (ugyanaz az állapot, fordított irányból elérve), a két prófétai szöveg pedig egymással párhuzamos.[^d-kapcs] A kapcsolat az 1Móz 1:2 és a Jer 4:23 között a legerősebb: a TSK mindkét irányban jelöli (84, illetve 21 szavazattal).[^d-jel]
+
+A Jer 4:23–26 a teremtési rend elemeit sorra veszi vissza: világosság, hegyek, ember, madarak, termőföld.[^d-jel] A sorrend első eleme, a hiányzó világosság, éppen az, amit Isten az 1Móz 1:3-ban elsőként szól a rendezetlen földre.[^k-gen3][^p2] Az Ézs 34:11 más eszközzel mondja ugyanezt: a mérés, amely az építés rendjét adja, itt a rombolás mértéke lesz.[^d-kapcs]
+
+Az ív harmadik pontja az Ézs 45:18, amely a *tohu*-t a pár nélkül, tagadva használja: az Úr a földet „nem hiába teremté…, hanem lakásul alkotá”.[^k-ezs4518][^scan-tohu] A *tohu* állapota tehát nem a teremtés célja; a cél a lakhatóság. Ez a kapcsolat a formula szempontjából tematikus, nem lexikai: a versben csak a *tohu* áll, a pár nem, ezért előfordulás-sora nincs.[^d-kapcs][^d-jel] A lakhatóság szempontjából a prófétai szövegek ennek az ellentétét írják le: Jeremiásnál „egy ember sincsen”, Ézsaiásnál pusztai állatok lakják az országot.[^k-jer25][^k-ezs] Az Ézs 24:10 „álnokság városa” (*qirjat-tohu*) az Ézs 24 föld-kiüresítő keretében párhuzamos kép, alacsony bizonyosságú kapcsolatként; ez is tematikus, nem lexikai kapcsolat.[^d-kapcs][^k-ezs2410]
+
+*Elhatárolás.* Az 1Móz 1:2 a TEREMT-001 (*tehóm*, a mélység) motívumnak is előfordulása, de más mondatrésszel és más funkcióval: ott a „mélység” a kozmikus közeg, amelyen a sötétség van; itt a „kietlen és puszta” a föld állítmánya.[^gate] A *tehóm*-ív (ősvizek, ἄβυσσος) nem része ennek a motívumnak.
+
+**Drash.** A motívum egészéből egy tanítás olvasható ki: a lakható világ rendje nem magától értetődő adottság, hanem rendezett állapot, amelyet Isten szava hozott létre a kietlen és puszta földön, és amely a hozzá való viszonyban áll fenn. A próféták ezért írhatják le az ítéletet a teremtés szókincsével: Júda és Edom ítéletében a föld abba az állapotba rendeződik vissza, amelyből a rend kiindult. Az ítélet így nem idegen erő betörése a teremtésbe, hanem a rend visszavétele: a föld abba az állapotba kerül, amelyből a Teremtő szava kiemelte.
+
+A két prófétai szöveg között feszültség van, és ez maga is a tanítás része. Jeremiásnál a visszarendeződésnek határa van („de nem vetem végét”),[^k-jer27] Ézsaiásnál Edom pusztasága nemzedékeken át tart.[^k-ezs3410] A *tohu va-vohu* tehát nem egyetlen ítélet-sablon: ugyanaz a kép hordozhat határolt ítéletet és tartós pusztulást is.
+
+A teremtés célja, a lakhatóság, a tohu-állapotnál erősebb szó (Remez-szintű kiegészítés, l. 3. pont, Remez: Ézs 45:18): a Teremtő szándéka nem a kietlen föld, ezért a visszarendeződés sem utolsó szava.
+
+**Sod.** Ugyanaz a szókincs írja le a világot a rend előtt és az ítélet után. A rend tehát nem a föld tulajdonsága, hanem a Teremtő szavának folyamatos ajándéka; ahol a Teremtővel való viszony megszakad, ott a föld visszafelé mutatja a teremtés útját.
+
+**⚠️ Vitatott pontok.** Vitatott, hogy az 1Móz 1:2 állapota a teremtés kiinduló állapota-e, vagy egy korábbi ítélet eredménye. Ez utóbbi, úgynevezett restitúciós („hézag-”) olvasat éppen a Jer 4:23-ra és az Ézs 45:18-ra hivatkozik: ha a *tohu va-vohu* a prófétáknál ítéletet jelent, és az Úr a földet „nem *tohu*-nak” teremtette, akkor az 1Móz 1:2 is ítélet nyoma volna. A szöveg-adat ezt az olvasatot nem támasztja alá: az 1Móz 1:2 állapotot rögzít, eseményt nem; a Jer 4:23 ítélet-kontextusa (Júda, „az Úr haragjának tüze”) a saját szövegéből adódik;[^k-jer26][^d-elof] az Ézs 45:18 a *tohu*-t mint célt tagadja, nem mint kiinduló állapotot;[^k-ezs4518] és az adatban rögzített kapcsolatok iránya az 1Móz 1:2-től a próféták felé mutat, nem visszafelé.[^d-kapcs] A motívum ezért a kiinduló-állapot olvasatot követi, és a prófétai szövegeket visszautalásnak tekinti.
+
+【NAPLO: hiány — a vitatott pont nevesített képviselői (a sablon szerint kötelezők) nincsenek bemutatva: a repóban nincs rájuk forrásolt anyag, a 7. lépés (nevesített tanító, web) nem futott, és asszociatív anyaggal nem pótolható (CLAUDE.md 3. szabály). Az olvasat leírása értelmezés (`manual`).】
+
+<!-- INAKTÍV: 4. Kapcsolódás a kutatási sablonhoz — a feltétel nem áll fenn: a repó adatában nincs dokumentált pünkösdi/karizmatikus szakirodalmi vonatkozás; a sablon szerint kihagyandó, nem üres címmel -->
+
+## 5. Alkalmazás és tanítványság
+
+A 3. pont megállapításaiból három alkalmazás következik.
+
+Az első a rend ajándék-jellege (Drash, Sod). A lakható világ — fény, termőföld, ember és állat helye — nem semleges háttér, hanem rendezett ajándék. A tanítvány ezért a teremtett rendet nem birtokként, hanem bizalomként kezeli, amely a Teremtőhöz való viszonyban marad meg.
+
+A második az ítélet olvasása (Peshat, Drash). A próféták az ítéletet a teremtés szavaival mondják el, és ebből látszik, mi a tét: az ítélet nemcsak embereket ér, hanem a föld lakhatóságát is — ember, madár, termőföld és város tűnik el a látomásból. Jeremiás ugyanakkor határt is hall az ítéletben („de nem vetem végét”); a tanítvány az ítélet-szövegekben ezt a határt is keresi, nem csak a pusztulást.
+
+A harmadik a remény iránya (Remez, Drash). A Teremtő szándéka a lakhatóság (Ézs 45:18), nem a kietlenség; a *tohu*-állapot ezért sem a kezdetben, sem az ítéletben nem Isten utolsó szava. A tanítvány reménye a lakható rend helyreállítására irányul, nem a pusztulás szemléletére.
+
+<!-- INAKTÍV: 5. Nevesített tanítói egyezés — a feltétel nem áll fenn: a 7. lépés (nevesített tanító) nem futott; ha lefut, eredménye saját fájlban áll, és ez a szakasz arra hivatkozik (DT66 a/2); hiányjelzés: 7. pont 6. tétel -->
+
+【NAPLO: Q5/L5 — a nevesített tanítói egyezés-keresés ehhez a motívumhoz nem készült (a 7. lépés önálló menet, nem a #64 hatóköre); gyengébb vagy áttételes forrással nem pótolható.】
+
+<!-- ADAT-NÉZET: 6. Napló-frissítés (státusz) | forrás: adat/motivumok.tsv (statusz, statusz_verzio, statusz_datum) | cél: general.py --cel naplo | SZINT: belso -->
+
+<!-- SZINT: apparatus -->
+
+## 7. Nyitott kérdések
+
+1. **LXX-döntések.** A három előfordulás LXX-megfelelője (2. pont, „Septuaginta”) fordítói döntésként nincs rögzítve; a lexikonoldal LXX-szakasza erre épül majd.
+2. **Az Ézs 34:11 Károli-kereszthivatkozásai.** A dataset Ézs 34:11-re adott listája betűre azonos az Ézs 40:11-ével (pásztor-kép), ezért a vers valódi Károli-célpontjai nem ismertek; az öt hibás célpont elutasított jelölt.[^k-ezs][^d-jel]
+3. **Szótári alap.** A *tohu* és a *bohu* BDB-szócikkének idézete hiányzik (2. pont); a jelentés-összevetés az SDBH-n áll.
+4. **TAHOT-lefedettség.** A Jób 40:1–5 és a Jób 41 hiányzik a héber kivonatból, így a P3 scan ezekre a versekre nem terjed ki. A három előfordulás-verset ez nem érinti.
+5. **A TEREMT-001 1Móz 1:2-sora.** Ennek a sornak a `funkcio`-ja üres, a `kapcsolodas`-a („formátlan” vizek) pedig a *tohu*-jegyet a *tehóm*-sorba viszi át; az elhatárolás (3. pont, Remez) akkor teljes, ha a TEREMT-001 sora is kitöltődik.[^gate]
+6. **Nevesített tanító.** Nincs feldolgozva; a 7. lépés önálló menet.
+7. **A vitatott pont képviselői.** A restitúciós olvasat nevesített képviselői forrás híján nincsenek bemutatva (3. pont, ⚠️).
+8. **A régi kifejezés.** A „teremtés-visszavonás” kifejezés más fájlokban (napló „Lásd még”, changelog, HAMART-001-napló és -lexikon, a fájl végi archív blokkok) még áll; ez a próza a motívum címének megfogalmazását követi („a föld kietlen és puszta állapota a teremtéskor és az ítéletkor”), és a visszautalást visszarendeződésként, nem a teremtés visszavonásaként írja le.
+
+【NAPLO: N25 — a kifejezés rendezése ebben a forrásban megtörtént (a próza nem használja motívumnévként); a többi fájl az `ir`-en kívül esik, a #64 nem írja. N22 — az Ézs 34:11 Károli-KH adathiba; N17 — a régi zsoltár-kivonat eltolása (a zsoltár-jelöltek régi `lxx-hid` sorai); mindkettő változatlanul nyitott.】
+
+<!-- ADAT-NÉZET: Minőségi kapu (Q1–Q7) | eredménye adat, a próza nem írja be | SZINT: belso -->
+
+<!-- ADAT-NÉZET: Verzió-címke | forrás: adat/motivumok.tsv (sablon_verzio) | SZINT: belso -->
+
+## Proveniencia-sorok
+
+[^koll]: proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8414+H0922 | n=3 | ts=2026-10-08T06:22Z
+[^scan-bohu]: proveniencia: scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H0922 | n=3 | ts=2026-10-08T06:22Z
+[^scan-tohu]: proveniencia: scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H8414 | n=19 | ts=2026-10-08T06:22Z
+[^gerinc]: proveniencia: scope=range:1Móz 1:2+Jer 4:23+Ézs 34:11 | forras=TAHOT_kivonat.tsv | n=2 | ts=2026-10-08T06:22Z
+[^domen-par]: proveniencia: scope=SDBH-v0.9.2 | forras=SDBH_domenek.tsv+SDBH_SDGNT_anomaliak.tsv | strong=H8414+H0922 | n=1 | ts=2026-10-08T06:22Z
+[^domen-tohu]: proveniencia: scope=SDBH-v0.9.2 | forras=SDBH_domenek.tsv+SDBH_SDGNT_anomaliak.tsv | strong=H8414 | n=2 | ts=2026-10-08T06:24Z
+[^lxx-gen]: proveniencia: scope=range:1Móz 1:2 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=19 | ts=2026-10-08T06:21Z
+[^lxx-jer]: proveniencia: scope=range:Jer 4:23 | forras=LXX_OS/jeremiah-lxx.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-10-08T06:21Z
+[^lxx-ezs]: proveniencia: scope=range:Ézs 34:11 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=23 | ts=2026-10-08T06:22Z
+[^tahot3]: proveniencia: scope=range:1Móz 1:2+Jer 4:23+Ézs 34:11 | forras=TAHOT_kivonat.tsv (sorkivonat `split('\t')`-tel, nem `lekerdez.py`-alparancs) | n=59 | ts=2026-10-08T06:23Z
+[^k-gen]: proveniencia: scope=range:1Móz 1:2 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-08T06:22Z
+[^k-gen3]: proveniencia: scope=range:1Móz 1:3 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-08T06:25Z
+[^k-jer]: proveniencia: scope=range:Jer 4:23 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-08T06:22Z
+[^k-jer24]: proveniencia: scope=range:Jer 4:24 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-08T06:25Z
+[^k-jer25]: proveniencia: scope=range:Jer 4:25 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-08T06:25Z
+[^k-jer26]: proveniencia: scope=range:Jer 4:26 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-08T06:25Z
+[^k-jer27]: proveniencia: scope=range:Jer 4:27 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-08T06:25Z
+[^k-ezs]: proveniencia: scope=range:Ézs 34:11 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=5 | ts=2026-10-08T06:22Z
+[^k-ezs3410]: proveniencia: scope=range:Ézs 34:10 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=1 | ts=2026-10-08T06:25Z
+[^k-ezs4518]: proveniencia: scope=range:Ézs 45:18 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=2 | ts=2026-10-08T06:25Z
+[^k-ezs2410]: proveniencia: scope=range:Ézs 24:10 | forras=Karoli_1908.tsv+Karoli_kereszthivatkozasok.tsv | n=0 | ts=2026-10-08T06:25Z
+[^d-mot]: proveniencia: scope=id=TEREMT-002 (negativ_kriterium, folerendelt_fogalom) | forras=adat/motivumok.tsv | n=1 | ts=2026-10-08
+[^d-elof]: proveniencia: scope=id=TEREMT-002 (kapcsolodas, funkcio, karoli_szo, gerinc_elem) | forras=adat/elofordulasok.tsv | n=3 | ts=2026-10-08
+[^d-jel]: proveniencia: scope=id=TEREMT-002 (dontes, indoklas, forras_kereses) | forras=adat/jeloltek.tsv | n=66 | ts=2026-10-08
+[^d-kapcs]: proveniencia: scope=id=TEREMT-002 (tipus, funkcio, bizonyossag) | forras=adat/kapcsolatok.tsv | n=5 | ts=2026-10-08
+[^p2]: proveniencia: scope=manual | forras=naplok/T1_TEREMT002_scan.md 2.1–2.2 (mező-hipotézis; a kollokációk saját sorai: naplok/T1_TEREMT002_auditok_munkalap.tsv) | ts=2026-09-25
+[^p5]: proveniencia: scope=manual | forras=naplok/T1_TEREMT002_scan.md 3. pont (igealak: nem alkalmazható, H8414 és H0922 főnév) | ts=2026-09-25
+[^gate]: proveniencia: scope=manual | forras=naplok/T1_TEREMT002_gate.md 3. pont (átfedés-számítás és funkció-különbség) | ts=2026-09-25
+
+<!-- SZINT: belso -->
+
+【NAPLO: archív — az alábbi három blokk a 2026-09-25-i átemelés változatlan szövege (karakterre azonos, a fájl elejéről ide helyezve, #64 M1). A „Tematikus áttekintés” és a „Kulcsszó-index” mérvadó értéke a generált napló-blokkban áll; a „⭐ Emlékeztető küszöb” bekezdés értelmező mondatai a Kivonatba és a 3. pontba olvadtak, új megfogalmazással (N25). Sorsuk a #11 migráció dolga.】
 
 ## Tematikus áttekintés — a napló mai tétele *(archív — a 2026-09-25-i kivonás előtti szöveg; a mérvadó érték a generált blokkban áll)*
 
