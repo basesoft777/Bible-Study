@@ -400,6 +400,10 @@ lexikon-oldal saját kockázataira szabva:
       LEXV2_2_BRIEF.md G1), és az OLVASHATÓ változat mind a 7 kötelező
       szakasza jelen van. Utólagos szerkesztésnél külön ellenőrizendő,
       hogy egy korábban meglévő szakasz nem maradt-e ki.
+- [ ] **L2. Napló-jelölés kötelező** — minden folyamat-/napló-jellegű
+      megjegyzés (dátum, eredet, döntés, folyamat- vagy állapotmondat)
+      `【NAPLO: …】` blokkban áll, prózai mondatba ágyazva soha; l. a
+      "Napló-jelölés kötelező" bekezdés (DT68 (2), 2026.10.08).
 - [ ] **L3. Lexikai vs. tematikus kapcsolat szétválasztva** — minden
       forrás-hivatkozás, ami nem a motívum saját Strong-számán/szaván
       keresztül kapcsolódik, hanem csak fogalmilag (pl. egy másik
@@ -426,13 +430,16 @@ lexikon-oldal saját kockázataira szabva:
       ellenőrzési állítás tartalmi mondatba ágyazva; (d) 【NAPLO】 blokk
       üres sor nélkül a szövegtől; (e) magyar fordítás blockquote-ban
       (csak az eredeti nyelvű idézet lehet ott); (f) olvasót
-      megszólító/"mi"-hangú mondat a TUDOMÁNYOS változatban; (g)
-      egy réteg elemzési eszköze egy másik réteg tanításába
-      összeolvasztva, keresztre hivatkozás nélkül. Részletek: l. a
-      "Napló-jelölés kötelező" bekezdés.
+      megszólító/"mi"-hangú mondat a TUDOMÁNYOS változatban. Részletek:
+      l. a "Napló-jelölés kötelező" bekezdés.
+- [ ] **L7. PaRDeS-rétegfegyelem** — egy réteg elemzési eszköze nem
+      olvad össze egy másik réteg tanításával; valódi kapcsolat csak
+      külön, a másik réteg nevével, keresztre hivatkozva (l. fent a
+      rétegfegyelem bekezdését; az L6 korábbi (g) pontja, DT68 (2)).
 
-Ha L1, L3, L4 vagy L6 bármelyike bukik, a lexikon-oldal NEM tehető
-közzé/commitolható, amíg nincs javítva.
+Ha L1, L2, L3, L4, L6 vagy L7 bármelyike bukik, a lexikon-oldal NEM
+tehető közzé/commitolható, amíg nincs javítva. *(L1–L7: DT68 (2),
+DT-F52c (5); a #10 mércéje ez + a DT2 két rés-szabálya.)*
 
 ---
 

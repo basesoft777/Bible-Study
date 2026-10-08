@@ -8,7 +8,7 @@ modell: sonnet
 munka: adat
 allapot: nem_indult
 ad: a lexikon/[ID]_TUDOMANYOS.md és _TORZSCIKK.md fájlok a jelenlegi adatból újragenerálva; a nulla-diff / várt diff dokumentálva (az F28 fordításai, a javított ψ-igehelyek, a Szent Szellem-szöveg)
-kovetkezo: M0 szárazfutás ideiglenes könyvtárba (a repón kívülre); ⛔ az éles fájlok felülírása előtt
+kovetkezo: befagyasztva a #11 1. lépcsőjéig (DT-F52c (3): a régi forrásréteg és az éles lexikon nem bővül a régi szerkezet szerint); utána: M0 szárazfutás ideiglenes könyvtárba (a repón kívülre); ⛔ az éles fájlok felülírása előtt
 olvas: [lexikon/, eszkozok/lexikon_general.py, RENDER_BRIEF.md, adat/forditasok.tsv, adat/res_forras.tsv, ATALAKITASI_TERV.md.md]
 ir: [lexikon/, generalt_proba/]
 fugg: [28, 34, 35]

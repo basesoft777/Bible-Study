@@ -8,7 +8,7 @@ modell: sonnet
 allapot: megallt
 ag: claude/f22-zsolt
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
-kovetkezo: "Te: a Zsoltárok kész (PR #239); ⛔ 2.: kézi átnézés 119:94, 144:15, 145:1 (a felhasználóé), ready és merge (a felhasználóé). A Bírák (DT54) indítása külön jóváhagyás; **párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60)**. Jób előtt: TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis."
+kovetkezo: "Te: a Zsoltárok mergelve (PR #239, 48caa80); ⛔ 2.: kézi átnézés 119:94, 144:15, 145:1 (a felhasználóé). A Bírák (DT54) indítása külön jóváhagyás; **párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60)**. Jób előtt: TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról. Ézs 9:17–20 megfeleltetése hamis."
 fugg: [21]
 nem_fugg: [48]
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/futtat.py, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/regi_arany_hibas.tsv, naplok/F21P_jelentes.md]
