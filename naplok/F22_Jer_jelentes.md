@@ -125,6 +125,6 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 
 ## 5. Nyitott (felhasználói) lépések
 
-- **Független szúrópróba** (22.6): `python eszkozok/karoli_strong/zart_osszevet.py --konyv Jer --bemenet <repón kívüli fájl>`; az összesítés ide másolandó.
+- ~~Független szúrópróba (22.6)~~: elmarad (DT-F22e, a felhasználó döntése, 2026.10.08).
 - Független ellenőr: `naplok/ELLENOR_F22_Jer.md`.
 - A következő könyv indítása a felhasználó döntése (⛔ 2.). A DT57 (1) szerint a Jer után a BDB-haszon mérése szerinti sorrend jön (a DONTESEK.md DT57 sorának mérése: 1Krón 189, 2Krón 169, Ezsd 162, Jób 159, Ez 147, Péld 145 szócikk; a Bír később); a Jób előtt TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról.

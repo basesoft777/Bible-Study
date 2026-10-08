@@ -8,7 +8,7 @@ modell: sonnet
 allapot: megallt
 ag: claude/wonderful-einstein-ezr2pw
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
-kovetkezo: "Te: a Jeremiás kész (API, DT-F77 (a); jelentés: `naplok/F22_Jer_jelentes.md`); ⛔ 2.: szúrópróba (`zart_osszevet.py --konyv Jer`, és az Ézsre is, a felhasználóé), kézi átnézés Ézs 9:20, 64:1 (a felhasználóé), ready és merge (a felhasználóé). A következő könyv (DT57 (1): a BDB-haszon mérése szerint, elsőként 1Krón) indítása külön jóváhagyás; **párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60)**. Jób előtt: TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról."
+kovetkezo: "Te: a Jeremiás kész (API, DT-F77 (a); jelentés: `naplok/F22_Jer_jelentes.md`); ⛔ 2.: független ellenőr (`naplok/ELLENOR_F22_Jer.md`), a szúrópróba elmarad (DT-F22e); kézi átnézés Ézs 9:20, 64:1 (a felhasználóé), ready és merge (a felhasználóé). A következő könyv (DT57 (1): a BDB-haszon mérése szerint, elsőként 1Krón) indítása külön jóváhagyás; **párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60)**. Jób előtt: TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról."
 fugg: [21]
 nem_fugg: [48]
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/futtat.py, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/regi_arany_hibas.tsv, naplok/F21P_jelentes.md]
@@ -166,6 +166,7 @@ A jelentés 2. szakasza, csak szkriptkimenetből:
 | D15 | a Zsolt-menet párhuzamos futását a felhasználó utólag elfogadta (DT60, 2026-10-07); **az elv érvényben marad: párhuzamos futás csak kifejezett jóváhagyással indulhat**, alapértelmezés a „kötegenként egy subagent, sorban” | a kötegek függetlenek, de a keretmérés és a hibakezelés párhuzamosan nem tiszta; a jóváhagyás a futás előtt kell, nem utólag | a párhuzamos futás alapértelmezetté tétele |
 | D16 | az Ézs csak Sonnettel, a Message Batches API-n (`effort=high`, DT-F77 (a), DT57); a detektor Ézs 9 és 64 hibáját kézi megfeleltetés javítja (`f22/versmegfeleltetes_kezi.tsv`), két 2:1 beolvasztással (Ézs 9:20, 64:1 → átnézés); költség 7,08 USD; jelentés: `naplok/F22_Ezs_jelentes.md` | a felhasználó döntései (DT-F77 (a), DT57, versbeosztás-jóváhagyás 2026.10.08) | subagentes futás (a keretet terheli) |
 | D17 | a Jer csak Sonnettel, a Message Batches API-n (`effort=high`, DT-F77 (a), DT57); a detektor szerint tiszta (1364/1364 vers, 52 fejezet), nincs kézi javítás és beolvasztás; könyvplafon 15,14 USD (F77.11), költség 9,06 USD; jelentés: `naplok/F22_Jer_jelentes.md` | a felhasználó döntései (DT-F77 (a), DT57, versbeosztás-jóváhagyás 2026.10.08: „mehet”) | subagentes futás (a keretet terheli) |
+| D18 | **DT-F22e** — a 22.6 független szúrópróba az Ézstől kezdve elmarad (felhasználó, 2026-10-08: „nem csinálok próbát”); a `zart_osszevet.py` megmarad, a döntés újranyitható | a minőség jelzője a kapu, az `--ellenoriz` és a független ellenőri kör | könyvenkénti szúrópróba (22.6) |
 
 ## Döntésnapló (a brief verziói)
 
@@ -173,6 +174,7 @@ A jelentés 2. szakasza, csak szkriptkimenetből:
 |---|---|---|---|
 | v1 | 2026.09.30 | első változat: teljes Biblia, három külső modell (A, B, döntőbíró C), Opus-arany, KJV-import, pilot ⛔ | a felhasználó kérése (teljes feldolgozás) |
 | v2 | 2026.10.01 | v1 (három külső modell, a teljes Biblia) felváltva v2-vel, a #21 pilot eredménye alapján | a pilot mért pontossága: Sonnet 97,3%, Gemini 95,3%, a pár `magas` linkjei 98,7% |
+| v2.12 | 2026.10.08 | D18 (DT-F22e): a 22.6 szúrópróba az Ézstől elmarad | a felhasználó döntése |
 | v2.11 | 2026.10.08 | a Jer menete csak Sonnettel, a Message Batches API-n (D17); könyvenkénti plafon (F77.11); `tokenek.VERSBEOSZTAS_JOVAHAGYOTT` bővítve a Jeremiással | a felhasználó döntései |
 | v2.10 | 2026.10.08 | az Ézs menete csak Sonnettel, a Message Batches API-n (D16, DT-F77 (a), DT57); kézi versmegfeleltetés (`f22/versmegfeleltetes_kezi.tsv`) és két 2:1 beolvasztás; `tokenek.VERSBEOSZTAS_JOVAHAGYOTT` bővítve az Ézzsel | a felhasználó döntései |
 | v2.9 | 2026.10.07 | D15: a párhuzamos futás csak kifejezett jóváhagyással (DT60); a Zsolt-menet párhuzamos futása utólag elfogadva | a felhasználó döntése |

@@ -137,7 +137,7 @@ A futás commitjai (`d288e08` … `4d2f292`) a #77 ágán (`claude/wonderful-ein
 
 ## 5. Nyitott (felhasználói) lépések
 
-- **Független szúrópróba** (22.6): `python eszkozok/karoli_strong/zart_osszevet.py --konyv Ézs --bemenet <repón kívüli fájl>`, az összesítés ide másolandó. Mintát a felhasználó választ (a Zsoltárnál DT59: egy szakasz, 10 vers).
+- ~~Független szúrópróba (22.6)~~: elmarad (DT-F22e, a felhasználó döntése, 2026.10.08).
 - Független ellenőr: `naplok/ELLENOR_F22_Ezs.md`.
 - A Jeremiás (DT57) indítása a felhasználó döntése (⛔ 2.), az Ézs szúrópróbája után.
 
