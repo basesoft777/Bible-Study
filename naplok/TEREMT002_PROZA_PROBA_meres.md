@@ -6,12 +6,12 @@
 
 Ez az író saját mérése, nem független ellenőrzés; a független ellenőr (M4) és a K1/4 (b) kimondása a felhasználóé.
 
-**Számok** (saját szkript, `split('\t')`, a scratchpadban; a forrás-fájl az F64.8 utáni állapotban):
+**Számok** (saját szkript, `split('\t')`, a scratchpadban; a forrás-fájl az F64.18 utáni állapotban; frissítve F64.19):
 `scope=motivumok/TEREMT-002.md | forras=manual (szöveg-számlálás: lábjegyzet, jelölő, NAPLO) | ts=2026-10-08`
 
 | Mérőszám | Érték |
 |---|---|
-| proveniencia-lábjegyzet (definíció) / hivatkozás | 39 / 87; mind definiált és hivatkozott (F64.15 előtt 32 / 74) |
+| proveniencia-lábjegyzet (definíció) / hivatkozás | 39 / 94; mind definiált és hivatkozott (F64.15 előtt 32 / 74, F64.18 előtt 39 / 87) |
 | ebből friss `lekerdez.py`-futás | 27 (gerinc 1, kollokacio 8, scan 2, domen 2, lxx-hid 3, karoli 11; a P2 hét kollokáció-futása az F64.15-ben) |
 | sorkivonat `split('\t')`-tel (nem `lekerdez.py`) | 5 (TAHOT 1, BDB 2, `forditasok.tsv` 2) |
 | adattábla-olvasás / `manual` (T1-naplók) | 4 / 3 |
@@ -34,7 +34,7 @@ Ez az író saját mérése, nem független ellenőrzés; a független ellenőr 
 | `lexikon` | — | **KIHAGYVA**: nincs `res_forras.tsv`-sor | — |
 | `torzscikk` | — | **KIHAGYVA**: nincs lexikonoldal | — |
 
-**Nem renderelt** (a teljes próza, szakaszonként): Kivonat; 1. pont P1–P7 (belso); 2. Eredeti nyelvi összevetés (a BDB-idézettel); 3. PaRDeS (Peshat, Remez, Drash, Sod, Vitatott pontok); 5. Alkalmazás; 7. Nyitott kérdések; Proveniencia-sorok; a 10 NAPLO-blokk és a 3 archív blokk. A mai `general.py` a `motivumok/[ID].md`-ből semmit nem olvas (M0 4. pont: a `forrasreteg_beolvaszthato_szakaszok()` hívatlan).
+**Nem renderelt** (a teljes próza, szakaszonként): Kivonat; 1. pont P1–P7 (belso); 2. Eredeti nyelvi összevetés (a BDB-idézettel); 3. PaRDeS (Peshat, Remez, Drash, Sod, Vitatott pontok); 5. Alkalmazás; 7. Nyitott kérdések; Proveniencia-sorok; a 13 NAPLO-blokk és a 3 archív blokk. A mai `general.py` a `motivumok/[ID].md`-ből semmit nem olvas (M0 4. pont: a `forrasreteg_beolvaszthato_szakaszok()` hívatlan).
 
 ## 2. A mérce pontonként
 
@@ -62,7 +62,7 @@ Ez az író saját mérése, nem független ellenőrzés; a független ellenőr 
 
 **L6 a)–f).** *Forrás:* (a) tartalmi mondatban/cellában dátum nincs; a ts-ek a proveniencia-lábjegyzetekben (ISTENTISZT-001-minta) és a NAPLO-kban állnak; (b) „Forrás:” sor nincs; (c) első személyű ellenőrzési állítás nincs; (d) minden NAPLO előtt üres sor; (e) blockquote csak héber szöveg, a magyar Károli-fordítás utána normál bekezdés; (f) „mi”-hang nincs (a szkript egyetlen találata a „mi a tét” kérdőszó). *Render:* részben, l. L2 (helyőrző-sor).
 
-**L7.** *Forrás:* a Drash a lakhatóság-célt (Ézs 45:18) „(Remez-szintű kiegészítés, l. 3. pont, Remez: Ézs 45:18)” kereszthivatkozással veszi át; a TSK-szavazatok és a kapcsolat-típusok (Kontraszt/Párhuzam) csak a Remezben állnak. Átnézendő: a Vitatott pontok érvelése a `kapcsolatok.tsv` irányára hivatkozik — a Vitatott pontok nem PaRDeS-réteg, ezért nem rétegkeveredés, de a határ a sablonban nincs kimondva.
+**L7.** *Forrás:* a Drash a lakhatóság-célt (Ézs 45:18) „(Remez-szintű kiegészítés, l. 3. pont, Remez: Ézs 45:18)” kereszthivatkozással veszi át; a TSK-szavazatok és a kapcsolat-típusok (Kontraszt/Párhuzam) csak a Remezben állnak. Az F64.15/F64.18 óta a Vitatott pontok a `kapcsolatok.tsv` irányára nem hivatkozik bizonyítékként (a :132 NAPLO szerint az irány nem szöveg-adat); a Remez, a Drash és az Alkalmazás olvasatfüggő mondatai feltételes jelölést kaptak. A Vitatott pontok nem PaRDeS-réteg; a határ a sablonban nincs kimondva.
 
 **DT2/1.** *Forrás:* minden sablonszakasz vagy kitöltött, vagy `INAKTÍV`/`ADAT-NÉZET`-jelölésű, és minden tartalmi hiány NAPLO-ban explicit (vitatott pont képviselői, nevesített tanító, BDB-mezők, Ézs 34:11 Károli-KH). *Render:* a lexikon-rések nem jönnek létre (kihagyott cél), a küszöb-blokkban helyőrző áll.
 
@@ -74,7 +74,7 @@ Ez az író saját mérése, nem független ellenőrzés; a független ellenőr 
 
 | Szakasz | Hogyan működött | Megjegyzés |
 |---|---|---|
-| Kivonat | kézi | két bekezdés, 8 lábjegyzet-hivatkozás; számai (3 vers, 19/16 *tohu*-vers) lekérdezésből — adatból is generálhatók volnának |
+| Kivonat | kézi | két bekezdés, 10 lábjegyzet-hivatkozás; számai (3 vers, 19/16 *tohu*-vers) lekérdezésből — adatból is generálhatók volnának |
 | 0. Forrás-összegyűjtés | inaktív | natív motívum; a jelölő elég |
 | 1. P1–P7 | kézi (belso) a P2-n, a többi adatból megismételve | a P1/P3–P6 eredményei a próza és az `auditok.tsv` között duplikálódnak; generált nézet lehetne, a P2 indoklása maradjon kézi |
 | 1. tábla | adat | renderelhető (`study`), BDB-oszlopok „—” |
@@ -106,7 +106,7 @@ Ez az író saját mérése, nem független ellenőrzés; a független ellenőr 
 
 ## 5. Átnézendő értelmezői döntések
 
-1. **A Vitatott pontok aktívvá tétele.** Az M1 aktívnak vette, a restitúciós („hézag-”) olvasatot írta le, és a szöveg-adattal (1Móz 1:2 állapot, nem esemény; Jer 4:23 saját ítélet-kontextusa; Ézs 45:18 cél-tagadás; a kapcsolatok iránya) a kiinduló-állapot olvasat mellett döntött. Az olvasat leírása emlékezetből származó értelmezés (`manual`); a sablon szerint kötelező nevesített képviselők forrás híján hiányoznak. Alternatíva: a szakasz inaktív, és a kérdés a 7. pontba kerül.
+1. **A Vitatott pontok aktívvá tétele.** Az M1 aktívnak vette, és eredetileg a kiinduló-állapot olvasat mellett döntött. A felhasználó (a) döntése (2026-10-08) szerint a szakasz aktív marad, de nem dönt: az F64.15/F64.18 óta mindkét olvasatot (kiinduló-állapot / restitúciós „hézag”) kiegyensúlyozottan mutatja be, a közös, nem különböztető tényeket (a BDB teljes keretezésével) külön blokkban, körkörös érv nélkül; az olvasatfüggő mondatok a próza többi részében feltételes jelölést kaptak (a1). Az olvasatok leírása emlékezetből származó értelmezés (`manual`; a „vala”/„lett” grammatikai kérdés lekérdezéssel nincs alátámasztva); a sablon szerint kötelező nevesített képviselők forrás híján hiányoznak. Alternatíva: a szakasz inaktív, és a kérdés a 7. pontba kerül.
 2. **A 4. pont inaktiválása.** Indok: a repó adatában nincs dokumentált pünkösdi/karizmatikus szakirodalmi vonatkozás. Ezt az M1 nem kereste; az inaktiválás a „nincs adat” állapotot rögzíti, nem a „nincs vonatkozás” tényt.
 3. **A BDB-fordítás nem független.** A `forditasok.tsv` H8414/H0922 sora `allapot=opus`, `modell=claude-opus-5-5`: ugyanaz a modell fordította, amely a prózát írta. Az idézett magyar szöveg tehát nem független megerősítés, és emberi lektorálása nem történt.
 
