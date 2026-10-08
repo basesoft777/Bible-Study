@@ -6,7 +6,7 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 allapot: megallt
-ag: claude/wonderful-einstein-ezr2pw
+ag: claude/f22-1kron
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
 kovetkezo: "Te: az 1Krónika kész (API, DT73 (a); jelentés: `naplok/F22_1Kron_jelentes.md`); ⛔ 2.: a független ellenőr (`naplok/ELLENOR_F22_1Kron.md`), a szúrópróba elmarad (DT70); kézi átnézés 1Krón 19:2 (végleges kapuhiba, `kezi`), korábbról Ézs 9:20, 64:1 és a Zsoltároknál 119:94, 144:15, 145:1 (a felhasználóé); a #77 briefjének fejléce (F77.11) a merge előtt frissítendő; ready és merge (a felhasználóé). A következő könyv (DT57 (1): 2Krón) indítása külön jóváhagyás; **párhuzamos futás csak kifejezett jóváhagyással indulhat (D15, DT60)**. Jób előtt: TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról."
 fugg: [21]

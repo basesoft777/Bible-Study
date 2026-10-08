@@ -105,7 +105,7 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 
 ## 5. Nyitott (felhasználói) lépések
 
-- ~~Független szúrópróba (22.6)~~: elmarad (DT-F22e).
+- ~~Független szúrópróba (22.6)~~: elmarad (DT70).
 - Független ellenőr: `naplok/ELLENOR_F22_1Kron.md`.
 - Kézi átnézés: 1Krón 19:2.
 - A következő könyv indítása a felhasználó döntése (⛔ 2.). A DT57 (1) mérése szerint a sorrend: 2Krón 169, Ezsd 162, Jób 159, Ez 147, Péld 145 szócikk; a Jób előtt TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról.
