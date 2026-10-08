@@ -6,7 +6,7 @@
 
 Ez az író saját mérése, nem független ellenőrzés; a független ellenőr (M4) és a K1/4 (b) kimondása a felhasználóé.
 
-**Számok** (saját szkript, `split('\t')`, a scratchpadban; a forrás-fájl az F64.18 utáni állapotban; frissítve F64.19):
+**Számok** (saját szkript, `split('\t')`, a scratchpadban; a forrás-fájl az F64.21 utáni állapotban (F64.19 / F64.22 frissítés)):
 `scope=motivumok/TEREMT-002.md | forras=manual (szöveg-számlálás: lábjegyzet, jelölő, NAPLO) | ts=2026-10-08`
 
 | Mérőszám | Érték |

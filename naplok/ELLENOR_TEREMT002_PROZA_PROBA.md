@@ -1,4 +1,4 @@
-ELTÉRÉS: 7 tétel (3. kör; a 2. kör Ú1–Ú3 részben javítva)
+ELTÉRÉS NÉLKÜL (4. kör után; a 4. kör egyetlen enyhe címke-eltérését az F64.23 javította, l. a végén)
 
 # Független ellenőrzés — F64_TEREMT002_PROZA_PROBA_BRIEF.md · 0962e4f..47fd7d8 (`git merge-base origin/main HEAD`..HEAD)
 
@@ -144,3 +144,34 @@ A három NEM ELLENŐRIZHETŐ parancs, az orkesztrátor futtatásában (2026-10-0
 **Súlyossági sorrend:** (1) :109 tényhiba: a TAHOT szerint a Jer 4:23 „föld”-je tárgy (אֶת), nem alany, mégis TAHOT-lábjegyzettel áll; (2) :101 és :173: két olvasatfüggő mondat feltétel nélkül, a NAPLO :140 és a meres :65 erről pontatlan; (3) :132: a BDB-keretezés a „nem különböztető” blokkban, pedig a mondat maga egyoldalúnak minősíti; (4) :134: a „vala” állítás TAHOT-lábjegyzete adat-alátámasztásnak mutatja a `manual` nyelvtani állítást; (5) meres :65 elavult sorhivatkozás és meres :5 elavult fejléc.
 
 *Eljárási megjegyzés (ellenőr): két parancs túllépett a megengedett körön (egy `| grep` a `tsk` kimenetén, egy `echo`); mindkettő csak olvasott, a `tsk`-t csövezés nélkül újrafuttatta.*
+
+---
+
+## 4. kör: független ellenőrzés, `9c2f2bc..HEAD` (F64.21 `9aa1333`, F64.22 `6a05404`)
+
+*Az ellenőr szövege; fájlírási jog híján az orkesztrátor fűzte hozzá. Első sora: `ELTÉRÉS: 1 tétel (enyhe)`.*
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| Ú1 Remez, Jer 4:23 „föld” | JAVÍTVA | `motivumok/TEREMT-002.md:109` | `lekerdez.py scan H7200 --szakasz "Jer 4:23"`, `scan H0853 …`, `scan H0776 …`: mindhárom n=1. Grep `^Jer 4:23\t` a `konkordancia/TAHOT_kivonat.tsv`-ben: 348744 `H7200 רָאִיתִי … I looked at`, 348745 `H0853 אֶת [Obj.]`, 348746 `H9009 הָ`, 348747 `H0776 אָרֶץ`. A próza: „ott a הָאָרֶץ a רָאִיתִי, »nézek« tárgya” [^tahot3] — egyezik. |
+| Ú1 Peshat esemény-mondat | JAVÍTVA | `:101` | Feltételes: „A kiinduló-állapot olvasat szerint … csak állapotot rögzít (a restitúciós olvasat ezt másként látja; l. ⚠️)”. A mondat többi része mindkét olvasattal összefér (:132). |
+| Ú1 7. pont 8. tétel | JAVÍTVA | `:173` | „teremtés előtti” helyett „az 1Móz 1:2-ben megnevezett állapotba”; a két olvasat külön megnevezve, egyezik a :127–128-cal. |
+| Ú2 BDB a közös blokkban | JAVÍTVA | `:132`, `:134` | A :132-ben csak a két idézett fél, értékelés nélkül; az értékelés a kiinduló-állapot oldalon (:134), „szótári értelmezés, `manual`, nem a vita eldöntése”. |
+| Ú2 „vala”/„lett” manual | JAVÍTVA | `:134`, `:136` | „nyelvtani értelmezés, `manual`” mindkét oldalon a mondatban; a [^tahot3] kikerült, helyette [^k-gen] (csak a Károli-fordítás); a :136-on nincs lábjegyzet. |
+| Ú3 mérés :65 | JAVÍTVA | `meres:65` | „a Vitatott pontok záró NAPLO-ja”; a felsorolás egyezik a prózával. |
+| Ú3 mérés :5 fejléc | JAVÍTVA | `meres:5` | A négy hash (78e926e, ecb12db, c3879dd, 9aa1333) létezik, tárgyuk egyezik. |
+| Új: mérés :9 címke | ELTÉRÉS (enyhe) | `meres:9` | „a forrás-fájl az F64.18 utáni állapotban; frissítve F64.19” ellentmond a :5-nek (F64.21). A számok érvényesek: az F64.21 csak áthelyezett lábjegyzeteket hozott (`git diff --word-diff`), a 94 hivatkozás és a Kivonat 10 hivatkozása nem változott. |
+| Teljes átolvasás: feltétel nélküli olvasatfüggő mondat | OK | `:13`, `:15`, `:101–123`, `:150–154`, `:166–173` | Read :1–223. Nincs ilyen. |
+| Lábjegyzet ↔ állítás | OK | `:111`, `:109` | `[^d-jel]` → `jeloltek.tsv:282`; `kapcsolatok.tsv:37`, `:39`; TSK 84 / 21 egyezik (`jeloltek.tsv:279`, `:282`). |
+| Új érv/tény/nyelvtani állítás a diffben | OK | `:53`, `:109`, `:134` | `git diff --word-diff 9c2f2bc..HEAD`: csak a „Károli:” tulajdonítás (:53), a tárgy-javítás, a feltételes keretek és a manual jelölések. `lekerdez.py karoli "1Móz 1:2"` → „A föld pedig kietlen és puszta vala …” igazolja a :53-at. |
+| Adattábla / lexikon / tematikus_lezart / generalt_proba | OK | — | `git diff --numstat 9c2f2bc..HEAD -- adat konkordancia lexikon tematikus_lezart generalt_proba` → üres; `main...HEAD -- adat konkordancia` → üres (Δ=0). |
+| CI | OK | — | `futtat.py … --diff-alap 9c2f2bc --diff-fej HEAD` → exit=0; E2–E20, E26: 0; E25 (3), E27 (33) más fájlokra. |
+| Tanulmány-ellenőrzés (F37 T4) | nem alkalmazható | — | — |
+
+**Összegzés (ellenőr):** a 3. kör mind a 7 eltérése javult; egyetlen enyhe maradék a `meres:9` elavult címkéje, a számok érvényesek; adat-, lexikon- és generált könyvtárak változatlanok, a CI 0.
+
+---
+
+## Orkesztrátor-kiegészítés a 4. körhöz (nem az ellenőr szövege)
+
+A 4. kör egyetlen (enyhe, címke-) eltérését az F64.23 javítja: a `meres:9` „F64.18 utáni állapotban; frissítve F64.19” helyett „F64.21 utáni állapotban (F64.19 / F64.22 frissítés)”. Az ellenőr a számokat érvényesnek mondta, a javítás csak a címkét érinti; ezt külön ellenőri kör nem nézte, az orkesztrátor a `git diff`-fel ellenőrizte (1 sor). A tétel így eltérés nélkül zár.
