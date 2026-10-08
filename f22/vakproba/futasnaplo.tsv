@@ -1,0 +1,26 @@
+ts	futas	koteg	probalkozas	modell	gondolkodas_mod	igehely_db	kjv	bemenet_token	kimenet_token	gondolkodas_token	koltseg_usd	koltseg_forras	kapuhiba_db	http_kiserlet	idotartam_mp	finish_reason	prompt_sha256_12	futo_osszeg_usd	ok
+2026-10-08T08:18:21+00:00	vakproba/medium/Jozs	1	1	claude-sonnet-5-5	adaptive,effort=medium	10	nem	11595	2134		0.022265	batch_ar_szamolt	10	1		end_turn	84f12ca7aafb	0.022265	nem
+2026-10-08T08:18:28+00:00	vakproba/medium/Jozs	53	1	claude-sonnet-5-5	adaptive,effort=medium	10	nem	13184	2216		0.024264	batch_ar_szamolt	5	1		end_turn	84f12ca7aafb	0.046529	nem
+2026-10-08T08:18:28+00:00	vakproba/low/Jozs	53	1	claude-sonnet-5-5	adaptive,effort=low	10	nem	13184	2215		0.024259	batch_ar_szamolt	4	1		end_turn	84f12ca7aafb	0.070788	nem
+2026-10-08T08:18:28+00:00	vakproba/low/Jozs	1	1	claude-sonnet-5-5	adaptive,effort=low	10	nem	11595	2021		0.021700	batch_ar_szamolt	1	1		end_turn	84f12ca7aafb	0.092488	nem
+2026-10-08T08:18:28+00:00	vakproba/low/Jozs	6	1	claude-sonnet-5-5	adaptive,effort=low	10	nem	12356	2003		0.022371	batch_ar_szamolt	1	1		end_turn	84f12ca7aafb	0.114859	nem
+2026-10-08T08:18:28+00:00	vakproba/high/Jozs	53	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	13184	14042		0.083394	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	0.198253	igen
+2026-10-08T08:18:28+00:00	vakproba/medium/Jozs	45	1	claude-sonnet-5-5	adaptive,effort=medium	10	nem	12551	2131		0.023206	batch_ar_szamolt	6	1		end_turn	84f12ca7aafb	0.221459	nem
+2026-10-08T08:18:28+00:00	vakproba/high/Jozs	25	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	12646	11304		0.069166	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	0.290625	igen
+2026-10-08T08:18:28+00:00	vakproba/high/Jozs	6	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	12356	11173		0.068221	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	0.358846	igen
+2026-10-08T08:18:28+00:00	vakproba/low/Jozs	45	1	claude-sonnet-5-5	adaptive,effort=low	10	nem	12551	2149		0.023296	batch_ar_szamolt	3	1		end_turn	84f12ca7aafb	0.382142	nem
+2026-10-08T08:18:28+00:00	vakproba/medium/Jozs	6	1	claude-sonnet-5-5	adaptive,effort=medium	10	nem	12356	1970		0.022206	batch_ar_szamolt	3	1		end_turn	84f12ca7aafb	0.404348	nem
+2026-10-08T08:18:28+00:00	vakproba/medium/Jozs	25	1	claude-sonnet-5-5	adaptive,effort=medium	10	nem	12646	2157		0.023431	batch_ar_szamolt	4	1		end_turn	84f12ca7aafb	0.427779	nem
+2026-10-08T08:18:28+00:00	vakproba/high/Jozs	1	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	11595	11642		0.069805	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	0.497584	igen
+2026-10-08T08:18:28+00:00	vakproba/high/Jozs	45	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	12551	13008		0.077591	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	0.575175	igen
+2026-10-08T08:18:28+00:00	vakproba/low/Jozs	25	1	claude-sonnet-5-5	adaptive,effort=low	10	nem	12646	2143		0.023361	batch_ar_szamolt	6	1		end_turn	84f12ca7aafb	0.598536	nem
+2026-10-08T08:24:03+00:00	vakproba/low/Jozs	1	2	claude-sonnet-5-5	adaptive,effort=low	10	nem	13764	129		0.014409	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	0.612945	igen
+2026-10-08T08:24:04+00:00	vakproba/low/Jozs	53	2	claude-sonnet-5-5	adaptive,effort=low	10	nem	15813	1082		0.021223	batch_ar_szamolt	1	1		end_turn	84f12ca7aafb	0.634168	nem
+2026-10-08T08:24:04+00:00	vakproba/medium/Jozs	6	2	claude-sonnet-5-5	adaptive,effort=medium	10	nem	14660	3623		0.032775	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	0.666943	igen
+2026-10-08T08:24:04+00:00	vakproba/medium/Jozs	25	2	claude-sonnet-5-5	adaptive,effort=medium	10	nem	15250	5119		0.040845	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	0.707788	igen
+2026-10-08T08:24:04+00:00	vakproba/medium/Jozs	1	2	claude-sonnet-5-5	adaptive,effort=medium	10	nem	14373	9081		0.059778	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	0.767566	igen
+2026-10-08T08:24:04+00:00	vakproba/low/Jozs	25	2	claude-sonnet-5-5	adaptive,effort=low	10	nem	15243	1435		0.022418	batch_ar_szamolt	3	1		end_turn	84f12ca7aafb	0.789984	nem
+2026-10-08T08:24:04+00:00	vakproba/low/Jozs	45	2	claude-sonnet-5-5	adaptive,effort=low	10	nem	14981	786		0.018911	batch_ar_szamolt	1	1		end_turn	84f12ca7aafb	0.808895	nem
+2026-10-08T08:24:04+00:00	vakproba/medium/Jozs	53	2	claude-sonnet-5-5	adaptive,effort=medium	10	nem	15820	6608		0.048860	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	0.857755	igen
+2026-10-08T08:24:04+00:00	vakproba/low/Jozs	6	2	claude-sonnet-5-5	adaptive,effort=low	10	nem	14511	283		0.015926	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	0.873681	igen
+2026-10-08T08:24:04+00:00	vakproba/medium/Jozs	45	2	claude-sonnet-5-5	adaptive,effort=medium	10	nem	15139	1299		0.021634	batch_ar_szamolt	1	1		end_turn	84f12ca7aafb	0.895315	nem
