@@ -1,14 +1,13 @@
-# TERV-INTEGRÁCIÓ — zárójelentés (TI.12)
+# TERV-INTEGRÁCIÓ — zárójelentés (TI.12, TI.13)
 
 **Egyeztetett eltérés:** feladatszám nélküli folyamatjavítás, a felhasználó 2026-10-08-i kérésére („ne aprózzuk el, véglegesen csináljuk meg”). Ág: `claude/terv-integracio`. Döntés: a döntési lista mind a 23 tétele „a” (DT-F52c–g).
 
 1. **Átvezetve:** DONTESEK DT-F52c–g, a DT-M4/M5/M6 a saját sorában lezárva (TI.5). Sablon-kapu L1–L7 (TI.6). Új csonkok: #78 SZEREPMATRIX_VAZ, #79 SQLITE_EPIT, #80 BDB_KAROLI_POTLAS, #81 KAROLI_UJJLENYOMAT (TI.7). 16 meglévő brief frissítve (TI.8). A FELADATOK kézi szakaszai, D-F52a/b (TI.9). Tervek: ATALAKITASI v10 (13. szakasz, szerepmátrix-migráció), MUNKATERV v5, ADATVAGYON v16 (TI.10). Kemény zár (2)–(4) és 6 `dontes_hatas`-sor (TI.11).
-2. **Eltérés a lista szövegétől:** a #78 és a #79 `fazis: 1`, nem `folyamat`. A DT-F52d (6) elve szerint az 1. fázisú feladatot (#23, #76) visszatartó feladat nem lehet `folyamat`. A felhasználó jóváhagyása kell rá; ha nem kapja meg, két fejléc-mező visszaállítása elég.
+2. **Eltérés a lista szövegétől:** a #78 és a #79 `fazis: 1`, nem `folyamat`. A DT-F52d (6) elve szerint az 1. fázisú feladatot (#23, #76) visszatartó feladat nem lehet `folyamat`. A felhasználó 2026-10-08-án jóváhagyta (DT-F52d (6)).
 3. **13. tétel:** nincs új feladat (a döntés szerint a profilfájl előbb kerül a repóba); a MUNKATERV és az ATALAKITASI 13.4 „feltételes”-nek jelöli. **14. tétel:** a #76 `kovetkezo`-ja hordozza. **18. tétel:** már kész volt (DT49, F52.15); a leltár R18-a a #52 napló elavult sorára épült.
-4. **⛔ Megállás — kemény zár (1), a gépi őr (`feladatok.py ellenoriz` + teszt): nem készült el.** Két ok:
+4. **Kemény zár (1), gépi őr: #82, külön ágon, D6** (TI.13; Felhasználó, 2026-10-08: „a”). A #82 teljes, futtatható brief (`F82_TERV_FELADAT_OR_BRIEF.md`), az őr csak a jelölt mutató-táblákat olvassa. A TI.12-ben a megállás oka:
    - (a) A D6 („a PR ne írja át a saját ellenőrzését”; a #11/#23 CI-része is „külön ágon, D6”) szerint az eszközrész külön ágat kíván. A döntési lista 19. tétele is „a 3. lépésben egyeztetendő”-nek hagyta.
    - (b) A „feladatként megnevezett elem” definíciója nyitott. Egy száraz próba (scratchpad, `forras=or_proba.py`, ts=2026-10-08) a három terv mai szövegén zömmel hamis találatot ad: PR-számokat (#205, #167…), fájl- és dataset-neveket (SECE_H, LXX_OS), valamint a lezárt TERV_BEFOGAD-ot. Gépi forrásnak egy jelölt mutató-tábla kell, például az ATALAKITASI 13.4, és ennek a választása tartalmi döntés.
-   - Opciók: (a) külön ág/feladat (`/befogad`), az őr csak a terv mutató-tábláit olvassa — javaslat; (b) ebben az ágban, ugyanígy; (c) az őr elmarad, a (2)–(3) réteg elég.
-   - A `.claude/commands/kovetkezo.md` már hivatkozik az őr hibájára; az őr bevezetéséig ez a mondat nem fed le semmit.
-5. **Nyitott pontok:** a #9 az éles `lexikon/`-t a #11 előtt írja. A befagyasztás (D-F52b) szó szerint csak a #36-ot nevezi; a #9 brief-írásakor eldöntendő. A DT-F52b helyőrző már DT49 lett, ezért a sorozat c-vel kezdődik. Szabálysértés: a TI.2-ben és a TI.8 előkészítésében két inline heredoc-Python futott magyar szöveggel (nem fájlból); a kimenetet ellenőriztem.
-6. **Ellenőrzés:** `feladatok.py ellenoriz` 0 hiba (101 brief); `ellenoriz.py` SÉRTÉS 0; `futtat.py --teljes` exit 0. Független ellenőr: az orkesztrátoré.
+   - A `.claude/commands/kovetkezo.md` őr-mondata marad, „az őrt a #82 vezeti be” jelöléssel.
+5. **Nyitott pontok:** a #9 éles `lexikon/`-írása a #11 előtt vs. a befagyasztás (D-F52b): a #9 brief-írásakor dől el (a #9 `kovetkezo`-jában rögzítve). A DT-F52b helyőrző már DT49 lett, ezért a sorozat c-vel kezdődik. Szabálysértés: a TI.2-ben és a TI.8 előkészítésében két inline heredoc-Python futott magyar szöveggel (nem fájlból); a kimenetet ellenőriztem.
+6. **Ellenőrzés:** `feladatok.py ellenoriz` 0 hiba (102 brief); `ellenoriz.py` SÉRTÉS 0; `futtat.py --teljes` exit 0. Független ellenőr: az orkesztrátoré.

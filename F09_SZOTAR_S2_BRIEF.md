@@ -7,7 +7,7 @@ fazis: 2
 modell: sonnet
 allapot: nem_indult
 ad: az 1. fázis adatai — a 8 motívum Strongjaira szűkítve (DT-F52c (4)) — megjelennek a 8 lexikonoldalon a #78 szerepmátrix-vázának blokkjaiban és a 8 törzscikkben; a törzscikk utoljára itt generálódik (D34)
-kovetkezo: Ez javítja a törzscikkek elavult Cremer-sorát is (a CI E11 szabálya jelzi)
+kovetkezo: Ez javítja a törzscikkek elavult Cremer-sorát is (a CI E11 szabálya jelzi). Nyitott, a brief megírásakor dől el: a #9 éles lexikon/-írása a #11 előtt vs. a befagyasztás (D-F52b, DT-F52c (3))
 fugg: [5, 6, 23, 78]
 olvas: [adat/forditasok.tsv, adat/terminologia.tsv, adat/kiejtes_kivetelek.tsv, konkordancia/, lexikon/, adat/szotar_szerepek.tsv, ADATVAGYON_TERV.md, MUNKATERV.md]
 ir: [lexikon/, adat/kiejtes_kivetelek.tsv, adat/szotar_szerepek.tsv, eszkozok/torzscikk_general.py, eszkozok/lexikon_general.py, eszkozok/render_diff_osztalyoz.py, MUNKAMENET.md, NYITOTT_FELADATOK.md, adat/forditasok.tsv, eszkozok/kiejtes.py]
