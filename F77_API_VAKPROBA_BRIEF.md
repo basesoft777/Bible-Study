@@ -9,7 +9,7 @@ modell: sonnet
 allapot: dontesre_var
 ag: claude/wonderful-einstein-ezr2pw
 ad: mért válasz arra, hogy a #22 párosítása a Max-keret helyett az API-keretből (Batch API, claude-sonnet-5-5) ugyanazt adja-e, mint a mostani subagentes futás, és mennyibe kerül versenként
-kovetkezo: "Te: DT-F77 (naplok/F22_API_VAKPROBA_jelentes.md); orkesztrátor: a zajszint-alap 5 subagent-kötege (f22/vakproba/subagent/Jozs.jsonl)"
+kovetkezo: "Te: DT-F77 (naplok/F22_API_VAKPROBA_jelentes.md)"
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/sonnet_koteg.py, eszkozok/karoli_strong/bemenet.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/egyesit.py, f22/minta_Jozs.tsv, f22/valaszok/sonnet/Jozs.jsonl, adat/karoli_strong/parok_Jozs.tsv, naplok/F22_Jozs_jelentes.md, F22_KAROLI_STRONG_BRIEF.md]
 ir: [eszkozok/karoli_strong/api_koteg.py, eszkozok/karoli_strong/api_vakproba_osszevet.py, f22/vakproba/, naplok/F22_API_VAKPROBA_jelentes.md]
 fugg: []

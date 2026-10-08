@@ -4,11 +4,9 @@ api-high	Józs 18:8	30	azt	27	אוֹתָ	csak a meglévő futásban
 api-low	Józs 10:28	19	és	23	וְ	csak a meglévő futásban
 api-low	Józs 10:36	6	ő	8	וֹ	csak a meglévő futásban
 api-low	Józs 1:5	12	vele	17	עִמָּ֔	csak az új változatban
-api-low	Józs 1:5	14	teveled	18	ךְ	csak a meglévő futásban
 api-low	Józs 1:6	21	atyáiknak	19	ם	csak a meglévő futásban
 api-low	Józs 20:4	14	és	16	וְ	csak a meglévő futásban
 api-low	Józs 20:6	27	vissza	29	יָשׁ֣וּב	csak a meglévő futásban
-api-low	Józs 20:9	37	nem	28	לֹ֣א	csak az új változatban
 api-low	Józs 3:12	10	egy	13	אֶחָ֥ד	csak az új változatban
 api-low	Józs 3:13	12	kik	9	נֹשְׂאֵי֩	csak az új változatban
 api-low	Józs 3:15	23	egész	27	כָּל	csak az új változatban
@@ -18,4 +16,6 @@ api-medium	Józs 10:37	11	királyát	13	הּ	csak a meglévő futásban
 api-medium	Józs 1:8	15	nappal	17	לַ֔יְלָה	csak az új változatban
 api-medium	Józs 3:12	1	Most	1	וְ	csak az új változatban
 api-medium	Józs 3:12	10	egy	15	אֶחָ֖ד	csak a meglévő futásban
-api-medium	Józs 3:13	16	egész	14	הָ	csak az új változatban
+subagent (zajszint-alap)	Józs 10:30	34	mint	38	כַּ	csak a meglévő futásban
+subagent (zajszint-alap)	Józs 18:8	30	azt	27	אוֹתָ	csak a meglévő futásban
+subagent (zajszint-alap)	Józs 1:7	24	se	20	אַל	csak az új változatban

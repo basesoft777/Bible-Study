@@ -13,9 +13,9 @@ SDK helyett REST: az `api_koteg.py` az `anthropic` Python SDK helyett a Message 
 - Futtatás (F77.2): 1 batch × 15 kérés (kötegek 1, 6, 25, 45, 53 × low/medium/high), majd 1 javító batch × 10 kérés (a kapun bukott low/medium kötegek). Kimenet: `f22/vakproba/<effort>/Jozs.jsonl`, `batchek.tsv`, `futasnaplo.tsv`, `elteresek_minta.tsv` (20 sor).
 - A `prompt_v3` hash-ét minden `prompt_ir` hívás ellenőrizte (a `BEFAGYASZTÁS HIBA` nem jelentkezett); a `f22/valaszok/`, `adat/karoli_strong/`, `f21p/` alatt a diff üres.
 
-## orkesztrátorra vár
+## Zajszint-alap
 
-A zajszint-alap (5 köteg `vegrehajto-sonnet` subagenttel, a kimenet `f22/vakproba/subagent/Jozs.jsonl`) **kimaradt**: az Agent eszköz a végrehajtó számára nem elérhető. Az összevető szkript a fájlt automatikusan felveszi (`subagent (zajszint-alap)` sor), ha az orkesztrátor lefuttatja a kötegeket (1, 6, 25, 45, 53) és `sonnet_koteg.py`-szerűen a megadott helyre menti. Zajszint-alap nélkül az egyezési számok **nem értelmezhetők** (a brief 2. szakasza), a döntési szabály link-egyezési feltétele ezért ma nem értékelhető.
+Az 5 köteg (1, 6, 25, 45, 53) `vegrehajto-sonnet` subagentekkel futott, sorban (D15), a Max-keretből, a `prompt_v3`-mal, a `prompt_ir` kimenetéből, vakon (a subagentek az `f22/valaszok/`, `f22/vakproba/`, `adat/karoli_strong/` fájlokat nem olvashatták). A mentés a `sonnet_koteg.mentes` logikájával, scratch `f22`-be ment, onnan `f22/vakproba/subagent/Jozs.jsonl`. A 25. köteg 1. próbája 1 kapuhibás verset adott (Józs 10:30), a 2. próba (javítás) rendben volt; a többi köteg elsőre átment.
 
 ## Mérések
 
@@ -26,10 +26,9 @@ A zajszint-alap (5 köteg `vegrehajto-sonnet` subagenttel, a kimenet `f22/vakpro
 | api-low | 45 | 77.96% (1008/1293) | 84.42% | 58.70% | 68.57% |
 | api-medium | 49 | 82.21% (1174/1428) | 87.68% | 69.53% | 73.73% |
 | api-high | 50 | 94.63% (1322/1397) | 96.78% | 90.75% | 89.19% |
+| subagent (zajszint-alap) | 50 | 94.39% (1328/1407) | 97.22% | 91.03% | 90.11% |
 
-*Zajszint-alap (subagent): hiányzik, orkesztrátorra vár.*
-
-*proveniencia: scope=f22/valaszok/sonnet/Jozs.jsonl vs f22/vakproba/<változat>/ | forras=api_vakproba_osszevet.py | ts=2026-10-08T08:24:04+00:00*
+*proveniencia: scope=f22/valaszok/sonnet/Jozs.jsonl vs f22/vakproba/<változat>/ | forras=api_vakproba_osszevet.py | ts=2026-10-08T08:41:47+00:00*
 
 ## 2. Kapuhiba (versszinten)
 
@@ -38,8 +37,9 @@ A zajszint-alap (5 köteg `vegrehajto-sonnet` subagenttel, a kimenet `f22/vakpro
 | api-low | 50 | 15 | 5 |
 | api-medium | 50 | 28 | 1 |
 | api-high | 50 | 0 | 0 |
+| subagent (zajszint-alap) | 50 | 1 | 0 |
 
-*proveniencia: scope=f22/valaszok/sonnet/Jozs.jsonl vs f22/vakproba/<változat>/ | forras=api_vakproba_osszevet.py | ts=2026-10-08T08:24:04+00:00*
+*proveniencia: scope=f22/valaszok/sonnet/Jozs.jsonl vs f22/vakproba/<változat>/ | forras=api_vakproba_osszevet.py | ts=2026-10-08T08:41:47+00:00*
 
 ## 3. Token és költség (Batch-áron, f22/vakproba/futasnaplo.tsv)
 
@@ -51,7 +51,7 @@ A zajszint-alap (5 köteg `vegrehajto-sonnet` subagenttel, a kimenet `f22/vakpro
 
 A teljes próba költsége: 0.8953 USD (plafon 3.00 USD).
 
-*proveniencia: scope=f22/vakproba/futasnaplo.tsv | forras=api_koteg.py (Batch-ár: 1.00/5.00 USD/MTok be/ki) | ts=2026-10-08T08:24:04+00:00*
+*proveniencia: scope=f22/vakproba/futasnaplo.tsv | forras=api_koteg.py (Batch-ár: 1.00/5.00 USD/MTok be/ki) | ts=2026-10-08T08:41:47+00:00*
 
 ## 4. Kivetítés a hátralevő ÓSZ-versekre
 
@@ -63,13 +63,13 @@ A teljes próba költsége: 0.8953 USD (plafon 3.00 USD).
 | medium | 0.00639 | 90.31 | 1.1 |
 | high | 0.00736 | 104.14 | 1.0 |
 
-*proveniencia: scope=tokenek.betolt_eredeti + f22/valaszok/sonnet/*.jsonl | forras=api_vakproba_osszevet.py | ts=2026-10-08T08:24:04+00:00*
+*proveniencia: scope=tokenek.betolt_eredeti + f22/valaszok/sonnet/*.jsonl | forras=api_vakproba_osszevet.py | ts=2026-10-08T08:41:47+00:00*
 
 ## 5. Eltérő linkek
 
-Összes eltérő link (minden változat): 614; 20-as minta kézi átnézésre: /home/user/Bible-Study/f22/vakproba/elteresek_minta.tsv
+Összes eltérő link (minden változat): 693; 20-as minta kézi átnézésre: /home/user/Bible-Study/f22/vakproba/elteresek_minta.tsv
 
-*proveniencia: scope=/home/user/Bible-Study/f22/vakproba/elteresek_minta.tsv | forras=api_vakproba_osszevet.py (random.Random(77)) | ts=2026-10-08T08:24:04+00:00*
+*proveniencia: scope=/home/user/Bible-Study/f22/vakproba/elteresek_minta.tsv | forras=api_vakproba_osszevet.py (random.Random(77)) | ts=2026-10-08T08:41:47+00:00*
 
 ## Megjegyzések a számokhoz
 
@@ -81,11 +81,11 @@ A teljes próba költsége: 0.8953 USD (plafon 3.00 USD).
 
 ## Döntési kérdés (DT-F77)
 
-A brief döntési szabály-javaslata: az API-változat akkor elfogadható, ha link-egyezése a meglévő futással nem kisebb, mint a zajszint-alapé mínusz 1 százalékpont, és a végleges kapuhiba 0. Állás: a végleges kapuhiba 0 csak a `high` szinten teljesül (low: 5 vers, medium: 1 vers); a link-egyezés feltétele a zajszint-alap hiánya miatt nem értékelhető.
+A brief döntési szabály-javaslata: az API-változat akkor elfogadható, ha link-egyezése a meglévő futással nem kisebb, mint a zajszint-alapé mínusz 1 százalékpont, és a végleges kapuhiba 0. Állás (szkriptkimenetből, 1. és 2. tábla): a zajszint-alap link-egyezése 94,39%, az api-high-é 94,63%, vagyis a különbség +0,24 százalékpont, a küszöb (alap − 1 pp = 93,39%) fölött; a végleges kapuhiba 0 a `high` szinten teljesül (low: 5 vers, medium: 1 vers nem). A szabály szerint tehát csak a `high` szint felel meg. A minta kicsi (50 vers, egyetlen könyv).
 
 Opciók:
 - (a) a #22 hátralévő könyvei API-n futnak, a `high` szinten (~104 USD a hátralevő ~14 143 versre, vagyis egy havi 100 USD-keretnél kicsit több);
 - (b) marad a subagentes futás;
-- (c) további mérés: előbb a zajszint-alap (orkesztrátor), esetleg nagyobb minta és/vagy `medium` + javító kör (~90 USD, de 1 végleges kapuhiba a mintában).
+- (c) további mérés: nagyobb minta és/vagy más könyvtípus (pl. próféta, Zsolt), esetleg `medium` + javító kör (~90 USD, de 1 végleges kapuhiba a mintában).
 
-Javaslat: (c) a zajszint-alappal kezdve; a döntés a felhasználóé.
+Javaslat: a döntési szabály alapján (a) `high` szinten teljesül, de a költsége (~104 USD) a havi keretet kissé meghaladja, a `medium` pedig a szabályon bukik; érdemes (a)-t egy nagyobb, más típusú mintán megerősíteni (c). A döntés a felhasználóé.
