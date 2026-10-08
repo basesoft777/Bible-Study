@@ -414,9 +414,11 @@ Nincs kizárt vagy nyitva maradt jelölt a `jeloltek.tsv`-ben ehhez a motívumho
 
 #### 1. Alapjelentés
 
-**H7121** · *Hivatkozás: meglévő BDB-sor (DT-F42a kiváltás): BDB H7121 — 2.c. jelentés; 3. jelentés (l. a 2. szerepnél).*
+<!-- ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve -->
+**H7121** · *(üres blokk: a H7121 alapjelentését a BDB 2.c adja (DT-F42a); a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
 
-**H8034** · *Hivatkozás: meglévő BDB-sor (DT-F42a kiváltás): BDB H8034 — (részlet) (l. a 2. szerepnél).*
+<!-- ÜRES-BLOKK: Alapjelentés | adatosítva, nincs bekötve -->
+**H8034** · *(üres blokk: adatosítva, nincs bekötve; a bekötés a #9 dolga; a hiány nincs kitöltve gyenge vagy asszociatív anyaggal)*
 
 #### 2. Mélységi szócikk
 

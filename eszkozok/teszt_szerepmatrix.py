@@ -166,13 +166,15 @@ class TestVazIstentiszt(unittest.TestCase):
 
     def test_heber_tbesh_nincs_sor_jelolve(self):
         # adatosítva, de a tokenekhez nincs TBESH-sor: nem néma, jelölt üres blokk
-        # DT-F78d: ISTENTISZT-001-nél a meglévő BDB-sorokra hivatkozik (új adatsor nélkül), nincs üres blokk
+        # DT-F78d (lezárva): a TBESH marad a forrás (adatosítva); H7121 mutatója a BDB 2.c (DT-F42a),
+        # H8034 `adatosítva, nincs bekötve` (a #9 köti be); nincs TBESH-szöveg, nincs új adatsor
         b = self._blokk_szerep('heber', 1)
-        self.assertNotIn('ÜRES-BLOKK', b)
-        self.assertIn('meglévő BDB-sor (DT-F42a kiváltás)', b)
-        self.assertIn('BDB H7121', b)
-        self.assertIn('BDB H8034', b)
-        self.assertNotIn('TBESH-sor', b)
+        self.assertEqual(len(UROS_RE.findall(b)), 2)
+        self.assertTrue(all(a == 'adatosítva, nincs bekötve' for _, a in UROS_RE.findall(b)))
+        self.assertIn('a H7121 alapjelentését a BDB 2.c adja (DT-F42a)', b)
+        self.assertRegex(b, r'\*\*H8034\*\* · \*\(üres blokk: adatosítva, nincs bekötve; a bekötés a #9 dolga')
+        self.assertNotIn('\n> ', b)
+        self.assertNotIn('meglévő BDB-sor', b)
 
     def test_heber_adatositott_szerep_nem_hamisan_ures(self):
         # héber 2. (BDB), 4. (SDBH), 6. (LXX, hivatkozás): adatosítva, van tartalom -> nincs ÜRES-BLOKK
