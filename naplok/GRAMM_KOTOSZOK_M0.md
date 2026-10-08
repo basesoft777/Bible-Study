@@ -275,7 +275,7 @@ A `grammatikai_strongok.tsv`-t olvassa még: `eszkozok/jelolt.py` (jelölt-gener
 
 ## 7. Alapállapot-megfigyelés (nem e feladat hibája)
 
-`python eszkozok/teszt_bdb_adatblokk.py` az ágon, változtatás nélkül: 35 teszt, **1 bukás** (`test_pelda_idezet_szo_szerinti`, H2617, 1Móz 24:14). A bukás független a jelöltektől (HEAD `046d081`, a repó nem módosult). Az elfogadási feltétel („zöld”) ezért az M1-ben nem teljesíthető, amíg ezt valaki nem javítja vagy nem indokolja; **jelzem, nem javítom** (nem a feladat hatóköre).
+`python eszkozok/teszt_bdb_adatblokk.py` az ágon, változtatás nélkül: 35 teszt, **1 bukás** (`test_pelda_idezet_szo_szerinti`, H2617, 1Móz 24:14). A bukás független a jelöltektől (HEAD `8322fc5`, a repó nem módosult). Az elfogadási feltétel („zöld”) ezért az M1-ben nem teljesíthető, amíg ezt valaki nem javítja vagy nem indokolja; **jelzem, nem javítom** (nem a feladat hatóköre).
 
 ## 8. Döntési javaslat (⛔ a felhasználónak)
 
