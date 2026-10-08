@@ -12,3 +12,12 @@
 - **M0-napló 7. szakasz:** HEAD-hivatkozás `046d081` → `8322fc5` (`6be514e`).
 - **Ellenőrzők:** `feladatok.py ellenoriz` 0 hiba; `ellenoriz.py` SÉRTÉS 0 (KÉZI 2, JELENTÉS 3, korábbi állapot); `teszt_lekerdez_sir.py`, `teszt_ellenoriz_13.py` zöld.
 - **Nyitott (nem e feladat):** az `olvaso_pilot` a felvett Strongoknak nem ad szó-lapot (a H6435-nél a felhasználó tudomásul vette; a H3282-re ugyanez áll). A görög oldal tükrözése (G473, G1894, G3379) külön döntés. `N-F68a`: a H2617-bukás javítása.
+
+**Proveniencia (az M1 hatásmérése, 2026-10-08):**
+
+- `scope=range:1Móz 3+1Móz 6:1-8 | forras=TAHOT_kivonat.tsv | n=24 | ts=2026-10-08T06:22Z`
+- `scope=range:1Móz 3+1Móz 4+1Móz 6:1-8+1Móz 6:9-22 | forras=TAHOT_kivonat.tsv | n=11 | ts=2026-10-08T06:22Z`
+- `scope=range:1Móz 1:2+Jer 4:23+Ézs 34:11 | forras=TAHOT_kivonat.tsv | n=2 | ts=2026-10-08T06:22Z`
+- `scope=range:Sir 2+Ézs 34 | forras=TAHOT_kivonat.tsv | n=38 | ts=2026-10-08T06:22Z`
+- `scope=range:elofordulasok.igehely | forras=TAHOT_kivonat.tsv + TAGNT_kivonat.tsv + adat/elofordulasok.tsv + adat/grammatikai_strongok.tsv | n=9 motivum, 5829 par | ts=2026-10-08T06:23Z`
+- `scope=H3282 | forras=adat/kulso/lxx_bridge.tsv + konkordancia/Strong_szotar.tsv + adat/grammatikai_strongok.tsv | ts=2026-10-08T06:23Z`
