@@ -22,7 +22,7 @@ Használat:
     python eszkozok/karoli_strong/api_koteg.py --onteszt
 
 Kilépési kódok: 0 rendben; 2 hibás paraméter/előfeltétel; 3 a plafon megállít;
-4 hálózati/API-hiba.
+4 hálózati/API-hiba; 5 elfogyott az API-kredit (nincs újrapróbálás).
 """
 
 import argparse
@@ -92,6 +92,14 @@ def kulcs():
     return k
 
 
+def kredit_hiba(status, szoveg):
+    """Elfogyott-e az API-kredit? (402, vagy 400 'credit balance' / 'billing' üzenettel)"""
+    if status == 402:
+        return True
+    t = (szoveg or '').lower()
+    return status == 400 and ('credit balance' in t or 'billing' in t or 'purchase credits' in t)
+
+
 def http(metodus, ut, torzs=None, nyers=False):
     """Egy REST-hívás. A kulcs csak a fejlécbe kerül; hibaüzenetbe soha."""
     import requests
@@ -108,6 +116,10 @@ def http(metodus, ut, torzs=None, nyers=False):
         if r.status_code in (429, 500, 502, 503, 529) and kiserlet < 2:
             time.sleep(10)
             continue
+        if kredit_hiba(r.status_code, r.text):
+            print('KREDITHIBA %d: elfogyott az API-kredit. Nem próbálom újra. A kész kötegek a f22/vakproba/ alatt '
+                  'maradnak; feltöltés után az `allapot` / `begyujt` mutatja, mi maradt hátra.' % r.status_code, file=sys.stderr)
+            raise SystemExit(5)
         if r.status_code >= 400:
             print('API-HIBA %d: %s' % (r.status_code, r.text[:800]), file=sys.stderr)
             raise SystemExit(4)
@@ -437,6 +449,9 @@ def onteszt():
     begyujt('t', hivo=hamis)   # második futás: nem dolgoz fel újra
     if len(tsv_olvas(ut('futasnaplo.tsv'))) != 3:
         hibak.append('idempotencia')
+    if not (kredit_hiba(402, '') and kredit_hiba(400, '{"error":{"message":"Your credit balance is too low"}}')
+            and not kredit_hiba(400, 'invalid_request') and not kredit_hiba(429, 'rate limit')):
+        hibak.append('kredit_hiba felismerés')
     for h in hibak:
         print('ÖNTESZT HIBA: ' + h, file=sys.stderr)
     print('önteszt: %s' % ('HIBA' if hibak else 'rendben'))
