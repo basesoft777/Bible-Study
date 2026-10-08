@@ -1,6 +1,6 @@
 # F83_Job_versbeosztas_jelentes.md — Jób 38–42 Károli–héber versmegfeleltetés előkészítése
 
-*Feladat: FELADATOK #83 (`F83_JOB_VERSBEOSZTAS_BRIEF.md`), ág: `claude/f83-job-versbeosztas`. A menet csak olvasott; a kanonikus táblákat (`f22/versmegfeleltetes_kezi.tsv`, `f22/versosszevonas.tsv`, `naplok/F22_versbeosztas_jovahagyas.md`) nem írta — azok a ⛔ jóváhagyás után jönnek.*
+*Feladat: FELADATOK #83 (`F83_JOB_VERSBEOSZTAS_BRIEF.md`), ág: `claude/f83-job-versbeosztas`. Az F83.1–F83.3 csak olvasott; a ⛔ jóváhagyás (2026.10.08) után az F83.5–F83.6 írta a `f22/versmegfeleltetes_kezi.tsv`-t és a `naplok/F22_versbeosztas_jovahagyas.md`-t (l. 6. szakasz); a `f22/versosszevonas.tsv` nem változott.*
 
 *Egyeztetett keret (a felhasználó, az orkesztrátoron át): az 1. ellenőrzés forrása a `konkordancia/Macula_heber_Job.tsv` (MT/WLC), letöltés nincs; az N-F41g külön tétel marad (l. 4. szakasz).*
 
@@ -88,7 +88,7 @@ Az N-F41g (`NYITOTT_FELADATOK.md`) a `BSB_Strongs.tsv` Jób 38–41 `Igehely`-é
 
 `scope=Jób 38–42, 146 Károli-vers ↔ 146 MT-vers: lefedés, Macula-karoli oszlop, szószám-korreláció (d = −1, 0, +1), Strong-Jaccard a TAHOT-kulcsokon és a nyitott eseteken, határ-versek glosszái | forras=konkordancia/Karoli_1908.tsv, konkordancia/Macula_heber_Job.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAHOT_kivonat_nyitott_esetek.tsv | ts=2026-10-08`
 
-**⛔ Ez javaslat, a felhasználó jóváhagyására vár.** A `f22/versmegfeleltetes_kezi.tsv`, a `f22/versosszevonas.tsv` és a `naplok/F22_versbeosztas_jovahagyas.md` nem változott.
+**⛔ Ez a szakasz a javaslat, ahogy a jóváhagyás előtt (F83.2) állt.** A felhasználó 2026.10.08-án jóváhagyta; a végrehajtást a 6. szakasz rögzíti.
 
 ### 5.1 Szegmensek
 
