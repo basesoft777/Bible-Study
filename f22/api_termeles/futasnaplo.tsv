@@ -533,3 +533,8 @@ ts	futas	koteg	probalkozas	modell	gondolkodas_mod	igehely_db	kjv	bemenet_token	k
 2026-10-08T16:35:02+00:00	api_termeles/high/Ezsd	11	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	12673	15036		0.087853	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	28.407525	igen
 2026-10-08T16:35:02+00:00	api_termeles/high/Ezsd	7	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	7909	3105		0.023434	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	28.430959	igen
 2026-10-08T16:35:02+00:00	api_termeles/high/Ezsd	15	1	claude-sonnet-5-5	adaptive,effort=high	10	nem	12636	10188		0.063576	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	28.494535	igen
+2026-10-08T16:43:13+00:00	api_termeles/high/Ezsd	28	2	claude-sonnet-5-5	adaptive,effort=high	10	nem	7793	1193		0.013758	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	28.508293	igen
+2026-10-08T16:43:13+00:00	api_termeles/high/Ezsd	6	2	claude-sonnet-5-5	adaptive,effort=high	10	nem	8820	814		0.012890	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	28.521183	igen
+2026-10-08T16:43:13+00:00	api_termeles/high/Ezsd	9	2	claude-sonnet-5-5	adaptive,effort=high	10	nem	18825	14728		0.092465	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	28.613648	igen
+2026-10-08T16:43:13+00:00	api_termeles/high/Ezsd	2	2	claude-sonnet-5-5	adaptive,effort=high	10	nem	10032	1575		0.017907	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	28.631555	igen
+2026-10-08T16:43:13+00:00	api_termeles/high/Ezsd	22	2	claude-sonnet-5-5	adaptive,effort=high	10	nem	13770	1909		0.023315	batch_ar_szamolt	0	1		end_turn	84f12ca7aafb	28.654870	igen
