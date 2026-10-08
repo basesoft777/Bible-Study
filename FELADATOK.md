@@ -4,9 +4,9 @@
 
 ## Alapelv: előbb az adatréteg, utána a render
 
-Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (lexikonoldal, törzscikk, migráció), mert a késői adat miatt mindent újra kellene generálni. Emiatt két fázis van, és a 2. fázis egyik feladata sem indul, amíg az 1. fázis el nem készül.
+Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (lexikonoldal, törzscikk, migráció), mert a késői adat miatt mindent újra kellene generálni. Emiatt két fázis van, és a 2. fázis egyik feladata sem indul, amíg az 1. fázis el nem készül. Két kiegészítés (D-F52a, D-F52b): az 1. fázisú feladatot visszatartó feladat maga is 1. fázisú; az olvasói konkordancia (#76, #25a) a kész Károli–Strong könyvekkel indul, az 1. fázis lezárása nélkül; és a #11 1. lépcsőjéig a régi motívumok forrásrétege és az éles `lexikon/` nem bővül a régi szerkezet szerint.
 
-**Kritikus út:** #1 és #2 → #4 → #5 → #7 → #9 → #10; az LXX-ágon #6 → #17 → #8 → #10
+**Kritikus út:** adat- és olvasói ág: #62 → #79 (SQLITE_EPIT) → #76; motívum-ág: #78 (szerepmátrix-váz) → #23 (M1) → #9 → #11 → #10; folyamatosan: #22 könyvenként és #38 adagonként *(2026-10-08, DT-F52c, DT-F52d; a régi út — #1 és #2 → #4 → #5 → #7 → #9 → #10, LXX-ágon #6 → #17 → #8 → #10 — a #7 halasztásával (D46) és az LXX-ág lezárásával elavult)*
 
 ## 1. fázis — adatréteg
 
@@ -101,7 +101,7 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 - **N-szám:** tétel a `NYITOTT_FELADATOK.md`-ben
 - **TBESG/TBESH:** STEP-szótárak (görög/héber alapjelentés); **UBS DBH/DNTG:** UBS héber/görög szótár; **LXX:** Septuaginta
 - **DONTESEK.md:** a nyitott döntések sora; 🟡 nyitott · 🟢 eldöntve · ✅ alkalmazva
-- **Szerepmátrix:** `adat/szotar_szerepek.tsv`, 10 szerep × 2 nyelv
+- **Szerepmátrix:** `adat/szotar_szerepek.tsv`, 11 szerep × 2 nyelv (1–10. és 12.; a 13–14. `javaslat`, DT-M4); a lexikonoldal szótári szakasza ennek renderelése (#78)
 - **`tipus`:** `feladat` (fázissor) · `naplozas` (szám és a „Naplózás” lista, a futtatása a `/kovetkezo`-é) · `dontes` (`DONTESEK.md`-tétel, szám nélkül) · `archiv` (régi, feladat nélküli brief, szám és átnevezés nélkül)
 - **`fazis: folyamat`:** a feladat nem az adat- vagy a render-fázis része (folyamat, eszköz); külön táblába kerül, és a `/kovetkezo` csak alternatívaként ajánlja
 - **Generált blokkok:** a `<!-- GENERÁLT-KEZDET … -->` és `<!-- GENERÁLT-VÉGE … -->` jelölők közötti rész (a két fázistábla, a „Folyamat és eszközök”, a „Naplózás” és a „Kész” lista) a brief-fejlécekből generálódik (`python eszkozok/feladatok.py general`); kézzel szerkeszteni tilos
@@ -219,3 +219,5 @@ Amíg nem látjuk, mit adnak az új források, nem foglalkozunk rendereléssel (
 | D48 | A fordítás a motívum-munkafolyamat lépése: új motívum vagy előfordulás után a hiányzó szócikkek fordítása (`MUNKAMENET.md`) | a lexikon bővülésével folyamatos | egyszeri fordítási menet |
 | D49 | Szúrópróba menetenként a lefordított szócikkek 10%-a, legalább 5; 20% fölötti kifogásnál a menet megáll | a felhasználó döntése: csak szúrópróba | minden szócikk kézi átnézése |
 | D50 | A lexikonba a szótárból csak a motívumhoz illeszkedő jelentéstartomány kerül, a Thayernél is (a BDB-nél eddig is így volt); a kiválasztás a render/#9 feladata: gépi jelölt (a jelentés igehelyei metszik a motívum előfordulásait), a döntés a felhasználóé | kisebb, pontosabb kimenet | a teljes szócikk a lexikonban |
+| D-F52a | A D1 két kiegészítése: (1) az 1. fázisú feladatot visszatartó feladat maga is 1. fázisú (`fazis: 1`; #61, #62, #78, #79); (2) az olvasói konkordancia (#76, #25a) a #79 után, a kész Károli–Strong könyvekkel indul, az 1. fázis lezárása nélkül (gépi alakja: `fazis: 1`) | a /kovetkezo csak 1. fázisú jelöltet ajánl, a folyamat-feladat alternatíva; a #76 a D1 szó szerinti olvasatában a #22 teljes Bibliájára és a halasztott #7-re várna, ami a DT-M1-gyel és az ADATVAGYON_TERV 21-gyel ellentétes (DT-F52d (6)–(7)) | a /kovetkezo jelöltszabályának módosítása; a #76 a teljes 1. fázisra vár |
+| D-F52b | Befagyasztás a #11 1. lépcsőjéig: a régi motívumok forrásrétege (`tematikus_lezart/`: #55, #70) és az éles `lexikon/` újragenerálása (#36) áll; az adatréteg (#63, #65) mehet; a #13 a #11 után | a régi prózába írt tartalmat a #11 szétválasztásakor újra kellene osztani; az adat a DT28 szerint a migráción változatlanul átmegy (DT-F52c (3)) | teljes befagyasztás az adatrétegre is; nincs befagyasztás |
