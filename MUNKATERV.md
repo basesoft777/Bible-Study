@@ -48,6 +48,8 @@ Ezek nélkül a `/kovetkezo` nem indítja a függő feladatokat, mert a forráso
 
 Minden sor egy brief. A „kis minta" oszlop az elfogadási próba, amit a teljes futás előtt a felhasználó jóváhagy (playbook 3.). Modell: Sonnet, ahol nincs más jelölve; az ellenőr a `fuggetlen-ellenor` (Opus, FELADATOK D10), a brieftől független menetben *(elavult volt: „az `ellenor` mindig Haiku vagy Sonnet”; 2026-10-08)*.
 
+<!-- TERVELEM-MUTATO oszlop=#,név -->
+
 | # | név | cél | bemenet | kimenet | kis minta → elfogadás | függ | menet |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | — | TERV\_BEFOGAD (**lezárva**, külön brief nélkül, DT-M8: a három dokumentum a repóban `ab73f7b`; a #23/#25 `olvas:` bent; az ATALAKITASI\_TERV 4.7 jelölve és a `CLAUDE.md` KJV-sora javítva a #52 2. futásában; a (d) a #11 briefjébe kerül) | az `ADATVAGYON_TERV.md` és a `MUNKATERV.md` repóba vétele; a #23, #25 brief `olvas:` sora; ATALAKITASI\_TERV 4.7 elavultként jelölve; CLAUDE.md KJV-sora javítva | a két Markdown | commit, három fájl módosítása | — (szerkesztés) | 0. lépcső | ½ |
@@ -59,6 +61,8 @@ Minden sor egy brief. A „kis minta" oszlop az elfogadási próba, amit a telje
 | #63 | JELOLTEK\_RETRO | a 8 retroaktív (F3/N14) motívum `jeloltek.tsv`-sorainak feltöltése a naplókból; a származtatott „még nem vizsgált" lista (`auditok` scan − `jeloltek`) generátora; a 12-es lelet-lap adatának első teljes futása | `tematikus_lezart/naplok/*.md`, `auditok.tsv`, `jeloltek.tsv` | `jeloltek.tsv` bővítés (PR), `eszkozok/nem_vizsgalt.py`, `naplok/JELOLTEK_RETRO_lelet_ANTROP.md` | ANTROP-001: minden ★ sor mellett `dontes` + `indoklas`, 0 „még nem vizsgált" | #62\* (szoftfüggés; az adat megvan) | 1–2 |
 | #76 | OLVASOI\_KONKORDANCIA (= #25a, DT-M1 🟢) | első publikus kiadás motívum nélkül: `general.py --cel verslap / szolap`; szó-lap a szerepmátrix (18.5) szerint, `allapot` vezérli a blokkokat; vers-lap KK-kulccsal, Károli 1908 nyílt szöveg; lekérdező a hosting-döntés szerint (böngészős SQLite, cPanel PHP vagy Netlify Function) a `kereskedelmi` oszlop szerinti mód-szűrővel (DT-F33j); tipográfia/színséma kapcsoló | SQLITE\_EPIT, `Karoli_1908` (közkincs, DT-F33e), 1–6, 13–16, 18–20. pont | `kimenet/olvasoi/` generált oldalak, `api/kereses.*`, `naplok/OLVASOI_KONKORDANCIA_publikalas.md` | 20 vers + 20 Strong lapja; minden adat a `pardes.db`-ből; minden blokk alatt forrás és licenc, nincs blokk dataset-kulcs nélkül (nem kereskedelmi mód, N-F33b) | SQLITE\_EPIT (a #44 ✅, DT-M1 🟢), DT-M4, DT-M6; hosting ⛔ | 2–3 |
 | — | SZPA\_AUDIT (**feltételes**, DT77 (13): a `SZPA_FORDITOI_PROFIL_prompt.md` kézi 0. lépésként a repóba; befogadás a 6. lépcsőben) | a profil C üzemmódja: 1.2 tiltólista és 1.1 kötött párok gépi ellenőrzése a tanulmányok prózáján és a BDB-fordításon; kimenet a C-táblázat | `SZPA_FORDITOI_PROFIL_prompt.md`, tanulmányok, `forditasok.tsv` | `naplok/SZPA_AUDIT_szpa_audit.tsv` | 2 tanulmány + 50 szócikk | — | ½ |
+
+<!-- /TERVELEM-MUTATO -->
 
 Az OLVASOI\_KONKORDANCIA után a meglévő lánc fut tovább: #23 (motívum-séma, mélységi szintek) → #9/#10 (lexikonoldal) → #11 (egy forrásból renderelés) → #25b (motívum-lap, lelet-lap ★, a 7–12. és 21–26. pont). Az MCP\_BUROK (feltételes, DT-M7) és a JELOLTEK\_RETRO kimenete ezekbe épül, nem külön rendszer.
 

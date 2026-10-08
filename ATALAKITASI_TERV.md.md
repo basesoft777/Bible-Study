@@ -994,7 +994,9 @@ A második előny a projekt hibatörténete miatt súlyos: **a proveniencia prot
 
 **13.3 Szerepmátrix-migráció.** Az 1.C lexikonoldal 2. szakasza (szótári háttér) nem Strong → forrás sorrendben, hanem a szótári szerepmátrix (`adat/szotar_szerepek.tsv`, SEMA 2.13; ADATVAGYON_TERV 18.5) szerint renderel: szerepenként, a mátrix sorrendjében; az `allapot` vezérli a blokkot (`adatosítva` → blokk; `nincs adatosítva` / `javaslat` → üres, jelölt blokk; `nincs forrás` → nincs blokk). Ugyanez a mátrix az olvasói szó-lap sémája (#76). A 13. (Károli-megfelelők + SZPA) és a 14. szerep (rejtett/hamis párhuzam) `javaslat` állapotú (DT-M4, DT76 (9)). Az ok: a #64 mérése szerint az ISTENTISZT-001 aranyminta szótári része nem a mátrix szerint épül (`naplok/TEREMT002_PROZA_PROBA_meres.md` 7.). Sorrend: #78 (váz, adat nélkül) → #23 M1 → #9 (adatosítás a 8 motívum Strongjaira) → #11 → #10 (mérce: L1–L7 + DT2 + a váz; DT68 (2)).
 
-**13.4 Feladat-mutató** (a terv és a kiegészítései feladatként megnevezett elemei):
+**13.4 Feladat-mutató** (a terv és a kiegészítései feladatként megnevezett elemei). Gépi őr (#82): a tábla jelölőpár közé esik (`<!-- TERVELEM-MUTATO oszlop=feladat -->` … `<!-- /TERVELEM-MUTATO -->`, a jelölő külön sorban); az `oszlop=` attribútum nevezi meg a vizsgált fejléc-cellá(ka)t (vesszővel több, alapérték `feladat`). A `python eszkozok/feladatok.py ellenoriz` (CI E18) HIBÁT ad, ha egy sor vizsgált cellája nem tartalmaz létező feladatszámot (`#nn`), brief-`kod`-ot, létező DT-/D-tételt, vagy `elavult` / `feltételes` / `lezárva` jelölést; a jelölőpáron kívüli szöveget az őr nem olvassa. Új tervelem tehát csak sorral együtt vehető fel, a sor pedig feladatra vagy jelölésre mutat:
+
+<!-- TERVELEM-MUTATO oszlop=feladat -->
 
 | terv-elem | feladat | állapot |
 | --- | --- | --- |
@@ -1008,6 +1010,8 @@ A második előny a projekt hibatörténete miatt súlyos: **a proveniencia prot
 | saját MCP-szerver (11.7) | MCP_BUROK — feltételes (DT-M7) | — |
 | SZPA-audit (ADATVAGYON 10.) | SZPA_AUDIT — feltételes (a profilfájl repóba kerülése után, DT77 (13)) | — |
 | célvonal (11.1) | DT-tétel a #13 befogadásakor | — |
+
+<!-- /TERVELEM-MUTATO -->
 
 ---
 
