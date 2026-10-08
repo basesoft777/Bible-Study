@@ -11,12 +11,12 @@ Ez az író saját mérése, nem független ellenőrzés; a független ellenőr 
 
 | Mérőszám | Érték |
 |---|---|
-| proveniencia-lábjegyzet (definíció) / hivatkozás | 32 / 74; mind definiált és hivatkozott |
-| ebből friss `lekerdez.py`-futás | 20 (gerinc 1, kollokacio 1, scan 2, domen 2, lxx-hid 3, karoli 11) |
+| proveniencia-lábjegyzet (definíció) / hivatkozás | 39 / 87; mind definiált és hivatkozott (F64.15 előtt 32 / 74) |
+| ebből friss `lekerdez.py`-futás | 27 (gerinc 1, kollokacio 8, scan 2, domen 2, lxx-hid 3, karoli 11; a P2 hét kollokáció-futása az F64.15-ben) |
 | sorkivonat `split('\t')`-tel (nem `lekerdez.py`) | 5 (TAHOT 1, BDB 2, `forditasok.tsv` 2) |
 | adattábla-olvasás / `manual` (T1-naplók) | 4 / 3 |
-| `【NAPLO】` blokk | 12 (F64.12 előtt 10) |
-| `SZINT` / `INAKTÍV` / `ADAT-NÉZET` jelölő | 7 / 6 / 5 |
+| `【NAPLO】` blokk | 13 (F64.12 előtt 10, F64.15 előtt 12) |
+| `SZINT` / `INAKTÍV` / `ADAT-NÉZET` jelölő | 6 / 5 / 4 (sor eleji jelölő; a 7. sori NAPLO említését nem számolva — F64.16, ellenőri 9. pont) |
 | archív blokk karakterre azonos | igen (3 blokk) |
 | `【NAPLO` a próbarenderben | 0 |
 
@@ -118,7 +118,7 @@ Ez az író saját mérése, nem független ellenőrzés; a független ellenőr 
 
 ## 7. A mérce korlátja (felhasználó, 2026-10-08, chat)
 
-Az aranyminta (ISTENTISZT-001) maga sem tartalmazza a szótári szerepmátrix (`adat/szotar_szerepek.tsv`, SEMA 2.13) minden elemét, és nem a mátrix szerint rendez: a `lexikon/ISTENTISZT-001_TUDOMANYOS.md` 2. szakasza Strong-számonként, azon belül forrásonként halad (TBESG, Thayer, BDB, LSJ), a 4., 5., 7. szerep csak a 2/b vegyes blokkjában áll, a 9. (versenkénti jelentés), 10. (kiejtés), 12. (Nave) és a javasolt 13. (Károli-megfelelők) szerep hiányzik.
+Az aranyminta (ISTENTISZT-001) maga sem tartalmazza a szótári szerepmátrix (`adat/szotar_szerepek.tsv`, SEMA 2.13) minden elemét, és nem a mátrix szerint rendez: a `lexikon/ISTENTISZT-001_TUDOMANYOS.md` 2. szakasza Strong-számonként, azon belül forrásonként halad (TBESG, Thayer, BDB, LSJ), a 4. szerep (szemantikai domén) Strong-számonként a 2. szakaszban áll, az 5. és a 7. szerep csak a 2/b vegyes blokkjában; a héber 3. szerepből csak a TWOT-szám (hivatkozásként) szerepel; a 10. (kiejtés) csak részben (a 🇭🇺 sorokban); a 9. (versenkénti jelentés), a 12. (Nave) és a javasolt 13. (Károli-megfelelők) szerep hiányzik (F64.16, ellenőri 8. pont).
 `scope=lexikon/ISTENTISZT-001_TUDOMANYOS.md címsorai + adat/szotar_szerepek.tsv | forras=manual (összevetés) | ts=2026-10-08`
 
 Következmény: ez a mérés a próza értelmező részére érvényes (PaRDeS-rétegek, L1–L7 a forrásprózán); a szerepmátrix szerinti szótári rész **nincs mérve**, mert a mérce erre a részre hiányos. Az ISTENTISZT-001 rekonstrukciója a teljes szerepmátrix szerint külön feladat (befogadásra vár), a #23 M1, a #10 és a #11 mércéje az lesz. A felhasználó a #64 zárását ezzel a korláttal hagyta jóvá.
