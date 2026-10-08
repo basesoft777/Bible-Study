@@ -89,6 +89,46 @@ Ez a szűkítés a #36 `lexikon_general.py`-ra épülő munkáját nem zavarja (
 - **DT-F78b:** szűkített hatókör (S1–S5). A TWOT-, domén- és kiejtés-sor a saját szerepe alá költözik (3., 4., 10.), nem marad a Strong-fejlécben hivatkozással (az S2 pont eredeti "referencia" változata így módosul).
 - **DT-F78a:** B változat: gépi `<!-- ÜRES-BLOKK: szerep | állapot -->` jelölő + látható zárójeles sor. Üres blokk csak a `nincs adatosítva` / `javaslat` állapotú szerepeknél; az `adatosítva` szerepnél (görög 5., 8., 9.) hivatkozás kell (S4), nem üres blokk.
 
-### 8. Állapot
+### 8. M1 – a mátrix-bővítés
 
-M0 kész, a megállás feloldva a fenti döntésekkel. Következik: M1.
+`adat/szotar_szerepek.tsv`: 22 → 26 sor (13. „Károli-megfelelők (+ SZPA)” és 14. „Rejtett / hamis párhuzam”, mindkét nyelven, `javaslat`); a már meglévő 24 sor (fejléc + 22 adatsor + komment) bájtra változatlan (előtag-ellenőrzéssel igazolva, `csv` nélkül). `adat/SEMA.md` 2.13: „13 szerep × 2 nyelv = 26 sor”. A `torzscikk_general.py` kódja nem változott: az 5. szakasz a táblából épül, a próbarenderben a 13–14. szerep megjelenik a szerep-táblában és a lefedettségi mátrixban (`nincs adatosítva` cellákkal). `scope=adat/szotar_szerepek.tsv | forras=manual (szkript, előtag-egyezés) | ts=2026-10-08`
+
+### 9. M2 – a váz
+
+- `_epit_szotar_alszakasz` → `_szotar_reszek` (Strong-szócikk szétbontva: fejléc/kiejtés, TWOT, domén, forrásblokkok). A régi egybeépített kimenet **bájtra azonos** maradt a refaktor után (az ISTENTISZT-001 `szocikkek` blokk a ts nélkül 19 451 = 19 451 karakter, egyezik), a rokon szavak (S5) ezt használják változatlanul.
+- `szerep_vaz()`: nyelv szerint (görög, héber), azon belül a tábla sorrendjében; a mindkét nyelven azonos (szerep, forrás, állapot) sorok (12–14.) a „Nyelvfüggetlen szerepek” alatt, egyszer.
+- A TWOT (héber 3.), a domén (4.) és a kiejtés (10.) a saját szerepe alatt áll; a forrásblokkok (`##### TBESG G1941 — …`) belső szövege változatlan, egy fejlécszinttel mélyebben.
+- Üres blokk (DT-F78a B): `<!-- ÜRES-BLOKK: szerep | állapot -->` + látható zárójeles sor. A `nincs adatosítva` / `javaslat` szerep mindig kapja; részadat (TWOT, kiejtés-lemma) esetén a sor kimondja, hogy csak hivatkozás/részadat áll.
+- S4 hivatkozás az `adatosítva` szerepeknél, ahol a tartalom máshol él: görög 5. (2/b, kézi), 6. és héber 6. (3. szakasz), görög 8. (nincs LSJ-sor a tokenekhez), görög 9. (az 1. szakasz UBS-jelentés oszlopa).
+- Szerephez nem rendelt szótár (`SZEREP_SZOTAR`) `ValueError`: nincs néma elhagyás. A licenc-állapot nem romlik (`tisztazatlan`: nem), a szerepmátrix projekt-adatként a blokk forrásai között szerepel.
+- `eszkozok/teszt_szerepmatrix.py`: 13 teszt zöld; `feladatok.py ellenoriz` 0 hiba; `ellenorzes/tesztek` 153 teszt zöld.
+
+**Értelmezői bővítés (jelzem, nem a DT-F78a betűje):** a héber 1. (TBESH) szerep a táblában `adatosítva`, de a `lexikon_hivatkozasok.tsv`-ben 0 TBESH-sor van. Itt nem hivatkozást, hanem jelölt üres blokkot ad a render (`ÜRES-BLOKK: Alapjelentés | adatosítva, nincs sor`), mert a hiányt elhallgatni a 3. szabályt sértené, hivatkozni pedig nincs hová. Ugyanez áll a TEREMT-002 héber 1–2. szerepére. Kérdés a felhasználónak: elfogadja-e ezt a harmadik állapotértéket, vagy a TBESH-sor állapota a táblában `nincs adatosítva`-ra javítandó (a `torzscikk` lefedettségi mátrixa is „TBESH”-t mutat a H7121/H8034 alatt, ami a jelenlegi adattal nem igaz).
+
+### 10. M3 – próbarender és töltöttség
+
+Kimenet (csak `generalt_proba/`, az éles `lexikon/` változatlan, `git status` igazolja):
+- `generalt_proba/F78_szerepmatrix_proba/lexikon/ISTENTISZT-001_TUDOMANYOS.md` és `…_TORZSCIKK.md` (`general.py --cel lexikon|torzscikk --id ISTENTISZT-001 --kimenet generalt_proba/F78_szerepmatrix_proba`; a meglévő `generalt_proba/lexikon/ISTENTISZT-001_TUDOMANYOS.md` régi próbafájl a `res_blokkok_alkalmaz` határjelölőin elbukik, ezért nem azt írtam felül);
+- `generalt_proba/TEREMT-002_szotari_proba/TEREMT-002_2_SZOTARI_HATTER.md` (csak a 2. szakasz, a `blokk_szocikkek` közvetlen hívásával; a TEREMT-002 teljes lexikonoldala a #12b, a `res_forras.tsv`-kapu miatt nem renderelhető).
+
+`scope=generalt_proba/F78_szerepmatrix_proba + generalt_proba/TEREMT-002_szotari_proba | forras=general.py / lexikon_general.blokk_szocikkek, szkript | ts=2026-10-08`
+
+| # | Szerep | ISTENTISZT-001 görög | ISTENTISZT-001 héber | TEREMT-002 héber |
+|---|---|---|---|---|
+| 1 | Alapjelentés | töltött (TBESG, 2 jelentés) | **üres** (adatosítva, nincs sor) | **üres** (adatosítva, nincs sor) |
+| 2 | Mélységi szócikk | töltött (Thayer) | töltött (BDB, 3 blokk) | **üres** (adatosítva, nincs sor) |
+| 3 | Teológiai szócikk | **üres** (nincs adatosítva) | részleges: TWOT-szám + üres blokk | részleges: TWOT-szám + üres blokk |
+| 4 | Jelentésszerkezet | töltött (SDGNT-domén) | töltött (SDBH-domén) | töltött (SDBH-domén) |
+| 5 | Tömör jelentés | hivatkozás (2/b, kézi) | **üres** (nincs adatosítva) | **üres** (nincs adatosítva) |
+| 6 | LXX-híd | hivatkozás (3. szakasz) | hivatkozás (3. szakasz) | hivatkozás (3. szakasz) |
+| 7 | Megfelelők | **üres** (nincs adatosítva) | **üres** | **üres** |
+| 8 | Nyelvi háttér | hivatkozás (nincs LSJ-sor a tokenhez) | **üres** (nincs adatosítva) | **üres** |
+| 9 | Versenkénti jelentés | hivatkozás (1. szakasz UBS-oszlop) | **üres** (nincs adatosítva) | **üres** |
+| 10 | Kiejtés | részleges: lemma (átírás) + üres blokk | részleges + üres blokk | részleges + üres blokk |
+| 12–14 | Nave; Károli+SZPA; rejtett/hamis | **üres** (javaslat) | ugyanaz (közös blokk) | ugyanaz |
+
+Összesítés: ISTENTISZT-001-en a görög szerepek közül 3 töltött (1., 2., 4.) és 4 hivatkozásos (5., 6., 8., 9.), a héberek közül 2 töltött (2., 4.) és 1 hivatkozásos (6.); a többi explicit üres vagy részleges. A #64 mérés 7. szakaszának korlátja (a mérce hiánya a szerepmátrixra) ezzel megszűnik: a 2. szakasz a mátrix minden szerepét mutatja, a hiány látszik, kitöltetlen szerepen sehol nincs gyenge vagy asszociatív anyag. A mérce kiterjesztése (a TEREMT-002-nél a H8414/H0922 BDB-bekötés hiánya, `lexikon_hivatkozasok.tsv` 0 sor) a #9/#12b dolga marad.
+
+### 11. Állapot
+
+M0–M3 kész. Az M4 (független ellenőr, `naplok/F78_zaras.md`, PR) az orkesztrátoré.
