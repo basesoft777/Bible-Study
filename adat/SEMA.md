@@ -1158,14 +1158,14 @@ vagy jelölőpárban áll; külön jelölő nem kell hozzá (DT66 (a) 1. kivéte
 
 #### 3.10.5 Kinyerés jelölőnként — (b) → (a)
 
-A 3/9 egyirányúsági szabályára épül: a kinyerés a forrásból jelölt-sort vagy audit-sort
-ír, a jelölt-sorról ember dönt (3/2), és **a generátor a forrásba nem ír**.
+A 3/9 egyirányúsági szabályára épül: a kinyerés a forrásból **csak jelölt-sort** ír a
+`jeloltek.tsv`-be, `manual` provenienciával; a jelölt-sorról ember dönt (3/2), és **a
+generátor a forrásba nem ír**. Más táblába a kinyerés közvetlenül nem ír.
 
 | Jelölő (forrássablon 6. pont) | Tábla | Kulcs | Mit ír | Proveniencia | Ütközés (a kulcs már létezik) |
 |---|---|---|---|---|---|
 | `<!-- JELÖLT: [igehely] \| gerinc: [gerinc_elem] \| [indoklás] -->` | `jeloltek.tsv` (2.4) | `id` + `igehely` | `dontes=nyitva`, `indoklas` = a jelölő indoklása, `datum` = a kinyerés napja | a `forras_kereses` mezőben: `scope=manual \| forras=motivumok/[ID].md#[szakasz] \| ts=[DATUM]` (1.5) | nem ír; a kinyerési jelentés jelzi, hogy a jelölt már minősítve van |
-| proveniencia-lábjegyzet, `scope` ≠ `manual` | `auditok.tsv` (2.9) | nincs kulcs; azonosság = (`id`, `proveniencia`) pontos egyezése | `proveniencia` = a lábjegyzet sora szó szerint, `datum` = a sor `ts`-éből | a lekérdezés saját sora, szerkesztés nélkül (1.5) — **nem `manual`**, mert nem a próza állítása, hanem a lekérdezés nyoma | nem ír (idempotens) |
-| proveniencia-lábjegyzet, `scope=manual` | — | — | semmit: kézi állítás, értelmezésként marad a prózában | — | — |
+| proveniencia-lábjegyzet (bármely `scope`) | — (hivatkozás) | — | semmit: a lábjegyzet a próza állításának forrás-hivatkozása; az audit-sort a 2.9 szerint a lekérdezést futtató fő szál rögzíti, nem a kinyerés | — | — |
 | `ADAT-HIV`, `ADAT-ÉRTÉK` | — (ellenőrző) | a jelölőben megadott | semmit; hiány vagy eltérés a kinyerési jelentésbe | — | — |
 | szerkezeti jelölők (`FORRÁSRÉTEG`, `SZINT-*`, `【NAPLO】`, `INAKTÍV`, `RÉS-*`, `ADAT-NÉZET`) | — | — | semmit | — | — |
 
@@ -1173,11 +1173,15 @@ A 3/9 egyirányúsági szabályára épül: a kinyerés a forrásból jelölt-so
   (`dontes=beépítve`) lesz (3/2); a sor `proveniencia` mezője a jelölt `forras_kereses`
   proveniencia-sora (`scope=manual`), az `igazolas` mezője az 1.8 szerint. A `manual`
   sor a generált kimenetben értelmezésként jelölendő (3/3).
-- **A `lepes` mező** az audit-sorban: *[javaslat: DT-F23a (2) — a lábjegyzet a lépéskódot
-  a kulcsa előtagjában vagy egy zárójeles címkében hordozza, mert a proveniencia-sor
-  szó szerinti, abba új kulcs nem írható]*.
+- **Audit-út a lábjegyzetből:** *[javaslat: DT-F23a (2) — a `scope≠manual` lábjegyzetből
+  közvetlenül, döntés nélkül írt `auditok.tsv`-sor ütközne a 3/9-cel (kinyerés csak a
+  `jeloltek.tsv`-n át, `manual` provenienciával, döntéssel). Opciók: (a) nincs
+  audit-kinyerés, a lábjegyzet csak hivatkozás (ez a fenti normatív szöveg); (b) a
+  `jeloltek.tsv`-n át, döntéssel; (c) a 3/9 módosítása külön döntéssel. Ha a (b) vagy
+  a (c) nyer, a `lepes` mezőt a lábjegyzet kulcsának előtagja vagy egy zárójeles címke
+  hordozza, mert a proveniencia-sor szó szerinti, abba új kulcs nem írható.]*
 - **Kinyerési jelentés:** a kinyerés futásának kimenete (generált, (c) réteg): a felvett
-  jelölt- és audit-sorok, az ütközések, az `ADAT-HIV` hiányai és az `ADAT-ÉRTÉK`
+  jelölt-sorok, az ütközések, az `ADAT-HIV` hiányai és az `ADAT-ÉRTÉK`
   eltérései. Táblát nem ír felül; eltérésnél a futás megáll (minta:
   `eszkozok/igazolas_migracio.py`, `CLAUDE.md` „TSV-olvasás”).
 

@@ -140,7 +140,7 @@ Minden jelölő HTML-megjegyzés, saját sorban (kivéve a `【NAPLO】` és a l
 | Rés | `<!-- RÉS-KEZDET: [rés] -->` … `<!-- RÉS-VÉGE: [rés] -->` | szerkezeti | semmit; a törzs a lexikonoldal résébe kerül (a `res_forras.tsv` `tanulmany` mezője a `motivumok/[ID].md`-re mutat) | — |
 | Adat-nézet | `<!-- ADAT-NÉZET: [szakasz] \| forrás: [tábla (mezők)] \| cél: [general.py --cel …] \| SZINT: [szint] -->` | szerkezeti | semmit; a nézetben ide kerül a generált tábla | — |
 | Jelölt | `<!-- JELÖLT: [igehely] \| gerinc: [gerinc_elem] \| [rövid indoklás] -->` | kinyerő | egy jelölt-sort, `dontes=nyitva` értékkel (a jelölő nem dönthet) | `adat/jeloltek.tsv` (nem közvetlenül az `elofordulasok.tsv`: SEMA 3/2) |
-| Proveniencia-lábjegyzet | `[^kulcs]: proveniencia: [a lekerdez.py sora szó szerint]` | kinyerő, ha `scope≠manual` | egy audit-sort, ha még nincs azonos (`id`, `proveniencia`) sor | `adat/auditok.tsv` (a `lepes` mező forrása: *[javaslat: DT-F23a (2)]*) |
+| Proveniencia-lábjegyzet | `[^kulcs]: proveniencia: [a lekerdez.py sora szó szerint]` | szerkezeti (hivatkozás) | semmit; az audit-sort a lekérdezést futtató fő szál rögzíti (SEMA 2.9). *[javaslat: DT-F23a (2) — közvetlen audit-kinyerés a lábjegyzetből; ütközik a SEMA 3/9-cel]* | — |
 | Adat-hivatkozás | `<!-- ADAT-HIV: [tábla] \| [kulcs] -->` | ellenőrző | semmit; ellenőrzi, hogy a sor létezik; hiánynál kinyerési jelentés-sor | — (a hiányzó sort a #9 / a döntéssel írt adatút pótolja) |
 | Adatból számolt érték | `[érték]<!-- ADAT-ÉRTÉK: [tábla] \| [kifejezés] -->` | ellenőrző | semmit; ha a prózában álló érték eltér a táblából számolttól, hiba | — |
 
@@ -193,7 +193,7 @@ A nézetekre vonatkozó két gépi ellenőrzés (bájtazonosság, nulla `belso` 
 ## 9. Nyitott pontok (`javaslat`, DT-F23a)
 
 1. A szintjelölő alakja és hatókör-szabálya (2. pont).
-2. A proveniencia-lábjegyzet `lepes`-forrása az `auditok.tsv` felé (6. pont).
+2. A proveniencia-lábjegyzetből közvetlen `auditok.tsv`-kinyerés legyen-e (ütközik a SEMA 3/9-cel), és ha igen, honnan jön a `lepes` (6. pont).
 3. A nem igehely-kulcsú adat kinyerési útja (6. pont).
 4. A két új szakasz: 7.N Nyitott kérdések, P Proveniencia-sorok (4. pont).
 5. A Nyitott kérdések tételenkénti besorolási szabálya (4. pont, 7.N).
