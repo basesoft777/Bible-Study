@@ -83,3 +83,53 @@
 ## 4. Átfedés az N-F41g-vel (nem zárja le)
 
 Az N-F41g (`NYITOTT_FELADATOK.md`) a `BSB_Strongs.tsv` Jób 38–41 `Igehely`-ét hozná MT/WLC-számozásra, gépi táblából. Ugyanazt a három határ-eltolást érinti (MT 38:39–41, 40:1–5, 40:25–41:26), de **más tábla, más célszámozás** (BSB → MT; itt Károli → MT). A 2. szakasz Károli↔MT leképezése és a DT-F41b-ben rögzített Macula-leképezés (KJV 41:1–8 = MT 40:25–32, 41:9–34 = MT 41:1–26) a 41. fejezetben egybeesik, mert ott a Károli = KJV. A 38–40. fejezetben a Károli **nem** KJV-számozású (a KJV 38 = 41, 39 = 30, 40 = 24 vers), tehát a két leképezés ott eltér. Az N-F41g külön tétel marad (egyeztetett döntés).
+
+## 5. Megfeleltetési JAVASLAT — Károli → MT, Jób 38–42 (nem jóváhagyott)
+
+`scope=Jób 38–42, 146 Károli-vers ↔ 146 MT-vers: lefedés, Macula-karoli oszlop, szószám-korreláció (d = −1, 0, +1), Strong-Jaccard a TAHOT-kulcsokon és a nyitott eseteken, határ-versek glosszái | forras=konkordancia/Karoli_1908.tsv, konkordancia/Macula_heber_Job.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAHOT_kivonat_nyitott_esetek.tsv | ts=2026-10-08`
+
+**⛔ Ez javaslat, a felhasználó jóváhagyására vár.** A `f22/versmegfeleltetes_kezi.tsv`, a `f22/versosszevonas.tsv` és a `naplok/F22_versbeosztas_jovahagyas.md` nem változott.
+
+### 5.1 Szegmensek
+
+| Károli | MT (Macula/WLC) | viszony | versek | tartalmi horgony (rövid) |
+|---|---|---|---|---|
+| 38:1–38 | 38:1–38 | 1:1, azonos szám | 38 | — |
+| 39:1–3 | 38:39–41 | 1:1, fejezethatár-eltolás | 3 | K 39:1 „prédát a nőstény oroszlánnak” = MT 38:39 „hunt prey for a lion”; K 39:3 „a hollónak eledelt” = MT 38:41 „for the raven food” |
+| 39:4–33 | 39:1–30 | 1:1, −3 eltolás | 30 | K 39:4 „kőszáli zergék ellésének idejét” = MT 39:1 „bringing forth of mountain goats”; K 39:33 „Fiai vért szívnak” = MT 39:30 „its young ones drink blood” |
+| 39:34–38 | 40:1–5 | 1:1, fejezethatár-eltolás | 5 | K 39:34 „Szóla továbbá az Úr Jóbnak” = MT 40:1; K 39:38 „Egyszer szóltam … kétszer” = MT 40:5 „one time I have spoken … two times” |
+| 40:1–19 | 40:6–24 | 1:1, +5 eltolás | 19 | K 40:1 „az Úr … a forgószélből” = MT 40:6 „from a tempest”; K 40:6 „Öntsd ki haragodnak tüzét” = MT 40:11 „scatter the furies of your anger”; K 40:19 „átfúrhatják-é az orrát” = MT 40:24 „pierce a nose” |
+| 41:1–8 | 40:25–32 | 1:1, fejezethatár-eltolás | 8 | K 41:1 „leviáthánt horoggal … nyelvét kötéllel” = MT 40:25 „Leviathan with a fish hook … cord … tongue”; K 41:8 „a harczot nem ismételed” = MT 40:32 „remember the battle, do not repeat” |
+| 41:9–34 | 41:1–26 | 1:1, −8 eltolás | 26 | K 41:9 „reménykedése csalárd” = MT 41:1 „hope … proved a lie”; K 41:34 „király minden ragadozó felett” = MT 41:26 „king over all the sons of pride” |
+| 42:1–17 | 42:1–17 | 1:1, azonos szám | 17 | — |
+| **össz.** | | **146 × 1:1; 1:2 = 0; 2:1 = 0** | **146** | |
+
+### 5.2 Támasz (lekérdezés)
+
+- **Lefedés:** a leképezés 146 Károli-versből 146 különböző MT-versbe visz; lefedetlen MT-vers nincs, nem létező MT-cél nincs.
+- **Macula `karoli` oszlop:** mind a 146 MT-versnél ugyanazt a Károli-verset nevezi, mint a javaslat (0 eltérés); többes (`;`) Károli-hozzárendelés a 38–42-ben nincs. A Macula a 38:39–41 és 40:1–5 szakaszt `kezi_interpolalt`, a 40:25–41:26-ot `terkep` / `javaslat:terkep_ellenorzesre_var` jelöléssel adja — a javaslat ezeket a fenti horgonyokkal igazolja.
+- **Szószám-korreláció** (Károli-szó vs. MT-szó, szegmensenként): d = 0-nál 0,39 (38), 0,45 (39), 0,46 (40), 0,47 (41), 0,96 (42); a ±1 eltolás mindenütt rosszabb (38: +1 → 0,01; 40: −1 → −0,30, +1 → 0,03). A költői fejezetek alacsony abszolút értéke a műfajjal jár (rövid, párhuzamos stichoszok), nem eltolódás.
+- **Strong-Jaccard:** a TAHOT „40:n” kulcs az MT 40:n-nel 0,62–0,90 (tehát a Károli 40:(n−5)-tel egyezik); a nyitott esetek 34 párja az MT 40:25–41:26-tal 0,71–1,00.
+- **Hosszarány:** a Károli/MT szóarány mediánja 1,57; egyetlen kiugró pár (> 1,6 × medián) a K 40:3 → MT 40:8 (2,83), tartalmilag egyezik („semmivé teheted-é … igazságomat; kárhoztathatsz-é” = „will you annul my justice, will you condemn me”) — a Károli bővebb fordítása, nem összevonás.
+
+### 5.3 Kétes helyek
+
+- **Nincs** olyan Károli-vers, amely két MT-vers tartalmát hordozná, és olyan MT-vers sem, amely két Károli-versre oszlana: a négy fejezethatár-eltolás (38/39, 39/40, 40/41 kétszer) tiszta versszám-átvitel. Ezért a Jóbnál **nem kell 1:2 / 2:1 versösszevonás** — a DT-F83a javaslata ezen alapul.
+- A K 39:36 („És szóla Jób az Úrnak, és monda”) Strong-szinten a MT 40:3 mellett a 42:1-gyel is azonos (formula); a sorrend egyértelművé teszi (MT 40:3).
+- A K 40:1 / MT 40:6 bevezető formula az MT 40:1-gyel is hasonló (Jaccard 0,62); a „forgószélből” / „from a tempest” csak az MT 40:6-ban áll.
+
+### 5.4 Teljes lista (Károli → MT)
+
+- **Károli 38:** 38:1→38:1 · 38:2→38:2 · 38:3→38:3 · 38:4→38:4 · 38:5→38:5 · 38:6→38:6 · 38:7→38:7 · 38:8→38:8 · 38:9→38:9 · 38:10→38:10 · 38:11→38:11 · 38:12→38:12 · 38:13→38:13 · 38:14→38:14 · 38:15→38:15 · 38:16→38:16 · 38:17→38:17 · 38:18→38:18 · 38:19→38:19 · 38:20→38:20 · 38:21→38:21 · 38:22→38:22 · 38:23→38:23 · 38:24→38:24 · 38:25→38:25 · 38:26→38:26 · 38:27→38:27 · 38:28→38:28 · 38:29→38:29 · 38:30→38:30 · 38:31→38:31 · 38:32→38:32 · 38:33→38:33 · 38:34→38:34 · 38:35→38:35 · 38:36→38:36 · 38:37→38:37 · 38:38→38:38
+- **Károli 39:** 39:1→38:39 · 39:2→38:40 · 39:3→38:41 · 39:4→39:1 · 39:5→39:2 · 39:6→39:3 · 39:7→39:4 · 39:8→39:5 · 39:9→39:6 · 39:10→39:7 · 39:11→39:8 · 39:12→39:9 · 39:13→39:10 · 39:14→39:11 · 39:15→39:12 · 39:16→39:13 · 39:17→39:14 · 39:18→39:15 · 39:19→39:16 · 39:20→39:17 · 39:21→39:18 · 39:22→39:19 · 39:23→39:20 · 39:24→39:21 · 39:25→39:22 · 39:26→39:23 · 39:27→39:24 · 39:28→39:25 · 39:29→39:26 · 39:30→39:27 · 39:31→39:28 · 39:32→39:29 · 39:33→39:30 · 39:34→40:1 · 39:35→40:2 · 39:36→40:3 · 39:37→40:4 · 39:38→40:5
+- **Károli 40:** 40:1→40:6 · 40:2→40:7 · 40:3→40:8 · 40:4→40:9 · 40:5→40:10 · 40:6→40:11 · 40:7→40:12 · 40:8→40:13 · 40:9→40:14 · 40:10→40:15 · 40:11→40:16 · 40:12→40:17 · 40:13→40:18 · 40:14→40:19 · 40:15→40:20 · 40:16→40:21 · 40:17→40:22 · 40:18→40:23 · 40:19→40:24
+- **Károli 41:** 41:1→40:25 · 41:2→40:26 · 41:3→40:27 · 41:4→40:28 · 41:5→40:29 · 41:6→40:30 · 41:7→40:31 · 41:8→40:32 · 41:9→41:1 · 41:10→41:2 · 41:11→41:3 · 41:12→41:4 · 41:13→41:5 · 41:14→41:6 · 41:15→41:7 · 41:16→41:8 · 41:17→41:9 · 41:18→41:10 · 41:19→41:11 · 41:20→41:12 · 41:21→41:13 · 41:22→41:14 · 41:23→41:15 · 41:24→41:16 · 41:25→41:17 · 41:26→41:18 · 41:27→41:19 · 41:28→41:20 · 41:29→41:21 · 41:30→41:22 · 41:31→41:23 · 41:32→41:24 · 41:33→41:25 · 41:34→41:26
+- **Károli 42:** 42:1→42:1 · 42:2→42:2 · 42:3→42:3 · 42:4→42:4 · 42:5→42:5 · 42:6→42:6 · 42:7→42:7 · 42:8→42:8 · 42:9→42:9 · 42:10→42:10 · 42:11→42:11 · 42:12→42:12 · 42:13→42:13 · 42:14→42:14 · 42:15→42:15 · 42:16→42:16 · 42:17→42:17
+
+### 5.5 Következmény a futtatóra (javaslat, nem végrehajtva)
+
+A F22 futtató az eredeti verset a `TAHOT_kivonat` kulcsán keresi (`eredeti` = TAHOT-kulcs), nem MT-számon. A TAHOT-kulcsok a 38, 39 és 42. fejezetben Károli-számozásúak, a 40-ben MT-számozásúak, a 41-ben hiányoznak. A jóváhagyás után ezért:
+
+1. **Károli 38, 39, 42** (93 vers): identitás a TAHOT-kulccsal — kézi sor nem kell.
+2. **Károli 40:1–19** → TAHOT-kulcs **40:6–24** (`eltolt`, 19 sor a `f22/versmegfeleltetes_kezi.tsv`-be; a detektor 8 hibás Jób 40-es `nincs_eredeti` sorát kiváltja).
+3. **Károli 41:1–34**: a `TAHOT_kivonat`-ban nincs adat. Ez **nem versbeosztás-kérdés, hanem adatforrás-kérdés**, és a kézi táblával nem oldható meg. Lehetőségek (döntést igényel, a DT-F83a mellett): (a) a kulcsgenerátor `DONTES_FELULBIRALAS[("Job", (40, 41))]` javítása (a hibás 28/25 indoklás helyett `ELSODLEGES` a 41-re), és a 332 sor visszakerül a `TAHOT_kivonat`-ba Jób 41:1–34 kulccsal — ez a `konkordancia/` táblát írja, külön feladat; (b) a 41. fejezet eredetije a Macula-ból (MT 40:25–41:26) — a futtató forrását érinti, külön feladat; (c) a Jób 41 a #22-ben `kezi` marad, amíg (a) vagy (b) el nem készül. Javaslat: (a), mert a nyers adat megvan és a Strong-egyezés igazolja.
