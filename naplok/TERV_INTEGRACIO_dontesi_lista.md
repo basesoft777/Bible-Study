@@ -2,6 +2,8 @@
 
 *Ág `claude/terv-integracio` · 2026-10-08 · forrás: `naplok/TERV_INTEGRACIO_leltar.md` (a „leltár” oszlop az R-sorszám). Egy körben megválaszolható: soronként egy betű (pl. `1a 2a 3b …`), eltérésnél egy mondat. A válaszok a 3. lépésben kerülnek a `DONTESEK.md`-be (helyőrzővel; mivel a menetnek nincs feladatszáma, a `DT-F<nn>` helyőrző alakját a 3. lépés elején egyeztetem), a `FELADATOK`-hoz tartozó brief-fejlécekbe és a tervekbe; addig semmi nem íródik át.*
 
+**DÖNTÉS — Felhasználó, 2026-10-08 (chat): „mind a”.** Mind a 23 tétel az „a” (javasolt) változattal eldöntve; a 19. tétel a TI.3-ban rögzített kemény-zár szöveggel. A 3. lépés (átvezetés) a #247 merge-e után indul; a `DONTESEK.md`-be csoportonként egy-egy tétel kerül (A–E → `DT-F52c`…`DT-F52g`: a CI csak `DT-F<nn>[a-z]` helyőrzőt fogad el, a menet a #52 TERV_SZINKRON kiterjesztése).
+
 **Sorrend-feltétel.** A 2., 5. és 8. tétel a #64 PR #247-re (DT-F64a/b, mérési jelentés) épül; a 3. lépés a #247 merge-e után indul.
 
 ## A) Az aranyminta és a szótári rész (a felhasználó (a), (e), (f) pontja)
