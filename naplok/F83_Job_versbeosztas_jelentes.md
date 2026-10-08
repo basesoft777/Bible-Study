@@ -1,0 +1,85 @@
+# F83_Job_versbeosztas_jelentes.md — Jób 38–42 Károli–héber versmegfeleltetés előkészítése
+
+*Feladat: FELADATOK #83 (`F83_JOB_VERSBEOSZTAS_BRIEF.md`), ág: `claude/f83-job-versbeosztas`. A menet csak olvasott; a kanonikus táblákat (`f22/versmegfeleltetes_kezi.tsv`, `f22/versosszevonas.tsv`, `naplok/F22_versbeosztas_jovahagyas.md`) nem írta — azok a ⛔ jóváhagyás után jönnek.*
+
+*Egyeztetett keret (a felhasználó, az orkesztrátoron át): az 1. ellenőrzés forrása a `konkordancia/Macula_heber_Job.tsv` (MT/WLC), letöltés nincs; az N-F41g külön tétel marad (l. 4. szakasz).*
+
+*A lekérdező szkriptek a repón kívül futottak (scratchpad: `f83_ellenor.py`, `f83_javaslat.py`), `split('\t')`-tel; a TSV-kre nem írtak.*
+
+## 0. Összefoglalás
+
+| | Eredmény |
+|---|---|
+| 1. ellenőrzés | A héber Jób 40:25–41:26 **megvan** a Macula-ban (34 vers, 229 szó). A `TAHOT_kivonat.tsv`-ben a Károli 41. fejezet kulcsán **0 sor** van; a 34 vers TAHOT-szavai (332 sor) a `TAHOT_kivonat_nyitott_esetek.tsv`-ben állnak, `ADATMINOSEGI_GYANU` státusszal. A hiba tehát valóban a kulcsgenerátorban van, nem a nyers adatban — és a gyanú-jelölés **hibás versszámokon** alapul (l. 3.). |
+| 2. ellenőrzés | A Jób 42:2–9 (és az egész 42. fejezet, 17 vers) **nem hiányzik**: mind a 17 Károli-kulcson van TAHOT-adat, és a Macula-karoli oszlop is `identitas`. A brief 2. feltevése a repó adatával nem igazolható; továbbgyűrűzés nincs. |
+| 3. ellenőrzés | A Károli 38–42 versszáma **38 / 38 / 19 / 34 / 17**, nem a briefben (és a kulcsgenerátor megjegyzésében) szereplő 40 = 28, 41 = 25. Összesen 146 vers, pontosan annyi, mint az MT 38–42-ben (41 / 30 / 32 / 26 / 17). |
+| **Új lelet** | A `TAHOT_kivonat.tsv` Jób 40. fejezete **MT-kulcsos** (kulcsok 40:6–24), nem Károli-kulcsos: a TAHOT „Jób 40:n” = MT 40:n = Károli 40:(n−5). A Károli-kulcs szerinti azonosítás (és a detektor implicit identitás-párja) itt 5 verssel eltolt tartalmat adna. |
+| Javaslat (2.) | 146 Károli-vers ↔ 146 MT-vers, **mind 1:1**; 1:2 és 2:1 eset **nincs**. Öt szegmens, négy határ-eltolással. |
+
+## 1. ellenőrzés — a héber Jób 40:25–41:26 a Macula-ban és a TAHOT_kivonat-ban
+
+`scope=Jób 40:25–41:26, versenkénti szó- és morfémaszám; TAHOT_kivonat Károli-kulcs Jób 38–42; TAHOT_kivonat_nyitott_esetek Job.* sorok | forras=konkordancia/Macula_heber_Job.tsv (Macula-hebrew commit 47db250, CC BY 4.0), konkordancia/TAHOT_kivonat.tsv, konkordancia/TAHOT_kivonat_nyitott_esetek.tsv | ts=2026-10-08T17:28:12Z`
+
+**Macula (MT/WLC):** a 40:25–41:26 szakasz mind a 34 verse megvan, összesen **229 szó** (versenként 5–10 szó; a szó = az `xml_id` utolsó számjegy nélküli része, a morféma-sorok összevonva). A Macula saját `karoli` oszlopa a szakaszt `terkep` / `javaslat:terkep_ellenorzesre_var` jelöléssel a Károli 41:1–34-re képezi (MT 40:25 → Károli 41:1 … MT 41:26 → Károli 41:34).
+
+| MT | szó | MT | szó | MT | szó | MT | szó |
+|---|---|---|---|---|---|---|---|
+| 40:25 | 6 | 41:1 | 7 | 41:10 | 6 | 41:19 | 6 |
+| 40:26 | 6 | 41:2 | 8 | 41:11 | 6 | 41:20 | 9 |
+| 40:27 | 7 | 41:3 | 8 | 41:12 | 6 | 41:21 | 6 |
+| 40:28 | 6 | 41:4 | 7 | 41:13 | 6 | 41:22 | 7 |
+| 40:29 | 6 | 41:5 | 8 | 41:14 | 6 | 41:23 | 8 |
+| 40:30 | 6 | 41:6 | 7 | 41:15 | 7 | 41:24 | 6 |
+| 40:31 | 6 | 41:7 | 6 | 41:16 | 7 | 41:25 | 7 |
+| 40:32 | 7 | 41:8 | 7 | 41:17 | 5 | 41:26 | 10 |
+| | | 41:9 | 6 | 41:18 | 7 | | |
+
+**TAHOT_kivonat.tsv (Károli-kulcs):** Jób 41:* kulcson **0 sor**; a Jób 40 kulcsai csak **40:6–40:24** (19 kulcs, 198 sor), 40:25 feletti kulcs nincs.
+
+**TAHOT_kivonat_nyitott_esetek.tsv:** 332 Jób-sor, mind `ADATMINOSEGI_GYANU` státuszú, 34 versnyi párban: elsődleges (angol) `Job.41.1`–`Job.41.34` ↔ másodlagos (héber) `Job.40.25`–`Job.41.26` (83 sor a 40. fejezeti, 249 a 41. fejezeti héber versekre). A 34 pár Strong-halmaza a Macula azonos MT-versével Jaccard 0,71–1,00 (medián 0,86; H9xxx elöljárók nélkül), tehát a nyers TAHOT-tartalom a teljes szakaszra **megvan és helyes**, csak nem került kulcsra.
+
+**Ok (a kulcsgenerátorban):** `eszkozok/tahot_karoli_kulcs_generalas.py`, `DONTES_FELULBIRALAS[("Job", (40, 41))] = ADATMINOSEGI_GYANU`, indoklása: „a Karoli tenyleges 40. (28v) es 41. (25v) fejezet-hossza” egyik hipotézissel sem egyezik. A 3. ellenőrzés szerint a Károli 40 = **19**, 41 = **34** vers; az elsődleges (angol) 41. fejezet hossza (34) tehát **egyezik** a Károli 41-gyel. A gyanú-jelölés hibás számokon alapult; a 41. fejezetre az `ELSODLEGES` döntés helyes kulcsot adott volna (Job.41.n → Jób 41:n), ezt a 2. szakasz tartalmi összevetése is megerősíti.
+
+## 2. ellenőrzés — Jób 42:2–9
+
+`scope=Jób 42:1–17 versenként: Károli-vers megléte, TAHOT_kivonat sorszám, Macula szószám és karoli-oszlop | forras=konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Macula_heber_Job.tsv, eszkozok/tahot_karoli_kulcs_generalas.py | ts=2026-10-08T17:28:12Z`
+
+| vers | Károli | TAHOT sor | Macula szó | | vers | Károli | TAHOT sor | Macula szó |
+|---|---|---|---|---|---|---|---|---|
+| 42:1 | van | 7 | 5 | | 42:10 | van | 22 | 15 |
+| 42:2 | van | 10 | 8 | | 42:11 | van | 54 | 33 |
+| 42:3 | van | 18 | 14 | | 42:12 | van | 28 | 20 |
+| 42:4 | van | 10 | 6 | | 42:13 | van | 9 | 6 |
+| 42:5 | van | 11 | 6 | | 42:14 | van | 17 | 11 |
+| 42:6 | van | 9 | 7 | | 42:15 | van | 23 | 14 |
+| 42:7 | van | 39 | 26 | | 42:16 | van | 21 | 15 |
+| 42:8 | van | 49 | 33 | | 42:17 | van | 7 | 5 |
+| 42:9 | van | 26 | 17 | | | | | |
+
+- A 42:2–9 **nem hiányzik** a `TAHOT_kivonat`-ból (8 vers, 172 sor). A TAHOT- és a Macula-Strongsor 42:1–17-ben 15 versben azonos, a 42:12 és 42:14 kisebb Strong-eltérés (nem eltolás). A Macula `karoli` oszlopa 42:1–15-re `identitas`, 42:16–17-re `terkep`, mind `rendben`.
+- A kulcsgenerátorban a 42. fejezetnek nincs külön kezelése (a `DONTES_FELULBIRALAS` csak a (40, 41) csoportot érinti), az `ADATMINOSEGI_GYANU`-sorok között 42-es elsődleges vagy másodlagos kulcs nincs.
+- A detektor (`naplok/F22_versbeosztas.md`, Jób 42: 17/17, r = 0,95) és a gépi lista (`f22/versmegfeleltetes.tsv`: Jób 42-sor nincs) ugyanezt mutatja.
+- **Következtetés:** a 42:2–9 hiánya a repó adatával nem igazolható; sem önálló hiba, sem a 41. fejezet továbbgyűrűzése nincs. A feltevés forrása a repóban nem található (a „42:2–9” csak a briefben szerepel); valószínűleg egy korábbi, a mostani `TAHOT_kivonat` előtti állapotra vagy más táblára vonatkozott — ez **értelmezés**, nem lekérdezett tény.
+
+## 3. ellenőrzés — a Károli 38–42 versszámai, összevetve az MT-vel és az F22-vel
+
+`scope=Jób 38–42 fejezethosszak (versdarab és legnagyobb versszám) három táblában + az F22 gépi lista Jób-sorai | forras=konkordancia/Karoli_1908.tsv, konkordancia/Macula_heber_Job.tsv, konkordancia/TAHOT_kivonat.tsv, f22/versmegfeleltetes.tsv, naplok/F22_versbeosztas.md | ts=2026-10-08T17:28:12Z`
+
+| fejezet | Károli_1908 (közvetlen) | Macula MT | TAHOT_kivonat kulcsok | F22 napló: Károli / eredeti / K-hiány |
+|---|---|---|---|---|
+| 38 | 38 (1–38) | 41 | 38 (1–38) | 38 / 38 / 0 |
+| 39 | 38 (1–38) | 30 | 38 (1–38) | 38 / 38 / 0 |
+| 40 | **19** (1–19) | 32 | 19 (**6–24**) | 19 / 19 / 8 |
+| 41 | **34** (1–34) | 26 | 0 | 34 / 0 / 26 |
+| 42 | 17 (1–17) | 17 | 17 (1–17) | 17 / 17 / 0 |
+| össz. | **146** | **146** | 112 | |
+
+- A Károli-forrás versszámai **38 / 38 / 19 / 34 / 17**. A brief (és a kulcsgenerátor megjegyzése) szerinti „40 = 28, 41 = 25” **nem igaz**; a F22-napló Károli-oszlopa viszont helyes.
+- A Károli 39 elején az MT 38:39–41 (oroszlán, holló), a végén az MT 40:1–5 (az Úr első felszólítása és Jób első válasza) áll; a Károli 40 az MT 40:6–24, a Károli 41 az MT 40:25–41:26.
+- **TAHOT_kivonat Jób 38–39:** Károli-kulcsos és helyes (a 38:8, 12, 15, 29, 35 és néhány 39-es vers kisebb Strong-eltérése nem eltolás) — a TAHOT „39:1–3” Strongsora az MT 38:39–41-gyel, a „39:34–38” az MT 40:1–5-tel egyezik (lekérdezés: Strongsor-azonosság a Macula-versekkel).
+- **TAHOT_kivonat Jób 40: MT-kulcsos.** A TAHOT „40:n” (n = 6–24) Strong-halmaza az MT 40:n-nel Jaccard 0,62–0,90, az MT 40:(n−5)-tel 0,00–0,06 (egy kivétel: a TAHOT 40:6 a formulaazonosság miatt az MT 40:1-gyel is 0,62). A Károli 40:1 („Ekkor szóla az Úr Jóbnak a forgószélből”) tartalma = MT 40:6 („and he answered Yahweh Job from a tempest”) = TAHOT-kulcs 40:6. A kulcsok tehát a Károli 40:(n−5)-nek felelnek meg.
+- **Az F22 gépi lista Jób 40–41 sorai használhatatlanok:** 34 `nincs_eredeti` sor (Károli 40:1–5, 40:13, 40:16, 40:19 és 26 sor a 41-ből: 41:1–4, 6, 9, 10, 13–22, 24–26, 28–33). A többi Károli 40-es versre a detektor implicit identitás-párt ad (Károli 40:n ↔ TAHOT 40:n), ami 5 verssel eltolt tartalom; a 41-ből 8 vers (41:5, 7, 8, 11, 12, 23, 27, 34) nem szerepel a listában — a detektor ezeket valószínűleg a TAHOT 40-es kulcsaihoz párosította, magányos, a `MIN_SZEGMENS` alatti eltolásként (értelmezés a detektor docstringje alapján, nem lekérdezés). A detektor a hosszeltérésre épít, a kulcshibát nem látja.
+
+## 4. Átfedés az N-F41g-vel (nem zárja le)
+
+Az N-F41g (`NYITOTT_FELADATOK.md`) a `BSB_Strongs.tsv` Jób 38–41 `Igehely`-ét hozná MT/WLC-számozásra, gépi táblából. Ugyanazt a három határ-eltolást érinti (MT 38:39–41, 40:1–5, 40:25–41:26), de **más tábla, más célszámozás** (BSB → MT; itt Károli → MT). A 2. szakasz Károli↔MT leképezése és a DT-F41b-ben rögzített Macula-leképezés (KJV 41:1–8 = MT 40:25–32, 41:9–34 = MT 41:1–26) a 41. fejezetben egybeesik, mert ott a Károli = KJV. A 38–40. fejezetben a Károli **nem** KJV-számozású (a KJV 38 = 41, 39 = 30, 40 = 24 vers), tehát a két leképezés ott eltér. Az N-F41g külön tétel marad (egyeztetett döntés).
