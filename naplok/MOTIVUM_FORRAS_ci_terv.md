@@ -107,7 +107,7 @@ piros; (d) ugyanez a `motivumok/*.md` forrásban: nem fut (nem hatókör).
 (`scope=a három fájl | forras=manual (szkript, „【NAPLO” előfordulás-számlálás) | ts=2026-10-08`).
 A mai lapok tehát az E29-en elbuknának; ezért fut a szabály csak a migrált motívumokon (az E28
 engedélyezőlistáján), és ezért elfogadott diff-kategória a migrációban a `belso`-kihagyás
-(pilot-terv 5. szakasz, D3). *[javaslat: DT-F23a (10) — a lexikonoldal `apparatus` mélységű
+(pilot-terv 5. szakasz, D3). *[javaslat: DT84 (10) — a lexikonoldal `apparatus` mélységű
 nyilvános nézet-e; ha igen, a 14 + 3 `【NAPLO` a migrált lapról kimarad.]*
 
 ## 3. Ami a két szabályon kívül marad (a #11 briefjének)

@@ -1091,7 +1091,7 @@ ellenőrzés tárgyai.
 
 *F23 M1/2, 2026.10.08. Tervezet: a forrássablonnal (`sablonok/9_PaRDeS_motivum_forras_sablon.md`)
 együtt a #12 pilotja véglegesíti. A `javaslat` jelölésű pontokról a `DONTESEK.md`
-DT-F23a tétele dönt. A D35 szabálya (generált fájlba kézzel nem írunk) a 3/9-ben áll; ez
+DT84 tétele dönt. A D35 szabálya (generált fájlba kézzel nem írunk) a 3/9-ben áll; ez
 az alfejezet nem ismétli, hanem a (b)→(a) kinyeréssel egészíti ki.*
 
 Ez az alfejezet a (b) réteg (`motivumok/[ID].md`) két gépi tulajdonságát írja le: a
@@ -1134,7 +1134,7 @@ A nézet mélysége kumulatív: az `apparatus` nézet az `olvasoi` blokkokat is 
 - Az `ADAT-NÉZET` jelölő a saját `SZINT:` mezőjében adja a generált blokk szintjét
   (a #64 mintája, `motivumok/TEREMT-002.md`).
 
-*[javaslat: DT-F23a (1) — a jelölőpár alakja. A #64 ideiglenes alakja (`<!-- SZINT: x -->` a
+*[javaslat: DT84 (1) — a jelölőpár alakja. A #64 ideiglenes alakja (`<!-- SZINT: x -->` a
 következő jelölőig) írás közben kezelhető volt, de a hatóköre nem volt kimondva
 (`naplok/TEREMT002_PROZA_PROBA_meres.md` 3. szakasz, 2. tanulság); a pár ezt zárja le.]*
 
@@ -1173,7 +1173,7 @@ generátor a forrásba nem ír**. Más táblába a kinyerés közvetlenül nem �
   (`dontes=beépítve`) lesz (3/2); a sor `proveniencia` mezője a jelölt `forras_kereses`
   proveniencia-sora (`scope=manual`), az `igazolas` mezője az 1.8 szerint. A `manual`
   sor a generált kimenetben értelmezésként jelölendő (3/3).
-- **Audit-út a lábjegyzetből:** *[javaslat: DT-F23a (2) — a `scope≠manual` lábjegyzetből
+- **Audit-út a lábjegyzetből:** *[javaslat: DT84 (2) — a `scope≠manual` lábjegyzetből
   közvetlenül, döntés nélkül írt `auditok.tsv`-sor ütközne a 3/9-cel (kinyerés csak a
   `jeloltek.tsv`-n át, `manual` provenienciával, döntéssel). Opciók: (a) nincs
   audit-kinyerés, a lábjegyzet csak hivatkozás (ez a fenti normatív szöveg); (b) a
@@ -1193,7 +1193,7 @@ generátor a forrásba nem ír**. Más táblába a kinyerés közvetlenül nem �
 - **Közvetlen út nincs.** Kinyerő jelölő soha nem ír közvetlenül `elofordulasok.tsv`,
   `kapcsolatok.tsv`, `lexikon_hivatkozasok.tsv` vagy `lxx_dontesek.tsv` sort.
 
-#### 3.10.7 Nyitott séma-kérdések (DT66 (a) megjegyzése; *javaslat*, DT-F23a (3), (8))
+#### 3.10.7 Nyitott séma-kérdések (DT66 (a) megjegyzése; *javaslat*, DT84 (3), (8))
 
 A DT66 (a) a Minősítés, az Alátámasztás és a 7. Módszertan `adat`-besorolását fogadta el,
 azzal a megjegyzéssel, hogy új oszlopot kérhet. A mai sémával:

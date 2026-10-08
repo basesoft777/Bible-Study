@@ -3,7 +3,7 @@
 *FELADATOK #23 · `F23_MOTIVUM_FORRAS_BRIEF.md` M1/4 · 2026.10.08 · ág: `claude/f23-m1-forrassablon` · döntések: D34, D38, DT28, DT66, DT74 (1)–(3), DT78 (22)*
 
 Ez a fájl a #11 (MIGRACIO) briefjének közvetlen bemenete, és a #12 (TEREMT-002) pilotjáé.
-Nem dönt: ahol értelmezés kell, `javaslat` jelölést visel, és a `DONTESEK.md` DT-F23a tétele
+Nem dönt: ahol értelmezés kell, `javaslat` jelölést visel, és a `DONTESEK.md` DT84 tétele
 dönt róla. Minden szám futtatott parancsból jön; a proveniencia-sor a mérés mellett áll.
 A szabályok helye: `sablonok/9_PaRDeS_motivum_forras_sablon.md` (v0, tervezet), `adat/SEMA.md`
 3.10, `naplok/MOTIVUM_FORRAS_ci_terv.md` (E28, E29).
@@ -19,14 +19,14 @@ A szabályok helye: `sablonok/9_PaRDeS_motivum_forras_sablon.md` (v0, tervezet),
 
 **Sorrend-eltérés, amelyet a #11 briefje elé kell tenni.** A sablon fejléce szerint „a #12 pilotja
 véglegesíti”, a `F12_TEREMT002_PROZA_BRIEF.md` fejléce viszont `fugg: [11]`, tehát a #11 1.
-lépcsője a `v0` tervezeten futna. *[javaslat: DT-F23a (13) — (a) a #11 1. lépcsője a `v0`-n fut,
+lépcsője a `v0` tervezeten futna. *[javaslat: DT84 (13) — (a) a #11 1. lépcsője a `v0`-n fut,
 és a #12 a két pilot tapasztalatával véglegesít; vagy (b) a #12 sablon-véglegesítő része (a
 renderút és a jelölők) a #11 elé kerül, a `fugg` megfordul. Javaslat: (a), mert a #12 natív
 motívuma a szétválasztást nem méri, a sablon pedig mindkét esetre szól.]*
 
 ## 2. Közös bemenetek (mindkét pilot)
 
-1. **Forrássablon v0** és a 9. pontjának javaslatai (DT-F23a (1)–(8)).
+1. **Forrássablon v0** és a 9. pontjának javaslatai (DT84 (1)–(8)).
 2. **SEMA 3.10**: a szintek, a jelölőpár, a kinyerés jelölőnként.
 3. **A generátor két új képessége** (egyik sincs még meg; a #64 mérés 1. szakasza szerint a
    `general.py` a `motivumok/[ID].md`-ből ma semmit nem olvas):
@@ -34,7 +34,7 @@ motívuma a szétválasztást nem méri, a sablon pedig mindkét esetre szól.]*
      szakaszlistája mint engedélyezőlista (SEMA 3.10.4);
    - a kinyerés: `JELÖLT` → `jeloltek.tsv`, proveniencia-lábjegyzet → `auditok.tsv`, `ADAT-HIV` /
      `ADAT-ÉRTÉK` ellenőrzés, kinyerési jelentés (SEMA 3.10.5).
-   Ezek a #11 (vagy a #12, DT-F23a (13) szerint) implementációs lépései; az E28/E29 implementációja
+   Ezek a #11 (vagy a #12, DT84 (13) szerint) implementációs lépései; az E28/E29 implementációja
    külön ágon, előttük (D6).
 4. **A mérce** (DT68 (2), DT74 (5)): L1–L7 + a DT2 két rés-szabálya, a szótári részen a #78 váza;
    a forrásra a sablon 8. pontja szerint, a renderre a lexikonoldal-sablon kapuja szerint.
@@ -73,7 +73,7 @@ motívuma a szétválasztást nem méri, a sablon pedig mindkét esetre szól.]*
    Ezek a renderben **explicit hiányként** látszanak (CLAUDE.md 3. szabály), nem pótolandók.
 6. **Visszaírás-számláló** (7.4) natív motívumon is: a `motivumok/TEREMT-002.md` diffjében nem
    lehet adatból vagy generált nézetből származó sor. Szétválasztás nincs (nincs régi tanulmány).
-7. **A sablon véglegesítése:** a DT-F23a pontjainak tapasztalata a #12 zárójelentésébe, a
+7. **A sablon véglegesítése:** a DT84 pontjainak tapasztalata a #12 zárójelentésébe, a
    sablon `v1` fejléccel.
 
 ## 4. A #11 1. lépcsőjének: ISTENTISZT-001 (örökölt)
@@ -137,7 +137,7 @@ előbecslés: a végleges besorolás blokkonként, a #11 leképezési táblájá
 
 ### 4.4 A „7. Nyitott kérdések” öt tétele (DT66 (a) 4.)
 
-A sablon 4. pontjának tételenkénti szabálya alkalmazva (*[javaslat: DT-F23a (5)]*):
+A sablon 4. pontjának tételenkénti szabálya alkalmazva (*[javaslat: DT84 (5)]*):
 
 | # | Tétel (rövidítve) | Jelleg | Kategória |
 |---|---|---|---|
@@ -170,7 +170,7 @@ A migráció kimenetét két összevetés méri, mindkettő `eszkozok/nulladiff.
 | **N0** | **nulla-diff** | a generált blokkok (1., 1/a, 1/b, 2. szerepmátrix, 3., 4. tábla, 5. tábla, 8., Kolofon) bájtra azonosak, kivéve a D2-t | **a teljes generált kimenet** (lexikonoldal, `naplo`, `index`, `nyitott`, `study`) bájtra azonos | nincs `--csere` |
 | D1 | dátum (`ts=`, `Generálva:`) | — | — | nem diff: a `PARDES_DATUM` megszünteti |
 | D2 | forrás-útvonal | a lap fejléce (`rések: tematikus_lezart/…` → `motivumok/ISTENTISZT-001.md`), a `res_forras.tsv` `tanulmany`-útja, a Kolofon „Forrás-study” cellája | nem lehet | `--csere`, előre felsorolt literálokkal; a darabszám a jelentésben |
-| D3 | `belso`-kihagyás | a lapon ma álló 14 `【NAPLO` kimarad, ha a lexikonoldal `apparatus` nézet (*[javaslat: DT-F23a (10)]*); mindegyiknek a forrásban `belso` blokként kell állnia | nem lehet | blokkonként igazolva: a kimaradt szöveg a `motivumok/ISTENTISZT-001.md`-ben megvan |
+| D3 | `belso`-kihagyás | a lapon ma álló 14 `【NAPLO` kimarad, ha a lexikonoldal `apparatus` nézet (*[javaslat: DT84 (10)]*); mindegyiknek a forrásban `belso` blokként kell állnia | nem lehet | blokkonként igazolva: a kimaradt szöveg a `motivumok/ISTENTISZT-001.md`-ben megvan |
 | D4 | adatból generált rés | a `minosites`, `2b` (és ha a séma engedi, `alatamasztas`, `modszertan`-tábla) próza helyett adatból renderel | nem lehet | soronként: a régi rés minden igehely + döntés + indoklás eleme megvan a táblában, vagy a leképezési tábla `archivum`-nak jelöli |
 | D5 | archivált egység | a leképezési táblában `archivum`-ként jelölt egység eltűnik a nézetből | nem lehet | a leképezési tábla sora a forrás |
 | D6 | megszűnt kimenet | a `lexikon/ISTENTISZT-001_TORZSCIKK.md` (D34, N-F78a) | — | a fájl törlése a #11 dolga |
@@ -184,7 +184,7 @@ helye változik), új `ÜRES-BLOKK` vagy eltűnt szerep a 2. szakaszban.
 
 **Szerepe az 1. lépcsőben:** kontroll. A HAMART-001 az 1. lépcsőben nem migrál; a #11 generátor-
 változásai (forrásolvasás, szintszűrés, kinyerés) a még nem migrált motívum kimenetét nem
-érinthetik. *[javaslat: DT-F23a (9) — a „nulla-diff referencia” így értve: A/B a generátor két
+érinthetik. *[javaslat: DT84 (9) — a „nulla-diff referencia” így értve: A/B a generátor két
 állapota között, nem a commitolt éles fájlhoz; az éles `lexikon/HAMART-001_TUDOMANYOS.md` a #78
 előtti 2. szakaszt viseli, a mai generátor attól eltér, és befagyasztott (DT74 (3)).]*
 
@@ -217,12 +217,12 @@ A régi tanulmány minden egysége **pontosan egy** célrétegbe kerül:
 | `adat` | a prózában álló motívumadat, amely ma nincs a táblában | a `jeloltek.tsv`-n át, döntéssel (SEMA 3/2, 3.10.5); nem igehely-kulcsú adatnál a döntéssel írt adatút (SEMA 3.10.7 4.) | a sor `manual` provenienciával létezik; a próza nem tartalmazza tovább |
 | `forras` | értelmező próza (és a `【NAPLO`, `belso` szinten) | `motivumok/ISTENTISZT-001.md`, a sablon 4. pontja szerinti szakaszba | a szöveg bájtra átkerül (a helye változhat, a szövege nem) |
 | `generalt` | ma a forrásban áll, de adatból újraállítható | nem kézi a migráció után; a nézetben a generátor írja | a nézetben a generált változat megvan (N0 vagy D4) |
-| `archivum` | sem adat, sem forrás: megőrzött, de nem forrás | archív hely (*[javaslat: DT-F23a (12) — pl. a régi fájl változatlanul, `ARCHÍV` fejléccel egy archív könyvtárban, vagy git-történet + címke]*) | a leképezési táblában jelölve; a nézetből eltűnik (D5) |
+| `archivum` | sem adat, sem forrás: megőrzött, de nem forrás | archív hely (*[javaslat: DT84 (12) — pl. a régi fájl változatlanul, `ARCHÍV` fejléccel egy archív könyvtárban, vagy git-történet + címke]*) | a leképezési táblában jelölve; a nézetből eltűnik (D5) |
 
 **Az egység.** Alapesetben a blokk (üres sorral határolt egység; 4.1: 166 db). A **vegyes blokk**
 (adat és értelmezés egy bekezdésben: a lekepezes 19 `szetvalasztando` sora ilyen szakaszokat
 jelöl) előbb részegységekre bomlik (mondat, táblasor vagy táblacella), és minden részegység kap
-egy kategóriát. *[javaslat: DT-F23a (11)]*
+egy kategóriát. *[javaslat: DT84 (11)]*
 
 ### 7.2 A leképezési tábla (a #11 kimenete)
 

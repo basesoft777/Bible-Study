@@ -1,16 +1,16 @@
 # F23 zárás — M1 terv (#23 MOTIVUM_FORRAS)
 
-*2026.10.08 · ág: `claude/f23-m1-forrassablon` · állapot: döntésre vár (DT-F23a 🟡, 13 `javaslat`-pont); az ELLENOR_F23_M1 2–4. tétele javítva (F23.M1.7–F23.M1.10).*
+*2026.10.08 · ág: `claude/f23-m1-forrassablon` · állapot: döntésre vár (DT84 🟡, 13 `javaslat`-pont); az ELLENOR_F23_M1 2–4. tétele javítva (F23.M1.7–F23.M1.10).*
 
 - A négy M1-kimenet: `sablonok/9_PaRDeS_motivum_forras_sablon.md` (tervezet v0, 23 szakasz), `adat/SEMA.md` 3.10 (szintjelölés és kinyerés), `naplok/MOTIVUM_FORRAS_ci_terv.md` (E28, E29; csak leírás), `naplok/MOTIVUM_FORRAS_pilot_terv.md` (a #12 és a #11 1. lépcsőjének bemenetei; ez a #11 briefjének közvetlen bemenete).
-- A javaslat-pontok egy tételben: `DONTESEK.md` DT-F23a. A K3 a jóváhagyásig nem teljesül (várt állapot).
-- ELLENOR_F23_M1: JAVÍTANDÓ, 5 tétel. A 2. tétel (a döntés nélküli `auditok.tsv`-út ütközik a SEMA 3/9-cel) normatív szövegből `javaslat` lett, DT-F23a (2). A 3–4. tétel javítva, az 5. (K4) itt. Az 1. tétel lent.
+- A javaslat-pontok egy tételben: `DONTESEK.md` DT84. A K3 a jóváhagyásig nem teljesül (várt állapot).
+- ELLENOR_F23_M1: JAVÍTANDÓ, 5 tétel. A 2. tétel (a döntés nélküli `auditok.tsv`-út ütközik a SEMA 3/9-cel) normatív szövegből `javaslat` lett, DT84 (2). A 3–4. tétel javítva, az 5. (K4) itt. Az 1. tétel lent.
 - **⛔ Ágszennyezés (nem javítva, a felhasználóé):** egy másik session menet közben ágat váltott a közös munkakönyvtárban, ezért az F23.M1.4–M1.5 (`4d6b469`, `fe9a870`) a pusholt `claude/f83-job-versbeosztas` ágra, az M1.1–M1.3 (`fecb6bb`, `a0040d0`, `f2b01f0`) a helyi `claude/befogadas-20261008-4` ágra is került. Az F83 PR merge-e előtt ki kell venni őket. A tartalom ezen az ágon cherry-pickkel teljes.
 - Tartalmi fájl nem változott. K4, `git diff --stat adc8862..a8544ba`: `DONTESEK.md` +1; `F23_MOTIVUM_FORRAS_BRIEF.md` 12 ±; `adat/SEMA.md` +129; `naplok/ELLENOR_F23_M1.md` +37; `naplok/MOTIVUM_FORRAS_ci_terv.md` +122; `naplok/MOTIVUM_FORRAS_pilot_terv.md` +279; `sablonok/9_PaRDeS_motivum_forras_sablon.md` +204 (7 fájl, 779+, 5−).
 
 ## Folytatási pont (M1)
 
-1. A DT-F23a döntése (Felhasználó); utána átvezetés ezen a briefen, és a DT66 ✅-ra állítása.
+1. A DT84 döntése (Felhasználó); utána átvezetés ezen a briefen, és a DT66 ✅-ra állítása.
 2. A #11 briefjének megírása a `naplok/MOTIVUM_FORRAS_pilot_terv.md` alapján.
 
 ---
