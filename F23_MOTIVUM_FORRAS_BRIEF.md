@@ -5,13 +5,13 @@ kod: MOTIVUM_FORRAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: megallt
-ag: claude/f23-motivum-forras
+allapot: fut
+ag: claude/f23-m1-forrassablon
 pr: https://github.com/basesoft777/Bible-Study/pull/243
 ad: a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül
-kovetkezo: "Te: ⛔ az M0 kész (DT66 🟢), a #12a (#64) lezárult; az M1 a #78 szerepmátrix-váz (a rekonstruált aranyminta, DT74 (1)) után indul, bemenete a #64 mérése a 7. („A mérce korlátja”) szakasszal, mércéje L1–L7 + DT2 (DT68, DT74 (5)); utána /kovetkezo"
+kovetkezo: "M1 fut (forrássablon, SEMA-szintjelölés, CI-terv, pilot-terv), claude/f23-m1-forrassablon"
 olvas: [sablonok/, tematikus_lezart/, motivumok/, lexikon/, genezis/, adat/SEMA.md, adat/res_forras.tsv, adat/szotar_szerepek.tsv, eszkozok/general.py, CLAUDE.md, ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md, naplok/TEREMT002_PROZA_PROBA_meres.md]
-ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/MOTIVUM_FORRAS_torzscikk_egyedi.tsv, naplok/MOTIVUM_FORRAS_parositas.tsv, naplok/MOTIVUM_FORRAS_naplo_keveredes.tsv, naplok/MOTIVUM_FORRAS_atfedes.tsv, naplok/MOTIVUM_FORRAS_M0.py, naplok/F23_zaras.md, naplok/ELLENOR_F23.md, naplok/ELLENOR_F23_2.md]
+ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/MOTIVUM_FORRAS_torzscikk_egyedi.tsv, naplok/MOTIVUM_FORRAS_parositas.tsv, naplok/MOTIVUM_FORRAS_naplo_keveredes.tsv, naplok/MOTIVUM_FORRAS_atfedes.tsv, naplok/MOTIVUM_FORRAS_M0.py, naplok/F23_zaras.md, naplok/ELLENOR_F23.md, naplok/ELLENOR_F23_2.md, naplok/MOTIVUM_FORRAS_ci_terv.md, naplok/MOTIVUM_FORRAS_pilot_terv.md]
 fugg: [32, 78]
 nem_fugg: [22, 52]
 ---
@@ -114,3 +114,4 @@ Minden számot a menetben ténylegesen futtatott parancs kimenetéből vegyél. 
 | v1.4 | 2026.10.07 | fejléc `ir`: az öt M0-kimenet (`naplok/MOTIVUM_FORRAS_lekepezes.tsv`, `_torzscikk_egyedi.tsv`, `_parositas.tsv`, `_naplo_keveredes.tsv`, `_atfedes.tsv`) felvéve; a hatókör nem bővül (az M0 eleve ezeket állítja elő) | DT65 (c) (Felhasználó, 2026.10.07): önálló fejléchiba-javítás; az `allapot` és a `fugg` nem változik |
 | v1.5 | 2026.10.07 | fejléc `ir`: a mérőszkript (`naplok/MOTIVUM_FORRAS_M0.py`), a zárófájl (`naplok/F23_zaras.md`) és a két független ellenőri jelentés (`naplok/ELLENOR_F23.md`, `naplok/ELLENOR_F23_2.md`) felvéve; a hatókör nem bővül (a fájlok az M0 menetében és ellenőrzésében keletkeztek) | ELLENOR_F23 8. pont és ELLENOR_F23_2 3. pont; a javítókört a Felhasználó hagyta jóvá (2026.10.07); az `allapot` és a `fugg` nem változik |
 | v1.6 | 2026.10.08 | TERV-INTEGRÁCIÓ: M1-előfeltétel a #78 szerepmátrix-váz (rekonstruált aranyminta) és a #64 mérése (7. szakasz: a mérce korlátja); mérce L1–L7 + DT2; a forrássablon szótári szakasza a szerepmátrix szerint; `fugg` + 78, `olvas` + `adat/szotar_szerepek.tsv`, a #64 mérése | DT74 (1), (5); DT68 (2); a TI-menet egyszeri fejléc-frissítése (DT75 (8)) |
+| v1.7 | 2026.10.08 | M1 indul: fejléc `allapot: fut`, új `ag`; `ir` + `naplok/MOTIVUM_FORRAS_ci_terv.md`, `naplok/MOTIVUM_FORRAS_pilot_terv.md` (az M1/3–4 kimenetei, eddig hiányoztak) | a #78 lezárult (PR #256), az M1 előfeltétele teljesült; a felhasználó jóváhagyása (2026.10.08) |
