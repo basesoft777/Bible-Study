@@ -494,6 +494,95 @@ class ExtraTest(Alap):
         self.assertEqual(b[-1].allapot, 'nem_indult')
 
 
+class TervMutatoTest(Alap):
+    """F82 (TERV_FELADAT_OR): a jelölt TERVELEM-MUTATO táblák őre."""
+    NYITO = '<!-- TERVELEM-MUTATO oszlop=feladat -->'
+    ZARO = '<!-- /TERVELEM-MUTATO -->'
+    FEJ = '| terv-elem | feladat | állapot |\n| --- | --- | --- |\n'
+
+    def setUp(self):
+        super().setUp()
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, kod='SQLITE_EPIT'))
+        with open(os.path.join(self.g.ut, 'DONTESEK.md'), 'w', encoding='utf-8', newline='') as f:
+            f.write('| # | x |\n|---|---|\n| DT5 | k |\n| DT-F82a | k |\n')
+
+    def terv(self, szoveg, nev='ATALAKITASI_TERV.md.md'):
+        with open(os.path.join(self.g.ut, nev), 'w', encoding='utf-8', newline='') as f:
+            f.write(szoveg)
+
+    def hibak(self):
+        return [(f, u) for f, u in F.ellenoriz(self.g.briefek(), self.g.ut)
+                if u.startswith('terv-mutató')]
+
+    def tabla(self, *sorok, nyito=None, zaro=True):
+        return ('szöveg #205 SECE_H\n\n%s\n%s%s\n%s\n\nutána #205\n'
+                % (nyito or self.NYITO, self.FEJ, '\n'.join(sorok), self.ZARO if zaro else ''))
+
+    def test_jo_sor_feladatszammal(self):
+        self.terv(self.tabla('| elem | #1 NEV | csonk |'))
+        self.assertEqual(self.hibak(), [])
+
+    def test_jo_sor_koddal_escape_szel(self):
+        self.terv(self.tabla('| elem | SQLITE\\_EPIT | csonk |'))
+        self.assertEqual(self.hibak(), [])
+
+    def test_jelolesek(self):
+        self.terv(self.tabla('| a | MCP — feltételes (DT-M7) | — |', '| b | x **elavult** | — |',
+                             '| c | TERV_BEFOGAD (**lezárva**) | — |', '| d | Feltételes | — |'))
+        self.assertEqual(self.hibak(), [])
+
+    def test_dontes_hivatkozas(self):
+        self.terv(self.tabla('| a | DT-F82a a #13 befogadásakor? | — |'))
+        self.assertEqual(self.hibak(), [])
+        self.terv(self.tabla('| a | DT-M7 | — |'))
+        self.assertEqual(len(self.hibak()), 1)
+
+    def test_nem_letezo_szam_hiba(self):
+        self.terv(self.tabla('| rossz elem | #99 | csonk |', '| jo | #1 | csonk |'))
+        h = self.hibak()
+        self.assertEqual(len(h), 1)
+        self.assertEqual(h[0][0], 'ATALAKITASI_TERV.md.md:6')
+        self.assertIn('rossz elem', h[0][1])
+
+    def test_jelolon_kivuli_szam_es_nev_nem_szamit(self):
+        self.terv('nincs jelölő\n| elem | feladat | állapot |\n| --- | --- | --- |\n'
+                  '| x | #205 SECE_H | — |\n')
+        self.assertEqual(self.hibak(), [])
+
+    def test_hianyzo_zaro_jelolo_hiba(self):
+        self.terv(self.tabla('| elem | #1 | csonk |', zaro=False))
+        h = self.hibak()
+        self.assertEqual(len(h), 1)
+        self.assertIn('hiányzó záró jelölő', h[0][1])
+
+    def test_zaro_nyito_nelkul_es_ures_tabla(self):
+        self.terv('x\n%s\n' % self.ZARO)
+        self.assertEqual(len(self.hibak()), 1)
+        self.terv('%s\nnincs tábla\n%s\n' % (self.NYITO, self.ZARO))
+        self.assertIn('nincs tábla', self.hibak()[0][1])
+
+    def test_oszlop_attributum_tobb_oszloppal(self):
+        szoveg = ('<!-- TERVELEM-MUTATO oszlop=#,név -->\n| # | név | cél |\n| --- | --- | --- |\n'
+                  '| #1 | A | x |\n| — | B (**feltételes**) | y |\n| — | C | z |\n%s\n' % self.ZARO)
+        self.terv(szoveg, 'MUNKATERV.md')
+        h = self.hibak()
+        self.assertEqual(len(h), 1)
+        self.assertEqual(h[0][0], 'MUNKATERV.md:6')
+
+    def test_ismeretlen_oszlop_hiba(self):
+        self.terv(self.tabla('| a | #1 | x |', nyito='<!-- TERVELEM-MUTATO oszlop=nincs -->'))
+        self.assertIn('nincs ilyen oszlop', self.hibak()[0][1])
+
+    def test_crlf_terv(self):
+        self.terv(self.tabla('| a | #99 | x |').replace('\n', '\r\n'))
+        self.assertEqual(len(self.hibak()), 1)
+
+    def test_valodi_repon_nulla_hiba(self):
+        hibak = [(f, u) for f, u in F.ellenoriz(F.briefek_beolvas(F.REPO), F.REPO)
+                 if u.startswith('terv-mutató')]
+        self.assertEqual(hibak, [])
+
+
 class CliTest(Alap):
     def test_kilepesi_kodok(self):
         self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, olvas=['a'], ir=['b']))

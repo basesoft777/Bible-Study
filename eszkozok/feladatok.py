@@ -16,6 +16,8 @@ Parancsok:
                     generalt blokkot a PR nem modosithatja (E18); a
                     FELADATTERKEP.html-t es a feladatterkep.json-t sem
                     (N-F53e: a merge-base..HEAD diffben nem szerepelhetnek)
+                    a tervek jelolt `TERVELEM-MUTATO` tablainak minden sora feladatra, kodra,
+                    dontesre vagy elavult/feltetelesen/lezarva jelolesre mutat (F82, E18)
     fuggesek        levezetett/kezi fuggesek, utkozesek, regi fejlecek; OLVAS_HIANY
                     sor (es 1-es kilepesi kod), ha motivumot iro feladat `olvas`-aban
                     hianyzik a tanulmany vagy a naplo (F32, K3.2); MUNKA_HIANY sor (es 1-es
@@ -235,6 +237,126 @@ def regi_modell(torzs):
     return None
 
 
+# ---------------------------------------------------------------------------
+# F82 (TERV_FELADAT_OR): a tervek jelolt mutato-tablai -- minden sor feladatban,
+# briefben vagy jelolten elavult/feltetelesen/lezarva (DT78 (19) (1), DT-F82a)
+# ---------------------------------------------------------------------------
+
+TERVEK = ('ATALAKITASI_TERV.md.md', 'MUNKATERV.md', 'ADATVAGYON_TERV.md')
+MUTATO_KEZDET = re.compile(r'^<!--\s*TERVELEM-MUTATO(?:\s+oszlop=(.*?))?\s*-->$')
+MUTATO_VEGE = re.compile(r'^<!--\s*/TERVELEM-MUTATO\s*-->$')
+MUTATO_JELOLES = re.compile(r'elavult|feltételes|lezárva', re.IGNORECASE)
+MUTATO_SZAM = re.compile(r'(?<![\w&])#(\d+)')
+MUTATO_DT = re.compile(r'(?<![\w-])(DT-[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*|D\d+)(?![\w-])')
+DONTES_SOR = re.compile(r'^\|\s*(D[A-Za-z0-9-]*)\s*\|')
+
+
+def _dontes_azonositok(gyoker):
+    """A DONTESEK.md es a FELADATOK.md tablasoraibol a D-/DT-azonositok."""
+    ids = set()
+    for nev in ('DONTESEK.md', 'FELADATOK.md'):
+        ut = os.path.join(gyoker, nev)
+        if not os.path.exists(ut):
+            continue
+        with open(ut, encoding='utf-8', newline='') as f:
+            for sor in f.read().replace('\r\n', '\n').split('\n'):
+                m = DONTES_SOR.match(sor)
+                if m:
+                    ids.add(m.group(1))
+    return ids
+
+
+def _mutato_cellak(sor):
+    """Markdown tablasor cellai; a `\\|` nem hatar."""
+    s = sor.strip().replace('\\|', '\x00')
+    if s.startswith('|'):
+        s = s[1:]
+    if s.endswith('|'):
+        s = s[:-1]
+    return [c.replace('\x00', '|').strip() for c in s.split('|')]
+
+
+def _mutato_fejnev(cella):
+    return cella.replace('*', '').strip().lower()
+
+
+def mutato_cella_jo(cella, szamok, kodok, dontesek):
+    """A `feladat` cella megnevez-e letezo feladatot/kodot, jelolest vagy dontest; (jo, hiany)."""
+    c = cella.replace('\\_', '_').replace('\\#', '#')
+    if MUTATO_JELOLES.search(c):
+        return True
+    if any(int(n) in szamok for n in MUTATO_SZAM.findall(c)):
+        return True
+    for k in kodok:
+        if re.search(r'(?<![A-Za-z0-9_])' + re.escape(k) + r'(?![A-Za-z0-9_])', c):
+            return True
+    return any(t in dontesek for t in MUTATO_DT.findall(c))
+
+
+def terv_mutato_hibak(briefek, gyoker=REPO):
+    """F82: a jelolt `TERVELEM-MUTATO` tablak sorai; hibak: (`fajl:sor`, uzenet)."""
+    szamok = {b.szam for b in briefek if b.szam is not None}
+    kodok = {str(b.fej['kod']) for b in briefek if b.fej.get('kod')}
+    dontesek = None
+    hibak = []
+    for terv in TERVEK:
+        ut = os.path.join(gyoker, terv)
+        if not os.path.exists(ut):
+            continue
+        with open(ut, encoding='utf-8', newline='') as f:
+            sorok = f.read().replace('\r\n', '\n').split('\n')
+        i = 0
+        while i < len(sorok):
+            sor = sorok[i].strip()
+            if MUTATO_VEGE.match(sor):
+                hibak.append(('%s:%d' % (terv, i + 1), 'terv-mutató: záró jelölő nyitó nélkül'))
+                i += 1
+                continue
+            m = MUTATO_KEZDET.match(sor)
+            if not m:
+                i += 1
+                continue
+            nyito = i + 1
+            oszlopnevek = [x.strip().strip('"\'').lower()
+                           for x in (m.group(1) or 'feladat').split(',') if x.strip()]
+            j = i + 1
+            while j < len(sorok) and not MUTATO_VEGE.match(sorok[j].strip()) \
+                    and not MUTATO_KEZDET.match(sorok[j].strip()):
+                j += 1
+            if j >= len(sorok) or not MUTATO_VEGE.match(sorok[j].strip()):
+                hibak.append(('%s:%d' % (terv, nyito),
+                              'terv-mutató: hiányzó záró jelölő (a tábla nem tűnhet el csendben)'))
+                i = j
+                continue
+            tabla = [(n + 1, sorok[n]) for n in range(i + 1, j) if sorok[n].strip().startswith('|')]
+            if len(tabla) < 3:
+                hibak.append(('%s:%d' % (terv, nyito),
+                              'terv-mutató: a jelölőpár között nincs tábla (fejléc, elválasztó, sor)'))
+                i = j + 1
+                continue
+            fej = [_mutato_fejnev(c) for c in _mutato_cellak(tabla[0][1])]
+            idx = [fej.index(o) if o in fej else None for o in oszlopnevek]
+            if None in idx:
+                hibak.append(('%s:%d' % (terv, tabla[0][0]),
+                              'terv-mutató: nincs ilyen oszlop: %s (fejléc: %s)'
+                              % (', '.join(o for o, x in zip(oszlopnevek, idx) if x is None),
+                                 ', '.join(fej))))
+                i = j + 1
+                continue
+            if dontesek is None:
+                dontesek = _dontes_azonositok(gyoker)
+            for szam, sor_s in tabla[2:]:
+                cellak = _mutato_cellak(sor_s)
+                szoveg = ' '.join(cellak[x] for x in idx if x < len(cellak))
+                if not mutato_cella_jo(szoveg, szamok, kodok, dontesek):
+                    hibak.append(('%s:%d' % (terv, szam),
+                                  'terv-mutató: a(z) „%s” sor nem mutat létező feladatra (#nn, kod), '
+                                  'döntésre, és nincs elavult/feltételes/lezárva jelölése: %s'
+                                  % (cellak[0], szoveg[:80])))
+            i = j + 1
+    return hibak
+
+
 def ellenoriz(briefek, gyoker=REPO):
     """Hibak listaja: (fajl, uzenet)."""
     hibak = []
@@ -295,6 +417,7 @@ def ellenoriz(briefek, gyoker=REPO):
     for szam, fajlok in sorted(szamok.items()):
         if len(fajlok) > 1:
             hibak.append((', '.join(fajlok), 'kettőzött feladatszám: %d' % szam))
+    hibak += terv_mutato_hibak(briefek, gyoker)
     ismert = set(szamok)
     for b in briefek:
         for k in ('fugg', 'nem_fugg'):
