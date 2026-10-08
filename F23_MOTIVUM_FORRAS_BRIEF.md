@@ -18,7 +18,7 @@ nem_fugg: [22, 52]
 
 # F<nn>_MOTIVUM_FORRAS_BRIEF.md — Egyforrású motívumdokumentum: forrássablon és mélységi szintek (terv)
 
-*FELADATOK #<nn> · Modell: opus · v1.5 · 2026.10.07 · döntések: D34–D39 (a naplózó brief rögzíti; a számok a befogadáskor a következő szabad D-számtól csúszhatnak), DT28 (v1.3)*
+*FELADATOK #<nn> · Modell: opus · v1.8 · 2026.10.08 · döntések: D34–D39 (a naplózó brief rögzíti; a számok a befogadáskor a következő szabad D-számtól csúszhatnak), DT28 (v1.3)*
 
 ## 1. Cél
 
@@ -115,3 +115,4 @@ Minden számot a menetben ténylegesen futtatott parancs kimenetéből vegyél. 
 | v1.5 | 2026.10.07 | fejléc `ir`: a mérőszkript (`naplok/MOTIVUM_FORRAS_M0.py`), a zárófájl (`naplok/F23_zaras.md`) és a két független ellenőri jelentés (`naplok/ELLENOR_F23.md`, `naplok/ELLENOR_F23_2.md`) felvéve; a hatókör nem bővül (a fájlok az M0 menetében és ellenőrzésében keletkeztek) | ELLENOR_F23 8. pont és ELLENOR_F23_2 3. pont; a javítókört a Felhasználó hagyta jóvá (2026.10.07); az `allapot` és a `fugg` nem változik |
 | v1.6 | 2026.10.08 | TERV-INTEGRÁCIÓ: M1-előfeltétel a #78 szerepmátrix-váz (rekonstruált aranyminta) és a #64 mérése (7. szakasz: a mérce korlátja); mérce L1–L7 + DT2; a forrássablon szótári szakasza a szerepmátrix szerint; `fugg` + 78, `olvas` + `adat/szotar_szerepek.tsv`, a #64 mérése | DT74 (1), (5); DT68 (2); a TI-menet egyszeri fejléc-frissítése (DT75 (8)) |
 | v1.7 | 2026.10.08 | M1 indul: fejléc `allapot: fut`, új `ag`; `ir` + `naplok/MOTIVUM_FORRAS_ci_terv.md`, `naplok/MOTIVUM_FORRAS_pilot_terv.md` (az M1/3–4 kimenetei, eddig hiányoztak) | a #78 lezárult (PR #256), az M1 előfeltétele teljesült; a felhasználó jóváhagyása (2026.10.08) |
+| v1.8 | 2026.10.08 | M1 javítókör az ELLENOR_F23_M1 2–4. tétele szerint: a SEMA 3.10.5 és a sablon 6. pontja a 3/9-hez igazodik (kinyerés csak a `jeloltek.tsv`-n át, a proveniencia-lábjegyzet hivatkozás; a közvetlen `auditok.tsv`-út `javaslat`, DT-F23a (2) bővítve); a pilot-terv HAMART-001 RÉS-számai (jelölő-előfordulás / rés / `res_forras`-sor) és a 4.1 proveniencia-hatóköre pontosítva; a fejléc verziósora (v1.5) a verziónaplóhoz igazítva | ELLENOR_F23_M1; az orkesztrátor javítóköre (a felhasználó által jóváhagyott menet része); tartalmi döntés nincs, a hatókör nem bővül |
