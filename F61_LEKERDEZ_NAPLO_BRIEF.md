@@ -3,7 +3,7 @@ feladat: 61
 cim: A lekérdező maga naplózzon — automatikus auditok-sor a lekerdez.py-ból, és az adhoc lépésérték
 kod: LEKERDEZ_NAPLO
 tipus: feladat
-fazis: folyamat
+fazis: 1
 modell: sonnet
 munka: folyamat
 allapot: nem_indult
