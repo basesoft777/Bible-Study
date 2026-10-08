@@ -5,10 +5,12 @@ kod: JOB_VERSBEOSZTAS
 tipus: feladat
 fazis: 1
 modell: opus
-allapot: megallt
+allapot: lezarva
+pr: 260
+lezarva_osszegzes: "Jób 38–42 megfeleltetés jóváhagyva (146 × 1:1, 4 fejezethatár-eltolás), kézi tábla +19 sor, DT-F83a ✅; a Jób 41 a TAHOT-kulcsgenerátor javításáig blokkolt (N-F83a javaslat), PR #260 (10.08)"
 ag: claude/f83-job-versbeosztas
 ad: "Jóváhagyott Jób 38–42 versmegfeleltetés (1:2 / 2:1 esetekkel), a három ellenőrzés eredményével; a Jób bekerülhet a VERSBEOSZTAS_JOVAHAGYOTT-ba"
-kovetkezo: "Te: ⛔ a Jób 38–42 megfeleltetési javaslat jóváhagyása (naplok/F83_Job_versbeosztas_jelentes.md, 5. szakasz: 146 × 1:1, 1:2 / 2:1 nincs) és a DT-F83a döntés (1:2 / 2:1 támogatás a Jóbnál; mellékkérdés: a Jób 41 TAHOT-adatforrása és a Jób 40 TAHOT-kulcs +5 eltolása, jelentés 5.5). Jóváhagyás után: f22/versmegfeleltetes_kezi.tsv és naplok/F22_versbeosztas_jovahagyas.md."
+kovetkezo: "merge a felhasználótól; nyitott: N-F83a (kulcsgenerátor Jób 40–41) felvétele /befogad-dal; zárás: naplok/F83_zaras.md"
 fugg: []
 nem_fugg: [22]
 olvas: [konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Macula_heber_Job.tsv, f22/versmegfeleltetes.tsv, naplok/F22_versbeosztas.md, eszkozok/karoli_strong/versbeosztas.py, eszkozok/tahot_karoli_kulcs_generalas.py]
