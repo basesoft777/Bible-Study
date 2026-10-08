@@ -6,8 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: folyamat
-allapot: fut
+allapot: lezarva
 ag: claude/f82-terv-feladat-or
+pr: 250
+lezarva_osszegzes: terv → feladat gépi őr (terv_mutato_hibak, TERVELEM-MUTATO jelölők, 12 teszt), PR #250 (10.08)
 ad: a `feladatok.py ellenoriz` (és így a CI E18 és a /kovetkezo 1. lépése) HIBÁT ad, ha a tervdokumentumok jelölt mutató-táblájának egy sora sem FELADATOK-számra/briefre (`#nn`, `kod`), sem „elavult”/„feltételes”/„lezárva” jelölésre nem mutat; a jelölő-formátum rögzítve, tesztekkel; a mai repón 0 hiba
 kovetkezo: fuggetlen-ellenor (orkesztrátor), majd merge a felhasználótól; zárás: naplok/F82_zaras.md
 olvas: [ATALAKITASI_TERV.md.md, MUNKATERV.md, ADATVAGYON_TERV.md, eszkozok/feladatok.py, eszkozok/teszt_feladatok.py, BRIEF_SABLON.md, naplok/TERV_INTEGRACIO_zaras.md, naplok/TERV_INTEGRACIO_leltar.md, naplok/TERV_INTEGRACIO_dontesi_lista.md]
