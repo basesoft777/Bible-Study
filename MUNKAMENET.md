@@ -136,7 +136,7 @@ A fejléc `munka` mezője (`BRIEF_SABLON.md`) jelöli; a négy szabály:
 4. **A lánc próbája megelőzi a szerkezet véglegesítését.** A B-szerkezet forrássablonja
    (#23 M1) csak akkor véglegesíthető, ha (a) egy motívum teljes értelmező rétege a fenti
    szabályok szerint elkészült, és (b) az eredmény hozza az ISTENTISZT-001 mércéjét
-   (L1–L7 + a DT2 két rés-szabálya, a #10 szerint; DT68 (2), DT-F52c (5)). A próba helyéről a `DONTESEK.md` DT-F32a tétele döntött (🟢, 2026.10.04): a #12 kettéválik, a **#12a próza-próba** a #23 M0 és M1 közé esik, éles render nélkül (csak `generalt_proba/`); a #12b élesítés az eredeti helyén marad.
+   (L1–L7 + a DT2 két rés-szabálya, a #10 szerint; DT68 (2), DT74 (5)). A próba helyéről a `DONTESEK.md` DT-F32a tétele döntött (🟢, 2026.10.04): a #12 kettéválik, a **#12a próza-próba** a #23 M0 és M1 közé esik, éles render nélkül (csak `generalt_proba/`); a #12b élesítés az eredeti helyén marad.
 
 A csomagba sorolást a `python eszkozok/feladatok.py csomag <id> …` ellenőrzi; a
 `/kovetkezo` csomagjavaslat előtt kötelezően futtatja.

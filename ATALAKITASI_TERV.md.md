@@ -1,7 +1,7 @@
 # PaRDeS rendszer — átalakítási terv
 
 **Verzió:** v10 — 2026.10.08
-**v10 (v9-hez képest):** TERV-INTEGRÁCIÓ (DT-F52c–g): új 13. szakasz „Állapot és kiegészítések” — az F0–F7 lezárva, a D34 (B út) és a DT28, a szerepmátrix-migráció (a lexikonoldal szótári szakasza a `szotar_szerepek.tsv` szerint), mutató a kiegészítő tervekre (`ADATVAGYON_TERV.md`, `MUNKATERV.md`) és a feladatokra; elavultnak jelölve: 2. hookok, 4.3 KJV/ASV-sor, 10. D16, D19, N3, N4, N10, N11; a terv a #52 TERV_SZINKRON hatókörébe kerül
+**v10 (v9-hez képest):** TERV-INTEGRÁCIÓ (DT74–g): új 13. szakasz „Állapot és kiegészítések” — az F0–F7 lezárva, a D34 (B út) és a DT28, a szerepmátrix-migráció (a lexikonoldal szótári szakasza a `szotar_szerepek.tsv` szerint), mutató a kiegészítő tervekre (`ADATVAGYON_TERV.md`, `MUNKATERV.md`) és a feladatokra; elavultnak jelölve: 2. hookok, 4.3 KJV/ASV-sor, 10. D16, D19, N3, N4, N10, N11; a terv a #52 TERV_SZINKRON hatókörébe kerül
 **v9 (v8-hoz képest):** D25 — az igazolás ténye önálló `igazolas` mezőbe kerül a proveniencia-string helyett; `adat/SEMA.md` 1.8 és az `eszkozok/igazolas_migracio.py` ezt végrehajtja
 **v8 (v7-hez képest):** N12 lezárva → D24 (a `karoli_szo` minden jelöltnél megnézendő, de csak a beépített sorokon őrzendő meg); ez rögzíti az F3.4 hatókörét is
 **v7 (v6-hoz képest):** az F3 öt nevesített lépésre bontva (F3.0-F3.4), lépésenkénti modellhozzárendeléssel — F3.0-F3.3 Sonnet, F3.4 (Károli-Strong join) saját menet Opuson; a 9. pont TAHOT-kockázati sora a lefutott F2.0 felmérés eredményére frissítve (a feltételezett hiányok megvannak, a tényleges hiány Jób 40:1-5 és Jób 41); D22-D23 és N13
@@ -870,7 +870,7 @@ A bővített szakasz azért olcsóbb a tematikusnál, mert ott nincs teljes ÓSZ
 | D13 | Minden előfordulás-sor megnevezi a gerinc-elemét | enélkül nem *látszik*, hogy nem hígult — a `lekerdez.py` amúgy is tudja |
 | D14 | ID kiosztásakor a 4.6 gate négy kérdése kötelező | az elhatárolás ma reaktív: hónapokkal később derül ki az ütközés |
 | D15 | A státusz háromértékű és verziózott, a „LEZÁRVA" címke megszűnik | lezárt tanulmányok kétszer is újranyíltak |
-| D16 | **Elavult (v10, DT-F52g (23)):** a CCR nem készült; a költségmérés az API-naplókból (#21, #77) és a Max-keretből jön. *Eredeti szöveg:* A CCR mérőműszerként bevezetendő, útválasztás nélkül | a terv minden költségszáma becslés, mérési pont nélkül |
+| D16 | **Elavult (v10, DT78 (23)):** a CCR nem készült; a költségmérés az API-naplókból (#21, #77) és a Max-keretből jön. *Eredeti szöveg:* A CCR mérőműszerként bevezetendő, útválasztás nélkül | a terv minden költségszáma becslés, mérési pont nélkül |
 | D17 | Az SDBH bekerül a datasetek közé, `domen` paranccsal | ez az egyetlen héber szemantikai domén-adat; a helyi OSHL etimológiai, a SECE_H doménmentes |
 | D18 | A B3 (szemantikai mező) marad emberi lépés, az SDBH csak támasz | az `itzávón` doménje „Spasm" — domén-lekérdezés nem hozta volna elő |
 | D19 | **Elavult (v10; l. 4.7, DT-M8 (b)):** a #22 könyvenként teljes, szó-szintű gépi Károli–Strong párosítást ad. *Eredeti szöveg:* A Károli-Strong join kumulatív melléktermék marad; a teljes Károli strongozása nem cél | a tanulmányok bejárta kör a mérce, nem a bibliai szöveg egésze |
@@ -907,7 +907,7 @@ Az F0-F7 a *hogyan*-ra válaszol. Az alábbiak a *meddig* és a *mivel* kérdés
 
 ### 11.1 Nincs célvonal — el kell dönteni
 
-*v10: a DT-tétel a #13 (1Móz 17-től) befogadásakor nyílik (DT-F52g (21)).*
+*v10: a DT-tétel a #13 (1Móz 17-től) befogadásakor nyílik (DT78 (21)).*
 
 A terv számításai fix motívum-készletet feltételeznek. Nem az: **minden új bővített tanulmány új motívumokat termel.** 23 bővített tanulmányból (20 genezisi + 3 újszövetségi) lett 14 ID és ~19 ID nélküli bejegyzés. Ha még húszat írsz, a készlet nagyjából megkétszereződik.
 
@@ -944,7 +944,7 @@ Az F3 tesztkészlete (hat motívum, ebből négy rokon témájú) az *előkész�
 
 ### 11.4 Arany-készlet a regresszióhoz
 
-*v10: a #11 része (a #78 vázával rekonstruált ISTENTISZT-001 és a HAMART-001 a migráció nulla-diff referenciája); a CI-rész külön ágon (D6; DT-F52g (22)).*
+*v10: a #11 része (a #78 vázával rekonstruált ISTENTISZT-001 és a HAMART-001 a migráció nulla-diff referenciája); a CI-rész külön ágon (D6; DT78 (22)).*
 
 Az F2 és F4 kap elfogadási tesztet, utána nincs semmi — miközben a `lekerdez.py` és a generátorok folyamatosan változnak.
 
@@ -956,7 +956,7 @@ A termék egy motívumlexikon, de a terv csak markdown-fájlokig jut. Egy gener�
 
 ### 11.6 Mérőműszer: Claude Code Router
 
-*Elavult (v10, DT-F52g (23)): l. a 10. szakasz D16 sorát.*
+*Elavult (v10, DT78 (23)): l. a 10. szakasz D16 sorát.*
 
 A 8.2-8.7 minden száma feltevésen áll (karakter/token átváltás, forduló-súly, cache meleg arány, subagent-overhead), és a terv az F2 elfogadási tesztjét jelöli meg mérési pontnak — **de nincs hozzá műszer.**
 
@@ -986,13 +986,13 @@ A második előny a projekt hibatörténete miatt súlyos: **a proveniencia prot
 
 ## 13. Állapot és kiegészítések (v10, 2026.10.08)
 
-*A TERV-INTEGRÁCIÓ menet (DT-F52c–g; `naplok/TERV_INTEGRACIO_leltar.md`, `naplok/TERV_INTEGRACIO_dontesi_lista.md`) szakasza. A terv ettől kezdve a #52 TERV_SZINKRON hatókörébe tartozik (DT-F52g (20)), és a terv → feladat irányt kemény zár őrzi (DT-F52g (19)).*
+*A TERV-INTEGRÁCIÓ menet (DT74–g; `naplok/TERV_INTEGRACIO_leltar.md`, `naplok/TERV_INTEGRACIO_dontesi_lista.md`) szakasza. A terv ettől kezdve a #52 TERV_SZINKRON hatókörébe tartozik (DT78 (20)), és a terv → feladat irányt kemény zár őrzi (DT78 (19)).*
 
-**13.1 Állapot.** Az F0–F7 lefutott (az `F4_BRIEF.md` … `F8_BRIEF.md` archív, lezárt). A terv lényegét két későbbi döntés vitte tovább: a **D34** (B út: motívumonként egy kézi forrás, `motivumok/[ID].md` + `adat/`; a motívumcikk, a lexikonoldal és az olvasói nézetek generáltak; a törzscikk a #11-ben megszűnik) és a **DT28** (egyirányúság). A teljes egy-forrásos renderelés a #23 (forrássablon, szintek) és a #11 (migráció) dolga; addig a régi motívumok forrásrétege és az éles `lexikon/` nem bővül a régi szerkezet szerint (DT-F52c (3), FELADATOK D-F52b).
+**13.1 Állapot.** Az F0–F7 lefutott (az `F4_BRIEF.md` … `F8_BRIEF.md` archív, lezárt). A terv lényegét két későbbi döntés vitte tovább: a **D34** (B út: motívumonként egy kézi forrás, `motivumok/[ID].md` + `adat/`; a motívumcikk, a lexikonoldal és az olvasói nézetek generáltak; a törzscikk a #11-ben megszűnik) és a **DT28** (egyirányúság). A teljes egy-forrásos renderelés a #23 (forrássablon, szintek) és a #11 (migráció) dolga; addig a régi motívumok forrásrétege és az éles `lexikon/` nem bővül a régi szerkezet szerint (DT74 (3), FELADATOK D52).
 
 **13.2 Kiegészítő tervek (nem fork).** Az `ADATVAGYON_TERV.md` (adatvagyon, olvasói konkordancia, lépcsők: 21.; SEMA-illesztés: 22.) és a `MUNKATERV.md` (feladatlista, hullámok) erre a tervre épül; ahol az alaptervet kiegészítik, az itt áll, ahol felülírják, a tételnél „Elavult (v10)” jelölés.
 
-**13.3 Szerepmátrix-migráció.** Az 1.C lexikonoldal 2. szakasza (szótári háttér) nem Strong → forrás sorrendben, hanem a szótári szerepmátrix (`adat/szotar_szerepek.tsv`, SEMA 2.13; ADATVAGYON_TERV 18.5) szerint renderel: szerepenként, a mátrix sorrendjében; az `allapot` vezérli a blokkot (`adatosítva` → blokk; `nincs adatosítva` / `javaslat` → üres, jelölt blokk; `nincs forrás` → nincs blokk). Ugyanez a mátrix az olvasói szó-lap sémája (#76). A 13. (Károli-megfelelők + SZPA) és a 14. szerep (rejtett/hamis párhuzam) `javaslat` állapotú (DT-M4, DT-F52e (9)). Az ok: a #64 mérése szerint az ISTENTISZT-001 aranyminta szótári része nem a mátrix szerint épül (`naplok/TEREMT002_PROZA_PROBA_meres.md` 7.). Sorrend: #78 (váz, adat nélkül) → #23 M1 → #9 (adatosítás a 8 motívum Strongjaira) → #11 → #10 (mérce: L1–L7 + DT2 + a váz; DT68 (2)).
+**13.3 Szerepmátrix-migráció.** Az 1.C lexikonoldal 2. szakasza (szótári háttér) nem Strong → forrás sorrendben, hanem a szótári szerepmátrix (`adat/szotar_szerepek.tsv`, SEMA 2.13; ADATVAGYON_TERV 18.5) szerint renderel: szerepenként, a mátrix sorrendjében; az `allapot` vezérli a blokkot (`adatosítva` → blokk; `nincs adatosítva` / `javaslat` → üres, jelölt blokk; `nincs forrás` → nincs blokk). Ugyanez a mátrix az olvasói szó-lap sémája (#76). A 13. (Károli-megfelelők + SZPA) és a 14. szerep (rejtett/hamis párhuzam) `javaslat` állapotú (DT-M4, DT76 (9)). Az ok: a #64 mérése szerint az ISTENTISZT-001 aranyminta szótári része nem a mátrix szerint épül (`naplok/TEREMT002_PROZA_PROBA_meres.md` 7.). Sorrend: #78 (váz, adat nélkül) → #23 M1 → #9 (adatosítás a 8 motívum Strongjaira) → #11 → #10 (mérce: L1–L7 + DT2 + a váz; DT68 (2)).
 
 **13.4 Feladat-mutató** (a terv és a kiegészítései feladatként megnevezett elemei):
 
@@ -1006,7 +1006,7 @@ A második előny a projekt hibatörténete miatt súlyos: **a proveniencia prot
 | publikálási forma (11.5) | #76 (#25a) OLVASOI_KONKORDANCIA, #25 (#25b) | csonk |
 | SQLite-építő (ADATVAGYON 21. 3. lépcső) | #79 SQLITE_EPIT | csonk |
 | saját MCP-szerver (11.7) | MCP_BUROK — feltételes (DT-M7) | — |
-| SZPA-audit (ADATVAGYON 10.) | SZPA_AUDIT — feltételes (a profilfájl repóba kerülése után, DT-F52f (13)) | — |
+| SZPA-audit (ADATVAGYON 10.) | SZPA_AUDIT — feltételes (a profilfájl repóba kerülése után, DT77 (13)) | — |
 | célvonal (11.1) | DT-tétel a #13 befogadásakor | — |
 
 ---

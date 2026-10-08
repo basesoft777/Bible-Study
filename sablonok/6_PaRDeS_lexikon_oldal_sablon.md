@@ -439,7 +439,7 @@ lexikon-oldal saját kockázataira szabva:
 
 Ha L1, L2, L3, L4, L6 vagy L7 bármelyike bukik, a lexikon-oldal NEM
 tehető közzé/commitolható, amíg nincs javítva. *(L1–L7: DT68 (2),
-DT-F52c (5); a #10 mércéje ez + a DT2 két rés-szabálya.)*
+DT74 (5); a #10 mércéje ez + a DT2 két rés-szabálya.)*
 
 ---
 

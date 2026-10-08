@@ -7,9 +7,9 @@ dontes_forras	datum	erintett_fajl	tilos_minta	atmeneti_jeloles	tovabbvivo_felada
 F26_EGYFORRAS_NAPLO_BRIEF.md#D34	2026-09-30	CLAUDE.md	\[ID\]_TORZSCIKK\.md	Átmenet \(D34\)	11	rétegtábla: a törzscikk generált kimenetként; a CLAUDE.md maga átmeneti jelölést visel (#26), ezért csak JELENTES, amíg a #11 le nem zárul
 F26_EGYFORRAS_NAPLO_BRIEF.md#D34	2026-09-30	MUNKAMENET.md	^\| C1 \| lexikon TUDOMÁNYOS szakaszainak \+ a törzscikk generálása		11	C1 sor (ma a 67.): a törzscikk-generálás mint munkamenet-lépés (D34: a törzscikk megszűnik)
 F26_EGYFORRAS_NAPLO_BRIEF.md#D34	2026-09-30	MUNKAMENET.md	a \*\*törzscikk\*\* \(`lexikon/		11	a törzscikk mint külön generált kimenet bemutatása (ma a 181. sor; D34: megszűnik a #11-ben)
-DONTESEK.md#DT-F52c	2026-10-08	sablonok/6_PaRDeS_lexikon_oldal_sablon.md	Ha L1, L3, L4 vagy L6 bármelyike bukik			a lexikonoldal-kapu L1–L7 (DT68 (2), DT-F52c (5)); régi állapot: L2 és L7 nélküli blokkoló-lista
-DONTESEK.md#DT-F52c	2026-10-08	F10_LEXIKON_LEZARAS_BRIEF.md	L2 és L7 nincs			a #10 mércéje L1–L7 + DT2 + #78-váz (DT-F52c (5))
-DONTESEK.md#DT-F52c	2026-10-08	F23_MOTIVUM_FORRAS_BRIEF.md	mércéjét \(L1–L5			a #23 M1 előfeltétele: a #78 váza és L1–L7 + DT2 (DT-F52c (1), (5))
-DONTESEK.md#DT-F52e	2026-10-08	MUNKATERV.md	🟡 nyitott			a DT-M4, M5, M6 eldöntve (DT-F52e)
-DONTESEK.md#DT-F52f	2026-10-08	F76_OLVASOI_KONKORDANCIA_BRIEF.md	SQLITE_EPIT feladatként felveendő			az SQLITE_EPIT befogadva: #79 (DT-F52f (12))
-DONTESEK.md#DT-F52g	2026-10-08	ATALAKITASI_TERV.md.md	^\*\*Státusz:\*\* javaslat, jóváhagyásra vár			az alapterv állapot-szakaszt kapott (13.), a #52 hatókörében (DT-F52g (20))
+DONTESEK.md#DT74	2026-10-08	sablonok/6_PaRDeS_lexikon_oldal_sablon.md	Ha L1, L3, L4 vagy L6 bármelyike bukik			a lexikonoldal-kapu L1–L7 (DT68 (2), DT74 (5)); régi állapot: L2 és L7 nélküli blokkoló-lista
+DONTESEK.md#DT74	2026-10-08	F10_LEXIKON_LEZARAS_BRIEF.md	L2 és L7 nincs			a #10 mércéje L1–L7 + DT2 + #78-váz (DT74 (5))
+DONTESEK.md#DT74	2026-10-08	F23_MOTIVUM_FORRAS_BRIEF.md	mércéjét \(L1–L5			a #23 M1 előfeltétele: a #78 váza és L1–L7 + DT2 (DT74 (1), (5))
+DONTESEK.md#DT76	2026-10-08	MUNKATERV.md	🟡 nyitott			a DT-M4, M5, M6 eldöntve (DT76)
+DONTESEK.md#DT77	2026-10-08	F76_OLVASOI_KONKORDANCIA_BRIEF.md	SQLITE_EPIT feladatként felveendő			az SQLITE_EPIT befogadva: #79 (DT77 (12))
+DONTESEK.md#DT78	2026-10-08	ATALAKITASI_TERV.md.md	^\*\*Státusz:\*\* javaslat, jóváhagyásra vár			az alapterv állapot-szakaszt kapott (13.), a #52 hatókörében (DT78 (20))

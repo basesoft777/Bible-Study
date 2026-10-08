@@ -79,7 +79,7 @@ A teljes próba költsége: 0.8953 USD (plafon 3.00 USD).
 - A bemenet ~13 000 token/hívás (a prompt), prompt-cache nem volt használatban; ez a költség kis része (high: ~17%), a költséget a kimenet adja.
 - A kivetítés az ÓSZ-versek számát az eredeti-oldal H-Strongos versei adják (23 178), a "kész" a `f22/valaszok/sonnet/*.jsonl` igehelyei; a Józsué-minta (50 vers, 5 köteg) költségét tekinti reprezentatívnak, ami a hosszabb/nehezebb könyvekre (pl. Zsolt, próféták) eltérhet.
 
-## Döntési kérdés (DT-F77)
+## Döntési kérdés (DT73)
 
 A brief döntési szabály-javaslata: az API-változat akkor elfogadható, ha link-egyezése a meglévő futással nem kisebb, mint a zajszint-alapé mínusz 1 százalékpont, és a végleges kapuhiba 0. Állás (szkriptkimenetből, 1. és 2. tábla): a zajszint-alap link-egyezése 94,39%, az api-high-é 94,63%, vagyis a különbség +0,24 százalékpont, a küszöb (alap − 1 pp = 93,39%) fölött; a végleges kapuhiba 0 a `high` szinten teljesül (low: 5 vers, medium: 1 vers nem). A szabály szerint tehát csak a `high` szint felel meg. A minta kicsi (50 vers, egyetlen könyv).
 

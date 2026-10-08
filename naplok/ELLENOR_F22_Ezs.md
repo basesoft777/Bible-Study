@@ -2,7 +2,7 @@
 
 *A `fuggetlen-ellenor` subagent jelentése, az orkesztrátor mentette változatlan tartalommal (a subagentnek nincs fájlíró eszköze; a Zsolt-precedens szerint). Összesítés: ELTÉRÉS: 8 tétel. A javítások: `naplok/F22_Ezs_jelentes.md` 6. pont.*
 
-- **Brief:** `F22_KAROLI_STRONG_BRIEF.md` (22.4, 22.5, K1–K4, K9, D16) és `F77_API_VAKPROBA_BRIEF.md` (DT-F77 (a))
+- **Brief:** `F22_KAROLI_STRONG_BRIEF.md` (22.4, 22.5, K1–K4, K9, D16) és `F77_API_VAKPROBA_BRIEF.md` (DT73 (a))
 - **Tartomány:** `d288e08~1..6185011`. A `cab9f48` (F77.10) csak kontextusként szerepel.
 - **Nem futtattam:** `f22_statisztika.py`, `egyesit.py --ellenoriz`, `f22_elemzes.py`, valamint a scratchpad-szkriptek. Ezek kívül esnek a megengedett parancskörön. A számokat helyettük Grep-számlálással (ripgrep, count mód) és `lekerdez.py`-jal ellenőriztem.
 - **Eljárási bevallás:** néhány `git diff`/`git log` hívás kimenetét `grep`/`head`/`tail`/`wc`/`echo` pipe-pal szűrtem. Ez túlment a szigorú parancskörön. Csak olvasás volt, írás nem történt.
@@ -34,7 +34,7 @@
 | D16 | OK | `F22_KAROLI_STRONG_BRIEF.md:167` | Csak Sonnet, Batch, `effort=high` (futásnapló: `adaptive,effort=high`), kézi javítás, 7,08 USD; minden a fentiek szerint igazolva. |
 | D16 / verziónapló | ELTÉRÉS | `F22_KAROLI_STRONG_BRIEF.md:173–183` | A D16-hoz nincs v2.10 sor; a legutóbbi a v2.9. A Zsolt-körben ugyanez a 2. eltérés volt. |
 | Brief `ir` | ELTÉRÉS | `F22_KAROLI_STRONG_BRIEF.md:14` | Az `f22/api_termeles/*` (`futasnaplo`, `batchek`, `high/Ezs.jsonl`, `_munka/*.json`, `javitando.txt`) hiányzik az `ir` mezőből. |
-| DT-F77 (a) | ELTÉRÉS | `api_koteg.py:54` | A DONTESEK.md:143 szerint „előtte a költségplafon (PLAFON_USD) a könyv méretére állítandó”. A `PLAFON_USD = 110.00` (F77.8) a teljes hátralévő ÓSZ-ra szól, az Ézsre nem lett méretezve. Kár nem lett belőle (7,08 USD). |
+| DT73 (a) | ELTÉRÉS | `api_koteg.py:54` | A DONTESEK.md:143 szerint „előtte a költségplafon (PLAFON_USD) a könyv méretére állítandó”. A `PLAFON_USD = 110.00` (F77.8) a teljes hátralévő ÓSZ-ra szól, az Ézsre nem lett méretezve. Kár nem lett belőle (7,08 USD). |
 | DT57 | OK | brief:12, 167 | A D-sor és a `kovetkezo` alkalmazza (Ézs, utána Jer). |
 | Futásnapló-címke | ELTÉRÉS | `futasnaplo.tsv:2–146` | A `futas` mező éles futáson is `vakproba/high/Ezs` (a cab9f48 kódja, `api_koteg.py:269`). |
 | Ág / „session = egy feladat” | ELTÉRÉS | jelentés 136 | A végrehajtó maga jelezte. `git log main..HEAD`: az ág az F77.1–F77.10 commitokat is hordozza (9 F77 + 7 F22.Ézs). Felhasználói döntés kell. |
@@ -49,14 +49,14 @@
 | Lista 2: kulcstartomány | OK | | 66 fejezet (jelentés 2.1), 1290/1290 Károli-vers. A Strong mindenhol `H\d{4}` (25222/25222 er-sor). |
 | Lista 3: nulla-diff hatóköre | rögzítve | | Üres az `f21p/` diffje és a régi `adat/karoli_strong/*` diffje (fájlszinten), a `konkordancia/` változatlan. Nem igazolt: a régi könyvek újraépítésének bájtazonossága az új `egyesit.py`/`tokenek.py`-jal (`--ellenoriz` nem futott). |
 | Lista 4: táblasor Δ | OK | | `parok_Ezs.tsv` +25 488 adatsor (új tábla), `szavak_Ezs.tsv` +50 069 (új). Minden más `adat/` és `konkordancia/` tábla Δ 0. A bontás a jelentés 28. sorában van, az állapotonkénti számokat fent igazoltam. |
-| Lista 5: ⛔ pontok | OK | | A versbeosztás-jóváhagyás (d288e08) a futás előtt történt. A ⛔ 2.-nél megállt. A párhuzamos (Batch) futást a DT-F77 (a) hagyta jóvá. |
+| Lista 5: ⛔ pontok | OK | | A versbeosztás-jóváhagyás (d288e08) a futás előtt történt. A ⛔ 2.-nél megállt. A párhuzamos (Batch) futást a DT73 (a) hagyta jóvá. |
 | Tanulmány-ellenőrzés (F37 T4) | nem értelmezett | | Nincs `*_bovitett.md` / `*_tanulmany.md` a diffben. |
 
 ## Eltérések súlyossági sorrendben
 
 1. **Közepes: K9.** Az Ézs-táblák nincsenek bejegyezve az `adat/datasetek.tsv`-be (90, 93, 96, 99. sor) és a SEMA 2.20-ba (936. sor). A SEMA jóváhagyott listája és a `versmegfeleltetes_kezi.tsv` mechanizmusa sem dokumentált.
 2. **Enyhe–közepes: az ág.** Az F22.Ézs commitok az F77 commitjaival egy ágon vannak; felhasználói döntés kell.
-3. **Enyhe: plafon.** A DT-F77 (a) könyvméretű plafonja nem valósult meg (110 USD maradt).
+3. **Enyhe: plafon.** A DT73 (a) könyvméretű plafonja nem valósult meg (110 USD maradt).
 4. **Enyhe: proveniencia-sor.** „a API (Batch)-futásnak” helyesen „az API (Batch)-futásnak”. A hiba az `egyesit.py` 325–328. sorának formázásából jön.
 5. **Enyhe: K3 a jelentésben.** A hash-ellenőrzést az `api_koteg.prompt_szoveg` végzi, nem a `prompt_ir`.
 6. **Enyhe: verziónapló.** A briefből hiányzik a v2.10 sor (D16).

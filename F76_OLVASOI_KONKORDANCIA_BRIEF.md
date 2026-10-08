@@ -9,7 +9,7 @@ allapot: brief_kell
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md, adat/szotar_szerepek.tsv, adat/SEMA.md, adat/licencek.tsv]
 nem_fugg: [52]
 ad: vers- és szó-lap, variancia-térkép, magyar frázis-keresés és konkordancia motívum nélkül, kereséssel (ADATVAGYON_TERV 4. szakasz, 1–6, 13–16, 18–20. pont)
-kovetkezo: brief a hosting ⛔ előtt, a #79 (SQLITE_EPIT) után; a briefbe: DT-M4/DT-M6 🟢 (DT-F52e), az openbible-import befogadása (DT34, DT-F52f (14)), szó-lap a szerepmátrix szerint (#78), az idézési szabály és a saját réteg licencének DT-tétele a publikálás előtt (DT-F52g (17))
+kovetkezo: brief a hosting ⛔ előtt, a #79 (SQLITE_EPIT) után; a briefbe: DT-M4/DT-M6 🟢 (DT76), az openbible-import befogadása (DT34, DT77 (14)), szó-lap a szerepmátrix szerint (#78), az idézési szabály és a saját réteg licencének DT-tétele a publikálás előtt (DT78 (17))
 fugg: [44, 79]
 ---
 
@@ -19,8 +19,8 @@ fugg: [44, 79]
 
 - **Mit ad, ha kész:** az olvasói felület első, motívum nélküli kiadása: vers- és szó-lap, variancia-térkép, magyar frázis-keresés, konkordancia, kereséssel. A motívumos nézet a #25 (#25b) dolga.
 - **Következő lépés:** brief a hosting ⛔ előtt, a #79 (SQLITE_EPIT) után.
-- **Függés:** #44 (kész), #79 (SQLITE_EPIT, DT-F52f (12)). **Fázis:** `1` — a D1 kiegészítése (DT-F52d (7), FELADATOK D-F52a): a #76 a kész Károli–Strong könyvekkel indulhat, az 1. fázis lezárása nélkül.
-- **A DT-M1 szerint a briefbe tartozó feltételek:** DT-M4 és DT-M6 (🟢, DT-F52e), hosting ⛔, nem kereskedelmi mód, N-F33b (mezőszintű forrás- és licencjelölés); az openbible-import befogadása (DT-F52f (14)); az idézési szabály és a saját réteg licencének DT-tétele a publikálás előtt (DT-F52g (17)).
+- **Függés:** #44 (kész), #79 (SQLITE_EPIT, DT77 (12)). **Fázis:** `1` — a D1 kiegészítése (DT75 (7), FELADATOK D51): a #76 a kész Károli–Strong könyvekkel indulhat, az 1. fázis lezárása nélkül.
+- **A DT-M1 szerint a briefbe tartozó feltételek:** DT-M4 és DT-M6 (🟢, DT76), hosting ⛔, nem kereskedelmi mód, N-F33b (mezőszintű forrás- és licencjelölés); az openbible-import befogadása (DT77 (14)); az idézési szabály és a saját réteg licencének DT-tétele a publikálás előtt (DT78 (17)).
 
 ## Bemenet a hosting ⛔-hez és a CI-hez
 

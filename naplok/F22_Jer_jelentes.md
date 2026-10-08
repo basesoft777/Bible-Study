@@ -1,6 +1,6 @@
 # F22_Jer_jelentes.md — Károli–Strong párosítás: Jeremiás (csak Sonnet, Message Batches API)
 
-*A számok szkriptkimenetből jönnek (`f22_statisztika.py --konyv Jer`, `egyesit.py --ellenoriz --konyv <könyv>`, `f22_elemzes.py --konyv Jer`, a `f22/api_termeles/futasnaplo.tsv` és `batchek.tsv` Jer-sorainak összesítése). Ág: `claude/wonderful-einstein-ezr2pw` (= `claude/loving-cerf-dvm71f`). Módszer: `prompt_v3` változatlanul, **Sonnet a Message Batches API-n, `effort=high`** (DT-F77 (a), a második éles könyv), **a C (Gemini) kimarad** (DT-F22c). Sorrend: DT57 (Ézs, utána Jer).*
+*A számok szkriptkimenetből jönnek (`f22_statisztika.py --konyv Jer`, `egyesit.py --ellenoriz --konyv <könyv>`, `f22_elemzes.py --konyv Jer`, a `f22/api_termeles/futasnaplo.tsv` és `batchek.tsv` Jer-sorainak összesítése). Ág: `claude/wonderful-einstein-ezr2pw` (= `claude/loving-cerf-dvm71f`). Módszer: `prompt_v3` változatlanul, **Sonnet a Message Batches API-n, `effort=high`** (DT73 (a), a második éles könyv), **a C (Gemini) kimarad** (DT-F22c). Sorrend: DT57 (Ézs, utána Jer).*
 
 ## 1. Menet
 
@@ -125,7 +125,7 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 
 ## 5. Nyitott (felhasználói) lépések
 
-- ~~Független szúrópróba (22.6)~~: elmarad (DT-F22e, a felhasználó döntése, 2026.10.08).
+- ~~Független szúrópróba (22.6)~~: elmarad (DT70, a felhasználó döntése, 2026.10.08).
 - Független ellenőr: `naplok/ELLENOR_F22_Jer.md`.
 - A következő könyv indítása a felhasználó döntése (⛔ 2.). A DT57 (1) szerint a Jer után a BDB-haszon mérése szerinti sorrend jön (a DONTESEK.md DT57 sorának mérése: 1Krón 189, 2Krón 169, Ezsd 162, Jób 159, Ez 147, Péld 145 szócikk; a Bír később); a Jób előtt TAHOT-hiány (Jób 40:1–5, 41) és döntés az 1:2 / 2:1 támogatásról.
 
@@ -135,8 +135,8 @@ Az ellenőr 5 eltérést talált; adathibát nem. A számokat Grep-számláláss
 
 | # | eltérés | kezelés |
 |---|---|---|
-| 1 | prófétai kötegméret: a brief 22.1.3 és a DT-F21g (3) szerint 5 vers, az Ézs és a Jer 10 verses kötegekkel futott | **DT-F22f (a)** (felhasználó, 2026-10-08, a korábbi (b) helyett): a 10 verses köteg utólag elfogadva, a további prófétai könyveknél is 10 vers/köteg (kár nem látszik: minden sor `end_turn`, végleges kapuhiba 0). Az `--koteg-meret` és a plafon újramérése tárgytalan |
-| 2 | az F77.11 a 145 Ézs-futásnapló-sor `futas` mezőjét átírta, döntés nélkül | **DT-F22g** (felhasználó, 2026-10-08): utólag elfogadva; az adat ép, csak ez a mező változott |
+| 1 | prófétai kötegméret: a brief 22.1.3 és a DT-F21g (3) szerint 5 vers, az Ézs és a Jer 10 verses kötegekkel futott | **DT71 (a)** (felhasználó, 2026-10-08, a korábbi (b) helyett): a 10 verses köteg utólag elfogadva, a további prófétai könyveknél is 10 vers/köteg (kár nem látszik: minden sor `end_turn`, végleges kapuhiba 0). Az `--koteg-meret` és a plafon újramérése tárgytalan |
+| 2 | az F77.11 a 145 Ézs-futásnapló-sor `futas` mezőjét átírta, döntés nélkül | **DT72** (felhasználó, 2026-10-08): utólag elfogadva; az adat ép, csak ez a mező változott |
 | 3 | elavult Ézs-jelentés (6. tábla 2., 3., 8. sor, 5. pont) | javítva |
 | 4 | ág és F77-brief: az F77-brief fejléce nem rögzíti az F77.11-et | nyitva (a #77 saját fejléce, a merge előtt frissítendő); az Ézs-jelentés 6/2 állítása javítva |
 | 5 | SEMA 2.20: a „nincs sora a listában” felsorolásból kimaradt a Zsolt és a Jer | javítva |

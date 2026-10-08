@@ -17,10 +17,10 @@ nem_fugg: [38, 52]
 
 # F79_SQLITE_EPIT_BRIEF — csonk
 
-*FELADATOK #79 · csonk-brief: nem végrehajtható · döntés: DT-F52f (12), DT-M1 · forrás: `MUNKATERV.md` 4. szakasz (SQLITE_EPIT), `ADATVAGYON_TERV.md` 19., 21. (3. lépcső), 22.4*
+*FELADATOK #79 · csonk-brief: nem végrehajtható · döntés: DT77 (12), DT-M1 · forrás: `MUNKATERV.md` 4. szakasz (SQLITE_EPIT), `ADATVAGYON_TERV.md` 19., 21. (3. lépcső), 22.4*
 
 - **Mit ad, ha kész:** a `pardes.db` (generált, nem commit), `naplok/SQLITE_EPIT_integritas.md`; a 26 pontból az 1–6, 13–15 lekérdezése visszaadja a tanulmányok ismert tényeit.
-- **Fázis:** `1`, mert a #76 (#25a) erre vár, és a DT-F52d (6) elve szerint az 1. fázisú feladatot visszatartó feladat nem lehet `folyamat` (a döntési lista 12. tétele „folyamat”-ot írt; az eltérést a felhasználó jóváhagyta, DT-F52d (6)).
+- **Fázis:** `1`, mert a #76 (#25a) erre vár, és a DT75 (6) elve szerint az 1. fázisú feladatot visszatartó feladat nem lehet `folyamat` (a döntési lista 12. tétele „folyamat”-ot írt; az eltérést a felhasználó jóváhagyta, DT75 (6)).
 - **Függés:** #62 (egységes `strong_normalizal()`); a #76 függ tőle.
 
 A valódi briefet a `/befogad` csonk-kitöltése váltja fel, ugyanezen a számon és néven.

@@ -17,7 +17,7 @@ nem_fugg: [52]
 
 # F81_KAROLI_UJJLENYOMAT_BRIEF — csonk
 
-*FELADATOK #81 · csonk-brief: nem végrehajtható · döntés: DT-F52f (16) · forrás: `ADATVAGYON_TERV.md` 1.4 („Motívum-index 1Mózesből előre”)*
+*FELADATOK #81 · csonk-brief: nem végrehajtható · döntés: DT77 (16) · forrás: `ADATVAGYON_TERV.md` 1.4 („Motívum-index 1Mózesből előre”)*
 
 - **Mit ad, ha kész:** minden új Károli–Strong könyv automatikusan visszahat a kész motívumokra — jelentésként.
 - **Határ (CLAUDE.md 2. szabály):** keresési találatból nem lesz közvetlenül előfordulás-sor; a jelentés jelöltet ad, a döntés a `jeloltek.tsv`-n át megy.

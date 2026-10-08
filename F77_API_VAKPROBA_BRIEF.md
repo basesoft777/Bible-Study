@@ -9,7 +9,7 @@ modell: sonnet
 allapot: megallt
 ag: claude/wonderful-einstein-ezr2pw
 ad: mért válasz arra, hogy a #22 párosítása a Max-keret helyett az API-keretből (Batch API, claude-sonnet-5-5) ugyanazt adja-e, mint a mostani subagentes futás, és mennyibe kerül versenként
-kovetkezo: "Te: merge (közös PR a #22 Ézs- és Jer-menetével). A DT-F77 (a) alkalmazva: F77.9–F77.11 (könyvenkénti plafon, futás-címke a --gyoker szerint); az Ézs és a Jer API-n lefutott (#22 D16, D17). Nyitva: `--koteg-meret` kapcsoló és 5 verses plafon-alap a következő prófétai könyv előtt (DT-F22f (b))."
+kovetkezo: "Te: merge (közös PR a #22 Ézs- és Jer-menetével). A DT73 (a) alkalmazva: F77.9–F77.11 (könyvenkénti plafon, futás-címke a --gyoker szerint); az Ézs és a Jer API-n lefutott (#22 D16, D17). Nyitva: `--koteg-meret` kapcsoló és 5 verses plafon-alap a következő prófétai könyv előtt (DT71 (b))."
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/sonnet_koteg.py, eszkozok/karoli_strong/bemenet.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/egyesit.py, f22/minta_Jozs.tsv, f22/valaszok/sonnet/Jozs.jsonl, adat/karoli_strong/parok_Jozs.tsv, naplok/F22_Jozs_jelentes.md, F22_KAROLI_STRONG_BRIEF.md]
 ir: [eszkozok/karoli_strong/api_koteg.py, eszkozok/karoli_strong/api_vakproba_osszevet.py, f22/vakproba/, f22/api_termeles/futasnaplo.tsv, naplok/F22_API_VAKPROBA_jelentes.md]
 fugg: []
@@ -118,4 +118,4 @@ A döntési szabály javaslata (a felhasználó módosíthatja): az API-változa
 | D2 | zajszint-alap subagenttel | e nélkül az egyezési szám nem értelmezhető | csak API-futás |
 | D3 | a kész adat nem íródik felül | a próba mérés, nem csere | a Józs újrafuttatása a helyén |
 | D4 | felhős Code-session, Actions nélkül (a felhasználó kérése, 2026.10.08) | helyi gép nem kell; a #22 is Code-sessionben fut | helyi futás; GitHub Actions (külön workflow-munka) |
-| D5 | F77.11: könyvenkénti költségplafon (vers × 0,0074 × 1,5, min. 1 USD) és a futásnapló `futas` címkéje a `--gyoker` szerint; az Ézs 145 sora átcímkézve (DT-F22g: utólag elfogadva) | a DT-F77 (a) „a plafon a könyv méretére állítandó” pontja; az Ézs-ellenőr 3. és 8. eltérése | egyetlen 110 USD-s plafon; a régi címke megtartása |
+| D5 | F77.11: könyvenkénti költségplafon (vers × 0,0074 × 1,5, min. 1 USD) és a futásnapló `futas` címkéje a `--gyoker` szerint; az Ézs 145 sora átcímkézve (DT72: utólag elfogadva) | a DT73 (a) „a plafon a könyv méretére állítandó” pontja; az Ézs-ellenőr 3. és 8. eltérése | egyetlen 110 USD-s plafon; a régi címke megtartása |

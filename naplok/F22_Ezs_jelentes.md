@@ -1,6 +1,6 @@
 # F22_Ezs_jelentes.md — Károli–Strong párosítás: Ézsaiás (csak Sonnet, Message Batches API)
 
-*A számok szkriptkimenetből jönnek (`f22_statisztika.py --konyv Ézs`, `egyesit.py --ellenoriz --konyv <könyv>`, `f22_elemzes.py --konyv Ézs`, a `f22/api_termeles/futasnaplo.tsv` és `batchek.tsv` összesítése). A futás ága: `claude/wonderful-einstein-ezr2pw` (a #77 ága, l. 4. pont), a jelentés ága: `claude/loving-cerf-dvm71f` (annak csúcsáról, `4d2f292`). Módszer: `prompt_v3` változatlanul, **Sonnet a Message Batches API-n, `effort=high`** (DT-F77 (a), az első éles minta), **a C (Gemini) kimarad** (DT-F22c). A következő könyv sorrendje: DT57 (Ézs, utána Jer).*
+*A számok szkriptkimenetből jönnek (`f22_statisztika.py --konyv Ézs`, `egyesit.py --ellenoriz --konyv <könyv>`, `f22_elemzes.py --konyv Ézs`, a `f22/api_termeles/futasnaplo.tsv` és `batchek.tsv` összesítése). A futás ága: `claude/wonderful-einstein-ezr2pw` (a #77 ága, l. 4. pont), a jelentés ága: `claude/loving-cerf-dvm71f` (annak csúcsáról, `4d2f292`). Módszer: `prompt_v3` változatlanul, **Sonnet a Message Batches API-n, `effort=high`** (DT73 (a), az első éles minta), **a C (Gemini) kimarad** (DT-F22c). A következő könyv sorrendje: DT57 (Ézs, utána Jer).*
 
 ## 1. Menet
 
@@ -137,7 +137,7 @@ A futás commitjai (`d288e08` … `4d2f292`) a #77 ágán (`claude/wonderful-ein
 
 ## 5. Nyitott (felhasználói) lépések
 
-- ~~Független szúrópróba (22.6)~~: elmarad (DT-F22e, a felhasználó döntése, 2026.10.08).
+- ~~Független szúrópróba (22.6)~~: elmarad (DT70, a felhasználó döntése, 2026.10.08).
 - Független ellenőr: `naplok/ELLENOR_F22_Ezs.md`.
 - A Jeremiás (DT57) indítása a felhasználó döntése (⛔ 2.); lefutott, l. `naplok/F22_Jer_jelentes.md`.
 
@@ -149,7 +149,7 @@ Az ellenőr 8 eltérést talált. Mindegyik dokumentációs, eljárási vagy for
 |---|---|---|
 | 1 | K9: az Ézs nincs az `adat/datasetek.tsv`-ben és a SEMA 2.20-ban | javítva: datasetek (8 sor), SEMA 2.20 (jóváhagyott lista, kézi megfeleltetés, 2:1 beolvasztás, csak-Sonnet könyvek) |
 | 2 | az ág (F77 + F22.Ézs egy ágon) | a felhasználó döntése (2026.10.08): a #77 és az Ézs egy ágon marad (`claude/wonderful-einstein-ezr2pw` = `claude/loving-cerf-dvm71f`), külön commitokban; egy commit a main-en „Squash and merge”-dzsel lesz (az egy commitba vont változat kényszerített pusht kívánt volna) |
-| 3 | a DT-F77 (a) könyvméretű plafonja nem valósult meg (110 USD maradt) | lezárva az F77.11-ben (`e50a0bc`): könyvenkénti plafon (vers × 0,0074 × 1,5) |
+| 3 | a DT73 (a) könyvméretű plafonja nem valósult meg (110 USD maradt) | lezárva az F77.11-ben (`e50a0bc`): könyvenkénti plafon (vers × 0,0074 × 1,5) |
 | 4 | proveniencia-sor: „a API (Batch)-futásnak” | javítva az `egyesit.py`-ban; az Ézs táblái újraépítve, csak az 1. sor változott; a régi könyvek bájtra azonosak |
 | 5 | K3 leírása a jelentésben | javítva (1. pont) |
 | 6 | a briefből hiányzik a v2.10 sor | javítva |

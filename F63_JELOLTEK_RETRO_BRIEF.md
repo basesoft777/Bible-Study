@@ -8,7 +8,7 @@ modell: sonnet
 munka: adat
 allapot: nem_indult
 ad: a 8 retroaktív (F3/N14) motívum vizsgált, de a jeloltek.tsv-ből hiányzó jelöltjei a naplókból pótolva, mindegyik dontes és indoklas mezővel (ahol a napló nem mond döntést: nyitva, explicit jelöléssel); egy generátor (eszkozok/nem_vizsgalt.py) adja a „még nem vizsgált” listát (auditok-scan − jeloltek); az ANTROP-001 lelet-lapjának (12-es) első teljes adatfutása
-kovetkezo: /kovetkezo; ⛔ az M0 után (forrás-leképezés és hiánymérés), és az M2 ANTROP-001 mintája után; a #11 előtti befagyasztás nem érinti (adatréteg, DT-F52c (3))
+kovetkezo: /kovetkezo; ⛔ az M0 után (forrás-leképezés és hiánymérés), és az M2 ANTROP-001 mintája után; a #11 előtti befagyasztás nem érinti (adatréteg, DT74 (3))
 olvas: [adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/auditok.tsv, adat/motivumok.tsv, adat/SEMA.md, tematikus_lezart/, motivumlog/, melyelemzesek/, genezis/, eszkozok/jelolt.py, eszkozok/lekerdez.py]
 ir: [adat/jeloltek.tsv, eszkozok/nem_vizsgalt.py, eszkozok/teszt_nem_vizsgalt.py]
 fugg: []

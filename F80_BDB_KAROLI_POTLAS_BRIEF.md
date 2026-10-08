@@ -16,10 +16,10 @@ fugg: [22]
 
 # F80_BDB_KAROLI_POTLAS_BRIEF — csonk
 
-*FELADATOK #80 · csonk-brief: nem végrehajtható · döntés: DT-F52f (15) · forrás: `ADATVAGYON_TERV.md` 19. (teendő: „BDB javító menet a teljes Károli–Strong után”), 21. (1. lépcső); DT54 („a hiányt a javító menet pótolja”), DT56*
+*FELADATOK #80 · csonk-brief: nem végrehajtható · döntés: DT77 (15) · forrás: `ADATVAGYON_TERV.md` 19. (teendő: „BDB javító menet a teljes Károli–Strong után”), 21. (1. lépcső); DT54 („a hiányt a javító menet pótolja”), DT56*
 
 - **Mit ad, ha kész:** a #38 adagjaiban a Károli-támasz nélkül fordított szócikkek is megkapják a Károli-alakokat és a példaverseket mint adatot.
-- **Határ:** újrafordítás nincs — a DT56 az utólagos visszaellenőrzést (újrafordítást) elvetette; ez a feladat csak az adatot pótolja, így a DT54 „javító menet” mondatát pontosítja (DT-F52f (15)).
+- **Határ:** újrafordítás nincs — a DT56 az utólagos visszaellenőrzést (újrafordítást) elvetette; ez a feladat csak az adatot pótolja, így a DT54 „javító menet” mondatát pontosítja (DT77 (15)).
 - **Függés:** #22 (teljes Károli–Strong).
 - **`ir`:** a legszűkebb ismert halmaz (`adat/forditasok.tsv`); ha az M0 külön táblát választ, a brief `ir`-je tételként bővül (SEMA-bővítéssel).
 

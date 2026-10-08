@@ -32,7 +32,7 @@ verziósort ír, és naplózza, mit változtatott és miért.
 A szinkron nem újraírás. Ami nem változott a repóban, az a tervdokumentumban sem
 változik; stilisztikai vagy szerkezeti javítás nem a feladat része.
 
-**Két irány (DT-F52g (19)–(20), 2026-10-08).** A repó → terv irány mellett a futás a
+**Két irány (DT78 (19)–(20), 2026-10-08).** A repó → terv irány mellett a futás a
 terv → feladat irányt is behajtja: a négy tervdokumentum (az `ATALAKITASI_TERV.md.md`
 az alap, a másik három a kiegészítése) minden feladatként, lépcsőként, teendőként vagy
 döntésként megnevezett eleme vagy feladatban (FELADATOK-sor, brief), vagy
@@ -50,7 +50,7 @@ a legutóbbi szinkron óta (a napló utolsó bejegyzése a viszonyítási pont):
 | új `DT-` tétel a `DONTESEK.md`-ben, amelynek *érintett fájlja* a három tervdokumentum egyike, vagy amely licencet, forrást, sorrendet, sémát módosít | a tervdokumentum döntés előtti állapotot írna |
 | a `#51` KONZISZTENCIA CI-szabálya a három dokumentum egyikét jelzi | gépi jelzés a driftre |
 | a MUNKATERV egy hulláma lezárult (a hullám minden feladata ✅ vagy ⛔) | a következő hullám bemenetei változhattak |
-| a terv → feladat gépi őr (`feladatok.py ellenoriz`) vagy a `/konzisztencia` 5. kategóriája tervelemet jelez feladat nélkül | a terv → feladat rés (DT-F52g (19)) |
+| a terv → feladat gépi őr (`feladatok.py ellenoriz`) vagy a `/konzisztencia` 5. kategóriája tervelemet jelez feladat nélkül | a terv → feladat rés (DT78 (19)) |
 | a felhasználó kéri | — |
 
 Ha egyszerre több esemény áll fenn, egy futás kezeli mindet.
@@ -90,7 +90,7 @@ Ha egyszerre több esemény áll fenn, egy futás kezeli mindet.
    - a MUNKATERV javasolt sorszámai (`#5x`) a FELADATOK-ban véglegesített számra
      cserélve, ha ott már állnak.
    Amit a döntés nem érint, ahhoz ne nyúlj.
-3b. **Terv → feladat (DT-F52g (19)).** Vedd sorra a négy terv feladat-, lépcső-,
+3b. **Terv → feladat (DT78 (19)).** Vedd sorra a négy terv feladat-, lépcső-,
    teendő- és döntés-elemeit, és vesd össze a `FELADATOK.md`-vel (`feladatok.py
    fuggesek`, `jeloltek`), a briefek fejlécével és szövegével és a `DONTESEK.md`-vel.
    Minden résre pontosan egy kimenet, **soha nem csak napló**:
@@ -165,4 +165,4 @@ hatályos, ha md-ként visszakerül a repóba és ezen a briefen átmegy.
 | verzió | dátum | változás | ok |
 | --- | --- | --- | --- |
 | 1.0 | 2026-10-04 | első változat | a tervdokumentumok elavulása a D34–D41 / DT-F33e–j átvezetése után; a szinkron ritmusát a repó eseményei adják, nem a chat |
-| 1.1 | 2026-10-08 | a terv → feladat irány (3b, 7. elfogadási pont, új kiváltó esemény); az `ATALAKITASI_TERV.md.md` a hatókörben; `ir` + `beerkezo/` | DT-F52g (19)–(20), TERV-INTEGRÁCIÓ: a terv → feladat tételek a naplóban maradtak, és senki nem hajtotta be őket |
+| 1.1 | 2026-10-08 | a terv → feladat irány (3b, 7. elfogadási pont, új kiváltó esemény); az `ATALAKITASI_TERV.md.md` a hatókörben; `ir` + `beerkezo/` | DT78 (19)–(20), TERV-INTEGRÁCIÓ: a terv → feladat tételek a naplóban maradtak, és senki nem hajtotta be őket |

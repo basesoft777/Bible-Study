@@ -17,11 +17,11 @@ nem_fugg: [52]
 
 # F82_TERV_FELADAT_OR_BRIEF.md — Terv → feladat gépi őr
 
-*FELADATOK #82 · Modell: sonnet · v1 · 2026.10.08 · döntés: DT-F52g (19) (1): „gépi őr: #82, külön ágon, D6” (Felhasználó, 2026-10-08, chat) · ág: `claude/f82-terv-feladat-or`*
+*FELADATOK #82 · Modell: sonnet · v1 · 2026.10.08 · döntés: DT78 (19) (1): „gépi őr: #82, külön ágon, D6” (Felhasználó, 2026-10-08, chat) · ág: `claude/f82-terv-feladat-or`*
 
 ## 1. Cél
 
-A TERV-INTEGRÁCIÓ (`naplok/TERV_INTEGRACIO_leltar.md`) gyökéroka: a tervdokumentumok feladat-, lépcső- és döntés-elemei a #52 naplójában maradtak, és senki nem hajtotta be őket. A kemény zár (DT-F52g (19)) három rétegéből a (2) `/konzisztencia` 5. kategória, a (3) #52 terv → feladat lépés (3b) és a `/kovetkezo` megállási mondata kész (TI.11); ez a feladat az **(1) gépi őr**: a `python eszkozok/feladatok.py ellenoriz` HIBÁT ad, ha egy jelölt tervelem nincs feladatként.
+A TERV-INTEGRÁCIÓ (`naplok/TERV_INTEGRACIO_leltar.md`) gyökéroka: a tervdokumentumok feladat-, lépcső- és döntés-elemei a #52 naplójában maradtak, és senki nem hajtotta be őket. A kemény zár (DT78 (19)) három rétegéből a (2) `/konzisztencia` 5. kategória, a (3) #52 terv → feladat lépés (3b) és a `/kovetkezo` megállási mondata kész (TI.11); ez a feladat az **(1) gépi őr**: a `python eszkozok/feladatok.py ellenoriz` HIBÁT ad, ha egy jelölt tervelem nincs feladatként.
 
 Az őr **csak a jelölt mutató-táblákat** olvassa, nem a terv szabad szövegét: a száraz próba (`naplok/TERV_INTEGRACIO_zaras.md` 4. pont) a teljes szövegen zömmel hamis találatot adott — PR-számok (#205, #167, #218…), fájl- és dataset-nevek (SECE_H, LXX_OS, VIBE_GUIDE, F4_BRIEF), oszlopnevek (AZONOSITAS_MODJA), a lezárt TERV_BEFOGAD.
 
@@ -57,6 +57,6 @@ Az őr **csak a jelölt mutató-táblákat** olvassa, nem a terv szabad szöveg�
 
 | # | Döntés | Indok |
 |---|---|---|
-| — | Az őr csak jelölt mutató-táblát olvas (DT-F52g (19) (1), a felhasználó „a” válasza, 2026-10-08) | a szabad szövegen a száraz próba zömmel hamis találatot adott |
+| — | Az őr csak jelölt mutató-táblát olvas (DT78 (19) (1), a felhasználó „a” válasza, 2026-10-08) | a szabad szövegen a száraz próba zömmel hamis találatot adott |
 | — | Külön feladat, külön ág (D6) | a PR ne írja meg a saját ellenőrzését |
-| — | `fazis: 1` | a /kovetkezo csak 1. fázisú jelöltet ajánl; a zár az egész feladatláncot védi (D-F52a elve) |
+| — | `fazis: 1` | a /kovetkezo csak 1. fázisú jelöltet ajánl; a zár az egész feladatláncot védi (D51 elve) |
