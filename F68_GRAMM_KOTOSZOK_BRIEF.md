@@ -8,7 +8,7 @@ modell: sonnet
 munka: adat
 allapot: lezarva
 pr: https://github.com/basesoft777/Bible-Study/pull/244
-lezarva_osszegzes: "A nyelvtani listára 7 kötőszó került (H3282, H0176, H3863, H3884, H6435, H0432, H3860); H3651 HATARESET, H6118 elutasítva, 4 halasztva (DT-F68a). A gerinc-metszet változatlan, a H3282 LXX-nézete bővült."
+lezarva_osszegzes: "A nyelvtani listára 7 kötőszó került (H3282, H0176, H3863, H3884, H6435, H0432, H3860); H3651 HATARESET, H6118 elutasítva, 4 halasztva (DT67). A gerinc-metszet változatlan, a H3282 LXX-nézete bővült."
 ag: claude/gramm-kotoszok
 ad: a H3282 (ja’an), H6118 (‘ekev), H3651 (lākēn) — és a felvételi kritérium szerint hasonló kötőszók — elbírálása a HEBER_KEZI listán át, a gerinc-metszetre és az F56 LXX-szűrésre gyakorolt hatás mérésével
 kovetkezo: "—"
@@ -50,7 +50,7 @@ A feladat nem a felvételt dönti el, hanem előkészíti: jelöltlistát, krit�
 4. Hatásmérés két ponton, a felvétel előtt és után (az utóbbi ideiglenes táblával, a repón kívül):
    - gerinc-metszet: a meglévő gerinc-levezetések közül azok, amelyekben a jelölt a metszetben áll, és a metszet mérete előtte/utána;
    - F56 LXX-szűrés: az érintett BDB-adatblokkok LXX-szakaszának különbsége (mely görög találat kerül be vagy esik ki), legalább a H3282 F56-mintabeli esetén.
-5. ⛔ **Megállás.** A felhasználó jelöltenként dönt: felvétel (kategóriával), elutasítás, vagy `HATARESET`. A döntés tétele a `DONTESEK.md`-be kerül (`DT-F68a`, …).
+5. ⛔ **Megállás.** A felhasználó jelöltenként dönt: felvétel (kategóriával), elutasítás, vagy `HATARESET`. A döntés tétele a `DONTESEK.md`-be kerül (`DT67`, …).
 
 **M1 — felvétel (csak a jóváhagyott tételekkel).**
 1. A `HEBER_KEZI` bővítése a generátorban, tételes indoklással (a meglévő tételek mintájára: miért nem hordoz tartalmi jegyet, és van-e görög párja a listán). Ha egy tétel a szófaj-jel alól kivétel, a kritérium-kommentben ezt rögzíteni kell.
@@ -70,4 +70,4 @@ A feladat nem a felvételt dönti el, hanem előkészíti: jelöltlistát, krit�
 
 ## 5. Döntésnapló
 
-- (a M0 kész, `naplok/GRAMM_KOTOSZOK_M0.md`; a jelöltenkénti döntés `DT-F68a` a `DONTESEK.md`-ben eldöntve (🟢), 2026.10.08: 7 felvétel, H3651 HATARESET, H6118 elutasítva, 4 halasztva; az M1 kész, `naplok/GRAMM_KOTOSZOK_zaras.md`)
+- (a M0 kész, `naplok/GRAMM_KOTOSZOK_M0.md`; a jelöltenkénti döntés `DT67` a `DONTESEK.md`-ben eldöntve (🟢), 2026.10.08: 7 felvétel, H3651 HATARESET, H6118 elutasítva, 4 halasztva; az M1 kész, `naplok/GRAMM_KOTOSZOK_zaras.md`)
