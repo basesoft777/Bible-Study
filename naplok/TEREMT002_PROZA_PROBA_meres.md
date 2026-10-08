@@ -2,7 +2,7 @@
 
 *FELADATOK #64 · `F64_TEREMT002_PROZA_PROBA_BRIEF.md` 3. szakasz, M3 · ág `claude/f64-teremt002-proza-proba` · 2026.10.08 · mérce: DT-F64a (2) — L1–L7 + a DT2 két rés-szabálya*
 
-**Mérés tárgya.** Forrásproza: `motivumok/TEREMT-002.md` (`0e36220` F64.5, `28ffd04` F64.8). Próbarender: `generalt_proba/TEREMT-002_proza_proba/` (`0f42ca9` F64.9). LXX-munkajegyzet: `naplok/TEREMT002_PROZA_PROBA_lxx_friss.md` (`ccd4b1d` F64.6).
+**Mérés tárgya.** Forrásproza: `motivumok/TEREMT-002.md` (`0e36220` F64.5, `28ffd04` F64.8; az ellenőri körök javításai: `78e926e` F64.12, `ecb12db` F64.15, `c3879dd` F64.18, `9aa1333` F64.21 — a számok és ítéletek az F64.21 utáni állapotra vonatkoznak). Próbarender: `generalt_proba/TEREMT-002_proza_proba/` (`0f42ca9` F64.9). LXX-munkajegyzet: `naplok/TEREMT002_PROZA_PROBA_lxx_friss.md` (`ccd4b1d` F64.6).
 
 Ez az író saját mérése, nem független ellenőrzés; a független ellenőr (M4) és a K1/4 (b) kimondása a felhasználóé.
 
@@ -62,7 +62,7 @@ Ez az író saját mérése, nem független ellenőrzés; a független ellenőr 
 
 **L6 a)–f).** *Forrás:* (a) tartalmi mondatban/cellában dátum nincs; a ts-ek a proveniencia-lábjegyzetekben (ISTENTISZT-001-minta) és a NAPLO-kban állnak; (b) „Forrás:” sor nincs; (c) első személyű ellenőrzési állítás nincs; (d) minden NAPLO előtt üres sor; (e) blockquote csak héber szöveg, a magyar Károli-fordítás utána normál bekezdés; (f) „mi”-hang nincs (a szkript egyetlen találata a „mi a tét” kérdőszó). *Render:* részben, l. L2 (helyőrző-sor).
 
-**L7.** *Forrás:* a Drash a lakhatóság-célt (Ézs 45:18) „(Remez-szintű kiegészítés, l. 3. pont, Remez: Ézs 45:18)” kereszthivatkozással veszi át; a TSK-szavazatok és a kapcsolat-típusok (Kontraszt/Párhuzam) csak a Remezben állnak. Az F64.15/F64.18 óta a Vitatott pontok a `kapcsolatok.tsv` irányára nem hivatkozik bizonyítékként (a :132 NAPLO szerint az irány nem szöveg-adat); a Remez, a Drash és az Alkalmazás olvasatfüggő mondatai feltételes jelölést kaptak. A Vitatott pontok nem PaRDeS-réteg; a határ a sablonban nincs kimondva.
+**L7.** *Forrás:* a Drash a lakhatóság-célt (Ézs 45:18) „(Remez-szintű kiegészítés, l. 3. pont, Remez: Ézs 45:18)” kereszthivatkozással veszi át; a TSK-szavazatok és a kapcsolat-típusok (Kontraszt/Párhuzam) csak a Remezben állnak. Az F64.15/F64.18 óta a Vitatott pontok a `kapcsolatok.tsv` irányára nem hivatkozik bizonyítékként (a Vitatott pontok záró NAPLO-ja szerint az irány nem szöveg-adat); az F64.21 teljes átolvasása után a próza olvasatfüggő mondatai (Peshat, Remez, Drash, Alkalmazás, 7. pont 8. tétel) feltételes jelölést kaptak, a Kivonat semleges. A Vitatott pontok nem PaRDeS-réteg; a határ a sablonban nincs kimondva.
 
 **DT2/1.** *Forrás:* minden sablonszakasz vagy kitöltött, vagy `INAKTÍV`/`ADAT-NÉZET`-jelölésű, és minden tartalmi hiány NAPLO-ban explicit (vitatott pont képviselői, nevesített tanító, BDB-mezők, Ézs 34:11 Károli-KH). *Render:* a lexikon-rések nem jönnek létre (kihagyott cél), a küszöb-blokkban helyőrző áll.
 
