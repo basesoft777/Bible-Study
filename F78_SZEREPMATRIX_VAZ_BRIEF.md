@@ -10,7 +10,7 @@ allapot: brief_kell
 ad: a lexikonoldal-generátor a `_TUDOMANYOS` 2. szakaszát szerepenként, az adat/szotar_szerepek.tsv sorrendjében rendereli, a nem adatosított szerep explicit üres blokk (adatosítás nélkül); próbarender az ISTENTISZT-001-re és a TEREMT-002-re a generalt_proba/ alá, mérési jelentéssel — ez a #23 M1, a #10 és a #11 aranymintája
 kovetkezo: brief írása a DT-F52c (1)–(2) és a #64 mérésének 7. szakasza szerint; a #23 M1 előtt
 olvas: [adat/szotar_szerepek.tsv, adat/SEMA.md, adat/lexikon_hivatkozasok.tsv, adat/forditasok.tsv, eszkozok/lexikon_general.py, eszkozok/general.py, eszkozok/torzscikk_general.py, lexikon/ISTENTISZT-001_TUDOMANYOS.md, motivumok/TEREMT-002.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, RENDER_BRIEF.md, ADATVAGYON_TERV.md, ATALAKITASI_TERV.md.md, naplok/TEREMT002_PROZA_PROBA_meres.md]
-ir: [eszkozok/lexikon_general.py, generalt_proba/, adat/szotar_szerepek.tsv]
+ir: [eszkozok/lexikon_general.py, generalt_proba/, adat/szotar_szerepek.tsv, adat/SEMA.md]
 fugg: []
 nem_fugg: [38, 52]
 ---

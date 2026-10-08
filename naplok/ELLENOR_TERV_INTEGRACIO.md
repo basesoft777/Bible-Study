@@ -1,4 +1,4 @@
-ELTÉRÉS: 7 tétel
+ELTÉRÉS NÉLKÜL (2. kör után; a 2. kör egyetlen eltérését a TI.16 javította, l. a végén)
 
 # ELLENŐR — TERV_INTEGRACIO
 
@@ -38,3 +38,26 @@ ELTÉRÉS: 7 tétel
 ## Orkesztrátor-kiegészítés (nem az ellenőr szövege)
 
 A `feladatok.py jeloltek` a TI.13 után (a végrehajtó futtatásában): a #82 JELOLT. A javításokat a TI.14 viszi; utána 2. ellenőri kör.
+
+---
+
+## 2. kör (`fc561c1..HEAD`: TI.14 `e906be1`, TI.15 `6efef86`)
+
+*Az ellenőr szövege, rövidítve; az orkesztrátor fűzte hozzá. Első sora: `ELTÉRÉS: 1 tétel`.*
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| 1. kör (1): E5 a PR-módú CI-ben | JAVÍTVA | `.claude/commands/konzisztencia.md:41-42` | `futtat.py --valtozott … --diff-alap 6b62808c --diff-fej HEAD` → EXIT=0, `## E5 (0 talalat)`; a régi címsor szövege változatlan, az 5. kategória külön sorban. |
+| CI `--teljes` | OK | — | `futtat.py --teljes` → EXIT=0. |
+| 1. kör (2): DT-M5 | JAVÍTVA | `MUNKATERV.md:27`, `:32` | A 10. tétel a) változata; egyezik a `DONTESEK.md` DT-M5 sorával. |
+| 1. kör (3): ADATVAGYON 19. | JAVÍTVA | `ADATVAGYON_TERV.md:865`, `:871` | Mindkettő `[ ]`, „brief kell: #79 / #80 (csonk)”. |
+| 1. kör (4): DT2 sora | JAVÍTVA | `DONTESEK.md:12` | „Felülírva: DT68 (2), DT-F52c (5) — L2 és L7 2026-10-08 óta a kapuban.” |
+| 1. kör (5): DT-M4 ↔ #78 | RÉSZBEN → ELTÉRÉS | `F78…:13`, `:22`; `adat/SEMA.md:682`, `:690` | A #78 `ir`-jében bent a `szotar_szerepek.tsv`, a DT-M4 és DT-F52e (9) „a #78 menetében”. Hiányzik: a SEMA 2.13 „11 szerep × 2 nyelv = 22 sor”, `sorrend` „1–10 és 12” — a 13–14. sor SEMA-módosítást is kíván, de a #78 `ir`-jében nincs `adat/SEMA.md`. KIZAR nem keletkezne (`KOZOS_FAJLOK`). |
+| 1. kör (6): #80 `ir` | JAVÍTVA | `F80…:13`, `:24` | `ir: [adat/forditasok.tsv]`; az átfedés a #38-cal ma hatástalan (#80 `fugg: [22]`, a #22 ⛔). |
+| 1. kör (7): listán kívüli mondat | JAVÍTVA | `naplok/TERV_INTEGRACIO_zaras.md:3`; `MUNKATERV.md:49` | A zárójelentés nevesíti. |
+| TI.15: #38 ↔ #52 KIZAR | OK (forrásolvasással) | `F52…:13`, `:100`; `F38…:14` | `fnmatch`: a #38 `beerkezo/`-fájljai nem illeszkednek a `beerkezo/TERV_SZINKRON_*.md`-re. |
+| Adattáblák, védett könyvtárak | OK | — | `6b62808c..HEAD`: csak `adat/dontes_hatas.tsv` +6; a `szotar_szerepek.tsv` 0 Δ. |
+
+## Orkesztrátor-kiegészítés a 2. körhöz (nem az ellenőr szövege)
+
+A 2. kör egyetlen eltérését a TI.16 javítja: az F78 `ir` mezőjébe bekerült az `adat/SEMA.md` (a 13–14. szerep a SEMA 2.13 bővítésével együtt). Egysoros fejléc-változás; az orkesztrátor a `feladatok.py ellenoriz` / `fuggesek` futtatásával ellenőrizte (0 hiba, nincs új KIZAR/KOR), külön ellenőri kör nem nézte. A tétel eltérés nélkül zár.
