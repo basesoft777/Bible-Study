@@ -1,0 +1,10 @@
+# F22: kézi javítások a versbeosztás-detektor listájához (`f22/versmegfeleltetes.tsv`); a detektor újragenerálása nem írja felül.
+# `torol`: a detektor Károli-igehelyű sorát törli; más típus: hozzáadja (és kiváltja az azonos Károli-igehelyű / azonos eredetijű nincs_karoli sort). Jóváhagyás: naplok/F22_versbeosztas_jovahagyas.md
+karoli	eredeti	tipus
+Ézs 9:18	Ézs 9:17	eltolt
+Ézs 9:19	Ézs 9:18	eltolt
+Ézs 9:20	Ézs 9:19	eltolt
+	Ézs 9:20	nincs_karoli
+Ézs 64:1		torol
+	Ézs 64:1	torol
+	Ézs 64:2	nincs_karoli
