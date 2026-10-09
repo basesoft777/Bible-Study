@@ -885,11 +885,11 @@ A bővített szakasz azért olcsóbb a tematikusnál, mert ott nincs teljes ÓSZ
 
 | # | Kérdés | Tét |
 |---|---|---|
-| N1 | A napló igehelyenkénti prózája generálódjon a study Kapcsolódás-oszlopából, vagy maradjon két tudatosan külön megfogalmazás? | az elsőnél elvész egy hangnem, a másodiknál marad egy karbantartási kötelezettség |
-| N2 | A nevesített tanítói lelet bekerülhet-e a motívumnaplóba? | a rögzített határszabály szerint nem — de az ISTENTISZT-001 bejegyzésben ott van. Vagy a szabály rossz, vagy a sor kiveendő. |
+| N1 | A napló igehelyenkénti prózája generálódjon a study Kapcsolódás-oszlopából, vagy maradjon két tudatosan külön megfogalmazás? | az elsőnél elvész egy hangnem, a másodiknál marad egy karbantartási kötelezettség **— elavult (DT-F51a): a D34 szerint egy kézi forrás, a napló generált nézet** |
+| N2 | A nevesített tanítói lelet bekerülhet-e a motívumnaplóba? | a rögzített határszabály szerint nem — de az ISTENTISZT-001 bejegyzésben ott van. Vagy a szabály rossz, vagy a sor kiveendő. **— lezárva (DT-F51b): a szabály marad (DT66 (2): hivatkozás a 7. lépés saját fájljára, beemelés nélkül); az ISTENTISZT-001 sorát a #11 alakítja át** |
 | N3 | A tudatos duplikáció elve („minden study önmagában is olvasható legyen") általános marad-e? | az átadás 3.5-ös nyitott tétele; N1 függ tőle **— elavult (v10): a D34 szerint a forrás hivatkozik a tanulmányra, nem másol** |
 | N4 | A `Olvasoi_szint_pilot_ISTENTISZT-001.md` (74,9 KB) negyedik szakasz vagy lezárt kísérlet? | ha szakasz, a legdrágább mind közül **— elavult (v10): az OLVASHATÓ változat 2026.09.21-én megszűnt** |
-| N5 | A Sonnet-ág megmarad-e összehasonlítási referenciának? | ez a projekt egyetlen A/B-bizonyítéka módszertani kérdésről |
+| N5 | A Sonnet-ág megmarad-e összehasonlítási referenciának? | ez a projekt egyetlen A/B-bizonyítéka módszertani kérdésről **— lezárva (DT-F51c): megmarad, az `archiv/ab-sonnet-20260911` tag rögzíti** |
 | N6 | 1Móz 6:2 → Mt 24:38 / Lk 17:27 Károli-KH jelölt sorsa | jegyzet / önálló motívum / figyelmen kívül |
 | N7 | Rafaim — 12 alacsony szavazatú TSK-jelölt egyedi minősítése | F0-ban a `jeloltek.tsv`-be kerülhetnek „nyitva" státusszal |
 | N8 | Meddig tart a szövegkorpusz? (11.1) | enélkül a program nyitott végű, és minden költségbecslés egy nem rögzített mennyiségre vonatkozik |
