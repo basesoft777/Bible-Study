@@ -21,7 +21,7 @@ ELTÉRÉS: 3 tétel
 | (6) E27 javítás | OK | az E27 listán a `NYITOTT_FELADATOK.md:56` nincs; exit 0 |
 | (6) generátor-őr | OK (kódolvasás) | a `main()` első sora az őr; átkulcsolt/vegyes bemeneten `SystemExit` az írás előtt; a TAHOT-ot az F85.22 nem írta; az N-F85e rögzíti a korlátot |
 | (6) ELLENOR_F85_16 eltérései | OK | mind javítva |
-| (7) CI teljes | OK | `futtat.py --teljes`: exit 0, csak JELENTES/FIGYELMEZTETES; a változott 36 fájlra is exit 0; HIBA nincs; végleges DT/N szám nincs (DT-F85a, N-F85a/b/c/e/f helyőrző) |
+| (7) CI teljes | OK | `futtat.py --teljes`: exit 0, csak JELENTES/FIGYELMEZTETES; a változott 36 fájlra is exit 0; HIBA nincs; végleges DT/N szám nincs (DT92, N-F85a/b/c/e/f helyőrző) |
 | (8) commit-üzenetek, szövegépség | OK | mind a 26 üzenet ép, ékezetes, tétel-azonosítóval kezdődik (megjegyzés: az `F85.4:` és az `F85.12:` kétszer szerepel); csonka mondat/kiesett backtick nincs |
 | (9) indokolatlan fájl / `ir` | OK | 36 fájl; a brief és az 5 `ELLENOR_F85*.md` kivételével mind az `ir`-ben; az ELLENOR-naplók konvenció szerinti kivételek |
 | (10) a 7. tétel nem zárt | OK / NEM ELLENŐRIZHETŐ (PR) | `allapot: dontesre_var`; zárójelentés és PR nincs (ekkor) |

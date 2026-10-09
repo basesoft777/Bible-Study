@@ -22,7 +22,7 @@ ELTÉRÉS: 4 tétel
 | (7) változatlanság | OK | `adat/`, `f22/` diff az F85.6 commitban üres; 19 parok_* + 19 szavak_* fájl |
 | T3 „a sorrend Károli-sorrend” | ELTÉRÉS (alacsony) | brief-ellentmondás: a fájlsorrend nem Károli-sorrend (23 törés); a végrehajtó a „csak az első oszlop változik” mondatot követte; a felhasználó elfogadta a fizikai szomszédosság hiányát a két kivételnél |
 | T3 a szkript ellenőrzései | OK (kódolvasás) | `split`/`join`, csv nincs, idempotencia-őr, VART=337; a 131–137. sor zip-összevetése önigazoló, független bizonyítékot nem ad |
-| ⛔ 1, E1–E5 javítása, A2–A6, Ell.1–5 | OK | a DT-F85a 🟡 → 🟢 rögzíti a felhasználó chat-döntését; N-F85a nyitott; E12–E15: 0 találat; adattábla-Δ: csak a TAHOT 5885/5885, Δ=0 |
+| ⛔ 1, E1–E5 javítása, A2–A6, Ell.1–5 | OK | a DT92 🟡 → 🟢 rögzíti a felhasználó chat-döntését; N-F85a nyitott; E12–E15: 0 találat; adattábla-Δ: csak a TAHOT 5885/5885, Δ=0 |
 | A1 memória vs. lekérdezés | ELTÉRÉS (alacsony) | a „szkriptes bájt-összevetés” és a „17 747 vers” ellenőrző kódja nincs a repóban; a jelentés proveniencia-sora erre a két állításra nem pontos |
 
 ## ELTÉRÉS-ek súlyossági sorrendben
@@ -32,4 +32,4 @@ ELTÉRÉS: 4 tétel
 3. **A1** a „17 747 vers, 0 eltérés” és a „szkriptes bájt-összevetés” kódja nincs a commitban.
 4. **T3** a „sorrend Károli-sorrend” szó szerint nem teljesül, dokumentált, a felhasználó dönt.
 
-Megfigyelés (nem eltérés): a `parok_Peld` már létezik, így a DT-F85a (5) „a Péld-menet előtt” javaslata tárgytalan.
+Megfigyelés (nem eltérés): a `parok_Peld` már létezik, így a DT92 (5) „a Péld-menet előtt” javaslata tárgytalan.

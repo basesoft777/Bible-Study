@@ -8,7 +8,7 @@ modell: sonnet
 munka: adat
 allapot: lezarva
 pr: 271
-lezarva_osszegzes: "337 vers (6330 sor) Károli-kulcsra váltott a TAHOT_kivonat.tsv-ben, ÓSZ-os kulcs-összevetés 0 eltéréssel; f22 kompenzáló sorok kivezetve, tokenek.py/versbeosztas.py/generátor-őr; DT-F85a; nyitott: N-F85a,b,c,e,f, DT90"
+lezarva_osszegzes: "337 vers (6330 sor) Károli-kulcsra váltott a TAHOT_kivonat.tsv-ben, ÓSZ-os kulcs-összevetés 0 eltéréssel; f22 kompenzáló sorok kivezetve, tokenek.py/versbeosztas.py/generátor-őr; DT92; nyitott: N-F85a,b,c,e,f, DT90"
 ag: claude/tahot-verskulcs
 ad: "A TAHOT_kivonat.tsv minden ÓSZ-sorának kulcsa a Károli-vers, amelynek a héber szövegét hordozza (Jób 40 és a fejezethatár-eltolások), így a Károli-kulcs szerinti lekérdezés nem ad üres vagy eltolt eredményt; a DT90 mért adattal eldönthető"
 kovetkezo: "merge a felhasználótól; a DT90 (OT-full címke) és a záró ellenőr 3 nyitott eltérése (naplok/F85_zaras.md)"

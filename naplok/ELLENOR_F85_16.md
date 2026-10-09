@@ -9,7 +9,7 @@ ELTÉRÉS: 7 tétel
 | ELLENOR_F85_12 (a) `ir` | OK | az `ir` tartalmazza a `versbeosztas.py`-t; a fókusz minden változott fájlja szerepel az `ir`-ben; a `feladatok.py ellenoriz` futása NEM ELLENŐRIZHETŐ |
 | (a) hamis állítás | **ELTÉRÉS (alacsony)** | a 244. sor javítva; a `F85_jelentes.md:235` („nem volt az `ir`-ben az F85.12-ig”) még azt sugallja, hogy az F85.12-től benne volt |
 | (b) archívum | OK (kódolvasás) | csak az 1. (`#`) sor változott; 97 `kivezetve`, 7 `visszakerult`, 2 `uj_felvett`; a fejléc egyezik a generátor kódjával; az újrafuttatás NEM ELLENŐRIZHETŐ |
-| (c) DT-F85a mondat | OK | „`parok_*` és `szavak_*` (mindkét tábla)”; nincs dupla szóköz |
+| (c) DT92 mondat | OK | „`parok_*` és `szavak_*` (mindkét tábla)”; nincs dupla szóköz |
 | (d) 462 971, (e) 12. szakasz, (f) 183. sor | OK | a diffben mindhárom javítva |
 | F85.17 `erintett_e` szűkítés | OK (kódolvasás) | `tokenek.py:212`: `not (t == 'nincs_karoli' and e in beolvasztott_uj)`; a mai adaton nincs hatás (a függvény a 200. sorban visszatér); ütközés esetén `SystemExit`, csendes megkettőzés nincs |
 | F85.17 önteszt 5c | OK (kódolvasás) | a régi kódon végigkövetve bukik (`b` 2×, `X 1:2` megmarad), az újon átmegy; a futás NEM ELLENŐRIZHETŐ |
@@ -23,7 +23,7 @@ ELTÉRÉS: 7 tétel
 | F85.19 `TAHOT_TAGNT_README.md` lista | **ELTÉRÉS (alacsony)** | a 257. sor érintett-fejezet listájából hiányzik a Préd (1420 sor); a 266–267. sor között nincs üres sor a `##` címsor előtt |
 | F85.19 régi állítások | **ELTÉRÉS (alacsony)** | a `NYITOTT_FELADATOK.md:626` önellentmondó a Jób 40:1–5-ről („nem hiányzott”, majd „hiányzott”, „tételes ellenőrzés még nyitva”); a többi dokumentumban nincs élő régi állítás |
 | F85.19 SEMA 4, 9 összevonás, helyőrzők | OK | `TAHOT-teljes` marad, az `OT-full` a DT90-re hagyva; N-F85b/e/f helyőrző, nem végleges szám |
-| DT-F85a alkalmazás-cella | **ELTÉRÉS (alacsony)** | „az 5–7. tétel külön engedélyre vár” az F85.18/19 után elavult; az 5. és 6. tétel engedélyét csak a jelentés rögzíti |
+| DT92 alkalmazás-cella | **ELTÉRÉS (alacsony)** | „az 5–7. tétel külön engedélyre vár” az F85.18/19 után elavult; az 5. és 6. tétel engedélyét csak a jelentés rögzíti |
 | Heredoc | OK | a négy commit-üzenet ép; a szövegekben nincs csonka mondat vagy kiesett backtickes név |
 | **CI (`futtat.py`)** | **ELTÉRÉS (közepes)** | E27 HIBA ×2 a `NYITOTT_FELADATOK.md:56`-on: az N-F85e backtickes `phaseA_all.tsv` és `step1_decisions.tsv` nem létező fájlként jelenik meg; a `futtat.py` 1-es kóddal lép ki (a teljes és a fókusz-tartományon is) |
 | Sértetlenség | OK | `adat/karoli_strong` (38 fájl) változatlan; a TAHOT az F85.6 óta nem módosult (Δ0); az `f22` a fókuszban csak a `versosszevonas.tsv` megjegyzéssora (F85.14); végleges DT/N szám nincs |
@@ -37,4 +37,4 @@ ELTÉRÉS: 7 tétel
 4. **(alacsony) `TAHOT_TAGNT_README.md:257`:** az érintett-fejezet listából hiányzik a Préd.
 5. **(alacsony) `NYITOTT_FELADATOK.md:626`:** önellentmondás a Jób 40:1–5-ről.
 6. **(alacsony) `F85_jelentes.md:235`:** az `ir`-ről szóló maradék félrevezető állítás.
-7. **(alacsony) `DONTESEK.md:167`:** a DT-F85a alkalmazás-cellája elavult.
+7. **(alacsony) `DONTESEK.md:167`:** a DT92 alkalmazás-cellája elavult.

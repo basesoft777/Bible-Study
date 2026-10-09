@@ -6,7 +6,7 @@
 
 **Kulcs-összevetés (ÓSZ).** Károli-vers nélküli TAHOT-kulcs 0, TAHOT-sor nélküli ÓSZ-Károli-vers 0 (23 204 kulcs); 9 közös kulcs két-két TAHOT-verssel (`f22/versosszevonas.tsv`). Napló: `naplok/F85_kulcsosszevetes.md`.
 
-**Döntések** (felhasználó, chat, 2026.10.09): DT-F85a — mind a 337 vers; a 3 egykori hiány-sor tárgytalan (összevonás); a 4 bizonytalan sor azonos kulcson; a 17 összevonásnál közös Károli-kulcs; az 5–7. tétel külön engedéllyel.
+**Döntések** (felhasználó, chat, 2026.10.09): DT92 — mind a 337 vers; a 3 egykori hiány-sor tárgytalan (összevonás); a 4 bizonytalan sor azonos kulcson; a 17 összevonásnál közös Károli-kulcs; az 5–7. tétel külön engedéllyel.
 
 **Kimenet.** `f22/`: a kézi tábla 97 és az összevonás-fájl 7 kompenzáló sora kivezetve (a `versosszevonas.tsv` új `er_tol`/`er_ig` oszloppal 9 sor), a detektor-lista 290 → 12 (ÚSZ). `tokenek.py`: összevonás-kezelés az új kulcsokon; `versbeosztas.py` önteszt; generátor-őr (`--felulir-atkulcsolt`). Dokumentáció: CLAUDE.md TAHOT-mondat, SEMA 4, README-k.
 

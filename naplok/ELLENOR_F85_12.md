@@ -6,7 +6,7 @@ ELTÉRÉS: 7 tétel
 
 | pont | eredmény | indok |
 |---|---|---|
-| (1) heredoc: DT-F85a végállapot | OK, egy pontatlansággal (7. sor) | az e5c4d122 szövegéből kiestek a backtickes fájlnevek („Péld  tábláinak”, „megszűnt  forrást”); a 32e1c894 visszaírta; dupla szóköz a DONTESEK.md DT-F85a soraiban nincs több, a cella vége ép |
+| (1) heredoc: DT92 végállapot | OK, egy pontatlansággal (7. sor) | az e5c4d122 szövegéből kiestek a backtickes fájlnevek („Péld  tábláinak”, „megszűnt  forrást”); a 32e1c894 visszaírta; dupla szóköz a DONTESEK.md DT92 soraiban nincs több, a cella vége ép |
 | (1) heredoc: commit-üzenetek | OK | mind a 17 F85.x üzenet ép (ékezetek rendben, csonka mondat nincs, backtickes fájlnevet egyik sem tartalmaz, ezért nem is veszíthetett) |
 | (1) heredoc: váratlan fájl | OK | a `git log --stat` szerint minden commit csak a vártakat módosította; `f22/versmegfeleltetes.tsv` és `F22_versbeosztas.md` csak az F85.8-ban íródott; a munkafa tiszta |
 | (1) heredoc-gyanú az F85.13-ban | **ELTÉRÉS (alacsony)** | `F85_jelentes.md:183`: „kézi tábla 97 +  összevonás-fájl 7” (dupla szóköz, valószínű kiesett token; az ok nem ellenőrizhető) |
@@ -14,7 +14,7 @@ ELTÉRÉS: 7 tétel
 | (2) generált f22-kimenetek | OK | `f22/versmegfeleltetes.tsv`, `F22_versbeosztas.md`: csak a 0483fd9f (F85.8) érintette |
 | (2) proveniencia-döntés rögzítése | OK | a `parok_*` nem íródott újra (`adat/` diff üres) |
 | **(2) / ⛔ `ir`: versbeosztas.py** | **ELTÉRÉS (közepes)** | az e5c4d122 módosította az `eszkozok/karoli_strong/versbeosztas.py`-t (a #22-vel közös eszköz), de a brief `ir` listája nem tartalmazza; a brief diffje csak a `kovetkezo` sort változtatta; a jelentés (244., 235. sor) hamisan állítja, hogy az `ir` bővült |
-| (3) DT-F85a jóváhagyás, ellentmondás | OK | a jóváhagyás rögzítve (`manual`, chat, nem lekérdezéssel ellenőrizhető); az ellentmondás megszűnt |
+| (3) DT92 jóváhagyás, ellentmondás | OK | a jóváhagyás rögzítve (`manual`, chat, nem lekérdezéssel ellenőrizhető); az ellentmondás megszűnt |
 | (3) `F85_kivezetett_sorok.tsv` tartalom | OK | 97 kivezetve + 7 visszakerült + 2 új = 106 sor; a kézi sorok 89 eltolt / 6 nincs_karoli / 2 torol; `versosszevonas.tsv` 9 adatsor |
 | **(3) `F85_kivezetett_sorok.tsv` generált fájl átírva** | **ELTÉRÉS (alacsony–közepes)** | a fejléc `# GENERÁLT: eszkozok/tahot_verskulcs_kivezetes.py`; az F85.13 átírta (új `allapot_F85_10_utan` oszlop), a generátor nem változott; a fejléc generátor-proveniencia már nem igaz (CLAUDE.md: generált fájlt ne írj át) |
 | (3) számok | OK | 290 → 12 (278 + 12); TAHOT 469 301 sor fejléccel |
@@ -33,7 +33,7 @@ ELTÉRÉS: 7 tétel
 
 1. **(közepes) ⛔/`ir`:** az F85.12 az `ir`-en kívüli, #22-vel közös `eszkozok/karoli_strong/versbeosztas.py`-t módosította, és a jelentés (244., 235. sor) hamisan állítja, hogy az `ir` bővült.
 2. **(alacsony–közepes) Generált fájl:** a `naplok/F85_kivezetett_sorok.tsv` ad hoc átírva, a generátor-proveniencia már nem igaz.
-3. **(alacsony) DT-F85a:** a heredoc-javítás után a mondat csak a `parok_*` táblákat nevezi, pedig az igazolás szerint a `szavak_*` proveniencia-sora is eltér.
+3. **(alacsony) DT92:** a heredoc-javítás után a mondat csak a `parok_*` táblákat nevezi, pedig az igazolás szerint a `szavak_*` proveniencia-sora is eltér.
 4. **(alacsony) Szám:** a „nem érintett sorok” 462 972 helyett 462 971.
 5. **(alacsony) Kód, elméleti:** a `tokenek.py:210` `erintett_e`-kizárás egy `eltolt` sorra is hat (megkettőzés); ma elérhetetlen, nem fedi önteszt.
 6. **(alacsony) Jelentés 12.:** a „Nincs kódváltozás” téves; a „9.5 pont” valójában 10.3.

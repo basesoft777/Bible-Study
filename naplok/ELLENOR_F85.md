@@ -16,8 +16,8 @@ ELTÉRÉS: 5 tétel
 
 ## Eltérések súlyossági sorrendben
 
-1. **E2** — `DONTESEK.md` DT-F85a javaslat-oszlopa még a `-MT` utótagot (2)(a) és a nem létező „K 11:12 ← T 12:1” vizsgálatot ajánlja, miközben az F85.3-frissítés szerint a (2) tárgytalan; a brief `kovetkezo` mezője is a „valódi_hiany” esetek kezelését kéri. A döntési sor belső ellentmondása a felhasználó döntését félrevezetheti.
-2. **E1** — `F85_jelentes.md` 15–37. sor és DT-F85a (1): a könyvenkénti tábla (4Móz 18, Jób 61, Péld 29, Préd 65, Ézs 32, Hós 44; „337 = 326 + 11”, „22 868”, „345”) az F85.1 állapotot mutatja, az azonos kulcsú partnereket is átkulcsolandónak számolja. A helyes bontás: lásd (6).
+1. **E2** — `DONTESEK.md` DT92 javaslat-oszlopa még a `-MT` utótagot (2)(a) és a nem létező „K 11:12 ← T 12:1” vizsgálatot ajánlja, miközben az F85.3-frissítés szerint a (2) tárgytalan; a brief `kovetkezo` mezője is a „valódi_hiany” esetek kezelését kéri. A döntési sor belső ellentmondása a felhasználó döntését félrevezetheti.
+2. **E1** — `F85_jelentes.md` 15–37. sor és DT92 (1): a könyvenkénti tábla (4Móz 18, Jób 61, Péld 29, Préd 65, Ézs 32, Hós 44; „337 = 326 + 11”, „22 868”, „345”) az F85.1 állapotot mutatja, az azonos kulcsú partnereket is átkulcsolandónak számolja. A helyes bontás: lásd (6).
 3. **E3** — `F85_b_ellenorzes.tsv`: a fejlécben 5, az adatsorokban 6 mező (`olvasva_egyezik` oszlopnak nincs neve); `F85_esetlista.tsv`: nincs `szoveg_olvasas` fejléc, az érték a `megjegyzes` alá kerül.
 4. **E5** — a brief a Károli-oldalra gépi Strong-igazolást kér, ez nem teljesült (`Karoli_Strong_kivonat.tsv` 383 sor); a 28 „nem igazolt” B-sor és a 6 `szint=S` sor detektoron vagy kézi olvasáson áll. A jelentés a korlátot átláthatóan rögzíti, de az F85.1 commit címe („gépi Strong-igazolással”) túloz.
 5. **E4** — `F85_jelentes.md` 5. sor szerint a szkript és a `macula_elvetve` nincs az `ir`-ben; az F85.2 az `ir` mezőt már bővítette.

@@ -22,14 +22,14 @@ ELTÉRÉS: 7 tétel
 | (5) önteszt-regresszió nyilvántartása | **ELTÉRÉS (A2, alacsony)** | nincs N-tétel, csak a jelentés említi; a `tokenek.py:54` megjegyzése elavult |
 | (6) nulla-diff, CI | OK | `adat/` Δ0; `konkordancia/` alatt csak a TAHOT (5885/5885), az F85.6 óta sem változott; `futtat.py`: HIBA-szintű találat nincs |
 | EP4 kivezetett sorok listája | **ELTÉRÉS (közepes)** | a `naplok/F85_kivezetett_sorok.tsv` 7 `versosszevonas` sort kivezetettként listáz, de az F85.10 mind a 7-et visszaállította és 2 újat felvett; a „104 kivezetett” nettó 97; a napló nem frissült |
-| D / ⛔ DT-F85a | **ELTÉRÉS (közepes)** | a DT-F85a szerint a Hós 1:11 és Préd 2:26 összevonás-sora a #22 Hós/Préd-menetére vár; az F85.10 mégis felvette, és a #22 közös `tokenek.py`-ját módosította; a felhasználói jóváhagyás csak a jelentésben áll, a DONTESEK-ben nem; a DT-F85a cellája belsőleg ellentmond („4. tétel végrehajtva” és „a 4–7. tétel külön engedélyre vár”) |
+| D / ⛔ DT92 | **ELTÉRÉS (közepes)** | a DT92 szerint a Hós 1:11 és Préd 2:26 összevonás-sora a #22 Hós/Préd-menetére vár; az F85.10 mégis felvette, és a #22 közös `tokenek.py`-ját módosította; a felhasználói jóváhagyás csak a jelentésben áll, a DONTESEK-ben nem; a DT92 cellája belsőleg ellentmond („4. tétel végrehajtva” és „a 4–7. tétel külön engedélyre vár”) |
 | 5–7. tétel nem indult | OK | `CLAUDE.md`, `adat/SEMA.md`, README-k, `tahot_karoli_kulcs_generalas.py` nem változott |
 | A2 N-F85a, N-F85c | OK | nyitottak; az ALVIL-001 három sora változatlan |
 | A6 E12–E15 | OK | 0 találat |
 
 ## ELTÉRÉS-ek súlyossági sorrendben
 
-1. **(közepes) D / DT-F85a:** az F85.10 a DT-F85a rögzített állásával szemben vette fel a Hós 1:11 és a Préd 2:26 összevonás-sorát, a #22 közös `tokenek.py`-ját módosította, az `ir`-t maga bővítette; a jóváhagyás csak a jelentésben áll, a DONTESEK-ben nem.
+1. **(közepes) D / DT92:** az F85.10 a DT92 rögzített állásával szemben vette fel a Hós 1:11 és a Préd 2:26 összevonás-sorát, a #22 közös `tokenek.py`-ját módosította, az `ir`-t maga bővítette; a jóváhagyás csak a jelentésben áll, a DONTESEK-ben nem.
 2. **(közepes) EP4:** a `naplok/F85_kivezetett_sorok.tsv` elavult (nettó 97 kézi sor, a `versosszevonas.tsv` 7 → 9 sor).
 3. **(alacsony) (3):** a `beolvasztott` halmaz régi címkéi ma más versekre mutatnak (csendes-eldobás kockázat).
 4. **(alacsony) (4):** az igazolás d) pontja önigazoló; docstring/szám pontatlanságok.
