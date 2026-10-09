@@ -102,3 +102,12 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - Kézi átnézés: Péld 11:31; korábbról 1Krón 19:2, Ézs 9:20, 64:1, Zsolt 119:94, 144:15, 145:1.
 - PR és merge a felhasználóé (az ág a Péld- és a Bír-menetet együtt hordozza).
 - A következő könyv a felhasználó döntése; a mérés szerinti tiszta jelöltek: Eszt (7. adag: 148), 2Sám, 1Sám, 1Kir, Neh, 2Kir; a Dán (37 detektorsor) és a Jób (41. fejezet, N-F83a) előtt versbeosztás-döntés kell.
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_Bir.md`)
+
+Az ellenőr egy alacsony súlyú eltérést talált, adatot nem érint. A számokat pontos könyvegyezéssel (`\tapi_termeles/high/Bir\t`, `cimke=bir`, `^Bír `, `Bir_k*.json`) és `lekerdez.py`-jal igazolta. A saját CI-futásában HIBA szintű találat nincs; az E25 3 és az E27 92 találata repószintű.
+
+- **Versbeosztás:** a detektorban és a kézi táblákban nincs Bír-sor; 618/618 kulcs; tartalmi összevetés 1:1, 5:1, 5:31, 21:25 egyezik.
+- **Strong a TAHOT-ból:** 76 er-token mintavétele 76/76 egyezik; mind a 15 384 er-sor egyetlen H-Strongot visel.
+- **Eltérés (6b, alacsony):** a `672860b` commit tárgya „K9”-et említ, de a `datasetek.tsv`/`SEMA.md` módosítás a `4a9b096`-ban van (annak a tárgya „datasetek.tsv és SEMA 2.20 bővítve” a törzsben). A pusholt történetet nem írom át; a helyes hozzárendelés itt rögzítve.
+- **Nem ellenőrizhető az ellenőrnek:** a BDB-mérés számai (a szkriptet nem futtathatta). A mérést az orkesztrátor futtatta (`python naplok/F22_konyvsorrend_meres.py`, 2026-10-09T06:17:56Z): Bír 7. adag 77 / 2, hátralék 655 / 98; Eszt 7. adag 148 / 2; ezek a jelentésben idézett értékek. Az `egyesit.py --ellenoriz` futását az 1a szakasz rögzíti.
