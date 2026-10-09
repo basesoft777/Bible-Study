@@ -6,12 +6,15 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: lezarva
+pr: 271
+lezarva_osszegzes: "337 vers (6330 sor) Károli-kulcsra váltott a TAHOT_kivonat.tsv-ben, ÓSZ-os kulcs-összevetés 0 eltéréssel; f22 kompenzáló sorok kivezetve, tokenek.py/versbeosztas.py/generátor-őr; DT-F85a; nyitott: N-F85a,b,c,e,f, DT90"
+ag: claude/tahot-verskulcs
 ad: "A TAHOT_kivonat.tsv minden ÓSZ-sorának kulcsa a Károli-vers, amelynek a héber szövegét hordozza (Jób 40 és a fejezethatár-eltolások), így a Károli-kulcs szerinti lekérdezés nem ad üres vagy eltolt eredményt; a DT90 mért adattal eldönthető"
-kovetkezo: "az esetlista elkészítése (1. tétel), majd ⛔ 1: az esetlista jóváhagyása a felhasználótól; a futtatás sorrendje a #22 Péld-menetéhez képest a felhasználó döntése"
+kovetkezo: "merge a felhasználótól; a DT90 (OT-full címke) és a záró ellenőr 3 nyitott eltérése (naplok/F85_zaras.md)"
 fugg: [84]
 olvas: [konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/Macula_heber_Job.tsv, f22/versmegfeleltetes.tsv, f22/versmegfeleltetes_kezi.tsv, f22/versosszevonas.tsv, eszkozok/karoli_strong/versbeosztas.py, eszkozok/tahot_karoli_kulcs_generalas.py, eszkozok/tahot_lefedettseg_ellenoriz.py, naplok/F83_Job_versbeosztas_jelentes.md, naplok/F84_jelentes.md, naplok/F22_Job_jelentes.md, adat/SEMA.md]
-ir: [konkordancia/TAHOT_kivonat.tsv, konkordancia/TAHOT_TAGNT_README.md, konkordancia/README.md, eszkozok/tahot_karoli_kulcs_generalas.py, eszkozok/tahot_verskulcs_atkulcsolas.py, f22/versmegfeleltetes_kezi.tsv, f22/versmegfeleltetes.tsv, naplok/F22_versbeosztas.md, CLAUDE.md, adat/SEMA.md, NYITOTT_FELADATOK.md, DONTESEK.md]
+ir: [eszkozok/tahot_verskulcs_esetlista.py, eszkozok/tahot_verskulcs_finomit.py, naplok/F85_esetlista.tsv, naplok/F85_jelentes.md, naplok/F85_macula_elvetve.tsv, naplok/F85_b_ellenorzes.tsv, naplok/F85_kulcsvaltas.tsv, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/versbeosztas.py, eszkozok/tahot_verskulcs_kivezetes.py, eszkozok/tahot_verskulcs_igazolas.py, eszkozok/tahot_verskulcs_kulcsosszevetes.py, naplok/F85_kulcsosszevetes.tsv, naplok/F85_kulcsosszevetes.md, naplok/F85_kivezetett_sorok.tsv, naplok/F85_igazolas.tsv, naplok/F85_igazolas.md, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAHOT_TAGNT_README.md, konkordancia/README.md, eszkozok/tahot_karoli_kulcs_generalas.py, eszkozok/tahot_verskulcs_atkulcsolas.py, f22/versmegfeleltetes_kezi.tsv, f22/versmegfeleltetes.tsv, naplok/F22_versbeosztas.md, CLAUDE.md, adat/SEMA.md, NYITOTT_FELADATOK.md, DONTESEK.md, f22/versosszevonas.tsv]
 ---
 
 # TAHOT_VERSKULCS — a TAHOT_kivonat versszintű Károli-kulcsa a maradék eltérésekre

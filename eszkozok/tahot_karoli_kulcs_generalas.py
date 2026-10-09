@@ -12,6 +12,10 @@ Bemenetek:
     ebbol csak a secondary!='' (azaz korabban eldobott) sorokat hasznaljuk fel.
   - step1_decisions.tsv - a fejezet-szintu dontesek (ELSODLEGES/MASODLAGOS/...),
     3 kezi felulbiralassal (lasd DONTES_FELULBIRALAS lent).
+
+F85.22 ORZO: a bemenet es a kimenet ugyanaz a fajl (konkordancia/TAHOT_kivonat.tsv), az F85.6 atkulcsolasi lepes pedig
+nem idempotens; ha a bemeneti kivonat mar atkulcsolt (vagy vegyes) allapotu, a generator megall. Felulirni csak a
+--felulir-atkulcsolt kapcsoloval lehet. Onteszt: --onteszt; szimulacio (nem ir): --szimulacio [REF].
 """
 
 import sys
@@ -59,6 +63,9 @@ DONTES_FELULBIRALAS = {
         # (40, 41) dontes-erteke [javaslat]: ELSODLEGES a 41-re (naplok/F84_jelentes.md).
         # Az ertek itt tudatosan valtozatlan: az eredeti (hibas) indoklas lent tovabb
         # dokumentalja a nyitott esetek fajl keletkezeset.
+        # F85.6: a Job 40 MT-szamozasu kulcsait (TAHOT 40:(n+5) = Karoli 40:n, 19 vers) es a tobbi versszintu eltolast
+        # nem ez a fejezet-szintu dontes, hanem az alabbi versszintu atkulcsolasi lepes (atkulcsol_sorok, KULCSVALTAS_PATH)
+        # kezeli; a Job 41 sorait tovabbra is az F84.2 szkript potolja (a generator nyers bemenetei nincsenek a repoban).
         "Sem az elsodleges (angol/NRSV), sem a masodlagos (heber) fejezethossz "
         "nem egyezik a Karoli tenyleges 40. (28v) es 41. (25v) fejezet-hosszaval "
         "(elsodleges: 24/34; masodlagos: 32/26) - korabbi audit szerint Jób 41:25 "
@@ -77,6 +84,60 @@ DONTES_FELULBIRALAS = {
 KULON_SOR_KIVETEL = {
     ("1Sa.20.42", "1Sa.21.1"): "1Sám 20:43",
 }
+
+
+# ---- F85.6: versszintu atkulcsolas (a TAHOT_kivonat kulcsa a Karoli-vers, amelynek a heber szoveget hordozza) ----
+# A fenti per-fejezet dontesek (ELSODLEGES/MASODLAGOS) a fejezethatar-eltolasokat es a fejezeten beluli eltolasokat
+# (pl. Job 40: TAHOT 40:(n+5) = Karoli 40:n; Hos 12, Pred 2, Ezs 9 ...) NEM tudjak kifejezni, mert versszintuek.
+# Ezeket a generator egy utofeldolgozo lepesben kezeli: a naplok/F85_kulcsvaltas.tsv (a jovahagyott, igazolt
+# 337 vers regi -> uj kulcsa; l. naplok/F85_jelentes.md, DONTESEK.md DT-F85a) a versszintu felulbiralas-tabla.
+# FIGYELEM: a teljes ujrafuttatas a nyers bemenetekbol (phaseA_all.tsv, step1_decisions.tsv) nem reprodukalhato a repobol
+# (azok nincsenek a repoban), es a Job 41 sorait (332 sor) az eszkozok/tahot_job41_potlas.py (F84.2) vette at kulon.
+# A kulcsolas reprodukalhatosagat a --szimulacio mod igazolja: az atkulcsolas ELOTTI kivonat + ez a lepes = a mai fajl.
+KULCSVALTAS_PATH = os.path.join(REPO, 'naplok', 'F85_kulcsvaltas.tsv')
+
+
+def load_kulcsvaltas():
+    """{regi TAHOT-kulcs: uj Karoli-kulcs} a naplok/F85_kulcsvaltas.tsv-bol; a leképezés egyértelmű (régi kulcsonként egy új)."""
+    m = {}
+    with open(KULCSVALTAS_PATH, encoding='utf-8') as f:
+        for ln in f:
+            if ln.startswith('#') or ln.startswith('sorszam\t'):
+                continue
+            p = ln.rstrip('\n').split('\t')
+            if m.setdefault(p[1], p[2]) != p[2]:
+                raise ValueError("nem egyertelmu atkulcsolas: %s" % p[1])
+    return m
+
+
+def atkulcsol_sorok(main_rows):
+    """A fokivonat sorainak (az elso mezo a Karoli-kulcs) versszintu atkulcsolasa; a sorrend es minden mas mezo valtozatlan."""
+    m = load_kulcsvaltas()
+    return [(m.get(r[0], r[0]),) + tuple(r[1:]) for r in main_rows]
+
+
+def szimulacio(ref):
+    """Az atkulcsolas elotti kivonat (git `ref`) + atkulcsol_sorok = a mai TAHOT_kivonat.tsv? Nem ir semmit.
+    Visszaad: (bajtazonos, a kulonbozo sorok szama, a sorok szama)."""
+    import subprocess
+    r = subprocess.run(['git', 'show', '%s:konkordancia/TAHOT_kivonat.tsv' % ref], capture_output=True, cwd=REPO)
+    if r.returncode:
+        raise SystemExit('git show hiba: %s' % ref)
+    regi = r.stdout.split(b'\n')
+    mai = open(OUT_MAIN, 'rb').read().split(b'\n')
+    m = load_kulcsvaltas()
+    uj, kul = [], 0
+    for i, s in enumerate(regi):
+        if i == 0 or not s:
+            uj.append(s)
+            continue
+        mezok = s.split(b'\t')
+        mezok[0] = m.get(mezok[0].decode('utf-8'), mezok[0].decode('utf-8')).encode('utf-8')
+        uj.append(b'\t'.join(mezok))
+    for a, b in zip(uj, mai):
+        if a != b:
+            kul += 1
+    return (uj == mai, kul, len(mai) - (1 if mai and mai[-1] == b'' else 0))
 
 
 def _tsv_data_rows(path):
@@ -150,7 +211,100 @@ def tsv_sor(mezok):
         ki.append(m)
     return "\t".join(ki) + "\n"
 
+def bemenet_tipus(kulcsok):
+    """A bemeneti kivonat kulcsainak (Igehely mezo) allapota a naplok/F85_kulcsvaltas.tsv alapjan:
+    'stepbible'                 - a kulcsok tobbsege STEPBible-alaku (Gen.1.1): a generator eredeti bemenete;
+    'karoli_atkulcsolas_elotti' - Karoli-alaku, es a naplo osszes "arva" regi kulcsa (amely nem uj kulcs is) megvan;
+    'karoli_atkulcsolt'         - Karoli-alaku, es egyik arva regi kulcs sincs meg (az F85.6 atkulcsolas utani allapot);
+    'karoli_vegyes'             - Karoli-alaku, de az arva regi kulcsoknak csak egy resze van meg (sertett/felig atkulcsolt)."""
+    kulcsok = set(kulcsok)
+    if not kulcsok:
+        return 'ures'
+    step = sum(1 for k in kulcsok if REF_RE.match(k))
+    if step * 2 > len(kulcsok):
+        return 'stepbible'
+    m = load_kulcsvaltas()
+    uj = set(m.values())
+    arva_regi = {r for r in m if r not in uj}
+    van = len(arva_regi & kulcsok)
+    if van == len(arva_regi):
+        return 'karoli_atkulcsolas_elotti'
+    if van == 0:
+        return 'karoli_atkulcsolt'
+    return 'karoli_vegyes'
+
+
+def bemenet_orzo(kulcsok, felulir=False):
+    """Megall (SystemExit), ha a bemeneti kivonat mar atkulcsolt (vagy vegyes) allapotu: a generator lepese nem idempotens
+    (az atkulcsolast ketszer alkalmazva ujra eltolna a verseket), es a kimenet ugyanaz a fajl, mint a bemenet.
+    Csak a kifejezett --felulir-atkulcsolt kapcsolo engedi tovabb. Visszaadja a bemenet tipusat."""
+    tipus = bemenet_tipus(kulcsok)
+    if tipus in ('karoli_atkulcsolt', 'karoli_vegyes') and not felulir:
+        raise SystemExit("MEGALL: a bemeneti %s mar atkulcsolt/vegyes allapotu (%s); a versszintu atkulcsolasi lepes nem idempotens, "
+                         "a kimenet ugyanez a fajl. Felulirni csak a --felulir-atkulcsolt kapcsolóval lehet." % (os.path.basename(OLD_TAHOT), tipus))
+    return tipus
+
+
+def bemenet_kulcsok(path):
+    ki = set()
+    with open(path, encoding='utf-8') as f:
+        next(f, None)
+        for ln in f:
+            ki.add(ln.split('\t', 1)[0])
+    return ki
+
+
+def onteszt():
+    """Az orzo onteszt-esetei: negativ (atkulcsolt bemeneten kapcsolo nelkul megall), pozitiv (az atkulcsolas elotti
+    bemeneten fut). Nem ir semmit. Kilepesi kod: 0 = rendben."""
+    import subprocess
+    hibak = []
+    r = subprocess.run(['git', 'show', '8ce6e95c~1:konkordancia/TAHOT_kivonat.tsv'], capture_output=True, cwd=REPO)
+    regi = set(ln.split('\t', 1)[0] for ln in r.stdout.decode('utf-8').split('\n')[1:] if ln)
+    mai = bemenet_kulcsok(OUT_MAIN)
+    # pozitiv: az atkulcsolas elotti bemeneten fut
+    try:
+        t = bemenet_orzo(regi)
+        if t != 'karoli_atkulcsolas_elotti':
+            hibak.append('az atkulcsolas elotti bemenet tipusa: %s' % t)
+    except SystemExit as ex:
+        hibak.append('az atkulcsolas elotti bemeneten megallt: %s' % ex)
+    # negativ: az atkulcsolt (mai) bemeneten kapcsolo nelkul megall
+    try:
+        bemenet_orzo(mai)
+        hibak.append('az atkulcsolt bemeneten kapcsolo nelkul NEM allt meg')
+    except SystemExit:
+        pass
+    # a kapcsoloval tovabbmegy
+    try:
+        bemenet_orzo(mai, felulir=True)
+    except SystemExit as ex:
+        hibak.append('a --felulir-atkulcsolt kapcsoloval is megallt: %s' % ex)
+    # vegyes: az atkulcsolt bemenet + par regi arva kulcs
+    m = load_kulcsvaltas()
+    uj = set(m.values())
+    arva = sorted(r_ for r_ in m if r_ not in uj)
+    try:
+        bemenet_orzo(mai | set(arva[:3]))
+        hibak.append('a vegyes bemeneten NEM allt meg')
+    except SystemExit:
+        pass
+    # STEPBible-alaku (a generator eredeti bemenete): fut
+    try:
+        if bemenet_orzo({'Gen.1.1', 'Gen.1.2', 'Exo.3.14'}) != 'stepbible':
+            hibak.append('a STEPBible-alaku bemenet tipusa nem stepbible')
+    except SystemExit as ex:
+        hibak.append('a STEPBible-alaku bemeneten megallt: %s' % ex)
+    if hibak:
+        print('ONTESZT HIBA:\n  ' + '\n  '.join(hibak))
+        return 1
+    print('onteszt: rendben (pozitiv: atkulcsolas elotti bemeneten fut; negativ: atkulcsolt/vegyes bemeneten kapcsolo nelkul megall; kapcsoloval fut)')
+    return 0
+
+
 def main():
+    # orzo: ne irjuk felul az atkulcsolt kivonatot (a bemenet es a kimenet ugyanaz a fajl)
+    bemenet_orzo(bemenet_kulcsok(OLD_TAHOT), felulir='--felulir-atkulcsolt' in sys.argv)
     norm = load_norm()
     valid_karoli = load_karoli_valid_refs()
     chap_decision = load_decisions()
@@ -239,6 +393,9 @@ def main():
 
     print(f"Uj sorok a fokivonatba: {n_new_main}  nyitott/gyanus sorok: {n_new_open}", file=sys.stderr)
 
+    # --- F85.6: versszintu atkulcsolas (a sorrend es minden mas mezo valtozatlan) ---
+    main_rows = atkulcsol_sorok(main_rows)
+
     # --- vegso kereszt-ellenorzes: minden fokivonat-kulcs letezik-e a Karoliban ---
     n_mismatch = 0
     for row in main_rows:
@@ -266,4 +423,12 @@ def main():
 
 
 if __name__ == '__main__':
+    if len(sys.argv) > 1 and sys.argv[1] == '--szimulacio':
+        # python eszkozok/tahot_karoli_kulcs_generalas.py --szimulacio [REF]   (alapértelmezett REF: 8ce6e95c~1, az átkulcsolás előtti állapot)
+        ref = sys.argv[2] if len(sys.argv) > 2 else '8ce6e95c~1'
+        egyezik, kul, db = szimulacio(ref)
+        print("szimulacio (%s): bajtazonos a mai %s-szel: %s; kulonbozo sor: %d / %d" % (ref, os.path.basename(OUT_MAIN), egyezik, kul, db))
+        sys.exit(0 if egyezik else 1)
+    if len(sys.argv) > 1 and sys.argv[1] == '--onteszt':
+        sys.exit(onteszt())
     main()

@@ -246,18 +246,24 @@ kerültek, `Státusz`/`Indoklás` oszloppal, tényleges javítás nélkül — e
 azzal, hogy a Károli-adatminőségi audit (`Karoli_adatminosegi_anomaliak.tsv`) külön,
 nem e feladat része.
 
-**Kereszt-ellenőrzés.** A fő kivonatba bekerülő minden Károli-kulcsot (a régről megmaradt
-435 723 sort is) leellenőriztük a `Karoli_1908.tsv` tényleges igehely-készlete ellen. Az
-összes **új** (korábban eldobott, most bekerülő) sorra 0 eltérés. A **régről** megmaradt
-sorok közül 102 szó-sor (6 egyedi igehely: 4Móz 12:16; Jób 38:39–41; Préd 11:9–10) NEM
-található meg a `Karoli_1908.tsv`-ben — ez egy, a zárójeles-hivatkozás javítástól
-FÜGGETLEN, már korábban is fennálló Károli-oldali versszámozási/adatminőségi jelenség
-(a STEPBible nyers adatban ezekhez a sorokhoz nem tartozik zárójeles kettős hivatkozás,
-tehát nem e feladat hatóköre — lásd a Károli-adatminőségi audit kizárását a feladat
-korlátai közt). A sorok tartalma emiatt is változatlanul bekerült a kivonatba (STEPBible-
-könyv+fejezet+vers → Károli-könyv+fejezet+vers egyszerű csere), csak a Károli-oldali
-igehely maga nem létezik — érdemes egy külön, jövőbeli Károli-adatminőségi vizsgálat
-tárgyává tenni.
+**Kereszt-ellenőrzés.** A fő kivonatba bekerülő minden Károli-kulcsot (a régről megmaradt 435 723 sort is) leellenőriztük a `Karoli_1908.tsv` tényleges igehely-készlete ellen.
+Az F2 idején a régről megmaradt sorok közül 102 szó-sor (6 egyedi igehely: 4Móz 12:16; Jób 38:39–41; Préd 11:9–10) nem volt meg a `Karoli_1908.tsv`-ben. **Mért állapot (F85, 2026.10.09):**
+minden TAHOT-kulcs létező Károli-vers (0 kulcs Károli-vers nélkül), és minden ÓSZ-Károli-versnek van TAHOT-sora (0 hiány; 23 204 kulcs ↔ 23 204 ÓSZ-Károli-vers, naplózva: `naplok/F85_kulcsosszevetes.md`); a sorok tartalma az átkulcsolás előtt és után azonos
+(csak az `Igehely` mező változott, 6 330 sor; l. a következő szakaszt).
+
+## Versszintű Károli-kulcs (F85, 2026.10.09)
+
+A `TAHOT_kivonat.tsv` `Igehely` kulcsa **versszinten a Károli-vers**, amelynek a héber szövegét a sor hordozza (a STEPBible-kulcs a fejezethatárokon és fejezeten belül több helyen eltért:
+Jób 16–17, 36–37 és 40, Préd 1–2 és 8–10, Hós 1–2 és 11–14, Dán 4, Én 6, Ézs 8–9 és 64, 2Móz 36, 4Móz 29–30, Péld 11–12). Az átkulcsolás menete: `naplok/F85_esetlista.tsv` (esetlista, Strong-illeszkedés
+a WLC-vel a TAHOT-oldalon; a Károli-oldalon a #22 hossz-detektor/kézi tábla, a Macula `karoli` oszlop, hosszkorreláció, szövegolvasás), `eszkozok/tahot_verskulcs_atkulcsolas.py` (csak az `Igehely` mező, a
+fájlsorrend és minden más bájt változatlan), napló: `naplok/F85_kulcsvaltas.tsv` (6 330 sor), igazolás: `eszkozok/tahot_verskulcs_igazolas.py` → `naplok/F85_igazolas.md`. A sorok száma változatlan (469 300).
+
+- **9 helyen a Károli két TAHOT-verset egy versbe vont** (4Móz 29:39 + 30:1; Jób 16:22 + 17:1 és 36:33 + 37:1; Péld 11:31 + 12:1; Ézs 9:19 + 9:20 és 64:1 + 64:2; Hós 1:11 + 2:1 és 11:11 + 12:1;
+  Préd 2:25 + 2:26): mindkét vers a közös Károli-kulcson áll; a vershatárt az `f22/versosszevonas.tsv` (`er_tol`–`er_ig`) és a `naplok/F85_kulcsvaltas.tsv` őrzi.
+- **A fájlsorrend nem Károli-sorrend** (a fájl eleve tartalmaz áthelyezett blokkokat, pl. a 4Móz 30 és a Hós 12): kulcs szerint olvass, ne sorrend szerint; az összevonó párok közül kettő (4Móz 29:39 + 30:1,
+  Hós 11:11 + 12:1) nem szomszédos a fájlban.
+- **A kulcsgenerátor** (`eszkozok/tahot_karoli_kulcs_generalas.py`) a versszintű átkulcsolást a `naplok/F85_kulcsvaltas.tsv` alapján, kiírás előtti lépésként alkalmazza; a `--szimulacio` mód igazolja, hogy az átkulcsolás
+  előtti kivonat + ez a lépés = a mai fájl (bájtazonos). A generátor nyers bemenetei (phaseA_all.tsv és step1_decisions.tsv) nincsenek a repóban, ezért a teljes újrafuttatás nem reprodukálható.
 
 ## Károli-natív kulc-konverzió (TAGNT)
 
@@ -320,7 +326,7 @@ Jóel 3); TAGNT — 27 újszövetségi könyv, 7 948 egyedi igehely.
 a korábban (`NYITOTT_FELADATOK.md`) nyitva hagyott hiány — Gen 32, Zsolt 88/89/140/142,
 Jóel 3 — **nem áll fenn**: mind a hat fejezet teljes egészében jelen van a kivonatban,
 ezt a fenti bekezdés már dokumentálta. Az újbóli, mind a 39 könyvre kiterjedő ellenőrzés
-viszont egy eddig **nem dokumentált** hiányt talált: a teljes Jób 41. fejezet hiányzott (a Jób 40:1–5-ről kiderült, hogy nem hiányzik: TAHOT-kulcsa 39:34–38, F83). Az ok a Héber/magyar (MT/Károli) és az angol versszámozás eltolódása volt, a kulcsgenerátor hibás Károli-versszámokkal a Jób 40/41-et a nyitott esetekbe tette. **Lezárva (F84, 2026.10.09):** a Jób 41:1–34 332 sora a fő kivonatban van (`naplok/F84_jelentes.md`). **Maradó korlát:** a fő kivonat Jób 40. fejezete MT-kulcsos (TAHOT 40:(n+5) = Károli 40:n), l. `naplok/F83_Job_versbeosztas_jelentes.md`.
+viszont egy eddig **nem dokumentált** hiányt talált: a teljes Jób 41. fejezet hiányzott (a Jób 40:1–5-ről kiderült, hogy nem hiányzik: TAHOT-kulcsa 39:34–38, F83). Az ok a Héber/magyar (MT/Károli) és az angol versszámozás eltolódása volt, a kulcsgenerátor hibás Károli-versszámokkal a Jób 40/41-et a nyitott esetekbe tette. **Lezárva (F84, 2026.10.09):** a Jób 41:1–34 332 sora a fő kivonatban van (`naplok/F84_jelentes.md`). **Lezárva (F85, 2026.10.09):** a fő kivonat Jób 40. fejezete korábban MT-kulcsos volt (TAHOT 40:(n+5) = Károli 40:n, `naplok/F83_Job_versbeosztas_jelentes.md`); az F85.6 versszintű átkulcsolása óta a kulcs a Károli-vers (a maradó korlát megszűnt).
 A `scope=TAHOT-teljes` proveniencia-címke ettől függetlenül helytálló (a kivonat
 egészére vonatkozik, nem a kánon teljességére) — l. `adat/SEMA.md` 1.5 és 4.
 
