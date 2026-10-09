@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: fut
+allapot: dontesre_var
 ag: claude/tahot-verskulcs
 ad: "A TAHOT_kivonat.tsv minden ÓSZ-sorának kulcsa a Károli-vers, amelynek a héber szövegét hordozza (Jób 40 és a fejezethatár-eltolások), így a Károli-kulcs szerinti lekérdezés nem ad üres vagy eltolt eredményt; a DT90 mért adattal eldönthető"
-kovetkezo: "az esetlista elkészítése (1. tétel), majd ⛔ 1: az esetlista jóváhagyása a felhasználótól; a futtatás sorrendje a #22 Péld-menetéhez képest a felhasználó döntése"
+kovetkezo: "Te: az esetlista jóváhagyása (naplok/F85_esetlista.tsv, DONTESEK.md DT-F85a): mely esetek kerüljenek átkulcsolásra, a valódi_hiany/bizonytalan esetek kezelése, a 2:1 összevonások kulcsformája; utána 3. tétel (átkulcsolás-szkript); a futtatás sorrendje a #22 Péld-menetéhez képest a felhasználó döntése"
 fugg: [84]
 olvas: [konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/Macula_heber_Job.tsv, f22/versmegfeleltetes.tsv, f22/versmegfeleltetes_kezi.tsv, f22/versosszevonas.tsv, eszkozok/karoli_strong/versbeosztas.py, eszkozok/tahot_karoli_kulcs_generalas.py, eszkozok/tahot_lefedettseg_ellenoriz.py, naplok/F83_Job_versbeosztas_jelentes.md, naplok/F84_jelentes.md, naplok/F22_Job_jelentes.md, adat/SEMA.md]
 ir: [konkordancia/TAHOT_kivonat.tsv, konkordancia/TAHOT_TAGNT_README.md, konkordancia/README.md, eszkozok/tahot_karoli_kulcs_generalas.py, eszkozok/tahot_verskulcs_atkulcsolas.py, f22/versmegfeleltetes_kezi.tsv, f22/versmegfeleltetes.tsv, naplok/F22_versbeosztas.md, CLAUDE.md, adat/SEMA.md, NYITOTT_FELADATOK.md, DONTESEK.md]
