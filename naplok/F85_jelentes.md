@@ -141,3 +141,33 @@ Ellenőrzések (`tokenek` függvényekkel, írás előtt/után; a detektor újra
 - az `adat/karoli_strong/parok_*.tsv` és `szavak_*.tsv` (38 fájl) SHA-256-ja változatlan.
 
 **F85.5 (ELLENOR_F85.md eltérései):** E1 — a könyvenkénti hatókör a jelentésben és a DT-F85a (1)-ben az ellenőr (6) pontja szerinti (337 = 328 eltolás + 9 kulcsot váltó összevonás-sor; 2Móz 38, 4Móz 17, Jób 59, Péld 28, Préd 66, Én 13, Ézs 31, Dán 37, Hós 48); E2 — a DT-F85a javaslat-oszlopa és a brief `kovetkezo` mezője: nincs `-MT` utótag, nincs K 11:12, a (2) pont tárgytalan, a Hós 12 külön kezelve; E3 — a `F85_esetlista.tsv` és a `F85_b_ellenorzes.tsv` fejléce a `szoveg_olvasas` oszlopot nevesíti (a `finomit.py` javítva, a TSV-k újragenerálva; az esetlista minden sora 9 mezős); E4 — az `ir`-re vonatkozó állítás a fejlécben pontosítva; E5 — a „gépi Strong-igazolás” köre a 0. szakaszban pontosítva (TAHOT-oldal igen, Károli-oldal nem). Az Ézs 8:23 → Károli 9:1 sor eltolásként szerepel; a `Karoli_versmegfeleltetes.tsv` Ézs 9-es MT-oszlop-eltolása N-F85a helyőrzővel a `NYITOTT_FELADATOK.md`-ben nyitott tétel.
+
+## 8. F85.6 — az átkulcsolás (3. tétel)
+
+*A felhasználó jóváhagyta a DT-F85a döntéseit és az átkulcsolást (chat, 2026.10.09): (1) a, (2) tárgytalan, (3) a 4 `bizonytalan` sor azonos kulcson marad, (4) a (közös Károli-kulcs), (5) engedély. Szkript: `eszkozok/tahot_verskulcs_atkulcsolas.py`; napló: `naplok/F85_kulcsvaltas.tsv` (6 330 sor: fájlbeli sorszám, régi → új kulcs, típus, a sor TAHOT-verse, az összevonás partnere).*
+
+`scope=konkordancia/TAHOT_kivonat.tsv, 337 vers (6 330 sor) a naplok/F85_esetlista.tsv szerint | forras=eszkozok/tahot_verskulcs_atkulcsolas.py, naplok/F85_kulcsvaltas.tsv | ts=2026-10-09`
+
+| könyv | átkulcsolt vers | ebből eltolás | ebből összevonás (kulcsot váltó sor) | átírt sor |
+|---|---|---|---|---|
+| 2Móz | 38 | 38 | 0 | 781 |
+| 4Móz | 17 | 16 | 1 | 405 |
+| Jób | 59 | 57 | 2 | 641 |
+| Péld | 28 | 27 | 1 | 270 |
+| Préd | 66 | 65 | 1 | 1 420 |
+| Én | 13 | 13 | 0 | 212 |
+| Ézs | 31 | 29 | 2 | 603 |
+| Dán | 37 | 37 | 0 | 1 055 |
+| Hós | 48 | 46 | 2 | 943 |
+| **össz.** | **337** | **328** | **9** | **6 330** |
+
+**Írás előtti ellenőrzés (a szkript leállt volna és nem ír):** a sorok száma azonos (469 301 sor, sorvég: LF, BOM nincs, mind a régi, mind az új fájlban); minden sor az Igehely mezőn kívül bájtra egyezik; a nem érintett sorok teljesen bájtazonosak; a régi → új kulcs leképezés egyértelmű (337 régi kulcs, mindegyik egyetlen új); minden új kulcs létező Károli-vers; csak a 9 összevonó kulcson (4Móz 29:39, Jób 16:22, 36:33, Péld 11:31, Préd 2:26, Ézs 9:20, 64:1, Hós 1:11, 11:11) osztozik két TAHOT-vers; idempotencia-őr (a régi kulcsok jelenléte).
+
+**Utólagos igazolás:**
+- a szkriptes bájt-összevetés (HEAD vs. új fájl): 6 330 eltérő sor, pontosan a naplóé (sorszám, régi, új kulcs), csak az első mező; a többi 462 971 sor bájtazonos. (A `git diff --stat` 5 885 sort mutat, mert a Myers-diff a szomszédos, azonosra kulcsolt sorokat összepárosítja; a mérvadó a szkriptes összevetés.)
+- `tahot_lefedettseg_ellenoriz.py`: „Fejezet-szinten nincs hiány”, hiányzó fejezet 0.
+- `adat/karoli_strong/parok_*.tsv` és `szavak_*.tsv` (38 fájl): a git szerint változatlanok (diff üres), az `adat/`, `f22/` és más `konkordancia/` fájlok sem módosultak.
+- **A futtató bemenete a jóváhagyott könyvekre (vers → héber szavak):** a régi hatékony bemenet (régi kulcsok + a #22 detektor/kézi tábla + az összevonás-sorok) és az új nyers kulcsok (`betolt_eredeti(versmegf=False)`) a 17 747 versre mind azonos (Strong, alak, tükörfordítás szerint, 0 eltérés). Vagyis a Károli-kulcs szerinti bemenet változatlan.
+- **Ismert következmény (a 4. tétel előtt):** a mai `f22/versmegfeleltetes*.tsv` tábla már az új, Károli-kulcsú TAHOT-ra vonatkozna, ezért a `tokenek.betolt_eredeti()` (versmegf=True) `KeyError: '2Móz 36:38'`-cal leáll, amíg a 4. tétel (a kézi tábla és a detektor-lista kivezetése/újragenerálása) meg nem történik. Ez az ágon várt köztes állapot; a #22 futtatót addig ne indítsd az ágon.
+- **Fájlsorrend:** nem változott. A TAHOT-fájl eleve tartalmaz áthelyezett blokkokat (23 törés a Károli-sorrendben, régi = új). Az összevonó kulcsok közül 7-nél a két TAHOT-vers sorai a fájlban folyamatosan következnek; a 4Móz 29:39 / 30:1 és a Hós 11:11 / 12:1 pároknál a második vers a fájl áthelyezett blokkjában áll (a 4Móz 30 és a Hós 12 az áthelyezett részben), így nem szomszédos. A közös kulcson belüli sorrend minden párnál helyes (a Károli-szövegben előbb álló vers sorai a fájlban is előbb állnak, a szkript ezt ellenőrzi), a kulcs szerinti olvasás (`betolt_eredeti`) ezért a helyes sorrendet adja. A fájlsorrendet a megbízás szerint nem módosítottam.
+- A 12 nem kulcsot váltó sor (8 összevonás-partner, 4 `bizonytalan`) változatlan; a 4 `bizonytalan` sor azonos kulcson marad, jelzéssel (az esetlistában).

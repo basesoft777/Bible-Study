@@ -9,10 +9,10 @@ munka: adat
 allapot: dontesre_var
 ag: claude/tahot-verskulcs
 ad: "A TAHOT_kivonat.tsv minden ÓSZ-sorának kulcsa a Károli-vers, amelynek a héber szövegét hordozza (Jób 40 és a fejezethatár-eltolások), így a Károli-kulcs szerinti lekérdezés nem ad üres vagy eltolt eredményt; a DT90 mért adattal eldönthető"
-kovetkezo: "Te: a frissített DT-F85a áttekintése, majd az átkulcsolás (3. tétel) kifejezett engedélye"
+kovetkezo: "Folytatás/Te: a független ellenőr az átkulcsoláson (F85.6), majd a 4–7. tétel engedélye; a #22 futtató (versmegfeleltet) a mai kézi/detektor-táblával addig KeyError-t dob (4. tétel)"
 fugg: [84]
 olvas: [konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/Macula_heber_Job.tsv, f22/versmegfeleltetes.tsv, f22/versmegfeleltetes_kezi.tsv, f22/versosszevonas.tsv, eszkozok/karoli_strong/versbeosztas.py, eszkozok/tahot_karoli_kulcs_generalas.py, eszkozok/tahot_lefedettseg_ellenoriz.py, naplok/F83_Job_versbeosztas_jelentes.md, naplok/F84_jelentes.md, naplok/F22_Job_jelentes.md, adat/SEMA.md]
-ir: [eszkozok/tahot_verskulcs_esetlista.py, eszkozok/tahot_verskulcs_finomit.py, naplok/F85_esetlista.tsv, naplok/F85_jelentes.md, naplok/F85_macula_elvetve.tsv, naplok/F85_b_ellenorzes.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAHOT_TAGNT_README.md, konkordancia/README.md, eszkozok/tahot_karoli_kulcs_generalas.py, eszkozok/tahot_verskulcs_atkulcsolas.py, f22/versmegfeleltetes_kezi.tsv, f22/versmegfeleltetes.tsv, naplok/F22_versbeosztas.md, CLAUDE.md, adat/SEMA.md, NYITOTT_FELADATOK.md, DONTESEK.md, f22/versosszevonas.tsv]
+ir: [eszkozok/tahot_verskulcs_esetlista.py, eszkozok/tahot_verskulcs_finomit.py, naplok/F85_esetlista.tsv, naplok/F85_jelentes.md, naplok/F85_macula_elvetve.tsv, naplok/F85_b_ellenorzes.tsv, naplok/F85_kulcsvaltas.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAHOT_TAGNT_README.md, konkordancia/README.md, eszkozok/tahot_karoli_kulcs_generalas.py, eszkozok/tahot_verskulcs_atkulcsolas.py, f22/versmegfeleltetes_kezi.tsv, f22/versmegfeleltetes.tsv, naplok/F22_versbeosztas.md, CLAUDE.md, adat/SEMA.md, NYITOTT_FELADATOK.md, DONTESEK.md, f22/versosszevonas.tsv]
 ---
 
 # TAHOT_VERSKULCS — a TAHOT_kivonat versszintű Károli-kulcsa a maradék eltérésekre
