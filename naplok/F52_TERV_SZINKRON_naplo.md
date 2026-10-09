@@ -429,6 +429,20 @@ Minden rés pontosan egy kimenettel (átvezetés, DONTESEK-tétel, befogadási c
 | 6 | a dokumentum többi része bájtazonos | cserék pontos illesztéssel (`ed.py`: pontosan egy előfordulás, különben leáll; a 4a tartományt sor-kezdetek jelölik), CRLF megőrizve |
 | 7 | terv → feladat (3b): nincs rés kimenet nélkül; `feladatok.py ellenoriz` 0 hiba | 3.3 (11 sor: 2 DT-tétel, 2 átvezetés, 1 ⛔ jelezve a felhasználónak, 6 meglévő kimenet / lezárt / nem rés); `ellenoriz`: 0 hiba (104 brief) |
 
+### 3.6 Ellenőr és javító kör (brief 4.8)
+
+A `fuggetlen-ellenor` jelentése: `naplok/ELLENOR_TERV_SZINKRON_3.md` (F52.26, `24366c5e`): 5 eltérés, blokkoló nincs; a `feladatok.py ellenoriz` 0 hibáját az orkesztrátor futtatta. Az F52.25 (`6e2336d5`) a napló sorvégeit LF-re normalizálta (az F52.23 hibás sorvéggel írta); a javító kör LF-fel ír.
+
+| # | eltérés (ellenőr) | javítás | commit |
+| --- | --- | --- | --- |
+| 1 | ATALAKITASI 9. kockázat-tábla, TAHOT-sor: a jelen idejű Jób 40:1-5 / Jób 41 rés-állítás hamis | „elavult” jelölés (F84, DT86, N55), maradó korlát a Jób 40 MT-kulcsa | F52.27 |
+| 2 | ATALAKITASI 13.3 és ADATVAGYON 18.5: a DT80–DT83 összefoglalása hiányos (hivatkozás az `adatosítva` szerepnél, 5./6./7. szerep, H7121 → BDB 2.c) | a DONTESEK szövege szerint kiegészítve | F52.28 |
+| 3 | ADATVAGYON „Státuszok”, v16 sor, állapotfrissítés: „a 7. adag a DT56 küszöbével” | a 7. adag (86%) indulhat, a 8. adagtól a küszöb dönt (DT56) | F52.29 |
+| 4 | napló 3.2 és ADATVAGYON v17/új sor: az ATALAKITASI 4.7 sor a 18.1-ben, az N-F34b a 18.4-ben van, nem a 17.2-ben | szakaszbesorolás javítva (a napló delta 15. sora is) | F52.30 |
+| 5 | SEMA 4 ↔ CLAUDE.md ellentmondás ⛔ nélkül (SEMA :1229) | ⛔ jelezve a felhasználónak; a SEMA nincs az `ir`-ben, nem javítva; delta 27. sor, 3.3/11., Nyitott tábla, ADATVAGYON 22.5 | F52.32 |
+
+Az ellenőr megjegyzései (alap `1f420a7c`, #71 PR #226, #73 PR #231, a 6. lépcső DT nélküli eljárási állítása) szintén javítva: F52.31.
+
 ## Nyitott a következő futásra
 
 A futások között felgyűlt tételek, amelyeket a következő szinkron a delta-listájába vesz (brief 4.2). Csak hivatkozással (brief 4.3b): a tétel kimenete a hivatkozott DT-tétel, csonk vagy ⛔. A 2. futás nyitott tételei lezárva: a VIBE `lepes=MCP` sor (DT49 ✅), a #25 kettéválasztása (#76 befogadva), DT-M4–M6 (DT76), a DT-M8 (d) (a #11 csonk `olvas:` sora), a SQLITE\_EPIT (#79) és a SZPA\_AUDIT (feltételes, DT77 (13)).
