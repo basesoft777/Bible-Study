@@ -5,7 +5,7 @@ a	eltérő sorok = a napló sorai (sorszám szerint)	OK	6330 eltérő sor, 6330 
 a	az eltérés csak az Igehely mezőben	OK	
 a	a napló régi/új kulcsa a két fájl kulcsaival egyezik minden sorban	OK	
 a	nem érintett sorok bájtazonosak	OK	462972 sor
-b	a mai pipeline betölt (KeyError nélkül)	OK	versmegfeleltetes sorok: 0, osszevonas sorok: 0
+b	a mai pipeline betölt (KeyError nélkül)	OK	versmegfeleltetes sorok: 0, osszevonas sorok: 9
 b	jóváhagyott könyvek vers -> héber szavak (régi vs. új pipeline)	OK	17747 vers, 0 eltérő
 b	könyv 1Krón	OK	942 vers, 0 eltérő
 b	könyv 1Sám	OK	811 vers, 0 eltérő
@@ -25,23 +25,33 @@ b	könyv Józs	OK	658 vers, 0 eltérő
 b	könyv Péld	OK	914 vers, 0 eltérő
 b	könyv Zsolt	OK	2527 vers, 0 eltérő
 b	könyv Ézs	OK	1290 vers, 0 eltérő
-c	parok/szavak sorai: 1Krón	OK	repó 15344/32018 sor; régi pipeline = repó: True; új pipeline = repó: True
-c	parok/szavak sorai: 1Móz	OK	repó 31613/61716 sor; régi pipeline = repó: True; új pipeline = repó: True
-c	parok/szavak sorai: 1Sám	OK	repó 20152/40376 sor; régi pipeline = repó: True; új pipeline = repó: True
-c	parok/szavak sorai: 2Krón	OK	repó 20341/41218 sor; régi pipeline = repó: True; új pipeline = repó: True
-c	parok/szavak sorai: 2Móz	OK	repó 24487/49396 sor; régi pipeline = repó: True; új pipeline = repó: True
-c	parok/szavak sorai: 2Sám	OK	repó 16499/33213 sor; régi pipeline = repó: True; új pipeline = repó: True
-c	parok/szavak sorai: 3Móz	OK	repó 18347/36655 sor; régi pipeline = repó: True; új pipeline = repó: True
-c	parok/szavak sorai: 4Móz	HIBA	repó 24695/49211 sor; régi pipeline = repó: True; új pipeline = repó: False; eltérő versek (1): 4Móz 29:39
-c	parok/szavak sorai: 5Móz	OK	repó 23392/45447 sor; régi pipeline = repó: True; új pipeline = repó: True
-c	parok/szavak sorai: Bír	OK	repó 14939/29913 sor; régi pipeline = repó: True; új pipeline = repó: True
-c	parok/szavak sorai: Eszt	OK	repó 4500/9062 sor; régi pipeline = repó: True; új pipeline = repó: True
-c	parok/szavak sorai: Ez	OK	repó 28852/56397 sor; régi pipeline = repó: True; új pipeline = repó: True
-c	parok/szavak sorai: Ézs	HIBA	repó 25488/50069 sor; régi pipeline = repó: True; új pipeline = repó: False; eltérő versek (2): Ézs 64:1, Ézs 9:20
-c	parok/szavak sorai: Ezsd	OK	repó 5533/10989 sor; régi pipeline = repó: True; új pipeline = repó: True
-c	parok/szavak sorai: Jer	OK	repó 32797/64563 sor; régi pipeline = repó: True; új pipeline = repó: True
-c	parok/szavak sorai: Jób	HIBA	repó 13420/26225 sor; régi pipeline = repó: True; új pipeline = repó: False; eltérő versek (2): Jób 16:22, Jób 36:33
-c	parok/szavak sorai: Józs	OK	repó 15023/30405 sor; régi pipeline = repó: True; új pipeline = repó: True
-c	parok/szavak sorai: Péld	HIBA	repó 10761/21781 sor; régi pipeline = repó: True; új pipeline = repó: False; eltérő versek (1): Péld 11:31
-c	parok/szavak sorai: Zsolt	OK	repó 32189/61064 sor; régi pipeline = repó: True; új pipeline = repó: True
+c	parok/szavak sorai: 1Krón	OK	repó 15344/32018 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/True, szavak True/True, atnezes True/True
+c	parok/szavak sorai: 1Móz	OK	repó 31613/61716 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/True, szavak True/True, atnezes True/True
+c	parok/szavak sorai: 1Sám	OK	repó 20152/40376 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/True, szavak True/True, atnezes True/True
+c	parok/szavak sorai: 2Krón	OK	repó 20341/41218 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/True, szavak True/True, atnezes True/True
+c	parok/szavak sorai: 2Móz	RÉSZBEN	repó 24487/49396 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/False, szavak True/False, atnezes True/True; a sorok és az átnézési napló bájtazonosak, CSAK a proveniencia-sor (forras=) tér el (az f22/versmegfeleltetes*.tsv már nem forrás)
+c	parok/szavak sorai: 2Sám	OK	repó 16499/33213 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/True, szavak True/True, atnezes True/True
+c	parok/szavak sorai: 3Móz	OK	repó 18347/36655 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/True, szavak True/True, atnezes True/True
+c	parok/szavak sorai: 4Móz	RÉSZBEN	repó 24695/49211 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/False, szavak True/False, atnezes True/True; a sorok és az átnézési napló bájtazonosak, CSAK a proveniencia-sor (forras=) tér el (az f22/versmegfeleltetes*.tsv már nem forrás)
+c	parok/szavak sorai: 5Móz	OK	repó 23392/45447 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/True, szavak True/True, atnezes True/True
+c	parok/szavak sorai: Bír	OK	repó 14939/29913 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/True, szavak True/True, atnezes True/True
+c	parok/szavak sorai: Eszt	OK	repó 4500/9062 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/True, szavak True/True, atnezes True/True
+c	parok/szavak sorai: Ez	OK	repó 28852/56397 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/True, szavak True/True, atnezes True/True
+c	parok/szavak sorai: Ézs	RÉSZBEN	repó 25488/50069 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/False, szavak True/False, atnezes True/True; a sorok és az átnézési napló bájtazonosak, CSAK a proveniencia-sor (forras=) tér el (az f22/versmegfeleltetes*.tsv már nem forrás)
+c	parok/szavak sorai: Ezsd	OK	repó 5533/10989 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/True, szavak True/True, atnezes True/True
+c	parok/szavak sorai: Jer	OK	repó 32797/64563 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/True, szavak True/True, atnezes True/True
+c	parok/szavak sorai: Jób	RÉSZBEN	repó 13420/26225 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/False, szavak True/False, atnezes True/True; a sorok és az átnézési napló bájtazonosak, CSAK a proveniencia-sor (forras=) tér el (az f22/versmegfeleltetes*.tsv már nem forrás)
+c	parok/szavak sorai: Józs	OK	repó 15023/30405 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/True, szavak True/True, atnezes True/True
+c	parok/szavak sorai: Péld	RÉSZBEN	repó 10761/21781 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/False, szavak True/False, atnezes True/True; a sorok és az átnézési napló bájtazonosak, CSAK a proveniencia-sor (forras=) tér el (az f22/versmegfeleltetes*.tsv már nem forrás)
+c	parok/szavak sorai: Zsolt	OK	repó 32189/61064 sor; régi pipeline = repó: True; új pipeline = repó: True; teljes fájl bájtra (régi/új): parok True/True, szavak True/True, atnezes True/True
+e	összevonás szétválasztása: 4Móz 29:39 (fő: 4Móz 29:39, extra: 4Móz 30:1)	OK	fő 30 token, extra 13 token
+e	összevonás szétválasztása: Jób 16:22 (fő: Jób 16:22, extra: Jób 17:1)	OK	fő 9 token, extra 9 token
+e	összevonás szétválasztása: Jób 36:33 (fő: Jób 36:33, extra: Jób 37:1)	OK	fő 9 token, extra 11 token
+e	összevonás szétválasztása: Péld 11:31 (fő: Péld 11:31, extra: Péld 12:1)	OK	fő 10 token, extra 8 token
+e	összevonás szétválasztása: Ézs 9:20 (fő: Ézs 9:19, extra: Ézs 9:20)	OK	fő 18 token, extra 23 token
+e	összevonás szétválasztása: Ézs 64:1 (fő: Ézs 64:1, extra: Ézs 64:2)	OK	fő 9 token, extra 19 token
+e	összevonás szétválasztása: Hós 1:11 (fő: Hós 1:11, extra: Hós 2:1)	OK	fő 23 token, extra 11 token
+e	összevonás szétválasztása: Hós 11:11 (fő: Hós 11:11, extra: Hós 12:1)	OK	fő 19 token, extra 20 token
+e	összevonás szétválasztása: Préd 2:26 (fő: Préd 2:26, extra: Préd 2:25)	OK	fő 38 token, extra 9 token
+d	a kivezetett 4 sor visszaállítva: a betöltés megszakad (nem inert; nem állítható vissza)	OK	versosszevonas.tsv: Ézs 9:20 er_tol–er_ig (19–41) nem fér a kulcs 0 tokenjébe
 c	adat/ (benne parok_*/szavak_*) a git szerint változatlan az átkulcsolás előtti állapothoz képest	OK	38 adat/karoli_strong fájl

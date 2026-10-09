@@ -205,3 +205,31 @@ A 9 összevonás-pár közül 7-nél a két TAHOT-vers sorai a fájlban szomszé
 - A `tokenek` modul a 4. tétel módosításainak commitja (`0483fd9f`) után futott (az igazoláshoz); a `versbeosztas.py` (a detektor újragenerálása) a commit előtt futott, f22-táblát nem töltött be. A #22 futtatót nem indítottam.
 - **N-F85c** (a `NYITOTT_FELADATOK.md`-ben): az ALVIL-001 három régi kulcsú sora nem javítandó most.
 - **DT-F85a (5)** tárgytalan (a `parok_Peld` már létezik); a DONTESEK.md-ben jelölve, az állapot 🟢 marad.
+
+## 10. F85.10 — a 4 „nem átkulcsolt” kézi sor sorsa; a `tokenek.py` kiegészítése a közös kulcson álló összevonásokra
+
+*A felhasználó kifejezetten jóváhagyta (chat, 2026.10.09). Érintett fájlok (a brief `ir` mezőjében): `eszkozok/karoli_strong/tokenek.py`, `f22/versosszevonas.tsv`, `eszkozok/tahot_verskulcs_igazolas.py`, `naplok/F85_igazolas.tsv/.md`. Az `eszkozok/karoli_strong/egyesit.py`-hoz nem kellett nyúlni.*
+
+### 10.1 A 4 kivezetett sor, amely nem átkulcsolt versre hivatkozott — nem állítottam vissza
+
+A 4 sor: `\tÉzs 9:20\tnincs_karoli` (kézi tábla), `Ézs 64:1\t\ttorol` és `\tÉzs 64:1\ttorol` (kézi tábla), valamint a `Ézs 9:20  15  34  Ézs 9:20` összevonás-sor (a versosszevonas.tsv-ből). Mind az átkulcsolás előtti eltolt állapotot kompenzálta:
+- a `nincs_karoli Ézs 9:20` azt mondta, hogy a TAHOT 9:20-nak nincs saját Károli-verse (a régi kulcson a K 9:20 a T 9:19-et kapta, a T 9:20 a beolvasztással került a K 9:20-ba); az átkulcsolás után a T 9:19 maga K 9:20, a T 9:20 kulcsa változatlanul 9:20: a közös kulcs maga a beolvasztás;
+- a két `torol` sor a *régi detektor-lista* Ézs 64:1-re vonatkozó sorait törölte; a detektor-lista újragenerálása után nincs mit törölniük (a `f22/versmegfeleltetes.tsv`-ben ÓSZ-sor nincs);
+- az összevonás-sor `eredeti` címkéje (Ézs 9:20) *régi* címke: **a sor nem tűnt el, hanem F85.10-ben új alakban visszakerült** (10.2), a hozzá tartozó `hu_tol`–`hu_ig` és `megj` változatlan.
+
+A `nincs_karoli` és a két `torol` sort **nem állítottam vissza**, indokok: (1) azt kompenzálták, ami már nincs; (2) a visszaállításuk a mai tokenek-kódban *kárt okoz*: az `igazolas.py` d) kontrollja szerint a `nincs_karoli Ézs 9:20` sor a `_versmegfeleltet`-ben az `Ézs 9:20` kulcsot kizárja a leképezésből (az `erintett_e` halmaz), és a sort a `beolvasztott` halmaz miatt ki is hagyja, így a K 9:20 kulcs tokenjei elvesznek (`SystemExit: … nem fér a kulcs 0 tokenjébe`). Bizonytalanság nincs.
+
+### 10.2 A változtatások
+
+- **`f22/versosszevonas.tsv`:** új 6. és 7. oszlop, `er_tol` / `er_ig`: a beolvasztott TAHOT-vers tokenjeinek 1-alapú helye a közös Károli-kulcs nyers tokenlistájában (a fájlfejléc-megjegyzés leírja). A 6 futott összevonás (4Móz 29:39 [31–43], Ézs 9:20 [19–41], Ézs 64:1 [10–28], Péld 11:31 [11–18], Jób 16:22 [10–18], Jób 36:33 [10–20]) az eredeti sorokkal (hu_tol, hu_ig, `eredeti`, `megj` verbatim a F85.4 előtti állapotból); a 3 még nem futott összevonás: Hós 11:11 [20–39] (F85.4), **Hós 1:11 + 2:1** (hu 23–30, er 24–34) és **Préd 2:26 + 2:25** (hu 1–8, er 1–9; az extra a vers *elején* áll, ezért az `er_tol` 1). Az `eredeti` a beolvasztott TAHOT-vers átkulcsolás előtti címkéje.
+- **`eszkozok/karoli_strong/tokenek.py`:** `versosszevonasok()` az opcionális `er_tol`/`er_ig` oszlopokat is beolvassa; új `_eredeti_osztva()`: a nyers (`_nyers_eredeti()`) lista leképezése után a közös kulcs tokenlistájából kiemeli a beolvasztott vers tokenjeit (extra), a fő vers tokenjei 1-től újraszámozva maradnak; `betolt_eredeti(versmegf=True)` a fő verset adja (mint a régi pipeline), `osszevont_extra()` az extrát (sorszám = a fő vers tokenszáma + i, mint régen). `betolt_eredeti(versmegf=False)` (a detektor bemenete) a nyers listát adja, változatlanul. A régi alakú sorok (nincs `er_tol`) továbbra is a nyers kulcsról kapják az extrát (visszafelé kompatibilitás). Az `egyesit.py` változatlan: ugyanazt a `betolt_eredeti()` / `osszevont_extra()` / `versosszevonasok()` interfészt használja.
+
+### 10.3 Az igazolás (`naplok/F85_igazolas.md`, `eszkozok/tahot_verskulcs_igazolas.py`)
+
+- **(a)** 6 330 eltérő sor = a napló, csak az Igehely mező; a többi 462 972 sor bájtazonos (változatlan eredmény).
+- **(b)** a jóváhagyott könyvek vers → héber szavak bemenete a régi és az új pipeline között: **17 747 vers, 0 eltérés** (a futott 6 összevonás extrájával együtt: a `osszevont_extra()` is azonos).
+- **(c) 19 táblapár** (`egyesit.epit()` memóriában, a `parok_*`/`szavak_*` fájlok nem íródtak): a régi pipeline (átkulcsolás előtti TAHOT + régi f22 táblák, az új kóddal futtatva) mind a 19-et bájtra reprodukálja (regresszió-teszt); az **új pipeline mind a 19 táblapár adatsorait és mind a 19 átnézési naplót bájtra reprodukálja, a 6 összevont verset a `kezi` jelölésekkel együtt** (0 eltérő vers). A teljes fájl-bájtokra a 19-ből 14 azonos; **5 könyvnél (2Móz, 4Móz, Ézs, Jób, Péld) csak az első, `#` kezdetű proveniencia-sor tér el**: a `forras=` mező az `f22/versmegfeleltetes.tsv` és az `f22/versmegfeleltetes_kezi.tsv` nevét sorolta fel (azok ÓSZ-sorai a kivezetéssel megszűntek), az `egyesit.proveniencia_sor()` újraíráskor ezeket már nem nevezi. A táblákat nem írtam felül; ez az egyetlen, amely a feltételtől („BÁJTRA”) eltér, és kódmódosítás nélkül nem is hozható egyezésre (a régi állapot forrásait nem szabad megnevezni, ha már nem használjuk). A döntés a felhasználóé: elfogadja-e, vagy az újraíráskor kézzel kell-e a proveniencia-sorba az F85-ig használt forrásokat megőrizni.
+- **(d)** kontroll: a 4 kivezetett sor visszaállítása megszakítja a betöltést (10.1).
+- **(e)** a 9 összevonás szétválasztása (a futott 6 + a nem futott Hós 1:11/2:1, Hós 11:11/12:1, Préd 2:26/2:25): a fő vers és az extra tokenjei (strong, alak, tükörfordítás, sorszám) megegyeznek az átkulcsolás előtti nyers TAHOT megfelelő verseivel.
+- `egyesit.py --ellenoriz` mind a 19 könyvre „rendben”.
+- **Megjegyzés:** a `versbeosztas.py --onteszt` 6. pontja (a 2Móz 35:36–36:37 eltolódását keresi a *nyers* TAHOT-ban) az F85.6 átkulcsolás óta hibát jelez (a 2Móz már Károli-kulcsú); ez a módosításomtól független (stash-sel ellenőrizve), a `versbeosztas.py` nincs az `ir`-ben — külön tétel (frissítse az öntesztet az átkulcsolt állapotra).

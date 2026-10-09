@@ -143,24 +143,93 @@ def c_pont(regi_tmp):
         u = egyesit.utak(konyv)
         fajl_p = tabla_sorok(u['parok'])[1:]
         fajl_s = tabla_sorok(u['szavak'])[1:]
-        eredmeny = {}
+        eredmeny, szovegek = {}, {}
         for cim, cfg in (('régi', regi_tmp), ('új', mai)):
             beallit(*cfg)
             p, s, a = egyesit.epit(konyv, None, karoli, None)
             eredmeny[cim] = (['\t'.join(str(x) for x in r) for r in p], ['\t'.join(str(x) for x in r) for r in s])
+            prov = egyesit.proveniencia_sor(konyv)
+            szovegek[cim] = {'parok': egyesit.tsv_szoveg(egyesit.PAROK_FEJ, p, prov), 'szavak': egyesit.tsv_szoveg(egyesit.SZAVAK_FEJ, s, prov),
+                             'atnezes': egyesit.tsv_szoveg(egyesit.ATNEZES_FEJ, a, None)}
         beallit(*mai)
         reg_ok = eredmeny['régi'] == (fajl_p, fajl_s)
         uj_ok = eredmeny['új'] == (fajl_p, fajl_s)
         reszlet = 'repó %d/%d sor; régi pipeline = repó: %s; új pipeline = repó: %s' % (len(fajl_p), len(fajl_s), reg_ok, uj_ok)
+        # teljes fájl-bájtok (a proveniencia-sorral együtt), parok / szavak / átnézési napló
+        bajt, csak_prov = {}, True
+        for kulcs in ('parok', 'szavak', 'atnezes'):
+            ut = u[kulcs]
+            if not os.path.exists(ut):
+                bajt[kulcs] = {'régi': None, 'új': None}
+                continue
+            fb = open(ut, 'rb').read()
+            bajt[kulcs] = {cim: szovegek[cim][kulcs].encode('utf-8') == fb for cim in ('régi', 'új')}
+            if not bajt[kulcs]['új']:
+                # csak az első (proveniencia-)sor tér-e el
+                fs, us = fb.decode('utf-8').split(chr(10)), szovegek['új'][kulcs].split(chr(10))
+                csak_prov = csak_prov and fs[1:] == us[1:] and kulcs != 'atnezes'
+        reszlet += '; teljes fájl bájtra (régi/új): ' + ', '.join('%s %s/%s' % (k, v['régi'], v['új']) for k, v in bajt.items())
+        mind_bajt = all(v['új'] is not False for v in bajt.values())
+        if uj_ok and not mind_bajt and csak_prov:
+            allapot = 'RÉSZBEN'
+            reszlet += '; a sorok és az átnézési napló bájtazonosak, CSAK a proveniencia-sor (forras=) tér el (az f22/versmegfeleltetes*.tsv már nem forrás)'
+        else:
+            allapot = 'OK' if (uj_ok and mind_bajt) else 'HIBA'
         if not uj_ok:
             kul = set()
             for uj_l, f_l in ((eredmeny['új'][0], fajl_p), (eredmeny['új'][1], fajl_s)):
                 cu, cf = collections.Counter(uj_l), collections.Counter(f_l)
                 for sor in list((cu - cf).keys()) + list((cf - cu).keys()):
-                    kul.add(sor.split('	')[0])
+                    kul.add(sor.split(chr(9))[0])
             reszlet += '; eltérő versek (%d): %s' % (len(kul), ', '.join(sorted(kul)))
-        jelent('c', 'parok/szavak sorai: ' + konyv, 'OK' if uj_ok else 'HIBA', reszlet)
+        jelent('c', 'parok/szavak sorai: ' + konyv, allapot, reszlet)
     beallit(*mai)
+
+
+def sig(lista):
+    return [(w['strong'], w['alak'], w['tukor']) for w in lista]
+
+
+# a 9 összevonás: (közös Károli-kulcs, a fő vers régi TAHOT-címkéje, a beolvasztott vers régi TAHOT-címkéje)
+OSSZEVONASOK = [('4Móz 29:39', '4Móz 29:39', '4Móz 30:1'), ('Jób 16:22', 'Jób 16:22', 'Jób 17:1'), ('Jób 36:33', 'Jób 36:33', 'Jób 37:1'),
+                ('Péld 11:31', 'Péld 11:31', 'Péld 12:1'), ('Ézs 9:20', 'Ézs 9:19', 'Ézs 9:20'), ('Ézs 64:1', 'Ézs 64:1', 'Ézs 64:2'),
+                ('Hós 1:11', 'Hós 1:11', 'Hós 2:1'), ('Hós 11:11', 'Hós 11:11', 'Hós 12:1'), ('Préd 2:26', 'Préd 2:26', 'Préd 2:25')]
+
+
+def e_pont(regi_tmp):
+    """A 9 összevonás szétválasztása: a közös kulcson a fő vers (betolt_eredeti) és az extra (osszevont_extra) tokenjei
+    megegyeznek az átkulcsolás előtti nyers TAHOT megfelelő verseivel (a 6 futott és a 3 még nem futott összevonás)."""
+    mai = (tokenek.TAHOT, tokenek.VERSBEOSZTAS_MEGF, tokenek.VERSMEGF_KEZI, tokenek.VERSOSSZEVONAS)
+    beallit(*regi_tmp)
+    regi_nyers = tokenek._nyers_eredeti()
+    beallit(*mai)
+    fo, extra = tokenek.betolt_eredeti(), tokenek.osszevont_extra()
+    for k, f, e in OSSZEVONASOK:
+        fo_ok = sig(fo[k]) == sig(regi_nyers[f]) and [w['sorsz'] for w in fo[k]] == list(range(1, len(fo[k]) + 1))
+        ex_ok = sig(extra.get(k, [])) == sig(regi_nyers[e]) and [w['sorsz'] for w in extra.get(k, [])] == list(range(len(fo[k]) + 1, len(fo[k]) + 1 + len(regi_nyers[e])))
+        jelent('e', 'összevonás szétválasztása: %s (fő: %s, extra: %s)' % (k, f, e), 'OK' if fo_ok and ex_ok else 'HIBA',
+               'fő %d token, extra %d token' % (len(fo[k]), len(extra.get(k, []))))
+
+
+def d_pont():
+    """Kontroll: a F85.8-ban kivezetett 4 'nem átkulcsolt vers' kézi sor visszaállítva sem változtatná a betöltést (tehát inertek voltak)."""
+    alap = tokenek.betolt_eredeti()
+    mai = tokenek.VERSMEGF_KEZI
+    tmp = os.path.join(tempfile.mkdtemp(prefix='f85_kezi4_'), 'kezi.tsv')
+    szoveg = 'karoli' + chr(9) + 'eredeti' + chr(9) + 'tipus' + chr(10) + chr(9) + 'Ézs 9:20' + chr(9) + 'nincs_karoli' + chr(10)
+    szoveg += 'Ézs 64:1' + chr(9) + chr(9) + 'torol' + chr(10) + chr(9) + 'Ézs 64:1' + chr(9) + 'torol' + chr(10)
+    open(tmp, 'wb').write(szoveg.encode('utf-8'))
+    tokenek.VERSMEGF_KEZI = tmp
+    try:
+        e = tokenek.betolt_eredeti()
+    except SystemExit as ex:
+        tokenek.VERSMEGF_KEZI = mai
+        jelent('d', 'a kivezetett 4 sor visszaállítva: a betöltés megszakad (nem inert; nem állítható vissza)', 'OK', str(ex)[:160])
+        return
+    finally:
+        tokenek.VERSMEGF_KEZI = mai
+    kul = [k for k in set(alap) | set(e) if alap.get(k) != e.get(k)]
+    jelent('d', 'a kivezetett 4 sor (Ézs 9:20 nincs_karoli, Ézs 64:1 torol x2) visszaállítva: a betöltés változatlan', 'OK' if not kul else 'HIBA', '%d eltérő kulcs' % len(kul))
 
 
 def sha_ellenorzes():
@@ -182,6 +251,8 @@ def main():
     regi_tmp = (ut['konkordancia/TAHOT_kivonat.tsv'], ut['f22/versmegfeleltetes.tsv'], ut['f22/versmegfeleltetes_kezi.tsv'], ut['f22/versosszevonas.tsv'])
     b_pont(regi_tmp)
     c_pont(regi_tmp)
+    e_pont(regi_tmp)
+    d_pont()
     sha_ellenorzes()
     with open(KI_TSV, 'w', encoding='utf-8', newline='\n') as fh:
         fh.write('# GENERÁLT: eszkozok/tahot_verskulcs_igazolas.py | a(z) %s (átkulcsolás előtti) állapot és a mostani fa összevetése | ts=2026-10-09\n' % BASE)
