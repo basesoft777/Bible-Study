@@ -142,3 +142,14 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - Kézi átnézés: Jób 16:22, 36:33, Péld 11:31; korábbról 1Krón 19:2, Ézs 9:20, 64:1, Zsolt 119:94, 144:15, 145:1.
 - PR és merge a felhasználóé (az ág a Péld-, a Bír- és a Jób-menetet hordozza).
 - A következő könyv a felhasználó döntése; a mérés (2026.10.09) szerinti tiszta jelöltek: Eszt, 2Sám, 1Sám, 1Kir, Neh, 2Kir; a Dán (37 detektorsor) előtt versbeosztás-döntés kell.
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_Job.md`)
+
+Az ellenőr eltérést nem talált (TISZTA). A számokat pontos könyvegyezéssel (`\tapi_termeles/high/Job\t`, `cimke=job`, `^Jób `, `Job_k*.json`) és `lekerdez.py`-jal igazolta; a merge (`7ace9ad`) pontosan a main változásait hozta, az ütközésfeloldás helyes.
+
+- **Detektor:** az újragenerálás csak Jób-sorokat érintett (−34 `nincs_eredeti`, +19 `eltolt`), a 40:1–19 sorok azonosak a #83 kézi soraival.
+- **Versbeosztás:** a két beolvasztás szóhatára és a 17/37 eltolás tartalmilag igazolva (17:1, 17:9, 17:12, 17:13, 17:15, 37:1, 37:12, 37:23); a detektor 17/37 sorait a kézi sorok kiváltják; +1000-es kulcs nincs, minden Károli-vers mindkét oldalon jelen.
+- **Strong a TAHOT-ból:** 1:1, 16:22, 17:13, 37:1, 41:1, 42:17 mintavétele egyezik.
+- **Régi arany:** a 2.4 magyarázata adatból igazolt (a `Job.17.13` H7585-je a Károli 17:12-ben áll).
+- **CI** (saját futás, a PR valódi alapjával, `ce9f7be`): HIBA nincs; az E25 3 és az E27 92 találata előzményi.
+- **Nem ellenőrizhető az ellenőrnek:** az `egyesit.py --ellenoriz` (az 1a szakasz saját futása igazolja) és az 1.1 korrelációs ellenőrzés (nincs commitolt kimenete; az ellenőr a határverseket szúrópróbával igazolta).
