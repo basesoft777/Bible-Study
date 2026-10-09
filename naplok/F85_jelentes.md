@@ -306,3 +306,17 @@ Minden más Hós/Préd kulcs változatlan; a többi könyvben csak a 6 futott ö
 - **Bukás a régi kódon:** az F85.14 `tokenek.py`-ján (`9fb8dafd`) és a `HEAD`-en (F85.16) az eset **BUKIK** („a(z) b+c eredeti vers 2 példányban szerepel (1 kell)”, „a beolvasztott kulcs az eltolt sor után is megmaradt (megkettőzés)”); az új kódon rendben. A `versbeosztas.py --onteszt`: `önteszt: rendben`.
 - **Feltétel:** a mai kód ugyanúgy viselkedik (a kézi tábla és a detektor-lista ÓSZ-sora üres, a módosított ág nem fut). Az igazolás újrafuttatva (`naplok/F85_igazolas.*`): 0 HIBA; a 19 táblapár sorai és átnézési naplója bájtazonos (5 könyvnél csak a proveniencia-sor tér el, elfogadva), `egyesit.ellenoriz` 19/19; a Hós/Préd összevetés (13.2) számai változatlanok (Hós 1:11 34 → 23+11, Hós 11:11 39 → 19+20, Préd 2:26 47 → 38+9).
 - Az `eszkozok/karoli_strong/versbeosztas.py` az `ir` mezőben van (F85.16).
+
+## 16. F85.18 — a kulcsgenerátor (brief 5. tétel)
+
+*A felhasználó kifejezetten engedélyezte (chat, 2026.10.09). Fájl: `eszkozok/tahot_karoli_kulcs_generalas.py` (az `ir` mezőben van). A `TAHOT_kivonat.tsv`-t nem írtam felül.*
+
+**Mit tud a generátor és mit nem.** A generátor fejezet-szintű döntésekkel (`ELSODLEGES` / `MASODLAGOS` / `ADATMINOSEGI_GYANU`, `DONTES_FELULBIRALAS`) és egyetlen sor-kivétellel dolgozik; az F85.6 átkulcsolása **versszintű** (fejezethatár-eltolás és fejezeten belüli eltolás: Jób 40, Hós 12, Préd 2, Ézs 9, …), ezt a fejezet-szintű döntés nem fejezheti ki. A generátor teljes újrafuttatása a nyers bemenetekből (`phaseA_all.tsv`, `step1_decisions.tsv`) ráadásul a repóból nem reprodukálható (azok nincsenek a repóban), és a Jób 41 sorait (332) az F84.2 szkript (`tahot_job41_potlas.py`) vette át külön.
+
+**Mi változott.**
+- Új versszintű felülbírálási lépés: `load_kulcsvaltas()` / `atkulcsol_sorok()` a `naplok/F85_kulcsvaltas.tsv` (a jóváhagyott 337 vers régi → új kulcsa; régi kulcsonként egyetlen új kulcs) alapján a `main()`-ben a fő kivonat sorainak első mezőjét átkulcsolja (a sorrend és minden más mező változatlan), a kiírás előtt. A `DONTES_FELULBIRALAS` Jób (40, 41) megjegyzése pontosítva: a Jób 40 +5-ös eltolását az új lépés kezeli, a (40, 41) fejezet-döntés ezt továbbra sem fejezi ki.
+- Új `--szimulacio [REF]` mód (alapértelmezett REF: `8ce6e95c~1`, az átkulcsolás előtti állapot): a `git show REF:konkordancia/TAHOT_kivonat.tsv` sorait ugyanazzal az átkulcsolási lépéssel átalakítja, és bájtra összeveti a mai `TAHOT_kivonat.tsv`-szel; **semmit nem ír**.
+
+**Igazolás.** `python eszkozok/tahot_karoli_kulcs_generalas.py --szimulacio` → *„bájtazonos a mai TAHOT_kivonat.tsv-szel: True; különböző sor: 0 / 469301”* (kilépési kód 0). Negatív kontroll: `--szimulacio HEAD` (az átkulcsolást már tartalmazó kivonatra alkalmazva a lépést) → *„False; különböző sor: 5933 / 469301”* (kilépési kód 1): a lépés nem idempotens, csak az átkulcsolás ELŐTTI kulcsokra alkalmazható, és az ellenőrzés megkülönbözteti a helyes és a rossz bemenetet.
+
+**Korlát (indokolt megjegyzés).** A generátor kulcsolása tehát a mostani (átkulcsolt) fájlt a *szimuláció* szintjén reprodukálja (az átkulcsolás előtti kivonat + a versszintű tábla = a mai fájl), a nyers bemenetekből nem futtatható újra; a Jób 41-et az F84.2 szkript pótolja. A teljes újrafuttatás akkor lenne lehetséges, ha a `phaseA_all.tsv` és a `step1_decisions.tsv` a repóba kerülne — ez külön tétel.

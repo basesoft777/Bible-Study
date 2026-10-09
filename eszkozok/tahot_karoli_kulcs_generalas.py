@@ -59,6 +59,9 @@ DONTES_FELULBIRALAS = {
         # (40, 41) dontes-erteke [javaslat]: ELSODLEGES a 41-re (naplok/F84_jelentes.md).
         # Az ertek itt tudatosan valtozatlan: az eredeti (hibas) indoklas lent tovabb
         # dokumentalja a nyitott esetek fajl keletkezeset.
+        # F85.6: a Job 40 MT-szamozasu kulcsait (TAHOT 40:(n+5) = Karoli 40:n, 19 vers) es a tobbi versszintu eltolast
+        # nem ez a fejezet-szintu dontes, hanem az alabbi versszintu atkulcsolasi lepes (atkulcsol_sorok, KULCSVALTAS_PATH)
+        # kezeli; a Job 41 sorait tovabbra is az F84.2 szkript potolja (a generator nyers bemenetei nincsenek a repoban).
         "Sem az elsodleges (angol/NRSV), sem a masodlagos (heber) fejezethossz "
         "nem egyezik a Karoli tenyleges 40. (28v) es 41. (25v) fejezet-hosszaval "
         "(elsodleges: 24/34; masodlagos: 32/26) - korabbi audit szerint Jób 41:25 "
@@ -77,6 +80,60 @@ DONTES_FELULBIRALAS = {
 KULON_SOR_KIVETEL = {
     ("1Sa.20.42", "1Sa.21.1"): "1Sám 20:43",
 }
+
+
+# ---- F85.6: versszintu atkulcsolas (a TAHOT_kivonat kulcsa a Karoli-vers, amelynek a heber szoveget hordozza) ----
+# A fenti per-fejezet dontesek (ELSODLEGES/MASODLAGOS) a fejezethatar-eltolasokat es a fejezeten beluli eltolasokat
+# (pl. Job 40: TAHOT 40:(n+5) = Karoli 40:n; Hos 12, Pred 2, Ezs 9 ...) NEM tudjak kifejezni, mert versszintuek.
+# Ezeket a generator egy utofeldolgozo lepesben kezeli: a naplok/F85_kulcsvaltas.tsv (a jovahagyott, igazolt
+# 337 vers regi -> uj kulcsa; l. naplok/F85_jelentes.md, DONTESEK.md DT-F85a) a versszintu felulbiralas-tabla.
+# FIGYELEM: a teljes ujrafuttatas a nyers bemenetekbol (phaseA_all.tsv, step1_decisions.tsv) nem reprodukalhato a repobol
+# (azok nincsenek a repoban), es a Job 41 sorait (332 sor) az eszkozok/tahot_job41_potlas.py (F84.2) vette at kulon.
+# A kulcsolas reprodukalhatosagat a --szimulacio mod igazolja: az atkulcsolas ELOTTI kivonat + ez a lepes = a mai fajl.
+KULCSVALTAS_PATH = os.path.join(REPO, 'naplok', 'F85_kulcsvaltas.tsv')
+
+
+def load_kulcsvaltas():
+    """{regi TAHOT-kulcs: uj Karoli-kulcs} a naplok/F85_kulcsvaltas.tsv-bol; a leképezés egyértelmű (régi kulcsonként egy új)."""
+    m = {}
+    with open(KULCSVALTAS_PATH, encoding='utf-8') as f:
+        for ln in f:
+            if ln.startswith('#') or ln.startswith('sorszam\t'):
+                continue
+            p = ln.rstrip('\n').split('\t')
+            if m.setdefault(p[1], p[2]) != p[2]:
+                raise ValueError("nem egyertelmu atkulcsolas: %s" % p[1])
+    return m
+
+
+def atkulcsol_sorok(main_rows):
+    """A fokivonat sorainak (az elso mezo a Karoli-kulcs) versszintu atkulcsolasa; a sorrend es minden mas mezo valtozatlan."""
+    m = load_kulcsvaltas()
+    return [(m.get(r[0], r[0]),) + tuple(r[1:]) for r in main_rows]
+
+
+def szimulacio(ref):
+    """Az atkulcsolas elotti kivonat (git `ref`) + atkulcsol_sorok = a mai TAHOT_kivonat.tsv? Nem ir semmit.
+    Visszaad: (bajtazonos, a kulonbozo sorok szama, a sorok szama)."""
+    import subprocess
+    r = subprocess.run(['git', 'show', '%s:konkordancia/TAHOT_kivonat.tsv' % ref], capture_output=True, cwd=REPO)
+    if r.returncode:
+        raise SystemExit('git show hiba: %s' % ref)
+    regi = r.stdout.split(b'\n')
+    mai = open(OUT_MAIN, 'rb').read().split(b'\n')
+    m = load_kulcsvaltas()
+    uj, kul = [], 0
+    for i, s in enumerate(regi):
+        if i == 0 or not s:
+            uj.append(s)
+            continue
+        mezok = s.split(b'\t')
+        mezok[0] = m.get(mezok[0].decode('utf-8'), mezok[0].decode('utf-8')).encode('utf-8')
+        uj.append(b'\t'.join(mezok))
+    for a, b in zip(uj, mai):
+        if a != b:
+            kul += 1
+    return (uj == mai, kul, len(mai) - (1 if mai and mai[-1] == b'' else 0))
 
 
 def _tsv_data_rows(path):
@@ -239,6 +296,9 @@ def main():
 
     print(f"Uj sorok a fokivonatba: {n_new_main}  nyitott/gyanus sorok: {n_new_open}", file=sys.stderr)
 
+    # --- F85.6: versszintu atkulcsolas (a sorrend es minden mas mezo valtozatlan) ---
+    main_rows = atkulcsol_sorok(main_rows)
+
     # --- vegso kereszt-ellenorzes: minden fokivonat-kulcs letezik-e a Karoliban ---
     n_mismatch = 0
     for row in main_rows:
@@ -266,4 +326,10 @@ def main():
 
 
 if __name__ == '__main__':
+    if len(sys.argv) > 1 and sys.argv[1] == '--szimulacio':
+        # python eszkozok/tahot_karoli_kulcs_generalas.py --szimulacio [REF]   (alapértelmezett REF: 8ce6e95c~1, az átkulcsolás előtti állapot)
+        ref = sys.argv[2] if len(sys.argv) > 2 else '8ce6e95c~1'
+        egyezik, kul, db = szimulacio(ref)
+        print("szimulacio (%s): bajtazonos a mai %s-szel: %s; kulonbozo sor: %d / %d" % (ref, os.path.basename(OUT_MAIN), egyezik, kul, db))
+        sys.exit(0 if egyezik else 1)
     main()
