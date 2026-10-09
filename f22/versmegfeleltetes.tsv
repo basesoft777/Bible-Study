@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_strong/versbeosztas.py | scope=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | forras=determinisztikus vershossz-igazítás (naplok/F22_versbeosztas.md) | ts=2026-10-02T14:20:03+00:00
+# GENERÁLT: eszkozok/karoli_strong/versbeosztas.py | scope=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | forras=determinisztikus vershossz-igazítás (naplok/F22_versbeosztas.md) | ts=2026-10-09T06:44:48+00:00
 # A futtató (tokenek.betolt_eredeti) ebből adja a Károli-versnek a megfeleltetett eredeti verset; ahol nincs megfeleltetés, ott kezi.
 karoli	eredeti	tipus
 2Móz 35:36	2Móz 36:1	eltolt
@@ -67,40 +67,25 @@ Jób 17:15	Jób 17:16	eltolt
 Jób 37:21	Jób 37:22	eltolt
 Jób 37:22	Jób 37:23	eltolt
 Jób 37:23	Jób 37:24	eltolt
-Jób 40:1		nincs_eredeti
-Jób 40:2		nincs_eredeti
-Jób 40:3		nincs_eredeti
-Jób 40:4		nincs_eredeti
-Jób 40:5		nincs_eredeti
-Jób 40:13		nincs_eredeti
-Jób 40:16		nincs_eredeti
-Jób 40:19		nincs_eredeti
-Jób 41:1		nincs_eredeti
-Jób 41:2		nincs_eredeti
-Jób 41:3		nincs_eredeti
-Jób 41:4		nincs_eredeti
-Jób 41:6		nincs_eredeti
-Jób 41:9		nincs_eredeti
-Jób 41:10		nincs_eredeti
-Jób 41:13		nincs_eredeti
-Jób 41:14		nincs_eredeti
-Jób 41:15		nincs_eredeti
-Jób 41:16		nincs_eredeti
-Jób 41:17		nincs_eredeti
-Jób 41:18		nincs_eredeti
-Jób 41:19		nincs_eredeti
-Jób 41:20		nincs_eredeti
-Jób 41:21		nincs_eredeti
-Jób 41:22		nincs_eredeti
-Jób 41:24		nincs_eredeti
-Jób 41:25		nincs_eredeti
-Jób 41:26		nincs_eredeti
-Jób 41:28		nincs_eredeti
-Jób 41:29		nincs_eredeti
-Jób 41:30		nincs_eredeti
-Jób 41:31		nincs_eredeti
-Jób 41:32		nincs_eredeti
-Jób 41:33		nincs_eredeti
+Jób 40:1	Jób 40:6	eltolt
+Jób 40:2	Jób 40:7	eltolt
+Jób 40:3	Jób 40:8	eltolt
+Jób 40:4	Jób 40:9	eltolt
+Jób 40:5	Jób 40:10	eltolt
+Jób 40:6	Jób 40:11	eltolt
+Jób 40:7	Jób 40:12	eltolt
+Jób 40:8	Jób 40:13	eltolt
+Jób 40:9	Jób 40:14	eltolt
+Jób 40:10	Jób 40:15	eltolt
+Jób 40:11	Jób 40:16	eltolt
+Jób 40:12	Jób 40:17	eltolt
+Jób 40:13	Jób 40:18	eltolt
+Jób 40:14	Jób 40:19	eltolt
+Jób 40:15	Jób 40:20	eltolt
+Jób 40:16	Jób 40:21	eltolt
+Jób 40:17	Jób 40:22	eltolt
+Jób 40:18	Jób 40:23	eltolt
+Jób 40:19	Jób 40:24	eltolt
 	Péld 12:28	nincs_karoli
 Préd 2:1	Préd 1:18	eltolt
 Préd 2:2	Préd 2:1	eltolt

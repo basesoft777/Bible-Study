@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_strong/versbeosztas.py | scope=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv (nyers versfolyam, versmegfeleltetés nélkül) | forras=determinisztikus vershossz-összevetés | ts=2026-10-02T14:20:03+00:00
+# GENERÁLT: eszkozok/karoli_strong/versbeosztas.py | scope=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv (nyers versfolyam, versmegfeleltetés nélkül) | forras=determinisztikus vershossz-összevetés | ts=2026-10-09T06:44:48+00:00
 
 # F22_versbeosztas.md — a Károli- és az eredeti versbeosztás összevetése (teljes Biblia)
 
@@ -27,7 +27,7 @@
 | Ezsd | 280 | 280 | 10 | 0 | 0 | 0 | 0 |
 | Neh | 406 | 406 | 13 | 0 | 0 | 0 | 0 |
 | Eszt | 167 | 167 | 10 | 0 | 0 | 0 | 0 |
-| Jób | 1068 | 1036 | 42 | 15 | 9 | 34 | 2 |
+| Jób | 1068 | 1070 | 42 | 15 | 28 | 0 | 2 |
 | Zsolt | 2527 | 2527 | 150 | 27 | 0 | 0 | 0 |
 | Péld | 914 | 915 | 31 | 18 | 0 | 0 | 1 |
 | Préd | 221 | 222 | 12 | 5 | 65 | 0 | 1 |
@@ -76,7 +76,7 @@
 | 3Ján | 15 | 14 | 1 | 1 | 0 | 1 | 0 |
 | Júd | 25 | 25 | 1 | 0 | 0 | 0 | 0 |
 | Jel | 405 | 404 | 22 | 1 | 0 | 1 | 0 |
-| **összesen** | **31158** | **31127** | **1189** | **95** | **250** | **43** | **12** |
+| **összesen** | **31158** | **31161** | **1189** | **95** | **269** | **9** | **12** |
 
 ## 2. Fejezetenként
 
@@ -644,8 +644,8 @@
 | 37 | 23 | 24 | 3 | 0 | 1 | -0.34 | +1 | 0.67 | LETSZAM ELTOLT EHIANY KORR_ELT |
 | 38 | 38 | 38 | 0 | 0 | 0 | 0.31 | +0 | 0.31 | GYENGE |
 | 39 | 38 | 38 | 0 | 0 | 0 | 0.55 | +0 | 0.55 | GYENGE |
-| 40 | 19 | 19 | 0 | 8 | 0 | 0.51 | +0 | 0.51 | KHIANY GYENGE |
-| 41 | 34 | 0 | 0 | 26 | 0 | - | +0 | - | LETSZAM KHIANY |
+| 40 | 19 | 19 | 19 | 0 | 0 | 0.51 | +0 | 0.51 | ELTOLT GYENGE |
+| 41 | 34 | 34 | 0 | 0 | 0 | 0.14 | +2 | 0.25 | GYENGE |
 | 42 | 17 | 17 | 0 | 0 | 0 | 0.95 | +0 | 0.95 | - |
 
 ### Zsolt
