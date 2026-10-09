@@ -232,7 +232,7 @@ A `nincs_karoli` és a két `torol` sort **nem állítottam vissza**, indokok: (
 - **(d)** kontroll: a 4 kivezetett sor visszaállítása megszakítja a betöltést (10.1).
 - **(e)** a 9 összevonás szétválasztása (a futott 6 + a nem futott Hós 1:11/2:1, Hós 11:11/12:1, Préd 2:26/2:25): a fő vers és az extra tokenjei (strong, alak, tükörfordítás, sorszám) megegyeznek az átkulcsolás előtti nyers TAHOT megfelelő verseivel.
 - `egyesit.py --ellenoriz` mind a 19 könyvre „rendben”.
-- **Megjegyzés:** a `versbeosztas.py --onteszt` 6. pontja (a 2Móz 35:36–36:37 eltolódását keresi a *nyers* TAHOT-ban) az F85.6 átkulcsolás óta hibát jelez (a 2Móz már Károli-kulcsú); ez az F85.6 átkulcsolás következménye (a régi teszt a nyers TAHOT eltolódását kereste; a kiinduló állapot kimenete a 11. szakaszban: „ÖNTESZT HIBA: a 2Móz 35:36–36:37 eltolódását nem találta meg”), a `versbeosztas.py` az F85.12-ig nem volt az `ir`-ben — külön tétel (frissítse az öntesztet az átkulcsolt állapotra).
+- **Megjegyzés:** a `versbeosztas.py --onteszt` 6. pontja (a 2Móz 35:36–36:37 eltolódását keresi a *nyers* TAHOT-ban) az F85.6 átkulcsolás óta hibát jelez (a 2Móz már Károli-kulcsú); ez az F85.6 átkulcsolás következménye (a régi teszt a nyers TAHOT eltolódását kereste; a kiinduló állapot kimenete a 11. szakaszban: „ÖNTESZT HIBA: a 2Móz 35:36–36:37 eltolódását nem találta meg”), a `versbeosztas.py` az F85.12-ben az `ir` bővítése nélkül módosult (az `olvas` mezőben volt, az `ir`-ben nem); az `ir`-t az F85.16 pótolta — az önteszt frissítése az átkulcsolt állapotra az F85.12-ben megtörtént.
 
 ## 11. F85.12 — a proveniencia-eltérés elfogadása; a `versbeosztas.py` önteszt 6. pontja
 

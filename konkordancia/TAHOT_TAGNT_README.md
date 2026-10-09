@@ -254,7 +254,7 @@ minden TAHOT-kulcs létező Károli-vers (0 kulcs Károli-vers nélkül), és mi
 ## Versszintű Károli-kulcs (F85, 2026.10.09)
 
 A `TAHOT_kivonat.tsv` `Igehely` kulcsa **versszinten a Károli-vers**, amelynek a héber szövegét a sor hordozza (a STEPBible-kulcs a fejezethatárokon és fejezeten belül több helyen eltért:
-Jób 16–17, 36–37 és 40, Hós 1–2 és 11–14, Dán 4, Én 6, Ézs 8–9 és 64, 2Móz 36, 4Móz 29–30, Péld 11–12). Az átkulcsolás menete: `naplok/F85_esetlista.tsv` (esetlista, Strong-illeszkedés
+Jób 16–17, 36–37 és 40, Préd 1–2 és 8–10, Hós 1–2 és 11–14, Dán 4, Én 6, Ézs 8–9 és 64, 2Móz 36, 4Móz 29–30, Péld 11–12). Az átkulcsolás menete: `naplok/F85_esetlista.tsv` (esetlista, Strong-illeszkedés
 a WLC-vel a TAHOT-oldalon; a Károli-oldalon a #22 hossz-detektor/kézi tábla, a Macula `karoli` oszlop, hosszkorreláció, szövegolvasás), `eszkozok/tahot_verskulcs_atkulcsolas.py` (csak az `Igehely` mező, a
 fájlsorrend és minden más bájt változatlan), napló: `naplok/F85_kulcsvaltas.tsv` (6 330 sor), igazolás: `eszkozok/tahot_verskulcs_igazolas.py` → `naplok/F85_igazolas.md`. A sorok száma változatlan (469 300).
 
@@ -263,7 +263,8 @@ fájlsorrend és minden más bájt változatlan), napló: `naplok/F85_kulcsvalta
 - **A fájlsorrend nem Károli-sorrend** (a fájl eleve tartalmaz áthelyezett blokkokat, pl. a 4Móz 30 és a Hós 12): kulcs szerint olvass, ne sorrend szerint; az összevonó párok közül kettő (4Móz 29:39 + 30:1,
   Hós 11:11 + 12:1) nem szomszédos a fájlban.
 - **A kulcsgenerátor** (`eszkozok/tahot_karoli_kulcs_generalas.py`) a versszintű átkulcsolást a `naplok/F85_kulcsvaltas.tsv` alapján, kiírás előtti lépésként alkalmazza; a `--szimulacio` mód igazolja, hogy az átkulcsolás
-  előtti kivonat + ez a lépés = a mai fájl (bájtazonos). A generátor nyers bemenetei (`phaseA_all.tsv`, `step1_decisions.tsv`) nincsenek a repóban, ezért a teljes újrafuttatás nem reprodukálható.
+  előtti kivonat + ez a lépés = a mai fájl (bájtazonos). A generátor nyers bemenetei (phaseA_all.tsv és step1_decisions.tsv) nincsenek a repóban, ezért a teljes újrafuttatás nem reprodukálható.
+
 ## Károli-natív kulc-konverzió (TAGNT)
 
 **2026-08-31.** A TAGNT teljes ~141 700 sorát a TAHOT-oldal mintájára Károli-natívra
