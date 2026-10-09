@@ -113,3 +113,11 @@ Eltérő Károli-token (két modell partnerhalmaza különbözik) összesen: 0; 
 - A régi arany `Job.17.13` hármasa (`naplok/F22_Job_jelentes.md` 2.4): javasolt felvétel az `f21p/regi_arany_hibas.tsv`-be.
 - PR és merge a felhasználóé.
 - A következő könyv a felhasználó döntése; a mérés (2026.10.09) szerinti tiszta jelöltek: 1Kir (509 / 99), Neh (479 / 96), 2Kir (413 / 87); a Dán (1644 / 312) előtt versbeosztás-döntés kell (37 detektorsor).
+
+## 6. Ellenőri kör (`naplok/ELLENOR_F22_1Sam.md`)
+
+Az ellenőr eltérést nem talált (TISZTA). A számokat pontos könyvegyezéssel (`api_termeles/high/1Sam`, `cimke=1sam`, `^1Sám `, `1Sam_k*.json`) és `lekerdez.py`-jal igazolta; a CI saját futásában HIBA nincs (az E25 3 és az E27 92 találata előzményi).
+
+- **Versbeosztás:** a detektorban és a kézi táblákban nincs 1Sám-sor; 811/811 kulcs mindkét oldalon; az 1Sám 20:43 Károli-kulcsa a TAHOT-ban (`KULON_SOR_KIVETEL`) igazolva; 1:1, 20:43, 31:13 és 24:1 tartalmilag egyezik.
+- **Strong a TAHOT-ból:** 1:1, 17:4, 20:43, 31:13 (69 er-token) tokenről tokenre egyezik. Régi arany 1/1 igazolva.
+- **Nem ellenőrizhető az ellenőrnek:** az `egyesit.py --ellenoriz` (az 1a szakasz saját futása igazolja) és a chat-idézet. Az indító feladatleírás tévesen `840f6f8` head-et adott meg; a helyes tartomány (`63d4f78..b884bcb`) utólagos javítással ment.
