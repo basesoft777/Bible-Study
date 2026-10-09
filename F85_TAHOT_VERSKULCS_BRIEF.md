@@ -6,7 +6,8 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 munka: adat
-allapot: nem_indult
+allapot: fut
+ag: claude/tahot-verskulcs
 ad: "A TAHOT_kivonat.tsv minden ÓSZ-sorának kulcsa a Károli-vers, amelynek a héber szövegét hordozza (Jób 40 és a fejezethatár-eltolások), így a Károli-kulcs szerinti lekérdezés nem ad üres vagy eltolt eredményt; a DT90 mért adattal eldönthető"
 kovetkezo: "az esetlista elkészítése (1. tétel), majd ⛔ 1: az esetlista jóváhagyása a felhasználótól; a futtatás sorrendje a #22 Péld-menetéhez képest a felhasználó döntése"
 fugg: [84]
