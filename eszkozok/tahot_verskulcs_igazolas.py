@@ -17,6 +17,7 @@ Kimenet: naplok/F85_igazolas.tsv és naplok/F85_igazolas.md. Más fájlt nem ír
 Futtatás a repó gyökeréből:  python eszkozok/tahot_verskulcs_igazolas.py
 """
 import collections
+import datetime
 import glob
 import hashlib
 import os
@@ -34,6 +35,7 @@ sys.path.insert(0, os.path.join(ROOT, 'eszkozok', 'karoli_strong'))
 import tokenek  # noqa: E402
 import egyesit  # noqa: E402
 
+IDOPONT = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
 BASE = '8ce6e95c~1'     # az átkulcsolás előtti állapot (a4a09ba9)
 VALT = os.path.join(ROOT, 'naplok', 'F85_kulcsvaltas.tsv')
 TAHOT = os.path.join(ROOT, 'konkordancia', 'TAHOT_kivonat.tsv')
@@ -232,6 +234,21 @@ def d_pont():
     jelent('d', 'a kivezetett 4 sor (Ézs 9:20 nincs_karoli, Ézs 64:1 torol x2) visszaállítva: a betöltés változatlan', 'OK' if not kul else 'HIBA', '%d eltérő kulcs' % len(kul))
 
 
+def f_pont():
+    """Az `egyesit.ellenoriz()` (a `egyesit.py --ellenoriz` függvénye) mind a 19 meglévő táblapárra, az új pipeline-nal."""
+    futott = sorted({os.path.basename(p)[len('parok_'):-4] for p in glob.glob(os.path.join(ROOT, 'adat', 'karoli_strong', 'parok_*.tsv'))})
+    ascii_konyv = {egyesit.sonnet_koteg.ascii_nev(b): b for b in tuple(tokenek.VERSBEOSZTAS_JOVAHAGYOTT) + ('1Móz',)}
+    ossz = 0
+    for n in futott:
+        konyv = ascii_konyv.get(n)
+        if konyv is None:
+            continue
+        hk = egyesit.ellenoriz(konyv)
+        ossz += 1
+        jelent('f', 'egyesit.ellenoriz: ' + konyv, 'OK' if not hk else 'HIBA', 'rendben' if not hk else '%d hiba: %s' % (len(hk), '; '.join(hk[:3])))
+    jelent('f', 'egyesit.ellenoriz összesen', 'OK' if ossz == 19 else 'HIBA', '%d könyv' % ossz)
+
+
 def sha_ellenorzes():
     ki = {}
     for p in sorted(glob.glob(os.path.join(ROOT, 'adat', 'karoli_strong', '*.tsv'))):
@@ -252,10 +269,12 @@ def main():
     b_pont(regi_tmp)
     c_pont(regi_tmp)
     e_pont(regi_tmp)
+    f_pont()
     d_pont()
     sha_ellenorzes()
     with open(KI_TSV, 'w', encoding='utf-8', newline='\n') as fh:
         fh.write('# GENERÁLT: eszkozok/tahot_verskulcs_igazolas.py | a(z) %s (átkulcsolás előtti) állapot és a mostani fa összevetése | ts=2026-10-09\n' % BASE)
+        fh.write('# proveniencia: scope=manual (a repó saját fájljainak csak-olvasó összevetése: git show %s vs. a mostani fa; egyesit.epit/ellenoriz memóriában) | forras=konkordancia/TAHOT_kivonat.tsv, naplok/F85_kulcsvaltas.tsv, f22/*.tsv, adat/karoli_strong/parok_*.tsv, szavak_*.tsv, f22/valaszok/ | ts=%s\n' % (BASE, IDOPONT))
         fh.write('pont\ttargy\teredmeny\treszlet\n')
         for r in sor_ki:
             fh.write('\t'.join(x.replace('\t', ' ') for x in r) + '\n')
@@ -263,6 +282,7 @@ def main():
     with open(KI_MD, 'w', encoding='utf-8', newline='\n') as fh:
         fh.write('# F85_igazolas.md — az átkulcsolás és a kivezetés utólagos igazolása\n\n')
         fh.write('*Generálta: `eszkozok/tahot_verskulcs_igazolas.py` (csak olvas). Alap: `%s` (az átkulcsolás előtti állapot). Összesen %d vizsgálat, %d HIBA.*\n\n' % (BASE, len(sor_ki), len(hibak)))
+        fh.write('*proveniencia: scope=manual (csak-olvasó összevetés: git show %s vs. a mostani fa; egyesit.epit/ellenoriz memóriában) | forras=konkordancia/TAHOT_kivonat.tsv, naplok/F85_kulcsvaltas.tsv, f22/*.tsv, adat/karoli_strong/*.tsv, f22/valaszok/ | ts=%s*' % (BASE, IDOPONT) + chr(10) * 2)
         fh.write('| pont | tárgy | eredmény | részlet |\n|---|---|---|---|\n')
         for r in sor_ki:
             fh.write('| %s | %s | %s | %s |\n' % tuple(x.replace('|', '/') for x in r))

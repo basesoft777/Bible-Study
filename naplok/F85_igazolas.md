@@ -1,6 +1,8 @@
 # F85_igazolas.md — az átkulcsolás és a kivezetés utólagos igazolása
 
-*Generálta: `eszkozok/tahot_verskulcs_igazolas.py` (csak olvas). Alap: `8ce6e95c~1` (az átkulcsolás előtti állapot). Összesen 55 vizsgálat, 0 HIBA.*
+*Generálta: `eszkozok/tahot_verskulcs_igazolas.py` (csak olvas). Alap: `8ce6e95c~1` (az átkulcsolás előtti állapot). Összesen 75 vizsgálat, 0 HIBA.*
+
+*proveniencia: scope=manual (csak-olvasó összevetés: git show 8ce6e95c~1 vs. a mostani fa; egyesit.epit/ellenoriz memóriában) | forras=konkordancia/TAHOT_kivonat.tsv, naplok/F85_kulcsvaltas.tsv, f22/*.tsv, adat/karoli_strong/*.tsv, f22/valaszok/ | ts=2026-10-09T11:35:26Z*
 
 | pont | tárgy | eredmény | részlet |
 |---|---|---|---|
@@ -57,5 +59,25 @@
 | e | összevonás szétválasztása: Hós 1:11 (fő: Hós 1:11, extra: Hós 2:1) | OK | fő 23 token, extra 11 token |
 | e | összevonás szétválasztása: Hós 11:11 (fő: Hós 11:11, extra: Hós 12:1) | OK | fő 19 token, extra 20 token |
 | e | összevonás szétválasztása: Préd 2:26 (fő: Préd 2:26, extra: Préd 2:25) | OK | fő 38 token, extra 9 token |
+| f | egyesit.ellenoriz: 1Krón | OK | rendben |
+| f | egyesit.ellenoriz: 1Móz | OK | rendben |
+| f | egyesit.ellenoriz: 1Sám | OK | rendben |
+| f | egyesit.ellenoriz: 2Krón | OK | rendben |
+| f | egyesit.ellenoriz: 2Móz | OK | rendben |
+| f | egyesit.ellenoriz: 2Sám | OK | rendben |
+| f | egyesit.ellenoriz: 3Móz | OK | rendben |
+| f | egyesit.ellenoriz: 4Móz | OK | rendben |
+| f | egyesit.ellenoriz: 5Móz | OK | rendben |
+| f | egyesit.ellenoriz: Bír | OK | rendben |
+| f | egyesit.ellenoriz: Eszt | OK | rendben |
+| f | egyesit.ellenoriz: Ez | OK | rendben |
+| f | egyesit.ellenoriz: Ézs | OK | rendben |
+| f | egyesit.ellenoriz: Ezsd | OK | rendben |
+| f | egyesit.ellenoriz: Jer | OK | rendben |
+| f | egyesit.ellenoriz: Jób | OK | rendben |
+| f | egyesit.ellenoriz: Józs | OK | rendben |
+| f | egyesit.ellenoriz: Péld | OK | rendben |
+| f | egyesit.ellenoriz: Zsolt | OK | rendben |
+| f | egyesit.ellenoriz összesen | OK | 19 könyv |
 | d | a kivezetett 4 sor visszaállítva: a betöltés megszakad (nem inert; nem állítható vissza) | OK | versosszevonas.tsv: Ézs 9:20 er_tol–er_ig (19–41) nem fér a kulcs 0 tokenjébe |
 | c | adat/ (benne parok_*/szavak_*) a git szerint változatlan az átkulcsolás előtti állapothoz képest | OK | 38 adat/karoli_strong fájl |
