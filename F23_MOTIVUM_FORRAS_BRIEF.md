@@ -9,7 +9,7 @@ allapot: dontesre_var
 ag: claude/f23-m1-forrassablon
 pr: https://github.com/basesoft777/Bible-Study/pull/258
 ad: a B szerkezet terve mérésekkel: szakasz-leképezés, forrássablon-tervezet, szintjelölés a SEMA-ban, CI-szabályok leírása; renderelés és fájlmozgatás nélkül
-kovetkezo: "Te: DT84 (az M1 13 javaslat-pontja: forrássablon, SEMA 3.10, pilot-terv); utána átvezetés, és a #11 briefje a pilot-terv alapján; ⛔ előtte az F83-ágról ki kell venni a két elkeveredett F23-commitot"
+kovetkezo: "Te: DT84 (az M1 13 javaslat-pontja: forrássablon, SEMA 3.10, pilot-terv); utána átvezetés, és a #11 briefje a pilot-terv alapján (a két elkeveredett F23-commitot az F83.4 visszavonta, `cea8c4f`, PR #260)"
 olvas: [sablonok/, tematikus_lezart/, motivumok/, lexikon/, genezis/, adat/SEMA.md, adat/res_forras.tsv, adat/szotar_szerepek.tsv, eszkozok/general.py, CLAUDE.md, ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md, naplok/TEREMT002_PROZA_PROBA_meres.md]
 ir: [sablonok/9_PaRDeS_motivum_forras_sablon.md, adat/SEMA.md, naplok/MOTIVUM_FORRAS_lekepezes.tsv, naplok/MOTIVUM_FORRAS_torzscikk_egyedi.tsv, naplok/MOTIVUM_FORRAS_parositas.tsv, naplok/MOTIVUM_FORRAS_naplo_keveredes.tsv, naplok/MOTIVUM_FORRAS_atfedes.tsv, naplok/MOTIVUM_FORRAS_M0.py, naplok/F23_zaras.md, naplok/ELLENOR_F23.md, naplok/ELLENOR_F23_2.md, naplok/MOTIVUM_FORRAS_ci_terv.md, naplok/MOTIVUM_FORRAS_pilot_terv.md]
 fugg: [32, 78]
