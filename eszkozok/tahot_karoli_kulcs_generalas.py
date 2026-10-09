@@ -12,6 +12,10 @@ Bemenetek:
     ebbol csak a secondary!='' (azaz korabban eldobott) sorokat hasznaljuk fel.
   - step1_decisions.tsv - a fejezet-szintu dontesek (ELSODLEGES/MASODLAGOS/...),
     3 kezi felulbiralassal (lasd DONTES_FELULBIRALAS lent).
+
+F85.22 ORZO: a bemenet es a kimenet ugyanaz a fajl (konkordancia/TAHOT_kivonat.tsv), az F85.6 atkulcsolasi lepes pedig
+nem idempotens; ha a bemeneti kivonat mar atkulcsolt (vagy vegyes) allapotu, a generator megall. Felulirni csak a
+--felulir-atkulcsolt kapcsoloval lehet. Onteszt: --onteszt; szimulacio (nem ir): --szimulacio [REF].
 """
 
 import sys
@@ -207,7 +211,100 @@ def tsv_sor(mezok):
         ki.append(m)
     return "\t".join(ki) + "\n"
 
+def bemenet_tipus(kulcsok):
+    """A bemeneti kivonat kulcsainak (Igehely mezo) allapota a naplok/F85_kulcsvaltas.tsv alapjan:
+    'stepbible'                 - a kulcsok tobbsege STEPBible-alaku (Gen.1.1): a generator eredeti bemenete;
+    'karoli_atkulcsolas_elotti' - Karoli-alaku, es a naplo osszes "arva" regi kulcsa (amely nem uj kulcs is) megvan;
+    'karoli_atkulcsolt'         - Karoli-alaku, es egyik arva regi kulcs sincs meg (az F85.6 atkulcsolas utani allapot);
+    'karoli_vegyes'             - Karoli-alaku, de az arva regi kulcsoknak csak egy resze van meg (sertett/felig atkulcsolt)."""
+    kulcsok = set(kulcsok)
+    if not kulcsok:
+        return 'ures'
+    step = sum(1 for k in kulcsok if REF_RE.match(k))
+    if step * 2 > len(kulcsok):
+        return 'stepbible'
+    m = load_kulcsvaltas()
+    uj = set(m.values())
+    arva_regi = {r for r in m if r not in uj}
+    van = len(arva_regi & kulcsok)
+    if van == len(arva_regi):
+        return 'karoli_atkulcsolas_elotti'
+    if van == 0:
+        return 'karoli_atkulcsolt'
+    return 'karoli_vegyes'
+
+
+def bemenet_orzo(kulcsok, felulir=False):
+    """Megall (SystemExit), ha a bemeneti kivonat mar atkulcsolt (vagy vegyes) allapotu: a generator lepese nem idempotens
+    (az atkulcsolast ketszer alkalmazva ujra eltolna a verseket), es a kimenet ugyanaz a fajl, mint a bemenet.
+    Csak a kifejezett --felulir-atkulcsolt kapcsolo engedi tovabb. Visszaadja a bemenet tipusat."""
+    tipus = bemenet_tipus(kulcsok)
+    if tipus in ('karoli_atkulcsolt', 'karoli_vegyes') and not felulir:
+        raise SystemExit("MEGALL: a bemeneti %s mar atkulcsolt/vegyes allapotu (%s); a versszintu atkulcsolasi lepes nem idempotens, "
+                         "a kimenet ugyanez a fajl. Felulirni csak a --felulir-atkulcsolt kapcsolóval lehet." % (os.path.basename(OLD_TAHOT), tipus))
+    return tipus
+
+
+def bemenet_kulcsok(path):
+    ki = set()
+    with open(path, encoding='utf-8') as f:
+        next(f, None)
+        for ln in f:
+            ki.add(ln.split('\t', 1)[0])
+    return ki
+
+
+def onteszt():
+    """Az orzo onteszt-esetei: negativ (atkulcsolt bemeneten kapcsolo nelkul megall), pozitiv (az atkulcsolas elotti
+    bemeneten fut). Nem ir semmit. Kilepesi kod: 0 = rendben."""
+    import subprocess
+    hibak = []
+    r = subprocess.run(['git', 'show', '8ce6e95c~1:konkordancia/TAHOT_kivonat.tsv'], capture_output=True, cwd=REPO)
+    regi = set(ln.split('\t', 1)[0] for ln in r.stdout.decode('utf-8').split('\n')[1:] if ln)
+    mai = bemenet_kulcsok(OUT_MAIN)
+    # pozitiv: az atkulcsolas elotti bemeneten fut
+    try:
+        t = bemenet_orzo(regi)
+        if t != 'karoli_atkulcsolas_elotti':
+            hibak.append('az atkulcsolas elotti bemenet tipusa: %s' % t)
+    except SystemExit as ex:
+        hibak.append('az atkulcsolas elotti bemeneten megallt: %s' % ex)
+    # negativ: az atkulcsolt (mai) bemeneten kapcsolo nelkul megall
+    try:
+        bemenet_orzo(mai)
+        hibak.append('az atkulcsolt bemeneten kapcsolo nelkul NEM allt meg')
+    except SystemExit:
+        pass
+    # a kapcsoloval tovabbmegy
+    try:
+        bemenet_orzo(mai, felulir=True)
+    except SystemExit as ex:
+        hibak.append('a --felulir-atkulcsolt kapcsoloval is megallt: %s' % ex)
+    # vegyes: az atkulcsolt bemenet + par regi arva kulcs
+    m = load_kulcsvaltas()
+    uj = set(m.values())
+    arva = sorted(r_ for r_ in m if r_ not in uj)
+    try:
+        bemenet_orzo(mai | set(arva[:3]))
+        hibak.append('a vegyes bemeneten NEM allt meg')
+    except SystemExit:
+        pass
+    # STEPBible-alaku (a generator eredeti bemenete): fut
+    try:
+        if bemenet_orzo({'Gen.1.1', 'Gen.1.2', 'Exo.3.14'}) != 'stepbible':
+            hibak.append('a STEPBible-alaku bemenet tipusa nem stepbible')
+    except SystemExit as ex:
+        hibak.append('a STEPBible-alaku bemeneten megallt: %s' % ex)
+    if hibak:
+        print('ONTESZT HIBA:\n  ' + '\n  '.join(hibak))
+        return 1
+    print('onteszt: rendben (pozitiv: atkulcsolas elotti bemeneten fut; negativ: atkulcsolt/vegyes bemeneten kapcsolo nelkul megall; kapcsoloval fut)')
+    return 0
+
+
 def main():
+    # orzo: ne irjuk felul az atkulcsolt kivonatot (a bemenet es a kimenet ugyanaz a fajl)
+    bemenet_orzo(bemenet_kulcsok(OLD_TAHOT), felulir='--felulir-atkulcsolt' in sys.argv)
     norm = load_norm()
     valid_karoli = load_karoli_valid_refs()
     chap_decision = load_decisions()
@@ -332,4 +429,6 @@ if __name__ == '__main__':
         egyezik, kul, db = szimulacio(ref)
         print("szimulacio (%s): bajtazonos a mai %s-szel: %s; kulonbozo sor: %d / %d" % (ref, os.path.basename(OUT_MAIN), egyezik, kul, db))
         sys.exit(0 if egyezik else 1)
+    if len(sys.argv) > 1 and sys.argv[1] == '--onteszt':
+        sys.exit(onteszt())
     main()
