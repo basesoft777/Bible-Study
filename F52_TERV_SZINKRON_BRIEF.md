@@ -8,6 +8,7 @@ modell: sonnet
 munka: folyamat
 allapot: dontesre_var
 ag: claude/f52-terv-szinkron-3
+pr: 265
 ad: a tervdokumentumok (ATALAKITASI_TERV, ADATVAGYON_TERV, MUNKATERV, VIBE_GUIDE) hatályos állapotának átvezetése a repó döntéseire és státuszaira, és fordítva: a terv minden feladat-, lépcső- és döntés-eleme feladatban, briefben vagy DONTESEK-tételben (naplóban nem maradhat); ismétlődő
 kovetkezo: "Te: a 3. futás kész (2026-10-09, alap `1f420a7c`; zárás: naplok/F52_TERV_SZINKRON_3_zaras.md, ellenőr: naplok/ELLENOR_TERV_SZINKRON_3.md); DT-F52h (D23, OT-full) és DT-F52i (VIBE feltételes jelzés); ⛔ a SEMA 4 ↔ CLAUDE.md TAHOT-ellentmondás (a SEMA a #52 hatókörén kívül). Utána ismétlődő; a brief 2. pontja szerinti eseményeknél indul (viszonyítási pont: a 3. futás; napló: naplok/F52_TERV_SZINKRON_naplo.md)"
 olvas: [ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, FELADATOK.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, CLAUDE.md, MUNKAMENET.md]
