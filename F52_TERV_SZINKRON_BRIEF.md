@@ -9,7 +9,7 @@ munka: folyamat
 allapot: fut
 ag: claude/f52-terv-szinkron-3
 ad: a tervdokumentumok (ATALAKITASI_TERV, ADATVAGYON_TERV, MUNKATERV, VIBE_GUIDE) hatályos állapotának átvezetése a repó döntéseire és státuszaira, és fordítva: a terv minden feladat-, lépcső- és döntés-eleme feladatban, briefben vagy DONTESEK-tételben (naplóban nem maradhat); ismétlődő
-kovetkezo: "Te: a 3. futás (2026-10-09, `main` `78844919`) kész, ellenőrzésre vár (független ellenőr, draft PR: orkesztrátor); DT-F52h (D23, OT-full) és DT-F52i (VIBE feltételes jelzés) a felhasználóé. Utána ismétlődő; a brief 2. pontja szerinti eseményeknél indul (viszonyítási pont: a 3. futás; napló: naplok/F52_TERV_SZINKRON_naplo.md)"
+kovetkezo: "Te: a 3. futás (2026-10-09, `main` `1f420a7c`) kész, ellenőrzésre vár (független ellenőr, draft PR: orkesztrátor); DT-F52h (D23, OT-full) és DT-F52i (VIBE feltételes jelzés) a felhasználóé. Utána ismétlődő; a brief 2. pontja szerinti eseményeknél indul (viszonyítási pont: a 3. futás; napló: naplok/F52_TERV_SZINKRON_naplo.md)"
 olvas: [ATALAKITASI_TERV.md.md, ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, FELADATOK.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, CLAUDE.md, MUNKAMENET.md]
 ir: [ADATVAGYON_TERV.md, MUNKATERV.md, VIBE_GUIDE.md, ATALAKITASI_TERV.md.md, CLAUDE.md, naplok/F52_TERV_SZINKRON_naplo.md, naplok/ELLENOR_TERV_SZINKRON.md, DONTESEK.md, "beerkezo/TERV_SZINKRON_*.md"]
 fugg: []

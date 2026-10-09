@@ -290,7 +290,7 @@ Forrás: `git diff de9c464..origin/main -- FELADATOK.md DONTESEK.md NYITOTT_FELA
 
 ## 3. futás — 2026-10-09
 
-kiindulasi_allapot: FELADATOK v1.3 (a generált blokkok 2026-10-09-i állapota), `main` `78844919` (a #264 merge-e), 2026-10-09.
+kiindulasi_allapot: FELADATOK v1.3 (a generált blokkok 2026-10-09-i állapota), `main` `1f420a7c` (a `78844919` = a #264 merge-e + a DT87–DT89 számkiosztás), 2026-10-09.
 
 - **Viszonyítási pont a delta-listához:** a 2. futás kiindulása, `7dd0183` (2026-10-06; a 2. futás napló-szakasza). A TERV-INTEGRÁCIÓ menet (TI.10 `6b85561e`, TI.14 `e906be14`, 2026-10-08) azóta átvezette a DT74–DT78-at az ATALAKITASI_TERV-re (v10), a MUNKATERV-re (v5) és az ADATVAGYON_TERV-re (v16); a delta-listában ezek „átvezetve (TI.10)” jelölést kapnak, nem vezettem át újra. A tényleges munka a 2026-10-08 utáni delta és a TI által „a következő #52-futásra” hagyott táblák (MUNKATERV 4a).
 - **Kiváltó esemény (brief 2.):** (1) a `/konzisztencia` KONZISZTENCIA_20261009 jelentése, 1.16 (a 6. számozott pont): ATALAKITASI 13.4 (#78, #23 sor) és MUNKATERV 158. sor (#22) elavult — gépi jelzés a driftre; (2) új DT-tételek, amelyek tervdokumentumot érintenek: DT79–DT86, DT-F51a–c (= DT87–DT89, ez utóbbiak az ATALAKITASI 10.-be már átvezetve — csak ellenőrizve); (3) lezárt feladatok: #77, #78, #82, #83, #84, valamint a #22 előrehaladása; (4) a #23 M1 jelentése befogadva (a M0-é a TI.10-ben átvezetve); (5) felhasználói kérés. **Nem** kiváltó: MUNKATERV-hullám lezárása (az 1. hullám #62, #63 ⬜).
@@ -365,7 +365,7 @@ Forrás: `git diff 7dd0183..HEAD -- FELADATOK.md DONTESEK.md NYITOTT_FELADATOK.m
 
 | szakasz | egy mondat |
 | --- | --- |
-| kiindulási állapot sor (5.), „Státuszok” sor (13.), új sor (16.) | viszonyítási pont `78844919`, 2026-10-09; a mai státuszok; a 2026-10-09-i változások (DT73, DT79–DT89) |
+| kiindulási állapot sor (5.), „Státuszok” sor (13.), új sor (16.) | viszonyítási pont `1f420a7c`, 2026-10-09; a mai státuszok; a 2026-10-09-i változások (DT73, DT79–DT89) |
 | 0. (3. pont, 8. pont) | a #22 kész könyvei; DT-M8 (d) bent |
 | 16. (ábra, frissítés-jelzés, állapotfrissítés) | a függések a FELADATOK szerint; #23 M1; #78 kész; #25a = #76 |
 | 17.2 (Adat-tár sor), 18.1 (ATALAKITASI 4.7 sor), 18.4 (N-F34b sor) | a TAHOT fejezet-szinten teljes (F84); N-F34b lezárva; a #22 kész könyvei |
@@ -397,7 +397,7 @@ Minden rés pontosan egy kimenettel (átvezetés, DONTESEK-tétel, befogadási c
 | --- | --- | --- |
 | 1 | ATALAKITASI D23 („`scope=OT-full` nem adható ki”) indoka (a Jób 40:1-5 / Jób 41 hiánya) a #84-gyel megszűnt; az N13 szerint a tiltás újratárgyalható; a Jób 40 MT-kulcsa marad | DONTESEK **DT-F52h** (🟡); az ATALAKITASI D23 és N13 sora mutat rá |
 | 2 | a VIBE 5. szakasz MCP_BUROK és SZPA_AUDIT sora a „kilenc tervezett feladat” része, de mindkettő feltételes (DT-M7, DT77 (13)); a brief 6. pontja a VIBE 5. szakaszát csak sorszám/név cseréig engedi | DONTESEK **DT-F52i** (🟡) |
-| 3 | ADATVAGYON 21. 6. lépcső: „hasznosítás” (fordítói eszköz, licencelt adatkészlet, AI-réteg, kereskedelmi döntés jogásszal) — se feladat, se DT, se jelölés | átvezetés: „feltételes” jelölés (a 4–5. lépcső után, a felhasználó döntésére; feladat a döntéskor, `/befogad`) |
+| 3 | ADATVAGYON 21. 6. lépcső: „hasznosítás” (fordítói eszköz, licencelt adatkészlet, AI-réteg, kereskedelmi döntés jogásszal) — se feladat, se DT, se jelölés | átvezetés: „feltételes” jelölés (a 4–5. lépcső után, a felhasználó döntésére) |
 | 4 | ADATVAGYON 19. teendők: `terminologia.tsv` a #38 adagjainak; tárhely-döntés; KK-kulcs/`szamozas`; DT-M8 (d) | átvezetés: jelölve (a #38 `olvas:` listája; ⛔ hosting a #76 briefje előtt; #79; a #11 csonk `olvas:` sora) |
 | 5 | a #65 „csak `magas` link számít egyezésnek” (MUNKATERV 4., 6.) — a 3Móztól csak Sonnet fut, a linkek `alacsony` (DT-F22c, DT70), `magas` pár csak az 1–2Mózon | a #65 M0 ⛔-ja viszi (F65 `kovetkezo`, v1 sor, 2026-10-05); a MUNKATERV #65 sora a korlátot jelzi — új tétel nincs |
 | 6 | DT84 🟡 (a #23 M1 13 `javaslat` pontja) | a felhasználóé; a #23 `kovetkezo`-ja és az ATALAKITASI 13.4 „DT84 🟡” jelölése mutat rá — új tétel nincs |
@@ -408,7 +408,7 @@ Minden rés pontosan egy kimenettel (átvezetés, DONTESEK-tétel, befogadási c
 
 ### 3.4 Proveniencia
 
-- delta-lista: `scope=FELADATOK.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, CLAUDE.md, MUNKAMENET.md, BRIEF_SABLON.md | forras=git diff 7dd0183..HEAD (HEAD a 78844919 + F52.16) | ts=2026-10-09`.
+- delta-lista: `scope=FELADATOK.md, DONTESEK.md, NYITOTT_FELADATOK.md, adat/SEMA.md, CLAUDE.md, MUNKAMENET.md, BRIEF_SABLON.md | forras=git diff 7dd0183..HEAD (HEAD: `1f420a7c` + F52.16) | ts=2026-10-09`.
 - brief-fejlécek (`fazis`, `allapot`, `pr`, `fugg`): `scope=F22, F23, F37, F40, F64, F66–F70, F74–F84_*_BRIEF.md | forras=grep a fejlécekre | ts=2026-10-09`.
 - nyitott FELADATOK-sorok száma: `scope=FELADATOK.md 1. fázis, 2. fázis, Folyamat és eszközök tábla (sorok, amelyek `| <szám>`-mal kezdődnek) | forras=egyszeri számláló szkript a scratchpadban (nem repó-eszköz) | ts=2026-10-09`; eredmény: 16 + 9 + 8 = 33.
 - DT státuszok és szövegek: `scope=DONTESEK.md | forras=olvasás (DT57, DT70–DT73, DT79–DT89) | ts=2026-10-09`.
