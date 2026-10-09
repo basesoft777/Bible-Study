@@ -329,7 +329,7 @@ Forrás: `git diff 7dd0183..HEAD -- FELADATOK.md DONTESEK.md NYITOTT_FELADATOK.m
 | 24 | DT-M8 (d): a #11 csonk `olvas:` sorában az ADATVAGYON_TERV és a MUNKATERV bent van | F11 brief fejléce | igen | MUNKATERV 1., 2. (DT-M8 sor), 3., 4. (TERV_BEFOGAD sor); ADATVAGYON 0.8, 19. | átvezetve |
 | 25 | DT49 (VIBE MCP_BUROK sor), DT50 (K5 worktree), DT51 (#66 M1), DT53 (#73), DT58–DT60 (#22 Zsolt), DT61–DT65 (#37, #40), DT67 (#68), DT69 (#64 LXX-állítások), DT2, DT6, DT-F41a | DONTESEK | nem (a DT49 a 2. futásban átvezetve; a többi: a tervdokumentumok nem hivatkoznak rájuk) | — | a DT52, DT54, DT56–DT57, DT66, DT68, DT70–DT73 a fenti sorokban |
 | 26 | `NYITOTT_FELADATOK.md`: N-F78a, N-F72a, N48–N54, N-F83a (→ N55), N-F38c lezárva, N53 | NYITOTT_FELADATOK | nem (kivéve N-F34b, N55, N53 — a 13., 15. sorban) | — | a tervdokumentumok nem hivatkoznak rájuk |
-| 27 | `adat/SEMA.md`: 2.13 (26 sor), 3.10 szintjelölés, 2.22 | adat/SEMA.md | nem (a 2.13 a 8. sor) | — | az ADATVAGYON 22. a 3.10-et nem idézi |
+| 27 | `adat/SEMA.md`: 2.13 (26 sor), 3.10 szintjelölés, 2.22; a 4. szakasz ma is „Jób 40:1-5 és a teljes Jób 41. fejezet hiányzik”-ot ír (SEMA :1229) | adat/SEMA.md | igen (forrás-ellentmondás a `CLAUDE.md` TAHOT-mondatával; a 2.13 a 8. sor) | ADATVAGYON 22.5 (SEMA 4. sor) | ⛔ jelezve a felhasználónak (orkesztrátor); a SEMA 4 javítása a #52 hatókörén kívül esik (3.3/11.); a 3.10-et az ADATVAGYON 22. nem idézi |
 | 28 | `CLAUDE.md`: TAHOT-mondat (F84), E27 hivatkozás-szabály | CLAUDE.md | igen (csak a TAHOT-mondat) | ADATVAGYON 17.2, 22.5 | átvezetve (15. sor); az E27-szabály nem terv-tétel |
 | 29 | `MUNKAMENET.md`: „bővített” törölve, a 4. szabály mércéje L1–L7 + DT2 | MUNKAMENET.md | nem | — | a VIBE nem hivatkozza; a MUNKATERV mércéje már L1–L7 |
 | 30 | `BRIEF_SABLON.md`: `munka`-kivételek (F09 → `adat`) | BRIEF_SABLON.md | nem | — | a VIBE nem hivatkozza |
@@ -405,6 +405,7 @@ Minden rés pontosan egy kimenettel (átvezetés, DONTESEK-tétel, befogadási c
 | 8 | a 2. futás nyitott tételei: VIBE `lepes=MCP` (DT49 ✅), #25 kettéválasztás (#76), DT-M4–M6 (DT76), DT-M8 (d) (bent), SQLITE_EPIT/SZPA számtalan (#79 / feltételes) | lezárva — l. „Nyitott a következő futásra” |
 | 9 | KONZISZTENCIA 1.15 / N-F83a (a `CLAUDE.md` TAHOT-mondata) | lezárva az F84-ben (N55, CLAUDE.md); a 15. delta-sor |
 | 10 | ATALAKITASI 11.2 „LEZÁRVA címke cseréje (az F3-ban végzendő)” | nem terv → feladat rés: az F3 lefutott, a háromértékű `statusz` a SEMA-ban bent van (TI.1 leltár „nem rés”); nincs kimenet |
+| 11 | `adat/SEMA.md` 4. szakasz (:1229) „Jób 40:1-5 és a teljes Jób 41. fejezet hiányzik” ↔ `CLAUDE.md` „Adat-tár” (fejezet-szinten teljes, a Jób 41 pótolva, F84, DT86) — két forrás ellentmond (brief 6.) | ⛔ jelezve a felhasználónak (orkesztrátor); a SEMA 4 javítása a #52 hatókörén kívül esik (a SEMA nincs az `ir`-ben); az ADATVAGYON 22.5 „SEMA 4.” sora az ellentmondást jelzi, nem állítja a hiányt |
 
 ### 3.4 Proveniencia
 
@@ -426,7 +427,7 @@ Minden rés pontosan egy kimenettel (átvezetés, DONTESEK-tétel, befogadási c
 | 4 | nem maradt megfordított állítás | keresve: `M1 a #78 után`, `1–5Móz és Józs`, `a Bírák`, `Bírákig`, `11 szerep`, `nem teljes` (TAHOT), `▶ fut (2. futás`, `Azóta négy`, `2026-10-06-i`: a találatok csak történeti döntésnapló-sorok és a lezárt jelölések |
 | 5 | döntésnapló-sor és kiindulási állapot sor bent | ATALAKITASI v11 sor; MUNKATERV v6; ADATVAGYON v17 + kiindulási állapot sor; VIBE v5 |
 | 6 | a dokumentum többi része bájtazonos | cserék pontos illesztéssel (`ed.py`: pontosan egy előfordulás, különben leáll; a 4a tartományt sor-kezdetek jelölik), CRLF megőrizve |
-| 7 | terv → feladat (3b): nincs rés kimenet nélkül; `feladatok.py ellenoriz` 0 hiba | 3.3 (10 sor: 2 DT-tétel, 2 átvezetés, 6 meglévő kimenet / lezárt / nem rés); `ellenoriz`: 0 hiba (104 brief) |
+| 7 | terv → feladat (3b): nincs rés kimenet nélkül; `feladatok.py ellenoriz` 0 hiba | 3.3 (11 sor: 2 DT-tétel, 2 átvezetés, 1 ⛔ jelezve a felhasználónak, 6 meglévő kimenet / lezárt / nem rés); `ellenoriz`: 0 hiba (104 brief) |
 
 ## Nyitott a következő futásra
 
@@ -437,4 +438,5 @@ A futások között felgyűlt tételek, amelyeket a következő szinkron a delta
 | a D23 (`OT-full` scope-címke) újratárgyalása a #84 után | a 3. futás 3.3/1. | DT-F52h (🟡); a döntés után az ATALAKITASI D23/N13 sora és az ADATVAGYON 22.4 `scope`-mondata |
 | „feltételes” jelzés a VIBE 5. szakasz MCP\_BUROK és SZPA\_AUDIT sorában | a 3. futás 3.3/2. | DT-F52i (🟡) |
 | a #23 M1 13 `javaslat` pontja | DONTESEK DT84 (🟡) | a felhasználó döntése; utána a #23 `kovetkezo`-ja, az ATALAKITASI 13.4 „DT84 🟡” jelölése és a MUNKATERV 4a #23 sora |
+| a `adat/SEMA.md` 4. szakasz (:1229) „Jób 40:1-5 és a teljes Jób 41. fejezet hiányzik” ↔ `CLAUDE.md` TAHOT-mondat ellentmondása | a 3. futás 3.3/11. | ⛔ jelezve a felhasználónak (orkesztrátor); a SEMA 4 javítása a #52 hatókörén kívül esik; a javítás után az ADATVAGYON 22.5 „SEMA 4.” sora |
 | a #22 Jób és Péld menete, a #38 7. adagja, a #62/#63 indítása | FELADATOK | a státuszok a következő futás delta-listájába (nem terv-tétel) |
