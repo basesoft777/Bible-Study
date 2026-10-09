@@ -98,3 +98,7 @@ DT-F84a: **(a) 1** — a 332 sor törlődik a nyitott fájlból (a fejléc marad
 - `konkordancia/TAHOT_TAGNT_README.md`: az eset-táblázat Jób 40/41 sora, a nyitott esetek mondata és a „Jób 40:1-5 és Jób 41 hiányzik” bekezdés a mért állapotra javítva.
 - `NYITOTT_FELADATOK.md`: N-F83a felvéve és lezárva, N-F34b lezárva (helyőrzők; a végleges számot az Action osztja), mindkettő a „Lezárva” szakaszban.
 - **N-F41g / #41 megjegyzés:** a BSB `Számozás` oszlopa a Jób 41-et `kjv`-nek jelöli, mert a TAHOT-ban nem volt; az F84 ezt nem írta át, a következmény (a jelölés viszonya a mostani Jób 41 TAHOT-sorokhoz) az N-F41g-hez tartozik (megjegyzésként a `NYITOTT_FELADATOK.md` lezárási blokkjában).
+
+### Következmény a #22-re
+
+A `f22/versmegfeleltetes.tsv` (gépi lista, a `versbeosztas.py` kimenete) a Jób 41-re a pótlás előtti állapotot rögzíti: 26 Jób 41-es vers ma `nincs_eredeti` (F83 jelentés, 3. szakasz). A fájl a #22 tulajdona, az F84 `ir`-jében nincs, ezért nem módosítottam. A `versbeosztas.py`-t a Jób-menet (#22) előtt újra kell generálni, hogy a Jób 41 az új TAHOT-sorokra párosuljon.

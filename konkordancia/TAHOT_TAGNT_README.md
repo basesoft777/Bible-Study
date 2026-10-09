@@ -241,7 +241,7 @@ ellenőriztük, mindegyik pontosan egyezik a várttal):
 | Jób 40/41 | ~~ADATMINŐSÉGI_GYANÚ~~ → **átvéve (F84, 2026.10.09)** | A gyanú-jelölés hibás Károli-versszámokon (40 = 28, 41 = 25) alapult; a mért szám 40 = 19, 41 = 34, az elsődleges (angol) 41. fejezet (34 vers) egyezik a Károlival, a Jób 41:25 összeolvadása pedig már javított (`Karoli_adatminosegi_anomaliak.tsv`). A 332 sor a `TAHOT_kivonat.tsv`-ben van, `Jób 41:1–34` kulccsal (`eszkozok/tahot_job41_potlas.py`, `naplok/F84_jelentes.md`). |
 
 Az `ADATMINŐSÉGI_GYANÚ` alá eső sorok (Ez 20:45–49(21.1–5) és Jób 40:25–41.34(41.1–26)
-zárójeles tartománya, összesen 1068 szó-sor; **a Jób 40:25–41:26 332 sorát az F84 átvette a fő kivonatba, a nyitott fájlban ma már nincs Jób-sor**) a `TAHOT_kivonat_nyitott_esetek.tsv`-be
+zárójeles tartománya, összesen 1068 szó-sor; **a Jób 40:25–41:26 332 sorát az F84 átvette a fő kivonatba, a nyitott fájl ma üres, csak a fejléc áll benne**) a `TAHOT_kivonat_nyitott_esetek.tsv`-be
 kerültek, `Státusz`/`Indoklás` oszloppal, tényleges javítás nélkül — ez összhangban van
 azzal, hogy a Károli-adatminőségi audit (`Karoli_adatminosegi_anomaliak.tsv`) külön,
 nem e feladat része.
@@ -305,8 +305,8 @@ eredeti kivétel + 21 újonnan konvertált). Ez helyes és várt eredmény, nem 
 
 | Fájl | Nyers sorok (STEPBible) | Generált sorok | Fájlméret |
 |---|---|---|---|
-| TAHOT_kivonat.tsv | 283 734 (+ 21 918 korábban eldobott zárójeles sor) | 468 232 | ~26 MB |
-| TAHOT_kivonat_nyitott_esetek.tsv | — | 1 068 | ~0,1 MB |
+| TAHOT_kivonat.tsv | 283 734 (+ 21 918 korábban eldobott zárójeles sor) | 469 300 (F84, 2026.10.09: + Jób 41, 332 sor; `scope=teljes fájl, wc -l − fejléc`) | ~26 MB |
+| TAHOT_kivonat_nyitott_esetek.tsv | — | 0 (csak fejléc; F84, 2026.10.09: a Jób 40:25–41:26 332 sora átkerült a fő kivonatba, az Ez 20:45–49 sorai korábban kikerültek; `scope=teljes fájl`) | <0,01 MB |
 | TAGNT_kivonat.tsv | 141 746 | 141 746 | ~13 MB |
 
 Mindkét fő fájl jóval a GitHub 100 MB-os fájlméret-korlátja alatt van, könyvenkénti

@@ -56,6 +56,12 @@ def main():
     fo = beolvas(FO)
     ny = beolvas(NY)
     fejlec_ny, ny_sorok = ny[0], ny[1:]
+    if not ny_sorok and not any(x.startswith('Jób 41:') for x in fo):
+        leall('a nyitott fájlban nincs adatsor, és a fő kivonatban sincs Jób 41 — nincs mit pótolni')
+    if not ny_sorok:
+        print('már pótolva: a nyitott fájl csak fejléc, a fő kivonatban %d Jób 41 sor van; semmi sem íródik'
+              % sum(1 for x in fo if x.startswith('Jób 41:')))
+        return
     if len(ny_sorok) != VART:
         leall('a nyitott fájl adatsorainak száma %d, nem %d' % (len(ny_sorok), VART))
 
@@ -85,11 +91,25 @@ def main():
         leall('a Jób 40 blokk után nem Jób 42:1 áll: ' + fo[p][:20])
 
     uj_fo = fo[:p] + uj_sorok + fo[p:]
-    # összevetés: a meglévő sorok bájtazonosak és ugyanabban a sorrendben
-    if uj_fo[:p] != fo[:p] or uj_fo[p + VART:] != fo[p:] or len(uj_fo) != len(fo) + VART:
+    # valódi összevetés: a lemezről ÚJRAOLVASOTT eredetihez; a beszúráson kívüli rész
+    # bájtazonos és sorrendtartó, a beszúrt rész pontosan a nyitott fájl átkulcsolt sora
+    eredeti = beolvas(FO)
+    ny_eredeti = beolvas(NY)
+    if eredeti != fo or ny_eredeti != ny:
+        leall('a fájl a beolvasás óta megváltozott')
+    if len(uj_fo) != len(eredeti) + VART or len(uj_sorok) != VART:
+        leall('a beszúrt sorok száma nem %d' % VART)
+    if uj_fo[:p] != eredeti[:p] or uj_fo[p + VART:] != eredeti[p:]:
         leall('a meglévő sorok nem maradtak azonosak')
+    for kulcs_ujra, ny_sor, uj_sor in zip(versek, ny_eredeti[1:], uj_fo[p:p + VART]):
+        m = ny_sor.split('\t')
+        if uj_sor != '\t'.join(['Jób 41:%d' % kulcs_ujra] + m[4:10]):
+            leall('a beszúrt sor nem egyezik a nyitott sorral: ' + uj_sor[:30])
     print('beszúrási pont: %d. fájlsor után (a Jób 40:24 utolsó sora), beszúrt sorok: %d, új sorszám: %d'
           % (p, len(uj_sorok), len(uj_fo) - 1))
+    uj_ny = [ny_eredeti[0]]
+    if len(ny_eredeti) - len(uj_ny) != VART or uj_ny != ny_eredeti[:1]:
+        leall('a nyitott fájl törlése nem pontosan %d sort érint' % VART)
     print('nyitott fájl: %d adatsor törlődik, a fejléc marad' % len(ny_sorok))
     if not ir:
         print('szárazon futott (--ir nélkül), semmi sem íródott')
