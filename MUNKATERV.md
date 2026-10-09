@@ -100,7 +100,7 @@ Minden nyitott FELADATOK-sor (státuszok és függések frissítve 2026-10-06, #
 | # | feladat | státusz | függ | terv | kapcsolat |
 | --- | --- | --- | --- | --- | --- |
 | #9 | Szótári adatréteg S2 | ⬜ | #5, #6 ✅, #7\*, #23, #38\* | marad | lexikonoldal = szó-lap elv; a 13–14. szerep (DT-M4) ide |
-| #10 | 8 lexikonoldal lezárása | ⬜ brief kell | #8 ✅, #9, #11 | marad | a mérce: a sablon Minőségi kapuja (L1, L3–L6) + minden rés kitöltött vagy explicit hiány-/`adat`-jelölésű (DT2 🟢, 2026-10-06); N18, N19 nem blokkol; a #8 négy nyitott sora előfeltétel |
+| #10 | 8 lexikonoldal lezárása | ⬜ brief kell | #8 ✅, #9, #11 | marad | a mérce: a sablon Minőségi kapuja (L1–L7, DT68 (2)) + a szótári rész a #78 szerepmátrix-váza szerint (DT74 (5)) + minden rés kitöltött vagy explicit hiány-/`adat`-jelölésű (DT2 🟢, 2026-10-06); N18, N19 nem blokkol; a #8 négy nyitott sora előfeltétel |
 | #11 | Migráció: egy forrásból renderelés | ⬜ brief kell (a #12a után) | #9, #23 | **módosul** (kicsi) | `olvas:` listába az ADATVAGYON\_TERV (DT-M8 (d), a befogadáskor); vers-lap/szó-lap mint `general.py --cel` ide ? |
 | #12 | TEREMT-002 3. lépés | ⬜ brief kell | #11 | marad | — |
 | #13 | 1Móz 17-től tanulmányok, 6 betöltetlen motívum | ⬜ brief kell | #10 | marad | a #63 után tisztábban futhat ? |
