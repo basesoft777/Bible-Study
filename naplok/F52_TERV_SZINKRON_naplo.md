@@ -295,7 +295,7 @@ kiindulasi_allapot: FELADATOK v1.3 (a generált blokkok 2026-10-09-i állapota),
 - **Viszonyítási pont a delta-listához:** a 2. futás kiindulása, `7dd0183` (2026-10-06; a 2. futás napló-szakasza). A TERV-INTEGRÁCIÓ menet (TI.10 `6b85561e`, TI.14 `e906be14`, 2026-10-08) azóta átvezette a DT74–DT78-at az ATALAKITASI_TERV-re (v10), a MUNKATERV-re (v5) és az ADATVAGYON_TERV-re (v16); a delta-listában ezek „átvezetve (TI.10)” jelölést kapnak, nem vezettem át újra. A tényleges munka a 2026-10-08 utáni delta és a TI által „a következő #52-futásra” hagyott táblák (MUNKATERV 4a).
 - **Kiváltó esemény (brief 2.):** (1) a `/konzisztencia` KONZISZTENCIA_20261009 jelentése, 1.16 (a 6. számozott pont): ATALAKITASI 13.4 (#78, #23 sor) és MUNKATERV 158. sor (#22) elavult — gépi jelzés a driftre; (2) új DT-tételek, amelyek tervdokumentumot érintenek: DT79–DT86, DT-F51a–c (= DT87–DT89, ez utóbbiak az ATALAKITASI 10.-be már átvezetve — csak ellenőrizve); (3) lezárt feladatok: #77, #78, #82, #83, #84, valamint a #22 előrehaladása; (4) a #23 M1 jelentése befogadva (a M0-é a TI.10-ben átvezetve); (5) felhasználói kérés. **Nem** kiváltó: MUNKATERV-hullám lezárása (az 1. hullám #62, #63 ⬜).
 - **Ág:** `claude/f52-terv-szinkron-3` (indulás: `2108fc67`).
-- **⛔ vizsgálat (brief 6.):** alapfeltevést megfordító, még el nem döntött változás nincs; két forrás közti ellentmondás nincs (a FELADATOK `#52 ⬜` sora a brief `allapot: fut` fejlécével szemben a generált blokk késése, nem ellentmondás). Két tartalmi kérdést nem döntöttem el, hanem DONTESEK-tételbe tettem (3.3): DT-F52h (D23, `OT-full`), DT-F52i (VIBE „feltételes” jelzés). Egyik sem alapfeltevés, ezért a 4. pont előtt nem álltam meg.
+- **⛔ vizsgálat (brief 6.):** alapfeltevést megfordító, még el nem döntött változás nincs; két forrás közti ellentmondás nincs (a FELADATOK `#52 ⬜` sora a brief `allapot: fut` fejlécével szemben a generált blokk késése, nem ellentmondás). Két tartalmi kérdést nem döntöttem el, hanem DONTESEK-tételbe tettem (3.3): DT90 (D23, `OT-full`), DT91 (VIBE „feltételes” jelzés). Egyik sem alapfeltevés, ezért a 4. pont előtt nem álltam meg.
 
 ### 3.1 Delta-lista és érintettség (brief 4.2–4.3)
 
@@ -317,7 +317,7 @@ Forrás: `git diff 7dd0183..HEAD -- FELADATOK.md DONTESEK.md NYITOTT_FELADATOK.m
 | 12 | #77 API_VAKPROBA ✅ (PR #249): a #22 hátralévő könyvei API-n (Batch), `high`; DT73; DT70 (nincs 22.6 szúrópróba), DT71 (10 verses prófétai köteg), DT72 (futásnapló-átcímkézés) | FELADATOK #77, DONTESEK DT70–DT73 | igen (kicsi) | MUNKATERV 4a (#22 sor, kész lista), 5.; ADATVAGYON 16. | átvezetve; a költségmérés a D16-ban már átvezetve (TI.10) |
 | 13 | #22: kész Zsolt (PR #239), Ézs és Jer (PR #249), 1Krón (PR #253), 2Krón (PR #255), Ezsd és Ez (PR #259); hátra a Jób és a Péld; DT54, DT57, DT58–DT60 | FELADATOK #22, F22 brief, DONTESEK DT54, DT57–DT60 | igen | ATALAKITASI 4.7 jelölés; MUNKATERV 1., 4a, 5.; ADATVAGYON 0.3, 13. (Státuszok), 16., 18.1, 19. | átvezetve (KONZISZTENCIA 1.16, 3. pont) |
 | 14 | #83 JOB_VERSBEOSZTAS ✅ (PR #260): Jób 38–42 megfeleltetés, kézi tábla 19 sor; DT85 | FELADATOK #83, DONTESEK DT85 | igen | MUNKATERV 4a (#22 sor: a Jób előfeltételei) | átvezetve |
-| 15 | #84 TAHOT_JOB41 ✅ (PR #262): a Jób 41 332 sora pótolva; DT86; N55 és N-F34b lezárva; a `CLAUDE.md` TAHOT-mondata a mért állapotra | FELADATOK #84, DONTESEK DT86, NYITOTT_FELADATOK, CLAUDE.md | igen | ADATVAGYON 17.2 (Adat-tár), 18.4 (N-F34b), 22.5; ATALAKITASI 10. N13 | átvezetve; a D23 (`OT-full`) újratárgyalása DT-F52h |
+| 15 | #84 TAHOT_JOB41 ✅ (PR #262): a Jób 41 332 sora pótolva; DT86; N55 és N-F34b lezárva; a `CLAUDE.md` TAHOT-mondata a mért állapotra | FELADATOK #84, DONTESEK DT86, NYITOTT_FELADATOK, CLAUDE.md | igen | ADATVAGYON 17.2 (Adat-tár), 18.4 (N-F34b), 22.5; ATALAKITASI 10. N13 | átvezetve; a D23 (`OT-full`) újratárgyalása DT90 |
 | 16 | #38: 6 adag kész (DT52), a 7. adag a `claude/f38-adag7` ágon; DT55 (#67 kapuja), DT56 (≥85% Károli-lefedettség), N53 | FELADATOK #38, DONTESEK DT52, DT55, DT56 | igen (kicsi) | MUNKATERV 4a (#38 sor); ADATVAGYON „Státuszok” | átvezetve |
 | 17 | #37 ✅ (PR #240), #40 ✅ (PR #242), #66 ✅ (PR #227), #68 ✅ (PR #244), #71 ✅, #72 ✅ (PR #236), #73 ✅ | FELADATOK „Kész”, brief-fejlécek | igen (kicsi) | MUNKATERV 4a (Kész bekezdés, #37 sor); ADATVAGYON „Státuszok” | átvezetve |
 | 18 | új briefek: #67, #69, #70, #74, #75, #76, #79, #80, #81 | FELADATOK, F67–F81 brief | igen | MUNKATERV 4a (sorok, összesítés) | átvezetve (a 4. tábla sorait a TI.10 felvette; a 4a e futásban) |
@@ -345,7 +345,7 @@ Forrás: `git diff 7dd0183..HEAD -- FELADATOK.md DONTESEK.md NYITOTT_FELADATOK.m
 | --- | --- |
 | fejléc (3–4. sor), „Státusz” sor | v11 sor és verziószám; a státuszsor a 13. szakasz v11-ére mutat |
 | 4.7 (jelölő sor) | a #22 kész könyvei a mai állapotra (DT57) |
-| 10. D23, N13 | N13 lezárva (N55, F84, DT86); a D23 újratárgyalása DT-F52h |
+| 10. D23, N13 | N13 lezárva (N55, F84, DT86); a D23 újratárgyalása DT90 |
 | 13. (cím), 13.3 | v11 jelölés; az üres-blokk állapotok a DT80/DT82/DT83 szerint; a #78 ✅, a #23 M1 kész, DT84 🟡 |
 | 13.4 (táblasorok) | #78 lezárva; #23 M0/M1 kész; #9 a #23 után (a #78 kész) |
 
@@ -385,7 +385,7 @@ Forrás: `git diff 7dd0183..HEAD -- FELADATOK.md DONTESEK.md NYITOTT_FELADATOK.m
 
 **Egyéb fájlok**
 
-- `DONTESEK.md`: DT-F52h, DT-F52i (helyőrzők, 🟡).
+- `DONTESEK.md`: DT90, DT91 (helyőrzők, 🟡).
 - `F52_TERV_SZINKRON_BRIEF.md`: fejléc (`allapot`, `ag`, `kovetkezo`).
 - ez a napló.
 
@@ -395,8 +395,8 @@ Minden rés pontosan egy kimenettel (átvezetés, DONTESEK-tétel, befogadási c
 
 | # | tétel | kimenet |
 | --- | --- | --- |
-| 1 | ATALAKITASI D23 („`scope=OT-full` nem adható ki”) indoka (a Jób 40:1-5 / Jób 41 hiánya) a #84-gyel megszűnt; az N13 szerint a tiltás újratárgyalható; a Jób 40 MT-kulcsa marad | DONTESEK **DT-F52h** (🟡); az ATALAKITASI D23 és N13 sora mutat rá |
-| 2 | a VIBE 5. szakasz MCP_BUROK és SZPA_AUDIT sora a „kilenc tervezett feladat” része, de mindkettő feltételes (DT-M7, DT77 (13)); a brief 6. pontja a VIBE 5. szakaszát csak sorszám/név cseréig engedi | DONTESEK **DT-F52i** (🟡) |
+| 1 | ATALAKITASI D23 („`scope=OT-full` nem adható ki”) indoka (a Jób 40:1-5 / Jób 41 hiánya) a #84-gyel megszűnt; az N13 szerint a tiltás újratárgyalható; a Jób 40 MT-kulcsa marad | DONTESEK **DT90** (🟡); az ATALAKITASI D23 és N13 sora mutat rá |
+| 2 | a VIBE 5. szakasz MCP_BUROK és SZPA_AUDIT sora a „kilenc tervezett feladat” része, de mindkettő feltételes (DT-M7, DT77 (13)); a brief 6. pontja a VIBE 5. szakaszát csak sorszám/név cseréig engedi | DONTESEK **DT91** (🟡) |
 | 3 | ADATVAGYON 21. 6. lépcső: „hasznosítás” (fordítói eszköz, licencelt adatkészlet, AI-réteg, kereskedelmi döntés jogásszal) — se feladat, se DT, se jelölés | átvezetés: „feltételes” jelölés (a 4–5. lépcső után, a felhasználó döntésére) |
 | 4 | ADATVAGYON 19. teendők: `terminologia.tsv` a #38 adagjainak; tárhely-döntés; KK-kulcs/`szamozas`; DT-M8 (d) | átvezetés: jelölve (a #38 `olvas:` listája; ⛔ hosting a #76 briefje előtt; #79; a #11 csonk `olvas:` sora) |
 | 5 | a #65 „csak `magas` link számít egyezésnek” (MUNKATERV 4., 6.) — a 3Móztól csak Sonnet fut, a linkek `alacsony` (DT-F22c, DT70), `magas` pár csak az 1–2Mózon | a #65 M0 ⛔-ja viszi (F65 `kovetkezo`, v1 sor, 2026-10-05); a MUNKATERV #65 sora a korlátot jelzi — új tétel nincs |
@@ -423,7 +423,7 @@ Minden rés pontosan egy kimenettel (átvezetés, DONTESEK-tétel, befogadási c
 | --- | --- | --- |
 | 1 | minden delta-sor a naplóban, igen/nem érintettséggel és indokkal | 33 sor, 3.1 |
 | 2 | az átírt szakaszok listája és a `git diff` egyezik | 3.2; a hunk-ok `git diff -U0 2108fc67..HEAD` szerint szakaszra bontva, az ellenőr lefuttatja |
-| 3 | minden átírt állítás mellett a hivatkozott DT-/N-/#-tétel | DT57, DT73, DT74–DT89, DT-M1/M4–M8, DT-F52h/i, N-F34b, N55, FELADATOK-számok |
+| 3 | minden átírt állítás mellett a hivatkozott DT-/N-/#-tétel | DT57, DT73, DT74–DT89, DT-M1/M4–M8, DT90/i, N-F34b, N55, FELADATOK-számok |
 | 4 | nem maradt megfordított állítás | keresve: `M1 a #78 után`, `1–5Móz és Józs`, `a Bírák`, `Bírákig`, `11 szerep`, `nem teljes` (TAHOT), `▶ fut (2. futás`, `Azóta négy`, `2026-10-06-i`: a találatok csak történeti döntésnapló-sorok és a lezárt jelölések |
 | 5 | döntésnapló-sor és kiindulási állapot sor bent | ATALAKITASI v11 sor; MUNKATERV v6; ADATVAGYON v17 + kiindulási állapot sor; VIBE v5 |
 | 6 | a dokumentum többi része bájtazonos | cserék pontos illesztéssel (`ed.py`: pontosan egy előfordulás, különben leáll; a 4a tartományt sor-kezdetek jelölik), CRLF megőrizve |
@@ -449,8 +449,8 @@ A futások között felgyűlt tételek, amelyeket a következő szinkron a delta
 
 | tétel | forrás | kimenet |
 | --- | --- | --- |
-| a D23 (`OT-full` scope-címke) újratárgyalása a #84 után | a 3. futás 3.3/1. | DT-F52h (🟡); a döntés után az ATALAKITASI D23/N13 sora és az ADATVAGYON 22.4 `scope`-mondata |
-| „feltételes” jelzés a VIBE 5. szakasz MCP\_BUROK és SZPA\_AUDIT sorában | a 3. futás 3.3/2. | DT-F52i (🟡) |
+| a D23 (`OT-full` scope-címke) újratárgyalása a #84 után | a 3. futás 3.3/1. | DT90 (🟡); a döntés után az ATALAKITASI D23/N13 sora és az ADATVAGYON 22.4 `scope`-mondata |
+| „feltételes” jelzés a VIBE 5. szakasz MCP\_BUROK és SZPA\_AUDIT sorában | a 3. futás 3.3/2. | DT91 (🟡) |
 | a #23 M1 13 `javaslat` pontja | DONTESEK DT84 (🟡) | a felhasználó döntése; utána a #23 `kovetkezo`-ja, az ATALAKITASI 13.4 „DT84 🟡” jelölése és a MUNKATERV 4a #23 sora |
 | a `adat/SEMA.md` 4. szakasz (:1229) „Jób 40:1-5 és a teljes Jób 41. fejezet hiányzik” ↔ `CLAUDE.md` TAHOT-mondat ellentmondása | a 3. futás 3.3/11. | ⛔ jelezve a felhasználónak (orkesztrátor); a SEMA 4 javítása a #52 hatókörén kívül esik; a javítás után az ADATVAGYON 22.5 „SEMA 4.” sora |
 | a #22 Jób és Péld menete, a #38 7. adagja, a #62/#63 indítása | FELADATOK | a státuszok a következő futás delta-listájába (nem terv-tétel) |

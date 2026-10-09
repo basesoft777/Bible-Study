@@ -30,11 +30,11 @@ Tartomány: 2108fc67..6e2336d5 (a 2108fc67 szülője: 1f420a7c = main; a 7884491
 | 4. ADATVAGYON 22.5 / SEMA 4 | ELTÉRÉS | ADATVAGYON:1003; adat/SEMA.md:1229 | a SEMA 4 ma is: „Jób 40:1-5 és a teljes Jób 41. fejezet hiányzik”; a CLAUDE.md az ellenkezőjét írja → két forrás ellentmond (brief 6.2: napló + ⛔), a napló 27. sora „nem” |
 | 6. ⛔ alapfeltevés | OK | naplo:298 | nincs alapfeltevés-fordítás; a D23 DT-be ment |
 | 6. VIBE-korlát | OK (megjegyzés) | VIBE:7, 122, 126 | az 5. szakaszban csak szám- és névcsere; az 1. szakasz cseréje a 6. pont betűje szerint nem engedett (precedens: v4) |
-| 3b DT-F52h | OK (megjegyzés) | DONTESEK:165 | 8 oszlop (az `awk -F'|'` NF = 10 = DT89); 🟡, a Döntés üres; a helyőrző a DT-F52g (→ DT78, `cfa45d0f`) után következik; CLAUDE.md „Adat-tár” és naplok/F84_jelentes.md :50, :89, :97 egyezik; a `lekerdez.py:12, :375` `TAHOT-teljes`-t ír (Grep); a SEMA :1232–1235 indoka nincs idézve |
-| 3b DT-F52i | OK | DONTESEK:166 | a brief 6. pontja miatt valóban döntés |
+| 3b DT90 | OK (megjegyzés) | DONTESEK:165 | 8 oszlop (az `awk -F'|'` NF = 10 = DT89); 🟡, a Döntés üres; a helyőrző a DT-F52g (→ DT78, `cfa45d0f`) után következik; CLAUDE.md „Adat-tár” és naplok/F84_jelentes.md :50, :89, :97 egyezik; a `lekerdez.py:12, :375` `TAHOT-teljes`-t ír (Grep); a SEMA :1232–1235 indoka nincs idézve |
+| 3b DT91 | OK | DONTESEK:166 | a brief 6. pontja miatt valóban döntés |
 | 8. Nincs benne | OK | — | FELADATOK változatlan; a DONTESEK-be csak 2 új sor (`git diff --numstat`: 2/0) |
 | A1 | OK | naplo:409–417 | a `manual` és a lekérdezés szétválasztva |
-| A2 | OK | naplo:435–440 | DT-F52h/i 🟡, DT84 🟡 (DONTESEK:159), a #22 Jób/Péld nyitott (FELADATOK:17) |
+| A2 | OK | naplo:435–440 | DT90/i 🟡, DT84 🟡 (DONTESEK:159), a #22 Jób/Péld nyitott (FELADATOK:17) |
 | A3–A5 | OK (nem alkalmazható) | — | nincs tanulmány, párhuzam vagy tanító a diffben |
 | A6 | OK | — | futtat.py: E12–E15 0 találat |
 | CI | NEM ELLENŐRIZHETŐ (egyezés) / OK (saját futás) | — | nem kaptam CI-jelentést, így az egyezés nem vethető össze; `python eszkozok/ellenorzes/futtat.py --valtozott <7 fájl> --diff-alap 2108fc67 --diff-fej 6e2336d5`: E2–E16, E19, E20, E26 0 találat; E25 3 (CLAUDE.md:33, MUNKAMENET.md:67, :181) és E27 33 jelentés/figyelmeztetés, mind a diffen kívüli fájlokban; HIBA nincs |
