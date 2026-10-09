@@ -348,7 +348,8 @@ def onteszt():
         hibak.append('a nincs_eredeti Károli-vers kulcsán álló eredeti vers elveszett')
     if tokenek.versmegfeleltetes(jovahagyott=('Ismeretlen',)) != []:
         hibak.append('a jóváhagyott-könyv szűrő')
-    # 6. a valódi adat: az 1Móz tiszta, a 2Móz 35:36–36:37 eltolódása megvan (ha az adat elérhető)
+    # 6. a valódi adat (az F85.6 óta átkulcsolt TAHOT): az 1Móz tiszta, a 2Móz 35:36–36:37 eltolódása már NINCS meg
+    #    (a 2Móz 36 kulcsai Károli-kulcsok, a régi 2Móz 36:38 kulcsnak 0 sora van, a 2Móz 35:36 sorai megvannak)
     try:
         karoli, ered = tokenek.betolt_karoli(), tokenek.betolt_eredeti(versmegf=False)
     except Exception as ex:   # noqa: BLE001
@@ -360,8 +361,12 @@ def onteszt():
             hibak.append('az 1Móz-ra eltérést jelzett')
         k2, e2_ = folyamok(karoli, ered, '2Móz')
         gep = szegmensek(illeszt(k2, e2_))
-        if ('2Móz 35:36', '2Móz 36:1', 'eltolt') not in gep or ('2Móz 36:37', '2Móz 36:38', 'eltolt') not in gep:
-            hibak.append('a 2Móz 35:36–36:37 eltolódását nem találta meg')
+        if gep:
+            hibak.append('a 2Móz-ra eltérést jelzett az átkulcsolt TAHOT-ban: %s' % gep[:3])
+        if '2Móz 36:38' in ered:
+            hibak.append('a régi 2Móz 36:38 kulcsnak még van sora (az átkulcsolás nem látszik)')
+        if not ered.get('2Móz 35:36') or not ered.get('2Móz 36:37'):
+            hibak.append('a 2Móz 35:36 / 36:37 Károli-kulcsnak nincs sora az átkulcsolt TAHOT-ban')
     # 7. a kimenetek (ideiglenes könyvtárba)
     md_s = md([('X', k[:5], k[:5], [(a[0], a[0]) for a in k[:5]], fejezet_sorok(k[:5], k[:5], [(a[0], a[0]) for a in k[:5]]))])
     if 'F22_versbeosztas' not in md_s or 'X 1:1' in md_s:

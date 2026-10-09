@@ -51,7 +51,8 @@ _TR_KIADAS = re.compile(r'^TR(?:[»«]\d+)?$')
 MERES_KIZARAS = os.path.join(ROOT, 'f21p', 'meres_kizaras.tsv')
 VERSBEOSZTAS_MEGF = os.path.join(ROOT, 'f22', 'versmegfeleltetes.tsv')   # F22: a versbeosztás-detektor gépi listája
 # A lista csak ezekre a könyvekre érvényes a futtatóban (a többi sor javaslat, amíg a felhasználó nem hagyja jóvá):
-# a detektor pontossága csak az 1Móz (üres lista) és a 2Móz (35:36–36:37) esetén igazolt; pl. az Ézs 9:17–20 hamis lenne.
+# (F22) a detektor pontossága csak az 1Móz (üres lista) és a 2Móz (35:36–36:37) esetén volt igazolt; pl. az Ézs 9:17–20 hamis lett volna.
+# F85.6 óta a TAHOT_kivonat kulcsai Károli-kulcsok, a detektor-lista az ÓSZ-ben üres, a lista érvényessége már csak az ÚSZ-sorokra számít.
 VERSBEOSZTAS_JOVAHAGYOTT = ('2Móz', '3Móz', '4Móz', '5Móz', 'Józs', 'Zsolt', 'Ézs', 'Jer', '1Krón', '2Krón', 'Ezsd', 'Ez', 'Péld', 'Bír', 'Jób', 'Eszt', '2Sám', '1Sám')
 VERSMEGF_KEZI = os.path.join(ROOT, 'f22', 'versmegfeleltetes_kezi.tsv')   # F22: kézi javítások a detektor listájához (a regenerálás nem írja felül)
 VERSOSSZEVONAS = os.path.join(ROOT, 'f22', 'versosszevonas.tsv')   # F22: kézzel jóváhagyott 1:2 beolvasztások

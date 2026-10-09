@@ -233,3 +233,12 @@ A `nincs_karoli` és a két `torol` sort **nem állítottam vissza**, indokok: (
 - **(e)** a 9 összevonás szétválasztása (a futott 6 + a nem futott Hós 1:11/2:1, Hós 11:11/12:1, Préd 2:26/2:25): a fő vers és az extra tokenjei (strong, alak, tükörfordítás, sorszám) megegyeznek az átkulcsolás előtti nyers TAHOT megfelelő verseivel.
 - `egyesit.py --ellenoriz` mind a 19 könyvre „rendben”.
 - **Megjegyzés:** a `versbeosztas.py --onteszt` 6. pontja (a 2Móz 35:36–36:37 eltolódását keresi a *nyers* TAHOT-ban) az F85.6 átkulcsolás óta hibát jelez (a 2Móz már Károli-kulcsú); ez a módosításomtól független (stash-sel ellenőrizve), a `versbeosztas.py` nincs az `ir`-ben — külön tétel (frissítse az öntesztet az átkulcsolt állapotra).
+
+## 11. F85.12 — a proveniencia-eltérés elfogadása; a `versbeosztas.py` önteszt 6. pontja
+
+*A felhasználó kifejezetten jóváhagyta (chat, 2026.10.09, az `ELLENOR_F85_8.md` után).*
+
+- **Proveniencia-sor (10.3 (c) 5 könyve: 2Móz, 4Móz, Ézs, Jób, Péld):** a felhasználó elfogadta, hogy a megszűnt `f22/versmegfeleltetes.tsv` / `f22/versmegfeleltetes_kezi.tsv` forrást a táblák proveniencia-sorában nem nevezzük meg. A meglévő `parok_*` / `szavak_*` táblákat **nem írjuk újra**; az új proveniencia-sor a következő valódi újrafuttatáskor kerül be. A táblák nem változtak (git: `adat/` diff üres, a `parok_*`/`szavak_*` blobok azonosak).
+- **`eszkozok/karoli_strong/versbeosztas.py --onteszt` 6. pontja:** az F85.6 óta a 2Móz 35:36–36:37 eltolódása az átkulcsolt TAHOT-ban már nincs meg, ezért a régi teszt („az eltolódást nem találta meg”) hibát jelzett. A teszt most azt ellenőrzi, hogy a 2Móz-ra a detektor nem jelez eltolódást, a régi `2Móz 36:38` kulcsnak 0 sora van, és a `2Móz 35:36` / `2Móz 36:37` Károli-kulcsnak vannak sorai. Az 1Móz-teszt és minden más pont, valamint a detektor viselkedése változatlan. Az `--onteszt` kimenete: *előtte* `ÖNTESZT HIBA: a 2Móz 35:36–36:37 eltolódását nem találta meg`; *utána* `önteszt: rendben`. A generált `f22/versmegfeleltetes.tsv` és `naplok/F22_versbeosztas.md` nem íródott újra (SHA-256 azonos a futtatás előtt és után).
+- **`eszkozok/karoli_strong/tokenek.py` 54. sor körüli megjegyzés:** pontosítva (a „2Móz 35:36–36:37 igazolt” az F22-beli állapotra vonatkozott; az F85.6 óta a kulcsok Károli-kulcsok, a lista az ÓSZ-ben üres). Kódváltozás nincs (a `beolvasztott` halmaz és a többi rész érintetlen).
+- A brief `ir` mezője bővült: `eszkozok/karoli_strong/versbeosztas.py`.
