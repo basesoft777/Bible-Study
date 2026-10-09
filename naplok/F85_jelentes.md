@@ -6,6 +6,8 @@
 
 ## 0. Összefoglalás
 
+**Frissítés (F85.3):** az alábbi számok az F85.1 állapotot mutatják; a 3 `valodi_hiany_tahot` sor és a Hós 12:2 a 6. szakasz szerint módosult (új összeg: 328 `eltolas`, 17 `osszevonas_2_1`, 0 `valodi_hiany_tahot`, 4 `bizonytalan`; a B szintű sorok ellenőrzése: 6.3).
+
 `scope=TAHOT_kivonat.tsv teljes ÓSZ (23 213 vers, 39 könyv); Károli_1908 ÓSZ-versei | forras=konkordancia/TAHOT_kivonat.tsv, Macula_heber_*.tsv, KJV_Strongs_teljes.tsv, Karoli_1908.tsv, f22/versmegfeleltetes.tsv, f22/versmegfeleltetes_kezi.tsv, f22/versosszevonas.tsv | ts=2026-10-09`
 
 | | darab |
@@ -69,3 +71,57 @@ Az átkulcsolás után két különböző tartalmú TAHOT-vers kerülhet ugyanar
 ## 5. A következő lépés
 
 A ⛔ 1 megállás: a felhasználó jóváhagyása (DT-F85a), utána 3. tétel (átkulcsolás-szkript). A futtatás sorrendje a #22 Péld-menetéhez képest a felhasználó döntése (a brief `kovetkezo` mezője szerint); a Péld 11:31/12:1 és 12:1–28 sorai is az átkulcsolt halmazban vannak.
+
+## 6. F85.3 — a 3 `valodi_hiany_tahot` sor fejezeten átnyúló újramérése, a Hós 12 és a B szintű sorok ellenőrzése
+
+*Szkript: `eszkozok/tahot_verskulcs_finomit.py` (az esetlista-szkript kimenetét finomítja; mindkettő csak olvas, idempotens; sorrend: előbb `tahot_verskulcs_esetlista.py`, utána `tahot_verskulcs_finomit.py`). A `F85_esetlista.tsv` három új oszlopot kapott (`b_ellenorzes`, `szoveg_olvasas`, `megjegyzes`), a B sorok jelei a `naplok/F85_b_ellenorzes.tsv`-ben vannak. A `TAHOT_kivonat.tsv`, az `f22/` és a `parok_*` táblák nem változtak. Kulcsba `-MT`-féle utótagot nem javaslok (a `parse_igehely` nem fogadja); jelölés kell-e: külön oszlop.*
+
+`scope=Préd 1–3, Hós 1–3 és 11–13: Károli- és TAHOT-versszámok, Károli-szószám (tokenek.tokenizal) és TAHOT nem-előtag sorszám, a Károli-szöveg és a TAHOT-glossza összevetése; B sorok: KJV-tanú, TVTMS-sor, hossz | forras=konkordancia/Karoli_1908.tsv, TAHOT_kivonat.tsv, Macula_heber_*.tsv, KJV_Strongs_teljes.tsv, Karoli_versmegfeleltetes.tsv | ts=2026-10-09`
+
+### 6.1 A három „hiány” nem hiány: mind 2:1 összevonás (a Károli egy versbe vonta)
+
+| TAHOT-vers | Károli | típus | indok |
+|---|---|---|---|
+| Préd 2:25 (+ partner Préd 2:26) | Préd 2:26 | `osszevonas_2_1` | A Préd 2 mindkét oldalon 26 verses, de a Préd 1:18 → Károli 2:1 miatt K 2:n = T 2:(n−1) a 2:25-ig. A K 2:26 (51 szó) 1–8. szava („Mert kicsoda ehetnék és élhetne gyönyörűségére rajtam kivül”) = T 2:25 („for who will he eat who will enjoy outside from”), a 9–51. szó = T 2:26. Szóarány 51 / (7 + 22) = 1,76 (a könyv mediánja 1,58). |
+| Hós 2:1 (+ partner Hós 1:11) | Hós 1:11 | `osszevonas_2_1` | A K 1:11 (30 szó) 23–30. szava („Mondjátok atyátokfiainak: Ammi! és a ti húgaitoknak: Rukhámáh”) = T 2:1 („say brothers people sisters shown compassion”). Szóarány 30 / (16 + 5) = 1,43. Utána K 2:n = T 2:(n+1) (a #22 táblában ez már így van). |
+| Hós 12:1 (+ partner Hós 11:11) | Hós 11:11 | `osszevonas_2_1` | A K 11:11 (40 szó) 22–40. szava („Körülvett engem Efraim hazugsággal, az Izráel háza pedig csalárdsággal, de Júda uralkodik még az Istennel és a hűséges Szenttel”) = T 12:1 („surrounded lying Ephraim deceit house of Israel Judah still roamed with God … holy faithful”). Szóarány 40 / (11 + 14) = 1,60. K 11:12 nincs (a Károli Hós 11 11 verses). |
+| Hós 12:3 | Hós 12:2 | `eltolas` | K 12:2 „Pere van az Úrnak a Júdával is…” = T 12:3 „a case at law Yahweh with Judah…”. |
+| Hós 12:2 | Hós 12:1 | `eltolas` | K 12:1 „Széllel táplálkozik Efraim…” = T 12:2 „Ephraim feeding wind…”. |
+
+**Igazolás szintje:** a TAHOT-oldali Strong-illeszkedés WLC-vel megvan (J = 0,92–1,00); a Károli-oldalon Strong-igazolás nincs. A döntő jel a **szövegtartalom** (a Károli-szakasz és a TAHOT-glossza kézi, soronkénti összevetése — ezért `szint=S`, megerősítést kér) és a szóarány. Az esetlista frissült: a 3 `valodi_hiany_tahot` és a Hós 12:2 `bizonytalan` sor megszűnt; helyettük 6 új `osszevonas_2_1` sor (3 extra + 3 partner) és 2 `eltolas` (Hós 12:2, 12:3). **Új összeg: 328 `eltolas`, 17 `osszevonas_2_1`, 0 `valodi_hiany_tahot`, 4 `bizonytalan` (1Sám 14:41, Zsolt 77:11, Ézs 63:19, Ézs 64:1), 0 `valodi_hiany_karoli`.**
+
+### 6.2 A Hós 12:1–3 helyes megfeleltetése és a kézi tábla javítási javaslata (a fájlokat nem írtam)
+
+Helyes: Károli 11:11 = T 11:11 + T 12:1; K 12:n = T 12:(n+1) (n = 1…14). A mai tábla K 12:1 → T 12:1 és K 12:2 → T 12:2 azonosságot ad (téves), T 12:3-at `nincs_karoli`-nak jelöli, és csak K 12:3-tól (→ T 12:4) tolja el. Javasolt sorok (a detektor `Hós 12:3 nincs_karoli` sorát az azonos `eredeti`jű `eltolt` sor kiváltja, a K 12:3→T 12:4 stb. sorok már jók):
+
+```
+f22/versmegfeleltetes_kezi.tsv (javaslat):
+Hós 12:1	Hós 12:2	eltolt
+Hós 12:2	Hós 12:3	eltolt
+	Hós 12:1	nincs_karoli
+
+f22/versosszevonas.tsv (javaslat; a hu_tol/hu_ig a tokenek.tokenizal sorszáma):
+Hós 11:11	22	40	Hós 12:1	a Károli 11:11 „Körülvett engem Efraim … a hűséges Szenttel” része (22–40. szó) = a TAHOT 12:1 (2:1)
+```
+
+Ugyanígy a másik két összevonásra (a megfelelő #22 könyv-menetben): `Hós 1:11 23 30 Hós 2:1` és `Préd 2:26 1 8 Préd 2:25` (mindkettő `nincs_karoli` sora a detektor listájában megvan). A Hós és a Préd a #22-ben még nem futott (a `tokenek.VERSBEOSZTAS_JOVAHAGYOTT` nem tartalmazza), ezért e sorok futott könyvet nem érintenek.
+
+### 6.3 A 41 B szintű sor (csak #22-detektor) független ellenőrzése
+
+Jelek soronként (`naplok/F85_b_ellenorzes.tsv`): **kjv** (a Károli-vers `igehely_kjv` megfelelőjének Strong-Jaccardja a TAHOT-verssel, ≥ 0,5: +1), **tvtms** (az `osztaly=MT` sor MT-száma egyezik-e a WLC-vel igazolt MT-verssel), **hossz** (a Károli/TAHOT szóarány eltérése a könyv mediánjától a javasolt párosításnál vs. az azonos kulcsú Károli-versnél; a −1 rövid versekben zajos, nem blokkol), és külön, a gépi osztályozást nem módosító **szövegolvasás** (a Károli-vers és a TAHOT-glossza kézi egyezése; 33 sort olvastam végig, 8 4Móz-sort nem). Gépi osztály: igazolt = legalább 2 jel +1; ellentmond = kjv vagy tvtms −1; egyébként nem igazolt.
+
+| könyv | sor | gépi: igazolt | gépi: nem igazolt | gépi: ellentmond | szövegolvasás: egyezik / nem olvasott |
+|---|---|---|---|---|---|
+| 2Móz 36 | 9 | 0 | 9 | 0 | 9 / 0 |
+| 4Móz 30 | 16 | 12 | 4 | 0 | 8 / 8 |
+| Hós (2:23, 13:16, 14:1–9) | 11 | 0 | 11 | 0 | 11 / 0 |
+| Én 6 | 3 | 0 | 3 | 0 | 3 / 0 |
+| Ézs (8:23, 64:12) | 2 | 0 | 1 | 1 | 2 / 0 |
+| **össz.** | **41** | **12** | **28** | **1** | **33 / 8** |
+
+- **Igazolt (12):** mind a 4Móz 30-ban (KJV-tanú J = 0,55–0,90 + hossz).
+- **Nem igazolt (28):** nincs gépi jel, de nincs is ellenjel: a 2Móz 36 (9), Hós (11) és Én 6 (3) sorokra a `Karoli_versmegfeleltetes` nem ad KJV/TVTMS-megfelelőt (KEZI-osztály vagy hiányzik), a 4Móz 30 négy sorában (30:5, 10, 13, 15) a KJV-tanú +1 vagy 0, a hossz 0. **Mind a 28 sornál a szövegolvasás egyezik** (az eltolást támogatja); gépi igazolásnak ez nem számít.
+- **Ellentmond (1):** Ézs 8:23 → K 9:1. A `Karoli_versmegfeleltetes` Ézs 9:1 sora MT 9:1-et ad (tvtms = −1), a KJV-tanú viszont +1 (J = 0,84) és a szövegolvasás is egyezik (K 9:1 „…Zebulon és Nafthali földjét…” = T 8:23 „…Zebulun … Naphtali…”). A TVTMS-tábla sora ezen a ponton hibásnak látszik (a KJV 9:1 = MT 8:23); a sort az eltolás javára értékelem, a döntés a felhasználóé.
+- **Egyetlen sor sem mutat a javasolt eltolás ellen** (kjv −1: 0 sor; tvtms −1: 1 sor, a fenti TVTMS-hiba; szövegolvasás: 33 / 33 egyezik).
+
+**Korlát:** a Károli-oldalon továbbra sincs független Strong-jel. A KJV-tanú a Károli-versnek a TVTMS-táblán át kapott KJV-megfelelőjére támaszkodik (az is származtatott tábla); a szövegolvasás kézi értelmezés, nem lekérdezés — ezért marad „nem igazolt” a gépi besorolás, ahol csak az olvasás áll mögötte.
