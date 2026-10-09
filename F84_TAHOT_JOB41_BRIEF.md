@@ -5,10 +5,12 @@ kod: TAHOT_JOB41
 tipus: feladat
 fazis: 1
 modell: sonnet
-allapot: fut
+allapot: lezarva
+pr: 262
+lezarva_osszegzes: "Jób 41:1–34 pótolva a TAHOT_kivonatba (+332 sor Károli-kulccsal, a nyitott esetekből −332), DT-F84a (a) 1, (b) 1; CLAUDE.md TAHOT-mondat a mért állapotra; N-F83a, N-F34b lezárva; nyitott a #22-nek: f22/versmegfeleltetes.tsv újragenerálása a Jób-menet előtt; PR #262 (10.09)"
 ag: claude/f84-tahot-job41
 ad: "A TAHOT_kivonat.tsv-ben a Károli Jób 41:1–34 héber sorai Károli-kulccsal; a #22 a Jóbot egy menetben futtathatja; a CLAUDE.md TAHOT-korlát mondata a mért állapotot írja"
-kovetkezo: "zárás: F84.4 (zárójelentés, ellenőr), PR"
+kovetkezo: "merge a felhasználótól; a #22 Jób-menete előtt a versbeosztas.py újragenerálása (naplok/F84_zaras.md)"
 fugg: [83]
 olvas: [konkordancia/TAHOT_kivonat_nyitott_esetek.tsv, konkordancia/Macula_heber_Job.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, naplok/F83_Job_versbeosztas_jelentes.md, eszkozok/tahot_lefedettseg_ellenoriz.py]
 ir: [konkordancia/TAHOT_kivonat.tsv, konkordancia/TAHOT_kivonat_nyitott_esetek.tsv, eszkozok/tahot_karoli_kulcs_generalas.py, eszkozok/tahot_job41_potlas.py, CLAUDE.md, NYITOTT_FELADATOK.md, konkordancia/TAHOT_TAGNT_README.md]
