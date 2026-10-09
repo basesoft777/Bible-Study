@@ -141,7 +141,7 @@ def versosszevonasok(ut=None):
     [{'karoli', 'hu_tol', 'hu_ig', 'eredeti', 'megj', 'er_tol', 'er_ig'}].
 
     `er_tol`–`er_ig` (F85.10, opcionális 6. és 7. oszlop): a beolvasztott TAHOT-vers (`eredeti`: a vers
-    átkulcsolás előtti TAHOT-címkéje) tokenjeinek 1-alapú helye a közös Károli-kulcs nyers (fájlsorrendű) tokenlistájában.
+    átkulcsolás előtti TAHOT-címkéje) tokenjeinek 1-alapú helye a közös Károli-kulcs LEKÉPEZETT (a detektor-/kézi tábla szerinti leképezés utáni, az összevonás kiemelése előtti, fájlsorrendű) tokenlistájában (a kulcsok az F85.6 óta Károli-kulcsok, a lista az ÓSZ-ben üres, így ez a nyers lista).
     Ha hiányzik (régi alak), az `eredeti` még létező nyers TAHOT-kulcs, és a tokenjei onnan jönnek."""
     ut = ut or VERSOSSZEVONAS
     if not os.path.exists(ut):
@@ -157,7 +157,7 @@ def versosszevonasok(ut=None):
 
 
 def _eredeti_osztva():
-    """(Károli-kulcsú nyers lista, beolvasztott extra tokenek). Az `er_tol`–`er_ig` sorokra a közös kulcs nyers
+    """(Károli-kulcsú lista, beolvasztott extra tokenek). A lista a nyers TAHOT/TAGNT-lista LEKÉPEZETT alakja (`_versmegfeleltet`), az összevonás kiemelése után. Az `er_tol`–`er_ig` sorokra a közös kulcs leképezett
     tokenlistájából kiemeli a beolvasztott TAHOT-vers tokenjeit (extra: sorszám = a fő vers tokenszáma + i), a fő vers
     tokenjei 1-től újraszámozva maradnak a kulcson. Visszafelé kompatibilis: a régi alakú sorokkal (nincs `er_tol`) nem
     foglalkozik, azokat az `osszevont_extra` a nyers kulcsról veszi."""
@@ -199,9 +199,15 @@ def _versmegfeleltet(ered, sorok):
     Ami a listában nem szerepel, változatlan (azonos kulcs)."""
     if not sorok:
         return ered
-    beolvasztott = {o['eredeti'] for o in versosszevonasok()}   # a kézi 1:2 beolvasztásba vont eredeti versek: nem gazdátlanok
+    osszev = versosszevonasok()
+    # régi alakú sorok (nincs er_tol): az `eredeti` a nyers TAHOT-kulcs, az ilyen eredeti vers nem gazdátlan;
+    # új alakú sorok (F85.10): a beolvasztás a közös, ÁTKULCSOLT Károli-kulcson áll (az `eredeti` csak címke),
+    # ezért az új kulcs védett: nincs_karoli sor rá nem hagyhatja el a kulcsot a leképezésből
+    beolvasztott_regi = {o['eredeti'] for o in osszev if o['er_tol'] is None}
+    beolvasztott_uj = {o['karoli'] for o in osszev if o['er_tol'] is not None}
+    beolvasztott = beolvasztott_regi | beolvasztott_uj
     erintett_k = {k for k, e, t in sorok if k}
-    erintett_e = {e for k, e, t in sorok if e}
+    erintett_e = {e for k, e, t in sorok if e and e not in beolvasztott_uj}
     uj = {ig: v for ig, v in ered.items() if ig not in erintett_k and ig not in erintett_e}
     for k, e, t in sorok:
         if t == 'eltolt':

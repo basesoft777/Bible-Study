@@ -60,7 +60,7 @@ def git_show(ut):
 def a_pont():
     regi = git_show('konkordancia/TAHOT_kivonat.tsv').split(b'\n')
     uj = open(TAHOT, 'rb').read().split(b'\n')
-    jelent('a', 'sorszám (régi/új)', 'OK' if len(regi) == len(uj) else 'HIBA', '%d / %d' % (len(regi), len(uj)))
+    jelent('a', 'sorszám (régi/új, fejléccel)', 'OK' if len(regi) == len(uj) else 'HIBA', '%d / %d sor' % (len(regi) - (1 if regi[-1] == b'' else 0), len(uj) - (1 if uj[-1] == b'' else 0)))
     naplo = {}
     with open(VALT, encoding='utf-8') as fh:
         for s in fh:
@@ -198,26 +198,86 @@ OSSZEVONASOK = [('4Móz 29:39', '4Móz 29:39', '4Móz 30:1'), ('Jób 16:22', 'J�
                 ('Hós 1:11', 'Hós 1:11', 'Hós 2:1'), ('Hós 11:11', 'Hós 11:11', 'Hós 12:1'), ('Préd 2:26', 'Préd 2:26', 'Préd 2:25')]
 
 
-def e_pont(regi_tmp):
-    """A 9 összevonás szétválasztása: a közös kulcson a fő vers (betolt_eredeti) és az extra (osszevont_extra) tokenjei
-    megegyeznek az átkulcsolás előtti nyers TAHOT megfelelő verseivel (a 6 futott és a 3 még nem futott összevonás)."""
-    mai = (tokenek.TAHOT, tokenek.VERSBEOSZTAS_MEGF, tokenek.VERSMEGF_KEZI, tokenek.VERSOSSZEVONAS)
-    beallit(*regi_tmp)
-    regi_nyers = tokenek._nyers_eredeti()
-    beallit(*mai)
-    fo, extra = tokenek.betolt_eredeti(), tokenek.osszevont_extra()
+def osszevonas_hibak(regi_nyers):
+    """A 9 összevonás ellenőrzése a mostani tokenek-konfigurációval: a hibás kulcsok [(kulcs, ok)] listája (üres = rendben).
+    A közös kulcson a fő vers (betolt_eredeti) és az extra (osszevont_extra) tokenjei, sorszámai megegyeznek az
+    átkulcsolás előtti nyers TAHOT megfelelő verseivel."""
+    try:
+        fo, extra = tokenek.betolt_eredeti(), tokenek.osszevont_extra()
+    except SystemExit as ex:
+        return [('SystemExit', str(ex)[:150])]
+    hibak = []
     for k, f, e in OSSZEVONASOK:
+        if k not in fo:
+            hibak.append((k, 'a kulcs nincs a betöltött listában'))
+            continue
         fo_ok = sig(fo[k]) == sig(regi_nyers[f]) and [w['sorsz'] for w in fo[k]] == list(range(1, len(fo[k]) + 1))
         ex_ok = sig(extra.get(k, [])) == sig(regi_nyers[e]) and [w['sorsz'] for w in extra.get(k, [])] == list(range(len(fo[k]) + 1, len(fo[k]) + 1 + len(regi_nyers[e])))
-        jelent('e', 'összevonás szétválasztása: %s (fő: %s, extra: %s)' % (k, f, e), 'OK' if fo_ok and ex_ok else 'HIBA',
-               'fő %d token, extra %d token' % (len(fo[k]), len(extra.get(k, []))))
+        if not (fo_ok and ex_ok):
+            hibak.append((k, 'fő vers egyezik: %s, extra egyezik: %s (fő %d, extra %d token)' % (fo_ok, ex_ok, len(fo[k]), len(extra.get(k, [])))))
+    return hibak
+
+
+def regi_nyers_tahot(regi_tmp):
+    mai = (tokenek.TAHOT, tokenek.VERSBEOSZTAS_MEGF, tokenek.VERSMEGF_KEZI, tokenek.VERSOSSZEVONAS)
+    beallit(*regi_tmp)
+    try:
+        return tokenek._nyers_eredeti()
+    finally:
+        beallit(*mai)
+
+
+def e_pont(regi_nyers):
+    """A 9 összevonás szétválasztása a valós bemeneten (a 6 futott és a 3 még nem futott összevonás)."""
+    hibak = dict(osszevonas_hibak(regi_nyers))
+    fo, extra = tokenek.betolt_eredeti(), tokenek.osszevont_extra()
+    for k, f, e in OSSZEVONASOK:
+        jelent('e', 'összevonás szétválasztása: %s (fő: %s, extra: %s)' % (k, f, e), 'HIBA' if k in hibak else 'OK',
+               hibak.get(k, 'fő %d token, extra %d token' % (len(fo[k]), len(extra.get(k, [])))))
+
+
+def n_pont(regi_nyers):
+    """NEGATÍV PRÓBA: szándékosan rontott `versosszevonas.tsv`-másolaton (a repón kívül, ideiglenes könyvtárban) az
+    összevonás-ellenőrzésnek BUKNIA kell; ha nem bukik, az ellenőrzés önigazoló. Az eredeti fájl nem módosul."""
+    mai = tokenek.VERSOSSZEVONAS
+    sorok = open(mai, 'rb').read().decode('utf-8').split(chr(10))
+
+    def rontas(kulcs, tol, ig):
+        ki = []
+        for s in sorok:
+            m = s.split(chr(9))
+            if not s.startswith('#') and len(m) >= 7 and m[0] == kulcs and m[5].isdigit():
+                m[5], m[6] = str(tol), str(ig)
+                s = chr(9).join(m)
+            ki.append(s)
+        return chr(10).join(ki)
+
+    esetek = [
+        ('Péld 11:31 er_tol–er_ig 11–18 -> 10–17 (határon belüli, de rossz tartomány)', rontas('Péld 11:31', 10, 17)),
+        ('Hós 11:11 er_tol–er_ig 20–39 -> 1–19 (a fő vers és az extra felcserélve)', rontas('Hós 11:11', 1, 19)),
+        ('Ézs 64:1 er_ig 28 -> 99 (a tokenlistán kívüli tartomány)', rontas('Ézs 64:1', 10, 99)),
+    ]
+    for cim, szoveg in esetek:
+        tmp = os.path.join(tempfile.mkdtemp(prefix='f85_neg_'), 'versosszevonas.tsv')
+        open(tmp, 'wb').write(szoveg.encode('utf-8'))
+        tokenek.VERSOSSZEVONAS = tmp
+        try:
+            hibak = osszevonas_hibak(regi_nyers)
+        finally:
+            tokenek.VERSOSSZEVONAS = mai
+        jelent('n', 'negatív próba: ' + cim, 'OK' if hibak else 'HIBA',
+               ('BUKOTT, ahogy kell: ' + '; '.join('%s: %s' % h for h in hibak[:2])) if hibak else 'NEM bukott: az ellenőrzés önigazoló!')
+    # a valós bemeneten ugyanez az ellenőrzés nem bukik
+    jelent('n', 'ugyanaz az ellenőrzés a valós (nem rontott) bemeneten', 'OK' if not osszevonas_hibak(regi_nyers) else 'HIBA', '')
 
 
 def d_pont():
-    """Kontroll: a F85.8-ban kivezetett 4 'nem átkulcsolt vers' kézi sor visszaállítva sem változtatná a betöltést (tehát inertek voltak)."""
+    """Kontroll: az F85.8-ban kivezetett 3 kézi sor (`nincs_karoli Ézs 9:20`, `torol` Ézs 64:1 ×2; a 4. kivezetett sor a
+    versosszevonas Ézs 9:20 sora, amely új alakban visszakerült) visszaállítva a mai tokenek-kóddal ártalmatlan:
+    a betöltés pontosan azonos (a `beolvasztott_uj` védi a közös Károli-kulcsot). Az elvárt kimenet: azonos betöltés."""
     alap = tokenek.betolt_eredeti()
     mai = tokenek.VERSMEGF_KEZI
-    tmp = os.path.join(tempfile.mkdtemp(prefix='f85_kezi4_'), 'kezi.tsv')
+    tmp = os.path.join(tempfile.mkdtemp(prefix='f85_kezi3_'), 'kezi.tsv')
     szoveg = 'karoli' + chr(9) + 'eredeti' + chr(9) + 'tipus' + chr(10) + chr(9) + 'Ézs 9:20' + chr(9) + 'nincs_karoli' + chr(10)
     szoveg += 'Ézs 64:1' + chr(9) + chr(9) + 'torol' + chr(10) + chr(9) + 'Ézs 64:1' + chr(9) + 'torol' + chr(10)
     open(tmp, 'wb').write(szoveg.encode('utf-8'))
@@ -225,13 +285,26 @@ def d_pont():
     try:
         e = tokenek.betolt_eredeti()
     except SystemExit as ex:
-        tokenek.VERSMEGF_KEZI = mai
-        jelent('d', 'a kivezetett 4 sor visszaállítva: a betöltés megszakad (nem inert; nem állítható vissza)', 'OK', str(ex)[:160])
+        jelent('d', 'a kivezetett 3 kézi sor visszaállítva: a betöltés változatlan', 'HIBA', 'a betöltés megszakadt: ' + str(ex)[:150])
         return
     finally:
         tokenek.VERSMEGF_KEZI = mai
     kul = [k for k in set(alap) | set(e) if alap.get(k) != e.get(k)]
-    jelent('d', 'a kivezetett 4 sor (Ézs 9:20 nincs_karoli, Ézs 64:1 torol x2) visszaállítva: a betöltés változatlan', 'OK' if not kul else 'HIBA', '%d eltérő kulcs' % len(kul))
+    jelent('d', 'a kivezetett 3 kézi sor (Ézs 9:20 nincs_karoli, Ézs 64:1 torol x2) visszaállítva: a betöltés változatlan', 'OK' if not kul else 'HIBA', '%d eltérő kulcs' % len(kul))
+
+
+def g_pont():
+    """Hós és Préd: a betolt_eredeti() kimenetének változása a nyers (versmegf=False) listához képest. A versosszevonas.tsv
+    nincs a jóváhagyott könyvekre szűrve, ezért a Hós/Préd három összevonása a közös kulcson már szétválasztva jön:
+    a fő vers a kulcson, az extra az osszevont_extra()-ban (ahogy a #22 többi könyvénél)."""
+    nyers = tokenek.betolt_eredeti(versmegf=False)
+    fo, extra = tokenek.betolt_eredeti(), tokenek.osszevont_extra()
+    kul = sorted(k for k in set(nyers) | set(fo) if tokenek.igehely_bont(k)[0] in ('Hós', 'Préd') and nyers.get(k) != fo.get(k))
+    vart = sorted(k for k, f, e in OSSZEVONASOK if tokenek.igehely_bont(k)[0] in ('Hós', 'Préd'))
+    jelent('g', 'Hós/Préd betolt_eredeti() eltérése a nyers listától = a 3 várt összevonás', 'OK' if kul == vart else 'HIBA',
+           '; '.join('%s: nyers %d -> fő %d + extra %d token' % (k, len(nyers[k]), len(fo[k]), len(extra.get(k, []))) for k in kul))
+    mas = sorted(k for k in set(nyers) | set(fo) if tokenek.igehely_bont(k)[0] not in ('Hós', 'Préd') and nyers.get(k) != fo.get(k))
+    jelent('g', 'a többi könyvben csak a 6 futott összevonás kulcsa tér el a nyerstől', 'OK' if mas == sorted(k for k, f, e in OSSZEVONASOK if k not in vart) else 'HIBA', ', '.join(mas))
 
 
 def f_pont():
@@ -268,9 +341,12 @@ def main():
     regi_tmp = (ut['konkordancia/TAHOT_kivonat.tsv'], ut['f22/versmegfeleltetes.tsv'], ut['f22/versmegfeleltetes_kezi.tsv'], ut['f22/versosszevonas.tsv'])
     b_pont(regi_tmp)
     c_pont(regi_tmp)
-    e_pont(regi_tmp)
-    f_pont()
+    regi_nyers = regi_nyers_tahot(regi_tmp)
+    e_pont(regi_nyers)
+    n_pont(regi_nyers)
     d_pont()
+    g_pont()
+    f_pont()
     sha_ellenorzes()
     with open(KI_TSV, 'w', encoding='utf-8', newline='\n') as fh:
         fh.write('# GENERÁLT: eszkozok/tahot_verskulcs_igazolas.py | a(z) %s (átkulcsolás előtti) állapot és a mostani fa összevetése | ts=2026-10-09\n' % BASE)

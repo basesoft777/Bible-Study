@@ -253,3 +253,35 @@ A `nincs_karoli` és a két `torol` sort **nem állítottam vissza**, indokok: (
 - **(6) Az önteszt-regresszió** a jelentésben szerepel (11. szakasz; javítva az F85.12-ben), N-tételt nem veszek fel (lezárt). A „stash-sel ellenőrizve” állítást kivettem (a 9.5 pont); a kiinduló hibakimenet a 11. szakaszban áll.
 - **(7) Számok:** a detektor-lista **290 → 12** sor (278 ÓSZ-sor ment ki: 269 `eltolt` + 9 `nincs_karoli`); a „469 302” → **469 301** sor (fejléccel).
 - **`egyesit.py --ellenoriz` (A1):** a futtatás kimenete és proveniencia-sora az `igazolas.py` új `f` pontjában (`naplok/F85_igazolas.tsv/.md`).
+
+## 13. F85.14 — a `beolvasztott` halmaz az átkulcsolt kulcsokra; az igazolás negatív próbával (ELLENOR_F85_8 (3), (4))
+
+*A felhasználó kifejezetten jóváhagyta (chat, 2026.10.09). Érintett fájlok (mind az `ir` mezőben): `eszkozok/karoli_strong/tokenek.py`, `f22/versosszevonas.tsv` (csak a fejléc-megjegyzés), `eszkozok/tahot_verskulcs_igazolas.py`, `naplok/F85_igazolas.tsv/.md`. A parok_*/szavak_* fájlok és az `adat/` érintetlen; a generált `f22/versmegfeleltetes.tsv` nem íródott újra; a #22 futtatót nem indítottam.*
+
+### 13.1 `tokenek.py`: a `beolvasztott` halmaz
+
+- **Előtte:** `beolvasztott = {o['eredeti'] for o in versosszevonasok()}` — az `eredeti` oszlop átkulcsolás előtti (MT-számozású) címkéi (4Móz 30:1, Péld 12:1, Jób 17:1, 37:1, Hós 12:1, Hós 2:1, Ézs 64:2, …), amelyek a mai TAHOT-ban más verseket jelölnek; egy jövőbeli `nincs_karoli` sor ilyen kulcsra csendben eldobódott volna.
+- **Utána:** `beolvasztott_regi` = a régi alakú sorok (nincs `er_tol`) `eredeti` kulcsai (a régi viselkedés, változatlanul); `beolvasztott_uj` = az új alakú sorok (`er_tol` van) **Károli-kulcsai** (a közös, átkulcsolt kulcs); `beolvasztott` = a kettő uniója. Az `erintett_e` halmazból az új kulcsok kimaradnak, így egy `nincs_karoli` sor a közös kulcsot sem a leképezésből nem dobhatja ki, sem át nem teheti a +1000-es azonosítóra. Ennek következménye: az F85.8-ban kivezetett `nincs_karoli Ézs 9:20` sor visszaállítva ma már ártalmatlan (az F85.10-ben még `SystemExit`-et okozott).
+- **Docstring:** a `versosszevonasok()` és `_eredeti_osztva()` leírása pontosítva: a közös kulcs listája a *leképezett* (a detektor-/kézi tábla szerinti leképezés utáni, az összevonás kiemelése előtti) lista; az ÓSZ-ben a leképezés üres, így az a nyers lista. A `f22/versosszevonas.tsv` fejléc-megjegyzése is ugyanígy.
+- **Reprodukálhatóság:** a mai állapotban a kézi tábla és a detektor-lista ÓSZ-sora üres, ezért a változás hatástalan; a 19 táblapár reprodukálása változatlan (13.3).
+
+### 13.2 A Hós és Préd `betolt_eredeti()` kimenetének változása (a #22-menet szempontjából)
+
+A `versosszevonas.tsv` nincs a jóváhagyott könyvekre szűrve (a szűrő csak az `f22/versmegfeleltetes*.tsv`-re vonatkozik), ezért a Hós és a Préd — amelyek még nem szerepelnek a `VERSBEOSZTAS_JOVAHAGYOTT`-ban — `betolt_eredeti()` kimenete már most eltér a nyers listától, **pontosan a 3 összevonás kulcsán** (`igazolas.py` g pont):
+
+| kulcs | nyers (az F85.8 utáni) token | most: fő vers a kulcson + extra (`osszevont_extra()`) |
+|---|---|---|
+| Hós 1:11 | 34 | 23 + 11 (Hós 2:1) |
+| Hós 11:11 | 39 | 19 + 20 (Hós 12:1) |
+| Préd 2:26 | 47 | 38 + 9 (Préd 2:25) |
+
+Minden más Hós/Préd kulcs változatlan; a többi könyvben csak a 6 futott összevonás kulcsa tér el a nyerstől (4Móz 29:39, Jób 16:22, 36:33, Péld 11:31, Ézs 9:20, 64:1).
+
+**Várt-e ez a #22 Hós/Préd-menetében? Igen.** A futott könyveknél a #22 ugyanezt a mechanizmust használta (`betolt_eredeti()` = a Károli-vers fő TAHOT-verse, `osszevont_extra()` = a beolvasztott TAHOT-vers tokenjei `kezi` állapotban, `versosszevonas` `hu_tol`–`hu_ig` a Károli-vers `kezi` szavai). A Hós/Préd-menetben ezért a Hós 1:11, Hós 11:11 és Préd 2:26 vers a modellnek a fő verssel (a 23 / 19 / 38 tokennel) jelenik meg, a beolvasztott vers 11 / 20 / 9 tokenje és a Károli-szavak `hu` 23–30 / 22–40 / 1–8 tartománya `kezi` marad — az F22 Jób/Péld/Ézs/4Móz-menetekkel azonos kezeléssel. A Préd 2:26-nál az extra a közös lista *elején* áll (`er_tol` = 1): a fő vers tokenjei 1-től újraszámozva maradnak, az extra sorszáma a fő vers tokenszáma utáni folytatás, ahogy a többi összevonásnál.
+
+### 13.3 Az igazolás negatív próbával (`naplok/F85_igazolas.md`)
+
+- **n) Negatív próba (új):** szándékosan rontott, a repón kívül ideiglenes könyvtárban lévő `versosszevonas.tsv`-másolaton a 9 összevonás ellenőrzésének **bukni kell**, és bukott: (1) Péld 11:31 `er_tol–er_ig` 11–18 → 10–17 (határon belüli, rossz tartomány): „fő vers egyezik: False, extra egyezik: False”; (2) Hós 11:11 20–39 → 1–19 (fő és extra felcserélve): bukik; (3) Ézs 64:1 `er_ig` 28 → 99 (tartományon kívüli): `SystemExit` („nem fér a kulcs 28 tokenjébe”). A valós (nem rontott) bemeneten ugyanez az ellenőrzés nem bukik. A repóbeli `versosszevonas.tsv` nem módosult.
+- **d) Kontroll átírva:** a 3 kézi sor (`nincs_karoli Ézs 9:20`, `torol Ézs 64:1` ×2; a negyedik kivezetett sor a versosszevonas Ézs 9:20 sora, amely új alakban visszakerült) visszaállítva a mai kóddal: a betöltés **azonos** (0 eltérő kulcs); az eredmény csak „azonos betöltés” esetén OK, megszakadásnál HIBA (a korábbi kettős-OK önigazoló volt). A docstring: 3 (nem 4) visszaállított sor.
+- **a)** „469 301 / 469 301 sor (fejléccel)” (a záró üres elem nélkül).
+- **19 táblapár újrafuttatása a valós bemeneten** (a módosított `tokenek.py`-val): a *régi* pipeline mind a 19-et bájtra reprodukálja; az *új* pipeline mind a 19 táblapár adatsorait és átnézési naplóját bájtra reprodukálja, a 6 összevont verset a `kezi` jelölésekkel együtt; a teljes fájl-bájtokra 14 azonos, **5 (2Móz, 4Móz, Ézs, Jób, Péld) csak a proveniencia-sorban (`forras=`) tér el** — a felhasználó ezt elfogadta (11. szakasz), a táblák nem íródnak újra. `egyesit.ellenoriz`: mind a 19 könyvre rendben. Összesen 0 HIBA.
